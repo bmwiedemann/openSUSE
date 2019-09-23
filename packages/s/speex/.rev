@@ -1,0 +1,215 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>63a897e16584f297056dc391d62ee381</srcmd5>
+    <version>1.1.99.1</version>
+    <time>1168904267</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="25">
+    <srcmd5>63ee723c3cfbb08f6d39a2b9a3f2c02f</srcmd5>
+    <version>1.1.99.1</version>
+    <time>1176394774</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5558cfa7c213c5f9ec08b62be4d3e8ec</srcmd5>
+    <version>1.1.99.2</version>
+    <time>1180046574</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="18">
+    <srcmd5>0f7157fa335b9a4eb82cf8454b9b69be</srcmd5>
+    <version>1.1.99.2</version>
+    <time>1187207811</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>322324f4866cd0038a39780c99814504</srcmd5>
+    <version>1.1.99.3</version>
+    <time>1200104736</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="19">
+    <srcmd5>af67589819c8793520afed449c15b527</srcmd5>
+    <version>1.1.99.3</version>
+    <time>1207834383</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6e244609b437f416601695eb7e636817</srcmd5>
+    <version>1.1.99.91</version>
+    <time>1218065719</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="15">
+    <srcmd5>77399c15b7dc55f69fb4f3249b3d34a8</srcmd5>
+    <version>1.1.99.91</version>
+    <time>1231462946</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="17">
+    <srcmd5>77399c15b7dc55f69fb4f3249b3d34a8</srcmd5>
+    <version>1.1.99.91</version>
+    <time>1231462946</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="18">
+    <srcmd5>842033fe5fa153d3cd44ccf675ffb2d3</srcmd5>
+    <version>1.1.99.91</version>
+    <time>1262892462</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/speex based on submit request 28243 from user coolo
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff314fc5aadf9ecc79c2bf491865625c</srcmd5>
+    <version>1.1.999_1.2rc1</version>
+    <time>1263482238</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/speex based on submit request 29528 from user coolo
+</comment>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>11a6479cc152ecdd422c745d3372fdf9</srcmd5>
+    <version>1.1.999_1.2rc1</version>
+    <time>1266974908</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/speex based on submit request 33297 from user coolo
+</comment>
+    <requestid>33297</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>f57fd86e38d3be8fe563cb4b59c2c8dc</srcmd5>
+    <version>1.1.999_1.2rc1</version>
+    <time>1268926215</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>3492dab0d6fa8de04c0e0aa44a1a3c18</srcmd5>
+    <version>1.1.999_1.2rc1</version>
+    <time>1277714545</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/speex based on submit request 42069 from user prusnak
+</comment>
+    <requestid>42069</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>3492dab0d6fa8de04c0e0aa44a1a3c18</srcmd5>
+    <version>1.1.999_1.2rc1</version>
+    <time>1278667390</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>3492dab0d6fa8de04c0e0aa44a1a3c18</srcmd5>
+    <version>1.1.999_1.2rc1</version>
+    <time>1278678620</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>7588dab605f47d1ebff210b84a864f43</srcmd5>
+    <version>unknown</version>
+    <time>1284041281</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/speex based on submit request 47125 from user elvigia
+</comment>
+    <requestid>47125</requestid>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>7588dab605f47d1ebff210b84a864f43</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="13">
+    <srcmd5>7588dab605f47d1ebff210b84a864f43</srcmd5>
+    <version>unknown</version>
+    <time>1319182483</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="14">
+    <srcmd5>501298ccc036b56f9b2b247841edeb40</srcmd5>
+    <version>1.1.999_1.2rc1</version>
+    <time>1322216483</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93409 from coolo)</comment>
+    <requestid>93411</requestid>
+  </revision>
+  <revision rev="21" vrev="15">
+    <srcmd5>1d573076b2b24226f550da81ab63659e</srcmd5>
+    <version>1.1.999_1.2rc1</version>
+    <time>1323194728</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="17">
+    <srcmd5>1d573076b2b24226f550da81ab63659e</srcmd5>
+    <version>1.1.999_1.2rc1</version>
+    <time>1340184232</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="19">
+    <srcmd5>1d573076b2b24226f550da81ab63659e</srcmd5>
+    <version>1.1.999_1.2rc1</version>
+    <time>1359110427</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="20">
+    <srcmd5>0008368aca7d9a8ca1dd2faefa6f5c4e</srcmd5>
+    <version>1.1.999_1.2rc1</version>
+    <time>1365934524</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162795 from namtrac)</comment>
+    <requestid>162869</requestid>
+  </revision>
+  <revision rev="25" vrev="22">
+    <srcmd5>0008368aca7d9a8ca1dd2faefa6f5c4e</srcmd5>
+    <version>1.1.999_1.2rc1</version>
+    <time>1379664719</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="24">
+    <srcmd5>0008368aca7d9a8ca1dd2faefa6f5c4e</srcmd5>
+    <version>1.1.999_1.2rc1</version>
+    <time>1409303400</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>46ec8e0831bc31494e1c8c28410b2531</srcmd5>
+    <version>1.1.999_1.2rc2</version>
+    <time>1425891723</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>289795</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ccc0a6258ffbcdb4b5da3e77e2201334</srcmd5>
+    <version>1.2~rc2</version>
+    <time>1426679972</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290754</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>5bd46aec2550fc056522b31961fada03</srcmd5>
+    <version>1.2~rc2</version>
+    <time>1440743048</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325396</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>386d0def283f5880e9e7f8fdc89f660f</srcmd5>
+    <version>1.2</version>
+    <time>1488125060</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460279</requestid>
+  </revision>
+</revisionlist>

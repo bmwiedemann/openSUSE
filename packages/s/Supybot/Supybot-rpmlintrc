@@ -1,0 +1,5 @@
+# Two reasons not following the python naming policy:
+# 1. Supybot is the Upstream name of the Software and 
+#    Users might search for this name in YaST
+# 2. The package exists since 2005 
+addFilter("python-naming-policy-not-applied")

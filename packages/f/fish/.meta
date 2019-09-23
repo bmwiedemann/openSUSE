@@ -1,0 +1,8 @@
+<package name="fish" project="openSUSE:Factory">
+  <title>fish, the friendly interactive shell</title>
+  <description>fish is a user friendly command line shell for UNIX-like operating systems such as Linux.
+
+It's geared towards interactive use and its features are focused on user friendlieness and discoverability. The language syntax is simple but incompatible with other shell languages.</description>
+  <devel project="shells" package="fish"/>
+  <url>http://www.fishshell.org/</url>
+</package>

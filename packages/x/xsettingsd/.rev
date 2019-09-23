@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58880ee4a1851394ddfbb31241b81ad4</srcmd5>
+    <version>0.0~git20121210</version>
+    <time>1398923635</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>231008</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e0a2eb24110329926a43f1fd4380800f</srcmd5>
+    <version>0.0~git20121210</version>
+    <time>1399545580</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>232993</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e0a2eb24110329926a43f1fd4380800f</srcmd5>
+    <version>0.0~git20121210</version>
+    <time>1409303807</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>aaa6c0bf196e746eb7eb7cad05fe19c1</srcmd5>
+    <version>0.0~git20140814</version>
+    <time>1413382811</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>256595</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>319c8e483df5363b1f5cbec0e6c705d3</srcmd5>
+    <version>0.0~git20141123</version>
+    <time>1417643276</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>263666</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>aa30a3a92067116902cf39616bdd7b32</srcmd5>
+    <version>0.0~git20150615</version>
+    <time>1435053546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>312849</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9ab67518cdb48b959203196dfc44c808</srcmd5>
+    <version>0.0~git20170402</version>
+    <time>1494442447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>494332</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>de117116e7a64e74b6a111bb7eb2833e</srcmd5>
+    <version>0.0+git20171105</version>
+    <time>1511517248</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544641</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>28514a9270d088d51082535f5e22e594</srcmd5>
+    <version>0.0+git20171105</version>
+    <time>1512042326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546325</requestid>
+  </revision>
+</revisionlist>

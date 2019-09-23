@@ -1,0 +1,5 @@
+<package name="yast2-tune" project="openSUSE:Factory">
+  <title>YaST2 - Hardware Tuning</title>
+  <description>This package contains the YaST2 component for hardware configuration.</description>
+  <devel project="YaST:Head" package="yast2-tune"/>
+</package>

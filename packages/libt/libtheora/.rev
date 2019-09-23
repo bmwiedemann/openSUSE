@@ -1,0 +1,240 @@
+<revisionlist>
+  <revision rev="1" vrev="17">
+    <srcmd5>e02f06f0a523cb8c0bf05ae59f4add28</srcmd5>
+    <version>1.0alpha5</version>
+    <time>1168903404</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>547b8ee43542679b0eed398481517be1</srcmd5>
+    <version>0.99.0.7</version>
+    <time>1175162705</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="42">
+    <srcmd5>6990b422ac0dc62a1522ef4272e85345</srcmd5>
+    <version>0.99.0.7</version>
+    <time>1186911827</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="43">
+    <srcmd5>50976f2b450566997fba24e543c3ca13</srcmd5>
+    <version>0.99.0.7</version>
+    <time>1187202668</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dc771deeb26e0de7fc4cb1d085be4798</srcmd5>
+    <version>1.0beta1</version>
+    <time>1191366301</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a2d3f4bd1d0091bd111a2f424ba44281</srcmd5>
+    <version>1.0beta1</version>
+    <time>1194564481</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>603ecacdbd1a2fae12060f5ed783f171</srcmd5>
+    <version>1.0.beta2</version>
+    <time>1197552195</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>89d1a3a620583450ab70c06f485e56e1</srcmd5>
+    <version>1.0.beta2</version>
+    <time>1207831055</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e3c7656be426f2e4b048b691abf1847d</srcmd5>
+    <version>1.0.beta2</version>
+    <time>1211414557</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>e3c7656be426f2e4b048b691abf1847d</srcmd5>
+    <version>1.0.beta2</version>
+    <time>1211414557</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>ec14cab2cc979cbb5fd4834ed0f98749</srcmd5>
+    <version>1.0.beta2</version>
+    <time>1231436706</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>134168a1ba92728b60202eb13a38417e</srcmd5>
+    <version>1.0.0</version>
+    <time>1247844802</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>134168a1ba92728b60202eb13a38417e</srcmd5>
+    <version>1.0.0</version>
+    <time>1247844802</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8f96ee0edd970e3c2ea4f826c2ccf1ee</srcmd5>
+    <version>1.1.1</version>
+    <time>1258373063</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libtheora based on submit request 24234 from user adrianSuSE
+</comment>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>cef8acaff8e804453e62e8499f2f8bcc</srcmd5>
+    <version>1.1.1</version>
+    <time>1262129243</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libtheora based on submit request 27741 from user tiwai
+</comment>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>61cc2e305783a899ceff0d984382fd83</srcmd5>
+    <version>1.1.1</version>
+    <time>1268924745</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>61cc2e305783a899ceff0d984382fd83</srcmd5>
+    <version>1.1.1</version>
+    <time>1278667363</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>61cc2e305783a899ceff0d984382fd83</srcmd5>
+    <version>1.1.1</version>
+    <time>1278678593</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>61cc2e305783a899ceff0d984382fd83</srcmd5>
+    <version>1.1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>4d28d9997218f627bedb0bb6d14f85f3</srcmd5>
+    <version>1.1.1</version>
+    <time>1306221113</time>
+    <user>saschpe</user>
+    <comment>- Disable doxygen documentation to avoid build dates in 
+  -devel packages.
+- add missing BuildRequires libpng-devel (forwarded request 71088 from elvigia)</comment>
+    <requestid>71092</requestid>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>0622c65cba083aaf0e58b3e4d7b88809</srcmd5>
+    <version>1.1.1</version>
+    <time>1306221126</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71092
+</comment>
+  </revision>
+  <revision rev="22" vrev="12">
+    <srcmd5>4c642c88666467a3039f82505c03cca3</srcmd5>
+    <version>1.1.1</version>
+    <time>1311923649</time>
+    <user>saschpe</user>
+    <comment>- remove fno-strict-aliasing from CFLAGS as it is no longer
+  needed and will slow down things. (forwarded request 77308 from elvigia)</comment>
+    <requestid>77389</requestid>
+  </revision>
+  <revision rev="23" vrev="13">
+    <srcmd5>01b6497a843036a90d83dc60586b114f</srcmd5>
+    <version>1.1.1</version>
+    <time>1311923659</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77389
+</comment>
+  </revision>
+  <revision rev="24" vrev="14">
+    <srcmd5>ac02db5b3894119a231f8332a7fdecd6</srcmd5>
+    <version>1.1.1</version>
+    <time>1314780687</time>
+    <user>saschpe</user>
+    <comment>- remove examples that fail to build, also SDL and png
+  are only needed for those, so remove from buildrequires. (forwarded request 80116 from elvigia)</comment>
+    <requestid>80120</requestid>
+  </revision>
+  <revision rev="25" vrev="15">
+    <srcmd5>de8b30e4b6942e802843b3b0745413a4</srcmd5>
+    <version>1.1.1</version>
+    <time>1314780697</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80120
+</comment>
+  </revision>
+  <revision rev="26" vrev="17">
+    <srcmd5>de8b30e4b6942e802843b3b0745413a4</srcmd5>
+    <version>1.1.1</version>
+    <time>1319182140</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="27" vrev="18">
+    <srcmd5>0dced398ade93368b69ba1192cf8e171</srcmd5>
+    <version>1.1.1</version>
+    <time>1321886869</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 92612 from coolo)</comment>
+    <requestid>92697</requestid>
+  </revision>
+  <revision rev="28" vrev="19">
+    <srcmd5>d4d4d4ff99a10c38b7fd7257b021c98a</srcmd5>
+    <version>1.1.1</version>
+    <time>1323192355</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="29" vrev="21">
+    <srcmd5>d4d4d4ff99a10c38b7fd7257b021c98a</srcmd5>
+    <version>1.1.1</version>
+    <time>1340183643</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="30" vrev="23">
+    <srcmd5>d4d4d4ff99a10c38b7fd7257b021c98a</srcmd5>
+    <version>1.1.1</version>
+    <time>1359109363</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="24">
+    <srcmd5>ea5cb9233c219fe25044d07eb53732aa</srcmd5>
+    <version>1.1.1</version>
+    <time>1369641137</time>
+    <user>coolo</user>
+    <comment>- Update descriptions, thanks to Perry Werneck</comment>
+    <requestid>176438</requestid>
+  </revision>
+  <revision rev="32" vrev="26">
+    <srcmd5>ea5cb9233c219fe25044d07eb53732aa</srcmd5>
+    <version>1.1.1</version>
+    <time>1379663111</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="28">
+    <srcmd5>ea5cb9233c219fe25044d07eb53732aa</srcmd5>
+    <version>1.1.1</version>
+    <time>1409301734</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="29">
+    <srcmd5>4ec413e81daf9cb996120509b7536e24</srcmd5>
+    <version>1.1.1</version>
+    <time>1409583545</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246978</requestid>
+  </revision>
+</revisionlist>

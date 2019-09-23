@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>04e2ab2b9fda6b83b9823fe502a3082a</srcmd5>
+    <version>2.0.15.03.24</version>
+    <time>1438615308</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>319858</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7879d7b6db43402d0883c7ed4398520a</srcmd5>
+    <version>2.0.15.03.24</version>
+    <time>1448553710</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>345553</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0313097d72963579da803a3f8e862bb4</srcmd5>
+    <version>2.1.16.01.06</version>
+    <time>1452263017</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352401</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a70a948ac46240b219eef2d0b1207382</srcmd5>
+    <version>2.1.16.01.12</version>
+    <time>1453998229</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355959</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>390e5e1b014bf9c93f1812b760571809</srcmd5>
+    <version>2.1.17.02.09</version>
+    <time>1494262981</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.17.02.09:
+  * no upstream changelog provided</comment>
+    <requestid>492919</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7d763b9cc247cd4f988e0bc747b8d8e8</srcmd5>
+    <version>2.2.17.06.14</version>
+    <time>1500892397</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512138</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>925668a509744ff018edb58b7390edfe</srcmd5>
+    <version>2.2.17.08.25</version>
+    <time>1507628562</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532810</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f19658faf24acb94b0763a6154c02fe6</srcmd5>
+    <version>2.2.17.10.25</version>
+    <time>1509305088</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>537335</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>510c18a786a42a05dad2d0711e8f615f</srcmd5>
+    <version>2.2.18.04.06</version>
+    <time>1525343644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603206</requestid>
+  </revision>
+</revisionlist>

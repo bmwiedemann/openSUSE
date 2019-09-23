@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>56b497f37745bec38187d4024eecc7b5</srcmd5>
+    <version>2.4.0</version>
+    <time>1546535173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656811</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d0c14f7f2f75d5aee3298a7740d92bdc</srcmd5>
+    <version>2.4.1</version>
+    <time>1553809818</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.1:
+  * Various release notes and docu updates</comment>
+    <requestid>689400</requestid>
+  </revision>
+</revisionlist>

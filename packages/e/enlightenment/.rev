@@ -1,0 +1,258 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5e6504dbb8dbb56716aad40210d3a0cc</srcmd5>
+    <version>0.18.2</version>
+    <time>1393236013</time>
+    <user>coolo</user>
+    <comment>Fix Conflicts to only be with versions we don't obsolete.
+use version 0.1 of branding</comment>
+    <requestid>223360</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a4349b19db636c33735413f57c8a2d79</srcmd5>
+    <version>0.18.4</version>
+    <time>1393618433</time>
+    <user>coolo</user>
+    <comment>0.18.4 with efl 1.9.0 + changelog</comment>
+    <requestid>224081</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7a7aa3e87339ece07265f7f575167b5a</srcmd5>
+    <version>0.18.5</version>
+    <time>1394385721</time>
+    <user>coolo</user>
+    <comment>Enlightenment Version 0.18.5
+* Fix selection of the standard profile in wizard.
+* pointer warp speed config slider correctly detects changed state
+* set border starting geometry from initial zone
+* don't use raise stack for iterating borders
+* Fix wl_desktop_shell compiler warning for Mike
+* evry string matching now handles UTF8
+* remove efm nav SELF_RENAME handler
+</comment>
+    <requestid>224830</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b765c40e1bcf0357f7d1c4c0dff1120b</srcmd5>
+    <version>0.18.6</version>
+    <time>1397041978</time>
+    <user>coolo</user>
+    <comment>Time for 0.18.6 bugfix release</comment>
+    <requestid>229446</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7372ce506bea55bd6bfb9cf943d5ce00</srcmd5>
+    <version>0.18.8</version>
+    <time>1406146009</time>
+    <user>coolo</user>
+    <comment>Update to 0.18.8
+  * Lots of small bug fixes</comment>
+    <requestid>241827</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>7372ce506bea55bd6bfb9cf943d5ce00</srcmd5>
+    <version>0.18.8</version>
+    <time>1409300830</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e69962a77c1f0c20962dbcf8ae384f7e</srcmd5>
+    <version>0.19.0</version>
+    <time>1411020047</time>
+    <user>coolo</user>
+    <comment>Update to e19.0
+
+* Major Packaging changes
+    * Use upstream sysactions.conf, if systemd is present, no longer requires suid bits (this disables the sysactions.conf-oS12.2 patch in factory
+    * remove disable physics / ephysics configure flags, physics module is long gone, 
+      and we support physics now anyway
+    * e18.service now enlightenment.service</comment>
+    <requestid>249559</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>684dede7285554c2817fa247ce605d8f</srcmd5>
+    <version>0.19.1</version>
+    <time>1413616156</time>
+    <user>coolo</user>
+    <comment>Update to 0.19.1 bugfix release:
+also fixes our sysaction files. 
+
+It would be great if this went into 13.2</comment>
+    <requestid>257333</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b99b8464806deea303d0dd766b1756a0</srcmd5>
+    <version>0.19.1</version>
+    <time>1417031737</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263091</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>36651c6af30ee33f658e2ae7d84aa923</srcmd5>
+    <version>0.19.4</version>
+    <time>1426796539</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.19.4 with alot of bugfixes
+* Packaging change - Recommend sni-qt this makes Qt4 apps work with the systray</comment>
+    <requestid>291381</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8e482e121e2a3c96a3322b7b8c7af1d7</srcmd5>
+    <version>0.19.5</version>
+    <time>1434003805</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.19.5
+- Fix obsoletes properly for clean updates from e17.3
+- Packaging: Require a icon theme that will be detected by enlightenment
+- Require xdg-utils on the odd chance its not already installed</comment>
+    <requestid>311461</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cec4dc350bae8df462908c769ad5920d</srcmd5>
+    <version>0.19.10</version>
+    <time>1443335990</time>
+    <user>coolo</user>
+    <comment>Remove unneeded debug</comment>
+    <requestid>333051</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c32afcf5f1a3587ed8b35618261ac15e</srcmd5>
+    <version>0.19.12</version>
+    <time>1445511515</time>
+    <user>dimstar_suse</user>
+    <comment>Bump to 0.19.12 (potential Leap Release Version)
+
+Also includes sleep_walkers changes to enable wayland support which won't really have any effect till e20 is added after the leap release</comment>
+    <requestid>337351</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f4439ef116584e9d574d5be8ea1a443b</srcmd5>
+    <version>0.20.1</version>
+    <time>1452377601</time>
+    <user>dimstar_suse</user>
+    <comment>Update to enlightenment e20 (0.20.1) The biggest change here is that we are now building experimental Wayland support but X11 is still the default. (I don't have hardware capable of testing atm) </comment>
+    <requestid>349575</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>405397ede46de4de0739521154c5987c</srcmd5>
+    <version>0.20.5</version>
+    <time>1457116220</time>
+    <user>dimstar_suse</user>
+    <comment>Bump to bugfix version 0.20.5</comment>
+    <requestid>365484</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>045c79e8601fb3c6b42814f45a92d5e9</srcmd5>
+    <version>0.20.6</version>
+    <time>1460482531</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>386121</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cc2a10b78d90927533b42620a2efdef2</srcmd5>
+    <version>0.20.8</version>
+    <time>1463738160</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396111</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fe0ed332ecd18068a6a5fe1f3630216b</srcmd5>
+    <version>0.20.9</version>
+    <time>1465847767</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401602</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cd214b6a54885176e26e279077281227</srcmd5>
+    <version>0.21.0</version>
+    <time>1468579746</time>
+    <user>dimstar_suse</user>
+    <comment>Fix other issues</comment>
+    <requestid>406893</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e1401bf36359f68ba2fd6ebe931d36b4</srcmd5>
+    <version>0.21.1</version>
+    <time>1469081947</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412351</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5584703006f7988a5b9edb7848ca07c7</srcmd5>
+    <version>0.21.2</version>
+    <time>1472646629</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>421458</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4fc4e7c621e96c611a411fc57f90f497</srcmd5>
+    <version>0.21.3</version>
+    <time>1476997692</time>
+    <user>dimstar_suse</user>
+    <comment>0.21.3 + Some language wizard fixes</comment>
+    <requestid>434731</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b15a5c0be982c6c77377796fe4d98ee4</srcmd5>
+    <version>0.21.4</version>
+    <time>1480693421</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443016</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>695622fdcbbcad8d5b7a01ea891f40c8</srcmd5>
+    <version>0.21.5</version>
+    <time>1486135828</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454339</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6047f2c7ae726c17daf54ea1d40aa52f</srcmd5>
+    <version>0.21.7</version>
+    <time>1489345458</time>
+    <user>dimstar_suse</user>
+    <comment>use right tarball</comment>
+    <requestid>477871</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>92902c3016dbcfbad84c29894438bf0b</srcmd5>
+    <version>0.21.8</version>
+    <time>1498840922</time>
+    <user>dimstar_suse</user>
+    <comment>Apparently last one wasn't intergrated</comment>
+    <requestid>507036</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b34ac46245e7636514843a8983d87ed2</srcmd5>
+    <version>0.22.1</version>
+    <time>1516634270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566521</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>cc60208d5fc42390f7e8b799e0d1f71b</srcmd5>
+    <version>0.22.3</version>
+    <time>1522225775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590939</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6afc6c617d90754d01f6c68f96cb8618</srcmd5>
+    <version>0.22.4</version>
+    <time>1539251386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639665</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,1675 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7928a0e940cba28287092e491c97988c</srcmd5>
+    <version>0.60.6</version>
+    <time>1168689185</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>09a032815a959cb164f8fa490c97ca47</srcmd5>
+    <version>0.60.6</version>
+    <time>1169231163</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="7">
+    <srcmd5>4e772399edcb52d9a06704d89cb0cee5</srcmd5>
+    <version>0.60.6</version>
+    <time>1173568243</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7d89bf646ba645f1969f61c41a43db04</srcmd5>
+    <version>0.60.7</version>
+    <time>1175796591</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f0b0e05e335395acfe16395f96d00fbf</srcmd5>
+    <version>0.61.0</version>
+    <time>1178464708</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="12">
+    <srcmd5>7a4cc5b774a51848eaaa04680c83bce0</srcmd5>
+    <version>0.61.0</version>
+    <time>1182179921</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>bccf0d42823c3597f564d52d416b9e2d</srcmd5>
+    <version>0.61.0</version>
+    <time>1182464107</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>250567730aee414f90062f9ec8acecb4</srcmd5>
+    <version>0.69.0</version>
+    <time>1184103871</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>75dc551b7238db3f646c54be263c1871</srcmd5>
+    <version>0.69.0</version>
+    <time>1184346779</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>164a2c8b28739573ec3063508dc02e3d</srcmd5>
+    <version>0.69.0</version>
+    <time>1184790673</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>70eceb8b0d5cf3a4bfe366cbb5fe50c9</srcmd5>
+    <version>0.69.5</version>
+    <time>1185495117</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b61c9fc2a7c96e11d44b5e82537e8331</srcmd5>
+    <version>0.70.0</version>
+    <time>1185871103</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>e5dada89a91c9f8cb98873307482829e</srcmd5>
+    <version>0.70.0</version>
+    <time>1186759230</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>26dce93a089bd59242368ce4de205418</srcmd5>
+    <version>0.70.2</version>
+    <time>1190118989</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>7361ae9c7c6d280f2f1defe0de4be22f</srcmd5>
+    <version>0.70.2</version>
+    <time>1196290314</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>12a0522bc13a06c633e93339b10f8679</srcmd5>
+    <version>0.70.3</version>
+    <time>1197648558</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d24418d3ce307fc469d102ee7de89b1f</srcmd5>
+    <version>0.70.4</version>
+    <time>1198262135</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a756356ceaadf96fd7c1c4d0e97a58de</srcmd5>
+    <version>0.70.5</version>
+    <time>1201661219</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="13">
+    <srcmd5>03734342876b75eeaf410719373156b7</srcmd5>
+    <version>0.70.5</version>
+    <time>1207083895</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5a205d78c1f733b35b67854226161bed</srcmd5>
+    <version>0.70.6</version>
+    <time>1208796925</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5c1de92cd97b4826ddcb1f0c2be1aa95</srcmd5>
+    <version>0.70.7</version>
+    <time>1210942692</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>de92703ea7826c5e0ffa33b17cf50549</srcmd5>
+    <version>0.70.8</version>
+    <time>1211539788</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>126168b459d39c85adc81593238bae8b</srcmd5>
+    <version>0.71.1</version>
+    <time>1216998319</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="10">
+    <srcmd5>e6669d22988abedcd4540cfda3d208e9</srcmd5>
+    <version>0.71.1</version>
+    <time>1219621251</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3f4483e536c4a0c24d5e2a7e25229151</srcmd5>
+    <version>0.71.3</version>
+    <time>1219794108</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>98134e44919ff7281ab9133fe66ccf4b</srcmd5>
+    <version>0.71.4</version>
+    <time>1221301127</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e2483eeb18654114310e37b35fa37968</srcmd5>
+    <version>0.71.5</version>
+    <time>1222270603</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>de640506fc87f201b3b1fbdaf796cc07</srcmd5>
+    <version>0.71.6</version>
+    <time>1222341632</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>a268cf5e479d3a79dd5322a11609b773</srcmd5>
+    <version>0.71.6</version>
+    <time>1222379351</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c15dc942d2e706264382097359ff6c79</srcmd5>
+    <version>0.71.7</version>
+    <time>1222706040</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>17ccb3332b37a505f4ea1f0985fb89cd</srcmd5>
+    <version>0.71.8</version>
+    <time>1224005158</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>550c833d1f5b48006fb15af2b143edd7</srcmd5>
+    <version>0.71.8</version>
+    <time>1224160572</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>ba4e352696de3a799b706716b5184881</srcmd5>
+    <version>0.71.8</version>
+    <time>1224694290</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>276a89402291bde8a919bb74bfca976a</srcmd5>
+    <version>0.71.9</version>
+    <time>1225125275</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>646b6ce41fdf366104e76140ac9b812e</srcmd5>
+    <version>0.71.9</version>
+    <time>1225718798</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e69d051012f21fd507dbd4a45edbc54b</srcmd5>
+    <version>0.71.11</version>
+    <time>1226172517</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>f8e7f2c7f43eaee498813e9af78ef1c4</srcmd5>
+    <version>0.71.11</version>
+    <time>1227012431</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>84636d5ca73da01ea178c0f91003231e</srcmd5>
+    <version>0.71.11</version>
+    <time>1227884699</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>def66d629d2437ae24118debfd3d3e24</srcmd5>
+    <version>0.71.11</version>
+    <time>1227997362</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="5">
+    <srcmd5>c6123dd5e9f61e9da18a3e43985b8330</srcmd5>
+    <version>0.71.11</version>
+    <time>1228151447</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="6">
+    <srcmd5>5c6f945fb61c37bd284a88ab9175042c</srcmd5>
+    <version>0.71.11</version>
+    <time>1228234627</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="7">
+    <srcmd5>45a12f3eacf062e0ba6df0fbfe80a256</srcmd5>
+    <version>0.71.11</version>
+    <time>1228267246</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="8">
+    <srcmd5>6c2523aef94c09ff27c8fe8527d126f2</srcmd5>
+    <version>0.71.11</version>
+    <time>1228747914</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="9">
+    <srcmd5>65a3ba9f6bfa250a73cfadd7caaa988b</srcmd5>
+    <version>0.71.11</version>
+    <time>1228762127</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>80f397389b80b62d32228c64e44b3ca9</srcmd5>
+    <version>0.71.12</version>
+    <time>1229350098</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>ab0eb8dd462b957d939b0e46bcb22662</srcmd5>
+    <version>0.71.12</version>
+    <time>1229696335</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>368731ff6c307774f0c58596933e3315</srcmd5>
+    <version>0.71.12</version>
+    <time>1231463039</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>19b41686d108e29eec0f6d65ad07f6ec</srcmd5>
+    <version>0.71.12</version>
+    <time>1231952414</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>c8f7b9b58cff2200a8185ce848e46f5b</srcmd5>
+    <version>0.71.12</version>
+    <time>1232067258</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="50" vrev="6">
+    <srcmd5>0055b5883da75a17c340b6f49edaaf3a</srcmd5>
+    <version>0.71.12</version>
+    <time>1232626693</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>0e0863da062bae0d0280c7c087a43b60</srcmd5>
+    <version>0.71.14</version>
+    <time>1232750140</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>f73c949aeb377b60c1fcf02df784ac42</srcmd5>
+    <version>0.71.14</version>
+    <time>1233019582</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>5e0f1c14e1b0151bdfdcbdc337efd28e</srcmd5>
+    <version>0.71.14</version>
+    <time>1233187484</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="54" vrev="10">
+    <srcmd5>8a6a9529cdfdaa8469881b7f9cc9e1e1</srcmd5>
+    <version>0.71.14</version>
+    <time>1235164610</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="55" vrev="13">
+    <srcmd5>e0027c2f05a58695a3b2f323b370f314</srcmd5>
+    <version>0.71.14</version>
+    <time>1236005743</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="56" vrev="14">
+    <srcmd5>37dde0f2c2064b6e82ca023099859d5b</srcmd5>
+    <version>0.71.14</version>
+    <time>1237305518</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>258469eaf270809e98c6172065e2c4f1</srcmd5>
+    <version>0.71.15</version>
+    <time>1237920646</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>7ff33098b039540356b8df60f6976053</srcmd5>
+    <version>0.71.15</version>
+    <time>1241454907</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>50d3b39e0d88cdecd5402271eb3ec80e</srcmd5>
+    <version>0.72.0</version>
+    <time>1244651721</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>c3b1a86add5ff361f0dcc7145e15b071</srcmd5>
+    <version>0.72.0</version>
+    <time>1245451469</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>ec7fd5eb35d7a21696b3fb9cf253df55</srcmd5>
+    <version>0.72.0</version>
+    <time>1247079929</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>68547d94306b2f4deda3010f6d4acabf</srcmd5>
+    <version>0.72.3</version>
+    <time>1250178893</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 17690 from user mtomaschewski
+</comment>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>24d6d33056b74033b082476e721cfb2f</srcmd5>
+    <version>0.72.3</version>
+    <time>1252579663</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 20214 from user mtomaschewski
+</comment>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>617a64669f69483fe2eb92a14501d1f7</srcmd5>
+    <version>0.72.4</version>
+    <time>1253561687</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 20462 from user mtomaschewski
+</comment>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>bda6f454e792d8edc1dcc8ba4fa6da2a</srcmd5>
+    <version>0.72.4</version>
+    <time>1253656361</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 20731 from user mtomaschewski
+</comment>
+  </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>1a9b91e405d203a1a6c7af5423e1caaa</srcmd5>
+    <version>0.72.4</version>
+    <time>1254522045</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 21579 from user mtomaschewski
+</comment>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>9857b77db642d8eae3b8713ffca92a8a</srcmd5>
+    <version>0.72.5</version>
+    <time>1255017335</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 21925 from user mtomaschewski
+</comment>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>bc8f37c2d37fbfe4814e127279cdd8de</srcmd5>
+    <version>0.72.6</version>
+    <time>1255355756</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 22168 from user mtomaschewski
+</comment>
+  </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>bc8f37c2d37fbfe4814e127279cdd8de</srcmd5>
+    <version>0.72.6</version>
+    <time>1255355756</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 22168 from user mtomaschewski
+</comment>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>08e9b5783908bad7a20bb1eed26279a2</srcmd5>
+    <version>0.73.1</version>
+    <time>1258369632</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 24444 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>81aac99f177d198f007b1e9117e08a11</srcmd5>
+    <version>0.73.2</version>
+    <time>1260270931</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 25570 from user mtomaschewski
+</comment>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>e71ca651a05b1247318cd50cbafebc83</srcmd5>
+    <version>0.73.2</version>
+    <time>1263483142</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 29064 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>465150410054a78bbcb62976a8b86842</srcmd5>
+    <version>0.73.3</version>
+    <time>1263504531</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 29587 from user mtomaschewski
+</comment>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>3f506e0fe11bb8e7d9b0e1a19fef9bd0</srcmd5>
+    <version>0.73.3</version>
+    <time>1266509700</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 32878 from user coolo
+</comment>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>02d354bed8b44b825e175fe6c98fac1f</srcmd5>
+    <version>0.73.4</version>
+    <time>1268737775</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 34701 from user mtomaschewski
+</comment>
+    <requestid>34701</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>cc3e2db1a08b7fcede070e9f48ce6f6f</srcmd5>
+    <version>0.73.4</version>
+    <time>1268926265</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>1e37164a21403cabf5d782bc86e8f574</srcmd5>
+    <version>0.73.4</version>
+    <time>1270058370</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 36121 from user mtomaschewski
+</comment>
+    <requestid>36121</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>06c549622de7747f162e751c01bfaa10</srcmd5>
+    <version>0.73.6</version>
+    <time>1273241985</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 39647 from user mtomaschewski
+</comment>
+    <requestid>39647</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>31e9b4746fe9b41430ff28992761f030</srcmd5>
+    <version>0.73.6</version>
+    <time>1274805875</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 40636 from user mtomaschewski
+</comment>
+    <requestid>40636</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>c2f6e2db49b85a5edb7c220c895f003b</srcmd5>
+    <version>0.73.7</version>
+    <time>1276097966</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 41246 from user mtomaschewski
+</comment>
+    <requestid>41246</requestid>
+  </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>c2f6e2db49b85a5edb7c220c895f003b</srcmd5>
+    <version>0.73.7</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>c2f6e2db49b85a5edb7c220c895f003b</srcmd5>
+    <version>0.73.7</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="83" vrev="4">
+    <srcmd5>c87d899f7b6e32b3f30f3b62f5020ed0</srcmd5>
+    <version>0.73.7</version>
+    <time>1279540756</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 42834 from user mtomaschewski
+</comment>
+    <requestid>42834</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>55e3847465f3a9f34772b60b666be034</srcmd5>
+    <version>0.74.0</version>
+    <time>1280493537</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 44241 from user coolo
+</comment>
+    <requestid>44241</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>bb5c5fa2c8c777b7442d584592a41044</srcmd5>
+    <version>0.74.1</version>
+    <time>1282664236</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 45760 from user mtomaschewski
+</comment>
+    <requestid>45760</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>e1123cef6724f2a57e915009d4963dfa</srcmd5>
+    <version>0.74.1</version>
+    <time>1285062942</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sysconfig based on submit request 48106 from user mtomaschewski
+</comment>
+    <requestid>48106</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>2007a53b83820cf546451cc8233fb6db</srcmd5>
+    <version>0.74.2</version>
+    <time>1289569211</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52837 from user mtomaschewski
+</comment>
+    <requestid>52837</requestid>
+  </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>64db92b7742ff162d29d807303ae6b1f</srcmd5>
+    <version>0.74.2</version>
+    <time>1289569217</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52837
+</comment>
+  </revision>
+  <revision rev="89" vrev="3">
+    <srcmd5>0b9b4f750f9fa706aab4ca906eb4983f</srcmd5>
+    <version>0.74.2</version>
+    <time>1291730033</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54974 from user coolo
+</comment>
+    <requestid>54974</requestid>
+  </revision>
+  <revision rev="90" vrev="4">
+    <srcmd5>e3392c1df2de03784eecaa306cf1f278</srcmd5>
+    <version>0.74.2</version>
+    <time>1291730042</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54974
+</comment>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>5cb005d23caa0917baf740fdffca9f53</srcmd5>
+    <version>0.74.3</version>
+    <time>1294388126</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57244 from user mtomaschewski
+</comment>
+    <requestid>57244</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>cbb6be05af93c3899bc452e8b9fce071</srcmd5>
+    <version>0.74.3</version>
+    <time>1294388135</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57244
+</comment>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>5dd7054d76a4317d8472f64dec7f78f1</srcmd5>
+    <version>0.74.4</version>
+    <time>1294652213</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57457 from user mtomaschewski
+</comment>
+    <requestid>57457</requestid>
+  </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>7037676f05347f4f4a7a3c4134abde8f</srcmd5>
+    <version>0.74.4</version>
+    <time>1294652227</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57457
+</comment>
+  </revision>
+  <revision rev="95" vrev="3">
+    <srcmd5>735163d2c2765f9423a55f743419dbc0</srcmd5>
+    <version>0.74.4</version>
+    <time>1295347468</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58671 from user mtomaschewski
+</comment>
+    <requestid>58671</requestid>
+  </revision>
+  <revision rev="96" vrev="4">
+    <srcmd5>029f76e19e739dd22a83976b8e2ba098</srcmd5>
+    <version>0.74.4</version>
+    <time>1295347482</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58671
+</comment>
+  </revision>
+  <revision rev="97" vrev="5">
+    <srcmd5>82f09779ea2ac15e1d7f5a5f7b4337fc</srcmd5>
+    <version>0.74.4</version>
+    <time>1295904435</time>
+    <user>darix</user>
+    <comment>Accepted submit request 59052 from user mtomaschewski
+</comment>
+    <requestid>59052</requestid>
+  </revision>
+  <revision rev="98" vrev="6">
+    <srcmd5>6c760dc7db5ef9aa6e02733a7989cb97</srcmd5>
+    <version>0.74.4</version>
+    <time>1295904455</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 59052
+</comment>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>daf201a6de2e400a79ab123dbfb0acd1</srcmd5>
+    <version>0.74.5</version>
+    <time>1295948012</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 59079 from user mtomaschewski
+</comment>
+    <requestid>59079</requestid>
+  </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>8f371b4adc39ad4a6ef475cf0ca906c1</srcmd5>
+    <version>0.74.5</version>
+    <time>1295948019</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 59079
+</comment>
+  </revision>
+  <revision rev="101" vrev="3">
+    <srcmd5>f59a6e6e4f550817b7b68491e6719e59</srcmd5>
+    <version>0.74.5</version>
+    <time>1297789777</time>
+    <user>darix</user>
+    <comment>Accepted submit request 61167 from user mtomaschewski
+</comment>
+    <requestid>61167</requestid>
+  </revision>
+  <revision rev="102" vrev="4">
+    <srcmd5>3ad75f4f7eb89169e4f5c7987f274736</srcmd5>
+    <version>0.74.5</version>
+    <time>1297789787</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 61167
+</comment>
+  </revision>
+  <revision rev="103" vrev="7">
+    <srcmd5>3ad75f4f7eb89169e4f5c7987f274736</srcmd5>
+    <version>0.74.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>4a4311ae54b34a1262963ffcd82678f1</srcmd5>
+    <version>0.75.0</version>
+    <time>1303379098</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67072 from user dirkmueller
+</comment>
+    <requestid>67072</requestid>
+  </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>5cbefc9ee6a0b049910450de03596378</srcmd5>
+    <version>0.75.0</version>
+    <time>1303379107</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67072
+</comment>
+  </revision>
+  <revision rev="106" vrev="3">
+    <srcmd5>3119f3162efa49e1835ed1f872498fe5</srcmd5>
+    <version>0.75.0</version>
+    <time>1312650502</time>
+    <user>saschpe</user>
+    <comment>- remove /var/lock/subsys references</comment>
+    <requestid>78024</requestid>
+  </revision>
+  <revision rev="107" vrev="4">
+    <srcmd5>2a2348c10a9dc9fc62046960a9ebc6b0</srcmd5>
+    <version>0.75.0</version>
+    <time>1312650511</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78024
+</comment>
+  </revision>
+  <revision rev="108" vrev="5">
+    <srcmd5>6141dff396d6504a28f8b99131fdd507</srcmd5>
+    <version>0.75.0</version>
+    <time>1313048505</time>
+    <user>saschpe</user>
+    <comment>- Do not use -fno-strict-aliasing when not needed (forwarded request 78413 from elvigia)</comment>
+    <requestid>78437</requestid>
+  </revision>
+  <revision rev="109" vrev="6">
+    <srcmd5>06b16b7df9b746169bde37df07171f7a</srcmd5>
+    <version>0.75.0</version>
+    <time>1313048514</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78437
+</comment>
+  </revision>
+  <revision rev="110" vrev="7">
+    <srcmd5>1f8c18d6ff8f785cf6e51ed547b89cea</srcmd5>
+    <version>0.75.0</version>
+    <time>1314343264</time>
+    <user>saschpe</user>
+    <comment>do not start NM under systemd, wireless power settings</comment>
+    <requestid>79787</requestid>
+  </revision>
+  <revision rev="111" vrev="8">
+    <srcmd5>dfab381d470ada33904995b484904603</srcmd5>
+    <version>0.75.0</version>
+    <time>1314343275</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79787
+</comment>
+  </revision>
+  <revision rev="112" vrev="9">
+    <srcmd5>f1274894ea1ccf5039bbb1af9132aeca</srcmd5>
+    <version>0.75.0</version>
+    <time>1314601984</time>
+    <user>saschpe</user>
+    <comment>added vpnc to preffered services in DNS ranking -- needed for bnc#712435</comment>
+    <requestid>79908</requestid>
+  </revision>
+  <revision rev="113" vrev="10">
+    <srcmd5>08e79ebd8947a96acc2b64e2e31675c9</srcmd5>
+    <version>0.75.0</version>
+    <time>1314601992</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79908
+</comment>
+  </revision>
+  <revision rev="114" vrev="11">
+    <srcmd5>dffcce6d8c753acddf26f6f728f9f493</srcmd5>
+    <version>0.75.0</version>
+    <time>1314693915</time>
+    <user>saschpe</user>
+    <comment>- Fix incorrect systemd detection in disable-NM-under-systemd.patch (forwarded request 80023 from fcrozat)</comment>
+    <requestid>80043</requestid>
+  </revision>
+  <revision rev="115" vrev="12">
+    <srcmd5>764c74bc5116ea33d2f3f04e1758cc29</srcmd5>
+    <version>0.75.0</version>
+    <time>1314693935</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80043
+</comment>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>58c743418e7ff45e748e5fb7d7108b6b</srcmd5>
+    <version>0.75.1</version>
+    <time>1315313346</time>
+    <user>saschpe</user>
+    <comment>bnc#711762,bnc#701000,bnc#648830,bnc#698478</comment>
+    <requestid>81005</requestid>
+  </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>862738bb9b4e26a005024cae32ced95c</srcmd5>
+    <version>0.75.1</version>
+    <time>1315313356</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81005
+</comment>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>065f76e645f56efff489a25dfaf9ea5e</srcmd5>
+    <version>0.75.2</version>
+    <time>1315561998</time>
+    <user>saschpe</user>
+    <comment>bnc#592270, bonding script refresh (3.0 kernel)</comment>
+    <requestid>81583</requestid>
+  </revision>
+  <revision rev="119" vrev="2">
+    <srcmd5>2f0e43639990cee1936cecc94925f07b</srcmd5>
+    <version>0.75.2</version>
+    <time>1315562009</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81583
+</comment>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>0f016c61871c927426fdc0b6109bc8ce</srcmd5>
+    <version>0.75.3</version>
+    <time>1317049654</time>
+    <user>oertel</user>
+    <comment>bnc#697929,bnc#719214</comment>
+    <requestid>84865</requestid>
+  </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>43d12cf53422a564d0b56e17cb005bc2</srcmd5>
+    <version>0.75.3</version>
+    <time>1317049661</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 84865
+</comment>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>bb5308f6116e6e54d20c7157c056703e</srcmd5>
+    <version>0.75.4</version>
+    <time>1317805830</time>
+    <user>lrupp</user>
+    <comment>version 0.75.4, fix for bnc#716652</comment>
+    <requestid>86630</requestid>
+  </revision>
+  <revision rev="123" vrev="3">
+    <srcmd5>bb5308f6116e6e54d20c7157c056703e</srcmd5>
+    <version>0.75.4</version>
+    <time>1319182500</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="124" vrev="4">
+    <srcmd5>9e93bb9d8b87254704c333a3168d8d22</srcmd5>
+    <version>0.75.4</version>
+    <time>1319555541</time>
+    <user>coolo</user>
+    <comment>Changed NM_ONLINE_TIMEOUT default to 0 to avoid usually unneeded waiting (bnc#722304)</comment>
+    <requestid>88965</requestid>
+  </revision>
+  <revision rev="125" vrev="5">
+    <srcmd5>763b384a268aabe6e3461c896c3ff33b</srcmd5>
+    <version>0.75.4</version>
+    <time>1322481480</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93823 from coolo)</comment>
+    <requestid>93957</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>ec75e0c8833e354100cce4b99e120d15</srcmd5>
+    <version>0.76.0</version>
+    <time>1323190862</time>
+    <user>coolo</user>
+    <comment>bnc#727771,bnc#734723,bnc#723796,workaround for bnc#559170/580018</comment>
+    <requestid>95483</requestid>
+  </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>89c367ef09e4d372013d3de7fa5df5fb</srcmd5>
+    <version>0.76.0</version>
+    <time>1324475958</time>
+    <user>coolo</user>
+    <comment>bnc#735394(CVE-2011-4182)</comment>
+    <requestid>97043</requestid>
+  </revision>
+  <revision rev="128" vrev="3">
+    <srcmd5>90f85d9ad87b651709b96605a2180afd</srcmd5>
+    <version>0.76.0</version>
+    <time>1325846806</time>
+    <user>coolo</user>
+    <comment>Fix for incorrect exists_iface_config test in ifprobe</comment>
+    <requestid>98764</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>de475cbf51de077532d4e924f80ca696</srcmd5>
+    <version>0.76.1</version>
+    <time>1329405834</time>
+    <user>coolo</user>
+    <comment>bnc#733118,bnc#697929,bnc#739338,bnc#741453,cleanup</comment>
+    <requestid>105293</requestid>
+  </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>77ebfb2ef3668a3222cd84211321b0fe</srcmd5>
+    <version>0.76.1</version>
+    <time>1332148054</time>
+    <user>coolo</user>
+    <comment>- In poll.tcpip avoid warnings messages of fetchmail by using the
+  owner ship of the system wide configuration file /etc/fechmailrc
+  which should be owned by the user and group mail.</comment>
+    <requestid>107142</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>e1b07d693f6f589fa59d080b85981dc1</srcmd5>
+    <version>0.76.2</version>
+    <time>1334217176</time>
+    <user>coolo</user>
+    <comment>version 0.76.2, bnc#753387,bnc#745252,bnc#724775</comment>
+    <requestid>113083</requestid>
+  </revision>
+  <revision rev="132" vrev="3">
+    <srcmd5>e1b07d693f6f589fa59d080b85981dc1</srcmd5>
+    <version>0.76.2</version>
+    <time>1340184251</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>0fefbabcb747eb105325b4a473d27100</srcmd5>
+    <version>0.76.3</version>
+    <time>1343032876</time>
+    <user>coolo</user>
+    <comment>bnc#771615,bnc#770301</comment>
+    <requestid>128483</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>e08533b37096599edd6329bd6afa7b7f</srcmd5>
+    <version>0.76.4</version>
+    <time>1344880459</time>
+    <user>namtrac</user>
+    <comment>Check before running a script in netcontrol_services (bnc#775281)</comment>
+    <requestid>130563</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>9457a849365d1fb8c856c8ff0bdd4fbf</srcmd5>
+    <version>0.76.5</version>
+    <time>1349251874</time>
+    <user>coolo</user>
+    <comment>version update to 0.76.5 (forwarded request 136288 from mlatimer)</comment>
+    <requestid>136418</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>52487c55b7a6452f6fce1d9588ac3c78</srcmd5>
+    <version>0.76.6</version>
+    <time>1351337101</time>
+    <user>coolo</user>
+    <comment>version 0.76.6, bnc#784952,716652,780644</comment>
+    <requestid>139421</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>d1cbe8b859240730148bd376866382cb</srcmd5>
+    <version>0.76.7</version>
+    <time>1351874585</time>
+    <user>coolo</user>
+    <comment>- version 0.76.7
+- Start ifup pre/post and if-up.d/if-down.d scripts in background.
+  The new network/config variable WAIT_BACKGROUND_JOBS specifies
+  the wait limit. Default is 5 secons, 0 disables backgrounding
+  and reverts to previous blocking behavior. Attempt to solve the
+  issues where interfaces are not come up in time, because some
+  hook-script are blocking ifup (bnc#780644).
+- Execute netconfig/ntp-runtime updates in background (bnc#780644).
+- Man-page hint to use STARTMODE=nfsroot when using iSCSI or FCoE.</comment>
+    <requestid>139934</requestid>
+  </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>b1b26684eaf8f0ddafd54cd2f34c51f7</srcmd5>
+    <version>0.76.7</version>
+    <time>1352216010</time>
+    <user>coolo</user>
+    <comment>Update to make sysconfig install it's udev related files in the /usr/lib/udev directory as is now required by the new systemd (forwarded request 140255 from tittiatcoke)</comment>
+    <requestid>140286</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>b52975b796e2d86958707395fd769164</srcmd5>
+    <version>0.76.8</version>
+    <time>1354118537</time>
+    <user>coolo</user>
+    <comment>- version 0.76.8
+- Changed rcnetwork to not report dhcp in background to systemd
+  (bnc#785240,bnc#780644). You may set DHCLIENT_MODIFY_SMB_CONF
+  to &quot;no&quot; in /etc/sysconfig/network/dhcp as the samba/cifs hooks
+  make systemctl calls to reload/restart nmb and other services
+  which block (systemd deadlock) ifup scripts for a long time.
+- Reverted ifup pre/post and if-up.d/if-down.d scripts processing
+  feature in background and removed WAIT_BACKGROUND_JOBS variable
+  as it tends to cause unexpected behavior / side effects.
+- Replaced udevrulesdir patch with --with-udevdir configure option.
+- Removed obsolete network-remotefs init script (disabled before).
+- Added patch (set_new_udevrules_dir.patch) to ensure that the
+  udevmountd and the udev rules are installed at the right place</comment>
+    <requestid>142883</requestid>
+  </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>f86d92ae60217d24004213b10bad3d55</srcmd5>
+    <version>0.76.8</version>
+    <time>1357998823</time>
+    <user>coolo</user>
+    <comment>- Fixed to correctly apply STP constrains also to float time
+  values with a 1/100 sec precision (bnc#753387,bnc#794720).
+  [0002-ifup-bridge-handle-1-100-sec-precision-stp-times.patch]
+- Updated bridge documentation link in ifcfg-bridge.5 (bnc#791553).
+  [0001-Updated-bridge-documentation-link-in-ifcfg-bridge.5.patch]</comment>
+    <requestid>148150</requestid>
+  </revision>
+  <revision rev="141" vrev="4">
+    <srcmd5>f86d92ae60217d24004213b10bad3d55</srcmd5>
+    <version>0.76.8</version>
+    <time>1359110455</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>7b045f5a8bbc927ef56d04ff89282949</srcmd5>
+    <version>0.80.3</version>
+    <time>1359439489</time>
+    <user>coolo</user>
+    <comment>- version 0.80.3
+- rcnetwork: reworked suspend/resume hooks (bnc#781106)
+- version 0.80.2
+- rcnetwork: handle also partial -o type|skip options
+- version 0.80.1
+- rcnetwork: Improved redirection and option handling and cleaned
+  up obsolete localfs/remotefs options and network manager hooks.
+  Honor SYSTEMCTL_OPTIONS variable which can be set to systemctl
+  options e.g. --ignore-dependencies while yast2 second stage run
+  (bnc#798348).
+- Fixed to use dhclient6 in dhcp6_client state variable (bnc#798828).
+- version 0.80.0
+- Removed the NETWORKMANAGER=yes/no variable from network/config.
+  The NetworkManager.service (or other) installs a network.service
+  alias link while &quot;systemctl enable&quot; and removes on &quot;disable&quot;,
+  which masks the network.service provided by /etc/init.d/network.
+  Current service has to be stopped while &quot;enable&quot; or &quot;disable&quot;.
+  The &quot;systemctl -p Id show network.service&quot; is used to query the
+  currently enabled network service. It returns either the name
+  of the service providing the alias, i.e. NetworkManager.service
+  or network.service - when the /etc/init.d/network provides it.
+  The /etc/init.d/network script forwards common actions (start,
+  stop, ...) to systemd which executes them for the currently
+  active network.service. (bnc#764055,bnc#764336,bnc#798348).
+- Adopted /etc/init.d/network, netconfig, ifup to use the service
+  Id query instead of NETWORKMANAGER variable, added forwarding.
+- Removed NetworkManager start/stop code from /etc/init.d/network
+  and disabled NetworkManager dispatcher hook installation.
+- Added removal of the NETWORKMANAGER variable to spec post-install</comment>
+    <requestid>150169</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>28f4e9dae9c9c168f2bd08f53841eaa5</srcmd5>
+    <version>0.80.4</version>
+    <time>1359640490</time>
+    <user>coolo</user>
+    <comment>- version 0.80.4
+- Fixed to use a suffix in ETHTOOL_OPTIONS variable to allow to
+  apply every setting (e.g. 'gro off lro off') separately, as the
+  ethtool utility stops at first failure and the NIC driver may
+  reject settings when the link is not up or they're unsupported.
+  Further, added ETHTOOL_UP_RETRY and ETHTOOL_UP_WAIT variables
+  to optionally wait after the link has been set up and retry to
+  set the ETHTOOL_OPTIONS*. Updated ifcfg(5) man page (bnc#787744)
+- Applied 81-mount.rules fix by Robert Milasan to not mount file
+  systems with the noauto flag set (bnc#798641, [SWAMPID 50702]).</comment>
+    <requestid>150552</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>f2dda36e9df3802a10204b0943084969</srcmd5>
+    <version>0.80.5</version>
+    <time>1361548991</time>
+    <user>coolo</user>
+    <comment>- version 0.80.5
+- Fixed to use a guarded migration hook from openSUSE &amp;lt; 12.3, that
+  disabes the (always enabled before) NetworkManager.service on
+  NETWORKMANAGER=no and mask the network.service (provided by the
+  /etc/init.d/network script) on NETWORKMANAGER=yes until NM has
+  been installed and enabled as network.service (bnc#803058). (forwarded request 156053 from mtomaschewski)</comment>
+    <requestid>156054</requestid>
+  </revision>
+  <revision rev="145" vrev="2">
+    <srcmd5>82cda159c2bcc36f906d85da8f8ebef7</srcmd5>
+    <version>0.80.5</version>
+    <time>1362462624</time>
+    <user>coolo</user>
+    <comment>- Fixed to create migration marker directory before using it,
+  it does not exists e.g. while CD based update (bnc#806989). (forwarded request 157238 from mtomaschewski)</comment>
+    <requestid>157239</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>313c57eda40649e5fe36cde57dfdbcae</srcmd5>
+    <version>0.80.6</version>
+    <time>1368714297</time>
+    <user>coolo</user>
+    <comment>- version 0.80.6
+- Merged changes from $OBS/Base:System/sysconfig and SLE-11-SP3.
+- Fixed to set link settings on bonding slaves while enslave.
+  Before enslaving a new slave, apply link settings like the MAC
+  address or MTU to the slave as required e.g. for fail_over_mac
+  active, where the bonding interface is using the MAC of the
+  currently active slave (bnc#815025).
+  [0002-Set-link-settings-on-bonding-slaves-while-enslave.patch]
+- Fixed to stop dhcp clients and remove IP addresses on not yet
+  enslaved bridge ports and bonding slaves. The bridge or bond
+  interface has the IP addresses assigned itself instead.
+  The port/slave may still have IP addresses, when the IP config
+  of an active (ethernet) interface has been moved into a bridge
+  or bond config, e.g. while &quot;virsh iface-bridge eth0 br0&quot;. There
+  is no full ifdown for the port interface to not break the vlans
+  (and their bridges) which may refer to the port too (bnc#813148).
+  [0001-Flush-IPs-on-bridge-bond-children-ifup-bnc-813148.patch]
+- Add forgotten patch sysconfig-0.80.5.patch
+- Accommodate poll.tcpip to systemd
+- Fixed to wait for dhcp/ipv6 under systemd again.
+  Fixed regression caused by bnc#785240, bnc#780644 fixes to not
+  discard the dhcp/ipv6 dupplicate address detection in progress
+  error codes under systemd completely, but wait until dhcp/ipv6
+  dad finished or the WAIT_FOR_INTERFACES timeout is reached and
+  then discard in the status returned to systemd (bnc#808718).
+  It caused failures of other services trying to bind tentative
+  IPv6 addresses, e.g. in mixed dhcp4 / static IPv6 setups.
+  Thanks to Rolf Eike Beer for the report/tests/debug outputs.
+  [0001-Fixed-to-wait-for-dhcp-ipv6-under-systemd-again.patch]</comment>
+    <requestid>175839</requestid>
+  </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>d3079c7d34affdb0631b01264178d1a8</srcmd5>
+    <version>0.80.7</version>
+    <time>1376911886</time>
+    <user>scarabeus_factory</user>
+    <comment>- version 0.80.7
+- use mountpoint utility without absolute path
+  While on 12.3 there were a /bin/mountpoint, 13.1 moved
+  it to /usr/bin/mountpoint without a compatibility link.
+  Drop path when calling it, it should work both ways.
+  Thanks to Andrey Borzenkov for his patch.
+- rcnetwork: fixed to not drop state while reload
+- netconfig: add /etc/resolv.conf options and sortlist
+  Added global network/config NETCONFIG_DNS_RESOLVER_OPTIONS
+  and NETCONFIG_DNS_RESOLVER_SORTLIST variables, allowing to
+  set /etc/resolv.conf options and sortlist (fate#316048).</comment>
+    <requestid>187002</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>9b31e46617d6e20e4586df4df9cedfcb</srcmd5>
+    <version>0.81.3</version>
+    <time>1378898301</time>
+    <user>coolo</user>
+    <comment>Splitted sysconfig into multiple packages
+
+Note: installation-images are adopted in git commit 34f0bdfca4.
+
+- version 0.81.3
+- Fixed to reload syslog on hostname changes using systemctl as
+  there is no /etc/init.d/syslog script since syslog-service-2.0
+  (bnc#830467).
+- Added a systemctl guard to rpm post script
+- version 0.81.2
+- Added otherproviders(/sbin/ifup) conflict to sysconfig-network.
+- Do not stop the network interfaces, but kill the network and all
+  network@&lt;ifname&gt; services to kill all dhcp clients on uninstall.
+- version 0.81.1
+- Initial network and network@ service files to avoid, that systemd
+  udevd kills dhcp clients, which where forked from the udev hotplug
+  rule and for better control (bnc#821879).
+- version 0.81.0
+- Initial sysconfig split into udevmountd, sysconfig, -netconfig
+  and -network packages, to allow another implementation of the
+  /etc/init.d/network and /sbin/ifup scripts.
+- Dropped obsolete README files.</comment>
+    <requestid>198226</requestid>
+  </revision>
+  <revision rev="149" vrev="3">
+    <srcmd5>9b31e46617d6e20e4586df4df9cedfcb</srcmd5>
+    <version>0.81.3</version>
+    <time>1379664753</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>4fa45b22782c8064051713e8cebe6a7a</srcmd5>
+    <version>0.81.4</version>
+    <time>1379944036</time>
+    <user>coolo</user>
+    <comment>- version 0.81.4
+- Added IgnoreOnIsolate=yes to network@.service (bnc#841315)
+  The network@&lt;ifname&gt;.service are marked as PartOf network.service,
+  but this one way stop/restart dependency is not propagated on a
+  systemctl isolate (&quot;runlevel&quot; change) and the network@ services
+  were stopped. Added IgnoreOnIsolate=yes to stop them on network
+  service stop only.</comment>
+    <requestid>200153</requestid>
+  </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>0a8f5d0715d68e05c4ea472928a73ae4</srcmd5>
+    <version>0.81.5</version>
+    <time>1380475752</time>
+    <user>coolo</user>
+    <comment>- version 0.81.5
+- Fixed to support dummyX interfaces again (bnc#694810)
+- Improved default netconfig dns ranking defaults and man page.
+- Do not set &quot;ap any&quot; for wlags49* wireless driver (bnc#837941)</comment>
+    <requestid>201148</requestid>
+  </revision>
+  <revision rev="152" vrev="2">
+    <srcmd5>8bdaf4d57d6749f11c63d55ae352a22f</srcmd5>
+    <version>0.81.5</version>
+    <time>1382117060</time>
+    <user>scarabeus_factory</user>
+    <comment>- set SELinux label for /dev/.sysconfig after creation (bnc#845792)
+  * sysconfig-0.81.5-restore_selinux_context_on_RUN_FILES_BASE.patch
+- use systemctl when possible instead of calling init scripts directly
+  * sysconfig-0.81.5-netconfig-use_systemctl.patch (forwarded request 203251 from WernerFink)</comment>
+    <requestid>203755</requestid>
+  </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>60073c7dd2a2c63a8c9b8be97fc2b85a</srcmd5>
+    <version>0.81.6</version>
+    <time>1383041095</time>
+    <user>scarabeus_factory</user>
+    <comment>- version 0.81.6
+- Merged changes from $OBS/Base:System/sysconfig
+- blacklist udlfb because only udl can be used with xrandr 1.4
+  (bnc#846218)
+- /etc/modprobe.d/50-blacklist.conf: cleaned up obsolete/dropped
+  kernel drivers (bnc#843141,bnc#843169). Thanks to Michal Marek!
+  sk98lin: dropped from the kernel in 2.6.26
+  stradis: dropped in 2.6.38 (39c3d48)
+  eepro100: dropped in 2.6.29 (6b1abba)
+  slamr,slusb: no smartlink-softmodem-kmp since 10.3
+  ich2rom: rplaced by ichxrom in 2.6.12 (304aa41)
+  eth1394: dropped in 2.6.37 (66fa12c)
+  uhci: dropped in 2.5.27
+  tsdev: removed in 2.6.24 (7009317)
+  snd_bt87x: duplicate of snd-bt87x
+  clgenfb: replaced by cirrusfb in 2.5.67
+  cyblafb: replaced by tridentfb in 2.6.30
+  unikey: not in mainline history, 2.4?
+  encode-{big5,gb,gbk,jis,kscm}: not in mainline history, 2.4?
+  fbcon-{afb,ilbm,iplan2p2,iplan2p4,iplan2p8}: removed in 2.5.51
+  fbcon-{cfb2,cfb4,hga,mfb,vga-planes},fbgen: removed in 2.5.51
+  fbcon-{mac,vga}: removed in 2.5.28
+  vmware: never upstream, no reference in  2.5+</comment>
+    <requestid>205067</requestid>
+  </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>69bad1d4c20f25af92b8f366bcaac340</srcmd5>
+    <version>0.81.7</version>
+    <time>1383811486</time>
+    <user>coolo</user>
+    <comment>- version 0.81.7
+- Skip also systemd redirection for ifdown -o ifplugd (bnc#846031).
+- Fixed to check restorecon existence before calling it as selinux
+  is not installed by default (bnc#845792).
+- fix starting dhcpcd from ifplugd (bnc#846031)</comment>
+    <requestid>205919</requestid>
+  </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>308249365e2d1496a9d6bab3c2374181</srcmd5>
+    <version>0.82.1</version>
+    <time>1386402736</time>
+    <user>coolo</user>
+    <comment>- version 0.82.1
+- Changed global NOZEROCONF default to &quot;yes&quot; (automatic zeroconf
+  route disabled), removed obsolete LINKLOCAL_INTERFACES variable.
+  Use NOZEROCONF=&quot;no&quot; per interface to enable (fate#314482).
+- version 0.82.0
+- Dropped udevmountd, the functionalty has been included in systemd
+  (bnc#852762).</comment>
+    <requestid>209502</requestid>
+  </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>ead09ac28b5b647c8ada18e1b75cc2e0</srcmd5>
+    <version>0.83.0</version>
+    <time>1389811221</time>
+    <user>coolo</user>
+    <comment>- Use an unconditional rcnetwork symlink to /sbin/service
+
+- version 0.83.0
+- Recommend wicked-service instead of sysconfig-network as the
+  default network service and drop sysconfig-network. The wicked
+  service package provides systemd service files requesting the
+  network.service alias at service enable time as well as the
+  ifup compatibility scripts using wicked as network backend
+  (fate#316768,bnc#856591).
+- ifcfg-bonding.5: fixed to use startmode hotplug in slave example
+- Use ZEROCONF_ROUTE=no as new default (fate#314482)
+  The NOZEROCONF=&quot;yes&quot; variable were double-negated in it's meaning
+  and did not reflect what the variable really does (fate#314482).
+
+- rcnetwork: use service type oneshot, not forking
+  Sometimes, network fails to start / stops itself, because the per
+  interface services started inside it, need already started network
+  and fail as network did not yet reached started state. This does
+  not happen with oneshot network service type (bnc#853908).</comment>
+    <requestid>213765</requestid>
+  </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>6e27962468987ab430dd81d031acd6ef</srcmd5>
+    <version>0.83.1</version>
+    <time>1390247067</time>
+    <user>coolo</user>
+    <comment>- version 0.83.1
+- Install /sbin/service link as /sbin/rcnetwork for compatibility
+  with older sysconfig as it is quite often used absolutely.</comment>
+    <requestid>214289</requestid>
+  </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>198aa65c81c1e097b30a749d1b39bfe4</srcmd5>
+    <version>0.83.2</version>
+    <time>1390818258</time>
+    <user>scarabeus_factory</user>
+    <comment>- version 0.83.2
+- A systemctl status is quite expensive as it (by default) parses
+  logs, etc. Use is-active where we need the code only (bnc#859360).</comment>
+    <requestid>214800</requestid>
+  </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>988089c0378513228b764ceff4b6ccb9</srcmd5>
+    <version>0.83.3</version>
+    <time>1393136380</time>
+    <user>coolo</user>
+    <comment>- version 0.83.3
+- Cleaned up comments and obsolete variables in network/dhcp
+  and network/config config files (fate#312939,fate#314482).
+- netconfig: just systemctl not init scripts (bnc#864696) as
+  all for this version supported systems are using systemd
+  which forwards to init scripts as needed.
+
+- Remove the blacklist entry for the uas driver (bnc#862397)</comment>
+    <requestid>223335</requestid>
+  </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>17526e17abff85849f3118f39334d81a</srcmd5>
+    <version>0.83.4</version>
+    <time>1395146301</time>
+    <user>coolo</user>
+    <comment>- version 0.83.4
+- config: check ipv4 duplicates by default (fate#314399)</comment>
+    <requestid>225747</requestid>
+  </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>5c2a4fb348c8bfdf7421ac99f88ec29b</srcmd5>
+    <version>0.83.6</version>
+    <time>1401641686</time>
+    <user>coolo</user>
+    <comment>- version 0.83.6
+- netconfig: fixed manual page to not refer README (bnc#876755)
+
+- version 0.83.5
+- sysconfig/network/config: new default to send gratuitous arp
+  Enabled to send gratuitous arp by default, when duplicate IPv4
+  check is enabled and were successful (bnc#879911,fate#314399).
+- netconfig: improved troubleshooting capabilities
+  Added NETCONFIG_VERBOSE and NETCONFIG_FORCE_REPLACE config
+  variables allowing to run all netconfig calls in debug mode
+  and force update of modified files as default. Show service,
+  policy resolving info and log the commandline in debug mode.
+  Fixed to log info/warnings that were printed to stderr only
+  before (bnc#860644, bnc#868323).</comment>
+    <requestid>235660</requestid>
+  </revision>
+  <revision rev="162" vrev="3">
+    <srcmd5>5c2a4fb348c8bfdf7421ac99f88ec29b</srcmd5>
+    <version>0.83.6</version>
+    <time>1409303438</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>adf30937cb8959f7a5dfc1538bd41394</srcmd5>
+    <version>0.83.7</version>
+    <time>1411630424</time>
+    <user>coolo</user>
+    <comment>- rpm: fixed SUSE spelling in the spec file (bnc#889002)
+
+- version 0.83.7
+- netconfig: create missed /var/run/ntp directory (bnc#892877)
+  When the directory does not exists yet, the ntp service is not
+  yet started/running and it is even more important to write the
+  servers so ntpd can pickup them at start.
+- config: changed NM_ONLINE_TIMEOUT to 30 (bnc#889175)
+- config: updated to list new variables in network/dhcp,
+  cleanup of ifcfg.template and network/config variables</comment>
+    <requestid>251770</requestid>
+  </revision>
+  <revision rev="164" vrev="2">
+    <srcmd5>c6d4fb4075361de19392fd2005ea8bf8</srcmd5>
+    <version>0.83.7</version>
+    <time>1415347552</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>259661</requestid>
+  </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>ede52d939ddcf982402e7d86f2585c21</srcmd5>
+    <version>0.83.8</version>
+    <time>1421873751</time>
+    <user>coolo</user>
+    <comment>- version 0.83.8
+- netconfig: use domain name from hostname (bug#912891)
+  When there is no dns domain or search list provided (by dhcp),
+  but a hostname as FQDN, use it's domain for /etc/resolv.conf
+  search list.
+- netconfig: merge NetworkManager settings on -m (bug#900982)</comment>
+    <requestid>281059</requestid>
+  </revision>
+  <revision rev="166" vrev="2">
+    <srcmd5>ecca41ba5ed25f92efb59a7c6e4ae006</srcmd5>
+    <version>0.83.8</version>
+    <time>1424430054</time>
+    <user>dimstar_suse</user>
+    <comment>- dhcp: add variables for handling of DHCPv4 user-class (bsc#909307)
+  [+ 0001-dhcp-network-variables-for-dhcp4-user-class.909307.patch]
+
+- netconfig: use domain name from hostname (bnc#912891)
+- netconfig: merge NetworkManager settings on -m (bnc#900982)</comment>
+    <requestid>286485</requestid>
+  </revision>
+  <revision rev="167" vrev="3">
+    <srcmd5>5835ff1f914d2eece6aa84bcc830b929</srcmd5>
+    <version>0.83.8</version>
+    <time>1431673409</time>
+    <user>coolo</user>
+    <comment>- sysconfig-netconfig requires /bin/logger, otherwise the following 
+  happens:
+  linux.site wickedd[31]: 
+  /etc/sysconfig/network/scripts/functions.netconfig: 
+  line 44: logger: command not found (forwarded request 306603 from elvigia)</comment>
+    <requestid>306712</requestid>
+  </revision>
+  <revision rev="168" vrev="4">
+    <srcmd5>14264ea514f69bf66fb779c6db9c5af8</srcmd5>
+    <version>0.83.8</version>
+    <time>1434006572</time>
+    <user>dimstar_suse</user>
+    <comment>- netconfig: use ntpd.service on &gt;13.1 (boo#930309)
+  [+ 0002-netconfig-use-ntpd.service-on-13.2-boo-930309.patch]
+
+- sysconfig-netconfig requires /bin/logger, otherwise the following
+  linux.site wickedd[31]:
+  /etc/sysconfig/network/scripts/functions.netconfig:</comment>
+    <requestid>311249</requestid>
+  </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>b30da736f83f44307dcb27738ae19658</srcmd5>
+    <version>0.83.9</version>
+    <time>1464017459</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.83.9
+- ppp: install refactored ip-up and related scripts (bsc#865573)
+- removed patches shipped inside of the source archive
+  [- 0001-dhcp-network-variables-for-dhcp4-user-class.909307.patch]
+  [- 0002-netconfig-use-ntpd.service-on-13.2-boo-930309.patch]</comment>
+    <requestid>397048</requestid>
+  </revision>
+  <revision rev="170" vrev="2">
+    <srcmd5>aabfbb310d8d8b5cc45eac15042e267f</srcmd5>
+    <version>0.83.9</version>
+    <time>1465129172</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a blacklist entry for the ACPI power meter driver (bnc#974373) (forwarded request 399256 from mgorman)</comment>
+    <requestid>399374</requestid>
+  </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>345261c1016215bd58717b3ed3573688</srcmd5>
+    <version>0.84.0</version>
+    <time>1473679356</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.84.0
+- netconfig: intoduced a batch mode (bsc#989741)
+  It permits to preform multiple modify/remove operations
+  and call the effective update at the end of the batch.
+- netconfig: use ntpq, as ntpdc is deprecated (bsc#894889),
+  lower sleep lock wait granularity and fix NTP_KEYS parsing
+- Drop the omc svcinfo data as they are not used anymore
+- Run spec-cleaner to remove few obsolete things
+- Drop cvs helper files as we are in git
+- Rename configure.in to configure.ac</comment>
+    <requestid>426188</requestid>
+  </revision>
+  <revision rev="172" vrev="2">
+    <srcmd5>ac9790723a4aca76c61bf9c1bad57848</srcmd5>
+    <version>0.84.0</version>
+    <time>1476430018</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434415</requestid>
+  </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>f14f01e2de27a29fa0f3672955abee2d</srcmd5>
+    <version>0.84.1</version>
+    <time>1493103298</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.84.1
+- netconfig: cleanup tmp files (boo#1010760)
+  When /var/run/ntp/servers-netconfig has been modified externaly,
+  don't try to backup or keep tmp files to show what we would do.
+- netconfig: improve input check for duplicate keys (bsc#1009801)</comment>
+    <requestid>487030</requestid>
+  </revision>
+  <revision rev="174" vrev="2">
+    <srcmd5>73b282d255894376fb476aa139eb8074</srcmd5>
+    <version>0.84.1</version>
+    <time>1498202001</time>
+    <user>dimstar_suse</user>
+    <comment>Goes together with the latest permission changes, which also sets root:root for /etc/ppp (forwarded request 502393 from dimstar)</comment>
+    <requestid>502510</requestid>
+  </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>1b4c57304837f97a105aa6adc87a61e6</srcmd5>
+    <version>0.84.2</version>
+    <time>1512547004</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.84.2
+- spec: revert change to use _fillupdir in update hook from &lt; 0.80
+- merged fixes of the the fillup templates logic and macro in
+  configure.ac by Marcus Meissner
+- Replace references to /var/adm/fillup-templates with new
+  %_fillupdir macro (boo#1069468)</comment>
+    <requestid>546049</requestid>
+  </revision>
+  <revision rev="176" vrev="2">
+    <srcmd5>67bcf55205cf2fb28add6d5a7b70c543</srcmd5>
+    <version>0.84.2</version>
+    <time>1521904317</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589228</requestid>
+  </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>2bef947b60cce7e5ac11ddce64ef7b2c</srcmd5>
+    <version>0.84.3</version>
+    <time>1527084398</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.84.3
+- netconfig: change policy to permit non-NM settings (bsc#1079793)
+  As requested and approved by NetworkManager maintainer, the 'auto'
+  policy permits now also per interface settings provided by other
+  services when NetworkManager is enabled. That is, the auto policy
+  resolving has been changed from &quot;STATIC_FALLBACK NetworkManager&quot;
+  to &quot;STATIC_FALLBACK * NetworkManager&quot;.
+
+- Use %license instead of %doc [bsc#1082318]</comment>
+    <requestid>610032</requestid>
+  </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>7fe3b36f04baa067379949e1ad6a15f2</srcmd5>
+    <version>0.85.0</version>
+    <time>1546695590</time>
+    <user>dimstar_suse</user>
+    <comment>
+Requires to adjust /etc/apparmor.d/abstractions/nameservice, see
+also obs request: #660553
+
+- version 0.85.0
+- netconfig: change to write resolv.conf,yp.conf,forwarders.conf
+  to files in /[var/]run/netconfig/ and link in /etc (fate#325872)
+- netconfig: add to update ntp servers in chrony (bsc#1099272) and
+  cleaned up to use start-ntpd addserver to update ntpd servers.</comment>
+    <requestid>660554</requestid>
+  </revision>
+  <revision rev="179" vrev="2">
+    <srcmd5>59a955f98c32653f8a1d16f756a91b2e</srcmd5>
+    <version>0.84.3</version>
+    <time>1546947586</time>
+    <user>dimstar_suse</user>
+    <comment>Revert, lower pressure on boo#1121046</comment>
+  </revision>
+  <revision rev="180" vrev="2">
+    <srcmd5>7fe3b36f04baa067379949e1ad6a15f2</srcmd5>
+    <version>0.85.0</version>
+    <time>1548769522</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.85.0
+- netconfig: change to write resolv.conf,yp.conf,forwarders.conf
+  to files in /[var/]run/netconfig/ and link in /etc (fate#325872)
+- netconfig: add to update ntp servers in chrony (bsc#1099272) and
+  cleaned up to use start-ntpd addserver to update ntpd servers.</comment>
+    <requestid>667751</requestid>
+  </revision>
+  <revision rev="181" vrev="3">
+    <srcmd5>26cfef06633f5918bdb05484d51282f8</srcmd5>
+    <version>0.84.3</version>
+    <time>1549360740</time>
+    <user>coolo</user>
+    <comment>revert again, to wait for boo#1124152</comment>
+  </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>8e4e87630a70fd1d7a4776b9be386a83</srcmd5>
+    <version>0.85.1</version>
+    <time>1549458327</time>
+    <user>coolo</user>
+    <comment>- version 0.85.1
+- removed modprobe.d/50-blacklist.conf, which will be provided by
+  the suse-module-tools package instead (boo#1107611). See also:
+  gh#openSUSE/suse-module-tools/pull/3
+  gh#openSUSE/sysconfig/pull/22
+
+- version 0.85.0
+- netconfig: change to write resolv.conf,yp.conf,forwarders.conf
+  to files in /[var/]run/netconfig/ and link in /etc (fate#325872)
+- netconfig: add to update ntp servers in chrony (bsc#1099272) and
+  cleaned up to use start-ntpd addserver to update ntpd servers.</comment>
+    <requestid>671819</requestid>
+  </revision>
+  <revision rev="183" vrev="2">
+    <srcmd5>9f9425b963366f1a3f01b52dbaa8c042</srcmd5>
+    <version>0.85.1</version>
+    <time>1549692969</time>
+    <user>coolo</user>
+    <comment>- HOTPATCH (to be reverted): revert-var-adm-lib-netconfig-move.patch</comment>
+  </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>6b38a3d240f4223621d47d5991d61a4a</srcmd5>
+    <version>0.85.2</version>
+    <time>1551113151</time>
+    <user>coolo</user>
+    <comment>- version 0.85.2
+- Fixed changes file to mention relevant github pull requests.
+- Removed remaining preun rpm hook from EOL openSUSE versions
+- Merged /var/adm/netconfig move revert from openSUSE:Factory
+  causing to not find md5 sums from previous netconfig version
+  due to incorrectly merged hook in spec file and trouble on
+  transactional systems without writeable /var/lib/netconfig.
+  Removed obsoletes revert-var-adm-lib-netconfig-move.patch.
+  (bsc#1124152,bsc#1124340).
+- Merged rpm spec bash section marks (gh#openSUSE/sysconfig#23)
+
+- Remove code to update from openSUSE older than 12.3, which is EOL
+  (gh#openSUSE/sysconfig#19).
+- Move /var/adm/netconfig to /var/lib/netconfig to become more FHS
+  conform (gh#openSUSE/sysconfig#18).</comment>
+    <requestid>675195</requestid>
+  </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>d3c3e3009d3b5fa0e0fac783bc60eaea</srcmd5>
+    <version>0.85.3</version>
+    <time>1565864653</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.85.3
+- boo#1123699: Use systemd's tmpfile mechanism to create the
+  symlink infrastructure for resolv.conf and yp.conf early during
+  boot.</comment>
+    <requestid>720983</requestid>
+  </revision>
+</revisionlist>

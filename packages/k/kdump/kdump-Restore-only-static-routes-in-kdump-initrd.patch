@@ -1,0 +1,130 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Thu, 24 May 2018 06:54:28 +0200
+Subject: Restore only static routes in kdump initrd
+References: bsc#1093795
+Upstream: merged
+Git-commit: c4484c33a5b228d4a1ebe7c99f14c3b7f38f34ef
+
+All existing routes are now added through the rd.route= dracut
+parameter. However, this includes routes that need not or should not
+be added explicitly (e.g. installed automatically by the kernel or
+dynamically by a routing daemon).
+
+If possible, use wicked to get configured routes. If not, use the
+routing protocol identifier to limit the list.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+---
+ init/setup-kdump.functions |   86 ++++++++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 77 insertions(+), 9 deletions(-)
+
+--- a/init/setup-kdump.functions
++++ b/init/setup-kdump.functions
+@@ -518,6 +518,42 @@ kdump_prefix2netmask() {						   # {{{
+ }									   # }}}
+ 
+ #
++# Get the IPv4 rd.route= parameters for a given device
++#
++# Parameters:
++#   1) iface   current interface name
++#   2) bootif  interface name in initrd
++# Output:
++#   string that can be used for the rd.route= initrd parameter
++function kdump_ip_routes()						   # {{{
++{
++    local _iface="$1"
++    local _bootif="$2"
++
++    # remove default routes
++    local _rmdefault='/^default /d'
++    # transform the output of "ip route" into rd.route=
++    local _xform='s/\([^ ]*\)\( via \([^ ]*\)\)\?.*/rd.route=\1:\3/'
++    # add interface name and print
++    local _addintf="s/\$/:${_bootif}/p"
++
++    # get configured routes using wicked if possible
++    if [ -n "$(type -P wicked)" ]
++    then
++	wicked show-config | \
++	    wicked xpath --reference \
++		   "/interface[name='$_iface']/ipv4:static/route" \
++		   "rd.route=%{destination}:%{?nexthop/gateway}:$_bootif" \
++		   2>/dev/null
++    else
++        ip route show dev "$_iface" proto boot | \
++	    sed -ne "$_rmdefault;$_xform;$_addintf"
++        ip route show dev "$_iface" proto static | \
++	    sed -ne "$_rmdefault;$_xform;$_addintf"
++    fi
++}									   # }}}
++
++#
+ # Get the IPv4 ip= parameter for a given device
+ #
+ # Parameters:
+@@ -556,12 +592,47 @@ function kdump_ip_config()						   # {{{
+ 
+     if [ -n "$ipaddr" ] ; then
+         echo "ip=$ipaddr:$peeraddr:$gwaddr:$netmask:$hostname:$bootif:none"
++	kdump_ip_routes "$iface" "$bootif"
++    fi
++}									   # }}}
++
++#
++# Get the IPv6 rd.route= parameters for a given device
++#
++# Parameters:
++#   1) iface   current interface name
++#   2) bootif  interface name in initrd
++# Output:
++#   string that can be used for the rd.route= initrd parameter
++function kdump_ip6_routes()						   # {{{
++{
++    local _iface="$1"
++    local _bootif="$2"
+ 
+-        routes=$(ip route show dev "$iface" | sed -n 's/\([0-9].*\) via \([^ ]*\).*/\1:\2/p')
+-        for r in $routes ; do
+-            echo "rd.route=$r:$bootif"
+-        done
+-    fi 
++    # remove default routes
++    local _rmdefault='/^default /d'
++    # transform the output of "ip route" into rd.route=
++    local _xform='s/\([^ ]*\)\( via \([^ ]*\)\)\?.*/rd.route=[\1]:[\3]/'
++    # remove gateway if empty
++    local _rmgw='s/\[\]$//'
++    # add interface name and print
++    local _addintf="s/\$/:${_bootif}/p"
++
++    # get configured routes using wicked if possible
++    if [ -n "$(type -P wicked)" ]
++    then
++	wicked show-config | \
++	    wicked xpath \
++		   --reference "/interface[name='$_iface']/ipv6:static/route" \
++		   "rd.route=[%{destination}]:[%{?nexthop/gateway}]" \
++		   2>/dev/null | \
++	    sed -ne "$_rmgw;$_addintf"
++    else
++        ip -6 route show dev "$_iface" proto boot | \
++	    sed -ne "$_rmdefault;$_xform;$_rmgw;$_addintf"
++        ip -6 route show dev "$_iface" proto static | \
++	    sed -ne "$_rmdefault;$_xform;$_rmgw;$_addintf"
++    fi
+ }									   # }}}
+ 
+ #
+@@ -604,10 +675,7 @@ function kdump_ip6_config()						   # {{
+ 	echo "ip=$ipaddr:$peeraddr:$gwaddr:$netmask:$hostname:$bootif:none"
+     done < <(ip -6 address show dev "$iface" permanent scope global)
+ 
+-    routes=$(ip -6 route show dev "$iface" | sed -n 's/\([0-9a-fA-F:].*\) via \([^ ]*\).*/[\1]:[\2]/p')
+-    for r in $routes ; do
+-        echo "rd.route=$r:$bootif"
+-    done
++    kdump_ip6_routes "$iface" "$bootif"
+ }									   # }}}
+ 
+ #

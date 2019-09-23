@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>490d6ad905379ef39f0c075f2e3ca13e</srcmd5>
+    <version>1.0.3</version>
+    <time>1375730488</time>
+    <user>coolo</user>
+    <comment>dependency for libguestfs (fate#312159)</comment>
+    <requestid>185610</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>490d6ad905379ef39f0c075f2e3ca13e</srcmd5>
+    <version>1.0.3</version>
+    <time>1379665191</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>490d6ad905379ef39f0c075f2e3ca13e</srcmd5>
+    <version>1.0.3</version>
+    <time>1409303875</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>4e0da8fe63adb9ce0d46f0b698d22dc6</srcmd5>
+    <version>1.0.3</version>
+    <time>1443068039</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>331829</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>861c82833152dc80ccfeb08ccf0026b6</srcmd5>
+    <version>1.0.4</version>
+    <time>1468482391</time>
+    <user>dimstar_suse</user>
+    <comment>- adjust urls to new location
+
+- Update to zerofree-1.0.4
+  Minor change: use memcmp instead of loop</comment>
+    <requestid>407232</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4e3dc4917c2c4bd51d10c4b2498b185f</srcmd5>
+    <version>1.1.1</version>
+    <time>1530993707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621277</requestid>
+  </revision>
+</revisionlist>

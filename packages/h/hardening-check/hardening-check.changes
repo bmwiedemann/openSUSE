@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Wed Oct 11 16:09:28 UTC 2017 - jengelh@inai.de
+
+- Repair grammar and neutrality in the description.
+
+-------------------------------------------------------------------
+Wed Oct 11 08:42:18 UTC 2017 - matthias.gerstner@suse.com
+
+- perl_regex.patch: fixes the build after a seemingly newer perl version
+  complains about a bad perl regular expression contained in the makefile.
+
+- hardening-check-rpmlintrc: suppress no-binary warning, the spec file
+  explains why this package can be considered arch specific
+
+-------------------------------------------------------------------
+Thu Aug  3 13:36:07 UTC 2017 - matthias.gerstner@suse.com
+
+- initial version of package

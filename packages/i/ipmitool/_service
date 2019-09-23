@@ -1,0 +1,19 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://github.com/ipmitool/ipmitool.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">ipmitool</param>
+    <param name="versionformat">1.8.18</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+  <service mode="disabled" name="download_url">
+   <param name="protocol">http</param>
+   <param name="host">www.iana.org</param>
+   <param name="path">assignments/enterprise-numbers/enterprise-numbers</param>
+ </service>
+</services>

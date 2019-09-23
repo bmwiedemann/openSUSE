@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Sat Oct 20 11:31:21 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:19 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update cookie to version 0.4.4.
+  * Dropped dependency on blaze-builder
+  * Made cookie text rendering slightly more efficient
+  * Added `defaultSetCookie` [#16](https://github.com/snoyberg/cookie/pull/16)
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Sun Jul 10 15:39:57 UTC 2016 - mimi.vx@gmail.com
+
+- update to version 0.4.2.1 revision 0
+* Clarified MIT license
+
+-------------------------------------------------------------------
+Tue Apr 26 08:12:25 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.4.2
+* Added SameSite
+
+-------------------------------------------------------------------
+Sun Jun 28 16:33:58 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.4.1.6
+
+-------------------------------------------------------------------
+Thu May 21 06:39:02 UTC 2015 - mimi.vx@gmail.com
+
+- correct licence to BSD-2-Clause
+
+-------------------------------------------------------------------
+Mon May  4 05:50:17 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.4.1.5
+* no upstream changelog
+
+-------------------------------------------------------------------
+Wed Apr 22 06:41:20 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.4.1.4
+* no upstream changelog
+
+-------------------------------------------------------------------
+Mon Oct  7 08:24:17 UTC 2013 - sbahling@suse.com
+
+- Initial package - version 0.4.0.1

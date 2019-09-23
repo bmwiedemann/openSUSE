@@ -1,0 +1,6 @@
+When you use this package please be aware of the privacy risk.
+https://gitlab.freedesktop.org/libfprint/fprintd/issues/16
+
+This package stores the fingerprint of the users in a format that allows
+attackers to steal the fingerprint data and potentially rebuild the 
+fingerprint from the stored data.

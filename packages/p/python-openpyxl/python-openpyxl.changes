@@ -1,0 +1,739 @@
+-------------------------------------------------------------------
+Mon Jun 17 11:00:03 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.6.2:
+  * #1173 Workbook has no _date_formats attribute
+  * #1190 Cannot create charts for worksheets with quotes in the title
+  * #1228 MergedCells not removed when range is unmerged
+  * #1232 Link to pivot table lost from charts
+  * #1233 Chart colours change after saving
+  * #1236 Cannot use ws.cell in read-only mode with Python 2.7
+
+-------------------------------------------------------------------
+Mon Mar 11 12:34:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.6.1:
+  * #1174 ReadOnlyCell.is_date does not work properly
+  * #1175 Cannot read Google Docs spreadsheet with a Pivot Table
+  * #1180 Charts created with openpyxl cannot be styled
+  * #1181 Cannot handle some numpy number types
+  * #1182 Exception when reading unknowable number formats
+  * #1186 Only last formatting rule for a range loaded
+  * #1191 Give MergedCell a value attribute
+  * #1193 Cannot process worksheets with comments
+  * #1197 Cannot process worksheets with both row and page breaks
+  * #1204 Cannot reset dimensions in ReadOnlyWorksheets
+  * #1211 Incorrect descriptor in ParagraphProperties
+  * #1213 Missing hier attribute in PageField raises an exception
+
+-------------------------------------------------------------------
+Sat Feb 16 11:40:02 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 2.6.0 (2019-02-06)
+  + Bugfixes
+    * #1162 Exception on tables with names containing spaces.
+    * #1170 Cannot save files with existing images.
+
+- Update to 2.6.-b1 (2019-01-08)
+  + Bugfixes
+    * #1141 Cannot use read-only mode with stream
+    * #1143 Hyperlinks always set on A1
+    * #1151 Internal row counter not initialised when reading files
+    * #1152 Exception raised on out of bounds date
+
+- Update to 2.6-a1 (2018-11-21)
+  + Major changes
+    * Implement robust for merged cells so that these can be
+      formatted the way Excel does without confusion. Thanks to
+      Magnus Schieder.
+  + Minor changes
+    * Add support for worksheet scenarios
+    * Add read support for chartsheets
+    * Add method for moving ranges of cells on a worksheet
+    * Last version to support Python 2.7
+  + Deprecations
+    * Type inference and coercion for cell values
+
+- Update to 2.5.15 (unreleased)
+
+- Update to 2.5.14 (2019-01-23)
+  + Bugfixes
+    * #1150 Correct typo in LineProperties
+    * #1142 Exception raised for unsupported image files
+    * #1159 Exception raised when cannot find source for non-local
+      cache object
+  + Pull Requests
+    * PR301 Add support for nested brackets to the tokeniser
+    * PR303 Improvements on handling nested brackets in the
+      tokeniser
+
+- Update to 2.5.13 (brown bag)
+
+-------------------------------------------------------------------
+Sat Dec 22 02:55:05 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to 2.5.12
+  + Bugfixes
+    * Overwriting default font in Normal style affects library default
+    * Images not added to anchors.
+    * Cannot read pivot table formats without dxId
+    * Repeated registration of simple filter could lead to memory leaks
+  + Pull Requests
+    * Use defusedxml if available
+- Update to 2.5.11
+  + Pull Requests
+    * Improved handling of missing rows
+    * Add support for defined names to tokeniser
+- Update to 2.5.10
+  + Bugfixes
+    * Empty column dimensions should not be saved.
+  + Pull Requests
+    * Tokenizer failure for quoted sheet name in second half of range
+    * Improved error detection in ranges.
+- Update to 2.5.9
+  + Bugfixes
+    * Clean AutoFilter name definitions
+    * Attribute missing from Shape object
+    * Failure to read all DrawingML means workbook can't be read
+  + Pull Requests
+    * Allow newlines in formulae
+    * Fix whitespace in front of infix operator in formulae
+- Update to 2.5.8
+  * Cannot control how missing values are displayed in charts.
+  * Cell references can't be used for chart titles
+  * Params in iter_cols and iter_rows methods are slightly wrong.
+- Update to 2.5.7
+  * Sheet title containing % need quoting in references
+  * Cannot set quote prefix
+  * Pandas timestamps raise KeyError
+- Update to 2.5.6
+  * Read-only mode can leave find-handles open when reading dimensions
+  * Set a worksheet directly as active
+  * Internal row counter not adjusted when rows are deleted or inserted
+- Update to 2.5.5
+  + Bugfixes
+    * Files with Mac epoch are read incorrectly
+    * Cannot copy merged cells
+    * Cannot access ws.active_cell2.5.12
+
+-------------------------------------------------------------------
+Wed Jun 13 17:36:54 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 2.5.3
+  + Bugfixes
+    * #983 Warning level too aggressive.
+    * #1015 Alignment and protection values not saved for named styles.
+    * #1017 Deleting elements from a legend doesn’t work.
+    * #1018 Index names repeated for every row in dataframe.
+    * #1020 Worksheet protection not being stored.
+    * #1023 Exception raised when reading a tooltip.
+- Update to 2.5.2
+  + Bugfixes
+    * #949 High memory use when reading text-heavy files.
+    * #970 Copying merged cells copies references.
+    * #978 Cannot set comment size.
+    * #985 Exception when trying to save workbooks with no views.
+    * #995 Cannot delete last row or column.
+    * #1002 Cannot read Drawings containing embedded images.
+  + Minor changes
+    * Support for dataframes with multiple columns and multiple indices.
+- Update to 2.5.1
+  + Bugfixes
+    * #934 Headers and footers not included in write-only mode.
+    * #960 Deprecation warning raised when using ad-hoc access in read-only mode.
+    * #964 Not all cells removed when deleting multiple rows.
+    * #966 Cannot read 3d bar chart correctly.
+    * #967 Problems reading some charts.
+    * #968 Worksheets with SHA protection become corrupted after saving.
+    * #974 Problem when deleting ragged rows or columns.
+    * #976 GroupTransforms and GroupShapeProperties have incorrect descriptors
+    * Make sure that headers and footers in chartsheets are included in the file
+- Update to 2.5.0
+  + Minor changes
+    * Correct definition for Connection Shapes. Related to # 958
+    * pip now handles which Python versions can be used.
+    * Added CellRange and MultiCellRange types (thanks to Laurent LaPorte for the suggestion) as a utility type for things like data validations, conditional formatting and merged cells.
+  + Bugfixes
+    * #915 TableStyleInfo has no required attributes
+    * #925 Cannot read files with 3D drawings
+    * #926 Incorrect version check in installer
+    * Cell merging uses transposed parameters
+    * #928 ExtLst missing keyword for PivotFields
+    * #932 Inf causes problems for Excel
+    * #952 Cannot load table styles with custom names
+    * #812 Explicitly support for multiple cell ranges in conditonal formatting
+    * #827 Non-contiguous cell ranges in validators get merged
+    * #837 Empty data validators create invalid Excel files
+    * #860 Large validation ranges use lots of memory
+    * #876 Unicode in chart axes not handled correctly in Python 2
+    * #882 ScatterCharts have defective axes
+    * #885 Charts with empty numVal elements cannot be read
+    * #894 Scaling options from existing files ignored
+    * #895 Charts with PivotSource cannot be read
+    * #903 Cannot read gradient fills
+    * #904 Quotes in number formats could be treated as datetimes
+    * #848 Reading workbooks with Pie Charts raises an exception
+    * #857 Pivot Tables without Worksheet Sources raise an exception
+    * #833 Cannot access chartsheets by title
+    * #834 Preserve workbook views
+    * #841 Incorrect classification of a datetime
+    * #779 Fails to recognise Chinese date format`
+    * #828 Include hidden cells in charts`
+  + Major Changes
+    * You can now insert and delete rows and columns in worksheets
+    * worksheet.cell() no longer accepts a coordinate parameter. The syntax is now ws.cell(row, column, value=None)
+    * Read support for charts
+    * Read/write support for pivot tables
+  + Deprecations
+    * ws.merged_cell_ranges has been deprecated because MultiCellRange provides sufficient functionality
+    * Dropped the anchor method from images and additional constructor arguments
+  + Compatibility
+    * Dropped support for Python 2.6 and 3.3. openpyxl will not run with Python 2.6
+  + Pull requests
+    * 163 Improved GradientFill
+- Update to 2.4.11
+  + Bugfixes
+    * #957 https://bitbucket.org/openpyxl/openpyxl/issues/957 Relationship type for tables is borked
+- Update to 2.4.10
+  + Bugfixes
+    * #912 https://bitbucket.org/openpyxl/openpyxl/issues/912 Copying objects uses shallow copy
+    * #921 https://bitbucket.org/openpyxl/openpyxl/issues/921 API documentation not generated automatically
+    * #927 https://bitbucket.org/openpyxl/openpyxl/issues/927 Exception raised when adding coloured borders together
+    * #931 https://bitbucket.org/openpyxl/openpyxl/issues/931 Number formats not correctly deduplicated
+  + Pull requests
+    * 203 https://bitbucket.org/openpyxl/openpyxl/pull-requests/203/ Correction to worksheet protection description
+    * 210 https://bitbucket.org/openpyxl/openpyxl/pull-requests/210/ Some improvements to the API docs
+    * 211 https://bitbucket.org/openpyxl/openpyxl/pull-requests/211/ Improved deprecation decorator
+    * 218 https://bitbucket.org/openpyxl/openpyxl/pull-requests/218/ Fix problems with deepcopy
+
+-------------------------------------------------------------------
+Wed Jan 10 10:13:52 UTC 2018 - kbabioch@suse.com
+
+- update to 2.4.9:
+  + Bugfixes
+    * #809 Incomplete documentation of copy_worksheet method
+    * #811 Scoped definedNames not removed when worksheet is deleted
+    * #824 Raise an exception if a chart is used in multiple sheets
+    * #842 Non-ASCII table column headings cause an exception in Python 2
+    * #846 Conditional formats not supported in write-only mode
+    * #849 Conditional formats with no sqref cause an exception
+    * #859 Headers that start with a number conflict with font size
+    * #902 TableStyleElements don’t always have a condtional format
+    * #908 Read-only mode sometimes returns too many cells
+  + Pull requests
+    * #179 Cells kept in a set
+    * #180 Support for Workbook protection
+    * #182 Read support for page breaks
+    * #183 Improve documentation of copy_worksheet method
+    * #198 Fix for #908
+- updated summary
+
+-------------------------------------------------------------------
+Thu Aug 24 06:01:22 UTC 2017 - tbechtold@suse.com
+
+- update to 2.4.8:
+  * AutoFilter.sortState being assignd to the ws.sortState
+  * #766 Sheetnames with apostrophes need additional escaping
+  * #729 Cannot open files created by Microsoft Dynamics
+  * #819 Negative percents not case correctly
+  * #821 Runtime imports can cause deadlock
+  * #855 Print area containing only columns leads to corrupt file
+- Fix Requires and BuildRequires
+
+-------------------------------------------------------------------
+Tue Apr 25 21:49:58 UTC 2017 - toddrme2178@gmail.com
+
+- Fix URL.
+
+-------------------------------------------------------------------
+Tue Apr 25 18:50:02 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 2.4.7
+    * Sample files being included by mistake in sdist`
+- Update to version 2.4.6
+  + Bugfixes
+    * Cannot apply formatting to plot area`
+    * Exception when element attributes are Python keywords`
+    * Exception raised when saving files with styled columns`
+    * Number formats for data labels are incorrect`
+    * Worksheet titles not quoted in defined names`
+    * Font underlines not read correctly`
+- Update to version 2.4.5
+  + Bugfixes
+    * Adding images keeps file handles open
+    * Exception for column-only ranges
+    * Cannot copy worksheets with non-ascii titles on Python 2
+  + Pull requests
+    * Support for non-standard names for Workbook part.
+    * Documentation correction
+- Update to version 2.4.4
+  + Bugfixes
+    * Add close method to workbooks
+    * openpyxl can create files with invalid style indices
+    * Allow images in write-only mode
+    * Rounded corners for charts
+    * Use repr when handling non-convertible objects
+    * Hashing function is incorrect
+    * Named styles share underlying array
+  + Minor Changes
+    * Add roundtrip support for worksheet tables.
+  + Pull requests
+    * Don't init mimetypes more than once.
+- Update to version 2.4.2
+  + Bug fixes
+    * DeprecationWarning is incorrect
+    * Exception raised if userName is missing
+    * Always provide a date1904 attribute
+    * Hashes should be stored as Base64
+    * Print titles broken on sheetnames with spaces
+    * Workbook breaks when active sheet is removed
+    * Incorrect descriptor for Filter values
+    * Potential XXE vulerability (CVE-2017-5992 boo#1025592)
+    * Cannot create files with page breaks and charts
+    * Problems with worksheets with commas in their titles
+  + Minor Changes
+    * Add unicode support for sheet name incrementation.
+- Update to version 2.4.1
+  + Bug fixes
+    * Make checking for duplicate sheet titles case insensitive
+    * Trouble handling LibreOffice files with named styles
+    * Directly assigned new named styles always refer to "Normal"
+    * Cannot parse print titles with multiple sheet names
+    * Cannot work with macro files created by LibreOffice
+    * Prevent duplicate differential styles
+    * Allow sheet titles longer than 31 characters
+    * Cannot unset hyperlinks
+    * Exception raised when format objects use cell references
+    * Copy height and width when copying comments
+    * Incorrect content type for VBA macros
+    * IndexError raised in read-only mode when accessing individual cells
+    * Files with external links become corrupted
+    * Cannot read files containing macro sheets
+    * Details from named styles not preserved when reading files
+    * Remove broken Print Title and Print Area definitions
+  + Minor changes
+    * Add support for Python 3.6
+    * Correct documentation for headers and footers
+  + Deprecations
+    * Worksheet methods `get_named_range()` and `get_sqaured_range()`
+  + Bug fixes
+- Update to version 2.4.0
+  + Bug fixes
+    * Exception raised when epoch is 1904
+    * Cannot handle unicode in headers and footers in Python 2
+    * Cannot handle unicode sheetnames in Python 2
+    * Chart styles, and axis units should not be 0
+    * Strings in external workbooks not unicode
+  + Major changes
+    * Add support for builtin styles and include one for Pandas
+  + Minor changes
+    * Add a `keep_links` option to `load_workbook`. External links contain cached
+      copies of the external workbooks. If these are big it can be advantageous to
+      be able to disable them.
+    * Provide an example for using cell ranges in DataValidation.
+    * PR 138 - add copy support to comments.
+- Update to 2.4.0-b1
+  + Minor changes
+    * Add an the alias `hide_drop_down` to DataValidation for `showDropDown` because that is how Excel works.
+  + Bug fixes
+    * Exception raises when inspecting EmptyCells in read-only mode
+    * Functions for handling OOXML "escaped" ST_XStrings
+    * Row Dimensions not supported in write-only mode
+    * Problems when removing worksheets with charts
+    * Cannot use SheetProtection in write-only mode
+  + Features
+    * Add write support for worksheet tables
+- Update to 2.4.0-a1
+  + Minor changes
+    * Remove deprecated methods from DataValidation
+    * Remove deprecated methods from PrintPageSetup
+    * Convert AutoFilter to Serialisable and extend support for filters
+    * Add support for SortState
+    * Removed `use_iterators` keyword when loading workbooks. Use `read_only` instead.
+    * Removed `optimized_write` keyword for new workbooks. Use `write_only` instead.
+    * Improve print title support
+    * Add print area support
+    * New implementation of defined names
+    * New implementation of page headers and footers
+    * Add support for Python's NaN
+    * Added iter_cols method for worksheets
+    * ws.rows and ws.columns now always return generators and start at the top of the worksheet
+    * Add a `values` property for worksheets
+    * Default column width changed to 8 as per the specification
+  + Deprecations
+    * Cell anchor method
+    * Worksheet point_pos method
+    * Worksheet add_print_title method
+    * Worksheet HeaderFooter attribute, replaced by individual ones
+    * Flatten function for cells
+    * Workbook get_named_range, add_named_range, remove_named_range, get_sheet_names, get_sheet_by_name
+    * Comment text attribute
+    * Use of range strings deprecated for ws.iter_rows()
+    * Use of coordinates deprecated for ws.cell()
+    * Deprecate .copy() method for StyleProxy objects
+  + Bug fixes
+    * Hyperlinks lost when reading files
+    * Add function for copying worksheets
+    * Cells with inline strings considered empty
+    * Add support for ranges of rows and columns
+    * Workbook with definedNames corrupted by openpyxl
+    * "safe" reserved ranges are not read from workbooks
+    * Discarding named ranges can lead to corrupt files
+    * Exception raised when using the class method to parse Relationships
+    * Crashes when reading defined names with no content
+    * Cannot read worksheets without coordinates
+    * Customised named styles not correctly preserved
+- Update to version 2.3.5
+  + Bug fixes
+    * Comments not written in write-only mode
+- Update to version 2.3.4
+  + Bug fixes
+    * Content types might be missing when keeping VBA
+    * Cells with only one cell look empty
+    * Serialise NaN as ''
+  + Minor changes
+    * Preserve the order of external references because formualae use numerical indices.
+    * Typo corrected in cell unit tests (PR 118)
+- Fix source url
+- Implement single-spec version
+
+-------------------------------------------------------------------
+Mon Feb  1 11:35:21 UTC 2016 - toddrme2178@gmail.com
+
+- update to version 2.3.3:
+  * Bug fixes
+    + #540 Cannot read merged cells in read-only mode
+    + #565 Empty styled text blocks cannot be parsed
+    + #569 Issue warning rather than raise Exception raised for
+      unparsable definedNames
+    + #575 Cannot open workbooks with embdedded OLE files
+    + #584 Exception when saving borders with attribues
+  * Minor changes
+    + PR 103 Documentation about chart scaling and axis limits
+    + Raise an exception when trying to copy cells from other
+      workbooks.
+- changes from version 2.3.2:
+  * Bug fixes
+    + #554 Cannot add comments to a worksheet when preserving VBA
+    + #561 Exception when reading phonetic text
+    + #562 DARKBLUE is the same as RED
+    + #563 Minimum for row and column indexes not enforced
+  * Minor changes
+    + PR 97 One VML file per worksheet.
+    + PR 96 Correct descriptor for CharacterProperties.rtl
+    + #498 Metadata is not essential to use the package.
+- update to version 2.3.1:
+  * #534 Exception when using columns property in read-only mode.
+  * #536 Incorrectly handle comments from Google Docs files.
+  * #539 Flexible value types for conditional formatting.
+  * #542 Missing content types for images.
+  * #543 Make sure images fit containers on all OSes.
+  * #544 Gracefully handle missing cell styles.
+  * #546 ExternalLink duplicated when editing a file with macros.
+  * #548 Exception with non-ASCII worksheet titles
+  * #551 Combine multiple LineCharts
+  * PR 88 Fix page margins in parser.
+- update to version 2.3.0:
+  * Support the creation of chartsheets
+  * #532 Problems when cells have no style in read-only mode.
+  * PR 79 Make PlotArea editable in charts
+  * Use graphicalProperties as the alias for spPr
+  * #488 Support hashValue attribute for sheetProtection
+  * #493 Warn that unsupported extensions will be dropped
+  * #494 Cells with exponentials causes a ValueError
+  * #497 Scatter charts are broken
+  * #499 Inconsistent conversion of localised datetimes
+  * #500 Adding images leads to unreadable files
+  * #509 Improve handling of sheet names
+  * #515 Non-ascii titles have bad repr
+  * #516 Ignore unassigned worksheets
+  * Worksheets are now iterable by row.
+  * Assign individual cell styles only if they are explicitly set.
+  * Shift to using (row, column) indexing for cells. Cells will at some point lose coordinates.
+  * New implementation of conditional formatting. Databars now partially preserved.
+  * et_xmlfile is now a standalone library.
+  * Complete rewrite of chart package
+  * Include a tokenizer for fomulae to be able to adjust cell references in them. PR 63
+  * Read-only and write-only worksheets renamed.
+  * Write-only workbooks support charts and images.
+  * PR76 Prevent comment images from conflicting with VBA
+  * #81 Support stacked bar charts
+  * #88 Charts break hyperlinks
+  * #97 Pie and combination charts
+  * #99 Quote worksheet names in chart references
+  * #150 Support additional chart options
+  * #172 Support surface charts
+  * #381 Preserve named styles
+  * #470 Adding more than 10 worksheets with the same name leads to
+    duplicates sheet names and an invalid file
+- changes from version 2.2.6
+  * #502 Unexpected keyword "mergeCell"
+  * #503 tostring missing in dump_worksheet
+  * #506 Non-ASCII formulae cannot be parsed
+  * #508 Cannot save files with coloured tabs
+  * Regex for ignoring named ranges is wrong (character class instead
+    of prefix)
+- changes from version 2.2.5:
+  * #463 Unexpected keyword "mergeCell"
+  * #484 Unusual dimensions breaks read-only mode
+  * #485 Move return out of loop
+- update to version 2.2.4:
+  * #464 Cannot use images when preserving macros
+  * #465 ws.cell() returns an empty cell on read-only workbooks
+  * #467 Cannot edit a file with ActiveX components
+  * #471 Sheet properties elements must be in order
+  * #475 Do not redefine class __slots__ in subclasses
+  * #477 Write-only support for SheetProtection
+  * #478 Write-only support for DataValidation
+  * Improved regex when checking for datetime formats
+- update to version 2.2.3:
+  * Enable 64bit extensions for all versions of Python.
+  * Update docs.
+  * Do not preserve relation to printer part without preserving the
+    printer part.
+  * Don't force namespace on worksheet child as we set the default
+    namespace for all worksheets.
+  * Use print() instead of print statement
+  * Pass locale settings into envs (needed for somethings for tox 2 >=
+    2).
+  * Fix failing doctest.
+  * Correct the schema for saving strings.
+  * fixed typo in sample code
+
+-------------------------------------------------------------------
+Fri May  8 08:42:52 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 2.2.2:
+  * #447 Uppercase datetime number formats not recognised.
+  * #453 Borders broken in shared_styles.
+- additional changes from version 2.2.1:
+  * PR54 Improved precision on times near midnight.
+  * PR55 Preserve macro buttons
+  * #429 Workbook fails to load because header and footers cannot
+    be parsed.
+  * #433 File-like object with encoding=None
+  * #434 SyntaxError when writing page breaks.
+  * #436 Read-only mode duplicates empty rows.
+  * #437 Cell.offset raises an exception
+  * #438 Cells with pivotButton and quotePrefix styles cannot be
+    read
+  * #440 Error when customised versions of builtin formats
+  * #442 Exception raised when a fill element contains no children
+  * #444 Styles cannot be copied
+- additional changes from version 2.2.0:
+  * #415 Improved exception when passing in invalid in memory files.
+- additional changes from version 2.2.0-b1:
+  * Cell styles deprecated, use formatting objects (fonts, fills,
+    borders, etc.) directly instead
+  * Charts will no longer try and calculate axes by default
+  * Support for template file types - PR21
+  * Moved ancillary functions and classes into utils package -
+    single place of reference
+  * PR 34 Fully support page setup
+  * Removed SAX-based XML Generator. Special thanks to Elias Rabel
+    for implementing xmlfile for xml.etree
+  * Preserve sheet view definitions in existing files (frozen
+    panes, zoom, etc.)
+  * #103 Set the zoom of a sheet
+  * #199 Hide gridlines
+  * #215 Preserve sheet view setings
+  * #262 Set the zoom of a sheet
+  * #392 Worksheet header not read
+  * #387 Cannot read files without styles.xml
+  * #410 Exception when preserving whitespace in strings
+  * #417 Cannot create print titles
+  * #420 Rename confusing constants
+  * #422 Preserve color index in a workbook if it differs from the
+    standard
+  * Use a 2-way cache for column index lookups
+  * Clean up tests in cells
+  * PR 40 Support frozen panes and autofilter in write-only mode
+  * Use ws.calculate_dimension(force=True) in read-only mode for
+    unsized worksheets
+- additional changes from version 2.1.5:
+  * #403 Cannot add comments in write-only mode
+  * #401 Creating cells in an empty row raises an exception
+  * #408 from_excel adjustment for Julian dates 1 < x < 60
+  * #409 refersTo is an optional attribute
+  * Allow cells to be appended to standard worksheets for code
+    compatibility with write-only mode.
+- additional changes from version 2.1.4:
+  * #393 IterableWorksheet skips empty cells in rows
+  * #394 Date format is applied to all columns (while only first
+    column contains dates)
+  * #395 temporary files not cleaned properly
+  * #396 Cannot write “=” in Excel file
+  * #398 Cannot write empty rows in write-only mode with LXML
+    installed
+  * Add relation namespace to root element for compatibility with
+    iWork
+  * Serialize comments relation in LXML-backend
+- additional changes from version 2.1.3:
+  * PR 31 Correct tutorial
+  * PR 32 See #380
+  * PR 37 Bind worksheet to ColumnDimension objects
+  * #379 ws.append() doesn’t set RowDimension Correctly
+  * #380 empty cells formatted as datetimes raise exceptions
+- additional changes from version 2.1.2:
+  * PR 30 Fix regex for positive exponentials
+  * PR 28 Fix for #328
+  * #120, #168 defined names with formulae raise exceptions, #292
+  * #328 ValueError when reading cells with hyperlinks
+  * #369 IndexError when reading definedNames
+  * #372 number_format not consistently applied from styles
+- additional changes from version 2.1.1:
+  * PR 20 Support different workbook code names
+  * Allow auto_axis keyword for ScatterCharts
+  * #332 Fills lost in ConditionalFormatting
+  * #360 Support value=”none” in attributes
+  * #363 Support undocumented value for textRotation
+  * #364 Preserve integers in read-only mode
+  * #366 Complete read support for DataValidation
+  * #367 Iterate over unsized worksheets
+- additional changes from version 2.1.0:
+  * “read_only” and “write_only” new flags for workbooks
+  * Support for reading and writing worksheet protection
+  * Support for reading hidden rows
+  * Cells now manage their styles directly
+  * ColumnDimension and RowDimension object manage their styles
+    directly
+  * Use xmlfile for writing worksheets if available - around 3
+    times faster
+  * Datavalidation now part of the worksheet package
+  * Number formats are now just strings
+  * Strings can be used for RGB and aRGB colours for Fonts, Fills
+    and Borders
+  * Create all style tags in a single pass
+  * Performance improvement when appending rows
+  * Cleaner conversion of Python to Excel values
+  * PR6 reserve formatting for empty rows
+  * standard worksheets can append from ranges and generators
+  * #153 Cannot read visibility of sheets and rows
+  * #181 No content type for worksheets
+  * #153 Cannot read visibility of sheets and rows
+  * #181 No content type for worksheets
+  * #241 Cannot read sheets with inline strings
+  * #322 1-indexing for merged cells
+  * #339 Correctly handle removal of cell protection
+  * #341 Cells with formulae do not round-trip
+  * #347 Read DataValidations
+  * #353 Support Defined Named Ranges to external workbooks
+- additional changes from version 2.0.5:
+  * #348 incorrect casting of boolean strings
+  * #349 roundtripping cells with formulae
+- additional changes from version 2.0.4:
+  * Add a sample file illustrating colours
+  * #331 DARKYELLOW was incorrect
+  * Correctly handle extend attribute for fonts
+- additional changes from version 2.0.3:
+  * Updated docs
+  * #319 Cannot load Workbooks with vertAlign styling for fonts
+- additional changes from version 2.0.2:
+  * This is last release that will support Python 3.2
+  * Cells are referenced with 1-indexing: A1 == cell(row=1,
+    column=1)
+  * Use jdcal for more efficient and reliable conversion of
+    datetimes
+  * Significant speed up when reading files
+  * Merged immutable styles
+  * Type inference is disabled by default
+  * RawCell renamed ReadOnlyCell
+  * ReadOnlyCell.internal_value and ReadOnlyCell.value now behave
+    the same as Cell
+  * Provide no size information on unsized worksheets
+  * Lower memory footprint when reading files
+  * All tests converted to pytest
+  * Pyflakes used for static code analysis
+  * Sample code in the documentation is automatically run
+  * Support GradientFills
+  * BaseColWidth set
+  * #70 Add filterColumn, sortCondition support to AutoFilter
+  * #80 Reorder worksheets parts
+  * #82 Update API for conditional formatting
+  * #87 Add support for writing Protection styles, others
+  * #89 Better handling of content types when preserving macros
+  * #46 ColumnDimension style error
+  * #86 reader.worksheet.fast_parse sets booleans to integers
+  * #98 Auto sizing column widths does not work
+  * #137 Workbooks with chartsheets
+  * #185 Invalid PageMargins
+  * #230 Using v in cells creates invalid files
+  * #243 - IndexError when loading workbook
+  * #263 - Forded conversion of line breaks
+  * #267 - Raise exceptions when passed invalid types
+  * #270 - Cannot open files which use non-standard sheet names or
+    reference Ids
+  * #269 - Handling unsized worksheets in IterableWorksheet
+  * #270 - Handling Workbooks with non-standard references
+  * #275 - Handling auto filters where there are only custom filters
+  * #277 - Harmonise chart and cell coordinates
+  * #280- Explicit exception raising for invalid characters
+  * #286 - Optimized writer can not handle a datetime.time value
+  * #296 - Cell coordinates not consistent with documentation
+  * #300 - Missing column width causes load_workbook() exception
+  * #304 - Handling Workbooks with absolute paths for worksheets
+    (from Sharepoint)
+- additional changes from version 1.8.6:
+  * Fixed typo for import Elementtree
+  * #279 Incorrect path for comments files on Windows
+- additional changes from version 1.8.5:
+  * The ‘=’ string is no longer interpreted as a formula
+  * When a client writes empty xml tags for cells (e.g.
+    <c r=’A1’></c>), reader will not crash
+- additional changes from version 1.8.4:
+  * #260 better handling of undimensioned worksheets
+  * #268 non-ascii in formualae
+  * #282 correct implementation of register_namepsace for Python 2.6
+- additional changes from version 1.8.3:
+  * Always parse using cElementTree
+  * Slight improvements in memory use when parsing
+  * #256 - error when trying to read comments with optimised reader
+  * #260 - unsized worksheets
+  * #264 - only numeric cells can be dates
+- additional changes from version 1.8.2:
+  * #247 - iterable worksheets open too many files
+  * #252 - improved handling of lxml
+  * #253 - better handling of unique sheetnames
+- additional changes from version 1.8.1:
+  * #246
+- additional changes from version 1.8.0:
+  * Support for Python 2.5 dropped.
+  * Support conditional formatting
+  * Support lxml as backend
+  * Support reading and writing comments
+  * pytest as testrunner now required
+  * Improvements in charts: new types, more reliable
+  * load_workbook now accepts data_only to allow extracting values
+    only from formulae. Default is false.
+  * Images can now be anchored to cells
+  * Docs updated
+  * Provisional benchmarking
+  * Added convenience methods for accessing worksheets and cells by
+    key
+- add python-jdcal as dependency
+- remove python-nose and %check: tests are not provided in
+  the archive anymore
+- rename documentation files: changed upstream
+- remove CHANGES: not provided anymore
+
+-------------------------------------------------------------------
+Thu Jul 17 07:54:48 UTC 2014 - toddrme2178@gmail.com
+
+- Add LICENSE to %doc
+
+-------------------------------------------------------------------
+Thu Dec  5 20:53:52 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.7.0
+  + Read CHANGES file from package documentation
+
+-------------------------------------------------------------------
+Thu Oct 24 11:09:42 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Fri May 10 11:39:07 UTC 2013 - toddrme2178@gmail.com
+
+- Initial version
+

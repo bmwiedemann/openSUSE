@@ -1,0 +1,43 @@
+From 2ba61d7e191d753ce9f8bfeed1dacf0922ff8a1f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sat, 22 Dec 2018 00:42:23 +0100
+Subject: [PATCH] std::string
+
+---
+ texk/web2c/pdftexdir/pdftosrc.cc  |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/texk/web2c/pdftexdir/pdftosrc.cc b/texk/web2c/pdftexdir/pdftosrc.cc
+index 7dbee00..cc44daf 100644
+--- a/texk/web2c/pdftexdir/pdftosrc-newpoppler.cc
++++ b/texk/web2c/pdftexdir/pdftosrc-newpoppler.cc
+@@ -114,7 +114,7 @@ int main(int argc, char *argv[])
+             fprintf(stderr, "No SourceName found\n");
+             exit(1);
+         }
+-        outname = (char *)srcName.getString()->getCString();
++        outname = (char *)srcName.getString()->c_str();
+         // We cannot free srcName, as objname shares its string.
+         // srcName.free();
+     } else if (objnum > 0) {
+@@ -123,7 +123,7 @@ int main(int argc, char *argv[])
+             fprintf(stderr, "Not a Stream object\n");
+             exit(1);
+         }
+-        sprintf(buf, "%s", fileName->getCString());
++        sprintf(buf, "%s", fileName->c_str());
+         if ((p = strrchr(buf, '.')) == 0)
+             p = strchr(buf, 0);
+         if (objgen == 0)
+@@ -133,7 +133,7 @@ int main(int argc, char *argv[])
+         outname = buf;
+     } else {                    // objnum < 0 means we are extracting the XRef table
+         extract_xref_table = true;
+-        sprintf(buf, "%s", fileName->getCString());
++        sprintf(buf, "%s", fileName->c_str());
+         if ((p = strrchr(buf, '.')) == 0)
+             p = strchr(buf, 0);
+         sprintf(p, ".xref");
+-- 
+2.20.1
+

@@ -1,0 +1,13 @@
+Index: lockdev-1.0.3_git201003141408/src/Makefile.am
+===================================================================
+--- lockdev-1.0.3_git201003141408.orig/src/Makefile.am
++++ lockdev-1.0.3_git201003141408/src/Makefile.am
+@@ -7,6 +7,8 @@ AM_CPPFLAGS = -include $(top_builddir)/c
+ 
+ lockdev_SOURCES = sample.c
+ lockdev_LDADD = liblockdev.la
++lockdev_CFLAGS = -fPIE
++lockdev_LDFLAGS = -pie
+ 
+ baudboy_SOURCES = baudboy_test.c
+ baudboy_LDADD = liblockdev.la

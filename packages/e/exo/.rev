@@ -1,0 +1,606 @@
+<revisionlist>
+  <revision rev="1" vrev="4">
+    <srcmd5>282bcb161bc18d76caf875eb2dcb2be5</srcmd5>
+    <version>0.3.2</version>
+    <time>1173871591</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="44">
+    <srcmd5>5d9254dc4797a5ba35b2b89722c7139c</srcmd5>
+    <version>0.3.2</version>
+    <time>1182274074</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="75">
+    <srcmd5>6ded02112922271c32aae897ce9f9613</srcmd5>
+    <version>0.3.2</version>
+    <time>1190220670</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="86">
+    <srcmd5>9b1d941f4dcb48b47931878c53969137</srcmd5>
+    <version>0.3.2</version>
+    <time>1193063643</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bda5b13135700c51efd99e1f2f7d45ea</srcmd5>
+    <version>0.3.4</version>
+    <time>1196896174</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="18">
+    <srcmd5>282128f0bff3d640041d3fe7ec05da41</srcmd5>
+    <version>0.3.4</version>
+    <time>1201478871</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="106">
+    <srcmd5>282128f0bff3d640041d3fe7ec05da41</srcmd5>
+    <version>0.3.4</version>
+    <time>1201478871</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="107">
+    <srcmd5>8b53ea1a555032f0382645297b858c8e</srcmd5>
+    <version>0.3.4</version>
+    <time>1225927217</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="108">
+    <srcmd5>9c60708352456a6d0777da106639f788</srcmd5>
+    <version>0.3.4</version>
+    <time>1233017755</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>b8d3c67cbe7e5dd8f9a536ee4cc0dd13</srcmd5>
+    <version>0.3.100</version>
+    <time>1236554338</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1df3c0773ebcf820525be2b6f4759357</srcmd5>
+    <version>0.3.101</version>
+    <time>1240529163</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c8e59613bc8e6504c0553a09ff36f399</srcmd5>
+    <version>0.3.101</version>
+    <time>1250003791</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:xfce/exo based on submit request 17444 from user puzel
+</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>c8e59613bc8e6504c0553a09ff36f399</srcmd5>
+    <version>0.3.101</version>
+    <time>1250003791</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:xfce/exo based on submit request 17444 from user puzel
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1e0e41c7af6517afca7dc2937083f7f0</srcmd5>
+    <version>0.3.106</version>
+    <time>1265270139</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:xfce/exo based on submit request 31372 from user prusnak
+</comment>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>fe171742b15a7707801b174b1dc14b54</srcmd5>
+    <version>0.3.106</version>
+    <time>1268923503</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>fe171742b15a7707801b174b1dc14b54</srcmd5>
+    <version>0.3.106</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>fe171742b15a7707801b174b1dc14b54</srcmd5>
+    <version>0.3.106</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>56236354ebdd327868ad9011bb216649</srcmd5>
+    <version>0.3.107</version>
+    <time>1279566492</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:xfce/exo based on submit request 43422 from user prusnak
+</comment>
+    <requestid>43422</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f2e1346bb963a8d7fcdf68bcdb3924ca</srcmd5>
+    <version>0.5.5</version>
+    <time>1291587607</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54767 from user anubisg1
+</comment>
+    <requestid>54767</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>59716b875dd3e485a9986e47ca1d5828</srcmd5>
+    <version>0.5.5</version>
+    <time>1291587616</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54767
+</comment>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>fce52d24c5600d2a25b015d6661fc862</srcmd5>
+    <version>0.5.5</version>
+    <time>1293577383</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56694 from user prusnak
+</comment>
+    <requestid>56694</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>68c0b056f58bf54d3261d61acaaa2e65</srcmd5>
+    <version>0.5.5</version>
+    <time>1293577394</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56694
+</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>efba25118b12d26b6c50371c0d332a35</srcmd5>
+    <version>0.5.5</version>
+    <time>1295009929</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57372 from user gberh
+</comment>
+    <requestid>57372</requestid>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>41826b4113fbfd0d1b807ee8e1778f63</srcmd5>
+    <version>0.5.5</version>
+    <time>1295009935</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57372
+</comment>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>02ca1ce0d0c3a0f44d54377e45cbf31c</srcmd5>
+    <version>0.6.0</version>
+    <time>1295309257</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58586 from user gberh
+</comment>
+    <requestid>58586</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>be514cc88508177c22eed52d9f10fbae</srcmd5>
+    <version>0.6.0</version>
+    <time>1295309264</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58586
+</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>5e2da2144d933df6e73174eaf6045791</srcmd5>
+    <version>0.6.0</version>
+    <time>1296808014</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 59988 from user gberh
+</comment>
+    <requestid>59988</requestid>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>146be419501a0b72a17d93351f2ea855</srcmd5>
+    <version>0.6.0</version>
+    <time>1296808021</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 59988
+</comment>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>146be419501a0b72a17d93351f2ea855</srcmd5>
+    <version>0.6.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="30" vrev="10">
+    <srcmd5>09afc2a38a978ed33fb2c6ae1a5b6f69</srcmd5>
+    <version>0.6.0</version>
+    <time>1298029128</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61691 from user gberh
+</comment>
+    <requestid>61691</requestid>
+  </revision>
+  <revision rev="31" vrev="11">
+    <srcmd5>265a21315cbaaa9763822629976f32bf</srcmd5>
+    <version>0.6.0</version>
+    <time>1298029155</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61691
+</comment>
+  </revision>
+  <revision rev="32" vrev="10">
+    <srcmd5>563e9acb6587352c9a882f2df065650f</srcmd5>
+    <version>0.6.2</version>
+    <time>1308041947</time>
+    <user>saschpe</user>
+    <comment>- update to version 0.6.2:
+  - improve exo-open url and email match regexes
+  - allow installation of the helpers in a custom location
+  - bugfixes
+  - translation updates
+- added patch tags</comment>
+    <requestid>73393</requestid>
+  </revision>
+  <revision rev="33" vrev="11">
+    <srcmd5>16e9c0457161e97ed9c65705c4144ceb</srcmd5>
+    <version>0.6.2</version>
+    <time>1308041975</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73393
+</comment>
+  </revision>
+  <revision rev="34" vrev="12">
+    <srcmd5>046ecaf2d89ba8411b02119168ab1d07</srcmd5>
+    <version>0.6.2</version>
+    <time>1316617452</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)</comment>
+    <requestid>84036</requestid>
+  </revision>
+  <revision rev="35" vrev="13">
+    <srcmd5>d41f1bdcb7982ea8b166eb77b6cabbb5</srcmd5>
+    <version>0.6.2</version>
+    <time>1318761768</time>
+    <user>lrupp</user>
+    <comment>- recommend -doc subpackage
+- move development documentation into development package</comment>
+    <requestid>87888</requestid>
+  </revision>
+  <revision rev="36" vrev="15">
+    <srcmd5>d41f1bdcb7982ea8b166eb77b6cabbb5</srcmd5>
+    <version>0.6.2</version>
+    <time>1319181872</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="37" vrev="16">
+    <srcmd5>8c82a24fe4d739fa0f37e45f91d10039</srcmd5>
+    <version>0.6.2</version>
+    <time>1319550654</time>
+    <user>coolo</user>
+    <comment>- install HTML documentation under
+  /usr/share/xfce4/exo-preferred-applications/html</comment>
+    <requestid>89083</requestid>
+  </revision>
+  <revision rev="38" vrev="17">
+    <srcmd5>ed9de5ef9e1f91b0d4f007f69415eab3</srcmd5>
+    <version>0.6.2</version>
+    <time>1323191332</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="39" vrev="18">
+    <srcmd5>6c4b8f6698d4ada07f6f1f6327a9ba66</srcmd5>
+    <version>0.6.2</version>
+    <time>1334759419</time>
+    <user>coolo</user>
+    <comment>- fix provides
+
+- -branding-upstream should supplement exo-data
+- replace %lang_package by a manually specfified -lang package
+- %{libname} should recommend -lang since there are translations
+  for the library
+- drop rpmlintrc
+
+- split exo into libexo-1-0, exo-tools, and exo-data in order to
+  conform to the shared library packaging policy
+- added exo-icons.tar.bz2 with icons from tango-icon-theme 0.8.90
+  in order to provide icons for all desktop files and to prevent a
+  dependency on an icon theme
+- specfile cleanup
+- added exo-fix-python-install-location.patch in order to install
+  all python files under %%{python_sitearch}
+- dropped exo-env.patch, shebang lines are fixed during build
+  instead</comment>
+    <requestid>114207</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>f9cbdf7b59c48cd173ea0b0eb7d79193</srcmd5>
+    <version>0.8.0</version>
+    <time>1336470516</time>
+    <user>coolo</user>
+    <comment>- update to version 0.8.0
+  - rename &quot;Novell Evolution&quot; to &quot;Evolution&quot;
+  - add Iceweasel helper
+  - translation updates
+
+- make the library package recommend exo-tools
+
+- properly obsolete exo-doc
+
+- removed system-file-manager and utilities-terminal icons since
+  these are standard icon names from the Icon Naming Spec
+
+- update to version 0.7.3
+  - enable startup-notify in the exo-open desktop files
+  - use g_file_set_contents on local files
+  - bump gtk to 2.20 and glib to 2.24
+  - don't set invalid startup id
+  - replace deprecated function g_strcasecmp
+  - fix possible segfault in exo_str_looks_like_an_uri
+  - updates licenses
+  - fix saving of desktop files in local dir
+  - translation updates
+
+- update to version 0.7.2
+  - drop gtk 2.24 api
+  - bump libxfce4ui dependency for help function
+  - send exo-open startup-id to child instead of using it
+  - add preferred app helper for Chromium
+  - remove package manuals and link to online documentation
+  - queue an icon view resize if the requesitions don't match</comment>
+    <requestid>116140</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>f9cbdf7b59c48cd173ea0b0eb7d79193</srcmd5>
+    <version>0.8.0</version>
+    <time>1340183315</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>1587b9f74a1cd558cb315ab8acfa31a6</srcmd5>
+    <version>0.8.0</version>
+    <time>1341256846</time>
+    <user>coolo</user>
+    <comment>- do not package the internet-web-browser and internet-mail icons
+  any more for &gt;= 12.2 which are widely available and will be
+  standardized</comment>
+    <requestid>126912</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e05b34a959a5c8d2d3be25edf742b538</srcmd5>
+    <version>0.10.1</version>
+    <time>1355924814</time>
+    <user>coolo</user>
+    <comment>- update to version 0.10.1
+  - bump glib to 2.30 and drop exo-gio-module
+  - bump Gtk to 2.24
+  - draw the rubberband identical to gtk
+  - don't use GSimpleResult in ExoJob
+  - fix shadowed variable
+  - g_main_context_ref_thread_default() is 2.32 API
+  - translation updates</comment>
+    <requestid>145718</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>18add883fd9c477fbbd0b3b4192bfc54</srcmd5>
+    <version>0.10.2</version>
+    <time>1358875051</time>
+    <user>coolo</user>
+    <comment>- update to version 0.10.2</comment>
+    <requestid>149552</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>18add883fd9c477fbbd0b3b4192bfc54</srcmd5>
+    <version>0.10.2</version>
+    <time>1359108862</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>da2b7077260e07b80663812206132c30</srcmd5>
+    <version>0.10.2</version>
+    <time>1367828014</time>
+    <user>coolo</user>
+    <comment>- also deliver helpers.rc into a API-versioned subdirectory, it is
+  directly read by the library as well
+- rename exo-branding-upstream to libexo-1-0-branding-upstream
+- continue delivering %{_libdir}/xfce4
+
+- add use-versioned-helpers-db.patch in order to use a versioned
+  helpers files DB since some of the desktop files are tied to the
+  exo API version (e.g. by using exo-compose-mail-1)
+- consequently also merge exo-data into libexo-1-0</comment>
+    <requestid>174585</requestid>
+  </revision>
+  <revision rev="47" vrev="6">
+    <srcmd5>da2b7077260e07b80663812206132c30</srcmd5>
+    <version>0.10.2</version>
+    <time>1379662318</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="7">
+    <srcmd5>bdec7983361aa3d566070ae0578b83b1</srcmd5>
+    <version>0.10.2</version>
+    <time>1391077412</time>
+    <user>coolo</user>
+    <comment>- fix a typo in use-versioned-helpers-db.patch causing custom
+  preference files to be saved in the wrong location (bnc#860479)</comment>
+    <requestid>215130</requestid>
+  </revision>
+  <revision rev="49" vrev="9">
+    <srcmd5>bdec7983361aa3d566070ae0578b83b1</srcmd5>
+    <version>0.10.2</version>
+    <time>1409300850</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>9e43ee5e4988b570149cdefbdee8dca7</srcmd5>
+    <version>0.10.3</version>
+    <time>1425891941</time>
+    <user>dimstar_suse</user>
+    <comment>Xfce 4.12</comment>
+    <requestid>289364</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>53314ccf73298f6f6d9d52b51ef1cd14</srcmd5>
+    <version>0.10.3</version>
+    <time>1425975343</time>
+    <user>dimstar_suse</user>
+    <comment>- buildignore exo-tools in order to break the dependency cycle
+  exo -&gt; libxfce4ui-devel -&gt; libxfce4ui-1-0 -&gt; exo-tools</comment>
+    <requestid>290097</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>2a9a30d2d1468419863db488e49c6373</srcmd5>
+    <version>0.10.4</version>
+    <time>1426680442</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.10.4
+  - don't quote arguments passed to terminal emulators (bxo#10731)
+  - fix StartupNotify (bxo#9570)
+  - fix implicit declaration of function 'xfce_spawn_on_screen'
+    (bxo#11655)
+  - translation updates</comment>
+    <requestid>291156</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>6c80021973ad01dbe3d7263930e4982f</srcmd5>
+    <version>0.10.6</version>
+    <time>1432636470</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.10.6
+  - Close fd with error state goto (CID 30797), extension of
+    previous fix &quot;File descriptor was never opened if &lt; 0
+    (CID #85387)&quot;
+
+- update to version 0.10.5
+  - Added --disable-debug to distcheck rules, this will allow
+    building with autogen.sh --disable-debug on newer systems
+    (bxo#11556)
+  - Do not use x-scheme-handler/file mimetype (bxo#7257)
+  - Escape URIs for exo-open (bxo#9912)
+  - File descriptor was never opened if &lt; 0 (CID #85387)
+  - Reverted patches that broke window focus on startup
+    (bxo#11743)
+    - Fix StartupNotify (bxo#9570)
+    - Fix implicit declaration of function 'xfce_spawn_on_screen'
+      (bxo#11655)
+  - Translation updates</comment>
+    <requestid>308659</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>b731fb9acce194777e17a14c48affd46</srcmd5>
+    <version>0.11.4</version>
+    <time>1503593441</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516005</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>67d7651a976fd6817c25a7f635e5ecd6</srcmd5>
+    <version>0.11.5</version>
+    <time>1506524116</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528864</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>4c590ccbd6152c3e5b160d47830d36e2</srcmd5>
+    <version>0.11.5</version>
+    <time>1512847987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555547</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>a553dd172406c6d5b29d1d93a9b04ce2</srcmd5>
+    <version>0.12.0</version>
+    <time>1519145663</time>
+    <user>dimstar_suse</user>
+    <comment>update to 0.12.0 (Stable Release) (forwarded request 577657 from seife)</comment>
+    <requestid>577660</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>d33ddb72b72f92b738691e7db5ba3aef</srcmd5>
+    <version>0.12.1</version>
+    <time>1529501073</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617416</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>166979c6fef70363931146cde23b0e58</srcmd5>
+    <version>0.12.2</version>
+    <time>1529919621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618492</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>d15c18b7b34a0e6b254a8b266609dfb7</srcmd5>
+    <version>0.12.3</version>
+    <time>1543223804</time>
+    <user>dimstar_suse</user>
+    <comment>update to 0.12.3 (forwarded request 649183 from seife)</comment>
+    <requestid>649184</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>baba9a5e54a5d76451de762ea3ccb8be</srcmd5>
+    <version>0.12.4</version>
+    <time>1549311773</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>667588</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>5f5e74473e6fc73fbcfe26e579e44fb5</srcmd5>
+    <version>0.12.4</version>
+    <time>1553699425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685582</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>a5c4abe11af4af26b38468e9d53d2b2b</srcmd5>
+    <version>0.12.4</version>
+    <time>1556915859</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698664</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>a739cc105f7b5df8b783dd5a24051074</srcmd5>
+    <version>0.12.5</version>
+    <time>1557389369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701457</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>67dfed30ef27f0b7044bb75c14a58224</srcmd5>
+    <version>0.12.6</version>
+    <time>1561195383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710343</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>20ec019493e5dc9278eaa13026822d90</srcmd5>
+    <version>0.12.7</version>
+    <time>1564993814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719844</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>6d1e20cbc0845aa886a4cd85793c6f1a</srcmd5>
+    <version>0.12.8</version>
+    <time>1566240443</time>
+    <user>dimstar_suse</user>
+    <comment>Xfce 4.14 upgrade</comment>
+    <requestid>724057</requestid>
+  </revision>
+</revisionlist>

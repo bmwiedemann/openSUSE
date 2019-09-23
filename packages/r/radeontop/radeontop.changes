@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Tue Aug 27 06:37:20 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in descriptions.
+
+-------------------------------------------------------------------
+Tue Aug 13 14:44:52 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.2:
+  * Add support for new graphic cards and their features
+- Add radeontop-rpmlintrc to resolve error for xcb plugin
+
+-------------------------------------------------------------------
+Tue Jul 10 07:15:30 UTC 2018 - mpluskal@suse.com
+
+- Enable building of debuginfo subpackage
+
+-------------------------------------------------------------------
+Mon Mar 26 10:41:06 UTC 2018 - avindra@opensuse.org
+
+- Update to version 1.1
+  * pci id updates for polaris12, vega10 and fiji
+  * GTT memory reporting
+  * appstream info file
+  * drop privileges when setuid
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Jan 20 10:22:05 UTC 2017 - vsvecova@suse.com
+
+- Version bump to v1.0
+  * Various small fixes
+
+-------------------------------------------------------------------
+Thu Nov 24 08:11:12 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.9+git.20161028:
+  * Add optional unprivileged mode in Xorg
+  * Fix auto-detection of radeon device
+  * Add a LIBDIR indirection for some x86_64 systems
+  * Add support for Polaris 11 and Polaris 10
+  * Add support for VRAM size and usage reporting on amdgpu
+  * Print "amdgpu not enabled" warning just once
+  * Add support for resizeable terminals
+  * Fix artifact on mrxvt
+  * ui: factor out screen size calculation
+  * Silence gcc's "may be uninitialized" warning
+
+-------------------------------------------------------------------
+Sun Jul 10 18:15:41 UTC 2016 - mpluskal@suse.com
+
+- Change dependecies to allow building for SLE-12
+
+-------------------------------------------------------------------
+Wed Sep 30 12:13:07 UTC 2015 - mpluskal@suse.com
+
+- Also install COPYING
+
+-------------------------------------------------------------------
+Mon Sep 21 18:20:47 UTC 2015 - mpluskal@suse.com
+
+- Initial package based on home:Ledest:misc/radeontop

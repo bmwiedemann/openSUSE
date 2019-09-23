@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:31:05 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Sep 13 17:01:04 UTC 2017 - dimstar@opensuse.org
+
+- Split out python3-gom: the python/gi binding were wrongly
+  packaged as part of the -devel package.
+- Run spec-cleaner: adds pkgconfig-BuildRequires.
+
+-------------------------------------------------------------------
+Fri Sep  8 23:35:05 UTC 2017 - jengelh@inai.de
+
+- Update summaries an RPM groups. Trim non-telling parts of
+  descriptions.
+
+-------------------------------------------------------------------
+Thu Jul 20 19:44:32 UTC 2017 - zaitor@opensuse.org
+
+- Temp disable meson_check while we figure out why it randomly
+  fails on x86_64.
+
+-------------------------------------------------------------------
+Thu Jun 22 18:44:30 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.3.3:
+  + Replace hardcoded values in pkg-config file.
+  + Add a JavaScript example.
+  + Remove i18n support, as there are no user-visible strings.
+  + Replace autotools build system with meson.
+- Add meson BuildRequires and switch autotools macros configure,
+  make, make test and makeinstall to meson, meson_build, meson_test
+  and meson_install following upstream switch to Meson build
+  system.
+- Add explicit python3-gobject BuildRequires to workaround
+  build-fail, upstream expects everyone to have moved to python3 as
+  default python.
+- Drop intltool BuildRequires: No longer needed.
+- Following the above, drop lang subpackage and macros handling
+  translations, and drop gom-lang Recommends and gom Provides from
+  libgom-1_0-0 subpackage. Add gom-lang Obsoletes to ease updates.
+
+-------------------------------------------------------------------
+Sun Dec 27 04:57:47 UTC 2015 - damjanovic.ivo@gmail.com
+
+- Updated to version 0.3.2:
+  + Add missing annotation for repository object.
+  + Support ordering queries.
+  + Add support for creating new tables in a version.
+  + Fix memory leak in GomResource.
+  + Bindings:
+    - Add missing annotation for repository object.
+    - Add a working Python example.
+    - Make ResourceGroup a sequence in Python bindings.
+
+-------------------------------------------------------------------
+Wed Apr 29 14:51:11 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.3.1:
+  + Support g_autoptr() for all gom object types.
+  + Add IS NULL and IS NOT NULL filters.
+  + Add gom_resource_group_delete_[a]sync functions.
+  + Fix crash on 64-bit systems with some compiler/compiler flags.
+  + Fix saving a modified resource a second time.
+  + Fix setting ID after calling gom_resource_group_write_*.
+- Add a %check section and pass %{__make} test to it. Actually run
+  the already enabled tests. This adds quite a bit to build time,
+  but all testing we can get is good.
+
+-------------------------------------------------------------------
+Tue Feb 17 16:43:09 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.3.0:
+  + Update COPYING to LGPL 2.1+ to match headers.
+  + Add support for batched writes.
+  + Support the GLOB operator.
+  + Fix stacking of filters.
+  + Fix possible crashes on exit.
+  + Remove "adapter" property from GomResourceGroup.
+  + Fix a bug in automatic migration.
+  + Fix a number of bugs related to using GOM in bindings and in
+    multi-thread unsafe interpreters.
+  + Make gdk-pixbuf an optional dependency.
+
+-------------------------------------------------------------------
+Mon Aug 25 20:47:44 UTC 2014 - zaitor@opensuse.org
+
+- Initial packaging version 0.2.1
+

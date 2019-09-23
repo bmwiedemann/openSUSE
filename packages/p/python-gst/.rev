@@ -1,0 +1,242 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>de9350cf5f4872fb211b13e2da84c0ae</srcmd5>
+    <version>1.2.1</version>
+    <time>1410967487</time>
+    <user>coolo</user>
+    <comment>New package needed by GNOME Team.</comment>
+    <requestid>248840</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>38da9de52f607471e99fab3c80795ea5</srcmd5>
+    <version>1.4.0</version>
+    <time>1413987791</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257806</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>26fe4174af17adf1bc4324e1de5b8d13</srcmd5>
+    <version>1.6.1</version>
+    <time>1448553847</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346018</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>929459ce5e28ef9a6fbf0579396fffa0</srcmd5>
+    <version>1.6.2</version>
+    <time>1454921286</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358047</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dce44d57500ce78c1511d972f4d6215b</srcmd5>
+    <version>1.8.1</version>
+    <time>1462261044</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393201</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ab8c905ea386ae8cdd443d462860494a</srcmd5>
+    <version>1.8.2</version>
+    <time>1466326180</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402695</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5b353c42b3e112cdcbba70f39b4cb0fa</srcmd5>
+    <version>1.8.3</version>
+    <time>1473349120</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424377</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3b1e0a917245ccfe0f007d2bc43962d3</srcmd5>
+    <version>1.10.2</version>
+    <time>1481390896</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444154</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>67f91ea75d0421f3f0434374ccc87a6c</srcmd5>
+    <version>1.10.2</version>
+    <time>1484041848</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449321</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>904feffe84a3fbc460d8f48a4405f965</srcmd5>
+    <version>1.10.2</version>
+    <time>1485250498</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451264</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2e3806f21be3bc9052b587f1e6ff1c89</srcmd5>
+    <version>1.10.3</version>
+    <time>1486135622</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453505</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5fe8ad03199488f3573ad4deba362563</srcmd5>
+    <version>1.10.4</version>
+    <time>1488479767</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460490</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>adf362c351f76039a27db884501999d0</srcmd5>
+    <version>1.12.0</version>
+    <time>1497871412</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495723</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7f4c2ec0aa16139ff6a0f23b87e771e3</srcmd5>
+    <version>1.12.1</version>
+    <time>1498120820</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505407</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>97871b437d2e6adf8f830a737c75d57e</srcmd5>
+    <version>1.12.2</version>
+    <time>1500275543</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510390</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>a6b6022982b866d39ca7a80a4deb650e</srcmd5>
+    <version>1.12.2</version>
+    <time>1505139451</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519577</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>200766ae15b18f5335f896e3bbf0c7f2</srcmd5>
+    <version>1.12.3</version>
+    <time>1506340739</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528117</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>49c6619b870f7fd1055ff1c4b0bd6c10</srcmd5>
+    <version>1.12.4</version>
+    <time>1513110210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556384</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>6913e293906bb8216591b988b85497be</srcmd5>
+    <version>1.12.4</version>
+    <time>1520329606</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581527</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cf35517ceb7de580dc36622cea3fdd03</srcmd5>
+    <version>1.12.5</version>
+    <time>1522750325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592848</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>aed470037fd637038fff86558efa0a6f</srcmd5>
+    <version>1.14.1</version>
+    <time>1527675731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611157</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9cd42f79830175055ea7696f87089fb7</srcmd5>
+    <version>1.14.2</version>
+    <time>1533045440</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624970</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f69203393260c9ac2e4bf91275f6e2c3</srcmd5>
+    <version>1.14.4</version>
+    <time>1539342603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639885</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>153933627bb3f363da16924c28d79b35</srcmd5>
+    <version>1.14.5</version>
+    <time>1560536690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707921</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>fa6d90e257308bc0efa41c993759d173</srcmd5>
+    <version>1.16.0</version>
+    <time>1561898443</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.16.0:
+  + Highlights:
+    - GStreamer WebRTC stack gained support for data channels for
+      peer-to-peer communication based on SCTP, BUNDLE support,
+      as well as support for multiple TURN servers.
+    - AV1 video codec support for Matroska and QuickTime/MP4
+      containers and more configuration options and supported
+      input formats for the AOMedia AV1 encoder
+    - Support for Closed Captions and other Ancillary Data in video
+   -  Support for planar (non-interleaved) raw audio
+    - GstVideoAggregator, compositor and OpenGL mixer elements are
+      now in -base
+    - New alternate fields interlace mode where each buffer carries
+      a single field
+    - WebM and Matroska ContentEncryption support in the Matroska
+      demuxer
+    - new WebKit WPE-based web browser source element
+    - Video4Linux: HEVC encoding and decoding, JPEG encoding, and
+      improved dmabuf import/export
+    - Hardware-accelerated Nvidia video decoder gained support for
+      VP8/VP9 decoding, whilst the encoder gained support for
+      H.265/HEVC encoding.
+    - Many improvements to the Intel Media SDK based
+      hardware-accelerated video decoder and encoder plugin
+      (msdk): dmabuf import/export for zero-copy integration with
+      other components; VP9 decoding; 10-bit HEVC encoding; video
+      post-processing (vpp) support including deinterlacing; and
+      the video decoder now handles dynamic resolution changes.
+    - The ASS/SSA subtitle overlay renderer can now handle multiple
+      subtitles that overlap in time and will show them on screen
+      simultaneously
+    - The Meson build is now feature-complete (*) and it is now the
+      recommended build system on all platforms. The Autotools
+      build is scheduled to be removed in the next cycle.
+    - The GStreamer Rust bindings and Rust plugins module are now
+      officially part of upstream GStreamer.
+    - The GStreamer Editing Services gained a gesdemux element
+      that allows directly playing back serialized edit list with
+      playbin or (uri)decodebin
+    - Many performance improvements.
+</comment>
+    <requestid>711868</requestid>
+  </revision>
+</revisionlist>

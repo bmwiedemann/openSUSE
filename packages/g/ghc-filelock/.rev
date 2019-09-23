@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>433ac8bd4906ae0b22f718cb63ce9218</srcmd5>
+    <version>0.1.0.1</version>
+    <time>1448553820</time>
+    <user>dimstar_suse</user>
+    <comment>filelock: Portable interface to file locking (flock / LockFileEx)</comment>
+    <requestid>345845</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a79dcb663b3c3c8bcdd055821ff0ab9a</srcmd5>
+    <version>0.1.0.1</version>
+    <time>1469081349</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411531</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e1d2bfb100a319b816bbfef36298fa7a</srcmd5>
+    <version>0.1.1.2</version>
+    <time>1527674855</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-filelock to the latest version.</comment>
+    <requestid>607798</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6b4f3312a3035e8e1bfac5dd42056a77</srcmd5>
+    <version>0.1.1.2</version>
+    <time>1532445526</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- correwct licence to CC0-1.0</comment>
+    <requestid>623773</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>57bb32373797e289d08eef3516689126</srcmd5>
+    <version>0.1.1.2</version>
+    <time>1540448732</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643394</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e99f4ab0a5caa6ce59d24e37579a4fcd</srcmd5>
+    <version>0.1.1.3</version>
+    <time>1557653713</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>701765</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d866ad62ebf998e27ed75ccfc820082c</srcmd5>
+    <version>0.1.5+</version>
+    <time>1349244302</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>136492</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>d866ad62ebf998e27ed75ccfc820082c</srcmd5>
+    <version>0.1.5+</version>
+    <time>1359109504</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6ca692fb3b02445a543a8ea8bf51de27</srcmd5>
+    <version>0.1.5+svn1129</version>
+    <time>1370513550</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream snapshot 0.1.5+svn1129
+* Check return value in an internal call</comment>
+    <requestid>177759</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9d99ac384cac3d8173201f48cb7790cc</srcmd5>
+    <version>0.1.7</version>
+    <time>1372508963</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 0.1.7</comment>
+    <requestid>181391</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9d99ac384cac3d8173201f48cb7790cc</srcmd5>
+    <version>0.1.7</version>
+    <time>1379663367</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>9d99ac384cac3d8173201f48cb7790cc</srcmd5>
+    <version>0.1.7</version>
+    <time>1409301978</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

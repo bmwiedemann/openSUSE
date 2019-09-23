@@ -1,0 +1,120 @@
+-------------------------------------------------------------------
+Thu Aug 15 04:29:02 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.7.0
+  * ipaccess: allow TCP keepalive for IPA clients
+  * Add IPA keep-alive FSM implementation
+
+-------------------------------------------------------------------
+Mon Jan 28 22:37:38 UTC 2019 - mardnh@gmx.de
+
+- Update to new upstream release 0.6.0
+  * Bugfix release only.
+    The full changelog is available via
+    http://git.osmocom.org/libosmo-abis/plain/debian/changelog?h=0.6.0
+
+-------------------------------------------------------------------
+Tue Dec 11 00:56:52 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.5.1
+  * unixsocket: fix a potential string overflow
+  * fix double-free/use-after-free of pointers in struct e1inp_line
+  * ortp: reset RTP session on SSRC changes
+  * ortp: detect SSRC changes immediately
+  * e1_input: Replace '.' in counter names with ':'
+
+-------------------------------------------------------------------
+Sun Mar 25 08:57:52 UTC 2018 - jengelh@inai.de
+
+- Show testsuite.log when tests are failing.
+
+-------------------------------------------------------------------
+Mon Oct  2 22:48:02 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream snapshot 0.4.0.2
+  * osmo_ortp: Duration of a RTP frame affects timestamp of the
+    next one
+  * osmo_ortp: Add osmo_rtp_drop_frame API
+  * osmo_ortp: Fix warning: check ortp API in
+    rtp_session_signal_connect
+- Drop 0001-build-resolve-compiler-warnings.patch (merged)
+
+-------------------------------------------------------------------
+Fri Apr 28 20:58:28 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream snapshot 0.3.2.68
+  * Really fix order of set_connected_mode and set_remote_addr
+  * Resync RTP session in case of timestamp jump
+  * e1_input: Add E1 timeslot number to input_signal_data
+  * Convert e1inp_{sign,ts}type_name() to use struct value_string
+  * Implement new 'raw' input type for E1 timeslots
+  * Add HDLC timeslot mode
+  * lapd: adding support for ericsson's lapd dialect
+  * Enable adaptive jitter compensation
+  * lapd: Reduce N200 (SABM retransmission count)
+- Drop ortp27.diff (no longer needed)
+
+-------------------------------------------------------------------
+Sat Oct  1 12:30:41 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream snapshot 0.3.2.24
+* No visible changes
+- Add ortp27.diff
+
+-------------------------------------------------------------------
+Sat Jul 30 17:54:58 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream snapshot 0.3.2.19
+* ipa driver: make bind address vty configurable
+* Do not send RTP to port 0
+* Add defines for FN to SAMPLE conversion
+
+-------------------------------------------------------------------
+Fri Jan 22 19:08:57 UTC 2016 - jengelh@inai.de
+
+- Move to seprate location and ensure pkgconfig is used correctly
+
+-------------------------------------------------------------------
+Wed Dec 23 17:34:54 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 0.3.2.3
+* ortp: Guard the jitter stats with a version check
+* ortp: Export statistics for the bts or similar
+* export lapd_tei_alloc for libosmo-netif
+
+-------------------------------------------------------------------
+Thu Apr  2 12:29:23 UTC 2015 - jengelh@inai.de
+
+- Add 0001-build-resolve-compiler-warnings.patch
+
+-------------------------------------------------------------------
+Sun Mar  1 01:15:24 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 0.3.1
+* No changelog was provided, again
+
+-------------------------------------------------------------------
+Thu Oct  2 20:43:07 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.3.0
+* No changelog was provided
+
+-------------------------------------------------------------------
+Mon Jul 21 08:00:10 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.2.0
+* No changelog was provided
+- Remove 0001-lapd-Do-not-override-t203_sec-initialization.patch,
+  0002-misdn-Set-ret-to-0-when-using-the-LAPD-from-userspac.patch
+  (no longer needed)
+
+-------------------------------------------------------------------
+Sun Jun  2 23:50:42 UTC 2013 - jengelh@inai.de
+
+- Add 0001-lapd-Do-not-override-t203_sec-initialization.patch,
+  0002-misdn-Set-ret-to-0-when-using-the-LAPD-from-userspac.patch
+
+-------------------------------------------------------------------
+Fri Feb 22 09:03:06 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 0.1.5) for build.opensuse.org

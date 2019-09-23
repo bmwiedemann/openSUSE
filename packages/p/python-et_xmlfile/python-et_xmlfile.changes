@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Thu Dec  6 13:25:04 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Run the tests
+- Make sure to run fudpes correctly
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:44 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Jul 26 08:56:00 UTC 2017 - bruno@ioda-net.ch
+
+- specfile : add line to define python-modules (fix build on Leap)
+
+-------------------------------------------------------------------
+Wed Jun  7 12:56:15 UTC 2017 - bruno@ioda-net.ch
+
+- Move to singlespec 
+- Add missing requires python-lxml
+- Prepare everything for testing (wip)
+
+-------------------------------------------------------------------
+Thu Jul  7 16:16:51 UTC 2016 - toddrme2178@gmail.com
+
+- Requires full python3 package.
+
+-------------------------------------------------------------------
+Sun May  8 07:14:53 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * updated source url to files.pythonhosted.org
+
+
+-------------------------------------------------------------------
+Thu Nov 19 16:53:37 UTC 2015 - bruno@ioda-net.ch
+
+- Initial Release : build python3 
+

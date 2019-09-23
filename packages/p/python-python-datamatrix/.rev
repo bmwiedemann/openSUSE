@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7828065d7defc9b49dfc70ac45189c93</srcmd5>
+    <version>0.9.14</version>
+    <time>1553635908</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to single spec
+- Activate test suite, skipping five failing test methods
+- Add Recommends for numerical packages datamatrix supports
+- Add %license and %doc
+- Update to v0.9.14
+- Initial package for v0.3.1
+</comment>
+    <requestid>686864</requestid>
+  </revision>
+</revisionlist>

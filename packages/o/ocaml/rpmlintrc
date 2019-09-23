@@ -1,0 +1,6 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+addFilter("ocaml-ocamldoc.* devel-file-in-non-devel-package")
+addFilter("labltk.* devel-file-in-non-devel-package")
+addFilter("camlp4.* devel-file-in-non-devel-package")

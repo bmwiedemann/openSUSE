@@ -1,0 +1,16 @@
+Adjust some default settings (default shipped .conf files) for openSUSE and openSUSE based appliances.
+
+diff --git a/src/modules/unpackfs/unpackfs.conf b/src/modules/unpackfs/unpackfs.conf
+index 68de113..eb6169f 100644
+--- a/src/modules/unpackfs/unpackfs.conf
++++ b/src/modules/unpackfs/unpackfs.conf
+@@ -33,6 +33,6 @@
+ 
+ # You can list filesystem source paths relative to the Calamares run
+ # directory, if you use -d (this is only useful for testing, though).
+-    -   source: ./example.sqfs
+-        sourcefs: squashfs
+-        destination: ""
++    -   source: "/read-only"
++        sourcefs: "ext4"
++        destination: "/"

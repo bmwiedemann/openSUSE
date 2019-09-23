@@ -1,0 +1,383 @@
+-------------------------------------------------------------------
+Tue Aug 20 11:53:15 CEST 2019 - kukuk@suse.de
+
+- Package /etc/cron.d as this is now part of cron which we don't
+  want to require
+
+-------------------------------------------------------------------
+Wed Jun 12 15:09:10 UTC 2019 - dimstar@opensuse.org
+
+- Allow OBS to pick better candidates to shorten rebuild queues
+
+-------------------------------------------------------------------
+Thu May  9 05:31:28 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- update to 2.0.49
+  * fixes and improvements
+
+-------------------------------------------------------------------
+Mon May  6 14:33:17 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- update to 2.0.48
+  * many fixes and improvements in plugins
+
+-------------------------------------------------------------------
+Tue Sep  4 21:55:53 UTC 2018 - wr@rosenauer.org
+
+- update to 2.0.40
+  * many fixes and improvements in plugins
+  * fixes and improvements of the build system
+- removed obsolete patch
+  munin-plugin-quota_usage_warnings.patch
+
+-------------------------------------------------------------------
+Mon May 28 08:22:36 UTC 2018 - wr@rosenauer.org
+
+- update to 2.0.37
+  * Add support for IBM i
+  * Update lighttpd.rst
+  * Update nginx.rst
+  * ejabberd improvements
+  * add example plugin graphs
+  * Add support for MySQL 5.5/5.6
+  * Added HP-UX support to processes plugin
+  * snmp__if_multi: Set warning to 75% of interface speed instead of 133%
+  * Add support for rndc options in bind9_rndc plugin
+  * Correcting mysql_queries plugin random hash ordering
+  * Add PostgreSQL 10 support to postgres_xlog
+  * mysql improvements
+  * Add IPv6 support
+  * many other improvements
+- require also perl-rrdtool where it exists (boo#1094776)
+- remove obsolete mysql55.patch
+
+-------------------------------------------------------------------
+Fri Sep 29 04:56:09 UTC 2017 - coolo@suse.com
+
+- add perl526.patch to compile with perl 5.26 (no more . in @INC)
+
+-------------------------------------------------------------------
+Fri Jun  2 15:43:10 UTC 2017 - suse-beta@cboltz.de
+
+- add Requires(pre): user(nobody) and group(nobody) to munin-node to fix
+  Tumbleweed build
+- add %ghost /run/munin to munin and munin-node to fix a rpmlint warning
+  (Tumbleweed only, would cause build failures on SLE11)
+
+-------------------------------------------------------------------
+Thu Mar  2 13:45:33 UTC 2017 - aj@ajaissle.de
+
+- fix source url
+- update to 2.0.32
+- remove CVE-2017-6188-fix-parameter-injection.patch (applied upstream)
+
+-------------------------------------------------------------------
+Thu Feb 23 12:33:21 UTC 2017 - wr@rosenauer.org
+
+- fix CVE-2017-6188: munin-cgi-graph local file write vulnerability
+  (boo#1026539, CVE-2017-6188-fix-parameter-injection.patch)
+
+-------------------------------------------------------------------
+Sun Feb 19 16:08:24 UTC 2017 - wr@rosenauer.org
+
+- update to version 2.0.30
+  Bugfix releases (closes the following issues since 2.0.25)
+  2.0.26: Closes: D:761190, GH:426
+  2.0.27: Closes: D:767032, D:768553, D:825136, D:834194, GH:690, GH:714
+  2.0.29: Closes: D:847649, D:849383
+  2.0.30: Closes: GH:745, GH:771, GH:783
+
+-------------------------------------------------------------------
+Tue Jan 17 13:04:06 UTC 2017 - bwiedemann@suse.com
+
+- override build host's hostname to make build reproducible
+
+-------------------------------------------------------------------
+Tue Nov 24 12:11:20 UTC 2015 - wr@rosenauer.org
+
+- apply upstream change to work correctly for MySQL >= 5.5
+  (mysql55.patch
+
+-------------------------------------------------------------------
+Tue Sep  1 11:54:04 UTC 2015 - dimstar@opensuse.org
+
+- Add perl(Module::Build) BuildRequires: Fix build with perl 5.22.
+
+-------------------------------------------------------------------
+Sun Aug  2 05:52:38 UTC 2015 - bwiedemann@suse.com
+
+- fix munin-node start (bnc#940287)
+
+-------------------------------------------------------------------
+Wed Jan  7 08:07:48 UTC 2015 - wr@rosenauer.org
+
+- update to version 2.0.25
+  Bugfix release.
+  Closes: GH:304, D:769415, D:770745, D:770746, D:770826
+  * p/irqstats: Improve generated labels
+  * ip/iostat_ios: also support /dev/xvdX devices
+  * p/iostat_ios: also support /dev/vdX devices
+  * plugins/df_abs: fix the naming for regular devices
+  * p/pgsql: Detect "rc" postgresql versions
+  * p/ping_: honor ping env variable
+- cleanup sysvinit scriptlets to fix the issue which always
+  disabled the service on update
+
+-------------------------------------------------------------------
+Sun Nov  2 22:26:03 UTC 2014 - wr@rosenauer.org
+
+- update to version 2.0.24
+  * bugfix release
+    compatibility with perl 5.20
+
+-------------------------------------------------------------------
+Sat Sep 27 07:17:33 UTC 2014 - wr@rosenauer.org
+
+- update to version 2.0.21
+  * bugfix release
+    It fixes the "start should be less than end" bug.
+
+-------------------------------------------------------------------
+Fri Sep 12 12:58:09 UTC 2014 - darin@darins.net
+
+- remove conditions on Sources and include them regardless
+
+-------------------------------------------------------------------
+Thu Jan 16 15:54:28 UTC 2014 - wr@rosenauer.org
+
+- require perl-libwww-perl to enable apache plugins (bnc#859046)
+
+-------------------------------------------------------------------
+Sat Dec 21 16:11:58 UTC 2013 - wr@rosenauer.org
+
+- recommend logdigest to allow removal of it w/o breaking deps
+  (munin-node likes to have logtail which is part of logdigest
+  but the daily cronjob of logdigest is probably unwanted on some
+  systems)
+
+-------------------------------------------------------------------
+Tue Dec 17 20:45:26 UTC 2013 - wr@rosenauer.org
+
+- update to version 2.0.19 (bnc#853570)
+  * CVE-2013-6048, a node could cause excessive memory consumption
+    on the Munin master
+  * CVE-2013-6359, a malicious plug-in could prevent data collection
+    for the node.
+  * more bugfixes
+
+-------------------------------------------------------------------
+Tue Aug 20 05:20:31 UTC 2013 - opensuse@dstoecker.de
+
+- fix requires for main munin package
+
+-------------------------------------------------------------------
+Mon May 27 02:00:38 CEST 2013 - draht@suse.de
+
+- update to version 2.0.14:
+  * fixes for computing of absolute values
+  * timeout code decoupled for global and plugin timeout.
+  * fixes for ntp
+  * TMPDIR reuse fixes
+- do NOT autostart from %post
+
+-------------------------------------------------------------------
+Tue May 21 17:09:14 UTC 2013 - vjt@openssl.it
+
+- Add missing perl-URI and perl-FastCGI dependencies
+- Add systemd service units to start the HTML and Graph CGI servers
+  with the aid of spawn-fcgi
+  NOTE: the FastCGI server listens on an UNIX socket in /var/run/munin
+  and members of the "www" group can write to it.
+- Add the missing [Install] section of the munin-node service unit
+
+-------------------------------------------------------------------
+Mon Mar 25 16:23:53 UTC 2013 - vjt@openssl.it
+
+- Add an SNMP wildcard plugin to monitor the Google Search Appliance
+    https://github.com/ifad/munin-gsa
+
+-------------------------------------------------------------------
+Wed Mar 13 18:46:16 UTC 2013 - vjt@openssl.it
+
+- Include an improved quota usage plugin that gets warning and
+  critical values from the configured soft and hard quotas.
+  Found in the wild on
+    https://svn.koumbit.net/koumbit/trunk/munin-plugins/quota-usage
+  tested and adapted.
+
+-------------------------------------------------------------------
+Thu Mar  7 11:06:49 UTC 2013 - vjt@openssl.it
+
+- Update to 2.0.11.1
+- Add nginx plugins from http://github.com/ifad/nginx-munin 
+
+-------------------------------------------------------------------
+Tue Mar  5 19:42:45 UTC 2013 - vjt@openssl.it
+
+- BuildRequire perl-IO-Socket-INET6 
+
+-------------------------------------------------------------------
+Thu May  3 15:09:14 UTC 2012 - wr@rosenauer.org
+
+- update to bugfix release 1.4.7
+- fixed CVE-2012-2147 (bnc#759910)
+
+-------------------------------------------------------------------
+Wed Jun  9 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <1.4.5>
+ * bugfix release
+
+-------------------------------------------------------------------
+Sat Mar  6 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <1.4.4>
+
+-------------------------------------------------------------------
+Thu Dec 31 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream release <1.4.3>
+
+-------------------------------------------------------------------
+Mon Dec 21 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream release <1.4.2>
+
+-------------------------------------------------------------------
+Mon Dec  7 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream release <1.4.1>
+
+-------------------------------------------------------------------
+Sat Nov 28 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream release <1.4.0>
+
+-------------------------------------------------------------------
+Sat Dec 27 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- add UTF8 patch
+
+-------------------------------------------------------------------
+Sat Jul 19 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream release <1.2.6>
+
+-------------------------------------------------------------------
+Wed Aug 15 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream release <1.2.5>
+
+-------------------------------------------------------------------
+Mon Oct 17 00:00:00 UTC 2005 - detlef@links2linux.de
+
+- Fixed missing /sbin/rcmunin-node
+
+-------------------------------------------------------------------
+Sun Oct 16 00:00:00 UTC 2005 - detlef@links2linux.de
+
+- First build for packman
+
+-------------------------------------------------------------------
+Sun Apr  3 00:00:00 UTC 2005 - runesk@linpro.no
+
+- 1.2.3 release
+
+-------------------------------------------------------------------
+Fri Apr  1 00:00:00 UTC 2005 - runesk@linpro.no
+
+- 1.2.2 release
+- Fixed SF bug 1164481 (missing /srv/www/htdocs/munin)
+- Fixed SF bug 1164477 (patch for Net::Domain on PPC64)
+
+-------------------------------------------------------------------
+Fri Mar 11 00:00:00 UTC 2005 - runesk@linpro.no
+
+- 1.2.1 release
+
+-------------------------------------------------------------------
+Wed Mar  9 00:00:00 UTC 2005 - runesk@linpro.no
+
+- Fixed erronumous path to web directory
+- Added start of node if not running
+
+-------------------------------------------------------------------
+Tue Mar  8 00:00:00 UTC 2005 - runesk@linpro.no
+
+- Fixed some build path problems
+
+-------------------------------------------------------------------
+Thu Feb 24 00:00:00 UTC 2005 - runesk@linpro.no
+
+- New major release
+
+-------------------------------------------------------------------
+Wed Feb  9 00:00:00 UTC 2005 - runesk@linpro.no
+
+- Updated to version 1.2.0rc2.
+- Removed Nagios stuff
+- Added noreplace for some central configuration files
+
+-------------------------------------------------------------------
+Thu Nov 18 00:00:00 UTC 2004 - runesk@linpro.no
+
+- Updated to version 1.0.4
+
+-------------------------------------------------------------------
+Mon Nov  8 00:00:00 UTC 2004 - runesk@linpro.no
+
+- Updated version 1.0.3 / sync with redhat-build
+
+-------------------------------------------------------------------
+Wed Aug  4 00:00:00 UTC 2004 - runesk@linpro.no
+
+- Initial SuSE build
+
+-------------------------------------------------------------------
+Sun Feb  1 00:00:00 UTC 2004 - ingvar@linpro.no
+
+- Sync with CVS. Version 1.0.0pre2
+
+-------------------------------------------------------------------
+Sun Jan 18 00:00:00 UTC 2004 - ingvar@linpro.no
+
+- Sync with CVS. Change names to munin.
+
+-------------------------------------------------------------------
+Fri Oct 31 00:00:00 UTC 2003 - ingvar@linpro.no
+
+- Lot of small fixes. Now builds on more RPM distros
+
+-------------------------------------------------------------------
+Wed May 21 00:00:00 UTC 2003 - ingvar@linpro.no
+
+- Sync with CVS
+- 0.9.5-1
+
+-------------------------------------------------------------------
+Tue Apr  1 00:00:00 UTC 2003 - ingvar@linpro.no
+
+- Sync with CVS
+- Makefile-based install of core files
+- Build doc (only pod2man)
+
+-------------------------------------------------------------------
+Thu Jan  9 00:00:00 UTC 2003 - ingvar@linpro.no
+
+- Sync with CVS, auto rpmbuild
+
+-------------------------------------------------------------------
+Thu Jan  2 00:00:00 UTC 2003 - ingvar@linpro.no
+
+- Fix spec file for RedHat 8.0 and new version of lrrd
+
+-------------------------------------------------------------------
+Wed Sep  4 00:00:00 UTC 2002 - ingvar@linpro.no
+
+- Small bugfixes in the rpm package
+
+-------------------------------------------------------------------
+Tue Jun 18 00:00:00 UTC 2002 - kjetilho@linpro.no
+
+- new package
+

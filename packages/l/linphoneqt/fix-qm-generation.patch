@@ -1,0 +1,25 @@
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Subject: Fix .qm generation
+
+Currently there's weird stuff in assets/languages/CMakeLists.txt.
+This leads to broken .qm files which can't be loaded and cause the
+application to abort on startup.
+
+Index: linphoneqt-4.1.1/assets/languages/CMakeLists.txt
+===================================================================
+--- linphoneqt-4.1.1.orig/assets/languages/CMakeLists.txt
++++ linphoneqt-4.1.1/assets/languages/CMakeLists.txt
+@@ -27,13 +27,6 @@ file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/
+ # Create `qm` files from `ts` files.
+ qt5_create_translation(QM_FILES ${TS_FILES} ${SOURCES} ${HEADERS} ${QML_SOURCES} OPTIONS -no-obsolete)
+ 
+-# Workaround: Create empty files for some cmake versions. Otherwise, the qm rules can't be used.
+-foreach (qm ${QM_FILES})
+-  if (NOT EXISTS "${qm}")
+-    file(GENERATE OUTPUT "${qm}" CONTENT "")
+-  endif ()
+-endforeach ()
+-
+ # Update translations.
+ add_custom_target(update_translations
+   COMMAND ${CMAKE_COMMAND} "-DLANGUAGES=\"${LANGUAGES}\"" -P "${CMAKE_CURRENT_SOURCE_DIR}/clean_translations.cmake"

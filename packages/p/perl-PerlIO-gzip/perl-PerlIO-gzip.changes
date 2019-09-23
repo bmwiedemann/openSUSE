@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Thu Jun 22 06:06:44 UTC 2017 - coolo@suse.com
+
+- updated to 0.20
+   see /usr/share/doc/packages/perl-PerlIO-gzip/Changes
+
+  
+  0.20  Wed Jun 21 21:29:59 CEST 2017
+        Patch from Slaven to fix test skip count on Win32 (#76335)
+        Really this should have been in 0.19.
+
+-------------------------------------------------------------------
+Fri Aug 28 10:08:02 UTC 2015 - coolo@suse.com
+
+- updated to 0.19
+   see /usr/share/doc/packages/perl-PerlIO-gzip/Changes
+
+-------------------------------------------------------------------
+Fri Aug 28 10:08:01 UTC 2015 - coolo@suse.com
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-PerlIO-gzip/Changes
+
+-------------------------------------------------------------------
+Fri Aug 28 09:32:59 UTC 2015 - bwiedemann@suse.com
+
+- update cpanspec.yml to BuildRequire zlib-devel
+
+-------------------------------------------------------------------
+Thu Aug 27 08:57:27 UTC 2015 - coolo@suse.com
+
+- updated to 0.19
+   see /usr/share/doc/packages/perl-PerlIO-gzip/Changes
+
+-------------------------------------------------------------------
+Thu Aug 27 08:57:26 UTC 2015 - coolo@suse.com
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-PerlIO-gzip/Changes
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:38 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:53 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Mon Nov 29 18:00:50 UTC 2010 - coolo@novell.com
+
+- called spec2changelog
+
+-------------------------------------------------------------------
+Tue Jun 20 00:00:00 UTC 2006 - jfunk@funktronics.ca
+
+- Build under buildservice
+
+
+-------------------------------------------------------------------
+Fri Nov 11 00:00:00 UTC 2005 - jfunk@funktronics.ca
+
+- Build for SL10
+
+
+-------------------------------------------------------------------
+Thu May 12 00:00:00 UTC 2005 - jfunk@funktronics.ca
+
+- Build for SL93
+
+
+-------------------------------------------------------------------
+Fri Nov 19 00:00:00 UTC 2004 - jfunk@funktronics.ca
+
+- Update
+- Build for SL92
+
+
+-------------------------------------------------------------------
+Tue May 11 00:00:00 UTC 2004 - jfunk@funktronics.ca
+
+- Build for SL91
+
+
+-------------------------------------------------------------------
+Mon Dec  1 00:00:00 UTC 2003 - jfunk@funktronics.ca
+
+- Initial release
+

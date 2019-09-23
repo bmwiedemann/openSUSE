@@ -1,0 +1,384 @@
+-------------------------------------------------------------------
+Sun Jul 31 05:09:04 UTC 2016 - coolo@suse.com
+
+- updated to 2.63
+   see /usr/share/doc/packages/perl-Config-General/Changelog
+
+  2.63  - fix for rt.cpan.org#116340: do only consider a backslash
+          as meta escape char, but not if it appears on it's own,
+          as it happens on windows platforms. Thanks to for finding
+  	and tracking it down.
+
+-------------------------------------------------------------------
+Sat Jul  9 05:07:54 UTC 2016 - coolo@suse.com
+
+- updated to 2.62
+   see /usr/share/doc/packages/perl-Config-General/Changelog
+
+  2.62  - fix rt.cpan.org#115326: Callback on 'pre_open' not called
+          when glob expands to one include file
+  
+        - added patch by Niels van Dijke, which adds apache IFDefine
+          support. Use -UseApacheIfDefine=>1 to enable, add defines
+          with -Define and add <IFDefine ...> to your config, see
+          pod for details.
+  
+        - added test case for the code.
+  
+        - fixed unindented half of the pod, which was largely no
+          readable because of this. However, I wonder why this hasn't
+          reported, seems nobody reads the docs :)
+  
+        - fixed tab/space issues here and there
+
+-------------------------------------------------------------------
+Thu May  5 08:55:00 UTC 2016 - coolo@suse.com
+
+- updated to 2.61
+   see /usr/share/doc/packages/perl-Config-General/Changelog
+
+  2.61    - fix rt.cpan.org#113671: ignore utf BOM, if any and turn on
+  	  UTF8 support if not yet enabled.
+
+-------------------------------------------------------------------
+Fri Oct 23 08:49:27 UTC 2015 - coolo@suse.com
+
+- updated to 2.60
+   see /usr/share/doc/packages/perl-Config-General/Changelog
+
+  2.60    - fix rt.cpan.org#107929: added missing test config.
+  
+  2.59    - fix rt.cpan.org#107108 by adding support for IncludeOptional.
+  	- clarified documentation on StoreDelimiter.
+  
+  2.58    - bump version
+
+-------------------------------------------------------------------
+Sun Jun  7 08:18:53 UTC 2015 - coolo@suse.com
+
+- updated to 2.58
+   see /usr/share/doc/packages/perl-Config-General/Changelog
+
+-------------------------------------------------------------------
+Thu May 21 08:28:02 UTC 2015 - coolo@suse.com
+
+- updated to 2.57
+   see /usr/share/doc/packages/perl-Config-General/Changelog
+
+  2.57	- fix rt.cpan.org#104548, dont allow special chars like newline
+  	  or < in keys, which leads to faile when saving.
+  
+  2.56	- fix rt.cpan.org#95325
+  
+  2.55	- fix rt.cpan.org#95314
+
+-------------------------------------------------------------------
+Tue Sep 16 08:07:57 UTC 2014 - coolo@suse.com
+
+- updated to 2.56
+ 2.54   - fixed rt.cpan.org#39814. changed the order of pre-processing
+          in _read(): 1) remove comments, 2) check for continuation,
+          3) remove empty lines.
+ 
+ 2.53    - applied patch rt.cpan.org#68153, which adds a find() method to
+          Config::General::Extended.
+ 
+        - fixed rt.cpan.org#79869 (in fact it has been fixed in 2.52
+          but I forgot to mention it here).
+ 
+        - applied spelling fixes rt.cpan.org 87072+87080.
+ 
+        - fixed rt.cpan.org#89379
+
+-------------------------------------------------------------------
+Thu Jun 26 06:49:03 UTC 2014 - lchiquitto@suse.com
+
+- remove obsolete patch from source:
+  0001-Fix-deprecation-warning-in-5.18-about-splitting-in-r.patch.
+
+-------------------------------------------------------------------
+Fri Jul 26 05:28:20 UTC 2013 - coolo@suse.com
+
+- updated to 2.52
+       - applied pod patch rt.cpan.org#79603
+
+       - fixed rt.cpan.org#80006, it tolerates now whitespaces
+         after the block closing >
+
+       - added -Plug parameter, which introduces plugin closures.
+         idea from rt.cpan.org#79694.
+         Currently available hooks are:
+         pre_open, pre_read, post_read, pre_parse_value, post_parse_value
+
+       - applied patch by Ville Skytt344, spelling fixes.
+
+       - fixed rt.cpan.org#85080, more spelling fixes.
+
+       - applied patch rt.cpan.org#85132, which fixes a deprecation
+         warning in perl 5.18 and above. Fixes #85668 as well.
+
+       - applied patch rt.cpan.org#85538, c-style comments
+         are ignored inside here-docs.
+
+       - fixed rt.cpan.org#82637, don't use indirect object syntax
+         in pod and code.
+- remove obsolete 0001-Fix-deprecation-warning-in-5.18-about-splitting-in-r.patch
+
+-------------------------------------------------------------------
+Fri Jun 21 08:47:13 UTC 2013 - coolo@suse.com
+
+- add 0001-Fix-deprecation-warning-in-5.18-about-splitting-in-r.patch
+  to fix build with perl 5.18
+
+-------------------------------------------------------------------
+Mon Jun  3 15:52:42 UTC 2013 - coolo@suse.com
+
+- updated to 2.51
+      - fixed rt.cpan.org#77667 which resulted in invalid configs
+        written to file when using save_file() and a named block,
+        whose 2nd part starts with a /.
+
+      - fixed rt.cpan.org#64169 by applying patch by Dulaunoy Fabrice.
+        adds -NoEscape switch which turns off escaping of anything.
+
+      - implemented suggestion of rt.cpan.org#67564 by adding 3 new
+        parameters: -NormalizeOption, -NormalizeBlock and -NormalizeValue,
+        which take a subroutine reference and change the block,
+        option or value accordingly.
+      
+      - fixed rt.cpan.org#65860+76953 undefined value error.
+
+
+-------------------------------------------------------------------
+Wed Apr  6 12:14:01 UTC 2011 - coolo@novell.com
+
+- fix license - "same terms as perl itself"
+
+-------------------------------------------------------------------
+Thu Mar 31 09:07:35 UTC 2011 - coolo@novell.com
+
+- update to 2.50
+     - fixed rt.cpan.org#63487 documentation error.
+     - fixed rt.cpan.org#61302, now croak if the config file
+        parameter is a directory and directory include is not
+        turned on.
+     - fixed rt.cpan.org#60429 META.yml typo
+     - added new option -AllowSingleQuoteInterpolation, which
+       turns on interpolation for variables inside single quotes.
+     - added test case for the new option
+
+-------------------------------------------------------------------
+Tue Nov 30 19:19:59 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Jul 16 13:04:11 UTC 2010 - chris@computersalat.de
+
+- update to 2.4.9
+  - fixed rt.cpan.org#56532, '#' missed during fix for
+    56370 in 2.45.
+  - added test case for this too
+- recreated by cpanspec 1.78
+- noarch pkg
+
+-------------------------------------------------------------------
+Fri Apr 16 12:01:01 UTC 2010 - chris@computersalat.de
+
+- update to 2.48
+  - arg, uploaded the wrong file to pause, so another version
+    bump up.
+  - fixed typos in pod section for -ForceArray.
+- 2.47
+  - fixed rt.cpan.org#53759 by adding new option -ForceArray.
+    when enabled a single config value enclosed in [] will become
+    an array forcefully.
+  - fixed typo in license: it is "artistic", not "artificial".
+- 2.46
+  - fixed rt.cpan.org#56370: there was a sort() call in _store()
+    left, which lead to sorted arrays even if -SaveSorted were
+    turned off.
+- removed Provides {cpan_name}
+- removed .packlist, perllocal.pod
+  > noarch
+
+-------------------------------------------------------------------
+Sun Apr  4 20:22:20 UTC 2010 - chris@computersalat.de
+
+- update to 2.45
+  - fixed rt.cpan.org#50647 escaping bug. Now escaped $ or
+    backslash characters are handled correctly (across save too)
+  - fixed rt.cpan.org#52047, tied hash will remain tied
+    when savong to a file.
+  - fixed rt.cpan.org#54580, preserve single quotes during
+    variable interpolation corrected. No more using rand()
+    to mark single quotes but an incrementor instead.
+  - fixed rt.cpan.org#42721+54583, empty config values will no
+    more handed over to interpreting methods (as interpolate
+    or autotrue and the like) but returned as undef untouched.
+- fixed perl-macros deps
+
+-------------------------------------------------------------------
+Sun Dec 13 18:17:09 UTC 2009 - chris@computersalat.de
+
+- update to 2.44
+  - fixed rt.cpan.org#49023 by rolling back change in 2.43
+    in line 158, regarding GLOB support.
+- 2.43
+  - fixed rt.cpan.org#40925, $indichar replaced by internal
+    configuration variable EOFseparator, which contains
+    a 256 bit SHA checksum of the date I fixed the bug.
+    This will prevent future conflicts hopefully. In addition
+    it makes it possible to make it customizable, if neccessary,
+    in a future release.
+  - fixed rt.cpan.org#42721, return undef for empty values
+  - fixed rt.cpan.org#42331, return undef for empty objects
+  - fixed rt.cpan.org#44600, comments after blockname
+    causes parser failure.
+  - fixed rt.cpan.org#42287, whitespace at beginning or end
+    of a quoted value gets lost after save().
+  - fixed rt.cpan.org#46184, variables that were not previously
+    defined are deleted when -InterPolateEnv is enabled. 
+  - fixed bug in config loader for FileHandle objects, it
+    supports now any compatible object. Hint by Ingo Schmiegel.
+  - applied spelling- and speedup patches by Ville Skyttä.
+  - applied documentation patch by Jordan Macdonald.
+- cleanup spec
+  * sort tags
+  * define cpan_name
+  * update url
+  * update desc / author
+- added perl-macros
+  * perl_gen_filelist
+
+-------------------------------------------------------------------
+Tue Jul  7 09:28:51 CEST 2009 - lrupp@suse.de
+
+- update to 2.42:
+  + Fixed bugs from rt.cpan.org:
+    24155, 27622, 27110, 27225, 27271,30063,30063,27225,27225,
+    30199,33216,33385,32978,33447,31529,33766,35766,34080,36607,
+    35122,36607,41570,41030,39159,41748,38635
+  + added new parameter -SaveSorted. The default value is 0,
+    that means configs will be saved unsorted (as always),
+    however if you want to save it sorted, turn this parameter
+    to 1. Thanks to Herbert Breunung for the hint.
+  + added -UTF8 flag, which opens files in utf8 mode
+  + the directory globbing code used slashes to join
+    directory and file names. changed this to use catfile()
+    instead.
+  + added support for -IncludeAgain to directory include
+    code too. 
+  + Allow to include the same file multiple times.
+    There is no loop detection if turned on. new option
+    introduced: -IncludeAgain => 1 (default turned off).
+
+-------------------------------------------------------------------
+Sun Aug  5 17:08:34 CEST 2007 - mrueckert@suse.de
+
+- update to 2.33
+  - fixed rt.cpan.org#26333 - just return $con if env var is
+    undefined.
+  - applied part of a patch supplied by
+    Vincent Rivellino <vince@cuz.cx> which turns off explicit empty
+    block support if in apache compatibility mode, see next.
+  - added new option -ApacheCompatible, which makes the module
+    behave really apache compatible by setting the required
+    options.
+  - a little bit re-organized the code, most of the stuff in new()
+    is now outsourced into several extra subs to make maintenance
+    of the code easier. The old new() sub in fact was a nightmare.
+  - fixed a bug reported by Otto Hirr <otto.hirr@olabinc.com>:
+    the _store() sub used sort() to sort the keys, which conflicts
+    with sorted hashes (eg. tied using Tie::IxHash).
+  - fixed tie bug reported by King, Jason <kingj@newsltd.com.au>,
+    loading of the tie module didn't work.
+- additional changes from 2.32
+  - fixed rt.cpan.org#24232 - import ENV vars only if defined
+  - fixed rt.cpan.org#20742 - dont' overwrite a var if re-defined
+    in current scope, interpolation failed for re-defined vars and
+    used the value of the var defined in outer scope, not the
+    current one.
+  - fixed rt.cpan.org#17852 - a 0 as blockname were ignored.
+    applied patch by SCOP to t/run.t to test for 0 in blocks.
+  - applied most hints Perl::Critic had about Config::General:
+    o the functions ParseConfig SaveConfig SaveConfigString must
+      now imported implicitly. This might break existing code, but
+      is easily to fix.
+    o using IO::File instead of open().
+    o General.pm qualifies for "stern" level after all.
+  - added much more tests to t/run.t for 'make test'.
+  - using Test::More now.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:33 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 16 15:56:47 CET 2006 - mrueckert@suse.de
+
+- update to version 2.31
+
+-------------------------------------------------------------------
+Fri Jul 29 18:49:35 CEST 2005 - cthiel@suse.de
+
+- update to version 2.29
+
+-------------------------------------------------------------------
+Sun Jan 18 06:26:54 CET 2004 - nashif@suse.de
+
+- update to version 2.24
+
+-------------------------------------------------------------------
+Sun Jan 11 09:46:04 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 14:13:34 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Fri Jul 18 16:30:32 CEST 2003 - nashif@suse.de
+
+- use DESTDIR
+- Fixed filelist
+
+-------------------------------------------------------------------
+Tue Jul  1 12:09:17 CEST 2003 - ro@suse.de
+
+- use new macro perl_process_packlist 
+
+-------------------------------------------------------------------
+Fri Jun 13 06:49:03 CEST 2003 - nashif@suse.de
+
+- Update to 2.19
+- Fixed file list
+
+-------------------------------------------------------------------
+Mon Jul  8 06:33:45 CEST 2002 - nashif@suse.de
+
+- Update to version 2.04
+
+-------------------------------------------------------------------
+Mon Apr  9 18:13:39 CEST 2001 - nashif@suse.de
+
+- Removed %version macro
+
+-------------------------------------------------------------------
+Thu Mar  8 18:41:41 CET 2001 - nashif@suse.de
+
+- fixed %files in spec  
+
+-------------------------------------------------------------------
+Fri Feb 23 06:13:36 MET 2001 - nashif@suse.de
+
+- removed buildroot from pod file
+
+-------------------------------------------------------------------
+Fri Feb 16 07:10:51 CET 2001 - nashif@suse.de
+
+- Initial Release (1.18)
+

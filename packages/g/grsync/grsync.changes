@@ -1,0 +1,207 @@
+-------------------------------------------------------------------
+Tue Aug  9 20:07:48 UTC 2016 - badshah400@gmail.com
+
+- Add grsync-appdata.patch to add, translate and install appdata
+  file; the presence of the appdata file ensures that the
+  application appears on appstores like GNOME Software and KDE
+  Discover.
+
+-------------------------------------------------------------------
+Wed Mar 23 00:12:41 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 1.2.6.
+  * Don't save "default" session to ini file when "remember last
+    used session" is off.
+  * Better "before command" error notification.
+  * Added "overwrite logs" preferences option.
+  * Updated Norwegian, Russian, German, Swedish, Simplified Chinese
+  * translations.
+  * Enhanced and translated desktop file.
+  * Updated README file.
+- Split off and Recommend a -lang package,
+- Drop fix-desktop-file.patch: the action is done running
+  %suse_update_desktop_file macro.
+- Drop grsync-link-libm.patch: fixed upstream.
+- Rebase fix-invalid-lc-messages-dir.patch: add "hu", don't touch
+  pt_BR, zh_CN, zh_TW, as they are in their own.
+
+-------------------------------------------------------------------
+Thu Jan 15 21:12:02 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.2.5
+  * Fixed an uninitialized variable warning
+  * Fixed current session type change on new session creation
+  * Fixed selection of sessions in set
+  * Removed "switch source with destination" keyboard shortcut
+  * Fixed pause and stop when running as superuser (it may ask the
+    password multiple times)
+  * Added Hungarian translation
+  * Updated French translation
+  * Updated Czech translation
+- Use download Url as source
+- Update fix-invalid-lc-messages-dir.patch and disable  broken hungarian
+  translation
+
+-------------------------------------------------------------------
+Thu Jul 11 07:53:34 UTC 2013 - puzel@suse.com
+
+- update to 1.2.4
+  - Monospace font in the rsync output box
+  - Log files are now appended (instead of truncated) each time a
+    new run is done
+  - Added date and time when starting a new rsync run (useful with
+    logs)
+  - Added Traditional Chinese translation (thanks Wei-Lun)
+
+-------------------------------------------------------------------
+Mon Apr 22 20:11:52 UTC 2013 - puzel@suse.com
+
+- update to 1.2.3 
+  - Do not allow creation of session names with slashes in them
+  - Lintian fixes to man pages and desktop file (thanks Martijn)
+
+-------------------------------------------------------------------
+Tue Oct 23 15:58:23 UTC 2012 - puzel@suse.com
+
+- update to 1.2.2 
+ - increased size of source and destination fields
+ - updated translations
+
+-------------------------------------------------------------------
+Mon Jan 23 12:58:39 UTC 2012 - puzel@suse.com
+
+- update to 1.2.1
+ - enabled session sets
+ - fixed saving of current session when creating new one
+ - little fix to main window layout for the two "open" buttons,
+   which had some overflown translations
+ - grsync-batch: fixed paths with spaces in them
+ - optimization of global and file progress updates
+ - fixed a translation problem on the "slashes" help dialog
+ - fixed bug: didn't check "before command" exit status correctly
+ - fixed bug: some rsync window titles aren't translatable
+ - fixed bug: grsync-batch can't find last session in config file
+ - fixed bug: output text is not selectable after something
+   initially fails
+ - added check for empty new session names
+ - differentiated exit status in grsync-batch
+ - some glade file cleanups "by-hand"
+ - auto window resize only on first window load
+- configure with --disable-unity
+- add grsync-link-libm.patch (fix build)
+
+-------------------------------------------------------------------
+Tue Apr 26 12:56:32 UTC 2011 - puzel@novell.com
+
+- use spec-cleaner 
+
+-------------------------------------------------------------------
+Fri May  7 09:06:53 UTC 2010 - puzel@novell.com
+
+- update to grsync-1.1.1 
+  * Removed automatic addition of a trailing slash to source and 
+    destination directories
+  * Updated new functionalities of 1.1.0 for Maemo, added 
+    configuration backup support + other fixes
+  * Updated czech translation (thanks Lucas)
+  * Fixed tags in a french translation message
+  * Added "Rsync command line" menu item
+
+-------------------------------------------------------------------
+Tue Mar 30 08:57:10 UTC 2010 - puzel@novell.com
+
+- update to grsync-1.1.0 
+ - notable changes:
+  * "Use tray icon" preferences option added
+  * Added --protect-args option, on by default, solves the 
+    "remote filename with spaces" problem
+  * Fixed bug: doesn't save "itemized changes list" option
+  * Added mime type definition for grsync session files with icon
+  * Updated desktop file to open session files with "grsync -i"
+  * Made some fixes which could make grsync more stable on some systems
+  * Added "run as superuser" extra options switch, uses "pkexec" 
+    from policykit
+  * Added rsync child watch function
+  * Added rsync process exit status output
+  * Fixed behaviour when rsync window is closed not by using the close button
+  * Fixed scrolling to end on pause
+  * Added -i option to import a session file from command line
+
+-------------------------------------------------------------------
+Thu Dec  3 14:43:36 UTC 2009 - puzel@novell.com
+
+- update to grsync-0.9.3
+  * Fixed file permissions: some scripts were not executable
+  * Fixed main window position and size reset when closed with window manager's close button
+  * Added advanced option to disable directory recursion
+  * Added preferences option to enable the "switch source with destination" button
+  * New main window layout, more compact and pretty; changes include:
+   	* new toolbar
+   	* removed quit button
+   	* introduced more stock buttons
+   	* removed custom icons from buttons
+   	* additional options in a multiline text entry field
+   	* directories moved to "basic options" tab
+   	* notes moved to "extra options" tab
+   	* other little fixes to tooltips, accelerators etc.
+  * Authors information moved from AUTHORS file to about dialog
+
+-------------------------------------------------------------------
+Wed Oct  7 11:24:48 UTC 2009 - puzel@novell.com
+
+- update to grsync-0.9.2
+  * grsync-batch: added itemize-changes option which was missing 
+    in 0.9.1
+  * Small fix to the pause button showing as "play" instead of 
+    "pause" in some occasions
+  * Catalan translation added (thanks Josep)
+  * "-s" command line option added, stays open on success
+  * Gtkbuilder xml file updated for glade 3.6.7
+  * Fixed bug: when wrong session specified on the command line 
+    with "-e", executes default session instead of nothing
+  * Fixed bug: grsync can't start when compiled against 
+    gtk >= 2.16.6
+  * Now prints an error and exits when unable to correctly load 
+    gtkbuilder xml file
+  * Dutch translation updated (thanks Frank)
+  * Italian translation updated
+  * Manpage updated
+
+-------------------------------------------------------------------
+Fri Jun 26 16:10:26 CEST 2009 - puzel@suse.cz
+
+- update to grsync-0.9.1
+  * "itemize-changes" advanced rsync option added
+  * some code cleanup
+  * added "warning" button which opens the error list
+  * made "show error list when finished" preferences option default to false
+  * fixed some small memory leaks
+  * some cosmetic fixes
+  * focus on widgets didn't work before the window loosed focus
+
+-------------------------------------------------------------------
+Tue Jun  9 10:23:39 CEST 2009 - puzel@suse.cz
+
+- update to 0.9.0
+  * Converted from glade-2 with code generation to glade-3 with GtkBuilder
+  * Some deprecated GTK calls have been removed, now grsync requires GTK 2.16
+  * Found an acceptable way to make rsync window resizable, despite the
+    presence of an expander
+  * Removed "switch source with destination" button (there is a menu item for
+    the same purpose)
+  * Added "fast rsync scrolling" preferences switch
+  * Added extra option "on rsync error only" to limit the execution of the
+    "after" command
+  * Italian translation updated (the others will need some work because of the
+    move to GtkBuilder)
+  * "Notes" session field added
+  * Error dialog is now marked ad "urgent"
+  * New session dialog remembers last session name
+  * System menu: moved from applications/network to applications/system
+  * New bigger icon
+
+-------------------------------------------------------------------
+Sat May 23 10:55:33 CEST 2009 - puzel@suse.cz
+
+- initial package (version 0.6.3) 
+

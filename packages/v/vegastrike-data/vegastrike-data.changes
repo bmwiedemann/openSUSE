@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Tue Mar 29 09:31:14 UTC 2016 - dvaleev@suse.com
+
+- Exclude i586 so repocheker wouldn't complain here 
+
+-------------------------------------------------------------------
+Wed Mar 16 00:21:23 UTC 2016 - dvaleev@suse.com
+
+- 5GB is not enough if worker is configured to have 5GB, let make 
+  it 6. 
+
+-------------------------------------------------------------------
+Tue Mar 15 16:12:07 UTC 2016 - dvaleev@suse.com
+
+- Add disk constraints 5GB 
+
+-------------------------------------------------------------------
+Mon Oct 22 00:18:24 UTC 2012 - klaussfreire@gmail.com
+
+- Remove patch r13381: no longer needed with new GPL Sol.system
+
+-------------------------------------------------------------------
+Tue Oct  2 17:57:19 UTC 2012 - klaussfreire@gmail.com
+
+- Replace Sol.system with a pure GPL version from upstream
+  Fixes bnc#762109
+
+-------------------------------------------------------------------
+Tue May 15 04:11:42 UTC 2012 - klaussfreire@gmail.com
+
+- Upstream patch r13381: remove bad license tag in Sol/Sol.system
+
+-------------------------------------------------------------------
+Mon May  7 04:46:55 UTC 2012 - klaussfreire@gmail.com
+
+- Upstream patch r13368: fix shader issue that resulted
+  in crashes when GPU/drivers couldn't handle the fireglass
+  shader and it wasn't disabled even in no-shader settings.
+
+-------------------------------------------------------------------
+Wed Apr 18 17:03:38 UTC 2012 - klaussfreire@gmail.com
+
+- Update license to use spdx.org
+- Run through fdupes to collapse duplicated files
+- Fix category
+
+-------------------------------------------------------------------
+Mon Apr  2 19:03:07 UTC 2012 - klaussfreire@gmail.com
+
+- Conflicts with older extra and speech versions
+
+-------------------------------------------------------------------
+Sun Apr  1 01:02:16 UTC 2012 - klaussfreire@gmail.com
+
+- Upgraded to upstream 0.5.1.r1 source release
+  * Fixed: MIP loading on rectangular textures
+  * Newer planet textures
+  * Better more compatible shaders for Mesa (Intel DRI mostly)
+  * Issues #3487109, #2531359, #2808586, #2812869, #2879873,
+    #2929602 fixed 
+
+-------------------------------------------------------------------
+Mon Jan 30 05:26:37 UTC 2012 - klaussfreire@gmail.com
+
+- Upgraded to upstream 0.5.1.beta2 core data
+  * navcomputer enhancements
+  * python module cleanups
+  * vdu panel backdrops to improve panel readability
+  * shader fixes, especially for intel gpus
+  * new cargo and weapon images
+  * Patch #3211810, #3217829, #3286893 applied 
+  # Issue #3208662, #3325183, #3395671, #3376610, #3442608, 
+    #3306551, #3429854, #3325182, #3325698, #3199009, #3191110
+    #3471044, #3465565 fixed
+  * Fixed broken normals for several units
+  * Normalmaps for most units
+
+-------------------------------------------------------------------
+Tue Mar  8 17:27:55 UTC 2011 - klaussfreire@users.sourceforge.net
+
+- Upgraded to upstream 0.5.1.beta1-2 core data (delta from SVN trunk)
+
+-------------------------------------------------------------------
+Sat Feb 26 21:14:46 UTC 2011 - klaussfreire@users.sourceforge.net
+
+- Upgraded to upstream 0.5.1.beta1 core data 
+
+-------------------------------------------------------------------
+Wed May 21 21:49:18 CEST 2008 - claes.backstrom@fsfe.org
+
+- Initial package 
+

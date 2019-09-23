@@ -1,0 +1,10 @@
+<package name="mono-debugger" project="openSUSE:Factory">
+  <title>Mono Debugger</title>
+  <description>A debugger is an important tool for development. The Mono Debugger
+(MDB) can debug both managed and unmanaged applications.  It provides a
+reusable library that can be used to add debugger functionality to
+different front-ends. The debugger package includes a console debugger
+named &quot;mdb&quot;, and MonoDevelop (http://www.monodevelop.com) provides a
+GUI interface to the debugger.</description>
+  <devel project="Mono:Factory" package="mono-debugger"/>
+</package>

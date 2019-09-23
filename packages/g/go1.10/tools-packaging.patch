@@ -1,0 +1,19 @@
+Index: go/src/cmd/go/internal/load/pkg.go
+===================================================================
+--- go.orig/src/cmd/go/internal/load/pkg.go
++++ go/src/cmd/go/internal/load/pkg.go
+@@ -964,7 +964,13 @@ func (p *Package) load(stk *ImportStack,
+ 		if InstallTargetDir(p) == ToTool {
+ 			// This is for 'go tool'.
+ 			// Override all the usual logic and force it into the tool directory.
+-			p.Target = filepath.Join(cfg.GOROOTpkg, "tool", full)
++			// If GOROOT_TARGET is set, then write to it for packaging purpose
++			gorootTarget := os.Getenv("GOROOT_TARGET")
++			if gorootTarget == "" {
++				p.Target = filepath.Join(cfg.GOROOTpkg, "tool", full)
++			} else {
++				p.Target = filepath.Join(gorootTarget, "pkg/tool", full)
++			}
+ 		}
+ 		if p.Target != "" && cfg.BuildContext.GOOS == "windows" {
+ 			p.Target += ".exe"

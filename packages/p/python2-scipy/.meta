@@ -1,0 +1,5 @@
+<package name="python2-scipy" project="openSUSE:Factory">
+  <title>Scientific Tools for Python</title>
+  <description>SciPy is open-source software for mathematics, science, and engineering. The core library is NumPy which provides convenient and fast N-dimensional array manipulation. The SciPy library is built to work with NumPy arrays, and provides many user-friendly and efficient numerical routines such as routines for numerical integration and optimization. Together, they run on all popular operating systems, are quick to install, and are free of charge. NumPy and SciPy are easy to use, but powerful enough to be depended upon by some of the world's leading scientists and engineers. </description>
+  <devel project="devel:languages:python:numeric" package="python2-scipy"/>
+</package>

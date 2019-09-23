@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e00d1b3b7298361d524b2050f988f7db</srcmd5>
+    <version>1.1.2.4</version>
+    <time>1396451933</time>
+    <user>coolo</user>
+    <comment>New package for pandoc.
+See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</comment>
+    <requestid>227585</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e00d1b3b7298361d524b2050f988f7db</srcmd5>
+    <version>1.1.2.4</version>
+    <time>1409300974</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a017dbd3c5943e3a139eda2bc4d7dbdd</srcmd5>
+    <version>1.1.2.5</version>
+    <time>1417031723</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261430</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>192035987832addfbc96dd528dc7c7cc</srcmd5>
+    <version>1.2.0.3</version>
+    <time>1432188731</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>306408</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c5aa892840203a93ecc0c492ea624e97</srcmd5>
+    <version>1.2.0.4</version>
+    <time>1453998248</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0.4 (forwarded request 355997 from mimi_vx)</comment>
+    <requestid>355998</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a897c8d8593cefb8f4034aca40a7d3e7</srcmd5>
+    <version>1.2.0.4</version>
+    <time>1469081826</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412176</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f519ac7e9af3cdf83c544295d43071d8</srcmd5>
+    <version>1.2.1</version>
+    <time>1499291774</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>506850</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f1ec85df2ad93a607c70c551b24db17a</srcmd5>
+    <version>1.2.1.1</version>
+    <time>1527675263</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-temporary to the latest version.</comment>
+    <requestid>607898</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>db1baf5be5658b3c497feac3da7d3249</srcmd5>
+    <version>1.2.1.1</version>
+    <time>1532161408</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 1.2.0.4
+* no upstream changelog
+* adjust library version bounds to ghc 7.6 libs
+- cabal2spec 0.25.5 spec file template
+- fixed exclusive arch tag
+- initial packaging.</comment>
+    <requestid>623868</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9285738c8416c1be509780ea9871fa29</srcmd5>
+    <version>1.3</version>
+    <time>1540448343</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642899</requestid>
+  </revision>
+</revisionlist>

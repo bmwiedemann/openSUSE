@@ -1,0 +1,5 @@
+<package name="spawn-fcgi" project="openSUSE:Factory">
+  <title>Spawn FastCGI applications independent of the webserver</title>
+  <description>spawn-fcgi is used to spawn FastCGI applications independent of the webserver.</description>
+  <devel project="server:http" package="spawn-fcgi"/>
+</package>

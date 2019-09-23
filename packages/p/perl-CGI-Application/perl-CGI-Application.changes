@@ -1,0 +1,372 @@
+-------------------------------------------------------------------
+Mon Mar  5 06:04:24 UTC 2018 - coolo@suse.com
+
+- updated to 4.61
+   see /usr/share/doc/packages/perl-CGI-Application/Changes
+
+  4.61
+  
+      - Release fix in 4.60_1
+  
+  4.60_1
+  
+      [BUGS]
+      - Revert MANIFEST changes which seemed to have caused some issues
+        https://github.com/MartinMcGrath/CGI--Application/issues/5
+  
+      [DOCUMENTATION]
+      - Fix minor POD typo.
+
+-------------------------------------------------------------------
+Thu Mar  1 06:04:30 UTC 2018 - coolo@suse.com
+
+- updated to 4.60
+   see /usr/share/doc/packages/perl-CGI-Application/Changes
+
+  4.60
+      
+      - Release, includes all changes from 4.50_50, 4.50_51
+  
+  4.50_51 (developer release) 2015-07-16
+  
+      [BUGS]
+      - Create new CGI::PSGI object unconditionally in psgi_app()/Bug #88506 (allter)
+      
+      [DOCUMENTATION]
+      - Introduced Travis CI (Martin McGrath)
+  
+  4.50_50 (developer release) Fri Jun 23, 2014
+  
+      - Add PSGI Streaming methods (Mike Tonks)
+      - Added CGI.pm dependency, it is no longer a core module (Martin McGrath)
+  
+      [BUGS]
+      - Fixed rt #84403 - Security problem: missing "start" mode dumps ENV to output page. (Martin McGrath)
+      - Ensure dump_html() returns valid HTML. (Martin McGrath)
+  	
+      [DOCUMENTATION]
+      - Changes to repository URL and bug tracker, added Martin McGrath as a co-maintainer
+      - Typo fixes (David Steinbrunner)
+
+-------------------------------------------------------------------
+Mon Oct 24 20:03:57 UTC 2011 - tabraham@novell.com
+
+- updated to 4.50 Thu Jun 16, 2011
+
+    [FEATURES]
+    Better PSGI support in the core
+    - run_as_psgi() works like run, but directly returns the expected PSGI response structure
+    - psgi_app() wraps up all the PSGI bits to call and run the application and return a PSGI 
+      code ref:
+         $psgi_coderef = WebApp->psgi_app({ ... args to new() ... });
+
+    [DOCUMENTATION]
+    - docs for header_props() were improved
+
+
+-------------------------------------------------------------------
+Wed Dec  1 13:30:53 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:26 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:22 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Thu Jul 30 17:01:25 CEST 2009 - cwh@suse.de
+
+- 4.31 Wed Jul 29, 2009
+
+    [FEATURES]
+    - html_tmpl_class() now allows setting an an alternate HTML::Template class
+      at a run time. This makes it easy to set the class to be
+      'HTML::Template::Dumper' for debugging. You can then see and precisely
+      test the Perl data structure that would be sent your template, taking
+      into account the template tokens that are actually set there.  (Mark Stosberg)
+
+    [DOCUMENTATION]
+    - More typo fixes (Lyle)
+
+- 4.21 Sat Jan 3, 2009
+
+    [FEATURES]
+    - This now works: 
+            $webapp->query($new_query_object); 
+      Setting a new query object can be useful in combination with
+      CGI::Application::Server.  (Jaldhar Vyas)
+
+    [DOCUMENTATION]
+    - More typo fixes (Lyle)
+
+-------------------------------------------------------------------
+Tue Nov  4 11:53:11 CET 2008 - cwh@suse.de
+
+- 4.20 Sat Nov 1, 2008 
+
+    [DOCUMENTATION]
+    - typo fix (Lyle)
+
+- 4.19_1 Fri Sep 27, 2008
+
+    [FEATURES]
+    - New 'html_tmpl_class' method allows you to specify an alternative
+      HTML::Template class. This technique will eliminate the need to use 
+      a plugin for HTML::Template-compatible classes. See the docs 
+      for load_tmpl() for details. 
+      
+      Thanks to Rhesa Rozendaal for the initial patch, and Mark Stosberg for
+      documentation refinements.
+
+    [DOCUMENTATION]
+    - typo fix (George Hartzell)
+    - Revert back to documenting the use of "$self", not $c, after community
+      feedback. 
+
+    [INTERNALS]
+    - Change how default run modes are declared for better compatibility
+      with AutoRunmode and RunmodeDeclare plugins. Thanks Rhesa via RT#39631.
+
+-------------------------------------------------------------------
+Fri Sep 12 13:48:40 CEST 2008 - cwh@suse.de
+
+- 4.11 Sun Aug 10, 2008
+    No code changes. 
+
+    [DOCUMENTATION]
+    - Fix POD syntax issue.
+
+- 4.10 Tue Jun 17, 2008
+
+    This release maintains the same API public from 4.06.  Changes since the
+    last stable release include documentation updates and refactors to the internal
+    of CGI::Application. 
+
+    [DOCUMENTATION]
+    Several documentation improvements (Mark Stosberg)
+    - Reformat POD so methods are easier browse on CPAN
+    - Highlight some specific, common plugins to use
+    - Mention that we now have two CGI::App specific testing tools to use
+      Test::WWW::Mechanize::CGIApp and Test::WWW::Selenium::CGIApp 
+    - Introduce and recommend CGI::Application::Dispatch 
+    - Consolidated the documentation on error_mode()
+    - Split out those application methods which are essential from
+      those that are not. 
+    - Use and recommend "$c" instead of "$self" to cut down on
+      typing for something that is abstract anyway, and represented
+      a simple "." in Perl 6.
+    - Mention CGI::Application::Server for offline website development.
+    - Update the introduction to clarify that we are a proven, lightweight
+      option.
+    - Removed the "experimental" flag on the error hook. 
+    - Mention in the second Perl.com article in the "more reading" section. 
+    - Document darcs repo URL. (Suggested by Gabor) 
+
+- 4.07_03 Mon Jun 16, 2008
+
+   [INTERNALS]
+   - The refactor to split up run() in 4.07_01 started to always pass the run mode 
+     name as an argument to run modes. The behavior has now been reverted to
+     only pass the run mode name in the AUTOLOAD case. (Mark Stosberg)
+
+   [DOCUMENTATION]
+   - Fix typo in example. Thanks to Lesley Binks.
+   - document that header_props() can be usefully called with no arguments
+     to return the current headers. Thanks to neuhaus, RT#33992. 
+
+
+- 4.07_02 Weds Oct 31, 2007
+
+    [DOCUMENTATION]
+    - typo corrections (Evan Zacks)
+    - The docs for header_type() have been improved, including an example of using
+      CGI::Applicatin::Plugin::Redirect (Mark Stosberg)
+
+    [INTERNALS] 
+    - Reverted switch to Class::MOP in 4.07_01, which benchmarking showed
+      to be slower. (Mark Stosberg)
+    - Beautify the code for _send_headers (Chris Dolan, Mark Stosberg)
+
+- 4.07_01 Sun Jul 2, 2006
+
+    [INTERNALS] 
+    - Switched from using Class::ISA to Class::MOP for introspection. Class::MOP
+      models the way this will be done Perl6, providing the same result. (Mark Stosberg) 
+    - better test diagnostics (rjbs)
+    - improve test coverage (rjbs)
+    - improve consistency of checks for false/0len/undef (rjbs)
+    - split &run up into chunks (not yet finalized). New methods currently include:
+        __get_runmode
+        __get_runmeth
+        __get_body
+      Feedback is welcome on whether these should be exposed to the user, with
+      (possibly) better names. (rjbs)
+
+-------------------------------------------------------------------
+Wed Oct 25 14:00:33 CEST 2006 - cwh@suse.de
+
+- 4.06 Wed Apr 12, 2006
+    (No code changes)
+    - Updated tests to work with status codes emitted before and after CGI.pm 3.16. 
+      The requirement for CGI.pm 3.16 or newer has been relaxed, so any version
+      of CGI.pm will do. (Rhesa)
+
+4.05 Wed Mar  1, 2006
+    (No code changes)
+
+    -  Updated tests for redirects to check for 'Found', not 'Moved'.
+       This correctly matches the standard, and was changed in CGI.pm 3.16.
+       As a result, we now require CGI.pm 3.16 for consistent results.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:29 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 12:43:38 CET 2006 - cwh@suse.de
+
+version 4.04
+- No code changes since 4.04_02. Declaring stable. 
+
+version 4.04_02
+- Add support for templates stored in file handles and scalarrefs to load_tmpl(). 
+  (Jason Purdy)  
+
+version 4.04_01
+-  move load_tmpl hook to after we build $tmpl_file so it will always have a
+  (probably) valid file to work with.
+
+- initial support for a default template name in load_tmpl(). That means
+  you can now do this:
+
+  my $t = $self->load_tmpl();
+
+  And it will default to a file named after the current run mode with a
+  .html extension. 
+
+version 4.03
+- Fixed important bug introduced in 4.02 in which a mode_param
+  set in a sub-class would have been ignored. A new automated test
+  was added to prevent this regression in the future. 
+
+version 4.02
+- Documented existence of CGI::Application::Plugin::FillInForm.
+
+- path_info option to mode_param now supports negative index numbers
+  to grab the run mode name from the other end of the PATH_INFO. 
+  (Thilo Planz)
+
+- Altered how "start_mode" default is set, allowing it to be set
+  through the hook system in the 'init' phase. Existing applications
+  should be unaffected.
+
+- Return value of run_modes() was documented.
+
+- Integrate more examples of using plugins into the documentation.
+
+- 'error' hook was added, which is executed just before error_mode() might
+  be called. An example use of this would be a logging plugin that wants to
+  log that the application died. Although it's unlikely to change, it is marked
+  as experimental for now.
+
+version 4.01
+ NOTE: This release has an important incompatibility from the 4.0 release
+ two days ago. The 'load_tmpl' hook which was just introduced has had it's
+ interface changed. The change allows plug-in authors to affect the parameters
+ passed to the 'new' constructor of the template object, instead of just adding
+ parameters later. 
+
+version 4.0
+ This release adds a major new feature of special interest to plugin
+ authors: 'hooks'. This concept helps to create plugins that are more powerful
+ and simpler to use for end users. See the documentation on writing plugins for
+ details.
+
+ Special thanks to Cees Hek and Michael Graham for their effort to develop
+ and refine the hook system.
+
+ Since the last major release, there has been an explosion of new plugins
+ developed. This is an incomplete list of modules below the
+ 'CGI::Application::Plugin' namespace. Expect more to be added and updated soon
+ with the advent of the hook system: 
+
+   ::AnyTemplate - Use any templating system with a unified interface 
+   ::Apache - Use Apache::* modules without interference
+   ::AutoRunmode - Automatically register runmodes
+   ::ConfigAuto - Integration with Config::Auto
+   ::Config::Context - Integration with Config::Context
+   ::Config::General - Integration with Config::General
+   ::Config::Simple - Integration with Config::Simple
+   ::CompressGzip - Add Gzip compression 
+   ::DBH - Integration with DBI
+   ::LogDispatch - Integration with Log::Dispatch
+   ::Session - Integration with CGI::Session
+   ::Stream - Help stream files to the browser
+   ::TT - Use Template::Toolkit as an alternative to HTML::Template
+   ::ValidateRM - Integration with Data::FormValidator and HTML::FillInForm
+
+ The following additional changes are also present in this release:
+ - Enhanced tests and documentation for error_mode(). (Rob Kinyon). 
+ - Clarified Plug-in documentation (Timothy Appnel)
+ - Avoid some warnings when getting run mode from PATH_INFO (Emanuele Zeppieri)
+ - Use query() object to get PATH_INFO, to workaround bug in IIS web server. (Mark Stosberg)
+ - Documented return value of header_props() 
+
+-------------------------------------------------------------------
+Tue Oct  4 15:45:18 CEST 2005 - dmueller@suse.de
+
+- add norootforbuild 
+
+-------------------------------------------------------------------
+Mon Feb 28 15:59:55 CET 2005 - cwh@suse.de
+
+- update to version 3.31
+
+-------------------------------------------------------------------
+Wed Mar  3 16:18:56 CET 2004 - freitag@suse.de
+
+- update to version 3.22, to bring it away from ancient old version  
+
+-------------------------------------------------------------------
+Fri Aug 22 17:43:57 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Jul 28 11:02:02 CEST 2003 - ro@suse.de
+
+- install to vendor locations 
+
+-------------------------------------------------------------------
+Mon Jun 23 13:57:58 CEST 2003 - ro@suse.de
+
+- update to version 3.0
+- added directories to filelist
+
+-------------------------------------------------------------------
+Sun May 25 23:48:53 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot
+
+-------------------------------------------------------------------
+Thu Jan 30 11:36:57 CET 2003 - ro@suse.de
+
+- no noarch 
+
+-------------------------------------------------------------------
+Fri Dec 13 14:36:12 CET 2002 - freitag@suse.de
+
+- new version 2.6 
+

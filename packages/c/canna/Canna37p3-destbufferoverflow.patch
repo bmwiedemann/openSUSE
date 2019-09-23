@@ -1,0 +1,31 @@
+Index: cmd/catdic/rutil.c
+===================================================================
+--- cmd/catdic/rutil.c.orig
++++ cmd/catdic/rutil.c
+@@ -24,7 +24,7 @@
+  * rutil.c
+  */
+ #ifndef lint
+-static char rcs[] = "@(#) 112.1 $Id: rutil.c,v 1.3.2.2 2003/12/27 17:15:21 aida_s Exp $";
++static const char rcs[] = "@(#) 112.1 $Id: rutil.c,v 1.3.2.2 2003/12/27 17:15:21 aida_s Exp $";
+ #endif
+ 
+ #ifdef ENGINE_SWITCH
+@@ -385,7 +385,7 @@ int mode ;
+ 	(void)fprintf(stderr,gettxt("cannacmd:205", 
+     "Specified dictionary \"%s\" already exists. Do you overwrite it ? (y/n)"),
+ 		      dicname);
+-	fgets(ans,80,stdin);
++	fgets(ans,79,stdin);
+     } else {
+ 	(void)fprintf(stderr,gettxt("cannacmd:206", 
+ 	    "Specified dictionary \"%s\" already exists."),dicname);
+@@ -475,7 +475,7 @@ int mode ;
+     if (isatty(fileno(stdin)) != 0) {
+ 	(void)fprintf(stderr,gettxt("cannacmd:216", 
+ "Personal learning file of dictionary \"%s\" exists. Do you overwrite it ? (y/n)"),dicname);
+-	fgets(ans,80,stdin);
++	fgets(ans,79,stdin);
+     } else {
+ 	(void)fprintf(stderr,gettxt("cannacmd:217", 
+     "Personal learning file of system dictionary \"%s\" already exists."),

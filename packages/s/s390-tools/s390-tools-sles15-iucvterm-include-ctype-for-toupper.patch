@@ -1,0 +1,26 @@
+From e179b7a9acdd63caacf352b37e128b5326f151cd Mon Sep 17 00:00:00 2001
+From: Hendrik Brueckner <brueckner@linux.vnet.ibm.com>
+Date: Wed, 18 Oct 2017 11:35:58 +0200
+Subject: [PATCH] iucvterm: include ctype for toupper()
+
+Signed-off-by: Hendrik Brueckner <brueckner@linux.vnet.ibm.com>
+Signed-off-by: Michael Holzheu <holzheu@linux.vnet.ibm.com>
+---
+ iucvterm/src/getopt.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/iucvterm/src/getopt.c b/iucvterm/src/getopt.c
+index 503f6dd..b79b6a9 100644
+--- a/iucvterm/src/getopt.c
++++ b/iucvterm/src/getopt.c
+@@ -8,6 +8,7 @@
+  * s390-tools is free software; you can redistribute it and/or modify
+  * it under the terms of the MIT license. See LICENSE for details.
+  */
++#include <ctype.h>
+ #include <getopt.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+-- 
+1.7.12.4
+

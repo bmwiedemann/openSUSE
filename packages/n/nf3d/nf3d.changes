@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed Apr 22 21:58:11 UTC 2015 - jengelh@inai.de
+
+- Update to upstream release 0.8
+* Replace "env python" by just python
+
+-------------------------------------------------------------------
+Mon Sep 29 08:28:48 UTC 2014 - jengelh@inai.de
+
+- Drop RHEL5 build instructions
+
+-------------------------------------------------------------------
+Wed Mar  6 20:12:32 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 0.7) for build.opensuse.org

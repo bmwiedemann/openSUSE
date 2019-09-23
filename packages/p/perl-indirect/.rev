@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>de7473e9c637e2c3d7c7fea5dca5d96e</srcmd5>
+    <version>0.31</version>
+    <time>1393705333</time>
+    <user>coolo</user>
+    <comment>needed by perl-strictures</comment>
+    <requestid>224307</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>de7473e9c637e2c3d7c7fea5dca5d96e</srcmd5>
+    <version>0.31</version>
+    <time>1409302588</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a389c508e08aed1b0ce5339fde3e9da8</srcmd5>
+    <version>0.35</version>
+    <time>1429107755</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296012</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0d53a6e8d310fd61f9f065c7872c614b</srcmd5>
+    <version>0.36</version>
+    <time>1437384146</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317468</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0608c877587a8ecb4f48ed7de8ae6541</srcmd5>
+    <version>0.37</version>
+    <time>1468999149</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411403</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>014dbde429fdb3c904ba86222a027895</srcmd5>
+    <version>0.38</version>
+    <time>1510761138</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539948</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>825109ec0ef61890779a61f8744044e8</srcmd5>
+    <version>0.39</version>
+    <time>1563366429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715753</requestid>
+  </revision>
+</revisionlist>

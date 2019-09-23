@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>116636965e29ebc9024d2fb49c4911dd</srcmd5>
+    <version>0.6</version>
+    <time>1503592933</time>
+    <user>dimstar_suse</user>
+    <comment>0.6</comment>
+    <requestid>512590</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>177f7a170aa07ed521eedb58726c3bef</srcmd5>
+    <version>0.6</version>
+    <time>1520778349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585175</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c06830e6873019aecb6300caebf84872</srcmd5>
+    <version>0.6</version>
+    <time>1556475091</time>
+    <user>maxlin_factory</user>
+    <comment>- Add config /etc/alsa/conf.d/99-equal.conf (boo#1133432)
+</comment>
+    <requestid>697891</requestid>
+  </revision>
+</revisionlist>

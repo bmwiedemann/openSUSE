@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Wed Apr 17 11:44:43 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.5.4
+  * Add ``min_col_len`` and ``col_len_multiplier`` options to 
+    :meth:`.Table.to_sql` to control the length of text columns.
+  * agate-sql is now tested against Python 3.7.
+  * Drop support for Python 3.3 (end-of-life was September 29, 2017).
+  * Add support for CrateDB.
+  * Set type to ``BIT`` for boolean (MS SQL).
+  * Eliminate SQLite warning about Decimal numbers.
+- added patches
+  we do not have crate dialect
+  + python-agate-sql-no-crate.patch
+
+-------------------------------------------------------------------
+Wed May  9 18:54:36 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.5.3
+  * Add chunk_size option to :meth:`.Table.to_sql` to write rows in batches.
+  * Add unique_constraint option to :meth:`.Table.to_sql` to include in a UNIQUE constraint.
+  * Specify precision and scale for DECIMAL (MS SQL, MySQL, Oracle).
+  * Set length of VARCHAR to 1 even if maximum length is 0 (MySQL).
+  * Set type to TEXT if maximum length is greater than 21,844 (MySQL).
+- Use license tag
+
+-------------------------------------------------------------------
+Fri Oct 20 16:12:44 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

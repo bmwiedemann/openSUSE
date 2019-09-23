@@ -1,0 +1,24 @@
+From: Some One <nobody@opensuse.org>
+Date: Thu, 9 Apr 2015 14:55:39 +0200
+Subject: [PATCH] devel-provide-is-devel-package.diff
+
+===================================================================
+---
+ FilesCheck.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+Index: rpmlint-rpmlint-1.11/FilesCheck.py
+===================================================================
+--- rpmlint-rpmlint-1.11.orig/FilesCheck.py
++++ rpmlint-rpmlint-1.11/FilesCheck.py
+@@ -446,6 +446,10 @@ class FilesCheck(AbstractCheck.AbstractC
+         # Check if the package is a development package
+         devel_pkg = devel_regex.search(pkg.name)
+ 
++        for p in pkg.provides():
++            if not devel_pkg and devel_regex.search(p[0]):
++                devel_pkg = True
++
+         config_files = pkg.configFiles()
+         ghost_files = pkg.ghostFiles()
+         doc_files = pkg.docFiles()

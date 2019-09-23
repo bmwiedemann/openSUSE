@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="25">
+    <srcmd5>d627b70a874d8132eb58098c40b32061</srcmd5>
+    <version>0.2</version>
+    <time>1205887768</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="64">
+    <srcmd5>d627b70a874d8132eb58098c40b32061</srcmd5>
+    <version>0.2</version>
+    <time>1205887768</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="65">
+    <srcmd5>e7c3c3c3a789eef23f00cd48e3a8847e</srcmd5>
+    <version>0.2</version>
+    <time>1245338630</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="66">
+    <srcmd5>77564e15b85c6ded75757f020e7c9f60</srcmd5>
+    <version>0.2</version>
+    <time>1247517343</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="68">
+    <srcmd5>77564e15b85c6ded75757f020e7c9f60</srcmd5>
+    <version>0.2</version>
+    <time>1247517343</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="69">
+    <srcmd5>19dc31c1be7e80de50f7a6cb2f895f20</srcmd5>
+    <version>0.2</version>
+    <time>1268923536</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="71">
+    <srcmd5>19dc31c1be7e80de50f7a6cb2f895f20</srcmd5>
+    <version>0.2</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="72">
+    <srcmd5>19dc31c1be7e80de50f7a6cb2f895f20</srcmd5>
+    <version>0.2</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="75">
+    <srcmd5>19dc31c1be7e80de50f7a6cb2f895f20</srcmd5>
+    <version>0.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="76">
+    <srcmd5>530dcfad89c9213ce995f049366c8abf</srcmd5>
+    <version>0.2</version>
+    <time>1316516098</time>
+    <user>saschpe</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.) (forwarded request 83523 from jengelh)</comment>
+    <requestid>83725</requestid>
+  </revision>
+  <revision rev="11" vrev="77">
+    <srcmd5>d56dab74e5af691addfbd585ebb58757</srcmd5>
+    <version>0.2</version>
+    <time>1317744573</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86384 from uli_suse)</comment>
+    <requestid>86429</requestid>
+  </revision>
+  <revision rev="12" vrev="79">
+    <srcmd5>d56dab74e5af691addfbd585ebb58757</srcmd5>
+    <version>0.2</version>
+    <time>1319181878</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="80">
+    <srcmd5>eb9cd752e0a5c9b301644b1dc70128cb</srcmd5>
+    <version>0.2</version>
+    <time>1323191369</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="82">
+    <srcmd5>eb9cd752e0a5c9b301644b1dc70128cb</srcmd5>
+    <version>0.2</version>
+    <time>1340183330</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="84">
+    <srcmd5>eb9cd752e0a5c9b301644b1dc70128cb</srcmd5>
+    <version>0.2</version>
+    <time>1359108880</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="86">
+    <srcmd5>eb9cd752e0a5c9b301644b1dc70128cb</srcmd5>
+    <version>0.2</version>
+    <time>1379662344</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="88">
+    <srcmd5>eb9cd752e0a5c9b301644b1dc70128cb</srcmd5>
+    <version>0.2</version>
+    <time>1409300880</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="89">
+    <srcmd5>5128a285351be5618541accb454746bb</srcmd5>
+    <version>0.2</version>
+    <time>1449687144</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347709</requestid>
+  </revision>
+</revisionlist>

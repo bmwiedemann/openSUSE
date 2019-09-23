@@ -1,0 +1,220 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4fc1ad9a2e020dedde0b0bfd94763d09</srcmd5>
+    <version>1.6.1</version>
+    <time>1387390894</time>
+    <user>coolo</user>
+    <comment>Mate for OpenSUSE see http://lists.opensuse.org/opensuse-factory/2013-09/msg00387.html</comment>
+    <requestid>199564</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cdba07d9bc74288d2b64a6e4b410b98b</srcmd5>
+    <version>1.6.2</version>
+    <time>1388774687</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.6.2
+  + Fix summary for invest applet
+  + Require pygobject 3 now that it was ported to gi
+  + battstat applet: ready for upower-1.0
+  + Fix Sun GNOME Documentation Team references
+  + Upate yahoo finance http adress
+  + Correct invest Icon name
+  + Fix typo in AM_INIT_AUTOMAKE
+  + make distcheck now works
+  + Make tar.xz and not tar.gz
+  + Just use CLEANFILES instead of DISTCLEANFILES
+  + Correct name, server -&gt; service
+  + Add applet_DATA to CLEANFILES
+  + Mixer applet moved so also remove MATE_MixerApplet.server.in
+  + Remove Invest_Applet.xml from po/POTFILES.in
+    It causes gettext to throw a fit and mateweather applet has a
+    simular file and it is also not in POTFILES.in
+  + Replace old gconf with gsettings schema
+  + Remove MAINTAINERS (does not exist) file from extra dist
+  + Fix EXTRA_DIST for applet gschemas
+    The following fails to include the needed schemas files:
+    $(gsettings_SCHEMAS_in_in) replacing it with
+    $(gsettings_SCHEMAS).in.in
+  + fix some make files for automake-1.13
+- Replace python-gtk-devel requirement with python-gobject;
+  the applets have been ported to gobject
+- Remove mate-invest applet and %{_bindir} from %files section; don't
+  exist anymore (forwarded request 212545 from posophe)</comment>
+    <requestid>212546</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3000f335b472f6e6686167d5a89839c9</srcmd5>
+    <version>1.8.0</version>
+    <time>1395495870</time>
+    <user>coolo</user>
+    <comment>Push X11:M:N to X11:M:F; new libraries (external dependencies) and a lot of renamed packages</comment>
+    <requestid>225330</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a27dc9004697f4b792021dd3e0e0e019</srcmd5>
+    <version>1.8.0</version>
+    <time>1397042089</time>
+    <user>coolo</user>
+    <comment>Build with stickynotes support (forwarded request 229191 from posophe)</comment>
+    <requestid>229192</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>f8c98744690775547cbc493eaa8e3136</srcmd5>
+    <version>1.8.0</version>
+    <time>1405178112</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240766</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>f8c98744690775547cbc493eaa8e3136</srcmd5>
+    <version>1.8.0</version>
+    <time>1409301860</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>96df33a713e5edff02df040423d3fd79</srcmd5>
+    <version>1.8.1</version>
+    <time>1412533895</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253751</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8f288ac391900b70ff8876143d96ab38</srcmd5>
+    <version>1.10.1</version>
+    <time>1435870108</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314205</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c5c02d136628fc094bc539b1ff5a32e4</srcmd5>
+    <version>1.10.3</version>
+    <time>1437384136</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>317254</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6b518a0cd2bed375a5c3d6c9861a5fc0</srcmd5>
+    <version>1.12.0</version>
+    <time>1447234221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>342766</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>62d274cf664315c52ec285c8e0726d4a</srcmd5>
+    <version>1.12.1</version>
+    <time>1449145881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>346768</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0473fa5da898349a0704953ec6f9f007</srcmd5>
+    <version>1.14.0</version>
+    <time>1460740177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>386772</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d999a88f6297dfe2d872b0a93a947a27</srcmd5>
+    <version>1.14.1</version>
+    <time>1471428384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>419627</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>65330be15ddd7a62c9431130e6d8efc6</srcmd5>
+    <version>1.16.0</version>
+    <time>1474807360</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>429533</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a718a01be533bf10fbf09fa89cb42738</srcmd5>
+    <version>1.18.0</version>
+    <time>1490026293</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>481123</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9de16e8f12cefe8f64dfdf6fb2004d0e</srcmd5>
+    <version>1.18.1</version>
+    <time>1491896788</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>486428</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a93a241de03e3a63ae8681723be004f8</srcmd5>
+    <version>1.18.2</version>
+    <time>1510045210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539045</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>287d4a46cbe24f77ef96bc3fd1d21af4</srcmd5>
+    <version>1.20.0</version>
+    <time>1521579405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586540</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ba041261363ab59a93b465c737f5e6cf</srcmd5>
+    <version>1.20.1</version>
+    <time>1524238004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595712</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7e52cc5dc36162807cba4ae503a969fa</srcmd5>
+    <version>1.20.2</version>
+    <time>1528492527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614405</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a56ee3a104971a594d3ba69ade55294c</srcmd5>
+    <version>1.20.3</version>
+    <time>1546946775</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.3.</comment>
+    <requestid>661257</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a42fd6cd08e7d1b5ddc024f63f85b452</srcmd5>
+    <version>1.22.0</version>
+    <time>1558037015</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.0.</comment>
+    <requestid>682557</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d11e1d59031beb29e2ad7c0b8d7a6195</srcmd5>
+    <version>1.22.1</version>
+    <time>1560970667</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.1.</comment>
+    <requestid>704389</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c5ca419b09a2c6c17552183a9aaaccf9</srcmd5>
+    <version>1.23.0</version>
+    <time>1564576496</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>719953</requestid>
+  </revision>
+</revisionlist>

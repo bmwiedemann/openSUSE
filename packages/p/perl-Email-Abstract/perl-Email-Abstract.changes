@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Tue Apr 14 19:20:31 UTC 2015 - coolo@suse.com
+
+- updated to 3.008
+   see /usr/share/doc/packages/perl-Email-Abstract/Changes
+
+  3.008     2014-12-27 18:36:19-05:00 America/New_York
+          - make results of get_body be the same on Email::{Simple,MIME}
+          - ...but this method is a mess, so maybe avoid using Abstract for body
+            work
+  
+  3.007     2013-12-31 10:39:14 America/New_York
+            fix skip count when MIME::Entity is not present
+  
+  3.006     2013-09-01 08:41:48 America/New_York
+            require Email::Simple 1.998 to allow ->new(\$string)
+  
+  3.005     2013-07-30 09:57:36 America/New_York
+            repackage, update bug tracker, etc.
+  
+            provide raw body on multipart Email::MIME messages (thanks,
+            bailey@upenn)
+            [rt.cpan.org #77624]
+
+-------------------------------------------------------------------
+Tue May 31 14:35:13 UTC 2011 - coolo@novell.com
+
+- updated to 3.004
+       If present, MIME::Entity must be v5.501; v5.500 had a regression (or
+       a bug fix, depending how you look at it) that broke header-reading.
+       While technically older versions that are not 5.500 would work, it is
+       much simpler to just require the newest version, rather than to
+       support a version range with a hole in it.
+
+       replace Class::ISA with mro (MRO::Compat)
+
+       avoid a warning in MailInternet with zero headers found
+
+-------------------------------------------------------------------
+Wed Dec  1 10:12:40 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:49 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Jun  2 09:45:01 CEST 2009 - lars@linux-schulserver.de
+
+- update to 3.001
+
+-------------------------------------------------------------------
+Fri Sep 14 00:00:00 CEST 2007 - James Oakley <jfunk@funktronics.ca> - 2.132-1
+
+- Initial release
+

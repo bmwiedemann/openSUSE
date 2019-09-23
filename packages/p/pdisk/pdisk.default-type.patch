@@ -1,0 +1,42 @@
+ partition_map.c |    1 +
+ partition_map.h |    1 +
+ pdisk.c         |    2 +-
+ 3 files changed, 3 insertions(+), 1 deletion(-)
+
+Index: pdisk/partition_map.c
+===================================================================
+--- pdisk.orig/partition_map.c
++++ pdisk/partition_map.c
+@@ -72,6 +72,7 @@
+ const char * kFreeType	= "Apple_Free";
+ const char * kMapType	= "Apple_partition_map";
+ const char * kUnixType	= "Apple_UNIX_SVR2";
++const char * kLinuxType	= "Linux";
+ const char * kHFSType	= "Apple_HFS";
+ const char * kPatchType	= "Apple_Patches";
+ 
+Index: pdisk/partition_map.h
+===================================================================
+--- pdisk.orig/partition_map.h
++++ pdisk/partition_map.h
+@@ -88,6 +88,7 @@ enum {
+ extern const char * kFreeType;
+ extern const char * kMapType;
+ extern const char * kUnixType;
++extern const char * kLinuxType;
+ extern const char * kHFSType;
+ extern const char * kFreeName;
+ extern const char * kPatchType;
+Index: pdisk/pdisk.c
+===================================================================
+--- pdisk.orig/pdisk.c
++++ pdisk/pdisk.c
+@@ -651,7 +651,7 @@ do_create_partition(partition_map_header
+ 	return;
+     }
+     if (get_type == 0) {
+-	add_partition_to_map(name, kUnixType, base, length, map);
++	add_partition_to_map(name, kLinuxType, base, length, map);
+ 	if (map->blocks_in_map > MAX_LINUX_MAP) {
+ 	    error(-1, "Map contains more than %d blocks - Linux may have trouble", MAX_LINUX_MAP);
+ 	}

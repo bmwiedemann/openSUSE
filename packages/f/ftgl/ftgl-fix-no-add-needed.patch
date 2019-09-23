@@ -1,0 +1,11 @@
+--- configure.ac.orig
++++ configure.ac
+@@ -36,7 +36,7 @@ AC_CHECK_HEADER([stdlib.h])
+ # Check for system functions
+ AC_CHECK_FUNCS(wcsdup)
+ AC_CHECK_FUNCS(strndup)
+-
++AC_SEARCH_LIBS(sin, m)
+ # Checks for libraries.
+ 
+ AC_PATH_X

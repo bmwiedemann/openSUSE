@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/ClusterLabs/sbd.git</param>
+    <param name="changesrevision">398628bbcc896be4da21d273392f2fe6391319e2</param>
+  </service>
+</servicedata>

@@ -1,0 +1,21 @@
+--- README
++++ README	2005/10/21 07:36:26
+@@ -13,7 +13,7 @@
+ 
+ The present implementation requires Linux-PAM as it takes
+ advantage of the extended configuration syntax of pam.conf.
+-(See the example configuration file included with the 
++(See the example configuration file (pam.conf) included with the 
+ software for an example of configuring it with pam_ldap.)
+ On platforms that do not use Linux-PAM you would need a
+ wrapper PAM module to choose an action based on the
+@@ -64,3 +64,9 @@
+ The pam_ccreds module is distributed under the GNU General
+ Public License.
+ 
++Here is an example for a LDAP authentification entry in /etc/pam.d/ directory:
++
++auth [authinfo_unavail=ignore success=1 default=2] pam_ldap.so try_first_pass
++auth [default=done]  pam_ccreds.so action=validate use_first_pass
++auth [default=done]  pam_ccreds.so action=store
++auth [default=bad]   pam_ccreds.so action=update

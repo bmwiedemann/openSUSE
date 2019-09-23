@@ -1,0 +1,224 @@
+-------------------------------------------------------------------
+Mon May 20 13:38:34 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add the missing zlib requirement.
+
+-------------------------------------------------------------------
+Mon Sep 24 18:05:44 UTC 2018 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 2.5.0
+
+Updates:
+  * Issue #323: Support for EDDSA with vendor defined mechanisms.
+  * Issue #362: CMake Build System Support for SoftHSM.
+  * Issue #368: Support migrating 32-bit SoftHSMv1 DB on 64-bit system (LP64).
+  * Issue #385: Default is not to build EDDSA since it has not been released in OpenSSL.
+  * Issue #387: Windows: Add VS2017 detection to Configure.py.
+  * Issue #412: Replace PKCS11 headers with a version from p11-kit.
+
+Bugfixes:
+  * Issue #366: Support cross-compilation.
+  * Issue #377: Duplicate symbol error with custom p11test.
+  * Issue #386: Use RDRAND in OpenSSL if that engine is available.
+  * Issue #388: Update DBTests.cpp to fix x86 test failure.
+  * Issue #393: Not setting CKA_PUBLIC_KEY_INFO correctly.
+  * Issue #401: Wrong key and keyserver mentioned in installation documentation.
+  * Issue #408: Remove mutex callbacks after C_Finalize().
+
+-------------------------------------------------------------------
+Tue Feb 27 18:50:20 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.4.0
+  * Support PKCS#8 for GOST.
+  * Support for CKA_ALLOWED_MECHANISMS.
+  * Support CKA_ALWAYS_AUTHENTICATE for private key objects.
+  * Support for CKM_DES3_CMAC and CKM_AES_CMAC.
+  * Support for CKM_AES_GCM.
+  * Document that initialized tokens will be reassigned to another
+    slot (based on the token serial number).
+  * Support for CKM_RSA_PKCS_PSS.
+  * Import AES keys with softhsm2-util.
+  * softhsm2-util will check the configuration and report any
+    issues before loading the PKCS#11 library.
+
+-------------------------------------------------------------------
+Sun Dec 17 19:16:24 UTC 2017 - mardnh@gmx.de
+
+- Update to version 2.3.0
+  * Upgraded to PKCS#11 v2.40.
+  * Minor changes to some return values.
+  * Added CKA_DESTROYABLE to all objects. Used by C_DestroyObject().
+  * Added CKA_PUBLIC_KEY_INFO to certificates, private, and public key
+    objects. Will be accepted from application, but SoftHSM will
+    currently not calculate it.
+  * Support for CKM_AES_CTR.
+  * Add unit tests for SessionManager.
+  * C_DigestKey returns CKR_KEY_INDIGESTIBLE when key
+    attribute CKA_EXTRACTABLE = false. Whitelist SHA algorithms to allow
+    C_DigestKey in this case.
+  * Show slot id after initialization.
+  * Run AppVeyor (Windows CI) for each PR and merge.
+  * Set CKA_DECRYPT/CKA_ENCRYPT flags on key import to true.
+  * Add support for libeaycompat lib for FIPS on Windows.
+  * Support importing ECDSA P-521 in softhsm-util.
+  * Support for Botan 2.0.
+  * Editorial changes from Mountain Lion to Sierra.
+  * More detailed error messages when initializing SoftHSM.
+  * Support for LibreSSL.
+  * Change to enable builds and reports on new Jenkinks environment.
+  * Detect cppunit in autoconf.
+  * CKO_CERTIFICATE and CKO_PUBLIC_KEY now defaults to CKA_PRIVATE=false.
+  * Update README with information about logging.
+  * Adjust log levels for failing to enumerate object store.
+  * Better handling of CRYPTO_set_locking_callback() for OpenSSL.
+  * Fix deriving shared secret with ECC.
+  * HMAC with sizes less than L bytes is strongly discouraged.
+    Set a lower bound equal to L bytes in ulMinKeySize and check it when
+    initializing the operation.
+  * Fix test of p11 shared library.
+  * Minor fix of 'EVP_CipherFinal_ex'.
+  * Fix build with cppunit.
+  * Export PKCS#11 symbols from the library.
+  * Zero pad key to fit the block in CKM_AES_KEY_WRAP.
+  * Detecting CppUnit when using Macports.
+
+- Update to version 2.2.0
+  * Delete a token using softhsm2-util.
+  * Change access mode bits for /var/lib/softhsm/tokens/
+    to 1777. All users can now create tokens, but only access their own.
+  * Reinitializing a token will now keep the token, but all
+    token objects are deleted, the user PIN is removed and the token
+    label is updated.
+  * Support for OpenSSL 1.1.0.
+  * Calling C_GetSlotList with NULL_PTR will make sure that
+    there is always a slot with an uninitialized token available.
+  * The token serial number will be used when setting the slot
+    number. The serial number is set after the token has been initialized.
+  * Update the command utils to use the token label or serial
+    to find the token and its slot number.
+  * Possibility to test other PKCS#11 implementations with the CppUnit test.
+  * Mark public key as non private by default.
+  * Install p11-kit module, to disable use --disable-p11-kit.
+  * Add windows continuous integration build.
+  * Missing new source file and test configuration in the
+    Windows build project.
+  * ECDSA P-521 support for OpenSSL and better test coverage.
+  * Fix segmentation faults in loadLibrary function.
+  * Crash on module unload with OpenSSL.
+  * C++11 not detected.
+  * API changes in Botan 1.11.27.
+  * Fix include guard to check WITH_FIPS.
+  * p11test fails on 32-bit systems.
+  * Build warning about "converting a string constant".
+  * Fix C++11 check to look for unique_ptr.
+  
+- Update to version 2.1.0
+  * Improved guide and build scripts for Windows.
+  * The password prompt in softhsm2-util can now be
+    interrupted (ctrl-c).
+  * Add slots.removable config option.
+  * Prioritize the return values in C_GetAttributeValue.
+  * Handle the CKA_CHECK_VALUE correctly for certificates
+    and symmetric key objects.
+  * Not possible to create certificate objects containing
+    CKA_CERTIFICATE_CATEGORY, CKA_NAME_HASH_ALGORITHM, or
+    CKA_JAVA_MIDP_SECURITY_DOMAIN.
+  * Do not attempt decryption of empty byte strings.
+  * Minor changes after a PVS-Studio code analysis, and
+    C_EncryptUpdate crash if no ciphered data is produced.
+  * One-byte buffer overflow in call to EVP_DecryptUpdate.
+  * Problem while closing library that is initialized but
+    improperly finalized.
+  * Adjust return values for the template parsing.
+  * C_DeriveKey() error with leading zero bytes.
+  * CKA_NEVER_EXTRACTABLE set to CK_FALSE on objects
+    created with C_CreateObject.
+  * Stop discarding the global OpenSSL libcrypto state.
+
+- Drop not longer needed patches (fixed upstream):
+  * softhsm-v2.0.0b1-aes-key-wrap.patch
+  * softhsm-v2.0.0b1-ckm-rsa-pkcs-oaep-key-wrap.patch
+  * softhsm-newcppunit.patch
+- Rebase patches:
+  * softhsm-rsakeys.patch
+- Fix URL
+
+-------------------------------------------------------------------
+Sun May  7 17:08:43 UTC 2017 - meissner@suse.com
+
+- softhsm-newcppunit.patch: new cppunit uses pkg-config now, not
+  cppunit-config
+
+-------------------------------------------------------------------
+Thu Oct  8 14:00:49 UTC 2015 - meissner@suse.com
+
+- softhsm-rsakeys.patch: do not test odd bit RSA keys, this breaks
+  with the FIPS enabled openssl from leap/sle12, as thats rounds
+  up the keylength to the next even number. bsc#949492
+
+-------------------------------------------------------------------
+Fri May  8 11:32:00 UTC 2015 - hguo@suse.com
+
+- Source extracted from Fedora 21 release SRPM with minor modifications.
+
+-------------------------------------------------------------------
+Tue Sep 30 00:00:00 UTC 2014 - pwouters@redhat.com
+
+- Add support for CKM_RSA_PKCS_OAEP key un/wrapping [Petr Spacek]
+- Use OpenSSL EVP interface for AES key wrapping [Petr Spacek]
+- Fix softhsm2-pk11install buid and post call
+- Do not use --with-objectstore-backend-db (causes issues on i686)
+- Change install directory to /usr/lib*/pkcs11/
+- Install pkcs11 module file
+- Use official upstream tar ball
+- Create ods user to own softhsm/token files
+- Enable migration tools (for softhsm-v1 installs)
+- Add softlink for softhsm-v1 .so (needed for opendnssec's conf.xml)
+- Require p11-kit, nss-tools, for SoftHSM PKCS #11 Module file
+- Copy pk11install.c from coolkey package
+- Enable hardened build
+- Add upstream official source url
+
+-------------------------------------------------------------------
+Fri Apr 18 00:00:00 UTC 2014 - pwouters@redhat.com
+
+- Updated to 1.3.6 (rhbz#1070196)
+- Provide a p11-kit module file (rhbz#1085327)
+
+-------------------------------------------------------------------
+Sun Nov  3 00:00:00 UTC 2013 - pwouters@redhat.com
+
+- Updated to 1.3.5 (rhbz#987721)
+
+-------------------------------------------------------------------
+Mon Jun  4 00:00:00 UTC 2012 - pwouters@redhat.com
+
+- Updated to 1.3.3
+
+-------------------------------------------------------------------
+Tue Apr  3 00:00:00 UTC 2012 - pwouters@redhat.com
+
+- Updated to 1.3.2.
+- Changed user from opendnssec to ods, as used in the opendnssec package
+
+-------------------------------------------------------------------
+Thu Oct 27 00:00:00 UTC 2011 - paul@xelerance.com
+
+- Initial Fedora package
+- Do not install the .a file
+- Use a separate "opendnssec" user to own /var/sofhsm
+
+-------------------------------------------------------------------
+Tue Oct 25 00:00:00 UTC 2011 - paul@xelerance.com
+
+- Fix description texts w.r.t. include files
+
+-------------------------------------------------------------------
+Wed Oct  5 00:00:00 UTC 2011 - paul@xelerance.com
+
+- Upgraded to 1.3.0
+
+-------------------------------------------------------------------
+Thu Mar  3 00:00:00 UTC 2011 - paul@xelerance.com
+
+- Initial package for Fedora

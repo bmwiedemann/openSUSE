@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Fri Sep 20 14:30:54 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file by using latest macros
+
+-------------------------------------------------------------------
+Mon Mar 18 14:41:04 UTC 2019 - lars@linux-schulserver.de - 1.15
+
+- weaken the dependency of the devel package (no exact release needed)
+- use new %%license macro
+
+-------------------------------------------------------------------
+Tue Jun  6 08:50:59 UTC 2017 - mpluskal@suse.com
+
+- Add mopac7-fortify.patch to fix building on latest Factory
+
+-------------------------------------------------------------------
+Sun Jan 29 11:46:04 UTC 2017 - mpluskal@suse.com
+
+- Update compiler flags
+
+-------------------------------------------------------------------
+Fri Jan 22 19:42:00 UTC 2016 - mpluskal@suse.com
+
+- Cleanup spec file
+- Do not ship .la file
+
+-------------------------------------------------------------------
+Thu Feb 26 21:42:42 UTC 2015 - mpluskal@suse.com
+
+- Use source url
+
+-------------------------------------------------------------------
+Sat Feb 21 21:28:30 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Update dependencies
+  * remove f2c
+  * remove explicit dependencies for devel package
+  * add pkg-config and full autotools
+
+-------------------------------------------------------------------
+Wed Jan 16 10:44:29 UTC 2013 - lars@linux-schulserver.de
+
+- explicit require libtool
+
+-------------------------------------------------------------------
+Tue Oct  9 23:14:57 UTC 2012 - lars@linux-schulserver.de
+
+- change provides
+
+-------------------------------------------------------------------
+Fri Jan 21 00:00:00 UTC 2011 - embar@users.berlios.de
+
+- update to 1.15
+
+-------------------------------------------------------------------
+Sun Mar 15 23:19:06 CET 2009 - lars@linux-schulserver.de
+
+- update to 1.14
+- adapted patches for new version
+
+-------------------------------------------------------------------
+Tue Dec 30 14:39:36 CET 2008 - lars@linux-schulserver.de
+
+- use libtoolize and aclocal to get it build for 11.1 again
+
+-------------------------------------------------------------------
+Thu Sep 25 15:10:50 CEST 2008 - lars@linux-schulserver.de
+
+- moved to Education base repository
+
+-------------------------------------------------------------------
+Mon May 19 17:16:27 CEST 2008 - lars@linux-schulserver.de
+
+- fix rpm group
+
+-------------------------------------------------------------------
+Mon May 19 16:11:19 CEST 2008 - lars@linux-schulserver.de
+
+- upadte to 1.13:
+  Including changes made by Tommi Hassinen, University of Kuopio, 
+  Finland, April 2001. 
+
+-------------------------------------------------------------------
+Mon Mar 24 17:02:24 CET 2008 - lars@linux-schulserver.de
+
+- initial version 1.10 for openSUSE
+

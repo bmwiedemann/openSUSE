@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57ab20b1c4893ee79c79bcf1871cdb76</srcmd5>
+    <version>1.5.3</version>
+    <time>1507755386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>522204</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1e789a6f2c48102e6475fe3b7a274ce0</srcmd5>
+    <version>1.5.3</version>
+    <time>1520253442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580805</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a3982a9efde34e9bc6d25a4bce160ff2</srcmd5>
+    <version>1.5.3</version>
+    <time>1520415517</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583415</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c6eff95e2d914ec06a12c2681deba3a5</srcmd5>
+    <version>1.5.3</version>
+    <time>1544726814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>654395</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>79641092ef9caf251771c0ba5044fd5b</srcmd5>
+    <version>1.5.4</version>
+    <time>1551455296</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.4:
+  * better python 3.7 compatibility</comment>
+    <requestid>680067</requestid>
+  </revision>
+</revisionlist>

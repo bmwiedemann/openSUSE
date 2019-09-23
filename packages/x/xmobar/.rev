@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6b463973278bacb7e2cdc4cc4f6c08b8</srcmd5>
+    <version>0.27</version>
+    <time>1533412430</time>
+    <user>dimstar_suse</user>
+    <comment>Add xmonad, xmobar, and their dependencies to Factory.</comment>
+    <requestid>627274</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3c2440935b105ab9b846b7f593b01fac</srcmd5>
+    <version>0.28</version>
+    <time>1535367503</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>631368</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d52851d2607110d76ed28defa5e9d48e</srcmd5>
+    <version>0.28.1</version>
+    <time>1540448401</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642917</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e77e00aa377258f196253332537b351d</srcmd5>
+    <version>0.29</version>
+    <time>1544095022</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>653447</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>706c13b3a72bda5417dddb580035c147</srcmd5>
+    <version>0.29.1</version>
+    <time>1544441399</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>656593</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>84aa1db435edcc4e182d4c5ed32f6fef</srcmd5>
+    <version>0.29.3</version>
+    <time>1545376875</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>658078</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1a4489d2ebb2a5b7b37e715e0896bdfa</srcmd5>
+    <version>0.29.4</version>
+    <time>1545996924</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>661504</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fae0ccaa8378c0d610b3fe3d712d488a</srcmd5>
+    <version>0.29.5</version>
+    <time>1552985993</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>686013</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1e1df85cd02218819b9f76e9d512bc94</srcmd5>
+    <version>0.29.5</version>
+    <time>1560338287</time>
+    <user>dimstar_suse</user>
+    <comment>add support for other time zones</comment>
+    <requestid>709189</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3bb6bc5d4f8075ca330c221d320615ae</srcmd5>
+    <version>0.30</version>
+    <time>1566665075</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>725526</requestid>
+  </revision>
+</revisionlist>

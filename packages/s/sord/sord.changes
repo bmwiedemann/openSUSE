@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Fri Aug 24 13:55:33 UTC 2018 - tchvatal@suse.com
+
+- Update to 0.16.2:
+  * Update waf bundle to 2.0.9
+  * Fix warious compiler warnings and clang-format reports
+
+-------------------------------------------------------------------
+Thu Nov  2 11:49:01 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.16.0:
+  * Fix construction and comparison of URIs with UTF-8 characters
+  * Fix documentation generation
+  * Return error from sord_inserter_write_statement() if a node can
+    not be written (e.g. undefined prefix)
+  * Make sord_node_get_counted return byte count, and clarify
+    documentation
+  * Safely return NULL from sord_iter_get() for end iterators
+  * Add sord_node_get_string_measured() to get both byte and
+    character counts
+  * sord_validate: Do proper numeric comparison for propery bounds
+    checking
+  * sord_validate: Tolerate xsd:decimal literals for double and
+    float properties if literals match pattern
+- Use python3
+- Rename devel subpackage
+- Run tests during building
+
+-------------------------------------------------------------------
+Mon Jan 30 22:06:32 UTC 2017 - jengelh@inai.de
+
+- Rename soname macro to sover as it does not contain a name
+
+-------------------------------------------------------------------
+Thu Jan 12 08:32:04 UTC 2017 - olaf@aepfle.de
+
+- Add baselibs.conf for gstreamer-plugins-bad-32bit
+
+-------------------------------------------------------------------
+Thu Dec 17 10:26:07 UTC 2015 - davejplater@gmail.com
+
+- Added manpage sord.3 and api docs to devel package.
+
+-------------------------------------------------------------------
+Wed Dec 16 08:52:37 UTC 2015 - olaf@aepfle.de
+
+- Add BuildRoot: for SLE_11
+
+-------------------------------------------------------------------
+Wed Dec  9 01:59:33 UTC 2015 - someuniquename@gmail.com
+
+- Removed doc package due to build problems.
+- Update to version 0.14.0 stable;
+
+  * Reduce memory usage and increase performance with a better data structure
+  * Add sord_erase() for erasing statements via an iterator
+  * Fix bugs with stores that contain both graphs and default graph statements
+  * Fix crash caused by multiple deletion of datatype nodes
+  * Fix compilation on compilers that do not support -pthread flag
+  * Fix minor memory leak in sordi
+  * Fix using sordi with stdin
+  * Show sordi errors in standard format
+  * sord_validate: More extensive validation, including cardinality,
+    PlainLiteral, and someValuesFrom restrictions.
+  * This release does not break the ABI, but the semantics of iterators has
+    changed: any modification to a model invalidates iterators on that model
+  * Improve test coverage
+  * Upgrade to waf 1.8.14
+
+-------------------------------------------------------------------
+Wed Mar 25 16:06:46 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.12.2
+  * Fix iteration over an entire graph (* * * graph)
+  * sordmm.hpp: Remove unused members
+  * Update to waf 1.7.16
+
+-------------------------------------------------------------------
+Thu Sep  5 20:51:13 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 0.12.0
+  * Update to waf 1.7.9 and autowaf r90 (install docs to versioned directory)
+  * Add sord_get() for easily getting single property values
+  * sord_validate: Pass type check when range is xsd:anyURI and value is a URI
+  * sord_validate: Support any subClassOf rdf:Property, not just baked-in ones
+  * sordmm.hpp: Add convenient constructors for decimal and integer literals
+  * sordmm.hpp: Add Node::to_serd_node()
+  * sordmm.hpp: Don't automatically add RDF namespace prefix to world
+
+-------------------------------------------------------------------
+Tue Oct 23 21:32:33 UTC 2012 - reddwarf@opensuse.org
+
+- Remove sord-0.8.0-no_g++.patch, applied upstream
+- Update to 0.10.4
+  * Implement better data type validation in sord_validate conformant with
+    the XSD and OWL specifications
+  * Fix memory leaks in sord_validate
+  * Install sord_validate man page
+  * Disable timestamps in HTML documentation for reproducible build
+  * Add error callback to world for custom error reporting
+  * Performance and space (per node) improvements
+  * SSE4.2 accelerated hashing for node interning, where available
+  * Make all 'zix' symbols private to avoid symbol clashes in static builds
+  * Remove problematic "Loaded n statements" output from serdi
+  * Strip down API documentation to a single clean page
+  * Fix various hyper-strict warnings
+  * Do not require a C++ compiler to build
+  * Add option to build utilities as static binaries
+  * Upgrade to waf 1.7.2
+  * sordmm.hpp: Add indices and graphs parameters to Model constructor
+  * sordmm.hpp: Remove overzealous URI scheme assertion
+  * sordmm.hpp: Correctly handle Sord::Node self-assignment
+
+-------------------------------------------------------------------
+Thu Aug 16 14:25:48 UTC 2012 - reddwarf@opensuse.org
+
+- Fix main package metadata
+- Install sord_validate man page
+- Created a libsord-docs subpackage to let multiple devel packages
+  with different APIs to be installed at the same time
+
+-------------------------------------------------------------------
+Wed Aug  8 22:29:36 UTC 2012 - reddwarf@opensuse.org
+
+- First version of the package
+- Added sord-0.8.0-no_g++.patch
+

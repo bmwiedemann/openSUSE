@@ -1,0 +1,48 @@
+From 39435177118c9fbc5d3863879c6e4616fd4c12c5 Mon Sep 17 00:00:00 2001
+From: anthraxx <levente@leventepolyak.net>
+Date: Tue, 26 Jan 2016 14:34:08 +0100
+Subject: [PATCH] do not forcefully remove the build directory manually
+
+this fixes issue #179.
+setuptools should itself know when to use cache or create a
+new build... however if someone wants to override that, it's
+still possible but forcefully doing that on whatever
+setuptools target will (and does) introduce problems.
+
+Build directory should be cleaned up via the clean sub-command.
+examples:
+- clean up temp:
+  python setup.py clean
+- clean up whole build dir
+  python setup.py clean -a
+
+Or if somebody wants to, the build dir could be removed on the
+shell.
+---
+ setup.py | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 1e1e220..9f9c8b6 100644
+--- a/setup.py
++++ b/setup.py
+@@ -3,7 +3,6 @@
+ except ImportError:
+   from distutils.core import setup, Extension
+ import distutils.sysconfig
+-import shutil
+ import os.path
+ import re
+ import sys
+@@ -22,11 +21,6 @@
+ Programming Language :: Python :: 3.2
+ """.splitlines()))
+ 
+-try:
+-    shutil.rmtree("./build")
+-except(OSError):
+-    pass
+-
+ module1 = Extension('ujson',
+                     sources = ['./python/ujson.c', 
+                                './python/objToJSON.c', 

@@ -1,0 +1,703 @@
+-------------------------------------------------------------------
+Thu Sep  5 13:59:50 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- Changes since 19.08.0:
+  * Include KDE* cmake macros before any others
+
+-------------------------------------------------------------------
+Fri Aug  9 08:29:51 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- No code change since 19.07.90
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:46 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- Changes since 19.07.80:
+  * Adapt to KCalendarCore namespace change
+  * Adapt to KCalCore namespace change
+
+-------------------------------------------------------------------
+Tue Jul 23 11:58:53 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * Adapt to KCalCore::Attachment changes
+  * Adapt to KCalCore::Attendee changes
+  * Prepare for Attendee becoming a value type
+  * When we use framework 5.59.0 we can use new logging file directory
+  * Remove unused legacy include
+  * Adapt to KCalCore::Person changes
+  * Add executable attribute
+  * It was fixed in 5.13.0beta2
+  * metainfo.yaml: Fix cmakename, is own top-level entry
+  * Fix clazy warning
+  * Remove unused shared-pointer-to-self hack
+  * Make it compile without FOREACH
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:32 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- No code changes since 19.04.2
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:50 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- Changes since 19.04.1:
+  * Fix the akonadi-calendar dependencies
+
+-------------------------------------------------------------------
+Fri May 10 05:37:10 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- No code changes since 19.04.0
+
+-------------------------------------------------------------------
+Sat Apr 20 06:51:51 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- No code changes since 19.03.90
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * Convert to camelcase include
+  * Fix crash due to using an attribute from a collection that went out of scope
+  * Workaround qt5.13 bug
+
+-------------------------------------------------------------------
+Wed Mar 27 06:40:53 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Fix compile with Qt 5.13 and QT_DISABLE_DEPRECATED_BEFORE=0x060000
+  * Fix some clazy warning
+  * Remove QT_CHECK
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:09 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * No code changes since 18.12.2
+
+-------------------------------------------------------------------
+Sat Feb 09 08:24:46 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * No code changes since 18.12.1
+
+-------------------------------------------------------------------
+Fri Jan 11 05:41:43 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * No code changes since 18.12.0
+
+-------------------------------------------------------------------
+Fri Dec 14 06:08:37 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * No code changes since 18.11.90
+
+-------------------------------------------------------------------
+Mon Dec 03 20:55:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * Allow to use debug categories
+
+-------------------------------------------------------------------
+Tue Nov 20 06:21:43 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:56:30 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * QT_NO_NARROWING_CONVERSIONS_IN_CONNECT is defined in kf5.51
+  * use new syntax
+  * Remove deprecated method
+
+-------------------------------------------------------------------
+Thu Nov 08 20:43:24 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * No code changes since 18.08.2
+
+-------------------------------------------------------------------
+Thu Oct 11 20:06:42 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 06 18:42:49 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Aug 16 21:59:22 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * None
+
+-------------------------------------------------------------------
+Thu Jul 26 13:00:22 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * Fix warning about TRANSLATION_DOMAIN
+  * Fix new warning (gcc 8 ) 'warning: catching polymorphic type'
+  * Use Q_REQUIRED_RESULT
+  * always show an incidence if we are the organizer (kde#352214)
+
+-------------------------------------------------------------------
+Fri Jul 13 04:49:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * None
+
+-------------------------------------------------------------------
+Fri Jun 08 05:06:31 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * None
+
+-------------------------------------------------------------------
+Fri May 11 05:17:38 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 18.04.0:
+  * Binary serializer code now supports FreeBusy too, so we can remove "default" statement
+  * always show an incidence if we are the organizer (kde#352214)
+
+-------------------------------------------------------------------
+Wed Apr 18 07:48:27 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.0.php
+- Changes since 18.03.90:
+  * always show an incidence if we are the organizer (kde#352214)
+
+-------------------------------------------------------------------
+Fri Apr 06 07:08:34 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.03.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04-rc.php
+- Changes since 17.12.3:
+  * Fix interface XML
+  * Import Akonadi Serializer plugins for incidences from kdepim-runtime
+  * Add missing files
+  * Add debug categories files
+  * Use nullptr
+  * Use override directly
+  * Fix warning
+  * USe QLatin1String
+  * Port to new connect api
+  * Use QLatin1String
+  * Fix endif
+  * publishdialog.cpp,h - validate email address string before accepting (kde#386988)
+  * Add directly "/" to path
+  * Use same method as other repo
+
+-------------------------------------------------------------------
+Thu Mar 08 23:50:50 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.3.php
+- Changes since 17.12.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Feb 07 08:47:05 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.2.php
+- Changes since 17.12.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Jan 11 23:40:51 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.1.php
+- Changes since 17.12.0:
+  * Use the chosen organizer identity when emailing attendees
+
+-------------------------------------------------------------------
+Sat Dec 09 14:59:00 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.0.php
+- Changes since 17.11.90:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 02 10:12:34 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-rc.php
+- Changes since 17.11.80:
+  * None
+
+-------------------------------------------------------------------
+Mon Nov 20 06:55:26 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-beta.php
+- Changes since 17.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 09 23:10:37 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 00:31:00 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * USe identity settings
+
+-------------------------------------------------------------------
+Thu Sep 07 07:01:04 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * Fix potential crash
+
+-------------------------------------------------------------------
+Sun Aug 13 16:39:16 UTC 2017 - christophe@krop.fr
+
+- Update summary and description.
+
+-------------------------------------------------------------------
+Fri Aug 11 22:44:43 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Aug  5 18:16:20 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.08-rc.php
+
+
+-------------------------------------------------------------------
+Sat Jul 15 22:58:48 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * ETMCalendar: fix double increment in loop counter
+
+-------------------------------------------------------------------
+Wed Jun 07 17:42:39 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * None
+
+-------------------------------------------------------------------
+Wed May 17 20:35:23 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * Fix mem leak
+
+-------------------------------------------------------------------
+Sun Apr 16 10:44:41 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 12 20:24:08 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * Remove unused file
+  * Simplify unittest using QSignalSpy::wait()
+  * Fix indent
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:03 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-beta.php
+- Changes since 16.12.3:
+  * Add Q_DECL_OVERRIDE + nullptr
+  * Fix build: use MailTransportAkonadi to find messagequeuejob.h
+  * ITIPHandler: emit correct signal in case of an error loading the calendar.
+  * More work on itiphandlertest:
+  * Repair compilation of the invitation autotests. They are broken, but at least they build now (when enabled)
+  * Fix includes
+  * Don't exclude virtual calendar collections from ETMCalendar
+  * USe new mailtransport
+  * Adapt to new mailtransport
+  * Fix warning reported by cppcheck
+  * Minor optimization
+  * Optimization
+  * Use nullptr
+  * Remove one Q_FOREACH
+  * Port to for(... : ...)
+  * Add ECMCoverageOption
+
+-------------------------------------------------------------------
+Thu Mar  9 10:12:49 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * Don't exclude virtual calendar collections from ETMCalendar
+
+-------------------------------------------------------------------
+Thu Feb  9 06:37:42 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Sat Jan 14 08:47:35 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+-------------------------------------------------------------------
+Tue Dec 13 19:26:37 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Sat Dec  3 15:51:49 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 10:58:45 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+
+-------------------------------------------------------------------
+Wed Nov  9 06:07:58 UTC 2016 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.08.3
+  * KDE Applications 16.08.3
+  * https://www.kde.org/announcements/announce-applications-16.08.3.php
+
+-------------------------------------------------------------------
+Tue Oct 11 20:44:24 UTC 2016 - lbeltrame@kde.org
+
+- KDE Applications 16.08.2
+https://www.kde.org/announcements/announce-applications-16.08.2.php
+
+-------------------------------------------------------------------
+Tue Oct 11 20:43:55 UTC 2016 - lbeltrame@kde.org
+
+- KDE Applications 16.08.2
+https://www.kde.org/announcements/announce-applications-16.08.2.php
+
+-------------------------------------------------------------------
+Fri Sep  9 08:02:15 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.1
+   * KDE Applications 16.08.1
+   * https://www.kde.org/announcements/announce-applications-16.08.1.php
+
+
+-------------------------------------------------------------------
+Tue Aug 23 13:49:10 UTC 2016 - fabian@ritter-vogt.de
+
+- Build only on architectures supported by libqt5-qtwebengine
+
+-------------------------------------------------------------------
+Fri Aug 12 10:00:20 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.0
+   * KDE Applications 16.08.0
+   * https://www.kde.org/announcements/announce-applications-16.08.0.php
+
+
+-------------------------------------------------------------------
+Mon Aug  8 14:17:19 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.07.90
+   * KDE Applications 16.07.90 (16.08-RC)
+   * https://www.kde.org/announcements/announce-applications-16.08-rc.php
+
+
+-------------------------------------------------------------------
+Fri Jul 22 17:04:31 UTC 2016 - wbauer@tmo.at
+
+- Cleanup build requirements
+
+-------------------------------------------------------------------
+Thu Jul  7 23:14:33 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.3
+   * KDE Applications 16.04.3
+   * https://www.kde.org/announcements/announce-applications-16.04.3.php
+
+
+-------------------------------------------------------------------
+Fri Jun 10 17:45:15 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.2
+   * KDE Applications 16.04.2
+   * https://www.kde.org/announcements/announce-applications-16.04.2.php
+
+
+-------------------------------------------------------------------
+Sat May  7 10:09:47 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.1
+   * KDE Applications 16.04.1
+   * https://www.kde.org/announcements/announce-applications-16.04.1.php
+
+
+-------------------------------------------------------------------
+Sun Apr 17 05:48:32 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.0
+   * KDE Applications 16.04.0
+   * https://www.kde.org/announcements/announce-applications-16.04.0.php
+
+
+-------------------------------------------------------------------
+Mon Apr 11 06:29:40 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.03.90
+   * KDE Applications 16.04.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.04-rc.php
+
+
+-------------------------------------------------------------------
+Sun Mar 13 15:32:12 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.3
+   * KDE Applications 15.12.3
+   * https://www.kde.org/announcements/announce-applications-15.12.3.php
+   * boo#970855
+
+
+-------------------------------------------------------------------
+Sat Feb 13 07:59:45 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.2
+   * KDE Applications 15.12.2
+   * https://www.kde.org/announcements/announce-applications-15.12.2.php
+   * boo#966605
+
+
+-------------------------------------------------------------------
+Sat Jan  9 18:08:21 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.1
+   * KDE Applications 15.12.1
+   * https://www.kde.org/announcements/announce-applications-15.12.1.php
+   * boo#961265
+
+
+-------------------------------------------------------------------
+Sun Dec 13 12:44:09 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.0
+   * KDE Applications 15.12.0
+   * https://www.kde.org/announcements/announce-applications-15.12.0.php
+   * boo#958887
+
+
+-------------------------------------------------------------------
+Tue Nov 10 19:51:39 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.3
+   * KDE Applications 15.08.3
+   * https://www.kde.org/announcements/announce-applications-15.08.3.php
+   * boo#954531
+
+
+-------------------------------------------------------------------
+Sun Oct 11 13:14:30 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.2
+   * KDE Applications 15.08.2
+   * https://www.kde.org/announcements/announce-applications-15.08.2.php
+
+
+-------------------------------------------------------------------
+Sun Sep 13 18:53:48 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.1
+   * KDE Applications 15.08.1
+   * https://www.kde.org/announcements/announce-applications-15.08.1.php
+
+
+-------------------------------------------------------------------
+Wed Aug 19 19:34:15 UTC 2015 - cgiboudeaux@gmx.com
+
+- Update to KDE Applications 15.08.0
+   * KDE Applications 15.08.0
+   * https://www.kde.org/announcements/announce-applications-15.08.0.php
+
+-------------------------------------------------------------------
+Fri Aug  7 08:03:32 UTC 2015 - tittiatcoke@gmail.com
+
+- Initial version based on KDE Applications 15.07.90
+   * KDE Applications 15.08.0 RC1
+   * https://www.kde.org/announcements/announce-applications-15.08-rc.php
+
+

@@ -1,0 +1,5 @@
+<package name="libosmo-netif" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:telephony" package="libosmo-netif"/>
+</package>

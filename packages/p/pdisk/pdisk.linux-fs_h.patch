@@ -1,0 +1,57 @@
+In file included from /usr/include/linux/fs.h:18,
+                 from pdisk.c:54:
+/usr/include/linux/prio_tree.h:22: error: syntax error before 'pgoff_t'
+/usr/include/linux/prio_tree.h:27: error: syntax error before 'pgoff_t'
+/usr/include/linux/prio_tree.h: In function 'prio_tree_iter_init':
+/usr/include/linux/prio_tree.h:29: error: 'iter' undeclared (first use in this function)
+/usr/include/linux/prio_tree.h:29: error: (Each undeclared identifier is reported only once
+/usr/include/linux/prio_tree.h:29: error: for each function it appears in.)
+/usr/include/linux/prio_tree.h:29: error: 'root' undeclared (first use in this function)
+/usr/include/linux/prio_tree.h:30: error: 'r_index' undeclared (first use in this function)
+In file included from /usr/include/linux/fs.h:18,
+                 from file_media.c:43:
+/usr/include/linux/prio_tree.h:22: error: syntax error before 'pgoff_t'
+/usr/include/linux/prio_tree.h:27: error: syntax error before 'pgoff_t'
+/usr/include/linux/prio_tree.h: In function 'prio_tree_iter_init':
+/usr/include/linux/prio_tree.h:29: error: 'iter' undeclared (first use in this function)
+/usr/include/linux/prio_tree.h:29: error: (Each undeclared identifier is reported only once
+/usr/include/linux/prio_tree.h:29: error: for each function it appears in.)
+/usr/include/linux/prio_tree.h:29: error: 'root' undeclared (first use in this function)
+/usr/include/linux/prio_tree.h:30: error: 'r_index' undeclared (first use in this function)
+
+file_media.c: In function 'os_reload_file_media':
+file_media.c:362: error: 'BLKRRPART' undeclared (first use in this function)
+file_media.c:362: error: (Each undeclared identifier is reported only once
+file_media.c:362: error: for each function it appears in.)
+
+
+ file_media.c |    2 +-
+ pdisk.c      |    1 -
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+Index: pdisk/pdisk.c
+===================================================================
+--- pdisk.orig/pdisk.c
++++ pdisk/pdisk.c
+@@ -51,7 +51,6 @@
+ 
+ #ifdef __linux__
+ #include <sys/ioctl.h>
+-#include <linux/fs.h>
+ #include <linux/hdreg.h>
+ #endif
+ 
+Index: pdisk/file_media.c
+===================================================================
+--- pdisk.orig/file_media.c
++++ pdisk/file_media.c
+@@ -40,8 +40,8 @@
+ 
+ #ifdef __linux__
+ #include <sys/ioctl.h>
+-#include <linux/fs.h>
+ #include <linux/hdreg.h>
++#include <sys/mount.h>
+ #include <sys/stat.h>
+ #else
+ #ifdef __unix__

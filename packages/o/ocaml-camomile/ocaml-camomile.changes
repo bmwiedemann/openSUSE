@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Tue Jul 25 13:04:54 UTC 2017 - ohering@suse.de
+
+- Use Group: Development/Languages/OCaml
+
+-------------------------------------------------------------------
+Mon Jul 17 20:24:18 UTC 2017 - ohering@suse.de
+
+- Use explicit module signatures for ocaml-4.05
+
+-------------------------------------------------------------------
+Mon Jul 17 12:48:58 UTC 2017 - ohering@suse.de
+
+- Wrap specfile conditionals to fix quilt setup
+
+-------------------------------------------------------------------
+Mon Jul 17 10:48:58 UTC 2017 - ohering@suse.de
+
+- Remove autodeps for pre openSUSE 12.1 releases
+
+-------------------------------------------------------------------
+Mon May 30 06:39:17 UTC 2016 - ohering@suse.de
+
+- Fix build with ocaml-4.03 (fate#320836)
+
+-------------------------------------------------------------------
+Tue Nov 10 10:18:47 UTC 2015 - ohering@suse.de
+
+- Add hardcoded Provides for pre 12.1 repos
+
+-------------------------------------------------------------------
+Wed Jun 24 14:12:44 UTC 2015 - olaf@aepfle.de
+
+- Build also bytecode variant if ocaml.opt is not available
+
+-------------------------------------------------------------------
+Tue Jan 20 02:30:53 UTC 2015 - mlatimer@suse.com
+
+- Add COPYING to %doc in spec file
+
+-------------------------------------------------------------------
+Mon Dec  8 20:35:16 UTC 2014 - mlatimer@suse.com
+
+- Update spec file to use ocaml-rpm-macros, remove
+  ExclusiveArch, and ensure bytecode is built
+
+-------------------------------------------------------------------
+Fri Dec  5 17:39:02 UTC 2014 - mlatimer@suse.com
+
+- Initial commit using version 0.8.5
+

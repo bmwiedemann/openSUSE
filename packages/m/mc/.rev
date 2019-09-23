@@ -1,0 +1,693 @@
+<revisionlist>
+  <revision rev="1" vrev="68">
+    <srcmd5>8fab08f8147ea54e3c919b4b24a9270f</srcmd5>
+    <version>4.6.1</version>
+    <time>1168902897</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="78">
+    <srcmd5>cfd3ced01fa063bb9dbc72e5dbe3274c</srcmd5>
+    <version>4.6.1</version>
+    <time>1175629360</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="106">
+    <srcmd5>f9162a17ec724bcff049294d65e1bfb4</srcmd5>
+    <version>4.6.1</version>
+    <time>1184788954</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="116">
+    <srcmd5>c1f6d96b338bdc780d8d2012372d9ffc</srcmd5>
+    <version>4.6.1</version>
+    <time>1186683119</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="118">
+    <srcmd5>f58864218f298675790465611963a8b9</srcmd5>
+    <version>4.6.1</version>
+    <time>1186911416</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="127">
+    <srcmd5>1727bb0965b5eed76aafba3803845795</srcmd5>
+    <version>4.6.1</version>
+    <time>1188321317</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4636665eb56a20a706b217b79d79ab25</srcmd5>
+    <version>4.6.2.pre1</version>
+    <time>1194305450</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="50">
+    <srcmd5>b62c4d78190b483b99d1d1a7776d2c40</srcmd5>
+    <version>4.6.2.pre1</version>
+    <time>1207047411</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="116">
+    <srcmd5>694f2e5f15f456627fa6325595de4b07</srcmd5>
+    <version>4.6.2.pre1</version>
+    <time>1220991282</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="120">
+    <srcmd5>8e2e8c31018fef343132900f3ab959e5</srcmd5>
+    <version>4.6.2.pre1</version>
+    <time>1223547546</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="121">
+    <srcmd5>73fbb7f73cf2c456a53ae77ad91ab321</srcmd5>
+    <version>4.6.2.pre1</version>
+    <time>1228318058</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cb3f730e7bfe5242495edb883244986d</srcmd5>
+    <version>4.6.2</version>
+    <time>1234472581</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>9b25457e861804afa0e35b4121b2dcdf</srcmd5>
+    <version>4.6.2</version>
+    <time>1235667925</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>3e15b40431652fefb2c6ca7098070a88</srcmd5>
+    <version>4.6.2</version>
+    <time>1236956672</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>f671cef55a4499d975bf0875883ff364</srcmd5>
+    <version>4.6.2</version>
+    <time>1244639018</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>045fd92a417e80623e10e268c86c75f8</srcmd5>
+    <version>4.6.2</version>
+    <time>1247606987</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>2de6651c558d584352e585dc34bdc354</srcmd5>
+    <version>4.6.2</version>
+    <time>1255373882</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mc based on submit request 22286 from user prusnak
+</comment>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>2de6651c558d584352e585dc34bdc354</srcmd5>
+    <version>4.6.2</version>
+    <time>1255373882</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mc based on submit request 22286 from user prusnak
+</comment>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>f6c07b501dc109d86d66587f013874a8</srcmd5>
+    <version>4.6.2</version>
+    <time>1268924918</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>880b6793031bb3f0288510bc307f8fbb</srcmd5>
+    <version>4.6.2</version>
+    <time>1268988253</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mc based on submit request 35135 from user coolo
+</comment>
+    <requestid>35135</requestid>
+  </revision>
+  <revision rev="21" vrev="12">
+    <srcmd5>880b6793031bb3f0288510bc307f8fbb</srcmd5>
+    <version>4.6.2</version>
+    <time>1278667366</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="13">
+    <srcmd5>880b6793031bb3f0288510bc307f8fbb</srcmd5>
+    <version>4.6.2</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="14">
+    <srcmd5>75788ac72acc08f43e0cd7f5c9f871b8</srcmd5>
+    <version>unknown</version>
+    <time>1284126834</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mc based on submit request 47520 from user psmt
+</comment>
+    <requestid>47520</requestid>
+  </revision>
+  <revision rev="24" vrev="15">
+    <srcmd5>35b21fe2929cfa4bf77afb090c1bc4c8</srcmd5>
+    <version>4.7.0.9</version>
+    <time>1284765266</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mc based on submit request 48136 from user psmt
+</comment>
+    <requestid>48136</requestid>
+  </revision>
+  <revision rev="25" vrev="16">
+    <srcmd5>3254ee05be26751c1d4c5d5165d13251</srcmd5>
+    <version>4.7.0.9</version>
+    <time>1293662997</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 56892 from user a_jaeger
+</comment>
+    <requestid>56892</requestid>
+  </revision>
+  <revision rev="26" vrev="17">
+    <srcmd5>2286f3877736ada884eeab5a93d52dd0</srcmd5>
+    <version>4.7.0.9</version>
+    <time>1293663008</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 56892
+</comment>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>d8363f25ea082b571c71dc5ac7a59491</srcmd5>
+    <version>4.7.5.1</version>
+    <time>1297508012</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60425 from user vitezslav_cizek
+</comment>
+    <requestid>60425</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>42b7ea35eca51959dbb161b20a563bba</srcmd5>
+    <version>4.7.5.1</version>
+    <time>1297508025</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60425
+</comment>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>42b7ea35eca51959dbb161b20a563bba</srcmd5>
+    <version>4.7.5.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>8e09d5b02fd253d8e8e94cf690fb037a</srcmd5>
+    <version>4.7.5.1</version>
+    <time>1300878841</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64959 from user licensedigger
+</comment>
+    <requestid>64959</requestid>
+  </revision>
+  <revision rev="31" vrev="8">
+    <srcmd5>d2a9d5d8eb8247b3a6d1dbd5fc207daf</srcmd5>
+    <version>4.7.5.1</version>
+    <time>1300878851</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64959
+</comment>
+  </revision>
+  <revision rev="32" vrev="9">
+    <srcmd5>078bb9622fa42dc9c36ee278512b273f</srcmd5>
+    <version>4.7.5.1</version>
+    <time>1308212353</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>73784</requestid>
+  </revision>
+  <revision rev="33" vrev="10">
+    <srcmd5>9e2918653d10bb6bba980d019ee07be2</srcmd5>
+    <version>4.7.5.1</version>
+    <time>1308212366</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73784
+</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d8cada6b520d403075fd663794bab5e6</srcmd5>
+    <version>4.7.5.3</version>
+    <time>1313070360</time>
+    <user>saschpe</user>
+    <comment>version update to 4.7.5.3 (forwarded request 78491 from vladspbru)</comment>
+    <requestid>78502</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>d8cada6b520d403075fd663794bab5e6</srcmd5>
+    <version>4.7.5.3</version>
+    <time>1319182173</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>8914c3d56c64a36e7537f4fb15f4125e</srcmd5>
+    <version>4.7.5.3</version>
+    <time>1324458083</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>96798</requestid>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>ebfd595840f804d9b19ebcc79f3aeba4</srcmd5>
+    <version>4.7.5.3</version>
+    <time>1328540101</time>
+    <user>coolo</user>
+    <comment>- Fixed rpmlint warning - added -fpie and -pie to compilation and linking of consaver</comment>
+    <requestid>102658</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>8a45fcfcdbc3512c600cf4187cc7b307</srcmd5>
+    <version>4.8.1.1</version>
+    <time>1332769053</time>
+    <user>coolo</user>
+    <comment>updated for 4.8.1.1 (forwarded request 110296 from subchaser)</comment>
+    <requestid>110840</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>9cedb3be9cb5b8d9de3580cd2e329eb3</srcmd5>
+    <version>4.8.1.1</version>
+    <time>1332999900</time>
+    <user>coolo</user>
+    <comment>mc x11browser fixes (forwarded request 111216 from subchaser)</comment>
+    <requestid>111477</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>e7e3441f14287361834c0b1635952be4</srcmd5>
+    <version>4.8.1.1</version>
+    <time>1334216457</time>
+    <user>coolo</user>
+    <comment>patch for .torrent extension was applied incorectly (forwarded request 112589 from subchaser)</comment>
+    <requestid>113084</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>828d2a955f086d0c03d8193d6e52428c</srcmd5>
+    <version>4.8.1.3</version>
+    <time>1336423690</time>
+    <user>coolo</user>
+    <comment>update to 4.8.1.3 (regression fix release) (forwarded request 115707 from subchaser)</comment>
+    <requestid>115796</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>1033c322cacdc7e244c94d0284f6d401</srcmd5>
+    <version>4.8.1.3</version>
+    <time>1337004986</time>
+    <user>coolo</user>
+    <comment>Samba VFS restored
+rpmlint filters added for scripts warnings (forwarded request 120562 from subchaser)</comment>
+    <requestid>120652</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>2cd75f2457f231d6908364dba0492e65</srcmd5>
+    <version>4.8.1.3</version>
+    <time>1338903183</time>
+    <user>coolo</user>
+    <comment>cmake syntax highlighting fixed &amp; revisited (forwarded request 123441 from subchaser)</comment>
+    <requestid>123543</requestid>
+  </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>2cd75f2457f231d6908364dba0492e65</srcmd5>
+    <version>4.8.1.3</version>
+    <time>1340183693</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>be78100153908a512013c21e10a1e309</srcmd5>
+    <version>4.8.1.4</version>
+    <time>1343205272</time>
+    <user>coolo</user>
+    <comment>use uar extfs helper as fall-back for deb (forwarded request 128775 from subchaser)</comment>
+    <requestid>128811</requestid>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>be78100153908a512013c21e10a1e309</srcmd5>
+    <version>4.8.1.4</version>
+    <time>1359109436</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>3b134509a64d2d6149fcb3c59b3798ae</srcmd5>
+    <version>4.8.1.7</version>
+    <time>1362730966</time>
+    <user>coolo</user>
+    <comment>updated to latest stable (4.8.1.7) (forwarded request 157605 from subchaser)</comment>
+    <requestid>157606</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>f1b0c49153b7a9e428edb3f5f294f80e</srcmd5>
+    <version>4.8.9</version>
+    <time>1374225247</time>
+    <user>coolo</user>
+    <comment>Updated to latest released (4.8.9) (forwarded request 183610 from subchaser)</comment>
+    <requestid>183680</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>8ccf5ad63fe455f819568cb02e9dac48</srcmd5>
+    <version>4.8.9</version>
+    <time>1376296577</time>
+    <user>scarabeus_factory</user>
+    <comment>import bugfixes from next version (forwarded request 186639 from subchaser)</comment>
+    <requestid>186648</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>692bfa3679d8fcc301f833ebb2a8c2ad</srcmd5>
+    <version>4.8.10</version>
+    <time>1377430409</time>
+    <user>scarabeus_factory</user>
+    <comment>Please test. SLE still does not work, I have no idea what's with the permission macros on SLE. But the build works now. (forwarded request 196151 from dnh)</comment>
+    <requestid>196155</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>692bfa3679d8fcc301f833ebb2a8c2ad</srcmd5>
+    <version>4.8.10</version>
+    <time>1379663273</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>135a2bfb614cfa8948f7fe9e5d7edc95</srcmd5>
+    <version>4.8.10</version>
+    <time>1380713491</time>
+    <user>coolo</user>
+    <comment>- Fix invalid mc.png (IDAT TFB error).
+
+- mc-startup-timeout.patch: reduce the timeout when a dns server does
+  not respond (bnc#824729)</comment>
+    <requestid>201617</requestid>
+  </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>a40158b34759c1ad6e63cd60090386ce</srcmd5>
+    <version>4.8.10</version>
+    <time>1384501062</time>
+    <user>scarabeus_factory</user>
+    <comment>add mc-extfs-helpers-urar.patch to fix urar extfs failing on files with spaces when unrar5 is used (bnc#849082).</comment>
+    <requestid>206949</requestid>
+  </revision>
+  <revision rev="54" vrev="6">
+    <srcmd5>e9d7cf4c16f3d5073590f24066ea2e47</srcmd5>
+    <version>4.8.10</version>
+    <time>1384715999</time>
+    <user>coolo</user>
+    <comment>Req fix + comment changes. No rebuilds needed (all but SLE* built ok, i.e. had gawk &gt;= 4.0.0)
+SLE* needs fixing anyway (forwarded request 206981 from dnh)</comment>
+    <requestid>207074</requestid>
+  </revision>
+  <revision rev="55" vrev="7">
+    <srcmd5>d2def4b6ad52afccc2f76b0fc2c0b743</srcmd5>
+    <version>4.8.10</version>
+    <time>1385723036</time>
+    <user>coolo</user>
+    <comment>- What a ghastly %description ... Where'd that come from? ;) Fixed
+  with text from the README and a little added mention of Norton Cmdr
+
+- What's with those &quot;trailing spaces&quot; for filenames with length &lt;13?
+
+- fix the urar patch (add trailing whitespace) (thanks to D. Werner again) (forwarded request 208356 from dnh)</comment>
+    <requestid>208377</requestid>
+  </revision>
+  <revision rev="56" vrev="8">
+    <srcmd5>a9ccb0a60a5d112d2eea1bf089f607b9</srcmd5>
+    <version>4.8.10</version>
+    <time>1385793400</time>
+    <user>coolo</user>
+    <comment>- Reimplementation of mcrar5fs_list in vfs/extfs/helpers/urar using
+  'unrar vt' fixing the &quot;trailing space&quot; problem with 'unrar [lv]'
+  closing http://www.midnight-commander.org/ticket/3073 and bnc#849082 (forwarded request 208806 from dnh)</comment>
+    <requestid>208909</requestid>
+  </revision>
+  <revision rev="57" vrev="9">
+    <srcmd5>a3856b0e2a6c0e26d9586fdfdcaab746</srcmd5>
+    <version>4.8.10</version>
+    <time>1386936571</time>
+    <user>coolo</user>
+    <comment>- fix the iso9660 some more and fall back from xorriso to isoinfo as
+  xorriso fails on many DVD-iso files (well, that's UDF actually ..)
+
+- add mc-extfs-iso9660-xorriso.patch
+  fixing iso9660 extfs directory handling using xorriso
+  see http://www.midnight-commander.org/ticket/3122 (forwarded request 210681 from dnh)</comment>
+    <requestid>210757</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>5e2f523acc1c682c950371cb92e73a79</srcmd5>
+    <version>4.8.11</version>
+    <time>1389099441</time>
+    <user>coolo</user>
+    <comment>update to 4.8.11 (forwarded request 212578 from AndreasStieger)</comment>
+    <requestid>212589</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>7c4d0fc20aa199a0f831b395cc40a005</srcmd5>
+    <version>4.8.11</version>
+    <time>1389606927</time>
+    <user>coolo</user>
+    <comment>- disable the ssh/fish vfs due to
+  http://www.midnight-commander.org/ticket/3128 and
+  https://bugzilla.novell.com/show_bug.cgi?id=856501
+- remove unneccessary build-dep on recode (forwarded request 213547 from dnh)</comment>
+    <requestid>213552</requestid>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>0611f2b809175c3b4a51a2f52a2af4d3</srcmd5>
+    <version>4.8.11</version>
+    <time>1392111493</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221205</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>4540806742d22a09ac2ebc1172bbf4cb</srcmd5>
+    <version>4.8.12</version>
+    <time>1396537844</time>
+    <user>coolo</user>
+    <comment>- update to 4.8.12
+- remove mc-vfs_fish_helpers_ls-formatstring.diff (fixed upstream)
+- change mc-extfs-iso9660-xorriso.patch to work with upstream fix (forwarded request 228797 from dnh)</comment>
+    <requestid>228824</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>4540806742d22a09ac2ebc1172bbf4cb</srcmd5>
+    <version>4.8.12</version>
+    <time>1409301879</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>2a7c805f68039ba9ebdc9084ef7e4533</srcmd5>
+    <version>4.8.13</version>
+    <time>1409998744</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247799</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>1953db3bcf0253408ce9be7dafd34d54</srcmd5>
+    <version>4.8.14</version>
+    <time>1427983427</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>293855</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>5c67f6a2cccfb267ad09a3879764eeb6</srcmd5>
+    <version>4.8.15</version>
+    <time>1447353623</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343294</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>e75a4ef4338b57c299907c2ecd1c9892</srcmd5>
+    <version>4.8.16</version>
+    <time>1458228931</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>373560</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>7c23f8b1b8075c55cb1b8bf285a3cb9a</srcmd5>
+    <version>4.8.16</version>
+    <time>1459845793</time>
+    <user>dimstar_suse</user>
+    <comment>Add the missing .changes entry (forwarded request 382761 from psmt)</comment>
+    <requestid>382764</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>a6ce80784e19068482f66386d002898a</srcmd5>
+    <version>4.8.17</version>
+    <time>1463221418</time>
+    <user>dimstar_suse</user>
+    <comment>Updare to 4.8.17</comment>
+    <requestid>394816</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>b4f1b0b8c551fa3f8fe2d1b154fdea0d</srcmd5>
+    <version>4.8.18</version>
+    <time>1476780000</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>434236</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>d1348264eee69beb95bdb80201e9bd68</srcmd5>
+    <version>4.8.19</version>
+    <time>1489345362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 4.8.19
+** Core
+    * Replace $MC_HOME with $MC_PROFILE_ROOT (#3684)
+    * Allow rebind TAB key to change panel (#3672)
+    * Support for True Color (16 millions colors) (#3145)
+    * Color aliases in skin files (#3711)
+** VFS
+    * Support timestamps with nanosecond precision for copy/move operations (#3575)
+    * Introduce EXTFS helpers tester (#3730, #3744, #3752, #3753, #3751)
+    * Teach u7z to parse archive listings w/o sizes and/or dates (#2707)
+    * Teach rpm helper about transaction scripts (#3750)
+    * Fix hp48, uace &amp; uarc extfs which used an obsolete date format (#3729, #3747)
+** Editor
+    * Syntax:
+        - updates of HTML and ebuild highlighting
+        - highlight *.t (Perl test) files as Perl scripts
+        - disassociate .cl file extension from LISP syntax (#3691)
+    * Add syntax highlighting:
+        - OpenCL (#3690)
+        - OpenShadingLanguage (#3762)
+        - R
+        - YAML (#3293)
+** Misc
+    * Code cleanup (#3693, #3703, #3721, #3763)
+    * Add true color skins: 'Four seasons' (#3724)
+    * Activate `--enable-tests` by default if `check` is found (#3708)
+    * Added new skin: YADT (MidnightCommander/mc#115)
+** Fixes
+    * Segfault on switching left panel to Info (#3700)
+    * Broken compatibility with ncurses (#3697)
+    * Setting MC_HOME makes mc ignore ~/.bashrc (#3684)
+    * mc_tmpdir() use a buffer of only 64 characters (#3736)
+    * Some bugs in the parsing of hexadecimal search patterns (#3694)
+    * Hexadecimal search fails on binary data (#3589)
+    * Broken file list resorting on double click on panel header line (#3715)
+    * Wrong dialog resizing and positioning (#3714, #3723)
+    * Widget's 'disabled' status is not toggled immediately (#3716)
+    * Last item of 'Options/Layout/Horizontal' radiobuttons remains highlighted (#3717)
+    * 'Options/Layout/Equal split' checkbox gets reverted (#3718)
+    * Panels: cannot show more than one &quot;column&quot; in user defined listing mode (#3757)
+    * Mix of MSG_NOTIFY and MSG_FOCUS messages (#3731)
+    * skins: 'window-state-char' and 'window-close-char' are parsed as colors (#3710)
+    * Pressing &lt;right&gt; and &lt;left&gt; in the hotlist dialog doesn't refresh it (#3775)
+    * mcview: an error message about bad regexp isn't shown (#3720)
+    * mcedit: fix etags filenames parsing (#3698)
+    * mcedit: fix mouse active area for maximize / close buttons (#3774)
+    * mcedit: frames (MDI interface) don't reflect the focus state (#3766)
+    * mcedit: frames (MDI interface) sometimes obscure the buttonbar (#3760)
+    * mcedit doesn't show search error messages when searching backwards (#3735)
+    * help viewer: tab characters handled incorrectly (#3754)
+    * VFS: incorrect zoo archive listing (#3696)
+    * VFS: segfault in VFSs not setting block size in stat (#3749)
+- removed obsolete 02_ignore_ftp_chmod_error.patch
+  if ignore_ftp_chattr_errors=true (the default?) in
+  ~/.config/mc/ini, errors are ignored anyway, and if if set to false,
+  the user get the error (e.g. permission denied). With the patch, the
+  user never will see an error and wonder, why it's not working. It
+  might have been, that this option has not worked in (much) older
+  versions and the patch introduced because of this.
+- removed obsolete 09_uzip_broken_528239.patch
+  it is correctly detected during configure
+- rebased mc-rpm.patch</comment>
+    <requestid>477419</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>7accb7d632cc62356e2b8f9b0696c64f</srcmd5>
+    <version>4.8.20</version>
+    <time>1512546435</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546321</requestid>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>7df01109b3c9aac62f1d600fe611e831</srcmd5>
+    <version>4.8.20</version>
+    <time>1523875410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595365</requestid>
+  </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>6cd07a90dc5ef2e0073b0e44ed6d27a2</srcmd5>
+    <version>4.8.20</version>
+    <time>1523956487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597246</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>2f572090edd7f9480400e7f73ce7b63c</srcmd5>
+    <version>4.8.21</version>
+    <time>1528895745</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 4.8.21
+  ** Core
+     * Cancel Chmod/Chown/Advanced chown operation for large group of files when operation is not permitted (#3850)
+     * Mouse support in the &quot;Advanced chown&quot; dialog window (#3148)
+     * File highlighting by extension is case insensitive by default (#1620)
+     * Safe file overwrite (#3913) 
+  ** VFS
+     * Support zstd compression format (#3906) 
+  ** Editor
+     * Syntax:
+       - Rust support (#3884)
+       - JavaScript modules support (#3890)
+       - Improve Markdown support (#3893) 
+  ** Viewer
+  ** Diff viewer
+  ** Misc
+     * Add JavaScript module support to filehighlight.ini (MidnightCommander/mc#132)
+     * Add Excel xlsx file format support to mc.ext.in (MidnightCommander/mc#135)
+     * i18n of argument type names in --help blocks (#3879)
+     * Code cleanup: (#3857, #3914) 
+  ** Fixes
+     * Fail to link to ncurses built as two libraries: ncurses+tinfo (#3880)
+     * Garbage in displaying of summary of file sizes for selected files (#3883)
+     * &quot;Compute totals&quot; unnecessarily done for moves (#3149, #3908)
+     * mc.ext: allow Java class files to be viewed even if JAD isn't on PATH (MidnightCommander/mc#134)
+     * mcedit: broken extended key mode (#3897)
+     * mcedit doesn't save all opened files (#3898)
+     * extfs: sftps: -31 SFTP Protocol Error when transferring file (#3406)
+     * extfs: rpm: truncated script content in the viewer (#3865)
+     * extfs: rpm helper misses CONFLICTS field (#3789)</comment>
+    <requestid>614496</requestid>
+  </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>d9b9cbbbe147968338017bc798e859c1</srcmd5>
+    <version>4.8.21</version>
+    <time>1530866265</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620315</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>410b0bf516f3a6b356f3864bf433b39b</srcmd5>
+    <version>4.8.22</version>
+    <time>1548769482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666360</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>5e71dd8ae2a77316611b145f8703e307</srcmd5>
+    <version>4.8.23</version>
+    <time>1565179034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720212</requestid>
+  </revision>
+</revisionlist>

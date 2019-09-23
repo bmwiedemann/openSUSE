@@ -1,0 +1,3393 @@
+-------------------------------------------------------------------
+Mon Aug 26 14:40:04 UTC 2019 - daniel.molkentin@suse.com
+
+- Update to version 049+git108.6c9d1156:
+  * dracut-init.sh: Nuke unused install_kmod_with_fw function
+  * dracut-install: Support the compressed firmware files correctly (boo#1146769)
+  * dracut: let module handling function accept optional path option
+  * dracut.sh: Fix udevdir detection
+
+-------------------------------------------------------------------
+Fri Jul 19 14:18:34 UTC 2019 - daniel.molkentin@suse.com
+
+- Update to version 049+git104.1244eed7:
+  * mkinitrd-suse.sh: remove trailing "|"
+
+-------------------------------------------------------------------
+Thu Jul 18 20:25:37 UTC 2019 - daniel.molkentin@suse.com
+
+- Update to version 049+git103.c8d99b62:
+  * Add support for compressed kernel modules (boo#1135854)
+
+-------------------------------------------------------------------
+Thu Jul 18 16:40:37 UTC 2019 - daniel.molkentin@suse.com
+
+- Update to version 049+git102.9ee0c387:
+  * dracut-install: Add support for compressed firmware files (boo#1136677)
+
+-------------------------------------------------------------------
+Thu Jul 18 09:50:51 UTC 2019 - daniel.molkentin@suse.com
+
+- Update to version 049+git101.17c579a0:
+  * call netroot on wicked dhcp setup
+  * nfsroot follow ifcfg settings for boot protocol
+
+-------------------------------------------------------------------
+Thu Jul 18 09:43:11 UTC 2019 - daniel.molkentin@suse.com
+
+- Update to version 049+git99.76df40e7:
+  * 95fcoe: Fix startup when fcoe module is included (boo#1136977)
+  * tests: Ignore .testdir 
+  * Add support for riscv64
+  * mkinitrd-suse.sh: simplify get_kernel_version (bsc#1139939)
+  * 95dasd-rules & 95zfcp_rules: Look for correct rule name (bsc#1137784)
+
+-------------------------------------------------------------------
+Mon Jun 17 11:41:01 UTC 2019 - ext-linus.larsson@se.fujitsu.com
+
+- Update to version 049+git94.aef7a52b:
+  * ucode: properly include early only ucode
+  * keep network device naming scheme on upgrade (bsc#1136927)
+
+-------------------------------------------------------------------
+Sat May 25 19:40:09 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Bump to 049
+- Patches are now maintained in git
+  * Removed 0012-40network-Fix-race-condition-when-wait-for-networks.patch
+  * Removed 0013-40network-always-start-netroot-in-ifup.sh.patch
+  * Removed 0015-40network-replace-dhclient-with-wickedd-dhcp-supplic.patch
+  * Removed 0016-Add-new-s390x-specific-rule-files.patch
+  * Removed 0017-45ifcfg-use-distro-specific-scripts.patch
+  * Removed 0020-00warpclock-Set-correct-timezone.patch
+  * Removed 0021-95dcssblk-Add-new-module-for-DCSS-block-devices.patch
+  * Removed 0048-40network-Only-enable-network-interfaces-if-explicit.patch
+  * Removed 0053-01fips-fixup-loading-issues.patch
+  * Removed 0056-81cio_ignore-handle-cio_ignore-commandline.patch
+  * Removed 0057-01fips-Include-some-more-hmacs.patch
+  * Removed 0058-dracut-add-warning-when-including-unsupported-module.patch
+  * Removed 0059-99suse-Add-SUSE-specific-initrd-parsing.patch
+  * Removed 0060-45ifcfg-Add-SUSE-specific-write-ifcfg-file.patch
+  * Removed 0061-45ifcfg-Fixup-error-message-in-write-ifcfg-suse.patch
+  * Removed 0075-95dasd_rules-enable-parsing-of-rd.dasd-commandline-p.patch
+  * Removed 0076-Correctly-set-cio_ignore-for-dynamic-s390-rules.patch
+  * Removed 0079-95dasd_rules-fixup-rd.dasd-parsing.patch
+  * Removed 0080-95dasd_rules-print-out-rd.dasd-commandline.patch
+  * Removed 0081-95dasd_mod-do-not-set-module-parameters-if-dasd_cio_.patch
+  * Removed 0083-95zfcp_rules-Fixup-rd.zfcp-parsing.patch
+  * Removed 0085-95zfcp_rules-print-out-rd.zfcp-commandline-parameter.patch
+  * Removed 0086-95zfcp_rules-Auto-generate-udev-rule-for-ipl-device.patch
+  * Removed 0087-95dasd_rules-Auto-generate-udev-rule-for-ipl-device.patch
+  * Removed 0088-91zipl-Add-new-module-to-update-s390x-configuration.patch
+  * Removed 0089-40network-create-var-lib-wicked-in-ifup.sh.patch
+  * Removed 0090-dracut-caps-Remove-whole-caps-module.patch
+  * Removed 0091-dracut-biosdevname-In-SUSE-biosdevname-package-is-in.patch
+  * Removed 0094-Implement-shortcut-ip-ifname-static-for-static-confi.patch
+  * Removed 0107-Fixup-typo-firmare-instead-of-firmware.patch
+  * Removed 0108-91zipl-Store-commandline-correctly.patch
+  * Removed 0109-95dasd_rules-Store-all-devices-in-commandline.patch
+  * Removed 0110-95zfcp_rules-Store-all-devices-in-commandline.patch
+  * Removed 0113-91zipl-Install-script-as-executable.patch
+  * Removed 0114-91zipl-Translate-ext2-3-into-ext4.patch
+  * Removed 0116-Mark-scripts-as-executable.patch
+  * Removed 0117-95dasd_rules-Enable-the-device-before-checking-devic.patch
+  * Removed 0118-95zfcp_rules-Enable-the-device-before-checking-devic.patch
+  * Removed 0121-Adjust-initramfs-kernel.img-to-SUSE-default-initrd-k.patch
+  * Removed 0123-95zfcp_rules-fix-typo-in-module_setup.patch
+  * Removed 0124-40network-Update-iBFT-scanning-code-to-handle-IPv6.patch
+  * Removed 0125-40network-separate-mask-and-prefix.patch
+  * Removed 0126-01fips-Add-drbg-module-to-force-loaded-modules.patch
+  * Removed 0128-90lvm-Install-dm-snapshot-module.patch
+  * Removed 0130-nfs-Always-add-all-kernel-modules-for-kdump.patch
+  * Removed 0131-40network-handle-prefixed-IP-addresses-correctly.patch
+  * Removed 0132-40network-fixup-static-network-configuration.patch
+  * Removed 0133-Allow-multiple-configurations-per-network-interface-.patch
+  * Removed 0137-Switch-from-Mozilla-NSS-sha256hmac-checking-to-fipsc.patch
+  * Removed 0138-fips_add_aesni-intel.patch
+  * Removed 0139-fips-kernel-4.4-fixes.patch
+  * Removed 0142-40network-Don-t-report-error-for-etc-sysconfig-netwo.patch
+  * Removed 0144-90crypt-Fixed-crypttab_contains-to-also-work-with-de.patch
+  * Removed 0145-40network-handle-ip-ifname-static-correctly.patch
+  * Removed 0150-Find-kernel-modules-in-extra-and-weak-updates-path-a.patch
+  * Removed 0157-Add-boot-zipl-to-host-devs-if-it-is-a-mount-point.patch
+  * Removed 0158-Add-SUSE-kernel-module-dependencies-in-etc-modprobe.patch
+  * Removed 0159-network-Try-to-load-xennet.patch
+  * Removed 0160-s390-update_active_devices_initrd.patch
+  * Removed 0161-95zfcp_rules-simplified-rd.zfcp-commandline-for-NPIV.patch
+  * Removed 0162-network-Request-DHCP-lease-instead-of-getting-applyi.patch
+  * Removed 0163-Install-etc-sysconfig-console-to-see-specific-fonts.patch
+  * Removed 0164-Fix-initramfs-ver.img-vs-initrd-ver-in-dracut-initra.patch
+  * Removed 0168-remove_plymouth_logo_file.patch
+  * Removed 0169-network_set_mtu_macaddr_for_dhcp.patch
+  * Removed 0170-iscsi-skip-ibft-invalid-dhcp.patch
+  * Removed 0180-i18n_add_correct_fontmaps.patch
+  * Removed 0182-fix-include-parsing.patch
+  * Removed 0183-fix_add_drivers_hang.patch
+  * Removed 0188-95dasd_rules-Install-collect-udev-helper-binary.patch
+  * Removed 0190-replace-iscsistart-with-systemd-service-files.patch
+  * Removed 0191-static_network_setup_return_zero.patch
+  * Removed 0192-iscsi_set_boot_protocol_from_ifcfg.patch
+  * Removed 0193-95iscsi-Set-number-of-login-retries.patch
+  * Removed 0196-ibft-wait-for-session-on-all-paths.patch
+  * Removed 0197-95iscsi-Do-not-require-network-for-qla4xxx-flash-ses.patch
+  * Removed 0198-95iscsi-set-rd.iscsi.firmware-for-qla4xxx-sessions.patch
+  * Removed 0199-rd-iscsi-waitnet-default-false.patch
+  * Removed 0200-dracut_fix_multipath_without_config.patch
+  * Removed 0201-fix_nfs_with_ip_instead_of_hostname.patch
+  * Removed 0202-dracut_dmraid_use_udev.patch
+  * Removed 0203-no-fail-builtin-module.patch
+  * Removed 0204-mkinitrd-fix-monster.patch
+  * Removed 0205-mdraid_ignore_hostonly.patch
+  * Removed 0206-nfs_dns_alias.patch
+  * Removed 0207-handle_module_aliases.patch
+  * Removed 0208-no_forced_virtnet.patch
+  * Removed 0209-fix_modules_load_d_hostonly.patch
+  * Removed 0210-add_fcoe_uefi_check.patch
+  * Removed 0212-fcoe_reorder_init_path.patch
+  * Removed 0213-Fix-wrong-keymap-inclusion.patch
+  * Removed 0214-95fcoe-Do-not-overwrite-FCoE-configuration.patch
+  * Removed 0215-95fcoe-Do-not-complain-about-missing-etc-hba.conf.patch
+  * Removed 0216-95fcoe-silence-lldpad-warnings.patch
+  * Removed 0217-95fcoe-Allow-to-specify-the-FCoE-mode-via-the-fcoe-p.patch
+  * Removed 0218-40network-allow-persistent-interface-names.patch
+  * Removed 0219-95fcoe-use-interface-names-instead-of-MAC-addresses.patch
+  * Removed 0220-95fcoe-always-set-AUTO_VLAN-for-fcoemon.patch
+  * Removed 0221-95fcoe-Add-shutdown-script.patch
+  * Removed 0222-90dm-Fixup-shutdown-script.patch
+  * Removed 0223-90dm-fixup-dependency-cycle-between-MD-and-DM-shutdo.patch
+  * Removed 0224-95iscsi-setup-bnx2i-offload-connections-properly.patch
+  * Removed 0225-95fcoe-do-not-start-fcoemon-twice.patch
+  * Removed 0300-dracut_dont_use_dpkg_defaults_on_SUSE.patch
+  * Removed 0301-include_sysconfig_language.patch
+  * Removed 0302-Revert-90multipath-add-hostonly-multipath.conf-in-ca.patch
+  * Removed 0303-fix_multipath_check_hostonly.patch
+  * Removed 0304-90multipath-Start-daemon-after-udev-settle.patch
+  * Removed 0305-90multipath-load-dm_multipath-module-during-startup.patch
+  * Removed 0306-90multipath-add-shutdown-script.patch
+  * Removed 0307-90multipath-parse-kernel-commandline-option-multipat.patch
+  * Removed 0308-mdraid_add_IMSM_NO_PLATFORM_env.patch
+  * Removed 0309-90dmraid-do-not-delete-partitions.patch
+  * Removed 0310-95resume-Do-not-resume-on-iSCSI.patch
+  * Removed 0311-95iscsi-ip-ibft-is-deprecated.patch
+  * Removed 0312-40network-Do-not-print-message-about-tmp-net.ibft0.c.patch
+  * Removed 0313-90mdraid-Use-stock-MD-rules-to-assemble-RAID-arrays.patch
+  * Removed 0314-nfs_do_not_pass_ifname_for_bonding_devices.patch
+  * Removed 0402-driver-fail-summary.patch
+  * Removed 0403-95lunmask-Add-module-to-handle-LUN-masking.patch
+  * Removed 0404-dracut-emergency-optionally-print-fs-help.patch
+  * Removed 0450-Strip-NUL-bytes-in-stream-before-push-in-string.patch
+  * Removed 0451-systemd-initrd-add-initrd-root-device.target.patch
+  * Removed 0452-Always-try-to-add-pinctrl-cherryview.patch
+  * Removed 0453-Resolve-symbolic-links-for-i-and-k-parameters-bsc-90.patch
+  * Removed 0454-Add-md4-and-arc4-modules-for-ntlm.patch
+  * Removed 0500-Reset-IFS-variable.patch
+  * Removed 0501-dasd_fix_ssid_bigger_zero.patch
+  * Removed 0502-persistent_device_policy_param_enhance.patch
+  * Removed 0503-dracut.sh-create-the-initramfs-non-world-readable-al.patch
+  * Removed 0504-ibft-fix-boot-flag-check.patch
+  * Removed 0505-Allow-booting-from-degraded-MD-RAID-arrays.patch
+  * Removed 0506-Boot-on-s390x-with-fips-1-on-the-kernel-commnad-line.patch
+  * Removed 0507-Set-TaskMax-inifinite-for-the-emergency-shell.patch
+  * Removed 0508-90multipath-start-before-local-fs-pre.target.patch
+  * Removed 0509-01fips-Remove-zlib-module-as-requirement.patch
+  * Removed 0510-01fips-Some-modules-use-separators-other-than.patch
+  * Removed 0511-01fips-ensure-fips-initialization-succeeds-on-s390-x.patch
+  * Removed 0512-Make-binutils-optional-when-elfutils-are-available.patch
+  * Removed 0513-Fix-regression-caused-by-6f9bf2b8ac436259bdccb110545.patch
+  * Removed 0514-man-make-the-k-option-clear-using-mkinitrd.patch
+  * Removed 0515-90kernel-modules-also-add-block-device-driver-revers.patch
+  * Removed 0516-mkinitrd-suse.sh-Fix-prefix-calculation.patch
+  * Removed 0517-95fcoe-fixup-fcoe-genrules.sh-for-VN2VN-mode.patch
+  * Removed 0518-90kernel-modules-Fix-backlight-on-Cherrytrail-device.patch
+  * Removed 0519-90kernel-modules-Ensure-phy-drivers-are-loaded-in-in.patch
+  * Removed 0520-Ignore-module-resolution-errors.patch
+  * Removed 0521-Ensure-udev-persistent-storage-compat-rules-get-crea.patch
+  * Removed 0522-Fix-typo-from-commit-3f1cdb520.patch
+  * Removed 0523-98dracut-systemd-Fix-module-force-loading-with-syste.patch
+  * Removed 0524-Suppress-nonsensical-error-message-bsc-1032029.patch
+  * Removed 0525-backport-bail-out-if-module-directory-does-not-exist.patch
+  * Removed 0526-iscsiroot-call-handle_firmware-only-for-non-iface-in.patch
+  * Removed 0527-switch-fips-checking-to-use-the-libkcapi-based-fipsc.patch
+  * Removed 0528-Ensure-dracut.sh-responds-properly-to-hostonly_cmdli.patch
+  * Removed 0529-systemd-add-missing-.slice-unit.patch
+  * Removed 0530-dracut-systemd-dracut-cmdline-ask-fix-dracut-kernel-.patch
+  * Removed 0531-dracut-systemd-.service-conflict-with-shutdown-targe.patch
+  * Removed 0532-List-drivers-rather-than-looking-for-reverse-depende.patch
+  * Removed 0533-instmods-check-modules.builtin-in-srcmods.patch
+  * Removed 0534-ssh-client-Include-nss_-libraries.patch
+  * Removed 0535-Sync-initramfs-after-creation.patch
+  * Removed 0536-90multipath-drop-67-kpartx-compat.rules.patch
+  * Removed 0537-dracut-init.sh-ignore-crc32.ko-in-builtin-test.patch
+  * Removed 0538-Enable-core-dumps-with-systemd-from-initrd.patch
+  * Removed 0539-Add-IMA-functionality-fate-323289.patch
+  * Removed 0540-Check-the-proper-variable-for-a-custom-IMA-keys-dire.patch
+  * Removed 0541-Make-sure-70-persistent-net.rules-is-included-in-ini.patch
+  * Removed 0542-Include-crc32c-intel-module-when-using-btrfs.patch
+  * Removed 0543-Remove-00systemd-bootchart.patch
+  * Removed 0544-40network-Make-ip-dhcp-work.patch
+  * Removed 0545-Add-early-microcode-support-for-AMD-family-16h.patch
+  * Removed 0546-Support-Microcode-Updates-for-AMD-CPU-Family-0x17.patch
+  * Removed 0547-Fix-task-limit-in-emergency.service-the-same-change-.patch
+  * Removed 0548-95fcoe-Switch-back-to-using-fipvlan-for-bnx2fc.patch
+  * Removed 0549-fcoe-up-Increase-sleeptime-to-13s.patch
+  * Removed 0550-95fcoe-add-timeout-initqueue-entries.patch
+  * Removed 0551-fips-use-lib-modules-uname-r-modules.fips.patch
+  * Removed 0552-98integrity-support-validating-the-IMA-policy-file-s.patch
+  * Removed 0553-98integrity-support-loading-x509-into-the-trusted-bu.patch
+  * Removed 0554-98integrity-support-X.509-only-EVM-configuration.patch
+  * Removed 0555-Avoid-executing-emergency-hooks-twice.patch
+  * Removed 0556-95qeth_rules-Add-new-module-to-copy-qeth-rules.patch
+  * Removed 0557-40network-make-arping-optional.patch
+  * Removed 0558-40network-remove-brctl-dependency.patch
+  * Removed 0559-Add-wickedd-duid.xml-and-iaid.xml-if-available.patch
+  * Removed 0560-90kernel-modules-Ensure-PCI-host-modules-are-include.patch
+  * Removed 0561-Add-the-qedi-driver-to-driver-list-for-iscsi-boot.patch
+  * Removed 0562-Adjust-driver-list-to-modern-kernels.patch
+  * Removed 0563-40network-collapse-arping-and-dhcp-calls-into-wicked.patch
+  * Removed 0564-40network-Always-set-the-gw-variable.patch
+  * Removed 0565-90kernel-modules-Include-Intel-Volume-Management-Dev.patch
+  * Removed 0566-95nfs-If-no-server-is-configured-read-BOOTSERVERADDR.patch
+  * Removed 0567-Fix-booting-with-fips-1-on-SLES-15.patch
+  * Removed 0568-95multipath-Pickup-files-in-etc-multipath-conf.d.patch
+  * Removed 0569-10i18n-Load-all-keymaps-for-a-given-locale.patch
+  * Removed 0570-10i18n-Fix-possible-infinite-recursion.patch
+  * Removed 0571-40network-Fix-static-network-setup.patch
+  * Removed 0572-lsinitrd-no-more-cat-write-error-Broken-pipe.patch
+  * Removed 0573-lsinitrd.sh-quote-filename-in-extract_files.patch
+  * Removed 0574-s-find_btrfs_devs-btrfs_devs.patch
+  * Removed 0580-check_for_CONFIG_ACPI_TABLE_UPGRADE.patch
+  * Removed 0581-kernel-modules-add-nfit.patch
+  * Removed 0582-98dracut-systemd-Start-systemd-vconsole-setup-before.patch
+  * Removed 0583-99base-Allow-files-with-backslashes-in-hostonly-file.patch
+  * Removed 0584-95dasd_rules-mark-dasd-rules-host_only.patch
+  * Removed 0585-emergency-mode-use-sulogin.patch
+  * Removed 0586-95zfcp_rules-parse-zfcp.sh-remove-rule-existence-check.patch
+  * Removed 0587-Fix-a-missing-space-in-example-configs.patch
+  * Removed 0588-Ensure-mmc-host-modules-get-included-properly.patch
+  * Removed 0589-Fix-98dracut-systemd-dracut-emergency.sh.patch
+  * Removed 0590-00systemd-check-if-systemd-version-is-a-number.patch
+  * Removed 0591-91zipl-Don-t-use-contents-of-commented-lines.patch
+  * Removed 0592-95iscsi-handle-qedi-like-bnx2i.patch
+  * Removed 0593-dracut-only-copy-xattr-if-root.patch
+  * Removed 0594-Check-SUSE-kernel-module-dependencies-recursively.patch
+  * Removed 0595-iscsi-don-t-continue-waiting-if-the-root-device-is-p.patch
+  * Removed 0596-network-stop-waiting-for-interfaces-if-root-device-i.patch
+  * Removed 0597-iscsiroot-parse_iscsi_root-overwrites-command-line-a.patch
+  * Removed 0598-iscsiroot-there-s-never-more-than-one-target-per-cal.patch
+  * Removed 0599-iscsiroot-try-targets-only-once.patch
+  * Removed 0600-iscsiroot-remove-bashisms.patch
+  * Removed 0601-base-dracut-lib.sh-dev_unit_name-guard-against-dev-b.patch
+
+-------------------------------------------------------------------
+Thu Apr 25 23:40:25 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- dracut-lib.sh:dev_unit_name() guard against $dev beginning with "-" (bsc#1132448)
+  * adds 0601-base-dracut-lib.sh-dev_unit_name-guard-against-dev-b.patch 
+
+-------------------------------------------------------------------
+Wed Apr 24 08:52:33 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- 95iscsi: avoid error messages when building initrd, multipath timeouts
+  (bsc#1130114, bsc#1130107, bsc#1121238)
+  * adds 0595-iscsi-don-t-continue-waiting-if-the-root-device-is-p.patch
+  * adds 0596-network-stop-waiting-for-interfaces-if-root-device-i.patch
+  * adds 0597-iscsiroot-parse_iscsi_root-overwrites-command-line-a.patch
+  * adds 0598-iscsiroot-there-s-never-more-than-one-target-per-cal.patch
+  * adds 0599-iscsiroot-try-targets-only-once.patch
+  * adds 0600-iscsiroot-remove-bashisms.patch
+
+-------------------------------------------------------------------
+Thu Mar 14 15:42:45 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Bump version to 044.2 to provide a version to lock on to (bsc#1127891)
+
+-------------------------------------------------------------------
+Mon Mar 11 17:02:07 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Check SUSE kernel module dependencies recursively (bsc#1127891)
+  * adds 0594-Check-SUSE-kernel-module-dependencies-recursively.patch
+
+-------------------------------------------------------------------
+Thu Feb 28 20:09:28 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Handle non-versioned dependency in purge-kernels.
+
+-------------------------------------------------------------------
+Mon Feb 25 14:51:07 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- purge-kernels: Avoid endless loop when uninstalling kernels that depend on
+  KMPs which in themselves depend on other packages (bsc#1125327)
+
+-------------------------------------------------------------------
+Fri Feb 15 17:23:11 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Avoid "Failed to chown ... Operation not permitted" when run from non-root,
+  by not copying xattrs. (osc#1092178)
+  * adds 0593-dracut-only-copy-xattr-if-root.patch 
+
+-------------------------------------------------------------------
+Tue Feb 12 16:38:21 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Correct fix for displaying text on emergency consoles (boo#1124088)
+  * removes 0589-Fix-displaying-text-on-emergency-consoles.patch
+  * adds 0589-Fix-98dracut-systemd-dracut-emergency.sh.patch
+
+- 95iscsi: handle qedi like bnx2i (bsc#1113712)
+  * adds 0592-95iscsi-handle-qedi-like-bnx2i.patch
+
+-------------------------------------------------------------------
+Thu Feb  7 15:23:19 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- 91zipl: Don't use contents of commented lines (osc#1119499)
+  * adds 0591-91zipl-Don-t-use-contents-of-commented-lines.patch
+
+-------------------------------------------------------------------
+Mon Feb  4 16:12:16 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Fix displaying text on emergency consoles (boo#1124088)
+  - adds 0589-Fix-displaying-text-on-emergency-consoles.patch
+
+- Fix systemd version check, will be required for systemd v241
+  - 0590-00systemd-check-if-systemd-version-is-a-number.patch
+
+-------------------------------------------------------------------
+Fri Jan 25 16:03:09 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Remove invalid "FONT_MAP=none" from vconsole.conf (osc#1013573) 
+
+-------------------------------------------------------------------
+Mon Jan 21 14:01:20 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Ensure mmc host modules get included properly (bsc#1119037)
+  * adds 0588-Ensure-mmc-host-modules-get-included-properly.patch
+
+-------------------------------------------------------------------
+Sun Jan 20 21:11:06 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Fix a missing space in example configs (boo#1121251)
+  * adds 0587-Fix-a-missing-space-in-example-configs.patch 
+
+-------------------------------------------------------------------
+Fri Dec 21 11:02:32 UTC 2018 - Michal Suchanek <msuchanek@suse.com>
+
+- 95zfcp_rules/parse-zfcp.sh: remove rule existence check (bsc#1008352).
+  * adds 0586-95zfcp_rules-parse-zfcp.sh-remove-rule-existence-check.patch
+
+-------------------------------------------------------------------
+Mon Dec 17 15:27:15 UTC 2018 - jdelvare@suse.com
+
+- dracut-installkernel: Stop keeping old kernel files as .old
+  (boo#1112327)
+
+  The .old kernel files are confusing grub2 which can't find a
+  matching directory under /lib/modules. Furthermore, there is no
+  guarantee that the new modules are fully compatible with the old
+  kernel.
+
+  If anything goes wrong with a new self-compiled kernel, the user
+  can always boot back to the distribution kernel, so the .old
+  backup files are not needed in the first place. Get rid of them
+  to simplify and speed up the whole process.
+
+-------------------------------------------------------------------
+Fri Dec  7 09:56:45 UTC 2018 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+-  emergency mode: bring shell and all vital information to
+   all ttys specified as console devices
+   (FATE#325386, bsc#1053248, bsc#937555)
+   * Adds 0585-emergency-mode-use-sulogin.patch
+
+-------------------------------------------------------------------
+Wed Oct 31 09:57:55 UTC 2018 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- 98dracut-systemd: Start systemd-vconsole-setup before dracut-cmdline-ask
+  (bsc#1055834)
+  * adds 0582-98dracut-systemd-Start-systemd-vconsole-setup-before.patch
+
+- Fixed Patch 581 to apply cleanly
+  * Updates 0581-kernel-modules-add-nfit.patch
+
+- Mark the DASD udev rules host-only and handle backslashes in paths for
+  hostonly files (bsc#1090884)
+  * adds 0583-99base-Allow-files-with-backslashes-in-hostonly-file.patch
+  * adds 0584-95dasd_rules-mark-dasd-rules-host_only.patch
+
+-------------------------------------------------------------------
+Wed Oct 10 14:56:36 UTC 2018 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Add nfit module (bsc#1110519) 
+  * adds 0581-kernel-modules-add-nfit.patch
+
+-------------------------------------------------------------------
+Mon Sep 10 16:38:12 UTC 2018 - msuchanek@suse.com
+
+- Add kernel-syms to list of packages to remove with purge-kernels (bsc#1104090).
+
+- Skip kernels that cannot be removed by purge-kernels due to dependencies and
+  continue removing other kernels (bsc#1104090).
+
+-------------------------------------------------------------------
+Wed Aug 22 15:24:32 UTC 2018 - msuchanek@suse.com
+
+- Fix finding btrfs devices (bsc#1104178).
+  * add 0574-s-find_btrfs_devs-btrfs_devs.patch
+
+-------------------------------------------------------------------
+Wed Jun 20 15:44:35 UTC 2018 - trenn@suse.de
+
+- Add fix to override ACPI tables via initrd, a kernel config variable
+  changed name (bsc#1098448)
+  This is mainline git commit 940169e8d8e500498a3f350b2b3f341ae6548492
+A 0580-check_for_CONFIG_ACPI_TABLE_UPGRADE.patch
+
+-------------------------------------------------------------------
+Thu Jun 14 12:26:02 UTC 2018 - daniel.molkentin@suse.com
+
+- 40network: Fix static network setup (bsc#1091099)
+  * adds 0571-40network-Fix-static-network-setup.patch
+
+- lsinitrd: Fix cat: write error: Broken pipe error (bsc#1094603)
+  * adds 0572-lsinitrd-no-more-cat-write-error-Broken-pipe.patch
+  * adds 0573-lsinitrd.sh-quote-filename-in-extract_files.patch
+
+-------------------------------------------------------------------
+Thu Jun 14 11:48:42 UTC 2018 - daniel.molkentin@suse.com
+
+- 95multipath: Pickup multipath files in /etc/multipath/conf.d (boo#1048551)
+  * adds 0568-95multipath-Pickup-files-in-etc-multipath-conf.d.patch
+
+- 10i18n: Load all keymaps for a given locale (boo#1065058) 
+  * adds 0569-10i18n-Load-all-keymaps-for-a-given-locale.patch
+  * adds 0570-10i18n-Fix-possible-infinite-recursion.patch
+
+-------------------------------------------------------------------
+Wed Apr 25 16:50:06 UTC 2018 - daniel.molkentin@suse.com
+
+- 01fips: fix FIPS mode on SLES 15 (bsc#1074984)
+  * adds 0567-Fix-booting-with-fips-1-on-SLES-15.patch
+
+-------------------------------------------------------------------
+Thu Apr 19 11:51:07 UTC 2018 - daniel.molkentin@suse.com
+
+- Do not attempt to run purge-kernels.service on ro rootfs (bsc#1087880)
+
+-------------------------------------------------------------------
+Thu Apr 19 11:36:26 UTC 2018 - daniel.molkentin@suse.com
+
+- 95nfs: If no server is configured, read BOOTSERVERADDR from wicked's leaseinf
+  (bsc#1089332)
+  * adds 0566-95nfs-If-no-server-is-configured-read-BOOTSERVERADDR.patch
+-------------------------------------------------------------------
+Thu Apr  5 11:05:15 UTC 2018 - daniel.molkentin@suse.com
+
+- Remove RH-specific s390 modules (bsc#1086216)
+
+-------------------------------------------------------------------
+Mon Mar 19 11:39:10 CET 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Fri Mar 16 10:53:32 UTC 2018 - daniel.molkentin@suse.com
+
+- Instead of using arping, use wicked's own implementation (bsc#1078245)
+  Follow-up patch to "disable arping", requires wicked 0.6.46.
+  * adds 0563-40network-collapse-arping-and-dhcp-calls-into-wicked.patch
+
+- Wicked: Properly add set gateway variable when using dhcp (bsc#1085614)
+  * adds 0564-40network-Always-set-the-gw-variable.patch
+
+- Allow booting from block devices using intel vmd (bsc#1079924)
+  * adds 0565-90kernel-modules-Include-Intel-Volume-Management-Dev.patch
+
+-------------------------------------------------------------------
+Tue Mar 13 16:51:09 UTC 2018 - daniel.molkentin@suse.com
+
+- Enable aarch64 and adds critical drivers of ARM platform (bsc#1084272)
+  * adds 0562-Adjust-driver-list-to-modern-kernels.patch
+
+-------------------------------------------------------------------
+Fri Mar  9 15:06:59 UTC 2018 - daniel.molkentin@suse.com
+
+- 95iscsi: Add the qedi driver to driver list for iscsi boot
+  * adds 0561-Add-the-qedi-driver-to-driver-list-for-iscsi-boot.patch
+
+-------------------------------------------------------------------
+Wed Mar  7 15:47:48 UTC 2018 - lpechacek@suse.com
+
+- purge-kernels: Handle SLE 15 kernel live patches (bsc#108437)
+
+-------------------------------------------------------------------
+Thu Mar  1 10:45:26 UTC 2018 - daniel.molkentin@suse.com
+
+- 90kernel-modules: Ensure PCI host modules are included (boo#1079924)
+  * adds 0560-90kernel-modules-Ensure-PCI-host-modules-are-include.patch
+
+-------------------------------------------------------------------
+Wed Feb 28 14:33:57 UTC 2018 - daniel.molkentin@suse.com
+
+- 40network: Add wickedd duid.xml and iaid.xml if available
+  (bsc#1022872, bsc#1082832)
+  * adds 0559-Add-wickedd-duid.xml-and-iaid.xml-if-available.patch
+
+- 95qeth_rules: Fix file permissions (FATE#323440)
+
+-------------------------------------------------------------------
+Fri Feb 23 13:04:52 UTC 2018 - daniel.molkentin@suse.com
+
+- 40network: disable arping, it is no longer part of default installation (bsc#1078245)
+  * Adds 0557-40network-make-arping-optional.patch
+
+- 40network: replace brctl, it is longer part of default installation (bsc#1078245)
+  * Adds 0558-40network-remove-brctl-dependency.patch
+
+-------------------------------------------------------------------
+Fri Feb  9 16:10:21 UTC 2018 - daniel.molkentin@suse.com
+
+- 95qeth_rules: Add new module to copy qeth rules (FATE#323440)
+  * Adds 0556-95qeth_rules-Add-new-module-to-copy-qeth-rules.patch 
+
+- Avoid executing emergency hook twice
+  * Adds 0555-Avoid-executing-emergency-hooks-twice.patch 
+
+-------------------------------------------------------------------
+Thu Jan 25 09:19:05 UTC 2018 - daniel.molkentin@suse.com
+
+- support validating the IMA policy file signature, needed since Kernel 4.7
+  * Adds 0552-98integrity-support-validating-the-IMA-policy-file-s.patch
+
+- IMA: improve support for evm key loading (bsc#1077359, fate#323906)
+  * Adds 0553-98integrity-support-loading-x509-into-the-trusted-bu.patch
+  * Adds 0554-98integrity-support-X.509-only-EVM-configuration.patch
+
+- FIPS: Adjust dependencies to work for cryptsetup 2.0 (bsc#1077070)
+
+- Added a few more patch annotations
+
+-------------------------------------------------------------------
+Fri Jan 19 15:29:15 UTC 2018 - daniel.molkentin@suse.com
+
+- Fix typo for ima dependency (evmtcl vs evmctl) (bsc#1073466)
+
+- Updated Patch annotation regarding their upstream state 
+
+-------------------------------------------------------------------
+Wed Jan 10 11:25:13 UTC 2018 - daniel.molkentin@suse.com
+
+- FIPS: Try to fetch list of fips modules from the kernel's modules dir (bsc#1074984)
+  * Adds 0551-fips-use-lib-modules-uname-r-modules.fips.patch
+
+- Annotated patches regarding their upstream state
+
+-------------------------------------------------------------------
+Tue Jan  9 08:08:01 UTC 2018 - daniel.molkentin@suse.com
+
+- dracut-ima requires evmctl and keyutils (bsc#1073466)
+
+-------------------------------------------------------------------
+Fri Dec 15 12:51:39 UTC 2017 - daniel.molkentin@suse.com
+
+- Switch back to fipvlan for bnx2fc (bsc#1052840)
+  * adds 0548-95fcoe-Switch-back-to-using-fipvlan-for-bnx2fc.patch
+
+- 95fcoe: Allow bnc2x driver more time to complete DCB negotiation (bsc#1052840)
+  * adds 0549-fcoe-up-Increase-sleeptime-to-13s.patch
+
+- 95fcoe: add timeout initqueue entries (bsc#1052840)
+  * adds 0550-95fcoe-add-timeout-initqueue-entries.patch
+
+-------------------------------------------------------------------
+Thu Dec 14 12:33:59 UTC 2017 - daniel.molkentin@suse.com
+
+- Fix task limit in emergency.service (same as in dracut-emergency.service) (bsc#1019938)
+  * adds 0547-Fix-task-limit-in-emergency.service-the-same-change-.patch
+
+-------------------------------------------------------------------
+Wed Dec 13 17:07:10 UTC 2017 - daniel.molkentin@suse.com
+
+- Fix logic for applying 0541-Make-sure-70-persistent-net.rules-is-included-in-ini.patch
+
+-------------------------------------------------------------------
+Wed Dec 13 16:32:54 UTC 2017 - daniel.molkentin@suse.com
+
+- Support AMD CPU families 0x16 and 0x17 (bsc#1072424)
+  * Adds 0545-Add-early-microcode-support-for-AMD-family-16h.patch
+  * Adds 0546-Support-Microcode-Updates-for-AMD-CPU-Family-0x17.patch
+
+-------------------------------------------------------------------
+Fri Dec  8 08:55:30 UTC 2017 - daniel.molkentin@suse.com
+
+- Make ip=dhcp work. Previously, a network interface specifier was required.
+  The new behaviour matches documented behaviour.
+  Adds 0544-40network-Make-ip-dhcp-work.patch 
+
+-------------------------------------------------------------------
+Wed Dec  6 16:21:33 UTC 2017 - daniel.molkentin@suse.com
+
+- Remove 00systemd-bootchart, which is gone from systemd for some time (bsc#1067279)
+  Adds 0543-Remove-00systemd-bootchart.patch
+
+- Ensure 0541-Make-sure-70-persistent-net.rules-is-included-in-ini.patch is
+  not applied on Leap either
+
+-------------------------------------------------------------------
+Fri Nov  3 01:00:25 UTC 2017 - daniel.molkentin@suse.com
+
+- Ensure 0541-Make-sure-70-persistent-net.rules-is-included-in-ini.patch
+  is not applied on SLE.
+
+-------------------------------------------------------------------
+Mon Oct 23 10:37:52 UTC 2017 - daniel.molkentin@suse.com
+
+- This is to support predictable interface names (boo#960669)
+ * adds 0541-Make-sure-70-persistent-net.rules-is-included-in-ini.patch 
+
+- Include crc32c Intel module when using btrfs (bsc#1011554)
+ * adds 0542-Include-crc32c-intel-module-when-using-btrfs.patch
+
+-------------------------------------------------------------------
+Tue Oct 17 08:03:22 UTC 2017 - daniel.molkentin@suse.com
+
+- Check the proper variable for a custom IMA keys directory (cherry-picked)
+  Part of fate#323289.
+ * adds 0540-Check-the-proper-variable-for-a-custom-IMA-keys-dire.patch
+
+-------------------------------------------------------------------
+Sun Oct  8 00:10:44 UTC 2017 - jengelh@inai.de
+
+- Reword dracut-ima description to avoid misunderstandings.
+- Replace old RPM constructs.
+
+-------------------------------------------------------------------
+Thu Sep 28 11:35:43 UTC 2017 - daniel.molkentin@suse.com
+
+- Add IMA functionality (fate#323289)
+  This is implemented as a sub module analogous to FIPS 
+  * adds 0539-Add-IMA-functionality-fate-323289.patch
+
+-------------------------------------------------------------------
+Tue Aug 29 13:46:38 UTC 2017 - daniel.molkentin@suse.com
+
+- 90multipath: Remove compat rule that is no longer needed (bsc#1054539)
+ * adds 0536-90multipath-drop-67-kpartx-compat.rules.patch
+
+- Don't detect crc32.ko as built-in (bsc#1054538)
+ * adds 0537-dracut-init.sh-ignore-crc32.ko-in-builtin-test.patch
+
+- Enable systemd-based core dumps for initrd (bsc#1054809)
+ * adds 0538-Enable-core-dumps-with-systemd-from-initrd.patch
+
+-------------------------------------------------------------------
+Mon Aug 28 13:42:33 UTC 2017 - mmarek@suse.com
+
+- Add missing coreutils dependency for initrd macros (bsc#1055492).
+
+-------------------------------------------------------------------
+Fri Aug 18 14:42:34 UTC 2017 - daniel.molkentin@suse.com
+
+- Ensure that targets such as halt can be reached (bsc#1048698)
+ * adds 0529-systemd-add-missing-.slice-unit.patch
+ * adds 0530-dracut-systemd-dracut-cmdline-ask-fix-dracut-kernel-.patch
+ * adds 0531-dracut-systemd-.service-conflict-with-shutdown-targe.patch
+
+- Do not add too many drivers all at once (bsc#1037344)
+ * adds 0532-List-drivers-rather-than-looking-for-reverse-depende.patch
+
+- instmods: check modules.builtin in $srcmods (bsc#1048606)
+ * adds 0533-instmods-check-modules.builtin-in-srcmods.patch
+
+- ssh-client: ensure is usable in all cases (bsc#1021846)
+ * adds 0534-ssh-client-Include-nss_-libraries.patch
+
+- Sync initramfs after creation to ensure entigrity (bsc#1049113)
+ * adds 0535-Sync-initramfs-after-creation.patch
+
+
+-------------------------------------------------------------------
+Wed Aug  2 13:11:02 UTC 2017 - daniel.molkentin@suse.com
+
+- Ensure dracut.sh responds properly to hostonly cmdline (bsc#1048748)
+  * adds 0528-Ensure-dracut.sh-responds-properly-to-hostonly_cmdli.patch
+
+-------------------------------------------------------------------
+Thu Jul 13 15:15:29 UTC 2017 - daniel.molkentin@suse.com
+
+- switch fips checking to use the libkcapi based fipscheck toolset (bsc#1048565)
+ * adds 0527-switch-fips-checking-to-use-the-libkcapi-based-fipsc.patch
+
+-------------------------------------------------------------------
+Wed Jul 12 12:27:52 UTC 2017 - daniel.molkentin@suse.com
+
+- iscsiroot: call handle_firmware only for non-iface invocations (bsc#1032284)
+ * adds 0526-iscsiroot-call-handle_firmware-only-for-non-iface-in.patch
+
+-------------------------------------------------------------------
+Tue Jul 11 09:55:00 UTC 2017 - daniel.molkentin@suse.com
+
+- bail out if module directory does not exist (bsc#1043900)
+  * adds 0525-backport-bail-out-if-module-directory-does-not-exist.patch
+
+-------------------------------------------------------------------
+Mon Jun 19 11:54:44 UTC 2017 - daniel.molkentin@suse.com
+
+- Suppress nonsensical error message (bsc#1032029)
+  * adds 0524-Suppress-nonsensical-error-message-bsc-1032029.patch
+
+-------------------------------------------------------------------
+Fri Jun 16 15:47:40 UTC 2017 - daniel.molkentin@suse.com
+
+- 01fips: Fix typo (bsc#1033238)
+  * adds 0522-Fix-typo-from-commit-3f1cdb520.patch
+- 98dracut-systemd: Fix module force loading with systemd (bsc#986216)
+  * adds 0523-98dracut-systemd-Fix-module-force-loading-with-syste.patch
+
+-------------------------------------------------------------------
+Wed Jun  7 08:21:16 UTC 2017 - daniel.molkentin@suse.com
+
+- Ship udev files required by systemd (bsc#1040153)
+  * adds 0521-Ensure-udev-persistent-storage-compat-rules-get-crea.patch
+- Bump package version to 044.1 to allow systemd to depend on this change
+
+-------------------------------------------------------------------
+Thu May 11 09:55:53 UTC 2017 - daniel.molkentin@suse.com
+
+- Revert: "Require version >= 3.18 btrfsprogs, rather than conflicting with
+  an older one". Dracut should never depend on optional components
+
+-------------------------------------------------------------------
+Mon May  8 15:34:57 UTC 2017 - daniel.molkentin@suse.com
+
+- Ignore module resolution errors (e.g. with kgraft) (bsc#1037120)
+  * adds 0520-Ignore-module-resolution-errors.patch
+
+-------------------------------------------------------------------
+Wed Apr 26 16:52:29 UTC 2017 - daniel.molkentin@suse.com
+
+- 90kernel-modules: Ensure phy drivers are loaded in initrd (bsc#1034893) 
+  * adds 0519-90kernel-modules-Ensure-phy-drivers-are-loaded-in-in.patch
+
+-------------------------------------------------------------------
+Wed Apr 26 16:11:17 UTC 2017 - daniel.molkentin@suse.com
+
+- 90kernel-modules: Fix backlight on Cherrytrail devices (boo#1034785)
+  * adds 0518-90kernel-modules-Fix-backlight-on-Cherrytrail-device.patch
+
+-------------------------------------------------------------------
+Wed Apr 26 15:57:54 UTC 2017 - daniel.molkentin@suse.com
+
+- 95fcoe: fix rules generation (osc#1036323)
+  * adds 0517-95fcoe-fixup-fcoe-genrules.sh-for-VN2VN-mode.patch
+
+-------------------------------------------------------------------
+Wed Apr 26 13:52:53 UTC 2017 - daniel.molkentin@suse.com
+
+- More correct patch description for 0512, no functional changes
+  * updates 0512-Make-binutils-optional-when-elfutils-are-available.patch
+
+-------------------------------------------------------------------
+Wed Apr 26 13:39:34 UTC 2017 - daniel.molkentin@suse.com
+
+- Require version >= 3.18 btrfsprogs, rather than conflicting with
+  an older one
+
+-------------------------------------------------------------------
+Tue Apr 25 13:40:18 UTC 2017 - daniel.molkentin@suse.com
+
+- Fix subnet calculation in mkinitrd (bsc#1035743)
+  * adds 0516-mkinitrd-suse.sh-Fix-prefix-calculation.patch 
+
+-------------------------------------------------------------------
+Fri Apr 21 10:50:42 UTC 2017 - tchvatal@suse.com
+
+- Conflict with older btrfsprogs < 3.18  bsc#1035518
+  * otherwise when zypper duping we are not able to generate intrd
+    until the btrfsprogs are updated, this way we force the app
+    to be update beforehand (13.1 and SLE11 migrations)
+
+-------------------------------------------------------------------
+Thu Apr 20 20:28:43 UTC 2017 - daniel.molkentin@suse.com
+
+- Ensure hisi_sas_v2_hw gets included (bsc#1034597)
+  * adds 0515-90kernel-modules-also-add-block-device-driver-revers.patch
+
+-------------------------------------------------------------------
+Fri Apr  7 10:03:36 UTC 2017 - daniel.molkentin@suse.com
+
+- Fix mdraid regression (bsc#1028542)
+  * adds 0513-Fix-regression-caused-by-6f9bf2b8ac436259bdccb110545.patch 
+- man: make the -k option clear using mkinitrd (bsc#1012656)
+  * adds 0514-man-make-the-k-option-clear-using-mkinitrd.patch 
+
+-------------------------------------------------------------------
+Thu Apr  6 09:35:11 UTC 2017 - daniel.molkentin@suse.com
+
+- Fix typo in installkernel script (bsc#1032576)
+
+-------------------------------------------------------------------
+Mon Apr  3 13:30:20 UTC 2017 - daniel.molkentin@suse.com
+
+- Drop binutils dependency in favor of elfutils
+  * add 0512-Make-binutils-optional-when-elfutils-are-available.patch 
+
+-------------------------------------------------------------------
+Fri Mar 17 10:09:57 UTC 2017 - daniel.molkentin@suse.com
+
+- 01fips: Make init on non-x86_64, specifically s390x, pass (bsc#1021687)
+  * add 0510-01fips-Some-modules-use-separators-other-than.patch
+  * add 0511-01fips-ensure-fips-initialization-succeeds-on-s390-x.patch 
+
+-------------------------------------------------------------------
+Thu Mar 16 11:45:01 UTC 2017 - daniel.molkentin@suse.com
+
+- installkernel: handle make bin-rpmpkg (bsc#1008648)
+
+-------------------------------------------------------------------
+Thu Mar  2 15:06:01 UTC 2017 - daniel.molkentin@suse.com
+
+- Do not pass ifname for bonding devices (bsc#995812)
+  * add 0314-nfs_do_not_pass_ifname_for_bonding_devices.patch
+
+-------------------------------------------------------------------
+Thu Mar  2 15:03:26 UTC 2017 - daniel.molkentin@suse.com
+
+- Find devices by path for S390x (bsc#915218)
+  * add s390x_persistent_device.conf
+
+-------------------------------------------------------------------
+Wed Mar  1 13:24:19 UTC 2017 - daniel.molkentin@suse.com
+
+- 01fips: Remove zlib module as requirement (bsc#1020063)
+  * add 0509-01fips-Remove-zlib-module-as-requirement.patch
+
+-------------------------------------------------------------------
+Wed Feb  8 16:55:16 UTC 2017 - daniel.molkentin@suse.com
+
+- 90multipath: 90multipath: start before local-fs-pre.target
+  (bsc#1005410, bsc#1006118, bsc#1007925)
+  * add 0508-90multipath-start-before-local-fs-pre.target.patch
+
+-------------------------------------------------------------------
+Fri Feb  3 14:46:26 UTC 2017 - daniel.molkentin@suse.com
+
+- unlimit TaskMax for xfs_repair in emergency shell (bsc#1019938)
+  * add 0507-Set-TaskMax-inifinite-for-the-emergency-shell.patch
+
+-------------------------------------------------------------------
+Thu Feb  2 12:20:55 UTC 2017 - daniel.molkentin@suse.com
+
+- Boot on s390x with fips=1 on the kernel commnad line (bnc#1021687)
+  * add 0506-Boot-on-s390x-with-fips-1-on-the-kernel-commnad-line.patch
+
+-------------------------------------------------------------------
+Thu Jan 26 10:10:58 UTC 2017 - daniel.molkentin@suse.com
+
+- Allow booting from degrated MD arrays with systemd (bsc#1017695)
+  * add 0505-Allow-booting-from-degraded-MD-RAID-arrays.patch
+
+-------------------------------------------------------------------
+Mon Jan 16 19:44:07 UTC 2017 - daniel.molkentin@suse.com
+
+- Add md4 and arc4 modules for ntlm authentication 
+  * add 0454-Add-md4-and-arc4-modules-for-ntlm.patch
+
+-------------------------------------------------------------------
+Mon Jan 16 19:05:14 UTC 2017 - daniel.molkentin@suse.com
+
+- Resolve symbolic links for -i and -k parameters (bsc#902375)
+ * add 0453-Resolve-symbolic-links-for-i-and-k-parameters-bsc-90.patch
+
+-------------------------------------------------------------------
+Fri Jan  6 15:08:06 UTC 2017 - mmarek@suse.cz
+
+- purge-kernels: Handle kgraft patches (bsc#1017141)
+  Cleanup unused code.
+
+-------------------------------------------------------------------
+Wed Dec 14 14:43:38 UTC 2016 - Thomas.Blume@suse.com
+
+- deal with incomplete ibft bootflag settings (bsc#1007648)
+  * add 0504-ibft-fix-boot-flag-check.patch
+
+-------------------------------------------------------------------
+Mon Nov 28 19:16:52 CET 2016 - kukuk@suse.de
+
+- Remove 0314-run-rpcbind.patch again, was solved by another
+  change in rpcbind
+
+-------------------------------------------------------------------
+Tue Nov 15 11:13:39 UTC 2016 - dmolkentin@suse.com
+
+- Try to always add pinctrl-cherryview (bsc#998440)
+  * add 0452-Always-try-to-add-pinctrl-cherryview.patch
+
+-------------------------------------------------------------------
+Sun Nov 13 23:51:31 CET 2016 - kukuk@suse.de
+
+- nfs/rpcbind: rpcbind uses now /run/rpcbind for temporary data.
+  Create the needed directory.
+  * add 0314-run-rpcbind.patch
+
+-------------------------------------------------------------------
+Tue Nov  8 15:19:37 UTC 2016 - daniel@molkentin.de
+
+- systemd-initrd: Add initrd-root-device.target. Cherry-pick to get
+  systemd v230 into factory (bsc1009089)
+  * add 0451-systemd-initrd-add-initrd-root-device.target.patch 
+
+-------------------------------------------------------------------
+Mon Nov  7 15:54:09 UTC 2016 - dmolkentin@suse.de
+
+- Bash cannot handle binary strigns with embedded NULs. This used
+  to work by accident, it no longer does starting from bash 4.4.
+  Strip NULs during all comparison operations as a workaround.
+  Addresses bsc989218.
+  * add 0450-Strip-NUL-bytes-in-stream-before-push-in-string.patch
+
+-------------------------------------------------------------------
+Mon Nov  7 12:06:51 UTC 2016 - astieger@suse.com
+
+- Do not create initramfs with world-readable permissions if
+  early microcode update is used bsc#1008340 CVE-2016-8637
+  0503-dracut.sh-create-the-initramfs-non-world-readable-al.patch
+
+-------------------------------------------------------------------
+Mon Oct 17 10:35:53 CEST 2016 - hare@suse.de
+
+- Add missing rules file for previous patch
+  *modify 0313-90mdraid-Use-stock-MD-rules-to-assemble-RAID-arrays.patch
+
+-------------------------------------------------------------------
+Fri Oct 14 14:20:51 CEST 2016 - hare@suse.de
+
+- 90mdraid: Use stock MD rules to assemble RAID arrays (bsc#998860)
+  *add 0313-90mdraid-Use-stock-MD-rules-to-assemble-RAID-arrays.patch
+
+-------------------------------------------------------------------
+Thu Oct 13 10:33:56 CEST 2016 - hare@suse.de
+
+- 95resume: Do not resume on iSCSI devices (bsc#999663)
+  *add 0310-95resume-Do-not-resume-on-iSCSI.patch
+- 95iscsi: ip=ibft is deprecated (bsc#1004437)
+  *add 0311-95iscsi-ip-ibft-is-deprecated.patch
+- 40network: do not print warning about non-existing file
+  (bsc#1004437)
+  *add 0312-40network-Do-not-print-message-about-tmp-net.ibft0.c.patch
+
+-------------------------------------------------------------------
+Mon Oct 10 10:44:17 CEST 2016 - hare@suse.de
+
+- 90dmraid: do not delete partitions (bsc#998860)
+  *add 0309-90dmraid-do-not-delete-partitions.patch
+
+-------------------------------------------------------------------
+Fri Oct  7 13:08:17 UTC 2016 - trenn@suse.de
+
+- Give-persistent_policy-precedence-over-dev-mapper-names (bsc#908143)
+  *add: 0502-persistent_device_policy_param_enhance.patch
+- mdadm IMSM_NO_PLATFORM workaround for kdump (bsc#975404)
+  *add: 0308-mdraid_add_IMSM_NO_PLATFORM_env.patch
+
+-------------------------------------------------------------------
+Wed Sep 28 15:32:37 CEST 2016 - hare@suse.de
+
+- 90multipath: parse commandline option 'multipath=off' (bsc#1001691)
+  *add 0307-90multipath-parse-kernel-commandline-option-multipat.patch
+
+-------------------------------------------------------------------
+Wed Sep 28 08:31:38 CEST 2016 - hare@suse.de
+
+- 95fcoe: do not start fcoemon twice (bsc#1001512)
+  *add 0225-95fcoe-do-not-start-fcoemon-twice.patch
+
+-------------------------------------------------------------------
+Tue Sep 27 13:44:04 CEST 2016 - hare@suse.de
+
+- Reformat patch headers:
+  *modify 0199-rd-iscsi-waitnet-default-false.patch
+  *modify 0200-dracut_fix_multipath_without_config.patch
+  *modify 0210-add_fcoe_uefi_check.patch
+  *modify 0212-fcoe_reorder_init_path.patch
+- Rediff patches to apply cleanly:
+  *modify 0124-40network-Update-iBFT-scanning-code-to-handle-IPv6.patch
+  *modify 0133-Allow-multiple-configurations-per-network-interface-.patch
+  *modify 0170-iscsi-skip-ibft-invalid-dhcp.patch
+  *modify 0218-40network-allow-persistent-interface-names.patch
+- Remove spurious whitespaces:
+  *modify 0169-network_set_mtu_macaddr_for_dhcp.patch
+- 40network: print out correct prefix (bsc#996141)
+  *modify 0125-40network-separate-mask-and-prefix.patch
+- 95iscsi: setup bnx2i offload connection correctly (bsc#997598)
+  *add 0224-95iscsi-setup-bnx2i-offload-connections-properly.patch
+- Rename patches to match sequence number:
+  *old: 0019-40network-Fix-race-condition-when-wait-for-networks.patch
+  *new: 0012-40network-Fix-race-condition-when-wait-for-networks.patch
+  *old: 0066-40network-always-start-netroot-in-ifup.sh.patch
+  *new: 0013-40network-always-start-netroot-in-ifup.sh.patch
+
+-------------------------------------------------------------------
+Mon Sep 19 07:14:59 UTC 2016 - Thomas.Blume@suse.com
+
+- rd.iscsi.waitnet should default to false in order for dracut to
+  wait for the network devices (bsc#997598)
+  *add 0199-rd-iscsi-waitnet-default-false.patch
+
+-------------------------------------------------------------------
+Fri Sep 16 10:47:03 CEST 2016 - hare@suse.de
+
+- 95multipath: Replace 'grep' with 'sed' for shutdown scripts
+  (bsc#999220)
+  * modify 0306-90multipath-add-shutdown-script.patch
+
+-------------------------------------------------------------------
+Thu Sep  1 17:11:17 UTC 2016 - opensuse@dstoecker.de
+
+- fix boot issues using RAID, bnc#970215
+
+-------------------------------------------------------------------
+Wed Aug 31 19:06:19 UTC 2016 - trenn@suse.de
+
+- Add missing whitespace for md raid suse kernel param parsing (bsc#970215)
+*modify: 0059-99suse-Add-SUSE-specific-initrd-parsing.patch 
+- Fix IFS separater in net-lib.sh (bsc#996141)
+*modify: 0125-40network-separate-mask-and-prefix.patch
+
+-------------------------------------------------------------------
+Fri Aug 26 10:17:27 CEST 2016 - hare@suse.de
+
+- Rename patch:
+  * From 0211-fix_multipath_check_hostonly.patch
+    to 0303-fix_multipath_check_hostonly.patch
+- Rename patch:
+  * From 0213-10i18n-keymap-find.patch
+    to 0213-Fix-wrong-keymap-inclusion.patch
+
+-------------------------------------------------------------------
+Thu Aug 25 11:59:56 CEST 2016 - hare@suse.de
+
+- 95fcoe: Do not complain about missing /etc/hba.conf (bsc#980539)
+  * Add 0215-95fcoe-Do-not-complain-about-missing-etc-hba.conf.patch
+- 95fcoe: silence lldpad warnings
+  * Add 0216-95fcoe-silence-lldpad-warnings.patch
+- 95fcoe: Allow to specify the FCoE mode via the fcoe= parameter
+  * Add 0217-95fcoe-Allow-to-specify-the-FCoE-mode-via-the-fcoe-p.patch
+- 40network: allow persistent interface names (bsc#995284)
+  * Add 0218-40network-allow-persistent-interface-names.patch
+- 95fcoe: use interface names instead of MAC addresses
+  * Add 0219-95fcoe-use-interface-names-instead-of-MAC-addresses.patch
+- 95fcoe: always set AUTO_VLAN for fcoemon (bsc#995019)
+  * Add 0220-95fcoe-always-set-AUTO_VLAN-for-fcoemon.patch
+- 95fcoe: Add shutdown script (bsc#994860)
+  * Add 0221-95fcoe-Add-shutdown-script.patch
+- 90dm: Fixup shutdown script (bsc#994860)
+  * Add 0222-90dm-Fixup-shutdown-script.patch
+- 90dm: fixup dependency cycle between MD and DM shutdown (bsc#994860)
+  * Add 0223-90dm-fixup-dependency-cycle-between-MD-and-DM-shutdo.patch
+- 90multipath: Start daemon after udev settle (bsc#986734)
+  * Add 0304-90multipath-Start-daemon-after-udev-settle.patch
+- 90multipath: load dm_multipath module during startup
+  * Add 0305-90multipath-load-dm_multipath-module-during-startup.patch
+- 90multipath: add shutdown script (bsc#994860)
+  * Add 0306-90multipath-add-shutdown-script.patch
+  
+-------------------------------------------------------------------
+Tue Aug 23 13:36:18 CEST 2016 - hare@suse.de
+
+- Reformat patches and add patch header:
+  * 0053-01fips-fixup-loading-issues.patch
+  * 0126-01fips-Add-drbg-module-to-force-loaded-modules.patch
+  * 0128-90lvm-Install-dm-snapshot-module.patch
+  * 0133-Allow-multiple-configurations-per-network-interface-.patch
+  * 0138-fips_add_aesni-intel.patch
+  * 0168-remove_plymouth_logo_file.patch
+  * 0169-network_set_mtu_macaddr_for_dhcp.patch
+  * 0170-iscsi-skip-ibft-invalid-dhcp.patch
+  * 0180-i18n_add_correct_fontmaps.patch
+  * 0196-ibft-wait-for-session-on-all-paths.patch
+  * 0201-fix_nfs_with_ip_instead_of_hostname.patch
+  * 0300-dracut_dont_use_dpkg_defaults_on_SUSE.patch
+  * fips-kernel-4.4-fixes.patch
+- Rename patch:
+  * from fips-kernel-4.4-fixes.patch
+  * to 0139-fips-kernel-4.4-fixes.patch
+
+-------------------------------------------------------------------
+Fri Aug 19 10:09:30 CEST 2016 - hare@suse.de
+
+- Do not overwrite existing FCoE configuration (bsc#993861)
+  * Add 0213-95fcoe-Do-not-overwrite-FCoE-configuration.patch
+
+-------------------------------------------------------------------
+Tue Aug  2 14:19:00 UTC 2016 - trenn@suse.de
+
+- Fix DASD SSID handling (bsc#989313)
+* Add 0501-dasd_fix_ssid_bigger_zero.patch
+
+-------------------------------------------------------------------
+Tue Aug  2 14:18:00 UTC 2016 - mfasheh@suse.com
+
+- Advise user of fs recovery options when we fail to mount (fate#320443)
+ * Add 0404-dracut-emergency-optionally-print-fs-help.patch
+
+-------------------------------------------------------------------
+Mon Jul  4 12:19:43 UTC 2016 - agraf@suse.com
+
+- Add 32bit arm support to installkernel
+
+-------------------------------------------------------------------
+Fri Jun 17 11:24:26 UTC 2016 - fvogt@suse.com
+
+- Add 0213-10i18n-keymap-find.patch:
+    - Fix choice of keymap for inclusion (bsc#942896)
+    - Refresh 0301-include_sysconfig_language.patch
+
+-------------------------------------------------------------------
+Fri Jun  3 14:05:36 UTC 2016 - trenn@suse.de
+
+- FCOE fix bsc#982588
+  * Add 0212-fcoe_reorder_init_path.patch
+
+-------------------------------------------------------------------
+Tue May 31 12:53:28 UTC 2016 - meissner@suse.com
+
+- fips-kernel-4.4-fixes.patch: adjust the kernel module list to
+  match the SLES 12 SP2 kernel. (bsc#976577)
+
+-------------------------------------------------------------------
+Wed May  4 15:40:37 CEST 2016 - hare@suse.de
+
+- Port missing SLES patches
+  * Add 0197-95iscsi-Do-not-require-network-for-qla4xxx-flash-ses.patch
+  * Add 0198-95iscsi-set-rd.iscsi.firmware-for-qla4xxx-sessions.patch
+  * Remove 0194-95iscsi-Do-not-require-network-for-qla4xxx-flash-ses.patch
+  * Remove 0195-95iscsi-set-rd.iscsi.firmware-for-qla4xxx-sessions.patch
+- Rewrite patch:
+  * Add 0302-Revert-90multipath-add-hostonly-multipath.conf-in-ca.patch
+  * Remove 0001-multipath_revert_mpathconf_binary_use.patch
+- Update 0403-95lunmask-Add-module-to-handle-LUN-masking.patch
+  to match upstream kernel submission (FATE#319786)
+
+-------------------------------------------------------------------
+Tue Apr 26 10:01:19 UTC 2016 - trenn@suse.de
+
+- Add IFS restoring where it has been lost due to mainline merging
+  (bsc#977117)
+*Add 0500-Reset-IFS-variable.patch
+
+-------------------------------------------------------------------
+Mon Apr 25 12:55:06 UTC 2016 - trenn@suse.de
+
+- Make sure to install collect binary (bsc#976466)
+* Add: 0188-95dasd_rules-Install-collect-udev-helper-binary.patch
+
+-------------------------------------------------------------------
+Wed Apr 20 10:15:34 UTC 2016 - trenn@suse.de
+
+- Remove version from requires on subpackage
+- Add a split provide because of the package split for SLE12 SP1 to SP2 upgrade
+
+-------------------------------------------------------------------
+Tue Apr 12 14:05:55 UTC 2016 - trenn@suse.de
+
+- Forward port of latest SLES patches (fate#320499)
+Add:
+  * 0001-multipath_revert_mpathconf_binary_use.patch (fate#320499)
+  * 0170-iscsi-skip-ibft-invalid-dhcp.patch (bsc#953361)
+  * 0160-s390-update_active_devices_initrd.patch (bsc#939101)
+  * 0161-95zfcp_rules-simplified-rd.zfcp-commandline-for-NPIV.patch (bsc#964456)
+  * 0190-replace-iscsistart-with-systemd-service-files.patch (fate#319024)
+  * 0191-static_network_setup_return_zero.patch (bsc#919179)
+  * 0192-iscsi_set_boot_protocol_from_ifcfg.patch (bsc#919179)
+  * 0193-95iscsi-Set-number-of-login-retries.patch (bsc#951003)
+  * 0196-ibft-wait-for-session-on-all-paths.patch (bsc#951003)
+  * 0403-95lunmask-Add-module-to-handle-LUN-masking.patch (FATE#319786)
+
+Added, but still commented in spec file (still needs adjusting):
+- Fixup booting from qla4xxx (bsc#951003)
+  * 0194-95iscsi-Do-not-require-network-for-qla4xxx-flash-ses.patch
+  * 0195-95iscsi-set-rd.iscsi.firmware-for-qla4xxx-sessions.patch
+
+-------------------------------------------------------------------
+Wed Mar 30 22:27:06 UTC 2016 - dmueller@suse.com
+
+- dracut-installkernel: Fix for aarch64 (bsc#947670)
+
+-------------------------------------------------------------------
+Thu Mar 24 16:28:01 UTC 2016 - trenn@suse.de
+
+- Move dist config file to /usr/lib/dracut/dracut.conf.d (bsc#972143)
+- Remove stale, unused patch file:
+0181-no_systemd_cryptsetup.patch
+- Still create a debug config example in /etc/dracut.conf.d
+
+-------------------------------------------------------------------
+Fri Feb 12 11:34:33 UTC 2016 - fvogt@suse.com
+
+- Add 0211-fix_multipath_check_hostonly.patch:
+    - Fix warning about multipath
+
+-------------------------------------------------------------------
+Wed Feb 10 12:00:35 UTC 2016 - fvogt@suse.com
+
+- Modify 0300-dracut_dont_use_dpkg_defaults_on_SUSE.patch:
+    - Don't try to include plymouth if plymouth-dracut pkg. not installed
+
+-------------------------------------------------------------------
+Tue Feb  9 10:37:30 UTC 2016 - fvogt@suse.com
+
+- Add 0210-add_fcoe_uefi_check.patch:
+    - Only install fcoe-uefi module if needed (boo#965477)
+
+-------------------------------------------------------------------
+Sat Feb  6 19:16:32 UTC 2016 - fvogt@suse.com
+
+- Fix 0208-no_forced_virtnet.patch:
+    - On non-QEMU systems it returned non-zero, causing dracut to fail
+    - Fixed boo#965477
+    - dracut.spec: Remove 90qemu-net entirely instead of disabling
+    - running_in_qemu was broken (reading output of >/dev/null)
+
+-------------------------------------------------------------------
+Mon Feb  1 09:38:46 UTC 2016 - fvogt@suse.com
+
+- Fix 0158-Add-SUSE-kernel-module-dependencies-in-etc-modprobe.patch:
+    - Patch did not have any effect whatsoever
+    - Fixes bsc#869496
+    - Rename from 0158-Add-SUSE-kernel-module-dependencies-in-etc-modprobe..patch
+
+-------------------------------------------------------------------
+Thu Jan 28 10:18:18 UTC 2016 - pwieczorkiewicz@suse.com
+
+- Add 0169-network_set_mtu_macaddr_for_dhcp.patch:
+    - Set MTU and LLADDR for DHCP if specified (boo#959803)
+
+-------------------------------------------------------------------
+Wed Jan 27 09:19:18 UTC 2016 - fvogt@suse.com
+
+- Modify 0017-45ifcfg-use-distro-specific-scripts.patch:
+    - Also revert upstream commit f34e1d6b to not forcibly
+     include network and ifcfg modules (bsc#960669)
+- Refresh:
+    - 0094-Implement-shortcut-ip-ifname-static-for-static-confi.patch
+    - 0132-40network-fixup-static-network-configuration.patch
+    - 0142-40network-Don-t-report-error-for-etc-sysconfig-netwo.patch
+    - 0402-driver-fail-summary.patch
+
+-------------------------------------------------------------------
+Wed Jan 27 07:47:55 UTC 2016 - fvogt@suse.com
+
+- Add 0209-fix_modules_load_d_hostonly.patch:
+    - Fix modules-load.d with hostonly (boo#962224)
+
+-------------------------------------------------------------------
+Tue Jan 26 11:08:04 UTC 2016 - fvogt@suse.com
+
+- Add 0208-no_forced_virtnet.patch:
+    Don't include qemu-net modules without reason.
+    Fix for bsc#960669
+
+-------------------------------------------------------------------
+Fri Jan 22 13:18:33 UTC 2016 - fvogt@suse.com
+
+- Refresh and merge:
+    0133-Allow-multiple-configurations-per-network-interface-.patch
+    0145-40network-handle-ip-ifname-static-correctly.patch
+    0162-network-Request-DHCP-lease-instead-of-getting-applyi.patch
+- Delete 0134-Remove-bootdev-warning-bnc-881112.patch:
+    - ip=ibft got deprecated, so workaround not necessary
+
+-------------------------------------------------------------------
+Thu Jan 21 11:33:47 UTC 2016 - fvogt@suse.com
+
+- Add 0207-handle_module_aliases.patch:
+    Handle module aliases correctly to not generate unbootable
+    initrds with different kernel versions. Fix for boo#962694
+
+-------------------------------------------------------------------
+Thu Nov 26 10:22:11 UTC 2015 - fvogt@suse.com
+
+- Don't require bind-utils, it conflicts with
+    minimal-base-conflicts
+
+-------------------------------------------------------------------
+Thu Nov 26 08:56:50 UTC 2015 - fvogt@suse.com
+
+- Add warning about pkgconfig file to rpmlintrc's ignore list
+- Fix spec file:
+    - Add dracut-catimages manpage to dracut-tools
+    - Fix summary of dracut-tools subpackage
+
+-------------------------------------------------------------------
+Thu Nov 26 08:48:13 UTC 2015 - fvogt@suse.com
+
+- Remove 0400-use_fstab_systemd.patch
+- Move dracut-catimages, /boot/dracut and /var/lib/dracut into
+    dracut-tools subpackage
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Thu Nov 26 07:51:48 UTC 2015 - fvogt@suse.com
+
+- Refresh patches with line offsets:
+     0017-45ifcfg-use-distro-specific-scripts.patch
+     0048-40network-Only-enable-network-interfaces-if-explicit.patch
+     0088-91zipl-Add-new-module-to-update-s390x-configuration.patch
+     0121-Adjust-initramfs-kernel.img-to-SUSE-default-initrd-k.patch
+     0150-Find-kernel-modules-in-extra-and-weak-updates-path-a.patch
+     0157-Add-boot-zipl-to-host-devs-if-it-is-a-mount-point.patch
+     0182-fix-include-parsing.patch
+     0183-fix_add_drivers_hang.patch
+     0203-no-fail-builtin-module.patc
+
+-------------------------------------------------------------------
+Wed Nov 25 15:55:01 UTC 2015 - fvogt@suse.com
+
+- Update to dracut-044
+- Patches upstream, removed here:
+     0119-Reset-IFS-variable.patch
+     0120-mkinitrd-suse.sh-Bail-out-with-exit-1-if-initrd-cann.patch
+     0122-Get_kernel_version_from_gz_file_for_arm.patch
+     0165-Order-root-fsck-after-pre-mount.patch
+     0184-fix_lvm_wc_warning.patch
+     0185-dracut.sh-remove-_EARLY-from-CONFIG_MICROCODE_-check.patch
+     0401-mount_option_mountpoint.patch
+
+- Updated/Refreshed patches:
+     0015-40network-replace-dhclient-with-wickedd-dhcp-supplic.patch
+     0019-40network-Fix-race-condition-when-wait-for-networks.patch
+     0056-81cio_ignore-handle-cio_ignore-commandline.patch
+     0058-dracut-add-warning-when-including-unsupported-module.patch
+     0066-40network-always-start-netroot-in-ifup.sh.patch
+     0094-Implement-shortcut-ip-ifname-static-for-static-confi.patch
+     0124-40network-Update-iBFT-scanning-code-to-handle-IPv6.patch
+     0125-40network-separate-mask-and-prefix.patch
+     0131-40network-handle-prefixed-IP-addresses-correctly.patch
+     0132-40network-fixup-static-network-configuration.patch
+     0144-90crypt-Fixed-crypttab_contains-to-also-work-with-de.patch
+     0150-Find-kernel-modules-in-extra-and-weak-updates-path-a.patch
+     0158-Add-SUSE-kernel-module-dependencies-in-etc-modprobe..patch
+     0159-network-Try-to-load-xennet.patch
+     0202-dracut_dmraid_use_udev.patch
+     0203-no-fail-builtin-module.patch
+     0402-driver-fail-summary.patch
+
+-------------------------------------------------------------------
+Wed Nov 25 08:06:02 UTC 2015 - fvogt@suse.com
+
+- Fix 0202-dracut_dmraid_use_udev.patch:
+    - Statement was missing a program to execute
+
+-------------------------------------------------------------------
+Tue Nov 24 13:38:45 UTC 2015 - fvogt@suse.com
+
+- Add 0206-nfs_dns_alias.patch to fix boo#955592:
+    - Fix dracut run on nfs root where NFS host is a DNS ALIAS
+- Require bind-utils. host is used in some lines
+
+-------------------------------------------------------------------
+Thu Nov 19 09:18:31 CET 2015 - tiwai@suse.de
+
+- Fix the wrong kernel config check for microcode with 4.4 kernel
+  (boo#955712):
+  0185-dracut.sh-remove-_EARLY-from-CONFIG_MICROCODE_-check.patch
+
+-------------------------------------------------------------------
+Tue Nov 17 14:08:10 UTC 2015 - fvogt@suse.com
+
+- Disable 0400-use_fstab_systemd.patch
+    - Fully implementing this would take ages
+    - Fix boo#948771
+
+-------------------------------------------------------------------
+Tue Nov 17 13:14:26 UTC 2015 - fvogt@suse.com
+
+- Add numbers to the filename of all patches:
+fips_add_aesni-intel.patch -> 0138-fips_add_aesni-intel.patch
+dracut_fix_multipath_without_config.patch -> 0200-dracut_fix_multipath_without_config.patch
+fix_nfs_with_ip_instead_of_hostname.patch -> 0201-fix_nfs_with_ip_instead_of_hostname.patch
+dracut_dmraid_use_udev.patch -> 0202-dracut_dmraid_use_udev.patch
+dracut_dont_use_dpkg_defaults_on_SUSE.patch -> 0300-dracut_dont_use_dpkg_defaults_on_SUSE.patch
+
+-------------------------------------------------------------------
+Mon Nov 16 10:09:03 UTC 2015 - fvogt@suse.com
+
+- Update description in dracut.spec
+
+-------------------------------------------------------------------
+Thu Nov 12 08:52:54 UTC 2015 - fvogt@suse.com
+
+- Add 0301-include_sysconfig_language.patch:
+    - Include /etc/sysconfig/language instead of forcibly generating
+        /etc/locale.conf
+    - Workaround and partial fix for boo#927250
+
+-------------------------------------------------------------------
+Tue Nov 10 11:26:51 UTC 2015 - fvogt@suse.com
+
+- Add 0205-mdraid_ignore_hostonly.patch:
+    - Always install mdraid modules (boo#935993)
+
+-------------------------------------------------------------------
+Tue Nov 10 10:35:05 UTC 2015 - fvogt@suse.com
+
+- Modify 0402-driver-fail-summary.patch
+    - Add notice (bsc#952491)
+    - Use mktemp instead of hardcoded filenames (bnc#935338)
+- Modify 0144-90crypt-Fixed-crypttab_contains-to-also-work-with-de.patch
+    - Use mktemp instead of hardcoded filenames (bnc#935338)
+
+-------------------------------------------------------------------
+Wed Nov  4 16:45:37 UTC 2015 - fvogt@suse.com
+
+- Add dracut-rpmlintrc
+- Fix permissions of various scripts, as patch does not
+    create executable files
+
+-------------------------------------------------------------------
+Wed Nov  4 16:07:07 UTC 2015 - fvogt@suse.com
+
+- Fix format of patch disablement
+
+-------------------------------------------------------------------
+Wed Nov  4 16:05:31 UTC 2015 - fvogt@suse.com
+
+- Add 0204-mkinitrd-fix-monster.patch:
+    - Implement functionality of -A option
+    - Without this patch, -A sets host_only=0,
+      but host_only wasn't used
+    - Translates into --no-host-only now
+- References boo#935993
+
+-------------------------------------------------------------------
+Tue Nov  3 16:12:44 UTC 2015 - fvogt@suse.com
+
+- Add 0402-driver-fail-summary.patch:
+    - Port 0169-Enabled-Warning-for-failed-kernel-modules-per-defaul.patch:
+      Subject: Enable warning for failed kernel moduiles
+
+      Enabled Warning for failed kernel modules per default
+      and added summary of those to the end of dracut output
+
+      References: bnc#886839
+    - Disable inline warnings in favour of summary
+
+-------------------------------------------------------------------
+Tue Nov  3 15:35:20 UTC 2015 - fvogt@suse.com
+
+- Add 0203-no-fail-builtin-module.patch:
+    Don't let inst1mod fail if module is built-in
+    - Fixes bsc#935563
+
+-------------------------------------------------------------------
+Wed Oct 14 12:51:54 UTC 2015 - trenn@suse.de
+
+- Always install dm-snaphost module if lvm dracut module is needed,
+  even if dm-snampshot is not loaded on the host yet (bsc#947518)
+A 0128-90lvm-Install-dm-snapshot-module.patch 
+
+-------------------------------------------------------------------
+Tue Oct  6 10:28:35 UTC 2015 - fvogt@suse.com
+
+- Add patch 0184-fix_lvm_wc_warning.patch:
+   - Upstream commit 08eca6 to get rid of missing wc warning
+
+-------------------------------------------------------------------
+Thu Oct  1 12:44:28 UTC 2015 - fvogt@suse.com
+
+- Fix 0181-no_systemd_cryptsetup.patch:
+   - Password input without plymouth didn't work
+
+-------------------------------------------------------------------
+Thu Oct  1 10:02:21 UTC 2015 - dimstar@opensuse.org
+
+- Disable 0181-no_systemd_cryptsetup.patch: it breaks existing
+  installations of encrypted / on LVM.
+
+-------------------------------------------------------------------
+Wed Sep 23 11:26:05 UTC 2015 - fvogt@suse.com
+
+- Fix 0182-fix-include-parsing.patch
+- Didn't parse arguments with spaces correctly
+
+-------------------------------------------------------------------
+Wed Sep 23 10:16:47 UTC 2015 - fvogt@suse.com
+
+- Add patch 0183-fix_add_drivers_hang.patch:
+   - Fix possible hang in dracut
+     caused by add_drivers+=" " in dracut.conf (bsc#923116)
+
+-------------------------------------------------------------------
+Mon Sep 21 13:18:43 UTC 2015 - fvogt@suse.com
+
+- Add patch 0182-fix-include-parsing.patch:
+   - Fix parsing of "-i" and "--include"
+- Fixes boo#908452 
+
+-------------------------------------------------------------------
+Mon Sep 21 10:45:14 UTC 2015 - fvogt@suse.com
+
+- Add patch 0181-no_systemd_cryptsetup.patch:
+  - rd.luks.key is not implemented (properly) if systemd is enabled,
+    so ignore systemd in 90crypt
+- Fixes boo#915849
+
+-------------------------------------------------------------------
+Wed Sep 16 12:12:12 UTC 2015 - fvogt@suse.com
+
+- Fix systemd-vconsole-error properly (bsc#943312 and bsc#932981)
+  Rewrite 0180-dracut-add-trivial-vconsole-fontmap.patch
+  as 0180-i18n_add_correct_fontmaps.patch
+
+-------------------------------------------------------------------
+Mon Sep 14 11:33:51 UTC 2015 - thomas.blume@suse.com
+
+- fix systemd-vconsole-error in initrd (bsc#943312)
+  Add 0180-dracut-add-trivial-vconsole-fontmap.patch
+
+-------------------------------------------------------------------
+Fri Sep 11 11:06:46 UTC 2015 - fvogt@suse.com
+
+- Add 0401-mount_option_mountpoint.patch:
+    Make it possible to use a mountpoint as --mount parameter 
+
+-------------------------------------------------------------------
+Fri Sep 11 10:56:42 UTC 2015 - fvogt@suse.com
+
+- Add experimental 0400-use_fstab_systemd.patch:
+    Add entry for /sysroot in /etc/fstab instead of relying
+    on root= and rootflags=
+
+-------------------------------------------------------------------
+Sun Aug 23 19:14:15 UTC 2015 - seife+obs@b1-systems.com
+
+- fix plymouth installation if dpkg package is installed
+  - add dracut_dont_use_dpkg_defaults_on_SUSE.patch
+
+-------------------------------------------------------------------
+Mon Aug 17 15:41:14 UTC 2015 - trenn@suse.de
+
+- Do not recommend, but require binutils package. bsc#941928
+
+-------------------------------------------------------------------
+Sun Jul 26 08:16:53 UTC 2015 - jengelh@inai.de
+
+- get_kernel_version is required for /sbin/mkinitrd
+
+-------------------------------------------------------------------
+Thu Jul  2 12:59:27 UTC 2015 - trenn@suse.de
+
+- Update to version 043
+  Minor change: add missing dmsquash-generator
+
+-------------------------------------------------------------------
+Wed Jun 24 16:06:36 UTC 2015 - trenn@suse.de
+
+- Fix dmraid issue bnc#905746
+A    dracut_dmraid_use_udev.patch
+- Taken over from SLE12
+A    fips_add_aesni-intel.patch
+- Do not touch /run vs /var/run bnc#922676
+D    0106-dracut-Enable-converting-of-directory-var-run-var-lo.patch
+- Update dracut to version 042
+Remove these already included or unneeded patches:
+D    dracut_v041_to_HEAD.patch
+D    0011-Correct-paths-for-openSUSE.patch
+D    0068-95fcoe-uefi-Test-for-EFI-firmware.patch
+D    0170-enable-logitech-hidpp.patch
+- Fix nfs mount if IPv4 is used in fstab instead of hostname
+A fix_nfs_with_ip_instead_of_hostname.patch
+
+Adjust/refresh:
+M    0015-40network-replace-dhclient-with-wickedd-dhcp-supplic.patch
+M    0016-Add-new-s390x-specific-rule-files.patch
+M    0017-45ifcfg-use-distro-specific-scripts.patch
+M    0019-40network-Fix-race-condition-when-wait-for-networks.patch
+M    0020-00warpclock-Set-correct-timezone.patch
+M    0021-95dcssblk-Add-new-module-for-DCSS-block-devices.patch
+M    0048-40network-Only-enable-network-interfaces-if-explicit.patch
+M    0053-01fips-fixup-loading-issues.patch
+M    0056-81cio_ignore-handle-cio_ignore-commandline.patch
+M    0057-01fips-Include-some-more-hmacs.patch
+M    0058-dracut-add-warning-when-including-unsupported-module.patch
+M    0059-99suse-Add-SUSE-specific-initrd-parsing.patch
+M    0060-45ifcfg-Add-SUSE-specific-write-ifcfg-file.patch
+M    0061-45ifcfg-Fixup-error-message-in-write-ifcfg-suse.patch
+M    0066-40network-always-start-netroot-in-ifup.sh.patch
+M    0075-95dasd_rules-enable-parsing-of-rd.dasd-commandline-p.patch
+M    0076-Correctly-set-cio_ignore-for-dynamic-s390-rules.patch
+M    0079-95dasd_rules-fixup-rd.dasd-parsing.patch
+M    0080-95dasd_rules-print-out-rd.dasd-commandline.patch
+M    0081-95dasd_mod-do-not-set-module-parameters-if-dasd_cio_.patch
+M    0083-95zfcp_rules-Fixup-rd.zfcp-parsing.patch
+M    0085-95zfcp_rules-print-out-rd.zfcp-commandline-parameter.patch
+M    0086-95zfcp_rules-Auto-generate-udev-rule-for-ipl-device.patch
+M    0087-95dasd_rules-Auto-generate-udev-rule-for-ipl-device.patch
+M    0088-91zipl-Add-new-module-to-update-s390x-configuration.patch
+M    0089-40network-create-var-lib-wicked-in-ifup.sh.patch
+M    0090-dracut-caps-Remove-whole-caps-module.patch
+M    0091-dracut-biosdevname-In-SUSE-biosdevname-package-is-in.patch
+M    0094-Implement-shortcut-ip-ifname-static-for-static-confi.patch
+M    0106-dracut-Enable-converting-of-directory-var-run-var-lo.patch
+M    0107-Fixup-typo-firmare-instead-of-firmware.patch
+M    0108-91zipl-Store-commandline-correctly.patch
+M    0109-95dasd_rules-Store-all-devices-in-commandline.patch
+M    0110-95zfcp_rules-Store-all-devices-in-commandline.patch
+M    0113-91zipl-Install-script-as-executable.patch
+M    0114-91zipl-Translate-ext2-3-into-ext4.patch
+M    0116-Mark-scripts-as-executable.patch
+M    0117-95dasd_rules-Enable-the-device-before-checking-devic.patch
+M    0118-95zfcp_rules-Enable-the-device-before-checking-devic.patch
+M    0119-Reset-IFS-variable.patch
+M    0120-mkinitrd-suse.sh-Bail-out-with-exit-1-if-initrd-cann.patch
+M    0121-Adjust-initramfs-kernel.img-to-SUSE-default-initrd-k.patch
+M    0122-Get_kernel_version_from_gz_file_for_arm.patch
+M    0123-95zfcp_rules-fix-typo-in-module_setup.patch
+M    0124-40network-Update-iBFT-scanning-code-to-handle-IPv6.patch
+M    0125-40network-separate-mask-and-prefix.patch
+M    0126-01fips-Add-drbg-module-to-force-loaded-modules.patch
+M    0130-nfs-Always-add-all-kernel-modules-for-kdump.patch
+M    0131-40network-handle-prefixed-IP-addresses-correctly.patch
+M    0132-40network-fixup-static-network-configuration.patch
+M    0137-Switch-from-Mozilla-NSS-sha256hmac-checking-to-fipsc.patch
+M    0142-40network-Don-t-report-error-for-etc-sysconfig-netwo.patch
+M    0144-90crypt-Fixed-crypttab_contains-to-also-work-with-de.patch
+M    0150-Find-kernel-modules-in-extra-and-weak-updates-path-a.patch
+M    0157-Add-boot-zipl-to-host-devs-if-it-is-a-mount-point.patch
+M    0158-Add-SUSE-kernel-module-dependencies-in-etc-modprobe..patch
+M    0159-network-Try-to-load-xennet.patch
+M    0163-Install-etc-sysconfig-console-to-see-specific-fonts.patch
+M    0164-Fix-initramfs-ver.img-vs-initrd-ver-in-dracut-initra.patch
+M    0165-Order-root-fsck-after-pre-mount.patch
+M    0168-remove_plymouth_logo_file.patch
+M    dracut_fix_multipath_without_config.patch
+
+-------------------------------------------------------------------
+Wed May 20 11:44:59 UTC 2015 - trenn@suse.de
+
+- Fix mkinitrd (get_kernel_version) for arm* arch by getting kernel version
+  from vmlinux.*.gz file instead of [uz]Image file.
+  Taken over from mkinitrd bnc#908454
+*Add patch 0122-Get_kernel_version_from_gz_file_for_arm.patch
+- Fix nfs ip= setup in case of IP instead of host in root= name (bsc#931307)
+- Honor allow_unsupported_modules setting
+  From: Borislav Petkov <bp@suse.de>
+  $ make install
+
+of a locally built kernel, you don't want dracut to do --check-supported
+for supported modules when you have "allow_unsupported_modules 1" in
+/etc/modprobe.d/10-unsupported-modules.conf.
+
+Teach /sbin/installkernel to pay attention to that setting.
+
+Use modprobe --showconfig too, which is going to be the proper way to do
+it starting with 12SP1.
+
+-------------------------------------------------------------------
+Fri May  8 06:30:32 UTC 2015 - trenn@suse.de
+
+- Add fix for multipath systems without multipathd.conf
+  bsc#927719: Tumbleweed Snapshot blocked: no multipath support in 20150416\
+            (likely dracut issue)
+  bsc#930019: multipath is broken in dracut due to missing /etc/multipath.conf
+	    file (systemd multpath.service condition)
+
+* Added patch: dracut_fix_multipath_without_config.patch
+
+
+-------------------------------------------------------------------
+Tue Mar 24 15:37:48 UTC 2015 - trenn@suse.de
+
+- Update to dracut mainline version 041.
+  Half of the patches got integrated mainline.
+  Some others have been merged together when it made sense some have
+  been left out, but are still in the repository as they need some special
+  treating and mainline discussion whether/how they get added. These are
+  also not urgently needed, but are debugging patches.
+
+  I broke the rule here to mention every added/deleted/modified patch as
+  every patch is touched and every 2nd  got removed (mainline integrated).
+
+  I also re-ordered the patches in the PatchXY: area for easier merging them
+  and get them discussed and posted mainline easier, topic by topic.
+
+- Patches merged in the git tracking repository:
+  0065-95iscsi-Fixup-bnx2i-offload-booting.patch
+  0028-95udev-rules-Include-correct-sg3_utils-rules.patch
+  0135-lvm-Fix-12819a579900b9691e2-check-for-existance-of-6.patch
+  0100-Add-btrfs-rescue-utilities.patch
+  0067-95fcoe-check-always-returns-255.patch
+  0138-warpclock-Do-not-use-warpclock-module-on-S390-x-hwcl.patch
+  0077-90multipath-add-missing-11-dm-mpath.rules-file.patch
+  0042-Enhance-suse.conf-example-with-SUSE-specific-setting.patch
+  0161-Fix-error-message-when-there-are-no-internal-kernel-.patch
+  0111-90mdraid-Remove-line-for-offroot-detection.patch
+  0129-Revert-commit-6ecab258710d158a7a6-and-only-do-not-wa.patch
+  0041-mkinitd-suse-remove-hostonly-and-hostonly-cmdline.patch
+  0030-95iscsi-Autodetect-iSCSI-firmware.patch
+  0052-99base-Add-chown-binary.patch
+  0105-95iscsi-parse-output-from-iscsiadm-correctly.patch
+  0101-Print-stored-dracut-commandline-during-initramfs-bui.patch
+  0096-dracut-Fix-error-local-can-only-be-used-in-a-functio.patch
+  0043-40network-always-add-network-module.patch
+  0035-Introduce-force-drivers-parameter-and-force_drivers-.patch
+  0136-Revert-95udev-rules-add-persistent-network-rule.patch
+  0143-iscsi-Fix-up-ipv6-in-brackets-iterate-over-all-possi.patch
+  0167-do-not-symlink-var-log-to-run-log.patch
+  0024-Fixup-mdraid-setup.patch
+  0032-mkinitrd-suse.sh-Use-hostonly-and-hostonly-cmdline-c.patch
+  0022-95udev-rules-add-persistent-network-rule.patch
+  0166-load-xhci-pci.patch
+  0047-95resume-skip-module-for-s390-x.patch
+  0014-Update-dracut-manpage-for-GRUB-Legacy-and-GRUB2.patch
+  0055-95fcoe-Only-install-fcoe-module-if-required.patch
+  0078-Restore-original-IFS-value.patch
+  0046-dracut-Do-not-wait-for-swap-device.patch
+  0074-More-empty-cmdline-fixes.patch
+  0112-99base-warn-on-invalid-command-for-initqueue.patch
+  0034-dracut-Do-not-stop-installing-drivers-if-one-fails.patch
+  0139-dracut.sh-check-for-logfile-logfile-option-and-creat.patch
+  0127-99base-Increase-initqueue-timeout-in-non-systemd-cas.patch
+  0104-Generate-fallback-mount-unit-for-root-filesystem.patch
+  0154-resume-Also-allow-this-module-on-S390-again-s2disk-c.patch
+  0149-dracut.sh-Fix-fstab-parsing-again.patch
+  0027-90multipath-install-dracut-specific-service-file.patch
+  0084-95rootfs-block-Correctly-terminate-commandline-param.patch
+  dracut_v37_to_HEAD.patch
+  0128-90lvm-Install-dm-snapshot-module.patch
+  0063-90multipath-Install-libgcc_s-library.patch
+  0062-95iscsi-Install-libgcc_s-library.patch
+  0146-dracut.sh-corrected-logfile-check.patch
+  0071-Fix-non-export-of-journal-dev-boot-options.patch
+  0044-Add-find-to-debug-binaries.patch
+  0039-Remove-force-parameter-from-mkinitrd.patch
+  0026-90multipath-add-67-kpartx-compat.rules.patch
+  0099-90multipath-Load-device_handler-modules-early-during.patch
+  0029-90multipath-install-correct-multipath-rules.patch
+  0031-90multipath-Fixup-service-file-for-booting.patch
+  0036-95fcoe-Store-current-configuration-in-dracut-cmdline.patch
+  A patch (dracut_v041_to_HEAD.patch) is being added without being properly referenced from the changelog.
+  0151-Go-back-to-xz-again-pixz-may-use-too-much-memory-whi.patch
+  0069-81cio_ignore-skip-module-if-cio_ignore-is-not-active.patch
+  0070-81cio_ignore-rewrite-module.patch
+  0033-95iscsi-Set-correct-iscsi_started-value-for-iSCSI-fi.patch
+  0098-Do-not-call-lvm-for-non-LVM-device-mapper-devices.patch
+  0023-systemd-always-tries-to-load-autofs4.patch
+  0051-mkinitrd-suse-add-update-bootloader-message.patch
+  0013-mkinitrd-suse-do-not-update-bootloader-if-no-kernel-.patch
+  0115-Handle-module-alias-properly.patch
+  0054-95iscsi-update-commandline-printing.patch
+  0148-dracut.sh-Fix-LABEL-and-other-fstab-syntax.patch
+  0122-btrfs-btrfs-dump-super-and-btrfs-select-super-do-not.patch
+  0045-40network-add-missing-_arch-variable-declaration.patch
+  0050-95iscsi-strip-one-set-of-quotes-when-calling-initque.patch
+  0152-Add-a-comment-to-easily-add-debug-modules-also-add-v.patch
+  0147-dracut.sh-Fix-UUID-fstab-parsing-in-case-mount-optio.patch
+  0038-95fcoe-start-lldpad-separately.patch
+  0082-00warpclock-check-for-sbin-hwclock.patch
+  0155-iscsi-iscsi.initiator-and-others-can-and-must-only-s.patch
+  0037-95fcoe-update-fcoe-interface-check.patch
+  0141-iscsi-Avoid-bad-ip-route-call-on-empty-address.patch
+  0049-95iscsi-Use-ip-ibft-for-ibft-autoconfiguration.patch
+  0153-Only-add-network-module-on-request-and-on-dependenci.patch
+  0097-Implement-rd.timeout-to-modify-the-device-timeout.patch
+  0169-fix-systemd-vconsole.patch
+  0073-Don-t-create-lots-of-empty-cmdline-files-for-hostonl.patch
+  0103-Fixup-missing-separators-in-rootfs-block-cmdline.patch
+  0064-90kernel-modules-install-scsi_dh_alua.patch
+  0012-Check-for-plymouth-lib-directories.patch
+  0092-dracut-nbd-Only-complain-of-missing-binary-in-hoston.patch
+  0160-nfs-Add-ip-.-and-root-nfs.-parameters-to-internal-dr.patch
+  0093-95iscsi-generate-commandline-for-software-iscsi.patch
+  0040-95fcoe-skip-VLAN-devices-in-fcoe-up.patch
+  0156-dracut.usage.asc-Remove-distro-specific-help-from-ma.patch
+  0018-mkinitrd-suse-Fix-whitespaces-when-adding-drivers.patch
+  0140-dracut.sh-Avoid-duplicate-devices-in-host_devs.patch
+  0095-95iscsi-use-static-configuration-for-software-iscsi.patch
+  0025-95udev-rules-Add-59-scsi-sg_utils.rules.patch
+  0072-Also-export-root-boot-param-for-hostonly-cmdline-cas.patch
+  0102-Align-dev_unit_name-with-systemd-s-function.patch
+  0001-kernel-modules-Fix-storage-module-selection-for-sdhc.patch
+
+- Added dracut_v041_to_HEAD.patch: new patch from v041 against our git 
+
+-------------------------------------------------------------------
+Fri Feb 27 18:37:56 UTC 2015 - sfalken@opensuse.org
+
+- Add patch to load logitech-hidpp module in default initrd, fixes
+  issues with not being able to enter LUKS password with logitech
+  wireless keyboards (boo#918938)
+  + Added: 0170-enable-logitech-hidpp.patch 
+
+-------------------------------------------------------------------
+Mon Feb 23 16:13:16 UTC 2015 - meissner@suse.com
+
+- dracut-fix-systemd-vconsole.patch: patch from upstream to start
+  the vconsole for new systemd.
+  + Added 0169-fix-systemd-vconsole.patch
+
+-------------------------------------------------------------------
+Tue Feb 17 16:23:04 UTC 2015 - sfalken@opensuse.org
+
+- Add patch to remove PLYMOUTH_LOGO_FILE from
+  modules.d/50plymouth/plymouth-populate-initrd.sh (bnc#910952)
+  + 0168-remove_plymouth_logo_file.patch
+
+-------------------------------------------------------------------
+Mon Feb  9 14:28:56 UTC 2015 - dimstar@opensuse.org
+
+- Do no longer package 02caps: patch 90 takes care of removing it.
+
+-------------------------------------------------------------------
+Thu Feb  5 09:37:42 UTC 2015 - meissner@suse.com
+
+- regenerate the initrds on updating this package (or the -fips
+  subpackage)
+
+-------------------------------------------------------------------
+Sun Feb  1 10:11:29 UTC 2015 - tchvatal@suse.com
+
+- Apply patch for systemd-journald SIGTERMing on boot bnc#915575
+  * 0167-do-not-symlink-var-log-to-run-log.patch
+
+-------------------------------------------------------------------
+Sat Jan  3 04:53:20 UTC 2015 - bwiedemann@suse.com
+
+- add 0166-load-xhci-pci.patch
+  load xhci-pci on Linux-3.18+ to allow USB-keyboard to give LUKS PW
+  (bnc#911319)
+
+-------------------------------------------------------------------
+Wed Dec 17 09:15:56 UTC 2014 - schwab@suse.de
+
+- 0001-kernel-modules-Fix-storage-module-selection-for-sdhc.patch: fix
+  storage module selection for sdhci/mmc/ahci
+
+-------------------------------------------------------------------
+Sat Nov 22 06:26:37 UTC 2014 - arvidjaar@gmail.com
+
+- add 0165-Order-root-fsck-after-pre-mount.patch
+  ensure root fsck runs after dracut-pre-mount.service which calls
+  resume (bnc#906592)
+
+-------------------------------------------------------------------
+Wed Oct 15 16:07:47 UTC 2014 - trenn@suse.de
+
+- dracut-initrd-restore.patch: dracut-shutdown.service invokes 
+  dracut-initramfs-restore script which will never work in 
+  openSUSE because initrd images are named initrd not initramfs.
+  Patch is from: Cristian Rodríguez <crrodriguez@opensuse.org>
+* Add 0164-Fix-initramfs-ver.img-vs-initrd-ver-in-dracut-initra.patch 
+
+-------------------------------------------------------------------
+Wed Oct  8 17:29:35 UTC 2014 - spargaonkar@suse.com
+
+- Overwrite/generate modules.dep file using depmod since the file
+  modules.dep is not portable across releases (bsc#874621). 
+
+-------------------------------------------------------------------
+Thu Oct  2 14:33:20 UTC 2014 - trenn@suse.de
+
+- Fix install-kernel with xen for self build kernels to show up in grub2
+  properly (bsc#897901)
+* Modify dracut-installkernel (source file)
+- Fix foreign fonts in plymouth and console (bnc#897972)
+* Add 0163-Install-etc-sysconfig-console-to-see-specific-fonts.patch
+
+-------------------------------------------------------------------
+Wed Sep 24 16:21:11 UTC 2014 - trenn@suse.de
+
+- Add ip= and root=nfs.. to dracut internal cmdline to make nfsroot working
+  (bnc#896464)
+* Add 0160-nfs-Add-ip-.-and-root-nfs.-parameters-to-internal-dr.patch
+- Fix error message in case there is no internal dracut cmdline added
+  Simple fix
+* Add 0161-Fix-error-message-when-there-are-no-internal-kernel-.patch
+- Request DHCP lease instead of getting/applying the offer
+  No bug number, but Pawel rated this high prio. This should hit SLE12 still.
+* Add 0162-network-Request-DHCP-lease-instead-of-getting-applyi.patch
+
+-------------------------------------------------------------------
+Mon Sep 22 13:33:11 UTC 2014 - trenn@suse.de
+
+- Try to load xennet driver in network module (if loaded).
+  bnc#896464, bnc#896259
+* Add 0159-network-Try-to-load-xennet.patch
+
+-------------------------------------------------------------------
+Thu Sep 11 13:36:03 UTC 2014 - trenn@suse.de
+
+- dracut.usage.asc: Remove distro specific help from manpage (bnc#895363)
+*Add 0156-dracut.usage.asc-Remove-distro-specific-help-from-ma.patch
+- Add /boot/zipl to host devs if it is a mount point (bnc#892187)
+*Add 0157-Add-boot-zipl-to-host-devs-if-it-is-a-mount-point.patch
+- Add SUSE kernel module dependencies (in /etc/modprobe.d/*) (bnc#895331)
+*Add 0158-Add-SUSE-kernel-module-dependencies-in-etc-modprobe..patch
+-------------------------------------------------------------------
+Thu Sep  4 12:59:27 UTC 2014 - trenn@suse.de
+
+- Network module may take quite a lot of initrd space. Do not add it
+  unconditionally (bnc#892851)
+* Add 0153-Only-add-network-module-on-request-and-on-dependenci.patch
+- S390x can do s2disk, allow resume module there
+  (bnc#889795)
+* Add 0154-resume-Also-allow-this-module-on-S390-again-s2disk-c.patch
+- Harden iscsi parameter checking. No bug report, but this problem
+  was found during multipath testing and happens with 2 or more
+  iscsi devices.
+* Add 0155-iscsi-iscsi.initiator-and-others-can-and-must-only-s.patch
+
+-------------------------------------------------------------------
+Fri Aug 29 14:27:49 UTC 2014 - trenn@suse.de
+
+- Do not blindly try to touch the logfile (bnc#893219)
+* Add 0146-dracut.sh-corrected-logfile-check.patch
+- Only fix UUID= fstab parsing
+* Add 0147-dracut.sh-Fix-UUID-fstab-parsing-in-case-mount-optio.patch
+- Also fix other parsing syntax in fstab like LABEL=
+* Add 0148-dracut.sh-Fix-LABEL-and-other-fstab-syntax.patch
+- Fix up some bugs from previous commit
+* Add 0149-dracut.sh-Fix-fstab-parsing-again.patch
+- bnc#893615
+* Add 0150-Find-kernel-modules-in-extra-and-weak-updates-path-a.patch
+- pixz does need too much memory, go back to xz in a conservative way
+  (bnc#893981)
+* Add 0151-Go-back-to-xz-again-pixz-may-use-too-much-memory-whi.patch
+- Add some default tools to initrd when debug module is included and
+  already provided an commented example line how to easily enable it.
+  No functional change by default.
+* Add 0152-Add-a-comment-to-easily-add-debug-modules-also-add-v.patch
+
+-------------------------------------------------------------------
+Thu Aug 21 12:38:02 UTC 2014 - trenn@suse.de
+
+- dracut.sh: check for logfile (--logfile option) and create it if necessary
+  Add 0139-dracut.sh-check-for-logfile-logfile-option-and-creat.patch
+- Avoid duplicate names in host_devs
+  Add 0140-dracut.sh-Avoid-duplicate-devices-in-host_devs.patch
+- iscsi: Avoid bad ip route call on empty address
+  Add 0141-iscsi-Avoid-bad-ip-route-call-on-empty-address.patch
+- 40network: Don't report error for .../ifroute-* during module setup
+  Add 0142-40network-Don-t-report-error-for-etc-sysconfig-netwo.patch
+- iscsi: Fix up ipv6 in brackets , iterate over all needed iscsi mounts
+  Add 0143-iscsi-Fix-up-ipv6-in-brackets-iterate-over-all-possi.patch
+- 90crypt: Fixed crypttab_contains() to also work with device in /etc/crypttab
+  Add 0144-90crypt-Fixed-crypttab_contains-to-also-work-with-de.patch
+- 40network: handle 'ip=ifname:static' correctly (bnc#892801)
+  Add 0145-40network-handle-ip-ifname-static-correctly.patch
+
+-------------------------------------------------------------------
+Thu Aug 14 15:07:16 UTC 2014 - trenn@suse.de
+
+- Allow multiple configurations per network interface (bnc#887906)
+  Add 0133-Allow-multiple-configurations-per-network-interface-.patch
+- Remove bootdev warning (bnc#881112)
+  Add 0134-Remove-bootdev-warning-bnc-881112.patch
+- check for existance of 69-dm-lvm-metad.rules in modules_setup.sh, lvm module
+  (bnc#891791)
+  Add 0135-lvm-Fix-12819a579900b9691e2-check-for-existance-of-6.patch
+- Moved persistent network rule revert to another file (was not in github):
+  Delete: 0133-Remove-70-persistent-net.rules.patch
+  Add:    0136-Revert-95udev-rules-add-persistent-network-rule.patch
+- dracut-use-fipscheck-openssl.patch: Switch from Mozilla NSS sha256hmac
+  checking to fipscheck as recommended
+  Add: 0137-Switch-from-Mozilla-NSS-sha256hmac-checking-to-fipsc.patch
+- warpclock: Do not use warpclock module on S390(x), hwclock does not exist
+  there (bnc#884513)
+  Add 0138-warpclock-Do-not-use-warpclock-module-on-S390-x-hwcl.patch
+
+-------------------------------------------------------------------
+Tue Aug  5 15:08:57 UTC 2014 - trenn@suse.de
+
+- 99base: Increase initqueue timeout in non systemd case (bnc#887402)
+  * Add: 0127-99base-Increase-initqueue-timeout-in-non-systemd-cas.patch
+- 90lvm: Install dm-snapshot module (bnc#888530)
+  * Add: 0128-90lvm-Install-dm-snapshot-module.patch
+- Revert commit 6ecab258710d158a7a6 and only do not wait for swap via
+ parameter (bnc#882812)
+  * Add: 0129-Revert-commit-6ecab258710d158a7a6-and-only-do-not-wa.patch
+- nfs: Always add all kernel modules for kdump (bnc#887906)
+  * Add: 0130-nfs-Always-add-all-kernel-modules-for-kdump.patch
+- 40network: handle prefixed IP addresses correctly (bnc#880108)
+  * Add: 0131-40network-handle-prefixed-IP-addresses-correctly.patch
+- 40network: fixup static network configuration
+  * Add: 0132-40network-fixup-static-network-configuration.patch
+- Remove 70-persistent-net.rules
+  * Add: 0133-Remove-70-persistent-net.rules.patch
+
+-------------------------------------------------------------------
+Mon Jul 21 10:47:50 CEST 2014 - hare@suse.de
+
+- mkinitrd-suse.sh: Bail out with exit 1 if initrd cannot be generated
+  (bnc#886630)
+  * Add: 0120-mkinitrd-suse.sh-Bail-out-with-exit-1-if-initrd-cann.patch
+- Adjust initramfs-$kernel.img to SUSE default: initrd-$kernel
+  (bnc#882306)
+  * Add: 0121-Adjust-initramfs-kernel.img-to-SUSE-default-initrd-k.patch
+- btrfs: btrfs-dump-super and btrfs-select-super do not exist
+  (bnc#886883)
+  * Add: 0122-btrfs-btrfs-dump-super-and-btrfs-select-super-do-not.patch
+- 95zfcp_rules: fix typo in module_setup (bnc#887582)
+  * Add: 0123-95zfcp_rules-fix-typo-in-module_setup.patch
+- 40network: Update iBFT scanning code to handle IPv6 (bnc#887542)
+  * Add: 0124-40network-Update-iBFT-scanning-code-to-handle-IPv6.patch
+- 40network: separate 'mask' and 'prefix' (bnc#887542)
+  * Add: 0125-40network-separate-mask-and-prefix.patch
+- 01fips: Add drbg module to force loaded modules (bnc#875855)
+  * Add: 0126-01fips-Add-drbg-module-to-force-loaded-modules.patch
+
+-------------------------------------------------------------------
+Mon Jul 14 16:20:46 UTC 2014 - trenn@suse.de
+
+- Fixup executable bits of newly patched files manually in spec file
+  bnc#887117
+
+-------------------------------------------------------------------
+Mon Jul 14 10:35:51 CEST 2014 - hare@suse.de
+
+- Mark all scripts as executable (bnc#887010)
+  * Remove: 0116-81cio_ignore-Mark-scripts-as-executable
+  * Add: 0116-Mark-scripts-as-executable.patch
+- 95dasd_rules: Enable device before checking type
+  * Add: 0117-95dasd_rules-Enable-the-device-before-checking-devic.patch
+- 95zfcp_rules: Enable device before checking type
+  * Add: 0118-95zfcp_rules-Enable-the-device-before-checking-devic.patch
+- Reset IFS variable
+  * Add: 0119-Reset-IFS-variable.patch
+
+-------------------------------------------------------------------
+Sat Jul 12 15:01:04 CEST 2014 - hare@suse.de
+
+- Handle module alias properly (bnc#886839)
+  * Add: 0115-Handle-module-alias-properly.patch
+- 81cio_ignore: Mark scripts as executable (bnc#887010)
+  * Add: 0116-81cio_ignore-Mark-scripts-as-executable.patch
+
+-------------------------------------------------------------------
+Fri Jul 11 13:01:08 CEST 2014 - hare@suse.de
+
+- 91zipl: Translate 'ext2' into 'ext4' module
+  * Add: 0114-91zipl-Translate-ext2-3-into-ext4.patch
+
+-------------------------------------------------------------------
+Thu Jul 10 13:30:51 CEST 2014 - hare@suse.de
+
+- Enable converting of directory /var/run /var/lock to symlinks
+  (bnc#877680)
+  * Add: 0106-dracut-Enable-converting-of-directory-var-run-var-lo.patch
+- Fixup typo 'firmare' instead of 'firmware'
+  * Add: 0107-Fixup-typo-firmare-instead-of-firmware.patch
+- 91zipl: Store commandline correctly
+  * Add: 0108-91zipl-Store-commandline-correctly.patch
+- 95dasd_rules: Store all devices in commandline
+  * 0109-95dasd_rules-Store-all-devices-in-commandline.patch
+- 95zfcp_rules: Store all devices in commandline
+  * Add: 0110-95zfcp_rules-Store-all-devices-in-commandline.patch
+- 90mdraid: Remove line for 'offroot' detection
+  * Add: 0111-90mdraid-Remove-line-for-offroot-detection.patch
+- 99base: warn on invalid command for initqueue
+  * Add: 0112-99base-warn-on-invalid-command-for-initqueue.patch
+- 91zipl: Install script as executable
+  * Add: 0113-91zipl-Install-script-as-executable.patch
+
+-------------------------------------------------------------------
+Tue Jul  8 13:21:14 CEST 2014 - hare@suse.de
+
+- Print stored dracut commandline during initramfs build
+  * Add: 0101-Print-stored-dracut-commandline-during-initramfs-bui.patch
+- Align dev_unit_name() with systemd's function
+  * Add: 0102-Align-dev_unit_name-with-systemd-s-function.patch
+- Fixup missing separators in rootfs-block cmdline
+  * Add: 0103-Fixup-missing-separators-in-rootfs-block-cmdline.patch
+- Generate fallback mount unit for root filesystem (bnc#855258)
+  * Add: 0104-Generate-fallback-mount-unit-for-root-filesystem.patch
+- 95iscsi: parse output from iscsiadm correctly (bnc#886199)
+  * Add: 0105-95iscsi-parse-output-from-iscsiadm-correctly.patch
+
+-------------------------------------------------------------------
+Thu Jul  3 18:16:11 CEST 2014 - dsterba@suse.cz
+
+- 90btrfs: Install rescue utilities to initrd
+  * Add: 0100-btrfs-add-initrd-rescue-utilities.patch
+
+-------------------------------------------------------------------
+Thu Jul  3 15:41:16 CEST 2014 - hare@suse.de
+
+- 40network: create /var/lib/wicked in ifup.sh (bnc#885141)
+  * Add: 0089-40network-create-var-lib-wicked-in-ifup.sh.patch
+- dracut: caps: Remove whole caps module
+  * Add: 0090-dracut-caps-Remove-whole-caps-module.patch
+- dracut: biosdevname: Only install if present
+  * Add: 0091-dracut-biosdevname-In-SUSE-biosdevname-package-is-in.patch
+- dracut: nbd: Only complain of missing binary in hostonly mode
+  if rootfs is on nbd
+  * Add: 0092-dracut-nbd-Only-complain-of-missing-binary-in-hoston.patch
+- 95iscsi: generate commandline for software iscsi (bnc#880108)
+  * Add: 0093-95iscsi-generate-commandline-for-software-iscsi.patch
+- Implement shortcut 'ip=<ifname>:static' for static configuration
+  * Add: 0094-Implement-shortcut-ip-ifname-static-for-static-confi.patch
+- 95iscsi: use static configuration for software iscsi (bnc#884768)
+  * Add: 0095-95iscsi-use-static-configuration-for-software-iscsi.patch
+- dracut: Fix error: local: can only be used in a function
+  * Add: 0096-dracut-Fix-error-local-can-only-be-used-in-a-functio.patch
+- Implement 'rd.timeout' to modify the device timeout (bnc#878770)
+  * Add: 0097-Implement-rd.timeout-to-modify-the-device-timeout.patch
+- Do not call 'lvm' for non-LVM device-mapper devices
+  * Add: 0098-Do-not-call-lvm-for-non-LVM-device-mapper-devices.patch
+- 90multipath: Load device_handler modules early during boot (bnc#871617)
+  * Add: 0099-90multipath-Load-device_handler-modules-early-during.patch
+
+-------------------------------------------------------------------
+Fri Jun 27 15:23:37 CEST 2014 - hare@suse.de
+
+- 91zipl: Add new module for s390x configuration changes (bnc#884743)
+  * Add: 0088-91zipl-Add-new-module-to-update-s390x-configuration.patch
+
+-------------------------------------------------------------------
+Thu Jun 26 16:41:58 CEST 2014 - hare@suse.de
+
+- 95dasd_rules: Fixup rd.dasd parsing
+  * Add: 0079-95dasd_rules-fixup-rd.dasd-parsing.patch
+- 95dasd_rules: Print out rd.dasd command-line
+  * Add: 0080-95dasd_rules-print-out-rd.dasd-commandline.patch
+- 95dasd_mod: do not set module parameter
+  * Add: 0081-95dasd_mod-do-not-set-module-parameters-if-dasd_cio_.patch
+- 00warpclock: Check for /sbin/hwclock (bnc#884513)
+  * Add: 0082-00warpclock-check-for-sbin-hwclock.patch
+- 95zfcp_rules: Fixup rd.zfcp parsing
+  * Add: 0083-95zfcp_rules-Fixup-rd.zfcp-parsing.patch
+- 95rootfs_block: terminate commandline parameter
+  * Add: 0084-95rootfs-block-Correctly-terminate-commandline-param.patch
+- 95zfcp_rules: Print out rd.zfcp command-line
+  * Add: 0085-95zfcp_rules-print-out-rd.zfcp-commandline-parameter.patch
+- 95zfcp_rules: Auto-generate ipl device rule
+  * Add: 0086-95zfcp_rules-Auto-generate-udev-rule-for-ipl-device.patch
+- 95dasd_rules: Auto-generate ipl device rule
+  * Add: 0087-95dasd_rules-Auto-generate-udev-rule-for-ipl-device.patch
+
+-------------------------------------------------------------------
+Mon Jun 23 14:13:53 CEST 2014 - hare@suse.de
+
+- More empty commandline fixes
+  * Add: 0074-More-empty-cmdline-fixes.patch
+- 95dasd_rules: enable parsing of rd.dasd= commandline parameter
+  * Add: 0075-95dasd_rules-enable-parsing-of-rd.dasd-commandline-p.patch
+- Correctly set cio_ignore for dynamic s390 rules
+  * Add: 0076-Correctly-set-cio_ignore-for-dynamic-s390-rules.patch
+- 90multipath: add missing 11-dm-mpath.rules file (bnc#883149)
+  * Add: 0077-90multipath-add-missing-11-dm-mpath.rules-file.patch
+- Restore original IFS value (bnc#883770)
+  * Add: 0078-Restore-original-IFS-value.patch
+
+-------------------------------------------------------------------
+Wed Jun 18 02:00:28 CEST 2014 - tbehrens@suse.com
+
+- Fix non-export of journal dev boot options
+  * Add: 0071-Fix-non-export-of-journal-dev-boot-options.patch
+- Also export root= boot param for hostonly-cmdline
+  * Add: 0072-Also-export-root-boot-param-for-hostonly-cmdline-cas.patch
+- Don't create lots of empty cmdline files
+  * Add: 0073-Don-t-create-lots-of-empty-cmdline-files-for-hostonl.patch
+
+-------------------------------------------------------------------
+Tue Jun 17 16:58:03 CEST 2014 - hare@suse.de
+
+- 81cio_ignore: rewrite module to not mount any filesystem
+  (bnc#882685)
+  * Add: 0070-81cio_ignore-rewrite-module.patch
+
+-------------------------------------------------------------------
+Tue Jun 17 11:14:07 CEST 2014 - hare@suse.de
+
+- 81cio_ignore: ignore module if cio_ignore is not specified
+  (bnc#882685)
+  * Add:
+    0069-81cio_ignore-skip-module-if-cio_ignore-is-not-active.patch
+
+-------------------------------------------------------------------
+Mon Jun 16 14:17:43 CEST 2014 - hare@suse.de
+
+- 40network: always start netroot in ifup.sh (bnc#881235)
+  * Add: 0066-40network-always-start-netroot-in-ifup.sh.patch
+- 95fcoe: check() always returns 255
+  * Add: 0067-95fcoe-check-always-returns-255.patch
+- 95fcoe-uefi: Test for EFI firmware (bnc#882412)
+  * Add: 0068-95fcoe-uefi-Test-for-EFI-firmware.patch
+
+-------------------------------------------------------------------
+Fri Jun 13 12:52:27 CEST 2014 - hare@suse.de
+
+- Rename patches to match git repository:
+  * Old: more-fips-adjustments.patch
+  * New: 0057-01fips-Include-some-more-hmacs.patch
+  * Old: dracut-check-supported.patch
+  * New: 0058-dracut-add-warning-when-including-unsupported-module.patch
+- Add 99suse module to git repository:
+  * Remove: parse-suse-initrd.sh
+  * Remove: module-setup-initrd.sh
+  * Add: 0059-99suse-Add-SUSE-specific-initrd-parsing.patch
+- Add write-ifcfg-suse.sh to git repository:
+  * Remove: write-ifcfg-suse.sh
+  * Add: 0060-45ifcfg-Add-SUSE-specific-write-ifcfg-file.patch
+- Fixup error messages in write-ifcfg-suse.sh (bnc#881286)
+  * Add: 0061-45ifcfg-Fixup-error-message-in-write-ifcfg-suse.patch
+- Add missing 'libgcc_s.so' library (bnc#881692):
+  * Add: 0062-95iscsi-Install-libgcc_s-library.patch
+  * Add: 0063-90multipath-Install-libgcc_s-library.patch
+- Install missing scsi_dh_alua module (bnc#871617)
+  * Add: 0064-90kernel-modules-install-scsi_dh_alua.patch
+- 95iscsi: fixup bnx2i offload booting (bnc#855747)
+  * Add: 0065-95iscsi-Fixup-bnx2i-offload-booting.patch
+
+-------------------------------------------------------------------
+Wed Jun 11 18:17:34 UTC 2014 - jeffm@suse.com
+
+- Add option to warn if unsupported modules are added to the initramfs
+  - Enable this option for 'make install' when a kernel with
+    CONFIG_SUSE_KERNEL_SUPPORTED enabled is used. (bnc#882332)
+  - Add dracut-check-supported.patch
+
+-------------------------------------------------------------------
+Wed Jun 11 12:49:44 UTC 2014 - meissner@suse.com
+
+- include the several hmacs needed for FIPS integrity checking
+  of cryptsetup, libgcrypt, libfipscheck1. Also add the openssl
+  HMACs too as someone else seems to use those too.
+  Add: more-fips-adjustments.patch
+
+-------------------------------------------------------------------
+Wed Jun  4 14:58:55 CEST 2014 - hare@suse.de
+
+- Rediff patches to match git repository
+- 95fcoe: Check for FCoE devices prior to binaries
+  * Modify 0055-95fcoe-Only-install-fcoe-module-if-required.patch
+- 99base: Install chown instead of chgrp
+  * Modify 0052-99base-Add-chown-binary.patch
+- 95iscsi: do not try to detect iSCSI firmware during booting;
+  should be handled via commandline parameter
+  * Modify 0030-95iscsi-Autodetect-iSCSI-firmware.patch
+- Rename patch:
+  * old: 0051-mkinitrd-suse-add-update-booloader-message.patch
+    new: 0051-mkinitrd-suse-add-update-bootloader-message.patch
+
+-------------------------------------------------------------------
+Wed Jun  4 14:30:07 CEST 2014 - hare@suse.de
+
+- Rename patches to match git repository:
+  * old: 0013-Correct-paths-for-openSUSE.patch
+    new: 0011-Correct-paths-for-openSUSE.patch
+  * old: 0014-Check-for-plymouth-lib-directories.patch
+    new: 0012-Check-for-plymouth-lib-directories.patch
+  * old: dracut_do_not_update_booloader_if_no_kernel_is_found.patch
+    new: 0013-mkinitrd-suse-do-not-update-bootloader-if-no-kernel-.patch
+  * old: suse_grub_manpage.patch
+    new: 0014-Update-dracut-manpage-for-GRUB-Legacy-and-GRUB2.patch
+  * old: replace_dhclient_with_wickedd_dhcp_supplicants.patch
+    new: 0015-40network-replace-dhclient-with-wickedd-dhcp-supplic.patch
+  * old: 0015-add-new-s390x-specific-rule-files.patch
+    new: 0016-Add-new-s390x-specific-rule-files.patch
+  * old: change_write_ifcfg_to_suse.patch
+    new: 0017-45ifcfg-use-distro-specific-scripts.patch
+  * old: dracut-fix-whitespace-add-drivers_call.patch
+    new: 0018-mkinitrd-suse-Fix-whitespaces-when-adding-drivers.patch
+  * old: wait_for_network_race_condition_fix.patch
+    new: 0019-40network-Fix-race-condition-when-wait-for-networks.patch
+  * old: dracut-warpclock_module.patch
+    new: 0020-00warpclock-Set-correct-timezone.patch
+  * old: s390-dcssblk.patch
+    new: 0021-95dcssblk-Add-new-module-for-DCSS-block-devices.patch
+  * old: dracut-install-persistent-rule.patch
+    new: 0022-95udev-rules-add-persistent-network-rule.patch
+  * old: dracut-really-always-add-autofs4.patch
+    new: 0023-systemd-always-tries-to-load-autofs4.patch
+  * old: mdraid-setup.patch
+    new: 0024-Fixup-mdraid-setup.patch
+  * old: 0015-95udev-rules-Add-59-scsi-sg_utils.rules.patch
+    new: 0025-95udev-rules-Add-59-scsi-sg_utils.rules.patch
+  * old: 0016-90multipath-add-67-kpartx-compat.rules.patch
+    new: 0026-90multipath-add-67-kpartx-compat.rules.patch
+  * old: 0017-90multipath-install-dracut-specific-service-file.patch
+    new: 0027-90multipath-install-dracut-specific-service-file.patch
+  * old: 0020-95udev-rules-Include-correct-sg3_utils-rules.patch
+    new: 0028-95udev-rules-Include-correct-sg3_utils-rules.patch
+  * old: 0021-90multipath-install-correct-multipath-rules.patch
+    new: 0029-90multipath-install-correct-multipath-rules.patch
+  * old: add_dracuts_network_params_for_iscsi.patch
+    new: 0030-95iscsi-Autodetect-iSCSI-firmware.patch
+  * old: 0022-90multipath-Fixup-service-file-for-booting.patch
+    new: 0031-90multipath-Fixup-service-file-for-booting.patch
+  * old: 0023-mkinitrd-suse.sh-Use-hostonly-and-hostonly-cmdline-c.patch
+    new: 0032-mkinitrd-suse.sh-Use-hostonly-and-hostonly-cmdline-c.patch
+  * old: 0024-95iscsi-Set-correct-iscsi_started-value-for-iSCSI-fi.patch
+    new: 0033-95iscsi-Set-correct-iscsi_started-value-for-iSCSI-fi.patch
+  * old: 0025-dracut_continue_adding_modules_also_on_error.patch
+    new: 0034-dracut-Do-not-stop-installing-drivers-if-one-fails.patch
+  * old: 0026-force_to_add_and_load_kernel_modules_other_than_via_boot_param.patch
+    new: 0035-Introduce-force-drivers-parameter-and-force_drivers-.patch
+  * old: 0027-95fcoe-Store-current-configuration-in-dracut-cmdline.patch
+    new: 0036-95fcoe-Store-current-configuration-in-dracut-cmdline.patch
+  * old: 0028-95fcoe-update-fcoe-interface-check.patch
+    new: 0037-95fcoe-update-fcoe-interface-check.patch
+  * old: 0029-95fcoe-start-lldpad-separately.patch
+    new: 0038-95fcoe-start-lldpad-separately.patch
+  * old: 0030-dracut-mkinitd_cleanup_force_host_only_var.patch
+    new: 0039-Remove-force-parameter-from-mkinitrd.patch
+  * old: 0031-95fcoe-skip-VLAN-devices-in-fcoe-up.patch
+    new: 0040-95fcoe-skip-VLAN-devices-in-fcoe-up.patch
+  * old: 0033-dracut_hostonly_hostonly_cmdline_default.patch
+    new: 0041-mkinitd-suse-remove-hostonly-and-hostonly-cmdline.patch
+  * old: 0034-suse.conf.example_extend.patch
+    new: 0042-Enhance-suse.conf-example-with-SUSE-specific-setting.patch
+  * old: 0035-always_add_network.patch
+    new: 0043-40network-always-add-network-module.patch
+  * old: 0036-add_extra_debug_binaries.patch
+    new: 0044-Add-find-to-debug-binaries.patch
+  * old: 0037-fix_s390_network_modules_install.patch
+    new: 0045-40network-add-missing-_arch-variable-declaration.patch
+  * old: 0038-remove_waiting_for_swap_dev.patch
+    new: 0046-dracut-Do-not-wait-for-swap-device.patch
+  * old: 0039-s390_no_resume_module.patch
+    new: 0047-95resume-skip-module-for-s390-x.patch
+  * old: 0041-only_enable_network_if_explicitly_requested.patch
+    new: 0048-40network-Only-enable-network-interfaces-if-explicit.patch
+  * old: 0042-ibft_autoconfig_param.patch
+    new: 0049-95iscsi-Use-ip-ibft-for-ibft-autoconfiguration.patch
+  * old: 0043-fcoe_strip_quotes.patch
+    new: 0050-95iscsi-strip-one-set-of-quotes-when-calling-initque.patch
+  * old: 0044-Add_update_bootloader_msg.patch
+    new: 0051-mkinitrd-suse-add-update-booloader-message.patch
+  * old: 0045-add-chown_binary.patch
+    new: 0052-99base-Add-chown-binary.patch
+  * old: dracut-fips-module-loading-fixes.patch
+    new: 0053-01fips-fixup-loading-issues.patch
+  * old: 0046-ibft_update_cmdline_printing.patch
+    new: 0054-95iscsi-update-commandline-printing.patch
+  * old: 0047-only_install_fcoe_if_required.patch
+    new: 0055-95fcoe-Only-install-fcoe-module-if-required.patch
+  * old: 0048-cio_ignore.patch
+    new: 0056-81cio_ignore-handle-cio_ignore-commandline.patch
+
+-------------------------------------------------------------------
+Mon Jun  2 18:29:33 UTC 2014 - trenn@suse.de
+
+- Mount zipl device on S390 (bnc#874902)
+  Add 0048-cio_ignore.patch
+
+-------------------------------------------------------------------
+Mon Jun  2 11:42:59 UTC 2014 - trenn@suse.de
+
+- Only install fcoe if required
+  and suppress require-binaries output
+  Add 0047-only_install_fcoe_if_required.patch
+- ibft: Correctly show ibft cmdline via print-cmdline
+  Add 0046-ibft_update_cmdline_printing.patch
+
+-------------------------------------------------------------------
+Mon Jun  2 09:07:27 UTC 2014 - meissner@suse.com
+
+- dracut-fips-module-loading-fixes.patch: bnc#875855
+  - adjust FIPS module list
+  - on architecture specific modules, failing loading is not
+    critical
+- ship 98selinux, for people that want to use SELinux.
+
+-------------------------------------------------------------------
+Wed May 28 15:54:26 UTC 2014 - trenn@suse.de
+
+- Update to latest git HEAD: commit 0fa5dbedc5b222435f51f7460a81232ee120c4e1
+  Tue May 20 13:23
+  Modified dracut_v37_to_HEAD.patch
+  Modified mdraid-setup.patch
+  Modified dracut-install-persistent-rule.patch
+  Removed  0032-98systemd-fixup-rootfs-generator-installation-path.patch
+- Add /etc/dracut.d.conf/01-dist modifications to file instead of writing
+  to it via rpm build section
+  Add 0033-dracut_hostonly_hostonly_cmdline_default.patch
+  Add 0034-suse.conf.example_extend.patch
+- Cleanup mkinitrd-suse.sh:
+    * Remove hostonly and hostonly-cmdline -> this is done via 01-dist config
+      file now
+- Always add network module based on modules_setup.sh check() function and not
+  via 01-dist config file
+  Add 0035-always_add_network.patch
+- Add find to debug binaries - Useful and harmless
+  Add 0036-add_extra_debug_binaries.patch
+- Fix adding of network modules for s390 (bnc#879302)
+  Add 0037-fix_s390_network_modules_install.patch
+- Omit resume module on s390(x) - There is no suspend on s390
+  Add 0039-s390_no_resume_module.patch
+- Do not wait for swap - This causes trouble with Rudi's autobuild images:
+  Add 0038-remove_waiting_for_swap_dev.patch
+- Fcoe and ibft fixes (bnc#879038):
+  Add 0041-only_enable_network_if_explicitly_requested.patch
+  Add 0042-ibft_autoconfig_param.patch
+  Add 0043-fcoe_strip_quotes.patch
+- Print message when starting to update bootloader
+  Add 0044-Add_update_bootloader_msg.patch
+- ToDo: Pass hostonly variable earlier so that is always avail in check()
+  function. Still already add:
+  Add 0040-fcoe_fix_check_function.patch
+- Add chown to initrd (bnc#879767)
+  Add 0045-add-chown_binary.patch
+- Use parallel pixz instead of xz binary to compress the initrd
+
+-------------------------------------------------------------------
+Tue May 20 08:59:51 UTC 2014 - trenn@suse.de
+
+- From Hannes Reinecke <hare@suse.com>:
+  fixup rootfs-generator installation path (bnc#878714)
+  Add 0032-98systemd-fixup-rootfs-generator-installation-path.patch
+
+-------------------------------------------------------------------
+Mon May 19 16:05:49 UTC 2014 - trenn@suse.de
+
+- Corrected previous patch
+  Modified: 0031-95fcoe-skip-VLAN-devices-in-fcoe-up.patch
+
+-------------------------------------------------------------------
+Mon May 19 11:11:42 UTC 2014 - trenn@suse.de
+
+- From Hannes Reinecke <hare@suse.com>:
+  skip VLAN devices in fcoe-up (bnc#878583)
+  Add: 0031-95fcoe-skip-VLAN-devices-in-fcoe-up.patch
+
+-------------------------------------------------------------------
+Thu May 15 14:07:44 UTC 2014 - trenn@suse.de
+
+- By Hannes Reinecke <hare@suse.com>:
+  - Fixup FCoE booting (bnc#877288)
+    * Add 0027-95fcoe-Store-current-configuration-in-dracut-cmdline.patch
+    * Add 0028-95fcoe-update-fcoe-interface-check.patch
+    * Add 0029-95fcoe-start-lldpad-separately.patch
+- Cleanup host_only variable using in mkinitrd
+- Remove --force parameter from mkinitrd, we always force anyway
+    * Add 0030-dracut-mkinitd_cleanup_force_host_only_var.patch
+- Remove acpi parameter from mkinitrd, this is done differently nowadays
+- Adjust manpage accordingly
+
+-------------------------------------------------------------------
+Wed May 14 12:42:37 UTC 2014 - meissner@suse.com
+
+- also do the service magic in %post/%postun, otherwise
+  purge-kernels will not get enabled.
+
+-------------------------------------------------------------------
+Wed May  7 15:25:37 UTC 2014 - trenn@suse.de
+
+- Do not inst binaries explicitly into /bin or /usr/bin, it is already taken
+  care of internally for that:
+     Delete 0006-Install-bin-mount.patch
+     Modify 0013-Correct-paths-for-openSUSE.patch
+- Do not stop trying to load drivers (via add-drivers or filesystems) if one
+  fails
+     Add 0025-dracut_continue_adding_modules_also_on_error.patch
+- Introduce force-drivers. mkinitrd should use this one instead of add-drivers
+  later, if accepted mainline
+     Add
+  0026-force_to_add_and_load_kernel_modules_other_than_via_boot_param.patch
+
+-------------------------------------------------------------------
+Mon May  5 08:55:37 CEST 2014 - hare@suse.de
+
+- Update add_dracuts_network_params_for_iscsi.patch to detect
+  be2iscsi firmware devices
+- Remove obsolete patch fix-iscsi-firmware.sh
+- Fixup iscsi firmware booting with be2iscsi (bnc#873448):
+  Added 0024-95iscsi-Set-correct-iscsi_started-value-for-iSCSI-fi.patch
+- Renamed mkinird_differ_host_and_cmdline_only_properly.patch to
+  0023-mkinitrd-suse.sh-Use-hostonly-and-hostonly-cmdline-c.patch
+
+-------------------------------------------------------------------
+Wed Apr 30 15:18:45 UTC 2014 - trenn@suse.de
+
+- Update to lateste git HEAD 48b7ab1b35adf1f3f09f883ef14ea0a3fba1e468
+    Added:     dracut_v37_to_HEAD.patch
+    Modified:  0013-Correct-paths-for-openSUSE.patch
+    Modified:  mdraid-setup.patch
+    Modified:  replace_dhclient_with_wickedd_dhcp_supplicants.patch
+    Deleted:   0018-fstab-do-not-mount-and-fsck-from-fstab-if-using-syst.patch
+    Deleted:   0019-dracut-initqueue-service-runs-before-remote-fs-pre.t.patch
+
+- Fix lvm and other possible not working thing due to new parameter:
+  hostonly-cmdline which has to be active by default
+    bnc#874000 bnc#874905 bnc#874363
+    Added:     mkinird_differ_host_and_cmdline_only_properly.patch
+- Make write-ifcfg-suse.sh more update robust
+  Avoid rebasing of diff with every update touching this file by adding
+  write-ifcfg-suse.sh as source file and copy/link in .spec file.
+    Modified:  change_write_ifcfg_to_suse.patch
+
+-------------------------------------------------------------------
+Tue Apr 29 15:43:28 UTC 2014 - meissner@suse.com
+
+- consolidate -fips-aesni into -fips again. The problem due to it
+  was split off upstream was solved in the kernel.
+
+-------------------------------------------------------------------
+Fri Apr 25 13:48:45 UTC 2014 - meissner@suse.com
+
+- Create new -fips and -fips-aesni subpackage for kernel
+  integrity checking. bnc#856310 FATE#316930
+- add spaces around "network" in 01-dist.conf, as the addmodules
+  list is concatenated and you never know which config is before or
+  after and what it does.
+
+-------------------------------------------------------------------
+Wed Apr 16 09:56:31 CEST 2014 - hare@suse.de
+
+- Enable multipath correctly during booting (bnc#873686)
+  Add: 0022-90multipath-Fixup-service-file-for-booting.patch
+
+-------------------------------------------------------------------
+Mon Apr 14 14:19:49 UTC 2014 - pwieczorkiewicz@suse.com
+
+- fix-iscsi-firmware.patch:
+  Fix according to dracut-037 updates (iscsistarted-iscsi:).
+
+-------------------------------------------------------------------
+Mon Apr 14 09:00:26 UTC 2014 - pwieczorkiewicz@suse.com
+
+- add_dracuts_network_params_for_iscsi.patch:
+  Add missing dracut's cmdline parameters to make network mandatory
+  and boot using iBFT when present. Without them iBFT booting does
+  not work.
+
+-------------------------------------------------------------------
+Fri Apr 11 13:07:05 CEST 2014 - hare@suse.de
+
+- Install correct rule files for multipath support (bnc#873151)
+  Add: 0020-95udev-rules-Include-correct-sg3_utils-rules.patch
+  Add: 0021-90multipath-install-correct-multipath-rules.patch
+
+-------------------------------------------------------------------
+Thu Apr 10 14:49:23 UTC 2014 - trenn@suse.de
+
+- Do not always try to add iscsi module, let its check function decide
+- Compress initrd with xz --check=crc32 -6 by default
+
+-------------------------------------------------------------------
+Wed Apr  9 16:47:27 UTC 2014 - crrodriguez@opensuse.org
+
+- Remove the bootchart module, note that we still keep 
+  the systemd-bootchart one which provides similar functionality.
+
+-------------------------------------------------------------------
+Wed Apr  9 16:42:49 UTC 2014 - crrodriguez@opensuse.org
+
+- Remove the busybox module we have all basic tools already 
+  in the initrd
+- _unitdir is always defined nowadays, remove the conditionals. 
+
+-------------------------------------------------------------------
+Wed Apr  9 14:48:12 UTC 2014 - sfalken@opensuse.org
+
+- Replaced dracut tarball with proper upstream tarball
+  Add: dracut-037.tar.xz 
+
+-------------------------------------------------------------------
+Tue Apr  8 10:16:16 CEST 2014 - hare@suse.de
+
+- Update dracut to 037
+  * Add --hostonly_cmdline switch
+  * Update --mount syntax
+  * Include modules from /updates directory
+  * Fixes for network setup
+  * Some small fixes
+- Rediff patches
+- Include iscsiuio again (bnc#872474)
+  Remove: remove-iscsiuio.patch
+- Install 59-scsi-sg_utils.rules (bnc#872478)
+  Add: 0015-95udev-rules-Add-59-scsi-sg_utils.rules.patch
+- Install 67-kpartx-compat.rules (bnc#872662)
+  Add: 0016-90multipath-add-67-kpartx-compat.rules.patch
+- Install separate multipath service file (bnc#871610)
+  Add: 0017-90multipath-install-dracut-specific-service-file.patch
+- Do not fsck and mount from fstab if systemd is used (bnc#
+  Add: 0018-fstab-do-not-mount-and-fsck-from-fstab-if-using-syst.patch
+- Fixup initqueue for remote-fs
+  Add: 0019-dracut-initqueue-service-runs-before-remote-fs-pre.t.patch
+
+-------------------------------------------------------------------
+Thu Apr  3 23:59:31 UTC 2014 - crrodriguez@opensuse.org
+
+- revert last change, ucode-intel is not mandatory and 
+  will get installed by default anyway, either via patterns
+  or by modalias dependencies in the package itself.
+
+-------------------------------------------------------------------
+Thu Apr  3 19:07:30 UTC 2014 - crrodriguez@opensuse.org
+
+- Require package ucode-intel in x86* 
+
+-------------------------------------------------------------------
+Tue Apr  1 06:23:28 UTC 2014 - nfbrown@suse.com
+
+- mdraid-setup.patch
+  Make mdraid scripts work with latest mdadm.
+  Without this, boot from DDF or IMSM array fails if
+  one device is missing (bnc#866660)
+
+-------------------------------------------------------------------
+Fri Mar 28 17:39:08 UTC 2014 - trenn@suse.de
+
+- systemd always tries to load autofs4 otherwise it reports:
+  Failed to insert module 'autofs4'
+  dracut already adds it, but only if loaded already.
+  Always load autofs4 even if not already loaded (bnc#869411)
+  Add: dracut-really-always-add-autofs4.patch
+
+-------------------------------------------------------------------
+Tue Mar 25 18:18:56 UTC 2014 - trenn@suse.de
+
+- Fix installkernel script bnc#862990
+
+-------------------------------------------------------------------
+Fri Mar 14 19:49:38 UTC 2014 - rmilasan@suse.com
+
+- Add support for 70-persistent-net.rules in dracut (bnc#868375)
+  Add: dracut-install-persistent-rule.patch 
+
+-------------------------------------------------------------------
+Fri Mar 14 15:09:37 UTC 2014 - trenn@suse.de
+
+- CRITICAL: Fix add-drivers passing from mkinitrd to dracut bnc#868397
+
+-------------------------------------------------------------------
+Wed Mar 12 14:50:50 UTC 2014 - trenn@suse.de
+
+- Add s390 dcssblk driver and introduce rd.dcssblk= to pass mounts that should
+  get activated at initrd stage fate#308263
+  Add: s390-dcssblk.patch
+
+-------------------------------------------------------------------
+Fri Mar  7 13:14:39 UTC 2014 - trenn@suse.de
+
+- bnc#830060 - Dracut is missing warpclock/hwclock
+  Add dracut-warpclock_module.patch
+
+-------------------------------------------------------------------
+Wed Mar  5 15:25:32 UTC 2014 - pwieczorkiewicz@suse.com
+
+- wait_for_network_race_condition_fix.patch:
+  * In case of no network related params are specified, but rd.neednet=1
+    is set, default initqueue action is to wait until one of the network
+    interfaces is marked as set up properly. (bnc#866771)
+  * It also helps with initqueue's race condition when network interface 
+    shows up late.
+- replace_dhclient_with_wickedd_dhcp_supplicants.patch:
+  Add a missing network setup flag. (bnc#866771)
+
+-------------------------------------------------------------------
+Mon Mar  3 16:51:30 UTC 2014 - trenn@suse.de
+
+- Merge all dracut-* packages to one dracut.rpm package.
+  Subpackages only had one or two minor files not worth splitting a package
+  or dracut-network had important modules which should (like former main
+  dracut package) always get installed
+- libcap does not exist and libcap2 or friends are not needed
+  -> remove Requires: libcap
+- Reorder (sort) the files section a bit
+
+-------------------------------------------------------------------
+Mon Mar  3 16:30:48 UTC 2014 - trenn@suse.de
+
+- Fix bug introduced with last commit: Bad whitespace logic when
+  INITRD_MODULES contain more than one module.
+
+-------------------------------------------------------------------
+Thu Feb 27 14:08:56 UTC 2014 - trenn@suse.de
+
+- Make sure that --add-drivers is not called with whitespace string which
+  will lead to a "read line" user input request and things may get stuck at
+  installation.
+  - Add: dracut-fix-whitespace-add-drivers_call.patch
+- Remove s390 grub module again -> this will go into grub2 package
+  (ask rw@suse.de for details)
+  Delete/remove: s390_add-user-space-grub-rule.patch
+- Add installkernel script which installs the kernel when:
+  make install
+  is invoked. The script from mkinitrd has been taken over and adopted.
+  Added source: dracut-installkernel
+  bnc#862990
+
+-------------------------------------------------------------------
+Fri Feb 21 14:56:20 UTC 2014 - trenn@suse.de
+
+- Fix syntax error -> missing then
+- Correct path, it is /usr/bin/grub2-emu
+
+-------------------------------------------------------------------
+Mon Feb 17 18:51:58 UTC 2014 - trenn@suse.de
+
+- autofs4 is always included since mainline git commit: 314929920f27448b45bfd
+  systemd: ensure autofs4 and ipv6 are included
+- Always add network and iscsi dracut module, so that ibft, iscsi, nfsroot
+  work as expected.
+
+-------------------------------------------------------------------
+Fri Feb 14 14:02:52 UTC 2014 - pwieczorkiewicz@suse.com
+
+- change_write_ifcfg_to_suse.patch:
+  Detect the system flavor and write the ifcfg files accordingly.
+
+-------------------------------------------------------------------
+Fri Feb 14 13:10:28 UTC 2014 - trenn@suse.de
+
+Originally by Hannes Reinecke (hare@suse.de):
+- Install new s390x specific udev rules (bnc#856585)
+  - Add: 0015-add-new-s390x-specific-rule-files.patch
+- Do not check for non-existing dasd_configure for s390x (bnc#856585)
+
+-------------------------------------------------------------------
+Thu Feb 13 21:38:38 UTC 2014 - jjolly@suse.com
+
+- Added 95grub2 module for s390x
+
+-------------------------------------------------------------------
+Thu Feb 13 14:10:16 UTC 2014 - pwieczorkiewicz@suse.com
+
+- remove-iscsiuio.patch:
+  Remove iscsiuio references as this one is not present in SLE-12.
+
+-------------------------------------------------------------------
+Thu Feb 13 14:10:08 UTC 2014 - pwieczorkiewicz@suse.com
+
+- fix-iscsi-firmware.patch:
+  Fix iSCSI iBFT boot up problem introduced with mainline changes
+
+-------------------------------------------------------------------
+Thu Feb 13 14:09:55 UTC 2014 - pwieczorkiewicz@suse.com
+
+- replace_dhclient_with_wickedd_dhcp_supplicants.patch:
+  Replace dhclient with wickedd-dhcp4 and wickedd-dhcp6. Script up dhcp
+  functionality in ifup.sh.
+
+-------------------------------------------------------------------
+Thu Feb 13 06:28:01 UTC 2014 - sfalken@opensuse.org
+
+-Added bug number to previous changelog entry 
+
+-------------------------------------------------------------------
+Thu Feb 13 05:40:32 UTC 2014 - sfalken@opensuse.org
+
+-Updated suse_grub_manpage.patch to further correct for incorrect grub configuration paths 
+ bnc#858448
+-------------------------------------------------------------------
+Wed Feb 12 21:42:55 UTC 2014 - sfalken@opensuse.org
+
+-Updated suse_grub_manpage.patch for dracut-036 
+
+-------------------------------------------------------------------
+Wed Feb 12 12:48:16 UTC 2014 - sfalken@opensuse.org
+
+-Added patch to fix manpage to reflect openSUSE GRUB Legacy and GRUB2 
+
+- removed patches:
+  * dracut_git_v034_to_head.patch
+-------------------------------------------------------------------
+Sun Feb  9 12:41:01 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner.
+
+-------------------------------------------------------------------
+Sun Feb  9 12:38:52 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 036 removing the need for patching from git.
+
+- removed patch:
+  * dracut_git_v034_to_head.patch
+
+-------------------------------------------------------------------
+Fri Jan 31 13:49:27 UTC 2014 - trenn@suse.de
+
+- Do not show usage error when no kernel was found.
+  This may happen several times at package installation time and floods
+  the logs.
+  Modify dracut_do_not_update_booloader_if_no_kernel_is_found.patch
+
+-------------------------------------------------------------------
+Tue Jan 14 14:10:06 UTC 2014 - trenn@suse.de
+
+- Correctly fix previous issue:
+  Exit without calling update-bootloader (bnc#858268)
+  Currently mkinitrd will always exit early without creating an initrd at all.
+  Rebase: dracut_do_not_update_booloader_if_no_kernel_is_found.patch
+- Remove an obsolete comment from .spec file
+
+-------------------------------------------------------------------
+Mon Jan 13 17:52:51 UTC 2014 - trenn@suse.de
+
+Exit without calling update-bootloader (bnc#858268):
+Add:  dracut_do_not_update_booloader_if_no_kernel_is_found.patch
+
+Adding:
+Requires:       systemd-sysvinit
+which has reboot, halt and other binaries dracut likes to add to the initrd.
+
+Cleanup and adjust to latest mainline:
+Dropping as these are included in the latest update_git_v034_to_head patch:
+Drop: 0001-95dasd-Install-kernel-modules-only-once.patch
+Drop: 0002-95dasd-Only-install-module-if-normalize_dasd_arg-is-.patch
+Drop: 0003-95dasd_mod-make-dasd_cio_free-optional.patch
+Drop: 0004-95zfcp-Make-installation-optional.patch
+Drop: 0005-95znet-Make-installation-optional.patch
+Drop: 0007-Fixup-keymap-setting-for-openSUSE.patch
+Drop: 0008-Add-DASD-configuration-for-SuSE.patch
+Drop: 0009-Add-zfcp-scripts-for-SUSE.patch
+Drop: 0010-Make-logfile-configurable.patch
+Drop: 0011-mkinitrd-suse-Add-SUSE-compability-wrapper-for-dracu.patch
+Drop: 0012-mkinitrd-suse.8.asc-Add-manpage-for-SUSE-compat-mkin.patch
+Drop: 0015-Fixup-script-permissions.patch
+Drop: 0016-Remove-shebang-from-shell-completion-files.patch
+Drop: dracut-git-update.patch
+
+Rebase: 0013-Correct-paths-for-openSUSE.patch
+
+This is a rename of dracut-git-update.patch to:
+Add:  dracut_git_v034_to_head.patch 
+
+-------------------------------------------------------------------
+Fri Dec 20 14:17:54 UTC 2013 - trenn@suse.de
+
+- Cleanup: Remove %define replace_mkinitrd 1
+  and related conditionals in .spec file -> One either has to install
+  dracut or mkinitrd and it will stay like that.
+
+-------------------------------------------------------------------
+Wed Dec 18 16:20:04 UTC 2013 - trenn@suse.de
+
+- Add purge kernel service/feature which before was part of mkinitrd
+  bnc#854348
+
+-------------------------------------------------------------------
+Thu Nov 28 09:56:36 CET 2013 - hare@suse.de
+
+- Update with patches from git repository:
+   * kernel-modules: add ohci-pci to the list of forced module installs
+   * Run 'xz' and 'lzma' with multiple threads
+   * systemd: do not exit the initqueue, if systemd asks a password
+   * iscsi,nbd: do not fail in hostonly mode
+   * dracut-functions.sh: Avoid loading unnecessary 32-bit libraries
+     for 64-bit initrds
+   * fips: also install /etc/system-fips in the initramfs
+   * dracut.modules.7.asc: removed empty section
+   * dracut.sh: fixed PATH shortener
+   * dracut.spec: move /sbin/dracut to /usr/sbin/dracut
+   * iscsi/nbd: do not try to mount the whole disk, if root= is missing
+   * fips: include crct10dif_generic
+   * Handle crypto modules with and without modaliases
+   * usrmount/module-setup.sh: fixed typo
+   * lvm: always install thin utils for lvm
+   * kernel-modules(ARM): add mmc_block usb_storage to static list of
+     kernel mods
+   * dracut-functions.sh:check_block_and_slaves*() skip LVM internal devs
+   * mkdir basic dirs in /run
+   * network/fcoe: only redirect output to loginit.pipe, if exists
+   * dracut.sh: no need to make subdirs in run
+   * dracut.sh: also mkdir /run/lock, which is copied to
+   * lvm: fix thin recognition
+   * Add lzo, lz4 compression and read INITRD_COMPRESS
+   * remove resume-genrules.sh
+   * resume: fix swap detection in hostonly
+   * base/init.sh: also mkdir /run/lock
+   * dmsquash-live: add /dev/mapper/live-base
+   * Doc: cleanup, extend and split and reuse
+   * dracut.sh: do not bail out, if kernel modules dir is missing
+   * 10i18n/parse-i18n.sh: parse rd.vconsole and rd.locale
+   * */module-setup.sh: add comments for dracut called functions
+   * lvm: install thin utils for non-hostonly
+- Patches for S/390 support
+  * 95dasd: Install kernel modules only once
+  * 95dasd: Only install module if normalize_dasd_arg is present
+  * 95dasd_mod: make dasd_cio_free optional
+  * 95zfcp: Make installation optional
+  * 95znet: Make installation optional
+  * Install /bin/mount
+  * Fixup keymap setting for openSUSE
+  * Add DASD configuration for SuSE
+  * Add zfcp scripts for SUSE
+  * Make logfile configurable
+  * Add SUSE compability wrapper for dracut
+  * Add manpage for SUSE compat mkinitrd
+  * Work around xsltproc bug
+  * Correct paths for openSUSE
+  * Check for plymouth lib directories
+- Drop obsolete patches
+- Install mkinitrd-suse
+
+-------------------------------------------------------------------
+Mon Oct 21 00:13:48 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Remove not needed logrotate Requires
+
+-------------------------------------------------------------------
+Thu Oct 17 02:22:43 UTC 2013 - crrodriguez@opensuse.org
+
+- remove use_all_paths_udev.patch, /lib/udev.. is a symlink 
+  to /usr nowadays this confuses other parts of the code causing
+  errors/warnings during the initrd generation.
+
+-------------------------------------------------------------------
+Mon Oct 14 03:48:40 UTC 2013 - crrodriguez@opensuse.org
+
+- version 034 
+* fcoe: add FCoE UEFI boot device support
+* rootfs-block: add support for the rootfallback= kernel 
+  cmdline option
+* btrfs: use inst_hook to install the timeout hook
+
+-------------------------------------------------------------------
+Sun Oct 13 15:25:37 UTC 2013 - tittiatcoke@gmail.com
+
+- Correct patch mkinitrd-fix-boot-dir-detection. (";;" doesn't 
+  really work)
+
+-------------------------------------------------------------------
+Wed Oct  9 10:59:01 UTC 2013 - tittiatcoke@gmail.com
+
+- Updated the patch mkinitrd-fix-boot-dir-detection.patch to a 
+  more generic validation that the inidcated initrd file doesn't 
+  contain a path. If no path is given, then add the default 
+  boot_dir.
+
+-------------------------------------------------------------------
+Tue Oct  8 18:59:30 UTC 2013 - tittiatcoke@gmail.com
+
+- Fix again the mkinitrd script as that people don't seem to test.
+  Added mkinitrd-fix-boot-dir-detection.patch so that an initrd 
+  is created.
+
+-------------------------------------------------------------------
+Mon Oct  7 08:58:00 UTC 2013 - trenn@suse.de
+
+- Update to mainline git version 033, b7d1b6f904a5b0bdd9a5ad19149f3.
+- Remove all patches which went mainline:
+  	 generalize_early_cpio.patch
+	 microcode_cleanup.patch
+	 acpi_override.patch
+	 mkinitrd_allow_no_option.patch
+	 mkinitrd_allow_multiple_args.patch
+	 quiet_options.patch
+	 implement_default.patch
+	 root_fs.patch
+	 suse_host_only.patch
+- Fix missing root fs slash in lib/udev/rules.d resulting in:
+  /var/tmp/initramfs.Lusf6flib/udev/rules.d
+- bcache: removed, it's in the upstream bcache-tools package
+  mainline git commit: 49268028b90f6344f79e3510d2
+- Fix bad she-bang in mkinitrd_setup_dummy
+
+-------------------------------------------------------------------
+Fri Oct  4 17:23:19 UTC 2013 - tittiatcoke@gmail.com
+
+- Add patch mkinitrd_update_bootloader.diff so that after 
+  generating the initrd, the update-bootloader is called to update
+  grub2.
+
+-------------------------------------------------------------------
+Fri Oct  4 16:26:20 UTC 2013 - tittiatcoke@gmail.com
+
+- Validate that the parameters passed with -i (initrd file) does 
+  not already contain the boot_dir.
+
+-------------------------------------------------------------------
+Fri Oct  4 09:58:17 UTC 2013 - tittiatcoke@gmail.com
+
+- Bring back the versioned Provides/Obsoletes for mkinitrd. 
+  Otherwise we run into issues as that udev is conflicting with
+  mkinitrd < 2.7.0
+
+-------------------------------------------------------------------
+Wed Oct  2 14:54:51 UTC 2013 - trenn@suse.de
+
+- Remove Provides/Obsoletes: mkinitrd versioning.
+  Simply obsolete and provide all mkinitrd versions.
+
+-------------------------------------------------------------------
+Wed Oct  2 13:19:23 UTC 2013 - mvyskocil@suse.com
+
+- Mark /etc/dracut.conf.d/02-early-microcode.conf as config file
+
+-------------------------------------------------------------------
+Wed Sep 25 15:17:57 UTC 2013 - trenn@suse.de
+
+- Add ACPI table override ability:
+    generalize_early_cpio.patch #PATCH-FIX-UPSTREAM
+    microcode_cleanup           #PATCH-FIX-UPSTREAM
+    acpi_override.patch         #PATCH-FIX-UPSTREAM
+- This will replace mkinitrd with dracut as the default initrd generator.
+  Therefore Prefer: dracut tag in the project config of the repo is needed.
+  Otherwise OSC does not know how to build installation-images
+  (needing mkinitrd to build) and which package to take.
+-  To switch back and try mkinitrd instead of dracut will be:
+     Uninstall dracut:
+        - rpm -e dracut --nodeps
+     And install mkinitrd again:
+        - zypper install mkinitrd
+- Adjust mkinitrd-dracut.sh to SUSE mkinitrd:
+  <none> : Before gives a "usage" error -> now scans /boot for kernels
+           and builds corresponding inirtrds for them
+  -i -k  : Pass a list of kernels and initrd targets
+           (not sure it was worth the hassle to be able to pass)
+  -b     : Boot directory to search for kernel images
+  -d     : Change root file system. Not tested whether dracut's behavior
+           matches exactly what our mkinitrd does.
+  -s     : Dummy (should even be obsolete in latest mkinitrd)
+  These patches have been submitted, but now feedback from mainline yet:
+    mkinitrd_allow_no_option.patch
+    mkinitrd_allow_multiple_args
+    quiet_options
+    implement_default
+    root_fs
+    suse_host_only
+- Write caller and used parameters to syslog if mkinitrd is called.
+  So that those can easily be fixed and checked for correctness.
+  This should get reverted again before a bigger release.
+    This patch will never show up mainline and should also get reverted
+    from SUSE factory repo before the next release shows up:
+    suse_only_logger
+- Build host only images for default paths in SUSE for faster build and
+  smaller images. Imply --force in this case as well.
+  * suse_host_only.patch
+
+-------------------------------------------------------------------
+Sat Sep 21 17:36:13 UTC 2013 - crrodriguez@opensuse.org
+
+- save a few seconds on boot by always including the autofs4 
+  kernel module in the initrd
+
+-------------------------------------------------------------------
+Sat Sep 21 17:31:15 UTC 2013 - crrodriguez@opensuse.org
+
+- dracut 033 
+- improved hostonly device recognition
+- improved hostonly module recognition
+- do not install udev rules from /etc in generic mode
+- fixed LABEL= parsing for swap devices
+- fixed iBFT network setup
+- removed caching of kernel cmdline
+- bcache: support new blkid
+- ifup with dhcp, if no "ip=" specified for the interface
+- fixed ifup udev rules
+
+-------------------------------------------------------------------
+Mon Sep  9 01:09:44 UTC 2013 - crrodriguez@opensuse.org
+
+- After testing, we need to correct a major problem, /usr/bin/mount
+ most be installed in /bin/mount on the initrd otherwise boot fails.
+
+-------------------------------------------------------------------
+Mon Sep  9 00:23:56 UTC 2013 - crrodriguez@opensuse.org
+
+- version 032 
+- add parameter --print-cmdline
+- dracut now creates the initramfs without udevadm
+that means the udev database does not have to populated
+and the initramfs can be built in a chroot with
+/sys /dev /proc mounted.
+- renamed dracut_install() to inst_multiple() for consistent naming
+- if $libdirs is unset, fall back to ld.so.cache paths
+- always assemble /usr device in initramfs
+- bash module added (disable it, if you really want dash)
+- continue to boot, if the main loop times out, in systemd mode
+- removed inst*() shell pure versions, dracut-install binary is in charge now
+- fixed ifcfg file generation for vlan
+- do not include adjtime and localtime anymore
+- fixed generation of zfcp.conf of CMS setups
+- install vt102 terminfo
+- dracut_install() is still there for backwards compat
+- do not strip files in FIPS mode
+- fixed iBFT interface configuration
+- fs-lib: install fsck and fsck.ext*
+- shutdown: fixed killall_proc_mountpoint()
+- network: also wait for ethernet interfaces to setup
+- fixed checking for FIPS mode
+
+-------------------------------------------------------------------
+Mon Aug  5 04:30:48 UTC 2013 - crrodriguez@opensuse.org
+
+- version 031_git201308011055
+* systemd: add support for kmod static devnodes
+* crypt: Wait for udev to settle before unlocking disk
+* systemd/dracut-pre-trigger.service: run after systemd-tmpfiles-setup-dev
+* systemd: use systemd in the initramfs, if installed on the system
+
+-------------------------------------------------------------------
+Sat Aug 3 07:10:55 UTC 2013 - tittiatcoke@gmail.com
+
+- Drop the buildrequire for the microcode_ctl. This package 
+  is no longer in Factory and with the latest kernel (3.11) 
+  no longer required.
+
+-------------------------------------------------------------------
+Sun Jul 28 00:39:55 UTC 2013 - crrodriguez@opensuse.org
+
+- version 030_git201307241235 
+* systemd: Replace prefdm.service with display-manager.service
+* modsign: do not install, if no keys present
+* bcache: add support for bcache
+* Use systemd-cat for logging on systemd systems, if logfile is empty
+
+-------------------------------------------------------------------
+Sun Jul 21 17:17:58 UTC 2013 - tittiatcoke@gmail.com
+
+- Remove the http link for the Source0. Git snapshots can 
+  not be obtained that way. 
+  
+-------------------------------------------------------------------
+Wed Jul 17 20:25:58 UTC 2013 - crrodriguez@opensuse.org
+
+- Version 029_git201307171236
+* support early microcode loading in x86
+
+-------------------------------------------------------------------
+Thu Jun 27 19:41:46 UTC 2013 - crrodriguez@opensuse.org
+
+- Require pigz instead of gzip 
+
+-------------------------------------------------------------------
+Tue Jun 18 00:48:24 UTC 2013 - crrodriguez@opensuse.org
+
+- version 029 
+* fixes for the networking modules
+* fixes for systemd integration
+* fixes for the i18n module (removes dracut-font.patch now upstream)
+
+-------------------------------------------------------------------
+Thu Jun  6 19:20:47 UTC 2013 - crrodriguez@opensuse.org
+
+- version 027_git201306061213
+*  setup correct system time and time zone in initrd
+* systemd integration bugfixes
+* lvm bugfixes.
+
+-------------------------------------------------------------------
+Wed May  8 23:05:40 UTC 2013 - crrodriguez@opensuse.org
+
+- Recommend pigz for faster/parallel compression 
+
+-------------------------------------------------------------------
+Sat Apr 20 14:55:20 UTC 2013 - crrodriguez@opensuse.org
+
+- Ensure we use display-manager.service instead of prefdm. 
+
+-------------------------------------------------------------------
+Mon Apr 15 00:59:59 UTC 2013 - crrodriguez@opensuse.org
+
+- Update to 027_git201304121327
+* much of patch correct-paths-for-opensuse.patch is no longer
+  need so it has shrinked significantly.
+* since PRE-027 dracut requires systemd >= 199 reflect that in
+  in the rpm buildRequires.
+
+-------------------------------------------------------------------
+Wed Apr  3 09:23:22 UTC 2013 - tittiatcoke@gmail.com
+
+- dracut-027
+  * systemd module now requires systemd >= 199
+  * dracut makes use of native systemd initrd units
+  * added hooks for new-kernel-pkg and kernel-install
+  * hostonly is now default for fedora
+  * comply with the BootLoaderSpec paths
+    http://www.freedesktop.org/wiki/Specifications/BootLoaderSpec
+  * added rescue module
+  * host_fs_types is now a hashmap
+  * new dracut argument "--regenerate-all"
+  * new dracut argument "--noimageifnotneeded"
+  * new man page dracut.bootup
+  * install all host filesystem drivers
+  * use -D_FILE_OFFSET_BITS=64 to build dracut-install
+
+-------------------------------------------------------------------
+Tue Mar 19 21:32:09 UTC 2013 - crrodriguez@opensuse.org
+
+- Update to 026_git201303180829
+* bugfixes
+* adds bash completion Support
+- Most importantly, fix the (silly) compatibility patch 
+  that changes the name from initramfs to initrd that went broken
+  in last update (all initrds were suffixed by .img)
+
+-------------------------------------------------------------------
+Tue Mar 12 22:01:14 UTC 2013 - crrodriguez@opensuse.org
+
+-  dracut-026
+- introduce /usr/lib/dracut/dracut.conf.d/ drop-in directory
+
+  /usr/lib/dracut/dracut.conf.d/*.conf can be overwritten by the same
+  filenames in /etc/dracut.conf.d.
+
+  Packages should use /usr/lib/dracut/dracut.conf.d rather than
+  /etc/dracut.conf.d for drop-in configuration files.
+
+  /etc/dracut.conf and /etc/dracut.conf.d belong to the system administrator.
+
+- uses systemd-198 native initrd units
+- totally rely on the fstab-generator in systemd mode for block devices
+- dracut systemd now uses dracut.target rather than basic.target
+- dracut systemd services optimize themselves away
+- fixed hostonly parameter generation
+- turn off curl globbing (fixes IPv6)
+- modify the udev rules on install and not runtime time
+- enable initramfs building without kernel modules (fixed regression)
+- in the initqueue/timeout,
+  reset the main loop counter, as we see new udev events or initqueue/work
+- fixed udev rule installation 
+
+-------------------------------------------------------------------
+Fri Feb 22 00:16:46 UTC 2013 - crrodriguez@opensuse.org
+
+- Update to 025_git201302211113
+* Support out-of-tree and updated drivers in initramfs creation
+* shutdown: call "losetup -D" on shutdown
+* Mount /proc before including dracut-lib.sh.
+* dracut.sh: make /var/log a symlink to /run/log
+* systemd/dracut-pre-pivot.sh: remove /dev/root symlink after shell
+* kernel-modules: Add ehci support for kernel 3.8+
+* Other bugfixes
+
+-------------------------------------------------------------------
+Sun Feb  3 02:07:39 UTC 2013 - crrodriguez@opensuse.org
+
+- BuildRequires: pkgconfig(systemd) so %{_unitdir} is defined
+  and systemd integration works..
+
+-------------------------------------------------------------------
+Mon Jan 28 17:52:28 UTC 2013 - crrodriguez@opensuse.org
+
+- Require modutils instead of module-init-tools. 
+
+-------------------------------------------------------------------
+Thu Jan 24 09:57:18 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to release 025:
+  + do not strip signed kernel modules
+  + add sosreport script and generate /run/initramfs/sosreport.txt
+  + make short uuid specification for allow-discards work
+  + turn off RateLimit for the systemd journal
+  + fixed MAC address assignment
+  + add systemd checkisomd5 service
+  + splitout drm kernel modules from plymouth module
+  + add 'swapoff' to initramfs to fix shutdown/reboot
+  + add team device support
+  + add pre-shutdown hook
+  + kill all processes in shutdown and report remaining ones
+  + "--device" changed to "--add-device" and "add_device=" added 
+    for conf files
+  + add memory usage trace to different hook points
+  + cope with optional field #7 in /proc/self/mountinfo
+  + lots of small bugfixes 
+
+-------------------------------------------------------------------
+Thu Dec  6 20:15:41 UTC 2012 - crrodriguez@opensuse.org
+
+- dracut wants "strip" installed which is part of binutils
+  recommend that package 
+
+-------------------------------------------------------------------
+Mon Nov  5 08:44:30 UTC 2012 - tittiatcoke@gmail.com
+
+- Added additional patches to make dracut work in an openSUSE 
+  environment.
+
+- Added patch (use_all_paths_udev.patch) to use both /usr/lib/udev
+  and /lib/udev as long as not all packages migrated.
+- Added patch (use_initrd_insteadof_initramfs.patch) to change 
+  the naming of the generated initrd file to be more openSUSE
+- Added patch (use_sysconfig_values_correctly.patch) to read the 
+  correct keymap value from /etc/sysconfig. (.gz extension)
+
+-------------------------------------------------------------------
+Thu Nov  1 17:47:45 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to release 024:
+  + new dracut option "--device"
+  + new dracut kernel command line options "rd.auto"
+  + new dracut kernel command line options "rd.noverifyssl"
+  + new dracut option "--kernel-cmdline" and "kernel_cmdline" 
+    option for default parameters
+  + fixes for systemd and crypto
+  + fix for kexec in shutdown, if not included in initramfs
+  + create the initramfs non-world readable
+  + prelink/preunlink in the initramfs
+  + strip binaries in the initramfs by default now
+  + various FIPS fixes
+  + various dracut-install fixes
+
+- Added patch (correct-paths-for-opensuse.patch) to ensure correct 
+  paths for openSUSE (Plymouth)
+
+-------------------------------------------------------------------
+Fri Sep 28 12:10:20 UTC 2012 - fcrozat@suse.com
+
+- Add initramfs-non-world-readable.patch: fix CVE-2012-4453
+  (bnc#782734).
+
+-------------------------------------------------------------------
+Wed Aug  1 13:39:16 UTC 2012 - fcrozat@suse.com
+
+- Update to release 023:
+  + resume from hibernate fixes
+  + -N option for --no-hostonly
+  + support for systemd crypto handling
+  + new dracut module "crypt-loop"
+  + deprecate the old kernel command line options
+  + more documentation
+  + honor CFLAGS for dracut-install build
+  + multipath fixes
+  + / is mounted according to rootflags parameter but forced ro at
+    first. Later it is remounted according to /etc/fstab +
+    rootflags parameter and "ro"/"rw".
+  + support for xfs / reiserfs separate journal device
+  + new "ro_mnt" option to force ro mount of / and /usr
+  + root on cifs support
+  + dracut-install: fixed issue for /var/tmp containing a symlink
+  + only lazy resolve with ldd, if the /var/tmp partition is not
+    mounted with "noexec".
+  + i18n: fixed inclusion of "include" keymaps
+- Drop dracut_makefile_cflags_pass.patch and separate-journal.patch
+  (merged upstream)
+
+-------------------------------------------------------------------
+Mon Jul 23 15:37:59 UTC 2012 - fcrozat@suse.com
+
+- Update to release 022:
+  + fixed host-only kernel module bug
+- Changes from release 021:
+  + fixed systemd in the initramfs (requires systemd >= 187)
+  + dracut-install: massive speedup with /var on the same
+    filesystem with COW copy.
+  + dracut-install: moved to /usr/lib/dracut until it becomes a
+    general purpose toot
+  + new options: "rd.usrmount.ro" and "rd.skipfsck"
+  + less mount/umount
+  + apply "ro" on the kernel command line also to /usr
+  + mount according to fstab, if neither "ro" or "rw" is specified
+  + skip fsck for xfs and btrfs. remount is enough
+  + give emergency_shell if /usr mount failed
+  + dracut now uses getopt:
+    - options can be position independent now!!
+    - we can now use --option=<arg>
+  + added option "--kver=<kernel-version>", and the image location
+    can be omitted : dracut --kver 3.5.0-0.rc7.git1.2.fc18.x86_64
+  + dracut.sh: for --include copy also the symbolic links
+  + man pages: lsinitrd and mkinitrd added
+  + network: We do not support renaming in the kernel namespace
+    anymore (as udev does that not anymore). So, if a user wants to
+    use ifname, he has to rename to a custom namespace. "eth[0-9]+"
+    is not allowed anymore.
+  + resume: moved the resume process to the initqueue.
+    This should prevent accidently mounting the root file system.
+  + improve running testsuite
+- Clean up package to be openSUSE only package and follow openSUSE
+  standard.
+- Add dracut module to convert openSUSE/SLE initrd cmdline
+  parameters into dracut parameters at boot time.
+- Add separate-journal.patch: add support for separate journal for
+  reiserfs and XFS.
+
+-------------------------------------------------------------------
+Thu Jul 12 15:39:12 UTC 2012 - trenn@suse.de
+
+- First check in of version 020
+- Fix Makefile so that make -e CFLAGS="$RPM_OPT_FLAGS" can be passed
+- Remove Requires on libcap
+- some more changes, most sent mainline

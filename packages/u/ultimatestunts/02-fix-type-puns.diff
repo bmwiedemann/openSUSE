@@ -1,0 +1,57 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2012-11-25 16:20:56.258246775 +0100
+Status: sent to upstream
+
+build: resolve compiler's hard warnings about type punning
+
+g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../intl -I../shared   -DSYSCONFDIR="\"/etc\""   -Wall   -fmessage-length=0 -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables -g -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -c -o udpnet.o udpnet.cpp
+udpnet.cpp: In member function 'virtual bool CUDPNet::sendData(CMessageBuffer&)':
+udpnet.cpp:158:33: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+gcc -DHAVE_CONFIG_H -I. -I. -I.. -I../graphics -I../intl -I../shared   -DSYSCONFDIR="\"/etc\""   -Wall   -fmessage-length=0 -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables -g -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -c lw.c
+lw.c: In function 'read_float':
+lw.c:67:3: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+
+---
+ simulation/udpnet.cpp |    3 ++-
+ stunts3dedit/lw.c     |    6 +++++-
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+Index: ultimatestunts-srcdata-0771/simulation/udpnet.cpp
+===================================================================
+--- ultimatestunts-srcdata-0771.orig/simulation/udpnet.cpp
++++ ultimatestunts-srcdata-0771/simulation/udpnet.cpp
+@@ -155,7 +155,8 @@ bool CUDPNet::sendData(CMessageBuffer &d
+ 	Uint8 num8[4];
+ 	for(unsigned int i=0; i<4; i++)
+ 		num8[i] = ipnum[i];
+-	Uint32 num32 = *((Uint32 *)num8);
++	Uint32 num32;
++	memcpy(&num32, num8, sizeof(num32));
+ 
+ 	//printf("Sending to %d.%d.%d.%d port %d\n", num8[0], num8[1], num8[2], num8[3], data.getPort());
+ 
+Index: ultimatestunts-srcdata-0771/stunts3dedit/lw.c
+===================================================================
+--- ultimatestunts-srcdata-0771.orig/stunts3dedit/lw.c
++++ ultimatestunts-srcdata-0771/stunts3dedit/lw.c
+@@ -23,6 +23,7 @@ Modified by CJP
+ 
+ #include "lw.h"
+ 
++#include <assert.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -63,8 +64,11 @@ static Uint32 read_long(FILE *f)
+ 
+ static float read_float(FILE *f)
+ {
++  float r;
+   Uint32 x = read_long(f);
+-  return *((float*)(void*)(&x)); /* CJP note: possibly doesn't work on every architecture */
++  assert(sizeof(float) == sizeof(Uint32));
++  memcpy(&r, &x, sizeof(r));
++  return r;
+ }
+ 
+ static int read_string(FILE *f, char *s)

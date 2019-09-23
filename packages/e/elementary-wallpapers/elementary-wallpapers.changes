@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Mon Oct  8 12:50:48 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.3:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Sat Jun 23 16:40:07 UTC 2018 - avvissu@yandex.by
+
+- Update to 5.2:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Fri Jun 15 16:12:14 UTC 2018 - avvissu@yandex.by
+
+- Rename the package: branding-elementary -> branding-upstream 
+
+-------------------------------------------------------------------
+Sat Jun  9 23:54:55 UTC 2018 - avvissu@yandex.by
+
+- Update to 5.1:
+  * New upstream release
+
+-------------------------------------------------------------------
+Fri Jun  8 23:00:11 UTC 2018 - avvissu@yandex.by
+
+- Switch to git
+- Add pantheon-wallpapers-branding-elementary
+- Build with fdupes
+- Update install section
+- Add SECTION check: brp-25-symlink will break the links with spaces
+- Add COPYING file
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sun Sep 18 14:11:19 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.1.4
+- Add conflict with luna-wallpapers
+- Read value of a symbolic link to default wallpaper
+
+-------------------------------------------------------------------
+Sun Feb 28 15:36:05 UTC 2016 - mailaender@opensuse.org
+
+- initial package (version 0.1+r46) for build.opensuse.org

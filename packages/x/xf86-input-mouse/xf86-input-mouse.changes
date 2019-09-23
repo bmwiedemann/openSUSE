@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Tue Jun 19 09:48:29 UTC 2018 - sndirsch@suse.com
+
+- Update to version 1.9.3
+  * For Xserver 1.20 compatibility. 
+- supersedes U_adapt-to-removal-of-xf86GetOS.patch
+
+-------------------------------------------------------------------
+Mon Oct  9 13:50:21 UTC 2017 - tobias.johannes.klausmann@mni.thm.de
+
+- Add patch U_adapt-to-removal-of-xf86GetOS.patch
+  This patch is in preparation of the upcoming XServer release
+
+-------------------------------------------------------------------
+Sat Nov 19 16:45:09 UTC 2016 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.9.2:
+  This release supports the X server 1.19.
+
+-------------------------------------------------------------------
+Fri Jul 31 07:48:13 UTC 2015 - jengelh@inai.de
+
+- Ignore absence of udevadm, it won't be present in the build env.
+
+-------------------------------------------------------------------
+Tue Dec 16 19:26:01 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.9.1:
+  + Update some outdated language in a comment on obsolete
+    hardware.
+  + Make absolute input reporting in Solaris aware of resolution
+    changes.
+  + Do not drop the result of protocol detection.
+  + Add support for absolute positioning (tablets).
+  + For wsmouse, keep 3-button emulation status.
+  + Make wsmouse (re-)init the version.
+  + Enable MSE_MISC on NetBSD as well. Otherwise we can't find
+    WSMouse.
+  + Add AC_SYSTEM_EXTENSIONS to expose asprintf with GNU libc.
+  + Use asprintf (or Xprintf on old servers) instead of
+    strdup+sprintf.
+  + Wrap some overly long lines.
+
+-------------------------------------------------------------------
+Fri Sep 20 10:12:42 UTC 2013 - sndirsch@suse.com
+
+- removed 11-mouse.conf xorg.conf.d snippet, since now most (if not
+  all) the remappings that we have there are actually defaults, so
+  doing nothing.  Also I consider them outdated, no longer matching
+  at all, or even completely wrong.
+
+-------------------------------------------------------------------
+Thu Mar 28 21:50:35 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.9.0:
+  + autogen.sh: Implement GNOME Build API.
+  + configure: Drop AM_MAINTAINER_MODE.
+  + Use signal-safe logging if available.
+  + Fix compilation error with EXTMOUSEDEBUG on.
+
+-------------------------------------------------------------------
+Mon Sep 17 10:26:20 UTC 2012 - sndirsch@suse.com
+
+- 11-mouse.conf: use evdev driver also for users of Lenovo USB
+  keyboards with trackpoint (bnc#780626)
+
+-------------------------------------------------------------------
+Tue Jul 31 01:03:04 UTC 2012 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.8.1:
+  + Fix compiler warnings
+- Added a development Package
+
+-------------------------------------------------------------------
+Fri Jul 27 21:33:11 UTC 2012 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.8.0:
+  + drop support for Xorg 1.6.x, require Xorg 1.7 or later.
+  + expose "Device Node" (read-only), "Mouse Middle Button Emulation"
+    (read-write) and "Mouse Middle Button Timeout" (read-write) 
+    properties via the Xinput properties API to allow distinguishing
+    between multiple devices and controlling the 3rd button emulation
+    options at runtime, without having to edit xorg.conf.d files and
+    restart the server.
+
+-------------------------------------------------------------------
+Thu Apr 19 13:09:51 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.7.2:
+  + minor code clean ups
+  + Bug fixes
+- Use %x11_abi_xinput_req instead of static ABI Requires.
+
+-------------------------------------------------------------------
+Wed Apr 18 11:22:34 UTC 2012 - vuntz@opensuse.org
+
+- Split xf86-input-mouse from xorg-x11-driver-input.
+  Initial version: 1.7.1.
+

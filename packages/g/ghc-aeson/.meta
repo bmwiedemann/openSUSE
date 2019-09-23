@@ -1,0 +1,7 @@
+<package name="ghc-aeson" project="openSUSE:Factory">
+  <title>Fast JSON parsing and encoding</title>
+  <description>A JSON parsing and encoding library optimized for ease of use and high performance.
+To get started, see http://hackage.haskell.org/package/aeson/docs/Data-Aeson.html
+For release notes, see https://github.com/bos/aeson/blob/master/release-notes.markdown </description>
+  <devel project="devel:languages:haskell" package="ghc-aeson"/>
+</package>

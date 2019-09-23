@@ -1,0 +1,6 @@
+<package name="xml-commons-apis-bootstrap" project="openSUSE:Factory">
+  <title>Common code for XML projects - bootstrapping package</title>
+  <description>This is xml-apis from the java-bootrapping-tools package. DO NOT
+INSTALL ... THIS IS JUST FOR PACKAGING &amp; BOOTSTRAPPING JAVA PURPOSES!!</description>
+  <devel project="Java:packages" package="xml-commons-apis-bootstrap"/>
+</package>

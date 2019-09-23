@@ -1,0 +1,5 @@
+<package name="udftools" project="openSUSE:Factory">
+  <title>UDF filesystem tools</title>
+  <description>These are tools for UDF file systems as used, e.g., on DVD-ROMs.</description>
+  <devel project="Base:System" package="udftools"/>
+</package>

@@ -1,0 +1,251 @@
+-------------------------------------------------------------------
+Thu Mar 22 06:11:35 UTC 2018 - coolo@suse.com
+
+- updated to 0.07049
+   see /usr/share/doc/packages/perl-DBIx-Class-Schema-Loader/Changes
+
+  0.07049 - 2018-03-21
+          - Fix tests when the path to perl has spaces in it (GH#19)
+          - Inline String::CamelCase::wordsplit() due to RT#123030
+          - Get enum values from DBD::Pg if it's new enough
+          - Remove dependency on DBIx::Class::IntrospectableM2M
+  
+  0.07048_01 - 2018-02-23
+          - Convert from Module::Install to ExtUtils::MakeMaker + Distar (GH#17)
+
+-------------------------------------------------------------------
+Sun Jan 21 06:17:44 UTC 2018 - coolo@suse.com
+
+- updated to 0.07048
+   see /usr/share/doc/packages/perl-DBIx-Class-Schema-Loader/Changes
+
+  0.07048  2018-01-20
+          - Fix for PostgreSQL enums not in the schema search path (RT#123234)
+          - Fix 'default now()' test for PostgreSQL v10
+          - Work around incompatible change in Hash::Merge (GH#16)
+          - Fix skip count for non-InnoDB MySQL test
+
+-------------------------------------------------------------------
+Sat May 27 05:23:31 UTC 2017 - coolo@suse.com
+
+- updated to 0.07047
+   see /usr/share/doc/packages/perl-DBIx-Class-Schema-Loader/Changes
+
+  0.07047  2017-05-26
+          - Avoid upcoming DBIC warning on implicit SELECT * invocation
+            (RT#118178)
+          - Improve moniker_map and col_accessor_map coderef documentation (GH#7)
+          - Improve exclude and constraint documentation (GH#12)
+          - Fix running Makefile.PL without '.' in @INC (RT#121905)
+
+-------------------------------------------------------------------
+Tue Sep  6 05:13:23 UTC 2016 - coolo@suse.com
+
+- updated to 0.07046
+   see /usr/share/doc/packages/perl-DBIx-Class-Schema-Loader/Changes
+
+  0.07046  2016-09-05
+          - Introspect view definitions for PostgreSQL, MySQL, Oracle,
+            Firebird, and InterBase.
+          - When a file's md5sum was wrong but no other content in the file had
+            changed, it would not be rewritten even when overwrite_modifications
+            was true. Fixed by Dave Rolsky. GH #8.
+
+-------------------------------------------------------------------
+Wed Jan 27 09:48:50 UTC 2016 - coolo@suse.com
+
+- updated to 0.07045
+   see /usr/share/doc/packages/perl-DBIx-Class-Schema-Loader/Changes
+
+  0.07045  2016-01-22
+          - Regenerate tarball without author-mode test dependencies
+  
+  0.07044  2016-01-22
+          - Fix Pg date/time types with zero fractional second digits
+          - Add support for nested hashref form of col_accessor_map
+
+-------------------------------------------------------------------
+Sun May 17 08:09:02 UTC 2015 - coolo@suse.com
+
+- updated to 0.07043
+   see /usr/share/doc/packages/perl-DBIx-Class-Schema-Loader/Changes
+
+  0.07043  2015-05-13
+          - Fix many_to_many bridges with overlapping foreign keys
+          - Add option to allow extra columns in many_to_many link tables
+          - Document how to add perltidy markers via filter_generated_code
+          - Fix DB2 foreign-key introspection
+          - Remove dependency on List::MoreUtils and Sub::Name
+          - Ensure schema files are generated as binary files on Windows
+          - Fix overwrite_modifications not overwriting if the table hasn't changed
+          - Filter out disabled constraints and triggers for Oracle (GH#5)
+  
+  0.07042  2014-08-20
+
+-------------------------------------------------------------------
+Tue Dec  2 10:08:32 UTC 2014 - coolo@suse.com
+
+- updated to 0.07042
+         - Fix unescaped left braces in regexes in tests
+         - Use undef instead of '%' for the table and type arguments
+           to $dbh->tables (fixes breakage with DBD::Pg 3.4.0)
+ 
+ 0.07041  2014-08-09
+         - Fix many_to_many bridges going back to the same table
+         - Don't disconnect after ->load in static mode
+           (fixes Pg test failure with the upcoming DBIC 0.082800)
+         - Set up Travis smoking (mostly stolen from DBIC)
+ 
+ 0.07040  2014-05-27
+         - Add options to omit the version and timestamp from the
+           generated code (RT#92300)
+         - Skip dumping unique indexes with expressions (RT#93613)
+         - Fix dumping unique indexes with DBD::Pg < 1.50
+         - Fix inconsistent naming of duplicate unique constraints
+         - Avoid clobbering caller's $_ (RT#96010)
+ 
+ 0.07039  2014-01-06
+         - Fix table listing with DBD::DB2 >= 1.85 (RT#91764)
+         - Add accessor for the list of (re)generated classes
+         - Add dry-run mode for static schema creation
+ 
+ 0.07038  2013-11-20
+         - Allow coderef maps to call back into the hashref mapping code
+         - Fix MySQL column info detection with multiple schemas (RT#82358)
+         - Fix skip count for Oracle multi-schema tests
+         - Actually test data types that require separate tables
+         - Fix national character type sizes on DBD::Oracle >= 1.52
+         - Fix detection of qualified sequence names for Oracle (RT#90341)
+ 
+ 0.07037  2013-10-30
+         - Allow overriding individual moniker parts
+ 
+ 0.07036_04 2013-10-24
+         - Set table_class to DBIx::Class::ResultSource::View for views, in
+           supported backends (SQLite, MySQL, and Pg) (arc@cpan.org)
+ 
+ 0.07036_03 2013-10-22
+         - Restore support for PostgreSQL 8.3 (RT#87291)
+         - Fix t/23dumpmore on perl 5.8.8 and earlier
+         - Silence warnings from pure-perl Cwd::abs_path()
+ 
+ 0.07036_02 2013-09-25
+         - Skip many_to_many bridges involving might_have relationships
+ 
+ 0.07036_01 2013-08-11
+         - Fix typos in POD and comments (RT#87644)
+         - Don't ship MYMETA.* files (RT#87713)
+         - Fix many_to_many bridges involving might_have relationships
+         - Allow specifying custom attributes for many_to_many bridges
+         - Allow specifying the separator when joining database, schema
+           and table names to form a moniker
+         - Allow using all the moniker parts in hashref moniker_map
+         - Allow matching all the moniker parts in constraint/exclude
+
+-------------------------------------------------------------------
+Fri Jun  1 05:08:27 UTC 2012 - coolo@suse.com
+
+- updated to 0.07024
+      - work around broken keyseq in DBD::Pg foreign_key_info (RT#77062)
+
+      - properly order FK columns when using base ::DBI loader (SineSwiper)
+      - bump Class::Inspector dep to 1.27 due to test failures with earlier
+        versions on perl >= 5.15.7 (RT#74236)
+
+      - do separate queries for default_value on Sybase ASE as some servers
+        can't join to that table (pcmantz) (RT#74170)
+      - set correct size for nchar/nvarchar columns for Sybase ASE,
+        depending on @@ncharsize
+
+      - use ::Schema::connect instead of ::Schema::connection in
+        make_schema_at (RT#74175)
+      - register sources on the schema class, never the instance, regardless
+        of how the connection is made for dynamic schemas
+
+      - fix some mro issues under perl 5.8
+
+      - fix some errors due to case issues (RT#75805)
+
+      - skip dbicdump tests on Win32 due to test fails (RT#75732)
+      - fix undefined warnings for DBDs without schemas
+      - work around ORA-24345 from $dbh->column_info
+      - fix spelling mistake in Base POD (RT#74796)
+
+      - *EXPERIMENTAL* support for dumping PostgreSQL schemas inside of a
+        transaction
+      - use DBI table_info/column_info REMARKS field if/where available for
+        table/column comments (SineSwiper)
+      - better compatibility with more DBDs (SineSwiper)
+
+
+-------------------------------------------------------------------
+Fri Jan 13 10:32:31 UTC 2012 - coolo@suse.com
+
+- updated to 0.07015
+    - generate many_to_many bridges for targets of link tables
+    - fix a bug in the automatic multischema clashing moniker disambiguation
+      code that overwrote $loader->moniker_parts
+    - automatically prefix database/schema to clashing monikers for
+      the same table name in multischema configurations
+
+-------------------------------------------------------------------
+Fri Jan 13 10:29:08 UTC 2012 - coolo@suse.com
+
+- update to 0.07012, see Changes
+
+-------------------------------------------------------------------
+Thu Apr 21 05:20:59 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.07010
+       - add result_component_map option
+  
+       - fix a syntax error in MS Access ADO driver
+  
+       - rename column_accessor_map to col_accessor_map, the old alias still
+         works
+       - support MSSQL over DBD::ADO
+       - support for MS Access over DBD::ODBC and DBD::ADO
+  
+       - bump DBIx::Class dep to 0.08127
+       - fix MSSQL data types for native client and EasySoft driver
+  
+       - turn unloading of RelBuilder temp classes back on, now with proper
+         check for class existance using Class::Inspector->loaded
+       - bump up dep on namespace::clean to avoid breakage with earlier
+         versions (RT#65149)
+  
+       - support extra connect_info options like quote_char for dbicdump
+       - fix breakage on perl 5.8.x related to unloading temporary classes
+  
+       - fix bug with result class methods being cached on in a closure instead
+         of the object, which breaks for multiple dynamic schemas in a single
+         perl instance
+  
+       - fix relname/method collisions (RT#62648)
+       - fix fully qualified component classes (RT#62624)
+       - improve sybase/mssql db_schema detection
+       - remove MooseX::NonMoose from Schema files under use_moose=1
+       - better _tables_list for Sybase ASE
+       - add datetime_undef_if_invalid => 1 for MySQL datetime data types
+         (RT#64820) This behavior can be turned off by passing
+         datetime_undef_if_invalid=0 as a loader option
+       - added column_accessor_map option
+       - Preserve relationship names when redumping and another FK is added
+         (RT#62424)
+       - Remove resultset_components as ResultSetManager is deprecated
+       - Fix a fail when very old Moose/CMOP is installed
+       - Added warning for column-accessor collisions, doc section in ::Base
+         ("COLUMN ACCESSOR COLLISIONS") and the col_collision_map option.
+       - Handle column accessor collisions with UNIVERSAL methods
+       - Generate custom_type_name hint for PostgreSQL enums, as used
+         by very recent SQL::Translator
+       - Added support for PostgreSQL enum types
+       - Added table/column comment support for Oracle
+       - Fix missing require (RT#62072)
+
+-------------------------------------------------------------------
+Mon Jan 17 15:53:44 UTC 2011 - coolo@novell.com
+
+- initial package 0.07002
+  * created by cpanspec 1.78.03
+

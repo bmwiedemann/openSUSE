@@ -1,0 +1,28 @@
+From dd3be6bbca6069ba04ae6f7557c0f959fc10d49c Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Tue, 11 Jul 2017 13:13:13 +0200
+Subject: [PATCH 2/2] Support default.session symlink
+
+Display it under a different name, otherwise it is indistinguishable from
+a normal session.
+---
+ src/sessionmodel.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+Index: sddm-kcm-5.12.2/src/sessionmodel.cpp
+===================================================================
+--- sddm-kcm-5.12.2.orig/src/sessionmodel.cpp
++++ sddm-kcm-5.12.2/src/sessionmodel.cpp
+@@ -95,6 +95,12 @@ void SessionModel::loadDir(const QString
+             if (line.startsWith(QLatin1String("Hidden=")))
+                 isHidden = line.mid(7).toLower() == QLatin1String("true");
+         }
++
++        if (session == QLatin1String( "default.desktop" )) {
++            si->name = tr("(System Default)");
++            isHidden = false;
++        }
++
+         if (!isHidden) {
+             // add to sessions list
+             d->sessions.push_back(si);

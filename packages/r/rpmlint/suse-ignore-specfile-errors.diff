@@ -1,0 +1,25 @@
+From: Some One <nobody@opensuse.org>
+Date: Thu, 9 Apr 2015 14:55:40 +0200
+Subject: [PATCH] suse-ignore-specfile-errors.diff
+
+===================================================================
+---
+ SpecCheck.py | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+Index: rpmlint-rpmlint-1.11/SpecCheck.py
+===================================================================
+--- rpmlint-rpmlint-1.11.orig/SpecCheck.py
++++ rpmlint-rpmlint-1.11/SpecCheck.py
+@@ -551,9 +551,8 @@ class SpecCheck(AbstractCheck.AbstractCh
+                     printWarning(pkg, "patch-not-applied",
+                                  "Patch%d:" % pnum, pfile)
+ 
+-        # Rest of the checks require a real spec file
+-        if not self._spec_file:
+-            return
++        # Skip rest of the checks
++        return
+ 
+         # We'd like to parse the specfile only once using python bindings,
+         # but it seems errors from rpmlib get logged to stderr and we can't

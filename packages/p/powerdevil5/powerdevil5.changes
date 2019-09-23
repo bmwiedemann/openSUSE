@@ -1,0 +1,1071 @@
+-------------------------------------------------------------------
+Tue Sep  3 12:44:14 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.5.php
+- No code changes since 5.16.4
+
+-------------------------------------------------------------------
+Tue Jul 30 12:40:20 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.4.php
+- No code changes since 5.16.3
+
+-------------------------------------------------------------------
+Tue Jul  9 17:29:09 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.3.php
+- No code changes since 5.16.2
+
+-------------------------------------------------------------------
+Tue Jun 25 12:41:19 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.2.php
+- Changes since 5.16.1:
+  * [powerdevil] Return battery source monitoring
+
+-------------------------------------------------------------------
+Tue Jun 18 16:38:17 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.1.php
+- Changes since 5.16.0:
+  * Ignore power management inhibition in battery critical timeout (kde#408398)
+
+-------------------------------------------------------------------
+Thu Jun 13 21:33:45 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- File moved to %_kf5_dbuspolicydir
+
+-------------------------------------------------------------------
+Thu Jun  6 14:07:11 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.0.php
+- Changes since 5.15.90:
+  * Set application name to org_kde_powerdevil (kde#407721)
+- Drop patches, fixed upstream:
+  * 0001-Revert-Add-KAboutData.patch
+
+-------------------------------------------------------------------
+Mon May 20 12:05:34 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix reading of global shortcuts (kde#407721):
+  * 0001-Revert-Add-KAboutData.patch
+
+-------------------------------------------------------------------
+Thu May 16 16:56:41 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.90.php
+- Changes since 5.15.5:
+  * bump Qt version to 5.12 as agreed at start of cycle
+  * Move files to their correct place
+  * DDCUtil: Improved DDCUtil support for brightness control over DDC/CI channel for supported monitors
+  * Set Critical urgency for battery... critical notification
+  * Remove critical error notification
+  * Fixed initial size and content width of Activity Settings KCM (kde#398793)
+  * [powerdevil] Touch up messages/prompts
+  * [powerdevil] Correct labels
+  * Fix one last instance of the word "Suspend" in the UI
+  * [KCM & UI] Use the word "Sleep" instead of "Suspend"
+  * Add KAboutData
+  * Use the new KAuthCore
+  * Change icon for Activities config
+
+-------------------------------------------------------------------
+Tue May  7 11:04:59 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.5.php
+- No code changes since 5.15.4
+
+-------------------------------------------------------------------
+Tue Apr  2 12:41:01 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.4.php
+- No code changes since 5.15.3
+
+-------------------------------------------------------------------
+Tue Mar 12 13:15:24 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.3.php
+- Changes since 5.15.2:
+  * Fix crash when mutating a container while iterating it (kde#403776)
+
+-------------------------------------------------------------------
+Tue Feb 26 14:06:11 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.2.php
+- No code changes since 5.15.1
+
+-------------------------------------------------------------------
+Tue Feb 19 12:27:03 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.1.php
+- Changes since 5.15.0:
+  * Exclude powerdevil from session management
+
+-------------------------------------------------------------------
+Thu Feb  7 16:02:55 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.0.php
+- No code changes since 5.14.90
+
+-------------------------------------------------------------------
+Thu Jan 17 18:49:46 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.90.php
+- Changes since 5.14.5:
+  * bump KF5 dependency to required 5.54 as agreed at start of Plasma 5.15 cycle
+  * [dimdisplay] Waits a bit display to wake-up
+  * [dimdisplay] Do not change screen brightness on invalid values
+  * KCModule general page: Change conditional to what was probably intended
+  * Avoid creation of needless temporary containers
+  * Add missing emit keyword
+  * Add some QStringLiteral
+  * qt5.11 uses gcc 4.8 as minimum version
+
+-------------------------------------------------------------------
+Tue Jan  8 13:37:42 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.5.php
+- Changes since 5.14.4:
+  * [dimdisplay] Do not change screen brightness on invalid values
+
+-------------------------------------------------------------------
+Wed Nov 28 07:52:49 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.4.php
+- No code changes since 5.14.3
+
+-------------------------------------------------------------------
+Tue Nov  6 15:54:00 UTC 2018 - fabian@ritter-vogt.de
+
+- Add David Edmundson's key to plasma.keyring
+- Update to 5.14.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.3.php
+- No code changes since 5.14.2
+
+-------------------------------------------------------------------
+Tue Oct 23 13:56:42 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.2.php
+- No code changes since 5.14.1
+
+-------------------------------------------------------------------
+Tue Oct 16 14:05:17 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.1.php
+- No code changes since 5.14.0
+
+-------------------------------------------------------------------
+Fri Oct  5 10:01:14 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.0.php
+- Changes since 5.13.90:
+  * Revert "Remove XRandrBrightness" (kde#399018)
+
+-------------------------------------------------------------------
+Sat Sep 15 16:25:31 UTC 2018 - fabian@ritter-vogt.de
+
+- Add tarball signature and keyring containing keys of release managers
+  Jonathan Riddell and Bhushan Shah
+
+-------------------------------------------------------------------
+Thu Sep 13 17:25:05 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.90.php
+- Changes since 5.13.5:
+  * Remove XRandrBrightness
+  * QT_MIN_VERSIONS is Qt 5.11 for Plasma 5.14. Agreed at kickoff meeting.  Set everywhere for clearity and consistency.
+  * Remove wrong & unused X-KDE-DBus-ModuleName entry from daemon app metadata
+  * Display brightness OSD even when min and max is reached (kde#387284)
+
+-------------------------------------------------------------------
+Tue Sep  4 10:58:43 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.5.php
+- Changes since 5.13.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Jul 31 15:18:34 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.4.php
+- Changes since 5.13.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Jul 10 14:02:45 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.3.php
+- Changes since 5.13.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 26 16:01:33 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.2.php
+- Changes since 5.13.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 19 14:47:07 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.1.php
+- Changes since 5.13.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Jun  7 20:03:52 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.0.php
+- Changes since 5.12.90:
+  * None
+
+-------------------------------------------------------------------
+Sat May 19 14:16:38 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.90.php
+- Changes since 5.12.5:
+  * Revert "Revert "Get rid of KDELibs4Support""
+  * org.freedesktop.PowerManagement.Inhibit should only prevent suspend
+  * Use platform detection from KWorkspace in Powerdevil
+  * Remove outdated condition for calling feature_summary()
+  * Use non-deprecated KDEInstallDirs variables
+  * Update D-Bus xml file to use "Out*" for signal type Qt annotations
+  * End source files with newline
+  * Fix typos in comments
+  * Use override
+  * Use nullptr
+  * Use explicit
+  * Remove Qt module include
+  * Remove module prefixes from Qt includes
+  * Remove unneeded moc includes
+  * Remove duplicated add_definitions(-DQT_NO_KEYWORDS)
+  * Remove unneeded cmake macro include
+  * Use KF5_MIN_VERSION also for ECM, now that it's part of KF
+  * Require KDE Frameworks 5.42 and Qt 5.9
+  * Bump min cmake version to 3.0, move cmake_minimum_required to begin
+  * Properly define an optional feature, i.e. ddcutils
+- Remove patches, now upstream:
+  * 0001-Use-platform-detection-from-KWorkspace-in-Powerdevil.patch
+
+-------------------------------------------------------------------
+Wed May  2 09:25:59 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.5.php
+- Changes since 5.12.4:
+  * Ignore "migration" key for determining whether the config is empty (kde#391782)
+- Remove patches, now upstream:
+  * 0001-Ignore-migration-key-for-determining-whether-the-con.patch
+
+-------------------------------------------------------------------
+Thu Apr 26 19:15:15 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patch to fix initial config generation (kde#391782):
+  * 0001-Ignore-migration-key-for-determining-whether-the-con.patch
+
+-------------------------------------------------------------------
+Tue Mar 27 15:40:49 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.4.php
+- Changes since 5.12.3:
+  * None
+
+-------------------------------------------------------------------
+Sat Mar 24 10:57:58 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patch to support wayland sessions without QT_QPA_PLATFORM:
+  * 0001-Use-platform-detection-from-KWorkspace-in-Powerdevil.patch
+
+-------------------------------------------------------------------
+Tue Mar  6 16:08:07 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.3.php
+- Changes since 5.12.2:
+  * Add explicit includes to fix build with Qt 5.11
+
+-------------------------------------------------------------------
+Wed Feb 21 23:57:10 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.2.php
+- Changes since 5.12.1:
+  * Fix PowerDevil shortcuts migration (kde#389991)
+
+-------------------------------------------------------------------
+Tue Feb 13 16:25:29 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.1.php
+- Changes since 5.12.0:
+  * None
+
+-------------------------------------------------------------------
+Fri Feb  2 21:03:44 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.0.php
+- Changes since 5.11.95:
+  * None
+
+-------------------------------------------------------------------
+Mon Jan 15 15:54:07 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.95.php
+- Changes since 5.11.5:
+  * Only send low peripheral battery notification when in discharging state
+  * Remove obsolete reviewboardrc file
+  * Migrate powerdevil keyboard shortcuts
+  * Prefer an algorithm over an explicit for loop
+  * Fix brightness not restoring when an inhibition is active (kde#352497)
+
+-------------------------------------------------------------------
+Tue Jan  2 16:40:09 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.5.php
+- Changes since 5.11.4:
+  * None
+
+-------------------------------------------------------------------
+Thu Nov 30 10:47:48 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.4.php
+- Changes since 5.11.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Nov  7 15:15:54 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.3.php
+- Changes since 5.11.2:
+  * None
+
+-------------------------------------------------------------------
+Mon Oct 30 15:24:55 UTC 2017 - lbeltrame@kde.org
+
+- Recommend upower, to ensure it is installed for battery
+  and brightness detection (boo#1065650, boo#1065642)
+
+-------------------------------------------------------------------
+Tue Oct 24 18:14:29 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.2.php
+- Changes since 5.11.1:
+  * None
+
+-------------------------------------------------------------------
+Sat Oct 21 14:57:29 UTC 2017 - fabian@ritter-vogt.de
+
+- Add #!BuildIgnore to break the
+  plasma5-workspace-devel -> plasma5-workspace -> kwin5 -> kdialog
+  dep chain which results in pulling in kdebase4-runtime on 42.2
+
+-------------------------------------------------------------------
+Tue Oct 17 17:20:04 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.1.php
+- Changes since 5.11.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Oct  5 12:39:19 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.0.php
+- Changes since 5.10.95:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 14 14:29:07 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.95.php
+- Changes since 5.10.5:
+  * Disable DDCUtil by default
+  * Bump the version requirement for Qt
+  * Revert "skip the disabled backlight device" (kde#381114,kde#381199)
+  * Use Q_DECL_OVERRIDE
+  * cmake: link to ddcutil only if found
+  * Add brightness control using ddcutil lib
+
+-------------------------------------------------------------------
+Tue Aug 22 19:11:33 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.5.php
+- Changes since 5.10.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Jul 18 16:14:53 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.4.php
+- Changes since 5.10.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 27 17:51:36 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.3.php
+- Changes since 5.10.2:
+  * Revert "skip the disabled backlight device" (kde#381114,kde#381199)
+
+-------------------------------------------------------------------
+Tue Jun 13 21:35:02 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.2.php
+- Changes since 5.10.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun  6 17:19:57 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.1.php
+- Changes since 5.10.0:
+  * None
+
+-------------------------------------------------------------------
+Fri May 26 14:10:35 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.0.php
+- Changes since 5.9.95:
+  * None
+
+-------------------------------------------------------------------
+Thu May 11 20:26:34 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.95.php
+- Changes since 5.9.5:
+  * Fix the skip disabled backlight device
+  * Pause media players on suspend
+  * Re-trigger lid action when lid is closed and external monitor is disconnected (kde#379265)
+  * Revert "Get rid of KDELibs4Support"
+  * skip the disabled backlight device
+  * Remove no longer needed config-workspace header
+  * Get rid of KDELibs4Support
+  * Get rid of QWeakPointer
+  * Add UI for hybrid suspend mode
+  * rename wireless power saving to wireless
+
+-------------------------------------------------------------------
+Tue Apr 25 18:58:07 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.9.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.5.php
+- Changes since 5.9.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Mar 21 20:01:06 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.4.php
+- Changes since 5.9.3:
+  * None
+-------------------------------------------------------------------
+Tue Feb 28 19:56:27 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.3.php
+- Changes since 5.9.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Feb 14 17:58:13 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.2
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.2.php
+- Changes since 5.9.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Feb  7 18:58:31 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.1
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.1.php
+- Changes since 5.9.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Jan 26 19:59:14 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.0.php
+- Changes since 5.8.95:
+  * None
+
+-------------------------------------------------------------------
+Thu Jan 12 20:39:58 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.8.95 (Plasma 5.9 Beta)
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.95.php
+- Changes:
+  * Add missing 'Hibernate'.
+  * Add information about existence of discrete GPU.
+  * No need to have a KGlobalAccel instance to call setGlobalShortcut.
+  * Explain re-triggering lid close on profile change.
+
+-------------------------------------------------------------------
+Tue Dec 27 18:31:45 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.5.php
+
+-------------------------------------------------------------------
+Wed Nov 23 10:59:30 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.4.php
+
+-------------------------------------------------------------------
+Thu Nov  3 17:41:27 UTC 2016 - fabian@ritter-vogt.de
+
+- Introduce new _plasma5_bugfix global for more fine-tuned dependencies
+
+-------------------------------------------------------------------
+Tue Nov  1 10:36:40 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.3.php
+
+-------------------------------------------------------------------
+Tue Oct 18 15:16:03 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.2.php
+
+-------------------------------------------------------------------
+Tue Oct 11 15:44:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.1.php
+
+-------------------------------------------------------------------
+Wed Oct  5 07:58:53 UTC 2016 - fabian@ritter-vogt.de
+
+- Add Source: URL back
+
+-------------------------------------------------------------------
+Thu Sep 29 16:36:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.0
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.0.php
+
+-------------------------------------------------------------------
+Wed Sep 21 09:15:22 UTC 2016 - fabian@ritter-vogt.de
+
+- Use %{_plasma5_version} again, define it if needed
+
+-------------------------------------------------------------------
+Thu Sep 15 15:53:55 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.95 (Plasma 5.8 Beta)
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.95.php
+
+-------------------------------------------------------------------
+Tue Sep 13 17:42:09 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.5.php
+
+-------------------------------------------------------------------
+Fri Aug 26 20:36:41 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.4.php
+
+-------------------------------------------------------------------
+Tue Aug  2 11:36:09 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.3.php
+
+-------------------------------------------------------------------
+Wed Jul 20 08:54:43 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.2.php
+
+-------------------------------------------------------------------
+Wed Jul 13 06:13:39 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.1.php
+
+-------------------------------------------------------------------
+Tue Jul  5 11:58:58 UTC 2016 - wbauer@tmo.at
+
+- Use the new %kf5_find_lang macro to create the file list for the
+  lang package
+- Remove rpmlintrc file, it is not needed any more now
+
+-------------------------------------------------------------------
+Thu Jun 30 12:02:40 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.0.php
+
+-------------------------------------------------------------------
+Sun May 15 16:50:26 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.4.php
+
+-------------------------------------------------------------------
+Tue Apr 19 20:46:14 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.3.php
+
+-------------------------------------------------------------------
+Tue Apr  5 15:53:57 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.2.php
+
+-------------------------------------------------------------------
+Tue Mar 29 16:21:10 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.1.php
+
+-------------------------------------------------------------------
+Sun Mar 20 09:20:01 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.0.php
+
+-------------------------------------------------------------------
+Tue Mar  1 17:33:38 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.5 (boo#968966)
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.5.php
+
+-------------------------------------------------------------------
+Tue Jan 26 22:20:19 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.4:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.4.php
+
+-------------------------------------------------------------------
+Wed Jan  6 14:12:20 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.3:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.3.php
+
+-------------------------------------------------------------------
+Tue Dec 22 22:35:18 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.2.php
+
+-------------------------------------------------------------------
+Tue Dec 15 17:50:03 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.1.php
+
+-------------------------------------------------------------------
+Sat Dec 12 17:33:07 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0:
+  * For more details please see:
+    https://dot.kde.org/2015/12/08/plasma-55-beautiful-new-artwork
+- Move to cmake(...) BuildRequires where possible
+
+-------------------------------------------------------------------
+Sun Nov  8 19:24:49 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.3 (boo#955068):
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.3.php
+
+-------------------------------------------------------------------
+Sun Oct  4 10:44:38 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.2:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.2.php
+
+-------------------------------------------------------------------
+Thu Sep 10 17:19:53 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.1:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.1.php
+
+-------------------------------------------------------------------
+Mon Aug 24 17:53:37 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.0.php
+
+-------------------------------------------------------------------
+Sun Aug 16 10:17:06 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.95 aka 5.4 beta:
+  This release of Plasma brings many nice touches for our users
+  such as much improved high DPI support, KRunner auto-completion
+  and many new beautiful Breeze icons. It also lays the ground for
+  the future with a tech preview of Wayland session available.
+  We're shipping a few new components such as an Audio Volume
+  Plasma Widget, monitor calibration tool and the User Manager
+  tool comes out beta.
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.95.php
+- Drop old_action_names.patch, not needed
+
+-------------------------------------------------------------------
+Sun Jun 28 18:33:06 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.2.php
+
+-------------------------------------------------------------------
+Fri May 22 15:30:26 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.1.php
+
+-------------------------------------------------------------------
+Thu Apr 23 13:27:35 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3 Final:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.0.php
+- Only conflict with kdebase4-workspace < 5.3.0
+
+-------------------------------------------------------------------
+Sat Apr 11 18:53:51 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.95 aka 5.3 beta:
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.95.php
+- Update required Qt version to 5.4.0
+- Added libkscreen2-devel BuildRequires
+- Drop pkgconfig(x11) and pkgconfig(xrandr) BuildRequires
+- Drop activityConfig.patch, merged upstream
+- Added old_action_names.patch, until we have newer polkit-default-privs
+
+-------------------------------------------------------------------
+Thu Mar 19 17:42:45 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.2.php
+- Drop patches merged upstream:
+  0005-Fix-default-critical-action.patch,
+  0003-prepare-for-kernel-4.0.patch and
+  0006-Change-default-low-battery-threshold-to-10.patch
+
+-------------------------------------------------------------------
+Thu Mar 19 17:19:57 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Add explicit kdbusaddons-devel BuildRequires
+
+-------------------------------------------------------------------
+Fri Mar 13 09:55:49 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added patches from upstream:
+  0003-prepare-for-kernel-4.0.patch,
+  0005-Fix-default-critical-action.patch (kde#344905),
+  0006-Change-default-low-battery-threshold-to-10.patch and
+  activityConfig.patch (restores the ability to configure
+  activity-specific power management settings)
+- Added kactivities5-devel BuildRequires, per activityConfig.patch
+
+-------------------------------------------------------------------
+Fri Feb 20 02:44:05 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.1.php
+- Drop 0001-Fix-PowerDevil-brightness-calls-breaking-kded-Volume.patch,
+  merged upstream
+
+-------------------------------------------------------------------
+Fri Jan 30 01:47:22 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added 0001-Fix-PowerDevil-brightness-calls-breaking-kded-Volume.patch
+  (kde#337674)
+
+-------------------------------------------------------------------
+Mon Jan 26 19:49:33 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 Final:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.0.php
+
+-------------------------------------------------------------------
+Tue Jan 13 16:35:15 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 Beta aka 5.1.95:
+  * Undo changes to Plasma desktop layout
+  * Smarter sorting of results in KRunner
+  * Breeze window decoration theme adds a new look to your
+    desktop and is now used by default
+  * New white mouse cursor theme for Breeze.
+  * New plasma widgets: 15 puzzle, web browser, show desktop
+  * Over 300 bugs fixed throughout Plasma modules.
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.95.php
+- Require systemd >= 198
+- Harden plasma5-workspace-libs Requires
+- Drop 0001-Fix-battery-remaining-time-update-with-upower-0.99.patch,
+  merged upstream
+
+-------------------------------------------------------------------
+Fri Dec  5 16:11:37 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added 0001-Fix-battery-remaining-time-update-with-upower-0.99.patch,
+  kde#339957
+
+-------------------------------------------------------------------
+Sat Oct 25 18:02:30 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Recommend lang subpackage
+
+-------------------------------------------------------------------
+Fri Sep 26 14:58:30 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.2:
+   Fixed kde#335466
+- Install translations
+- Add rpmlintrc file for file-not-in-%lang warnings: we don't use
+  find_lang macro as it doesn't searches in subdirectories
+
+-------------------------------------------------------------------
+Fri Aug  8 18:54:34 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.1
+   * Bugfix release
+
+-------------------------------------------------------------------
+Thu Jul 24 17:51:58 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.1~20140724~48b5011 snapshot
+- Drop kauth_fixups.patch and soversion.diff, merged upstream
+
+-------------------------------------------------------------------
+Fri Jul 11 19:46:25 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+   * Plasma 5.0 Final
+
+-------------------------------------------------------------------
+Thu Jul  3 17:35:40 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * Plasma 5 RC release
+
+-------------------------------------------------------------------
+Fri Jun  6 19:14:52 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Activate powerdevil5 package
+

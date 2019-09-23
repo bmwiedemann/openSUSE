@@ -1,0 +1,281 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3392709b8e2807e824048ff459a697a3</srcmd5>
+    <version>0.43</version>
+    <time>1314951116</time>
+    <user>saschpe</user>
+    <comment>should be here</comment>
+    <requestid>80572</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>210feb4a6030c0533860a8c29c2a3d7a</srcmd5>
+    <version>0.43</version>
+    <time>1314951126</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80572
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>210feb4a6030c0533860a8c29c2a3d7a</srcmd5>
+    <version>0.43</version>
+    <time>1319182305</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7dd35f0c1b7fa3f5fd5cd6557421edc6</srcmd5>
+    <version>0.45</version>
+    <time>1321875945</time>
+    <user>coolo</user>
+    <comment>- update to 0.45
+    - NAME / DISTNAME in Makefile.PL
+    - More cross-checks for META data</comment>
+    <requestid>92295</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f3ef51f69c62b04e48c3372c9414d9e1</srcmd5>
+    <version>0.45</version>
+    <time>1323193634</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>be19d6f2a5ebd8cec81dad8bbacff3a5</srcmd5>
+    <version>0.46</version>
+    <time>1329487268</time>
+    <user>coolo</user>
+    <comment>- updated to 0.46
+   * Updated copyright to 2012
+   * Support passing attributes to the underlying parser
+   * Do not strip fields in sheets with no cells at all (RT#74976)</comment>
+    <requestid>105676</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>be19d6f2a5ebd8cec81dad8bbacff3a5</srcmd5>
+    <version>0.46</version>
+    <time>1340183917</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>be19d6f2a5ebd8cec81dad8bbacff3a5</srcmd5>
+    <version>0.46</version>
+    <time>1359109795</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>90e6e9b1507d2d9ad3e8ec78a77d1241</srcmd5>
+    <version>0.49</version>
+    <time>1372136294</time>
+    <user>coolo</user>
+    <comment>- obsolete xsl2csv
+------------------------------------------------------------------
+- updated to 0.49
+    * /dev/null cannot be used for tests on Windows
+    * Improve documentation consistency (RT#80409)
+    * Updated copyright to 2013
+    * Force old(er) tar format (ustar) - assumes GNU tar on release box
+    * Fix yml/json optional_features
+    * Install utilities from example by default
+    * Several minor changes (for maint)
+    * Note that empty sheets are skipped when clip is true (RT#75277)
+    * Allow undef as valid value for the options (Max Maischein)
+    * Don't generate warnings when stripping whitespace and only
+      generating one of cells or rc. (Max Maschein)
+    * Fix test warning under perl-5.17.x</comment>
+    <requestid>179098</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>90e6e9b1507d2d9ad3e8ec78a77d1241</srcmd5>
+    <version>0.49</version>
+    <time>1379663839</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>90e6e9b1507d2d9ad3e8ec78a77d1241</srcmd5>
+    <version>0.49</version>
+    <time>1409302480</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c3fa01f97d791b8e68e9d6887bed090f</srcmd5>
+    <version>0.74</version>
+    <time>1516711989</time>
+    <user>dimstar_suse</user>
+    <comment>- Resurrect description, the one from CPAN is insufficient
+- Do not install examples to bin, conflicts with gnumeric and xls2csv
+- Remove executable flags from all examples
+- nonstdperlpath.patch added
+    * Change non-standard /pro/bin/perl path to /usr/bin/perl
+- updated to 0.74
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/Changes
+  0.74	- 27 Aug 2017, H.Merijn Brand
+      * Re-enable opening files with bad characters in the filename (issue#14)
+  
+  0.73	- 30 Jul 2017, H.Merijn Brand
+      * Spreadsheet::XLSX::Reader::LibXML support completely dropped
+      * New options for ss2tk (font specs and SS labels)
+      * Safer xls2csv option parsing/passing
+      * Pass unknown command-line options to the parser
+      * Fix ReadData (&quot;a,b,c
+1,2,3
+&quot;, parser =&gt; &quot;csv&quot;)
+      * Drop 5.8.0 support. 5.8.1 is now minimum
+  
+  0.72	- 25 May 2017, H.Merijn Brand
+      * get_active_sheet is only available as of Spreadsheet::ParseExcel 0.61
+      * Support password protected spreadsheets (implementation just for Excel)
+      * Do not warn on undefined labels (xlscat)
+  
+  0.71	- 13 May 2017, H.Merijn Brand
+      * Use -w as intended
+      * Add option pivot
+      * No trailing spaces on xlscat -L
+      * Lexicalize code snippet (issue#12)
+      * Add attr method
+      * Remove special chars from worksheet name component (Windows, PR#13)
+      * Add refresh to ss2tk / csv2tk
+      * Add shortcut for UTF-8 output to xlscat
+      * Upgrade recommended modules to required for cpancover
+  
+  0.70	- 02 Mar 2017, H.Merijn Brand
+      * Add label functionality to ::Sheet
+      * Add -&gt;column and -&gt;cellcolumn for ::Sheet
+      * Add col2label sub/method
+      * Sanitize xls2csv export filenames
+      * Fix sorting in xlscat for un-aligned columns
+      * It's 2017
+      * Be overly verbose about maxrow and maxcol being 1-based (RT#120476)
+  
+  0.69	- 02 Dec 2016, H.Merijn Brand
+      * Several OO fixes, more tests, more docs
+  
+  0.68	- 29 Nov 2016, H.Merijn Brand
+      * List non-core modules/version used on very verbose in xlscat
+      * Option to export all sheets in a spreadsheet to CSV (UTF-8 only)
+      * Add OO interface
+      * Feature: add new spreadsheets to existing book (even of different types)
+  
+  0.67	- 17 Jun 2016, H.Merijn Brand
+      * CPANTESTERS showed that some versions really messed op numeric/percentage
+  
+  0.66	- 16 Jun 2016, H.Merijn Brand
+      * Remove Spreadsheet::XLSX::Reader::LibXML test files from distribution
+      * Allow old versions of Spreadsheet::ParseXLSX to &quot;fail&quot; on percentage tests
+  
+  0.65	- 15 Jun 2016, H.Merijn Brand
+      * Test with perl-5.24.0
+      * Show parser-version used under debug
+      * No more Spreadsheet::XLSX::Reader::LibXML
+      * Cells will inherit hidden state from hidden rows and columns
+      * Require 5.8.0 as 5.6.x does not include required Encode
+  
+  0.64	- 22 Apr 2016, H.Merijn Brand
+      * It's 2016
+      * Allow inconsistent Spreadsheet::XLSX releases on Debian (tests)
+      * Decode utf-16be entries in Excel when appropriate
+      * Two examples in xlscat
+  
+  0.63	- 10 Oct 2015, H.Merijn Brand
+      * Guard against negative MinRow in XLSX
+      * Documentation updated
+      * Support Spreadsheet::XLSX::Reader::LibXML disabled on author request
+      * Fix warning in utilities
+      * Check minimum parser version for pre-selected parser
+  
+  0.62	- 16 Aug 2015, H.Merijn Brand
+      * Fix documentation structure
+      * Test all supported parsers (not just the preferred one)
+      * Basic support for Spreadsheet::XLSX::Reader::LibXML (work in progress)
+      * Copy example file if link fails (Alan Berndt)
+      * Add a contributing guide
+  
+  0.61	- 13 Jun 2015, H.Merijn Brand
+      * Discourage Spreadsheet::XLSX
+      * A space is not an empty field in XLS
+      * Strip the correct selection (RT#105197)
+  
+  0.60	- 30 Mar 2015, H.Merijn Brand
+      * No merged cell support in Spreadsheet::XLSX
+  
+  0.59	- 26 Mar 2015, H.Merijn Brand
+      * Minimal support (+ docs) for merged cells
+      * Make parser errors report at one level up
+      * Don't select non-existing columns in xlscat
+  
+  0.58	- 11 Feb 2015, H.Merijn Brand
+      * Remove perl recommendation from META as it breaks cpan clients
+      * Move sort instruction to correct place in xlscat's help
+  
+  0.57	- 08 Feb 2015, H.Merijn Brand
+      * Moved project to github
+      * Add --sort to xlscat
+      * Clip before conversion
+      * Removed an unneeded localizing of $/ (related to p5 RT#123218)
+  
+  0.56	- 05 Jan 2015, H.Merijn Brand
+      * printf does not play nice with encoding (related to RT#98436)
+      * default output UTF-8 if whole line is UTF-8
+  
+  0.55	- 01 Jan 2015, H.Merijn Brand
+      * Mention Spreadsheet::CSV in documentation
+      * Add ssdiff to examples
+      * Amend xlscat -n to also number in HTML
+      * Updated copyright to 2015
+  
+  0.54	- 30 Jan 2014, H.Merijn Brand
+      * Optional features required versions now builtin
+  
+  0.53	- 29 Jan 2014, H.Merijn Brand
+      * Updated copyright to 2014
+      * Prefer Data::Peek over Data::Dumper
+      * Support (and prefer) Spreadsheet::ParseXLSX for .xlsx
+  
+  0.52	- 05 Dec 2013, H.Merijn Brand
+      * Store CSV parse error - if any - in $ss-&gt;[0]{error}
+  
+  0.51	- 30 Oct 2013, H.Merijn Brand
+      * Link xlsgrep during install
+  
+  0.50	- 24 Oct 2013, H.Merijn Brand
+      * Added xlsgrep to examples
+      * Allow -C B,D for xlscat
+      * More prominent reference to xlscat in docs
+</comment>
+    <requestid>568402</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>92120d88a2c4d29c413afadc9649c490</srcmd5>
+    <version>0.78</version>
+    <time>1518187672</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.78
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/</comment>
+    <requestid>574017</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>330d8d16b1a4cf8d5488e423c9c534f1</srcmd5>
+    <version>0.79</version>
+    <time>1537787527</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.79
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/
+</comment>
+    <requestid>636845</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1d1a218ff7415f84d3c28fb801e7d03c</srcmd5>
+    <version>0.80</version>
+    <time>1562843250</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.80
+  * Raise Spreadsheet::ParseXLSX minimum version to 0.24
+  * Improve docs on attributes
+  * Add attribute accessors
+- add BuildRequires for Spreadsheet::ParseExcel, Text::CSV_PP,
+  Spreadsheet::ParseXLSX and Text::CSV_XS to run all tests</comment>
+    <requestid>686436</requestid>
+  </revision>
+</revisionlist>

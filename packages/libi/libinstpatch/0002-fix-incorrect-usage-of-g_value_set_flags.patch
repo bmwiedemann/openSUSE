@@ -1,0 +1,27 @@
+From 45647bbf07b3a1ee2d8b44b836e445dea3e5cea1 Mon Sep 17 00:00:00 2001
+From: derselbst <tom.mbrt@googlemail.com>
+Date: Fri, 28 Dec 2018 16:26:48 +0100
+Subject: [PATCH 13/13] fix incorrect usage of g_value_set_flags()
+
+---
+ libinstpatch/libinstpatch/IpatchDLS2Sample.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libinstpatch/libinstpatch/IpatchDLS2Sample.c b/libinstpatch/libinstpatch/IpatchDLS2Sample.c
+index ef0217a..0bf8743 100644
+--- a/libinstpatch/libinstpatch/IpatchDLS2Sample.c
++++ b/libinstpatch/libinstpatch/IpatchDLS2Sample.c
+@@ -779,8 +779,8 @@ ipatch_dls2_sample_info_notify_changes (IpatchItem *item,
+     {
+       g_value_init (&newval, IPATCH_TYPE_SAMPLE_LOOP_TYPE);
+       g_value_init (&oldval, IPATCH_TYPE_SAMPLE_LOOP_TYPE);
+-      g_value_set_flags (&newval, newinfo->options & IPATCH_DLS2_SAMPLE_LOOP_MASK);
+-      g_value_set_flags (&oldval, oldinfo->options & IPATCH_DLS2_SAMPLE_LOOP_MASK);
++      g_value_set_enum (&newval, newinfo->options & IPATCH_DLS2_SAMPLE_LOOP_MASK);
++      g_value_set_enum (&oldval, oldinfo->options & IPATCH_DLS2_SAMPLE_LOOP_MASK);
+       ipatch_item_prop_notify (item, found_pspec_cache[0], &newval, &oldval);
+       g_value_unset (&newval);
+       g_value_unset (&oldval);
+-- 
+2.16.4
+

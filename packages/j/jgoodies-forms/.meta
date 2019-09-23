@@ -1,0 +1,12 @@
+<package name="jgoodies-forms" project="openSUSE:Factory">
+  <title></title>
+  <description>The Forms framework helps you lay out and implement elegant Swing panels quickly and consistently. It makes simple things easy and the hard stuff possible, the good design easy and the bad difficult.
+
+* Powerful, flexible and precise layout
+* Easy to work with and quite easy to learn
+* Faster UI production
+* Better UI code readability
+* Leads to better style guide compliance
+</description>
+  <devel project="Java:packages" package="jgoodies-forms"/>
+</package>

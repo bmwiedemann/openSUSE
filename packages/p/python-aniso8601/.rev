@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf54b5fa1513570bebe0dc19f1307d4b</srcmd5>
+    <version>3.0.2</version>
+    <time>1534774878</time>
+    <user>dimstar_suse</user>
+    <comment>python-aniso8601 dep of  python-Flask-RESTful</comment>
+    <requestid>630420</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>65ca4c9e2d151d6bcd9c805c3d4ecf34</srcmd5>
+    <version>3.0.2</version>
+    <time>1544631889</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653910</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4e055cdfbe762aff9e0c80fc6c0f3779</srcmd5>
+    <version>5.1.0</version>
+    <time>1551883934</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.0:
+  * many changes see CHANGELOG.rst</comment>
+    <requestid>682126</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3c8ea805b0af0d69a11ac4977bdc0b7b</srcmd5>
+    <version>6.0.0</version>
+    <time>1552308698</time>
+    <user>coolo</user>
+    <comment>- Update to 6.0.0:
+  * Remove previously deprecated built in version of relativetimebuilder</comment>
+    <requestid>683738</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>025f71211becb0434b20af589deeefe9</srcmd5>
+    <version>7.0.0</version>
+    <time>1560459750</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0.0
+ * Handle all fractional components as an integer number of microseconds,
+    eliminating rounding issues</comment>
+    <requestid>709370</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# The wrapper script to switch off UTF-8 locales when running ddd
+# See README.SUSE for further information
+#
+
+if [ "x$1" = 'x-x' ]; then
+	shift
+else
+	case "`locale charmap 2>/dev/null`" in
+	    	UTF-8)
+            if ! [ -f "$HOME/.ddd/suse_no_utf8_warning" ] ; then
+	    	    echo >&2 "WARNING:"
+                echo >&2 "UTF-8 charmap detected. Switching off UTF-8 as ddd has problems with it. See"
+                echo >&2 "README.SUSE for futher information. Use -x parameter to bypass this wrapper."
+            fi
+	    	tmplang=${LC_ALL-${LC_CTYPE-${LANG-POSIX}}}
+	    	export LC_ALL=${tmplang%%.*}		
+	    	;;		
+	esac
+fi
+exec -a ddd /usr/bin/ddd.org "$@"
+

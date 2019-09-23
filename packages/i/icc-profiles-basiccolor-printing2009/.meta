@@ -1,0 +1,5 @@
+<package name="icc-profiles-basiccolor-printing2009" project="openSUSE:Factory">
+  <title>icc-profiles-basiccolor-printing2009</title>
+  <description>Printing profiles according to ISO 12647-2. These are CMYK ICC profiles for ISO Printing conditions.</description>
+  <devel project="multimedia:color_management" package="icc-profiles-basiccolor-printing2009"/>
+</package>

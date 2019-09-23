@@ -1,0 +1,227 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d12ca68f849cd1f567a1328bfdc9f23b</srcmd5>
+    <version>1.4.0+git~20170325</version>
+    <time>1491896493</time>
+    <user>maxlin_factory</user>
+    <comment>Minor specfile improvements &amp; removed experimental patch</comment>
+    <requestid>485057</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4cd0bcb6763e47293934ae10532b5b5c</srcmd5>
+    <version>1.5.1+git~20170428</version>
+    <time>1493456040</time>
+    <user>dimstar_suse</user>
+    <comment>Streamline specfile &amp; source update</comment>
+    <requestid>491856</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7b3b399acd6d5f99da789076b7fa0b32</srcmd5>
+    <version>1.5.1+git~20170503</version>
+    <time>1494345789</time>
+    <user>dimstar_suse</user>
+    <comment>Source Update</comment>
+    <requestid>493303</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6aa12332cf6af8028b6f4d578e38ea7c</srcmd5>
+    <version>1.5.1+git~20170518</version>
+    <time>1495268072</time>
+    <user>dimstar_suse</user>
+    <comment>Source Update</comment>
+    <requestid>496765</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a87aa736e247886e6c8e0489fe6ee96e</srcmd5>
+    <version>1.5.1+git~20170519</version>
+    <time>1496225891</time>
+    <user>dimstar_suse</user>
+    <comment>Source Update</comment>
+    <requestid>498619</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>10edbcda59012e6f6cf9fecb7d155f64</srcmd5>
+    <version>1.5.1+git~20170602</version>
+    <time>1496534488</time>
+    <user>dimstar_suse</user>
+    <comment>Source Update</comment>
+    <requestid>500859</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>785128469d49d99c88f55c0af025a082</srcmd5>
+    <version>1.5.1+git~20170612</version>
+    <time>1497944402</time>
+    <user>dimstar_suse</user>
+    <comment>Source Update</comment>
+    <requestid>504466</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5c0b3f1364efaf3cf2152c3ea8da9646</srcmd5>
+    <version>1.5.1+git~20170622</version>
+    <time>1498485279</time>
+    <user>dimstar_suse</user>
+    <comment>Source Update</comment>
+    <requestid>506008</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bfa611767514be62a6a12d821c54a86e</srcmd5>
+    <version>1.6.0+git~20170625</version>
+    <time>1499292272</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>508269</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f5fe243deb5820e84ba29973a0f756d7</srcmd5>
+    <version>1.6.1+git~20170803</version>
+    <time>1503593431</time>
+    <user>dimstar_suse</user>
+    <comment>Source Update</comment>
+    <requestid>515967</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4c78e586ddfecd3bb923c507e2899a01</srcmd5>
+    <version>1.6.1+git~20170827</version>
+    <time>1504981609</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.1+git~20170827:
+  * Added webpage link
+  * updated readme
+- Update to version 1.6.1+git~20170822:
+  * Added click animation
+</comment>
+    <requestid>522277</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>58c6f0fbf46ffc25fcbe75d61e200fd5</srcmd5>
+    <version>1.6.1+git~20171007</version>
+    <time>1508198034</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>534220</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>21ef028f9940233c5e321181e12f64fb</srcmd5>
+    <version>1.6.1+git~20171029</version>
+    <time>1510045178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.1+git~20171029:
+  * Don't show tray menu on startup.
+</comment>
+    <requestid>538955</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>65fcb92f81cb3b7d84dc0cba2d91740f</srcmd5>
+    <version>1.6.1+git~20171212</version>
+    <time>1514569945</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>560448</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>52def9a5b35af80971631cc6532a9ec7</srcmd5>
+    <version>1.6.1+git~20171212</version>
+    <time>1519041755</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libqt5-qtgraphicaleffects libqt5-qtquickcontrols to required packages
+</comment>
+    <requestid>577861</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>47bac2e89a8161fd697c208d835e8721</srcmd5>
+    <version>1.6.5+git~20180311</version>
+    <time>1520853158</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.5+git~20180311:
+  * bump appveyor qt ver (#229)
+- Update to version 1.6.5+git~20180304:
+  * set widths on startup to fix tiny window bug
+  * add timeout
+  * drop runguard, use simple lockfile for single instancing
+  * fix window launching size
+- Update to version 1.6.5+git~20180304:
+  * ver 1.6.5
+  * CI automations for building installer packages (#228)
+- Update to version 1.6.1+git~20180302:
+  * qt -&gt; qt5
+  * travis badge
+  * appveyor badge
+- Update to version 1.6.1+git~20180225:
+  * fix user ban messages, do not display timeouts and bans twice if it was the user who banned the person
+  * fix some warnings, and clean up code
+  * display when user gets timed out or banned
+</comment>
+    <requestid>585461</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9a0751daefe1e33b6fce6087f02e66c7</srcmd5>
+    <version>1.6.5+git~20180524</version>
+    <time>1530866731</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621061</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4b107345f6a890cb849eef0bbcaf74ca</srcmd5>
+    <version>1.6.5+git~20181007</version>
+    <time>1539589597</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>641949</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d1b445d092e7b49afccb0e2cbbd8c6f7</srcmd5>
+    <version>1.6.6+git~20181119</version>
+    <time>1543311783</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.6+git~20181119:
+  * adjusted font sizes
+  * fix travis linux build
+  * make views swipeable
+  * minor ux fixes, allow chat on top edge
+  * topbar hiding at screen edge
+  * responsive grid tooltips, remove 'open chat'
+  * store window position
+  * imageprovider: fix a mem leak
+  * vod: properly save position on shutdown
+  * allow debug option on windows
+  * chat ux, readable colors, focus, multiline comments etc.
+  * responsive scrolling and scrollbar
+  * better url detection
+  * remove apptray, add follow confirmation
+  * refactor settings, choose player settings at runtime
+- Update to version 1.6.6+git~20181103:
+  * [travis] add linux appimage and android apk (#258)
+- Update to version 1.6.6+git~20181016:
+  * Custom install prefix (#256)
+- Update to version 1.6.6+git~20181015:
+  * Seek preview (#252)
+  * appveyor compile openssl, mpv (#250)
+</comment>
+    <requestid>651978</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>184547948828e4c70d527f8f98ecc55a</srcmd5>
+    <version>1.6.6+git~20190202</version>
+    <time>1551276503</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679560</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4c6a546fabaa4e3ada7d9dcdd9db2476</srcmd5>
+    <version>1.6.6+git~20190328</version>
+    <time>1559375403</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706051</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b7400ced0fd212e2e8e67a27b7050f16</srcmd5>
+    <version>1.6.6+git~20190714</version>
+    <time>1563790879</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>717356</requestid>
+  </revision>
+</revisionlist>

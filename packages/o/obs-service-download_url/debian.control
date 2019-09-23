@@ -1,0 +1,13 @@
+Source: obs-service-download-url
+Priority: extra
+Section: misc
+Maintainer: Adrian Schroeter <adrian@suse.com>
+Standards-Version: 3.9.6
+Build-Depends: debhelper (>= 7)
+
+Package: obs-service-download-url
+Section: misc
+Architecture: all
+Depends: ${misc:Depends}
+Description: This is a source service for openSUSE Build Service.
+ It supports downloading files from given URLs via curl

@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Thu Aug  8 20:44:33 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Update to version 0.9.0
+    * Support to generate C headers with C++ compatibility
+    * Fix include guard generation when no_includes is set
+    * Fix crate parsing order so that types from the binding crate
+      are preferred in presence of conflicting names
+    * Add extra_bindings option to generate bindings for dependencies
+    * Clap dependency is optional now so it's feasible to avoid
+      building it if cbindgen is used as a library
+
+-------------------------------------------------------------------
+Tue May 14 11:57:41 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to version 0.8.7
+  * there is no upstream changelog provided
+
+-------------------------------------------------------------------
+Sun Mar 17 13:43:36 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to version 0.6.8 to satisfy Firefox 66.0 build requirements
+
+-------------------------------------------------------------------
+Mon Nov 19 15:00:09 UTC 2018 - astieger@suse.com
+
+- use a source URL
+
+-------------------------------------------------------------------
+Wed Nov 14 00:34:16 UTC 2018 - Luke Jones <jones_ld@protonmail.com>
+
+- Initial packaging - boo#1115645

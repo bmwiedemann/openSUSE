@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>efa71ccd2b40105b29888f66e7fd0bb2</srcmd5>
+    <version>2.4c</version>
+    <time>1333437539</time>
+    <user>coolo</user>
+    <comment>Return to factory from an old package, could be used by others (amanda,yast-backup,etc)</comment>
+    <requestid>112104</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>efa71ccd2b40105b29888f66e7fd0bb2</srcmd5>
+    <version>2.4c</version>
+    <time>1340183166</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>efa71ccd2b40105b29888f66e7fd0bb2</srcmd5>
+    <version>2.4c</version>
+    <time>1359108642</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>efa71ccd2b40105b29888f66e7fd0bb2</srcmd5>
+    <version>2.4c</version>
+    <time>1379661952</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>4c8c9da07442aa1b5a7c55f36081957f</srcmd5>
+    <version>2.4c</version>
+    <time>1406836229</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243025</requestid>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>4c8c9da07442aa1b5a7c55f36081957f</srcmd5>
+    <version>2.4c</version>
+    <time>1409300474</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>80b4afecc3553ff0d9367db666c6dcda</srcmd5>
+    <version>2.4d</version>
+    <time>1433486765</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4d
+  * no upstream changelog available
+- Cleanup spec file with spec-cleaner
+- Drop no longer needed aespipe-ppc64le.patch</comment>
+    <requestid>310288</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8746487347049c52951af25a442f9ff9</srcmd5>
+    <version>2.4d</version>
+    <time>1488479379</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460196</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>a5181be6ed3c53f37b1285994f573e69</srcmd5>
+    <version>2.4d</version>
+    <time>1491896358</time>
+    <user>maxlin_factory</user>
+    <comment>- Cleanup spec file with spec-cleaner
+
+- Disable PIE linking, as the assembler code is not position independ
+  currently.</comment>
+    <requestid>484297</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>6be467663b9b71e7fe6873a6bc31f9c8</srcmd5>
+    <version>2.4d</version>
+    <time>1497274132</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building on Factory (disable pie building)</comment>
+    <requestid>501084</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3c9b0cb1529a652ca16d8b0a7c58900c</srcmd5>
+    <version>2.4e</version>
+    <time>1510045245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539110</requestid>
+  </revision>
+</revisionlist>

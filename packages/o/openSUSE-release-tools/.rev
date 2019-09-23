@@ -1,0 +1,2032 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2904558b0997518e9befdbe3e2a60263</srcmd5>
+    <version>20170717.ce00330</version>
+    <time>1503592798</time>
+    <user>dimstar_suse</user>
+    <comment>Tools to aid in staging and release work for openSUSE/SUSE
+
+The toolset consists of a variety of stand-alone scripts, review bots, osc plugins, and automation aids.</comment>
+    <requestid>511063</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>53d559717086216dd87f95bf7d4ff8fc</srcmd5>
+    <version>20170824.7bbd005</version>
+    <time>1503926128</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20170824.7bbd005:
+  * Use configured staging group for adi
+
+- Update to version 20170824.adeb4c4:
+  * Freeze Cmd: Implement freezing adi staging project
+
+- Update to version 20170823.7502d6a:
+  * stagingapi: avoid making an empty package-diff comment.
+
+- Update to version 20170822.55aeefa:
+  * check_source: remove DIFFCOUNT algorithm and instead always add review_team.
+  * check_source: rename perl and asciidoc to match name.
+
+- Update to version 20170822.2873a27:
+  * core.owner_fallback(): check if startswith() instead of equal.
+
+- Update to version 20170822.09b046f:
+  * ReviewBot: get_devel_project(): correct error handling to only allow 404.
+  * ReviewBot: add_review(): remove left-over print() line.
+
+- Update to version 20170822.9bd2789:
+  * stagingapi: Ensure the links is valid before processing
+  * Add amarok to test-2 DVD
+  * Remove sw_management_kde pattern from test-2 DVD
+
+- Update to version 20170818.f230438:
+  * dist/ci/Dockerfile: include `dup` before `in` to handle major base changes.
+
+- Update to version 20170818.bf1662b:
+  * ReviewBot: add_review(): raise exception instead of returning boolean.</comment>
+    <requestid>518604</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3e916635ec91256dd8cd16b8a7d76d8e</srcmd5>
+    <version>20171006.e1c7377</version>
+    <time>1507486498</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>532352</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>93fad9ae8ac16b7054d87c975601d24b</srcmd5>
+    <version>20171009.afbe149</version>
+    <time>1507571260</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>532734</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2b472bd6d0e9831f860c3d5928164fa8</srcmd5>
+    <version>20171010.02e5000</version>
+    <time>1507755710</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>532988</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>267f19454c98f23a605bf027ac05879a</srcmd5>
+    <version>20171013.b00a8f5</version>
+    <time>1508197903</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>533857</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>68b5dbd5b59b99ed1592249d3bc164b3</srcmd5>
+    <version>20171017.7058f07</version>
+    <time>1508316729</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>534343</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>990c49626bff807efcbfc235e9d70cbc</srcmd5>
+    <version>20171018.44e44a6</version>
+    <time>1508434396</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>535066</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a4d4ebce8f38925b61bff39cf3b23102</srcmd5>
+    <version>20171019.be5b3ec</version>
+    <time>1508503642</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>535325</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8b27f39ace9a08a4dcc3140857a819ae</srcmd5>
+    <version>20171020.7d266d5</version>
+    <time>1508610106</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>535607</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4f341226466f1369375456f70e57fc04</srcmd5>
+    <version>20171024.737d39a</version>
+    <time>1508876672</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>536231</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a8583f6e8749f60216da0b64ba476518</srcmd5>
+    <version>20171024.32d1a97</version>
+    <time>1508946474</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>536444</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1b89131b34732ef1bb37ffd580155bb7</srcmd5>
+    <version>20171025.42b8b4d</version>
+    <time>1509036289</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>536635</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7e5f0142e718c7e41796f3d56e70d581</srcmd5>
+    <version>20171027.63cde26</version>
+    <time>1509193333</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>537203</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3cb72df30e63ec21ea89f9f522538bd6</srcmd5>
+    <version>20171031.c32b59b</version>
+    <time>1509531019</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>537986</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>98deae6bd0a0e197053e5d343d243552</srcmd5>
+    <version>20171102.0a45aba</version>
+    <time>1509722770</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>538263</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e2ddeec061f1f8ea6571eb8eeae56c24</srcmd5>
+    <version>20171103.593c900</version>
+    <time>1510045073</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>538860</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>57b26ccd0432dec2aea8a7a5d368ddee</srcmd5>
+    <version>20171109.3d34370</version>
+    <time>1510322284</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>540229</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c1a55e890a305deb96a9dbd0cb9dbec0</srcmd5>
+    <version>20171112.b690943</version>
+    <time>1510506652</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>541063</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>679d9618b7fefb1f9acdc01a5ba42817</srcmd5>
+    <version>20171115.6140695</version>
+    <time>1510761812</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>541959</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>09bafa1eab72c168e1cf545e06956ca9</srcmd5>
+    <version>20171120.87649f1</version>
+    <time>1511274761</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>543011</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d971b639606545fd4240b26394fe9166</srcmd5>
+    <version>20171122.b428ed3</version>
+    <time>1511426660</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>544410</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3e4845b6b8c09a64bdbdff6f9bc2c45d</srcmd5>
+    <version>20171127.3368dd5</version>
+    <time>1511817522</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>545982</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>aa2de594e8e0d9559f9830095558f54c</srcmd5>
+    <version>20171130.3b99a9d</version>
+    <time>1512140030</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>546700</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>59f94ae64fecb21f8c6db925ad0daa0a</srcmd5>
+    <version>20171201.913531e</version>
+    <time>1512216739</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>547141</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>247c5a2a4200b4c1f363b832c7c4f044</srcmd5>
+    <version>20171204.86cd536</version>
+    <time>1512386217</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>548016</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b3ca46792d5eb3eb9909fe8281fa8e92</srcmd5>
+    <version>20171204.4661a09</version>
+    <time>1512433845</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>548150</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c76ecf8e554e31ec46b177d83329c4d4</srcmd5>
+    <version>20171205.1769209</version>
+    <time>1512651226</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>550957</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>fb7bba5f7dc132e08356c7c014087a76</srcmd5>
+    <version>20171208.d7c5a3e</version>
+    <time>1512766122</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>555262</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7d320e37a394eefdff6257327dd5c175</srcmd5>
+    <version>20171212.bffe857</version>
+    <time>1513110205</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>556361</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>08eb35b5c060b68cfe041359370ec50a</srcmd5>
+    <version>20171213.3dde523</version>
+    <time>1513245819</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>556772</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>76c98d9c3d0c5bdaf08c5f2524e059e1</srcmd5>
+    <version>20171214.0fecf50</version>
+    <time>1513343159</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>556931</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0224e28096f4248df5864be731bee73d</srcmd5>
+    <version>20171218.09707c0</version>
+    <time>1513596484</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>557955</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2577596387020f9ab62fa4305b53fb81</srcmd5>
+    <version>20171219.55e468e</version>
+    <time>1513762800</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>558523</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>55d8aa092b85c8348281b8f4661bd3c8</srcmd5>
+    <version>20171226.96a3eec</version>
+    <time>1514569842</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>559997</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>41cda4663dd64a998123d604ec319a17</srcmd5>
+    <version>20180102.98a659c</version>
+    <time>1514907344</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>561094</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>cf4d6695d2538d9908e7257ddc58122d</srcmd5>
+    <version>20180104.e1b5d75</version>
+    <time>1515110591</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>561568</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4a4ed82431d27248ebf185bc1bfa1cf1</srcmd5>
+    <version>20180105.7eaed34</version>
+    <time>1515261039</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>561803</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1a21b63b1262b0b397aca43b20dfffe8</srcmd5>
+    <version>20180109.2b037a0</version>
+    <time>1515623828</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>563156</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ed47217ca5937dcc452dfe37bcaf8cdb</srcmd5>
+    <version>20180110.9ab0211</version>
+    <time>1515876432</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>563504</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6cbf82cd8a3b9d91c9d016f927b43b36</srcmd5>
+    <version>20180122.b5fe7e7</version>
+    <time>1516634464</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>568177</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>6bd8d59f3f3e6ae76e00d37eef542690</srcmd5>
+    <version>20180123.d074c5b</version>
+    <time>1516712019</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>568509</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>ba6601b84473194909198362536dd5d7</srcmd5>
+    <version>20180125.753f6c7</version>
+    <time>1516970387</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>569561</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>bdbe7485c2a435637c24630a457f26e6</srcmd5>
+    <version>20180126.2c8c597</version>
+    <time>1517096398</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>570144</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>4b77a77121c0f8733fe04a5e26e01502</srcmd5>
+    <version>20180126.574cfe8</version>
+    <time>1517234324</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>570413</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>fe78fa22907128cc61f5f31069ebd0bb</srcmd5>
+    <version>20180130.40c4c14</version>
+    <time>1517323472</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>570853</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>588eeef98a7909be7fed7924a8dc2468</srcmd5>
+    <version>20180131.d88eefe</version>
+    <time>1517424817</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>571312</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>67c09fde61d9eedcfac52791b5dd7035</srcmd5>
+    <version>20180201.10fd5ae</version>
+    <time>1517516985</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>571665</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>76155f5df135a017864b7bf559ced25a</srcmd5>
+    <version>20180203.cd1fa5d</version>
+    <time>1517668962</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>572199</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>5c0e7c7d61cadc61e4b81eed72ce8a1c</srcmd5>
+    <version>20180206.453868a</version>
+    <time>1517932255</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>573287</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>2b87a4f61965a0737fd184b216a8ce20</srcmd5>
+    <version>20180206.faa028a</version>
+    <time>1518025307</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>573561</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>8999fb22e3503e2b155185e41258b5d5</srcmd5>
+    <version>20180207.878b87b</version>
+    <time>1518187600</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>573915</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>2ae9f3e36e1ecc7c55c3c790de82069a</srcmd5>
+    <version>20180209.ad077ab</version>
+    <time>1518281951</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>574851</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>0424ca75f9728daa8342227f95bad10c</srcmd5>
+    <version>20180212.87ab899</version>
+    <time>1518514345</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>575953</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>717581d6535ebd9322cb0acd3d56b87b</srcmd5>
+    <version>20180213.3e3f458</version>
+    <time>1518601884</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>576065</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>16f0a672e11a2a97cea2639a337f2fd4</srcmd5>
+    <version>20180213.c589ef1</version>
+    <time>1518697662</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>576855</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>7bc1f8e660659a26a312f83cb58ae8a8</srcmd5>
+    <version>20180215.60cfab2</version>
+    <time>1518719516</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>576982</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>e8ebc7332f7934a549aec0183255d89d</srcmd5>
+    <version>20180220.fc7e60b</version>
+    <time>1519145854</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>578369</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>b992e5801dcff2c2046d44b455638d03</srcmd5>
+    <version>20180220.945bf4f</version>
+    <time>1519218801</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>578549</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>a5030aa5837ff30bf19e1babd3818ae9</srcmd5>
+    <version>20180222.009712a</version>
+    <time>1519308166</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>578905</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>7bcf217e411e6c90879df17b2f2b8f40</srcmd5>
+    <version>20180223.af01909</version>
+    <time>1519396285</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>579319</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>23cc83e90990ef3ff61d1df86c98130c</srcmd5>
+    <version>20180223.e8c002d</version>
+    <time>1519555701</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>579843</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>9c178552807edc583cb0d0a1a13c5846</srcmd5>
+    <version>20180227.adb01e2</version>
+    <time>1519844569</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>580787</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>5b425ec302f3d90b65bb1b0155dc79a1</srcmd5>
+    <version>20180301.bac6644</version>
+    <time>1520021499</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>581786</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>94fb46e57812591e4f27ea3aedeb52f8</srcmd5>
+    <version>20180306.a9ec91f</version>
+    <time>1520415587</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>583702</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>a730ce6862421da0625855933cea3d73</srcmd5>
+    <version>20180307.d30db7e</version>
+    <time>1520503206</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>584104</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>5448b628ee6500cb529930d7a69fe208</srcmd5>
+    <version>20180308.defd995</version>
+    <time>1520588721</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>584267</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>53e4b90cdaba75318002eb897228f8c7</srcmd5>
+    <version>20180309.7484722</version>
+    <time>1520778285</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>584760</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>bf970c786c801af74cfb0cb22d1f37b7</srcmd5>
+    <version>20180312.35e7c51</version>
+    <time>1520933026</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>585797</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>5f98687408b4d846e96e02d51b1a5af1</srcmd5>
+    <version>20180312.9a26912</version>
+    <time>1521193291</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>586541</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>bb51df7fa815716b3a344bf2423356a6</srcmd5>
+    <version>20180315.d11501f</version>
+    <time>1521405899</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>588025</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>bf2e3d8e1e5a7ca0c05f52ba463380b3</srcmd5>
+    <version>20180317.88a6e97</version>
+    <time>1521499117</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>588346</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>3a38293cb93eb895034247baecd3bb5c</srcmd5>
+    <version>20180326.b4c885d</version>
+    <time>1522226059</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>591765</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>e4834c590734bdca16f4776f97fe3456</srcmd5>
+    <version>20180328.f195bc7</version>
+    <time>1522317434</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>591956</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>2712867572a448d8862769dc31da7516</srcmd5>
+    <version>20180329.9ad18cf</version>
+    <time>1522404489</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>592280</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>ef5f6e37e199d6b130d5400470b86606</srcmd5>
+    <version>20180329.1ab84c3</version>
+    <time>1522503445</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>592677</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>62ec349bd032691625892ce0b54aee20</srcmd5>
+    <version>20180403.78ea7dd</version>
+    <time>1522832758</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>593145</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>0770a90dabd6f782c6cca08ee3511d1c</srcmd5>
+    <version>20180405.e96a27a</version>
+    <time>1522935331</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>593738</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>7f3450582839ffca28c98afacc6b64c3</srcmd5>
+    <version>20180406.ace73fe</version>
+    <time>1523127325</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>593997</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>5f7c41e052a0f3916022324012223161</srcmd5>
+    <version>20180411.820d103</version>
+    <time>1523875666</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>595658</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>13cf1c97ac5c4ed7bc6b5c94ff8e7ed5</srcmd5>
+    <version>20180416.dc30723</version>
+    <time>1523956751</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>597234</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>31a40d869735f270c5468cfcdd147892</srcmd5>
+    <version>20180417.b8337f4</version>
+    <time>1524144601</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>597429</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>050e609e9ae62363f268c282aa37f1bd</srcmd5>
+    <version>20180419.3dcaf5c</version>
+    <time>1524400850</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>599508</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>74dd4048ed90b1ce6ea35fc0eb3a2faa</srcmd5>
+    <version>20180423.750f091</version>
+    <time>1524576771</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>599929</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>e52340247baf51ac669d72f750a577a1</srcmd5>
+    <version>20180424.855f660</version>
+    <time>1524643360</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>600700</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>538568bda01472741b5216017be90da0</srcmd5>
+    <version>20180425.8bb627d</version>
+    <time>1524742714</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>600971</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>d33880233eb77fd45014ea4a69f235da</srcmd5>
+    <version>20180426.2282f15</version>
+    <time>1524838161</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>601643</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>1607739749b0087e15c355cd19f302ca</srcmd5>
+    <version>20180427.add0eb7</version>
+    <time>1525121697</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>602092</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>048cedbe728fe3bd42b0b5ed80782afd</srcmd5>
+    <version>20180430.eb1d0be</version>
+    <time>1525256369</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>602860</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>0209055a5c73efba1eb69184b6897097</srcmd5>
+    <version>20180502.978881d</version>
+    <time>1525343603</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>603034</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>e08ec0923850f2f398a74e856aab056f</srcmd5>
+    <version>20180509.324f7cc</version>
+    <time>1526022975</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>605946</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>e6c775c51aeb3eec5f24f76a1e356785</srcmd5>
+    <version>20180511.af4e85a</version>
+    <time>1526220369</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>606483</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>eb4c4b3483771e38f7cf0505314e25a5</srcmd5>
+    <version>20180511.eff4e45</version>
+    <time>1526372088</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>606849</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>2eacee6c15f23060076cbe556f68fefc</srcmd5>
+    <version>20180516.629cada</version>
+    <time>1526489047</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>609140</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>490c840e7d58b7385d9579fa8c7b7804</srcmd5>
+    <version>20180516.6459937</version>
+    <time>1526573083</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>609916</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>8749bfd4690a0e83a353ee802961b2af</srcmd5>
+    <version>20180518.ef92c2f</version>
+    <time>1526646495</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>610224</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>8d79af0d4611dcf2d42b26d0638b7825</srcmd5>
+    <version>20180518.6c6bccc</version>
+    <time>1526737396</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>610430</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>b93c748bb5b3c7399e9d307481d009fa</srcmd5>
+    <version>20180518.3a01e88</version>
+    <time>1527582815</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>610669</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>7b1b0af4211cedac4a18d59a61dd611e</srcmd5>
+    <version>20180524.432237a</version>
+    <time>1527934281</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>613136</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>480dcfa638403b298d0631a8e354d8c4</srcmd5>
+    <version>20180531.95e0616</version>
+    <time>1528111325</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>613705</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>7ce1435f0a89ebf759895e48c232cea6</srcmd5>
+    <version>20180604.fb82c46</version>
+    <time>1528196007</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>614066</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>1c9771f90dcd15a84cc43140f6a3aa17</srcmd5>
+    <version>20180604.ce0a143</version>
+    <time>1528492532</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>614407</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>15ee08e97a4a382467829a6e28492144</srcmd5>
+    <version>20180614.3b99137</version>
+    <time>1529402440</time>
+    <user>maxlin_factory</user>
+    <comment>automatic update</comment>
+    <requestid>616654</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>8067eae9765cf0f3fda7a7058d8db5f4</srcmd5>
+    <version>20180620.78e8212</version>
+    <time>1529501719</time>
+    <user>maxlin_factory</user>
+    <comment>automatic update</comment>
+    <requestid>617942</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>4550ee637c397671f704e067ef65678c</srcmd5>
+    <version>20180620.d4172e6</version>
+    <time>1529667300</time>
+    <user>maxlin_factory</user>
+    <comment>automatic update</comment>
+    <requestid>618142</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>0cbc7ce4ef8e09f4c2bd59bf45667652</srcmd5>
+    <version>20180621.c38f9ca</version>
+    <time>1529919697</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>618570</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>a17966bcaae7ff78c88bd800f01611f2</srcmd5>
+    <version>20180626.15618eb</version>
+    <time>1530087720</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>619047</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>a45187c456c4596c94e66f93422eb7c6</srcmd5>
+    <version>20180627.d5144d3</version>
+    <time>1530191643</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>619402</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>84039c449848420f515998baad5b0ff9</srcmd5>
+    <version>20180628.fdc0978</version>
+    <time>1530304554</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>619616</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>915b4ae59194c11995a7e4edb76708c2</srcmd5>
+    <version>20180629.4355859</version>
+    <time>1530567158</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>619947</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>f06bd3706669bf1566fca23f53392e4a</srcmd5>
+    <version>20180703.29c4b6a</version>
+    <time>1530653731</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>620469</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>28fd8aedfe1a04a1c5356c9df38fe50f</srcmd5>
+    <version>20180703.72eb7dc</version>
+    <time>1530866531</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>620661</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>b4ce2cacbd024b02ae01c4e99d99d971</srcmd5>
+    <version>20180718.2f192f1</version>
+    <time>1532033802</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20180718.2f192f1:
+  * Obsoletes create_test_Factory_dvd-2.testcase
+  * Remove debug code accidentally part of #1615
+  * Fix openQA group for Leap 15.1
+  * Add support for SLE12SP4 and SLE15SP1
+  * Add Leap 15.1 ARM support
+  * Apply remote config in openqa-comments
+  * Remove more of :DVD subproject handling
+  * tests: remove all subproject related part
+  * openqa-comments: do not need to check subproject
+  * check_command: subproject method is no longer exists in dashboard
+  * stagingapi: remove staging_walk() function
+  * stagingapi: remove project_status_walk() function
+
+- Update to version 20180718.2f192f1:
+  * Obsoletes create_test_Factory_dvd-2.testcase
+
+- Update to version 20180717.a83493b:
+  * Remove debug code accidentally part of #1615
+
+- Update to version 20180717.4ced4ce:
+  * Fix openQA group for Leap 15.1
+  * Add support for SLE12SP4 and SLE15SP1
+
+- Update to version 20180717.35e7657:
+  * Add Leap 15.1 ARM support
+
+- Update to version 20180716.d161634:
+  * Apply remote config in openqa-comments</comment>
+    <requestid>623988</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>730b57dc9aecb7fa7187357456340cba</srcmd5>
+    <version>20180720.7920baa</version>
+    <time>1532161519</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>624221</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>8ef53a3b7f739817e330abe0d8c8d9e8</srcmd5>
+    <version>20180727.27f0056</version>
+    <time>1532774707</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>625776</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>162f61ce4c5301224dbd93c34150784f</srcmd5>
+    <version>20180801.174755e</version>
+    <time>1533292625</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>626924</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>bdbfcab0fd3580c5f788ec3121db3b32</srcmd5>
+    <version>20180803.b58b4e4</version>
+    <time>1533549231</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>627473</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>cd7f83f07e4a6ef889aef7c8cbf38441</srcmd5>
+    <version>20180806.0296ba5</version>
+    <time>1533627832</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>627725</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>693d3965f0863c25df698f4f4207b9a3</srcmd5>
+    <version>20180814.17dddb4</version>
+    <time>1534322336</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>629287</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>c92092363e5f7195a89fa28982f4a02a</srcmd5>
+    <version>20180815.cec5fa6</version>
+    <time>1534543425</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>629468</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>7a6c44dca80a4468a89563e2d93e1f4b</srcmd5>
+    <version>20180817.c11f78e</version>
+    <time>1534774788</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>630331</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>4fbc63723894b642b591c083bd43dec9</srcmd5>
+    <version>20180820.d7d5724</version>
+    <time>1534940375</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>630676</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>58551de978db03955f7c994358b25b48</srcmd5>
+    <version>20180822.a9f1bc0</version>
+    <time>1535704903</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>630991</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>f8b3f7bda1677a8ffc62d83cc105125a</srcmd5>
+    <version>20180831.1cedb3d</version>
+    <time>1535963666</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>632461</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>cfec44c5108c266480324164bb4e2cf1</srcmd5>
+    <version>20180901.9e8018f</version>
+    <time>1536094654</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>632933</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>73d0092196f645584bd9ea77a5a1448f</srcmd5>
+    <version>20180905.c5ceab9</version>
+    <time>1536327620</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>633513</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>d6d4f65752c5cf09ffdf96dd2161b4a4</srcmd5>
+    <version>20180905.67200cd</version>
+    <time>1536575501</time>
+    <user>maxlin_factory</user>
+    <comment>automatic update</comment>
+    <requestid>634507</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>f6b7441525cf0edb3ddb9e0e325bf2ec</srcmd5>
+    <version>20180910.3cf8055</version>
+    <time>1536679209</time>
+    <user>maxlin_factory</user>
+    <comment>automatic update</comment>
+    <requestid>634819</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>f0a5e5ff884554b8612882bbb48ead92</srcmd5>
+    <version>20180913.47324ff</version>
+    <time>1536876164</time>
+    <user>maxlin_factory</user>
+    <comment>automatic update</comment>
+    <requestid>635536</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>1075704c0ec5327c03be47a26a0882bf</srcmd5>
+    <version>20180913.d102240</version>
+    <time>1537018837</time>
+    <user>maxlin_factory</user>
+    <comment>automatic update</comment>
+    <requestid>635596</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>9ca7cb3d0c71f04de3b8f151622456ad</srcmd5>
+    <version>20180914.628c1a1</version>
+    <time>1537187199</time>
+    <user>maxlin_factory</user>
+    <comment>automatic update</comment>
+    <requestid>635880</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>141748b254bf98a537c01658c56a3698</srcmd5>
+    <version>20180918.aeb3b8c</version>
+    <time>1537360284</time>
+    <user>maxlin_factory</user>
+    <comment>automatic update</comment>
+    <requestid>636473</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>23fb82c5b710ef3f2f71e2176e9ce518</srcmd5>
+    <version>20180918.38e2d3f</version>
+    <time>1537787506</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>636741</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>004cb9a2001dee612674c53f46e1ca37</srcmd5>
+    <version>20181004.97e58e1</version>
+    <time>1538672569</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>639934</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>7b22cadc443e1de8d87791340d471cbb</srcmd5>
+    <version>20181010.97f1eda</version>
+    <time>1539251799</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>640928</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>9f91f59798c11132178ffd6ed4f62d7b</srcmd5>
+    <version>20181011.61e1049</version>
+    <time>1539589412</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>641762</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>3fd9a579bdd1abcc19526e20ddfd5366</srcmd5>
+    <version>20181015.c6ff801</version>
+    <time>1539758415</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>642033</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>56f1cc46b773c40fd800eeb07a459cdd</srcmd5>
+    <version>20181017.1b25b75</version>
+    <time>1539869911</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>642723</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>2ad6a0a6932a1d2a09973d8475a55652</srcmd5>
+    <version>20181017.3282c9a</version>
+    <time>1540200197</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>643056</requestid>
+  </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>5974a6c46e6e0bd04c665fb387d50062</srcmd5>
+    <version>20181023.9b1618e</version>
+    <time>1540320080</time>
+    <user>dimstar_suse</user>
+    <comment>Update</comment>
+    <requestid>643844</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>fe088f1e5591db844e8e8eca2b9dfaf9</srcmd5>
+    <version>20181025.5558473</version>
+    <time>1541666843</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>644728</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>dc06889a4004a3e2b82d05fe08660752</srcmd5>
+    <version>20181108.4293b6b</version>
+    <time>1541746572</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>647383</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>30ead08cd83e2eb5837fdca0593fba6b</srcmd5>
+    <version>20181109.3aae284</version>
+    <time>1541865701</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>647511</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>fa279fadf9c8c0d0edb4f3873da7cc24</srcmd5>
+    <version>20181110.2a9183f</version>
+    <time>1542012330</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>648279</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>571413099d8aacd89563c84b9934071c</srcmd5>
+    <version>20181113.56a2f40</version>
+    <time>1542124983</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>648668</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>c3c103b07d6767134b6cfa7984760fd2</srcmd5>
+    <version>20181113.f936dc2</version>
+    <time>1542203003</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>648801</requestid>
+  </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>1b22957629efae0e61ef5ed62fd92ff8</srcmd5>
+    <version>20181119.1714c58</version>
+    <time>1542666856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650220</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>6f80d8df0988339b9d7d0478528b6e4d</srcmd5>
+    <version>20181120.4be5ff3</version>
+    <time>1542750224</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove kiwi file again as it was causing problems within openSUSE:Factory,
+  moved it to its own webhook triggered container on
+  openSUSE:Tools:Images/osrt-worker-obs
+
+- Update to version 20181120.4be5ff3:
+  * Replace urlparse.urlparse for python3
+  * Import url functions properly for python3
+  * Use more print from the future
+  * ttm: Add ToTest151PowerPC for Leap 15.1 PowerPC</comment>
+    <requestid>650351</requestid>
+  </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>c6cdf42a8e94202e96edac2e585b2251</srcmd5>
+    <version>20181121.5a43f6f</version>
+    <time>1542889555</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>650611</requestid>
+  </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>5cfc0fff50cd9181138700ebf9a5a68b</srcmd5>
+    <version>20181127.edba5dc</version>
+    <time>1543311915</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20181127.edba5dc:
+  * Revert extracted kiwi again
+
+- Update to version 20181126.590fd22:
+  * dist/k8s/app.yaml: disable check-source and repo-checker components.
+  * dist/kubernetes: utilize new image home in openSUSE:Tools:Images.
+  * dist/package: include worker kiwi to allow extraction via _service.
+  * dist/kiwi/worker: include obs-operator subpackage.
+  * obs_operator: use unbuffered output to work properly in systemd.
+  * dist/kubernetes: provide OBS Operator component.
+
+- Extract osrt-worker-obs.kiwi via _service and reference in spec.
+
+- Update to version 20181126.4331271:
+  * ttm: add minimal staging config for pseudometa package
+  * Add workaround for failing JeOS comparison on ARM
+
+- Update to version 20181126.f333b2d:
+  * Readability cleanups
+  * Follow flake8 import order
+  * Iterate over product arch list
+
+- Update to version 20181124.c1a7698:
+  * Adjust JeOS for 15.1 images
+
+- Update to version 20181123.b280e8a:
+  * fcc_submitter: update version to 15.1
+
+- Update to version 20181122.aaef149:
+  * leaper: just pass if only origin change left to decide</comment>
+    <requestid>652071</requestid>
+  </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>a02ecaa31a548f3db0d9ba4d32fa247c</srcmd5>
+    <version>20181127.ad48ebf</version>
+    <time>1543528878</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>652508</requestid>
+  </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>7290426091f04e6a5ed20e87e31c3182</srcmd5>
+    <version>20181204.aa1c004</version>
+    <time>1543953505</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>653862</requestid>
+  </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>724b7bef4f88a051bc299c64d327f38c</srcmd5>
+    <version>20181205.180ca46</version>
+    <time>1544095089</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>655338</requestid>
+  </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>d7da477cd3c0ca2de15b9a18f9421911</srcmd5>
+    <version>20181210.75e065f</version>
+    <time>1544539681</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>656792</requestid>
+  </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>db8092ac055c6536ad131fe8b65a8b4e</srcmd5>
+    <version>20181218.d14a232</version>
+    <time>1545223868</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>659079</requestid>
+  </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>2c761208d1d4a0d46be24ba2fa05a69b</srcmd5>
+    <version>20181219.960b7ba</version>
+    <time>1545376962</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>660403</requestid>
+  </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>30eb297c12bd7d3d104ecc5227316052</srcmd5>
+    <version>20190104.537bdd5</version>
+    <time>1546695759</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>662759</requestid>
+  </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>c8c3fced2c65aab54f2222537e54c3f8</srcmd5>
+    <version>20190109.df13caa</version>
+    <time>1547130160</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>663898</requestid>
+  </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>b085a94c7d568e4377ad213f877ac194</srcmd5>
+    <version>20190110.a9eeeb0</version>
+    <time>1547540218</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>664899</requestid>
+  </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>c6553bc9b93cf9d66aeedea8bbffaa56</srcmd5>
+    <version>20190116.9ab4c3c</version>
+    <time>1548064635</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>666392</requestid>
+  </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>84ca6edb8a927a950d7db0b9e39cd81b</srcmd5>
+    <version>20190122.8d29352</version>
+    <time>1548335569</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>667687</requestid>
+  </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>27deaec3b210e82728914982e76054f2</srcmd5>
+    <version>20190124.535533d</version>
+    <time>1548704899</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>668766</requestid>
+  </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>d7b3f406abf5ec4a7d667ce404fcbf2f</srcmd5>
+    <version>20190207.b99d841</version>
+    <time>1549624382</time>
+    <user>coolo</user>
+    <comment>- Update to version 20190207.b99d841:
+  * Fix arch-whitelist to apply to staging projects
+  * Filter the repositories_pairs depending on the target archs
+  * Don't try to filter staging archs
+  * Calculcate the whitelist for letter stagings purely on config
+  * Expand all repositories but ignore archs with 404
+  * repo_checker: remove explicit target project repository layer for letter stagings.
+  * repo_checker: provide repo_checker-binary-whitelist-ring config option.
+
+- Update to version 20190206.61c0f67:
+  * Map i686 packages to i586 to find kernel-pae-devel
+
+- Update to version 20190205.ee7cdc2:
+  * ReviewBot: catch exception for adding devel project review
+  * conf: use backports-reviewers for backports
+
+- Update to version 20190130.7d1fa2f:
+  * Fix E117: over-indented (flake8 update on TW)
+  * Fix format in rabbitmq debug
+
+- Update to version 20190130.f66fd52:
+  * fix incompatible repo id tagging for openSUSE products
+
+- Update to version 20190126.da4ba5d:
+  * Support connecting suse in PubSubConsumer
+  * Only use amqp_prefix as config
+  * Reduce debug level for channel close</comment>
+    <requestid>672351</requestid>
+  </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>eed1d3b98c0bf15bdc9c989991b71802</srcmd5>
+    <version>20190213.be751cc</version>
+    <time>1550402475</time>
+    <user>coolo</user>
+    <comment>- Update to version 20190213.be751cc:
+  * compare_pkglist: fix return code handling introduced by 2e339acffb03b6786c902c2ebd250d1c3720e315
+
+- Update to version 20190213.af2471e:
+  * compare_pkglist: minor improvements
+
+- Update to version 20190213.fe23e8d:
+  * repo_checker: Simplify cycle check
+
+- Update to version 20190212.6f70fe2:
+  * compare_pkglist: update version to Leap 15.1 and SLE15 SP1
+
+- Update to version 20190211.38c1c42:
+  * Fix rebuildpacs for installation-images
+
+- Update to version 20190208.9984223:
+  * osclib/list_command: 24ae4ba81 broke formatting.
+
+- Update to version 20190207.4e24164:
+  * Remove openSUSE-images from rebuildpacs - long gone
+
+- Update to version 20190207.6d706a6:
+  * rebuildpacs: Check the binary version not just the bdep itself
+  * Take over rebuildpac problems from packagelists VM and tidy</comment>
+    <requestid>676534</requestid>
+  </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>364bf33cffb4876f60c4972d42891280</srcmd5>
+    <version>20190221.324b92a</version>
+    <time>1551025160</time>
+    <user>coolo</user>
+    <comment>- Update to version 20190221.324b92a:
+  * Output something every 5 minutes to show activity on the console
+
+- Update to version 20190220.d43faf0:
+  * tests/obs: provide offering to appease the re-implementation of OBS.
+  * travis: add check to complain about product references in origin-manager.
+  * dist/package: provide origin-manager sub-package.
+  * systemd: provide osrt-origin-manager service and timer.
+  * origin-manager: provide ReviewBot utilizing osclib.origin.
+  * osclib/origin: provide origin management functions.
+  * dist/obs: provide OSRT:OriginConfig definition.
+  * osclib/util: project_version(): return 0 instead of None for invalid project.
+  * osclib/util: provide project_list_family_prior_pattern().
+  * osclib/util: project_list_family_prior(): provide include_updates option.
+  * osclib/util: project_list_family(): cache via memoize.
+  * osclib/util: project_list_family(): provide include_update option.
+  * osclib/util: project_list_family(): handle :NonFree suffix.
+  * osclib/cache: handle repetative package_source_hash_history() calls.
+  * osclib/conf: properly load config for innerconnect projects.
+  * osclib/core: provide request_remote_identifier() for printable identifier.
+  * osclib/core: provide issue_tracker*() functions.
+  * osclib/core: provide review_*() functions for summarizing review state.
+  * osclib/core: provide project_remote_*() functions for innerconnect projects.
+  * osclib/core: provide package_source_hash*() functions.
+  * osclib/core: provide entity_source_link().
+  * osclib/conf: add repo-checker key since it does review :Update requests.
+  * osclib/core: provide entity_exists() and use in StagingAPI.item_exists().
+
+- Update to version 20190219.8d3c53c:
+  * Need apiurl for staging report</comment>
+    <requestid>678068</requestid>
+  </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>9384301d900b6e42a3e76eed2b7b5df3</srcmd5>
+    <version>20190305.9f97c15</version>
+    <time>1551883862</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20190305.9f97c15:
+  * cycle: Add command line parameter support
+  * Use the JeOS-efi binaries for 15.1 arm images version reading
+  * Use different base class for ToTest151ARMImages
+  * Add openSUSE:Leap:15.1:ARM:Images
+
+- Update to version 20190227.214f8bb:
+  * origin-manager: support ReviewBot override comment using origin workaround.
+  * ReviewBot: request_override_check(): default to accept.
+  * ReviewBot: request_override_check(): provide force option.
+
+- Update to version 20190227.b16cc9a:
+  * Add openSUSE-Tumbleweed-Kubic images
+
+- Update to version 20190227.ca7c4fd:
+  * legal: Fix crash on declining obsrq#670770
+
+- Update to version 20190226.6d72812:
+  * dist/package: include origin-manager source file in source_dir.
+  * dist/kubernetes: disable origin-manager component.
+  * dist/kubernetes: add origin-manager component.
+  * dist/kiwi: add origin-manager subpackage.
+
+- Update to version 20190222.9b58ce5:
+  * Fix project/status route</comment>
+    <requestid>682027</requestid>
+  </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>ced8408b1e660057fe0ce9ddeee8580d</srcmd5>
+    <version>20190308.7f2195f</version>
+    <time>1552207208</time>
+    <user>coolo</user>
+    <comment>- Update to version 20190308.7f2195f:
+  * No longer add repo checker as reviewer for Factory
+  * Remove 15.1:ARM:Live
+
+- Update to version 20190308.44cbc3a:
+  * Block adi command from accepting if checks aren't succeeding
+  * Add all checks from staging-required-checks-adi to main repo of adi projects
+
+- Update to version 20190306.819d437:
+  * dist: provide origin-manager report service and timer.
+  * dist/package: provide osc-plugin-origin package.
+  * osc-origin: provide initial origin osc subcommand.
+  * osclib/core: package_list_without_links(): ignore meta packages (00 prefix).
+  * osclib/origin: provide __str__ method that indicates pending.
+  * osclib/origin: config_resolve_create_family(): force origin_expanded to string.
+  * osclib/util: mail_send(): allow a from_key of None to indicate osc user.
+  * osclib/util: mail_send() utilize Config.get() pattern.
+  * osclib/util: mail_send(): use to as config key if no at sign.
+
+- Update to version 20190306.ef6e30c:
+  * dist/ci/Dockerfile: change from Tumbleweed to Leap for build host.</comment>
+    <requestid>682832</requestid>
+  </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>acde603d91df20a663b1c32a2b948a83</srcmd5>
+    <version>20190313.b7eeea5</version>
+    <time>1552572137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20190313.b7eeea5:
+  * Added livecd-tumbleweed-xfce in livecd_products
+
+- Update to version 20190311.149e290:
+  * pkglistgen: Don't upper case the staging letter
+
+- Update to version 20190309.bb2cb5c:
+  * Fix adi command if there are actually checks
+  * devel-project: notify: catch smtp exceptions rather than crashing.</comment>
+    <requestid>684852</requestid>
+  </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>a395ddae160e64a77ce760a00ff3af16</srcmd5>
+    <version>20190320.d9b4fee</version>
+    <time>1553084512</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20190320.d9b4fee:
+  * gocd: Fix PYTHONPATH for the monitor scripts
+
+- Update to version 20190320.c76e0d9:
+  * Fix compat with pyYaml 5.1
+  * origin-manager: include origin annotation in comment when waiting.
+
+- Update to version 20190320.ab8a614:
+  * No longer package rabbit-openqa but add gocd config for it
+  * Add rabbit-repoid
+  * PubsubConsumer: Implement max runtime
+
+- Update to version 20190320.bb48831:
+  * Replace deprecated (and not advised) yaml.load() with yaml.safe_load().
+  * [openqa-maintenance] Add openSUSE Leap 15.1 configuration
+  * osclib/origin: policy_input_evaluate(): do not list disallowed reviews.</comment>
+    <requestid>686859</requestid>
+  </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>1d8fd46581cc30f8902e65b865b5574d</srcmd5>
+    <version>20190413.989fecad</version>
+    <time>1555321987</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20190413.989fecad:
+  * Improve error msg that the project was not frozen
+
+- Update to version 20190404.0016e77e:
+  * Make the ignore whitelist always a set()
+
+- Update to version 20190403.36af69dc:
+  * Ignore packages listed in comments
+
+- Update to version 20190329.d14cf59a:
+  * ReviewBot: handle any exception raised by check_one_request().
+
+- Update to version 20190329.5c3f44b5:
+  * origin-manager: require fallback review for delete requests.
+
+- Update to version 20190329.b0371a1d:
+  * osc-staging: exclude NonFree requests from staging proposals.
+
+- Update to version 20190328.456ec244:
+  * Remove the special logic for 000product
+
+- Update to version 20190328.f449f81:
+  * Release/Publish container_products first
+  * Fix yet another crash because of self.project
+  * Don't use version_images prefix for Images projects
+  * Fix indenting - this is really hard :(
+  * Move some more pipelines from citest to official repo
+
+- Update to version 20190328.7f59878:
+  * Replace all left self.project with self.project.name</comment>
+    <requestid>694100</requestid>
+  </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>f9a4a7f44abeaef28cb5a0e89736ba0f</srcmd5>
+    <version>20190511.ffc9b22e</version>
+    <time>1557654336</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>702118</requestid>
+  </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>808faa87d2c5ed4640d3b15d5c064884</srcmd5>
+    <version>20190512.4ef0c623</version>
+    <time>1557751956</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>702505</requestid>
+  </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>29162e2cce998a4c73fb7666049c4df5</srcmd5>
+    <version>20190513.f2460434</version>
+    <time>1557834205</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>702666</requestid>
+  </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>86ade77b7be78e069e1c7ddcf076c26a</srcmd5>
+    <version>20190514.3df85367</version>
+    <time>1557916516</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>703036</requestid>
+  </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>93ec1c6cb05db50a28fe64a8589464ec</srcmd5>
+    <version>20190515.5a1b08d8</version>
+    <time>1558037345</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>703233</requestid>
+  </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>1c9a431619dc658078458de56157d959</srcmd5>
+    <version>20190516.fab9b27f</version>
+    <time>1558129450</time>
+    <user>dimstar_suse</user>
+    <comment>Next update</comment>
+    <requestid>703648</requestid>
+  </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>e04701f6214201dafd5191cfa86d986b</srcmd5>
+    <version>20190518.896c4185</version>
+    <time>1558340898</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>703875</requestid>
+  </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>c4a42c90fd55a05a8355d0acab5fb4ff</srcmd5>
+    <version>20190520.c8cc0dd1</version>
+    <time>1558427938</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>704202</requestid>
+  </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>db4b77c43bc5e56270f1b9126c4502ec</srcmd5>
+    <version>20190522.4707e237</version>
+    <time>1558532396</time>
+    <user>dimstar_suse</user>
+    <comment>Take the python3 only version</comment>
+    <requestid>704628</requestid>
+  </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>a23db3dfd0bffaf56993f033bd1e4e2b</srcmd5>
+    <version>20190522.4ee44da8</version>
+    <time>1558690289</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>704859</requestid>
+  </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>b02b8bb31c20621cf8ce9280683f4821</srcmd5>
+    <version>20190524.fa2a17cf</version>
+    <time>1558783254</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>705208</requestid>
+  </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>ef73cfdb84a3bb15eabd6a1d3ebf3e90</srcmd5>
+    <version>20190524.65b73f1d</version>
+    <time>1558939208</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>705487</requestid>
+  </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>144ac9c4d8a77049d8e72ff72d7addf6</srcmd5>
+    <version>20190527.edbb8573</version>
+    <time>1559029388</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>705661</requestid>
+  </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>9ddfe2f923215bea0154eb2e6c79ac13</srcmd5>
+    <version>20190528.d7183777</version>
+    <time>1559375244</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>705823</requestid>
+  </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>a33f3fb9c55bf35d09ff1e7c087c11a7</srcmd5>
+    <version>20190601.2ec55156</version>
+    <time>1559481505</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>706818</requestid>
+  </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>05d5d2e7727925ced237a54aa35c7126</srcmd5>
+    <version>20190602.850eca98</version>
+    <time>1559580843</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>707020</requestid>
+  </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>ccdc15471bba2d3bac04d6ff97c608d7</srcmd5>
+    <version>20190603.8b4ad7de</version>
+    <time>1559643122</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>707263</requestid>
+  </revision>
+  <revision rev="188" vrev="1">
+    <srcmd5>10b329707a310d0d5a98a45182163a11</srcmd5>
+    <version>20190606.e70c7624</version>
+    <time>1559837907</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>707963</requestid>
+  </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>71e366b40886758363f4c7d13c297536</srcmd5>
+    <version>20190606.a44d2886</version>
+    <time>1559902758</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>708242</requestid>
+  </revision>
+  <revision rev="190" vrev="1">
+    <srcmd5>1ecd7d00e8d4756d9bfe1492c0a62061</srcmd5>
+    <version>20190712.4693df7f</version>
+    <time>1563366408</time>
+    <user>dimstar_suse</user>
+    <comment>submit HEAD - the previous SR has been declined</comment>
+    <requestid>715616</requestid>
+  </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>31b6c2e0464e9748b7f79afe03fe7d8a</srcmd5>
+    <version>20190716.f688158f</version>
+    <time>1563456171</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>716202</requestid>
+  </revision>
+  <revision rev="192" vrev="1">
+    <srcmd5>5ec56fe3be463b06508f6b38b46b8048</srcmd5>
+    <version>20190718.c4bd3fef</version>
+    <time>1563701641</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>716727</requestid>
+  </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>ab5e9bad4d4dd6d8c5ee972fd722b757</srcmd5>
+    <version>20190719.297ecd02</version>
+    <time>1563790887</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>717439</requestid>
+  </revision>
+  <revision rev="194" vrev="1">
+    <srcmd5>4d0eb75dbafade7ff3243e06a5928337</srcmd5>
+    <version>20190722.14459251</version>
+    <time>1563914125</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>717607</requestid>
+  </revision>
+  <revision rev="195" vrev="1">
+    <srcmd5>c30432d329b37dae1209ce1ea84fbde1</srcmd5>
+    <version>20190726.df07bcc2</version>
+    <time>1564155257</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>718837</requestid>
+  </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>5883b15edcf01adeebfa6cc72132d38e</srcmd5>
+    <version>20190729.70133114</version>
+    <time>1564414284</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>719513</requestid>
+  </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>8908b704beda4ae20b53dec68fde203f</srcmd5>
+    <version>20190729.b3ec5fd8</version>
+    <time>1564483100</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>719658</requestid>
+  </revision>
+  <revision rev="198" vrev="1">
+    <srcmd5>7c55352fbf87698259ccc8e87d7da675</srcmd5>
+    <version>20190730.07c607e6</version>
+    <time>1564576581</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>719986</requestid>
+  </revision>
+  <revision rev="199" vrev="1">
+    <srcmd5>8d46bc8f3a4d68165d65187bd8afda51</srcmd5>
+    <version>20190806.914d1061</version>
+    <time>1565105250</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>721279</requestid>
+  </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>4e1d03c852cc47ad901130c5bceb3818</srcmd5>
+    <version>20190808.410ee514</version>
+    <time>1565362455</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>721868</requestid>
+  </revision>
+  <revision rev="201" vrev="1">
+    <srcmd5>1276b4a975ce6ed8be4edbd2d5338013</srcmd5>
+    <version>20190809.d73531de</version>
+    <time>1565694997</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>722022</requestid>
+  </revision>
+  <revision rev="202" vrev="1">
+    <srcmd5>edc01f36393e4f53a5ec6d93b912dca0</srcmd5>
+    <version>20190813.1e238223</version>
+    <time>1565775465</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>723159</requestid>
+  </revision>
+  <revision rev="203" vrev="1">
+    <srcmd5>7d87ef5c5a2dc889fd47f29e055f3ee3</srcmd5>
+    <version>20190814.0bb5815b</version>
+    <time>1565864958</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>723327</requestid>
+  </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>b2601838ed837ce19055b4e14c99e3f0</srcmd5>
+    <version>20190816.723e45f3</version>
+    <time>1566243531</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>724180</requestid>
+  </revision>
+  <revision rev="205" vrev="1">
+    <srcmd5>5920d058a505c907e92d2e0e4aca3bc3</srcmd5>
+    <version>20190816.a1d076d0</version>
+    <time>1566291594</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>724699</requestid>
+  </revision>
+  <revision rev="206" vrev="1">
+    <srcmd5>38d2d6a59c5e9343d5277852fdb4939b</srcmd5>
+    <version>20190820.b9c7635c</version>
+    <time>1566463936</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>724818</requestid>
+  </revision>
+  <revision rev="207" vrev="1">
+    <srcmd5>548c5e3809ec53e1df679fb3ce037d12</srcmd5>
+    <version>20190822.bf48f33a</version>
+    <time>1566551340</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>725373</requestid>
+  </revision>
+  <revision rev="208" vrev="1">
+    <srcmd5>92318ad5c4139287a992051a2d1d85c4</srcmd5>
+    <version>20190826.cf98ac16</version>
+    <time>1566894434</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>726247</requestid>
+  </revision>
+  <revision rev="209" vrev="1">
+    <srcmd5>660bb687bab3da04607085db9b107046</srcmd5>
+    <version>20190827.7f92a226</version>
+    <time>1567010118</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>726499</requestid>
+  </revision>
+  <revision rev="210" vrev="1">
+    <srcmd5>a5c0d5d646869898f1910b8830184749</srcmd5>
+    <version>20190828.14971e2d</version>
+    <time>1567092300</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>726832</requestid>
+  </revision>
+  <revision rev="211" vrev="1">
+    <srcmd5>41a63ae80d1c9337335ba40d2ab7ac33</srcmd5>
+    <version>20190829.e912e9d2</version>
+    <time>1567168904</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>727059</requestid>
+  </revision>
+  <revision rev="212" vrev="1">
+    <srcmd5>330621fa0e93b976a7747c1d952bb527</srcmd5>
+    <version>20190829.72c1e9b4</version>
+    <time>1567423541</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>727403</requestid>
+  </revision>
+  <revision rev="213" vrev="1">
+    <srcmd5>164db01205dd78adf0b0d39143e6ae9b</srcmd5>
+    <version>20190903.79a13ddd</version>
+    <time>1567680119</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>728090</requestid>
+  </revision>
+  <revision rev="214" vrev="1">
+    <srcmd5>6f7f0bc0a3d7943e323f3c8092300fe3</srcmd5>
+    <version>20190905.a24bcf0f</version>
+    <time>1567849801</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>728471</requestid>
+  </revision>
+  <revision rev="215" vrev="1">
+    <srcmd5>c1376d9f3dd5cf59a56aa090d56001e9</srcmd5>
+    <version>20190905.783a0674</version>
+    <time>1568025317</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>729185</requestid>
+  </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>c3058992728f16e8e683d03eed128192</srcmd5>
+    <version>20190909.2ca2925a</version>
+    <time>1568190783</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>729579</requestid>
+  </revision>
+  <revision rev="217" vrev="1">
+    <srcmd5>8c2f145ad333e0cedfaa136131c72461</srcmd5>
+    <version>20190911.d06fa8af</version>
+    <time>1568379489</time>
+    <user>lnussel_factory</user>
+    <comment>automatic update</comment>
+    <requestid>730094</requestid>
+  </revision>
+  <revision rev="218" vrev="1">
+    <srcmd5>847b943f37b5223e60e6f23e97f8c245</srcmd5>
+    <version>20190913.9d119079</version>
+    <time>1568623920</time>
+    <user>maxlin_factory</user>
+    <comment>automatic update</comment>
+    <requestid>730792</requestid>
+  </revision>
+  <revision rev="219" vrev="1">
+    <srcmd5>bbf052f437910d1e44ed801ce3e571f4</srcmd5>
+    <version>20190918.1d4c6836</version>
+    <time>1568983946</time>
+    <user>maxlin_factory</user>
+    <comment>automatic update</comment>
+    <requestid>731811</requestid>
+  </revision>
+  <revision rev="220" vrev="1">
+    <srcmd5>8f38b6d0f31d1454f59fb40ba0a11a33</srcmd5>
+    <version>20190920.155606e3</version>
+    <time>1569235132</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>732304</requestid>
+  </revision>
+</revisionlist>

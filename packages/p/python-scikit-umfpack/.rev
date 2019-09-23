@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4b9582406664f1cfe6bdb553b1f58f53</srcmd5>
+    <version>0.3.1</version>
+    <time>1527933680</time>
+    <user>dimstar_suse</user>
+    <comment>Python interface to UMFPACK sparse direct solver</comment>
+    <requestid>612052</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dc31b87894519cf66338c67ac28759c3</srcmd5>
+    <version>0.3.2</version>
+    <time>1548063960</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662850</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3f861a8c04c93608414a229f74015d34</srcmd5>
+    <version>0.3.2</version>
+    <time>1569233994</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in the scikits.example</comment>
+    <requestid>732227</requestid>
+  </revision>
+</revisionlist>

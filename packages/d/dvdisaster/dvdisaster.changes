@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Thu Jan 11 06:00:24 UTC 2018 - avindra@opensuse.org
+
+-  Update to version 0.79.6
+  * Verify/Test option will now output dvdisaster version numbers
+    always in x.yy.zz format, as the old scheme using x.yy
+    (devel|pre|rc|pl)-zz is no longer used.
+  * The "medium info" tool will now correctly show the blank
+    capacity (was previously always shown as zero)	
+  * added support for BDXL-TL (triple layer, 100GB)
+  * Sector CRC sums and the image MD5 sum are collected during
+    reading the medium and can be re-used by the ecc data creation
+    process. Speeds up ecc generation and enables RS03 image
+    checksums when generating ecc data was preceeded by a read.
+- cleanup spec file with spec-cleaner
+- rebase dvdisaster-findmake.patch
+- add upstream urls to sources
+- add pgp signature
+
+-------------------------------------------------------------------
+Sun Oct 23 19:03:46 UTC 2016 - davejplater@gmail.com
+
+- Created initial package, version 0.79.5
+

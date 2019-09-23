@@ -1,0 +1,5 @@
+<package name="vido" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Pantheon:Apps" package="vido"/>
+</package>

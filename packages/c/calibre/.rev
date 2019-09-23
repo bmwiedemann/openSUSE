@@ -1,0 +1,1884 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>12364455f4fab704cbf4fc6088f5dc06</srcmd5>
+    <version>0.6.53</version>
+    <time>1278348695</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/calibre based on submit request 42617 from user darix
+</comment>
+    <requestid>42617</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>12364455f4fab704cbf4fc6088f5dc06</srcmd5>
+    <version>0.6.53</version>
+    <time>1278667401</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>12364455f4fab704cbf4fc6088f5dc06</srcmd5>
+    <version>0.6.53</version>
+    <time>1278678636</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>ae63bae45c203aed8607792f5538126d</srcmd5>
+    <version>0.6.53</version>
+    <time>1280742753</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/calibre based on submit request 44162 from user coolo
+</comment>
+    <requestid>44162</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c8d949d8bb1df76148956cced424b00b</srcmd5>
+    <version>0.7.38</version>
+    <time>1295313511</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58482 from user fsundermeyer
+</comment>
+    <requestid>58482</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>28c0ba3da5e06eba112948fb000ca68c</srcmd5>
+    <version>0.7.38</version>
+    <time>1295313516</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58482
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>159f94843e0827eeb9cd469bc5685483</srcmd5>
+    <version>0.7.40</version>
+    <time>1295881705</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 58949 from user thomas-schraitle
+</comment>
+    <requestid>58949</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1913b36cc3daffbfd95d5a900a8b64a2</srcmd5>
+    <version>0.7.40</version>
+    <time>1295881710</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 58949
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ccd6a34073a0889ac6b5108080cac994</srcmd5>
+    <version>0.7.42</version>
+    <time>1296609278</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59520 from user thomas-schraitle
+</comment>
+    <requestid>59520</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>de90fd387f56f6bbe5d59e224ba5c592</srcmd5>
+    <version>0.7.42</version>
+    <time>1296609284</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59520
+</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>de90fd387f56f6bbe5d59e224ba5c592</srcmd5>
+    <version>0.7.42</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>087e89688da31b8a7709aa279384cfa7</srcmd5>
+    <version>0.7.45</version>
+    <time>1298032339</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61587 from user fsundermeyer
+</comment>
+    <requestid>61587</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e48fc0cd2298abe91ca809863d17b0fc</srcmd5>
+    <version>0.7.45</version>
+    <time>1298032345</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61587
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>eed99a25754afa1f51a47aef0e3d605c</srcmd5>
+    <version>0.7.50</version>
+    <time>1300961648</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65004 from user coolo
+</comment>
+    <requestid>65004</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>2014ca193ea9934a3686876d4b95bb1a</srcmd5>
+    <version>0.7.50</version>
+    <time>1300961655</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65004
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dbe53199433089fea8f17c0f31825a96</srcmd5>
+    <version>0.7.52</version>
+    <time>1301495100</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65539 from user coolo
+</comment>
+    <requestid>65539</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>63469b87bd8d2cc1e76a75cfec7cdf0f</srcmd5>
+    <version>0.7.52</version>
+    <time>1301495109</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65539
+</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>556ad33dc41a80990a60ee2954d197ba</srcmd5>
+    <version>0.7.53</version>
+    <time>1301826628</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65794 from user coolo
+</comment>
+    <requestid>65794</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>4d94038b6b766ca92130413d2c3f847a</srcmd5>
+    <version>0.7.53</version>
+    <time>1301826637</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65794
+</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2f4e65eacc2ab0bd23d6d2d9cfe95cb6</srcmd5>
+    <version>0.7.54</version>
+    <time>1302513148</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66611 from user coolo
+</comment>
+    <requestid>66611</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>81a0d928dbee67358e0f8b6a639710c9</srcmd5>
+    <version>0.7.54</version>
+    <time>1302513157</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66611
+</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3ca7596f6335daf12b0fa8b81a38eae4</srcmd5>
+    <version>0.7.57</version>
+    <time>1303895606</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 68205 from user coolo
+</comment>
+    <requestid>68205</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>88f3770cc01d06b4cb726c0d8aa46b05</srcmd5>
+    <version>0.7.57</version>
+    <time>1303895617</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68205
+</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>11741780637fc7342f367c648e051119</srcmd5>
+    <version>0.8.10</version>
+    <time>1311173219</time>
+    <user>saschpe</user>
+    <comment>Updated to 0.8.10</comment>
+    <requestid>76510</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>e3b7aacdc88125dff7d84a6778f5ac21</srcmd5>
+    <version>0.8.10</version>
+    <time>1311173229</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76510
+</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>cd10fc656acfb97de3d3513b0dab7816</srcmd5>
+    <version>0.8.11</version>
+    <time>1311851481</time>
+    <user>saschpe</user>
+    <comment>updated to 0.8.11</comment>
+    <requestid>77200</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>ab93467be789ed0bc036c113e36732d1</srcmd5>
+    <version>0.8.11</version>
+    <time>1311851497</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77200
+</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>70133241bc43813f20958bda4e26efce</srcmd5>
+    <version>0.8.12</version>
+    <time>1312188152</time>
+    <user>saschpe</user>
+    <comment>Updated to 0.8.12</comment>
+    <requestid>77458</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>9dc02548d8cfd7e36aad58512ea87d23</srcmd5>
+    <version>0.8.12</version>
+    <time>1312188198</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77458
+</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b39192b97d86062e678008f644cdfae5</srcmd5>
+    <version>0.8.13</version>
+    <time>1313052382</time>
+    <user>saschpe</user>
+    <comment>updated to 0.8.13</comment>
+    <requestid>78460</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>99d5f3ce9cd4814b650586c0f1d2fe42</srcmd5>
+    <version>0.8.13</version>
+    <time>1313052391</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78460
+</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d8e61b9ffe424b1ff5b9a2a1a7b05a44</srcmd5>
+    <version>0.8.14</version>
+    <time>1313406519</time>
+    <user>saschpe</user>
+    <comment>Updated to Version 0.8.14</comment>
+    <requestid>78786</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>596a4b063a6363f7adcec782b3999cf4</srcmd5>
+    <version>0.8.14</version>
+    <time>1313406529</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78786
+</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>23a103c48c09ed61a8865f26ca0d46b6</srcmd5>
+    <version>0.8.15</version>
+    <time>1314022618</time>
+    <user>saschpe</user>
+    <comment>updated to 0.8.15</comment>
+    <requestid>79426</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>3100bcf19f31b71ff8dfab61fe9a16bf</srcmd5>
+    <version>0.8.15</version>
+    <time>1314022628</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79426
+</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>eb67d6720db8a1fa5ed426cb33f6a699</srcmd5>
+    <version>0.8.16</version>
+    <time>1314789979</time>
+    <user>saschpe</user>
+    <comment>updated to 0.8.16. For more informations check calibre.changes</comment>
+    <requestid>80353</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>8eed9ae31d175da060247d90eb62e2ea</srcmd5>
+    <version>0.8.16</version>
+    <time>1314789989</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80353
+</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>b280dae53f0d7b7dc794663e0e2b612c</srcmd5>
+    <version>0.8.20</version>
+    <time>1317049317</time>
+    <user>oertel</user>
+    <comment>updated by coolo</comment>
+    <requestid>84857</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>e889a3f1c24ee6ec4838b655dbe03693</srcmd5>
+    <version>0.8.20</version>
+    <time>1317740072</time>
+    <user>oertel</user>
+    <comment></comment>
+    <requestid>86278</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>e889a3f1c24ee6ec4838b655dbe03693</srcmd5>
+    <version>0.8.20</version>
+    <time>1319181802</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>4f44ef5b3192050085e06294f04b0489</srcmd5>
+    <version>0.8.23</version>
+    <time>1319550522</time>
+    <user>coolo</user>
+    <comment>updated to 0.8.23 and removed poppler patch cause it is already included in upstream</comment>
+    <requestid>89205</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>851a155567c3f4e5075522db10017e1c</srcmd5>
+    <version>0.8.32</version>
+    <time>1325348350</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>98431</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>6b79b88096ae630d4f4095a6d7e864d5</srcmd5>
+    <version>0.8.39</version>
+    <time>1329391124</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104305 from coolo)</comment>
+    <requestid>105018</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>297a897c5021fa26b3e0635bf3e25197</srcmd5>
+    <version>0.8.41</version>
+    <time>1331037457</time>
+    <user>coolo</user>
+    <comment>updated to 0.8.41</comment>
+    <requestid>107972</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>e8af8b49bb8d3d66dd6ce4c3c1dbd245</srcmd5>
+    <version>0.8.42</version>
+    <time>1332415885</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>110421</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>dcf6e9bd9d176a2e827cac3031860908</srcmd5>
+    <version>0.8.46</version>
+    <time>1334641447</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113740</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>9d8a745da938e9c21ea7ce370846d032</srcmd5>
+    <version>0.8.49</version>
+    <time>1336423450</time>
+    <user>coolo</user>
+    <comment>Updated to 0.8.49</comment>
+    <requestid>115924</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>8ae3b46f342c3b0605450006b49dc9bc</srcmd5>
+    <version>0.8.51</version>
+    <time>1337004680</time>
+    <user>coolo</user>
+    <comment>Updated to Minorversion 51</comment>
+    <requestid>120889</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>2c36f39f9e4c1c040d6e3c9f01c75140</srcmd5>
+    <version>0.8.55</version>
+    <time>1339619001</time>
+    <user>coolo</user>
+    <comment>- update to 0.8.55
+- New Features
+   Add a new 'Calibre style' interface look that is more modern than the 
+   default look. You can select it via Preferences-&gt;Look &amp; Feel-&gt;User 
+   interface style.
+   New, subtler look for the Tag Browser
+   Driver for Trekstor Pyrus and Pantech Android Tablet
+   Closes tickets: 1008946 , 1007929 
+   Conversion pipeline: Handle guide elements with incorrectly cased hrefs. 
+   Also handle guide elements of type coverimagestandard and thumbimagestandard.
+   Allow user to customize trekstor plugin to send books into sub directories.
+   Closes tickets: 1007646 
+   EPUB Input: Add support for EPUB files that use the IDPF font obfuscation algorithm.
+   Closes tickets: 1008810 
+   Save single format to disk: Only show the format available in the selected books.
+   Closes tickets: 1007287 
+   Bug Fixes
+   MOBI Output: When using the insert metadata at start of book option, 
+   do not use a table to layout the metadata, as the Kindle Fire crashes 
+   when rendering the table.
+   Closes tickets: 1002119 (forwarded request 124743 from coolo)</comment>
+    <requestid>124816</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>2c36f39f9e4c1c040d6e3c9f01c75140</srcmd5>
+    <version>0.8.55</version>
+    <time>1340183226</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>85f752ce6927fcfd63d11f565ebb935c</srcmd5>
+    <version>0.8.63</version>
+    <time>1344109234</time>
+    <user>coolo</user>
+    <comment>updated to 0.8.63
+
+New Features
+E-book viewer: Allow quick saving and loading of viewer settings as 'themes'.
+Ebook-viewer: Add a restore defaults button to the viewer preferences dialog
+E-book viewer: Add simple settings for text and background colors
+Add an entry to save to disk when right clicking a format in the book details panel
+ODT metadata: Read first image as the metadata cover from ODT files. Also allow ODT authors to set custom properties for extended metadata.
+E-book viewer and PDF Output: Resize images that are longer than the page to fit onto a single page
+Bug Fixes
+KF8 Output: Fix bug where some calibre generated KF8 files would cause the Amazon KF8 viewer on the Touch to go to into an infinite loop when using the next page function
+News download: Add support for  tags that link to SVG images.
+Update podofo to 0.9.1 in all binary builds, to fix corruption of some PDFs when updating metadata.
+Catalog generation: Handle authors whose last name is a number.
+KF8 Input: Handle html entities in the NCX toc entries correctly
+Fix a calibre crash that affected some windows installs
+MOBI Output: Normalize unicode strings before writing to file, to workaround lack of support for non-normal unicode in Amazon's MOBI renderer.
+EPUB Input: Handle files that have duplicate entries in the spine
+Fix regression in Kobo driver that caused the on device column to not be updated after deleting books</comment>
+    <requestid>129901</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>5b5f69ba7d3bf3f5a05248dd8f1e61cc</srcmd5>
+    <version>0.8.68</version>
+    <time>1348558244</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>135538</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>cd6c9f477c5248c2fbf59741aafbc2db</srcmd5>
+    <version>0.9.0</version>
+    <time>1349673036</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137346</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>e0e208b9543eacd426ab29bec9911677</srcmd5>
+    <version>0.9.2</version>
+    <time>1350935104</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>138891</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>90f1cb0d2275f6b3bd931b68bf0eec2c</srcmd5>
+    <version>0.9.4</version>
+    <time>1351974623</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>140044</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>a70a997df92b95e2401e4bbca7ade400</srcmd5>
+    <version>0.9.5</version>
+    <time>1352358158</time>
+    <user>coolo</user>
+    <comment>Fix for bnc#788151 but only for openSuse 12.2 (forwarded request 140368 from bran0k)</comment>
+    <requestid>140539</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>5bd595cd4a47a57dd6b825b6a09cf205</srcmd5>
+    <version>0.9.8</version>
+    <time>1355058550</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>144610</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>960b44eeff4c37c064b2e49022bbdbe3</srcmd5>
+    <version>0.9.10</version>
+    <time>1356096359</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146229</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>5e06c9d67cdfe9546332bbebce9e8f76</srcmd5>
+    <version>0.9.11</version>
+    <time>1357127711</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146778</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>485cbd2539ffb76b867b154df6749c04</srcmd5>
+    <version>0.9.13</version>
+    <time>1358411811</time>
+    <user>coolo</user>
+    <comment>- Add  buildrequires which is not a hard dependency
+- Cleaned up spec file formatting with spec-cleaner
+- Fixed shebangs on python files (rpmlint warning)
+- Provide obsoleted calibre07 (rpmlint warning)
+- Make sure optflags are set properly (forwarded request 147970 from TheBlackCat)</comment>
+    <requestid>148497</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>485cbd2539ffb76b867b154df6749c04</srcmd5>
+    <version>0.9.13</version>
+    <time>1359108730</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="62" vrev="4">
+    <srcmd5>0ee8140efcf7f8f25b66ea7abe5c8672</srcmd5>
+    <version>0.9.13</version>
+    <time>1359457349</time>
+    <user>coolo</user>
+    <comment>- I am unable to trigger bugs with sip 4.14 so removing the
+  restriction. Also just triggering rebuild in obs should fix the
+  issue I think. (forwarded request 149598 from scarabeus_iv)</comment>
+    <requestid>149987</requestid>
+  </revision>
+  <revision rev="63" vrev="5">
+    <srcmd5>7a1aa8414506234df2cd982503541f5b</srcmd5>
+    <version>unknown</version>
+    <time>1363254948</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>158607</requestid>
+  </revision>
+  <revision rev="64" vrev="6">
+    <srcmd5>a728068b3b4b1bdb526374d868cb0d97</srcmd5>
+    <version>unknown</version>
+    <time>1364808509</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>161852</requestid>
+  </revision>
+  <revision rev="65" vrev="7">
+    <srcmd5>3f6747eef5d2644011ccfb17b37f644a</srcmd5>
+    <version>unknown</version>
+    <time>1367823682</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174466</requestid>
+  </revision>
+  <revision rev="66" vrev="8">
+    <srcmd5>0fcb4b37341ce094875688878fd4a69f</srcmd5>
+    <version>unknown</version>
+    <time>1369640574</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176002</requestid>
+  </revision>
+  <revision rev="67" vrev="9">
+    <srcmd5>dd01ee4f2e13c90d1ad963ce9d365e11</srcmd5>
+    <version>unknown</version>
+    <time>1372925185</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>181930</requestid>
+  </revision>
+  <revision rev="68" vrev="10">
+    <srcmd5>fbefd82beffb2e3d103c4f0435559354</srcmd5>
+    <version>unknown</version>
+    <time>1373977251</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>183082</requestid>
+  </revision>
+  <revision rev="69" vrev="11">
+    <srcmd5>22dc29d98fe4a2077019108d79f8a894</srcmd5>
+    <version>unknown</version>
+    <time>1375112468</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184438</requestid>
+  </revision>
+  <revision rev="70" vrev="12">
+    <srcmd5>5cf6277d07ac71a3cf21fd06feff0151</srcmd5>
+    <version>unknown</version>
+    <time>1376124706</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>186524</requestid>
+  </revision>
+  <revision rev="71" vrev="13">
+    <srcmd5>48bff1bc96708a5d80b5a8cc3ac45601</srcmd5>
+    <version>unknown</version>
+    <time>1377430282</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>196203</requestid>
+  </revision>
+  <revision rev="72" vrev="14">
+    <srcmd5>b1f7b2ceb1a8c11fd64011db1494e40d</srcmd5>
+    <version>unknown</version>
+    <time>1378133316</time>
+    <user>coolo</user>
+    <comment>Update to 1.1</comment>
+    <requestid>196975</requestid>
+  </revision>
+  <revision rev="73" vrev="16">
+    <srcmd5>b1f7b2ceb1a8c11fd64011db1494e40d</srcmd5>
+    <version>unknown</version>
+    <time>1379662083</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="74" vrev="17">
+    <srcmd5>5c76c62c3b6f885810331597b7fc5551</srcmd5>
+    <version>1.5</version>
+    <time>1382100620</time>
+    <user>scarabeus_factory</user>
+    <comment>Needed for 13.1 too to fix dep issues and other annoyances</comment>
+    <requestid>203724</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>2a253ef94afc8e6c6398372481ef075e</srcmd5>
+    <version>1.10</version>
+    <time>1384854293</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>207360</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>95989ae517f23bad0223144185882a43</srcmd5>
+    <version>1.13</version>
+    <time>1386527165</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>209810</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>7e632d96da2244cde12c5344112e68fd</srcmd5>
+    <version>1.14.0</version>
+    <time>1386693722</time>
+    <user>coolo</user>
+    <comment>- updated to version 1.14.0
+- New features:
+  o Edit metadata dialog: Add the ability to trim covers manually, 
+    if automatic trimming is not satisfactory.
+    Closes tickets: 1256054
+  o You can now show any metadata field below the covers in the 
+    cover grid view, not just title. To change the displayed field 
+    go to Preferences-&gt;Look &amp; Feel-&gt;Cover Grid.
+  o Allow searching for plugins by name in the install new 
+    plugins dialog
+  o Kobo driver: Allow sending kepubs to older kobo devices as well, 
+    also add support for firmware 3.10
+    Closes tickets: 1257972, 1257143
+  o Allow viewer plugins to customize the viewer's user interface
+- Bug Fixes:
+  o Table of Contents Editor: Handle generating ToC from headings 
+    if the first heading level in the document is not h1 or the 
+    document skips some intermediate heading levels
+  o Update the metadata download and Get Books plugins for ozon.ru
+  o Fix sending by email not working on computers with non-ascii hostnames.
+    Closes tickets: 1256549
+  o Wireless driver: Fix launching programs from within calibre causing 
+    the wireless driver port to remain in use even after calibre is shutdown.
+    Closes tickets: 1256198
+- Improved news sources
+  o Kommersant
+  o Pocket
+  o Heraldo de Aragon
+  o National Geographic Magazine
+  o Los Angeles Times (forwarded request 210073 from ealin)</comment>
+    <requestid>210079</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>0b7265bff8bb9db32a7a97919315d75d</srcmd5>
+    <version>1.15.0</version>
+    <time>1387823501</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>211949</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>055240333c7e2f18f1d0163d42d04c08</srcmd5>
+    <version>1.19.0</version>
+    <time>1390428969</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>214189</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>5af708246047eccb853645d1e350a4d2</srcmd5>
+    <version>1.21.0</version>
+    <time>1391030135</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>215538</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>5584c76a0352569e32813fdeefc9d372</srcmd5>
+    <version>1.22.0</version>
+    <time>1391852030</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221342</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>d6ac03a45b128ae1af12b4061a1b1d55</srcmd5>
+    <version>1.23.0</version>
+    <time>1392731036</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>222642</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>116ac60d45b013a45bf2784e2283e7b6</srcmd5>
+    <version>1.29.0</version>
+    <time>1396291357</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>228216</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>5e1ee3fd2bd689fd98e5d490ababfb84</srcmd5>
+    <version>1.35.0</version>
+    <time>1399755451</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>233344</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>0d78c643b58dbab643b348b4cf4022f8</srcmd5>
+    <version>1.37.0</version>
+    <time>1400910049</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>235153</requestid>
+  </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>0d78c643b58dbab643b348b4cf4022f8</srcmd5>
+    <version>1.37.0</version>
+    <time>1409300611</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>579be8385ad5eeb17fa7091e48622269</srcmd5>
+    <version>1.48.0</version>
+    <time>1412589994</time>
+    <user>coolo</user>
+    <comment>update to 1.48.0, the last release for qt4</comment>
+    <requestid>254048</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>026c3d535a225d706e17285b53d749a2</srcmd5>
+    <version>2.5.0</version>
+    <time>1412799231</time>
+    <user>coolo</user>
+    <comment>update to latest version: 2.5.0</comment>
+    <requestid>254604</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>5cce2c96551842c9ff8bd473545d141d</srcmd5>
+    <version>2.6.0</version>
+    <time>1413616194</time>
+    <user>coolo</user>
+    <comment>update to version 2.6.0</comment>
+    <requestid>257493</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>805e7fe11fa150e9c92c0cad034f7d47</srcmd5>
+    <version>2.7.0</version>
+    <time>1414943143</time>
+    <user>coolo</user>
+    <comment>update to 2.7.0</comment>
+    <requestid>258875</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>ff5244fff13afccc107bba557ec7256f</srcmd5>
+    <version>2.9.0</version>
+    <time>1415664652</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.9.0</comment>
+    <requestid>260533</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>d056314e193a2ea103682c0d7377dc26</srcmd5>
+    <version>2.10.0</version>
+    <time>1416347232</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.10.0</comment>
+    <requestid>262038</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>03dc695ad64eb56460d65359b2b594e7</srcmd5>
+    <version>2.11.0</version>
+    <time>1416994394</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.11.0</comment>
+    <requestid>262820</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>d5b0be1c04790a61555fba87f4a067f5</srcmd5>
+    <version>2.12.0</version>
+    <time>1417438891</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.12.0</comment>
+    <requestid>263523</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>d090af2852a01e404cfdd19d13725272</srcmd5>
+    <version>2.13.0</version>
+    <time>1419159906</time>
+    <user>coolo</user>
+    <comment>update to version 2.13.0</comment>
+    <requestid>265960</requestid>
+  </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>9dd46151adf37c3e0b8f285059140049</srcmd5>
+    <version>2.13.0</version>
+    <time>1419546110</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266347</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>993d681c45595a29ef85c1dd8b84c4c7</srcmd5>
+    <version>2.14.0</version>
+    <time>1419896995</time>
+    <user>dimstar_suse</user>
+    <comment>update to new version</comment>
+    <requestid>266590</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>0d31406229895e00751b7eff5910319b</srcmd5>
+    <version>2.15.0</version>
+    <time>1420318877</time>
+    <user>dimstar_suse</user>
+    <comment>update to new version 2.15.0</comment>
+    <requestid>267092</requestid>
+  </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>cbb0c64b242a2811d78cebb318525b0d</srcmd5>
+    <version>2.15.0</version>
+    <time>1420619949</time>
+    <user>dimstar_suse</user>
+    <comment>remove liberation fonts from package</comment>
+    <requestid>280076</requestid>
+  </revision>
+  <revision rev="100" vrev="3">
+    <srcmd5>ad98afbc5367cdc953a03a8f3ce235f0</srcmd5>
+    <version>2.15.0</version>
+    <time>1420754544</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280146</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>d0e9c05c0e857cfa4ee77a5a53c3211f</srcmd5>
+    <version>2.16.0</version>
+    <time>1421232329</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.16.0</comment>
+    <requestid>281027</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>dc8e4833a7db75b4b3d24eb712d9cfae</srcmd5>
+    <version>2.17.0</version>
+    <time>1422134463</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.17.0</comment>
+    <requestid>282610</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>417ea47736b736ca34bde0e5e0e140f5</srcmd5>
+    <version>2.18.0</version>
+    <time>1422790206</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.18.0</comment>
+    <requestid>283555</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>843a0a48262f04ca660a8f41fbee124e</srcmd5>
+    <version>2.19.0</version>
+    <time>1423732971</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.19.0</comment>
+    <requestid>285752</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>e03d3968dbc9e499dcd88168a69cdd53</srcmd5>
+    <version>2.20.0</version>
+    <time>1424622416</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.20.0</comment>
+    <requestid>287121</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>dac8cb967e7dc5744592860c658e8bd6</srcmd5>
+    <version>2.21.0</version>
+    <time>1426680455</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.21</comment>
+    <requestid>291162</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>257e4e05c05c11ee92096794de233f65</srcmd5>
+    <version>2.22.0</version>
+    <time>1427274047</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.22.0</comment>
+    <requestid>292438</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>2d866f5910a20c3d1b4bdb53369dd36c</srcmd5>
+    <version>2.23.0</version>
+    <time>1428192271</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.23.0</comment>
+    <requestid>294505</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>3c9bb7ee5c0b5cf7f24772602bc92154</srcmd5>
+    <version>2.24.0</version>
+    <time>1428949887</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.24</comment>
+    <requestid>295681</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>81734bc3501584e05283553828676a69</srcmd5>
+    <version>2.25.0</version>
+    <time>1429606319</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.25.0</comment>
+    <requestid>297919</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>ae0a9d97f9a2b6ffc2684b311b493a56</srcmd5>
+    <version>2.26.0</version>
+    <time>1430246896</time>
+    <user>coolo</user>
+    <comment>update to 2.26.0</comment>
+    <requestid>304305</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>3babbc9ea34a3345f83b908324635559</srcmd5>
+    <version>2.27.0</version>
+    <time>1430576128</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.27.0</comment>
+    <requestid>304961</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>9ff26dc3729f563339b25584a8648f46</srcmd5>
+    <version>2.28.0</version>
+    <time>1432889257</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.28.0</comment>
+    <requestid>309128</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>ca00e00921c2ce0eaac6f0fff2b1576b</srcmd5>
+    <version>2.29.0</version>
+    <time>1433232627</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.29.0</comment>
+    <requestid>309621</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>dc0562ec7e0c523d6aeac806dcd8ebb2</srcmd5>
+    <version>2.30.0</version>
+    <time>1433577277</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.30.0</comment>
+    <requestid>310593</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>68e10df499dd995fb21200e41af7e9f1</srcmd5>
+    <version>2.31.0</version>
+    <time>1435652344</time>
+    <user>dimstar_suse</user>
+    <comment>new version: 2.31.0</comment>
+    <requestid>314280</requestid>
+  </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>7b59cc89653e9f7b091176db63db46ba</srcmd5>
+    <version>2.31.0</version>
+    <time>1436734328</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315181</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>721bb83910f1bde76cd25e7b8369b956</srcmd5>
+    <version>2.32.1</version>
+    <time>1437724745</time>
+    <user>coolo</user>
+    <comment>update to 2.32.1</comment>
+    <requestid>318235</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>6766a78a4464eabba5d9dc04bbbd0354</srcmd5>
+    <version>2.36.0</version>
+    <time>1441054762</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.36</comment>
+    <requestid>328048</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>c0d4752b3d980f40c82c9f8aaa9a42dc</srcmd5>
+    <version>2.37.1</version>
+    <time>1441727177</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.37.1</comment>
+    <requestid>329743</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>b1635b04ca75a348f7965c80a02b85c9</srcmd5>
+    <version>2.38.0</version>
+    <time>1442130324</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.38.0</comment>
+    <requestid>330556</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>3a6927cae78691de54403bfdb49dcb1c</srcmd5>
+    <version>2.39.0</version>
+    <time>1443684574</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.39.0</comment>
+    <requestid>334965</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>312bd6e1b641407c7d99df39d5490089</srcmd5>
+    <version>2.40.0</version>
+    <time>1444130795</time>
+    <user>dimstar_suse</user>
+    <comment>new version: 2.40.0</comment>
+    <requestid>336048</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>dbe355eae9657c996023ac4cfc1a0c3d</srcmd5>
+    <version>2.41.0</version>
+    <time>1445287926</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.41.0</comment>
+    <requestid>339278</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>2552008bdb21621d953558c6dc2142dd</srcmd5>
+    <version>2.43.0</version>
+    <time>1446978440</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.43</comment>
+    <requestid>342878</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>da16c86d6667dd6ac320e7ef51990000</srcmd5>
+    <version>2.45.0</version>
+    <time>1448720388</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.45.0</comment>
+    <requestid>346638</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>45bbe3f10e952eb8a40a0ca057ab9ac5</srcmd5>
+    <version>2.46.0</version>
+    <time>1450084454</time>
+    <user>coolo</user>
+    <comment>update to 2.46.0</comment>
+    <requestid>348708</requestid>
+  </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>7a541d9a9056da1091fbde8f8e696808</srcmd5>
+    <version>2.46.0</version>
+    <time>1450284183</time>
+    <user>dimstar_suse</user>
+    <comment>Updated BuildRequires and Requires to the latest requirements</comment>
+    <requestid>348865</requestid>
+  </revision>
+  <revision rev="129" vrev="3">
+    <srcmd5>74d45b1389d6940518cf9a9268a2806d</srcmd5>
+    <version>2.46.0</version>
+    <time>1450955853</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>350556</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>0f4bd51ca86b20cccef9ddc7701bc64a</srcmd5>
+    <version>2.49.0</version>
+    <time>1453018999</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.49.0</comment>
+    <requestid>353801</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>f89c7cf99ff6b729d90f676d0e843a56</srcmd5>
+    <version>2.50.0</version>
+    <time>1454352976</time>
+    <user>dimstar_suse</user>
+    <comment>new version</comment>
+    <requestid>356725</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>8c574cc57fbe77b39b30c7c8558edc90</srcmd5>
+    <version>2.51.0</version>
+    <time>1455610726</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.51.0</comment>
+    <requestid>359011</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>b8b792b4ce369d3d744c4d66d79f1c74</srcmd5>
+    <version>2.52.0</version>
+    <time>1456521597</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>361916</requestid>
+  </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>e083ceef47e80c1edca885e44914ebc5</srcmd5>
+    <version>2.52.0</version>
+    <time>1457945850</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>368748</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>75d4485a39960b17fd036a2917e58163</srcmd5>
+    <version>2.53.0</version>
+    <time>1458120974</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.53</comment>
+    <requestid>372981</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>39ca8bfe820693882a951f7537dafd53</srcmd5>
+    <version>2.55.0</version>
+    <time>1460924243</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.55.0</comment>
+    <requestid>390261</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>1998c2341e3687e7d961dca5f8101ce9</srcmd5>
+    <version>2.56.0</version>
+    <time>1462051907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>392076</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>100a87c044799972e11efc1fac6ecc88</srcmd5>
+    <version>2.57.1</version>
+    <time>1464299660</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.57.1</comment>
+    <requestid>397713</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>d815f5c4276ad698555e98330768a739</srcmd5>
+    <version>2.58.0</version>
+    <time>1465129258</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.58.0</comment>
+    <requestid>399959</requestid>
+  </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>ed87846f1e9956324a6d2ba6648af4ac</srcmd5>
+    <version>2.60.0</version>
+    <time>1467359905</time>
+    <user>dimstar_suse</user>
+    <comment>new version</comment>
+    <requestid>404487</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>1d6e6ddd892b61bf54e8fda97fcb56ce</srcmd5>
+    <version>2.62.0</version>
+    <time>1468482559</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.62.0:
+  * Improved support for EPUB 3
+  * Recognize the newest Kindle model (SY69JL) (lp#1599970)
+  * Fix KoboTouch configuration migration not working for older
+    settings (lp#1598017).
+  * For details see http://calibre-ebook.com/whats-new
+
+- Update to 2.61.0:
+  * Driver for FNAC (re-branded Bq) with new firmware (lp#1595924).
+  * Edit Book: Check Book: Add an auto fix action to remove all
+    links to a missing resource (such as a deleted stylesheet)
+    automatically (lp#1596048).
+  * Kobo driver: Fix a regression in the last release that broke
+    connecting to older devices (lp#1596801).
+  * For details see http://calibre-ebook.com/whats-new</comment>
+    <requestid>407807</requestid>
+  </revision>
+  <revision rev="142" vrev="2">
+    <srcmd5>3ab09e1c09378b64d135c4e9495cc399</srcmd5>
+    <version>2.62.0</version>
+    <time>1468999169</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411528</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>5d85bbbc6ae767daead0ff2c423564bf</srcmd5>
+    <version>2.63.0</version>
+    <time>1469831244</time>
+    <user>dimstar_suse</user>
+    <comment>Fix metainfo data regression from previous patch</comment>
+    <requestid>415231</requestid>
+  </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>6f8efd54fb68156c3886ea1fcedb4016</srcmd5>
+    <version>2.63.0</version>
+    <time>1472111837</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>421489</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>f70fdd9c927062a2a6d67613269f62d8</srcmd5>
+    <version>2.64.0</version>
+    <time>1472477735</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.64</comment>
+    <requestid>421924</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>2b5328aa49a170edaf99a6f1789b36d4</srcmd5>
+    <version>2.65.1</version>
+    <time>1472595066</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.65.1</comment>
+    <requestid>423727</requestid>
+  </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>aa47edc62f309de8a1a1ba0b624fb1b6</srcmd5>
+    <version>2.66.0</version>
+    <time>1473103329</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.66</comment>
+    <requestid>424392</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>844c9bd181b2ac172daca52dd6fdd06e</srcmd5>
+    <version>2.67.0</version>
+    <time>1473409245</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.67.0:
+  * Devices:
+    - Kobo driver: Add support for firmware version 4 available on
+      the new Kobo Aura One
+  * For details see http://calibre-ebook.com/whats-new</comment>
+    <requestid>425685</requestid>
+  </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>ac66bddba543cfaa9df9519d9822b7f8</srcmd5>
+    <version>2.68.0</version>
+    <time>1474116051</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.68.0</comment>
+    <requestid>428262</requestid>
+  </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>53e1f4a30e09d4f920353e22611b1d4c</srcmd5>
+    <version>2.69.0</version>
+    <time>1475359717</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.69.0:
+  * Devices:
+    - Kobo driver: Support for firmware version 4.1 and Overdrive
+      books on the device
+    - Kobo driver: Fix delete of empty collections
+    - Kobo driver: Fix book previews being sometimes detected as
+      actual books
+  * Fix downloading of metadata from ozon.ru, which broke due to
+    website changes
+  * For details see http://calibre-ebook.com/whats-new</comment>
+    <requestid>431511</requestid>
+  </revision>
+  <revision rev="151" vrev="2">
+    <srcmd5>c4a5d119044be99f8b3cf381a918baa1</srcmd5>
+    <version>2.69.0</version>
+    <time>1476780085</time>
+    <user>dimstar_suse</user>
+    <comment>- Added Fix-editing-color-schemes.patch to fix dialog for editing
+  color-schemes (lp#1629294)
+- Added Update-amazon-store-plugin.patch because of Amazon website
+  changes
+- Added Update-db-version-kobo-driver.patch to make sure calibre is
+  working correctly with kobo firmware</comment>
+    <requestid>434681</requestid>
+  </revision>
+  <revision rev="152" vrev="3">
+    <srcmd5>50ffd274a751dae813ae2bf17593f609</srcmd5>
+    <version>2.69.0</version>
+    <time>1477219916</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>436583</requestid>
+  </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>670c3a7c6bff84748bfc216066297274</srcmd5>
+    <version>2.70.0</version>
+    <time>1478377488</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.70</comment>
+    <requestid>437730</requestid>
+  </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>3398063d5e0bf8423ba1e4ec86451ffd</srcmd5>
+    <version>2.71.0</version>
+    <time>1479074545</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>440075</requestid>
+  </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>2a485cba0a8f033a458bb25db6ca7736</srcmd5>
+    <version>2.73.0</version>
+    <time>1480584395</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.73.0:
+  * For details see http://calibre-ebook.com/whats-new</comment>
+    <requestid>442632</requestid>
+  </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>44fcc3f38defe415cef1d4318825fb2b</srcmd5>
+    <version>2.74.0</version>
+    <time>1481543211</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>445212</requestid>
+  </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>2b8e13d4889cd6aff97d8fba134e4d0b</srcmd5>
+    <version>2.75.1</version>
+    <time>1483048233</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447732</requestid>
+  </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>831c1451b6794e08ec4ea21685e34859</srcmd5>
+    <version>2.76.0</version>
+    <time>1483555142</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>448434</requestid>
+  </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>89ee8732be9ede0537eb484dab06f5b5</srcmd5>
+    <version>2.77.0</version>
+    <time>1484660162</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450177</requestid>
+  </revision>
+  <revision rev="160" vrev="2">
+    <srcmd5>0018338bbeebfd461c80ae6238da946f</srcmd5>
+    <version>2.77.0</version>
+    <time>1485250804</time>
+    <user>dimstar_suse</user>
+    <comment>- Make requirements for python-qt5 and python-sip tighter to avoid
+  random crashes when these libraries are updated (see e.g.
+  boo#1011610 and
+  https://lists.opensuse.org/opensuse-factory/2017-01/msg00390.html)</comment>
+    <requestid>451901</requestid>
+  </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>e8240e99fd35abd6d70d9ac6ba2ae6c3</srcmd5>
+    <version>2.78.0</version>
+    <time>1485682864</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453002</requestid>
+  </revision>
+  <revision rev="162" vrev="2">
+    <srcmd5>59278fd8d0f2e5129ea5f6f861b2d3c3</srcmd5>
+    <version>2.78.0</version>
+    <time>1486390959</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454645</requestid>
+  </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>ce3800d3ef2b9b1944c9d8538862fa72</srcmd5>
+    <version>2.79.0</version>
+    <time>1487029659</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456126</requestid>
+  </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>b6facedff8f38a149d88d34b9885574d</srcmd5>
+    <version>2.80.0</version>
+    <time>1488125374</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460281</requestid>
+  </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>767ad44ba3200f899e8642e632176625</srcmd5>
+    <version>2.81.0</version>
+    <time>1489241979</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478628</requestid>
+  </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>a679310ff68b50b2a2b1f4aedc802df2</srcmd5>
+    <version>2.82.0</version>
+    <time>1489866669</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>481022</requestid>
+  </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>ddb9d8242b98133e849891f74a2ad1e0</srcmd5>
+    <version>2.83.0</version>
+    <time>1493020241</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490025</requestid>
+  </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>4c7f71ed99a98e71b9c8d6dc352c3ea4</srcmd5>
+    <version>2.84.0</version>
+    <time>1494088295</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493162</requestid>
+  </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>7f5029e5086c0e7bbad651c1be4f9894</srcmd5>
+    <version>2.85.1</version>
+    <time>1494938786</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495091</requestid>
+  </revision>
+  <revision rev="170" vrev="2">
+    <srcmd5>918d5525118f1b4702f9396d9e3cfb7d</srcmd5>
+    <version>2.85.1</version>
+    <time>1497603273</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503791</requestid>
+  </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>546b436b8b3dd9b3bcbc4185584790df</srcmd5>
+    <version>3.6.0</version>
+    <time>1503593580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>516906</requestid>
+  </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>0cb8fbf3d9f626a069596e8c6466f980</srcmd5>
+    <version>3.7.0</version>
+    <time>1503926260</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518871</requestid>
+  </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>bb4b0ee79b6128c0837ebe1a4a9d3792</srcmd5>
+    <version>3.8.0</version>
+    <time>1506524090</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528392</requestid>
+  </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>5b24bee821280abbdb020887dc645864</srcmd5>
+    <version>3.9.0</version>
+    <time>1507571192</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build error for Tumbleweed
+- Avoid running fdupes across partition boundaries.
+- Remove irrelevant parts from description.
+- update to 3.9.0
+  New Features
+  - Remove the Connect to iTunes function since Apple has removed 
+    that functionality from iTunes
+  - Kobo driver: Support for new firmware
+  - Allow changing the icons in yes/no columns via column icon 
+    rules.
+  - Quickview panel: Add a context menu with a &quot;View&quot; action to 
+    the book table.
+  - Make the elapsed time display in the jobs dialog more human 
+    friendly.
+  Bug Fixes
+  - EPUB Input: Fix styles in existing titlepage not being 
+    flattened when the titlepage is preserved during conversion.
+  - Fix conversion of grayscale JPEG-XR images not working
+  - Update the douban metadata download plugin to match changes to 
+    the website
+  - DOCX Output: Fix the preserve cover aspect ratio option not 
+    visible
+</comment>
+    <requestid>532586</requestid>
+  </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>764b47c4b26874b6945459570745d7e8</srcmd5>
+    <version>3.10.0</version>
+    <time>1508610128</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535647</requestid>
+  </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>730cbb899d9bfef72ccccc0112dd7cea</srcmd5>
+    <version>3.11.1</version>
+    <time>1509722920</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538496</requestid>
+  </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>21516621828bec312b03d20290d38b76</srcmd5>
+    <version>3.12.0</version>
+    <time>1510506203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540723</requestid>
+  </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>5c48dabac2d92d6d727f7edd6cce4a2e</srcmd5>
+    <version>3.13.0</version>
+    <time>1512378114</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547087</requestid>
+  </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>41b11664e8e3bb10406dc80d4cb81acf</srcmd5>
+    <version>3.14.0</version>
+    <time>1513677458</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557684</requestid>
+  </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>9c06b5d7704146e6262d71c50dc3691e</srcmd5>
+    <version>3.15.0</version>
+    <time>1515261344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562034</requestid>
+  </revision>
+  <revision rev="181" vrev="2">
+    <srcmd5>d413d073d74a8789a210f034af268263</srcmd5>
+    <version>3.15.0</version>
+    <time>1516092137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>564033</requestid>
+  </revision>
+  <revision rev="182" vrev="3">
+    <srcmd5>f93587c411c0cb4d3ec1184bbb2ff945</srcmd5>
+    <version>3.15.0</version>
+    <time>1516970342</time>
+    <user>dimstar_suse</user>
+    <comment>Update changes to correctly describe change
+</comment>
+    <requestid>569366</requestid>
+  </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>5adafc6fc155c7b032ed115cb30ad09e</srcmd5>
+    <version>3.16.0</version>
+    <time>1517167958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570238</requestid>
+  </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>18afedcf24a238f89297350be2c51030</srcmd5>
+    <version>3.17.0</version>
+    <time>1518281943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574835</requestid>
+  </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>065e24f2da693901090470ed23afdf49</srcmd5>
+    <version>3.18.0</version>
+    <time>1519486780</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579767</requestid>
+  </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>967e4376f8028413bef23da0761752f6</srcmd5>
+    <version>3.19.0</version>
+    <time>1520778357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585271</requestid>
+  </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>1de59a1bfa9d7bcfb8f5e9c08989bf2c</srcmd5>
+    <version>3.20.0</version>
+    <time>1521904599</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590815</requestid>
+  </revision>
+  <revision rev="188" vrev="1">
+    <srcmd5>b6af9b59cfbd6eff247dad9692acf832</srcmd5>
+    <version>3.21.0</version>
+    <time>1523350471</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594657</requestid>
+  </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>117f133e145ec90f862dd948ccc89bf4</srcmd5>
+    <version>3.22.1</version>
+    <time>1524400862</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599590</requestid>
+  </revision>
+  <revision rev="190" vrev="1">
+    <srcmd5>191d07ca0d32cc2b67f27bc4aa526642</srcmd5>
+    <version>3.23.0</version>
+    <time>1525611731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>604392</requestid>
+  </revision>
+  <revision rev="191" vrev="2">
+    <srcmd5>67f78f0c243ee7fc6121b9dd6b9c0521</srcmd5>
+    <version>3.23.0</version>
+    <time>1526372135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607032</requestid>
+  </revision>
+  <revision rev="192" vrev="1">
+    <srcmd5>2de60f78b0d36df80db92bf833d9b9e9</srcmd5>
+    <version>3.24.2</version>
+    <time>1527583780</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612687</requestid>
+  </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>2435933eb56078879356b9bd696a156d</srcmd5>
+    <version>3.25.0</version>
+    <time>1527934536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613573</requestid>
+  </revision>
+  <revision rev="194" vrev="1">
+    <srcmd5>d472fbd76f989d628deedc30702f6658</srcmd5>
+    <version>3.26.1</version>
+    <time>1529402581</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617059</requestid>
+  </revision>
+  <revision rev="195" vrev="1">
+    <srcmd5>85dad6b3a6169102602e913338328b72</srcmd5>
+    <version>3.27.1</version>
+    <time>1530993749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621360</requestid>
+  </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>c9085c7c9bb99ab9f2e1ebfe50f29199</srcmd5>
+    <version>3.28.0</version>
+    <time>1532293545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624427</requestid>
+  </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>2239982c4dc7acf6c18647b04cc3fb40</srcmd5>
+    <version>3.29.0</version>
+    <time>1534099961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628562</requestid>
+  </revision>
+  <revision rev="198" vrev="1">
+    <srcmd5>6814b7b7fe9ff500d3059459786dc51c</srcmd5>
+    <version>3.30.0</version>
+    <time>1535367558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631515</requestid>
+  </revision>
+  <revision rev="199" vrev="1">
+    <srcmd5>8641c26a0a38f0babb8abdc0e7630541</srcmd5>
+    <version>3.31.0</version>
+    <time>1536678979</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634253</requestid>
+  </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>0f1dca5dd0397bf5dfbb6e0e0f3ab00d</srcmd5>
+    <version>3.32.0</version>
+    <time>1538374793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639069</requestid>
+  </revision>
+  <revision rev="201" vrev="1">
+    <srcmd5>5d90f0f06ccf8aa41e0aa3f9a2efe12f</srcmd5>
+    <version>3.33.1</version>
+    <time>1540319813</time>
+    <user>dimstar_suse</user>
+    <comment>- change require version for python-msgpack from 0.5.6 to 0.5.4 
+  so calibre can build for Leap 15.1
+- update to 3.33.1
+  New Features
+  - Driver for the new Kobo Forma
+  - PDF Output: Add a new 'page number map' setting to easily 
+    modify page numbers as needed in headers/fotters and the 
+    generated inline table of contents.
+  - Edit book: Insert image: remember size of displayed thumbnails.
+  - Edit book: Compress images losslessly: Remember the last used 
+    compression quality for jpeg compression.
+  Bug Fixes
+  - CHM Input: Fix a regression in the previous release that broke 
+    processing of CHM files.
+  - Fix clearing of metadata download author and tag map rules not
+    working
+  - Fix notifications from calibre being displayed as &quot;Others&quot; on 
+    the GNOME desktop
+- Drop Patch calibre-UnicodeEncodeError-build.patch, 
+  because now in upstream
+</comment>
+    <requestid>643545</requestid>
+  </revision>
+  <revision rev="202" vrev="1">
+    <srcmd5>433467c54fc4212a859e1e2eb574faf9</srcmd5>
+    <version>3.34.0</version>
+    <time>1541865678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647446</requestid>
+  </revision>
+  <revision rev="203" vrev="1">
+    <srcmd5>307d4ec4d3f7a91f364f3f06a2c3a0a9</srcmd5>
+    <version>3.35.0</version>
+    <time>1544264527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656132</requestid>
+  </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>7859b706955e124ed9516464b98f0fb7</srcmd5>
+    <version>3.36.0</version>
+    <time>1545648444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660607</requestid>
+  </revision>
+  <revision rev="205" vrev="1">
+    <srcmd5>faae80ac35f400b5fc94d74df19c416d</srcmd5>
+    <version>3.38.1</version>
+    <time>1548537713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667061</requestid>
+  </revision>
+  <revision rev="206" vrev="1">
+    <srcmd5>f2f7424649aad7f81d5da20a5256a2ac</srcmd5>
+    <version>3.39.1</version>
+    <time>1549140624</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670711</requestid>
+  </revision>
+  <revision rev="207" vrev="1">
+    <srcmd5>b10b502e240e511e4b6b32216cbcc326</srcmd5>
+    <version>3.40.1</version>
+    <time>1553611235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683007</requestid>
+  </revision>
+  <revision rev="208" vrev="1">
+    <srcmd5>a8cac56370fb42511c180a73e6704624</srcmd5>
+    <version>3.44.0</version>
+    <time>1560970942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706628</requestid>
+  </revision>
+  <revision rev="209" vrev="2">
+    <srcmd5>fbf75257323de4b05f38e87830379073</srcmd5>
+    <version>3.44.0</version>
+    <time>1561970684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712729</requestid>
+  </revision>
+  <revision rev="210" vrev="3">
+    <srcmd5>aafd8d73852e5c674b365575fc5064c4</srcmd5>
+    <version>3.44.0</version>
+    <time>1562843657</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713098</requestid>
+  </revision>
+  <revision rev="211" vrev="1">
+    <srcmd5>8e3ba2b912704c26c8b26d265646df08</srcmd5>
+    <version>3.45.2</version>
+    <time>1563018623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714918</requestid>
+  </revision>
+  <revision rev="212" vrev="1">
+    <srcmd5>292c6747b403d21df536d927d8da7ca3</srcmd5>
+    <version>3.46.0</version>
+    <time>1563701692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717115</requestid>
+  </revision>
+  <revision rev="213" vrev="2">
+    <srcmd5>80ad7e2c9e5c39a92868899e65498670</srcmd5>
+    <version>3.46.0</version>
+    <time>1567010147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726543</requestid>
+  </revision>
+  <revision rev="214" vrev="1">
+    <srcmd5>49b8cd0597363177cc4db85405c1dadc</srcmd5>
+    <version>3.47.0</version>
+    <time>1567168977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727195</requestid>
+  </revision>
+  <revision rev="215" vrev="1">
+    <srcmd5>2a7a57fe53700419be0d5ec56092c69c</srcmd5>
+    <version>3.47.1</version>
+    <time>1567581085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727719</requestid>
+  </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>283d98c6ad44c1d277995fcda42dbc20</srcmd5>
+    <version>3.48.0</version>
+    <time>1568379778</time>
+    <user>lnussel_factory</user>
+    <comment></comment>
+    <requestid>730599</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="slf4j-sources" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="slf4j"/>
+  <bcntsynctag>slf4j</bcntsynctag>
+</package>

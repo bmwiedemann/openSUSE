@@ -1,0 +1,1801 @@
+-------------------------------------------------------------------
+Wed Feb 28 19:27:33 UTC 2018 - git@opensuse.org
+
+- Update to version 84.87.20180228.827b030:
+  * Update some links, copyright date, kick out commented content
+  * Fix #65, add "to"
+  * Remove CUPS entry entirely, "old news" (fixes #65)
+  * Update to DocBook 5
+  * Add two relevant new entries (apparmor stop, compose key)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Galician)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (French)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Ukrainian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Bulgarian)
+  * Translated using Weblate (Marathi)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Japanese)
+
+-------------------------------------------------------------------
+Mon Jul 24 15:05:10 UTC 2017 - tchvatal@suse.com
+
+- Move two additional overlooked fonts to the fonts section
+
+-------------------------------------------------------------------
+Mon Jul 24 11:17:47 UTC 2017 - tchvatal@suse.com
+
+- Switch to disabled run so services are not executed every time
+- Run over with spec-cleaner
+- Remove recode dependency
+
+-------------------------------------------------------------------
+Mon Jul 24 10:15:57 UTC 2017 - tchvatal@suse.com
+
+- Update to version 84.87.20170713.6d2142e:
+  * add hint to disable plymouth if passphrase isn't asked
+  * Add nn.po on request of Weblate user.
+  * Add 42.2 to sync list
+  * Add 42.3 such that it should be synced to the website
+  * fix typo: LGO -> LOG
+  * Include release-notes.pot
+  * OBS RN repo/package config: skip sync of 13.1, remove bogus 13.3 line
+  * Reamde: Some more finessing
+  * Remove old index.html file & add a README
+  * Remove trailing whitespace from update script
+  * Small language fixes for LUKS entry, regenerate PO file
+  * Sync with deployed version
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Bulgarian)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (English (United Kingdom))
+  * Translated using Weblate (French)
+  * Translated using Weblate (Galician)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Greek)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Korean)
+  * Translated using Weblate (Lithuanian)
+  * Translated using Weblate (Norwegian Bokmål)
+  * Translated using Weblate (Persian)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Portuguese)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Serbian)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Ukrainian)
+  * Update the README with more info on contributing
+
+-------------------------------------------------------------------
+Sat Feb 06 23:13:27 UTC 2016 - git@opensuse.org
+
+- Update to version 84.87.20160127.f5d262b:
+  + Make sure building PO files fails when the document is invalid
+
+-------------------------------------------------------------------
+Sat Feb  6 02:14:34 UTC 2016 - belphegor@belbel.or.jp
+
+- Added four fonts for Chinese/Japanese pdf (bnc#965462)
+
+-------------------------------------------------------------------
+Wed Dec 16 08:22:17 UTC 2015 - git@opensuse.org
+
+- Update to version 84.87.20151207.e808957:
+  + Translated using Weblate
+
+-------------------------------------------------------------------
+Tue Dec 15 17:45:16 UTC 2015 - sknorr@suse.com
+
+- set mode="localonly" in _service file
+
+-------------------------------------------------------------------
+Thu Nov 26 15:36:43 UTC 2015 - lnussel@suse.de
+
+- update service file to be shared with github triggered packages
+- Update to version 84.87.20151126.2ec7084:
+  + refer to Tumbleweed
+  + sync tools with deployed version
+  + remove paragraphs that don't apply to TW
+  + Fix Leap 42.1 release notes URL
+  + reword the printing section and make it more readable
+  + make sure en is always generated
+
+-------------------------------------------------------------------
+Mon Nov  9 14:48:18 UTC 2015 - ke@suse.de
+
+- 42.1.20151109:
+- Update; bsc#932502.
+- .spec: create po/LINGUAS first.
+
+-------------------------------------------------------------------
+Wed Oct 28 14:25:56 UTC 2015 - ke@suse.de
+
+- 42.1.20151028:
+- Changed entries: Warn about minimal install not having
+  yast or susefirewall (bsc#951866).
+
+-------------------------------------------------------------------
+Tue Oct 27 11:14:55 UTC 2015 - ke@suse.de
+
+- 42.1.20151027:
+- New entries: CUPS (bsc#951596); Warn about minimal install not having
+  yast or susefirewall (bsc#951866).
+- Removed entries: grep update (bsc#932494); openSUSE Leap as Guest in
+  VirtualBox (bsc#952019).
+
+-------------------------------------------------------------------
+Fri Oct 23 10:44:14 UTC 2015 - ke@suse.de
+
+- 42.1.20151023 (bsc#950877):
+- Updating some texts and translations.
+
+-------------------------------------------------------------------
+Thu Oct 22 13:15:26 UTC 2015 - ke@suse.de
+
+- 42.1.20151022 (bsc#950877):
+- New entries: openSUSE Leap as Guest in VirtualBox (bsc#950877).
+
+-------------------------------------------------------------------
+Mon Oct 12 15:53:38 UTC 2015 - ke@suse.de
+
+- 42.1.20151012 (bsc#949491):
+- New entries: grep update (bsc#932494); Base System Installation
+  (bsc#947712).
+
+-------------------------------------------------------------------
+Thu Oct  8 15:26:47 UTC 2015 - ke@suse.de
+
+- 42.1.20151008:
+- Start resetting for 42.1 (bsc#949491, partially done).
+
+-------------------------------------------------------------------
+Wed Jan  7 15:50:44 UTC 2015 - ke@suse.de
+
+- Expand entities (bnc#907112).
+
+-------------------------------------------------------------------
+Mon Nov  3 15:07:08 UTC 2014 - ke@suse.de
+
+- 13.2.20141103:
+- New entries: Modem Authorization After Suspend (bnc#900813).
+  Warning: No Location for Bootloader Stage1 Selected (bnc#898023).
+  Btrfs and Windows 7 (bnc#900954).
+  Unbranded Grub2 on New Installs From Live (bnc#897847).
+  Old KDE Wallpaper After Upgrade.
+  MATE Desktop official integration,
+  Unable to Search Packages in GTK YaST (bnc#901511).
+  NET Installation Using Wifi (bnc#899895).
+  Slow startup in GNOME (bnc#901013).
+  FGLRX Driver for openSUSE 13.2.
+
+-------------------------------------------------------------------
+Thu Oct 30 15:32:03 UTC 2014 - ke@suse.de
+
+- 13.2.20141030:
+- Update translations.
+- Remove misleading skype statement (bnc#902977).
+- New entries: Second Static Mouse Pointer (bnc#899610); Live CD
+  Installer and Keyboard Settings (bnc#903242); YaST (Qt GUI): "Service
+  Manager" Icon Appears Twice (bnc#903243).
+  openSUSE pre-13.2 cifstab Migration (bnc#902947).
+  Missing Dependencies for virt-manager (bnc#901869).
+  Network After an Update With YaST (bnc#895447)
+
+-------------------------------------------------------------------
+Mon Oct 13 15:45:34 UTC 2014 - ke@suse.de
+
+- 13.2.20141013:
+* Resolve some 13.1 check-it markers.
+
+-------------------------------------------------------------------
+Tue Aug  5 09:42:27 UTC 2014 - rsalevsky@suse.com
+
+- 13.2.20140805:
+    * update translations
+    * change date format
+
+-------------------------------------------------------------------
+Thu Jul 24 14:33:12 UTC 2014 - rsalevsky@suse.com
+
+- 13.2.20140724:
+ * fix Desktop File DocPath
+ * dynamic Date
+
+-------------------------------------------------------------------
+Thu Jul 24 14:09:17 UTC 2014 - rsalevsky@suse.com
+
+- fix DocPath
+
+-------------------------------------------------------------------
+Tue Jul 22 12:01:49 UTC 2014 - rsalevsky@suse.com
+
+- 13.2.20140722:
+  * update make infrastucture
+  * normalize release-notes.xml
+
+-------------------------------------------------------------------
+Thu Jul 10 12:33:25 UTC 2014 - rsalevsky@suse.com
+
+- 13.2.1:
+  * use DAPS for building the RNs
+
+-------------------------------------------------------------------
+Tue Dec 10 13:29:22 UTC 2013 - ke@suse.de
+
+- 13.2.0:
+* Start resetting for 13.2 and add CHECKIT markers.
+- Do not try to build PDF on armv7l and aarch64; xmlgraphics-fop does
+  not exist.
+
+-------------------------------------------------------------------
+Thu Oct 17 12:59:20 UTC 2013 - ke@suse.de
+
+- Update translations.
+
+-------------------------------------------------------------------
+Mon Oct  7 14:53:18 UTC 2013 - ke@suse.de
+
+- 13.1.3:
+* New entries: Apache 2.4 (bnc#842381); Dropped YaST Modules
+  (bnc#843201).
+* Updated entries: openSUSE documentation.
+
+-------------------------------------------------------------------
+Thu Sep 12 12:10:45 UTC 2013 - ke@suse.de
+
+- 13.1.2:
+* New entries: Darktable: Refreshing Cache Files Needed (bnc#839661).
+* Update translations.
+
+-------------------------------------------------------------------
+Thu Aug 22 13:22:34 UTC 2013 - ke@suse.de
+
+- 13.1.1:
+* In .ent.in, set suse-version to 13.1 (bnc#829300).
+* New entries: tomcat: Logging to the System Log (bnc#816211); xinetd:
+  Logging to the System Log (bnc#816211).
+
+-------------------------------------------------------------------
+Wed Jul  3 06:31:19 UTC 2013 - ke@suse.de
+
+- 13.1.0:
+* Set Copyright to "SUSE LLC" (bnc#809347).
+* Start resetting for 13.1 and add CHECKIT markers.
+
+-------------------------------------------------------------------
+Wed Mar 13 14:55:26 UTC 2013 - ke@suse.de
+
+- 12.3.6:
+* For the moment, disable 'ar' (pdf does not build).
+
+-------------------------------------------------------------------
+Wed Mar 13 13:53:17 UTC 2013 - ke@suse.de
+
+- 12.3.5 (bnc#808614):
+* New entries: Crypted LVM in UEFI Mode Needs /boot Partition
+  (bnc#808104); Enable Secure Boot in YaST Not Enabled by Default When
+  in Secure Boot Mode (bnc#808108); No Network after Installation
+  (bnc#808111); Wrong Bootloader When Installing from a Live Medium in a
+  UEFI Environment (bnc#808116); openSUSE 12.3 Medium May Not Boot on
+  Future Secure Boot Enabled Hardware (bnc#808595).
+* Update entries: Gnome: Workaround to Set Shift or Ctrl+Shift as a
+  Shortcut (bnc#804773).
+
+-------------------------------------------------------------------
+Wed Feb 27 14:18:20 UTC 2013 - ke@suse.de
+
+- 12.3.4:
+* New entries: Gnome: Workaround to Set Shift or Ctrl+Shift as a
+  Shortcut (bnc#804773).
+* Update translations.
+
+-------------------------------------------------------------------
+Thu Feb 21 13:01:43 UTC 2013 - ke@suse.de
+
+- 12.3.3:
+* New entries: UEFI update.
+* Minor changes (bnc#804301; bnc#804315).
+
+-------------------------------------------------------------------
+Thu Feb 14 10:35:47 UTC 2013 - ke@suse.de
+
+- 12.3.2:
+* Comment remainint entries marked with CHECKIT.
+
+-------------------------------------------------------------------
+Thu Jan 31 12:38:38 UTC 2013 - ke@suse.de
+
+- 12.3.1:
+* Fix encoding while building .txt from .html using w3m (add -I UTF-8);
+  bnc#784291.
+* New entries: SYSLOG_DAEMON Variable Removed (bnc#790805); Configuring
+  Postfix (bnc#796161).
+* Changed entries: Initializing Graphics with KMS (Kernel Mode Setting)
+  (add grub2; bnc#781700); Cleaning Directories (/tmp and /var/tmp).
+* Removed entries: Booting with Deprecated sysvinit; sysvinit Deprecated.
+
+-------------------------------------------------------------------
+Tue Sep 11 09:27:23 UTC 2012 - ke@suse.de
+
+- 12.3.0:
+* Start resetting for 12.3 and add CHECKIT markers.
+
+-------------------------------------------------------------------
+Tue Aug 21 11:23:10 UTC 2012 - ke@suse.de
+
+- 12.2.6:
+* Update translations.
+* Timezone Information in /etc/adjtime; bnc#774716.
+* Remove most of the "checkit" markers (systemd).
+
+-------------------------------------------------------------------
+Thu Aug  2 15:18:25 UTC 2012 - ke@suse.de
+
+- Build and install PDF files.
+
+-------------------------------------------------------------------
+Fri Jul 27 11:09:05 UTC 2012 - ke@suse.de
+
+- 12.2.4:
+* Ensure that the dumped txt files are UTF-8 encoded; bnc#772798.
+* Update translations.
+* Add PDF target.
+
+-------------------------------------------------------------------
+Wed Jul 11 07:58:26 UTC 2012 - ke@suse.de
+
+- 12.2.3:
+* Update translations.
+
+-------------------------------------------------------------------
+Thu Jul  5 15:32:35 UTC 2012 - ke@suse.de
+
+- 12.2.2:
+* Provide txt (UTF-8 encoded) instead of rtf for yast (ncurses).
+* Use official stypesheets to produce HTML (and txt via w3m).
+* Use UTF-8 for HTML output encoding.
+* Link html to rtf for the graphical yast.
+* New entries: sysvinit Deprecated (bnc#769570).
+* Changed entries: Booting with Deprecated sysvinit (bnc#727092 and
+  bnc#769570). 
+
+-------------------------------------------------------------------
+Fri Jun 15 14:07:27 UTC 2012 - ke@suse.de
+
+- 12.2.1:
+* mount/losetup without cryptoloop.
+
+-------------------------------------------------------------------
+Thu Jan 19 09:33:56 UTC 2012 - ke@suse.de
+
+- 12.2.0:
+* Start resetting for 12.2.
+
+-------------------------------------------------------------------
+Fri Nov 25 14:40:45 UTC 2011 - ke@suse.de
+
+- 12.1.8:
+* Update translations (bnc#729717).
+
+-------------------------------------------------------------------
+Wed Nov  9 13:00:44 UTC 2011 - ke@suse.de
+
+- 12.1.7:
+* New entries: rpm: %_topdir Changed for Non-root Users (bnc#728841),
+  Windows Domain Membership Logon with KDM (bnc#721782), Radeon HDMI
+  Sound Output Being Disabled (bnc#729194).
+* Update translations.
+
+-------------------------------------------------------------------
+Mon Nov  7 14:37:15 UTC 2011 - ke@suse.de
+
+- 12.1.6:
+* New entry: NetworkManager Command Line Interface (bnc#727537).
+* Update translations.
+
+-------------------------------------------------------------------
+Fri Nov  4 10:27:33 UTC 2011 - ke@suse.de
+
+- 12.1.5:
+* New entry: Booting with systemd or sysvinit (bnc#727092).
+* Update translations.
+
+-------------------------------------------------------------------
+Fri Oct 28 12:47:36 UTC 2011 - ke@suse.de
+
+12.1.4:
+* New entries: systemd: Supplying Service Start-up Parameters
+  (bnc#725942).
+* Enhance GNOME 3 snippet (fallback mode, bnc#727039).
+* Update translations.
+
+-------------------------------------------------------------------
+Thu Oct 27 14:38:42 UTC 2011 - ke@suse.de
+
+- 12.1.3:
+* Enhance GNOME 3 snippet (bnc#725805); Initializing Graphics with KMS
+  (Kernel Mode Setting).
+* New entries: CUPS 1.5 (bnc#726178), System Shutdown with systemd
+  (bnc#726387).
+* Ship 505 or better translated languages.
+
+-------------------------------------------------------------------
+Fri Oct 21 07:29:30 UTC 2011 - ke@suse.de
+
+- 12.1.2:
+* New entry: The rename Command (bnc#717608).
+
+-------------------------------------------------------------------
+Fri Oct 14 07:59:49 UTC 2011 - ke@suse.de
+
+- 12.1.1:
+* New entries: Oracle Java Externally Available, Mounting Encrypted
+  Partitions with systemd (bnc#716136)..
+
+-------------------------------------------------------------------
+Wed Aug 31 07:37:33 UTC 2011 - ke@suse.de
+
+- 12.1.0:
+* Reset for 12.1.
+* New entries: GNOME 3 (bnc#708211), PulseAudio Sound System
+  (bnc#707828).
+* Add entry from Fate.
+
+-------------------------------------------------------------------
+Mon Feb 28 13:32:53 CET 2011 - ke@suse.de
+
+- 11.4.3:
+* New entries: Graphics with KMS (using intellegacy) (bnc#673964);
+  Update Applets with Changed Behavior (bnc#673367).
+* Improved entries: openSUSE Documentation (bnc#672889).
+* Update translations > 50% (fi fr hu it ja km ko lt nb nl pl pt_BR
+  ru).
+
+-------------------------------------------------------------------
+Thu Feb 24 14:30:23 UTC 2011 - coolo@novell.com
+
+- provide release-notes
+
+-------------------------------------------------------------------
+Fri Feb 18 13:40:14 CET 2011 - ke@suse.de
+
+- Update translations > 50% (es fi fr hu it ja km ko lt nb nl pl pt_BR
+  ru).
+
+-------------------------------------------------------------------
+Fri Feb 11 14:49:37 CET 2011 - ke@suse.de
+
+- 11.4.1:
+* New entries: CIFS Service Disabled By Default (bnc#665160), Issues
+  with syslog-ng and SQL Support (bnc#668890).
+* Reset for 11.4.
+* spec: Remove obsolete Provides/Obsoletes.
+
+-------------------------------------------------------------------
+Wed Jul 21 15:35:14 CEST 2010 - ke@suse.de
+
+- 11.3.6:
+* Fix title (bnc#623179).
+* Improved entries: Graphics with KMS (using intellegacy) (bnc#621469);
+  LXDE (bnc#617092), Incompatible IPsec and strongSwan Changes
+  (bnc#619193).
+* Update some translations (bnc#621890).
+
+-------------------------------------------------------------------
+Thu Jul  8 14:06:39 CEST 2010 - ke@suse.de
+
+- 11.3.5:
+* Improved entries: LXDE (bnc#617092).
+* New entries: Incompatible IPsec and strongSwan Changes (bnc#619193).
+
+-------------------------------------------------------------------
+Mon Jun 28 13:37:58 CEST 2010 - ke@suse.de
+
+- 11.3.4:
+* Remove beta statement; bnc#615472.
+* New entries: LXDE (bnc#617092)
+
+-------------------------------------------------------------------
+Fri Jun 11 09:20:55 CEST 2010 - ke@suse.de
+
+- 11.3.3:
+* Update translations.
+
+-------------------------------------------------------------------
+Wed May 12 16:39:54 CEST 2010 - ke@suse.de
+
+- 11.3.2:
+* New entries: Graphics with KMS (bnc#595569).
+
+-------------------------------------------------------------------
+Tue Mar 30 11:34:38 CEST 2010 - ke@suse.de
+
+- 11.3.1:
+* Buildrequires: Replace gnome-doc-utils with xml2po.
+* New entries: Samba: smbfs Service Renamed to cifs (bnc#561993), Samba:
+  mount.cifs no longer setuid root (bnc#578621).
+
+-------------------------------------------------------------------
+Thu Nov 19 15:42:49 CET 2009 - ke@suse.de
+
+- 11.2.90:
+* Reset release notes.
+* Reference previous release notes; bnc#556418.
+
+-------------------------------------------------------------------
+Wed Nov 18 15:32:32 CET 2009 - ke@suse.de
+
+- 11.2.5:
+* New entries: X keycodes (bnc#551727), obsolete kernel (bnc#551642),
+  rsyslog (bnc#555580).
+* Minor updates.
+* Update translations.
+
+-------------------------------------------------------------------
+Thu Oct 29 12:08:01 CET 2009 - ke@suse.de
+
+- 11.2.4:
+* New entries: Xorg configuration (bnc#483554).
+* Update translations.
+
+-------------------------------------------------------------------
+Wed Oct 28 09:01:03 CET 2009 - ke@suse.de
+
+- 11.2.3:
+- New entries: KDE (bnc#549528), boot loader (bnc#549528),  system
+  upgrade with zypper (bnc#550417), starting sshd (bnc#520086),
+  Thunderbird (bnc#530765).
+
+-------------------------------------------------------------------
+Mon Oct 19 13:41:46 CEST 2009 - ke@suse.de
+
+- Update translations.
+- .spec: Now check for po/en.po.
+
+-------------------------------------------------------------------
+Fri Oct  9 09:26:43 CEST 2009 - ke@suse.de
+
+- 11.2.1:
+* New entries: openSUSE Documentation, openSUSE Documentation as E-Books
+  (EPUB), New Samba Password Configuration Back-End: tdbsam, MySQL 5.1,
+  New Default Mount Option: relatime.
+
+-------------------------------------------------------------------
+Mon Feb 23 15:55:36 CET 2009 - ke@suse.de
+
+- 11.2.0:
+* Reset for 11.2.
+
+-------------------------------------------------------------------
+Wed Jan 14 14:56:58 CET 2009 - ke@suse.de
+
+- 11.1.9:
+- Update translations that are at least 50% translated: cs da de es fr
+  gl hu it ja km ko nb nl pa pt_BR sk th wa zh_TW; bnc#460064.
+
+-------------------------------------------------------------------
+Thu Dec 11 13:40:09 CET 2008 - ke@suse.de
+
+- 11.1.8:
+* Add more entries: NM config (bnc#0445122).
+* Update translations (bnc#457199).
+
+-------------------------------------------------------------------
+Wed Nov 26 16:25:21 CET 2008 - ke@suse.de
+
+- 11.1.7:
+* Add more entries: WLAN Channels (bnc#441037), Detecting Levono
+  Thinkpads (bnc#439133).
+* Remove beta statement (bnc#449052).
+
+-------------------------------------------------------------------
+Mon Nov 17 10:34:28 CET 2008 - ke@suse.de
+
+- 11.1.5:
+* Add more entries: Viewing man pages (bnc#442262).
+
+-------------------------------------------------------------------
+Fri Nov 14 16:49:11 CET 2008 - mrueckert@suse.de
+
+- remove unneeded conditional on sles_version
+
+-------------------------------------------------------------------
+Fri Nov  7 14:16:19 CET 2008 - ke@suse.de
+
+- 11.1.4:
+* Add more entries: netconfig utility (bnc#440143)
+* Update translations.
+
+-------------------------------------------------------------------
+Fri Oct 24 15:29:30 CEST 2008 - ke@suse.de
+
+- 11.1.3:
+* Not closing lid (bnc#436939), YaST LDAP server config (bnc#436072).
+
+-------------------------------------------------------------------
+Fri Oct 17 15:14:59 CEST 2008 - ke@suse.de
+
+- 11.1.2:
+* Install RELEASE-NOTES files without product name; bnc#432970.
+* LDAP server config (bnc#436072).
+
+-------------------------------------------------------------------
+Fri Sep 12 10:29:29 CEST 2008 - ke@suse.de
+
+- 11.1.1: Update translations.
+
+-------------------------------------------------------------------
+Thu Jul 17 16:28:21 CEST 2008 - ke@suse.de
+
+- 11.1.0: prepare for the 11.1 release cycle.
+
+-------------------------------------------------------------------
+Fri Jun  6 18:14:27 CEST 2008 - ke@suse.de
+
+- 11.0.5: Update translations.
+
+-------------------------------------------------------------------
+Fri May 30 16:03:56 CEST 2008 - ke@suse.de
+
+- 11.0.4:
+* Xgl versus AIGLX (bnc#395450).
+
+-------------------------------------------------------------------
+Wed May 21 15:17:40 CEST 2008 - ke@suse.de
+
+- 11.0.3:
+* Fingerprint Reader Devices (bnc#390810), TabletPC Configuration
+  (bnc#392549), more on Ctrl-Alt-Backspace, yast gtk and qt
+  (bnc#393093).
+
+-------------------------------------------------------------------
+Fri May 16 17:43:41 CEST 2008 - ke@suse.de
+
+- 11.0.2:
+* Update translations.
+* RPM LZMA compression (bnc#390499);  Ctrl-Alt-Backspace on X (bnc#388189).
+
+-------------------------------------------------------------------
+Wed May  7 16:41:02 CEST 2008 - ke@suse.de
+
+- 11.0.1
+* Update translations.
+* New snippets: CUPS and UTF-8 Encoding (bnc#387130), SuSEfirewall2: New
+  Variables (bnc#380696), inode size on ext3 (bnc#385195).
+
+-------------------------------------------------------------------
+Wed May  7 10:30:31 CEST 2008 - ke@suse.de
+
+- 11.0.0.
+* Some internal renaming to release-notes-openSUSE.
+* Replace SUSE Linux with openSUSE in desktop.in; reported by Freek
+  de Kruijf [bnc#387343].
+
+-------------------------------------------------------------------
+Thu Mar 27 08:33:02 CET 2008 - coolo@suse.de
+
+- rename to avoid name clashes between provides
+
+-------------------------------------------------------------------
+Fri Nov 16 15:57:01 CET 2007 - ke@suse.de
+
+- 10.3.70.
+* Remove 10.3 related entries.
+* CUPS encoding behavior [#340963].
+
+-------------------------------------------------------------------
+Mon Oct  1 10:40:26 CEST 2007 - ke@suse.de
+
+- 10.3.17:
+* Update translations: cs da de fi fr hu it km nb nl pt ru sk pt_BR
+  zh_CN zh_TW
+
+-------------------------------------------------------------------
+Wed Sep 26 09:24:01 CEST 2007 - ke@suse.de
+
+- 10.3.16:
+* Update translations.
+* Add Wifi snippet.
+
+-------------------------------------------------------------------
+Mon Sep 24 13:16:13 CEST 2007 - ke@suse.de
+
+- 10.3.15:
+* Update translations; add 'de'.
+
+-------------------------------------------------------------------
+Fri Sep 21 11:07:22 CEST 2007 - ke@suse.de
+
+- 10.3.14:
+* Update translations.
+
+-------------------------------------------------------------------
+Tue Sep 18 17:37:05 CEST 2007 - ke@suse.de
+
+- 10.3.13:
+* Improve libata entry [#305095].
+* Do not clean the buildroot in %install.
+
+-------------------------------------------------------------------
+Mon Sep 17 16:26:43 CEST 2007 - ke@suse.de
+
+* Update translations.
+* Proofread English texts; thanks to Jana Jaeger.
+* Support the "quote" tag.
+
+-------------------------------------------------------------------
+Thu Sep 13 14:33:08 CEST 2007 - ke@suse.de
+
+- 10.3.11:
+* Intel Graphics [#309002].
+* Update translations.
+
+-------------------------------------------------------------------
+Mon Sep 10 16:11:55 CEST 2007 - ke@suse.de
+
+- 10.3.10:
+* Zeroconf [#298872].
+* Update or add translations: cs da fr hu it km nb nl pt ru sk pt_BR
+  zh_TW.
+
+-------------------------------------------------------------------
+Fri Sep  7 15:38:29 CEST 2007 - ke@suse.de
+
+- 10.3.9:
+* Add Text Installation Pattern [#306618]; Setting up Encrypted
+  Partitions [#308262]; Localization Support [#306289].
+* Remove Ctrl-Alt-Backspace on X Disabled by Default [#306265].
+
+-------------------------------------------------------------------
+Thu Aug 30 18:10:48 CEST 2007 - ke@suse.de
+
+- Add more entries (#306265).
+- Update translations.
+
+-------------------------------------------------------------------
+Wed Aug 29 15:37:55 CEST 2007 - ke@suse.de
+
+- Add more entries (#304691, #305174, #305198, #305268).
+- Update translations: cs it nb pt sk.
+
+-------------------------------------------------------------------
+Fri Aug 24 15:54:07 CEST 2007 - ke@suse.de
+
+- 10.3.6:
+* Update or add cs da fi fr nl pl sk uk.
+* Install the license file.
+
+-------------------------------------------------------------------
+Fri Aug 17 16:41:22 CEST 2007 - ke@suse.de
+
+- 10.3.5.
+* Add el.
+* Update the other languages.
+
+-------------------------------------------------------------------
+Tue Aug  7 12:57:32 CEST 2007 - ke@suse.de
+
+- 10.3.4.
+* Add en again; reported by Stephan Kulow.
+* Add a check to make sure en will not get lost again.
+
+-------------------------------------------------------------------
+Fri Aug  3 16:24:57 CEST 2007 - ke@suse.de
+
+- 10.3.3.
+* Update cs da en_GB hu km pt ru zh_CN.
+
+-------------------------------------------------------------------
+Thu Jun 14 17:06:56 CEST 2007 - ke@suse.de
+
+- 10.3.2:
+* Start with libata snippet.
+
+-------------------------------------------------------------------
+Wed May 23 16:46:16 CEST 2007 - ke@suse.de
+
+- 10.3.1:
+* Add fdl.txt (GFDL).  For more information, see bug # 277387.
+
+-------------------------------------------------------------------
+Fri Jan  5 15:33:02 CET 2007 - ke@suse.de
+
+- 10.3.0
+* 10.3 pre-release notes.
+* GNOME and KDE to /usr; reported by Adrian Schroeter [# 232055].
+
+-------------------------------------------------------------------
+Fri Dec  8 15:54:50 CET 2006 - ke@suse.de
+
+- 10.2.19:
+* Update translations: de es fr it ja nb pt_BR zh_CN zh_TW.
+
+-------------------------------------------------------------------
+Thu Dec  7 17:00:39 CET 2006 - ke@suse.de
+
+- 10.2.18:
+* Diff based proofread by Frank Sundermeyer.
+* Update translations: bg fi hu.
+
+-------------------------------------------------------------------
+Mon Dec  4 15:28:10 CET 2006 - ke@suse.de
+
+- 10.2.17:
+* EVMS is not offered by YaST [#224872]; changing boot loader location
+[#225023].
+* New translation: lt.
+* Update translations: cs da et fi hu km nl pl sk uk.
+
+-------------------------------------------------------------------
+Wed Nov 29 18:10:37 CET 2006 - ke@suse.de
+
+- 10.2.15:
+* PDF manuals on DVD and FTP server only.
+
+-------------------------------------------------------------------
+Wed Nov 29 10:30:16 CET 2006 - ke@suse.de
+
+- 10.2.14:
+* Booting with HPET Timer Problems<[#171517].
+
+-------------------------------------------------------------------
+Tue Nov 28 17:56:10 CET 2006 - ke@suse.de
+
+- 10.2.13:
+* Availability of Manuals and description of the openSUSE media set by
+Tanja Roth.
+
+-------------------------------------------------------------------
+Tue Nov 28 11:43:40 CET 2006 - ke@suse.de
+
+- 10.2.12:
+* Using extra installation sources; by Andreas Jaeger [#223578].
+
+-------------------------------------------------------------------
+Mon Nov 27 17:55:55 CET 2006 - ke@suse.de
+
+- 10.2.11:
+* Proofreading by Rebecca Walter.
+* Boot loader installation by Torsten Duwe [#221597]; booting multiple
+  instances of openSUSE 10.2 by Ihno Krumreich [#223246].
+
+-------------------------------------------------------------------
+Thu Nov 23 16:06:23 CET 2006 - ke@suse.de
+
+- 10.2.10:
+* Adjust wodim/growisofs section; reported by Andreas Jaeger.
+* CUPS; reported by Christian Boltz and Klaus Singvogel [#223037].
+* Add-On Medium [#222148], smartd [#222145], BIOS RAID [#222139], new
+  software management tools (zypper, opensuseupdater) with feedback by
+  Stanislav Visnovsky [#222146], and OpenSync [#223458].
+
+-------------------------------------------------------------------
+Wed Nov 22 08:47:18 CET 2006 - ke@suse.de
+
+- 10.2.9:
+* New Default File System: ext3.  Reported by Franz Hassel and Manfred
+Hollstein [#222143].
+* Adjust wodim/k3b section.
+
+-------------------------------------------------------------------
+Fri Nov 17 16:47:12 CET 2006 - ke@suse.de
+
+- 10.2.8:
+* Power Management Changes [#221714].
+* News: bg, et, nl, and ru.
+* Update or merge the other languages.
+
+-------------------------------------------------------------------
+Wed Nov 15 15:44:40 CET 2006 - ke@suse.de
+
+- 10.2.7:
+  * Remove prerelease section [#220676].
+  * X.Org for developers [#221232].
+- Install into ../openSUSE; reported by Lukas Ocilka [#221187].
+
+-------------------------------------------------------------------
+Mon Nov  6 15:26:11 CET 2006 - ke@suse.de
+
+- 10.2.6
+  * cdrecord/wodim [#216333]; Firefox 2 [#216366].
+
+-------------------------------------------------------------------
+Thu Oct 26 11:33:14 CEST 2006 - ke@suse.de
+
+- 10.2.5:
+  * Preparing 10.2 beta2.
+  * The Standard Kernel [#205114].
+
+-------------------------------------------------------------------
+Fri Aug  4 14:33:24 CEST 2006 - ke@suse.de
+
+- 10.2.4:
+  * Prepare for 10.2 alpha3.
+
+-------------------------------------------------------------------
+Fri Jul 14 08:24:46 CEST 2006 - ke@suse.de
+
+- 10.2.3:
+  * Use the new distribution name (openSUSE).
+  * Add a warning if a translation is incomplete [# 171058].
+
+-------------------------------------------------------------------
+Tue Jul 11 14:17:33 CEST 2006 - ke@suse.de
+
+- 10.2.2: Warn about enabled malloc checking.
+- .spec file: use %{name} macro.
+
+-------------------------------------------------------------------
+Mon Jul 10 14:41:01 CEST 2006 - ke@suse.de
+
+- 10.2.1: Explain code name.
+
+-------------------------------------------------------------------
+Fri Jun  9 19:05:52 CEST 2006 - ke@suse.de
+
+- 10.2.0.  Preparing for 10.2...
+
+-------------------------------------------------------------------
+Fri May 12 13:33:16 CEST 2006 - ke@suse.de
+
+- Update to version 10.1.23:
+  * Enabling Online Update [# 172665]; hints on applying patches.
+  * Remove beta statement.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed May  3 14:05:40 CEST 2006 - ke@suse.de
+
+- Update to version 10.1.22
+  * Hint to enable AppArmor [# 170154].
+
+-------------------------------------------------------------------
+Wed May  3 13:50:31 CEST 2006 - ke@suse.de
+
+- Update to version 10.1.21:
+  * Refer to applying_patches.pdf (Applying Patches)
+  * Info about detecting laptops [# 172157].
+
+-------------------------------------------------------------------
+Tue May  2 16:35:05 CEST 2006 - ke@suse.de
+
+- Update to version 10.1.20:
+  * Add or update info on HCL, Sony laptops, and kernel modules.
+  * Proofread by Rebecca Walter.
+  * Update: fi, sk.
+
+-------------------------------------------------------------------
+Fri Apr 21 17:25:33 CEST 2006 - ke@suse.de
+
+- Update to version 10.1.19:
+  * Update: cs, de, es, fr, hu, sk and enable de, es, fr again.
+
+-------------------------------------------------------------------
+Tue Apr 18 14:59:20 CEST 2006 - ke@suse.de
+
+- Update to version 10.1.18:
+  * Remove beta statement.
+  * Add info about AppArmor's Default Profiles [# 160108], i830 and dual
+    head [# 165827], improve info about registration [# 165204].
+  * Update: fi, hu.
+
+-------------------------------------------------------------------
+Thu Apr 13 18:03:54 CEST 2006 - ke@suse.de
+
+- Update to version 10.1.17:
+* Update: ja.
+
+-------------------------------------------------------------------
+Wed Apr 12 12:51:21 CEST 2006 - ke@suse.de
+
+- Update to version 10.1.16:
+* Add info about remote update [# 153467] and about registration [#
+  165204].
+
+-------------------------------------------------------------------
+Mon Apr 10 13:39:09 CEST 2006 - ke@suse.de
+
+- Update to version 10.1.15:
+  * Update fi, hu, it, ja, km, pt_BR, sk, zh_CN, zh_TW.
+
+-------------------------------------------------------------------
+Fri Apr  7 11:14:12 CEST 2006 - ke@suse.de
+
+- Update to version 10.1.14:
+  * Update cs, fi, hu, sk.
+
+-------------------------------------------------------------------
+Mon Apr  3 16:39:08 CEST 2006 - ke@suse.de
+
+- Update to version 10.1.13:
+  * Kernel modules [# 157554].
+  * Translated Manuals (es, fr, it, ja, zh_CN, and zh_TW) partly out of date).
+  * Disable German (de), Spanish (es), and French (fr) for the moment due
+    to issues reported by Christian Boltz [# 162798].
+
+-------------------------------------------------------------------
+Thu Mar 30 09:31:48 CEST 2006 - ke@suse.de
+
+- Update to version 10.1.12:
+  * Update: Updating Software Packages Using Catalogs [#153037], kernel
+  modules [# 157554].
+  * Update: cs, sk.
+
+-------------------------------------------------------------------
+Mon Mar 27 14:39:47 CEST 2006 - ke@suse.de
+
+- Update to version 10.1.11:
+  * New: it, ja, pt_BR, zh_CN, and zh_TW.
+
+-------------------------------------------------------------------
+Fri Mar 24 16:44:09 CET 2006 - ke@suse.de
+
+- Update to version 10.1.10:
+  * Add info about sudo [# 159797], ATI Radeon [# 159522], kernel modules
+    [# 157554], and Add-On CD [# 144403].
+  * Proofread by Rebecca Walter.
+  * Update: cs, de, es, fi, fr, hu, pl, sk.
+  * New: da, uk, pt.
+
+-------------------------------------------------------------------
+Tue Mar 14 14:24:55 CET 2006 - ke@suse.de
+
+- Update to version 10.1.9:
+  * Add info about unlocking CD/DVD drives [# 157546].
+  * Update: sk.
+
+-------------------------------------------------------------------
+Mon Mar 13 13:15:07 CET 2006 - ke@suse.de
+
+- Update to version 10.1.8:
+  * Add info about MySQL update [# 156185] and APIC [# 152498].
+  * Update: hu.
+
+-------------------------------------------------------------------
+Mon Mar  6 13:50:55 CET 2006 - ke@suse.de
+
+- Update to version 10.1.7 (cs, fi, hu, and km).
+
+-------------------------------------------------------------------
+Fri Feb 24 14:19:11 CET 2006 - ke@suse.de
+
+- Update to 10.1.6:
+* Update: cs, hu, km, nb, sk.
+* Improve info on update tools [# 153037].
+
+-------------------------------------------------------------------
+Fri Feb 17 10:48:52 CET 2006 - ke@suse.de
+
+- Update to 10.1.5:
+* Install into /usr/share/doc/release-notes/@SUSE_PROD@
+* Powersave Daemon during System Boot [# 150613].
+
+-------------------------------------------------------------------
+Mon Feb 13 15:58:30 CET 2006 - ke@suse.de
+
+- Update to 10.1.4.
+- Changed languages: cs, km, and pl.
+
+-------------------------------------------------------------------
+Wed Feb  8 16:09:49 CET 2006 - ke@suse.de
+
+- Update to 10.1.3 for beta5.
+- Cleanup.
+- Add information about updating [# 147524].
+
+-------------------------------------------------------------------
+Mon Feb  6 16:02:44 CET 2006 - ke@suse.de
+
+- Update to 10.1.2 for beta4.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:47:40 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 18 07:22:57 CET 2006 - aj@suse.de
+
+- Add note about Agama Lizard.
+
+-------------------------------------------------------------------
+Tue Jan 17 10:04:48 CET 2006 - ke@suse.de
+
+- Update to 10.1.1:
+  * Switch to PO file format (gettext tools and xml2po) for the
+    translation process.
+  * Add kerberos snippet (SLES10).
+
+-------------------------------------------------------------------
+Fri Sep 30 08:30:23 CEST 2005 - dmueller@suse.de
+
+- add %defattr 
+
+-------------------------------------------------------------------
+Thu Sep 29 02:56:52 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Wed Sep 28 14:38:22 CEST 2005 - ke@suse.de
+
+- Update to 10.1.0:
+  * Remove all translations and start with an empty RELEASE-NOTES.en.xml
+    file.
+
+-------------------------------------------------------------------
+Wed Sep 28 14:10:06 CEST 2005 - ke@suse.de
+
+- Update to 10.0.15:
+  * New texts: Banshee [# 116924]; DVD/CD installation media [# 70885].
+  * New: da pa sr.
+  * Update: bg cs fi nb nl pl pt.
+
+-------------------------------------------------------------------
+Wed Sep 14 14:37:43 CEST 2005 - ke@suse.de
+
+- Update to 10.0.14:
+  * Changed texts: D-BUS [# 116815].
+  * New texts: ATI and "fglrx" [# 116767]; Atheros WLAN cards; FAM and
+    gamin [# 112846]; Xen 3.
+
+-------------------------------------------------------------------
+Tue Sep 13 09:20:48 CEST 2005 - ke@suse.de
+
+- Update to 10.0.13:
+* New snippet: AppArmor [# 115332].
+
+-------------------------------------------------------------------
+Mon Sep 12 15:27:23 CEST 2005 - ke@suse.de
+
+- Update to 10.0.12:
+  * New snippet: hotplug by udevd [# 116444].
+
+-------------------------------------------------------------------
+Mon Sep 12 09:08:24 CEST 2005 - ke@suse.de
+
+- Update to 10.0.11:
+  * New snippet: Eclipse on 64-bit [# 79313].
+
+-------------------------------------------------------------------
+Thu Sep  8 13:23:51 CEST 2005 - ke@suse.de
+
+- Update to 10.0.10:
+  * New snippets: Hotplugged Devices [# 85413]; Setting Up D-BUS [#
+    115334]; New GeForce Graphics Cards [# 115326].
+  * Remove beta test statement.
+  * Add: sk.
+
+-------------------------------------------------------------------
+Fri Sep  2 18:06:10 CEST 2005 - ke@suse.de
+
+- Update to 10.0.8:
+  * Update: bg cs fi nl pl pt.
+
+-------------------------------------------------------------------
+Mon Aug 29 16:43:55 CEST 2005 - ke@suse.de
+
+- Update to 10.0.7.
+
+-------------------------------------------------------------------
+Mon Aug 15 16:50:49 CEST 2005 - ke@suse.de
+
+- Update to 10.0.4.
+
+-------------------------------------------------------------------
+Fri Aug  5 15:01:23 CEST 2005 - ke@suse.de
+
+- Update to 10.0.3.
+
+-------------------------------------------------------------------
+Fri Aug  5 15:01:23 CEST 2005 - ke@suse.de
+
+- Update to 10.0.2: Cleanup.
+
+-------------------------------------------------------------------
+Mon Aug  1 16:20:53 CEST 2005 - ke@suse.de
+
+- Update to 10.0.1: Add real issues (en only).
+
+-------------------------------------------------------------------
+Fri Jul 22 15:23:22 CEST 2005 - ke@suse.de
+
+- Update to 10.0.0 dummy version; enable de and en only.
+
+-------------------------------------------------------------------
+Wed Apr 20 13:56:16 CEST 2005 - ke@suse.de
+
+- Update to version 9.3.15:
+  * Fix info on Image Scan.
+  * Enhance GeForce entry.
+  * New Translations or updates: sk.
+
+-------------------------------------------------------------------
+Tue Apr 12 15:41:54 CEST 2005 - ke@suse.de
+
+- Update to version 9.3.14:
+  * Update info on "Intel and Nvidia Sound Drivers".
+  * New Translations or updates: bg, bn, fi, it, ja, nl, uk, zh_CN, zh_TW.
+
+-------------------------------------------------------------------
+Wed Apr  6 15:42:39 CEST 2005 - ke@suse.de
+
+- Update to version 9.3.13:
+  * New Translations or updates: bg, cs, de, es, hu, nb.
+
+-------------------------------------------------------------------
+Fri Apr  1 10:25:59 CEST 2005 - ke@suse.de
+
+- Update to 9.3.12:
+  * Proofread English version (thanks to Rebecca Walter).
+  * New Translations or updates: it.
+
+-------------------------------------------------------------------
+Wed Mar 30 16:18:43 CEST 2005 - ke@suse.de
+
+- Update to 9.3.11:
+  * New Translations or updates: bn, de, es, fr, ja, hu, nl, sk, zh_CN,
+    zh_TW.
+  * Update info on "Mounting Encrypted Partitions".
+
+-------------------------------------------------------------------
+Wed Mar 23 16:50:54 CET 2005 - ke@suse.de
+
+- Update to 9.3.10:
+* Mounting Encrypted Partitions.
+* More information about "SATA CD and DVD Devices".
+* JFS support is gone.
+
+-------------------------------------------------------------------
+Wed Mar 23 14:58:26 CET 2005 - ke@suse.de
+
+- Update to 9.3.9:
+  * Change info on browser plug-ins and Mozilla (32-/64-bit).
+  * SATA CD and DVD Devices.
+  * tar syntax more strict.
+  * Translation updates: bg.
+
+-------------------------------------------------------------------
+Tue Mar 22 15:04:10 CET 2005 - ke@suse.de
+
+- Update to 9.3.8:
+* Translation updates: nb.
+* Proofread English version (thanks to Rebecca Walter).
+
+-------------------------------------------------------------------
+Tue Mar 22 12:47:19 CET 2005 - ke@suse.de
+
+- Update to 9.3.7:
+  * Enable Beagle in Firefox.
+  * Kernel Module "dazuko".
+  * WLAN Devices.
+  * Host Name Change during KDE Auto-Login.
+  * Suspend to Disk on SMP.
+  * Epson Kowa's Image Scan Software.
+
+-------------------------------------------------------------------
+Mon Mar 21 17:17:57 CET 2005 - ke@suse.de
+
+- Update to 9.3.6:
+  * Translation updates: cs.
+
+-------------------------------------------------------------------
+Mon Mar 21 16:17:57 CET 2005 - ke@suse.de
+
+- Update to 9.3.5:
+  * OOo: StarOffice 5.x file format support gone.
+  * Geforce 6200 and 6600 and issues with acceleration.
+  * Translation updates: nb.
+
+-------------------------------------------------------------------
+Mon Mar 21 12:10:28 CET 2005 - ke@suse.de
+
+- Update to 9.3.4:
+  * For suspend to disk performance improvement use ext2 for /boot.
+  * Enabling Beagle.
+  * Fix typos and wording issues (thanks to Rebecca Walter).
+
+-------------------------------------------------------------------
+Fri Mar 18 14:18:00 CET 2005 - ke@suse.de
+
+- Update to 9.3.3:
+  * Laptop and External VGA Output.
+  * Update Kerberos/Heimdal.
+  * RealPlayer 32bit only.
+  * Supend to disk issues on x86-64.
+  * Translation update: it
+  * Remove out-of-date translations: ja, pl.
+
+-------------------------------------------------------------------
+Wed Mar 16 16:15:14 CET 2005 - ke@suse.de
+
+- Update to 9.3.2:
+  * Wget and LFS.
+- Cleanup .spec file.
+
+-------------------------------------------------------------------
+Tue Mar 15 16:42:30 CET 2005 - ke@suse.de
+
+- Update to 9.3.1:
+  * OpenOffice.org
+  * KDE online/offline mode.
+  * Translation updates: de, el, es, hu, sk
+
+-------------------------------------------------------------------
+Mon Mar 14 16:21:02 CET 2005 - ke@suse.de
+
+- Update to 9.3.0:
+  * Info about Indic fonts.
+  * Wording corrections.
+  * Translation updates: bg, cs, de, fr, nb, nl, and sk.
+
+-------------------------------------------------------------------
+Mon Mar  7 13:36:36 CET 2005 - ke@suse.de
+
+- Update to 9.2.94:
+  * Xview/Openlook (thanks to Michael Andres).
+
+-------------------------------------------------------------------
+Mon Feb 21 11:27:14 CET 2005 - ke@suse.de
+
+- Update to 9.2.93:
+  * Heimdal/Kerberos (thanks to Andreas Jaeger/Michael Calmer).
+
+-------------------------------------------------------------------
+Wed Feb  9 14:26:33 CET 2005 - ke@suse.de
+
+- Update to 9.2.92:
+  * Generate TOC (html only).
+- Add X-DOC-DocumentType specification to the .desktop file; reported by
+  Cornelius Schumacher.
+
+-------------------------------------------------------------------
+Tue Feb  1 16:42:26 CET 2005 - aj@suse.de
+
+- prepare for 9.3.
+
+-------------------------------------------------------------------
+Wed Jan 26 17:24:14 CET 2005 - ke@suse.de
+
+- Add %suse_update_desktop_file call to make release notes translations
+  visible for all supported languages; see [# 49203].
+
+-------------------------------------------------------------------
+Thu Nov  4 09:44:03 CET 2004 - ke@suse.de
+
+- Change to build framework to make it architecture aware [# 47628].
+
+-------------------------------------------------------------------
+Fri Oct 15 11:32:59 CEST 2004 - ke@suse.de
+
+- Adjust Fine-Tuning Firewall according to #46883.
+
+-------------------------------------------------------------------
+Wed Oct  6 16:42:11 CEST 2004 - tiwai@suse.de
+
+- fixed japanese ja.XML.
+
+-------------------------------------------------------------------
+Wed Oct  6 16:22:59 CEST 2004 - ro@suse.de
+
+- fix typos in "cs" translation (by Klara) 
+
+-------------------------------------------------------------------
+Wed Oct  6 14:21:51 CEST 2004 - ke@suse.de
+
+- Add note on opera plug-ins; provided by Matthias Hopf [#46897].
+
+-------------------------------------------------------------------
+Tue Oct  5 18:42:03 CEST 2004 - tiwai@suse.de
+
+- added more descriptions to ja.
+
+-------------------------------------------------------------------
+Tue Oct  5 13:34:50 CEST 2004 - ke@suse.de
+
+- Add 'pl' (via Ines Pozo).
+- 'cs': fix by Klara Cihlarova.
+
+-------------------------------------------------------------------
+Mon Oct  4 15:24:02 CEST 2004 - ro@suse.de
+
+- make this package noarch for the moment (#46729)
+
+-------------------------------------------------------------------
+Mon Oct  4 13:14:28 CEST 2004 - ke@suse.de
+
+- 'cs': fix by Klara Cihlarova.
+
+-------------------------------------------------------------------
+Fri Oct  1 14:05:24 CEST 2004 - ke@suse.de
+
+- Remove bugzilla address (all languages).
+
+-------------------------------------------------------------------
+Fri Oct  1 12:05:45 CEST 2004 - kukuk@suse.de
+
+- Remove 9.1 /dev/null hack
+
+-------------------------------------------------------------------
+Thu Sep 30 07:36:14 CEST 2004 - ke@suse.de
+
+- Add 'it' (via Ines Pozo).
+- Fix wrong bluetooth doc reference; reported by Jiri Srain [#46458].
+
+-------------------------------------------------------------------
+Wed Sep 29 14:34:34 CEST 2004 - ke@suse.de
+
+- Add 'es'; thanks to Ines Pozo.
+
+-------------------------------------------------------------------
+Wed Sep 29 07:32:40 CEST 2004 - ke@suse.de
+
+- Fix 'de' translation; reported by Ludwig Nussel [#46318].
+- Update 'ja' (by Takashi Iwai via Ines Pozo).
+- Update 'fr' (via Ines Pozo).
+- Enable 'es'; drop 'hu'.
+- Fix XML of the 'en' file.
+
+-------------------------------------------------------------------
+Mon Sep 27 17:09:52 CEST 2004 - ke@suse.de
+
+- Update 'cs' (by Klara Cihlarova via Ines Pozo) and 'de'.
+
+-------------------------------------------------------------------
+Mon Sep 27 10:51:05 CEST 2004 - ke@suse.de
+
+- Remove wget snippet; the bug is fixed [#46205].
+- Add "Terminals" [#45984]; by Andreas Jaeger.
+- Add YOU and delta packages; courtesy by Ludwig Nussel [#46042].
+
+-------------------------------------------------------------------
+Fri Sep 24 09:29:56 CEST 2004 - ke@suse.de
+
+- Add "DVD Burning" snippet [#45025].
+
+-------------------------------------------------------------------
+Thu Sep 23 07:14:33 CEST 2004 - ke@suse.de
+
+- Proofread RELEASE-NOTES.en.xml.
+- rel.dsl: Adjust newline handling and simplify the spec file.
+
+-------------------------------------------------------------------
+Mon Sep 20 07:51:26 CEST 2004 - ke@suse.de
+
+- Mention JPackage Standard as provided by Sonja Krause-Harder [#45043].
+- Add "Multiple Kernels" snippet as provided by Andreas Gruenbacher and
+  Andreas Jaeger [#45091].
+
+-------------------------------------------------------------------
+Thu Sep 16 09:20:53 CEST 2004 - ke@suse.de
+
+- Add KDE/IPv6 snippet provided by Adrian Schroeter and Thorsten Kukuk
+  [#45358].
+
+-------------------------------------------------------------------
+Tue Sep 14 14:55:23 CEST 2004 - ke@suse.de
+
+- Add Wget snippet as provided by Mads Martin Jørgensen [#45084].
+- Switch all files to XML files; now the are basically empty.
+
+-------------------------------------------------------------------
+Fri Sep 10 10:10:54 CEST 2004 - ke@suse.de
+
+- Add Bluetooth snippet as provided by Stefan Behlert [#44910].
+
+-------------------------------------------------------------------
+Wed Sep  8 13:08:44 CEST 2004 - ke@suse.de
+
+- Switch to XML -> .rtf conversion using openjade driven by rel.dsl.
+- RELEASE-NOTES.en.xml: Create from RELEASE-NOTES.en.rtf as the
+  reference file.
+
+-------------------------------------------------------------------
+Thu Sep  2 12:03:32 CEST 2004 - mmj@suse.de
+
+- Correct typos
+
+-------------------------------------------------------------------
+Thu Sep  2 08:23:44 CEST 2004 - aj@suse.de
+
+- Add section on Non-Executable Stack.
+
+-------------------------------------------------------------------
+Tue Aug 17 08:28:13 CEST 2004 - aj@suse.de
+
+- Prepare for 9.2.
+
+-------------------------------------------------------------------
+Tue May  4 10:07:43 CEST 2004 - jj@suse.de
+
+- added text about XFS bug/fix
+
+-------------------------------------------------------------------
+Tue Apr 27 09:57:45 CEST 2004 - arvin@suse.de
+
+- fix ruined /dev/null in post-install (helps bug #39287)
+
+-------------------------------------------------------------------
+Fri Apr 23 13:46:24 CEST 2004 - jj@suse.de
+
+- added text about GNOME update problem
+
+-------------------------------------------------------------------
+Wed Apr 21 11:42:42 CEST 2004 - kukuk@suse.de
+
+- Adjust new marketing name of SLES
+
+-------------------------------------------------------------------
+Thu Apr 15 11:20:47 CEST 2004 - jj@suse.de
+
+- added spanish translation
+- added input "OpenOffice.org Installation via NFS on AMD64"
+
+-------------------------------------------------------------------
+Wed Apr  7 17:01:42 CEST 2004 - kukuk@suse.de
+
+- SLES is "SUSE LINUX Enterprise Server 9"
+
+-------------------------------------------------------------------
+Wed Apr  7 16:34:12 CEST 2004 - jj@suse.de
+
+- fixed typo
+
+-------------------------------------------------------------------
+Wed Apr  7 16:30:11 CEST 2004 - jj@suse.de
+
+- added note about ncurses apps (by stepan)
+- change "SUSE Linux 9.1" to "SLES" for sles
+
+-------------------------------------------------------------------
+Tue Apr  6 18:51:05 CEST 2004 - ro@suse.de
+
+- add a short note about having to reconfigure sound cards
+  after a system update
+
+-------------------------------------------------------------------
+Tue Apr  6 17:54:31 CEST 2004 - aj@suse.de
+
+- Add information about apache.
+- Fix powershare path.
+
+-------------------------------------------------------------------
+Mon Apr  5 17:55:15 CEST 2004 - ke@suse.de
+
+- Name of the installation source is "install.suse"; reported by Sonja
+  Krause-Harder [# 38073]
+
+-------------------------------------------------------------------
+Mon Apr  5 15:32:29 CEST 2004 - ke@suse.de
+
+- Fix 'en' release notes (typo); provided by Takashi Iwai.
+- Add 'ja'; provided by Takashi Iwai.
+- Fix 'cs' (typo/encoding problem); reported by Martin Jezek [# 38324].
+- Add 'hu'; provided by Marcel Hilzinger via Antje Faber.
+
+-------------------------------------------------------------------
+Mon Apr  5 14:46:10 CEST 2004 - ke@suse.de
+
+- Add 'fr'.
+- Set version number to 9.1.
+
+-------------------------------------------------------------------
+Fri Apr  2 16:48:14 CEST 2004 - jj@suse.de
+
+- translations: de,it,cs
+- corrected various typos
+- added markup around filenames where missing
+
+-------------------------------------------------------------------
+Wed Mar 31 16:24:49 CEST 2004 - jj@suse.de
+
+- replace all <pre></pre> by <tt></tt> so that the
+  ncurses rendering looks ok.
+
+-------------------------------------------------------------------
+Wed Mar 31 15:14:18 CEST 2004 - jj@suse.de
+
+- removed all href= and quotes, markup is <pre></pre>-driven now.
+- capitalized titles
+- added material
+- ready for proofreading
+- no chance to verify validity
+- removed all comments ==> prepare for disaster in the near future
+
+-------------------------------------------------------------------
+Tue Mar 30 16:56:32 CEST 2004 - jj@suse.de
+
+- added all input so far, this version will go to translation.
+
+-------------------------------------------------------------------
+Fri Mar 26 16:18:31 CET 2004 - jj@suse.de
+
+- created sections according to aj's input
+- translated one entry form german
+- dropped "sans font" entry
+- minor corrections (typos)
+
+-------------------------------------------------------------------
+Fri Mar 19 15:08:16 CET 2004 - jj@suse.de
+
+- update with all input
+
+-------------------------------------------------------------------
+Wed Mar 10 14:26:38 CET 2004 - jj@suse.de
+
+- updated with all available information
+
+-------------------------------------------------------------------
+Mon Mar  8 13:45:40 CET 2004 - jj@suse.de
+
+- initial version for 9.1
+
+-------------------------------------------------------------------
+Wed Jan  7 15:14:24 CET 2004 - sndirsch@suse.de
+
+- RELEASE-NOTES.{de,en}.ref: updated information about installation
+  of nvidia driver
+
+-------------------------------------------------------------------
+Tue Sep 23 07:46:18 CEST 2003 - kukuk@suse.de
+
+- Fix 'de' encoding
+
+-------------------------------------------------------------------
+Mon Sep 22 11:05:16 CEST 2003 - ke@suse.de
+
+- Finalize 'de' and update 'it'.
+- Add 'fr'.
+
+-------------------------------------------------------------------
+Fri Sep 19 16:28:17 CEST 2003 - ke@suse.de
+
+- Update es and hu.
+
+-------------------------------------------------------------------
+Thu Sep 18 17:00:43 CEST 2003 - ke@suse.de
+
+- Update hu, en, sk, and cs.
+
+-------------------------------------------------------------------
+Fri Sep 12 13:52:31 CEST 2003 - jj@suse.de
+
+- bug 30624
+
+-------------------------------------------------------------------
+Thu Sep 11 16:25:18 CEST 2003 - jj@suse.de
+
+- update reflecting all changes/bugs so far
+
+-------------------------------------------------------------------
+Fri Sep  5 14:55:00 CEST 2003 - jj@suse.de
+
+- input from msommer
+
+-------------------------------------------------------------------
+Tue Sep  2 16:45:22 CEST 2003 - jj@suse.de
+
+- initial input for 9.0 processed
+- en/de should be ok, rest needs translation
+
+-------------------------------------------------------------------
+Fri Aug 22 16:54:59 CEST 2003 - sndirsch@suse.de
+
+- adjusted nvidia texts for 9.0 (de/en)
+
+-------------------------------------------------------------------
+Tue Jun 17 11:52:21 CEST 2003 - arvin@suse.de
+
+- added directory to file list
+
+-------------------------------------------------------------------
+Mon Mar 17 18:41:04 CET 2003 - agruen@suse.de
+
+- Add consistency check for proper source file encoding, so
+  that packages with non-UTF-8 translations will fail to
+  build.
+
+-------------------------------------------------------------------
+Mon Mar 17 17:54:53 CET 2003 - msvec@suse.de
+
+- further cs fixes
+
+-------------------------------------------------------------------
+Mon Mar 17 15:49:25 CET 2003 - agruen@suse.de
+
+- Encode the release not source files in UTF-8 instead of
+  recoding them while packaging up.
+- Rename RELEASE_NOTES.* to RELEASE-NOTES.*, as they are
+  called when they are installed. No renaming of the identical
+  files.
+- Remove unnecessary dashes from release notes in all
+  translations.
+- Improve the German version. Improve the English version.
+
+-------------------------------------------------------------------
+Mon Mar 17 14:34:37 CET 2003 - msvec@suse.de
+
+- added symlink sk -> cs
+
+-------------------------------------------------------------------
+Fri Mar 14 18:01:52 CET 2003 - adrian@suse.de
+
+- provide rtf and html files for every application
+- move files into release-notes subdirectory
+
+-------------------------------------------------------------------
+Fri Mar 14 10:39:11 CET 2003 - jj@suse.de
+
+- added italian text
+
+-------------------------------------------------------------------
+Thu Mar 13 15:01:27 CET 2003 - msvec@suse.de
+
+- czech translation fixes and updates
+
+-------------------------------------------------------------------
+Wed Mar 12 17:03:59 CET 2003 - msvec@suse.de
+
+- added czech version
+- make spanish and hungarian version correctly installed
+
+-------------------------------------------------------------------
+Tue Mar 11 16:13:28 CET 2003 - jj@suse.de
+
+- added spanish version
+
+-------------------------------------------------------------------
+Tue Mar 11 14:28:21 CET 2003 - jj@suse.de
+
+- fixed conversion for the hungarian version
+
+-------------------------------------------------------------------
+Tue Mar 11 13:05:35 CET 2003 - jj@suse.de
+
+- added hungarian version
+- added NTFS resizer text
+
+-------------------------------------------------------------------
+Fri Mar  7 16:00:18 CET 2003 - jj@suse.de
+
+- integrated KDE/dnotify/ulimit text
+- translations de <--> en completed
+- now featuring utf8 (hopefully)
+
+-------------------------------------------------------------------
+Thu Mar  6 18:33:38 CET 2003 - jj@suse.de
+
+- translated en/de (2 entries TBD)
+- removed comments as they can be visible under ncurses
+- avoid all umlauts (\"u --> ue etc.)
+- added check for umlauts
+
+-------------------------------------------------------------------
+Mon Mar  3 12:07:02 CET 2003 - adrian@suse.de
+
+- use updated release-notes files from Joerg
+- not a sub package anymore

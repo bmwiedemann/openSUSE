@@ -1,0 +1,75 @@
+From 7ea474c68847757d4c67ffc67f7d714b77c41578 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 11 Apr 2019 17:14:02 +0800
+Subject: [PATCH 1/8] cpio: Disable gcc9 -Waddress-of-packed-member
+
+Disable the -Wadress-of-packaed-member diagnostic for the
+grub_cpio_find_file function since the result is found to be false
+postive. Any pointers to member of the 'struct head hd' is aligned even
+if the structure is packed without paddings.
+
+[   59s] In file included from ../grub-core/fs/cpio.c:51:
+[   59s] ../grub-core/fs/cpio_common.c: In function 'grub_cpio_find_file':
+[   59s] ../grub-core/fs/cpio_common.c:58:31: error: taking address of packed member of 'struct head' may result in an unaligned pointer value [-Werror=address-of-packed-member]
+[   59s]    58 |   data->size = read_number (hd.filesize, ARRAY_SIZE (hd.filesize));
+[   59s]       |                             ~~^~~~~~~~~
+[   59s] ../grub-core/fs/cpio_common.c:60:29: error: taking address of packed member of 'struct head' may result in an unaligned pointer value [-Werror=address-of-packed-member]
+[   59s]    60 |     *mtime = read_number (hd.mtime, ARRAY_SIZE (hd.mtime));
+[   59s]       |                           ~~^~~~~~
+[   59s] ../grub-core/fs/cpio_common.c:61:28: error: taking address of packed member of 'struct head' may result in an unaligned pointer value [-Werror=address-of-packed-member]
+[   59s]    61 |   modeval = read_number (hd.mode, ARRAY_SIZE (hd.mode));
+[   59s]       |                          ~~^~~~~
+[   59s] ../grub-core/fs/cpio_common.c:62:29: error: taking address of packed member of 'struct head' may result in an unaligned pointer value [-Werror=address-of-packed-member]
+[   59s]    62 |   namesize = read_number (hd.namesize, ARRAY_SIZE (hd.namesize));
+[   59s]       |                           ~~^~~~~~~~~
+[   59s] In file included from ../grub-core/fs/cpio_be.c:51:
+[   59s] ../grub-core/fs/cpio_common.c: In function 'grub_cpio_find_file':
+[   59s] ../grub-core/fs/cpio_common.c:58:31: error: taking address of packed member of 'struct head' may result in an unaligned pointer value [-Werror=address-of-packed-member]
+[   59s]    58 |   data->size = read_number (hd.filesize, ARRAY_SIZE (hd.filesize));
+[   59s]       |                             ~~^~~~~~~~~
+[   59s] ../grub-core/fs/cpio_common.c:60:29: error: taking address of packed member of 'struct head' may result in an unaligned pointer value [-Werror=address-of-packed-member]
+[   59s]    60 |     *mtime = read_number (hd.mtime, ARRAY_SIZE (hd.mtime));
+[   59s]       |                           ~~^~~~~~
+[   59s] ../grub-core/fs/cpio_common.c:61:28: error: taking address of packed member of 'struct head' may result in an unaligned pointer value [-Werror=address-of-packed-member]
+[   59s]    61 |   modeval = read_number (hd.mode, ARRAY_SIZE (hd.mode));
+[   59s]       |                          ~~^~~~~
+[   59s] ../grub-core/fs/cpio_common.c:62:29: error: taking address of packed member of 'struct head' may result in an unaligned pointer value [-Werror=address-of-packed-member]
+[   59s]    62 |   namesize = read_number (hd.namesize, ARRAY_SIZE (hd.namesize));
+[   59s]       |                           ~~^~~~~~~~~
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/fs/cpio_common.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/grub-core/fs/cpio_common.c b/grub-core/fs/cpio_common.c
+index ed134d931..4e885d623 100644
+--- a/grub-core/fs/cpio_common.c
++++ b/grub-core/fs/cpio_common.c
+@@ -36,6 +36,11 @@ struct grub_archelp_data
+   grub_off_t size;
+ };
+ 
++#if __GNUC__ >= 9
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Waddress-of-packed-member"
++#endif
++
+ static grub_err_t
+ grub_cpio_find_file (struct grub_archelp_data *data, char **name,
+ 		     grub_int32_t *mtime, grub_uint32_t *mode)
+@@ -96,6 +101,10 @@ grub_cpio_find_file (struct grub_archelp_data *data, char **name,
+   return GRUB_ERR_NONE;
+ }
+ 
++#if __GNUC__ >= 9
++#pragma GCC diagnostic pop
++#endif
++
+ static char *
+ grub_cpio_get_link_target (struct grub_archelp_data *data)
+ {
+-- 
+2.16.4
+

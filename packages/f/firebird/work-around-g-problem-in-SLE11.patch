@@ -1,0 +1,234 @@
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Wed, 29 Jun 2016 08:42:27 +0200
+Subject: work around g++ problem in SLE11
+Patch-mainline: Never, workaround for a bug in old g++
+
+SLE11 version of g++ requires full template parameters when referencing
+a base class constructor. As Firebird 3 code uses only class name in
+several places, patch it to add full base class specification if built
+on SLE11 (or anything older than OpenSuSE 11.4).
+
+Another problem is the MAX_TRA_NUMBER constant: old g++ requires it to
+be explicitely marked with LL suffix if it exceeds the range of long int.
+---
+ src/common/StatusHolder.h        |  4 ++--
+ src/common/classes/alloc.cpp     |  6 +++---
+ src/include/firebird/Interface.h |  4 ++--
+ src/jrd/Mapping.cpp              |  4 ++--
+ src/jrd/constants.h              |  2 +-
+ src/jrd/trace/TraceObjects.h     |  4 ++--
+ src/yvalve/YObjects.h            |  2 +-
+ src/yvalve/why.cpp               | 19 ++++++++++---------
+ 8 files changed, 23 insertions(+), 22 deletions(-)
+
+--- a/src/common/StatusHolder.h
++++ b/src/common/StatusHolder.h
+@@ -141,7 +141,7 @@ class DynamicStatusVector : public DynamicVector<ISC_STATUS_LENGTH>
+ {
+ public:
+ 	DynamicStatusVector()
+-		: DynamicVector(*getDefaultMemoryPool())
++		: DynamicVector<ISC_STATUS_LENGTH>(*getDefaultMemoryPool())
+ 	{ }
+ 
+ 	ISC_STATUS load(const IStatus* status);
+@@ -254,7 +254,7 @@ class StatusHolder : public BaseStatus<StatusHolder>
+ {
+ public:
+ 	StatusHolder()
+-		: BaseStatus(*getDefaultMemoryPool()), m_raised(false)
++		: BaseStatus<StatusHolder>(*getDefaultMemoryPool()), m_raised(false)
+ 	{ }
+ 
+ 	ISC_STATUS save(IStatus* status);
+--- a/src/common/classes/alloc.cpp
++++ b/src/common/classes/alloc.cpp
+@@ -424,7 +424,7 @@ public:
+ 	{
+ 		MemBlock* rc = new(memory) MemBlock(size);
+ 
+-		MemBaseHunk::newBlock(size);
++		MemBaseHunk<MemSmallHunk>::newBlock(size);
+ 
+ 		return rc;
+ 	}
+@@ -460,7 +460,7 @@ private:
+ 
+ public:
+ 	MemMediumHunk(MemMediumHunk** top, size_t spaceAllocated)
+-		: MemBaseHunk(spaceAllocated, hdrSize()),
++		: MemBaseHunk<MemMediumHunk>(spaceAllocated, hdrSize()),
+ 		  prev(NULL),
+ 		  useCount(0)
+ 	{
+@@ -487,7 +487,7 @@ public:
+ 	{
+ 		MemBlock* rc = new(memory) MemBlock(size, this);
+ 
+-		MemBaseHunk::newBlock(size);
++		MemBaseHunk<MemMediumHunk>::newBlock(size);
+ 		incrUsage();
+ 
+ 		return rc;
+--- a/src/include/firebird/Interface.h
++++ b/src/include/firebird/Interface.h
+@@ -243,7 +243,7 @@ namespace Firebird
+ 	{
+ 	public:
+ 		CheckStatusWrapper(IStatus* aStatus)
+-			: BaseStatusWrapper(aStatus)
++			: BaseStatusWrapper<CheckStatusWrapper>(aStatus)
+ 		{
+ 		}
+ 
+@@ -257,7 +257,7 @@ namespace Firebird
+ 	{
+ 	public:
+ 		ThrowStatusWrapper(IStatus* aStatus)
+-			: BaseStatusWrapper(aStatus)
++			: BaseStatusWrapper<ThrowStatusWrapper>(aStatus)
+ 		{
+ 		}
+ 
+--- a/src/jrd/Mapping.cpp
++++ b/src/jrd/Mapping.cpp
+@@ -895,11 +895,11 @@ class DbHandle : public AutoPtr<IAttachment, SimpleRelease>
+ {
+ public:
+ 	DbHandle()
+-		: AutoPtr()
++		: AutoPtr<IAttachment, SimpleRelease>()
+ 	{ }
+ 
+ 	DbHandle(IAttachment* att)
+-		: AutoPtr(att)
++		: AutoPtr<IAttachment, SimpleRelease>(att)
+ 	{
+ 		if (att)
+ 			att->addRef();
+--- a/src/jrd/constants.h
++++ b/src/jrd/constants.h
+@@ -444,7 +444,7 @@ const int DDL_TRIGGER_DROP_MAPPING				= 47;
+ #define PASSWORD_SWITCH "PASSWORD"
+ 
+ // The highest transaction number possible
+-const TraNumber MAX_TRA_NUMBER = 0x0000FFFFFFFFFFFF;	// ~2.8 * 10^14
++const TraNumber MAX_TRA_NUMBER = 0x0000FFFFFFFFFFFFLL;	// ~2.8 * 10^14
+ 
+ // Number of streams, conjuncts, indices that will be statically allocated
+ // in various arrays. Larger numbers will have to be allocated dynamically
+--- a/src/jrd/trace/TraceObjects.h
++++ b/src/jrd/trace/TraceObjects.h
+@@ -143,7 +143,7 @@ class TraceBLRStatementImpl : public BLRPrinter<TraceBLRStatementImpl>
+ {
+ public:
+ 	TraceBLRStatementImpl(const jrd_req* stmt, PerformanceInfo* perf) :
+-		BLRPrinter(stmt->getStatement()->blr.begin(), stmt->getStatement()->blr.getCount()),
++		BLRPrinter<TraceBLRStatementImpl>(stmt->getStatement()->blr.begin(), stmt->getStatement()->blr.getCount()),
+ 		m_stmt(stmt),
+ 		m_perf(perf)
+ 	{}
+@@ -161,7 +161,7 @@ class TraceFailedBLRStatement : public BLRPrinter<TraceFailedBLRStatement>
+ {
+ public:
+ 	TraceFailedBLRStatement(const unsigned char* blr, unsigned length) :
+-		BLRPrinter(blr, length)
++		BLRPrinter<TraceFailedBLRStatement>(blr, length)
+ 	{}
+ 
+ 	ISC_INT64 getStmtID()		{ return 0; }
+--- a/src/yvalve/YObjects.h
++++ b/src/yvalve/YObjects.h
+@@ -286,7 +286,7 @@ public:
+ 
+ private:
+ 	YTransaction(YTransaction* from)
+-		: YHelper(from->next),
++		: YHelper<YTransaction, Firebird::ITransactionImpl<YTransaction, Firebird::CheckStatusWrapper> >(from->next),
+ 		  attachment(from->attachment.get()),
+ 		  childBlobs(getPool()),
+ 		  childCursors(getPool()),
+--- a/src/yvalve/why.cpp
++++ b/src/yvalve/why.cpp
+@@ -3751,7 +3751,8 @@ YHelper<Impl, Intf>::YHelper(NextInterface* aNext)
+ 
+ 
+ YEvents::YEvents(YAttachment* aAttachment, IEvents* aNext, IEventCallback* aCallback)
+-	: YHelper(aNext), attachment(aAttachment), callback(aCallback)
++	: YHelper<YEvents, Firebird::IEventsImpl<YEvents, Firebird::CheckStatusWrapper> >(aNext),
++	  attachment(aAttachment), callback(aCallback)
+ {
+ 	aAttachment->childEvents.add(this);
+ }
+@@ -3809,7 +3810,7 @@ void YEvents::cancel(CheckStatusWrapper* status)
+ 
+ 
+ YRequest::YRequest(YAttachment* aAttachment, IRequest* aNext)
+-	: YHelper(aNext),
++	: YHelper<YRequest, Firebird::IRequestImpl<YRequest, Firebird::CheckStatusWrapper> >(aNext),
+ 	  attachment(aAttachment),
+ 	  userHandle(NULL)
+ {
+@@ -3950,7 +3951,7 @@ void YRequest::free(CheckStatusWrapper* status)
+ 
+ 
+ YBlob::YBlob(YAttachment* aAttachment, YTransaction* aTransaction, IBlob* aNext)
+-	: YHelper(aNext),
++	: YHelper<YBlob, Firebird::IBlobImpl<YBlob, Firebird::CheckStatusWrapper> >(aNext),
+ 	  attachment(aAttachment),
+ 	  transaction(aTransaction)
+ {
+@@ -4076,7 +4077,7 @@ int YBlob::seek(CheckStatusWrapper* status, int mode, int offset)
+ 
+ 
+ YStatement::YStatement(YAttachment* aAttachment, IStatement* aNext)
+-	: YHelper(aNext),
++	: YHelper<YStatement, Firebird::IStatementImpl<YStatement, Firebird::CheckStatusWrapper> >(aNext),
+ 	  attachment(aAttachment), cursor(NULL), input(true), output(false)
+ {
+ 	attachment.get()->childStatements.add(this);
+@@ -4464,7 +4465,7 @@ FB_BOOLEAN IscStatement::fetch(CheckStatusWrapper* status, IMessageMetadata* out
+ 
+ 
+ YResultSet::YResultSet(YAttachment* anAttachment, YTransaction* aTransaction, IResultSet* aNext)
+-	: YHelper(aNext),
++	: YHelper<YResultSet, Firebird::IResultSetImpl<YResultSet, Firebird::CheckStatusWrapper> >(aNext),
+ 	  attachment(anAttachment),
+ 	  transaction(aTransaction),
+ 	  statement(NULL)
+@@ -4475,7 +4476,7 @@ YResultSet::YResultSet(YAttachment* anAttachment, YTransaction* aTransaction, IR
+ 
+ YResultSet::YResultSet(YAttachment* anAttachment, YTransaction* aTransaction,
+ 			YStatement* aStatement, IResultSet* aNext)
+-	: YHelper(aNext),
++	: YHelper<YResultSet, Firebird::IResultSetImpl<YResultSet, Firebird::CheckStatusWrapper> >(aNext),
+ 	  attachment(anAttachment),
+ 	  transaction(aTransaction),
+ 	  statement(aStatement)
+@@ -4701,7 +4702,7 @@ void YResultSet::close(CheckStatusWrapper* status)
+ 
+ 
+ YTransaction::YTransaction(YAttachment* aAttachment, ITransaction* aNext)
+-	: YHelper(aNext),
++	: YHelper<YTransaction, Firebird::ITransactionImpl<YTransaction, Firebird::CheckStatusWrapper> >(aNext),
+ 	  attachment(aAttachment),
+ 	  childBlobs(getPool()),
+ 	  childCursors(getPool()),
+@@ -4960,7 +4961,7 @@ YTransaction* YTransaction::enterDtc(CheckStatusWrapper* status)
+ 
+ 
+ YAttachment::YAttachment(IProvider* aProvider, IAttachment* aNext, const PathName& aDbPath)
+-	: YHelper(aNext),
++	: YHelper<YAttachment, Firebird::IAttachmentImpl<YAttachment, Firebird::CheckStatusWrapper> >(aNext),
+ 	  provider(aProvider),
+ 	  dbPath(getPool(), aDbPath),
+ 	  childBlobs(getPool()),
+@@ -5538,7 +5539,7 @@ void YAttachment::getNextTransaction(CheckStatusWrapper* status, ITransaction* t
+ 
+ 
+ YService::YService(IProvider* aProvider, IService* aNext, bool utf8)
+-	: YHelper(aNext),
++	: YHelper<YService, Firebird::IServiceImpl<YService, Firebird::CheckStatusWrapper> >(aNext),
+ 	  provider(aProvider),
+ 	  utf8Connection(utf8)
+ {

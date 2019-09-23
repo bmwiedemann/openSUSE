@@ -1,0 +1,9 @@
+<package name="lapdog" project="openSUSE:Factory">
+  <title>Take actions when specific devices appear/disappear from your LAN</title>
+  <description>lapdog is a service that monitors the presence/absence of the devices
+on your LAN and executes some actions accordingly.
+
+</description>
+  <devel project="network" package="lapdog"/>
+  <url>https://github.com/ltworf/lapdog</url>
+</package>

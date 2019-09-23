@@ -1,0 +1,8 @@
+<package name="bs-update" project="openSUSE:Factory">
+  <title>Automate maintenance of packages in a Build Service</title>
+  <description>bs-update makes it easier to keep packages in a Build Service
+up-to-date with respect to their upstream sources.
+
+</description>
+  <devel project="devel:tools:scm" package="bs-update"/>
+</package>

@@ -1,0 +1,20 @@
+--- mx4j/src/docs/xsl/mx4j-chunk.xsl.orig	Sun Nov 14 16:33:03 2004
++++ mx4j/src/docs/xsl/mx4j-chunk.xsl	Thu Dec 23 20:17:30 2004
+@@ -1,6 +1,6 @@
+ <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version='1.0'>
+ 
+-  <xsl:import href="../docbookx/html/chunk.xsl"/>
++  <xsl:import href="http://docbook.sourceforge.net/release/xsl/current/html/chunk.xsl"/>
+   <xsl:import href="autotoc.xsl"/>
+ 
+   <xsl:param name="html.stylesheet">styles.css</xsl:param>
+--- mx4j/src/docs/index.xml.orig	Sun Nov 14 16:31:54 2004
++++ mx4j/src/docs/index.xml	Thu Dec 23 20:19:00 2004
+@@ -1,5 +1,6 @@
+ <?xml version="1.0" encoding="ISO-8859-1"?>
+-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "docbook/docbookx.dtd" [
++<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
++                      "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+ 	<!ENTITY english SYSTEM "english/index.xml">
+ 
+ 	<!ENTITY license_en SYSTEM "english/license.xml">

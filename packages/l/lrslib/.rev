@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>de44867f814a586d526372f489e59f67</srcmd5>
+    <version>6.2</version>
+    <time>1516711958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560018</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>339e6409af012752ae962fd6b01532c2</srcmd5>
+    <version>6.2</version>
+    <time>1530304359</time>
+    <user>dimstar_suse</user>
+    <comment>fix build failure</comment>
+    <requestid>618652</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8f6ec189b297103c2930c70884cf436a</srcmd5>
+    <version>7.0</version>
+    <time>1552902152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream rerelease 7.0</comment>
+    <requestid>685609</requestid>
+  </revision>
+</revisionlist>

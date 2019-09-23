@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>099b6e3f42f3ddaf1b39a1d61d923ba5</srcmd5>
+    <version>0.4.1</version>
+    <time>1428652445</time>
+    <user>dimstar_suse</user>
+    <comment>Commonly used benchmark</comment>
+    <requestid>295094</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c85a8adec9a1ebee64cd9d6f0cdcc4e8</srcmd5>
+    <version>0.4.1</version>
+    <time>1431795668</time>
+    <user>coolo</user>
+    <comment>- Add url
+
+- Update dependencies</comment>
+    <requestid>307378</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b4dcd5e1a27c581b0cbe4d88d7d130d6</srcmd5>
+    <version>0.4.1</version>
+    <time>1435053431</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312534</requestid>
+  </revision>
+</revisionlist>

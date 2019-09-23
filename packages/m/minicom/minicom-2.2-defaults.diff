@@ -1,0 +1,24 @@
+Index: src/rwconf.c
+===================================================================
+--- src/rwconf.c.orig
++++ src/rwconf.c
+@@ -79,8 +79,8 @@ struct pars mpars[] = {
+ #if defined(__linux__) || defined(__GNU__)
+   { "/usr/bin/sz -vv -b",	0,   "pprog1" },
+   { "/usr/bin/sb -vv",		0,   "pprog2" },
+-  { "/usr/bin/sx -vv",		0,   "pprog3" },
+-  { "/usr/bin/rz -vv -b -E",	0,   "pprog4" },
++  { "/usr/bin/sz -X -vv",		0,   "pprog3" },
++  { "/usr/bin/rz -vv -b",	0,   "pprog4" },
+   { "/usr/bin/rb -vv",		0,   "pprog5" },
+   { "/usr/bin/rx -vv",		0,   "pprog6" },
+   { "/usr/bin/kermit -i -l %l -b %b -s", 0, "pprog7" },
+@@ -145,7 +145,7 @@ struct pars mpars[] = {
+   { "BS",		0,   "backspace" },
+   { N_("enabled"),	0,   "statusline" },
+   { N_("Yes"),		0,   "hasdcd" },
+-  { N_("Yes"),		0,   "rtscts" },
++  { N_("No"),		0,   "rtscts" },
+   { N_("No"),		0,   "xonxoff" },
+   { "D",		0,   "zauto" },
+ 

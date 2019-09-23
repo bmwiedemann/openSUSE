@@ -1,0 +1,1157 @@
+-------------------------------------------------------------------
+Wed Sep 11 07:54:48 UTC 2019 - Cliff Zhao <qzhao@suse.com>
+
+- Add patch plymouth-avoid-umount-hanging-shutdown.patch:
+  To avoid grantpt() call nsslookup, it will hanging system unmount
+  /var during shutdown period(bsc#1105688, bsc#1129386, 
+  bsc#1134660). 
+
+-------------------------------------------------------------------
+Thu Aug 15 03:56:10 UTC 2019 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 0.9.5+git20190908+3abfab2:
+  * two-step: Deal with buggy firmware which does not pre-rotate the bgrt image
+  * configure: bump so name
+  * Internationalization: Add zh_HK and zh_TW translations.
+  * add delay time to 8 seconds to fit AMD graphic card.
+
+-------------------------------------------------------------------
+Mon Aug  5 05:58:21 UTC 2019 - Cliff Zhao <qzhao@suse.com>
+
+- Update plymouth.spec: Disable upstart-monitor compile because it
+  only used in Ubuntu/Debian. 
+
+-------------------------------------------------------------------
+Sun Aug  4 03:51:50 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update plymouth.spec: Use bcond_with for X11 renderer, cleanup 
+  syntax.
+
+-------------------------------------------------------------------
+Wed Jul 31 11:36:57 UTC 2019 - Cliff Zhao <qzhao@suse.com>
+
+- Update plymouth.spec: obsolete plymouth render plugin for 
+  Xwindows, Since this plugin will not be used in the production 
+  environment, and this modify will highly decrease the compilation 
+  of build requirements.
+
+-------------------------------------------------------------------
+Mon Jul  8 06:48:38 UTC 2019 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 0.9.4+git20190612+9359382:
+  * two-step: Add support for firmware-splashes with rotation 
+    status bits set
+  * Regenerate plymouth.pot to add the strings for the new 
+    firmware-upgrade mode.
+
+-------------------------------------------------------------------
+Fri Jun 14 07:06:46 UTC 2019 - Cliff Zhao <qzhao@suse.com>
+
+- Add dependency to dracut for plymouth-scripts(bnc#1138248). 
+
+-------------------------------------------------------------------
+Tue Jun 11 12:53:00 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Tue Apr  2 21:32:05 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Change default openSUSE theme to bgrt
+
+-------------------------------------------------------------------
+Wed Mar 27 08:48:49 UTC 2019 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 0.9.4+git20190325+b9f2aac:
+  * themes: Update spinner and bgrt background settings
+  * Translations: Sync translations with zanata
+
+-------------------------------------------------------------------
+Sun Mar 24 17:04:57 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Fix theme-bgrt dependencies
+  (based on plugin-two-step with images from theme-spinner)
+
+-------------------------------------------------------------------
+Tue Mar 12 12:33:54 UTC 2019 - qzhao@suse.com
+
+- Update to version 0.9.4+git20181219.c8f1256:
+  * ply-pixel-buffer: Fix right and bottom edge rendering of 
+    scaled buffers.
+  * Add support for translating the user visible strings in some 
+    themes
+  * Prefix Title and Subtitle theme config keywords with an 
+    underscore
+  * Add new reboot and system-upgrade modes
+  * main: Remove private ply_mode_t
+  * two-step: Make ProgressBarShowPercentComplete a per mode 
+              setting
+  * plymouthd.defaults: Change default ShowDelay to 0
+  * ply-boot-splash: Do not add ply_boot_splash_update_progress 
+                     timeout multiple times
+  * logging: Minor log-message fixes.
+             Improve logging format.
+  * themes: Update spinner and bgrt theme offline updates mode
+  * two-step: Add a per mode setting to suppress messages.
+              Add progress-bar support.
+              Add MessageBelowAnimation option.
+              Add per mode settings.
+              Drop background_is_bgrt view_t member
+  * ply-progress-bar: Allow caller to specify the widgets width and 
+                      height.
+                      Allow choosing fore- and back-ground color.
+                      Redraw on percentage update.
+  * boot-server: fix type confusion when allocating connection object
+  * ply-device-manager: Handle change events for monitor hotplugging.
+                        Consume all events in one go.
+  * drm: Stop limiting preferred-mode picking to UEFI systems.
+         Reset mode on display-port connected outputs with a bad 
+         link-status.
+         Implement handle_change_event.
+         Ensure heads are mapped before flushing them.
+         Allow calling create_heads_for_active_connectors multiple 
+         times.
+         Allow calling ply_renderer_head_add_connector with existing 
+         connector_id.
+         Limit backend->resources lifetime to within query_device.
+         Store and keep all the outputs in the backend.
+         Add get_output_info helper function
+         Stop storing a pointer to drmModeConnector in ply_output_t
+         Stop keeing a drmModeConnector instance around.
+         Refactor ply_renderer_head_add_connector and 
+         ply_renderer_head_new
+         
+
+- Rebase 0002-Install-label-ft-plugin-into-initrd-if-available.patch
+
+-------------------------------------------------------------------
+Wed Jan  2 08:09:46 UTC 2019 - qzhao@suse.com
+
+- Update to version 0.9.4+git20181219.c8f1256:
+  * two-step: Use plymouth_strtod
+    Use the locale agnostic plymouth_strtod helper which always 
+    uses a "." as decimal seperator. This fixes the various 
+    Alignment options not working with some locales. 
+
+-------------------------------------------------------------------
+Wed Dec  12 08:48:56 UTC 2018 - qzhao@suse.com
+
+- Update to version 0.9.4+git20181209.f7d5bb1:
+  * ply-keyboard: Fix compiler warning
+  * When a renderer goes away on a udev remove event, free
+    keyboards associated with the renderer, before freeing the
+    renderer.
+  * device-manager: free keyboards when deactivating a renderer
+  * keyboard: add helper to get the keyboard's renderer, if 
+    applicable.
+
+-------------------------------------------------------------------
+Wed Dec  5 06:59:56 UTC 2018 - qzhao@suse.com
+
+- Update to version 0.9.4+git20181204.0cd0613:
+  * drm: Pick a controller for unconfigured connectors
+  * drm: Drop crtcs for clones for which we've picked different 
+         modes
+  * drm: More connector enumeration refactoring
+  * drm: Store tiled and rotation in ply_output_t
+  * drm: Refactor create_heads_for_active_connectors
+  * drm: Directly store the mode instead of the mode_index
+  * drm: Drop unused encoder_id
+
+-------------------------------------------------------------------
+Thu Nov 29 07:54:27 UTC 2018 - qzhao@suse.com
+
+- Update to version 0.9.4+git20181129.a7ec3e6:
+  * Add new BGRT theme, using the firmware boot splash as background
+  * two-step: bgrt: Deal with quirky firmwares, Add ACPI BGRT 
+  extension support, Speed up background-tile drawing on HiDPI 
+  screens, Use a pixel-buffer instead of an image for the view's 
+  background
+  * ply-pixel-buffer: Add ply_pixel_buffer_rotate_upright helper,
+  Add ply_pixel_buffer_get/set_device_rotation helpers, Fix marking 
+  buffers as opaque when doing a solid fill, Fix fill_with_buffer 
+  fastpath when device_scale != 1. 
+
+-------------------------------------------------------------------
+Fri Nov 23 10:09:29 UTC 2018 - qzhao@suse.com
+
+- Update to version 0.9.4+git20181122.aaa140b:
+  Add a separator between different boot logs
+  Fix race causing undesired creation of non-gfx devs
+  Fix animation not starting on later added heads
+
+-------------------------------------------------------------------
+Mon Nov 12 10:47:54 UTC 2018 - qzhao@suse.com
+
+- Update to version 0.9.4+git20181111.118c5ca:
+  Modify systemd-units: Add "ConditionVirtualization=!container" in 
+  all plymouth-*.service, also systemd-ask-password-plymouth.path.
+
+-------------------------------------------------------------------
+Tue Nov  6 08:19:01 UTC 2018 - qzhao@suse.com
+
+- Update to version 0.9.4+git20181105.f898586:
+  bump to 0.9.4
+
+-------------------------------------------------------------------
+Tue Oct 31 15:30:48 UTC 2018 - qzhao@suse.com
+
+- Update to version 0.9.3+git20181031.025ce59:
+  drm: use preferred mode for outputs
+  drm: Refactor ply_renderer_connector_get_rotation
+  drm: Reset LUT/gamma table before the first drmModeSetCrtc call
+  libply: Move kernel commandline parsing functions to libply/ply-utils
+  throbber: Don't skip last frame when waiting for end.
+- Drop plymouth-throbber-Don-t-skip-last-frame-when-waiting-for-end.patch
+  * Upstream has already accept Michal's modification.
+
+-------------------------------------------------------------------
+Tue Oct 23 07:15:48 UTC 2018 - msrb@suse.com
+
+- plymouth-throbber-Don-t-skip-last-frame-when-waiting-for-end.patch
+  * Make sure plymouthd stops throbber animation at the first
+    opportunity after receiving quit command, instead of looping
+    multiple times. (boo#1110199)
+
+-------------------------------------------------------------------
+Thu Oct 18 11:57:15 UTC 2018 - qzhao@suse.com
+
+- Update to version 0.9.3+git20180827.0a66272:
+  * boot-server: free the argument and triggers
+  * event-loop: fix leak in error path
+  * script: fix various memory leaks
+  * key-file: ply_key_file_get_value returns duplicated memory, fix
+    memory leaks.
+  * event-loop: fix leak in error path
+  * boot-splash: fix memory leak in error path
+  * populate-initrd: drop unused local variable
+
+-------------------------------------------------------------------
+Tue Aug 28 07:32:03 UTC 2018 - qzhao@suse.com
+
+- Update to version 0.9.3+git20180827.0a66272:
+  ensure tty is closed on deactivate
+  If plymouth doesn't get explicitly "activated" then when
+  GDM tries to deactivate it, the deactivation request is
+  a noop.
+  One aspect of being active, though is having ownership and
+  control of the terminal.  This happens immediately, even
+  before a splash is shown.
+  The `deactivate` request needs to relinguish such control,
+  unconditionally, since some display server is about to use
+  the tty.
+- Update patch name base on quilt standerd
+  Remove only_use_fb_for_cirrus_bochs.patch
+  Add plymouth-only_use_fb_for_cirrus_bochs.patch
+  Remove 0001-Some-greenish-openSUSE-colors.patch
+  Add plymouth-some-greenish-openSUSE-colors.patch
+
+-------------------------------------------------------------------
+Fri Aug 17 17:36:09 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.9.3+git20180807.7663b0c:
+  * systemd-units: Add "ConditionVirtualization=!container"
+  * README: add link to Code of Conduct
+  * two-step: add unhandled splash mode case to switch
+  * main: fix build
+  * Fix miscellaneous compiler warnings
+  * configure: Pass -Wno-cast-function-type if available
+  * main: Fix getting detailed logs from systemd
+  * main: Show details when ESC is pressed during splash_delay
+  * drm: Remove unnecessary reset_scan_out_buffer_if_needed() call
+    from ply_renderer_head_map()
+  * main: Only activate renderers if the splash uses pixel-displays
+- Switch to new gitlab home in _service.
+- Refresh patches with quilt.
+- Use autosetup macro.
+
+-------------------------------------------------------------------
+Sat Aug  4 06:15:14 UTC 2018 - qzhao@suse.com
+
+- Drop plymouth-fix-window-size: The use of the smallest screen 
+  size is deliberate (boo#804607 bsc#894051).
+
+-------------------------------------------------------------------
+Wed Apr 11 12:44:36 UTC 2018 - oholecek@suse.com
+
+- Modify 0001-Add-label-ft-plugin.patch to fix problems with
+  multiline text (bsc#1083695)
+  * to prevent infinite loop newline characters need to be skipped
+- Use %license instead of %doc (bsc#1082318)
+
+-------------------------------------------------------------------
+Sat Jan 13 21:20:16 UTC 2018 - zaitor@opensuse.org
+
+- Update to version 0.9.3+git20171220.6e9e95d:
+  * device-manager: drop superfluous
+    create_pixel_displays_for_renderer call
+  * x11: don't call gdk_display_get_name before gtk_init
+
+-------------------------------------------------------------------
+Mon Dec 04 11:23:27 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.9.3+git20171130.fa66a5b:
+  * INSTALL: Fix a spelling error in the command example
+  * populate-initrd: handle themes with subdirs
+  * device-manager: fall back to text mode if graphical devices
+    fail
+  * scripts: Use >&2 instead of /dev/stderr
+  * terminal: add include for sysmacros.h
+  * configure: bump to 0.9.4
+  * terminal-session: don't delete boot.log
+  * Revert "Make boot.log world readable by default"
+- Rebase 0002-Install-label-ft-plugin-into-initrd-if-available.patch
+
+-------------------------------------------------------------------
+Wed Nov 29 07:59:40 UTC 2017 - qzhao@suse.com
+
+- Drop stop-graphical.patch: There are no conflicting these days, 
+  obsolete this patch to enable auto switch to TTY when display 
+  server not exist (boo#1066510).
+
+-------------------------------------------------------------------
+Wed Jun 14 06:16:48 UTC 2017 - qzhao@suse.com
+
+- Update plymouth.spec: Add COPYING file in plymouth package file
+  list, This is for the law requirement (bsc#1043834). 
+
+-------------------------------------------------------------------
+Mon May  8 15:20:02 UTC 2017 - antoine.belvire@opensuse.org
+
+- Update to version 0.9.2+git20170424.6fd5c6b:
+  * main: Look for config in runtime dir first
+  * main: Look for theme in runtime dir first
+  * Revert "Recreate boot log at each boot instead of appending"
+  * x11: implement get_display_name
+  * drm: implement get_display_name
+  * configure: don't look for libudev when --without-udev is passed
+  * renderer: export device name from plugin
+  * device-manager: handle NULL renderer better
+- Remove 0001-device-manager-handle-NULL-renderer-better.patch
+  (upstreamed).
+
+-------------------------------------------------------------------
+Thu Jan 26 22:11:01 UTC 2017 - zaitor@opensuse.org
+
+- Drop use-mkinitrd.patch: No longer needed, mkinitrd is just a
+  wrapper for dracut now any way, hence this patch is currently
+  pointless.
+
+-------------------------------------------------------------------
+Wed Jan 25 14:38:09 UTC 2017 - fvogt@suse.com
+
+- Remove patch which causes breakage with systemd-vconsole-setup (bsc#1020327):
+  * 0001-let-it-become-a-real-daemon.patch
+- Add upstream patch to fix crash on boot:
+  * 0001-device-manager-handle-NULL-renderer-better.patch
+- Replace removal of framebuffer driver and plymouth-ignore-cirrusdrm.patch
+  with single patch:
+  * only_use_fb_for_cirrus_bochs.patch
+
+-------------------------------------------------------------------
+Mon Jan 09 17:01:44 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.9.2+git20161215.18dd755:
+  * terminal: refresh geometry after drm device arrives
+  * logger: stop using carriage returns
+  * build-goo: don't install systemd units during distcheck
+  * systemd-units: Fix uninstall script
+  * configure: switch to tar.xz instead tar.bz2
+  * libply: fix HiDPI detection
+  * libply, main: Add device scale setting
+  * main: support plymouth.force-scale on the kernel command line
+  * build-goo: make udev support build time optional
+  * device-manager: dont pass terminal as renderer device
+
+-------------------------------------------------------------------
+Tue Sep 06 09:23:50 UTC 2016 - tchvatal@suse.com
+
+- Update to version 0.9.2+git20160823.e4b7e49:
+  * libply: fix HiDPI detection
+  * libply, main: Add device scale setting
+  * main: support plymouth.force-scale on the kernel command line
+- Refresh patch:
+  * 0001-let-it-become-a-real-daemon.patch
+
+-------------------------------------------------------------------
+Tue Sep  6 09:22:50 UTC 2016 - tchvatal@suse.com
+
+- Add systemd to buildrequires to properly detect systemd-ask-password
+
+-------------------------------------------------------------------
+Thu Aug  4 11:15:47 UTC 2016 - tchvatal@suse.com
+
+- Sort out with spec-cleaner and move all buildrequires to main scope
+  not to subpkgs, sometimes interpreted wrongly by rpm if it is split
+
+-------------------------------------------------------------------
+Thu Aug  4 11:06:30 UTC 2016 - tchvatal@suse.com
+
+- Reduce patches list removing merged upstream (bit differently tho):
+  * 0001-seats-guard-against-NULL-terminal.patch
+  * fix-serial-consoles.patch
+  * plymouth-boot-vga-framebuffer.patch
+- Refresh patches:
+  * 0001-let-it-become-a-real-daemon.patch
+- Update to version 0.9.2+git20160620.0e65b86:
+  * configure: tweak defaults to be more systemd friendly
+  * text: don't draw if not animating
+  * terminal: always open terminal in non-blocking mode
+  * device-manager: probe existing DRM devices at startup
+  * drm: don't pick up drm master implicitly
+  * terminal: refresh geometry after drm device arrives
+  * logger: stop using carriage returns
+  * build-goo: don't install systemd units during distcheck
+  * systemd-units: Fix uninstall script
+  * configure: switch to tar.xz instead tar.bz2
+
+-------------------------------------------------------------------
+Wed Jun  1 10:20:05 UTC 2016 - idonmez@suse.com
+
+- Remove framebuffer support bsc#980750 and bsc#982226 
+
+-------------------------------------------------------------------
+Mon Feb  8 15:00:06 UTC 2016 - fvogt@suse.com
+
+- Add 0003-fix_null_deref.patch as well
+    - Avoid potential SEGV if label plugin fails to load
+
+-------------------------------------------------------------------
+Wed Jan 20 13:14:31 UTC 2016 - fvogt@suse.com
+
+- Add 0001-Add-label-ft-plugin.patch and 
+    0002-Install-label-ft-plugin-into-initrd-if-available.patch:
+    - Ability to output text in initrd, needed for encryption
+    - boo#959986
+
+-------------------------------------------------------------------
+Mon Dec 28 14:48:48 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.9.2:
+  + two-step: Add separate startup / shutdown animations.
+  + device-manager: try fb device if drm device failed.
+  + Port to GTK+ 3.0.
+  + script support system update events.
+  + Drop the obsolete log-viewer
+- Rebase patches:
+  + plymouth-fix-window-size
+  + stop-graphical.patch
+  + 0001-Some-greenish-openSUSE-colors.patch
+  + fix-serial-consoles.patch
+  + 0001-seats-guard-against-NULL-terminal.patch
+  + plymouth-ignore-cirrusdrm.patch
+  + plymouth-boot-vga-framebuffer.patch
+  + 0001-let-it-become-a-real-daemon.patch
+- Drop upstream fixed patches:
+  + 0001-device-manager-only-call-ply_terminal_free.patch
+  + 0001-splash-remove-pixel_pixel-in-sprite-lib-when-notifie.patch
+  + 0001-splash-do-not-process-display-lists-if-it-is-empty.patch
+  + 0001-libply-splash-core-also-monitor-for-file-removal-in-.patch
+  + 0001-seat-be-a-little-more-forgiving-in-the-case-there-s-.patch
+  + 0001-text-step-bar-use-correct-utf-8-multibyte-sequence-f.patch
+- Replace pkgconfig(gtk+-2.0) BuildRequires with
+  pkgconfig(gtk+-3.0), following upstreams port to GTK+ 3.0.
+- Rename library subpackage from *2 to *4, followings upstreams
+  soname bump.
+- Drop utils subpackage: the log-viewer, which was the only tool
+  left, has been dropped.
+
+-------------------------------------------------------------------
+Thu Dec 10 17:15:36 CET 2015 - tiwai@suse.de
+
+- Fix missing dependency on coreutils for initrd macros (boo#958562)
+- Call missing initrd macro at postun (boo#958562)
+
+-------------------------------------------------------------------
+Mon Sep 21 12:15:11 UTC 2015 - idonmez@suse.com
+
+- Use is_opensuse to simplify if/else block 
+
+-------------------------------------------------------------------
+Fri Sep  4 09:41:01 UTC 2015 - idonmez@suse.com
+
+- Add a direct dependency on systemd, since we need to know the
+  path to systemd-tty-ask-password-agent, fixes part of bsc#943312
+
+-------------------------------------------------------------------
+Sat Nov 08 17:05:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post/postun scripts
+
+-------------------------------------------------------------------
+Thu Sep 25 13:19:01 UTC 2014 - idonmez@suse.com
+
+- Update 0001-let-it-become-a-real-daemon.patch to call setsid 
+  only from the child process.
+
+-------------------------------------------------------------------
+Fri Sep 12 12:50:06 UTC 2014 - idonmez@suse.com
+
+- Add 0001-let-it-become-a-real-daemon.patch to make plymouth
+  a real daemon, fixes part of bnc#889757. Patch by Werner.
+
+-------------------------------------------------------------------
+Thu Sep  4 10:34:25 UTC 2014 - idonmez@suse.com
+
+- Add plymouth-boot-vga-framebuffer.patch to fix boot_vga
+  problem with framebuffer devices. (bnc#886211)
+
+-------------------------------------------------------------------
+Mon Aug 11 14:23:27 UTC 2014 - idonmez@suse.com
+
+- Modify plymouth-ignore-cirrusdrm.patch to return as
+  early as possible. Patch by glin@suse.com
+
+-------------------------------------------------------------------
+Thu Aug  7 09:24:37 UTC 2014 - idonmez@suse.com
+
+- Invert the logic in plymouth-ignore-cirrusdrm.patch bnc#890516
+
+-------------------------------------------------------------------
+Mon Jul 28 16:10:49 CEST 2014 - fcrozat@suse.com
+
+- Add
+  0001-text-step-bar-use-correct-utf-8-multibyte-sequence-f.patch:
+  fix incorrect UTF-8 code used for square (bnc#886148).
+
+-------------------------------------------------------------------
+Fri Jul 25 14:32:38 CEST 2014 - fcrozat@suse.com
+
+- Add plymouth-ignore-cirrusdrm.patch: ignore cirrus drm and use fb
+  instead (bnc#888590)
+
+-------------------------------------------------------------------
+Thu Jul 24 16:30:43 UTC 2014 - fcrozat@suse.com
+
+- Add
+  0001-seat-be-a-little-more-forgiving-in-the-case-there-s-.patch:
+  Be more forgiving with empty seat.
+
+-------------------------------------------------------------------
+Tue Jul  8 16:04:38 UTC 2014 - fcrozat@suse.com
+
+- Update 0001-Some-greenish-openSUSE-colors.patch to also use SUSE
+  colors on tribar (bnc#886148)
+
+-------------------------------------------------------------------
+Fri Jun 27 11:27:02 UTC 2014 - fcrozat@suse.com
+
+- Add
+  0001-libply-splash-core-also-monitor-for-file-removal-in-.patch:
+  handle new udev behaviour in seqnum removal.
+
+-------------------------------------------------------------------
+Fri Jun 20 14:03:36 UTC 2014 - fcrozat@suse.com
+
+- Add
+  0001-splash-do-not-process-display-lists-if-it-is-empty.patch:
+  fix crash when calling plymouth quit
+- Add 0001-seats-guard-against-NULL-terminal.patch: guard against
+  NULL terminal.
+- Update stop-graphical.patch: add RemainAfterExit=true to
+  plymouth-start.service, ensuring plymouthd is not restarted when
+  switching between runlevels.
+
+-------------------------------------------------------------------
+Thu Jun 19 14:22:44 UTC 2014 - fcrozat@suse.com
+
+- Add
+  0001-splash-remove-pixel_pixel-in-sprite-lib-when-notifie.patch:
+  fix crash when pixel_display is removed.
+- Add 0001-device-manager-only-call-ply_terminal_free.patch: fix
+  crash.
+- Add use-mkinitrd.patch: call mkinitrd -B, not dracut for now,
+  otherwise initramfs is being created by plymouth-update-initrd,
+  not initrd file.
+- Ensure we don't rebuild initrd twice when updating plymouth.
+- Ensure default theme is SLE/openSUSE (based on %suse_version)
+
+-------------------------------------------------------------------
+Fri Jun  6 16:16:38 UTC 2014 - fcrozat@suse.com
+
+- Release 0.9.0 (3 additional fixes compared to previously packaged
+  git snapshot):
+  + Use udev for graphics device enumeration
+  + Add new text plugin to replace the tribar one
+  + Add background tiling and watermark support to two-step
+  + Make various plymouth commands that change state be resilient
+    to being  called multiple times
+  + Support going back to the initrd at shutdown
+  + Keyfile parser improvements
+  + Make plymouthd use better defaults when running on top of X11
+  + Fixes for systems using QXL
+  + minor two-step plugin fixes
+  + Use /sys/class/tty/console/active instead of parsing
+    /proc/cmdline for consoles.
+  + Documentation improvements
+  + Drop driver specific renderers and use generic driver across the
+    board.
+  + Better debug message output
+  + systemd integration fixes
+  + upstart integration fixes
+  + initrd scripts fixes
+  + Misc fixes
+
+-------------------------------------------------------------------
+Thu Jun  5 07:24:10 UTC 2014 - idonmez@suse.com
+
+- Update fix-serial-consoles.patch to fix a crash in some rare
+  cases.
+
+-------------------------------------------------------------------
+Wed May 21 12:11:25 UTC 2014 - idonmez@suse.com
+
+- Add fix-serial-consoles.patch to fix binary garbage on serial
+  consoles. This is bnc#873859
+
+-------------------------------------------------------------------
+Mon May  5 12:49:49 UTC 2014 - fcrozat@suse.com
+
+- Remove plymouth-restore-suspend.patch: suspend package is being
+  dropped, no longer needs to provide this old API.
+- Remove requires on suspend package.
+
+-------------------------------------------------------------------
+Thu Apr 17 12:56:23 UTC 2014 - idonmez@suse.com
+
+- Update to git snapshot as of 20140327
+  * Fixes bnc#872502 and bnc#872428
+
+-------------------------------------------------------------------
+Wed Apr 16 11:35:30 UTC 2014 - trenn@suse.de
+
+- Kill all mkinitrd stuff
+  Remove suse-initrd-support
+- Tell zypper to regenerate initrd on installation/update via %post and
+  %posttrans scripts
+
+-------------------------------------------------------------------
+Thu Apr 10 10:55:03 UTC 2014 - idonmez@suse.com
+
+- Add plymouth-manpages.patch to fix manpage installation (bnc#871419)
+
+-------------------------------------------------------------------
+Thu Feb 20 12:47:03 UTC 2014 - fcrozat@suse.com
+
+- Drop plymouth.conf, it is no longer used, plymouthd.conf is
+  nowadays.
+
+-------------------------------------------------------------------
+Wed Feb 15 10:02:32 UTC 2014 - kigurame@opensuse.org
+- Updated from git 
+- carried over patches
+- Dropped 0001-Make-plymouthd-real-daemon-and-save-old-log.patch 
+  Because it is really not necesary
+
+-------------------------------------------------------------------
+Wed Feb 12 14:19:48 UTC 2014 - werner@suse.de
+
+- Add patch
+  0001-Make-plymouthd-real-daemon-and-save-old-log.patch
+  all daemons should call setsid(2) to become a real daemons without
+  controlling terminal.  Beside this the old boot log will help for
+  debugging and for support.
+
+-------------------------------------------------------------------
+Thu Dec 12 17:42:35 UTC 2013 - uweigand@de.ibm.com
+
+- Add powerpc64le-linux support.
+
+-------------------------------------------------------------------
+Thu Sep 26 14:52:07 UTC 2013 - lnussel@suse.de
+
+- disable plymouth in initrd if the root volume is encrypted. This
+  is a workaround until plymouth is able to handle the prompt
+  correctly (bnc#834063).
+
+-------------------------------------------------------------------
+Wed Sep 11 01:57:40 UTC 2013 - crrodriguez@opensuse.org
+
+- version 0.8.8_git201309032142
+- All device specific code has been removed because the kernel
+  has been fixed in the meanwhile so plymouth no longer requires
+  libdrm_intel, libdrm_radeon, libdrm_nouveau and can use the generic
+  interface.
+  This commit does not add any new features or bugfixes but removes
+  a huge chunk of unnecessary code.
+
+-------------------------------------------------------------------
+Fri Aug 16 12:03:43 UTC 2013 - lmuelle@suse.com
+
+- Pre require plymouth from plymouth-scripts; (bnc#806388).
+
+-------------------------------------------------------------------
+Thu Aug  1 14:08:53 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to version 0.8.8_git201308011340
+  - Drop patch plymouth-correct-systemd-prefix.patch
+  - Drop patch plymouth-close.patch
+  - Drop patch plymouth-close-unredirect.patch
+  - Drop patch plymouth-redirect-null.patch
+  - Drop patch plymouth-exit-code.patch
+  - Drop patch plymouth-terminal-session-close.patch
+
+-------------------------------------------------------------------
+Mon Jul 29 16:23:21 UTC 2013 - tittiatcoke@gmail.com
+
+- Add upstream patch plymouth-correct-systemd-prefix.patch to 
+  correct the systemd prefixes in some systemd files. This replaces
+  the sed string.
+
+-------------------------------------------------------------------
+Thu Jun 27 19:39:15 UTC 2013 - crrodriguez@opensuse.org
+
+- Require pigz instead of gzip 
+- ensure plugin requires are versioned.
+
+-------------------------------------------------------------------
+Sun Jun 16 23:37:55 UTC 2013 - crrodriguez@opensuse.org
+
+- own %{_localstatedir}/log/boot.log
+  and %{_localstatedir}/spool/plymouth/boot.log (as %ghost s)
+
+-------------------------------------------------------------------
+Tue Jun 11 16:09:57 UTC 2013 - fcrozat@suse.com
+
+- Add plymouth-close: do not try to close negative fd.
+- Add plymouth-close-unredirect.patch: do not leak fd when stopping
+  redirection of /dev/console (bnc#811185)
+- Add plymouth-redirect-null.patch: redirect plymouth standard io
+  to /dev/null (bnc#811185)
+- Add plymouth-exit-code.patch: ignore exit code in ExecStartPost.
+- Add plymouth-terminal-session-close.patch: do no try to close
+  terminal session fd if already closed.
+
+-------------------------------------------------------------------
+Sun May 12 21:56:30 UTC 2013 - crrodriguez@opensuse.org
+
+- Not only reboot.service is prefixed with systemd- currently
+  but also kexec,halt,poweroff. 
+
+-------------------------------------------------------------------
+Mon Apr 22 19:47:44 UTC 2013 - crrodriguez@opensuse.org
+
+- Also ensure we express rpm dependencies correctly 
+  this package is not gonna work on systemd < 186.
+
+-------------------------------------------------------------------
+Mon Apr 22 19:32:40 UTC 2013 - crrodriguez@opensuse.org
+
+- Update to version 0.8.8_git201304161248
+- drop plymouth-change-service-name.patch, replaced by 
+a sed script that will account for all service files' future changes
+- drop patch plymouth-trace-lines, in upstream now
+- drop plymouth-udevadm-path.patch, generic solution in upstream now.
+- drop ply-sdunitdir.patch likewise.
+- drop plymouth-systemd-in-usr.patch likewise.
+- drop systemd-no-warning.patch, not needed with newer systemd
+- drop plymouth-sd-notforking.patch , not really needed anymore.
+ 
+
+-------------------------------------------------------------------
+Thu Feb 28 21:13:14 UTC 2013 - tittiatcoke@gmail.com
+
+- Changed %post scripts so only the rebuild of the initrd is 
+  omitted within the build environment
+
+-------------------------------------------------------------------
+Fri Feb 22 16:20:54 UTC 2013 - tittiatcoke@gmail.com
+
+- Added patch plymouth-correct-runtime-dir.patch to make the 
+  plymouthruntimedir equal to /run/plymouth and not /var/run/plymouth
+
+-------------------------------------------------------------------
+Wed Feb  6 14:44:11 UTC 2013 - fcrozat@suse.com
+
+- Rename plymouth-sd-notforking.patch to fix typo in patch name
+- Add plymouth-change-service-name.patch: fix incorrect service
+  names used for dependencies. Now use systemd-reboot.service
+  (replacing reboot.service) and display-manager.service (replacing
+  prefdm.service).
+
+-------------------------------------------------------------------
+Tue Dec 18 15:05:47 UTC 2012 - tittiatcoke@gmail.com
+
+- Make sure that the right version of the scripts is required by 
+  the main package. This to prevent that an update of the scripts 
+  is not installed (bnc#793400)
+- Removed obsolete patch plymouth-remove-pid-file.patch. Issue 
+  has been resolved upstream
+
+-------------------------------------------------------------------
+Wed Nov 14 09:12:13 UTC 2012 - seife+obs@b1-systems.com
+
+- fix path to systemd-tty-ask-password-agent for newer systemd
+- create the pid file again during boot, the existence of this is
+  a condition for systemd-ask-password-plymouth.service. A proper
+  fix might look different but that get's it going again.
+
+-------------------------------------------------------------------
+Tue Nov  6 18:07:29 UTC 2012 - tittiatcoke@gmail.com
+
+- Provide the scripts to integrate Plymouth in dracut as a 
+  separate package.
+  
+- Added patch (plymouth-dracut-path.patch) to correct the paths
+  inside the specific plymouth-dracut scripts
+  
+-------------------------------------------------------------------
+Mon Nov  5 17:35:39 UTC 2012 - crrodriguez@opensuse.org
+
+- Update to an slightly newer git snapshot to fix regression
+  from 0.8.8 
+
+-------------------------------------------------------------------
+Thu Nov  1 21:36:22 UTC 2012 - crrodriguez@opensuse.org
+
+- Version 0.8.8
+
+* main: Try to own socket before anything else
+* main: silently succeed if plymouthd is started a second time
+* service: start plymouthd unconditionally
+* x11: make window fullscreen by default
+* x11: only create windows when necessary  
+
+-------------------------------------------------------------------
+Thu Nov  1 20:35:34 UTC 2012 - crrodriguez@opensuse.org
+
+- plymoith-sd-notforking.patch: Make plymouthd to not use
+  Service type "forking"
+
+- ply-sdunitdir.patch: Must install units in %{_unitdir} as
+  returned by pkg-config not in a hardcoded location.
+
+-------------------------------------------------------------------
+Fri Oct 12 08:59:08 UTC 2012 - tittiatcoke@gmail.com
+
+- Remove the non required font file in /etc/fonts/conf.avail/ .
+
+-------------------------------------------------------------------
+Thu Oct 11 12:21:37 UTC 2012 - tittiatcoke@gmail.com
+
+- Adjusted the upstream patch to remove the pid file. The original
+  one seems to cause issues with the DM killing plymouth 
+
+-------------------------------------------------------------------
+Thu Oct 11 09:13:33 UTC 2012 - tittiatcoke@gmail.com
+
+- Fix the Pango installation within the initrd. This would 
+  resolve the error message that Pango cannot find any fonts
+
+-------------------------------------------------------------------
+Thu Sep 27 12:37:13 UTC 2012 - tittiatcoke@gmail.com
+
+- fix the libdir path in plymouth-set-default-theme (bnc#780085)
+
+-------------------------------------------------------------------
+Thu Sep 20 09:45:07 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to version 0.8.7
+  + fix plymouth race at bootup breaking efi/vesa handoff
+  + Systemd fixes
+- Add plymouth-remove-pid-file.patch: remove PID file usage
+  (bnc#780976) (Thanks to fcrozat)
+- Remove upstream patches: plymouth-systemd-target.patch, 
+  0001-ply-text-progress-bar-strip-quotes-if-present,patch, 
+  plymouth-fix-systemd-service.patch, plymouth-after-udev-settle 
+  due to upstream inclusion.
+
+-------------------------------------------------------------------
+Wed Aug 22 14:04:13 UTC 2012 - fcrozat@suse.com
+
+- Add plymouth-after-udev-settle.patch: ensure plymouth is started
+  after udev triggers has been started (git + name change due to
+  systemd < 183 in openSUSE 12.2).
+
+-------------------------------------------------------------------
+Wed Aug 22 11:41:57 UTC 2012 - tittiatcoke@gmail.com
+
+- Ensure that the right Pango version is used for copying one of
+  the pango modules
+
+-------------------------------------------------------------------
+Wed Aug  8 09:03:58 UTC 2012 - fcrozat@suse.com
+
+- Add plymouth-fix-systemd-service.patch: remove dashes next to
+  semi-colons, it confuses systemd. (bnc#774400)
+- Update suse-initrd-support to not start plymouth if kernel
+  cmdline contains "shell" or "plymouth.enable=0" or
+  "rd.plymouth=0".
+
+-------------------------------------------------------------------
+Mon Aug  6 12:39:41 UTC 2012 - dmueller@suse.com
+
+- remove suspend dependency on ARM
+
+-------------------------------------------------------------------
+Sun Jul 29 18:44:18 UTC 2012 - jengelh@inai.de
+
+- Ship /etc/os-release in the initrd so that the pretty name is
+  displayed in text-splash mode
+- Give the text-splash some SUSE-typical green coloring
+
+-------------------------------------------------------------------
+Sun Jul 29 18:07:39 UTC 2012 - dmueller@suse.com
+
+- fix build for ARM
+
+-------------------------------------------------------------------
+Thu Jul 26 13:33:28 UTC 2012 - tittiatcoke@gmail.com
+
+- Move the openSUSE branding to its rightful place
+
+-------------------------------------------------------------------
+Fri Jul 20 08:57:25 UTC 2012 - fcrozat@suse.com
+
+- Update to 0.8.6.1:
+ + Fix systemd path file generation
+- Changes from 0.8.6:
+ + fix flush_area fast-path
+ + seed random number generator by default for script plugins
+ + allow plymouth to be built without gtk dependency
+ + cope with lack of /etc/os-release better
+ + pull in systemd unit files (bnc#770890)
+ + add support for new "updates" mode for doing package updates
+  (only available for some plugins at the moment)
+- Add plymouth-restore-suspend.patch: revert commit removing
+  suspend/resume support, needed for suspend package.
+- Add plymouth-systemd-target.patch: add missing symlinks to start
+  plymouth on shutdown / reboot / kexec (bnc#770764).
+- Add plymouth-udevadm-path.patch: adapt to udevadm path on
+  openSUSE.
+- Ensure systemctl daemon-reload is called in post / postun
+- Add systemd-no-warning.patch: remove Documentation tag not
+  handled by systemd v44.
+- Update stop-graphical.patch to correct prevent plymouth.quit to
+  start under runlevel 5 (handled by xdm initscript directly).
+
+-------------------------------------------------------------------
+Fri Jul  6 23:13:15 UTC 2012 - dvaleev@suse.com
+
+- don't require intel_drm on ppc 
+
+-------------------------------------------------------------------
+Wed Jul  4 13:07:45 UTC 2012 - meissner@suse.com
+
+- run "/sbin/mkinitrd" and let it figure out by itself
+  what initrds to update. bnc#769812
+
+-------------------------------------------------------------------
+Mon Jul  2 11:19:04 UTC 2012 - fcrozat@suse.com
+
+- Provides systemd units, instead of relying on systemd to ship
+  them (bnc#769397).
+- Ensure plymouth--wait-quit.service conflicts with
+  graphical.target.
+
+-------------------------------------------------------------------
+Fri Jun 29 08:35:41 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 0.8.5.1
+  + two-step splash plugin quit fixes
+  + add generic driver to drm renderer plugin
+    This allows new modesetting drivers to work with plymouth 
+    automatically
+  + fixes for video cards that don't support 32bpp
+  + add alignment and width features to label controls
+  + new documentation
+  + event loop fix
+  + more serial console fixes
+  + better systemd integration
+  + new flush api to client library
+  + Allow plymouth to build the drm renderer without the driver
+    dependent libdrm_* libraries.
+
+-------------------------------------------------------------------
+Thu Jun 21 09:48:11 UTC 2012 - lnussel@suse.de
+
+- disable plymouth if init is not systemd (could be e.g. /bin/sh or
+  sysvinit then)
+
+-------------------------------------------------------------------
+Mon Jun 11 10:19:49 UTC 2012 - coolo@suse.com
+
+- if we provide bootsplash, we should also make sure to obsolete
+  its version
+
+-------------------------------------------------------------------
+Mon Jun  4 18:34:08 UTC 2012 - tittiatcoke@gmail.com
+
+- Ensure that the openSUSE theme is default. (bnc#765277)
+- Remove unnecessary changes to the kernel options. Plymouth also
+  accepts splash=silent.
+
+-------------------------------------------------------------------
+Wed May 30 16:41:02 UTC 2012 - vuntz@opensuse.org
+
+- Add plymouth-scripts Requires(post) to branding-openSUSE
+  subpackage, to make sure that the %post scriptlet will work.
+- Make sure we export LIB and not lib in the %postun scriptlets of
+  theme-solar and branding-openSUSE subpackages.
+
+-------------------------------------------------------------------
+Tue May 29 10:03:07 UTC 2012 - tittiatcoke@gmail.com
+
+- Ensure that label.so is being installed for the openSUSE branding
+  (bnc#763574)
+
+-------------------------------------------------------------------
+Mon May 21 11:25:36 UTC 2012 - tittiatcoke@gmail.com
+
+- Update the installation/update from plymouth in a way that the 
+  initrd file for the current running kernel is updated.
+- Corrected a typo with regards to the location of a pango module
+  when setting up the initrd. 
+
+-------------------------------------------------------------------
+Tue May 15 09:09:23 UTC 2012 - tittiatcoke@gmail.com
+
+- Added a patch for openSUSE to enable the rebuild of the initrd 
+  with the plymouth-set-default-theme script. (bnc#757284)
+
+-------------------------------------------------------------------
+Sun May 13 19:21:24 UTC 2012 - tittiatcoke@gmail.com
+
+- Added plymouth to the requires of plymouth-scripts. This 
+  should resolve bug (bnc#757284)
+
+-------------------------------------------------------------------
+Fri May 11 19:56:24 UTC 2012 - nmo.marques@gmail.com
+
+- Split x11 renderer into his own package; the x11 renderer allows
+  users to test plymouth themes; having it available on the devel
+  package will force people who just want to test a theme to
+  install a lot of unwanted dependencies. Being on it's own package
+  without explicit dependencies provides extra functionality to
+  users who want to test themes without having to rebuild initrd
+  and rebooting for testing.
+- bnc#761403
+
+-------------------------------------------------------------------
+Sat Apr 28 07:00:56 UTC 2012 - tittiatcoke@gmail.com
+
+- Reduce the number of fonts that are included in the initrd. Also
+  let mkinitrd sort out the dependencies for the required libs. 
+- Use the same font as that grub2 is currently using for it's 
+  graphics mode.
+
+-------------------------------------------------------------------
+Tue Apr 17 10:30:57 UTC 2012 - glin@suse.com
+
+- Correct the theme name in the post install script of
+  plymouth-branding-openSUSE
+
+-------------------------------------------------------------------
+Thu Apr  5 14:44:25 UTC 2012 - tittiatcoke@gmail.com
+
+- Updated the initrd patch to include the necessary files to have
+  text support (e.g. LUKS passphrase question, etc)
+
+- Temporarily added a openSUSE plymouth theme
+  (plymouth-branding-openSUSE) to have a better integration with 
+  12.2.
+
+-------------------------------------------------------------------
+Thu Mar 29 09:36:32 UTC 2012 - tittiatcoke@gmail.com
+
+- Ensure that both grub and grub2 are adjusted with regards to the
+  splash parameter. Running grub2-mkconfig to have the right 
+  configuration. 
+- Installation of themes are not causing any reset of the selected
+  default theme anymore. Now this only happens when a theme is 
+  installed and the default theme is set to TEXT.
+
+-------------------------------------------------------------------
+Sun Mar 25 09:03:44 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to the official release of 0.8.4
+  * Bugfix:  Use /dev/fb0 instead of /dev/fb, this resolves the 
+    issue of not showing the splash during shutdown
+
+-------------------------------------------------------------------
+Fri Mar  9 12:11:44 UTC 2012 - tittiatcoke@gmail.com
+
+- Add a small change in order to have plymouth activated with Grub2
+
+-------------------------------------------------------------------
+Thu Feb 23 15:57:44 UTC 2012 - tittiatcoke@gmail.com
+
+- Make sure that the package libply-boot-client is always 
+  installed to prevent a system that will not boot
+
+-------------------------------------------------------------------
+Thu Feb 23 12:38:51 UTC 2012 - saschpe@suse.de
+
+- Replaced package core-libs with individual packages for each shared
+  library (SLPP)
+- Proper provides/obsoletes pair for bootsplash
+- Could not resist to run spec-cleaner ;-)
+
+-------------------------------------------------------------------
+Tue Feb 21 09:49:52 UTC 2012 - tittiatcoke@gmail.com
+
+- Changed the parameters to plymouthd in the initrd to create 
+  the necessary pid-file for the systemd integration
+
+-------------------------------------------------------------------
+Fri Feb 17 18:04:29 UTC 2012 - tittiatcoke@gmail.com
+
+- Ensure that /bin/plymouth still is available as that the 
+  displaymanagers (KDM/GDM) are expecting this. This needs to be 
+  in place until the migration to /usr is completed.
+
+-------------------------------------------------------------------
+Fri Feb 17 09:25:11 UTC 2012 - tittiatcoke@gmail.com
+
+- Finalize the Plymouth integration on openSUSE. 
+  * Current default theme is Solar with the openSUSE Geecko
+  * Plymouth bootsplash will run on tty7 during boot.
+  * Install all files in /usr
+
+-------------------------------------------------------------------
+Tue Dec 27 16:19:56 UTC 2011 - crrodriguez@opensuse.org
+
+- Update to current git 
+
+-------------------------------------------------------------------
+Wed Mar 23 02:25:44 CET 2011 - jeffm@suse.de
+
+- Update to git snapshot from 12 Mar 2011.
+  - Mostly minor fixes.
+
+-------------------------------------------------------------------
+Sat Feb  5 23:49:30 CET 2011 - jeffm@suse.de
+
+- Updated to latest snapshot.
+  - boot-server: improve debug output
+  - pixel-buffer: Fix overflow in blend_two_pixel_values
+  - boot-server: fix debug output when message is from init
+
+- Fixed an issue with the script plugin's Window attributes returning
+  the size of the smallest display when multiple displays are used.
+
+-------------------------------------------------------------------
+Wed Dec 29 16:56:30 CET 2010 - jeffm@suse.de
+
+- Fixed location of text.so and details.so in plymouth-scripts
+
+-------------------------------------------------------------------
+Wed Dec 22 10:20:54 UTC 2010 - seife+obs@b1-systems.com
+
+- fix the build failure:
+  - own additional directories
+- fix rpmlint failures:
+  - fix up package groups - those are just guessed sometimes
+  - rename plymouth-graphics-libs to libply-splash-graphics2
+    (this one was fatal)
+  - do not own /var/run/plymouth - probably still needs fixing
+    (this was almost fatal)
+  - do not include build date in binary, use mtime of source
+    patchfile instead
+
+-------------------------------------------------------------------
+Wed Dec  8 22:44:13 CET 2010 - jeffm@suse.de
+
+- Initial packaging.
+

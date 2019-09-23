@@ -1,0 +1,1500 @@
+-------------------------------------------------------------------
+Thu Jul 27 20:24:19 UTC 2017 - badshah400@gmail.com
+
+- Update to version 3.7.5:
+  * SciTE adds "Select All Bookmarks" command.
+  * SciTE adds a save.path.suggestion setting to suggest a file
+    name when saving an unnamed buffer. 
+  * SciTE examines at most 1 MB of a file to automatically
+    determine indentation for indent.auto to avoid a lengthy pause
+    when loading very large files.
+  * SciTE user interface uses lighter colours and fewer 3D
+    elements to match current desktop environments.
+  * SciTE sets buffer dirty and shows message when file deleted if
+    load.on.activate on. 
+- Drop reproducible.patch: incorporated upstream.
+
+-------------------------------------------------------------------
+Tue May 30 07:01:03 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort input files to make build reproducible
+  (boo#1041090)
+
+-------------------------------------------------------------------
+Sat Apr 15 03:05:21 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Update to 3.7.4
+  + Requires a C++11 compiler. GCC 4.8 and MSVC 2015 are supported.
+  + Support dropped for Windows NT 4.
+  + Accessibility support may be queried with SCI_GETACCESSIBILITY.
+    On GTK+, accessibility may be disabled by calling
+    SCI_SETACCESSIBILITY.
+  + Lexer added for "indent" language which is styled as plain text
+    but folded by indentation level.
+  + The Progress ABL lexer handles nested comments where comment
+    starts or ends are adjacent like "/*/*" or "*/*/".
+  + In the Python lexer, improve f-string support. Add support for
+    multiline expressions in triple quoted f-strings. Handle nested
+    "()", "[]", and "{}" in f-string expressions and terminate
+    expression coloring at ":" or "!". End f-string if ending quote
+    is seen in a "{}" expression. Fix terminating single quoted
+    f-string at EOL, (sf#1918).
+  + The VHDL folder folds an "entity" on the first line of the file.
+  + For IMEs, do not clear selected text when there is no
+    composition text to show.
+  + Fix to crash with fold tags where line inserted at start.
+  + Fix to stream selection mode when moving caret up or down,
+    sf(#1905).
+  + Drawing fixes for fold tags include fully drawing lines and not
+    overlapping some drawing and ensuring edges and mark underlines
+    are visible.
+  + Fix Cocoa failure to display accented character chooser for
+    European languages by partially reverting a change made to
+    prevent a crash with Chinese input by special-casing the
+    Cangjie input source. (sf#1881).
+  + Fix potential problems with IME on Cocoa when document contains
+    invalid UTF-8.
+  + Fix crash on Cocoa with OS X 10.9 due to accessibility API not
+    available, (sf#1915).
+  + Improved speed of accessibility code on GTK+ by using
+    additional memory as a cache, (sf#1910).
+  + Fix crash in accessibility code on GTK+ < 3.3.6 caused by
+    previous bug fix, (sf#1907).
+  + Fix to prevent double scrolling on GTK+ with X11, (sf#1901).
+  + SciTE on GTK+ adds an "accessibility" property to allow
+    disabling accessibility on GTK+ as an optimization.
+  + SciTE on GTK+ has changed file chooser behaviour for some
+    actions: overwriting an existing file shows a warning; the
+    default session file name "SciTE.session" is shown and a
+    "*.session" filter is applied; appropriate filters are
+    applied when exporting; the current file name is displayed in
+    "Save As" even when that file no longer exists.
+  + SciTE fixed a bug where, on GTK+, when the output pane had
+    focus, menu commands performed by mouse were sent instead to
+    the edit pane.
+  + SciTE on Windows 8+ further restricts the paths searched for
+    DLLs to the application and system directories which may
+    prevent some binary planting attacks.
+  + Fix failure to load Direct2D on Windows when used on old
+    versions of Windows, (sf#1653).
+
+- Changes in version 3.7.3
+  + Display block caret over the character at the end of a
+    selection to be similar to other editors.
+  + In SciTE can choose colours for fold markers, (sf#1172).
+  + In SciTE can hide buffer numbers in tabs, (sf#1173).
+  + The Diff lexer recognizes deleted lines that start with "--- ".
+  + The Lua lexer requires the first line to start with "#!" to be
+    treated as a shebang comment, not just "#", (sf#1900).
+  + The Matlab lexer requires block comment start and end to be
+    alone on a line, (sf#1902).
+  + The Python lexer supports f-strings with new styles, allows
+    Unicode identifiers, and no longer allows @1 to be a decorator,
+    (sf#1848).
+  + Fix folding inconsistency when fold header added above a folded
+    part. Avoid unnecessary unfolding when a deletion does not
+    include a line end, (sf#1896).
+  + Fix finalization crash on Cocoa, (sf#1909).
+  + SciTE on GTK+ can have a wide divider between the panes with
+    the split.wide property.
+  + Fix display of autocompletion lists and calltips on GTK+ 3.22
+    on Wayland. Newer APIs used on GTK+ 3.22 as older APIs were
+    deprecated.
+  + Fix crash in accessibility code on GTK+ due to signal receipt
+    after destruction, (sf#1907).
+  + Make trackpad scrolling work on Wayland, (sf#1901). 
+
+-------------------------------------------------------------------
+Tue Feb  7 15:35:15 UTC 2017 - malcolmlewis@opensuse.org
+
+- Updated to version 3.7.2:
+  + Minimize redrawing for SCI_SETSELECTIONN* APIs, (sf#1888).
+  + Use more precision to allow selecting individual lines in files
+    with more than 16.7 million lines.
+  + Fix crash on GTK+ <3.8 due to incorrect lifetime of
+    accessibility object. More accurate reporting of attribute
+    ranges and deletion lengths for accessibility.
+  + In SciTE, if a Lua script causes a Scintilla failure exception,
+    display error message in output pane instead of exiting,
+    (sf#1773).
+- Changes from version 3.7.1:
+  + The Scintilla namespace is no longer applied to struct
+    definitions in Scintilla.h even when SCI_NAMESPACE defined.
+    Client code should not define SCI_NAMESPACE.
+  + Structure names in Scintilla.h without prefixes are deprecated
+    and will now only be usable with INCLUDE_DEPRECATED_FEATURES
+    defined. Use the newer names with the "Sci_" prefix:
+    * CharacterRange → Sci_CharacterRange.
+    * TextRange → Sci_TextRange.
+    * TextToFind → Sci_TextToFind.
+    * RangeToFormat → Sci_RangeToFormat.
+    * NotifyHeader → Sci_NotifyHeader.
+  + Previously deprecated features SC_CP_DBCS, SCI_SETUSEPALETTE
+    and SCI_GETUSEPALETTE have been removed and can no longer be
+    used in client code.
+  + Accessibility support allowing screen readers to work added on
+    GTK+.
+  + Textual tags may be displayed to the right on folded lines with
+    SCI_TOGGLEFOLDSHOWTEXT. This is commonly something like
+    "{ ... }" or "<tr>...</tr>". It is displayed with the
+    STYLE_FOLDDISPLAYTEXT style and may have a box drawn around it
+    with SCI_FOLDDISPLAYTEXTSETSTYLE.
+  + A mouse right-click over the margin may send an
+    SCN_MARGINRIGHTCLICK event. This only occurs when popup menus
+    are turned off. SCI_USEPOPUP now has three states:
+    SC_POPUP_NEVER, SC_POPUP_ALL, or SC_POPUP_TEXT.
+  + INDIC_POINT and INDIC_POINTCHARACTER indicators added to
+    display small arrows underneath positions or characters.
+  + Added alternate appearance for visible tabs which looks like a
+    horizontal line. Controlled with SCI_SETTABDRAWMODE,
+    Feature #1165.
+  + Baan folder accommodates sections and lexer fixes definition of
+    SCE_BAAN_FUNCDEF.
+  + EDIFACT lexer and folder added, Feature #1166.
+  + JSON folder fixed where it didn't resume folding with the
+    correct fold level.
+  + Matlab folder based on syntax instead of indentation so more
+    accurate (sf#1692).
+  + YAML lexer fixed style of references and keywords when followed
+    by a comment, (sf#1872).
+  + Margin click to select line now clears rectangular and
+    additional selections.
+  + Fixed a NULL access bug on GTK+ where the scrollbars could be
+    used during destruction, (sf#1873).
+  + A potential bug on GTK+ fixed where asynchronous clipboard
+    could be delivered after its target Scintilla instance was
+    destroyed.
+  + SciTE on GTK+ allows localising tool bar tool tips,
+    Feature #1167.
+  + SciTE measures files larger that 2 GB which allows it to refuse
+    to open huge files more consistently and to show better warning
+    messages.
+- Changes from version 3.7.0:
+  + Word selection, navigation, and manipulation is now performed
+    on characters instead of bytes leading to more natural
+    behaviour for multi-byte encodings like UTF-8. For UTF-8
+    characters 0x80 and above, classification into word;
+    punctuation; space; or line-end is based on the Unicode general
+    category of the character and is not customizable, (sf#1832).
+  + Two enums changed in Scintilla.iface which may lead to changed
+    bindings. There were 2 FontQuality enums and the first is now
+    PhasesDraw. The prefix for FoldAction was SC_FOLDACTION and is
+    now SC_FOLDACTION_ which is similar to other enums. These
+    changes do not affect the standard C/C++ binding.
+  + EDGE_MULTILINE and SCI_MULTIEDGEADDLINE added to allow
+    displaying multiple vertical edges simultaneously.
+  + The number of margins can be changed with SCI_SETMARGINS.
+  + Margin type SC_MARGIN_COLOUR added so that the application may
+    choose any colour for a margin with SCI_SETMARGINBACKN.
+  + The WordList class in lexlib used by lexers adds an
+    InListAbridged method for matching keywords that have
+    particular prefixes and/or suffixes.
+  + The Baan lexer was changed significantly with more lexical
+    states, keyword sets, and support for abridged keywords.
+  + The Progress lexer "progress" has been replaced with a new
+    lexer "abl" (Advanced Business Language) with a different set
+    of lexical states and more functionality. The lexical state
+    prefix has changed from SCE_4GL_ to SCE_ABL_, Feature #1143.
+  + The YAML lexer recognizes inline comments, (sf#1660).
+  + Fix caret position after left or right movement with
+    rectangular selection, (sf#1861).
+  + In SciTE, optional prefix argument added to scite.ConstantName
+    method, (sf#1860).
+  + On GTK+ 3.21+ fix incorrect font size in auto-completion list,
+    (sf#1859).
+  + Fix SciTE crash when command.mode ends with comma, (sf#1857).
+
+-------------------------------------------------------------------
+Fri Sep 16 00:03:38 UTC 2016 - malcolmlewis@opensuse.org
+
+- Updated to version 3.6.7:
+  + C++11 range-based for loops used in SciTE so GCC 4.6 is now the
+    minimum supported version.
+  + SCVS_NOWRAPLINESTART option stops left arrow from wrapping to
+    the previous line. Most commonly wanted when virtual space is
+    used, (sf#1648).
+  + The C++ lexer can fold on #else and #elif with the
+    fold.cpp.preprocessor.at.else property, (sf#210).
+  + The HTML lexer no longer treats "<?" inside a string in a
+    script as potentially starting an XML document, (sf#767).
+  + The HTML lexer fixes a problem resuming at a script start where
+    the starting state continued past where it should, (sf#1849).
+  + When inserting spaces for virtual space and the position is in
+    indentation and tabs are enabled for indentation then use tabs,
+    (sf#1850).
+  + Fix fold expand when some child text not styled. Caused by
+    fixes for #1799, (sf#1842).
+  + Fix scroll bar size warnings on GTK+ caused by #1831, (sf#1851).
+  + Small fixes for GTK+ makefile, (sf#1844, sf#1845 and sf#1846).
+  + Fix SciTE indentation after code like "void function () {}".
+  + Fix SciTE global regex replace of "^" with something which
+    missed the line after empty lines with LF line ends, (sf#1839).
+  + Fix SciTE on GTK+ 3.20 bug where toggle buttons on find and
+    replace strips did not show active state, (sf#1853).
+- Changes from version 3.6.6:
+  + C++ 11 <regex> support built by default. Can be disabled by
+    defining NO_CXX11_REGEX.
+  + SciTE_USERHOME environment variable allows separate location
+    for writeable properties files, Feature #965.
+  + GObject introspection supports notify and command events.
+  + The Progress lexer now allows comments preceded by a tab.
+  + Scripts reading Scintilla.iface file include comments for enu
+    and lex definitions, (sf#1829).
+  + Fix crashes on GTK+ if idle work active when destroyed,
+    (sf#1827).
+  + Fixed bugs when used on GTK+ 3.20, (sf#1825 and sf#1831).
+  + Fix SciTE search field background with dark theme on GTK+
+    2.x,(sf#1826).
+- Changes from version 3.6.5:
+  + JSON lexer added, Feature #1140.
+  + The C++ lexer fixes a bug with multi-line strings with line
+    continuation where the string style overflowed after an edit,
+    (sf#1824).
+  + The Python lexer treats '@' as an operator except when it is
+    the first visible character on a line. This is for Python 3.5.
+  + The Rust lexer allows '?' as an operator, Feature #1146.
+  + Doubled size of compiled regex buffer, (sf#1822).
+  + For GTK+, the Super modifier key can be used in key bindings,
+    Feature #1142.
+  + For GTK+, fix some crashes when using multiple threads.
+  + Platform layer font cache removed on GTK+ as platform-
+    independent caches are used. This avoids the use of thread
+    locking and initialisation of threads so any GTK+ applications
+    that rely on Scintilla initialising threads will have to do
+    that themselves.
+  + SciTE bug fixed with exported HTML where extra line shown,
+    (sf#1816).
+
+-------------------------------------------------------------------
+Fri Mar 18 14:06:08 UTC 2016 - malcolmlewis@opensuse.org
+
+- Update to version 3.6.4:
+  + SciTE allows setting the autocompletion type separator
+    character.
+  + The C++ folder folds code on '(' and ')' to allow multi-line
+    calls to be folded, Feature #1138.
+  + For the HTML lexer, limit the extent of Mako line comments to
+    finish before the line end characters.
+  + Folds unfolded when two fold regions are merged by either
+    deleting an intervening line or changing its fold level by
+    adding characters. This was fixed both in Scintilla and in
+    SciTE's equivalent code, (sf#1799).
+  + The Progress lexer supports hexadecimal numeric literals,
+    single-line comments, abbreviated keywords and extends nested
+    comments to unlimited levels.
+  + Ruby lexer treats alternate hash key syntax "key:" as a symbol,
+    (sf#1810).
+  + Rust lexer handles bracketed Unicode string escapes like
+    "\u{123abc}", (sf#1809).
+  + For Qt, release builds have assertions turned off.
+  + For SciTE, more descriptive error messages are displayed when
+    there are problems loading the Lua startup script,
+    Feature #1139.
+
+-------------------------------------------------------------------
+Fri Feb  5 22:07:41 UTC 2016 - malcolmlewis@opensuse.org
+
+- Update to version 3.6.3:
+  + Allow painting without first styling all visible text then
+    styling in the background using idle-time. This helps
+    performance when scrolling down in very large documents. Can
+    also incrementally style after the visible area to the end of
+    the document so that the document is already styled when the
+    user scrolls to it.
+  + Support GObject introspection on GTK+.
+  + SciTE supports pasting to each selection with the
+    selection.multipaste setting, Feature #1123.
+  + SciTE can optionally display a read-only indicator on tabs and
+    in the Buffers menu.
+  + Bash lexer flags incomplete here doc delimiters as syntax
+    errors (sf#1789).
+  + Support added for using '#' in non-comment ways as is possible
+    with zsh (sf#1794).
+  + Recognize more characters as here-doc delimiters (sf#1778).
+  + Errorlist lexer fixes bug with final line in escape sequence
+    recognition mode.
+  + Lua lexer includes '&' and '|' bitwise operators for Lua 5.3
+    (sf#1790).
+  + Perl lexer updated for Perl 5.20 and 5.22.
+  + Allow '_' for subroutine prototypes (sf#1791).
+  + Double-diamond operator <<>>.
+  + Hexadecimal floating point literals.
+  + Repetition in list assignment (sf#1793).
+  + Highlight changed subroutine prototype syntax for Perl 5.20
+    (sf#1797).
+  + Fix module ::-syntax when special characters such as 'x' are
+    used.
+  + Added ' and " detection as prefix chars for x repetition
+    operator (sf#1800).
+  + Visual Prolog lexer recognizes numbers more accurately and
+    allows non-ASCII verbatim quoting characters, Feature #1130.
+  + Send SCN_UPDATEUI with SC_UPDATE_SELECTION when the application
+    changes multiple selection.
+  + Expand folded areas before deleting fold header line
+    (sf#1796).
+  + Treat Unicode line ends like common line ends when maintaining
+    fold state.
+  + Highlight whole run for hover indicator when wrapped (sf#1784).
+  + On GTK+ and Qt, Korean input by word fixed.
+  + On GTK+, Qt, and Win32 block IME input when document is
+    read-only or any selected text is protected.
+  + On GTK+ on OS X, fix warning during destruction (sf#1777).
+  + Fix SciTE crashes when using LPEG lexers.
+
+-------------------------------------------------------------------
+Fri Jan  1 01:05:55 UTC 2016 - malcolmlewis@opensuse.org
+
+- Update to version 3.6.2:
+  + Whitespace may be made visible just in indentation.
+  + Whitespace dots are centred when larger than 1 pixel.
+  + The Scintilla framework on Cocoa now contains version numbers.
+  + SciTE's standard properties collect values from all active
+    .properties file to produce the Language menu and the file
+    types pull-down in the File open dialog.
+  + The single executable version of SciTE, Sc1, uses 'module'
+    statements within its embedded properties. This makes it act
+    more like the full distribution allowing languages to be turned
+    on and off by setting imports.include and imports.exclude. The
+    default imports.exclude property adds eiffel, erlang, ps, and
+    pov so these languages are turned off by default.
+  + SciTE adds an output.blank.margin.left property to allow
+    setting the output pane margin to a different width than the
+    edit pane.
+  + Markdown lexer treats line starts consistently to always
+    highlight *foo* or similar at line start (sf#1766).
+  + Optimise marker redrawing by only drawing affected lines when
+    markers shown in the text.
+  + On GTK+ 2.x, fix height of lines in autocompletion lists
+    (sf#1774).
+  + Fix bug with SCI_LINEENDDISPLAY where the caret moved to the
+    next document line instead of the end of the display line
+    (sf#1772).
+  + Report error (SC_STATUS_FAILURE) when negative length passed to
+    SCI_SETSTYLING (sf#1768).
+  + When SC_MARK_UNDERLINE is not assigned to a margin, stop
+    drawing the whole line.
+  + When reverting an untitled document in SciTE, just clear it
+    with no message about a file (sf#1764).
+  + SciTE on GTK+ allows use of Ctrl+A (Select All) inside find and
+    replace strips (sf#1769).
+
+-------------------------------------------------------------------
+Sun Oct  4 14:29:33 UTC 2015 - malcolmlewis@opensuse.org
+
+- Update to version 3.6.1:
+  + The oldest version of GTK+ supported now is 2.18 and for glib
+    it is 2.22.
+  + On GTK+, SC_CHARSET_OEM866 added to allow editing Russian files
+    encoded in code page 866, Feature #1019.
+  + The errorlist lexer understands some ANSI escape sequences to
+    change foreground colour and intensity. This is sufficient to
+    colour diagnotic output from gcc and clang when
+    -fdiagnostics-color set.
+  + The errorlist lexer allows the line number to be 0 in GCC
+    errors as some tools report whole file errors as line 0.
+  + MySql lexer fixes empty comments /**/ so the comment state does
+    not continue.
+  + VHDL folder supports "protected" keyword.
+  + Treat CRLF line end as two characters in SCI_COUNTCHARACTERS
+    (sf#1757).
+  + On GTK+ 3.x, fix height of lines in autocompletion lists to
+    match the font. Switch from deprecated style calls to CSS
+    styling. Removed setting list colours on GTK+ 3.16+ as no
+    longer appears needed.
+  + On GTK+, avoid "Invalid rectangle passed" warning messages by
+    never reporting the client rectangle with a negative width or
+    height.
+  + Fix SciTE disk exhaustion bug by reporting failures when
+    writing files (sf#1760).
+  + On GTK+ the keyboard command for View | End of Line was changed
+    to Ctrl+Shift+N to avoid clash with Search | Selection Add
+    Next (sf#1750).
+
+-------------------------------------------------------------------
+Wed Aug  5 21:04:53 UTC 2015 - malcolmlewis@opensuse.org
+
+- Update to version 3.6.0:
+  + External interfaces use the Sci_Position and Sci_PositionU
+    typedefs instead of int and unsigned int to allow for changes
+    to a 64-bit interface on 64-bit plactforms in the future.
+    Applications and external lexers should start using the new
+    type names so that they will be compatible when the 64-bit
+    change occurs. There is also Sci_PositionCR (long) for use in 
+    the Sci_CharacterRange struct which will also eventually become
+    64-bit.
+  + Multiple selection now works over more key commands. The new
+    multiple-selection handling commands include horizontal
+    movement and selection commands, line up and down movement and
+    selection commands, word and line deletion commands, and line
+    end insertion. This change in behaviours is conditional on
+    setting the SCI_SETADDITIONALSELECTIONTYPING property.
+  + Autocompletion lists send an SCN_AUTOCCOMPLETED notification
+    after the text has been inserted.
+  + The case mode style attribute can now be SC_CASE_CAMEL.
+  + The Python lexer supports substyles for identifiers.
+  + SciTE adds support for substyles.
+  + SciTE's Export as RTF and Copy as RTF commands support UTF-8.
+  + SciTE can display autocompletion on all IME input with
+    ime.autocomplete property.
+  + SciTE properties files now discard trailing white space on
+    variable names.
+  + Calling SCI_SETIDENTIFIERS resets styling to ensure any added
+    identifier are highlighted.
+  + Avoid candidate box randomly popping up away from edit pane
+    with (especially Japanese) IME input.
+  + Fix drawing problem when control characters are in a hidden
+    style as they then have a zero width rectangle to draw but
+    modify that rectangle in a way that clears some pixels.
+  + Report error when attempt to resize buffer to more than 2GB
+    with SC_STATUS_FAILURE.
+  + Fix bug on GTK+ with scroll bars leaking (sf#1742).
+  + LexOthers.cxx file split into one file per lexer: LexBatch,
+    LexDiff, LexErrorList, LexMake, LexNull, and LexProps.
+  + SciTE exporters handle styles > 127 correctly now.
+  + SciTE implements find.in.files.close.on.find on all platforms.
+- Add optflags to build to remove warning in rpmlint.
+
+-------------------------------------------------------------------
+Sat Jun 20 23:34:04 UTC 2015 - malcolmlewis@opensuse.org
+
+- Update to version 3.5.7:
+  + Added SCI_MULTIPLESELECTADDNEXT to add the next occurrence of
+    the main selection within the target to the set of selections
+    as main. If the current selection is empty then select word
+    around caret. SCI_MULTIPLESELECTADDEACH adds each occurrence of
+    the main selection within the target to the set of selections.
+  + SciTE adds "Selection Add Next" and "Selection Add Each"
+    commands to the Search menu.
+  + Added SCI_ISRANGEWORD to determine if the parameters are at the
+    start and end of a word.
+  + Added SCI_TARGETWHOLEDOCUMENT to set the target to the whole
+    document.
+  + Verilog lexer recognises protected regions and the folder folds
+    protected regions.
+  + A performance problem with markers when deleting many lines was
+    fixed (sf#1733).
+  + On GTK+ 3.4+, when there are both horizontal and vertical
+    scrollbars, draw the lower-right corner so that it does not
+    appear black when text selected (sf#1611).
+  + Fixed most calls deprecated in GTK+ 3.16. Does not fix style
+    override calls as they are more complex.
+  + SciTE on GTK+ 3.x uses a different technique for highlighting
+    the search strip when there is no match which is more
+    compatible with future and past versions and different themes.
+
+-------------------------------------------------------------------
+Sun May 31 02:08:08 UTC 2015 - malcolmlewis@opensuse.org
+
+- Update to version 3.5.6:
+  + On Qt, use fractional positioning calls and avoid rounding to
+    ensure consistency.
+  + SCI_TARGETASUTF8 and SCI_ENCODEDFROMUTF8 implemented on GTK+
+  + C++ lexer fixes empty backquoted string (sf#1711).
+  + C++ lexer fixes #undef directive (sf#1719).
+  + Fortran folder fixes handling of "selecttype" and "selectcase"
+    (sf#1724).
+  + Verilog folder folds interface definitions.
+  + VHDL folder folds units declarations and fixes a case
+    insensitivity bug with not treating "IS" the same as "is".
+  + Fix bug when drawing text margins in buffered mode which would
+    use default encoding instead of chosen encoding (sf#1703).
+  + Fix for reading a UTF-16 file in SciTE where a non-BMP
+    character is split over a read buffer boundary (sf#1710).
+  + Fix exporting from SciTE when using Scintillua for lexing.
+  + SciTE does not report twice that a search string can not be
+    found when "Replace" pressed (sf#1716).
+  + SciTE on GTK+ 3.x disables arrow in search combo when no
+    entries (sf#1717).
+- Changes from version 3.5.5:
+  + The wxWidgets-specific ascent member of Font has been removed
+    which breaks compatibility with current wxStyledTextCtrl
+    (sf#1682).
+  + IME on Qt supports multiple carets and behaves more like other
+    platforms.
+  + Always use inline IME on GTK+ for Korean.
+  + SQL lexer fixes handling of '+' and '-' in numbers so the '-'
+    in '1-1' is seen as an operator and for '1--comment' the
+    comment is recognized.
+  + TCL lexer reverts change to string handling (sf#1642).
+  + Verilog lexer fixes bugs with macro styling. Verilog folder
+    fixes bugs with `end completing an `if* instead of `endif and
+    fold.at.else, and implements folding at preprocessor `else.
+  + VHDL lexer supports extended identifiers.
+  + Fix SciTE bug with missing file open filters and add hex to
+    excluded set of properties files so that its settings don't
+    appear (sf#1707).
+  + Fix SciTE bug where files without extensions like "makefile"
+    were not highlighted correctly.
+
+-------------------------------------------------------------------
+Mon Mar 23 15:52:59 UTC 2015 - dimstar@opensuse.org
+
+- Drop scite-fix-desktop-categories.patch: adjust the .desktop
+  categories using suse_update_desktop_file instead of a patch.
+- Add scite.changes as source, as it's used during build to inject
+  the last change date / time into the build.
+
+-------------------------------------------------------------------
+Sun Mar 22 22:11:25 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.5.4:
+  + Adds minor features.
+  + Bug fixes.
+
+-------------------------------------------------------------------
+Tue Aug  5 02:01:09 UTC 2014 - malcolmlewis@opensuse.org
+
+- Updated to version 3.4.4:
+  + Style byte indicators removed. They were deprecated in 2007.
+    Standard indicators should be used instead. Some elements used
+    by lexers no longer take number of bits or mask arguments so
+    lexers may need to be updated for LexAccessor::StartAt,
+    LexAccessor::SetFlags (removed), LexerModule::LexerModule.
+  + When multiple selections are active, autocompletion text may be
+    inserted at each selection with new SCI_AUTOCSETMULTI method.
+  + C++ lexer fixes crash for "#define x(" (sf#1614).
+  + C++ lexer fixes raw string recognition so that R"xxx(blah)xxx"
+    is styled as SCE_C_STRINGRAW.
+  + The Postscript lexer no longer marks token edges with
+    indicators as this used style byte indicators.
+  + The Scriptol lexer no longer displays indicators for poor
+    indentation as this used style byte indicators.
+  + TCL lexer fixes names of keyword sets (sf#1615).
+  + Shell lexer fixes fold matching problem caused by "<<<"
+    (sf#1605).
+  + Fix bug where indicators were not removed when fold
+    highlighting on (sf#1604).
+  + Fix crash on GTK+ with Ubuntu 12.04 and overlay scroll bars.
+  + Avoid creating a Cairo context when measuring text on GTK+ as
+    future versions of GTK+ may prohibit calling gdk_cairo_create
+    except inside drawing handlers. This prohibition may be
+    required on Wayland.
+  + Fix crash in SciTE when stream comment performed at line end
+    (sf#1610).
+  + For SciTE on GTK+ fix bug with initialisation of toggle buttons
+    in find and replace strips (sf#1612).
+- Changes from version 3.4.3:
+  + N/A for linux.
+- Changes from version 3.4.2:
+  + Insertions can be filtered or modified by calling
+    SCI_CHANGEINSERTION inside a handler for SC_MOD_INSERTCHECK.
+  + DMIS lexer added. DMIS is a language for coordinate measuring
+    machines, Feature #1049.
+  + Line state may be displayed in the line number margin to aid in
+    debugging lexing and folding with SC_FOLDFLAG_LINESTATE (128).
+  + C++ lexer understands more preprocessor statements. #if defined
+    SYMBOL is understood. Some macros with arguments can be
+    understood and these may be predefined in keyword set 4
+    (keywords5 for SciTE) with syntax similar to
+    CHECKVERSION(x)=(x<3), Feature #1051.
+  + C++ lexer can highlight task marker keywords in comments as
+    SCE_C_TASKMARKER.
+  + C++ lexer can optionally highlight escape sequences in strings
+    as SCE_C_ESCAPESEQUENCE.
+  + C++ lexer supports Go back quoted raw string literals with
+    lexer.cpp.backquoted.strings option, Feature #1047.
+  + SciTE performs word and search match highlighting as an idle
+    task to improve interactivity and allow use of these features
+    on large files.
+  + Bug fixed where caret remained invisible when period set to 0
+    (sf#1592).
+  + Fixed display flashing when scrolling with GTK+ 3.10 (sf#1567).
+  + Fixed calls and constants deprecated in GTK+ 3.10.
+  + For SciTE, protect access to variables used by threads with a
+    mutex to prevent data races.
+  + For SciTE on GTK+ fix thread object leaks. Display the version
+    of GTK+ compiled against in the about box.
+  + For SciTE on GTK+ 3.10, fix the size of the tab bar's content
+    and use freedesktop.org standard icon names where possible.
+  + SciTE's highlight current word feature no longer matches the
+    selection when it contains space.
+- Changes from version 3.4.1:
+  + Display Unicode line ends as [LS], [PS], and [NEL] blobs.
+  + Bug fixed where cursor down failed on wrapped lines (sf#1585).
+  + Caret positioning changed a little to appear inside characters
+    less often by rounding the caret position to the pixel grid
+    instead of truncating (sf#1588).
+  + Bug fixed where automatic indentation wrong when caret in
+    virtual space (sf#1586).
+  + Crash fixed in SciTE with recursive properties files (sf#1507).
+  + Bug fixed with SciTE where Ctrl+E before an unmatched end brace
+    jumps to file start (sf#315).
+- Changes from version 3.4.0:
+  + The Unicode line ends and substyles features added as
+    provisional in 3.2.5 are now finalised. There are now no
+    provisional features.
+  + Added wrap mode SC_WRAP_WHITESPACE which only wraps on
+    whitespace, not on style changes.
+  + SciTE find and replace strips can perform incremental searching
+    and temporary highlighting of all matches with the
+    find.strip.incremental, replace.strip.incremental, and
+    find.indicator.incremental settings.
+  + Additional assembler lexer variant As(SCLEX_AS) for Unix
+    assembly code which uses '#' for comments and ';' to separate
+    statements.
+  + Fix crashes and other bugs in Fortran folder by removing
+    folding of do-label constructs.
+  + Deleting a whole line deletes the annotations on that line
+    instead of the annotations on the next line (sf#1577).
+  + Changed position of tall calltips to prefer lower half of
+    screen to cut off end instead of start.
+  + Fix Qt bug where double click treated as triple click
+    (sf#1575).
+  + On Qt, selecting an item in an autocompletion list that is not
+    currently visible positions it at the top.
+
+-------------------------------------------------------------------
+Wed Feb 12 22:45:51 UTC 2014 - malcolmlewis@opensuse.org
+
+- Update to version 3.3.9:
+  + Fix 3.3.8 bug where external lexers became inaccessible
+    (sf#1574).
+- Updates from 3.3.8:
+  + DropSelectionN API added to drop a selection from a multiple
+    selection.
+  + CallTipSetPosStart API added to change the position at which
+    backspacing removes the calltip.
+  + SC_MARK_BOOKMARK marker symbol added which looks like bookmark
+    ribbons used in book reading applications.
+  + C++ lexer fixes bug where keyword followed immediately by
+    quoted string continued keyword style (sf#1564).
+  + Matlab lexer treats '!' differently for Matlab and Octave
+     languages (sf#1571).
+  + Rust lexer improved with nested comments, more compliant
+    doc-comment detection, octal literals, NUL characters treated
+    as valid, and highlighting of raw string literals and float
+    literals fixed, Feature #1038 (sf#1570).
+  + On Qt expose the EOLMode on the document object.
+  + Fix hotspot clicking where area was off by half a character
+    width (sf#1562).
+  + Tweaked scroll positioning by either 2 pixels or 1 pixel when
+    caret is at left or right of view to ensure caret is inside
+    visible area.
+  + Send SCN_UPDATEUI with SC_UPDATE_SELECTION for Shift+Tab inside
+    text.
+  + SciTE uses a bookmark ribbon symbol for bookmarks as it scales
+    better to higher resolutions than the previous blue gem bitmap.
+  + SciTE will change the width of margins while running when the
+    margin.width and fold.margin.width properties are changed.
+  + SciTE displays a warning message when asked to open a
+    directory (sf#1568).
+- Updates from 3.3.7:
+  + Lexer added for DMAP language. Feature #1026.
+  + Bash lexer allows '#' inside words (sf#1553).
+  + C++ lexer recognizes C++11 user-defined lierals and applies
+    lexical class SCE_C_USERLITERAL.
+  + C++ lexer allows single quote characters as digit separators in
+    numeric literals like 123'456 as this is included in C++14.
+  + C++ lexer fixes bug with #include statements without "
+    or > terminating filename (sf#1538).
+  + C++ lexer fixes split of Doxygen keywords @code{.fileExtension}
+    and @param[in,out] (sf#1551).
+  + C++ lexer styles Doxygen keywords at end of document.
+  + Cmake lexer fixes bug with empty comments (sf#1550).
+  + Fortran folder improved. Treats "else" as fold header.
+    Feature #962.
+  + Fix bug with adjacent instances of the same indicator with
+    different values where only the first was drawn (sf#1560).
+  + When scroll width is tracked, take width of annotation lines
+    into account.
+  + On GTK+, chain up to superclass finalize so that all
+    finalization is performed (sf#1549).
+  + On GTK+, fix horizontal scroll bar range to not be double the
+    needed width (sf#1546).
+  + On Qt, bug fixed with drawing of scrollbars, where previous
+    contents were not drawn over with some themes.
+  + On Qt, bug fixed with finding monitor rectangle which could
+    lead to autocomplete showing at wrong location.
+  + SciTE fix for multiple message boxes when failing to save a
+    file with save.on.deactivate (sf#1540).
+  + SciTE on GTK+ fixes SIGCHLD handling so that Lua scripts can
+    determine the exit status of processes they start (sf#1557).
+
+-------------------------------------------------------------------
+Mon Oct 28 03:41:58 UTC 2013 - malcolmlewis@opensuse.org
+
+- Updated to version 3.3.6:
+  + Added functions to help convert between substyles and base
+    styles and between secondary and primary styles.
+  + Lexer added for Rust language. Feature #1024.
+  + Avoid false matches in errorlist lexer which is used for the
+    SciTE output pane by stricter checking of ctags lines.
+  + Perl lexer fixes bugs with multi-byte characters, including in
+    HEREDOCs and PODs (sf#1528).
+  + SQL folder folds 'create view' statements. Feature #1020.
+  + Visual Prolog lexer updated with better support for string
+    literals and Unicode. Feature #1025.
+  + For SCI_SETIDENTIFIERS, \t, \r, and \n are allowed as well as
+    space between identifiers (sf#1521).
+  + Gaining and losing focus is now reported as a notification
+    with the code set to SCN_FOCUSIN or SCN_FOCUSOUT.
+  + On Qt, turn off idle events on destruction to prevent
+    repeatedly calling idle.
+  + Qt bindings in ScintillaEdit changed to use signed first
+    parameter.
+  + Compilation errors fixed on GTK+ with SCI_NAMESPACE.
+  + Avoid attempts to redraw empty areas when lexing beyond the
+    currently visible lines.
+  + Control more attributes of indicators in SciTE with
+    find.mark.indicator and highlight.current.word.indicator
+    properties.
+  + Fix SciTE bug with buffers becoming read-only (sf#1525).
+  + Fix SciTE on GTK+ 3.x incremental search to change foreground
+    colour when no match as changing background colour is
+    difficult.
+- Updates from 3.3.5:
+  + Characters may be represented by strings. In Unicode mode C1
+    control characters are represented by their mnemonics.
+  + Added SCI_POSITIONRELATIVE to optimize navigation by
+    character.
+  + Option to allow mouse selection to switch to rectangular by
+    pressing Alt after start of gesture. Feature #1007.
+  + Lexer added for KVIrc script. Feature #1008.
+  + Bash lexer fixed quoted HereDoc delimiters (sf#1500).
+  + Structured Text lexer fixed styling of enumeration members
+    (sf#1508).
+  + Fixed bug with horizontal caret position when margin changed
+    (sf#1512).
+  + Ensure selection redrawn correctly in two cases. When
+    switching from stream to rectangular selection with
+    Alt+Shift+Up. When reducing the range of an additional
+    selection by moving mouse up. Feature #1007.
+  + Initialize extended styles to the default style.
+  + Qt bindings in ScintillaEdit made to work on 64-bit Unix
+    systems.
+  + Easier access to printing on Qt with formatRange method.
+  + Fixed SciTE failure to save initial buffer in single buffer
+    mode (sf#1339).
+  + SciTE crash fixed for negative line.margin.width (sf#1504).
+  + SciTE fix for infinite dialog boxes when failing to
+    automatically save a file (sf#1503).
+  + SciTE settings buffered.draw, two.phase.draw, and technology
+    are applied to the output pane as well as the edit pane.
+- Updates from 3.3.4:
+  + Handling of UTF-8 and DBCS text in lexers improved with
+    methods ForwardBytes and GetRelativeCharacter added to
+    StyleContext (sf#1483).
+  + For Unicode text, case-insensitive searching and making text
+    upper or lower case is now compliant with Unicode standards
+    on all platforms and is much faster for non-ASCII characters.
+  + A CategoriseCharacter function was added to return the Unicode
+    general category of a character which can be useful in lexers.
+  + SciTE 'immediate' subsystem added to allow scripts that work
+    while tools are executed.
+  + Font quality exposed in SciTE as font.quality setting.
+  + ECL lexer regular expression code fixed (sf#1491).
+  + Haskell lexer fixed to avoid unnecessary full redraws. Don't
+    highlight CPP inside comments when styling.within.preprocessor
+    is on (sf#1459).
+  + Lua lexer fixes bug in labels with UTF-8 text (sf#1483).
+  + Perl lexer fixes bug in string interpolation with UTF-8 text
+    (sf#1483).
+  + Fixed bugs with case conversion when the result was longer or
+    shorter than the original text. Could access past end of
+    string potentially crashing. Selection now updated to result
+    length.
+  + Fixed bug where data being inserted and removed was not being
+    reported in notification messages. Bug introduced in 3.3.2.
+  + Word wrap bug fixed where the last line could be shown twice.
+  + Word wrap bug fixed for lines wrapping too short on GTK+.
+  + Word wrap performance improved.
+  + Minor memory leak fixed (sf#1487).
+  + On Qt, fixed layout problem when QApplication construction
+    delayed.
+  + On Qt, find_text reports failure with -1 as first element of
+    return value.
+  + Fixed SciTE on GTK+ bug where a tool command could be
+    performed using the keyboard while one was already running
+    leading to confusion and crashes (sf#1486).
+  + Python scripts used for building and maintenance improved and
+    moved into scripts directory.
+  + Testing scripts now work on Linux using Qt and PySide.
+  + Tk platform defined. Implementation for Tk will be available
+    separately from main Scintilla distribution.
+- Updates from 3.3.3:
+  + Lexer and folder added for Structured Text language.
+    Feature #959.
+  + Out of bounds access fixed for GTK+ (sf#1480).
+  + Crash fixed for GTK+ on Windows paste.
+  + Bug fixed with incorrect event copying on GTK+ 3.x (sf#1481).
+  + Bug fixed with right to left locales, like Hebrew, on GTK+
+    (sf#1477).
+  + Bug fixed with undo grouping of tab and backtab commands
+    (sf#1478).
+- Updates from 3.3.2:
+  + Basic implementations of common folding methods added to
+    Scintilla to make it easier for containers to implement
+    folding.
+  + Add indicator INDIC_COMPOSITIONTHICK, a thick low underline,
+    to mimic an appearance used for Asian language input
+    composition.
+  + C++ lexer adds style for preprocessor doc comment.
+    Feature #990.
+  + Haskell lexer and folder improved. Separate mode for literate
+    Haskell "literatehaskell" SCLEX_LITERATEHASKELL (sf#1459).
+  + LaTeX lexer bug fixed for Unicode character following '\'
+    (sf#1468).
+  + Fix multi-typing when two carets are located in virtual space
+    on one line so that spaces are preserved.
+  + Fix lexer problem where no line end was seen at end of
+    document.
+  + Fix Qt window positioning to not assume the top right of a
+    monitor is at 0, 0.
+  + Fix Qt to not track mouse when widget is hidden.
+  + Qt now supports Qt 5.0 (sf#1448).
+  + In SciTE, do not call OnSave twice when files saved
+    asynchronously.
+- Updates from 3.3.1:
+  + Autocompletion lists can now appear in priority order or be
+    sorted by Scintilla. Feature #981.
+  + Most lexers now lex an extra NUL byte at the end of the
+    document which makes it more likely they will classify
+    keywords at document end correctly (sf#574, sf#588).
+  + Haskell lexer improved in several ways (sf#1459).
+  + Matlab/Octave lexer recognises block comments and ...
+    comments (sf#1414).
+  + Ruby lexer crash fixed with keyword at start of document.
+  + The PLAT_NCURSES platform now called PLAT_CURSES as may work
+    on other implementations.
+  + While regular expression search in DBCS text is still not
+    working, matching partial characters is now avoided by moving
+    end of match to end of character.
+- Updates from 3.3.0:
+  + SCI_SCROLLRANGE added to scroll the view to display a range of
+    text. If the whole range can not be displayed, priority is
+    given to one end.
+  + C++ lexer no longer recognises raw (R"") strings when the
+    first character after " is invalid (sf#1454).
+  + HTML lexer recognises JavaScript RegEx literals in more
+    contexts (sf#1412).
+  + Fixed automatic display of folded text when return pressed at
+    end of fold header and first folded line was blank (sf#1455).
+  + SCI_VISIBLEFROMDOCLINE fixed to never return a line beyond the
+    document end.
+  + SCI_LINESCROLL fixed for a negative column offset (sf#1450).
+  + On GTK+, fix tab markers so visible if indent markers are
+    visible (sf#1453).
+
+-------------------------------------------------------------------
+Wed Mar 20 00:06:52 UTC 2013 - malcolmlewis@opensuse.org
+
+- Updated to version 3.2.5:
+  + To allow cooperation between different uses of extended
+    (beyond 255) styles they should be allocated using
+    SCI_ALLOCATEEXTENDEDSTYLES.
+  + For Unicode documents, lexers that use StyleContext will
+    retrieve whole characters instead of bytes. LexAccessor
+    provides a LineEnd method which can be a more efficient way to
+    handle line ends and can enable Unicode line ends.
+  + The C++ lexer understands the #undef directive when
+    determining preprocessor definitions. Feature #978.
+  + The errorlist lexer recognises gcc include path diagnostics
+    that appear before an error.
+  + Folding implemented for GetText (PO) translation language
+    (sf#1437).
+  + HTML lexer does not interrupt comment style for processing
+    instructions (sf#1447).
+  + Fix SciTE forgetting caret x-position when switching
+    documents (sf#1442).
+  + Fixed bug where vertical scrollbar thumb appeared at beginning
+    of document when scrollbar shown (sf#1446).
+  + Provisional features are new features that may change or be
+    removed if they cause problems but should become permanent if
+    they work well. For this release Unicode line ends and
+    substyles are provisional features.
+- Changes from version 3.4.2:
+  + Caret line highlight can optionally remain visible when window
+    does not have focus. Feature #964.
+  + Delegate mechanism for notifications added on Cocoa.
+  + NUL characters in selection are copied to clipboard as spaces
+    to avoid truncating at the NUL (sf#1289).
+  + C++ lexer fixes problem with showing inactive sections when
+    preprocessor lines contain trailing comment (sf#1413).
+  + C++ lexer fixes problem with JavaScript regular expressions
+    with '/' in character ranges (sf#1415).
+  + LaTeX folder added. Feature #970.
+  + LaTeX lexer improves styling of math environments.
+    Feature #970.
+  + MySQL lexer implements hidden commands.
+  + Only produce a single undo step when autocompleting a single
+    word (sf#1421).
+  + Fixed crash when printing lines longer than 8000 characters
+    (sf#1430).
+  + Fixed problem in character movement extends selection mode
+    where reversing direction collapsed the selection.
+  + Fixed scaling bug when printing on GTK+ (sf#1427).
+  + SciTE on GTK toolbar.detachable feature removed.
+  + Fixed some background saving bugs in SciTE (sf#1366, sf#1339).
+- Changes from version 3.2.3:
+  + Improve speed when performing multiple searches.
+  + SciTE adds definition of PLAT_UNIX for both PLAT_GTK and
+    PLAT_MAC to allow consolidation of settings valid on all
+    Unix variants.
+  + Signal autoCompleteCancelled added on Qt.
+  + Bash lexer supports nested delimiter pairs (sf#1515556,
+    sf#3008483, sf#3512208 and sf#3515392) Feature #3569352.
+  + For C/C++, recognize exponent in floating point hexadecimal
+    literals (sf#3576454).
+  + For C #include statements, do not treat // in the path as a
+    comment (sf#3519260).
+  + Lexer for GetText translations (PO) improved with additional
+    styles and single instance limitation fixed.
+  + Ruby for loop folding fixed (sf#3240902, sf#3567391).
+  + Ruby recognition of here-doc after class or instance variable
+    fixed (sf#3567809).
+  + SQL folding of loop and case fixed (sf#3567905).
+  + SQL folding of case with assignment fixed (sf#3571820).
+  + Fix hang when removing all characters from indicator at end of
+    document.
+  + Fix failure of \xhh in regular expression search for values
+    greater than 0x79.
+  + On GTK+ 3 Ubuntu, fix crash when drawing margin.
+  + On ncurses, fix excessive spacing with italics line end.
+- Changes from version 3.2.2:
+  + Implement INDIC_SQUIGGLEPIXMAP as a faster version of
+    INDIC_SQUIGGLE. Avoid poor drawing at right of INDIC_SQUIGGLE.
+    Align INDIC_DOTBOX to pixel grid for full intensity.
+  + Implement SCI_GETSELECTIONEMPTY API (sf#3543121).
+  + Added SCI_VCHOMEDISPLAY and SCI_VCHOMEDISPLAYEXTEND key
+    commands Feature #3561433.
+  + Allow specifying SciTE Find in Files directory with
+    find.in.directory property Feature #3558594.
+  + Override SciTE global strip.trailing.spaces with
+    strip.trailing.spaces by pattern files Feature #3556320.
+  + Fix long XML script tag handling in XML lexer (sf#3534190).
+  + Fix rectangular selection range after backspace (sf#3543097).
+  + Send SCN_UPDATEUI with SC_UPDATE_SELECTION for backspace in
+    virtual space (sf#3543121).
+  + Avoid problems when calltip highlight range is negative
+    (sf#3545938).
+  + Limit time allowed to highlight current word in SciTE to 0.25
+    seconds to remain responsive.
+  + Fixed SciTE read-only mode to stick with buffer.
+  + Remove limit on logical line length in SciTE
+    .properties files (sf#3544312).
+  + Improve performance of SciTE Save As command.
+  + Fix SciTE crash with empty .properties files (sf#3545938,
+    sf#3555308).
+  + Fix repeated letter in SciTE calltips (sf#3545938).
+  + Refine build time checking for Direct2D and DirectWrite.
+  + Added ncurses platform definitions. Implementation is
+    maintained separately as Scinterm.
+
+-------------------------------------------------------------------
+Sun Aug 26 13:54:50 UTC 2012 - malcolmlewis@opensuse.org
+
+- Updated to version 3.2.1:
+  + In Scintilla.iface, specify features as properties instead of
+    functions where possible and fix some enumerations.
+  + In SciTE Lua scripts, string properties in Scintilla API can
+    be retrieved as well as set using property notation.
+  + Added character class APIs: SCI_SETPUNCTUATIONCHARS,
+    SCI_GETWORDCHARS, SCI_GETWHITESPACECHARS, and
+    SCI_GETPUNCTUATIONCHARS. Feature #3529805.
+  + Less/Hss support added to CSS lexer. Feature #3532413.
+  + C++ lexer style SCE_C_PREPROCESSORCOMMENT added for stream
+    comments in preprocessor (sf#3487406).
+  + Fix incorrect styling of inactive code in C++ lexer
+    (sf#3533036).
+  + Fix incorrect styling by C++ lexer after empty lines in
+    preprocessor style.
+  + C++ lexer option "lexer.cpp.allow.dollars" fixed so can be
+    turned off after being on (sf#3541461).
+  + Fortran fixed format lexer fixed to style comments from column
+    73 (sf#3540486).
+  + Fortran folder folds CRITICAL .. END CRITICAL (sf#3540486).
+  + Fortran lexer fixes styling after comment line ending with
+    '&' (sf#3087226).
+  + Fortran lexer styles preprocessor lines so they do not trigger
+    incorrect folding (sf#2906275).
+  + Fortran folder fixes folding of nested ifs (sf#2809176).
+  + HTML folder fixes folding of CDATA when
+    fold.html.preprocessor=0 (sf#3540491).
+  + On Cocoa, fix autocompletion font lifetime issue and row
+    height computation.
+  + In 'choose single' mode, autocompletion will close an existing
+    list if asked to display a single entry list.
+  + Fixed SCI_MARKERDELETE to only delete one marker per call
+    (sf#3535806).
+  + Properly position caret after undoing coalesced delete
+    operations (sf#3523326).
+  + Ensure margin is redrawn when SCI_MARGINSETSTYLE called.
+  + Fix clicks in first pixel of margins to send SCN_MARGINCLICK.
+  + Fix infinite loop when drawing block caret for a zero width
+    space character at document start.
+  + Crash fixed for deleting negative range.
+  + For characters that overlap the beginning of their space such
+    as italics descenders and bold serifs, allow start of text to
+    draw 1 pixel into margin (sf#699587 sf#3537799).
+  + Fixed problems compiling Scintilla for Qt with GCC 4.7.1 x64.
+  + Fixed problem with determining GTK+ sub-platform caused when
+    adding Qt support in 3.2.0.
+  + Fix incorrect measurement of untitled file in SciTE on Linux
+    leading to message "File ...' is 2147483647 bytes long"
+    (sf#3537764).
+  + In SciTE, fix open of selected filename with line number to go
+    to that line.
+  + Fix problem with last visible buffer closing in SciTE causing
+    invisible buffers to be active.
+  + Avoid blinking of SciTE's current word highlight when output
+    pane changes.
+  + SciTE properties files can be longer than 60K.
+
+-------------------------------------------------------------------
+Mon Jun 25 06:32:31 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.2.0:
+  + Long list of changes since the last packaged version, see
+    http://www.scintilla.org/ScintillaHistory.html for a detailed
+    list.
+
+-------------------------------------------------------------------
+Thu Feb 23 16:34:14 UTC 2012 - malcolmlewis@opensuse.org
+
+- Updated to version 3.0.3:
+  + Printing works on GTK+ version 2.x as well as 3.x.
+  + Lexer added for the AviSynth language (sf#3475611).
+  + Lexer added for the Take Command / TCC scripting language
+    (sf#3462462).
+  + CSS lexer gains support for SCSS (sf#3268017).
+  + CPP lexer fixes problems in the preprocessor structure caused
+    by continuation lines (sf#3458508).
+  + Errorlist lexer handles column numbers for GCC format
+    diagnostics. In SciTE, Next Message goes to column where this
+    can be decoded from GCC format diagnostics (sf#3453075).
+  + HTML folder fixes spurious folds on some tags (sf#3459262).
+  + Ruby lexer fixes bug where '=' at start of file caused whole
+    file to appear as a comment (sf#3452488).
+  + SQL folder folds blocks of single line comments (sf#3467425).
+  + Further support of fractional positioning. Spaces, tabs, and
+    single character tokens can take fractional space and wrapped
+    lines are positioned taking fractional positions into account
+    (sf#3471998).
+  + For autocompletion lists Page Up and Down move by the list
+    height instead of by 5 lines (sf#3455493).
+  + For SCI_LINESCROLLDOWN/UP don't select into virtual space
+    (sf#3451681).
+  + Fix fold highlight not being fully drawn (sf#3469936).
+  + Fix selection margin appearing black when starting in wrap
+    mode.
+  + Fix crash when changing end of document after adding an
+    annotation (sf#3476637).
+  + Fix problems with building to make RPMs (sf#3476149).
+  + Fix problem with building on GTK+ where recent distributions
+    could not find gmodule (sf#3469056).
+  + Fix problem with installing SciTE on GTK+ due to icon
+    definition in .desktop file including an extension
+    (sf#3476117).
+  + Fix SciTE bug where new buffers inherited some properties from
+    previously opened file (sf#3457060).
+  + Fix focus when closing tab in SciTE with middle click. Focus
+    moves to edit pane instead of staying on tab bar (sf#3440142).
+  + Fix SciTE bug where files became read-only after saving. Drop
+    the "*" dirty marker after save completes (sf#3467432).
+  + For SciTE handling of diffs with "+++" and "---" lines, also
+    handle case where not followed by tab. Go to correct line for
+    diff "+++" message (sf#3467143, sf#3467178).
+  + SciTE on GTK+ now performs threaded actions even on GTK+
+    versions before 2.12.
+  + Various windows platform changes.
+- Drop scite-fix-missing-gmodule-reference.patch, scite-fix-
+  desktop-icon.patch and scite-fix-scite-optflags.patch as these
+  have been upstreamed.
+- Add scite-fix-desktop-categories.patch: update the desktop
+  categories (sf#3491187).
+- Pass date and time based on changes file instead of hardcoding a
+  date, so we don't need manual updates later on.
+- Add SLE condition for skipping post/postun macros now that
+  11.3 is dropped.
+
+-------------------------------------------------------------------
+Thu Jan 19 19:00:31 UTC 2012 - malcolmlewis@opensuse.org
+
+- Add scite-fix-missing-gmodule-reference.patch: Add linker flag
+  for gmodule-2.0 sf#3469056.
+- Drop scite-fix-desktop-file.patch.
+- Add scite-fix-desktop-icon.patch: Drop desktop file icon
+  extension sf#3476117.
+- Drop fix-scintilla-optflags.patch and combine with the
+  scite-fix-scite-optflags.patch and use CXXFLAGS sf#3476149.
+- Work on a GTK+ 3 build:
+  + Add favor_gtk2 to switch between gtk2 and gtk3 builds.
+  + For gtk3 build, use gtk3-devel BuildRequires instead of
+    gtk2-devel and pass GTK3=1 to make.
+  + Enable the gtk3 build with a gtk3_ready macro, since the gtk3
+    support is ready.
+
+-------------------------------------------------------------------
+Tue Jan  3 06:01:49 UTC 2012 - malcolmlewis@opensuse.org
+
+- Updated to 3.0.2:
+  + SciTE saves files in the background without blocking the user
+    interface.
+  + Printing implemented in SciTE on GTK+ 3.x.
+  + ILoader interface for background loading finalised and
+    documented.
+  + CoffeeScript lexer added.
+  + C++ lexer fixes crash with "#if defined( XXX 1".
+  + Crash with Direct2D on Windows fixed.
+  + Backspace removing protected range fixed. Bug #3445911.
+  + Cursor setting failure on Windows when screen saver on fixed.
+    Bug #3438780.
+  + SciTE on GTK+ hang fixed with -open:file option. Bug #3441980.
+  + Failure to evaluate shbang fixed in SciTE. Bug #3441801.
+  + SciTE failure to treat files starting with "<?xml" as XML
+    fixed. Bug #3440718.
+  + Made untitled tab saveable when created by closing all files.
+    Bug #3440244.
+  + SciTE crash fixed when using Scintillua.
+  + SciTE revert command fixed so that undo works on individual
+    actions instead of undoing to revert point.
+  + Focus loss in SciTE when opening a recent file fixed.
+    Bug #3440142.
+  + Fixed SciTE SelLength property to measure characters instead
+    of bytes. Bug #3283519.
+- Updates from 3.0.1:
+  + SciTE on Windows now runs Lua scripts directly on the main
+    thread instead of starting them on a secondary thread and then
+    moving back to the main thread.
+  + Highlight "else" as a keyword for TCL in the same way as other
+    languages. Bug #1836954.
+  + Fix problems with setting fonts for autocompletion lists on
+    Windows where font handles were copied and later deleted
+    causing a system default font to be used.
+  + Fix font size used on Windows for Asian language input methods
+    which sometimes led to IME not being visible. Bug #3436753.
+  + Fixed polygon drawing on Windows so fold symbols are visible
+    again. Bug #3433558.
+  + Changed background drawing on GTK+ to allow for fractional
+    character positioning as occurs on OS X as this avoids faint
+    lines at lexeme boundaries.
+  + Ensure pixmaps allocated before painting as there was a crash
+    when Scintilla drew without common initialisation calls.
+    Bug #3432354.
+  + Fixed SciTE on Windows bug causing wrong caret position after
+    indenting a selection. Bug #3433433.
+  + Fixed SciTE session saving to store buffer position matching
+    buffer. Bug #3434372.
+  + Fixed leak of document objects in SciTE.
+  + Recognize URL characters '?' and '%' for Open Selected command
+    in SciTE. Bug #3429409.
+- Updates from 3.0.0:
+  + Carbon platform support removed. OS X applications should
+    switch to Cocoa.
+  + On Windows Vista or newer, drawing may be performed with
+    Direct2D and DirectWrite instead of GDI.
+  + Cairo is now used for all drawing on GTK+. GDK drawing was
+    removed.
+  + Paletted display support removed.
+  + Fractional font sizes can be specified.
+  + Different weights of text supported on some platforms instead
+    of just normal and bold.
+  + Sub-pixel character positioning supported.
+  + SciTE loads files in the background without blocking the user
+    interface.
+  + SciTE can display diagnostic messages interleaved with the
+    text of files immediately after the line referred to by the
+    diagnostic.
+  + New API to see if all lines are visible which can be used to
+    optimize processing fold structure notifications.
+  + Scrolling optimized by avoiding invalidation of fold margin
+    when redrawing whole window.
+  + Optimized SCI_MARKERNEXT.
+  + C++ lexer supports Pike hash quoted strings when turned on
+    with lexer.cpp.hashquoted.strings.
+  + Fixed incorrect line height with annotations in wrapped mode
+    when there are multiple views. Bug #3388159.
+  + Calltips may be displayed above the text as well as below.
+    Bug #3410830.
+  + For huge files SciTE only examines the first megabyte for
+    newline discovery.
+  + SciTE on GTK+ removes the fileselector.show.hidden property
+    and check box as this was buggy and GTK+ now supports an
+    equivalent feature. Bug #3413630.
+  + SciTE on GTK+ supports mnemonics in dynamic menus.
+  + SciTE on GTK+ displays the user's home directory as '~' in
+    menus to make them shorter.
+
+-------------------------------------------------------------------
+Wed Oct 12 16:07:16 UTC 2011 - malcolmlewis@opensuse.org
+
+- Updated to version 2.29:
+  + To automatically discover the encoding of a file when opening
+    it, SciTE can run a program set with
+    command.discover.properties.
+  + Cairo always used for drawing on GTK+.
+  + The set of properties files imported by SciTE can be
+    controlled with the properties imports.include and
+    imports.exclude. The import statement has been extended to
+    allow "import ". The properties files for some languages are
+    no longer automatically loaded by default. The properties
+    files affected are avenue, baan, escript, lot, metapost,
+    and mmixal.
+  + C++ lexer fixed a bug with raw strings being recognised too
+    easily.
+  + LaTeX lexer improved with more states and fixes to most
+    outstanding bugs.
+  + Lua lexer updates for Lua 5.2 beta with goto labels and "\z"
+    string escape.
+  + Perl string styling highlights interpolated variables.
+  + Perl lexer updated for Perl 5.14.0 with 0X and 0B numeric
+    literal prefixes, break keyword and "+" supported in
+    subroutine prototypes.ed with CRLF line endings.
+  + Markdown lexer fixed to not change state with "_" in middle of
+    word.
+  + Cocoa restores compatibility with OS X 10.5.
+  + Mouse pointer changes over selection to an arrow near start
+    when scrolled horizontally.
+  + Indicators that finish at the end of the document no longer
+    expand when text is appended.
+  + SparseState merge fixed to check if other range is empty.
+  + On Windows, autocompletion lists will scroll instead of
+    document when mouse wheel spun.
+  + SciTE performs more rapid polling for command completion so
+    will return faster and report more accurate times.
+  + SciTE resizes panes proportionally when switched between
+    horizontal and vertical layout.
+  + SciTE on GTK+ opens multiple files into a single instance more
+    reliably.
+- Updates from 2.28:
+  + GTK+ Cairo support works back to GTK+ version 2.8. Requires
+    changing Scintilla source code to enable before GTK+ 2.22.
+    Bug #3322351.
+  + Translucent images in RGBA format can be used for margin
+    markers and in autocompletion lists.
+  + INDIC_DOTBOX added as a translucent dotted rectangular
+    indicator.
+  + Asian text input using IME works for GTK+ 3.x and GTK+ 2.x
+    with Cairo.
+  + On GTK+, IME works for Ctrl+Shift+U Unicode input in
+    Scintilla. For SciTE, Ctrl+Shift+U is still Make Selection
+    Uppercase.
+  + Cocoa port supports different character encodings, improves
+    scrolling performance and drag image appearance. The control
+    ID is included in WM_COMMAND notifications. Text may be
+    deleted by dragging to the trash.
+  + SciTE on GTK+ uses a paned widget to contain the edit and
+    output panes instead of custom code. This allows the divider
+    to be moved easily on GTK+ 3 and its appearance follows GTK+
+    conventions more closely.
+  + SciTE builds and installs on BSD. Bug #3324644.
+  + Cobol supports fixed format comments. Bug #3014850.
+  + Mako template language block syntax extended and ## comments
+    recognised. Feature #3325178. Bug #3318818.
+  + Folding of Mako template language within HTML fixed.
+    Bug #3324563.
+  + Python lexer has lexer.python.keywords2.no.sub.identifiers
+    option to avoid highlighting second set of keywords following
+    '.'. Bug #3325333.
+  + Python folder fixes bug where fold would not extend to final
+    line. Bug #3349157.
+  + SciTE treats LPEG lexers the same as script lexers by setting
+    all 8 style bits.
+  + For Cocoa, crashes with unsupported font variants and memory
+    leaks for colour objects fixed.
+  + Shift-JIS lead byte ranges modified to match Windows.
+  + Mouse pointer changes over selection to an arrow more
+    consistently. Bug #3315756.
+  + Bug fixed with annotations beyond end of document.
+    Bug #3347268.
+  + Incorrect drawing fixed for combination of background colour
+    change and translucent selection. Bug #3377116.
+  + Lexers initialized correctly when started at position other
+    than start of line. Bug #3377148.
+  + Fold highlight drawing fixed for some situations.
+    Bug #3323015. Bug #3323805.
+  + Case insensitive search fixed for cases where folded character
+    uses fewer bytes than base character. Bug #3362038.
+  + SciTE bookmark.alpha setting fixed. Bug #3373907.
+- Updates from 2.27:
+  + On recent GTK+ 2.x versions when using Cairo, bug fixed where
+    wrong colours were drawn.
+  + SciTE on GTK+ slow performance in menu maintenance fixed.
+    Bug #3315233.
+  + Cocoa platform supports 64-bit builds and uses only
+    non-deprecated APIs. Asian Input Method Editors are supported.
+    Autocompletion lists and calltips implemented. Control
+    identifier used in notifications.
+  + On Cocoa, rectangular selection now uses Option/Alt key to be
+    compatible with Apple Human Interface Guidelines and other
+    applications. The Control key is reported with an SCMOD_META
+    modifier bit.
+  + API added for setting and retrieving the identifier number
+    used in notifications.
+  + SCI_SETEMPTYSELECTION added to set selection without scrolling
+    or redrawing more than needed. Feature #3314877.
+  + Added new indicators. INDIC_DASH and INDIC_DOTS are variants
+    of underlines. INDIC_SQUIGGLELOW indicator added as shorter
+    alternative to INDIC_SQUIGGLE for small fonts. Bug #3314591
+  + Margin line selection can be changed to select display lines
+    instead of document lines. Bug #3312763.
+  + On Windows, SciTE can perform reverse searches by pressing
+    Shift+Enter in the Find or Replace strips or dialogs.
+  + Matlab lexer does not special case '\' in single quoted
+    strings. Bug #948757 Bug #1755950 Bug #1888738 Bug #3316852.
+  + Verilog lexer supports SystemVerilog folding and keywords.
+  + Font leak fixed. Bug #3306156.
+  + Automatic scrolling works for long wrapped lines.
+    Bug #3312763.
+  + Multiple typing works for cases where selections collapse
+    together. Bug #3309906.
+  + Fold expanded when needed in word wrap mode. Bug #3291579.
+  + Bug fixed with edge drawn in wrong place on wrapped lines.
+    Bug #3314807.
+  + Bug fixed with unnecessary scrolling for SCI_GOTOLINE.
+    Bug #3303406.
+  + Bug fixed where extra step needed to undo SCI_CLEAR in virtual
+    space. Bug #3159691.
+  + Regular expression search fixed for \$ on last line of search
+    range. Bug #3313746.
+  + SciTE performance improved when switching to a tab with a very
+    large file. Bug #3311421.
+  + On Windows, SciTE advanced search remembers the "Search only
+    in this style" setting. Bug #3313344.
+  + On GTK+, SciTE opens help using "xdg-open" instead of
+    "netscape" as "netscape" no longer commonly installed.
+    Bug #3314377.
+  + SciTE script lexers can use 256 styles.
+  + SciTE word highlight works for words containing DBCS
+    characters. Bug #3315173.
+  + Compilation fixed for wxWidgets. Bug #3306156.
+- Drop scite-use-xdg-open-for-help.patch as fixed in 2.27.
+- Rebase scite-fix-file-contains-date-and-time.patch.
+- Use direct source link instead of bzipped file.
+
+-------------------------------------------------------------------
+Fri Jun 10 00:56:04 UTC 2011 - malcolmlewis@opensuse.org
+
+- Enabled the experimental support for GTK3 
+
+-------------------------------------------------------------------
+Thu Jun  9 19:49:04 UTC 2011 - malcolmlewis@opensuse.org
+
+- Add upstreamed patches for sf#3314371 and sf#3314377 
+
+-------------------------------------------------------------------
+Thu Jun  9 15:25:25 UTC 2011 - malcolmlewis@opensuse.org
+
+- Updated to 2.26
+  * Folding margin symbols can be highlighted for the current
+    folding block. Feature #3147069.
+  * Selected lines can be moved up or down together.
+	Feature #3304850.
+  * SciTE can highlight all occurrences of the current word or
+    selected text. Feature #3291636.
+  * Experimental GTK+ 3.0 support: build with "make GTK3=1".
+  * INDIC_STRAIGHTBOX added. Is similar to INDIC_ROUNDBOX but
+    without rounded corners. Bug #3290435.
+  * Can show brace matching and mismatching with indicators
+    instead of text style. Translucency of outline can be
+	altered for INDIC_ROUNDBOX and INDIC_STRAIGHTBOX.
+	Feature #3290434.
+  * SciTE can automatically indent python by examining
+    previous line for scope-starting ':' with
+	indent.python.colon.
+  * Batch file lexer allows braces '(' or ')' inside variable
+    names.
+  * The cpp lexer only recognises Vala triple quoted strings
+    when lexer.cpp.triplequoted.strings property is set.
+	Bug #3239234.
+  * Make file lexer treats a variable with a nested variable
+    like $(f$(qx)b) as one variable. Bug #3298223.
+  * Folding bug fixed for JavaScript with nested PHP.
+    Bug #3193530.
+  * HTML lexer styles Django's {# #} comments. Bug #3013798.
+  * HTML lexer styles JavaScript regular expression correctly
+    for /abc/i.test('abc');. Bug #3209108.
+  * Inno Setup Script lexer now works properly when it
+    restarts from middle of [CODE] section. Bug #3283880 and
+	Bug #3129044.
+  * Lua lexer updated for Lua 5.2 with hexadecimal
+    floating-point numbers and '\*' whitespace escaping in
+	strings. Feature #3243811.
+  * Perl folding folds "here doc"s and adds options
+    fold.perl.at.else and fold.perl.comment.explicit.
+	Fold structure for Perl fixed. Feature #3112671 and
+	Bug #3265401.
+  * Python lexer supports cpdef keyword for Cython.
+    Bug #3279728.
+  * SQL folding option lexer.sql.fold.at.else renamed to
+    fold.sql.at.else. Bug #3271474.
+  * SQL lexer no longer treats ';' as terminating a comment.
+    Bug #3196071.
+  * Text drawing and measurement segmented into smaller runs
+    to avoid platform bugs. Bug #3277449. Bug #3165743.
+  * SciTE on Windows adds temp.files.sync.load property to
+    open dropped temporary files synchronously as they may be
+	removed before they can be opened asynchronously.
+	Bug #3072009.
+  * Bug fixed with indentation guides ignoring first line in
+    SC_IV_LOOKBOTH mode. Bug #3291317.
+  * Bugs fixed in backward regex search. Bug #3292659.
+  * Bugs with display of folding structure fixed for wrapped
+    lines and where there is a fold header but no body.
+	Bug #3291579 and Bug #3265401.
+  * SciTE on Windows cursor changes to an arrow now when over
+    horizontal splitter near top of window. Bug #3286620.
+  * Fixed default widget size problem on GTK+. Bug #3267892.
+  * Fixed font size when using Cairo on GTK+. Bug #3272662.
+  * Fixed primary selection and cursor issues on GTK+ when
+    unrealized then realized. Bug #3256153.
+  * Right click now cancels selection on GTK+ like on Windows.
+    Bug #3235190.
+  * SciTE on GTK+ implements z-order buffer switching like on
+    Windows. Bug #3228384.
+  * Improve selection position after SciTE Insert Abbreviation
+    command when abbreviation expansion includes '|'.
+- Updates from 2.25
+  * SparseState class makes it easier to write lexers which
+    have to remember complex state between lines.
+  * Visual Studio project (.dsp) files removed. The make files
+    should be used instead as described in the README.
+  * Modula 3 lexer added along with SciTE support.
+    Feature #3173374.
+  * Asm, Basic, and D lexers add extra folding properties.
+  * Raw string literals for C++0x supported in C++ lexer.
+  * Triple-quoted strings used in Vala language supported in
+    C++ lexer. Feature #3177601.
+  * The errorlist lexer used in SciTE's output pane colours
+    lines that start with '<' as diff deletions.
+	Feature #3172878.
+  * The Fortran lexer correctly folds type-bound procedures
+    from Fortran 2003.
+  * LPeg lexer support‎ improved in SciTE.
+  * SciTE on Windows-64 fixes for menu localisation and Lua
+    scripts. Bug #3204502.
+  * SciTE on Windows avoids locking folders when using the
+    open or save dialogs. Bug #1795484.
+  * Diff lexer fixes problem where diffs of diffs producing
+    lines that start with "----". Bug #3197952.
+  * Bug fixed when searching upwards in Chinese code page 936.
+    Bug #3176271.
+  * On Cocoa, translucent drawing performed as on other
+    platforms instead of 2.5 times less translucent.
+  * Performance issue and potential bug fixed on GTK+ with
+    caret line for long lines.
+- Update patches and spec file
+
+-------------------------------------------------------------------
+Sat Feb 12 21:41:40 UTC 2011 - malcolmlewis@opensuse.org
+
+- PATCH-FIX-OPENSUSE scite-use-xdg-open-for-help.patch
+  malcolmlewis@opensuse.org -- Use xdg-open when using help with
+  default browser 
+
+-------------------------------------------------------------------
+Sat Feb 12 20:46:33 UTC 2011 - malcolmlewis@opensuse.org
+
+- Fix typographical error in Description 
+
+-------------------------------------------------------------------
+Sat Feb 12 18:31:10 UTC 2011 - malcolmlewis@opensuse.org
+
+- Intial build
+- PATCH-FIX-OPENSUSE scite-fix-desktop-file.patch
+  malcolmlewis@opensuse.org -- Fix SuSE desktop file entries 
+- PATCH-FIX-OPENSUSE scite fix-scintilla-optflags.patch
+  malcolmlewis@opensuse.org -- Add rpm optflags to makefile
+- PATCH-FIX-OPENSUSE scite fix-scite-optflags.patch
+  malcolmlewis@opensuse.org -- Add rpm optflags to makefile
+- Add missing man page in install

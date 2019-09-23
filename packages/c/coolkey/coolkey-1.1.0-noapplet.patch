@@ -1,0 +1,18 @@
+diff -up ./src/coolkey/slot.cpp.noapplet ./src/coolkey/slot.cpp
+--- ./src/coolkey/slot.cpp.noapplet	2013-09-30 14:30:40.069595018 -0700
++++ ./src/coolkey/slot.cpp	2013-09-30 14:31:27.488595000 -0700
+@@ -762,13 +762,7 @@ Slot::connectToToken()
+ 				CKYCardConnection_GetLastError(conn));
+ 		    disconnect();
+ 	    }
+-	    /* CARD is a PIV card */
+-	    state |= PIV_CARD | APPLET_SELECTABLE | APPLET_PERSONALIZED;
+-	    isVersion1Key = 0;
+-	    needLogin = 1;
+-            mCoolkey = 0;
+-	    mOldCAC = 0;
+-	    mCACLocalLogin = getPIVLoginType();
++	    /* CARD is unknown */
+ 	    return;
+ 	}
+ 	state |= CAC_CARD | APPLET_SELECTABLE | APPLET_PERSONALIZED;

@@ -1,0 +1,421 @@
+-------------------------------------------------------------------
+Mon Oct 22 08:44:39 UTC 2018 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 2.29 (bsc#1112629)
+  Allow CGI to handle HTTP methods besides GET/HEAD/POST.
+  Improvements to the FreeBSD startup script. (Craig Leres)
+  Minor portability tweak in mmc.c.
+  Fix to buffer overrun bug in htpasswd. Reported by Alessio Santoru as CVE-2017-17663.
+- update thttpd-2.25b-overflow.diff
+
+-------------------------------------------------------------------
+Wed Oct 18 08:30:54 UTC 2017 - jengelh@inai.de
+
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Mon Sep 11 09:36:59 UTC 2017 - vcizek@suse.com
+
+- Require group www (bsc#1057985)
+
+-------------------------------------------------------------------
+Mon Jun 26 11:58:22 UTC 2017 - vcizek@suse.com
+
+- update to 2.27
+  Stats syslogs changed from LOG_INFO to LOG_NOTICE.
+  Use memmove() for self-overlapping string copies instead of strcpy().
+  Couple of subroutine name changes for consistency.
+- drop thttpd-2.25b-strcpy.patch (upstream)
+- enforce single process build, as parallel does fail sometimes
+
+-------------------------------------------------------------------
+Thu Sep 17 14:10:46 UTC 2015 - vcizek@suse.com
+
+- added Conflicts: apache2-example-pages
+  * both packages provide /srv/www/htdocs/index.html
+
+-------------------------------------------------------------------
+Sun Jul  5 09:43:36 UTC 2015 - vcizek@suse.com
+
+- build with pie and full relro
+
+-------------------------------------------------------------------
+Thu Jun 18 15:07:51 UTC 2015 - thehejik@suse.com
+
+- package cleanup (bnc#899218)
+  * removed SUSE branding
+  * added logrotate support
+  * changed note about default codepage
+
+-------------------------------------------------------------------
+Thu Jun  4 15:09:12 UTC 2015 - vcizek@suse.com
+
+- added Conflicts: apache2-utils
+  * both packages provide /usr/bin/htpasswd
+  * see comments in https://build.opensuse.org/request/show/310178
+
+-------------------------------------------------------------------
+Sun Nov 23 04:50:32 UTC 2014 - bwiedemann@suse.com
+
+- use /usr/sbin path in service to fix start (bnc#906696)
+
+-------------------------------------------------------------------
+Mon Sep 22 13:34:52 UTC 2014 - vcizek@suse.com
+
+- drop thttpd-2.25b.tar.bz2 (old tarball)
+
+-------------------------------------------------------------------
+Wed Sep  3 07:42:53 UTC 2014 - vcizek@suse.com
+
+- update to 2.26 (bnc#894285)
+  Ignore ECONNABORTED on accept().
+  Correctly implemented the config-file option change from "nosymlink"
+  to "nosymlinkcheck", which was supposedly done in version 2.24.
+  Removed mailto: link from default index page.
+  Allow CGIs to provide both Location and Status headers.
+  Better logic for figuring out CGI SERVER_NAME environment variable.
+  Updated for clang, and general cleanup.
+- dropped thttpd-2.25b-getline.patch (upstream)
+- added thttpd-crypt_is_in_crypt.h.patch
+
+-------------------------------------------------------------------
+Fri Jul 18 16:40:22 UTC 2014 - p.drouand@gmail.com
+
+- Use systemd instead of sysvinit in openSUSE > 12.2
+
+-------------------------------------------------------------------
+Tue Dec  3 14:31:18 UTC 2013 - vcizek@suse.com
+
+- fix CVE-2013-0348 (bnc#853381)
+  * don't create a world readable logfile
+
+-------------------------------------------------------------------
+Thu Jun 27 21:03:49 UTC 2013 - crrodriguez@opensuse.org
+
+- DO not add sample index.html that will conflict with apache 
+
+-------------------------------------------------------------------
+Mon Mar  4 16:04:08 UTC 2013 - vcizek@suse.com
+
+- added checks for crypt() return value (CVE-2012-5640) (bnc#783165)
+  * thttpd-2.25b-CVE-2012-5640-check_crypt_return_value.patch
+
+-------------------------------------------------------------------
+Wed Oct 24 21:20:29 UTC 2012 - suse@ammler.ch
+
+- use different versions of automake (SLE)
+
+-------------------------------------------------------------------
+Fri Jun  8 14:29:40 UTC 2012 - vcizek@suse.com
+
+- use %set_permissions instead of %run_permissions (bnc#764110)
+
+-------------------------------------------------------------------
+Tue May 29 14:06:26 UTC 2012 - puzel@suse.com
+
+- fix build with automake 1.12 
+
+-------------------------------------------------------------------
+Thu Mar 22 09:33:49 UTC 2012 - dvaleev@suse.com
+
+- drop thttpd-2.25b-x86_64_machine_not_recognized.patch but copy
+  config.guess from automake to fix ppc64 as well 
+
+-------------------------------------------------------------------
+Tue Jan 31 13:07:43 UTC 2012 - vcizek@suse.com
+
+- fixed build and added -fpie for makeweb
+
+-------------------------------------------------------------------
+Wed Nov 23 09:32:34 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Jun  8 00:41:37 CEST 2009 - ro@suse.de
+
+- rename getline to my_getline to avoid collision with function
+  from glibc 
+
+-------------------------------------------------------------------
+Tue May 26 15:18:48 CEST 2009 - anicka@suse.cz
+
+- add new branding (bnc#492693) 
+
+-------------------------------------------------------------------
+Mon Jun 11 11:10:28 CEST 2007 - pcerny@suse.cz
+
+- fixed another syntax error in config file
+
+-------------------------------------------------------------------
+Fri Jun  8 19:21:06 CEST 2007 - dmueller@suse.de
+
+- fix syntax error in config file
+
+-------------------------------------------------------------------
+Wed Jun  6 13:16:46 CEST 2007 - pcerny@suse.cz
+
+- use %config(noreplace) for /etc/thttpd.conf
+
+-------------------------------------------------------------------
+Tue Jun  5 21:53:06 CEST 2007 - pcerny@suse.cz
+
+- added Short-Description tag into init script 
+
+-------------------------------------------------------------------
+Fri Jun  1 19:34:10 CEST 2007 - pcerny@suse.cz
+
+- added config file (/etc/thttpd.conf)
+
+-------------------------------------------------------------------
+Fri Feb 16 17:36:35 CET 2007 - mvaner@suse.cz
+
+- Adding check for zero length
+  - from Marcus Meissner
+  - zerolen.patch
+- Replacing strcpy with memmove when they overlap
+  - strcpy.patch
+- Both from #230776
+
+-------------------------------------------------------------------
+Wed Feb 14 15:04:06 CET 2007 - schwab@suse.de
+
+- Fix building as non-root.
+
+-------------------------------------------------------------------
+Fri Mar 10 17:14:09 CET 2006 - anicka@suse.cz
+
+- fix buffer overflows in htpasswd (#156978) 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:09 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Nov 21 15:57:27 CET 2005 - anicka@suse.cz
+
+- fix tmp race in syslogtocern (#131056) 
+
+-------------------------------------------------------------------
+Wed Oct 12 19:11:17 CEST 2005 - anicka@suse.cz
+
+- use %config(noreplace) for index.html 
+
+-------------------------------------------------------------------
+Wed Jun 22 15:54:10 CEST 2005 - anicka@suse.cz
+
+- compile dynamic binaries instead of static
+- compile htpasswd with -pie
+
+-------------------------------------------------------------------
+Wed Mar  9 18:26:33 CET 2005 - mcihar@suse.cz
+
+- do not conflict with other webservers (bug #71742)
+
+-------------------------------------------------------------------
+Tue Feb 17 17:46:41 CET 2004 - tcrhak@suse.cz
+
+- update to version 2.25b
+
+-------------------------------------------------------------------
+Tue Jan 13 18:07:52 CET 2004 - schwab@suse.de
+
+- Fix use of aclocal.
+
+-------------------------------------------------------------------
+Wed Oct 29 16:59:58 CET 2003 - tcrhak@suse.cz
+
+- update to 2.24, includes a fix for a buffer overflow [bug #32734]
+- fixed virtual hosting security hole [bug #32757]
+- fixed permissions according to permissions.secure,
+  added macros %run_permissions and %verify_permissions
+
+-------------------------------------------------------------------
+Mon Sep 01 20:40:30 CEST 2003 - tcrhak@suse.cz
+
+- added macros %stop_on_removal and %restart_on_update [bug #29022]
+
+-------------------------------------------------------------------
+Thu Jun  5 15:57:54 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Tue Mar 11 16:55:30 CET 2003 - tcrhak@suse.cz
+
+- fixed permissions of the init scipt [bug #25084]
+
+-------------------------------------------------------------------
+Tue Oct 15 15:08:21 CEST 2002 - tcrhak@suse.cz
+
+- substitute correct servroot during built
+
+-------------------------------------------------------------------
+Mon Oct 14 19:52:11 CEST 2002 - tcrhak@suse.cz
+
+- use /srv/www rather then /usr/local/httpd [bug #20802]
+
+-------------------------------------------------------------------
+Fri Aug  2 01:23:09 CEST 2002 - ro@suse.de
+
+- adapt server root 
+
+-------------------------------------------------------------------
+Sat Jul 27 19:01:40 CEST 2002 - kukuk@suse.de
+
+- Change group from wwwadmin to www
+
+-------------------------------------------------------------------
+Sat Jul 27 18:54:13 CEST 2002 - adrian@suse.de
+
+- do not source rc.config anymore
+
+-------------------------------------------------------------------
+Tue Jul 02 15:15:28 CEST 2002 - tcrhak@suse.cz
+
+- update to version 2.23beta1
+
+-------------------------------------------------------------------
+Tue Jan 15 13:14:02 CET 2002 - tcrhak@suse.cz
+
+- update to version 2.20c
+- added thttpd-2.20c-sec.patch
+- removed START_THTTPD from README.SuSE
+
+-------------------------------------------------------------------
+Tue Jan 15 00:28:27 CET 2002 - ro@suse.de
+
+- removed START_THTTPD 
+
+-------------------------------------------------------------------
+Fri Sep 21 13:32:45 CEST 2001 - bjacke@suse.de
+
+- fix version on template webpage
+
+-------------------------------------------------------------------
+Mon Sep  3 12:10:09 CEST 2001 - adostal@suse.cz
+
+- fix /etc/init.d in thttpd-SuSE.tar.bz2 files
+- split patches on configure, dirs, time_h and newautoconf 
+
+-------------------------------------------------------------------
+Thu Jun 14 14:16:41 CEST 2001 - adostal@suse.cz
+
+- fix for new autoconf 
+
+-------------------------------------------------------------------
+Fri Apr 13 14:44:59 CEST 2001 - nadvornik@suse.cz
+
+- changed initscript according to skeleton
+
+-------------------------------------------------------------------
+Thu Mar  8 14:13:39 CET 2001 - nadvornik@suse.cz
+
+- compiled with RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Thu Feb 15 09:12:17 CET 2001 - nadvornik@suse.cz
+
+- fixed to compile
+
+-------------------------------------------------------------------
+Wed Dec 13 11:22:35 CET 2000 - smid@suse.cz
+
+- generatig of default page moved to %install (it was in %post and
+- caused [#4566]
+
+-------------------------------------------------------------------
+Tue Dec 12 12:00:29 CET 2000 - smid@suse.cz
+
+- default cgibin pattern changed [#4564]
+- rcthttpd link added
+
+-------------------------------------------------------------------
+Sun Dec  3 13:49:37 CET 2000 - smid@suse.cz
+
+- new version: 2.20b
+
+-------------------------------------------------------------------
+Fri Dec  1 12:52:43 CET 2000 - ro@suse.de
+
+- moved init-script 
+
+-------------------------------------------------------------------
+Thu Nov  2 11:09:38 CET 2000 - smid@suse.cz
+
+- fix ugly bug in startup scripts
+
+-------------------------------------------------------------------
+Thu Sep 28 15:08:03 CEST 2000 - smid@suse.cz
+
+- new version: 2.20
+
+-------------------------------------------------------------------
+Wed Aug 30 10:37:06 CEST 2000 - smid@suse.cz
+
+- fix bug in startup script
+
+-------------------------------------------------------------------
+Wed Jul  5 14:20:46 MEST 2000 - mha@suse.de
+
+- new version: 2.19
+
+-------------------------------------------------------------------
+Tue May 23 09:03:05 CEST 2000 - smid@suse.cz
+
+- buildroot fixed
+
+-------------------------------------------------------------------
+Wed May  3 12:35:48 CEST 2000 - smid@suse.cz
+
+- buildroot added
+
+-------------------------------------------------------------------
+Tue Mar 21 11:34:04 CET 2000 - mha@suse.de
+
+- update to 2.16 
+
+-------------------------------------------------------------------
+Fri Mar  3 17:32:43 MET 2000 - uli@suse.de
+
+- moved man pages to %{_mandir}
+
+-------------------------------------------------------------------
+Mon Feb 28 16:34:00 MET 2000 - mha@suse.de
+
+- new version: 2.15
+
+-------------------------------------------------------------------
+Thu Feb 17 18:23:19 CET 2000 - dipa@suse.de
+
+- bug #1268 rc.config variable set to no 
+
+-------------------------------------------------------------------
+Wed Jan 12 13:40:40 MET 2000 - mha@suse.de
+
+- new version: 2.11
+- new conflicts (roxen, apache, aolserv), provides (http_daemon)
+- new homepage
+
+-------------------------------------------------------------------
+Tue Nov 16 18:14:45 MET 1999 - kukuk@suse.de
+
+- Fix stack overflow
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu Sep  9 12:15:28 CEST 1999 - bs@suse.de
+
+- fixed call of Check at the end of %install section
+
+-------------------------------------------------------------------
+Sun Jul 11 16:21:57 MEST 1999 - mha@suse.de
+
+- new package: thttpd (a _small_ webserver)
+  absolutely no configuration needed - and yet save (chroot)!
+

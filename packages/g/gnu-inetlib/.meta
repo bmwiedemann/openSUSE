@@ -1,0 +1,16 @@
+<package name="gnu-inetlib" project="openSUSE:Factory">
+  <title>Library of clients for common internet protocols</title>
+  <description>GNU inetlib is a library of clients for common internet protocols. The
+following protocols are currently supported: Hypertext Transfer
+Protocol (HTTP) File Transfer Protocol (FTP) Simple Mail Transfer
+Protocol (SMTP) Internet Message Access Protocol (IMAP) Post Office
+Protocol (POP) Network News Transfer Protocol (NNTP) Lightweight
+Directory Access Protocol (LDAP) (alpha) Gopher Finger The inetlib
+library is similar in intent to the Python internet protocols library -
+the API is as close as possible to the intent of the underlying
+protocol design. This allows for very efficient coding of user agents.
+Additionally, inetlib includes URLStreamHandler implementations for
+some of the protocols. These can be used to add support for the
+corresponding URL scheme to the java.net.URL class.</description>
+  <devel project="Java:packages" package="gnu-inetlib"/>
+</package>

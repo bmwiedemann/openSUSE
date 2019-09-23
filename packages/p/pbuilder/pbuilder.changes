@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Sat Aug 23 19:04:08 UTC 2014 - dvlaeev@suse.com
+
+- Update pbuilder-ppc.patch to include ppc64el architecture 
+
+-------------------------------------------------------------------
+Fri Apr  5 18:05:19 UTC 2013 - frank.lichtenheld@sophos.com
+
+- update to 0.215
+* Do not try to use /dev/shm if /run/shm is not present
+  (deb#702811, deb#702102)
+* Add clang support hook script from Hideki Yamane (deb#700290)
+
+-------------------------------------------------------------------
+Fri Mar 29 17:13:07 UTC 2013 - schwab@suse.de
+
+- Add arm64 to pbuilder-apt-config to fix testsuite
+
+-------------------------------------------------------------------
+Sun Mar 10 21:10:39 UTC 2013 - frank.lichtenheld@sophos.com
+
+- update to 0.214
+* update documentation about CCACHEDIR (deb#694311)
+* added support for shared memory mounting point (deb#700591)
+
+-------------------------------------------------------------------
+Mon Nov  5 21:38:38 UTC 2012 - frank.lichtenheld@sophos.com
+
+- update to 0.213
+* set ccachedir to default to off. It's a minor optimization that a
+  developer may choose to enable at the cost of incompatibility and some
+  bugs. (deb#675691, deb#675843, deb#670651)
+- set better project Url
+
+-------------------------------------------------------------------
+Thu Jul 19 06:49:31 UTC 2012 - dvaleev@suse.com
+
+- fix testsuite to run on ppc64
+- add man to BuildRequires, testsuite requires it 
+
+-------------------------------------------------------------------
+Wed May 30 21:22:22 UTC 2012 - frank.lichtenheld@sophos.com
+
+- update to 0.211
+* Test suite fixes, obsoletes parts of test-suite.patch
+
+-------------------------------------------------------------------
+Sun May 20 16:03:43 UTC 2012 - frank.lichtenheld@sophos.com
+
+- Replace BuildRequires on deb with dpkg
+* Only dpkg is really needed, and this makes it more
+  portable (e.g. Fedora already contains dpkg)
+
+-------------------------------------------------------------------
+Sat May 19 21:58:57 UTC 2012 - frank.lichtenheld@sophos.com
+
+- Skip some pbuilder-apt-config tests on some arches
+* The checks do not take in account every possible
+  build architecture.
+
+-------------------------------------------------------------------
+Sat May 12 21:35:07 UTC 2012 - frank.lichtenheld@sophos.com
+
+- Do not use extglob features in bash-completion.
+  The bash in SLE 11 hasn't enabled it by default and
+  can't even parse it if it isn't enabled globally.
+- Enable test suite
+
+-------------------------------------------------------------------
+Thu May  3 23:52:58 UTC 2012 - frank.lichtenheld@sophos.com
+
+- Fix bash completion
+
+-------------------------------------------------------------------
+Thu May  3 19:29:38 UTC 2012 - frank.lichtenheld@sophos.com
+
+- Prepare for factory submission
+* Remove _service and add source file
+* Line-wrap description
+
+-------------------------------------------------------------------
+Sat Apr 28 18:42:36 UTC 2012 - frank.lichtenheld@sophos.com
+
+- make build on Fedora
+
+-------------------------------------------------------------------
+Tue Apr 10 20:38:13 UTC 2012 - frank.lichtenheld@sophos.com
+
+- update to 0.210
+
+-------------------------------------------------------------------
+Tue Mar 13 21:06:06 UTC 2012 - frank.lichtenheld@sophos.com
+
+- update to 0.208
+
+-------------------------------------------------------------------
+Sun Jan 29 20:31:20 UTC 2012 - frank.lichtenheld@sophos.com
+
+- update to 0.206
+
+-------------------------------------------------------------------
+Sat Dec 31 17:41:13 UTC 2011 - frank.lichtenheld@sophos.com
+
+- update to 0.205
+
+-------------------------------------------------------------------
+Tue Sep 20 12:48:24 UTC 2011 - frank.lichtenheld@sophos.com
+
+- update to 0.202
+
+-------------------------------------------------------------------
+Fri Aug 12 20:03:11 UTC 2011 - flichtenheld@astaro.com
+
+- update to 0.201
+
+-------------------------------------------------------------------
+Thu Jun  2 11:06:23 UTC 2011 - flichtenheld@astaro.com
+
+- update to 0.199+nmu4
+
+-------------------------------------------------------------------
+Sat Apr  9 12:51:30 UTC 2011 - flichtenheld@astaro.com
+
+- update to 0.199+nmu3
+
+-------------------------------------------------------------------
+Tue Feb 22 18:58:17 UTC 2011 - flichtenheld@astaro.com
+
+- update to 0.199+nmu2
+
+-------------------------------------------------------------------
+Wed Jan 26 15:42:51 UTC 2011 - flichtenheld@astaro.com
+
+- Initial packaging.
+

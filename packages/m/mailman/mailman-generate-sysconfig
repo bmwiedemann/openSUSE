@@ -1,0 +1,191 @@
+#!/bin/bash
+#
+# Copyright (c) 1995-2002 SuSE Linux AG, Nuernberg, Germany.
+# All rights reserved.
+#
+# Author: Vladimír Linek <feedback@suse.de>
+#	  Heiko Rommel   <feedback@suse.de>
+#
+
+
+#
+# check if we are started as root
+# only one of UID and USER must be set correctly
+#
+
+if test "$UID" != 0 -a "$USER" != root; then
+    echo "You must be root to start $0."
+    exit 1
+fi
+
+if test ! -x /bin/hostname; then
+    echo "You need /bin/hostname to run $0."
+    exit 1
+fi
+
+r="$ROOT"
+
+warn_user(){
+    tput bold
+    echo -e "\t*** WARNING ***"
+    echo -e $1
+    echo -e "\t*** WARNING ***"
+    tput sgr0
+}
+
+#
+# load sysconfig for mailman
+#
+
+mailmansysconf="$r/etc/sysconfig/mailman"
+test -f $mailmansysconf || {
+    echo "ERROR - can not find $mailmansysconf!!"
+    echo "This should not happen.  Exit..."
+    exit 1
+}
+. $mailmansysconf
+
+
+#
+# go and replace some general site secific options
+#
+
+HOST=`/bin/hostname --fqdn`
+
+MM_CFG="$r/usr/lib/mailman/Mailman/mm_cfg.py"
+
+mmcfgdist="$r/usr/lib/mailman/Mailman/mm_cfg.py.dist"
+install -m 0644 -o root -g mailman $mmcfgdist ${MM_CFG}.SuSEconfig || {
+    echo "ERROR - can not find $mmcfgdist!!"
+    echo "This should not happen.  Exit..."
+    exit 1
+
+}
+
+( test "$MAILMAN_DEFAULT_HTTPS" = "yes" && echo "DEFAULT_URL_PATTERN = 'https://%s/mailman/'" || echo "DEFAULT_URL_PATTERN = 'http://%s/mailman/'" ) >> ${MM_CFG}.SuSEconfig
+
+( test -z "$MAILMAN_DEFAULT_NNTP_HOST" && echo "DEFAULT_NNTP_HOST = '${HOST}'" || echo "DEFAULT_NNTP_HOST = '$MAILMAN_DEFAULT_NNTP_HOST'" ) >> ${MM_CFG}.SuSEconfig
+
+( test -z "$MAILMAN_DEFAULT_EMAIL_HOST" && echo "DEFAULT_EMAIL_HOST = '${HOST}'" || echo "DEFAULT_EMAIL_HOST = '$MAILMAN_DEFAULT_EMAIL_HOST'" ) >> ${MM_CFG}.SuSEconfig
+
+( test -z "$MAILMAN_DEFAULT_URL_HOST" && echo "DEFAULT_URL_HOST = '${HOST}'" || echo "DEFAULT_URL_HOST = '$MAILMAN_DEFAULT_URL_HOST'" ) >> ${MM_CFG}.SuSEconfig
+
+( if test -z "$MAILMAN_MTA"; then
+   echo "MTA = ''"
+else
+   case "$MAILMAN_MTA" in
+      None) echo "MTA = None" ;;
+      *) echo "MTA = '$MAILMAN_MTA'";;
+   esac
+fi ) >> ${MM_CFG}.SuSEconfig
+
+if [ "$MAILMAN_MTA" = "Postfix" ]; then
+  if [ -x /usr/sbin/postalias ]; then
+    echo -e "POSTFIX_ALIAS_CMD = '/usr/sbin/postalias'\nPOSTFIX_MAP_CMD = '/usr/sbin/postmap'" >> ${MM_CFG}.SuSEconfig
+  else
+    echo -e "WARNING: Postfix seems not to be installed, but /etc/sysconfig/mailman\n         has MAILMAN_MTA=\"Postfix\". Fix this!"
+  fi
+fi
+   
+if [ -z "$MAILMAN_SMTPHOST" ]; then
+   echo -e "DELIVERY_MODULE = 'Sendmail'\nSMTPHOST = ''" >> ${MM_CFG}.SuSEconfig
+else
+   echo -e "DELIVERY_MODULE = 'SMTPDirect'\nSMTPHOST = '${MAILMAN_SMTPHOST}'" >> ${MM_CFG}.SuSEconfig
+   if [ -n "$MAILMAN_SMTPPORT" ]; then
+      echo -e "SMTPPORT = '${MAILMAN_SMTPPORT}'" >> ${MM_CFG}.SuSEconfig
+   fi
+fi
+
+# must be added if DEFAULT_EMAIL_HOST or DEFAULT_URL_HOST are changed
+echo "add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)" >> ${MM_CFG}.SuSEconfig
+
+if [ -n "$MAILMAN_VIRTUAL_HOSTS" ]; then
+	for host in $MAILMAN_VIRTUAL_HOSTS; do 
+		url_host=${host%,*}
+		email_host=${host##*,} 
+		echo "add_virtualhost('$url_host', '$email_host')" 
+	done >> ${MM_CFG}.SuSEconfig
+fi
+
+# there's no need to copy Mailman icons to the webservers icon directory
+echo "IMAGE_LOGOS = '/mailmanicons/'" >> ${MM_CFG}.SuSEconfig
+
+# this used to live in SuSEconfig.mailman-SuSE and I have no idea why it was there
+# grep LISTINFO_USE_CATEGORIES ${MM_CFG} > /dev/null 2>&1 || echo "LISTINFO_USE_CATEGORIES = 1" >> ${MM_CFG}.SuSEconfig
+
+#
+# update the site config
+#
+
+### XXX un-suseconfig-hack
+check_md5_and_move() # Usage: check_md5_and_move file_name-without.SuSEconfig
+{
+    # This function checks the existence of a file (specified without the
+    # extension .SuSEconfig and without "$r") and a corresponding md5 checksum
+    # and tests whether the time stamp of the file has changed.
+    # If it has, nothing further will happen. If not, the "file.SuSEconfig"
+    # will be moved to "file".
+
+    FILE=$1
+    if test -n "$r" ; then
+        RELPATH=`echo $FILE | sed -e"s:^$r::"`
+    else
+        RELPATH=$FILE
+    fi
+    MD5FILE=$RELPATH.md5
+    NEWMD5SUM="`cat $FILE.SuSEconfig | grep -v "^#" | md5sum`"
+    if test ! -s $FILE ; then
+        touch $FILE
+        rm -f $MD5FILE
+    fi
+    if test "$FORCE_REPLACE" = true ; then
+        cp -p $FILE.SuSEconfig $FILE
+    fi
+    USERMD5SUM="`cat $FILE | grep -v "^#" | md5sum`"
+    test -e $MD5FILE || echo "$USERMD5SUM" > $MD5FILE
+    OLDMD5SUM="`cat $MD5FILE`"
+    if test "$USERMD5SUM" != "$OLDMD5SUM" -a \
+            "$USERMD5SUM" != "$NEWMD5SUM" ; then
+        echo
+        echo "ATTENTION: You have modified $RELPATH.  Leaving it untouched..."
+        echo "You can find my version in $FILE.SuSEconfig..."
+        echo
+    else
+        if test "$USERMD5SUM" != "$NEWMD5SUM" -o "$FORCE_REPLACE" = true ; then
+            echo "Installing new $RELPATH"
+            cp -p $FILE.SuSEconfig $FILE
+        else
+            test "$VERBOSE" = false || echo "No changes for $RELPATH"
+        fi
+        rm -f $FILE.SuSEconfig
+    fi
+    rm -f $MD5FILE
+    echo "$NEWMD5SUM" > $MD5FILE
+}
+
+
+
+check_md5_and_move $MM_CFG
+
+#
+# tune mail-gid and cgi-gid for wrapper scripts
+#
+
+if [ -z "$MAILMAN_MAIL_GID" ]; then
+	warn_user "warning: empty MAILMAN_MAIL_GID in /etc/sysconfig/mailman, ignoring..."
+else
+	MAILGID_CFG="$r/etc/mailman/mailman.mail-gid"
+	getent group $MAILMAN_MAIL_GID | cut -d: -f3 > ${MAILGID_CFG}.SuSEconfig
+        check_md5_and_move $MAILGID_CFG
+fi
+
+if [ -z "$MAILMAN_CGI_GID" ]; then
+	warn_user "warning: empty MAILMAN_CGI_GID in /etc/sysconfig/mailman, ignoring..."
+else
+	CGIGID_CFG="$r/etc/mailman/mailman.cgi-gid"
+	getent group $MAILMAN_CGI_GID | cut -d: -f3 > ${CGIGID_CFG}.SuSEconfig
+	check_md5_and_move $CGIGID_CFG
+fi
+
+exit 0
+

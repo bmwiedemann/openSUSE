@@ -1,0 +1,97 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>496e850df2fd3bdbb2ddbcf763f89529</srcmd5>
+    <version>1.1.2</version>
+    <time>1336471218</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115396</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>496e850df2fd3bdbb2ddbcf763f89529</srcmd5>
+    <version>1.1.2</version>
+    <time>1340184334</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1fcb9693237e32fa2824ccf6f1221a77</srcmd5>
+    <version>1.2.0</version>
+    <time>1347884199</time>
+    <user>coolo</user>
+    <comment>Update to version 1.2.0 (forwarded request 133799 from klausi123)</comment>
+    <requestid>134142</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9e01aad3f77f3901c226a1f648820826</srcmd5>
+    <version>1.2.0</version>
+    <time>1348734599</time>
+    <user>coolo</user>
+    <comment>- xcb-util-0_3_6.diff
+  * fixes build for openSUSE &lt;= 12.1</comment>
+    <requestid>136151</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>9e01aad3f77f3901c226a1f648820826</srcmd5>
+    <version>1.2.0</version>
+    <time>1359110590</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>9e01aad3f77f3901c226a1f648820826</srcmd5>
+    <version>1.2.0</version>
+    <time>1379664991</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0af0457b9604bfde05eed6ea8a337a10</srcmd5>
+    <version>1.2.1</version>
+    <time>1382720070</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 1.2.1
+  * config: Add missing AC_CONFIG_SRCDIR
+  * Combine usage message strings
+  * Fix reading backlight level on 64-bit systems (bug 63205)
+  * man: replace hyphens with minus signs</comment>
+    <requestid>204820</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0af0457b9604bfde05eed6ea8a337a10</srcmd5>
+    <version>1.2.1</version>
+    <time>1409303670</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>79b760cc89a557acda3acb2e0b8c053e</srcmd5>
+    <version>1.2.2</version>
+    <time>1524144491</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.2
+  * Print which option was in error along with usage message
+  * Add -version option to print program version
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * Use double instead of int for value
+  * Use current output configuration
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>593595</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>46135be45704eca8afe32a938e3508f2</srcmd5>
+    <version>1.2.3</version>
+    <time>1563259312</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.3
+  * atof_or_die: Also die if nothing was converted
+  * exit if conv. from string to double fails
+  * Properly round the new brightness value
+  * Update configure.ac bug URL for gitlab migration
+  * Update README for gitlab migration</comment>
+    <requestid>715446</requestid>
+  </revision>
+</revisionlist>

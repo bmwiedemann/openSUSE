@@ -1,0 +1,12 @@
+diff -urEbwB powermock-powermock-1.6.5/core/src/main/java/org/powermock/core/ClassReplicaCreator.java powermock-powermock-1.6.5.new/core/src/main/java/org/powermock/core/ClassReplicaCreator.java
+--- powermock-powermock-1.6.5/core/src/main/java/org/powermock/core/ClassReplicaCreator.java	2016-04-30 07:22:01.000000000 +0200
++++ powermock-powermock-1.6.5.new/core/src/main/java/org/powermock/core/ClassReplicaCreator.java	2018-11-19 15:25:16.875884583 +0100
+@@ -96,7 +95,7 @@
+                 CtConstructor copy = CtNewConstructor.copy(ctConstructor, newClass, null);
+                 newClass.addConstructor(copy);
+             }
+-            return newClass.toClass(this.getClass().getClassLoader(), this.getClass().getProtectionDomain());
++            return (Class<T>)newClass.toClass(this.getClass().getClassLoader(), this.getClass().getProtectionDomain());
+         } catch (Exception e) {
+             throw new RuntimeException(e);
+         }

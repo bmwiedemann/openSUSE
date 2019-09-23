@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Sun Sep  8 14:26:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20190826
+  * fix up "-E legacy-compress"
+  * fix a memory leak of compressmeta
+  * fail the image creation when source path is not a directory file
+- Add long.patch
+
+-------------------------------------------------------------------
+Fri Aug 23 04:45:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 20190803
+  * The mkfs utility was rewritten
+- Drop no-date.diff (no longer needed)
+
+-------------------------------------------------------------------
+Thu Mar 14 19:34:57 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Move to new git snapshot 72ae01c3e97c7b2de569b2b86ea4ed6b245acb72
+  * No changelog was provided
+- Drop constant.diff, no-static.diff (no longer needed)
+
+-------------------------------------------------------------------
+Mon Dec 10 10:11:43 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use lz4hc.h from bundled copy, not the system.
+
+-------------------------------------------------------------------
+Mon Nov 19 20:57:48 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial version (0.0.1~4 / 4f437e3) for build.opensuse.org
+- Add constant.diff, no-static.diff, no-date.diff

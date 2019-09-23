@@ -1,0 +1,471 @@
+<revisionlist>
+  <revision rev="1" vrev="43">
+    <srcmd5>321c6f527130043dd84986c0dea223d2</srcmd5>
+    <version>1.70.1</version>
+    <time>1168361214</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="44">
+    <srcmd5>28d0db6ea4d610e8b0f0f70cc1d45226</srcmd5>
+    <version>1.70.1</version>
+    <time>1170609773</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="50">
+    <srcmd5>f2c271e4ba4ba0bc82b2f23d9b2e1db8</srcmd5>
+    <version>1.70.1</version>
+    <time>1173567632</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="81">
+    <srcmd5>bc561268f671b3e3494a9c25db5b0652</srcmd5>
+    <version>1.70.1</version>
+    <time>1180683421</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4cd46d0db24b9ed0daf8577b7753b503</srcmd5>
+    <version>1.80.0</version>
+    <time>1185149832</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="16">
+    <srcmd5>7d881be417fdf5dacdc7e60df0448b7d</srcmd5>
+    <version>1.80.0</version>
+    <time>1187543092</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="53">
+    <srcmd5>9c9a9ebc00b7b8a8d548d0e65f704c24</srcmd5>
+    <version>1.80.0</version>
+    <time>1193356096</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>40f320a2bd53af44f72210e29861e21c</srcmd5>
+    <version>1.90.0</version>
+    <time>1206544729</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>024df0c6a9abba9eee1dd443b8e4fb9b</srcmd5>
+    <version>1.99.1</version>
+    <time>1221309296</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>01bfc246f739aee6e9d0f4f524eac881</srcmd5>
+    <version>1.99.1.svn6082</version>
+    <time>1222268447</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>fe729e4d89a3bb856e260f3b14dcb18f</srcmd5>
+    <version>1.99.1.svn6082</version>
+    <time>1227427493</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>2b2670294362b68c7e4a0ab263be1dfa</srcmd5>
+    <version>1.99.1.svn6082</version>
+    <time>1228228032</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>1f6a14e414589a9f9d91a3df72d3a361</srcmd5>
+    <version>1.99.1.svn6082</version>
+    <time>1231435935</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>0c2e1812fa9504ffec5fbff799b8ea72</srcmd5>
+    <version>1.99.1.svn6082</version>
+    <time>1233695986</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>a5df4cffd5db0ca805b630d0e0c5b009</srcmd5>
+    <version>1.99.1.svn6082</version>
+    <time>1236869238</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d2b0c7555f394ed22d807b1952e397a9</srcmd5>
+    <version>1.99.2.svn6248</version>
+    <time>1238026580</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8aa73abd75c86b5e85d08213b25c3bad</srcmd5>
+    <version>2.0.0</version>
+    <time>1241453910</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>e00070a3fbc42cfa21727755a259dd31</srcmd5>
+    <version>2.0.0</version>
+    <time>1242775673</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>f446abe1771e2e8ce071b1a3ef998a6b</srcmd5>
+    <version>2.0.0</version>
+    <time>1249936968</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>f446abe1771e2e8ce071b1a3ef998a6b</srcmd5>
+    <version>2.0.0</version>
+    <time>1249936968</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>fe76365a5e7d060db450f49641e829aa</srcmd5>
+    <version>2.0.0</version>
+    <time>1268924316</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>8bb3123722bcb0b7783301ef6fa4d12c</srcmd5>
+    <version>2.0.0</version>
+    <time>1270049429</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/krusader based on submit request 36122 from user llunak
+</comment>
+    <requestid>36122</requestid>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>89e3f6479c4530409fc7f64526fbbf00</srcmd5>
+    <version>2.0.0</version>
+    <time>1271371154</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/krusader based on submit request 37681 from user Beineri
+</comment>
+    <requestid>37681</requestid>
+  </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>e8938bbf322cd9d64e18cf1342d41e7f</srcmd5>
+    <version>2.0.0</version>
+    <time>1271669659</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/krusader based on submit request 38201 from user wstephenson
+</comment>
+    <requestid>38201</requestid>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>5b1ecef4032c68f5499b35e6620cc5e6</srcmd5>
+    <version>2.0.0</version>
+    <time>1272214317</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/krusader based on submit request 38594 from user llunak
+</comment>
+    <requestid>38594</requestid>
+  </revision>
+  <revision rev="26" vrev="12">
+    <srcmd5>5b1ecef4032c68f5499b35e6620cc5e6</srcmd5>
+    <version>2.0.0</version>
+    <time>1278667356</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="27" vrev="13">
+    <srcmd5>5b1ecef4032c68f5499b35e6620cc5e6</srcmd5>
+    <version>2.0.0</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="28" vrev="14">
+    <srcmd5>e980cac8d1de1808706e2107d8b80e12</srcmd5>
+    <version>unknown</version>
+    <time>1284373790</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/krusader based on submit request 47587 from user llunak
+</comment>
+    <requestid>47587</requestid>
+  </revision>
+  <revision rev="29" vrev="17">
+    <srcmd5>e980cac8d1de1808706e2107d8b80e12</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="30" vrev="18">
+    <srcmd5>b4019c7aa67e672c0fd44df4c793d3e6</srcmd5>
+    <version>2.0.0</version>
+    <time>1308213567</time>
+    <user>saschpe</user>
+    <comment>- add -fpermissive to pass old code in new gccs (forwarded request 73707 from coolo)</comment>
+    <requestid>73712</requestid>
+  </revision>
+  <revision rev="31" vrev="19">
+    <srcmd5>83605d0cda4826d1848001263843615d</srcmd5>
+    <version>2.0.0</version>
+    <time>1308213584</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73712
+</comment>
+  </revision>
+  <revision rev="32" vrev="20">
+    <srcmd5>89a1898f55934b7410d31c7d15bde959</srcmd5>
+    <version>2.0.0</version>
+    <time>1314275721</time>
+    <user>saschpe</user>
+    <comment> - Add krusader-link-solid.patch: explicitly link to solid libs</comment>
+    <requestid>79726</requestid>
+  </revision>
+  <revision rev="33" vrev="21">
+    <srcmd5>9518299fb3a0eb29e4436fca537c6f14</srcmd5>
+    <version>2.0.0</version>
+    <time>1314275734</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79726
+</comment>
+  </revision>
+  <revision rev="34" vrev="22">
+    <srcmd5>149643728258db443add5ebe66cc4df2</srcmd5>
+    <version>2.0.0</version>
+    <time>1316446383</time>
+    <user>lrupp</user>
+    <comment>- Added %kde4_runtime_requires macro (fix for RPMLINT warning)
+- Fixed self-obsoletes (fix for RPMLINT warning)
+- Cleaned up spec file formatting (forwarded request 82640 from TheBlackCat) (forwarded request 82641 from TheBlackCat)</comment>
+    <requestid>82656</requestid>
+  </revision>
+  <revision rev="35" vrev="24">
+    <srcmd5>149643728258db443add5ebe66cc4df2</srcmd5>
+    <version>2.0.0</version>
+    <time>1319182058</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="36" vrev="25">
+    <srcmd5>671de5dc18fcb87db39e78f73a4879b1</srcmd5>
+    <version>2.0.0</version>
+    <time>1321980458</time>
+    <user>coolo</user>
+    <comment>- Require kate as this is needed at runtime for the view and edit
+  dialog (bnc#712179) (forwarded request 92947 from christiantrippe)</comment>
+    <requestid>92959</requestid>
+  </revision>
+  <revision rev="37" vrev="26">
+    <srcmd5>448fcf62a4a559259287381d2a14ab6d</srcmd5>
+    <version>2.0.0</version>
+    <time>1323192123</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="38" vrev="28">
+    <srcmd5>448fcf62a4a559259287381d2a14ab6d</srcmd5>
+    <version>2.0.0</version>
+    <time>1340183538</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>38d1f2b58750e992d4a6133bbdab352d</srcmd5>
+    <version>2.4.0~beta3</version>
+    <time>1352822825</time>
+    <user>coolo</user>
+    <comment>- Add bug309159.patch from upstream, to fix crashes with previewing video files
+- Properly annotate previous patch (krusader-2.4.0-beta2-generate-manpage.patch) (forwarded request 141027 from sumski)</comment>
+    <requestid>141048</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>38d1f2b58750e992d4a6133bbdab352d</srcmd5>
+    <version>2.4.0~beta3</version>
+    <time>1359109205</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>38d1f2b58750e992d4a6133bbdab352d</srcmd5>
+    <version>2.4.0~beta3</version>
+    <time>1379662834</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="7">
+    <srcmd5>38d1f2b58750e992d4a6133bbdab352d</srcmd5>
+    <version>2.4.0~beta3</version>
+    <time>1409301423</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="43" vrev="8">
+    <srcmd5>e66df5c186553fa2ab21b88e2070de47</srcmd5>
+    <version>2.4.0~beta3</version>
+    <time>1427652969</time>
+    <user>dimstar_suse</user>
+    <comment>Require libktexteditor instead of kate to solve conflicts.</comment>
+    <requestid>293219</requestid>
+  </revision>
+  <revision rev="44" vrev="9">
+    <srcmd5>ca56c42dfef94bdd68315ef99d9d4e62</srcmd5>
+    <version>2.4.0~beta3</version>
+    <time>1432723772</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308736</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>caf0c06fb174537af6f0963f113f8831</srcmd5>
+    <version>2.5.0</version>
+    <time>1477313087</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.0
+  * Added actions: Select files with the same name / extension
+  * Changed disabled build of synchronizer by default, since it
+    is unmaintained - build togglable with cmake variable
+    -DENABLE_SYNCHRONIZER=true|false
+  * Fixed (kde#143927) file search: &quot;s&quot; accelerator is doubled -
+    new shortcut for &quot;Search in&quot; is ALT+h
+  * Fixed (kde#308386) Duplicate shortcut on Search window -
+    new shortcut for &quot;Remote content search&quot; is ALT+n
+  * Fixed (kde#206926) Search doesn't work in sftp session
+    (it returns too many results)
+  * Fixed (kde#269542) Krusader search - Containing text
+    still used when disabled
+  * Fixed (kde#324737) symlinks with a target path length
+    of over 255 do not work
+  * Fixed (kde#189943) toolbar position settings are not remembered
+  * Fixed (kde#316031) crash when loading previews
+  * Fixed (kde#238672) When saving checksums fails,
+    they are lost. No 2nd chance to save elsewhere. 
+  * Fixed (kde#315764) &quot;application/x-source-rpm&quot; isn't linked
+    to krarc protocol by default
+  * Fixed (kde#294816) Krusader needs to restart to apply
+    new color scheme to panel
+  * Fixed (kde#308727) external editor command isn't properly parsed 
+  * Fixed (kde#304233) empty main view on startup
+  * Fixed (kde#315856) main view splitter sizes are not restored
+  * Fixed (kde#248691) incorrect layout / wrong buttons
+    in queue manager
+  * Fixed (kde#315357) krarc silently fails to display
+    contents of some zip files containing paths with &quot;.&quot; as a</comment>
+    <requestid>437032</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>209458e9a210b4bf280657c9d91f2cc9</srcmd5>
+    <version>2.5.0</version>
+    <time>1480341860</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Remove-non-archive-mimetypes-from-krarc-archive-mime-type-list.patch to fix dolphin opening e.g. LibreOffice files as archives (boo#1011320, kde#371765)
+</comment>
+    <requestid>441259</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>fd682033882eb93eb05fa7031926ab06</srcmd5>
+    <version>2.5.0</version>
+    <time>1484041756</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448982</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>21d522a68bb80d75798ef0d5845c3423</srcmd5>
+    <version>2.6.0</version>
+    <time>1495442810</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.0</comment>
+    <requestid>495625</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>f881a84ef08f6022bea52a812b2f9160</srcmd5>
+    <version>2.6.0</version>
+    <time>1516092167</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>564237</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>804c987addced755b37451c7a54628ce</srcmd5>
+    <version>2.7.0</version>
+    <time>1527582835</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.0
+  * New feature: Quick Search in Bookmark menu
+  * New feature: Tab pinning
+  * New feature: Tooltip with file information when you hover a
+    file name
+  * New feature: Extended options for Tree Panel
+  * New feature: Debug output option
+  * Improved icon theme handling
+  * Fixed 40+ issues including some regressions
+- Drop patches merged upstream:
+  * fix-build-with-gcc48.patch
+  * Panel-fixed-actions-in-PanelContextMenu-ignored.patch
+- Mark license file as %license instead of %doc
+- Adjust file lists
+</comment>
+    <requestid>610720</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>7551f7a6c3f5b25dd8a25365544e6fa0</srcmd5>
+    <version>2.7.1</version>
+    <time>1534322125</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.1
+  * ADDED: Default shortcut for quick selection mode = Ctrl+Shift+S
+  * FIXED: When calculating occupied space of &quot;..&quot; , krusader
+    selects all directories (kde#150247)
+  * FIXED: Bad default in the New Text File dialog (kde#282069)
+  * FIXED: ISO files listing/extracting broken (kde#372023)
+  * FIXED: Details section is empty in 'Do not know which files to
+    compare.' window (kde#383567)
+  * FIXED: Default mode in 'Find in folder' is not preserved
+    (kde#391946)
+  * FIXED: Files fed to listbox (and all other files in virt://)
+    cannot be deleted (kde#394896)
+  * FIXED: Enter key not working when cursor in search bar
+    (kde#394939)
+  * FIXED: The quicksearch bar is still opened after deleting a
+    file (kde#395285)
+  * FIXED: In the Manage User Actions dialog: the tab order is not
+    the expected one (kde#396652) (forwarded request 628840 from wolfi323)</comment>
+    <requestid>628895</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>db2b432928054f3dddbc75c3e9f69fdb</srcmd5>
+    <version>2.7.1</version>
+    <time>1552464841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684305</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>7e70e9f3657d651558db4480acee81d8</srcmd5>
+    <version>2.7.2</version>
+    <time>1566894250</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.2
+  * FIXED: Memory leak in the Locate dialog
+  * FIXED: UDSEntry::insert deprecation warnings
+  * FIXED: synchronize directory window: column widths 
+    are incorrect (kde#167410)
+  * FIXED: Context menu item &quot;copy selected to clipboard&quot; copies
+    all result items (kde#328918)
+  * FIXED: &quot;Information - Krusader&quot; dialog does not fit to screen
+    width; text non-copyable (kde#330788)
+  * FIXED: After trying to rename the file that's being updated,
+    rename function stops working on any file on this tab
+    (kde#392750)
+  * FIXED: New Text File is created with 600 (-rw-------)
+    permissions (kde#395609)
+  * FIXED: Misleading ‘Created’ date in file properties
+    (kde#397398)
+  * FIXED: Compilation error because of QOverload usage
+    (kde#405212)
+  * FIXED: The list of search results doesn't get the focus
+    (kde#410118)
+  * FIXED: Krusader does not search correctly if the &quot;Follow links&quot;
+    checkbox is disabled (kde#410120)
+  * FIXED: Okteta support for versions &amp;gt;= 0.26 (due to oktetapart
+    file layout change)
+- Drop Prefer-to-find-oktetapart-by-desktop-file.patch, merged
+  upstream
+- Don't add -fpermissive to compiler options, no longer necessary
+- Run spec-cleaner (forwarded request 726070 from wolfi323)</comment>
+    <requestid>726075</requestid>
+  </revision>
+</revisionlist>

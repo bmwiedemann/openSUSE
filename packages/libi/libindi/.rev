@@ -1,0 +1,289 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>83ce5dd9b76d0f05e67ff6b17bed209a</srcmd5>
+    <version>0.6</version>
+    <time>1235878934</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>469383550282f500209e5bacb4761757</srcmd5>
+    <version>0.6</version>
+    <time>1237577227</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>469383550282f500209e5bacb4761757</srcmd5>
+    <version>0.6</version>
+    <time>1237577227</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>0a5cd7687694df80824d8c775bc67232</srcmd5>
+    <version>0.6</version>
+    <time>1268924609</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>bffae4413c26e566ae144add87127fee</srcmd5>
+    <version>0.6</version>
+    <time>1270131021</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/libindi based on submit request 36460 from user llunak
+</comment>
+    <requestid>36460</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>bffae4413c26e566ae144add87127fee</srcmd5>
+    <version>0.6</version>
+    <time>1278667359</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>bffae4413c26e566ae144add87127fee</srcmd5>
+    <version>0.6</version>
+    <time>1278678590</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>bffae4413c26e566ae144add87127fee</srcmd5>
+    <version>0.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>def8ca8ae90c733f60d7270a4aa65911</srcmd5>
+    <version>0.6.2</version>
+    <time>1306844022</time>
+    <user>saschpe</user>
+    <comment>Update to version 0.6.2, Spec file updates, Added 2 patches (forwarded request 70943 from adra)</comment>
+    <requestid>71818</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e82d89799ca5089e27d427389f8c7325</srcmd5>
+    <version>0.8</version>
+    <time>1316465683</time>
+    <user>lrupp</user>
+    <comment>Update to version 0.8, Spec file updates, Added 2 patches (forwarded request 83208 from adra)</comment>
+    <requestid>83365</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>e82d89799ca5089e27d427389f8c7325</srcmd5>
+    <version>0.8</version>
+    <time>1319182104</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>10aa1ee39348401c4b404aef3b9644b5</srcmd5>
+    <version>0.8</version>
+    <time>1323192257</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>dc3cfa51b2a409ff7bf25fa67f733a64</srcmd5>
+    <version>0.8</version>
+    <time>1323705446</time>
+    <user>coolo</user>
+    <comment>- Fix build with new cfitsio</comment>
+    <requestid>96310</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6e0fbb0058754d56b9ab0ce6817291ed</srcmd5>
+    <version>0.9</version>
+    <time>1327093653</time>
+    <user>coolo</user>
+    <comment>Update to version 0.9, Added/Removed patches, Spec file updates (forwarded request 100789 from adra)</comment>
+    <requestid>100890</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>71a9874924b68ac955523411b6d3388e</srcmd5>
+    <version>0.9</version>
+    <time>1332148067</time>
+    <user>coolo</user>
+    <comment>Added a patch (taken from Fedora) to fix compilation with gcc-4.7 (forwarded request 109347 from adra)</comment>
+    <requestid>109503</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>3297995e9381356bbd59bf42bb30b33c</srcmd5>
+    <version>0.9</version>
+    <time>1338030318</time>
+    <user>coolo</user>
+    <comment>Removed cfitsio_link_libs.patch (not needed after the update of cfitsio package and cfitsio.pc fix regarding library linking) (forwarded request 122086 from adra)</comment>
+    <requestid>122091</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>3297995e9381356bbd59bf42bb30b33c</srcmd5>
+    <version>0.9</version>
+    <time>1340183597</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>66c549f34042d8136349b9dc9df3e9ee</srcmd5>
+    <version>0.9.5</version>
+    <time>1349630143</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.9.5:
+  * Focuser simulator driver.
+  * CCD, Telescope, Focuser, and Filter simulators improvements including
+    periodic error effects, FWHM, and more.
+  * Major improvements to INDI Base Library and INDI Client Library.
+  * Fixed minor bugs in LX200 Generic, LX200 FS2, Magellan, and Celestron
+    drivers.
+  * Minor bugfixes and improvements.
+  * Fixed color buffer problem in V4L drivers.
+  * Numerous bug fixes and minor improvements.
+  From 0.9.1:
+  * Bugfix release.
+- Removed the previous no-return-in-nonvoid-function.patch (fixed upstream) and
+  added a new one to fix some new &quot;no-return-in-nonvoid-function&quot; rpm
+  post-build check errors.
+- Removed libindi-usleep.patch that fixed compilation with gcc-4.7 (fixed
+  upstream).</comment>
+    <requestid>136866</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cdcfc386320e2e9c4ecab41263b19a61</srcmd5>
+    <version>0.9.6</version>
+    <time>1354887496</time>
+    <user>namtrac</user>
+    <comment>Update to version 0.9.6, Updated no-return-in-nonvoid-function.patch, Added a patch (udev_rules_dir_configurable.patch) to make UDEVRULES_INSTALL_DIR configurable, install the udev rules file in the correct directory (forwarded request 143488 from adra)</comment>
+    <requestid>143631</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>cdcfc386320e2e9c4ecab41263b19a61</srcmd5>
+    <version>0.9.6</version>
+    <time>1359109290</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>b0d34e569b11eb20e16f6433a877f0e9</srcmd5>
+    <version>0.9.6</version>
+    <time>1364473160</time>
+    <user>coolo</user>
+    <comment>- libindi-aarch64.patch: No port I/O on aarch64 (forwarded request 161461 from Andreas_Schwab)</comment>
+    <requestid>161463</requestid>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>b0d34e569b11eb20e16f6433a877f0e9</srcmd5>
+    <version>0.9.6</version>
+    <time>1379662981</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a73147cad90758c8ed70f2252d61dc61</srcmd5>
+    <version>0.9.7</version>
+    <time>1391361373</time>
+    <user>coolo</user>
+    <comment>Update to version 0.9.7</comment>
+    <requestid>220570</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>a73147cad90758c8ed70f2252d61dc61</srcmd5>
+    <version>0.9.7</version>
+    <time>1409301593</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>07fd5f27aa06112444fe5460a96e8c72</srcmd5>
+    <version>1.0.0</version>
+    <time>1424779341</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287306</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>e65cfff1a194d114c97596d65de2d131</srcmd5>
+    <version>1.0.0</version>
+    <time>1436734341</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315350</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4fae426ae713f6c220da2ae73bbea225</srcmd5>
+    <version>1.2.0</version>
+    <time>1467359920</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404910</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b9a373293e1718025c4d17fe90e8e3ae</srcmd5>
+    <version>1.3.1</version>
+    <time>1485250771</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451870</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2a0bf44314d2cde9c1cdc79a8e7f7d57</srcmd5>
+    <version>1.4.1</version>
+    <time>1496327456</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493209</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>313402c78cc7780d0956149c140964e1</srcmd5>
+    <version>1.5.0</version>
+    <time>1506594836</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528477</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7db5350555bbfb1a83c48449cf0117f5</srcmd5>
+    <version>1.6.2</version>
+    <time>1516359142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563237</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>84225e1293705a2e3c074678117a1d1c</srcmd5>
+    <version>1.7.0</version>
+    <time>1523448243</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>595528</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>52c4bd876b41d873538a40c28447a759</srcmd5>
+    <version>1.7.1</version>
+    <time>1523616723</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>596052</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e4c1c15cae99655fd727629921461708</srcmd5>
+    <version>1.7.6</version>
+    <time>1554458555</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.7.6</comment>
+    <requestid>690921</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b3f320ff75b33c3c2515390bf1e7c692</srcmd5>
+    <version>1.7.7</version>
+    <time>1556817591</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699881</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>11d16feabdee3be3a3845205bb851694</srcmd5>
+    <version>1.7.9</version>
+    <time>1563018533</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714509</requestid>
+  </revision>
+</revisionlist>

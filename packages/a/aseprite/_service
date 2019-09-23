@@ -1,0 +1,16 @@
+<services>
+
+  <service name="tar_scm" mode="localonly">
+    <param name="scm">git</param>
+    <param name="url">git://github.com/aseprite-gpl/aseprite.git</param>
+    <param name="version">1.1.7</param>
+    <param name="revision">v1.1.7</param>
+    <param name="submodules">enable</param>
+  </service>
+
+  <service name="recompress" mode="localonly">
+    <param name="compression">bz2</param>
+    <param name="file">*.tar</param>
+  </service>
+
+</services>

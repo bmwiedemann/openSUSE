@@ -1,0 +1,18 @@
+Index: TrustedGRUB-1.1.3/stage2/boot.c
+===================================================================
+--- TrustedGRUB-1.1.3.orig/stage2/boot.c
++++ TrustedGRUB-1.1.3/stage2/boot.c
+@@ -1275,8 +1275,11 @@ load_initrd (char *initrd)
+     moveto = (mbi.mem_upper + 0x400) << 10;
+   
+   moveto = (moveto - len) & 0xfffff000;
+-  max_addr = (lh->header == LINUX_MAGIC_SIGNATURE && lh->version >= 0x0203
+-	      ? lh->initrd_addr_max : LINUX_INITRD_MAX_ADDRESS);
++  max_addr = LINUX_INITRD_MAX_ADDRESS;
++  if (lh->header == LINUX_MAGIC_SIGNATURE &&
++      lh->version >= 0x0203 &&
++      lh->initrd_addr_max < max_addr)
++    max_addr = lh->initrd_addr_max;
+   if (moveto + len >= max_addr)
+     moveto = (max_addr - len) & 0xfffff000;
+   

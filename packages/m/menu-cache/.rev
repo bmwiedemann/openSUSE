@@ -1,0 +1,251 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8294bfa495dde759a29bcabd60358c3c</srcmd5>
+    <version>0.2.6</version>
+    <time>1261831236</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/menu-cache based on submit request 26278 from user anubisg1
+</comment>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d0265ec7a67e83959a497bb6579c8df3</srcmd5>
+    <version>0.3.1</version>
+    <time>1266974335</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/menu-cache based on submit request 32895 from user anubisg1
+</comment>
+    <requestid>32895</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>76ea78e5968ed3ee56d954a7aeb9b1f1</srcmd5>
+    <version>0.3.2</version>
+    <time>1267404285</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/menu-cache based on submit request 33602 from user anubisg1
+</comment>
+    <requestid>33602</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cf59f950f6612742a16ba05b3077efb4</srcmd5>
+    <version>0.3.2</version>
+    <time>1268924928</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>acbf507bc63089666f3181b523995396</srcmd5>
+    <version>0.3.2</version>
+    <time>1276468399</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/menu-cache based on submit request 41368 from user anubisg1
+</comment>
+    <requestid>41368</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>acbf507bc63089666f3181b523995396</srcmd5>
+    <version>0.3.2</version>
+    <time>1278667367</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>acbf507bc63089666f3181b523995396</srcmd5>
+    <version>0.3.2</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>a9d333188da6b91d997c7bff1ea0d62b</srcmd5>
+    <version>0.3.2</version>
+    <time>1281659695</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/menu-cache based on submit request 45432 from user anubisg1
+</comment>
+    <requestid>45432</requestid>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>a9d333188da6b91d997c7bff1ea0d62b</srcmd5>
+    <version>0.3.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>a9d333188da6b91d997c7bff1ea0d62b</srcmd5>
+    <version>0.3.2</version>
+    <time>1319182176</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>a9d333188da6b91d997c7bff1ea0d62b</srcmd5>
+    <version>0.3.2</version>
+    <time>1340183696</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a126bcf4b75b3efa033f522ec5ebc71c</srcmd5>
+    <version>0.3.3</version>
+    <time>1347618655</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134024</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f2e775942ec0ce78a08ed0a6dc5fd382</srcmd5>
+    <version>0.4.1</version>
+    <time>1356731098</time>
+    <user>namtrac</user>
+    <comment>new upstream version</comment>
+    <requestid>145887</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>f2e775942ec0ce78a08ed0a6dc5fd382</srcmd5>
+    <version>0.4.1</version>
+    <time>1359109440</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>40f7bd3b9a8d504fbed2949d184539c7</srcmd5>
+    <version>0.5.0</version>
+    <time>1378748738</time>
+    <user>coolo</user>
+    <comment>update 0.5.0 (forwarded request 197436 from MargueriteSu)</comment>
+    <requestid>197964</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>40f7bd3b9a8d504fbed2949d184539c7</srcmd5>
+    <version>0.5.0</version>
+    <time>1379663281</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>94b1c15ccd11c12261f340d3212037fb</srcmd5>
+    <version>0.5.1</version>
+    <time>1390395234</time>
+    <user>coolo</user>
+    <comment>- minor changes
+  * Fixed build on systems where MAXSYMLINKS isn't defined.
+  * Fixed menu-cached crash in some rare cases.
+- Complete changelog in http://blog.lxde.org/?p=1057 (forwarded request 214639 from jcsl)</comment>
+    <requestid>214662</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>ff546f106168e6f8a65a402978143b7d</srcmd5>
+    <version>0.5.1</version>
+    <time>1405264593</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>240312</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e62534b7e98d2f94c2dfbe0d345cdcaf</srcmd5>
+    <version>0.6.0</version>
+    <time>1407265857</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243595</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>e62534b7e98d2f94c2dfbe0d345cdcaf</srcmd5>
+    <version>0.6.0</version>
+    <time>1409301887</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>830cbb50a636f2a7ccbf05d6a805ee42</srcmd5>
+    <version>0.6.1</version>
+    <time>1409417763</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246792</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>160ce1b26572576003a9abbea936af2c</srcmd5>
+    <version>0.7.0</version>
+    <time>1410282015</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>248126</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>84f604e45fe323105546eb7ac8e6cb53</srcmd5>
+    <version>0.6.1</version>
+    <time>1410536307</time>
+    <user>coolo</user>
+    <comment>osc copypac from project:openSUSE:Factory package:menu-cache revision:21</comment>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>160ce1b26572576003a9abbea936af2c</srcmd5>
+    <version>0.7.0</version>
+    <time>1410795660</time>
+    <user>coolo</user>
+    <comment>request 248998 will fix the cycle</comment>
+    <requestid>248999</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c016e59299bc18857e67e7be242e2d0a</srcmd5>
+    <version>1.0.0</version>
+    <time>1414140485</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258151</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>a5e6eeba098421c9fb9348e6206c730b</srcmd5>
+    <version>1.0.0</version>
+    <time>1448186394</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>342508</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>78604191cf28f534d640a1f60658d351</srcmd5>
+    <version>1.0.1</version>
+    <time>1450695852</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348669</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c11f0e7b104274b392c6d302b0796f55</srcmd5>
+    <version>1.0.2</version>
+    <time>1484232953</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448642</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>043fd550fa87f358d893525a64f51d36</srcmd5>
+    <version>1.0.2</version>
+    <time>1505335091</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>525865</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ebebfa832847c0032ac2c9c31575797f</srcmd5>
+    <version>1.1.0</version>
+    <time>1509820188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Fixed crash with invalid &lt;Name&gt; tag in a menu.
+  * Added new API menu_cache_app_get_generic_name() to get generic
+      name for application.
+  * Fixed potential access violation, use runtime user dir instead of tmp dir.
+      It limits libmenu-cache compatibility to menu-cached &gt;= 0.7.0.
+  * Directory $XDG_DATA_HOME/applications will be created if it does not
+      exist so it will be monitored in any case.
+  * Fixed issue when subdirectories added would be skipped in monitoring.
+  * Fixed potential file descriptors leak.
+  * Reduced inactivity timer to 6 seconds (from 600 seconds).
+  * Fixed an issue with multiple daemons started: test if daemon is already
+      running on socket before killing old socket file.
+  * Fixed 100% CPU load by menu-cached due to invalid dup2() call.
+- Remove menu-cache-1.0.2-until-fd52af6.patch: upstreamed</comment>
+    <requestid>538633</requestid>
+  </revision>
+</revisionlist>

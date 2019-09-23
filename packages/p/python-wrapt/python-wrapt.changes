@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Mon Jul 22 11:37:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.11.2:
+  * Fix possible crash when garbage collection kicks in when invoking a destructor of wrapped object.
+
+-------------------------------------------------------------------
+Mon Mar 11 13:28:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.11.1:
+  * Many bugfixes all around
+  * see changes.rst for detailed list
+- Switch to github to include tests
+
+-------------------------------------------------------------------
+Sun Jul  9 10:26:29 UTC 2017 - adrian@suse.de
+
+- update to version 1.10.10:
+  * Added back missing description and categorisations when releasing
+  to PyPi.
+  * Code for inspect.getargspec() when using Python 2.6 was missing 
+  import of sys module.
+
+-------------------------------------------------------------------
+Mon Feb 27 13:54:07 UTC 2017 - jmatejek@suse.com
+
+- update for singlespec
+
+-------------------------------------------------------------------
+Thu Sep  1 05:30:31 UTC 2016 - tbechtold@suse.com
+
+update to version 1.10.8
+  * Increment version to 1.10.8.
+  * Fix modulo operator on ObjectProxy
+  * Increment version to 1.10.7.
+  * Document mod operator bug in Python variant of object proxy.
+  * Update copyright year.
+  * Fix tests for floordiv and mod.
+  * Remove reference to inspect.getargspec() as removed in Python 3.6. #64
+- Use pypi.io as Source url
+
+-------------------------------------------------------------------
+Tue Feb 16 08:25:35 UTC 2016 - michael@stroeder.com
+
+- update to 1.10.6
+
+-------------------------------------------------------------------
+Tue Nov  4 16:03:54 UTC 2014 - hpj@urpla.net
+
+- version 1.9: initial build
+

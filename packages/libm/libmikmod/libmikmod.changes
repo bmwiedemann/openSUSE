@@ -1,0 +1,339 @@
+-------------------------------------------------------------------
+Tue Feb 10 18:42:24 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.3.7
+  * Android support, with the OpenSL ES driver adapted from the old
+    libmikmod-android project.
+  * Support for AmigaOS and its variants like MorphOS, AROS, and a new
+    AHI driver
+  * Build system configuration and packaging simplifications, tidy-ups.
+  * Several portability tweaks.
+  * New PSP driver. (untested. based on older ports from pspdev.)
+  * Fix some OS/2 bit rot. (for nostalgia...)
+
+-------------------------------------------------------------------
+Wed May  7 14:41:18 UTC 2014 - reddwarf@opensuse.org
+
+- Modify libmikmod-config.patch to also remove pthreads stuff from
+  cflags and ldadd. Now it's "equivalent" to the .pc file.
+
+-------------------------------------------------------------------
+Tue May  6 09:22:13 UTC 2014 - schwab@suse.de
+
+- Add libmikmod-config.patch:
+  Remove @LIBRARY_LIB@ from libmikmod-config, which is only needed for
+  static linking, which is not possible anyway
+
+-------------------------------------------------------------------
+Mon Apr  7 10:39:46 UTC 2014 - idonmez@suse.com
+
+- Fix Source URL
+
+-------------------------------------------------------------------
+Sun Apr  6 11:55:15 UTC 2014 - stephan.barth@suse.com
+
+- update to version 3.3.6 from 3.3.5
+  Changes description from upstream:
+  This release adds updates to the umx loader, a fix for a dynamic loading
+  issue for ALSA and ESD drivers, a small update to the OSS driver to cover
+  less common setups, a minor fix to PulseAudio driver, and build system
+  updates (configure and cmake).
+
+-------------------------------------------------------------------
+Fri Mar  7 14:01:25 UTC 2014 - reddwarf@opensuse.org
+
+- Update to version 3.3.5
+  + Lots of changes. See NEWS file or http://mikmod.sourceforge.net/#news
+- Remove CVE-2007-6720.diff, libmikmod-3.2.0-loopingvolume-fix.diff,
+  libmikmod-altivec.patch and libmikmod-lp64.patch. Applied upstream.
+- Remove libmikmod-rpmlintrc. Doesn't apply anymore.
+- Remove esound-devel BuildRequires
+- Add pkg-config, pkgconfig(alsa) and pkgconfig(libpulse-simple) BuildRequires
+- Disable OSS sound output
+
+-------------------------------------------------------------------
+Thu Apr  4 21:56:30 UTC 2013 - dvaleev@suse.com
+
+- fix altivec CFLAGS (libmikmod-altivec.patch) 
+
+-------------------------------------------------------------------
+Tue Mar 26 16:49:21 UTC 2013 - meissner@suse.com
+
+- merged / ported missing patches:
+  - libmikmod-lp64.patch: generic 64bit patch for 64LP architectures
+  - CVE-2007-6720.diff:   perhaps missing upstream boundary checks (?)
+  - libmikmod-3.2.0-loopingvolume-fix.diff:  seems missing upstream still
+
+-------------------------------------------------------------------
+Tue Nov 20 16:26:37 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.2.0:
+  + MacOS X CoreAudio driver
+  + Carbon support
+  + Loader for ASYLUM Music Format v1.0 (.amf) modules, as used in
+    crusader games.
+  + New function 'Player_QueryVoices' added, which is used to
+    return dynamic channel information about the module player.
+  + Mixing with floating point output.
+  + AIFF disk writer driver.
+  + RPM support. To build a rpm, download the tar.gz, and run this:
+    % rpmbuild -tb libmikmod-3.2.0-beta2.tar.gz
+  + New NAS driver (Network Audio System). Tested with nasd and
+    NCD X terminals.
+  + MREADERs now have an iobase member (previously was a static
+    variable in mmio.c).
+  + Created an example/ subdirectory, to hold programming examples.
+  + Added functions to read from memory.
+  + Renamed internal _mm_malloc function to MikMod_malloc, which
+    is now part of the API.
+  + Raw samples can now be loaded using the new Sample_LoadRaw*
+    family of functions for sound effects.
+  + PowerPC 64 support
+  + ALSA driver is now working with "recent" ALSAs.
+  + Change MDRIVER "char *" fields to "const char *".
+  + Implement a fix to the ALSA driver in MIKMOD_DYNAMIC mode so
+    it will allow linking against libmikmod when "-Wl,--no-undefined"
+    is passed.
+- Bugfixes:
+  + The sun driver now compiles on solaris.
+  + The wav output driver had problems on big endian systems.
+  + A warning in libmikmod.m4 with autoconf 1.8 was fixed.
+  + The 'card' argument, supported by the OSS driver was not
+    documented via the MDRIVER->CmdLineHelp string.
+  + libmikmod-3.1.11-CVE-2010-2546,2971.diff
+  + libmikmod-3.1.11-CVE-2009-3995,3996.diff
+  + Now checking for linking against -lm.
+  + Modified patch of libmikmod-CVE-2009-0179.patch.
+  + Apply the libmikmod-CVE-2007-6720.patch.
+  + Implement a fix for sprintf-of-list
+  + Apply a patch for non-blocking opening of the OSS driver.
+  + Fixed the prototypes of vc_callback.
+  + Cast a vc_callback parameter to "unsigned char *" instead of "char *",
+    becuase the former is what it accepts.
+  + Check for Samples' validatity in virtch_common.c.
+  + Fix compilation on MSVC.
+- Drop all patches, fixed upstream.
+- Stop passing autoreconf, not needed anymore since we do not carry
+  any patches.
+- Bump so name, following upstream changes.
+
+-------------------------------------------------------------------
+Fri Sep  7 13:18:34 UTC 2012 - coolo@suse.com
+
+- add explicit buildrequire makeinfo
+
+-------------------------------------------------------------------
+Mon Jun 11 15:53:41 UTC 2012 - jengelh@inai.de
+
+- Adhere to shlib package naming guidelines
+- Parallel build with %_smp_mflags
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Sat Nov 19 20:41:22 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Aug 25 13:26:22 UTC 2010 - prusnak@opensuse.org
+
+- correct fix for CVE-2009-3995 [bnc#625547]
+
+-------------------------------------------------------------------
+Fri Apr 23 01:29:56 CEST 2010 - prusnak@suse.cz
+
+- fix CVE-2009-3995,3996
+
+-------------------------------------------------------------------
+Wed Apr 21 15:03:19 CEST 2010 - prusnak@suse.cz
+
+- fixed CVE-2009-3995 and CVE-2009-3996 [bnc#577875]
+
+-------------------------------------------------------------------
+Mon Dec 21 15:01:16 UTC 2009 - prusnak@suse.cz
+
+- updated to 3.1.12
+  * bugfix release
+- refreshed all patches
+
+-------------------------------------------------------------------
+Sat Dec 19 19:28:32 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Thu Feb 26 17:59:33 CET 2009 - prusnak@suse.cz
+
+- fixed CVE-2009-0179 [bnc#468760]
+
+-------------------------------------------------------------------
+Fri Jan 23 16:44:16 CET 2009 - prusnak@suse.cz
+
+- fixed DoS CVE-2007-6720 [bnc#468760]
+
+-------------------------------------------------------------------
+Fri Jan  9 13:37:54 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Fri Aug 31 15:32:16 CEST 2007 - bk@suse.de
+
+- Remove obsoleted 64-bit patch (fixes background music of pingus)
+
+-------------------------------------------------------------------
+Wed Apr 11 16:06:26 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 3.1.11-a:
+  * work correctly on amd64
+  * fixes a warning issued by automake-1.8 in libmikmod.m4
+  * includes an updated version of config.guess and config.sub
+- Split devel subpackage (#263232).
+
+-------------------------------------------------------------------
+Fri Mar 23 11:31:56 CET 2007 - schwab@suse.de
+
+- Require audiofile-devel.
+- Fix 64bit patch.
+
+-------------------------------------------------------------------
+Thu Jan 26 15:51:26 CET 2006 - sbrabec@suse.cz
+
+- Added %install_info_prereq.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:33 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Nov  4 12:31:35 CET 2005 - ltinkl@suse.cz
+
+- update to 3.1.11
+
+-------------------------------------------------------------------
+Thu Sep  8 17:24:37 CEST 2005 - pth@suse.de
+
+- Fix libmikmod-config for real (#96912)
+
+-------------------------------------------------------------------
+Tue Sep  6 02:04:59 CEST 2005 - jpr@suse.de
+
+- Make sure libmikmod-config reports libdir correctly on all
+  architectures (96912)
+
+-------------------------------------------------------------------
+Thu Apr 14 17:17:06 CEST 2005 - sbrabec@suse.cz
+
+- Added audiofile-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Thu Mar  4 19:15:48 CET 2004 - tiwai@suse.de
+
+- fixed m4 file for the recent autoconf.
+
+-------------------------------------------------------------------
+Sat Feb  7 09:41:37 CET 2004 - adrian@suse.de
+
+- fix some autoconf issues
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Fri Feb 14 10:11:36 CET 2003 - adrian@suse.de
+
+- fix info file name
+
+-------------------------------------------------------------------
+Thu Feb 13 00:13:10 CET 2003 - adrian@suse.de
+
+- add %install_info section
+
+-------------------------------------------------------------------
+Tue Aug 20 17:19:52 CEST 2002 - tiwai@suse.de
+
+- fixed the detection of 64bit architectures [bug #18106]
+
+-------------------------------------------------------------------
+Tue Aug  6 11:24:59 CEST 2002 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Tue Jun  4 02:30:16 CEST 2002 - ro@suse.de
+
+- fix file list
+
+-------------------------------------------------------------------
+Fri May 31 20:25:10 CEST 2002 - adrian@suse.de
+
+- update to version 3.1.10
+- renamed libmikmo -> libmikmod
+- fix for lib64 and ppc64
+- add esd support
+- add alsa support
+- use buildroot
+
+-------------------------------------------------------------------
+Sat Nov  4 14:36:05 CET 2000 - kukuk@suse.de
+
+- use new long package names
+
+-------------------------------------------------------------------
+Wed Jun 21 17:59:23 CEST 2000 - schwab@suse.de
+
+- Add %suse_update_config.
+
+-------------------------------------------------------------------
+Sun Jun 18 09:28:43 CEST 2000 - adrian@suse.de
+
+- fixed man path
+
+-------------------------------------------------------------------
+Fri Jun 16 17:41:55 CEST 2000 - adrian@suse.de
+
+- update to 3.1.9
+
+-------------------------------------------------------------------
+Fri Jun  2 16:37:17 CEST 2000 - uli@suse.de
+
+- moved docs to %{_docdir}
+
+-------------------------------------------------------------------
+Thu Mar  2 15:30:24 CET 2000 - uli@suse.de
+
+- moved info files to %{_infodir}
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Sep  7 10:04:02 MEST 1999 - kettner@suse.de
+
+ - New version 3.1.7
+
+-------------------------------------------------------------------
+Fri May  7 10:09:31 MEST 1999 - kettner@suse.de
+
+ - Install additional include files for kmikmod
+
+-------------------------------------------------------------------
+Thu May  6 09:02:07 MEST 1999 - kettner@suse.de
+
+ - Spec file created from libmikmod-3.1.6.tar.gz by autospec

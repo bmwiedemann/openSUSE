@@ -1,0 +1,5 @@
+<package name="fastjet" project="openSUSE:Factory">
+  <title>FastJet - A package for jet finding in pp and e+e- collisions</title>
+  <description>FastJet is a software package for jet finding in pp and e+e- collisions. It includes fast native implementations of many sequential recombination clustering algorithms, plugins for access to a range of cone jet finders and tools for advanced jet manipulation. </description>
+  <devel project="science" package="fastjet"/>
+</package>

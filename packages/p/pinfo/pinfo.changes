@@ -1,0 +1,185 @@
+-------------------------------------------------------------------
+Mon Jan 18 12:41:10 UTC 2016 - dimstar@opensuse.org
+
+- Add pinfo-curses-detection.patch: Fix detection of ncurses by
+  correctly using autoconf.
+
+-------------------------------------------------------------------
+Sun Aug  2 17:58:05 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Explicitly depend on autoconf/make
+- Update dependencies of info scriplets
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Sep  8 11:36:39 UTC 2012 - idonmez@suse.com
+
+- Add explicit build dependency on makeinfo 
+
+-------------------------------------------------------------------
+Fri Nov 25 15:28:30 UTC 2011 - werner@suse.de
+
+- Help the configure scripot a bit with tinfo from new ncurses API 
+
+-------------------------------------------------------------------
+Wed Nov 23 12:46:40 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Jan 12 10:57:44 UTC 2011 - puzel@novell.com
+
+- portability fixes (by Pascal) 
+
+-------------------------------------------------------------------
+Mon Sep 20 11:49:26 UTC 2010 - puzel@novell.com
+
+- update to pinfo-0.6.10 
+  - Fix issue with handling of suspend/resume and character input
+    (thanks to Scott Mcdermott for the patch)
+- drop pinfo-0.6.9-ncursesw.patch (not needed)
+
+-------------------------------------------------------------------
+Fri Jun 19 10:35:46 CEST 2009 - coolo@novell.com
+
+- disable as-needed for this package as it fails to build with it
+
+-------------------------------------------------------------------
+Thu Jan 10 17:52:56 CET 2008 - mrueckert@suse.de
+
+- updated ncurses patch to stop it from looking for the wrong header
+  files
+
+-------------------------------------------------------------------
+Tue May 29 14:39:20 CEST 2007 - anosek@suse.cz
+
+- updated to version 0.6.9
+  * Nodes containing a "." are now correctly found
+  * Non-ASCII man pages are displayed correctly
+  * Improved the history behavior of the search input line
+  * Broken tag tables are now automatically fixed
+  * Don't segfault when a broken regexp is entered
+  * Fixed a number of segfaults caused by using uninitialized 
+    pointers and off-by-1 errors
+  * Fixed heap corruption caused by non-ascii chars in info pages
+  * Fixed a lot of patch searching issues
+  * Fixed text display on narrow terminals
+  * Fixed highlighting of searches
+  * The default pinforc now uses the terminal's default foreground
+    and background colors.  Thanks to Rob Funk for a patch.
+  * Use libreadline by default;  readline version 4 is now required
+  * Better cooperation between ncurses and readline
+  * Fixed some memory leaks
+  * Got rid of tempnam() calls
+  * Use utf8 in documentation files and fixed typoes
+- fixed corrupted unicode characters in status line [#264229]
+  (ncursesw.patch)
+- using %find_lang macro in spec file
+
+-------------------------------------------------------------------
+Thu Mar 29 17:07:01 CEST 2007 - rguenther@suse.de
+
+- add ncurses-devel BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:19 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Aug 17 13:08:29 CEST 2005 - mmarek@suse.cz
+
+- Fixed a heap corruption bug caused by lines starting with NUL byte
+  (#94768)
+
+-------------------------------------------------------------------
+Thu Aug 12 15:29:52 CEST 2004 - mmj@suse.de
+
+- Update to version 0.6.8
+
+-------------------------------------------------------------------
+Sat Jan 10 19:25:47 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Thu Feb 13 01:16:57 CET 2003 - mmj@suse.de
+
+- Use %install_info macro [#23449]
+
+-------------------------------------------------------------------
+Sun Jan 12 17:23:46 CET 2003 - tcrhak@suse.cz
+
+- update to version 0.6.6p1
+
+-------------------------------------------------------------------
+Fri Dec 14 17:40:30 CET 2001 - tcrhak@suse.cz
+
+- update to version 0.6.4
+
+-------------------------------------------------------------------
+Tue Nov 13 11:36:27 CEST 2001 - tcrhak@suse.cz
+
+- removed aclocal, autoconf and automake
+
+-------------------------------------------------------------------
+Fri Aug 17 14:22:40 CEST 2001 - adostal@suse.cz
+
+- update to 0.6.3 version
+- fixed spec to %build 
+
+-------------------------------------------------------------------
+Fri Oct 20 15:08:17 CEST 2000 - smid@suse.cz
+
+- new version 0.6.1
+
+-------------------------------------------------------------------
+Fri Sep 29 10:45:49 CEST 2000 - smid@suse.cz
+
+- new version 0.6.0
+
+-------------------------------------------------------------------
+Mon Apr 10 13:02:46 CEST 2000 - smid@suse.cz
+
+- buildroot added
+
+-------------------------------------------------------------------
+Tue Feb 15 18:00:50 CET 2000 - kukuk@suse.de
+
+- Move /usr/man -> /usr/share/man
+
+-------------------------------------------------------------------
+Fri Dec  3 16:10:23 MET 1999 - kukuk@suse.de
+
+- Update to version 0.5.9
+
+-------------------------------------------------------------------
+Fri Oct  8 17:36:53 MEST 1999 - kukuk@suse.de
+
+- Update to version 0.5.8
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Jul 12 09:55:34 MEST 1999 - kukuk@suse.de
+
+- Update to version 0.5.5
+
+-------------------------------------------------------------------
+Wed Jun 16 13:12:32 MEST 1999 - kukuk@suse.de
+
+- Update to version 0.5.4
+
+-------------------------------------------------------------------
+Fri Jun  4 15:07:46 MEST 1999 - kukuk@suse.de
+
+- New.

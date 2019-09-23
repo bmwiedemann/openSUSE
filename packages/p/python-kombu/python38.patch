@@ -1,0 +1,36 @@
+From c75039547a57036a627e067173a2b4c136350b66 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Tue, 20 Aug 2019 11:30:02 +0200
+Subject: [PATCH] Use importlib.metadata from the standard library on Python
+ 3.8+
+
+---
+ kombu/utils/compat.py    | 6 +++++-
+ requirements/default.txt | 2 +-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/kombu/utils/compat.py b/kombu/utils/compat.py
+index c5f0bf118..a741c4350 100644
+--- a/kombu/utils/compat.py
++++ b/kombu/utils/compat.py
+@@ -7,7 +7,11 @@
+ from functools import wraps
+ 
+ from contextlib import contextmanager
+-import importlib_metadata
++
++try:
++    from importlib import metadata as importlib_metadata
++except ImportError:
++    import importlib_metadata
+ 
+ from kombu.five import reraise
+ 
+diff --git a/requirements/default.txt b/requirements/default.txt
+index 00e57cc09..e3ec1c894 100644
+--- a/requirements/default.txt
++++ b/requirements/default.txt
+@@ -1,2 +1,2 @@
+ amqp>=2.5.1,<3.0
+-importlib-metadata>=0.18
++importlib-metadata>=0.18; python_version<"3.8"

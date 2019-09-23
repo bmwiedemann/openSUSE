@@ -1,0 +1,1491 @@
+-------------------------------------------------------------------
+Tue Jun 18 08:00:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.2.0
+  * The Kerberos provider can now include more KDC addresses or
+    host names when writing data for the Kerberos locator plugin.
+  * The 2FA prompting can now be configured.
+  * The LDAP authentication provider now allows to use a
+    different method of changing LDAP passwords using a modify
+    operation in addition to the default extended operation.
+  * The "auto_private_groups" configuration option now takes a
+    new value hybrid.
+  * A new option "ad_gpo_ignore_unreadable" was added.
+  * The "cached_auth_timeout" parameter is now inherited by
+    trusted domains.
+  * The "ldap_sasl_mech" option now accepts another mechanism
+    "GSS-SPNEGO" in addition to "GSSAPI".
+  * The sssctl tool has two new commands, "cert-show" and
+    "cert-map".
+
+-------------------------------------------------------------------
+Fri Apr 26 10:59:25 UTC 2019 - Samuel Cabrero <scabrero@suse.de>
+
+- Create directory to download and cache GPOs (bsc#1132879)
+
+-------------------------------------------------------------------
+Sat Mar 16 11:50:58 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.1.0
+  * Any provider can now match and map certificates to user
+    identities.
+  * pam_sss can now be configured to only perform Smart Card
+    authentication or return an error if this is not possible.
+  * pam_sss can also prompt the user to insert a Smart Card if,
+    during an authentication it is not available.
+  * A new configuration option ad_gpo_implicit_deny was added.
+    This option (when set to True) can be used to deny access to
+    users even if there is not applicable GPO.
+  * The dynamic DNS update can now batch DNS updates to include
+    all address family updates in a single transaction.
+
+-------------------------------------------------------------------
+Wed Feb 20 16:01:52 UTC 2019 - Samuel Cabrero <scabrero@suse.de>
+
+- Install systemd service unit file created from source's template
+  (bsc#1120852)
+- Install logrotate configuration (bsc#1004220)
+- Set journald as system logger
+
+-------------------------------------------------------------------
+Fri Feb 15 17:36:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add krb-noversion.diff so sssd_pac builds even with newer krb.
+
+-------------------------------------------------------------------
+Mon Oct  1 13:34:56 UTC 2018 - ckowalczyk@suse.com
+
+- Add dependency to adcli for sssd-ad
+    (SLE15: fate#326619, bsc#1109849)
+    (SLE12SP4: fate#326620, bsc#1110121)
+
+-------------------------------------------------------------------
+Fri Sep  7 18:52:18 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.0.0
+  * The Python API for managing users and groups in local domains
+    (id_provider=local) was removed completely. The local
+    provider (id_provider=local) and the command line tools to
+    manage users and groups in the local domains, such as
+    sss_useradd is not built anymore.
+  * The LDAP provider had a special-case branch for evaluating
+    group memberships with the RFC2307bis schema when group
+    nesting was explicitly disabled. This codepath is removed.
+  * The "ldap_sudo_include_regexp" option changed its default
+    value from true to false. Wildcards in the sudoHost LDAP
+    attribute are no longer evaluated. This was costly to
+    evaluate on the LDAP server side and at the same time rarely
+    used.
+  * The list of PAM services which are allowed to authenticate
+    using a Smart Card is now configurable using a new option
+    pam_p11_allowed_services.
+
+-------------------------------------------------------------------
+Fri Aug 31 07:14:39 UTC 2018 - kbabioch@suse.com
+
+- Update to upstream release 1.16.3
+  * New Features:
+  * kdcinfo files for informing krb5 about discovered KDCs are
+    now also generated for trusted domains in setups that use
+    id_provider=ad and IPA masters in a trust relationship with
+    an AD domain.
+  * The Kerberlos locator plugin can now process multiple
+    address if SSSD generates more than one. A
+  * Bug fixes:
+  * Fixed information leak due to incorrect permissions on
+    /var/lib/sss/pipes/sudo [CVE-2018-10852, bsc#1098377]
+  * Cached password are now stored with a salt. Old ones will be
+    regenerated on next authentication, and the auth server needs
+    to be reachable for that.
+  * The sss_ssh proces leaked file descriptors when converting
+    more than one X.509 certificate to an SSH public key.
+  * The PAC responder is now able to process Domain Local in case
+    the PAC uses SID compression (Windows Server 2012+).
+  * Address the issue that some versions of OpenSSH would close
+    the pipe towards sss_ssh_authorizedkeys when the matching key
+    is found before the rest of the output is read.
+  * User lookups no longer fail if user's e-mail address
+    conflicts with another user's fully qualified name.
+  * The override_shell and override_homedir options are no longer
+    applied to entries from the files domain.
+  * The grace logins with an expired password when authenticating
+    against certain newer versions of the 389DS/RHDS LDAP server
+    did not work.
+- Removed patches that are included upstream now:
+  0001-SUDO-Create-the-socket-with-stricter-permissions.patch,
+  0002-intg-Do-not-hardcode-nsslibdir.patch,
+  0003-Fix-build-for-1-16-2-version.patch
+
+-------------------------------------------------------------------
+Sun Jul  1 12:44:00 UTC 2018 - ckowalczyk@suse.com
+
+- Fixed patch name.
+
+-------------------------------------------------------------------
+Wed Jun 20 10:46:34 UTC 2018 - ckowalczyk@suse.com
+
+- Introduce patches:
+  * Create sockets with right permissions:
+    0001-SUDO-Create-the-socket-with-stricter-permissions.patch
+    (bsc#1098377, CVE-2018-10852)
+  * Fix for sssd upstream integration tests
+    0002-intg-Do-not-hardcode-nsslibdir.patch
+    (bsc#1098163)
+
+-------------------------------------------------------------------
+Wed Jun 20 08:38:53 UTC 2018 - varkoly@suse.com
+
+- Update to new minor upstream release 1.16.2
+New Features:
+  * The smart card authentication, or in more general certificate
+    authentication code now supports OpenSSL in addition to previously
+    supported NSS (#3489). In addition, the SSH responder can now
+    return public SSH keys derived from the public keys stored in a
+    X.509 certificate. Please refer to the ssh_use_certificate_keys
+    option in the man pages.
+  * The files provider now supports mirroring multiple passwd or
+    group files. This enhancement can be used to use the SSSD files
+    provider instead of the nss_altfiles module
+Bugfixes:
+  * A memory handling issue in the nss_ex interface was fixed. This
+    bug would manifest in IPA environments with a trusted AD domain
+    as a crash of the ns-slapd process, because a ns-slapd plugin
+    loads the nss_ex interface (#3715)
+  * Several fixes for the KCM deamon were merged (see #3687, #3671, #3633)
+  * The ad_site override is now honored in GPO code as well (#3646)
+  * Several potential crashes in the NSS responder’s netgroup code
+    were fixed (#3679, #3731)
+  * A potential crash in the autofs responder’s code was fixed (#3752)
+  * The LDAP provider now supports group renaming (#2653)
+  * The GPO access control code no longer returns an error if one
+    of the relevant GPO rules contained no SIDs at all (#3680)
+  * A memory leak in the IPA provider related to resolving external
+    AD groups was fixed (#3719)
+  * Setups that used multiple domains where one of the domains had
+    its ID space limited using the min_id/max_id options did not
+    resolve requests by ID properly (#3728)
+  * Overriding IDs or names did not work correctly when the domain
+    resolution order was set as well (#3595)
+  * A version mismatch between certain newer Samba versions (e.g.
+    those shipped in RHEL-7.5) and the Winbind interface provided
+    by SSSD was fixed. To further prevent issues like this in the
+    future, the correct interface is now detected at build time (#3741)
+  * The files provider no longer returns a qualified name in case
+    domain resolution order is used (#3743)
+  * A race condition between evaluating IPA group memberships and
+    AD group memberships in setups with IPA-AD trusts that would
+    have manifested as randomly losing IPA group memberships assigned
+    to an AD user was fixed (#3744)
+  * Setting an SELinux login label was broken in setups where the
+    domain resolution order was used (#3740)
+  * SSSD start up issue on systems that use the libldb library
+    with version 1.4.0 or newer was fixed.
+Introduce a patch:
+  * Fix build of sssd of 1.16.2 version:
+    0003-Fix-build-for-1-16-2-version.patch
+    (back then called fix-build.patch)
+
+-------------------------------------------------------------------
+Fri Apr 27 14:43:58 UTC 2018 - ckowalczyk@suse.com
+
+- Update to new minor upstream release 1.16.1 (fate#323340):
+
+New Features:
+ * A new option auto_private_groups was added. If this option is
+   enabled, SSSD will automatically create user private groups based
+   on user’s UID number. The GID number is ignored in this case.
+ * The SSSD smart card integration now supports a special type of PAM
+   conversation implemented by GDM which allows the user to select
+   the appropriate smrt card certificate in GDM.
+ * A new API for accessing user and group information was added.
+   This API is similar to the tradiional Name Service Switch API, but
+   allows the consumer to talk to SSSD directly as well as to
+   fine-tune the query with e.g. how cache should be evaluated.
+ * The sssctl command line tool gained a new command access-report,
+   which can generate who can access the client machine. Currently
+   only generating the report on an IPA client based on HBAC rules
+   is supported.
+ * The hostid provider was moved from the IPA specific code to
+   the generic LDAP code. This allows SSH host keys to be access by
+   the generic LDAP provider as well. See the ldap_host_* options in
+   the sssd-ldap manual page for more details.
+ * Setting the memcache_timeout option to 0 disabled creating
+   the memory cache files altogether. This can be useful in cases
+   there is a bug in the memory cache that needs working around.
+
+-------------------------------------------------------------------
+Tue Apr 24 13:09:35 UTC 2018 - ckowalczyk@suse.com
+
+- Updated sssd.spec:
+  The IPA provider depends on AD provider's PAC executable, hence
+  introducing the package dependency. (bsc#1021441, bsc#1062124)
+
+-------------------------------------------------------------------
+Tue Feb 27 09:24:46 UTC 2018 - hguo@suse.com
+
+- Remove package descriptions for the python 2 packages that are
+  no longer distributed:
+  * python-ipa_hbac
+  * python-sss-murmur
+  * python-sss_nss_idmap
+  * python-sssd-config
+- Correct python version dependency of tools package. (bsc#1082108)
+
+-------------------------------------------------------------------
+Mon Dec  4 10:03:59 UTC 2017 - hguo@suse.com
+
+- Correct dependency of sss_obfuscate command line program.
+
+-------------------------------------------------------------------
+Fri Dec  1 14:35:08 UTC 2017 - hguo@suse.com
+
+- In an ongoing effort to reduce dependency on python version 2,
+  the following python libraries are no longer built. Nevertheless
+  their python3 counterparts remain in place:
+  * python-ipa_hbac
+  * python-sss-murmur
+  * python-sss_nss_idmap
+  * python-sssd-config
+
+-------------------------------------------------------------------
+Mon Oct 23 16:31:54 UTC 2017 - michael@stroeder.com
+
+- Update to new upstream release 1.16.0
+
+Security fixes
+ * This release fixes CVE-2017-12173: Unsanitized input when searching in
+   local cache database. SSSD stores its cached data in an LDAP like local
+   database file using libldb. To lookup cached data LDAP search filters
+   like (objectClass=user)(name=user_name) are used. However, in
+   sysdb_search_user_by_upn_res(), the input was not sanitized and
+   allowed to manipulate the search filter for cache lookups. This would
+   allow a logged in user to discover the password hash of a different user.
+
+New Features
+ * SSSD now supports session recording configuration through tlog. This
+   feature enables recording of everything specific users see or type
+   during their sessions on a text terminal. For more information, see
+   the sssd-session-recording(5) manual page.
+ * SSSD can act as a client agent to deliver
+   Fleet Commander <https://wiki.gnome.org/Projects/FleetCommander>
+   policies defined on an IPA server. Fleet Commander provides a
+   configuration management interface that is controlled centrally and
+   that covers desktop, applications and network configuration.
+ * Several new systemtap <https://sourceware.org/systemtap/> probes
+   were added into various locations in SSSD code to assist in
+   troubleshooting and analyzing performance related issues. Please see the
+   sssd-systemtap(5) manual page for more information.
+ * A new LDAP provide access control mechanism that allows to restrict
+   access based on PAM's rhost data field was added. For more details,
+   please consult the sssd-ldap(5) manual page, in particular the
+   options ldap_user_authorized_rhost and the rhost value of
+   ldap_access_filter.
+
+-------------------------------------------------------------------
+Tue Jul 25 15:46:23 UTC 2017 - michael@stroeder.com
+
+- Update to new upstream release 1.15.3 (KCM disabled)
+
+New Features
+  * In a setup where an IPA domain trusts an Active Directory domain,
+    it is now possible to define the domain resolution order
+    (see http://www.freeipa.org/page/Releases/4.5.0#AD_User_Short_Names).
+  * Design page - Shortnames in trusted domains <https://docs.pagure.org/SSSD.sssd/design_pages/shortnames.html>
+  * SSSD ships with a new service called KCM. This service acts as a
+    storage for Kerberos tickets when "libkrb5" is configured to use
+    "KCM:" in "krb5.conf".
+  * Design page - KCM server for SSSD <https://docs.pagure.org/SSSD.sssd/design_pages/kcm.html>
+  * NOTE: There are several known issues in the "KCM" responder that
+    will be handled in the next release.
+  * Support for user and group resolution through the D-Bus interface and
+    authentication and/or authorization through the PAM interface even
+    for setups without UIDs or Windows SIDs present on the LDAP directory
+    side. This enhancement allows SSSD to be used together with apache
+    modules <https://github.com/adelton/mod_lookup_identity> to provide
+    identities for applications
+  * Design page - Support for non-POSIX users and groups <https://docs.pagure.org/SSSD.sssd/design_pages/non_posix_support.html>
+  * SSSD ships a new public library called "libsss_certmap" that allows
+    a flexible and configurable way of mapping a certificate to a user
+    identity.
+  * Design page - Matching and Mapping Certificates <https://docs.pagure.org/SSSD.sssd/design_pages/matching_and_mapping_certificates.html>
+  * The Kerberos locator plugin can be disabled using an environment variable
+    "SSSD_KRB5_LOCATOR_DISABLE". Please refer to the
+    "sssd_krb5_locator_plugin" manual page for mode details.
+  * The "sssctl" command line tool supports a new command "user-checks"
+    that enables the administrator to check whether a certain user should be
+    allowed or denied access to a certain PAM service.
+  * The "secrets" responder now forwards requests to a proxy Custodia
+    back end over a secure channel.
+
+-------------------------------------------------------------------
+Thu Mar 16 13:32:12 UTC 2017 - hguo@suse.com
+
+- Introduce mandatory runtime requirement "cyrus-sasl-gssapi" to
+  krb5-common sub-package. Address bsc#1024836.
+
+-------------------------------------------------------------------
+Wed Mar 15 22:18:03 UTC 2017 - michael@stroeder.com
+
+- Update to new upstream release 1.15.2
+  * It is now possible to configure certain parameters of a
+    trusted domain in a configuration file sub-section.
+  * Several issues related to socket-activating the NSS service,
+    especially if SSSD was configured to use a non-privileged
+    userm were fixed. The NSS service now does not change the
+    ownership of its log files to avoid triggering a name-service
+    lookup while the NSS service is not running yet.
+    Additionally, the NSS service is started before any other
+    service to make sure username resolution works and the other
+    service can resolve the SSSD user correctly.
+  * A new option "cache_first" allows the administrator to change
+    the way multiple domains are searched. When this option is
+    enabled, SSSD will first try to "pin" the requested name or
+    ID to a domain by searching the entries that are already
+    cached and contact the domain that contains the cached entry
+    first. Previously, SSSD would check the cache and the remote
+    server for each domain. This option brings performance
+    benefit for setups that use multiple domains (even
+    auto-discovered trusted domains), especially for ID lookups
+    that would previously iterate over all domains. Please note
+    that this option must be enabled with care as the
+    administrator must ensure that the ID space of domains does
+    not overlap.
+  * The SSSD D-Bus interface gained two new methods:
+    "FindByNameAndCertificate" and "ListByCertificate". These
+    methods will be used primarily by IPA and
+    `mod_lookup_identity
+    <https://github.com/adelton/mod_lookup_identity/> to
+    correctly match multple users who use the same certificate
+    for Smart Card login.
+  * A bug where SSSD did not properly sanitize a username with a
+    newline character in it was fixed.
+
+-------------------------------------------------------------------
+Sat Mar 11 22:34:41 UTC 2017 - jengelh@inai.de
+
+- Switch *all* URLs after fedorahosted.org retirement
+
+-------------------------------------------------------------------
+Sat Mar  4 19:57:33 UTC 2017 - michael@stroeder.com
+
+- Updated project URL
+- Update to new upstream release 1.15.1
+  * Several issues related to starting the SSSD services on-demand via
+    socket activation were fixed. In particular, it is no longer possible
+    to have a service started both by sssd and socket-activated. Another
+    bug which might have caused the responder to start before SSSD started
+    and cause issues especially on system startup was fixed.
+  * A new 'files' provider was added. This provider mirrors the contents
+    of '/etc/passwd' and '/etc/shadow' into the SSSD database. The purpose
+    of this new provider is to make it possible to use SSSD's interfaces,
+    such as the D-Bus interface for local users and enable leveraging the
+    in-memory fast cache for local users as well, as a replacement for `nscd`.
+    In future, we intend to extend the D-Bus interface to also provide setting
+    and retrieving additional custom attributes for the files users.
+  * SSSD now autogenerates a fallback configuration that enables the
+    files domain if no SSSD configuration exists. This allows distributions
+    to enable the 'sssd' service when the SSSD package is installed. Please
+    note that SSSD must be build with the configuration option
+    '--enable-files-domain' for this functionality to be enabled.
+  * Support for public-key authentication with Kerberos (PKINIT) was
+    added. This support will enable users who authenticate with a Smart Card
+    to obtain a Kerberos ticket during authentication.
+
+-------------------------------------------------------------------
+Sat Feb 18 08:35:13 CET 2017 - kukuk@suse.de
+
+- Remove obsolete insserv call
+
+-------------------------------------------------------------------
+Wed Feb  8 19:58:55 UTC 2017 - luizluca@gmail.com
+
+- Added /etc/sssd/conf.d/ for configuration snippets
+
+-------------------------------------------------------------------
+Wed Jan 25 19:25:09 UTC 2017 - michael@stroeder.com
+
+- Removed 0001-krb5-1.15-build-fix.patch obsoleted by upstream update
+- Update to new upstream release 1.15.0
+  * SSSD now allows the responders to be activated by the systemd service
+    manager and exit when idle. This means the services line in sssd.conf is
+    optional and the responders can be started on-demand, simplifying the sssd
+    configuration. Please note that this change is backwards-compatible and
+    the responders listed explicitly in sssd.conf's services line are managed
+    by sssd in the same manner as in previous releases. Please refer to man
+    sssd.conf(5) for more information
+  * The sudo provider is no longer disabled for configurations that do not
+    explicitly include the sudo responder in the services list. In order to
+    disable the sudo-related back end code that executes the periodic LDAP
+    queries, set the sudo_provider to none explicitly
+  * The watchdog signal handler no longer uses signal-unsafe functions. This
+    bug was causing a deadlock in case the watchdog was about to kill a
+    stuck process
+  * A bug that prevented TLS to be set up correctly on systems where libldap
+    links with GnuTLS was fixed
+  * The functionality to alter SSSD configuration through the D-Bus interface
+    provided by the IFP responder was removed. This functionality was not used to
+    the best of our knowledge, had no tests and prevented the InfoPipe responder
+    from running as a non-privileged user.
+  * A bug that prevented statically-linked applications from using libnss_sss
+    was fixed by removing dependency on -lpthreads from the libnss_sss library
+    (please see https://sourceware.org/bugzilla/show_bug.cgi?id=20500 for
+    an example on why linking with -lpthread from an NSS modules is problematic)
+  * Previously, SSSD did not ignore GPOs that were missing the
+    gPCFunctionalityVersion attribute and failed the whole GPO
+    processing. Starting with this version, the GPOs without the
+    gPCFunctionalityVersion are skipped.
+
+-------------------------------------------------------------------
+Mon Dec 12 13:36:18 UTC 2016 - dimstar@opensuse.org
+
+- BuildRequire pkgconfig(libsystemd) instead of
+  pkgconfig(libsystemd-login): the latter has been deprecated since
+  systemd 209 and finally removed with systemd 230.
+
+-------------------------------------------------------------------
+Wed Dec  7 10:39:30 UTC 2016 - jengelh@inai.de
+
+- Add 0001-krb5-1.15-build-fix.patch to unlock building
+  against future KRB versions.
+
+-------------------------------------------------------------------
+Wed Oct 19 22:21:30 UTC 2016 - michael@stroeder.com
+
+- Update to new upstream release 1.14.2
+  * Several more regressions caused by cache refactoring to use qualified
+    names internally were fixed, including a regression that prevented the
+    krb5_map_user option from working correctly.
+  * A regression when logging in with a smart card using the GDM login manager
+    was fixed
+  * SSSD now removes the internal timestamp on startup cache when the
+    persistent cache is removed. This enables admins to follow their existing
+    workflow of just removing the persistent cache and start from a fresh slate
+  * Several fixes to the sssd-secrets responder are present in this release
+  * A bug in the autofs responder that prevented automounter maps from being
+    returned when sssd_be was offline was fixed
+  * A similar bug in the NSS responder that prevented netgroups from being
+    returned when sssd_be was offline was fixed
+  * Disabling the netlink integration can now be done with a new option
+    disable_netlink. Previously, the netlink integration could be disabled with
+    a sssd command line switch, which is being deprecated in this release.
+  * The internal watchdog no longer kills sssd processes in case time shifts
+    during sssd runtime
+  * The fail over code is able to cope with concurrent SRV resolution
+    requests better in this release
+  * The proxy provider gained a new option proxy_max_children that allows the
+    administrator to control the maximum number of child helper processes that
+    authenticate users with auth_provider=proxy
+  * The InfoPipe D-Bus responder exports the UUIDs of user and group objects
+    through a uniqueID property
+
+-------------------------------------------------------------------
+Fri Aug 19 18:38:35 UTC 2016 - michael@stroeder.com
+
+- Update to new upstream release 1.14.1
+ * The IPA provider now supports logins with enterprise principals (also
+   known as additional UPN suffixes). This functionality also enabled Active
+   Directory users from trusted AD domains who use an additional UPN suffix
+   to log in. Please note that this feature requires a recent IPA server.
+ * When a user name is overriden in an IPA domain, resolving a group these
+   users are a member of now returns the overriden user names
+ * Users can be looked up by and log in with their e-mail address as an
+   identifier. In order to do so, an attribute that represents the user's
+   e-mail address is fetched by default. This attribute can by customized
+   by setting the ldap_user_email configuration option.
+ * A new ad_enabled_domains option was added. This option lets the
+   administrator select domains that SSSD should attempt to reach in the
+   AD forest SSSD is joined to. This option is useful for deployments where
+   not all domains are reachable on the network level, yet the administrator
+   needs to access some trusted domains and therefore disabling the subdomains
+   provider completely is not desirable.
+ * The sssctl tool has two new commands active-server and servers that
+   allow the administrator to observe the server that SSSD is bound to and
+   the servers that SSSD autodiscovered
+ * SSSD used to fail to start when an attribute name is present in both
+   the default SSSD attribute map and the custom ldap_user_extra_attrs map
+ * GPO policy procesing no longer fails if the gPCMachineExtensionNames
+   attribute only contains whitespaces
+ * Several commits fix regressions related to switching all user and group
+   names to fully qualified format, such as running initgroups for a user
+   who is only a member of a primary group
+ * Several patches fix regressions caused by splitting the database into
+   two ldb files, such as when user attributes change without increasing
+   the modifyTimestamp attribute value
+ * systemd unit files are now shipped for the sssd-secrets responder,
+   allowing the responder to be socket-activated. To do so, administrators
+   should enable the sssd-secrets.socket and sssd-secrets.service systemd
+   units.
+ * The sssd binary has a new switch --disable-netlink that lets sssd skip
+   messages from the kernel's netlink interface.
+ * A crash when entries with special characters such as '(' were requested
+   was fixed
+ * The ldap_rfc_2307_fallback_to_local_users option was broken in the
+   previous version. This release fixes the functionality.
+
+-------------------------------------------------------------------
+Fri Jul  8 10:46:59 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.14.0
+* The AD provider is now able to look up users from Active
+  Directory domains by certificate. This change enables logins for
+  Active Directory users with the help of a smart card.
+* The sss_override tool is now able to add certificates as local
+  overrides in the SSSD cache. Please note that the certificate
+  overrides are stored in the local cache, so removing the cache
+  also removes all the certificates!
+* Invalid certificates are skipped instead of aborting the whole
+  operation when logging in with a smart card using SSH.
+* This version allows several OCSP-related options such as the OCSP
+  responder to be configured during smart card authentication.
+* SSSD is now able to determine the name of the user who logs in
+  from the inserted smart card without having to type in the
+  username. Note that this functionality must be enabled with the
+  allow_missing_name pam_sss option.
+* The sss_cache command line tool is now able to invalidate SUDO
+  rules with its new -r/-R switches. Note that the sudo rules ar
+  not refreshed with the sss_cache tool immediately.
+* A new command line tool called sssctl was added. This tool
+  allows to observe the status of SSSD.
+* A new option local_negative_timeout was added. This option
+  allows the admin to specify the time during which lookups for
+  users that are not handled by SSSD but are present on the
+  system (typically in /etc/passwd and /etc/group) and prevents
+  repeated lookups of local users on the remote server during
+  initgroups operation.
+* An ID-mapping plugin for the winbind deamon was added. With
+  this plugin, it's possible for winbind to use the same
+  ID-mapping scheme as SSSD uses, producing consistent ID values.
+- Remove 0001-build-detect-endianness-at-configure-time.patch
+  (included upstream)
+
+-------------------------------------------------------------------
+Mon Apr 18 12:24:29 UTC 2016 - hguo@suse.com
+
+- Enable PAC responder.
+  PAC is an extension element returned by domain controller, to speed
+  up resolution of authorisation data such as group memberships.
+
+-------------------------------------------------------------------
+Thu Apr 14 17:20:11 UTC 2016 - michael@stroeder.com
+
+- Update to new upstream release 1.13.4
+  * The IPA sudo provider was reimplemented. The new version reads the
+    data from IPA's LDAP tree (as opposed to the compat tree populated by
+    the slapi-nis plugin that was used previously). The benefit is that
+    deployments which don't require the compat tree for other purposes,
+    such as support for non-SSSD clients can disable those autogenerated
+    LDAP trees to conserve resources that slapi-nis otherwise requires. There
+    should be no visible changes to the end user.
+  * SSSD now has the ability to renew the machine credentials (keytabs)
+    when the ad provider is used. Please note that a recent version of
+    the adcli (0.8 or newer) package is required for this feature to work.
+  * The automatic ID mapping feature was improved so that the administrator
+    is no longer required to manually set the range size in case a RID in
+    the AD domain is larger than the default range size
+  * A potential infinite loop in the NFS ID mapping plugin that was
+    resulting in an excessive memory usage was fixed
+  * Clients that are pinned to a particular AD site using the ad_site
+    option no longer communicate with DCs outside that site during service
+    discovery.
+  * The IPA identity provider is now able to resolve external
+    (typically coming from a trusted AD forest) group members during
+    get-group-information requests. Please note that resolving external
+    group memberships for AD users during the initgroup requests used to
+    work even prior to this update. This feature is mostly useful for cases
+    where an IPA client is using the compat tree to resolve AD trust users.
+  * The IPA ID views feature now works correctly even for deployments
+    without a trust relationship. Previously, the subdomains IPA provider
+    failed to read the views data if no master domain record was created
+    on the IPA server during trust establishment.
+  * A race condition in the client libraries between the SSSD closing
+    the socket as idle and the client application using the socket was
+    fixed. This bug manifested with a Broken Pipe error message on the
+    client.
+  * SSSD is now able to resolve users with the same usernames in different
+    OUs of an AD domain
+  * The smartcard authentication now works properly with gnome-screensaver
+
+-------------------------------------------------------------------
+Wed Feb 10 16:38:37 UTC 2016 - mpluskal@suse.com
+
+- Enable internal testsuite
+
+-------------------------------------------------------------------
+Wed Dec 16 14:08:01 UTC 2015 - jengelh@inai.de
+
+- Update to new maintenance release 1.13.3
+* A bug that prevented user lookups and logins after migration from
+  winsync to IPA-AD trusts was fixed.
+* A bug that prevented the ignore_group_members option from working
+  correctly in AD provider setups that use a dedicated primary
+  group (as opposed to a user-private group) was fixed.
+* Offline detection and offline login timeouts were improved for AD
+  users logging in from a domain trusted by an IPA server.
+* The AD provider supports setting up autofs_provider=ad .
+
+-------------------------------------------------------------------
+Fri Nov 20 10:39:56 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.13.2
+* Initial support for Smart Card authentication was added.
+* The PAM prompting was enhanced so that when Two-Factor
+  Authentication is used, both factors (password and token) can be
+  entered separately on separate prompts.
+* This release supports authenticating againt a KDC proxy.
+
+-------------------------------------------------------------------
+Wed Sep 30 11:44:21 UTC 2015 - michael@stroeder.com
+
+- Update to new upstream release 1.13.1
+* Initial support for Smart Card authentication was added. The
+  feature can be activated with the new pam_cert_auth option.
+* The PAM prompting was enhanced so that when Two-Factor
+  Authentication is used, both factors (password and token) can
+  be entered separately on separate prompts. At the same time,
+  only the long-term password is cached, so offline access would
+  still work using the long term password.
+* A new command line tool sss_override is present in this
+  release. The tools allows to override attributes on the SSSD
+  side. It's helpful in environment where e.g. some hosts need to
+  have a different view of POSIX attributes than others. Please
+  note that the overrides are stored in the cache as well, so
+  removing the cache will also remove the overrides.
+* Several enhancements to the dynamic DNS update code. Notably,
+  clients that update multiple interfaces work better with this
+  release.
+* This release supports authenticating againt a KDC proxy
+* The fail over code was enhanced so that if a trusted domain is
+  not reachable, only that domain will be marked as inactive but
+  the backed would stay in online mode.
+
+-------------------------------------------------------------------
+Thu Aug 20 08:34:44 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.13
+* Support for separate prompts when using two-factor authentication
+* Added support for one-way trusts between an IPA and Active
+  Directory environment. (Depends on IPA 4.2)
+* The fast memory cache now also supports the initgroups operation.
+* The PAM responder is now capable of caching authentication for
+  configurable period, which might reduce server load in cases
+  where accounts authenticate very frequently.
+  Refer to the "cached_auth_timeout" option in sssd.conf(5).
+* The Active Directory provider has changed the default value of
+  the "ad_gpo_access_control" option from permissive to enforcing.
+  As a consequence, the GPO access control now affects all clients
+  that set access_provider to ad. In order to restore the previous
+  behaviour, set ad_gpo_access_control to permissive or use a
+  different access_provider type.
+* Group Policy objects defined in a different AD domain that the
+  computer object is defined in are now supported.
+* Credential caching and Offline authentication are also available
+  when using two-factor authentication
+* The Python bindings are now built for both Python2 and Python3.
+* The LDAP bind timeout, StartTLS timeout and password change
+  timeout are now configurable using the ldap_opt_timeout option.
+
+-------------------------------------------------------------------
+Wed Aug 12 18:20:25 UTC 2015 - jengelh@inai.de
+
+- Kill unused libsss_sudo-devel solvable.
+
+-------------------------------------------------------------------
+Tue Aug 11 07:41:07 UTC 2015 - hguo@suse.com
+
+- Obsolete/provide libsss_sudo in sssd main package.
+  Sudo capability is an integral feature in SSSD and the library
+  is not supposed to be used separately.
+
+-------------------------------------------------------------------
+Thu Jun 25 16:44:49 UTC 2015 - crrodriguez@opensuse.org
+
+- sssd.service: add Before= and Wants=nss-user-lookup.target
+  correct fix for bsc#926961
+
+-------------------------------------------------------------------
+Sun Jun 14 17:44:20 UTC 2015 - michael@stroeder.com
+
+- Update to new upstream release 1.12.5
+* The background refresh tasks now supports refreshing users and
+  groups as well. See the "refresh_expired_interval" parameter in
+  the sssd.conf manpage.
+* A new option subdomain_inherit was added.
+* When an expired account attempts to log in, a configurable
+  error message can be displayed with sufficient pam_verbosity
+  setting. See the "pam_account_expired_message" option.
+* OpenLDAP ppolicy can be honored even when an alternate login
+  method (such as SSH key) is used. See the "ldap_access_order"
+  option.
+* A new option :krb5_map_user" was added, allowing the admin to
+  map UNIX usernames to Kerberos principals.
+* BUG FIXES:
+* Fixed AD-specific bugs that resulted in the incorrect set of
+  groups being displayed after the initgroups operation.
+* Fixes related to the IPA ID views feature. Setups using this
+  should update sssd on both IPA servers and clients.
+* The AD provider now handles binary GUIDs correctly.
+* A bug that prevented the `ignore_group_members` parameter to be
+  used with the AD provider was fixed.
+* The failover code now reads and honors TTL value for SRV
+  queries as well.
+* Race condition between setting the timeout in the back ends and
+  reading it in the front end during initgroup operation was
+  fixed. This bug affected applications that perform the
+  initgroups(3) operation in multiple processes simultaneously.
+* Setups that only want to use the domain SSSD is connected to,
+  but not the autodiscovered trusted domains by setting
+  `subdomains_provider=none` now work correctly as long as the
+  domain SID is set manually in the config file.
+* In case only "allow" rules are used, the simple access provider
+  is now able to skip unresolvable groups.
+* The GPO access control code now handles situations where user
+  and computer objects were in different domains.
+
+-------------------------------------------------------------------
+Thu Feb 19 10:51:22 UTC 2015 - hguo@suse.com
+
+- Update to new upstream release 1.12.4 (Changelog highlights following)
+* This is mostly a bug fixing release with only minor enhancements
+  visible to the end user.
+* Contains many fixes and enhancements related to the ID views
+  functionality of FreeIPA servers.
+* Several fixes related to retrieving AD group membership in an
+  IPA-AD trust scenario.
+* Fixes a bug where the GPO access control previously didn't work
+  at all if debugging was enabled in smb.conf.
+* SSSD can now be pinned to a particular AD site instead of
+  autodiscovering the site.
+* A regression that caused setting the SELinux context for IPA users
+  to fail, was fixed.
+* Fixed a potential crash caused by a double-free error when an SSSD
+  service was killed by the monitor process.
+
+-------------------------------------------------------------------
+Mon Feb 16 10:09:18 UTC 2015 - howard@localhost
+
+- A minor rpmspec cleanup to get rid of five rpmlint warnings
+* Remove mentioning of system-wide dbus configuration file from comments.
+* Remove traditional init script.
+* Remove compatibility for producing packages on older OpenSUSE releases.
+
+-------------------------------------------------------------------
+Thu Jan  8 22:23:42 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.12.3
+* SSSD now allows the IPA client to move from one ID view to
+  another after SSSD restart.
+* It is possible to apply ID views to IPA domains as well.
+  Previous SSSD versions only allowed views to be applied to AD
+  trusted domains.
+* Overriding SSH public keys is supported in this release.
+* Move semanage related functions to a separate library.
+
+-------------------------------------------------------------------
+Thu Jan  1 22:01:02 UTC 2015 - meissner@suse.com
+
+- build with PIE
+
+-------------------------------------------------------------------
+Mon Nov 10 00:37:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in postun script
+
+-------------------------------------------------------------------
+Thu Oct 30 12:22:06 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.12.2 (bugfix release, bnc#900159)
+* Fixed a regression where the IPA provider did not fetch User
+  Private Groups correctly
+* An important bug in the GPO access control which resulted in a
+  wrong principal being used, was fixed.
+* Several new options are available for deployments that need to
+  restrict a certain PAM service from connecting to a certain SSSD
+  domain. For more details, see the description of
+  pam_trusted_users and pam_public_domains options in the
+  sssd.conf(5) man page and the domains option in the pam_sss(8)
+  man page.
+* When SSSD is acting as an IPA client in setup with trusted AD
+  domains, it is able to return group members or full group
+  memberships for users from trusted AD domains.
+* Support for the "views" feature of IPA.
+- Remove 0001-build-call-AC_BUILD_AUX_DIR-before-anything-else.patch
+  (merged upstream)
+
+-------------------------------------------------------------------
+Sat Oct 11 13:36:48 UTC 2014 - jengelh@inai.de
+
+- Add 0001-build-call-AC_BUILD_AUX_DIR-before-anything-else.patch
+  to workaround bad autoconf invocation
+
+-------------------------------------------------------------------
+Sat Oct 11 00:16:15 UTC 2014 - crrodriguez@opensuse.org
+
+- 0001-build-detect-endianness-at-configure-time.patch
+  Correct defective endianness test.
+
+-------------------------------------------------------------------
+Mon Oct  6 13:25:23 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.12.1
+* The GPO access control was further enhanced to allow the access
+  control decisions while offline and map the Windows logon
+  rights onto Linux PAM services.
+* The SSSD now ships a plugin for the rpc.idmapd daemon,
+  sss_rpcidmapd(5).
+* A MIT Kerberos localauth plugin was added to SSSD. This plugin
+  helps translating principals to user names in IPA-AD trust
+  scenarios, allowing the krb5.conf configuration to be less
+  complex.
+* A libwbclient plugin implementation is now part of the SSSD.
+  The main purpose is to map Active Directory users and groups
+  identified by their SID to POSIX users and groups for the
+  file-server use-case.
+* Active Directory users ca nnow use their User Logon Name to log
+  in.
+* The sss_cache tool was enhanced to allow invalidating the SSH
+  host keys.
+* Groups without full POSIX information can now be used to enroll
+  group membership (CVE-2014-0249).
+* Detection of transition from offline to online state was
+  improved, resulting in fewer timeouts when SSSD is offline.
+* The Active Directory provider now correctly detects Windows
+  Server 2012 R2. Previous versions would fall back to the slower
+  non-AD path with 2012 R2.
+* Several other bugs related to deployments where SSSD is acting
+  as an AD client were fixed.
+
+-------------------------------------------------------------------
+Fri Aug 22 15:44:14 UTC 2014 - lchiquitto@suse.com
+
+- The utility sss_obfuscate uses the Python module pysss, so add a
+  dependency on python-sssd-config to sssd-tools (bnc#890242)
+
+-------------------------------------------------------------------
+Sun Aug 10 12:20:50 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.12.0
+* A new responder, called InfoPipe was added. This responder
+  provides a public D-Bus interface accessible over the system bus.
+  In this release, methods for retrieving user attributes and list
+  of groups were added as well as objects representing SSSD domains
+  and processes. (The next 1.12.x releases will publish objects
+  representing users and groups, too.)
+* SSSD provides an ID-mapping plugin for cifs-utils so that Windows
+  SIDs can be mapped onto POSIX IDs and/or names without requiring
+  Winbind and using the same code as the SSSD uses for identity
+  information.
+* First phase of Group Policy-based access control for the AD
+  provider was added. At the moment, the gpo-ldap component that
+  downloads the list of GPOs that apply for the specific client has
+  been implemented as well as the gpo-smb component that retrieves
+  the group policy files and determines the access control check
+  results based on those files. Future improvements will focus on
+  storing the GPO policies as local files and mapping the Windows
+  logon rights onto Linux PAM services.
+* Added a new library called sss_sifp that provides a simple
+  synchronous API for communication with our new InfoPipe responder
+  over the system bus.
+- Remove 0001-BUILD-Link-libsss_ldap_common.so-to-libsss_idmap.so.patch
+  (merged upstream)
+- Provide "rcsssd" in systemd environments
+- Ensure sssd is always startable by removing /var/lib/sss/db/*.ldb
+  on package installation so as to avoid potentially cache
+  format incompatibility which would cause sssd to exit
+
+-------------------------------------------------------------------
+Thu Jun 12 14:18:30 UTC 2014 - ckornacker@suse.com
+
+- fix %postun to not erroneously remove sss pam module
+
+-------------------------------------------------------------------
+Tue May 27 16:56:42 UTC 2014 - crrodriguez@opensuse.org
+
+- Switch to libnl-3 so we can get rid of libnl-1.
+
+-------------------------------------------------------------------
+Sat May 24 14:36:43 UTC 2014 - jengelh@inai.de
+
+- Redo 0001-build-detect-endianness-at-configure-time.patch to be -p1
+- Add 0001-BUILD-Link-libsss_ldap_common.so-to-libsss_idmap.so.patch
+  to resolve runtime loading problems
+  (http://lists.opensuse.org/opensuse-factory/2014-05/msg00181.html )
+
+-------------------------------------------------------------------
+Tue May 13 11:11:59 UTC 2014 - varkoly@suse.com
+
+- bnc#877457 - 78 Configuration file /usr/lib/systemd/system/sssd.service is marked executable.
+  Please remove executable permission bits.
+
+-------------------------------------------------------------------
+Tue May  6 14:01:29 UTC 2014 - ddiss@suse.com
+
+- Detect endianness at configure time, for use by Samba's byteorder.h header;
+  (bnc#876544).
+  + 0001-build-detect-endianness-at-configure-time.patch
+
+-------------------------------------------------------------------
+Tue Apr 29 10:00:57 UTC 2014 - varkoly@suse.com
+
+- Update to new upstream release 1.11.5.1
+  * sssd crashes after upgrade from 1.11.4 to 1.11.5 when using a samba4 domain
+  * SSSD pam module accepts usernames with leading spaces
+  * [RFE] Expose the list of trusted domains to IPA
+  * If both IPA and LDAP are set up with enumeration on, two enum tasks are running
+  * sssd.conf man pages don't list a configuration option.
+  * Make SSSD compilable on systems with non-standard paths to krb5 includes
+  * [freebsd] pam_sss: add ignore_unknown_user option
+  * MAN: Remove misleading memberof example from ldap_access_filter example
+  * not retrieving homedirs of AD users with posix attributes
+  * Document that `sssd` cache needs to be cleared manually, if ID mapping configuration changes
+  * Check IPA idranges before saving them to the cache
+  * Evaluate usage of sudo LDAP provider together with the AD provider
+  * Setting int option to 0 yields the default value
+  * ipa-server-mode: Use lower-case user name component in home dir path
+  * SSSD Does not cache SELinux map from FreeIPA correctly
+  * IPA SELinux code looks for the host in the wrong sysdb subdir when a trusted user logs in
+  * sssd fails to handle expired passwords when OTP is used
+  * Add another Kerberos error code to trigger IPA password migration
+  * Double OK when starting the service
+  * SSSD should create the SELinux mapping file with format expected by pam_selinux
+  * Valgrind: Invalid read of int while processing netgroup
+  * other subdomains are unavailable when joined to a subdomain in the ad forest
+  * Error during password change
+  * configure time variables not expanded when running ./configure
+  * RHEL7 IPA selinuxusermap hbac rule not always matching
+
+-------------------------------------------------------------------
+Fri Mar  7 15:18:34 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.11.4
+* The simple access provider supports specifying users and groups
+  using their NetBIOS domain name (such as DOMAIN\username)
+* Support for enumerating users and groups from trusted AD domains
+  was added to the AD provider
+* The Active Directory site discovery was made more robust for
+  configurations which use multiple trusted domains
+* Several bugs in the LDAP provider that affected setups which
+  mapped Windows SIDs to POSIX IDs were fixed
+* The SSSD is now able to use One Time Password (OTP)
+  authentication configured on an IPA server.
+
+-------------------------------------------------------------------
+Fri Dec 20 21:54:58 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.11.3
+* The AD provider is able to resolve group memberships for groups
+  with Global and Universal scope
+* The initgroups (get groups for user) operation for users from
+  trusted AD domains was made more reliable by reading the required
+  tokenGroups attribute from LDAP instead of Global Catalog
+* A new option ad_enable_gc was added to the AD provider. This
+  option allows the administrator to force SSSD to talk to LDAP
+  port only and never try the Global Catalog
+* The AD provider is now able to leverage the tokenGroups attribute
+  even when POSIX attributes are used, providing better performance
+  during logins.
+* A memory leak in the NSS responder that affected long-lived
+  clients that requested netgroup data was fixed
+- Remove sssd-ldflags.diff (merged upstream)
+
+-------------------------------------------------------------------
+Thu Nov 28 16:51:39 UTC 2013 - ckornacker@suse.com
+
+- Migrate deprecated krb5_kdcip variable to krb5_server (bnc#851048)
+
+-------------------------------------------------------------------
+Fri Nov  1 22:12:03 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.11.2
+* A new option ad_access_filter was added. This option allows the
+  administrator to easily configure LDAP search filter that the users
+  logging in must match in order to be granted access.
+* The Kerberos provider will no longer try to create public
+  directories when evaluating the krb5_ccachedir option.
+- Remove 0005-implicit-decl.diff (merged upstream)
+
+-------------------------------------------------------------------
+Tue Sep  3 21:12:37 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.11.0
+* The sudo integration was made more robust. SSSD is now able to
+  gracefully handle situations where it is not able to resolve the
+  client host name or sudo rules have multiple name attributes.
+* Several nested group membership bugs were fixed
+* The PAC responder was made more robust and efficient, modifying
+  existing cache entries instead of always recreating them.
+* The Kerberos provider now supports the new KEYRING ccache type.
+- Remove sssd-no-ldb-check.diff, now implemented through a
+  configure argument --disable-ldb-version-check
+
+-------------------------------------------------------------------
+Sun Jun 16 16:11:42 UTC 2013 - jengelh@inai.de
+
+- Explicitly formulate SASL BuildRequires
+
+-------------------------------------------------------------------
+Thu May  2 09:20:49 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.9.5
+* Includes a fix for CVE-2013-0287: A simple access provider flaw
+  prevents intended ACL use when SSSD is configured as an Active
+  Directory client.
+* Fixed spurious password expiration warning that was printed on
+  login with the Kerberos back end.
+* A new option ldap_rfc2307_fallback_to_local_users was added. If
+  this option is set to true, SSSD is be able to resolve local
+  group members of LDAP groups.
+* Fixed an indexing bug that prevented the contents of autofs maps
+  from being returned to the automounter deamon in case the map
+  contained a large number of entries.
+* Several fixes for safer handling of Kerberos credential caches
+  for cases where the ccache is set to be stored in a DIR: type.
+- Remove Provide-a-be_get_account_info_send-function.patch,
+  Add-unit-tests-for-simple-access-test-by-groups.patch,
+  Do-not-compile-main-in-DP-if-UNIT_TESTING-is-defined.patch,
+  Resolve-GIDs-in-the-simple-access-provider.patch
+  (CVE-2013-0287 material is in upstream),
+  sssd-sysdb-binary-attrs.diff (merged upstream)
+
+-------------------------------------------------------------------
+Fri Apr  5 16:35:07 UTC 2013 - jengelh@inai.de
+
+- Implement signature verification
+
+-------------------------------------------------------------------
+Wed Mar 20 10:05:00 UTC 2013 - rhafer@suse.com
+
+- Fixed security issue: CVE-2013-0287 (bnc#809153):
+  When SSSD is configured as an Active Directory client by using
+  the new Active Directory provider or equivalent configuration
+  of the LDAP provider, the Simple Access Provider does not
+  handle access control correctly.  If any groups are specified
+  with the simple_deny_groups option, the group members are
+  permitted access. New patches:
+  * Provide-a-be_get_account_info_send-function.patch
+  * Add-unit-tests-for-simple-access-test-by-groups.patch
+  * Do-not-compile-main-in-DP-if-UNIT_TESTING-is-defined.patch
+  * Resolve-GIDs-in-the-simple-access-provider.patch
+
+-------------------------------------------------------------------
+Tue Feb 26 08:29:43 UTC 2013 - jengelh@inai.de
+
+- Resolve user retrieval problems when encountering binary data
+  in LDAP attributes (bnc#806078),
+  added sssd-sysdb-binary-attrs.diff
+- Added sssd-no-ldb-check.diff so that SSSD continues to start
+  even after an LDB update.
+
+-------------------------------------------------------------------
+Fri Feb  8 10:31:52 UTC 2013 - rhafer@suse.com
+
+- fix package name in baselibs.conf (bnc#796423)
+
+-------------------------------------------------------------------
+Thu Jan 31 16:34:47 UTC 2013 - rhafer@suse.com
+
+- update to 1.9.4 (bnc#801036):
+  * A security bug assigned CVE-2013-0219 was fixed - TOCTOU race
+    conditions when creating or removing home directories for users
+    in local domain
+  * A security bug assigned CVE-2013-0220 was fixed - out-of-bounds
+    reads in autofs and ssh responder
+  * The sssd_pam responder processes pending requests after
+    reconnect
+  * A serious memory leak in the NSS responder was fixed
+  * Requests that were processing group entries with DNs pointing
+    out of any configured search bases were not terminated
+    correctly, causing long timeouts
+  * Kerberos tickets are correctly renewed even after SSSD daemon
+    restart
+  * Multiple fixes related to SUDO integration, in particular
+    fixing functionality when the sssd back end process was
+    changing its online/offline status
+  * The pwd_exp_warning option was fixed to function as documented
+    in the manual page
+- refreshed sssd-ldflags.diff to apply cleanly
+
+-------------------------------------------------------------------
+Mon Dec 10 09:55:35 UTC 2012 - rhafer@suse.com
+
+- Removed left-over "Requires" for no longer existing sssd-client
+  subpackage.
+- New patch: sssd-ldflags.diff to fix link failures due to erroneous
+  LDFLAGS usage
+
+-------------------------------------------------------------------
+Thu Dec  6 10:38:59 UTC 2012 - rhafer@suse.com
+
+- Switch back to using libcrypto instead of mozilla-nss as it seems
+  to be supported upstream again, cf.
+  https://lists.fedorahosted.org/pipermail/sssd-devel/2012-June/010202.html
+- Cleanup PAM configuration after uninstalling sssd (bnc#788328)
+
+-------------------------------------------------------------------
+Thu Dec  6 09:05:29 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.9.3
+* Many fixes related to deployments where the SSSD is running as
+  a client of IPA server with trust relation established with an
+  Active Directory server
+* Multiple fixes related to correct reporting of group
+  memberships, especially in setups that use nested groups
+* Fixed a bug that prevented upgrade from the 1.8 series if the
+  cache contained nested groups before the upgrade
+* Restarting the responders is more robust for cases where the
+  machine is under heavy load during back end restart
+* The default_shell option can now be also set per-domain in
+  addition to global setting.
+
+-------------------------------------------------------------------
+Sat Nov 10 00:27:06 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.9.2
+* Users or groups from trusted domains can be retrieved by UID or
+  GID as well
+* Several fixes that mitigate file descriptor leak during logins
+* SSH host keys are also removed from the cache after being
+  removed from the server
+* Fix intermittent crash in responders if the responder was
+  shutting down while requests were still pending
+* Catch an error condition that might have caused a tight loop in
+  the sssd_nss process while refreshing expired enumeration request
+* Fixed memory hierarchy of subdomains discovery requests that
+  caused use-after-free access bugs
+* The krb5_child and ldap_child processes can print libkrb5 tracing
+  information in the debug logs
+
+-------------------------------------------------------------------
+Wed Jun 27 12:32:05 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.8.93 (1.9.0~beta3)
+* Add native support for autofs to the IPA provider
+* Support for id mapping when connecting to Active Directory
+* Support for handling very large (> 1500 users) groups in
+  Active Directory
+* Add a new fast in-memory cache to speed up lookups of cached data
+  on repeated requests
+* Add support for the Kerberos DIR cache for storing multiple TGTs
+  automatically
+* Add a new PAC responder for dealing with cross-realm Kerberos
+  trusts
+* Terminate idle connections to the NSS and PAM responders
+
+-------------------------------------------------------------------
+Thu May 10 04:22:47 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.8.3
+* LDAP: Handle situations where the RootDSE is not available
+  anonymously
+* LDAP: Fix regression for users using non-standard LDAP attributes
+  for user information
+- Switch from openssl to mozilla-nss, as this is the officially
+  supported crypto integration
+
+-------------------------------------------------------------------
+Fri Apr 13 13:03:44 PDT 2012 - ben.kevan@gmail.com
+
+- Fix build error on SLES 11 builds
+
+-------------------------------------------------------------------
+Mon Apr  9 21:45:45 PDT 2012 - ben.kevan@gmail.com
+
+- Add suse_version condition for glib over libunistring for
+  SLES 11 SP2.
+- Update to new upstream release 1.8.2
+* Fix for GSSAPI binds when the keytab contains unrelated
+  principals
+* Workarounds added for LDAP servers with unreadable RootDSE
+
+-------------------------------------------------------------------
+Wed Apr  4 16:13:33 PDT 2012 - ben.kevan@gmail.com
+
+- Update to new upstream release 1.8.1
+* Resolve issue where we could enter an infinite loop trying to
+  connect to an auth server
+
+-------------------------------------------------------------------
+
+Sun Mar 11 18:36:44 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 1.8.0
+* Support for the service map in NSS
+* Support for setting default SELinux user context from FreeIPA
+* Support for retrieving SSH user and host keys from LDAP
+* Support for caching autofs LDAP requests
+* Support for caching SUDO rules
+* Include the IPA AutoFS provider
+* Fixed several memory-corruption bugs
+* Fixed a regression in the proxy provider
+
+-------------------------------------------------------------------
+Wed Oct 19 13:56:57 UTC 2011 - rhafer@suse.de
+
+- Fixed systemd related packaging issues (bnc#724157)
+- fixed build on older openSUSE releases
+
+-------------------------------------------------------------------
+Mon Sep 19 17:07:24 UTC 2011 - jengelh@medozas.de
+
+- Resolve "have choice for libnl-devel:
+  libnl-1_1-devel libnl3-devel"
+
+-------------------------------------------------------------------
+Tue Aug  2 08:46:53 UTC 2011 - rhafer@suse.de
+
+- Fixed typos in configure args
+- Cherry-picked password policy fixes from 1.5 branch (bnc#705768)
+- switched to fd-leak fix cherry-picked from 1.5 branch
+- Add /usr/sbin to the search path to make configure find nscd
+  (bnc#709747)
+
+-------------------------------------------------------------------
+Fri Jul 29 10:39:51 UTC 2011 - jengelh@medozas.de
+
+- Add patches to fix an fd leak in sssd_pam
+
+-------------------------------------------------------------------
+Thu Jul 28 10:03:32 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 1.5.11
+* Support for overriding home directory, shell and primary GID
+  locally
+* Properly honor TTL values from SRV record lookups
+* Support non-POSIX groups in nested group chains (for RFC2307bis
+  LDAP servers)
+* Properly escape IPv6 addresses in the failover code
+* Do not crash if inotify fails (e.g. resource exhaustion)
+- Remove redundant %clean section; delete .la files more
+  efficiently
+
+-------------------------------------------------------------------
+Tue Jun  7 08:59:04 UTC 2011 - rhafer@suse.de
+
+- Update to 1.5.8:
+  * Support for the LDAP paging control
+  * Support for multiple DNS servers for name resolution
+  * Fixes for several group membership bugs
+  * Fixes for rare crash bugs
+
+-------------------------------------------------------------------
+Wed May  4 09:22:20 UTC 2011 - rhafer@suse.de
+
+- Update to 1.5.7
+  * A flaw was found in the handling of cached passwords when
+    kerberos renewal tickets is enabled.  Due to a bug, the cached
+    password was overwritten with a (moderately) predictable
+    filename, which could allow a user to authenticate as someone
+    else if they knew the name of the cache file (bnc#691135,
+    CVE-2011-1758)
+- Changes in 1.5.6:
+  * Fixed a serious memory leak in the memberOf plugin
+  * Fixed a regression with the negative cache that caused it to be
+    essentially nonfunctional
+  * Fixed an issue where the user's full name would sometimes be
+    removed from the cache
+  * Fixed an issue with password changes in the kerberos provider
+    not working with kpasswd
+
+-------------------------------------------------------------------
+Thu Apr 14 11:31:38 UTC 2011 - rhafer@suse.de
+
+- Update to 1.5.5
+ * Fixes for several crash bugs
+ * LDAP group lookups will no longer abort if there is a
+   zero-length member attribute
+ * Add automatic fallback to 'cn' if the 'gecos' attribute does not
+   exist
+
+-------------------------------------------------------------------
+Wed Mar 30 09:47:23 UTC 2011 - rhafer@suse.de
+
+- Should build in SLE-11-SP1 now
+
+-------------------------------------------------------------------
+Tue Mar 29 13:23:57 UTC 2011 - rhafer@suse.de
+
+- Updated to 1.5.4
+  * Fixes for Active Directory when not all users and groups have
+    POSIX attributes
+  * Fixes for handling users and groups that have name aliases
+    (aliases are ignored)
+  * Fix group memberships after initgroups in the IPA provider
+
+-------------------------------------------------------------------
+Thu Mar 24 15:42:02 UTC 2011 - rhafer@suse.de
+
+- Updated to 1.5.3
+  * Support for libldb >= 1.0.0
+  * Proper detection of manpage translations
+  * Changes between 1.5.1 and 1.5.2
+    * Fixes for support of FreeIPA v2
+    * Fixes for failover if DNS entries change
+    * Improved sss_obfuscate tool with better interactive mode
+    * Fix several crash bugs
+    * Don't attempt to use START_TLS over SSL. Some LDAP servers
+      can't handle this
+    * Delete users from the local cache if initgroups calls return
+      'no such user' (previously only worked for getpwnam/getpwuid)
+    * Use new Transifex.net translations
+    * Better support for automatic TGT renewal (now survives
+      restart)
+    * Netgroup fixes
+
+-------------------------------------------------------------------
+Tue Mar  8 13:22:58 UTC 2011 - rhafer@suse.de
+
+- Updated to 1.5.1
+  * Vast performance improvements when enumerate = true
+  * All PAM actions will now perform a forced initgroups lookup
+    instead of just a user information lookup This guarantees that
+    all group information is available to other providers, such as
+    the simple provider.
+  * For backwards-compatibility, DNS lookups will also fall back to
+    trying the SSSD domain name as a DNS discovery domain.
+  * Support for more password expiration policies in LDAP
+    - 389 Directory Server
+    - FreeIPA
+    - ActiveDirectory
+  * Support for ldap_tls_{cert,key,cipher_suite} config options
+  * Assorted bugfixes
+
+-------------------------------------------------------------------
+Wed Jan 19 09:32:35 UTC 2011 - rhafer@suse.de
+
+- /var/lib/sss/pubconf was missing (bnc#665442)
+
+-------------------------------------------------------------------
+Tue Jan 18 09:08:35 UTC 2011 - rhafer@suse.de
+
+- It was possible to make sssd hang forever inside a loop in the
+  PAM responder by sending a carefully crafted packet to sssd.
+  This could be exploited by a local attacker to crash sssd and
+  prevent other legitimate users from logging into the system.
+  (bnc#660481, CVE-2010-4341)
+
+-------------------------------------------------------------------
+Sun Dec 19 13:37:32 UTC 2010 - aj@suse.de
+
+- Own /etc/systemd directories to fix build.
+
+-------------------------------------------------------------------
+Thu Nov 25 16:30:40 UTC 2010 - rhafer@novell.com
+
+- install systemd service file
+
+-------------------------------------------------------------------
+Tue Nov 16 11:06:02 UTC 2010 - rhafer@novell.com
+
+- Updated to 1.4.1
+  * Add support for netgroups to the LDAP and proxy providers
+  * Fixes a minor bug with UIDs/GIDs >= 2^31
+  * Fixes a segfault in the kerberos provider
+  * Fixes a segfault in the NSS responder if a data provider crashes
+  * Correctly use sdap_netgroup_search_base
+  * the utility libraries libpath_utils1, libpath_utils-devel,
+    libref_array1 and libref_array-devel moved to their own
+    separate upstream project (ding-libs)
+  * Performance improvements made to group processing of RFC2307
+    LDAP servers
+  * Fixed nested group issues with RFC2307bis LDAP servers without
+    a memberOf plugin
+  * Manpage reviewed and updated
+
+-------------------------------------------------------------------
+Mon Sep 13 12:23:47 UTC 2010 - coolo@novell.com
+
+- remove hard coded python version
+
+-------------------------------------------------------------------
+Fri Sep  3 13:17:48 UTC 2010 - rhafer@novell.com
+
+- No dependencies on %{release}
+
+-------------------------------------------------------------------
+Mon Aug 30 12:57:47 UTC 2010 - rhafer@novell.com
+
+- Updated to 1.3.1
+ * Fixes to the HBAC backend for obsolete or removed HBAC entries
+ * Improvements to log messages around TLS and GSSAPI for LDAP
+ * Support for building in environments using --as-needed LDFLAGS
+ * Vast performance improvement for initgroups on RFC2307 LDAP servers
+ * Long-running SSSD clients (e.g. GDM) will now reconnect properly to the
+   daemon if SSSD is restarted
+ * Rewrote the internal LDB cache API. As a synchronous API it is now faster
+   to access and easier to work with
+ * Eugene Indenbom contributed a sizeable amount of code to the LDAP provider
+   - We now handle failover situations much more reliably than we did
+     previously
+   - We also will now monitor the GSSAPI kerberos ticket and automatically
+     renew it when appropriate, instead of waiting for a connection to fail
+ * Support for netlink now allows us to more quickly detect situations
+   where we may have come online
+ * New option "dns_discovery_domain" allows better configuration for
+   using SRV records for failover
+- New subpackages: libpath_utils1, libpath_utils-devel, libref_array1
+  and libref_array-devel
+
+-------------------------------------------------------------------
+Wed Mar 31 14:02:43 UTC 2010 - rhafer@novell.com
+
+- Package pam- and nss-Modules as baselibs
+- cleaned up file list and dependencies
+- fixed init script dependencies
+
+-------------------------------------------------------------------
+Wed Mar 31 07:57:25 UTC 2010 - rhafer@novell.com
+
+- Updated to 1.1.0
+  * Support for IPv6
+  * Support for LDAP referrals
+  * Offline failed login counter
+  * Fix for the long-standing cache cleanup performance issues
+  * libini_config, libcollection, libdhash, libref_array and
+    libpath_utils are now built as shared libraries for general
+    consumption (libref_array and libpath_utils are currently not
+    packaged, as no component in sssd links against them)
+  * Users get feedback from PAM if they authenticated offline
+  * Native local backend now has a utility to show nested memberships
+    (sss_groupshow)
+  * New "simple" access provider for easy restriction of users
+- Backported libcrypto support from master to avoid Mozilla NSS
+  dependency
+- Backported password policy improvments for LDAP provider from
+  master
+
+-------------------------------------------------------------------
+Mon Mar  8 14:06:29 UTC 2010 - rhafer@novell.com
+
+- use logfiles for debug messages by default
+
+-------------------------------------------------------------------
+Fri Mar  5 12:57:25 UTC 2010 - rhafer@novell.com
+
+- subpackages for commandline tools, ipa-provider plugin and
+  python API
+
+-------------------------------------------------------------------
+Fri Feb 26 14:48:50 UTC 2010 - rhafer@novell.com
+
+- Updated to 1.0.5. Highlights:
+  * Removed some dead code (libreplace
+  * Clarify licenses throughout the code
+
+-------------------------------------------------------------------
+Thu Feb  4 17:04:01 UTC 2010 - rhafer@novell.com
+
+- Updated to 1.0.4
+
+-------------------------------------------------------------------
+Thu Oct  8 15:10:47 UTC 2009 - rhafer@novell.com
+
+- Update to 0.6.0
+
+-------------------------------------------------------------------
+Fri Sep  4 08:59:21 UTC 2009 - rhafer@novell.com
+
+- fix LDAP filter for initgroups() with  rfc2307bis setups
+
+-------------------------------------------------------------------
+Tue Sep  1 08:58:37 UTC 2009 - rhafer@novell.com
+
+- initial package submission

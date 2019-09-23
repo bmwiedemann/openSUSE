@@ -1,0 +1,8 @@
+<package name="vtable-dumper" project="openSUSE:Factory">
+  <title>A tool to list content of virtual tables in a C++ shared library</title>
+  <description>It is intended for developers of software libraries and maintainers of Linux
+  distributions who are interested in ensuring backward binary compatibility.
+  
+  The tool is developed by Andrey Ponomarenko</description>
+  <devel project="devel:tools" package="vtable-dumper"/>
+</package>

@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Tue Dec 18 10:59:04 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Add maven pom files and compat versions.
+
+-------------------------------------------------------------------
+Sat Aug 11 13:37:02 UTC 2018 - rpm@fthiessen.de
+
+- Update to version 3.3.2
+  * Fixed documentation
+  * Fixed handling of really big class files
+  * Fixed a bug where byte code transformation corrupts classes
+- Added fix-incorrect-version.patch to fix invalid version number
+
+-------------------------------------------------------------------
+Fri Sep 15 08:17:16 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * asm-3.3.1-sourcetarget.patch
+    + Make java source and target configurable from ant command
+      line
+    + Specify encoding to avoid build breakages with jdk9
+- Fix build with jdk9: specify java source and target 1.6
+
+-------------------------------------------------------------------
+Thu Jul 17 13:30:01 UTC 2014 - tchvatal@suse.com
+
+- Rename properly to asm3.spec
+
+-------------------------------------------------------------------
+Sun Jan  2 13:43:02 UTC 2011 - vljn@ovi.com
+
+- Update to asm3
+
+-------------------------------------------------------------------
+Thu Mar 25 14:07:33 UTC 2010 - mvyskocil@suse.cz
+
+- Install /usr/share/java/asm2-all.jar - netbeans-platform build 
+
+-------------------------------------------------------------------
+Tue Aug 19 10:14:36 CEST 2008 - mvyskocil@suse.cz
+
+- Initial packaging of asm2
+

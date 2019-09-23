@@ -1,0 +1,22 @@
+Index: hacks/fireworkx.man
+===================================================================
+--- hacks/fireworkx.man.orig
++++ hacks/fireworkx.man
+@@ -8,7 +8,7 @@ fireworkx - pyrotechnic explosions eye-c
+ [\-window]
+ [\-root]
+ [\-verbose]
+-[\-noflash]
++[\-no-flash]
+ [\-shoot]
+ [\-delay \fInumber\fP]
+ [\-maxlife \fInumber\fP]
+@@ -27,7 +27,7 @@ Draw on a newly-created window.  This is
+ .B \-root
+ Draw on the root window.
+ .TP 8
+-.B \-noflash 
++.B \-no-flash
+ Turn off light flash effect. (Runs faster)
+ .TP 8
+ .B \-shoot

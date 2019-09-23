@@ -1,0 +1,184 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d5c2154a02458fce648ebb67aac32055</srcmd5>
+    <version>1.2.0</version>
+    <time>1374702387</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>184220</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>d5c2154a02458fce648ebb67aac32055</srcmd5>
+    <version>1.2.0</version>
+    <time>1379664956</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f62c491dcfea5b5a268bdf50ea228de5</srcmd5>
+    <version>1.2.2</version>
+    <time>1380302924</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>201017</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>37720cdffd5ff513440c5d5ebd0b2846</srcmd5>
+    <version>1.3.0</version>
+    <time>1383812092</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>206033</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>012bd02770b921b917e8ba01fe4c0389</srcmd5>
+    <version>1.3.91</version>
+    <time>1388775172</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>212524</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cf1df54220e8019b8fb115d01f79d835</srcmd5>
+    <version>1.4.0</version>
+    <time>1391240637</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>220498</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>cf1df54220e8019b8fb115d01f79d835</srcmd5>
+    <version>1.4.0</version>
+    <time>1409303635</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9bc5c3bdfa29d79d0e231c84363945c9</srcmd5>
+    <version>1.6.0</version>
+    <time>1412098623</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.6.0</comment>
+    <requestid>250296</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8422d44eb6da747c7769d9c60cfa525f</srcmd5>
+    <version>1.7.0</version>
+    <time>1427983360</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>291183</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d86f0318125d0c1d65ebc4688a8654de</srcmd5>
+    <version>1.8.0</version>
+    <time>1433745041</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.8.0</comment>
+    <requestid>310845</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>13e1ebae61333a6b0477e0b14cf2f60c</srcmd5>
+    <version>1.10.0</version>
+    <time>1456821836</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>361550</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>26487d2864b3b55c6706fc882b7f368e</srcmd5>
+    <version>1.11.0</version>
+    <time>1465847766</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>401521</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3232d53a6f25409aed2bd47458a70e21</srcmd5>
+    <version>1.12.0</version>
+    <time>1475359659</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>430728</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e9147eacc16d5c9b27b8685abdedac93</srcmd5>
+    <version>2.0.0</version>
+    <time>1489345226</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>476868</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>55c60b138c5809f8d19bcd97f42209a2</srcmd5>
+    <version>3.0.0</version>
+    <time>1505507467</time>
+    <user>dimstar_suse</user>
+    <comment>- Rectify license field.</comment>
+    <requestid>526158</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>2a7a9e045b49865e2deb42fa76e20f79</srcmd5>
+    <version>3.0.0</version>
+    <time>1520164298</time>
+    <user>dimstar_suse</user>
+    <comment>Small maintenance fixes
+
+- Remove unneeded dependencies, update existing version checks
+- Remove no longer present libinput configure toggle
+
+Note: the build fix was submitted upstream and ideally will be in next release - 4.0
+For the future don't be shy to send patches upstream ;-) (forwarded request 580636 from xexaxo)</comment>
+    <requestid>582112</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>de2a10cfa01a488ef72ec0507c353f92</srcmd5>
+    <version>4.0.0</version>
+    <time>1530866657</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620942</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b93f1ad66193b53cbb746ffba19da8f7</srcmd5>
+    <version>5.0.0</version>
+    <time>1535705042</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 5</comment>
+    <requestid>631747</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6d95cc80af31d857b993eb01af1af3cc</srcmd5>
+    <version>6</version>
+    <time>1554189830</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 6</comment>
+    <requestid>690470</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>5225d665bf2ac74073f71a2e72bed719</srcmd5>
+    <version>6</version>
+    <time>1563993320</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable simple-dmabuf-drm=intel option only on x86* since it 
+  requires libdrm_intel, only available on x86*
+
+- Update to new upstream release 6.0.1
+  * clients: close unused keymap fd
+  * compositor: Fix invalid view numbering in scene-graph
+  * weston-terminal: Fix weston-terminal crash on mutter
+  * cairo-util: Don't set title string to Pango layout if the
+    title is NULL
+- Remove 0001-meson-dep-fix-for-compositor.h-needing-xkbcommon.h.patch,
+  0001-build-add-missing-dep-to-x11-backend.patch.</comment>
+    <requestid>718083</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>abceb32deef8a5979bf354d0a150da3d</srcmd5>
+    <version>7</version>
+    <time>1566665299</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 7</comment>
+    <requestid>725702</requestid>
+  </revision>
+</revisionlist>

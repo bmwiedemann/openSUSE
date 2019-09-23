@@ -1,0 +1,11 @@
+<package name="poster" project="openSUSE:Factory">
+  <title>Tool for printing posters over multiple pages</title>
+  <description>This program scales a PostScript page to a given size (a poster). The
+output can be tiled on multiple sheets, and output media size can be
+chosen independently. Each tile (sheet) of a will bear cropmarks and
+slightly overlapping image for easier poster assembly. In principle it
+requires the input file to adhere to 'eps' (encapsulated postscript)
+conventions but it will work for many 'normal' postscript files as
+well.</description>
+  <devel project="Publishing" package="poster"/>
+</package>

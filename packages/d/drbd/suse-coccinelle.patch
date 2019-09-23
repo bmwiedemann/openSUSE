@@ -1,0 +1,44 @@
+diff -Naur drbd-9.0.19~1+git.8e93a5d9.orig/drbd/Makefile drbd-9.0.19~1+git.8e93a5d9/drbd/Makefile
+--- drbd-9.0.19~1+git.8e93a5d9.orig/drbd/Makefile	2019-09-23 13:27:35.397783666 +0800
++++ drbd-9.0.19~1+git.8e93a5d9/drbd/Makefile	2019-09-23 13:30:43.378710223 +0800
+@@ -170,6 +170,9 @@
+ ifeq ($(DRBD_BUILD_FROM_GIT),yes)
+   sources := $(filter-out drbd_strings.c drbd_buildtag.c,$(wildcard *.c))
+   sources += $(wildcard drbd-headers/linux/*.h)
++else ifeq ($(ALWAYS_WANT_SPATCH),yes)
++  sources := $(filter-out drbd_strings.c drbd_buildtag.c,$(wildcard *.c))
++  sources += $(wildcard drbd-headers/linux/*.h)
+ else
+   sources :=
+ endif
+@@ -196,9 +199,27 @@
+ 	    fi \
+ 	done
+ 	@echo "  SPATCH   $(chksum)"
+-	@spatch --sp-file $(incdir)/.compat.cocci \
+-	    $(sources) \
+-	    --macro-file drbd-kernel-compat/cocci_macros.h > $@.tmp 2> $(incdir)/.spatch.stderr
++	$(eval libpath := $(shell rpm -ql coccinelle|grep standard.h|xargs dirname))
++	@echo "  sources: $(sources)"
++	@echo "  libpath: $(libpath)"
++	@touch $@.tmp
++	@if [ -e $(incdir)/.compat.cocci ]; then \
++		echo "  GENCOCCIRULES .compat.cocci"; \
++		cat $(incdir)/.compat.cocci; \
++		spatch --sp-file $(incdir)/.compat.cocci \
++		    $(sources) \
++		    --macro-file drbd-kernel-compat/cocci_macros.h \
++		    --macro-file-builtins $(libpath)/standard.h \
++		    --iso-file $(libpath)/standard.iso >> $@.tmp 2> $(incdir)/.spatch.stderr; \
++	fi
++	@if [ -e $@.tmp ]; then \
++		echo "  GENSPATCHFILE $@.tmp"; \
++		cat $@.tmp; \
++	fi
++	@if [ -e $(incdir)/.spatch.stderr ]; then \
++		echo "  GENSPATCHERR .spatch.stderr"; \
++		cat $(incdir)/.spatch.stderr; \
++	fi
+ 	@if [ -e $(incdir)/.compat.patch ]; then \
+ 		cat $(incdir)/.compat.patch >> $@.tmp; \
+ 	fi

@@ -1,0 +1,68 @@
+---
+ doc/gpg.texi |   18 ++++++++++++++++++
+ g10/gpg.c    |    9 +++++++++
+ 2 files changed, 27 insertions(+)
+
+Index: gnupg-2.2.7/doc/gpg.texi
+===================================================================
+--- gnupg-2.2.7.orig/doc/gpg.texi	2018-05-04 16:14:30.949580264 +0200
++++ gnupg-2.2.7/doc/gpg.texi	2018-05-04 16:14:34.025609243 +0200
+@@ -2097,6 +2097,24 @@ implies, this option is for experts only
+ understand the implications of what it allows you to do, leave this
+ off. @option{--no-expert} disables this option.
+ 
++@item --set-legacy-fips
++@itemx --set-legacy-fips
++@opindex set-legacy-fips
++Enable legacy support even when the libgcrypt library is in FIPS 140-2
++mode. The legacy mode of libgcrypt allows the use of all ciphers,
++including non-approved ciphers. This mode is needed when for legacy
++reasons a message must be encrypted or decrypted. Legacy reasons for
++decryptions include the decryption of old messages created with a
++public key that use cipher settings which do not meet FIPS 140-2
++requirements. Legacy reasons for encryption include the encryption
++of messages with a recipients public key where the recipient is not
++bound to FIPS 140-2 regulation and therefore provided a key using
++non-approved ciphers. Although the legacy mode is a violation of strict
++FIPS 140-2 rule interpretations, it is wise to use this mode or
++either not being able to access old messages or not being able
++to create encrypted messages to a recipient that is not adhering
++to FIPS 140-2 rules.
++
+ @end table
+ 
+ 
+Index: gnupg-2.2.7/g10/gpg.c
+===================================================================
+--- gnupg-2.2.7.orig/g10/gpg.c	2018-05-04 16:14:30.949580264 +0200
++++ gnupg-2.2.7/g10/gpg.c	2018-05-04 16:15:00.441858109 +0200
+@@ -425,6 +425,7 @@ enum cmd_and_opt_values
+     oKeyOrigin,
+     oRequestOrigin,
+     oNoSymkeyCache,
++    oSetLegacyFips,
+ 
+     oNoop
+   };
+@@ -872,6 +873,7 @@ static ARGPARSE_OPTS opts[] = {
+   ARGPARSE_s_n (oAllowMultipleMessages,      "allow-multiple-messages", "@"),
+   ARGPARSE_s_n (oNoAllowMultipleMessages, "no-allow-multiple-messages", "@"),
+   ARGPARSE_s_n (oAllowWeakDigestAlgos, "allow-weak-digest-algos", "@"),
++  ARGPARSE_s_n (oSetLegacyFips, "set-legacy-fips", "@"),
+ 
+   ARGPARSE_s_s (oDefaultNewKeyAlgo, "default-new-key-algo", "@"),
+ 
+@@ -3568,6 +3570,13 @@ main (int argc, char **argv)
+             opt.def_new_key_algo = pargs.r.ret_str;
+             break;
+ 
++	  case oSetLegacyFips:
++	    if(gcry_fips_mode_active())
++	      gcry_control (GCRYCTL_INACTIVATE_FIPS_FLAG, "Enable legacy support in FIPS 140-2 mode");
++	    else
++	      log_info ("Command set-legacy-fips ignored as libgcrypt is not in FIPS mode\n");
++	    break;
++
+ 	  case oNoop: break;
+ 
+ 	  default:

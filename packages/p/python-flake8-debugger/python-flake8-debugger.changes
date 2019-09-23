@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:48:02 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Nov 16 13:05:41 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 3.1.0

@@ -1,0 +1,5 @@
+<package name="flickrnet" project="openSUSE:Factory">
+  <title>Flickr.Net API Library</title>
+  <description>The Flickr.Net API is a .Net Library for accessing the Flickr API. Written entirely in C# it can be accessed from with any .Net language.</description>
+  <devel project="Mono:Factory" package="flickrnet"/>
+</package>

@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Fri Dec  7 10:15:24 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+- Remove useless code for SLE11
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:39 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Jun 16 20:14:53 UTC 2017 - okurz@suse.com
+
+- Update to 0.8
+- Prevent duplicate files installed with fdupes
+- Use https pypi.io URL for Factory submission
+
+-------------------------------------------------------------------
+Sat Mar 11 19:48:10 UTC 2017 - okurz@suse.com
+
+- Convert package to singlespec
+
+-------------------------------------------------------------------
+Thu Oct 24 11:13:16 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Mon Aug  5 10:22:52 UTC 2013 - cfarrell@suse.com
+
+- license update: SUSE-Repoze
+  See the spreadsheet linked from license.opensuse.org
+
+-------------------------------------------------------------------
+Sun Jul 28 19:33:58 UTC 2013 - hpj@urpla.net
+
+- update to version 0.7.1
+
+-------------------------------------------------------------------
+Wed Feb  1 09:43:54 UTC 2012 - saschpe@suse.de
+
+- Initial version
+

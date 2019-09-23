@@ -1,0 +1,6 @@
+<package name="falkon" project="openSUSE:Factory">
+  <title>Falkon</title>
+  <description>Falkon is a modern web browser based on the Qt Framework.
+Before becoming part of the KDE project it was known as QupZilla.  </description>
+  <devel project="KDE:Extra" package="falkon"/>
+</package>

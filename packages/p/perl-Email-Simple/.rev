@@ -1,0 +1,152 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f4d9970af3d4aeef04fbd8d61badd652</srcmd5>
+    <version>2.100</version>
+    <time>1306416033</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66719</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c790b6f22cad6f51c196d9491935c692</srcmd5>
+    <version>2.100</version>
+    <time>1306416043</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66719
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c790b6f22cad6f51c196d9491935c692</srcmd5>
+    <version>2.100</version>
+    <time>1319182262</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>94a2b45245566654d26fc8cc9ee8f115</srcmd5>
+    <version>2.100</version>
+    <time>1323190825</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>95100</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dfa8841c075b7df0cda0f23da8bf534e</srcmd5>
+    <version>2.101</version>
+    <time>1325006044</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>98288</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>dfa8841c075b7df0cda0f23da8bf534e</srcmd5>
+    <version>2.101</version>
+    <time>1340183834</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>dfa8841c075b7df0cda0f23da8bf534e</srcmd5>
+    <version>2.101</version>
+    <time>1359109654</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e0caad2f8c4a32032331fb7c301463e5</srcmd5>
+    <version>2.201</version>
+    <time>1370523685</time>
+    <user>coolo</user>
+    <comment>- updated to 2.201
+          preserve the original header layout unless changed
+          fix a bug in header unfolding where &quot;0\n 1&quot; could be unfolded to &quot;01&quot;
+          recognize crlf correctly even if there is no body (thanks, Christian
+          Walde) (forwarded request 177377 from coolo)</comment>
+    <requestid>177419</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e0caad2f8c4a32032331fb7c301463e5</srcmd5>
+    <version>2.201</version>
+    <time>1379663657</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6b7f17b8d6878383c1baec4a97ae5588</srcmd5>
+    <version>2.202</version>
+    <time>1393089109</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223481</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b8d58b50f3bec50f9547e5113f8c50f6</srcmd5>
+    <version>2.203</version>
+    <time>1393610429</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223901</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>b8d58b50f3bec50f9547e5113f8c50f6</srcmd5>
+    <version>2.203</version>
+    <time>1409302269</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6f8212cfb3bd8ce219f59945ef2e6ec7</srcmd5>
+    <version>2.206</version>
+    <time>1429107916</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296626</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0e39765ac725f086f4f1ecfd466cb270</srcmd5>
+    <version>2.208</version>
+    <time>1437549585</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317781</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>001ee0fd4f52b2428cf07ac86de1c8c8</srcmd5>
+    <version>2.210</version>
+    <time>1458120854</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>368910</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>907493f08a5c01aca3bea0455a109c88</srcmd5>
+    <version>2.211</version>
+    <time>1479502995</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440751</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d770ce26e26f4c4ae9de0c592aa25960</srcmd5>
+    <version>2.213</version>
+    <time>1487261004</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456914</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6ca2fd6ef0e4cec10c589a4de8bbb4d6</srcmd5>
+    <version>2.214</version>
+    <time>1505239054</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523582</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>77a006617850c7f747ccbbc7345eccb4</srcmd5>
+    <version>2.216</version>
+    <time>1529667052</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615377</requestid>
+  </revision>
+</revisionlist>

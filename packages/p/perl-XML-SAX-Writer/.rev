@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>923a646b73b08bea07034acef8ebd1d3</srcmd5>
+    <version>0.53</version>
+    <time>1326796494</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>99765</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>923a646b73b08bea07034acef8ebd1d3</srcmd5>
+    <version>0.53</version>
+    <time>1340183954</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>923a646b73b08bea07034acef8ebd1d3</srcmd5>
+    <version>0.53</version>
+    <time>1359109854</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>923a646b73b08bea07034acef8ebd1d3</srcmd5>
+    <version>0.53</version>
+    <time>1379663923</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b7bf2ea1e10403098aef28ce997fb539</srcmd5>
+    <version>0.54</version>
+    <time>1393605988</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223917</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b7bf2ea1e10403098aef28ce997fb539</srcmd5>
+    <version>0.54</version>
+    <time>1409302575</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>26a15836f9945e0d19627edf9d3d2f09</srcmd5>
+    <version>0.56</version>
+    <time>1429658114</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298022</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d653591800898022e3216b52c0e8849e</srcmd5>
+    <version>0.57</version>
+    <time>1502011798</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512883</requestid>
+  </revision>
+</revisionlist>

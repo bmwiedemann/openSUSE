@@ -1,0 +1,8 @@
+<package name="libgda" project="openSUSE:Factory">
+  <title>GNU Data Access (GDA) Library</title>
+  <description>GNU Data Access (GDA) is an attempt to provide uniform access to
+different kinds of data sources (databases, information servers,
+mail spools, etc). It is a complete architecture that provides
+everything needed to access data.</description>
+  <devel project="GNOME:Factory" package="libgda"/>
+</package>

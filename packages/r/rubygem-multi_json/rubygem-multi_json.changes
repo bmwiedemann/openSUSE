@@ -1,0 +1,314 @@
+-------------------------------------------------------------------
+Thu Feb  8 07:50:45 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.13.1
+ see installed CHANGELOG.md
+
+  1.13.1
+  ------
+  
+  * [Fix missing stdlib set dependency in oj adapter](https://github.com/intridea/multi_json/commit/c4ff66e7bee6fb4f45e54429813d7fada1c152b8)
+  
+  1.13.0
+  -----
+  
+  * [Make Oj adapter handle JSON::ParseError correctly](https://github.com/intridea/multi_json/commit/275e3ffd8169797c510d23d9ef5b8b07e64c3b42)
+
+-------------------------------------------------------------------
+Tue Jan  9 07:36:26 UTC 2018 - coolo@suse.com
+
+- updated to version 1.13.0
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Sep 11 12:43:36 UTC 2017 - coolo@suse.com
+
+- updated to version 1.12.2
+ see installed CHANGELOG.md
+
+  1.12.2
+  ------
+  
+  * [Renew gem certificate](https://github.com/intridea/multi_json/commit/57922d898c6eb587cc9a28ba5724c11e81724700)
+
+-------------------------------------------------------------------
+Sat May 21 04:35:32 UTC 2016 - coolo@suse.com
+
+- updated to version 1.12.1
+ see installed CHANGELOG.md
+
+  1.12.1
+  ------
+  
+  * [Prevent meory leak in OptionsCache](https://github.com/intridea/multi_json/commit/aa7498199ad272f3d4a13750d7c568a66047e2ee)
+  
+  1.12.0
+  ------
+  
+  * [Introduce global options cache to improve peroformance](https://github.com/intridea/multi_json/commit/7aaef2a1bc2b83c95e4208b12dad5d1d87ff20a6)
+
+-------------------------------------------------------------------
+Mon Apr 25 04:34:27 UTC 2016 - coolo@suse.com
+
+- updated to version 1.11.3
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Sun Jul  5 04:30:26 UTC 2015 - coolo@suse.com
+
+- updated to version 1.11.2
+ see installed CHANGELOG.md
+
+  1.11.2
+  ------
+  
+  * [Only pass one argument to JrJackson when two is not supported](https://github.com/intridea/multi_json/commit/e798fa517c817fc706982d3f3c61129b6651d601)
+
+-------------------------------------------------------------------
+Fri Jun 12 04:32:37 UTC 2015 - coolo@suse.com
+
+- updated to version 1.11.1
+ see installed CHANGELOG.md
+
+  1.11.1
+  ------
+  
+  * [Dump method passes options throught for JrJackson adapter](https://github.com/intridea/multi_json/commit/3c730fd12135c3e7bf212f878958004908f13909)
+
+-------------------------------------------------------------------
+Wed Mar  4 05:31:41 UTC 2015 - coolo@suse.com
+
+- updated to version 1.11.0
+
+-------------------------------------------------------------------
+Mon Oct 20 14:00:32 UTC 2014 - coolo@suse.com
+
+- updated to version 1.10.1
+ * [Explicitly require stringio for Gson adapter](https://github.com/intridea/multi_json/commit/623ec8142d4a212fa0db763bb71295789a119929)
+ * [Do not read StrignIO object before passing it to JrJackson](https://github.com/intridea/multi_json/commit/a6dc935df08e7b3d5d701fbb9298384c96df0fde)
+
+-------------------------------------------------------------------
+Sun Oct 12 11:45:41 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Sun May 18 09:04:38 UTC 2014 - coolo@suse.com
+
+- updated to version 1.10.0
+ * [Performance tweaks](https://github.com/intridea/multi_json/commit/58724acfed31866d079eaafb1cd824e341ade287)
+ * [Convert indent option to Fixnum before passing to Oj](https://github.com/intridea/multi_json/commit/826fc5535b863b74fc9f981dfdda3e26f1ee4e5b)
+
+-------------------------------------------------------------------
+Fri Mar 21 12:54:12 UTC 2014 - coolo@suse.com
+
+- updated to version 1.9.2
+ * [Enable use_to_json option for Oj adapter by default](https://github.com/intridea/multi_json/commit/76a4aaf697b10bbabd5d535d83cf1149efcfe5c7)
+ * [Remove unused LoadError file](https://github.com/intridea/multi_json/commit/65dedd84d59baeefc25c477fedf0bbe85e7ce2cd)
+
+-------------------------------------------------------------------
+Sat Mar 15 18:46:00 UTC 2014 - coolo@suse.com
+
+- updated to version 1.9.0
+ * [Rename LoadError to ParseError](https://github.com/intridea/multi_json/commit/4abb98fe3a90b2a7b3d1594515c8a06042b4a27d)
+ * [Adapter load failure throws AdapterError instead of ArgumentError](https://github.com/intridea/multi_json/commit/4da612b617bd932bb6fa1cc4c43210327f98f271)
+
+-------------------------------------------------------------------
+Thu Feb  6 18:00:14 UTC 2014 - coolo@suse.com
+
+- updated to version 1.8.4
+ * [Make Gson adapter explicitly read StringIO object](https://github.com/intridea/multi_json/commit/b58b498747ff6e94f41488c971b2a30a98760ef2)
+ * [Make JrJackson explicitly read StringIO objects](https://github.com/intridea/multi_json/commit/e1f162d5b668e5e4db5afa175361a601a8aa2b05)
+ * [Prevent calling #downcase on alias symbols](https://github.com/intridea/multi_json/commit/c1cf075453ce0110f7decc4f906444b1233bb67c)
+ 
+-------------------------------------------------------------------
+Sun Oct 20 12:05:35 UTC 2013 - coolo@suse.com
+
+- updated to version 1.8.2
+ * [Downcase adapter string name for OS compatibility](https://github.com/intridea/multi_json/commit/b8e15a032247a63f1410d21a18add05035f3fa66)
+ * [Let the adapter handle strings with invalid encoding](https://github.com/intridea/multi_json/commit/6af2bf87b89f44eabf2ae9ca96779febc65ea94b)
+ 
+-------------------------------------------------------------------
+Thu Oct 10 14:20:49 UTC 2013 - coolo@suse.com
+
+- updated to version 1.8.1
+ * [Raise MultiJson::LoadError on blank input](https://github.com/intridea/multi_json/commit/c44f9c928bb25fe672246ad394b3e5b991be32e6)
+ * [Explicitly require json gem code even when constant is defined](https://github.com/intridea/multi_json/commit/36f7906c66477eb4b55b7afeaa3684b6db69eff2)
+
+-------------------------------------------------------------------
+Fri Sep 13 11:06:23 UTC 2013 - coolo@suse.com
+
+- updated to version 1.8.0, no changelog 
+
+-------------------------------------------------------------------
+Mon Aug 26 05:05:52 UTC 2013 - coolo@suse.com
+
+- updated to version 1.7.9, no changelog
+
+-------------------------------------------------------------------
+Tue Aug  6 17:45:15 UTC 2013 - coolo@suse.com
+
+- updated to version 1.7.8
+ * [Reorder JrJackson before json_gem](https://github.com/intridea/multi_json/commit/315b6e460b6e4dcdb6c82e04e4be8ee975d395da)
+ * [Update vendored OkJson to version 43](https://github.com/intridea/multi_json/commit/99a6b662f6ef4036e3ee94d7eb547fa72fb2ab50)
+ 
+-------------------------------------------------------------------
+Sat Jun 15 06:44:09 UTC 2013 - coolo@suse.com
+
+- updated to version 1.7.7
+ * [Fix options caching issues](https://github.com/intridea/multi_json/commit/a3f14c3661688c5927638fa6088c7b46a67e875e)
+
+-------------------------------------------------------------------
+Tue Jun  4 16:40:06 UTC 2013 - coolo@suse.com
+
+- updated to version 1.7.6
+ * [Bring back MultiJson::VERSION constant](https://github.com/intridea/multi_json/commit/31b990c2725e6673bf8ce57540fe66b57a751a72)
+
+-------------------------------------------------------------------
+Mon Jun  3 20:10:08 UTC 2013 - coolo@suse.com
+
+- updated to version 1.7.5
+ * [Remove stdlib warning](https://github.com/intridea/multi_json/commit/d06eec6b7996ac8b4ff0e2229efd835379b0c30f)
+
+-------------------------------------------------------------------
+Mon May 27 08:56:37 UTC 2013 - coolo@suse.com
+
+- updated to version 1.7.4
+ [Cache options for better performance](https://github.com/intridea/multi_json/commit/8a26ee93140c4bed36194ed9fb887a1b6919257b)
+
+-------------------------------------------------------------------
+Tue May  7 08:58:40 UTC 2013 - coolo@suse.com
+
+- updated to version 1.7.3
+ * [Require json/ext to ensure extension version gets loaded for json_gem](https://github.com/intridea/multi_json/commit/942686f7e8597418c6f90ee69e1d45242fac07b1)
+ * [Rename JrJackson](https://github.com/intridea/multi_json/commit/078de7ba8b6035343c3e96b4767549e9ec43369a)
+ * [Prefer JrJackson to JSON gem if present](https://github.com/intridea/multi_json/commit/af8bd9799a66855f04b3aff1c488485950cec7bf)
+ * [Print a warning if outdated gem versions are used](https://github.com/intridea/multi_json/commit/e7438e7ba2be0236cfa24c2bb9ad40ee821286d1)
+ * [Loosen required_rubygems_version for compatibility with Ubuntu 10.04]
+
+-------------------------------------------------------------------
+Sat Mar 23 08:06:50 UTC 2013 - coolo@suse.com
+
+- updated to version 1.7.2
+ * [Renamed Jrjackson adapter to JrJackson](https://github.com/intridea/multi_json/commit/b36dc915fc0e6548cbad06b5db6f520e040c9c8b)
+ * [Implemented jrjackson -> jr_jackson alias for back-compatability](https://github.com/intridea/multi_json/commit/aa50ab8b7bb646b8b75d5d65dfeadae8248a4f10)
+ * [Update vendored OkJson module](https://github.com/intridea/multi_json/commit/30a3f474e17dd86a697c3fab04f468d1a4fd69d7)
+ * [Fix capitalization of JrJackson class](https://github.com/intridea/multi_json/commit/5373a5e38c647f02427a0477cb8e0e0dafad1b8d)
+ 
+-------------------------------------------------------------------
+Mon Mar 18 06:18:58 UTC 2013 - coolo@suse.com
+
+- updated to version 1.7.0
+ * [Add load_options/dump_options to MultiJson](https://github.com/intridea/multi_json/commit/a153956be6b0df06ea1705ce3c1ff0b5b0e27ea5)
+ * [MultiJson does not modify arguments](https://github.com/intridea/multi_json/commit/58525b01c4c2f6635ba2ac13d6fd987b79f3962f)
+ * [Enable quirks_mode by default for json_gem/json_pure adapters](https://github.com/intridea/multi_json/commit/1fd4e6635c436515b7d7d5a0bee4548de8571520)
+ * [Add JrJackson adapter](https://github.com/intridea/multi_json/commit/4dd86fa96300aaaf6d762578b9b31ea82adb056d)
+ * [Raise ArgumentError on bad adapter input](https://github.com/intridea/multi_json/commit/911a3756bdff2cb5ac06497da3fa3e72199cb7ad)
+
+-------------------------------------------------------------------
+Sun Mar  3 19:47:38 UTC 2013 - coolo@suse.com
+
+- updated to version 1.6.1
+ [Revert "Use JSON.generate instead of #to_json"](https://github.com/intridea/multi_json/issues/86)
+
+-------------------------------------------------------------------
+Wed Feb 13 15:33:29 UTC 2013 - coolo@suse.com
+
+- updated to version 1.6.0
+  * [Add gson.rb support](https://github.com/intridea/multi_json/pull/71)
+  * [Add MultiJson.default_options](https://github.com/intridea/multi_json/pull/70)
+  * [Add MultiJson.with_adapter](https://github.com/intridea/multi_json/pull/67)
+  * [Stringify all possible keys for ok_json](https://github.com/intridea/multi_json/pull/66)
+  * [Alias `MultiJson::DecodeError` to `MultiJson::LoadError`](https://github.com/intridea/multi_json/pull/79)
+
+-------------------------------------------------------------------
+Tue Feb 12 14:02:57 UTC 2013 - coolo@suse.com
+
+- updated to version 1.5.1
+
+-------------------------------------------------------------------
+Fri Dec 14 06:08:38 UTC 2012 - coolo@suse.com
+
+- updated to version 1.5.0, no changelog
+
+-------------------------------------------------------------------
+Sat Dec  1 12:56:50 UTC 2012 - coolo@suse.com
+
+- updated to version 1.4.0, no changelog
+
+-------------------------------------------------------------------
+Sat Nov  3 10:09:12 UTC 2012 - coolo@suse.com
+
+- updated to version 1.3.7
+
+-------------------------------------------------------------------
+Tue Jul 31 11:40:43 UTC 2012 - jreidinger@suse.com
+
+- use new rpm2ruby to work with as 3_2 
+
+-------------------------------------------------------------------
+Fri Jul  6 19:01:44 UTC 2012 - coolo@suse.com
+
+- update to 1.3.6
+  * fix for oj
+
+-------------------------------------------------------------------
+Sun May 13 20:34:50 UTC 2012 - coolo@suse.com
+
+- update to 1.3.5
+  * Just some polishing of docu
+
+-------------------------------------------------------------------
+Sun May  6 14:23:25 UTC 2012 - coolo@suse.com
+
+- update to 1.3.4
+  * Fix tests on JRuby
+
+-------------------------------------------------------------------
+Wed Apr 25 12:17:28 UTC 2012 - coolo@suse.com
+
+- update to 1.3.2
+ re-add and deprecate default_engine
+
+-------------------------------------------------------------------
+Tue Apr 17 07:23:21 UTC 2012 - coolo@suse.com
+
+- update to 1.3.1
+ some fixes, old engines API deprecated 
+
+-------------------------------------------------------------------
+Tue Apr  3 08:24:04 UTC 2012 - coolo@suse.com
+
+- update to 1.2.0 - now with oj support (optimized json)
+
+-------------------------------------------------------------------
+Fri Mar 23 10:58:02 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Factory preparation
+
+-------------------------------------------------------------------
+Fri Dec  9 11:34:15 UTC 2011 - saschpe@suse.de
+
+- Update to version 1.0.4
+
+-------------------------------------------------------------------
+Mon Jun 20 16:57:33 UTC 2011 - mrueckert@suse.de
+
+- update to version 1.0.3
+  - added OKJson as vendored fallback if nothing else is available
+  - multiple fixes and additions to OKJson
+  - added stringio support
+  - only catch specific Errors during encoding
+  - dont require ActiveSupport::JSON to avoid circular dependencies
+
+-------------------------------------------------------------------
+Tue May 10 12:02:42 CEST 2011 - visnov@suse.cz
+
+- license is MIT 
+
+-------------------------------------------------------------------
+Mon Jan 10 10:30:55 UTC 2011 - aduffeck@novell.com
+
+- initial version
+

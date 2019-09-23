@@ -1,0 +1,5 @@
+<package name="gtk3-branding" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="GNOME:Factory" package="gtk3-branding"/>
+</package>

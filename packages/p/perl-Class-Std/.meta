@@ -1,0 +1,7 @@
+<package name="perl-Class-Std" project="openSUSE:Factory">
+  <title>Support for creating standard &quot;inside-out&quot; classes</title>
+  <description>This module provides tools that help to implement the &quot;inside out object&quot;
+class structure in a convenient and standard way.</description>
+  <devel project="devel:languages:perl" package="perl-Class-Std"/>
+  <url>http://search.cpan.org/dist/Class-Std/</url>
+</package>

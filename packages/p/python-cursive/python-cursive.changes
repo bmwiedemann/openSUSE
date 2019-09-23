@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Sun Aug  4 09:49:53 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.2.2:
+  * Make barbican-tempest-plugin gate voting
+  * Add .zuul.yaml 
+  * Address verifier DeprecationWarning
+  * Use openstackdocstheme for docs and release notes
+  - removes 0001-Use-openstackdocstheme-for-docs-and-release-notes.patch
+  * Cleanup requirements.txt
+  - removes 0001-Cleanup-requirements.txt.patch
+
+-------------------------------------------------------------------
+Mon Jan 22 06:31:00 UTC 2018 - tbechtold@suse.com
+
+- Fix python3 test execution
+
+-------------------------------------------------------------------
+Tue Jan 16 05:58:01 UTC 2018 - tbechtold@suse.com
+
+- update to 0.2.1:
+  * Add mock to test-requirements
+  * Uncaught ManagedObjectNotFoundError exception leads to 500 error
+  * Add certificate validation
+- add 0001-Cleanup-requirements.txt.patch
+  remove unneeded requirements
+- 0001-Use-openstackdocstheme-for-docs-and-release-notes.patch
+  switch to openstackdocstheme instead of oslosphinx
+
+-------------------------------------------------------------------
+Tue Apr  4 10:41:24 UTC 2017 - tbechtold@suse.com
+
+- update to 0.1.2:
+  * Make REGISTERED_TYPES public
+  * Enable release notes translation
+  * Add oslo.log to requirements.txt
+  * Cleanup tox.ini
+
+-------------------------------------------------------------------
+Mon Sep  5 09:24:52 UTC 2016 - tbechtold@suse.com
+
+- Initial packaging (version 0.1.1)
+

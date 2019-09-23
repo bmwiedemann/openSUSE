@@ -1,0 +1,983 @@
+-------------------------------------------------------------------
+Mon Jul 15 14:29:51 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.2.0:
+  * removes several workarounds for authoritative servers that
+    respond badly to EDNS(0) queries
+  * support for DNS X-Proxied-For (draft-bellis-dnsop-xpf-04)
+  * EDNS Client Subnet Improvements
+  * New and Updated Settings
+    - distributor-threads
+    - public-suffix-list-file
+    - edns-outgoing-bufsize setting’s default has changed
+      from 1680 to 1232
+  * lot of small, incremental changes
+
+-------------------------------------------------------------------
+Tue May 21 12:17:26 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- update to 4.1.13:
+  * Add the disable-real-memory-usage setting to skip expensive
+    collection of detailed memory usage info
+  * Fix DNSSEC validation of wildcards expanded onto themselves.
+
+-------------------------------------------------------------------
+Fri Apr 26 11:14:31 UTC 2019 - mvetter@suse.com
+
+- bsc#1130588: Require shadow instead of old pwdutils
+
+-------------------------------------------------------------------
+Tue Apr  2 16:38:15 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.1.12:
+  * Improvements
+    - Provide CPU usage statistics per thread (worker & distributor).
+    - Use a bounded load-balancing algo to distribute queries.
+    - Implement a configurable ECS cache limit so responses with an
+      ECS scope more specific than a certain threshold and a TTL
+      smaller than a specific threshold are not inserted into the
+      records cache at all.
+  * Bug Fixes
+    - Correctly interpret an empty AXFR response to an IXFR query.
+
+- update to 4.1.11:
+  * Improvements
+    - Add an option to export only responses over protobuf to the
+      Lua protobufServer() directive.
+    - Reduce systemcall usage in protobuf logging. (See #7428.)
+
+-------------------------------------------------------------------
+Fri Jan 25 06:07:27 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.1.10
+  - #7403: Fix compilation in handleRunningTCPQuestion without
+    protobuf support
+
+-------------------------------------------------------------------
+Mon Jan 21 14:02:26 UTC 2019 - adam.majer@suse.de
+
+- update to 4.1.9
+  https://blog.powerdns.com/2019/01/21/powerdns-recursor-4-1-9-released/
+
+  - Fixes case when Lua hooks are not called over TCP
+    (CVE-2019-3806, bsc#1121887)
+  - Fixes DNSSEC validation is not performed for AA=0 responses
+    (CVE-2019-3807, bsc#1121889)
+
+-------------------------------------------------------------------
+Mon Nov 26 16:15:31 UTC 2018 - adam.majer@suse.de
+
+- update to 4.1.8
+  https://blog.powerdns.com/2018/11/26/powerdns-recursor-4-1-8-released/
+
+  - Fixes case where a crafted query can cause a denial of service
+    (CVE-2018-16855, bsc#1116592)
+
+-------------------------------------------------------------------
+Fri Nov  9 14:05:18 UTC 2018 - adam.majer@suse.de
+
+- update to 4.1.7
+  https://blog.powerdns.com/2018/11/09/powerdns-recursor-4-1-7-released/
+
+  - Revert ‘Keep the EDNS status of a server on FormErr with EDNS’
+  - Refuse queries for all meta-types
+
+-------------------------------------------------------------------
+Wed Nov  7 13:12:04 UTC 2018 - adam.majer@suse.de
+
+- update to 4.1.6
+  - Revert "rec: Authority records in AA=1 CNAME answer are
+    authoritative"
+    https://github.com/PowerDNS/pdns/issues/7158
+
+-------------------------------------------------------------------
+Wed Nov  7 07:24:04 UTC 2018 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.1.5
+  - Improvements
+    * Add pdnslog to lua configuration scripts
+    * Fix compilation with libressl 2.7.0+
+    * Export outgoing ECS value and server ID in protobuf (if any)
+    * Switch to devtoolset 7 for el6
+    * Allow the signature inception to be off by number of seconds
+  - Bug Fixes
+    * Crafted answer can cause a denial of service
+      (bsc#1114157, CVE-2018-10851)
+    * Packet cache pollution via crafted query
+      (bsc#1114169, CVE-2018-14626)
+    * Crafted query for meta-types can cause a denial of service
+      (bsc#1114170, CVE-2018-14644)
+    * Delay creation of rpz threads until we dropped privileges
+    * Cleanup the netmask trees used for the ecs index on removals
+    * Make sure that the ecs scope from the auth is < to the source
+    * Authority records in aa=1 cname answer are authoritative
+    * Avoid a memory leak in catch-all exception handler
+    * Don’t require authoritative answers for forward-recurse zones
+    * Release memory in case of error in openssl ecdsa constructor
+    * Convert a few uses to toLogString to print DNSName’s that
+      may be empty in a safer manner
+    * Avoid a crash on DEC Alpha systems
+    * Clear all caches on (N)TA changes
+
+-------------------------------------------------------------------
+Fri Aug 31 14:09:03 UTC 2018 - adam.majer@suse.de
+
+- update to 4.1.4
+  - Improvements
+    * Split pdns_enable_unit_tests.
+    * Add a new max-udp-queries-per-round setting.
+    * Fix warnings reported by gcc 8.1.0.
+    * Tests: replace awk command by perl.
+    * Allow the snmp thread to retrieve statistics.
+  - Bug Fixes
+    * Don’t account chained queries more than once.
+    * Make rec_control respect include-dir.
+    * Load lua scripts only in worker threads.
+    * Purge all auth/forward zone data including subtree.
+
+-------------------------------------------------------------------
+Tue May 22 17:02:42 UTC 2018 - michael@stroeder.com
+
+- update to 4.1.3
+  - Improvements
+    * Add a subtree option to the API cache flush endpoint
+    * Use a separate, non-blocking pipe to distribute queries
+    * Move carbon/webserver/control/stats handling to a separate
+      thread
+    * Add _raw versions for QName / ComboAddresses to the FFI API
+    * Fix a warning on botan >= 2.5.0
+  - Bug Fixes
+    * Count a lookup into an internal auth zone as a cache miss
+    * Don’t increase the DNSSEC validations counters when running
+      with process-no-validate
+    * Respect the AXFR timeout while connecting to the RPZ server
+    * Increase MTasker stacksize to avoid crash in exception
+      unwinding
+    * Use the SyncRes time in our unit tests when checking cache
+      validity
+    * Add -rdynamic to C{,XX}FLAGS when we build with LuaJIT
+    * Delay the loading of RPZ zones until the parsing is done,
+      fixing a race condition
+    * Reorder includes to avoid boost L conflict (bsc#1089814)
+
+-------------------------------------------------------------------
+Fri Apr 13 12:04:02 UTC 2018 - adam.majer@suse.de
+
+- protobuf support is available in SLE-15
+- Boost.Context library is not available on s390x
+
+-------------------------------------------------------------------
+Sun Apr  1 23:49:07 UTC 2018 - mrueckert@suse.de
+
+- update to 4.1.2
+  - New Features
+    - #6344: Add FFI version of gettag().
+  - Improvements
+    - #6298, #6303, #6268, #6290: Add the option to set the AXFR
+      timeout for RPZs.
+    - #6172: IXFR: correct behavior of dealing with DNS Name with
+      multiple records and speed up IXFR transaction (Leon Xu).
+    - #6379: Add RPZ statistics endpoint to the API.
+  - Bug Fixes
+    - #6336, #6293, #6237: Retry loading RPZ zones from server when
+      they fail initially.
+    - #6300: Fix ECS-based cache entry refresh code.
+    - #6320: Fix ECS-specific NS AAAA not being returned from the
+      cache.
+
+-------------------------------------------------------------------
+Mon Jan 22 15:50:32 UTC 2018 - adam.majer@suse.de
+
+- update to version 4.1.1:
+  + Fixes security vulnerability where man-in-the-middle to send
+    a NXDOMAIN answer for a DNSSEC name that does exist.
+    (bsc#1077154, CVE-2018-1000003)
+  + Don't validate signature for "glue" CNAME, since anything else
+    than the initial CNAME can’t be considered authoritative.
+
+-------------------------------------------------------------------
+Fri Dec 29 11:03:20 UTC 2017 - adam.majer@suse.de
+
+- _constraints: we seem to need at least 8GB RAM to build on S390x
+   and ppc64
+
+-------------------------------------------------------------------
+Mon Dec  4 16:17:42 UTC 2017 - mrueckert@suse.de
+
+- enable ed25519 support (new BR: libsodium-devel)
+- enable net-snmp support (new BR: net-snmp-devel)
+- simplify BR for lua: lua-devel everywhere now
+
+-------------------------------------------------------------------
+Mon Dec  4 14:12:37 UTC 2017 - adam.majer@suse.de
+
+- update to version 4.1.0:
+  + Improved DNSSEC support
+  + Improved documentation
+  + Improved RPZ support
+  + Improved EDNS Client Subnet support
+  + SNMP support
+  + Lua engine has gained access to more parts of the recursor
+  + CPU affinity can now be specified
+  + TCP Fast Open support
+  + New performance metrics
+  + For complete changes see:
+    https://blog.powerdns.com/2017/12/04/powerdns-recursor-4-1/
+
+-------------------------------------------------------------------
+Mon Nov 27 16:15:40 UTC 2017 - adam.majer@suse.de
+
+- update to version 4.0.7: (bsc#1069242)
+  + fixes CVE-2017-15090: Insufficient validation of DNSSEC
+    signatures
+  + fixes CVE-2017-15092: Cross-Site Scripting in the web interface
+  + fixes CVE-2017-15093: Configuration file injection in the API
+  + fixes CVE-2017-15094: Memory leak in DNSSEC parsing
+  + Fix validation at the exact RRSIG inception or expiration time
+  + Extract nested exception from Luawrapper
+  + Throw an error when lua-conf-file can’t be loaded
+  + Lowercase all outgoing qnames when lowercase-outgoing is set
+
+-------------------------------------------------------------------
+Thu Oct 19 14:44:21 UTC 2017 - adam.majer@suse.de
+
+- Added pdns-recursor.keyring linked from
+  https://dnsdist.org/install.html
+
+-------------------------------------------------------------------
+Fri Sep 29 13:36:24 UTC 2017 - vcizek@suse.com
+
+- Don't BuildRequire Botan 1.x
+  * Botan will be dropped as the 1.x branch is EOL and won't get
+    OpenSSL 1.1 support backported (bsc#1055322)
+
+-------------------------------------------------------------------
+Thu Jul  6 09:06:31 UTC 2017 - adam.majer@suse.de
+
+- update to version 4.0.6
+  + fixes ed25519 signer
+  + update root-servers.net entries
+  + fixes handling of expired cache entries so they expire faster
+
+-------------------------------------------------------------------
+Tue Jul  4 09:36:57 UTC 2017 - adam.majer@suse.de
+
+- Enable DNSSEC validation by default. 
+
+-------------------------------------------------------------------
+Tue Jun 13 11:46:11 UTC 2017 - adam.majer@suse.de
+
+- update to version 4.0.5
+  + adds ed25519 (algorithm 15) support for DNSSEC
+  + adds the 2017 DNSSEC root key
+  + complete changeset is available at,
+  https://doc.powerdns.com/md/changelog/#powerdns-recursor-405
+
+-------------------------------------------------------------------
+Thu May 11 20:26:11 UTC 2017 - mrueckert@suse.de
+
+- move autoreconf into the build section
+
+-------------------------------------------------------------------
+Thu Feb  2 10:37:01 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+- add signature file for upstream release
+
+-------------------------------------------------------------------
+Fri Jan 13 12:25:19 UTC 2017 - adam.majer@suse.de
+
+- update to version 4.0.4
+  The following security advisories were fixed
+  - 2016-02: Crafted queries can cause abnormal CPU usage
+  (CVE-2016-7068, boo#1018326)
+  - 2016-04: Insufficient validation of TSIG signatures
+  (CVE-2016-2120, boo#1018329)
+  complete changeset is availalbe at,
+  https://doc.powerdns.com/md/changelog/#powerdns-recursor-404
+- remove 4462.patch: in upstream release.
+
+-------------------------------------------------------------------
+Mon Dec 12 17:10:32 UTC 2016 - dimstar@opensuse.org
+
+- BuildRequire pkgconfig(libsystemd) instead of
+  pkgconfig(libsystemd-daemon): these libs were merged in systemd
+  209 times. The build system is capable of finding either one.
+
+-------------------------------------------------------------------
+Tue Sep 13 13:42:33 UTC 2016 - adam.majer@suse.de
+
+- 4462.patch:
+  Disable fcontext usage with Boost 1.61+ and revert back to
+  slower SystemV ucontext. This fixes failure to build with
+  newer Boost version. (boo#998408)
+
+-------------------------------------------------------------------
+Tue Sep  6 21:54:15 UTC 2016 - mrueckert@suse.de
+
+- update to 4.0.3
+  A new release for the PowerDNS Recursor with version 4.0.3 is
+  available. This release has many fixes and improvements in the
+  Policy Engine (RPZ) and the Lua bindings to it. Therefore, we
+  recommend users of RPZ to upgrade to this release. We would like
+  to thank Wim (42wim on github) for testing and reporting on the
+  RPZ module.
+
+  Bug fixes
+  - #4350: Call gettag() for TCP queries
+  - #4376: Fix the use of an uninitialized filtering policy
+  - #4381: Parse query-local-address before lua-config-file
+  - #4383: Fix accessing an empty policyCustom, policyName from Lua
+  - #4387: ComboAddress: don’t allow invalid ports
+  - #4388: Fix RPZ default policy not being applied over IXFR
+  - #4391: DNSSEC: Actually follow RFC 7646 §2.1
+  - #4396: Add boost context ldflags so freebsd builds can find the
+    libs
+  - #4402: Ignore NS records in a RPZ zone received over IXFR
+  - #4403: Fix build with OpenSSL 1.1.0 final
+  - #4404: Don’t validate when a Lua hook took the query
+  - #4425: Fix a protobuf regression (requestor/responder mix-up)
+  Additions and Enhancements
+  - #4394: Support Boost 1.61+ fcontext
+  - #4402: Add Lua binding for DNSRecord::d_place
+
+-------------------------------------------------------------------
+Sun Sep  4 11:41:48 UTC 2016 - michael@stroeder.com
+
+- update to 4.0.2
+  Bug fixes
+  - #4264: Set dq.rcode before calling postresolve
+  - #4294: Honor PIE flags.
+  - #4310: Fix build with LibreSSL, for which
+    OPENSSL_VERSION_NUMBER is irrelevant
+  - #4340: Don't shuffle CNAME records. (thanks to Gert van Dijk
+    for the extensive bug report!)
+  - #4354: Fix delegation-only
+  Additions and enhancements
+  - #4288: Respect the timeout when connecting to a protobuf server
+  - #4300: allow newDN to take a DNSName in; document missing
+    methods
+  - #4301: expose SMN toString to lua
+  - #4318: Anonymize the protobuf ECS value as well (thanks to Kai
+    Storbeck of XS4All for finding this)
+  - #4324: Allow Lua access to the result of the Policy Engine
+    decision, skip RPZ, finish RPZ implementation
+  - #4349: Remove unused DNSPacket::d_qlen
+  - #4351: RPZ: Use query-local-address(6) by default (thanks to
+    Oli Schacher of switch.ch for the bug report)
+  - #4357: Move the root DNSSEC data to a header file
+
+-------------------------------------------------------------------
+Sat Jul 30 12:38:43 UTC 2016 - michael@stroeder.com
+
+- update to 4.0.1
+  Bug fixes
+  - #4119 Improve DNSSEC record skipping for non dnssec queries
+    (Kees Monshouwer)
+  - #4162 Don't validate zones from the local auth store, go one
+    level down while validating when there is a CNAME
+  - #4187:
+    - Don't go bogus on islands of security
+    - Check all possible chains for Insecures
+    - Don't go Bogus on a CNAME at the apex
+  - #4215 RPZ: default policy should also override local data RRs
+  - #4243 Fix a crash when the next name in a chained query is
+    empty and rec_control current-queries is invoked
+  Improvements
+  - #4056 OpenSSL 1.1.0 support (Christian Hofstaedtler)
+  - #4140 Fix warnings with gcc on musl-libc (James Taylor)
+  - #4160 Also validate on +DO
+  - #4164 Fail to start when the lua-dns-script does not exist
+  - #4168 Add more Netmask methods for Lua (Aki Tuomi)
+  - #4210 Validate DNSSEC for security polling
+  - #4217 Turn on root-nx-trust by default and
+    log-common-errors=off
+  - #4207 Allow for multiple trust anchors per zone
+  - #4242 Fix compilation warning when building without Protobuf
+  - #4133 Add limits to the size of received {A,I}XFR
+    (CVE-2016-6172)
+
+-------------------------------------------------------------------
+Mon Jul 11 15:22:49 UTC 2016 - mrueckert@suse.de
+
+- update to 4.0.0
+  https://blog.powerdns.com/2016/07/11/powerdns-recursor-4-0-0-released/
+  https://blog.powerdns.com/2016/07/11/welcome-to-powerdns-4-0-0/
+- packaging changes:
+  - enabled protobuf based stats
+  - enabled botan based code
+  - use upstream systemd files
+
+-------------------------------------------------------------------
+Tue Jul 21 15:14:36 UTC 2015 - mrueckert@suse.de
+
+- do not use /run/pdns instead of /var/run/pdns in the init script
+  for the rest we have the systemd unit file
+
+-------------------------------------------------------------------
+Tue Jun  9 18:53:28 UTC 2015 - michael@stroeder.com
+
+- update to 3.7.3 will prevent short bursts of high
+  resource usage with malformed qnames.
+
+-------------------------------------------------------------------
+Wed Apr 29 07:13:09 UTC 2015 - mrueckert@suse.de
+
+- call systemd-tmpfiles during installation
+
+-------------------------------------------------------------------
+Thu Apr 23 12:21:59 UTC 2015 - michael@stroeder.com
+
+- update to 3.7.2 with a fix for CVE-2015-1868 (boo# 927569)
+  Bug fixes:
+  - commit adb10be commit 3ec3e0f commit dc02ebf Fix handling of
+    forward references in label compressed packets; fixes
+    CVE-2015-1868
+  - commit a7be3f1: make sure we never call sendmsg with
+    msg_control!=NULL && msg_controllen>0. Fixes ticket #2227
+  - commit 9d835ed: Improve robustness of root-nx-trust.
+  Improvements:
+  - commit 99c595b: Silence warnings that always occur on FreeBSD
+    (Ruben Kerkhof)
+
+-------------------------------------------------------------------
+Thu Feb 12 15:05:49 UTC 2015 - mrueckert@suse.de
+
+- update to 3.7.1
+  This version contains a mix of speedups and improvements, the combined effect
+  of which is vastly improved resilience against traffic spikes and malicious
+  query overloads. 
+  Minor changes:
+  - Removal of dead code here and there
+    04dc6d618734fc630122de4c56dff641ebaf0988
+  - Per-qtype response counters are now 64 bit
+    297bb6acf7902068693a4aae1443c424d0e8dd52 on 64 bit systems
+  - Add IPv6 addresses for b and c.root-servers.net hints
+    efc2595423c9a1be6f2d8f4da25445198ceb8b57
+  - Add IP address to logging about terminated queries
+    37aa9904d1cc967ba4b5d5e17dbe41485f8cdece
+  - Improve qtype name logging
+    fab3ed3453e15ae88e29a0e4071b214eb19caad9 (Aki Tuomi)
+  - Redefine 'BAD_NETS' for dont-query based on newer IANA guidance
+    12cd44ee0fcde5893f85dccc499bfc35152c5fff (lochiiconnectivity)
+  - Add documentation links to systemd unit
+    eb154adfdffa5c78624e2ea98e938d7b5787119e (Ruben Kerkhof)
+  Improvements:
+  - Upgrade embedded PolarSSL to 1.3.9:
+    d330a2ea1a93d7675ef680311f8aa0306aeefcf1
+  - yahttp upgrade c290975778942ed1082ca66918695a5bd2d6bac4
+    c65a57e888ee48eaa948e590c90c51420bffa847 (Aki Tuomi)
+  - Replace . in hostnames by - for Carbon so as not to confuse
+    Metronome 46541751ed1c3bc051d78217543d5fc76733e212 
+  - Manpages got a lot of love and are now built from Markdown
+    (Pieter Lexis)
+  - Move to PolarSSL base64
+    488360551009784ab35c43ee4580e773a2a8a227 (Kees Monshouwer)
+  - The quiet=no query logging is now more informative
+    461df9d20c560d240285f772c09b3beb89d46daa
+  - We can finally bind to 0.0.0.0 and :: and guarantee answers
+    from the correct source
+    b71b60ee73ef3c86f80a2179981eda2e61c4363f
+  - We use per-packet timestamps to drop ancient traffic in case of
+    overload b71b60ee73ef3c86f80a2179981eda2e61c4363f, non-Linux
+    portability in d63f0d83631c41eff203d30b0b7c475a88f1db59
+  - Builtin webserver can be queried with the API key in the URL
+    again c89f8cd022c4a9409b95d22ffa3b03e4e98dc400
+  - Ringbuffers are now available via API
+    c89f8cd022c4a9409b95d22ffa3b03e4e98dc400
+  - Lua 5.3 compatibility 59c6fc3e3931ca87d484337daee512e716bc4cf4
+    (Kees Monshouwer)
+  - No longer leave a stale UNIX domain socket around from
+    rec_control if the recursor was down
+    524e4f4d81f4ed9eb218715cbc8a59f0b9868234, ticket #2061
+  - Running with 'quiet=no' would strangely actually prevent debug
+    messages from being logged
+    f48d7b657ec32517f8bfcada3bfe6353ca313314
+  - Webserver now implements CORS for the API
+    ea89a97e864c43c1cb03f2959ad04c4ebe7580ad, fixing ticket #1984
+  - Houskeeping thread would sometimes run multiple times
+    simultaneously, which worked, but was odd
+    cc59bce675e62e2b9657b42614ce8be3312cae82
+  New features:
+  - New `root-nx-trust` flag makes PowerDNS generalize NXDOMAIN
+    responses from the root-servers
+    01402d56846a3a61811ebd4e6bc97e53f908e568
+  - `getregisteredname()` for Lua, which turns 'www.bbc.co.uk' into
+    'bbc.co.uk' 8cd4851beb78bc6ab320926fb5cb6a09282016b1
+  - Lua preoutquery filter 3457a2a0ec41d3b3aff7640f30008788e1228a6e
+  - Lua IP-based filter (ipfilter) before parsing packets
+    4ea949413c495254acb0bd19335142761c1efc0c
+  - `iputils` class for Lua, to quickly process IP addresses and
+    netmasks in their native format
+  - `getregisteredname` function for Lua, to find the registered
+    domain for a given name
+  - Various new ringbuffers: top-servfail-remotes,
+    top-largeanswer-remotes, top-servfail-queries
+  Speedups:
+  - Remove unneeded malloc traffic
+    93d4a89096e64d53740790f58fadec56f6a0af14
+    8682c32bc45b6ffa7c0f6da778e1b223ae7f03ce
+    a903b39cfe7364c56324038264d3db50b8cece87
+  - Our nameserver-loop detection carried around a lot of baggage
+    for complex domain names, plus did not differentiate IPv4 and
+      IPv6 well enough 891fbf888ccac074e3edc38864641ca774f2f03c
+  - Prioritize new queries over nameserver responses, improving
+    latency under query bursts
+    bf3b0cec366c090af000b066267b6f6bbb3a512a
+  - Remove escaping in case there was nothing to escape
+    83b746fd1d94c8742d8bd87a44beb44c154230c7
+  - Our logging infrastructure had a lot of locking
+    d1449e4d073595e1e1581804f121fc90e37158bf
+  - Reduce logging level of certain common messages, which locked
+    up synchronously logging systems
+    854d44e31c76aa650520e6d462dd3a02b5936f7a
+  - Add limit on total wall-clock time spent on a query
+    9de3e0340fa066d4c59449e1643a1de8c343f8f2
+  - Packet cache is now case-insensitive, which increases hitrate
+    90974597aadaf1096e3fd0dc450be7422ea591a5
+  Security relevant:
+  - Check for PIE, RELRO and stack protector during configure
+    8d0354b189c12e1e14f5309d3b49935c17f9eeb0 (Aki Tuomi)
+  - Testing for support of PIE etc was improved in
+    b2053c28ccb9609e2ce7bcb6beda83f98a062aa3 and beyond, fixes
+    #2125 (Ruben Kerkhof)
+  - Max query-per-query limit (max-qperq) is now configurable
+    173d790ead08f67733010ca4c6fc404a040fe699
+  Bugs fixed:
+  - IPv6 outgoing queries had a disproportionate effect on our
+    query load. Fixed in 76f190f2a0877cd79ede2994124c1a58dc69ae49
+    and beyond.
+  - rec_control gave incorrect output on a timeout
+    12997e9d800734da51b808767e1e2477244c30eb
+  - When using the webserver AND having an error in the Lua script,
+    recursor could crash during startup
+    62f0ae62984adadab687c23fe1b287c1f219b2cb
+  - Hugely long version strings would trip up security polling
+    18b7333828a1275ae5f5574a9c8330290d8557ff (Kees Monshouwer)
+  - The 'remotes' ringbuffer was sized incorrectly
+    f8f243b01215d6adcb59389f09ef494f1309041f
+  - Cache sizes had an off-by-one scaling problem, with the wrong
+    number of entries allocated per thread
+    f8f243b01215d6adcb59389f09ef494f1309041f
+  - Our automatic file descriptor limit raising was attempted
+    *after* setuid, which made it a lot less effective. Found and
+    fixed by Aki Tuomi a6414fdce9b0ec32c340d1f2eea2254f3fedc1c1
+  - Timestamps used for dropping packets were occasionaly wrong
+    183eb8774e4bc2569f06d5894fec65740f4b70b6 and
+    4c4765c104bacc146533217bcc843efb244a8086 (RC2) with thanks to
+    Winfried for debugging.
+  - In RC1, our new DoS protection measures would crash the
+    Recursor if too many root servers were unreachable.
+    6a6fb05ad81c519b4002ed1db00f3ed9b7bce6b4. Debugging and testing
+    by Fusl.
+- remove pdns-rec-lua52.patch:
+  no longer needed
+
+-------------------------------------------------------------------
+Sun Nov  9 16:51:15 UTC 2014 - michael@stroeder.com
+
+- Fixed broken _localstatedir
+
+-------------------------------------------------------------------
+Thu Oct 30 15:37:11 UTC 2014 - michael@stroeder.com
+
+- update to upstream release 3.6.2 (boo# 906583) CVE-2014-8601
+
+This is a bugfix update to 3.6.1.
+
+ A list of changes since 3.6.1 follows.
+
+     * gab14b4f: expedite servfail generation for ezdns-like
+       failures (fully abort query resolving if we hit more than
+       50 outqueries)
+
+     * g42025be: PowerDNS now polls the security status of a
+       release at startup and periodically. More detail on this
+       feature, and how to turn it off, can be found in Section 2,
+       "Security polling".
+
+     * g5027429: We did not transmit the right 'local' socket
+       address to Lua for TCP/IP queries in the recursor. In
+       addition, we would attempt to lookup a filedescriptor that
+       wasn't there in an unlocked map which could conceivably
+       lead to crashes. Closes t1828, thanks Winfried for
+       reporting
+
+     * g752756c: Sync embedded yahttp copy. API: Replace HTTP
+       Basic auth with static key in custom header
+
+     * g6fdd40d: add missing #include <pthread.h> to
+       rec-channel.hh (this fixes building on OS X).
+
+-------------------------------------------------------------------
+Tue Oct 28 11:29:39 UTC 2014 - mrueckert@suse.de
+
+- sync permissions/ownership of home and config dir with the pdns
+  package
+
+-------------------------------------------------------------------
+Thu Sep 11 14:22:33 UTC 2014 - mrueckert@suse.de
+
+- added systemd support for 12.3 and newer
+
+-------------------------------------------------------------------
+Thu Sep 11 14:02:12 UTC 2014 - mrueckert@suse.de
+
+- update to 3.6.1
+  PowerDNS Recursor 3.6.0 could crash with a specific sequence of
+  packets. For more details, see Section 13, “PowerDNS Security
+  Advisory 2014-01: PowerDNS Recursor 3.6.0 can be crashed
+  remotely”. PowerDNS Recursor 3.6.1 was very well tested, and is
+  in full production already, so it should be a safe upgrade.
+  For all the details see
+  http://doc.powerdns.com/html/changelog.html#changelog-recursor-3.6.1
+- additional changes from 3.6.0
+  This is a performance, feature and bugfix update to 3.5/3.5.3. It
+  contains important fixes for slightly broken domain names, which
+  your users expect to work anyhow. It also brings robust
+  resilience against certain classes of attacks.
+  For all the details see
+  http://doc.powerdns.com/html/changelog.html#changelog-recursor-3.6.0
+- refreshed pdns-rec-lua52.patch
+- replaced pdns-recursor-3.2rc1-strip.patch and 
+  pdns-recursor-3.5.3_config.patch with cmdline options on the make
+  commandline.
+
+-------------------------------------------------------------------
+Sat Aug  9 10:04:04 UTC 2014 - dimstar@opensuse.org
+
+- Move control files from /var/run/pdns to /run/pdns.
+
+-------------------------------------------------------------------
+Tue Sep 17 19:09:16 UTC 2013 - michael@stroeder.com
+
+- update to upstrean release 3.5.3
+  This is a bugfix and performance update to 3.5.2. It brings
+  serious performance improvements for dual stack users.
+  For all the details see
+  http://doc.powerdns.com/html/changelog.html#changelog-recursor-3.5.3
+- Remove patch (pdns-recursor-3.3_config.patch)
+- Add patch (pdns-recursor-3.5.3_config.patch)
+
+-------------------------------------------------------------------
+Fri Jun  7 09:02:46 UTC 2013 - michael@stroeder.com
+
+- update to upstrean release 3.5.2
+  This is a stability and bugfix update to 3.5.1.
+  - Responses without the QR bit set now get matched up to an
+    outstanding query, so that resolution can be aborted early
+    instead of waiting for a timeout.
+  - The depth limiter changes in 3.5.1 broke some legal domains
+    with lots of indirection.
+  - Slightly improved logging to aid debugging.
+
+-------------------------------------------------------------------
+Sun May 19 01:14:50 UTC 2013 - mrueckert@suse.de
+
+- update to version 3.5.1
+  This is a stability and bugfix update to 3.5. It contains important
+  fixes that improve operation for certain domains.
+  This is a stability, security and bugfix update to 3.3/3.3.1. It
+  contains important fixes for slightly broken domain names, which
+  your users expect to work anyhow. For all details see
+  http://doc.powerdns.com/html/changelog.html#changelog-recursor-3.5.1
+- adapted patches:
+  pdns-rec-lua52.patch
+  pdns-recursor-3.5.1_config.patch
+- fixed conditional for different lua versions
+- started some basic support to build packages for non suse distros
+
+-------------------------------------------------------------------
+Mon Nov 19 22:13:24 UTC 2012 - dimstar@opensuse.org
+
+- Fix useradd invocation: -o is useless without -u and newer
+  versions of pwdutils/shadowutils fail on this now. 
+
+-------------------------------------------------------------------
+Tue Oct  9 14:17:26 UTC 2012 - crrodriguez@opensuse.org
+
+- Use LUA 5.2  
+
+-------------------------------------------------------------------
+Wed Apr 18 15:23:15 UTC 2012 - mrueckert@suse.de
+
+- update to version 3.3
+  fixes a number of small but persistent issues, rounds off our
+  IPv6 %link-level support and adds an important feature for many
+  users of the Lua scripts. For all details see
+  http://doc.powerdns.com/changelog.html#changelog-recursor-3-3
+- Build binaries as PIE.
+- refreshed config patch:
+  old: pdns-recursor-3.2_config.patch
+  new: pdns-recursor-3.3_config.patch
+- fix lua linking on factory
+
+-------------------------------------------------------------------
+Mon Feb 13 10:51:54 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Wed Apr 28 09:53:33 UTC 2010 - mrueckert@suse.de
+
+- create /var/run/pdns directory in the init script and package it
+  as ghost.
+
+-------------------------------------------------------------------
+Fri Mar 12 12:01:31 UTC 2010 - mrueckert@suse.de
+
+- update to version 3.2
+  The 3.2 release is the first major release of the PowerDNS
+  Recursor in a long time. Partly this is because 3.1.7.*
+  functioned very well, and delivered satisfying performance,
+  partly this is because in order to really move forward, some
+  heavy lifting had to be done.
+  This version of the PowerDNS Recursor contains a rather novel
+  form of lock-free multithreading, a situation that comes close to
+  the old '--fork' trick, but allows the Recursor to fully utilize
+  multiple CPUs, while delivering unified statistics and
+  operational control.
+  In effect, this delivers the best of both worlds: near linear
+  scaling, with almost no administrative overhead.
+  http://doc.powerdns.com/changelog.html#CHANGELOG-RECURSOR-3-2
+- patches dropped:
+  pdns-recursor-3.1.7.1_atomicity.patch
+  pdns-recursor-3.1.7.1_lua.patch
+- patches refreshed for the update:
+  old name: pdns-recursor-3.1.7.1-strip.patch
+  new name: pdns-recursor-3.2rc1-strip.patch
+  old name: pdns-recursor-3.1.7.2_config.patch
+  new name: pdns-recursor-3.2_config.patch
+
+-------------------------------------------------------------------
+Fri Jan  8 04:33:27 UTC 2010 - mrueckert@suse.de
+
+- update to version 3.1.7.2
+  This release consist of a number of vital security updates. These
+  updates address issues that can in all likelihood lead to a full
+  system compromise.  In addition, it is possible for third parties
+  to pollute your cache with dangerous data, exposing your users to
+  possible harm.
+  http://rtfm.powerdns.com/powerdns-advisory-2010-01.html
+  http://rtfm.powerdns.com/powerdns-advisory-2010-02.html
+  CVE-2009-4009
+
+-------------------------------------------------------------------
+Wed Nov 11 17:34:48 CET 2009 - mrueckert@suse.de
+
+- update to version 3.1.7.1
+  This release consists entirely of fixes for tiny bugs that have
+  been reported over the past year. In addition, compatibility has
+  been restored with the latest versions of the gcc compiler and
+  the 'boost' libraries.
+  No features have been added, but some debugging code that very
+  slightly impacted performance (and polluted the console when
+  operating in the foreground) has been removed. 
+  - Improved error messages when parsing zones for authoritative
+    serving (commit 1235).
+  - Better resilience against whitespace in configuration
+    (changesets 1237, 1240, 1242)
+  - Slight performance increase (commit 1378)
+  - Fix rare case where timeouts were not being reported to the
+    right query-thread (commit 1260)
+  - Fix compilation against newer versions of the Boost C++
+    libraries (commit 1381)
+  - Close very rare issue with TCP/IP close reporting ECONNRESET on
+    FreeBSD. Reported by Andrei Poelov in ticket 192.
+  - Silence debugging output (commit 1286).
+  - Fix compilation against newer versions of gcc (commit 1384)
+  - No longer set export-etc-hosts to 'on' on reload-zones.
+    Discovered by Paul Cairney, closes ticket 225.
+  - Sane default for the maximum cache size in the Recursor,
+    suggested by Roel van der Made (commit 1354).
+  - No longer exit because of the changed behaviour of the Solaris
+    'completion ports' in more recent versions of Solaris. Fix in
+    commit 1372, reported by Jan Gyselinck
+- update to version 3.1.7
+  This version contains powerful scripting abilities, allowing
+  operators to modify DNS responses in many interesting ways. Among
+  other things, these abilities can be used to filter out malware
+  domains, to perform load balancing, to comply with legal and
+  other requirements and finally, to implement 'NXDOMAIN'
+  redirection.
+  It is hoped that the addition of Lua scripting will enable
+  responsible DNS modification for those that need it.
+  For more details about the Lua scripting, which can be modified,
+  loaded and unloaded at runtime, see Section 12.6. Many thanks are
+  due to the #lua irc channel, for excellent near-realtime Lua
+  support. In addition, a number of PowerDNS users have been
+  enthousiastically testing prereleases of the scripting support,
+  and have found and solved many issues. 
+  - In 3.1.5 and 3.1.6, an authoritative server could continue to
+    renew its authority, even though a domain had been delegated to
+    other servers in the meantime.
+  - In the rare cases where this happened, and the old servers were
+    not shut down, the observed effect is that users were fed
+    outdated data.
+  - Bug spotted and analysed by Darren Gamble, fix in commit 1182
+    and commit 1183.
+  - Thanks to long time PowerDNS contributor Stefan Arentz, for the
+    first time, Mac OS X 10.5 users can compile and run the
+    PowerDNS Recursor! Patch in commit 1185.
+  - Sten Spans spotted that for outgoing TCP/IP queries, the
+    query-local-address setting was not honored. Fixed in commit
+    1190.
+  - rec_control wipe-cache now also wipes domains from the negative
+    cache, hurrying up the expiry of negatively cached records.
+    Suggested by Simon Kirby, implemented in commit 1204.
+  - When a forwarder server is configured for a domain, using the
+    forward-zones setting, this server IP address was filtered
+    using the dont-query setting, which is generally not what is
+    desired: the server to which queries are forwarded will often
+    live in private IP space, and the operator should be trusted to
+    know what he is doing. Reported and argued by Simon Kirby, fix
+    in commit 1211.
+  - Marcus Rueckert of OpenSUSE reported that very recent gcc
+    versions emitted a (correct) warning on an overly complicated
+    line in syncres.cc, fixed in commit 1189.
+  - Stefan Schmidt discovered that the netmask matching code, used
+    by the new Lua scripts, but also by all other parts of
+    PowerDNS, had problems with explicit '/32' matches. Fixed in
+    commit 1205.
+- added pdns-recursor-3.1.7.1_lua.patch
+  fix linking with lua
+- dropping patches included upstream:
+  pdns-recursor-3.1.4_char_casting.patch
+  pdns-recursor-3.1.4_r965.patch
+  pdns-recursor-3.1.4_gcc43.patch
+- refreshed patches:
+  old: pdns-recursor-3.1.3-strip.patch
+  new: pdns-recursor-3.1.7.1-strip.patch
+  old: pdns-recursor-3.1.4_atomicity.patch
+  new: pdns-recursor-3.1.7.1_atomicity.patch
+  old: pdns-recursor-3.1.4_config.patch
+  new: pdns-recursor-3.1.7.1_config.patch
+
+-------------------------------------------------------------------
+Tue Jun  9 15:40:32 CEST 2009 - coolo@novell.com
+
+- fix build with gcc 4.4
+
+-------------------------------------------------------------------
+Thu Nov 20 15:48:47 CET 2008 - mrueckert@suse.de
+
+- fix typo in pdns-recursor-3.1.5_config.patch: (bnc#446608)
+  pdns_recursor was looking for the config file in the wrong path
+- added pdns-recursor-3.1.7_lua.patch:
+  use pkg-config to find the CFLAGS/LIBS for the lua support
+
+-------------------------------------------------------------------
+Thu Nov  6 15:59:34 CET 2008 - mrueckert@suse.de
+
+- added pdns-recursor-3.1.7_new_boost_exceptions.patch:
+  clearify the referenced exception class
+
+-------------------------------------------------------------------
+Mon Sep  8 15:17:27 CEST 2008 - anosek@suse.cz
+
+- updated to version 3.1.7
+  * this version contains powerful scripting abilities, allowing
+    operators to modify DNS responses in many interesting ways.
+    Among other things, these abilities can be used to filter out
+    malware domains, to perform load balancing, to comply with legal
+    and other requirements and finally, to implement 'NXDOMAIN'
+    redirection. 
+  * number of bugfixes
+- dropped obsoleted patches:
+  (svn_fixes.patch) (make_it_compile.patch)
+
+-------------------------------------------------------------------
+Tue May 20 15:18:16 CEST 2008 - mrueckert@suse.de
+
+- backport the fixes from 3.1.6
+  - The new high-quality random generator was not used for all
+    random numbers, especially in source port selection.
+    (bnc#375400)
+  - fix issue resolving popular domains where one of the
+    nameservers is suffering from a timeout.
+- added pdns-recursor-3.1.6_make_it_compile.patch:
+  missing <limits> include broke build
+- added pdns-recursor-3.1.6_parentheses_warning.patch:
+  fix small warning about missing parentheses (disabled for now)
+
+-------------------------------------------------------------------
+Wed Apr  2 11:50:30 CEST 2008 - anosek@suse.cz
+
+- updated to version 3.1.5
+  New features:
+  *  Implemented rec_control command get uptime
+  *  The Recursor Authorative component, meant for having
+     the Recursor serve some zones authoritatively, now supports
+     $INCLUDE and $GENERATE.
+  *  Implemented forward-zones-file option in order to support
+     larger amounts of zones which should be forwarded
+     to another nameserver.
+  *  Both forward-zones and forward-zones-file can now specify
+     multiple forwarders per domain.
+  *  Sten Spans contributed allow-from-file. This feature allows
+     the Recursor to read access rules from a (large) file. 
+  Several improvements and bugfixes as well
+- fixes VUL-0: pdns DNS spoofing vulnerability (bnc#375400)
+- dropped patches applied by upstream:
+  (char_casting.patch), (r965.patch), (gcc43.patch)
+
+-------------------------------------------------------------------
+Sun Oct 28 19:58:38 CET 2007 - mrueckert@suse.de
+
+- added pdns-recursor-3.1.4_gcc43.patch:
+  fix all warnings in pdns-recursor. (patch is upstream)
+
+-------------------------------------------------------------------
+Wed Jul 25 00:23:32 CEST 2007 - mrueckert@suse.de
+
+- added pdns-recursor-3.1.4_r965.patch:
+  fix building on 10.0
+
+-------------------------------------------------------------------
+Wed Feb 28 13:33:08 CET 2007 - mrueckert@suse.de
+
+- added pdns-recursor-3.1.4_atomicity.patch:
+  The optimized code in recursor_cache.cc is included in gcc 4.2.
+  Proper #if to use it only with older gcc.
+- added pdns-recursor-3.1.4_char_casting.patch
+  Don't cast string constants to char*.
+
+-------------------------------------------------------------------
+Tue Nov 14 13:40:12 CET 2006 - mrueckert@suse.de
+
+- update to version 3.1.4
+  This release contains two important security fixes, which should also solve
+  the very rare reports of stability problems. Additionally, a new class of
+  misconfigured domains will now always be resolved correctly, instead of
+  intermittently.
+- removed patches applied upstream:
+  pdns-recursor-3.1.3_2006-02.patch
+  pdns-recursor-3.1.3_cve-2006-4251.patch
+  pdns-recursor-3.1.3_implicit_declarations.patch
+
+-------------------------------------------------------------------
+Mon Nov 13 16:11:47 CET 2006 - mrueckert@suse.de
+
+- added pdns-recursor-3.1.3_2006-02.patch:
+  fix an endless recursion in CNAME handling [#219355]
+
+
+-------------------------------------------------------------------
+Sat Nov 11 22:52:52 CET 2006 - mrueckert@suse.de
+
+- added pdns-recursor-3.1.3_cve-2006-4251.patch:
+  fix a stack corruption with malformed packages [#219355]
+- added pdns-recursor-3.1.3_implicit_declarations.patch:
+  fix an implicit declaration warning from gcc
+  http://wiki.powerdns.com/cgi-bin/trac.fcgi/changeset/920
+
+-------------------------------------------------------------------
+Mon Nov  6 19:58:30 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Mon Oct 23 18:08:19 CEST 2006 - mrueckert@suse.de
+
+- initial package of version 3.1.3
+

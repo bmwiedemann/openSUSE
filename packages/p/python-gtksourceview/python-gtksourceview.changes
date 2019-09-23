@@ -1,0 +1,117 @@
+-------------------------------------------------------------------
+Sat Mar 10 09:14:36 UTC 2018 - jengelh@inai.de
+
+- Update descriptions. Replace xargs by find's internal methods.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:39:07 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Aug  9 09:00:48 UTC 2016 - dimstar@opensuse.org
+
+- Unconditionally BuildRequire pkg-config.
+
+-------------------------------------------------------------------
+Fri Mar  1 12:46:38 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Mon Apr 11 08:56:10 UTC 2011 - fcrozat@novell.com
+
+- Update Requires/BuildRequires to use
+  pkgconfig(gtksourceview-2.0) instead of gtksourceview-devel.
+
+-------------------------------------------------------------------
+Sun Feb 13 17:33:08 CET 2011 - vuntz@opensuse.org
+
+- Remove 2.x references in summaries and descriptions.
+
+-------------------------------------------------------------------
+Sun Jul 18 19:00:13 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 2.10.1:
+  + Fix return value of get_indent_width().
+
+-------------------------------------------------------------------
+Wed Mar 31 01:58:55 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.10.0:
+  + Add API to handle "context classes"
+
+-------------------------------------------------------------------
+Tue Feb 23 11:32:26 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.9.2:
+  + Adapted to API changes in GtkSourceCompletion
+  + Add new gtksourceview API (GtkSourceUndoManager)
+
+-------------------------------------------------------------------
+Thu Dec  3 00:30:03 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.9.1:
+  + Add new gtksourceview API (GtkSourceCompletion)
+
+-------------------------------------------------------------------
+Tue Sep 29 10:26:35 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.8.0:
+  + new stable release
+- Changes from version 2.7.0:
+  + Add new 2.8.0 gtksourceview API.
+  + Some misc bug fix
+  + Fix build with libtool 2.x.
+  + Autogenerate Changelog from git logs
+
+-------------------------------------------------------------------
+Mon Mar 23 13:58:43 CET 2009 - vuntz@novell.com
+
+- Update to version 2.6.0:
+  + Just a version bump.
+
+-------------------------------------------------------------------
+Fri Mar  6 14:13:49 CET 2009 - vuntz@novell.com
+
+- Update to version 2.5.0:
+  + Added NBSP to draw spaces
+- Remove checks for old versions of openSUSE.
+- Remove unneeded call to autoreconf.
+- Remove BuildRequires: gcc-c++, gnome-common,
+  gnome-doc-utils-devel, gnome-patch-translation, gtk-doc,
+  gtk2-devel, intltool.
+- Remove AutoReqProv: it's default now.
+
+-------------------------------------------------------------------
+Fri Oct  3 15:34:47 WST 2008 - mboman@suse.de
+
+- Update to version 2.4.0:
+  + New stable release 
+
+-------------------------------------------------------------------
+Fri Sep 05 23:25:03 CEST 2008 - mboman@novell.com
+
+- Update to version 2.3.0:
+  + add an unofficial distutils based buildsystem that alllows to create
+    win32 installers.
+  + Add new 2.3.0 gtksourceview API.
+  + remove gnomevfs dependency, use gio instead.
+
+-------------------------------------------------------------------
+Thu Apr 24 23:25:03 CEST 2008 - maw@suse.de
+
+- Import package from the build service (thanks, Sukimashita!)
+- Split out a -devel subpackage.
+
+-------------------------------------------------------------------
+Sat Mar 15 2008 opensuse@sukimashita.com
+
+- Update to 2.2
+  - API updates
+
+-------------------------------------------------------------------
+Sun Oct 07 2007 opensuse@sukimashita.com
+
+- Initial Package
+

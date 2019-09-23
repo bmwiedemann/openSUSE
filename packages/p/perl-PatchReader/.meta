@@ -1,0 +1,6 @@
+<package name="perl-PatchReader" project="openSUSE:Factory">
+  <title>Utilities to Read and Manipulate Patches and CVS</title>
+  <description>This perl library allows you to manipulate patches programmatically by chaining together a variety of objects that read, manipulate, and output patch information
+  </description>
+  <devel project="devel:languages:perl" package="perl-PatchReader"/>
+</package>

@@ -1,0 +1,9 @@
+<package name="perl-Clone" project="openSUSE:Factory">
+  <title>Recursively copy Perl datatypes</title>
+  <description>This module provides a clone() method which makes recursive copies of
+nested hash, array, scalar and reference types, including tied variables
+and objects.
+
+For a slower, but more flexible solution see Storable's dclone().</description>
+  <devel project="devel:languages:perl" package="perl-Clone"/>
+</package>

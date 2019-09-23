@@ -1,0 +1,20 @@
+Index: amanda-3.5/perl/Amanda/Config.c
+===================================================================
+--- amanda-3.5.orig/perl/Amanda/Config.c
++++ amanda-3.5/perl/Amanda/Config.c
+@@ -1845,6 +1845,7 @@ val_t_to_sv(val_t *val, SV **results) {
+ 
+ fail:
+     SWIG_croak_null();
++    return 0;
+ }
+ 
+ 
+@@ -2258,6 +2259,7 @@ val_t_to_print(val_t *val, SV **results)
+ 
+ fail:
+     SWIG_croak_null();
++    return 0;
+ }
+ 
+ 

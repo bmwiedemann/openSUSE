@@ -1,0 +1,176 @@
+-------------------------------------------------------------------
+Tue Jan 29 07:42:24 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- switch the default ruby to 2.6
+
+-------------------------------------------------------------------
+Tue Nov 14 12:56:17 CET 2017 - behlert@suse.de
+
+- switch the default ruby to 2.5 
+
+-------------------------------------------------------------------
+Tue Jul 11 06:42:29 UTC 2017 - coolo@suse.com
+
+- switch the default ruby to 2.4
+
+-------------------------------------------------------------------
+Wed Feb 18 13:43:01 UTC 2015 - coolo@suse.com
+
+- bump version
+
+-------------------------------------------------------------------
+Wed Sep 10 15:25:10 UTC 2014 - mrueckert@suse.de
+
+- to make it easier to migrate from the old scheme to the new
+  scheme BuildIgnore: ruby aswell
+
+-------------------------------------------------------------------
+Tue Sep  9 17:44:06 UTC 2014 - mrueckert@suse.de
+
+- cleaned up buildrequires/requires and added buildignore for rubygem-gem2rpm
+
+-------------------------------------------------------------------
+Mon Jun 23 10:02:27 UTC 2014 - mrueckert@suse.de
+
+- remove obsolete expand line
+
+-------------------------------------------------------------------
+Fri Jun 20 13:35:53 UTC 2014 - mrueckert@suse.de
+
+- remove the provides to avoid have choice
+
+-------------------------------------------------------------------
+Sat Jun 14 14:55:22 UTC 2014 - mrueckert@suse.de
+
+- migrated to just plain wrapper packages
+- patches moved to ruby2.1 package:
+   rubygems-1.5.0_buildroot.patch
+   ruby-1.9.2p290_tcl_no_stupid_rpaths.patch
+   drop_content_size_check_in_xmlrpc.patch
+   ruby19-export_init_prelude.patch
+
+-------------------------------------------------------------------
+Fri May 16 20:21:05 UTC 2014 - kkaempf@suse.com
+
+- Update to 2.1.2
+  - fix for a regression of Hash#reject in Ruby 2.1.1
+  - support for build with Readline-6.3 (see Bug #9578)
+  - updated bundled version of libyaml with psych
+  - some bug fixes.
+
+-------------------------------------------------------------------
+Sun Mar  2 09:07:57 UTC 2014 - kkaempf@suse.com
+
+- make api_version explicit in spec
+- adapt versions of embedded gems
+
+-------------------------------------------------------------------
+Fri Feb 28 14:14:00 UTC 2014 - adrian@suse.de
+
+- use api version 2.1.0 again to avoid dependency breakages
+
+-------------------------------------------------------------------
+Fri Feb 28 09:03:07 UTC 2014 - kkaempf@suse.com
+
+- Update to 2.1.1
+  Speedup and bugfixes (upstream bug ids):
+  - rubygems 2.2.2 (#9489)
+  - fix segfault at unpacking modified String (#9478)
+  - Struct#send(:setter=, rhs) does not return rhs (#9470)
+  - Array#uniq behavior change (#9470)
+  - Timeout behavior change (#9470)
+  - Hash lookup with #hash and #eql broken (#9470)
+  - bigdecimal division issue (#9470)
+  - SizedQueue not working (#9470)
+  - BidDecimal division (#9316)
+  - fix 'gem install --ignore-dependencies' for remote gems  (#9282)
+  - Array#to_h should not ignore badly formed elements (#9270)
+  - Method#arity for keyword arguments (#8072)
+
+-------------------------------------------------------------------
+Sat Feb 15 21:05:19 UTC 2014 - kkaempf@suse.com
+
+- add internal.h to ruby-devel-extra
+
+-------------------------------------------------------------------
+Mon Feb 10 11:20:16 UTC 2014 - kkaempf@suse.com
+
+- Don't require rpm-with-ruby-provide-hook on SLE11.
+  It's not a runtime requirement but a build-time requirement for
+  rubygems in SLE11. Buildservice will take care of that.
+
+-------------------------------------------------------------------
+Fri Feb  7 12:05:32 UTC 2014 - coolo@suse.com
+
+- reintroduce update-alternatives for rake, rdoc and ri as those
+  can come from more uptodate gems
+
+-------------------------------------------------------------------
+Sat Feb  1 11:51:30 UTC 2014 - coolo@suse.com
+
+- readd old macros - for now at least
+
+-------------------------------------------------------------------
+Fri Jan 31 10:22:24 UTC 2014 - kkaempf@suse.com
+
+- generate provides for embedded rubygems
+
+-------------------------------------------------------------------
+Thu Jan 30 14:29:36 UTC 2014 - kkaempf@suse.com
+
+- merged ruby-common
+
+-------------------------------------------------------------------
+Sun Jan 19 12:54:46 UTC 2014 - kkaempf@suse.com
+
+- new package split - only single Ruby version installable
+  ruby - binary
+  libruby2_1-2_0 - ruby runtime library
+  ruby-stdlib - ruby standard library
+  ruby-doc - ruby documentation
+  ruby-devel - ruby development
+
+-------------------------------------------------------------------
+Sun Jan 19 12:53:57 UTC 2014 - kkaempf@suse.com
+
+- revert the ruby split (ruby - ruby21)
+  rename ruby21 to ruby, integrate 'ruby' and 'ruby-common'
+
+-------------------------------------------------------------------
+Thu Jan  9 10:37:57 UTC 2014 - jreidinger@suse.com
+
+- remove part of rubygems1.5 patch that modify mkmf which is
+  already fixed upstream
+
+-------------------------------------------------------------------
+Wed Jan  8 20:03:32 UTC 2014 - kkaempf@suse.com
+
+- fix rb_arch in spec: append -gnu
+- fix native gem builds: create gem native extensions dir
+
+-------------------------------------------------------------------
+Mon Jan  6 08:31:16 UTC 2014 - coolo@suse.com
+
+- initial version for ruby 2.1.0 - changes to Ruby 2.0:
+  VM (method cache)
+  RGenGC (See ko1’s RubyKaigi presentation and RubyConf 2013 presentation)
+  refinements #8481 #8571
+  syntax changes
+  Rational/Complex Literal #8430
+  def’s return value #3753
+  Bignum
+  use GMP #8796
+  String#scrub #8414
+  Socket.getifaddrs #8368
+  RDoc 4.1.0 and RubyGems 2.2.0
+  “literal”.freeze is now optimized #9042
+  add Exception#cause #8257
+  update libraries like BigDecimal, JSON, NKF, Rake, RubyGems, and RDoc
+  remove curses #8584
+
+- initial patches:
+ drop_content_size_check_in_xmlrpc.patch
+ ruby-1.9.2p290_tcl_no_stupid_rpaths.patch
+ ruby19-export_init_prelude.patch
+ rubygems-1.5.0_buildroot.patch
+

@@ -1,0 +1,179 @@
+-------------------------------------------------------------------
+Mon Sep 16 09:27:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.1.0:
+  * Drop support for Python 2.7 & 3.4 and Django 1.11 & 2.0
+  * Upgrade to use `django.urls.path` in routing
+  * Auto pre-fetching permission via `GUARDIAN_AUTO_PREFETCH`
+  * Add tests for missing migrations
+
+-------------------------------------------------------------------
+Mon May  6 11:36:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.5.1:
+  * Restore compatibility with Python 2.7
+- Remove merged patch no-maxsplit.patch
+
+-------------------------------------------------------------------
+Thu Feb 28 08:51:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not bother with the locale handling for now, causes
+  conflicts on migration, we really need to properly fix this in
+  macros rather than hacking it in.
+
+-------------------------------------------------------------------
+Sun Feb 24 13:16:33 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Use single spec syntax, renaming Python 2 package to use python2- prefix
+- Increase minimum Django version to 1.8
+- Adds no-maxsplit.patch to fix a minor Python3-only syntax.
+- Activate test suite
+- from v1.5.0
+  * Updates for compatibility with latest Python and Django versions
+- Update from v1.2.5 to v1.4.9
+  (see CHANGES for full log)
+
+-------------------------------------------------------------------
+Mon May  4 09:50:51 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.2.5:
+  * Official Django 1.7 support (thanks Troy Grosfield and Brian
+    May)
+  * Allow to override
+    PermissionRequiredMixin.get_permission_object, part of
+    PermissionRequiredMixin.check_permissions method, responsible
+    for retrieving single object (Thanks zauddelig)
+  * French translations (Thanks Morgan Aubert)
+  * Added support for User.get_all_permissions (thanks Michael
+    Drescher)
+- additional changes from version 1.2.4:
+  * Fixed another issue with custom primary keys at admin
+    extensions (Thanks Omer Katz)
+- additional changes from version 1.2.2:
+  * Fixed issue with custom primary keys at admin extensions
+    (Thanks Omer Katz)
+  * get_403_or_None now accepts Python path to the view function,
+    for example 'django.contrib.auth.views.login' (Thanks Warren
+    Volz)
+  * Added with_superuser flag to
+    guardian.shortcuts.get_objects_for_user (Thanks Bruno Ribeiro
+    da Silva)
+  * Added possibility to disable monkey patching of the User model.
+    (Thanks Cezar Jenkins)
+- additional changes from version 1.2:
+  * Removed get_for_object methods from managers (#188)
+  * Extended documentation
+  * GuardedModelAdmin has been splitted into mixins
+  * Faster queries in get_objects_for_user when use_groups=False or
+    any_perm=True (#148)
+  * Improved speed of get_objects_for_user shortcut
+  * Support for custom User model with not default username field
+  * Added GUARDIAN_GET_INIT_ANONYMOUS_USER setting (#179)
+  * Added accept_global_perms to PermissionRequiredMixin
+  * Added brazilian portuguese translations
+  * Added polish translations
+  * Added wheel support
+  * Fixed wrong anonymous user checks
+  * Support for Django 1.6
+  * Support for Django 1.7 alpha
+- add fdupes as BuildRequires and call it after install
+- call find_lang to tag the translation files
+
+-------------------------------------------------------------------
+Fri Sep 27 19:40:13 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.1.1
+  + Support for Django 1.5 (including Python 3 combination)
+  + Support for custom user models (introduced by Django 1.5)
+  + Ability to create permissions using Foreign Keys
+  + Added ``user_can_access_owned_by_group_objects_only`` option to
+    ``GuardedModelAdmin.``
+  + Minor documentation fixups
+  + Spanish translations
+  + Better support for grappelli_
+  + Updated examples project
+  + Speed up ``get_perms`` shortcut function
+- Use download url as source
+- Replace python-ditribute with python-setuptools BuildRequires
+
+-------------------------------------------------------------------
+Mon Mar 12 14:55:35 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 1.0.4:
+  * Added accept_global_perms flag for decorators
+  * Added missing *fieldset* closing tag at template
+  * Fixed misleading comments at docstrings
+  * Fixed broken grappelli tests
+  * Fixed issue disallowing creation of RPM package
+  * Started using tox for tests
+  * Expanded orphaned object permissions documentation
+  * Expanded configuration settings documentation
+
+-------------------------------------------------------------------
+Wed Dec 28 21:28:48 UTC 2011 - alexandre@exatati.com.br
+
+- Standard in spec file;
+- Replace python-setuptools by python-distribute in Requires tag;
+- Remove CFLAGS and %clean section from spec file.
+
+-------------------------------------------------------------------
+Tue Sep 20 14:26:43 UTC 2011 - cfarrell@suse.com
+
+- license update: BSD-3-Clause
+  SPDX syntax (http://www.spdx.org/licenses)
+
+-------------------------------------------------------------------
+Mon Jul 25 11:12:48 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.0.3:
+  - added get_objects_for_group shortcut (thanks to Rafael Ponieman)
+  - added user_can_access_owned_objects_only flag to GuardedModelAdmin
+  - updated and fixed issues with example app (thanks to Bojan Mihelac)
+  - minor typo fixed at documentation
+  - included ADC theme for documentation
+
+-------------------------------------------------------------------
+Tue Apr 12 22:17:22 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.0.2:
+  * get_users_with_perms now accepts *with_group_users* flag
+  * Fixed group_id issue at admin templates
+  * Small fix for documentation building process
+  * It's 2011 (updated dates)
+
+-------------------------------------------------------------------
+Fri Mar 25 11:32:29 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.0.1;
+- Regenerate spec file with py2pack;
+- Add CHANGES and README.rst files as documentation.
+
+-------------------------------------------------------------------
+Fri Jan 28 02:16:24 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.0.0.
+
+-------------------------------------------------------------------
+Wed Nov 17 14:30:24 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 0.2.3.
+
+-------------------------------------------------------------------
+Wed Oct 13 01:20:49 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 0.2.2.
+
+-------------------------------------------------------------------
+Mon Oct  4 01:20:23 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 0.2.1.
+
+-------------------------------------------------------------------
+Mon Sep 27 12:03:44 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 0.1.1.
+
+-------------------------------------------------------------------
+Fri Aug  6 00:26:17 UTC 2010 - alexandre@exatati.com.br
+
+- Initial package (0.1.0) for openSUSE.

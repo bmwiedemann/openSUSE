@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Mon Sep  4 14:21:12 CEST 2017 - sbrabec@suse.com
+
+- Add aarch64 to bi-arch platforms (boo#1057058).
+
+-------------------------------------------------------------------
+Tue May 23 13:14:42 UTC 2017 - mpluskal@suse.com
+
+- Update license information
+
+-------------------------------------------------------------------
+Tue May 23 06:42:23 UTC 2017 - werner@suse.de
+
+- Oops ... C-shells do use `setenv' for exporting variables (boo#1040211)
+
+-------------------------------------------------------------------
+Sun Aug  9 13:38:15 UTC 2015 - schwab@linux-m68k.org
+
+- Also look in $CC and $CXX for -m32
+
+-------------------------------------------------------------------
+Wed May  6 12:53:52 UTC 2015 - dimstar@opensuse.org
+
+- Add compatibility to libtool 2.4.6.
+
+-------------------------------------------------------------------
+Tue Jun 26 15:34:39 CEST 2012 - sbrabec@suse.cz
+
+- Added README.
+- Support more products and libtool and autoconf versions.
+
+-------------------------------------------------------------------
+Fri Jun  8 17:37:25 CEST 2012 - sbrabec@suse.cz
+
+- Rewrite heuristic to be cross-compilation wise (bnc#736143).
+- Do not overwrite libexecdir specified by user (bnc#758947).
+
+-------------------------------------------------------------------
+Wed Aug  3 18:59:32 CEST 2011 - sbrabec@suse.cz
+
+- New package created (bnc#382344).
+

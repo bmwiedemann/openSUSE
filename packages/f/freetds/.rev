@@ -1,0 +1,228 @@
+<revisionlist>
+  <revision rev="1" vrev="10">
+    <srcmd5>2e0705e6f8ef3ddf82f19576ef4f4f11</srcmd5>
+    <version>0.9.1rc2</version>
+    <time>1313062963</time>
+    <user>saschpe</user>
+    <comment>This library provides an interface for the tabular data stream format for database client-server communication.  I was told to submit it to openSUSE:Factory by the openSUSE-KDE team.  It is used by KDE for koffice and calligra office applications, but apparently is also of more general interest.  
+
+License labeling issues should be fixed.  The (hopefully) LGPL libraries and GPL/LGPL executables have been split into two packages as well.</comment>
+    <requestid>78186</requestid>
+  </revision>
+  <revision rev="2" vrev="11">
+    <srcmd5>d13bb1bfb20a721c0e4ba9cb6f1d9acf</srcmd5>
+    <version>0.9.1rc2</version>
+    <time>1313062975</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78186
+</comment>
+  </revision>
+  <revision rev="3" vrev="12">
+    <srcmd5>1c8dc609b8275c79091ea6a8ce133344</srcmd5>
+    <version>0.9.1rc2</version>
+    <time>1317626309</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 86013 from coolo)</comment>
+    <requestid>86067</requestid>
+  </revision>
+  <revision rev="4" vrev="13">
+    <srcmd5>2dd6764d9ae8f3a8837a521c29981b91</srcmd5>
+    <version>0.9.1rc2</version>
+    <time>1318344796</time>
+    <user>lrupp</user>
+    <comment>Resubmit for 87174, %makeinstall (forwarded request 87248 from jengelh)</comment>
+    <requestid>87282</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>79e70047e2a789fb74ccf7f7a9b2d189</srcmd5>
+    <version>0.91</version>
+    <time>1318456701</time>
+    <user>lrupp</user>
+    <comment>update to upstream freetds 0.91 (forwarded request 87551 from tabraham1)</comment>
+    <requestid>87574</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>79e70047e2a789fb74ccf7f7a9b2d189</srcmd5>
+    <version>0.91</version>
+    <time>1319181885</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>c42910bf57d1e391bb024b9b3d3e5451</srcmd5>
+    <version>0.91</version>
+    <time>1328890412</time>
+    <user>coolo</user>
+    <comment>- there is a GPL copying too, so add GPL-2.0+ too
+
+- Remove redundant tags/sections
+- Resolve dependency indirection</comment>
+    <requestid>102976</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>c42910bf57d1e391bb024b9b3d3e5451</srcmd5>
+    <version>0.91</version>
+    <time>1340183338</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>c42910bf57d1e391bb024b9b3d3e5451</srcmd5>
+    <version>0.91</version>
+    <time>1359108890</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>c42910bf57d1e391bb024b9b3d3e5451</srcmd5>
+    <version>0.91</version>
+    <time>1379662365</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>c42910bf57d1e391bb024b9b3d3e5451</srcmd5>
+    <version>0.91</version>
+    <time>1409300902</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>10609c9d95e2e18a71377d9dd200251d</srcmd5>
+    <version>0.91.103</version>
+    <time>1420318931</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266848</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c6ccf0bc4373193bc35d5f29ff9091c9</srcmd5>
+    <version>0.91.112</version>
+    <time>1426485230</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.91.112:
+  * No obvious changelog
+- Various spec-cleaner sorting</comment>
+    <requestid>290645</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>5a028d6c65886eedf00f4d32c8aa334e</srcmd5>
+    <version>0.91.112</version>
+    <time>1429658061</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>297878</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>35f90bfa8d0007ca5fca8e175f2a60a3</srcmd5>
+    <version>0.95.8</version>
+    <time>1442474301</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330591</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1cb214141314a6b8ef224b058d889774</srcmd5>
+    <version>0.95.65</version>
+    <time>1446647525</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341780</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>593cada7cf5ea9455cbb24f2565c5707</srcmd5>
+    <version>0.95.67</version>
+    <time>1448400793</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>344810</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>25fffc428faa186cb542c4027f31fa91</srcmd5>
+    <version>0.95.76</version>
+    <time>1450856926</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349916</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0727ea1e916dfd41295fd7fc8f2e2558</srcmd5>
+    <version>0.95.80</version>
+    <time>1453508156</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354160</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3e7e54c833093ab6e79ca2ecfe338df7</srcmd5>
+    <version>0.95.82</version>
+    <time>1456242851</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359089</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2e47d81537c3b51f81a37c85e2458859</srcmd5>
+    <version>0.95.87</version>
+    <time>1457532914</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>366750</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4f35e4501eeaefcd1aa1ded35eb72e61</srcmd5>
+    <version>0.95.94</version>
+    <time>1461855039</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391138</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b5cc30b44e7e2f265081f1a0c63478ef</srcmd5>
+    <version>0.95.95</version>
+    <time>1462447136</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393176</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>05b3b29115db51cd3c7fa44045f7ca69</srcmd5>
+    <version>1.00.24</version>
+    <time>1484041051</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448870</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>611213abb8dffe6e372b7d6a939bbbeb</srcmd5>
+    <version>1.00.27</version>
+    <time>1491907126</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482638</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>80b5dda08c2cf17416e15500090048dc</srcmd5>
+    <version>1.00.39</version>
+    <time>1495883529</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496335</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1badaaacfa1e84a156cf8341747a7baa</srcmd5>
+    <version>1.00.83</version>
+    <time>1522316852</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.0.83:
+  * See NEWS for a complete list of changes</comment>
+    <requestid>590615</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>2435405ea347b944988c364210b9ae7c</srcmd5>
+    <version>1.00.83</version>
+    <time>1564413858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715433</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c0043d992eadc94ec58165f4eb075a07</srcmd5>
+    <version>0.11.0</version>
+    <time>1557264036</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-fastparquet</comment>
+    <requestid>701351</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2d83579451b2547d2ec160834a9c4b02</srcmd5>
+    <version>0.11.1</version>
+    <time>1558939097</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.1:
+  * Fix memory leak in ``ZstdDecompressionReader.seek()`` (#82).</comment>
+    <requestid>705256</requestid>
+  </revision>
+</revisionlist>

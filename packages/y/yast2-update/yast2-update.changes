@@ -1,0 +1,2651 @@
+-------------------------------------------------------------------
+Thu Aug 22 16:03:51 CEST 2019 - schubi@suse.de
+
+- Using rb_default_ruby_abi tag in the spec file in order to
+  handle several ruby versions (bsc#1146403).
+- 4.2.5
+
+-------------------------------------------------------------------
+Thu Jun  6 10:47:31 CEST 2019 - schubi@suse.de
+
+- Going back and forward in the update workflow: Initialize
+  add-on products and system packages correctly (bsc#1136012).
+- 4.2.4
+
+-------------------------------------------------------------------
+Fri May 31 12:42:01 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.3
+
+-------------------------------------------------------------------
+Fri Apr 26 11:03:27 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Uninstall the "SUSE-Manager-Proxy" product when upgrading from
+  SLES12 + SUMA Proxy + SUMA Branch Server (bsc#1133215)
+- 4.2.2
+
+-------------------------------------------------------------------
+Fri Apr  5 14:43:25 UTC 2019 - José Iván López González <jlopez@suse.com>
+
+- Remove obsolete code.
+- 4.2.1
+
+-------------------------------------------------------------------
+Tue Mar 26 16:29:07 UTC 2019 - José Iván López González <jlopez@suse.com>
+
+- Remove code related to device name translations.
+- 4.2.0
+
+-------------------------------------------------------------------
+Thu Jan 24 18:49:24 UTC 2019 - lslezak@suse.cz
+
+- Added URL tag to the spec file (bsc#1097957)
+- 4.1.8
+
+-------------------------------------------------------------------
+Mon Nov 26 05:38:18 UTC 2018 - Noah Davis <noahadvs@gmail.com>
+
+- Provide icon with module (boo#1109310)
+- 4.1.7
+
+-------------------------------------------------------------------
+Tue Nov 20 11:18:49 CET 2018 - schubi@suse.de
+
+- Function SelectProduct removed in order NOT to select All
+  available products (bsc#1116332).
+- 4.1.6 
+
+-------------------------------------------------------------------
+Mon Nov  5 17:10:54 UTC 2018 - jlopez@suse.com
+
+- Avoid to crash when crypttab contains entries where the LUKS is
+  given by UUID= format.
+- Avoid to crash when an encryption device is not probed with the
+  name indicated in a fstab entry.
+- Related to bsc#1094963.
+- 4.1.5
+
+-------------------------------------------------------------------
+Tue Oct 16 16:37:07 CEST 2018 - schubi@suse.de
+
+- Added license file to spec.
+
+-------------------------------------------------------------------
+Wed Sep 19 16:52:02 CEST 2018 - schubi@suse.de
+
+- Fixed crash while writing backup (bsc#1108934)
+- 4.1.4
+
+-------------------------------------------------------------------
+Mon Sep 17 12:20:58 UTC 2018 - dgonzalez@suse.com
+
+- Avoid to restore old backups when upgrade fails (bsc#1097297)
+- 4.1.3
+
+-------------------------------------------------------------------
+Tue Sep 11 15:34:53 CEST 2018 - aschnell@suse.com
+
+- do not translate snapshot description (bsc#1092757)
+- 4.1.2
+
+-------------------------------------------------------------------
+Wed Aug 22 09:55:27 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Tue Aug 21 05:13:58 UTC 2018 - lslezak@suse.cz
+
+- Do not crash at upgrade when the original /etc/resolv.conf
+  file is set to immutable (bsc#1096142)
+- 4.1.1
+
+-------------------------------------------------------------------
+Wed Jul 25 13:21:22 CEST 2018 - schubi@suse.de
+
+- Wrong fstype "Windows Data Partition" will not be shown anymore
+  for partition which are suggested for upgrade. (bsc#1079034)
+- 4.1.0
+
+-------------------------------------------------------------------
+Thu Jun 28 14:21:12 CEST 2018 - schubi@suse.de
+
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.0.17
+
+-------------------------------------------------------------------
+Thu Jun  7 17:10:49 UTC 2018 - jlopez@suse.com
+
+- Update encryption device names according to the values in the
+  crypttab file (bsc#1094963).
+- 4.0.16
+
+-------------------------------------------------------------------
+Wed Jun  6 11:19:12 UTC 2018 - lslezak@suse.cz
+
+- Flush the disk cache after restoring the backup to mitigate
+  risk of data loss after unexpected reboot/poweroff after aborting
+  upgrade (bsc#1089643)
+- 4.0.15
+
+-------------------------------------------------------------------
+Wed May  9 10:20:03 UTC 2018 - lslezak@suse.cz
+
+- Fixed unmounting /mnt/dev when going back to the partition
+  selection dialog (fix up for the bsc#1089643)
+- 4.0.14
+
+-------------------------------------------------------------------
+Fri Apr 27 13:45:41 UTC 2018 - lslezak@suse.cz
+
+- Copy the resolv.conf and bind mount /dev directory to the target
+  root, sort the restore scripts to run them in the expected
+  order (bsc#1089643)
+- The bind mount also fixes the libzypp plugin service refresh
+  (bsc#1080693)
+- 4.0.13
+
+-------------------------------------------------------------------
+Mon Mar 19 16:24:35 UTC 2018 - ancor@suse.com
+
+- Fixed a crash when upgrading systems with a separate /var
+  (bsc#1071454).
+- Better support for upgrading systems with a /var subvolume.
+- 4.0.12
+
+-------------------------------------------------------------------
+Wed Mar 14 15:42:22 UTC 2018 - lslezak@suse.cz
+
+- Properly restore the original installation repositories when
+  going back to the partition selection dialog (related to
+  bsc#1080979)
+- Remove the very old and unused stuff (dead code, unsupported
+  file systems, ...)
+- 4.0.11
+
+-------------------------------------------------------------------
+Thu Mar  8 09:25:38 UTC 2018 - lslezak@suse.cz
+
+- Automatically save a solver test case when the product summary
+  contains a warning for easier debugging (related to bsc#1084248)
+- 4.0.10
+
+-------------------------------------------------------------------
+Fri Feb  9 14:52:57 UTC 2018 - jlopez@suse.com
+
+- Adapt to new MountPoint API (part of fate#318196).
+- 4.0.9
+
+-------------------------------------------------------------------
+Mon Jan 15 09:56:47 UTC 2018 - jreidinger@suse.com
+
+- remove obsolete rootpart_check_keyboard client that allows having
+  different keyboard in update env and on target disk (related to
+  bsc#1075828)
+- 4.0.6
+
+-------------------------------------------------------------------
+Tue Jan  9 07:09:57 UTC 2018 - ancor@suse.com
+
+- When matching partitions, rely on the new
+  Y2Storage::Devicegraph#find_by_any_name (bsc#1073254).
+- 4.0.5
+
+-------------------------------------------------------------------
+Fri Jan  5 07:33:52 UTC 2018 - jsrain@suse.cz
+
+- upgrade the system always via equivalent of 'zypper dup'
+  (bsc#1071708)
+- 4.0.4
+
+-------------------------------------------------------------------
+Tue Dec 19 17:27:41 UTC 2017 - ancor@suse.com
+
+- When matching partitions, also use udev names that have been
+  discarded by libstorage-ng (bsc#1073254).
+- 4.0.3
+
+-------------------------------------------------------------------
+Mon Dec 18 16:32:10 UTC 2017 - ancor@suse.com
+
+- Use udev names, in addition to kernel device names, to match
+  partitions (part of the fix for bsc#1073254).
+- 4.0.2
+
+-------------------------------------------------------------------
+Fri Nov 24 06:51:50 UTC 2017 - jsrain@suse.cz
+
+- Display warning if system uses cryptconfig encrypted home
+  directories (fate#323541)
+- 4.0.1
+
+-------------------------------------------------------------------
+Tue Oct 31 14:51:13 UTC 2017 - mvidner@suse.com
+
+- Filter upgradable products in the partition selector already
+  (FATE#323163).
+- 4.0.0
+
+-------------------------------------------------------------------
+Tue Aug 22 10:59:42 UTC 2017 - knut.anderssen@suse.com
+
+- Show legacy root filesystems in the list of systems to upgrade
+  from (fate#323394).
+- 3.3.4
+
+-------------------------------------------------------------------
+Mon Aug 21 10:14:50 UTC 2017 - ancor@suse.com
+
+- Use translatable and human-friendly format to display the
+  partition id during a system upgrade (part of fate#318196).
+- 3.3.3
+
+-------------------------------------------------------------------
+Thu Aug 17 12:14:04 UTC 2017 - knut.anderssen@suse.com
+
+- Fixed a typo calling a Logger method (bsc#1054236).
+- 3.3.2
+
+-------------------------------------------------------------------
+Wed Aug 16 11:44:44 UTC 2017 - knut.anderssen@suse.com
+
+- Do not allow to upgrade if the target system uses reiserfs
+  (fate#323394).
+- 3.3.1
+
+-------------------------------------------------------------------
+Mon Aug 14 10:22:00 UTC 2017 - ancor@suse.com
+
+- Merged storage-ng branch (fate#318196).
+- Note: all changes below with this date belong to the merge.
+- 3.3.0
+
+-------------------------------------------------------------------
+Mon Aug 14 10:22:00 UTC 2017 - ancor@suse.com
+
+- storage-ng: adapted calls to temporary y2storage_* methods, since
+  they were finally removed from Y2Storage::StorageManager.
+
+-------------------------------------------------------------------
+Mon Aug 14 10:22:00 UTC 2017 - shundhammer@suse.de
+
+- Merged master to storage-ng branch
+
+-------------------------------------------------------------------
+Mon Aug 14 10:22:00 UTC 2017 - jlopez@suse.com
+
+- storage-ng: add detection of previous systems using lvm.
+
+-------------------------------------------------------------------
+Mon Aug 14 10:22:00 UTC 2017 - ancor@suse.com
+
+- storage-ng: detection of previous systems partially adapted.
+
+-------------------------------------------------------------------
+Wed Apr 19 14:38:34 UTC 2017 - lslezak@suse.cz
+
+- Fixed parsing whitespace lines in the original /etc/fstab
+  (bsc#1030425)
+- 3.2.2
+
+-------------------------------------------------------------------
+Mon Jan 30 12:07:55 UTC 2017 - igonzalezsosa@suse.com
+
+- Allow YaST modules to add packages during upgrade (bsc#1009834)
+- 3.2.1
+
+-------------------------------------------------------------------
+Thu Jan  5 14:43:00 UTC 2017 - jreidinger@suse.com
+
+- Add storage to build dependencies as tests depends on it
+  (related to changes done for bsc#932331)
+- 3.2.0
+
+-------------------------------------------------------------------
+Thu Sep 29 08:02:43 UTC 2016 - igonzalezsosa@suse.com
+
+- Translate description of Snapper pre-update snapshot
+  (bsc#988700)
+- 3.1.43
+
+-------------------------------------------------------------------
+Fri Aug 26 08:54:40 UTC 2016 - kanderssen@suse.com
+
+- The update installer has been moved earlier in the workflow. We
+  don't need to store data to remember selected target/partitions
+  anymore. (bsc#988287)
+- 3.1.42
+
+-------------------------------------------------------------------
+Fri Aug  5 08:55:42 UTC 2016 - kanderssen@suse.com
+
+- Remember selected target/partitions after an installer update.
+  (bsc#988287)
+- 3.1.41
+
+-------------------------------------------------------------------
+Mon Jun  6 08:19:06 UTC 2016 - igonzalezsosa@suse.com
+
+- Stop generating autodocs (fate#320356)
+- 3.1.40
+
+-------------------------------------------------------------------
+Tue May  3 09:54:40 UTC 2016 - lslezak@suse.cz
+
+- Updated yast2-packager dependency (FATE#320199)
+- 3.1.39
+
+-------------------------------------------------------------------
+Fri Apr 22 16:37:31 UTC 2016 - lslezak@suse.cz
+
+- Select the default product patterns in the pattern based upgrade
+  (FATE#320199)
+- 3.1.38
+
+-------------------------------------------------------------------
+Mon Mar 14 10:27:34 UTC 2016 - igonzalezsosa@suse.com
+
+- Remove Yast::Transfer::FileFromUrl as it will be present
+  in yast2-installation (FATE#319716).
+- 3.1.37
+
+-------------------------------------------------------------------
+Tue Feb 16 14:53:11 UTC 2016 - mvidner@suse.com
+
+- Moved Yast::Transfer::FileFromUrl here from autoyast2.
+  (FATE#316796)
+- 3.1.36
+
+-------------------------------------------------------------------
+Fri Jan 29 09:37:57 UTC 2016 - lslezak@suse.cz
+
+- Fixed selecting additional products during system upgrade
+  (do not select previously unselected products after adding
+  repositories from the registration server) (bsc#959155)
+- 3.1.35
+
+-------------------------------------------------------------------
+Mon Oct  5 08:49:01 CEST 2015 - locilka@suse.com
+
+- Added new test for Update.IsProductSupportedForUpgrade
+  (bsc#947398)
+- 3.1.34
+
+-------------------------------------------------------------------
+Wed Jul  1 13:51:41 CEST 2015 - shundhammer@suse.de
+
+- Cleanup for snapshots made during installation (bnc#935923)
+- 3.1.33 
+
+-------------------------------------------------------------------
+Mon Jun 29 16:13:30 UTC 2015 - lslezak@suse.cz
+
+- UX: add a link to the dependency error message to make the
+  required user action obvious (bsc#936450)
+- 3.1.32
+
+-------------------------------------------------------------------
+Mon Jun  1 08:43:53 UTC 2015 - jreidinger@suse.com
+
+- make junk_cleaner less aggresive to not remove important files
+  (fate#317900)
+- 3.1.31
+
+-------------------------------------------------------------------
+Fri May 29 14:58:19 UTC 2015 - jreidinger@suse.com
+
+- mount properly subvolumes of upgraded system (fate#317900)
+- 3.1.30
+
+-------------------------------------------------------------------
+Thu May 28 11:16:30 UTC 2015 - jreidinger@suse.com
+
+- create pre update snapshot (fate#317900)
+- 3.1.29
+
+-------------------------------------------------------------------
+Mon May 18 14:42:15 UTC 2015 - lslezak@suse.cz
+
+- sort patterns in the upgrade summary to have stable output for
+  openQA tests (bsc#931295), escape the HTML tags
+- 3.1.28
+
+-------------------------------------------------------------------
+Mon Feb  9 16:18:41 UTC 2015 - lslezak@suse.cz
+
+- install the packages needed for accesing the installation
+  repository (bnc#916200)
+- 3.1.27
+
+-------------------------------------------------------------------
+Fri Feb  6 13:39:23 UTC 2015 - ancor@suse.com
+
+- The unit tests are now compatible with RSpec 3 (bnc#916364)
+- 3.1.26
+
+-------------------------------------------------------------------
+Thu Dec  4 09:51:46 UTC 2014 - jreidinger@suse.com
+
+- remove X-KDE-Library from desktop file (bnc#899104)
+
+-------------------------------------------------------------------
+Wed Nov 12 15:59:22 UTC 2014 - lslezak@suse.cz
+
+- display product names in the incompatible products error
+  message (bnc#904192)
+- 3.1.24
+
+-------------------------------------------------------------------
+Thu Sep  4 12:31:48 UTC 2014 - mvidner@suse.com
+
+- Use a more flexible rubygem requirement syntax (bnc#895069)
+- 3.1.23
+
+-------------------------------------------------------------------
+Thu Aug 28 09:11:15 UTC 2014 - lslezak@suse.cz
+
+- override the target distribution also in Autoyast autoupgrade
+  mode (bnc#892474)
+- 3.1.22
+
+-------------------------------------------------------------------
+Mon Jul 28 14:12:31 UTC 2014 - lslezak@suse.cz
+
+- backup /var/lib/rpm at update to prevent from accidental
+  corruption (bnc#887017)
+- switch from bzip2 to gzip compression (slightly less compression
+  ratio, but much faster), use parallel gzip (pigz) for even
+  faster backup
+- 3.1.21
+
+-------------------------------------------------------------------
+Wed Jul 23 15:03:43 UTC 2014 - lslezak@suse.cz
+
+- update proposal: always select patterns to install, not only
+  once, needed to select patterns for newly added add-ons
+  (bnc#877012)
+- 3.1.20
+
+-------------------------------------------------------------------
+Wed Jul  2 10:15:10 UTC 2014 - jreidinger@suse.com
+
+- add cleaning of old backups and also restore backup if user
+  go back to root selection(bnc#882039)
+- 3.1.19
+
+-------------------------------------------------------------------
+Tue Jul  1 06:38:02 UTC 2014 - lslezak@suse.cz
+
+- remove all repositories when going back to close the open solv
+  files and allow successful unmount when changing the target
+  partition to update (bnc#876677)
+- 3.1.18
+
+-------------------------------------------------------------------
+Mon Jun 30 14:32:39 UTC 2014 - jreidinger@suse.cz
+
+- Add also restore script to backup to make easier restoring 
+  (bnc#882039)
+- 3.1.17
+
+-------------------------------------------------------------------
+Thu Jun 26 16:16:04 CEST 2014 - schubi@suse.de
+
+- Checking if the files exist which have to be backuped by the
+  tar call. (bnc#884384)
+- 3.1.16
+
+-------------------------------------------------------------------
+Wed Jun 25 11:10:44 UTC 2014 - lslezak@suse.cz
+
+- display product update summary and check for automatic product
+  removal at update proposal (bnc#883047)
+- 3.1.15
+
+-------------------------------------------------------------------
+Mon Jun 23 15:12:07 CEST 2014 - aschnell@suse.de
+
+- do not allow to continue if no upgradeable system was found
+  (bnc#883606)
+- 3.1.14
+
+-------------------------------------------------------------------
+Fri Jun 13 06:20:15 UTC 2014 - jreidinger@suse.com
+
+- create backup for software management (bnc#882039)
+- 3.1.13
+
+-------------------------------------------------------------------
+Thu Jun 12 14:48:57 UTC 2014 - jreidinger@suse.com
+
+- add method to create upgrade backup (bnc#882039)
+- 3.1.12
+
+-------------------------------------------------------------------
+Thu Jun 12 07:40:30 UTC 2014 - jreidinger@suse.com
+
+- fix crash caused by the last change (bnc#882309)
+- 3.1.11
+
+-------------------------------------------------------------------
+Fri Jun  6 13:35:01 UTC 2014 - lslezak@suse.cz
+
+- override the target distribution from the system, use the target
+  distribution from the base product so the service repositories
+  are compatible with the upgraded (future) product (bnc#881320)
+- 3.1.10
+
+-------------------------------------------------------------------
+Thu May 22 07:40:27 UTC 2014 - jsrain@suse.cz
+
+- allow to specify target for AutoYaST upgrade via boot
+  command-line (bnc#875031)
+- 3.1.9
+
+-------------------------------------------------------------------
+Thu May 15 09:17:19 CEST 2014 - locilka@suse.com
+
+- Added handling for desktop upgrade (bnc#874116). Moved from code
+  to control file as packages and patterns might have different
+  names in different prducts.
+- 3.1.8
+
+-------------------------------------------------------------------
+Fri May  2 12:36:53 UTC 2014 - jreidinger@suse.com
+
+- Fix internal error caused by wrong type passed as string append
+  (bnc#876136)
+- 3.1.7
+
+-------------------------------------------------------------------
+Tue Apr 22 10:52:06 CEST 2014 - locilka@suse.com
+
+- Replaced old Product.patterns with new Packages.default_patterns
+  (bnc#873923)
+- 3.1.6
+
+-------------------------------------------------------------------
+Tue Apr 15 15:57:20 CEST 2014 - locilka@suse.com
+
+- Warning user that changing update mode from "patterns" to
+  "update only installed rpms" might lead into broken system.
+  Only if "patterns" were the default selection (bnc#873122).
+- 3.1.5
+
+-------------------------------------------------------------------
+Fri Mar 28 15:02:22 CET 2014 - locilka@suse.com
+
+- Fixed loading kernel modules while probing disks (bnc#869091)
+- 3.1.4
+
+-------------------------------------------------------------------
+Thu Mar 27 15:25:48 CET 2014 - locilka@suse.com
+
+- Re-added SUSERelease library to read product information from
+  /etc/SuSE-release (bnc#869091)
+- Using OSRelease (and then SUSERelease as a fallback) to
+  find out the name of the installed system (bnc#869091)
+- 3.1.3
+
+-------------------------------------------------------------------
+Wed Dec 18 12:44:15 UTC 2013 - lslezak@suse.cz
+
+- updated BuildRequires: RNG schema for control files has been
+  moved to yast2-installation-control package
+- use %yast_controldir RPM macro
+- move the *.glade link to Git (allow creating POT from clean Git
+  checkout without need to run "make")
+- 3.1.2
+
+-------------------------------------------------------------------
+Wed Nov 13 15:56:18 UTC 2013 - jreidinger@suse.com
+
+- Add explicit COPYING file
+
+-------------------------------------------------------------------
+Thu Sep 19 17:42:57 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Fri Sep 13 11:03:26 UTC 2013 - lslezak@suse.cz
+
+- removed obsolete BuildRequires (perl-XML-Writer, yast2-testsuite,
+  yast2-storage, yast2-packager and yast2)
+- properly create update.glade link (the file was moved)
+- 3.0.4
+
+-------------------------------------------------------------------
+Thu Aug 29 12:50:24 UTC 2013 - jsrain@suse.cz
+
+- mount /proc even without fstab entry (bnc#834320)
+- 3.0.3
+
+-------------------------------------------------------------------
+Thu Aug 22 08:20:25 CEST 2013 - jsuchome@suse.cz
+
+- use OSRelease instead of obsolete SuSERelease (bnc#833955)
+- 3.0.2 
+
+-------------------------------------------------------------------
+Mon Aug  5 14:32:09 CEST 2013 - jsuchome@suse.cz
+
+- leave kernel selection purely on dependencies during update
+  (port of bnc#582702)
+- 3.0.1
+
+-------------------------------------------------------------------
+Wed Jul 31 08:43:55 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Mon Feb 25 12:23:59 CET 2013 - jsuchome@suse.cz
+
+- do not unmout /var multiple times (bnc#805698)
+- 2.23.1
+
+-------------------------------------------------------------------
+Thu Feb 21 13:20:38 CET 2013 - jsuchome@suse.cz
+
+- remove references to obsoleted SuSEconfig (bnc#804936)
+- 2.23.0
+
+-------------------------------------------------------------------
+Mon Aug 13 16:02:08 CEST 2012 - fehr@suse.de
+
+- 2.22.3
+- rename dm maps according to crypttab during update (bnc#774247)
+
+-------------------------------------------------------------------
+Wed Jan 25 13:50:34 CET 2012 - jsuchome@suse.cz
+
+- confirmed license
+- 2.22.2 
+
+-------------------------------------------------------------------
+Tue Jan 10 08:27:01 CET 2012 - jsuchome@suse.cz
+
+- during update proposal, check if desktop is really installed 
+ (bnc#737402) 
+- 2.22.1
+
+-------------------------------------------------------------------
+Wed Nov 16 11:22:38 CET 2011 - jsuchome@suse.cz
+
+- merged texts from proofreading
+- 2.22.0 
+
+-------------------------------------------------------------------
+Fri Sep 23 11:01:27 UTC 2011 - lslezak@suse.cz
+
+- code cleanup - removed obsoled code for handling selections
+  (replaced by patterns long time ago),
+  use Pkg::SourceProductData() instead of obsoleted
+  Pkg::SourceProduct()
+- 2.21.1
+
+-------------------------------------------------------------------
+Thu Sep 22 11:02:45 CEST 2011 - jsuchome@suse.cz
+
+- 2.21.0 
+
+-------------------------------------------------------------------
+Fri Aug  5 12:35:44 CEST 2011 - tgoettlicher@suse.de
+
+- fixed .desktop file (bnc #681249)
+
+-------------------------------------------------------------------
+Fri Jul  1 15:13:01 CEST 2011 - locilka@suse.cz
+
+- better dialog label while searching for systems on disks
+  (BNC #537628).
+
+-------------------------------------------------------------------
+Wed Jan 19 14:11:44 CET 2011 - jsrain@suse.cz
+
+- adaptations for unattended migration (fate#310481)
+- 2.20.0.
+
+-------------------------------------------------------------------
+Thu Oct 28 14:34:16 CEST 2010 - ug@suse.de
+
+- replaced a Popup:: by a Report:: for autoinstallation
+
+-------------------------------------------------------------------
+Fri Apr 23 15:17:22 CEST 2010 - aschnell@suse.de
+
+- fixed namespace error in rootpart.ycp
+- 2.19.1
+
+-------------------------------------------------------------------
+Mon Apr 19 10:51:40 CEST 2010 - aschnell@suse.de
+
+- allow btrfs as root fs
+- 2.19.0
+
+-------------------------------------------------------------------
+Thu Jan 28 11:07:00 CET 2010 - locilka@suse.cz
+
+- Counting packages directly in packages proposal (BNC #573482).
+
+------------------------------------------------------------------
+Wed Jan 13 18:56:03 CET 2010 - kmachalkova@suse.cz
+
+- Adjusted .desktop file(s) to wrap /sbin/yast2/ calls in xdg-su
+  where root privileges are needed, removed X-KDE-SubstituteUID key 
+  (bnc#540627)
+
+-------------------------------------------------------------------
+Tue Sep  8 13:46:06 CEST 2009 - kmachalkova@suse.cz
+
+- Adapted control file to new validation schema (compulsory unique 
+  IDs in proposals)
+- 2.18.6 
+
+-------------------------------------------------------------------
+Thu May 14 11:08:56 CEST 2009 - ug@suse.de
+
+- being less strict when looking for root partitions in
+  Mode::autoinst()
+
+-------------------------------------------------------------------
+Tue May 12 13:08:12 CEST 2009 - locilka@suse.cz
+
+- Removed copying inst-sys users to installed system during
+  upgrade. Users are added by RPMs (bnc #496958).
+- 2.18.5
+
+-------------------------------------------------------------------
+Thu Apr 16 11:42:32 CEST 2009 - locilka@suse.cz
+
+- Mounting /var partition automatically if a device is not created
+  by Kernel (bnc #494240).
+- 2.18.4
+
+-------------------------------------------------------------------
+Tue Mar 31 15:18:39 CEST 2009 - locilka@suse.cz
+
+- Cleanup in RootPart module.
+- 2.18.3
+
+-------------------------------------------------------------------
+Thu Feb 19 17:27:25 CET 2009 - aschnell@suse.de
+
+- added missing import statement
+- 2.18.2
+
+-------------------------------------------------------------------
+Mon Jan 19 16:17:31 CET 2009 - locilka@suse.cz
+
+- Added possibility to manually choose a /var partition if YaST
+  fails to find it automatically (bnc #448577).
+- 2.18.1
+
+-------------------------------------------------------------------
+Fri Jan 16 15:50:26 CET 2009 - locilka@suse.cz
+
+- Initialize the target before loading it, evaluate the return
+  values and report errors to user (bnc #466803).
+- 2.18.0
+
+-------------------------------------------------------------------
+Wed Dec 10 12:53:01 CET 2008 - aschnell@suse.de
+
+- show strange warning only once (bnc #457762)
+- 2.17.16
+
+-------------------------------------------------------------------
+Fri Dec  5 14:25:36 CET 2008 - locilka@suse.cz
+
+- New control.rnc/rng for control file validation (bnc #455994).
+- Added build-time control file validation.
+- 2.17.15
+
+-------------------------------------------------------------------
+Fri Nov 28 10:52:15 CET 2008 - locilka@suse.cz
+
+- Checking spec for /var partition if it is a persisten device
+  name (bnc #448577).
+- 2.17.14
+
+-------------------------------------------------------------------
+Thu Nov 20 14:05:59 CET 2008 - aschnell@suse.de
+
+- added warning for use of kernel device names in /etc/fstab
+  during update (bnc #429019)
+- 2.17.13
+
+-------------------------------------------------------------------
+Wed Nov 19 17:32:01 CET 2008 - locilka@suse.cz
+
+- Added checking for incomplete installation when such system is
+  selected for update (bnc #441919).
+- 2.17.12
+
+-------------------------------------------------------------------
+Fri Nov  7 11:26:47 CET 2008 - locilka@suse.cz
+
+- Using PackagesUI for opening a package selector (bnc #435479).
+- 2.17.11
+
+-------------------------------------------------------------------
+Tue Nov  4 11:32:57 CET 2008 - locilka@suse.cz
+
+- Making obvious (in log) why a partition is marked 'not-valid'
+  (bnc #441378)
+- 2.17.10
+
+-------------------------------------------------------------------
+Wed Oct 29 14:47:03 CET 2008 - locilka@suse.cz
+
+- Extended agent reading fstab files (bnc #438129).
+- 2.17.9
+
+-------------------------------------------------------------------
+Tue Oct 14 17:08:25 CEST 2008 - ug@suse.de
+
+- partitioning_advanced in autoyast reads mount options too now
+  (bnc#425454)
+- 2.17.8
+
+-------------------------------------------------------------------
+Thu Oct  9 18:56:12 CEST 2008 - locilka@suse.cz
+
+- Loading the Target after the partition to update is mounted,
+  Finishing the target before the partition is monted (because of
+  'going back') (bnc #429080).
+- Function SelectKernelPackages has been moved to Packages YCP
+  module (bnc #326269).
+- 2.17.7
+
+-------------------------------------------------------------------
+Tue Sep 23 17:22:51 CEST 2008 - locilka@suse.cz
+
+- Calling Packages::CheckOldAddOns to report warning about product
+  automatically selected for removal (FATE #304488).
+- Using new Packages::GetBaseSourceID function (FATE #304488).
+- 2.17.6
+
+-------------------------------------------------------------------
+Tue Sep 23 15:13:24 CEST 2008 - ug@suse.de
+
+- more sophisticated "mountby" detection for autoyast's
+  partitioning_advanced added and fixed a bug in that too
+  (bnc#425454)
+- 2.17.5
+
+-------------------------------------------------------------------
+Thu Sep 11 08:31:18 CEST 2008 - jsrain@suse.cz
+
+- merged texts from proofread
+
+-------------------------------------------------------------------
+Wed Sep 10 11:40:36 CEST 2008 - locilka@suse.cz
+
+- Fixed selecting the recommended and removing the old kernels
+  while upgrading (bnc #423590).
+- 2.17.4
+
+-------------------------------------------------------------------
+Mon Sep  1 13:15:22 CEST 2008 - locilka@suse.cz
+
+- Obsolete EVMS-related code disabled.
+- 2.17.3
+
+-------------------------------------------------------------------
+Mon Sep  1 10:21:46 CEST 2008 - ug@suse.de
+
+- activation of EVMS removed since it does not exist anymore
+- 2.17.2
+
+-------------------------------------------------------------------
+Mon Aug  4 13:18:47 CEST 2008 - locilka@suse.cz
+
+- Initializing target as soon as possible (updating running system)
+  (bnc #394662).
+- 2.17.1
+
+-------------------------------------------------------------------
+Wed Jul 30 07:19:56 CEST 2008 - coolo@suse.de
+
+- fix file list of package
+
+-------------------------------------------------------------------
+Thu Jul 24 12:50:06 CEST 2008 - locilka@suse.cz
+
+- Making possible to upgrade running system using YaST Update even
+  if it changes a release (the original/current installation
+  repository must be present).
+- 2.17.0
+
+-------------------------------------------------------------------
+Thu May 29 14:56:15 CEST 2008 - locilka@suse.cz
+
+- Selecting packages for deletion after PkgApplReset call instead
+  of calling it before (bnc #391785).
+- 2.16.10
+
+-------------------------------------------------------------------
+Fri May 16 16:40:22 CEST 2008 - jsrain@suse.cz
+
+- added categories Settings and System into desktop file
+  (bnc #382778)
+
+-------------------------------------------------------------------
+Tue May  6 18:47:09 CEST 2008 - locilka@suse.cz
+
+- Removed support for 'delete unmaintained packages' from
+  configuration UI as it is no longer supported by libzypp and
+  replaced with list of packages to delete defined in control
+  file (bnc #300540).
+- 2.16.9
+
+-------------------------------------------------------------------
+Tue Apr 29 13:31:05 CEST 2008 - locilka@suse.cz
+
+- Progress for "searching for partitions" (bnc #384707).
+- 2.16.8
+
+-------------------------------------------------------------------
+Wed Apr 23 15:29:55 CEST 2008 - locilka@suse.cz
+
+- Added new client for run_update that does the real update, the
+  old update client is left to handle command-line or to call
+  the new client (bnc #382044).
+- Fixed update proposal not to propose two kernels (bnc #382208).
+- 2.16.7
+
+-------------------------------------------------------------------
+Fri Apr 11 18:05:54 CEST 2008 - locilka@suse.cz
+
+- Added missing </p> (bnc #377476).
+- Changing Accept buttons to OK buttons (FATE #120373).
+- 2.16.6
+
+-------------------------------------------------------------------
+Fri Mar 21 10:55:32 CET 2008 - locilka@suse.cz
+
+- Dropping keep_installed_patches support from control file as it
+  is currently handled by libzypp itself (bnc #349533).
+
+-------------------------------------------------------------------
+Thu Mar 20 11:37:54 CET 2008 - locilka@suse.cz
+
+- Not displaying a pop-up warning when upgrading ppc to ppc64 and
+  vice versa. The current check can't really distinguish between
+  these two (bnc #372309).
+- Fixed spec.in file to get built (@HEADER@ twice).
+- 2.16.5
+
+-------------------------------------------------------------------
+Mon Mar 17 12:43:32 CET 2008 - jsrain@suse.cz
+
+- added 'StartupNotify=true' to the desktop file (bnc #304964)
+
+-------------------------------------------------------------------
+Wed Jan 16 09:50:54 CET 2008 - locilka@suse.cz
+
+- Removed build dependency on yast2-country again - removed
+  forgotten import of Keyboard module.
+- 2.16.4
+
+-------------------------------------------------------------------
+Fri Jan 11 09:40:25 CET 2008 - coolo@suse.de
+
+- Fixed build-dependency on yast2-country again
+
+-------------------------------------------------------------------
+Fri Jan  4 13:33:32 CET 2008 - lslezak@suse.cz
+
+- do not call Pkg::SaveState() and Pkg::RestoreState(), the state
+  is saved/restored by the package selector widget
+- 2.16.3
+
+-------------------------------------------------------------------
+Thu Dec 13 13:00:36 CET 2007 - locilka@suse.cz
+
+- Fixed build-dependency on yast2-country.
+- 2.16.2
+
+-------------------------------------------------------------------
+Thu Dec  6 10:03:09 CET 2007 - locilka@suse.cz
+
+- Merged proofread texts.
+
+-------------------------------------------------------------------
+Mon Nov 19 16:58:31 CET 2007 - locilka@suse.cz
+
+- Unified used terminology (repositories) (FATE #302970).
+
+-------------------------------------------------------------------
+Thu Nov  1 16:47:44 CET 2007 - locilka@suse.cz
+
+- Update/backup-related variables were moved from Update::* to
+  Installation::update_* to remove RPM dependencies.
+- 2.16.1
+
+-------------------------------------------------------------------
+Thu Nov  1 15:39:45 CET 2007 - locilka@suse.cz
+
+- Removed #!BuildIgnore: autoyast2-installation because recent
+  changes have already fixed the dependency loop.
+
+-------------------------------------------------------------------
+Wed Oct 31 13:21:55 CET 2007 - locilka@suse.cz
+
+- installedVersion and updateVersion moved from 'Update' to
+  'Installation' YCP module to remove dependencies.
+- 2.16.0
+
+-------------------------------------------------------------------
+Thu Oct 25 14:00:51 CEST 2007 - locilka@suse.cz
+
+- Never list duplicate entries in "upgrade based on products" in
+  upgrade proposal (#331560).
+
+-------------------------------------------------------------------
+Tue Aug 28 12:35:29 CEST 2007 - locilka@suse.cz
+
+- Update proposal doesn't use recommended Kernel if the package is
+  not available (#304646).
+- 2.15.23
+
+-------------------------------------------------------------------
+Mon Aug 27 14:18:25 CEST 2007 - locilka@suse.cz
+
+- Calling Storage::DeviceMatchFstab with not-translated device name
+  instead of the translated one (Storage::GetTranslatedDevices)
+  (#304269).
+- 2.15.22
+
+-------------------------------------------------------------------
+Thu Aug 23 15:22:12 CEST 2007 - locilka@suse.cz
+
+- Preselecting new kernel if recommended and installed kernels do
+  not match. Removing other kernels but kernel-xen (#302419).
+- 2.15.21
+
+-------------------------------------------------------------------
+Thu Aug  9 16:20:58 CEST 2007 - locilka@suse.cz
+
+- Using cryptsetup instead of losetup, patch created by Thomas Fehr
+  (#258222).
+- 2.15.20
+
+-------------------------------------------------------------------
+Wed Aug  1 10:19:50 CEST 2007 - mvidner@suse.cz
+
+- Removed Provides/Obsoletes for ancient yast package names,
+  with the last change they broke yast2-schema build.
+- 2.15.19
+
+-------------------------------------------------------------------
+Mon Jul 23 14:18:05 CEST 2007 - locilka@suse.cz
+
+- Package has been split into two: yast2-update and
+  yast2-update-FACTORY (System/FACTORY update) (FATE #302017).
+- 2.15.18
+
+-------------------------------------------------------------------
+Fri Jul 20 15:35:42 CEST 2007 - locilka@suse.cz
+
+- Added BuildIgnore: autoyast2-installation to break the loop.
+- 2.15.17
+
+-------------------------------------------------------------------
+Fri Jul 20 14:55:25 CEST 2007 - locilka@suse.cz
+
+- Removing yast2-add-on and adding yast2-storage to the RPM build
+  requirements.
+- 2.15.16
+
+-------------------------------------------------------------------
+Wed Jul 18 08:53:15 CEST 2007 - locilka@suse.cz
+
+- Warn user if the /boot partition is too small (less than 64 MB,
+  resp. 200 on IA64). User can either cancel updating or confirm
+  it despite the risk of possible failure (#258563).
+- Fixed update_proposal to warn 'non-mathing versions' only in case
+  the update is performed on a running system.
+- More debugging for device-names translation during upgrade.
+- 2.15.15
+
+-------------------------------------------------------------------
+Wed Jul  4 15:36:07 CEST 2007 - locilka@suse.cz
+
+- Do not let wrong architecture to make partition invalid in case
+  of boot-from-partition but make it invalid in case of upgrade
+  (#288201).
+- 2.15.14
+
+-------------------------------------------------------------------
+Mon Jun  4 09:39:52 CEST 2007 - locilka@suse.cz
+
+- Displaying correct product names (from/to) in the FACTORY update
+  proposal in warning message when products don't match (#280145).
+- 2.15.13
+
+-------------------------------------------------------------------
+Thu May 17 22:40:09 CEST 2007 - locilka@suse.cz
+
+- System Update icon is back in Control Center (#274064)
+- System Update functionality is allowed only when product versions
+  are matching (can have a different name). Non-matching product
+  means no possibility for System Update.
+- Warning is printed when versions match but product names are
+  different (#274064).
+- System Update temporarily renamed to 'FACTORY Update'.
+- 2.15.12
+
+-------------------------------------------------------------------
+Thu May  3 15:51:10 CEST 2007 - lslezak@suse.cz
+
+- Don't display excessive progress popup (#269920)
+- 2.15.11
+
+-------------------------------------------------------------------
+Wed May  2 10:13:52 CEST 2007 - locilka@suse.cz
+
+- CommandLine interface support for update script (#269910)
+
+-------------------------------------------------------------------
+Wed Apr 18 14:53:14 CEST 2007 - locilka@suse.cz
+
+- Fixed System Update script (udate.ycp) to use
+  Wizard::OpenNextBackStepsDialog instead of OpenNextBackDialog.
+
+-------------------------------------------------------------------
+Tue Apr 17 13:06:42 CEST 2007 - locilka@suse.cz
+
+- Removed System Update icon from YaST Control Center (#265225).
+- Removed update-desktop-files from BuildRequires
+- 2.15.10
+
+-------------------------------------------------------------------
+Wed Apr 11 16:34:50 CEST 2007 - locilka@suse.cz
+
+- Added icon into Update Options dialog.
+- Added help for Update Options summary proposal (#227265).
+- System upgrade is now forbidden, only system update is possible.
+- Upgrade based on patterns is now more visually understandable
+  (#227265).
+- 2.15.9
+
+-------------------------------------------------------------------
+Thu Apr  5 11:38:49 CEST 2007 - locilka@suse.cz
+
+- Always call Update::GetProductName translating fstab and
+  cryptotab.
+- 2.15.8
+
+-------------------------------------------------------------------
+Thu Apr  5 10:34:05 CEST 2007 - locilka@suse.cz
+
+- Fixed reading fstab and cryptotab to always call Storage to
+  translate old devices to new ones (#258222).
+- Added new popup showing details when fsck.jfs fails.
+- 2.15.7
+
+-------------------------------------------------------------------
+Tue Mar 13 15:47:25 CET 2007 - locilka@suse.cz
+
+- When checking the installed system either for Update or Boot
+  Installed System, consider partition valid when inst-sys is PPC
+  and installed system is PPC64. Don't be so strict (#249791).
+- 2.15.6
+
+-------------------------------------------------------------------
+Thu Mar  1 15:13:11 CET 2007 - locilka@suse.cz
+
+- Added more logging because of bug #249791.
+- Better layout for "Select System or Partition to Boot" dialog.
+- 2.15.5
+
+-------------------------------------------------------------------
+Mon Feb 26 09:35:05 CET 2007 - locilka@suse.cz
+
+- Adding yast2-add-on to BuildRequires.
+- Cleaning makefiles from vendor.desktop.
+- 2.15.4
+
+-------------------------------------------------------------------
+Fri Feb 16 16:19:48 CET 2007 - locilka@suse.cz
+
+- Client and desktop file 'vendor' has been moved to a new package
+  yast2-add-on-2.15.0 (#238673)
+- Removed dependency on yast2-storage (now needed only in inst-sys)
+
+-------------------------------------------------------------------
+Thu Feb 15 11:34:53 CET 2007 - locilka@suse.cz
+
+- Added two new functions into Update module:
+  SilentlyDowngradePackages and KeepInstalledPatches to control
+  upgrade process better (FATE #301990, Bugzilla #238488).
+- 2.15.3
+
+-------------------------------------------------------------------
+Tue Feb 13 18:19:43 CET 2007 - locilka@suse.cz
+
+- Client and desktop file 'vendor' has been moved to update from
+  installation to minimize RPM dependencies.
+- Fixed RootPart code handling the correctness of root partition
+  mentioned in /etc/fstab of the updated system. Using new
+  Storage::DeviceMatchFstab function from storage (#244117).
+- Updating RPM requirements.
+
+-------------------------------------------------------------------
+Wed Jan 31 16:28:45 CET 2007 - locilka@suse.cz
+
+- Fixed update of system on EVMS: '/dev/abc/xyz' is the same
+  as '/dev/evms/lvm2/abc/xyz' (#237139).
+- 2.15.2
+
+-------------------------------------------------------------------
+Thu Jan  4 14:34:40 CET 2007 - locilka@suse.cz
+
+- Added documentation for new features in control file:
+  * boolean delete_old_packages and list of products for which this
+    rule is inverted (delete_old_packages_reverse_list).
+  * boolean only_update_selected and list of products for which
+    this rule is inverted (only_update_selected_reverse_list).
+  * list of products supported for upgrade
+    (products_supported_for_upgrade)
+  These new options are defined as lists of regular expressions.
+  (All described in FATE #301844)
+- Changed dialog for selecting update options to show product-label
+  instead of product-name.
+- 2.15.1 
+
+-------------------------------------------------------------------
+Tue Dec 12 10:40:40 CET 2006 - locilka@suse.cz
+
+- Better handling of .target.modprobe during update (#223878).
+
+-------------------------------------------------------------------
+Mon Dec  4 10:42:16 CET 2006 - locilka@suse.cz
+
+- Installation Media (update) proposal: using key "label" instead
+  of "productname", which is used as a fallback now (#225256).
+- 2.15.0
+
+-------------------------------------------------------------------
+Fri Nov 10 08:58:50 CET 2006 - locilka@suse.cz
+
+- Removing `ignore button for now (#148105, comments #22-#28).
+- 2.14.7
+
+-------------------------------------------------------------------
+Thu Nov  9 10:12:01 CET 2006 - locilka@suse.cz
+
+- If no base product found, do not complain about imcompatibility.
+  This happens only when updating the running system (#218720).
+- Changed [Next] button to [Accept] in the update proposal on the
+  running system (#219097).
+- Checking for RPM Database. Reporting error when it is missing and
+  offering `abort, `retry, `ignore (#148105).
+- 2.14.6
+
+-------------------------------------------------------------------
+Tue Nov  7 13:00:25 CET 2006 - locilka@suse.cz
+
+- Removing testsuite for now for not being able to pass it without
+  root permissions.
+- 2.14.5
+
+-------------------------------------------------------------------
+Fri Nov  3 09:20:27 CET 2006 - locilka@suse.cz
+
+- Added Pkg::TargetInitialize ("/tmp") into the testsuite to pass
+  through the build without root permissions.
+- 2.14.4
+
+-------------------------------------------------------------------
+Wed Nov  1 16:54:14 CET 2006 - locilka@suse.cz
+
+- Fixed regexp to distinguish "major" and "minor" version that
+  should have fixed bug #153576. Minor version "3" could have been
+  ignored (bug #217013).
+- Adding testsuite for Update::GetProductName() function (#153576).
+- 2.14.3
+
+-------------------------------------------------------------------
+Thu Oct 26 13:33:27 CEST 2006 - locilka@suse.cz
+
+- Adding "major" and "minor" keys into the update map including
+  information From and To which system it is going to update.
+  (#153576)
+- 2.14.2
+
+-------------------------------------------------------------------
+Fri Oct 13 12:38:16 CEST 2006 - locilka@suse.cz
+
+- Fixed handling of errors in log during update.
+- Skipping modprobe for sysfs and proc (both #211916)
+- 2.14.1
+
+-------------------------------------------------------------------
+Mon Oct  9 17:06:38 CEST 2006 - locilka@suse.cz
+
+- Merged SLES10 SP1 branch to openSUSE 10.2.
+- 2.14.0
+
+-------------------------------------------------------------------
+Tue Sep 26 12:26:16 CEST 2006 - locilka@suse.cz
+
+- Run read-only fsck.jfs before mounting jfs partition (#176292).
+- 2.13.36
+
+-------------------------------------------------------------------
+Tue Aug 29 08:40:50 CEST 2006 - locilka@suse.cz
+
+- Better wording for table of partition names to be selected for
+  update, added File System column. (#166478)
+- 2.13.35
+
+-------------------------------------------------------------------
+Tue Aug 22 15:22:55 CEST 2006 - locilka@suse.cz
+
+- Deprecated builtins replaced with new ones
+- 2.13.34
+
+-------------------------------------------------------------------
+Fri Aug 11 10:07:03 CEST 2006 - jsrain@suse.cz
+
+- fixed mounting /var partition during update if root is on md,
+  but /var is not (#154915)
+
+-------------------------------------------------------------------
+Wed Aug  9 09:30:08 CEST 2006 - jsrain@suse.cz
+
+- select system patterns also on update (#192002)
+
+-------------------------------------------------------------------
+Tue Aug  8 14:19:47 CEST 2006 - jsrain@suse.cz
+
+- cut off beta version from version read from target system during
+  update (#157904)
+- 2.13.33
+
+-------------------------------------------------------------------
+Tue Aug  1 10:41:23 CEST 2006 - jsrain@suse.cz
+
+- removed obsolete raidstart command (#195061)
+
+-------------------------------------------------------------------
+Wed Jul 26 10:01:18 CEST 2006 - jsrain@suse.cz
+
+- avoid using deprecated Pkg builtin TargetProducts
+
+-------------------------------------------------------------------
+Thu Jun  8 12:48:39 CEST 2006 - jsrain@suse.cz
+
+- fixed "Reset to Default" function for SW selection (#177469)
+- 2.13.32
+
+-------------------------------------------------------------------
+Wed Jun  7 09:27:17 CEST 2006 - jsrain@suse.cz
+
+- updated HTTP link to support portal (#180900)
+- 2.13.31
+
+-------------------------------------------------------------------
+Mon May 29 12:50:46 CEST 2006 - jsrain@suse.cz
+
+- display all products to update in proposal (#170233)
+- 2.13.30
+
+-------------------------------------------------------------------
+Thu May 25 13:15:54 CEST 2006 - jsrain@suse.cz
+
+- fixed keeping locked packages during upgrade (#177469)
+- 2.13.29
+
+-------------------------------------------------------------------
+Mon May 22 12:22:35 CEST 2006 - jsrain@suse.cz
+
+- do not delete unmaintained packages if not wanted by user
+  (#176788)
+- 2.13.28
+
+-------------------------------------------------------------------
+Thu May 11 08:46:37 CEST 2006 - jsrain@suse.cz
+
+- preselect patterns specified in the content file (#168297)
+- 2.13.27
+
+-------------------------------------------------------------------
+Wed May  3 14:18:50 CEST 2006 - jsrain@suse.cz
+
+- fixed selecting product during update (#172164)
+- 2.13.26
+
+-------------------------------------------------------------------
+Wed Apr 26 18:42:55 CEST 2006 - jsrain@suse.de
+
+- fixed update proposal with patterns (#168297)
+- 2.13.25
+
+-------------------------------------------------------------------
+Fri Apr 21 11:06:15 CEST 2006 - locilka@suse.cz
+
+- calling modprobe with the right parameter (without -t) (#167976)
+- 2.13.24
+
+-------------------------------------------------------------------
+Thu Apr 20 14:47:17 CEST 2006 - lslezak@suse.cz
+
+- fixed counting of removed packages (#162963)
+- 2.13.23
+
+-------------------------------------------------------------------
+Tue Apr 18 18:01:43 CEST 2006 - jsrain@suse.de
+
+- mount target system in root partition selection dialog (#167240)
+- 2.13.22
+
+-------------------------------------------------------------------
+Fri Apr 14 20:22:38 CEST 2006 - jsrain@suse.de
+
+- prevent from returning to root partition selection dialog (#165832)
+- 2.13.21
+
+-------------------------------------------------------------------
+Thu Apr 13 20:24:33 CEST 2006 - jsrain@suse.de
+
+- do not remove old kernel - solver handles it (#165823)
+- 2.13.20
+
+-------------------------------------------------------------------
+Thu Apr 13 10:58:44 CEST 2006 - locilka@suse.cz
+
+- New counting of packages for the update proposal (#162963).
+- 2.13.19
+
+-------------------------------------------------------------------
+Wed Apr 12 19:29:18 CEST 2006 - jsrain@suse.de
+
+- mount /sys before update (#165502)
+- 2.13.18
+
+-------------------------------------------------------------------
+Wed Apr 12 12:50:06 CEST 2006 - locilka@suse.cz
+
+- Fixing number of packages marked to be `removed during the update
+  (#162963).
+- 2.13.17
+
+-------------------------------------------------------------------
+Wed Apr 12 11:51:44 CEST 2006 - schubi@suse.de
+
+- removed Pkg::PkgFreshen();
+  Bug 165477 - Build 913: Resolver loops on update from 10.0 to 10.1 (x86_64)
+
+-------------------------------------------------------------------
+Tue Apr 11 18:04:29 CEST 2006 - kkaempf@suse.de
+
+- call PkgFreshen() after calculating Update, not before.
+- 2.13.15
+
+-------------------------------------------------------------------
+Thu Apr  6 19:19:07 CEST 2006 - jsrain@suse.de
+
+- do not display hidden patterns in proposal (#159450)
+- 2.13.14
+
+-------------------------------------------------------------------
+Wed Apr  5 21:05:13 CEST 2006 - jsrain@suse.de
+
+- call Pkg::PkgFreshen when generating update proposal (#156980)
+- 2.13.13
+
+-------------------------------------------------------------------
+Thu Mar 30 14:26:21 CEST 2006 - mvidner@suse.cz
+
+- Don't run the module if another process has the zypp lock (#160319).
+- 2.13.12
+
+-------------------------------------------------------------------
+Mon Mar 27 16:57:57 CEST 2006 - jsrain@suse.de
+
+- set correctlty swap partition info during update (#133993)
+- 2.13.11
+
+-------------------------------------------------------------------
+Thu Mar 23 09:09:18 CET 2006 - lslezak@suse.cz
+
+- Display correct amounf of removed packages in the update
+  proposal (#154720)
+- 2.13.10
+
+-------------------------------------------------------------------
+Tue Mar 21 13:55:00 CET 2006 - mvidner@suse.cz
+
+- Read version info correctly for pre-10.1 products,
+  fixing update with encrypted partitions (#153576).
+- 2.13.9
+
+-------------------------------------------------------------------
+Wed Mar 15 22:41:59 CET 2006 - jsrain@suse.de
+
+- select proper desktop during update (#156632)
+- 2.13.8
+
+-------------------------------------------------------------------
+Wed Mar 15 17:52:26 CET 2006 - fehr@suse.de
+
+- remove calls to Storage::ActivateHld(), they are obsolete and
+  could seriously mess up an update involving Software Raid,
+  LVM or EVMS
+
+-------------------------------------------------------------------
+Wed Mar 15 16:54:54 CET 2006 - jsrain@suse.de
+
+- more verbose logging (#133993)
+- 2.13.7
+
+-------------------------------------------------------------------
+Wed Mar 15 16:35:19 CET 2006 - jsrain@suse.de
+
+- load appropriate kernel module before mounting filesystems
+  (#157585)
+- updated BuildRequiers
+- 2.13.6
+
+-------------------------------------------------------------------
+Thu Mar  9 21:34:59 CET 2006 - jsrain@suse.de
+
+- updated summary for pattern-based update (#155473)
+- 2.13.5
+
+-------------------------------------------------------------------
+Wed Mar  8 17:38:19 CET 2006 - jsrain@suse.de
+
+- fixed pattern handling during update (#153755)
+- 2.13.4
+
+-------------------------------------------------------------------
+Wed Mar  1 18:50:55 CET 2006 - jsrain@suse.de
+
+- display correctly pattern names
+
+-------------------------------------------------------------------
+Wed Mar  1 00:30:03 CET 2006 - jsrain@suse.de
+
+- allow to do update based on patterns (#153755)
+- 2.13.3
+
+-------------------------------------------------------------------
+Sun Feb 19 21:13:26 CET 2006 - jsrain@suse.de
+
+- don't ask "Try Again" if setting password for encrypted
+  filesystem canceled (#144683)
+- 2.13.2
+
+-------------------------------------------------------------------
+Sun Feb 19 16:38:12 CET 2006 - jsrain@suse.de
+
+- fixed unmounting partitions when different root partition
+  selected (#148109)
+- 2.13.1
+
+-------------------------------------------------------------------
+Fri Jan 27 09:20:57 CET 2006 - locilka@suse.cz
+
+- merged proofread texts
+
+-------------------------------------------------------------------
+Wed Dec 21 10:37:57 CET 2005 - visnov@suse.cz
+
+- merged proofread texts 
+
+-------------------------------------------------------------------
+Fri Dec 16 15:50:57 CET 2005 - jsrain@suse.cz
+
+- display list of partitions to update over whole dialog (#137776)
+- removed obsolete gnome-{pre|post}install scripts
+- 2.13.0
+
+-------------------------------------------------------------------
+Tue Nov 29 09:15:07 CET 2005 - visnov@suse.cz
+
+- removed yast2-x11 from build dependencies 
+
+-------------------------------------------------------------------
+Wed Nov 23 14:37:56 CET 2005 - jsrain@suse.cz
+
+- show partition label when selecting for update
+- 2.12.10
+
+-------------------------------------------------------------------
+Fri Nov 11 13:53:06 CET 2005 - jsrain@suse.cz
+
+- ask about the language once root partition is mounted (#71069)
+- 2.12.9
+
+-------------------------------------------------------------------
+Wed Oct 26 09:51:27 CEST 2005 - jsrain@suse.cz
+
+- do not force kernel upgrade if not necessary (#117461)
+
+-------------------------------------------------------------------
+Mon Sep 26 18:37:48 CEST 2005 - jsrain@suse.cz
+
+- do not ask whether reset detailed software selection if it had
+  not been changed (#104579)
+
+-------------------------------------------------------------------
+Fri Sep  9 15:14:53 CEST 2005 - jsrain@suse.cz
+
+- offer to ask for password of crypted partition again if mounting
+  failed (#116082)
+- 2.12.8
+
+-------------------------------------------------------------------
+Thu Aug 18 10:54:42 CEST 2005 - fehr@suse.de
+
+- changes needed for update with crypted partition (#105020)
+- 2.12.7
+
+-------------------------------------------------------------------
+Thu Aug 11 11:21:35 CEST 2005 - jsrain@suse.cz
+
+- fixed buttons in the root partition selection dialog run from
+  the proposal (#104038)
+- 2.12.6
+
+-------------------------------------------------------------------
+Thu Jul 21 17:03:17 CEST 2005 - fehr@suse.de
+
+- replace obsolete SCR agent calls by call to Storage::ActivateHld()
+- 2.12.5
+
+-------------------------------------------------------------------
+Thu Jul 21 15:06:01 CEST 2005 - jsrain@suse.cz
+
+- added root partition selection step to installation workflow
+- fixed mounting update target
+- 2.12.4
+
+-------------------------------------------------------------------
+Fri Jul 15 12:10:03 CEST 2005 - jsrain@suse.cz
+
+- adapted to new partitioner using storage-lib (arvin)
+- 2.12.3
+
+-------------------------------------------------------------------
+Mon Jun  6 12:54:37 CEST 2005 - jsrain@suse.cz
+
+- update product database when finished update (called from within
+  installed system (#75231)
+- 2.12.2
+
+-------------------------------------------------------------------
+Mon May 30 13:08:15 CEST 2005 - jsrain@suse.cz
+
+- don't remove /var/lib/YaST2/users.ycp during update (#84087)
+
+-------------------------------------------------------------------
+Mon Apr 18 17:02:28 CEST 2005 - jsrain@suse.cz
+
+- adapted to new interfrace of ProductFeatures.ycp
+- 2.12.1
+
+-------------------------------------------------------------------
+Mon Apr 11 13:33:03 CEST 2005 - jsrain@suse.cz
+
+- added more descriptive text when dependencies can't be resolved
+  automatically (#75312)
+
+-------------------------------------------------------------------
+Thu Mar 31 13:10:21 CEST 2005 - jsrain@suse.cz
+
+- adapted to some code moved to SuSERelease.ycp
+
+-------------------------------------------------------------------
+Tue Mar 29 10:57:13 CEST 2005 - jsrain@suse.cz
+
+- updated the layout of the source files in the repository
+- report error from the mount command in case of fail (#72485)
+- 2.12.0
+
+-------------------------------------------------------------------
+Fri Mar 11 11:18:49 CET 2005 - jsrain@suse.cz
+
+- fixed deleting packages marked to keep during update (#45605)
+- fixed counting update statistics (#67099)
+- fixed reselcting partition with system to update (#71252)
+
+-------------------------------------------------------------------
+Fri Mar  4 08:27:00 CET 2005 - jsrain@suse.cz
+
+- fixed order of Pkg::PkgUpdateAll and Pkg::PkgSolve calls (#67275)
+
+-------------------------------------------------------------------
+Wed Mar  2 11:00:36 CET 2005 - jsrain@suse.cz
+
+- merged texts from proofread
+
+-------------------------------------------------------------------
+Mon Feb 28 11:06:51 CET 2005 - jsrain@suse.cz
+
+- fixed actualizing packages update summary
+
+-------------------------------------------------------------------
+Wed Feb 23 15:44:48 CET 2005 - jsrain@suse.cz
+
+- fixed coments for translators
+
+-------------------------------------------------------------------
+Mon Feb 21 17:11:03 CET 2005 - nashif@suse.de
+
+- Added parameter to UnmountPartitions so it can be used
+  in autoyast
+  V 2.11.13
+
+-------------------------------------------------------------------
+Fri Feb 18 10:30:42 CET 2005 - jsrain@suse.cz
+
+- check product compatibility if updating running system
+- 2.11.12
+
+-------------------------------------------------------------------
+Wed Feb 16 16:32:23 CET 2005 - jsrain@suse.cz
+
+- display more info about update statistics (#37073)
+- 2.11.11
+
+-------------------------------------------------------------------
+Mon Feb 14 16:29:52 CET 2005 - jsrain@suse.cz
+
+- initialize rebuilddb callbacks during proposal (#50695)
+- 2.11.10
+
+-------------------------------------------------------------------
+Fri Feb 11 13:41:05 CET 2005 - jsrain@suse.cz
+
+- warn in proposal if out-of-disk-space durign update (#50376)
+- 2.11.9
+
+-------------------------------------------------------------------
+Thu Feb 10 15:33:14 CET 2005 - jsrain@suse.cz
+
+- drop message to log if partition cannot be used for upgrade due
+  to different architecture (#50656)
+- warn user if he selects partition to upgrade, where no system
+  was founf or the found system has idifferent architecture
+ (#50657)
+
+-------------------------------------------------------------------
+Wed Feb  9 10:25:22 CET 2005 - jsrain@suse.cz
+
+- do not report errors on unmounting partition if it was unmounted
+  successfully (#50619)
+
+-------------------------------------------------------------------
+Tue Feb  8 05:01:26 CET 2005 - nashif@suse.de
+
+- #49987: Update running system now has its own control file with
+  a mini workflow.
+
+-------------------------------------------------------------------
+Mon Feb  7 14:25:20 CET 2005 - jsrain@suse.cz
+
+- merged texts from proofread
+- 2.11.7
+
+-------------------------------------------------------------------
+Mon Feb  7 09:50:00 CET 2005 - jsrain@suse.cz
+
+- display total size of packages to be updated
+- 2.11.6
+
+-------------------------------------------------------------------
+Tue Feb  1 12:05:45 CET 2005 - jsrain@suse.cz
+
+- report error if unmounting fails to user (#50377)
+- recalculate disk usage during update proposal (#50376)
+
+-------------------------------------------------------------------
+Mon Jan 24 16:58:07 CET 2005 - nashif@suse.de
+
+- Fixed calling of inst_proposal
+
+-------------------------------------------------------------------
+Mon Jan 17 16:43:57 CET 2005 - jsrain@suse.cz
+
+- offer actions to do if mount of a partition fails (#46310)
+
+-------------------------------------------------------------------
+Tue Jan 11 14:11:34 CET 2005 - jsrain@suse.cz
+
+- inform user about new kernel installed if update run from control
+  center (#38346)
+
+-------------------------------------------------------------------
+Mon Jan 10 14:05:11 CET 2005 - jsrain@suse.cz
+
+- select kernel according to current hardware (#44342)
+
+-------------------------------------------------------------------
+Wed Nov 24 11:17:21 CET 2004 - arvin@suse.de
+
+- another fix for gnome-postinstall script (bug #42074)
+
+-------------------------------------------------------------------
+Thu Nov 11 18:07:40 CET 2004 - arvin@suse.de
+
+- always use Directory::logdir
+
+-------------------------------------------------------------------
+Wed Oct 27 12:42:30 CEST 2004 - arvin@suse.de
+
+- adapted to new Mode.ycp
+
+-------------------------------------------------------------------
+Tue Oct 19 11:47:13 CEST 2004 - kkaempf@suse.de
+
+- fix gnome.postinstall (#46870, #47351)
+
+-------------------------------------------------------------------
+Thu Sep 30 12:42:31 CEST 2004 - arvin@suse.de
+
+- always include at least empty raw_proposal (see bug #46411)
+
+-------------------------------------------------------------------
+Wed Sep 29 22:36:38 CEST 2004 - arvin@suse.de
+
+- partly workaround for bug #42074
+
+-------------------------------------------------------------------
+Mon Sep 20 15:32:58 CEST 2004 - arvin@suse.de
+
+- use Storage::GetOndiskTarget where appropriate
+
+-------------------------------------------------------------------
+Mon Sep 20 11:51:01 CEST 2004 - arvin@suse.de
+
+- fixed unmounting when switching from update to installation
+
+-------------------------------------------------------------------
+Thu Sep 16 11:07:00 CEST 2004 - arvin@suse.de
+
+- fixed target map computation and thus bootloader update
+  (bug #45332)
+
+-------------------------------------------------------------------
+Tue Sep 14 15:40:40 CEST 2004 - arvin@suse.de
+
+- try to mount partitions even when the device names have changed
+  (bug #44286)
+
+-------------------------------------------------------------------
+Thu Sep 09 16:51:29 CEST 2004 - arvin@suse.de
+
+- fixed proposal for update from running system
+
+-------------------------------------------------------------------
+Wed Sep 08 11:14:39 CEST 2004 - arvin@suse.de
+
+- fixed mounting of partitions with UUID (bug #44770)
+
+-------------------------------------------------------------------
+Tue Sep 07 15:08:15 CEST 2004 - arvin@suse.de
+
+- don't use product information from Update module in RootPart
+  module but instead gather it oneself (bug #44724)
+
+-------------------------------------------------------------------
+Mon Sep 06 15:17:07 CEST 2004 - arvin@suse.de
+
+- major cleanup of RootPart.ycp in preparation for bug #44286
+
+-------------------------------------------------------------------
+Thu Sep 02 12:41:05 CEST 2004 - arvin@suse.de
+
+- add kernel's nongpl package during installation (bug #44394)
+
+-------------------------------------------------------------------
+Fri Aug 27 15:07:49 CEST 2004 - arvin@suse.de
+
+- merged proof read messages
+
+-------------------------------------------------------------------
+Fri Aug 13 14:59:15 CEST 2004 - nashif@suse.de
+
+- added yast2-xml to neededforbuild
+- 2.10.5
+
+-------------------------------------------------------------------
+Thu Jul 29 15:03:27 CEST 2004 - nashif@suse.de
+
+- When reusing fstab in autoyast, format is set to false by default
+- Removed unused variables
+- 2.10.4
+
+-------------------------------------------------------------------
+Tue Jul 20 11:44:06 CEST 2004 - arvin@suse.de
+
+- better text in update proposal (bug #38506)
+
+-------------------------------------------------------------------
+Tue Jul 20 11:26:00 CEST 2004 - arvin@suse.de
+
+- renamed Update::onlyUpdateSelected to onlyUpdateInstalled
+  (bug #38486)
+
+-------------------------------------------------------------------
+Thu May 27 15:26:02 CEST 2004 - arvin@suse.de
+
+- used original target map during update (bug #41250)
+
+-------------------------------------------------------------------
+Wed May 12 11:29:46 CEST 2004 - arvin@suse.de
+
+- only update selections if the user did not make an manual
+  interaction (bug #40358)
+
+-------------------------------------------------------------------
+Tue May 04 11:18:58 CEST 2004 - arvin@suse.de
+
+- merged proofread messages
+
+-------------------------------------------------------------------
+Thu Apr 29 15:57:33 CEST 2004 - arvin@suse.de
+
+- handle renaming of device names on iseries (bug #39437)
+
+-------------------------------------------------------------------
+Mon Apr 19 09:30:00 CEST 2004 - kkaempf@suse.de
+
+- update gnome-postinstall script (#38644)
+
+-------------------------------------------------------------------
+Tue Apr  6 18:41:49 CEST 2004 - nashif@suse.de
+
+- Use product feature value for update/upgrade (#38486)
+
+-------------------------------------------------------------------
+Tue Apr 06 12:44:15 CEST 2004 - arvin@suse.de
+
+- added error popup for wrong device of root partition in fstab
+
+-------------------------------------------------------------------
+Mon Apr 05 15:02:11 CEST 2004 - arvin@suse.de
+
+- load module dm-snapshort at to prevent hangs if LVM contains
+  snapshot LVs (#36422)
+
+-------------------------------------------------------------------
+Fri Apr 02 15:59:59 CEST 2004 - arvin@suse.de
+
+- finally changed license to GPL for good
+
+-------------------------------------------------------------------
+Wed Mar 31 12:26:52 CEST 2004 - kkaempf@suse.de
+
+- Support for /usr/local in gnome-postinstall. (sbrabec@suse.cz)
+
+-------------------------------------------------------------------
+Thu Mar 25 18:18:19 CET 2004 - arvin@suse.de
+
+- change for new crypto handling
+- better structured data about old and new version
+
+-------------------------------------------------------------------
+Tue Mar 23 18:45:33 CET 2004 - arvin@suse.de
+
+- load dm-mod instead of lvm-mod when searching for root
+  partition (bug #36784)
+
+-------------------------------------------------------------------
+Tue Mar 16 21:10:23 CET 2004 - kkaempf@suse.de
+
+- add clean up scripts for GNOME (#36196)
+
+-------------------------------------------------------------------
+Tue Mar 16 07:23:12 CET 2004 - nashif@suse.de
+
+- Dont format list partitions (autoinst mode)
+
+-------------------------------------------------------------------
+Mon Mar 15 16:20:49 CET 2004 - arvin@suse.de
+
+- adapted to changed mode stuff
+
+-------------------------------------------------------------------
+Fri Mar 12 06:11:53 CET 2004 - nashif@suse.de
+
+- add function to format/mount partitions using installed
+  fstab to be used for auto-installation.
+
+-------------------------------------------------------------------
+Wed Mar 10 17:41:13 CET 2004 - arvin@suse.de
+
+- maybe fixed root partition detection
+
+-------------------------------------------------------------------
+Thu Mar 04 10:52:33 CET 2004 - arvin@suse.de
+
+- handle ProductFeatures::delete_old_packages (bug #35235)
+
+-------------------------------------------------------------------
+Wed Mar 03 15:43:04 CET 2004 - arvin@suse.de
+
+- correctly initialize old product name during update
+
+-------------------------------------------------------------------
+Tue Mar  2 13:26:49 CET 2004 - visnov@suse.cz
+
+- added type info for lists/maps
+
+-------------------------------------------------------------------
+Sat Feb 28 11:04:37 CET 2004 - kkaempf@suse.de
+
+- fix typo from last change
+
+-------------------------------------------------------------------
+Fri Feb 27 13:23:40 CET 2004 - arvin@suse.de
+
+- initialize old product name during update
+
+-------------------------------------------------------------------
+Thu Feb 26 20:35:57 CET 2004 - nashif@suse.de
+
+- Changed proposal file name proposal_* to *_proposal
+
+-------------------------------------------------------------------
+Wed Feb 25 15:55:18 CET 2004 - arvin@suse.de
+
+- also detect RHAS (bug #34983)
+
+-------------------------------------------------------------------
+Tue Feb 24 17:18:13 CET 2004 - arvin@suse.de
+
+- readded update in running system (bug #34538)
+- set default to "only update" when updating in running system
+
+-------------------------------------------------------------------
+Thu Feb 19 13:50:50 CET 2004 - mvidner@suse.cz
+
+- changed sort to use "<" instead of "<=" because of the switch
+  to std::sort
+
+-------------------------------------------------------------------
+Tue Feb 10 17:53:34 CET 2004 - arvin@suse.de
+
+- fixed missing argument in proposal_packages.ycp
+
+-------------------------------------------------------------------
+Mon Jan 19 13:07:10 CET 2004 - arvin@suse.de
+
+- united inst_rpmcopy.ycp and inst_rpmupdate.ycp
+
+-------------------------------------------------------------------
+Fri Jan 16 12:13:54 CET 2004 - arvin@suse.de
+
+- restore callbacks after slideshow
+
+-------------------------------------------------------------------
+Mon Sep 29 14:22:39 CEST 2003 - arvin@suse.de
+
+- removed module for update from running system (bug #31824)
+
+-------------------------------------------------------------------
+Thu Sep 18 13:46:33 CEST 2003 - kkaempf@suse.de
+
+- if there are replacements for installed selections, use them
+  (#31211)
+
+-------------------------------------------------------------------
+Wed Sep 17 15:39:17 CEST 2003 - arvin@suse.de
+
+- activate lvm while searching for root partitions (bug #30723)
+- use real partition table during search for root partitions
+
+-------------------------------------------------------------------
+Tue Sep 16 17:11:11 CEST 2003 - kkaempf@suse.de
+
+- when upgrading to new base selection, first activate the
+  selection, then do the update loop. (part of #31001)
+
+-------------------------------------------------------------------
+Tue Sep 16 11:01:10 CEST 2003 - arvin@suse.de
+
+- fixed backup of /etc/rc.config.d
+
+-------------------------------------------------------------------
+Mon Sep 15 16:18:48 CEST 2003 - msvec@suse.cz
+
+- another missing translation mark
+- 2.8.21
+
+-------------------------------------------------------------------
+Mon Sep 15 14:53:09 CEST 2003 - arvin@suse.de
+
+- fixed backup of /etc/rc.config
+
+-------------------------------------------------------------------
+Sun Sep 14 15:10:19 CEST 2003 - arvin@suse.de
+
+- rewrote selection handling (bug #30460 and hopefully many more)
+
+-------------------------------------------------------------------
+Fri Sep 12 11:09:47 CEST 2003 - arvin@suse.de
+
+- more or less ignore conflict during update (workaround for
+  bug #30550)
+
+-------------------------------------------------------------------
+Thu Sep 11 22:39:29 CEST 2003 - arvin@suse.de
+
+- update mode for package selector is back (bug #29906)
+
+-------------------------------------------------------------------
+Thu Sep 11 17:58:34 CEST 2003 - kkaempf@suse.de
+
+- move Pkg::SetLocale() to Packages::Init() (#30438)
+
+-------------------------------------------------------------------
+Thu Sep 11 16:47:51 CEST 2003 - arvin@suse.de
+
+- try to backup /etc/rc.config if /etc/sysconfig doesn't exist
+  (bug #30482)
+
+-------------------------------------------------------------------
+Tue Sep  9 10:12:19 CEST 2003 - kkaempf@suse.de
+
+- Fallback to highest ordered base selection if the installed base
+  selection doesn't have a counterpart. (#29904)
+- 2.8.14
+
+-------------------------------------------------------------------
+Mon Sep 08 15:55:02 CEST 2003 - arvin@suse.de
+
+- sync rpm database
+
+-------------------------------------------------------------------
+Thu Sep 04 16:02:16 CEST 2003 - arvin@suse.de
+
+- added space check (bug #29705)
+
+-------------------------------------------------------------------
+Wed Sep 03 12:18:55 CEST 2003 - arvin@suse.de
+
+- activate md and lvm
+
+-------------------------------------------------------------------
+Mon Sep 01 17:20:16 CEST 2003 - arvin@suse.de
+
+- avoid leading "/mnt" in backup of /etc/sysconfig
+
+-------------------------------------------------------------------
+Sun Aug 31 14:57:00 CEST 2003 - arvin@suse.de
+
+- use Popup::ConfirmAbort
+
+-------------------------------------------------------------------
+Fri Aug 29 16:10:32 CEST 2003 - arvin@suse.de
+
+- install callbacks for converting rpm database (bug #29484)
+
+-------------------------------------------------------------------
+Fri Aug 29 10:58:33 CEST 2003 - arvin@suse.de
+
+- show error when media is broken (bug #29489)
+
+-------------------------------------------------------------------
+Tue Aug 26 12:33:16 CEST 2003 - arvin@suse.de
+
+- solve errors cause a blocker during update (bug #29320)
+
+-------------------------------------------------------------------
+Fri Aug 22 11:26:37 CEST 2003 - arvin@suse.de
+
+- only run inst_rpmupdate during update
+
+-------------------------------------------------------------------
+Tue Aug 19 13:07:01 CEST 2003 - arvin@suse.de
+
+- removed obsolete include
+
+-------------------------------------------------------------------
+Wed Aug 13 16:11:37 CEST 2003 - arvin@suse.de
+
+- fixed detection of root partitions (bug #28719)
+
+-------------------------------------------------------------------
+Mon Jul 28 13:14:38 CEST 2003 - arvin@suse.de
+
+- ignore read-only option when mounting partitions for update
+  (part of several bug reports)
+
+-------------------------------------------------------------------
+Wed Jul 16 13:26:45 CEST 2003 - arvin@suse.de
+
+- remove old yast stuff (e.g. you files) before running update
+
+-------------------------------------------------------------------
+Tue Jul 15 09:44:55 CEST 2003 - arvin@suse.de
+
+- make backup (archive) of /etc/sysconfig (bug #25283)
+- allow user to remove old backups
+
+-------------------------------------------------------------------
+Thu Jul 10 18:22:16 CEST 2003 - arvin@suse.de
+
+- fixed help text for dialog to select root partition (bug #8014)
+
+-------------------------------------------------------------------
+Thu Jul 10 17:07:03 CEST 2003 - arvin@suse.de
+
+- only offer systems with same architecture as installation
+  medium for update (bug #25377)
+
+-------------------------------------------------------------------
+Fri Jul 04 13:28:03 CEST 2003 - arvin@suse.de
+
+- allow selection of all root partition (bug #16643)
+
+-------------------------------------------------------------------
+Fri Jul 04 13:22:03 CEST 2003 - arvin@suse.de
+
+- convert update workflow into a proposal
+
+-------------------------------------------------------------------
+Tue Mar 18 15:04:31 CET 2003 - kkaempf@suse.de
+
+- Set Mode::update so Bootloader clean old boot configuration
+  (i.e. removing dropped modules from initrd) correctly.
+- 2.7.15
+
+-------------------------------------------------------------------
+Tue Mar 18 14:00:05 CET 2003 - kkaempf@suse.de
+
+- remove old (defective) list of still-to-be-installed source
+  rpms (#25578)
+- rename "Boot" to "Bootloader" (#25558)
+- 2.7.14
+
+-------------------------------------------------------------------
+Tue Mar 18 11:43:46 CET 2003 - kkaempf@suse.de
+
+- remove unneeded import "Boot" from update.ycp
+- 2.7.13
+
+-------------------------------------------------------------------
+Tue Mar 18 11:32:41 CET 2003 - sh@suse.de
+
+- Fixed complaints about undeclared variable Upgrade::userChangedState
+  (it's Update::userChangedState)
+
+-------------------------------------------------------------------
+Mon Mar 17 11:52:45 CET 2003 - kkaempf@suse.de
+
+- if no product can be determined, use /etc/*-release
+- 2.7.11
+
+-------------------------------------------------------------------
+Sat Mar 15 23:14:00 CET 2003 - kkaempf@suse.de
+
+- move the "seen_details" flag to the global Update module (#24927)
+- 2.7.10
+
+-------------------------------------------------------------------
+Fri Mar 14 17:30:48 CET 2003 - kkaempf@suse.de
+
+- if user was in single package selection, he has seen the
+  details (#24927)
+- 2.7.9
+
+-------------------------------------------------------------------
+Fri Mar 07 11:12:20 CET 2003 - arvin@suse.de
+
+- only search for root partition on partitions with file system
+  we know about (bug #24740)
+
+-------------------------------------------------------------------
+Wed Mar  5 15:07:33 CET 2003 - kkaempf@suse.de
+
+- check "selection changed by user" status better (#23616).
+
+-------------------------------------------------------------------
+Tue Mar  4 15:16:50 CET 2003 - kkaempf@suse.de
+
+- default to 'delete packages without replacement' during
+  update (#24534)
+- 2.7.6
+
+-------------------------------------------------------------------
+Mon Mar 03 12:52:11 CET 2003 - arvin@suse.de
+
+- once more merged proofread texts
+
+-------------------------------------------------------------------
+Mon Feb 24 13:20:51 CET 2003 - kkaempf@suse.de
+
+- fix logfile name in error popup (#24188)
+
+-------------------------------------------------------------------
+Wed Feb 12 16:15:53 CET 2003 - kkaempf@suse.de
+
+- remove "/usr/share/info/dir" on target if not owned by
+  any package (#23555)
+
+-------------------------------------------------------------------
+Mon Feb 10 16:43:53 CET 2003 - arvin@suse.de
+
+- merged proofread messages
+
+-------------------------------------------------------------------
+Fri Feb 07 12:58:17 CET 2003 - arvin@suse.de
+
+- merged proofread messages
+
+-------------------------------------------------------------------
+Tue Nov  5 14:29:39 CET 2002 - kkaempf@suse.de
+
+- close initial dialog window properly (#21377)
+- 2.6.23
+
+-------------------------------------------------------------------
+Fri Sep 13 16:06:20 CEST 2002 - lslezak@suse.cz
+
+- propagate info about all partitions to Storage:: at update
+- version 2.6.22
+
+-------------------------------------------------------------------
+Fri Sep 13 14:41:18 CEST 2002 - lnussel@suse.de
+
+- write /var/lib/YaST2/backup_path so info about backups doesn't get lost after
+  reboot (#19629)
+- 2.6.21
+
+-------------------------------------------------------------------
+Fri Sep 13 13:16:32 CEST 2002 - fehr@suse.de
+
+- fix another code path where to propagate info about root partition
+- 2.6.20
+
+-------------------------------------------------------------------
+Thu Sep 12 20:41:21 CEST 2002 - fehr@suse.de
+
+- propagate info about root partition for update to Storage module
+- make update on md partition work
+- remove keyboard handling stuff was wrong anyway, keyboard is now
+  set at start of installation in inst_language
+- 2.6.19
+
+-------------------------------------------------------------------
+Thu Sep 12 17:53:33 CEST 2002 - kkaempf@suse.de
+
+- set selection if user accepts default.
+- init space calculation (#19548)
+- 2.6.18
+
+-------------------------------------------------------------------
+Thu Sep 12 15:50:00 CEST 2002 - kkaempf@suse.de
+
+- set locale in package manager (#19536)
+- 2.6.17
+
+-------------------------------------------------------------------
+Thu Sep 12 12:16:06 CEST 2002 - kkaempf@suse.de
+
+- check vfstype for "proc", not "spec". Older systems have
+  a different fstab.
+- show installed product if called from running system.
+- 2.6.16
+
+-------------------------------------------------------------------
+Wed Sep 11 23:35:26 CEST 2002 - kkaempf@suse.de
+
+- implement save/restore for package selection
+
+-------------------------------------------------------------------
+Wed Sep 11 20:42:30 CEST 2002 - kkaempf@suse.de
+
+- neutralize "cups" during update
+- 2.6.15
+
+-------------------------------------------------------------------
+Wed Sep 11 15:09:48 CEST 2002 - kkaempf@suse.de
+
+- fix syntax error
+- 2.6.14
+
+-------------------------------------------------------------------
+Wed Sep 11 00:34:00 CEST 2002 - kkaempf@suse.de
+
+- pass "update_installed_only" to solver
+- 2.6.12
+
+-------------------------------------------------------------------
+Tue Sep 10 16:18:22 CEST 2002 - arvin@suse.de
+
+- added provides/obsoletes y2t_update (bug #19325)
+
+-------------------------------------------------------------------
+Tue Sep 10 13:44:08 CEST 2002 - kkaempf@suse.de
+
+- convert runlevel if update 7.0 or older
+- 2.6.11
+
+-------------------------------------------------------------------
+Mon Sep  9 19:47:59 CEST 2002 - kkaempf@suse.de
+
+- add script to update passwd and groups so both include
+  the minimal set of required entries
+- drop "noarch"
+- 2.6.10
+
+-------------------------------------------------------------------
+Mon Sep  9 12:16:02 CEST 2002 - kkaempf@suse.de
+
+- drop Save/Restore from Update, it's done via "remaining"
+  and inst_rpmcopy.
+- 2.6.9
+
+-------------------------------------------------------------------
+Sat Sep  7 18:41:10 CEST 2002 - kkaempf@suse.de
+
+- drop user choosing of kernel, that's possible in package UI
+- force installation of new kernel if running from inst-sys
+- 2.6.8
+
+-------------------------------------------------------------------
+Fri Sep  6 21:14:59 CEST 2002 - kkaempf@suse.de
+
+- forceUpdate not needed any more.
+- 2.6.7
+
+-------------------------------------------------------------------
+Fri Sep  6 21:08:07 CEST 2002 - kkaempf@suse.de
+
+- clean up code, use yast2-packager after restart
+- 2.6.6
+
+-------------------------------------------------------------------
+Fri Sep  6 12:50:37 CEST 2002 - kkaempf@suse.de
+
+- write update status for restart
+- 2.6.5
+
+-------------------------------------------------------------------
+Thu Sep  5 21:36:16 CEST 2002 - kkaempf@suse.de
+
+- use Pkg:: functions for rpm backup
+- implement rebuilddb callback
+- call PkgSolve
+- properly init slide show
+- write remaining list so inst_rpmcopy can take over
+- 2.6.4
+
+-------------------------------------------------------------------
+Wed Sep  4 16:14:51 CEST 2002 - kkaempf@suse.de
+
+- re-add inst_* modules from update in order to keep
+  textdomains apart (#18876)
+- 2.6.3
+
+-------------------------------------------------------------------
+Wed Sep  4 12:01:27 CEST 2002 - msvec@suse.cz
+
+- provide the old client name temporarily for compatibility
+- 2.6.2
+
+-------------------------------------------------------------------
+Wed Sep  4 09:45:55 CEST 2002 - msvec@suse.cz
+
+- provide/obsolete old translation packages
+- rename clients from sw_update to simply update
+- 2.6.1
+
+-------------------------------------------------------------------
+Tue Jul  9 11:47:40 CEST 2002 - mvidner@suse.cz
+
+- fixed Provides/Obsoletes.
+
+-------------------------------------------------------------------
+Tue Jul  2 11:14:07 CEST 2002 - kkaempf@suse.de
+
+- rename to yast2-update.
+
+-------------------------------------------------------------------
+Mon Mar 25 12:52:09 CET 2002 - schubi@suse.de
+
+- Calling mk_initrd and lilo after updating kernel #15443
+
+-------------------------------------------------------------------
+Fri Mar  8 16:10:53 CET 2002 - gs@suse.de
+
+- Read the package information always from source medium, don't
+  use locally saved description (bug #14612)
+
+-------------------------------------------------------------------
+Mon Feb 18 11:03:00 CET 2002 - gs@suse.de
+
+-  Create the initial dialog for Change source (bug #13464)
+
+-------------------------------------------------------------------
+Tue Feb 12 15:50:51 CET 2002 - schubi@suse.de
+
+- Showing SuSEConfig correctly.
+
+-------------------------------------------------------------------
+Tue Feb 12 13:53:25 CET 2002 - schubi@suse.de
+
+- user_settings and PKGINFO calls removed
+
+-------------------------------------------------------------------
+Tue Sep 18 20:57:47 CEST 2001 - schubi@suse.de
+
+- InstMedia initialized
+
+-------------------------------------------------------------------
+Fri Sep 14 14:03:23 CEST 2001 - schubi@suse.de
+
+- unmounting Medium correctly before exit #10555
+
+-------------------------------------------------------------------
+Thu Sep  6 10:29:53 CEST 2001 - kkaempf@suse.de
+
+- properly mount/unmount medium.
+
+-------------------------------------------------------------------
+Mon Aug 20 17:05:21 CEST 2001 - gs@suse.de
+
+- internal: remove deprecated agent calls
+
+-------------------------------------------------------------------
+Fri Jul 20 10:05:50 MEST 2001 - schubi@suse.de
+
+- error popup with right language #8375
+
+-------------------------------------------------------------------
+Thu May 10 13:08:46 MEST 2001 - gs@suse.de
+
+- missing include "common_functions.ycp" added (bug # 8003)
+
+-------------------------------------------------------------------
+Mon May  7 17:01:40 CEST 2001 - sh@suse.de
+
+- Use new UI(`GetLanguage()) parameter
+
+-------------------------------------------------------------------
+Tue Apr 17 14:02:55 MEST 2001 - gs@suse.de
+
+- rename of translation package
+
+-------------------------------------------------------------------
+Fri Apr 13 12:50:31 MEST 2001 - gs@suse.de
+
+- internal: use of report_architecture
+
+-------------------------------------------------------------------
+Fri Apr  6 11:42:00 MEST 2001 - gs@suse.de
+
+- package rename, use of common popups
+
+-------------------------------------------------------------------
+Tue Jan 23 11:37:24 CET 2001 - kkaempf@suse.de
+
+- added proper textdomain call
+
+-------------------------------------------------------------------
+Fri Jan 12 15:00:30 MET 2001 - schubi@suse.de
+
+- Reading targetroot via SCR
+
+-------------------------------------------------------------------
+Thu Jan 11 13:26:35 CET 2001 - schubi@suse.de
+
+- bugfix 5502
+
+-------------------------------------------------------------------
+Thu Jan 11 11:50:14 MET 2001 - schubi@suse.de
+
+- Global variables added
+
+-------------------------------------------------------------------
+Wed Jan 10 21:05:22 MET 2001 - schubi@suse.de
+
+- Bugfix in changing installtion-medium
+
+-------------------------------------------------------------------
+Thu Jan  4 18:15:35 CET 2001 - kkaempf@suse.de
+
+- fix Requires field
+
+-------------------------------------------------------------------
+Thu Jan  4 17:41:13 CET 2001 - kkaempf@suse.de
+
+- declare needed global vars correctly
+
+-------------------------------------------------------------------
+Wed Dec 13 19:11:27 MET 2000 - schubi@suse.de
+
+- new menue-entry
+
+-------------------------------------------------------------------
+Wed Dec 13 16:04:03 MET 2000 - schubi@suse.de
+
+- YaST2 version read and stored into global variable
+
+-------------------------------------------------------------------
+Wed Dec 13 10:13:03 MET 2000 - schubi@suse.de
+
+- targetroot reading per SCR
+
+-------------------------------------------------------------------
+Thu Nov  2 15:11:34 MET 2000 - gs@suse.de
+
+- initial version
+

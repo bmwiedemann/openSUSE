@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:53:45 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Dec  2 10:05:56 UTC 2017 - antoine.belvire@opensuse.org
+
+- Initial package: python-requests-hawk 1.0.0.
+

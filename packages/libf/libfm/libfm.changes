@@ -1,0 +1,866 @@
+-------------------------------------------------------------------
+Sat Jun 15 19:04:43 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Removed calls to update-mime-database/update-desktop-database
+  from scriptlets: They are automatically performed via RPM file
+  triggers.
+- Ran spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Dec 25 12:34:06 UTC 2018 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.1:
+  * Fixed crash on reload while directory changes (folder might be not ready yet).
+  * Changed size of large thumbnails to 512 since 256*256 appears to be small on
+    hi-res displays.
+  * Added application/gzip to archivers.list file next to application/x-gzip.
+  * Added image/x-compressed-xcf to archivers.list file for xarchiver.
+
+-------------------------------------------------------------------
+Mon Oct 22 13:03:23 UTC 2018 - mvetter@suse.com
+
+- Update to 1.3.0.2:
+  * Fixed launching menu entries shortcuts on desktop which was broken by making
+    them all executable in 1.3.0 - those should be launchable still.
+  * Fixed installing modules into non-standard path: libtool couldn't relink them
+    properly.
+  * Added emblem support by reading the "metadata::emblems" attribute provided by
+    GFileInfo. The metadata is provided by gio/gvfs and are currently stored in
+    $XDG_DATA_HOME/gvfs-metadata.
+  * Fixed typo: occured -> occurred.
+  * Made desktop entries treaten as executables. Now clicking on a native desktop
+    file opens a confirmation dialog instead of executing it. Trashed desktop
+    files are only opened as text files and desktop files under system menu
+    (i.e. menu://applications/) are executed without prompt as before.
+  * Fixed build error with vala 0.36.1.
+  * Fixed crash on launching nonexistent link targets.
+  * Added tooltips for attributes of copying files.
+  * Fixed thumbnails generation for files in the thumbnails cache directory which
+    actually should never be done.
+  * Fixed crash on pasting large string when completion matches.
+  * Prevented creation corrupted image thumbnails with gdk-pixbuf2 >= 2.36.1.
+  * Fixed crash in fm_config_load_from_file().
+  * Dropped displaying "extension" for a directory.
+  * Fixed crash on pasting a file into the search folder, show an error message
+    when the copy destination doesn't exist instead.
+  * Added new API for FmAction new object type, to replace old VALA-generated
+    code. New API is more convenient, C instead of VALA, and should support all
+    DES-API specification features, not just limited set.
+  * Migrated module 'gtk-menu-actions' to new DES-EMA actions API.
+  * Added display of data transferred to progress dialog.
+  * Fixed wrong names for files, copied from Google Drive and similar places.
+- Remove libfm-1.2.5-gtk-doc-workaround.patch: upstreamed
+
+-------------------------------------------------------------------
+Wed Dec 20 15:50:33 UTC 2017 - mvetter@suse.com
+
+- bsc#1073719: Fix build with gtk-doc 1.27:
+  * Add libfm-1.2.5-gtk-doc-workaround.patch
+
+-------------------------------------------------------------------
+Sat Mar  4 08:11:53 UTC 2017 - mvetter@suse.com
+
+- In the last change the following patches got removed
+  by trcs@gmx.com because they are included in the new
+  upstream version:
+  * libfm-1.2.3-Fix-SF902.patch
+  * libfm-Additional-fix-after-SF902.patch
+  * libfm-1.2.3-Fix-SF922.patch
+  * libfm-1.2.3-Fix-SF914.patch
+  * libfm-1.2.3-Use-G_SPAWN_DO_NOT_REAP_CHILD-on-applicaton-launch.patch
+  * libfm-1.2.3-Fix-SF946.patch
+  * libfm-1.2.3-Fix-SF925-and-SF938.patch
+  * libfm-1.2.3-Return-back-the-workaround-on-thumbnailers.patch
+  * libfm-1.2.3-Fix-SF937.patch
+  * libfm-1.2.3-Fix-SF935.patch
+  * libfm-1.2.3-Fix-SF915.patch
+  * libfm-1.2.3-Reset-cached-data-if-drag-context-was-changed.patch
+  * libfm-1.2.3-Fix-uninitialized-data-in-drag-motion-callback.patch
+  * libfm-1.2.3-Fix-SF953.patch
+  * libfm-1.2.3-Fix-SF921.patch
+  * libfm-1.2.3-Fix-SF932.patch
+  * libfm-1.2.3-Fix-dropping-files-onto-applications.patch
+  * libfm-1.2.3-Fix-desktop-file-name-for-urxvt.patch
+  * libfm-1.2.3-Fix-SF954.patch
+  * libfm-1.2.3-Fix-SF950.patch
+  * libfm-1.2.3-Fix-SF959.patch
+  * libfm-1.2.3-Fix-SF965.patch
+  * libfm-1.2.3-Fix-crash-on-cancelling-FmDirListJob.patch
+  * libfm-1.2.3-Fix-SF919.patch
+  * libfm-1.2.3-Fix-SF967.patch
+
+-------------------------------------------------------------------
+Sun Dec 25 12:00:55 UTC 2016 - trcs@gmx.com
+
+- new upstream version 1.2.5
+  * Fixed 'Launch in Terminal' issue when custom args were ignored.
+  * Fixed crash with non-UTF regex search pattern.
+  * Added 'termite' into the terminals database.
+  * Fixed possible crash on FmPlacesView.
+  * Fixed crash on non-existent directory listing job.
+  * Added conversion of all URIs schemes to file:/// by mapping them 
+    to FUSE-mounted local paths if that is possible. This is required
+    for non-gio applications to open files mounted by gvfs.
+  * Added new MIME type for rar files to the archivers.list file.
+  * Fixed crash in _fm_template_update().
+  * Fixed incorrect initialization of FmPlacesViewClass, it should 
+    not call fm_get_home_dir() but initialized with NULL, that will do
+    the same at runtime.
+  * Fixed FTBFS when libmenu-cache was installed to non-standard 
+    location.
+  * Added check for edit name "/" for remote root directory so 
+    display name should be used in such cases as more sensible one.
+  * Fixed wrong width requested by FmCellRendererText (1.2.4 
+    regression).
+  * Updated list of MIME types handled by xarchiver.
+  * Don't show error message when attempting to rename file into the 
+    same.
+  * Fixed crash after file info job finished on a folder that already 
+    left.
+  * Changed limitations on libfm-pref-apps.desktop to show only in 
+    LXDE.
+  * Fixed incomplete file copy job pausing in some cases.
+  * Fixed missing 'Empty Trash Can' option in desktop's trash context 
+    menu.
+  
+  Changes on 1.2.4 since 1.2.3:
+  
+  * Fixed crash in templates on file that was deleted instantly after
+    creation.
+  * Fixed handling %c in desktop entry Exec key: launch may fail if 
+    the application name contains spaces so it needs quoting.
+  * Fixed missing folder info update on folder attributes change.
+  * Use G_SPAWN_DO_NOT_REAP_CHILD on application launch, that should 
+    fix a problem with pkexec.
+  * Corrected missing newline at end of generated shortcut desktop 
+    entry.
+  * Improved file type detection, it failed in some cases such as 
+    DOCX.
+  * Returned back the workaround on thumbnailers which don't save any 
+    of Thumb::MTime or Thumb::URI in the thumbnail.
+  * Fixed wrong treating files like ".purple" as having extension 
+    "purple".
+  * Fixed invalid desktop entry save if 'Cancel' was pressed in the 
+    file
+    properties dialog window.
+  * Fixed issues on dropping folders into Places for bookmarking them.
+  * Fixed crash in expand_exec_macros() on missing Exec line.
+  * Rewritten broken rubberband rendering in icon view for GTK3.
+  * Eliminated usage of GVolumeMonitor if no FmFolder object was 
+    created.
+  * Fixed renaming of desktop entries on copy operation error: it was 
+    the file name which was set in renaming dialog but it was 
+    compared with display name instead when decided whether "Rename" 
+    button should be active or not.
+  * Fixed dropping files onto applications shortcuts on the desktop: 
+    those should be not "inode/x-shortcut" but 
+    "application/x-desktop" instead and therefore handled as any other
+    applications, i.e. allow drop.
+  * Added 'urxvtc' into the terminals database.
+  * Fixed adding user-defined MIME associations into mimeapps.list 
+    config.
+  * Few UI adaptations to work with GTK+ 3.10 or newer.
+  * Fixed creating shortcuts on paths with basename started with '?'.
+  * Fixed pointer-related issues with GTK+ 3.10 or newer.
+  * Added 'terminology' into the terminals database.
+  * Fixed stuck tooltip on entering empty folder.
+  * Fixed crash on cancelling FmDirListJob while retrieving is in 
+    progress.
+  * Fixed incomplete cleanup on folder reloading.
+  * Corrected autoscrolling to position in view to not include extra 
+    space (so not show all the column/row at once but only fully show 
+    exactly the item). This may fix a problem with double-click at the
+    end of the file name which is already visible so no scrolling is 
+    needed, but if another file in the column/row has longer name then
+    it could bring a scrolling of the column/row, and second click 
+    lands out of item area.
+  * Fixed timer shown in progress dialog, it should show 01:00, not 
+    00:60.
+  * Fixed stuck tooltip after right-click on file in view, seen 
+    rarely.
+  * Disabled following symlinked directories on recursive search, 
+    that may give undesired results duplicating files and in some rare
+    cases even may lead to endless recursion and endless number of 
+    files found.
+  * Fixed few small issues with icon view interactive search:
+    + search should be not activated by space key;
+    + cursor was missing in the entry.
+  * Fixed the background of the name of selected file with GTK+ 3.0.
+  * Fixed not-ignored invalid Path= line on launch a desktop entry.
+  * Fixed testing URIs like http://some.host.com for MIME type.
+  * Dropped using shortcuts to URIs like http://host/ as directories, 
+    no directory should be in principle used in shortcuts.
+  * Fixed possible data loss on cross-partition data movement.
+  * Fixed incorrect data in the search dialog date selection window.
+- Removed all the previously added patches from Git: they are all
+  now included upstream.
+
+-------------------------------------------------------------------
+Wed Jun  1 19:43:37 UTC 2016 - dimstar@opensuse.org
+
+- Have libfm4 recommend the main package.
+
+-------------------------------------------------------------------
+Sat Oct 31 20:23:22 UTC 2015 - trcs@gmx.com
+
+- Added many fixes from Git:
+  * [SF#902] Handle NULL returned by fm_mime_type_from_native_file()
+    correctly
+    + libfm-1.2.3-Fix-SF902.patch
+    + libfm-Additional-fix-after-SF902.patch
+  * [SF#922] Fix handling %c in desktop entry Exec key
+    + libfm-1.2.3-Fix-SF922.patch
+  * [SF#914] Fix missing folder info update on folder attributes
+    + libfm-1.2.3-Fix-SF914.patch
+  * Use G_SPAWN_DO_NOT_REAP_CHILD on application launch, that should 
+    fix a problem with pkexec
+    + libfm-1.2.3-Use-G_SPAWN_DO_NOT_REAP_CHILD-on-applicaton-launch.patch
+  * [SF#946] Add missing newline at end of generated shortcut
+    + libfm-1.2.3-Fix-SF946.patch
+  * [SF#925,938] Improve file type detection, it fails in some cases
+    such as DOCX
+    + libfm-1.2.3-Fix-SF925-and-SF938.patch
+  * Return back the workaround on thumbnailers which don't save 
+    Thumb::MTime
+    + libfm-1.2.3-Return-back-the-workaround-on-thumbnailers.patch
+  * [SF#937] Fix wrong treating files like ".purple" as having 
+    extension "purple"
+    + libfm-1.2.3-Fix-SF937.patch
+  * [SF#935] Fix invalid desktop entry save if 'Cancel' was pressed
+    in dialog
+    + libfm-1.2.3-Fix-SF935.patch
+  * [SF#915] Always do gtk_drag_finish() in FmDndDest even if drop 
+    was failed
+    + libfm-1.2.3-Fix-SF915.patch
+  * FmDndDest: reset cached data if drag context was changed
+    + libfm-1.2.3-Reset-cached-data-if-drag-context-was-changed.patch
+  * Fix uninitialized data in drag-motion callback of FmPlacesView
+    + libfm-1.2.3-Fix-uninitialized-data-in-drag-motion-callback.patch
+  * [SF#953] Fix crash in expand_exec_macros() on missing Exec line 
+    in desktop entry
+    + libfm-1.2.3-Fix-SF953.patch
+  * [SF#921] Rewrite broken rubberband rendering in icon view for 
+    GTK3
+    + libfm-1.2.3-Fix-SF921.patch
+  * [SF#932] Fix renaming of desktop entries on copy operation error
+    + libfm-1.2.3-Fix-SF932.patch
+  * Fix dropping files onto applications shortcuts on the desktop
+    + libfm-1.2.3-Fix-dropping-files-onto-applications.patch
+  * Fix desktop file name for urxvt in terminals.list
+    + libfm-1.2.3-Fix-desktop-file-name-for-urxvt.patch
+  * [SF#954] Add urxvtc data into the terminals.list file
+    + libfm-1.2.3-Fix-SF954.patch
+  * [SF#950] Fix adding user-defined MIME associations into 
+    mimeapps.list config
+    + libfm-1.2.3-Fix-SF950.patch
+  * [SF#959] Fix autoscroll issues with GTK+ 3
+    + libfm-1.2.3-Fix-SF959.patch
+  * [SF#965] Fix stuck tooltip on entering empty folder
+    + libfm-1.2.3-Fix-SF965.patch
+  * Fix crash on cancelling FmDirListJob while retrieving is in 
+    progress
+    + libfm-1.2.3-Fix-crash-on-cancelling-FmDirListJob.patch
+  * [SF#919] Fix incomplete cleanup on folder reloading
+    + libfm-1.2.3-Fix-SF919.patch
+  * [SF#967] Fix timer shown in progress dialog, it should show 
+    01:00, not 00:60
+    + libfm-1.2.3-Fix-SF967.patch
+
+-------------------------------------------------------------------
+Sun Nov 09 18:32:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post/postun scripts
+
+-------------------------------------------------------------------
+Tue Oct 14 20:22:18 UTC 2014 - trcs@gmx.com
+
+- new upstream release 1.2.3
+  * Changed licence for libfm-extra and libfm components from 
+    GPL-2 to LGPL-2.1.
+  * Fixed crash on dropping URL queries into some folder.
+  * Fixed filename on dropping URI queries into folder: URI query 
+    like http://some.site/path/query.php?new=yes&mine=0 should be 
+    never saved with file name path/query.php?new=yes&mine=0 but 
+    as query.php instead like all the web browsers do.
+  * Disabled debug messages in XML parser, it spammed a lot.
+  * Fixed content type detection which was broken in last release.
+  * Fixed incorrect call to g_environ_setenv() in the terminal 
+    call.
+  * Replaced deprecated atk_component_get_position() calls.
+  * Fixed invalid callback get_image_position() on ATK icon of 
+    ExoIconView, it could loop and therefore hang the application.
+  * Disabled deprecated atk_focus_tracker_notify() with new libatk.
+  * Fixed installation of headers with parallel install, it could 
+    create invalid symlink /usr/share/libfm/libfm in some 
+    conditions.
+  * Corrected handling of application launch failure - launch 
+    content have to be informed about failure if startup notify id 
+    was retrieved from it before.
+  * Fixed usage of POSIX.1-2001 declaration `environ' with GLib < 
+    2.28.
+  * Fixed "out-of-tree" build (e.g. make distcheck).
+  * Corrected menu cache to sync in 
+    fm_app_chooser_dlg_dup_selected_app(), otherwise it would not 
+    work without menu preloaded.
+  * Fixed launch of applications with %f or %u argument - it 
+    should launch not just first file but all of them with the 
+    same command.
+  * Fixed unneeded fm-folder-config save even if no changes were 
+    made.
+  * Fixed not updated file in FmFolder if file was not changed 
+    within last 2 seconds. In case of fast download it was not 
+    updated in time. This may cause a little performance issue 
+    though due to thumbnails update.
+  * Fixed crash if g_file_get_basename() returns NULL.
+  * Fixed issue with desktop entry file selected in the 
+    Application chooser dialog, it tried to execute the desktop 
+    entry directly. Now it setups dialog fields from that desktop 
+    entry instead.
+  * Fixed problem with unwanted application substitution in the 
+    Application chooser dialog: if user selected no name then no 
+    replacements should be attempted.
+  * Fixed default app detection in Application chooser combo box.
+
+-------------------------------------------------------------------
+Fri Sep 12 16:41:20 UTC 2014 - andrea@opensuse.org
+
+- removed libfm-extra and libfm-extra-devel and files, moved to a
+  new bootstrap package 
+
+-------------------------------------------------------------------
+Tue Sep  9 07:40:25 UTC 2014 - andrea@opensuse.org
+
+- Split of libfm-extra and libfm-extra-devel packages
+
+-------------------------------------------------------------------
+Sun Aug 24 20:04:00 UTC 2014 - trcs@gmx.com
+
+- new upstream version 1.2.2.1
+  * Fix installation of libfm-extra.pc file for development with 
+    it.
+- changes on 1.2.2 since 1.2.1:
+  * Fixed display name of created shortcut after dropping from 
+    another application.
+  * Fixed the screen for context in fm_launch_command_simple().
+  * Added KDE archiver "Ark" into archivers list.
+  * Fixed parsing order of directories in XDG_DATA_DIRS and 
+    XDG_CONFIG_DIRS.
+  * Added a possibility for application that was started (by 
+    PCManFM or any other application that uses LibFM) to never
+    die after our application (i.e. its parent) was closed.
+  * Fixed possible memory leak in fm_config_load_from_file().
+  * Corrected g_content_type_guess() call with file sample. This 
+    may help with correct file type detection.
+  * When calculate total file sizes in directory, filesize of 
+    directory now is skipped.
+  * Fixed problem with memory consumption in case image has big 
+    dimension but not so big filesize - in that case loading may 
+    consume all the available memory to create bitmap. The file 
+    dimensions should also be checked against thumbnail_max 
+    configuration variable.
+  * Fixed problem with starting custom command from application 
+    selection dialog. This stopped to work with new GLib versions.
+
+-------------------------------------------------------------------
+Thu Jul  3 07:35:49 UTC 2014 - trcs@gmx.com
+
+- new upstream version 1.2.1
+  * Fixed incorrect presence of LXShortcut in menus.
+  * Fixed context menu on right-click on column header, it was not 
+    always shown, especially with GTK3.
+  * Fixed incorrect mime-type of mount points under computer:///.
+  * Few fixes in internal thumbnail generator.
+  * Changed info message on usage of x-terminal-emulator as 
+    terminal.
+  * Added sakura, qterminal and lilyterm into terminals database.
+  * Don't create ~/Templates if it does not exist on application 
+    start.
+  * Fixed installing extra files with different values for 
+    --with-gtk.
+  * Fixed file renaming if it's name is illegal on destination 
+    filesystem.
+  * An error window after user pressed 'Cancel' on app selection 
+    should be not shown anymore.
+  * Fixed menu positioning if it's placed near monitor edge and 
+    also on non-first monitor, also ensured menu UI update before 
+    calculating its
+    position.
+  * Fixed cancellation of loading row after FmDirTreeView chdir.
+  * The "link" mark on icons of small size (< 20 px) now scaled 
+    properly.
+  * Fixed positioning of search box in ExoIconView widget.
+  * Fixed fm_terminal_launch(), some terminals need PWD environment 
+    set.
+  * Fixed invalid rubberbanding after doubleclick on ExoIconView 
+    items.
+  * Corrected drag cursor, it should correctly show dragged item 
+    icon, not generic drag cursor.
+  * Fixed crash in fm_folder_view_scroll_to_path() if path is not 
+    available.
+  * Fixed unitialized variable usage in folder view context menu 
+    positioning code.
+  * Prevented path entry from containing "(invalid encoding)" 
+    string since it will prevent that path from being used.
+  * Fixed path completion listing for display names in paths.
+  * One-time custom application isn't added anymore into list of 
+    last used.
+  * Added a workaround on duplicated loop devices in Places 
+    sidebar.
+  * If quick_exec option is set to true, launching will always 
+    start the application, not try a terminal for it.
+  * Changed ExoIconView rubberbanding the same way as it's done in 
+    GTK+.
+  * Fixed invalid renaming files on moving them around virtual FS.
+  * Fixed crash in vfs-menu module with libmenu-cache 0.3.x.
+
+-------------------------------------------------------------------
+Fri May 16 12:04:27 UTC 2014 - andrea@opensuse.org
+
+- enabled udisk support for libfm
+- restored preferences patch previously disabled by mistake
+
+-------------------------------------------------------------------
+Tue May 13 13:35:46 UTC 2014 - andrea@opensuse.org
+
+- removed Fedora 20 spec file if/else - not required
+
+-------------------------------------------------------------------
+Mon May 12 08:06:31 UTC 2014 - andrea@opensuse.org
+
+- split gtk development files on a sub package to prepare the
+  building and release of LXDE-QT 
+
+-------------------------------------------------------------------
+Sun May 11 14:41:55 UTC 2014 - andrea@opensuse.org
+
+- allow building of Fedora 20
+- removed duplicate BuildRequire
+
+-------------------------------------------------------------------
+Fri Mar 28 16:58:56 UTC 2014 - trcs@gmx.com
+
+- spec file fix
+  * removed unnecessary %dir %{_libdir} to avoid standard-dir-owned-by-package
+
+-------------------------------------------------------------------
+Sun Feb 23 16:28:36 UTC 2014 - trcs@gmx.com
+
+- New upstream version 1.2.0
+  * detailed changelog at http://blog.lxde.org/?p=1082
+- Removed build compatibility with discontinued versions (<= 12.2)
+- Disabled debug on configure to improve performance
+- Fixed typo in %{?_smp_mflags} macro
+- Built against GKT2 to override GTK3 issues
+- Splitted lang package
+- LXShortcut is now built as a subpackage
+
+-------------------------------------------------------------------
+Thu Sep  5 09:22:37 UTC 2013 - i@marguerite.su
+
+- update version 1.1.2.2
+  * Increase ABI revision to 5 before release (now ABI code is 4:5:1)
+  * Add weak notify on Places view to detach it from context menu.
+  * Call GtkWidget’s handler button_release_event() before we unmount.
+  * Make ‘make check’ work (the docs/Makefile.am contains incorrect statement).
+  * Check file name before id when launch GDesktopAppInfo.
+  * Fix crash with no terminal defined in config file.
+  * text/uri-list in DnD should be ended with \r\n not just \n
+  * Fix incorrect terminal config statement parsing.
+- remove libfm-1.1.0-gtk3_doc.patch, upstream fixed.
+
+-------------------------------------------------------------------
+Fri Jul 26 10:39:51 UTC 2013 - tchvatal@suse.com
+
+- Fix build with rpm-4.11
+
+-------------------------------------------------------------------
+Wed Dec 19 08:34:50 UTC 2012 - andrea@opensuse.org
+
+- New upstream version 1.1.0
+  * detailed changelog at http://blog.lxde.org/?p=951 
+- removed libfm-1.0.1-test.patch now in upstream code
+- removed autoconf from BuilRequires, no more needed
+- migration to gtk3 for suse > 12.2
+- added libfm-1.1.0-gtk3_doc.patch to fix doc builds with GTK3 enable
+- dropped support for suse < 11.4
+
+-------------------------------------------------------------------
+Sun Oct  7 16:40:14 UTC 2012 - andrea@opensuse.org
+
+- new upstream version 1.0.1 
+
+-------------------------------------------------------------------
+Tue Aug 21 07:21:41 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  No GPL-2.0 (i.e. version 2 "only") licenses found in the package
+
+-------------------------------------------------------------------
+Sun Aug 19 12:07:26 UTC 2012 - andrea@opensuse.org
+
+- New upstream version 1.0
+- removed autoconf Build Requires and Patch file
+- complete changelog at http://blog.lxde.org/?p=939
+
+-------------------------------------------------------------------
+Tue May 29 10:39:18 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+- Resolve build exiting due to -Werror and unsatisfied macros
+
+-------------------------------------------------------------------
+Sun Nov 13 09:16:25 UTC 2011 - coolo@suse.com
+
+- add libtool as explicit buildrequire to avoid implicit dependency from prjconf
+
+-------------------------------------------------------------------
+Thu Oct 27 15:10:01 UTC 2011 - andrea@opensuse.org
+
+- new upstream version 0.1.17 rc4
+  detailed changelog at: http://blog.lxde.org/?p=911
+- removed libfm-0.1.16-fix_build_older_gtk.patch
+
+-------------------------------------------------------------------
+Wed Aug 10 00:37:31 UTC 2011 - andrea@opensuse.org
+
+- new upstream version 0.1.16 rc3
+  detailed changelog at: http://blog.lxde.org/?p=908
+- removed all patches now in upstream code
+
+-------------------------------------------------------------------
+Sun Aug  7 13:26:36 UTC 2011 - andrea@opensuse.org
+
+- added libfm-0.1.14-fix_bnc710881.patch to fix bnc 710881 bug
+  that causes data loss if catting and paste a folder into a place
+  without writing permission 
+
+-------------------------------------------------------------------
+Tue Jun 21 09:56:23 UTC 2011 - coolo@novell.com
+
+- add prerequires for the rpm scripts
+
+-------------------------------------------------------------------
+Sat Jan 22 23:27:41 UTC 2011 - gber@opensuse.org
+
+- added libfm-0.1.14-disable-gio-extension.patch in order to
+  disable the GIO extension implementing libfm-specific preferences
+  for URI scheme handlers for glib > 2.27 where the needed
+  extension point has been removed; preferred handlers set through
+  libfm/pref-apps.conf will be ignored and the new default glib
+  mechanism using x-scheme-handler will be used instead
+- enabled gtk-doc generation and disabled parallel make which
+  breaks it
+
+-------------------------------------------------------------------
+Wed Oct 20 09:38:38 UTC 2010 - andrea@opensuse.org
+
+- added libfm-0.1.14-fix_sf3089624.patch to fix copy/paste of
+  files with spaces in the name 
+
+-------------------------------------------------------------------
+Sat Oct 16 11:34:28 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.1.14 RC2
+  * Allow copy to the same file and show
+  * Little fix for places view
+  * API Changes 
+  * several bug fixes
+  * Fix sf3028649 - Dragging file to the same directory
+    and on itself.
+  * Fix #3021778 - Pasting the folder to write protected
+    place ends w/ removal.
+  * Fix bugs in launching of desktop entry files with Type=Link.
+  * Fix sf3030482 - bug in untrash behavior 
+  * Improve launching of desktop entry files. sf3029251
+  * Fix sf3039074 - Sort by size is wrong on files more than 2Gb
+  * Fix sf3032241 - PCManFM crashes when right clicking
+    on a file/dir
+  * Use async dbus call in udisks support for device listing
+    to shorten startup time
+- removed libfm-0.1.12-fix-sf3012747.patch 
+- build -doc subpackage
+
+-------------------------------------------------------------------
+Mon Aug  2 11:02:03 UTC 2010 - andrea@opensuse.org
+
+- fixed libfm0 and libfm-gtk0 RPM Groups 
+
+-------------------------------------------------------------------
+Fri Jul  2 19:30:36 UTC 2010 - andrea@opensuse.org
+
+- use fedora patch to fix sf3012747 because previous one
+  generate SEGFAULTS that didn't exist before 
+
+-------------------------------------------------------------------
+Wed Jun  9 18:54:39 UTC 2010 - andrea@opensuse.org
+
+- added libfm-0.1.12-fix-sf3012747.patch to fix pcmanfm crash if
+  a path beginning with // is used
+
+-------------------------------------------------------------------
+Sat May 29 15:04:24 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.1.12 rc1 
+
+-------------------------------------------------------------------
+Fri May 21 11:07:21 UTC 2010 - andrea@opensuse.org
+
+- fixed default config
+
+-------------------------------------------------------------------
+Sun May 16 15:26:29 UTC 2010 - andrea@opensuse.org
+
+- new git release, several upstream bugfix 
+
+-------------------------------------------------------------------
+Tue Apr 27 19:15:02 UTC 2010 - andrea@opensuse.org
+
+- New upstream version 0.1.11 beta 3 
+
+-------------------------------------------------------------------
+Sun Apr 25 21:59:45 UTC 2010 - andrea@opensuse.org
+
+- Fix sf#2978810: rename file improvement
+- Remive unused L_ADD for libfm-pref-apps 
+
+-------------------------------------------------------------------
+Sun Apr 25 00:02:27 UTC 2010 - andrea@opensuse.org
+
+- Fixed segfaults
+- translations upgrades 
+
+-------------------------------------------------------------------
+Sat Apr 24 09:21:36 UTC 2010 - andrea@opensuse.org
+
+- Fix calling g_object_unref on invalid pointer in fm_do_mount() 
+
+-------------------------------------------------------------------
+Mon Apr 19 21:24:13 UTC 2010 - andrea@opensuse.org
+
+- add workarounds to fix sf#2983540 (bgo#612802, bnc#593094,
+	bxo#6230 )
+
+-------------------------------------------------------------------
+Mon Apr 19 00:13:18 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.1.10
+  - Fix sf#2988010 crash when press enter on an empty location bar
+  - Fix invalid pointer access reported in #2988982 and #2988484
+  - other bugfixes and API improvments
+
+-------------------------------------------------------------------
+Tue Apr 13 20:51:32 UTC 2010 - andrea@opensuse.org
+
+- Fix sf#2986368 - Segfault if selection more than one file.
+
+-------------------------------------------------------------------
+Tue Apr 13 17:57:14 UTC 2010 - andrea@opensuse.org
+
+- disabled -demo subpackage 
+
+-------------------------------------------------------------------
+Sun Apr 11 13:18:41 UTC 2010 - andrea@opensuse.org
+
+- Fix a regression bug with displaying application
+  name on the Desktop 
+
+-------------------------------------------------------------------
+Sat Apr 10 23:45:17 UTC 2010 - andrea@opensuse.org
+
+- new git version 20100411
+  - API change: fm_canonicalize_filename now can optionally
+    take a cwd parameter
+  - Do not add non-folders to bookmarks
+  - Fix bugs in Dnd
+  - API behavior change: FmDndDest underwent some rework
+  - Support dropping files into volumes in side-pane
+
+-------------------------------------------------------------------
+Fri Apr  9 22:57:55 UTC 2010 - andrea@opensuse.org
+
+- new git version 20100410
+  - Properly send notification for sort column changes. 
+
+-------------------------------------------------------------------
+Tue Apr  6 08:34:12 UTC 2010 - andrea@opensuse.org
+
+- save space with fdupes
+- removed unsupported locale
+
+-------------------------------------------------------------------
+Sun Apr  4 04:39:55 UTC 2010 - andrea@opensuse.org
+
+- Fix for RTL bug sf#1997026.
+   Fixes broken text layout in Compact View, Icon View and
+   Thumbnail View in RTL mode. 
+
+-------------------------------------------------------------------
+Wed Mar 31 09:14:53 UTC 2010 - andrea@opensuse.org
+
+- Fix sorting bugs. Sync libfm.pot 
+
+-------------------------------------------------------------------
+Tue Mar 30 18:23:42 UTC 2010 - andrea@opensuse.org
+
+- Fix bnc#591731 (pcmanfm forgot to add '/' after IPs)
+- Fix sf#2978803 (severe file descriptor leaks in
+  thumbnail generating code)
+- Fix incorrect linker options for gnome-terminal wrapper
+
+-------------------------------------------------------------------
+Fri Mar 26 00:01:16 UTC 2010 - andrea@opensuse.org
+
+- removed rpath
+
+-------------------------------------------------------------------
+Wed Mar 24 08:16:39 UTC 2010 - andrea@opensuse.org
+
+- New git release, several SEGFAULT bug fixed
+
+-------------------------------------------------------------------
+Fri Mar 19 19:05:13 UTC 2010 - andrea@opensuse.org
+
+- fixed critical warnings 
+
+-------------------------------------------------------------------
+Thu Mar 18 21:47:53 UTC 2010 - andrea@opensuse.org
+
+- upgrade to version 0.1.9 
+
+-------------------------------------------------------------------
+Tue Mar 16 13:25:16 UTC 2010 - andrea@opensuse.org
+
+- added support to most comment archive managers 
+
+-------------------------------------------------------------------
+Sun Mar 14 15:10:46 UTC 2010 - andrea@opensuse.org
+
+- added rpmlintrc to suppress false positive warnings
+
+-------------------------------------------------------------------
+Tue Mar  9 17:55:27 UTC 2010 - andrea@opensuse.org
+
+- bump version to 0.1.5 
+  * Finish the new libfm tool to set preferred applications.
+  * Add fm_qdata_id to be used with g_object_set_qdata().
+  * Add fm-app-chooser-combo-box.[ch] to create a drop-down
+    list for apps for selection.
+
+-------------------------------------------------------------------
+Mon Mar  8 22:57:55 UTC 2010 - andrea@opensuse.org
+
+- new git snapshot, lots of changes into code, new files
+  and binaries installed now 
+
+-------------------------------------------------------------------
+Fri Mar  5 16:42:00 UTC 2010 - andrea@opensuse.org
+
+- fixed libfm-default-config.patch, lxterminal needs to use '-e"
+  option, or it will not work as supposed 
+
+-------------------------------------------------------------------
+Fri Mar  5 10:31:29 UTC 2010 - andrea@opensuse.org
+
+- new git snapshot, API changes 
+
+-------------------------------------------------------------------
+Tue Mar  2 06:45:25 UTC 2010 - andrea@opensuse.org
+
+- changed file list according to PCMan instructions
+
+-------------------------------------------------------------------
+Mon Mar  1 11:02:43 UTC 2010 - andrea@opensuse.org
+
+- spec file clean up
+- added libfm-default-config.patch to fix our needs 
+
+-------------------------------------------------------------------
+Mon Mar  1 10:20:16 UTC 2010 - andrea@opensuse.org
+
+- new git version 
+
+-------------------------------------------------------------------
+Sat Feb 27 13:20:29 UTC 2010 - andrea@opensuse.org
+
+- Fix access to potentially invalid pointer
+- Other minor bugfix 
+
+-------------------------------------------------------------------
+Sat Feb 27 06:38:31 UTC 2010 - andrea@opensuse.org
+
+- New API fm_file_info_get_target(), fm_file_info_is_mountable()
+- enabled debug on configure to help development
+
+-------------------------------------------------------------------
+Fri Feb 26 17:07:16 UTC 2010 - andrea@opensuse.org
+
+- fixed compiler warning
+- fixed few segfaults
+- update to latest git 
+
+-------------------------------------------------------------------
+Mon Feb 22 12:35:55 UTC 2010 - andrea@opensuse.org
+
+- translations improvments 
+
+-------------------------------------------------------------------
+Sun Feb 21 18:10:01 UTC 2010 - andrea@opensuse.org
+
+- upgrade to released version 0.1. It should be "stable" enought 
+
+-------------------------------------------------------------------
+Sun Feb 21 03:47:46 UTC 2010 - andrea@opensuse.org
+
+- new features and new APIs 
+
+-------------------------------------------------------------------
+Sat Feb 20 13:22:44 UTC 2010 - andrea@opensuse.org
+
+- new git snapshot, new API 
+
+-------------------------------------------------------------------
+Fri Feb 19 16:51:10 UTC 2010 - andrea@opensuse.org
+
+- Translations update
+
+-------------------------------------------------------------------
+Thu Feb 18 16:45:02 UTC 2010 - prusnak@suse.cz
+
+- spec cleanup
+
+-------------------------------------------------------------------
+Thu Feb 18 15:54:38 UTC 2010 - andrea@opensuse.org
+
+- new git snapshot, added thumbnail support
+
+-------------------------------------------------------------------
+Wed Feb 17 20:05:19 UTC 2010 - andrea@opensuse.org
+
+- new git snapshot with api changes
+
+-------------------------------------------------------------------
+Mon Feb 15 09:11:04 UTC 2010 - andrea@opensuse.org
+
+- new git snapshot, lots of fixing because new libmenu-cache
+
+-------------------------------------------------------------------
+Wed Feb 10 00:27:26 UTC 2010 - andrea@opensuse.org
+
+- new git snapshot
+
+-------------------------------------------------------------------
+Sun Jan 31 15:13:15 UTC 2010 - andrea@opensuse.org
+
+- new git version that fix some segfaults
+
+-------------------------------------------------------------------
+Mon Jan 18 15:46:51 UTC 2010 - andrea@opensuse.org
+
+- new git version
+
+-------------------------------------------------------------------
+Tue Jan 12 21:53:35 UTC 2010 - andrea@opensuse.org
+
+- New package
+

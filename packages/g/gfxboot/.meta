@@ -1,0 +1,5 @@
+<package name="gfxboot" project="openSUSE:Factory">
+  <title>Graphical Boot Logo for GRUB, LILO and SYSLINUX</title>
+  <description>Tools to configure your bootloader graphics.</description>
+  <devel project="system:install:head" package="gfxboot"/>
+</package>

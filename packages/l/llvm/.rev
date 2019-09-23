@@ -1,0 +1,1271 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c1076cd898f1bf56feb31fa240db4723</srcmd5>
+    <version>2.9.99.git20110605</version>
+    <time>1307698139</time>
+    <user>saschpe</user>
+    <comment>New package llvm, its so called a compiler compiler, it lets you write optimizing compilers.
+
+The package includes llvm-clang package which is the clang optimizing C/C++/Objective-C(++) compiler.
+
+The package has a big non-trivial testsuite for both llvm and clang.
+
+In near future Mesa package will depend on llvm for software OpenGL</comment>
+    <requestid>73051</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dc7f71501415e013b6ed0396ebb72dfe</srcmd5>
+    <version>2.9.99.git20110605</version>
+    <time>1307698152</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73051
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>638211dc2ee4c1bab95c8ed0866a11b7</srcmd5>
+    <version>2.9.99.svn20110709</version>
+    <time>1310372850</time>
+    <user>saschpe</user>
+    <comment>- Update to r134813
+  * Mainly gcc compatibility fixes 
+
+- Update to r134698
+  * Up to 80x speed improvements with -Wuninitialized 
+
+- Enable RTTI support
+- Disable assertions because they are not thread safe
+- Update to r134611
+  * Many C++ fixes and speedups
+  * Updates for AVX instruction support 
+  * gcc 4.6.1 support
+
+-  Fix manpage generation (bnc #703591)</comment>
+    <requestid>75928</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2bb31ac13787274825bb76987f493d94</srcmd5>
+    <version>2.9.99.svn20110709</version>
+    <time>1310372861</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75928
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>80ec7426f62f1a5d0d029a4ee71c2613</srcmd5>
+    <version>2.9.99.svn20110718</version>
+    <time>1311147674</time>
+    <user>saschpe</user>
+    <comment>Tue Jul 19 14:03:21 UTC 2011 - vljn@ovi.com
+ 
+- Update to 135431
+  * API changes to match Mesa requirements
+ 
+Mon Jul 11 08:33:59 UTC 2011 - idonmez@novell.com
+ 
+- Update to r134888
+  * Type system rewrite </comment>
+    <requestid>76476</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3b5f6727b3e6ba30380f479f47edb56f</srcmd5>
+    <version>2.9.99.svn20110718</version>
+    <time>1311147689</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76476
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>60537de432015007c2fe9bc690103d6f</srcmd5>
+    <version>2.9.99.svn20110803</version>
+    <time>1312445143</time>
+    <user>saschpe</user>
+    <comment>- Update to r136773 
+  * Many AVX fixes
+  * Support for C++0x unicode string and character literals
+
+- Update to r135431</comment>
+    <requestid>77865</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4c9b53b4357695b80588ce73f797b45e</srcmd5>
+    <version>2.9.99.svn20110812</version>
+    <time>1313401534</time>
+    <user>saschpe</user>
+    <comment>- Update to r137452
+  * Fix problems found by PVS-Studio
+  * More AVX fixes
+  * Many C++ fixes
+- Add assume-opensuse.patch to remove dependency on openSUSE-release</comment>
+    <requestid>78647</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>05944f2efc3324e7eda7d7bf3128fb9d</srcmd5>
+    <version>2.9.99.svn20110901</version>
+    <time>1314950159</time>
+    <user>saschpe</user>
+    <comment>- Update to r138939
+  * Many crash fixes.
+  * Performance optimizations.
+  * Allow C99 hexfloats in C++0x mode.
+  * Add missing function _mm_ucomige_sd to emmintrin.h.</comment>
+    <requestid>80523</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>efb9d3f9da20a7e42bdb31862e66ea83</srcmd5>
+    <version>2.9.99.svn20110901</version>
+    <time>1314950170</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80523
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cfdb024e4fa8d627b7a825245a45c9d6</srcmd5>
+    <version>2.9.99.svn20110913</version>
+    <time>1316005095</time>
+    <user>saschpe</user>
+    <comment>Forward to Factory.</comment>
+    <requestid>82000</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>ef5b0fb99768965765ef04a0e18c14c5</srcmd5>
+    <version>2.9.99.svn20110913</version>
+    <time>1316005109</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82000
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bddbaf025e04a5f133f9612c677eec12</srcmd5>
+    <version>2.9.99.svn20110929</version>
+    <time>1317543472</time>
+    <user>lrupp</user>
+    <comment>- Update to r140780
+  * Code cleanup
+  * Crash fixes
+  * Add support for alignment-specifiers in C1X and C++11
+  * Introduce a new compiler switch: -fms-compatility
+  * Emit debug info for c++0x nullptr.
+
+This breaks mesa but a fix is submitted to X11:XOrg</comment>
+    <requestid>85531</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>bddbaf025e04a5f133f9612c677eec12</srcmd5>
+    <version>2.9.99.svn20110929</version>
+    <time>1319182156</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4b1c611ee006e592862800a691828b95</srcmd5>
+    <version>2.9.99.svn20111025</version>
+    <time>1319552123</time>
+    <user>coolo</user>
+    <comment>- Update to r142912 llvm-3.0 branch
+  * Fixes to python bindings
+
+- Update to r142641
+  * llvm/clang 3.0 rc1
+
+- Enable ARM code generation 
+
+- Fix libdir on x86_64 
+
+- Update to r142341
+  * First build from 3.0 branch
+  * -Wc++98-compat warnings for the lexer
+  * Add flags for the remaining shift related warnings
+    (-Wshift-count-negative, -Wshift-count-overflow).
+  * Only warn in -Wliteral-conversion if the conversion 
+    loses information
+  * Added clang_getCompletionAnnotation and 
+    clang_getCompletionNumAnnotations to retrieve annotations 
+    from completion string.
+  * Add support for -std=gnu90 and -std=c++03, for compatibility 
+    with modern gcc.
+- Switch to tar.bz2 and remove xz dependency</comment>
+    <requestid>89231</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>9a470fb7e4eef75fa617cdbfddcb2fc8</srcmd5>
+    <version>2.9.99.svn20111025</version>
+    <time>1319823075</time>
+    <user>coolo</user>
+    <comment>- Fixup dependencies so that llvm-clang doesn't depend 
+  on llvm-clang-devel</comment>
+    <requestid>89625</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>017d659b765081f560c64ccc66b68c75</srcmd5>
+    <version>2.9.99.svn20111025</version>
+    <time>1319868043</time>
+    <user>coolo</user>
+    <comment>- Add llvm-pr9614-part{1,2}.patch to fix LLVM PR9614 
+
+Without this patch clang produces infinite looping code when _FORTIFY_SOURCE=2 is defined.
+So this is a pretty much a critical fix which I have been trying to get fixed for last 2-3 months.</comment>
+    <requestid>89723</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f8c7c3ec4d3e675f8f734a038ffc1e86</srcmd5>
+    <version>2.9.99.svn20111101</version>
+    <time>1320231720</time>
+    <user>coolo</user>
+    <comment>- Update r143456 from llvm-3.0 branch
+  * llvm/clang 3.0rc2
+
+This would be _very_ nice to have in 12.1
+I will submit final 3.0 again if it releases in time.</comment>
+    <requestid>89882</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>09a9fd85a0b43ec072b3f7dcae017b69</srcmd5>
+    <version>2.9.99.svn20111106</version>
+    <time>1320741056</time>
+    <user>coolo</user>
+    <comment>- Update to r143961 from llvm-3.0 branch
+  * No longer hardcoding include paths
+
+- Fix LLVMgold.so path for x86-64 
+
+- Enable ld gold support</comment>
+    <requestid>90302</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>72c19b7c53dc2f089275ba0f9b4db236</srcmd5>
+    <version>3.0</version>
+    <time>1323190778</time>
+    <user>coolo</user>
+    <comment>- Switch to 3-stage bootstrap 
+
+- Build first stage compiler with -O0 to workaround gcc 4.5 bug 
+
+- Update to final 3.0 release
+  * No real change since rc2
+
+- Use %{_lib} macro instead of checking for x86_64
+
+- Enable ARM support again
+- Switch to optimized build
+
+- Disable ARM support, VM goes out of memory while compiling it 
+
+- Really enable ARM support
+- Remove forcing -frtti</comment>
+    <requestid>95509</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>8e7a0c299af026f8c21ccfe49caed5ea</srcmd5>
+    <version>3.0</version>
+    <time>1325007445</time>
+    <user>coolo</user>
+    <comment>- Don't run gcc for ada files, just fail instead. 
+
+- Add clang-glibc2.14.patch to support glibc 2.14 headers
+- Install profiling support</comment>
+    <requestid>98236</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>91949e174241eba51d7202c2a011529b</srcmd5>
+    <version>3.0</version>
+    <time>1328890673</time>
+    <user>coolo</user>
+    <comment>Forward</comment>
+    <requestid>103131</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>0730dfe63a0dae89379626b86985dd46</srcmd5>
+    <version>3.0</version>
+    <time>1332500791</time>
+    <user>lrupp</user>
+    <comment>- Target i586-linux for 32bit builds bnc#728737</comment>
+    <requestid>110700</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7a7472f4081deb76ea0a5d869dd25acc</srcmd5>
+    <version>3.0.99+svn154914</version>
+    <time>1334759411</time>
+    <user>coolo</user>
+    <comment>- Update to svn revision 154914 from 3.1 branch 
+  Major new features:
+      * AddressSanitizer, a fast memory error detector.
+      * MachineInstr Bundles, Support to model instruction 
+        bundling / packing.
+      * ARM Integrated Assembler, A full featured assembler 
+        and direct-to-object support for ARM.
+      * Basic Block Placement Probability driven basic block placement.
+  
+  LLVM IR and Core Improvements
+     
+      * IR support for half float
+      * IR support for vectors of pointers, including vector GEPs.
+      * Module flags have been introduced.
+      * Loads can now have range metadata attached to them to 
+        describe the possible values being loaded. 
+      * Inline cost heuristics have been completely overhauled 
+        and now closely model constant propagation through call sites, 
+        disregard trivially dead code costs, and 
+        can model C++ STL iterator patterns.
+   
+  Optimizer Improvements
+      * The loop unroll pass now is able to unroll loops with 
+        run-time trip counts. This feature is turned off by default, 
+        and is enabled with the -unroll-runtime flag.
+      * A new basic-block autovectorization pass is available. 
+        Pass -vectorize to run this pass along with some associated 
+        post-vectorization cleanup passes. 
+   X86-32 and X86-64 Target Improvements
+      * Bug fixes and improved support for AVX1</comment>
+    <requestid>114318</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c5e61f36e525119ebb813d1884811dbd</srcmd5>
+    <version>3.0.99+svn155819</version>
+    <time>1336468506</time>
+    <user>coolo</user>
+    <comment>As discussed previously, the patch that improves usage with icecream.
+ (forwarded request 116316 from llunak)</comment>
+    <requestid>116319</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>4973ebc49389709f03502f7696ea3890</srcmd5>
+    <version>3.0.99+svn155819</version>
+    <time>1336722411</time>
+    <user>coolo</user>
+    <comment>- Depend on python-base so we don't pull whole Mesa 
+
+- make -rewrite-includes support -C and -CC</comment>
+    <requestid>120591</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>cc5fd5174d5fab6a6a5913cb776b848a</srcmd5>
+    <version>3.1</version>
+    <time>1338030450</time>
+    <user>coolo</user>
+    <comment>- Update to final 3.1 release</comment>
+    <requestid>121761</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>cc5fd5174d5fab6a6a5913cb776b848a</srcmd5>
+    <version>3.1</version>
+    <time>1340183669</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>c642fdd443f841d657af287f27b3aa7e</srcmd5>
+    <version>3.1</version>
+    <time>1342346748</time>
+    <user>namtrac</user>
+    <comment>This adds few fixes, but mostly it updates the rewrite-includes patch. Sadly upstream has decided to rename the option name for whatever reason, so if unchanged 12.2 would be the only clang with the option named this way, causing further problems e.g. with icecream.
+
+So it would be very nice to get this into 12.2. As it is an isolated feature, it should be low-risk.
+ (forwarded request 127882 from llunak)</comment>
+    <requestid>127883</requestid>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>19c06d239a9ef24db7c3e2a2909b67d2</srcmd5>
+    <version>3.1</version>
+    <time>1342625528</time>
+    <user>coolo</user>
+    <comment>fix arm build, please forward to factory (forwarded request 127972 from adrianSuSE)</comment>
+    <requestid>127989</requestid>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>e11d91639fb5721858ced8ab5b8df16c</srcmd5>
+    <version>3.1</version>
+    <time>1342873937</time>
+    <user>namtrac</user>
+    <comment> (forwarded request 128460 from llunak)</comment>
+    <requestid>128467</requestid>
+  </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>4875a6ac44047bd2bc2f53cdc97209ae</srcmd5>
+    <version>3.1</version>
+    <time>1348582502</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>135576</requestid>
+  </revision>
+  <revision rev="33" vrev="8">
+    <srcmd5>47810979a59ef3afb711e1794ba81a7d</srcmd5>
+    <version>3.1</version>
+    <time>1351837841</time>
+    <user>coolo</user>
+    <comment>- add explicit buildrequire groff for man pages (forwarded request 139532 from coolo)</comment>
+    <requestid>139545</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>476801d495a49dad7ce493e7a7353a6a</srcmd5>
+    <version>3.1.99.r168031</version>
+    <time>1353133567</time>
+    <user>coolo</user>
+    <comment>- Update to r168031 from release_32 branch
+  * This is 3.2rc1
+
+- Update to r167720 from release_32 branch
+  * Thread local variables may have a specified TLS model.
+  * LLVM now has a loop optimizer.
+  * SROA has been rewritten to be more powerful.
+  * A new optimization pass added to merge stack objects
+    which are used in disjoint areas of the code.
+  * LLVM now merge consecutive loads and stores.
+  * New TableGen infrastructure to support bundling for
+    Very Long Instruction Word (VLIW) architectures.
+  * Added a new target independent VLIW packetizer.
+  * A probability based block placement and code layout algorithm
+    was added to LLVM's code generator.
+  * The ARM target now includes a full featured macro assembler,
+    including direct-to-object module support for clang.
+  * A new IR-level pass, called &quot;TargetTransformInfo&quot; provides
+    a number of low-level interfaces.
+- Refresh default-to-i586.patch to apply again
+- Drop following patches (fixed upstream)
+  * arm-suse-support.patch
+  * pr12463.patch
+  * pr13141.patch
+  * pr13303.patch
+  * rewrite-includes.patch
+  * clang-fix-mips-test.patch (fixed differently in spec file)</comment>
+    <requestid>141387</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>cd28beb417895296eb53012e835a96e2</srcmd5>
+    <version>3.1.99.r168357</version>
+    <time>1353599149</time>
+    <user>coolo</user>
+    <comment>- Stop excluding ppc64 architecture 
+
+- Update to r168357 from release_32 branch
+  * Fixes a miscompilation with gcc 4.7
+
+- Update to r168286 from release_32 branch
+  * Fixes llvm PR14309</comment>
+    <requestid>142015</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5338c47ea88503c65e8101984f78966e</srcmd5>
+    <version>3.1.99.r168987</version>
+    <time>1354712355</time>
+    <user>namtrac</user>
+    <comment>Fix ARM build (forwarded request 144061 from Guillaume_G)</comment>
+    <requestid>144074</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7bec592393e6f564e0b6248c9eb529ea</srcmd5>
+    <version>3.1.99.r169678</version>
+    <time>1355474546</time>
+    <user>coolo</user>
+    <comment>- Unbreak PowerPC support 
+
+- Update to r169678 from release_32 branch
+  * This is 3.2rc3
+
+- Update to r169391 from release_32 branch
+  * SROA fixes</comment>
+    <requestid>145213</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>83523945ec97bcf222334ba71557b27c</srcmd5>
+    <version>3.1.99.r169678</version>
+    <time>1355733333</time>
+    <user>coolo</user>
+    <comment>With the fixes below we have a fully functional llvm/clang on PPC64
+
+
+- Disable compilation on PPC, only PPC64 is supported.
+
+- Add python-ulimit.patch: Don't set a limit on address space.
+  This enables us running tests on PowerPC.</comment>
+    <requestid>145515</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>4170f688f64e9f32566e206551f3d088</srcmd5>
+    <version>3.2</version>
+    <time>1356098032</time>
+    <user>coolo</user>
+    <comment>- Update to final 3.2 release
+  * No code changes since rc3
+
+- Update to r170281 from release_32 branch
+  * SROA fixes
+
+- Unbreak PowerPC support</comment>
+    <requestid>146157</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>5a41da10e741e2553daa201042ad61b5</srcmd5>
+    <version>3.2</version>
+    <time>1358083746</time>
+    <user>coolo</user>
+    <comment>- Add pre-generated doc files, remove sphinx dependency 
+
+- pr14795.patch: Fix incorrect line numbers after -frewrite-includes
+  (PR#14795)
+- pr14831.patch: Do not incorrectly warn about pragmas in -frewrite-includes
+  (PR#14831)
+
+- disable cross-compile mode in stage2 for armv5/v7</comment>
+    <requestid>148164</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>8be72a5fbdc375079720468ef9e02f44</srcmd5>
+    <version>3.2</version>
+    <time>1358786345</time>
+    <user>coolo</user>
+    <comment>pr13303 fix was temporarily reverted upstream and is not in 3.2
+ (forwarded request 148801 from llunak)</comment>
+    <requestid>148803</requestid>
+  </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>8be72a5fbdc375079720468ef9e02f44</srcmd5>
+    <version>3.2</version>
+    <time>1359109404</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>f64a1c6e704819b707a14ad69da6edc2</srcmd5>
+    <version>3.2.91</version>
+    <time>1369641227</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.3 RC2
+  * Small bugfixes
+
+- Enable ARM64 support
+
+- Add unreachable-code.patch to fix unreachable code warnings on SLE 
+
+- Update to version 3.3 RC1
+    * Added support for AArch64, ARM’s 64-bit architecture.
+    * LLVM now has a new SLP vectorizer.
+    * LLVM and clang now support IBM’s z/Architecture.
+    * The R600 backend was added in this release, it supports
+      AMD GPUs (HD2XXX - HD7XXX).
+    * See http://llvm.org/releases/3.3/docs/ReleaseNotes.html for
+      complete changelog.
+- Drop upstream patches:
+    * pr13303.patch
+    * pr14795.patch
+    * pr14831.patch
+    * python-ulimit.patch</comment>
+    <requestid>176364</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>6b4dca87907363c1af434f4146be5dac</srcmd5>
+    <version>3.2.91</version>
+    <time>1370435474</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>177073</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>786f7ea8a19fac6ed9d9ef4789ce549c</srcmd5>
+    <version>3.2.91</version>
+    <time>1371221187</time>
+    <user>coolo</user>
+    <comment>- Update to final 3.3 release (r183898)
+
+- Disable debug symbols on PPC64</comment>
+    <requestid>178875</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>115c5f0e9d5ea030df6dc0f83b6a52f0</srcmd5>
+    <version>3.3</version>
+    <time>1373874498</time>
+    <user>coolo</user>
+    <comment>- Drop disable_neon_in_armv7.diff, neon seems to be working fine
+- Add cmake-host-triple.patch to pass a host triple argument
+
+- Create libLLVM and libclang subpackages.
+
+- Fix finding internal headers on x86_64
+
+- Fix ARM v5/v7 builds
+
+- Create a baselibs.conf
+  Provide *-32 Bit Packages for x86_64
+
+- Initial version of a cmake based buildscript
+  + Updated arm_suse_support.diff (patch6) to work with llvm 3.3
+  + Set version in spec to 3.3</comment>
+    <requestid>182946</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>54baae52b843cbc35914d793b73621b4</srcmd5>
+    <version>3.3</version>
+    <time>1373985781</time>
+    <user>coolo</user>
+    <comment>- do not build on slow or low memory workers (forwarded request 183199 from coolo)</comment>
+    <requestid>183204</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>4aee971ec7b8b239150cee85494e53c1</srcmd5>
+    <version>3.3</version>
+    <time>1376400555</time>
+    <user>scarabeus_factory</user>
+    <comment>- Disable shared libs on PowerPC 
+- Disable ARCMT, it only makes sense for iOS/OSX
+
+- Fix build 
+
+- Disable building unit-tests, should fix undefined reference
+  problem on ARM &amp; PowerPC</comment>
+    <requestid>186832</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>9c212ec991267d2fa697138ccae3f332</srcmd5>
+    <version>3.3</version>
+    <time>1377156203</time>
+    <user>scarabeus_factory</user>
+    <comment>- Only enable PowerPC on ppc64</comment>
+    <requestid>195800</requestid>
+  </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>1e8cde71b901c543c22934fba00d030c</srcmd5>
+    <version>3.3</version>
+    <time>1378295799</time>
+    <user>coolo</user>
+    <comment>- Fix filelist for aarch64
+
+- aarch64-suse-support.patch: Enable AArch64 suse toolchain support
+
+- Add s390x support 
+
+- Remove unused chrpath dependency
+- Re-enable ARCMT since libclang depends on it
+
+- Define host_triple for aarch64
+
+- Fix ARMv6 build</comment>
+    <requestid>196796</requestid>
+  </revision>
+  <revision rev="51" vrev="7">
+    <srcmd5>1e8cde71b901c543c22934fba00d030c</srcmd5>
+    <version>3.3</version>
+    <time>1379663172</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="52" vrev="8">
+    <srcmd5>09e90e9754dbd970053936e19be2e05a</srcmd5>
+    <version>3.3</version>
+    <time>1380469803</time>
+    <user>coolo</user>
+    <comment>- Set DisablePrettyStackTrace to true since it messes up signal
+  handling. bnc#839074 and fdo#60929 implemented with
+  llvm-disable-pretty-stack-trace.patch)</comment>
+    <requestid>201188</requestid>
+  </revision>
+  <revision rev="53" vrev="9">
+    <srcmd5>c3609180a4e7f4d33c91b1aafcfbe99a</srcmd5>
+    <version>3.3</version>
+    <time>1381401258</time>
+    <user>scarabeus_factory</user>
+    <comment>- use %arm, not arm in arch conditions 
+- add arm-remove-xfails.diff: remove XFAILs in testsuite
+  that pass and thereby make check fail (forwarded request 202747 from dirkmueller)</comment>
+    <requestid>202764</requestid>
+  </revision>
+  <revision rev="54" vrev="10">
+    <srcmd5>5138b5f841783e130174980bea20c0f0</srcmd5>
+    <version>3.3</version>
+    <time>1382361141</time>
+    <user>scarabeus_factory</user>
+    <comment>- Fix file list for %arm (forwarded request 203697 from Andreas_Schwab)</comment>
+    <requestid>204115</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>951aa0d2c4020b2da505ed45ca3b4064</srcmd5>
+    <version>3.4</version>
+    <time>1391105852</time>
+    <user>coolo</user>
+    <comment>- Remove non-existing doc subpackage 
+
+- Add a dependency on ncurses-devel since libLLVM now links to
+  tinfo.
+
+- Add 32bit libclang bnc#857131
+
+- Update to final llvm 3.4 release
+  * See http://llvm.org/releases/3.4/docs/ReleaseNotes.html for
+    complete changelog.
+
+- Update to final release candidate (r197980)
+
+- Update to r197866 from release_34 branch
+
+- Update to r197490 from release_34 branch
+
+- Update to r197142 from release_34 branch
+- Disable assertions again now that PPC64 backend is fixed
+
+- Update to r196899 from release_34 branch
+- Remove compiler_rt-r196612.patch, merged upstream
+
+- Add compiler_rt-r196612.patch to fix ubsan failures on i586
+
+- Update to r196762 from release_34 branch
+
+- Update to r196503 from release_34 branch to get compiler_rt fixes
+
+- Update to r196487 from release_34 branch to get compiler_rt fixes</comment>
+    <requestid>215039</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>2bf63d56573f92c548ce0c4618853ef4</srcmd5>
+    <version>3.4</version>
+    <time>1393453232</time>
+    <user>coolo</user>
+    <comment>- complete ifarchs for s390 
+
+- enable ppc64le (forwarded request 223509 from oertel)</comment>
+    <requestid>223805</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>3558846b2d5a94494590e397e0e6274a</srcmd5>
+    <version>3.4</version>
+    <time>1395156091</time>
+    <user>coolo</user>
+    <comment>Add lldb package.</comment>
+    <requestid>226393</requestid>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>732e7d2dae59a79d33b743fd78ad6443</srcmd5>
+    <version>3.4</version>
+    <time>1397041264</time>
+    <user>coolo</user>
+    <comment>- Fix resource dir for libclang case (clang-resourcedirs.patch)
+- Always build tests</comment>
+    <requestid>229266</requestid>
+  </revision>
+  <revision rev="59" vrev="5">
+    <srcmd5>4d85095c3d7382f5116bf765af6a966e</srcmd5>
+    <version>3.4</version>
+    <time>1401685461</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>235055</requestid>
+  </revision>
+  <revision rev="60" vrev="6">
+    <srcmd5>5f3527ba61a1ef209399ed17e4ededde</srcmd5>
+    <version>3.4</version>
+    <time>1403702654</time>
+    <user>coolo</user>
+    <comment>- Add clang-max_align_t.patch to resolve issue with libstdc++ 4.9
+  max_align_t missing declaration</comment>
+    <requestid>238463</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>ba0778e4dc6dfd8d57e539f62fa876f0</srcmd5>
+    <version>3.4.2</version>
+    <time>1406442281</time>
+    <user>coolo</user>
+    <comment>- Add baselibs.conf to source files
+
+- Add cmake-patchversion.patch to sync config.h.in
+  with config.h.cmake
+
+- Update to llvm 3.4.2
+  * Minor bugfix release
+- Drop clang-max_align_t.patch, applied upstream.</comment>
+    <requestid>242065</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>10e706ec0d865e97cd6f7b278337cf5e</srcmd5>
+    <version>3.4.2</version>
+    <time>1408549969</time>
+    <user>lnussel</user>
+    <comment>- Fix the sed line for minimal damage.</comment>
+    <requestid>244854</requestid>
+  </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>10e706ec0d865e97cd6f7b278337cf5e</srcmd5>
+    <version>3.4.2</version>
+    <time>1409301809</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>1c46bce2220724abd717aaefab8d3664</srcmd5>
+    <version>3.5.0</version>
+    <time>1411127741</time>
+    <user>coolo</user>
+    <comment>- Add llvm-remove-werror-date-time.patch to remove -Werror=date-time
+  for CXXFLAGS, gcc does not support it and it creeps into
+  llvm-config --cflags
+
+- Remove wrong Requires from the llvm-devel package
+
+- Add default target triple form ARM, fixes bnc#893359
+
+- Use ninja for building
+
+- Update to llvm 3.5.0
+  * Major update, see http://llvm.org/releases/3.5.0/docs/ReleaseNotes.html
+- Use upstream pristine tarballs
+- Add libc++/libc++abi support clang (only on x86_64)
+- Add libcxxabi-exceptions.patch to fix libcxxabi exception handling 
+- Add libcxx-libdir.patch to fix libdir on 64bit arches
+- Remove asan-disable-hugemalloctest.patch and 
+  cmake-patchversion.patch, fixed upstream.</comment>
+    <requestid>250034</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>5d497b5b9941388ca1ab0d971c1be12b</srcmd5>
+    <version>3.5.0</version>
+    <time>1411926931</time>
+    <user>coolo</user>
+    <comment>- Enable shared libs on PPC64
+
+- Require llvm-clang not just clang</comment>
+    <requestid>252467</requestid>
+  </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>289414774b5a843e032c5261a6938866</srcmd5>
+    <version>3.5.0</version>
+    <time>1412533636</time>
+    <user>coolo</user>
+    <comment>- Rename llvm-remove-werror-date-time.patch to 
+  llvm-remove-clang-only-flags.patch and remove more clang only
+  flags.</comment>
+    <requestid>253061</requestid>
+  </revision>
+  <revision rev="67" vrev="4">
+    <srcmd5>2053369f80507fbefdc36f957941e1bd</srcmd5>
+    <version>3.5.0</version>
+    <time>1414776429</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257892</requestid>
+  </revision>
+  <revision rev="68" vrev="5">
+    <srcmd5>b0fa6a59ea205dfd3b86e6e4a7987d8f</srcmd5>
+    <version>3.5.0</version>
+    <time>1418840106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>265046</requestid>
+  </revision>
+  <revision rev="69" vrev="6">
+    <srcmd5>ef8b5b6f3fb88d8a00b662bf91cd7e7f</srcmd5>
+    <version>3.5.0</version>
+    <time>1422594688</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a gcc dependency for clang, this is heavyweight but we need
+  libgcc_s which comes with the gcc package (bnc#893359)</comment>
+    <requestid>283088</requestid>
+  </revision>
+  <revision rev="70" vrev="7">
+    <srcmd5>eeec99bdee48a6511c0fbe30a4bcb2e4</srcmd5>
+    <version>3.5.0</version>
+    <time>1424622055</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286988</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>205620802dcce7ee3136b80918aa64c7</srcmd5>
+    <version>3.6.0</version>
+    <time>1430246558</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.6.0
+  * No changelog upstream
+- Merge lldb-underlink.patch into lldb-cmake.patch
+- Swich to static library build, shared build is not supported
+
+- Add llvm-fix-parsearmarch.patch to fix parsing armv{6,7}hl archs. 
+
+- Update to version 3.6.0
+  * See http://llvm.org/releases/3.6.0/docs/ReleaseNotes.html
+- Add python-xml dependency for regression tests
+- Removed the following patches, fixed upstream:
+  * arm-remove-xfails.diff
+  * libcxx-libdir.patch
+  * llvm-config-lib64.patch
+  * llvm-fix-intrusiverefcntptr.patch</comment>
+    <requestid>303649</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>4affa883e86455bf870973ee46986d84</srcmd5>
+    <version>3.6.1</version>
+    <time>1432885898</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308826</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>85cf938ea2c7a57d2b879436335be908</srcmd5>
+    <version>3.6.1</version>
+    <time>1435053318</time>
+    <user>dimstar_suse</user>
+    <comment>- Update lldb-cmake.patch to fix compilation on Factory</comment>
+    <requestid>313024</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>b470a3d46a1ec4ca3b5b6cbd56cacf04</srcmd5>
+    <version>3.7.0</version>
+    <time>1441954862</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.7.0
+  * See http://llvm.org/releases/3.7.0/docs/ReleaseNotes.html
+- Merge aarch64-suse-support.patch into arm_suse_support.diff
+- Refresh arm_suse_support.diff, llvm-fix-find-gcc5-install.patch
+- Remove llvm-fix-parsearmarch.patch, upstream.</comment>
+    <requestid>328874</requestid>
+  </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>4f8910fd59e0b09d6f99f80ff08c244d</srcmd5>
+    <version>3.7.0</version>
+    <time>1443770581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>334126</requestid>
+  </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>2c0a13fc8a5992251ac22cdeffddebae</srcmd5>
+    <version>3.7.0</version>
+    <time>1445511463</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>338357</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>b230067782a79373de723a2264abdfb9</srcmd5>
+    <version>3.8.0</version>
+    <time>1458120366</time>
+    <user>dimstar_suse</user>
+    <comment>- Comment out glibc-2.23-libcxx.patch until glibc 2.23 actually
+  hits the Factory.
+
+- Update to llvm 3.8.0
+  * See http://llvm.org/releases/3.8.0/docs/ReleaseNotes.html and
+    http://llvm.org/releases/3.8.0/tools/clang/docs/ReleaseNotes.html
+- Fold lldb build into llvm and disable python support
+- Drop clang-disable-ada-extension.patch, libcxxabi-exceptions.patch
+  and cmake-host-triple.patch
+- Add revert-cmake-soname.patch to fix soname handling
+
+- Add glibc-2.23-libcxx.patch to fix test failures with glibc 2.23</comment>
+    <requestid>369633</requestid>
+  </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>b0fcacfe4e5136580bb7c02a0575e63e</srcmd5>
+    <version>3.8.0</version>
+    <time>1458333155</time>
+    <user>dimstar_suse</user>
+    <comment>- Use gcc for stage1 bootstrap
+- Add back libstdc++-devel dependency for clang since libc++ is
+  only available for x86-64 atm.</comment>
+    <requestid>373722</requestid>
+  </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>67906c0a9e084dfbf4be2e995e6c5e94</srcmd5>
+    <version>3.8.0</version>
+    <time>1460358729</time>
+    <user>dimstar_suse</user>
+    <comment>- Update llvm-remove-clang-only-flags.patch to remove
+  -Wcovered-switch-default flag for gcc compatibility.</comment>
+    <requestid>384180</requestid>
+  </revision>
+  <revision rev="80" vrev="4">
+    <srcmd5>678531d5bcccacbb835df306e7f2520c</srcmd5>
+    <version>3.8.0</version>
+    <time>1461334565</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable glibc-2.23 patch for Tumbleweed</comment>
+    <requestid>388158</requestid>
+  </revision>
+  <revision rev="81" vrev="5">
+    <srcmd5>fa00c4dae5bdbf7e8430f179387da6fd</srcmd5>
+    <version>3.8.0</version>
+    <time>1462447148</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>393255</requestid>
+  </revision>
+  <revision rev="82" vrev="6">
+    <srcmd5>e385b98bcff7ed2f82cc5219d0ae6d62</srcmd5>
+    <version>3.8.0</version>
+    <time>1464014288</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396761</requestid>
+  </revision>
+  <revision rev="83" vrev="7">
+    <srcmd5>b2029ef306275ec5393f8d28d815e4a8</srcmd5>
+    <version>3.8.0</version>
+    <time>1467205394</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403704</requestid>
+  </revision>
+  <revision rev="84" vrev="8">
+    <srcmd5>92a44d8a632ec87bebf86240bd1d56c8</srcmd5>
+    <version>3.8.0</version>
+    <time>1469080341</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408453</requestid>
+  </revision>
+  <revision rev="85" vrev="9">
+    <srcmd5>bc78069a0a1d33d12441a784523363ad</srcmd5>
+    <version>3.8.0</version>
+    <time>1470508667</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415893</requestid>
+  </revision>
+  <revision rev="86" vrev="10">
+    <srcmd5>0c1685f71d8cbf917c2561711910254c</srcmd5>
+    <version>3.8.0</version>
+    <time>1472379453</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423103</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>6d900670dab29ec64cd1ec547a23884a</srcmd5>
+    <version>3.8.1</version>
+    <time>1474016369</time>
+    <user>dimstar_suse</user>
+    <comment>- Sort out with spec-cleaner
+
+- Update to llvm 3.8.1
+  * See http://llvm.org/releases/3.8.1/docs/ReleaseNotes.html and
+    http://llvm.org/releases/3.8.1/tools/docs/ReleaseNotes.html
+- Use versioned libLLVM (to libLLVM3_8) and libclang (to libclang3_8)
+- Change versioning of liblldb3_8 to liblldb-3_8 and use a variable
+  to control the name instead of hard-coding it.
+- Use bcond_with and bcond_without to enable/disable build options
+  instead of hard-coding them.
+- Put buildrequires as requires in -devel packages to avoid linker errors
+  when building packages against the -devel packages.
+- Add ffi support (disabled by default).
+- Add oprofile support (disabled by default).
+- Add valgrind support (disabled by default).
+- Link cmake files to the normal cmake file directory to allow autodetection
+  of cmake interfaces.
+- Remove unused lldb components from main spec file.
+- Split llvm python bindings into own subpackage.
+- Split emacs plugin into own subpackage
+- Move additional vim plugins into vim plugins package
+- Split libc++, libLTO, LLVMgold, libomp, clang-chekers into own subpackages
+- Make python-clang, llvm-vim-plugins, and llvm-emacs-plugins noarch since
+  they aren't architecture-specific.
+- Make packages besides llvm, llvm-clang, and the shared libraries conflict
+  with other versions.  This will be important when multiple LLVM versions
+  are supported.
+- Various spec file cleanups
+- Rebase patches:
+  * arm_suse_support.diff</comment>
+    <requestid>426918</requestid>
+  </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>0de3aa7fab873641d31722030b95adde</srcmd5>
+    <version>3.8.1</version>
+    <time>1476113195</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded emacs-nox dependency. 
+
+- BuildIgnore emacs and vim to avoid cycles. 
+
+- Split out llvm and lldb into a version-specific package.
+- Turn this package into a wrapper around the version-specific
+  packages.
+- Remove patches:
+   * default-to-i586.patch
+   * assume-opensuse.patch
+   * glibc-2.23-libcxx.patch
+   * arm_suse_support.diff
+   * llvm-remove-clang-only-flags.patch
+   * clang-resourcedirs.patch
+   * lldb-add-pthread-dl-libs.patch
+   * llvm-nonvoid-return.patch
+   * glibc-2.24-libcxx.patch
+   * revert-cmake-soname.patch
+   * set-revision.patch
+   * lldb-cmake.patch
+   * D15067.id41365.diff
+   * llvm-fix-find-gcc5-install.patch</comment>
+    <requestid>433539</requestid>
+  </revision>
+  <revision rev="89" vrev="3">
+    <srcmd5>887e83ceecb3fb3d75682f67f92bda99</srcmd5>
+    <version>3.8.1</version>
+    <time>1476779826</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve README.packaging.</comment>
+    <requestid>434589</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>def3d2f99937805dc6e3b59e7f5e4ff6</srcmd5>
+    <version>3.9.1</version>
+    <time>1484132084</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.9.1
+  * See:
+    + http://llvm.org/releases/3.9.1/docs/ReleaseNotes.html
+    + http://llvm.org/releases/3.9.1/tools/clang/docs/ReleaseNotes.html
+    + http://llvm.org/releases/3.9.1/tools/clang/tools/extra/docs/ReleaseNotes.html
+
+- Update to version 3.9.0
+  * See:
+    + http://llvm.org/releases/3.9.0/docs/ReleaseNotes.html
+    + http://llvm.org/releases/3.9.0/tools/clang/docs/ReleaseNotes.html
+    + http://llvm.org/releases/3.9.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+  * Fix the following patches:
+    + arm_suse_support.diff
+    + assume-opensuse.patch
+    + clang-resourcedirs.patch
+    + default-to-i586.patch
+    + glibc-2.23-libcxx.patch
+    + glibc-2.24-libcxx.patch
+    + lldb-add-pthread-dl-libs.patch
+    + lldb-cmake.patch
+    + llvm-fix-find-gcc5-install.patch
+    + llvm-remove-clang-only-flags.patch
+    + revert-cmake-soname.patch
+    + set-revision.patch
+  * Remove upstream-included patch:
+    + llvm-nonvoid-return.patch
+  * Remove patch for removed files:
+    + glibc-2.23-libcxx.patch
+- Backport upstream patches:
+  * clang-fix-substitutions-abi_tag.patch</comment>
+    <requestid>447473</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>f6d17732a8686f830742baa86464bfe6</srcmd5>
+    <version>4.0.0</version>
+    <time>1492417189</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>483730</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>38e13c0f5d5db67549ffaad72e8c72e2</srcmd5>
+    <version>4.0.1</version>
+    <time>1499168031</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.1
+  * Minor bugfixes</comment>
+    <requestid>506388</requestid>
+  </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>8af33cd24c99ea29f0198b3924093820</srcmd5>
+    <version>4.0.1</version>
+    <time>1508434281</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533361</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>e5e46ef3c62f8ba57bb079d1697e9ecc</srcmd5>
+    <version>5.0.0</version>
+    <time>1513453958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556746</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>216e2d1a9bfe2aea4b28138ba11dfb82</srcmd5>
+    <version>5.0.1</version>
+    <time>1515342141</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.1
+  * This release contains bug-fixes for the LLVM 5.0.0 release.
+  * This release is API and ABI compatible with 5.0.0.
+
+- Add lld package.
+  * LLD is new since llvm5.</comment>
+    <requestid>561972</requestid>
+  </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>640cca74b71866a8544cce60722473ad</srcmd5>
+    <version>5.0.1</version>
+    <time>1516091423</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing %files for lld.</comment>
+    <requestid>562433</requestid>
+  </revision>
+  <revision rev="97" vrev="3">
+    <srcmd5>f558ff743620151b40a72d345a98e412</srcmd5>
+    <version>5.0.1</version>
+    <time>1516971484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569076</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>c35823b8b50d4a7816c8a31f33e42e2a</srcmd5>
+    <version>6.0.0</version>
+    <time>1522702044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592180</requestid>
+  </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>3ed6c2f79a80fe71ed890d68c204c9a8</srcmd5>
+    <version>6.0.0</version>
+    <time>1528021814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613054</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>1c0f4e7f2ba500325c92eb369a848aca</srcmd5>
+    <version>6.0.1</version>
+    <time>1532681658</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625298</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>e7de695a4706d69f85c58a21ce875ffd</srcmd5>
+    <version>7.0.0</version>
+    <time>1545647791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637639</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>534ac78d2650f091bf9500ce3546d57f</srcmd5>
+    <version>7.0.1</version>
+    <time>1549311470</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>666123</requestid>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>ce5d2d329eecb9de1419f1ce82d16235</srcmd5>
+    <version>7.0.1</version>
+    <time>1551024336</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>674470</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>066190aba06d326f04f906620fcdf226</srcmd5>
+    <version>8.0.0</version>
+    <time>1560536550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704661</requestid>
+  </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>ab9c38ef25ac6ef895b27489d57a9041</srcmd5>
+    <version>8.0.0</version>
+    <time>1561195343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710291</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>26200823971c85af79ba3a830b446f42</srcmd5>
+    <version>8.0.1</version>
+    <time>1564301998</time>
+    <user>dimstar_suse</user>
+    <comment>new version</comment>
+    <requestid>718118</requestid>
+  </revision>
+</revisionlist>

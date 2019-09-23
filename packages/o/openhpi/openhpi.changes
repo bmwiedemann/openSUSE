@@ -1,0 +1,616 @@
+-------------------------------------------------------------------
+Thu Oct  4 18:56:16 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Implement shared library packaging guideline.
+- Remove excess ldconfig calls. Avoid double-shipping README.daemon.
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Wed Sep 26 14:25:38 UTC 2018 - trenn@suse.de
+
+- Update to 3.8.0 (fate#325975)
+- Remove ipmi plugin, it is deprecated for long time, does not build
+  anymore because selector_t changed to struct selector_s in
+  openIPMI-devel since 2.0.24. ipmidirect is compiled in and should
+  be used anyway.
+- Patch mainline:
+D openhpi-3.6.0_fix_net-snmp_disable_MD5.patch
+- Used spec-cleaner
+- No sever build service errors/warnings -> remove openhpi-rpmlintrc
+D openhpi-rpmlintrc
+- Remove has_systemd checks
+- Disable ipmi plugin (deprecated) -> ipmidirect up-to-date
+- Still add a patch that ipmi plugin would still build:
+A fix_openipmi_typedef_selector_change.patch
+- Fix build due to compiler warnings in SLE and Leap 15:
+A fix_implicit_declarations.patch
+
+-------------------------------------------------------------------
+Fri Feb 24 16:32:49 UTC 2017 - kkaempf@suse.com
+
+- Update to 3.6.1
+  * Bugfix release
+    * Build System
+      1898 Checkin 7658 - make fails in libgcrypt-devel systems
+    * Documentation
+      1901 Checkin 7661 - bootstrap information could be added to
+      README
+    * HPI Clients
+      1899 Checkin 7659 - hpithres segfaults on EOF
+
+-------------------------------------------------------------------
+Thu Sep 17 14:24:54 UTC 2015 - abergmann@suse.com
+
+- added openhpi-3.6.0_fix_net-snmp_disable_MD5.patch:
+  If MD5 is disabled in net-snmp we have to disable the used MD5
+  function in plugins/snmp_bc/snmp_bc_session.c as well. (bsc#944302)
+
+-------------------------------------------------------------------
+Mon Sep  7 11:12:23 UTC 2015 - kkaempf@suse.com
+
+- Update to version 3.6.0
+  * Stable release
+  * /var/log/openhpi security fix
+  * Fixes for new OS Releases, new GLIB, ssl etc
+  * Many bugfixes
+
+- drop openhpi-3.5.0_sort_hash_output.patch, is upstream
+
+-------------------------------------------------------------------
+Wed Feb  4 01:08:44 UTC 2015 - mrueckert@suse.de
+
+- added openhpi-3.5.0_sort_hash_output.patch:
+  perl hashes do not guarantee any order sort the keys before
+  outputting them into generated files. (boo# 915949)
+
+  Patch taken from http://sourceforge.net/p/openhpi/bugs/1866/
+
+-------------------------------------------------------------------
+Wed Nov 19 23:09:19 UTC 2014 - dimstar@opensuse.org
+
+- Replace systemd BuildRequires with pkgconfig(systemd): we do not
+  require the full installation / dep chain of systemd.
+
+-------------------------------------------------------------------
+Sun Oct 19 18:25:50 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 3.5.0
+  see http://www.openhpi.org/Changelogs/3.5.0
+- Remove included patches
+  + openhpi-3.4.0_missing_header.patch 
+  + openhpi-3.4.0_undefined_behavior.patch 
+- Add systemd support for openSUSE > 11.4
+  + Add openhpi-3.4.0-systemd.patch
+  + Pass --with-systemdsystemunitdir option in configure
+- Remove redundant %clean section
+- Remove --enable-snmp_client configure option; configure doesn't
+  unrecognized it
+- Add --enable-ipmidirect configure option; build the new ipmidirect
+  plugin
+- Remove unneeded dependencies; remove xorg-x11 and xorg-x11-devel
+  build requirements
+- Add autoconf, automake and libtool dependencies
+- Call autoreconf before configure; needed because of systemd patch
+
+-------------------------------------------------------------------
+Mon Jul 21 15:40:23 UTC 2014 - mrueckert@suse.de
+
+- added openhpi-3.4.0_undefined_behavior.patch:
+  Fix a compiler warning about undefined behavior. This warning was
+  not triggered by the previous change.
+
+-------------------------------------------------------------------
+Mon Jul 21 15:28:21 UTC 2014 - mrueckert@suse.de
+
+- enabled oa_soap and ilo2_ribcl features (bnc#882549):
+  new buildrequires libxml2-devel
+
+-------------------------------------------------------------------
+Wed Feb  5 17:06:47 UTC 2014 - mrueckert@suse.de
+
+- added openhpi-3.4.0_missing_header.patch:
+  include utils/sahpi_gcrypt_utils.h into header files that will be
+  installed. utils/oh_utils.h depends on it.
+
+-------------------------------------------------------------------
+Fri Jan 24 16:17:27 UTC 2014 - mrueckert@suse.de
+
+- Update to 3.4.0
+  - 1806 Checkin 7558 - uid_map created as world writable 
+  - OLD 3562300 NEW 697 Checkin 7556 - Clear text authentication
+    credentials is a security problem
+  For the other changes see http://www.openhpi.org/Changelogs/3.4.0
+- added -DGLIB_DISABLE_DEPRECATION_WARNINGS to the CFLAGS for a
+  more readable build log
+
+-------------------------------------------------------------------
+Wed Jan  8 13:53:33 UTC 2014 - adrian@suse.de
+
+- drop fam dependency, package is about to be removed and this
+  package has no code to use it.
+
+-------------------------------------------------------------------
+Tue Jul 23 09:02:32 UTC 2013 - kkaempf@suse.com
+
+- Update to 3.2.1
+  see http://www.openhpi.org/Changelogs/3.2.1
+
+- Update to 3.2.0
+  see http://www.openhpi.org/Changelogs/3.2.0
+
+- Update to 3.1.0
+  see http://www.openhpi.org/Changelogs/3.1.0
+
+-------------------------------------------------------------------
+Thu Oct 18 10:40:34 UTC 2012 - coolo@suse.com
+
+- remove udev buildrequire, it causes a cycle and doesn't seem to
+  be required to build
+
+-------------------------------------------------------------------
+Wed Oct 19 11:26:02 UTC 2011 - kkaempf@suse.com
+
+- remove pid file if openhpi is unconfigured
+- output message in daemon %post to point to OPENHPI_UNCONFIGURED
+
+-------------------------------------------------------------------
+Tue Oct 18 07:42:41 UTC 2011 - kkaempf@suse.com
+
+- update to 3.0.0
+  New Features
+  * Documentation
+  * 3411347 - Remove outdated docs/hld subdirectory
+    HP c-Class Plugin
+  * 3196244 - Have a field to display aggregate status of the enclosure
+    OpenHPI Daemon
+  * 3406760 - openhpid: report client connection address in log
+  Bugfixes
+  * many, see http://www.openhpi.org/Changelogs/3.0.0
+
+- update to 2.17.0
+ * Refactoring
+ * Windows support
+ * FreeBSD support
+ * IPv6 support
+ * New Test Agent plug-in
+ * New hpixml client
+ * More bugfixes and features
+
+- update to 2.16.0
+  * Documentation updates
+  * Re-issuing HPI call in case of broken connection (can happen for
+    configuration with redundant OpenHPI daemons)
+
+- update to 2.15.1
+  * Revisited OpenHPI API (oHpiXXX functions)
+  * Refactoring in marshal, utils and baselib
+  * Slave - new plug-in for representing resources and instruments
+    from subsidiary OpenHPI daemon
+  * Bugfixes
+
+- update to 2.15.0
+  * New power management controls for HP c-Class enclosures
+  * New dynamic simulator plugin
+  * Many enhancements to the OpenHPI clients
+  * Bugfixes
+
+-------------------------------------------------------------------
+Tue Sep  7 20:43:21 UTC 2010 - aj@suse.de
+
+- Configure uses --disable-sysfs, so remove dependency on sysfsutils.
+
+-------------------------------------------------------------------
+Wed May 19 13:01:17 CEST 2010 - ro@suse.de
+
+- update to 2.14.1
+  * Fixes to the OpenHPI Daemon and base library.
+  * Many bug fixes to the HPI Shell.
+  * Fixes for building on Solaris.
+  * Fixes to the HP c-Class, HP ProLiant, IPMI Direct,
+  and SNMP Client plug-ins.
+  * Numerous other bug fixes.  
+- fix build with c++ (openhpi-ipmi_mc_vendor_cpp.patch)
+
+-------------------------------------------------------------------
+Fri Sep 25 16:34:18 CEST 2009 - mrueckert@suse.de
+
+- update to version 2.14.0
+  + Content from development releases 2.13.0 through 2.13.3
+  + Many bug fixes to the HPI Shell.
+  + Fixes for building on Mandrivia.
+  + Numerous other bug fixes.
+  all details on:
+  http://www.openhpi.org/Changelogs/2.14.0
+  http://www.openhpi.org/Changelogs/2.13.3
+  http://www.openhpi.org/Changelogs/2.13.2
+  http://www.openhpi.org/Changelogs/2.13.1
+  http://www.openhpi.org/Changelogs/2.13.0
+- disable Werror patch but keep it for now
+- added openhpi-2.x_array_out_of_bounds.patch (bnc#516203)
+
+-------------------------------------------------------------------
+Tue Mar 10 15:22:27 CET 2009 - coolo@suse.de
+
+- buildrequire ncurses-devel as it links against it
+
+-------------------------------------------------------------------
+Thu Sep  4 16:33:24 CEST 2008 - mrueckert@suse.de
+
+- update to version 2.12.0
+  + Rollup development releases 2.11.0 through 2.11.3. 
+  + Add documentation for new ilo2_ribcl and oa_soap plugins HP ProLiant plugin 
+  + Make use of common SSL code HP c-Class Plugin. 
+  + Various bug fixes.
+  all details on:
+  http://www.openhpi.org/Changelogs/2.12.0
+  http://www.openhpi.org/Changelogs/2.11.3
+  http://www.openhpi.org/Changelogs/2.11.2
+  http://www.openhpi.org/Changelogs/2.11.1
+  http://www.openhpi.org/Changelogs/2.11.0
+  http://www.openhpi.org/Changelogs/2.10.2
+- updated openhpi-2.10.x_no_Werror.patch
+  new name: openhpi-2.12.0_no_Werror.patch
+- dropped patches which are included in the version update:
+  openhpi-2.10.x_wd.patch
+  openhpi-2.10.x_open_calls.patch
+  openhpi-2.10.x_array_bounds.patch
+  openhpi-2.10.x_parantheses.patch
+  openhpi-2.10.x_init_script_dependency.patch
+
+-------------------------------------------------------------------
+Wed May  7 18:40:56 CEST 2008 - schwab@suse.de
+
+- Run autoreconf.
+
+-------------------------------------------------------------------
+Mon Jan 28 15:33:45 CET 2008 - mrueckert@suse.de
+
+- update to version 2.10.1
+  - saHpiGetIdByEntityPath() now returns the InstrumentId
+  - OpenIPMI plugin - storing the cause of a hotswap state change
+    in the proper event byte
+  - hpiel, and other clients, no longer abort (possibly with a core
+    dump) when the daemon is not present, but exit gracefully.
+  - The spec file no longer requires libsysfs < 2 as OpenHPI now
+    builds against libsysfs 2 fine. 
+  - Fixed the gcc version check, which now works on gcc 4.2.
+- additional changes from 2.10.0
+  2.10  contains implementation and entry points for all new APIs
+  added in the B.02.01 specification. Also, all APIs have been
+  revised and updated according to minor return code changes and
+  additions in B.02.01.
+  Other featured highlights incude:
+    Basic support for MicroTCA in IPMIDirect plugin (psangouard)
+    Compilation problems on Solaris were reported and fixed
+    (crinaldo).
+    Added recognition of a much larger set of manufacturer ids.
+    Eliminated the need for plugins to implement/export get_event.
+    Sysfs plugin now builds against libsysfs 1.x and 2.x.
+    FRU resource can now report resource type failed events in
+    addition to hotswap (psangouard).
+- removed openhpi-2.8.1_gcc_detection.patch:
+  included in 2.10.1
+- added openhpi-2.10.x_open_calls.patch:
+  fix one open call with O_CREAT without a mode,
+  make all other open calls with O_CREAT use S_* macros instead of
+  numbers
+- added openhpi-2.10.x_array_bounds.patch:
+  fix array out of bounds warnings from gcc
+- added openhpi-2.10.x_init_script_dependency.patch:
+  add lsb header to the init script
+- added  openhpi-2.10.x_no_Werror.patch:
+  remove Werror from the cflags as some IO calls dont use error
+  handling and upstream wants to keep that as is.
+- added openhpi-2.10.x_parantheses.patch:
+  fix a few warnings about using parantheses inside a complex
+  boolean expression
+- added openhpi-2.10.x_wd.patch:
+  fix warning about ignored type qualifiers
+
+-------------------------------------------------------------------
+Thu Jan 24 11:33:44 CET 2008 - coolo@suse.de
+
+- fix open calls
+
+-------------------------------------------------------------------
+Fri Oct 19 16:21:11 CEST 2007 - mrueckert@suse.de
+
+- added openhpi-2.8.1_gcc_detection.patch:
+  fix detection of gcc version
+- build with no-strict-aliasing
+- remove unused libpcap from the buildrequires
+
+-------------------------------------------------------------------
+Tue Jul 17 19:07:38 CEST 2007 - mrueckert@suse.de
+
+- update to version 2.8.1
+  o New Features:
+    * Blade Center Plugin 
+      - 1588365 - Enhance isolation from event string changes 
+      - 1588020 - Add support for more BladeCenters 
+      - 1587534 - Support HS21 blade threshold event format 
+    * HPI Clients 
+      - 1585818 - New clients showing multiple plugins to same target 
+    * OpenHPI base library 
+      - 1572962 - Unblock events on discovery 
+      - 1532151 - Improve configuration by eliminating plugin lines
+ o Fixed Bugs
+   * Blade Center Plugin 
+     - 1590030 - Need to also init 'oh_event struct - add resource' for RSA
+- changes from 2.7.0
+  o New Features:
+    * Blade Center Plugin
+      - 1541402 - Re structure snmp_bc to use new oh_event
+        definition
+    * OpenHPI base library
+      - 1533344 - Event/Resource processing enhancements
+    * Simulator Plugin
+      - 1533338 - Injector API without using linux queues
+      - 1263998 - sim_sanityXXX uses the poison sprintf() util
+  o Fixed Bugs
+    * Build System
+      - 1571708 - rtas plugin may not build. name clash with
+        dependency
+      - 1538808 - hpi_shell and simulator build problems after
+        oh_event change
+    * OpenHPI base library
+      - 1570274 - saHpiResourceSeveritySet accepts ALL_SEVERITIES
+        value
+      - 1546787 - process_resource_event may run only once when
+        sessions = 0
+    * Test Suites
+      - 1572322 - simulator unit test 45 wrongly expecting events
+        in queue
+- removed obsolete patches:
+  openhpi-2.4.1_no-Werror.patch
+  openhpi-2.4.1_sysfs2_buffer_overflow.patch
+  openhpi-2.6.3_array_bounds.patch
+  openhpi-2.6.3_doctype.patch
+  openhpi-2.6.3.tar.bz2
+- fixed and ignored a few rpmlint warnings
+
+-------------------------------------------------------------------
+Thu May 24 10:39:52 CEST 2007 - stbinner@suse.de
+
+- add missing %run_ldconfig calls
+
+-------------------------------------------------------------------
+Fri Mar 30 15:05:58 CEST 2007 - rguenther@suse.de
+
+- add gdbm-devel BuildRequires.
+
+-------------------------------------------------------------------
+Fri Feb  2 04:15:30 CET 2007 - mrueckert@suse.de
+
+- added openhpi-2.6.3_array_bounds.patch: (#238658)
+  make the array large enough so we dont overflow it in the loop.
+
+-------------------------------------------------------------------
+Fri Jan 19 15:53:35 CET 2007 - mrueckert@suse.de
+
+- added openhpi-2.6.3_doctype.patch:
+  replaced the broken PUBLIC identifier with SYSTEM.
+
+-------------------------------------------------------------------
+Wed Jan 10 18:33:45 CET 2007 - mrueckert@suse.de
+
+- update to version 2.6.3: (Fate: 301553)
+  - LED controls
+  - watchdog timer support
+  - Intel vendor logic
+  Changes from 2.6.2:
+  * OpenHPI Daemon Client
+    - 1559388 - ControlGet from client is failing conformance test
+    - 1553500 - Thresholds validation rejects valid Threshold
+                setting values
+  * OpenHPI base library
+    - 1553422 - Conformance - saHpiSensorThresholdsSet/13.test
+
+-------------------------------------------------------------------
+Mon Sep  4 17:07:33 CEST 2006 - mrueckert@suse.de
+
+- update to version 2.6.1:
+  Changes from 2.6.0:
+  o New Features
+    * Blade Center Plugin 
+      1501830 - Add events for BladeCenter H
+      1525421 - Add config option to disable snmpgetbulk
+      1523919 - Add BladeCenter plugin documentation to EXTRA_DIST
+      1523505 - Add new interfaces to snmp_bc plugin
+      1522040 - Change snmp_bc get bulk default
+      1518360 - Make Operational sensors readable
+      1517739 - Add Blade BMC Reset Control
+      1513402 - Enhance snmp_bc snmp config parm parsing
+      1497740 - Add Slot Resources and their associated RDRs
+    * HPI Utils 
+      1524023 - Make uid_utils function prototypes use HPI types
+      1517621 - Add base 10/16 conversion ability to oh_derive_string
+    * OpenHPI Daemon 
+      1520861 - Make the daemon the default configuration
+      1520863 - Add a syslog log to the daemon
+    * OpenHPI base library 
+      1521589 - Hotswap management enhancements
+      1491791 - Persist DAT data
+  o Fixed Bugs
+    * Blade Center Plugin 
+      1526076 - make warning due to type mis-matched.
+      1526075 - For re-announcement hotswap event set prev_state=cur_state
+      1515094 - Place init of getbulk count in correct place
+      1509510 - Correctly determine current state of I/O Module (switch)
+      1512285 - Also consider BLADECENTER_SYS_MGMNT_MODULE_SLOT
+      1512697 - Look in the correct copy of cache for setting Slot Sensors
+      1512756 - Also set MM Slot Location for OVR_MMx
+    * Build System 
+      1502903 - openhpi-switcher run during install fails in cross env
+      1529860 - There is not reason to check for FAM in configuration
+    * HPI Clients 
+      1531422 - hpiel is not printing entitypath when in client mode
+    * HPI Utils 
+      1522779 - oh_decode_time does not set DataLength
+    * HpiView 
+      1520673 - GThread-ERROR: conflict with newly improved HPI Core
+    * None 
+      1529555 - dummy plugin is in openhpi.conf but it is not installed
+      1514565 - Incorrectly remove Virtual Management Module
+    * OpenHPI Daemon 
+      1529552 - init.d script gives error message on SuSE
+    * OpenHPI base library 
+      1531533 - _init() might cause problems when building statically
+      1451541 - openhpi-switcher, bad behaviour
+      1520630 - alarms will not get cleared in a particular case
+    * OpenIPMI plugin 
+      1364786 - SBC name seems to be hardcoded as SBC Blade
+
+-------------------------------------------------------------------
+Mon Mar  6 18:05:20 CET 2006 - mrueckert@suse.de
+
+- update to version 2.4.1
+ * added ekeyfru.h to fix the build of the ipmi plugin
+ * Reserve SDR command is always sent to LUN 0 even if 
+   trying to reserve device SDR repository on another 
+   LUN. As a result, subsequent commands to this device 
+   SDR repository always fail. 
+- additionally the following changes from 2.4.0:
+ * New Features
+  + OpenHPI Daemon:
+   o 1414769 - Create service script for HPI daemon
+  + OpenIPMI Plugin:
+   o 1431652 - Add ATCA-HPI mapping support to OpenIPMI plugin
+  + RTAS Plugin:
+   o 1333708 - Create RTAS prototype plugin for support of 
+     PPC platform
+ * Fixed Bugs
+  + Blade Center Plugin:
+   o 1105644 - "make check" fails in threaded env
+   o 1119537 - Enhance snmp_bc simulator and re-enable (missing)
+     unit tests
+   o 1427708 - Add checking for NULL pointers when open/close
+     plugin
+   o 1427827 - tsensorget036.c - make check fails
+  + Build System:
+   o 1421012 - sysfs plugin tries to build when header doesn't
+     exist
+   o 1426676 - htmlfilter.pl not included in tar ball.
+     Needed to build docs
+  + Dummy plugin:
+   o 898156 - implement set_resource_severity in dummy plugin
+   o 898157 - implement set_resource_tag in dummy plugin
+  + HPI Utils:
+   o 1183140 - Data Length Element in oh_big_textbuffer should
+     include NULL
+   o 1195478 - Length returned by oh_decode_eventstate() is short.
+  + IPMI Direct plugin:
+   o 1427422 - Plugin crashes if saHpiSensorMasksGet is called
+     NULL masks
+  + OpenHPI base library:
+   o 1199880 - Setting Threshold Value of Type Buffer Always
+     Fails
+   o 1413695 - saHpiAlarmAcknowledge does not check invalid
+     Severity
+   o 1413699 - saHpiAlarmAdd does not check invalid Severity
+   o 1413701 - saHpiAlarmDelete does not check invalid
+     Severity
+   o 1421542 - saHpiSensorMasksGet with NULL masks returns
+     INVALID_PARAMS
+   o 1426093 - Incorrect alignment of HPI 64-bit types with
+     gcc 3.3
+   o 1428297 - saHpiIdrFieldSet fail with invalid Field.DataType
+   o 1429330 - Problem with some plugins when dlopening
+     libopenhpi.so
+  + Test Suites:
+   o 1429307 - BC unit tests fail due to autoregen files
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:03 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 12:35:33 CET 2006 - mrueckert@suse.de
+
+- update to version 2.3.1
+- removed all patches
+- added 2 new patches:
+  - openhpi-2.3.1_builddirlinkflag.patch
+    dont have -L paths pointing to the builddir
+  - openhpi-2.3.1_no-Werror.patch
+    disable -Werror until all warn_unused_results are fixed
+
+-------------------------------------------------------------------
+Fri Sep 23 19:34:32 CEST 2005 - ro@suse.de
+
+- fix build-dir references in installed .la file 
+
+-------------------------------------------------------------------
+Mon Aug 15 11:58:14 CEST 2005 - mrueckert@suse.de
+
+- Cleaned up the spec file.
+- fixed permissions of the config file
+- Remove hardcoded version in Requires
+
+-------------------------------------------------------------------
+Wed Jul 27 17:18:07 CEST 2005 - mrueckert@suse.de
+
+- make sure the config isnt world readable it can contain passwords
+- the documentation should be world readable
+
+-------------------------------------------------------------------
+Tue Jun 14 11:20:46 CEST 2005 - ro@suse.de
+
+- added sysfsutils to nfb 
+
+-------------------------------------------------------------------
+Mon Jun  6 18:44:16 CEST 2005 - mrueckert@suse.de
+
+- Update to version 2.0.4
+
+-------------------------------------------------------------------
+Wed Apr 27 12:21:33 CEST 2005 - meissner@suse.de
+
+- fixed overflow in snprintf
+- disable -Werror for now
+- need to undef sprintf before poisoning.
+
+-------------------------------------------------------------------
+Tue Feb 22 07:25:22 CET 2005 - nashif@suse.de
+
+- Update to version 2.0.0
+
+-------------------------------------------------------------------
+Thu Oct 28 04:20:16 CEST 2004 - nashif@suse.de
+
+- Update to 1.0.1
+
+-------------------------------------------------------------------
+Thu Aug 19 14:42:22 CEST 2004 - schwab@suse.de
+
+- Fix use of net-snmp headers.
+- Fix broken casts.
+
+-------------------------------------------------------------------
+Tue Jun  8 06:02:32 CEST 2004 - nashif@suse.de
+
+- Update to version 0.9.0
+
+-------------------------------------------------------------------
+Thu May  6 00:22:06 CEST 2004 - nashif@suse.de
+
+- Fixes to enable SEL clear operation via IPMI plugin.
+- fix to IPMI connection with OEM privilage.
+
+-------------------------------------------------------------------
+Wed Apr 28 23:20:34 CEST 2004 - nashif@suse.de
+
+- Update to version 0.7.0
+
+-------------------------------------------------------------------
+Thu Apr 22 21:22:09 CEST 2004 - nashif@suse.de
+
+- Update to 0.6.0
+- Split into -devel and -clients
+
+-------------------------------------------------------------------
+Fri Mar 19 16:42:26 CET 2004 - meissner@suse.de
+
+- initial version 0.5.0.
+

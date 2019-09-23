@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Thu Oct 18 03:10:44 UTC 2018 - sean@suspend.net
+
+- Update to 3.21:
+  * Minor fixes to the manpage
+
+-------------------------------------------------------------------
+Mon Mar 26 17:24:51 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Sun Feb 18 21:23:47 UTC 2018 - avindra@opensuse.org
+
+- Update to 3.20
+  * debian-specific change only
+- includes 3.19
+  * Fix lintian warnings.
+- includes 3.18
+  * Make sure memory is initialized to zero before attempting to
+    read hostname.
+- includes 3.17
+  * Use _GNU_SOURCE feature test macro, instead of glibc internal
+    __USE_GNU.
+  * Use getdomainname instead of yp_get_default_domain because it
+    is more widely available and avoids the -lnsl dependency.
+  * localnisdomain is kept, even though it should be the same as
+    localdomain, so the behaviour is not changed in case of an error.
+  * Replace 'dh-clean -k' with 'dh-prep'
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Aug 15 21:55:30 CEST 2017 - kukuk@suse.de
+
+- Add build require libnsl-devel in preparation of libnsl removal
+  from glibc.
+
+-------------------------------------------------------------------
+Thu Mar 31 14:25:58 CEST 2016 - kukuk@suse.de
+
+- Add ypdomainname and nisdomainname, too. Were removed from yp-tools.
+
+-------------------------------------------------------------------
+Tue Sep  8 12:32:33 UTC 2015 - nemysis@openSUSE.org
+
+- Update to 3.16, announce message:
+
+  * Changed buffer size to the recommended 255 character when working with
+    names instead of IPs. (Closes: #796922)
+  * Bumped Standards-Version to 3.9.6, no changes needed.
+
+- Use %{name} instead of hostname
+- Use CFLAGS="%{optflags}" to fix 'File is compiled without RPM_OPT_FLAGS'
+- Add changelog to Documentation
+
+-------------------------------------------------------------------
+Thu Jun 11 07:31:16 UTC 2015 - dimstar@opensuse.org
+
+- BuildIgnore hostname (ourselves): net-tools has a dependency on
+  hostname, and net-tools is part of the VMInstall package set. As
+  we know we do not rely on our own code to build, we can safely
+  ignore hostname and break that nasty buildcycle.
+
+-------------------------------------------------------------------
+Wed Jun 10 08:39:32 UTC 2015 - gber@opensuse.org
+
+- initial packaging
+

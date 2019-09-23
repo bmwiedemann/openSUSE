@@ -1,0 +1,7 @@
+<package name="perl-Snowball-Norwegian" project="openSUSE:Factory">
+  <title>Snowball::Norwegian Perl module</title>
+  <description>Lingua::Stem::Snowball::No is a perl port of the norwegian
+stemmer at http://snowball.tartarus.org.</description>
+  <devel project="devel:languages:perl" package="perl-Snowball-Norwegian"/>
+  <url>http://search.cpan.org/dist/Snowball-Norwegian/</url>
+</package>

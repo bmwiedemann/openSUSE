@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Tue Sep  1 19:41:22 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 3.13.0
+* fixes missing DTMF method in SDP on Invite, and resolves a
+  buffer overflow.
+- Added undef.diff to address compiler warning
+
+-------------------------------------------------------------------
+Fri Jul 24 09:37:20 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 3.12.1
+* Added ability to set Q.931 bearer capability information element for
+  H.323 connections.
+* Enabled dialing characters # and * in extension number.
+* Replaced hardcoded timeouts by S7 value (V.250).
+- Switch from openh323 to opal backend
+
+-------------------------------------------------------------------
+Sun Feb 17 10:23:40 UTC 2013 - jengelh@inai.de
+
+- Remove redundant root cleaning
+
+-------------------------------------------------------------------
+Tue Aug 14 11:18:54 UTC 2012 - dmueller@suse.com
+
+- fix build on armv7hl
+
+-------------------------------------------------------------------
+Sat May 12 12:35:54 CEST 2007 - olh@suse.de
+
+- remove unused libavc1394-devel libdc1394-devel from Buildrequires
+
+-------------------------------------------------------------------
+Thu Mar  9 18:23:47 CET 2006 - bk@suse.de
+
+- Use explicit gcc-c++ in BuildRequires (was implicit by SDL-devel)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:00 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Aug 18 17:34:11 CEST 2004 - kkaempf@suse.de
+
+- update to 0.7.0 (from CVS)
+
+-------------------------------------------------------------------
+Mon Mar  8 18:20:05 CET 2004 - ro@suse.de
+
+- added libdc1394-devel to neededforbuild
+
+-------------------------------------------------------------------
+Sun Feb 22 19:32:50 CET 2004 - ro@suse.de
+
+- updated neededforbuild and make-flags
+
+-------------------------------------------------------------------
+Sat Jan 10 17:18:31 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Fri Jul 18 21:27:56 CEST 2003 - kkaempf@suse.de
+
+- update to 0.6.4
+
+-------------------------------------------------------------------
+Thu Feb  6 18:58:15 CET 2003 - kkaempf@suse.de
+
+- update to 0.6.2
+
+-------------------------------------------------------------------
+Sun Jan 26 11:15:58 CET 2003 - meissner@suse.de
+
+- ppc64 support, cleaned up arch handling.
+
+-------------------------------------------------------------------
+Wed Jan 15 13:15:51 CET 2003 - kkaempf@suse.de
+
+- update to 0.6.1
+
+-------------------------------------------------------------------
+Mon Nov 18 19:42:04 CET 2002 - kkaempf@suse.de
+
+- add expat for VoiceXML support
+- update to 0.5.0
+
+-------------------------------------------------------------------
+Sun Aug 18 16:56:29 CEST 2002 - kkaempf@suse.de
+
+- Update to 0.4.2
+
+-------------------------------------------------------------------
+Tue Jul  9 16:30:55 CEST 2002 - kkaempf@suse.de
+
+- Initial version 0.4.0
+

@@ -1,0 +1,21 @@
+From 3ada5b8a126b529c94cbe0c01b60a11ecb08dec8 Mon Sep 17 00:00:00 2001
+From: Olivier Humbert <trebmuh@users.noreply.github.com>
+Date: Fri, 14 Jun 2019 21:07:14 +0200
+Subject: [PATCH] Update .mailmap (#5037)
+
+---
+ .mailmap | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/.mailmap b/.mailmap
+index 71b6697c8..896202c5a 100644
+--- a/.mailmap
++++ b/.mailmap
+@@ -29,3 +29,4 @@ grejppi <grejppi@gmail.com>
+ Johannes Lorenz <j.git@lorenz-ho.me> <johannes89@mailueberfall.de>
+ Johannes Lorenz <j.git@lorenz-ho.me> <1042576+JohannesLorenz@users.noreply.github.com>
+ Noah Brecht <noahb2713@gmail.com>
++Olivier Humbert <trebmuh@tuxfamily.org> <trebmuh@users.noreply.github.com>
+-- 
+2.16.4
+

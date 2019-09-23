@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Thu Feb  7 12:18:38 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 1.7.0 (2019-02-01)
+  + The URL validator regex has been updated to no longer be
+    vulnerable to a catastrophic backtracking that would have led to
+    an infinite loop.
+    See https://github.com/Pylons/colander/pull/323
+    and https://github.com/Pylons/colander/issues/290. 
+    With thanks to Przemek (https://github.com/p-m-k).
+  + This does change the behaviour of the URL validator and it no 
+    longer supports file:// URI scheme 
+    (https://tools.ietf.org/html/rfc8089). Users that wish to validate
+    file:// URI’s should change their validator to use
+    colander.file_uri instead.
+  + It has also dropped support for alternate schemes outside of
+    http/ftp (and their secure equivelants). Please let us know if we
+    need to relax this requirement.
+  + CVE-ID: CVE-2017-18361
+  + The Email validator has been updated to use the same regular
+    expression that is used by the WhatWG HTML specification, thereby
+    increasing the email addresses that will validate correctly from
+    web forms submitted.
+    See https://github.com/Pylons/colander/pull/324
+    and https://github.com/Pylons/colander/issues/283
+  + Number once again will allow you to serialize None to colander.null,
+    this reverts an accidental revert.
+    See https://github.com/Pylons/colander/issues/204#issuecomment-459556100
+  + Integer SchemaType now supports an optional strict mode that will
+    validate that the number is an integer, rather than silently accepting
+    floats and truncating.
+    See https://github.com/Pylons/colander/pull/322
+    and https://github.com/Pylons/colander/issues/292
+
+- Update to 1.6.0 (2019-01-31)
+  + Support custom format strings on DateTime and Date fields.
+    See https://github.com/Pylons/colander/pull/318
+  + Support sub-second precision on Time fields if provided.
+    See https://github.com/Pylons/colander/pull/319
+  + Format Python code of colander to conform to the PEP 8 style guide.
+    Add some linters (flake8, black and other) into tox.ini.
+    See https://github.com/Pylons/colander/pull/320
+
+- Update to 1.5.1 (2018-09-10)
+  + Support deserializing colander.drop and colander.required.
+    See https://github.com/Pylons/colander/pull/304
+
+- Update to 1.5.0 (2018-09-07)
+  + Drop Python 3.3 support. Add PyPy3 and Python 3.7 as allowed failures.
+    See https://github.com/Pylons/colander/pull/309
+  + Fix email validation to not allow all ASCII characters between + and /.
+    This prevents email addresses like ‘foo1,foo2@bar.baz’ from being
+    validated, which would be handled as multiple email addresses by
+    subsequent tools.
+    See https://github.com/Pylons/colander/pull/315
+  + Add support for enum.Enum objects.
+    See https://github.com/Pylons/colander/pull/305
+  + Recompiled language translations and updated de and el locales.
+    See https://github.com/Pylons/colander/pull/284
+    and https://github.com/Pylons/colander/pull/314
+
+-------------------------------------------------------------------
+Wed Dec  5 01:20:39 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:44 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu May 24 17:30:12 UTC 2018 - toddrme2178@gmail.com
+
+- spec file cleanups
+
+-------------------------------------------------------------------
+Tue Sep 19 14:55:27 UTC 2017 - bruno@ioda-net.ch
+
+- Update to upstream 1.4
+- Backport python3 to singlespec + lang package 
+
+-------------------------------------------------------------------
+Thu Feb  9 22:32:43 UTC 2017 - hpj@urpla.net
+
+- Update to version 1.3.2: initial build for python3
+
+-------------------------------------------------------------------
+Fri Feb  6 11:21:47 UTC 2015 - hpj@urpla.net
+
+- Update to version 1.0
+  to many changes to list here, check:
+  https://pypi.python.org/pypi/colander/1.0
+
+-------------------------------------------------------------------
+Mon Aug  5 16:32:46 UTC 2013 - hpj@urpla.net
+
+- Version 1.0a5: initial build
+

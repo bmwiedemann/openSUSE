@@ -1,0 +1,32 @@
+From 29211c2f5e1ed47715789aa75d755002cddeba02 Mon Sep 17 00:00:00 2001
+From: Jan Fajerski <jfajerski@suse.com>
+Date: Fri, 8 Feb 2019 09:17:06 +0100
+Subject: [PATCH] Do not force the pure Go name resolver
+
+Revert to Go's default mechanism that will decide between the `netgo`
+pure-Go implementation and the `netcgo` cgo-based implementation depending
+on OS and environment variables.
+
+This allows, among other things, to use Prometheus to scrape mDNS targets.
+
+Signed-off-by: Jan Fajerski <jfajerski@suse.com>
+---
+ .promu.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/.promu.yml b/.promu.yml
+index 5937513b..468ba2b5 100644
+--- a/.promu.yml
++++ b/.promu.yml
+@@ -10,7 +10,7 @@ build:
+           path: ./cmd/prometheus
+         - name: promtool
+           path: ./cmd/promtool
+-    flags: -mod=vendor -a -tags netgo
++    flags: -mod=vendor -a
+     ldflags: |
+         -X github.com/prometheus/common/version.Version={{.Version}}
+         -X github.com/prometheus/common/version.Revision={{.Revision}}
+-- 
+2.20.1
+

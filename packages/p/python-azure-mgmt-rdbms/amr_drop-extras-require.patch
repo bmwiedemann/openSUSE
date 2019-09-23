@@ -1,0 +1,11 @@
+diff -Nru azure-mgmt-rdbms-1.7.0.orig/setup.py azure-mgmt-rdbms-1.7.0/setup.py
+--- azure-mgmt-rdbms-1.7.0.orig/setup.py	2019-03-28 16:17:24.938078366 +0100
++++ azure-mgmt-rdbms-1.7.0/setup.py	2019-03-28 16:17:58.954394851 +0100
+@@ -81,7 +81,4 @@
+         'msrestazure>=0.4.32,<2.0.0',
+         'azure-common>=1.1',
+     ],
+-    extras_require={
+-        ":python_version<'3.0'": ['azure-mgmt-nspkg'],
+-    }
+ )

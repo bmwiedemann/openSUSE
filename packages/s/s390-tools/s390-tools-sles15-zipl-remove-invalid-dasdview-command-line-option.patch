@@ -1,0 +1,29 @@
+Subject: [PATCH] [BZ 161183] zipl: remove invalid dasdview command line option
+From: Stefan Haberland <sth@linux.vnet.ibm.com>
+
+Description:  zipl: remove invalid dasdview command line option
+Symptom:      zipl does not work when used with a lvm or device mapper
+              target.
+Problem:      The zipl_helper.device-mapper script uses dasdview with
+              an option "-f" that has been removed recently.
+Solution:     Remove "-f" from the dasdview call.
+Reproduction: Run zipl on a lvm target.
+Upstream-ID:  -
+Problem-ID:   161183
+
+Signed-off-by: Stefan Haberland <sth@linux.vnet.ibm.com>
+---
+ zipl/src/zipl_helper.device-mapper |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/zipl/src/zipl_helper.device-mapper
++++ b/zipl/src/zipl_helper.device-mapper
+@@ -623,7 +623,7 @@ sub get_dasd_info($)
+ 	my $type;
+ 	local *HANDLE;
+ 
+-	open(HANDLE, "$dasdview -x -f  $dev 2>/dev/null|") or
++	open(HANDLE, "$dasdview -x $dev 2>/dev/null|") or
+ 		# dasdview returned with an error
+ 		return undef;
+ 	while (<HANDLE>) {

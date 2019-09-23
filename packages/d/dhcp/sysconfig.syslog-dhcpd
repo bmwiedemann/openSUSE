@@ -1,0 +1,26 @@
+## Type:	string
+## Default:	"/var/lib/dhcp/dev/log"
+## ServiceRestart: syslog
+#
+# The filename mentioned here will be added with the "-a ..." option as
+# additional socket via SYSLOGD_PARAMS when syslogd is started or used
+# to generate an include file for another syslog daemons.
+#
+# This additional socket is needed in case that syslogd is restarted.
+# Otherwise a chrooted dhcpd won't be able to continue logging.
+#
+SYSLOGD_ADDITIONAL_SOCKET_DHCP="/var/lib/dhcp/dev/log"
+
+## Type:	string
+## Default:	"/var/lib/dhcp6/dev/log"
+## ServiceRestart: syslog
+#
+# The filename mentioned here will be added with the "-a ..." option as
+# additional socket via SYSLOGD_PARAMS when syslogd is started or used
+# to generate an include file for another syslog daemons.
+#
+# This additional socket is needed in case that syslogd is restarted.
+# Otherwise a chrooted dhcpd won't be able to continue logging.
+#
+SYSLOGD_ADDITIONAL_SOCKET_DHCP6="/var/lib/dhcp6/dev/log"
+

@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e6c5b14d845aa18cf6990ee8fba5f0c9</srcmd5>
+    <version>3.0.0</version>
+    <time>1464852984</time>
+    <user>dimstar_suse</user>
+    <comment>Adding libprelude to factory.  Packages depending on libprelude will also be submitted.</comment>
+    <requestid>396103</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1cdb6627c6273d87895b54b2b15fa112</srcmd5>
+    <version>3.1.0</version>
+    <time>1489653709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>479068</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>636795167ebcf9803e8ace104f91c312</srcmd5>
+    <version>3.1.0</version>
+    <time>1494263017</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493273</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9df7bc517f3a49d4e0de670d56a9b491</srcmd5>
+    <version>4.0.0</version>
+    <time>1510578153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541095</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0c8bd716f9e0e2feec0192c13b186e26</srcmd5>
+    <version>5.0.0</version>
+    <time>1551687731</time>
+    <user>dimstar_suse</user>
+    <comment>Bump version 5.0.0
+- Remove patchs included in new version
+  - libprelude-fix_compatibility_gnutls_3_6.patch
+  - libprelude-gtk-doc.patch
+- Add new patch for 64bit portability
+  - libprelude-fix_64bit_portability_issues.patch
+</comment>
+    <requestid>680661</requestid>
+  </revision>
+</revisionlist>

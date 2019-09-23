@@ -1,0 +1,31 @@
+Index: ptlib-2.10.11/src/ptlib/unix/svcproc.cxx
+===================================================================
+--- ptlib-2.10.11.orig/src/ptlib/unix/svcproc.cxx
++++ ptlib-2.10.11/src/ptlib/unix/svcproc.cxx
+@@ -217,7 +217,7 @@ int PServiceProcess::InitialiseService()
+     pid_t pid;
+ 
+     {
+-      ifstream pidfile(pidfilename);
++      ifstream pidfile((const char *)pidfilename);
+       if (!pidfile.is_open()) {
+         cout << "Could not open pid file: \"" << pidfilename << "\""
+                 " - " << strerror(errno) << endl;
+@@ -384,7 +384,7 @@ int PServiceProcess::InitialiseService()
+   // Run as a daemon, ie fork
+ 
+   if (!pidfilename) {
+-    ifstream pidfile(pidfilename);
++    ifstream pidfile((const char *)pidfilename);
+     if (pidfile.is_open()) {
+       pid_t pid;
+       pidfile >> pid;
+@@ -412,7 +412,7 @@ int PServiceProcess::InitialiseService()
+       cout << "Daemon started with pid " << pid << endl;
+       if (!pidfilename) {
+         // Write out the child pid to magic file in /var/run (at least for linux)
+-        ofstream pidfile(pidfilename);
++        ofstream pidfile((const char *)pidfilename);
+         if (pidfile.is_open())
+           pidfile << pid;
+         else

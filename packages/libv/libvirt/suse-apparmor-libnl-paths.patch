@@ -1,0 +1,35 @@
+Apparmor: Adjust libnl paths
+
+In SUSE distros, libnl paths generally contain only 'libnl', and
+not an embedded version number such as 'libnl-3'. Use 'libnl*' in
+the virt-aa-helper profile to accommodate all libnl path variants.
+
+It was also noticed that the per-domain profiles need a libnl rule
+to squelch a denial when starting confined domains.
+
+Found while investigating bsc#1058847
+Index: libvirt-5.7.0/src/security/apparmor/libvirt-qemu
+===================================================================
+--- libvirt-5.7.0.orig/src/security/apparmor/libvirt-qemu
++++ libvirt-5.7.0/src/security/apparmor/libvirt-qemu
+@@ -63,6 +63,7 @@
+   #/dev/fb* rw,
+ 
+   /etc/pulse/client.conf r,
++  /etc/libnl*/classid r,
+   @{HOME}/.pulse-cookie rwk,
+   owner /root/.pulse-cookie rwk,
+   owner /root/.pulse/ rw,
+Index: libvirt-5.7.0/src/security/apparmor/usr.lib.libvirt.virt-aa-helper
+===================================================================
+--- libvirt-5.7.0.orig/src/security/apparmor/usr.lib.libvirt.virt-aa-helper
++++ libvirt-5.7.0/src/security/apparmor/usr.lib.libvirt.virt-aa-helper
+@@ -20,7 +20,7 @@ profile virt-aa-helper /usr/{lib,lib64}/
+   # Used when internally running another command (namely apparmor_parser)
+   @{PROC}/@{pid}/fd/ r,
+ 
+-  /etc/libnl-3/classid r,
++  /etc/libnl*/classid r,
+ 
+   # for gl enabled graphics
+   /dev/dri/{,*} r,

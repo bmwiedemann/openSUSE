@@ -1,0 +1,22 @@
+diff -rub a/extensions/exiv2_tools/exiv2-utils.cpp b/extensions/exiv2_tools/exiv2-utils.cpp
+--- a/extensions/exiv2_tools/exiv2-utils.cpp	2019-06-23 18:12:10.000000000 +0600
++++ b/extensions/exiv2_tools/exiv2-utils.cpp	2019-07-01 12:19:45.867089197 +0600
+@@ -38,13 +38,17 @@
+ #if EXIV2_TEST_VERSION(0, 27, 0)
+ #include <exiv2/xmp_exiv2.hpp>
+ #else
+-#include <exiv2/xmp.hpp>
++#include <exiv2/version.hpp>
+ #endif
+ #include <pix.h>
+ #include "exiv2-utils.h"
+ 
+ using namespace std;
+ 
++#if EXIV2_MAJOR_VERSION >= 1 || (EXIV2_MAJOR_VERSION == 0 && EXIV2_MINOR_VERSION >= 27)
++#define HAVE_EXIV2_ERROR_CODE
++#endif
++
+ 
+ #define INVALID_VALUE "---"
+ 

@@ -1,0 +1,123 @@
+-------------------------------------------------------------------
+Fri Aug  9 18:52:51 UTC 2019 -  <archie.cobbs@gmail.com>
+
+- Update to release 1.5.3
+  + Fixed bug where IAM update thread was killed after fork (issue #115)
+  + Fixed use-after-free bug in block_cache_verified() (issue #113)
+  + Fixed use-after-free bug when updating IAM credentials (pr #114)
+  + Fixed bug in test mode that was causing bogus I/O errors
+
+-------------------------------------------------------------------
+Tue Jul  9 18:51:34 UTC 2019 -  <archie.cobbs@gmail.com>
+
+- Update to release 1.5.2
+  + Fixed bug where block cache would not work when run in the background (issue #112)
+  + Fixed bug where we were not parsing HTTP headers case-insensitively (pr #11)
+  + Bail out during `--listBlocks' if we see an object name past our block range
+  + Added `--blockHashPrefix' flag (issue #80)
+
+-------------------------------------------------------------------
+Mon Apr 15 20:37:59 UTC 2019 - archie.cobbs@gmail.com
+
+- Update to release 1.5.1
+  + Fixed a few places where fixed-sized buffers were too small (issue #108)
+  + Don't claim cache hit if partial write required reading the block (pr #103)
+  + Exit process with error code if s3backer store setup fails at startup
+  + Reset statistics if stats file is unlinked (issue #106)
+
+-------------------------------------------------------------------
+Sat Jun  9 20:25:23 UTC 2018 - archie.cobbs@gmail.com
+
+- Update to release 1.5.0
+  + Add support for recovering dirty blocks in the disk cache (issue #87)
+  + Replaced boolean 'mounted' flag with a unique 32-bit mount token (issue #87)
+  + Wait for min_write_delay before access after write error (issue #76)
+  + Configure TCP keep-alive on HTTP connections (issue #78)
+  + Added support for server side encryption (pull #81)
+
+-------------------------------------------------------------------
+Wed Feb  1 23:11:25 UTC 2017 - archie.cobbs@gmail.com
+
+- Update to release 1.4.4
+  + Added `--defaultContentEncoding' for non-compliant backends (issue #68)
+  + Fixed auth bug when prefix contains URL-encodable char (issue #69)
+  + Remove restriction preventing streaming encryption modes (issue #70)
+
+-------------------------------------------------------------------
+Mon Jul 25 18:59:39 UTC 2016 - archie.cobbs@gmail.com
+
+- Update to release 1.4.3
+  + Add support for STANDARD_IA storage class (issue #59)
+  + Set "Accept-Encoding" header appropriately (issue #48)
+  + Fix build issue with OpenSSL 1.1.0 (issue #64)
+
+-------------------------------------------------------------------
+Tue Sep  1 14:54:07 UTC 2015 - archie@dellroad.org
+
+- Update to release 1.4.2
+  + Update license to fix OpenSSL vs. GPL conflict
+
+-------------------------------------------------------------------
+Mon May  4 16:05:10 UTC 2015 - archie@dellroad.org
+
+- Update to release 1.4.1
+  + Fix use-after-free bug configuring base URL (github issue #44)
+
+-------------------------------------------------------------------
+Fri Apr 17 22:44:36 UTC 2015 - archie@dellroad.org
+
+- Update to release 1.4.0 
+  + Added support for authentication version 4 (issue #51)
+  + Added support for credentials via IAM role from EC2 meta-data (issue #48)
+  + Fixed bug where `--erase' did not clear the mounted flag
+  + Moved from Google project hosting to GitHub
+  + Fixed compile problem on FreeBSD
+
+-------------------------------------------------------------------
+Thu Jul 18 17:24:30 UTC 2013 - archie@dellroad.org
+
+- Update to version 1.3.7 
+  + Add `--keyLength' for overriding generated encryption key length
+
+-------------------------------------------------------------------
+Tue Jul 16 16:42:11 UTC 2013 - archie@dellroad.org
+
+- Update to version 1.3.6
+  + Fix use of MAX_HOST_NAME in http_io.c (issue #42)
+  + Fix encryption key generation bug (on some systems)
+
+-------------------------------------------------------------------
+Wed May 29 17:49:29 UTC 2013 - archie@dellroad.org
+
+- Update to version 1.3.5
+  + Check for duplicate mount at startup (issue #10)
+  + Minor spec file cleanups
+
+-------------------------------------------------------------------
+Wed Apr  3 01:47:44 UTC 2013 - archie@dellroad.org
+
+- Update to version 1.3.4
+  + Add support for fallocate(2)
+
+-------------------------------------------------------------------
+Wed Jan 23 15:44:06 UTC 2013 - archie@dellroad.org
+
+- Fix License to use SPDX format
+- Install COPYING into docs
+- Remove INSTALL from docs
+
+-------------------------------------------------------------------
+Sat Apr  7 21:30:58 UTC 2012 - archie@dellroad.org
+
+- Update to version 1.3.3 
+
+-------------------------------------------------------------------
+Sat May 14 16:23:17 UTC 2011 - archie@dellroad.org
+
+- Update to version 1.3.2 
+
+-------------------------------------------------------------------
+Sun Jul 18 19:25:00 UTC 2010 - archie@dellroad.org
+
+- Added SUSE_ASNEEDED magic to fix build 
+

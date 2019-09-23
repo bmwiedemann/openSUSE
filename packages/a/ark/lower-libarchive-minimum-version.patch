@@ -1,0 +1,105 @@
+From e8b460a6c6fd90d95fc8c7ca19f2c37fc199bdb9 Mon Sep 17 00:00:00 2001
+From: Wolfgang Bauer <wbauer@tmo.at>
+Date: Mon, 27 Mar 2017 15:02:00 +0200
+Subject: [PATCH] Revert "Bump libarchive minumum version to 3.2"
+
+This reverts commit 38d7c46a0264cbc037197b5401cfd094e000db9d to make it
+build on Leap 42 (with libarchive 3.1.2).
+Shouldn't make a difference when really building against libarchive
+3.2.0 or higher.
+---
+ CMakeLists.txt                                   |  2 +-
+ plugins/libarchive/CMakeLists.txt                | 22 +++++++++++++++++++---
+ plugins/libarchive/readwritelibarchiveplugin.cpp |  4 ++++
+ 3 files changed, 24 insertions(+), 4 deletions(-)
+
+Index: ark-19.03.60git.20190309T130535~a3bcf9be/CMakeLists.txt
+===================================================================
+--- ark-19.03.60git.20190309T130535~a3bcf9be.orig/CMakeLists.txt	2019-03-09 13:05:35.000000000 +0100
++++ ark-19.03.60git.20190309T130535~a3bcf9be/CMakeLists.txt	2019-03-10 13:58:11.297892991 +0100
+@@ -59,7 +59,7 @@
+     set(BUILD_TESTING OFF CACHE BOOL "Build the testing tree.")
+ endif()
+ 
+-find_package(LibArchive 3.2.0 REQUIRED)
++find_package(LibArchive 3.1.0 REQUIRED)
+ set_package_properties(LibArchive PROPERTIES
+                        URL "http://www.libarchive.org/"
+                        DESCRIPTION "A library for dealing with a wide variety of archive file formats"
+Index: ark-19.03.60git.20190309T130535~a3bcf9be/plugins/libarchive/CMakeLists.txt
+===================================================================
+--- ark-19.03.60git.20190309T130535~a3bcf9be.orig/plugins/libarchive/CMakeLists.txt	2019-03-09 13:05:35.000000000 +0100
++++ ark-19.03.60git.20190309T130535~a3bcf9be/plugins/libarchive/CMakeLists.txt	2019-03-10 13:58:11.297892991 +0100
+@@ -6,10 +6,15 @@
+ 
+ ########### next target ###############
+ set(SUPPORTED_LIBARCHIVE_READWRITE_MIMETYPES "application/x-tar;application/x-compressed-tar;application/x-bzip-compressed-tar;application/x-tarz;application/x-xz-compressed-tar;")
+-set(SUPPORTED_LIBARCHIVE_READWRITE_MIMETYPES "${SUPPORTED_LIBARCHIVE_READWRITE_MIMETYPES}application/x-lzma-compressed-tar;application/x-lzip-compressed-tar;application/x-tzo;application/x-lrzip-compressed-tar;application/x-lz4-compressed-tar;")
++set(SUPPORTED_LIBARCHIVE_READWRITE_MIMETYPES "${SUPPORTED_LIBARCHIVE_READWRITE_MIMETYPES}application/x-lzma-compressed-tar;application/x-lzip-compressed-tar;application/x-tzo;application/x-lrzip-compressed-tar;")
+ set(SUPPORTED_LIBARCHIVE_READONLY_MIMETYPES "application/vnd.debian.binary-package;application/x-deb;application/x-cd-image;application/x-bcpio;application/x-cpio;application/x-cpio-compressed;application/x-sv4cpio;application/x-sv4crc;")
+ set(SUPPORTED_LIBARCHIVE_READONLY_MIMETYPES "${SUPPORTED_LIBARCHIVE_READONLY_MIMETYPES}application/x-rpm;application/x-source-rpm;application/vnd.ms-cab-compressed;application/x-xar;application/x-iso9660-appimage;application/x-archive;")
+ 
++if(LibArchive_VERSION VERSION_EQUAL "3.2.0" OR
++   LibArchive_VERSION VERSION_GREATER "3.2.0")
++  set(SUPPORTED_LIBARCHIVE_READWRITE_MIMETYPES "${SUPPORTED_LIBARCHIVE_READWRITE_MIMETYPES}application/x-lz4-compressed-tar;")
++endif()
++
+ if(ENABLE_ZSTD_SUPPORT)
+     set(SUPPORTED_LIBARCHIVE_READWRITE_MIMETYPES "${SUPPORTED_LIBARCHIVE_READWRITE_MIMETYPES}application/x-zstd-compressed-tar;")
+ endif()
+@@ -54,8 +59,14 @@
+     \"application/x-lzma-compressed-tar\",
+     \"application/x-lzip-compressed-tar\",
+     \"application/x-tzo\",
+-    \"application/x-lrzip-compressed-tar\",
++    \"application/x-lrzip-compressed-tar")
++
++if(LibArchive_VERSION VERSION_EQUAL "3.2.0" OR
++   LibArchive_VERSION VERSION_GREATER "3.2.0")
++  set(SUPPORTED_READWRITE_MIMETYPES
++      "${SUPPORTED_READWRITE_MIMETYPES}\",
+     \"application/x-lz4-compressed-tar")
++endif()
+ 
+ if(ENABLE_ZSTD_SUPPORT)
+     set(SUPPORTED_READWRITE_MIMETYPES
+@@ -78,6 +89,11 @@
+     target_compile_definitions(kerfuffle_libarchive PRIVATE -DHAVE_ZSTD_SUPPORT)
+ endif()
+ 
++if(LibArchive_VERSION VERSION_EQUAL "3.2.0" OR
++   LibArchive_VERSION VERSION_GREATER "3.2.0")
++  target_compile_definitions(kerfuffle_libarchive PRIVATE -DHAVE_LIBARCHIVE_3_2_0)
++endif()
++
+ target_link_libraries(kerfuffle_libarchive_readonly ${LibArchive_LIBRARIES})
+ target_link_libraries(kerfuffle_libarchive ${LibArchive_LIBRARIES})
+ 
+Index: ark-19.03.60git.20190309T130535~a3bcf9be/plugins/libarchive/readwritelibarchiveplugin.cpp
+===================================================================
+--- ark-19.03.60git.20190309T130535~a3bcf9be.orig/plugins/libarchive/readwritelibarchiveplugin.cpp	2019-03-09 13:05:35.000000000 +0100
++++ ark-19.03.60git.20190309T130535~a3bcf9be/plugins/libarchive/readwritelibarchiveplugin.cpp	2019-03-10 13:58:11.305900052 +0100
+@@ -291,9 +291,11 @@
+         ret = archive_write_add_filter_lrzip(m_archiveWriter.data());
+         requiresExecutable = true;
+         break;
++#ifdef HAVE_LIBARCHIVE_3_2_0
+     case ARCHIVE_FILTER_LZ4:
+         ret = archive_write_add_filter_lz4(m_archiveWriter.data());
+         break;
++#endif
+ #ifdef HAVE_ZSTD_SUPPORT
+     case ARCHIVE_FILTER_ZSTD:
+         ret = archive_write_add_filter_zstd(m_archiveWriter.data());
+@@ -348,9 +350,11 @@
+         qCDebug(ARK) << "Detected lrzip compression for new file";
+         ret = archive_write_add_filter_lrzip(m_archiveWriter.data());
+         requiresExecutable = true;
++#ifdef HAVE_LIBARCHIVE_3_2_0
+     } else if (filename().right(3).toUpper() == QLatin1String("LZ4")) {
+         qCDebug(ARK) << "Detected lz4 compression for new file";
+         ret = archive_write_add_filter_lz4(m_archiveWriter.data());
++#endif
+ #ifdef HAVE_ZSTD_SUPPORT
+     } else if (filename().right(3).toUpper() == QLatin1String("ZST")) {
+         qCDebug(ARK) << "Detected zstd compression for new file";

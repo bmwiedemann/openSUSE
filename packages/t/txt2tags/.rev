@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c6d1ee83724ff3207854841b941b8945</srcmd5>
+    <version>2.6</version>
+    <time>1386336389</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>209548</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c6d1ee83724ff3207854841b941b8945</srcmd5>
+    <version>2.6</version>
+    <time>1409303542</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>d49c3fae8f9569c794d2969119e176ee</srcmd5>
+    <version>2.6</version>
+    <time>1499152338</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507943</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>d495090535254aa763c41d3c46b7fc9e</srcmd5>
+    <version>2.6</version>
+    <time>1504981539</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521688</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>deae279b73bb3d1c5de610d02b0481e9</srcmd5>
+    <version>2.6</version>
+    <time>1507755747</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533091</requestid>
+  </revision>
+</revisionlist>

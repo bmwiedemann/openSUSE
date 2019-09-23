@@ -1,0 +1,21 @@
+<package name="perl-Config-Grammar" project="openSUSE:Factory">
+  <title>A grammar-based, user-friendly config parser</title>
+  <description>Config::Grammar is a module to parse configuration files. The configuration
+may consist of multiple-level sections with assignments and tabular data.
+The parsed data will be returned as a hash containing the whole
+configuration. Config::Grammar uses a grammar that is supplied upon
+creation of a Config::Grammar object to parse the configuration file and
+return helpful error messages in case of syntax errors. Using the *makepod*
+method you can generate documentation of the configuration file format.
+
+The *maketmpl* method can generate a template configuration file. If your
+grammar contains regexp matches, the template will not be all that helpful
+as Config::Grammar is not smart enough to give you sensible template data
+based in regular expressions. The related function *maketmplmin* generates
+a minimal configuration template without examples, regexps or comments and
+thus allows an experienced user to fill in the configuration data more
+efficiently.
+</description>
+  <devel project="devel:languages:perl" package="perl-Config-Grammar"/>
+  <url>http://search.cpan.org/dist/Config-Grammar/</url>
+</package>

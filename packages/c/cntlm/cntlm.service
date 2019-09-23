@@ -1,0 +1,11 @@
+[Unit]
+Description=CNTLM HTTP Accelerator For NTLM Secured Proxies Authenticator
+After=network.target
+
+[Service]
+Type=forking
+EnvironmentFile=-/etc/sysconfig/cntlmd
+ExecStart=/usr/sbin/cntlm -c /etc/cntlm.conf -U cntlm -P /run/cntlm/cntlmd.pid
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,52 @@
+From fc2b970b8116fe0f85e94e5dfcba709dbec183a6 Mon Sep 17 00:00:00 2001
+From: Antonio Larrosa <antonio.larrosa@gmail.com>
+Date: Mon, 18 Mar 2019 17:35:55 +0100
+Subject: [PATCH 2/3] Add its own messageChanged NOTIFY signal to the message
+ property
+
+The message property also changes when the network state changes, not only
+when isActiveChanged is emitted, so let's create its own signal that is
+emitted in both cases.
+---
+ src/declarative/pkupdates.cpp | 3 +++
+ src/declarative/pkupdates.h   | 3 ++-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/declarative/pkupdates.cpp b/src/declarative/pkupdates.cpp
+index f8fd0ac..08a51ae 100644
+--- a/src/declarative/pkupdates.cpp
++++ b/src/declarative/pkupdates.cpp
+@@ -54,6 +54,9 @@ PkUpdates::PkUpdates(QObject *parent) :
+ 
+     connect(Solid::PowerManagement::notifier(), &Solid::PowerManagement::Notifier::appShouldConserveResourcesChanged,
+             this, &PkUpdates::isOnBatteryChanged);
++
++    connect(this, &PkUpdates::isActiveChanged, this, &PkUpdates::messageChanged);
++    connect(this, &PkUpdates::networkStateChanged, this, &PkUpdates::messageChanged);
+ }
+ 
+ PkUpdates::~PkUpdates()
+diff --git a/src/declarative/pkupdates.h b/src/declarative/pkupdates.h
+index 1f17da5..c72162a 100644
+--- a/src/declarative/pkupdates.h
++++ b/src/declarative/pkupdates.h
+@@ -46,7 +46,7 @@ class PkUpdates : public QObject
+     Q_PROPERTY(int securityCount READ securityCount NOTIFY updatesChanged)
+     Q_PROPERTY(bool isSystemUpToDate READ isSystemUpToDate NOTIFY updatesChanged)
+     Q_PROPERTY(QString iconName READ iconName NOTIFY updatesChanged)
+-    Q_PROPERTY(QString message READ message NOTIFY isActiveChanged)
++    Q_PROPERTY(QString message READ message NOTIFY messageChanged)
+     Q_PROPERTY(int percentage READ percentage NOTIFY percentageChanged)
+     Q_PROPERTY(QString timestamp READ timestamp NOTIFY updatesChanged)
+     Q_PROPERTY(QString statusMessage READ statusMessage NOTIFY statusMessageChanged)
+@@ -161,6 +161,7 @@ signals:
+     void percentageChanged();
+     void networkStateChanged();
+     void isOnBatteryChanged();
++    void messageChanged();
+ 
+ public slots:
+     /**
+-- 
+2.21.0
+

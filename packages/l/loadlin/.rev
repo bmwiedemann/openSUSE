@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="354">
+    <srcmd5>405694e4d565cad626d4d0d79fd3998f</srcmd5>
+    <version>1.6c</version>
+    <time>1225983246</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="355">
+    <srcmd5>dd9cdf6f8f70512f0e2a336383892b23</srcmd5>
+    <version>1.6c</version>
+    <time>1231507918</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="357">
+    <srcmd5>dd9cdf6f8f70512f0e2a336383892b23</srcmd5>
+    <version>1.6c</version>
+    <time>1231507918</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="358">
+    <srcmd5>0249c350bac4d133a6449f228f5bd83e</srcmd5>
+    <version>1.6c</version>
+    <time>1268924841</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="360">
+    <srcmd5>0249c350bac4d133a6449f228f5bd83e</srcmd5>
+    <version>1.6c</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="361">
+    <srcmd5>0249c350bac4d133a6449f228f5bd83e</srcmd5>
+    <version>1.6c</version>
+    <time>1278678594</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>289985892bbc739fafb31b542f005477</srcmd5>
+    <version>1.6d</version>
+    <time>1285576464</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/loadlin based on submit request 49162 from user coolo
+</comment>
+    <requestid>49162</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>289985892bbc739fafb31b542f005477</srcmd5>
+    <version>1.6d</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>289985892bbc739fafb31b542f005477</srcmd5>
+    <version>1.6d</version>
+    <time>1319182156</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>ff12d546ec48a127e787e6d4fa98edb9</srcmd5>
+    <version>1.6d</version>
+    <time>1323192411</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>ff12d546ec48a127e787e6d4fa98edb9</srcmd5>
+    <version>1.6d</version>
+    <time>1340183670</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>ff12d546ec48a127e787e6d4fa98edb9</srcmd5>
+    <version>1.6d</version>
+    <time>1359109404</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>ff12d546ec48a127e787e6d4fa98edb9</srcmd5>
+    <version>1.6d</version>
+    <time>1379663173</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="15">
+    <srcmd5>ff12d546ec48a127e787e6d4fa98edb9</srcmd5>
+    <version>1.6d</version>
+    <time>1409301811</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b6c086fce992569b6c55d60f1fd64ef5</srcmd5>
+    <version>1.6f</version>
+    <time>1436888679</time>
+    <user>coolo</user>
+    <comment>- Update to 1.6f
+  * support for latest linux kernels
+- Use new project and download url
+- Cleanup spec file with spec-cleaner (forwarded request 316295 from pluskalm)</comment>
+    <requestid>316344</requestid>
+  </revision>
+</revisionlist>

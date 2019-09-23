@@ -1,0 +1,44 @@
+# HG changeset patch
+# Parent 54ec848c439e3fb4dfd34e8b405f8ca84bc5d592
+build: drop lrm as it's not used anymore by pacemaker
+
+diff -r 54ec848c439e lib/Makefile.am
+--- a/lib/Makefile.am	Fri Feb 01 11:54:20 2013 +0100
++++ b/lib/Makefile.am	Fri Feb 01 13:15:55 2013 +0100
+@@ -17,4 +17,4 @@
+ #
+ 
+ MAINTAINERCLEANFILES    = Makefile.in
+-SUBDIRS	= pils clplumbing lrm stonith plugins
++SUBDIRS	= pils clplumbing stonith plugins
+diff -r 54ec848c439e lrm/Makefile.am
+--- a/lrm/Makefile.am	Fri Feb 01 11:54:20 2013 +0100
++++ b/lrm/Makefile.am	Fri Feb 01 13:15:55 2013 +0100
+@@ -17,4 +17,4 @@
+ #
+ MAINTAINERCLEANFILES = Makefile.in
+ 
+-SUBDIRS = lrmd admin test
++SUBDIRS = admin
+diff -r 54ec848c439e lrm/admin/Makefile.am
+--- a/lrm/admin/Makefile.am	Fri Feb 01 11:54:20 2013 +0100
++++ b/lrm/admin/Makefile.am	Fri Feb 01 13:15:55 2013 +0100
+@@ -23,18 +23,3 @@ INCLUDES 			=	-I$(top_builddir)/include 
+ 
+ halibdir			=	$(libdir)/@HB_PKG@
+ COMMONLIBS			=	$(top_builddir)/lib/clplumbing/libplumb.la $(GLIBLIB)
+-LRM_DIR			= 	lrm
+-sbin_PROGRAMS 		= 	lrmadmin
+-sbin_SCRIPTS 		= 	cibsecret
+-lrmadmin_SOURCES  	= 	lrmadmin.c
+-lrmadmin_LDFLAGS 	= 	$(COMMONLIBS)
+-lrmadmin_LDADD = $(top_builddir)/lib/$(LRM_DIR)/liblrm.la
+-lrmadmin_DEPENDENCIES = $(top_builddir)/lib/$(LRM_DIR)/liblrm.la
+-
+-if BUILD_HELP
+-man8_MANS =	$(sbin_PROGRAMS:%=%.8)
+-%.8:	%
+-	echo Creating $@
+-	chmod a+x $<
+-	help2man --output $@ --no-info --section 8 --name "Part of the Linux-HA project" $(top_builddir)/lrm/admin/$<
+-endif

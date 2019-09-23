@@ -1,0 +1,18 @@
+<package name="python-pylast" project="openSUSE:Factory">
+  <title>A Python interface to Last.fm and Libre.fm</title>
+  <description>A Python interface to Last.fm and other api-compatible websites such as Libre.fm.
+
+Features
+--------
+
+* Simple public interface.
+* Access to all the data exposed by the Last.fm web services.
+* Scrobbling support.
+* Full object-oriented design.
+* Proxy support.
+* Internal caching support for some web services calls (disabled by default).
+* Support for other API-compatible networks like Libre.fm.
+* Python 3-friendly (Starting from 0.5).
+</description>
+  <devel project="devel:languages:python" package="python-pylast"/>
+</package>

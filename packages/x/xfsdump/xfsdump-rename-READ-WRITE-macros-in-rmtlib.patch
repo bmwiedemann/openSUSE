@@ -1,0 +1,187 @@
+From 952e08444913f28bca4acb309afa20fc054e8e46 Mon Sep 17 00:00:00 2001
+From: jeffm <jeffm@suse.com>
+Date: Wed, 18 Jul 2018 22:49:15 -0400
+Subject: [PATCH] xfsdump: rename READ/WRITE macros in rmtlib
+References: bsc#1093014
+
+xfsprogs commit 2be9e939868 (linux.h: include <linux/fs.h>) did what it
+advertised.  Unfortunately, the kernel's fs.h defines READ and WRITE as
+0 and 1, and prior to the uapi split in v3.7, that file would get installed
+directly as <linux/fs.h>.
+
+As a result, on systems with older kernels, we get build failures like:
+rmtioctl.c:303: error: called object '0' is not a function
+
+This patch renames READ/WRITE to READER/WRITER to avoid the naming
+collision.
+
+Signed-off-by: Jeff Mahoney <jeffm@suse.com>
+---
+ librmt/rmtabort.c   | 8 ++++----
+ librmt/rmtcommand.c | 2 +-
+ librmt/rmtfstat.c   | 4 ++--
+ librmt/rmtioctl.c   | 2 +-
+ librmt/rmtlib.h     | 8 ++++----
+ librmt/rmtopen.c    | 2 +-
+ librmt/rmtread.c    | 2 +-
+ librmt/rmtstatus.c  | 4 ++--
+ librmt/rmtwrite.c   | 2 +-
+ 9 files changed, 17 insertions(+), 17 deletions(-)
+
+diff --git a/librmt/rmtabort.c b/librmt/rmtabort.c
+index a7db4b1..df296ea 100644
+--- a/librmt/rmtabort.c
++++ b/librmt/rmtabort.c
+@@ -30,10 +30,10 @@
+ 
+ void _rmt_abort(int fildes)
+ {
+-	close(READ(fildes));
+-	close(WRITE(fildes));
+-	READ(fildes) = -1;
+-	WRITE(fildes) = -1;
++	close(READER(fildes));
++	close(WRITER(fildes));
++	READER(fildes) = -1;
++	WRITER(fildes) = -1;
+         RMTHOST(fildes) = -1;
+ 	_rmt_msg(RMTDBG, "rmtabort(%d)\n", fildes);
+ }
+diff --git a/librmt/rmtcommand.c b/librmt/rmtcommand.c
+index 82c9032..87bb2e2 100644
+--- a/librmt/rmtcommand.c
++++ b/librmt/rmtcommand.c
+@@ -45,7 +45,7 @@ char *buf;
+  */
+ 
+ 	blen = strlen(buf);
+-	if (write(WRITE(fildes), buf, blen) == blen)
++	if (write(WRITER(fildes), buf, blen) == blen)
+ 	{
+ 		return(0);
+ 	}
+diff --git a/librmt/rmtfstat.c b/librmt/rmtfstat.c
+index 92a49d7..69d1277 100644
+--- a/librmt/rmtfstat.c
++++ b/librmt/rmtfstat.c
+@@ -78,7 +78,7 @@ _rmt_fstat(int fildes, char *arg)
+ 
+ 	for (; adj_rc > 0; adj_rc -= cnt, arg += cnt)
+ 	{
+-		cnt = read(READ(fildes), arg, adj_rc);
++		cnt = read(READER(fildes), arg, adj_rc);
+ 		if (cnt <= 0)
+ 		{
+ abortit:
+@@ -90,7 +90,7 @@ abortit:
+ 
+ 	/* handle any bytes we didn't know what to do with */
+ 	while (rc-- > 0)
+-		if (read(READ(fildes), buffer, 1) <= 0)
++		if (read(READER(fildes), buffer, 1) <= 0)
+ 			goto abortit;
+ 
+ 	return(0);
+diff --git a/librmt/rmtioctl.c b/librmt/rmtioctl.c
+index bd6f887..576c09a 100644
+--- a/librmt/rmtioctl.c
++++ b/librmt/rmtioctl.c
+@@ -300,7 +300,7 @@ _rmt_ioctl(int fildes, unsigned int op, void *arg)
+ 		/* read in all the data */
+ 		ssize = rc;
+ 		for (; ssize > 0; ssize -= cnt, p += cnt) {
+-			cnt = read(READ(fildes), p, ssize);
++			cnt = read(READER(fildes), p, ssize);
+ 			if (cnt <= 0) {
+ 				_rmt_abort(fildes);
+ 				setoserror( EIO );
+diff --git a/librmt/rmtlib.h b/librmt/rmtlib.h
+index 1f877ca..631a48b 100644
+--- a/librmt/rmtlib.h
++++ b/librmt/rmtlib.h
+@@ -49,8 +49,8 @@
+ /*
+  *	Useful macros.
+  *
+- *	READ --- Return the number of the read side file descriptor
+- *	WRITE --- Return the number of the write side file descriptor
++ *	READER --- Return the number of the read side file descriptor
++ *	WRITER --- Return the number of the write side file descriptor
+  *	RMTHOST --- Return an id which says host type from uname    
+  */
+ 
+@@ -58,8 +58,8 @@
+ #define RMTWARN 1
+ #define RMTDBG 	2 /* includes warning */
+ 
+-#define READ(fd)	(_rmt_Ctp[fd][0])
+-#define WRITE(fd)	(_rmt_Ptc[fd][1])
++#define READER(fd)	(_rmt_Ctp[fd][0])
++#define WRITER(fd)	(_rmt_Ptc[fd][1])
+ #define RMTHOST(fd)	(_rmt_host[fd])
+ 
+ #define RSH_PATH        "/usr/bin/rsh"
+diff --git a/librmt/rmtopen.c b/librmt/rmtopen.c
+index 09ba3e4..5af1380 100644
+--- a/librmt/rmtopen.c
++++ b/librmt/rmtopen.c
+@@ -115,7 +115,7 @@ static int _rmt_open (char *path, int oflag, int mode)
+  */
+ 
+ 	for (i = 0; i < MAXUNIT; i++)
+-		if (READ(i) == -1 && WRITE(i) == -1)
++		if (READER(i) == -1 && WRITER(i) == -1)
+ 			break;
+ 
+ 	if (i == MAXUNIT)
+diff --git a/librmt/rmtread.c b/librmt/rmtread.c
+index 3456901..1af9319 100644
+--- a/librmt/rmtread.c
++++ b/librmt/rmtread.c
+@@ -64,7 +64,7 @@ static int _rmt_read(int fildes, char *buf, unsigned int nbyte)
+ 
+ 	for (i = 0; i < rc; i += nbyte, buf += nbyte)
+ 	{
+-		nbyte = read(READ(fildes), buf, rc);
++		nbyte = read(READER(fildes), buf, rc);
+ 		if (nbyte <= 0)
+ 		{
+ 			_rmt_abort(fildes);
+diff --git a/librmt/rmtstatus.c b/librmt/rmtstatus.c
+index 21d909d..9016491 100644
+--- a/librmt/rmtstatus.c
++++ b/librmt/rmtstatus.c
+@@ -44,7 +44,7 @@ int fildes;
+ 
+ 	for (i = 0, cp = buffer; i < BUFMAGIC; i++, cp++)
+ 	{
+-		if (read(READ(fildes), cp, 1) != 1)
++		if (read(READER(fildes), cp, 1) != 1)
+ 		{
+ 			_rmt_abort(fildes);
+ 			setoserror( EIO );
+@@ -75,7 +75,7 @@ int fildes;
+ 	if (*cp == 'E' || *cp == 'F')
+ 	{
+ 		setoserror( atoi(cp + 1) );
+-		while (read(READ(fildes), &c, 1) == 1)
++		while (read(READER(fildes), &c, 1) == 1)
+ 			if (c == '\n')
+ 				break;
+ 
+diff --git a/librmt/rmtwrite.c b/librmt/rmtwrite.c
+index 9e5a1a3..826fce3 100644
+--- a/librmt/rmtwrite.c
++++ b/librmt/rmtwrite.c
+@@ -61,7 +61,7 @@ static int _rmt_write(int fildes, char *buf, unsigned int nbyte)
+ 	if (_rmt_command(fildes, buffer) == -1)
+ 		return(-1);
+ 
+-	if (write(WRITE(fildes), buf, nbyte) == nbyte)
++	if (write(WRITER(fildes), buf, nbyte) == nbyte)
+ 	{
+ 		return(_rmt_status(fildes));
+ 	}
+-- 
+1.7.12.4
+

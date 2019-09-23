@@ -1,0 +1,8 @@
+<package name="gtkmm2-documentation" project="openSUSE:Factory">
+  <title>C++ Bindings for GTK+ -- Documentation</title>
+  <description>Gtkmm provides a C++ interface to the GTK+ GUI library. gtkmm wraps
+GTK+. Highlights include typesafe callbacks, widgets extensible via
+inheritance, and a comprehensive set of widget classes that can be
+freely combined to quickly create complex user interfaces.</description>
+  <devel project="GNOME:Factory" package="gtkmm2-documentation"/>
+</package>

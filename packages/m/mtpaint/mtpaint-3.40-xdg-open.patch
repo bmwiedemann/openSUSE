@@ -1,0 +1,41 @@
+Index: mtpaint-3.40/src/spawn.c
+===================================================================
+--- mtpaint-3.40.orig/src/spawn.c
++++ mtpaint-3.40/src/spawn.c
+@@ -381,17 +381,17 @@ void init_factions()
+ #ifndef WIN32
+ 	int i, j;
+ 	static char *row_def[][3] = {
+-		{"View EXIF data (leafpad)", "exif %f | leafpad"},
++		{"View EXIF data", "xterm -hold -sb -rightbar -e exif %f"},
+ 		{"View filesystem data (xterm)", "xterm -hold -e ls -l %f"},
+ 		{"Edit in Gimp", "gimp %f"},
+ 		{"View in GQview", "gqview %f"},
+-		{"Print image", "kprinter %f"},
+-		{"Email image", "seamonkey -compose attachment=file://%f"},
++		{"Print image", "lp %f"},
++		{"Email image", "xdg-email --attach %f"},
+ 		{"Send image to Firefox", "firefox %f"},
+-		{"Send image to OpenOffice", "soffice %f"},
++		{"Send image to LibreOffice", "soffice %f"},
+ 		{"Edit Clipboards", "mtpaint ~/.clip*"},
+-		{"Time delayed screenshot", "sleep 10; mtpaint -s &"},
+-		{"View image information", "xterm -hold -sb -rightbar -geometry 100x100 -e identify -verbose %f"},
++		{"Time delayed screenshot", "sleep 5; mtpaint -s &"},
++		{"View image information", "xterm -hold -sb -rightbar -e identify -verbose %f"},
+ 		{"#Create temp directory", "mkdir ~/images"},
+ 		{"#Remove temp directory", "rm -rf ~/images"},
+ 		{"#GIF to PNG conversion (in situ)", "mogrify -format png *.gif"},
+@@ -757,9 +757,9 @@ int run_def_action(int action, char *sna
+ 
+ #else /* Linux */
+ 
+-#define HANDBOOK_BROWSER "firefox"
+-#define HANDBOOK_LOCATION "/usr/doc/mtpaint/index.html"
+-#define HANDBOOK_LOCATION2 "/usr/share/doc/mtpaint/index.html"
++#define HANDBOOK_BROWSER "xdg-open"
++#define HANDBOOK_LOCATION "/usr/share/doc/packages/mtpaint-handbook/index.html"
++#define HANDBOOK_LOCATION2 "/usr/share/doc/packages/mtpaint/index.html"
+ 
+ #endif
+ 

@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Sun Jun  9 15:32:34 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Generalize description. Fix a few missing words.
+
+-------------------------------------------------------------------
+Sun Jun  2 19:04:28 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- rename to dnsdiag instead of python-dnsdiag
+- Update to version 1.6.4:
+ * no upstream changelog available
+
+-------------------------------------------------------------------
+Fri Nov  3 07:59:09 UTC 2017 - mardnh@gmx.de
+
+- Initial package, version 1.6.3

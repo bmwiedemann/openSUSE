@@ -1,0 +1,201 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>3e4eb6459f570ae963795677c452caea</srcmd5>
+    <version>0.07</version>
+    <time>1291222072</time>
+    <user>darix</user>
+    <comment>Accepted submit request 52860 from user coolo
+</comment>
+    <requestid>52860</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>23cf17a1b0fbe426ef22f74a7e1a3c8b</srcmd5>
+    <version>0.07</version>
+    <time>1291222077</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 52860
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4ffbcfe471fc7ccd33c1ce5b56a403ac</srcmd5>
+    <version>0.07</version>
+    <time>1292241038</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 55725 from user coolo
+</comment>
+    <requestid>55725</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>db403d216f09c32a1d7dec01cca7bbaa</srcmd5>
+    <version>0.07</version>
+    <time>1292241043</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 55725
+</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>db403d216f09c32a1d7dec01cca7bbaa</srcmd5>
+    <version>0.07</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4096cfa62d8819e048272ae06266132c</srcmd5>
+    <version>0.09</version>
+    <time>1305712204</time>
+    <user>saschpe</user>
+    <comment>- updated to 0.09
+  - don't index Try::Tiny::ScopeGuard
+  - fix require vs use issue in blead (RT63410)</comment>
+    <requestid>70525</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ecffbfb9eb6c9660b8a0ee30ef91804e</srcmd5>
+    <version>0.09</version>
+    <time>1305712217</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70525
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0b993a4341dac055e3e03670902bd089</srcmd5>
+    <version>0.11</version>
+    <time>1316461115</time>
+    <user>lrupp</user>
+    <comment>- updated to 0.11
+  - fix broken dist
+  - clarify some docs</comment>
+    <requestid>83442</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>0b993a4341dac055e3e03670902bd089</srcmd5>
+    <version>0.11</version>
+    <time>1319182319</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>6c78b620489789e5386e9dd69360bbae</srcmd5>
+    <version>0.11</version>
+    <time>1323193757</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>6c78b620489789e5386e9dd69360bbae</srcmd5>
+    <version>0.11</version>
+    <time>1340183947</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>6c78b620489789e5386e9dd69360bbae</srcmd5>
+    <version>0.11</version>
+    <time>1359109838</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>da4aa6c4d3a731ae35ef95c737116346</srcmd5>
+    <version>0.12</version>
+    <time>1370520055</time>
+    <user>coolo</user>
+    <comment>- updated to 0.12
+ - doc fixes (forwarded request 177507 from coolo)</comment>
+    <requestid>177532</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>0ea3c8faa60900890f671598cd85d975</srcmd5>
+    <version>0.12</version>
+    <time>1371147908</time>
+    <user>coolo</user>
+    <comment>- rebuild for perl 5.18</comment>
+    <requestid>178511</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>42eb3e67c227d04986b97e5719fd2522</srcmd5>
+    <version>0.16</version>
+    <time>1375202906</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184810</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>42eb3e67c227d04986b97e5719fd2522</srcmd5>
+    <version>0.16</version>
+    <time>1379663906</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5943eaaa79cd8fb291a629ec28d31ab2</srcmd5>
+    <version>0.18</version>
+    <time>1390380272</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>214452</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0cb94f77341d05289b7cc1f5a5d5a162</srcmd5>
+    <version>0.19</version>
+    <time>1392185245</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221871</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>85fd037cfb7a936aec46f3b3c6b7bc76</srcmd5>
+    <version>0.21</version>
+    <time>1398267168</time>
+    <user>coolo</user>
+    <comment>updated to 0.21 (forwarded request 231055 from mnhauke)</comment>
+    <requestid>231101</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>921f4155dd5dfab372cce3b9a6f3acd1</srcmd5>
+    <version>0.22</version>
+    <time>1406177937</time>
+    <user>coolo</user>
+    <comment>updated to 0.22</comment>
+    <requestid>242098</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>921f4155dd5dfab372cce3b9a6f3acd1</srcmd5>
+    <version>0.22</version>
+    <time>1409302553</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4ccf0eba71d7a4597428c410bc848bde</srcmd5>
+    <version>0.24</version>
+    <time>1450284160</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348454</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>db7db642afff34dbe07bf7e7eb08c7c5</srcmd5>
+    <version>0.27</version>
+    <time>1471855767</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419874</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4d0118a9b226cb861e523ba607dd8501</srcmd5>
+    <version>0.28</version>
+    <time>1484132187</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449428</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0fe03659a365d13f3dee52a98d21f7b9</srcmd5>
+    <version>0.30</version>
+    <time>1516880154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568489</requestid>
+  </revision>
+</revisionlist>

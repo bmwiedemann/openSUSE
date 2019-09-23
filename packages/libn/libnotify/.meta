@@ -1,0 +1,5 @@
+<package name="libnotify" project="openSUSE:Factory">
+  <title>Notifications Library</title>
+  <description>D-BUS notifications library.</description>
+  <devel project="GNOME:Factory" package="libnotify"/>
+</package>

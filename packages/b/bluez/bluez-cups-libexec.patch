@@ -1,0 +1,26 @@
+Index: bluez-5.44/Makefile.in
+===================================================================
+--- bluez-5.44.orig/Makefile.in
++++ bluez-5.44/Makefile.in
+@@ -2710,7 +2710,7 @@ unit_tests = $(am__append_48) unit/test-
+ @DEPRECATED_TRUE@@READLINE_TRUE@attrib_gatttool_LDADD = lib/libbluetooth-internal.la \
+ @DEPRECATED_TRUE@@READLINE_TRUE@			src/libshared-glib.la @GLIB_LIBS@ -lreadline
+ 
+-@CUPS_TRUE@cupsdir = $(libdir)/cups/backend
++@CUPS_TRUE@cupsdir = $(libexecdir)/../cups/backend
+ @CUPS_TRUE@profiles_cups_bluetooth_SOURCES = profiles/cups/main.c \
+ @CUPS_TRUE@					profiles/cups/cups.h \
+ @CUPS_TRUE@					profiles/cups/sdp.c \
+Index: bluez-5.44/Makefile.tools
+===================================================================
+--- bluez-5.44.orig/Makefile.tools
++++ bluez-5.44/Makefile.tools
+@@ -388,7 +388,7 @@ endif
+ endif
+ 
+ if CUPS
+-cupsdir = $(libdir)/cups/backend
++cupsdir = $(libexecdir)/../cups/backend
+ 
+ cups_PROGRAMS = profiles/cups/bluetooth
+ 

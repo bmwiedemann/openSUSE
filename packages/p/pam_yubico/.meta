@@ -1,0 +1,5 @@
+<package name="pam_yubico" project="openSUSE:Factory">
+  <title>This module allows you to use the Yubikey device to authenticate to the PAM system</title>
+  <description>This module allows you to use the Yubikey device to authenticate to the PAM system</description>
+  <devel project="security" package="pam_yubico"/>
+</package>

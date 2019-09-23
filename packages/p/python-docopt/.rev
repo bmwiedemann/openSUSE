@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>67656cb44d4a193fac2f02cadb0198d5</srcmd5>
+    <version>0.6.1</version>
+    <time>1393089324</time>
+    <user>coolo</user>
+    <comment>nice new package to create a command line argument parser from the help message. Would be great to have it in Factory.</comment>
+    <requestid>223323</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>45749f1e610519b08c3ed2dc582d07c2</srcmd5>
+    <version>0.6.2</version>
+    <time>1405404064</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240917</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>45749f1e610519b08c3ed2dc582d07c2</srcmd5>
+    <version>0.6.2</version>
+    <time>1409302859</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>fc6bf21011ffc8eb182166a80a953c78</srcmd5>
+    <version>0.6.2</version>
+    <time>1443684538</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>331687</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>212edb111d999afe39643e9e691cf105</srcmd5>
+    <version>0.6.2</version>
+    <time>1493455991</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491623</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>483d208c1d0b73214fcdb6ae353613de</srcmd5>
+    <version>0.6.2</version>
+    <time>1499754484</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509279</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>c89206cf210f6695bdb7272133e8daa2</srcmd5>
+    <version>0.6.2</version>
+    <time>1544094907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655396</requestid>
+  </revision>
+</revisionlist>

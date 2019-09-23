@@ -1,0 +1,180 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>061cb087a2b2c8af607a1974045bb237</srcmd5>
+    <version>1.3.0.20101206</version>
+    <time>1313061063</time>
+    <user>saschpe</user>
+    <comment>Resubmitted with the corrected license tag</comment>
+    <requestid>77983</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1275339860c9134f1f9c6b5928309600</srcmd5>
+    <version>1.3.0.20101206</version>
+    <time>1313061077</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77983
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f2706990645913dd7b177cac32a43354</srcmd5>
+    <version>1.3.0.20101206</version>
+    <time>1317212559</time>
+    <user>saschpe</user>
+    <comment>Fixed typos in ibus-table-chinese.spec (forwarded request 84949 from aturrini)</comment>
+    <requestid>85187</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>f2706990645913dd7b177cac32a43354</srcmd5>
+    <version>1.3.0.20101206</version>
+    <time>1319181979</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>781d33d6c3d7d8aa0b4c9a2b8034a723</srcmd5>
+    <version>1.3.0.20101206</version>
+    <time>1324307362</time>
+    <user>coolo</user>
+    <comment>fix license to be in spdx.org (forwarded request 96040 from coolo)</comment>
+    <requestid>96217</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>781d33d6c3d7d8aa0b4c9a2b8034a723</srcmd5>
+    <version>1.3.0.20101206</version>
+    <time>1340183448</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6eb4e77c4f3fa366c21a6495e767de16</srcmd5>
+    <version>1.3.5</version>
+    <time>1340617631</time>
+    <user>coolo</user>
+    <comment>- update to 1.3.5
+- fix some bugs
+- better compatibility
+- with cmake-fedora modules </comment>
+    <requestid>125666</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f917055888fe63afd26b146439543d6f</srcmd5>
+    <version>1.4.0</version>
+    <time>1347347250</time>
+    <user>coolo</user>
+    <comment>- update to 1.4.0
+- Table build scripts has been refactored.
+- cmake-fedora is added as submodule.
+- Fixed Bug 855250 - Change the default filtering for Quick and Cangjie by
+  merging maxiaojun's repository
+- Fixed Google Issue 1405: failed to build ibus-table-chinese due to missing 
+  db files (forwarded request 133369 from hillwood)</comment>
+    <requestid>133371</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f2e36f7c77d7910910ef702d7528e251</srcmd5>
+    <version>1.4.0</version>
+    <time>1348414278</time>
+    <user>coolo</user>
+    <comment>- Fix the license tags of some sub packages to GPL-3.0+ (bnc#779935) (forwarded request 134989 from tiwai)</comment>
+    <requestid>134991</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7af9b7d03c43aac78b1d7b70565bb776</srcmd5>
+    <version>1.4.6</version>
+    <time>1357217125</time>
+    <user>namtrac</user>
+    <comment> (forwarded request 146881 from hillwood)</comment>
+    <requestid>146882</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>7af9b7d03c43aac78b1d7b70565bb776</srcmd5>
+    <version>1.4.6</version>
+    <time>1359109064</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>7af9b7d03c43aac78b1d7b70565bb776</srcmd5>
+    <version>1.4.6</version>
+    <time>1379662644</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>897716ac71792829b3714ec29cac2ab6</srcmd5>
+    <version>1.8.2</version>
+    <time>1406645301</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242736</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>897716ac71792829b3714ec29cac2ab6</srcmd5>
+    <version>1.8.2</version>
+    <time>1409301200</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>fde0fd807bd3ae76d3328acb07d2f1b5</srcmd5>
+    <version>1.8.2</version>
+    <time>1410967499</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249195</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>ecacb83dccc809111a8facb93e43b010</srcmd5>
+    <version>1.8.2</version>
+    <time>1496327423</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498132</requestid>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>c28615e31a5d2922d73bb87a43301d99</srcmd5>
+    <version>1.8.2</version>
+    <time>1513677399</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 557215 from hillwood)</comment>
+    <requestid>557216</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>5f44cf07479a453aec8f1013eeef7858</srcmd5>
+    <version>1.8.2</version>
+    <time>1539758478</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop BuildRequires tag for python3-ibus. (forwarded request 642177 from hillwood)</comment>
+    <requestid>642178</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>15a2528c4080e3aa5c6b3771fd14d72d</srcmd5>
+    <version>1.8.3~pre.1531454400.f1f6a33</version>
+    <time>1551386570</time>
+    <user>coolo</user>
+    <comment>- update version 1.8.3~pre.1531454400.f1f6a33
+  * update jyutping and cantonese tables
+  * fix character frequency of 'zou'
+  * add cantonyale table
+  * use nicer values for symbol and status prompt
+  * support pinyin mode also for stroke5 table
+- fix Tumbleweed build
+</comment>
+    <requestid>678331</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>8a9d76318d70430b5b401f25e0e46153</srcmd5>
+    <version>1.8.3~pre.1531454400.f1f6a33</version>
+    <time>1552902091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685496</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>7ecad8cd8176efc13f7b1b361ae3d5f6</srcmd5>
+    <version>1.8.3~pre.1531454400.f1f6a33</version>
+    <time>1553436077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687825</requestid>
+  </revision>
+</revisionlist>

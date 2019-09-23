@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0401f4f719f4760b6ac407f8e8692836</srcmd5>
+    <version>16.04.1</version>
+    <time>1464690226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>398947</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9159d4bc4afae8b6aaad2b4392cb3185</srcmd5>
+    <version>16.04.2</version>
+    <time>1466413001</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Apps 16.04.2</comment>
+    <requestid>402128</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>086b62308279750552f55b2ab6c3159c</srcmd5>
+    <version>16.04.3</version>
+    <time>1469080283</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412341</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>09eb4f7b55f13e610879089d5acf7cd9</srcmd5>
+    <version>16.08.0</version>
+    <time>1472474040</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 16.08.0</comment>
+    <requestid>420107</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>136db91f20217e20a416709e5c0641f5</srcmd5>
+    <version>16.08.1</version>
+    <time>1473887020</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 16.08.1</comment>
+    <requestid>426361</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1c273c83f3157fb19a78a3968b8a1e58</srcmd5>
+    <version>16.08.2</version>
+    <time>1476778396</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 16.08.2</comment>
+    <requestid>434823</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1938b4d5d1f45f5a5c0dba7dd6afc329</srcmd5>
+    <version>16.08.3</version>
+    <time>1478953893</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 16.08.3</comment>
+    <requestid>439651</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a45da543cc5e686979323627e189a7c2</srcmd5>
+    <version>16.08.3</version>
+    <time>1485861354</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452996</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>5ddf48b99a9bd95c92cc9fa3b938c4e5</srcmd5>
+    <version>16.08.3</version>
+    <time>1563701654</time>
+    <user>dimstar_suse</user>
+    <comment>Use %_kf5_debugdir for logging categories</comment>
+    <requestid>716774</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Tue Sep 10 10:34:26 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.11:
+  * Now supply the version of the package during Sphinx setup.
+  * Also supply "parallel_read_safe=True" 
+
+-------------------------------------------------------------------
+Fri Jun  7 11:56:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+- Run py3 only sphinx build as new sphinx does not provide py2
+  variant anymore
+
+-------------------------------------------------------------------
+Wed Feb 27 05:54:37 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add LICENSE
+- Run Sphinx on Python 2 also
+- Update to v1.10
+  * Refreshed package metadata.
+  * Package now presents the ``rst`` package a pkg-util
+    namespace package (instead of pkg_resources).
+
+-------------------------------------------------------------------
+Sun Jul  9 08:21:24 UTC 2017 - aloisio@gmx.com
+
+- Fixed dateutil requires
+
+-------------------------------------------------------------------
+Tue Jul  4 09:35:47 UTC 2017 - aloisio@gmx.com
+
+- Update to version 1.9
+  * Replacer now adds the Sphinx config namespace to the
+    replacements, meaning that names like ``project``
+    or ``copyright`` may be referenced in the format
+    strings. This feature is particularly useful when
+    coupled with the `jaraco.packaging
+    <https://pypi.org/project/jaraco.packaging>`.sphinx
+    plugin, which supplies a ``package_url``.
+  1.8.2:
+  * Added project description and updated changelog.
+  1.8.1:
+  * Issue #4: Prefer public API of ``app.confdir`` to private
+    API.
+  1.8:
+  * Issue #4: Resolve deterministically the filenames relative to
+    the config file.
+  * *semver deviation*: This change is backward-incompatible
+    for projects that relied on paths relative to the cwd where
+    the cwd was not the directory of the config file.
+
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Sat Jul 30 18:24:12 UTC 2016 - sor.alexei@meowr.ru
+
+- Initial package.

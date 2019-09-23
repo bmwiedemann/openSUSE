@@ -1,0 +1,8 @@
+<package name="anki" project="openSUSE:Factory">
+  <title>A spaced repetition system (SRS)</title>
+  <description>
+Anki is a spaced repetition system (SRS). It helps you remember things by intelligently scheduling reviews, so that you can learn a lot of information with the minimum amount of effort.
+  </description>
+  <devel project="Education" package="anki"/>
+  <url>http://ichi2.net/anki/</url>
+</package>

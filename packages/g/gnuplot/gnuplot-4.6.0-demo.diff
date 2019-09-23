@@ -1,0 +1,132 @@
+---
+ demo/fit.dem    |    4 ++++
+ demo/poldat.dem |    2 +-
+ demo/simple.dem |    3 +--
+ src/show.c      |    9 +++++++++
+ src/variable.c  |   20 +++++++++++++++++++-
+ 5 files changed, 34 insertions(+), 4 deletions(-)
+
+--- demo/fit.dem
++++ demo/fit.dem	2018-05-07 07:11:51.433579608 +0000
+@@ -10,6 +10,7 @@ set dummy x, y
+ 
+ print "Some examples how data fitting using nonlinear least squares fit can be done."
+ print ''
++logfile = "`mktemp /tmp/fit.log.XXXXXX`"
+ 
+ print "We fit a straight line to the data -- only as a demo without physical meaning."
+ l(x) = y0 + m*x
+@@ -29,6 +30,7 @@ set title 'data set and initial paramete
+ plot 'lcdemo.dat', l(x)
+ pause -1 "Now start fitting...  (-> return)"
+ 
++set fit logfile logfile
+ fit l(x) 'lcdemo.dat' via y0, m
+ set title 'unweighted fit'
+ plot 'lcdemo.dat', l(x)
+@@ -324,6 +326,7 @@ print '     "fit3.dat" u 1:2:3:4 via a0,
+ pause -1 "Press enter to proceed with the next example."
+ 
+ reset
++set fit logfile logfile
+ print "\n"
+ print "The fit command can handle errors in the independent variable, too."
+ print "The problem shown here is Pearson's data with York's weights.\n"
+@@ -429,6 +432,7 @@ print "to time."
+ print ''
+ pause -1 "Done with fitting demo  (-> return)"
+ reset
++set fit logfile logfile
+ set encoding myencoding
+ # release datablock
+ undefine $PearsonYork
+--- demo/poldat.dem
++++ demo/poldat.dem	2018-05-07 07:11:51.433579608 +0000
+@@ -11,7 +11,7 @@ unset grid
+ unset polar
+ set title "Primitive Smith Chart"
+ unset key
+-set xlabel "Impedance or Admittance Coordinates"
++set xlabel "Impedance or Admittance Coordinates" offset 12,-1
+ set para
+ set rrange [-0 : 10]
+ set trange [-pi : pi]
+--- demo/simple.dem
++++ demo/simple.dem	2018-05-07 07:11:51.433579608 +0000
+@@ -8,14 +8,13 @@
+ #
+ set title "Simple Plots" font ",20"
+ set key left box
+-set samples 50
++set samples 400
+ set style data points
+ 
+ plot [-10:10] sin(x),atan(x),cos(atan(x))
+ pause -1 "Hit return to continue"
+ 
+ set key right nobox
+-set samples 100
+ plot [-pi/2:pi] cos(x),-(sin(x) > sin(x+1) ? sin(x) : sin(x+1))
+ pause -1 "Hit return to continue"
+ 
+--- src/show.c
++++ src/show.c	2018-05-07 07:11:51.437579533 +0000
+@@ -1078,6 +1078,15 @@ show_version(FILE *fp)
+ 	    p 			/* type "help seeking-assistance" */
+ 	    );
+ 
++#ifdef GNUPLOT_LIB_DEFAULT
++   {
++	struct stat st;
++	if ((stat(GNUPLOT_LIB_DEFAULT, &st) == 0) && S_ISDIR(st.st_mode)) {
++	    fprintf(fp, "%s\n%s\tType `load \"all.dem\"` to display a large number of examples.", p, p);
++	    fprintf(fp, "\n%s\tThey are located at %s/*\n%s\n", p, GNUPLOT_LIB_DEFAULT, p);
++	}
++   }
++#endif
+ 
+     /* show version long */
+     if (almost_equals(c_token, "l$ong")) {
+--- src/variable.c
++++ src/variable.c	2018-05-07 07:11:51.437579533 +0000
+@@ -37,7 +37,10 @@ static char *RCSid() { return RCSid("$Id
+ /* The Death of Global Variables - part one. */
+ 
+ #include <string.h>
+-
++#include <stdio.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <unistd.h>
+ #include "variable.h"
+ 
+ #include "alloc.h"
+@@ -98,6 +101,17 @@ loadpath_handler(int action, char *path)
+ 	if (!loadpath)
+ 	{
+ 	    char *envlib = getenv("GNUPLOT_LIB");
++#ifdef GNUPLOT_LIB_DEFAULT
++	    char *defenvlib = (char*)0;
++	    struct stat st;
++	    if ((stat(GNUPLOT_LIB_DEFAULT, &st) == 0) && S_ISDIR(st.st_mode)) {
++		if (envlib) {
++		    if (asprintf(&defenvlib, "%s:%s", envlib, GNUPLOT_LIB_DEFAULT) > 0)
++			envlib = defenvlib;
++		} else
++		    envlib = GNUPLOT_LIB_DEFAULT;
++	    }
++#endif /* GNUPLOT_LIB_DEFAULT */
+ 	    if (envlib) {
+ 		int len = strlen(envlib);
+ 		loadpath = gp_strdup(envlib);
+@@ -106,6 +120,10 @@ loadpath_handler(int action, char *path)
+ 		/* convert all PATHSEPs to \0 */
+ 		PATHSEP_TO_NUL(loadpath);
+ 	    }			/* else: NULL = empty */
++#ifdef GNUPLOT_LIB_DEFAULT
++	    if (defenvlib)
++		free(defenvlib);
++#endif /* GNUPLOT_LIB_DEFAULT */
+ 	}			/* else: already initialised; int_warn (?) */
+ 	/* point to env portion of loadpath */
+ 	envptr = loadpath;

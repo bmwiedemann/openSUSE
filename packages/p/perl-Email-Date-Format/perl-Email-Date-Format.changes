@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Tue Jun 11 09:08:36 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Updated spec file with spec-cleaner
+- Added required dependencies
+- Capitalize summary
+
+-------------------------------------------------------------------
+Sun Jun  9 12:40:54 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add fix-time-local.patch to call Time::Local correctly
+
+-------------------------------------------------------------------
+Tue Apr 14 20:14:55 UTC 2015 - coolo@suse.com
+
+- updated to 1.005
+   see /usr/share/doc/packages/perl-Email-Date-Format/Changes
+
+  1.005     2014-10-13 08:32:03-04:00 America/New_York
+            fix documentation of export names (thanks, Thomas Klausner!)
+
+-------------------------------------------------------------------
+Tue Aug  6 17:49:05 UTC 2013 - coolo@suse.com
+
+- updated to 1.004
+      fix repo and bugtracker link (stupid case sensitivity!)
+      (thanks, Slaven Rezic!)
+
+-------------------------------------------------------------------
+Sun Aug  4 15:29:14 UTC 2013 - coolo@suse.com
+
+- updated to 1.003
+  new repo, new bugtracker
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:11 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:12 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Nov 24 17:23:34 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+  o fix deps
+- noarch pkg
+- added bcond_with pod
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:34 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Fri Feb 27 14:02:57 CET 2009 - anicka@suse.cz
+
+- package created (version 1.002) 
+

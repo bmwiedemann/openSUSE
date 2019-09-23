@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Sat Apr 14 19:16:25 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.7:
+  + Use newer telepathy-glib high-level API.
+  + Throw error if account has no contacts.
+  + Remove vinagre plugin, it never worked.
+- Drop libX11-devel BuildRequires: as we don't bootstrap, we do not
+  care for AC_PATH_XTRA not being available.
+
+-------------------------------------------------------------------
+Fri Mar 23 13:17:44 UTC 2012 - vuntz@opensuse.org
+
+- Switch to upstream tarball instead of a tarball generated from
+  git. This means we can remove the automake and libtool
+  BuildRequires as well as the autogen.sh call.
+
+-------------------------------------------------------------------
+Wed Mar 21 14:14:32 UTC 2012 - vuntz@opensuse.org
+
+- Rename package to ssh-contact, following upstream name.
+- Split client and server in two subpackages, so that users don't
+  have to install both at the same time.
+- Cleanup for inclusion in Factory.
+
+-------------------------------------------------------------------
+Thu Mar 15 11:35:12 UTC 2012 - alinm.elena@gmail.com
+
+- initial commit at version 0.6
+

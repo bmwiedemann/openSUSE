@@ -1,0 +1,11 @@
+--- diff/util.c
++++ diff/util.c
+@@ -235,7 +235,7 @@
+ 	      close (pipes[0]);
+ 	    }
+ 
+-	  execl (PR_PROGRAM, PR_PROGRAM, "-f", "-h", name, 0);
++	  execl (PR_PROGRAM, PR_PROGRAM, "-f", "-h", name, NULL);
+ 	  pfatal_with_name (PR_PROGRAM);
+ 	}
+       else

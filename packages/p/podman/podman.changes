@@ -1,0 +1,1513 @@
+-------------------------------------------------------------------
+Thu Sep  5 15:26:01 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Add katacontainers as a recommended package, and include it as an
+  additional OCI runtime in the configuration.
+
+-------------------------------------------------------------------
+Tue Aug 27 08:04:20 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Update podman to v1.5.1
+ * Features
+   - The hostname of pods is now set to the pod's name
+ * Bugfixes
+   - Fixed a bug where podman run and podman create did not honor the --authfile
+     option (#3730)
+   - Fixed a bug where containers restored with podman container restore 
+     --import would incorrectly duplicate the Conmon PID file of the original container
+   - Fixed a bug where podman build ignored the default OCI runtime configured 
+     in libpod.conf
+   - Fixed a bug where podman run --rm (or force-removing any running container 
+     with podman rm --force) were not retrieving the correct exit code (#3795)
+   - Fixed a bug where Podman would exit with an error if any configured hooks 
+     directory was not present
+   - Fixed a bug where podman inspect and podman commit would not use the 
+     correct CMD for containers run with podman play kube
+   - Fixed a bug created pods when using rootless Podman and CGroups V2 (#3801)
+   - Fixed a bug where the podman events command with the --since or --until 
+     options could take a very long time to complete
+ * Misc
+   - Rootless Podman will now inherit OCI runtime configuration from the root 
+     configuration (#3781)
+   - Podman now properly sets a user agent while contacting registries (#3788)
+
+- Add zsh completion for podman commands
+
+-------------------------------------------------------------------
+Wed Aug 14 08:26:22 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update podman to v1.5.0
+  * Features
+    - Podman containers can now join the user namespaces of other
+      containers with --userns=container:$ID, or a user namespace at
+      an arbitary path with --userns=ns:$PATH
+    - Rootless Podman can experimentally squash all UIDs and GIDs in
+      an image to a single UID and GID (which does not require use of
+      the newuidmap and newgidmap executables) by passing
+      --storage-opt ignore_chown_errors
+    - The podman generate kube command now produces YAML for any bind
+      mounts the container has created (#2303)
+    - The podman container restore command now features a new flag,
+      --ignore-static-ip, that can be used with --import to import a
+      single container with a static IP multiple times on the same
+      host
+    - Added the ability for podman events to output JSON by
+      specifying --format=json
+    - If the OCI runtime or conmon binary cannot be found at the
+      paths specified in libpod.conf, Podman will now also search for
+      them in the calling user's path
+    - Added the ability to use podman import with URLs (#3609)
+    - The podman ps command now supports filtering names using
+      regular expressions (#3394)
+    - Rootless Podman containers with --privileged set will now mount
+      in all host devices that the user can access
+    - The podman create and podman run commands now support the
+      --env-host flag to forward all environment variables from the
+      host into the container
+    - Rootless Podman now supports healthchecks (#3523)
+    - The format of the HostConfig portion of the output of podman
+      inspect on containers has been improved and synced with Docker
+    - Podman containers now support CGroup namespaces, and can create
+      them by passing --cgroupns=private to podman run or podman
+      create
+    - The podman create and podman run commands now support the
+      --ulimit=host flag, which uses any ulimits currently set on the
+      host for the container
+    - The podman rm and podman rmi commands now use different exit
+      codes to indicate 'no such container' and 'container is
+      running' errors
+    - Support for CGroups V2 through the crun OCI runtime has been
+      greatly improved, allowing resource limits to be set for
+      rootless containers when the CGroups V2 hierarchy is in use
+  * Bugfixes
+    - Fixed a bug where a race condition could cause podman restart
+      to fail to start containers with ports
+    - Fixed a bug where containers restored from a checkpoint would
+      not properly report the time they were started at
+    - Fixed a bug where podman search would return at most 25
+      results, even when the maximum number of results was set higher
+    - Fixed a bug where podman play kube would not honor capabilities
+      set in imported YAML (#3689)
+    - Fixed a bug where podman run --env, when passed a single key
+      (to use the value from the host), would set the environment
+      variable in the container even if it was not set on the host
+      (#3648)
+    - Fixed a bug where podman commit --changes would not properly
+      set environment variables
+    - Fixed a bug where Podman could segfault while working with
+      images with no history
+    - Fixed a bug where podman volume rm could remove arbitrary
+      volumes if given an ambiguous name (#3635)
+    - Fixed a bug where podman exec invocations leaked memory by not
+      cleaning up files in tmpfs
+    - Fixed a bug where the --dns and --net=container flags to podman
+      run and podman create were not mutually exclusive (#3553)
+    - Fixed a bug where rootless Podman would be unable to run
+      containers when less than 5 UIDs were available
+    - Fixed a bug where containers in pods could not be removed
+      without removing the entire pod (#3556)
+    - Fixed a bug where Podman would not properly clean up all CGroup
+      controllers for created cgroups when using the cgroupfs CGroup
+      driver
+    - Fixed a bug where Podman containers did not properly clean up
+      files in tmpfs, resulting in a memory leak as containers
+      stopped
+    - Fixed a bug where healthchecks from images would not use
+      default settings for interval, retries, timeout, and start
+      period when they were not provided by the image (#3525)
+    - Fixed a bug where healthchecks using the HEALTHCHECK CMD format
+      where not properly supported (#3507)
+    - Fixed a bug where volume mounts using relative source paths
+      would not be properly resolved (#3504)
+    - Fixed a bug where podman run did not use authorization
+      credentials when a custom path was specified (#3524)
+    - Fixed a bug where containers checkpointed with podman container
+      checkpoint did not properly set their finished time
+    - Fixed a bug where running podman inspect on any container not
+      created with podman run or podman create (for example, pod
+      infra containers) would result in a segfault (#3500)
+    - Fixed a bug where healthcheck flags for podman create and
+      podman run were incorrectly named (#3455)
+    - Fixed a bug where Podman commands would fail to find targets if
+      a partial ID was specified that was ambiguous between a
+      container and pod (#3487)
+    - Fixed a bug where restored containers would not have the
+      correct SELinux label
+    - Fixed a bug where Varlink endpoints were not working properly
+      if more was not correctly specified
+    - Fixed a bug where the Varlink PullImage endpoint would crash if
+      an error occurred (#3715)
+    - Fixed a bug where the --mount flag to podman create and podman
+      run did not allow boolean arguments for its ro and rw options
+      (#2980)
+    - Fixed a bug where pods did not properly share the UTS
+      namespace, resulting in incorrect behavior from some utilities
+      which rely on hostname (#3547)
+    - Fixed a bug where Podman would unconditionally append
+      ENTRYPOINT to CMD during podman commit (and when reporting CMD
+      in podman inspect) (#3708)
+    - Fixed a bug where podman events with the journald events
+      backend would incorrectly print 6 previous events when only new
+      events were requested (#3616)
+    - Fixed a bug where podman port would exit prematurely when a
+      port number was specified (#3747)
+    - Fixed a bug where passing . as an argument to the --dns-search
+      flag to podman create and podman run was not properly clearing
+      DNS search domains in the container
+  * Misc
+    - Updated vendored Buildah to v1.10.1
+    - Updated vendored containers/image to v3.0.2
+    - Updated vendored containers/storage to v1.13.1
+    - Podman now requires conmon v2.0.0 or higher
+    - The podman info command now displays the events logger being in
+      use
+    - The podman inspect command on containers now includes the ID of
+      the pod a container has joined and the PID of the container's
+      conmon process
+    - The -v short flag for podman --version has been re-added
+    - Error messages from podman pull should be significantly clearer
+    - The podman exec command is now available in the remote client
+    - The podman-v1.5.0.tar.gz file attached is podman packaged for
+      MacOS. It can be installed using Homebrew.
+- Use new conmon package as direct dependency
+- Remove internal conmon package
+- Update libpod.conf to support latest path discovery feature for
+  `runc` and `conmon` binaries.
+- Re-enable 32bit build
+
+-------------------------------------------------------------------
+Thu Jul 25 09:20:47 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update libpod.conf to use correct infra_command
+
+-------------------------------------------------------------------
+Thu Jul 18 10:12:43 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update libpod.conf to use better versioned pause container
+
+-------------------------------------------------------------------
+Wed Jul 17 14:53:38 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update libpod.conf to use official kubic pause container
+
+-------------------------------------------------------------------
+Wed Jul 10 13:55:09 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Update libpod.conf to match latest features set:
+  detach_keys, lock_type, runtime_supports_json
+
+-------------------------------------------------------------------
+Mon Jul  8 10:46:43 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Add podman-remote varlink client
+- Update podman to v1.4.4
+  * Features
+    - Podman now has greatly improved support for containers using multiple OCI
+      runtimes. Containers now remember if they were created with a different
+      runtime using --runtime and will always use that runtime
+    - The cached and delegated options for volume mounts are now allowed for
+      Docker compatability (#3340)
+    - The podman diff command now supports the --latest flag
+  * Bugfixes
+    - Fixed a bug where rootless Podman would attempt to use the entire root
+      configuration if no rootless configuration was present for the user,
+      breaking rootless Podman for new installations
+    - Fixed a bug where rootless Podman's pause process would block SIGTERM,
+      preventing graceful system shutdown and hanging until the system's init
+      send SIGKILL
+    - Fixed a bug where running Podman as root with sudo -E would not work after
+      running rootless Podman at least once
+    - Fixed a bug where options for tmpfs volumes added with the --tmpfs flag
+      were being ignored
+    - Fixed a bug where images with no layers could not properly be displayed
+      and removed by Podman
+    - Fixed a bug where locks were not properly freed on failure to create a
+      container or pod
+    - Fixed a bug where podman cp on a single file would create a directory at
+      the target and place the file in it (#3384)
+    - Fixed a bug where podman inspect --format '{{.Mounts}}' would print a
+      hexadecimal address instead of a container's mounts
+    - Fixed a bug where rootless Podman would not add an entry to container's
+      /etc/hosts files for their own hostname (#3405)
+    - Fixed a bug where podman ps --sync would segfault (#3411)
+    - Fixed a bug where podman generate kube would produce an invalid ports
+      configuration (#3408)
+  * Misc
+    - Updated containers/storage to v1.12.13
+    - Podman now performs much better on systems with heavy I/O load
+    - The --cgroup-manager flag to podman now shows the correct default setting
+      in help if the default was overridden by libpod.conf
+    - For backwards compatability, setting --log-driver=json-file in podman run
+      is now supported as an alias for --log-driver=k8s-file. This is considered
+      deprecated, and json-file will be moved to a new implementation in the
+      future ([#3363](https://github.com/containers/libpo\
+      d/issues/3363))
+    - Podman's default libpod.conf file now allows the crun OCI runtime to be
+      used if it is installed
+
+-------------------------------------------------------------------
+Wed Jun 26 11:24:32 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- Update podman to v1.4.2
+  - Fixed a bug where Podman could not run containers using an older version of
+    Systemd as init
+  - Updated vendored Buildah to v1.9.0 to resolve a critical bug with
+    Dockerfile RUN instructions
+  - The error message for running podman kill on containers that are not
+    running has been improved
+  - Podman remote client can now log to a file if syslog is not available
+  - The podman exec command now sets its error code differently based on
+    whether the container does not exist, and the command in the container does
+    not exist
+  - The podman inspect command on containers now outputs Mounts JSON that matches
+    that of docker inspect, only including user-specified volumes and
+    differentiating bind mounts and named volumes
+  - The podman inspect command now reports the path to a container's OCI spec
+    with the OCIConfigPath key (only included when the container is initialized
+    or running)
+  - The podman run --mount command now supports the bind-nonrecursive option for
+    bind mounts
+  - Fixed a bug where podman play kube would fail to create containers due to an
+    unspecified log driver
+  - Fixed a bug where Podman would fail to build with musl libc
+  - Fixed a bug where rootless Podman using slirp4netns networking in an
+    environment with no nameservers on the host other than localhost would
+    result in nonfunctional networking
+  - Fixed a bug where podman import would not properly set environment
+    variables, discarding their values and retaining only keys
+  - Fixed a bug where Podman would fail to run when built with Apparmor support
+    but run on systems without the Apparmor kernel module loaded
+  - Remote Podman will now default the username it uses to log in to remote
+    systems to the username of the current user
+  - Podman now uses JSON logging with OCI runtimes that support it, allowing for
+    better error reporting
+  - Updated vendored containers/image to v2.0
+- Update conmon to v0.3.0
+  - Support OOM Monitor under cgroup V2
+  - Add config binary and make target for configuring conmon with a go library
+    for importing values
+
+-------------------------------------------------------------------
+Mon Jun 24 09:36:12 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- update dependency for slirp4netns to 0.3.0 or newer
+
+-------------------------------------------------------------------
+Tue Jun 11 06:43:28 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update podman to v1.4.0:
+  - The podman checkpoint and podman restore commands can now be
+    used to migrate containers between Podman installations on
+    different systems
+  - The podman cp command now supports a pause flag to pause
+    containers while copying into them
+  - The remote client now supports a configuration file for
+    pre-configuring connections to remote Podman installations
+  - Fixed CVE-2019-10152 - The podman cp command improperly
+    dereferenced symlinks in host context
+  - Fixed a bug where podman commit could improperly set
+    environment variables that contained = characters
+  - Fixed a bug where rootless Podman would sometimes fail to start
+    containers with forwarded ports
+  - Fixed a bug where podman version on the remote client could
+    segfault
+  - Fixed a bug where podman container runlabel would use
+    /proc/self/exe instead of the path of the Podman command when
+    printing the command being executed
+  - Fixed a bug where filtering images by label did not work
+  - Fixed a bug where specifying a bing mount or tmpfs mount over
+    an image volume would cause a container to be unable to start
+  - Fixed a bug where podman generate kube did not work with
+    containers with named volumes
+  - Fixed a bug where rootless Podman would receive permission
+    denied errors accessing conmon.pid
+  - Fixed a bug where podman cp with a folder specified as target
+    would replace the folder, as opposed to copying into it
+  - Fixed a bug where rootless Podman commands could double-unlock
+    a lock, causing a crash
+  - Fixed a bug where Podman incorrectly set tmpcopyup on /dev/
+    mounts, causing errors when using the Kata containers runtime
+  - Fixed a bug where podman exec would fail on older kernels
+  - The podman commit command is now usable with the Podman remote
+    client
+  - The --signature-policy flag (used with several image-related
+    commands) has been deprecated
+  - The podman unshare command now defines two environment
+    variables in the spawned shell: CONTAINERS_RUNROOT and
+    CONTAINERS_GRAPHROOT, pointing to temporary and permanent
+    storage for rootless containers
+  - Updated vendored containers/storage and containers/image
+    libraries with numerous bugfixes
+  - Updated vendored Buildah to v1.8.3
+  - Podman now requires Conmon v0.2.0
+  - The podman cp command is now aliased as podman container cp
+  - Rootless Podman will now default init_path using root Podman's
+    configuration files (/etc/containers/libpod.conf and
+    /usr/share/containers/libpod.conf) if not overridden in the
+    rootless configuration
+
+-------------------------------------------------------------------
+Fri Jun  7 11:48:27 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Add fuse-overlayfs dependency to support overlay based rootless image
+  manipulations
+
+-------------------------------------------------------------------
+Wed May 29 14:16:08 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update podman to v1.3.2:
+  - Fixed a bug where podman would fail to run if a volume was
+    mounted over an image volume
+
+-------------------------------------------------------------------
+Wed May 22 07:04:24 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update podman to v1.3.1:
+  - The podman cp command can now read input redirected to STDIN, and output to
+    STDOUT instead of a file, using - instead of an argument.
+  - The Podman remote client now displays version information from both the
+    client and server in podman version
+  - The podman unshare command has been added, allowing easy entry into the
+    user namespace set up by rootless Podman (allowing the removal of files
+    created by rootless Podman, among other things)
+  - Fixed a bug where Podman containers with the --rm flag were removing
+    created volumes when they were automatically removed
+  - Fixed a bug where container and pod locks were incorrectly marked as
+    released after a system reboot, causing errors on container and pod removal
+  - Fixed a bug where Podman pods could not be removed if any container in the
+    pod encountered an error during removal
+  - Fixed a bug where Podman pods run with the cgroupfs CGroup driver would
+    encounter a race condition during removal, potentially failing to remove
+    the pod CGroup
+  - Fixed a bug where the podman container checkpoint and podman container
+    restore commands were not visible in the remote client
+  - Fixed a bug where podman remote ps --ns would not print the container's
+    namespaces
+  - Fixed a bug where removing stopped containers with healthchecks could cause
+    an error
+  - Fixed a bug where the default libpod.conf file was causing parsing errors
+  - Fixed a bug where pod locks were not being freed when pods were removed,
+    potentially leading to lock exhaustion
+  - Fixed a bug where 'podman run' with SD_NOTIFY set could, on short-running
+    containers, create an inconsistent state rendering the container unusable
+  - The remote Podman client now uses the Varlink bridge to establish remote
+    connections by default
+- Update conmon to 0.2.0 and switched to containers/conmon upstream project
+
+-------------------------------------------------------------------
+Fri May 17 12:08:37 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update `systemd-devel` to actually be `pkgconfig(libsystemd)` to allow OBS to
+  shortcut through systemd-mini-devel
+
+-------------------------------------------------------------------
+Thu May 16 15:04:52 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update podman to v1.3.0
+  * Podman now supports container restart policies! The --restart-policy flag
+    on podman create and podman run allows containers to be restarted after
+    they exit. Please note that Podman cannot restart containers after a system
+    reboot - for that, see our next feature
+  * Podman podman generate systemd command was added to generate systemd unit
+    files for managing Podman containers
+  * The podman runlabel command now allows a $GLOBAL_OPTS variable, which will
+    be populated by global options passed to the podman runlabel command,
+    allowing custom storage configurations to be passed into containers run
+    with runlabel
+  * The podman play kube command now allows File and FileOrCreate volumes
+  * The podman pod prune command was added to prune unused pods
+  * Added the podman system migrate command to migrate containers using older
+    configurations to allow their use by newer Libpod versions
+  * Podman containers now forward proxy-related environment variables from the
+    host into the container with the --http-proxy flag (enabled by default)
+  * Read-only Podman containers can now create tmpfs filesystems on /tmp,
+    /var/tmp, and /run with the --read-only-tmpfs flag (enabled by default)
+  * The podman init command was added, performing all container pre-start tasks
+    without starting the container to allow pre-run debugging
+- Update conmon to cri-o v1.14.1
+- Update libpod.conf to match latest feature set
+
+-------------------------------------------------------------------
+Mon Apr  1 14:05:35 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update to podman 1.2.0
+  * Podman now supports image healthchecks! The podman healthcheck run command was added to manually run healthchecks, and the status of a running healthcheck can be viewed via podman inspect
+  * The podman events command was added to show a stream of significant events
+  * The podman ps command now supports a --watch flag that will refresh its output on a given interval
+  * The podman image tree command was added to show a tree representation of an image's layers
+  * The podman logs command can now display logs for multiple containers at the same time
+  * The podman exec command can now pass file descriptors to the process being executed in the container via the --preserve-fds option
+  * The podman images command can now filter images by reference
+  * The podman system df command was added to show disk usage by Podman
+  * The --add-host option can now be used by containers sharing a network namespace
+  * The podman cp command now has an --extract option to extract the contents of a Tar archive and copy them into the container, instead of copying the archive itself
+  * Podman now allows manually specifying the path of the slirp4netns binary for rootless networking via the --network-cmd-path flag
+  * Rootless Podman can now be used with a single UID and GID, without requiring a full 65536 UIDs/GIDs to be allocated in /etc/subuid and /etc/subgid
+  * The podman runlabel command now supports the --replace option to replace containers using the name requested
+  * Infrastructure containers for Podman pods will now attempt to use the image's CMD and ENTRYPOINT instead of a fixed command
+  * The podman play kube command now supports the HostPath and VolumeMounts YAML fields
+  * Added support to disable creation of resolv.conf or /etc/hosts in containers by specifying --dns=none and --no-hosts, respectively, to podman run and podman create
+  * The podman version command now supports the {{ json . }} template (which outputs JSON)
+  * Podman can now forward ports using the SCTP protocol
+- Update conmon to cri-o 1.14.0
+- Stop building for i586 (not supported by upstream, does not build)
+
+-------------------------------------------------------------------
+Fri Mar 22 21:02:05 UTC 2019 - Flavio Castelli <fcastelli@suse.com>
+
+- Change default libpod.conf configuration file: use the runtimes
+  section to allow users to specify different OCI runtimes. This
+  allows user to choose which runtime to use on a per container
+  basis.
+
+-------------------------------------------------------------------
+Tue Mar 19 13:15:38 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add 'apparmor-parser' to list of requires (boo#1123387)
+
+-------------------------------------------------------------------
+Sat Mar 16 08:33:38 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Scriptlets contain sh-compatible code, so drop -p /bin/bash.
+
+-------------------------------------------------------------------
+Fri Mar  8 09:47:25 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- podman-cni-config: remove artificial conflicts with kubelet
+
+-------------------------------------------------------------------
+Thu Mar  7 15:22:22 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Disable build with PIE on ppc64le to avoid boo#1098017
+
+-------------------------------------------------------------------
+Wed Mar  6 14:07:01 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update to v1.1.2
+  * Fixed a bug where the podman image list, podman image rm, and podman container list had broken global storage options
+  * Fixed a bug where the --label option to podman create and podman run was missing the -l alias
+  * Fixed a bug where running Podman with the --config flag would not set an appropriate default value for tmp_dir
+  * Fixed a bug where the podman logs command with the --timestamps flag produced unreadable output
+  * Fixed a bug where the podman cp command would automatically extract .tar files copied into the container
+  * The podman container stop command is now usable with the Podman remote client
+
+-------------------------------------------------------------------
+Mon Mar  4 11:27:03 UTC 2019 - Flavio Castelli <fcastelli@suse.com>
+
+- Update to v1.1.1
+  * Update release notes for v1.1.1
+  * Pull image for runlabel if not local
+  * Fix SystemExec completion race
+  * Fix link inconsistencies in man pages
+  * Verify that used OCI runtime supports checkpoint
+  * Should be defaulting to pull not pull-always
+  * podman-commands script: refactor
+  * Move Alias lines to descriptions of commands
+  * Fix usage messages for podman image list, rm
+  * Fix -s to --storage-driver in baseline test
+  * No podman container ps command exists
+  * Allow Exec API user to override streams
+  * fix up a number of misplace commands
+  * rootless, new[ug]idmap: on failure add output
+  * [ci skip] Critical note about merge bot
+  * podman port fix output
+  * Fix ignored --time argument to podman restart
+  * secrets: fix fips-mode with user namespaces
+  * Fix four errors tagged by Cobra macro debugging
+  * Clean up man pages to match commands
+  * Add debugging for errors to Cobra compatibility macros
+  * Command-line input validation: reject unused args
+  * Fix ignored --stop-timeout flag to 'podman create'
+  * fixup! Incorporate review feedback
+  * fixup! missed some more:
+  * fixup! Correction to 'checkpoint'
+  * Followup to #2456: update examples, add trust
+  * podman create: disable interspersed opts
+  * fix up a number of misplace commands
+  * Add a task to Cirrus gating to build w/o Varlink
+  * Skip checkpoint/restore tests on Fedora for now
+  * Fix build for non-Varlink-tagged Podman
+  * Remove restore as podman subcommand
+  * Better usage synopses for subcommands
+  * Bump gitvalidation epoch
+  * Bump to v1.2.0-dev
+  * Centralize setting default volume path
+  * Ensure volume path is set appropriately by default
+  * Move all storage configuration defaults into libpod
+  * rename pod when we have a name collision with a container
+  * podman remote-client readme
+- Update package to ship varlink required files
+
+-------------------------------------------------------------------
+Wed Feb 27 09:01:41 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update to v1.1.0
+  * Added --latest and --all flags to podman mount and podman umount
+  * Rootless Podman can now forward ports into containers (using the same -p and -P flags as root Podman)
+  * Rootless Podman will now pull some configuration options (for example, OCI runtime path) from the default root libpod.conf if they are not explicitly set in the user's own libpod.conf
+  * Added an alias -f for the --format flag of the podman info and podman version commands
+  * Added an alias -s for the --size flag of the podman inspect command
+  * Added the podman system info and podman system prune commands
+  * Added the podman cp command to copy files between containers and the host
+  * Added the --password-stdin flag to podman login
+  * Added the --all-tags flag to podman pull
+  * The --rm and --detach flags can now be used together with podman run
+  * The podman start and podman run commands for containers in pods will now start dependency containers if they are stopped
+  * Added the podman system renumber command to handle lock changes
+  * The --net=host and --dns flags for podman run and podman create no longer conflict
+  * Podman now handles mounting the shared /etc/resolv.conf from network namespaces created by ip netns add when they are passed in via podman run --net=ns:
+  * Various bugfixes - full changelog https://github.com/containers/libpod/releases/tag/v1.1.0
+- Removed obsolete patch containers-libpod-pull-2225.diff
+
+-------------------------------------------------------------------
+Tue Feb 26 17:17:32 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update to conmon from cri-o v1.13.1
+  * oci: read conmon process status
+
+-------------------------------------------------------------------
+Tue Feb 19 15:35:30 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Upgrade to v1.0.1
+  * rootless: join both userns and mount namespace with --pod
+  * rootless: create the userns immediately when creating a new pod
+  * Preserve exited state across reboot
+  * podman image prune -- implement all flag
+  * Add varlink support for prune
+  * Make --quiet work in podman create/run
+  * rootless: fix --pid=host without --privileged
+  * podman-inspect: don't ignore errors
+
+-------------------------------------------------------------------
+Wed Jan 30 22:57:51 UTC 2019 - Duncan Mac-Vicar <dmacvicar@suse.de>
+
+- Fix rootless mode with AppArmor
+  https://github.com/containers/libpod/pull/2225
+  Add patch containers-libpod-pull-2225.diff
+
+-------------------------------------------------------------------
+Mon Jan 28 10:32:38 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Stop using conmon from random git commits, use cri-o releases
+- Update to conmon from cri-o v1.13.0
+  * Solve gh#containers/libpod#527
+- Tidy up .gitignore files from podman-1.0.0.tar.xz
+
+-------------------------------------------------------------------
+Thu Jan 17 11:44:58 UTC 2019 - Jordi Massaguer <jmassaguerpla@suse.com>
+
+- Update requirement to go1.11 to stay in sync with CaaSP4 and use the same
+  version as k8s and cri-o to prevent "weird" issues because of the go version
+  (we had problems mixing go1.5 and go1.6 in the past)
+
+-------------------------------------------------------------------
+Wed Jan 16 09:42:52 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update libpod.conf to better align with upstream defaults [boo#1122024]
+- Require catatonit for new --init flag
+
+-------------------------------------------------------------------
+Sun Jan 13 15:39:42 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Upgrade to v1.0.0
+  * The podman exec command now includes a --workdir option to set working directory for the executed command
+  * The podman create and podman run commands now support the --init flag to use a minimal init process in the container
+  * Added the podman image sign command to GPG sign images
+  * The podman run --device flag now accepts directories, and will added any device nodes in the directory to the container
+  * Added the podman play kube command to create pods and containers from Kubernetes pod YAML
+  * Rootless containers now unconditionally use postrun cleanup processes, ensuring resources are freed when the container stops
+  * Pulling images has been parallelized, allowing individual layers to be pulled in parallel
+
+-------------------------------------------------------------------
+Tue Jan  8 11:20:42 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update to v0.12.1.2
+  * Rootless Podman now creates the storage.conf, libpod.conf, and mounts.conf configuration files automatically in ~/.config/containers/ for ease of reconfiguration
+  * The podman pod create command can expose ports in the pod's network namespace, allowing public services to be created in pods
+  * The podman container checkpoint command can now keep containers running after they are checkpointed with the --leave-running flag
+  * The podman container checkpoint and podman container restore commands now support the --tcp-established flag to checkpoint and restore containers with active TCP connections
+  * The podman version command now has a --format flag to produce machine-readable output
+  * Added the podman container exists, podman pod exists, and podman image exists commands to easily check for a container/pod/image, respectively, by name or ID
+  * The podman ps --pod flag now has a short alias, -p
+  * The podman rmi and podman rm commands now have a --prune flag to prune unused images and containers, respectively
+  * The podman ps command now has a --sync flag to force a sync of Podman's state against the OCI runtime, resolving some state desync errors
+  * Added the podman volume set of commands for creating and managing local-only named volumes
+  * Added the podman generate kube command to generate Kubernetes Pod and Service YAML for Podman containers and pods
+  * The podman pod stop flag now accepts a --timeout flag to set the timeout for stopping containers in the pod
+
+-------------------------------------------------------------------
+Tue Dec 18 09:40:40 UTC 2018 - Marco Vedovati <mvedovati@suse.com>
+
+- Update package summary and description
+
+-------------------------------------------------------------------
+Fri Dec  7 07:42:47 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- add dependency to iptables, build fails otherwise
+
+-------------------------------------------------------------------
+Fri Nov 16 08:22:48 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Changelog for v0.11.1.1 (2018-11-15)
+  * Increase pidWaitTimeout to 60s
+  * rootless: call IsRootless just once
+  * Add space between num & unit in images output
+  * Better document rootless containers
+  * info: add rootless field
+  * Do not hide errors when creating container with UserNSRoot
+  * correct assignment of networkStatus
+  * rootless: default to fuse-overlayfs when available
+
+-------------------------------------------------------------------
+Tue Nov 13 07:17:16 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Require golang >= 1.10.
+
+-------------------------------------------------------------------
+Fri Nov  9 07:46:46 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Changelog for v0.11.1 (2018-11-08)
+  * update seccomp.json
+  * Touch up --log* options and daemons in man pages
+  * Don't fail if /etc/passwd or /etc/group does not exists
+  * Properly set Running state when starting containers
+  * If a container ceases to exist in runc, set exit status
+  * rootless: mount /sys/fs/cgroup/systemd from the host
+  * rootless: don't bind mount /sys/fs/cgroup/systemd in systemd mode
+  * Add hostname to /etc/hosts
+  * Remove conmon cgroup before pod cgroup for cgroupfs
+  * Make kill, pause, and unpause parallel.
+  * Fix long image name handling
+  * Make restart parallel and add --all
+  * rootless: do not add an additional /run to runroot
+  * rootless: avoid hang on failed slirp4netns
+  * Fix setting of version information
+  * runtime: do not allow runroot longer than 50 characters
+  * attach: fix attach when cuid is too long
+  * truncate command output in ps by default
+  * make various changes to ps output
+  * Use two spaces to pad PS fields
+  * fix bug in rm -fa parallel deletes
+  * Ensure test container in running state
+  * Add tests for selinux labels
+  * Add --max-workers and heuristics for parallel operations
+  * Increase security and performance when looking up groups
+  * run prepare in parallel
+  * runlabel: run any command
+  * Explain the device format in man pages
+  * Add --all and --latest to checkpoint/restore
+  * Use more reliable check for rootless for firewall init
+  * Make podman ps fast
+  * Support auth file environment variable in podman build
+  * fix environment variable parsing
+  * Use the CRIU version check in checkpoint/restore
+  * Handle http/https in registry given to login/out
+  * correct stats err with non-running containers
+  * Make rm faster
+  * Fix man page to show info on storage
+
+- Changelog for v0.10.1.3 (2018-10-17)
+  * Vendor in new new buildah/ci
+  * Fix podman in podman
+
+- Changelog for v0.10.1.2 (2018-10-17)
+  * Fix CGroup paths used for systemd CGroup mount
+
+-------------------------------------------------------------------
+Tue Oct 30 06:57:08 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Require slirp4netns to enable networking for unprivileged network namespaces
+  aka networking for rootless podman.
+
+-------------------------------------------------------------------
+Wed Oct 17 06:07:29 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Changelog for v0.10.1.1 (2018-10-16)
+  * Mount proper cgroup for systemd to manage inside of the container.
+  * volume: resolve symlinks in paths
+  * volume: write the correct ID of the container in error messages
+  * Support auth file environment variable & add change to man pages
+  * Generate a passwd file for users not in container
+
+-------------------------------------------------------------------
+Fri Oct 12 06:43:30 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Changelog for v0.10.1 (2018-10-11)
+  * Sort all command flags
+  * rootless: detect when user namespaces are not enabled
+  * Log an otherwise ignored error from joining a net ns
+  * Update manpages for --ip flag
+  * Add --ip flag and plumbing into libpod
+  * Document --net as an alias of --network in podman run & create
+  * rootless: report more error messages from the startup phase
+  * rootless: fix an hang on older versions of setresuid/setresgid
+  * fix runlabel functions based on QA feedback
+  * Stop containers in parallel fashion
+  * runlabel: execute /proc/self/exe and avoid recursion
+  * Ensure resolv.conf has the right label and path
+  * completions: add checkpoint/restore completions
+  * Add support to checkpoint/restore containers
+  * selinux: drop superflous relabel
+  * rootless: always set XDG_RUNTIME_DIR
+  * Address review comments and fix ps output
+  * Disable SELinux labeling if --privileged
+  * Implement pod varlink bindings
+  * Add --all flag to podman kill
+  * Add container runlabel command
+  * run complex image names with short names
+
+-------------------------------------------------------------------
+Mon Oct  1 05:51:48 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Update conmon to 4cd5a7c60349be0678d9f1b0657683324c1a2726 and fetch
+  it from its new home https://github.com/kubernetes-sigs/cri-o.
+
+- Changelog for v0.9.3.1 (2018-09-25)
+  * Disable problematic SELinux code causing runc issues
+
+- Changelog for v0.9.3 (2018-09-21)
+  * Add --mount option for `create` & `run` command
+  * Don't mount /dev/shm if the user told you --ipc=none
+  * rootless: error out if there are not enough UIDs/GIDs available
+  * Add new field to libpod to indicate whether or not to use labelling
+  * Bind Mounts should be mounted read-only when in read-only mode
+  * report when rootless
+  * Don't crash if an image has no names
+
+- Changelog for v0.9.2 (2018-09-14)
+  * Don't mount /dev/* if user mounted /dev
+  * rootless: do not raise an error if the entrypoint is specified
+  * Add a way to disable port reservation
+  * Do not set rlimits if we are rootless
+  * Add --interval flag to podman wait
+  * Add `podman rm --volumes` flag
+  * Explicitly set default CNI network name in libpod.conf
+
+- Changelog for v0.9.1.1 (2018-09-10)
+  * Replace existing iptables handler with firewall code
+  * Vendor CNI plugins firewall code
+  * Fix displaying size on size calculation error
+
+- Changelog for v0.9.1 (2018-09-07)
+  * Fix pod sharing for utsmode
+  * Respect user-added mounts over default spec mounts
+  * use layer cache when building images
+  * Start pod infra container when pod is created
+  * Fix up libpod.conf man pages and referencese to it.
+  * We should fail Podman with ExitCode 125 by default
+  * Add CRI logs parsing to podman logs
+  * rmi remove all not error when no images are present
+  * rootless, create: support --pod
+  * rootless, run: support --pod
+
+-------------------------------------------------------------------
+Mon Sep  3 06:04:26 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Changelog for v0.8.5 (2018-08-31)
+  * Add proper support for systemd inside of podman
+  * We are mistakenly seeing repos as registries.
+  * Up time between checks for podman wait
+  * Turn on test debugging
+  * Add support for remote commands
+  * fixup A few language changes and subuid(5)
+  * Make the documentation of user namespace options in podman-run clearer
+  * catch command-not-found errors
+  * don't print help message for usage errors
+  * docs: consistent format for example
+  * docs: consistent headings
+  * docs: make HISTORY consistent
+  * docs: fix headers
+  * varlink: fix --timeout usage
+  * run/create: reserve `-h` flag for hostname
+  * podman,varlink: inform user about --timeout 0
+  * rootless: show an error when stats is used
+  * rootless: show an error when pause/unpause are used
+  * rootless: unexport GetUserNSForPid
+  * rootless, exec: use the new function to join the userns
+  * rootless: fix top
+  * rootless: add new function to join existing namespace
+  * Do not set max open files by default if we are rootless
+  * Set default max open files in spec
+  * Resolve /etc/resolv.conf before reading
+  * document `--rm` semantics
+  * rootless, search: do not create a new userns
+  * rootless, login, logout: do not create a new userns
+  * rootless, kill: do not create a new userns
+  * rootless, stop: do not create a new userns
+  * Fix manpage to note how multiple filters are combined
+  * Fix handling of multiple filters in podman ps
+  * Fix Mount Propagation
+  * docs: add containers-mounts.conf(5)
+  * docs: use "containers-" prefix for registries and storage
+  * rootless: fix --pid=host
+  * rootless: fix --ipc=host
+  * spec: bind mount /sys only when userNS are enabled
+  * rootless, tests: add test for --uts=host
+  * rootless: don't use kill --all
+  * rootless: exec handle processes that create an user namespace
+  * rootless: fix exec
+
+-------------------------------------------------------------------
+Mon Aug 27 06:05:18 UTC 2018 - vrothberg@suse.com
+
+- Changelog for v0.8.4 (2018-08-24)
+  * Swap from FFJSON to easyjson
+  * rootless: allow to override policy.json by the user
+  * add completion for --pod in run and create
+  * Fixed formatting and lowered verbosity of pod ps
+  * Do not try to enable AppArmor in rootless mode
+  * Reveal information about container capabilities
+  * Fixing network ns segfault
+  * Change pause container to infra container
+  * Added option to share kernel namespaces in libpod and podman
+  * Add podman pod top
+  * Include pod stats and top in commands/completions
+  * Fix syntax description of --ulimit command
+  * Properly translate users into runc format for exec
+  * rootless: fix --net host --privileged
+  * Fixed segfault in stats where container had netNS none or from container
+  * Enable pod stats with short ID and name
+  * Touch up cert-dir in man pages
+  * Support Attach subcommand in pypodman
+
+-------------------------------------------------------------------
+Mon Aug 20 06:40:02 UTC 2018 - vrothberg@suse.com
+
+- Changelog for v0.8.3 (2018-08-17)
+  * Switch from github.com/projectatomic to github.com/containers
+  * Mention that systemd is the default cgroup manager
+  * Fix handling of socket connection refusal.
+  * podman: fix --uts=host
+  * podman pod stats
+  * Added reason to PodContainerError
+  * Add Pod API to varlink.
+  * Revert "spec: bind mount /sys only for rootless containers"
+  * Document STORAGE_DRIVER and STORAGE_OPTS environment variable
+  * Create pod CGroups when using the systemd cgroup driver
+  * Switch systemd default CGroup parent to machine.slice
+  * spec: bind mount /sys only for rootless containers
+  * Add create and pull commands
+  * rootless: not require userns for help/version
+  * pkg/apparmor: use a pipe instead of a tmp file
+  * podman in rootless mode will only work with cgroupfs at this point.
+  * when searching, survive errors for multiple registries
+
+-------------------------------------------------------------------
+Mon Aug 13 06:32:40 UTC 2018 - vrothberg@suse.com
+
+- Changelog for v0.8.2.1 (2018-08-11)
+  * Ensure pod inspect is locked and validity-checked
+  * Swap default CGroup manager to systemd
+
+- Changelog for v0.8.2 (2018-08-10)
+  * We need to sort mounts so that one mount does not over mount another.
+  * search name should include registry
+  * removeContainer: fix deadlock
+  * Add FFJSON to build container
+  * Add FFJSON generation to makefile
+  * Fixed a bug setting dependencies on the wrong container
+  * Always connect to the stdout and stderr of stream
+  * apparmor: respect "unconfined" setting
+  * oci.go: syslog: fix debug formatting
+  * add podman pod inspect
+  * Fix CGroupFS cgroup manager cgroup creation for pods
+  * Pass newly-added --log-level flag to Conmon
+  * Cleanup man pages
+  * Improve ps handling of container start/stop time
+  * rootless: fix user lookup if USER= is not set
+  * Add dpkg support for returning oci/conmon versions
+  * Have info print conmon/oci runtime information
+  * Better pull error for fully-qualified images
+  * Add Runc and Conmon versions to Podman Version
+
+-------------------------------------------------------------------
+Thu Aug  9 10:20:19 UTC 2018 - vrothberg@suse.com
+
+- Add a dedicated conmon for podman as the requirements on the specific
+  version started to differ from the ones of CRI-O.  This change implies
+  dropping the requirement on the cri-o package.
+
+- Add libpod.conf as a new source to allow tweaking the search paths
+  for openSUSE.  This change makes execution slightly faster.
+
+-------------------------------------------------------------------
+Mon Aug  6 06:27:09 UTC 2018 - vrothberg@suse.com
+
+- Changelog for v0.8.1 (2018-08-03)
+  * Added ps --pod option
+  * clarify pull error message
+  * Man page fixes found by https://pagure.io/ManualPageScan
+  * rootless: do not segfault if the parent already died
+  * Document the properties of DefaultTransport a bit better.
+  * Add --force to podman umount to force the unmounting of the rootfs
+  * network: add support for rootless network with slirp4netns
+  * Add documentations on how to setup /etc/subuid and /etc/subgid
+  * podman rmi shouldn't delete named referenced images
+
+-------------------------------------------------------------------
+Mon Jul 30 05:45:52 UTC 2018 - vrothberg@suse.com
+
+- Changelog for v0.7.4 (2018-07-27)
+  * Add pod pause/unpause
+  * Fix up docker compatibility messages
+  * Fix handling of Linux network namespaces
+  * Cleanup descriptions and help information
+  * Add pod kill
+  * Added pod restart
+  * podman: allow to specify the IPC namespace to join
+  * podman: allow to specify the UTS namespace to join
+  * podman: allow to specify the PID namespace to join
+  * podman: allow to specify the userns to join
+  * spec: allow container:NAME network mode
+  * Add libpod namespace to config
+  * Add missing runtime.go lines to set namespace
+  * Set namespace for new pods/containers based on runtime
+  * Add --namespace flag to Podman
+  * Update documentation for the State interface
+  * Ensure pods are part of the set namespace when added
+  * Enforce namespace checks on container add
+  * Add container and pod namespaces to configs
+  * AppArmor: runtime check if it's enabled on the host
+  * Add format descriptors infor to podman top
+  * docs/podman-top: fix typo and whitespace
+
+-------------------------------------------------------------------
+Mon Jul 23 06:18:32 UTC 2018 - vrothberg@suse.com
+
+- Changelog for v0.7.3 (2018-07-20)
+  * Podman load/tag/save prepend localhost when no repository is present
+  * Pod ps now uses pod.Status()
+  * Added pod start and stop
+  * rootless: support a per-user mounts.conf
+  * secrets: parse only one mounts configuration file
+  * rootless: allow a per-user registries.conf file
+  * rootless: allow a per-user storage.conf file
+  * rootless, docs: document the libpod.conf file used in rootless mode
+  * podman-top: use containers/psgo
+  * oci: keep exposed ports busy and leak the fd into conmon
+  * Fix ps filter with key=value labels
+  * rootless: require subids to be present
+
+-------------------------------------------------------------------
+Mon Jul 16 05:37:36 UTC 2018 - vrothberg@suse.com
+
+- Changelog for v0.7.2 (2018-07-13)
+  * Only print container size JSON if --size was requested
+  * Don't print rootfs and rw sizes if they're empty
+  * Major fixes to podman ps --format=json output
+  * Ignore running containers in ps exit-code filters
+  * rootless: correctly propagate the exit status from the container
+  * rootless: unshare mount namespace
+  * Need to wait for container to exit before completing run/start completes
+  * If proxy fails then then signal should be sent to the main process
+  * fix pull image that includes a sha
+  * Added full podman pod ps, with tests and man page
+  * Podman pod create/rm commands with man page and tests.
+  * Added created time to pod state
+  * Support multiple networks
+  * podman rmi should only untag image if parent of another
+  * build: enable ostree in containers/storage when available
+  * podman/libpod: add default AppArmor profile
+  * rootless: propagate errors from GetRootlessRuntimeDir()
+  * rootless: resolve the user home directory
+  * rootless: fix when argv[0] is not an absolute path
+  * urfave/cli: fix regression in short-opts parsing
+  * Add --volumes-from flag to podman run and create
+  * Mask /proc/keys to protect information leak about keys on host
+  * Podman stats with no containers listed is the same as podman stats --all
+
+- install missing podman (1) manpage
+
+- podman-rpmlintrc: ignore missing-call-to-setgroups-before-setuid wari
+
+- install bash completion at /usr/share/bash-completion/completions
+
+- buildmode=pie: build position independent code
+
+-------------------------------------------------------------------
+Mon Jul  9 05:47:32 UTC 2018 - vrothberg@suse.com
+
+- Changelog for v0.7.1 (2018-07-06)
+  * Block use of /proc/acpi from inside containers
+  * Remove per-container CGroup parents
+  * rootless: add /run/user/$UID to the lookup paths
+  * rootless: add function to retrieve the original UID
+  * rootless: always set XDG_RUNTIME_DIR
+  * rootless: set XDG_RUNTIME_DIR also for state and exec
+  * urfave/cli: fix parsing of short opts
+  * docs: Follow man-pages(7) suggestions for SYNOPSIS
+  * Allow multiple mounts
+
+- re-enable varlink support (build conditional)
+
+-------------------------------------------------------------------
+Mon Jul  2 05:53:26 UTC 2018 - vrothberg@suse.com
+
+- Changelog for v0.6.5 (2018-06-29)
+  * Fix built-in volume issue with podman run/create
+  * Add `podman container cleanup` to CLI
+  * Allow multiple containers and all for umount
+  * Returning joining namespace error should not be fatal
+  * Test to verify overlay quotas work, show container overhead on quota
+  * Remove the --registry flag from podman search
+  * utils: fix endless write of resize event
+  * Start prints UUID or container name that user inputs on success
+  * Fix podman hangs when detecting startup error in container attached mode
+  * podman-build --help: update description
+  * docs: add documentation for rootless containers
+  * Add --authfile to podman search
+  * Add podman-image and podman-container man page links
+  * make varlink optional for podman
+
+-------------------------------------------------------------------
+Mon Jun 25 05:58:20 UTC 2018 - vrothberg@suse.com
+
+- Changelog for v0.6.4 (2018-06-22)
+  * Point podman-refresh at the right manpage
+  * Add bash completions for podman refresh
+  * Add manpages for podman refresh
+  * Add podman refresh command
+  * Add information about the configuration files to the install docs
+  * Add unittests and fix bugs
+  * Podman history now prints out intermediate image IDs
+  * Add cap-add and cap-drop to build man page
+  * Fix image volumes access and mount problems on restart
+  * Add carriage return to log message when using --tty flag
+  * Added --sort to ps
+  * Fix podman build -q
+  * Add extra debug so we can tell apart postdelete hooks
+  * TLS verify is skipped per registry.
+  * Add --all,-a flag to podman images
+  * top: make output tabular
+  * Add more network info ipv4/ipv6 and be more compatible with docker
+  * Do not run iptablesDNS workaround on IPv6 addresses
+  * Added --tls-verify functionality to podman search, with tests
+
+-------------------------------------------------------------------
+Mon Jun 18 05:46:23 UTC 2018 - vrothberg@suse.com
+
+- Changelog for v0.6.3 (2018-06-15)
+  * podman: use a different store for the rootless case
+  * podman: do not use Chown in rootless mode
+  * network: do not attempt to create a network in rootless mode
+  * oci: do not set resources in rootless mode
+  * oci: do not use hooks in rootless mode
+  * oci: do not set the cgroup path in Rootless mode
+  * spec: change mount options for /dev/pts in rootless mode
+  * container: do not add shm in rootless mode
+  * podman: provide a default UID mapping when non root
+  * podman: accept option --rootfs to use exploded images
+  * When setting a memory limit, also set a swap limit
+  * Fix cleaning up network namespaces on detached ctrs
+  * Implement --latest for ps
+  * Added --sort flag to podman image
+  * add podman container and image command
+  * rmi: remove image if all tags are specified
+
+-------------------------------------------------------------------
+Mon Jun 11 06:22:30 UTC 2018 - vrothberg@suse.com
+
+- Changelog for v0.6.2 (2018-06-08)
+  * Vendor in latest buildah code
+  * Update epoch to fix validation problems
+  * Touch up whitespace issue in build man
+  * Add disable-content flag info to man page for build
+  * podman-run: clean up some formatting issues
+  * Remove SELinux transition rule after conmon is started.
+  * Add --all flag even though it is a noop so scripts will work
+  * podman-varlink: log timeouts
+  * bash completion: remove shebang
+  * Vendor in latest containers/storage
+
+-------------------------------------------------------------------
+Fri Jun  8 14:26:33 UTC 2018 - dcassany@suse.com
+
+- Make use of %license macro
+
+-------------------------------------------------------------------
+Tue Jun  5 13:36:00 UTC 2018 - vrothberg@suse.com
+
+- Changelog for v0.6.1 (2018-06-01)
+  * Fix lable handling
+  * runtime: add /usr/libexec/podman/conmon to the conmon paths
+  * varlink build
+  * Add OnBuild support for podman build
+  * return all inspect info for varlink containerinspect
+  * hooks/exec: Allow successful reaps for 0s post-kill timeouts
+  * fix panic with podman pull
+  * Remove --net flag and make it an alias for --network
+  * Clear all caps, except the bounding set, when --user is specified.
+    Fix: bsc#1097970 CVE-2018-10856
+  * do not allow port related args to be used with --network=container:
+  * sort containers and images by create time
+  * Cleanup man pages
+
+-------------------------------------------------------------------
+Tue May 29 12:35:47 UTC 2018 - parlt@suse.com
+
+- Changelog for v0.5.4 (2018-05-25):
+  * Make references to the Process part of Spec conditional
+  * save and load should support multi-tag for docker-archive
+  * Implement python podman create and start
+  * Set Entrypoint from image only if not already set
+  * Update podman build to match buildah bud functionality
+  * Fix handling of command in images
+  * Add support for Zulu timestamp parsing
+  * Clarify using podman build with a URL, Git repo, or archive.
+  * podman create, start, getattachsocket
+  * oci-hooks.5: Discuss directory precedence and monitoring
+  * Tighten the security on the podman varlink socket
+
+-------------------------------------------------------------------
+Tue May 22 10:16:03 UTC 2018 - parlt@suse.com
+
+- Changelog for v0.5.3 (2018-05-18):
+  * troubleshooting: Add console syntax highlighting
+  * Refresh pods when refreshing podman state
+  * Add per-pod CGroups
+  * Add pod state
+  * hooks: Fix monitoring of multiple directories
+  * Add Troubleshooting guide
+  * Add python3 package to podman
+  * libpod: fix panic when using -t and the process fails to start
+  * Allow push/save without image reference
+  * Fix podman inspect bash completions
+  * Support pulling Dockerfile from http
+  * add more bash completions
+  * implement varlink commit
+  * fix segfault for podman push
+  * Add the Podman Logo
+  * hooks: Add package support for extension stages
+
+-------------------------------------------------------------------
+Mon May 14 08:33:11 UTC 2018 - vrothberg@suse.com
+
+- Changelog for v0.5.2 (2018-05-11):
+  * Fix varlink remove image force
+  * Do not error trying to remove cgroups that don't exist
+  * Remove parent cgroup we create with cgroupfs
+  * Place Conmon and Container in separate CGroups
+  * Add --cgroup-manager flag to Podman binary
+  * Major fixes to systemd cgroup handling
+  * Add validation for CGroup parents. Pass CGroups path into runc
+  * varlink info
+  * Dont eat the pull error message for varlink
+  * podman push should honor registries.conf
+  * alphabetize the varlink methods, types, and errors in the docs
+  * Add missing newline to podman port
+  * Fix calculation of RunningFor in ps json output
+  * Should not error out if container no longer exists in oci
+  * Make invalid state nonfatal when cleaning up in run
+  * podman, userNS: configure an intermediate mount namespace
+  * networking, userNS: configure the network namespace after create
+  * Begin wiring in USERNS Support into podman
+
+-------------------------------------------------------------------
+Mon May  7 05:42:24 UTC 2018 - vrothberg@suse.com
+
+- Remove runtime dependency on buildah, which isn't required anymore as
+  libpod vendors in buildah's code directly.
+
+- Changelog for v0.5.1 (2018-05-04):
+  * Fix pulling from secure registry
+  * Optionally init() during container restart
+  * bashcompletion enhancements
+  * Add directory for systemd socket and service if not present
+  * varlink containers
+  * Make podman commit to localhost rather then docker.io
+  * Do not print unnecessary Buildah details during commit
+  * Fix podman logout --all flag
+  * podman should assign a host port to -p when omitted
+  * libpod.conf: Podman's conmon path on openSUSE
+  * correct varlink command in service file
+  * Make ':' a restricted character for file names
+
+-------------------------------------------------------------------
+Mon Apr 30 06:53:09 UTC 2018 - vrothberg@suse.com
+
+- Update podman to v0.4.4:
+  * Use buildah commit and bud in podman
+  * Remove systemd-cat support
+  * Add --default-mounts-file hidden flag
+  * Add isolation note to build man page
+  * Strip transport from image name when looking for local image
+  * Do not eat error messages from pullImage
+  * Modify --user flag for podman create and run
+  * add libpod.conf man page
+
+-------------------------------------------------------------------
+Mon Apr 23 08:37:57 UTC 2018 - parlt@suse.com
+
+- Update podman to v0.4.3:
+  * podman push without destination image
+  * Add make .git target
+  * Fix tests for podman run --attach
+  * Vendor in latest containers/image and contaners/storage
+  * It is OK to start an already running container (with no attach)
+  * Allow podman start to attach to a running container
+  * regression: tls verify should be set on registries.conf if insecure
+  * ip validation game too strong
+  * reverse host field order (ip goes first) - fix host string split to permit IPv6
+  * Allow podman to exit exit codes of removed containers
+  * validate dns-search values prior to creation
+  * Add WaitContainerReady for wait for docker registry ready
+  * podman pull should always try to pull
+  * Allow the use of -i/-a on any container
+  * Fix secrets patch
+
+-------------------------------------------------------------------
+Tue Apr 17 06:44:19 UTC 2018 - vrothberg@suse.com
+
+- Require golang >= 1.9.
+
+-------------------------------------------------------------------
+Tue Apr 17 06:19:33 UTC 2018 - vrothberg@suse.com
+
+- Update podman to v0.4.2:
+  * Allowing attaching stdin to non-interactive containers
+  * Fix terminal attach
+  * Fix locking interaction in batched Exec() on container
+  * Force host UID/GID mapping when creating containers
+  * Do not lock all containers during pod kill
+  * Do not lock all containers during pod start
+  * Make pod stop lock one container at a time
+  * Containers transitioning to stop should not break stats
+  * Add -i to exec for compatibility reasons
+  * Unescape characters in inspect JSON format output
+  * Use buildah commit for podman commit
+
+-------------------------------------------------------------------
+Mon Apr  9 07:48:52 UTC 2018 - parlt@suse.com
+
+- Update podman to v0.4.1:
+  * Remove image via storage if a buildah container is associated
+  * Add hooks support to podman
+  * Run images with no names
+  * Prevent a potential race when stopping containers
+  * Only allocate tty when -t
+  * Add conmon-pidfile flag to bash completions/manpages
+  * --entrypoint= should delete existing entrypoint
+  * Do not require Init() before Start()
+  * Ensure dependencies are running before initializing containers
+  * Add container dependencies to Inspect output
+  * Vendor in latest containers/image
+  * Change errorf to warnf in warning removing ctr storage
+
+-------------------------------------------------------------------
+Thu Apr  5 06:40:07 UTC 2018 - asarai@suse.com
+
+- Split out podman's basic CNI configuration to podman-cni-config, to avoid
+  breaking Kubernetes clusters due to misconfigured networking. On openSUSE we
+  still install this configuration so things "just work" there.
+
+-------------------------------------------------------------------
+Tue Apr  3 05:41:54 UTC 2018 - vrothberg@suse.com
+
+- Update podman to v0.3.5:
+  * Allow sha256: prefix for input
+  * Add secrets patch to podman
+  * Only start containers that are not running in pod start
+  * Check for duplicate names when generating new container and pod names.
+  * podman: new option --conmon-pidfile=
+  * Remove dependency on kubernetes
+  * Vendor in lots of kubernetes stuff to shrink image size
+  * cmd/podman/run.go: Error nicely when no image found
+  * Update containers/storage to pick up overlay driver fix
+  * First tag, untag THEN reload the image
+
+-------------------------------------------------------------------
+Mon Mar 26 05:57:07 UTC 2018 - vrothberg@suse.com
+
+- Update podman to v0.3.4:
+  * Make container env variable conditional
+  * Small manpage reword
+  * Document .containerenv in manpages. Move it to /run.
+  * Add .containerenv file
+  * Removing tagged images change in behavior
+  * Image library stage 4 - create and commit
+  * Add 'podman restart' asciinema
+
+-------------------------------------------------------------------
+Mon Mar 19 09:47:24 UTC 2018 - vrothberg@suse.com
+
+- Remove old (redundant) source archive.
+
+-------------------------------------------------------------------
+Sat Mar 17 10:36:53 UTC 2018 - vrothberg@suse.com
+
+- Do not compile commit hash into binary. `podman version` will not print
+  the commit number as we are now following official releases.
+
+- Change tar naming from commit to version to facilitate updates via the
+  _service file.
+
+- Update podman to v0.3.3.  This update includes several fixes and a new
+  configuration file, libpod.conf.  By default, this config will be
+  installed to /usr/share/containers and /etc/containers, whereas podman
+  will always use the latter if present.  The config in
+  /usr/share/containers can be used to check for new config options and
+  will be replaced with each package update.  The libpod.conf config can
+  be used to tweak some run-time paths of conmon, runc, etc., which is a
+  more flexible approach than hard-coding those paths in podman.
+
+  Changelog:
+  * Update containers/image
+  * Add restart to main podman manpage
+  * Add podman restart to podman bash completions and commands
+  * Make manpage more clear
+  * Add 'podman restart' command
+  * Remove ability to specify mount label when mounting
+  * Add signal proxying to podman run, start, and attach
+  * We should not allow a user to mount a container with a different label
+  * We should not have a default workdir
+  * Add additional debug logging
+  * Implement container restarting
+  * sleep does not catch SIGTERM
+  * Include tmpfs in inspect
+  * Add run and search to commands page
+  * Add new default location for conmon
+  * podman-images: return correct image list
+  * Remove crio.conf references from manpages
+  * Fix a potential race around container removal in ps
+  * podman ps command string too long
+  * Podman load can pull in compressed files
+  * Fix Conmon error to display Conmon paths
+  * Add support to load runtime configuration from config file
+  * Add default libpod config file
+  * Change conmon and runtime paths to arrays
+  * Update containers/storage to fix locking bug
+
+-------------------------------------------------------------------
+Thu Mar 15 15:24:23 UTC 2018 - vrothberg@suse.com
+
+- Add requirement on cni-plugins to avoid potential issues in the
+  future.
+  feature#crio
+
+-------------------------------------------------------------------
+Tue Mar  6 11:00:09 UTC 2018 - vrothberg@suse.com
+
+- Add run-time requirement on buildah to support `podman build`.
+  feature#crio
+
+-------------------------------------------------------------------
+Tue Mar  6 08:01:37 UTC 2018 - vrothberg@suse.com
+
+- Fix typo when setting the git commit at compile time.
+
+-------------------------------------------------------------------
+Sat Mar  3 14:20:06 UTC 2018 - vrothberg@suse.com
+
+- Update podman to v0.3.1:
+  * allow DNS resolution in containers
+  * Adjust podman logs error message for clarity
+  * Instead of erroring on exit file not being found, warn
+  * podman logs -f: does not detect container stop or rm
+  * Fix issue with podman logs on fresh containers
+  * Replace usage of runc with runtime
+  * Handle removing containers with active exec sessions
+  * Ensure that Cleanup() will not run on active containers
+  * Add tracking for exec session IDs
+  * Add tracking for container exec sessions to DB
+  * Small fixes to container Exec
+  * docs/podman-info.1.md update man page
+  * Update containers/storage
+  * podman info add registries
+  * podman stats add networking
+  * CNIPluginDir: check "/usr/lib/cni"
+  * remove build alias
+  * Restrict top output to container's pids only
+  * ps displays incorrect exit code
+  * podman load dont panic when no repotags
+  * Do not override user mounts
+  * Tagging an image alias by shortname
+  * Add support for --no-new-privs
+  * podman ps json output use batched ops
+  * CreateContainerStorage by image id
+  * Implement --image-volumes for create and run
+  * Add ability to start containers in a pod
+  * Add kill and stop for pods
+  * Add pod status command
+  * Add tests and cleanup
+  * Implement podman run option --cgroup-parent
+  * Inspect output should be in array form
+  * Add --time alias to manpages
+  * Alias --time to --timeout for 'podman stop'
+  * Resolve contention between copr and fedora repos
+  * Ensure we don't repeatedly poll disk for exit codes
+  * Change uptime format in `podman info` to human-readable
+
+-------------------------------------------------------------------
+Thu Feb 22 10:25:14 UTC 2018 - vrothberg@suse.com
+
+- Replace macro by the entire URL in the spec file.
+
+-------------------------------------------------------------------
+Tue Feb 20 14:29:54 UTC 2018 - vrothberg@suse.com
+
+- Add podman-rpmlintrc to ignore "explicit-lib-dependency" warnings. Those are
+  intentional as we must include the libcontainers-* packages.
+  + podman-rpmlintrc
+
+- Update to podman v0.2.1 (change to semantic version scheme):
+  * Run podman inside a podman container
+  * Add FFJSON encoding/decoding for our container structs
+  * images --all developer note
+  * Add podman version
+  * Touch up tutorial location and install reqs
+  * No registries warning
+  * Return imageid from podman pull
+  * Squash logged errors from failed SQL rollbacks
+  * Privileged containers should inherit host devices
+  * Disable default Seccomp profile with privileged containers
+  * Make libpod build on 32-bit systems
+  * Add buckets for all containers and all pods
+  * Containers in a pod can only join namespaces in that pod
+  * Change json to match docker inspect
+  * Honor ENTRYPOINT in image
+  * Fix libpod to use given CGroup parent instead of a hardcoded one
+  * podman logs: fix tailing
+  * Allow removing pods with running containers if --force is given
+  * Match podman inspect output to docker inspect
+  * Touchup podman kill manpage
+  * Change stop signal default to SIGTERM
+  * Add podman search command
+  * sysfs should be mounted rw for privileged
+  * Need to add LISTEN_PID environment variable to conmon command
+  * Add authfile, cert-dir and creds params to build
+
+-------------------------------------------------------------------
+Fri Feb  9 15:55:16 UTC 2018 - vrothberg@suse.com
+
+- Add requirement on libcontainers-common, which now provides the
+  /etc/containers/policy.json config.
+- Use golang-packaging macros.
+- Set version to +git%{rev_list} scheme as there's no official release yet.
+- Spec file cleanups via spec-cleaner.
+- Add requirement on libcontainers-{common,image,storage}, which provide
+  configuration files, manpages and debugging tools useful and required by
+  podman.
+
+-------------------------------------------------------------------
+Wed Feb  7 08:51:16 UTC 2018 - vrothberg@suse.com
+
+- Fix typo to provide the correct package.
+- Replace tabs with spaces.
+
+-------------------------------------------------------------------
+Mon Feb  5 06:40:05 UTC 2018 - vrothberg@suse.com
+
+- Fix libostree-devel %if condition for TW, Leap 15+ and SLES 15+.
+
+-------------------------------------------------------------------
+Thu Feb  1 12:38:03 UTC 2018 - vrothberg@suse.com
+
+- Use `%fdupes %buildroot/%_prefix` since `fdupes %buildroot` is not allowed
+  because you cannot make hardlinks between certain partitions.
+
+-------------------------------------------------------------------
+Tue Jan 30 15:33:21 UTC 2018 - vrothberg@suse.com
+
+- Add podman package: podman is a simple client only tool to help with
+  debugging issues when daemons such as CRI runtime and the kubelet are not
+  responding or failing.

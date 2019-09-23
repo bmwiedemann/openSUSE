@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Tue Jan 15 16:14:49 UTC 2013 - lars@linux-schulserver.de
+
+- specfile cleanup
+
+-------------------------------------------------------------------
+Tue Jan 11 13:44:15 UTC 2011 - vcizek@novell.com
+
+- update to 1.07
+    - Add a warning when -c used incorrectly
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:28 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:30 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:45 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sat Jan 19 00:00:00 UTC 2008 - gerrit.beine@googlemail.com
+
+- moved to openSUSE Build Service
+
+-------------------------------------------------------------------
+Thu Dec  6 00:00:00 UTC 2007 - gerrit@beine-computer.de
+
+- first release 1.06
+
+
+

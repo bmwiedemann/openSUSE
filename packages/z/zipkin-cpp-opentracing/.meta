@@ -1,0 +1,6 @@
+<package name="zipkin-cpp-opentracing" project="openSUSE:Factory">
+  <title>zipkin-cpp-opentracing</title>
+  <description>OpenTracing Tracer implementation for Zipkin in C++</description>
+  <devel project="server:http" package="zipkin-cpp-opentracing"/>
+  <url>https://github.com/rnburn/zipkin-cpp-opentracing</url>
+</package>

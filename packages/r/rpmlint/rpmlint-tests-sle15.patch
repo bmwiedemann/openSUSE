@@ -1,0 +1,28 @@
+From af1ec4e64647ec4b6bf550ba822165c563a40ad6 Mon Sep 17 00:00:00 2001
+From: Ludwig Nussel <ludwig.nussel@suse.de>
+Date: Wed, 9 May 2018 13:50:54 +0200
+Subject: [PATCH] Revert "polkit: adjust reference output to match
+ corresponding change in rpmlint-checks"
+
+This reverts commit f4dfbdc2cc367245537df410353a64d67cbcc519.
+---
+ tests/polkit.ref | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/polkit.ref b/tests/polkit.ref
+index fb214ea..22dd180 100644
+--- a/tests/polkit.ref
++++ b/tests/polkit.ref
+@@ -1,6 +1,6 @@
+ polkit: I: polkit-cant-acquire-privilege org.opensuse.test.bar (no:auth_admin:auth_admin)
++polkit: W: polkit-untracked-privilege org.opensuse.test.bar (no:auth_admin:auth_admin)
++polkit: W: polkit-untracked-privilege org.opensuse.test.foo (auth_admin:auth_admin:auth_admin)
+ polkit: E: polkit-unauthorized-privilege (Badness: 10000) org.opensuse.test.baz (auth_admin:auth_admin:auth_self)
+ polkit: E: polkit-unauthorized-privilege (Badness: 10000) org.opensuse.test.baz2 (auth_admin:auth_admin:yes)
+-polkit: E: polkit-untracked-privilege (Badness: 10000) org.opensuse.test.bar (no:auth_admin:auth_admin)
+-polkit: E: polkit-untracked-privilege (Badness: 10000) org.opensuse.test.foo (auth_admin:auth_admin:auth_admin)
+-1 packages and 0 specfiles checked; 4 errors, 0 warnings.
++1 packages and 0 specfiles checked; 2 errors, 2 warnings.
+-- 
+2.16.3
+

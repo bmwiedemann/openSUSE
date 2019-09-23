@@ -1,0 +1,8 @@
+<package name="csound" project="openSUSE:Factory">
+  <title>Computer Sound Synthesis and Composition Program</title>
+  <description>Csound is a software synthesis program. It is fully modular and
+supports an unlimited amount of oscillators and filters.
+
+For detailed information, refer to http://www.csounds.com.</description>
+  <devel project="multimedia:apps" package="csound"/>
+</package>

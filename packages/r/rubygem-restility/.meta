@@ -1,0 +1,7 @@
+<package name="rubygem-restility" project="openSUSE:Factory">
+  <title>Utilities for writing REST web services</title>
+  <description>The package contains rest_doc utility for generating documentation
+for a REST API and rest_test utility for testing REST API.</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-restility"/>
+  <url>http://restility.rubyforge.org</url>
+</package>

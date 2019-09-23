@@ -1,0 +1,200 @@
+-------------------------------------------------------------------
+Thu May 16 22:51:40 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.6.3:
+  * Add drag-n-drop to terminal (text & uris)
+  * When scrolling with "shift" (1 page) or "shift + ctrl" (4
+    pages) it will be faster (gh#Guake/guake#271)
+  * Add schema_version check for tabs session restore
+  * Add save/restore terminal split for tabs session -
+    Save/Restore terminal split by pre-order traversal full binary
+    tree in list
+  * Bump tabs session schema_version to 2 (to support terminal
+    split)
+  * Lazy restore terminal split until Guake is visible
+  * Manage terminal signal handler by handler_ids
+  * Avoid spurious resize event when showing fullscreened window
+  * Make sure workspace-specific-tab-sets only enable on X11
+    backend (due to wnck)
+  * Add install/uninstall-dev-locale to support dev locale
+  * Fix DualTerminalBox grab focus when remove dead child
+  * Support customize prefix for make
+  * Fix re-focus on terminal after rename dialog destroy
+  * Fix split terminal by menu will not follow last terminal cwd
+    (if option set)
+  * Fix delete_shell using os.waitpid (should not use it)
+
+-------------------------------------------------------------------
+Mon Apr 29 05:59:22 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.6.1:
+  * new feature: search in current terminal
+  * new feature: session saving
+  * new feature: settings export and import
+  * various fixes to the core
+  * minor build system fixes
+  * translation updates
+
+-------------------------------------------------------------------
+Tue Apr 23 07:15:18 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.5.0:
+  * new hotkey (CTRL+SHIFT+H) to open new tab in home directory
+  * "New tab" button (gh#Guake/guake#1471)
+  * Open new tab by double-clicking on the tab bar
+  * Add new context menu on the notebook
+  * Add a CLI option to change palette scheme
+    (gh#Guake/guake#1345)
+  * Bold text is also bright (>= VTE 0.52 only)
+  * guake --split-vertical and --split-horizontal split the
+    current
+  * tab just like the context menu does
+  * Optional close buttons for tabs (disabled by default)
+  * Guake can now provide a set of tabs per workspace
+  * Reverse transparency slider to be more meaningful
+    (gh#Guake/guake#1501)
+  * Fix command-line select tab behavior (gh#Guake/guake#1492)
+  * removed duplicate event bind? previously I had issue where
+    quick-open event would be fired twice because of this.
+  * fix settings only applied to the active workspace if more the
+    1 is used
+  * fix prompt quit dialog numbers when more then 1 workspace is
+    used
+  * Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct  4 15:44:20 UTC 2018 - badshah400@gmail.com
+
+- Update to version 3.4.0:
+  * Split and resize terminals via mouse or keyboard shortcuts.
+  * "New terminal" / "Rename terminal" / "Close terminal" items
+    has been removed from the terminal context menu. They are
+    still available on the tab context menu.
+  * Fix multiline selection right click (gh#Guake/guake#1413).
+  * Fix tab name (gh#Guake/guake#1017).
+  * fixes jumping preference window (gh#Guake/guake#1149).
+  * fix no focus after closing a split terminal
+    (gh#Guake/guake#1421).
+  * Add note about shell that does not support --login parameter
+    (gh#Guake/guake#469).
+  * Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 23 21:47:45 UTC 2018 - badshah400@gmail.com
+
+- Add python3-gobject-Gdk to Requires; fixes boo#1102963.
+
+-------------------------------------------------------------------
+Mon Jul 23 13:18:45 UTC 2018 - badshah400@gmail.com
+
+- Update to version 3.3.2:
+  * Travis build cleaned build artifacts before deployment,
+    leading to missing files when built in the CI.
+- Changesn from version 3.3.1:
+  * Don't translate application icon (this finally fixes Guake
+    application icon not being displayed with German locale, which
+    was only partially resolved with gh#Guake/guake#1320)
+  * Install of Guake through pip install was broken; fixed.
+
+-------------------------------------------------------------------
+Sat Jul 14 14:51:41 UTC 2018 - badshah400@gmail.com
+
+- Update to version 3.3.0:
+  * Wayland is a bit more well supported. The X11 backend is now
+    used by default for GDK and it seems to make the shortcut
+    works under most situation.
+  * A new command has been added: guake-toggle, should be faster
+    than guake -t. You can use it when you register the global
+    shortcut manually (X11 or Wayland).
+
+-------------------------------------------------------------------
+Sun Jun  3 16:31:37 UTC 2018 - badshah400@gmail.com
+
+- Update to version 3.2.2:
+  * Fix transparency regression on ubuntu composite
+    (gh#Guake/guake#1333).
+  * Fix transparency issue.
+  * Fix right-click on link.
+  * Fix bad css override on check tab background
+    (gh#Guake/guake#1326).
+  * Fix Guake application icon not displayed with German locale.
+  * Fix ctrl+click on hyperlinks on VTE 0.50
+    (gh#Guake/guake#1295).
+  * Fixed "Gruvbox Dark" color palette (swapped foreground and
+    background).
+  * Swapped foreground and background colors for palettes added in
+    commit #58842e9.
+  * Add option groupes to the bootstrap scripts.
+
+-------------------------------------------------------------------
+Mon Apr 30 20:39:34 UTC 2018 - badshah400@gmail.com
+
+- Update to version 3.2.1:
+  * Introduce Nord: a new nice, clean new palette theme is
+    available for Guake users (gh#Guake/guake#1275)
+  * Fix duplication in theme list (gh#Guake/guake#1304)
+  * Fix right click selection in Midnight Commander
+  * Corrected usage of Vte.Regex.new_for_match to fix regular
+    expression matching (hyperlinks, quick open) on VTE >0.50
+    (gh#Guake/guake#1295). URL with ' (simple quote) and ()
+    (parenthesis) are now captured by hyperlink matcher. User can
+    still select the URL in the terminal if he wishes to capture
+    the exact url, before doing a Ctrl+click or a right click.
+  * Fix "Grubbox Dark" theme
+  * Updated translations.
+- Changes from version 3.2.0:
+  * Allow user to select the theme within the preference UI
+  * Selected tab use "selected highlight" color from theme
+    (gh#Guake/guake##1036)
+  * Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 16 18:15:06 UTC 2018 - sebix+novell.com@sebix.at
+
+- Use gobject-introspection for typelib library detection.
+
+-------------------------------------------------------------------
+Sat Apr 14 08:35:04 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 3.1.1:
+ * New Features
+  * Quick open displays a combobox with predefined settings for Visual Studio Code, Atom and Sublime Text.
+ * Bug Fixes
+  * Fix hyperlink VTE
+- update to version 3.1.0:
+ * Release Summary
+  * This version of Guake brings mostly bug fixes, and some new features like "Quick Open on selection".
+    I have also reworked internally the Quick Open so that it can automatically open files from logs
+    from pytest and other python development tools output. However, there might still some false
+    positive on the hovering of the mouse in the terminal, the most famous being the output of ``ls -l``
+    which may have the mouse looks like it sees hyperlinks on the terminal everywhere. Click does
+    nothing but its an annoying limitation.
+  * New Features:
+   - New "start at login" option in the settings (only for GNOME) #251
+   - Add ``--verbose``/``-v`` parameter to enable debug logging. Please note the existing ``-v`` (for
+     version number) has been renamed ``-V``.
+   - Support for hyperlink VTE extension (`described
+     here <https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda>`__ ) #945 (Untested, as
+     it requires VTE 0.50)
+   - Add great color palettes from `Guake Color
+     Scheme <https://github.com/ziyenano/Guake-Color-Schemes>
+   - Allow application to capture right click (ex: Midnight commander). #1096. It is still possible to
+     show the contextual menu with Shift+right click.
+  * Bug Fixes:
+   - delete tab even without libutempter (#1198)
+   - Fix crash when changing command file #1229
+   - fix ``import sys`` in ``simplegladeapp.py``
+   - change scope of ``which_align`` variable in ``pref.py`` (#1225)
+   - Fix user interface translations #1228
+   - Fix several issues on Quick Edit:
+   - There might be broken translations, or not up-to-date language support by Guake. A global refresh
+     of all existing translations would be welcomed. Most has not been updated since the transition to
+     Guake 3, so these languages support might probably be unfunctional or at least partialy
+     localized.
+- remove fix-simplegladeapp.patch, merged upstream
+
+-------------------------------------------------------------------
+Fri Mar 30 18:27:32 UTC 2018 - sebix+novell.com@sebix.at
+
+- initial package for version 3.0.5
+- add fix-simplegladeapp.patch to fix runtime bug

@@ -1,0 +1,8 @@
+<package name="tj" project="openSUSE:Factory">
+  <title>Stdin line timestamps, JSON-friendly</title>
+  <description>Timestamps lines read from standard input.
+
+</description>
+  <devel project="utilities" package="tj"/>
+  <url>https://github.com/sgreben/tj</url>
+</package>

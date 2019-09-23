@@ -1,0 +1,177 @@
+-------------------------------------------------------------------
+Fri Sep 15 13:16:01 UTC 2017 - aloisio@gmx.com
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Sun Aug 21 17:25:19 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Update to version 2.5.0:
+  + new Version released
+  + better detect codecs
+  + Video-Format suitable codecs assigned
+  + if change Videopath, Play and Sendbutton not plausible
+  + x264 lossloess
+  + new area
+  + memory leak
+  + new areay
+  + waitForFinished( 3000 )
+  + delete old log stuff
+  + statusbar sum filesize
+  + language
+  + correct ffmpegpath
+  + translation dialogs
+  + [showclick] buttoncolor, buttonbox
+  + pause was since ffmpeg 1.8.7 broken
+  + detect ffmpeg vokoscreen-with-libs
+  + print plugin path
+  + systray menue
+  + check lsof
+  + changed INSTALL file
+  + Removed old QT4 stuff, vokoscreen now only compile under QT5
+  + add check xdg-mail
+  + withframe and withoutframe geometrie
+  + pause movewindow
+  + add picture for audiodevices
+  + read new code,format,device if other recoder
+  + webcamwindow over fullscreen
+  + webcam settings-rotate
+  + readsettings pulse-devices
+  + qt5 sytray menue
+  + look up x11grab
+  + dynamic GUI
+  + new screencast .h and .cpp
+  + language Persian
+  + Logbutton on new place
+  + copy log to clipboard
+  + remove avi, add mp4
+  + Turkish (Turkey) translation. Only QT5: provide log output
+    in GUI
+  + InstallMessageHandler
+  + Codec, Format with GIF not plausible
+  + add GIF Player
+  + Pausebutton and Audiowidget disabled if gif recorded
+  + add gif support
+  + detect available formats like mkv, avi, etc.
+  + update 21 lanugages
+  + name from recorder in kmix is vokoscreen
+  + nomouse is deprecated, we want draw_mouse
+  + no longer need .asoundrc
+  + Qt5 Audio Pulse set automatical Shortcut, remove in
+    Settings '&'
+  + add language Spanish(Argentina)
+  + detect experimental codec
+  + Qt5 systray do not exit
+  + pausebutton was by countdown enabled
+  + add Videoplayer mpv
+  + codec settings not load
+  + if spaces in the path then nothing will be played by the player
+  + new countdown
+  + countdown moved in separate directory
+  + update README.md
+  + change manpage
+  + add Backspace to showkey
+  + detect available audio and video codec
+  + add codec x265
+  + add audio codec acc
+  + add warning in audio Tab, if no audio set
+  + Systray hide window destroy QProcess
+  + sytray icons not plausible
+  + when webcam window maximized are not plausible to other
+    context menu
+  + Webcam image Keep Aspect Ratio
+  + added KeyboardMapping for showkey
+  + showkey expanded
+  + add Portuguese translation
+  + language Norwegian Bokmål, Norwegian and Swedish
+  + Multi-users terminal server support
+  + add huffyuv and pcm_s16le
+  + add prefix for install
+  + better soundrecording with two audio sources
+  + add language Persian
+  + add language Netherlands and Albanian
+  + fix segfaults in screencast::getFfmpegVersion()
+  + qt5 compile error
+  + showkey as thread
+  + add showclick
+  + delete workaround for ffmpeg 2.6.3
+- Only build against qt5, build against qt4 no longer works.
+- Removed vokoscreen-lrelease-qt5.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Sat Jan 16 15:14:36 UTC 2016 - marguerite@opensuse.org
+
+- Update to version 2.4.11+git20160108.eeb9c2b:
+  + countdown
+  + if spaces in the path then nothing will be played by the player
+  + codec settings not load
+  + pausebutton was by countdown enabled
+  + add Videoplayer mpv
+  + Qt5 systray not exit
+  + detect experimental codec
+- enable qt5 builds on leap and openSUSE > 13.1
+- add patch: vokoscreen-lrelease-qt5.patch
+
+-------------------------------------------------------------------
+Mon May  4 21:04:22 UTC 2015 - fisiu@opensuse.org
+
+- Update to 2.3.0:
+  * pause changed from mkvtoolnix to ffmpeg[-concat]
+  * delete mkvmerge stuff
+  * fix DISPLAY variable bug
+- Drop Requires: mkvtoolnix
+
+-------------------------------------------------------------------
+Sun Apr 19 11:01:14 UTC 2015 - fisiu@opensuse.org
+
+- Update to 2.2.0:
+  * add comatibility with ffmpeg 2.6
+  * drop avconv support
+  * enhanced webcam control window
+  * new languages: Japan, Indonesian
+  * x264 set as default video codec
+  * many bugs got fixed
+
+-------------------------------------------------------------------
+Wed Nov  5 22:38:02 UTC 2014 - fisiu@opensuse.org
+
+- Update to 2.1.0:
+  * multiscreen support
+  * mirrored webcam picture
+  * show webcam picture over full screen application
+  * remove ffplay and avplay from playerlist
+  * many bugfixes
+
+-------------------------------------------------------------------
+Thu Mar 27 21:40:54 UTC 2014 - fisiu@opensuse.org
+
+- Update to 2.0.0.
+
+-------------------------------------------------------------------
+Thu Feb 13 17:54:52 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 1.9.5:
+  * no upstream change log.
+- Switched to download_files service.
+- Qmake debug info stripping was disabled.
+- Rpm opt flags became used.
+
+
+-------------------------------------------------------------------
+Fri Nov 22 13:53:52 UTC 2013 - fisiu@opensuse.org
+
+- Update to 1.8.0:
+  * New record area.
+  * Countdown-timer.
+  * Support for avconv.
+
+-------------------------------------------------------------------
+Sat Aug  3 19:24:19 UTC 2013 - fisiu@opensuse.org
+
+- Use stable release x.y.0 instead devel snapshots.
+
+-------------------------------------------------------------------
+Fri Aug  2 16:28:42 UTC 2013 - fisiu@opensuse.org
+
+- Initial package at version 1.7.7.
+

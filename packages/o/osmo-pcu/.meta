@@ -1,0 +1,8 @@
+<package name="osmo-pcu" project="openSUSE:Factory">
+  <title>Osmocom GPRS Packet Control Unit (PCU)</title>
+  <description>Osmocom PCU code (RLC/MAC/PCU) for OpenBTS and OsmoBTS.
+
+</description>
+  <devel project="network:telephony" package="osmo-pcu"/>
+  <url>https://osmocom.org/projects/osmopcu/wiki/OsmoPCU</url>
+</package>

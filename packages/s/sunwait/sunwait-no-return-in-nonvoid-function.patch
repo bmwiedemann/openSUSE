@@ -1,0 +1,39 @@
+Index: sunwait-20041208/main.c
+===================================================================
+--- sunwait-20041208/main.c	2019-03-07 18:57:47.400044311 +0100
++++ sunwait-20041208/main.c	2019-03-07 19:04:28.998761527 +0100
+@@ -52,7 +52,7 @@
+   { NULL, 0, 0 }
+ };
+ 
+-print_usage() 
++void print_usage()
+ {
+   FILE* f = stdout;
+   fprintf(f, "usage: sunwait [options] [sun|civ|naut|astr] [up|down] [+/-offset] [latitude] [longitude]\n\n");
+Index: sunwait-20041208/print.c
+===================================================================
+--- sunwait-20041208/print.c	2019-03-07 18:57:36.563970036 +0100
++++ sunwait-20041208/print.c	2019-03-07 19:04:15.010669011 +0100
+@@ -9,7 +9,7 @@
+   "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+ } ;
+ 
+-int print_situation ( int sit, char local, 
++void print_situation ( int sit, char local,
+ 		      char* up_string, double up,
+ 		      char* down_string, double down,
+ 		      char* always_up, char* always_down ) 
+@@ -40,11 +40,10 @@
+       printf( "%s\n", always_down );
+       break;
+     }
+-  return sit;
+ } 
+ 
+ 
+-int print_everything(int year, int month, int day, 
++void print_everything(int year, int month, int day,
+ 		     double lat, double lon,
+ 		     struct tm* tm, char local)
+ {

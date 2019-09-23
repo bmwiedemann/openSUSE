@@ -1,0 +1,92 @@
+Enhancement that gets installation repos from zypper.
+These locations are then presented as potential installation
+sources when creating a VM.
+Index: virt-manager-2.2.0/virtManager/createvm.py
+===================================================================
+--- virt-manager-2.2.0.orig/virtManager/createvm.py
++++ virt-manager-2.2.0/virtManager/createvm.py
+@@ -99,6 +99,69 @@ def is_virt_bootstrap_installed():
+     return pkgutil.find_loader('virtBootstrap') is not None
+ 
+ 
++################################################
++# Helpers for using SUSE installation location #
++################################################
++
++import subprocess
++from subprocess import Popen, PIPE
++
++_host_repo_url = None
++
++def getHostInstallSource():
++    global _host_repo_url
++    if _host_repo_url is not None:
++        return _host_repo_url
++    if os.geteuid() != 0:
++        return None
++
++    (_,zypper_output) = lookupZypperRepos()
++    if len(zypper_output):
++        _host_repo_url = zypper_output[0]
++        return _host_repo_url
++    return None
++
++def lookupZypperRepos(dom0_inst_source=None):
++    try:
++        env = os.environ.copy()
++        env['LC_ALL'] = 'C'
++        cmd = ['/usr/bin/zypper', 'lr', '-u', '-P', '-E']
++        p = subprocess.Popen(cmd, stdout=PIPE, stderr=PIPE, env=env)
++        stdout, stderr = p.communicate()
++        zypper_output = stdout.decode()
++        zypper_list = zypper_output.split("\n")
++        zypper_header = [x.strip(' ') for x in zypper_list[0].split("|")]
++        uri_index = zypper_header.index("URI")
++    except:
++        inst_source = []
++        if dom0_inst_source:
++            inst_source = [dom0_inst_source]
++        return (0, inst_source)
++
++    index_dom0 = -1
++    number_of_sources = 0
++    zypper_output = []
++    for repo in zypper_list:
++        repo = [x.strip(' ') for x in repo.split("|")]
++        if len(repo) >= uri_index:
++            str = repo[uri_index]
++            if str.startswith('ftp://') or str.startswith('http://') or str.startswith('nfs://') or str.startswith('smb://'):
++                zypper_output.append(str)
++                if dom0_inst_source is not None and str == dom0_inst_source:
++                    index_dom0 = number_of_sources
++                number_of_sources += 1
++
++    if index_dom0 == -1 and dom0_inst_source:
++        index_dom0 = 0
++        zypper_output.insert(0, dom0_inst_source)
++    return (index_dom0, zypper_output)
++
++def getInstallRepos():
++    if os.geteuid() != 0:
++        return (0, [])
++    return lookupZypperRepos(getHostInstallSource())
++
++
+ ##############
+ # Main class #
+ ##############
+@@ -368,7 +431,13 @@ class vmmCreateVM(vmmGObjectUI):
+         self.widget("install-url-entry").set_text("")
+         self.widget("install-url-options").set_expanded(False)
+         urlmodel = self.widget("install-url-combo").get_model()
+-        _populate_media_model(urlmodel, self.config.get_media_urls())
++        urllist = self.config.get_media_urls()
++        (index, inst_repos) = getInstallRepos()
++        for u in urllist:
++            if u in inst_repos:
++                inst_repos.remove(u)
++        media_urllist = urllist + inst_repos
++        _populate_media_model(urlmodel, media_urllist)
+ 
+         # Install import
+         self.widget("install-import-entry").set_text("")

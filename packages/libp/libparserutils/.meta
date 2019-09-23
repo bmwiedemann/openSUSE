@@ -1,0 +1,5 @@
+<package name="libparserutils" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="LibreOffice:Factory" package="libparserutils"/>
+</package>

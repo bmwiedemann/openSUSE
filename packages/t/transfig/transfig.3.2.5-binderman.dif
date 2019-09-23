@@ -1,0 +1,14 @@
+---
+ transfig/sys.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- transfig/sys.c
++++ transfig/sys.c	2016-09-22 13:02:49.040774112 +0000
+@@ -39,6 +39,7 @@ sysls(void)
+ 	i += 1;
+ 	c = fgetc(ls);
+   }
++  pclose(ls);
+   sysbuf[i] = '\0';
+   return sysbuf;
+ }

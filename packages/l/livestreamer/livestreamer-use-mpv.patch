@@ -1,0 +1,63 @@
+--- a/src/livestreamer_cli/argparser.py
++++ b/src/livestreamer_cli/argparser.py
+@@ -288,7 +288,7 @@
+ 
+       "'/path/with spaces/vlc' --file-caching=5000"
+ 
+-    By default VLC will be used if it can be found in its default
++    By default MPV will be used if it can be found in its default
+     location.
+     """
+ )
+--- a/src/livestreamer_cli/main.py
++++ b/src/livestreamer_cli/main.py
+@@ -67,7 +67,7 @@
+         http = namedpipe = None
+ 
+         if not args.player:
+-            console.exit("The default player (VLC) does not seem to be "
++            console.exit("The default player (MPV) does not seem to be "
+                          "installed. You must specify the path to a player "
+                          "executable with --player.")
+ 
+@@ -126,7 +126,7 @@
+ 
+     if not external:
+         if not args.player:
+-            console.exit("The default player (VLC) does not seem to be "
++            console.exit("The default player (MPV) does not seem to be "
+                          "installed. You must specify the path to a player "
+                          "executable with --player.")
+ 
+--- a/src/livestreamer_cli/utils/player.py
++++ b/src/livestreamer_cli/utils/player.py
+@@ -15,23 +15,23 @@
+ def find_default_player():
+     if "darwin" in sys.platform:
+         paths = os.environ.get("PATH", "").split(":")
+-        paths += ["/Applications/VLC.app/Contents/MacOS/"]
+-        paths += ["~/Applications/VLC.app/Contents/MacOS/"]
+-        path = check_paths(("VLC", "vlc"), paths)
++        paths += ["/Applications/mpv.app/Contents/MacOS/"]
++        paths += ["~/Applications/mpv.app/Contents/MacOS/"]
++        path = check_paths(("MPV", "mpv"), paths)
+     elif "win32" in sys.platform:
+-        exename = "vlc.exe"
++        exename = "mpv.exe"
+         paths = os.environ.get("PATH", "").split(";")
+         path = check_paths((exename,), paths)
+ 
+         if not path:
+-            subpath = "VideoLAN\\VLC\\"
++            subpath = "MPV\\"
+             envvars = ("PROGRAMFILES", "PROGRAMFILES(X86)", "PROGRAMW6432")
+             paths = filter(None, (os.environ.get(var) for var in envvars))
+             paths = (os.path.join(p, subpath) for p in paths)
+             path = check_paths((exename,), paths)
+     else:
+         paths = os.environ.get("PATH", "").split(":")
+-        path = check_paths(("vlc",), paths)
++        path = check_paths(("mpv",), paths)
+ 
+     if path:
+         # Quote command because it can contain space

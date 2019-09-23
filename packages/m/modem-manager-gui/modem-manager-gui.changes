@@ -1,0 +1,112 @@
+-------------------------------------------------------------------
+Thu Jul 26 18:12:34 UTC 2018 - dap.darkness@gmail.com
+
+- 0.0.19.1:
+  * Fixes:
+    - building on non-x86 machines;
+    - running on system without systemd;
+    - couple of small fixes;
+    - new Slovak localization by Jozef Gaal;
+- 0.0.19:
+  * New features:
+    - New connection control functionality
+      for NetworkManager/Connman;
+    - Builtin PIN code input dialog;
+    - Active pages selection;
+    - Custom command for new SMS;
+    - Notifications filtration in GNOME;
+    - Traffic graph movement selection;
+    - Modules compatibility checks;;
+    - Meson build system support;
+    - Theme icons support (thanks to Andrei);
+    - Monochrome and scalable icons for desktop integration;
+    - AppIndicator as replacement for GtkStatusIcon;
+    - New translations;
+  * Fixes:
+    - UI refresh for better look and feel (thanks to Andrei);
+    - Registration handler in MM06 fix (thanks to Alexey);
+    - Invisible infobar fix;
+    - Stalled connection to Akonadi server fix;
+    - Akonadi server error handler typo fix (thanks to dcb);
+    - Timestamp parser for legacy MM versions fix;
+    - Appdata file format and placement fix.
+- Added 95-mmgui-timestamp-notifier.diff.
+
+-------------------------------------------------------------------
+Wed Jun 22 15:12:13 UTC 2016 - dap.darkness@gmail.com
+
+- Reverted previous commit. It was wrong.
+
+-------------------------------------------------------------------
+Sun Jun 19 19:45:11 UTC 2016 - dap.darkness@gmail.com
+
+- Let's conflict with evolution-data-server >= 3.16 to finally
+  resolve bnc#985560 & bnc#927724.
+
+-------------------------------------------------------------------
+Tue Nov 17 14:27:56 UTC 2015 - dimstar@opensuse.org
+
+- Only run fdupes over /usr/share/help: we must not risk the icon
+  in /usr/share/pixmaps to turn in a symlink.
+
+-------------------------------------------------------------------
+Tue Oct 13 17:15:48 UTC 2015 - dap.darkness@gmail.com
+
+- 0.0.18:
+  * New features:
+    - SystemD integration for easy services activation (DBus
+      activation also supported, SystemD is not strictly required);
+    - Spell checking for SMS messages (using Gtkspell and Enchant);
+    - Extended traffic consumption statistics;
+    - SMS list multi-selection mode.
+  * Fixes:
+    - Evolution Data Server v.0.0.16 API break;
+    - Crash on start because of NULL values in SMS structure fields;
+    - NDIS devices support;
+    - ...and some other.
+- Removed modem-manager-gui-0.0.17.1-fix-libebook-api-break.patch.
+
+-------------------------------------------------------------------
+Sat Apr 25 21:22:41 UTC 2015 - dap.darkness@gmail.com
+
+- Added http://download.tuxfamily.org/gsf/patch/…-api-break.patch
+  ( modem-manager-gui-0.0.17.1-fix-libebook-api-break.patch )
+  because of API break in libebook library from Evolution data
+  server version 3.16. Resolves bnc#927724 (openSUSE Factory).
+
+-------------------------------------------------------------------
+Tue Sep  2 15:25:05 UTC 2014 - dap.darkness@gmail.com
+
+- 0.0.17.1:
+  * New features:
+    - oFono/Connman supprted as well as ModemManager/NetworkManager;
+    - KDE addressbook contacts export (not sure if it works fine
+      though, additional testing needed);
+    - Preferred backends can be selected from GUI;
+    - Operations timeouts can be adjusted from GUI;
+    - Autocompletion for names of contacts in New SMS dialog and
+      names of commands in USSD window added;
+    - GNOME-style help added, thanks to Mario Blättermann (it is
+      not finished at moment, but much better than nothing);
+    - Appdata file added;
+  * Fixes:
+    - Deadlock on connections handling (at least hope so);
+    - Traffic history for a first day of month;
+    - Sending USSD codes with first symbol '#';
+    - 3GPP location format (thanks to Graham Inggs);
+    - Lots of other fixes.
+- Added desktop_database_post(un) and new dependencies.
+- Removed merged patches:
+  * modem-manager-gui-0.0.16-fix-gcc-warnings.patch
+  * modem-manager-gui-0.0.16-notifications-icon.patch
+
+-------------------------------------------------------------------
+Fri Jul 25 19:33:05 UTC 2014 - seanpwatson@live.com
+
+- Patch to change .desktop exec no needed in Factory
+
+-------------------------------------------------------------------
+Sun Sep  8 17:13:43 UTC 2013 - dap.darkness@gmail.com
+
+- Initial build.
+

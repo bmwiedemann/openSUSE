@@ -1,0 +1,12 @@
+diff -Nur libclaw-1.7.4/CMakeLists.txt new/CMakeLists.txt
+--- libclaw-1.7.4/CMakeLists.txt	2013-07-03 21:34:38.000000000 +0200
++++ new/CMakeLists.txt	2016-05-16 00:22:56.372318270 +0200
+@@ -85,7 +85,7 @@
+   ${CLAW_CODE_DIR}arguments_table.cpp
+ )
+ add_library( claw_application SHARED ${CLAW_APPLICATION_SOURCES} )
+-add_library( claw_application-static ${CLAW_APPLICATION_SOURCES} )
++add_library( claw_application-static STATIC ${CLAW_APPLICATION_SOURCES} )
+ target_link_libraries( claw_application claw_logger )
+ 
+ if( NOT WIN32 )

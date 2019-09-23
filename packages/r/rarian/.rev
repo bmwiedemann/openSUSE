@@ -1,0 +1,308 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9001b91e07b41637a067bdd576fb9ebb</srcmd5>
+    <version>0.5.6</version>
+    <time>1186540912</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="10">
+    <srcmd5>9878120441c064a29d8ccf522b803df1</srcmd5>
+    <version>0.5.6</version>
+    <time>1188645257</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="12">
+    <srcmd5>f83a5a6d41bebb50ae861e9422179904</srcmd5>
+    <version>0.5.6</version>
+    <time>1189421915</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1f80950994a034b730b59ae948488636</srcmd5>
+    <version>0.5.8</version>
+    <time>1189528526</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>05f517c54afd08eeb481e1db97c443ad</srcmd5>
+    <version>0.5.8</version>
+    <time>1189779967</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6ec00666a36e1913ff020c082e1d0120</srcmd5>
+    <version>0.6.0</version>
+    <time>1190291343</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d6ffe1549f6447e8184d9e8a2d6aeae7</srcmd5>
+    <version>0.7.1</version>
+    <time>1204931195</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>6b7a2d8e643226d505df13fd3d5ce668</srcmd5>
+    <version>0.7.1</version>
+    <time>1208909120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>7fb230e38d6a07ff2006bebb7c290cb3</srcmd5>
+    <version>0.7.1</version>
+    <time>1209134556</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>b3c44050d5fb1ebabdce170860db7ff2</srcmd5>
+    <version>0.7.1</version>
+    <time>1210205992</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f98500055c3f5768d6183fcdeee3a750</srcmd5>
+    <version>0.8.0</version>
+    <time>1214427181</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>ab1ebd1595faabbb17426259fe41497b</srcmd5>
+    <version>0.8.0</version>
+    <time>1215555725</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>25ee7ac24f6ffe91c6aa043a10dc747a</srcmd5>
+    <version>0.8.1</version>
+    <time>1221306446</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>562c01389e9518ce62b61c9695a03f72</srcmd5>
+    <version>0.8.1</version>
+    <time>1222270027</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>274b8792970000decf1b7077c8f1c16f</srcmd5>
+    <version>0.8.1</version>
+    <time>1225718386</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>6abf1f2d0e392111d66f789610bd2939</srcmd5>
+    <version>0.8.1</version>
+    <time>1244831775</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>2f183ab9f01183bc90f5c136b75c36cf</srcmd5>
+    <version>0.8.1</version>
+    <time>1254788658</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/rarian based on submit request 21828 from user vuntz
+</comment>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>2f183ab9f01183bc90f5c136b75c36cf</srcmd5>
+    <version>0.8.1</version>
+    <time>1254788658</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/rarian based on submit request 21828 from user vuntz
+</comment>
+  </revision>
+  <revision rev="19" vrev="10">
+    <srcmd5>742f1f4ee69e7b0f0387b6ba89d30d66</srcmd5>
+    <version>0.8.1</version>
+    <time>1260270465</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/rarian based on submit request 25897 from user vuntz
+</comment>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>322460e41049263066c839c9c357c9bc</srcmd5>
+    <version>0.8.1</version>
+    <time>1268925953</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="21" vrev="13">
+    <srcmd5>322460e41049263066c839c9c357c9bc</srcmd5>
+    <version>0.8.1</version>
+    <time>1278667386</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="14">
+    <srcmd5>322460e41049263066c839c9c357c9bc</srcmd5>
+    <version>0.8.1</version>
+    <time>1278678615</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="15">
+    <srcmd5>2c85c0921d4522b57d8d56fdd5cadee8</srcmd5>
+    <version>0.8.1</version>
+    <time>1295020277</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58220 from user vuntz
+</comment>
+    <requestid>58220</requestid>
+  </revision>
+  <revision rev="24" vrev="16">
+    <srcmd5>0333b909f334536491068fb84b9e59d1</srcmd5>
+    <version>0.8.1</version>
+    <time>1295020285</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58220
+</comment>
+  </revision>
+  <revision rev="25" vrev="17">
+    <srcmd5>2724d813d8d3b2cfed160ae3c722912c</srcmd5>
+    <version>0.8.1</version>
+    <time>1296607793</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59240 from user dimstar
+</comment>
+    <requestid>59240</requestid>
+  </revision>
+  <revision rev="26" vrev="18">
+    <srcmd5>f803f971e26aec5530804876b6d88cdf</srcmd5>
+    <version>0.8.1</version>
+    <time>1296607808</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59240
+</comment>
+  </revision>
+  <revision rev="27" vrev="21">
+    <srcmd5>f803f971e26aec5530804876b6d88cdf</srcmd5>
+    <version>0.8.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="28" vrev="23">
+    <srcmd5>f803f971e26aec5530804876b6d88cdf</srcmd5>
+    <version>0.8.1</version>
+    <time>1319182421</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="29" vrev="24">
+    <srcmd5>d47bad15bb0b3cbeb69adfd06dea2ca0</srcmd5>
+    <version>0.8.1</version>
+    <time>1323194359</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="30" vrev="26">
+    <srcmd5>d47bad15bb0b3cbeb69adfd06dea2ca0</srcmd5>
+    <version>0.8.1</version>
+    <time>1340184137</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="31" vrev="28">
+    <srcmd5>d47bad15bb0b3cbeb69adfd06dea2ca0</srcmd5>
+    <version>0.8.1</version>
+    <time>1359110274</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="29">
+    <srcmd5>3456e786b0f31a644081bf9eeba73029</srcmd5>
+    <version>0.8.1</version>
+    <time>1363954556</time>
+    <user>coolo</user>
+    <comment>push</comment>
+    <requestid>160354</requestid>
+  </revision>
+  <revision rev="33" vrev="30">
+    <srcmd5>c2d83188dc29b06299e4e4bcfb129ad0</srcmd5>
+    <version>0.8.1</version>
+    <time>1364900084</time>
+    <user>coolo</user>
+    <comment>Use full URL for source (forwarded request 161819 from Zaitor)</comment>
+    <requestid>161856</requestid>
+  </revision>
+  <revision rev="34" vrev="32">
+    <srcmd5>c2d83188dc29b06299e4e4bcfb129ad0</srcmd5>
+    <version>0.8.1</version>
+    <time>1379664433</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="33">
+    <srcmd5>56fb06138e42aa400a3173a345a0d3b5</srcmd5>
+    <version>0.8.1</version>
+    <time>1380809339</time>
+    <user>scarabeus_factory</user>
+    <comment>- Own links created by update-alternatives as %ghost (bnc#823377). (forwarded request 201942 from RBrownCCB)</comment>
+    <requestid>201975</requestid>
+  </revision>
+  <revision rev="36" vrev="34">
+    <srcmd5>df74a04932a874807b04d2f876f44c33</srcmd5>
+    <version>0.8.1</version>
+    <time>1386569856</time>
+    <user>coolo</user>
+    <comment>- Provide and obsolete scrollkeeper by rarian-compat: scrollkeeper
+  has not been in development for 10 yeats and rarian is meant to
+  be a drop-in replacement. (forwarded request 209677 from Zaitor)</comment>
+    <requestid>209744</requestid>
+  </revision>
+  <revision rev="37" vrev="35">
+    <srcmd5>f505272da1bf5978cc745822ed099eca</srcmd5>
+    <version>0.8.1</version>
+    <time>1387737453</time>
+    <user>scarabeus_factory</user>
+    <comment>- Add scrollkeeper-omf.dtd to rarian-scrollkeeper-compat package:
+  ensure the DTD remains known, despite scrollkeeper no longer
+  being used. (forwarded request 211439 from dimstar)</comment>
+    <requestid>211774</requestid>
+  </revision>
+  <revision rev="38" vrev="36">
+    <srcmd5>ffe6ea6dfae13abc153e519df36c47d7</srcmd5>
+    <version>0.8.1</version>
+    <time>1388396353</time>
+    <user>coolo</user>
+    <comment>Fixup full scrollkeeper compatibility (forwarded request 212309 from Zaitor)</comment>
+    <requestid>212310</requestid>
+  </revision>
+  <revision rev="39" vrev="38">
+    <srcmd5>ffe6ea6dfae13abc153e519df36c47d7</srcmd5>
+    <version>0.8.1</version>
+    <time>1409303166</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="39">
+    <srcmd5>f01b48440ce310520d799dbeacea3351</srcmd5>
+    <version>0.8.1</version>
+    <time>1486773251</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>455499</requestid>
+  </revision>
+  <revision rev="41" vrev="40">
+    <srcmd5>ef796d2a039f1261a8fc2ad69b114f42</srcmd5>
+    <version>0.8.1</version>
+    <time>1505830836</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527112</requestid>
+  </revision>
+  <revision rev="42" vrev="41">
+    <srcmd5>9d503fc06e4016481ea0de07f6d75869</srcmd5>
+    <version>0.8.1</version>
+    <time>1520164239</time>
+    <user>dimstar_suse</user>
+    <comment>spdx3 (forwarded request 580206 from dimstar)</comment>
+    <requestid>581640</requestid>
+  </revision>
+  <revision rev="43" vrev="42">
+    <srcmd5>2394546b1bf2bf220a481111e499e3a6</srcmd5>
+    <version>0.8.1</version>
+    <time>1563223461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714694</requestid>
+  </revision>
+</revisionlist>

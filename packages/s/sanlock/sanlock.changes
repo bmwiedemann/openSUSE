@@ -1,0 +1,253 @@
+-------------------------------------------------------------------
+Fri Aug 16 07:37:30 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Addpkgconfig(uuid) BuildRequires: so far we relied on util-linux'
+  blkid to pull in uuid for us.
+
+-------------------------------------------------------------------
+Mon Jun 24 14:49:15 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add sanlock-lto-disable-fpie.patch in order to handle
+  boo#1138836. Extra -fPIE is stripped.
+
+-------------------------------------------------------------------
+Mon Jun 17 21:45:36 UTC 2019 - Jim Fehlig <jfehlig@suse.com>
+
+- Update to sanlock 3.8.0
+  - Add support for python 3
+  - Add support for 4k sector size
+  - More API test coverage
+  - Misc bug fixes and improvements
+  - Dropped patches:
+    revert-5d535c0d-py2.patch, sanlock-python3.patch
+
+-------------------------------------------------------------------
+Tue Apr  9 22:17:12 UTC 2019 - Jim Fehlig <jfehlig@suse.com>
+
+- Update to sanlock 3.7.1
+  - Fix bugs in read_resource_owners
+
+-------------------------------------------------------------------
+Thu Mar 21 20:27:25 UTC 2019 - Jim Fehlig <jfehlig@suse.com>
+
+- Update to sanlock 3.7.0
+  - Allow setting max_sectors_kb
+  - Configurable sector size and align size
+  - Support SANLOCK_RUN_DIR and SANLOCK_PRIVILEGED environment
+    variables
+  - Revert upstream commit forcing use of python2
+    revert-5d535c0d-py2.patch
+  - Dropped patches:
+    sanlock-old_blkid.patch, suse-fix-link-errors.patch
+
+-------------------------------------------------------------------
+Mon Mar 26 16:36:05 UTC 2018 - jfehlig@suse.com
+
+- Fix module initialization to work with both python2 and python3
+  Updated sanlock-python3.patch
+  bsc#1076414
+
+-------------------------------------------------------------------
+Wed Mar 21 12:58:08 UTC 2018 - tchvatal@suse.com
+
+- Add code to build with both python2 and python3 bindings with
+  provided condition so we can later on optionalize python2 builds
+  sanlock-python3.patch
+  bsc#1076414
+
+-------------------------------------------------------------------
+Wed Mar 21 12:44:29 UTC 2018 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner (only support SLE12 and newer)
+- Add -fno-strict-aliasing to python subpkg
+- Create rcsanlk-resetd link for the service control
+
+-------------------------------------------------------------------
+Tue Dec  5 18:53:41 UTC 2017 - jfehlig@suse.com
+
+- Update to sanlock 3.6.0
+  - preserve dblock values when setting shared flag
+  - fix detection of shared lease
+  - fix release interference with paxos
+  - retry ballot when new lver is seen
+  - add a NOWAIT flag for convert
+
+-------------------------------------------------------------------
+Thu Nov 23 13:47:59 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Jun  7 22:39:48 UTC 2017 - jfehlig@suse.com
+
+- Update to sanlock 3.5.0
+  - increase open file limit to 2048
+  - add option to log UTC timestamps
+  - doc improvements
+- Remove support for old, non-systemd distros
+
+-------------------------------------------------------------------
+Fri Apr  7 21:53:33 UTC 2017 - jengelh@inai.de
+
+- Remove redundant %if guards around %package and scriptlets.
+  They are only really needed for %files.
+- Replace $RPM_ shell vars by modern macros.
+- Trim descriptions a little.
+
+-------------------------------------------------------------------
+Mon Apr  3 15:43:17 UTC 2017 - jfehlig@suse.com
+
+- spec: fix permissions on config files
+
+-------------------------------------------------------------------
+Mon Apr  3 15:31:43 UTC 2017 - jfehlig@suse.com
+
+- Use System/Base in fence and reset subpackages
+
+-------------------------------------------------------------------
+Mon Apr  3 07:21:10 UTC 2017 - mpluskal@suse.com
+
+- Use correct permissions on unit files (bsc#1032046)
+
+-------------------------------------------------------------------
+Wed Mar 29 10:49:35 UTC 2017 - meissner@suse.com
+
+- prerequire groupadd and useradd.
+
+-------------------------------------------------------------------
+Wed Mar 15 08:23:44 UTC 2017 - zren@suse.com
+
+- Update to sanlock 3.4.0
+- Enable fence_sanlockd so that lvm2 can use the new lvmlocked
+  feature in cluster environment
+  * fix unpackaged file - /usr/sbin/rcfence_sanlockd
+  * refresh suse-no-date-time.patch to cover the same issue
+    in fence_sanlockd
+  * adjust fence_sanlockd.init and suse-systemd.patch
+- Enable sanlk-reset subpackage 
+- Fix "undefined symbol to io_suspend" at runtime, bsc#1030060
+  suse-fix-link-errors.patch
+
+-------------------------------------------------------------------
+Sat Mar 11 08:40:02 UTC 2017 - kukuk@suse.com
+
+- Add group disk as Prerequires
+
+-------------------------------------------------------------------
+Fri Jun 19 10:48:55 MDT 2015 - jfehlig@suse.com
+
+- Update to sanlock 3.2.4
+  - Add conf file sanlock.conf
+  - Add pkgconfig files
+  - Numerous improvements and bug fixes.  For details, see
+    https://git.fedorahosted.org/cgit/sanlock.git/log/
+
+-------------------------------------------------------------------
+Sat Mar 21 16:26:54 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.2.2
+  * reset: native timeout
+  * reset: Reduce logging noise to stderr and syslog
+  * sanlock, reset: coverity fixes
+- Refactor specfile to be policy compliant
+- Use download Url as source
+- Add xz build requires; needed as the source tarball is compressed
+  with xz
+- Do not provide both systemd and sysvinit support on a same system;
+  it's redundant
+- Add systemd backward compatibility links
+- Update patchs:
+  * suse-no-date-time.patch 
+  * suse-systemd.patch 
+
+-------------------------------------------------------------------
+Fri Jan 10 10:16:16 MST 2014 - jfehlig@suse.com
+
+- Update to sanlock 3.1.0
+  - fix debug status for add/rem lockspace
+  - add_lockspace error for conflicting lockspace definitions
+  - transient timeout handling in acquire and release
+  - allow more than 8 resources per client
+  - fix spaces in path names
+
+-------------------------------------------------------------------
+Thu Aug  1 16:42:24 MDT 2013 - jfehlig@suse.com
+
+- Update to sanlock 3.0.1
+  - Add lvb feature
+  - Various bug fixes and improvements
+  - Drop upstream patch 0001-fix-systemd-service-files.patch
+
+-------------------------------------------------------------------
+Fri Mar  1 06:25:28 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Mon Dec  3 15:09:22 MST 2012 - jfehlig@suse.com
+
+- Update to sanlock 2.6
+  - Add fence_sanlock, a fence agent that uses /dev/watchdog to
+    reset hosts (currently disabled)
+  - Various bug fixes and improvements
+
+-------------------------------------------------------------------
+Tue Mar 13 12:04:11 MDT 2012 - jfehlig@suse.com
+
+- Update to sanlock 2.1
+  - python: release leases for other processes
+  - python: add shared resource parameter to acquire
+  - add a logrotate file
+  - status for all shared tokens
+  - retry transient sh failures
+  - fix inquire state string
+
+-------------------------------------------------------------------
+Wed Jan 25 11:03:43 MST 2012 - jfehlig@suse.com
+
+- Fixed init script packaging
+
+-------------------------------------------------------------------
+Mon Jan 23 11:20:40 MST 2012 - jfehlig@suse.com
+
+- Fixed specification of licenses
+
+-------------------------------------------------------------------
+Mon Jan 23 09:39:31 MST 2012 - jfehlig@suse.com
+
+- Source sanlock tarball instead of download URL
+
+-------------------------------------------------------------------
+Fri Jan 20 15:37:56 MST 2012 - jfehlig@suse.com
+
+- Don't use __DATE__ and __TIME__ macros when printing version
+- Don't add user 'sanlock' for now
+
+-------------------------------------------------------------------
+Thu Jan 19 18:04:13 MST 2012 - jfehlig@suse.com
+
+- Fix some rpmlint warnings
+
+-------------------------------------------------------------------
+Thu Jan 19 17:05:58 MST 2012 - jfehlig@suse.com
+
+- Add support for systemd
+- Add /etc/sysconfig/sanlock configuration file
+
+-------------------------------------------------------------------
+Thu Jan 19 16:23:03 MST 2012 - jfehlig@suse.com
+
+- Pass '-g sanlock' option to wdmd
+
+-------------------------------------------------------------------
+Wed Jan 18 10:17:57 MST 2012 - jfehlig@suse.com
+
+- Update to sanlock 1.9
+- Add SUSE init script for sanlock and wdmd
+
+-------------------------------------------------------------------
+Thu Dec 22 01:15:39 CET 2011 - ro@suse.de
+
+- initial package based on package from openstack 
+

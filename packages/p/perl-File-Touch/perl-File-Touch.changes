@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Mon Aug 15 20:09:29 UTC 2016 - rjschwei@suse.com
+
+- Include in SLE 12 Public Cloud Module (bsc#993765,FATE#320820)
+
+-------------------------------------------------------------------
+Fri Mar 11 10:08:07 UTC 2016 - coolo@suse.com
+
+- updated to 0.11
+   see /usr/share/doc/packages/perl-File-Touch/Changes
+
+  0.11 2016-11-26 NEILB
+      - Document when reference gras the timestamps, and give example.
+        Thanks to SMYLERS for the PR with this.
+
+-------------------------------------------------------------------
+Sun Oct 25 09:49:56 UTC 2015 - coolo@suse.com
+
+- updated to 0.10
+   see /usr/share/doc/packages/perl-File-Touch/Changes
+
+  0.10 2015-10-24 NEILB
+      - Added [MetaJSON] to dist.ini, so we get a META.json in the release
+      - Auto tag and push to github on release
+      - Updated repo URL after changing my github username
+
+-------------------------------------------------------------------
+Tue Apr 14 20:56:07 UTC 2015 - coolo@suse.com
+
+- updated to 0.09
+   see /usr/share/doc/packages/perl-File-Touch/Changes
+
+-------------------------------------------------------------------
+Sat Feb  7 11:51:40 UTC 2015 - rjschwei@suse.com
+
+- Spec file changes to meet stricter SLE 12 rules
+
+-------------------------------------------------------------------
+Sun May  1 10:29:08 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.08
+    * created by cpanspec 1.78.04
+

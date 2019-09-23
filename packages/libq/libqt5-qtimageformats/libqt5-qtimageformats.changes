@@ -1,0 +1,544 @@
+-------------------------------------------------------------------
+Fri Sep  6 08:04:17 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.13.1:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtimageformats.git/plain/dist/changes-5.13.1/?h=v5.13.1
+
+-------------------------------------------------------------------
+Tue Sep  3 12:02:56 UTC 2019 - mvetter@suse.com
+
+- bsc#1144249 - Drop jasper dependency from libqt5-qtimageformats:
+  Removes JPEG2000 support
+- Remove jas_version.patch
+
+-------------------------------------------------------------------
+Wed Jun 19 11:24:00 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0:
+  * New bugfix release
+  * No changelog available
+  * For more details about Qt 5.13 please see:
+  * http://code.qt.io/cgit/qt/qtimageformats.git/plain/dist/changes-5.13.0/?h=5.13
+
+-------------------------------------------------------------------
+Tue Jun  4 07:24:49 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0-rc:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Mon Apr 29 09:16:41 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0-beta2:
+  * Switched to new configuration system
+  * New bugfix release
+  * No changelog available
+- Refresh jas_version.patch
+- Add "-mng" to force-enable mng support, was implicitly enabled before
+- Add "-system-tiff -system-webp" to enforce use of system libs
+
+-------------------------------------------------------------------
+Thu Apr 18 07:27:17 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.3:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtimageformats.git/plain/dist/changes-5.12.3/?h=v5.12.3
+
+-------------------------------------------------------------------
+Thu Mar 21 10:25:41 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0-beta1:
+  * New feature release
+  * For more details about Qt 5.13 please see:
+  * http://code.qt.io/cgit/qt/qtimageformats.git/plain/dist/changes-5.13.0/?h=5.13
+
+-------------------------------------------------------------------
+Thu Mar 14 08:51:28 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.2:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtimageformats.git/plain/dist/changes-5.12.2/?h=5.12.2
+
+-------------------------------------------------------------------
+Fri Feb  1 08:40:03 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.1:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtimageformats.git/plain/dist/changes-5.12.1/?h=v5.12.1
+
+-------------------------------------------------------------------
+Thu Dec  6 13:36:41 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0:
+  * New feature release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtimageformats.git/plain/dist/changes-5.12.0/?h=v5.12.0
+
+-------------------------------------------------------------------
+Mon Dec  3 08:16:48 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-rc2:
+  * New bugfix release
+  * Only important bugfixes
+- Changelog for Qt 5.12.0:
+  * http://code.qt.io/cgit/qt/qtimageformats.git/plain/dist/changes-5.12.0/?h=5.12.0
+
+-------------------------------------------------------------------
+Thu Nov 22 13:39:26 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-rc:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Thu Nov  8 15:25:06 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta4:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Fri Oct 26 07:20:49 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta3:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Oct 17 08:23:30 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Fri Oct  5 19:23:21 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta1:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Oct  2 07:34:02 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-alpha:
+  * New feature release
+  * For more details please see:
+  * http://wiki.qt.io/New_Features_in_Qt_5.12
+
+-------------------------------------------------------------------
+Fri Sep 21 07:59:17 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtimageformats.git/plain/dist/changes-5.11.2/?h=v5.11.2
+
+-------------------------------------------------------------------
+Tue Jun 19 10:50:38 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtimageformats.git/plain/dist/changes-5.11.1/?h=v5.11.1
+
+-------------------------------------------------------------------
+Tue May 22 16:04:54 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtimageformats.git/plain/dist/changes-5.11.0/?h=v5.11.0
+
+-------------------------------------------------------------------
+Tue May  8 11:01:22 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-rc
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Mon Apr 23 08:57:33 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta4
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Apr 11 09:14:41 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta3
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Mar 28 09:17:35 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta2
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Mar 13 13:40:41 UTC 2018 - christophe@krop.fr
+
+- Fix the license tag.
+
+-------------------------------------------------------------------
+Thu Mar  1 09:55:33 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta1
+  * New feature release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtimageformats.git/plain/dist/changes-5.11.0-beta1/?h=v5.11.0-beta1
+
+-------------------------------------------------------------------
+Tue Feb 20 14:29:01 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-alpha
+  * New feature release
+  * For more details please see:
+  * https://wiki.qt.io/New_Features_in_Qt_5.11
+
+-------------------------------------------------------------------
+Wed Feb 14 15:46:33 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtimageformats.git/plain/dist/changes-5.10.1/?h=v5.10.1
+
+-------------------------------------------------------------------
+Fri Dec  8 23:11:58 UTC 2017 - christophe@krop.fr
+
+- Update the license tag (boo#967696)
+
+-------------------------------------------------------------------
+Thu Dec  7 12:18:08 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 final
+  * New bugfix release
+
+-------------------------------------------------------------------
+Sun Dec  3 14:12:51 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 RC 2
+  * New bugfix release
+
+-------------------------------------------------------------------
+Thu Nov 30 09:47:14 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 RC 1
+  * New bugfix release
+
+-------------------------------------------------------------------
+Sat Nov 25 12:46:38 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.3
+  * New bugfix release
+  * For more details, see:
+    http://code.qt.io/cgit/qt/qtimageformats.git/tree/dist/changes-5.9.3/?h=v5.9.3
+
+-------------------------------------------------------------------
+Wed Nov 15 11:41:46 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 4
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Thu Nov  2 07:22:27 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 3
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Mon Oct 30 16:19:27 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 2
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Mon Oct  9 16:17:26 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 1
+- For more information visit:
+    https://blog.qt.io/blog/2017/10/09/qt-5-10-beta-released/
+
+-------------------------------------------------------------------
+Sun Oct  8 14:06:11 UTC 2017 - lbeltrame@kde.org
+
+- Update to 5.9.2
+  * For more details please see:
+    https://blog.qt.io/blog/2017/10/06/qt-5-9-2-released/
+
+-------------------------------------------------------------------
+Mon Sep 25 14:42:37 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Alpha 1
+- For more information visit:
+    https://blog.qt.io/blog/2017/09/13/qt-5-10-alpha-released/
+
+-------------------------------------------------------------------
+Sat Jul  1 08:15:17 UTC 2017 - lbeltrame@kde.org
+
+- Update to 5.9.1
+  * For more details please see:
+    http://blog.qt.io/blog/2017/06/30/qt-5-9-1-released/
+
+-------------------------------------------------------------------
+Wed May 31 07:05:13 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0 final
+
+-------------------------------------------------------------------
+Wed May 24 19:16:41 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0 RC:
+  * For more details please see: 
+    http://lists.qt-project.org/pipermail/announce/2017-May/000115.html
+    and https://wiki.qt.io/New_Features_in_Qt_5.9
+- Add patch to fix build:
+  * jas_version.patch
+
+-------------------------------------------------------------------
+Wed Dec 14 16:05:48 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.1
+  * For more details please see:
+    https://blog.qt.io/blog/2016/12/14/qt-5-7-1-released/
+    and https://www.qt.io/qt5-7/
+
+-------------------------------------------------------------------
+Sat Sep 24 18:39:03 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * For more details please see:
+    https://www.qt.io/qt5-7/
+
+-------------------------------------------------------------------
+Wed Jun  8 14:15:17 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * For more details please see:
+    http://blog.qt.io/blog/2016/06/08/qt-5-6-1-released/
+
+-------------------------------------------------------------------
+Fri Mar 18 19:03:11 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    http://blog.qt.io/blog/2016/03/16/qt-5-6-released/
+    and https://wiki.qt.io/New_Features_in_Qt_5.6
+
+-------------------------------------------------------------------
+Fri Oct 16 20:22:30 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.1
+  * For more details please see:
+    http://blog.qt.io/blog/2015/10/15/qt-5-5-1-released/
+
+-------------------------------------------------------------------
+Sun Aug 16 08:32:02 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * For more details please see:
+    http://blog.qt.io/blog/2015/07/01/qt-5-5-released/
+    and https://wiki.qt.io/New_Features_in_Qt_5.5
+
+-------------------------------------------------------------------
+Wed Jun  3 22:56:22 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.2
+  * Bugfix release, for more details please see:
+    http://blog.qt.io/blog/2015/06/02/qt-5-4-2-released/
+
+-------------------------------------------------------------------
+Tue Feb 24 16:10:18 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.1
+  * For more details please see:
+    http://blog.qt.io/blog/2015/02/24/qt-5-4-1-released/
+
+-------------------------------------------------------------------
+Wed Dec 10 11:00:07 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4 Final
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/12/10/qt-5-4-released/
+    and http://qt-project.org/wiki/New-Features-in-Qt-5.4
+
+-------------------------------------------------------------------
+Thu Nov 27 15:58:43 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4 RC
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/11/27/qt-5-4-release-candidate-available/
+    and http://qt-project.org/wiki/New-Features-in-Qt-5.4
+
+-------------------------------------------------------------------
+Tue Sep 16 11:27:51 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.2 final
+  * No changes since previous snapshot
+  * Use official tars
+
+-------------------------------------------------------------------
+Thu Sep  4 20:37:34 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.2~git20140904 (rcccf0de):
+  * Tip of the bugfix 5.3.2 branch
+    * Fix DDS image writing
+    * Remove some material with questionable copyright
+
+-------------------------------------------------------------------
+Wed Jun 25 10:38:02 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.1
+  * Bugfix release, for more details please see:
+    http://blog.qt.digia.com/blog/2014/06/25/qt-5-3-1-released/
+
+-------------------------------------------------------------------
+Mon Jun  2 17:06:10 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added baselibs.conf
+
+-------------------------------------------------------------------
+Mon May 19 23:42:46 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0 final
+  * Minor bugfixes over previous RC
+
+-------------------------------------------------------------------
+Thu May  8 18:13:55 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0 RC
+  * For more details, please see
+  http://blog.qt.digia.com/blog/2014/05/08/qt-5-3-release-candidate-available/
+  and http://qt-project.org/wiki/New-Features-in-Qt-5.3
+
+-------------------------------------------------------------------
+Tue Mar 25 11:44:16 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0 beta
+  * New feature release, please see
+  http://blog.qt.digia.com/blog/2014/03/25/qt-5-3-beta-released/
+  and http://qt-project.org/wiki/New-Features-in-Qt-5.3
+- Added libjasper-devel and pkgconfig(libwebp) (Build)Requires as
+  support for those formats has been added in 5.3
+
+-------------------------------------------------------------------
+Wed Feb  5 20:42:16 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.1:
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/02/05/qt-5-2-1-released/
+- removed patches:
+  * mng_version.patch
+
+-------------------------------------------------------------------
+Thu Dec 12 13:42:39 UTC 2013 - hrvoje.senjan@gmail.com
+- Update to 5.2.0 final:
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2013/12/12/qt-5-2-released-the-best-qt-yet/
+    http://qt-project.org/qt5/qt52
+    http://qt.digia.com/Product/Whats-New/Qt-52/"
+
+-------------------------------------------------------------------
+Fri Nov 29 13:42:39 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 rc1
+  * New feature release, please see
+  http://blog.qt.digia.com/blog/2013/11/29/qt-5-2-release-candidate-1-available/
+  and http://qt-project.org/wiki/New-Features-in-Qt-5.2
+- Added mng_version.patch, for recognizing newer (e.g. 2.0.x) libmng
+  versions
+
+-------------------------------------------------------------------
+Wed Oct 23 17:11:55 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 beta1
+  * New feature release, please see
+  http://blog.qt.digia.com/blog/2013/10/23/qt-5-2-beta-available/
+  and http://qt-project.org/wiki/New-Features-in-Qt-5.2
+- Created devel package
+
+-------------------------------------------------------------------
+Thu Aug 29 20:12:30 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 5.1.1:
+  * Bugfix release, please see
+  http://blog.qt.digia.com/blog/2013/08/28/qt-5-1-1-released/
+  http://qt.gitorious.org/qt/qtimageformats/blobs/release/dist/changes-5.1.1
+  and http://qt-project.org/wiki/Qt511KnownIssues for known issues
+- Small spec cleanup
+
+-------------------------------------------------------------------
+Sun Jul  7 07:23:51 UTC 2013 - stephan.binner@basyskom.com
+
+- update to Qt 5.1 release
+
+-------------------------------------------------------------------
+Tue Jun 18 20:00:00 UTC 2013 - stephan.binner@basyskom.com
+
+- update to Qt 5.1 RC 1
+
+-------------------------------------------------------------------
+Mon May 20 20:00:00 UTC 2013 - stephan.binner@basyskom.com
+
+- update to Qt 5.1 Beta 1
+
+-------------------------------------------------------------------
+Tue Apr  9 20:00:00 UTC 2013 - stephan.binner@basyskom.com
+
+- update to Qt 5.1 Alpha 1
+
+-------------------------------------------------------------------
+Wed Jan 30 19:00:00 UTC 2013 - stephan.binner@basyskom.com
+
+- update to Qt 5.0.1
+
+-------------------------------------------------------------------
+Wed Dec 19 20:40:40 UTC 2012 - stephan.binner@basyskom.com
+
+- update to Qt 5.0 release
+
+-------------------------------------------------------------------
+Thu Dec 13 10:50:52 UTC 2012 - stephan.binner@basyskom.com
+
+- update to Qt 5.0 Release Candidate 2
+
+-------------------------------------------------------------------
+Thu Dec  6 19:54:17 UTC 2012 - stephan.binner@basyskom.com
+
+- update to Qt 5.0 Release Candidate 1
+
+-------------------------------------------------------------------
+Thu Nov 15 12:14:39 UTC 2012 - stephan.binner@basyskom.com
+
+- update to Qt 5.0 Beta 2
+
+-------------------------------------------------------------------
+Thu Aug 30 11:31:45 UTC 2012 - stephan.binner@basyskom.com
+
+- update to Qt 5.0 Beta 1 release
+
+-------------------------------------------------------------------
+Thu May 24 15:29:20 UTC 2012 - stephan.binner@basyskom.com
+
+- update to newer Alpha snapshot / Beta candidate
+
+-------------------------------------------------------------------
+Fri Apr 13 13:22:38 UTC 2012 - stephan.binner@basyskom.com
+
+- rework package splitting for Qt 5 modularization
+
+-------------------------------------------------------------------
+Thu Apr  5 09:56:15 UTC 2012 - dmueller@suse.com
+
+- Initial packaging (Qt 5.0 Alpha)
+

@@ -1,0 +1,3 @@
+DTDDECL "-//Norman Walsh//DTD Slides XML V@VERSION@//EN" "/usr/share/sgml/opensp/xml.dcl"
+CATALOG /usr/share/sgml/CATALOG.db41xml
+PUBLIC "-//Norman Walsh//DTD Slides XML V@VERSION@//EN" @DIR@/slides.dtd

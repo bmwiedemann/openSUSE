@@ -1,0 +1,30 @@
+From: Petr Uzel <petr.uzel@suse.cz>
+Subject: build: Add ncursesw6 support
+Patch-mainline: no, custom SUSE patch
+---
+ configure.ac |    5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+Index: parted-3.2/configure.ac
+===================================================================
+--- parted-3.2.orig/configure.ac
++++ parted-3.2/configure.ac
+@@ -165,7 +165,8 @@ AM_CPPFLAGS="$AM_CPPFLAGS -D_REENTRANT"
+ 
+ dnl Check for programs.
+ AC_ISC_POSIX
+-AC_PROG_CC
++AC_PROG_CC_STDC
++AC_USE_SYSTEM_EXTENSIONS
+ AC_PROG_GCC_TRADITIONAL
+ AM_PROG_CC_C_O
+ 
+@@ -377,7 +378,7 @@ dnl Check for termcap
+ if test "$with_readline" = yes; then
+ 	OLD_LIBS="$LIBS"
+ 	LIBS=""
+-	AC_SEARCH_LIBS([tgetent], [tinfo ncurses curses termcap termlib],
++	AC_SEARCH_LIBS([tgetent], [tinfo ncursesw curses termcap termlib],
+ 		[PARTED_LIBS="$PARTED_LIBS $LIBS"],
+ 		[AC_MSG_ERROR(dnl
+ [termcap could not be found which is required for the

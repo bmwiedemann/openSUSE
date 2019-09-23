@@ -1,0 +1,141 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>85653778a4d7455ea7f68e84db1c91ac</srcmd5>
+    <version>0.16</version>
+    <time>1271373960</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Test-Output based on submit request 37712 from user computersalat
+</comment>
+    <requestid>37712</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>85653778a4d7455ea7f68e84db1c91ac</srcmd5>
+    <version>0.16</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>85653778a4d7455ea7f68e84db1c91ac</srcmd5>
+    <version>0.16</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ecb41df25d6a3ea353dcb67fd7bf6c96</srcmd5>
+    <version>0.16</version>
+    <time>1280738405</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Test-Output based on submit request 43891 from user computersalat
+</comment>
+    <requestid>43891</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8d405aa7e6dc3a066e55cb5e172185a7</srcmd5>
+    <version>0.16</version>
+    <time>1291584091</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54663 from user coolo
+</comment>
+    <requestid>54663</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>5d74e751ffdcc80e9c7e8bbc23267360</srcmd5>
+    <version>0.16</version>
+    <time>1291584097</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54663
+</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>5d74e751ffdcc80e9c7e8bbc23267360</srcmd5>
+    <version>0.16</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e8f4241df6d67c9227897f22dc6311f4</srcmd5>
+    <version>1.01</version>
+    <time>1305639089</time>
+    <user>saschpe</user>
+    <comment>- updated to 1.01
+    * Bump to a full release. This fixes the tests that failed
+       in the new 5.14 regex stringification</comment>
+    <requestid>70457</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f732e8be42d83f2aea18b62130f1aa55</srcmd5>
+    <version>1.01</version>
+    <time>1305639102</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70457
+</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>f732e8be42d83f2aea18b62130f1aa55</srcmd5>
+    <version>1.01</version>
+    <time>1319182312</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>7e436ca0c6897bec623fa6b0a74805b0</srcmd5>
+    <version>1.01</version>
+    <time>1323193710</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>7e436ca0c6897bec623fa6b0a74805b0</srcmd5>
+    <version>1.01</version>
+    <time>1340183933</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>7e436ca0c6897bec623fa6b0a74805b0</srcmd5>
+    <version>1.01</version>
+    <time>1359109819</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>53199adb7be037d727799273a0f74f37</srcmd5>
+    <version>1.02</version>
+    <time>1375284270</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184803</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>53199adb7be037d727799273a0f74f37</srcmd5>
+    <version>1.02</version>
+    <time>1379663878</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>812836e2a43d549ee7023b40eea74df0</srcmd5>
+    <version>1.03</version>
+    <time>1392185240</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221870</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>812836e2a43d549ee7023b40eea74df0</srcmd5>
+    <version>1.03</version>
+    <time>1409302521</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e244192774d48589f63123a015b8dfdd</srcmd5>
+    <version>1.031</version>
+    <time>1491896186</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483758</requestid>
+  </revision>
+</revisionlist>

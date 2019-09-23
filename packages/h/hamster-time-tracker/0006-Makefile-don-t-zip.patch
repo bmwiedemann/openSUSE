@@ -1,0 +1,26 @@
+From c2d8ef8cfdf2d1d8e716caf3dba6e444232fd932 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 1 Mar 2019 15:38:37 +0100
+Subject: [PATCH 6/6] Makefile: don't zip
+
+zip is not supported in some build environments, and really not
+necessary.
+---
+ Makefile | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 8892a93..cbc0eaa 100644
+--- a/Makefile
++++ b/Makefile
+@@ -79,7 +79,6 @@ dist: compile
+ # We need to do this like this as 'zip' always uses the cwd as archive root.
+ # And for the extension to work extension.js etc. need to be at the root.
+ 	mkdir -p $(DISTDIR);
+-	cd $(BUILDDIR); zip -rq ../dist/contact@projecthamster.org.zip ./*
+ 	cd $(BUILDDIR); tar -czf ../dist/contact@projecthamster.org.tgz *
+ 	@ls -l dist
+ 
+-- 
+2.20.1
+

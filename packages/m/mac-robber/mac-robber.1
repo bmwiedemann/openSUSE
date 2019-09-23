@@ -1,0 +1,17 @@
+.TH MAC-ROBBER "1" "August 2011" "Mac-robber 1.02" "User Commands"
+.SH NAME
+mac-robber \- Collect MAC times from files
+.SH SYNOPSIS
+.B mac-robber
+[\fIOPTION\fR] \fIDIRECTORY\fR...
+.SH DESCRIPTION
+Collect MAC times from files and output to STDOUT in a format that
+the mactime program from The \fBSleuth Kit\fR reads.  This
+program uses system calls and therefore will modify the A-Time
+on directories that are not mounted readonly.
+.TP
+\fB\-V\fR
+Print the version to stdout.
+.SH AUTHOR
+Written by Brian Carrier [carrier@sleuthkit.org]
+

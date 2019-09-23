@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f6b78fc9cc525b4ab24531da3abfad1f</srcmd5>
+    <version>1.2.0</version>
+    <time>1352123913</time>
+    <user>coolo</user>
+    <comment>This package is needed for awesome windowmanager which will be
+submitted once this package is in factory
+
+Thanks</comment>
+    <requestid>139784</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f6b78fc9cc525b4ab24531da3abfad1f</srcmd5>
+    <version>1.2.0</version>
+    <time>1359109378</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>f6b78fc9cc525b4ab24531da3abfad1f</srcmd5>
+    <version>1.2.0</version>
+    <time>1379663135</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>f6b78fc9cc525b4ab24531da3abfad1f</srcmd5>
+    <version>1.2.0</version>
+    <time>1409301765</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>37362d58ccc6ae989f0f7bfb5d625bc8</srcmd5>
+    <version>1.2.0</version>
+    <time>1444130712</time>
+    <user>dimstar_suse</user>
+    <comment>- properly fix buffer overflow in allocation (0001-Overflow-bug.diff)
+- fix download url
+- enalbe make check
+- drop libxdg-basedir-fix_tests.patch</comment>
+    <requestid>335029</requestid>
+  </revision>
+</revisionlist>

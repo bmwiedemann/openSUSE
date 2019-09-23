@@ -1,0 +1,101 @@
+#! /bin/sh
+# Copyright (c) 2005-2006 SUSE Linux AG, Nuernberg, Germany.
+# All rights reserved.
+#
+# /etc/init.d/boot.xen
+#
+# LSB compatible service control script; see http://www.linuxbase.org/spec/
+#
+### BEGIN INIT INFO
+# Provides:          Xen
+# Required-Start:    boot.localfs
+# Should-Start:      boot.localnet
+# Required-Stop:     boot.localfs
+# Should-Stop: 
+# Default-Start:     B
+# Default-Stop:
+# Short-Description: Switch on and off TLS depending on whether Xen is running
+# Description:       Xen gets a major performance hit by the way
+#	recent glibc (& gcc) set up the TLS offset, as it needs to
+#	play segmentation tricks. This can be avoided by moving away
+#	the tls libs.
+### END INIT INFO
+
+. /etc/rc.status
+
+# Reset status of this service
+rc_reset
+
+case "$1" in
+    start)
+	echo -n "Starting Xen setup "
+	if test -d /proc/xen; then
+		export LD_ASSUME_KERNEL=2.4.21
+		echo -n "Xen running "
+	fi
+	if test -d /proc/xen -a -d /lib/tls; then
+		echo -n "move /lib/tls away "
+		mv /lib/tls /lib/tls.save
+	elif test ! -d /proc/xen -a -d /lib/tls.save; then
+		echo -n "move back /lib/tls "
+		mv /lib/tls.save /lib/tls
+	fi
+	rc_status -v
+	;;
+    stop)
+	# rc_status -v
+	;;
+    try-restart|condrestart)
+	$0 restart
+	# Remember status and be quiet
+	rc_status
+	;;
+    restart)
+	## Stop the service and regardless of whether it was
+	## running or not, start it again.
+	$0 start
+	# Remember status and be quiet
+	rc_status
+	;;
+    force-reload)
+	$0 try-restart
+	rc_status
+	;;
+    reload)
+	rc_failed 3
+	rc_status -v
+	;;
+    status)
+	echo -n "Checking for Xen "
+	# Return value is slightly different for the status command:
+	# 0 - service up and running
+	# 1 - service dead, but /var/run/  pid  file exists
+	# 2 - service dead, but /var/lock/ lock file exists
+	# 3 - service not running (unused)
+	# 4 - service status unknown :-(
+	# 5--199 reserved (5--99 LSB, 100--149 distro, 150--199 appl.)
+
+	if test -d /proc/xen; then
+		if test -d /lib/tls; then
+			echo -n "Xen running, /lib/tls existing "
+			rc_failed 1
+		else
+			echo -n "Xen running, /lib/tls not existing "	
+		fi
+	else
+		if test -d /lib/tls.save; then
+			echo -n "Xen not running, /lib/tls existing "
+			rc_failed 2
+		else	
+			echo -n "Xen not running, /lib/tls not existing "
+			rc_failed 3
+		fi
+	fi
+	rc_status -v
+	;;
+    *)
+	echo "Usage: $0 {start|stop|status|try-restart|restart|force-reload|reload}"
+	exit 1
+	;;
+esac
+rc_exit

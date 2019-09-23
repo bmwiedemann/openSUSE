@@ -1,0 +1,102 @@
+Index: Makefile
+===================================================================
+--- Makefile.orig
++++ Makefile
+@@ -19,8 +19,8 @@ CFLAGS	= -Wall -O3 -fomit-frame-pointer
+ 
+ # Test coverage
+ #CFLAGS	= -fprofile-arcs -ftest-coverage -Wall -pipe -DPRO $(OSFLAGS)
+-
+-LDFLAGS	= -L/usr/X11R6/lib -lXpm -lXext -lX11
++LIBDIR  = -L/usr/X11R6/lib
++LIBS = -lXpm -lXext -lX11
+ 
+ OBJS	= wmnd.o beat.o misc.o list.o
+ 
+@@ -34,6 +34,9 @@ all:	$(PJ)
+ 
+ $(PJ):	$(OBJS)
+ 
++wmnd : $(OBJS)
++	$(CC) $(CFLAGS) $(OBJS) -o wmnd $(LIBS)
++
+ %.gz:	%
+ 	gzip -c9 $^ > $@
+ 
+Index: src/wmnd.c
+===================================================================
+--- src/wmnd.c.orig
++++ src/wmnd.c
+@@ -38,15 +38,16 @@
+ 
+ #define WMND_VERSION "0.2.2"
+ 
++#define set_bit(x,y) ((*(y))|=(1L<<(x-1)))
++#define clear_bit(x,y) ((*(y))&=(~(1L<<(x-1))))
++#define change_bit(x,y) ((*(y))^=(1L<<(x-1)))
++#define test_bit(x,y) (((*(y))&(1<<(x-1)))?!0L:0L)
++
+ 
+ #ifdef USE_KSTAT		/* Solaris */
+ 
+ #include <kstat.h>
+ 
+-#define set_bit(x,y) ((*(y))|=(1L<<(x-1)))
+-#define clear_bit(x,y) ((*(y))&=(~(1L<<(x-1))))
+-#define change_bit(x,y) ((*(y))^=(1L<<(x-1)))
+-#define test_bit(x,y) (((*(y))&(1<<(x-1)))?!0L:0L)
+ 
+ #define MAX(x,y) (((x)<(y))?(y):(x))
+ 
+@@ -56,7 +57,6 @@ kstat_t *if_ksp = NULL;
+ #else				/* do not USE_KSTAT, reverting to Linux */
+ 
+ #include <getopt.h>
+-#include <asm/bitops.h>		/* for set_bit / clear_bit / friends */
+ 
+ #include <net/ppp_defs.h>
+ #include <net/if_ppp.h>
+@@ -175,7 +175,7 @@ MRegion mr[32];			/* mouse regions */
+ /* GUI */
+ static void redraw_window(void);
+ unsigned long get_color(char *name);
+-void new_window(char *name, int width, int height);
++void new_window(int argc, char **argv, char *name, int width, int height);
+ 
+ /* config file read/write */
+ void conf_read(char *filename);
+@@ -357,7 +357,7 @@ unsigned long get_color(char *name)
+ 
+ }
+ 
+-void new_window(char *name, int width, int height)
++void new_window(int argc, char **argv, char *name, int width, int height)
+ {
+     XpmAttributes attr;
+     XpmColorSymbol cols[3] = {
+@@ -450,6 +450,7 @@ void new_window(char *name, int width, i
+     wmhints.flags =
+ 	StateHint | IconWindowHint | IconPositionHint | WindowGroupHint;
+     XSetWMHints(dockapp.d, dockapp.win, &wmhints);
++    XSetCommand(dockapp.d, dockapp.win, argv, argc);
+ 
+     XMapWindow(dockapp.d, dockapp.win);
+     dockapp.xfd = ConnectionNumber(dockapp.d);
+@@ -801,7 +802,7 @@ int main(int argc, char **argv)
+ 	fprintf(stderr, "Unable to open display '%s'\n", dispname);
+ 	exit(-1);
+     }
+-    new_window("wmnd", 64, 64);
++    new_window(argc, argv, "wmnd", 64, 64);
+ 
+     add_mr(0, 3, 3, 38, 9);	/* device */
+     add_mr(1, 54, 3, 7, 9);	/* up/down packet/byte mode */
+@@ -1594,7 +1595,7 @@ void draw_interface(void)
+     int i;
+     int c;
+     int k = 3;
+-    unsigned char temp[7];
++    unsigned char temp[8];
+ 
+     /* refresh */
+     copy_xpm_area(65, 54, 38, 9, 3, 3);

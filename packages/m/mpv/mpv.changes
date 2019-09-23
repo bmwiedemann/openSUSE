@@ -1,0 +1,2295 @@
+-------------------------------------------------------------------
+Tue Sep 17 13:13:30 UTC 2019 - idonmez@suse.com
+
+- Update to version 0.30.0+git.1568566852.0abe34ed21:
+  * vo_gpu: x11: remove special vdpau probing, use EGL by default
+  * vf_vavpp: disable this filter
+  * vo_gpu: correctly normalize src.sig_peak
+  * image_writer: add webp-compression option
+  * image_writer: add WebP support (lossy or lossless)
+  * image_writer: move convert_image() to player/screenshot.c
+  * DOCS: remove references to --video-stereo-mode
+  * README: remove old googlegroups mailing list address
+  * manpage: minor fixes to VO manpage
+  * vo: add warning message to vo_vaapi and vo_vdpau
+  * vo_d3d11/context: fix crash due to ctx->ra is null pointer access 'ctx->ra' is null pointer when d3d11 init failed before call 'ra_d3d11_create' in 'd3d11_init'.
+  * vo_d3d11/hwdec_dxva2dxgi: fix memory leak that 'ctx11' be not release 'ctx11' be not release when d3d11 hwdec be uninit with 'mapper_uninit' method.
+  * stream_smb: remove unnecessary short write logic
+  * stream_file: remove unnecessary short write logic
+  * stream: handle short writes
+  * ci: remove now unuspported libdvdread
+  * demux, stream: remove old rar support in favor of libarchive
+  * command, demux: remove program property
+  * stream: remove some more optical disc leftovers
+  * Remove classic Linux analog TV support, and DVB runtime controls
+  * stream: remove BD/DVD/CDDA sector size alignment
+  * Remove optical disc fancification layers
+  * stream_dvdnav: merge stream_dvd_common
+  * Remove libdvdread support in favor of libdvdnav
+  * stream_file: avoid redundant free
+  * js: expose mpv_abort_async_command() (match dbe831bd)
+  * js: reimplement subprocess_detached using the run command (match 7f91e268)
+  * js: reimplement subprocess using the subprocess command (match 548ef078)
+  * js: expose async commands (match 159379980e)
+  * js: correctness: use integer range checks
+  * audio: block ao buffer for keep-open
+  * vo_gpu: x11egl: support Mesa OML sync extension
+  * vo_gpu: glx: move OML sync code to an independent file
+  * vo/gpu: fix check on src/dst peak mismatch
+
+-------------------------------------------------------------------
+Mon Sep 02 12:10:21 UTC 2019 - idonmez@suse.com
+
+- Update to version 0.30.0+git.1567376743.6d90517275:
+  * external_files: add .lrc subtitle extension
+  * demux: ignore forced demuxer type for directories
+  * stream_dvb: Increase timeout of streaming read.
+  * stream_dvb: Adapt to VDR channel config format.
+  * osc: improve look of seekranges
+  * cocoa-cb: remove an unused variable
+  * ao_opensles: fix delayed audio
+  * travis: rework scripts to re-enable macOS
+  * vo/gpu: vulkan: Pass the device name option through to libplacebo
+
+-------------------------------------------------------------------
+Thu Aug 22 06:58:51 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Reintroduce _mpv_ver since subpackages have different versions
+  and need to depend on _mpv_ver when appropriate.
+
+-------------------------------------------------------------------
+Tue Aug 20 11:11:42 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Disable set_version so that the bash-completion subpackage
+  gets the correct version.
+
+-------------------------------------------------------------------
+Tue Aug 20 08:31:52 UTC 2019 - idonmez@suse.com
+
+- Update to version 0.30.0+git.1566288741.80552ab28e:
+  * vo_gpu: d3d11: fix storage lifetime of compound literals
+  * encode: set sample_aspect_ratio on AVStream struct
+  * vo_gpu: fix taking screenshots of rotated videos
+  * vo_gpu: hwdec_vaapi: Synchronise after exporting VA surface
+  * DOCS/compile-windows: remove angleproject-git from deps
+  * TOOLS/travis-rebuild-website: update condition after docker transition
+  * cocoa-cb: migrate to swift 5 with swift 4 fallback
+  * cocoa-cb: fix optional cases on macOS 10.12
+  * build: fix build with older command line tools
+  * build: make macOS SDK path and version configurable via env vars
+
+-------------------------------------------------------------------
+Thu Nov 22 09:13:55 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add vulkan dependency per bsc#1115120
+
+-------------------------------------------------------------------
+Fri Oct 26 13:16:44 UTC 2018 - jslaby@suse.com
+
+- enable tv
+
+-------------------------------------------------------------------
+Tue Oct  2 20:28:39 UTC 2018 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 0.29.1
+  Fixes and minor enhancements:
+  * af_rubberband: Fix for A-V drift on seeking.
+  * ao_alsa: Fixes to remove spam during pausing and end-of-file.
+  * ao_jack: Fix for mpv attempting to connect to non-standard devices such as MIDI.
+  * ao_openal: Drop support for Apple's bundled OpenAL due to lack of features to successfully build.
+  * ao_pulse: Fix for audio buffer length calculation.
+  * demux_lavf: Fix EDL playback of certain DASH streams.
+  * demux_lavf: Mark v4l streams as not seekable.
+  * demux_raw: Fix for gapless playback from raw audio input.
+  * drm_atomic: Fix to enable video output with devices without a video overlay plane.
+  * encode: Fix for crashes in case of failure to write to output.
+  * encode: Fix for encoding when utilizing lavfi-complex.
+  * Fix to strip HDR peak metadata if attached to SDR video (#6111)
+  * manpage: Misc fixups.
+  * stream_{smb,file}: Fix for partial writes to buffers.
+  * stream_libarchive: Fix hang when an out-of-bound seek happens.
+  * stream_smb: Fix for crashes due to libsmbclient and threading (#5936).
+  * vo_gpu: Fix for corruption when multiple compute shaders override each others' block sizes (#6083).
+  * ytdl_hook: Always load "ytdl://" URLs with ytdl_hook first.
+  * ytdl_hook: Fix audio streams not being picked up for some sites.
+
+-------------------------------------------------------------------
+Sun Jul 22 17:03:48 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.29.0
+  * This release requires FFmpeg 4.0 or newer.
+  Added features:
+  * ao/openal: Add better sample format and channel layout
+    selection
+  * ao/openal: Add support for direct channels output
+  * cocoa-cb: initial implementation via opengl-cb API
+  * context_drm_egl: Introduce 30bpp support (requires Mesa
+    18.0.0_rc4 or later)
+  * osx: add some more menu bar items as suggested by Apples's
+    HIG
+  * vo_gpu: make screenshots use the GL renderer (#5498, #5240)
+  * x11: support Shift+TAB as an input key bind (#5849)
+  * ytdl_hook: support native dash demuxer, if present
+  Changed features
+  * ao_alsa, ao_pulse: reduce requested buffer size
+  * audio: change format negotiation, remove channel remix
+    fudging
+  * client API: deprecate opengl-cb API and introduce a
+    replacement API
+  * demux: lower demuxer cache default sizes from 400MB/400MB to
+    50MB/150MB
+  * osx: always deactivate the early opengl flush on macOS
+  * scripting: change when/how player waits for scripts being
+    loaded
+  * vo_gpu: various improvements to HDR peak detection
+  * vo_gpu: various improvements to HDR tone mapping
+  * wayland_common: update to stable xdg-shell
+  * ytdl_hook: parse youtube playlist urls to set start index if
+    `--ytdl-raw-option=yes-playlist=` is specified
+  Deprecated features:
+  * af_lavrresample: deprecate this filter
+  Removed features:
+  * build: drop support for SDL1 (only applied to ao_sdl)
+  Added options and commands:
+  * add a number of --audio-resample-* options, which should
+    from now on be used instead of --af-defaults=lavrresample:
+  * ao/openal: --openal-direct-channels
+  * command: add --osd-on-seek option defaulting to bar
+  * command: add a change-list command (#5435)
+  * options: add --http-proxy
+  * options: add a builtin low-latency profile
+  * vaapi: add option to select a non-default device path with
+    --vaapi-device (#4320)
+  * video: add option to reduce latency by 1 or 2 frames
+  * vo_gpu: introduce --target-peak (#5521)
+  Changed options and commands:
+  * command: change cycle-value command behavior (#5772)
+  * config: replace config dir lua-settings/ with dir
+    script-opts/
+  * options: --lavfi-complex now requires uniquely named filter
+    pads.
+  * options: --ytdl is now always enabled, even for libmpv
+  * options: make --deinterlace=yes always deinterlace (#5219)
+  * options: slightly improve filter help output for lavfi bridge
+  * vo: rename --vo=opengl-cb to --vo=libmpv
+  Deprecated options and commands:
+  * encoding: deprecate a bunch of obscure options (--ovoffset,
+    --oaoffset, --ovfirst, --oafirst)
+  * options: deprecate --vf-defaults and --af-defaults
+  * osx: --gpu-context=cocoa with --gpu-api=opengl is now
+    deprecated in favour of --vo=libmpv
+  Removed options and commands:
+  * command: remove an old compatibility hack that allowed CLI
+    aliases to be set as property, deprecated in 0.26.0
+  * input: remove legacy command handling for MPlayer commands
+    that were deprecated in 2013
+  * options: drop --opensles-sample-rate, as --audio-samplerate
+    should be used if desired
+  * options: drop deprecated --videotoolbox-format, --ff-aid,
+    --ff-vid, --ff-sid, --ad-spdif-dtshd, --softvol options
+  * options: remove --video-stereo-mode
+  * options: remove deprecated ao/vo auto profiles
+  * options: remove the following encoding options: --ocopyts
+    (now the default, old timestamp handling is gone), --oneverdrop
+    (now default), --oharddup (you need to use --vf=fps=VALUE),
+    --ofps, --oautofps, --omaxfps
+  Fixes and minor enhancements:
+  * HIDRemote: fix volume buttons on macOS 10.13 (#5721)
+  * TOOLS/autoload: Fix broken "disabled" option
+  * TOOLS/autoload: be more robust with slow directory listings
+    (#5618)
+  * ao_sdl: fix default buffer size
+  * build: add static libraries to libmpv.pc
+  * build: bump waf to 2.0.9 (fixes Python 3.7 compatibility)
+  * build: manually add standard library search paths for
+    linking (#5791)
+  * common: round all integer times to milliseconds
+  * demux, player: fix playback of sparse video streams (w/
+    still images)
+  * demux: support for some kinds of timed metadata (e.g. ICY)
+  * demux_mkv: add V_AV1 identifier for AV1
+  * demux_mkv: support Meridian Lossless Packing in Matroska
+    (#5923)
+  * display additional metadata tags during video playback
+  * drm_atomic: Fix memory leaks in drm_atomic_create
+  * enable cache for FUSE filesystems on OpenBSD and FreeBSD
+  * gpu: prefer 16bit floating point FBO formats to 16bit
+    integer ones
+  * hwdec_vaegl: Fix VAAPI EGL interop used with gpu-context=drm
+  * input.conf: use exact value for [ binding, which does the
+    inverse of ]
+  * input: add a keybinding to toggle hardware decoding
+  * input: minor additions to default key bindings (#973)
+  * osc: fix accidentally skipping files when seeking with slider
+  * player: fix strange behavior on edition switching
+  * player: fix track autoselection of external files yet again
+  * terminal-unix: stop trying to read when terminal disappears
+    (#5842)
+  * video: actually wait for last frame being rendered on EOF
+  * video: fix --video-rotate in some cases
+  * video: fix crash with vdpau when reinitializing rendering
+    (#5447)
+  * vo_gpu: fix anamorphic screenshots (#5619)
+  * vo_vdpau: fix resizing and rotation problems
+
+- Refreshed mpv-make-ffmpeg-version-check-non-fatal.patch
+
+- Bumped waf to 2.0.9
+
+- Enable wayland only for Tumbleweed due to version constraints
+
+-------------------------------------------------------------------
+Sat Jun  2 09:45:30 UTC 2018 - aloisio@gmx.com
+
+- Updated mpv-bash-completion to 3.3.17
+  * Added the ability to filter media file completion suggestions
+    by multimedia file extensions (see README).
+  Bug fixes:
+  * --show-profile argument completion now suggests the list of
+    existing profile names.
+
+-------------------------------------------------------------------
+Mon May 21 13:39:02 UTC 2018 - 9+suse@cirno.systems
+
+- Drop libguess from BuildRequires (unused)
+- Actually use optflags for build
+
+-------------------------------------------------------------------
+Sat Apr 21 13:58:32 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.28.2
+  Added features:
+  * Add DRM_PRIME Format Handling and Display for RockChip MPP
+    decoders
+  * csputils: Add support for Display P3 primaries
+  * demux: support multiple seekable cached ranges, display
+    cache ranges on OSC
+  * demux_playlist: support .url files (#5107)
+  * dvb: Add multiple frontends support (up to 8)
+  * dvb: implement parsing of modulation for VDR-style channels
+    config
+  * hwdec: add mediacodec hardware decoder for IMGFMT_MEDIACODEC
+    frames,
+  * rename mediacodec to mediacodec-copy
+  * lua: integrate stats.lua script (bound to i/I by default)
+  * vd_lavc: add support for nvdec hwaccel
+  * vo_gpu: add android opengl backend
+  * vo_gpu: initial d3d11 support
+  * vo_gpu: vulkan support
+  Removed features:
+  * af: remove deprecated audio filters (channels, equalizer,
+    pan, volume;
+  * replacements in lavfi)
+  * vf: remove most GPL video filters (crop, dsize, expand,
+    flip, gradfun, mirror,
+  * noformat, pullup, rotate, scale, stereo3d, yadif;
+    replacements in lavfi)
+  * vf_buffer: remove this filter
+  * video: remove automatic stereo3d filter insertion
+  * vo_gpu: remove hwdec_vaglx interop
+  * vo_opengl: refactor into vo_gpu
+  * vo_wayland: remove
+  Added options and commands:
+  * demux: add option to create CC tracks eagerly
+    (--sub-create-cc-track)
+  * options: add --start=none to reset previously set start time
+  * options: add --vlang switch
+  Changed options and commands:
+  * cache: lower default size to 2*10MB
+  * demux: bump the demuxer cache readahead duration to 10 hours
+  * demux: use seekable cache for network by default, bump
+    prefetch limit
+  * msg: make --msg-level affect --log-file too
+  * player/misc.c: allow both --length and --end to control play
+    endpoint
+  * player: match subtitles with language tags with
+    --sub-auto=exact
+  * rename --opengl-hwdec-interop to --gpu-hwdec-interop (now
+    mostly useless)
+  * vd_lavc: prefer nvdec over vdpau with --hwdec=auto (better
+    codec and surface
+  * format support)
+  * vd_lavc: rename --hwdec=rpi to --hwdec=mmal
+  Removed options and commands:
+  * options: remove --heartbeat-cmd and --heartbeat-interval
+  * (incidentally fixes #4888)
+  Fixes and Minor Enhancements
+  * TOOLS/autoload.lua: add ogm, ogg and opus extensions
+  * Use /dev/tty instead of stdin for terminal input (#4190)
+  * audio: add audio softvol processing to AO (replaces
+    previously GPL’d code)
+  * audio: fix channel conversion with NA channels (e.g. with
+    ALSA)
+  * audio: fix missing volume update on init and reinit
+  * csputils: Fix DCI P3 primaries white point
+  * demux: don't allow subtitles to mess up buffered time display
+  * demux: fix .cue files with audio files that contain attached
+    pictures
+  * demux: fix accounting for seekable ranges on track switches
+    (fixes missing
+  * audio when cycling through audio tracks with e.g. EDL,
+    --merge-files, ordered
+  * chapters and youtube-dl pseudo DASH)
+  * demux: fix crash with cue/ordered chapter files (#5027)
+  * demux: speed up cache seeking with a coarse index
+  * demux_lavf: always give libavformat the filename when probing
+  * (helps with mp3 files)
+  * demux_mkv: add V_SNOW tag to mkv_video_tags
+  * dvb: Fix long channel switching: next/prev channel
+  * dvb: fixes for ATSC tuning
+  * lavc_conv: clamp timestamps to positive (#5047)
+  * mp_image: always copy color attributes on hw download (#4804)
+  * mp_image: select an explicit fallback for chroma location
+    (#4804)
+  * msg: bump log level of --log-file to -v -v
+  * msg: reinterpret a bunch of message levels
+  * osc: fix rare stack overflow when changing visibility mode
+  * osdep/io: add android-related bullshit to fix files >2 GiB
+  * player/playloop.c: respect playback start time when using
+    --loop-file
+  * player: allow seeking in cached parts of unseekable streams
+  * player: make track language matching case insensitive (#5272)
+  * player: use start timestamp for ab-looping if --ab-loop-a is
+    absent
+  * player: when loading external file, always add all track
+    types (#5132)
+  * restore-old-bindings.conf: add old macOS/Wayland AXIS
+    bindings
+  * screenshot: create directories from template
+  * scripting: report dlerror() output
+  * sd_ass: accept RFC8081 font media types
+  * sd_ass: accept otc as fallback OpenType collection file
+    extension
+  * stream_libarchive: work around various types of locale
+    braindeath
+  * (https://git.io/vbiFJ)
+  * subprocess-win: don't change the mouse cursor when creating
+    processes
+  * video: add a hack to avoid missing subtitles with vf_sub
+    (#5194)
+  * video: fix alpha handling (#4983)
+  * video: fix memory leaks (roughly 1 KB per decoded frame)
+    with hwdec copy modes
+  * video: fix rotation and deinterlace auto filters
+  * video: properly pass through ICC data
+  * vo: add support for externally driven renderloop and make
+    wayland use it
+  * (partially fixes display-sync under wayland; disables
+    rendering when window
+  * is invisible)
+  * vo_gpu: change --tone-mapping-desaturate algorithm
+  * vo_gpu: enable 3DLUTs in dumb mode
+  * vo_gpu: fix gamma scale
+  * vo_gpu: fix mobius tone mapping compatibility to GLSL 120
+    (#5069)
+  * vo_gpu: fix video sometimes not being rerendered on
+    equalizer change
+  * vo_gpu: kill off FBOTEX_FUZZY (#1814)
+  * vo_gpu: opengl: fix possible screenshot window crash (#4905)
+  * vo_gpu: opengl: use GLX_MESA_swap_control where available
+  * vo_gpu: reduce the --alpha=blend-tiles checkerboard intensity
+  * vo_gpu: win: remove exclusive-fullscreen detection hack
+  * vo_lavc: remove messy delayed subtitle rendering logic
+    (#4689)
+  * wayland_common: implement output tracking, many cleanups and
+    bugfixes
+    (#4711)
+  * ytdl_hook: don't prepend ytdl:// to non-youtube links in
+    playlists (#5003)
+
+- Refreshed mpv-make-ffmpeg-version-check-non-fatal.patch
+
+- Dropped mpv-vaapi2.patch (no longer necessary)
+
+-------------------------------------------------------------------
+Tue Mar 20 09:38:17 UTC 2018 - tchvatal@suse.com
+
+- Do not enable smbclient twice, it is in normal opts too
+
+-------------------------------------------------------------------
+Wed Feb 14 09:33:34 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.27.2
+  * This release contains an additional fix for CVE-2018-6360.
+  Fixes and Minor Enhancements
+  * ytdl_hook: whitelist subtitle URLs as well (#5456)
+
+-------------------------------------------------------------------
+Sat Feb 10 14:11:42 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.27.1
+  * This release fixes CVE-2018-6360 (boo#1077894)
+  Fixes and minor enhancements
+  * ytdl_hook: whitelist protocols from urls retrieved from
+    youtube-dl (#5456)
+
+-------------------------------------------------------------------
+Mon Nov 27 13:36:36 UTC 2017 - mpluskal@suse.com
+
+- Enable vapoursynth support
+
+-------------------------------------------------------------------
+Sun Nov 19 18:45:10 UTC 2017 - mpluskal@suse.com
+
+- Explicitly enable more options
+- Sync with changes from home:X0F:HSF
+
+-------------------------------------------------------------------
+Thu Nov 16 17:36:01 UTC 2017 - dimstar@opensuse.org
+
+- Add mpv-vaapi2.patch: Fix build iwth vaapi 2.0. The patch is a
+  backport of the commits 93c52b, f35126 and 2ecf24.
+- Conditionalize use of %desktop_database_post/postun and
+  icon_theme_cache_post/postun to suse_version < 1330. The
+  functionality has since been replaced by file triggers and the
+  macros expand to %nil.
+
+-------------------------------------------------------------------
+Mon Nov 13 15:52:36 UTC 2017 - schwab@suse.de
+
+- Fix BuildRequires for lua51
+
+-------------------------------------------------------------------
+Thu Nov  2 12:20:01 UTC 2017 - mpluskal@suse.com
+
+- Explicitly use python3 when building
+- Enable libva on wayland
+
+-------------------------------------------------------------------
+Tue Oct 24 18:33:12 UTC 2017 - aloisio@gmx.com
+
+- Update mpv-bash-completion to 3.3.16
+  * gen: make output reproducible by ensuring stable output of
+    pairs() by wrapping it where it matters. (Closes #18)
+
+-------------------------------------------------------------------
+Wed Sep 13 05:45:26 UTC 2017 - aloisio@gmx.com
+
+- Update to version 0.27.0
+  Added features:
+  * libmpv: options: add a thread-safe way to notify option updates
+  * vd_lavc/vo_opengl: support embedded ICC profiles
+  * vo: rendering API abstraction for future non-GL video outputs
+  * vo_opengl: add a gamut warning feature to highlight
+    out-of-gamut colors (--gamut-warning)
+  * vo_opengl: add direct rendering support (--vd-lavc-dr)
+  * vo_opengl: implement (faster) compute shader based EWA kernel
+  * vo_opengl: implement HLG OOTF inverse
+  * vo_opengl: support HDR peak detection (--hdr-compute-peak)
+  * vo_opengl: support float input pixel formats
+  * vo_opengl: support loading custom user textures (#4586)
+  * vo_opengl: support user compute shaders
+  Removed features:
+  * Remove video equalizer handling from vo_direct3d, vo_sdl,
+    vo_vaapi, and vo_xv (GPL, not worth the effort to support legacy
+    VOs)
+  Added options and commands:
+  * player: add --track-auto-selection option
+  Changed options and commands:
+  * input: use mnemonic names for mouse buttons, same as Qt:
+    https://doc.qt.io/qt-5/qt.html#MouseButton-enum
+  * options: change --loop semantics
+  * player: make --lavfi-complex changeable at runtime
+  * vf_eq: remove this filter (GPL; uses libavfilter’s eq filter
+    now, with changed semantics)
+  * video: change --deinterlace behavior
+  * vo_opengl: generalize HDR tone mapping to gamut mapping,
+    --hdr-tone-mapping → --tone-mapping
+  Removed options and commands:
+  * --field-dominance (GPL-only author, no chance of relicensing)
+  * input: drop deprecated "osd" command
+  * options: drop --video-aspect-method=hybrid (GPL-only)
+  Fixes and minor enhancements:
+  * TOOLS/autocrop.lua: fix cropdetect black limit for 10-bit
+    videos
+  * TOOLS/lua/autodeint: update to lavfi-bridge
+  * TOOLS/lua/status-line: improve and update
+  * af_lavrresample: don't call swr_set_compensation() unless
+    necessary (#4716)
+  * ao_oss: fix period_size calculation (#4642)
+  * ao_rsound: allow setting the host
+  * audio: fix spdif mode
+  * filter_kernels: correct spline64 kernel
+  * options: fix --include (#4673)
+  * player: fix --end with large values (#4650)
+  * player: fix confusion in audio resync code (#4688)
+  * player: make refresh seeks slightly more robust (#4757)
+  * player: readd smi subtitle extension (#4626)
+  * vd_lavc: change auto-probe order to prefer cuda over vdpau-copy
+  * vd_lavc: fix device leak with copy-mode hwaccels (#4735)
+  * vd_lavc: fix hwdec compatibility with yuvj420p formats
+  * vd_lavc: fix mid-stream hwdec fallback
+  * vf_vapoursynth: fix inverted sign and restore 10 bit support
+    (#4720)
+  * video: increase --monitorpixelaspect range
+  * vo_opengl: adjust the rules for linearization (#4631)
+  * vo_opengl: scale deband-grain to the signal range
+  * vo_opengl: tone map on the maximum signal component
+  * x11: fix that window could be resized when using embedding
+    (#4784)
+  * ytdl_hook: resolve relative paths when joining segment urls
+    (#4827)
+  * ytdl_hook: support fragments with relative paths, fixes
+    segmented DASH
+
+-------------------------------------------------------------------
+Wed Aug 23 08:48:13 UTC 2017 - alarrosa@suse.com
+
+- Let mpv own /etc/mpv/scripts as a ghost dir so other packages
+  can create it and install scripts there.
+
+-------------------------------------------------------------------
+Mon Aug 21 12:31:39 UTC 2017 - tchvatal@suse.com
+
+- Build only against luajit and not lua where possible
+- Comment on why we depend on lua (for bash_completion generating)
+- Explicitly enable libsmbclient
+
+-------------------------------------------------------------------
+Sun Aug 20 12:17:49 UTC 2017 - aloisio@gmx.com
+
+- Update mpv-bash-completion to 3.3.15
+  * Fix af/vf filter argument expansion (#15)
+  * Remove some invalid suggestions for some options (#14)
+  * Recognize all --profile-style options as such and complete
+    them
+
+-------------------------------------------------------------------
+Sat Aug 19 19:55:04 UTC 2017 - aloisio@gmx.com
+
+- Update mpv-bash-completion to 3.3.14
+  * Reflect changed --list-options output for --vf-add-style
+    options
+
+- Update waf to 1.9.13
+
+-------------------------------------------------------------------
+Tue Aug 15 10:31:17 UTC 2017 - dimstar@opensuse.org
+
+- BuildRequire pkgconfig(lua5.1) instead of pkgconfig(lua-5.1): the
+  .pc files has been normalized to match other distributions.
+
+-------------------------------------------------------------------
+Wed Jul 19 11:26:19 UTC 2017 - aloisio@gmx.com
+
+- Fixed Leap build WRT lua
+- Removed shebang from bash-completion script
+
+-------------------------------------------------------------------
+Tue Jul 18 19:42:17 UTC 2017 - 9@cirno.systems
+
+- Packaging changes:
+  * Remove unnecessary build dependencies
+  * Explicitly enable DVD and DVB features
+  * Add libgbm, rubberband, uchardet
+
+- Update to version 0.26.0
+  * Built-in V4L TV support is disabled by default.
+    av://v4l2 can be used instead.
+  * Support for C plugins is now enabled by default (#4491).
+  * Many more parts of the player are now licensed under LGPL,
+    see Copyright file.
+  Added features:
+  * csputils: implement sony s-gamut
+  * vo_opengl: add new HDR tone mapping algorithm
+    (mobius, now default)
+  * vo_opengl: hwdec_cuda: Support separate decode and display
+    devices
+  * vo_opengl: implement sony s-log1 and s-log2 trc
+  * vo_opengl: implement support for OOTFs and non-display referred
+    content
+  Removed features:
+  * vf_dlopen: remove this filter
+  Added options and commands:
+  * vo_opengl: add --tone-mapping-desaturate
+  * vo_opengl: support tone-mapping-param for `clip`
+  * ytdl_hook: add option to exclude URLs from being parsed
+  Changed options and commands:
+  * allow setting profile option with libmpv
+  * audio: move replaygain control to top-level options
+  * external_files: parse ~ in --{sub,audio}-paths
+  * options: change --sub-fix-timing default to no (#4484)
+  * options: expose string list actions for --sub-file option
+  * options: slight cleanup of --sub-ass-style-override
+    + signfs → scale
+    + --sub-ass-style-override → --sub-ass-override
+  * renamed the HDR TRCs `st2084` and `std-b67` to `pq` and `hlg`
+    respectively
+  * replace vf_format's `peak` suboption by `sig-peak`, which is
+    relative to the reference white level instead of in cd/m^2
+  * the following options change to append-by-default (and possibly
+    separator): --script
+  * video: change --video-aspect-method default value to `container`
+  Deprecated options and commands:
+  * m_option: deprecate multiple items for -add etc.
+  * player: deprecate "osd" command
+  * --audio-file-paths => --audio-file-path
+  * --sub-paths => --sub-file-path
+  * --opengl-shaders => --opengl-shader
+  * --sub-paths => --sub-file-paths
+  * the following options are deprecated for setting via API:
+    + "script" (use "scripts")
+    + "sub-file" (use "sub-files")
+    + "audio-file" (use "audio-files")
+    + "external-file" (use "external-files")
+    (the compatibility hacks for this will be removed after this
+    release)
+  Removed options and commands:
+  * chmap: remove misleading "downmix" channel layout name (#4545)
+  * demux_lavf: remove --demuxer-lavf-cryptokey option (#4579)
+  * input.conf: drop TV/DVB bindings
+  * options: remove remaining deprecated audio device selection options
+    + --alsa-device
+    + --oss-device
+    + --coreaudio-exclusive
+    + --pulse-sink
+    + --rsound-host/--rsound-port
+    + --ao-sndio-device
+    + --ao-wasapi-exclusive
+    + --ao-wasapi-device
+  * remove option --target-brightness
+  * remove property "video-params/nom-peak"
+  Fixes and minor enhancements:
+  * TOOLS/lua/autoload.lua: actually sort files case insensitive (#4398)
+  * TOOLS/lua/autoload.lua: ignores all files starting with "."
+  * ao_pulse: reorder format choice to prefer float and S32 over S16 as fallback format
+  * command: add missing change notification for playlist-shuffle (#4573)
+  * demux_disc: fix bluray subtitle language retrieval (#4611)
+  * demux_mkv: fix alpha with vp9 + libvpx
+  * demux_mkv: support FFmpeg A_MS/ACM extensions
+  * ipc-unix: don’t truncate the message on EAGAIN (#4452)
+  * ipc: raise json nesting limit (#4394)
+  * mpv_identify: replace deprecated fps property (#4550)
+  * options/path: fallback to USERPROFILE if HOME isn't set
+  * player: close audio device on no audio track
+  * player: fix potential segfault when playing dvd:// with DVD disabled (#4393)
+  * player: prevent seek position to jump around adjacent keyframes, e.g. when dragging the OSC bar on short videos (#4183)
+  * vo_opengl: bump up SHADER_MAX_HOOKS and MAX_TEXTURE_HOOKS to 64
+  * vo_opengl: correct off-by-one in scale=oversample
+  * vo_opengl: do not use vaapi-over-GLX (#4555)
+  * vo_opengl: fall back to ordered dither instead of blowing up (#4519)
+  * vo_opengl: tone map in linear XYZ instead of RGB
+  * x11: add 128x128 sized icon support
+  * ytdl_hook: add a header to support geo-bypass
+  * ytdl_hook: don't override start time set by saved state
+  * ytdl_hook: don't override user-set start time
+  * ytdl_hook: treat single-entry playlists as a single video
+
+-------------------------------------------------------------------
+Mon May 22 08:41:28 UTC 2017 - tchvatal@suse.com
+
+- Depend on lua-5.1 as 5.3 is incompatible wrt bsc#1040034 
+
+-------------------------------------------------------------------
+Tue May  9 15:35:17 UTC 2017 - tchvatal@suse.com
+
+- Refresh patch mpv-make-ffmpeg-version-check-non-fatal.patch
+  * Rather delete the warning as whole, in OBS concept we detect
+    abi changes and it misleads the users of stable distributions
+    to worry something broke
+
+-------------------------------------------------------------------
+Tue May  2 14:02:12 UTC 2017 - tchvatal@suse.com
+
+- Remove the pdf build, it is same as manpage
+- Switch to python3 subpkgs as we use python3 anyway (Fixes TW build)
+
+-------------------------------------------------------------------
+Sun Apr 23 15:42:03 UTC 2017 - aloisio@gmx.com
+
+- Dropped openal. It's pointless these days and it creates
+  a problem when used with pulse (gh#mpv-player/mpv#4311)
+- Removed portaudio requirement (support was dropped in
+  0.8.0!)
+
+-------------------------------------------------------------------
+Sun Apr 23 07:18:05 UTC 2017 - aloisio@gmx.com
+
+- Update to version 0.25.0
+  * Support for some optical media functionality (DVD/CD) is now 
+    disabled by default.
+  * More parts of the player are now licensed under LGPL. In 
+    particular:
+      + OSD symbol font
+      + ass_mp, sd_ass
+      + common.h
+      + demux/packet
+      + demux_mkv (with minor exceptions), ebml, matroska.h
+      + sd_lavc
+      + sub/osd
+    Thanks to all contributors who have agreed to relicensing of 
+    their changes! See #2033 for details.
+  * Starting with this release, releases will be tagged on the 
+    master branch. The release/current branch is thus abandoned.
+  Added features:
+  * TOOLS: add acompressor.lua script for runtime acompressor ffmpeg
+    filter control
+  * dvb: add support for DVB-T2
+  * lavfi: support hwdec filters for --lavfi-complex
+  * osc: add volume button (mouse wheel to change volume)
+  * sub: add SDH subtitle filter
+  * vo_opengl: add experimental vdpauglx backend
+  Removed features:
+  * image_writer: remove useless formats (PPM, PGM, TGA)
+  * af_drc: remove (use --af=acompressor instead; higher quality)
+  Added options and commands:
+  * --demuxer-lavf-probe-info
+  * --sub-filter-sdh, --sub-filter-sdh-harder
+  * add automatic libavfilter bridges to option parsing
+  * command: add better runtime filter toggling method
+  * command: add demux-start-time property
+  * command: add property notifications for hwdec properties (#4289)
+  * input: add "async" flag
+  * osc: add user_opts.boxmaxchars for box layout title limit
+  * player: add --keep-open-pause=no option
+  * va_vavpp: reversal-bug=no
+  * vo_opengl: --opengl-es=force2
+  * vo_opengl: add --opengl-shader-cache-dir option for caching 
+    shaders on disk (mostly for ANGLE)
+  * vo_opengl: angle: add --angle-flip to set the ANGLE present model
+  Changed options and features:
+  * command: update sub-fps etc. options on runtime changes
+  * vo_opengl: prefer X11 backends over Wayland backends
+  * options: change --audio-file-auto default to not to load any 
+    files
+  Deprecated options and features:
+  * audio: deprecate most non-lavfi audio filters
+    (channels, equalizer, pan, volume)
+  * video: deprecate almost all non-lavfi video filters
+    (buffer, crop, dlopen, dsize, eq, expand, flip, gradfun, mirror, 
+    noformat, pullup, rotate, scale, stereo3d, sub, yadif)
+  * options: deprecate --loop semantics (planned alias to 
+    --loop-file)
+  Fixes and minor enhancements:
+  * ao_alsa: close lost audio devices (#4189)
+  * ao_alsa: filter fewer devices
+  * ao_alsa: fix an error check (#4188)
+  * ao_jack: update latency on buffer_size/graph change
+  * ao_wasapi: do not pass nonsense to drivers with double precision 
+    formats
+  * ass_mp: reallocate cached subtitle image data on format changes 
+    (#4325)
+  * build: decouple dvdnav check from dvdread (#4290)
+  * build: encode_lavc: fix build failure after libavcodec major bump
+  * build: fix build with HAVE_GL==0
+  * build: replace android-gl check with a standard GLES3 check
+  * build: update bundled waf to 1.9.8
+  * build: vd_lavc: fix potential build failure with vaapi
+  * demux_lavf: disable half-working mp4 edit list support in 
+    libavcodec
+  * demux_lavf: skip avformat_find_stream_info() for some formats 
+    (hls, mp4, mkv by default)
+  * etc/encoding_profiles.conf: update and remove deprecated stuff
+  * etc/mpv.conf: remove deprecated options
+  * external_files: actually try to autoload from fallback paths
+  * external_files: enable autoloading with URLs (#3264)
+  * image_writer: make it work with libavcodec's jpg encoder
+  * osc: bottom/topbar: add fullscreen button
+  * osc: bottom/topbar: don't clip title vertically
+  * osc: bottom/topbar: increase timecodes width a bit (#3952)
+  * osc: fix PlayResX undefined warning when aspect is 0
+  * osc: fix window dragging with showwindowed=no (#1819)
+  * osc: make title configurable and use property expansion on it 
+    (#4221)
+  * osc: refactor osc message scaling (#4081, #4083, #4102)
+  * player: don't block playback stop when seeking
+  * player: enable "buffering" pausing for DASH streams too
+  * player: fix core-idle and eof-reached update notifcations
+  * player: make screenshot commands honor the async flag (#4250)
+  * player: reduce blocking on VO when switching pause (#4152)
+  * sd_ass: disable --sub-fix-timing if sub style override is fully 
+    disabled
+  * stream/stream_dvdnav: don't ignore setting title (#4283)
+  * stream_dvd: fix subs/audio detection on DVDs containing 
+    multi-PGC titles
+  * vf_vavpp: add advanced deint bug compatibility for Intel vaapi 
+    drivers
+  * vf_vavpp: fix first-field mode
+  * vo_opengl: fix crash with temporal dithering in dumb mode
+  * vo_opengl: hwdec_d3d11egl: make it work with some ANGLE DLL 
+    versions
+  * vo_x11: reduce flickering on playlist navigation
+  * wayland: correctly map mouse buttons
+
+-------------------------------------------------------------------
+Wed Apr 19 11:48:00 UTC 2017 - tchvatal@suse.com
+
+- Use localy present waf to adhere upstream requirements
+
+-------------------------------------------------------------------
+Sat Apr 15 19:11:46 UTC 2017 - tchvatal@suse.com
+
+- Enable luajit on aarch64 and update bit the conditional for wayland
+
+-------------------------------------------------------------------
+Fri Apr 14 13:25:27 UTC 2017 - aloisio@gmx.com
+
+- Update mpv-bash-completion to 3.3.13
+  * Dynamic completion for --drm-connector based on currently
+    connected displays
+  * Fixes for options audio-demuxer, audio-spdif, cscale-window,
+    demuxer, dscale, dscale-window, opengl-hwdec-interop,
+    scale-window, sub-demuxer
+
+-------------------------------------------------------------------
+Fri Apr  7 18:24:27 UTC 2017 - aloisio@gmx.com
+
+- Update mpv-bash-completion to 3.3.12
+  * Implement feature request #12: Previoiusly, the --profile
+    option would only list built-in profiles and not profiles
+    defined in configuration files because at build time, mpv is
+    called with the --no-config option. Now, --profile completions
+    are obtained by calling mpv directly, at completion run time,
+    and the completions now include profiles defined in
+    configuration files.
+
+-------------------------------------------------------------------
+Sun Mar 26 11:44:07 UTC 2017 - aloisio@gmx.com
+
+- Update mpv-bash-completion to 3.3.11
+  * Enable correct completion of the options --ad, --vd,
+    --oac, --ovc which where hitherto broken.
+
+-------------------------------------------------------------------
+Sat Mar 11 10:40:24 UTC 2017 - aloisio@gmx.com
+
+- Update mpv-bash-completion to 3.3.10
+  * improve completion for file-specific options
+  * do not assume option types are always populated
+- Fixed Factory build
+
+-------------------------------------------------------------------
+Sun Feb 12 07:52:20 UTC 2017 - aloisio@gmx.com
+
+- Update to version 0.24.0
+  Added features:
+  * player: add experimental C plugin interface
+  * player: add experimental stream recording feature 
+    (--record-file)
+  * player: add prefetching of the next playlist entry 
+    (--prefetch-playlist; does NOT work with URLs resolved by
+    youtube-dl)
+  * stream_lavf: add support for data URIs (#4058)
+  * vaapi: add support for 10-bit video formats (requires 
+    patched Mesa and capable hardware)
+  * x11: pseudo HiDPI scaling
+  Added options and commands:
+  * sub: add --sub-justify and --sub-ass-justify options
+  * sub: add option to force using video resolution for image 
+    subtitles (--image-subs-video-resolution)
+  Changed options and commands:
+  * command: rename framedrop properties
+    + drop-frame-count → decoder-frame-drop-count
+    + vo-drop-frame-count → frame-drop-count
+  * input.conf: change "L" to change loop-file by default
+  Deprecated options and commands:
+  * --hwdec-preload (replaced with --opengl-hwdec-interop)
+  Removed options and commands:
+  * options: drop deprecated --sub-codepage syntax
+  * options: drop deprecated --vd/--ad codecs selection 
+    features
+  * player: remove --stream-capture option/property
+  Fixes and minor enhancements:
+  * ad_spdif: fix obscure cases of AC3 passthrough (e.g. 44100 
+    Hz AC3)
+  * ao_oss: use --audio-device if --oss-device isn't set 
+    (#4122)
+  * build: fix --disable-gl if cuda is enabled
+  * build: rpi: rely on pkgconfig for compiler flags to ease 
+    cross compilation
+  * charset_conv: fallback to interpreting subs as latin1 if 
+    iconv fails
+  * charset_conv: fix "auto" fallback with uchardet not 
+    compiled (#3954)
+  * client API: fix freeze when destroying mpv_handle before 
+    mpv_initialize
+  * client API: fix mpv_set_property() return value before 
+    init (#3988)
+  * command: fix potential crash for script-binding with 
+    multi-commands
+  * command: nicer OSD formatting for loop-file
+  * command: shorten long playlists on OSD
+  * config: do not resolve default profile during "include" 
+    processing (#4024)
+  * cuda: fix 10 bit decoding
+  * cue: accept lower-case cue commands (#4057)
+  * demux_mkv: any reference makes a frame not a keyframe 
+    (fixes seeking in WebM files with alpha channel)
+  * lavfi: slightly better disconnected output handling (#4118)
+  * lua: close directory after reading its entries (#4045)
+  * osc: allow playlist buttons when looping (#4092)
+  * osc: bottom/topbar: clip title instead of stretching
+  * osc: bottombar/topbar: make chapter markers slightly bigger
+  * osc: box: clip with ellipsis after too much stretching
+  * osc: fix crashes related to field eventresponder being nil 
+    (#3210)
+  * player: add .scc subtitle extension
+  * stream_bluray: use proper 0-based index
+  * sub: remove .txt as text subtitle extension
+  * tv: fix segfaults on TV input (#4096)
+  * vaapi: set libva > 0.39.4 message callbacks to prevent it 
+    from printing messages to the terminal
+  * vd_lavc: improved fallback behavior for --hwdec=cuda 
+    (#3914)
+  * vdpau: reject decoding of non-4:2:0 (would decode to 
+    garbage)
+  * vf_lavfi: don't crash with VOs without hardware decoding 
+    support (#4064)
+  * vo_opengl, vo_opengl_cb: better hwdec interop backend 
+    selection
+  * vo_opengl: angle: rewrite with custom swap chain (fixes 
+    problems with e.g. 24 fps video on 24 Hz monitors, avoids 
+    problems with DirectComposition, enables "screenshot window" 
+    command on Windows 8 and newer)
+  * vo_opengl: partially fix rotation for 4:2:2 content
+  * vo_opengl: x11egl: fix alpha mode
+  * wayland: fix high CPU usage with mpv paused and visible
+  * ytdl_hook, edl: implement pseudo-DASH support
+  * ytdl_hook: add non-dash fallbacks to default formats
+  * ytdl_hook: fix opening hitbox.tv rtmp stream
+  * ytdl_hook: respect --no-audio, don't force-select track
+  * ytdl_hook: support livestream segmented DASH VODs
+  * ytdl_hook: support segmented dash
+
+- Fixed mpv executable version quirk and remove ambiguity
+  concerning the %{version} macro.
+
+- Updated ffmpeg libraries version requirements to 3.2.2
+
+-------------------------------------------------------------------
+Thu Jan 19 19:57:35 UTC 2017 - jengelh@inai.de
+
+- Fixup wrong description
+
+-------------------------------------------------------------------
+Thu Jan 19 18:25:26 UTC 2017 - aloisio@gmx.com
+
+- Updated embedded mpv-bash-completion to 3.3.8
+  * FIXED: --{ and --} got treated as flags, completing to
+    --{=yes|no and --}=yes|no, respectively, due to a change in
+    upstream option typing, which is a command line syntax error.
+
+-------------------------------------------------------------------
+Tue Jan  3 19:49:41 UTC 2017 - aloisio@gmx.com
+
+- Further version requirement fixes
+
+-------------------------------------------------------------------
+Tue Jan  3 17:33:17 UTC 2017 - aloisio@gmx.com
+
+- Fixed version requirement in the bash-completion
+  subpackage
+
+-------------------------------------------------------------------
+Tue Jan  3 11:30:54 UTC 2017 - tchvatal@suse.com
+
+- Use system waf, seems not to break for now anymore
+- Use correct licenses in all subpkgs
+
+-------------------------------------------------------------------
+Tue Jan  3 08:38:56 UTC 2017 - aloisio@gmx.com
+
+- Fixed minor details for the mpv-bash-completion subpackage
+
+-------------------------------------------------------------------
+Mon Jan  2 23:59:18 UTC 2017 - tchvatal@suse.com
+
+- Split the completion to separate subpackage and build it in obs not
+  during post
+
+-------------------------------------------------------------------
+Mon Jan  2 21:19:27 UTC 2017 - aloisio@gmx.com
+
+- Added mpv-bash-completion-3.3.7.tar.gz to generate
+  a bash-completion script
+
+-------------------------------------------------------------------
+Sun Dec 25 16:33:11 UTC 2016 - aloisio@gmx.com
+
+- Update to version 0.23.0
+  * Now requires at least FFmpeg 3.2.2.
+  Changed features:
+  * vo_rpi: partially undeprecate
+  Added features:
+  * vo_opengl: hwdec_cuda: Support P016 output surfaces
+  Removed features:
+  * charset_conv: drop enca and libguess support in favor of
+    uchardet
+  * vf_vdpaurb: remove this filter in favor of --hwdec=vdpau-copy
+  Added options and commands:
+  * TOOLS/autoload: allow disabling through script-opts
+  * demux, stream: add --access-references to prevent opening
+    referenced files
+  Deprecated options and commands:
+  * options: deprecate codec family selection in --vd/--ad
+  Removed options and commands
+  * options: remove deprecated sub-option handling for --vo
+    and --ao
+  Fixes and minor enhancements:
+  * Windows: window styles improvements (allow minimizing
+    borderless/fullscreen window) (#2229, #2451)
+  * ad_spdif: Fix crash when spdif muxer is not available
+  * audio: fix --audio-stream-silence with ao_alsa
+  * audio: fix --audio-stream-silence with ao_wasapi
+  * build: drop build-time dependency on Perl
+  * build: support linking ANGLE (previously loaded dynamically)
+  * d3d11va: unconditionally load D3D DLLs (#3348)
+  * demux_mkv: fix seeking in some broken files (#3920)
+  * hwdec_cuda: allow building without CUDA SDK (load CUDA
+    dynamically)
+  * osc: don't hide playlist buttons, just disable
+  * osc: fix possible race condition in right timecode
+  * osc: topbar: use same styles as bottombar
+  * player: don't print format detection error when aborting
+    loading
+  * vdpau: fix vaapi probing if libvdpau-va-gl1 is present
+  * video: use demuxer-signaled duration for last video
+    frame (#3924)
+
+-------------------------------------------------------------------
+Sun Nov 20 18:05:08 UTC 2016 - aloisio@gmx.com
+
+- Update to version 0.22.0
+  Added features:
+  * audio/out: add AudioUnit output driver for iOS
+  * demux_mkv: parse Matroska colorimetry metadata
+  * filter_kernels: add ability to taper kernels/windows, add 
+    tukey window
+  * osc: add seekbarstyle=knob (#2365)
+  * video/out: add tct as modern caca alternative for 
+    true-color and 256-color terminals
+  * video: add --hwdec=vdpau-copy mode
+  Deprecated features:
+  * vf_vdpaurb: deprecated in favor of --hwdec=vdpau-copy
+  Added options and commands
+  * --opengl-early-flush=auto
+  * --scale-taper, --scale-wtaper
+  * --scale-wblur
+  * macOS: --hidpi-window-scale (#3716)
+  * osc: add script message handlers for 
+    chapter/track/playlists
+  Fixes and Minor Enhancements
+  * Apply --autofit-larger after --autofit-smaller (#3753)
+  * Set subtitle track title to indicate hearing/visual 
+    impaired tracks
+  * ao_alsa: disable chmap API use for mono/stereo (#2905, 
+    #3045)
+  * build: add required failure message for libavfilter check 
+    (#3692)
+  * build: fix compilation with mingw-w64/Clang (#3800)
+  * build: make VideoToolbox available on iOS
+  * command: fix reset-on-next-file=all and tv-freq option 
+    (#3708)
+  * command: if window-scale can't be set properly, set it as 
+    option (#3724)
+  * demux_mkv: don't recursively resolve timeline for opened 
+    reference files
+  * demux_mkv: fix ordered chapter sources with ordered 
+    editions
+  * opengl: compile against iOS OpenGLES implementation
+  * options: handle legacy no-* sub-options
+  * osc: add alpha animation to tooltip (fix lingering tooltip)
+  * osc: change default deadzonesize to 0.5
+  * osc: don't wrap the title
+  * osc: fix crash after reaching a certain position in 
+    limited lists (#3691)
+  * osc: fix crash with no chapters
+  * osc: fix crashes when dragging seekbar across file changes 
+    (#3210)
+  * osc: fix displaying only half of the entries when at the 
+    end of a list
+  * osc: fix missing chapter ticks with seekbarstyle=bar
+  * osc: slimbox: fix clipping with seekbarstyle=bar (#3737)
+  * osc: top/bottombar: also scale when min-width is reached 
+    to match box/slimbox behavior
+  * osc: top/bottombar: dynamically size timecodes according 
+    to timems
+  * osc: top/bottombar: rescale layout to same size with 
+    scale=1
+  * osc: top/bottombar: scale title if too large like box
+  * player: consistently initialize screensaver state with 
+    --force-window
+  * player: enable no-video subtitle display on coverart too
+  * player: make --start-time work with --rebase-start-time=no
+  * player: make sure non-video subtitle rendering is reset if 
+    video resumes (#3770)
+  * player: removing last playlist entry while looping should 
+    not stop (#3808)
+  * player: show subtitles on VO if --force-window is used 
+    (#3684)
+  * player: speed up audio/video re-sync when there is a huge 
+    delay
+  * vdpau: fix hwdec uninit (#3788)
+  * vo_opengl: blend against background color for --alpha=blend
+  * vo_opengl: context_rpi: fix stdatomic usage (#3699)
+  * vo_opengl: fix --blend-subtitles handling (#3773)
+  * vo_opengl: fix redrawing with hardware decoding (#3773)
+  * vo_opengl: partially re-enable glFlush() calls (#3670)
+  * ytdl_hook: sort chapters by time
+
+-------------------------------------------------------------------
+Fri Nov  4 08:48:25 UTC 2016 - tchvatal@suse.com
+
+- Add patch to not require equal libav soname version we were built with
+  OBS rebuilds packages as needed and it is over the head bsc#1012600
+  * mpv-make-ffmpeg-version-check-non-fatal.patch
+
+-------------------------------------------------------------------
+Wed Oct 19 21:45:08 UTC 2016 - aloisio@gmx.com
+
+- Update to version 0.21.0 
+  Added features:
+  * config: allow profile forward-references in default profile
+  * demux_lavf: "support" mov edit lists and log errors if 
+    used (FFmpeg only)
+  * hwdec: Add support for CUDA and cuvid/NvDecode (mostly 
+    useful on Linux where VDPAU still lacks HEVC Main 10 
+    support; keep using DXVA2 on Windows)
+  * osc: add right-click behavior to playlist and chapter 
+    buttons
+  * osc: add user-alterable margin for top/bottombar
+  * rpi: add --hwdec=rpi-copy (#3604)
+  * sd_lavc: enable teletext
+  * vaapi: support drm devices when running in vaapi-copy mode
+  * vd_lavc: Add hwdec wrapper for crystalhd
+  * vo_opengl: add hw overlay support and use it for RPI
+  * vo_opengl: basic mali fbdev support
+  * vo_opengl: rpi: merge vo_rpi features
+  Removed features:
+  * vo_opengl: remove pre/post/scale-shaders in favor of 
+    user-shaders
+  Deprecated features:
+  * config: deprecate ao and vo auto-profiles
+  * vo_rpi: deprecate this VO
+    Added options and commands:
+  * add --teletext-page option
+  * af_pan: add af-command support to change the matrix
+  * af_rubberband: add af-command and option to change the 
+    pitch
+  * command: add a load-script command
+  * command: add a video-dec-params property
+  * command: add an apply-profile command
+  * command: add audio-pts property to get the audio pts
+  * command: add options to property list
+  * command: add sub-text property for current subtitle text
+  * command: export profile list as a property (#977)
+  * options: add --hwdec=yes as alias for --hwdec=auto
+  * player: add --player-operation-mode=pseudo-gui
+  * player: add --video-osd=no option to disable video OSD 
+    (#3387)
+  * player: add --watch-later-directory option
+  * stream_bluray: select title by playlist 
+    (bd://mpls/[playlist])
+  * vo_opengl: disable glFlush() by default, and add an option 
+    to enable it for testing
+  Changed options and commands:
+  * af_rubberband: default to channels=together
+  * command: allow absolute seeks relative to end of stream
+  * command: make bitrate properties observable
+  * command: make most options observable
+  * msg: make --log-file and --dump-stats accept config path 
+    expansion (#3591)
+  * options: deprecate --playlist-pos to --playlist-start
+  * options: make input options generally runtime-settable
+  * options: rename subtitle options (--sub-text- → --sub; 
+    --ass- → --sub-ass-)
+  * osc: change default layout to bottombar, seekbarstyle to 
+    bar, use larger scalewindowed and scalefullscreen
+  * player: make --terminal, --log-file, --dump-stats, --osc, 
+    --ytdl, --audio-*, --priority, --stop-screensaver (#3615) 
+    settable at runtime
+  * vo_drm: change CLI options
+    + Change connector selection to accept human readable 
+      names (such as eDP-1, HDMI-A-2) rather than arbitrary 
+      numbers.
+    + Change GPU selection to accept GPU number rather than 
+      device paths.
+    + Merge connector and GPU selection into one 
+      --drm-connector.
+    + Add support for --drm-connector=help.
+    + Add support for --drm-* in EGL backend.
+  * vo_opengl: rename 3dlut-size to icc-3dlut-size
+  Removed options and commands:
+  * command: remove hwdec-active and hwdec-detected properties
+  * command: remove vo-cmdline
+  * options: drop unreferenced --bluray-angle option
+  * vo, ao: disable positional parameter suboptions
+  * vo_xv: replace no-colorkey with ck-method=none
+  Deprecated options and commands:
+  * all VOs and AOs: deprecate sub-options, add them as global 
+    options
+  * command: deprecate "cache" property, replace with 
+    "cache-percent"
+  * deprecate --vo-defaults
+  * deprecate --vo=opengl-hq alias in favor of opengl-hq 
+    profile
+  * options: deprecate --mute=auto
+  * vo_direct3d: deprecate direct3d_shaders alias, use shaders 
+    by default
+  * vo_opengl: deprecate 'drm-egl' backend and introduce 'drm' 
+    instead
+  Fixes and minor enhancements:
+  * TOOLS/zsh.pl: die if we can't parse main options
+  * TOOLS/zsh.pl: don't filter files by extension (#2273)
+  * ao_alsa: try to fallback to "hdmi" before "iec958" for 
+    spdif
+  * ao_rsound: fix compilation (#3501)
+  * aspect: use nominal width instead of actual width for 
+    video-unscaled
+  * audio/out: prevent underruns with spdif under certain 
+    conditions
+  * audio: fix late audio start (#3610)
+  * audio: fix missed wakeup when changing audio output device
+  * audio: fix segfault when yanking USB DAC
+  * charset_conv: Use CP949 instead of EUC-KR
+  * command: don't log "ignore" command with -v verbosity
+  * command: try selecting the next track if track switching 
+    fails (#3446)
+  * demux_mkv: don't crash if --ordered-chapters-files fails
+  * displayconfig: treat a refresh rate of 1 as invalid
+  * ipc: log when listening to IPC socket (#3598)
+  * macOS: fix fullscreen regression on 10.11 and newer (#3364)
+  * mp_image: fix clearing to black with p010 format
+  * osc: Fix scaling issues when toggling fullscreen (#3429)
+  * osc: align text vertically in top/bottombar (#2093)
+  * osc: change seekbar background's alpha scaling
+  * osc: fix display of chapters and playlist scaling
+  * osc: move tooltip to inside seekbar for top/bottombar
+  * osc: show playlist/chapter list on prev/next instead of osd
+  * path: default ~~ paths to home directory (#3591)
+  * player: do not let pseudo-gui override user config settings
+  * player: enable reading from stdin after loading input.conf
+  * player: fix instant subtitle refresh on track switches
+  * player: make --force-window work with opengl-cb
+  * stream_file: don't use poll() on directories (would hang 
+    on macOS; #3530, #3649)
+  * stream_lavf: fix determining seekability (#1701)
+  * sub: actually apply text alignment options to non-ASS 
+    subtitles
+  * terminal-win: support modifier keys in console input 
+    (#3625)
+  * vo_drm: fix segfault when using invalid card
+  * vo_opengl: apply 90° rotation to chroma texture size 
+    (#3568)
+  * vo_opengl: fix incorrect video rendering after vdpau 
+    preemption recovery
+  * vo_opengl: partially fix dumb-mode cropping with rotation
+  * vo_opengl: rpi: use overlay for yuv420p too
+  * w32_common: initialize playback status as soon as possible 
+    (#3482)
+  * wayland: reject resize events with either dimension being 
+    0 (#3679)
+  * x11: fix external fullscreen update (#3570)
+  * ytdl_hook: Add title to playlist items if available
+  * ytdl_hook: Set aspect ratio for anamorphic video
+  * ytdl_hook: Support playlist entries without subtitles
+  * ytdl_hook: add chapters by parsing video's description
+  * ytdl_hook: don't add subtitles with unknown duration
+  * ytdl_hook: temporarily force disable dash segments formats
+
+- Update waf to 1.9.5
+
+-------------------------------------------------------------------
+Sat Oct 15 21:40:14 UTC 2016 - mpluskal@suse.com
+
+- Enable libarchive support
+
+-------------------------------------------------------------------
+Fri Sep  2 07:45:36 UTC 2016 - idonmez@suse.com
+
+- Add exact dependency on all libav* packages not just libavcodec.
+
+-------------------------------------------------------------------
+Fri Aug 26 18:17:38 UTC 2016 - aloisio@gmx.com
+
+- Update to version 0.20.0
+  Added options and commands:
+  * aspect: add --video-unscaled=downscale-big
+  * player: add --image-display-duration option to control 
+    duration of image display (#3425)
+  * vo_opengl: angle: new flag (dcomposition) to control 
+    DirectComposition
+  Fixes and minor enhancements:
+  * af_lavrresample: fix error if resampler could not be 
+    recreated
+  * audio: avoid missed wakeups with ab-loops
+  * audio: do not apply --audio-channels if spdif passthrough is 
+    in use (#3445)
+  * cache: don't use a backbuffer if the cache is as large as 
+    the file
+  * command: prevent O(n^2) behaviour for playlist property
+  * demux: close underlying stream if it's fully read anyway 
+    (#3456)
+  * demux: fix undefined behavior with ogg metadata update 
+    (#3451)
+  * player: make looping slightly more seamless
+  * player: refresh very low framerate video on filter changes 
+    (#3435)
+  * stream_memory: disable stream cache
+  * vf_rotate: allow arbitrary rotation (#3434)
+  * vo: be more trusting to estimated display FPS (#3433)
+  * w32_common: use hooks to detect parent window resize
+  * x11: work around mutter fullscreen issue (#2072)
+  * This listing is not complete. Check 
+    DOCS/client-api-changes.rst for a history
+    of changes to the client API, and DOCS/interface-changes.rst 
+    for a history of changes to other user-visible interfaces.
+
+-------------------------------------------------------------------
+Mon Aug 15 14:23:25 UTC 2016 - aloisio@gmx.com
+
+- Update to version 0.19.0 
+  Build system changes:
+  * build: add --htmldir option
+  * build: always require atomics
+  * wscript: add proper unversioned SONAME for Android
+  New features:
+  * client API: add stream_cb API for user-defined stream 
+    implementations (bumps client API version to 1.22)
+  * vf_d3d11vpp: add video processor selection
+  * videotoolbox: add --hwdec=videotoolbox-copy for h/w 
+    accelerated decoding with video filters
+  * vo_opengl: add a tscale=linear direct implementation
+  Removed features:
+  * audio/filter: remove delay audio filter
+  Added options and commands:
+  * command: add filename/no-ext sub-property that returns 
+    filename without extension (#3404)
+  * command: add properties for HDR metadata
+  * command: add replaygain information properties to 
+    track-list
+  * options: add vp9 to --hwdec-codecs
+  * player: add --audio-stream-silence
+  * player: add --audio-wait-open
+  * player: add --no-autoload-files
+  * videotoolbox: add yuv420p to --videotoolbox-format
+  Changed options and commands:
+  * options: un-restrict --audio-delay
+  * use - as command-name separator everywhere
+  * vo_opengl: reduce default 3dlut-size to 64x64x64 (since 
+    accuracy is improved)
+  Deprecated options and commands:
+  * deprecate "balance" option/property (no replacement)
+  Fixes and Minor Enhancements:
+  * Windows: don't wait for GUI thread when polling for 
+    events (#3393)
+  * af_lavcac3enc: error out properly if encoding fails
+  * af_volume: don't let softvol overwrite af_volume 
+    volumedb sub-option
+  * ao_pulse: fix some volume control rounding issues
+  * ao_wasapi: in exclusive mode, do not output multichannel 
+    by default
+  * audio: add heuristic to move auto-downmixing before 
+    other filters
+  * audio: show an osd bar when changing ao-volume
+  * demux: make ALBUM replaygain tags optional (#3405)
+  * demux_raw: fix small typo to add s16be support
+  * demux_timeline: restore mkv edition switching
+  * libarchive: sanitize non-UTF8 archive entries
+  * macOS/vo_opengl: fix crash when glctx is NULL during 
+    init (#3360)
+  * player: disable display-sync with spdif transcoding
+  * player: do not cut off terminal status line if it 
+    contains newlines (#3340)
+  * player: fix display-sync timing if audio resumes slowly
+  * player: improve instant track switching (#3392)
+  * player: improve non-hr seeking with external audio tracks
+  * player: offset demuxer on start/seek properly with 
+    audio/sub delay
+  * player: sync audio as well when enabling it mid-stream
+  * stream/stream_bluray: display list of available titles 
+    in verbose mode
+  * sub: don't potentially discard too many subtitles on seek
+  * video: respect --deinterlace=auto
+  * vo_direct3d: add missing header (fixes Cygwin build)
+  * vo_opengl: angle: try D3D9 when D3D11 fails eglInitialize
+  * vo_opengl: angle: use WARP if there are no hw adapters 
+    (makes it work on Windows 7 without hardware-accelerated 
+    graphics)
+  * vo_opengl: increase 3DLUT accuracy at smaller LUT sizes
+  * vo_opengl: remove the 3dlut-size npot2 restriction
+  * vo_wayland: fix high CPU usage due to busy polling
+  * wayland_common: clip window size to the display output 
+    size
+  * wayland_common: fix crashes when switching to fullscreen 
+    before the video output is fully initialized
+  * wayland_common: fix fullscreen image switching bug
+  * wayland_common: prevent black bars on most non-native 
+    aspect ratios
+  * wayland_common: remove untested/unusable wayland dnd code
+  * win32: mpv.rc: re-add version info
+  * x11: skip ICC update on every window move
+  * ytdl: Error out with http_dash_segments (unsupported for 
+    now)
+- Updated waf to 1.9.2
+
+-------------------------------------------------------------------
+Tue Jul 12 11:45:19 UTC 2016 - tchvatal@suse.com
+
+- Update waf to 1.9.1
+
+-------------------------------------------------------------------
+Tue Jul 12 11:38:54 UTC 2016 - mpluskal@suse.com
+
+- Force rebuilding with every minor update of ffmpeg
+
+-------------------------------------------------------------------
+Sun Jul 10 07:30:12 UTC 2016 - aloisio@gmx.com
+
+- Update to version 0.18.1
+  * Note: Running mpv with different versions of the 
+    FFmpeg/Libav libraries than it was compiled with
+    is no longer supported. Even supposedly ABI-compatible
+    versions have been a source of trouble, and it creates 
+    far too much complexity with little to no benefit,
+    coupled with absurd and unusable FFmpeg API artifacts.
+    Instead, mpv will exit with an error when such a 
+    situation is detected.
+    This simply means that mpv needs to be rebuilt whenever 
+    FFmpeg libraries change.
+  New Features:
+  * d3d: implement screenshots for --hwdec=d3d11va
+  * vo_opengl: add output_size uniform to custom shader
+  * vo_opengl: implement the Panasonic V-Log function 
+    (#3157)
+  * vo_opengl: implement ARIB STD-B68 (HLG) HDR TRC
+  Options and oommands:
+  * command: pack sub image data in overlay-add command
+  * options: deprecate --heartbeat-cmd
+  * audio: deprecate --softvol
+  * audio: drop --softvol=no and --softvol=auto (#3322)
+  Fixes and minor enhancements:
+  * video: fix deinterlace filter handling on pixel 
+    format changes
+  * x11: silence xdg-screensaver
+  * vo_opengl: angle: update the swapchain on resize 
+    (#3301)
+  * vo_opengl: error out gracefully when trying to use 
+    FBOs without FBO API
+  * vd_lavc: expose mastering display side data reference 
+    peak (improves results with HDR content)
+  * vo_opengl: generalize HDR tone mapping mechanism 
+    (#3293)
+  * vo_opengl: don't constantly resize the output FBO
+  * vo_opengl: use ringbuffer of PBOs
+  * Windows: make WM_NCHITTEST simpler and more accurate
+  * ao_oss: do not add an entry to audio-device-list if 
+    device file missing
+  * dec_audio: fix segment boudnary switching
+  * ao_lavc, vo_lavc: Migrate to new FFmpeg encoding API
+  * vo_opengl: explicitly use main framebuffer when 
+    reading window content (#3284)
+  * vo_xv: fix behavior with odd sizes
+  * audio: insert auto-inserted filters at end of chain
+  * x11: add missing FocusChangeMask (disables key repeat 
+    when losing focus while a key is down)
+  * ao_coreaudio: error out when selecting invalid device
+  * ad_lavc: work around misbehavior of some FFmpeg 
+    decoders like wmapro (#3297)
+  * player: cut off status line on terminal width
+
+-------------------------------------------------------------------
+Sun Jun 26 22:05:13 UTC 2016 - virtuousfox@gmail.com
+
+- Remove mpv_gpl3 Packman condition due to upstream's decision
+  to drop "prescaling" code in favour of generic shader hooks.
+
+-------------------------------------------------------------------
+Sat Jun 25 06:00:02 UTC 2016 - aloisio@gmx.com
+
+- Update to version 0.18.0
+  Build System Changes:
+  * build: Do not link to libGL for egl-drm
+  * build: also use the iconv check on FreeBSD
+  * build: don't install tests, only build them
+  * build: re-enable encoding mode by default
+  * vo_opengl: hwdec: remove build-dependency on dxva2 (#3150)
+  * wscript: make at least 1 OpenGL output mandatory
+  New features:
+  * csputils: add SMPTE ST2084 support
+  * demux_mkv: support Matroska webvtt (#3247)
+  * demux_playlist: read directories recursively
+  * stream_memory: add hex:// protocol
+  * vf_crop: support opaque hardware decoding formats
+  * vf_d3d11vpp: add a D3D11 video processor filter
+  * vo_opengl: D3D11VA + ANGLE interop
+  * vo_opengl: add an angle-es2 backend
+  * vo_opengl: angle: dynamically load ANGLE
+  * vo_opengl: d3d11egl: native NV12 sampling support
+  * vo_opengl: enable color management on GLES
+  * vo_opengl: implement HDR (SMPTE ST2084)
+  * vo_opengl: implement tone mapping algorithms
+  * vo_opengl: make PBOs work on GLES 3.x
+  * vo_opengl: support external user hooks, enhancing the 
+    flexibility of user shaders
+  * vo_opengl: vdpau interop without RGB conversion
+  * wayland: implement HIDPI support
+  Removed features:
+  * vo_opengl: remove nnedi3 prescaler (replaced by user shaders)
+  * vo_opengl: remove prescaling framework with superxbr prescaler 
+    (replaced by user shaders)
+  Added options and commands:
+  * Windows: make taskbar progress indication optional (#2535)
+  * af_lavcac3enc: make encoder configurable
+  * command: add playlist-pos-1 property (#2828)
+  * command: introduce hwdec-current and hwdec-interop properties.
+  * options: add --fit-border video option (currently Windows only)
+  * video: add --hwdec=auto-copy mode
+  * vo_opengl: always autoselect ANGLE as backend if available
+  * vo_opengl: expose performance timers as properties
+  * x11: add --x11-bypass-compositor=never
+  * x11: extend --x11-bypass-compositor with fs-only option (#2582)
+  Changed options and commands:
+  * command: allow setting panscan etc. properties if no video is 
+    active
+  * command: don't seek immediately when setting a-b loop while 
+    paused
+  * command: if only ab-loop-b is set, loop from start of file
+  * options: --geometry: center window position after applying 
+    size (#2397)
+  * player: loop on end of file if ab-loop-b is unset
+  * sd_add: replace --sub-ass=no with --ass-style-override=strip
+  Removed options and commands:
+  * vo_opengl: remove non-working rgb/rgba FBO formats
+  Fixes and minor enhancements:
+  * TOOLS/zsh.pl: add .f4v extension in zsh completions
+  * TOOLS/zsh.pl: complete --audio-device
+  * Windows: center window on original window center on resize to 
+    fit screen
+  * Windows: fix size calculations for window resize (#2935)
+  * Windows: fix wrong behavior with window-scale when window size 
+    exceeds screen size
+  * Windows: make VOCTRL_SET_UNFS_WINDOW_SIZE resize the window 
+    around its center (#3164)
+  * af_lavcac3enc: fix custom bitrates
+  * ao_alsa: add more workarounds for hardware with broken drivers 
+    (e.g. ODROID-C2)
+  * ao_opensles: remove 32-bit audio formats (not supported by 
+    Android)
+  * cocoa: fix actual display refresh rate retrieval
+  * cocoa: use displaylink without manually tracking the display 
+    id (#2392)
+  * command: improve playlist* properties change notifications 
+    (#3267)
+  * command: slightly nicer OSD list formatting
+  * compatibility with recent FFmpeg APIs
+  * d3d: fix hardware decoding of most MPEG2 things
+  * d3dva: move Intel_H264_NoFGT_ClearVideo to lower priority 
+    (#3059)
+  * demux_mkv: better resync behavior for broken google-created 
+    webms
+  * demux_mkv: fix seeking with files that miss the first index 
+    entry
+  * demux_playlist: recognize m3u8 as playlist extension (#3154)
+  * input: fix parsing multiple input command prefixes
+  * lcms: don't warn/error on 3dlut cache misses
+  * lcms: improve black point handling (especially BT.1886)
+  * macOS: handle multiple dropped files on the window (#3076)
+  * player: always show the first frame in DS mode
+  * player: assume video forwards timestamps jumps only with some 
+    formats (#3027)
+  * player: do not update OSD all the time when paused
+  * player: eagerly redraw OSD when seeking with coverart
+  * player: fix use-after-free with --screenshot-directory (#3049)
+  * player: force VO reconfig when unselecting video track
+  * player: really start audio only once video is ready
+  * sd_lavc: work around bug in older FFmpeg releases (#3109)
+  * stream_cdda: enable cache by default
+  * sub: fix --sub-gauss
+  * vd_lavc: better hwdec wrapper decoder selection
+  * vo_opengl: EGL: fix hwdec probing
+  * vo_opengl: angle: avoid fullscreen FBO copy for flipping
+  * vo_opengl: angle: enable DirectComposition (lowers vsync 
+    jitter)
+  * vo_opengl: angle: prevent DXGI hooking Alt+Enter
+  * vo_opengl: avoid outputting ultra-wide-gamut by default
+  * vo_opengl: correctly disable interpolation if tscale can't be 
+    used
+  * vo_opengl: fix bicubic_fast in ES mode
+  * vo_opengl: fix d3d11 hardware decoding probing on Windows 7
+  * vo_opengl: improve scale=oversample performance
+  * vo_opengl: make the screen blue on shader errors
+  * vo_opengl: partially fix 0bgr format support
+  * vo_opengl: possibly update icc profile after changing options
+  * vo_opengl: request core profile on X11/EGL too
+  * vo_opengl: require at least ES 3.0 for float textures
+  * vo_opengl: vdpau: fix certain cases of preemption recovery 
+    failures
+  * vo_rpi: attempt to survive display mode changes
+  * vo_rpi: fix destroying overlays (#3100)
+  * vo_rpi: wait for vsync with a timeout
+  * vo_sdl: fix pixel formats.
+  * vo_xv: Handle incorrect size returned by Xv(Shm)CreateImage 
+    (#320)
+  * wayland: correctly report display refresh rate
+  * wayland: use the advertised size in fullscreen (#3021, #2657)
+  * x11: tell GNOME to use dark window decorations
+  * ytdl_hook: fix brightcove urls
+  * ytdl_hook: just check if protocol is rtmp (#3090)
+  * ytdl_hook: support multi-arc subtitles
+
+- Re-added /etc/mpv/encoding-profiles.conf
+
+-------------------------------------------------------------------
+Tue Apr 12 07:26:14 UTC 2016 - mpluskal@suse.com
+
+- Update dependencies of desktop and icon handling scriplets
+
+-------------------------------------------------------------------
+Mon Apr 11 17:57:02 UTC 2016 - aloisio@gmx.com
+
+- Update to version 0.17.0
+  * See https://github.com/mpv-player/mpv/releases/tag/v0.17.0 
+    for full changelog
+
+-------------------------------------------------------------------
+Mon Feb 29 07:55:09 UTC 2016 - idonmez@suse.com
+
+- Update to v0.16.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.16.0
+    for the complete changelog.
+- Drop mpv-0.15.0_fix_NULL_ptr.patch, fixed upstream.
+- Don't install mpv.png as upstream now ships a mpv.svg
+
+-------------------------------------------------------------------
+Mon Feb 15 12:12:33 UTC 2016 - virtuousfox@gmail.com
+
+- Add a mpv_gpl3 condition to build mpv as GPL-3.0+ on Packman. 
+
+-------------------------------------------------------------------
+Fri Jan 22 12:51:43 UTC 2016 - idonmez@suse.com
+
+- Drop the --enable-gpl3 options and revert the license to GPL-2.0+ 
+
+-------------------------------------------------------------------
+Wed Jan 20 20:07:35 UTC 2016 - aloisio@gmx.com
+
+- Backported commit 5053f4c to fix hang problem with smplayer
+  (bug ref. #2729) mpv-0.15.0_fix_NULL_ptr.patch
+
+-------------------------------------------------------------------
+Mon Jan 18 19:52:34 UTC 2016 - idonmez@suse.com
+
+- Update to v0.15.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.15.0
+    for the complete changelog.
+- Install mpv.conf & input.conf
+
+-------------------------------------------------------------------
+Sun Jan 10 08:09:14 UTC 2016 - idonmez@suse.com
+
+- Set license to GPL-3.0+ so we can enable more OpenGL functionality.
+- Add pkgconfig(gl) build dependency.
+
+-------------------------------------------------------------------
+Thu Dec 24 12:46:33 UTC 2015 - tchvatal@suse.com
+
+- Provide and obsolete mplayer2 as per packman discussion
+
+-------------------------------------------------------------------
+Mon Dec 14 09:10:24 UTC 2015 - idonmez@suse.com
+
+- Update to v0.14.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.14.0
+    for the complete changelog.
+
+-------------------------------------------------------------------
+Fri Dec 11 11:14:24 UTC 2015 - tchvatal@suse.com
+
+- Remove mpg123 as dependency, thus losing need of being on packman.
+  We use the mad implementation anyway if we had FPU and everything
+  we support has to have it anyway.
+
+-------------------------------------------------------------------
+Fri Dec 11 11:09:13 UTC 2015 - tchvatal@suse.com
+
+- Sort out the ffmpeg deps to reduce conditionals
+
+-------------------------------------------------------------------
+Thu Dec  3 21:04:26 UTC 2015 - dmueller@suse.com
+
+- only depend on luajit on compatible architectures (doesn't
+  exist on e.g. aarch64)
+
+-------------------------------------------------------------------
+Tue Nov 10 19:02:49 UTC 2015 - idonmez@suse.com
+
+- Update to v0.13.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.13.0
+    for the complete changelog.
+
+-------------------------------------------------------------------
+Thu Oct 29 08:09:47 UTC 2015 - idonmez@suse.com
+
+- Update to v0.12.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.12.0
+    for the complete changelog.
+
+-------------------------------------------------------------------
+Fri Oct 23 10:48:22 UTC 2015 - idonmez@suse.com
+
+- Add a 265x256 resolution app icon 
+
+-------------------------------------------------------------------
+Wed Sep 23 07:11:12 UTC 2015 - idonmez@suse.com
+
+- Update to v0.11.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.11.0
+    for the complete changelog.
+
+-------------------------------------------------------------------
+Fri Sep  4 07:40:46 UTC 2015 - tchvatal@suse.com
+
+- Bump version of WAF to match upstream
+
+-------------------------------------------------------------------
+Fri Sep  4 07:18:35 UTC 2015 - idonmez@suse.com
+
+- Update to v0.10.0
+  * Please see https://github.com/mpv-player/mpv/releases/tag/v0.10.0
+    for the complete changelog.
+
+-------------------------------------------------------------------
+Wed May 27 10:53:28 UTC 2015 - tchvatal@suse.com
+
+- Try to fix build for both Factory and packman
+  * We neeed to sync this up
+
+-------------------------------------------------------------------
+Wed May 27 09:23:41 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 0.9.2:
+  * Various opengl fixes
+  * Fulscreen behaviour fixes for some WMs
+  * Various other small fixes
+
+-------------------------------------------------------------------
+Tue May 19 12:48:13 UTC 2015 - olaf@aepfle.de
+
+- Sync buildrequires with packman spec-file
+
+-------------------------------------------------------------------
+Fri May 15 08:19:20 UTC 2015 - tchvatal@suse.com
+
+- Sync with packman spec-file
+
+-------------------------------------------------------------------
+Wed May  6 12:49:29 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.9.1
+  * mpv's IRC channel moved from #mpv-player to #mpv on chat.freenode.net.
+  * Documentation updates.
+  * The default value for the --ytdl-format option is now best, in order to work around youtube-dl's 2015.04.26 release enabling DASH by default, as FFmpeg / Libav do not yet properly support DASH.
+  * When seeking, the current timestamp will show the predicted seek timestamp instead, until the final timestamp is resolved. Improves UI responsiveness on slow streams and/or large seeks.
+- Changes for 0.9.0
+  * Note: mpv is not compatible with Lua 5.3. Lua 5.1 or 5.2 is required.
+  * The minimum required libass version is now 0.12.1 or newer.
+  * The minimum required FFmpeg version is now 2.4.0 (equiv. Libav 11) or newer.
+  * The internal libmpg123 support was removed. This was already not used by default in the previous release.
+  * The LIRC support was removed. Configure LIRC remotes as input devices instead.
+  * The Linux Joystick support was removed.
+  * vf_screenshot was removed, as they are now handled at a VO level and is compatible with all VOs.
+  * --ass-use-margins has been renamed to --sub-use-margins and applies only to plain-text (non-ASS) subtitles (enabled by default). The new --ass-force-margins option applies only to ASS subtitles (disabled by default). To get the old behaviour back, enable both at the same time.
+  * The --sub-scale-with-window option now only applies to plain text (non-ASS) subtitles (enabled by default). The new --ass-scale-with-window option does the same but only with ASS subtitles (disabled by default).
+  * The range for the param1 for the gaussian vo_opengl scaler has been redefined. Instead of being an arbitrary 1-100 range, have a default value of 1.0, and anything higher is blurrier.
+  * The seek, playlist_next, playlist_prev, loadfile and loadlist parameters no longer accept numerical parameters where symbolic parameter names exist.
+  * vo_opengl changes:
+  * The smoothmotion suboption has been renamed to interpolation. The old name is still supported for now.
+  * The bilinear_slow scaler has been renamed to triangle.
+  * scale-down has been renamed to dscale and now has its own set of config options (e.g. dscale-radius).
+  * Scaler radius no longer defaults to 3 but to a preferred value that may be different for each filter.
+  * The scale-radius option may now go down as low as 0.5, which is the value used by the nearest filter.
+  * spline36 is the new cscale default for opengl-hq. This might break setups that use fbo-format=rgb8. To work around it, leave fbo-format as its default, or set to something higher than 8, or set cscale=bilinear, the previous default.
+  * vf_format no longer converts video to YUYV if there is no parameter. Video is now passed unchanged unless a format is specifically requested.
+  * The --colormatrix, --colormatrix-input-range, --colormatrix-output-range and --colormatrix-primaries options have been converted into vf_format suboptions. See commit 27715b7 and the manual for details.
+  * vf_mirror's implementation was replaced with calling into libavfilter's vf_hflip filter, thus depending on libavfilter to function.
+  * The device subption to ao_wasapi has been deprecated in favor of --audio-device.
+  * --video-rotate now allows 360 as an argument instead of stopping at 359.
+  * Several improvements to af_scaletempo.
+  * Options that have multiple options and also include a "yes" option now default to that if specified with no arguments.
+  * The default value of --cache-default is now 150000 (153.6 MB, ~146 MiB).
+  * JPEG screenshots now use the same subsampling as the source video. The images are still RGB regardless of source format though.
+
+-------------------------------------------------------------------
+Thu Apr 23 11:27:19 UTC 2015 - mpluskal@suse.com
+
+- Correct category for library
+- Add post/postun scriplet to update icons cache
+
+-------------------------------------------------------------------
+Wed Apr 22 14:20:55 UTC 2015 - mpluskal@suse.com
+
+- Update dependencies (explicitly depend on libav for now)
+
+-------------------------------------------------------------------
+Sat Mar 21 08:35:59 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Minor spec file cleanups
+
+-------------------------------------------------------------------
+Fri Mar 20 13:06:44 EET 2015 - mermoldy@gmail.com
+
+ - Version bump to 0.8.3:
+ Changes
+   * Documentation fixes and updates.
+   * (Client API) Clarify mpv_opengl_cb_render's viewport parameter behavior.
+ Bug fixes
+   * (X11) Fix crash on vo_xv:no-colorkey with the Overlay adapter. (bug #1629)
+   * Make the video equalizer work correctly on some VAAPI drivers. (bug #1647)
+   * Prevent OSD from disappearing when clicking on mozplugger. (bug #1672)
+   * The new DVB-S2 support code, using S2API, now builds on FreeBSD.
+   * Fix decoding of seekable matroska from unseekable network stream. (bug #1656)
+   * (OSX) Fix crashing when closing a VO's window (usually at exit). (bug #1657)
+   * (OSX) Unhide the mouse cursor when over the Dock or Launchpad. (bug #513)
+   * (OSX) Fix mouse cursor autohiding when the player is fullscreen.
+   * vf_vavpp (VAAPI postprocessing) now deinterlaces video correctly.
+   * smb:// streams now use the stream cache (used to be inefficient).
+   * (Windows) Do not hide the mouse cursor when it is hovering the window menu.
+   * Fix 8-channel output on ao_jack. (bug #1688)
+   * Fix --mf-fps parameter on JPEG files. (bug #1689)
+   * Fix anamorphic scaling being ignored if it was very minor.
+
+-------------------------------------------------------------------
+Fri Jan 30 10:12:50 UTC 2015 - scarabeus@opensuse.org
+
+- Add BSD-3-Clause license as it is what waf is under
+
+-------------------------------------------------------------------
+Thu Jan 29 09:10:14 UTC 2015 - aloisio@gmx.com
+
+- Version bump to 0.7.3:
+  Changes
+  * Several documentation updates and typo fixes.
+  * Don't show "0%" position when the stream is infinite / has
+    unknown length.
+  * Fixes the config file loading order so that lower priority
+    `mpv.conf` files don't override higher priority `config` files.
+  * The subtitle decoder now gets reset when cycling subtitles.
+    This makes the currently shown subtitle event disappear even if
+    cycling back to the current subtitle track.
+  * `--shuffle` and `--merge-files` now affects the contents of
+    playlist files, instead of just the list of files given as
+    arguments to mpv.
+  * (Linux) `ao_alsa` now deals better with audio device
+    disconnection.
+  Bug fixes
+  * Fixes for handling mono audio on various AOs.
+  * (Linux) Fixes resuming from suspend on ao_alsa.
+  * Fixes for playlist file parsing.
+  * Fix rendering resolution of certain DVB subtitles (bug #1425).
+  * Fix EDL or --merge-files breaking timestamps with .avi files.
+  * Workaround for libavcodec bug with the VP9 codec parser
+    (bug #1448), fixes possible crash.
+  * Improve robustness of the matroska parser with broken files
+    (bugs #1457, #1461).
+  * Improve 10bit video compatibility with older GPUs (specially Intel)
+    (bug #1383).
+  * Fixes flashing the VO window when playing a list of files that
+    includes non-media files (bug #1459).
+  * Workaround for window embedding in OpenBox (bug #1235)
+  * Fixes for several crashes and lockups (bugs #838, #1389, #1408,
+    #1463, #1473, #1474).
+  * Fixes for the zsh completion script (bugs #997)
+  New features
+  * mpv now prints the contents of its config.h when running in
+    verbose mode, to aid with debugging.
+  * The `include=` option now accepts `~` to refer to the HOME dir
+    (bug #1406).
+  * `af_volume` now prints ReplayGain values in verbose mode.
+  * m3u playlists that don't have the `#EXTM3U` header are now
+    accepted if they "look like" ASCII or UTF-8 text and have the
+    .m3u extension.
+  * Chapter marks in the seek bar now update when switching files.
+  * Supports embedded cover art in MKV files (bug #1374).
+  * (Linux) vo_wayland now supports key modifiers (Meta, Alt,
+    Control, Shift)
+
+-------------------------------------------------------------------
+Thu Dec 25 14:15:44 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.7.2:
+  * update waf to 0.8.5
+  * Give precedence to the DVD menu navigation keyboard bindings so that user
+    defined LEFT/RIGHT/... bindings don't break DVD menu navigation.
+  * Try to fallback to the "default" device if the selected device is busy in
+    the alsa AO.
+  * Restore ab-loop settings with playback resume.
+  * Don't signal an error if --stream-dump is used.
+  * Fix removing key bindings from Lua scripts.
+  * Reject channel descriptions with too many channels in the coreaudio AO.
+  * Don't async redraw when waiting for VO redraw on OS X (this fixes the very
+    annoying glitch where the black bars disappear for a single frame when
+    going fullscreen).
+  * Fix mono playback with the also AO.
+  * Don't crash if framebuffers are not available in the opengl VO.
+
+-------------------------------------------------------------------
+Sat Dec 20 20:06:01 UTC 2014 - seife+obs@b1-systems.com
+
+- fix the UNKNOWN replacement :-)
+
+-------------------------------------------------------------------
+Tue Dec 16 08:26:27 UTC 2014 - scarabeus@opensuse.org
+
+- Replace the UNKNOWN in --version with date from changelog
+
+-------------------------------------------------------------------
+Sun Dec 14 11:09:17 UTC 2014 - scarabeus@opensuse.org
+
+- Quvi was dropped so remove it from the deps
+
+-------------------------------------------------------------------
+Fri Dec  5 15:23:57 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.7.1:
+  * Don't show the volume neutral marker on the OSD if softvol is disabled.
+  * Don't select a subtitle track when executing the sub_add input command in "auto" mode.
+  * Fix busy loop when seeking while paused (this fixes a problem with pulseaudio that caused mpv and the pulseaudio daemon to use 100% CPU).
+  * Fix Lua function utils.subprocess() in Windows versions older than Vista.
+  * Avoid creating a window bigger than the screen on Windows.
+  * Don't ignore the last line in m3u playlists.
+  * Don't crash if a codec could not be opened.
+  * Dynamically allocate audio channel map entries (this should fix a crash in the alsa and coreaudio AOs with audio devices that support more than 20 channel maps).
+  * Ignore the "srgb" option in the opengl VO if hardware decoding is enabled.
+  * Linearize non-RGB sRGB files correctly (eg. JPEG).
+  * Fix opening reference URLs (.file/id=) on OS X.
+  * Buffer partial log messages in the client API (the client API will now only pass full log messages to clients).
+  * Remove ncurses/terminfo/termcap support (it was disabled by default and replaced by new code since v0.6.0).
+  * Enable cdda:// support by default again (it was disabled since v0.6.0).
+  * Cascade-load input.conf (if there are several input.confs in the set of valid config paths, load them all).
+  * Draw the OSD twice in 3D mode (this fixes subtitles display in 3D mode).
+  * Make wasapi the default AO on Windows again since many of its problems have been solved.
+  * Use "site-functions" subdir to install the zsh completion script instead of the Debian-specific "vendor-completions" (also provide the --zshdir waf configure option for changing this value).
+  * Improve synchronization between the Cocoa GUI and the player (this fixes some long standing deadlock issues on Mac OS X).
+  * Remove --fs-missioncontrol option (only relevant to Mac OS X).
+  * Enable pitch correction by default when playing at higher speeds (this can be controlled with the --audio-pitch-correction option).
+  * Open stream and demuxer asynchronously (this should avoid having the player get blocked on network streams).
+  * Add cache-buffering-state property for querying the cache fill status until the player unpauses.
+  * Add support for listing and selecting the audio device (note that it is not implemented for all AOs, see the --audio-device option for more information).
+  * Add support for a JSON-based IPC mechanism (note that this is not currently supported on Windows, see the JSON IPC section in the manpage for more information).
+  * Add Lua utility function for starting processes (see utils.subprocess() in the manpage).
+  * Add Lua utility function for parsing JSON (see utils.parse_json() in the manpage).
+  * Add field-dominance property (see --field-dominance option).
+  * Add video-rotate property (see --video-rotate option).
+  * Add playback-abort property for querying whether playback is stopped or is to be stopped.
+  * Add cursor-autohide property (see --cursor-autohide option).
+  * Add vo-configured property for querying whether a window is created.
+  * Add support for dxva2 hardware acceleration on Windows.
+  * Drop libquvi support (this has been replaced by a built-in Lua script that invokes the youtube-dl tool, which needs to be installed, see the --ytdl option).
+  * Add support for loading chapters from an external file (see the --chapters-file option).
+  * Add window-minimized property for querying whether the window is minimized (works for X11 only).
+  * Make it possible to configure the OSC seekbar style (see the "seekbarstyle" OSC option).
+  * Add support for libmpv on Mac OS X (it used to be broken, now it's fully functional and also provides support for embedding the mpv window inside a Cocoa/Qt application).
+  * Try to use the audio channel map reported by ALSA in the alsa AO.
+  * Add option to disable text OSD rendering completely (useful for working around certain fontconfig issues, see the --use-text-osd option).
+
+-------------------------------------------------------------------
+Mon Nov 24 19:48:13 UTC 2014 - scarabeus@opensuse.org
+
+- Add --enable-libmpv-shared to build shared library.
+
+-------------------------------------------------------------------
+Mon Nov 24 12:39:54 UTC 2014 - scarabeus@opensuse.org
+
+- Revert back to support wayland.
+
+-------------------------------------------------------------------
+Fri Nov 21 11:30:17 UTC 2014 - scarabeus@opensuse.org
+
+- Blacklist the wayland as it for some reason now have trouble properly
+  linking resulting in unresolvable package
+
+-------------------------------------------------------------------
+Mon Oct 27 20:24:54 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.6.2:
+  * The --ass-style-override option now requires a newer version of libass.
+  * Correctly signal EOF when using --frames.
+  * Strictly endorce the limit imposed by --frames (i.e. avoid producing an extra frame at the end).
+  * Fix \x-style escaping when parsing commands.
+  * Correctly handle ^h key on the terminal (this should fix the when inserted from Backspace key on new versions of xterm).
+  * Don't put the player to sleep after audio reinit.
+  * Properly exit if both audio and video fail to initialize.
+
+-------------------------------------------------------------------
+Thu Oct 16 14:38:23 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.6.1:
+  * Don't show message on "osd" command by default (this essentially reverts a change introduced in the last release).
+  * Add an alternative input configuration that reverts the key binding changes introduced by previous releases (see etc/restore-old-bindings.conf in the sources).
+  * Automatically install example input configuration files.
+  * Fix stream languages with Bluray
+  * Don't try to create surfaces of size 0 in the VDPAU vo.
+  * Don't print audio/video init failure message twice.
+  * Fix playback on the root window on X11 (i.e. when using --wid=0).
+  * Fix the autodetection of the input format in the vf_stereo3d filter when mpv is built against libav (this makes --video-stereo-mode work with libav as well).
+  * Fix compilation with PulseAudio 1.0.
+  * Fix compilation with clang.
+  * Try harder to decode cover art picture only once.
+  * Fix cursor autohide (--cursor-autohide) with audio-only files on file change (e.g. when skipping to the next playlist file).
+
+-------------------------------------------------------------------
+Wed Oct  1 11:39:10 UTC 2014 - aloisio@gmx.com
+
+- Version bump to 0.6.0
+  * Numerous changes and new features, see official changelog 
+
+-------------------------------------------------------------------
+Thu Sep 11 10:49:42 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.5.3:
+  * Do not honor XDG_CONFIG_DIRS to always read global configs
+  * Fix speed behaviour changes
+  * Seeking fixes
+  * Handle EOF better
+
+-------------------------------------------------------------------
+Fri Aug 29 14:18:50 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.5.1:
+  * Various changes with major release
+  * Also look in XDG folders for config
+  * Default config renamed to mpv.conf
+
+-------------------------------------------------------------------
+Mon Aug  4 18:21:36 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.4.2:
+  * Fix --cache-file operation when file size is unknown (e.g. when playing from a pipe).
+  * Don't sleep if playback is stopped when reconnecting for remote stream.
+  * Suspend read on vts change even if the requested title is not found when using dvdnav (dvd://) (this fixes a bug where the DVD menu was not shown properly after a DVD track ended).
+  * Avoid draining if the audio output is paused (this fixes a bug where mpv would hang when switching tracks when paused).
+  * Drop buffered audio when switching tracks or filters (this fixes a possible regression when using gapless audio).
+  * Reverse video rotation direction.
+  * Fix initialization of the input when playing from a pipe.
+  * Fix description of the --mf option in the manpage (the --mf syntax changed a while ago, but was not documented).
+  * Actually append entries to the end of the playlist instead of after the current entry with the "loadlist append" command.
+
+-------------------------------------------------------------------
+Sun Jul 13 18:39:04 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.4.1:
+  * Various small bugfixes
+
+-------------------------------------------------------------------
+Tue Jul  1 10:42:00 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.4.0:
+  * Manpages generating now uses only rst2...
+  * Enforce enabling cdda
+  * Update requirement for new waf tarball
+  + Use dvdnav for dvd:// parsing
+  + Various cli arguments changed name see --help for changes
+  + Removed radio support
+  + For more read https://github.com/mpv-player/mpv/releases/tag/v0.4.0
+
+-------------------------------------------------------------------
+Mon Jun 23 12:57:19 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.3.11:
+  * Small fixes
+  * Fix to build with latest git ffmpeg
+
+-------------------------------------------------------------------
+Mon May 26 08:42:16 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.3.10
+  * Various small fixes.
+
+-------------------------------------------------------------------
+Wed Apr 30 12:35:33 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.3.9:
+  * Various small fixes.
+
+-------------------------------------------------------------------
+Sun Apr 20 19:51:42 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.3.8:
+  * Bugfixes around vo=vdpau mostly
+
+-------------------------------------------------------------------
+Mon Mar 31 13:10:58 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.3.7:
+  * Small bugfixes especially around old ffmpeg/libav versions.
+
+-------------------------------------------------------------------
+Wed Mar 12 13:04:12 UTC 2014 - scarabeus@opensuse.org
+
+- Version bumjp to 0.3.6:
+  * Various minor bug fixes.
+
+-------------------------------------------------------------------
+Sun Feb 16 11:01:24 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.3.5:
+  * use the c99 to avoid few issues
+  * fixes in vo_opengl output
+
+-------------------------------------------------------------------
+Tue Feb  4 08:42:16 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.3.4:
+  * bugfixes all around
+  * disabled quvi 0.9 subtitles as they were too broken
+
+-------------------------------------------------------------------
+Thu Jan 16 19:50:57 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.3.3:
+  * Fixes matroska containers
+  * Wayland fixes
+
+-------------------------------------------------------------------
+Wed Jan  8 07:14:07 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.3.2:
+  * Fix regression with autoenabling subtitles with quvi
+  * Various unspecified bugfixes
+
+-------------------------------------------------------------------
+Mon Jan  6 14:54:46 UTC 2014 - scarabeus@opensuse.org
+
+- Version bump to 0.3.1, fixing few issues.
+
+-------------------------------------------------------------------
+Thu Jan  2 17:44:15 UTC 2014 - scarabeus@opensuse.org
+
+- Drop support for < 12.3 as even 12.2 will be out of scope in 13
+  days.
+
+-------------------------------------------------------------------
+Mon Dec 30 23:25:07 UTC 2013 - scarabeus@opensuse.org
+
+- Enable libv4l.
+
+-------------------------------------------------------------------
+Mon Dec 30 21:06:38 UTC 2013 - scarabeus@opensuse.org
+
+- Version bump to 0.3.0:
+  * Feature update in various areas, notably support for dvdnav
+  * Build system was rewritten under waf
+  * Multiple subtitles can be now displayed at once
+  * vdpau/vaapi acceleration can be used with opengl output
+- Run .desktop file updaters
+
+-------------------------------------------------------------------
+Sun Dec  8 11:36:41 UTC 2013 - scarabeus@opensuse.org
+
+- Version bump to 0.2.4:
+  * Audio fixes
+  * Small bugfixes
+
+-------------------------------------------------------------------
+Sat Nov 23 10:42:49 UTC 2013 - scarabeus@opensuse.org
+
+- Reduce pkgconfig deps where it seems proper.
+
+-------------------------------------------------------------------
+Sat Nov 23 09:51:15 UTC 2013 - scarabeus@opensuse.org
+
+- Fix docu generating and add luajit dependency.
+- Try to convert the deps to pkgconfig syntax.
+
+-------------------------------------------------------------------
+Sat Nov  9 10:02:42 UTC 2013 - scarabeus@opensuse.org
+
+- Verison bump to 0.2.3:
+  * Handle more signals
+  * Fix audio detection with some formats
+  * More tiny fixes
+
+-------------------------------------------------------------------
+Wed Nov  6 13:15:30 UTC 2013 - scarabeus@opensuse.org
+
+- Version bump to 0.2.2:
+  * Tiny bugfixes
+- Depend on rst2tex when available, still broken configure check
+  to be fixed next time.
+
+-------------------------------------------------------------------
+Mon Oct 21 12:19:06 UTC 2013 - scarabeus@opensuse.org
+
+- Version bump to 0.2.1:
+  * Various small fixes
+- Fix build with samba again, fixed in git properly for next
+  release.
+
+-------------------------------------------------------------------
+Thu Oct 17 20:39:01 UTC 2013 - scarabeus@opensuse.org
+
+- Fix directory ownership on icondirs.
+
+-------------------------------------------------------------------
+Thu Oct 17 19:46:34 UTC 2013 - scarabeus@opensuse.org
+
+- Version bump to 0.2.0:
+  * new icon
+  * Add an On Screen Controller (OSC)
+  * Subtitles: make automatic charset detection the default
+  * More intuitive chapter seeking behavior
+  * support for VA-API hardware decoding and display
+  * Preliminary Lua scripting support
+  * Switch to GPL version 2 or later for mpv as a whole
+
+-------------------------------------------------------------------
+Tue Sep 24 09:18:50 UTC 2013 - scarabeus@opensuse.org
+
+- Install configuration examples for users to inspire themselves.
+
+-------------------------------------------------------------------
+Mon Sep 23 14:06:05 UTC 2013 - scarabeus@opensuse.org
+
+- Version bump to 0.1.7:
+  * manpage fixes
+  * mkv subtitle fixes
+  * various bugfixes
+
+-------------------------------------------------------------------
+Mon Sep 16 14:57:14 UTC 2013 - scarabeus@opensuse.org
+
+- Make mpv build on 12.2 too, what a release.
+
+-------------------------------------------------------------------
+Mon Sep 16 14:49:45 UTC 2013 - scarabeus@opensuse.org
+
+- Disable jack on 11.4 so the package actually builds.
+
+-------------------------------------------------------------------
+Mon Sep 16 13:16:24 UTC 2013 - scarabeus@opensuse.org
+
+- And make 11.4 happy too wrt dep resolution.
+
+-------------------------------------------------------------------
+Mon Sep 16 13:10:42 UTC 2013 - scarabeus@opensuse.org
+
+- Make this work with older releases too (versioned ifs for deps).
+
+-------------------------------------------------------------------
+Sun Sep 15 14:26:44 UTC 2013 - scarabeus@opensuse.org
+
+- Update license and ship readme.
+
+-------------------------------------------------------------------
+Sun Sep 15 14:22:01 UTC 2013 - scarabeus@opensuse.org
+
+- Fix description.
+
+-------------------------------------------------------------------
+Sun Sep 15 14:18:11 UTC 2013 - scarabeus@opensuse.org
+
+- Fix dep on python3-docutils as they are borked now, use py2 for
+  time being, told sachpe to figure it out.
+
+-------------------------------------------------------------------
+Sun Sep 15 14:09:57 UTC 2013 - scarabeus@opensuse.org
+
+- Sort out remaining dependencies so we can build.
+
+-------------------------------------------------------------------
+Sun Sep 15 13:43:50 UTC 2013 - scarabeus@opensuse.org
+
+- Initial spec file for mpv media player.
+  * Based from mplayer2 spec. 

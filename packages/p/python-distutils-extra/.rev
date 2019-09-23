@@ -1,0 +1,217 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>68cd770eb262882d905186e9b41728c2</srcmd5>
+    <version>1.91.2</version>
+    <time>1251298984</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-distutils-extra based on submit request 18625 from user jimfunk
+</comment>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>68cd770eb262882d905186e9b41728c2</srcmd5>
+    <version>1.91.2</version>
+    <time>1251298984</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-distutils-extra based on submit request 18625 from user jimfunk
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3a16ac51e46b97b2b90a2f354a186039</srcmd5>
+    <version>1.91.2</version>
+    <time>1268925841</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>774ffe912c2c56b833bdf5eae56bb4c3</srcmd5>
+    <version>2.18</version>
+    <time>1270246793</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-distutils-extra based on submit request 36792 from user jimfunk
+</comment>
+    <requestid>36792</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>774ffe912c2c56b833bdf5eae56bb4c3</srcmd5>
+    <version>2.18</version>
+    <time>1278667384</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>774ffe912c2c56b833bdf5eae56bb4c3</srcmd5>
+    <version>2.18</version>
+    <time>1278678614</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6079e2a0cd0593aaa9deabdf2c8bb270</srcmd5>
+    <version>2.22</version>
+    <time>1288702352</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51926 from user coolo
+</comment>
+    <requestid>51926</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1631fa381a452aededfb20fa5d347b0a</srcmd5>
+    <version>2.22</version>
+    <time>1288702357</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51926
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>61cd3f6205a27cf98aadd38e9ce1aeed</srcmd5>
+    <version>2.23</version>
+    <time>1294824614</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57860 from user saschpe
+</comment>
+    <requestid>57860</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c3895a99b6a81dffe02e34ffff8186c4</srcmd5>
+    <version>2.23</version>
+    <time>1294824627</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57860
+</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>c3895a99b6a81dffe02e34ffff8186c4</srcmd5>
+    <version>2.23</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>c3895a99b6a81dffe02e34ffff8186c4</srcmd5>
+    <version>2.23</version>
+    <time>1319182386</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>b30d3287254eeb8030b3889c8bf79ef9</srcmd5>
+    <version>2.23</version>
+    <time>1323194122</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>aaeccc191201feb23a364ed6eb363e3c</srcmd5>
+    <version>2.23</version>
+    <time>1329476920</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103922</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1f880dfc00943f03b400c0022924121b</srcmd5>
+    <version>2.32</version>
+    <time>1332239528</time>
+    <user>coolo</user>
+    <comment>Update to 2.32 (forwarded request 109259 from vuntz)</comment>
+    <requestid>109262</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>1f880dfc00943f03b400c0022924121b</srcmd5>
+    <version>2.32</version>
+    <time>1340184044</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>92b482a51f7389bec5108d3c616a5644</srcmd5>
+    <version>2.36</version>
+    <time>1348232155</time>
+    <user>coolo</user>
+    <comment>Update to 1.0.1 (forwarded request 133714 from poorboywilly)</comment>
+    <requestid>134631</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ad94384471bcc5849f986cfc50cc66ee</srcmd5>
+    <version>2.37</version>
+    <time>1349251155</time>
+    <user>coolo</user>
+    <comment>Update to 2.37 (forwarded request 136435 from poorboywilly)</comment>
+    <requestid>136437</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>ad94384471bcc5849f986cfc50cc66ee</srcmd5>
+    <version>2.37</version>
+    <time>1359110012</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>44dd817605cab51bad85ed711e329633</srcmd5>
+    <version>2.37</version>
+    <time>1361824900</time>
+    <user>coolo</user>
+    <comment>please forward to d:l:p3 and factory. kazam in g:apps needs it. thanks (forwarded request 156131 from MargueriteSu)</comment>
+    <requestid>156297</requestid>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>2c632c51f32c49c316d0bd62e16152bd</srcmd5>
+    <version>2.37</version>
+    <time>1365270862</time>
+    <user>coolo</user>
+    <comment>fixed build for python3 and &lt;12.2. error from hashlib import (forwarded request 162329 from apersaud)</comment>
+    <requestid>162599</requestid>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>e3ab3689dfc1d1eca762c717adc80499</srcmd5>
+    <version>2.37</version>
+    <time>1371652112</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179779</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2df11c0910e8c38ebc6a1411387f8545</srcmd5>
+    <version>2.38</version>
+    <time>1378748856</time>
+    <user>coolo</user>
+    <comment>Update to 2.38 (forwarded request 197939 from poorboywilly)</comment>
+    <requestid>197956</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>2df11c0910e8c38ebc6a1411387f8545</srcmd5>
+    <version>2.38</version>
+    <time>1379664154</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>2df11c0910e8c38ebc6a1411387f8545</srcmd5>
+    <version>2.38</version>
+    <time>1409302845</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>c435425325aa728756d02550043e304d</srcmd5>
+    <version>2.38</version>
+    <time>1504521067</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519784</requestid>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>5338071f83a9c1ffb334cb4ca9c6cdd3</srcmd5>
+    <version>2.38</version>
+    <time>1544726578</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654015</requestid>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>a8dd70a9e372070aa205c020c24fe9fe</srcmd5>
+    <version>2.38</version>
+    <time>1552491743</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>684643</requestid>
+  </revision>
+</revisionlist>

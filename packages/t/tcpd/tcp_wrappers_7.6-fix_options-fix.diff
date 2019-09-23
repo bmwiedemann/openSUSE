@@ -1,0 +1,11 @@
+--- fix_options.c.orig
++++ fix_options.c
+@@ -53,7 +53,7 @@ struct request_info *request;
+      * XXX IPv6 support?
+      */
+     sslen = sizeof(ss);
+-    if (getsockname(fd, (struct sockaddr *)&ss, &sslen < 0)) {
++    if (getsockname(fd, (struct sockaddr *)&ss, &sslen) < 0) {
+ 	syslog(LOG_ERR, "getpeername: %m");
+ 	clean_exit(request);
+     }

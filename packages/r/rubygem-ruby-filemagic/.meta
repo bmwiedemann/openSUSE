@@ -1,0 +1,5 @@
+<package name="rubygem-ruby-filemagic" project="openSUSE:Factory">
+  <title>FileMagic Library Bindings for Ruby</title>
+  <description>FileMagic extension module. See also libmagic(3), file(1) and magic(4).</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-ruby-filemagic"/>
+</package>

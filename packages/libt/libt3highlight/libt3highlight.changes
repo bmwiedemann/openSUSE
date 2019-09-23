@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Thu Aug 22 19:43:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.4.8
+  * These releases fixes incorrect calls to free when validation of
+    highlight data failed.
+
+-------------------------------------------------------------------
+Mon Jan  7 13:21:26 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.4.6
+  * Support for highlighting C++11 raw string literals.
+  * Support for Ruby highlighting.
+
+-------------------------------------------------------------------
+Mon Aug  7 19:03:06 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 0.4.2
+  * This release contains several changes to the interface for
+    detecting languages, which make it possible to retrieve more
+    information about the detected language. Basic highlighting for
+    PHP was added, and the HTML highlighting had several small
+    fixes.
+
+-------------------------------------------------------------------
+Thu Feb 19 18:08:13 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.3.5
+  * Added omitted 'do' keyword for C++.
+  * Fix reads and writes of unallocated memory in analyzing patterns.
+
+-------------------------------------------------------------------
+Mon Jul 21 19:06:18 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.3.4
+* This release adds the override keyword for C++, updates the diff
+  language specification to be more permissive and corrects the
+  color for deletions in t3highlight when outputing to terminal.
+
+-------------------------------------------------------------------
+Fri Feb  7 22:05:09 UTC 2014 - dimstar@opensuse.org
+
+- Declare CC=gcc to ensure we build with gcc; seems make falls back
+  to 'c99' otherwise (instead of requiring posix_cc).
+
+-------------------------------------------------------------------
+Mon Feb  3 19:05:14 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.3.3
+* This release fixes a bug in the loop detection for
+  non-progressing patterns, and highlights java string constants
+  (they were already detected, just not highlighted).
+
+-------------------------------------------------------------------
+Mon Jun 10 12:55:20 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 0.3.2) for build.opensuse.org

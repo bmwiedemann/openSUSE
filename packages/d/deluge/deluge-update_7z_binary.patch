@@ -1,0 +1,20 @@
+--- a/deluge/plugins/Extractor/deluge_extractor/core.py
++++ b/deluge/plugins/Extractor/deluge_extractor/core.py
+@@ -64,7 +64,7 @@ if windows_check():
+             EXTRACT_COMMANDS = dict.fromkeys(exts_7z, [win_7z_exe, switch_7z])
+             break
+ else:
+-    required_cmds = ['unrar', 'unzip', 'tar', 'unxz', 'unlzma', '7zr', 'bunzip2']
++    required_cmds = ['unrar', 'unzip', 'tar', 'unxz', 'unlzma', '7z', 'bunzip2']
+     # Possible future suport:
+     # gunzip: gz (cmd will delete original archive)
+     # the following do not extract to dest dir
+@@ -84,7 +84,7 @@ else:
+         '.tlz': ['tar', '--lzma -xf'],
+         '.tar.xz': ['tar', '--xz -xf'],
+         '.txz': ['tar', '--xz -xf'],
+-        '.7z': ['7zr', 'x'],
++        '.7z': ['7z', 'x'],
+     }
+     # Test command exists and if not, remove.
+     for command in required_cmds:

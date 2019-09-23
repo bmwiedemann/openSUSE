@@ -1,0 +1,32 @@
+diff --git a/dirvish.pl b/dirvish.pl
+index c2488c4..5a6a0b6 100644
+--- a/dirvish.pl
++++ b/dirvish.pl
+@@ -451,6 +451,18 @@ scalar @{$$Options{exclude}}
+ 
+ if (!$$Options{'no-run'})
+ {
++	$lock_file = "$vault/dirvish/lock_file";
++	if (! -f $lock_file)
++	{
++		open(LOCK, "+>", $lock_file) or seppuku 150, "cannot create $lock_file";
++		printf LOCK $$;
++		close(LOCK);
++	}
++	else
++	{
++		seppuku 151, "$lock_file already exists";
++	}
++
+ 	mkdir "$vault/$image", 0700
+ 		or seppuku 230, "mkdir $vault/$image failed";
+ 	mkdir $destree, 0755;
+@@ -755,6 +767,8 @@ if ($$Options{'post-server'})
+ 	}
+ }
+ 
++unlink($lock_file);
++
+ if($status{fatal})
+ {
+ 	system ("rm -rf $destree");

@@ -1,0 +1,42 @@
+From: Jakub Narebski <jnareb@...il.com>
+Subject: [PATCH] gitweb: Enable $prevent_xss by default
+
+This fixes issue CVE-2011-2186 originally reported in
+https://launchpad.net/bugs/777804
+
+Reported-by: dave b <db.pub.mail@...il.com>
+Signed-off-by: Jakub Narebski <jnareb@...il.com>
+---
+ git-instaweb.sh    |    4 ++++
+ gitweb/README      |    5 +++--
+ gitweb/gitweb.perl |    2 +-
+ 3 files changed, 8 insertions(+), 3 deletions(-)
+
+Index: git-2.11.0/git-instaweb.sh
+===================================================================
+--- git-2.11.0.orig/git-instaweb.sh
++++ git-2.11.0/git-instaweb.sh
+@@ -598,6 +598,10 @@ our \$projectroot = "$(dirname "$fqgitdi
+ our \$git_temp = "$fqgitdir/gitweb/tmp";
+ our \$projects_list = \$projectroot;
+ 
++# we can trust our own repository, so disable XSS prevention
++# to enable some extra features
++our \$prevent_xss = 0;
++
+ \$feature{'remote_heads'}{'default'} = [1];
+ EOF
+ }
+Index: git-2.11.0/gitweb/gitweb.perl
+===================================================================
+--- git-2.11.0.orig/gitweb/gitweb.perl
++++ git-2.11.0/gitweb/gitweb.perl
+@@ -190,7 +190,7 @@ our @diff_opts = ('-M'); # taken from gi
+ 
+ # Disables features that would allow repository owners to inject script into
+ # the gitweb domain.
+-our $prevent_xss = 0;
++our $prevent_xss = 1;
+ 
+ # Path to the highlight executable to use (must be the one from
+ # http://www.andre-simon.de due to assumptions about parameters and output).

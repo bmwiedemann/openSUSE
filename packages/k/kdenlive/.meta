@@ -1,0 +1,12 @@
+<package name="kdenlive" project="openSUSE:Factory">
+  <title>Non-linear video editor</title>
+  <description>Kdenlive is a non-linear video editor for GNU/Linux and FreeBSD, which supports
+DV, AVCHD (experimental support) and HDV editing. Kdenlive relies on several
+other open source projects, such as FFmpeg and the MLT video framework. It was
+designed to answer all needs, from basic video editing to semi-professional
+work.
+
+</description>
+  <devel project="KDE:Applications" package="kdenlive"/>
+  <url>http://kdenlive.sourceforge.net/</url>
+</package>

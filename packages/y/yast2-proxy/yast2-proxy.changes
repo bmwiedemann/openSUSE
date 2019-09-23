@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Thu Aug 22 12:53:15 CEST 2019 - schubi@suse.de
+
+- Using rb_default_ruby_abi tag in the spec file in order to
+  handle several ruby versions (bsc#1146403).
+- 4.2.2
+
+-------------------------------------------------------------------
+Thu Jul  4 13:49:19 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix 'proxy' behaviour when running in firstboot (bsc#1140199).
+- 4.2.1
+
+-------------------------------------------------------------------
+Fri May 31 12:35:58 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Wed Dec  5 11:06:17 UTC 2018 - jreidinger@suse.com
+
+- always use absolute path to binaries (bsc#1118291)
+- escape properly shell arguments (bsc#1118291)
+- 4.1.0
+
+-------------------------------------------------------------------
+Sun Nov 25 23:31:29 UTC 2018 - Noah Davis <noahadvs@gmail.com>
+
+- Provide icon with module (boo#1109310)
+- 4.0.3
+
+-------------------------------------------------------------------
+Tue Oct 16 15:53:35 CEST 2018 - schubi@suse.de
+
+- Added license file to spec.
+
+-------------------------------------------------------------------
+Wed Aug 22 14:53:27 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Wed Jun 27 17:14:44 CEST 2018 - schubi@suse.de
+
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.0.2
+
+-------------------------------------------------------------------
+Thu May 10 09:18:19 UTC 2018 - mvidner@suse.com
+
+- Clean up the no_proxy value: not all clients ignore spaces
+  (bsc#1089796)
+- 4.0.1
+
+-------------------------------------------------------------------
+Fri Apr  6 18:52:59 UTC 2018 - mfilka@suse.com
+
+- bnc#1087957 - version bump
+- 4.0.0
+
+-------------------------------------------------------------------
+Fri Jun 12 16:13:53 UTC 2015 - mvidner@suse.com
+
+- If PROXY_ENABLED is not set, interpret it as disabled,
+  like the rest of the system does (boo#934925).
+- Internal cleanups:
+  - Got rid of autotools.
+  - Converted legacy testsuite to RSpec.
+  - Moved code out of clients for better testability.
+- 3.1.6
+
+-------------------------------------------------------------------
+Thu Jun 11 12:01:30 UTC 2015 - mvidner@suse.com
+
+- Fixed the last change not to crash with "internal error in
+  WriteCurlrc" when installing with a proxy (boo#929868).
+- 3.1.5
+
+-------------------------------------------------------------------
+Thu Apr  9 15:35:53 UTC 2015 - mvidner@suse.com
+
+- Write also --noproxy to .curlrc otherwise it is ignored even if
+  set in the environment (bsc#923788).
+- 3.1.4
+
+-------------------------------------------------------------------
+Thu Dec  4 09:51:05 UTC 2014 - jreidinger@suse.com
+
+- remove X-KDE-Library from desktop file (bnc#899104)
+
+-------------------------------------------------------------------
+Wed Oct  8 13:47:41 UTC 2014 - mvidner@suse.com
+
+- Fixed Test Proxy Settings always reporting failure (bnc#853725,
+  bnc#871945).
+- 3.1.2
+
+-------------------------------------------------------------------
+Wed Nov 13 15:56:18 UTC 2013 - jreidinger@suse.com
+
+- Add explicit COPYING file
+
+-------------------------------------------------------------------
+Thu Sep 19 15:04:31 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Wed Jul 31 08:38:05 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Tue Jul 16 07:56:11 UTC 2013 - lslezak@suse.cz
+
+- move an include statement to the top level (needed for Ruby
+  translation)
+- 2.24.0
+
+-------------------------------------------------------------------
+Wed Apr 11 11:15:23 CEST 2012 - mvidner@suse.cz
+
+- Moved over one forgotten file.
+- 2.22.1
+
+-------------------------------------------------------------------
+Tue Apr 10 14:49:56 CEST 2012 - mvidner@suse.cz
+
+- Split off yast2-network
+- 2.22.0
+

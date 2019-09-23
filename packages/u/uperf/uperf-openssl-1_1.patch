@@ -1,0 +1,29 @@
+Index: uperf-1.0.6/src/ssl.c
+===================================================================
+--- uperf-1.0.6.orig/src/ssl.c
++++ uperf-1.0.6/src/ssl.c
+@@ -398,10 +398,7 @@ initialize_ctx(char *keyfile, char *pass
+ 
+ 	SSL_library_init();
+ 
+-	if (method != NULL && strcasecmp(method, "tls") == 0) {
+-		meth = TLSv1_method();
+-	} else
+-		meth = SSLv23_method();
++    meth = SSLv23_method();
+ 
+ 	if (!(ctx = SSL_CTX_new(meth))) {
+ 		printf("Error getting SSL CTX\n");
+Index: uperf-1.0.6/src/uperf.h
+===================================================================
+--- uperf-1.0.6.orig/src/uperf.h
++++ uperf-1.0.6/src/uperf.h
+@@ -18,6 +18,8 @@
+ #ifndef 	_UPERF_H
+ #define		_UPERF_H
+ 
++#include "config.h"
++#include <string.h>
+ /* Keep the data version as 0.2.5 to avoid the version mismatch problem. */
+ #define UPERF_DATA_VERSION	"0.3"
+ #define	UPERF_VERSION 		"1.0-dev"

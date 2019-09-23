@@ -1,0 +1,10 @@
+<package name="cunit" project="openSUSE:Factory">
+  <title>A unit testing framework for 'C'</title>
+  <description>
+CUnit is a unit testing framework for C.
+This package installs the CUnit static library,
+headers, and documentat
+  </description>
+  <devel project="devel:libraries:c_c++" package="cunit"/>
+  <url>http://cunit.sourceforge.net</url>
+</package>

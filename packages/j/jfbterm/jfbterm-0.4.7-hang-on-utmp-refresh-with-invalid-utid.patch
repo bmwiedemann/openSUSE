@@ -1,0 +1,62 @@
+--- jfbterm-0.4.7/term.c.debug	2011-04-29 00:14:18.000000000 +0900
++++ jfbterm-0.4.7/term.c	2011-04-30 03:47:39.000000000 +0900
+@@ -267,6 +267,18 @@
+ 	exit(1);
+ }
+ 
++const char *guess_utid_from_ttyname (const char *devname)
++{
++	if (!devname || !*devname) return NULL;
++
++/*
++	if (!strncmp(devname, "/dev/pts/",9))
++		return devname + 8;
++*/
++	if (!strncmp(devname, "/dev/", 5) && (strlen(devname) >= 9))
++		return devname + 8;
++	return NULL;
++}
+ 
+ void	tterm_set_utmp(TTerm* p)
+ {
+@@ -278,7 +290,7 @@
+ 	pw = getpwuid(util_getuid());
+ 	tn = rindex(p->name, '/') + 1;
+ 	memset((char *)&utmp, 0, sizeof(utmp));
+-	strncpy(utmp.ut_id, tn + 3, sizeof(utmp.ut_id));
++	strncpy(utmp.ut_id, guess_utid_from_ttyname(p->name), sizeof(utmp.ut_id));
+ 	utmp.ut_type = DEAD_PROCESS;
+ 	setutent();
+ 	getutid(&utmp);
+@@ -298,20 +310,22 @@
+ {
+ 	struct utmp	utmp, *utp;
+ 	time_t tmp_ut_time;
+-	char	*tn;
++	/*char	*tn;*/
+ 
+-	tn = rindex(p->name, '/') + 4;
++	/*tn = rindex(p->name, '/') + 4;*/
+ 	memset((char *)&utmp, 0, sizeof(utmp));
+-	strncpy(utmp.ut_id, tn, sizeof(utmp.ut_id));
++	strncpy(utmp.ut_id, guess_utid_from_ttyname(p->name), sizeof(utmp.ut_id));
+ 	utmp.ut_type = USER_PROCESS;
+ 	setutent();
+ 	utp = getutid(&utmp);
+-	utp->ut_type = DEAD_PROCESS;
+-	memset(utp->ut_user, 0, sizeof(utmp.ut_user));
+-	utp->ut_type = DEAD_PROCESS;
+-	time(&(tmp_ut_time));
+-	utp->ut_time = (int32_t) tmp_ut_time;
+-	pututline(utp);
++	if (utp){
++		utp->ut_type = DEAD_PROCESS;
++		memset(utp->ut_user, 0, sizeof(utmp.ut_user));
++		utp->ut_type = DEAD_PROCESS;
++		time(&(tmp_ut_time));
++		utp->ut_time = (int32_t) tmp_ut_time;
++		pututline(utp);
++	}
+ 	endutent();
+ }
+ 

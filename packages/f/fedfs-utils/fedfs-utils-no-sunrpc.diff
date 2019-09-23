@@ -1,0 +1,26 @@
+--- src/libjunction/Makefile.am
++++ src/libjunction/Makefile.am	2017/11/12 07:57:48
+@@ -40,4 +40,5 @@
+ 			  -Wall -Wextra -pedantic -Wformat=2 \
+ 			  -Wstrict-aliasing=2 -Wp,-D_FORTIFY_SOURCE=2
+ AM_CPPFLAGS		= -I. -I$(top_srcdir)/src/include \
++			  -I/usr/include/tirpc \
+ 			  -I/usr/include/libxml2
+--- src/nfsref/Makefile.am
++++ src/nfsref/Makefile.am	2017/11/12 07:58:23
+@@ -39,5 +39,6 @@
+ AM_CFLAGS		= -ggdb -fstrict-aliasing \
+ 			  -Wall -Wextra -pedantic -Wformat=2 \
+ 			  -Wstrict-aliasing=2 -Wp,-D_FORTIFY_SOURCE=2
+-AM_CPPFLAGS		= -I. -I$(top_srcdir)/src/include
++AM_CPPFLAGS		= -I. -I$(top_srcdir)/src/include \
++			  -I/usr/include/tirpc
+ AM_LDFLAGS		= -Wl,--as-needed
+--- src/plug-ins/Makefile.am
++++ src/plug-ins/Makefile.am	2017/11/12 08:00:01
+@@ -39,4 +39,5 @@
+ 			  -Wall -Wextra -pedantic -Wformat=2 \
+ 			  -Wstrict-aliasing=2 -Wp,-D_FORTIFY_SOURCE=2
+ AM_CPPFLAGS		= -I. -I$(top_srcdir)/src/include \
++			  -I/usr/include/tirpc \
+ 			  -I/usr/include/libxml2

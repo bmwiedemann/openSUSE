@@ -1,0 +1,55 @@
+diff -urEbwB kxml-2.3.0/build.xml kxml-2.3.0.new/build.xml
+--- kxml-2.3.0/build.xml	2006-06-22 18:31:10.000000000 +0200
++++ kxml-2.3.0.new/build.xml	2018-11-22 14:49:47.427183267 +0100
+@@ -4,21 +4,29 @@
+ <project name="kxml2" default="build" basedir=".">
+ 
+   <property name="version" value="2.3.0" />	
++  <property name="javac.source" value="1.6" />
++  <property name="javac.target" value="1.6" />
+ 	
+   
+   <target name="javadoc">
+     <delete dir="www/kxml2/javadoc"/>
+     <mkdir dir="www/kxml2/javadoc"/>    
+-    <javadoc packagenames="org.kxml2.*" classpath="lib/xmlpull_1_1_3_1.jar"
++    <javadoc packagenames="org.kxml2.*"
+              public="yes"
++             source="${javac.source}"
+              sourcepath="src"
+              destdir="www/kxml2/javadoc"
+              author="true"
+              version="true"
+              use="true"
+              windowtitle="kxml API"
+-             doctitle="kxml API"
+-    />
++             doctitle="kxml API">
++      <classpath>
++        <fileset dir="lib">
++          <include name="**/*.jar"/>
++        </fileset>
++      </classpath>
++    </javadoc>
+   </target>
+   
+     
+@@ -48,9 +56,15 @@
+     	<javac srcdir="src" verbose="true"
+     	       destdir="tmpclasses"
+     	       optimize="true"
+-    		   target="1.2"
+-    		   source="1.2"
+-    	       debuglevel="none"/>
++    		   target="${javac.target}"
++    		   source="${javac.source}"
++    	       debuglevel="none">
++           <classpath>
++             <fileset dir="lib">
++                <include name="**/*.jar"/>
++             </fileset>
++           </classpath>
++        </javac>
+ 	
+         <mkdir dir="dist"/>
+             

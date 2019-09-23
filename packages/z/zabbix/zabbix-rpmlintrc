@@ -1,0 +1,12 @@
+# do we really need to register user...
+addFilter("non-standard-gid.*zabbix");
+addFilter("non-standard-uid /var/(run|log)/zabbix zabbix")
+# upgrade script for database 
+addFilter("spurious-executable-perm .*/usr/share/doc/packages/zabbix24-server/dbpatches/([12]).([0-9])/mysql/upgrade")
+addFilter("doc-file-dependency .*/usr/share/doc/packages/zabbix24-server/dbpatches/[12].[0-9]/mysql/upgrade /bin/bash")
+# upstream ...
+addFilter("incorrect-fsf-address");
+# no manuall pages for init scripts...
+addFilter("W: no-manual-page-for-binary rczabbix-.*");
+# this package is used on sle 11 so no go
+addFilter("W: suse-obsolete-insserv-requirement");

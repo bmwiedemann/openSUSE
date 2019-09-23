@@ -1,0 +1,173 @@
+diff -Naur -x opendkim-2.11.0.orig/configure opendkim-2.11.0/configure
+--- opendkim-2.11.0.orig/configure	2015-10-07 16:17:48.000000000 -0700
++++ opendkim-2.11.0/configure	2016-12-20 18:47:51.662158143 -0800
+@@ -14700,13 +14700,13 @@
+ 
+ 	for d in $strldirs
+ 	do
+-		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for strl.h in $d/strl" >&5
+-$as_echo_n "checking for strl.h in $d/strl... " >&6; }
+-		if test -f $d/strl/strl.h
++		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for strl.h in $d" >&5
++$as_echo_n "checking for strl.h in $d... " >&6; }
++		if test -f $d/strl.h
+ 		then
+ 			unset ac_cv_header_strl_h
+ 			saved_CPPFLAGS="$CPPFLAGS"
+-			CPPFLAGS="$CPPFLAGS -I$d/strl"
++			CPPFLAGS="$CPPFLAGS -I$d"
+ 			for ac_header in strl.h
+ do :
+   ac_fn_c_check_header_mongrel "$LINENO" "strl.h" "ac_cv_header_strl_h" "$ac_includes_default"
+@@ -14724,7 +14724,7 @@
+ 
+ 		if test x"$strl_h_found" = x"yes"
+ 		then
+-			CPPFLAGS="$CPPFLAGS -I$d/strl"
++			CPPFLAGS="$CPPFLAGS -I$d"
+ 			break
+ 		fi
+ 	done
+@@ -16795,77 +16795,39 @@
+ fi
+ 
+ 
+-	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing SSL_library_init" >&5
+-$as_echo_n "checking for library containing SSL_library_init... " >&6; }
+-if ${ac_cv_search_SSL_library_init+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  ac_func_search_save_LIBS=$LIBS
+-cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+-/* end confdefs.h.  */
+ 
+-/* Override any GCC internal prototype to avoid an error.
+-   Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-#ifdef __cplusplus
+-extern "C"
+-#endif
+-char SSL_library_init ();
++	cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++#include <openssl/ssl.h>
+ int
+ main ()
+ {
+-return SSL_library_init ();
++SSL_library_init();
+   ;
+   return 0;
+ }
+ _ACEOF
+-for ac_lib in '' ssl; do
+-  if test -z "$ac_lib"; then
+-    ac_res="none required"
+-  else
+-    ac_res=-l$ac_lib
+-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+-  fi
+-  if ac_fn_c_try_link "$LINENO"; then :
+-  ac_cv_search_SSL_library_init=$ac_res
+-fi
+-rm -f core conftest.err conftest.$ac_objext \
+-    conftest$ac_exeext
+-  if ${ac_cv_search_SSL_library_init+:} false; then :
+-  break
+-fi
+-done
+-if ${ac_cv_search_SSL_library_init+:} false; then :
+-
++if ac_fn_c_try_link "$LINENO"; then :
++  od_have_ossl="yes";
+ else
+-  ac_cv_search_SSL_library_init=no
++  od_have_ossl="no";
+ fi
+-rm conftest.$ac_ext
+-LIBS=$ac_func_search_save_LIBS
+-fi
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_search_SSL_library_init" >&5
+-$as_echo "$ac_cv_search_SSL_library_init" >&6; }
+-ac_res=$ac_cv_search_SSL_library_init
+-if test "$ac_res" != no; then :
+-  test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
+-
+-else
+-
+-			if test x"$enable_shared" = x"yes"
+-			then
+-				as_fn_error $? "Cannot build shared opendkim
+-				              against static openssl libraries.
+-				              Configure with --disable-shared
+-				              to get this working or obtain a
+-				              shared libssl library for
+-				              opendkim to use." "$LINENO" 5
+-			fi
++rm -f core conftest.err conftest.$ac_objext \
++    conftest$ac_exeext conftest.$ac_ext
++	if test x"$od_have_ossl" = x"no"
++	then
++		if test x"$enable_shared" = x"yes"
++		then
++			as_fn_error $? "Cannot build shared opendkim
++			              against static openssl libraries.
++			              Configure with --disable-shared
++			              to get this working or obtain a
++			              shared libssl library for
++			              opendkim to use." "$LINENO" 5
++		fi
+ 
+-			# avoid caching issue - last result of SSL_library_init
+-			# shouldn't be cached for this next check
+-			unset ac_cv_search_SSL_library_init
+-			LIBCRYPTO_LIBS="$LIBCRYPTO_LIBS -ldl"
+-			{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing SSL_library_init" >&5
++		LIBCRYPTO_LIBS="$LIBCRYPTO_LIBS -ldl"
++		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing SSL_library_init" >&5
+ $as_echo_n "checking for library containing SSL_library_init... " >&6; }
+ if ${ac_cv_search_SSL_library_init+:} false; then :
+   $as_echo_n "(cached) " >&6
+@@ -16923,10 +16885,7 @@
+   as_fn_error $? "libssl not found" "$LINENO" 5
+ fi
+ 
+-
+-
+-fi
+-
++	fi
+ 
+ 	ac_fn_c_check_decl "$LINENO" "SHA256_DIGEST_LENGTH" "ac_cv_have_decl_SHA256_DIGEST_LENGTH" "
+ #include <sys/types.h>
+diff -Naur -x opendkim-2.11.0.orig/opendkim/opendkim-crypto.c opendkim-2.11.0/opendkim/opendkim-crypto.c
+--- opendkim-2.11.0.orig/opendkim/opendkim-crypto.c	2013-02-25 13:02:41.000000000 -0800
++++ opendkim-2.11.0/opendkim/opendkim-crypto.c	2016-12-20 18:47:03.477027225 -0800
+@@ -222,7 +222,11 @@
+ 	{
+ 		assert(pthread_setspecific(id_key, ptr) == 0);
+ 
++#if OPENSSL_VERSION_NUMBER >= 0x10100000
++		OPENSSL_thread_stop();
++#else
+ 		ERR_remove_state(0);
++#endif
+ 
+ 		free(ptr);
+ 
+@@ -392,11 +396,15 @@
+ {
+ 	if (crypto_init_done)
+ 	{
++#if OPENSSL_VERSION_NUMBER >= 0x10100000
++		OPENSSL_thread_stop();
++#else
+ 		CRYPTO_cleanup_all_ex_data();
+ 		CONF_modules_free();
+ 		EVP_cleanup();
+ 		ERR_free_strings();
+ 		ERR_remove_state(0);
++#endif
+ 
+ 		if (nmutexes > 0)
+ 		{

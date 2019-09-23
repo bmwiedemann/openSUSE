@@ -1,0 +1,9 @@
+<package name="syslogd" project="openSUSE:Factory">
+  <title>The Syslog daemon</title>
+  <description>The syslogd daemon is the general system logging daemon, which is
+responsible for handling requests for syslog services.
+
+This version of syslogd is similar to the standard Berkeley product,
+but with a number of compatible extensions.</description>
+  <devel project="Base:System" package="syslogd"/>
+</package>

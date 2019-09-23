@@ -1,0 +1,289 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c680c3991b44f24c5d271c089ed56c56</srcmd5>
+    <version>0.7.1</version>
+    <time>1317213894</time>
+    <user>saschpe</user>
+    <comment>Please add, replaces python-werkzeug</comment>
+    <requestid>85043</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c680c3991b44f24c5d271c089ed56c56</srcmd5>
+    <version>0.7.1</version>
+    <time>1319182381</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2a886a4124ade063b88b322eb195c7df</srcmd5>
+    <version>0.8.1</version>
+    <time>1321274303</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.8.1:
+  * Fixed an issue with the memcache not working properly.
+  * Fixed an issue for Python 2.7.1 and higher that broke
+    copying of multidicts with :func:`copy.copy`.
+  * Changed hashing methodology of immutable ordered multi dicts
+    for a potential problem with alternative Python implementations.
+- Changes from version 0.8:
+  * Removed data structure specific KeyErrors for a general
+    purpose :exc:`~werkzeug.exceptions.BadRequestKeyError`.
+  * Documented :meth:`werkzeug.wrappers.BaseRequest._load_form_data`.
+  * The routing system now also accepts strings instead of
+    dictionaries for the `query_args` parameter since we're only
+    passing them through for redirects.
+  * Werkzeug now automatically sets the content length immediately when
+    the :attr:`~werkzeug.wrappers.BaseResponse.data` attribute is set
+    for efficiency and simplicity reasons.
+  * The routing system will now normalize server names to lowercase.
+  * The routing system will no longer raise ValueErrors in case the
+    configuration for the server name was incorrect.  This should make
+    deployment much easier because you can ignore that factor now.
+  * Fixed a bug with parsing HTTP digest headers.  It rejected headers
+    with missing nc and nonce params.
+  * Proxy fix now also updates wsgi.url_scheme based on X-Forwarded-Proto.
+  * Added support for key prefixes to the redis cache.
+  * Added the ability to supress some auto corrections in the wrappers
+    that are now controlled via `autocorrect_location_header` and
+    `automatically_set_content_length` on the response objects.
+  * Werkzeug now uses a new method to check that the length of incoming
+    data is complete and will raise IO errors by itself if the server
+    fails to do so.</comment>
+    <requestid>90918</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>54be7c11e437d160a7c84d7662170dc1</srcmd5>
+    <version>0.8.1</version>
+    <time>1323194290</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>be1396cced687ba5dca3f39b0a2eb6e5</srcmd5>
+    <version>0.8.3</version>
+    <time>1331627959</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.8.3:
+  - Fixed another issue with :func:`werkzeug.wsgi.make_line_iter`
+    where lines longer than the buffer size were not handled
+    properly.
+  - Restore stdout after debug console finished executing so
+    that the debugger can be used on GAE better.
+  - Fixed a bug with the redis cache for int subclasses
+    (affects bool caching).
+  - Fixed an XSS problem with redirect targets coming from
+    untrusted sources.
+- Changes from version 0.8.2:
+  - Fixed a problem with request handling of the builtin server
+    not repsonding to socket errors properly.
+  - The routing request redirect exception's code attribute is now
+    used properly.
+  - Fixed a bug with shutdowns on Windows.
+  - Fixed a few unicode issues with non-ascii characters being
+    hardcoded in URL rules.
+  - Fixed two property docstrings being assigned to fdel instead
+    of ``__doc__``.
+  - Fixed an issue where CRLF line endings could be split into two
+    by the line iter function, causing problems with multipart file
+    uploads.</comment>
+    <requestid>109044</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>be1396cced687ba5dca3f39b0a2eb6e5</srcmd5>
+    <version>0.8.3</version>
+    <time>1340184034</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>be1396cced687ba5dca3f39b0a2eb6e5</srcmd5>
+    <version>0.8.3</version>
+    <time>1359109991</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9dffc52a8f87f62f7f0d460dbb9577cb</srcmd5>
+    <version>0.9.4</version>
+    <time>1378238766</time>
+    <user>coolo</user>
+    <comment>- update to 0.9.4:
+  - Fixed an issue with Python 3.3 and an edge case in cookie parsing.
+  - Fixed decoding errors not handled properly through the WSGI
+    decoding dance.
+  - Fixed URI to IRI conversion incorrectly decoding percent signs.
+  - Restored beahvior of the ``data`` descriptor of the request class to pre 0.9
+    behavior.  This now also means that ``.data`` and ``.get_data()`` have
+    different behavior.  New code should use ``.get_data()`` always.
+    In addition to that there is now a flag for the ``.get_data()`` method that
+    controls what should happen with form data parsing and the form parser will
+    honor cached data.  This makes dealing with custom form data more consistent.
+  - Added `unsafe` parameter to :func:`~werkzeug.urls.url_quote`.
+  - Fixed an issue with :func:`~werkzeug.urls.url_quote_plus` not quoting
+    `'+'` correctly.
+  - Ported remaining parts of :class:`~werkzeug.contrib.RedisCache` to
+    Python 3.3.
+  - Ported remaining parts of :class:`~werkzeug.contrib.MemcachedCache` to
+    Python 3.3
+  - Fixed a deprecation warning in the contrib atom module.
+  - Fixed a regression with setting of content types through the
+    headers dictionary instead with the content type parameter.
+  - Use correct name for stdlib secure string comparision function.
+  - Fixed a wrong reference in the docstring of
+    :func:`~werkzeug.local.release_local`.
+  - Fixed an `AttributeError` that sometimes occurred when accessing the
+    :attr:`werkzeug.wrappers.BaseResponse.is_streamed` attribute.
+  - Fixed an issue with integers no longer being accepted in certain
+    parts of the routing system or URL quoting functions.
+  - Fixed an issue with `url_quote` not producing the right escape
+    codes for single digit codepoints. (forwarded request 197223 from dirkmueller)</comment>
+    <requestid>197224</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>9dffc52a8f87f62f7f0d460dbb9577cb</srcmd5>
+    <version>0.9.4</version>
+    <time>1379664123</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>0b4d7d3615cdbb1e8a3df59c358e3323</srcmd5>
+    <version>0.9.4</version>
+    <time>1382693779</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204687</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>55fb1150514113dd1727758be5902c5a</srcmd5>
+    <version>0.9.6</version>
+    <time>1405750589</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241527</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>55fb1150514113dd1727758be5902c5a</srcmd5>
+    <version>0.9.6</version>
+    <time>1409302811</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0000bb69a2f136ad0bac6fd8075d8bae</srcmd5>
+    <version>0.10.4</version>
+    <time>1435053661</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313179</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>33d777a23a58b3554c3e070863eeace4</srcmd5>
+    <version>0.11.3</version>
+    <time>1455190666</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358476</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>45b3a2863604efe581c87f25930ce364</srcmd5>
+    <version>0.11.11</version>
+    <time>1474976680</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>429842</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>33531bf0b09395e4c6c8b0a8be272470</srcmd5>
+    <version>0.11.11</version>
+    <time>1480341981</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441852</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>27dcce7e26708bed25d8cbdab5e47672</srcmd5>
+    <version>0.12.1</version>
+    <time>1493020074</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>487845</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>511148d1baee1fd2e0945d10d1e3d82a</srcmd5>
+    <version>0.12.2</version>
+    <time>1502707044</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515246</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>1ea14dc8cf3f8e8abb9e00546d361a7b</srcmd5>
+    <version>0.12.2</version>
+    <time>1520253226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580794</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>e72189c7f65199e37568d6f429c5bacb</srcmd5>
+    <version>0.12.2</version>
+    <time>1520852912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584291</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d70639202c659fad1aba72f6c6a62aa5</srcmd5>
+    <version>0.14.1</version>
+    <time>1525611315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602327</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>ed1a0a202a67f3dd35abec2896811c7f</srcmd5>
+    <version>0.14.1</version>
+    <time>1526219811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606252</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>081c27ccc187b5493f591dadd2c2d55e</srcmd5>
+    <version>0.15.4</version>
+    <time>1560861800</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.4
+- refreshed 0001_create_a_thread_to_reap_death_process.patch
+- drop python-Werkzeug-doc package
+- last stable update with long Changelog -&gt; please see CHANGELOG.rst</comment>
+    <requestid>705643</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2f4561f27020968191ae4f1d0720ea18</srcmd5>
+    <version>0.15.5</version>
+    <time>1564484501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717006</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>ca12d5af2a52bc2bc85a9e8ac1af0ba6</srcmd5>
+    <version>0.15.5</version>
+    <time>1565864925</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.4 (bsc#1145383, CVE-2019-14806)</comment>
+    <requestid>723279</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>fd6c6aff501197087234f82963148519</srcmd5>
+    <version>0.15.6</version>
+    <time>1569233813</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.6:
+  * Work around a bug in pip that caused the reloader to fail on Windows when
+    the script was an entry point.
+  * ProxyFix trusts the X-Forwarded-Proto header by default. :issue:`1630`</comment>
+    <requestid>730725</requestid>
+  </revision>
+</revisionlist>

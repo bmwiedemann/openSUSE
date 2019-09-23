@@ -1,0 +1,18 @@
+From: Bernhard Wiedemann <bwiedemann@suse.com>
+Date: Tue, 8 Mar 2016 19:39:47
+# PATCH-FIX-UPSTREAM
+
+Drop build timestamps from png.
+Index: putty-0.68/icons/Makefile
+===================================================================
+--- putty-0.68.orig/icons/Makefile
++++ putty-0.68/icons/Makefile
+@@ -38,7 +38,7 @@ $(PAMS): %.pam: mkicon.py
+ 	./mkicon.py $(MODE) $(join $(subst -, ,$(basename $@)),_icon) $@
+ 
+ $(PNGS) $(MONOPNGS) $(TRUEPNGS): %.png: %.pam
+-	convert $< $@
++	convert -strip $< $@
+ 
+ $(MONOPAMS): %.pam: mkicon.py
+ 	./mkicon.py -2 $(MODE) $(join $(subst -, ,$(subst -mono,,$(basename $@))),_icon) $@

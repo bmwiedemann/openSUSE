@@ -1,0 +1,6 @@
+<package name="php7-phalcon" project="openSUSE:Factory">
+  <title>Framework for PHP written as a C-extension</title>
+  <description>Phalcon is an open source, full stack framework for PHP 5 written as a C-extension, optimized for high performance. You don’t need learn or use the C language, since the functionality is exposed as PHP classes ready for you to use. Zephir is a high level language, something between C and PHP. It’s both dynamic and static typed and it supports just the features we need to create and maintain a project like Phalcon.</description>
+  <devel project="server:php:extensions:php7" package="php7-phalcon"/>
+  <url>http://phalconphp.com/</url>
+</package>

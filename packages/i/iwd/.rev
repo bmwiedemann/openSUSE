@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3915ddc1c28d3f5f930a05c67a3806b0</srcmd5>
+    <version>0.3</version>
+    <time>1530866463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620279</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f053c34ff4b448f82a43f94854daf16</srcmd5>
+    <version>0.4</version>
+    <time>1532774723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625797</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>03c30b205bd5b11a4bdbd8b0a3d96b0a</srcmd5>
+    <version>0.9</version>
+    <time>1540544896</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.</comment>
+    <requestid>644112</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>80f0c7efeb51960a6af9b3cdc3ba71e6</srcmd5>
+    <version>0.10</version>
+    <time>1540988495</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>645610</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e39e6a772f774f954d576bde1f92c016</srcmd5>
+    <version>0.12</version>
+    <time>1542580333</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649905</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4f140ca7e8a787f3e80a38d3ebb2797c</srcmd5>
+    <version>0.13</version>
+    <time>1544727011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657797</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9f6db0d202c6cdd93521962cdfc1ec4e</srcmd5>
+    <version>0.13</version>
+    <time>1546535224</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662212</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f596be70f58715a7cbb0452126b92d66</srcmd5>
+    <version>0.16</version>
+    <time>1554749610</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.16.</comment>
+    <requestid>692012</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>eb6797ac8c20858d2516d2ed9bb3edfc</srcmd5>
+    <version>0.18</version>
+    <time>1559837729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706156</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c530dedd31fb89851277538241a3d7c8</srcmd5>
+    <version>0.19</version>
+    <time>1565721212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722681</requestid>
+  </revision>
+</revisionlist>

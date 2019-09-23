@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Wed Aug 15 11:13:04 UTC 2018 - carmen@carmenbianca.eu
+
+- Update to version 0.3.3:
+  + Files ending in .spdx are no longer considered licenses.
+
+-------------------------------------------------------------------
+Tue Aug 14 16:14:17 UTC 2018 - carmen@carmenbianca.eu
+
+- Update to version 0.3.1:
+  + Finding of root directory fixed when using pygit2.
+
+-------------------------------------------------------------------
+Wed May 16 12:50:44 UTC 2018 - carmen@carmenbianca.eu
+
+- Update to version 0.3.0:
+  + Bill of materials output is now deterministic.  Entries are
+    sorted.
+
+-------------------------------------------------------------------
+Tue Apr 17 12:14:17 UTC 2018 - carmen@carmenbianca.eu
+
+- Update to version 0.2.0:
+  + Added translations for Dutch, Esperanto and Spanish.
+  + Added new `-only` and `-or-later` SPDX tags for GPL.
+  + Based on argparse instead of click.
+- Remove xfail-test.patch.
+
+-------------------------------------------------------------------
+Tue Dec 19 13:27:16 UTC 2017 - carmen@carmenbianca.eu
+
+- Added package, version 0.1.1.
+- Add xfail-test.patch to ignore a test that fails occasionally.

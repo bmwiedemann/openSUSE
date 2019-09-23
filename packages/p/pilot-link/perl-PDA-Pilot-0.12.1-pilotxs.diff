@@ -1,0 +1,39 @@
+--- bindings/Perl/Pilot.xs
++++ bindings/Perl/Pilot.xs
+@@ -193,17 +193,16 @@
+ 		HV * i = (HV*)SvRV(arg);\
+ 		SV ** s;\
+ 		var.more = (s = hv_fetch(i, "more", 4, 0)) ? SvIV(*s) : 0;\
+-		var.flags =\
+-			(((s = hv_fetch(i, "flagReadOnly",       12, 0)) && SvTRUE(*s)) ? dlpDBFlagReadOnly : 0) |	\
+-			(((s = hv_fetch(i, "flagResource",       12, 0)) && SvTRUE(*s)) ? dlpDBFlagResource : 0) |	\
+-			(((s = hv_fetch(i, "flagBackup",         10, 0)) && SvTRUE(*s)) ? dlpDBFlagBackup : 0) |	\
+-			(((s = hv_fetch(i, "flagOpen",            8, 0)) && SvTRUE(*s)) ? dlpDBFlagOpen : 0) |		\
+-			(((s = hv_fetch(i, "flagAppInfoDirty",   16, 0)) && SvTRUE(*s)) ? dlpDBFlagAppInfoDirty : 0)|	\
+-			(((s = hv_fetch(i, "flagNewer",           9, 0)) && SvTRUE(*s)) ? dlpDBFlagNewer : 0) |		\
+-			(((s = hv_fetch(i, "flagReset",           9, 0)) && SvTRUE(*s)) ? dlpDBFlagReset : 0) |		\
+-			(((s = hv_fetch(i, "flagCopyPrevention", 18, 0)) && SvTRUE(*s)) ? dlpDBFlagCopyPrevention : 0) |\
+-			(((s = hv_fetch(i, "flagStream",         10, 0)) && SvTRUE(*s)) ? dlpDBFlagStream : 0) |	\
+-	    	0;\
++		var.flags = 0;\
++		var.flags |= (((s = hv_fetch(i, "flagReadOnly",       12, 0)) && SvTRUE(*s)) ? dlpDBFlagReadOnly : 0);\
++		var.flags |= (((s = hv_fetch(i, "flagResource",       12, 0)) && SvTRUE(*s)) ? dlpDBFlagResource : 0);\
++		var.flags |= (((s = hv_fetch(i, "flagBackup",         10, 0)) && SvTRUE(*s)) ? dlpDBFlagBackup : 0);\
++		var.flags |= (((s = hv_fetch(i, "flagOpen",            8, 0)) && SvTRUE(*s)) ? dlpDBFlagOpen : 0);\
++		var.flags |= (((s = hv_fetch(i, "flagAppInfoDirty",   16, 0)) && SvTRUE(*s)) ? dlpDBFlagAppInfoDirty : 0);\
++		var.flags |= (((s = hv_fetch(i, "flagNewer",           9, 0)) && SvTRUE(*s)) ? dlpDBFlagNewer : 0);\
++		var.flags |= (((s = hv_fetch(i, "flagReset",           9, 0)) && SvTRUE(*s)) ? dlpDBFlagReset : 0);\
++		var.flags |= (((s = hv_fetch(i, "flagCopyPrevention", 18, 0)) && SvTRUE(*s)) ? dlpDBFlagCopyPrevention : 0);\
++		var.flags |= (((s = hv_fetch(i, "flagStream",         10, 0)) && SvTRUE(*s)) ? dlpDBFlagStream : 0);\
+ 		var.miscFlags =\
+ 			(((s = hv_fetch(i, "flagExcludeFromSync", 19, 0)) && SvTRUE(*s)) ? dlpDBMiscFlagExcludeFromSync : 0);\
+ 		var.type 	= (s = hv_fetch(i, "type",        4, 0)) ? SvChar4(*s) : 0;\
+@@ -788,7 +787,7 @@
+ 	    	else if (strEQ(SvPV(*s, na), "days"))
+ 		    u = 2;
+ 	    	else
+-		    croak("Invalid advance unit %d encountered", u);
++		    croak("Invalid advance unit encountered");
+ 	    }
+ 	    a.advanceUnits = u;
+ 	    if (a.advance > 254)

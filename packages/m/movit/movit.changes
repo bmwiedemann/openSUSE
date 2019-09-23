@@ -1,0 +1,184 @@
+-------------------------------------------------------------------
+Sun Jul  7 16:29:58 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.6.3:
+  * Various bugfixes.
+- Add _service file to retrieve sources as published tarball lacks
+  some files (e.g. COPYING).
+
+-------------------------------------------------------------------
+Sun Mar 18 23:07:11 UTC 2018 - avindra@opensuse.org
+
+- Update to version 1.6.2:
+  * fix issue with strong one-to-one effects and compute shaders
+  * fix compile issue with gcc5
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Sun Feb  4 09:39:51 UTC 2018 - jengelh@inai.de
+
+- Fix the shlib package's RPM group.
+
+-------------------------------------------------------------------
+Sat Feb  3 20:20:27 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 1.6.1:
+  * Loosen up some restrictions on strong one-to-one-effects. In
+    particular, this fixes a bug with MixEffect and compute shaders
+    that hit some Nageru setups.
+
+-------------------------------------------------------------------
+Sat Jan 27 20:56:11 UTC 2018 - antoine.belvire@opensuse.org
+
+- Fix build for Leap 42.3: Force use of GCC7.
+
+-------------------------------------------------------------------
+Thu Jan 25 07:09:49 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 1.6.0: 
+  * Support for effects that work as compute shaders. Compute
+    shaders are generally slower than fragment shaders for the same
+    algorithm, but allow some forms of communication between shader
+    invocations and have more flexible output, which can enable
+    more efficient algorithms. See effect.h for more details. Note
+    that the fastest rendering API on EffectChain is now to a
+    texture if possible, not to an FBO. This will only matter if
+    the last effect is a compute shader.
+  * Movit now includes a compute shader implementation of
+    DeinterlaceEffect, which is automatically used instead of the
+    fragment shader implementation if your GPU and OpenGL driver
+    supports it (in practice, this means on all platforms except on
+    macOS). The compute shader version is typically 20–80% faster
+    than the fragment shader version, depending on your GPU and
+    other factors.
+    A compute shader implementation of ResampleEffect was written but
+    ultimately failed to be faster, and so is not included.
+  * Support for microbenchmarks of effects through the Google
+    microbenchmarking framework (optional). Currently,
+    DeinterlaceEffect and ResampleEffect has benchmarks; enable
+    them by running the unit test with --benchmark (also try
+    --benchmark --help).
+  * Effects can now explicitly request _not_ to have mipmaps, which
+    means they can do so without needing to request bounce and
+    fiddling with the sampler state. Note that this is an API
+    change for effects.
+  * Movit now requires C++11, both to build and to #include the
+    header files. Support for SDL1 has been dropped; unit tests and
+    the demo program now need SDL2.
+  * Various smaller bugfixes and optimizations.
+- Drop COPYING (now included in upstream tarball).
+- Now build requires SDL2 instead of SDL1.
+- (Experiment) Make data subpackage versioned, as the library is
+  versioned and requires the data files:
+  * Add movit-1.6.0-versioned-shaderdir.patch.
+- Ran spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Aug 11 11:32:18 UTC 2017 - antoine.belvire@opensuse.org
+
+- Update to 1.5.3:
+  * Various bugfixes.
+- Don't use gcc6-c++ for Leap anymore: It builds fine with default
+  compiler again.
+
+-------------------------------------------------------------------
+Tue Jul 11 16:45:37 UTC 2017 - olaf@aepfle.de
+
+- Use gcc6-c++ for Leap42 and SLE12 (C++14 needed).
+
+-------------------------------------------------------------------
+Mon Jul 10 21:18:25 UTC 2017 - antoine.belvire@opensuse.org
+
+- Update to 1.5.2:
+  * The texture generation for ResampleEffect (when the size is
+    changed) now uses less CPU.
+  * Work around an NVIDIA driver threading bug by aggressively
+    caching VAOs.
+  * Update soname to libmovit.so.7.
+- Remove call to autogen.sh as we don't patch Makefile.in anymore.
+
+-------------------------------------------------------------------
+Sun Jun  4 19:57:22 UTC 2017 - antoine.belvire@opensuse.org
+
+- Update to 1.5.1:
+  * Allow YCbCrInput to change input format after finalize.
+  * Some minor YCbCrInput bugfixes.
+
+-------------------------------------------------------------------
+Sun Mar 26 20:12:16 UTC 2017 - antoine.belvire@opensuse.org
+
+- Update to 1.5.0:
+  * Support interleaved Y'CbCr input (4:4:4 in a single texture).
+  * Support 10-bit and 12-bit Y'CbCr, both for input and output.
+  * Limited support for having multiple Y'CbCr outputs from a
+    chain.
+  * Allow changing the Y'CbCr output coefficients runtime, i.e.
+    after finalize.
+  * Fix an issue where the last pass would have been rendered with
+    the sRGB flag set, which confused Qt applications running in
+    certain NVIDIA configurations.
+
+-------------------------------------------------------------------
+Fri Mar  3 10:36:53 UTC 2017 - olaf@aepfle.de
+
+- Remove googletest dependency because tests can not be run without
+  an X display
+- Drop movit-1.2.0-use-gtest-shared-library.patch
+
+-------------------------------------------------------------------
+Sat Dec 17 20:47:07 UTC 2016 - antoine.belvire@opensuse.org
+
+- Update to 1.4.0:
+  * Allow setting the intermediate format for chains, instead of
+    hardcoding it at 16-bit RGBA; advanced users can use this to
+    e.g. ask for 8-bit sRGB intermediates, reducing the amount of
+    memory bandwidth needed at the cost of reduced precision.
+    Whether this is a good tradeoff or not depends on the exact
+    chain and your requirements.
+  * Fix an issue where a (cached) shader program could be used
+    from multiple threads at a time, causing the uniforms to
+    contain unpredictable values.
+  * Make the error printed on check_error() slightly friendlier:
+    Include the enum if possible, and print it to stderr instead
+    of stdout.
+
+-------------------------------------------------------------------
+Sun Oct 16 22:46:35 UTC 2016 - jengelh@inai.de
+
+- Trim filler words from descriptions
+
+-------------------------------------------------------------------
+Tue Oct 11 16:00:05 UTC 2016 - toddrme2178@gmail.com
+
+- Update year
+- Fix version testing ("=" instead of "==")
+- Delete unneeded files instead of excluding.
+- Split data files into their own subpackage.
+
+-------------------------------------------------------------------
+Sun Oct  9 08:17:25 UTC 2016 - antoine.belvire@opensuse.org
+
+- Add and install missing license file (COPYING, it's the GPLv3)
+- Install changelog file (NEWS)
+
+-------------------------------------------------------------------
+Sat Mar  5 20:39:45 UTC 2016 - antoine.belvire@opensuse.org
+
+- Update to 1.3.2:
+  * Fix several bugs
+
+-------------------------------------------------------------------
+Tue Feb  9 20:21:47 UTC 2016 - antoine.belvire@opensuse.org
+
+- Update to 1.3.0:
+  * Fix several bugs
+  * Add a deinterlacer based on YADIF
+  * Add new GLSL 1.50 shaders
+  * Remove support for GLSL 1.10
+- Use the official tarball as source
+
+-------------------------------------------------------------------
+Mon Dec 21 21:21:00 UTC 2015 - antoine.belvire@opensuse.org
+
+- Initial package: movit-1.2.0
+

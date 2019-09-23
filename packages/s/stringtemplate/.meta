@@ -1,0 +1,5 @@
+<package name="stringtemplate" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="stringtemplate"/>
+</package>

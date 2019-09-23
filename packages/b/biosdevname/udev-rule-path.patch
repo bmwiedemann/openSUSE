@@ -1,0 +1,28 @@
+Index: biosdevname-0.7.1/configure.ac
+===================================================================
+--- biosdevname-0.7.1.orig/configure.ac
++++ biosdevname-0.7.1/configure.ac
+@@ -66,20 +66,9 @@ AC_FUNC_STAT
+ AC_FUNC_VPRINTF
+ AC_CHECK_FUNCS([dup2 gettimeofday memset munmap select socket strcasecmp strchr strdup strerror strncasecmp strpbrk strrchr strstr strtol strtoul])
+ 
+-# this is ugly, but accounts for SLES 10, Red Hat/Fedora, and Ubuntu
+-# handles default udev rules as of udev 114 or thereabouts
+-RULEDEST=/lib/udev/rules.d/71-biosdevname.rules
+-
+-if [[ -e /etc/udev/rules.d/60-net.rules ]]; then
+-     # RHEL 5 / Fedora
+-     RULEDEST=/etc/udev/rules.d/60-biosdevname.rules
+-elif [[ -e /etc/udev/rules.d/31-network.rules ]]; then
+-     # SLES 10
+-     RULEDEST=/etc/udev/rules.d/31-biosdevname.rules
+-elif [[ -e /etc/udev/rules.d/25-iftab.rules ]]; then
+-     # older Ubuntu
+-     RULEDEST=/etc/udev/rules.d/25-biosdevname.rules
+-fi
++# Only way to make this robust: Replace for each distro with the correct path
++# /lib/udev/rules.d/71-biosdevname.rules
++RULEDEST=@@BIOSDEVNAME_RULEDEST@@
+ RULEDIR=$(dirname $RULEDEST)
+ AC_SUBST(RULEDEST, $RULEDEST)
+ AC_SUBST(RULEDIR,  $RULEDIR)

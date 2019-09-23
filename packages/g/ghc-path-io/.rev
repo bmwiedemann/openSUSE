@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6503e451d97cb936d1e5dd7b55534a71</srcmd5>
+    <version>1.1.0</version>
+    <time>1465335996</time>
+    <user>dimstar_suse</user>
+    <comment>path-io: Interface to ‘directory’ package for users of ‘path’</comment>
+    <requestid>398266</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f1d1205bff161b72d260b946c7347d05</srcmd5>
+    <version>1.1.0</version>
+    <time>1468999762</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411950</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4b07cb05be0fd520286e20f77eff12f5</srcmd5>
+    <version>1.2.0</version>
+    <time>1477219855</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433403</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>59541636ee37859c9e7304b156b91685</srcmd5>
+    <version>1.2.2</version>
+    <time>1489866598</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>450613</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>688e8a89c8c889581514dc8297e51163</srcmd5>
+    <version>1.2.2</version>
+    <time>1494938771</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>495002</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>07d84e3478455d09d2fa19d3f344cae0</srcmd5>
+    <version>1.2.2</version>
+    <time>1505505809</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525132</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fd59d99e176ef63d5630787d22792bc2</srcmd5>
+    <version>1.3.3</version>
+    <time>1527675089</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-path-io to the latest version.</comment>
+    <requestid>607853</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8f623f850eecb2511e75a4b6c21d573d</srcmd5>
+    <version>1.3.3</version>
+    <time>1532161319</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623826</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ff15c23d6035b6ed2e2dbcd0e93d65c4</srcmd5>
+    <version>1.4.0</version>
+    <time>1533412447</time>
+    <user>dimstar_suse</user>
+    <comment>Add xmonad, xmobar, and their dependencies to Factory.</comment>
+    <requestid>627279</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>522826673a07506ed2860487a3e5c4a0</srcmd5>
+    <version>1.4.0</version>
+    <time>1540450917</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643436</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e91a0bc5280260bc2f024481937de367</srcmd5>
+    <version>1.4.1</version>
+    <time>1545996916</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>661499</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>1893e3c10e489a16fa0abcc213e3cf35</srcmd5>
+    <version>1.4.1</version>
+    <time>1550402420</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>674303</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>544b7f9518837796ef515a31bebac156</srcmd5>
+    <version>1.4.2</version>
+    <time>1551025130</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>678031</requestid>
+  </revision>
+</revisionlist>

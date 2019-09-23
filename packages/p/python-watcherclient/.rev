@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0155d22e362186a8b0d446fee12562ea</srcmd5>
+    <version>2.1.0</version>
+    <time>1549624479</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672464</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2adcc6d02cf4d4ff5dc0d1093a9c65b7</srcmd5>
+    <version>2.2.0</version>
+    <time>1556916206</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.2.0
+  - Use templates lower-constraints, remove cover
+  - Allow CLI to pass goal and strategy names
+  - Add audit name to CLI help doc
+  - Switch to stestr
+  - fix watcher actionplan show command
+  - Add --marker help info
+  - Update watcher strategy state in CLI
+  - switch documentation job to new PTI
+  - add python 3.6 unit test job
+  - Organize the use of 'log' and replace 'log' with LOG
+  - Fix watherclient error in py3
+  - import zuul job settings from project-config</comment>
+    <requestid>692883</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bbc5b710ddeb31fcac788aaaf2cf6204</srcmd5>
+    <version>2.2.0</version>
+    <time>1569235062</time>
+    <user>dimstar_suse</user>
+    <comment>- update requires to be able to drop tempest</comment>
+    <requestid>732097</requestid>
+  </revision>
+</revisionlist>

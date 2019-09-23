@@ -1,0 +1,562 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use File::Copy;
+use Getopt::Long;
+
+my $dir = ".";
+my $rpmrelease;
+my $patches="";
+
+GetOptions(
+	"patches=s" => \$patches,
+	"release=s" => \$rpmrelease
+) or die "Usage: $0 [--release <release>] [--patches <dir>]\n";
+
+# flavor -> [supported archs]
+my %flavor_archs = parse_config_conf();
+# subset to include in kernel-syms
+my %syms_flavor_archs = parse_config_conf("syms");
+
+my %all_archs = parse_config_conf("needs_updating");
+my @all_archs;
+	for my $flavor (keys(%all_archs)) {
+		push(@all_archs, arch2rpm(@{$all_archs{$flavor}}));
+	}
+@all_archs = sort(uniq(@all_archs));
+my $all_archs = join(" ", @all_archs);
+
+# template name -> template body
+my %templates = read_spec_templates();
+
+my @kmps = read_kmps();
+
+# config.sh variables
+my %vars = parse_config_sh();
+my ($srcversion, $variant, $vanilla_only) =
+	($vars{'SRCVERSION'}, $vars{'VARIANT'}, $vars{'VANILLA_ONLY'});
+my $compress_modules = 'none';
+my $build_dtbs = ();
+my $livepatch = "";
+if (defined($vars{'COMPRESS_MODULES'})) {
+	$compress_modules = $vars{'COMPRESS_MODULES'};
+}
+if (defined($vars{'BUILD_DTBS'})) {
+	$build_dtbs = $vars{'BUILD_DTBS'};
+	$build_dtbs = () if $build_dtbs =~ /^(0+|no|false)$/i;
+}
+if (defined($vars{'LIVEPATCH'})) {
+	$livepatch = $vars{'LIVEPATCH'};
+	$livepatch = "" if $livepatch =~ /^(0+|no|none)$/i;
+}
+$vanilla_only ||= "0";
+if (!defined ($rpmrelease)) {
+	$rpmrelease = $vars{'RELEASE'} || 0;
+}
+
+# package name -> [summary, description, extra kmp deps]
+my %binary_descriptions = parse_descriptions();
+
+# arch -> flavor -> [obsoleted packages]
+my %obsolete_packages = parse_old_flavors();
+
+$patches="--patches $patches" if $patches;
+my $patchversion = `$dir/compute-PATCHVERSION.sh $patches`;
+chomp $patchversion;
+my $rpmversion = $patchversion;
+# stuff the -rcX tag into the rpm version if possible;
+$rpmversion =~ s/\.0-rc/.rc/;
+$rpmversion =~ s/-rc\d+//;
+$rpmversion =~ s/-/./g;
+
+$rpmrelease =~ s/-/./g;
+
+my $sources = join("\n", $templates{source} =~ /^Source\d+:[^\n]*/msg);
+# Find all SourceN: foo.tar.(bz2|xz) lines and generate the NoSource:
+# lines and the %setup line
+my @tarballs = ($sources =~ /^Source(\d+):[^\n]*\.tar\.(?:bz2|xz)/msg);
+my $nosource = $sources;
+$nosource =~ s/^Source(\d+):.*?$/NoSource:       $1/mg;
+
+# Source0 (the linux tarball) is unpacked manually
+@tarballs = grep { $_ > 0 } @tarballs;
+my $unpack_patches = join(" ", map { "-a $_" } @tarballs);
+# List of scripts to automatically chmod +x before build
+my $scripts = join(",", grep { is_script($_) }
+			($sources =~ /\nSource\d+:\s*([^\s]*)/mg));
+
+my $tarball_url;
+if ($srcversion =~ /^(\d+)(?:\.\d+)*(-rc\d+)?$/) {
+	$tarball_url = "http://www.kernel.org/pub/linux/kernel/v$1.x/";
+	$tarball_url = "" if $2; # kernel.org has no tarballs for rc kernels
+	# rc tarballs only available from git as https://git.kernel.org/torvalds/t/linux-*.gz
+} else {
+	# kernel.org has no tarballs for  linux-next or vanilla snapshots
+	$tarball_url = "";
+}
+
+my $commit = get_commit();
+my $commit_full = get_commit(1);
+
+my %macros = (
+	VARIANT => $variant,
+	VANILLA_ONLY => $vanilla_only,
+	SRCVERSION => $srcversion,
+	PATCHVERSION => $patchversion,
+	RPMVERSION => $rpmversion,
+	TARBALL_URL => $tarball_url,
+	RELEASE => $rpmrelease,
+	COMMIT => $commit,
+	COMMIT_FULL => $commit_full,
+	SOURCES => $sources,
+	NOSOURCE => $nosource,
+	UNPACK_PATCHES => $unpack_patches,
+	SCRIPTS => $scripts,
+	LIVEPATCH => $livepatch,
+	YEAR => (localtime time)[5] + 1900,
+	COMPRESS_MODULES => $compress_modules,
+);
+
+# binary spec files
+my $kmp_definitions = "";
+my @kmp_definitions;
+for my $kmp (@kmps) {
+	my ($summary, $description, $deps);
+	if (!exists($binary_descriptions{$kmp})) {
+		print STDERR "warning: no description for $kmp found\n";
+		($summary = $kmp) =~ s/-kmp$//;
+		$summary .= " kernel modules";
+		$description = "$summary.";
+		$deps = "";
+	} else {
+		$summary = $binary_descriptions{$kmp}->[0];
+		$description = $binary_descriptions{$kmp}->[1];
+		$deps = $binary_descriptions{$kmp}->[2];
+	}
+	push(@kmp_definitions, expand_template("kmp",
+		KMP_NAME => $kmp,
+		KMP_SUMMARY => $summary,
+		KMP_DESCRIPTION => $description,
+		KMP_DEPS => $deps));
+}
+$kmp_definitions = join("\n", @kmp_definitions);
+
+for my $flavor (sort keys(%flavor_archs)) {
+	my ($summary, $description);
+	if (!exists($binary_descriptions{"kernel-$flavor"})) {
+		print STDERR "warning: no description for kernel-$flavor found\n";
+		$summary = "The Linux Kernel";
+		$description = "The Linux Kernel.";
+	} else {
+		$summary = $binary_descriptions{"kernel-$flavor"}->[0];
+		$description = $binary_descriptions{"kernel-$flavor"}->[1];
+	}
+
+	my %obsolete_macros;
+	for my $subpac ("", "-base", "-extra", "-devel", "-hmac") {
+		(my $macro = "PROVIDES_OBSOLETES" . uc($subpac)) =~ s/-/_/;
+		$obsolete_macros{$macro} =
+			provides_obsoletes($flavor, $subpac, @{$flavor_archs{$flavor}});
+	}
+
+	do_spec('binary', "kernel-$flavor.spec", %macros,
+		FLAVOR => $flavor,
+		SUMMARY => $summary,
+		DESCRIPTION => $description,
+		ARCHS => join(" ", arch2rpm(@{$flavor_archs{$flavor}})),
+		COMMON_DEPS => $templates{common_deps},
+		KMPS => join(" ", @kmps),
+		KMP_DEFINITIONS => $kmp_definitions,
+		%obsolete_macros
+	);
+}
+# kernel-source.spec
+do_spec('source', "kernel-source$variant.spec", %macros);
+
+if ($variant eq "") {
+	# kernel-docs.spec
+	do_spec('docs', "kernel-docs$variant.spec", %macros);
+}
+
+# kernel-syms.spec
+{
+	my $requires = "";
+	my %syms_archs;
+	my $syms_archs;
+	for my $flavor (sort keys(%syms_flavor_archs)) {
+		next if $flavor eq "vanilla";
+		my @archs = arch2rpm(@{$syms_flavor_archs{$flavor}});
+		$syms_archs{$_} = 1 for @archs;
+		$requires .= "%ifarch @archs\n";
+		$requires .= "Requires:       kernel-$flavor-devel = \%version-\%source_rel\n";
+		$requires .= "%endif\n";
+	}
+	chomp $requires;
+	$syms_archs = join(" ", sort(keys(%syms_archs)));
+	if (keys(%syms_archs)) {
+		do_spec('syms', "kernel-syms$variant.spec", %macros,
+			REQUIRES => $requires,
+			ARCHS => $syms_archs);
+	}
+}
+
+# kernel-obs-*.spec
+if (!$variant) {
+	my @default_archs;
+
+	if ($vanilla_only) {
+		@default_archs = arch2rpm(@{$flavor_archs{vanilla}});
+	} else {
+		@default_archs = arch2rpm(@{$flavor_archs{default}});
+	}
+	# No kernel-obs-* for 32bit ppc
+	@default_archs = grep { $_ ne "ppc" } @default_archs;
+	my $default_archs = join(" ", @default_archs);
+	do_spec('obs-build', "kernel-obs-build.spec", %macros,
+		ARCHS => $default_archs);
+	do_spec('obs-qa', "kernel-obs-qa.spec", %macros,
+		ARCHS => $default_archs);
+}
+
+# dtb-*.spec
+if (!$variant && $build_dtbs) {
+	do_spec('dtb', "dtb.spec.in", %macros);
+	print "./mkspec-dtb $all_archs\n";
+	system("./mkspec-dtb $all_archs\n");
+	unlink("$dir/dtb.spec.in");
+	if ($?) {
+		exit(($? >> 8) || ($? & 127 + 128) || 1);
+	}
+}
+
+copy_changes();
+
+# _constraints
+{
+	my @packages = map { "<package>kernel-$_</package>" } sort keys(%flavor_archs);
+	my $packages = join("\n", @packages);
+	do_spec('constraints', "_constraints",
+		BINARY_PACKAGES_XML => $packages);
+}
+
+exit 0;
+
+
+
+sub parse_config_conf {
+	my @symbols = @_;
+	my $symbols = join(' ', @symbols);
+	my %res;
+
+	for my $arch (split(/\s+/, `$dir/arch-symbols --list`)) {
+		my @flavors = `$dir/guards $arch $symbols < $dir/config.conf`;
+		next if @flavors == 0;
+		chomp @flavors;
+		@flavors = map { s/.*\///; $_ } @flavors;
+		for my $flavor (@flavors) {
+			$res{$flavor} ||= [];
+			push(@{$res{$flavor}}, $arch);
+		}
+	}
+	for my $flavor (keys(%res)) {
+		$res{$flavor} = [sort @{$res{$flavor}}];
+	}
+	return %res;
+}
+
+sub read_spec_templates {
+	my %res;
+
+	for my $template (qw(binary source syms docs obs-build obs-qa)) {
+		xopen(my $fh, '<', "$dir/kernel-$template.spec.in");
+		local $/ = undef;
+		$res{$template} = <$fh>;
+		close($fh);
+		next unless $template eq "binary";
+		if ($res{$template} =~ /^# BEGIN COMMON DEPS\n?(.*)^# END COMMON DEPS/ms) {
+			$res{common_deps} = $1;
+		} else {
+			print STDERR "warning: Expected # BEGIN COMMON DEPS in kernel-binary.spec.in\n";
+			$res{common_deps} = "";
+		}
+		if ($res{$template} =~ s/^# BEGIN KMP\n?(.*)^# END KMP/\@KMP_DEFINITIONS\@/ms) {
+			$res{kmp} = $1;
+		} else {
+			print STDERR "warning: Expected # BEGIN KMP in kernel-binary.spec.in\n";
+			$res{kmp} = "";
+		}
+	}
+	{
+		xopen(my $fh, '<', "$dir/constraints.in");
+		local $/ = undef;
+		$res{constraints} = <$fh>;
+		close($fh);
+		xopen($fh, '<', "$dir/dtb.spec.in.in");
+		$res{dtb} = <$fh>;
+		close($fh);
+	}
+	return %res;
+}
+
+# return a hash of config.sh variables
+sub parse_config_sh {
+	my %res;
+
+	xopen(my $fh, '<', "$dir/config.sh");
+	while (<$fh>) {
+		chomp;
+		if (/^\s*([A-Z_]+)=(.*)/) {
+			my ($key, $val) = ($1, $2);
+			$val =~ s/^"(.*)"$/$1/;
+			$res{$key} = $val;
+		}
+	}
+	close($fh);
+	return %res;
+}
+
+sub parse_descriptions {
+	my %res;
+	my $current;
+	my $blank = "";
+	# 0 - expect summary, 1 - eating blank lines, 2 - reading description
+	my $state = 0;
+
+	xopen(my $fh, '<', "$dir/package-descriptions");
+	while (<$fh>) {
+		next if /^\s*#/;
+
+		if (/^==+\s+([^\s]+)\s+==+\s*$/) {
+			my $package = $1;
+			if ($current) {
+				chomp $current->[1];
+			}
+			$current = ["", "", ""];
+			$res{$package} = $current;
+			$state = 0;
+			next;
+		}
+		if (/^$/) {
+			if ($state == 0) {
+				$state++;
+			} elsif ($state == 2) {
+				$blank .= $_;
+			}
+			next;
+		}
+		# non-blank line and not === package ===
+		if ($state == 0) {
+			chomp;
+			if (s/^Requires: *//) {
+				# foo-kmp is a shorthand for another kmp
+				# from the same specfile
+				s/-kmp/-kmp-%build_flavor = %version-%release/g;
+				s/^/Requires:       /;
+				if ($current->[2]) {
+					$current->[2] .= "\n";
+				}
+				$current->[2] .= $_;
+			} else {
+				# The Summary: keyword is optional
+				s/^Summary: *//;
+				if ($current->[0]) {
+					print STDERR "warning: multi-line summary\n";
+				}
+				$current->[0] = $_;
+			}
+		} elsif ($state == 1) {
+			$current->[1] = $_;
+			$blank = "";
+			$state++;
+		} else {
+			$current->[1] .= $blank;
+			$blank = "";
+			$current->[1] .= $_;
+		}
+	}
+	if ($current) {
+		chomp $current->[1];
+	}
+	close($fh);
+	return %res;
+}
+
+sub read_kmps {
+	my %res;
+
+	open(my $fh, '-|', "$dir/guards", "--list", "--with-guards",
+		"-c", "$dir/supported.conf") or die "Error running guards: $!\n";
+	while (<$fh>) {
+		my @guards = split(' ');
+		pop(@guards);
+		for my $g (@guards) {
+			if ($g =~ /^\+(.*-kmp)$/) {
+				$res{$1} = 1;
+			}
+		}
+	}
+	close($fh) or die "Error running guards: $!\n";
+	return sort(keys(%res));
+}
+
+sub parse_old_flavors{
+	my %res;
+
+
+	xopen(my $fh, '<', "$dir/old-flavors");
+	while (<$fh>) {
+		chomp;
+		next if /^\s*(#|$)/;
+		if (!m:^\s*(\w+)/([\w-]+)\s+([\w-]+)\s+([\w.-]+)\s*$:) {
+			print STDERR "$dir/old-flavors:$.: expected arch/flavor <old flavor> <old version>\n";
+			next;
+		}
+		my ($arch, $flavor, $old_flavor, $old_version) = ($1, $2, $3, $4);
+		$res{$arch} ||= {};
+		$res{$arch}{$flavor} ||= [];
+		push(@{$res{$arch}{$flavor}},
+			["kernel-$old_flavor", $old_version]);
+	}
+	close($fh);
+	return %res;
+}
+
+sub is_script {
+	my $script = shift;
+
+	return undef if $script =~ /\.(tar\.(gz|bz2)|in|conf)$/;
+	return undef if $script =~ /^README/;
+	return 1 if $script =~ /\.pl$/;
+	open(my $fh, '<', $script) or return undef;
+	sysread($fh, my $shebang, 2);
+	close($fh);
+	return 1 if $shebang eq "#!";
+	return undef;
+}
+
+sub arch2rpm {
+	if (wantarray) {
+		return map { _arch2rpm($_) } @_;
+	}
+	return _arch2rpm($_[0]);
+}
+sub _arch2rpm {
+	my $arch = shift;
+	return "\%ix86" if $arch eq "i386";
+	return "aarch64" if $arch eq "arm64";
+	return $arch;
+}
+
+sub provides_obsoletes {
+	my $flavor = shift;
+	my $subpac = shift;
+	my @archs = @_;
+	my $res = "";
+
+	for my $arch (@archs) {
+		my @packs = @{$obsolete_packages{$arch}{$flavor} || []};
+		my $printed;
+
+		next if (!@packs);
+		my $rpmarch = arch2rpm($arch);
+		chomp $rpmarch;
+		for my $pack (@packs) {
+			my $name = $pack->[0] . $subpac;
+			my $version = $pack->[1];
+			if ($subpac) {
+				# The -base and -extra split has been
+				# introduced in SLE11 (2.6.27)
+				my ($v1, $v2, $v3) = split(/\./, $version);
+				next if ($v1 <= 2 && $v2 <= 6 && $v3 < 27);
+			}
+			if (!$printed) {
+				$res .= "\%ifarch $rpmarch\n";
+				$printed = 1;
+			}
+			$res .= "Provides:       $name = $version\n";
+			$res .= "Obsoletes:      $name <= $version\n";
+		}
+		$res .= "\%endif\n" if $printed;
+	}
+	chomp $res;
+	return $res;
+}
+
+sub get_commit {
+	my ($commit, $fh, $full);
+
+	$full = $_[0] // 0;
+
+	if (!open($fh, '<', "source-timestamp")) {
+		print STDERR "warning: source-timestamp: $!\n";
+		print STDERR "warning: Cannot determine commit id\n";
+		return "0000000";
+	}
+	while (<$fh>) {
+		if ($full ? /^GIT Revision: ([0-9a-f]{40})/ : /^GIT Revision: ([0-9a-f]{7})/) {
+			$commit = $1;
+		}
+	}
+	close($fh);
+	if (!$commit) {
+		print STDERR "warning: Commit id missing in source-timestamp file\n";
+		return "0000000";
+	}
+	return $commit;
+}
+
+sub expand_template {
+	my $template = shift;
+	my %macros = @_;
+
+	my $text = $templates{$template};
+	my $prev_text;
+	do {
+		$prev_text = $text;
+		for my $m (keys %macros) {
+			if ($macros{$m} eq "") {
+				# Do not generate empty lines
+				$text =~ s/^\@$m\@\n//mg;
+			}
+			$text =~ s/\@$m\@/$macros{$m}/g;
+		}
+	} while ($prev_text ne $text);
+	return $text;
+}
+
+sub do_spec {
+	my $template = shift;
+	my $specfile = shift;
+	my %macros = @_;
+
+	my $text = expand_template($template, %macros);
+	print "$specfile\n";
+	xopen(my $fh, '>', "$dir/$specfile");
+	print $fh $text;
+	close($fh);
+}
+
+sub copy_changes {
+
+	opendir(my $dh, $dir) or die "$dir: $!\n";
+
+	while (my $name = readdir $dh) {
+		next unless $name =~ /\.spec$/;
+		next if $name eq "kernel-source$variant.spec";
+
+		$name =~ s/\.spec$/.changes/;
+		copy("$dir/kernel-source$variant.changes", "$dir/$name");
+	}
+	closedir($dh);
+}
+
+sub xopen {
+        open($_[0], $_[1], $_[2]) or die "$_[2]: $!\n";
+}
+
+sub uniq {
+	my %seen;
+	return grep { !$seen{$_}++ } @_;
+}

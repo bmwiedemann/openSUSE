@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Thu Sep 12 17:24:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to build with new tox releases:
+  * enviroment.patch
+
+-------------------------------------------------------------------
+Fri Mar 15 05:34:38 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Use PyPI sdist
+- Add docs/*.rst to %doc
+- Update to v0.12
+  * Fix reading envlist from setup.cfg
+  * Add docs and tests to sdist
+  * Release an sdist in addition to the wheel.
+
+-------------------------------------------------------------------
+Tue Feb 19 02:33:47 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.11

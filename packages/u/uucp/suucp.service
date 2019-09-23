@@ -1,0 +1,28 @@
+[Unit]
+Description=SSL tunnel for UUCP
+After=syslog.target network.target
+# The config needs to be adjusted by the admin, see example file in /etc/uucp/
+# Just an proposal without any without obligation, without any warranty, and
+# at your own risk:
+#
+# Creation of /etc/uucp/stunnel.pem used in /etc/uucp/suucp-server.conf(.systemd)
+# > umask 066
+# > cp -p /etc/uucp/suucp-server.conf.example /etc/uucp/suucp-server.conf
+# > openssl req -new -x509 -days 3650 -utf8 -nodes -keyout /etc/uucp/stunnel.pem -out /etc/uucp/stunnel.pem
+# > dd if=/dev/urandom count=4 | openssl dhparam -rand - 1024 >> /etc/uucp/stunnel.pem
+#
+# Fingerprint and hash
+# > openssl x509 -text -subject -dates -fingerprint -noout -in /etc/uucp/stunnel.pem
+# > ln -sf stunnel.pem /etc/uucp/$(openssl x509 -hash -noout -in /etc/uucp/stunnel.pem).0
+#
+ConditionPathExists=/etc/uucp/suucp-server.conf
+
+[Service]
+# As long as forking is off in configuration of stunnel
+Type=simple
+ExecStart=/usr/sbin/stunnel /etc/uucp/suucp-server.conf
+TimeoutSec=600
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,5 @@
+<package name="cecilia" project="openSUSE:Factory">
+  <title>Tcl/Tk Front-End for Csound</title>
+  <description>Cecilia is a Tcl/Tk front-end for the Csound sound synthesis program.</description>
+  <devel project="multimedia:apps" package="cecilia"/>
+</package>

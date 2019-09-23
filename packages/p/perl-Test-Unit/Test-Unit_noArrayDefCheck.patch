@@ -1,0 +1,13 @@
+Index: Test-Unit-0.25/lib/Test/Unit/TestCase.pm
+===================================================================
+--- Test-Unit-0.25.orig/lib/Test/Unit/TestCase.pm
++++ Test-Unit-0.25/lib/Test/Unit/TestCase.pm
+@@ -103,7 +103,7 @@ sub list_tests {
+     my $class = ref($_[0]) || $_[0];
+     my @tests = ();
+     no strict 'refs';
+-    if (defined(@{"$class\::TESTS"})) {
++    if (@{"$class\::TESTS"}) {
+         push @tests, @{"$class\::TESTS"};
+     }
+     else {

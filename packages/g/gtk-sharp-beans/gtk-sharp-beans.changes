@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Thu Oct 10 13:50:48 UTC 2013 - sshaw@decriptor.com
+
+- Make sure we also apply the patch (bnc#782905) 
+
+-------------------------------------------------------------------
+Wed Oct  9 15:25:11 UTC 2013 - sshaw@decriptor.com
+
+- Added gtk-sharp-beans-pc-fix.patch (bnc#782905)
+
+-------------------------------------------------------------------
+Wed Sep  1 17:31:26 CDT 2010 - gburt@suse.de
+
+- Update to 0.2 release
+  + install .config file
+
+-------------------------------------------------------------------
+Wed Sep  1 16:04:00 CDT 2010 - gburt@suse.de
+
+- Update to 0.1 release
+  + no longer installed in GAC
+
+-------------------------------------------------------------------
+Fri Jan 15 18:21:51 PST 2010 - gburt@suse.de
+
+- Initial packaging
+  + git rev 007937871e1010dee5a150a2f7f60f51e437c127
+  + plus a small patch to dist properly
+

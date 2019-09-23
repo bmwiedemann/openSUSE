@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Mon Apr 13 19:13:23 UTC 2015 - coolo@suse.com
+
+- updated to 1.5
+   see /usr/share/doc/packages/perl-Class-Singleton/Changes
+
+-------------------------------------------------------------------
+Tue Nov 30 19:19:58 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sun Apr 11 22:07:14 UTC 2010 - chris@computersalat.de
+
+- removed .packlist, perllocal.pod files
+  > noarch package
+- cleanup spec
+  o fix HEADER
+  o update License, Url, description
+  o fixed deps
+    - BuildReq perl
+    - perl-macros
+  o enable parallel build
+  o macro usage
+  o changelog to changes file
+
+-------------------------------------------------------------------
+Sun Jun 08 05:01:45 CET 2008 - gerrit.beine@gmx.de
+
+- first release 1.4

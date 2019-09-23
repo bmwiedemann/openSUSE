@@ -1,0 +1,295 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a5417dff7a54737d9b04da03bda39ba2</srcmd5>
+    <version>1.13</version>
+    <time>1251464887</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/popt based on submit request 18878 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9ac6b56c3fe35c1dfcd2cefd78dbcf93</srcmd5>
+    <version>1.13</version>
+    <time>1251466825</time>
+    <user>autobuild</user>
+    <comment>Copy from home:darix:branches:openSUSE:Factory/popt based on submit request 19123 from user darix
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>47ac35a61cdb152a91378d2e5d13e30a</srcmd5>
+    <version>1.13</version>
+    <time>1251474492</time>
+    <user>autobuild</user>
+    <comment>Copy from home:darix:branches:openSUSE:Factory/popt based on submit request 19124 from user darix
+</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>47ac35a61cdb152a91378d2e5d13e30a</srcmd5>
+    <version>1.13</version>
+    <time>1251474492</time>
+    <user>autobuild</user>
+    <comment>Copy from home:darix:branches:openSUSE:Factory/popt based on submit request 19124 from user darix
+</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>a739af8040090570274ce21bd69f90e8</srcmd5>
+    <version>1.13</version>
+    <time>1263477780</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/popt based on submit request 29069 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>fe02ba70a94650b96ed764f66503deb2</srcmd5>
+    <version>1.13</version>
+    <time>1265911215</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/popt based on submit request 32329 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>36ca109c906938966070d4810b0a05ba</srcmd5>
+    <version>1.13</version>
+    <time>1268925749</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>a42fc3342bdb4f7b8f4035143eee9ee2</srcmd5>
+    <version>1.13</version>
+    <time>1271250662</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/popt based on submit request 37250 from user mlschroe
+</comment>
+    <requestid>37250</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>a42fc3342bdb4f7b8f4035143eee9ee2</srcmd5>
+    <version>1.13</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>a42fc3342bdb4f7b8f4035143eee9ee2</srcmd5>
+    <version>1.13</version>
+    <time>1278678611</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>194911ee28c2d5fa344cecd518401ada</srcmd5>
+    <version>1.13</version>
+    <time>1279649575</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/popt based on submit request 43456 from user coolo
+</comment>
+    <requestid>43456</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6cccad0ab3600c02618c2663d7cc6872</srcmd5>
+    <version>1.16</version>
+    <time>1284987064</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/popt based on submit request 48541 from user coolo
+</comment>
+    <requestid>48541</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>7dde1b050e8ec0c934a9ccd8d0811d90</srcmd5>
+    <version>1.16</version>
+    <time>1295268197</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58426 from user coolo
+</comment>
+    <requestid>58426</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>fa6e5d08516e2843251d09609e4465af</srcmd5>
+    <version>1.16</version>
+    <time>1295268203</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58426
+</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>fa6e5d08516e2843251d09609e4465af</srcmd5>
+    <version>1.16</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>5ff97f817cac6563200137d3e4a1ca17</srcmd5>
+    <version>1.16</version>
+    <time>1300436039</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64409 from user coolo
+</comment>
+    <requestid>64409</requestid>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>0c3660af28423219aee9ac015b0df2d9</srcmd5>
+    <version>1.16</version>
+    <time>1300436046</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64409
+</comment>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>0c3660af28423219aee9ac015b0df2d9</srcmd5>
+    <version>1.16</version>
+    <time>1319182364</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>21b5e046a7515e7198e5d1eb085be4ee</srcmd5>
+    <version>1.16</version>
+    <time>1319207226</time>
+    <user>coolo</user>
+    <comment>- Add pkgconfig to BuildRequires to get automatic pkgconfig(popt)
+  provides (forwarded request 88793 from jengelh)</comment>
+    <requestid>88809</requestid>
+  </revision>
+  <revision rev="20" vrev="12">
+    <srcmd5>f3b9fa0ecc8905613659f5c53d09c39e</srcmd5>
+    <version>1.16</version>
+    <time>1323193953</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="13">
+    <srcmd5>c884252322bec35b7ca982509c084a56</srcmd5>
+    <version>1.16</version>
+    <time>1329319062</time>
+    <user>coolo</user>
+    <comment>- Libraries back into %{_libdir}, /usr merge project. (forwarded request 104178 from elvigia)</comment>
+    <requestid>104179</requestid>
+  </revision>
+  <revision rev="22" vrev="15">
+    <srcmd5>c884252322bec35b7ca982509c084a56</srcmd5>
+    <version>1.16</version>
+    <time>1340184012</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="16">
+    <srcmd5>b15f0f6040bfcffda002c4c6cb8ca193</srcmd5>
+    <version>1.16</version>
+    <time>1345728645</time>
+    <user>namtrac</user>
+    <comment>- license update: SUSE-XFree86-1.0
+  This is not the MIT license but rather the old version of the XFree86
+  license (which is not upstream at spdx.org/Ãlicenses - hence the SUSE
+  proprietary prefix)</comment>
+    <requestid>131362</requestid>
+  </revision>
+  <revision rev="24" vrev="18">
+    <srcmd5>b15f0f6040bfcffda002c4c6cb8ca193</srcmd5>
+    <version>1.16</version>
+    <time>1359109941</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="19">
+    <srcmd5>8cae553f40005a1533f648e9ae57f8bd</srcmd5>
+    <version>1.16</version>
+    <time>1359455607</time>
+    <user>coolo</user>
+    <comment>license update: X11
+New spdx.org license list now contains an official entry for X11 (forwarded request 149895 from babelworx)</comment>
+    <requestid>149936</requestid>
+  </revision>
+  <revision rev="26" vrev="20">
+    <srcmd5>21b6e9100ab8108ce2caea7c53215223</srcmd5>
+    <version>1.16</version>
+    <time>1360950624</time>
+    <user>coolo</user>
+    <comment>- Remove patches:
+  - config-guess-sub-update.patch
+  - popt-secure-getenv.patch
+  run autoreconf instead .
+- popt-libc-updates.patch replaces popt-secure-getenv.patch
+  * test for secure_getenv instead of __secure_getenv
+  * update configure.ac so it can be regenerated with modern
+    autotools.
+  * Internal symbols are already hidden with a linker script, 
+   improve that by hidding symbols with the compiler too.
+  * use strerror_r instead of strerror in the library.
+
+- popt wants __secure_getenv at configure time, but This
+ function is no longer available as of glibc 2.17.
+ test for secure_getenv() instead (popt-secure-getenv.patch) (forwarded request 155365 from elvigia)</comment>
+    <requestid>155463</requestid>
+  </revision>
+  <revision rev="27" vrev="21">
+    <srcmd5>fa7c16785f1f073657596ea5d4cc859b</srcmd5>
+    <version>1.16</version>
+    <time>1366233354</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 164052 from namtrac)</comment>
+    <requestid>164119</requestid>
+  </revision>
+  <revision rev="28" vrev="22">
+    <srcmd5>61134d2ca4b574a283fa9046ac7a9c7d</srcmd5>
+    <version>1.16</version>
+    <time>1371543656</time>
+    <user>coolo</user>
+    <comment>- fix popt-libc-updates.patch to work also with automake 1.13</comment>
+    <requestid>179257</requestid>
+  </revision>
+  <revision rev="29" vrev="23">
+    <srcmd5>e0ebd2bcbec2f5fcdbf912e3b1690a06</srcmd5>
+    <version>1.16</version>
+    <time>1373542285</time>
+    <user>coolo</user>
+    <comment>- Fix typo in popt-libc-updates.patch that prevented it to work
+  with glibc before 2.17. (forwarded request 182427 from jengelh)</comment>
+    <requestid>182428</requestid>
+  </revision>
+  <revision rev="30" vrev="25">
+    <srcmd5>e0ebd2bcbec2f5fcdbf912e3b1690a06</srcmd5>
+    <version>1.16</version>
+    <time>1379664049</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="26">
+    <srcmd5>ac461e4b4345a26dbdb573cee1ac3da0</srcmd5>
+    <version>1.16</version>
+    <time>1381223108</time>
+    <user>scarabeus_factory</user>
+    <comment>- popt-alignment-checks.patch: fix alignment checks (forwarded request 202544 from Andreas_Schwab)</comment>
+    <requestid>202572</requestid>
+  </revision>
+  <revision rev="32" vrev="28">
+    <srcmd5>ac461e4b4345a26dbdb573cee1ac3da0</srcmd5>
+    <version>1.16</version>
+    <time>1409302728</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="29">
+    <srcmd5>43a5e31dbc46485f51ba4074114dcb96</srcmd5>
+    <version>1.16</version>
+    <time>1503999338</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517822</requestid>
+  </revision>
+  <revision rev="34" vrev="30">
+    <srcmd5>02595369a67aaaa37a2225b85024c5a6</srcmd5>
+    <version>1.16</version>
+    <time>1520414875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580530</requestid>
+  </revision>
+  <revision rev="35" vrev="31">
+    <srcmd5>ef763850a94b4e24e9b9af2030803828</srcmd5>
+    <version>1.16</version>
+    <time>1549458283</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>669004</requestid>
+  </revision>
+</revisionlist>

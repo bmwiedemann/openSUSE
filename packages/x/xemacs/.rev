@@ -1,0 +1,653 @@
+<revisionlist>
+  <revision rev="1" vrev="8">
+    <srcmd5>c996d12d5b7160f4d1cc73acf8c2dba4</srcmd5>
+    <version>21.5.27.20060705</version>
+    <time>1168904528</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="40">
+    <srcmd5>f7be5166f504c0067e861a249c23f660</srcmd5>
+    <version>21.5.27.20060705</version>
+    <time>1171651277</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="44">
+    <srcmd5>8f897ceb6858054701cb386ff3ceb754</srcmd5>
+    <version>21.5.27.20060705</version>
+    <time>1174952977</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1975e21a89e4b32c50f9d588dc249e99</srcmd5>
+    <version>21.5.27.20070507</version>
+    <time>1178556305</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>63f59a29de2df1119e7a3a27fcb341fa</srcmd5>
+    <version>21.5.27.20070507</version>
+    <time>1178647862</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2308a6999df028865a059cf88fa80cc8</srcmd5>
+    <version>21.5.28</version>
+    <time>1180639015</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d82a39b810cacbd28dc3d33b22507ec7</srcmd5>
+    <version>21.5.28</version>
+    <time>1180901335</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>c525efd0084bd86da6be859c4bb35765</srcmd5>
+    <version>21.5.28</version>
+    <time>1180998963</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>303a17cf6f6e91ee0d3a3273d7d91a8a</srcmd5>
+    <version>21.5.28</version>
+    <time>1183655457</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="11">
+    <srcmd5>49e72a74bf2b06f51bab0f90d1f9441a</srcmd5>
+    <version>21.5.28</version>
+    <time>1184104315</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>de792c928eaa0a779780e9824ce575de</srcmd5>
+    <version>21.5.28</version>
+    <time>1184347609</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>79bfaef789a164fc53197b5ea5876ed2</srcmd5>
+    <version>21.5.28</version>
+    <time>1184358330</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>4fcbf43aa981e205f02f5048b343146d</srcmd5>
+    <version>21.5.28</version>
+    <time>1184602972</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="17">
+    <srcmd5>4728e894ebe6cefde3aa732cff5b58f5</srcmd5>
+    <version>21.5.28</version>
+    <time>1184791505</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="18">
+    <srcmd5>bcd7524b4a373cd02d3a2d6ac45bb802</srcmd5>
+    <version>21.5.28</version>
+    <time>1185034317</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="21">
+    <srcmd5>4bbb49e16ba68b0106090af3dcd7b0d1</srcmd5>
+    <version>21.5.28</version>
+    <time>1185495240</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>60671422d77243402c63e1d959946052</srcmd5>
+    <version>21.5.28.20070730</version>
+    <time>1185814540</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>1b6ed5bc40c07a6ca75ecce7ad86798a</srcmd5>
+    <version>21.5.28.20070730</version>
+    <time>1186090992</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>433fdbadf4cf1f2f0d21f68f567ee332</srcmd5>
+    <version>21.5.28.20070803</version>
+    <time>1186176137</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f77a9b839cf4be03885310bfc9853f3b</srcmd5>
+    <version>21.5.28.20070807</version>
+    <time>1186692956</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>82a3bed55caebe96a56d121b93beaa30</srcmd5>
+    <version>21.5.28.20070807</version>
+    <time>1187914294</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="12">
+    <srcmd5>41eb6f3b980fbd90ab2249d624500bde</srcmd5>
+    <version>21.5.28.20070807</version>
+    <time>1188321883</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="16">
+    <srcmd5>aac501cfcc1e2d3151bb327e5c3744d9</srcmd5>
+    <version>21.5.28.20070807</version>
+    <time>1189105345</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="44">
+    <srcmd5>29ab828239aabd2e45c81e899de053b8</srcmd5>
+    <version>21.5.28.20070807</version>
+    <time>1196901842</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="46">
+    <srcmd5>f4a8d665027e1133c0e12283e215ff5f</srcmd5>
+    <version>21.5.28.20070807</version>
+    <time>1197649306</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2afc158c6cbc7e58f644a1d31cb341aa</srcmd5>
+    <version>21.5.28.20071220</version>
+    <time>1198166222</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>4d884bfe615fd0e7075fea44deb3e63c</srcmd5>
+    <version>21.5.28.20071220</version>
+    <time>1198265508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>2bbae5f51382ad0293fd87a9a2c0642c</srcmd5>
+    <version>21.5.28.20071220</version>
+    <time>1199379663</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2a59866979e9fa60413041a2e87fd2b1</srcmd5>
+    <version>21.5.28.20080107</version>
+    <time>1200385945</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>49c9d8011ddd0047b6dec43b9299160e</srcmd5>
+    <version>21.5.28.20080119</version>
+    <time>1200874609</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="8">
+    <srcmd5>1bd722702a81baba06d669169d92f4e1</srcmd5>
+    <version>21.5.28.20080119</version>
+    <time>1202173705</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="22">
+    <srcmd5>d28bc21166ffe175ef512593429f973a</srcmd5>
+    <version>21.5.28.20080119</version>
+    <time>1205349064</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0eff23d764c60041be4c1fca5eb46af2</srcmd5>
+    <version>21.5.28.20080401</version>
+    <time>1207164193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="7">
+    <srcmd5>cb5d46575331317ed67361d5be264dbe</srcmd5>
+    <version>21.5.28.20080401</version>
+    <time>1209392774</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="19">
+    <srcmd5>35050fd1e34ec2efb1d6a7323278ce6d</srcmd5>
+    <version>21.5.28.20080401</version>
+    <time>1215561766</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="43">
+    <srcmd5>8b8849f7654dd28e52d489ecf80d32fd</srcmd5>
+    <version>21.5.28.20080401</version>
+    <time>1219338028</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="58">
+    <srcmd5>7a54fdc20decb5113970383514a574d4</srcmd5>
+    <version>21.5.28.20080401</version>
+    <time>1225719140</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="59">
+    <srcmd5>6fccecc0795ab57c81c060c99989ede2</srcmd5>
+    <version>21.5.28.20080401</version>
+    <time>1228487394</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="60">
+    <srcmd5>194ead29955eb1dd9bcf189a9a1282b0</srcmd5>
+    <version>21.5.28.20080401</version>
+    <time>1232502035</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="61">
+    <srcmd5>18e837bc35c99f88e92776ce0898eb15</srcmd5>
+    <version>21.5.28.20080401</version>
+    <time>1237924022</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>395d2f58f5d62193abf0ec157901e22d</srcmd5>
+    <version>21.5.29</version>
+    <time>1245246756</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>a52948013523acaf2e5b1d5afd8cadc2</srcmd5>
+    <version>21.5.29</version>
+    <time>1246288946</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>d6ff0ff4edbf99bccd01a51d04a2559a</srcmd5>
+    <version>21.5.29</version>
+    <time>1247757431</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>59a54e61aeeb3e4bb145784a555b7ba8</srcmd5>
+    <version>21.5.29</version>
+    <time>1251409321</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/xemacs based on submit request 35 from user tiwai
+</comment>
+  </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>59a54e61aeeb3e4bb145784a555b7ba8</srcmd5>
+    <version>21.5.29</version>
+    <time>1251409321</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/xemacs based on submit request 35 from user tiwai
+</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>6af234175bdb69e448617560e4271585</srcmd5>
+    <version>21.5.b604d235f028</version>
+    <time>1260535826</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/xemacs based on submit request 26109 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>38387785d39d93e460ca212249386fcf</srcmd5>
+    <version>21.5.b604d235f028</version>
+    <time>1266975170</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/xemacs based on submit request 33080 from user coolo
+</comment>
+    <requestid>33080</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>fcb440c90f21cc02f3f50497c0c615b6</srcmd5>
+    <version>21.5.b604d235f028</version>
+    <time>1268926553</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>1926a90c321e1f1cc4d67058e5d47528</srcmd5>
+    <version>21.5.29.b604d235f028</version>
+    <time>1270085195</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/xemacs based on submit request 36263 from user WernerFink
+</comment>
+    <requestid>36263</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>1926a90c321e1f1cc4d67058e5d47528</srcmd5>
+    <version>21.5.29.b604d235f028</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>1926a90c321e1f1cc4d67058e5d47528</srcmd5>
+    <version>21.5.29.b604d235f028</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>2358ea37ad48b99ed1c3d9999672d221</srcmd5>
+    <version>unknown</version>
+    <time>1284124275</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/xemacs based on submit request 47593 from user coolo
+</comment>
+    <requestid>47593</requestid>
+  </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>b5ae3ffc5c93527ddb00119451c4ed3d</srcmd5>
+    <version>21.5.29.b604d235f028</version>
+    <time>1289410585</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52487 from user coolo
+</comment>
+    <requestid>52487</requestid>
+  </revision>
+  <revision rev="54" vrev="6">
+    <srcmd5>32764944a50bde11fa9c5ec01cad90db</srcmd5>
+    <version>21.5.29.b604d235f028</version>
+    <time>1289410594</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52487
+</comment>
+  </revision>
+  <revision rev="55" vrev="9">
+    <srcmd5>32764944a50bde11fa9c5ec01cad90db</srcmd5>
+    <version>21.5.29.b604d235f028</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="56" vrev="10">
+    <srcmd5>e096a0bf151b9f3f2aa42249d2f0a7b7</srcmd5>
+    <version>21.5.29.b604d235f028</version>
+    <time>1306913228</time>
+    <user>saschpe</user>
+    <comment>- require gpm at runtime</comment>
+    <requestid>72341</requestid>
+  </revision>
+  <revision rev="57" vrev="11">
+    <srcmd5>6b22a29033adfc6d61d6f317248b81a7</srcmd5>
+    <version>21.5.29.b604d235f028</version>
+    <time>1306913239</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72341
+</comment>
+  </revision>
+  <revision rev="58" vrev="12">
+    <srcmd5>312479f8f85b870073421c304149519e</srcmd5>
+    <version>21.5.29.b604d235f028</version>
+    <time>1307350197</time>
+    <user>saschpe</user>
+    <comment>- fix runtime requires for real</comment>
+    <requestid>72664</requestid>
+  </revision>
+  <revision rev="59" vrev="13">
+    <srcmd5>a26ca7372933c4aa516c167abf55b19e</srcmd5>
+    <version>21.5.29.b604d235f028</version>
+    <time>1307350217</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72664
+</comment>
+  </revision>
+  <revision rev="60" vrev="15">
+    <srcmd5>a26ca7372933c4aa516c167abf55b19e</srcmd5>
+    <version>21.5.29.b604d235f028</version>
+    <time>1319182583</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="61" vrev="16">
+    <srcmd5>86bbd243ca191cafcf395cdeb5fbf143</srcmd5>
+    <version>21.5.29.b604d235f028</version>
+    <time>1324831373</time>
+    <user>coolo</user>
+    <comment>add autoconf to buildrequires (forwarded request 97634 from coolo)</comment>
+    <requestid>97923</requestid>
+  </revision>
+  <revision rev="62" vrev="17">
+    <srcmd5>7a16662b556bac8d9683a61e04e1788a</srcmd5>
+    <version>21.5.29.b604d235f028</version>
+    <time>1325787396</time>
+    <user>coolo</user>
+    <comment>- rebuild for ppc64 and ia64 (bnc#726769) (forwarded request 98787 from dirkmueller)</comment>
+    <requestid>98824</requestid>
+  </revision>
+  <revision rev="63" vrev="18">
+    <srcmd5>e4307832dd5a1f84146b583e438a7dca</srcmd5>
+    <version>21.5.29.b604d235f028</version>
+    <time>1326292704</time>
+    <user>coolo</user>
+    <comment>- build also against libpng15
+  * libpng15.patch (forwarded request 99215 from pgajdos)</comment>
+    <requestid>99382</requestid>
+  </revision>
+  <revision rev="64" vrev="19">
+    <srcmd5>630a90880216f719084e8c562780313f</srcmd5>
+    <version>21.5.29.b604d235f028</version>
+    <time>1328890835</time>
+    <user>coolo</user>
+    <comment>- Make it build again 
+
+- build also against libjpeg-devel to fix Xaw3d support</comment>
+    <requestid>103360</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>0e525db605d8b45635401c381bce7249</srcmd5>
+    <version>21.5.31</version>
+    <time>1330966955</time>
+    <user>coolo</user>
+    <comment>- Update to beta version XEmacs 21.5.31 &quot;ginger&quot;
+  * this includes 138 fixes including 9 crashes
+  * this includes 110 improvments
+  * also include some of our own patches</comment>
+    <requestid>107795</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>aa71c8615e2d2e0bd6c24f510e3d37b2</srcmd5>
+    <version>21.5.31</version>
+    <time>1338030257</time>
+    <user>coolo</user>
+    <comment>- Job creation scheme (bnc#764122)</comment>
+    <requestid>122418</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>15ddfa9add5847c5b8e7b86d3e8c42a9</srcmd5>
+    <version>21.5.31</version>
+    <time>1338582762</time>
+    <user>coolo</user>
+    <comment>- Fix compiler warnings 
+
+- Make /var/lib/xemacs/lock/ optional (bnc#764887) 
+
+- Hard coded attributes for /var/lib/xemacs/lock/</comment>
+    <requestid>123104</requestid>
+  </revision>
+  <revision rev="68" vrev="5">
+    <srcmd5>15ddfa9add5847c5b8e7b86d3e8c42a9</srcmd5>
+    <version>21.5.31</version>
+    <time>1340184342</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="69" vrev="6">
+    <srcmd5>4b8a044c015e4fe55fe9f52c408bd53a</srcmd5>
+    <version>21.5.31</version>
+    <time>1340621222</time>
+    <user>coolo</user>
+    <comment>- disable kkcc on arm as well (forwarded request 125021 from dirkmueller)</comment>
+    <requestid>125029</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>ea98a722016ebee99d1429442c9fe192</srcmd5>
+    <version>21.5.32</version>
+    <time>1345728734</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>130758</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>b99d7b271d249363a7723ab660edf611</srcmd5>
+    <version>21.5.32</version>
+    <time>1349252118</time>
+    <user>coolo</user>
+    <comment>- ia64 memeory layout is definitly not comparable with i86 nor x86_64</comment>
+    <requestid>136498</requestid>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>a146defa49b519b439117001c6c9a72d</srcmd5>
+    <version>21.5.32</version>
+    <time>1349947729</time>
+    <user>coolo</user>
+    <comment>- Make sure that some fonts are found</comment>
+    <requestid>137711</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>e48c7cf7363aec7b80a3578f8e15b8e8</srcmd5>
+    <version>21.5.33</version>
+    <time>1357654298</time>
+    <user>coolo</user>
+    <comment>xemacs new beta release (forwarded request 147289 from ailin_nemui)</comment>
+    <requestid>147419</requestid>
+  </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>e48c7cf7363aec7b80a3578f8e15b8e8</srcmd5>
+    <version>21.5.33</version>
+    <time>1359110603</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="75" vrev="4">
+    <srcmd5>63dfcacee0bbab23b55c4d43697b7dd1</srcmd5>
+    <version>21.5.33</version>
+    <time>1374583435</time>
+    <user>coolo</user>
+    <comment>bug fix for bnc#830221 (forwarded request 184061 from ailin_nemui)</comment>
+    <requestid>184065</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>b33c18dbc5c4152573083789c22215f9</srcmd5>
+    <version>21.5.34</version>
+    <time>1378238816</time>
+    <user>coolo</user>
+    <comment>@Werner must be some bug of obs, please try again (forwarded request 196778 from WernerFink)</comment>
+    <requestid>196840</requestid>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>b33c18dbc5c4152573083789c22215f9</srcmd5>
+    <version>21.5.34</version>
+    <time>1379665012</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="78" vrev="4">
+    <srcmd5>9634abe0bfa08d224ba009fb69674023</srcmd5>
+    <version>21.5.34</version>
+    <time>1407744448</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244030</requestid>
+  </revision>
+  <revision rev="79" vrev="6">
+    <srcmd5>9634abe0bfa08d224ba009fb69674023</srcmd5>
+    <version>21.5.34</version>
+    <time>1409303695</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="80" vrev="7">
+    <srcmd5>1e020911efac8253acc9743b1841468f</srcmd5>
+    <version>21.5.34</version>
+    <time>1423669554</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct some load paths 
+- Set progress-feedback-use-echo-area to true to allow some modes
+  like C-mode and TeX-mode to write messages (boo#905625 and bdc#902003)</comment>
+    <requestid>285535</requestid>
+  </revision>
+  <revision rev="81" vrev="8">
+    <srcmd5>590398af344a8fbf0d18170fd1a95380</srcmd5>
+    <version>21.5.34</version>
+    <time>1431668619</time>
+    <user>coolo</user>
+    <comment>- Update patch xemacs-21.5.34-Xaw3D_I18N.patch from upstream for
+  xemacs-21.5.34 
+
+- Add patch xemacs-21.5.34-Xaw3D_I18N.patch to fix bsc#930170 with
+  xemacs segmentation fault on syntax highlighting</comment>
+    <requestid>306598</requestid>
+  </revision>
+  <revision rev="82" vrev="9">
+    <srcmd5>2ac1abcb1517257fe290a578b793392a</srcmd5>
+    <version>21.5.34</version>
+    <time>1435053502</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch xemacs-21.5.34-gcc5.patch as Gcc 5 use type max_align_t
+  instead of _max_align_t
+
+- Modify patch xemacs.patch to make open(2) work with O_CREAT</comment>
+    <requestid>312752</requestid>
+  </revision>
+  <revision rev="83" vrev="10">
+    <srcmd5>5d220a3ffed22c2760b330e7ea64485b</srcmd5>
+    <version>21.5.34</version>
+    <time>1435172467</time>
+    <user>dimstar_suse</user>
+    <comment>- xemacs-21.5.34-gcc5.patch: Define max_align_t only for C &amp;lt; 11 (forwarded request 313319 from Andreas_Schwab)</comment>
+    <requestid>313347</requestid>
+  </revision>
+  <revision rev="84" vrev="11">
+    <srcmd5>2ec3c49fe8cd6a97205e95ee072d1b9c</srcmd5>
+    <version>21.5.34</version>
+    <time>1437549581</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>317625</requestid>
+  </revision>
+  <revision rev="85" vrev="12">
+    <srcmd5>0f034827cefa31b5b6cdb01174837f4b</srcmd5>
+    <version>21.5.34</version>
+    <time>1448720382</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch xemacs-21.5.34-alsaplay.patch to wait on pcm handle
+
+- Change encoding order in application defaults of xemacs and
+  xemacs-packages to avoid breakdown of FontSet scheme of libX11
+  at startup (bsc#952361)</comment>
+    <requestid>346546</requestid>
+  </revision>
+  <revision rev="86" vrev="13">
+    <srcmd5>13fa1063c4f838664f286c2a12adb6e1</srcmd5>
+    <version>21.5.34</version>
+    <time>1490318528</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch xemacs-21.5.34-sbrk.patch to avoid redefinition of sbrk</comment>
+    <requestid>481689</requestid>
+  </revision>
+  <revision rev="87" vrev="14">
+    <srcmd5>5390232d753329559a95a299d6d4068d</srcmd5>
+    <version>21.5.34</version>
+    <time>1494263020</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493277</requestid>
+  </revision>
+  <revision rev="88" vrev="15">
+    <srcmd5>2d11366e1defd3a8c9103b7b765ca3bd</srcmd5>
+    <version>21.5.34</version>
+    <time>1498995506</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507545</requestid>
+  </revision>
+  <revision rev="89" vrev="16">
+    <srcmd5>de373a408b17c1c1502241bc46713e99</srcmd5>
+    <version>21.5.34</version>
+    <time>1514679280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560689</requestid>
+  </revision>
+  <revision rev="90" vrev="17">
+    <srcmd5>2164bc6c530ce583c4b503bc716fd6f0</srcmd5>
+    <version>21.5.34</version>
+    <time>1541746565</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch xemacs-21.5.34-boo1115177.patch to avoid possible
+  race within build dependencies (boo#1115177)</comment>
+    <requestid>647374</requestid>
+  </revision>
+</revisionlist>

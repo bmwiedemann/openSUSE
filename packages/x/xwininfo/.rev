@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c385eb4e776cc0afea6cc435e7fcb9af</srcmd5>
+    <version>1.1.2</version>
+    <time>1336471700</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115511</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c385eb4e776cc0afea6cc435e7fcb9af</srcmd5>
+    <version>1.1.2</version>
+    <time>1340184389</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>c385eb4e776cc0afea6cc435e7fcb9af</srcmd5>
+    <version>1.1.2</version>
+    <time>1359110705</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5bcb5f3b5168bd3dc0d1b30f81bbb873</srcmd5>
+    <version>1.1.3</version>
+    <time>1369642401</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.1.3 (forwarded request 176302 from Zaitor)</comment>
+    <requestid>176303</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>5bcb5f3b5168bd3dc0d1b30f81bbb873</srcmd5>
+    <version>1.1.3</version>
+    <time>1379665129</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>5bcb5f3b5168bd3dc0d1b30f81bbb873</srcmd5>
+    <version>1.1.3</version>
+    <time>1409303816</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cce8b46d6b94ab550aec4e0395599c20</srcmd5>
+    <version>1.1.4</version>
+    <time>1524144432</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4
+  * autogen.sh changes
+  * configure: Drop AM_MAINTAINER_MODE
+  * Print which option was in error along with usage message
+  * Add -version option to print program version
+  * xwininfo: do not segfault on IO error</comment>
+    <requestid>593755</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>181bfba5c331f3629cdff9f18357f53c</srcmd5>
+    <version>1.1.5</version>
+    <time>1563455996</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.5
+  * Clear -Wsign-compare warnings from gcc 7.3
+  * In Find_Client, if (win == XCB_WINDOW_NONE), roots should be freed.
+  * Update configure.ac bug URL for gitlab migration
+  * Improve manpage and -h option
+  * Update README for gitlab migration</comment>
+    <requestid>715452</requestid>
+  </revision>
+</revisionlist>

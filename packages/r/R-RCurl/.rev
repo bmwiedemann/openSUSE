@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b4ee0ed184e162bd2e58e442c9d533a1</srcmd5>
+    <version>1.95_4.11</version>
+    <time>1548064020</time>
+    <user>dimstar_suse</user>
+    <comment>dependency for R-rsconnect</comment>
+    <requestid>663197</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1392b337698ce7d02948ba09039ad916</srcmd5>
+    <version>1.95_4.11</version>
+    <time>1551784736</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679497</requestid>
+  </revision>
+</revisionlist>

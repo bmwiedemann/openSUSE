@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Tue Feb 13 20:07:33 UTC 2018 - crrodriguez@opensuse.org
+
+- DO not buildrequire xorg-x11-devel metapackage 
+
+-------------------------------------------------------------------
+Fri May 26 11:06:25 UTC 2017 - ngompa13@gmail.com
+
+- Update to official 1.2 release
+- Backport patches from upstream v1.2 branch
+  * Added 0001-CMake-Define-build-type-before-configuring-version-h.patch
+  * Added 0002-ImageIO-fix-invalid-conversion.patch
+  * Added 0003-Dist-Linux-Add-content-ratings-to-AppStream-appdata-.patch
+- Reflow the description to look less awkward
+- Remove empty and unnecessary conditional for openSUSE < 42.1
+
+-------------------------------------------------------------------
+Tue Feb 21 00:50:00 UTC 2017 - jengelh@inai.de
+
+- Trim filler words from description
+
+-------------------------------------------------------------------
+Sun Feb  5 13:45:08 UTC 2017 - mailaender@opensuse.org
+
+- Use https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Sat Dec 17 16:01:51 UTC 2016 - ngompa13@gmail.com
+
+- Fix game data directory path to remove redundant subdir
+
+-------------------------------------------------------------------
+Fri Dec 16 22:48:19 UTC 2016 - ngompa13@gmail.com
+
+- Apply corrections to the spec based on spec-cleaner run 
+
+-------------------------------------------------------------------
+Thu Dec 15 13:17:34 UTC 2016 - ngompa13@gmail.com
+
+- Merge lugaru-data into lugaru spec as subpackage
+
+-------------------------------------------------------------------
+Thu Dec 15 11:06:02 UTC 2016 - ngompa13@gmail.com
+
+- update to official 1.1 release
+- update source service to pull from official git repository
+- dropped all old patches
+- added lugaru-1.1-do-not-install-documentation.patch
+
+-------------------------------------------------------------------
+Sat Jul 14 07:51:14 UTC 2012 - kkirill@opensuse.org
+
+- update to rev 506 at commit e435472cb42f
+  * added damage bar, off by default but can be enabled in options
+  menu
+  * added support for stereoscopic rendering 
+  * fixed failure with creating 'Users' file
+- added lugaru-1.0.rev506-no-return.patch
+
+-------------------------------------------------------------------
+Sun Mar 25 01:59:54 UTC 2012 - jengelh@medozas.de
+
+- Move build commands like cmake to actual %build section
+
+-------------------------------------------------------------------
+Fri May 21 12:46:29 UTC 2010 - adam@mizerski.pl
+
+- update to rev 275
+  * removed lugaru-1.0-rev225-no-return.patch
+
+-------------------------------------------------------------------
+Thu May 13 21:36:58 UTC 2010 - adam@mizerski.pl
+
+- updated to rev 225
+- now using cmake
+
+-------------------------------------------------------------------
+Wed May 12 22:10:14 UTC 2010 - adam@mizerski.pl
+
+- new package
+

@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Sat Jul 27 03:14:26 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.4.3
+  * Update to JupyterLab 1.0
+  * Use Image.from_file instead of Image.from_url
+
+-------------------------------------------------------------------
+Wed Jun 12 20:18:18 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.4.2
+  * Clear notebook state
+  * Fixup Jupyterlab extension
+  * Safe conditional formatting
+  * Add time cell type
+  * Fix row/column unused arguments
+  * Fix security issue due to growl<0.10 
+
+-------------------------------------------------------------------
+Tue Apr 30 01:07:28 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version (0.3.4)

@@ -1,0 +1,24 @@
+--- check_rsync.orig	2012-07-02 17:18:01.194047612 +0200
++++ check_rsync	2012-07-02 17:18:11.378747279 +0200
+@@ -120,19 +120,8 @@
+ my $realerr = $error_code >> 8;
+ report_error("Rsync command $command failed with error " . $realerr . ": " . (defined $RSYNCMSG{"$realerr"} ? $RSYNCMSG{"$realerr"} : "Unknown error")) if ($realerr != 0);
+ 
+-# If one or more -m, check if these modules exists first...
+-if (@modules) {
+-
+-  my @result = split(/\n/, $result);
+-
+-  foreach my $mod (@modules) {
+-    my $match = 0;
+-    for (@result) {
+-      $match = 1 if (/^$$mod[0]\s/);
+-    }
+-    report_error("Module $$mod[0] not found") if ($match == 0);
+-  }
+-} else { # else just return OK
++# if we do not need to check modules, just return here
++if (! @modules){
+   print "OK: Rsync is up\n";
+   exit $ERRORS{'OK'};
+ }

@@ -1,0 +1,1404 @@
+<revisionlist>
+  <revision rev="1" vrev="244">
+    <srcmd5>d9e2fdb51f66b6903048ed13df448350</srcmd5>
+    <version>21.3</version>
+    <time>1166483749</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="259">
+    <srcmd5>069e3573c4ee149bd0b0ab3acb8f6cd5</srcmd5>
+    <version>21.3</version>
+    <time>1168618233</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="260">
+    <srcmd5>a39684cda44db8a239c39758c1387f47</srcmd5>
+    <version>21.3</version>
+    <time>1168618339</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="261">
+    <srcmd5>70cf26a918febe1458cec7791909d2ac</srcmd5>
+    <version>21.3</version>
+    <time>1168626170</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="268">
+    <srcmd5>1659647fffe5348a6bfd19c7975f1039</srcmd5>
+    <version>21.3</version>
+    <time>1175199377</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="279">
+    <srcmd5>7f0cf5af07e419bd4b72a917789e7062</srcmd5>
+    <version>21.3</version>
+    <time>1179394245</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1faf50d6963b2f48c8d3b6beff0b4251</srcmd5>
+    <version>22.0.99</version>
+    <time>1179845056</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8ee5e81d03ea778100c558e72281634d</srcmd5>
+    <version>22.0.99</version>
+    <time>1179851601</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>e3526332e0fee93886aecee5567ebef5</srcmd5>
+    <version>22.0.99</version>
+    <time>1180046086</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>c785072fb25aef669ead13e667401168</srcmd5>
+    <version>22.0.99</version>
+    <time>1180105934</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>400d8d6d475b9043d4f420b736587870</srcmd5>
+    <version>22.0.99</version>
+    <time>1180897941</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>84b66c47abb337441e3afda10f66b5ca</srcmd5>
+    <version>22.1</version>
+    <time>1180997243</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>697644988bd644d13ee640a78a374944</srcmd5>
+    <version>22.1</version>
+    <time>1182178127</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>f01ddfbb0bfce1fbce1125eb9f174f07</srcmd5>
+    <version>22.1</version>
+    <time>1183653391</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>71c4ed37f29f7ff124968e6567c4d6c4</srcmd5>
+    <version>22.1</version>
+    <time>1183728601</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="15">
+    <srcmd5>bba7bde131264e49a1ee643f6c01ae0f</srcmd5>
+    <version>22.1</version>
+    <time>1185149369</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="16">
+    <srcmd5>8deca4eda227e682dccd4ec5de71e5a9</srcmd5>
+    <version>22.1</version>
+    <time>1185213484</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="41">
+    <srcmd5>1f059dd721001bf3ebca00f45fb2e2ba</srcmd5>
+    <version>22.1</version>
+    <time>1191365497</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="56">
+    <srcmd5>7424eb9dd7994b004262faf63ca852f6</srcmd5>
+    <version>22.1</version>
+    <time>1194304367</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="62">
+    <srcmd5>85c511b1282f9b96c94aacfcff52a219</srcmd5>
+    <version>22.1</version>
+    <time>1196435499</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="65">
+    <srcmd5>070286fee6d9647e2a1d46fb4026e302</srcmd5>
+    <version>22.1</version>
+    <time>1197327254</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="69">
+    <srcmd5>b624d9d2e3a26b35623d03bb2f618951</srcmd5>
+    <version>22.1</version>
+    <time>1198021934</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="70">
+    <srcmd5>5ac27e35cebc1d6d209a9c385d075f08</srcmd5>
+    <version>22.1</version>
+    <time>1198165318</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="71">
+    <srcmd5>ed73f0e84692403824369a06e193a72a</srcmd5>
+    <version>22.1</version>
+    <time>1198228959</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="77">
+    <srcmd5>5a41410c8c50b3d8d2b8c9265f691758</srcmd5>
+    <version>22.1</version>
+    <time>1199670446</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>02aeb7627f7814d3a328dc2478d6fdf1</srcmd5>
+    <version>22.2</version>
+    <time>1207168993</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="18">
+    <srcmd5>b25aaf87b427a669eb18fecb734d606b</srcmd5>
+    <version>22.2</version>
+    <time>1210937593</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>464b70e3cb91dbbd8115ce9366146841</srcmd5>
+    <version>22.3</version>
+    <time>1222440682</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="68">
+    <srcmd5>464b70e3cb91dbbd8115ce9366146841</srcmd5>
+    <version>22.3</version>
+    <time>1222440682</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="69">
+    <srcmd5>27d079a63604df9dc52a40a04c47aea0</srcmd5>
+    <version>22.3</version>
+    <time>1223311559</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="70">
+    <srcmd5>752efe5a79cd230fca58d6c995fc1476</srcmd5>
+    <version>22.3</version>
+    <time>1224690603</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="71">
+    <srcmd5>3fe53cc3ec5e7fd027a5a6475933c139</srcmd5>
+    <version>22.3</version>
+    <time>1225710068</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="72">
+    <srcmd5>59c13fb05c20b09016728c5808844d7a</srcmd5>
+    <version>22.3</version>
+    <time>1238689108</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="73">
+    <srcmd5>fd022376edba9bd4f98d6ec8064d97ae</srcmd5>
+    <version>22.3</version>
+    <time>1247236637</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b2470df4884b8f12da5c8145d080134b</srcmd5>
+    <version>23.1</version>
+    <time>1250200035</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs based on submit request 17729 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>f9b226edb5d1ba690fba727b25de6eab</srcmd5>
+    <version>23.1</version>
+    <time>1250254738</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs based on submit request 17782 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>f9b226edb5d1ba690fba727b25de6eab</srcmd5>
+    <version>23.1</version>
+    <time>1250254738</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs based on submit request 17782 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>d259ef2c39e5cc0d5a77648e9aacca17</srcmd5>
+    <version>23.1</version>
+    <time>1258974244</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs based on submit request 24723 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>27840861ede5d16560ecbe00fcf9d327</srcmd5>
+    <version>23.1</version>
+    <time>1259328917</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs based on submit request 25146 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="40" vrev="7">
+    <srcmd5>5313b72868faa0e5eba516132b4b8360</srcmd5>
+    <version>23.1</version>
+    <time>1259753431</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs based on submit request 25313 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="41" vrev="8">
+    <srcmd5>8399cb20306c1fccde318989ab8756ff</srcmd5>
+    <version>23.1</version>
+    <time>1263819486</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs based on submit request 29901 from user coolo
+</comment>
+  </revision>
+  <revision rev="42" vrev="9">
+    <srcmd5>f22d777cd285ee1c26b7916e59165115</srcmd5>
+    <version>23.1</version>
+    <time>1265914766</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs based on submit request 32187 from user hennevogel
+</comment>
+  </revision>
+  <revision rev="43" vrev="10">
+    <srcmd5>10942f786acaae0a235b785cd1774ee8</srcmd5>
+    <version>23.1</version>
+    <time>1267092965</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs based on submit request 33451 from user WernerFink
+</comment>
+    <requestid>33451</requestid>
+  </revision>
+  <revision rev="44" vrev="11">
+    <srcmd5>c32278ac920e48056496268e414539b0</srcmd5>
+    <version>23.1</version>
+    <time>1268923448</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="45" vrev="12">
+    <srcmd5>e722a121c7ad398accc84d71a7653fc1</srcmd5>
+    <version>23.1</version>
+    <time>1268954209</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs based on submit request 35054 from user WernerFink
+</comment>
+    <requestid>35054</requestid>
+  </revision>
+  <revision rev="46" vrev="13">
+    <srcmd5>86b2992ea74b2da92ef492a53c42973d</srcmd5>
+    <version>23.1</version>
+    <time>1270058462</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs based on submit request 36231 from user WernerFink
+</comment>
+    <requestid>36231</requestid>
+  </revision>
+  <revision rev="47" vrev="14">
+    <srcmd5>4dc902b8cb332a53a2893c2590ccf014</srcmd5>
+    <version>23.1</version>
+    <time>1270404341</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs based on submit request 36905 from user oertel
+</comment>
+    <requestid>36905</requestid>
+  </revision>
+  <revision rev="48" vrev="15">
+    <srcmd5>f3aeba57acb4491cdcb3e7985ce8cf27</srcmd5>
+    <version>23.1</version>
+    <time>1270486016</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs based on submit request 36949 from user oertel
+</comment>
+    <requestid>36949</requestid>
+  </revision>
+  <revision rev="49" vrev="16">
+    <srcmd5>d3d1eb619ea24159d7f71c7cb2c301a5</srcmd5>
+    <version>23.1</version>
+    <time>1272487069</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs based on submit request 38947 from user WernerFink
+</comment>
+    <requestid>38947</requestid>
+  </revision>
+  <revision rev="50" vrev="17">
+    <srcmd5>a84706ccb1de6d5bd5506b07a38fcdc4</srcmd5>
+    <version>23.1</version>
+    <time>1274788088</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs based on submit request 40424 from user WernerFink
+</comment>
+    <requestid>40424</requestid>
+  </revision>
+  <revision rev="51" vrev="19">
+    <srcmd5>a84706ccb1de6d5bd5506b07a38fcdc4</srcmd5>
+    <version>23.1</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="52" vrev="20">
+    <srcmd5>a84706ccb1de6d5bd5506b07a38fcdc4</srcmd5>
+    <version>23.1</version>
+    <time>1278678573</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="53" vrev="21">
+    <srcmd5>61fc65cef86fc510d64a2c07786c08df</srcmd5>
+    <version>unknown</version>
+    <time>1284123960</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs based on submit request 47580 from user dimstar
+</comment>
+    <requestid>47580</requestid>
+  </revision>
+  <revision rev="54" vrev="22">
+    <srcmd5>46b787a9500490ffb6570c730faa2f9f</srcmd5>
+    <version>23.1</version>
+    <time>1286401055</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs based on submit request 49865 from user WernerFink
+</comment>
+    <requestid>49865</requestid>
+  </revision>
+  <revision rev="55" vrev="23">
+    <srcmd5>3acd1e54809c9049064f75e211a9960e</srcmd5>
+    <version>23.1</version>
+    <time>1287059009</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/emacs based on submit request 50476 from user WernerFink
+</comment>
+    <requestid>50476</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>4cddf1e02d5d363f8c69a57ca7015cd4</srcmd5>
+    <version>23.2</version>
+    <time>1287486320</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50939 from user WernerFink
+</comment>
+    <requestid>50939</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>2241eb799e386657fe8f8bc615a3cc6f</srcmd5>
+    <version>23.2</version>
+    <time>1287486328</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 50939
+</comment>
+  </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>bd78dc05e9ea75d2cc3270ac94792e26</srcmd5>
+    <version>23.2</version>
+    <time>1290093288</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53318 from user WernerFink
+</comment>
+    <requestid>53318</requestid>
+  </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>6670b729d1a5249bc4a6e0687674faf8</srcmd5>
+    <version>23.2</version>
+    <time>1290093298</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53318
+</comment>
+  </revision>
+  <revision rev="60" vrev="5">
+    <srcmd5>ff5878e2857275edb513b0c52b598af2</srcmd5>
+    <version>23.2</version>
+    <time>1293577279</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56544 from user WernerFink
+</comment>
+    <requestid>56544</requestid>
+  </revision>
+  <revision rev="61" vrev="6">
+    <srcmd5>b6e72943b91883f4845bbd8f6c1d0700</srcmd5>
+    <version>23.2</version>
+    <time>1293577293</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56544
+</comment>
+  </revision>
+  <revision rev="62" vrev="9">
+    <srcmd5>b6e72943b91883f4845bbd8f6c1d0700</srcmd5>
+    <version>23.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="63" vrev="10">
+    <srcmd5>e576f8ede1866003063fe113cb1c0f3b</srcmd5>
+    <version>23.2</version>
+    <time>1302891181</time>
+    <user>darix</user>
+    <comment>Accepted submit request 67526 from user coolo
+</comment>
+    <requestid>67526</requestid>
+  </revision>
+  <revision rev="64" vrev="11">
+    <srcmd5>da3b77959661ff682bb6046f24eb037a</srcmd5>
+    <version>23.2</version>
+    <time>1302891197</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67526
+</comment>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>7f6527ffcac87155be065de734f9838d</srcmd5>
+    <version>23.3</version>
+    <time>1310454232</time>
+    <user>saschpe</user>
+    <comment>- Update to to emacs version 23.3
+- Remove obsolete patches
+- Adopt s390x patch
+- Refresh some others patches</comment>
+    <requestid>76062</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>4b5573fde59274a990441da0589df001</srcmd5>
+    <version>23.3</version>
+    <time>1313070638</time>
+    <user>saschpe</user>
+    <comment>- Change tar ball to avoid intrinsic emacs GPL violoation (bnc#710247)</comment>
+    <requestid>78507</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>3fa8b5567199c6d740d2214453bddde9</srcmd5>
+    <version>23.3</version>
+    <time>1313070656</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78507
+</comment>
+  </revision>
+  <revision rev="68" vrev="4">
+    <srcmd5>ecba60240fa3bbb4f567d2d8547dcc6f</srcmd5>
+    <version>23.3</version>
+    <time>1316619402</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines) (forwarded request 83417 from jengelh)</comment>
+    <requestid>84203</requestid>
+  </revision>
+  <revision rev="69" vrev="5">
+    <srcmd5>9e7c56821b2542c2235218f41fa9381f</srcmd5>
+    <version>23.3</version>
+    <time>1317626226</time>
+    <user>lrupp</user>
+    <comment>- switch back to standard gcc, as bootstrapping gcc 4.3 on 
+  arm is essentially impossible, and 4.3 is not needed anymore
+  (bnc#587307#c9) (forwarded request 86036 from dirkmueller)</comment>
+    <requestid>86081</requestid>
+  </revision>
+  <revision rev="70" vrev="7">
+    <srcmd5>9e7c56821b2542c2235218f41fa9381f</srcmd5>
+    <version>23.3</version>
+    <time>1319181864</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="71" vrev="8">
+    <srcmd5>af0c4782aeddbfd64c075cc7d22fe2ad</srcmd5>
+    <version>23.3</version>
+    <time>1322073264</time>
+    <user>coolo</user>
+    <comment>- Add patch to use libtinfo if available</comment>
+    <requestid>93114</requestid>
+  </revision>
+  <revision rev="72" vrev="9">
+    <srcmd5>f65d1f30d4db60fa9bee46980ed684f1</srcmd5>
+    <version>23.3</version>
+    <time>1322215911</time>
+    <user>coolo</user>
+    <comment>- Avoid SLES10 systems using kernel 2.6.16</comment>
+    <requestid>93485</requestid>
+  </revision>
+  <revision rev="73" vrev="10">
+    <srcmd5>80dc2c79fa88b339cc3a6df791c4cc61</srcmd5>
+    <version>23.3</version>
+    <time>1325007298</time>
+    <user>coolo</user>
+    <comment>add autoconf to buildrequires (forwarded request 97341 from coolo)</comment>
+    <requestid>97382</requestid>
+  </revision>
+  <revision rev="74" vrev="11">
+    <srcmd5>62b564d7d5d4b411a99828353b0d9316</srcmd5>
+    <version>23.3</version>
+    <time>1328890391</time>
+    <user>coolo</user>
+    <comment>- Port fix for CVE-2012-0035 to CEDET used for emacs 23.3 (bnc#740447)
+- Yet an other change of the tar ball to avoid intrinsic emacs GPL
+  violoation
+
+- rebuild for ppc64 and ia64 (bnc#726769)</comment>
+    <requestid>103295</requestid>
+  </revision>
+  <revision rev="75" vrev="12">
+    <srcmd5>378e927652f605c482c5eda28c9c923a</srcmd5>
+    <version>23.3</version>
+    <time>1334215286</time>
+    <user>coolo</user>
+    <comment>- Remove obsolete Obsoletes and Provides tags
+
+- Correct License tag that is that emacs is now GPLv3 or later (bnc#755524)
+
+- add %dir /usr/share/X11/app-defaults to fix factory build.</comment>
+    <requestid>112470</requestid>
+  </revision>
+  <revision rev="76" vrev="13">
+    <srcmd5>49f7668ccca2d56e018abb6b66b2d4d3</srcmd5>
+    <version>23.3</version>
+    <time>1336423507</time>
+    <user>coolo</user>
+    <comment>nxml-mode is now part of emacs (added version number); I already sent a drop req for nxml-mode</comment>
+    <requestid>115859</requestid>
+  </revision>
+  <revision rev="77" vrev="14">
+    <srcmd5>81ac56fe7eaf5c975ba49ec6acfb0350</srcmd5>
+    <version>23.3</version>
+    <time>1338030537</time>
+    <user>coolo</user>
+    <comment>- Avoid endless loop due multiplying zero with two as this results
+  also in zero (bnc#763851) ... found in xgselect.c for increasing
+  the allocated memory used for g_main_context_query().</comment>
+    <requestid>122057</requestid>
+  </revision>
+  <revision rev="78" vrev="16">
+    <srcmd5>81ac56fe7eaf5c975ba49ec6acfb0350</srcmd5>
+    <version>23.3</version>
+    <time>1340183303</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>321863b47e8d005badbabb8e56bad800</srcmd5>
+    <version>24.1</version>
+    <time>1340897074</time>
+    <user>coolo</user>
+    <comment>- Avoid conflict with gnuctags
+
+- Update to to emacs version 24.1
+  * Support for Gtk+3.0, GnuTLS, ImageMagick, libxml2, and SELinux
+  * Support for wide integer (62 bits) in lisp even on 32-bit machines.
+  * The --unibyte, --multibyte, --no-multibyte, and --no-unibyte command
+    line arguments, and the EMACS_UNIBYTE environment variable, no longer
+    have any effect.
+  * And many more changes see /usr/share/emacs/24.1/etc/NEWS
+- Remove obsolete patches
+- Refresh some others patches</comment>
+    <requestid>126429</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>da56736207f89008f9aa0e510f40bbb7</srcmd5>
+    <version>24.1</version>
+    <time>1343030354</time>
+    <user>coolo</user>
+    <comment>- xorg-x11-libs is not in default installation anymore, use libX11-6
+  to be enhanced by emacs-x11 
+
+- Don't be fooled by not initialized time stamps of unused XEvent
+  structures which happens with old GTK-2.0
+
+- make it build even for older distries</comment>
+    <requestid>128463</requestid>
+  </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>1c2aac0697c9c70d8b830207fd22db86</srcmd5>
+    <version>24.1</version>
+    <time>1343671993</time>
+    <user>coolo</user>
+    <comment>- Avoid missing fonts due minimal installation</comment>
+    <requestid>128961</requestid>
+  </revision>
+  <revision rev="82" vrev="4">
+    <srcmd5>3ce942991c6c9b165b45d6463ba2e896</srcmd5>
+    <version>24.1</version>
+    <time>1347347138</time>
+    <user>coolo</user>
+    <comment>Undo weird webui doodle...  (forwarded request 133551 from dimstar)</comment>
+    <requestid>133552</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>77ada75c5afb2748c8bbd7f8473ececa</srcmd5>
+    <version>24.2</version>
+    <time>1348421602</time>
+    <user>coolo</user>
+    <comment>- Update to to emacs version 24.2
+  * This is mainly a bug-fix release
+- Last patch already included</comment>
+    <requestid>134847</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>56ca7e32930d41c15d5b3debc44c5966</srcmd5>
+    <version>24.2</version>
+    <time>1349504333</time>
+    <user>coolo</user>
+    <comment>- Add workaround into emacs starter script for gtk/gstreamer bug
+  which overrides the locale</comment>
+    <requestid>137236</requestid>
+  </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>009c1d0d9e604181cb5df2c179f200e5</srcmd5>
+    <version>24.2</version>
+    <time>1351155565</time>
+    <user>namtrac</user>
+    <comment>- transform .tar.xz for .tar.bz2 to fix build on SLE product (forwarded request 138765 from sleep_walker)</comment>
+    <requestid>138797</requestid>
+  </revision>
+  <revision rev="86" vrev="4">
+    <srcmd5>24aeba1c31fa31a589c32875a129150e</srcmd5>
+    <version>24.2</version>
+    <time>1355910759</time>
+    <user>coolo</user>
+    <comment>- Remove obsolete patches
+- Don't use obsolete mouse-sel
+- Avoid calling autoconf
+- Avoid warning about duplicate files (forwarded request 145536 from AndreasSchwab)</comment>
+    <requestid>145675</requestid>
+  </revision>
+  <revision rev="87" vrev="5">
+    <srcmd5>8a76c41a828adc40e7ae64a65a6eb0d8</srcmd5>
+    <version>24.2</version>
+    <time>1358198414</time>
+    <user>coolo</user>
+    <comment>- Don't strip binaries
+- Remove unused build requirements
+- Properly configure TERMINFO (bnc#797787) (forwarded request 148242 from AndreasSchwab)</comment>
+    <requestid>148460</requestid>
+  </revision>
+  <revision rev="88" vrev="7">
+    <srcmd5>8a76c41a828adc40e7ae64a65a6eb0d8</srcmd5>
+    <version>24.2</version>
+    <time>1359108845</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="89" vrev="8">
+    <srcmd5>dcf116130ee6c4b6822b1ed53bdbb7ec</srcmd5>
+    <version>24.2</version>
+    <time>1361439141</time>
+    <user>coolo</user>
+    <comment>- Add missing backslashes spotted by Troy Sankey</comment>
+    <requestid>155882</requestid>
+  </revision>
+  <revision rev="90" vrev="9">
+    <srcmd5>74a5d9009781ed82ab4c1d3d14e547fa</srcmd5>
+    <version>24.2</version>
+    <time>1364020678</time>
+    <user>coolo</user>
+    <comment>fix build with giflib5 by skipping configure test and adding emacs-24.2-giflib5.patch (forwarded request 158806 from WernerFink)</comment>
+    <requestid>160627</requestid>
+  </revision>
+  <revision rev="91" vrev="10">
+    <srcmd5>c05bb41614fbb8ccfac359b29fb814e6</srcmd5>
+    <version>24.2</version>
+    <time>1366953249</time>
+    <user>coolo</user>
+    <comment>- For 12.3+ buildrequire makeinfo instead of texinfo (forwarded request 172829 from AndreasSchwab)</comment>
+    <requestid>173313</requestid>
+  </revision>
+  <revision rev="92" vrev="11">
+    <srcmd5>99bc8132ccf81ebc89801c5b8abf1f97</srcmd5>
+    <version>24.2</version>
+    <time>1367827996</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174493</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>ed8e2ff62d81c3700130f7157c88dc55</srcmd5>
+    <version>24.3</version>
+    <time>1369718962</time>
+    <user>coolo</user>
+    <comment>- Make emacs launch script smart, that is search for a valid dbus
+  on the current system if if not found launch a own dbus session
+- With emacs version 24.3 the package epg becoes obsolate
+
+- Update to to emacs version 24.3
+  * Emacs no longer searches for `leim-list.el' files beneath the standard
+    lisp/ directory.  There should not be any there anyway.  If you have
+    been adding them there, put them somewhere else; e.g., site-lisp.
+  * `C-h f' (`describe-function') can now perform autoloading.
+    When this command is called for an autoloaded function whose docstring
+    contains a key substitution construct, that function's library is
+    automatically loaded, so that the documentation can be shown
+    correctly.  To disable this, set `help-enable-auto-load' to nil.
+  * `C-h f' now reports previously-autoloaded functions as &quot;autoloaded&quot;,
+    even after their associated libraries have been loaded (and the
+    autoloads have been redefined as functions).
+  * Images displayed via ImageMagick now support transparency and the
+    :background image specification property.
+  * When available, ImageMagick support is automatically enabled.
+    It is no longer necessary to call `imagemagick-register-types'
+    explicitly to install ImageMagick image types; that function is called
+    automatically at startup, or when customizing an imagemagick- option.
+  * Setting `imagemagick-types-inhibit' to t now disables the use of
+    ImageMagick to view images.  (You must call `imagemagick-register-types'
+    afterwards if you do not use customize to change this.)
+  * The new variable `imagemagick-enabled-types' also affects which
+    ImageMagick types are treated as images.  The function
+    `imagemagick-filter-types' returns the list of types that will be
+    treated as images.
+  * In minibuffer filename prompts, `C-M-f' and `C-M-b' now move to the</comment>
+    <requestid>176480</requestid>
+  </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>bf5fa9509bf1f7dfa09c34b24a63a887</srcmd5>
+    <version>24.3</version>
+    <time>1370431662</time>
+    <user>coolo</user>
+    <comment>- Remove not used spec file scriplets 
+- Make pre requires more smart
+- Avoid trouble with new byte compile format and old font-latex.elc</comment>
+    <requestid>176851</requestid>
+  </revision>
+  <revision rev="95" vrev="3">
+    <srcmd5>32a1279268fc3c5e8a27cb4dcad9c3cc</srcmd5>
+    <version>24.3</version>
+    <time>1370581048</time>
+    <user>coolo</user>
+    <comment>- Disable fontsets and enforce Xft as font backend</comment>
+    <requestid>177934</requestid>
+  </revision>
+  <revision rev="96" vrev="4">
+    <srcmd5>870622e82f801c86da2a7a587e555c93</srcmd5>
+    <version>24.3</version>
+    <time>1371561072</time>
+    <user>coolo</user>
+    <comment>- Fix connection problem to Typhoon nntp servers, (for example nntp.opensuse.org)
+  Instead of  CAPABILITIES command use HELP 
+  *  emacs-24.3-nntp-typhoon-fix.patch (forwarded request 179100 from WernerFink)</comment>
+    <requestid>179111</requestid>
+  </revision>
+  <revision rev="97" vrev="5">
+    <srcmd5>33acf2deb68238833108ef0382b438bf</srcmd5>
+    <version>24.3</version>
+    <time>1379076229</time>
+    <user>scarabeus_factory</user>
+    <comment>- Added /usr/share/emacs/site-lisp/site-start.d to package owned
+  directories so other packages do not need to own it (forwarded request 198513 from bmanojlovic)</comment>
+    <requestid>198725</requestid>
+  </revision>
+  <revision rev="98" vrev="7">
+    <srcmd5>33acf2deb68238833108ef0382b438bf</srcmd5>
+    <version>24.3</version>
+    <time>1379662288</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="99" vrev="8">
+    <srcmd5>f6259c1c653bd7181d4bc3af656941a2</srcmd5>
+    <version>24.3</version>
+    <time>1385442596</time>
+    <user>coolo</user>
+    <comment>- emacs-24.3-glibc.patch, emacs-24.3.dif: Remove obsolete hunks
+- emacs-24.3-xevent.patch: Remove obsolete patch
+- Remove unknown configure option --without-sync-input (forwarded request 207999 from AndreasSchwab)</comment>
+    <requestid>208298</requestid>
+  </revision>
+  <revision rev="100" vrev="9">
+    <srcmd5>e6cdfa9bea4a2e35adf9e349b3129a03</srcmd5>
+    <version>24.3</version>
+    <time>1386083467</time>
+    <user>coolo</user>
+    <comment>- Change emacs wrapper script to use new dbus-run-session tool to
+  avoid hanging emacs on terminal mode due I/O conflict on stdin
+  of both emacs and dbus-launch session (bnc#853082)</comment>
+    <requestid>209259</requestid>
+  </revision>
+  <revision rev="101" vrev="10">
+    <srcmd5>f3f905920f3fe61553480a8d190a8bee</srcmd5>
+    <version>24.3</version>
+    <time>1389811020</time>
+    <user>coolo</user>
+    <comment>- Do not reassign S-up and S-down anymore (bnc#858430)</comment>
+    <requestid>213975</requestid>
+  </revision>
+  <revision rev="102" vrev="11">
+    <srcmd5>dfa3423870a2f8901903b255e054a177</srcmd5>
+    <version>24.3</version>
+    <time>1390919885</time>
+    <user>coolo</user>
+    <comment>- emacs-24.3-giflib5-interlace.patch: fix display of interlaced GIF images (forwarded request 214325 from AndreasSchwab)</comment>
+    <requestid>215241</requestid>
+  </revision>
+  <revision rev="103" vrev="12">
+    <srcmd5>2bd9ccd1f770ac8257426b1a7d48ce03</srcmd5>
+    <version>24.3</version>
+    <time>1393705204</time>
+    <user>coolo</user>
+    <comment>- Adding coreutils to etags scriptlets requirements (bnc#865845)</comment>
+    <requestid>224183</requestid>
+  </revision>
+  <revision rev="104" vrev="13">
+    <srcmd5>24b77691a62af1cd691f8770b0722659</srcmd5>
+    <version>24.3</version>
+    <time>1399376366</time>
+    <user>coolo</user>
+    <comment>- remove dependency on bind-devel (I don't see any usage of
+  bind in the source, and I see no such dependency in packaging
+  on other distros) (forwarded request 232238 from dirkmueller)</comment>
+    <requestid>232577</requestid>
+  </revision>
+  <revision rev="105" vrev="14">
+    <srcmd5>4e2c9fa5999672ee574534efe4b43c4d</srcmd5>
+    <version>24.3</version>
+    <time>1400388553</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>234266</requestid>
+  </revision>
+  <revision rev="106" vrev="15">
+    <srcmd5>bc1df28c1e62087bd2bda552a5e43db6</srcmd5>
+    <version>24.3</version>
+    <time>1405658424</time>
+    <user>coolo</user>
+    <comment>- Don't use outdated C standard (forwarded request 241274 from AndreasSchwab)</comment>
+    <requestid>241290</requestid>
+  </revision>
+  <revision rev="107" vrev="16">
+    <srcmd5>61ce7ff7d239bca501f8cfc894f96d2a</srcmd5>
+    <version>24.3</version>
+    <time>1408089498</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244507</requestid>
+  </revision>
+  <revision rev="108" vrev="18">
+    <srcmd5>61ce7ff7d239bca501f8cfc894f96d2a</srcmd5>
+    <version>24.3</version>
+    <time>1409300822</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="109" vrev="19">
+    <srcmd5>663a257d85a7ecb2ab0722d2091b3c85</srcmd5>
+    <version>24.3</version>
+    <time>1410236476</time>
+    <user>coolo</user>
+    <comment>- Make it work again, that is
+  remove emacs-24.3-giflib5-interlace.patch
+  and include changes and corrected cpp boolean in
+  patch emacs-24.3-giflib5.diff
+
+- Update emacs-24.3-giflib5.diff to support giflib7-5.1.0 API</comment>
+    <requestid>247390</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>9e565edf9c99a181cbe2fd2d59af5136</srcmd5>
+    <version>24.4</version>
+    <time>1414066806</time>
+    <user>coolo</user>
+    <comment>- Again avoid autoconf and Co.
+
+- Update to to emacs version 24.4
+  * Emacs can now be compiled with ACL (access control list) support.
+  * Emacs can now be compiled with file notification support.
+  * Emacs can now be compiled with zlib support.
+  * Support for ACLs (access control lists).
+  * Emacs preserves the ACL entries of files when backing up.
+  * New functions `file-acl' and `set-file-acl' get and set file ACLs.
+  * Support for menus on text-mode terminals.
+  * New option `load-prefer-newer' affects how the `load' function chooses
+  * Multi-monitor support
+  * New function `zlib-decompress-region', which decompresses gzip- and
+    zlib-format compressed data using built-in zlib support (if available).
+  * The *Messages* buffer is created in `messages-buffer-mode'
+  * The cursor stops blinking after 10 blinks (by default) on X and Nextstep.
+  * In keymaps where SPC scrolls forward, S-SPC now scrolls backward.
+  * The default value of `make-backup-file-name-function' is no longer nil.
+  * The command `apropos-variable' is renamed to `apropos-user-option'.
+  * The key `?' now describes prefix bindings, like `C-h'.
+  * The command `describe-function' has been extended for EIEIO.
+  * The function `quail-help' is no longer an interactive command.
+    Use `C-h C-\' (`describe-input-method') instead.
+  * New commands `toggle-frame-fullscreen' and `toggle-frame-maximized',
+    bound to &lt;f11&gt; and M-&lt;f10&gt;, respectively.
+  * New hooks `focus-in-hook', `focus-out-hook'.
+    These are normal hooks run when an Emacs frame gains or loses input focus.
+  * The function `window-in-direction' now takes additional arguments
+    for specifying a reference point, wrapping the selection around frame
+    borders, and specifying ways to select the minibuffer window.</comment>
+    <requestid>257977</requestid>
+  </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>47e8608251b82292cf2f75bb8a5c8ab6</srcmd5>
+    <version>24.4</version>
+    <time>1415288985</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>259790</requestid>
+  </revision>
+  <revision rev="112" vrev="3">
+    <srcmd5>0b433a2eef7e5d3130c78d39752dba12</srcmd5>
+    <version>24.4</version>
+    <time>1421873745</time>
+    <user>coolo</user>
+    <comment>- Add upstream patches 
+  * emacs-gnupg-15th-field.patch
+    epg.el (epg--list-keys-1): Ignore fields after the 15th field
+  * emacs24-primarysel2.patch
+    bsc#912872 -- CVE-2014-9483: a left-click in Emacs sometimes
+    modifies the PRIMARY</comment>
+    <requestid>281053</requestid>
+  </revision>
+  <revision rev="113" vrev="4">
+    <srcmd5>e894cd3965cf1d930a5c058a82a6040e</srcmd5>
+    <version>24.4</version>
+    <time>1424095337</time>
+    <user>coolo</user>
+    <comment>- don't reference unexistant info pages (only exist on win32) (forwarded request 284713 from coolo)</comment>
+    <requestid>284821</requestid>
+  </revision>
+  <revision rev="114" vrev="5">
+    <srcmd5>e98aa2f57249109eac2a36ed3d2524c9</srcmd5>
+    <version>24.4</version>
+    <time>1425377503</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288060</requestid>
+  </revision>
+  <revision rev="115" vrev="6">
+    <srcmd5>1622e3fd61f3d5565780a66b2ede33bb</srcmd5>
+    <version>24.4</version>
+    <time>1426485564</time>
+    <user>dimstar_suse</user>
+    <comment>- Move deinstall of info files from %postun to %preun (boo#921948)</comment>
+    <requestid>290420</requestid>
+  </revision>
+  <revision rev="116" vrev="7">
+    <srcmd5>432f585a49f0c18bef3a1b5239e083a8</srcmd5>
+    <version>24.4</version>
+    <time>1427445467</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292441</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>aea96b936e2a083d7850d4c8110862bd</srcmd5>
+    <version>24.5</version>
+    <time>1430983206</time>
+    <user>coolo</user>
+    <comment>- Update to emacs version 24.5
+  * This is mainly a bug-fix release, but there are some other changes.
+  * The default value of `history-length' has increased to 100.
+  * The variable `redisplay-dont-pause' is obsolete.
+  * `call-process-shell-command' and `process-file-shell-command' no longer
+     take &quot;&amp;rest args&quot;.
+  * The option `browse-url-firefox-startup-arguments' no longer has an effect.
+  * New option `erc-rename-buffers'.
+  * New faces `erc-my-nick-prefix-face' and `erc-nick-prefix-face'.
+  * `erc-format-@nick' displays all user modes instead of only op and voice.
+  * The display of irc commands in the current buffer has been disabled.
+  * `erc-version' now follows the Emacs version.
+  * Obsolete packages
+    + cc-compat.el
+    + crisp.el (moved to elpa.gnu.org)
+    + tpu-edt.el, ws-mode.el
+    + vi.el, vip.el (try M-x viper instead)
+- Remove patch emacs-gnupg-15th-field.patch and patch
+  jpeg-version-check.patch as now upstream
+- Modify patch emacs-24.4-ps-bdf.patch</comment>
+    <requestid>304833</requestid>
+  </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>d393bf7f1e3cd2142ca6a81b6625c5a6</srcmd5>
+    <version>24.5</version>
+    <time>1439190660</time>
+    <user>dimstar_suse</user>
+    <comment>- Give XFt a try for emacs-x11</comment>
+    <requestid>319135</requestid>
+  </revision>
+  <revision rev="119" vrev="3">
+    <srcmd5>a9c3f0a1ad697cdce529b3cd5b207015</srcmd5>
+    <version>24.5</version>
+    <time>1441954823</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow both Xft and as fallback the old X font scheme (boo#943793)</comment>
+    <requestid>328292</requestid>
+  </revision>
+  <revision rev="120" vrev="4">
+    <srcmd5>332bdcd633d73ac86e257232b7176e94</srcmd5>
+    <version>24.5</version>
+    <time>1448960491</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>345433</requestid>
+  </revision>
+  <revision rev="121" vrev="5">
+    <srcmd5>fbb1df81ed136401a07294816502b50f</srcmd5>
+    <version>24.5</version>
+    <time>1456622718</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359212</requestid>
+  </revision>
+  <revision rev="122" vrev="6">
+    <srcmd5>4bfe784a9cf463f2a0aa8be31ad8a1a6</srcmd5>
+    <version>24.5</version>
+    <time>1457532923</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>366849</requestid>
+  </revision>
+  <revision rev="123" vrev="7">
+    <srcmd5>36edeebc3cbe45b43938696f94797520</srcmd5>
+    <version>24.5</version>
+    <time>1458333138</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch debbugs16737.patch due user request from Arun Persaud
+  to avoid hangs for several seconds or 10s of seconds in case of
+  pasting large amount of text
+  http://debbugs.gnu.org/cgi/bugreport.cgi?bug=16737#185</comment>
+    <requestid>373107</requestid>
+  </revision>
+  <revision rev="124" vrev="8">
+    <srcmd5>30f56984ebdd6d11af859267e00dd341</srcmd5>
+    <version>24.5</version>
+    <time>1473408797</time>
+    <user>dimstar_suse</user>
+    <comment>- Use standard filew permissions for ghost entries
+- Use %ext_man as manual page extensions
+
+- Fix yaosdd report (boo#994285)
+
+- emacs-24.4-glibc.patch: don't force system malloc, it doesn't work with
+  glibc 2.24
+- gmalloc.patch: fix portability bugs in gmalloc</comment>
+    <requestid>420469</requestid>
+  </revision>
+  <revision rev="125" vrev="9">
+    <srcmd5>ae9b38238be2cdc62f340ec7fed4cc1c</srcmd5>
+    <version>24.5</version>
+    <time>1474115939</time>
+    <user>dimstar_suse</user>
+    <comment>Patch emacs to support gtk 3.20 (forwarded request 426184 from Zaitor)</comment>
+    <requestid>427872</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>21944543a3d4d87bba4914795d973205</srcmd5>
+    <version>25.1</version>
+    <time>1480785903</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid address space randomization during emacs build
+- Check for active Execution Shield as this breaks emacs
+
+- Diable experimental cairo support as it cause trouble with spacemacs
+  as well as with the w3 mode 
+
+- Update to emacs version 25.1
+  * Next major release
+  * Xwidgets: a new feature for embedding native widgets inside Emacs buffers.
+  * Emacs can now load shared/dynamic libraries (modules).
+  * Network security (TLS/SSL certificate validity and the like)
+  * 'C-h l' now also lists the commands that were run.
+  * New option 'switch-to-buffer-in-dedicated-window'
+  * The option 'even-window-heights' has been renamed to 'even-window-sizes'
+  * 'terpri' gets an optional arg ENSURE to conditionally output a newline.
+  * 'insert-register' now leaves point after the inserted text
+  * The new variable 'term-file-aliases' replaces some files from lisp/term.
+  * New variable 'system-configuration-features', listing some of the main
+    features that Emacs was compiled with.
+  * A password is now hidden also when typed in batch mode.
+  * The Emacs pseudo-random number generator can be securely seeded.
+  * New input methods: 'tamil-dvorak', 'programmer-dvorak' and 'probhat'.
+  * 'M-x' suggests shorthands and ignores obsolete commands for completion.
+  * Changes in undo
+  * New command 'comment-line' bound to 'C-x C-;'.
+  * New and improved facilities for inserting Unicode characters
+  * New minor mode 'global-eldoc-mode' is enabled by default.
+  * Emacs now uses &quot;bracketed paste mode&quot; on text terminals that support it.
+  * Emacs now supports the latest version of the UBA.
+  * You can access 'mouse-buffer-menu' ('C-down-mouse-1') using 'C-f10'.</comment>
+    <requestid>439871</requestid>
+  </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>ab0bc3a0bbe58fa358b2924e314b5b3f</srcmd5>
+    <version>25.1</version>
+    <time>1482784687</time>
+    <user>lnussel_factory</user>
+    <comment>- Add patch emacs-25.1-custom-fonts.patch as workaround for boo#1016172</comment>
+    <requestid>447392</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>b6bd1c5055312694dec973dde4dde600</srcmd5>
+    <version>25.2</version>
+    <time>1490786426</time>
+    <user>maxlin_factory</user>
+    <comment>- Add /var/games to filelist
+
+- Test out release candidate of emacs bugfix release 25.2
+  * 'find-library', 'help-function-def' and 'help-variable-def' now run
+    'find-function-after-hook'.
+  * New basic face 'fixed-pitch-serif', for a fixed-width font with serifs.
+    The 'Info-quoted' and 'tex-verbatim' faces inherit from it by default.
+  * New variable 'use-default-font-for-symbols', for backward compatibility.
+    This variable allows you to get back pre-Emacs 25 behavior where the
+    font for displaying symbol and punctuation characters was always
+    selected according to your fontset setup.  By default, Emacs 25 tries
+    to use the default face's font for such characters, if it supports
+    them, disregarding the fontsets.  Set this variable to nil to disable
+    this and get back the old behavior.
+  * 'electric-quote-mode' is no longer suppressed in a buffer whose
+    coding system cannot represent curved quote characters.
+    Instead, users can deal with the unrepresentable characters in the
+     usual way when they save the buffer.
+  * New variable 'inhibit-compacting-font-caches'.
+    Set this variable to a non-nil value to speed up display of characters
+    using large fonts, at the price of a larger memory footprint.
+  * The version number of CC Mode has been changed from 5.33 to
+    5.32.99, although the software itself hasn't changed.  This aims to
+    reduce confusion with the standalone CC Mode 5.33 (available from
+    http://cc-mode.sourceforge.net), which is a more mature version than
+    the one included in Emacs 25.2.
+- Patch emacs-25.1.dif renamed to emacs-25.2.dif
+- Modified patches emacs-24.4-glibc.patch and emacs-24.4-ps-bdf.patch</comment>
+    <requestid>478938</requestid>
+  </revision>
+  <revision rev="129" vrev="2">
+    <srcmd5>62f706d8fee7a5c9df75387a4631cf15</srcmd5>
+    <version>25.2</version>
+    <time>1492417462</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>487770</requestid>
+  </revision>
+  <revision rev="130" vrev="3">
+    <srcmd5>70f3be62f533731d95e4da1104b093cc</srcmd5>
+    <version>25.2</version>
+    <time>1494441140</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch gnulib.git-94e01571.patch to fix CVE-2017-7476
+
+- Use socket activation to get dbus up before starting emacs 
+
+- Fix emacs.sh wrapper script to check modern dbus session (boo#1032759)
+
+- Update to emacs version 25.2 a bugfix release
+  * 'find-library', 'help-function-def' and 'help-variable-def' now run
+    'find-function-after-hook'.
+  * New basic face 'fixed-pitch-serif', for a fixed-width font with serifs.
+    The 'Info-quoted' and 'tex-verbatim' faces inherit from it by default.
+  * New variable 'use-default-font-for-symbols', for backward compatibility.
+    This variable allows you to get back pre-Emacs 25 behavior where the
+    font for displaying symbol and punctuation characters was always
+    selected according to your fontset setup.  By default, Emacs 25 tries
+    to use the default face's font for such characters, if it supports
+    them, disregarding the fontsets.  Set this variable to nil to disable
+    this and get back the old behavior.
+  * 'electric-quote-mode' is no longer suppressed in a buffer whose
+    coding system cannot represent curved quote characters.
+    Instead, users can deal with the unrepresentable characters in the
+    usual way when they save the buffer.
+  * New variable 'inhibit-compacting-font-caches'.
+    Set this variable to a non-nil value to speed up display of characters
+    using large fonts, at the price of a larger memory footprint.
+  * The version number of CC Mode has been changed from 5.33 to
+    5.32.99, although the software itself hasn't changed.  This aims to
+    reduce confusion with the standalone CC Mode 5.33 (available from
+    http://cc-mode.sourceforge.net), which is a more mature version than
+    the one included in Emacs 25.2.</comment>
+    <requestid>492450</requestid>
+  </revision>
+  <revision rev="131" vrev="4">
+    <srcmd5>dc8a0f3a1cfb57f3182bd4ed1313463b</srcmd5>
+    <version>25.2</version>
+    <time>1497687453</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503074</requestid>
+  </revision>
+  <revision rev="132" vrev="5">
+    <srcmd5>73528241cf77101bc3688208cda8f664</srcmd5>
+    <version>25.2</version>
+    <time>1503591525</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518368</requestid>
+  </revision>
+  <revision rev="133" vrev="6">
+    <srcmd5>d30e42717ba8d9750422f71da7e11b41</srcmd5>
+    <version>25.2</version>
+    <time>1505757183</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch emacs-25.2-bsc1058425.patch to fix bsc#1058425
+  VUL-0: emacs: GNU Emacs 25.2 enriched text remote code execution</comment>
+    <requestid>524572</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>47ff54bb433b0db2e68cd823276cef66</srcmd5>
+    <version>25.3</version>
+    <time>1506340180</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to emacs version 25.2 a security release
+  ** Security vulnerability related to Enriched Text mode is removed.
+- Modified patches
+  * emacs-24.4-ps-bdf.patch
+  * emacs-25.2-ImageMagick7.patch
+  * emacs-25.2-bsc1058425.patch now partly upstream
+- Rename emacs-25.2.dif to emacs-25.3.dif</comment>
+    <requestid>528255</requestid>
+  </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>2d077cd39de8c1d7120177365ea94fea</srcmd5>
+    <version>25.3</version>
+    <time>1506453413</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to emacs version 25.3 a security release</comment>
+    <requestid>528839</requestid>
+  </revision>
+  <revision rev="136" vrev="3">
+    <srcmd5>9c6df55b2566655eeed15c3d6a16f8d0</srcmd5>
+    <version>25.3</version>
+    <time>1521904158</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590089</requestid>
+  </revision>
+  <revision rev="137" vrev="4">
+    <srcmd5>cd64400b5e028d973de2c40b9edd30fe</srcmd5>
+    <version>25.3</version>
+    <time>1522596332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592540</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>d284354460027e1a1658220d66f39b96</srcmd5>
+    <version>26.1</version>
+    <time>1530866334</time>
+    <user>dimstar_suse</user>
+    <comment>- Simplify patch emacs-25.3-xft4x11.patch (from Henryk Hecht) for
+  boo#1096354 
+
+- Add patch emacs-26.1-xft4x11.patch to allow emacs-x11 to use
+  xft even for its menu bar (boo#1096354)
+
+- Drop pkgconfig(gconf-2.0) BuildRequires: No longer needed, nor
+  used. Emacs-x11 uses gsettings on openSUSE.
+
+- Use -fPIE/-pie for helper binaries 
+- Use Groups tag Productivity/Text/Editors
+
+- Add configure option for mailutils as recommended by GNU Emacs upstream
+- Re-enable games with GNU Emacs which requires system-user-games 
+
+- Cleanup the spec file by removing old suse_versions
+  and reordering configure options
+- Add some missed packages for configure 
+- Avoid Xwidgets on 32bit architectures as this does not build
+
+- Update to emacs version 26.1
+  * Startup Changes in Emacs 26.1
+    - New option '--fg-daemon'
+    - New option '--module-assertions'
+    - Emacs now supports 24-bit colors on capable text terminals
+    - Emacs now obeys the X resource &quot;scrollBar&quot; at startup
+  * Various Changes in Emacs 26.1, see NEWS
+  * Various Editing Changes in Emacs 26.1, see NEWS
+  * Various Changes in Specialized Modes and Packages in Emacs 26.1, see NEWS
+  * Some Incompatible Lisp Changes in Emacs 26.1, see NEWS</comment>
+    <requestid>619898</requestid>
+  </revision>
+  <revision rev="139" vrev="2">
+    <srcmd5>bd6defa39286d17e22768ba020262c16</srcmd5>
+    <version>26.1</version>
+    <time>1531592050</time>
+    <user>dimstar_suse</user>
+    <comment>- xwidget.patch: Make xwidget-webkit-execute-script safe against GC
+- Re-enable Xwidgets on 32bit architectures (forwarded request 621595 from AndreasSchwab)</comment>
+    <requestid>621661</requestid>
+  </revision>
+  <revision rev="140" vrev="3">
+    <srcmd5>419ec40a6e7b3320d603aa3904efcd79</srcmd5>
+    <version>26.1</version>
+    <time>1532361432</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid error message on info.info(.info) as this file should not be
+  installed due it is part of the system package info (boo#1101652)</comment>
+    <requestid>624234</requestid>
+  </revision>
+  <revision rev="141" vrev="4">
+    <srcmd5>a57a5dbaa48e9874e4f636b9123c5a78</srcmd5>
+    <version>26.1</version>
+    <time>1541509111</time>
+    <user>dimstar_suse</user>
+    <comment>- Let ispell.el perform even on older systems without default
+  hunspell dictionary as otherwise this leads to wrong type
+  error as nil is not a pointer to a string
+
+- Let site-start.el also seek for hunspell to load the ispell
+  lisp library (boo#1110387)
+
+- Help ispell(.el) to find and provide the usable dictionaries
+  even for hunspell (boo#1110387)</comment>
+    <requestid>643901</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>23c1a04c021e1f4dd86762a0b869d1db</srcmd5>
+    <version>26.2</version>
+    <time>1555588529</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to emacs version 26.2
+  * Emacs is now compliant with the latest version 11.0 of the Unicode Standard.
+  * New variable 'xft-ignore-color-fonts'.
+  * Changes in Specialized Modes and Packages in Emacs 26.2
+    Dired: The 'Z' command on a directory name compresses all of its files.
+  * Ibuffer: New toggle 'ibuffer-do-toggle-lock', bound to 'L'.
+  * Imenu: The value for 'imenu-auto-rescan-maxout' has been increased to 600000.
+  * Gnus: Mailutils movemail will now be used if found at runtime.
+  * Shadowfile: shadowfile.el has been rewritten to support Tramp file names.
+  * Shell mode: Shell mode buffers now have 'scroll-conservatively' set to 101.
+  * VC: VC support for Mercurial was improved.
+  * Incompatible Lisp Changes in Emacs 26.2
+    shadowfile config files have changed their syntax.
+    'thread-alive-p' has been renamed to 'thread-live-p'.
+    'while-no-input' does not return due to input from subprocesses.
+  * Lisp Changes in Emacs 26.2
+    The new function 'read-answer' accepts either long or short answers
+    depending on the new customizable variable 'read-answer-short'.
+    New function 'assoc-delete-all'.  Like 'assq-delete-all', but uses
+    'equal' for comparison.
+    The function 'thing-at-point' behaves as before Emacs 26.1.
+    The behavior of 'thing-at-point' when called with argument 'list' has
+    changed in Emacs 26.1, in that it didn't consider text inside comments
+    and strings as a potential list.  This change is now reverted, and
+    'thing-at-point' behaves like it did before Emacs 26.1.
+    To cater to use cases where comments and strings are to be ignored
+    when looking for a list, the function 'list-at-point' now takes an
+    optional argument to do so.
+- Port and rename patch emacs-26.1.dif to emacs-26.2.dif
+- Modify/port patches</comment>
+    <requestid>694724</requestid>
+  </revision>
+  <revision rev="143" vrev="2">
+    <srcmd5>7b68cebc872aeef0bac0f42499f32d25</srcmd5>
+    <version>26.2</version>
+    <time>1560337267</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706048</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>b61bbb1e2faf7a6d7c4154bb95584846</srcmd5>
+    <version>26.3</version>
+    <time>1568983048</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to emacs version 26.3
+  * New option 'help-enable-completion-auto-load'.
+    This allows disabling the new feature introduced in Emacs 26.1 which
+    loads files during completion of 'C-h f' and 'C-h v' according to
+    'definition-prefixes'.
+  * Emacs now supports the new Japanese Era name.
+    The newly assigned codepoint U+32FF was added to the Unicode Character
+    Database compiled into Emacs.</comment>
+    <requestid>729384</requestid>
+  </revision>
+</revisionlist>

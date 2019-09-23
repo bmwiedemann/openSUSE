@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5bed03f0d20db904defacaed09d17265</srcmd5>
+    <version>0.0</version>
+    <time>1547211888</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for filling labels in container images dynamically.</comment>
+    <requestid>664282</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d55860897ead3394dd1049929d059d75</srcmd5>
+    <version>0.0</version>
+    <time>1548064515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666180</requestid>
+  </revision>
+</revisionlist>

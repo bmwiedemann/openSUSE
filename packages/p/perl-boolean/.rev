@@ -1,0 +1,144 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d3b4a59d541a255d968596d80ae9f809</srcmd5>
+    <version>0.26</version>
+    <time>1302604979</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66689 from user babelworx
+</comment>
+    <requestid>66689</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>02f3b27387aea856e97f14f838172507</srcmd5>
+    <version>0.26</version>
+    <time>1302604991</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66689
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>903999f85ff23b25e17b9391da649cac</srcmd5>
+    <version>0.28</version>
+    <time>1316461140</time>
+    <user>lrupp</user>
+    <comment>- updated to 0.28
+ - Added -truth option.
+ - This idea was inspired by https://rt.cpan.org/Ticket/Display.html?id=65536
+ - Awesome idea!
+ - Released from Liz++&amp;Wendy++ downstairs bathroom</comment>
+    <requestid>83475</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>903999f85ff23b25e17b9391da649cac</srcmd5>
+    <version>0.28</version>
+    <time>1319182327</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>f5bdd3efcd3c5d20d326da0d4a6144d2</srcmd5>
+    <version>0.28</version>
+    <time>1323193070</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>f5bdd3efcd3c5d20d326da0d4a6144d2</srcmd5>
+    <version>0.28</version>
+    <time>1340183958</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>f5bdd3efcd3c5d20d326da0d4a6144d2</srcmd5>
+    <version>0.28</version>
+    <time>1359109861</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ab2721d79f99976e7fa07ff01dce6f56</srcmd5>
+    <version>0.30</version>
+    <time>1373029748</time>
+    <user>coolo</user>
+    <comment>- updated to 0.30
+ - Fix https://rt.cpan.org/Public/Bug/Display.html?id=84398
+ - Support JSON and JSON::XS. dankogai-san++</comment>
+    <requestid>181834</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>ab2721d79f99976e7fa07ff01dce6f56</srcmd5>
+    <version>0.30</version>
+    <time>1379663934</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>23e58afda978659076d1631f147353fd</srcmd5>
+    <version>0.32</version>
+    <time>1394386432</time>
+    <user>coolo</user>
+    <comment>- updated to 0.32
+ - Some dzil changes
+ - Switch to dzil</comment>
+    <requestid>224955</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>23e58afda978659076d1631f147353fd</srcmd5>
+    <version>0.32</version>
+    <time>1409302585</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>873a2f474c7bdea6ca69f3f2fac16de1</srcmd5>
+    <version>0.42</version>
+    <time>1410967542</time>
+    <user>coolo</user>
+    <comment>- updated to 0.42
+  - Meta 0.0.2
+  - Remove .gitignore
+ 
+ 0.41 Fri Aug 15 15:41:09 PDT 2014
+  - Add t/000-compile-modules.t
+  - CPAN Day 2014 - 21 Release Salute!
+ 
+ 0.40 Fri Aug  8 19:12:51 PDT 2014
+  - Fix swim errors
+ 
+ 0.39 Sat Aug  2 10:17:12 PDT 2014
+  - Fix Copyright years.
+  - Fix Meta and add Contributing
+ 
+ 0.38 Wed Jun 25 21:08:05 PDT 2014
+  - Revert json.t. Failed on cpantesters.
+ 
+ 0.37 Wed Jun 25 16:47:29 PDT 2014
+  - Add JSON to recommends
+ 
+ 0.36 Wed Jun 25 16:46:39 PDT 2014
+  - Fix homepage in metadata
+ 
+ 0.35 Tue Jun 17 10:59:25 PDT 2014
+  - Remove ABSTRACT and use manual $VERSION
+ 
+ 0.34 Sat Jun 14 13:16:30 PDT 2014
+  - Release 0.33 got botched.</comment>
+    <requestid>249348</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>82ad01c57cc0e00775ed003b9cc0a6a6</srcmd5>
+    <version>0.45</version>
+    <time>1429107909</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296620</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6fcfacc697880fbc37df4e9e83927d97</srcmd5>
+    <version>0.46</version>
+    <time>1468360398</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407682</requestid>
+  </revision>
+</revisionlist>

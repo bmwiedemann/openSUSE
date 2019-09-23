@@ -1,0 +1,5 @@
+<package name="nemo-extensions" project="openSUSE:Factory">
+  <title>Set of extensions for Nemo file manager</title>
+  <description>Set of extensions for Nemo, the Cinnamon file manager.</description>
+  <devel project="X11:Cinnamon:Factory" package="nemo-extensions"/>
+</package>

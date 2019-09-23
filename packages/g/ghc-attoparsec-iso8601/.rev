@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e7ffd40a49d746397ba4b1ad2db71bf9</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1497274356</time>
+    <user>dimstar_suse</user>
+    <comment>needed in penSUSE:Factory:Staging:adi:57</comment>
+    <requestid>502420</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>07d516a234636ed22bccee967eb8b340</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1505503265</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524146</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>41feb32a595045edc10a43693eeb10cb</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1527675412</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609761</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5266794df675e19465c87e689837379e</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1532445178</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623719</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3c1627f844016f5805e17282bde28b41</srcmd5>
+    <version>1.0.1.0</version>
+    <time>1540448085</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642848</requestid>
+  </revision>
+</revisionlist>

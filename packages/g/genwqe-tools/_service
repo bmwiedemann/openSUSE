@@ -1,0 +1,15 @@
+<services>
+        <service name="tar_scm" mode="disabled">
+                <param name="scm">git</param>
+                <param name="url">https://github.com/ibm-genwqe/genwqe-user.git</param>
+                <param name="subdir"></param>
+                <param name="filename">genwqe-user</param>
+                <param name="version">4.0.20</param>
+                <param name="revision">v4.0.20</param>
+        </service>
+        <service name="recompress" mode="disabled">
+                 <param name="file">*genwqe-user*.tar</param>
+                 <param name="compression">xz</param>
+        </service>
+</services>
+

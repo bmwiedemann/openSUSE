@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b027e179c52cc4c1036e608d323ecb55</srcmd5>
+    <version>0.01.13</version>
+    <time>1474476373</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain forkstat in Factory</comment>
+    <requestid>416308</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4836d8d251e1e4550c84da196f403be0</srcmd5>
+    <version>0.01.17</version>
+    <time>1495133408</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495694</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e078f0c4a7b961f15a430588628b6313</srcmd5>
+    <version>0.01.19</version>
+    <time>1498485211</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505863</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>792ba60b1b45c1fff7ab84456167d072</srcmd5>
+    <version>0.02.00</version>
+    <time>1498551707</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506335</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>655ca875f45cda8274cd306c583abf28</srcmd5>
+    <version>0.02.01</version>
+    <time>1515506057</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562359</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1fa2fbd5b1e7e251d1c509341428c853</srcmd5>
+    <version>0.02.02</version>
+    <time>1517932277</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573310</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cfba398828a3df9b01654e2f67defefc</srcmd5>
+    <version>0.02.03</version>
+    <time>1528897127</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615437</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0bb7e5a57705cdfe56337c238603915b</srcmd5>
+    <version>0.02.04</version>
+    <time>1531379998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622043</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>333a2d75ff4bb65e02331e8817247749</srcmd5>
+    <version>0.02.05</version>
+    <time>1532293509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624404</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2b4b71454419c76570e9129dfd508612</srcmd5>
+    <version>0.02.09</version>
+    <time>1548064677</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666479</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8fd4642fc97c6acf2cfd01ee32c588a6</srcmd5>
+    <version>0.02.11</version>
+    <time>1567680307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728285</requestid>
+  </revision>
+</revisionlist>

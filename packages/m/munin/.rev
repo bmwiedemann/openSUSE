@@ -1,0 +1,134 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e6281c799db6d3f2239e678406be3d6b</srcmd5>
+    <version>2.0.19</version>
+    <time>1410534256</time>
+    <user>coolo</user>
+    <comment>Munin the tool surveys all your computers and remembers what it saw. </comment>
+    <requestid>248974</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>58c7ceb212cbc12523e2e0b891924252</srcmd5>
+    <version>2.0.21</version>
+    <time>1411926853</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252590</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>238c6d364bc313c5469bfc61efebb45f</srcmd5>
+    <version>2.0.24</version>
+    <time>1415118564</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259400</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>928642c584f3eee72c412676de975c8b</srcmd5>
+    <version>2.0.25</version>
+    <time>1420754548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>280151</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b855985b5fa3a69801a4b9bc89d7f20c</srcmd5>
+    <version>2.0.25</version>
+    <time>1438548386</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319975</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>528fb84726778cc65e546b04d86ac5bf</srcmd5>
+    <version>2.0.25</version>
+    <time>1441296220</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328588</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>fb9461a9aebda4b77dbbc441fe9723f1</srcmd5>
+    <version>2.0.25</version>
+    <time>1448553852</time>
+    <user>dimstar_suse</user>
+    <comment>(mysql55.patch (forwarded request 346099 from wrosenauer)</comment>
+    <requestid>346100</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>7a9685099d9fb4df174cedbad9694447</srcmd5>
+    <version>2.0.25</version>
+    <time>1487462429</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455336</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7ec3afa89c03a590c7ded8b6df58f9cf</srcmd5>
+    <version>2.0.32</version>
+    <time>1489345162</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.0.32</comment>
+    <requestid>461943</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>36505840c309769a16d9f6994aa4af38</srcmd5>
+    <version>2.0.32</version>
+    <time>1496681426</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500948</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>ffcebd44f69dfb70c99783ac6416c1f6</srcmd5>
+    <version>2.0.32</version>
+    <time>1506679066</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529857</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9eaea2c2acf02bd6a48b8bb0d86638ca</srcmd5>
+    <version>2.0.37</version>
+    <time>1527583743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612632</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>41145e30fc2c5d0f4c2af37ab4cd4d67</srcmd5>
+    <version>2.0.40</version>
+    <time>1536679023</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634340</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bfd6985981d6d88aeec53ca0c315c981</srcmd5>
+    <version>2.0.49</version>
+    <time>1557832276</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.49
+  * fixes and improvements
+
+- update to 2.0.48
+  * many fixes and improvements in plugins</comment>
+    <requestid>701930</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>d0328077752eabccf6d447fb00a33aa9</srcmd5>
+    <version>2.0.49</version>
+    <time>1561557647</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow OBS to pick better candidates to shorten rebuild queues</comment>
+    <requestid>709505</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>6937fe7f989eff1aa85203a51d22b1da</srcmd5>
+    <version>2.0.49</version>
+    <time>1566664791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724785</requestid>
+  </revision>
+</revisionlist>

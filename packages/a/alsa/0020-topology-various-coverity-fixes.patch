@@ -1,0 +1,103 @@
+From 0d97f53c25b4dd36d3f6511fae85b597aebc61a1 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 24 May 2019 20:52:00 +0200
+Subject: [PATCH 20/25] topology: various coverity fixes
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/ctl.c    |  4 ++--
+ src/topology/data.c   | 19 +++++++++++++------
+ src/topology/parser.c |  5 +++--
+ 3 files changed, 18 insertions(+), 10 deletions(-)
+
+diff --git a/src/topology/ctl.c b/src/topology/ctl.c
+index 9c13b12c4bf4..a096252263a5 100644
+--- a/src/topology/ctl.c
++++ b/src/topology/ctl.c
+@@ -880,8 +880,8 @@ int tplg_add_enum(snd_tplg_t *tplg, struct snd_tplg_enum_template *enum_ctl,
+ 	if (enum_ctl->texts != NULL) {
+ 		for (i = 0; i < num_items; i++) {
+ 			if (enum_ctl->texts[i] != NULL)
+-				strncpy(ec->texts[i], enum_ctl->texts[i],
+-					SNDRV_CTL_ELEM_ID_NAME_MAXLEN);
++				snd_strlcpy(ec->texts[i], enum_ctl->texts[i],
++					    SNDRV_CTL_ELEM_ID_NAME_MAXLEN);
+ 		}
+ 	}
+ 
+diff --git a/src/topology/data.c b/src/topology/data.c
+index fd72abbb5e08..aa2b87e73f50 100644
+--- a/src/topology/data.c
++++ b/src/topology/data.c
+@@ -124,12 +124,12 @@ static int tplg_parse_data_file(snd_config_t *cfg, struct tplg_elem *elem)
+ 
+ 	if (fclose(fp) == EOF) {
+ 		SNDERR("Cannot close data file.");
+-		ret = -errno;
+-		goto err;
++		return -errno;
+ 	}
+ 	return 0;
+ 
+ err:
++	fclose(fp);
+ 	if (priv)
+ 		free(priv);
+ 	return ret;
+@@ -422,7 +422,7 @@ static unsigned int get_tuple_size(int type)
+ static int copy_tuples(struct tplg_elem *elem,
+ 	struct tplg_vendor_tuples *tuples, struct tplg_vendor_tokens *tokens)
+ {
+-	struct snd_soc_tplg_private *priv = elem->data;
++	struct snd_soc_tplg_private *priv = elem->data, *priv2;
+ 	struct tplg_tuple_set *tuple_set;
+ 	struct tplg_tuple *tuple;
+ 	struct snd_soc_tplg_vendor_array *array;
+@@ -447,10 +447,17 @@ static int copy_tuples(struct tplg_elem *elem,
+ 			return -EINVAL;
+ 		}
+ 
+-		if (priv != NULL)
+-			priv = realloc(priv, sizeof(*priv) + size);
+-		else
++		if (priv != NULL) {
++			priv2 = realloc(priv, sizeof(*priv) + size);
++			if (priv2 == NULL) {
++				free(priv);
++				priv = NULL;
++			} else {
++				priv = priv2;
++			}
++		} else {
+ 			priv = calloc(1, sizeof(*priv) + size);
++		}
+ 		if (!priv)
+ 			return -ENOMEM;
+ 
+diff --git a/src/topology/parser.c b/src/topology/parser.c
+index cfc20e000e5c..a7cff1c30edc 100644
+--- a/src/topology/parser.c
++++ b/src/topology/parser.c
+@@ -237,8 +237,9 @@ static int tplg_load_config(const char *file, snd_config_t **cfg)
+ 
+ 	ret = snd_input_stdio_attach(&in, fp, 1);
+ 	if (ret < 0) {
++		fclose(fp);
+ 		SNDERR("error: could not attach stdio %s", file);
+-		goto err;
++		return ret;
+ 	}
+ 	ret = snd_config_top(&top);
+ 	if (ret < 0)
+@@ -261,7 +262,7 @@ static int tplg_load_config(const char *file, snd_config_t **cfg)
+ err_load:
+ 	snd_config_delete(top);
+ err:
+-	fclose(fp);
++	snd_input_close(in);
+ 	return ret;
+ }
+ 
+-- 
+2.16.4
+

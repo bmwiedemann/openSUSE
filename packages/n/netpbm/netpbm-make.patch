@@ -1,0 +1,60 @@
+Index: config.mk.in
+===================================================================
+--- config.mk.in.orig	2014-09-08 09:55:59.652026877 +0200
++++ config.mk.in	2014-09-08 10:00:54.684021821 +0200
+@@ -120,7 +120,7 @@
+ #OSF1:
+ #INSTALL = $(SRCDIR)/buildtools/installosf
+ #Red Hat Linux:
+-#INSTALL = install
++INSTALL = install
+ 
+ # STRIPFLAG is the option you pass to the above install program to make it
+ # strip unnecessary information out of binaries.
+@@ -306,7 +306,7 @@
+ CFLAGS_SHLIB = 
+ # Gcc:
+ #CFLAGS_SHLIB = -fpic
+-#CFLAGS_SHLIB = -fPIC
++CFLAGS_SHLIB = -fPIC
+ # Sun compiler:
+ #CFLAGS_SHLIB = -Kpic
+ #CFLAGS_SHLIB = -KPIC
+@@ -373,7 +373,7 @@
+ # The TIFF library.  See above.  If you want to build the tiff
+ # converters, you must have the tiff library already installed.
+ 
+-TIFFLIB = NONE
++TIFFLIB = libtiff.so
+ TIFFHDR_DIR =
+ 
+ #TIFFLIB = libtiff.so
+@@ -404,7 +404,7 @@
+ # JPEG stuff statically linked in, in which case you won't need 
+ # JPEGLIB in order to build the Tiff converters.
+ 
+-JPEGLIB = NONE
++JPEGLIB = libjpeg.so
+ JPEGHDR_DIR =
+ #JPEGLIB = libjpeg.so
+ #JPEGHDR_DIR = /usr/include/jpeg
+@@ -462,7 +462,7 @@
+ #
+ # If you have 'libpng-config' (see above), these are irrelevant.
+ 
+-ZLIB = NONE
++ZLIB = libz.so
+ ZHDR_DIR = 
+ #ZLIB = libz.so
+ 
+@@ -472,8 +472,8 @@
+ JBIGHDR_DIR = $(INTERNAL_JBIGHDR_DIR)
+ 
+ # The Jasper JPEG-2000 image compression library (aka JasPer):
+-JASPERLIB = $(INTERNAL_JASPERLIB)
+-JASPERHDR_DIR = $(INTERNAL_JASPERHDR_DIR)
++JASPERLIB = -ljasper
++JASPERHDR_DIR = /usr/include/jasper
+ # JASPERDEPLIBS is the libraries (-l options or file names) on which
+ # The Jasper library depends -- i.e. what you have to link into any
+ # executable that links in the Jasper library.

@@ -1,0 +1,94 @@
+Index: utils/openstack-db
+===================================================================
+--- utils/openstack-db.orig
++++ utils/openstack-db
+@@ -18,6 +18,7 @@
+ #
+ 
+ systemctl --version >/dev/null 2>&1 && systemctl=1
++grep 'SUSE Linux Enterprise Server 11' /etc/SuSE-release > /dev/null && sles=1
+ 
+ usage() {
+ 
+@@ -119,7 +120,7 @@ db_manage()
+     db_cmd="db_$cmd"
+   fi
+   # Run as $APP user so any newly created (log) files have correct ownership
+-  runuser -s /bin/sh $APP -c "$APP-manage $db_cmd"
++  su -s /bin/sh -c "$APP-manage $db_cmd" $APP
+ }
+ 
+ db_sync() {
+@@ -153,10 +154,15 @@ if [ "$MODE" = 'sync' ]; then
+ fi
+ 
+ install_mysql_server() {
++  if test "$sles"; then
++     PACKAGES="mysql mysql-client"
++  else
++     PACKAGES="mariadb mariadb-client"
++  fi
+   if [ -z "${ASSUME_YES}" ]; then
+-    yum install mysql-server
++    zypper install $PACKAGES
+   else
+-    yum install -y mysql-server
++    zypper install -y $PACKAGES
+   fi
+ }
+ 
+@@ -211,15 +217,20 @@ fi
+ # Make sure MySQL is installed.
+ 
+ NEW_MYSQL_INSTALL=0
+-if ! rpm -q --whatprovides mysql-server > /dev/null; then
++if test "$sles"; then
++   DB="mysql"
++else
++   DB="mariadb"
++fi
++if ! rpm -q --whatprovides $DB > /dev/null; then
+   if [ -z "${ASSUME_YES}" ]; then
+-    printf "mysql-server is not installed.  Would you like to install it now? (y/n): "
++    printf "$DB is not installed.  Would you like to install it now? (y/n): "
+     read response
+     case "$response" in
+       y|Y)
+         ;;
+       n|N)
+-        echo "mysql-server must be installed.  Please install it before proceeding."
++        echo "$DB must be installed.  Please install it before proceeding."
+         exit 0
+         ;;
+       *)
+@@ -235,7 +246,7 @@ fi
+ 
+ # Make sure mysqld is running.
+ 
+-if ! service_running mysqld; then
++if ! service_running mysql; then
+   if [ -z "${ASSUME_YES}" ]; then
+     printf "mysqld is not running.  Would you like to start it now? (y/n): "
+     read response
+@@ -252,10 +263,10 @@ if ! service_running mysqld; then
+     esac
+   fi
+ 
+-  start_service 'mysqld'
++  start_service 'mysql'
+ 
+   # If we both installed and started, ensure it starts at boot
+-  [ $NEW_MYSQL_INSTALL -eq 1 ] && chkconfig mysqld on
++  [ $NEW_MYSQL_INSTALL -eq 1 ] && chkconfig mysql on
+ fi
+ 
+ 
+@@ -368,7 +379,7 @@ if [ "$MODE" = 'init' ]; then
+   if ! echo "SELECT * FROM migrate_version;" |
+      mysql -u $APP --password=${MYSQL_APP_PW} $APP > /dev/null; then
+     echo "Final sanity check failed." >&2
+-    echo "Please file a bug report on bugzilla.redhat.com against the openstack-$APP package." >&2
++    echo "Please file a bug report on bugzilla.novell.com against the openstack-$APP package." >&2
+     exit 1
+   fi
+ 

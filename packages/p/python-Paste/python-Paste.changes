@@ -1,0 +1,197 @@
+-------------------------------------------------------------------
+Mon Jul 29 07:45:13 UTC 2019 - pgajdos@suse.com
+
+- version update to 3.1.0
+  * Allow anything that can read() for a file-like response, not just
+    a ``file`` instance.
+
+-------------------------------------------------------------------
+Fri Mar  8 09:27:42 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add test_modified-fixup.patch to re-enable the test
+- Remove build dependency on pytest-runner
+- Update to v3.0.8
+  * Fix quoting of bytestrings
+
+-------------------------------------------------------------------
+Tue Mar  5 19:12:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not bother with sphinx docu, it is online anyway
+
+-------------------------------------------------------------------
+Tue Mar  5 17:00:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.0.7:
+  * Write bytestrings when calling wsgi_write_chunk
+  * Revert "Remove use of OpenSSL.tsafe, which links to OpenSSL.SSL
+
+-------------------------------------------------------------------
+Thu Jan  3 07:17:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable test_modified as it fails on non 64b arches due to
+  slightly different reported string
+- Drop nose dep, not needed
+- Fix URL to point to current homepage
+
+-------------------------------------------------------------------
+Mon Dec 17 21:04:26 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 3.0.5:
+  * make tests pass after 2031
+  * Use correct variable when building message for exception
+  * Remove use of OpenSSL.tsafe, which links to OpenSSL.SSL anyways. (#16)
+  * Fix error on httpserver shutdown
+  * Add support for limited testing with travis-ci
+  * Merged in hroncok/paste/py37 (pull request #41)
+  * Don't raise StopIteration from generator, return instead
+  * Fix up testing after switch to pytest
+  * Make iterators Python3-compatible
+  * Remove use of future
+  * Don't raise StopIteration inside a generator
+  * add link to read the docs to README
+  * Release 3.0.2
+  * Release 3.0.5
+  * Prepare docs for publishing to RTFD
+  * Run tox with Python 3.6 and 3.7
+  * Prepare a 3.0.0 release
+  * release 3.0.1
+  * py3 fixes for form handling in paste.fixture (#8)
+  * release 3.0.3
+  * Special case py37
+  * release 3.0.4
+  * Switch from nose to pytest
+  * Pytest fixes (#9)
+  * paste.fixture: fix form offset handling (#12)
+  * Add a simple .gitignore
+  * Don't delete dict item while iterating over same dict (#14)
+  * Depend on pytest instead of nose (#13)
+  * Fix proxy test
+  * Enable coverage reporting via codecov (#10)
+  * Update README and setup.py for new location
+  * Added tag 2.0.3 for changeset 768835f3c1b7
+- Drop python37.patch. No longer needed
+
+-------------------------------------------------------------------
+Thu Oct 18 09:19:55 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build on python 3.7:
+  * python37.patch
+
+-------------------------------------------------------------------
+Tue Mar  6 17:00:13 UTC 2018 - aplanas@suse.com
+
+- Allows Recommends and Suggest in Fedora
+
+-------------------------------------------------------------------
+Tue Feb 27 13:47:03 UTC 2018 - aplanas@suse.com
+
+- Suggest only for SUSE
+- Use %{__python3} macro 
+
+-------------------------------------------------------------------
+Wed Aug  9 16:21:38 UTC 2017 - tbechtold@suse.com
+
+- Remove unused BuildRequires
+- Use Suggests for openid and flup. Both are optional deps
+
+-------------------------------------------------------------------
+Fri May  5 21:59:21 UTC 2017 - toddrme2178@gmail.com
+
+- Fix Provides/Obsoletes.
+
+-------------------------------------------------------------------
+Wed Apr 19 02:23:02 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Fri Jun  3 15:31:42 UTC 2016 - tbechtold@suse.com
+
+- update to 2.0.3:
+  * prepare release 2.0.1
+  * Added tag 2.0.1 for changeset a0ef0e57e057
+  * set version to 2.0.2
+  * Add tests/test_httpserver.py
+  * Fix improper commas in request headers in wsgi_environ
+  * tests/test_httpserver.py: Use `email` module instead of `mimetools`
+  * tests/test_httpserver.py: Add test_environ_with_multiple_values
+  * Make get all values of a header work on both Python 2 and 3
+  * Make get_headers default to Python 3; fallback to Python 2
+  * Make utility function private: _get_headers
+  * Fix Python 3 issue in paste/fixture.py
+  * test_wsgirequest_charset: Use UTF-8 instead of iso-8859-1
+  * Replace cgi.parse_qsl w/ six.moves.urllib.parse.parse_sql
+  * replace ``has_key`` method to ``in`` operator #9
+  * Don't display invalid error message when socket in use
+  * Update docs/news.txt for 2.0.2
+  * Added tag 2.0.2 for changeset 53f5c2cd7f50
+  * Python 3: App must always return binary type.
+  * Python 3: Always encode params if passed as text types
+  * Python 3: Don't mangle strangely encoded input
+  * Python 3: Use the same python interpreter for CGI scripts.
+  * Python 3: add workarounds for cgi.FieldStorage
+  * Python 3: avoid spurious warnings
+  * Python 3: dict.items() doesn't return a list anymore
+  * Python 3: ignore exception details in doctests
+  * Python 3: let html_quote() and url() always return the same type
+  * Python 3: use compatible print syntax in example text
+  * Change six requirement to >=1.4.0
+  * tox.ini: Add py35 to envlist
+  * Enable testing with pypy
+  * tox.ini: Measure test coverage
+  * paste.wsgilib.add_close: Add __next__ method
+  * Add tests for `add_close` class
+  * Uncomment/cleanup paste.wsgilib.app_close.__next__
+  * Check paste.wsgilib.add_close._closed
+  * Make add_close.next() leverage add_close.__next__()
+  * Bump version to 2.0.3
+  * Close branch 2.0.3
+- Remove .orig files
+
+-------------------------------------------------------------------
+Sun Mar 13 20:57:49 UTC 2016 - dmueller@suse.com
+
+- add license.txt
+
+-------------------------------------------------------------------
+Fri May  8 09:10:53 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 2.0.1:
+  * Fix setup.py for six dependency: move the six dependency from
+    extras_require to install_requires
+  * Port paste.proxy to Python 3
+  * Fix paste.exceptions.serial_number_generator.hash_identifier()
+    on Python 3
+  * Fix paste.util.threadedprint.uninstall()
+  * Add README.rst file
+- additional changes from version 2.0:
+  * Experimental Python 3 support
+  * paste now requires the six module
+  * Drop support of Python 2.5 and older
+  * Fixed egg:Paste#cgi
+  * In paste.httpserver: give a 100 Continue response even when the
+    server has been configured as an HTTP/1.0 server
+  * Fixed parsing of paths beginning with multiple forward slashes
+  * Add tox.ini to run tests with tox on Python 2.6, 2.7 and 3.4
+- add python-six as dependency
+- add python-flup, python-nose and python-python-openid as test
+  dependencies
+- remove test requiring internet access: test_proxy.py
+- reenable the tests
+
+-------------------------------------------------------------------
+Thu Oct 24 11:09:46 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Thu Nov 22 15:35:29 UTC 2012 - saschpe@suse.de
+
+- Require python-python-openid instead of non-existing python-openid
+- Build HTML documentation
+
+-------------------------------------------------------------------
+Wed Jun 22 09:48:40 UTC 2011 - saschpe@suse.de
+
+- Initial version, obsoletes 'python-paste'
+

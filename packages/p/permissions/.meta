@@ -1,0 +1,8 @@
+<package name="permissions" project="openSUSE:Factory">
+  <title>SUSE Linux Default Permissions</title>
+  <description>This package contains specifications for permissions of specific files,
+directories, and devices depending on the local security settings. The
+local security setting (easy, secure, or paranoid) can be configured in
+/etc/sysconfig/security.</description>
+  <devel project="Base:System" package="permissions"/>
+</package>

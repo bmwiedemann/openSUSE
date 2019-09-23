@@ -1,0 +1,52 @@
+From 9d2f7d1e372d79dfe732992effb33daf4ee56235 Mon Sep 17 00:00:00 2001
+From: Michal Marek <mmarek@suse.cz>
+Date: Fri, 4 Apr 2014 10:08:01 +0200
+Subject: [PATCH 5/6] Do not filter unsupported modules when running a vanilla
+ kernel
+
+References: bnc#871066
+Patch-mainline: never
+---
+ libkmod/libkmod-config.c | 19 ++++++++++++++++---
+ 1 file changed, 16 insertions(+), 3 deletions(-)
+
+diff --git a/libkmod/libkmod-config.c b/libkmod/libkmod-config.c
+index 07d6a9e..550a612 100644
+--- a/libkmod/libkmod-config.c
++++ b/libkmod/libkmod-config.c
+@@ -566,6 +566,18 @@ static int kmod_config_parse_kcmdline(struct kmod_config *config)
+ 	return 0;
+ }
+ 
++/*
++ * Check if kernel is built with the SUSE "suppported-flag" patch
++ */
++static int is_suse_kernel(void)
++{
++	if (access("/proc/sys/kernel/", F_OK) == 0 &&
++	    access("/proc/sys/kernel/unsupported", F_OK) == -1 &&
++	    errno == ENOENT)
++		return 0;
++	return 1;
++}
++
+ /*
+  * Take an fd and own it. It will be closed on return. filename is used only
+  * for debug messages
+@@ -657,9 +669,10 @@ static int kmod_config_parse(struct kmod_config *config, int fd,
+ 				goto syntax_error;
+ 			if (streq(param, "yes") || streq(param, "1"))
+ 				config->block_unsupported = 0;
+-			else if (streq(param, "no") || streq(param, "0"))
+-				config->block_unsupported = 1;
+-			else
++			else if (streq(param, "no") || streq(param, "0")) {
++				if (is_suse_kernel())
++					config->block_unsupported = 1;
++			} else
+ 				goto syntax_error;
+ 		} else {
+ syntax_error:
+-- 
+2.20.1
+

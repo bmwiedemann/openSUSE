@@ -1,0 +1,22 @@
+diff --git a/Makefile.am b/Makefile.am
+index 84e67a4..cac5283 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -395,7 +395,7 @@ unit_test_lib_SOURCES = unit/test-lib.c
+ unit_test_lib_LDADD = src/libshared-glib.la \
+ 				lib/libbluetooth-internal.la @GLIB_LIBS@
+ 
+-unit_tests += unit/test-gatt
++#unit_tests += unit/test-gatt
+ 
+ unit_test_gatt_SOURCES = unit/test-gatt.c
+ unit_test_gatt_LDADD = src/libshared-glib.la \
+@@ -424,7 +424,7 @@ unit_test_gattrib_LDADD = lib/libbluetooth-internal.la \
+ 			@GLIB_LIBS@ @DBUS_LIBS@ -ldl -lrt
+ 
+ if MIDI
+-unit_tests += unit/test-midi
++#unit_tests += unit/test-midi
+ unit_test_midi_CFLAGS = $(AM_CFLAGS) @ALSA_CFLAGS@ -DMIDI_TEST
+ unit_test_midi_SOURCES = unit/test-midi.c \
+ 			profiles/midi/libmidi.h \

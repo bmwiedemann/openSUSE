@@ -1,0 +1,6 @@
+<package name="python-Flask-RSTPages" project="openSUSE:Factory">
+  <title>reStructuredText support for Flask</title>
+  <description>Flask-RSTPages adds support for reStructuredText to your Flask application.
+See the docs for details: http://flask-rstpages.readthedocs.org/</description>
+  <devel project="devel:languages:python:flask" package="python-Flask-RSTPages"/>
+</package>

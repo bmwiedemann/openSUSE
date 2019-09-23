@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b7baac124a5166ce38135e2ac1b4a4d0</srcmd5>
+    <version>0.6.0</version>
+    <time>1500669540</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission; requirement for matrix-synapse</comment>
+    <requestid>509336</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0adcd4cf67c91730bae13775a0a87480</srcmd5>
+    <version>0.7.0</version>
+    <time>1552039299</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mulitbuild to make sure we do not cycle
+
+- Update to version 0.7.0:
+  * test updates
+  * pep fixes
+- Run tests
+
+- update to version v0.6.0</comment>
+    <requestid>682364</requestid>
+  </revision>
+</revisionlist>

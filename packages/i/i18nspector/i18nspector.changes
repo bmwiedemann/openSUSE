@@ -1,0 +1,509 @@
+-------------------------------------------------------------------
+Tue Apr  9 06:46:22 UTC 2019 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Update to 0.25.8.
+  * Fix compatibility with Python 3.8.
+  * Add writing system information for Maltese.
+  * Rephrase help messages for --help, --version.
+  * Improve error handling.
+  * Improve the test suite.
+
+-------------------------------------------------------------------
+Sun Jan  6 13:12:18 UTC 2019 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Update to 0.25.7.
+  * Drop support for Python < 3.3.3.
+  * Fix “FutureWarning: Possible nested set” warnings.
+  * Improve the build system.
+  * Improve documentation.
+
+-------------------------------------------------------------------
+Sat May 19 23:29:41 UTC 2018 - lazy.kent@opensuse.org
+
+- Update to 0.25.6.
+  * Drop support for Python 3.2.
+  * Update various URLs:
+    + Use HTTPS for savannah.gnu.org.
+    + Use HTTPS for unicode.org.
+    + pypi.python.org → pypi.org.
+    + sources.debian.net → sources.debian.org.
+    + Alioth VCS → sources.debian.org.
+  * Improve the test suite.
+
+-------------------------------------------------------------------
+Thu Nov  2 21:05:49 UTC 2017 - lazy.kent@opensuse.org
+
+- Update to 0.25.5.
+  * Don't complain about POT-Creation-Date missing in MO files.
+    In the future versions of gettext (>> 0.19.8.1), msgfmt will be
+    removing the POT-Creation-Date header.
+  * Improve error handling.
+
+-------------------------------------------------------------------
+Thu Aug 17 09:09:14 UTC 2017 - lazy.kent@opensuse.org
+
+- Update to 0.25.4.
+  * Fix crash when checking Python brace formats string that have
+    both named and numbered arguments.
+  * Reorder sections in the manual page, as per man-pages(7)
+    recommendations.
+  * Put license into a separate file.
+
+-------------------------------------------------------------------
+Tue Aug 30 04:51:42 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 0.25.3.
+  * Rewrite shebang at install time.
+
+-------------------------------------------------------------------
+Thu Aug 25 05:48:46 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 0.25.2.
+  * Don't disable stdout line buffering.
+  * Make --version print also versions of Python and the libraries.
+  * Make --version print to stdout, not stderr.
+  * Use /usr/bin/env in shebangs.
+  * Fix compatibility with PyPy 3.
+  * Improve documentation about dependencies.
+  * Improve the test suite.
+
+-------------------------------------------------------------------
+Tue Jul  5 18:02:53 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 0.25.1.
+  * Fix compatibility with Python 3.6.
+
+-------------------------------------------------------------------
+Wed Jun  1 06:33:56 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 0.25.
+  * Remove empty lines between references in the manual page.
+  * Rename --parallel as -j/--jobs.
+  * Make it possible to specify “auto” as the number of processes
+    to use.
+  * Improve the test suite.
+- Correct the source URL.
+
+-------------------------------------------------------------------
+Mon Mar 21 08:18:39 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 0.24.
+  * Summary of tag changes:
+    + Added:
+      - python-brace-format-string-argument-type-mismatch
+      - python-brace-format-string-error
+      - python-brace-format-string-missing-argument
+      - python-brace-format-string-unknown-argument
+  * Check for errors in Python brace format strings.
+  * Raise certainty of syntax-error-in-plural-forms and
+    syntax-error-in-unused-plural-forms to “certain”.
+  * Check for partially qualified domain names in e-mail addresses.
+  * Add option for parallel execution (--parallel).
+  * Improve the test suite.
+- Changes in 0.23.
+  * Summary of tag changes:
+    + Added:
+      - leading-junk-in-plural-forms
+      - trailing-junk-in-plural-forms
+  * Make separate tags for leading and trailing junk in
+  * Plural-Forms.
+  * Fix typos in tag descriptions.
+  * Use HTTPS for more URLs.
+- Changes in 0.22.
+  * Summary of tag changes:
+    + Renamed:
+      - unusual-plural-forms (from incorrect-plural-forms)
+      - unusual-unused-plural-forms (from
+        incorrect-unused-plural-forms)
+  * Fix typo in a tag description.
+  * Fix typo in the help message.
+  * Update QT documentation URLs.
+  * Fix option formatting in the manual page.
+  * Remove redundant parentheses from some exemplary Plural-Forms.
+  * Improve plural forms codomain checks.
+- Changes in 0.21.
+  * Summary of tag changes:
+    + Added:
+      - boilerplate-in-initial-comments
+  * Check for xgettext and msginit boilerplate in initial comments.
+  * Improve error handling.
+  * Improve the test suite.
+- Changes in 0.20.
+  * Use RPLY for parsing plural expressions.
+  * * Improve the test suite.
+- Add runtime and build dependency: python3-rply.
+
+-------------------------------------------------------------------
+Tue Mar  3 10:03:48 UTC 2015 - lazy.kent@opensuse.org
+
+- Update to 0.18.1.
+  * Make the plural expression parser more robust.
+  * Improve the test suite.
+
+-------------------------------------------------------------------
+Sun Feb  1 09:46:31 UTC 2015 - lazy.kent@opensuse.org
+
+- Update to 0.18.
+  * Rename --debian as --unpack-deb. Don't make it default even on
+    Debian(-like) systems.
+  * Make the plural expression parser more robust.
+  * Improve the test suite.
+- Update the keyring file.
+
+-------------------------------------------------------------------
+Fri Nov 21 19:15:13 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 0.17.2.
+  * Fix parsing Language header fields containing commas.
+  * Document -h/--help and --version in the manual page.
+  * Improve the test suite.
+
+-------------------------------------------------------------------
+Sun Oct 19 16:13:23 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 0.17.1.
+  * Restore compatibility with polib 1.0.3 and earlier versions.
+  * Improve the test suite.
+- Changes in 0.17.
+  * Summary of tag changes:
+    + Added:
+      - malformed-xml
+  * Check syntax of PO4A XML fragments.
+  * Check for duplicate or conflicting “range” flags.
+  * Tighten the check for invalid “range” flags.
+  * Make URLs for the Content-Type header field documentation more
+    precise.
+  * Improve the test suite.
+
+-------------------------------------------------------------------
+Mon Aug 25 21:12:53 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 0.16.
+  * Summary of tag changes:
+    + Added:
+      - c-format-string-missing-arguments
+      - qt-plural-format-mistaken-for-c-format
+      - stray-previous-msgid
+  * Check for C format strings in msgstr/msgstr_plural[N] consuming
+    less arguments than corresponding msgid/msgid_plural.
+  * Check for previous msgid annotations (#| msgid ...) attached to
+    non-fuzzy messages.
+  * Check for plural Qt format string mistakenly tagged as C format
+    strings.
+  * Temper checks for conflicting and redundant message flags:
+    + Don't complain about two different format flags applied to
+    the same message when the formats compatible are (to some
+    extent) compatible.
+    + Don't complain when a positive format flag (<lang1>-format)
+    and a negative format flag (no-<lang2>-format) apply to the
+    same message. The negative format flag might be still a useful
+    hint for the translator.
+  * Never consider non-ASCII characters and control-characters as
+    part of C format string conversion.
+  * Don't complain about unknown header fields starting with
+    lowercase “x-”.
+  * Improve descriptions of a few tags.
+  * Improve the test suite.
+
+-------------------------------------------------------------------
+Sun Aug 10 08:50:39 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 0.15.
+  * Summary of tag changes:
+    + Added:
+      - c-format-string-argument-type-mismatch
+      - c-format-string-error
+      - c-format-string-excess-arguments
+      - c-format-string-non-portable-conversion
+      - c-format-string-redundant-flag
+      - partially-translated-message
+  * Fix calculation of current time.
+  * Check for errors in C format strings.
+  * Check for inconsistent leading/trailing newlines in
+  * translations even when encoding in broken.
+  * Check for conflict markers in translations even when encoding
+    is broken.
+  * Check for incomplete translations in messages with plural
+    forms.
+  * When emitting unusual-character-in-translation, don't output
+    the translated string (which is likely to contain mojibake),
+    but only the message identifier.
+  * Suggest using “-0000” (rather than “+0000”) to indicate that
+    the offset to local time is unknown. This convention is
+    inspired by RFC 3339 §4.3 and RFC 5322 §3.3.
+  * Improve the test suite.
+
+-------------------------------------------------------------------
+Mon Jul 21 11:58:41 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 0.14.
+  * Summary of tag changes:
+    + Added:
+      - translation-in-template
+  * Check for PO template files containing translated messages.
+  * Check for duplicate messages, for problems with message flags,
+    and for empty files even when encoding is broken or unknown.
+  * Check for inconsistent leading/trailing newlines between msgid
+    and msgid_plural even when encoding in unknown or broken.
+  * Improve the test suite.
+
+-------------------------------------------------------------------
+Thu Jul 10 13:47:08 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 0.3.15.
+  * Use HTTPS URLs when they are available, in documentation and
+    code.
+  * Don't complain about conflict markers in fuzzy messages.
+
+-------------------------------------------------------------------
+Thu Mar 20 16:57:19 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 0.13.4.
+  * Regenerate the timezone information file using tzdata 2014a.
+  * Recognize “8859-n” (without the “ISO-” prefix) as encoding
+    names.
+  * Recognize *.local, *.in-addr.arpa and *.ip6.arpa as special
+    domain names.
+  * Fix compatibility with polib 1.0.4.
+  * Improve the test suite.
+- Update keyring.
+
+-------------------------------------------------------------------
+Fri Jan 24 13:45:28 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 0.13.3.
+  * Fix incorrect plural expression co-domain evaluation.
+  * Fix incorrect precedence of the boolean not operator in plural
+    expressions.
+  * Forbid unary plus and unary minus in plural expressions.
+  * Improve the test suite.
+
+-------------------------------------------------------------------
+Thu Jan  2 17:27:05 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 0.13.2.
+  * Reject early encodings that are not compatible with ASCII.
+  * Improve the test suite.
+
+-------------------------------------------------------------------
+Mon Dec  9 18:17:17 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.13.1.
+  * Fix test failures with Python 3.4.
+  * Fix stripping delay annotations from terminfo capabilities.
+  * Improve the test suite.
+
+-------------------------------------------------------------------
+Sat Sep 14 08:15:04 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.13.
+  * Summary of tag changes:
+    + Added:
+      - conflicting-message-flags
+      - duplicate-message-flag
+      - invalid-range-flag
+      - range-flag-without-plural-string
+      - redundant-message-flag
+      - unknown-message-flag
+  * Check for duplicate, conflicting, redundant, or unknown message
+    flags.
+  * Strip leading and trailing spaces from flag lines.
+  * Be verbose when checking for messages with empty msgid with
+    source code references.
+  * Reduce duplicate-flag-for-header-entry severity to minor.
+  * Check for zero width no-break space (U+FEFF) in translations
+    and header entries.
+  * Improve the test suite.
+  * Work around a trailing comment parsing bug in polib.
+    https://bitbucket.org/izi/polib/issue/51
+
+-------------------------------------------------------------------
+Tue Jul 30 09:02:10 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.12.
+  * Summary of tag changes:
+    + Added:
+      - boilerplate-in-date
+  * Don't emit empty-file for MO files with only system-dependent
+    messages, or with minor revision greater than 1.
+  * Don't emit no-package-name-in-project-id-version if the package
+    name consists of only non-ASCII letters.
+  * Fix parsing some atypical PO comments.
+  * Parse more date formats.
+  * Check for xgettext boilerplate in dates.
+  * Strip trailing whitespace when parsing header entry.
+  * Allow only tabs and spaces between “nplurals=…” and “plural=…”.
+  * Remove Bihari (codes “bh”, “bih”) from the data files; it's not
+    a single language, but a language collection.
+  * Implement 8-bit encodings without iconv(3) or iconv(1).
+  * Add “SEE ALSO” section to the manual page.
+  * Improve the test suite.
+  * Improve the makefile.
+
+-------------------------------------------------------------------
+Mon Jun 24 19:28:08 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.11.1.
+  * Fix the MO file parser:
+    + Detect encoding by inspecting only the first message with
+      empty msgid.
+    + Fix compatibility with Python 3.3.
+  * Use the custom MO file encoding detection method rather than
+    the provided by polib.
+- Changes in 0.11.
+  * Summary of tag changes:
+    + Added:
+      - distant-header-entry
+      - duplicate-flag-for-header-entry
+      - duplicate-header-entry
+      - duplicate-header-field-x-poedit
+      - empty-msgid-message-with-plural-forms
+      - empty-msgid-message-with-source-code-references
+      - unexpected-flag-for-header-entry
+      - unusual-character-in-header-entry
+  * Fix letter codes for tags with severity important.
+  * Reduce severity of arithmetic-error-in-unused-plural-forms,
+    codomain-error-in-unused-plural-forms, and
+    incorrect-unused-plural-forms to normal.
+  * Implement custom header parser for PO files, and custom MO file
+    parser.
+  * Check for duplicate header entries.
+  * Check for unusually located header entries.
+  * Overhaul handling of duplicates and stray lines in the header
+    entry.
+    + Emit duplicate-header-field-x-poedit (instead of the generic
+      duplicate-header-field) for duplicate X-Poedit-Language and
+      X-Poedit-Country headers fields.
+  * Work around a flag parsing bug in polib.
+  * Check for duplicate and unexpected flags for header entries.
+  * Check for unusual characters in header entries.
+  * Check for messages with empty msgid (header entries?) with
+    source code references or plural forms.
+  * Fix some false-positive language-disparity when PO basename
+    does not designate translation language.
+  * Fix the no-report-msgid-bugs-to-header-field description.
+  * Fix a few typos in the tag descriptions.
+  * Improve the test suite.
+    + Add new tests.
+    + Use a dedicated nose plugin for blackbox tests.
+
+-------------------------------------------------------------------
+Sat Jun 15 20:23:08 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.10.
+  * Summary of tag changes:
+    + Added:
+      - boilerplate-in-content-type
+      - conflict-marker-in-header-entry
+      - conflict-marker-in-translation
+      - duplicate-header-field-content-transfer-encoding
+      - duplicate-header-field-content-type
+      - duplicate-header-field-date
+      - duplicate-header-field-language
+      - duplicate-header-field-language-team
+      - duplicate-header-field-last-translator
+      - duplicate-header-field-mime-version
+      - duplicate-header-field-plural-forms
+      - duplicate-header-field-project-id-version
+      - duplicate-header-field-report-msgid-bugs-to
+      - fuzzy-header-entry
+  * Check for boilerplate (“charset=CHARSET”) in the Content-Type
+    header field.
+  * Check header field name syntax.
+  * Overhaul duplicate header field detection.
+    + Emit duplicate-header-field only for non-standard fields.
+      Downgrade duplicate-header-field to minor/wild-guess.
+    + Emit duplicate-header-field-$NAME for standard fields.
+    + Don't trust values of standard header fields if duplicates
+      exist.
+  * Check for conflict markers (“#-#-#-#-#  …  #-#-#-#-#”).
+  * Check for fuzzy header entries.
+  * Fix a typo in the language-team-equal-to-last-translator
+    description.
+  * Post-process the manual page, so that it can be more easily
+    translated by po4a.
+  * If iconv(3) is available in the C standard library, use it to
+    implement encodings that are not implemented in the Python
+    standard library.
+  * Don't pass -s to iconv(1); it makes GNU iconv quieten errors,
+    and other implementations don't have this option at all.
+  * Improve the test suite:
+    + Add new tests.
+    + Make exception messages raised when a subprocess fails more
+      readable.
+    + Make it possible to use a custom Python interpreter for “make
+      test”.
+
+-------------------------------------------------------------------
+Sun Jun  9 18:58:54 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.9.2.
+  * When emitting broken-encoding, don't output the whole file, but
+    only the undecodable bytes in a small context.
+
+-------------------------------------------------------------------
+Sat Jun  1 12:50:44 UTC 2013 - lazy.kent@opensuse.org
+
+- Correct source URL.
+- Correct build dependencies.
+
+-------------------------------------------------------------------
+Sat May 25 19:58:18 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.9.1.
+  * Brown paper bag release.
+  * Don't complain about leading/trailing newlines in fuzzy
+    messages.
+  * Improve the test suite.
+- Changes in 0.9.
+  * Summary of tag changes:
+    + Added:
+      - inconsistent-leading-newlines
+      - inconsistent-trailing-newlines
+  * Check for inconsistent leading/trailing newlines in messages.
+  * Check for unusual characters also in plural translations.
+  * Add information about version and date to the manual page.
+  * Fix stripping delay annotations from terminfo capabilities.
+- Changes in 0.8.3.
+  * Improve the test suite.
+    + Skip some tests when run with (pseudo-)root privileges.
+  * Add “test” target to Makefile.
+  * Recognize “PROJECT VERSION” as boilerplate in the
+    Project-Id-Version header field.
+- Drop i18nspector-0.8.2-run_tests.patch (fixed upstream).
+
+-------------------------------------------------------------------
+Wed May  1 08:04:52 UTC 2013 - lazy.kent@opensuse.org
+
+- Run test suite (add i18nspector-0.8.2-run_tests.patch: add "test"
+  target to Makefile; BuildRequires: python3-curses, python3-nose,
+  python3-polib).
+
+-------------------------------------------------------------------
+Thu Apr 18 07:41:49 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.8.2.
+  * Make it possible to declare that a language has more than one
+    correct Plural-Forms.
+  * Add plural forms information for the following languages:
+    Belarusian, Bosnian, Croatian, Hungarian, Russian, Serbian,
+    Turkish, Ukrainian.
+  * Improve the test suite.
+
+-------------------------------------------------------------------
+Thu Feb 28 21:51:43 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.8.1.
+  * Improve the documentation.
+  * Remove an incorrect assertion in the plural expression parser.
+
+-------------------------------------------------------------------
+Sun Feb 17 18:41:41 UTC 2013 - lazy.kent@opensuse.org
+
+- Requires python3 for openSUSE < 12.3.
+
+-------------------------------------------------------------------
+Wed Feb  6 16:20:54 UTC 2013 - lazy.kent@opensuse.org
+
+- Initial package created - 0.8.
+

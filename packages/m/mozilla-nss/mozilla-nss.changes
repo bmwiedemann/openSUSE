@@ -1,0 +1,2546 @@
+-------------------------------------------------------------------
+Sat Aug  3 21:12:12 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.45 (bsc#1141322)
+  * required by Firefox 69.0
+  New functions
+  * PK11_FindRawCertsWithSubject - Finds all certificates on the
+    given slot with the given subject distinguished name and returns
+    them as DER bytes. If no such certificates can be found, returns
+    SECSuccess and sets *results to NULL. If a failure is encountered
+    while fetching any of the matching certificates, SECFailure is
+    returned and *results will be NULL.
+  Notable changes
+  * bmo#1540403 - Implement Delegated Credentials
+  * bmo#1550579 - Replace ARM32 Curve25519 implementation with one
+    from fiat-crypto
+  * bmo#1551129 - Support static linking on Windows
+  * bmo#1552262 - Expose a function PK11_FindRawCertsWithSubject for
+    finding certificates with a given subject on a given slot
+  * bmo#1546229 - Add IPSEC IKE support to softoken
+  * bmo#1554616 - Add support for the Elbrus lcc compiler (<=1.23)
+  * bmo#1543874 - Expose an external clock for SSL
+  * bmo#1546477 - Various changes in response to the ongoing FIPS review
+  Certificate Authority Changes
+  * The following CA certificates were Removed:
+    bmo#1552374 - CN = Certinomis - Root CA
+  Bugs fixed
+  * bmo#1540541 - Don't unnecessarily strip leading 0's from key material
+    during PKCS11 import (CVE-2019-11719)
+  * bmo#1515342 - More thorough input checking (CVE-2019-11729)
+  * bmo#1552208 - Prohibit use of RSASSA-PKCS1-v1_5 algorithms in
+    TLS 1.3 (CVE-2019-11727)
+  * bmo#1227090 - Fix a potential divide-by-zero in makePfromQandSeed
+    from lib/freebl/pqg.c (static analysis)
+  * bmo#1227096 - Fix a potential divide-by-zero in PQG_VerifyParams
+    from lib/freebl/pqg.c  (static analysis)
+  * bmo#1509432 - De-duplicate code between mp_set_long and mp_set_ulong
+  * bmo#1515011 - Fix a mistake with ChaCha20-Poly1305 test code where
+    tags could be faked. Only relevant for clients that might have copied
+    the unit test code verbatim
+  * bmo#1550022 - Ensure nssutil3 gets built on Android
+  * bmo#1528174 - ChaCha20Poly1305 should no longer modify output
+    length on failure
+  * bmo#1549382 - Don't leak in PKCS#11 modules if C_GetSlotInfo()
+    returns error
+  * bmo#1551041 - Fix builds using GCC < 4.3 on big-endian architectures
+  * bmo#1554659 - Add versioning to OpenBSD builds to fix link time
+    errors using NSS
+  * bmo#1553443 - Send session ticket only after handshake is marked
+    as finished
+  * bmo#1550708 - Fix gyp scripts on Solaris SPARC so that libfreebl_64fpu_3.so
+    builds
+  * bmo#1554336 - Optimize away unneeded loop in mpi.c
+  * bmo#1559906 - fipstest: use CKM_TLS12_MASTER_KEY_DERIVE instead of vendor
+    specific mechanism
+  * bmo#1558126 - TLS_AES_256_GCM_SHA384 should be marked as FIPS compatible
+  * bmo#1555207 - HelloRetryRequestCallback return code for rejecting 0-RTT
+  * bmo#1556591 - Eliminate races in uses of PK11_SetWrapKey
+  * bmo#1558681 - Stop using a global for anti-replay of TLS 1.3 early data
+  * bmo#1561510 - Fix a bug where removing -arch XXX args from CC didn't work
+  * bmo#1561523 - Add a string for the new-ish error
+    SSL_ERROR_MISSING_POST_HANDSHAKE_AUTH_EXTENSION
+
+-------------------------------------------------------------------
+Fri Aug  2 14:43:24 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- split hmac subpackages to match SLE's packaging
+
+-------------------------------------------------------------------
+Mon Jul 22 07:13:42 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use -ffat-lto-objects in order to provide assembly for static libs.
+
+-------------------------------------------------------------------
+Mon Jul  8 07:14:57 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.44.1
+  * required by Firefox 68.0
+  Bugs fixed
+  * bmo#1554336 - Optimize away unneeded loop in mpi.c
+  * bmo#1515342 - More thorough input checking
+  * bmo#1540541 - Don't unnecessarily strip leading 0's from key material
+                  during PKCS11 import
+  * bmo#1515236 - Add a SSLKEYLOGFILE enable/disable flag at build.sh
+  * bmo#1546229 - Add IPSEC IKE support to softoken
+  * bmo#1473806 - Fix SECKEY_ConvertToPublicKey handling of non-RSA keys
+  * bmo#1546477 - Updates to testing for FIPS validation
+  * bmo#1552208 - Prohibit use of RSASSA-PKCS1-v1_5 algorithms in TLS 1.3
+  * bmo#1551041 - Unbreak build on GCC < 4.3 big-endian
+
+-------------------------------------------------------------------
+Wed Jun 12 21:38:18 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.44
+  * required by Firefox 68.0
+  New functions
+  * CERT_GetCertificateDer - Access the DER-encoded form of a CERTCertificate
+  Notable changes
+  * It is now possible to build NSS as a static library (bmo#1543545)
+  * Initial support for building for iOS
+  Bugs fixed
+  * full list
+    https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.44_release_notes
+- merge some baselibs fixes from SLE
+
+-------------------------------------------------------------------
+Tue Apr 23 12:07:00 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.43
+  * required by Firefox 67.0
+  New functions
+  * HASH_GetHashOidTagByHashType - convert type HASH_HashType to type SECOidTag
+  * SSL_SendCertificateRequest - allow server to request post-handshake
+    client authentication. To use this both peers need to enable the
+    SSL_ENABLE_POST_HANDSHAKE_AUTH option. Note that while the mechanism
+    is present, post-handshake authentication is currently not TLS 1.3
+    compliant due to bug 1532312
+  Notable changes
+  * The following CA certificates were Added:
+    - emSign Root CA - G1
+    - emSign ECC Root CA - G3
+    - emSign Root CA - C1
+    - emSign ECC Root CA - C3
+    - Hongkong Post Root CA 3
+  Bugs fixed
+  * Improve Gyp build system handling (bmo#1528669, bmo#1529308)
+  * Improve NSS S/MIME tests for Thunderbird (bmo#1529950, bmo#1521174)
+  * If Docker isn't installed, try running a local clang-format as a
+    fallback (bmo#1530134)
+  * Enable FIPS mode automatically if the system FIPS mode flag is set
+    (bmo#1531267)
+  * Add a -J option to the strsclnt command to specify sigschemes
+    (bmo#1528262)
+  * Add manual for nss-policy-check (bmo#1513909)
+  * Fix a deref after a null check in SECKEY_SetPublicValue (bmo#1531074)
+  * Properly handle ESNI with HRR (bmo#1517714)
+  * Expose HKDF-Expand-Label with mechanism (bmo#1529813)
+  * Align TLS 1.3 HKDF trace levels (bmo#1535122)
+  * Use getentropy on compatible versions of FreeBSD (bmo#1530102)
+
+-------------------------------------------------------------------
+Sun Mar 17 09:58:17 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.42.1
+  * required by Firefox 66.0
+  New functionality
+  * Support XDG basedir specification (bmo#818686)
+  Notable changes
+  * added some testcases from the Wycheproof project
+  Bugs fixed
+  * Reject invalid CH.legacy_version in TLS 1.3 (bmo#1490006)
+  * A fix for Solaris where Firefox 60 core dumps during start when
+    using profile from version 52 (bmo#1513913)
+
+-------------------------------------------------------------------
+Wed Jan 23 16:30:27 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.41.1
+  * (3.41) required by Firefox 65.0
+  New functionality
+  * Implemented EKU handling for IPsec IKE. (bmo#1252891)
+  * Enable half-closed states for TLS. (bmo#1423043)
+  * Enabled the following ciphersuites by default: (bmo#1493215)
+    TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+    TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+    TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+    TLS_RSA_WITH_AES_256_GCM_SHA384
+  Notable changes
+  * The following CA certificates were added:
+    CN = Certigna Root CA
+    CN = GTS Root R1
+    CN = GTS Root R2
+    CN = GTS Root R3
+    CN = GTS Root R4
+    CN = UCA Global G2 Root
+    CN = UCA Extended Validation Root
+  * The following CA certificates were removed:
+    CN = AC Raíz Certicámara S.A.
+    CN = Certplus Root CA G1
+    CN = Certplus Root CA G2
+    CN = OpenTrust Root CA G1
+    CN = OpenTrust Root CA G2
+    CN = OpenTrust Root CA G3
+  Bugs fixed
+  * Reject empty supported_signature_algorithms in Certificate
+    Request in TLS 1.2 (bmo#1412829)
+  * Cache side-channel variant of the Bleichenbacher attack (bmo#1485864)
+    (CVE-2018-12404)
+  * Resend the same ticket in ClientHello after HelloRetryRequest (bmo#1481271)
+  * Set session_id for external resumption tokens (bmo#1493769)
+  * Reject CCS after handshake is complete in TLS 1.3 (bmo#1507179)
+  * Add additional null checks to several CMS functions to fix a rare
+    CMS crash. (bmo#1507135, bmo#1507174) (3.41.1)
+- removed obsolete patches
+  nss-disable-ocsp-test.patch
+
+-------------------------------------------------------------------
+Mon Dec 10 21:39:03 UTC 2018 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.40.1
+  * required by Firefox 64.0
+  * patch release fixes CVE-2018-12404
+  Notable bug fixes
+  * FFDHE key exchange sometimes fails with decryption failure (bmo#1478698)
+  New functionality
+  * The draft-00 version of encrypted SNI support is implemented
+  * tstclnt now takes -N option to specify encrypted SNI key
+  Notable changes
+  * The mozilla::pkix library has been ported from Mozilla PSM to NSS.
+    This is a C++ library for building certification paths.
+    mozilla::pkix APIs are not exposed in the libraries NSS builds.
+  * It is easier to build NSS on Windows in mozilla-build environments
+  * The following CA certificates were Removed:
+    CN = Visa eCommerce Root
+
+-------------------------------------------------------------------
+Sun Oct 21 07:39:58 UTC 2018 - wr@rosenauer.org
+
+- update to NSS 3.39
+  * required by Firefox 63.0
+  Notable bug fixes
+  * NSS responded to an SSLv2-compatible ClientHello with a
+    ServerHello that had an all-zero random (CVE-2018-12384) (bmo#1483128)
+  New functionality
+  * The tstclnt and selfserv utilities added support for configuring
+    the enabled TLS signature schemes using the -J parameter.
+  * NSS will use RSA-PSS keys to authenticate in TLS. Support for
+    these keys is disabled by default but can be enabled using
+    SSL_SignatureSchemePrefSet().
+  * certutil added the ability to delete an orphan private key from
+    an NSS key database.
+  * Added the nss-policy-check utility, which can be used to check
+    an NSS policy configuration for problems.
+  * A PKCS#11 URI can be used as an identifier for a PKCS#11 token.
+  Notable changes
+  * The TLS 1.3 implementation uses the final version number from
+    RFC 8446.
+  * Previous versions of NSS accepted an RSA PKCS#1 v1.5 signature
+    where the DigestInfo structure was missing the NULL parameter.
+    Starting with version 3.39, NSS requires the encoding to contain
+    the NULL parameter.
+  * The tstclnt and selfserv test utilities no longer accept the -z
+    parameter, as support for TLS compression was removed in a
+    previous NSS version.
+  * The CA certificates list was updated to version 2.26.
+  * The following CA certificates were Added:
+    - OU = GlobalSign Root CA - R6
+    - CN = OISTE WISeKey Global Root GC CA
+  * The following CA certificate was Removed:
+    - CN = ComSign
+  * The following CA certificates had the Websites trust bit disabled:
+    - CN = Certplus Root CA G1
+    - CN = Certplus Root CA G2
+    - CN = OpenTrust Root CA G1
+    - CN = OpenTrust Root CA G2
+    - CN = OpenTrust Root CA G3
+
+-------------------------------------------------------------------
+Sun Oct 14 08:10:08 UTC 2018 - meissner@suse.com
+
+- enable PIE support for the included binaries
+
+-------------------------------------------------------------------
+Fri Aug 10 07:13:18 UTC 2018 - wr@rosenauer.org
+
+- update to NSS 3.38
+  * required by Firefox 62.0
+  New Functionality
+  * Added support for the TLS Record Size Limit Extension
+  * When creating a certificate request (CSR) using certutil -R, an
+    existing orphan private key can be reused. Parameter -k may be
+    used to specify the ID of an existing orphan key. The available
+    orphan key IDs can be displayed using command certutil -K.
+  * When using certutil -O to print the chain for a given certificate
+    nickname, the new parameter --simple-self-signed may be provided,
+    which can avoid ambiguous output in some scenarios.
+  New Functions
+  * SECITEM_MakeItem - Allocate and make an item with the requested contents
+    (secitem.h)
+  New Macros
+  * SSL_RECORD_SIZE_LIMIT - used to control the TLS Record Size Limit
+    Extension (in ssl.h)
+  Notable Changes
+  * Fixed CVE-2018-0495 (bmo#1464971)
+  * Various security fixes in the ASN.1 code
+  * NSS automatically enables caching for SQL database storage on
+    Linux, if it is located on a network filesystem that's known to
+    benefit from caching.
+  * When repeatedly importing the same certificate into an SQL database,
+    the existing nickname will be kept.
+
+-------------------------------------------------------------------
+Sat Jun 23 14:08:46 UTC 2018 - wr@rosenauer.org
+
+- update to NSS 3.37.3
+  * required by Firefox 61.0
+  Notable changes:
+  * The TLS 1.3 implementation was updated to Draft 28.
+  * Added HACL* Poly1305 32-bit
+  * The code to support the NPN protocol has been fully removed.
+  * NSS allows servers now to register ALPN handling callbacks to
+    select a protocol.
+  * NSS supports opening SQL databases in read-only mode.
+  * On Linux, some build configurations can use glibc's function
+    getentropy(), which uses the kernel's getrandom() function.
+  * The CA list was updated to version 2.24, which removed the
+    following CA certificates:
+    - CN = S-TRUST Universal Root CA
+    - CN = TC TrustCenter Class 3 CA II
+    - CN = TÜRKTRUST Elektronik Sertifika Hizmet Sağlayıcısı H5
+  * Fix build on armv6/armv7 and other platforms (bmo#1459739)
+
+-------------------------------------------------------------------
+Tue Jun 19 15:00:43 UTC 2018 - schwab@suse.de
+
+- Set USE_64 on riscv64
+
+-------------------------------------------------------------------
+Thu Jun  7 12:30:44 UTC 2018 - wr@rosenauer.org
+
+- update to NSS 3.36.4
+  * required for Firefox 60.0.2 (bsc#1096515)
+  * Fix crash on macOS related to authentication tokens, e.g. PK11or
+    WebAuthn. (bmo#1461731)
+  Bugfixes from 3.36.2
+  * Connecting to a server that was recently upgraded to TLS 1.3
+    would result in a SSL_RX_MALFORMED_SERVER_HELLO error. (bmo#1462303)
+  * Fix a rare bug with PKCS#12 files. (bmo#1460673)
+- use relro linker option (add-relro-linker-option.patch)
+
+-------------------------------------------------------------------
+Tue Apr 24 05:58:54 UTC 2018 - wr@rosenauer.org
+
+- update to NSS 3.36.1
+  Notable changes
+  * In NSS version 3.35 the iteration count in optimized builds,
+    which is used for password based encryption algorithm related to
+    encrypted PKCS#7 or PKCS#12 data, was increased to one million
+    iterations. That change had caused an interoperability regression
+    with operating systems that are limited to 600 K iterations.
+    NSS 3.36.1 has been changed to use the same 600 K limit.
+  Bugs fixed
+  * Certain smartcard operations could result in a deadlock.
+
+-------------------------------------------------------------------
+Thu Mar 15 18:13:38 UTC 2018 - cgrobertson@suse.com
+
+- update to NSS 3.36
+  New functionality
+  * Experimental APIs for TLS session cache handling
+  Notable Changes
+  * Replaces existing vectorized ChaCha20 code with verified
+    HACL* implementation.
+- Removed patch as no longer needed: renegotiate-transitional.patch
+  upstream fix
+
+-------------------------------------------------------------------
+Thu Feb  8 06:11:12 UTC 2018 - wr@rosenauer.org
+
+- update to NSS 3.35
+  New functionality
+  * TLS 1.3 support has been updated to draft -23. This includes a
+    large number of changes since 3.34, which supported only draft
+    -18. See below for details.
+  New Types
+  * SSLHandshakeType - The type of a TLS handshake message.
+  * For the SSLSignatureScheme enum, the enumerated values
+    ssl_sig_rsa_pss_sha* are deprecated in response to a change in
+    TLS 1.3.  Please use the equivalent ssl_sig_rsa_pss_rsae_sha*
+    for rsaEncryption keys, or ssl_sig_rsa_pss_pss_sha* for PSS keys.
+    Note that this release does not include support for the latter.
+  Notable Changes
+  * Previously, NSS used the DBM file format by default. Starting
+    with version 3.35, NSS uses the SQL file format by default.
+    Additional information can be found on this Fedora Linux project
+    page: https://fedoraproject.org/wiki/Changes/NSSDefaultFileFormatSql
+  * Added formally verified implementations of non-vectorized Chacha20
+    and non-vectorized Poly1305 64-bit.
+  * For stronger security, when creating encrypted PKCS#7 or PKCS#12 data,
+    the iteration count for the password based encryption algorithm
+    has been increased to one million iterations. Note that debug builds
+    will use a lower count, for better performance in test environments.
+  * NSS 3.30 had introduced a regression, preventing NSS from reading
+    some AES encrypted data, produced by older versions of NSS.
+    NSS 3.35 fixes this regression and restores the ability to read
+    affected data.
+  * The following CA certificates were Removed:
+    OU = Security Communication EV RootCA1
+    CN = CA Disig Root R1
+    CN = DST ACES CA X6
+    Subject CN = VeriSign Class 3 Secure Server CA - G2
+  * The Websites (TLS/SSL) trust bit was turned off for the following
+    CA certificates:
+    CN = Chambers of Commerce Root
+    CN = Global Chambersign Root
+  * TLS servers are able to handle a ClientHello statelessly, if the
+    client supports TLS 1.3.  If the server sends a HelloRetryRequest,
+    it is possible to discard the server socket, and make a new socket
+    to handle any subsequent ClientHello. This better enables stateless
+    server operation. (This feature is added in support of QUIC, but it
+    also has utility for DTLS 1.3 servers.)
+  * The tstclnt utility now supports DTLS, using the -P option.  Note that
+    a DTLS server is also provided in tstclnt.
+  * TLS compression is no longer possible with NSS. The option can be
+    enabled, but NSS will no longer negotiate compression.
+  * The signatures of functions SSL_OptionSet, SSL_OptionGet,
+    SSL_OptionSetDefault and SSL_OptionGetDefault have been modified,
+    to take a PRIntn argument rather than PRBool. This makes it clearer,
+    that options can have values other than 0 or 1.  Note this does
+    not affect ABI compatibility, because PRBool is a typedef for PRIntn.
+
+-------------------------------------------------------------------
+Tue Jan  9 12:50:19 UTC 2018 - wr@rosenauer.org
+
+- update to NSS 3.34.1
+  Changes in 3.34:
+  Notable changes
+  * The following CA certificates were Added:
+    GDCA TrustAUTH R5 ROOT
+    SSL.com Root Certification Authority RSA
+    SSL.com Root Certification Authority ECC
+    SSL.com EV Root Certification Authority RSA R2
+    SSL.com EV Root Certification Authority ECC
+    TrustCor RootCert CA-1
+    TrustCor RootCert CA-2
+    TrustCor ECA-1
+  * The following CA certificates were Removed:
+    Certum CA, O=Unizeto Sp. z o.o.
+    StartCom Certification Authority
+    StartCom Certification Authority G2
+    TÜBİTAK UEKAE Kök Sertifika Hizmet Sağlayıcısı - Sürüm 3
+    ACEDICOM Root
+    Certinomis - Autorité Racine
+    TÜRKTRUST Elektronik Sertifika Hizmet Sağlayıcısı
+    PSCProcert
+    CA 沃通根证书, O=WoSign CA Limited
+    Certification Authority of WoSign
+    Certification Authority of WoSign G2
+    CA WoSign ECC Root
+  * libfreebl no longer requires SSE2 instructions
+  New functionality
+  * When listing an NSS database using certutil -L, but the database
+    hasn't yet been initialized with any non-empty or empty password,
+    the text "Database needs user init" will be included in the listing.
+  * When using certutil to set an inacceptable password in FIPS mode,
+    a correct explanation of acceptable passwords will be printed.
+  * SSLKEYLOGFILE is now supported with TLS 1.3, see bmo#1287711 for details.
+  * SSLChannelInfo has two new fields (bmo#1396525):
+    SSLNamedGroup originalKeaGroup holds the key exchange group of
+    the original handshake when the session was resumed.
+    PRBool resumed is PR_TRUE when the session is resumed and PR_FALSE
+    otherwise.
+  * RSA-PSS signatures are now supported on certificates. Certificates
+    with RSA-PSS or RSA-PKCS#1v1.5 keys can be used to create an RSA-PSS
+    signature on a certificate using the --pss-sign argument to certutil.
+  Changes in 3.34.1:
+  * The following CA certificate was Re-Added. It was removed in NSS
+    3.34, but has been re-added with only the Email trust bit set.
+    (bmo#1418678):
+    libfreebl no longer requires SSE2 instructionsCN = Certum CA, O=Unizeto Sp. z o.o.
+  * Removed entries from certdata.txt for actively distrusted
+    certificates that have expired (bmo#1409872)
+  * The version of the CA list was set to 2.20.
+
+-------------------------------------------------------------------
+Thu Dec  7 11:13:11 UTC 2017 - dimstar@opensuse.org
+
+- Escape the usage of %{VERSION} when calling out to rpm.
+  RPM 4.14 has %{VERSION} defined as 'the main packages version'.
+
+-------------------------------------------------------------------
+Tue Oct  3 17:53:11 UTC 2017 - wr@rosenauer.org
+
+- update to NSS 3.33
+  Notable changes
+  * TLS compression is no longer supported. API calls that attempt
+    to enable compression are accepted without failure. However,
+    TLS compression will remain disabled.
+  * This version of NSS uses a formally verified implementation of
+    Curve25519 on 64-bit systems.
+  * The compile time flag DISABLE_ECC has been removed.
+  * When NSS is compiled without NSS_FORCE_FIPS=1 startup checks
+    are not performed anymore.
+  * Various minor improvements and correctness fixes.
+  New functionality
+  * When listing an NSS database using certutil -L, but the database
+    hasn't yet been initialized with any non-empty or empty password,
+    the text "Database needs user init" will be included in the listing.
+  * When using certutil to set an inacceptable password in FIPS mode,
+    a correct explanation of acceptable passwords will be printed.
+  New functions
+  * CERT_FindCertByIssuerAndSNCX - a variation of existing function
+    CERT_FindCertByIssuerAndSN that accepts an additional password
+    context parameter.
+  * CERT_FindCertByNicknameOrEmailAddrCX - a variation of existing
+    function CERT_FindCertByNicknameOrEmailAddr that accepts an
+    additional password context parameter.
+  * CERT_FindCertByNicknameOrEmailAddrForUsageCX - a variation of
+    existing function CERT_FindCertByNicknameOrEmailAddrForUsage that
+    accepts an additional password context parameter.
+  * NSS_SecureMemcmpZero - check if a memory region is all zero in
+    constant time.
+  * PORT_ZAllocAligned - allocate aligned memory.
+  * PORT_ZAllocAlignedOffset - allocate aligned memory for structs.
+  * SSL_GetExperimentalAPI - access experimental APIs in libssl.
+- add patch to separate hw and sw implementations for AES and GCM
+  to avoid implicit execution of SSE2 methods if compiled for i586
+  (bmo-1400603.patch, boo#1061204)
+
+-------------------------------------------------------------------
+Fri Sep 15 13:56:36 UTC 2017 - wr@rosenauer.org
+
+- update to NSS 3.32.1
+  * no upstream changelog/releasenote provided
+
+-------------------------------------------------------------------
+Tue Sep 12 09:26:03 UTC 2017 - wr@rosenauer.org
+
+- update to NSS 3.32
+  Notable changes
+  * Various minor improvements and correctness fixes.
+  * The Code Signing trust bit was turned off for all included root certificates.
+  * The Websites (TLS/SSL) trust bit was turned off for the following
+    root certificates:
+    AddTrust Class 1 CA Root
+    Swisscom Root CA 2
+  * The following CA certificates were Removed:
+    AddTrust Public CA Root
+    AddTrust Qualified CA Root
+    China Internet Network Information Center EV Certificates Root
+    CNNIC ROOT
+    ComSign Secured CA
+    GeoTrust Global CA 2
+    Secure Certificate Services
+    Swisscom Root CA 1
+    Swisscom Root EV CA 2
+    Trusted Certificate Services
+    UTN-USERFirst-Hardware
+    UTN-USERFirst-Object
+- requires NSPR 4.16
+
+-------------------------------------------------------------------
+Tue Sep 12 08:56:48 UTC 2017 - wr@rosenauer.org
+
+- update to NSS 3.31.1
+  * Potential deadlock when using an external PKCS#11 token (bmo#1381784)
+
+-------------------------------------------------------------------
+Sat Aug  5 13:15:09 UTC 2017 - wr@rosenauer.org
+
+- update to NSS 3.31
+  New functionality
+  * Allow certificates to be specified by RFC7512 PKCS#11 URIs.
+  * Allow querying a certificate object for its temporary or permanent
+    storage status in a thread safe way.
+  New functions
+  * CERT_GetCertIsPerm - retrieve the permanent storage status attribute of a
+    certificate in a thread safe way.
+  * CERT_GetCertIsTemp - retrieve the temporary storage status attribute of a
+    certificate in a thread safe way.
+  * PK11_FindCertFromURI - find a certificate identified by the given URI.
+  * PK11_FindCertsFromURI - find a list of certificates identified by the given
+    URI.
+  * PK11_GetModuleURI - retrieve the URI of the given module.
+  * PK11_GetTokenURI - retrieve the URI of a token based on the given slot
+    information.
+  * PK11URI_CreateURI - create a new PK11URI object from a set of attributes.
+  * PK11URI_DestroyURI - destroy a PK11URI object.
+  * PK11URI_FormatURI - format a PK11URI object to a string.
+  * PK11URI_GetPathAttribute - retrieve a path attribute with the given name.
+  * PK11URI_GetQueryAttribute - retrieve a query attribute with the given name.
+  * PK11URI_ParseURI - parse PKCS#11 URI and return a new PK11URI object.
+  New macros
+  * Several new macros that start with PK11URI_PATTR_ for path attributes defined
+    in RFC7512.
+  * Several new macros that start with PK11URI_QATTR_ for query attributes defined
+    in RFC7512.
+  Notable changes
+  * The APIs that set a TLS version range have been changed to trim the requested
+    range to the overlap with a systemwide crypto policy, if configured.
+    SSL_VersionRangeGetSupported can be used to query the overlap between the
+    library's supported range of TLS versions and the systemwide policy.
+  * Previously, SSL_VersionRangeSet and SSL_VersionRangeSetDefault returned a
+    failure if the requested version range wasn't fully allowed by the systemwide
+    crypto policy. They have been changed to return success, if at least one TLS
+    version overlaps between the requested range and the systemwide policy. An
+    application may call SSL_VersionRangeGet and SSL_VersionRangeGetDefault to
+    query the TLS version range that was effectively activated.
+  * Corrected the encoding of Domain Name Constraints extensions created by
+    certutil.
+  * NSS supports a clean seeding mechanism for *NIX systems now using only
+    /dev/urandom. This is used only when SEED_ONLY_DEV_URANDOM is set at compile
+    time.
+  * CERT_AsciiToName can handle OIDs in dotted decimal form now.
+- removed obsolete nss-fix-hash.patch
+
+-------------------------------------------------------------------
+Wed Apr 26 21:30:30 UTC 2017 - wr@rosenauer.org
+
+- update to NSS 3.30.2
+  New Functionality
+  * In the PKCS#11 root CA module (nssckbi), CAs with positive trust
+    are marked with a new boolean attribute, CKA_NSS_MOZILLA_CA_POLICY,
+    set to true. Applications that need to distinguish them from other
+    other root CAs, may use the exported function PK11_HasAttributeSet.
+  * Support for callback functions that can be used to monitor SSL/TLS
+    alerts that are sent or received.
+  New Functions
+  * CERT_CompareAVA - performs a comparison of two CERTAVA structures,
+    and returns a SECComparison result.
+  * PK11_HasAttributeSet - allows to check if a PKCS#11 object in a
+    given slot has a specific boolean attribute set.
+  * SSL_AlertReceivedCallback - register a callback function, that will
+    be called whenever an SSL/TLS alert is received
+  * SSL_AlertSentCallback - register a callback function, that will be
+    called whenever an SSL/TLS alert is sent
+  * SSL_SetSessionTicketKeyPair - configures an asymmetric key pair,
+    for use in wrapping session ticket keys, used by the server. This
+    function currently only accepts an RSA public/private key pair.
+  New Macros
+  * PKCS12_AES_CBC_128, PKCS12_AES_CBC_192, PKCS12_AES_CBC_256
+    cipher family identifiers corresponding to the PKCS#5 v2.1 AES
+    based encryption schemes used in the PKCS#12 support in NSS
+  * CKA_NSS_MOZILLA_CA_POLICY - identifier for a boolean PKCS#11
+    attribute, that should be set to true, if a CA is present because
+    of it's acceptance according to the Mozilla CA Policy
+  Notable Changes
+  * The TLS server code has been enhanced to support session tickets
+    when no RSA certificate (e.g. only an ECDSA certificate) is configured.
+  * RSA-PSS signatures produced by key pairs with a modulus bit length
+    that is not a multiple of 8 are now supported.
+  * The pk12util tool now supports importing and exporting data encrypted
+    in the AES based schemes defined in PKCS#5 v2.1.
+  Root CA updates
+  * The following CA certificates were Removed
+    - O = Japanese Government, OU = ApplicationCA
+    - CN = WellsSecure Public Root Certificate Authority
+    - CN = TÜRKTRUST Elektronik Sertifika Hizmet Sağlayıcısı H6
+    - CN = Microsec e-Szigno Root
+  * The following CA certificates were Added
+    - CN = D-TRUST Root CA 3 2013
+    - CN = TUBITAK Kamu SM SSL Kok Sertifikasi - Surum 1
+  * The version number of the updated root CA list has been set to 2.14
+    (bmo#1350859)
+  * Domain name constraints for one of the new CAs have been added to the
+    NSS code (bmo#1349705)
+- removed obsolete nss-bmo1320695.patch
+
+-------------------------------------------------------------------
+Wed Apr 12 21:21:38 UTC 2017 - wr@rosenauer.org
+
+- update to NSS 3.29.5
+  * Rare crashes in the base 64 decoder and encoder were fixed.
+    (bmo#1344380)
+  * A carry over bug in the RNG was fixed. (bmo#1345089)
+- Allow use of session tickets when there is no ticket wrapping key
+  (boo#1015499, bmo#1320695) (nss-bmo1320695.patch)
+
+-------------------------------------------------------------------
+Thu Mar 16 20:27:50 UTC 2017 - wr@rosenauer.org
+
+- update to NSS 3.29.3
+  * enables TLS 1.3 by default
+- TLS 1.3 was already enabled in 3.28.x builds for openSUSE.
+  This build option was removed.
+- required for Firefox 53
+
+-------------------------------------------------------------------
+Thu Mar 16 09:11:53 UTC 2017 - rguenther@suse.com
+
+- Add nss-fix-hash.patch to fix hash computation (and build with
+  GCC 7 which complains about shifts of boolean values).
+
+-------------------------------------------------------------------
+Mon Feb 20 11:53:55 UTC 2017 - wr@rosenauer.org
+
+- update to NSS 3.28.3
+  * This is a patch release to fix binary compatibility issues.
+    NSS version 3.28, 3.28.1 and 3.28.2 contained changes that were
+    in violation with the NSS compatibility promise.
+
+    ECParams, which is part of the public API of the freebl/softokn
+    parts of NSS, had been changed to include an additional attribute.
+    That size increase caused crashes or malfunctioning with applications
+    that use that data structure directly, or indirectly through
+    ECPublicKey, ECPrivateKey, NSSLOWKEYPublicKey, NSSLOWKEYPrivateKey,
+    or potentially other data structures that reference ECParams.
+    The change has been reverted to the original state in bug
+    bmo#1334108.
+
+    SECKEYECPublicKey had been extended with a new attribute, named
+    "encoding". If an application passed type SECKEYECPublicKey to NSS
+    (as part of SECKEYPublicKey), the NSS library read the uninitialized
+    attribute. With this NSS release SECKEYECPublicKey.encoding is
+    deprecated. NSS no longer reads the attribute, and will always
+    set it to ECPoint_Undefined. See bug bmo#1340103.
+- requires NSPR >= 4.13.1
+
+-------------------------------------------------------------------
+Sun Feb 12 07:31:29 UTC 2017 - wr@rosenauer.org
+
+- update to NSS 3.28.2
+  This is a stability and compatibility release. Below is a summary of
+  the changes.
+  * Fixed a NSS 3.28 regression in the signature scheme flexibility that
+    causes connectivity issues between iOS 8 clients and NSS servers
+    with ECDSA certificates (bmo#1334114)
+  * Fixed a possible crash on some Windows systems (bmo#1323150)
+  * Fixed a compatibility issue with TLS clients that do not provide a
+    list of supported key exchange groups (bmo#1330612)
+
+-------------------------------------------------------------------
+Wed Jan 18 22:00:31 UTC 2017 - wr@rosenauer.org
+
+- update to NSS 3.28.1
+  No new functionality is introduced in this release. This is a patch release to
+  update the list of root CA certificates and address a minor TLS compatibility
+  issue that some applications experienced with NSS 3.28.
+  * The following CA certificates were Removed
+    CN = Buypass Class 2 CA 1
+    CN = Root CA Generalitat Valenciana
+    OU = RSA Security 2048 V3
+  * The following CA certificates were Added
+    OU = AC RAIZ FNMT-RCM
+    CN = Amazon Root CA 1
+    CN = Amazon Root CA 2
+    CN = Amazon Root CA 3
+    CN = Amazon Root CA 4
+    CN = LuxTrust Global Root 2
+    CN = Symantec Class 1 Public Primary Certification Authority - G4
+    CN = Symantec Class 1 Public Primary Certification Authority - G6
+    CN = Symantec Class 2 Public Primary Certification Authority - G4
+    CN = Symantec Class 2 Public Primary Certification Authority - G6
+  * The version number of the updated root CA list has been set to 2.11
+  * A misleading assertion/alert has been removed when NSS tries to flush data
+    to the peer but the connection was already reset.
+- update to NSS 3.28
+  New functionality:
+  * NSS includes support for TLS 1.3 draft -18. This includes a number
+    of improvements to TLS 1.3:
+    - The signed certificate timestamp, used in certificate
+      transparency, is supported in TLS 1.3.
+    - Key exporters for TLS 1.3 are supported. This includes the early
+      key exporter, which can be used if 0-RTT is enabled. Note that
+      there is a difference between TLS 1.3 and key exporters in older
+      versions of TLS. TLS 1.3 does not distinguish between an empty
+      context and no context.
+    - The TLS 1.3 (draft) protocol can be enabled, by defining
+      NSS_ENABLE_TLS_1_3=1 when building NSS.
+    - NSS includes support for the X25519 key exchange algorithm,
+      which is supported and enabled by default in all versions of TLS.
+  New Functions:
+  * SSL_ExportEarlyKeyingMaterial
+  * SSL_SendAdditionalKeyShares
+  * SSL_SignatureSchemePrefSet
+  * SSL_SignatureSchemePrefGet
+  Notable Changes:
+  * NSS can no longer be compiled with support for additional elliptic curves.
+    This was previously possible by replacing certain NSS source files.
+  * NSS will now detect the presence of tokens that support additional
+    elliptic curves and enable those curves for use in TLS.
+    Note that this detection has a one-off performance cost, which can be
+    avoided by using the SSL_NamedGroupConfig function to limit supported
+    groups to those that NSS provides.
+  * PKCS#11 bypass for TLS is no longer supported and has been removed.
+  * Support for "export" grade SSL/TLS cipher suites has been removed.
+  * NSS now uses the signature schemes definition in TLS 1.3.
+    This also affects TLS 1.2. NSS will now only generate signatures with the
+    combinations of hash and signature scheme that are defined in TLS 1.3,
+    even when negotiating TLS 1.2.
+    - This means that SHA-256 will only be used with P-256 ECDSA certificates,
+      SHA-384 with P-384 certificates, and SHA-512 with P-521 certificates.
+      SHA-1 is permitted (in TLS 1.2 only) with any certificate for backward
+      compatibility reasons.
+    - New functions to configure signature schemes are provided:
+      SSL_SignatureSchemePrefSet, SSL_SignatureSchemePrefGet.
+      The old SSL_SignaturePrefSet and SSL_SignaturePrefSet functions are
+      now deprecated.
+    - NSS will now no longer assume that default signature schemes are
+      supported by a peer if there was no commonly supported signature scheme.
+  * NSS will now check if RSA-PSS signing is supported by the token that holds
+    the private key prior to using it for TLS.
+  * The certificate validation code contains checks to no longer trust
+    certificates that are issued by old WoSign and StartCom CAs after
+    October 21, 2016. This is equivalent to the behavior that Mozilla will
+    release with Firefox 51.
+- update to NSS 3.27.2
+  * SSL_SetTrustAnchors leaks (bmo#1318561)
+- removed upstreamed patch
+  * nss-uninitialized.patch
+- raised the minimum softokn/freebl version to 3.28 as reported in
+  boo#1021636
+
+-------------------------------------------------------------------
+Mon Nov 14 12:35:55 UTC 2016 - wr@rosenauer.org
+
+- update to NSS 3.26.2
+  * required for Firefox 50.0
+  Changes in 3.26
+  New Functionality:
+  * the selfserv test utility has been enhanced to support ALPN
+    (HTTP/1.1) and 0-RTT
+  * added support for the System-wide crypto policy available on
+    Fedora Linux see http://fedoraproject.org/wiki/Changes/CryptoPolicy
+  * introduced build flag NSS_DISABLE_LIBPKIX that allows compilation
+    of NSS without the libpkix library
+  Notable Changes:
+  * The following CA certificate was Added
+    CN = ISRG Root X1
+  * NPN is disabled and ALPN is enabled by default
+  * the NSS test suite now completes with the experimental TLS 1.3
+    code enabled
+  * several test improvements and additions, including a NIST known answer test
+  Changes in 3.26.2
+  * MD5 signature algorithms sent by the server in CertificateRequest
+    messages are now properly ignored. Previously, with rare server
+    configurations, an MD5 signature algorithm might have been selected
+    for client authentication and caused the client to abort the
+    connection soon after.
+
+-------------------------------------------------------------------
+Mon Aug 22 13:02:08 UTC 2016 - wr@rosenauer.org
+
+- update to NSS 3.25
+  New functionality:
+  * Implemented DHE key agreement for TLS 1.3
+  * Added support for ChaCha with TLS 1.3
+  * Added support for TLS 1.2 ciphersuites that use SHA384 as the PRF
+  * In previous versions, when using client authentication with TLS 1.2,
+    NSS only supported certificate_verify messages that used the same
+    signature hash algorithm as used by the PRF. This limitation has
+    been removed.
+  * Several functions have been added to the public API of the
+    NSS Cryptoki Framework.
+  New functions:
+  * NSSCKFWSlot_GetSlotID
+  * NSSCKFWSession_GetFWSlot
+  * NSSCKFWInstance_DestroySessionHandle
+  * NSSCKFWInstance_FindSessionHandle
+  Notable changes:
+  * An SSL socket can no longer be configured to allow both TLS 1.3 and SSLv3
+  * Regression fix: NSS no longer reports a failure if an application
+    attempts to disable the SSLv2 protocol.
+  * The list of trusted CA certificates has been updated to version 2.8
+  * The following CA certificate was Removed
+    Sonera Class1 CA
+  * The following CA certificates were Added
+    Hellenic Academic and Research Institutions RootCA 2015
+    Hellenic Academic and Research Institutions ECC RootCA 2015
+    Certplus Root CA G1
+    Certplus Root CA G2
+    OpenTrust Root CA G1
+    OpenTrust Root CA G2
+    OpenTrust Root CA G3
+
+-------------------------------------------------------------------
+Mon Aug 22 12:54:15 UTC 2016 - wr@rosenauer.org
+
+- fix build on certain toolchains (nss-uninitialized.patch)
+  jarfile.c:805:13: error: 'it' may be used uninitialized in this
+  function [-Werror=maybe-uninitialized]
+
+-------------------------------------------------------------------
+Thu Aug  4 20:28:32 UTC 2016 - wr@rosenauer.org
+
+- also sign libfreeblpriv3.so to allow FIPS mode again (boo#992236)
+
+-------------------------------------------------------------------
+Sat Jul 30 08:53:02 UTC 2016 - wr@rosenauer.org
+
+- update to NSS 3.24
+  New functionality:
+  * NSS softoken has been updated with the latest National Institute
+    of Standards and Technology (NIST) guidance (as of 2015):
+    - Software integrity checks and POST functions are executed on
+      shared library load. These checks have been disabled by default,
+      as they can cause a performance regression. To enable these
+      checks, you must define symbol NSS_FORCE_FIPS when building NSS.
+    - Counter mode and Galois/Counter Mode (GCM) have checks to
+      prevent counter overflow.
+    - Additional CSPs are zeroed in the code.
+    - NSS softoken uses new guidance for how many Rabin-Miller tests
+      are needed to verify a prime based on prime size.
+  * NSS softoken has also been updated to allow NSS to run in FIPS
+    Level 1 (no password). This mode is triggered by setting the
+    database password to the empty string. In FIPS mode, you may move
+    from Level 1 to Level 2 (by setting an appropriate password),
+    but not the reverse.
+  * A SSL_ConfigServerCert function has been added for configuring
+    SSL/TLS server sockets with a certificate and private key. Use
+    this new function in place of SSL_ConfigSecureServer,
+    SSL_ConfigSecureServerWithCertChain, SSL_SetStapledOCSPResponses,
+    and SSL_SetSignedCertTimestamps. SSL_ConfigServerCert automatically
+    determines the certificate type from the certificate and private key.
+    The caller is no longer required to use SSLKEAType explicitly to
+    select a "slot" into which the certificate is configured (which
+    incorrectly identifies a key agreement type rather than a certificate).
+    Separate functions for configuring Online Certificate Status Protocol
+    (OCSP) responses or Signed Certificate Timestamps are not needed,
+    since these can be added to the optional SSLExtraServerCertData struct
+    provided to SSL_ConfigServerCert.  Also, partial support for RSA
+    Probabilistic Signature Scheme (RSA-PSS) certificates has been added.
+    Although these certificates can be configured, they will not be
+    used by NSS in this version.
+  New functions
+  * SSL_ConfigServerCert - Configures an SSL/TLS socket with a
+    certificate, private key, and other information.
+  * PORT_InitCheapArena - Initializes an arena that was created on
+    the stack. (See PORTCheapArenaPool.=
+  * PORT_DestroyCheapArena - Destroys an arena that was created on
+    the stack. (See PORTCheapArenaPool.)
+  New types
+  * SSLExtraServerCertData - Optionally passed as an argument to
+    SSL_ConfigServerCert. This struct contains supplementary information
+    about a certificate, such as the intended type of the certificate,
+    stapled OCSP responses, or Signed Certificate Timestamps (used for
+    certificate transparency).
+  * PORTCheapArenaPool - A stack-allocated arena pool, to be used for
+    temporary arena allocations.
+  New macros
+  * CKM_TLS12_MAC
+  * SEC_OID_TLS_ECDHE_PSK - This OID governs the use of the
+    TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 cipher suite, which is used
+    only for session resumption in TLS 1.3.
+  Notable changes:
+  * Deprecate the following functions. (Applications should instead use the new
+    SSL_ConfigServerCert function.):
+    - SSL_SetStapledOCSPResponses
+    - SSL_SetSignedCertTimestamps
+    - SSL_ConfigSecureServer
+    - SSL_ConfigSecureServerWithCertChain
+  * Deprecate the NSS_FindCertKEAType function, as it reports a misleading
+    value for certificates that might be used for signing rather than
+    key exchange.
+  * Update SSLAuthType to define a larger number of authentication key types.
+  * Deprecate the member attribute authAlgorithm of type SSLCipherSuiteInfo.
+    Instead, applications should use the newly added attribute authType.
+  * Rename ssl_auth_rsa to ssl_auth_rsa_decrypt.
+  * Add a shared library (libfreeblpriv3) on Linux platforms that
+    define FREEBL_LOWHASH.
+  * Remove most code related to SSL v2, including the ability to actively
+    send a SSLv2-compatible client hello. However, the server-side
+    implementation of the SSL/TLS protocol still supports processing
+    of received v2-compatible client hello messages.
+  * Disable (by default) NSS support in optimized builds for logging SSL/TLS
+    key material to a logfile if the SSLKEYLOGFILE environment variable
+    is set. To enable the functionality in optimized builds, you must define
+    the symbol NSS_ALLOW_SSLKEYLOGFILE when building NSS.
+  * Update NSS to protect it against the Cachebleed attack.
+  * Disable support for DTLS compression.
+  * Improve support for TLS 1.3. This includes support for DTLS 1.3.
+    Note that TLS 1.3 support is experimental and not suitable for
+    production use.
+- removed obsolete nss-bmo1236011.patch
+
+-------------------------------------------------------------------
+Thu May 26 05:59:03 UTC 2016 - wr@rosenauer.org
+
+- update to NSS 3.23
+  New functionality:
+  * ChaCha20/Poly1305 cipher and TLS cipher suites now supported
+  * Experimental-only support TLS 1.3 1-RTT mode (draft-11).
+    This code is not ready for production use.
+  New functions:
+  * SSL_SetDowngradeCheckVersion - Set maximum version for new
+    ServerRandom anti-downgrade mechanism. Clients that perform a
+    version downgrade (which is generally a very bad idea) call this
+    with the highest version number that they possibly support.
+    This gives them access to the version downgrade protection from
+    TLS 1.3.
+  Notable changes:
+  * The copy of SQLite shipped with NSS has been updated to version
+    3.10.2
+  * The list of TLS extensions sent in the TLS handshake has been
+    reordered to increase compatibility of the Extended Master Secret
+    with with servers
+  * The build time environment variable NSS_ENABLE_ZLIB has been
+    renamed to NSS_SSL_ENABLE_ZLIB
+  * The build time environment variable NSS_DISABLE_CHACHAPOLY was
+    added, which can be used to prevent compilation of the
+    ChaCha20/Poly1305 code.
+  * The following CA certificates were Removed
+    - Staat der Nederlanden Root CA
+    - NetLock Minositett Kozjegyzoi (Class QA) Tanusitvanykiado
+    - NetLock Kozjegyzoi (Class A) Tanusitvanykiado
+    - NetLock Uzleti (Class B) Tanusitvanykiado
+    - NetLock Expressz (Class C) Tanusitvanykiado
+    - VeriSign Class 1 Public PCA – G2
+    - VeriSign Class 3 Public PCA
+    - VeriSign Class 3 Public PCA – G2
+    - CA Disig
+  * The following CA certificates were Added
+    + SZAFIR ROOT CA2
+    + Certum Trusted Network CA 2
+  * The following CA certificate had the Email trust bit turned on
+    + Actalis Authentication Root CA
+  Security fixes:
+  * CVE-2016-2834: Memory safety bugs (boo#983639)
+    MFSA-2016-61 bmo#1206283 bmo#1221620 bmo#1241034 bmo#1241037
+- removed obsolete nss_gcc6_change.patch
+
+-------------------------------------------------------------------
+Mon Apr 18 15:53:40 UTC 2016 - normand@linux.vnet.ibm.com
+
+-  add nss_gcc6_change.patch
+
+-------------------------------------------------------------------
+Tue Mar 15 10:25:38 UTC 2016 - wr@rosenauer.org
+
+- update to NSS 3.22.3
+  * required for Firefox 46.0
+  * Increase compatibility of TLS extended master secret,
+    don't send an empty TLS extension last in the handshake
+    (bmo#1243641)
+  * Fixed a heap-based buffer overflow related to the parsing of
+    certain ASN.1 structures. An attacker could create a specially-crafted
+    certificate which, when parsed by NSS, would cause a crash or
+    execution of arbitrary code with the permissions of the user.
+    (CVE-2016-1950, bmo#1245528)
+
+-------------------------------------------------------------------
+Wed Mar  9 15:42:01 UTC 2016 - wr@rosenauer.org
+
+- update to NSS 3.22.2
+  New functionality:
+  * RSA-PSS signatures are now supported (bmo#1215295)
+  * Pseudorandom functions based on hashes other than SHA-1 are now supported
+  * Enforce an External Policy on NSS from a config file (bmo#1009429)
+  New functions:
+  * PK11_SignWithMechanism - an extended version PK11_Sign()
+  * PK11_VerifyWithMechanism - an extended version of PK11_Verify()
+  * SSL_PeerSignedCertTimestamps - Get signed_certificate_timestamp
+    TLS extension data
+  * SSL_SetSignedCertTimestamps - Set signed_certificate_timestamp
+    TLS extension data
+  New types:
+  * ssl_signed_cert_timestamp_xtn is added to SSLExtensionType
+  * Constants for several object IDs are added to SECOidTag
+  New macros:
+  * SSL_ENABLE_SIGNED_CERT_TIMESTAMPS
+  * NSS_USE_ALG_IN_SSL
+  * NSS_USE_POLICY_IN_SSL
+  * NSS_RSA_MIN_KEY_SIZE
+  * NSS_DH_MIN_KEY_SIZE
+  * NSS_DSA_MIN_KEY_SIZE
+  * NSS_TLS_VERSION_MIN_POLICY
+  * NSS_TLS_VERSION_MAX_POLICY
+  * NSS_DTLS_VERSION_MIN_POLICY
+  * NSS_DTLS_VERSION_MAX_POLICY
+  * CKP_PKCS5_PBKD2_HMAC_SHA224
+  * CKP_PKCS5_PBKD2_HMAC_SHA256
+  * CKP_PKCS5_PBKD2_HMAC_SHA384
+  * CKP_PKCS5_PBKD2_HMAC_SHA512
+  * CKP_PKCS5_PBKD2_HMAC_GOSTR3411 - (not supported)
+  * CKP_PKCS5_PBKD2_HMAC_SHA512_224 - (not supported)
+  * CKP_PKCS5_PBKD2_HMAC_SHA512_256 - (not supported)
+  Notable changes:
+  * NSS C++ tests are built by default, requiring a C++11 compiler.
+    Set the NSS_DISABLE_GTESTS variable to 1 to disable building these tests.
+  * NSS has been changed to use the PR_GetEnvSecure function that
+    was made available in NSPR 4.12
+
+-------------------------------------------------------------------
+Mon Mar  7 15:41:50 UTC 2016 - wr@rosenauer.org
+
+- update to NSS 3.21.1 (bmo#969894)
+  * required for Firefox 45.0
+  * MFSA 2016-35/CVE-2016-1950 (bmo#1245528)
+    Buffer overflow during ASN.1 decoding in NSS
+  * MFSA 2016-36/CVE-2016-1979 (bmo#1185033)
+    Use-after-free during processing of DER encoded keys in NSS
+
+-------------------------------------------------------------------
+Sun Dec 20 10:12:35 UTC 2015 - wr@rosenauer.org
+
+- update to NSS 3.21
+  * required for Firefox 44.0
+  New functionality:
+  * certutil now supports a --rename option to change a nickname (bmo#1142209)
+  * TLS extended master secret extension (RFC 7627) is supported (bmo#1117022)
+  * New info functions added for use during mid-handshake callbacks (bmo#1084669)
+  New Functions:
+  * NSS_OptionSet - sets NSS global options
+  * NSS_OptionGet - gets the current value of NSS global options
+  * SECMOD_CreateModuleEx - Create a new SECMODModule structure from module name
+    string, module parameters string, NSS specific parameters string, and NSS
+    configuration parameter string. The module represented by the module
+    structure is not loaded. The difference with SECMOD_CreateModule is the new
+    function handles NSS configuration parameter strings.
+  * SSL_GetPreliminaryChannelInfo - obtains information about a TLS channel prior
+    to the handshake being completed, for use with the callbacks that are invoked
+    during the handshake
+  * SSL_SignaturePrefSet - configures the enabled signature and hash algorithms
+    for TLS
+  * SSL_SignaturePrefGet - retrieves the currently configured signature and hash
+    algorithms
+  * SSL_SignatureMaxCount - obtains the maximum number signature algorithms that
+    can be configured with SSL_SignaturePrefSet
+  * NSSUTIL_ArgParseModuleSpecEx - takes a module spec and breaks it into shared
+    library string, module name string, module parameters string, NSS specific
+    parameters string, and NSS configuration parameter strings. The returned
+    strings must be freed by the caller. The difference with
+    NSS_ArgParseModuleSpec is the new function handles NSS configuration
+    parameter strings.
+  * NSSUTIL_MkModuleSpecEx - take a shared library string, module name string,
+    module parameters string, NSS specific parameters string, and NSS
+    configuration parameter string and returns a module string which the caller
+    must free when it is done. The difference with NSS_MkModuleSpec is the new
+    function handles NSS configuration parameter strings.
+  New Types:
+  * CK_TLS12_MASTER_KEY_DERIVE_PARAMS{_PTR} - parameters {or pointer} for
+    CKM_TLS12_MASTER_KEY_DERIVE
+  * CK_TLS12_KEY_MAT_PARAMS{_PTR} - parameters {or pointer} for
+    CKM_TLS12_KEY_AND_MAC_DERIVE
+  * CK_TLS_KDF_PARAMS{_PTR} - parameters {or pointer} for CKM_TLS_KDF
+  * CK_TLS_MAC_PARAMS{_PTR} - parameters {or pointer} for CKM_TLS_MAC
+  * SSLHashType - identifies a hash function
+  * SSLSignatureAndHashAlg - identifies a signature and hash function
+  * SSLPreliminaryChannelInfo - provides information about the session state
+    prior to handshake completion
+  New Macros:
+  * NSS_RSA_MIN_KEY_SIZE - used with NSS_OptionSet and NSS_OptionGet to set or
+    get the minimum RSA key size
+  * NSS_DH_MIN_KEY_SIZE - used with NSS_OptionSet and NSS_OptionGet to set or
+    get the minimum DH key size
+  * NSS_DSA_MIN_KEY_SIZE - used with NSS_OptionSet and NSS_OptionGet to set or
+    get the minimum DSA key size
+  * CKM_TLS12_MASTER_KEY_DERIVE - derives TLS 1.2 master secret
+  * CKM_TLS12_KEY_AND_MAC_DERIVE - derives TLS 1.2 traffic key and IV
+  * CKM_TLS12_MASTER_KEY_DERIVE_DH - derives TLS 1.2 master secret for DH (and
+    ECDH) cipher suites
+  * CKM_TLS12_KEY_SAFE_DERIVE and CKM_TLS_KDF are identifiers for additional
+    PKCS#12 mechanisms for TLS 1.2 that are currently unused in NSS.
+  * CKM_TLS_MAC - computes TLS Finished MAC
+  * NSS_USE_ALG_IN_SSL_KX - policy flag indicating that keys are used in TLS key
+    exchange
+  * SSL_ERROR_RX_SHORT_DTLS_READ - error code for failure to include a complete
+    DTLS record in a UDP packet
+  * SSL_ERROR_NO_SUPPORTED_SIGNATURE_ALGORITHM - error code for when no valid
+    signature and hash algorithm is available
+  * SSL_ERROR_UNSUPPORTED_SIGNATURE_ALGORITHM - error code for when an
+    unsupported signature and hash algorithm is configured
+  * SSL_ERROR_MISSING_EXTENDED_MASTER_SECRET - error code for when the extended
+    master secret is missing after having been negotiated
+  * SSL_ERROR_UNEXPECTED_EXTENDED_MASTER_SECRET - error code for receiving an
+    extended master secret when previously not negotiated
+  * SSL_ENABLE_EXTENDED_MASTER_SECRET - configuration to enable the TLS extended
+    master secret extension (RFC 7627)
+  * ssl_preinfo_version - used with SSLPreliminaryChannelInfo to indicate that a
+    TLS version has been selected
+  * ssl_preinfo_cipher_suite - used with SSLPreliminaryChannelInfo to indicate
+    that a TLS cipher suite has been selected
+  * ssl_preinfo_all - used with SSLPreliminaryChannelInfo to indicate that all
+    preliminary information has been set
+  Notable Changes:
+  * NSS now builds with elliptic curve ciphers enabled by default (bmo#1205688)
+  * NSS now builds with warnings as errors (bmo#1182667)
+  * The following CA certificates were Removed
+    - CN = VeriSign Class 4 Public Primary Certification Authority - G3
+    - CN = UTN-USERFirst-Network Applications
+    - CN = TC TrustCenter Universal CA III
+    - CN = A-Trust-nQual-03
+    - CN = USERTrust Legacy Secure Server CA
+    - Friendly Name: Digital Signature Trust Co. Global CA 1
+    - Friendly Name: Digital Signature Trust Co. Global CA 3
+    - CN = UTN - DATACorp SGC
+    - O = TÜRKTRUST Bilgi İletişim ve Bilişim Güvenliği Hizmetleri A.Ş. (c) Kasım 2005
+  * The following CA certificate had the Websites trust bit turned off
+    - OU = Equifax Secure Certificate Authority
+  * The following CA certificates were Added
+    - CN = Certification Authority of WoSign G2
+    - CN = CA WoSign ECC Root
+    - CN = OISTE WISeKey Global Root GB CA
+- increased the minimum level of possible mixed installations
+  (softokn3, freebl3) to 3.21
+- added nss-bmo1236011.patch to fix compiler error (bmo#1236011)
+- disabled testsuite as it currently breaks (bmo#1236340)
+
+-------------------------------------------------------------------
+Sat Dec 19 17:13:21 UTC 2015 - wr@rosenauer.org
+
+- update to NSS 3.20.2 (bnc#959888)
+  * MFSA 2015-150/CVE-2015-7575 (bmo#1158489)
+    MD5 signatures accepted within TLS 1.2 ServerKeyExchange in
+    server signature
+
+-------------------------------------------------------------------
+Sun Oct 25 14:44:21 UTC 2015 - wr@rosenauer.org
+
+- update to NSS 3.20.1 (bnc#952810)
+  * requires NSPR 4.10.10
+  * MFSA 2015-133/CVE-2015-7181/CVE-2015-7182 (bmo#1192028, bmo#1202868)
+    memory corruption issues
+
+-------------------------------------------------------------------
+Thu Sep 24 15:41:09 UTC 2015 - fstrba@suse.com
+
+- Install the static libfreebl.a that is needed in order to link
+  Sun elliptical curves provider in Java 7.
+
+-------------------------------------------------------------------
+Thu Sep 24 09:39:17 UTC 2015 - wr@rosenauer.org
+
+- update to NSS 3.20
+  New functionality:
+  * The TLS library has been extended to support DHE ciphersuites in
+    server applications.
+  New Functions:
+  * SSL_DHEGroupPrefSet - Configure the set of allowed/enabled DHE group
+    parameters that can be used by NSS for a server socket.
+  * SSL_EnableWeakDHEPrimeGroup - Enable the use of weak DHE group
+    parameters that are smaller than the library default's minimum size.
+  New Types:
+  * SSLDHEGroupType - Enumerates the set of DHE parameters embedded in
+    NSS that can be used with function SSL_DHEGroupPrefSet.
+  New Macros:
+  * SSL_ENABLE_SERVER_DHE - A socket option user to enable or disable
+    DHE ciphersuites for a server socket.
+  Notable Changes:
+  * For backwards compatibility reasons, the server side implementation
+    of the TLS library keeps all DHE ciphersuites disabled by default.
+    They can be enabled with the new socket option SSL_ENABLE_SERVER_DHE
+    and the SSL_OptionSet or the SSL_OptionSetDefault API.
+  * The server side implementation of the TLS implementation does not
+    support session tickets when using a DHE ciphersuite (see bmo#1174677).
+  * Support for the following ciphersuites has been added:
+    - TLS_DHE_DSS_WITH_AES_128_GCM_SHA256
+    - TLS_DHE_DSS_WITH_AES_128_CBC_SHA256
+    - TLS_DHE_DSS_WITH_AES_256_CBC_SHA256
+  * By default, the server side TLS implementation will use DHE
+    parameters with a size of 2048 bits when using DHE ciphersuites.
+  * NSS embeds fixed DHE parameters sized 2048, 3072, 4096, 6144 and
+    8192 bits, which were copied from version 08 of the Internet-Draft
+    "Negotiated Finite Field Diffie-Hellman Ephemeral Parameters for
+    TLS", Appendix A.
+  * A new API SSL_DHEGroupPrefSet has been added to NSS, which allows a
+    server application to select one or multiple of the embedded DHE
+    parameters as the preferred parameters. The current implementation of
+    NSS will always use the first entry in the array that is passed as a
+    parameter to the SSL_DHEGroupPrefSet API. In future versions of the
+    TLS implementation, a TLS client might signal a preference for
+    certain DHE parameters, and the NSS TLS server side implementation
+    might select a matching entry from the set of parameters that have
+    been configured as preferred on the server side.
+  * NSS optionally supports the use of weak DHE parameters with DHE
+    ciphersuites to support legacy clients. In order to enable this
+    support, the new API SSL_EnableWeakDHEPrimeGroup must be used. Each
+    time this API is called for the first time in a process, a fresh set
+    of weak DHE parameters will be randomly created, which may take a
+    long amount of time. Please refer to the comments in the header file
+    that declares the SSL_EnableWeakDHEPrimeGroup API for additional
+    details.
+  * The size of the default PQG parameters used by certutil when
+    creating DSA keys has been increased to use 2048 bit parameters.
+  * The selfserv utility has been enhanced to support the new DHE features.
+  * NSS no longer supports C compilers that predate the ANSI C standard (C89).
+
+-------------------------------------------------------------------
+Thu Sep 24 09:38:17 UTC 2015 - wr@rosenauer.org
+
+- update to NSS 3.19.3; certstore updates only
+  * The following CA certificates were removed
+    - Buypass Class 3 CA 1
+    - TÜRKTRUST Elektronik Sertifika Hizmet Sağlayıcısı
+    - SG TRUST SERVICES RACINE
+    - TC TrustCenter Universal CA I
+    - TC TrustCenter Class 2 CA II
+  * The following CA certificate had the Websites trust bit turned off
+    - ComSign Secured CA
+  * The following CA certificates were added
+    - TÜRKTRUST Elektronik Sertifika Hizmet Sağlayıcısı H5
+    - TÜRKTRUST Elektronik Sertifika Hizmet Sağlayıcısı H6
+    - Certinomis - Root CA
+  * The version number of the updated root CA list has been set to 2.5
+
+-------------------------------------------------------------------
+Thu Sep 24 09:31:11 UTC 2015 - fstrba@suse.com
+
+- Install blapi.h and algmac.h that are needed in order to build
+  Sun elliptical curves provider in Java 7
+
+-------------------------------------------------------------------
+Wed Jun 24 12:45:09 UTC 2015 - meissner@suse.com
+
+- as the .chk files are contained in libfreebl3 and libsoftokn
+  directly, provide the -hmac alias names to help :42 building.
+
+-------------------------------------------------------------------
+Tue Jun 23 06:00:13 UTC 2015 - wr@rosenauer.org
+
+- update to 3.19.2
+  * required for Firefox 39.0
+  * No new functionality is introduced in this release. This release
+    addresses a backwards compatibility issue with the NSS 3.19.1
+    release.
+  * In NSS 3.19.1, the minimum key sizes that the freebl cryptographic
+    implementation (part of the softoken cryptographic module used
+    by default by NSS) was willing to generate or use was increased
+    - for RSA keys, to 512 bits, and for DH keys, 1023 bits. This
+    was done as part of a security fix for Bug 1138554 / CVE-2015-4000.
+    Applications that requested or attempted to use keys smaller
+    then the minimum size would fail. However,  this change in behaviour
+    unintentionally broke existing NSS applications that need to
+    generate or use such keys, via APIs such as
+    SECKEY_CreateRSAPrivateKey or SECKEY_CreateDHPrivateKey.
+
+-------------------------------------------------------------------
+Sun May 31 13:22:47 UTC 2015 - wr@rosenauer.org
+
+- update to 3.19.1
+  No new functionality is introduced in this release. This patch
+  release includes a fix for the recently published logjam attack.
+  Notable Changes:
+  * The minimum strength of keys that libssl will accept for
+    finite field algorithms (RSA, Diffie-Hellman, and DSA) have
+    been increased to 1023 bits (bmo#1138554).
+    (MFSA 2015-70/CVE-2015-4000)
+  * NSS reports the bit length of keys more accurately.  Thus,
+    the SECKEY_PublicKeyStrength and SECKEY_PublicKeyStrengthInBits
+    functions could report smaller values for values that have
+    leading zero values. This affects the key strength values that
+    are reported by SSL_GetChannelInfo.
+  * NSS incorrectly permits skipping of ServerKeyExchange
+    (bmo#1086145) (MFSA 2015-71/CVE-2015-2721)
+
+-------------------------------------------------------------------
+Sat May 23 07:36:27 UTC 2015 - wr@rosenauer.org
+
+- update to 3.19
+  * Firefox target release 39
+  New functionality:
+  * For some certificates, such as root CA certificates, that don't
+    embed any constraints, NSS might impose additional constraints,
+    such as name constraints. A new API has been added that allows
+    to lookup imposed constraints.
+  * It is possible to override the directory in which the NSS build
+    system will look for the sqlite library.
+  New Functions:
+  * CERT_GetImposedNameConstraints
+  Notable Changes:
+  * The SSL 3 protocol has been disabled by default.
+  * NSS now more strictly validates TLS extensions and will fail a
+    handshake that contains malformed extensions.
+  * Fixed a bug related to the ordering of TLS handshake messages.
+  * In TLS 1.2 handshakes, NSS advertises support for the SHA512
+    hash algorithm, in order to be compatible with TLS servers
+    that use certificates with a SHA512 signature.
+
+-------------------------------------------------------------------
+Thu Apr 23 06:35:27 UTC 2015 - wr@rosenauer.org
+
+- update to 3.18.1
+  * Firefox target release 38
+  * No new functionality is introduced in this release.
+  Notable Changes:
+  * The following CA certificate had the Websites and Code Signing
+    trust bits restored to their original state to allow more time
+    to develop a better transition strategy for affected sites:
+    - OU = Equifax Secure Certificate Authority
+  * The following CA certificate was removed:
+    - CN = e-Guven Kok Elektronik Sertifika Hizmet Saglayicisi
+  * The following intermediate CA certificate has been added as
+    actively distrusted because it was mis-used to issue certificates
+    for domain names the holder did not own or control:
+    - CN=MCSHOLDING TEST, O=MCSHOLDING, C=EG
+  * The version number of the updated root CA list has been set
+    to 2.4
+
+-------------------------------------------------------------------
+Fri Apr  3 08:34:59 UTC 2015 - wr@rosenauer.org
+
+- update to 3.18
+  * Firefox target release 38
+  New functionality:
+  * When importing certificates and keys from a PKCS#12 source,
+    it's now possible to override the nicknames, prior to importing
+    them into the NSS database, using new API
+    SEC_PKCS12DecoderRenameCertNicknames.
+  * The tstclnt test utility program has new command-line options
+    -C, -D, -b and -R.
+    Use -C one, two or three times to print information about the
+    certificates received from a server, and information about the
+    locally found and trusted issuer certificates, to diagnose
+    server side configuration issues. It is possible to run tstclnt
+    without providing a database (-D). A PKCS#11 library that
+    contains root CA certificates can be loaded by tstclnt, which
+    may either be the nssckbi library provided by NSS (-b) or
+    another compatible library (-R).
+  New Functions:
+  * SEC_CheckCrlTimes
+  * SEC_GetCrlTimes
+  * SEC_PKCS12DecoderRenameCertNicknames
+  New Types:
+  * SEC_PKCS12NicknameRenameCallback
+  Notable Changes:
+  * The highest TLS protocol version enabled by default has been
+    increased from TLS 1.0 to TLS 1.2. Similarly, the highest DTLS
+    protocol version enabled by default has been increased from
+    DTLS 1.0 to DTLS 1.2.
+  * The default key size used by certutil when creating an RSA key
+    pair has been increased from 1024 bits to 2048 bits.
+  * The following CA certificates had the Websites and Code Signing
+    trust bits turned off:
+    - Equifax Secure Certificate Authority
+    - Equifax Secure Global eBusiness CA-1
+    - TC TrustCenter Class 3 CA II
+  * The following CA certificates were added:
+    - Staat der Nederlanden Root CA - G3
+    - Staat der Nederlanden EV Root CA
+    - IdenTrust Commercial Root CA 1
+    - IdenTrust Public Sector Root CA 1
+    - S-TRUST Universal Root CA
+    - Entrust Root Certification Authority - G2
+    - Entrust Root Certification Authority - EC1
+    - CFCA EV ROOT
+  * The version number of the updated root CA list has been set
+    to 2.3
+- add the changes file as source so the .src.rpm builds (used for
+  fake build time)
+
+-------------------------------------------------------------------
+Sat Jan 31 17:53:49 UTC 2015 - wr@rosenauer.org
+
+- update to 3.17.4
+  * Firefox target release 36
+  Notable Changes:
+  * bmo#1084986: If an SSL/TLS connection fails, because client and
+                 server don't have any common protocol version enabled,
+		 NSS has been changed to report error code
+		 SSL_ERROR_UNSUPPORTED_VERSION (instead of reporting
+		 SSL_ERROR_NO_CYPHER_OVERLAP).
+  * bmo#1112461: libpkix was fixed to prefer the newest certificate,
+                 if multiple certificates match.
+  * bmo#1094492: fixed a memory corruption issue during failure of
+                 keypair generation.
+  * bmo#1113632: fixed a failure to reload a PKCS#11 module in FIPS
+                 mode.
+  * bmo#1119983: fixed interoperability of NSS server code with a
+                 LibreSSL client.
+
+-------------------------------------------------------------------
+Sat Dec  6 18:27:12 UTC 2014 - wr@rosenauer.org
+
+- update to 3.17.3
+  New functionality:
+  * Support for TLS_FALLBACK_SCSV has been added to the ssltap and
+    tstclnt utilities
+  Notable Changes:
+  * The QuickDER decoder now decodes lengths robustly
+    (CVE-2014-1569)
+  * The following 1024-bit CA certificates were removed:
+    - GTE CyberTrust Global Root
+    - Thawte Server CA
+    - Thawte Premium Server CA
+    - America Online Root Certification Authority 1
+    - America Online Root Certification Authority 2
+  * The following CA certificates had the Websites and Code Signing
+    trust bits turned off:
+    - Class 3 Public Primary Certification Authority - G2
+    - Equifax Secure eBusiness CA-1
+  * The following CA certificates were added:
+    - COMODO RSA Certification Authority
+    - USERTrust RSA Certification Authority
+    - USERTrust ECC Certification Authority
+    - GlobalSign ECC Root CA - R4
+    - GlobalSign ECC Root CA - R5
+  * the version number of the updated root CA list has been set
+    to 2.2
+
+-------------------------------------------------------------------
+Thu Oct 16 19:15:27 UTC 2014 - wr@rosenauer.org
+
+- update to 3.17.2
+  Bugfix release
+  * bmo#1049435 - Importing an RSA private key fails if p < q
+  * bmo#1057161 - NSS hangs with 100% CPU on invalid EC key
+  * bmo#1078669 - certutil crashes when using the --certVersion parameter
+
+-------------------------------------------------------------------
+Tue Sep 23 21:30:16 UTC 2014 - wr@rosenauer.org
+
+- update to 3.17.1 (bnc#897890)
+  * MFSA 2014-73/CVE-2014-1568 (bmo#1064636, bmo#1069405)
+    RSA Signature Forgery in NSS
+  * Change library's signature algorithm default to SHA256
+  * Add support for draft-ietf-tls-downgrade-scsv
+  * Add clang-cl support to the NSS build system
+  * Implement TLS 1.3:
+    * Part 1. Negotiate TLS 1.3
+    * Part 2. Remove deprecated cipher suites andcompression.
+  * Add support for little-endian powerpc64
+
+-------------------------------------------------------------------
+Fri Aug 29 11:53:10 UTC 2014 - wr@rosenauer.org
+
+- update to 3.17
+  * required for Firefox 33
+  New functionality:
+  * When using ECDHE, the TLS server code may be configured to generate
+    a fresh ephemeral ECDH key for each handshake, by setting the
+    SSL_REUSE_SERVER_ECDHE_KEY socket option to PR_FALSE. The
+    SSL_REUSE_SERVER_ECDHE_KEY option defaults to PR_TRUE, which means
+    the server's ephemeral ECDH key is reused for multiple handshakes.
+    This option does not affect the TLS client code, which always
+    generates a fresh ephemeral ECDH key for each handshake.
+  New Macros
+  * SSL_REUSE_SERVER_ECDHE_KEY
+  Notable Changes:
+  * The manual pages for the certutil and pp tools have been updated to
+    document the new parameters that had been added in NSS 3.16.2.
+  * On Windows, the new build variable USE_STATIC_RTL can be used to
+    specify the static C runtime library should be used. By default the
+    dynamic C runtime library is used.
+
+-------------------------------------------------------------------
+Tue Aug 12 10:56:55 UTC 2014 - wr@rosenauer.org
+
+- update to 3.16.4 (bnc#894201)
+  * now required for Firefox 32
+  Notable Changes:
+  * The following 1024-bit root CA certificate was restored to allow more
+    time to develop a better transition strategy for affected sites. It was
+    removed in NSS 3.16.3, but discussion in the mozilla.dev.security.policy
+    forum led to the decision to keep this root included longer in order to
+    give website administrators more time to update their web servers.
+    - CN = GTE CyberTrust Global Root
+  * In NSS 3.16.3, the 1024-bit "Entrust.net Secure Server Certification
+    Authority" root CA certificate was removed. In NSS 3.16.4, a 2048-bit
+    intermediate CA certificate has been included, without explicit trust.
+    The intention is to mitigate the effects of the previous removal of the
+    1024-bit Entrust.net root certificate, because many public Internet
+    sites still use the "USERTrust Legacy Secure Server CA" intermediate
+    certificate that is signed by the 1024-bit Entrust.net root certificate.
+    The inclusion of the intermediate certificate is a temporary measure to
+    allow those sites to function, by allowing them to find a trust path to
+    another 2048-bit root CA certificate. The temporarily included
+    intermediate certificate expires November 1, 2015.
+
+-------------------------------------------------------------------
+Sat Jul  5 12:10:36 UTC 2014 - wr@rosenauer.org
+
+- update to 3.16.3
+  * required for Firefox 32
+  New Functions:
+  * CERT_GetGeneralNameTypeFromString (This function was already added
+    in NSS 3.16.2, however, it wasn't declared in a public header file.)
+  Notable Changes:
+  * The following 1024-bit CA certificates were removed
+    - Entrust.net Secure Server Certification Authority
+    - GTE CyberTrust Global Root
+    - ValiCert Class 1 Policy Validation Authority
+    - ValiCert Class 2 Policy Validation Authority
+    - ValiCert Class 3 Policy Validation Authority
+  * Additionally, the following CA certificate was removed as
+    requested by the CA:
+    - TDC Internet Root CA
+  * The following CA certificates were added:
+    - Certification Authority of WoSign
+    - CA 沃通根证书
+    - DigiCert Assured ID Root G2
+    - DigiCert Assured ID Root G3
+    - DigiCert Global Root G2
+    - DigiCert Global Root G3
+    - DigiCert Trusted Root G4
+    - QuoVadis Root CA 1 G3
+    - QuoVadis Root CA 2 G3
+    - QuoVadis Root CA 3 G3
+  * The Trust Bits were changed for the following CA certificates
+    - Class 3 Public Primary Certification Authority
+    - Class 3 Public Primary Certification Authority
+    - Class 2 Public Primary Certification Authority - G2
+    - VeriSign Class 2 Public Primary Certification Authority - G3
+    - AC Raíz Certicámara S.A.
+    - NetLock Uzleti (Class B) Tanusitvanykiado
+    - NetLock Expressz (Class C) Tanusitvanykiado
+- changes in 3.16.2
+  New functionality:
+  * DTLS 1.2 is supported.
+  * The TLS application layer protocol negotiation (ALPN) extension
+    is also supported on the server side.
+  * RSA-OEAP is supported. Use the new PK11_PrivDecrypt and
+    PK11_PubEncrypt functions with the CKM_RSA_PKCS_OAEP mechanism.
+  * New Intel AES assembly code for 32-bit and 64-bit Windows,
+    contributed by Shay Gueron and Vlad Krasnov of Intel.
+  New Functions:
+  * CERT_AddExtensionByOID
+  * PK11_PrivDecrypt
+  * PK11_PubEncrypt
+  New Macros
+  * SSL_ERROR_NEXT_PROTOCOL_NO_CALLBACK
+  * SSL_ERROR_NEXT_PROTOCOL_NO_PROTOCOL
+  Notable Changes:
+  * The btoa command has a new command-line option -w suffix, which
+    causes the output to be wrapped in BEGIN/END lines with the
+    given suffix
+  * The certutil commands supports additionals types of subject
+    alt name extensions.
+  * The certutil command supports generic certificate extensions,
+    by loading binary data from files, which have been prepared using
+    external tools, or which have been extracted from other existing
+    certificates and dumped to file.
+  * The certutil command supports three new certificate usage specifiers.
+  * The pp command supports printing UTF-8 (-u).
+  * On Linux, NSS is built with the -ffunction-sections -fdata-sections
+    compiler flags and the --gc-sections linker flag to allow unused
+    functions to be discarded.
+
+-------------------------------------------------------------------
+Thu May  8 05:46:17 UTC 2014 - wr@rosenauer.org
+
+- update to 3.16.1
+  * required for Firefox 31
+  New functionality:
+  * Added the "ECC" flag for modutil to select the module used for
+    elliptic curve cryptography (ECC) operations.
+  New Functions:
+  * PK11_ExportDERPrivateKeyInfo/PK11_ExportPrivKeyInfo
+    exports a private key in a DER-encoded ASN.1 PrivateKeyInfo type
+    or a SECKEYPrivateKeyInfo structure. Only RSA private keys are
+    supported now.
+  * SECMOD_InternalToPubMechFlags
+    converts from NSS-internal to public representation of mechanism
+    flags
+  New Types:
+  * ssl_padding_xtn
+    the value of this enum constant changed from the experimental
+    value 35655 to the IANA-assigned value 21
+  New Macros
+  * PUBLIC_MECH_ECC_FLAG
+    a public mechanism flag for elliptic curve cryptography (ECC)
+    operations
+  * SECMOD_ECC_FLAG
+    an NSS-internal mechanism flag for elliptic curve cryptography
+    (ECC) operations. This macro has the same numeric value as
+    PUBLIC_MECH_ECC_FLAG.
+  Notable Changes:
+  * Imposed name constraints on the French government root CA ANSSI
+    (DCISS).
+
+-------------------------------------------------------------------
+Fri Mar 21 21:16:31 UTC 2014 - wr@rosenauer.org
+
+- update to 3.16
+  * required for Firefox 29
+  * bmo#903885 - (CVE-2014-1492) In a wildcard certificate, the wildcard
+    character should not be embedded within the U-label of an
+    internationalized domain name. See the last bullet point in RFC 6125,
+    Section 7.2.
+  * Supports the Linux x32 ABI. To build for the Linux x32 target, set
+    the environment variable USE_X32=1 when building NSS.
+  New Functions:
+  * NSS_CMSSignerInfo_Verify
+  New Macros
+  * TLS_RSA_WITH_RC4_128_SHA, TLS_RSA_WITH_3DES_EDE_CBC_SHA, etc.,
+    cipher suites that were first defined in SSL 3.0 can now be referred
+    to with their official IANA names in TLS, with the TLS_ prefix.
+    Previously, they had to be referred to with their names in SSL 3.0,
+    with the SSL_ prefix.
+  Notable Changes:
+  * ECC is enabled by default. It is no longer necessary to set the
+    environment variable NSS_ENABLE_ECC=1 when building NSS. To disable
+    ECC, set the environment variable NSS_DISABLE_ECC=1 when building NSS.
+  * libpkix should not include the common name of CA as DNS names when
+    evaluating name constraints.
+  * AESKeyWrap_Decrypt should not return SECSuccess for invalid keys.
+  * Fix a memory corruption in sec_pkcs12_new_asafe.
+  * If the NSS_SDB_USE_CACHE environment variable is set, skip the runtime
+    test sdb_measureAccess.
+  * The built-in roots module has been updated to version 1.97, which
+    adds, removes, and distrusts several certificates.
+  * The atob utility has been improved to automatically ignore lines of
+    text that aren't in base64 format.
+  * The certutil utility has been improved to support creation of
+    version 1 and version 2 certificates, in addition to the existing
+    version 3 support.
+
+-------------------------------------------------------------------
+Tue Feb 25 11:31:18 UTC 2014 - wr@rosenauer.org
+
+- update to 3.15.5
+  * required for Firefox 28
+  * export FREEBL_LOWHASH to get the correct default headers
+    (bnc#865539)
+  New functionality
+  * Added support for the TLS application layer protocol negotiation
+    (ALPN) extension. Two SSL socket options, SSL_ENABLE_NPN and
+    SSL_ENABLE_ALPN, can be used to control whether NPN or ALPN (or both)
+    should be used for application layer protocol negotiation.
+  * Added the TLS padding extension. The extension type value is 35655,
+    which may change when an official extension type value is assigned
+    by IANA. NSS automatically adds the padding extension to ClientHello
+    when necessary.
+  * Added a new macro CERT_LIST_TAIL, defined in certt.h, for getting
+    the tail of a CERTCertList.
+  Notable Changes
+  * bmo#950129: Improve the OCSP fetching policy when verifying OCSP
+    responses
+  * bmo#949060: Validate the iov input argument (an array of PRIOVec
+    structures) of ssl_WriteV (called via PR_Writev). Applications should
+    still take care when converting struct iov to PRIOVec because the
+    iov_len members of the two structures have different types
+    (size_t vs. int). size_t is unsigned and may be larger than int.
+
+-------------------------------------------------------------------
+Thu Feb 20 10:55:30 UTC 2014 - aj@ajaissle.de
+
+- BuildRequire mozilla-nspr >= 4.9
+
+-------------------------------------------------------------------
+Tue Jan  7 08:39:04 UTC 2014 - wr@rosenauer.org
+
+- update to 3.15.4
+  * required for Firefox 27
+  * regular CA root store update (1.96)
+  * Reordered the cipher suites offered in SSL/TLS client hello
+    messages to match modern best practices.
+  * Improved SSL/TLS false start. In addition to enabling the
+    SSL_ENABLE_FALSE_START option, an application must now register
+    a callback using the SSL_SetCanFalseStartCallback function.
+  * When false start is enabled, libssl will sometimes return
+    unencrypted, unauthenticated data from PR_Recv
+    (CVE-2013-1740, bmo#919877)
+  * MFSA 2014-12/CVE-2014-1490/CVE-2014-1491
+    NSS ticket handling issues
+  New functionality
+  * Implemented OCSP querying using the HTTP GET method, which is
+    the new default, and will fall back to the HTTP POST method.
+  * Implemented OCSP server functionality for testing purposes
+    (httpserv utility).
+  * Support SHA-1 signatures with TLS 1.2 client authentication.
+  * Added the --empty-password command-line option to certutil,
+    to be used with -N: use an empty password when creating a new
+    database.
+  * Added the -w command-line option to pp: don't wrap long output
+    lines.
+  New functions
+  * CERT_ForcePostMethodForOCSP
+  * CERT_GetSubjectNameDigest
+  * CERT_GetSubjectPublicKeyDigest
+  * SSL_PeerCertificateChain
+  * SSL_RecommendedCanFalseStart
+  * SSL_SetCanFalseStartCallback
+  New types
+  * CERT_REV_M_FORCE_POST_METHOD_FOR_OCSP: When this flag is used,
+    libpkix will never attempt to use the HTTP GET method for OCSP
+    requests; it will always use POST.
+- removed obsolete char.patch
+
+-------------------------------------------------------------------
+Thu Dec  5 18:59:27 UTC 2013 - wr@rosenauer.org
+
+- update to 3.15.3.1 (bnc#854367)
+  * includes certstore update (1.95) (bmo#946351)
+    (explicitely distrust AC DG Tresor SSL)
+
+-------------------------------------------------------------------
+Wed Dec  4 14:40:39 CET 2013 - mls@suse.de
+
+- adapt specfile to ppc64le
+
+-------------------------------------------------------------------
+Mon Nov 11 22:11:57 UTC 2013 - wr@rosenauer.org
+
+- update to 3.15.3 (bnc#850148)
+  * CERT_VerifyCert returns SECSuccess (saying certificate is good)
+    even for bad certificates, when the CERTVerifyLog log parameter
+    is given (bmo#910438)
+  * NSS advertises TLS 1.2 ciphersuites in a TLS 1.1 ClientHello
+    (bmo#919677)
+  * fix CVE-2013-5605
+
+-------------------------------------------------------------------
+Sat Sep 28 04:20:41 UTC 2013 - crrodriguez@opensuse.org
+
+- update to 3.15.2 (bnc#842979)
+  * Support for AES-GCM ciphersuites that use the SHA-256 PRF
+  * MD2, MD4, and MD5 signatures are no longer accepted for OCSP
+    or CRLs
+  * Add PK11_CipherFinal macro
+  * sizeof() used incorrectly
+  * nssutil_ReadSecmodDB() leaks memory
+  * Allow SSL_HandshakeNegotiatedExtension to be called before
+    the handshake is finished.
+  * Deprecate the SSL cipher policy code
+  * Avoid uninitialized data read in the event of a decryption
+    failure. (CVE-2013-1739)
+
+-------------------------------------------------------------------
+Fri Jul  5 08:08:57 UTC 2013 - lnussel@suse.de
+
+- fix 32bit requirement, it's without () actually
+
+-------------------------------------------------------------------
+Wed Jul  3 11:55:58 UTC 2013 - wr@rosenauer.org
+
+- update to 3.15.1
+  * TLS 1.2 (RFC 5246) is supported. HMAC-SHA256 cipher suites
+    (RFC 5246 and RFC 5289) are supported, allowing TLS to be used
+    without MD5 and SHA-1.
+    Note the following limitations:
+      The hash function used in the signature for TLS 1.2 client
+      authentication must be the hash function of the TLS 1.2 PRF,
+      which is always SHA-256 in NSS 3.15.1.
+      AES GCM cipher suites are not yet supported.
+  * some bugfixes and improvements
+
+-------------------------------------------------------------------
+Fri Jun 28 09:27:24 UTC 2013 - lnussel@suse.de
+
+- require libnssckbi instead of mozilla-nss-certs so p11-kit can
+  conflict with the latter (fate#314991)
+
+-------------------------------------------------------------------
+Tue Jun 11 04:58:56 UTC 2013 - wr@rosenauer.org
+
+- update to 3.15
+  * Packaging
+    + removed obsolete patches
+      * nss-disable-expired-testcerts.patch
+      * bug-834091.patch
+  * New Functionality
+    + Support for OCSP Stapling (RFC 6066, Certificate Status
+      Request) has been added for both client and server sockets.
+      TLS client applications may enable this via a call to
+      SSL_OptionSetDefault(SSL_ENABLE_OCSP_STAPLING, PR_TRUE);
+    + Added function SECITEM_ReallocItemV2. It replaces function
+      SECITEM_ReallocItem, which is now declared as obsolete.
+    + Support for single-operation (eg: not multi-part) symmetric
+      key encryption and decryption, via PK11_Encrypt and PK11_Decrypt.
+    + certutil has been updated to support creating name constraints
+      extensions.
+  * New Functions
+    in ssl.h
+      SSL_PeerStapledOCSPResponse - Returns the server's stapled
+        OCSP response, when used with a TLS client socket that
+        negotiated the status_request extension.
+      SSL_SetStapledOCSPResponses - Set's a stapled OCSP response
+        for a TLS server socket to return when clients send the
+        status_request extension.
+    in ocsp.h
+      CERT_PostOCSPRequest - Primarily intended for testing, permits
+        the sending and receiving of raw OCSP request/responses.
+    in secpkcs7.h
+      SEC_PKCS7VerifyDetachedSignatureAtTime - Verifies a PKCS#7
+        signature at a specific time other than the present time.
+    in xconst.h
+      CERT_EncodeNameConstraintsExtension - Matching function for
+        CERT_DecodeNameConstraintsExtension, added in NSS 3.10.
+    in secitem.h
+      SECITEM_AllocArray
+      SECITEM_DupArray
+      SECITEM_FreeArray
+      SECITEM_ZfreeArray - Utility functions to handle the
+        allocation and deallocation of SECItemArrays
+      SECITEM_ReallocItemV2 - Replaces SECITEM_ReallocItem, which is
+        now obsolete. SECITEM_ReallocItemV2 better matches caller
+        expectations, in that it updates item->len on allocation.
+        For more details of the issues with SECITEM_ReallocItem,
+        see Bug 298649 and Bug 298938.
+    in pk11pub.h
+      PK11_Decrypt - Performs decryption as a single PKCS#11
+        operation (eg: not multi-part). This is necessary for AES-GCM.
+      PK11_Encrypt - Performs encryption as a single PKCS#11
+        operation (eg: not multi-part). This is necessary for AES-GCM.
+  * New Types
+    in secitem.h
+      SECItemArray - Represents a variable-length array of SECItems.
+  * New Macros
+    in ssl.h
+      SSL_ENABLE_OCSP_STAPLING - Used with SSL_OptionSet to configure
+        TLS client sockets to request the certificate_status extension
+        (eg: OCSP stapling) when set to PR_TRUE
+  * Notable changes
+    + SECITEM_ReallocItem is now deprecated. Please consider using
+      SECITEM_ReallocItemV2 in all future code.
+    + The list of root CA certificates in the nssckbi module has
+      been updated.
+    + The default implementation of SSL_AuthCertificate has been
+      updated to add certificate status responses stapled by the TLS
+      server to the OCSP cache.
+  * a lot of bugfixes
+
+-------------------------------------------------------------------
+Tue Apr 16 10:27:04 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Sun Mar 24 20:07:59 UTC 2013 - wr@rosenauer.org
+
+- disable tests with expired certificates
+  (nss-disable-expired-testcerts.patch)
+- add SEC_PKCS7VerifyDetachedSignatureAtTime using patch from
+  mozilla tree to fulfill Firefox 21 requirements
+  (bug-834091.patch; bmo#834091)
+
+-------------------------------------------------------------------
+Thu Feb 28 21:55:49 UTC 2013 - wr@rosenauer.org
+
+- update to 3.14.3
+  * No new major functionality is introduced in this release. This
+    release is a patch release to address CVE-2013-1620 (bmo#822365)
+  * "certutil -a" was not correctly producing ASCII output as
+    requested. (bmo#840714)
+  * NSS 3.14.2 broke compilation with older versions of sqlite that
+    lacked the SQLITE_FCNTL_TEMPFILENAME file control. NSS 3.14.3 now
+    properly compiles when used with older versions of sqlite
+    (bmo#837799) - remove system-sqlite.patch
+- add aarch64 support
+
+-------------------------------------------------------------------
+Tue Feb  5 12:51:56 UTC 2013 - wr@rosenauer.org
+
+- added system-sqlite.patch (bmo#837799)
+  * do not depend on latest sqlite just for a #define
+- enable system sqlite usage again
+
+-------------------------------------------------------------------
+Sat Feb  2 16:05:20 UTC 2013 - wr@rosenauer.org
+
+- update to 3.14.2
+  * required for Firefox >= 20
+  * removed obsolete nssckbi update patch
+  * MFSA 2013-40/CVE-2013-0791 (bmo#629816)
+    Out-of-bounds array read in CERT_DecodeCertPackage
+- disable system sqlite usage since we depend on 3.7.15 which is
+  not provided in any openSUSE distribution
+  * add nss-sqlitename.patch to avoid any name clash
+
+-------------------------------------------------------------------
+Sun Dec 30 17:59:34 UTC 2012 - wr@rosenauer.org
+
+- updated CA database (nssckbi-1.93.patch)
+  * MFSA 2013-20/CVE-2013-0743 (bmo#825022, bnc#796628)
+    revoke mis-issued intermediate certificates from TURKTRUST
+
+-------------------------------------------------------------------
+Tue Dec 18 13:36:09 UTC 2012 - wr@rosenauer.org
+
+- update to 3.14.1 RTM
+  * minimal requirement for Gecko 20
+  * several bugfixes
+
+-------------------------------------------------------------------
+Thu Oct 25 12:02:22 UTC 2012 - wr@rosenauer.org
+
+- update to 3.14 RTM
+  * Support for TLS 1.1 (RFC 4346)
+  * Experimental support for DTLS 1.0 (RFC 4347) and DTLS-SRTP (RFC 5764)
+  * Support for AES-CTR, AES-CTS, and AES-GCM
+  * Support for Keying Material Exporters for TLS (RFC 5705)
+  * Support for certificate signatures using the MD5 hash algorithm
+    is now disabled by default
+  * The NSS license has changed to MPL 2.0. Previous releases were
+    released under a MPL 1.1/GPL 2.0/LGPL  2.1 tri-license. For more
+    information about MPL 2.0, please see
+    http://www.mozilla.org/MPL/2.0/FAQ.html. For an additional
+    explanation on GPL/LGPL compatibility, see security/nss/COPYING
+    in the source code.
+  * Export and DES cipher suites are disabled by default. Non-ECC
+    AES and Triple DES cipher suites are enabled by default
+- disabled OCSP testcases since they need external network
+  (nss-disable-ocsp-test.patch)
+
+-------------------------------------------------------------------
+Wed Aug 15 13:57:42 UTC 2012 - wr@rosenauer.org
+
+- update to 3.13.6 RTM
+  * root CA update
+  * other bugfixes
+
+-------------------------------------------------------------------
+Fri Jun  1 18:46:28 UTC 2012 - wr@rosenauer.org
+
+- update to 3.13.5 RTM
+
+-------------------------------------------------------------------
+Fri Apr 13 18:55:57 UTC 2012 - wr@rosenauer.org
+
+- update to 3.13.4 RTM
+  * fixed some bugs
+  * fixed cert verification regression in PKIX mode (bmo#737802)
+    introduced in 3.13.2
+
+-------------------------------------------------------------------
+Thu Feb 23 15:06:34 UTC 2012 - wr@rosenauer.org
+
+- update to 3.13.3 RTM
+  - distrust Trustwave's MITM certificates (bmo#724929)
+  - fix generic blacklisting mechanism (bmo#727204)
+
+-------------------------------------------------------------------
+Thu Feb 16 08:48:42 UTC 2012 - wr@rosenauer.org
+
+- update to 3.13.2 RTM
+  * requirement with Gecko >= 11
+- removed obsolete patches
+  * ckbi-1.88
+  * pkcs11n-header-fix.patch
+
+-------------------------------------------------------------------
+Sun Dec 18 15:59:08 UTC 2011 - adrian@suse.de
+
+- fix spec file syntax for qemu-workaround
+
+-------------------------------------------------------------------
+Mon Nov 14 10:13:17 UTC 2011 - john@redux.org.uk
+
+- Added a patch to fix errors in the pkcs11n.h header file.
+  (bmo#702090)
+
+-------------------------------------------------------------------
+Sat Nov  5 10:58:20 UTC 2011 - wolfgang@rosenauer.org
+
+- update to 3.13.1 RTM
+  * better SHA-224 support (bmo#647706)
+  * fixed a regression (causing hangs in some situations)
+    introduced in 3.13 (bmo#693228)
+- update to 3.13.0 RTM
+  * SSL 2.0 is disabled by default
+  * A defense against the SSL 3.0 and TLS 1.0 CBC chosen plaintext
+    attack demonstrated by Rizzo and Duong (CVE-2011-3389) is
+    enabled by default. Set the SSL_CBC_RANDOM_IV SSL option to
+    PR_FALSE to disable it.
+  * SHA-224 is supported
+  * Ported to iOS. (Requires NSPR 4.9.)
+  * Added PORT_ErrorToString and PORT_ErrorToName to return the
+    error message and symbolic name of an NSS error code
+  * Added NSS_GetVersion to return the NSS version string
+  * Added experimental support of RSA-PSS to the softoken only
+  * NSS_NoDB_Init does not try to open /pkcs11.txt and /secmod.db
+    anymore (bmo#641052, bnc#726096)
+
+-------------------------------------------------------------------
+Sat Nov  5 10:47:51 UTC 2011 - wr@rosenauer.org
+
+- explicitely distrust DigiCert Sdn. Bhd (bnc#728520, bmo#698753)
+- make sure NSS_NoDB_Init does not try to use wrong certificate
+  databases (CVE-2011-3640, bnc#726096, bmo#641052)
+
+-------------------------------------------------------------------
+Fri Sep 30 23:27:07 UTC 2011 - crrodriguez@opensuse.org
+
+- Workaround qemu-arm bugs.
+
+-------------------------------------------------------------------
+Fri Sep  9 05:44:15 UTC 2011 - wr@rosenauer.org
+
+- explicitely distrust/override DigiNotar certs (bmo#683261)
+  (trustdb version 1.87)
+
+-------------------------------------------------------------------
+Fri Sep  2 14:40:07 UTC 2011 - pcerny@suse.com
+
+- removed DigiNotar root certificate from trusted db
+  (bmo#682927, bnc#714931)
+
+-------------------------------------------------------------------
+Wed Aug 24 08:37:13 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typo in summary of mozilla-nss (libsoftokn3)
+
+-------------------------------------------------------------------
+Fri Aug 12 20:55:38 UTC 2011 - wr@rosenauer.org
+
+- update to 3.12.11 RTM
+  * no upstream release notes available
+
+-------------------------------------------------------------------
+Wed Jul 13 16:45:23 CEST 2011 - meissner@suse.de
+
+- Linux3.0 is the new Linux2.6 (make it build)
+
+-------------------------------------------------------------------
+Mon May 23 17:37:34 UTC 2011 - crrodriguez@opensuse.org
+
+- Do not include build dates in binaries, messes up
+  build compare
+
+-------------------------------------------------------------------
+Thu May 19 05:37:02 UTC 2011 - wr@rosenauer.org
+
+- update to 3.12.10 RTM
+  * no changes except internal release information
+
+-------------------------------------------------------------------
+Thu Apr 28 06:34:50 UTC 2011 - wr@rosenauer.org
+
+- update to 3.12.10beta1
+  * root CA changes
+  * filter certain bogus certs (bmo#642815)
+  * fix minor memory leaks
+  * other bugfixes
+
+-------------------------------------------------------------------
+Sun Jan  9 23:05:11 UTC 2011 - wr@rosenauer.org
+
+- update to 3.12.9rc0
+  * fix minor memory leaks (bmo#619268)
+  * fix crash in nss_cms_decoder_work_data (bmo#607058)
+  * fix crash in certutil (bmo#620908)
+  * handle invalid argument in JPAKE (bmo#609068)
+
+-------------------------------------------------------------------
+Thu Dec  9 15:03:00 UTC 2010 - wr@rosenauer.org
+
+- update to 3.12.9beta2
+  * J-PAKE support (API requirement for Firefox >= 4.0b8)
+
+-------------------------------------------------------------------
+Tue Nov  9 08:51:51 UTC 2010 - wr@rosenauer.org
+
+- replaced expired PayPal test certificate (fixing testsuite)
+
+-------------------------------------------------------------------
+Sat Sep 25 08:18:59 CEST 2010 - wr@rosenauer.org
+
+- update to 3.12.8 RTM release
+  * support TLS false start (needed for Firefox4) (bmo#525092)
+  * fix wildcard matching for IP addresses (bnc#637290, bmo#578697)
+    (CVE-2010-3170)
+  * bugfixes
+
+-------------------------------------------------------------------
+Fri Jul 23 21:18:30 CEST 2010 - wr@rosenauer.org
+
+- update to 3.12.7 RTM release
+  * bugfix release
+  * updated root CA list
+- removed obsolete patches
+
+-------------------------------------------------------------------
+Fri Jul  9 16:32:33 UTC 2010 - jengelh@medozas.de
+
+- Disable testsuite on SPARC. Some tests fails, probably due to
+  just bad timing/luck.
+
+-------------------------------------------------------------------
+Thu Jun  3 22:45:51 CEST 2010 - wr@rosenauer.org
+
+- Use preloaded empty system database since creating with
+  modutil leaves database in nonusable state
+
+-------------------------------------------------------------------
+Sat Apr 24 11:38:23 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Sun Apr  4 12:19:43 CEST 2010 - wr@rosenauer.org
+
+- disabled a test using an expired cert (bmo#557071)
+
+-------------------------------------------------------------------
+Sat Mar 20 20:19:50 CET 2010 - wr@rosenauer.org
+
+- fixed builds for older dists where internal sqlite3 is used
+  (nss-sqlitename.patch was not refreshed correctly)
+- fixed baselibs.conf as <release> is not a valid identifier
+
+-------------------------------------------------------------------
+Tue Mar  9 19:18:24 CET 2010 - wr@rosenauer.org
+
+- update to 3.12.6 RTM release
+  * added mozilla-nss-sysinit subpackage
+- change renegotiation behaviour to the old default for a
+  transition phase
+
+-------------------------------------------------------------------
+Tue Mar  9 13:08:24 CET 2010 - wr@rosenauer.org
+
+- split off libsoftokn3 subpackage to allow mixed NSS installation
+
+-------------------------------------------------------------------
+Sat Dec 26 12:42:56 CET 2009 - wr@rosenauer.org
+
+- added mozilla-nss-certs baselibs (bnc#567322)
+
+-------------------------------------------------------------------
+Fri Dec 18 13:24:16 CET 2009 - wr@rosenauer.org
+
+- split mozilla-nss-certs from main package
+- added rpmlintrc to ignore expected warnings
+- added baselibs.conf as source
+
+-------------------------------------------------------------------
+Mon Dec 14 07:56:26 CET 2009 - wr@rosenauer.org
+
+- updated builtin certs (version 1.77)
+
+-------------------------------------------------------------------
+Mon Nov 23 17:19:43 CET 2009 - wr@rosenauer.org
+
+- rebased patches to apply w/o fuzz
+
+-------------------------------------------------------------------
+Fri Aug 14 08:51:00 CEST 2009 - wr@rosenauer.org
+
+- update to 3.12.4 RTM release
+
+-------------------------------------------------------------------
+Fri Aug  7 13:10:22 CEST 2009 - wr@rosenauer.org
+
+- update to recent snapshot (20090806)
+- libnssdbm3.so has to be signed starting with 3.12.4
+
+-------------------------------------------------------------------
+Mon Aug  3 18:45:02 CEST 2009 - wr@rosenauer.org
+
+- update to NSS 3.12.4pre snapshot
+- rebased existing patches
+- enable testsuite again (was disabled accidentally before)
+
+-------------------------------------------------------------------
+Wed Jul 29 09:40:02 CEST 2009 - wr@rosenauer.org
+
+- update to NSS 3.12.3.1 (upstream use in FF 3.5.1) (bmo#504611)
+  * RNG_SystemInfoForRNG called twice by nsc_CommonInitialize
+    (bmo#489811; other changes are unrelated to Linux)
+- moved shlibsign to tools package again (as it's not needed at
+  library install time anymore)
+- use %{_libexecdir} for the tools
+
+-------------------------------------------------------------------
+Sat Jun  6 15:37:13 CEST 2009 - wr@rosenauer.org
+
+- Temporary testsuite fix for Factory (bnc#509308) (malloc.patch)
+- remove the post scriptlet which created the *.chk files and
+  use a RPM feature to create them after debuginfo stuff
+
+-------------------------------------------------------------------
+Tue Jun  2 09:41:34 CEST 2009 - wr@rosenauer.org
+
+- updated builtin root certs by updating to 
+  NSS_3_12_3_WITH_CKBI_1_75_RTM tag which is supposed to be the 
+  base for Firefox 3.5.0
+- PreReq coreutils in the main package already as "rm" is used
+  in its %post script
+- disable testsuite for this moment as it crashes on Factory
+  currently for an unknown reason
+
+-------------------------------------------------------------------
+Thu May 21 09:03:17 CEST 2009 - wr@rosenauer.org
+
+- renew Paypal certs to fix testsuite errors (bmo#491163)
+
+-------------------------------------------------------------------
+Mon Apr 20 14:47:43 CEST 2009 - wr@rosenauer.org
+
+- update to version 3.12.3 RTM
+  * default behaviour changed slightly but can be set up
+    backward compatible using environment variables
+    https://developer.mozilla.org/En/NSS_reference/NSS_environment_variables
+  * New Korean SEED cipher
+  * Some new functions in the nss library:
+    CERT_RFC1485_EscapeAndQuote (see cert.h)
+    CERT_CompareCerts (see cert.h)
+    CERT_RegisterAlternateOCSPAIAInfoCallBack (see ocsp.h)
+    PK11_GetSymKeyHandle (see pk11pqg.h)
+    UTIL_SetForkState (see secoid.h)
+    NSS_GetAlgorithmPolicy (see secoid.h)
+    NSS_SetAlgorithmPolicy (see secoid.h)
+- created libfreebl3 subpackage and build it w/o nspr and nss deps
+- added patch to make all ASM noexecstack
+- create the softokn3 and freebl3 checksums at installation time
+  (moved shlibsign to the main package to achieve that)
+- applied upstream patch to avoid OSCP test failures (bmo#488646)
+- applied upstream patch to fix libjar crashes (bmo#485145)
+
+-------------------------------------------------------------------
+Wed Feb  4 08:46:15 CET 2009 - wr@rosenauer.org
+
+- update to version 3.12.2 RTM (with CKBI 1.73) as in FF 3.0.6
+
+-------------------------------------------------------------------
+Tue Jan 13 09:10:29 CET 2009 - wr@rosenauer.org
+
+- update to version 3.12.2rc1 (as used by FF 3.0.5)
+  * NSS is now using system zlib (bmo#302670)
+- create a system wide, sql based NSS database in /etc/pki/nssdb
+  (let previously created /etc/ssl/nssdb untouched)
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Oct 23 15:03:11 CDT 2008 - maw@suse.de
+
+- Review and approve changes.
+
+-------------------------------------------------------------------
+Thu Aug 21 11:36:37 CEST 2008 - wr@rosenauer.org
+
+- run testsuite (bnc#418233)
+
+-------------------------------------------------------------------
+Tue Jun 17 19:15:49 CEST 2008 - maw@suse.de
+
+- Merge changes from the build service (thanks, Wolfgang)
+  (bnc#400001 and SWAMP#18164).
+
+-------------------------------------------------------------------
+Wed May 28 21:05:13 CEST 2008 - wr@rosenauer.org
+
+- update to 3.12.0rc4 (20080528) (featuring FF3.0)
+
+-------------------------------------------------------------------
+Tue Apr 29 20:41:34 CEST 2008 - maw@suse.de
+
+- Prerequire coretools in the -tools subpackage (bnc#379540)
+- Require sqlite3-devel to build.
+
+-------------------------------------------------------------------
+Mon Apr 14 18:52:59 CEST 2008 - maw@suse.de
+
+- Merge some fixes from the build service's version.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Mar 31 18:55:42 CEST 2008 - maw@suse.de
+
+- Undo the shared library package split, per discussion in
+  opensuse-packaging.
+
+-------------------------------------------------------------------
+Mon Mar 31 14:22:17 CEST 2008 - wr@rosenauer.org
+
+- new snapshot still based on 3.12.0 Beta 3 (20080330)
+
+-------------------------------------------------------------------
+Tue Mar 25 22:21:18 CET 2008 - maw@suse.de
+
+- Merge changes from the build service (thanks, Wolfgang)
+- Update to a new snapshot of nss based on 3.12.0 Beta 2:
+  + Update build requirements accordingly
+  + Add nss-sqlitename.patch and nss-no-rpath.patch
+- Split out a shared library subpackage.
+
+-------------------------------------------------------------------
+Mon Dec 10 16:22:37 CET 2007 - rguenther@suse.de
+
+- disable use of freebl/mpi/mp_comba.c.  [#346256]
+
+-------------------------------------------------------------------
+Sun Sep 16 10:27:06 CEST 2007 - coolo@suse.de
+
+- fixing errors in %post during installation
+
+-------------------------------------------------------------------
+Thu Sep 13 22:26:57 CEST 2007 - jberkman@novell.com
+
+- merge -tools package into main package
+- create system-wide nssdb for system configuration of smart cards,
+  as used by pam_pkcs11, krb5 pkinit, and others
+
+-------------------------------------------------------------------
+Thu Jul 26 20:18:38 CEST 2007 - maw@suse.de
+
+- Update to version 3.11.7 (from the build service)
+- Bug fixes.
+
+-------------------------------------------------------------------
+Mon Jun 11 11:41:27 CEST 2007 - ro@suse.de
+
+- use string[0] instead of string in char.patch 
+
+-------------------------------------------------------------------
+Mon Jun 11 11:33:34 CEST 2007 - ro@suse.de
+
+- update to NSS 3.11.6 (pull in from wr from opensuse BS) 
+
+-------------------------------------------------------------------
+Wed Feb 21 16:55:06 CST 2007 - maw@suse.de
+
+- Update to NSS 3.11.5 (thanks, Wolfgang)
+
+-------------------------------------------------------------------
+Sun Oct  1 23:01:38 CEST 2006 - wr@rosenauer.org
+
+- update to NSS 3.11.3
+- requires NSPR 4.6.3 (pkgconfig)
+
+-------------------------------------------------------------------
+Wed Sep  6 08:23:45 CEST 2006 - stark@suse.de
+
+- update to NSS_3_11_20060905_TAG to be in sync with 
+  Gecko 1.8.1
+
+-------------------------------------------------------------------
+Mon Aug  7 13:53:55 CEST 2006 - stark@suse.de
+
+- enabled usage of ECC
+
+-------------------------------------------------------------------
+Sat Aug  5 09:50:47 CEST 2006 - stark@suse.de
+
+- update to NSS_3_11_20060731_TAG to be in sync with 
+  Gecko 1.8.1
+
+-------------------------------------------------------------------
+Fri Jul 28 07:09:44 CEST 2006 - stark@suse.de
+
+- fixed usage of uninitialized pointers (uninit.patch)
+- requires NSPR 4.6.2
+
+-------------------------------------------------------------------
+Sat Jul  1 23:37:52 CEST 2006 - stark@suse.de
+
+- update to 3.11.2 RTM version
+  * ECC not enabled but defines needed symbols
+
+-------------------------------------------------------------------
+Thu Jun  8 11:45:14 CEST 2006 - stark@suse.de
+
+- update to 3.11.2 beta
+  * enabled ECC (needed since MOZILLA_1_8_BRANCH)
+
+-------------------------------------------------------------------
+Mon May 15 20:38:37 CEST 2006 - stark@suse.de
+
+- update to 3.11.1 RTM version
+  including:
+  * TLS server name indication extension support
+  * implement RFC 3546 (TLS v1.0 extensions)
+  * fixed bugs found by Coverity
+
+-------------------------------------------------------------------
+Mon Jan 30 08:34:45 CET 2006 - stark@suse.de
+
+- removed additional CA certs
+- removed zip from BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:31 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 11 16:15:18 CET 2006 - stark@suse.de
+
+- install nss-config executable
+
+-------------------------------------------------------------------
+Fri Dec 16 20:24:05 CET 2005 - stark@suse.de
+
+- marked libfreebl3.so noexec stack
+
+-------------------------------------------------------------------
+Fri Dec 16 09:41:15 CET 2005 - stark@suse.de
+
+- update to 3.11 RTM version
+- provide nss-config file
+- added static libs
+- moved include files to /usr/include/nss3
+- only ship a subset of the tools
+
+-------------------------------------------------------------------
+Sat Nov 26 14:54:03 CET 2005 - stark@suse.de
+
+- update to 3.11rc1
+- fixed PC file for 64bit archs
+
+-------------------------------------------------------------------
+Tue Nov 15 07:35:25 CET 2005 - stark@suse.de
+
+- update to current 3.10.2 snapshot (20051114)
+
+-------------------------------------------------------------------
+Wed Nov  2 12:17:23 CET 2005 - stark@suse.de
+
+- added tools subpackage which provides all NSS related
+  tools for managing and debugging NSS stuff
+
+-------------------------------------------------------------------
+Tue Oct 11 07:08:38 CEST 2005 - stark@suse.de
+
+- update to current 3.10.2 snapshot
+
+-------------------------------------------------------------------
+Mon Sep 26 21:59:00 CEST 2005 - stark@suse.de
+
+- prerequire the correct NSPR version
+
+-------------------------------------------------------------------
+Thu Sep 22 07:15:30 CEST 2005 - stark@suse.de
+
+- update to NSS_3_10_2_BETA1
+
+-------------------------------------------------------------------
+Tue Jul  5 15:33:18 CEST 2005 - stark@suse.de
+
+- use RPM_OPT_FLAGS
+- fixed requirements for devel package
+
+-------------------------------------------------------------------
+Wed Jun  8 09:19:59 CEST 2005 - stark@suse.de
+
+- added pkgconfig file
+- fixed permission for include directory
+- fixed compiler/abuild warning
+- included correct header files
+
+-------------------------------------------------------------------
+Mon May  9 09:34:30 CEST 2005 - stark@suse.de
+
+- update to 3.10 RTM version
+
+-------------------------------------------------------------------
+Wed Apr 27 07:52:55 CEST 2005 - stark@suse.de
+
+- don't package static libs
+- copy NSPR static libs from new location
+
+-------------------------------------------------------------------
+Thu Apr  7 09:08:22 CEST 2005 - stark@suse.de
+
+- update to 3.10beta3
+
+-------------------------------------------------------------------
+Fri Apr  1 15:55:58 CEST 2005 - stark@suse.de
+
+- don't parallelize build 
+
+-------------------------------------------------------------------
+Thu Mar 31 07:39:45 CEST 2005 - stark@suse.de
+
+- fixed build on other archs
+- update to 3.10beta2
+
+-------------------------------------------------------------------
+Sat Mar 19 13:36:51 CET 2005 - stark@suse.de
+
+- update to 3.10beta1
+
+-------------------------------------------------------------------
+Tue Mar  8 09:16:59 CET 2005 - stark@suse.de
+
+- initial standalone package
+

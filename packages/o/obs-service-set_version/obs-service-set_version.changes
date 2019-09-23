@@ -1,0 +1,377 @@
+-------------------------------------------------------------------
+Wed Aug 07 08:27:33 UTC 2019 - FSchreiner@suse.com
+
+- Update to version 0.5.12:
+  * debian: set script shebang to python3
+  * debian: add python3 as a runtime dependency
+  * conditionally define PYTHON in Makefile
+  * debian: use python3 for building
+  * try to fix set_version:157:13: E117 over-indented (comment)
+
+-------------------------------------------------------------------
+Thu May 16 15:13:14 UTC 2019 - John Whately <john+OpenSuse@whately.me>
+
+- Modified .spec file to better suit Fedora OS (let's just assume all Fedora versions has python 3)
+
+-------------------------------------------------------------------
+Thu May 16 13:11:28 UTC 2019 - FSchreiner@suse.com
+
+- Update to version 0.5.11:
+  * try to fix set_version:157:13: E117 over-indented (comment)
+
+-------------------------------------------------------------------
+Tue May 14 13:33:02 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- enable test suite by default
+  * if it does not build, it can also not be executed on the distro
+- fix requires for SLE 12 distro
+
+-------------------------------------------------------------------
+Thu May  9 10:33:23 UTC 2019 - John Whately <john+OpenSuse@whately.me>
+
+- Changed source files to support python 3
+
+-------------------------------------------------------------------
+Sat May  4 05:25:59 UTC 2019 - John Whately <john+OpenSuse@whately.me>
+
+- fix for Fedora 30/Rawhide 
+
+-------------------------------------------------------------------
+Mon Nov 26 18:04:26 CET 2018 - ro@suse.de
+
+- for now obs_scm_testsuite only for > 1315, needed python stuff
+  not available otherwise 
+
+-------------------------------------------------------------------
+Fri Nov 16 18:09:57 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.5.11:
+  * fix code to pass flake8 tests for python3
+  * fix zipfile crash also for python2.7
+  * avoid error with latest flake8 about unused variable
+  * allow running tests with python3
+  * second place where zip file handling can crash
+  * avoid crashes due to false is_zipfile() response
+  * Add python-flake8 to test suite package list
+  * Fix indentation of condition
+  * Fix basename to match documentation (#54)
+
+-------------------------------------------------------------------
+Wed Sep 19 06:28:24 UTC 2018 - adrian@suse.de
+
+- Update to version 0.5.10:
+  * fix zipfile crash also for python2.7
+
+-------------------------------------------------------------------
+Mon Sep 17 10:21:44 UTC 2018 - olaf@aepfle.de
+
+- Wrap make check in bcond obs_scm_testsuite
+
+-------------------------------------------------------------------
+Mon Sep 17 09:28:09 UTC 2018 - adrian@suse.de
+
+- Update to version 0.5.9:
+  * avoid crashes due to false is_zipfile() response
+- enable test suite
+
+-------------------------------------------------------------------
+Mon Dec 11 15:50:24 UTC 2017 - fschreiner@suse.de
+
+- Update to version 0.5.8:
+  * fixes boo#1072359
+  * code cleanup and some refactoring
+  * cli options --debug and --regex
+  * new targets (test/clean) for Makefile
+  * initial .gitignore
+  * Mention that tests may take some time in README.md
+  * Fix pip/zypper tests for python3
+  * enforce files to be decoded as UTF-8
+  * Don't let version check get beyond path boundary
+  * Slightly reorganize README.md file
+
+-------------------------------------------------------------------
+Mon Nov  6 16:16:21 UTC 2017 - adrian@suse.de
+
+- add requires to python3, since Leap 15.0 still does not have
+  the fileprovides
+
+-------------------------------------------------------------------
+Mon Nov 06 15:33:21 UTC 2017 - adrian@suse.de
+
+- Update to version 0.5.7:
+  * added gitignore
+  * added target 'clean' in Makefile
+  * Added new target 'test' to Makefile
+  * fix flake8 error 'do not use bare except'
+  * Reverting patch for setlocale as it breaks in containers
+
+-------------------------------------------------------------------
+Mon Oct 30 15:59:17 UTC 2017 - adrian@suse.de
+
+- Update to version 0.5.7:
+  * workaround for python3 locale problems in factory
+  * add a hint to flake8
+  * satisfy flake8
+  * skip also sha256sums check for Arch
+
+-------------------------------------------------------------------
+Tue Oct 10 07:39:43 UTC 2017 - dmueller@suse.com
+
+- switch to python3 for less ancient distros
+
+-------------------------------------------------------------------
+Tue Sep 19 12:26:06 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Avoid half-converting Debian native pkgs to non-native pkgs
+- Simplify the pip version handling
+- travis: Do not use "--use-mirrors" when using pip
+- travis: Test python 3.6
+
+-------------------------------------------------------------------
+Mon Jul  3 07:21:33 UTC 2017 - adrian@suse.de
+
+- try to avoid python-packaging to support non-SUSE distros
+
+-------------------------------------------------------------------
+Thu Apr 27 12:48:11 UTC 2017 - adrian@suse.de
+
+- Update to version 0.5.6:
+  * strip \n from version in obsinfo
+
+-------------------------------------------------------------------
+Thu Mar 02 09:23:45 UTC 2017 - adrian@suse.de
+
+- Update to version 0.5.5:
+  * read version from .obsinfo file if available
+  * Add support for Collax build recipes
+
+-------------------------------------------------------------------
+Fri Jan 13 13:06:53 UTC 2017 - adrian@suse.de
+
+- Update to version 0.5.4:
+  * support obscpio archives
+  * do not strip release number in debian, but setting it back
+
+-------------------------------------------------------------------
+Thu Apr 21 11:54:41 UTC 2016 - opensuse-packaging@opensuse.org
+
+- Update to version 0.5.3:
+  * VersionDetector._autodetect: prioritize the directory name over the file name
+
+-------------------------------------------------------------------
+Fri Apr 08 13:28:43 UTC 2016 - tbechtold@suse.com
+
+- Update to version 0.5.3:
+  * Don't add unconverted_version unconditionally
+
+-------------------------------------------------------------------
+Thu Mar 03 16:42:56 UTC 2016 - tbechtold@suse.com
+
+- Update to version 0.5.3:
+  + Use old version from testing data instead of hardcoding
+  + Fix replacement of empty tags
+  + Fix empty version checks for debian/changelog
+  + fix when switching from .dev to non-dev version
+
+-------------------------------------------------------------------
+Thu Sep 03 07:21:55 UTC 2015 - adrian@suse.de
+
+- Update to version 0.5.3:
+  + Set pkgver and pkgrel for PKGBUILD files (fixes #21)
+  + Fix python3 compat
+
+-------------------------------------------------------------------
+Mon Aug 17 15:14:11 UTC 2015 - adrian@suse.de
+
+- Update to version 0.5.2:
+  + fix it ... it only worked with "disabledrun" mode by luck
+
+-------------------------------------------------------------------
+Tue Jul 28 06:17:48 UTC 2015 - adrian@suse.de
+
+- Update to version 0.5.1:
+  + Make python-packaging runtime dep optional
+  + Fix %setup handling for python spec files
+
+-------------------------------------------------------------------
+Mon Jul 27 08:50:38 UTC 2015 - adrian@suse.de
+
+- Recommends python-packaging
+
+-------------------------------------------------------------------
+Fri Jul 24 08:12:15 UTC 2015 - tbechtold@suse.com
+
+- Require python-packaging
+
+-------------------------------------------------------------------
+Fri Jul 24 06:27:51 UTC 2015 - adrian@suse.de
+
+- Update to version 0.5.0:
+  + Add Makefile with install target
+  + Change debian source format to 'native'
+  + Fix tar file detection for PKGBUILD
+  + Add Testsuite and README.md
+  + - empty dummy commit to test travis hook
+  + Disable py26, enable py{33,34} for tests
+  + Add basic test for debian changelogs
+  + Add travis build status image to README
+  + Also do negative test for debian/changelog
+  + Move testdata to .json files
+  + Move _write_tarfile() to base test class
+  + Remove python 2.6 compat import
+  + Reuse test data for debian changelog tests
+  + Rewrite set_version in python
+  + Install devscripts in travis-ci test env
+  + Restructure version detection code
+  + Allow files in test tarballs
+  + Add package type detection for python
+  + Add version converter for python packages
+  + Run python version converter tests with dpkg
+  + Add function to add or replace a %define
+  + Fix problem with replacing tags in spec files
+  + Add function to replace %{version} in %setup
+  + Add custom line support for _write_specfile func
+  + Finally use version conversion for python packages
+  + Skip some tests if zypper or dpkg are unavailable
+  + Use python binary from virtualenv
+
+-------------------------------------------------------------------
+Thu Sep 11 12:44:10 UTC 2014 -  jblunck@infradead.org
+
+- Update to version 0.4.2:
+  + Release 0.4.2 - Update Debian changelog
+
+-------------------------------------------------------------------
+Wed Sep 10 15:40:33 UTC 2014 -  adrian@suse.de
+
+- Update to version 0.4.2:
+  + the extension needs to be \.
+  + test with defined() at ./set_version line 118.
+  + Fix processing of --file parameter
+  + Add support for setting the version in debian.changelog
+  + Sort local file list based on modification time (newest first)
+
+-------------------------------------------------------------------
+Wed Jul  9 12:02:43 UTC 2014 - jblunck@infradead.org
+
+- Update to version 0.4.1:
+  + Add support to automatically detect version based on Debian changelog file
+  + Initial debianization
+  + Handle PKGBUILD files generated by services
+
+-------------------------------------------------------------------
+Mon Mar 17 09:52:56 UTC 2014 -  adrian@suse.de
+
+- Update to version 0.4.1:
+  + - drop old bash version
+  + - fix PKGBUILD version setting
+  + fix help text
+  + support detection from tar ball content
+  + use warnings pragma
+  + - replace bash script with a more secure perl version
+  + fix urgent quoting bugs
+  + Be more liberal in root-dir version detection
+
+-------------------------------------------------------------------
+Mon Mar 17 09:51:15 UTC 2014 -  adrian@suse.de
+
+- Update to version 0.4.1:
+  + - drop old bash version
+  + - fix PKGBUILD version setting
+  + fix help text
+
+-------------------------------------------------------------------
+Fri Mar  7 12:06:41 UTC 2014 -  adrian@suse.de
+
+- Update to version 0.4.0:
+  + support detection from tar ball content
+  + use warnings pragma
+
+-------------------------------------------------------------------
+Thu Mar  6 11:03:52 UTC 2014 - adrian@suse.de
+
+- Update to version 0.4.0:
+  This is a rewrite in perl
+  This fixes also a sed commandline injection (bnc#866966 CVE-2014-0593)
+
+-------------------------------------------------------------------
+Thu Mar  6 09:43:52 UTC 2014 -  adrian@suse.de
+
+- Update to version 0.3.3:
+  + ERROR: git log --pretty=format:%s --no-merges 4b090f0cad..4fc9fcb0c2 failed; aborting!
+
+-------------------------------------------------------------------
+Thu Mar  6 07:07:51 UTC 2014 -  adrian@suse.de
+
+- Update to version 0.3.3:
+  + - drop two echo lines which can be used to run random commands
+
+-------------------------------------------------------------------
+Tue Feb 11 16:29:02 UTC 2014 - speilicke@suse.com
+
+- Update to version 0.3.2:
+  + Be more liberal in root-dir version detection
+
+-------------------------------------------------------------------
+Mon Feb 10 09:53:00 UTC 2014 - speilicke@suse.com
+
+- Update to version 0.3.1:
+  + Check tarball content's root-dir for version
+  + Use a for-loop for different endings
+
+-------------------------------------------------------------------
+Tue Oct 29 13:47:13 UTC 2013 - speilicke@suse.com
+
+- Move service to github.com/openSUSE/obs-service-set_version
+- Add _service file to update package from there
+- Drop local sources and use tarball from source services
+
+-------------------------------------------------------------------
+Tue Oct  8 10:06:26 UTC 2013 - jblunck@opensuse.org
+
+- Take Debian version and revision number from debian.changelog file
+
+-------------------------------------------------------------------
+Tue Apr 16 09:30:01 UTC 2013 - adrian@suse.de
+
+- add support for PKGBUILD aka Arch Linux files
+
+-------------------------------------------------------------------
+Tue Jun 26 15:01:27 UTC 2012 - saschpe@suse.de
+
+- Preserve whitespaces in Version: and Requires: lines
+
+-------------------------------------------------------------------
+Tue Feb 14 20:01:13 GMT 2012 - aspiers@suse.com
+
+- only change the first occurrence of Version: header
+- output useful info during run
+- when auto-detecting the version, use the newest matching file
+
+-------------------------------------------------------------------
+Tue Feb 14 17:54:29 GMT 2012 - aspiers@suse.com
+
+- patch License to follow spdx.org standard
+
+-------------------------------------------------------------------
+Mon Jan 30 17:54:19 GMT 2012 - aspiers@suse.com
+
+- add --basename to usage help text
+
+-------------------------------------------------------------------
+Fri Jul  8 15:43:23 UTC 2011 - andrea@opensuse.org
+
+- do not delete mandriva/fedora macros in release when reset the
+  release number
+
+-------------------------------------------------------------------
+Tue Dec 14 06:50:01 UTC 2010 - reddwarf@opensuse.org
+
+- support detecting the version from *.tbz2 files
+
+-------------------------------------------------------------------
+Sun Dec  5 19:36:00 UTC 2010 - adrian@suse.de
+
+- initial package of service
+- fix set version, when also release number is reset
+

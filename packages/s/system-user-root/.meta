@@ -1,0 +1,5 @@
+<package name="system-user-root" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Base:System" package="system-user-root"/>
+</package>

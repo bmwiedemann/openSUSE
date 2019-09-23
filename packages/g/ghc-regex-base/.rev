@@ -1,0 +1,103 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fabf991abba968db55b228ecdb03c1aa</srcmd5>
+    <version>0.93.2</version>
+    <time>1357828236</time>
+    <user>coolo</user>
+    <comment>New package for Haskell Platform. See: http://lists.opensuse.org/opensuse-factory/2012-12/msg00178.html.</comment>
+    <requestid>147574</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>fabf991abba968db55b228ecdb03c1aa</srcmd5>
+    <version>0.93.2</version>
+    <time>1359108929</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>523e4f585b38cc5f150d97c17cd6ab22</srcmd5>
+    <version>0.93.2</version>
+    <time>1375363988</time>
+    <user>coolo</user>
+    <comment>Update to Haskell Platform 2013.2.0.0 (forwarded request 185264 from ptrommler)</comment>
+    <requestid>185394</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>523e4f585b38cc5f150d97c17cd6ab22</srcmd5>
+    <version>0.93.2</version>
+    <time>1379662435</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>3e1a881311569a11ffb08d0a6ff1654d</srcmd5>
+    <version>0.93.2</version>
+    <time>1408957484</time>
+    <user>coolo</user>
+    <comment>enable PowerPC builds</comment>
+    <requestid>246011</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>3e1a881311569a11ffb08d0a6ff1654d</srcmd5>
+    <version>0.93.2</version>
+    <time>1409300970</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>dd3e8cf7feda1b5a9c01f1288feda762</srcmd5>
+    <version>0.93.2</version>
+    <time>1417031699</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260165</requestid>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>80cbae2b86ff86a68a7f0b3edd0cd01f</srcmd5>
+    <version>0.93.2</version>
+    <time>1468999583</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411868</requestid>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>cb7254091683bdd9f1eb2a9c240381a7</srcmd5>
+    <version>0.93.2</version>
+    <time>1505506147</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525286</requestid>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>08314a17056f44323d2ed67ec48894f0</srcmd5>
+    <version>0.93.2</version>
+    <time>1527675624</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609814</requestid>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>6990003ed0ffef1563d1d31da587e1f7</srcmd5>
+    <version>0.93.2</version>
+    <time>1532445684</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- regenerate spec file
+- more transparent packaging (fewer macros)
+- expand macro in name tag to help source validator
+- make service localonly for Factory submission
+- use cabal2spec 0.25.5 template for spec file
+- Initial packaging.</comment>
+    <requestid>623840</requestid>
+  </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>e897d1259ae895571ce99350bc2859a5</srcmd5>
+    <version>0.93.2</version>
+    <time>1540450987</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643446</requestid>
+  </revision>
+</revisionlist>

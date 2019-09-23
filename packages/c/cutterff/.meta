@@ -1,0 +1,15 @@
+<package name="cutterff" project="openSUSE:Factory">
+  <title>Cutting videos using FFmpeg and GTK+</title>
+  <description>CutterFF is a small program for UNIX (or Windows if compiled with MingW)
+for cutting videos using FFmpeg and GTK+. It is easy to use and fast,
+since it do not decode and encode the streams, instead it only copy them.
+
+Features
+ - Selecting which streams written to the output
+ - Selecting the format and bitstream filters
+ - Choose a program if video contains more than one
+ - Set cutpoints everywhere in the video
+ - Many formats and codecs supported by FFmpeg
+ - Log window for displaying FFmpeg messages</description>
+  <devel project="multimedia:apps" package="cutterff"/>
+</package>

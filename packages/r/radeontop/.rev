@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c1ac1b89c9f7d960a2836c975ec0db08</srcmd5>
+    <version>0.9</version>
+    <time>1444130703</time>
+    <user>dimstar_suse</user>
+    <comment>New package, usefull for people with amd gfx cards</comment>
+    <requestid>334980</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>056e25df5315c8584a317badb907b94a</srcmd5>
+    <version>0.9</version>
+    <time>1468579869</time>
+    <user>dimstar_suse</user>
+    <comment>- Change dependecies to allow building for SLE-12</comment>
+    <requestid>407649</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>80f4366bf9dba37ad83accd7f00166b1</srcmd5>
+    <version>0.9+git.20161028</version>
+    <time>1480341960</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9+git.20161028:
+  * Add optional unprivileged mode in Xorg
+  * Fix auto-detection of radeon device
+  * Add a LIBDIR indirection for some x86_64 systems
+  * Add support for Polaris 11 and Polaris 10
+  * Add support for VRAM size and usage reporting on amdgpu
+  * Print &quot;amdgpu not enabled&quot; warning just once
+  * Add support for resizeable terminals
+  * Fix artifact on mrxvt
+  * ui: factor out screen size calculation
+  * Silence gcc's &quot;may be uninitialized&quot; warning</comment>
+    <requestid>441761</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3e7f6bcf6defbdfe043fe1240b003e89</srcmd5>
+    <version>1.0</version>
+    <time>1485383392</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451628</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6b8a7e7bd38961a47b2e82a7c5798107</srcmd5>
+    <version>1.1</version>
+    <time>1522503423</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592534</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>69503e06cbab55dd9a3d9e427fe797b0</srcmd5>
+    <version>1.1</version>
+    <time>1531232231</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable building of debuginfo subpackage</comment>
+    <requestid>621834</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bc66107093514e90d224df76ece4ffef</srcmd5>
+    <version>1.2</version>
+    <time>1565721916</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2:
+  * Add support for new graphic cards and their features
+- Add radeontop-rpmlintrc to resolve error for xcb plugin</comment>
+    <requestid>723102</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0ee7c81cac89b961a930690ae338a754</srcmd5>
+    <version>1.2</version>
+    <time>1566894537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726346</requestid>
+  </revision>
+</revisionlist>

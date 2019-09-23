@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Mon Jun 24 07:26:21 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5.0:
+  * Bump CMake minimum version to 3.5.1 (see dependencies.md)
+  * Add threads and repetitions to the JSON outputa
+  * Memory management and reporting hooks
+  * Documentation improvements
+  * Miscellaneous build fixes
+- Disable gtest part of tests untill new gtest is available
+
+-------------------------------------------------------------------
+Sat Feb 23 10:47:16 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Use arch-specific libdir in pkgconfig file
+
+-------------------------------------------------------------------
+Mon Feb 18 09:52:40 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Use arch-specific directories for support files
+
+-------------------------------------------------------------------
+Mon Jun 25 11:56:55 UTC 2018 - mpluskal@suse.com
+
+- Enable lto
+- Update dependencies
+
+-------------------------------------------------------------------
+Mon May 28 21:43:24 UTC 2018 - avindra@opensuse.org
+
+- Update to version 1.4.1
+  * Realign expectation that State::iterations() returns 0 before
+    the main benchmark loop begins.
+  * CMake error message fixes
+  * Enscripten check fix
+  * Bazel pthread linking
+  * Negative regexes
+  * gmock fix
+
+-------------------------------------------------------------------
+Wed Apr  4 22:20:14 UTC 2018 - avindra@opensuse.org
+
+- Update to version 1.4.0
+  * Removal of deprecated headers
+  * Improved CPU cache info reporting
+  * Support State::KeepRunningBatch()
+  * Support int64_t for AddRange()
+  * New platform support: NetBSD, s390x, Solaris
+  * Bazel build support
+  * Support googletest unit tests
+  * Add assembler tests
+  * Various warnings fixed
+- Drop benchmark-s390.patch
+  * fixed upstream (commit ff2c255af5bb2fc2e5cd3b3685f0c6283117ce73)
+
+-------------------------------------------------------------------
+Tue Mar 27 03:25:41 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Remove ExclusiveArch, it works on non-x86 as well
+
+-------------------------------------------------------------------
+Fri Mar 16 18:38:52 UTC 2018 - avindra@opensuse.org
+
+- Update to version 1.3.0:
+ * Ranged for loop optimization!
+ * Make installation optional
+ * Better stats including user-provided ones
+ * JSON reporter format fixes
+ * Documentation improvements
+- Includes changes from 1.2.0:
+ * User-defined counters
+ * Single header library
+ * Ability to clear benchmarks so the runtime registration is more flexible
+ * Sample-based standard deviation
+ * 32-bit build enabled
+ * Bug fixes
+- Cleanup with spec-cleaner
+- Use %ctest macro for testing
+
+-------------------------------------------------------------------
+Fri Jan 27 14:46:11 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.1.0:
+  * ArgNames support
+  * Fixes for OSX and Cygwin and MSVC builds
+  * PauseTiming and ResumeTiming are per thread (#286)
+  * Better Range and Arg specifications
+  * Complexity reporting
+
+-------------------------------------------------------------------
+Fri Jan 27 14:28:26 UTC 2017 - bg@suse.com
+
+- add support for s390x:
+  * benchmark-s390.patch
+
+-------------------------------------------------------------------
+Sat Nov 12 13:43:21 CET 2016 - ro@suse.de
+
+- add ExclusiveArch, package is not ported to anything but
+  x86 and x86_64 
+
+-------------------------------------------------------------------
+Mon Jul  4 09:24:59 UTC 2016 - mpluskal@suse.com
+
+- Disable lto as it does not seem to go well with -fPIE
+
+-------------------------------------------------------------------
+Sat May 14 17:15:41 UTC 2016 - mpluskal@suse.com
+
+- Initial package for version 1.0.0
+

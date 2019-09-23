@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Tue Mar  6 12:18:16 UTC 2012 - aj@suse.de
+
+- Remove obsolete suse_update_config call
+- No need to run bootstrap, the automake etc files are good enough
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Fri Dec  2 06:23:46 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Sep 17 11:02:38 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Thu Feb  4 12:22:15 UTC 2010 - jengelh@medozas.de
+
+- add ExclusiveArch to specfile, as the package only has source
+  files for certain architectures and fails on SPARC.
+
+-------------------------------------------------------------------
+Fri Jul 24 17:04:38 CEST 2009 - thomas@novell.com
+
+- fixed %files section in spec file by adding %doc 
+
+-------------------------------------------------------------------
+Thu Jul 23 16:56:05 CEST 2009 - thomas@novell.com
+
+- upgraded to version 1.0.8
+- added patch for missing fclose() in src/memsep.c (bnc#523353) 
+
+-------------------------------------------------------------------
+Fri Mar  2 15:26:12 CET 2007 - ro@suse.de
+
+- fix buildreq 
+
+-------------------------------------------------------------------
+Tue Feb 27 01:14:38 CET 2007 - draht@suse.de
+
+- port from sles9 tree to sle10-sp for SP1, initial package in
+  CODE10
+- version upgrade to 1.0.4; featuring audit (LAF) support for
+  compliance with CAPP
+
+-------------------------------------------------------------------
+Mon Sep  6 09:51:31 CEST 2004 - thomas@suse.de
+
+- added laus, laus-devel to needforbuild
+
+-------------------------------------------------------------------
+Thu Aug 26 10:02:20 CEST 2004 - thomas@suse.de
+
+- added patch to make memory separation testcase work on
+  machines with kernel f_pos race fix. it is needed due to
+  new permissions on /proc/self/maps.
+
+-------------------------------------------------------------------
+Fri Aug 20 10:20:54 CEST 2004 - thomas@suse.de
+
+- created initial package for EAL4 evaluation of SLES9 
+

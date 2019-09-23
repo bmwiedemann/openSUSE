@@ -1,0 +1,13 @@
+Index: mm.pl
+===================================================================
+--- mm.pl.orig
++++ mm.pl
+@@ -63,7 +63,7 @@ $max = 6;
+ # $pkg is the package number fixed up to replace characters likely to give
+ # grief under unix.
+ # This expects the directory logs to already exist.
+-$mirror = "exec ./mirror \$args -p'\$package' packages/\$site > logs/\$site:\$pkg 2>&1";
++$mirror = "exec mirror \$args -p'\$package' packages/\$site > logs/\$site:\$pkg 2>&1";
+ 
+ $status_file = 'mm.status';
+ 

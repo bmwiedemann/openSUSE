@@ -1,0 +1,467 @@
+--- Imakefile
++++ Imakefile	Mon Apr 26 17:19:33 2004
+@@ -1,23 +1,29 @@
+-/**/# Cannot compile in using Gcc
+-             CC = cc
++XCOMM Cannot compile in using Gcc
++             CC = gcc
+ 
+-LOCAL_LIBRARIES = -L/usr/local/lib $(XLIB)
++LOCAL_LIBRARIES = -L/usr/X11R6/lib $(XLIB)
+   SYS_LIBRARIES = -lm
+         DEPLIBS = $(DEPXLIB)
+-        DEFINES = -DSHAPE -I/usr/local/include
++        DEFINES = -DSHAPE -I/usr/X11R6/include
+ 
+-CP = /bin/cp
+-STRIP = /bin/strip
+-RM = /bin/rm -f
++   CP = /bin/cp
++STRIP = /usr/bin/strip
++   RM = /bin/rm -f
+ 
+ SimpleProgramTarget(oneko)
+ 
+-DESTDIR = /afs/andrew/system/dest/@sys/contributed/neko/011
++install:: oneko
++	$(RM) $(DESTDIR)$(BINDIR)/dog
++	$(RM) $(DESTDIR)$(BINDIR)/tora
++	$(LN) oneko $(DESTDIR)$(BINDIR)/dog
++	$(LN) oneko $(DESTDIR)$(BINDIR)/tora
+ 
+-install::
+-	$(RM) $(DESTDIR)/bin/oneko $(DESTDIR)/man/man1/oneko.man
+-	$(CP) oneko $(DESTDIR)/bin/oneko
+-	$(STRIP) $(DESTDIR)/bin/oneko
+-	$(CP) oneko.man $(DESTDIR)/man/man1/oneko.1
++install.man::
++	test $(DESTDIR)$(MANDIR)/oneko.$(MANSUFFIX) && \
++	gzip -9fv $(DESTDIR)$(MANDIR)/oneko.$(MANSUFFIX)
++	$(RM) $(DESTDIR)$(MANDIR)/dog.$(MANSUFFIX).gz
++	$(RM) $(DESTDIR)$(MANDIR)/tora.$(MANSUFFIX).gz
++	$(LN) oneko.$(MANSUFFIX).gz $(DESTDIR)$(MANDIR)/dog.$(MANSUFFIX).gz
++	$(LN) oneko.$(MANSUFFIX).gz $(DESTDIR)$(MANDIR)/tora.$(MANSUFFIX).gz
+ 
+ /* InstallAppDefaults(Oneko) */
+--- oneko.c
++++ oneko.c	Mon Apr 26 17:34:07 2004
+@@ -3,11 +3,15 @@
+  */
+ 
+ #ifndef	lint
+-static char rcsid[] = "$Header: /home/sun/unix/kato/xsam/oneko/oneko.c,v 1.5 90/10/19 21:25:16 kato Exp $";
++static char rcsid[] __attribute__((unused)) = "$Header: /home/sun/unix/kato/xsam/oneko/oneko.c,v 1.5 90/10/19 21:25:16 kato Exp $";
+ #endif
+ 
+ #include "oneko.h"
+ #include "patchlevel.h"
++#include <time.h>
++#include <stdlib.h>
++#include <string.h>
++#include <unistd.h>
+ /*
+  *	グローバル変数
+  */
+@@ -17,13 +21,13 @@
+ 
+ Display	*theDisplay;			/* ディスプレイ構造体 */
+ int	theScreen;			/* スクリーン番号 */
+-int	theDepth;			/* デプス */
++unsigned int	theDepth;		/* デプス */
+ Window	theRoot;			/* ルートウィンドウのＩＤ */
+ Window	theWindow;			/* 猫ウィンドウのＩＤ */
+ Cursor	theCursor;			/* ねずみカーソル */
+ 
+-int	WindowWidth;			/* ルートウィンドウの幅 */
+-int	WindowHeight;			/* ルートウィンドウの高さ */
++unsigned int	WindowWidth;		/* ルートウィンドウの幅 */
++unsigned int	WindowHeight;		/* ルートウィンドウの高さ */
+ 
+ XColor	theForegroundColor;		/* 色 (フォアグラウンド) */
+ XColor	theBackgroundColor;		/* 色 (バックグラウンド) */
+@@ -141,71 +145,71 @@
+ 
+ BitmapGCData	BitmapGCDataTable[] =
+ {
+-    { &Mati2GC, &Mati2Xbm, mati2_bits, mati2_tora_bits, mati2_dog_bits,
+-      &Mati2Msk, mati2_mask_bits, mati2_mask_bits, mati2_dog_mask_bits },
+-    { &Jare2GC, &Jare2Xbm, jare2_bits, jare2_tora_bits, jare2_dog_bits,
+-      &Jare2Msk, jare2_mask_bits, jare2_mask_bits, jare2_dog_mask_bits },
+-    { &Kaki1GC, &Kaki1Xbm, kaki1_bits, kaki1_tora_bits, kaki1_dog_bits,
+-      &Kaki1Msk, kaki1_mask_bits, kaki1_mask_bits, kaki1_dog_mask_bits },
+-    { &Kaki2GC, &Kaki2Xbm, kaki2_bits, kaki2_tora_bits, kaki2_dog_bits,
+-      &Kaki2Msk, kaki2_mask_bits, kaki2_mask_bits, kaki2_dog_mask_bits },
+-    { &Mati3GC, &Mati3Xbm, mati3_bits, mati3_tora_bits, mati3_dog_bits,
+-      &Mati3Msk, mati3_mask_bits, mati3_mask_bits, mati3_dog_mask_bits},
+-    { &Sleep1GC, &Sleep1Xbm, sleep1_bits, sleep1_tora_bits, sleep1_dog_bits,
+-      &Sleep1Msk, sleep1_mask_bits, sleep1_mask_bits, sleep1_dog_mask_bits },
+-    { &Sleep2GC, &Sleep2Xbm, sleep2_bits, sleep2_tora_bits, sleep2_dog_bits,
+-      &Sleep2Msk, sleep2_mask_bits, sleep2_mask_bits, sleep2_dog_mask_bits },
+-    { &AwakeGC, &AwakeXbm, awake_bits, awake_tora_bits, awake_dog_bits,
+-      &AwakeMsk, awake_mask_bits, awake_mask_bits, awake_dog_mask_bits },
+-    { &Up1GC, &Up1Xbm, up1_bits, up1_tora_bits, up1_dog_bits,
+-      &Up1Msk, up1_mask_bits, up1_mask_bits, up1_dog_mask_bits },
+-    { &Up2GC, &Up2Xbm, up2_bits, up2_tora_bits, up2_dog_bits,
+-      &Up2Msk, up2_mask_bits, up2_mask_bits, up2_dog_mask_bits },
+-    { &Down1GC, &Down1Xbm, down1_bits, down1_tora_bits, down1_dog_bits,
+-      &Down1Msk, down1_mask_bits, down1_mask_bits, down1_dog_mask_bits },
+-    { &Down2GC, &Down2Xbm, down2_bits, down2_tora_bits, down2_dog_bits,
+-      &Down2Msk, down2_mask_bits, down2_mask_bits, down2_dog_mask_bits },
+-    { &Left1GC, &Left1Xbm, left1_bits, left1_tora_bits, left1_dog_bits,
+-      &Left1Msk, left1_mask_bits, left1_mask_bits, left1_dog_mask_bits },
+-    { &Left2GC, &Left2Xbm, left2_bits, left2_tora_bits, left2_dog_bits,
+-      &Left2Msk, left2_mask_bits, left2_mask_bits, left2_dog_mask_bits },
+-    { &Right1GC, &Right1Xbm, right1_bits, right1_tora_bits, right1_dog_bits,
+-      &Right1Msk, right1_mask_bits, right1_mask_bits,right1_dog_mask_bits },
+-    { &Right2GC, &Right2Xbm, right2_bits, right2_tora_bits, right2_dog_bits,
+-      &Right2Msk, right2_mask_bits, right2_mask_bits, right2_dog_mask_bits },
+-    { &UpLeft1GC, &UpLeft1Xbm, upleft1_bits, upleft1_tora_bits, upleft1_dog_bits,
+-      &UpLeft1Msk, upleft1_mask_bits, upleft1_mask_bits, upleft1_dog_mask_bits },
+-    { &UpLeft2GC, &UpLeft2Xbm, upleft2_bits, upleft2_tora_bits, upleft2_dog_bits,
+-      &UpLeft2Msk, upleft2_mask_bits, upleft2_mask_bits,upleft2_dog_mask_bits },
+-    { &UpRight1GC, &UpRight1Xbm, upright1_bits, upright1_tora_bits, upright1_dog_bits,
+-      &UpRight1Msk, upright1_mask_bits, upright1_mask_bits,upright1_dog_mask_bits },
+-    { &UpRight2GC, &UpRight2Xbm, upright2_bits, upright2_tora_bits, upright2_dog_bits,
+-      &UpRight2Msk, upright2_mask_bits, upright2_mask_bits,upright2_dog_mask_bits },
+-    { &DownLeft1GC, &DownLeft1Xbm, dwleft1_bits, dwleft1_tora_bits, dwleft1_dog_bits,
+-      &DownLeft1Msk, dwleft1_mask_bits, dwleft1_mask_bits, dwleft1_dog_mask_bits },
+-    { &DownLeft2GC, &DownLeft2Xbm, dwleft2_bits, dwleft2_tora_bits, dwleft2_dog_bits,
+-      &DownLeft2Msk, dwleft2_mask_bits, dwleft2_mask_bits, dwleft2_dog_mask_bits },
+-    { &DownRight1GC, &DownRight1Xbm, dwright1_bits, dwright1_tora_bits, dwright1_dog_bits,
+-      &DownRight1Msk, dwright1_mask_bits, dwright1_mask_bits, dwright1_dog_mask_bits },
+-    { &DownRight2GC, &DownRight2Xbm, dwright2_bits, dwright2_tora_bits, dwright2_dog_bits,
+-      &DownRight2Msk, dwright2_mask_bits, dwright2_mask_bits, dwright2_dog_mask_bits },
+-    { &UpTogi1GC, &UpTogi1Xbm, utogi1_bits, utogi1_tora_bits, utogi1_dog_bits,
+-      &UpTogi1Msk, utogi1_mask_bits, utogi1_mask_bits, utogi1_dog_mask_bits },
+-    { &UpTogi2GC, &UpTogi2Xbm, utogi2_bits, utogi2_tora_bits, utogi2_dog_bits,
+-      &UpTogi2Msk, utogi2_mask_bits, utogi2_mask_bits, utogi2_dog_mask_bits },
+-    { &DownTogi1GC, &DownTogi1Xbm, dtogi1_bits, dtogi1_tora_bits, dtogi1_dog_bits,
+-      &DownTogi1Msk, dtogi1_mask_bits, dtogi1_mask_bits, dtogi1_dog_mask_bits },
+-    { &DownTogi2GC, &DownTogi2Xbm, dtogi2_bits, dtogi2_tora_bits, dtogi2_dog_bits,
+-      &DownTogi2Msk, dtogi2_mask_bits, dtogi2_mask_bits, dtogi2_dog_mask_bits },
+-    { &LeftTogi1GC, &LeftTogi1Xbm, ltogi1_bits, ltogi1_tora_bits, ltogi1_dog_bits,
+-      &LeftTogi1Msk, ltogi1_mask_bits, ltogi1_mask_bits,ltogi1_dog_mask_bits },
+-    { &LeftTogi2GC, &LeftTogi2Xbm, ltogi2_bits, ltogi2_tora_bits, ltogi2_dog_bits,
+-      &LeftTogi2Msk, ltogi2_mask_bits, ltogi2_mask_bits,ltogi2_dog_mask_bits },
+-    { &RightTogi1GC, &RightTogi1Xbm, rtogi1_bits, rtogi1_tora_bits, rtogi1_dog_bits,
+-      &RightTogi1Msk, rtogi1_mask_bits, rtogi1_mask_bits,rtogi1_dog_mask_bits },
+-    { &RightTogi2GC, &RightTogi2Xbm, rtogi2_bits, rtogi2_tora_bits, rtogi2_dog_bits,
+-      &RightTogi2Msk, rtogi2_mask_bits, rtogi2_mask_bits,rtogi2_dog_mask_bits },
+-    { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }
++    { &Mati2GC, &Mati2Xbm, { mati2_bits, mati2_tora_bits, mati2_dog_bits },
++      &Mati2Msk, { mati2_mask_bits, mati2_mask_bits, mati2_dog_mask_bits } },
++    { &Jare2GC, &Jare2Xbm, { jare2_bits, jare2_tora_bits, jare2_dog_bits },
++      &Jare2Msk, { jare2_mask_bits, jare2_mask_bits, jare2_dog_mask_bits } },
++    { &Kaki1GC, &Kaki1Xbm, { kaki1_bits, kaki1_tora_bits, kaki1_dog_bits },
++      &Kaki1Msk, { kaki1_mask_bits, kaki1_mask_bits, kaki1_dog_mask_bits } },
++    { &Kaki2GC, &Kaki2Xbm, { kaki2_bits, kaki2_tora_bits, kaki2_dog_bits },
++      &Kaki2Msk, { kaki2_mask_bits, kaki2_mask_bits, kaki2_dog_mask_bits } },
++    { &Mati3GC, &Mati3Xbm, { mati3_bits, mati3_tora_bits, mati3_dog_bits },
++      &Mati3Msk, { mati3_mask_bits, mati3_mask_bits, mati3_dog_mask_bits} },
++    { &Sleep1GC, &Sleep1Xbm, { sleep1_bits, sleep1_tora_bits, sleep1_dog_bits },
++      &Sleep1Msk, { sleep1_mask_bits, sleep1_mask_bits, sleep1_dog_mask_bits } },
++    { &Sleep2GC, &Sleep2Xbm, { sleep2_bits, sleep2_tora_bits, sleep2_dog_bits },
++      &Sleep2Msk, { sleep2_mask_bits, sleep2_mask_bits, sleep2_dog_mask_bits } },
++    { &AwakeGC, &AwakeXbm, { awake_bits, awake_tora_bits, awake_dog_bits },
++      &AwakeMsk, { awake_mask_bits, awake_mask_bits, awake_dog_mask_bits } },
++    { &Up1GC, &Up1Xbm, { up1_bits, up1_tora_bits, up1_dog_bits },
++      &Up1Msk, { up1_mask_bits, up1_mask_bits, up1_dog_mask_bits } },
++    { &Up2GC, &Up2Xbm, { up2_bits, up2_tora_bits, up2_dog_bits },
++      &Up2Msk, { up2_mask_bits, up2_mask_bits, up2_dog_mask_bits } },
++    { &Down1GC, &Down1Xbm, { down1_bits, down1_tora_bits, down1_dog_bits },
++      &Down1Msk, { down1_mask_bits, down1_mask_bits, down1_dog_mask_bits } },
++    { &Down2GC, &Down2Xbm, { down2_bits, down2_tora_bits, down2_dog_bits },
++      &Down2Msk, { down2_mask_bits, down2_mask_bits, down2_dog_mask_bits } },
++    { &Left1GC, &Left1Xbm, { left1_bits, left1_tora_bits, left1_dog_bits },
++      &Left1Msk, { left1_mask_bits, left1_mask_bits, left1_dog_mask_bits } },
++    { &Left2GC, &Left2Xbm, { left2_bits, left2_tora_bits, left2_dog_bits },
++      &Left2Msk, { left2_mask_bits, left2_mask_bits, left2_dog_mask_bits } },
++    { &Right1GC, &Right1Xbm, { right1_bits, right1_tora_bits, right1_dog_bits },
++      &Right1Msk, { right1_mask_bits, right1_mask_bits,right1_dog_mask_bits } },
++    { &Right2GC, &Right2Xbm, { right2_bits, right2_tora_bits, right2_dog_bits },
++      &Right2Msk, { right2_mask_bits, right2_mask_bits, right2_dog_mask_bits } },
++    { &UpLeft1GC, &UpLeft1Xbm, { upleft1_bits, upleft1_tora_bits, upleft1_dog_bits },
++      &UpLeft1Msk, { upleft1_mask_bits, upleft1_mask_bits, upleft1_dog_mask_bits } },
++    { &UpLeft2GC, &UpLeft2Xbm, { upleft2_bits, upleft2_tora_bits, upleft2_dog_bits },
++      &UpLeft2Msk, { upleft2_mask_bits, upleft2_mask_bits,upleft2_dog_mask_bits } },
++    { &UpRight1GC, &UpRight1Xbm, { upright1_bits, upright1_tora_bits, upright1_dog_bits },
++      &UpRight1Msk, { upright1_mask_bits, upright1_mask_bits,upright1_dog_mask_bits } },
++    { &UpRight2GC, &UpRight2Xbm, { upright2_bits, upright2_tora_bits, upright2_dog_bits },
++      &UpRight2Msk, { upright2_mask_bits, upright2_mask_bits,upright2_dog_mask_bits } },
++    { &DownLeft1GC, &DownLeft1Xbm, { dwleft1_bits, dwleft1_tora_bits, dwleft1_dog_bits },
++      &DownLeft1Msk, { dwleft1_mask_bits, dwleft1_mask_bits, dwleft1_dog_mask_bits } },
++    { &DownLeft2GC, &DownLeft2Xbm, { dwleft2_bits, dwleft2_tora_bits, dwleft2_dog_bits },
++      &DownLeft2Msk, { dwleft2_mask_bits, dwleft2_mask_bits, dwleft2_dog_mask_bits } },
++    { &DownRight1GC, &DownRight1Xbm, { dwright1_bits, dwright1_tora_bits, dwright1_dog_bits },
++      &DownRight1Msk, { dwright1_mask_bits, dwright1_mask_bits, dwright1_dog_mask_bits } },
++    { &DownRight2GC, &DownRight2Xbm, { dwright2_bits, dwright2_tora_bits, dwright2_dog_bits },
++      &DownRight2Msk, { dwright2_mask_bits, dwright2_mask_bits, dwright2_dog_mask_bits } },
++    { &UpTogi1GC, &UpTogi1Xbm, { utogi1_bits, utogi1_tora_bits, utogi1_dog_bits },
++      &UpTogi1Msk, { utogi1_mask_bits, utogi1_mask_bits, utogi1_dog_mask_bits } },
++    { &UpTogi2GC, &UpTogi2Xbm, { utogi2_bits, utogi2_tora_bits, utogi2_dog_bits },
++      &UpTogi2Msk, { utogi2_mask_bits, utogi2_mask_bits, utogi2_dog_mask_bits } },
++    { &DownTogi1GC, &DownTogi1Xbm, { dtogi1_bits, dtogi1_tora_bits, dtogi1_dog_bits },
++      &DownTogi1Msk, { dtogi1_mask_bits, dtogi1_mask_bits, dtogi1_dog_mask_bits } },
++    { &DownTogi2GC, &DownTogi2Xbm, { dtogi2_bits, dtogi2_tora_bits, dtogi2_dog_bits },
++      &DownTogi2Msk, { dtogi2_mask_bits, dtogi2_mask_bits, dtogi2_dog_mask_bits } },
++    { &LeftTogi1GC, &LeftTogi1Xbm, { ltogi1_bits, ltogi1_tora_bits, ltogi1_dog_bits },
++      &LeftTogi1Msk, { ltogi1_mask_bits, ltogi1_mask_bits,ltogi1_dog_mask_bits } },
++    { &LeftTogi2GC, &LeftTogi2Xbm, { ltogi2_bits, ltogi2_tora_bits, ltogi2_dog_bits },
++      &LeftTogi2Msk, { ltogi2_mask_bits, ltogi2_mask_bits,ltogi2_dog_mask_bits } },
++    { &RightTogi1GC, &RightTogi1Xbm, { rtogi1_bits, rtogi1_tora_bits, rtogi1_dog_bits },
++      &RightTogi1Msk, { rtogi1_mask_bits, rtogi1_mask_bits,rtogi1_dog_mask_bits } },
++    { &RightTogi2GC, &RightTogi2Xbm, { rtogi2_bits, rtogi2_tora_bits, rtogi2_dog_bits },
++      &RightTogi2Msk, { rtogi2_mask_bits, rtogi2_mask_bits,rtogi2_dog_mask_bits } },
++    { NULL, NULL, { NULL, NULL, NULL }, NULL, { NULL, NULL, NULL } }
+ };
+ 
+ typedef struct {
+@@ -308,10 +312,10 @@
+ {
+ 	char	*value;
+ 
+-	if (value = XGetDefault(theDisplay, ProgramName, resource)) {
++	if ((value = XGetDefault(theDisplay, ProgramName, resource))) {
+ 		return value;
+ 	}
+-	if (value = XGetDefault(theDisplay, ClassName, resource)) {
++	if ((value = XGetDefault(theDisplay, ClassName, resource))) {
+ 		return value;
+ 	}
+ 	return NULL;
+@@ -320,7 +324,7 @@
+ /*
+  *	リソース・データベースからオプションを設定
+  */
+-
++void
+ GetResources()
+ {
+   char	*resource;
+@@ -340,7 +344,7 @@
+ 
+   if (IntervalTime == 0) {
+     if ((resource = NekoGetDefault("time")) != NULL) {
+-      if (num = atoi(resource)) {
++      if ((num = atoi(resource))) {
+ 	IntervalTime = num;
+       }
+     }
+@@ -348,7 +352,7 @@
+ 
+   if (NekoSpeed == (double)0) {
+     if ((resource = NekoGetDefault("speed")) != NULL) {
+-      if (num = atoi(resource)) {
++      if ((num = atoi(resource))) {
+ 	NekoSpeed = (double)num;
+       }
+     }
+@@ -356,7 +360,7 @@
+ 
+   if (IdleSpace == 0) {
+     if ((resource = NekoGetDefault("idle")) != NULL) {
+-      if (num = atoi(resource)) {
++      if ((num = atoi(resource))) {
+ 	IdleSpace = num;
+       }
+     }
+@@ -411,7 +415,7 @@
+ /*
+  *	ねずみ型カーソルを作る
+  */
+-
++void
+ MakeMouseCursor()
+ {
+     Pixmap			theCursorSource;
+@@ -440,7 +444,7 @@
+ /*
+  *	色を初期設定する
+  */
+-
++void
+ SetupColors()
+ {
+     XColor	theExactColor;
+@@ -489,7 +493,7 @@
+   Window			theTempRoot;
+   int				WindowPointX;
+   int				WindowPointY;
+-  unsigned long		BorderWidth;
++  unsigned int			BorderWidth;
+   int				event_base, error_base;
+ 
+   if ((theDisplay = XOpenDisplay(DisplayName)) == NULL) {
+@@ -515,7 +519,7 @@
+     fprintf(stderr, "Display not suported shape extension.\n");
+     NoShape = True;
+ 				       }
+-#endif SHAPE
++#endif /* SHAPE */
+ 
+   theScreen = DefaultScreen(theDisplay);
+   theDepth = DefaultDepth(theDisplay, theScreen);
+@@ -546,9 +550,9 @@
+ #ifdef SHAPE
+ 			    (NoShape == False)? WindowWidth: BITMAP_WIDTH,
+ 			    (NoShape == False)? WindowHeight: BITMAP_HEIGHT,
+-#else SHAPE
++#else /* SHAPE */
+ 			    BITMAP_WIDTH, BITMAP_HEIGHT,
+-#endif SHAPE
++#endif /* SHAPE */
+ 			    0, theDepth, InputOutput, CopyFromParent,
+ 			    theWindowMask, &theWindowAttributes);
+ 
+@@ -644,7 +648,7 @@
+ 	    XFillRectangle(theDisplay, theWindow, DrawGC,
+ 		x, y, BITMAP_WIDTH, BITMAP_HEIGHT);
+ 	} else
+-#endif SHAPE
++#endif /* SHAPE */
+ 	{
+ 	    XWindowChanges	theChanges;
+ 
+@@ -684,7 +688,7 @@
+ 		NekoLastX, NekoLastY,
+ 		BITMAP_WIDTH, BITMAP_HEIGHT);
+     } else
+-#endif SHAPE
++#endif /* SHAPE */
+     {
+ 	XFillRectangle(theDisplay, theWindow, NekoLastGC,
+ 		0, 0, BITMAP_WIDTH, BITMAP_HEIGHT);
+@@ -1179,7 +1183,7 @@
+  *	オプションの理解
+  */
+ 
+-Bool
++void
+ GetArguments(argc, argv, theDisplayName)
+     int		argc;
+     char	*argv[];
+@@ -1290,12 +1294,16 @@
+     char	*argv[];
+ {
+   char	theDisplayName[MAXDISPLAYNAME];
++  int loop;
+ 
+   ProgramName = argv[0];
+ 
+   argc--;
+   argv++;
+ 
++  for (loop=0;loop<BITMAPTYPES;loop++)
++    if (strcmp(ProgramName,AnimalDefaultsDataTable[loop].name)==0)
++      NekoMoyou = loop;
+   GetArguments(argc, argv, theDisplayName);
+ 
+   InitScreen(theDisplayName);
+@@ -1311,4 +1319,5 @@
+   ProcessNeko();
+ 
+   RestoreCursor();
++  return 0;
+ }
+--- oneko.man
++++ oneko.man	Mon Apr 26 17:19:33 2004
+@@ -1,39 +1,46 @@
+ .TH ONEKO 6
+-.ad b
+-.SH "/USR/CONTRIBUTED CAVEAT"
+-The software and documentation in /usr/contributed are supported by
+-users on campus rather than by the central support organizations.
+-That is, they are *not* supported by Academic Computing and Media or
+-Computing and Communications.  Questions or comments about the
+-contents of /usr/contributed should be sent to the support person for
+-the particular application, library, or information file.  The support
+-person is cited in the Support Person field at the end of the
+-documentation for the particular topic.
+-.sp 0
+ .SH NAME oneko
+-The program oneko creates a cute cat chasing around your mouse cursor.
++The program oneko creates a cute cat or dog chasing around your mouse cursor.
+ .SH SYNOPSIS
+ .B oneko
+-[\fB-help\fP] [\fB-tora\fP] [\fB-time\fP \fIn\fP] [\fB-speed\fP \fIn\fP]
+-[\fB-idle\fP \fIn\fP] [\fB-rv\fP] [\fB-noshape\fP] [\fB-fg\fP] [\fB-bg\fP]
++[\fB-help\fP] [\fB-neko\fP] [\fB-tora\fP] [\fB-dog\fP] [\fB-time\fP \fIn\fP]
++[\fB-speed\fP \fIn\fP] [\fB-idle\fP \fIn\fP] [\fB-rv\fP] [\fB-noshape\fP]
++[\fB-fg\fP \fIs\fP] [\fB-bg\fP \fIs\fP]
++.PP
++.B tora
++[\fB-help\fP] [\fB-neko\fP] [\fB-tora\fP] [\fB-dog\fP] [\fB-time\fP \fIn\fP]
++[\fB-speed\fP \fIn\fP] [\fB-idle\fP \fIn\fP] [\fB-rv\fP] [\fB-noshape\fP]
++[\fB-fg\fP \fIs\fP] [\fB-bg\fP \fIs\fP]
++.PP
++.B dog
++[\fB-help\fP] [\fB-neko\fP] [\fB-tora\fP] [\fB-dog\fP] [\fB-time\fP \fIn\fP]
++[\fB-speed\fP \fIn\fP] [\fB-idle\fP \fIn\fP] [\fB-rv\fP] [\fB-noshape\fP]
++[\fB-fg\fP \fIs\fP] [\fB-bg\fP \fIs\fP]
+ .SH DESCRIPTION
+ .I oneko
+-changes your mouse cursor into mouse and creates a little cute cat and the
+-cat start chasing around your mouse cursor.  If the cat catchup the ``mouse'',
+-start sleeping.
++changes your cursor into a mouse and creates a little cute cat and the
++cat starts chasing around your mouse cursor.  If the cat catches the ``mouse'',
++it will start sleeping. Alternatively, changes your mouse cursor into a
++bone, which is chased around by a dog.
+ .SS Options
+ .TP
+ .B -help
+ Prints help message on usage.
+ .TP
++.B -neko
++Display a cat (default).
++.TP
+ .B -tora
+ Make cat into "tora-neko".  "Tora-neko" means cat wite tiger-like stripe.
+ I don't know how to say it in English.
+ .TP
++.B -dog
++Display a dog instead of the default cat.
++.TP
+ .BI \-time " interval"
+-Sets interval timer which determine intervals for cat animation.
+-Default value is 125000 and unit is micro-second.  Smaller value makes cat
+-run faster.
++Sets interval timer which determines intervals for the animation.
++The default value is 125000 and unit is micro-second.  Smaller value makes
++the cat or dog run faster.
+ .TP
+ .BI \-speed " distance"
+ Specify the distance where cat jumps at one move in dot resolution.
+@@ -41,7 +48,7 @@
+ .TP
+ .BI \-idle " speed"
+ Specify the threshold of the speed which ``mouse'' running away
+-to wake cat up.
++will wake cat up.
+ .TP
+ .B -rv
+ Reverse background color and foreground color.
+@@ -55,7 +62,7 @@
+ .BI \-bg " color"
+ Background color.
+ .SS Resources
+-Application name is "neko"(or "tora") and class name is "Oneko".
++Application name is "neko" (or "tora") and class name is "Oneko".
+ .TP
+ .B tora
+ Set ``True'' if you want "tora-neko".
+@@ -89,14 +96,3 @@
+ (kato@ntts.co.jp).  Send bug fixes and enhancements to kato@ntts.co.jp
+ .SH MAINTAINER
+ Send questions or problems to ea08@andrew.cmu.edu
+-.ad b
+-.SH "/USR/CONTRIBUTED CAVEAT"
+-The software and documentation in /usr/contributed are supported by
+-users on campus rather than by the central support organizations.
+-That is, they are *not* supported by Academic Computing and Media or
+-Computing and Communications.  Questions or comments about the
+-contents of /usr/contributed should be sent to the support person for
+-the particular application, library, or information file.  The support
+-person is cited in the Support Person field at the end of the
+-documentation for the particular topic.
+-.sp 0

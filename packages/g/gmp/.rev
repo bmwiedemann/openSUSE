@@ -1,0 +1,485 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>3d7b79bc5373401fb8c9ca2d3414bf80</srcmd5>
+    <version>4.2.1</version>
+    <time>1166483799</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="17">
+    <srcmd5>401989dfa0548e5564ad39b119ac3a74</srcmd5>
+    <version>4.2.1</version>
+    <time>1168818490</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="33">
+    <srcmd5>36c35061c835f3a1e8487baff0f2cf6e</srcmd5>
+    <version>4.2.1</version>
+    <time>1179929977</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>73059f564fb5fc9cf6f141f315882b39</srcmd5>
+    <version>4.2.2</version>
+    <time>1197486834</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>330a476cbca321b051981a5051bbe9c9</srcmd5>
+    <version>4.2.2</version>
+    <time>1199378194</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="21">
+    <srcmd5>370987d81a475e3fd7075afb054177fe</srcmd5>
+    <version>4.2.2</version>
+    <time>1207826294</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>80a8f0025837ed67838e8043131d9e01</srcmd5>
+    <version>4.2.3</version>
+    <time>1219333587</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>da5c9e118687394f6fa21d30aa423ca6</srcmd5>
+    <version>4.2.3</version>
+    <time>1227880917</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>578bdd2e7173a90ddab1e074c2d57056</srcmd5>
+    <version>4.2.3</version>
+    <time>1229340743</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>098cdb954f69e736e2d82d97b1b082d1</srcmd5>
+    <version>4.3.0</version>
+    <time>1240491582</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>7baaed1ae2b44092857851aaa8252f25</srcmd5>
+    <version>4.3.0</version>
+    <time>1240493724</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2449622f380a2d810277a0752c4d6c91</srcmd5>
+    <version>4.3.1</version>
+    <time>1242382244</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>2449622f380a2d810277a0752c4d6c91</srcmd5>
+    <version>4.3.1</version>
+    <time>1242382244</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>61fd67835af30a6e89b3b54c883c2488</srcmd5>
+    <version>4.3.1</version>
+    <time>1258540076</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/gmp based on submit request 24570 from user rguenther
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>160dc9be4c5d25190b9a7c03e4bc6ce4</srcmd5>
+    <version>4.3.2</version>
+    <time>1263478897</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/gmp based on submit request 29122 from user rguenther
+</comment>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>620325f8fd4b0cf5eb37f6c9d54712c4</srcmd5>
+    <version>4.3.2</version>
+    <time>1268923747</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>620325f8fd4b0cf5eb37f6c9d54712c4</srcmd5>
+    <version>4.3.2</version>
+    <time>1278667346</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>620325f8fd4b0cf5eb37f6c9d54712c4</srcmd5>
+    <version>4.3.2</version>
+    <time>1278678578</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>692194e0b8c8b01dbc34224ef03cbb05</srcmd5>
+    <version>4.3.2</version>
+    <time>1282920375</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/gmp based on submit request 46309 from user coolo
+</comment>
+    <requestid>46309</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f0f59f0dd3a36f58d87eef9fc4acb52d</srcmd5>
+    <version>5.0.1</version>
+    <time>1284993118</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/gmp based on submit request 48540 from user rguenther
+</comment>
+    <requestid>48540</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>2d9dd81f6c647281382419acc9d2e27e</srcmd5>
+    <version>5.0.1</version>
+    <time>1295965828</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 59114 from user rguenther
+</comment>
+    <requestid>59114</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>4a843b6ef609454533b5bd6959a0f91a</srcmd5>
+    <version>5.0.1</version>
+    <time>1295965837</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 59114
+</comment>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>4a843b6ef609454533b5bd6959a0f91a</srcmd5>
+    <version>5.0.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>d5484c298c9b62fb34ec861f7386db02</srcmd5>
+    <version>5.0.1</version>
+    <time>1303299222</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67875 from user coolo
+</comment>
+    <requestid>67875</requestid>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>3c9135b5a60577328bf40ee9275b522a</srcmd5>
+    <version>5.0.1</version>
+    <time>1303299232</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67875
+</comment>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>57ee2d1040c6608aad087f6941d64c61</srcmd5>
+    <version>5.0.2</version>
+    <time>1317211830</time>
+    <user>saschpe</user>
+    <comment>- avoid noexec stack patch on arm
+
+- Update to release GMP 5.0.2
+    * Many minor bugs related to portability fixed.
+    * The support for HPPA 2.0N now works, after an assembly bug fix.
+    * A test case type error has been fixed.  The symptom of this bug
+    was spurious 'make check' failures.
+    * Fat builds are now supported for 64-bit x86 processors also under Darwin.
+- Remove unknown configure option --disable-mpfr</comment>
+    <requestid>85210</requestid>
+  </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>57ee2d1040c6608aad087f6941d64c61</srcmd5>
+    <version>5.0.2</version>
+    <time>1319181912</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="28" vrev="10">
+    <srcmd5>75ad52af651192a46b5fbda947e76614</srcmd5>
+    <version>5.0.2</version>
+    <time>1323191600</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d813bc861576bb5dff55271c6ee6c828</srcmd5>
+    <version>5.0.3</version>
+    <time>1328260967</time>
+    <user>coolo</user>
+    <comment>- Update to release GMP 5.0.3
+  * A slight timing leak of the powm_sec functions have been sealed.  (This
+    leak could possibly be used to extract the most significant few bits of the
+    exponent.  &quot;Few&quot; here means at most 10.)
+  * The mpz_nextprime function now runs a safer number of pseudo-random prime
+    tests.
+  * A bug in division code possibly causing incorrect computation was fixed.
+  * New CPUs recognised.
+  * IBM S/390 are now supported in both 31/32-bit and 64-bit mode.
+- Dropped SUSE local patches for S/390 support.</comment>
+    <requestid>102032</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ea57abfbc6cf79439132baf5be75287b</srcmd5>
+    <version>5.0.5</version>
+    <time>1336423579</time>
+    <user>coolo</user>
+    <comment>- Update to release GMP 5.0.5
+  * A bug causing AMD 11h processors to be treated like AMD 10h has been fixed.
+  * A bug affecting recent Intel Sandy Bridge CPUs resulting in
+    configuration failures has been fixed.
+
+- Remove redundant --host specification on %configure.
+
+- Update to release GMP 5.0.4
+  * Thresholds in mpn_powm_sec for both fat and non-fat builds are now used
+    safely, plugging a one-word buffer overrun introduced in the 5.0.3 release
+    (for non-fat) and a multi-word buffer overrun that existed since 5.0 (for
+    fat).  (We have not been able to provoke malign stack smashing in any of
+    the ~100 configurations explored by the GMP nightly builds, but the bug
+    should be assumed to be exploitable.)
+  * Two bugs in multiplication code causing incorrect computation with
+    extremely low probability have been fixed.
+  * A bug in the test suite causing buffer overruns during &quot;make check&quot;,
+    sometimes leading to subsequent malloc crashes, has been fixed.
+  * Two bugs in the gcd code have been fixed.  They could lead to incorrect
+    results, but for uniformly distributed random operands, the likelihood for
+    that is infinitesimally small.  (There was also a third bug, but that was
+    an incorrect ASSERT, which furthermore was not enabled by default.)
+  * A bug affecting 32-bit PowerPC division has been fixed.  The bug caused
+    miscomputation for certain divisors in the range 2^32 ... 2^64-1 (about 1
+    in 2^30 of these).
+
+- Remove redundant tags/sections (see specfile guidelines)</comment>
+    <requestid>116650</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>10cb3ad43085d84e54b67e2d49956eb6</srcmd5>
+    <version>5.0.5</version>
+    <time>1338284908</time>
+    <user>coolo</user>
+    <comment>- do not abort on kvm's x86_64 &quot;CPU&quot;, just use generic support for
+  unknown CPUs (forwarded request 122655 from coolo)</comment>
+    <requestid>122656</requestid>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>10cb3ad43085d84e54b67e2d49956eb6</srcmd5>
+    <version>5.0.5</version>
+    <time>1340183373</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>e329ecdc0b63e2960ffecaebe5a83b6c</srcmd5>
+    <version>5.0.5</version>
+    <time>1341316419</time>
+    <user>coolo</user>
+    <comment>- do not abort on kvm's x86_64 &quot;CPU&quot; on AMD (bnc#671262) (forwarded request 126956 from bmwiedemann)</comment>
+    <requestid>126963</requestid>
+  </revision>
+  <revision rev="34" vrev="6">
+    <srcmd5>a459724006f902cf10c1f04f6f1f3413</srcmd5>
+    <version>5.0.5</version>
+    <time>1341402864</time>
+    <user>coolo</user>
+    <comment>Instead of iterating over a home-grown patch for each CPU variant we
+discover that breaks ...
+
+- Pick fix for the aborts from CPU detection code from the upstream
+  branch.  [bnc#671262]</comment>
+    <requestid>127072</requestid>
+  </revision>
+  <revision rev="35" vrev="7">
+    <srcmd5>21a2523e2c919a23faf19cf4ed71c3b0</srcmd5>
+    <version>5.0.5</version>
+    <time>1347887647</time>
+    <user>coolo</user>
+    <comment>- replace ; with and in license tag</comment>
+    <requestid>134168</requestid>
+  </revision>
+  <revision rev="36" vrev="9">
+    <srcmd5>21a2523e2c919a23faf19cf4ed71c3b0</srcmd5>
+    <version>5.0.5</version>
+    <time>1359108947</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>bea4337ce8ff38b851a4b562560a1019</srcmd5>
+    <version>5.1.1</version>
+    <time>1360870676</time>
+    <user>coolo</user>
+    <comment>- Update to GMP 5.1.1 release.
+  * Aarch64 alias ARM64 support now works.
+  * A possible buffer overrun in mpz_ior has been fixed.
+  * A rare sign flip in mpz_remove has been fixed.
+  * A bug causing problems with mpf numbers with absolute value &gt;= 2^31 has
+    been fixed.
+  * Several bugs in mini-gmp have been fixed.
+  * Preliminary support for the x32 ABI under x86-64.
+
+- Update to GMP 5.1.0 release.
+  * Bug fixes and speedups
+  * Many new CPUs recognised
+  * New functions for multi-factorials, and primorial: mpz_2fac_ui,
+    mpz_mfac_uiui and mpz_primorial_ui
+  * The fat binary mechanism is now more robust in its CPU recognition
+  * Drops support for BSD compatibility library</comment>
+    <requestid>155317</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>2bc484127163e9b68e5d254dc7cf7f3b</srcmd5>
+    <version>5.1.1</version>
+    <time>1361452067</time>
+    <user>coolo</user>
+    <comment>- Update baselibs.conf for removal of libmp3</comment>
+    <requestid>155952</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>22b3ec3ee95988690e3bd5e352e188b6</srcmd5>
+    <version>5.1.2</version>
+    <time>1369640980</time>
+    <user>coolo</user>
+    <comment>- Update to GMP 5.1.2 release.
+  * A bug in mpz_powm_ui triggered by base arguments of at least 15000
+    decimal digits or mod arguments of at least 7500 decimal digits has
+    been fixed.
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls</comment>
+    <requestid>176406</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>22b3ec3ee95988690e3bd5e352e188b6</srcmd5>
+    <version>5.1.2</version>
+    <time>1379662470</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>a808fc473a92b6336e4cdf4ad5e80825</srcmd5>
+    <version>5.1.3</version>
+    <time>1381322552</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to GMP 5.1.3 release.
+  * The internal functions mpn_sbpi1_div_qr_sec mpn_sbpi1_div_r_sec could
+    compute garbage with a low probability.  They are now rewritten, and the
+    test code has been improved.
+  * A bug in the ia64 implementation of mpn_divrem_2, clobbering some
+    callee-save registers, has been fixed. This is an internal
+    function, with the bug manifesting itself as miscomputation in,
+    e.g., mpn_sqrtrem.
+  * The documentation now correctly says 'const' for input arguments.</comment>
+    <requestid>201889</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>4e461b7bd46f547717eab2ff5fe4cb8b</srcmd5>
+    <version>5.1.3</version>
+    <time>1389628378</time>
+    <user>coolo</user>
+    <comment>- gmp-support-powerpc64le-linux.patch: Add ppc64le ABIv2 support
+- gmp-ppc64le-mod.patch: Fix ppc64le issues (forwarded request 209470 from ablanchard)</comment>
+    <requestid>209471</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>4e461b7bd46f547717eab2ff5fe4cb8b</srcmd5>
+    <version>5.1.3</version>
+    <time>1409301007</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>e51d94b030152fa6d3e14f2d15c866a9</srcmd5>
+    <version>6.0.0a</version>
+    <time>1415654121</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260216</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0bdcde9463c913d79a9d813274dc0967</srcmd5>
+    <version>6.0.0</version>
+    <time>1416823677</time>
+    <user>dimstar_suse</user>
+    <comment>- Make gmp-noexec.diff compatible with arm
+- Use correct version number (forwarded request 261998 from Andreas_Schwab)</comment>
+    <requestid>262027</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>abe6c6e8abc037d6bd0c703cc808ced7</srcmd5>
+    <version>6.0.0a</version>
+    <time>1425571459</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287652</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>5b9b7a14a37b9a324e407f881b86eed0</srcmd5>
+    <version>6.1.0</version>
+    <time>1446764487</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to GMP 6.1.0 release.
+  * New C++ functions gcd and lcm for mpz_class
+  * New public mpn functions mpn_divexact_1, mpn_zero_p, and mpn_cnd_swap
+  * New public mpq_cmp_z function, to efficiently compare rationals with
+    integers
+  * Support for more 32-bit arm processors
+  * Support for AVX-less modern x86 CPUs
+  * Speedups and bugfixes
+- Includes gmp-6.0.0-ppc64-gcd.diff, now removed
+- Update gmp keyring</comment>
+    <requestid>342071</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>d81b2b60f8ec9a7f6c4d6a6de36a0066</srcmd5>
+    <version>6.1.1</version>
+    <time>1468048859</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405611</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>b6e2aca13755c8a78ea42076585d7f82</srcmd5>
+    <version>6.1.2</version>
+    <time>1484818485</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to GMP 6.1.2 release.
+  * Mini-GMP: Fixed a division bug, which on a machine with 64-bit
+    unsigned long affects approximately 1 out of 2^32 divisors.
+  * Mini-GMP: Fix mpz_set_str crash on inputs with a large number of
+    leading zeros. Also stricter input validation, rejecting inputs
+    with no digits.
+  * Handle more systems which require PIC code in static libraries (e.g.,
+    &quot;hardened&quot; Gentoo and Debian 9).
+  * Configuration for arm (-32 and -64) has been rewritten, fixing poor
+    code selection for many CPUs.
+  * Mini-GMP: Updated to the latest development version, including
+    new functions mpn_com and mpn_neg.
+- Add gmp-6.1.2-conftest.patch to fix configure test.</comment>
+    <requestid>448713</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>f61b2cfb6ccc330c739460a56fcb6c0a</srcmd5>
+    <version>6.1.2</version>
+    <time>1488559062</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly BuildRequire m4 (forwarded request 455769 from dimstar)</comment>
+    <requestid>455779</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>d4e4ae0910ee61cf56a6620ee56a8696</srcmd5>
+    <version>6.1.2</version>
+    <time>1520414859</time>
+    <user>dimstar_suse</user>
+    <comment>Use %license (boo#1082318). Please forward to SLE, if possible (forwarded request 580087 from favogt)</comment>
+    <requestid>580188</requestid>
+  </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>afc25fb98351bd1297e6b82eb08bccc9</srcmd5>
+    <version>6.1.2</version>
+    <time>1562591352</time>
+    <user>dimstar_suse</user>
+    <comment>- Add floating-point-format-no-lto.patch in order to fix assembler scanning
+  (boo#1138809). (forwarded request 712734 from marxin)</comment>
+    <requestid>712776</requestid>
+  </revision>
+</revisionlist>

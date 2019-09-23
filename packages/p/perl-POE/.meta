@@ -1,0 +1,29 @@
+<package name="perl-POE" project="openSUSE:Factory">
+  <title>Portable multitasking and networking framework for Perl</title>
+  <description>
+POE is a framework for cooperative, event driven multitasking and networking in
+Perl. Other languages have similar frameworks. Python has Twisted. TCL has &quot;the
+event loop&quot;. 
+
+POE originally was developed as the core of a persistent object server and
+runtime environment. It has since evolved into something much more generic and
+widely useful. 
+
+POE provides a unified interface for several other event loops, including
+select(), IO::Poll, Glib, Gtk, Tk, Wx, Gtk2, and so on.  Check the CPAN for the
+full list of POE::Loop modules. 
+
+POE is designed in layers, each building atop the lower level ones. Programs
+are free to use POE at any level of abstraction, and different levels can be
+mixed and matched seamlessly within a single program. 
+
+POE's bundled abstraction layers are the tip of a growing iceberg. Sprocket,
+POE::Stage, and other CPAN distributions build upon this work. You're
+encouraged to look around. 
+
+No matter how high you go, though, it all boils down to calls to POE::Kernel.
+So your down-to-earth code can easily cooperate with stratospheric systems.
+  </description>
+  <devel project="devel:languages:perl" package="perl-POE"/>
+  <url>http://search.cpan.org/perldoc?POE</url>
+</package>

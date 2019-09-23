@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>605cc3043464c11ba52c84cfe25d9aba</srcmd5>
+    <version>0.97.5</version>
+    <time>1527933887</time>
+    <user>dimstar_suse</user>
+    <comment>package for reading/writing dBase, FoxPro, and Visual FoxPro .dbf</comment>
+    <requestid>612073</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1d847a67d5446fdbec49c2140dacd2f5</srcmd5>
+    <version>0.97.11</version>
+    <time>1544726862</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.97.11:
+  * No obvious changelog
+- Fix fdupes call
+
+- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>655641</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>369e52ff2a5a9a5319292d1a979b8336</srcmd5>
+    <version>0.98.0</version>
+    <time>1553635887</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.98.0:
+  * fix resize_field to work on empty tables
+  * fix export to fixed-width by using codecs.open
+  * allow non-standard characters in field names (with warnings)
+- Run tests</comment>
+    <requestid>686453</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1cce239f31a8cab8c8ef0171eb6bd4e8</srcmd5>
+    <version>0.98.2</version>
+    <time>1564155234</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718786</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4ee4ae2c4a49230cff8405c21bfdc67c</srcmd5>
+    <version>0.98.3</version>
+    <time>1568623791</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.98.3:
+  * no obvious changelog</comment>
+    <requestid>730656</requestid>
+  </revision>
+</revisionlist>

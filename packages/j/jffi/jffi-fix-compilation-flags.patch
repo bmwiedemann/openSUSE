@@ -1,0 +1,43 @@
+--- jni/GNUmakefile.orig	2015-03-02 23:35:21.000000000 +0200
++++ jni/GNUmakefile	2015-04-30 18:16:46.270806239 +0300
+@@ -66,9 +66,9 @@ OFLAGS = -O2 $(JFLAGS)
+ # MacOS headers aren't completely warning free, so turn them off
+ WERROR = -Werror
+ ifneq ($(OS),darwin)
+-  WFLAGS += -Wundef $(WERROR)
++  WFLAGS += -Wundef
+ endif
+-WFLAGS += -W -Wall -Wno-unused -Wno-parentheses -Wno-unused-parameter
++WFLAGS += -W -Wall -Wno-parentheses -Wno-unused-parameter
+ PICFLAGS = -fPIC
+ SOFLAGS = # Filled in for each OS specifically
+ FFI_MMAP_EXEC = -DFFI_MMAP_EXEC_WRIT
+@@ -76,11 +76,13 @@ FFI_MMAP_EXEC = -DFFI_MMAP_EXEC_WRIT
+ FFI_CC = $(CCACHE) $(CC)
+ FFI_LD = $(LD)
+ FFI_CFLAGS = $(FFI_MMAP_EXEC) $(OFLAGS)
+-STRIP ?= strip -S
++STRIP ?= /bin/true
++
++RPMFLAGS=$(shell rpm --eval %optflags)
+ 
+ JDK_INCLUDES = -I"$(JDK_HOME)/include" -I"$(JDK_HOME)/include/$(OS)"
+ IFLAGS = -I"$(BUILD_DIR)" -I"$(BUILD_DIR)"/jni -I$(SRC_DIR) -I"$(JFFI_SRC_DIR)"
+-CFLAGS += $(OFLAGS) $(WFLAGS) $(IFLAGS) $(PICFLAGS) $(JDK_INCLUDES) $(LIBFFI_CFLAGS)
++CFLAGS += $(OFLAGS) $(WFLAGS) $(IFLAGS) $(PICFLAGS) $(JDK_INCLUDES) $(LIBFFI_CFLAGS) $(RPMFLAGS)
+ CFLAGS += -D_REENTRANT -D_LARGEFILE64_SOURCE -D_GNU_SOURCE
+ 
+ ifeq ($(OS), win64)
+--- pom.xml.orig	2017-07-18 13:13:49.051730126 +0100
++++ pom.xml	2017-07-18 13:27:54.899479303 +0100
+@@ -201,6 +201,10 @@
+                             <include name="**/*.jar" />
+                           </fileset>
+                       </unzip>
++                      <exec executable="/bin/sh">
++                        <arg value="-c"/>
++                        <arg value="strip -s ${project.build.directory}/jni/*/*.so"/>
++                      </exec>
+                     </tasks>
+                 </configuration>
+             </execution>

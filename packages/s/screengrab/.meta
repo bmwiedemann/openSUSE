@@ -1,0 +1,10 @@
+<package name="screengrab" project="openSUSE:Factory">
+  <title>Crossplatform tool for fast making screenshots.</title>
+  <description>ScreenGrab - A program for fast creating screenshots, and easily publishing
+them on internet image hosting services. It works on Linux and Windows
+operating systems. ScreenGrab uses the Qt framework and thus, it is
+independent from any desktop environment.
+  </description>
+  <devel project="X11:LXQt" package="screengrab"/>
+  <url>https://github.com/QtDesktop/screengrab</url>
+</package>

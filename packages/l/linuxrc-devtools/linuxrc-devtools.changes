@@ -1,0 +1,171 @@
+--------------------------------------------------------------------
+Mon Sep 9 13:11:58 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc-devtools#23
+- auto-add a bugzilla number to every Weblate commit (bsc#1149754)
+- 0.17
+
+--------------------------------------------------------------------
+Thu Jun 6 08:26:54 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc-devtools#22
+- fix handling of spec file with several 'Name' definitions
+- 0.16
+
+--------------------------------------------------------------------
+Tue Jan 29 12:22:26 UTC 2019 - snwint@suse.de
+
+- merge gh#openSUSE/linuxrc-devtools#21
+- add support for jira
+- 0.15
+
+--------------------------------------------------------------------
+Thu Nov 15 15:30:55 UTC 2018 - snwint@suse.de
+
+- merge gh#openSUSE/linuxrc-devtools#20
+- fix typo
+
+--------------------------------------------------------------------
+Fri Oct 12 14:31:04 UTC 2018 - snwint@suse.de
+
+- merge gh#openSUSE/linuxrc-devtools#19
+- remove shortened lines from log (that match the beginning of
+  other lines)
+
+--------------------------------------------------------------------
+Mon Aug 27 13:40:24 UTC 2018 - snwint@suse.de
+
+- merge gh#openSUSE/linuxrc-devtools#18
+- rework log creation to work better with merge commits
+
+--------------------------------------------------------------------
+Mon Aug 6 13:15:04 UTC 2018 - snwint@suse.de
+
+- merge gh#openSUSE/linuxrc-devtools#17
+- ignore tags inside merge commits
+
+--------------------------------------------------------------------
+Thu Apr 19 09:34:10 UTC 2018 - snwint@suse.de
+
+- merge gh#openSUSE/linuxrc-devtools#16
+- avoid identical timestamps in changelog and make default email
+  address configurable
+- fix time updates
+
+--------------------------------------------------------------------
+Tue Jan 9 14:58:21 UTC 2018 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc-devtools#15
+- more complete OBS state check
+- 0.14
+
+--------------------------------------------------------------------
+Fri Sep 15 06:36:25 UTC 2017 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc-devtools#14
+- don't query branch from git
+- 0.13
+
+--------------------------------------------------------------------
+Thu Sep 14 12:26:24 UTC 2017 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc-devtools#13
+- ensure dates never decrease in changelog
+- 0.12
+
+--------------------------------------------------------------------
+Thu Sep 14 11:50:23 UTC 2017 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc-devtools#12
+- ensure the newly created changelog is used
+
+--------------------------------------------------------------------
+Tue Sep 12 14:11:19 UTC 2017 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc-devtools#11
+- default to git project name if no package name is specified
+- install also make_package script
+- add --no-wait option to submit_it script
+- allow to use an alternative spec file
+- 0.11
+
+--------------------------------------------------------------------
+Thu Aug 17 10:55:18 UTC 2017 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc-devtools#10
+- fix typo in make_package
+- 0.10
+
+--------------------------------------------------------------------
+Thu Aug 17 08:19:38 UTC 2017 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc-devtools#9
+- write VERSION file only when really needed
+- update link to home project in git2log
+- skip *.changes file in 'package' dir
+- add --prepare option to build_it script
+- add make_package script
+- 0.9
+
+--------------------------------------------------------------------
+Thu Aug 10 12:12:32 UTC 2017 - wfeldt@opensuse.org
+
+- added --(no-)keep-date options
+- 0.8
+
+--------------------------------------------------------------------
+Wed May 3 12:16:02 UTC 2017 - wfeldt@opensuse.org
+
+- started rewrite of git2log script
+- implement start tag, switch default format to obs
+- document git2log
+- minor doc update
+- fix typo
+- another doc update
+- adjust 'internal' changelog format to match the old format
+- fix version auto-increment
+- update tobs to use the new git2log to handle changelog
+- use installed git2log script
+- git2log: if start tag is specified, make sure it exists
+- treat commits ahead of most recent tag as belonging together
+- join successive commits of the same author
+- add comments to git2log
+- add --package option to tobs
+- allow --target as alias to --dist and support --package option
+- build_it: support alternative --branch option
+- submit_it doesn't need git repo to work
+- allow options in any order in build_it and submit_it
+- no need to check JOB_NAME in submit_it
+- tobs: allow submit request across different build services
+- modify default PATH to include $HOME/bin
+- show merge message at correct place
+- avoid empty log message when version info is missing
+- add --(no-)join-author option
+- added '@-log@' tag (delete commit message)
+- 0.7
+
+-------------------------------------------------------------------
+Wed Nov 23 14:18:56 UTC 2016 - snwint@suse.com
+
+- merge pr gh#openSUSE/linuxrc-devtools#7
+- auto-add github pull request tag to changelog
+- 0.6
+
+-------------------------------------------------------------------
+Tue Sep 29 11:00:03 UTC 2015 - snwint@suse.com
+
+- 'make clean' deletes *~ files and package/ directory
+- 0.5
+
+-------------------------------------------------------------------
+Tue Sep 29 09:39:23 UTC 2015 - snwint@suse.com
+
+- Add information about linuxrc-devtools OBS project
+- 0.4
+
+-------------------------------------------------------------------
+Fri Sep 18 08:16:53 UTC 2015 - mvidner@suse.com
+
+- Initial packaging
+- 0.3
+

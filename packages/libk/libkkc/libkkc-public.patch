@@ -1,0 +1,141 @@
+Index: libkkc/libkkc/state.vala
+===================================================================
+--- libkkc.orig/libkkc/state.vala
++++ libkkc/libkkc/state.vala
+@@ -24,7 +24,7 @@ namespace Kkc {
+     const double DECODER_MIN_PATH_COST = -3.0;
+     const int DECODER_NBEST = 20;
+ 
+-    class State : Object {
++    public class State : Object {
+         internal Type handler_type;
+         InputMode _input_mode;
+         [CCode(notify = false)]
+@@ -211,7 +211,7 @@ namespace Kkc {
+             return keymap.lookup_key (key);
+         }
+ 
+-        internal State (LanguageModel model, DictionaryList dictionaries) {
++        public State (LanguageModel model, DictionaryList dictionaries) {
+             this.model = model;
+             this.decoder = Decoder.create (model);
+             this.dictionaries = dictionaries;
+Index: libkkc/libkkc/encoding.vala
+===================================================================
+--- libkkc.orig/libkkc/encoding.vala
++++ libkkc/libkkc/encoding.vala
+@@ -18,7 +18,7 @@
+ namespace Kkc {
+     // XXX: we use Vala string to represent byte array, assuming that
+     // it does not contain null element
+-    class EncodingConverter : Object, Initable {
++    public class EncodingConverter : Object, Initable {
+         const int BUFSIZ = 4096;
+         const string INTERNAL_ENCODING = "UTF-8";
+ 
+@@ -67,7 +67,7 @@ namespace Kkc {
+             return true;
+         }
+ 
+-        internal EncodingConverter (string encoding) throws Error {
++        public EncodingConverter (string encoding) throws Error {
+             Object (encoding: encoding);
+             init (null);
+         }
+Index: libkkc/libkkc/key-event-filter.vala
+===================================================================
+--- libkkc.orig/libkkc/key-event-filter.vala
++++ libkkc/libkkc/key-event-filter.vala
+@@ -52,7 +52,7 @@ namespace Kkc {
+      *
+      * @see Rule
+      */
+-    class SimpleKeyEventFilter : KeyEventFilter {
++    public class SimpleKeyEventFilter : KeyEventFilter {
+         const uint[] modifier_keyvals = {
+             Keysyms.Shift_L,
+             Keysyms.Shift_R,
+@@ -90,7 +90,7 @@ namespace Kkc {
+      *
+      * @see Rule
+      */
+-    class KanaKeyEventFilter : SimpleKeyEventFilter {
++     public class KanaKeyEventFilter : SimpleKeyEventFilter {
+         /**
+          * {@inheritDoc}
+          */
+Index: libkkc/libkkc/utils.vala
+===================================================================
+--- libkkc.orig/libkkc/utils.vala
++++ libkkc/libkkc/utils.vala
+@@ -101,7 +101,7 @@ namespace Kkc {
+         }
+     }
+ 
+-    abstract class KeyEventUtils : Object {
++    public abstract class KeyEventUtils : Object {
+         static KeysymEntry *bsearch_keysyms (
+             KeysymEntry *memory,
+             long start_offset,
+Index: libkkc/libkkc/template.vala
+===================================================================
+--- libkkc.orig/libkkc/template.vala
++++ libkkc/libkkc/template.vala
+@@ -16,13 +16,13 @@
+  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ namespace Kkc {
+-    internal interface Template : Object {
++    public interface Template : Object {
+         public abstract string source { get; construct set; }
+         public abstract bool okuri { get; construct set; }
+         public abstract string expand (string text);
+     }
+ 
+-    class SimpleTemplate : Object, Template {
++    public class SimpleTemplate : Object, Template {
+         public string source { get; construct set; }
+         public bool okuri { get; construct set; }
+ 
+@@ -36,7 +36,7 @@ namespace Kkc {
+         }
+     }
+ 
+-    class OkuriganaTemplate : Object, Template {
++    public class OkuriganaTemplate : Object, Template {
+         public string source { get; construct set; }
+         public bool okuri { get; construct set; }
+ 
+@@ -60,4 +60,4 @@ namespace Kkc {
+             return text;
+         }
+     }
+-}
+\ No newline at end of file
++}
+Index: libkkc/libkkc/numeric-template.vala
+===================================================================
+--- libkkc.orig/libkkc/numeric-template.vala
++++ libkkc/libkkc/numeric-template.vala
+@@ -18,7 +18,7 @@
+ using Gee;
+ 
+ namespace Kkc {
+-    class NumericTemplate : Object, Template {
++    public class NumericTemplate : Object, Template {
+         ArrayList<int> numerics = new ArrayList<int> ();
+ 
+         public string source { get; construct set; }
+Index: libkkc/libkkc/expression.vala
+===================================================================
+--- libkkc.orig/libkkc/expression.vala
++++ libkkc/libkkc/expression.vala
+@@ -191,7 +191,7 @@ namespace Kkc {
+         }
+     }
+ 
+-    abstract class Expression : Object {
++    public abstract class Expression : Object {
+         public static string eval (string text) {
+             if (text.has_prefix ("(")) {
+                 var reader = new ExpressionReader ();

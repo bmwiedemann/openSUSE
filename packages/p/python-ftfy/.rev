@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>123ac9359fefd2a2fbb24371e66cb8f5</srcmd5>
+    <version>5.3.0</version>
+    <time>1528492368</time>
+    <user>dimstar_suse</user>
+    <comment>Try to convert buggy unicode text to a less broken variant.</comment>
+    <requestid>613294</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>09ac1dd262869ac95d5df018d4791701</srcmd5>
+    <version>5.3.0</version>
+    <time>1533045632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626368</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>947b1c3fbed0ac292b5691f7c2c71603</srcmd5>
+    <version>5.5.1</version>
+    <time>1540448029</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.5.1:
+  * Fixes build on python3.7
+  * Use Unicode 11</comment>
+    <requestid>642835</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f58f58c6fe9b0b5e8e01656513d9ecac</srcmd5>
+    <version>5.6</version>
+    <time>1565695487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722792</requestid>
+  </revision>
+</revisionlist>

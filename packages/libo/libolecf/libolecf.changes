@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Mon Apr  1 21:46:17 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to 20181231
+	* Worked on python bindings
+	* Changes for get item by path.
+	* Worked on olecfinfo
+	* changes for libcdata
+	* Changes to file name sanitation in export handle
+	* removed libcsystem dependency
+- removed libcsystem dependency
+
+-------------------------------------------------------------------
+Wed Jul 13 02:39:10 UTC 2016 - Greg.Freemyer@gmail.com
+
+- update to 20160109
+	* fixes for rpmbuild
+
+-------------------------------------------------------------------
+Tue Jan 26 23:43:22 UTC 2016 - Greg.Freemyer@gmail.com
+
+- update to v0~20160107
+	* worked on Python 3 support
+	* 2016 update
+- use libcdata from factory, not internal.  Tested via plaso/run_tests.py
+- use libcerror internal package.  Build fails with factory version
+- use libcstring internal package.  Build fails with factory version
+- use libfvalue internal package.  Build fails with factory version
+
+-------------------------------------------------------------------
+Sat Jan 23 15:54:59 UTC 2016 - Greg.Freemyer@gmail.com
+
+- update to v0~20151223
+	* worked on format support
+	* applied updates
+	* worked on Python bindings
+	* changed version for pypi repacking
+	* worked on setup.py
+	* bug fixes after fuzzing with AFL
+	* improved support file without directory entries
+	* added more bounds checks
+- required by plaso v1.4
+- update BuildRequires libfvalue to require version 0~20151226
+
+-------------------------------------------------------------------
+Wed Jan 14 20:53:36 UTC 2015 - Greg.Freemyer@gmail.com
+
+- update to v0~20150106
+	* 2015 update
+	* worked on Python 3 support
+	* worked on tests
+	* code clean up
+	* bug fix in Python-bindings
+	* update Python-bindings tests
+	* worked on libfwps support
+- update URL to the new github site
+- replace Source: field with fully defined URL
+- remove DL-URL comment
+- start using new libyal packages from OBS, not internal version
+- remove %if opensuse logic.  Not needed with libyal in security:forensics
+
+-------------------------------------------------------------------
+Thu Aug 28 21:46:20 UTC 2014 - Greg.Freemyer@gmail.com
+
+- use libfdatetime internal package.  With external factory version fails testing.
+- use libcdata internal package.  With external factory version fails testing.
+
+-------------------------------------------------------------------
+Wed Aug 20 21:54:28 UTC 2014 - Greg.Freemyer@gmail.com
+
+- add "Requires:  %lname = %version" to tools sub-project
+- add "Provice:  pyolecf" to match upstream requires
+
+-------------------------------------------------------------------
+Wed Aug 13 16:54:46 UTC 2014 - Greg.Freemyer@gmail.com
+
+- updated to 0~20140801
+	* worked on Python bindings
+	* bug fix in Python-bindings
+	* worked on olecfmount Dokan support
+	* updated dependencies
+	* small changes to Makefile
+	* worked on setup.py
+	* 2014 update
+- use external package for libfguid
+
+-------------------------------------------------------------------
+Sat Nov 23 04:45:44 UTC 2013 - Greg.Freemyer@gmail.com
+
+- updated to 20131108
+	* added support for 0 value sub directory entry not being used as index.
+
+-------------------------------------------------------------------
+Wed Oct 16 15:59:26 UTC 2013 - Greg.Freemyer@gmail.com
+
+- add %if logic around BuildRequires to allow use of internal packages on older distros
+
+-------------------------------------------------------------------
+Wed Oct 16 02:27:59 UTC 2013 - Greg.Freemyer@gmail.com
+
+- initial package (v0~20131012)
+

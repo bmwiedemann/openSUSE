@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58de7b31afdd54b909886aaa4a0b9ba4</srcmd5>
+    <version>1.5.12</version>
+    <time>1511817365</time>
+    <user>dimstar_suse</user>
+    <comment>Brought over from Packman (3rd attempt)</comment>
+    <requestid>545275</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7369e95ce309d6625daa6efaa3aa6880</srcmd5>
+    <version>1.5.13</version>
+    <time>1517516939</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %soname by %sover to better reflect its use.
+- Update to version 1.5.13
+  * added support of &lt;a&gt; element
+  * fixed wxSVGImageElement::GetBBox()
+  * fixed wxSVGUseElement::GetBBox() 
+</comment>
+    <requestid>571285</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>06d67ed989d8317f0dbc63a3b647eb8c</srcmd5>
+    <version>1.5.14</version>
+    <time>1533412465</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.14
+  * fixed calculation of bounding box if viewbox is specified
+  * fixed GetResultBBox()
+  * wxSVGCanvasImage: added support of data base64 href
+- Build with ffmpeg-3 libs to match DVDStyler, see boo#1103008
+</comment>
+    <requestid>627315</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0df17b236bda3d0f9648e709ab68438e</srcmd5>
+    <version>1.5.16</version>
+    <time>1551284893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674970</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5e6723106f2fcc009e394228e63e4b6d</srcmd5>
+    <version>1.5.20</version>
+    <time>1568623999</time>
+    <user>maxlin_factory</user>
+    <comment>Update to 1.5.20</comment>
+    <requestid>731056</requestid>
+  </revision>
+</revisionlist>

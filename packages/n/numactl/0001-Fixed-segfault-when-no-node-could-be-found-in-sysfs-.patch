@@ -1,0 +1,40 @@
+From 5dce07818a2f2c6ebde399f58702fe5beecb2eed Mon Sep 17 00:00:00 2001
+From: Julian Wolf <juwolf@suse.com>
+Date: Fri, 18 Jul 2014 14:05:05 +0200
+Subject: [PATCH] Fixed segfault when no node could be found in sysfs
+ bnc#872922
+
+---
+ distance.c | 15 ++++++---------
+ 1 file changed, 6 insertions(+), 9 deletions(-)
+
+Index: numactl-2.0.10/distance.c
+===================================================================
+--- numactl-2.0.10.orig/distance.c	2014-10-03 22:49:11.000000000 +0200
++++ numactl-2.0.10/distance.c	2015-01-20 19:07:43.397202100 +0100
+@@ -58,19 +58,16 @@
+ 	int *table = NULL;
+ 	int err = -1;
+ 
+-	for (nd = 0;; nd++) {
++	for (nd = 0; nd < maxnode; nd++) {
+ 		char fn[100];
+ 		FILE *dfh;
+ 		sprintf(fn, "/sys/devices/system/node/node%d/distance", nd);
+ 		dfh = fopen(fn, "r");
+-		if (!dfh) {
+-			if (errno == ENOENT)
+-				err = 0;
+-			if (!err && nd<maxnode)
+-				continue;
+-			else
+-				break;
+-		}
++		if (dfh) 
++			err = 0;
++		else
++			continue;
++		
+ 		len = getdelim(&line, &linelen, '\n', dfh);
+ 		fclose(dfh);
+ 		if (len <= 0)

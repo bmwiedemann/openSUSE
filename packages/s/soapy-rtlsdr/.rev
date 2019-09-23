@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ff51eeb752bd1c28631a4080db22597d</srcmd5>
+    <version>0.2.3</version>
+    <time>1510150175</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain soapy-rtlsdr in Factory</comment>
+    <requestid>535904</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1663387c254a33038a49ddbf43021728</srcmd5>
+    <version>0.2.5</version>
+    <time>1529402542</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616938</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ae771ff6ad503ec1945ddd86377a0f4f</srcmd5>
+    <version>0.2.5</version>
+    <time>1542012246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648167</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ab516970e528148595edb203a3989af2</srcmd5>
+    <version>0.3.0</version>
+    <time>1544817286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657891</requestid>
+  </revision>
+</revisionlist>

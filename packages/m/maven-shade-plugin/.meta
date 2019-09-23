@@ -1,0 +1,5 @@
+<package name="maven-shade-plugin" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="maven-shade-plugin"/>
+</package>

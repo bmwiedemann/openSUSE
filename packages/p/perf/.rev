@@ -1,0 +1,398 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ecf2b52f110008e43c2f069928c3164</srcmd5>
+    <version>MACRO</version>
+    <time>1249916025</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4ddaa1f6ba034c830f803937058a59b2</srcmd5>
+    <version>MACRO</version>
+    <time>1251496086</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/perf based on submit request 18925 from user jones_tony
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4ddaa1f6ba034c830f803937058a59b2</srcmd5>
+    <version>MACRO</version>
+    <time>1251496086</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/perf based on submit request 18925 from user jones_tony
+</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>a53f6dcc927e56fb21d62775c257677b</srcmd5>
+    <version>MACRO</version>
+    <time>1257852268</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/perf based on submit request 23902 from user jones_tony
+</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>36eb26f6459e9bc400697064e6714711</srcmd5>
+    <version>MACRO</version>
+    <time>1268145999</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/perf based on submit request 34398 from user jones_tony
+</comment>
+    <requestid>34398</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>3f1978380913716095e102b3e2bb085e</srcmd5>
+    <version>MACRO</version>
+    <time>1268925351</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>3f1978380913716095e102b3e2bb085e</srcmd5>
+    <version>MACRO</version>
+    <time>1278667376</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>3f1978380913716095e102b3e2bb085e</srcmd5>
+    <version>MACRO</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>3f1978380913716095e102b3e2bb085e</srcmd5>
+    <version>MACRO</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>f5f9c2aadcd7518547f7c06ee21035f3</srcmd5>
+    <version>MACRO</version>
+    <time>1305188109</time>
+    <user>azouhr</user>
+    <comment></comment>
+    <requestid>70008</requestid>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>7a433ab281b018c6cc8b0241070f2fb0</srcmd5>
+    <version>MACRO</version>
+    <time>1305188118</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 70008
+</comment>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>7a433ab281b018c6cc8b0241070f2fb0</srcmd5>
+    <version>MACRO</version>
+    <time>1319182237</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>ffc21660bdae6068d11a65f944f19da4</srcmd5>
+    <version>MACRO</version>
+    <time>1323193020</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="19">
+    <srcmd5>bbde5ed23c1e7444adedef0d4d39a457</srcmd5>
+    <version>MACRO</version>
+    <time>1337578157</time>
+    <user>coolo</user>
+    <comment>- Fix build for factory 
+  * added flex and bison to buildrequires (forwarded request 121154 from toganm)</comment>
+    <requestid>121240</requestid>
+  </revision>
+  <revision rev="15" vrev="21">
+    <srcmd5>bbde5ed23c1e7444adedef0d4d39a457</srcmd5>
+    <version>MACRO</version>
+    <time>1340183788</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="22">
+    <srcmd5>0cee02a8a54e4fb1ef1ea6cf2153af8e</srcmd5>
+    <version>MACRO</version>
+    <time>1357822246</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>146387</requestid>
+  </revision>
+  <revision rev="17" vrev="24">
+    <srcmd5>0cee02a8a54e4fb1ef1ea6cf2153af8e</srcmd5>
+    <version>MACRO</version>
+    <time>1359109591</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="25">
+    <srcmd5>719b01e2a2e82f68a808c7862c6bb19a</srcmd5>
+    <version>MACRO</version>
+    <time>1373470216</time>
+    <user>coolo</user>
+    <comment>- Add audit-devel, gtk2-devel and libunwind-devel to support optional
+  functionality.
+- Add 'perl-5.18-nowarn.patch' to squelch build errors from perl.h
+- Add perl_requires
+- Fix --version output (copy submakefiles from kernel-source)
+- Pass SUSE rpm optflags into make as EXTRA_CFLAGS not CFLAGS
+- Stop building with V=1, make output easier to parse (forwarded request 182683 from jones_tony)</comment>
+    <requestid>182684</requestid>
+  </revision>
+  <revision rev="19" vrev="26">
+    <srcmd5>d0c6733354631668313952fd67d5ac51</srcmd5>
+    <version>MACRO</version>
+    <time>1373655062</time>
+    <user>coolo</user>
+    <comment>- Add patch 'perf-tests-ppc64-fix-compile-errors.patch' to resolve
+  openSUSE:Factory:PowerPC testsuite build errors (forwarded request 182767 from jones_tony)</comment>
+    <requestid>182768</requestid>
+  </revision>
+  <revision rev="20" vrev="27">
+    <srcmd5>eb0273bc08189ba01c413adc10dbbc3e</srcmd5>
+    <version>MACRO</version>
+    <time>1377161686</time>
+    <user>scarabeus_factory</user>
+    <comment> (forwarded request 195865 from jones_tony)</comment>
+    <requestid>195866</requestid>
+  </revision>
+  <revision rev="21" vrev="28">
+    <srcmd5>fb586dd2ddd23ad15bfb4436aed3e5a7</srcmd5>
+    <version>MACRO</version>
+    <time>1378532636</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>197528</requestid>
+  </revision>
+  <revision rev="22" vrev="30">
+    <srcmd5>fb586dd2ddd23ad15bfb4436aed3e5a7</srcmd5>
+    <version>MACRO</version>
+    <time>1379663540</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="31">
+    <srcmd5>9ee3d58ae8f9bb5911537339e2d80a0c</srcmd5>
+    <version>MACRO</version>
+    <time>1386326832</time>
+    <user>coolo</user>
+    <comment> (forwarded request 209452 from jones_tony)</comment>
+    <requestid>209453</requestid>
+  </revision>
+  <revision rev="24" vrev="32">
+    <srcmd5>43d98ce6ddb26c97863ce9d010e96cbd</srcmd5>
+    <version>MACRO</version>
+    <time>1391540192</time>
+    <user>coolo</user>
+    <comment> (forwarded request 220758 from jones_tony)</comment>
+    <requestid>220759</requestid>
+  </revision>
+  <revision rev="25" vrev="33">
+    <srcmd5>5f70553870bbbf84c2c09227514e29ca</srcmd5>
+    <version>MACRO</version>
+    <time>1396005115</time>
+    <user>coolo</user>
+    <comment>Fix current build, minor spec cleanup (forwarded request 227486 from aeneas_jaissle)</comment>
+    <requestid>227703</requestid>
+  </revision>
+  <revision rev="26" vrev="34">
+    <srcmd5>4c0a37effac7af1ddafdb09f66e98502</srcmd5>
+    <version>MACRO</version>
+    <time>1404306316</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239216</requestid>
+  </revision>
+  <revision rev="27" vrev="36">
+    <srcmd5>4c0a37effac7af1ddafdb09f66e98502</srcmd5>
+    <version>MACRO</version>
+    <time>1409302147</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="37">
+    <srcmd5>d77395843c361f2ce07d79997f776bf5</srcmd5>
+    <version>MACRO</version>
+    <time>1418737677</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264750</requestid>
+  </revision>
+  <revision rev="29" vrev="38">
+    <srcmd5>27fc092d9286eb599cd24c5273b7e6c1</srcmd5>
+    <version>MACRO</version>
+    <time>1420754608</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280341</requestid>
+  </revision>
+  <revision rev="30" vrev="39">
+    <srcmd5>67c0902d3fea78003e1a79e4984f531b</srcmd5>
+    <version>MACRO</version>
+    <time>1426064298</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290037</requestid>
+  </revision>
+  <revision rev="31" vrev="40">
+    <srcmd5>2fd4e06f1d91eab03cc19f7a85d744f8</srcmd5>
+    <version>MACRO</version>
+    <time>1431668639</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306680</requestid>
+  </revision>
+  <revision rev="32" vrev="41">
+    <srcmd5>c7d95c1f8a723eee1dfeff00d3ba5fcd</srcmd5>
+    <version>MACRO</version>
+    <time>1435652374</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with GCC 5
+  * perf-fix-branch-stack-mode-cannot-be-set.patch</comment>
+    <requestid>314363</requestid>
+  </revision>
+  <revision rev="33" vrev="42">
+    <srcmd5>2bca17b3fa3ceead5dfc160542223244</srcmd5>
+    <version>MACRO</version>
+    <time>1437384175</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317530</requestid>
+  </revision>
+  <revision rev="34" vrev="43">
+    <srcmd5>1f260a576860405e7b8faa91587fc238</srcmd5>
+    <version>MACRO</version>
+    <time>1444833906</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>337950</requestid>
+  </revision>
+  <revision rev="35" vrev="44">
+    <srcmd5>8e5056287bc19e7fc7b89b6e1a411791</srcmd5>
+    <version>MACRO</version>
+    <time>1453280088</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>354526</requestid>
+  </revision>
+  <revision rev="36" vrev="45">
+    <srcmd5>c2a82a187deba11b0b5cee03cb616ba7</srcmd5>
+    <version>MACRO</version>
+    <time>1460028742</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>384297</requestid>
+  </revision>
+  <revision rev="37" vrev="46">
+    <srcmd5>b37c67a39cadcd97ec3d41181595f9d0</srcmd5>
+    <version>MACRO</version>
+    <time>1465481487</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400327</requestid>
+  </revision>
+  <revision rev="38" vrev="47">
+    <srcmd5>573a4ece1d665317db72988f3b97f729</srcmd5>
+    <version>MACRO</version>
+    <time>1473241475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>424300</requestid>
+  </revision>
+  <revision rev="39" vrev="48">
+    <srcmd5>59dc2e965577fd87893fec2d8bef2ce8</srcmd5>
+    <version>MACRO</version>
+    <time>1505680703</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix x86 32bit build error
+  New patch: perf-provide-definition-for-einval-on-32bit.patch
+</comment>
+    <requestid>526437</requestid>
+  </revision>
+  <revision rev="40" vrev="49">
+    <srcmd5>6a3ba02457ad66b69c2b3ec67f9fe70e</srcmd5>
+    <version>MACRO</version>
+    <time>1512547163</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548440</requestid>
+  </revision>
+  <revision rev="41" vrev="50">
+    <srcmd5>2ce3cb8754fae80290df879b600aa397</srcmd5>
+    <version>MACRO</version>
+    <time>1512734466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555026</requestid>
+  </revision>
+  <revision rev="42" vrev="51">
+    <srcmd5>bdf885b8b1e91a377007b0a2d1b31369</srcmd5>
+    <version>MACRO</version>
+    <time>1524838170</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build errors
+  Drop patch: perf-vendor-events-powerpc-update-power9-events.patch (upstream)
+  Drop patch: perf-provide-definition-for-einval-on-32bit.patch (upstream)
+</comment>
+    <requestid>601689</requestid>
+  </revision>
+  <revision rev="43" vrev="52">
+    <srcmd5>986b5c41b3a775f769ae09c60c34ee50</srcmd5>
+    <version>MACRO</version>
+    <time>1535367546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631427</requestid>
+  </revision>
+  <revision rev="44" vrev="53">
+    <srcmd5>09b2f3907fea0f6543762c393db82a90</srcmd5>
+    <version>MACRO</version>
+    <time>1535441103</time>
+    <user>dimstar_suse</user>
+    <comment>- libebl ppc64 dependancy was inadvertantly dropped, regression from
+  &quot;
+  Re-add dependancy (bsc#1106048)
+</comment>
+    <requestid>631855</requestid>
+  </revision>
+  <revision rev="45" vrev="54">
+    <srcmd5>a8c298d2ae3433ab65deff6b48a702fb</srcmd5>
+    <version>MACRO</version>
+    <time>1539869906</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642717</requestid>
+  </revision>
+  <revision rev="46" vrev="55">
+    <srcmd5>40221454cd0dbb2dd72164973d7a146f</srcmd5>
+    <version>MACRO</version>
+    <time>1544726967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657723</requestid>
+  </revision>
+  <revision rev="47" vrev="56">
+    <srcmd5>eaa727cd1e36dda5f1467de316f680b8</srcmd5>
+    <version>MACRO</version>
+    <time>1547211961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664472</requestid>
+  </revision>
+  <revision rev="48" vrev="57">
+    <srcmd5>9daac0c666f9e08f7bb1a3bf53db3cc7</srcmd5>
+    <version>MACRO</version>
+    <time>1548064709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666531</requestid>
+  </revision>
+  <revision rev="49" vrev="58">
+    <srcmd5>daaa11a1f25d79efbe0eb9b461df5dc5</srcmd5>
+    <version>MACRO</version>
+    <time>1560537801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710019</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,29 @@
+Index: isdn4k-utils/vbox/src/Makefile.in
+===================================================================
+--- isdn4k-utils.orig/vbox/src/Makefile.in
++++ isdn4k-utils/vbox/src/Makefile.in
+@@ -67,13 +67,13 @@ vboxconvert.o:	$(HEADERS) vboxconvert.c
+ 		$(CC) $(CFLAGS) -c vboxconvert.c
+ 
+ libvbox.o:	$(HEADERS) libvbox.c
+-		$(CC) $(CFLAGS) -c libvbox.c
++		$(CC) $(CFLAGS) -fPIC -c libvbox.c
+ 
+ vboxctrl.o:	$(HEADERS) vboxctrl.c
+ 		$(CC) $(CFLAGS) -c vboxctrl.c
+ 
+ vboxbeep.o:	$(HEADERS) vboxbeep.c
+-		$(CC) $(CFLAGS) -c vboxbeep.c
++		$(CC) $(CFLAGS) -fPIE -c vboxbeep.c
+ 
+ vboxd.o:	$(HEADERS) vboxd.c
+ 		$(CC) $(CFLAGS) -DVBOXDRC='"$(VBOX_VBOXDCONF)"' -c vboxd.c
+@@ -140,7 +140,7 @@ vboxctrl:	  $(VBOXCTRLOBJS)
+ VBOXBEEPOBJS	= vboxbeep.o
+ 
+ vboxbeep:	  $(VBOXBEEPOBJS)
+-		  $(CC) $(CFLAGS) $(VBOXBEEPOBJS) -o vboxbeep -L. -lvbox
++		  $(CC) $(CFLAGS) $(VBOXBEEPOBJS) -pie -o vboxbeep -L. -lvbox
+ 
+ #----------------------------------------------------------------------------#
+ # Compiling vboxd                                                            #

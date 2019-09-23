@@ -1,0 +1,31 @@
+From: Christophe Vu-Brugier <cvubrugier@fastmail.fm>
+Date: Sat, 11 May 2019 15:15:16 +0200
+Subject: Do not remove the first digit when auto-completing the TPG tag
+Git-commit: 311ae0fc49174316c991dd3800c12549632e2c64
+
+Instead of removing the first three characters of the "tpg" prefix to
+get matches for the TPG tag number, the code removes four characters,
+thus erasing the first digit of the TPG tag number.
+
+This patches fixes issue #134.
+
+Signed-off-by: Christophe Vu-Brugier <cvubrugier@fastmail.fm>
+Acked-by: Lee Duncan <lduncan@suse.com>
+---
+ targetcli/ui_target.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/targetcli/ui_target.py b/targetcli/ui_target.py
+index 6895b38e62b8..0c3fe1b708db 100644
+--- a/targetcli/ui_target.py
++++ b/targetcli/ui_target.py
+@@ -384,7 +384,7 @@ class UIMultiTPGTarget(UIRTSLibNode):
+         @rtype: list of str
+         '''
+         if current_param == 'tag':
+-            tags = [child.name[4:] for child in self.children]
++            tags = [child.name[3:] for child in self.children]
+             completions = [tag for tag in tags if tag.startswith(text)]
+         else:
+             completions = []
+

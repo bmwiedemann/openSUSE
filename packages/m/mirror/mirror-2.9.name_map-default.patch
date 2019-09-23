@@ -1,0 +1,10 @@
+Index: mirror.defaults
+===================================================================
+--- mirror.defaults.orig
++++ mirror.defaults
+@@ -62,3 +62,5 @@ package=defaults
+ 
+ 	timeout=300
+ 	#failed_gets_excl=\:\ Permission denied\.$
++
++	name_mappings=s:\.\./:__/:g

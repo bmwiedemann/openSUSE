@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d28d2353e9f1d8d9c4cb900af660adfd</srcmd5>
+    <version>2.6</version>
+    <time>1186540845</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="62">
+    <srcmd5>dababf895445a5c1da6b5a3118bf80de</srcmd5>
+    <version>2.6</version>
+    <time>1203147256</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="125">
+    <srcmd5>dababf895445a5c1da6b5a3118bf80de</srcmd5>
+    <version>2.6</version>
+    <time>1203147256</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="126">
+    <srcmd5>925d9b57ea7c1682cfbde703ab4660a1</srcmd5>
+    <version>2.6</version>
+    <time>1245338293</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="128">
+    <srcmd5>925d9b57ea7c1682cfbde703ab4660a1</srcmd5>
+    <version>2.6</version>
+    <time>1245338293</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="129">
+    <srcmd5>a21649175142c717de6eceb27cdea502</srcmd5>
+    <version>2.6</version>
+    <time>1268925719</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="130">
+    <srcmd5>6a4863dfcb8c17f1af78008bd92cb140</srcmd5>
+    <version>2.6</version>
+    <time>1269618781</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/pixmap based on submit request 35774 from user coolo
+</comment>
+    <requestid>35774</requestid>
+  </revision>
+  <revision rev="8" vrev="132">
+    <srcmd5>6a4863dfcb8c17f1af78008bd92cb140</srcmd5>
+    <version>2.6</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="133">
+    <srcmd5>6a4863dfcb8c17f1af78008bd92cb140</srcmd5>
+    <version>2.6</version>
+    <time>1278678611</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="134">
+    <srcmd5>85fcf21dad8d9463f5b95bc16fbbc895</srcmd5>
+    <version>2.6</version>
+    <time>1289416902</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52525 from user prusnak
+</comment>
+    <requestid>52525</requestid>
+  </revision>
+  <revision rev="11" vrev="135">
+    <srcmd5>9a0946f578f12c270417345850468ce0</srcmd5>
+    <version>2.6</version>
+    <time>1289416911</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52525
+</comment>
+  </revision>
+  <revision rev="12" vrev="138">
+    <srcmd5>9a0946f578f12c270417345850468ce0</srcmd5>
+    <version>2.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="140">
+    <srcmd5>9a0946f578f12c270417345850468ce0</srcmd5>
+    <version>2.6</version>
+    <time>1319182359</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="141">
+    <srcmd5>23b77a51774d25aa81b6193316d4ed1f</srcmd5>
+    <version>2.6</version>
+    <time>1323193920</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="143">
+    <srcmd5>23b77a51774d25aa81b6193316d4ed1f</srcmd5>
+    <version>2.6</version>
+    <time>1340184004</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="145">
+    <srcmd5>23b77a51774d25aa81b6193316d4ed1f</srcmd5>
+    <version>2.6</version>
+    <time>1359109929</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="147">
+    <srcmd5>23b77a51774d25aa81b6193316d4ed1f</srcmd5>
+    <version>2.6</version>
+    <time>1379664035</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="149">
+    <srcmd5>23b77a51774d25aa81b6193316d4ed1f</srcmd5>
+    <version>2.6</version>
+    <time>1409302707</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="150">
+    <srcmd5>991cda1a731910f340f2ee3369fe0c20</srcmd5>
+    <version>2.6</version>
+    <time>1412799251</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254718</requestid>
+  </revision>
+  <revision rev="20" vrev="151">
+    <srcmd5>8ebcffc7adafe76e02f80970e3738555</srcmd5>
+    <version>2.6</version>
+    <time>1568623983</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731049</requestid>
+  </revision>
+</revisionlist>

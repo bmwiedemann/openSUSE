@@ -1,0 +1,172 @@
+<revisionlist>
+  <revision rev="1" vrev="14">
+    <srcmd5>c54ab55ac85aa0e981c3c71b3b084708</srcmd5>
+    <version>4</version>
+    <time>1168903737</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="52">
+    <srcmd5>dc64ce3d0ebaf2fb44d7b32b8134d63a</srcmd5>
+    <version>4</version>
+    <time>1184070166</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>404e633e81f7de150f590db3a582584e</srcmd5>
+    <version>8</version>
+    <time>1207179329</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a126bf3321a9bc57b9628b207a64ecf9</srcmd5>
+    <version>8</version>
+    <time>1207833631</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="45">
+    <srcmd5>a126bf3321a9bc57b9628b207a64ecf9</srcmd5>
+    <version>8</version>
+    <time>1207833631</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="46">
+    <srcmd5>597c4b27a858a16eaae474fe6e3584ac</srcmd5>
+    <version>8</version>
+    <time>1245336747</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="47">
+    <srcmd5>86fa0dc891aef18ed71566500f756f57</srcmd5>
+    <version>8</version>
+    <time>1245467539</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="48">
+    <srcmd5>b155dac46660ea39de37f4b5f1ca5f87</srcmd5>
+    <version>8</version>
+    <time>1246629093</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5a602a0a72a4b930a06d7edcebf986b8</srcmd5>
+    <version>10</version>
+    <time>1248731915</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>5a602a0a72a4b930a06d7edcebf986b8</srcmd5>
+    <version>10</version>
+    <time>1248731915</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>4a39fb294bb92ed7b2cef99394c8aca7</srcmd5>
+    <version>10</version>
+    <time>1267786489</time>
+    <user>autobuild</user>
+    <comment>Copy from Linux-PAM/pam_ccreds based on submit request 33929 from user coolo
+</comment>
+    <requestid>33929</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>eb0d4faf1d6ad95e436ecd0eea5b8985</srcmd5>
+    <version>10</version>
+    <time>1268925275</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>eb0d4faf1d6ad95e436ecd0eea5b8985</srcmd5>
+    <version>10</version>
+    <time>1278667375</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>eb0d4faf1d6ad95e436ecd0eea5b8985</srcmd5>
+    <version>10</version>
+    <time>1278678607</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>eb0d4faf1d6ad95e436ecd0eea5b8985</srcmd5>
+    <version>10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>eb0d4faf1d6ad95e436ecd0eea5b8985</srcmd5>
+    <version>10</version>
+    <time>1319182225</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>d77a0b2fc2246274b394e47134a12870</srcmd5>
+    <version>10</version>
+    <time>1323192932</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="15">
+    <srcmd5>7967b56e62723b9dd0716e118961ade4</srcmd5>
+    <version>10</version>
+    <time>1323265091</time>
+    <user>coolo</user>
+    <comment>- add automake as buildrequire to avoid implicit dependency (forwarded request 95640 from coolo)</comment>
+    <requestid>95676</requestid>
+  </revision>
+  <revision rev="19" vrev="16">
+    <srcmd5>f033ad1d7bade4c35b88eaf859717f78</srcmd5>
+    <version>10</version>
+    <time>1328717981</time>
+    <user>coolo</user>
+    <comment>- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Use %_smp_mflags for parallel building</comment>
+    <requestid>103252</requestid>
+  </revision>
+  <revision rev="20" vrev="18">
+    <srcmd5>f033ad1d7bade4c35b88eaf859717f78</srcmd5>
+    <version>10</version>
+    <time>1340183772</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="19">
+    <srcmd5>3aa9454434e6ca5fe676f680ee5673d8</srcmd5>
+    <version>10</version>
+    <time>1358158427</time>
+    <user>coolo</user>
+    <comment>- remove suse_update_config (forwarded request 148218 from coolo)</comment>
+    <requestid>148376</requestid>
+  </revision>
+  <revision rev="22" vrev="21">
+    <srcmd5>3aa9454434e6ca5fe676f680ee5673d8</srcmd5>
+    <version>10</version>
+    <time>1359109565</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="22">
+    <srcmd5>a6cfac4f1092bce13f2bb7ebec43d91c</srcmd5>
+    <version>10</version>
+    <time>1371646410</time>
+    <user>coolo</user>
+    <comment>- Add pam_ccreds-db6.diff to fix compile abort with db &gt;= 5 (forwarded request 179094 from jengelh)</comment>
+    <requestid>179390</requestid>
+  </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>a6cfac4f1092bce13f2bb7ebec43d91c</srcmd5>
+    <version>10</version>
+    <time>1379663481</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="26">
+    <srcmd5>a6cfac4f1092bce13f2bb7ebec43d91c</srcmd5>
+    <version>10</version>
+    <time>1409302097</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

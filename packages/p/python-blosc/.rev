@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f7d573330c2a2be14fb70a507b584e42</srcmd5>
+    <version>1.2.4</version>
+    <time>1406442352</time>
+    <user>coolo</user>
+    <comment>I intend to submit python-tables, one of the two primary tools for accessing the critical scientific data format hdf5 on python, to openSUSE:Factory.  The other tool, python-h5py, is already in openSUSE:Factory.
+
+This is the last remaining dependency needed before python-tables can be submitted to openSUSE:Factory.  The blosc package, which this depends on, is already in openSUSE:Factory.</comment>
+    <requestid>242180</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b1274591e929c464bd24ac478951465c</srcmd5>
+    <version>1.2.4</version>
+    <time>1407485428</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>243856</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b1274591e929c464bd24ac478951465c</srcmd5>
+    <version>1.2.4</version>
+    <time>1409302824</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a2dc604490d6654250ecba56fb7a12e5</srcmd5>
+    <version>1.2.5</version>
+    <time>1430132735</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304138</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c9704559b6443897f5edbcb6749f7d18</srcmd5>
+    <version>1.2.7</version>
+    <time>1432072252</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308022</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>153d283b9be420e645a7c504ea696a27</srcmd5>
+    <version>1.2.8</version>
+    <time>1458120920</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369762</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8208c732a88b006a9232c3521d71a303</srcmd5>
+    <version>1.5.1</version>
+    <time>1493369005</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.5.1
+Implement single-spec version</comment>
+    <requestid>489487</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f1e29ba8f1cc88f129f2f98ced4a2b34</srcmd5>
+    <version>1.5.1</version>
+    <time>1516634373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567940</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>1f9e8417a987ab1927f04347ed6c5e03</srcmd5>
+    <version>1.5.1</version>
+    <time>1527583403</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611912</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>9be4b45c9e17a34f2a6009943a0a6867</srcmd5>
+    <version>1.5.1</version>
+    <time>1531947448</time>
+    <user>dimstar_suse</user>
+    <comment>- Stricten requirement on the blosc-devel to require version we
+  actually compile with</comment>
+    <requestid>623639</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>42ff2e833273c2cd0f8c1380c13f4b6c</srcmd5>
+    <version>1.6.2</version>
+    <time>1546946751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660736</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1d3e29ceda3b6df209f91d9832d30c93</srcmd5>
+    <version>1.8.1</version>
+    <time>1563914625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717934</requestid>
+  </revision>
+</revisionlist>

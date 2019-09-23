@@ -1,0 +1,78 @@
+From paulo@paulo.ac Thu Sep  5 18:49:35 2019
+From: " Paulo Alcantara (SUSE) " <paulo@paulo.ac>
+To: <piastryyy@gmail.com>,<samba-technical@lists.samba.org>,
+ <linux-cifs@vger.kernel.org>
+Cc: "Aurelien Aptel" <aaptel@suse.com>
+Subject: [PATCH] mount.cifs: Fix double-free issue when mounting with setuid root
+Date: Thu,  5 Sep 2019 15:49:35 -0300
+Message-Id: <20190905184935.30694-1-paulo@paulo.ac>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+MIME-Version: 1.0
+
+It can be easily reproduced with the following:
+
+  # chmod +s `which mount.cifs`
+  # echo "//localhost/share /mnt cifs \
+    users,username=foo,password=XXXX" >> /etc/fstab
+  # su - foo
+  $ mount /mnt
+  free(): double free detected in tcache 2
+  Child process terminated abnormally.
+
+The problem was that check_fstab() already freed orgoptions pointer
+and then we freed it again in main() function.
+
+Fixes: bf7f48f4c7dc ("mount.cifs.c: fix memory leaks in main func")
+Signed-off-by: Paulo Alcantara (SUSE) <paulo@paulo.ac>
+---
+ mount.cifs.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/mount.cifs.c b/mount.cifs.c
+index 7748d54aa814..2116fc803311 100644
+--- a/mount.cifs.c
++++ b/mount.cifs.c
+@@ -247,7 +247,6 @@ check_fstab(const char *progname, const char *mountpoint, const char *devname,
+ 	 * set of options. We don't want to trust what the user
+ 	 * gave us, so just take whatever is in /etc/fstab.
+ 	 */
+-	free(*options);
+ 	*options = strdup(mnt->mnt_opts);
+ 	return 0;
+ }
+@@ -1762,6 +1761,7 @@ assemble_mountinfo(struct parsed_mount_info *parsed_info,
+ 		   const char *orig_dev, char *orgoptions)
+ {
+ 	int rc;
++	char *newopts = NULL;
+ 
+ 	rc = drop_capabilities(0);
+ 	if (rc)
+@@ -1773,10 +1773,11 @@ assemble_mountinfo(struct parsed_mount_info *parsed_info,
+ 
+ 	if (getuid()) {
+ 		rc = check_fstab(thisprogram, mountpoint, orig_dev,
+-				 &orgoptions);
++				 &newopts);
+ 		if (rc)
+ 			goto assemble_exit;
+ 
++		orgoptions = newopts;
+ 		/* enable any default user mount flags */
+ 		parsed_info->flags |= CIFS_SETUID_FLAGS;
+ 	}
+@@ -1880,6 +1881,7 @@ assemble_mountinfo(struct parsed_mount_info *parsed_info,
+ 	}
+ 
+ assemble_exit:
++	free(newopts);
+ 	return rc;
+ }
+ 
+-- 
+2.23.0
+
+
+
+

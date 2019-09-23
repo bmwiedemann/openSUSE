@@ -1,0 +1,5 @@
+<package name="scim-bridge" project="openSUSE:Factory">
+  <title>Scim Bridge</title>
+  <description>Scim Bridge</description>
+  <devel project="M17N" package="scim-bridge"/>
+</package>

@@ -1,0 +1,75 @@
+From 02a12c0a13facb1442e40c3c1c06eb03cc1dc567 Mon Sep 17 00:00:00 2001
+From: Alexander Graf <agraf@suse.de>
+Date: Thu, 26 Apr 2018 13:30:32 +0200
+Subject: [PATCH] tools: zynqmpbif: Add support for load=after
+
+Some times it's handy to have a partition loaded immediately after
+the end of the previous blob. The most obvious example for this is
+a U-Boot binary (coming from .elf) and a device tree file.
+
+This patch adds that logic. With this, the following bif snippet
+does what you would expect:
+
+  [destination_cpu=a5x-0, exception_level=el-2] u-boot.elf
+  [load=after] u-boot.dtb
+
+converts to
+
+  FSBL payload on CPU a5x-0 (PS):
+    Offset     : 0x00590500
+    Size       : 577768 (0x8d0e8) bytes
+    Load       : 0x08000000
+    Attributes : EL2
+    Checksum   : 0xefca2cad
+  FSBL payload on CPU none (PS):
+    Offset     : 0x0061d640
+    Size       : 129760 (0x1fae0) bytes
+    Load       : 0x0808d0e8 (entry=0x00000000)
+    Attributes : EL3
+    Checksum   : 0xf7dd3d49
+
+Signed-off-by: Alexander Graf <agraf@suse.de>
+---
+ tools/zynqmpbif.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/tools/zynqmpbif.c b/tools/zynqmpbif.c
+index 8c47107c7b..591bec8e59 100644
+--- a/tools/zynqmpbif.c
++++ b/tools/zynqmpbif.c
+@@ -42,6 +42,7 @@ enum bif_flag {
+ 	BIF_FLAG_PUF_FILE,
+ 	BIF_FLAG_AARCH32,
+ 	BIF_FLAG_PART_OWNER_UBOOT,
++	BIF_FLAG_LOAD_AFTER,
+ 
+ 	/* Internal flags */
+ 	BIF_FLAG_BIT_FILE,
+@@ -151,6 +152,11 @@ static char *parse_load(char *line, struct bif_entry *bf)
+ {
+ 	char *endptr;
+ 
++	if (!strncmp(line, "after", strlen("after"))) {
++		bf->flags |= (1ULL << BIF_FLAG_LOAD_AFTER);
++		return line + strlen("after");
++	}
++
+ 	bf->load = strtoll(line, &endptr, 0);
+ 
+ 	return endptr;
+@@ -345,6 +351,15 @@ static int bif_add_part(struct bif_entry *bf, const char *data, size_t len)
+ 	if (r)
+ 		return r;
+ 
++	if (bf->flags & (1ULL << BIF_FLAG_LOAD_AFTER) &&
++	    bif_output.last_part) {
++		struct partition_header *p = bif_output.last_part;
++		uint64_t load = le64_to_cpu(p->load_address);
++
++		load += le32_to_cpu(p->len) * 4;
++		parthdr.load_address = cpu_to_le64(load);
++	}
++
+ 	parthdr.offset = cpu_to_le32(bf->offset / 4);
+ 
+ 	if (bf->flags & (1ULL << BIF_FLAG_BOOTLOADER)) {

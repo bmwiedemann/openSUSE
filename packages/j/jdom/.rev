@@ -1,0 +1,179 @@
+<revisionlist>
+  <revision rev="1" vrev="156">
+    <srcmd5>89685e0b5e16680b8b48e03e3f5beb11</srcmd5>
+    <version>1.0</version>
+    <time>1206544565</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="271">
+    <srcmd5>89685e0b5e16680b8b48e03e3f5beb11</srcmd5>
+    <version>1.0</version>
+    <time>1206544565</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="272">
+    <srcmd5>28c9e7a2e2d35aff09f4afdbfdd55aa6</srcmd5>
+    <version>1.0</version>
+    <time>1227283966</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>503a55b2f9f6ced4831c6c9d5cc041bf</srcmd5>
+    <version>1.1</version>
+    <time>1244236360</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>503a55b2f9f6ced4831c6c9d5cc041bf</srcmd5>
+    <version>1.1</version>
+    <time>1244236360</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>77c175c2746562fd0a1b7c3e5ad0f39f</srcmd5>
+    <version>1.1</version>
+    <time>1268924128</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>77c175c2746562fd0a1b7c3e5ad0f39f</srcmd5>
+    <version>1.1</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>77c175c2746562fd0a1b7c3e5ad0f39f</srcmd5>
+    <version>1.1</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>77c175c2746562fd0a1b7c3e5ad0f39f</srcmd5>
+    <version>1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>c1bdd617ec735e5aadf3357e6eec7a4d</srcmd5>
+    <version>unknown</version>
+    <time>1300438938</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64430 from user mvyskocil
+</comment>
+    <requestid>64430</requestid>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>09d934657d54ed6c1917ee7dc4b27f72</srcmd5>
+    <version>unknown</version>
+    <time>1300438946</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64430
+</comment>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>09d934657d54ed6c1917ee7dc4b27f72</srcmd5>
+    <version>unknown</version>
+    <time>1319182009</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>fe7cd4bf9bc3727c5d89b41146c22c28</srcmd5>
+    <version>unknown</version>
+    <time>1323192034</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="18">
+    <srcmd5>bec6aa0ccf94172cc7a900167c5c33d9</srcmd5>
+    <version>unknown</version>
+    <time>1339824187</time>
+    <user>coolo</user>
+    <comment>- ignore jdk7 as well 
+
+- remove stray character from xom summary to fix UTF-8 parsing</comment>
+    <requestid>125110</requestid>
+  </revision>
+  <revision rev="15" vrev="20">
+    <srcmd5>bec6aa0ccf94172cc7a900167c5c33d9</srcmd5>
+    <version>unknown</version>
+    <time>1340183485</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="22">
+    <srcmd5>bec6aa0ccf94172cc7a900167c5c33d9</srcmd5>
+    <version>unknown</version>
+    <time>1359109121</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="24">
+    <srcmd5>bec6aa0ccf94172cc7a900167c5c33d9</srcmd5>
+    <version>unknown</version>
+    <time>1379662712</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="26">
+    <srcmd5>bec6aa0ccf94172cc7a900167c5c33d9</srcmd5>
+    <version>unknown</version>
+    <time>1409301278</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="27">
+    <srcmd5>c241fac54efb37dd55f4f153747bdbd2</srcmd5>
+    <version>unknown</version>
+    <time>1427983247</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide and obsolete jaxen-bootstrap to avoid file conflict
+
+- Fix namespace clash with javapackages-tools on variables
+
+- Cleanup with spec-cleaner and add debug output</comment>
+    <requestid>293766</requestid>
+  </revision>
+  <revision rev="20" vrev="28">
+    <srcmd5>b24b7fb185bc106df106a2bc06acd35a</srcmd5>
+    <version>unknown</version>
+    <time>1496230260</time>
+    <user>dimstar_suse</user>
+    <comment>- Expand the buildignore lines for newer jdk</comment>
+    <requestid>496827</requestid>
+  </revision>
+  <revision rev="21" vrev="29">
+    <srcmd5>d83b5523f3bb1f5a58faa92f23ff65d9</srcmd5>
+    <version>unknown</version>
+    <time>1505680581</time>
+    <user>dimstar_suse</user>
+    <comment>Build with javac whose syntax is compatible with OpenJDK</comment>
+    <requestid>526161</requestid>
+  </revision>
+  <revision rev="22" vrev="30">
+    <srcmd5>8288295f27a04330aeb6d3fdbceb5829</srcmd5>
+    <version>unknown</version>
+    <time>1507280060</time>
+    <user>dimstar_suse</user>
+    <comment>Don't depend on tagsoup for the while</comment>
+    <requestid>530251</requestid>
+  </revision>
+  <revision rev="23" vrev="31">
+    <srcmd5>abd5f5eada235e917394cfc6eb0e97d9</srcmd5>
+    <version>unknown</version>
+    <time>1544440977</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>655983</requestid>
+  </revision>
+  <revision rev="24" vrev="32">
+    <srcmd5>10319dd2e567cf897c2eb490c54124f7</srcmd5>
+    <version>unknown</version>
+    <time>1553809534</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade the jdom component to 1.1.3</comment>
+    <requestid>689060</requestid>
+  </revision>
+</revisionlist>

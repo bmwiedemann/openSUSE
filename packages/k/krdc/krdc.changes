@@ -1,0 +1,2004 @@
+-------------------------------------------------------------------
+Thu Sep  5 14:00:55 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- No code change since 19.08.0
+
+-------------------------------------------------------------------
+Fri Aug  9 08:31:36 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- No code change since 19.07.90
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:50 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- No code changes since 19.07.80
+
+-------------------------------------------------------------------
+Tue Jul 23 11:59:04 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * vnc: Optimize and simplify repainting
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- No code changes since 19.04.2
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:55 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- No code changes since 19.04.1
+
+-------------------------------------------------------------------
+Fri May 10 05:37:16 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- Changes since 19.04.0:
+  * Do not assume framebuffer and scalines are always 32-bit aligned
+
+-------------------------------------------------------------------
+Sat Apr 20 06:51:57 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- No code changes since 19.03.90
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:43 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * Pass va_list as such, instead of passing to variadic function
+
+-------------------------------------------------------------------
+Wed Mar 27 06:41:06 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Add Wayland support (kde#377911)
+  * Add the default (Ctrl+n) shortcut to open new connection in KRDC
+  * Fix DOCTYPE root name of ui.rc file
+  * Use more https in links
+  * Do not repeat work of KAboutData::setupCommandLine
+  * Do not repeat work of KAboutData::setApplicationData
+  * Call KLocalizedString::setApplicationDomain after qapp creation
+  * Use consistently nullptr
+  * Use consistently override
+  * Improve order in toplevel CMakeLists.txt: first setup ECM, then do find
+  * Bump min cmake version to 3.0
+  * Fix minor typos and EBN issues
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:21 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * Set StartupWMClass in desktop file
+
+-------------------------------------------------------------------
+Sat Feb 09 08:25:17 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * properly show xfreerdp runtime dependency in cmake summary
+
+-------------------------------------------------------------------
+Fri Jan 11 05:42:27 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * No code changes since 18.12.0
+
+-------------------------------------------------------------------
+Fri Dec 14 06:09:15 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * No code changes since 18.11.90
+
+-------------------------------------------------------------------
+Mon Dec 03 20:56:08 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * No code changes since 18.11.80
+
+-------------------------------------------------------------------
+Tue Nov 20 06:22:43 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:57:13 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * Fix minor EBN issues and typos
+  * Remove duplicated and outdated QT definitions
+
+-------------------------------------------------------------------
+Thu Nov 08 20:43:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * No code changes since 18.08.2
+
+-------------------------------------------------------------------
+Thu Oct 11 20:07:08 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 06 18:43:05 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Aug 16 22:06:26 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * Fix deadlock when user cancels ssh password dialog
+
+-------------------------------------------------------------------
+Thu Jul 26 13:00:53 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * Add option of connecting to the vnc server through a ssh tunnel
+  * Enable override warnings (on gcc)
+  * Small typo fix
+  * Make gcc happy
+  * No need for such a big margin on top now that image is gone
+  * Remove needless space-eating header
+  * clang-tidy: modernize-use-nullptr
+  * clang-tidy: modernize-use-override run
+  * CMake: Fix AUTOMOC warnings
+
+-------------------------------------------------------------------
+Fri Jul 13 04:50:09 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * None
+
+-------------------------------------------------------------------
+Fri Jun 08 05:06:54 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * None
+
+-------------------------------------------------------------------
+Fri May 11 05:18:07 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 18.04.0:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 18 07:49:41 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.0.php
+- Changes since 18.03.90:
+  * None
+
+-------------------------------------------------------------------
+Fri Apr 06 07:09:52 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.03.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04-rc.php
+- Changes since 17.12.3:
+  * Include minimal appstream information
+  * Add .arcconfig file
+
+-------------------------------------------------------------------
+Thu Mar 08 23:52:10 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.3.php
+- Changes since 17.12.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Feb 07 08:48:38 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.2.php
+- Changes since 17.12.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Jan 11 23:41:16 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.1.php
+- Changes since 17.12.0:
+  * Don't use qCritical for debug output, that's what qCDebug is for.
+
+-------------------------------------------------------------------
+Sat Dec 09 14:59:08 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.0.php
+- Changes since 17.11.90:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 02 10:12:38 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-rc.php
+- Changes since 17.11.80:
+  * None
+
+-------------------------------------------------------------------
+Mon Nov 20 06:59:22 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-beta.php
+- Changes since 17.08.3:
+  * fix typo
+  * add comment needed by appstream
+
+-------------------------------------------------------------------
+Thu Nov 09 23:12:12 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 00:32:32 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 07 07:02:24 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * add comment needed by appstream
+
+-------------------------------------------------------------------
+Fri Aug 11 22:45:57 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+  * None
+
+-------------------------------------------------------------------
+Sat Aug  5 18:18:37 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.08-rc.php
+
+
+-------------------------------------------------------------------
+Sat Jul 15 23:00:25 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Jun 07 17:42:57 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * None
+
+-------------------------------------------------------------------
+Wed May 17 20:36:52 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * None
+
+-------------------------------------------------------------------
+Sun Apr 16 10:45:08 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 12 20:25:51 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * None
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:40 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-beta.php
+- Changes since 16.12.3:
+  * remove obsolete entities reporting.bugs + updating.documentation
+
+-------------------------------------------------------------------
+Thu Mar  9 12:40:40 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * None
+
+-------------------------------------------------------------------
+Thu Feb  9 07:06:28 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Sat Jan 14 09:01:15 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+-------------------------------------------------------------------
+Tue Dec 13 19:51:23 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Sat Dec  3 16:37:11 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 12:35:48 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+
+-------------------------------------------------------------------
+Wed Nov  9 06:21:56 UTC 2016 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.08.3
+  * KDE Applications 16.08.3
+  * https://www.kde.org/announcements/announce-applications-16.08.3.php
+
+-------------------------------------------------------------------
+Tue Oct 11 21:01:33 UTC 2016 - lbeltrame@kde.org
+
+- KDE Applications 16.08.2
+https://www.kde.org/announcements/announce-applications-16.08.2.php
+
+-------------------------------------------------------------------
+Fri Sep  9 08:32:18 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.1
+   * KDE Applications 16.08.1
+   * https://www.kde.org/announcements/announce-applications-16.08.1.php
+
+
+-------------------------------------------------------------------
+Fri Aug 12 10:23:08 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.0
+   * KDE Applications 16.08.0
+   * https://www.kde.org/announcements/announce-applications-16.08.0.php
+
+
+-------------------------------------------------------------------
+Mon Aug  8 15:20:18 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.07.90
+   * KDE Applications 16.07.90 (16.08-RC)
+   * https://www.kde.org/announcements/announce-applications-16.08-rc.php
+
+
+-------------------------------------------------------------------
+Fri Jul  8 06:35:57 UTC 2016 - fvogt@suse.com
+
+- Fix build by removing upstreamed fix-bookmarks-migration.patch
+
+-------------------------------------------------------------------
+Fri Jul  8 00:12:18 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.3
+   * KDE Applications 16.04.3
+   * https://www.kde.org/announcements/announce-applications-16.04.3.php
+
+
+-------------------------------------------------------------------
+Wed Jun 29 14:56:41 UTC 2016 - wbauer@tmo.at
+
+- Add fix-bookmarks-migration.patch to fix bookmarks migration from
+  the KDE4 version (boo#983900, kde#361823)
+
+-------------------------------------------------------------------
+Mon Jun 27 18:48:44 UTC 2016 - fvogt@suse.com
+
+- Fix copying of icons from oxygen package
+
+-------------------------------------------------------------------
+Fri Jun 10 18:04:03 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.2
+   * KDE Applications 16.04.2
+   * https://www.kde.org/announcements/announce-applications-16.04.2.php
+
+
+-------------------------------------------------------------------
+Sat May  7 10:35:43 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.1
+   * KDE Applications 16.04.1
+   * https://www.kde.org/announcements/announce-applications-16.04.1.php
+
+
+-------------------------------------------------------------------
+Sun Apr 17 06:11:29 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.0
+   * KDE Applications 16.04.0
+   * https://www.kde.org/announcements/announce-applications-16.04.0.php
+
+
+-------------------------------------------------------------------
+Mon Apr 11 06:47:16 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.03.90
+   * KDE Applications 16.04.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.04-rc.php
+
+
+-------------------------------------------------------------------
+Wed Apr  6 17:04:19 UTC 2016 - alarrosa@suse.com
+
+- Don't try to use TelepathyQt4 in SLE where it's not available.
+
+-------------------------------------------------------------------
+Sun Mar 13 15:49:33 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.3
+   * KDE Applications 15.12.3
+   * https://www.kde.org/announcements/announce-applications-15.12.3.php
+   * boo#970855
+
+
+-------------------------------------------------------------------
+Sat Feb 13 08:17:38 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.2
+   * KDE Applications 15.12.2
+   * https://www.kde.org/announcements/announce-applications-15.12.2.php
+   * boo#966605
+
+
+-------------------------------------------------------------------
+Sat Jan  9 18:26:43 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.1
+   * KDE Applications 15.12.1
+   * https://www.kde.org/announcements/announce-applications-15.12.1.php
+   * boo#961265
+
+
+-------------------------------------------------------------------
+Sun Dec 13 13:25:16 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.0
+   * KDE Applications 15.12.0
+   * https://www.kde.org/announcements/announce-applications-15.12.0.php
+   * boo#958887
+
+
+-------------------------------------------------------------------
+Tue Nov 10 20:14:48 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.3
+   * KDE Applications 15.08.3
+   * https://www.kde.org/announcements/announce-applications-15.08.3.php
+   * boo#954531
+
+
+-------------------------------------------------------------------
+Sun Oct 11 13:37:39 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.2
+   * KDE Applications 15.08.2
+   * https://www.kde.org/announcements/announce-applications-15.08.2.php
+
+
+-------------------------------------------------------------------
+Sun Sep 13 19:23:06 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.1
+   * KDE Applications 15.08.1
+   * https://www.kde.org/announcements/announce-applications-15.08.1.php
+
+
+-------------------------------------------------------------------
+Wed Aug 19 19:43:48 UTC 2015 - cgiboudeaux@gmx.com
+
+- Update to KDE Applications 15.08.0
+   * KDE Applications 15.08.0
+   * https://www.kde.org/announcements/announce-applications-15.08.0.php
+
+-------------------------------------------------------------------
+Fri Aug  7 06:58:17 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.07.90
+   * KDE Applications 15.08.0 RC1
+   * https://www.kde.org/announcements/announce-applications-15.08-rc.php
+
+
+-------------------------------------------------------------------
+Mon Jul  6 05:23:15 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.3
+   * KDE Applications 15.04.3
+   * https://www.kde.org/announcements/announce-applications-15.04.3.php
+
+
+-------------------------------------------------------------------
+Sat May 30 14:22:33 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.2
+   * KDE Applications 15.04.2
+   * https://www.kde.org/announcements/announce-applications-15.04.2.php
+
+
+-------------------------------------------------------------------
+Mon May 11 11:09:53 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.1
+   * KDE Applications 15.04.1
+   * https://www.kde.org/announcements/announce-applications-15.04.1.php
+
+
+-------------------------------------------------------------------
+Sat Apr 11 13:20:04 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.0
+   * KDE Applications 15.04.0
+   * https://www.kde.org/announcements/announce-applications-15.04.0.php
+
+
+-------------------------------------------------------------------
+Sat Mar 21 18:15:53 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.03.95
+   * KDE Applications 15.04 RC
+
+
+-------------------------------------------------------------------
+Sun Mar  8 12:48:02 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.03.80
+   * KDE Applications 15.04 Beta
+
+
+-------------------------------------------------------------------
+Tue Mar  3 10:42:10 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 14.12.3
+   * KDE Applications 14.12.3
+   * See https://www.kde.org/announcements/announce-applications-14.12.3.php
+
+-------------------------------------------------------------------
+Sun Feb  1 11:03:37 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 14.12.2
+   * KDE Applications 14.12.2
+   * See https://www.kde.org/announcements/announce-applications-14.12.2.php
+
+-------------------------------------------------------------------
+Mon Jan 12 20:02:08 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 14.12.1
+   * KDE Applications 14.12.1
+   * See https://www.kde.org/announcements/announce-applications-14.12.1.php
+
+-------------------------------------------------------------------
+Wed Dec 17 20:39:07 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 14.12.0
+   * KDE Applications 14.12.0
+   * See https://www.kde.org/announcements/announce-applications-14.12.0.php
+
+-------------------------------------------------------------------
+Sun Nov  9 21:12:15 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.14.3
+   * KDE 4.14.3 SC Bugfix Release
+   * See http://www.kde.org/announcements/announce-4.14.3.php
+
+-------------------------------------------------------------------
+Sun Oct 12 12:39:54 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.14.2
+   * KDE 4.14.2 SC Bugfix Release
+   * See http://www.kde.org/announcements/announce-4.14.2.php
+
+-------------------------------------------------------------------
+Sat Sep 13 17:02:12 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.14.1
+   * KDE 4.14.1 SC Bugfix Release
+   * See http://www.kde.org/announcements/announce-4.14.1.php
+
+-------------------------------------------------------------------
+Fri Aug 15 09:05:40 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.14.0
+   * KDE 4.14.0 SC Final Release
+   * See http://www.kde.org/announcements/4.14/
+
+-------------------------------------------------------------------
+Tue Aug 12 21:37:52 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Use kde4-macros: krdc uses kdelibs4 buildsystem
+
+-------------------------------------------------------------------
+Thu Jul 17 16:47:14 UTC 2014 - cgiboudeaux@gmx.com
+
+- Update to 4.13.90
+   * KDE 4.14 Beta 2 release
+   * See http://www.kde.org/announcements/announce-4.14-beta2.php
+
+-------------------------------------------------------------------
+Thu Jul 10 22:19:54 UTC 2014 - cgiboudeaux@gmx.com
+
+- Update to 4.13.80
+   * KDE 4.14 Beta 1 release
+   * See http://www.kde.org/announcements/announce-4.14-beta1.php
+
+-------------------------------------------------------------------
+Sun Jun  8 19:02:15 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.13.2
+   * KDE 4.13  release
+   * See http://www.kde.org/announcements/announce-4.13.2.php
+
+-------------------------------------------------------------------
+Fri May  9 17:11:24 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.13.1
+   * KDE 4.13.1  bug fix release
+   * See http://www.kde.org/announcements/announce-4.13.1.php
+
+-------------------------------------------------------------------
+Fri Apr 11 17:19:40 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.13.0
+   * KDE 4.13  release
+   * See http://www.kde.org/announcements/4.13/
+
+-------------------------------------------------------------------
+Thu Mar 27 18:13:56 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.97
+   * KDE 4.13 RC  release
+   * See http://www.kde.org/announcements/announce-4.13-rc.php
+
+-------------------------------------------------------------------
+Thu Mar 20 18:31:04 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.95
+   * KDE 4.13 Beta 3  release
+   * See http://www.kde.org/announcements/announce-4.13-beta3.php
+
+-------------------------------------------------------------------
+Thu Mar 13 20:49:56 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.90
+   * KDE 4.13 Beta 2  release
+   * See http://www.kde.org/announcements/announce-4.13-beta2.php
+
+-------------------------------------------------------------------
+Fri Mar  7 11:33:54 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.80
+   * KDE 4.13 Beta 1  release
+   * See http://www.kde.org/announcements/announce-4.13-beta1.php
+
+-------------------------------------------------------------------
+Sat Feb  1 10:39:30 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.2
+   * KDE 4.12.2  release
+   * See http://www.kde.org/announcements/announce-4.12.2.php
+
+-------------------------------------------------------------------
+Sat Jan 11 16:05:44 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.1
+   * KDE 4.12.1  release
+   * See http://www.kde.org/announcements/announce-4.12.1.php
+
+-------------------------------------------------------------------
+Sat Dec 14 18:34:36 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.12.0
+   * KDE 4.12.0  release
+   * See http://www.kde.org/announcements/4.12.php
+
+-------------------------------------------------------------------
+Fri Nov 29 08:46:33 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.97
+   * KDE 4.12 RC 1 release
+   * See http://www.kde.org/announcements/announce-4.12-rc.php
+
+-------------------------------------------------------------------
+Sat Nov 23 23:00:54 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.95
+   * KDE 4.12 Beta 3 release
+   * See http://www.kde.org/announcements/announce-4.12-beta3.php
+
+-------------------------------------------------------------------
+Sat Nov 16 18:33:11 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.90
+   * KDE 4.12 Beta 2 release
+   * See http://www.kde.org/announcements/announce-4.12-beta2.php
+
+-------------------------------------------------------------------
+Sun Nov 10 08:04:55 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.80
+   * KDE 4.12 Beta 1 release
+   * See http://www.kde.org/announcements/announce-4.12-beta1.php
+
+-------------------------------------------------------------------
+Sat Nov  2 15:51:39 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.3
+   * KDE 4.11.3 bugfix release
+   * See http://www.kde.org/announcements/announce-4.11.3.php
+
+-------------------------------------------------------------------
+Thu Oct  3 16:49:39 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Enable Telepathy support only for openSUSE 13.2/Factory
+
+-------------------------------------------------------------------
+Sat Sep 28 15:45:32 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.2
+   * KDE 4.11.2 bugfix release
+   * See http://www.kde.org/announcements/announce-4.11.2.php
+
+-------------------------------------------------------------------
+Sun Sep 15 22:24:48 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Enable Telepathy support for krdc package on openSUSE >= 13.1
+
+-------------------------------------------------------------------
+Sun Sep  1 10:37:48 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.1
+   * KDE 4.11.1 bugfix release
+   * See http://www.kde.org/announcements/announce-4.11.1.php
+
+-------------------------------------------------------------------
+Thu Aug  8 16:09:12 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.0
+   * KDE 4.11 Final release
+   * See http://www.kde.org/announcements/4.11/
+
+-------------------------------------------------------------------
+Thu Jul 25 23:15:43 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 4.10.97
+  * KDE 4.11 RC 2 release
+  * See http://www.kde.org/announcements/announce-4.11-rc2.php
+
+-------------------------------------------------------------------
+Wed Jul 24 18:47:37 UTC 2013 - hrvoje.senjan@gmail.com
+
+- BuildRequire only libkde4-devel, instead of kdebase4-workspace-devel
+
+-------------------------------------------------------------------
+Mon Jul 15 08:13:43 UTC 2013 - cgiboudeaux@gmx.com
+
+- Update to 4.10.95
+ * KDE 4.11 RC 1 release
+ * See http://www.kde.org/announcements/announce-4.11-rc1.php
+
+-------------------------------------------------------------------
+Wed Jul  3 19:49:24 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.90
+   * KDE 4.11 Beta 2 release
+   * See http://www.kde.org/announcements/announce-4.11-beta2.php
+
+-------------------------------------------------------------------
+Thu Jun 13 21:43:33 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.80
+   * KDE 4.11 Beta 1 release
+   * See http://www.kde.org/announcements/announce-4.11-beta1.php
+   * Split off from kdenetwork4
+
+-------------------------------------------------------------------
+Sat Jun  1 10:21:34 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.4
+   * Bugfix release
+   * See http://www.kde.org/announcements/announce-4.10.4.php
+   * resolves bnc#8122760
+- Dropped fix_v4l_deprecations.patch, it's included in this release
+
+-------------------------------------------------------------------
+Wed May  8 11:38:45 UTC 2013 - nico.kruber@gmail.com
+
+- re-enable OTR plugin for openSUSE 12.3 and Factory
+  (using with libotr2 which provides version 3.2.*)
+- re-enable libktorrent support
+
+-------------------------------------------------------------------
+Sat May  4 17:17:07 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.3
+   * Bugfix release
+   * See http://www.kde.org/announcements/announce-4.10.3.php
+   * resolves bnc#818500
+- Added fix_v4l_deprecations.patch, fixes usage of interfaces deprecated
+  with 3.9 kernel
+
+-------------------------------------------------------------------
+Mon Apr  1 19:33:35 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.2 \n  * Bugfixes
+
+-------------------------------------------------------------------
+Tue Mar 12 21:21:50 UTC 2013 - seife+obs@b1-systems.com
+
+- fix build with giflib-5 (kdenetwork-4.10.0-giflib5.patch)
+
+-------------------------------------------------------------------
+Sat Mar  2 16:00:45 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.1
+ * Contains bug fixes. See http://www.kde.org/announcements/
+   for more information
+
+-------------------------------------------------------------------
+Thu Jan 31 18:11:42 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.0
+ * This is the final release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Thu Jan 17 08:32:44 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.9.98
+ * This is the third RC release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Thu Jan  3 21:33:54 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.9.97
+ * This is the second RC release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Wed Dec 19 19:06:24 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.95
+ * This is the first RC release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Sat Dec  1 20:29:22 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.90
+ * This is the second Beta release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Sat Nov 24 13:12:40 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.80
+  * See http://www.kde.org/announcements/announce-4.10-beta1.php
+
+-------------------------------------------------------------------
+Wed Nov  7 07:43:50 UTC 2012 - tittiatcoke@gmail.com
+
+- Add explicit buildrequire for libmediastreamer1 for kopete to
+  avoid "Have Choice for" for packages depending on Kopete and to
+  prevent that the user has to make a choice what to install
+
+-------------------------------------------------------------------
+Fri Nov  2 17:06:20 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.3
+  * see http://kde.org/announcements/announce-4.9.3.php for details
+
+-------------------------------------------------------------------
+Wed Oct 10 20:56:18 UTC 2012 - mailaender@opensuse.org
+
+- replace dependency on linphone GUI with pure mediastreamer/ortp
+
+-------------------------------------------------------------------
+Sat Oct  6 07:04:46 UTC 2012 - tittiatcoke@gmail.com
+
+- Disable the OTR plugin for openSUSE Factory atm due to
+  incompatibility with the newer libotr version
+
+-------------------------------------------------------------------
+Sat Sep 29 10:37:17 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.2
+  * see http://kde.org/announcements/announce-4.9.2.php for details
+
+-------------------------------------------------------------------
+Wed Sep  5 12:03:21 UTC 2012 - dmueller@suse.com
+
+- update to 4.9.1
+  * see http://kde.org/announcements/4.9.1/ for details
+
+
+-------------------------------------------------------------------
+Mon Jul 30 16:51:52 UTC 2012 - dmueller@suse.com
+
+- update to 4.8.5
+  * see http://kde.org/announcements/changelogs/changelog4_8_4to4_8_5.php for details
+
+-------------------------------------------------------------------
+Mon Jun  4 11:43:43 UTC 2012 - idonmez@suse.com
+
+- Fix build with new glibc
+
+-------------------------------------------------------------------
+Fri Jun  1 13:53:35 UTC 2012 - dmueller@suse.com
+
+- update to 4.8.4
+  * see http://kde.org/announcements/changelogs/changelog4_8_3to4_8_4.php for details
+
+-------------------------------------------------------------------
+Sun Apr 29 21:05:29 UTC 2012 - dmueller@suse.com
+
+- update to 4.8.3
+  * see http://kde.org/announcements/changelogs/changelog4_8_2to4_8_3.php for details
+
+-------------------------------------------------------------------
+Sun Apr  1 10:20:36 UTC 2012 - dimstar@opensuse.org
+
+- Add kdenetwork4-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Sat Mar 31 11:06:00 UTC 2012 - wstephenson@suse.com
+
+- Add xz to BuildRequires
+
+-------------------------------------------------------------------
+Fri Mar 30 01:14:12 CEST 2012 - dmueller@suse.de
+
+- update to 4.8.2
+  * see http://kde.org/announcements/changelogs/changelog4_8_1to4_8_2.php for details
+
+-------------------------------------------------------------------
+Fri Mar  2 23:14:33 CET 2012 - dmueller@suse.de
+
+- update to 4.8.1
+  * see http://kde.org/announcements/changelogs/changelog4_8_0to4_8_1.php for details
+
+-------------------------------------------------------------------
+Wed Jan 18 21:04:46 CET 2012 - dmueller@suse.de
+
+- update to 4.8.0
+  * first stable release of KDE 4.8 (only critical fixes over 4.7.98)
+  * see http://kde.org/announcements/4.8/ for details
+
+
+-------------------------------------------------------------------
+Tue Jan 10 18:45:00 CET 2012 - dmueller@suse.de
+
+- update to 4.7.98
+  * RC2+ milestone release of KDE 4.8
+  *  see http://kde.org/announcements/4.8/ for details
+
+
+-------------------------------------------------------------------
+Wed Dec  7 11:30:35 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Fri Dec  2 01:58:39 CET 2011 - dmueller@suse.de
+
+- update to 4.7.4
+  * see http://kde.org/announcements/changelogs/changelog4_7_3to4_7_4.php for details
+
+-------------------------------------------------------------------
+Fri Nov 11 12:41:48 UTC 2011 - idonmez@suse.com
+
+- Depend on kwebkitpart instead of kwebkitpart-devel
+
+-------------------------------------------------------------------
+Wed Nov  2 20:22:17 CET 2011 - dmueller@suse.de
+
+- update to 4.7.3
+  * see http://kde.org/announcements/changelogs/changelog4_7_2to4_7_3.php for details
+
+-------------------------------------------------------------------
+Sun Oct  2 17:10:25 CEST 2011 - dmueller@suse.de
+
+- update to 4.7.2
+  * see http://kde.org/announcements/changelogs/changelog4_7_1to4_7_2.php for details
+
+-------------------------------------------------------------------
+Sat Sep 17 21:04:19 UTC 2011 - toddrme2178@gmail.com
+
+- Removed base package (fix for RPMLINT warning)
+- Removed KDE 3 provides and obsoletes (fix for RPMLINT warning)
+- Updated groups (fix for RPMLINT warning)
+- Split krdc devel package (fix for RPMLINT warning)
+- Changed filesharing summary and description to accurately reflect contents
+- Cleaned up spec file formatting
+
+-------------------------------------------------------------------
+Fri Sep  2 08:54:56 CEST 2011 - dmueller@suse.de
+
+- update to 4.7.1
+  * Bugfixes over KDE 4.7.0
+  *  see http://kde.org/announcements/changelogs/changelog4_7_0to4_7_1.php for details
+
+-------------------------------------------------------------------
+Fri Jul 22 20:20:08 CEST 2011 - dmueller@suse.de
+
+- update to 4.7.0
+  * Small fixes over KDE 4.7 RC2
+  *  see http://kde.org/announcements/4.7 for details
+
+
+-------------------------------------------------------------------
+Thu Jul 21 12:55:51 UTC 2011 - idonmez@novell.com
+
+- Update to 4.6.95
+
+-------------------------------------------------------------------
+Fri Jul  1 11:20:56 CEST 2011 - dmueller@suse.de
+
+- update to 4.6.5
+  * Bugfixes over KDE 4.6.5
+  *  see http://kde.org/announcements/changelogs/changelog4_6_4to4_6_5.php for details
+
+
+-------------------------------------------------------------------
+Fri Jun  3 15:38:07 CEST 2011 - dmueller@suse.de
+
+- update to 4.6.4
+  * Bugfixes over KDE 4.6.3
+  *  see http://kde.org/announcements/changelogs/changelog4_6_3to4_6_4.php for details
+
+
+-------------------------------------------------------------------
+Thu Apr 28 16:15:39 CEST 2011 - dmueller@suse.de
+
+- update to 4.6.3
+  * Bugfixes over KDE 4.6.2
+  *  see http://kde.org/announcements/changelogs/changelog4_6_2to4_6_3.php for details
+
+
+-------------------------------------------------------------------
+Fri Apr  1 15:17:06 CEST 2011 - dmueller@suse.de
+
+- update to 4.6.2
+  * Bugfixes over KDE 4.6.1
+  *  see http://kde.org/announcements/changelogs/changelog4_6_1to4_6_2.php for details
+
+
+-------------------------------------------------------------------
+Tue Mar  8 14:09:39 CET 2011 - dmueller@suse.de
+
+- update to 4.6.1
+  * Bugfixes over KDE 4.6.0
+  *  see http://kde.org/announcements/changelogs/changelog4_6_0to4_6_1.php for details
+
+
+-------------------------------------------------------------------
+Wed Jan 19 23:39:37 CET 2011 - dmueller@suse.de
+
+- update to 4.6.0
+  * For highlights, see http://kde.org/announcements/4.6
+
+
+-------------------------------------------------------------------
+Tue Jan  4 18:07:56 CET 2011 - dmueller@suse.de
+
+- update to 4.5.95
+  * KDE 4.6 RC2
+  * no upstream changelog available.
+
+
+-------------------------------------------------------------------
+Wed Dec 22 11:39:28 CET 2010 - dmueller@suse.de
+
+- update to 4.5.90
+  * KDE 4.6 RC1
+  * no upstream changelog available.
+
+
+-------------------------------------------------------------------
+Fri Dec  8 19:18:53 UCT 2010 - toddrme2178@gmail.com
+
+- Add optional dependencies
+  * KDE4Workspace -- Allows 'shutdown after downloads completed' in kget
+  * libkonq       -- Needed to build actions and open with options in the context menu of a transfer
+  * mediastreamer -- Required to enable voice clips support in WLM plugin and
+                     needed to build Google Talk libjingle audio call support in Kopete.
+  * Expat         -- Needed to build Google Talk libjingle support
+- Removed build tests for unsupported openSUSE versions (11.0 and earlier)
+
+-------------------------------------------------------------------
+Fri Dec  3 17:14:33 CET 2010 - dmueller@suse.de
+
+- update to 4.5.85
+  * KDE 4.6 Beta2
+  * Final Beta before RC, various fixes from Beta1
+  * no upstream changelog available.
+
+
+-------------------------------------------------------------------
+Mon Nov 22 12:55:54 UTC 2010 - coolo@novell.com
+
+- ran spec-cleaner and disabled libktorrent support for now
+  (needs work upstream)
+
+-------------------------------------------------------------------
+Mon Nov 22 08:30:03 UTC 2010 - coolo@novell.com
+
+- remove patch already upstream (kopete icq)
+
+-------------------------------------------------------------------
+Fri Nov 19 17:19:02 CET 2010 - dmueller@suse.de
+
+- update to 4.5.80
+  * KDE 4.6 Beta1
+  * no upstream changelog available.
+
+-------------------------------------------------------------------
+Thu Oct 28 22:13:00 CEST 2010 - dmueller@suse.de
+
+- update to 4.5.3
+  * see http://kde.org/announcements/changelogs/changelog4_5_2to4_5_3.php for details
+
+-------------------------------------------------------------------
+Fri Oct  1 00:06:13 CEST 2010 - dmueller@suse.de
+
+- update to 4.5.2
+  * see http://kde.org/announcements/changelogs/changelog4_5_1to4_5_2.php for details
+
+-------------------------------------------------------------------
+Fri Aug 27 15:46:15 CEST 2010 - dmueller@suse.de
+
+- update to 4.5.1
+  * see http://kde.org/announcements/changelogs/changelog4_5_0to4_5_1.php for details
+
+-------------------------------------------------------------------
+Thu Jul 29 16:55:11 CEST 2010 - dmueller@suse.de
+
+- update to 4.5.0
+  * KDE 4.5.0 final (version bump over RC3)
+
+
+-------------------------------------------------------------------
+Sat Jul 24 00:03:49 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.95
+  * KDE 4.5 RC3 (not announced)
+  * critical fixes for 4.5.0 release
+
+
+-------------------------------------------------------------------
+Wed Jul 21 11:58:28 UTC 2010 - llunak@novell.com
+
+- build KGet with Torrent support
+
+-------------------------------------------------------------------
+Fri Jul 16 18:20:21 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.93svn1149349
+
+-------------------------------------------------------------------
+Thu Jul  8 01:24:05 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.5
+  * bugfixes over 4.4.4
+  * see http://kde.org/announcements/changelogs/changelog4_4_4to4_4_5.php for details
+
+-------------------------------------------------------------------
+Fri Jun 18 16:31:41 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.4
+  * bugfixes over 4.4.3
+  * see http://kde.org/announcements/changelogs/changelog4_4_3to4_4_ 4.php for details
+  * for most modules only version number as a change (4_4_BRANCH.diff already contained the diff
+
+-------------------------------------------------------------------
+Wed Jun 16 11:18:53 UTC 2010 - wstephenson@novell.com
+
+- add fix for parsing tags in OTR messages (bko#233330)
+
+-------------------------------------------------------------------
+Fri May 28 15:35:07 UTC 2010 - llunak@novell.com
+
+- disable Samba configuration module, YaST should be used instead
+  (bnc#608502)
+
+-------------------------------------------------------------------
+Mon May 17 13:07:31 UTC 2010 - llunak@novell.com
+
+- update 4_4_BRANCH.diff: various fixes, translation updates
+
+-------------------------------------------------------------------
+Wed May 12 09:23:02 UTC 2010 - wstephenson@novell.com
+
+- Fix KGet security issue with specially crafted metalink files.
+  (CVE-2010-1000, bnc#604709)
+
+-------------------------------------------------------------------
+Thu Apr 29 22:40:44 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.3
+  * bugfixes over 4.4.2
+  * see http://kde.org/announcements/changelogs/changelog4_4_2to4_4_3.php for details
+
+-------------------------------------------------------------------
+Fri Mar 26 19:23:51 CET 2010 - dmueller@suse.de
+
+- update to 4.4.2
+  * bugfixes over 4.4.1
+  * see http://kde.org/announcements/changelogs/changelog4_4_1to4_4_2.php for details
+
+-------------------------------------------------------------------
+Fri Feb 26 20:55:52 CET 2010 - dmueller@suse.de
+
+- update to 4.4.1
+  * bugfixes over 4.4.0
+  * see http://kde.org/announcements/changelogs/changelog4_4_0to4_4_1.php for details
+
+-------------------------------------------------------------------
+Wed Feb 10 15:02:56 UTC 2010 - llunak@novell.com
+
+- add kwebkitpart-devel buildrequires
+
+-------------------------------------------------------------------
+Thu Feb  4 12:54:02 CET 2010 - dmueller@suse.de
+
+- update to 4.4.0
+  * Critical bugfixes only over 4.3.98
+  * see http://www.kde.org/announcements/4.4/ for general overview
+
+-------------------------------------------------------------------
+Sun Jan 31 22:23:26 CET 2010 - dmueller@suse.de
+
+- update to 4.3.98
+  * see http://www.kde.org/announcements/announce-4.4-rc3.php for details
+
+-------------------------------------------------------------------
+Wed Jan 20 02:10:57 CET 2010 - dmueller@suse.de
+
+- update to 4.3.95
+  * see http://www.kde.org/announcements/announce-4.4-rc2.php for details
+
+-------------------------------------------------------------------
+Wed Jan  6 19:10:22 CET 2010 - dmueller@suse.de
+
+- update to 4.3.90
+  * see http://www.kde.org/announcements/announce-4.4-rc1.php for details
+
+-------------------------------------------------------------------
+Fri Dec 18 13:48:10 CET 2009 - dmueller@suse.de
+
+- update to 4.3.85
+  * see http://www.kde.org/announcements/announce-4.4-beta2.php for details
+
+-------------------------------------------------------------------
+Fri Dec  4 19:00:54 CET 2009 - dmueller@suse.de
+
+- update to 4.3.80
+  * see http://techbase.kde.org/Schedules/KDE4/4.4_Feature_Plan
+
+-------------------------------------------------------------------
+Tue Nov  3 15:35:11 CET 2009 - dmueller@suse.de
+
+- tighten the version dep on libmsn as it breaks ABI quite often
+
+-------------------------------------------------------------------
+Mon Nov  2 22:03:47 CET 2009 - dmueller@suse.de
+
+- update to 4.3.3
+  * see http://kde.org/announcements/changelogs/changelog4_3_2to4_3_3.php for details
+
+-------------------------------------------------------------------
+Thu Sep 24 15:20:21 UTC 2009 - beineri@opensuse.org
+
+- update 4_3_BRANCH.diff:
+   * fix krfb producing garbled display (kde#162493)
+   * fix kget repeating old downloads on startup (kde#170496)
+   * several kopete bug fixes
+
+-------------------------------------------------------------------
+Wed Sep  9 17:44:39 UTC 2009 - beineri@opensuse.org
+
+- update 4_3_BRANCH.diff: Kopete winpopup fixes
+
+-------------------------------------------------------------------
+Fri Aug 28 13:58:52 CEST 2009 - dmueller@suse.de
+
+- update to 4.3.1
+  * see http://kde.org/announcements/changelogs/changelog4_3_0to4_3_1.php for details
+
+-------------------------------------------------------------------
+Thu Aug 20 09:15:55 UTC 2009 - aj@suse.de
+
+- Use libiw-devel instead of wireless-tools for building.
+
+-------------------------------------------------------------------
+Sat Aug 15 08:36:21 CEST 2009 - beineri@opensuse.org
+
+- branch diff update: krdc, kopete and kget fixes
+
+-------------------------------------------------------------------
+Fri Aug  7 11:55:12 CEST 2009 - beineri@opensuse.org
+
+- add recommendation for kopete-protocol-facebook to kopete package
+
+-------------------------------------------------------------------
+Wed Jul 29 18:10:32 CEST 2009 - dmueller@suse.de
+
+- update to 4.3.0
+  * see http://kde.org/announcements/4.3 for details
+
+-------------------------------------------------------------------
+Tue Jul 21 22:26:44 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.98
+
+-------------------------------------------------------------------
+Thu Jul  9 12:22:39 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.96
+
+-------------------------------------------------------------------
+Wed Jul  1 20:27:48 CEST 2009 - beineri@opensuse.org
+
+- update branch diff to fix Kopete Yahoo protocol (bnc#516347)
+
+-------------------------------------------------------------------
+Wed Jun 24 21:17:02 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.95
+
+-------------------------------------------------------------------
+Sat Jun 20 11:27:34 CEST 2009 - beineri@opensuse.org
+
+- drop kde4- package prefixes
+
+-------------------------------------------------------------------
+Wed Jun  3 18:28:32 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.90
+
+-------------------------------------------------------------------
+Fri May 29 09:57:15 CEST 2009 - beineri@opensuse.org
+
+- fix location of brower plugin (bnc#508069)
+
+-------------------------------------------------------------------
+Wed May 27 22:07:08 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.88svn973768
+
+-------------------------------------------------------------------
+Thu May 14 19:31:22 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.85 (KDE 4.3 Beta1)
+
+-------------------------------------------------------------------
+Thu Apr 30 21:32:24 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.3
+  * see http://kde.org/announcements/changelogs/changelog4_2_2to4_2_3.php
+
+-------------------------------------------------------------------
+Fri Mar 27 00:43:45 CET 2009 - dmueller@suse.de
+
+- update to 4.2.2
+  * see http://kde.org/announcements/changelogs/changelog4_2_1to4_2_2.php
+
+-------------------------------------------------------------------
+Sun Mar 22 08:34:57 CET 2009 - beineri@opensuse.org
+
+- fix build against new webkitkde
+- update branch diff
+
+-------------------------------------------------------------------
+Fri Feb 27 01:44:35 CET 2009 - dmueller@suse.de
+
+- update to 4.2.1
+  * see http://kde.org/announcements/changelogs/changelog4_2_0to4_2_1.php
+
+-------------------------------------------------------------------
+Thu Feb 19 10:34:57 CET 2009 - stbinner@suse.de
+
+- update branch diff
+
+-------------------------------------------------------------------
+Fri Feb  6 10:56:21 CET 2009 - stbinner@suse.de
+
+- branch diff update: Kopete bug fixes
+
+-------------------------------------------------------------------
+Thu Jan 22 02:35:06 CET 2009 - dmueller@suse.de
+
+- update to 4.2.0
+
+-------------------------------------------------------------------
+Tue Jan 13 18:46:57 CET 2009 - dmueller@suse.de
+
+- update to 4.1.96
+
+-------------------------------------------------------------------
+Sat Jan 10 11:31:58 CET 2009 - dmueller@suse.de
+
+- update to KDE 4.1.87 (KDE 4.2 Januar snapshot)
+
+-------------------------------------------------------------------
+Tue Dec 16 13:41:34 CET 2008 - stbinner@suse.de
+
+- versionized split-provides are not supported
+
+-------------------------------------------------------------------
+Fri Dec  5 18:15:01 CET 2008 - wstephenson@suse.de
+
+- Fix Kopete mainwindow save/restore (bnc#440801)
+
+-------------------------------------------------------------------
+Thu Nov 20 18:05:31 CET 2008 - stbinner@suse.de
+
+- add SLE provides/obsoletes
+
+-------------------------------------------------------------------
+Tue Nov 18 10:16:44 CET 2008 - stbinner@suse.de
+
+- fix krdc cancelling KDE logout (bnc#442767)
+- update Kopete logout crash fix (bnc#435155)
+
+-------------------------------------------------------------------
+Wed Nov  5 01:47:17 CET 2008 - dmueller@suse.de
+
+- use minimal-toc to fix build for ppc(64)
+
+-------------------------------------------------------------------
+Fri Oct 31 11:12:49 CET 2008 - dmueller@suse.de
+
+- update to 4.1.3
+  * see http://kde.org/announcements/changelogs/changelog4_1_2to4_1_3.php
+
+-------------------------------------------------------------------
+Tue Oct 21 10:20:27 CEST 2008 - stbinner@suse.de
+
+- update branch diff:
+   * remember custom resolution
+   * fix some Kopete login and shutdown crashes
+
+-------------------------------------------------------------------
+Sat Sep 27 10:00:07 CEST 2008 - wstephenson@suse.de
+
+- Update branch diff
+  * fix bnc#396381 kopete crashes on adding groupwise contacts
+  * fix bnc#336059 kopete crashes in GW::UserDetailsManager
+  * fix bnc#403147 kopete shows '0' in place of contact name for
+    off-contact-list incoming messages
+
+-------------------------------------------------------------------
+Thu Sep 25 18:59:47 CEST 2008 - dmueller@suse.de
+
+- update to 4.1.2
+  * see http://kde.org/announcements/changelogs/changelog4_1_1to4_1_2.php
+
+-------------------------------------------------------------------
+Mon Sep  8 12:13:01 CEST 2008 - stbinner@suse.de
+
+- branch diff update
+
+-------------------------------------------------------------------
+Thu Sep  4 13:50:28 CEST 2008 - wstephenson@suse.de
+
+- Comprehensive lockdown (Kiosk) support for Kopete
+
+-------------------------------------------------------------------
+Thu Aug 28 12:35:06 CEST 2008 - dmueller@suse.de
+
+- update to 4.1.1
+  * see http://kde.org/announcements/changelogs/changelog4_1to4_1_1.php
+
+-------------------------------------------------------------------
+Sat Aug 16 16:48:44 CEST 2008 - stbinner@suse.de
+
+- branch diff update
+
+-------------------------------------------------------------------
+Thu Jul 31 22:42:06 CEST 2008 - dmueller@suse.de
+
+- branch diff update
+
+-------------------------------------------------------------------
+Wed Jul 23 13:23:42 CEST 2008 - dmueller@suse.de
+
+- update to 4.1.0
+
+-------------------------------------------------------------------
+Fri Jul 18 01:59:43 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.99
+
+-------------------------------------------------------------------
+Fri Jul 11 12:36:47 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.98
+
+-------------------------------------------------------------------
+Mon Jul  7 17:45:31 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.85
+
+-------------------------------------------------------------------
+Tue Jul  1 01:25:13 CEST 2008 - dmueller@suse.de
+
+- update filelist
+
+-------------------------------------------------------------------
+Thu Jun 26 17:48:16 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.84
+
+-------------------------------------------------------------------
+Wed Jun 18 21:22:35 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.83
+
+-------------------------------------------------------------------
+Tue Jun 10 14:27:34 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.82
+
+-------------------------------------------------------------------
+Mon Jun  9 23:38:26 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.81
+
+-------------------------------------------------------------------
+Thu Jun  5 16:41:20 CEST 2008 - wstephenson@suse.de
+
+
+- Hint that kdenetwork4-filesharing should be installed to support
+  Dolphin's filesharing function. (bnc#396242)
+- Fix crash on incoming offline message (bnc#389408)
+
+-------------------------------------------------------------------
+Wed Jun  4 13:35:48 CEST 2008 - dmueller@suse.de
+
+- fix krdc crash on connect (bnc#396760)
+
+-------------------------------------------------------------------
+Tue May 27 13:56:23 CEST 2008 - stbinner@suse.de
+
+- don't crash when right-clicking the newsticker (bnc#386611)
+
+-------------------------------------------------------------------
+Tue May 27 13:11:51 CEST 2008 - dmueller@suse.de
+
+- fix kdepimlibs requires
+
+-------------------------------------------------------------------
+Sun May 11 18:16:04 CEST 2008 - wstephenson@suse.de
+
+- 4_0_BRANCH.diff update:
+  * Fix #335679 - unable to add groupwise contact correctly
+  * Fix #383679 - crashes on adding contacts to existing groups
+  * Fix #378646 - groupwise contacts not shown in contact list
+
+-------------------------------------------------------------------
+Fri May  9 17:18:04 CEST 2008 - dmueller@suse.de
+
+- 4_0_BRANCH.diff update:
+  * new translations, various groupwise fixes
+
+-------------------------------------------------------------------
+Fri May  9 17:00:16 CEST 2008 - wstephenson@suse.de
+
+- Fix GroupWise contacts not appearing on connect (#378646)
+
+-------------------------------------------------------------------
+Thu May  1 18:43:48 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.4
+   * http://www.kde.org/announcements/changelogs/changelog4_0_3to4_0_4.php
+
+-------------------------------------------------------------------
+Mon Apr 14 15:47:32 CEST 2008 - dmueller@suse.de
+
+- update 4_0_BRANCH.diff
+
+-------------------------------------------------------------------
+Thu Mar 27 22:59:29 CET 2008 - dmueller@suse.de
+
+- update to 4.0.3
+
+-------------------------------------------------------------------
+Thu Mar  6 13:31:27 CET 2008 - stbinner@suse.de
+
+- default knewsticker plasmoid to paging style - uses much less cpu
+
+-------------------------------------------------------------------
+Tue Mar  4 11:12:44 CET 2008 - stbinner@suse.de
+
+- update to 4.0.2
+
+-------------------------------------------------------------------
+Mon Feb 18 21:07:29 CET 2008 - stbinner@suse.de
+
+- update branch diff after Plasma backport week-end
+
+-------------------------------------------------------------------
+Sat Feb 16 12:55:25 CET 2008 - dmueller@suse.de
+
+- move kget icon to hicolor
+
+-------------------------------------------------------------------
+Fri Feb 15 02:42:59 CET 2008 - dmueller@suse.de
+
+- update 4_0_BRANCH.diff
+
+-------------------------------------------------------------------
+Thu Jan 31 02:29:51 CET 2008 - dmueller@suse.de
+
+- update to 4.0.1
+
+-------------------------------------------------------------------
+Sun Jan 20 10:09:43 CET 2008 - stbinner@suse.de
+
+- update KDE_4_0_BRANCH.diff
+
+-------------------------------------------------------------------
+Sat Jan  5 19:44:45 CET 2008 - stbinner@suse.de
+
+- update to 4.0 release
+
+-------------------------------------------------------------------
+Wed Jan  2 16:14:34 CET 2008 - stbinner@suse.de
+
+- update to 3.97.2
+
+-------------------------------------------------------------------
+Sun Dec 16 15:21:19 CET 2007 - dmueller@suse.de
+
+- update to 3.97.1
+
+-------------------------------------------------------------------
+Wed Dec  5 19:07:31 CET 2007 - dmueller@suse.de
+
+- update to 3.97.0
+
+-------------------------------------------------------------------
+Tue Dec  4 16:37:18 CET 2007 - dmueller@suse.de
+
+- update to 3.96.3
+
+-------------------------------------------------------------------
+Wed Nov 28 11:24:52 CET 2007 - dmueller@suse.de
+
+- update to 3.96.2
+
+-------------------------------------------------------------------
+Wed Nov 21 18:57:42 CET 2007 - dmueller@suse.de
+
+- update to 3.96.1
+
+-------------------------------------------------------------------
+Wed Nov 14 17:36:38 CET 2007 - dmueller@suse.de
+
+- update to 3.96.0
+
+-------------------------------------------------------------------
+Wed Nov  7 10:41:45 CET 2007 - dmueller@suse.de
+
+- update to 3.95.2
+
+-------------------------------------------------------------------
+Mon Nov  5 18:20:00 CET 2007 - dmueller@suse.de
+
+- fix directory ownership
+
+-------------------------------------------------------------------
+Mon Nov  5 10:05:17 CET 2007 - dmueller@suse.de
+
+- suppress desktop icon errors for now
+
+-------------------------------------------------------------------
+Thu Nov  1 12:21:23 CET 2007 - dmueller@suse.de
+
+- update to 3.95.1
+
+-------------------------------------------------------------------
+Fri Oct 26 13:34:38 CEST 2007 - dmueller@suse.de
+
+- update to KDE 4.0 beta4
+
+-------------------------------------------------------------------
+Tue Oct 23 10:45:44 CEST 2007 - dmueller@suse.de
+
+- remove reference to uninstalled icon file
+
+-------------------------------------------------------------------
+Thu Oct 18 10:48:22 CEST 2007 - dmueller@suse.de
+
+- udpate to 3.94.1
+
+-------------------------------------------------------------------
+Tue Oct  9 23:35:14 CEST 2007 - dmueller@suse.de
+
+- update to KDE 4.0 beta3
+
+-------------------------------------------------------------------
+Tue Oct  2 16:13:31 CEST 2007 - stbinner@suse.de
+
+- update to 3.93.0.svn720135
+
+-------------------------------------------------------------------
+Wed Sep 26 14:54:14 CEST 2007 - stbinner@suse.de
+
+- update to 3.93.0.svn717255
+
+-------------------------------------------------------------------
+Mon Sep 24 15:39:38 CEST 2007 - stbinner@suse.de
+
+- two krfb fixes from upstream (#325543):
+   * don't crash after deleting the first invitation in the list
+     if there are more than one
+   * be able to connect to the VNC server right after the invitation
+     has been created; don't wait until the dialog has been closed
+
+-------------------------------------------------------------------
+Mon Sep 17 22:22:01 CEST 2007 - dmueller@suse.de
+
+- fix threading issues in krdc (#310766)
+
+-------------------------------------------------------------------
+Fri Sep 14 18:55:38 CEST 2007 - stbinner@suse.de
+
+- link krfb and krdc icons so that all 10.3 default apps have icons
+
+-------------------------------------------------------------------
+Thu Sep 13 14:36:59 CEST 2007 - stbinner@suse.de
+
+- update to 3.93.0.svn712057
+
+-------------------------------------------------------------------
+Tue Sep  4 11:24:26 CEST 2007 - stbinner@suse.de
+
+- fix dependencies of kdenetwork4-devel if built without Kopete
+
+-------------------------------------------------------------------
+Thu Aug 30 11:26:20 CEST 2007 - dmueller@suse.de
+
+- update to KDE 4.0 Beta 2
+
+-------------------------------------------------------------------
+Thu Aug 23 17:58:34 CEST 2007 - stbinner@suse.de
+
+- update to 3.92.0.svn705096
+
+-------------------------------------------------------------------
+Thu Aug 16 13:58:51 CEST 2007 - stbinner@suse.de
+
+- update to 3.92.0.svn700763
+
+-------------------------------------------------------------------
+Thu Aug  9 10:13:32 CEST 2007 - stbinner@suse.de
+
+- update to 3.92.0.svn697375
+
+-------------------------------------------------------------------
+Mon Aug  6 15:03:00 CEST 2007 - dmueller@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Sun Jul 29 04:34:42 CEST 2007 - stbinner@suse.de
+
+- update to KDE 4.0 Beta 1
+
+-------------------------------------------------------------------
+Thu Jul 19 20:59:41 CEST 2007 - stbinner@suse.de
+
+- fix suse_update_desktop_file call
+- fix build after LibVNCServer split
+
+-------------------------------------------------------------------
+Thu Jul 12 15:51:16 CEST 2007 - stbinner@suse.de
+
+- update to 3.91.0.svn686458
+
+-------------------------------------------------------------------
+Wed Jun 27 09:49:56 CEST 2007 - stbinner@suse.de
+
+- update to 3.90.1.svn672301
+
+-------------------------------------------------------------------
+Mon Jun 25 12:03:21 CEST 2007 - stbinner@suse.de
+
+- update to 3.90.1.svn679956
+
+-------------------------------------------------------------------
+Fri Jun  8 09:21:53 CEST 2007 - stbinner@suse.de
+
+- update to 3.90.1.svn670093
+
+-------------------------------------------------------------------
+Mon Jun  4 17:30:26 CEST 2007 - stbinner@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Fri Jun  1 13:31:58 CEST 2007 - coolo@suse.de
+
+- simplify spec file by using macros from kde4-filesystem
+
+-------------------------------------------------------------------
+Mon May 28 23:19:19 CEST 2007 - dmueller@suse.de
+
+- update to 3.90.1.svn668119
+
+-------------------------------------------------------------------
+Wed May 23 19:42:57 CEST 2007 - dmueller@suse.de
+
+- add kdenetwork4-devel subpackage
+
+-------------------------------------------------------------------
+Fri May 18 17:02:52 CEST 2007 - stbinner@suse.de
+
+- initial package in abuild
+

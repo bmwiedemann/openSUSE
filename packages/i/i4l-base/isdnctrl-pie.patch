@@ -1,0 +1,31 @@
+Index: isdn4k-utils/isdnctrl/Makefile.in
+===================================================================
+--- isdn4k-utils.orig/isdnctrl/Makefile.in
++++ isdn4k-utils/isdnctrl/Makefile.in
+@@ -7,7 +7,7 @@
+ SHELL			  = /bin/sh
+ CFLAGS			= -Wall -O2
+ INCLUDES		= -I.
+-LDFLAGS			= @LIBS@ 
++LDFLAGS			= @LIBS@
+ PROGRAM			= isdnctrl
+ MODULES			= isdnctrl.o
+ MANPAGES		= isdnctrl.8
+@@ -50,7 +50,7 @@ all: $(PROGRAM)
+ endif
+ 
+ %.o: %.c Makefile
+-	$(CC) $(CFLAGS) $(INCLUDES) $(DEFS) $(COPTS) -c -o $@ $<
++	$(CC) $(CFLAGS) -fPIC  $(INCLUDES) $(DEFS) $(COPTS) -c -o $@ $<
+ 
+ all: $(PROGRAM)
+ 
+@@ -74,7 +74,7 @@ endif
+ 	rm -f $<.tmp
+ 
+ $(PROGRAM):	$(MODULES)
+-	$(CC) $(CFLAGS) $(MODULES) $(LDFLAGS) -o $@
++	$(CC) $(CFLAGS) -fPIE  $(MODULES) $(LDFLAGS) -pie -o $@
+ 
+ install-man: $(MANPAGES)
+ 	$(INSTALL) -d $(DESTDIR)$(MAN8DIR)

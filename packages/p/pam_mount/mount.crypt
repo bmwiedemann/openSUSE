@@ -1,0 +1,21 @@
+#!/bin/bash
+
+CMD="${0##*/}"
+
+if [[ "$CMD" =~ "umount" ]]; then
+    if [ ! -x /usr/sbin/umount.crypt ]; then
+        logger -t "mount.crypt" -p user.err -i "/usr/sbin/umount.crypt: File not found."
+        exit 1
+    fi
+    /usr/sbin/umount.crypt "$@"
+elif [[ "$CMD" =~ "mount" ]]; then
+    if [ ! -x /usr/sbin/mount.crypt ]; then
+        logger -t "mount.crypt" -p user.err -i "/usr/sbin/mount.crypt: File not found."
+        exit 1
+    fi
+    /usr/sbin/mount.crypt "$@"
+else
+    logger -t "mount.crypt" -p user.err -i "Unknown command: $0"
+    exit 1
+fi
+

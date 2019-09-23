@@ -1,0 +1,596 @@
+-------------------------------------------------------------------
+Tue Aug 27 10:11:19 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- refresh gzip-1.10-ibm_dfltcc_support.patch to fix three data
+  corruption issues [bsc#1145276] [jsc#SLE-5818] [jsc#SLE-8914]
+
+-------------------------------------------------------------------
+Thu Jun  6 15:16:47 UTC 2019 - Kristýna Streitová <kstreitova@suse.com>
+
+- add gzip-1.10-ibm_dfltcc_support.patch [jsc#SLE-5818] [jsc#SLE-8914]
+  * it adds support for DFLTCC (hardware-accelerated deflation)
+    for s390x arch
+  * enable it via "--enable-dfltcc" option
+
+-------------------------------------------------------------------
+Sun Dec 30 11:34:12 UTC 2018 - astieger@suse.com
+
+- gzip 1.10:
+  * Compressed gzip output no longer contains the current time as
+    a timestamp when the input is not a regular file.  Instead, the
+    output contains a null (zero) timestamp.  This makes gzip's
+    behavior more reproducible when used as part of a pipeline.
+  * A use of uninitialized memory on some malformed inputs has been
+    fixed.
+  * A few theoretical race conditions in signal handers have been
+    fixed.
+- drop upstreamed patches:
+  * gnulib-libio.patch
+  * gzip-1.8-deprecate_netstat.patch
+
+-------------------------------------------------------------------
+Wed Aug  1 14:03:39 UTC 2018 - schwab@suse.de
+
+- gnulib-libio.patch: Update gnulib for libio.h removal
+
+-------------------------------------------------------------------
+Thu Feb 22 15:10:34 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Fri Jan 12 15:29:22 UTC 2018 - meissner@suse.com
+
+- license is GPL-3.0+
+
+-------------------------------------------------------------------
+Thu Jan 11 09:29:30 UTC 2018 - kbabioch@suse.com
+
+- Update to 1.9
+  * Fix suffix handling
+  * Fix bug when handling pack format while decompressing
+  * Fix time handling bug
+  * Improve exit code handling for shell scripts
+- remove gzip-1.8-fix_unpack_EOB_check.patch as it is included
+  upstream now
+- refresh manpage-no-date.patch
+- spec file cleanups
+
+-------------------------------------------------------------------
+Tue Jan  2 14:30:50 UTC 2018 - kstreitova@suse.com
+
+- add gzip-1.8-deprecate_netstat.patch to get rid of deprecated
+  'netstat -n' command in tests/init.sh script
+
+-------------------------------------------------------------------
+Fri Dec  1 16:38:19 UTC 2017 - kstreitova@suse.com
+
+- add gzip-1.8-fix_unpack_EOB_check.patch to fix mishandling of
+  leading zeros in the end-of-block code [bsc#1067891]
+
+-------------------------------------------------------------------
+Wed May 31 02:54:52 UTC 2017 - bwiedemann@suse.com
+
+- Make build reproducible in spite of gcc profile based optimizations
+  (boo#1040589)
+
+-------------------------------------------------------------------
+Tue May 30 09:59:59 UTC 2017 - src@posteo.de
+
+- changing the way how gcc profiling is generating to have a reproducible
+  build
+
+-------------------------------------------------------------------
+Tue Apr 11 14:08:21 UTC 2017 - kstreitova@suse.com
+
+- define %{_buildshell} to /bin/bash as we newly rely on bash
+  features like {1..9}
+
+-------------------------------------------------------------------
+Thu Mar 23 15:14:56 UTC 2017 - kstreitova@suse.com
+
+- cleanup with spec-cleaner
+- use loop with a range instead of a number list
+
+-------------------------------------------------------------------
+Wed Apr 27 10:14:03 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.8
+  * gzip -l no longer falsely reports a write error when writing to 
+    a pipe.
+  * Port to Oracle Solaris Studio 12 on x86-64.
+  * When configuring gzip, ./configure DEFS='...-DNO_ASM...' now 
+    suppresses assembler again.
+- Small spec file cleanup
+
+-------------------------------------------------------------------
+Tue Mar 29 07:45:50 UTC 2016 - tchvatal@suse.com
+
+- Version update to release 1.7:
+  * gzip now accepts the --synchronous option
+  * gzip now accepts the --rsyncable option
+  * The GZIP environment variable is now obsolescent
+  * Installed programs like 'zgrep' now use the PATH environment variable as
+    usual to find subsidiary programs like 'gzip' and 'grep'
+- Remove obsolete patch tempfile.diff
+- Remove upstreamed patch gzip-rsyncable.diff
+- Rebase manpage-no-date.patch to apply to 1.7 version
+
+-------------------------------------------------------------------
+Tue Mar 29 07:42:10 UTC 2016 - tchvatal@suse.com
+
+- Rename reproducible.patch to something actually explanatory:
+  * manpage-no-date.patch
+
+-------------------------------------------------------------------
+Sun Mar 20 14:51:03 UTC 2016 - bwiedemann@suse.com
+
+- Add reproducible.patch to fix build-compare
+
+-------------------------------------------------------------------
+Fri Dec 19 10:05:17 UTC 2014 - meissner@suse.com
+
+- build with PIE
+
+-------------------------------------------------------------------
+Mon May 12 15:44:03 UTC 2014 - vdziewiecki@suse.com
+
+- Remove unneeded update-alternatives requirement (bnc#876129) 
+- Clean spec
+
+-------------------------------------------------------------------
+Thu Sep 26 13:29:46 UTC 2013 - schwab@suse.de
+
+- Don't install twice
+
+-------------------------------------------------------------------
+Tue Jul 30 12:20:55 UTC 2013 - sweet_f_a@gmx.de
+
+- add the correct project URL
+
+-------------------------------------------------------------------
+Tue Jul  9 07:44:48 UTC 2013 - schwab@suse.de
+
+- Override broken configure checks
+
+-------------------------------------------------------------------
+Mon Jun 10 19:55:39 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.6
+* The "--keep" (-k) option was added to not delete input files,
+  similar to other tools such as xz, lzip, and bzip2.
+* A decompression issue with certain invalid data in the "pack"
+  format was fixed.
+* An incorrect overwrite when compiled with optimization was fixed.
+* zgrep's handling of multi-digit context options was fixed.
+* zmore now acts more like "more".
+- More robust make install call
+- Provide files for signature verification (we do not actually do
+  it because gzip is part of the bootstrap cycle; but if you have
+  gpg-offline listed as Support or in ~/.oscrc, it will be done)
+
+-------------------------------------------------------------------
+Thu Mar 28 08:36:08 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Tue Jan 29 12:28:39 UTC 2013 - vdziewiecki@suse.com
+
+- Add support for xz and lzma (bnc#799561 - zgrep silently fails on
+  LZMA compressed files) - xz_lzma.patch
+
+-------------------------------------------------------------------
+Tue Oct 16 10:48:48 UTC 2012 - vcizek@suse.com
+
+- update to 1.5
+  - gzip -cdf mishandles some concatenated input streams: test it
+  - gzip -cdf now handles concatenation of gzip'd and uncompressed data
+  - gzip: fix a data-loss bug when decompressing with --suffix=''
+  - gzip: fix nondeterministic compression results
+  - fix "znew -K" to work without use of compress utility
+  - Decode FHCRC flag properly, as per Internet RFC 1952.
+  - zgrep: fix parsing of -Eh options
+  - zgrep: terminate gracefully when a pipeline is interrupted by a signal
+  - zgrep: fix shell portability bug with -f; fix mishandling of "-e -"
+  - zless: decompress stdin too, if less 429 or later
+- dropped gzip-stdio.in.patch, refreshed others
+
+-------------------------------------------------------------------
+Tue Jul 17 19:00:13 UTC 2012 - aj@suse.de
+
+- Fix build with missing gets declaration (glibc 2.16)
+
+-------------------------------------------------------------------
+Tue Feb  7 21:33:35 UTC 2012 - rschweikert@suse.com
+
+- keep binaries in /usr tree (UsrMerge project)
+
+-------------------------------------------------------------------
+Sat Nov 13 12:36:20 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- disable silent rules.
+
+-------------------------------------------------------------------
+Sun Sep 19 09:48:02 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 1.4:
+  + gzip -d could segfault and/or clobber the stack, possibly
+    leading to arbitrary code execution. This affects x86_64 but
+    not 32-bit systems. This fixes CVE-2010-0001. See also
+    rh#554418.
+  + gzip -d would fail with a CRC error for some valid inputs.
+    So far, the only valid input known to exhibit this failure was
+    compressed "from FAT filesystem (MS-DOS, OS/2, NT)".  In
+    addition, to trigger the failure, your memcpy implementation
+    must copy in the "reverse" order.
+- Drop gzip-CVE-2010-0001.diff: fixed upstream.
+- Remove AutoReqProv: it's default now.
+- Use %configure, %makeinstall, and %{_bindir}.
+- Update zdiff.diff: some of the patch is upstream now. It's
+  unclear to me if the rest is still needed :/ So leaving it.
+- Rebase zgrep.diff.
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Tue Jan 19 15:26:41 UTC 2010 - mseben@novell.com
+
+- updated to 1.3.13
+  - gzip interprets an argument of "-" as indicating stdin, but when
+    "-" is not the first name on the command line, it doesn't work.
+  - remove useless if-before-free tests 
+  - remove useless casts to avoid "make syntax-check" failures
+  - avoid spurious warnings from clang
+  - avoid a leak on a error path
+  - don't misinterpret a failing test as successful
+  - avoid creating an undersized buffer for the hufts table
+    A malformed input file can cause gzip to crash with a segmentation
+    violation or hang in an endless loop.
+  - avoid silent data loss e.g., on NFS, due to unchecked close of stdout
+  - build require automake-1.11 and produce xz-compressed tarballs, too
+- deprecated futimens.diff and CVE-2009-2624.diff
+
+-------------------------------------------------------------------
+Thu Jan 14 17:17:49 UTC 2010 - mseben@novell.com
+
+- added gzip-CVE-2009-2624.diff and gzip-CVE-2010-0001.diff  : fix
+  possible denial of service and arbitrary code execution
+
+-------------------------------------------------------------------
+Sun Dec  6 18:57:34 CET 2009 - jengelh@medozas.de
+
+- enabled parallel make 
+
+-------------------------------------------------------------------
+Tue Mar 10 11:45:26 CET 2009 - sf@suse.de
+
+- added doc files (README, TODO, ...) (bnc #414305)  
+
+-------------------------------------------------------------------
+Wed Jan  7 13:59:52 CET 2009 - schwab@suse.de
+
+- Fixup rsyncable patch.
+
+-------------------------------------------------------------------
+Thu May  8 14:19:06 CEST 2008 - schwab@suse.de
+
+- Fix zdiff with two compressed files.
+
+-------------------------------------------------------------------
+Sun May 20 19:17:21 CEST 2007 - schwab@suse.de
+
+- Fix compiling with glibc 2.6.
+
+-------------------------------------------------------------------
+Sun Apr 15 00:03:31 CEST 2007 - schwab@suse.de
+
+- Update to gzip 1.3.12.
+  * znew now uses $TMPDIR (default /tmp) instead of always using /tmp.
+
+-------------------------------------------------------------------
+Tue Mar 27 13:50:42 CEST 2007 - dmueller@suse.de
+
+- reenable profile feedback
+- remove hardcoded -mcpu=pentiumpro for x86 
+
+-------------------------------------------------------------------
+Tue Feb  6 11:27:21 CET 2007 - schwab@suse.de
+
+- Update to gzip 1.3.11.
+  * As per the GNU coding standards, the behavior of gzip and its
+    companion executables no longer depend on the name used to invoke them.
+    For example, 'gzip' and 'gunzip' are no longer hard links;
+    instead, 'gunzip' is now a small program that invokes 'gzip -d'.
+  * zdiff now checks for subsidiary gzip failures, and works around
+    bugs in IRIX 6 sh, Tru64 4.0F ksh, and Solaris 8 bash.
+
+-------------------------------------------------------------------
+Mon Jan  8 18:13:21 CET 2007 - schwab@suse.de
+
+- Update to gzip 1.3.10.
+  * gzip -c and zcat now work on special files, files with special mode bits,
+    and files with multiple hard links.
+  * gzip -q now exits with status 2 (not 1) when SIGPIPE is received.
+  * zcmp and zdiff did not work in the usual case, due to a typo.
+  * zgrep has many bugs fixed with argument handling, special characters,
+    and exit status.
+  * zless no longer mishandles $%=~ in file names.
+
+-------------------------------------------------------------------
+Fri Dec 15 11:48:41 CET 2006 - schwab@suse.de
+
+- Update to gzip 1.3.9.
+  * No major changes; only porting fixes.
+
+-------------------------------------------------------------------
+Tue Dec 12 10:10:38 CET 2006 - schwab@suse.de
+
+- Update to gzip 1.3.8.
+  * Fix some gzip problems:
+    - A security fix from Debian 1.3.5-5 was inadvertently omitted.
+    - The assembler is now invoked with --noexecstack if supported,
+      so that gzip can better resist stack-smashing attacks.
+
+-------------------------------------------------------------------
+Thu Dec  7 11:19:36 CET 2006 - schwab@suse.de
+
+- Update to gzip 1.3.7.
+  * Fix some gzip problems:
+    - Refuse to compress setuid or setgid files, or files with the sticky bit.
+    - Fix more race conditions in setting file permissions and owner,
+      removing output files, following symbolic links, and dealing with
+      special files.
+    - Remove most of the code working around ENAMETOOLONG deficiencies.
+      Systems with those deficiencies are long-dead, and the workarounds
+      had race conditions on modern hosts.
+    - Catch CPU time and file size limit signals, too.
+    - Check for read errors when closing files.
+    - Fix a core dump caused by a stray abort mistakenly introduced in 1.3.6.
+  * Fix some gzexe problems:
+    - Improve resistance to denial-of-service attacks.
+    - Fix some quoting and escaping bugs.
+    - Do not assume /tmp is sticky (though it should be!).
+    - Do not assume the working directory can be written.
+    - Rely on PATH in the generated executable, as the man page says.
+    - Don't assume IFS is sane.
+    - Exit with signal's status, if signaled.
+
+-------------------------------------------------------------------
+Mon Dec  4 13:08:18 CET 2006 - schwab@suse.de
+
+- Update to gzip 1.3.6.
+  * Fix some race conditions in setting file time stamps, permissions, and owner.
+  * Fix some race conditions in signal handling.
+  * When gzip exits due to a signal, it exits with the signal's status, not 1.
+  * gzip now restores file time stamps to the resolution supported by the
+    time-setting primitives of the operating system, typically 1 microsecond.
+    Formerly it restored them only to the nearest second.
+  * gzip -r no longer attempts to reset the last-access times of directories
+    it reads, as this messes up when other processes are reading the directories.
+  * The options --version and --help now work on all gzip-installed executables,
+    and now use a format similar to other GNU programs.
+  * The manual is now distributed under the terms of the GNU Free
+    Documentation License without invariant sections or cover texts.
+  * Port to current versions of Autoconf, Automake, and Gnulib.
+
+-------------------------------------------------------------------
+Wed Sep 13 11:11:47 CEST 2006 - schwab@suse.de
+
+- Verify hash tables when unpacking [#202365].
+
+-------------------------------------------------------------------
+Mon Mar 13 17:53:27 CET 2006 - schwab@suse.de
+
+- Add rsyncable patch [#155442].
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:22 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Nov 11 11:56:29 CET 2005 - pth@suse.de
+
+- Don't obsolete compress.
+
+-------------------------------------------------------------------
+Mon Oct 31 18:15:55 CET 2005 - dmueller@suse.de
+
+- build with non-executable stack 
+
+-------------------------------------------------------------------
+Tue Jul 26 14:56:47 CEST 2005 - schwab@suse.de
+
+- Ignore directory part on saved file name [#79292].
+
+-------------------------------------------------------------------
+Tue Apr 19 14:59:23 CEST 2005 - kukuk@suse.de
+
+- Remove uncompress symlink [#78331]
+
+-------------------------------------------------------------------
+Thu Mar 24 13:33:56 CET 2005 - werner@suse.de
+
+- Add support for bzip2 and simply pager options to zmore
+
+-------------------------------------------------------------------
+Mon May  3 13:59:40 CEST 2004 - schwab@suse.de
+
+- Fix quoting issues in zgrep [#39329].
+
+-------------------------------------------------------------------
+Fri Feb 27 17:44:02 CET 2004 - schwab@suse.de
+
+- Add %defattr.
+
+-------------------------------------------------------------------
+Tue Dec  2 10:12:06 CET 2003 - pthomas@suse.de
+
+- Remove the patch for tail syntax as it's wrong and unnecessary.
+
+-------------------------------------------------------------------
+Thu Sep 18 15:18:43 CEST 2003 - mmj@suse.de
+
+- Fix tail syntax in gzexe [#31229]
+
+-------------------------------------------------------------------
+Thu Aug 28 16:00:22 CEST 2003 - kukuk@suse.de
+
+- Make sure we have no hardlinks from /bin to /usr/bin [Bug #29522]
+
+-------------------------------------------------------------------
+Tue Jun 17 13:47:17 CEST 2003 - pthomas@suse.de
+
+- Update to 1.3.5
+  - gzip now removes any output symlink before writing output file.
+  - zgrep etc. scripts now port to POSIX 1003.1-2001 hosts.
+  - zforce no longer assumes 14-byte file name length limit.
+  - zless is now implemented using less and LESSOPEN, not zmore and PAGER.
+  - assembly-language speedups reenabled; were mistakenly disabled in 1.3.
+  - Less output is lost when decompressing a truncated file.
+  - zgrep now supports --, -H, -h, -L, -l, -C, -d, -m and their long
+    equivalents.
+
+-------------------------------------------------------------------
+Wed Jun  4 18:20:32 CEST 2003 - jh@suse.de
+
+- Enable profile feedback
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Tue Apr 15 17:31:41 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Sat Feb  8 10:58:53 CET 2003 - kukuk@suse.de
+
+- Readded prereq for install-info, else we cannot install info
+  pages
+- Add dir entry to info page
+
+-------------------------------------------------------------------
+Sat Feb  8 01:43:07 CET 2003 - ro@suse.de
+
+- removed prereq for texinfo to avoid prereq-cycle
+
+-------------------------------------------------------------------
+Fri Feb  7 02:24:31 CET 2003 - ro@suse.de
+
+- added install_info macros 
+
+-------------------------------------------------------------------
+Wed Jan 29 15:13:10 CET 2003 - kukuk@suse.de
+
+- Remove mimencode requires, it is optional
+
+-------------------------------------------------------------------
+Tue Dec 17 15:25:56 CET 2002 - werner@suse.de
+
+- The `:' line of zgrep will be removed by configure
+- zgrep requzires mimencode from metamail
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Thu Mar 14 18:26:33 CET 2002 - kukuk@suse.de
+
+- Add uncompress compat link
+
+-------------------------------------------------------------------
+Wed Feb  6 11:15:08 CET 2002 - coolo@suse.de
+
+- use %suse_update_config
+
+-------------------------------------------------------------------
+Thu Jan 24 11:35:18 CET 2002 - okir@suse.de
+
+- fixed tempfile race in zdiff (current code used bash noclobber
+  which is inherently racey)
+
+-------------------------------------------------------------------
+Wed Jun  6 16:28:07 CEST 2001 - werner@suse.de
+
+- Make zgrep knowing about bzip2
+
+-------------------------------------------------------------------
+Tue Apr  3 18:42:46 CEST 2001 - uli@suse.de
+
+- fixed for gcc >2.96
+
+-------------------------------------------------------------------
+Tue Mar 27 03:07:13 CEST 2001 - bk@suse.de
+
+- use i686 insn scheduling on i386 and strip binaries(performance)
+- make tmpfiles in gzexe secure and improve znew tempdir creation
+- remove unnessary expr use and fix gzip output checking in zforce
+- add simple tests if gzip/gunzip work
+
+-------------------------------------------------------------------
+Mon Nov 27 18:17:05 CET 2000 - aj@suse.de
+
+- Update to gzip 1.3.
+
+-------------------------------------------------------------------
+Wed Aug 23 16:41:25 CEST 2000 - werner@suse.de
+
+- Security changes for the znew script
+
+-------------------------------------------------------------------
+Mon May  1 18:50:20 CEST 2000 - kukuk@suse.de
+
+- LSB-FHS requires /bin/gunzip and /bin/zcat to /bin/gzip
+
+-------------------------------------------------------------------
+Tue Apr 18 10:42:52 CEST 2000 - kukuk@suse.de
+
+- Add /bin/zcat (required by FHS 2.1)
+
+-------------------------------------------------------------------
+Fri Feb 25 12:29:21 CET 2000 - schwab@suse.de
+
+- cleanup spec file, get rid of Makefile.Linux
+- define _GNU_SOURCE for basename declaration
+- /usr/man -> /usr/share/man
+- add gzip.info to file list
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Fri Mar  6 18:47:20 MET 1998 - florian@suse.de
+
+- fixed security bug posted on Dez 27 to bugtraq
+
+-------------------------------------------------------------------
+Thu Jan  8 17:24:05 MET 1998 - bs@suse.de
+
+- fixed "double" /bin/gzip & /usr/bin/gzip
+
+----------------------------------------------------------------------------
+Thu Apr 24 10:15:54 CEST 1997 - bs@suse.de
+
+
+- added symlink /bin/gunzip
+
+----------------------------------------------------------------------------
+Sun Apr 13 23:04:29 MEST 1997 - florian@suse.de
+
+
+- add bug-fixes from gnu.utils.bugs
+
+

@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Fri Sep 13 11:08:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.1.1:
+  * Document how to use shared caches with @cachedmethod.
+  * Fix pickling/unpickling of cache keys
+
+-------------------------------------------------------------------
+Wed Feb 27 18:17:13 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 3.1.0:
+  - Fix Python 3.8 compatibility issue.
+  - Use ``time.monotonic`` as default timer if available.
+  - Improve documentation regarding thread safety.
+  - Officially support Python 3.7.
+  - Drop Python 3.3 support (breaking change).
+  - Remove ``missing`` cache constructor parameter (breaking change).
+  - Remove ``self`` from ``@cachedmethod`` key arguments (breaking
+    change).
+  - Add support for ``maxsize=None`` in ``cachetools.func`` decorators.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:24 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Aug 16 13:51:39 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 2.0.1
+  * Officially support Python 3.6.
+  * Move documentation to RTD.
+  * Documentation: Update import paths for key functions
+    (courtesy of slavkoja).
+
+-------------------------------------------------------------------
+Thu Jun  1 21:04:54 UTC 2017 - dmueller@suse.com
+
+- update to 2.0.0:
+  - Drop Python 3.2 support (breaking change).
+  - Drop support for deprecated features (breaking change).
+  - Move key functions to separate package (breaking change).
+  - Accept non-integer ``maxsize`` in ``Cache.__repr__()``.
+
+-------------------------------------------------------------------
+Tue Aug 30 19:48:39 UTC 2016 - tbechtold@suse.com
+
+- update to 1.1.6:
+  - Reimplement ``LRUCache`` and ``TTLCache`` using
+    ``collections.OrderedDict``.  Note that this will break pickle
+    compatibility with previous versions.
+  - Fix ``TTLCache`` not calling ``__missing__()`` of derived classes.
+  - Handle ``ValueError`` in ``Cache.__missing__()`` for consistency
+    with caching decorators.
+  - Improve how ``TTLCache`` handles expired items.
+  - Use ``Counter.most_common()`` for ``LFUCache.popitem()``.
+  - Refactor ``Cache`` base class.  Note that this will break pickle
+    compatibility with previous versions.
+  - Clean up ``LRUCache`` and ``TTLCache`` implementations.
+  - Refactor ``LRUCache`` and ``TTLCache`` implementations.  Note that
+    this will break pickle compatibility with previous versions.
+  - Document pending removal of deprecated features.
+  - Minor documentation improvements.
+  - Fix pickle tests.
+  - Fix pickling of large ``LRUCache`` and ``TTLCache`` instances.
+  - Improve key functions.
+  - Improve documentation.
+  - Improve unit test coverage.
+  - Add ``@cached`` function decorator.
+  - Add ``hashkey`` and ``typedkey`` fuctions.
+  - Add `key` and `lock` arguments to ``@cachedmethod``.
+  - Set ``__wrapped__`` attributes for Python versions < 3.2.
+  - Move ``functools`` compatible decorators to ``cachetools.func``.
+  - Deprecate ``@cachedmethod`` `typed` argument.
+  - Deprecate `cache` attribute for ``@cachedmethod`` wrappers.
+  - Deprecate `getsizeof` and `lock` arguments for `cachetools.func`
+    decorator.
+- Use pypi.io as Source url
+
+-------------------------------------------------------------------
+Thu Jul  9 08:04:04 UTC 2015 - dmueller@suse.com
+
+- Initial package (1.0.3)
+

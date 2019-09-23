@@ -1,0 +1,30 @@
+<package name="perl-Exporter-Lite" project="openSUSE:Factory">
+  <title>Lightweight exporting of variables</title>
+  <description>This is an alternative to Exporter intended to provide a lightweight subset
+of its functionality. It supports 'import()', '@EXPORT' and '@EXPORT_OK'
+and not a whole lot else.
+
+Unlike Exporter, it is not necessary to inherit from Exporter::Lite (ie. no
+'@ISA = qw(Exporter::Lite)' mantra). Exporter::Lite simply exports its
+import() function. This might be called a &quot;mix-in&quot;.
+
+Setting up a module to export its variables and functions is simple:
+
+    package My::Module;
+    use Exporter::Lite;
+
+    @EXPORT = qw($Foo bar);
+
+now when you 'use My::Module', '$Foo' and 'bar()' will show up.
+
+In order to make exporting optional, use @EXPORT_OK.
+
+    package My::Module;
+    use Exporter::Lite;
+
+    @EXPORT_OK = qw($Foo bar);
+
+when My::Module is used, '$Foo' and 'bar()' will _not_ show up. You have to
+ask for them. 'use My::Module qw($Foo bar)'.</description>
+  <devel project="devel:languages:perl" package="perl-Exporter-Lite"/>
+</package>

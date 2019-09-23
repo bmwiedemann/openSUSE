@@ -1,0 +1,24 @@
+diff -Ndur optcomplete-1.2-devel/etc/bashrc optcomplete-1.2-devel-fix-shebang/etc/bashrc
+--- optcomplete-1.2-devel/etc/bashrc	2008-09-09 00:36:38.000000000 +0300
++++ optcomplete-1.2-devel-fix-shebang/etc/bashrc	2014-12-28 16:32:00.315730576 +0200
+@@ -1,4 +1,3 @@
+-#!/bin/sh
+ #
+ # $Id: bashrc,v 1.5 2004/01/28 05:30:12 blais Exp $
+ # $Source: /home/blais/repos/cvsroot/optcomplete/etc/bashrc,v $
+diff -Ndur optcomplete-1.2-devel/etc/optcomplete.bash optcomplete-1.2-devel-fix-shebang/etc/optcomplete.bash
+--- optcomplete-1.2-devel/etc/optcomplete.bash	2008-09-09 00:36:38.000000000 +0300
++++ optcomplete-1.2-devel-fix-shebang/etc/optcomplete.bash	2014-12-28 16:31:39.033730546 +0200
+@@ -1,4 +1,3 @@
+-#!/bin/sh
+ # optcomplete harness for bash shell. You then need to tell 
+ # bash to invoke this shell function with a command like 
+ # this::
+diff -Ndur optcomplete-1.2-devel/etc/optcomplete.zsh optcomplete-1.2-devel-fix-shebang/etc/optcomplete.zsh
+--- optcomplete-1.2-devel/etc/optcomplete.zsh	2008-09-09 00:36:38.000000000 +0300
++++ optcomplete-1.2-devel-fix-shebang/etc/optcomplete.zsh	2014-12-28 16:31:42.190730551 +0200
+@@ -1,4 +1,3 @@
+-#!/bin/sh
+ # optcomplete harness for zsh shell. You then need to tell 
+ # zsh to invoke this shell function with a command like 
+ # this::

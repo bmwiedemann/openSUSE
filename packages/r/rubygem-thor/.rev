@@ -1,0 +1,185 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>18842bf26be194237f22eae3561e4bd1</srcmd5>
+    <version>0.14.6</version>
+    <time>1320672586</time>
+    <user>coolo</user>
+    <comment>Package needed for mirall and other ruby deps</comment>
+    <requestid>90111</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e447abec10e0a5b53d0168e3323ba47c</srcmd5>
+    <version>0.14.6</version>
+    <time>1323194483</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e18e778b6eabfd56ac78397b3a0b4335</srcmd5>
+    <version>0.14.6</version>
+    <time>1330521082</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>107363</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f924325fe6114b98a8acb70fa70ad836</srcmd5>
+    <version>0.14.6</version>
+    <time>1332616247</time>
+    <user>coolo</user>
+    <comment>Rails-3.2 requirement</comment>
+    <requestid>110737</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>f924325fe6114b98a8acb70fa70ad836</srcmd5>
+    <version>0.14.6</version>
+    <time>1340184177</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>06f14cd2fb84c846b65671f4a00094ba</srcmd5>
+    <version>0.15.4</version>
+    <time>1344079586</time>
+    <user>coolo</user>
+    <comment>- update to 0.15.4
+  * Fix regression when destination root contains reserved regexp characters
+  
+  == 0.15.3, release 2012-06-18
+  * Support strict_args_position! for backwards compatibility
+  * Escape Dir glob characters in paths
+  
+  == 0.15.2, released 2012-05-07
+  * Added print_in_columns
+  * Exposed terminal_width as a public API
+  
+  == 0.15.1, release 2012-05-06
+  * Fix Ruby 1.8 truncation bug with unicode chars
+  * Fix shell delegate methods to pass their block
+  * Don't output trailing spaces when printing the last column in a table
+  
+  == 0.15, released 2012-04-29
+  * Alias method_options to options
+  * Refactor say to allow multiple colors
+  * Exposed error as a public API
+  * Exposed file_collision as a public API
+  * Exposed print_wrapped as a public API
+  * Exposed set_color as a public API
+  * Fix number-formatting bugs in print_table
+  * Fix &quot;indent&quot; typo in print_table
+  * Fix Errno::EPIPE when piping tasks to `head`
+  * More friendly error messages
+
+- use new gem2rpm to provide new provisions</comment>
+    <requestid>129516</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ec154113077d6b62d0306390ae217c6c</srcmd5>
+    <version>0.16.0</version>
+    <time>1346488518</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>132183</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>ec154113077d6b62d0306390ae217c6c</srcmd5>
+    <version>0.16.0</version>
+    <time>1359110351</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a24977daac82cd8ebc0aef2807015c4f</srcmd5>
+    <version>0.17.0</version>
+    <time>1362736757</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157760</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6b49b246855e4ff1c798573bb27928f2</srcmd5>
+    <version>0.18.1</version>
+    <time>1374759340</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184001</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>6b49b246855e4ff1c798573bb27928f2</srcmd5>
+    <version>0.18.1</version>
+    <time>1379664582</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>350844dd85967b5c725345051ae72896</srcmd5>
+    <version>0.19.1</version>
+    <time>1395750503</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>227359</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>350844dd85967b5c725345051ae72896</srcmd5>
+    <version>0.19.1</version>
+    <time>1409303294</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>b738bf7210ec29136bfaebf3030504af</srcmd5>
+    <version>0.19.1</version>
+    <time>1413263541</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255763</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>8417a2fc1d07345c09d5c75bcb34a60b</srcmd5>
+    <version>0.19.1</version>
+    <time>1414140505</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258199</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5f5c2f3bae9951b75200acb12629013c</srcmd5>
+    <version>0.19.3</version>
+    <time>1481459408</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>445242</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6169bba39d4d76c45655988c36614841</srcmd5>
+    <version>0.19.4</version>
+    <time>1483047923</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447118</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>869e2d9b239881338126b33eaf61bc88</srcmd5>
+    <version>0.19.4</version>
+    <time>1497518663</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503436</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ed372dea9ea3b7bbdd7e29d1b770e613</srcmd5>
+    <version>0.20.0</version>
+    <time>1503392971</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517890</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2038f33ac81eac87a34db08164c1226b</srcmd5>
+    <version>0.20.3</version>
+    <time>1542750205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650335</requestid>
+  </revision>
+</revisionlist>

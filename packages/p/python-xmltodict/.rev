@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5e62c8cad84173f11c1d38af51dfa58c</srcmd5>
+    <version>0.11.0</version>
+    <time>1508946454</time>
+    <user>dimstar_suse</user>
+    <comment>- Submit as dependency for Azure CLI 2.0.</comment>
+    <requestid>536400</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>77a456a2e509fef1c34b4ae935148621</srcmd5>
+    <version>0.11.0</version>
+    <time>1544726730</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654077</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3732546f86a57358e642518c0b697005</srcmd5>
+    <version>0.12.0</version>
+    <time>1553611565</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688692</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e08ae1d728d44b9e91c21b88fe591f22</srcmd5>
+    <version>0.12.0</version>
+    <time>1554712745</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691985</requestid>
+  </revision>
+</revisionlist>

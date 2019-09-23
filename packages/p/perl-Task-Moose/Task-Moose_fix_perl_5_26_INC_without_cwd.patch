@@ -1,0 +1,9 @@
+--- Makefile.PL_orig	2017-12-05 01:22:04.713922380 +0100
++++ Makefile.PL	2017-12-05 01:23:13.866837180 +0100
+@@ -1,5 +1,6 @@
+ use strict;
+ use warnings;
++use lib ".";
+ use inc::Module::Install 0.75;
+ 
+ name 'Task-Moose';

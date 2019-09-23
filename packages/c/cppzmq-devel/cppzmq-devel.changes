@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Thu Jan 12 08:26:42 UTC 2017 - adrian@suse.de
+
+- adapt for Factory
+
+-------------------------------------------------------------------
+Mon Jun 27 02:52:33 UTC 2016 - opensuse-packaging@opensuse.org
+
+- Update to version 0.0.0+git.20160406.0db7521:
+  * Class for multipart messaging
+
+-------------------------------------------------------------------
+Fri Feb 05 21:23:16 UTC 2016 - opensuse-packaging@opensuse.org
+
+- Update to version 0.0.0+git.20160120.68a7b09:
+  + Fix backward compatibility
+  + Fixes assertion error, when destroing ctx while creating a socket 
+    from a different thread: ./src/mutex.hpp:123
+  + Extend C++11 guard to cover remaining use of std::vector data().
+  + fixed type mismatch warnings (size_t to int)
+  + Avoid using deprecated function zmq_recvmsg
+  + Fix usage of zmq_msg_recv and zmq_recvmsg
+  + Make getsockopt() functions const
+  + Fix two issues in message_t's range constructor
+  + Correction to pull request #56
+  + Fix warning 4996 in msvc debug build
+  + New fill constructor for message_t
+  + Updating zmq_ctx_shutdown to zmq_ctx_ctx which is imported in zmq.h
+
+-------------------------------------------------------------------
+Mon Sep 21 08:06:01 UTC 2015 - mardnh@gmx.de
+
+- Update to version 0.1.0.git1436168018.a88bf3e:
+  + Fixes backward compatibility with zmq 3.x
+  + Problem: zmq_event_t removed in libzmq v4.1
+  + Fix a misaligned load
+  + Add an rvalue overload for socket_t::send
+  + Fixed some const-correctness issues
+
+-------------------------------------------------------------------
+Tue Nov 26 03:45:11 UTC 2013 - nevion@gmail.com
+
+-initial creation 
+

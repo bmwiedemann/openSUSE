@@ -1,0 +1,6 @@
+<package name="un-fonts" project="openSUSE:Factory">
+  <title>Korean TrueType fonts</title>
+  <description>Korean TrueType fonts
+</description>
+  <devel project="M17N:fonts" package="un-fonts"/>
+</package>

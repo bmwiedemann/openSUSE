@@ -1,0 +1,193 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9a20e1d0ae5137775fdd8c551dc3b5d6</srcmd5>
+    <version>1.1.8</version>
+    <time>1432190069</time>
+    <user>coolo</user>
+    <comment>Conduit-extra: Batteries included conduit: adapters for common libraries.</comment>
+    <requestid>307606</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>decd8611e1a34ffb9a06eb384a65ca82</srcmd5>
+    <version>1.1.9</version>
+    <time>1433832553</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>311086</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4e8c03f1151a0e0ab0364680fd071ff0</srcmd5>
+    <version>1.1.9.1</version>
+    <time>1438750249</time>
+    <user>coolo</user>
+    <comment>- update to 1.1.9.1</comment>
+    <requestid>318873</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9518ff16817efb431aeb4fa590d758c4</srcmd5>
+    <version>1.1.9.2</version>
+    <time>1449687164</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.9.2</comment>
+    <requestid>347737</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>54d73a02a8479cb7dabe259821ab017b</srcmd5>
+    <version>1.1.10.1</version>
+    <time>1456243058</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.10.1
+* multiple combinator for Data.Conduit.Zlib
+
+- update to 1.1.9.3 (forwarded request 360799 from mimi_vx)</comment>
+    <requestid>360800</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ba0259b7e7d297d7e34c44e5f99bc49e</srcmd5>
+    <version>1.1.11</version>
+    <time>1458120814</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.11
+* withCheckedProcessCleanup (forwarded request 368085 from mimi_vx)</comment>
+    <requestid>368088</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e8a020277d75f95f3e059ff7c8e56a6f</srcmd5>
+    <version>1.1.13.1</version>
+    <time>1459717640</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.13.1
+* Add sinkStorable and sinkStorableEx
+
+- update to 1.1.12.1
+* Add sourceProcessWithStreams
+* Fix accidentally breaking change in sourceProcessWithConsumer type signature (forwarded request 383463 from mimi_vx)</comment>
+    <requestid>383466</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6241a0fbe26c415f3751b262b1dc5d7c</srcmd5>
+    <version>1.1.13.2</version>
+    <time>1468360364</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.13.2
+* Fix alignment issues on non-X86 archs</comment>
+    <requestid>407631</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9009f5dca36bbf122b3abecc8ccbbe3f</srcmd5>
+    <version>1.1.13.2</version>
+    <time>1469081196</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411467</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f84f234c3e3cf887669f784877ab7a8c</srcmd5>
+    <version>1.1.13.3</version>
+    <time>1478168029</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433379</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>068bb2d7d19390bf4bec268bab68f69b</srcmd5>
+    <version>1.1.15</version>
+    <time>1481272613</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>442850</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>6310c30316ddf8b3c2f05e5ab73d4e03</srcmd5>
+    <version>1.1.15</version>
+    <time>1491896548</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485114</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5d85c1a8164136122f18839da36d7e0f</srcmd5>
+    <version>1.1.16</version>
+    <time>1496534224</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>499690</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>953b93bdff4351346872965a2c2e7e94</srcmd5>
+    <version>1.1.16</version>
+    <time>1505503687</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524320</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2b74d6ead06a085a8786ba6fa20bc598</srcmd5>
+    <version>1.3.0</version>
+    <time>1527674714</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-conduit-extra to the latest version.</comment>
+    <requestid>607771</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>835df9a67395612222ef78b97939ad9c</srcmd5>
+    <version>1.3.0</version>
+    <time>1532445376</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 1.1.9.2
+- update to 1.1.9.1
+- initial commit</comment>
+    <requestid>623745</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>bf2327965c707d0d30a44b448fe036c0</srcmd5>
+    <version>1.3.0</version>
+    <time>1540448615</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643369</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0530975af9a181dce106311322f2f913</srcmd5>
+    <version>1.3.1</version>
+    <time>1551025114</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>678026</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9d131a65362a2573f7d07e62611d846f</srcmd5>
+    <version>1.3.1.1</version>
+    <time>1552985977</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>686007</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>65bc737f40e6483c3d3ac3c9bf78e3ae</srcmd5>
+    <version>1.3.2</version>
+    <time>1560971425</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710622</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>05be7c74c3575bfda7901c90a00d32e4</srcmd5>
+    <version>1.3.3</version>
+    <time>1561882892</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>712502</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8a25dfcae92686fef537fc92910cef4f</srcmd5>
+    <version>1.3.4</version>
+    <time>1564413964</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>715410</requestid>
+  </revision>
+</revisionlist>

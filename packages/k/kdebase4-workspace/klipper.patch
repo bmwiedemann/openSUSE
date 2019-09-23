@@ -1,0 +1,230 @@
+Subject: fix performance issue with Klipper
+From: Filip Wieladek <fwi@tribogna.(none)>
+Signed-Off-By: <name, optionally email>
+Bug: kde#238084
+Patch-upstream: no
+
+
+From 2d1cd043101b71c102d747c760a78fe85c17488a Mon Sep 17 00:00:00 2001
+From: Filip Wieladek <fwi@tribogna.(none)>
+Date: Mon, 4 Jun 2012 08:37:24 +0200
+Subject: [PATCH 1/2] Fix flickering
+---
+ klipper/klipperpopup.cpp |   24 +++++++++++-------------
+ klipper/popupproxy.cpp   |   12 ++++++++----
+ klipper/popupproxy.h     |    2 +-
+ 3 files changed, 20 insertions(+), 18 deletions(-)
+
+diff --git a/klipper/klipperpopup.cpp b/klipper/klipperpopup.cpp
+index bff2c25..ebdfdd6 100644
+--- a/klipper/klipperpopup.cpp
++++ b/klipper/klipperpopup.cpp
+@@ -163,12 +163,15 @@ void KlipperPopup::buildFromScratch() {
+ }
+ 
+ void KlipperPopup::rebuild( const QString& filter ) {
++    setFixedSize(size());
+     if (actions().isEmpty()) {
+         buildFromScratch();
+     } else {
+         for ( int i=0; i<m_nHistoryItems; i++ ) {
+             Q_ASSERT(TOP_HISTORY_ITEM_INDEX < actions().count());
+-            removeAction(actions().at(TOP_HISTORY_ITEM_INDEX));
++            QAction* action= actions().at(TOP_HISTORY_ITEM_INDEX);
++            removeAction(action);
++            delete action;
+         }
+     }
+ 
+@@ -177,11 +180,7 @@ void KlipperPopup::rebuild( const QString& filter ) {
+     QRegExp filterexp( filter, caseSens );
+ 
+     QPalette palette = m_filterWidget->palette();
+-    if ( filterexp.isValid() ) {
+-        palette.setColor( m_filterWidget->foregroundRole(), palette.color(foregroundRole()) );
+-    } else {
+-        palette.setColor( m_filterWidget->foregroundRole(), Qt::red );
+-    }
++    palette.setColor( m_filterWidget->foregroundRole(), filterexp.isValid() ? palette.color(foregroundRole()) : Qt::red  );
+     m_nHistoryItems = m_popupProxy->buildParent( TOP_HISTORY_ITEM_INDEX, filterexp );
+     if ( m_nHistoryItems == 0 ) {
+         if ( m_history->empty() ) {
+@@ -199,6 +198,7 @@ void KlipperPopup::rebuild( const QString& filter ) {
+     }
+     m_filterWidget->setPalette( palette );
+     m_dirty = false;
++    setFixedSize(sizeHint());
+ }
+ 
+ void KlipperPopup::plugAction( QAction* action ) {
+@@ -269,13 +269,11 @@ void KlipperPopup::keyPressEvent( QKeyEvent* e ) {
+         QString lastString = m_filterWidget->text();
+         QApplication::sendEvent(m_filterWidget, e);
+ 
+-        if (m_filterWidget->text().isEmpty()) {
+-            if (m_filterWidgetAction->isVisible())
+-                m_filterWidget->setVisible(false);
+-                m_filterWidgetAction->setVisible(false);
+-        }
+-        else if (!m_filterWidgetAction->isVisible() )
+-            m_filterWidgetAction->setVisible(true);
++        bool visible= !m_filterWidget->text().isEmpty();
++        if (m_filterWidgetAction->isVisible() != visible) {
++            m_filterWidget->setVisible(visible);
++            m_filterWidgetAction->setVisible(visible);
++         }
+ 
+         if (m_filterWidget->text() != lastString) {
+             m_dirty = true;
+diff --git a/klipper/popupproxy.cpp b/klipper/popupproxy.cpp
+index 555f383..53042a6 100644
+--- a/klipper/popupproxy.cpp
++++ b/klipper/popupproxy.cpp
+@@ -48,11 +48,11 @@ PopupProxy::PopupProxy( KlipperPopup* parent, int menu_height, int menu_width )
+ }
+ 
+ void PopupProxy::slotHistoryChanged() {
+-    deleteMoreMenus();
++    deleteMoreMenus(true);
+ 
+ }
+ 
+-void PopupProxy::deleteMoreMenus() {
++void PopupProxy::deleteMoreMenus(bool delayed) {
+     const KMenu* myParent = parent();
+     if ( myParent != m_proxy_for_menu ) {
+         KMenu* delme = m_proxy_for_menu;
+@@ -63,12 +63,16 @@ void PopupProxy::deleteMoreMenus() {
+         }
+         // We are called probably from within the menus event-handler (triggered=>slotMoveToTop=>changed=>slotHistoryChanged=>deleteMoreMenus)
+         // what can result in a crash if we just delete the menu here (#155196 and #165154) So, delay the delete.
+-        delme->deleteLater();
++        if ( delayed ) {
++            delme->deleteLater();
++        } else {
++            delete delme;
++        }
+     }
+ }
+ 
+ int PopupProxy::buildParent( int index, const QRegExp& filter ) {
+-    deleteMoreMenus();
++    deleteMoreMenus(false);
+     // Start from top of  history (again)
+     m_spill_uuid = parent()->history()->empty() ? QByteArray() : parent()->history()->first()->uuid();
+     if ( filter.isValid() ) {
+diff --git a/klipper/popupproxy.h b/klipper/popupproxy.h
+index 910bd6e..c24bab4 100644
+--- a/klipper/popupproxy.h
++++ b/klipper/popupproxy.h
+@@ -76,7 +76,7 @@ private:
+     /**
+      * Delete all "More..." menus current created.
+      */
+-    void deleteMoreMenus();
++    void deleteMoreMenus(bool delayed = false);
+ 
+ private:
+     KMenu* m_proxy_for_menu;
+-- 
+1.7.9.5
+
+
+From bab521d32564a61c50c8ea7722d9ecdf77bfb219 Mon Sep 17 00:00:00 2001
+From: Filip Wieladek <fwi@tribogna.(none)>
+Date: Mon, 4 Jun 2012 09:08:42 +0200
+Subject: [PATCH 2/2] Fix flickering and add delay before rebuilding the popup
+ x
+
+---
+ klipper/klipperpopup.cpp |   17 +++++++++++++++--
+ klipper/klipperpopup.h   |    3 +++
+ 2 files changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/klipper/klipperpopup.cpp b/klipper/klipperpopup.cpp
+index ebdfdd6..b4cad63 100644
+--- a/klipper/klipperpopup.cpp
++++ b/klipper/klipperpopup.cpp
+@@ -37,6 +37,7 @@
+ 
+ namespace {
+     static const int TOP_HISTORY_ITEM_INDEX = 2;
++    static const int REBUILD_DELAY = 350;
+ }
+ 
+ // #define DEBUG_EVENTS__
+@@ -105,7 +106,10 @@ KlipperPopup::KlipperPopup( History* history )
+     int menuWidth = ( screen.width() )  * 1/3;
+ 
+     m_popupProxy = new PopupProxy( this, menuHeight, menuWidth );
+-
++    m_delayTimer = new QTimer( this );
++    
++    m_delayTimer->setSingleShot( true );
++    connect( m_delayTimer, SIGNAL(timeout()), SLOT(timedRebuild()) );
+     connect( this, SIGNAL(aboutToShow()), SLOT(slotAboutToShow()) );
+ }
+ 
+@@ -198,6 +202,7 @@ void KlipperPopup::rebuild( const QString& filter ) {
+     }
+     m_filterWidget->setPalette( palette );
+     m_dirty = false;
++    setFixedSize(QWIDGETSIZE_MAX, QWIDGETSIZE_MAX);
+     setFixedSize(sizeHint());
+ }
+ 
+@@ -277,7 +282,10 @@ void KlipperPopup::keyPressEvent( QKeyEvent* e ) {
+ 
+         if (m_filterWidget->text() != lastString) {
+             m_dirty = true;
+-            rebuild(m_filterWidget->text());
++            QPalette palette = m_filterWidget->palette();
++            palette.setColor(m_filterWidget->foregroundRole(), palette.color(QPalette::Disabled, QPalette::WindowText) );
++            m_filterWidget->setPalette(palette);
++            m_delayTimer->start( REBUILD_DELAY );
+         }
+ 
+         break;
+@@ -285,6 +293,11 @@ void KlipperPopup::keyPressEvent( QKeyEvent* e ) {
+     } //case
+ }
+ 
++void KlipperPopup::timedRebuild()
++{
++  rebuild(m_filterWidget->text());
++}
++
+ 
+ void KlipperPopup::slotSetTopActive()
+ {
+diff --git a/klipper/klipperpopup.h b/klipper/klipperpopup.h
+index 31beff2..bdc7548 100644
+--- a/klipper/klipperpopup.h
++++ b/klipper/klipperpopup.h
+@@ -20,6 +20,7 @@
+ #define KLIPPERPOPUP_H
+ 
+ #include <QtCore/QList>
++#include <QTimer>
+ 
+ #include <KMenu>
+ 
+@@ -62,6 +63,7 @@ public Q_SLOTS:
+      * set the top history item active, to easy kb navigation
+      */
+     void slotSetTopActive();
++    void timedRebuild();
+ 
+ private:
+     void rebuild( const QString& filter = QString() );
+@@ -119,6 +121,7 @@ private:
+      */
+     int m_nHistoryItems;
+ 
++    QTimer* m_delayTimer;
+ };
+ 
+ #endif
+-- 
+1.7.9.5
+

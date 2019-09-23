@@ -1,0 +1,9 @@
+<package name="libquo" project="openSUSE:Factory">
+  <title>run-time tuning of process binding policies made easy</title>
+  <description>libquo, a high-level, easy to use programming interface tailored specifically 
+for MPI/MPI+X codes that may benefit from evolving process binding policies
+during their execution. QUO allows for arbitrary process binding policies to 
+be enacted and reverted during the execution of an MPI/MPI+X application as 
+different computational phases are entered and exited, respectively.</description>
+  <devel project="science" package="libquo"/>
+</package>

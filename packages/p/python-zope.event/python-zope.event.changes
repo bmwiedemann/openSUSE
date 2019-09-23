@@ -1,0 +1,134 @@
+-------------------------------------------------------------------
+Fri Apr  5 06:50:58 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 4.4
+  * Add support for Python 3.6 and 3.7.
+  * Drop support for Python 3.3.
+
+-------------------------------------------------------------------
+Thu Dec  6 11:45:58 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+
+-------------------------------------------------------------------
+Tue Dec  4 12:56:28 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Jun 21 13:43:17 UTC 2017 - jmatejek@suse.com
+
+- use only python3-Sphinx for doc build
+- drop %sitelib redefinition which makes no sense with python-rpm-macros
+
+-------------------------------------------------------------------
+Sat Jun 17 16:25:04 UTC 2017 - okurz@suse.com
+
+- Update to 4.2.0:
+ * Add support for Python 3.5.
+ * Drop support for Python 2.6 and 3.2.
+- Prevent duplicate doc package generation
+- Cleanup duplicates in build tree
+
+-------------------------------------------------------------------
+Sat Jun 17 16:25:00 UTC 2017 - okurz@suse.com
+
+- Update to 4.1.0:
+  * Require 100% branch (as well as statement) coverage.
+  * Add a simple class-based handler implementation.
+
+-------------------------------------------------------------------
+Sat Mar 11 19:49:38 UTC 2017 - okurz@suse.com
+
+- Convert package to singlespec
+
+-------------------------------------------------------------------
+Fri May 15 11:47:32 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 4.0.3:
+  * Added support for Python 3.4.
+  * Updated boostrap.py to version 2.2.
+- obsolete previous versions of python-zope-event, not current
+- rename CHANGES.txt to CHANGES.rst: changed upstream
+- rename README.txt to README.rst: changed upstream
+
+-------------------------------------------------------------------
+Thu Oct 24 11:17:53 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Jul 30 10:45:21 UTC 2013 - hpj@urpla.net
+
+- spell out upstream URL in Source:
+
+-------------------------------------------------------------------
+Mon Jul 29 13:43:57 UTC 2013 - hpj@urpla.net
+
+- generate documantation in separate -doc package
+- replace bz2 tarball with original gz without trailing garbarge
+
+-------------------------------------------------------------------
+Fri Mar 15 13:53:40 UTC 2013 - speilicke@suse.com
+
+- Rename to python-zope.event to match usptream name
+
+-------------------------------------------------------------------
+Tue Jan 15 14:33:50 UTC 2013 - saschpe@suse.de
+
+- Drop the lib dir messing around, the package is noarch
+
+-------------------------------------------------------------------
+Mon Jan 14 14:30:19 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Mon Jan 14 14:29:47 UTC 2013 - p.drouand@gmail.com
+
+- Update to 4.0.2 version:
+  * Fleshed out PyPI Trove classifiers.
+  * Added support for jython 2.7.
+
+-------------------------------------------------------------------
+Tue Jan 24 10:48:37 UTC 2012 - coolo@suse.com
+
+- remove use of %suse_update_libdir
+
+-------------------------------------------------------------------
+Wed Jan 18 17:42:03 UTC 2012 - cdenicolo@suse.com
+
+- license update: ZPL-2.1
+  is ZPL-2-1
+
+-------------------------------------------------------------------
+Thu Jan 12 11:31:11 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Wed Nov 10 15:03:24 UTC 2010 - coolo@novell.com
+
+- fix file list
+
+-------------------------------------------------------------------
+Thu Sep 16 08:28:39 UTC 2010 - coolo@novell.com
+
+- fix build on distributions != 11.3
+
+-------------------------------------------------------------------
+Fri Jun 25 13:08:04 UTC 2010 - hvogel@novell.com
+
+- Ugly hack to make this an arch package. Apparently it does not
+  work to have bundled modules spread over lib/lib64
+
+-------------------------------------------------------------------
+Tue Jun 22 08:58:52 UTC 2010 - hvogel@novell.com
+
+- get rid of buildroot removal in install
+
+-------------------------------------------------------------------
+Wed Jun  2 14:22:10 UTC 2010 - hvogel@novell.com
+
+- Initial Package, Version 3.5.0 
+

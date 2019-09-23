@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Sat Aug 24 16:26:20 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.0.0
+  * Support for jupyterlab 1.0.0
+
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Rename to to match jupyter package naming guidelines.
+
+-------------------------------------------------------------------
+Sat Dec 22 07:18:45 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.7.0
+  * This is the release for JupyterLab beta 2 (v0.32). It includes support for private repositories and GitHub enterprise usage.
+
+-------------------------------------------------------------------
+Fri Aug  3 15:41:19 UTC 2018 - toddrme2178@gmail.com
+
+- Use license file from wheel
+
+-------------------------------------------------------------------
+Thu Aug  2 20:36:33 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.6.1
+  * Minor bugfixes
+
+-------------------------------------------------------------------
+Fri May 18 14:39:58 UTC 2018 - toddrme2178@gmail.com
+
+- Use config tag
+
+-------------------------------------------------------------------
+Fri May 18 12:04:02 UTC 2018 - jengelh@inai.de
+
+- Avoid [[ ]] bashsims.
+
+-------------------------------------------------------------------
+Wed May 16 15:54:57 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.7.2
+  * Support JupyterLab beta 2 (v0.32)
+  * support for private repositories and GitHub enterprise usage.
+  * fix for handling Unicode characters
+- Switch to wheel-based package
+
+-------------------------------------------------------------------
+Tue Feb 13 19:57:16 UTC 2018 - toddrme2178@gmail.com
+
+- Update url
+
+-------------------------------------------------------------------
+Thu Nov 16 17:49:54 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

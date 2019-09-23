@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4baccf69535a43788b5711393b50273a</srcmd5>
+    <version>0.10.4</version>
+    <time>1551276376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>678924</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c25a30e22672a18fa1d1f3f67e989a49</srcmd5>
+    <version>0.10.5</version>
+    <time>1553263232</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.5:
+  * batches: fix handling of session loss
+  * Export normalize_corofunc</comment>
+    <requestid>682110</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d0545fa44223abd489869a3a1a3163b9</srcmd5>
+    <version>0.18.3</version>
+    <time>1560338009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708402</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>54b448fed6fb31da874d96b31e92df2f</srcmd5>
+    <version>0.18.3</version>
+    <time>1564576636</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip tests that actually can poll network</comment>
+    <requestid>720024</requestid>
+  </revision>
+</revisionlist>

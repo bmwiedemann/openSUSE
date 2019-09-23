@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9986fc4a78bf4ceb3ab4543a3bb076e2</srcmd5>
+    <version>0.94.1</version>
+    <time>1306766498</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>71063</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9e7aaab72c6f5c6a230c8484a969db30</srcmd5>
+    <version>0.94.1</version>
+    <time>1306766507</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 71063
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>37dc0e2fe10c5105e7725f8c128da4c6</srcmd5>
+    <version>0.94.1</version>
+    <time>1317024911</time>
+    <user>saschpe</user>
+    <comment>- Spec file cleanup:
+  * Removed %clean section (not needed anymore)
+  * Removed CFLAGS (not a C extension)</comment>
+    <requestid>84083</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>37dc0e2fe10c5105e7725f8c128da4c6</srcmd5>
+    <version>0.94.1</version>
+    <time>1319182390</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>491e69ddf8d3383b5b08003e9e1f24e3</srcmd5>
+    <version>0.94.2</version>
+    <time>1332239584</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>109115</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>491e69ddf8d3383b5b08003e9e1f24e3</srcmd5>
+    <version>0.94.2</version>
+    <time>1340184055</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>491e69ddf8d3383b5b08003e9e1f24e3</srcmd5>
+    <version>0.94.2</version>
+    <time>1359110033</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>491e69ddf8d3383b5b08003e9e1f24e3</srcmd5>
+    <version>0.94.2</version>
+    <time>1379664183</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>0a6a68ad79dbcca86e453ebca1b67366</srcmd5>
+    <version>0.94.2</version>
+    <time>1382692631</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204565</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d953104a89740589bcd58b543a857bfc</srcmd5>
+    <version>0.96.2</version>
+    <time>1387271002</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 210948 from posophe)</comment>
+    <requestid>210949</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>d953104a89740589bcd58b543a857bfc</srcmd5>
+    <version>0.96.2</version>
+    <time>1409302875</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4d11ae11ae6252e5990ba8be4a04b949</srcmd5>
+    <version>1.10.0</version>
+    <time>1431247579</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305740</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b04566546f7f8d003e56dcc04acb4661</srcmd5>
+    <version>1.11.0</version>
+    <time>1456924886</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360910</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>79cf26f7e7efb5e5af2631162808c8a5</srcmd5>
+    <version>1.18.1</version>
+    <time>1565695247</time>
+    <user>dimstar_suse</user>
+    <comment>Update to latest version, with python3 support</comment>
+    <requestid>722259</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a48db6c31731e8adbb08e4738bccd8b8</srcmd5>
+    <version>1.18.1</version>
+    <time>1567581321</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>727966</requestid>
+  </revision>
+</revisionlist>

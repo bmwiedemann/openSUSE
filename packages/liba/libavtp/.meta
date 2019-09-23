@@ -1,0 +1,5 @@
+<package name="libavtp" project="openSUSE:Factory">
+  <title>Open-source implementation of Audio Video Transport Protocol (AVTP)</title>
+  <description></description>
+  <devel project="multimedia:libs" package="libavtp"/>
+</package>

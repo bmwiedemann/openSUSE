@@ -1,0 +1,11 @@
+diff -Nru azure-mgmt-sqlvirtualmachine-0.2.0.orig/setup.py azure-mgmt-sqlvirtualmachine-0.2.0/setup.py
+--- azure-mgmt-sqlvirtualmachine-0.2.0.orig/setup.py	2019-04-08 11:58:23.979889772 +0200
++++ azure-mgmt-sqlvirtualmachine-0.2.0/setup.py	2019-04-08 11:58:32.691970869 +0200
+@@ -81,7 +81,4 @@
+         'msrestazure>=0.4.32,<2.0.0',
+         'azure-common>=1.1',
+     ],
+-    extras_require={
+-        ":python_version<'3.0'": ['azure-mgmt-nspkg'],
+-    }
+ )

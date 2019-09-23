@@ -1,0 +1,241 @@
+From 9652f94119523ab1125b3be435c367913e18869b Mon Sep 17 00:00:00 2001
+From: Antonio Larrosa <alarrosa@suse.com>
+Date: Mon, 18 Mar 2019 16:00:39 +0100
+Subject: [PATCH] Fix PackageKit not emitting network state changed signal when
+ stopped
+
+PackageKit can be configured to shutdown automatically after x seconds
+of inactivity. If a computer doesn't have a network connection and PackageKit
+is shut down (for example because a laptop user takes too long to enter the
+ wifi password) then PackageKit never emits the properties changed signal
+(it can't since it's not running) so PackageKit-Qt never emits the
+networkStateChanged signal and applications like the plasma pk update applet
+never updates its status.
+
+With this commit, a NetworkManagerMonitor class is added that connects
+directly to the NetworkManager's StateChanged signal and emits a
+networkStateChanged signal, so we can react to a network state change
+even when PackageKit is stopped. In this case, we update all properties,
+which triggers PK to run and emits the appropiate PK signals as
+expected.
+---
+ src/CMakeLists.txt            |  1 +
+ src/daemon.h                  |  1 +
+ src/daemonprivate.cpp         | 14 ++++++++
+ src/daemonprivate.h           |  3 ++
+ src/networkmanagermonitor.cpp | 66 +++++++++++++++++++++++++++++++++++
+ src/networkmanagermonitor.h   | 55 +++++++++++++++++++++++++++++
+ 6 files changed, 140 insertions(+)
+ create mode 100644 src/networkmanagermonitor.cpp
+ create mode 100644 src/networkmanagermonitor.h
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 096ebd7..c559dc3 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -24,6 +24,7 @@ set(packagekitqt_SRC
+     transactionprivate.cpp
+     details.cpp
+     offline.cpp
++    networkmanagermonitor.cpp
+ )
+ 
+ find_path(PK_INTERFACES_DIR org.freedesktop.PackageKit.xml
+diff --git a/src/daemon.h b/src/daemon.h
+index 449cf17..51a818f 100644
+--- a/src/daemon.h
++++ b/src/daemon.h
+@@ -869,6 +869,7 @@ private:
+     Q_DECLARE_PRIVATE(Daemon)
+     Q_PRIVATE_SLOT(d_func(), void propertiesChanged(QString,QVariantMap,QStringList))
+     Q_PRIVATE_SLOT(d_func(), void updateProperties(QVariantMap))
++    Q_PRIVATE_SLOT(d_func(), void getAllPropertiesIfPackageKitNotRunning())
+     Daemon(QObject *parent = nullptr);
+     static Daemon *m_global;
+ };
+diff --git a/src/daemonprivate.cpp b/src/daemonprivate.cpp
+index e423916..04cdc60 100644
+--- a/src/daemonprivate.cpp
++++ b/src/daemonprivate.cpp
+@@ -70,6 +70,20 @@ DaemonPrivate::DaemonPrivate(Daemon* parent)
+     });
+ 
+     getAllProperties();
++
++    // If PackageKit is not running, we are not getting a signal when
++    // properties are updated (like when the network changes its state)
++    // so we connect to the NetworkManager dbus signal directly and then
++    // get all properties again to force packagekit to run and
++    // update the properties so we can emit the appropiate signals.
++    q_ptr->connect(&networkManagerMonitor, SIGNAL(networkStateChanged(uint)),
++                   SLOT(getAllPropertiesIfPackageKitNotRunning()));
++}
++
++void DaemonPrivate::getAllPropertiesIfPackageKitNotRunning()
++{
++    if (!running)
++        getAllProperties();
+ }
+ 
+ void DaemonPrivate::getAllProperties()
+diff --git a/src/daemonprivate.h b/src/daemonprivate.h
+index 9bf794c..6ddd1b0 100644
+--- a/src/daemonprivate.h
++++ b/src/daemonprivate.h
+@@ -27,6 +27,7 @@
+ 
+ #include "daemon.h"
+ #include "offline.h"
++#include "networkmanagermonitor.h"
+ 
+ Q_DECLARE_LOGGING_CATEGORY(PACKAGEKITQT_TRANSACTION)
+ Q_DECLARE_LOGGING_CATEGORY(PACKAGEKITQT_DAEMON)
+@@ -72,10 +73,12 @@ protected:
+     uint versionMinor = 0;
+     bool locked = false;
+     bool running = false;
++    NetworkManagerMonitor networkManagerMonitor;
+ 
+ protected Q_SLOTS:
+     void propertiesChanged(const QString &interface, const QVariantMap &properties, const QStringList &invalidatedProperties);
+     void updateProperties(const QVariantMap &properties);
++    void getAllPropertiesIfPackageKitNotRunning();
+ };
+ 
+ } // End namespace PackageKit
+diff --git a/src/networkmanagermonitor.cpp b/src/networkmanagermonitor.cpp
+new file mode 100644
+index 0000000..05ddb87
+--- /dev/null
++++ b/src/networkmanagermonitor.cpp
+@@ -0,0 +1,66 @@
++/*
++ * This file is part of the QPackageKit project
++ * Copyright (C) 2019 Daniel Nicoletti <dantti12@gmail.com>
++ * Copyright (C) 2019 Antonio Larrosa <alarrosa@suse.com>
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Library General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++ * Library General Public License for more details.
++ *
++ * You should have received a copy of the GNU Library General Public License
++ * along with this library; see the file COPYING.LIB. If not, write to
++ * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
++ * Boston, MA 02110-1301, USA.
++ */
++
++#include "networkmanagermonitor.h"
++
++#include <QDBusConnection>
++#include <QDBusMessage>
++#include <QList>
++#include <QVariant>
++#include <QString>
++
++static QString NM_DBUS_SERVICE   = QStringLiteral("org.freedesktop.NetworkManager");
++static QString NM_DBUS_PATH      = QStringLiteral("/org/freedesktop/NetworkManager");
++static QString NM_DBUS_INTERFACE = QStringLiteral("org.freedesktop.NetworkManager");
++
++using namespace PackageKit;
++
++NetworkManagerMonitor::NetworkManagerMonitor(QObject *parent)
++    : QObject(parent)
++{
++    QDBusConnection::systemBus().connect(NM_DBUS_SERVICE,
++                              NM_DBUS_PATH,
++                              NM_DBUS_INTERFACE,
++                              QLatin1String("StateChanged"),
++                              this, SIGNAL(networkStateChanged(uint)));
++}
++
++NetworkManagerMonitor::~NetworkManagerMonitor()
++{
++    QDBusConnection::systemBus().disconnect(NM_DBUS_SERVICE,
++                              NM_DBUS_PATH,
++                              NM_DBUS_INTERFACE,
++                              QLatin1String("StateChanged"),
++                              this, SIGNAL(networkStateChanged(uint)));
++}
++
++NetworkManagerMonitor::NMState NetworkManagerMonitor::state()
++{
++    QDBusMessage message = QDBusMessage::createMethodCall(NM_DBUS_SERVICE,
++                                             NM_DBUS_PATH,
++                                             NM_DBUS_INTERFACE,
++                                             QLatin1String("state"));
++
++    QDBusMessage reply = QDBusConnection::systemBus().call(message);
++    if (reply.arguments().isEmpty()) return NM_STATE_UNKNOWN;
++
++    return static_cast<NMState>(reply.arguments()[0].toUInt());
++}
+diff --git a/src/networkmanagermonitor.h b/src/networkmanagermonitor.h
+new file mode 100644
+index 0000000..16eb25c
+--- /dev/null
++++ b/src/networkmanagermonitor.h
+@@ -0,0 +1,55 @@
++/*
++ * This file is part of the QPackageKit project
++ * Copyright (C) 2019 Daniel Nicoletti <dantti12@gmail.com>
++ * Copyright (C) 2019 Antonio Larrosa <alarrosa@suse.com>
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Library General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++ * Library General Public License for more details.
++ *
++ * You should have received a copy of the GNU Library General Public License
++ * along with this library; see the file COPYING.LIB. If not, write to
++ * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
++ * Boston, MA 02110-1301, USA.
++ */
++
++#ifndef NETWORKMANAGERMONITOR_H
++#define NETWORKMANAGERMONITOR_H
++
++#include <QObject>
++
++namespace PackageKit {
++
++class NetworkManagerMonitor : public QObject
++{
++    Q_OBJECT
++public:
++    enum NMState {
++        NM_STATE_UNKNOWN = 0,
++        NM_STATE_ASLEEP = 10,
++        NM_STATE_DISCONNECTED = 20,
++        NM_STATE_DISCONNECTING = 30,
++        NM_STATE_CONNECTING = 40,
++        NM_STATE_CONNECTED_LOCAL = 50,
++        NM_STATE_CONNECTED_SITE = 60,
++        NM_STATE_CONNECTED_GLOBAL = 70
++    };
++
++    NetworkManagerMonitor(QObject *parent = nullptr);
++    ~NetworkManagerMonitor();
++
++    NMState state();
++
++Q_SIGNALS:
++    void networkStateChanged(uint state);
++};
++
++};
++
++#endif
+-- 
+2.21.0
+

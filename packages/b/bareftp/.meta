@@ -1,0 +1,6 @@
+<package name="bareftp" project="openSUSE:Factory">
+  <title>bareFTP is a file transfer client for FTP/FTPS/SFTP</title>
+  <description>bareFTP is a file transfer client supporting the FTP, FTP over SSL/TLS (FTPS) and SSH File Transfer Protocol (SFTP). It is written in C#, targeting the Mono framework and the GNOME desktop environment.</description>
+  <devel project="GNOME:Apps" package="bareftp"/>
+  <url>http://www.bareftp.org/</url>
+</package>

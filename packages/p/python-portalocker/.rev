@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8af939c9b5365a774f142b7c45c89359</srcmd5>
+    <version>1.2.1</version>
+    <time>1526578400</time>
+    <user>dimstar_suse</user>
+    <comment>Initial packaging effort (changes filename fixed)</comment>
+    <requestid>610091</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>441ad2c9b811df59d144a8f86a6fea74</srcmd5>
+    <version>1.2.1</version>
+    <time>1527582595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610287</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a85af5f2887323f53bf76f0e451dd0f0</srcmd5>
+    <version>1.4.0</version>
+    <time>1550221332</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.0:
+  * no upstream changelog
+- Drop patch portalocker-1.2.1-old-Sphinx.patch</comment>
+    <requestid>674951</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9e3ad7f2d7ac84cb0454cd99b5175290</srcmd5>
+    <version>1.5.0</version>
+    <time>1563914396</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.0:
+  * No upstream changelog
+- Switch to github tarball to include tests</comment>
+    <requestid>717856</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>201ec4125a0ed0cf679f2c72d0da7931</srcmd5>
+    <version>1.5.1</version>
+    <time>1569233168</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.1:
+  * no upstream changelog</comment>
+    <requestid>729892</requestid>
+  </revision>
+</revisionlist>

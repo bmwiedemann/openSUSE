@@ -1,0 +1,28 @@
+<package name="saxon9" project="openSUSE:Factory">
+  <title>The SAXON XSLT Processor from Michael Kay</title>
+  <description>The SAXON package is a collection of tools for processing XML
+documents. The main components are:
+
+* An XSLT processor, which implements the Version 1.0 XSLT and XPath
+   Recommendations from the World Wide Web Consortium, found at
+   http://www.w3.org/TR/1999/REC-xslt-19991116 and
+   http://www.w3.org/TR/1999/REC-xpath-19991116 with a number of
+   powerful extensions. This version of Saxon also includes many of
+   the new features defined in the XSLT 1.1 working draft, but for
+   conformance and portability reasons these are not available if
+   the stylesheet header specifies version=&quot;1.0&quot;.
+
+* A Java library, which supports a similar processing model to XSL,
+   but allows full programming capability, which you need if you
+   want to perform complex processing of the data or to access
+   external services such as a relational database
+
+* A slightly improved version of the Aelfred parser from Microstar.
+   (But you can use SAXON with any SAX-compliant XML parser if you
+   prefer).
+
+So you can use SAXON by writing XSLT stylesheets, by writing Java
+applications, or by any combination of the two.
+</description>
+  <devel project="Java:packages" package="saxon9"/>
+</package>

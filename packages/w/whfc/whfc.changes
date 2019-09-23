@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Mon Nov 13 16:00:21 UTC 2017 - dimstar@opensuse.org
+
+- Rename README.SuSE to README.SUSE, adhering to the correct
+  spelling.
+
+-------------------------------------------------------------------
+Fri Jul 26 10:50:48 UTC 2013 - tchvatal@suse.com
+
+- Fix build for rpm-4.11 and cleanup the spec file.
+
+-------------------------------------------------------------------
+Sat Mar 15 10:51:48 CET 2008 - coolo@suse.de
+
+- fix documentation permissions
+
+-------------------------------------------------------------------
+Thu Mar 29 15:54:50 CEST 2007 - rguenther@suse.de
+
+- add unzip BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:49:02 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Mar 18 12:19:56 CET 2004 - lmuelle@suse.de
+
+- update to version 1.2.3
+
+-------------------------------------------------------------------
+Tue Aug  5 21:22:25 CEST 2003 - lmuelle@suse.de
+
+- fix permissions of documentation sub directory
+- add some more documentation to the install_*.html files
+
+-------------------------------------------------------------------
+Wed Jul 30 09:41:52 CEST 2003 - lmuelle@suse.de
+
+- initial SuSE package with version 1.0.9

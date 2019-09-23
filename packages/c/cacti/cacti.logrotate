@@ -1,0 +1,8 @@
+/var/log/cacti/cacti.log {
+    missingok
+    compress
+    notifempty
+    size 30k
+    su __APACHEUSER__ __APACHEGROUP__
+    create 0660 __APACHEUSER__ __APACHEGROUP__
+}

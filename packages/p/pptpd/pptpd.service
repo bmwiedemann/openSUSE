@@ -1,0 +1,10 @@
+[Unit]
+Description=PPTP Daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/pptpd --fg
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target

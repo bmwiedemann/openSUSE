@@ -1,0 +1,5 @@
+<package name="exodusii" project="openSUSE:Factory">
+  <title></title>
+  <description>Model developed to store and retrieve transient data for finite element analyses</description>
+  <devel project="science" package="exodusii"/>
+</package>

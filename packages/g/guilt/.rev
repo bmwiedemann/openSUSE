@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>9f517425a3cc3d6a6fa3db1a5a8a5cfc</srcmd5>
+    <version>0.30</version>
+    <time>1216434874</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>28635a0823cbd2fd3d9fcc96f2d63010</srcmd5>
+    <version>0.31.2</version>
+    <time>1223459230</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>172f768cb7974052bc1bab62c118d951</srcmd5>
+    <version>0.31.2</version>
+    <time>1228319140</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4339458a0da4b0db61d34f78a1ec3893</srcmd5>
+    <version>0.32</version>
+    <time>1236268003</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4339458a0da4b0db61d34f78a1ec3893</srcmd5>
+    <version>0.32</version>
+    <time>1236268003</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>666a4ee44bdaba180b3c39d84a35d135</srcmd5>
+    <version>0.32</version>
+    <time>1268923912</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>666a4ee44bdaba180b3c39d84a35d135</srcmd5>
+    <version>0.32</version>
+    <time>1278667349</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>666a4ee44bdaba180b3c39d84a35d135</srcmd5>
+    <version>0.32</version>
+    <time>1278678581</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>61d2c34e6a45ef9fbba7df9ead6e38db</srcmd5>
+    <version>unknown</version>
+    <time>1284375135</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/guilt based on submit request 47524 from user bwalle
+</comment>
+    <requestid>47524</requestid>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>36fd71148e3e95b8c4c017a17f8e2a22</srcmd5>
+    <version>0.34</version>
+    <time>1291587783</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54411 from user puzel
+</comment>
+    <requestid>54411</requestid>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>36fd71148e3e95b8c4c017a17f8e2a22</srcmd5>
+    <version>0.34</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>36fd71148e3e95b8c4c017a17f8e2a22</srcmd5>
+    <version>0.34</version>
+    <time>1319181958</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>8fcc5449e461534cf255292508a7d18b</srcmd5>
+    <version>0.34</version>
+    <time>1323191853</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="17">
+    <srcmd5>8fcc5449e461534cf255292508a7d18b</srcmd5>
+    <version>0.34</version>
+    <time>1340183427</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="19">
+    <srcmd5>8fcc5449e461534cf255292508a7d18b</srcmd5>
+    <version>0.34</version>
+    <time>1359109031</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>29afd14112a040e415dc26af10ae44a2</srcmd5>
+    <version>0.35</version>
+    <time>1364239832</time>
+    <user>coolo</user>
+    <comment>update to version 0.35 (forwarded request 160380 from douglarek)</comment>
+    <requestid>160925</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>29afd14112a040e415dc26af10ae44a2</srcmd5>
+    <version>0.35</version>
+    <time>1379662594</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>29afd14112a040e415dc26af10ae44a2</srcmd5>
+    <version>0.35</version>
+    <time>1409301141</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

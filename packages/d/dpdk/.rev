@@ -1,0 +1,414 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>84ef5bbd06707a3a7423bba2dae4809f</srcmd5>
+    <version>2.2.0</version>
+    <time>1466814193</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>404214</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c7e6a55d8093d66cea79be1b221440f1</srcmd5>
+    <version>2.2.0</version>
+    <time>1468482571</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407879</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6329b1cca7a08f5ce42d7a547070d521</srcmd5>
+    <version>2.2.0</version>
+    <time>1470773752</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417973</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ff885e5a2034ec3ece55bcf2026274f0</srcmd5>
+    <version>16.07</version>
+    <time>1476351008</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433604</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>204e1e7374f8627426e1b6d03b21d65f</srcmd5>
+    <version>16.07.1</version>
+    <time>1480420143</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442333</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d3e6caf4982e85e1fdeba2fac1bc763f</srcmd5>
+    <version>16.07.2</version>
+    <time>1480693412</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443000</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5a19d8fd2eb3375a3efd8b0b4c9fa0eb</srcmd5>
+    <version>16.07.2</version>
+    <time>1485769665</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452114</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4275f8cd82f6498f3eaaa0d56f6a120b</srcmd5>
+    <version>16.11</version>
+    <time>1487261227</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457474</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6f1edfd09d8496ff8c07662d0f61927b</srcmd5>
+    <version>16.11</version>
+    <time>1488479384</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460208</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bd033571ad9c441cc206d13e17714934</srcmd5>
+    <version>16.11.1</version>
+    <time>1489415584</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477127</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6dd80fc59fd7736d320a418916eb5673</srcmd5>
+    <version>16.11.1</version>
+    <time>1489759589</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479085</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>d23b18b374f8429ba841f99a7d9b3ccf</srcmd5>
+    <version>16.11.1</version>
+    <time>1490318532</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>481702</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>e0453dad04d20a8773c65af715f27804</srcmd5>
+    <version>16.11.1</version>
+    <time>1491896765</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>485850</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>d126870bbbd9c3cfd0278f707c3bb93d</srcmd5>
+    <version>16.11.1</version>
+    <time>1492714728</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489079</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>b35f92c6ad493ddcad279ce23a012d6d</srcmd5>
+    <version>16.11.1</version>
+    <time>1493363608</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491001</requestid>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>5854d8f8f333c2741e6774d4d03ab3d0</srcmd5>
+    <version>16.11.1</version>
+    <time>1495637488</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497885</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dbf9b073949b98b309ec9d812f5985f3</srcmd5>
+    <version>16.11.2</version>
+    <time>1498120806</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505253</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>b7ac77c2d926e0983895d01c55021c9c</srcmd5>
+    <version>16.11.2</version>
+    <time>1500670146</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511401</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cd19a6b4ba39e4049d1ea13aa52b349f</srcmd5>
+    <version>17.08</version>
+    <time>1505334616</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 17.08(bsc#1050250, bsc#1046598, fate#322913, fate#322608)
+  Some of the new features are listed below:
+   * Increase minimum x86 ISA version to SSE4.2
+   * Added Fail-Safe PMD
+   * Added support for generic flow API (rte_flow) on igb NICs
+   * Added support for generic flow API (rte_flow) on enic
+   * Added support for Chelsio T6 family of adapters
+   * Added latency and performance improvements for cxgbe
+   * Updated mlx5 driver
+   * Added NXP DPAA2 Eventdev PMD
+   * Added dpdk-test-eventdev test application
+   * from 17.05:
+      * Added mbuf raw free API
+      * Added free Tx mbuf on demand API
+      * Added VFIO hotplug support
+      * Added PowerPC support for i40e and its vector PMD
+      * Added VF max bandwidth setting in i40e
+      * Added LiquidIO network PMD
+      * Added support for NXP DPAA2 Network PMD
+      * Added support for NXP DPAA2 - FSLMC bus
+      * Added support for the Wind River Systems AVP PMD
+      * Added vmxnet3 version 3 support
+      * Added MTU feature support to Virtio and Vhost
+      * Added event driven programming model library (rte_eventdev)
+      * Added Software Eventdev PMD
+      * Added Cavium OCTEONTX Eventdev PMD
+      * Added NXP DPAA2 SEC crypto PMD
+   * from 17.02:
+      * Added generic EAL API for I/O device memory read/write operations
+      * Added VF Daemon (VFD) for i40e. - EXPERIMENTAL
+      * Added generic flow API (rte_flow)
+      * Added APIs for MACsec offload support to the ixgbe PMD
+      * Added Solarflare libefx-based network PMD.
+      * Added support for Mellanox ConnectX-5 adapters (mlx5)
+      * Added ARMv8 crypto PMD
+      * Added crypto performance test application
+   * more details can be found in
+     http://dpdk.org/doc/guides/rel_notes/release_17_08.html
+     http://dpdk.org/doc/guides/rel_notes/release_17_05.html
+     http://dpdk.org/doc/guides/rel_notes/release_17_02.html
+    [-0002-kni-define-HAVE_VF_VLAN_PROTO-for-SLES12SP3.patch                                                                                                                                            
+    -0003-kni-define-HAVE_TRANS_START_HELPER-for-SLES12SP3.patch                                                                                                                                       
+    -0004-net-thunderx-sync-mailbox-definitions-with-Linux-PF-.patch                                                                                                                                   
+    -0005-kni-fix-build-with-gcc-7.1.patch                                                                                                                                                             
+    -0006-kni-fix-ethtool-build-with-kernel-4.11.patch                                                                                                                                                 
+    -0007-igb_uio-switch-to-new-irq-function-for-MSI-X.patch]
+- Use updated patch to enable HAVE_TRANS_START_HELPER for SLE12SP3(bsc#1031705).
+  [+ 0002-kni-fix-build-on-SLE12-SP3.patch]
+- Enabled CONFIG_RTE_MAJOR_ABI: libs SONAME equal the DPDK release version
+- Split libs into a subpackage to provide multiple installable versions on same sytem
+- Updated to 17.08(bsc#1050250, bsc#1046598, fate#322913, fate#322608)
+  Some of the new features are listed below:
+   * Increase minimum x86 ISA version to SSE4.2
+   * Added Fail-Safe PMD
+   * Added support for generic flow API (rte_flow) on igb NICs
+   * Added support for generic flow API (rte_flow) on enic
+   * Added support for Chelsio T6 family of adapters
+   * Added latency and performance improvements for cxgbe
+   * Updated mlx5 driver
+   * Added NXP DPAA2 Eventdev PMD
+   * Added dpdk-test-eventdev test application
+   * from 17.05:
+      * Added mbuf raw free API
+      * Added free Tx mbuf on demand API
+      * Added VFIO hotplug support
+      * Added PowerPC support for i40e and its vector PMD
+      * Added VF max bandwidth setting in i40e
+      * Added LiquidIO network PMD
+      * Added support for NXP DPAA2 Network PMD
+      * Added support for NXP DPAA2 - FSLMC bus
+      * Added support for the Wind River Systems AVP PMD
+      * Added vmxnet3 version 3 support
+      * Added MTU feature support to Virtio and Vhost
+      * Added event driven programming model library (rte_eventdev)
+      * Added Software Eventdev PMD
+      * Added Cavium OCTEONTX Eventdev PMD
+      * Added NXP DPAA2 SEC crypto PMD
+   * from 17.02:
+      * Added generic EAL API for I/O device memory read/write operations
+      * Added VF Daemon (VFD) for i40e. - EXPERIMENTAL
+      * Added generic flow API (rte_flow)
+      * Added APIs for MACsec offload support to the ixgbe PMD
+      * Added Solarflare libefx-based network PMD.
+      * Added support for Mellanox ConnectX-5 adapters (mlx5)
+      * Added ARMv8 crypto PMD
+      * Added crypto performance test application
+   * more details can be found in
+     http://dpdk.org/doc/guides/rel_notes/release_17_08.html
+     http://dpdk.org/doc/guides/rel_notes/release_17_05.html
+     http://dpdk.org/doc/guides/rel_notes/release_17_02.html
+    [-0002-kni-define-HAVE_VF_VLAN_PROTO-for-SLES12SP3.patch                                                                                                                                            
+    -0003-kni-define-HAVE_TRANS_START_HELPER-for-SLES12SP3.patch                                                                                                                                       
+    -0004-net-thunderx-sync-mailbox-definitions-with-Linux-PF-.patch                                                                                                                                   
+    -0005-kni-fix-build-with-gcc-7.1.patch                                                                                                                                                             
+    -0006-kni-fix-ethtool-build-with-kernel-4.11.patch                                                                                                                                                 
+    -0007-igb_uio-switch-to-new-irq-function-for-MSI-X.patch]
+- Use updated patch to enable HAVE_TRANS_START_HELPER for SLE12SP3(bsc#1031705).
+  [+ 0002-kni-fix-build-on-SLE12-SP3.patch]
+- Enabled CONFIG_RTE_MAJOR_ABI: libs SONAME equal the DPDK release version
+- Split libs into a subpackage to provide multiple installable versions on same sytem
+</comment>
+    <requestid>522138</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>b18fedd3343971c6e56057b4275c819a</srcmd5>
+    <version>17.08</version>
+    <time>1510761877</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542003</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6cba6c1a55d65835c02518481fc53d9d</srcmd5>
+    <version>17.08.1</version>
+    <time>1513110160</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555955</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>07436467f12d4fa5187ad261cb62125a</srcmd5>
+    <version>17.08.1</version>
+    <time>1514028019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559279</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c69be6b8f9a777ba0541cac3ea7fabd4</srcmd5>
+    <version>17.11</version>
+    <time>1515876394</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563068</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>7df8dd4e3d166d1059504d8ac3410802</srcmd5>
+    <version>17.11</version>
+    <time>1516222657</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566384</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>645bad72ccce344510134fb12f2222b6</srcmd5>
+    <version>17.11.1</version>
+    <time>1520164180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580903</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d846e4417db8d01a0071f6fa3f864548</srcmd5>
+    <version>18.02</version>
+    <time>1520415487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583369</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>30d1b67ffa094f2bf44d815f2aca6bd4</srcmd5>
+    <version>18.02.1</version>
+    <time>1524576853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600117</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b627011efa88bbf2ca04ad2700b2a57c</srcmd5>
+    <version>18.02.2</version>
+    <time>1529501187</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617429</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>2bdd1fc9e2c1158e86d4d5fc1a464fbe</srcmd5>
+    <version>18.02.2</version>
+    <time>1531232122</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621084</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>d593b5a6a8c8490c18a11afa54b0ad34</srcmd5>
+    <version>18.02.2</version>
+    <time>1535705179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632143</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>3efb49ebea1138b25c8bc54a31ef5c09</srcmd5>
+    <version>18.02.2</version>
+    <time>1537882973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637657</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>381e7710afe10cf5fdf0d2b0bf92c4f0</srcmd5>
+    <version>18.02.2</version>
+    <time>1540545032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644668</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>3972e4c62dc01dd85d5bc8b7717e7b22</srcmd5>
+    <version>18.11</version>
+    <time>1549286653</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>668550</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>d44fe6a63a72c67f4bedc5f15a1261fc</srcmd5>
+    <version>18.11</version>
+    <time>1551025248</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678415</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>9041ffdb80dc2adbc2955802290f4555</srcmd5>
+    <version>18.11</version>
+    <time>1552901957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685398</requestid>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>300bb5e06b9cef948c8c79ca8f4af48c</srcmd5>
+    <version>18.11</version>
+    <time>1556622410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699547</requestid>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>6877861b6b0be60f6e6e8e3218c79c7f</srcmd5>
+    <version>18.11</version>
+    <time>1558037284</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703143</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>3b74336a9f6f9ed9a514075950cda6aa</srcmd5>
+    <version>18.11.2</version>
+    <time>1560800103</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710387</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>7aa3b722afb513572efa12d756794f8a</srcmd5>
+    <version>18.11.2</version>
+    <time>1560971658</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710889</requestid>
+  </revision>
+</revisionlist>

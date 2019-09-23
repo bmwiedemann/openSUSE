@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d6ff7956438ffbe354fde946feed016f</srcmd5>
+    <version>0.1.0</version>
+    <time>1557321401</time>
+    <user>dimstar_suse</user>
+    <comment>- Changed requires from salt-saphana to salt-shaptools.
+- Update to version 1.0.0+git.1550242845.0e69ab8:
+  * Allow pre-configured packages
+  * Update package installation to use ha pattern for SUSE distros
+  * Update join_timer parameter description
+  * Allow custom timer before cluster join
+  * Improve pre validation state to check the proper parameters
+  * Create suma form and adapt states to that
+  * Add new feature to the formula: - Ntp connection - SSH keys management - Watchdog - Mandatory pacakges and RA packages
+  * Add new options to configure the cluster in creation
+  * Update ha formula to use crmsh salt code
+  * Updated README and added comment about NET_IP in Vagrantfile
+- Consolidate the SUMA specific package into one .spec file
+- Update to version 1.0.0+git.1536931866.e47f6ce:
+  * Pillar data has to be defined in a separate SLS
+  * Revised pillar data layout to make usage simpler
+  * Drop extraneous dash in join args
+  * Set group in metadata.yml
+- Update to version 1.0.0+git.1536240306.8442de8:
+  * Add metadata.yml
+- Initial version
+ 
+</comment>
+    <requestid>698152</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>42f2a4336374ffe35054f67f1c3641be</srcmd5>
+    <version>0.1.0</version>
+    <time>1559375817</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706511</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>33a2749bc3e2366f1e81cd88387e8d70</srcmd5>
+    <version>0.2.2</version>
+    <time>1562247802</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713173</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>af3691486a85620763280eeca5dfbbbd</srcmd5>
+    <version>0.2.3</version>
+    <time>1563018604</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream version.</comment>
+    <requestid>714881</requestid>
+  </revision>
+</revisionlist>

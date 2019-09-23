@@ -1,0 +1,383 @@
+-------------------------------------------------------------------
+Wed Jun 19 10:08:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild to avoid cycle bsc#1138666
+
+-------------------------------------------------------------------
+Wed Feb 27 13:48:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.8.0:
+  * add ``"importlib"`` pyimport mode for python3.5+, allowing unimportable test suites
+    to contain identically named modules.
+  * fix ``LocalPath.as_cwd()`` not calling ``os.chdir()`` with ``None``, when
+    being invoked from a non-existing directory.
+- Drop merged patch separators.patch
+
+-------------------------------------------------------------------
+Fri Feb 15 11:19:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Make tests never fail as they are borked on pytest-4 with
+  most probably no intention of being ever fixed
+
+-------------------------------------------------------------------
+Fri Feb 15 11:01:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Make tests really pass on pytest 3.x series
+- Add patch to operate better with serparators (from upstream git):
+  * separators.patch
+
+-------------------------------------------------------------------
+Tue Feb 12 14:34:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop the doc subpackage, no need for it really
+- Make sure the tests are realy executed
+
+-------------------------------------------------------------------
+Fri Oct 26 13:07:32 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.7.0
+ * use ``shutil.get_terminal_size()`` in Python 3.3+ to determine the size of the
+  terminal, which produces more accurate results than the previous method.
+ * introduce new ``PY_IGNORE_IMPORTMISMATCH`` environment variable
+  that suppresses ``ImportMismatchError`` exceptions when set to ``1``.
+ * add ``TerminalWriter.width_of_current_line`` (i18n version of
+  ``TerminalWriter.chars_on_current_line``), a read-only property
+  that tracks how wide the current line is, attempting to take
+  into account international characters in the calculation.
+
+-------------------------------------------------------------------
+Thu Aug  2 12:39:13 UTC 2018 - mimi.vx@gmail.com
+
+- update to 1.5.4
+  * don't make assumptions about fs case sensitivity in ``make_numbered_dir``.
+
+-------------------------------------------------------------------
+Thu May 31 04:37:00 UTC 2018 - toddrme2178@gmail.com
+
+- update to version 1.5.3
+  * - fix #179: ensure we can support 'from py.error import ...'
+
+-------------------------------------------------------------------
+Sun Nov 19 05:51:49 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * updated url
+
+- update to version 1.5.2:
+  * fix #169, #170: error importing py.log on Windows: no module named
+    "syslog".
+
+- changes from version 1.5.1:
+  * fix #167 - prevent pip from installing py in unsupported Python
+    versions.
+
+-------------------------------------------------------------------
+Wed Nov 15 07:06:05 UTC 2017 - arun@gmx.de
+
+- update to version 1.5.0:
+  * python 2.6 and 3.3 are no longer supported
+  * deprecate py.std and remove all internal uses
+  * fix #73 turn py.error into an actual module
+  * path join to / no longer produces leading double slashes
+  * fix #82 - remove unsupportable aliases
+  * fix python37 compatibility of path.sysfind on windows by correctly
+    replacing vars
+  * turn iniconfig and apipkg into vendored packages and ease
+    de-vendoring for distributions
+  * fix #68 remove invalid py.test.ensuretemp references
+  * fix #25 - deprecate path.listdir(sort=callable)
+  * add TerminalWriter.chars_on_current_line read-only property that
+    tracks how many characters have been written to the current line.
+
+-------------------------------------------------------------------
+Fri Jun 30 06:02:11 UTC 2017 - aloisio@gmx.com
+
+- Update to 1.4.34
+  * fix issue119 / pytest issue708 where tmpdir may fail to make
+    numbered directories when the filesystem is case-insensitive.
+  1.4.33:
+  * avoid imports in calls to py.path.local().fnmatch(). Thanks
+    Andreas Pelme for the PR.
+  * fix issue106: Naive unicode encoding when calling fspath() in
+    python2. Thanks Tiago Nobrega for the PR.
+  * fix issue110: unittest.TestCase.assertWarns fails with py
+    imported.
+
+-------------------------------------------------------------------
+Thu Feb 23 14:56:48 UTC 2017 - jmatejek@suse.com
+
+- update to 1.4.32
+    - fix issue70: added ability to copy all stat info in py.path.local.copy.
+    - make TerminalWriter.fullwidth a property.  This results in the correct
+      value when the terminal gets resized.
+    - update supported html tags to include recent additions.
+      Thanks Denis Afonso for the PR.
+    - Remove internal code in ``Source.compile`` meant to support earlier Python 3 versions that produced the side effect
+      of leaving ``None`` in ``sys.modules`` when called (see pytest-dev/pytest#2103).
+      Thanks Bruno Oliveira for the PR.
+
+-------------------------------------------------------------------
+Wed Oct  5 14:47:53 UTC 2016 - jmatejek@suse.com
+
+- update for singlespec
+
+-------------------------------------------------------------------
+Sat Sep  3 18:33:49 UTC 2016 - p.drouand@gmail.com
+
+- Update download Url
+
+-------------------------------------------------------------------
+Sat Jul 23 13:23:33 UTC 2016 - michael@stroeder.com
+
+- corrected homepage URL
+- HTTPS URL for pypi source link
+- update to version 1.4.31
+  * fix local().copy(dest, mode=True) to also work with unicode.
+  * pass better error message with svn EEXIST paths
+
+-------------------------------------------------------------------
+Thu Jul  2 10:01:08 UTC 2015 - aj@ajaissle.de
+
+- update to version 1.4.30:
+  * fix issue68 an assert with a multiline list comprehension was not
+    reported correctly. Thanks Henrik Heibuerger.
+
+- changes from version 1.4.29:
+  * fix issue55: revert a change to the statement finding algorithm
+    which is used by pytest for generating tracebacks. Thanks Daniel
+    Hahler for initial analysis.
+  * fix pytest issue254 for when traceback rendering can’t find valid
+    source code. Thanks Ionel Cristian Maries.
+
+-------------------------------------------------------------------
+Tue Jun 30 13:45:03 UTC 2015 - aj@ajaissle.de
+
+- Split documentation into separate package to avoid build loop
+
+-------------------------------------------------------------------
+Mon Jun 22 15:13:02 UTC 2015 - tbechtold@suse.com
+
+- update to 1.4.28:
+  - fix issue64 -- dirpath regression when "abs=True" is passed.
+  - fix issue59: point to new repo site
+  - allow a new ensuresyspath="append" mode for py.path.local.pyimport()
+    so that a neccessary import path is appended instead of prepended to
+    sys.path
+  - strike undocumented, untested argument to py.path.local.pypkgpath
+  - speed up py.path.local.dirpath by a factor of 10
+
+-------------------------------------------------------------------
+Wed Feb  4 14:25:30 UTC 2015 - tbechtold@suse.com
+
+- update to version 1.4.26:
+  - avoid calling normpath twice in py.path.local
+  - py.builtin._reraise properly reraises under Python3 now.
+  - fix issue53 - remove module index, thanks jenisys.
+  - allow posix path separators when "fnmatch" is called.
+    Thanks Christian Long for the complete PR.
+
+-------------------------------------------------------------------
+Sat Sep 27 17:35:17 UTC 2014 - dmueller@suse.com
+
+- update to 1.4.25:
+  - fix issue52: vaguely fix py25 compat of py.path.local (it's not
+  officially supported), also fix docs
+  - fix pytest issue 589: when checking if we have a recursion error
+  check for the specific "maximum recursion depth" text of the exception.
+- update to 1.4.24:
+  - Fix retrieving source when an else: line has an other statement on
+  the same line.
+  - add localpath read_text/write_text/read_bytes/write_bytes methods
+  as shortcuts and clearer bytes/text interfaces for read/write.
+  Adapted from a PR from Paul Moore.
+- update to 1.4.23:
+  - use newer apipkg version which makes attribute access on
+   alias modules resolve to None rather than an ImportError.
+   This helps with code that uses inspect.getframeinfo()
+   on py34 which causes a complete walk on sys.modules
+   thus triggering the alias module to resolve and blowing
+   up with ImportError.  The negative side is that something
+   like "py.test.X" will now result in None instead of "importerror: pytest"
+   if pytest is not installed.  But you shouldn't import "py.test" 
+   anyway anymore.
+ - adapt one svn test to only check for any exception instead 
+   of specific ones because different svn versions cause different
+   errors and we don't care.
+
+-------------------------------------------------------------------
+Wed Jul 30 07:50:37 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 1.4.22
+  - refactor class-level registry on ForkedFunc child start/finish
+    event to become instance based (i.e. passed into the constructor)
+- Update to 1.4.21
+  - ForkedFunc now has class-level register_on_start/on_exit()
+    methods to allow adding information in the boxed process.
+    Thanks Marc Schlaich.
+  - ForkedFunc in the child opens in "auto-flush" mode for
+    stdout/stderr so that when a subprocess dies you can see
+    its output even if it didn't flush itself.
+  - refactor traceback generation in light of pytest issue 364
+    (shortening tracebacks).   you can now set a new traceback style 
+    on a per-entry basis such that a caller can force entries to be 
+    isplayed as short or long entries.
+  - win32: py.path.local.sysfind(name) will preferrably return files with
+    extensions so that if "X" and "X.bat" or "X.exe" is on the PATH,
+    one of the latter two will be returned.
+
+-------------------------------------------------------------------
+Tue May  6 11:39:52 UTC 2014 - osynge@suse.com
+
+- Removed unnessisary dependency on python-setuptools especially as this 
+  causes a conflict with SLE11sp3
+
+-------------------------------------------------------------------
+Wed Mar 12 16:08:39 UTC 2014 - speilicke@suse.com
+
+- Update to version 1.4.20:
+  + ignore unicode decode errors in xmlescape.  Thanks Anatoly Bubenkoff.
+  + on python2 modify traceback.format_exception_only to match python3 
+    behaviour, namely trying to print unicode for Exception instances
+  + use a safer way for serializing exception reports (helps to fix
+    pytest issue413)
+- Drop %check section, we never ran tests. That would need python-pytest
+  and introduce a cycle
+
+-------------------------------------------------------------------
+Fri Jan  3 08:30:42 UTC 2014 - mvyskocil@suse.com
+
+- update to 1.4.19:
+  - merge in apipkg fixes
+  - some micro-optimizations in py/_code/code.py for speeding
+    up pytest runs.  Thanks Alex Gaynor for initiative.
+  - check PY_COLORS=1 or PY_COLORS=0 to force coloring/not-coloring
+    for py.io.TerminalWriter() independently from capabilities
+    of the output file.  Thanks Marc Abramowitz for the PR.
+  - some fixes to unicode handling in assertion handling.
+    Thanks for the PR to Floris Bruynooghe.  (This helps
+    to fix pytest issue 319).
+  - depend on setuptools presence, remove distribute_setup
+
+-------------------------------------------------------------------
+Sun Dec  8 21:10:33 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.4.18
+  + introduce path.ensure_dir() as a synonym for ensure(..., dir=1)
+  + some unicode/python3 related fixes wrt to path manipulations
+    (if you start passing unicode particular in py2 you might 
+    still get problems, though)
+- Changes from 1.4.17
+  + make py.io.TerminalWriter() prefer colorama if it is available
+    and avoid empty lines when separator-lines are printed by
+    being defensive and reducing the working terminalwidth by 1
+  + introduce optional "expanduser" argument to py.path.local
+    to that local("~", expanduser=True) gives the home
+    directory of "user".
+- Changes from 1.4.16
+  + fix issue35 - define __gt__ ordering between a local path
+    and strings
+  + fix issue36 - make chdir() work even if os.getcwd() fails.
+  + add path.exists/isdir/isfile/islink shortcuts
+  + introduce local path.as_cwd() context manager.
+  + introduce p.write(ensure=1) and p.open(ensure=1)
+    where ensure triggers creation of neccessary parent dirs.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:10:27 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Jun 25 11:45:11 UTC 2013 - dmueller@suse.com
+
+- update to 1.4.15:
+  - majorly speed up some common calling patterns with
+    LocalPath.listdir()/join/check/stat functions considerably.
+  - fix an edge case with fnmatch where a glob style pattern appeared
+    in an absolute path.
+
+-------------------------------------------------------------------
+Mon May 27 14:08:03 UTC 2013 - dmueller@suse.com
+
+- update to 1.4.14:
+ - fix dupfile to work with files that don't carry a mode.
+ - fix getting statementrange/compiling a file ending
+   in a comment line without newline (on python2.5)
+ - for local paths you can pass "mode=True" to a copy()
+   in order to copy permission bits (underlying mechanism
+   is using shutil.copymode)
+ - add paths arguments to py.path.local.sysfind to restrict
+   search to the diretories in the path.
+ - add isdir/isfile/islink to path.stat() objects allowing to perform
+   multiple checks without calling out multiple times
+ - drop py.path.local.__new__ in favour of a simpler __init__
+ - iniconfig: allow "name:value" settings in config files, no space after
+   "name" required
+ - fix issue 27 - NameError in unlikely untested case of saferepr
+
+-------------------------------------------------------------------
+Sat Jan 12 16:41:46 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Sat Jan 12 16:40:43 UTC 2013 - p.drouand@gmail.com
+
+- Update to 1.4.12 version:
+  * fix python2.4 support - for pre-AST interpreters re-introduce 
+    old way to find statements in exceptions (closes pytest issue 209)
+  * add tox.ini to distribution
+  * fix issue23 - print *,** args information in tracebacks,
+    thanks Manuel Jacob
+
+-------------------------------------------------------------------
+Fri Jun 22 13:34:17 UTC 2012 - saschpe@suse.de
+
+- Update to version 1.4.9:
+  + fix bug of path.visit() which would not recognize glob-style patterns
+    for the "rec" recursion argument
+  + changed iniconfig parsing to better conform, now the chars ";"
+    and "#" only mark a comment at the stripped start of a line
+  + include recent apipkg-1.2
+  + change internal terminalwriter.line/reline logic to more nicely
+    support file spinners
+- Changes from version 1.4.8:
+  + fix issue 13 - correct handling of the tag name object in xmlgen
+  + fix issue 14 - support raw attribute values in xmlgen
+  + fix windows terminalwriter printing/re-line problem
+  + update distribute_setup.py to 0.6.27
+
+-------------------------------------------------------------------
+Mon Feb 20 22:04:23 UTC 2012 - saschpe@gmx.de
+
+- Update to version 1.4.7:
+  * fix issue11 - own test failure with python3.3 / Thanks Benjamin Peterson
+  * help fix pytest issue 102
+- Changes from version 1.4.6:
+  * help to fix pytest issue99: unify output of 
+    ExceptionInfo.getrepr(style="native") with ...(style="long")
+  * fix issue7: source.getstatementrange() now raises proper error
+    if no valid statement can be found
+  * fix issue8: fix code and tests of svnurl/svnwc to work on subversion 1.7 - 
+    note that path.status(updates=1) will not properly work svn-17's status 
+    --xml output is broken.
+  * make source.getstatementrange() more resilent about non-python code frames
+    (as seen from jnja2)
+  * make trackeback recursion detection more resilent
+    about the eval magic of a decorator library
+  * iniconfig: add support for ; as comment starter
+  * properly handle lists in xmlgen on python3
+  * normalize py.code.getfslineno(obj) to always return a (string, int) tuple
+    defaulting to ("", -1) respectively if no source code can be found for obj.
+- Changes from version 1.4.5:
+  * improve some unicode handling in terminalwriter and capturing
+- Spec file cleanup:
+  * BuildRequire python-distribute instead of setuptools
+  * Simplified macro usage
+  * Removed outdated %clean section
+
+-------------------------------------------------------------------
+Thu Jul 14 08:48:35 UTC 2011 - saschpe@suse.de
+
+- Initial version
+

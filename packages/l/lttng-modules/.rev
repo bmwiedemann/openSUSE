@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5e7df35e1f4c36bcb55778c55b2b8a6e</srcmd5>
+    <version>2.10.3</version>
+    <time>1511086332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539049</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d8f1b4c0132120499990a52d76acc8aa</srcmd5>
+    <version>2.10.4</version>
+    <time>1514679258</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560614</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>80d34d0b809f412a954d701b3ab27d00</srcmd5>
+    <version>2.10.4</version>
+    <time>1516804355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568860</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>033ee98b12b46d8121881ea3941e8665</srcmd5>
+    <version>2.10.5</version>
+    <time>1517932140</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573003</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7597698bc4729df4b854d38d2f25ae3b</srcmd5>
+    <version>2.10.5</version>
+    <time>1523448007</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594912</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d24344f93552492a54ff22f31d60c2c1</srcmd5>
+    <version>2.10.6</version>
+    <time>1529501599</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617807</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b134878c4e53be43b2de6d3508af66bd</srcmd5>
+    <version>2.10.7</version>
+    <time>1535123470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631141</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5e025c4c3141165fe669b852061ba374</srcmd5>
+    <version>2.10.8</version>
+    <time>1542282114</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10.8.</comment>
+    <requestid>649120</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>156dbb994d31edc33391860c59030e2a</srcmd5>
+    <version>2.10.8</version>
+    <time>1548537745</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lttng-modules-2.10.8-update-instrumentation-for-linux-4.20.patch.</comment>
+    <requestid>668645</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>60a977ab96aaf12547097ec059a739a3</srcmd5>
+    <version>2.10.9</version>
+    <time>1555928821</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696506</requestid>
+  </revision>
+</revisionlist>

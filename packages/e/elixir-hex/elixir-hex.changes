@@ -1,0 +1,839 @@
+-------------------------------------------------------------------
+Wed Nov 14 22:29:09 UTC 2018 - g.santomaggio@gmail.com
+
+- Update to version v0.18.2:
+  * Add checks before publishing docs
+  * Update generated protobuf files for Registry with OTP 21 compatibility
+  * No longer list tasks in mix hex task
+  * Use hexdocs organization URLs
+  * Adds --dry-run option to publish tasks
+  * Do not print "Unchanged" dependencies on mix deps.get in green
+  * Validate hex config keys
+  * Add c_src/ and Makefile to default package files
+  * Publish Mix task docs on https://hexdocs.pm/hex
+  * Add recommendation when retiring and require --message flag
+  * Fix Use rebar3, not rebar, when guessing build tool
+  * Fix  issue saving write key when reseting local password
+- Update to version v0.18.1:
+  * Fix normalization of repo paths when authenticating organization
+- Update to version v0.18.0:
+  * Add --yes flag to hex.publish for publishing without any confirmation prompts
+  * Add HEX_API_KEY environment variable for setting and overriding the key used when authenticating against the API
+  * Generate a single key for all organization repositories when authenticating a new user
+  * Return a non-zero exit code from hex.outdated when dependencies are outdated
+  * Generate two API keys when authenticating, one encrypted with write access, and one unencrypted with only read access
+  * Add ownership levels to hex.owner task
+  * When resolving, try all possible backtrack branches and select the best solution
+  * Improve formatting of multi-line validation errors
+  * Do not use :maintainers package configuration field
+  * Change hex.organization to generate keys owned by organization instead of the user generating them
+  * Add options to hex.organization key for revoking and listing keys owned by organization
+  * Improve interface for hex.user key and hex.organization key,
+  * Full release notes: https://github.com/hexpm/hex/releases/tag/v0.18.0
+- Update to version v0.17.8:
+  * Fix private packages on Windows
+ 
+-------------------------------------------------------------------
+Sun May 27 16:55:04 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version v0.17.7:
+  * Bump to v0.7.6-dev
+  * Fix ArgumentError when printing http error
+  * Warn if using insecure SSL
+  * Add support for yellow error messages
+  * Move shell functions to separate module
+  * Fix typo in 7ab3426
+  * Always fetch new registry if it's older than 7 days
+  * Include build_tools in package metadata
+  * Hex.Shell print
+  * Update hex_web
+  * Print package metadata smarter
+  * Bump to v0.8.0-dev
+  * Update changelog
+  * Use postgres 9.4 on travis
+  * Release v0.8.0
+  * Bump to v0.8.1-dev
+  * Update publish task docs
+  * Warn if registry file is missing when loading deps
+  * Fix syntax error
+  * Unload hex for test compilation
+  * Util => Utils
+  * Print a link to the CoC when publishing packages
+  * Add multiple build tools to metadata
+  * Add optional requirements for activated dep
+  * Release v0.8.1
+  * Bump to v0.8.2-dev
+  * Send build_tools metadata correctly
+  * Update hex_web
+  * Sort resolver results
+  * Release v0.8.2
+  * Bump to v0.8.3-dev
+  * add test case for incorrect ca_bit
+  * fix invalid ca_bit
+  * Clean up SSL tests
+  * Move certs to test fixtures
+  * Update changelog
+  * Release v0.8.3
+  * Bump to v0.8.4-dev
+  * Be more straight-forward in coc message
+  * Fix certificate tests
+  * Remove old manifest support
+  * Support new SCM.managers
+  * Add missing Registry.get_build_tools
+  * Make Hex a proper OTP application
+  * Update CA store
+  * warn if files are missing
+  * Cleanup Hex defaults definition
+  * Use Application behaviour for Hex
+  * Start `:httpc` and set its options in one place
+  * Simplify missing files filtering on publish
+  * Support elixir master
+  * Change API URL to use full path
+  * Document environment variables
+  * improve locked dep error message
+  * Suppress warning in `Hex.Resolver`
+  * Introduce "hex.registry" Mix task
+  * Add support for offline mode
+  * Improve error messages for tar extraction
+  * add build task
+  * refactor build and publish mix tasks
+  * move mix/tasks/hex/utils.ex to mix/tasks/utils.ex
+  * Fix crash when missing override
+  * Avoid generic Dict when possible
+  * HashDict to Map
+  * Fix warnings
+  * Update changelog
+  * Bump to v0.9.0-dev
+  * Set correct API url
+  * UTF8 encode metadata
+  * Only list missing files if files is set by user
+  * Don't use deprecated package endpoint
+  * Make displayed resolution errors unique
+  * Update erlang and elixir version on travis
+  * Fix Set implementation decision based on elixir version
+  * MapSet => Set
+  * Sort backtrack parents for consistency
+  * Fix backtrack parent sorting
+  * Update changelog
+  * Correct missing registry warning
+  * Make hex.outdated task recursive
+  * Update `@shortdoc`s to starndardized Elixir format
+  * Update `@moduledoc`s to starndardized Elixir format
+  * Title case Hex
+  * Do not raise on bad data in a users old lock
+  * Add support for server name indication
+  * Add HEX_UNSAFE_HTTPS for disabling certificate checking
+  * Rename :contributors metadata to :maintainers
+  * Update hex_web
+  * Only use MapSet on Elixir 1.2+
+  * Release v0.9.0
+  * Bump to v0.9.1-dev
+  * Add proxy auth
+  * Update release instructions with csv signing
+  * Fix proxy config when there is no userinfo
+  * Run elixir master with correct OTP release
+  * Drop master from 17.5 build matrix
+  * Update release instructions
+  * Add build versions to hex.info
+  * Add compressed registry size to hex.info
+  * Avoid loop in resolver backtracking
+  * Don't remove all backtrack messages
+  * Clean up backtracking logic
+  * Track all states we've visited to avoid infinite loops
+  * Use local.hex on travis
+  * Update config.ex
+  * Raise error if package description is missing
+  * use Hex.Build to validate description in meta
+  * Raise error if any of the required fields are missing when publishing a package
+  * Typo fix
+  * Remove path spec functions
+  * Handle S3 errors better
+  * Simplify resolver backtracking with body recursion
+  * Merge backtrack messages that only differ in version
+  * Run integration tests by default
+  * Support elixir master
+  * Do not say resolution completed successfully
+  * Fix backtrack version sorting
+  * Fix indentation
+  * Skip cert validation test until we fix it
+  * Improve outdated task output
+  * add mix hex.owner packages task
+  * Fix tests on 1.0.5
+  * Fix warnings on elixir master
+  * Remove compatibilities with 0.8.3
+  * Update certificates
+  * Move HexTest.Case to its own file
+  * Ensure http proxy authentication is supplied in calls to `:httpc.request`
+  * Handle missing requirements and raise on them
+  * Remove hex_web dependency
+  * Fix outdated task
+  * Move mix integration tests to separate case
+  * add version number for search output
+  * Wait after listening to stdio
+  * Clone hex_web in travis tests
+  * Fix travis tests
+  * Fix failing tests
+  * remove test duplication from build and publish task
+  * Document hex_web dependency
+  * Fix app and package name mix when loading from lock
+  * Fix failing tests on elixir master
+  * Stop printing "Running dependency resolution"
+  * Fix regressed outdated output
+  * Suggest adding ex_doc if docs task is missing when running hex.docs
+  * Revert "Stop printing "Running dependency resolution""
+  * Tweak missing docs task error
+  * Fix docs task to actually reraise
+  * Change mix hex.info package output
+  * Specify Elixir version requirement
+  * Do not show the unpacking of a package
+  * Correct indentation of Config entry in the info task
+  * Fix hex.info tests
+  * Separate printing from formatting in the hex.info task
+  * Tidy up Hex.SCM
+  * Tidy up Hex.Resolver
+  * [Solution#172] raises a Mix.Error instead of choking on invalid requirements (only fot hex requirements)
+  * Eliminate spaces after [ and before ] in mix_task_test.exs
+  * Check versions in Registry before package requirement validation
+  * Tidy up Hex.RemoteConverger.prepare_locked/3
+  * Show only last 10 releases in hex.info task
+  * Eliminate spaces after [ and before ] in every place
+  * Tidy up modules purging in tests
+  * Refine hex.info task output
+  * Improve release samples naming
+  * Fix Task.find warning
+  * Handle DOWN messages in Parallel
+  * Fix bug when umbrella child has dependency with :only
+  * Handle crashing parallel task
+  * Only warn on missing dependency requirement
+  * Update changelog
+  * Print OTP version hex.info task
+  * Remove "v" prefix from all versions
+  * Release v0.10.0
+  * Bump to v0.10.1-dev
+  * Fixed typo: Hex.shell => Hex.Shell
+  * Add release script
+  * Upload releases to /installs
+  * Release v0.10.1
+  * Bump to v0.10.2-dev
+  * Optimize down_to to return only the overridden_parents map
+  * Add Version cache
+  * Calculate top_level once
+  * Reduce memory pressure from storing backtracks
+  * Clean up some resolver code
+  * Add experimental backtracking resolver
+  * Start Version ets table directly in supervisor
+  * Merge backtrack messages with similar parents
+  * Try converting lists of versions to ranges
+  * Remove "From" from backtrack messages
+  * Run hex_web with custom elixir and OTP version on travis
+  * Release v0.10.2
+  * Bump to v0.10.3-dev
+  * Do not include deps that are not part of the tree
+  * tests(Hex.Mix): add tests for flatten_deps
+  * tests(Hex.Mix): add tests for overriding dependencies
+  * Release v0.10.3
+  * Bump to v0.10.4-dev
+  * Catch an empty search result
+  * Move lookup_packages definition to the end of file
+  * Only backtrack on the parent where requirement failed
+  * Ensure parent versions are unique after merging
+  * Fix merging of overlapping parent and package versions
+  * Ensure registry can be opened/closed multiple times
+  * Make experimental resolver the default
+  * Release v0.10.4
+  * Bump to v0.10.5-dev
+  * Append the OTP version to the user_agent function
+  * Fix errors raised on invalid version
+  * Ensure integration tests pass against hex_web
+  * Only compare against built minor version
+  * use the included otp_release function
+  * Fix stdout printing from hex_web
+  * Fix elixir 1.3.0-dev warnings
+  * Fix loop when backtracking in resolver
+  * Optimize memory usage of state tracking
+  * Increase Agent timeouts
+  * Improve http request timeout errors
+  * Warn on non-supported dependency options
+  * Add --pre flag to hex.outdated, default to false
+  * Use erlang binary term encoding
+  * Use correct package name when publish docs
+  * Pass canonical url to ex_doc
+  * Use https for hexdocs
+  * Add mix hex.outdated APP
+  * Emulate Version.match? :allow_pre
+  * Don't emulate :allow_pre when available
+  * Fix build for OTP 17.5 and Elixir master
+  * Do not use with, older elixirs are supported
+  * Add Hex.Registry.all_packages/0
+  * Optimize version cache memory usage
+  * Extract ets registry to allow for multiple implementations
+  * Update certificates
+  * Update changelog
+  * Do not use Mix.Dep struct inside resolver
+  * Add missing registry callbacks
+  * Explicitly open registry and clean pdict
+  * Release v0.11.0
+  * Bump to v0.11.1-dev
+  * Fix update hex warning
+  * Fix parsing of requirements without spaces
+  * Release v0.11.1
+  * Bump to v0.11.2-dev
+  * Show local time in hex.info
+  * Return headers from API.request
+  * Verify registry signature
+  * Fetch bypass from git
+  * Add hex.public_keys remove
+  * Improve missing registry error message
+  * Fix deps.update unlock regression
+  * Warn on HEX_CDN deprecation
+  * Fix if-none-match on fastly
+  * Disable pipelining for fastly
+  * Tweak performance for faster CDNs
+  * Clean up some task args
+  * Add hex.config key --delete
+  * Improve HEX_CDN deprecation message
+  * Change over to fastly
+  * Fetch registry if it's missing or known to be old
+  * Release v0.11.2
+  * Bump to v0.11.3-dev
+  * Set cache metadata in release script
+  * Do not crash if registry fails to fetch
+  * Remove force update of registry if older than a weel
+  * Remove redundant :update option to ensure_registry
+  * Fix clause order in signature_fetch_fail
+  * Fix hex version warnings on travis
+  * Fix :socket_closed_remotely error on travis
+  * Release v0.11.3
+  * Bump to v0.11.4-dev
+  * Correctly show update notification
+  * Raise in hex.info if registry failed
+  * Use https to fastly
+  * Improve config documentation
+  * Clean up unneeded variable and remove extra spaces
+  * Clean up inconsistencies
+  * Remove duplicate parents from backtrack messages
+  * If latest is a pre-release include them
+  * Prepare for lock changes
+  * Update changelog
+  * Release v0.11.4
+  * Release v0.11.5-dev
+  * Measure fetch and load time for registry
+  * Only print update message once per run
+  * Add more registry data to hex.info
+  * Fix some missing future-proofing of lock
+  * Fix interactive staging error
+  * Fix interactive staging error
+  * Update changelog
+  * Release v0.11.5
+  * Bump to v0.11.6-dev
+  * Add checksum to lock
+  * Align deps fetching output from scm
+  * Bump to 0.12.0-dev
+  * Add managers and deps to lock
+  * Use custom domain for hex.pm repo
+  * Link to policies when registering account
+  * Fix compilation errors on elixir master
+  * Merge subsets of parents on conflict messages
+  * Improve conflict messages
+  * Revert "Merge subsets of parents on conflict messages"
+  * Remove custom parent sorting
+  * update code of conduct links
+  * Update docs.ex
+  * Removed redundant usage "against" in warning (#228)
+  * Fix unsafe_https config
+  * Show app name of dependency in hex.info
+  * Warn about long package descriptions (#230)
+  * Update changelog
+  * Release v0.12.0
+  * Bump to v0.12.1-dev
+  * Fix changelog language
+  * Fix release script
+  * Fix tests against updated hex_web
+  * Fix some TODOs
+  * Fix crash for multiple backtrack messages
+  * Add script for making new rebar releases
+  * Only show proxy settings when MIX_DEBUG=1
+  * System.exit => System.halt
+  * Add retries to idempotent requests
+  * Release v0.12.1
+  * Bump to v0.12.2-dev
+  * Inform about new Hex version in mix hex.info
+  * Further add missing to_string in backtrack messages
+  * Add elixir 1.2.6 to release script
+  * Unload unpacked archives
+  * Try to fix travis errors
+  * Fix build on v1.2.1 (#236)
+  * Fix spelling of "registry" and deindent lines
+  * Fix Elixir 1.4 warnings
+  * Fix some Elixir 1.4 warnings (#237)
+  * Added extra meta field for package (#234)
+  * Improve task shortdocs (#238)
+  * Print checksum when building and publishing
+  * Fix Hex.Tar.create usage (#239)
+  * Do not use global state in resolver
+  * Warn if using registry from cache
+  * Move table code to utils for sharing
+  * Show creation time of API keys
+  * Fix no backtrack output from resolver
+  * Fix some warnings
+  * Check for broken SNI in :ssl app
+  * Pipeline http requests
+  * Verify dependencies from registry against lock
+  * Update travis build matrix and use elixir 1.3 for hex_web
+  * Install rebar on travis for hex_web deps
+  * Update deps and use rebar3 for erlang deps
+  * Install rebar3 for hex also
+  * Encrypt local API key (#244)
+  * No longer support elixir configs
+  * Default to rebar3 build tool instead of rebar2
+  * Don't base16 encode salt
+  * Mention overrides and pre-releases in resolver error
+  * Base16 encode cipher and salt in config
+  * Simplify pbkdf2 guards
+  * Improve error message if invalid dep config in registry
+  * Fix encrypted key base16 encoding case
+  * Remove encrypted key and salt when deauthing
+  * Downcase checksum when a package is published
+  * Add tests for Hex.Tasks.Hex
+  * Add tests for mix hex.owner packages
+  * Fix key test after HTTP API changes
+  * Add workaround for prune_deps in Elixir 1.4-dev
+  * Add docs for mix.hex config KEY --delete (#260)
+  * Provide Mix tasks for fetching and opening docs (#245)
+  * Default to "mix" as build tool
+  * Admins will not revert your package
+  * Ask for credentials later when publishing
+  * Map.new not available on older Elixir versions
+  * Add KeyManager and ContentEncryptor to handle encryption of api key (#255)
+  * Color hex_web output blue in tests
+  * Use MIX_NO_DEPS in tests
+  * Use elixir v1.3.2 on travis
+  * Support for revocation of all keys and removal from local config (#256)
+  * Password => passphrase for encrypted API key
+  * Add mix hex.user passphrase task
+  * Indent by four spaces instead of using backticks in docs
+  * Fix dangling }
+  * Fix message when encrypting API key after registering
+  * Indent all task examples
+  * Verify certificate against correct hostname after redirect
+  * Bump to v0.13.0-dev and update changelog
+  * Remove all references to Dict (which is deprecated) (#266)
+  * Disable all certificate validation tests
+  * Improve messages after successful publish
+  * Add status messages when publishing and reverting
+  * Test repo is scoped under /repo
+  * Set :canonical correctly when calling ex_doc
+  * Start Hex in docs task
+  * Fix progress newlines output
+  * Revert back to rescuing docs task
+  * Do not show table when app do not have Hex deps (#275)
+  * List root dependencies in umbrella projects (#276)
+  * Release v0.13.0
+  * Bump to v0.13.1-dev
+  * Convert all warnings when building a pkg on errors (#277)
+  * Add test for hex.outdated in umbrella projects (#278)
+  * Fix error message (#280)
+  * Avoid to handle `error` as extra argument in functions (#281)
+  * Revert "No longer support elixir configs"
+  * Read elixir configs and update to new format
+  * No need for explicit ending :reset with IO.ANSI.format/1
+  * Hex.Build refactoring (#286)
+  * Improve printing in Hex.Outdated task
+  * Rename table/2 –> print_table/2 in Mix.Hex.Utils
+  * Tidy up helper functions for Mix.Hex.Utils.print_table/2
+  * Remove unnecessary !! operation, and use better variable name
+  * Negating HEX_UNSAFE_REGISTRY value #285 (#287)
+  * Release v0.13.1
+  * Bump to v0.13.2-dev
+  * Only error on non-Hex deps when building
+  * Release v0.13.2
+  * Bump to v0.13.3-dev
+  * Remove csv files
+  * Adding --offline option to hex.docs open (#292)
+  * Modify hex docs.open to fetch docs if not present locally (#293)
+  * Polish the deprecation message in "mix hex.docs" (#294)
+  * Rename is_missing –> missing? in hex.docs task
+  * Update certstore
+  * Fix task error consistency issues
+  * Fix task tests
+  * Only support secure ciphers
+  * Do not generate duplicate build tools
+  * Fix location of generated html files (#301)
+  * Use longer password in tests
+  * Fix test/mix/tasks/hex/user_test.exs
+  * Improve tests against hex_web
+  * Use new hex_web auth test endpoint
+  * Add slack notification to travis
+  * Add registry v2
+  * Persist ETS cache
+  * Update plug
+  * Improve resolver error messages
+  * Add hex version checking for registry v2
+  * Try to avoid httpc race conditions in tests
+  * Fix prefetch crash
+  * Bump to v0.14.0-dev
+  * Fix consistency in hex.docs task docs
+  * Escape atoms in mix hex.info config example
+  * Fix warnings for all Elixir versions
+  * Version.parse! => Version.parse for version compatability
+  * Fix mix.lock for older Elixir versions
+  * Remove dialyzer attributes for OTP 17 compatability
+  * Fix table printing in hex.search task
+  * Do not drop managers from lock
+  * Remove leftover IEx.pry
+  * Store managers in manifest
+  * Fix master rebase issues
+  * Add private task for manually installing hex
+  * Check for updates in hex.info task
+  * Hard code some hex.pm website links
+  * Add error messages for registry fetch failures
+  * Also preload from old lock
+  * Do not document canonical URL
+  * Fix failing owner test
+  * Do not support SSLv3
+  * Fix hex.docs docs
+  * Update changelog
+  * Fix managers in lock for already fetched deps
+  * Release v0.14.0
+  * Bump to v0.14.1-dev
+  * Use proper URLs for links in tests
+  * Fix elixir 1.0.x compatibility (#307)
+  * Make sure we guess unique build tools
+  * Handle nil build_tools
+  * hex.docs now opens with xdg-open for non OSX unix systems (#311)
+  * Prepend csv on release
+  * Fix hex.install task
+  * Do not crash on diverged deps with conflicting SCMs
+  * HTTP should time out before GenServer
+  * Persist cache after remote converger
+  * Fix duplicate requests on slow networks
+  * Fix duplicate update checks
+  * Optimize cipher filtering
+  * Add Hex.Set.new/1
+  * Limit concurrent registry http requests
+  * Fix Hex.Set.new for older Elixir versions
+  * Update changelog
+  * Release v0.14.1
+  * Bump to v0.14.2-dev
+  * Build hex-1.x.csv in correct order
+  * Restore including latest version with hex.search (#324)
+  * Do not make conditional HTTP request if file is missing
+  * Fix elixir warnings
+  * Clean up crypto code
+  * Fix some code style issues
+  * Add --module flag to hex.docs task (#316)
+  * Changed hex.outdated to show if a dependency can be updated (#323)
+  * Fix crypto compatibility on older OTP versions
+  * String.trim => Hex.string_trim
+  * Fix bit_size_to_cipher
+  * Don't use with for older Elixir versions compatability
+  * Restart registry server for tests
+  * Add hex.retire task
+  * Warn on retired packages
+  * Show retirements after resolution completes
+  * Fix OTP17 compilation of gpb files
+  * Parent => Source in hex.outdated
+  * Ensure ets cache file is saved before exiting
+  * Bump to 0.15.0-dev
+  * Improve wording for changelog message about retirement
+  * Restrict default SSL ciphers
+  * Release v0.15.0
+  * Bump to v0.15.1-dev
+  * Fix spelling
+  * Remove unnecessary hex.install doc comment
+  * Remove cache.ets file if it's broken
+  * Reduce nested code in some functions (#336)
+  * Normalize usage of one pipe per line (#337)
+  * Move hex.key tasks to hex.user (#334)
+  * Fix README to correctly say HEXWEB_PATH and add hint to error (#339)
+  * Improve hex task docs
+  * Use Elixir v1.4.0 for hex_web tests
+  * Removed unused in_fixture macro (#338)
+  * Clean up config & document it consistently (#343)
+  * Do not check for updates when running in offline mode (#342)
+  * $ prefixed config keys are reserved
+  * Initial multi repo support
+  * Fix repo purging when URL changes
+  * Add hex.repo docs
+  * Add plataformatec's credo config
+  * Use manual matchspecs to fix build on older elixir
+  * Ensure hex.repo list works
+  * Move Mix.* modules to Mix.Tasks.Hex
+  * Remove Hex.API.Utils
+  * Document repo overrides
+  * socket_closed_remotely issue fixed on hex_web
+  * Add tests for mix hex.repo
+  * Tweak credo config
+  * Support multiple repos in tests
+  * Test multiple repo resolution
+  * Support implicit repo overrides
+  * Try to fix Registry.Server race in test
+  * Always use given registry in resolver
+  * Revert back to backwards-compatible lock
+  * Improve performance of overridden_parents/3
+  * Provide information how to reset passphrase on mismatch
+  * Do not publish docs if publishing package failed
+  * Add manual timeouts for httpc with Task.async
+  * HTTP refactor
+  * Disable moduledoc credo check
+  * Move lib/mix/tasks/hex/* -> lib/mix/tasks/hex.*
+  * Rename hex_web -> hexpm
+  * Adjust .travis.yml for old hex.pm repo
+  * Fix .travis.yml
+  * Update .travis.yml
+  * Final name change HexWeb => Hexpm
+  * Bring back shorter `mix help hex` docs
+  * Indent command in docs
+  * Fix managers missing from lock
+  * Remove parse_transform
+  * Use present continuous in @moduledoc summaries and @shortdocs
+  * Add better error message when repo is not configured
+  * Throw error if publishing a non-pre package that has pre-dependencies (#333)
+  * Fix travis builds
+  * Update .credo.exs for Credo 0.7
+  * Use phx.server for hexpm
+  * Add test for publishing with metadata
+  * Use Mix.Dep.loaded/1 to check for deps
+  * Update certificates
+  * Update changelog
+  * Use safe_binary_to_term
+  * Release v0.16.0
+  * Bump to v0.16.1-dev
+  * Add hex.repo subtask to show repo config (#373)
+  * Updated docs to match tests code
+  * Do not publish docs if package publish failed
+  * More granular lock files updates (#372)
+  * Hide basic authentication password from the message.
+  * Fix reset password
+  * Remove :named_table from backtracks ets
+  * Enum.filter_map is deprecated
+  * Error if requirement doesn't match
+  * Fix skipping integration tests (#387)
+  * Separate update check from registry server
+  * Do not close server until pending requests are done
+  * Show `mix hex.user passphrase` when doing `mix hex.user`
+  * Nicer error message for `mix hex.user key`
+  * Vendor erl_tar from OTP20
+  * Vendor filename:safe_relative_path/1
+  * Avoid creating PAX tarballs
+  * Fix registry persist on older Elixir versions
+  * Update travis build matrix for new versions
+  * Set tar mtimes to 0 and remove dependency on :os.system_time/1
+  * Add hex.audit (#381)
+  * Code cleanup
+  * Update certificates
+  * Update changelog
+  * Release v0.16.1
+  * Bump to v0.16.2-dev
+  * Update changelog
+  * Clarify that only Hex deps are resolved (#398)
+  * Vendor Version exceptions from Elixir
+  * Don't use reserved package name in tests
+  * [publish] use html_url from API response when publishing a package
+  * [publish] make publish test less hacky by using pattern matching
+  * Remove unused Hex.Utils.hex_package_url/1,2
+  * Fix hex.search test race
+  * Make html_url optional (#401)
+  * [hex.search] use package html_url (#400)
+  * Fallback to url when html_url is nil
+  * Preserve modes when building tarball (#405)
+  * Add dependency repository to package metadata (#406)
+  * Fix test on travis
+  * Fix typographical error (#408)
+  * Move api_url and api_key to repo config
+  * Add test for hex.repo --api-url
+  * Add --repo flag to tasks
+  * Add :repo package config
+  * Use get_repo in more places
+  * Add private repo support to hex.repo task
+  * Minor clean up
+  * Fix Elixir 1.1 compatability
+  * Introduce organizations
+  * Key remove => key revoke
+  * Add hex.organization task
+  * Reduce number of travis builds
+  * Print organization when publising
+  * Improve error message when docs task is missing
+  * Disallow :app option for dependencies
+  * Add --confirm flag to mix hex.publish (#402)
+  * Fix tests for mix hex.publish --confirm
+  * Update changelog
+  * Use correct repo name for organizations
+  * Registry defaults to parent repo
+  * Update protobuf files
+  * Use MixProject instead of Mixfile in mix.exs files (#409)
+  * Handle package documentation mirror response (#410)
+  * Use Elixir current version to fetch documentation of built in applications (#411)
+  * Use MixProject in missing places
+  * Fix OTP17 compilation of gpb files
+  * Add repository name to mix deps task output
+  * Release v0.17.0
+  * Bump to v0.17.1-dev
+  * Add tasks for authenticating on CI servers
+  * Improve error message for missing package
+  * Improve error message when package-version does not exist
+  * Release v0.17.1
+  * Bump to v0.17.2-dev
+  * Increase publish timeouts and make it configurable
+  * Fix http_timeout config name
+  * Clarify where package is published to
+  * Clarify hex.organization manual key handling
+  * Test repository key when adding it
+  * Remove pre-release publish restriction for private packages
+  * Fix typographical errors (#414)
+  * Add description to hex.search task (#415)
+  * Improve error message when couldn't find matching version (#418)
+  * Strict option parsing (#419)
+  * Add "integration" tag to hex.organization_test.exs (#422)
+  * Add function head so connection error does not result in a FunctionClauseError (#423)
+  * Escape owner email address when adding or deleting an owner. (#421)
+  * Do not crash if failing to write tar
+  * Remove HTTP pipelining
+  * Use configured HTTP timeout
+  * Also purge registry etags when repo changed
+  * Write changes to default repo to config correctly
+  * Improve messaging when misconfiguring package
+  * URI.encode everything
+  * Convert package name to string
+  * Mention HEX_HOME in `mix help hex.config` docs
+  * Add a column to hex.search output showing stable version (#431)
+  * Retry http request on socket_closed_remotely
+  * Improve CHANGELOG style against mardownlint (#432)
+  * Include metadata.config in deps (#433)
+  * Fix Hex.TarTest for older Elixir versions
+  * Clarify repository key read-only access (#434)
+  * :name is valid in project config
+  * Warn if detecting newer lock entry (#438)
+  * Reject packages defining :system_env (#442)
+  * Fix system_env check
+  * Add mix hex.build --smoke (#437)
+  * Run formatter on lib/mix/tasks/hex.build.ex
+  * Include dot files when expanding file paths (#440)
+  * Make minor doc rewording to Mix.Tasks.Hex{Build,Publish} (#443)
+  * Fix smoke tests
+  * Set exit code and improve hex.build --smoke tests
+  * Fix tests on Elixir versions
+  * Preserve symlinks and empty directories in tar
+  * Do not set mtime for directories/symlinks
+  * Fix tar mtime tests
+  * Vendor File.lstat/2 for Elixir 1.0 compatability
+  * Remove docs for old task: mix hex.user test (#445)
+  * Authenticate hex.search http requests (#446)
+  * Populate managers when getting deps (#426)
+  * Check deps on hex.audit & hex.publish (#449)
+  * Fix crash on managers check (#451)
+  * Make repository more prominent in hex.publish output (#450)
+  * Simplify Hex output on deps.get #454 (#457)
+  * Refactor checksum verification
+  * Move registry checksum verification out of Hex.Tar
+  * Replace build --smoke with build --unpack
+  * Allow to set output tarball path
+  * Add build --output
+  * Add docs
+  * Clean up output path before unpacking to avoid warning
+  * Add Hex.Shell.debug/1 used with MIX_DEBUG=1 (#461)
+  * List umbrella child top level deps in hex.outdated (#464)
+  * Revert "Clean up output path before unpacking to avoid warning"
+  * Clarify warning
+  * Update Hexpm Elixir & OTP version on Travis (#470)
+  * Include formatter in default hex.build
+  * Add note about updating lock in SCM
+  * Fix registry_etag cache entry removal
+  * Remove unnecessary use GenServer
+  * Update repository key name
+  * Fix parallel fetcher for overriding private packages
+  * Fix grammatical error in documention in hex.retire (#475)
+  * Fix handle_redirect to match calling arguments (#473)
+  * Improve unauthed organization error
+  * Redesign Hex.Tar (#467)
+  * File.ls may be unsorted
+  * Prompt for authenticating user (#477)
+  * Deauth organizations when deauthing user (#478)
+  * Replace Hex.Set with Enum.uniq
+  * Remove passhprase for local/account password (#479)
+  * Make gzip reproducible (#484)
+  * Alerts if a package has been retired in hex.info (#482)
+  * Change config encrypted_key => $encrypted_key (#485)
+  * Also auth organizations when authing user (#483)
+  * Display package html url in `mix hex.owner packages` (#486)
+  * Color retired package yellow in mix hex.info PACKAGE (#487)
+  * Improve bad organization key error
+  * Build against latest stable Elixir
+  * Update changelog
+  * Release v0.17.2
+  * Bump to v0.17.3-dev
+  * Prevent empty package["meta"]["description"] to crash search (#488)
+  * Base16 encode checksum before printing (#489)
+  * Release v0.17.3
+  * Bump to v0.17.4-dev
+  * Fix wrong publish message when using --organization flag in hex.publish  (#492)
+  * Fixes misspelling in hex.organization documentation (#493)
+  * Changes a grammatical error. Revokal is not a valid word. (#495)
+  * Allow setting file_info opts on :hex_erl_tar.add
+  * Set atime/mtime/ctime to 2000-01-01 so that tar works on FAT
+  * Run elixir formatter (#497)
+  * Do not show retired releases in hex.info (#500)
+  * Adds offline and online tasks to clarify open flags (#503)
+  * Handle `--module` in `hex docs.offline`
+  * Instead of hex.docs online opening browser, test env sends message to… (#505)
+  * Add --key-name flag (#510)
+  * Adds organization to downloaded docs path (#509)
+  * Minor cleanup
+  * Update hex.repo task error message (#513)
+  * Make docs project aware (#508)
+  * Revert "Changes references to organization to repo for clarity"
+  * Raise error when trying to create too big tarballs
+  * Make format_error/1 re-usable between creating and unpacking tarballs
+  * Fix bug: do not encode checksum in error tuple
+  * Change order of missing/unknown keys to make it more testable
+  * Refactor Hex.TarTest
+  * Refactor test
+  * Run formatter
+  * Move file timestamps assertions into separate test
+  * More Hex.TarTest refactoring
+  * Use repo.hex.pm in .travis.yml (#517)
+  * Add :exclude_patterns to hex package options (#512)
+  * Improve exclude_patterns test
+  * Backtrack children before parents (#522)
+  * Fix hex.docs open on Windows (#524)
+  * Vendor hex_erl (#518)
+  * Fixes documentation in hex.repo task (#528)
+  * Prevents error when unauthenticated user authenticates while publishing (#519)
+  * Vendor hex_pb_*
+  * Use hex_registry
+  * Different error message for non-hexpm key verification error
+  * Update hex_erl
+  * Use vendor.sh
+  * Use correct version of hex_erl
+  * Windows tests (#526)
+  * hex.info documentation fix (#538)
+  * Fix --organization flags (#511)
+  * Format code
+  * Convert some errors to warnings for organizations
+  * Updates search --org test (#543)
+  * Groups deps into unchanged, updated, and downgraded (#535)
+  * Created -> New
+  * Add authentication to hex.docs (#542)
+  * Add colors back into tests. (#544)
+  * Show more detailed message when fetch times out (#546)
+  * Update OTP and Elixir versions
+  * Update certificates
+  * Release v0.17.4
+  * Bump to v0.17.5-dev
+  * Fix crash when printing resolver output for old lock files
+  * Release v0.17.5
+  * Bump to v0.17.6-dev
+  * Fix crash when printing resolver output when having lock entries from other SCMs
+  * Release v0.17.6
+  * Bump to v0.17.7-dev
+  * Update hex_erl
+  * Update hex_erl, closes #550
+  * Update hex_erl. #550
+  * Update release instructions
+  * Release v0.17.7
+
+-------------------------------------------------------------------
+Sat May  9 12:30:39 UTC 2015 - matwey.kornilov@gmail.com
+
+- Initial version
+

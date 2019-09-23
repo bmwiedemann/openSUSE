@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>64fc81c59b6f02a7389aae9263bc1fbe</srcmd5>
+    <version>1.2</version>
+    <time>1527933584</time>
+    <user>dimstar_suse</user>
+    <comment>flow based testing framework</comment>
+    <requestid>612041</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>02470cd91d5836286b6d7267756f603a</srcmd5>
+    <version>1.2</version>
+    <time>1533045678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626390</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>48bd8f1511947c337bf6d615b82af09b</srcmd5>
+    <version>1.2</version>
+    <time>1545648306</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659712</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>60a4d3ffa187ba6cac416ea98501e68d</srcmd5>
+    <version>1.3.4</version>
+    <time>1547211837</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662894</requestid>
+  </revision>
+</revisionlist>

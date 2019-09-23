@@ -1,0 +1,15 @@
+--- touchegg_orig/src/touchegg/actions/implementation/Scroll.cpp
++++ touchegg/src/touchegg/actions/implementation/Scroll.cpp
+@@ -48,9 +48,9 @@ Scroll::Scroll(const QString &settings,
+     if (!error && mainStrSpeed.length() == 2 && mainStrSpeed.at(0) == "SPEED") {
+         bool ok;
+         int configSpeed = QString(mainStrSpeed.at(1)).toInt(&ok);
+-        if (ok && configSpeed >= 1 && configSpeed <= 10) {
+-            this->verticalSpeed   = 40 - 2 * configSpeed;
+-            this->horizontalSpeed = 40 - 2 * configSpeed;
++        if (ok && configSpeed >= 1 && configSpeed < 10) {
++            this->verticalSpeed   = 1000 - 100 * configSpeed;
++            this->horizontalSpeed = 1000 - 100 * configSpeed;
+         } else {
+             error = true;
+         }

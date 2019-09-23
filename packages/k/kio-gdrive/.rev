@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>faf8934f1f08adf7af6e7a1c9ee9c91d</srcmd5>
+    <version>1.0.2</version>
+    <time>1476779982</time>
+    <user>dimstar_suse</user>
+    <comment>New package: KIO Gdrive, to allow KIO-based applications such as Dolphin to access Google Drive</comment>
+    <requestid>433864</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8f12ff7fc277839c90b62914354c90dc</srcmd5>
+    <version>1.0.4</version>
+    <time>1479074494</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440036</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>42f626db5d1f483fc567e33180e17c87</srcmd5>
+    <version>1.0.5</version>
+    <time>1484233055</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449654</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ecd5289bc496c5b52bad1b7e5117fa47</srcmd5>
+    <version>1.1.1</version>
+    <time>1487261185</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457246</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>839f3200f61c90384f592fda702f2db7</srcmd5>
+    <version>1.1.2</version>
+    <time>1495442925</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497070</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1c8d7b8abce4d93739909bf7430b776f</srcmd5>
+    <version>1.2.0.1</version>
+    <time>1503592506</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508493</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4d4c39f82e5a4eeaf0cb2cf591008078</srcmd5>
+    <version>1.2.1</version>
+    <time>1506956074</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530293</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>bdf730fc7477de54c4afa38bdd364182</srcmd5>
+    <version>1.2.1</version>
+    <time>1518614335</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576469</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f05b8034826d043f4489eda7574824cf</srcmd5>
+    <version>1.2.2</version>
+    <time>1522596470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592843</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2053a970f35c382f393fa980493ad52b</srcmd5>
+    <version>1.2.3</version>
+    <time>1524489975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599796</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d81fa8a5addd0df228ad1abbda5089d2</srcmd5>
+    <version>1.2.4</version>
+    <time>1530567251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620220</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a6f301085ae8d1ab8db7564047f09e1c</srcmd5>
+    <version>1.2.4</version>
+    <time>1538374808</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix transfer of files &gt;= 16MiB (kde#375765):
+  * 0001-Send-file-contents-in-chunks.patch
+- Use %license</comment>
+    <requestid>639228</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>870864f093b43b6ba6079ef969660541</srcmd5>
+    <version>1.2.5</version>
+    <time>1540319865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643588</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>214051f5213bdf48b99461b89f3823af</srcmd5>
+    <version>1.2.5</version>
+    <time>1556475281</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>698634</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1319585b5cddf4d865660ca99d1bf2cd</srcmd5>
+    <version>1.2.6</version>
+    <time>1558516631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704462</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>8c7c3637045ed9c3d9eb826abcc6d342</srcmd5>
+    <version>1.2.6</version>
+    <time>1564302171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719264</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>c99dbbaacfe48f686bcb24754df7f477</srcmd5>
+    <version>1.2.6</version>
+    <time>1566551332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725368</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3187490d636137d7612d9a41813daa59</srcmd5>
+    <version>1.2.7</version>
+    <time>1566894051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725928</requestid>
+  </revision>
+</revisionlist>

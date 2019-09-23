@@ -1,0 +1,6 @@
+<package name="shapelib" project="openSUSE:Factory">
+  <title>API for Shapefile Handling</title>
+  <description>The Shapefile C Library provides the ability to write simple C programs for reading, writing and updating (to a limited extent) ESRI Shapefiles, and the associated attribute file (.dbf).</description>
+  <devel project="Application:Geo" package="shapelib"/>
+  <url> http://shapelib.maptools.org/</url>
+</package>

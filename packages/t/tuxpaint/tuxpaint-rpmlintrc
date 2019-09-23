@@ -1,0 +1,4 @@
+addFilter("unstripped-binary-or-object.*/usr/lib.*/tuxpaint/plugins/.*")
+addFilter("invalid-lc-messages-dir.*/usr/share/locale/.*/LC_MESSAGES/tuxpaint.mo")
+# key definition table, no include file
+addFilter("devel-file-in-non-devel-package.*/usr/share/tuxpaint/osk/keysymdef.h");

@@ -1,0 +1,155 @@
+-------------------------------------------------------------------
+Mon Apr 22 12:50:25 UTC 2013 - boris@steki.net
+
+- Updated to latest upstream 39_0 version
+  a lot of changes please look at CHANGELOG_simh_rev_h.txt in
+  /usr/share/doc/packages/simh
+- Interim source fixes attached ( interim-20130422.patch )
+- Use source url for zip
+
+-------------------------------------------------------------------
+Mon Apr 22 07:49:30 UTC 2013 - speilicke@suse.com
+
+- Rename binary "nova" to "simh.nova" to avoid file conflict with
+  python-novaclient (from OpenStack)
+
+-------------------------------------------------------------------
+Sun Aug 23 09:30:28 CEST 2009 - meissner@suse.de
+
+- make it build with --as-needed
+
+-------------------------------------------------------------------
+Tue Apr 15 18:00:35 CEST 2008 - kkaempf@suse.de
+
+- update to v37-3
+  bugfix update, see http://simh.trailing-edge.com/changes37.html
+  for details.
+
+-------------------------------------------------------------------
+Thu Aug  2 10:49:39 CEST 2007 - kkaempf@suse.de
+
+- update to v37-2
+  bugfix update, see http://simh.trailing-edge.com/changes37.html
+  for details.
+- enable network support.
+
+-------------------------------------------------------------------
+Thu Mar 29 12:19:20 CEST 2007 - kkaempf@suse.de
+
+- unzip is required during build.
+
+-------------------------------------------------------------------
+Tue Feb  6 14:36:51 CET 2007 - kkaempf@suse.de
+
+- update to 3.7
+  added VAX780 emulation.
+  See http://simh.trailing-edge.com/changes34.html,
+  http://simh.trailing-edge.com/changes35.html,
+  http://simh.trailing-edge.com/changes36.html,
+  http://simh.trailing-edge.com/changes37.html
+  for the complete list of changes since 3.3
+
+-------------------------------------------------------------------
+Thu Apr  6 19:54:14 CEST 2006 - hvogel@suse.de
+
+- define operation on "i" [#160437]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:35 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 25 09:01:16 CET 2005 - kkaempf@suse.de
+
+- update to 3.3_1
+  lots of fixes for HP2100
+  see http://simh.trailing-edge.com/changes33.html for details.
+
+-------------------------------------------------------------------
+Fri Aug 13 16:06:57 CEST 2004 - kkaempf@suse.de
+
+- rename /usr/bin/eclipse to /usr/bin/simh-eclipse, the package
+  eclipse already claimed the initial name.
+- provide more .txt files as documentation.
+
+-------------------------------------------------------------------
+Tue Aug 10 11:32:21 CEST 2004 - kkaempf@suse.de
+
+- update to 3.2.2
+  added LGP-30 (LGP-31) simulator
+  see http://simh.trailing-edge.com/changes32.html for details
+
+-------------------------------------------------------------------
+Tue Feb  3 10:23:08 CET 2004 - kkaempf@suse.de
+
+- update to 3.1-0
+  lots of changes, see http://simh.trailing-edge.com/changes30.html
+  and http://simh.trailing-edge.com/changes31.html for details
+
+-------------------------------------------------------------------
+Sat Jan 10 15:23:08 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Jul 25 14:17:37 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Tue Jun 17 21:51:56 CEST 2003 - kkaempf@suse.de
+
+- update to 2.10-4
+  includes all systems in a single .zip file now
+  enhanced magtape emulation, .ini file support, line frequency
+  clocks, and more.
+- compile properly on 32bit archs
+
+-------------------------------------------------------------------
+Wed Jan  8 16:04:30 CET 2003 - kkaempf@suse.de
+
+- update to 2.10-1
+  Added simulators for SDS 940, Interdata (Perkin-Elmer) 16b/32b, 
+  IBM 1130, IBM 1620, GRI 909
+  Further features:
+  Telnet console capability, removed VT emulation; DO with
+  substitutable arguments; quiet mode; device enable/disable
+  support optional simulator for input, output, commands;
+  PDP-11 KW11P programmable clock; PDP-11 RK611/RK06/RK07 disk
+  PDP-11/VAX TMSCP tape; PDP-11/VAX DELQA Ethernet support
+  (from David Hittner); PDP-11/PDP-10 RX211/RX02 floppy disk;
+  PDP-11/VAX autoconfiguration support; PDP-10/PDP-11/VAX variable
+  vector support; PDP-1 DECtape; PDP-8 RX28 support; HP2100 12845A
+  line printer; HP2100 13183 magtape support; HP2100 boot ROM
+  support; 16b DECtape file format support; support for statically
+  buffered devices; magtape end of medium support; 7B/8B support to
+  terminals and multiplexors
+
+-------------------------------------------------------------------
+Thu Jun 13 14:49:37 CEST 2002 - uli@suse.de
+
+- update -> 2.9-10 (All simulators: Widened the POS register for
+  serial devices to 32b; PDP11: fixed bugs, added special case for
+  PS<15:12> = 1111 to MFPI, removed from MTPI, added masking of
+  relocation adds; 1401: added hardware multiply/divide, added 1311
+  disk pack, added 1401-like memory dump, fixed bugs, 8 character N
+  is legal, 5 and 7 character H are legal, 7 character  H doesn't
+  branch)
+
+-------------------------------------------------------------------
+Tue Jun  4 14:57:27 CEST 2002 - uli@suse.de
+
+- update -> 2.9-9 (VAX!)
+
+-------------------------------------------------------------------
+Wed Feb 27 14:44:17 CET 2002 - uli@suse.de
+
+- made some docs non-world-writable
+
+-------------------------------------------------------------------
+Fri Jan 25 12:50:50 CET 2002 - uli@suse.de
+
+- initial package
+
+

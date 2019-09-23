@@ -1,0 +1,28 @@
+diff -ur vegastrike-src-0.5.1.r1.orig/src/networking/lowlevel/packetmem.cpp vegastrike-src-0.5.1.r1/src/networking/lowlevel/packetmem.cpp
+--- vegastrike-src-0.5.1.r1.orig/src/networking/lowlevel/packetmem.cpp	2008-03-31 05:20:19.000000000 -0300
++++ vegastrike-src-0.5.1.r1/src/networking/lowlevel/packetmem.cpp	2013-03-19 13:58:25.106390477 -0300
+@@ -102,7 +102,7 @@
+     }
+     else
+     {
+-        _buffer.reset( 0 );
++        _buffer.reset();
+         _len = 0;
+     }
+ }
+diff -ur vegastrike-src-0.5.1.r1.orig/src/SharedPool.h vegastrike-src-0.5.1.r1/src/SharedPool.h
+--- vegastrike-src-0.5.1.r1.orig/src/SharedPool.h	2010-02-25 11:26:53.000000000 -0300
++++ vegastrike-src-0.5.1.r1/src/SharedPool.h	2013-03-19 13:17:06.366995932 -0300
+@@ -207,12 +207,6 @@
+     return stream<<ref.get();
+ }
+ 
+-template < typename T >
+-bool operator==( const typename SharedPool< T >::Reference &r, const T &s )
+-{
+-    return r.get() == s;
+-}
+-
+ #include "SharedPool.cpp"
+ #endif //__STRINGPOOL_H__INCLUDED__
+ 

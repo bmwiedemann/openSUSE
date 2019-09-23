@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Wed Jul 24 08:30:42 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Wed Jun 26 16:47:07 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add information about the interaction with Apparmor to README.SUSE
+
+-------------------------------------------------------------------
+Sun Dec 24 02:10:16 UTC 2017 - mrueckert@suse.de
+
+- bump recommends to 2.3
+
+-------------------------------------------------------------------
+Sun Dec 24 02:07:20 UTC 2017 - mrueckert@suse.de
+
+- copy example config from /usr/share/dovecot/example-config/
+  instead of the documentation directory. (boo#1070871)
+
+-------------------------------------------------------------------
+Wed Dec 20 11:24:54 UTC 2017 - mrueckert@suse.de
+
+- bump to dovecot 2.3
+
+-------------------------------------------------------------------
+Mon Jun 15 14:04:40 UTC 2015 - mrueckert@suse.de
+
+- updated README.SUSE:
+  Remove all references /etc/ssl/certs/. It should not be used
+  anymore. (boo #932386)
+
+  Please make sure you read README.SUSE after installing this
+  update.
+
+-------------------------------------------------------------------
+Sat Nov 08 04:46:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in pre script
+
+-------------------------------------------------------------------
+Thu Sep 18 14:22:32 UTC 2014 - mrueckert@suse.de
+
+- add reload support to the dovecot service file
+
+-------------------------------------------------------------------
+Thu Sep 11 11:39:44 UTC 2014 - mrueckert@suse.de
+
+- also track the config files from the sieve support in the %ghost
+
+-------------------------------------------------------------------
+Wed Sep 10 10:13:49 UTC 2014 - mrueckert@suse.de
+
+- make the /etc/dovecot handling consistent between dovecot and
+  dovecotXY. both now use:
+  %dir /etc/dovecot
+  %ghost %config(noreplace) /etc/dovecot/*
+
+-------------------------------------------------------------------
+Mon Sep  8 23:16:05 UTC 2014 - mrueckert@suse.de
+
+- copy the correct file as init script in the non systemd case
+- remove %buildroot from %pre script just in case we uncomment that
+  part at some point
+- only have %post in the systemd case
+
+-------------------------------------------------------------------
+Mon Sep  8 23:00:14 UTC 2014 - mrueckert@suse.de
+
+- we dont need a dovecot implementation at build time just at
+  install time. add BuildIgnore to get around the loop.
+
+-------------------------------------------------------------------
+Fri Sep  5 15:56:35 UTC 2014 - mrueckert@suse.de
+
+- remove triggers again. when we handle the dovecot update problems
+  by manually stopping in %pre and manually starting up again in
+  %postun we dont need them anymore.
+
+-------------------------------------------------------------------
+Fri Sep  5 13:03:30 UTC 2014 - mrueckert@suse.de
+
+- as we cant use service_del_preun we should still check if it is
+  the last package that we install otherwise we kill it
+  unconditionally
+
+-------------------------------------------------------------------
+Fri Sep  5 12:51:40 UTC 2014 - mrueckert@suse.de
+
+- no longer restart the socket activation. this seems to kill the
+  dovecot. 
+
+-------------------------------------------------------------------
+Fri Sep  5 11:35:37 UTC 2014 - mrueckert@suse.de
+
+- move ldconfig to the versioned packages
+- own the shared var directories.
+- kick out the triggerin script as we dont need it.
+- restart dovecot also when the module packages are updated
+
+-------------------------------------------------------------------
+Fri Sep  5 11:18:40 UTC 2014 - mrueckert@suse.de
+
+- added trigger scripts
+
+-------------------------------------------------------------------
+Fri Sep  5 10:59:11 UTC 2014 - mrueckert@suse.de
+
+- make the dovecot implementation a prereq
+
+-------------------------------------------------------------------
+Thu Sep  4 13:44:06 UTC 2014 - mrueckert@suse.de
+
+- start an unversioned wrapper package again
+

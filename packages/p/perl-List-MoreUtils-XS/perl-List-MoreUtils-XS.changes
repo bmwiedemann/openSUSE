@@ -1,0 +1,116 @@
+-------------------------------------------------------------------
+Wed Dec 20 06:32:01 UTC 2017 - coolo@suse.com
+
+- updated to 0.428
+   see /usr/share/doc/packages/perl-List-MoreUtils-XS/Changes
+
+  0.428	2017-12-19
+      - release 0.427_002 without further changes
+  
+  0.427_002   2017-12-14
+      - Update ppport.h to 3.37 for improved blead support
+      - Fix RT#123869 - context arg to croak() reported by Zefram
+      - fix RT#123870 - one() returns true on empty list reported by Andy Lester
+      - pamper RT#123868 - $a/$b/$_ refcounting bugs reported by Zefram
+  
+  0.427_001   2017-12-12
+      - Fix RT#123613 - build fails on perl >=5.27.4 with -DDEBUGGING,
+        thanks for reporting and the suggested patch goes to Andreas
+        Koenig and Tony Cook
+
+-------------------------------------------------------------------
+Thu Nov  2 13:24:05 UTC 2017 - adrian.glaubitz@suse.com
+
+- move license files from %license to %doc to fix FTBFS on <= SLE_12_SP2
+
+-------------------------------------------------------------------
+Tue Oct  3 05:40:02 UTC 2017 - coolo@suse.com
+
+- updated to 0.426
+   see /usr/share/doc/packages/perl-List-MoreUtils-XS/Changes
+
+  0.426	2017-10-02
+      - release 0.425_001 as 0.426
+  
+  0.425_001	2017-09-27
+      - Fix broken format in part (fixes issues/4, thanks Andreas Schwab
+        for reporting and testing the fix)
+      - Fix gcc 4.7 sequence point warning (fixes issues/5, thanks Andreas
+        Schwab for reporting and testing the fix)
+      - Fix incorrect padname resolving for perl > 5.21.6 (Fixes RT#122883,
+        thanks Alexander Bluhm <alexander.bluhm@gmx.net> for reporting).
+      - Fix compiling issue on CentOS 4 & CentOS 5 (thanks Alex Karelas
+        <alex.karelas@gmail.com> for reporting and testing the fix)
+- obsolete format.patch and undefined.patch
+
+-------------------------------------------------------------------
+Tue Sep 12 08:16:32 UTC 2017 - schwab@suse.de
+
+- format.patch: fix format errors
+- undefined.patch: fix undefined operation
+
+-------------------------------------------------------------------
+Mon Sep  4 05:39:47 UTC 2017 - coolo@suse.com
+
+- updated to 0.423
+   see /usr/share/doc/packages/perl-List-MoreUtils-XS/Changes
+
+  0.423	2017-08-19
+      - Fix dealing with lists with one element on bremove/binsert.
+        Thanks shawnlaffan for reporting this via issues#2
+      - add support for compilers before C99
+      - fix some 32-bit compiler warnings
+      - add support for compilers without statement expression feature
+  
+  0.422	2017-08-15
+      - Rename 'occurances' into 'occurrences' as requested in RT#122806 by
+        Paul Howarth as a slightly late side-note in RT#91991.
+      - Add DESCRIPTION to Pod clarifying the role of List::MoreUtils::XS
+      - improve Makefile.PL regarding some build artifacts
+
+-------------------------------------------------------------------
+Tue Aug 15 05:41:20 UTC 2017 - coolo@suse.com
+
+- updated to 0.421
+   see /usr/share/doc/packages/perl-List-MoreUtils-XS/Changes
+
+  0.421	2017-08-14
+      - correct license in META thanks to Chase Whitener (RT#122702)
+      - fix issues with -DPERL_IMPLICIT_SYS on Windows with Strawberry-Perl
+  
+  0.420_002	2017-08-03
+      - improve configure toolchain to use Config::AutoConf 0.315
+      - speed up some inner loops by hinting the expected result
+      - fix mind screwed up issue in upper_bound and reduce elements
+        visited in equal_range
+  
+  0.420_001	2017-06-28
+      - fix a lot of potential memory leaks when callbacks throw exceptions
+      - add some new functions:
+        * qsort
+        * binsert
+        * bremove
+        * listcmp
+        * arrayify (RT#17230)
+        * samples (RT#77562)
+        * minmaxstr (RT#106401)
+        * lower_bound
+        * upper_bound
+        * equal_range
+        * frequencies
+        * occurances
+        * mode (RT#91991)
+        * zip6 (RT#42921)
+        * reduce_0
+        * reduce_1
+        * reduce_u
+      - improve tests
+      - make List::MoreUtils::XS independent from List::MoreUtils
+        Note that List::MoreUtils::XS doesn't guarantee API stability - this
+        feature is only provided through List::MoreUtils as frontend.
+
+-------------------------------------------------------------------
+Wed Apr  5 12:57:12 UTC 2017 - coolo@suse.com
+
+- initial package 0.418
+ * created by cpanspec 1.78.08

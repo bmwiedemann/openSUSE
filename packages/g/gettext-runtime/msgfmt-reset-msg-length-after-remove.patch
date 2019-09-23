@@ -1,0 +1,20 @@
+Bug 1106843 -- msgfmt crashes when writing java source code and the .po file has a POT-Creation-Date header
+
+Due d13f165b83701dffc14f7151419e0c00c00c0d1b there will be the
+line with the POT-Creation-Date: tag removed but the lenght of
+the changed message string does also change with this.
+
+---
+ gettext-tools/src/msgl-header.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- gettext-tools/src/msgl-header.c
++++ gettext-tools/src/msgl-header.c	2018-09-19 08:05:54.340122157 +0000
+@@ -217,6 +217,7 @@ message_list_delete_header_field (messag
+               *p = '\0';
+ 
+             mp->msgstr = new_header;
++            mp->msgstr_len = strlen (new_header) + 1;
+           }
+       }
+ }

@@ -1,0 +1,375 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>fa0794405b666498ee95c8ed07f22847</srcmd5>
+    <version>2.0.1</version>
+    <time>1173311517</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a70de4f339a890847a7a503c142ce7be</srcmd5>
+    <version>2.2.0</version>
+    <time>1185541605</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="175">
+    <srcmd5>a70de4f339a890847a7a503c142ce7be</srcmd5>
+    <version>2.2.0</version>
+    <time>1185541605</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="176">
+    <srcmd5>22fb9387fafda4334d31e06327252dc4</srcmd5>
+    <version>2.2.0</version>
+    <time>1245260107</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="178">
+    <srcmd5>22fb9387fafda4334d31e06327252dc4</srcmd5>
+    <version>2.2.0</version>
+    <time>1245260107</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="179">
+    <srcmd5>a5a037a55aaa00aeb8add0c3942c730f</srcmd5>
+    <version>2.2.0</version>
+    <time>1268923833</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="181">
+    <srcmd5>a5a037a55aaa00aeb8add0c3942c730f</srcmd5>
+    <version>2.2.0</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="182">
+    <srcmd5>a5a037a55aaa00aeb8add0c3942c730f</srcmd5>
+    <version>2.2.0</version>
+    <time>1278678579</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="185">
+    <srcmd5>a5a037a55aaa00aeb8add0c3942c730f</srcmd5>
+    <version>2.2.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b2e6c9c9df720e8d1c9ba98b31276e73</srcmd5>
+    <version>2.4.1</version>
+    <time>1313404045</time>
+    <user>saschpe</user>
+    <comment>Update to 2.4.1 (forwarded request 78010 from dimstar)</comment>
+    <requestid>78572</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>cbc1b681b1b399da336b02e65303882f</srcmd5>
+    <version>2.4.1</version>
+    <time>1313404056</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78572
+</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>f530f474f973205bc2c9f45c0cc5b613</srcmd5>
+    <version>2.4.1</version>
+    <time>1317542940</time>
+    <user>lrupp</user>
+    <comment>Pushing G:A</comment>
+    <requestid>85559</requestid>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>f530f474f973205bc2c9f45c0cc5b613</srcmd5>
+    <version>2.4.1</version>
+    <time>1319181932</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>b7af1df148c044544bf0cee13d4725fe</srcmd5>
+    <version>2.4.1</version>
+    <time>1323191701</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>b7af1df148c044544bf0cee13d4725fe</srcmd5>
+    <version>2.4.1</version>
+    <time>1340183395</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a76c28da639f89d4cc7e2b374693a245</srcmd5>
+    <version>2.4.1.svn</version>
+    <time>1342962918</time>
+    <user>coolo</user>
+    <comment>Fixup the help for yelp - with this tarball, the german help can at least be started using 'yelp file:///usr/share/gnome/help/gnucash/de_DE/gnucash-help.xml' - part of bnc#771530 (in-app launch of help is missing.. but that is likely in gnucash package itself) (forwarded request 128537 from Zaitor)</comment>
+    <requestid>128564</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>43408f4e2988f6381b4e6d7a2f30df96</srcmd5>
+    <version>2.4.2</version>
+    <time>1354885804</time>
+    <user>namtrac</user>
+    <comment>Fix source path.. no .changes entry.. this was never in Factory after all (forwarded request 142551 from dimstar)</comment>
+    <requestid>142553</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>43408f4e2988f6381b4e6d7a2f30df96</srcmd5>
+    <version>2.4.2</version>
+    <time>1359108975</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>43408f4e2988f6381b4e6d7a2f30df96</srcmd5>
+    <version>2.4.2</version>
+    <time>1379662518</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>71a33c421ce394afa9171e6d1f02c80d</srcmd5>
+    <version>2.4.2</version>
+    <time>1387207017</time>
+    <user>coolo</user>
+    <comment>- Replace scrollkeeper BuildRequires with xsltproc and
+  rarian-scrollkeeper-compat: scrollkeeper has been replaced by
+  rarian. Scrollkeeper also pulled in xsltproc, but that was not
+  an entirely correct requirement. (forwarded request 210574 from Zaitor)</comment>
+    <requestid>210941</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3d34aec529936ab61825be83217bcbd6</srcmd5>
+    <version>2.6.1</version>
+    <time>1391422379</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.6.1:
+  + First documention updates for credit notes.
+  + Adapt migration documentation to gsettings introduction.
+  + Move most of the text regarding business features from guide to
+    help, correct links and wording and many small improvements.
+  + Add information about the Business tab in book options window.
+  + Enable building Japanese PDF without requiring Debian or
+    downloading fonts from anywhere.
+  + Add Fedora font paths.
+  + Adjust image after update.
+  + Doc/guide/C: add cash account to accts-examples-organization2.
+  + Docs/guide/de: minor corrections of spelling.
+  + Updated translations.
+
+- Update to version 2.6.0:
+  + Updated documentation for new GnuCash stable version 2.6.0:
+    - Update Preferences section.
+    - Menu and Toolbar references.
+    - Update Business Documentation: Bobby Ratliff.
+    - Budget Features: Bobby Ratliff.
+  + Update Copyrights, Author lists, and metadata.
+  + Add facility to publish docs as e-pubs.
+  + Bugs fixed: bgo#513122, bgo#604519, bgo#608932, bgo#633524,
+    bgo#638955, bgo#639264, bgo#661705, bgo#670354, bgo#672668,
+    bgo#684709, bgo#687476, bgo#688425, bgo#688579, bgo#688968,
+    bgo#691762, bgo#692917, bgo#693493, bgo#699430, bgo#700656,
+    bgo#702039, bgo#712308:, bgo#715161.
+  + Updated translations. (forwarded request 220621 from Zaitor)</comment>
+    <requestid>220626</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>90593abf6e0acb0a6958a9efbe0b1bc0</srcmd5>
+    <version>2.6.1</version>
+    <time>1391665673</time>
+    <user>coolo</user>
+    <comment>- Drop kdelibs3-doc BuildRequires: no longer needed.</comment>
+    <requestid>220852</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3ace080c5e73bbd427fdea03fd3dcdf6</srcmd5>
+    <version>2.6.2</version>
+    <time>1394901400</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.6.2:
+  + Help text for Employee section missing (bgo#547386).
+  + One error and some typos in documentation (bgo#723173).
+  + Dividends reinvested example text doesn't match graphic. Also
+    remove a useless figure and improve text (bgo#725013).
+  + Assorted typos and version number corrections. (forwarded request 225895 from Zaitor)</comment>
+    <requestid>225941</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>33960efbc2d42f6ab649957489c81f72</srcmd5>
+    <version>2.6.3</version>
+    <time>1396710574</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.6.3:
+  + There have been no documentation changes since 2.6.2.</comment>
+    <requestid>229101</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>33960efbc2d42f6ab649957489c81f72</srcmd5>
+    <version>2.6.3</version>
+    <time>1409301055</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>56fa8e3ef58ee71bfa4f45152850b9c8</srcmd5>
+    <version>2.6.4</version>
+    <time>1412533871</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253661</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0e807eb7d8e0804fc1b730d852548d0e</srcmd5>
+    <version>2.6.5</version>
+    <time>1422533929</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283294</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>10abb079e02fa93f3c467f98cfb27fd7</srcmd5>
+    <version>2.6.6</version>
+    <time>1428652368</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294918</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3bb693323ca4f5b7f4ddaec2158226d6</srcmd5>
+    <version>2.6.7</version>
+    <time>1436888636</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315903</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f98142e3da994f232c6ff01981b96e51</srcmd5>
+    <version>2.6.11</version>
+    <time>1452850867</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353288</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>355ffc049ff5b8a6af161ece02101dc2</srcmd5>
+    <version>2.6.12</version>
+    <time>1467360074</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405749</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2d47a82170130a7b67856b1e6950f3e5</srcmd5>
+    <version>2.6.14</version>
+    <time>1478289715</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438611</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>2af998cf702f407e37ed33832fc4ede4</srcmd5>
+    <version>2.6.15</version>
+    <time>1485383479</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451994</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>592040bcae9ddb3cf61d7182f7a14afe</srcmd5>
+    <version>2.6.15</version>
+    <time>1488479952</time>
+    <user>dimstar_suse</user>
+    <comment>Fixup..</comment>
+    <requestid>461117</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>fbac7c0f2473ac3c341d726b7d40bdb6</srcmd5>
+    <version>2.6.16</version>
+    <time>1493363574</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.6.16 (forwarded request 483450 from sfalken)</comment>
+    <requestid>490216</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>45024755add2f639dbf90aadf766135d</srcmd5>
+    <version>2.6.17</version>
+    <time>1500975577</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511900</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e32292b049d9479807af58c2f78609dd</srcmd5>
+    <version>2.6.18</version>
+    <time>1510322181</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 539134 from badshah400)</comment>
+    <requestid>539273</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>65216873b977617a638e41cf2b2d653d</srcmd5>
+    <version>2.6.19</version>
+    <time>1514028041</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.6.19 (forwarded request 558998 from luc14n0)</comment>
+    <requestid>559368</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>54d1c7d15e4512e1167e31362cebeed8</srcmd5>
+    <version>2.6.19</version>
+    <time>1521052564</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583484 from dimstar)</comment>
+    <requestid>584649</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>48fce08cc83436e6dd3433c5eec56456</srcmd5>
+    <version>3.0</version>
+    <time>1523448104</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 3.0:
+  + Correct field format in python-import-fields.
+  + Clarify that creating a postponed SX will use the original
+    date.
+  + Remove 'Remainder To' from loan assistant page 2.
+  + Update partial date entry documentation based on new default
+    behaviour.
+  + Fix chm mapfile target and cleanfiles. The mapfile target would
+    fail if the directory was already built, apparently not
+    recognizing that its target was complete.
+  + Cleanfiles was missing several build targets.
+  + New Transaction Report section in Guide.
+  + Replace some screenshots with new ones reflecting Gtk3.
+  + Bugs fixed: bgo#122895, bgo#634181, bgo#608098, bgo#760407,
+    bgo#762088.
+  + Updated translations.
+- Changes from version 2.6.20:
+  + Link the referenced 'Simple Transaction Example' in
+    Transactions 'Opening Balances'.
+  + Add a link from '8.5.1. Loan Specifications' to '8.3.
+    Calculations' SX:XRO.
+  + Add Preference Online Quotes.
+  + Bugs fixed: bgo#793844, bgo#770132, bgo#770132, bgo#792756.
+</comment>
+    <requestid>595177</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>c500281ec7c8d604139e10865afa2fa6</srcmd5>
+    <version>3.2</version>
+    <time>1538117630</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638707</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>ff97da432791bf6d7b4325460e4e7a81</srcmd5>
+    <version>3.3</version>
+    <time>1545867012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661480</requestid>
+  </revision>
+</revisionlist>

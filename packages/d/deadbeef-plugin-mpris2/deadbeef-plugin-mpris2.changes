@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Sun Apr 28 08:15:07 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.12
+  * Fix double free
+  * Send correct CanSeek
+  * Fix duration for radio streams
+  * Fix pause handling
+  * New features: CanPlay, CanGoPrevious, CanGoNext
+
+-------------------------------------------------------------------
+Tue May  9 16:45:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.10:
+  * Fix the seek method not returning a reply.
+  * Fix the seek method not reading the argument correctly.
+    This often led to Skipping to the next or previous track.
+  * Fix the --enable-debug configure switch doing nothing.
+
+-------------------------------------------------------------------
+Sat May 28 15:43:12 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.9:
+  * Fix compatibility with GLib < 2.32.
+  * Fix starting a paused track via MPRIS2.
+
+-------------------------------------------------------------------
+Fri Sep  4 07:57:28 UTC 2015 - sor.alexei@meowr.ru
+
+- Rename package to deadbeef-plugin-mpris2.
+- Correct license.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Sun Jun 28 15:19:02 UTC 2015 - hillwood@opensuse.org
+
+- Initial package.

@@ -1,0 +1,775 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>6892b1d478dc71c84848f8f747f08629</srcmd5>
+    <version>0.15.1+1</version>
+    <time>1219631242</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>11c29f98bc91f9a5fbdbfb176717ae35</srcmd5>
+    <version>0.16.0</version>
+    <time>1223932320</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>43c58921f77d492292c0dc70f0e95298</srcmd5>
+    <version>1.1.2</version>
+    <time>1232716997</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>47a4a545df9c4af305d11c0d45c268a2</srcmd5>
+    <version>1.1.2_1.2.0b+20090210</version>
+    <time>1234743044</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>437aab052efd9ce0d269476636d6ea39</srcmd5>
+    <version>1.2.0</version>
+    <time>1234825695</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7d05e221fa0dd05c8bcb939e155e73df</srcmd5>
+    <version>1.2.0</version>
+    <time>1236422494</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d4f3192e712f3653c4bb0e0b7fde5ab1</srcmd5>
+    <version>1.3.2</version>
+    <time>1241128781</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>de072a16853e8b54545eb64a9343a5dd</srcmd5>
+    <version>1.4.1</version>
+    <time>1244651173</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2067119ab51551faa817ec635f30d050</srcmd5>
+    <version>1.5.1</version>
+    <time>1250591456</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/aria2 based on submit request 18045 from user poeml
+</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e234aab6934c9de49be5b087eed3f98a</srcmd5>
+    <version>1.5.2</version>
+    <time>1250906150</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/aria2 based on submit request 18473 from user poeml
+</comment>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>e234aab6934c9de49be5b087eed3f98a</srcmd5>
+    <version>1.5.2</version>
+    <time>1250906150</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/aria2 based on submit request 18473 from user poeml
+</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>3a831a76ef9dc200b682c04bf05b0d14</srcmd5>
+    <version>1.5.2</version>
+    <time>1257174410</time>
+    <user>autobuild</user>
+    <comment>Copy from home:lnussel:branches:openSUSE:11.2/aria2 based on submit request 23562 from user lnussel
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>953cbc839cfa4e125ca3a88bae0d05ca</srcmd5>
+    <version>1.7.2</version>
+    <time>1260954348</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/aria2 based on submit request 26449 from user coolo
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8bfebc8314718e6354a3adad6694e6dd</srcmd5>
+    <version>1.8.0</version>
+    <time>1263483582</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/aria2 based on submit request 29020 from user coolo
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2ab969fd26b735d2d8d547ce01202c1a</srcmd5>
+    <version>1.8.1</version>
+    <time>1264777345</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/aria2 based on submit request 30810 from user coolo
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6e813fc230b1860f68cf59126470c993</srcmd5>
+    <version>1.8.2</version>
+    <time>1266489008</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/aria2 based on submit request 32730 from user coolo
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3e21c02960d59375e9eef555f30951fd</srcmd5>
+    <version>1.8.3</version>
+    <time>1266972820</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/aria2 based on submit request 33139 from user msmeissn
+</comment>
+    <requestid>33139</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4f4b94a7fabb3baeddfc235f0fe20b43</srcmd5>
+    <version>1.8.3</version>
+    <time>1268922917</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>24ebb1c0e5b8fea56cbc46724651876a</srcmd5>
+    <version>1.9.0</version>
+    <time>1268953845</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/aria2 based on submit request 35086 from user coolo
+</comment>
+    <requestid>35086</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>64e4c348ed3f74ddd800417413dd8708</srcmd5>
+    <version>1.9.1</version>
+    <time>1272102282</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/aria2 based on submit request 38391 from user pbleser
+</comment>
+    <requestid>38391</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>64e4c348ed3f74ddd800417413dd8708</srcmd5>
+    <version>1.9.1</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>64e4c348ed3f74ddd800417413dd8708</srcmd5>
+    <version>1.9.1</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>50752d02f7624113324537f3e1a6f461</srcmd5>
+    <version>1.10.0</version>
+    <time>1280497745</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/aria2 based on submit request 44226 from user coolo
+</comment>
+    <requestid>44226</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>fac5d8a523d4fdfc4edc59c2dbfb1b57</srcmd5>
+    <version>unknown</version>
+    <time>1284196940</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/aria2 based on submit request 47700 from user coolo
+</comment>
+    <requestid>47700</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>777af326899c9c05c183a5c8e111edf9</srcmd5>
+    <version>1.10.3</version>
+    <time>1285283146</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/aria2 based on submit request 48980 from user coolo
+</comment>
+    <requestid>48980</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>066e70956220c83a372cef8d3afcc4e6</srcmd5>
+    <version>1.10.6</version>
+    <time>1289419771</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52425 from user coolo
+</comment>
+    <requestid>52425</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>6ef7cfa92ce41e11b75cc559be70b443</srcmd5>
+    <version>1.10.6</version>
+    <time>1289419776</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52425
+</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5d0865fbfd54f74d3fadb15f192aff9a</srcmd5>
+    <version>1.10.8</version>
+    <time>1294667790</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57586 from user msmeissn
+</comment>
+    <requestid>57586</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>70cdd7e22cb7cbbf42c6603fd65fa3bf</srcmd5>
+    <version>1.10.8</version>
+    <time>1294667803</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57586
+</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ad45f7f087d838894e2a22d2b5d8f30b</srcmd5>
+    <version>1.10.9</version>
+    <time>1296609370</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59478 from user msmeissn
+</comment>
+    <requestid>59478</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>f7a6c8265ddd81745a692092292cfee5</srcmd5>
+    <version>1.10.9</version>
+    <time>1296609381</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59478
+</comment>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>f7a6c8265ddd81745a692092292cfee5</srcmd5>
+    <version>1.10.9</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>3ff3dae410fc70e21702589ae5db3d90</srcmd5>
+    <version>1.11.0</version>
+    <time>1303384968</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 67004 from user coolo
+</comment>
+    <requestid>67004</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>44a27f97110788b9e0eefb9addc927db</srcmd5>
+    <version>1.11.0</version>
+    <time>1303384978</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 67004
+</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b96b821e7e6c0b3f9ab22b9479d481d8</srcmd5>
+    <version>1.12.1</version>
+    <time>1316503693</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82829 from jengelh)</comment>
+    <requestid>82868</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a7a5c3872f92adf76938112afba1fb2b</srcmd5>
+    <version>1.13.0</version>
+    <time>1318761624</time>
+    <user>lrupp</user>
+    <comment>- new features
+- disable SSLv2 by default and optimize memory usage (merges Cristian's patch upstream)
+- now uses libnettle and libgmp on &gt;= 12.1 (and factory) instead of openssl or libgcrypt</comment>
+    <requestid>87996</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>a7a5c3872f92adf76938112afba1fb2b</srcmd5>
+    <version>1.13.0</version>
+    <time>1319181774</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0bd634b2c1b3d1f7f7be33b0840c5593</srcmd5>
+    <version>1.14.2</version>
+    <time>1332239108</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-GPL-2.0+-with-openssl-exception
+Package expressly allows linking against openSSL (forwarded request 109061 from babelworx)</comment>
+    <requestid>109183</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>59f20d6f899106890eb47931c88f02fa</srcmd5>
+    <version>1.14.2</version>
+    <time>1332415868</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 (forwarded request 110276 from dimstar)</comment>
+    <requestid>110283</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0f940be091b4d00411023111069259a3</srcmd5>
+    <version>1.15.0</version>
+    <time>1334215109</time>
+    <user>coolo</user>
+    <comment>Update to 1.15.0 (forwarded request 113017 from dimstar)</comment>
+    <requestid>113022</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>0f940be091b4d00411023111069259a3</srcmd5>
+    <version>1.15.0</version>
+    <time>1340183179</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>3eaec046f642dc15e5ba5b70f0f40216</srcmd5>
+    <version>1.15.1</version>
+    <time>1340971128</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>126590</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>2a5cc6464251c67f5b1f813e7d9254a0</srcmd5>
+    <version>1.15.1</version>
+    <time>1341813175</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-GPL-2.0-with-openssl-exception
+SPDX format for this license - which has an openssl exception (forwarded request 127214 from babelworx)</comment>
+    <requestid>127249</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>63d2b661110e85bd2d4c598660101344</srcmd5>
+    <version>1.15.2</version>
+    <time>1351090906</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.15.2:
+  Fixes several critical bugs. It also adds new features such as
+  TLS SNI and CORS support. The --file--allocation option now take
+  another value trunc. The new option --enalbe-mmap was added.
+  aria2 now uses system-wide SSL/TLS certificates by default, which
+  eliminates the requirement to specify --ca-certificate option.
+- Remove aria2-1.15.1-system_certificates.patch. Applied upstream.
+- Remove autotools BuildRequires since we don't have patches any more.</comment>
+    <requestid>139144</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0a29c4f4a1527dcaa476f93ebc9d7011</srcmd5>
+    <version>1.16.0</version>
+    <time>1355143552</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>144925</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>2cc3c4bd6069dee6923172d1551d7ba1</srcmd5>
+    <version>1.16.1</version>
+    <time>1356702936</time>
+    <user>namtrac</user>
+    <comment>- Update to 1.16.1
+  * adds the ability to persist GID across sessions
+  * now GID is 64 bits binary data and represented by 16 characters
+    hex string in RPC query
+  * the disk cache feature was added
+  * the console readout was redesigned</comment>
+    <requestid>146531</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>2cc3c4bd6069dee6923172d1551d7ba1</srcmd5>
+    <version>1.16.1</version>
+    <time>1359108663</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>fb9c322bfdcd96b6f39fbe0d180d23a7</srcmd5>
+    <version>1.16.3</version>
+    <time>1361348064</time>
+    <user>coolo</user>
+    <comment>- update to 1.16.3
+  * Fix invalid iterator handling when deleting RequestGroup
+  * Check SSL_OP_NO_COMPRESSION is available before using it
+  * Fix bug returnPeer is not called if sequence_ == INITIATOR_SEND_KEY
+  * Accept k and m as well as K and M in util::getRealSize()
+  * Added --save-session-interval option
+  * Use request URI as referer if --referer=&quot;*&quot; is given
+  * Log warn if unknown option is found in config file or -i file
+  * Added --console-log-level option</comment>
+    <requestid>155842</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>5d9106f937c101572964b6f806d23143</srcmd5>
+    <version>1.16.5</version>
+    <time>1364895524</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>161953</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>c5c6c6c2ec40b766b7839b25cdced972</srcmd5>
+    <version>1.17.0</version>
+    <time>1367904079</time>
+    <user>coolo</user>
+    <comment>- Update to 1.17.0
+  * Updated Russian manual
+  * Updated Portuguese manual
+  * Append --static to pkg-config arguments when ARIA2_STATIC=yes
+  * Save options directly specified for download in --save-session
+  * Save URI returned only from FileEntry::getRemainingUris()
+  * Print linked 3rd party libraries with version in aria2c -v output
+  * Use info level log for system trusted ca imports failure
+  * Remove deprecated options: --enable-direct-io and --metalink-servers
+  * Deprecate --enable-async-dns6
+  * Fix uninitialized UDPTrackerClient::numWatchers_
+  * Implement simple Happy Eyeballs for HTTP/FTP downloads
+  * Parallel A and AAAA record lookups with c-ares</comment>
+    <requestid>174629</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>6e7ae4f313f57842533427bcf2c0536f</srcmd5>
+    <version>1.17.1</version>
+    <time>1370924587</time>
+    <user>coolo</user>
+    <comment>- Update to 1.17.1
+  * Add code to detect rst2html.py or rst2html
+  * Enable multicast loopback in BitTorrent local peer discovery
+  * Enable TLS1.1 with gnutls build
+  * Check zlib availability usin AC_CHECK_LIB
+  * Treat response is completed if EOF is received before streamFilter
+    completes
+  * uitos: Fix off-by-one error bug
+  * Add configure support for linking tcmalloc_minimal and/or jemalloc
+  * Close GZipFiles in the d'tor
+  * Add libaria2, C++ library interface to aria2 (not built)
+  * Add missing check for sigaction
+  * Fix cached data is not flushed when downloaded data is less than
+    16KiB
+  * LibUV: Implement LibuvEventPoll</comment>
+    <requestid>178004</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>e7bb3a98792f005e157fbcb24e1fb3fe</srcmd5>
+    <version>1.18.0</version>
+    <time>1379076249</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to 1.18.0
+  * Use AM subdir-objects
+  * AM_SILENT_RULES([yes]) with backwards-compatiblity
+  * Fix automake-1.14 am_aux_dir
+  * Require external gettext for --enable-nls
+  * Make AX_CXX_COMPILE_STDCXX_11 test for -stdlib=libc++ via std::shared_ptr
+  * Make the configure check for C++11 compiler mandatory
+  * Always build doc/manual-src
+  * Implement a simple resource lock (threading)
+  * Check for sphinx-build during configure
+  * Add --with-disk-cache configure option
+  * Change defaults: Enable 16M disk cache by default.
+  * Always save control file if --force-save is given
+  * Set log level DEBUG for unittests
+  * Check that C++ compiler supports override keyword
+  * Use AX_CXX_COMPILE_STDCXX_11 macro to detect C++0x/C++11 support in
+    compiler
+  * Require -std=c++11 and use std::shared_ptr instead of SharedHandle
+  * Join URI on redirect
+  * Send HAVE message to the peer which the piece is downloaded from
+  * Improvements to --follow-torrent=false documentation.
+  * SessionSerializer: Truly unique URIs
+  * Make getOption RPC method return option for stopped downloads
+  * SessionSerializer: Save spent URIs as well as remaining ones
+- Remove support for end of life openSUSE versions (&lt;= 12.1) (forwarded request 198661 from RedDwarf)</comment>
+    <requestid>198757</requestid>
+  </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>e7bb3a98792f005e157fbcb24e1fb3fe</srcmd5>
+    <version>1.18.0</version>
+    <time>1379661984</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>39e28da2dfab11ffe4c69cef039b9449</srcmd5>
+    <version>1.18.1</version>
+    <time>1383545090</time>
+    <user>coolo</user>
+    <comment>- Update to 1.18.1
+  * LibsslTLSContext: Remove weak cipher suite
+  * AppleTLS: Enable --certificate
+  * util::percentEncodeMini: Fix regression bug removed unsignedness
+  * Log exception; throw error if loading private key and/or certificate
+    failed
+  * Provide internal ARC4 implementation
+  * Internal implementation of DHKeyExchange
+  * PKCS12 support in --certificate and --rpc-certificate options.
+  * Add --disable-ssl configure option
+  * Add internal md5 and sha1 message digests
+  * Fix AppleMessageDigestImpl use with large data
+  * Set old cookie's creation-time to new cookie on replacement
+  * Fix link error with Android NDK r9 (forwarded request 205624 from RedDwarf)</comment>
+    <requestid>205631</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>924473f38ac5f5260a176a2c1503908b</srcmd5>
+    <version>1.18.3</version>
+    <time>1389606755</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>213655</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>dabd9239e8e519ea386dd1421119a148</srcmd5>
+    <version>1.18.5</version>
+    <time>1405178098</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240719</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>dabd9239e8e519ea386dd1421119a148</srcmd5>
+    <version>1.18.5</version>
+    <time>1409300510</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>6e18b8bb0da29a432c87ccf4a6cfd634</srcmd5>
+    <version>1.18.8</version>
+    <time>1418978311</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265614</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>419d35e5e21bd1075e626fed4b3776d9</srcmd5>
+    <version>1.18.10</version>
+    <time>1429346478</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297859</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>10ab8be7c7fb79b6d1d4bb679c9e066a</srcmd5>
+    <version>1.18.10</version>
+    <time>1430387461</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304466</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>7ea938a0ee48e16c00a37f5b78d820e2</srcmd5>
+    <version>1.19.0</version>
+    <time>1438795030</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>320741</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>9940e344f0538b27e9fa2f5ddc9697e9</srcmd5>
+    <version>1.19.2</version>
+    <time>1448186460</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345590</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>3781405cab7b117d02ece7df8c28b4fc</srcmd5>
+    <version>1.19.3</version>
+    <time>1449687142</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347697</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>eac7546e5166973387fccac5b4cc6a89</srcmd5>
+    <version>1.20.0</version>
+    <time>1457353717</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.20.0</comment>
+    <requestid>367188</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>3bc2ee9636f60e4627c9757cc3796019</srcmd5>
+    <version>1.21.0</version>
+    <time>1459508597</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.21.0
+  * SessionSerializer: Fix bug that pause=true is added to wrong 
+    item
+  * Add &quot;following&quot; to aria2.tellStatus response key as reverse 
+    link for followedBy
+  * mingw: Add warning for falloc
+  * Update ciphers in AppleTLS
+  * OSX: Enable libssh2 and sftp
+  * Update OSX dependencies
+  * Fix compile error without TLS support
+  * Add support for using gnutls system wide crypto policy
+- Update project url</comment>
+    <requestid>382722</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>f0450205c24f6151f6a10c74d962b3ee</srcmd5>
+    <version>1.22.0</version>
+    <time>1462261029</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>393157</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>cdeb397ad0e7113da666ea446577f437</srcmd5>
+    <version>1.23.0</version>
+    <time>1463498195</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.23.0:</comment>
+    <requestid>396145</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>1d2b7764fe62e1b8e08d7f55256aefc1</srcmd5>
+    <version>1.24.0</version>
+    <time>1466326244</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.24.0:
+  * BitTorrent: Allow 32KiB request
+  * Don't unchoke peer which is not interested in us
+  * Fix bug that evaluation of Peer::amChoking is negated
+  * Faster seed/download on fast connection
+  * Increase DHT task concurrency to 15
+  * Fixed mmap failure check with MAP_FAILED flag
+  * Added file size overflow check for mmap on 32bit os
+  * Use standard percent-encode for tracker request query
+  * mingw32: Gain privilege before opening files
+  * Restart active download to apply previously not applicable
+    options</comment>
+    <requestid>403340</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>3a04dc839a2124dda7c87fadc7f472da</srcmd5>
+    <version>1.25.0</version>
+    <time>1470217403</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415457</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>cd30da8b01700b2fa7781de7e4ada44f</srcmd5>
+    <version>1.26.0</version>
+    <time>1471867233</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.0:</comment>
+    <requestid>420799</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>237bd14e0859a38791870379d054e9b5</srcmd5>
+    <version>1.26.1</version>
+    <time>1473103306</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.1:
+  * Make assertion hold</comment>
+    <requestid>424212</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>57261222942e372c27bda84467502ecd</srcmd5>
+    <version>1.27.1</version>
+    <time>1475589632</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.27.1:
+  * Add missing libssl_compat.h to SRCS
+- Changes for version 1.27.0:
+  * Fix possible cause of crash if UDP tracker is used
+  * Remove custom ftruncate64 for Android
+  * The latest NDK versions support ftruncate64, so building a
+    local copy of ftruncate64 is no longer needed.
+  * Also, the arm and x86 builds of ftruncate64 failed when
+    targeting API level 21 or higher, as they include which are not
+    present starting from API level 21.
+  * Fix typo found by Debian's Lintian
+  * Add --save-not-found option
+  * Compile with openssl 1.1.0</comment>
+    <requestid>432993</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>92980e0534f8420ea7f6b79a97625c44</srcmd5>
+    <version>1.28.0</version>
+    <time>1476875693</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.28.0:
+  * Restore LTLIBINTL in src/Makefile.am
+  * Add --keep-unfinished-download-result option
+  * Fix -Wexpansion-to-defined warning with clang-3.9
+  * Fix bug that file name is not logged with --conditional-get</comment>
+    <requestid>435993</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>3386a6291a0033db5ff44faac02e3eda</srcmd5>
+    <version>1.29.0</version>
+    <time>1479502940</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.29.0:
+  * WinTLS: Fix busy loop on write error
+  * Support 1xx non-final response
+  * Update wslay
+  * Don't download piece which is filtered out (e.g., --select-file)</comment>
+    <requestid>440732</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>56d961d33abdfd2cc0c554ff088f3c5a</srcmd5>
+    <version>1.30.0</version>
+    <time>1482418590</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to version 1.30.0:</comment>
+    <requestid>446833</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>dd08414c1acd9290941ca85a8631eab8</srcmd5>
+    <version>1.31.0</version>
+    <time>1485250589</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451469</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>5b5e6bf9f238c847806df425f0299550</srcmd5>
+    <version>1.31.0</version>
+    <time>1489345461</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477889</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>38a60359ff6912cb62493e814bed56b2</srcmd5>
+    <version>1.32.0</version>
+    <time>1495268063</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496531</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>bb88b00fe2f585f815b477766201dc4d</srcmd5>
+    <version>1.33.0</version>
+    <time>1510506127</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>536734</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>c3c05d355260594d063ef4ee08dbacfe</srcmd5>
+    <version>1.33.1</version>
+    <time>1510578604</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.33.1:
+  * This release fixes a bug that causes high CPU usage in mingw
+    build.</comment>
+    <requestid>541227</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>257382ee04e4134cbdd8dd1b37325f93</srcmd5>
+    <version>1.34.0</version>
+    <time>1526573095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610004</requestid>
+  </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>cb75e56fe4b0c90cf42145feb755ff29</srcmd5>
+    <version>1.34.0</version>
+    <time>1547130206</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix CVE-2019-3500 boo#1120488
+  * aria2-CVE-2019-3500.patch
+- Move bash completion to better location</comment>
+    <requestid>664102</requestid>
+  </revision>
+</revisionlist>

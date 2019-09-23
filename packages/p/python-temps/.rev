@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb9bd5708c8021b040a34b8d93771217</srcmd5>
+    <version>0.3.0</version>
+    <time>1450284132</time>
+    <user>dimstar_suse</user>
+    <comment>New package, we are using it internally in QAM/SUSE</comment>
+    <requestid>348062</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>22c931d9b709981c7d2de448a88025a6</srcmd5>
+    <version>0.3.0</version>
+    <time>1489021388</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to python singlespec</comment>
+    <requestid>476880</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>72699bab50ab6ae7dabd10d8bfb118d7</srcmd5>
+    <version>0.3.0</version>
+    <time>1489345532</time>
+    <user>dimstar_suse</user>
+    <comment>- reverted to python2 only package
+- spec-cleaned</comment>
+    <requestid>478675</requestid>
+  </revision>
+</revisionlist>

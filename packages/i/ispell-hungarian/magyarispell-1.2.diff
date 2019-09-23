@@ -1,0 +1,22 @@
+Index: Makefile
+===================================================================
+--- Makefile.orig
++++ Makefile
+@@ -143,7 +143,7 @@ magyar4%.dict: $(WRKDIR)
+ # ragozási táblázat (magyar.aff) elõállítása
+ magyar.aff: $(WRKDIR) eleje.aff ige_alanyi.aff fonev.aff fonev_kepzo.aff ige_kepzo.aff
+ 	@echo "===> ragozási táblázat (magyar.aff) elõállítása" | $(CATUTF)
+-	@cd $(AFFDIR);\
++	@cd $(AFFDIR); \
+ 	    cat eleje.aff ige_kepzo.aff fonev_kepzo.aff ige_morfo.aff ige_alanyi.aff \
+             fonev.aff fonev_morfo.aff ige_targyas.aff | $(M4) > $(WRKDIR)/magyar.aff;
+ 
+@@ -199,7 +199,7 @@ install: install_all
+ install_all: install_myspell install_ispell install_OO 
+ 
+ # ispell opcióval kompilált hashtábla 
+-#ispell: magyar4ispell.hash
++ispell: magyar4ispell.hash
+ 
+ # hu_HU.aff myspell ragozási táblázat és a hu_HU.dic szótár elõállítása
+ myspell: magyar4myspell.dict magyar.aff hu_HU.aff hu_HU.dic alias kr

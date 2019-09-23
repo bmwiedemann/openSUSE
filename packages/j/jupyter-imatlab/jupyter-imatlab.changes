@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Mon Jul 29 15:51:05 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.4
+  * Improved exception reporting.
+  * Heuristic workaround for MATLAB setting LD_PRELOAD.
+  * Fix compatibility with MATLAB2019a.
+
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Rename to to match jupyter package naming guidelines.
+
+-------------------------------------------------------------------
+Wed Dec 19 15:50:00 UTC 2018 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Do not let pip produce pyc files with random path
+  to make package build reproducible (boo#1094323)
+
+-------------------------------------------------------------------
+Thu May  3 14:07:08 UTC 2018 - toddrme2178@gmail.com
+
+- Use %license tag
+- Add license and readme
+
+-------------------------------------------------------------------
+Thu Apr 19 05:48:53 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.3
+  * When an error occurs, don't display the outermost error from eval.
+  * Clarify message when errors come from plotly.
+  * Drop support for Jupyter 5.0 (requires workarounds); fix support for IPython 6.2, ipykernel 4.7.
+  * Figure exporter sorts figures by number and uses the screen resolution.
+
+-------------------------------------------------------------------
+Fri Nov 10 15:29:30 UTC 2017 - toddrme2178@gmail.com
+
+- Enable kernel
+
+-------------------------------------------------------------------
+Sun Oct 22 18:36:53 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

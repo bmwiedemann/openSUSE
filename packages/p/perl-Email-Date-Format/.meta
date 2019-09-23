@@ -1,0 +1,7 @@
+<package name="perl-Email-Date-Format" project="openSUSE:Factory">
+  <title>Produce RFC 2822 date strings</title>
+  <description>This module provides a simple means for generating an RFC 2822 compliant
+datetime string. (In case you care, they're not RFC 822 dates, because they
+use a four digit year, which is not allowed in RFC 822.)</description>
+  <devel project="devel:languages:perl" package="perl-Email-Date-Format"/>
+</package>

@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Mon Aug 26 06:47:18 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Fri May  3 08:54:18 UTC 2019 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Remove the "Requires: cmake" as the package can be perfectly used
+  without cmake.
+
+-------------------------------------------------------------------
+Wed Apr 24 10:29:15 UTC 2019 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Ensure gliConfig.cmake gets installed:
+  * gli-cmake-config.patch
+
+-------------------------------------------------------------------
+Sun Apr 14 18:48:57 UTC 2019 - Sagi <sagiben@gmail.com>
+
+- Initial commit for OpenGL Image version 0.8.2.0
+  https://github.com/g-truc/gli/releases/tag/0.8.2.0
+
+  offline changelog can be found at:
+  /usr/share/doc/packages/%{name}-doc/readme.md 

@@ -1,0 +1,121 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ad51b6be148e071fe2d6c790280f4fe</srcmd5>
+    <version>0.1</version>
+    <time>1280793958</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-killswitch based on submit request 44285 from user hmacht
+</comment>
+    <requestid>44285</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>9ad51b6be148e071fe2d6c790280f4fe</srcmd5>
+    <version>0.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9494c8f2ec383d58b211870388bac0b3</srcmd5>
+    <version>0.3</version>
+    <time>1301060568</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65211 from user licensedigger
+</comment>
+    <requestid>65211</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>abda559e0a31f281fffb1e668aeb527c</srcmd5>
+    <version>0.3</version>
+    <time>1301060575</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65211
+</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>abda559e0a31f281fffb1e668aeb527c</srcmd5>
+    <version>0.3</version>
+    <time>1319182394</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>68f77f807e05aac9c933fdb65d16f0e8</srcmd5>
+    <version>0.3</version>
+    <time>1339705579</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-WTFPL-2.0
+SPDX format (WTFPL is not on spdx.org/licenses - so choose from the spreadsheet linked at license.opensuse.org) (forwarded request 124907 from babelworx)</comment>
+    <requestid>124910</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>68f77f807e05aac9c933fdb65d16f0e8</srcmd5>
+    <version>0.3</version>
+    <time>1340184064</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>2b0d39a685b26c8a4b2a116833dab7c9</srcmd5>
+    <version>0.3</version>
+    <time>1345730755</time>
+    <user>namtrac</user>
+    <comment>add urfkill as package requirement (bnc#734894) (forwarded request 130706 from hmacht)</comment>
+    <requestid>131008</requestid>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>2b0d39a685b26c8a4b2a116833dab7c9</srcmd5>
+    <version>0.3</version>
+    <time>1359110061</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>2b0d39a685b26c8a4b2a116833dab7c9</srcmd5>
+    <version>0.3</version>
+    <time>1379664206</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>88345fc123dd2753bee218987d5039cb</srcmd5>
+    <version>0.4</version>
+    <time>1388774904</time>
+    <user>coolo</user>
+    <comment>- update to version 0.4: Update to new URfkill API (bnc#734894) (forwarded request 212620 from oertel)</comment>
+    <requestid>212625</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>f3d35065584c94ce4e8d67ec976d2eae</srcmd5>
+    <version>0.4</version>
+    <time>1393089376</time>
+    <user>coolo</user>
+    <comment>- Package COPYING and README in documentation
+- Remove depreciated macros
+- Remove --record-list option and add %{python_sitelib} in %files
+  instead (forwarded request 223375 from posophe)</comment>
+    <requestid>223376</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>f3d35065584c94ce4e8d67ec976d2eae</srcmd5>
+    <version>0.4</version>
+    <time>1409302904</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>5b6262d868499d17a8e9554fbae10f0f</srcmd5>
+    <version>0.4</version>
+    <time>1530191504</time>
+    <user>dimstar_suse</user>
+    <comment>Clean SPEC file (forwarded request 619000 from mcepl)</comment>
+    <requestid>619001</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>4f0b7185027d4a78829eb412efd0209b</srcmd5>
+    <version>0.4</version>
+    <time>1544189867</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>655850</requestid>
+  </revision>
+</revisionlist>

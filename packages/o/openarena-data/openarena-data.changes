@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Thu Mar 23 14:49:50 UTC 2017 - jengelh@inai.de
+
+- Trim filler words from description.
+- Merge openarena-doc into main package so that the license is
+  always available.
+- Replace %__-type macro indirections
+
+-------------------------------------------------------------------
+Wed Aug 15 20:02:39 UTC 2012 - dap.darkness@gmail.com
+
+- updated to 0.8.8
+- using upstream archive
+
+-------------------------------------------------------------------
+Fri Mar 23 13:11:53 UTC 2012 - jengelh@medozas.de
+
+- Parallel build with %_smp_mflags; strip redundant sections/tags
+- Have files owned by root - there is no reason to use "games"
+
+-------------------------------------------------------------------
+Mon Jan 19 08:00:00 CEST 2009 - michal.smrz@opensuse.cz
+
+- updated to version 0.8.1
+- changed name of data file to %{name}-%{version}.tar.lzma format
+- small change of description
+- removed previous versions of data files
+- added openarena-doc package
+
+-------------------------------------------------------------------
+Mon Aug 11 17:31:01 CEST 2008 - lmichnovic@suse.cz
+
+- updated to version 0.8.0
+- set data path to /usr/share/games/openarena
+
+-------------------------------------------------------------------
+Thu Jun  5 18:35:40 CEST 2008 - lmichnovic@suse.cz
+
+- updated to version 0.7.7
+
+-------------------------------------------------------------------
+Mon Apr 28 14:47:58 CEST 2008 - lmichnovic@suse.cz
+
+- updated data to version 0.7.6
+
+-------------------------------------------------------------------
+Tue Mar  4 11:22:17 CET 2008 - lmichnovic@suse.cz
+
+- included patch to version 0.7.1
+- excluding useless binaries
+

@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Tue Jun  4 12:05:17 UTC 2019 - pgajdos@suse.com
+
+- run the testsuite
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:21 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Nov  3 06:00:03 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.3.3:
+  * Remove two-digit-year variants from certificate validity date
+    decoding (deb#864257, gh#fritzy/SleekXMPP#461).
+- Remove sleekxmpp-better-tls.patch.
+
+-------------------------------------------------------------------
+Tue May  2 21:42:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.3.2:
+  * Fix an issue with carbons (CVE-2017-5589, bsc#1024690).
+- Remove sleekxmpp-fix-carbons.patch.
+- Update for the multipython build.
+- Add sleekxmpp-fix-dnspython.patch: fix compatibility with recent
+  dnspython.
+- Add sleekxmpp-fix-legacyauth.patch by nyov: Fix an error in
+  legacyauth support.
+- Add sleekxmpp-better-tls.patch: Use ssl.get_protocol_name() to
+  find out which TLS version is in use (commit 6ebcf6b).
+
+-------------------------------------------------------------------
+Sat Feb 11 23:12:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Add sleekxmpp-fix-carbons.patch by mathieui: Fix an issue with
+  carbons (slixmpp commit 22664ee) (CVE-2017-5589, bsc#1024690).
+
+-------------------------------------------------------------------
+Sat Dec 10 09:12:08 UTC 2016 - sor.alexei@meowr.ru
+
+- Add sleekxmpp-check-roster-push-origin.patch by mathieui: Check
+  origin of roster pushes (slixmpp commits ffdb6ff, ffd9436,
+  bsc#1014976).
+  See Gajim's CVE-2015-8688 and
+  https://gultsch.de/gajim_roster_push_and_message_interception.html
+
+-------------------------------------------------------------------
+Fri Jul 29 15:17:41 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.3.1:
+  * No changelog available.
+- Drop openSUSE 12.3 support.
+- Change description a bit.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Tue Nov 19 16:30:06 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.1.11
+  + No changelog available
+- Remove useless stuff
+  + Too many changes, sorry
+- Break compatibility with SLE11 and openSUSE < 12.3; python is not build
+  with OpenSSL
+
+-------------------------------------------------------------------
+Thu Jan 27 17:02:54 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.9+1.0_beta4)

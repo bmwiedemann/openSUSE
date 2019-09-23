@@ -1,0 +1,36 @@
+From 63746931efdc064a49e3f4f2fa3cd66609facd8f Mon Sep 17 00:00:00 2001
+From: Radek Novacek <rnovacek@redhat.com>
+Date: Tue, 20 May 2014 09:05:03 +0200
+Subject: [PATCH 2/5] Don't optimize out module registration
+
+---
+ src/konkret/konkret.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/konkret/konkret.h b/src/konkret/konkret.h
+index 40d66b36c607..dac188a6b167 100644
+--- a/src/konkret/konkret.h
++++ b/src/konkret/konkret.h
+@@ -112,8 +112,10 @@
+ 
+ #ifdef __GNUC__
+ # define KUNUSED __attribute__((__unused__))
++# define KUSED __attribute__((__used__))
+ #else
+ # define KUNUSED /* empty */
++# define KUSED /* empty */
+ #endif
+ 
+ /*
+@@ -2645,7 +2647,7 @@ KEXTERN size_t KStrlcat(char* dest, const char* src, size_t size);
+ */
+ 
+ #define KONKRET_REGISTRATION(NAMESPACE, CLASS, PROVIDERNAME, TYPES) \
+-    static volatile KUNUSED const char __konkret_registration[] = \
++    static volatile KUSED const char __konkret_registration[] = \
+     "@(#)KONKRET_REGISTRATION=" NAMESPACE ":" CLASS ":" PROVIDERNAME ":" TYPES;
+ 
+ #endif /* _konkret_h */
+-- 
+2.7.2
+

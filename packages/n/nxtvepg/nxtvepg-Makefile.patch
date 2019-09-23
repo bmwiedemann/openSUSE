@@ -1,0 +1,24 @@
+---
+ Makefile |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- Makefile.orig
++++ Makefile
+@@ -50,7 +50,7 @@ prefix  = /usr/local
+ exec_prefix = ${prefix}
+ bindir  = $(ROOT)${exec_prefix}/bin
+ mandir  = $(ROOT)${prefix}/man/man1
+-resdir  = $(ROOT)/etc/X11
++resdir  = $(ROOT)/usr/share/X11
+ cfgdir  = $(ROOT)/usr/share/nxtvepg
+ 
+ # if you have perl and/or flex set their path here, else just leave them alone
+@@ -59,7 +59,7 @@ FLEX    = /usr/bin/flex
+ YACC    = /usr/bin/yacc
+ 
+ # select Tcl/Tk version (8.5 recommended due to modernized widget appearence)
+-TCL_VER := $(shell echo 'puts [package require Tcl]' | tclsh)
++TCL_VER := $(shell echo 'puts [info tclversion]' | tclsh)
+ #TCL_VER = 8.5
+ 
+ ifeq ($(shell test -d /usr/include/tcl$(TCL_VER) && echo YES),YES)

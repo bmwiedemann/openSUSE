@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Mon Jul 22 08:30:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable tests for now, the output from pytest changed quite a
+  bit and upstream needs to adapt it for pytest5. The plugin
+  actually works, it just fails its own testsuite...
+
+-------------------------------------------------------------------
+Thu May  9 14:49:19 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add fix-test-fast.patch to avoid failing
+  tests/test_normal.py::test_fast test on 32bit platform.
+
+-------------------------------------------------------------------
+Thu Mar 28 13:13:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Try to avoid messing up bytecode of the installed pkg
+
+-------------------------------------------------------------------
+Tue Mar 26 10:16:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add missing dependency on pygal and pygaljs
+
+-------------------------------------------------------------------
+Mon Mar 25 11:00:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add missing dependency on aspectlib
+
+-------------------------------------------------------------------
+Wed Feb 13 14:43:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.2.2:
+  * Added support for pytest items without funcargs. Fixes interoperability with other pytest plugins like pytest-flake8.
+  * Added missing version constraint change. Now pytest >= 3.8 is required (due to pytest 4.1 support).
+  * Fixed couple CI/test issues.
+  * Fixed broken pytest_benchmark.__version__.
+  * Added support for simple trial x-axis histogram label. Contributed by Ken Crowell in #95).
+  * Added support for Pytest 3.3+, Contributed by Julien Nicoulaud in #103.
+  * Added support for Pytest 4.0. Contributed by Pablo Aguiar in #129 and #130.
+  * Added support for Pytest 4.1.
+  * Various formatting, spelling and documentation fixes. Contributed by Ken Crowell, Ofek Lev, Matthew Feickert, Jose Eduardo, Anton Lodder, Alexander Duryagin and Grygorii Iermolenko in #97, #97, #105, #110, #111, #115, #123, #131 and #140.
+  * Fixed broken pytest_benchmark_update_machine_info hook. Contributed by Alex Ford in #109.
+  * Fixed bogus xdist warning when using --benchmark-disable. Contributed by Francesco Ballarin in #113.
+  * Added support for pathlib2. Contributed by Lincoln de Sousa in #114.
+  * Changed handling so you can use --benchmark-skip and --benchmark-only, with the later having priority. Contributed by Ofek Lev in #116.
+  * Fixed various CI/testing issues. Contributed by Stanislav Levin in #134, #136 and #138.
+
+-------------------------------------------------------------------
+Wed May  9 23:25:39 UTC 2018 - toddrme2178@gmail.com
+
+- Use license tag
+- Implement update-alternatives
+
+-------------------------------------------------------------------
+Thu Oct 19 00:24:23 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

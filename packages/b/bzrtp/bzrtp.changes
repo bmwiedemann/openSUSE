@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Wed Sep 12 10:17:24 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix RPM group.
+
+-------------------------------------------------------------------
+Wed Sep  5 08:38:36 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file
+- Move doc between subpackages
+
+-------------------------------------------------------------------
+Fri Jul 21 12:20:04 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.6:
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Wed May 17 15:00:49 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.5:
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Tue Sep 13 12:54:30 UTC 2016 - sor.alexei@meowr.ru
+
+- Switch to building with CMake.
+- Add bzrtp-fix-pkgconfig.patch: Install libbzrtp.pc on CMake.
+
+-------------------------------------------------------------------
+Mon Sep 12 12:32:34 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.0.4:
+  * Build system fixes.
+  * Security fix.
+- Remove mbedtls2.patch.
+
+-------------------------------------------------------------------
+Fri Aug 12 10:12:26 UTC 2016 - mpluskal@suse.com
+
+- Add mbedtls2.patch to fix building with mbedtls2
+
+-------------------------------------------------------------------
+Thu Nov 19 21:23:19 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.0.3
+  * build system fixes
+- Make build more verbose
+
+-------------------------------------------------------------------
+Mon Jul 20 18:46:11 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.0.2
+  * bug fixes
+
+-------------------------------------------------------------------
+Mon Mar 23 10:16:05 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

@@ -1,0 +1,49 @@
+diff --git dapl/udapl/linux/dapl_osd.h dapl/udapl/linux/dapl_osd.h
+index 2b255d0..d9362f5 100644
+--- dapl/udapl/linux/dapl_osd.h
++++ dapl/udapl/linux/dapl_osd.h
+@@ -51,7 +51,7 @@
+ 
+ #if !defined (__i386__) && !defined (__ia64__) && !defined(__x86_64__) && \
+     !defined(__PPC__) && !defined(__PPC64__) && !defined(__s390x__) && \
+-    !defined(__aarch64__)
++    !defined(__aarch64__) && !defined(__s390__)
+ #error UNDEFINED ARCH
+ #endif
+ 
+@@ -160,7 +160,7 @@ int dapl_os_get_env_val (
+ 
+ /* atomic functions */
+ 
+-#ifdef __s390x__
++#if defined(__s390x__) || defined(__s390__)
+ #define DAPL_CS_ADD(ptr, op_val) ({			\
+ 	int old_val, new_val;				\
+ 	__asm__ __volatile__(				\
+@@ -199,7 +199,7 @@ dapl_os_atomic_inc (
+ #else
+ 	IA64_FETCHADD(old_value,v,1,4);
+ #endif
+-#elif defined(__s390x__)
++#elif defined(__s390x__) || defined(__s390__)
+ 	DAT_COUNT	tmp;
+ 	DAT_COUNT	delta = 1;
+ 
+@@ -245,7 +245,7 @@ dapl_os_atomic_dec (
+ #else
+ 	IA64_FETCHADD(old_value,v,-1,4);
+ #endif
+-#elif defined(__s390x__)
++#elif defined(__s390x__) || defined(__s390__)
+ 	DAT_COUNT	tmp;
+ 	DAT_COUNT	delta = -1;
+ 
+@@ -307,7 +307,7 @@ dapl_os_atomic_assign (
+ #else
+     current_value = ia64_cmpxchg(acq,v,match_value,new_value,4);
+ #endif /* __ia64__ */
+-#elif defined(__s390x__)
++#elif defined(__s390x__) || defined(__s390__)
+ 	__asm__ __volatile__(
+ 		"	cs	%0,%2,%1\n"
+ 		: "+d" (match_value), "=Q" (*v)

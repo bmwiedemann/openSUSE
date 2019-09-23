@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Fri Apr 12 08:11:46 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Conflict python-xmldiff (unversioned)
+
+-------------------------------------------------------------------
+Wed Apr 10 08:01:52 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Restore more useful description from before 2.3
+
+-------------------------------------------------------------------
+Tue Apr  9 08:12:37 UTC 2019 - pgajdos@suse.com
+
+- package reworked from scratch
+- version update to 2.3
+  - A complete, bottom-up, pure-python rewrit
+  - A new default output format with new actions
+  - A format intended to be parseable by anyone parsing the old format.
+  - XML with changes marked though tags and attributes
+  - Added options for faster node comparisons. The "middle" option is now
+    default, it had very few changes in matches, but is much faster.
+  - Implemented a Fast Match algorithm for even faster diffing.
+  - Speed improvements through caching
+  - Fixed a bug where MoveNode actions sometimes was in the wrong order
+  - Added an InsertComment action, as comments require different handling,
+    so it's easier to deal with them this way. You can still use DeleteNode and
+    UpdateTextIn for them with no special handling.
+  - When renaming tags the XMLFormatter will mark them with "diff:rename"
+    instead of making a new tag and deleting the old.
+  - Tags will now be moved first, and updated and renamed later, as the new
+    tag name or attributes might not be valid in the old location.
+  - Changed the substitution unicode character area to use the Private Use Area
+    in BMP(0), to support narrow Python builds
+  - Added --unique-attributes argument.
+  - A workaround for dealing with top level comments and the xml formatter
+  - Added a simple ``xmlpatch`` command and API.
+  - Multiple updates to documentation and code style
+- deleted patches
+  - xmldiff-0.6.7-clean-tmp.patch (not needed)
+  - xmldiff-0.6.7-xsldata.patch (not needed)
+
+-------------------------------------------------------------------
+Sat May 28 21:00:54 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.6.10:
+  + fails when comparing minimal trees on i386
+- Changes from version 0.6.9:
+  + Fixed xmldiff-xmlrev compilation error.
+- Spec file cleanup
+- Drop patches: xmldiff-0.6.8-python2.5.patch
+
+-------------------------------------------------------------------
+Mon Jan 15 11:35:23 CET 2007 - ke@suse.de
+
+- Remove /usr/share/xml from the files list.
+
+-------------------------------------------------------------------
+Tue Sep 26 16:24:05 CEST 2006 - cthiel@suse.de
+
+- fix build with python 2.5
+- update to version 0.6.8
+  * various fixes
+- removed xmldiff-0.6.7-x64safe.patch
+
+-------------------------------------------------------------------
+Fri Jun  2 22:43:24 CEST 2006 - cthiel@suse.de
+
+- specfile cleanup, added Requires
+- imported 3 patches from Fedora
+
+-------------------------------------------------------------------
+Tue Feb 28 16:46:04 CET 2006 - jmatejek@suse.cz
+
+- updated to reflect python changes due to #149809
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:54 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Dec  7 13:55:07 CET 2005 - ke@suse.de
+
+- Update to version 0.6.7.
+- Drop obsolete tmp file patch.
+
+-------------------------------------------------------------------
+Thu Oct 23 13:49:18 CEST 2003 - ke@suse.de
+
+- New package: version 0.6.4.
+

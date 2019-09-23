@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:45:34 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Jul 29 12:53:52 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description. Adjust summary to be more
+  specific.
+
+-------------------------------------------------------------------
+Thu May 24 17:26:59 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.2.6
+  * First version supporting Python 3.4!
+- Update to version 0.2.5
+  * ansicolor.highlight_string accepts a new kwarg colors. color has been deprecated.
+- Spec file cleanups
+
+-------------------------------------------------------------------
+Fri Oct 20 16:13:04 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

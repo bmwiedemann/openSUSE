@@ -1,0 +1,29 @@
+From f71c3c6f8af716435b6d44c007d502b6fb362e20 Mon Sep 17 00:00:00 2001
+From: Simon Brunning <simon@brunningonline.net>
+Date: Fri, 2 Nov 2018 09:50:20 +0000
+Subject: [PATCH] Silence warnings from tests due to use of old
+ pytest.parameterize() signature.
+
+---
+ tests/hamcrest_unit_test/base_description_test.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tests/hamcrest_unit_test/base_description_test.py b/tests/hamcrest_unit_test/base_description_test.py
+index 82cd238..60f1862 100644
+--- a/tests/hamcrest_unit_test/base_description_test.py
++++ b/tests/hamcrest_unit_test/base_description_test.py
+@@ -35,10 +35,10 @@ def test_append_text_delegates(desc):
+ 
+ @pytest.mark.parametrize('described, appended', (
+     (Described(), 'described'),
+-    pytest.mark.skipif(six.PY3, reason="py2 only")((six.u('unicode-py2'), "'unicode-py2'")),
+-    pytest.mark.skipif(six.PY3, reason="py2 only")((six.b('bytes-py2'), "'bytes-py2'")),
+-    pytest.mark.skipif(six.PY2, reason="py3 only")((six.u('unicode-py3'), "'unicode-py3'")),
+-    pytest.mark.skipif(six.PY2, reason="py3 only")((six.b('bytes-py3'), "<b'bytes-py3'>")),
++    pytest.param(six.u('unicode-py2'), "'unicode-py2'", marks=pytest.mark.skipif(six.PY3, reason="py2 only")),
++    pytest.param(six.b('bytes-py2'), "'bytes-py2'", marks=pytest.mark.skipif(six.PY3, reason="py2 only")),
++    pytest.param(six.u('unicode-py3'), "'unicode-py3'", marks=pytest.mark.skipif(six.PY2, reason="py3 only")),
++    pytest.param(six.b('bytes-py3'), "<b'bytes-py3'>", marks=pytest.mark.skipif(six.PY2, reason="py3 only")),
+     (six.u("\U0001F4A9"), six.u("'{0}'").format(six.u("\U0001F4A9"))),
+ ))
+ def test_append_description_types(desc, described, appended):

@@ -1,0 +1,292 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2862aec57058b1d5eaf159623409c2c1</srcmd5>
+    <version>0.99</version>
+    <time>1358412879</time>
+    <user>coolo</user>
+    <comment>New package pesign, the signing tool for PE-COFF</comment>
+    <requestid>148522</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e49b0195f8d67b8b37b121952f182f80</srcmd5>
+    <version>0.99</version>
+    <time>1358873206</time>
+    <user>coolo</user>
+    <comment>Add pesign-digestdata.diff to generate digestdata (FATE#314552)</comment>
+    <requestid>149500</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e49b0195f8d67b8b37b121952f182f80</srcmd5>
+    <version>0.99</version>
+    <time>1359109867</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>5403ee94eaae98e78e5b276fa5426b83</srcmd5>
+    <version>0.99</version>
+    <time>1360243661</time>
+    <user>coolo</user>
+    <comment>- Merge patches for FATE#314552
+  + pesign-fix-export-attributes.patch: fix crash when exporting
+    the signed attributes
+  + pesign-privkey_unneeded.diff: Don't check the private key when
+    importing the raw signature
+- Add pesign-bnc801653-teardown-segfault.patch to fix crash when
+  freeing digests (bnc801653)
+- Drop pesign-digestdata.diff which is no longer needed. (forwarded request 151539 from gary_lin)</comment>
+    <requestid>151540</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>dea3bf7b2a7877f086910208c7ebf3d8</srcmd5>
+    <version>0.99</version>
+    <time>1360753790</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>155244</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>968b0e86f99213dbf8d8bd9378e28b27</srcmd5>
+    <version>0.99</version>
+    <time>1361548630</time>
+    <user>coolo</user>
+    <comment>- Add pesign-bnc805166-fix-signature-list.patch to fix the broken
+  signature list when inserting signature into a signed EFI binary
+  (bnc#805166)</comment>
+    <requestid>156108</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>fd4986f5987d54e269314dc8c2145995</srcmd5>
+    <version>0.99</version>
+    <time>1361824874</time>
+    <user>coolo</user>
+    <comment>Update pesign-bnc805166-fix-signature-list.patch to skip the unneeded private key request. (bnc#805166c#17) (forwarded request 156290 from gary_lin)</comment>
+    <requestid>156305</requestid>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>dd7a31a291cd9d196abe6151496f74b7</srcmd5>
+    <version>0.99</version>
+    <time>1362131627</time>
+    <user>coolo</user>
+    <comment>- Update pesign-bnc805166-fix-signature-list.patch to avoid the potential crash when inserting a signature (bnc#805166)
+- Add pwdutils to PreReq (forwarded request 156902 from gary_lin)</comment>
+    <requestid>156903</requestid>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>d7ebc823e3f552e799ca9d0f91609fb1</srcmd5>
+    <version>0.99</version>
+    <time>1364899037</time>
+    <user>coolo</user>
+    <comment>bnc#808594: fix the alignment of the signature list (forwarded request 161509 from gary_lin)</comment>
+    <requestid>161511</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>43bf5fb15559176dfce985474110ebb6</srcmd5>
+    <version>0.106</version>
+    <time>1373983103</time>
+    <user>coolo</user>
+    <comment>Update to 0.106 (forwarded request 183190 from gary_lin)</comment>
+    <requestid>183195</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>43161990446853518e5e5adbab8be8f5</srcmd5>
+    <version>0.106</version>
+    <time>1374161583</time>
+    <user>coolo</user>
+    <comment>Add pesign-allow-no-issuer-cert.patch to avoid crash when the
+issuer's certificate is not available (forwarded request 183593 from gary_lin)</comment>
+    <requestid>183594</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>43161990446853518e5e5adbab8be8f5</srcmd5>
+    <version>0.106</version>
+    <time>1379663942</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>173aa4fba7df76224d2fda963ce3378b</srcmd5>
+    <version>0.109</version>
+    <time>1382616666</time>
+    <user>scarabeus_factory</user>
+    <comment>Revert the dowload Url since it's not valid (forwarded request 204477 from gary_lin)</comment>
+    <requestid>204478</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>799d5b157735a3b33bf5dca9b55b2c16</srcmd5>
+    <version>0.109</version>
+    <time>1386077229</time>
+    <user>coolo</user>
+    <comment>Add pesign-no-db.patch to allow some commands to proceed without a NSS database. (forwarded request 209210 from gary_lin)</comment>
+    <requestid>209211</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>1bc9ec2260f6e79734ba78faba05600c</srcmd5>
+    <version>0.109</version>
+    <time>1391323016</time>
+    <user>coolo</user>
+    <comment>- mark dir in /var/run as %ghost</comment>
+    <requestid>220448</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>640b2e582d76697cc24a59f2f21c1b85</srcmd5>
+    <version>0.109</version>
+    <time>1397738643</time>
+    <user>scarabeus_factory</user>
+    <comment>Use /run (forwarded request 230287 from a_jaeger)</comment>
+    <requestid>230291</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>f07bc6984055efec09147f022f3ecd75</srcmd5>
+    <version>0.109</version>
+    <time>1403121878</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236931</requestid>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>9faff701c107d9924da0d8ab6a20b228</srcmd5>
+    <version>0.109</version>
+    <time>1404306248</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239086</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>9faff701c107d9924da0d8ab6a20b228</srcmd5>
+    <version>0.109</version>
+    <time>1409302597</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ed6d47283e1c05ccb0f27a30ab6bfa5c</srcmd5>
+    <version>0.110</version>
+    <time>1415748049</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>259128</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>c2b0fc9a9cd63fe92f4ab3214e5384c5</srcmd5>
+    <version>0.110</version>
+    <time>1417160667</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263191</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>3fc78a4e4550b0b36f813cf4e00493e7</srcmd5>
+    <version>0.110</version>
+    <time>1435652036</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312220</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>749a831ce56d096e43e000e240cef8cc</srcmd5>
+    <version>0.110</version>
+    <time>1440135511</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>323524</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>ab764f65f70095f959ea48385b3f9189</srcmd5>
+    <version>0.110</version>
+    <time>1441296055</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328247</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b3ca419a72dc5e8d34c58768e7b45c29</srcmd5>
+    <version>0.111</version>
+    <time>1450856892</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.111
+- Add pesign-fix-signness.patch to fix the signness comparison
+- Drop upstreamed patches
+  + pesign-efivar-pkgconfig.patch
+  + pesign-make-efi_guid_t-const.patch
+  + pesign-fix-import-sig-check.patch
+  + pesign-install-supplementary-programs.patch
+- Refresh pesign-suse-build.patch, pesign-privkey_unneeded.diff,
+  and pesign-run.patch
+- Update pesign-fix-build-errors.patch
+- Merge use-standard-pid-location.patch into pesign-run.patch</comment>
+    <requestid>346966</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>13d33f5ecb4e1f3d96426cbc919d7df8</srcmd5>
+    <version>0.112</version>
+    <time>1462342638</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391728</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>f1f338daab8022eb7b89404fc06219ea</srcmd5>
+    <version>0.112</version>
+    <time>1471504539</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418379</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>3ed43d78f687fe063edff727a1bb49d7</srcmd5>
+    <version>0.112</version>
+    <time>1523346510</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>592978</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>7c4737835746b5fb4d47be0a54931d26</srcmd5>
+    <version>0.112</version>
+    <time>1556817208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699086</requestid>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>3f9b6beafcce30ec0bd26fa3f36b6197</srcmd5>
+    <version>0.112</version>
+    <time>1557472823</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701925</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>10c29ab8545edcd00f291eae491d397a</srcmd5>
+    <version>113</version>
+    <time>1557832422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702581</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>6f7d3fd6e22ae74812672dc4e98260b9</srcmd5>
+    <version>113</version>
+    <time>1559727463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707028</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>68f31fa0c71d8830360151c15d518fb2</srcmd5>
+    <version>113</version>
+    <time>1563790668</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714600</requestid>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>662ce2b22d2c6f5a2a17136c5b783d99</srcmd5>
+    <version>113</version>
+    <time>1564994069</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719977</requestid>
+  </revision>
+</revisionlist>

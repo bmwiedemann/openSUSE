@@ -1,0 +1,218 @@
+<revisionlist>
+  <revision rev="1" vrev="34">
+    <srcmd5>97c006d1d82c579dda1782c552387b87</srcmd5>
+    <version>0.9.0</version>
+    <time>1168904451</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>53d9e0ca07bc36d028c04bec0f4f227c</srcmd5>
+    <version>0.9.2_SVN39</version>
+    <time>1169377157</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="12">
+    <srcmd5>d7e473c663f62c2d1618257c4323d71f</srcmd5>
+    <version>0.9.2_SVN39</version>
+    <time>1177697582</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="14">
+    <srcmd5>ffcc8a0dc043535d894f7805e9730708</srcmd5>
+    <version>0.9.2_SVN39</version>
+    <time>1178128501</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="16">
+    <srcmd5>c5ba147c8ca75d656f62c3917df6e31e</srcmd5>
+    <version>0.9.2_SVN39</version>
+    <time>1178166755</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7af1ef7e13df1fe9f03d5977da5e7a9e</srcmd5>
+    <version>0.9.2_SVN48</version>
+    <time>1178554793</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="41">
+    <srcmd5>bff49c17c21963d544ba56d3d972c52e</srcmd5>
+    <version>0.9.2_SVN48</version>
+    <time>1200219214</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>234f42cfc764c278693a413aa77564f1</srcmd5>
+    <version>0.9.2_SVN59</version>
+    <time>1219439532</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>a111f2706ca22cf965239276944bc249</srcmd5>
+    <version>0.9.2_SVN59</version>
+    <time>1220666971</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>550e432bc8d5768b8e5371b994e75671</srcmd5>
+    <version>0.9.2_SVN59</version>
+    <time>1226172644</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>dd0043507d503eafcc096023c540e36a</srcmd5>
+    <version>0.9.2_SVN59</version>
+    <time>1227194971</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e32f576b2c690dd7ab174a226143f92f</srcmd5>
+    <version>0.10.7</version>
+    <time>1244238171</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>ee7e0b471780aa990f75394cb884aca6</srcmd5>
+    <version>0.10.7</version>
+    <time>1249341128</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>ee7e0b471780aa990f75394cb884aca6</srcmd5>
+    <version>0.10.7</version>
+    <time>1249341128</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>01084c7a9d9457c68249edba93951b85</srcmd5>
+    <version>0.10.7</version>
+    <time>1268926481</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d5f1307f50c41b80621f2ce682dc5aa0</srcmd5>
+    <version>0.10.8</version>
+    <time>1271807685</time>
+    <user>autobuild</user>
+    <comment>Copy from mobile:synchronization:FACTORY/wbxml2 based on submit request 38347 from user cstender
+</comment>
+    <requestid>38347</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>d5f1307f50c41b80621f2ce682dc5aa0</srcmd5>
+    <version>0.10.8</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>d5f1307f50c41b80621f2ce682dc5aa0</srcmd5>
+    <version>0.10.8</version>
+    <time>1278678624</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>dc5f65ea2b5cab90ed1d68b1d872830e</srcmd5>
+    <version>0.10.9</version>
+    <time>1296607616</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59471 from user cstender
+</comment>
+    <requestid>59471</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>ab6fa90abe1f9d7e71511c14e41524a6</srcmd5>
+    <version>0.10.9</version>
+    <time>1296607623</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59471
+</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>ab6fa90abe1f9d7e71511c14e41524a6</srcmd5>
+    <version>0.10.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>ab6fa90abe1f9d7e71511c14e41524a6</srcmd5>
+    <version>0.10.9</version>
+    <time>1319182558</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>7744bdc94b0c89fee78f3387fa42cbe4</srcmd5>
+    <version>0.10.9</version>
+    <time>1323195155</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="10">
+    <srcmd5>7744bdc94b0c89fee78f3387fa42cbe4</srcmd5>
+    <version>0.10.9</version>
+    <time>1340184320</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="12">
+    <srcmd5>7744bdc94b0c89fee78f3387fa42cbe4</srcmd5>
+    <version>0.10.9</version>
+    <time>1359110559</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="14">
+    <srcmd5>7744bdc94b0c89fee78f3387fa42cbe4</srcmd5>
+    <version>0.10.9</version>
+    <time>1379664949</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="16">
+    <srcmd5>7744bdc94b0c89fee78f3387fa42cbe4</srcmd5>
+    <version>0.10.9</version>
+    <time>1409303629</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>bdb21a0919f4ee3c8cea75867750f316</srcmd5>
+    <version>0.11.5</version>
+    <time>1489345510</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478514</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>c063c92b7158d3168c880900942d3159</srcmd5>
+    <version>0.11.5</version>
+    <time>1489653805</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479652</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a8bd0b1d9ab9a103c56b9e9a7e5e20a4</srcmd5>
+    <version>0.11.6</version>
+    <time>1558515477</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 0.11.6
+  * Fixed/changed the encoding of element Content in CodePage
+    AirSyncBase (0x11) to WBXML_BINARY_OPTION for Microsoft 
+    ActiveSync.
+    This element is used when the clients send a request to save a
+    draft email.
+    An example can be found in:
+    http://interoperability.blob.core.windows.net/files/MS-ASEMAIL/[MS-ASEMAIL].pdf
+    (4.4 Adding a Draft Email with Attachments).
+    Reference:
+    https://msdn.microsoft.com/en-us/library/mt563406%28v=exchg.80%29.aspx
+    (issue #58 from Thomas Führer)
+  * Added a testcase for Microsoft ActiveSync EAS Provisioning
+    (clarifies issue #56).
+</comment>
+    <requestid>693916</requestid>
+  </revision>
+</revisionlist>

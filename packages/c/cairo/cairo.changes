@@ -1,0 +1,1518 @@
+-------------------------------------------------------------------
+Wed Sep  4 09:59:21 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 2 upstream bug fix patches:
+  + cairo-Use-FT_Done_MM_Var-instead-of-free-when-available.patch:
+    ft: Use FT_Done_MM_Var instead of free when available in
+    cairo_ft_apply_variations. Fixes a crash when using freetype
+    >= 2.9
+  + cairo-composite_color_glyphs.patch: Fix a thinko in
+    composite_color_glyphs. We can't just move around the contents
+    of the passed-in string, we need to make a copy. This was
+    showing up as memory corruption in pango.
+
+-------------------------------------------------------------------
+Sun Oct 21 08:48:44 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.16.0:
+  + test: Free resources in pdf2png.
+  + Drop skia backend.
+  + Revert "Correctly decode Adobe CMYK JPEGs in PDF export".
+
+-------------------------------------------------------------------
+Fri Oct  5 20:36:19 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.15.14:
+  + Features and Enhancements:
+    - Add more FreeeType font color conversions to support
+      COLR/CPAL.
+    - Update test reference images against current pixman.
+  + Bugs fixed:
+   - Fix crash when rendering Microsoft's Segoe UI Emoji Regular
+     font.
+   - Fix build breakage with glesv3 enabled due to non-existant
+     glesv3.pc.
+   - Fix memory leaks found by Coverity.
+   - Fix incorrect null ptr handling found by Coverity.
+   - Fix test compilation when font-config is disabled.
+   - Use _cairo_malloc instead of malloc
+     (fdo#101547, CVE-2017-9814).
+   - Fix assertion failure in the freetype backend (fdo#105746).
+- Drop upstream fixed patches:
+  + cairo-fix-assertion-failure-in-freetype-backend.patch.
+  + cairo-CVE-2017-9814.patch.
+
+-------------------------------------------------------------------
+Wed Jun 20 06:26:30 UTC 2018 - qzheng@suse.com
+
+- Add cairo-CVE-2017-9814.patch: Replace malloc with _cairo_malloc
+  and check cmap size before allocating (boo#1049092,
+  CVE-2017-9814, fdo#101547).
+
+-------------------------------------------------------------------
+Tue Apr 24 21:00:53 UTC 2018 - bjorn.lie@gmail.com
+
+- Add cairo-fix-assertion-failure-in-freetype-backend.patch: Fix
+  assertion failure in the freetype backend (fdo#105746).
+
+-------------------------------------------------------------------
+Thu Apr 12 08:16:38 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.15.12:
+  + The main focus for this release is the addition of Variable
+    Font support. Variable fonts are single font files with various
+    typography characteristics, such as weight or slant, that users
+    of the font can adjust between two points. Effectively this
+    enables a single font to behave as multiple fonts.
+  + The Skia backend is disabled in this release, due to severe
+    bitrot, and will be removed in future releases. Contact the
+    cairo team if you have a need of this backend.
+  + Features and Enhancements:
+    - Variable font support.
+    - Skia backend is disabled.
+  + API Changes: cairo_font_options_get_variations() and
+    cairo_font_options_set_variations() are added.
+  + Bugs fixed:
+    - Fix errors in csi-trace --help and --version options.
+    - Fix a 'memory leak' in the image compositor, with
+      pixman_glyph_cache_t.
+    - Fix access of uninitialized memory found by valgrind
+      (fdo#91271).
+    - Fix improper initialization of memory in
+      _cairo_ft_font_face_create_for_pattern() (fdo#105084).
+    - Fix multi-monitor virtual desktop with negative coords on
+      Win32 (fdo#100793).
+    - Fix issues occuring with older FreeType versions.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:23:56 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Feb 16 14:30:02 UTC 2018 - crrodriguez@opensuse.org
+
+- Add explicit pkgconfig(zlib) and (conditionalized on
+  build_xcb_backend) pkgconfig(xcb-render) BuildRequires: closer
+  alignment with what configure checks for.
+
+-------------------------------------------------------------------
+Mon Dec 18 16:38:19 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.15.10:
+  + Features and Enhancements:
+    - Add support for OpenGL ES 3.0 to the gl backend.
+    - Use Reusable streams for forms in Level 3 Postscript.
+    - Add CAIRO_MIME_TYPE_EPS mime type for embedding EPS files.
+    -  Add CCITT_FAX mime type for PDF and PS surfaces.
+    - svg: add a new function to specify the SVG document unit
+      (fdo#90166).
+    - Use UTF-8 filenames on Windows.
+  + API Changes: cairo_svg_surface_set_document_unit() and
+    cairo_svg_surface_get_document_unit().
+  + Bugs fixed:
+    - Fix regression in gles version detection.
+    - Fix undefined-behavior with integer math.
+    - Handle SOURCE and CLEAR operators when painting color glyphs
+      (fdo#102661).
+    - Convert images to rgba or a8 formats when uploading with
+      GLESv2.
+    - Use _WIN32 instead of windows.h to check for windows build.
+    - Fix sigabrt printing documents with fonts lacking the
+      mandatory .nodef glyph (fdo#102922).
+    - Prevent curved strokes in small ctms from being culled from
+      vector surfaces (fdo#103071).
+    - Fix painting an unbounded recording surface with the SVG
+      backend.
+    - Fix falling back to system font with PDFs using certain
+      embedded fonts, due to truncated font names (fdo#103249).
+    - Fix handling of truetype fonts with excessively long font
+      names (fdo#103249).
+    - Fix race conditions with cairo_mask_compositor_t
+      (fdo#103037).
+    - Fix build error with util/font-view.
+    - Fix assertion hit with PDFs using Type 4 fonts rendered with
+      user fonts, due to error when destroying glyph page
+      (fdo#103335).
+    - Set default creation date for PDFs.
+    - Prevent invalid ptr access for > 4GB images (fdo#98165).
+    - Prevent self-copy infinite loop in Postscript surface.
+    - Fix padded image crash in Postscript surface.
+    - Fix annotation bugs in PDFs and related memory leaks.
+    - Fix test failures and other assorted issues in ps and pdf
+      code.
+    - Fix code generation when using GCC legacy atomic operations
+      (fdo#103559).
+    - Fix various compilation warnings and errors.
+    - Fix various distcheck errors with private symbols, doxygen
+      formatting etc.
+- Drop cairo-image-prevent-invalid-ptr-access.patch
+
+-------------------------------------------------------------------
+Tue Dec 12 11:18:44 UTC 2017 - msrb@suse.com
+
+- Depend on pkgconfig(gl) and pkgconfig(egl) instead of Mesa-devel.
+  * The pkgconfig(gl) and pkgconfig(egl) are what cairo really
+    needs. Mesa-devel is too general and is a bottleneck in
+    distribution build. (bnc#1071297)
+
+-------------------------------------------------------------------
+Wed Aug 30 14:35:46 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.15.8:
+  + This small snapshot provides new colored emoji glyph support,
+    and a handful of minor fixes. For a complete log of changes,
+    please see
+    http://cairographics.org/releases/ChangeLog.1.15.8
+  + Features and Enhancements: Support colored emoji glyphs, stored
+    as PNG images in OpenType fonts.
+  + Bug Fixes:
+    - pdf:
+      . Fix internal links pointing to other pages, by
+        pre-calculating page heights so that link positions can be
+        calculated more accurately.
+      . Don't emit /PageLabel dict when no labels defined.
+    - image: Fix crash on negative lengths.
+    - win32: Fix initialization of mutexes for static builds.
+    - font:
+      . Fix color font loading on big-endian systems.
+      . Fix color font support infinite-loop with empty glyphs.
+    - Fix off by one check in cairo-image-info.c.
+- Drop cairo-fix-off-by-one-check.patch: Fixed upstream.
+- Run spec-cleaner, modernize spec.
+- Rename 0001-image-prevent-invalid-ptr-access-for-4GB-images.patch
+  to cairo-image-prevent-invalid-ptr-access.patch.
+- Pass enable-gtk-doc instead of disable-gtk-doc to configure, we
+  already have the gtk-doc BuildRequires in place so I can only
+  assume that this was an honest error.
+
+-------------------------------------------------------------------
+Tue Jun 20 11:20:29 UTC 2017 - alarrosa@suse.com
+
+- Add 0001-image-prevent-invalid-ptr-access-for-4GB-images.patch to
+  fix a segfault when using >4GB images since int values were used
+  for pointer operations (bsc#1007255, fdo#98165, CVE-2016-9082).
+
+-------------------------------------------------------------------
+Fri Jun 16 19:11:41 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.15.6:
+  + Detect if variable fonts have synthesized bold/italic or
+    non-default variants, and use a fallback font where needed.
+  + Restore MacOSX 10.4 support. Cairo had dropped 10.4 support
+    when moving to the CoreText API.  Now we automatically detect
+    which API to use via dynamic linking, so can resume supporting
+    this older version of MacOSX.
+  + Fix error reporting in the xcb backend if fallback fails.
+    Instead of returning NULL when the X11 server can't do some
+    operation, return a surface in an error state.
+  + Call XSync in the xlib backend before setting the error handler
+    to ignore errors for certain requests, to make sure all pending
+    errors are handled first.
+  + Fix text-glyph-range for quartz-font.  Use 0xFFFF instead of 0
+    for invalid index tracking.
+  + Fix handling of Supplementary Multilingual Plane (SMP) Unicode
+    characters in quartz-font.
+  + Fix various issues in the drm backend including updating API
+    usage and general code cleanup.
+  + Clarify documentation regarding device scale inheritance and
+    the units used in cairo_surface_create_similar_image
+    (fdo#99094).
+- Drop cairo-pdf-fixes.patch: Fixed upstream.
+- Add cairo-fix-off-by-one-check.patch: Fix off by one check in
+  cairo-image-info.c (fdo#101427).
+
+-------------------------------------------------------------------
+Wed Jun  7 10:06:55 UTC 2017 - alarrosa@suse.com
+
+- Add cairo-get_bitmap_surface-bsc1036789-CVE-2017-7475.diff to
+  fix a segfault in get_bitmap_surface due to malformed font
+  (bsc#1036789, fdo#100763, CVE-2017-7475).
+
+-------------------------------------------------------------------
+Wed Mar  8 19:41:41 UTC 2017 - zaitor@opensuse.org
+
+- Rebase cairo-pdf-fixes.patch: Add commit to fix fdo#100029.
+
+-------------------------------------------------------------------
+Mon Feb 13 22:13:52 UTC 2017 - zaitor@opensuse.org
+
+- Add cairo-pdf-fixes.patch: Three minor pdf fixes from upstream
+  git (fdo#99630).
+
+-------------------------------------------------------------------
+Sat Feb 11 13:53:32 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups; update summaries.
+  Remove useless --with-pic which is only for static libs.
+
+-------------------------------------------------------------------
+Sun Dec 11 09:43:08 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.15.4:
+  + The PDF backend has gained support for a range of widely used
+    features, including thumbnails, page labels, metadata, document
+    outlines, structured text, hyperlinks, and tags. Tags permit
+    adding logical info such as headings, tables, figures, etc.
+    that facilitates indexing, accessibility, text reflow,
+    searching, and extraction of the tagged items to other
+    software.
+  + API Changes:
+    - Added a cairo API to set up Win32 surfaces for HDC with alpha
+      channels.
+    - New API for added PDF functionality (see above), and new
+      error status item for problems relating to PDF tagging.
+    - New error status items for handling of GDI, libfreetype, and
+      libpng errors, respectively.
+  + Fix playback of recording surfaces into PDF surfaces, where
+    objects with negative coordinates were not getting drawn. To
+    address this, the coordinate systems for PDF and PS have been
+    changed to match cairo's coordinate system. This allows
+    recording surfaces to be emitted in cairo coordinates, and
+    results in the same origin being used for all operations when
+    using the recording surface XObject. Test cases for PDF and PS
+    have also been updated accordingly (fdo#89232).
+  + Fix "invalidfont" error on some printers when printing PDFs
+    with embedded fonts that have glyphs (such as spaces) with
+    num_contours == 0 (fdo#79897).
+  + Fix missing glyphs such as thin dashes, which get scaled to 0
+    in userspace and thus have their drawing operations culled
+    (fdo#94615).
+  + Fix other oddities caused by variously idiosyncratic fonts.
+  + Fix deadlock when destruction of a scaled font indirectly
+    triggers destruction of a second scaled font, causing the
+    global cache to be locked twice (fdo#93891).
+  + Fix X errors reported to applications when shmdt() is called
+    before the Attach request is processed, due to missing xcb and
+    xlib calls.
+  + Fix random failure in record-paint-alpha-clip-mast test case,
+    caused by an incorrect assumption that a deferred clear can be
+    skipped (fdo#84330).
+  + Fix crash when dealing with an XShmGetImage() failure, caused
+    by a double free in _get_image_surface() (fdo#91967).
+  + Fix invalid execution of ASCII85 data by the PS interpreter
+    that the image operator didn't use, by flushing the extraneous
+    data after drawing the image (fdo#84811).
+  + Fix decoding of Adobe Photoshop's inverted CMYK JPEG files in
+    PDF export.
+  + Fix unbounded surface assertion in win32-print code.
+  + Fix a data race in freed_pool discovered by Firefox's cairo
+    usage. The patch adads atomic int load and store functions,
+    with relaxed memory ordering (fdo#90318).
+  + Cleanup debugging text sent to stdout instead of log
+    (fdo#95227).
+  + Fix build issue when using non-GNU strings utility (fdo#88639).
+  + Fix build of cairo modules as regular modules, not as versioned
+    shared libaries (fdo#29319).
+  + Fix build on win32 using gcc 5.4.
+  + Fix build of script backend to require zlib.
+  + Update test suite reference images using Debian Jessie 64-bit
+    and poppler current as of June, 2016.
+  + Various improvements to documentation and tests, compiler
+    warning fixes, and an assortment of code refactoring and
+    cleanup.
+- Drop cairo-modules-no-version.patch,
+  cairo-bsc958844-deadlock-on-scaled-font-cache-reset.patch and
+  cairo-xlib-double-free.patch: Fixed upstream.
+- Drop libtool BuildRequires and stop passing autoreconf, we no
+  longer have any patches touching the buildsystem.
+
+-------------------------------------------------------------------
+Mon Sep  5 07:36:33 UTC 2016 - badshah400@gmail.com
+
+- Add cairo-xlib-double-free.patch to fix double free in
+  _get_image_surface(); patch taken from upstream git (fdo#91967,
+  boo#997189).
+
+-------------------------------------------------------------------
+Wed Jul 20 21:23:25 CEST 2016 - hpj@suse.com
+
+- Add back cairo-bsc958844-deadlock-on-scaled-font-cache-reset.patch
+  (bsc#958844, fdo#93891). This is still not fixed upstream.
+
+-------------------------------------------------------------------
+Wed Apr 13 08:08:36 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+- Remove patch:
+  cairo-bsc958844-deadlock-on-scaled-font-cache-reset.patch.
+
+-------------------------------------------------------------------
+Mon Dec 21 21:53:52 CET 2015 - hpj@suse.com
+
+- Add cairo-bsc958844-deadlock-on-scaled-font-cache-reset.patch
+  to fix mutex deadlocks on certain documents (bsc#958844).
+
+-------------------------------------------------------------------
+Sun Dec 13 22:26:26 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.15.2:
+  + Fix xcb/xlib compilation and calls. Make image boxes behave
+    when SHM is not available.
+  + Fix various issues with printing and transparent images on
+    Win32.
+  + Fix thin lines that don't show up when printing in Inkscape due
+    to overly aggressive culling (fdo#77298).
+  + Fix broken printing via pdf when glyph 0 is used for rendering,
+    resulting in missing spaces and letters (fdo#89082).
+  + Fix crash for certain glyphs in opentype fonts (fdo#91902).
+  + Fix incorrect rendering of SVG paths with more than one
+    subpath. If more than one trap is passed in then it's
+    guaranteed that the returned traps will have their left edge to
+    the left of their right edge, but if only one trap is passed in
+    then the function always returns without doing anything
+    (fdo#90984).
+  + Improve rendering with Quarts to better match pixman's blending
+    and filtering behavior.
+- Drop cairo-render-thin-lines.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sun Dec 13 22:20:55 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.14.6:
+  + Simple bugfix release to fix one Windows issue.
+
+-------------------------------------------------------------------
+Mon Nov  2 15:11:39 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.14.4:
+  + Avoid appending empty slots to user data arrays. Fixes a memory
+    consumption regression since commit 9341c254a.
+  + Return a better error (file-not-found) when setting up pango on
+    devices where the font files don't have read permissions.
+  + Fix regression in the font size of canvas text in Inkscape when
+    compiled with the Quartz backend (fdo#84324).
+  + Fix _cairo_gl_shader_bind_matrix() to maintain compatibility
+    with OpenGL ES 2.0. Manually transpose the matrix.
+  + Fix incorrect font descriptor conversion when the font matrix
+    yy is negative (fdo#90538).
+  + Fix crash when using a complex path for clip and stroke due to
+    discarding the intersection exactly at the top edge
+    (fdo#74779).
+  + Fix cairo_get_locale_decimal_point() on Android.
+  + Fix compilation problem on AIX due to conflicting usage of
+    symbol 'jmpbuf' (fdo#89339).
+  + Fix broken rendering with XCB due to snapshotting of uploaded
+    part of surfaces (fdo#67505).
+  + Fix loss of alpha when copying a mask for a cairo recording
+    surface, resulting in a double copy (fdo#73038, fdo#73901).
+  + Fix incorrect recording of certain paths with script surfaces
+    (fdo#91054).
+  + Fix typo in definition of MAYBE_WARN in configure script
+    (fdo#89750).
+  + Fix use of filename variable after it's been freed (fdo#91206).
+  + Fix out of bounds access when printing pattern (fdo#91266).
+  + Fix incorrect size calculation in glyph cache unlocking for
+    Cairo GL compositor (fdo#91321).
+  + Fix memory leak in _cairo_gl_pattern_texture_setup()
+    (fdo#91537).
+  + Fix transparent images in win32-print (fdo#91835).
+  + Fix _put_shm_image_boxes and _put_image_boxes when no SHM
+    available with XCB.
+
+-------------------------------------------------------------------
+Sat May 16 10:42:31 CEST 2015 - ro@suse.de
+
+- drop cairo-disable-lto.patch: lto was dropped upstream
+
+-------------------------------------------------------------------
+Sat Mar 14 12:30:22 UTC 2015 - opensuse@mirell.de
+
+- Update to version 1.14.2:
+  + Features:
+    - Improve xcb's handling of per-screen subpixel ordering. If
+      no Xft.rgba property is specified, default to the screen's
+      subpixel order.
+  + Performance Optimizations:
+    - Improve performance of cpu_to_be32 and be32_to_cpu, making
+      truetype subsetting of large fonts run about 15% faster.
+  + Bug fixes:
+    - Fix unaligned access on sparc with the compact font format
+      (CFF).
+      Unlike truetype, all data in CFF is not aligned.
+      (Debian bug #712836)
+    - Fix unaligned access on sparc with tor-scan-converter's
+      memory pool.
+    - Fix crash when loading a PDF with a transformed image.
+      (fdo bug #85151)
+    - Fix regression on mingw for bigendian test due to removal of
+      file extension for executables. (fdo bug #85120)
+    - Fix handling of backslash in PDF interpreter (fdo bug #85662)
+    - Fix crash in xlib and xcb renderers when swapping a 0-sized
+      glyph
+    - Fix bug with RTL text in PDF operators (fdo bug #86461)
+    - Fix compilation 'cairo-path-stroke-traps.c' with MSVC8
+      (fdo bug #84908)
+    - Fix crash in _fill_xrgb32_lerp_opaque_spans when a span
+      length is negative.
+    - Fix valgrind error by releasing pattern created by
+      cairo_pattern_create_rgb().
+    - Fix valgrind errors when running cairo-test-suite.
+    - Fix memory leak in recording surface replays (fdo bug #87898)
+    - Fix destruction of fonts in api-special-cases test.
+      (fdo bug #87567)
+    - Fix duplicated surface push on similar-image, preventing
+      trivial GTK3 program traces from being replayable, with an
+      error message about invalid values for the size of the input.
+      (fdo bug #73580)
+    - Fix crash when win32 surface's image size does not cover the
+      entire
+      surface. (fdo bug #53121)
+    - Fix crash due to obsolete CGFontGetGlyphPath call
+      (fdo bug #84324)
+    - Fix several build issues on AIX (fdo bugs #89338, #89340,
+      #89356, #89354)
+    - Fix various documentation warnings and errors
+- Remove cairo-tor-scan-convertor.patch. It was upstreamed.
+
+-------------------------------------------------------------------
+Fri Jan  9 13:50:03 UTC 2015 - tchvatal@suse.com
+
+- Spec-cleanify
+- Remove the obsoletes for sle10 64bit subpackages on ppc
+- Remove libtool archive always
+
+-------------------------------------------------------------------
+Wed Jan  7 13:30:28 UTC 2015 - dimstar@opensuse.org
+
+- Add cairo-tor-scan-convertor.patch: tor-scan-converter: can't
+  do_fullrow when intersection in row + 0.5subrow (fdo#85151).
+
+-------------------------------------------------------------------
+Wed Oct 15 16:07:26 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.14.0:
+  + Features:
+    - Filtering improvements for the image backend, in particular
+      down-scaling of images produces filtered images that depend
+      on all the pixels of the source.
+    - Improve handling of device transformation and scaling,
+      allowing Cairo to now support scaling at a device level,
+      permitting easier, more transparent HiDPI support.
+    - Support JBIG2 mime data in PDF.  This allows embedding of
+      more compressed JPEG formats within PDF, rather than
+      including the full uncompressed image. Also, reduce the
+      number of transparency groups used by PDF to keep the file
+      size small and viewing/printing of the PDF fast.
+    - Expand the embedding section to include stencil mask support.
+    - Reorder font declarations to be in natural order.
+    - Update the Skia backend to build against current Skia.
+    - Drop Link-Time Optimization (LTO) support from build system.
+    - Optimize VBO size on GL to 1M and to 16k for EGL.
+  + API changes:
+    - cairo_surface_set_device_scale,
+      cairo_surface_get_device_scale.
+    - cairo_egl_device_get_display, cairo_egl_device_get_context.
+  + Dependency changes:
+    - Cairo now requires glib 2.14 for its gobject helper
+      functions, and pixman 0.30 for downscaling.
+  + Bug fixes:
+    - Don't embed CMYK Jpeg images in svg.
+    - Fix tests to place output in proper location.
+    - Fix determination of alpha for all surfaces when recording.
+    - Extend oversize check to cairo_gl_surface_create_for_texture,
+      so an error surface is returned if the texture is too large
+      to render to.
+    - Fix embedding of mime data in PDF and PS files.
+    - Remove useless error handling in *_reply() functions in XCB.
+    - Fix a double-free exposed by multithreaded apps creating and
+      destroying the same font concurrently (fdo#69470).
+    - Fix corrupt stacks produced by bugs in operand emission for
+      trace.
+    - Fix out of bounds array access in format cache for xlib.
+    - Don't rename glyphs used by seac operator (fdo#70364).
+    - Fix crash on calling cairo_create with a finished surface.
+    - Fix SSIZE_T definition problem when making with MSYS on
+      Windows7.
+    - Fix one off issue in gl context cleanup.
+    - Fix usage of CAIRO_STACK_ARRAY_LENGTH.
+    - Fix rectangle stroke with non rectilinear pen.
+    - Fix imagemask with pattern source failure on some printers
+      (fdo#69485).
+    - Fix whitespace in font names.
+    - Fix page size in generated PDFs (fdo#73452).
+    - Fix path-currentpoint test by preserving current-point in
+      copy_path()/append_path() sequence.
+    - Fix generation of HTML in code docs for
+      cairo-format-stride-for-width (fdo#63257).
+    - Fix spelling of "tessellator" throughout code (fdo#50411).
+    - Fix crash in pixman_image_composite32.
+    - Fix crash when trying to modify a (const) all-clipped
+      cairo_clip_t (fdo#75819).
+    - Add check_composite method to all compositors, to fix crashes
+      in the test suite.
+    - Fix crash in Firefox when scrolling on certain pages.
+    - Fix memory leaks found by static analysis.
+    - Fix build of any2ppm if fork is not available.
+    - Fix broken build for Qt backend, due to missing libstdc++.
+    - Fix typo in two cairo_uint128 functions.  Fixes potential
+      build issues on systems without a uint128 type.
+    - Fix build when --enable-pdf=no.
+    - Fix cache_frozen assertions for Win32 print.
+    - Correctly check for xcb image surface for inplace upload.
+    - Fix webkit-based web browser crashes due to empty boxes by
+      skipping over them when tesselating.
+    - Make pixman, libpng, and zlib paths commandline configurable
+      for win32 builds.
+    - Fix image scale on Win32 when GDI scale is not identity.
+    - Fix float endian configure test when using clang -O4.
+    - Fix compilation with Android bionic libc.
+    - Don't try to build util/sphinx on Windows.
+    - Fix loss of precision when emitting joins.
+    - Fix loss of precision and associated rendering issues in
+      cairo-tor-scan-converter from projection onto sample grid.
+    - Fix pixman oversampling of neighbouring edges within a cell
+      by eliminating self-intersections for the pixman traps
+      compositor.
+    - Fix multi-line string splitting in PDFs.
+    - Various cleanups and fixes to warnings, documentation, tests,
+      and build system. Improve error handling and return value
+      checks. Cleanup XFAIL tests and reference images. Cover
+      recently added functionality.
+
+-------------------------------------------------------------------
+Tue Jul  8 09:13:31 UTC 2014 - fcrozat@suse.com
+
+- Add cairo-xlib-endianness.patch: fix crash when client and server
+  have different endianness [bnc#882951, fdo#63461]
+
+-------------------------------------------------------------------
+Fri Apr 11 12:55:12 UTC 2014 - jw@suse.com
+
+- Add cairo-render-thin-lines.patch: Fix rendering of thin lines,
+  so that inkscape can export 0.01mm lines again to PDF. Regression
+  introduced with 1.12.3.
+
+-------------------------------------------------------------------
+Wed Aug 28 20:42:58 UTC 2013 - idonmez@suse.com
+
+- Add cairo-disable-lto.patch to disable LTO on s390{x} to fix the
+  build.
+
+-------------------------------------------------------------------
+Tue Aug 27 06:41:01 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.12.16:
+  + Set the correct orientation for simple boxes with a negative
+    scale factor.
+  + Fix the creation of the shading dictionary in PDF.
+  + Avoid upscaling bitmap fonts if possible.
+  + Fix an assertion failure within the mempool allocator for
+    shared memory.
+  + Fix allocation size for CFF subsets.
+  + Export cairo_matrix_t for GObject bindings.
+  + Stop leaking the image data when loading PNGs.
+  + Prevent an assertion failure when creating similar GL surfaces
+    larger than supported by hardware.
+  + Bugs fixed: fdo#61451, fdo#62885, fdo#61876, fdo#63196,
+    fdo#697357, fdo#61592, fdo#68014, fdo#63787.
+- Drop cairo-reduce-buddy-assertion.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jul  8 18:49:31 CEST 2013 - sbrabec@suse.cz
+
+- Add cairo-reduce-buddy-assertion.patch: Fix eog crash on
+  assertion, after pressing Next (bnc#828074).
+
+-------------------------------------------------------------------
+Sat May 25 20:58:42 UTC 2013 - dimstar@opensuse.org
+
+- Drop cairo-libpng16-v2.patch: in its current form, this patch
+  causes issues as that cairo.ImageSurface.create_from_png errors
+  out with 'MemoryError' in all cases (bnc#821766).
+
+-------------------------------------------------------------------
+Tue Apr  2 11:57:02 UTC 2013 - pgajdos@suse.com
+
+- Add cairo-libpng16-v2.patch: Fix png usage with libpng 1.6:
+  call png_set_read_user_transform_fn() before
+  png_read_update_info() (bnc#810701).
+
+-------------------------------------------------------------------
+Thu Feb 14 17:42:09 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.12.14:
+  + Prevent user callbacks accessing user-data during destroy to
+    prevent use-after-free bugs (mozilla#722975).
+  + Use standard names for glyphs in subset fonts (PDF) (fdo#60248)
+  + Fix detection of Win98. The logic for detecting Win98
+    AlphaBlend() was inverted, disabling AlphaBlend() for everyone.
+  + Prevent numeric overflow from extrapolating polygon edges to
+    the clip boundary and causing severe render artifacts.
+    (fdo#60489).
+  + Fix computation of glyph string coordinates when breaking up
+    runs for xlib.
+  + Fix an assertion in the win32 backend for failing to clear its
+    similar-images (fdo#60519).
+- Changes from version 1.12.12:
+  + Avoid replacing the entire image when uploading subimages
+    (fdo#59635).
+  + Force synchronisation for scratch SHM image buffers, so that we
+    do not overwrite data as it is being read by X (fdo#59635).
+  + Fix typos in detecting multisampling for the GL (MSAA) backend.
+  + Fix a memory leak in the GL (MSAA) backend.
+  + Fix a reference counting bug when mapping a GL surface to an
+    image.
+- Changes from version 1.12.10:
+  + Append coincident elements to the recording's surface bbtree so
+    that the list is not corrupted and the overlapping elements
+    lost.
+  + Fix cairo-trace to correctly record map-to-image/unmap-image
+    and then replay them.
+  + Ignore MappingNotifies when running the XCB testsuite as they
+    are sent to all clients when the keyboard changes. The
+    testsuite would detect the unexpected event and complain.
+  + Handle very large images in the XCB backend.
+  + Fix a memory leak in the xlib/shm layer, and prevent use of
+    the SHM surfaces after the display is closed (fdo#58253).
+  + Handle resizing of bitmap fonts, in preparation for a fix to
+    fontconfig to correctly pass on the user request for scaling.
+  + Always include subroutine 4 (hint replacement idion) when
+    subsetting type 1 fonts in order to prevent a crash in
+    cgpdftops on Mac OS/X.
+  + Fix a couple of typos in the cairo-gobject.h header files for
+    introspection.
+  + Prevent a mutex deadlock when freeing a scaled-glyph containing
+    a recording-surface that itself references another scaled-glyph
+    (fdo#54950).
+  + Make scaled-font cache actually thread-safe and prevent
+    use-after-frees.
+  + Restore support for older versions of XRender. A couple of
+    typos and a few forgotten chunks prevented the xlib
+    compositor from running correctly with XRender < 0.10.
+- Enable building of the GL Backend.
+
+-------------------------------------------------------------------
+Tue Nov  6 12:21:53 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.12.8:
+  + Expand the sanity checking for broken combinations of
+    XSendEvent and ShmCompletionEvent.
+  + Notice that "The X.Org Foundation" sometimes also identifies
+    itself as "The Xorg Foundation".
+  + Handle various ages of libXext and its Shm headers.
+  + Fix the invalid clipping of the source drawable when using SHM
+    transport to upload images (fdo#56547).
+  + Handle all Type1 postscript operators for better font
+    compatibility (fdo#56265).
+  + Fix a couple of memory leaks in Type1 font subsetting
+    (fdo#56566)
+  + Tighten the evaluation of the start/stop pen vertices, and catch
+    a few instances where we would use a fan instead of a bevel.
+    (fdo#56432)
+  + Fix assumption that geometric clipping always succeeds with the
+    span-compositor (fdo#56574)
+  + Fix call to spline intersection when evaluating whether a stoke
+    is visible.
+  + Remember to copy inferior sources when using SHM to readback the
+    surface for use as a source.
+- Changes from version 1.12.6:
+  + Fix the recording surface to actually snapshot the source and
+    so fix PDF drawing.
+  + Calling XSendEvent with an XShmCompletionEvent is incompatabile
+    with older Xorg servers.
+  + Reorder CloseDisplay chain so that XShm is not reinstantiated
+    after shutdown, causing a potential crash if the Display was
+    immediately recreated using the same memory address.
+  + Make sure that the Xserver has attached to the SHM segment
+    before deleting it from the global namespace on systems that do
+    not support deferred deletion.
+  + Type1 subsetting support for PDF (and PS) was once again
+    improved to work with a larger number of PDF readers.
+  + GLESv2 build fixes and improved support for embedded GPUs.
+  + Tweak the invisible pen detection for applications that are
+    currently using too large values for geometric tolerance.
+  + A build fix for older freetype libraries.
+- Rebase cairo-modules-no-version.patch.
+
+-------------------------------------------------------------------
+Fri Oct 12 12:00:24 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.12.4:
+  + Interior boxes were being dropped when amalgamating regions
+    during tesselation (fdo#49446)
+  + Allow building without gtk-doc installed
+  + Invalid edge generation whilst reducing complex polygons
+    (fdo#50852)
+  + Stroking around tight cusps
+  + Use locale correct formats for reading font subsetting and
+    valid buffers (fdo#51443)
+  + Ensure that the type1 subset includes all the glyph encodings
+    (fdo#53040)
+  + Upload the whole source for a repeating pattern (fdo#51910)
+  + Fix damage tracking to handle continuation chunks corectly and
+    so prevent crashes on win32 (fdo#53384)
+  + Avoid emitting miter joins for degenerate line segments
+    (fdo#407107)
+  + Convert the relative path semgents into the backend coordinates
+    and then back again to user coordinates (fdo#54732)
+  + Fix extents computations for a degenerate path consisting only
+    of a move-to (fdo#54549)
+  + Prevent crashing on a degenerate project edge after polygon
+    intersection (fdo#54822).
+- Add pkgconfig(xext) BuildRequires: new verified dependency.
+
+-------------------------------------------------------------------
+Sun Apr 29 21:09:19 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.12.2:
+  + Allow applications to create 0x0 xlib surfaces, such as used by
+    LibreOffice (fdo#49118)
+  + Trim composite extents for SOURCE/CLEAR operators to the mask.
+  + Use fallback fonts in PDF for unhandled computed glyph widths
+    (fdo#48349)
+  + Handle snapshots of recording surfaces for analysing pattern
+    extents. Fixes a regression of reporting the PDF bounding box
+    as being the page size.
+  + Fix allocation size for PDF pattern ids. (fdo#49089)
+  + Fix emission of rectilinear dashed segments, with and without
+    scaling, and application of degenerate line joins.
+  + Clamp unbounded fixup polygons to the clip extents.
+  + Prevent infinite loop due to rounding errors whilst
+    incrementing along dashes.
+  + Prevent overflow for inline a8 span filling.
+  + Miscellaneous build fixes for Cygwin on Windows and Solaris.
+- Drop cairo-fix-wrong-allocation.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Apr 21 15:34:36 UTC 2012 - jeffm@suse.com
+
+- Add cairo-fix-wrong-allocation: fix wrong allocation in
+  _cairo_pdf_surface_add_source_surface (bnc#758422).
+
+-------------------------------------------------------------------
+Mon Mar 26 18:57:45 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.12.0:
+  + Introduction of a new procedural pattern: the mesh gradient.
+  + New API to create a callback pattern:
+    cairo_pattern_create_raster_source.
+  + XCB is now a supported backend.
+  + New common API to address any surface as an image and so allow
+    direct modification of the raster data:
+    cairo_surface_create_similar_image, cairo_surface_map_to_image,
+    and cairo_surface_unmap_image.
+  + Many performance improvements.
+  + Introduction of new antialias hints (NONE, FAST, GOOD, BEST).
+  + Introduction of a new observation architecture:
+    cairo_surface_observer_t.
+  + OpenGL backend has seen significant work including the port to
+    GLESv2 and the exploitation of advanced hardware features.
+- Enable build of XCB backend as it's now officially supported: set
+  %build_xcb_backend macro to 1.
+- Note that we don't build Xlib/XCB support as it's disabled by
+  default upstream.
+- Also add pkgconfig(xcb-shm) BuildRequires for XCB/SHM support.
+- Drop cairo-fix-libs.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Feb 14 09:59:51 UTC 2012 - vuntz@opensuse.org
+
+- Ship additional COPYING files that come with some utilities.
+- Fix license of the tool subpackage: it is GPL-3.0+ (bnc#739748).
+- Change the group of library subpackages from
+  Development/Libraries/X11 to System/Libraries.
+
+-------------------------------------------------------------------
+Fri Dec  9 11:48:43 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:46 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sat Sep 17 22:31:04 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+- Fix baselibs requires for cairo-devel and make it available
+
+-------------------------------------------------------------------
+Mon Aug 29 12:06:00 UTC 2011 - coolo@novell.com
+
+- Add cairo-fix-libs.patch: disable lto for cairo-sphinx as it
+  breaks with -Wl,--as-needed.
+
+-------------------------------------------------------------------
+Tue Feb 22 15:19:31 CET 2011 - vuntz@opensuse.org
+
+- Add missing libcairo-gobject2 to baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Dec 27 22:30:26 CET 2010 - dimstar@opensuse.org
+
+- Update to version 1.10.2:
+  + fdo#31632: Fix embedding of grayscale jpegs in PS.
+  + Fix the reported path of extents containing a curve.
+  + Fix the compositing of unaligned boxes.
+  + Reset the clipper in PDF upon finish.
+  + Fix degenerates arcs to become a degenerate line.
+  + Build support for autoconf 2.67
+  + Fix painting of transformed patterns in PS
+  + fdo#24688: Fix the EPS bounding box for PS and Fix the missing
+    content for EPS
+  + fdo#24691: Fix regression upon changing page size in PS/PDF
+  + Only use ActualText with PDF-1.5 documents
+  + Fix the bbox for type1 fallbacks.
+  + fdo#31140: Reset the color after ending the context in PDF
+  + fdo#31062: Fix the advance of subsetted type1 fonts
+  + Fix handling of EXTEND_NONE gradients for PDF
+  + Restrict in-place optimisation for a8 image masks with SOURCE
+
+-------------------------------------------------------------------
+Tue Sep  7 13:12:10 CEST 2010 - vuntz@opensuse.org
+
+- Do not build the xcb backend: upstream recommends to not use it
+  for now.
+- Add a build_gl_backend define to easily enable the build of the
+  gl backend, which will add a Mesa-devel BuildRequires. It's
+  disabled by default.
+- Add a build_xcb_backend define to easily enable the build of the
+  xcb backend, which will add a pkgconfig(xcb) BuildRequires. It's
+  disabled by default.
+
+-------------------------------------------------------------------
+Tue Sep  7 01:39:54 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 1.10.0:
+  + Compared to 1.9.14, this version contains only small fixes.
+  + The following is the major new changes in cairo 1.10, that were
+    already in our previous packages of 1.9.
+  + Inclusion of cairo-trace, a tracing utility.
+  + Many performance improvements.
+  + Better support for printing, including file size reductions
+    when an image is included more than once in the document.
+  + Resurrect RGB16 format.
+  + Add cairo_region_t.
+  + Better interoperation with acceleration architectures, thanks
+    to the ability to share ardware resources through the new
+    cairo_device_t.
+- Update cairo-modules-no-version.patch to add use -avoid-versoin
+  for cairo-sphinx too.
+- Create a libcairo-gobject2 subpackage for a gobject integration
+  library. Add pkgconfig(gobject-2.0) BuildRequires for this.
+- Rename cairo-utils to cairo-tools, to follow informal packaging
+  convention. Add appropriate Provides/Obsoletes.
+- Explicitly pass --enable-fc, --enable-ft to configure.
+- Pass --enable-tee to fix build for the fdr (flight data
+  recorder), as well as the sphinx tool.
+
+-------------------------------------------------------------------
+Wed Jul 28 12:38:42 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.9.14:
+  + fdo#29008: Clip doesn't work for text on the image backend
+  + fdo#29114: Add explicit dependency for cxx
+  + fdo#29120, fdo#29121, fdo#29122, fdo#29124, fdo#29125: Fix
+    regressions in reporting clip extents
+
+-------------------------------------------------------------------
+Wed Jul 21 16:36:50 CEST 2010 - vuntz@opensuse.org
+
+- Clean up update to 1.9.12.
+- Split main package in libcairo2, libcairo-script-interpreter2 and
+  cairo-utils subpackages, to follow the shared library policy.
+  Note that libcairo2 provides/obsoletes cairo.
+- Change freetype2-devel, libpng-devel, xorg-x11-devel,
+  xorg-x11-libxcb-devel BuildRequires to pkgconfig() BuildRequires
+  for: fontconfig, freetype2, libpng, pixman-1, x11, xcb, xrender.
+- Remove Provides/Obsoletes for libpixman <= 0.1.1 (this was for
+  very old versions of SUSE Linux).
+- Remove fontconfig-devel, freetype2-devel, libpng-devel,
+  xorg-x11-devel, xorg-x11-libX11-devel, xorg-x11-libXrender-devel,
+  xorg-x11-libxcb-devel Requires of devel package: they're now all
+  required with the automatically added pkgconfig().
+- Fix self-obsoletion of cairo-doc.
+
+-------------------------------------------------------------------
+Mon Jul 19 12:13:18 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 1.9.12:
+  + Various API additions (see NEWS for details).
+  + Bug fixes.
+  + Updated documentation.
+- Remove gcc-c++ BuildRequires.
+
+-------------------------------------------------------------------
+Thu Jul  8 23:00:26 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.9.10:
+  + Fix many bugs introduced in 1.9.x releases.
+  + Add WGL interface for cairo-gl
+  + Include the downstream patch to honour the user's LCD filtering
+    preferences for subpixel rendering of fonts
+- Changes from version 1.9.8:
+  + Various API additions (see NEWS for details).
+  + Backend-specific improvements:
+    - cairo-gl: many changes
+    - cairo-xlib:
+      . access to the underlying connection to the Display is now
+        thread-safe
+      . attempt to use PolyModeImprecise when compositing
+        trapezoids
+    - cairo-svg: enable SVG to reference external image through the
+      use an extended MIME data type.
+- Changes from version 1.9.6:
+  + Various API additions (see NEWS for details).
+  + Completely drop cairo-glitz.
+  + Many improvements for drawing of dashed strokes.
+  + Optimize spans-based renderers for repeated rows.
+  + Backend-specific improvements:
+    - add cairo-drm backend
+    - start using GLSL to accelerate many operations in cairo-gl
+    - make cairo-image faster
+    - cairo-quartz fixes
+    - improvement to embedding jpeg/jpeg2000 data in cairo-pdf
+    - fix printing of rotated user fonts in cairo-ps
+- Changes from version 1.9.4:
+  + Various API additions (see NEWS for details).
+  + New cairo-test-trace utility.
+  + Add server-side gradients to xlib backend.
+  + New experimental backends: Qt, OpenVG, OpenGL.
+  + Fix long-standing bug with self-intersecting strokes.
+- Changes from version 1.9.2:
+  + Various API additions (see NEWS for details).
+  + New CairoScript experimental backend.
+  + New cairo-trace and cairo-perf-trace utilities.
+  + Test suite overhaul.
+  + Add polygon rasterisation.
+  + Add copy-on-write snapshot support.
+  + Various bug fixes.
+- Add gcc-c++ BuildRequires: one linker stage requires it.
+- Add cairo-modules-no-version.patch to build the modules not as
+  versioned shared objects
+- Drop cairo-1.8.6-repeat-modes.patch and cairo-lcd-filter.patch,
+  obsoleted by upstream changes.
+
+-------------------------------------------------------------------
+Sun Feb 21 17:43:17 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.8.10:
+  + General Bug fixes:
+    - Fix path construction for the case of cairo_curve_to
+      immediately after cairo_new_sub_path followed at some point
+      by cairo_close_path.
+    - Fix for cairo_push_group or cairo_pop_group with a non-empty
+      current path.
+    - Fix to correctly report an error if
+      cairo_surface_set_fallback_resolution is called with a value
+      of 0 (in either axis) (fdo#23067).
+    - Fix to handle a cairo_arc of radius 0 as equivalent to a
+      cairo_line_to to the center coordinate.
+  + cairo-xlib:
+    - Fix to correctly copy from a Window source (fdo#12996).
+  + cairo-ft:
+    - Fix conversion of freetype index to UCS4 value.
+  + cairo-pdf:
+    - Fix Type 1 subsetting to avoid generating corrupt data
+      (lp#419143).
+    - Fix Type 1 subsetting to correctly identify binary eexec
+      data.
+    - Fix Type 1 subsetting to include fixed-content portion in the
+      embedded font.
+    - Fix Type 1 subsetting to append "cleartomark" operator for
+      binary fonts that don't include it.
+  + Build fixes:
+    - Fix to compile on OpenBSD.
+
+-------------------------------------------------------------------
+Wed Dec 16 11:07:29 CET 2009 - jengelh@medozas.de
+
+- Package baselibs.conf as a source
+- Add baselib definitions for SPARC
+
+-------------------------------------------------------------------
+Mon Oct  5 18:16:03 CEST 2009 - vuntz@opensuse.org
+
+- Go back to cairo 1.8.8, for maintenance reasons. Changes from
+  1.8.6 that we had before:
+  + build fixes
+  + fix uninitialised status return within
+    _cairo_clip_intersect_mask().
+  + avoid transforming nearly-degenerate matrices into degenerate
+    matrices (bmo#467423)
+  + a few FreeType font handling bugs were fixed (fdo#21985,
+    fdo#21706)
+  + ensure win32 font backend sets the return value to -1
+    (indicating the absent glyph) if the font index lookup for the
+    unicode character fails (fdo#20255)
+  + improved documentation (fdo#20095, fdo#20154, fdo#20180,
+    fdo#20183, fdo#20182, fdo#20441)
+- Drop cairo-missing-include-fdo22610.patch: not needed with this
+  version.
+- Add cairo-1.8.6-repeat-modes.patch: this is a patch used by
+  Fedora and Ubuntu to improve performance.
+- Add cairo-lcd-filter.patch, similar to the old
+  cairo-lcd-filter-fdo10301.patch patch we had. But we're now using
+  the Debian/Ubuntu/Mandriva version for better maintainability.
+- Explicitly pass --enable-pdf to configure because we require PDF
+  support.
+
+-------------------------------------------------------------------
+Sun Aug  2 01:32:06 CEST 2009 - captain.magnus@opensuse.org
+
+- Fix packaging bug (Use %{_libdir}/cairo/*.so.* instead of
+  %dir %{_libdir}/cairo/*.so.*)
+
+-------------------------------------------------------------------
+Fri Jul  3 22:14:06 CEST 2009 - captain.magnus@opensuse.org
+
+- Update to version 1.9.2:
+  + Many API changes, fixes and other updates. See NEWS for full
+    details
+  + New experimental backend: CairoScript
+  + New utilities: cairo-trace and cairo-perf-trace
+- Remove cairo-lcd-filter-fdo10301.patch. This patch was added to
+  cairo, but later removed in commit
+  5d887ad5dca5af0f8216830d1b04d08a5aba9bee
+- Don't use autoreconf -f -i
+- Enable CairoScript and svg backends with configure
+- Add cairo-missing-include-fdo22610.patch to fix a missing
+  include. Keeps OBS happy.
+
+-------------------------------------------------------------------
+Sun Feb 15 06:55:23 CET 2009 - mboman@suse.de
+
+- Remove bugzilla-104365.patch. Symptoms as described
+  in bnc#104365 are no longer an issue.
+- Remove cairo-ac.patch. Not needed anymore
+- Replace cairo-1.4.10-lcd-filter-1.patch with
+  cairo-lcd-filter-fdo10301.patch and updated so that it applied to
+  our version of cairo.
+
+-------------------------------------------------------------------
+Wed Jan 21 14:23:25 IST 2009 - msuman@suse.de
+
+- Continue to provide the "la" files for SUSE releases <= 11.1
+
+-------------------------------------------------------------------
+Tue Jan 13 21:22:00 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Sat Dec 20 09:10:35 EST 2008 - mboman@suse.de
+
+- Update to version 1.8.6:
+  + Many API changes, fixes and other updates. See NEWS for full details 
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Dec  8 12:20:35 EST 2008 - mboman@suse.de
+
+- Update to version 1.8.4:
+  + Many API changes, fixes and other updates. See NEWS for full details
+
+-------------------------------------------------------------------
+Tue Nov 11 16:54:06 CET 2008 - ro@suse.de
+
+- SLE-11 uses PPC64 instead of PPC, adapt baselibs.conf 
+
+-------------------------------------------------------------------
+Tue Nov  4 14:17:20 CST 2008 - maw@suse.de
+
+- Disable the glitz backend (bnc#429280).
+
+-------------------------------------------------------------------
+Mon Nov  3 02:00:15 CET 2008 - vuntz@novell.com
+
+- Remove cairo-1.0.2-depth-fix-1.patch: it's fixed upstream and I
+  trust upstream more than us about the right fix :-)
+- Remove cairo-pixman-version.patch: not needed anymore.
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Tue Sep 30 07:06:06 WST 2008 - mboman@suse.de
+
+- Update to version 1.8.0:
+  + Many API changes. See NEWS for full details
+  + cairo-xlib: Improved performance with X server without Render
+  + cairo-ft: respecting FC_FT_FACE
+  + cairo-directfb: backend improvements
+  + Misc other fixes
+
+-------------------------------------------------------------------
+Tue Sep 23 11:55:35 CDT 2008 - maw@suse.de
+
+- Add cairo-pixman-version.patch.
+
+-------------------------------------------------------------------
+Mon Sep 22 14:47:09 CDT 2008 - maw@suse.de
+
+- Update to version 1.7.6:
+  + Build improvements
+  + API changes since 1.7.4:
+    * Remove cairo_font_options_set_lcd_filter and
+      cairo_font_options_get_lcd_filter
+    * Replace cairo_has_show_glyphs with
+      cairo_surface_has_show_glyphs
+    * Add cairo_text_cluster_flags_t to 
+      cairo_show_text_glyphs, cairo_scaled_font_text_to_glyphs,
+      and cairo_user_scaled_font_text_to_glyphs_func_t
+    * Note that there have been no API changes with respect to
+      previous stable versions of cairo (1.0.x, 1.2.x, 1.4.x, or
+      1.6.x).
+  + Bugs fixed: bmo453199#c5, bfo#16819
+  + Misc other fixes.
+
+-------------------------------------------------------------------
+Wed Aug 27 23:02:25 CEST 2008 - mboman@novell.com
+
+- Update to version 1.7.4:
+  + Including the missing header file cairo-user-font-private.h
+  + Improvements around cairo text API.
+  + New API allowing the user of cairo API to provide drawings for glyphs
+    in a font.
+  + show_text_glyphs - new API
+  + LCD subpixel filtering using FreeType
+  + Toy font face constructor and getter
+  + FreeType: respecting FC_FT_FACE
+  + PS/PDF: More efficient output
+  + Xlib: Dithering
+  + Xlib: Avoid rendering glyphs out of surface bounds
+  + Xlib: Improved performance with Xrender-less X servers
+  + Directfb: backend improvements
+  + Countless bugs have been fixed and optimizations made
+
+-------------------------------------------------------------------
+Mon Jun  9 23:02:25 CEST 2008 - maw@suse.de
+
+- Update to version 1.6.4:
+  + Improved PDF and PostScript output
+  + Support for arbitrary X server visuals
+  + A new Quartz backend and a new "win32 printing" backend
+  + Many bug fixes
+  + For a fuller account of what's new, see the NEWS file
+    included in the distribution
+- Tag patches; temporarily disable several pending rebasing.
+
+-------------------------------------------------------------------
+Mon Apr 14 12:57:44 CEST 2008 - aj@suse.de
+
+- Remove dependency on gtk-doc and own the directories instead.
+- Properly provide libpixman.
+- Change ldconfig usage in post scripts.
+
+-------------------------------------------------------------------
+Mon Apr 14 11:54:13 CEST 2008 - schwab@suse.de
+
+- Fix configure script with patch cairo-ac.patch.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Jan 28 11:00:52 CST 2008 - maw@suse.de
+
+- Update to version 1.4.14:
+  + Fixes backported from the 1.5 development branch:
+    * Fix a regression (which first appeared in 1.4.12) where
+      stroking under a large scale would sometimes incorrectly
+      replace a miter join with a bevel join
+  + Fix handling of fonts that contain a mixture of outline and
+    bitmapped glyphs; there was a change in this handling in
+    1.4.12 that improved some cases and also regressed other
+    cases; now, all cases should be handled quite well
+  + Fix xlib backend to not consider recent X server release as
+    having a buggy repeat implementation in the Render extension
+  + Fix several bugs in cairo's PostScript output; these include
+    making the PostScript output more compatible with recent
+    versions of ghostscript that are more strict about Type 3
+    fonts, for example.
+
+-------------------------------------------------------------------
+Fri Dec 21 03:54:26 CET 2007 - maw@suse.de
+
+- Update to version 1.4.12:
+  + Avoid overflow when allocating large buffers 
+  + Fix crash with cairo_pattern_set_user_data 
+  + Fix broken locking in cairo-ft error path 
+  + Avoid crash when cleaning up after Render extension 
+  + Avoid crash for zero-sized bitmap glyph 
+  + Avoid crash with type-1 fonts and ft and atsui enabled 
+  + Fix many error-handling cases in the Quartz/ATSUI code 
+  + Eliminate cairo_stroke crash with scaling near zero 
+  + Fix PDF linear gradients without stops at 0.0 and 1.0 
+  + Fix PDF CFF subsetting to work with Apple Preview 
+  + Report proper errors on out-of-memory on win32 
+  + Fix EXTEND_NONE gradients for cairo-quartz 
+  + Fix odd-number-of-dashes dashing for cairo-quartz 
+  + Fix erroneous results from cairo_stroke_extents 
+  + Force non-AA text when bitmap strikes are available 
+  + Fix cairo-atsui font metrics 
+  + Avoid drawing shutdown for glyph-not-found in font 
+  + Don't raise an error for creating an empty path 
+  + Free glyph surfaces after uploading to X server cache.
+
+-------------------------------------------------------------------
+Wed Jul  4 15:00:38 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 1.4.10:
+  * Eliminate X errors that were killing OO.o
+  * Use IncludeInferiors when using xlib surface as a source
+  * Optimize drawing of many rectangles
+  * Thread-safe surface-cache for solid patterns
+  * Surface cache for solid patterns
+  * Internal cleanup of error handling
+  * Repaired mutex initialization
+  * PDF Improvements
+  * Performance optimizations
+  * More malloc reduction
+  * Fix a crash due to a LOCK vs. UNLOCK typo
+  * Backend-specific fixes
+  * Miscellaneous fixes
+
+-------------------------------------------------------------------
+Mon Jun 18 14:05:05 CDT 2007 - maw@suse.de
+
+- Add %run_ldconfig to %post and %postun sections.
+
+-------------------------------------------------------------------
+Mon Mar 26 18:19:24 CEST 2007 - sbrabec@suse.cz
+
+- Disabled DirectFB by default (#256775).
+- Ported bugzilla-104365.patch.
+
+-------------------------------------------------------------------
+Tue Mar 13 12:03:10 CET 2007 - sbrabec@suse.cz
+
+- Updated to version 1.4.0:
+  * Performance improvements.
+  * API additions.
+  * Many bug fixes.
+  * Documentation improvements.
+- Enabled XCB and DirectFB backends.
+
+-------------------------------------------------------------------
+Fri Feb  2 16:47:27 CET 2007 - sbrabec@suse.cz
+
+- Removed references to /opt/gnome.
+- Fixed devel dependencies.
+
+-------------------------------------------------------------------
+Fri Jan 26 19:12:23 CET 2007 - jhargadon@suse.de
+
+- removed patch cairo-remove-requires-private.patch (#237155)
+
+-------------------------------------------------------------------
+Tue Jan 23 01:44:41 CET 2007 - ro@suse.de
+
+- drop requires for gnome-filesystem 
+
+-------------------------------------------------------------------
+Tue Oct 24 22:58:14 CEST 2006 - jhargadon@suse.de
+
+- update to version 1.2.4
+- fixed several rendering bugs
+- add cairo-1.2.4-lcd-filter-1.patch to resolve bug #213989
+
+-------------------------------------------------------------------
+Thu Sep 14 17:35:13 CEST 2006 - sbrabec@suse.cz
+
+- Create correct dependencies in older products.
+
+-------------------------------------------------------------------
+Fri Aug 18 00:32:31 CEST 2006 - jhargadon@suse.de
+
+- update to version 1.2.2
+- Fix crashes with BGR X servers
+- Fix the "disappearing text" bug
+- Fix broken image fallback scaling
+- Fix inadvertent semantic change of font matrix translation
+- Fix create_similar to preserve fallback resolution and font options 
+
+-------------------------------------------------------------------
+Wed Aug 16 15:54:33 CEST 2006 - gekker@suse.de
+
+- Disable gtk-doc, it comes prebuilt and this decreases build deps
+
+-------------------------------------------------------------------
+Fri Jul 28 20:32:21 CEST 2006 - gekker@suse.de
+
+- Update to version 1.2.0
+- Remove upstreamed patches
+- API addition: cairo_xlib_surface_get_width,cairo_xlib_surface_get_height
+- new features:
+    Dots can now be drawn by using CAIRO_LINE_CAP_ROUND with
+    degenerate sub-paths, (cairo_move_to() followed by either
+    cairo_close_path() or a cairo_line_to() to the same location).
+- many bugfixes
+
+
+-------------------------------------------------------------------
+Fri May 12 22:54:47 CEST 2006 - joeshaw@suse.de
+
+- Add a patch to fix a crash in Nautilus, backported from 1.0.4.  
+  bnc #174152
+
+-------------------------------------------------------------------
+Fri Apr 28 18:46:08 CEST 2006 - mfabian@suse.de
+
+- Bugzilla #104365: delete fontconfig pattern elements before
+  trying to add them if the intention is to override default
+  settings.
+
+-------------------------------------------------------------------
+Thu Mar 23 22:16:32 CET 2006 - gekker@suse.de
+
+- Fixes cairo crash in evolution with specific mails (#159675)
+- CVE-2006-0528
+
+-------------------------------------------------------------------
+Fri Jan 27 01:06:04 CET 2006 - ro@suse.de
+
+- use -fstack-protector (merged from meissner)
+
+-------------------------------------------------------------------
+Fri Jan 27 01:04:48 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 11:53:15 CET 2006 - sbrabec@suse.cz
+
+- Removed Xlib version fb repeating picture bug check (#100469).
+
+-------------------------------------------------------------------
+Mon Jan 23 16:55:42 CET 2006 - dreveman@suse.de
+
+- Fix 16bpp issue.
+
+-------------------------------------------------------------------
+Wed Jan 11 12:58:11 CET 2006 - sbrabec@suse.cz
+
+- Do not require libpixman, it's included now.
+- Obsolete no longer needed libpixman.
+
+-------------------------------------------------------------------
+Wed Nov 23 19:18:41 CET 2005 - gekker@suse.de
+
+- Fix broken build (Thanks to Richard Guenther for the patch).
+
+-------------------------------------------------------------------
+Tue Nov  1 18:03:03 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 1.0.2.
+
+-------------------------------------------------------------------
+Tue Oct  4 14:26:10 CEST 2005 - sbrabec@suse.cz
+
+- Enabled ps and pdf backends (#120049).
+
+-------------------------------------------------------------------
+Fri Sep  9 10:46:04 CEST 2005 - sbrabec@suse.cz
+
+- Re-enabled glitz backend (#116075).
+
+-------------------------------------------------------------------
+Sat Sep  3 00:09:55 CEST 2005 - matz@suse.de
+
+- Fix last change.
+
+-------------------------------------------------------------------
+Fri Sep  2 22:25:43 CEST 2005 - gekker@suse.de
+
+- Remove Requires.private from the cairo.pc file as it causes 
+build failures in gcc. 
+
+-------------------------------------------------------------------
+Thu Sep  1 19:44:25 CEST 2005 - gekker@suse.de
+
+- Update to released version 1.0.0
+- Remove upsteamed patch 
+
+-------------------------------------------------------------------
+Tue Aug 30 15:06:37 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #113602: add patch from bugzilla.gnome.org to
+  fix crashes in pangocairo. See also:
+  http://bugzilla.gnome.org/show_bug.cgi?id=313685
+  http://bugzilla.gnome.org/attachment.cgi?id=50878&action=view
+
+-------------------------------------------------------------------
+Mon Aug 29 16:13:45 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #113545: add patch by Zhe Su to support embedded
+  bitmaps.
+
+-------------------------------------------------------------------
+Thu Aug 18 13:57:14 CEST 2005 - kukuk@suse.de
+
+- RPM can calculate dependencies much better than using a
+  hardcoded list
+
+-------------------------------------------------------------------
+Wed Aug 17 18:45:51 CEST 2005 - gekker@suse.de
+
+- Update to version 0.9.2 
+
+-------------------------------------------------------------------
+Wed Aug  3 17:40:31 CEST 2005 - sbrabec@suse.cz
+
+- Xlib version fb repeating picture bug check update (#100469).
+
+-------------------------------------------------------------------
+Tue Aug  2 02:56:14 CEST 2005 - gekker@suse.de
+
+- Fix requirements 
+
+-------------------------------------------------------------------
+Mon Aug  1 18:49:24 CEST 2005 - gekker@suse.de
+
+- Updated to version 0.6.0. 
+
+-------------------------------------------------------------------
+Wed Jun  1 17:48:46 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 0.5.0.
+
+-------------------------------------------------------------------
+Wed Jun  1 15:43:41 CEST 2005 - sbrabec@suse.cz
+
+- Fixed devel requirements.
+
+-------------------------------------------------------------------
+Mon May  9 18:28:01 CEST 2005 - sbrabec@suse.cz
+
+- Packaged license files.
+
+-------------------------------------------------------------------
+Mon May  9 17:56:07 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 0.4.0.
+
+-------------------------------------------------------------------
+Wed Jan 26 19:07:56 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 0.3.0.
+
+-------------------------------------------------------------------
+Wed Jan 26 11:41:29 CET 2005 - meissner@suse.de
+
+- Added libpng-devel-packages to nfb #49052
+
+-------------------------------------------------------------------
+Wed May 19 19:15:33 CEST 2004 - clahey@suse.de
+
+- Updated to 0.1.23.
+
+-------------------------------------------------------------------
+Tue Apr 20 13:53:51 CEST 2004 - uli@suse.de
+
+- initial package 
+

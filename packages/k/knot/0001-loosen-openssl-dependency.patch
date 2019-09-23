@@ -1,0 +1,19 @@
+Index: knot-1.6.6/configure.ac
+===================================================================
+--- knot-1.6.6.orig/configure.ac
++++ knot-1.6.6/configure.ac
+@@ -298,14 +298,6 @@ AS_IF([test "$with_openssl" = "no"],[
+   AC_MSG_ERROR([OpenSSL library is required.])
+ ])
+ 
+-AC_EGREP_CPP(openssl_version_ok,
+-  [#include <openssl/crypto.h>
+-   #if (OPENSSL_VERSION_NUMBER >= 0x10000000L)
+-   openssl_version_ok
+-   #endif
+-  ],[],[AC_MSG_ERROR([OpenSSL library version >= 1.0.0 is required.])]
+-)
+-
+ dnl Check for libidn.
+ AC_ARG_WITH(libidn,
+     AC_HELP_STRING([--with-libidn=[DIR]], [Support IDN (needs GNU Libidn)]),

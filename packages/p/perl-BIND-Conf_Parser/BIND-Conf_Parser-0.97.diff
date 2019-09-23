@@ -1,0 +1,18 @@
+--- lib/BIND/Conf_Parser.pm
++++ lib/BIND/Conf_Parser.pm
+@@ -534,6 +534,7 @@
+     "allow-query"		=> \&parse_addrmatchlist,
+     "allow-transfer"		=> \&parse_addrmatchlist,
+     "allow-recursion"		=> \&parse_addrmatchlist,
++    "allow-update"		=> \&parse_addrmatchlist,
+     "blackhole"			=> \&parse_addrmatchlist,
+     "listen-on"			=> sub {
+ 	    my($self, $mess) = @_;
+--- verify_zones
++++ verify_zones
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ 
+ # Do some sanity checks on the DNS forward and reverse files.
+ 

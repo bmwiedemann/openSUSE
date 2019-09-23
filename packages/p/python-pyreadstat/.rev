@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>815023979b4f6ce4c021b26b05e65e6c</srcmd5>
+    <version>0.2.7</version>
+    <time>1564137802</time>
+    <user>dimstar_suse</user>
+    <comment>Package to read and write statistical data files into pandas</comment>
+    <requestid>718634</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7bdcdf89a143d7b158125b755cd56eef</srcmd5>
+    <version>0.2.8</version>
+    <time>1566243471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724137</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>38e32facd5af2de05148f6d777abb463</srcmd5>
+    <version>0.2.9</version>
+    <time>1568623915</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.2.9:
+  * metadata updates</comment>
+    <requestid>730777</requestid>
+  </revision>
+</revisionlist>

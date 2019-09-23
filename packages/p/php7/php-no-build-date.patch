@@ -1,0 +1,91 @@
+Index: php-7.3.0/ext/standard/info.c
+===================================================================
+--- php-7.3.0.orig/ext/standard/info.c	2018-12-04 17:12:26.000000000 +0100
++++ php-7.3.0/ext/standard/info.c	2018-12-10 09:59:20.182517410 +0100
+@@ -822,7 +822,7 @@ PHPAPI void php_print_info(int flag)
+ 		php_info_print_box_end();
+ 		php_info_print_table_start();
+ 		php_info_print_table_row(2, "System", ZSTR_VAL(php_uname));
+-		php_info_print_table_row(2, "Build Date", __DATE__ " " __TIME__);
++		/*php_info_print_table_row(2, "Build Date", __DATE__ " " __TIME__);*/
+ #ifdef COMPILER
+ 		php_info_print_table_row(2, "Compiler", COMPILER);
+ #endif
+@@ -830,7 +830,7 @@ PHPAPI void php_print_info(int flag)
+ 		php_info_print_table_row(2, "Architecture", ARCHITECTURE);
+ #endif
+ #ifdef CONFIGURE_COMMAND
+-		php_info_print_table_row(2, "Configure Command", CONFIGURE_COMMAND );
++		/* php_info_print_table_row(2, "Configure Command", CONFIGURE_COMMAND ); */
+ #endif
+ 
+ 		if (sapi_module.pretty_name) {
+Index: php-7.3.0/sapi/cli/php_cli.c
+===================================================================
+--- php-7.3.0.orig/sapi/cli/php_cli.c	2018-12-04 17:12:21.000000000 +0100
++++ php-7.3.0/sapi/cli/php_cli.c	2018-12-10 09:59:20.182517410 +0100
+@@ -683,8 +683,8 @@ static int do_cli(int argc, char **argv)
+ 				goto out;
+ 
+ 			case 'v': /* show php version & quit */
+-				php_printf("PHP %s (%s) (built: %s %s) ( %s)\nCopyright (c) 1997-2018 The PHP Group\n%s",
+-					PHP_VERSION, cli_sapi_module.name, __DATE__, __TIME__,
++				php_printf("PHP %s (%s) ( %s)\nCopyright (c) 1997-2018 The PHP Group\n%s",
++					PHP_VERSION, cli_sapi_module.name,
+ #if ZTS
+ 					"ZTS "
+ #else
+Index: php-7.3.0/sapi/cgi/cgi_main.c
+===================================================================
+--- php-7.3.0.orig/sapi/cgi/cgi_main.c	2018-12-04 17:12:20.000000000 +0100
++++ php-7.3.0/sapi/cgi/cgi_main.c	2018-12-10 09:59:20.182517410 +0100
+@@ -2391,9 +2391,9 @@ parent_loop_end:
+ 							SG(headers_sent) = 1;
+ 							SG(request_info).no_headers = 1;
+ #if ZEND_DEBUG
+-							php_printf("PHP %s (%s) (built: %s %s) (DEBUG)\nCopyright (c) 1997-2018 The PHP Group\n%s", PHP_VERSION, sapi_module.name, __DATE__, __TIME__, get_zend_version());
++							php_printf("PHP %s (%s) (DEBUG)\nCopyright (c) 1997-2018 The PHP Group\n%s", PHP_VERSION, sapi_module.name, get_zend_version());
+ #else
+-							php_printf("PHP %s (%s) (built: %s %s)\nCopyright (c) 1997-2018 The PHP Group\n%s", PHP_VERSION, sapi_module.name, __DATE__, __TIME__, get_zend_version());
++							php_printf("PHP %s (%s) \nCopyright (c) 1997-2018 The PHP Group\n%s", PHP_VERSION, sapi_module.name, get_zend_version());
+ #endif
+ 							php_request_shutdown((void *) 0);
+ 							fcgi_shutdown();
+Index: php-7.3.0/configure.ac
+===================================================================
+--- php-7.3.0.orig/configure.ac	2018-12-04 17:12:20.000000000 +0100
++++ php-7.3.0/configure.ac	2018-12-10 09:59:20.182517410 +0100
+@@ -1323,13 +1323,12 @@ EXTRA_LDFLAGS="$EXTRA_LDFLAGS $PHP_LDFLA
+ EXTRA_LDFLAGS_PROGRAM="$EXTRA_LDFLAGS_PROGRAM $PHP_LDFLAGS"
+ 
+ # SOURCE_DATE_EPOCH for reproducible builds https://reproducible-builds.org/specs/source-date-epoch/
+-PHP_BUILD_DATE=`date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y-%m-%d 2>/dev/null`
+-if test $? -ne 0 ; then
+-PHP_BUILD_DATE=`date -u +%Y-%m-%d`
+-fi
++#totally fake, not used anywhere in userspace
++PHP_BUILD_DATE="1970-01-01"
+ AC_DEFINE_UNQUOTED(PHP_BUILD_DATE,"$PHP_BUILD_DATE",[PHP build date])
+ 
+-PHP_UNAME=`uname -a | xargs`
++dnl Totally fake, it wasnt and will never be reliable anyway.
++PHP_UNAME="Linux suse 2.6.36 #1 SMP 2011-02-21 10:34:10 +0100 x86_64 x86_64 x86_64 GNU/Linux"
+ AC_DEFINE_UNQUOTED(PHP_UNAME,"$PHP_UNAME",[uname -a output])
+ PHP_OS=`uname | xargs`
+ AC_DEFINE_UNQUOTED(PHP_OS,"$PHP_OS",[uname output])
+Index: php-7.3.0/sapi/fpm/fpm/fpm_main.c
+===================================================================
+--- php-7.3.0.orig/sapi/fpm/fpm/fpm_main.c	2018-12-04 17:12:21.000000000 +0100
++++ php-7.3.0/sapi/fpm/fpm/fpm_main.c	2018-12-10 09:59:20.182517410 +0100
+@@ -1728,9 +1728,9 @@ int main(int argc, char *argv[])
+ 				SG(request_info).no_headers = 1;
+ 
+ #if ZEND_DEBUG
+-				php_printf("PHP %s (%s) (built: %s %s) (DEBUG)\nCopyright (c) 1997-2018 The PHP Group\n%s", PHP_VERSION, sapi_module.name, __DATE__,        __TIME__, get_zend_version());
++				php_printf("PHP %s (%s) (DEBUG)\nCopyright (c) 1997-2018 The PHP Group\n%s", PHP_VERSION, sapi_module.name, get_zend_version());
+ #else
+-				php_printf("PHP %s (%s) (built: %s %s)\nCopyright (c) 1997-2018 The PHP Group\n%s", PHP_VERSION, sapi_module.name, __DATE__, __TIME__,      get_zend_version());
++				php_printf("PHP %s (%s) \nCopyright (c) 1997-2018 The PHP Group\n%s", PHP_VERSION, sapi_module.name, get_zend_version());
+ #endif
+ 				php_request_shutdown((void *) 0);
+ 				fcgi_shutdown();

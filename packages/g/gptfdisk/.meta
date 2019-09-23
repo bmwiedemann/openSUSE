@@ -1,0 +1,12 @@
+<package name="gptfdisk" project="openSUSE:Factory">
+  <title>GPT partitioning and MBR repair software</title>
+  <description>Partitioning software for GPT disks and to repair MBR
+disks. The gdisk and sgdisk utilities (in the gdisk
+package) are GPT-enabled partitioning tools; the
+fixparts utility (in the fixparts package) fixes some
+problems with MBR disks that can be created by buggy
+partitioning software.
+</description>
+  <devel project="filesystems" package="gptfdisk"/>
+  <url>http://www.rodsbooks.com/gdisk/</url>
+</package>

@@ -1,0 +1,288 @@
+-------------------------------------------------------------------
+Wed Sep  5 10:12:36 UTC 2018 - coolo@suse.com
+
+- updated to version 2.1.2
+ see installed changelog.md
+
+  2.1.2 09/04/2018
+  ==========================================================
+  
+  fix typo in ssh options handling
+  
+  2.1.1 09/04/2018
+  ==========================================================
+  
+  deprecate attributes not defined by DSL
+  fix path_prefix warnings
+  update to enforce best practices
+  extract parts of ssh to private methods
+  deprecate wrong provider names
+
+-------------------------------------------------------------------
+Tue Mar 20 10:08:57 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.1.0
+ see installed changelog.md
+
+-------------------------------------------------------------------
+Tue Jan  9 07:28:36 UTC 2018 - coolo@suse.com
+
+- updated to version 2.0.0
+ see installed changelog.md
+
+  2.0.0 01/03/2017
+  ==========================================================
+  
+  fix association reload
+  drop ruby <2 support
+  fix net-ssh usage
+  add mime-type dependency
+
+-------------------------------------------------------------------
+Thu Aug  3 19:15:18 UTC 2017 - coolo@suse.com
+
+- updated to version 1.45.0
+ see installed changelog.md
+
+  1.45.0 08/01/2017
+  ==========================================================
+  
+  remove xmlrpc requirement/usage
+  fix for nested const across ruby versions
+  remove array#sample usage for legacy ruby compatibility
+  simplify uniq for cache and fix for legacy ruby
+  remove debugging puts from cache
+  tweak tins version for 1.9
+  loosen 2.1.x travis config to 2.1
+  add 1.9 compatible term-ansicolor
+  fix rubocop for 1.9.3
+  enable metadata for cache
+  add specs for server#sshable
+  add exponential backoff for server#sshable?
+  add server#ready? to base server for clarity
+  bump excon dependency
+
+-------------------------------------------------------------------
+Tue May 30 05:12:26 UTC 2017 - coolo@suse.com
+
+- updated to version 1.44.3
+ see installed changelog.md
+
+  1.44.3 05/25/2017
+  ==========================================================
+  
+  fix cache when no home directory defined
+
+-------------------------------------------------------------------
+Tue May 23 09:52:38 UTC 2017 - coolo@suse.com
+
+- updated to version 1.44.2
+ see installed changelog.md
+
+  1.44.2 05/18/2017
+  ==========================================================
+  
+  fix homedirectory usage for caching
+  
+  1.44.1 05/01/2017
+  ==========================================================
+  
+  remove xml-rpc dependency (as it is causing issues)
+  
+  1.44.0 04/28/2017
+  ==========================================================
+  
+  add basic caching support
+
+-------------------------------------------------------------------
+Thu Sep 29 04:37:55 UTC 2016 - coolo@suse.com
+
+- updated to version 1.43.0
+ see installed changelog.md
+
+  1.43.0 09/28/2016
+  ==========================================================
+  
+  fix digitalocean compatibility
+  update README badges
+
+-------------------------------------------------------------------
+Thu Jul  7 04:30:10 UTC 2016 - coolo@suse.com
+
+- updated to version 1.42.0
+ see installed changelog.md
+
+  1.42.0 07/05/2016
+  ==========================================================
+  
+  make namespace detection fix 1.8.x compatible
+
+-------------------------------------------------------------------
+Tue Jul  5 04:29:32 UTC 2016 - coolo@suse.com
+
+- updated to version 1.41.0
+ see installed changelog.md
+
+  1.41.0 07/01/2016
+  ==========================================================
+  
+  bump as 1.40.1 is not showing up in some cases
+
+-------------------------------------------------------------------
+Wed Jun 29 04:30:03 UTC 2016 - coolo@suse.com
+
+- updated to version 1.40.1
+ see installed changelog.md
+
+  1.40.1 06/28/2016
+  ==========================================================
+  
+  fix namespace constant detection
+
+-------------------------------------------------------------------
+Sat May 21 04:32:03 UTC 2016 - coolo@suse.com
+
+- updated to version 1.40.0
+ see installed changelog.md
+
+  1.40.0 05/19/2016
+  ==========================================================
+  
+  add minitest helpers for schema (parity to shindo)
+  
+  1.39.0 05/11/2016
+  ==========================================================
+  
+  cleanup warnings
+  add NFV module
+  only dup frozen strings
+
+-------------------------------------------------------------------
+Thu Apr 21 04:31:17 UTC 2016 - coolo@suse.com
+
+- updated to version 1.38.0
+ see installed changelog.md
+
+  1.38.0 04/20/2016
+  ==========================================================
+  
+  more specific service not found error
+  fix string freeze issue for ruby 2.3
+  bump excon dep
+
+-------------------------------------------------------------------
+Wed Apr  6 06:20:12 UTC 2016 - coolo@suse.com
+
+- updated to version 1.37.0
+ see installed changelog.md
+
+-------------------------------------------------------------------
+Wed Feb 24 05:32:58 UTC 2016 - coolo@suse.com
+
+- updated to version 1.36.0
+ see installed changelog.md
+
+-------------------------------------------------------------------
+Wed Nov 25 05:30:55 UTC 2015 - coolo@suse.com
+
+- updated to version 1.35.0
+ see installed changelog.md
+
+  1.34.0 11/24/2015
+  ==========================================================
+  
+  make mime/types require optional
+  
+  1.34.0 11/16/2015
+  ==========================================================
+  
+  make net/ssh and net/scp requires optional
+  
+  1.33.0 11/15/2015
+  ==========================================================
+  
+  relax net/ssh and net/scp requirement
+
+-------------------------------------------------------------------
+Mon Nov 23 05:29:33 UTC 2015 - coolo@suse.com
+
+- updated to version 1.34.0
+ see installed changelog.md
+
+-------------------------------------------------------------------
+Mon Nov 16 05:34:19 UTC 2015 - coolo@suse.com
+
+- updated to version 1.33.0
+ see installed changelog.md
+
+-------------------------------------------------------------------
+Thu Aug 13 04:29:05 UTC 2015 - coolo@suse.com
+
+- updated to version 1.32.1
+ see installed changelog.md
+
+  1.32.1 08/12/2015
+  ==========================================================
+  
+  expose identities in models
+
+-------------------------------------------------------------------
+Fri Jul  3 04:29:27 UTC 2015 - coolo@suse.com
+
+- updated to version 1.32.0
+ see installed changelog.md
+
+  1.32.0 07/02/2015
+  ==========================================================
+  
+  fix/refactor service initializers
+
+-------------------------------------------------------------------
+Thu Jun 18 04:30:55 UTC 2015 - coolo@suse.com
+
+- updated to version 1.31.1
+ see installed changelog.md
+
+  1.31.1 06/17/2015
+  ==========================================================
+  
+  fixes around unknown providers/services
+  
+  1.31.0 06/17/2015
+  ==========================================================
+  
+  use relative paths
+  add digital ocean examples
+  reinstate baremetal
+  add softlayer examples
+  add digital ocean v2 support
+  setup fog model equality to check identities (if available)
+  use Fog.interval in wait_for
+  reduce memory footprint
+  fix account handling
+
+-------------------------------------------------------------------
+Sun Apr  5 04:35:51 UTC 2015 - coolo@suse.com
+
+- updated to version 1.30.0
+
+-------------------------------------------------------------------
+Fri Feb 20 05:29:28 UTC 2015 - coolo@suse.com
+
+- updated to version 1.29.0
+
+-------------------------------------------------------------------
+Tue Feb 10 17:45:18 UTC 2015 - coolo@suse.com
+
+- updated to version 1.28.0
+
+-------------------------------------------------------------------
+Mon Oct 13 12:09:01 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Mon Jun  2 13:13:53 UTC 2014 - tboerger@suse.com
+
+- Initial packaging of version 1.22.0
+

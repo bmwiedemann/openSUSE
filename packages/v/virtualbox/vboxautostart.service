@@ -1,0 +1,18 @@
+[Unit]
+SourcePath=/usr/lib/virtualbox/vboxautostart.sh
+Description=VirtualBox Linux autostart module
+Requires=vboxdrv.service
+After=vboxdrv.service
+After=network.target
+After=time-sync.target
+After=nss-user-lookup.target
+
+[Service]
+ExecStart=/usr/lib/virtualbox/vboxautostart.sh start
+ExecStop=/usr/lib/virtualbox/vboxautostart.sh stop
+Type=oneshot
+RemainAfterExit=yes
+TimeoutStopSec=0
+
+[Install]
+WantedBy=multi-user.target

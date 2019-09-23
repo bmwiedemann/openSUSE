@@ -1,0 +1,12 @@
+<package name="firehol" project="openSUSE:Factory">
+  <title>Tools to build stateful firewalls and traffic shaping</title>
+  <description>FireHOL is a language (and a program to run it) which builds stateful firewalls
+from human-readable configuration files.
+
+FireQOS is a program which sets up traffic shaping from human-readable
+configuration files.
+
+Both programs abstract away the differences between IPv4 and IPv6, and rules
+for each protocol can be applied as needed.</description>
+  <devel project="security:netfilter" package="firehol"/>
+</package>

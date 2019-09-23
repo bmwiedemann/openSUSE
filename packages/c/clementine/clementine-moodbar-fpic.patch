@@ -1,0 +1,14 @@
+Index: Clementine-75f18dab23f0842713a4200a7e362efd51b12e31/gst/moodbar/CMakeLists.txt
+===================================================================
+--- Clementine-75f18dab23f0842713a4200a7e362efd51b12e31.orig/gst/moodbar/CMakeLists.txt	2019-07-24 12:51:48.000000000 +0200
++++ Clementine-75f18dab23f0842713a4200a7e362efd51b12e31/gst/moodbar/CMakeLists.txt	2019-07-26 11:40:41.784156710 +0200
+@@ -1,7 +1,7 @@
+ cmake_minimum_required(VERSION 2.8.11)
+ 
+-set(CMAKE_C_FLAGS "-Wall")
+-set(CMAKE_CXX_FLAGS "-Woverloaded-virtual -Wall --std=c++0x")
++set(CMAKE_C_FLAGS "-Wall -fPIC")
++set(CMAKE_CXX_FLAGS "-Woverloaded-virtual -Wall -fPIC --std=c++0x")
+ 
+ include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+ 

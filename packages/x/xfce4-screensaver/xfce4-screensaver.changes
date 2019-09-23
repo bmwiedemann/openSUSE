@@ -1,0 +1,197 @@
+-------------------------------------------------------------------
+Thu Sep  5 10:04:26 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Prevent parallel installation of xscreensaver by dropping
+  xscreensaver-data recommendation and make sure xscreensaver is
+  removed from existing systems (boo#1149209)
+
+-------------------------------------------------------------------
+Fri Aug 16 13:01:06 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Mon Aug 12 00:04:09 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 0.1.8
+  * Optional screensaver inhibition for fullscreen apps
+  * Blank screensaver now supports DPMS (bxo#15216)
+  * Add dependency on libwnck >= 3.20
+  * Translation Updates
+- Fixed up spec file
+-------------------------------------------------------------------
+Sun Jul 28 17:58:25 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.1.7
+  * Added configuration tool for individual screensavers
+  * Added support for on-screen keyboards
+  * Drop libXxf86 dependency, no longer implemented or available
+  * Removed unneeded login window construction code
+  * Removed window shaking on failed login
+  * Removed unused session-idle signal
+  * Removed unused code from gs-manager/gs-window-x11
+  * Simplified lock screen code
+  * Simplified screensaver activation and locking code
+  * Improved wallpaper drawing at 2x scale
+  * Migrated xfce4-screensaver-command to GDBus
+  * Fixed confusion between saver and lock timeouts
+  * Translation updates
+
+-------------------------------------------------------------------
+Sun Jun 30 16:02:32 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.1.6
+  * Fixed flickering in the password dialog
+  * Fixed password dialog appearance, visual artifacts with
+    various themes are resolved
+  * Remove reference to pkg-config file (.pc) (bxo#15597)
+  * Cleaned up kdb-indicator logic
+  * Consolidated debug function calls
+  * Moved job theme processing out of gs-manager
+  * Removed drag-and-drop theme installation
+  * Removed placeholder widgets from the glade template
+  * Removed unused callbacks
+  * Simplified handling of user preferences
+  * Translation Updates
+- Removed devel package as pkg-config file was removed
+
+-------------------------------------------------------------------
+Mon Jun 17 16:02:47 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Replace BuildRequires systemd-devel with pkgconfig(libsystemd)
+
+-------------------------------------------------------------------
+Thu Jun 13 10:20:33 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 0.1.5
+  * Added support for elogind (bxo#15243)
+  * Added support for profile images from AccountsService (bxo#15235)
+  * Removed a lot of unused code (2,700+ lines)
+  * Simplified monitor-handling logic
+  * More consistent spacing in makefiles
+  * Added categories to display in the Settings Manager (bxo#15507)
+  * Added a fallback idle timer for when X11 screensaver doesn't notify
+  * Fixed warning during configure stage (bxo#15552)
+  * Fixed Inhibitor lock (bxo#15551)
+  * Hide screensaver themes from 'Open with' options (bxo#15531)
+  * Made numerous cppcheck, cpplint, and Coverity Scan fixes
+  * Constant variables guarding dead code
+  * Dereferencing before/after null
+  * Unchecked return values
+  * Unused variables
+  * Memory leaks
+  * Translation Updates
+
+-------------------------------------------------------------------
+Wed Jun  5 10:03:29 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Added bcond to build with sources from git master branch
+- Added --with-console-kit needed for PrepareForSleep signal
+- Added OBS service file to fetch git master sources when needed
+
+-------------------------------------------------------------------
+Fri Mar 22 11:47:22 UTC 2019 - Vinzenz Vietzke <vinz@vinzv.de>
+
+- update to 0.1.4
+  * Features:
+  	  - Added support for locking on suspend (bxo#15001)
+  * Bug Fixes:
+    - Fix password entry after stealing focus (bxo#15042)
+  * General:
+    - Faster screen locking when activated
+    - Faster renderering of the authentication prompt
+    - Improved support for monitor dis-/connection events
+    - Improved lock screen display on lid open events
+    - Improved idle activation
+    - Improved low-power state, screensavers are now suspended
+      when monitors are powered off via DPMS (deb#921835)
+  * Translation Updates:
+    Basque, Belarusian, Catalan, Czech, Danish, Galician, Lithuanian,
+    Malay, Portuguese, Russian, Serbian, Spanish, Swedish
+
+-------------------------------------------------------------------
+Sat Nov 24 05:33:34 UTC 2018 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- update to 0.1.3
+  * Features:
+    - All available settings are now availble in the Preferences dialog
+    - Locking on user inactivity is now based on X11 Screensaver signals
+    - Xfce Screensaver now respects the xdg-screensaver state
+    - Screensaver and lock screen functionality can now be toggled separately
+  * General:
+    - Removed deprecated DBUS methods and signals from documentation
+  * Preferences:
+    - Dropped unused preferences
+    - Renamed all Xfconf properties for improved clarity
+    - Embedded keyboard options have been disabled since they are currently
+      non-functional
+  * Bug Fixes:
+    - Replaced Help link with a link to the Xfce Documentation (Xfce #14877)
+    - Added /usr/lib and /usr/libexec as trusted engine paths, enables
+      local installs with access to existing screensavers (Xfce #14883)
+    - Fixed screen blanking and locking on BSD (Xfce #14846)
+    - Fixed lock screen crash on laptop lid-close events (GTK #1466)
+    - Fixed daemon crash when scrolling through available themes
+    - Fixed minimum window size to allow resizing much smaller
+    - Renamed screensavers to prevent conflicts with MATE Screensaver
+    - Reduced flicker rate when multiple keyboard layouts are available
+  * Build Improvements
+    - Silence warning: "ar: 'u' modifier ignored since 'D' is the default"
+    - Fix warning: "Target given more than once in the same rule"
+  * Code Quality:
+    - Applied cpplint fixes and added cpplint configuration file
+    - Cleaned up unused variables, trailing spaces, and deprecated code
+    - Glade templates were cleaned up and organized for easier maintenance
+  * Translation Updates
+  
+  - added %autosetup macro to spec file
+  - removed autogen.sh from spec file
+
+-------------------------------------------------------------------
+Tue Nov  6 15:30:21 UTC 2018 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Added tips to description
+
+-------------------------------------------------------------------
+Tue Nov  6 11:00:09 UTC 2018 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to 0.1.2
+  * Resolve hidden libxfce4ui 4.13 requirement (bxo#14821)
+  * Avoid hard-coded paths for systems that do not use /usr (bxo #14822)  
+
+- 0.1.1 
+  * Support color settings for Xfdesktop 4.12
+  * Fallback to the Xfdesktop default color background (dark blue)
+  * UI files are now compiled and included in the binaries
+  * Root warning is now an InfoBar to make it more visible
+  * Enabled embedding in the Xfce Settings Manager
+  * Fix crash with no background placement, fix color settings (bxo#14769)
+  * Redraw the screensaver on monitor configuration events (bxo#14796)
+  * Automate detection of PAM configuration, add flag to override  (bxo#14779)
+  * Notify invalid lid-switch configuration and add Resolve button (bxo#14782)
+  * Fix appearance with the Adwaita GTK theme
+  * Fix builds on OpenBSD, build status can now be tracked on the Xfce Build Bot
+
+- Updated patch for openSUSE PAM support  
+- Cleaned and fixed spec file to new version files and flags
+
+-------------------------------------------------------------------
+Wed Oct 17 16:03:59 UTC 2018 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Created and added patch for PAM support
+- Added systemd support in build
+
+-------------------------------------------------------------------
+Wed Oct 17 11:45:33 UTC 2018 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Edit of %configure
+
+-------------------------------------------------------------------
+Wed Oct 17 06:50:06 UTC 2018 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Added  --prefix=/usr --sysconfdir=/etc flags to build
+
+-------------------------------------------------------------------
+Mon Oct 15 18:40:23 UTC 2018 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Initial Build 0.1.0

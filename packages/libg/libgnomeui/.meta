@@ -1,0 +1,7 @@
+<package name="libgnomeui" project="openSUSE:Factory">
+  <title>The GNOME User Interface Library</title>
+  <description>This library contains all the user interface-related functions for
+GNOME-based software. You need the libgnomeui-devel package if you want
+to develop GNOME 2.x Desktop software.</description>
+  <devel project="GNOME:Factory" package="libgnomeui"/>
+</package>

@@ -1,0 +1,219 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a0fb4e0ab627b97e95e47d33b8e65f90</srcmd5>
+    <version>0.7.1</version>
+    <time>1323265198</time>
+    <user>coolo</user>
+    <comment>openstack</comment>
+    <requestid>94292</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>47e86cd4bc35ceb0aaaedb1a90bcd8a1</srcmd5>
+    <version>0.7.2</version>
+    <time>1326962670</time>
+    <user>coolo</user>
+    <comment>Update to 0.7.2 (forwarded request 99787 from rhafer)</comment>
+    <requestid>99873</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>47e86cd4bc35ceb0aaaedb1a90bcd8a1</srcmd5>
+    <version>0.7.2</version>
+    <time>1340184094</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>47e86cd4bc35ceb0aaaedb1a90bcd8a1</srcmd5>
+    <version>0.7.2</version>
+    <time>1359110127</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>01683053c71f7b030997d3f0d52dbf75</srcmd5>
+    <version>0.7.2</version>
+    <time>1370430539</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176474</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>01683053c71f7b030997d3f0d52dbf75</srcmd5>
+    <version>0.7.2</version>
+    <time>1379664289</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>8d0078d0ec4236ee9700f801e54ed0b1</srcmd5>
+    <version>0.7.2</version>
+    <time>1382693582</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204665</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8c706ee763e17adf8ed5583bf0f457bb</srcmd5>
+    <version>0.8.2</version>
+    <time>1385391836</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 208151 from posophe)</comment>
+    <requestid>208152</requestid>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>f52b82c14cad951c93829380a36382cd</srcmd5>
+    <version>0.7.2</version>
+    <time>1386085530</time>
+    <user>coolo</user>
+    <comment>revert as asked in 209308</comment>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>66b12c193abad700889c31b6d987c42e</srcmd5>
+    <version>0.8.2</version>
+    <time>1386326865</time>
+    <user>coolo</user>
+    <comment>- Use upstream URL again after 0.8.2 got finally published on PyPI.
+
+- Update to version 0.8.2:
+  + Run tests on PostgreSQL and MySQL tooFix dropping of indexed columns in sqlite/sa08
+  + Fix int overflow exception in unittest
+  + Drop setuptools_git test requirement
+  + Remove the tag_build line from setup.cfg
+  + Fix the version number to match the last release.
+  + Un-break the version in migrate/__init__.py
+  + Fix broken development version link in README
+- Use official PyPI release
+
+- Fix 12.2 build by catching all egg-info incarnations (either file
+  or directory)
+
+- Change to Openstack upstream for SQLAlchemy-0.8+ support
+- Add _service file, fix requirements</comment>
+    <requestid>209373</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>34668814212144a50c0d5daac7d4f3f5</srcmd5>
+    <version>0.8.2</version>
+    <time>1397387947</time>
+    <user>coolo</user>
+    <comment>- Readd COPYING file (forwarded request 229652 from dirkmueller)</comment>
+    <requestid>229862</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>996d21442529bea3814cd1a94b906581</srcmd5>
+    <version>0.9.1</version>
+    <time>1400910072</time>
+    <user>coolo</user>
+    <comment>- update to 0.9.1:
+ * Move patch from oslo to drop unique constraints with sqlite
+ * Port to Python3
+ * tests: Replace &quot;self.assert_&quot; by &quot;self.assertTrue&quot;
+ * turn on testing for sqla 0.9
+ * Replace AbstractType by TypeEngine
+ * fix scripttest compat
+ * Use native quote attribute introduced in sqla 0.9
+ * Fix genmodel for SQLA 0.9
+ * Conditionally import ibmdb2/ibm_db_sa
+ * migrate needs subunit &gt;= 0.0.18
+ * UniqueConstraint named and escaped twice
+ * Eradicate trailing whitespace
+ *  Convert tabs to spaces in a couple of rst files (forwarded request 233656 from dirkmueller)</comment>
+    <requestid>235191</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>996d21442529bea3814cd1a94b906581</srcmd5>
+    <version>0.9.1</version>
+    <time>1409302998</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>56d07eacf2f00bee2dfd6d99442ca6e0</srcmd5>
+    <version>0.9.2</version>
+    <time>1410967618</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249858</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>68782cc6f24fe10394b945860989c679</srcmd5>
+    <version>0.9.4</version>
+    <time>1424827094</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287545</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fcfe6b10e389d73aeb4a46095e1445d3</srcmd5>
+    <version>0.9.5</version>
+    <time>1425031801</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287913</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8ab3748d7598b7c247da9b2f672c7e79</srcmd5>
+    <version>0.9.6</version>
+    <time>1429769087</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298559</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>552bd6cacea9405040270d5719d164d9</srcmd5>
+    <version>0.10.0</version>
+    <time>1443585027</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>328641</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cec5e1ccf4fbc492ab9f1c3bd33f310b</srcmd5>
+    <version>0.11.0</version>
+    <time>1489759654</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>480738</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>d996c1c295b39c94477f6b872628ba24</srcmd5>
+    <version>0.11.0</version>
+    <time>1504617262</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507972</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>90d3ad06748a4f13e5d2541e7c23c480</srcmd5>
+    <version>0.11.0</version>
+    <time>1520778246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584631</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>91434a7e55c6636740b0598d48deb18a</srcmd5>
+    <version>0.11.0</version>
+    <time>1545648278</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659697</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f9fd98c9c6f417c22aa227f182366706</srcmd5>
+    <version>0.12.0</version>
+    <time>1556107025</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 0.12.0:
+  * Change title in README.rst
+  * Don't use deprecated / non-functional &quot;force&quot; parameter
+  * Use legacy\_alter\_table ON in sqlite recreate\_table
+  * Remove py26 support
+  * Add .eggs in .gitignore
+  * Import MutableMapping from the correct Python module
+  * Update mailinglist from dev to discuss
+  * Get rid of psycopg2 warnings by disabling wheels
+  * Enforce that pbr used is &gt;= 1.8</comment>
+    <requestid>697146</requestid>
+  </revision>
+</revisionlist>

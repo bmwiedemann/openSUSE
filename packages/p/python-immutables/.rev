@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b7134ccea381beb8a8fe5b8325dd125b</srcmd5>
+    <version>0.9</version>
+    <time>1557141811</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial spec for v0.9
+</comment>
+    <requestid>694202</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0575c249d3c2ae4cea7d63c85039d33e</srcmd5>
+    <version>0.9</version>
+    <time>1568191206</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner</comment>
+    <requestid>729899</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,14 @@
+--- cloudinit/sources/helpers/openstack.py.orig
++++ cloudinit/sources/helpers/openstack.py
+@@ -291,7 +291,10 @@ class BaseReader(object):
+         if 'random_seed' in metadata:
+             random_seed = metadata['random_seed']
+             try:
+-                metadata['random_seed'] = base64.b64decode(random_seed)
++                metadata['random_seed'] = u'%s' % base64.b64decode(random_seed)
++            except UnicodeDecodeError:
++                # Did not decode as expected, probably utf-8 already
++                metadata['random_seed'] = random_seed 
+             except (ValueError, TypeError) as e:
+                 raise BrokenMetadata("Badly formatted metadata"
+                                      " random_seed entry: %s" % e)

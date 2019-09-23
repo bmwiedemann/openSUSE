@@ -1,0 +1,29 @@
+/var/log/lighttpd/access.log {
+    su lighttpd lighttpd
+    compress
+    dateext
+    maxage 365
+    rotate 99
+    size=+4096k
+    notifempty
+    missingok
+    create 600 lighttpd lighttpd
+    postrotate
+     /etc/init.d/lighttpd reload
+    endscript
+}
+
+/var/log/lighttpd/error.log {
+    su lighttpd lighttpd
+    compress
+    dateext
+    maxage 365
+    rotate 99
+    size=+1024k
+    notifempty
+    missingok
+    create 600 lighttpd lighttpd
+    postrotate
+     /etc/init.d/lighttpd reload
+    endscript
+}

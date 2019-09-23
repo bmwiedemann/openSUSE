@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Wed Sep 19 11:52:37 UTC 2018 - minava@t-online.de
+
+- Update package to 0.7.0
+- Brings the renderer up to GL4.3/GLES3.1 capability and most of GLES3.2
+- Make EGL optional at configure time
+- The following patches will be removed: 
+  0001-737c3350-renderer-fix-memory-leak-in-vertex-elements-state-cr.patch
+  0002-1fdafd62-vrend-Increase-VREND_MAX_CTX-to-64.patch
+  They are included in 0.7.0
+
+
+-------------------------------------------------------------------
+Thu Jul 26 16:13:35 CEST 2018 - vliaskovitis@suse.com
+
+- vrend: Increase VREND_MAX_CTX to 64. (bsc#1102749)
+  0002-1fdafd62-vrend-Increase-VREND_MAX_CTX-to-64.patch
+
+-------------------------------------------------------------------
+Wed Nov  1 15:32:54 UTC 2017 - mpluskal@suse.com
+
+- Clean up spec file with spec-cleaner
+- Use source url
+- Add gpg signature
+- Make building more verbose
+- Explicitly require python2
+
+-------------------------------------------------------------------
+Fri Mar 10 04:22:11 UTC 2017 - lma@suse.com
+
+- Fix memory leak in vertex elements state create (CVE-2017-6386 bsc#1027376)
+  0001-737c3350-renderer-fix-memory-leak-in-vertex-elements-state-cr.patch
+
+-------------------------------------------------------------------
+Thu Mar  2 09:24:22 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups
+
+-------------------------------------------------------------------
+Fri Feb 24 09:03:26 UTC 2017 - lma@suse.com
+
+- Update package to 0.6.0
+  The following patches will be removed:
+  0001-48f67f60-renderer-fix-NULL-pointer-deref-in-vrend_clear.patch
+  0002-40b0e781-renderer-fix-a-leak-in-resource-attach.patch
+  0003-6eb13f7a-vrend-fix-memory-leak-in-int-blit-context.patch
+  0004-114688c5-renderer-fix-heap-overflow-in-vertex-elements-state-.patch
+  0005-926b9b34-vrend-fix-a-stack-overflow-in-set-framebuffer-state.patch
+
+  All of the removed patches were already included in 0.6.0,
+  So we dont need them any more.
+
+-------------------------------------------------------------------
+Fri Feb 17 11:20:43 UTC 2017 - lma@suse.com
+
+- Address various security issues
+* Fix null pointer dereference in vrend_clear (CVE-2017-5937 bsc#1024232)
+  0001-48f67f60-renderer-fix-NULL-pointer-deref-in-vrend_clear.patch
+* Fix host memory leak issue in virgl_resource_attach_backing (CVE-2016-10214 bsc#1024244)
+  0002-40b0e781-renderer-fix-a-leak-in-resource-attach.patch
+* Fix memory leak in int blit context (CVE-2017-5993 bsc#1025505)
+  0003-6eb13f7a-vrend-fix-memory-leak-in-int-blit-context.patch
+* Fix heap overflow in vertex elements state create (CVE-2017-5994 bsc#1025507)
+  0004-114688c5-renderer-fix-heap-overflow-in-vertex-elements-state-.patch
+* Fix a stack overflow in set framebuffer state (CVE-2017-5957 bsc#1024993)
+  0005-926b9b34-vrend-fix-a-stack-overflow-in-set-framebuffer-state.patch
+
+-------------------------------------------------------------------
+Fri Jun  3 16:35:39 UTC 2016 - brogers@suse.com
+
+- Further tweaks to package layout, including splitting out
+  the test server into it's own package.
+
+-------------------------------------------------------------------
+Wed Jun  1 11:01:38 UTC 2016 - brogers@suse.com
+
+- Refine BuildRequires tags
+
+-------------------------------------------------------------------
+Thu Apr 14 02:45:57 UTC 2016 - brogers@suse.com
+
+- Fixed url in spec file
+
+-------------------------------------------------------------------
+Wed Apr 13 06:15:29 UTC 2016 - lma@suse.com
+
+- Fixed epoxy dependency
+
+-------------------------------------------------------------------
+Tue Apr 12 07:44:05 UTC 2016 - lma@suse.com
+
+- Initial package, based upon virglrenderer upstream sources
+  (git tag: 0.5.0)
+

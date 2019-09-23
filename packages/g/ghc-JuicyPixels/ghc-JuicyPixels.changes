@@ -1,0 +1,207 @@
+-------------------------------------------------------------------
+Thu Jun 20 02:03:03 UTC 2019 - psimons@suse.com
+
+- Update JuicyPixels to version 3.3.3.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/JuicyPixels-3.3.3.1/src/changelog
+
+-------------------------------------------------------------------
+Tue Jun 11 14:29:07 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Update Cabal file for more accurate build dependencies.
+
+-------------------------------------------------------------------
+Wed Dec 26 13:22:56 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Fix an incorrectly specified upper bound on the 'base' library.
+
+-------------------------------------------------------------------
+Mon Dec 17 03:01:26 UTC 2018 - psimons@suse.com
+
+- Update JuicyPixels to version 3.3.3.
+  v3.3.3 December 2018
+  --------------------
+
+   * Enhanced: loading of bitmap format (thanks to CLowcay)
+   * Refactoring: exposing more internal modules (thanks to wyager)
+   * Refactoring: exposing dynamicMap & dynamicPixelMap
+     through `Codec.Picture` (thnks to LightAndLight)
+
+-------------------------------------------------------------------
+Thu Oct  4 15:39:54 UTC 2018 - psimons@suse.com
+
+- Update JuicyPixels to version 3.3.2.
+  v3.3.2 October 2018
+  -------------------
+
+   * Fix: GHC-8.6 compilation fix (no upper bound on base)
+   * Fix: upper bound on containers (pull request phadej)
+   * Fix: palette validation for gifs (pull request omedan)
+   * New: More complete gif creation API (pull request omedan)
+
+-------------------------------------------------------------------
+Fri Aug 17 09:43:29 UTC 2018 - psimons@suse.com
+
+- Update JuicyPixels to version 3.3.1.
+  v3.3.1 August 2018
+  ------------------
+
+   * Fix: gif decoding of 1bit palette (fix Ornedan)
+   * Fix: end of stream handling for gif's lzw encoding (fix Ornedan)
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:10 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Jul 17 19:31:07 UTC 2018 - psimons@suse.com
+
+- Update JuicyPixels to version 3.3.
+  v3.3 July 2018
+  --------------
+
+   * New: Eq instances for image
+   * Fix: color gif resolution offset
+   * New: support for Float Tiff
+   * Breaking change: New `ImageY32` constructor for `Dynamic`
+                                        hence the version bump.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update JuicyPixels to version 3.2.9.5.
+ * Fix: uniform color quantization
+ * Compat for GHC-8.4 (pull request)
+ * Fix: Progressive jpeg decoding when number of blocks of the MCU
+                is below line size
+ * Feature: Paletted alpha png saving
+ * Fix: Adding correct import of Exif Flash for Jpeg (thanks to Alexander Kjeldaas)
+ * Feature: Jpg Exif writing
+ * Fix: Jpeg loading of extended sequential jpg, not sure of all
+                the implications, works with the sample
+
+-------------------------------------------------------------------
+Mon Jun 19 20:53:33 UTC 2017 - psimons@suse.com
+
+- Update to version 3.2.8.2.
+
+-------------------------------------------------------------------
+Tue Mar 14 09:26:30 UTC 2017 - psimons@suse.com
+
+- Update to version 3.2.8.1 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jan  8 21:13:08 UTC 2017 - psimons@suse.com
+
+- Update to version 3.2.8 revision 1 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu Sep 15 06:38:32 UTC 2016 - psimons@suse.com
+
+- Update to version 3.2.8 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 16:56:13 UTC 2016 - psimons@suse.com
+
+- Update to version 3.2.7.2 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu Jun 30 12:02:57 UTC 2016 - mimi.vx@gmail.com
+
+- update to 3.2.7.2
+* Fix: no more libjpeg warning when decoding Juicy.Pixels encoded images.
+
+-------------------------------------------------------------------
+Sun Jun  5 19:31:05 UTC 2016 - mimi.vx@gmail.com
+
+- update to 3.2.7.1
+* Fix: some wrongly infinitely looping JPEG decoding
+
+-------------------------------------------------------------------
+Tue Jan 26 09:39:22 UTC 2016 - mimi.vx@gmail.com
+
+- update to 3.2.7
+* Addition: convertRGB8 and convertRGBA8 helper functions
+* Addition: new output colorspace for JPEG format: Y, RGB & CMYK
+* Addition: RGBA8 bitmap reading (thanks to mtolly)
+* Enhancement: Optimized JPG & Tiff reading (thanks to Calvin Beck)
+* Enhancement: INLINE SPECIALIZE for pixelMap (Pixel8 -> Pixel8) (thx to Calvin Beck)
+* Fix: GHC 8.0 compilation (thanks to phadej)
+
+-------------------------------------------------------------------
+Mon Dec  7 11:11:25 UTC 2015 - mimi.vx@gmail.com
+
+- update to 3.2.6.4
+* Fix: Fixing unwanted sharing with createMutableImage due to
+        wrongly used INLINE pragma
+
+-------------------------------------------------------------------
+Wed Nov  4 08:17:52 UTC 2015 - mimi.vx@gmail.com
+
+- update to 3.2.6.2
+* Fix: Using minimal GIF version if outputing a single image.
+
+-------------------------------------------------------------------
+Mon Aug 31 06:16:56 UTC 2015 - mimi.vx@gmail.com
+
+- update to 3.2.6.1
+* Fix: handling of negative height & width in bitmap format
+* Fix: regression on Tiff parsing.
+
+-------------------------------------------------------------------
+Sun Aug 23 17:20:53 UTC 2015 - mimi.vx@gmail.com
+
+- update to 3.2.6
+* Added: imageToTga saving helper function.
+* Fix: don't invert TGA alpha channel.
+* Fix: various typo in documentation.
+
+-------------------------------------------------------------------
+Mon Jul 27 07:00:22 UTC 2015 - mimi.vx@gmail.com
+
+- update to 3.2.5.3
+*  Fix: bumping vector upper bounds.
+
+-------------------------------------------------------------------
+Mon Jun  8 06:12:29 UTC 2015 - mimi.vx@gmail.com
+
+- update to 3.2.5.2
+* Adding: Width & Height metdata to help querying image information without
+    decompressing the whole.
+* Adding: Source format metadata.
+
+-------------------------------------------------------------------
+Sun May 31 20:15:22 UTC 2015 - mimi.vx@gmail.com
+
+- update to 3.2.5.1
+* Fixing: utf-8 encoding of Jpg/Types causing problems with Haddock.
+* Adding: Metadata extraction for various file format.
+* Adding: Metadata writing for various file format.
+* Adding: light EXIF mapping.
+* Fix: handling of Tiff with predictors (thanks to Patrick Pelletier)
+
+-------------------------------------------------------------------
+Mon Apr 27 08:24:30 UTC 2015 - mimi.vx@gmail.com
+
+- update to 3.2.4
+* Adding: Traversals compatible with the lens library.
+
+-------------------------------------------------------------------
+Wed Apr 22 08:38:09 UTC 2015 - mimi.vx@gmail.com
+
+- update to 3.2.3.1
+* Fix: BMP output generated wrong size (thanks to mtolly).
+* Adding: Support for RGB in jpeg (yeah, that exist...)
+* Adding: Support of CMYK & YCrCbK color space in jpeg files.
+* Addinng: a pixelFoldMap functions analog to the `foldMap` function
+  of the Foldable type class.
+* Fix: better performances for the pixelFold* functions
+
+-------------------------------------------------------------------
+Sun Feb  1 20:12:49 UTC 2015 - mimi.vx@gmail.com
+
+- initial commit of JuicyPixels lib

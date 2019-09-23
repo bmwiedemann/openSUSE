@@ -1,0 +1,6 @@
+<package name="perl-Net-IP" project="openSUSE:Factory">
+  <title>allow easy manipulation of IPv4 and IPv6 addresses</title>
+  <description>This is the Net::IP module, designed to allow easy manipulation of IPv4
+and IPv6 addresses.</description>
+  <devel project="devel:languages:perl" package="perl-Net-IP"/>
+</package>

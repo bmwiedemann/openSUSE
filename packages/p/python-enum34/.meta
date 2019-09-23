@@ -1,0 +1,7 @@
+<package name="python-enum34" project="openSUSE:Factory">
+  <title>Python 3.4 Enum backported to 3.3, 3.2, 3.1, 2.7, 2.6, 2.5, and 2.4</title>
+  <description>enum34 is the new Python stdlib enum module available in Python 3.4
+backported for previous versions of Python from 2.4 to 3.3.
+</description>
+  <devel project="devel:languages:python" package="python-enum34"/>
+</package>

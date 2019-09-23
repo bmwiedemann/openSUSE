@@ -1,0 +1,192 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c8bacd9714b91630cefa6ff50221945</srcmd5>
+    <version>0.4.6</version>
+    <time>1436734371</time>
+    <user>coolo</user>
+    <comment>profanity is a ncurses based xmpp client, inspired by irssi. i will maintain it.</comment>
+    <requestid>315480</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>113929a6560b0c1f9ceadabc3ab18058</srcmd5>
+    <version>0.4.7</version>
+    <time>1443897017</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>335423</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>08687966c21808fc44282afacc71394b</srcmd5>
+    <version>0.4.7</version>
+    <time>1466326146</time>
+    <user>dimstar_suse</user>
+    <comment>- Split profanity in two packages:
+  standard - the default with all features enabled
+  mini - disabling notifications thus not needing X (forwarded request 401927 from jubalh)</comment>
+    <requestid>401928</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9ac7b92ced0131f366dc9711860f43d2</srcmd5>
+    <version>0.5.0</version>
+    <time>1474116037</time>
+    <user>dimstar_suse</user>
+    <comment>- Run spec-cleaner and use macros so it builds on all archs
+
+- Add profanity-rpmlintrc
+
+- Update to version 0.5.0:
+  * Plugins API supporting C and Python plugins
+  * SSL certificate verification (requires libmesode) (/tls)
+  * HTTP file upload (xep-0363) (/sendfile)
+  * Blocking command (xep-0191) (/blocked)
+  * Allow auto extended away (/autoaway)
+  * Include last acitvity in initial presence (xep-0256) (/lastactivity)
+  * Last Activity (xep-0012) (/lastactivity)
+  * Ability to run command scripts (/script)
+  * Account startscript property to execute a command script on connect (/account)
+  * Export roster to CSV file (/export)
+  * Support for GTK tray icons (/tray)
+  * User specified text triggers for chat room notifications (/notify)
+  * Per chat room notification options (/notify)
+  * Many new roster panel display options (/roster)
+  * Time format preferences per window type (/time)
+  * Edit, prepend and append to room subject (/subject)
+  * Autoping timeout preference (/autoping)
+  * Window navigation by window title (/win)
+  * Window closing by window title (/close)
+  * Account theme setting (/account)
+  * Allow sending XMPP stanzas in xmlconsole window (/xmlconsole)
+  * Configure level of room message notifications in console window (/console)
+  * Check ~/.config/profanity/inputrc for readline settings
+  * Custom readline functions for navigation key bindings
+  * Autocomplete command arguments when no characters entered</comment>
+    <requestid>428100</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7df81cc4ae3c0de48b397b54eebbac25</srcmd5>
+    <version>0.5.0</version>
+    <time>1474623660</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixing gh/boothj5/profanity/#860:
+  profanity uses parts of the new API of libstrophe. But since 
+  the so name wasn't bumped this doesn't get autodetected.
+  Adding the requires manually: Requires: libstrophe0 &gt;= 0.9.0
+
+- Add better information to description
+- Enable tray icon in profanity-standard</comment>
+    <requestid>429436</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>dd767558e6ee570943314b57d23cfe7d</srcmd5>
+    <version>0.5.0</version>
+    <time>1480018908</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439004</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d3f4dcfa1138781f556f38955af83d8b</srcmd5>
+    <version>0.5.1</version>
+    <time>1486717492</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.1:
+  * Add prof.get_room_nick plugins api function
+  * Add main.help.header theme option
+  * Look for system TLS certificate path by default (/tls certpath)
+  * Use service discovery to set account muc property
+  * Allow clearing account muc and resource properties
+  * Allow plugins to complete file paths with prof.filepath_completer_add function
+  * Add encryption settings functions to plugins api
+  * Allow plugins to block message sending on pre message send hooks
+  * Bug fixes: https://github.com/boothj5/profanity/milestone/15?closed=1</comment>
+    <requestid>455762</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>57f2bfa291b189c0712be9ca62162b0b</srcmd5>
+    <version>0.5.1</version>
+    <time>1500275507</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510269</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>50a47d608ec37cbc9a94a97ee7fc21ba</srcmd5>
+    <version>0.5.1</version>
+    <time>1521499088</time>
+    <user>dimstar_suse</user>
+    <comment>- Compile profanity-mini with --disable-icons:
+  Since we first do the standard build we need to disable the
+  icons in the later build to really get rid of the GTK dependency</comment>
+    <requestid>587942</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>a4ffddac19bc5ce5e97e4cd6c982344f</srcmd5>
+    <version>0.5.1</version>
+    <time>1521716671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589209</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8815515a6ab128d653714149a724ac2e</srcmd5>
+    <version>0.6.0~rc1</version>
+    <time>1550220889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668083</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>54bba7ab7fe78df6e6248bda30debac5</srcmd5>
+    <version>0.6.0</version>
+    <time>1550574117</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.6.0:
+  * No changes since RC1</comment>
+    <requestid>677132</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f40d3e2b62d08545fd848a8e4404a821</srcmd5>
+    <version>0.7.0</version>
+    <time>1564576629</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * Fix plugin unload return code if just one plugin fails (#995)
+  * Fix several typos
+  * Fix some display indentation issues (#1073)
+  * Fail plugin unload if the plugin doesnt exist
+  * Improve encrypted message stub header by mentioning the encryption method
+  * Fix GPG encryption (#997)
+  * Redraw sceen after entry of PGP key (#906)
+  * Fix support for case-sensitive account names (#725)
+  * Fix /me display when highlighting user in MUCs (#950)
+  * Fix `make dist` (0f0659a)
+  * Fix use after free bug (#1044)
+  * Fix segfault on connect with default account (#1046)
+  * Implement OMEMO support (#1039, #658, #1070)
+  * Add random string at the end of the default resource (#1053)
+  * Fix handling of messages without ID in MUC (#1061)
+  * Add library versioning to libprofanity (#973)
+  * Add more customization: occupants indent (/occupants) (#690, #1072)
+  * Add more customization: occupants header char (/occupants) (#690, #1074)
+  * Add more customization: occupants wrap (/occupants) (#690, 125ca2f)
+  * Add more customization: occupants char (/occupants) (#690, #1084)
+  * Fix formatting for privileges on (a666f0d)
+  * Fix usage of statusbar number in theme (#1078)
+  * Fix Debian 32bit tests (#1091)
+  * Fix unit tests (#1092)
+  * Fix infinite loop on connection loss (#1103)
+  * Don't clear saved account data in session_disconnect (#1106)
+  * Cancel autoping timer on disconnect or connection loss (#1105)
+  * Fix SIGABRT on connection loss (#1083)
+  * Only print room history for new messages upon reconnect (#704, #1110)</comment>
+    <requestid>720021</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>5a22222a36d17a8a83a659c0acd87d0c</srcmd5>
+    <version>0.7.0</version>
+    <time>1564994105</time>
+    <user>dimstar_suse</user>
+    <comment>- Build both mini and standard with OMEMO enabled</comment>
+    <requestid>720052</requestid>
+  </revision>
+</revisionlist>

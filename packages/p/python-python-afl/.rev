@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>96e5ed83fbcb9cb05ba6a948273098ef</srcmd5>
+    <version>0.6.1</version>
+    <time>1507065437</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package for version 0.6.1
+- add Use-setuptools-and-use-test-command-for-setup.patch to allow installation and test with setuptools
+</comment>
+    <requestid>528504</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ac48fe756605f88e4c9cc49aa7b53b29</srcmd5>
+    <version>0.7</version>
+    <time>1530866716</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621052</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>55858c3709c49c24b0626758a4d1cdf7</srcmd5>
+    <version>0.7.1</version>
+    <time>1531592751</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>622789</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9b7c3078b819b1dc8e2ba196e86fa4b5</srcmd5>
+    <version>0.7.2</version>
+    <time>1560970908</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706045</requestid>
+  </revision>
+</revisionlist>

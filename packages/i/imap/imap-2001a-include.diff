@@ -1,0 +1,60 @@
+Index: src/osdep/unix/mh.c
+===================================================================
+--- src/osdep/unix/mh.c.orig
++++ src/osdep/unix/mh.c
+@@ -34,6 +34,7 @@ extern int errno;		/* just in case */
+ #include "mail.h"
+ #include "osdep.h"
+ #include <pwd.h>
++#include <time.h>
+ #include <sys/stat.h>
+ #include <sys/time.h>
+ #include "misc.h"
+Index: src/osdep/unix/mx.c
+===================================================================
+--- src/osdep/unix/mx.c.orig
++++ src/osdep/unix/mx.c
+@@ -34,6 +34,7 @@ extern int errno;		/* just in case */
+ #include "mail.h"
+ #include "osdep.h"
+ #include <pwd.h>
++#include <time.h>
+ #include <sys/stat.h>
+ #include <sys/time.h>
+ #include "misc.h"
+Index: src/osdep/unix/news.c
+===================================================================
+--- src/osdep/unix/news.c.orig
++++ src/osdep/unix/news.c
+@@ -33,6 +33,7 @@
+ extern int errno;		/* just in case */
+ #include "mail.h"
+ #include "osdep.h"
++#include <time.h>
+ #include <sys/stat.h>
+ #include <sys/time.h>
+ #include "misc.h"
+Index: src/osdep/unix/os_lnx.c
+===================================================================
+--- src/osdep/unix/os_lnx.c.orig
++++ src/osdep/unix/os_lnx.c
+@@ -30,6 +30,7 @@
+ #include "mail.h"
+ #include "osdep.h"
+ #include <stdio.h>
++#include <time.h>
+ #include <sys/time.h>
+ #include <sys/stat.h>
+ #include <sys/socket.h>
+Index: src/osdep/unix/phile.c
+===================================================================
+--- src/osdep/unix/phile.c.orig
++++ src/osdep/unix/phile.c
+@@ -35,6 +35,7 @@ extern int errno;		/* just in case */
+ #include "mail.h"
+ #include "osdep.h"
+ #include <pwd.h>
++#include <time.h>
+ #include <sys/stat.h>
+ #include <sys/time.h>
+ #include "rfc822.h"

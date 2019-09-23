@@ -1,0 +1,315 @@
+-------------------------------------------------------------------
+Mon Apr  8 23:25:20 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add include-sys-sysmacros-h.patch
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jan 12 13:32:59 UTC 2017 - guillaume@opensuse.org
+
+- Update to version 0.14.8:
+  * bootchartd
+    - misc collector fixes
+    - fix for sparc
+  * pybootchartgui
+    - Use half the memory when parsing files
+- Use full URL as source
+
+-------------------------------------------------------------------
+Tue Feb 10 15:36:49 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.14.7
+  * bootchartd
+    - Use /bin/sh instead of bash
+    - Misc coverity fixes
+    - Fix systemd regression
+  * pybootchartgui
+    - Fix merging of logger process #56
+- Spec file refactoring
+- Remove depreciated mkinitrd-boot.sh and mkinitrd-setup.sh scripts
+  files; use provided systemd unit files instead
+- Add systemd support; add systemd-rpm-macros build require and
+  %{?systemd_requires}
+- Move bootchart stuff to /usr
+- Remove obsolete bootchart_init.patch
+- Add bootchart-let-RMP-strip-manpages.patch; let RPM gzip itself 
+  the manpages 
+- Remove mkinitrd dependency; not needed anymore
+- Remove %system_requires; depreciated
+
+-------------------------------------------------------------------
+Fri Oct 19 13:59:56 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  See COPYING and e.g. pybootchart -> draw.py
+
+-------------------------------------------------------------------
+Sat Sep 17 20:34:41 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Mon Nov 15 11:55:55 UTC 2010 - aj@suse.de
+
+- Fix cmdline parsing for alternative init system (bnc#649513)
+
+-------------------------------------------------------------------
+Wed Oct 27 08:52:23 UTC 2010 - aj@suse.de
+
+- Use RPM_OPT_FLAGS for building.
+
+-------------------------------------------------------------------
+Wed Oct 27 08:49:41 UTC 2010 - aj@suse.de
+
+- Update to bootchart2 0.12.4:
+  o various bugfixes
+  o display memory usage
+  o includes pthread patch.
+
+-------------------------------------------------------------------
+Wed Oct 27 08:44:17 UTC 2010 - aj@suse.de
+
+- Disable initrd support for now as the system will not boot with 
+  it (bnc#649512).
+
+-------------------------------------------------------------------
+Thu Jul 15 11:04:16 BST 2010 - michael.meeks@novell.com
+
+- update to bootchart2 0.12.1
+	+ pybootchartgui
+		+ pylint cleanup
+		+ handle empty traces more elegantly
+		+ add '-t' / '--boot-time' argument (Matthew Bauer)
+	+ collector
+		+ now GPLv2
+		+ add rdinit support for very early initrd tracing
+		+ cleanup / re-factor code into separate modules
+		+ re-factor arg parsing, and parse remote process args
+		+ handle missing bootchartd.conf cleanly
+		+ move much of bootchartd from shell -> C
+			+ drop dmesg and uname usage
+			+ avoid rpm/dpkg with native version reporting
+
+- update to bootchart2 0.12.0
+	+ collector
+		+ use netlink PROC_EVENTS to generate parentage data
+			+ finally kills any need for 'acct' et. al.
+			+ also removes need to poll /proc => faster
+		+ cleanup code to K&R, 8 stop tabs.
+	+ pybootchartgui
+		+ consume thread parentage data
+
+-------------------------------------------------------------------
+Tue Apr 13 11:28:49 BST 2010 - michael.meeks@novell.com
+
+- update to bootchart2-0.1.0
+	+ rendering (Anders Norgaard)
+		+ fix for unknown exceptions
+	+ interactive UI (Michael)
+		+ much faster rendering by manual clipping
+		+ horizontal scaling
+		+ remove annoying page-up/down bindings
+	+ initrd portability & fixes (Federic Crozat)
+		+ port to Mandriva
+		+ improved process waiting
+		+ inittab commenting fix
+		+ improved initrd detection / jail tagging
+		+ fix for un-detectable accton behaviour change
+		+ implement a built-in usleep to help initrd deps (Michael)
+- remove 'usleep' dep.
+
+-------------------------------------------------------------------
+Mon Mar 15 09:59:05 UTC 2010 - coolo@novell.com
+
+- make it work on factory's initrd
+
+-------------------------------------------------------------------
+Wed Mar 10 13:53:49 UTC 2010 - coolo@novell.com
+
+- do not require lsb
+
+-------------------------------------------------------------------
+Tue Feb  2 10:42:58 GMT 2010 - michael.meeks@novell.com
+
+- update to bootchart2-0.0.9
+	+ fixes leaked collector when installed in initrd
+- remove README.SUSE - it's obsolete.
+
+-------------------------------------------------------------------
+Mon Feb  1 17:25:37 GMT 2010 - michael.meeks@novell.com
+
+- update to bootchart2-0.0.8
+	+ fixes some mis-accounting bugs
+	+ adds the chart filename to the interactive window title
+
+-------------------------------------------------------------------
+Thu Jan 21 14:40:24 UTC 2010 - coolo@novell.com
+
+- call mkinitrd on installing and uninstalling bootchart (bnc#558765)
+
+-------------------------------------------------------------------
+Wed Jan 20 16:09:00 GMT 2010 - michael.meeks@novell.com
+
+- update to bootchart2-0.0.6
+	+ adds cumulative CPU time graphing
+
+-------------------------------------------------------------------
+Wed Jan 20 15:51:56 GMT 2010 - michael.meeks@novell.com
+
+- remove 'sleep' during transition from initrd, we don't
+  need that anymore, and it distorts the profile horribly.
+
+-------------------------------------------------------------------
+Tue Jan 19 11:31:38 GMT 2010 - michael.meeks@novell.com
+
+- update to bootchart2-0.0.5
+
+-------------------------------------------------------------------
+Mon Nov 23 15:09:27 GMT 2009 - michael.meeks@novell.com
+
+- package bootchart2 - a cleaned up, and graunched version
+  of the Ubuntu bootchart-collector, and pybootchartgui
+  Merge some of Coolo's good work wrt. init scripts etc.
+
+-------------------------------------------------------------------
+Sun Aug  9 23:14:50 CEST 2009 - beineri@opensuse.org
+
+- add postun reminder
+
+-------------------------------------------------------------------
+Tue May 19 15:32:06 CEST 2009 - coolo@suse.de
+
+- don't use java but python (removes noarch)
+
+-------------------------------------------------------------------
+Thu Apr 30 15:57:49 CEST 2009 - coolo@suse.de
+
+- remove mingetty from the list of processes to check for, it's just
+  not our target
+
+-------------------------------------------------------------------
+Mon Apr  6 15:51:11 CEST 2009 - coolo@suse.de
+
+- don't kill stapio and blktrace
+- redo diff
+
+-------------------------------------------------------------------
+Fri Feb  6 22:22:49 CET 2009 - coolo@suse.de
+
+- show status of threads too
+- only overwrite init if it's default
+
+-------------------------------------------------------------------
+Thu Jan 29 20:48:48 CET 2009 - coolo@suse.de
+
+- add grep to the list of programs and make it use bash
+
+-------------------------------------------------------------------
+Tue Jan 20 14:03:15 CET 2009 - coolo@suse.de
+
+- fix initrd profiling and fix autorender support
+
+-------------------------------------------------------------------
+Fri Aug  1 12:01:52 CEST 2008 - coolo@suse.de
+
+- adding a README.SUSE to warn for the situation described in 
+  bnc#400402
+
+-------------------------------------------------------------------
+Thu Jul 24 14:33:51 CEST 2008 - hare@suse.de
+
+- Install mkinitrd scriptlets correctly.
+
+-------------------------------------------------------------------
+Wed Jun 20 12:17:12 CEST 2007 - coolo@suse.de
+
+- log all initrd scripts
+
+-------------------------------------------------------------------
+Tue Jun 19 23:08:56 CEST 2007 - coolo@suse.de
+
+- make it a bit quicker to change between initrd and 
+ system
+
+-------------------------------------------------------------------
+Tue Jun 19 19:38:16 CEST 2007 - coolo@suse.de
+
+- first try to bootchart what's in the initrd
+
+-------------------------------------------------------------------
+Thu Apr 26 10:08:50 CEST 2007 - coolo@suse.de
+
+- fix permissions of config files
+- make the package noarch
+
+-------------------------------------------------------------------
+Tue Sep 26 01:02:29 CEST 2006 - ro@suse.de
+
+- use source and target 1.4 for java 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:43 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Nov 14 14:06:16 CET 2005 - coolo@suse.de
+
+- update to 0.9
+
+-------------------------------------------------------------------
+Tue Nov  1 22:22:25 CET 2005 - coolo@suse.de
+
+- improve support for user land charts
+
+-------------------------------------------------------------------
+Tue Oct 11 09:58:37 CEST 2005 - coolo@suse.de
+
+- update to CVS for one major bug fix
+
+-------------------------------------------------------------------
+Tue Aug 23 13:25:07 CEST 2005 - coolo@suse.de
+
+- don't sleep too long
+
+-------------------------------------------------------------------
+Wed Jul 27 13:55:09 CEST 2005 - coolo@suse.de
+
+- another update from CVS
+
+-------------------------------------------------------------------
+Fri Mar 11 12:58:00 CET 2005 - coolo@suse.de
+
+- adding fix from CVS
+
+-------------------------------------------------------------------
+Thu Mar  3 10:13:48 CET 2005 - coolo@suse.de
+
+- update to 0.8 (you have to read INSTALL now)
+
+-------------------------------------------------------------------
+Fri Jan 21 13:02:32 CET 2005 - coolo@suse.de
+
+- changed the default back to svg for DISPLAY less renderer
+
+-------------------------------------------------------------------
+Thu Jan 20 10:38:42 CET 2005 - coolo@suse.de
+
+- update to 0.7
+
+-------------------------------------------------------------------
+Mon Jan  3 14:19:41 CET 2005 - coolo@suse.de
+
+- new version
+
+-------------------------------------------------------------------
+Fri Dec 17 09:24:14 CET 2004 - coolo@suse.de
+
+- update to the version I use ;)
+
+-------------------------------------------------------------------
+Mon Dec  6 09:36:56 CET 2004 - coolo@suse.de
+
+- initial version
+

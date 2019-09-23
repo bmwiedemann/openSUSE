@@ -1,0 +1,26 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Subject: Install some more scripts
+
+Why are they commented in the repo?
+
+---
+ scripts/Makefile.in |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+--- a/scripts/Makefile.in
++++ b/scripts/Makefile.in
+@@ -20,11 +20,11 @@ SCRIPTS		= \
+     xdg-open \
+     xdg-email \
+     xdg-screensaver \
+-    xdg-settings
+-#    xdg-su
++    xdg-settings \
++    xdg-su \
++    xdg-terminal
+ #    xdg-copy \
+ #    xdg-file-dialog
+-#    xdg-terminal
+ 
+ MANPAGES=	$(SCRIPTS:%=man/%.1)
+ WEBPAGES=	$(SCRIPTS:%=html/%.html)

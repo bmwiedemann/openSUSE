@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>56e2cf38822e594244ad8b0e5c879e39</srcmd5>
+    <version>0.2.6</version>
+    <time>1432892598</time>
+    <user>dimstar_suse</user>
+    <comment>i also submitted krb5 that switched to system libverto</comment>
+    <requestid>306332</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6ed2c9a0788ea39806205daadc8a3f0b</srcmd5>
+    <version>0.2.6</version>
+    <time>1433145386</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309441</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>084e41a75d44cf435331c42dacbe779a</srcmd5>
+    <version>0.2.6</version>
+    <time>1436111899</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>314336</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5d666570a648173f2cdd8e5458cea952</srcmd5>
+    <version>0.2.6</version>
+    <time>1463652168</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396124</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b73321f9972087b77f37281ecf8730d3</srcmd5>
+    <version>0.2.6</version>
+    <time>1497273060</time>
+    <user>dimstar_suse</user>
+    <comment>- There is no change made about the package itself, this is only
+  copying over some changelog texts from SLE package:
+- [fate#320326](https://fate.suse.com/320326)
+
+- There is no change made about the package itself, this is only
+  copying over some changelog texts from SLE package:
+- [fate#320326](https://fate.suse.com/320326)
+
+- There is no change made about the package itself, this is only
+  copying over some changelog texts from SLE package:
+- [fate#320326](https://fate.suse.com/320326)
+
+- There is no change made about the package itself, this is only
+  copying over some changelog texts from SLE package:
+- [fate#320326](https://fate.suse.com/320326)</comment>
+    <requestid>501410</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>e7fe096435c782ea0bf405d5ae16b701</srcmd5>
+    <version>0.2.6</version>
+    <time>1509722424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537474</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>85b3df89e84ff7225655c7635bd3a5fc</srcmd5>
+    <version>0.2.6</version>
+    <time>1520414864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580521</requestid>
+  </revision>
+</revisionlist>

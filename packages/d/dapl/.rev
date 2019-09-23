@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>74bee05adfbf3e83cba69990b00bcb1b</srcmd5>
+    <version>2.0.42</version>
+    <time>1407744441</time>
+    <user>lnussel</user>
+    <comment>Fix all issues with dapl</comment>
+    <requestid>243995</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>74bee05adfbf3e83cba69990b00bcb1b</srcmd5>
+    <version>2.0.42</version>
+    <time>1409300737</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>f685b6aa88d28246476b954870744b77</srcmd5>
+    <version>2.0.42</version>
+    <time>1423596245</time>
+    <user>dimstar_suse</user>
+    <comment>- Also have dapl-utils conflict with dapl-debug-utils.
+- Fix baselibs.conf to build libdat2-2-32bit.
+
+- Also have dapl-utils conflict with dapl-debug-utils.
+- Fix baselibs.conf to build libdat2-2-32bit. (forwarded request 284066 from dimstar)</comment>
+    <requestid>285001</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e3740292646941ceaf4cac37522d212a</srcmd5>
+    <version>2.0.42</version>
+    <time>1444130722</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>335424</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2379ae39c74ca930edfec5b213aa1892</srcmd5>
+    <version>2.1.8</version>
+    <time>1497016653</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename dapl-utils tests to avoid conflicts with other packages (dateutils)
+  * dapltest =&gt; dapl-test
+  * dtest    =&gt; dapl-utest
+  * dtestcm  =&gt; dapl-testcm
+  * dtestsrq =&gt; dapl-testsrq
+  * dtestx   =&gt; dapl-testx
+- Remove librdmacm and libibverbs version dependencies
+
+- Restore description of libdapl. Fix some grammar errors.
+
+- Disable dapl on armv7hl
+
+- Make dependencies on libs now coming from rdma-core versioned.
+- Remove unused patch dapl-rename_dtest.patch
+
+- Update to 2.1.8 git version (bsc#970668).
+  List of changes is too long so please see the included ChangeLog.
+- Patches removed because the fixes are included upstream:
+  dapl-fix_type_punning.patch
+  dapl-autotools.patch
+  dapl-add-s390x-platform-support.patch
+  dapl-add-aarch64-platform-support.patch
+  dapl-add-s390x-platform-support.patch
+- Add dapl-s390.patch so that the defines are also valid for s390
+
+- Add conflicts between dapl and dapl-debug packages for devel
+  and utils</comment>
+    <requestid>502397</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>10ad87bef6afd60138ac2e6f2cb19460</srcmd5>
+    <version>2.1.8</version>
+    <time>1498120567</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503041</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>055b673db65d44fd4fb1dfef72f25790</srcmd5>
+    <version>2.1.10</version>
+    <time>1500670215</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.10
+  * dtest_suite: add option to pause the test.
+  * dtestcm: add client retry, give server time to queue up all listens
+  * dtest: Add new man pages. (dtestx dtestcm dtestsrq)
+  * cma: fix open_query mode, initialize attributes
+  * ucm: up level CM timer logging, increase drep time at scale
+  * dtest: fix return value check on do_rdma_write_with_msg
+  * dtestx: check device capabilities and do atomic tests only if supported by HW
+  * common: set atomic attributes based on provider/device capabilities
+  * build: dtest_suite.sh was moved to test/scripts
+  * mpxyd: let TX thread sleep if no open devices are referenced
+  * mcm: when mmap req from MIC return with fail stat print WARN.
+  * dtest_suite: remove duplicate dtest_suite.sh
+  * dtest: enable -D option (data check) to work with scif provider
+  * dtest_suite: fix typo in user_string var
+  * mcm: remove logs from post send speed path
+  * mcm proxy: push WR from MIC to host with scif mmap memory instead of scif_send.
+  * dtest: the default size in pingpong test is set to 1 byte regardless to user input.
+  * dtest: cleanup 4 printfs from the middle of performance test, may reduce performance.
+- Refresh patches against 2.1.10</comment>
+    <requestid>511648</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8074cf68bd6f3c26931b03fe4c626950</srcmd5>
+    <version>2.1.10</version>
+    <time>1527583394</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611885</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>0494f88b23eb7923e3ed8db6d4e8abbc</srcmd5>
+    <version>2.1.10</version>
+    <time>1527934388</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613333</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>33f96fb404889d61fd6f93876047e4dc</srcmd5>
+    <version>2.1.10</version>
+    <time>1531813325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622968</requestid>
+  </revision>
+</revisionlist>

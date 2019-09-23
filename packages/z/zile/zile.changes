@@ -1,0 +1,308 @@
+-------------------------------------------------------------------
+Sat Oct 27 19:16:03 UTC 2018 - sean@suspend.net
+
+- Update to version 2.4.14:
+  * Update gnulib to cope with printf restrictions (Bug #52173)
+
+-------------------------------------------------------------------
+Wed Apr 26 15:00:45 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.4.13:
+  * Document correct location of dotzile.sample in man page.
+  * Remove obsolete variable transient-mark-mode.
+- Add gpg signature
+- Small spec file cleanup
+
+-------------------------------------------------------------------
+Sun Apr 17 21:21:44 UTC 2016 - sleep_walker@opensuse.org
+
+- remove --enable-xterm-support as not understood configure option
+- fix documentaion path, mark documentation files as %doc
+- add libacl as BuildRequires where available
+- remove extra LDFLAGS as it doesn't affect build at all
+- reduce BuildRequires - remove obvious ones and unsued texinfo
+- make update-desktop-files openSUSE specific
+- make zile-doc noarch
+
+-------------------------------------------------------------------
+Wed Mar 19 17:24:11 UTC 2014 - avvissu@yandex.ru
+
+- update to 2.4.11
+- Add BuildRequires: pkg-config pkgconfig(bdw-gc) 
+- Moved package base and desktop into zile
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Fri Mar 30 11:42:16 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 2.4.7:
+  * fix a potential crash and cosmetic bug in global-set-key when used
+    interactively
+
+-------------------------------------------------------------------
+Mon Feb 20 08:36:56 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 2.4.6:
+  * fix a crash in non-incremental search the first time it is used
+    interactively
+
+-------------------------------------------------------------------
+Sat Feb 11 17:13:56 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 2.4.5:
+  * fix an egregious bug resulting in a crash whenever a non-existent file was
+    edited
+  * fix other potential crash bugs in the low-level text-handling routine
+    estr_replace
+- changes from 2.4.4:
+  * find-file and find-file-read-only now work non-interactively
+  * slight speed improvement to general editing operations
+
+-------------------------------------------------------------------
+Thu Dec 22 01:02:18 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.4.3:
+  * fix a crash on certain terminals
+  * fix a recently-introduced display bug in isearch
+
+-------------------------------------------------------------------
+Sat Oct 15 08:41:14 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.4.2:
+  * fix a long-standing bug in uniarg handling in macros
+  * fix display of percentage position in buffer
+  * fix display of search string in query-replace
+  * fix poor performance of fill-paragraph
+  * fix handling of Backspace/^H by looking at termcap kbs setting
+  * several old bugs have been fixed, a few more esoteric features removed, and
+    Emacs-compliance has been improved
+
+-------------------------------------------------------------------
+Mon May 02 20:54:01 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.3.24:
+  * Bug fixes:
+    + fix kill-line with prefix argument
+    + fix a cosmetic problem with multiple ESC-digit combinations
+    + fix initial screen setup when some files are loaded on the command line
+
+- changes from 2.3.23:
+  * Bug fixes:
+    + {beginning,end}-of-buffer now take account of transient-mark-mode (bug
+      present since “forever”)
+
+-------------------------------------------------------------------
+Fri Mar 04 22:21:46 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.3.22:
+  * fixes a bug in forward regex isearch introduced recently
+
+-------------------------------------------------------------------
+Thu Nov 18 14:44:11 UTC 2010 - pascal.bleser@opensuse.org
+
+- restructred subpackages, similar to vim
+
+-------------------------------------------------------------------
+Thu Nov 18 09:24:38 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.3.21:
+  * fixes a bug in backward search
+
+-------------------------------------------------------------------
+Sat Oct  9 21:21:32 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.3.20:
+  * fixes a potential buffer overflow
+  * fixes search and replace with embedded NULs
+  * fixes a bug in the build system (the Zile-only tests now run correctly when
+    an EMACS environment variable is defined)
+  * fixes a bug introduced in 2.3.17 that caused consecutive kills not to save
+    the killed text
+  * some code was cleaned up and better use made of gnulib
+  * the build scripts that were previously in Lua have been rewritten in Perl;
+    Perl is now required to build Zile
+  * a cyclomatic complexity report on the C code can now be produced
+
+-------------------------------------------------------------------
+Fri Aug 13 23:12:10 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.3.19:
+  * fixes a space leak
+  * fixes a small bug in reading filenames in the minibuffer introduced in
+    2.3.18
+  * fixessome behaviour that was not the same as Emacs
+
+-------------------------------------------------------------------
+Mon Jul 12 06:00:44 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.3.18:
+  * fixes some minor space leaks
+  * fixes a read of freed memory
+  * fixes a bug in quoted-insert
+  * stops Zile from catching the user signal SIGQUIT
+
+-------------------------------------------------------------------
+Tue May 25 05:45:59 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.3.17:
+  * fixes a crash in undo introduced in 2.3.16
+  * fixes some small bugs in delete-window
+
+-------------------------------------------------------------------
+Sun May  9 21:21:07 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.3.16:
+  * fixes a potential buffer overrun and a long-standing bug in the handling of
+    the key string "C-_"
+
+-------------------------------------------------------------------
+Tue Mar  2 22:25:59 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.3.15:
+  * the default universal argument, which should be 4 but was 16, has been
+    fixed
+  * some cosmetic errors with the display of universal arguments in the
+    minibuffer have been fixed
+
+-------------------------------------------------------------------
+Fri Dec  4 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 2.3.14:
+  * fixes a minor bug in filename tab expansion, which resulted in `/' being
+    expanded to `~/'
+
+-------------------------------------------------------------------
+Thu Oct 29 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 2.3.13:
+  * fixes bugs in "kill-line", "scroll-up", and "scroll-down"
+  * some space leaks found by Valgrind were squashed
+
+-------------------------------------------------------------------
+Tue Sep 22 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 2.3.12:
+  * fixes the +LINE command-line action, which was broken a few releases ago
+  * cosmetic fix to temporary buffers
+
+-------------------------------------------------------------------
+Tue Sep  1 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 2.3.11
+
+-------------------------------------------------------------------
+Wed Apr  8 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 2.3.5:
+  * fixes a bug in write-file which caused the undo state to be improperly
+    updated, resulting in dirty states being marked clean
+  * a crash bug in paragraph filling was fixed
+  * some other minor bugs fixed
+  * the --funcall option was reintroduced for backwards compatibility with
+    Zile 2.2
+
+-------------------------------------------------------------------
+Fri Mar  6 00:00:00 UTC 2009 - guru@unixtech.be
+
+- fix conditionals in spec file
+- update to 2.3.4:
+  * fixes yet another bug in filename completion, and a potential crash that
+    the bug exposed
+
+-------------------------------------------------------------------
+Sun Mar  1 00:00:00 UTC 2009 - guru@unixtech.be
+
+- update to 2.3.3:
+  * fixes bugs in filename completion
+
+-------------------------------------------------------------------
+Mon Feb 23 00:00:00 UTC 2009 - guru@unixtech.be
+
+- update to 2.3.1:
+  * rewrite of the test suite that drives Zile directly, and no longer uses
+    DejaGnu
+  * the --script flag is now --load, which is what it really does
+  * various commands have been made to work non-interactively
+  * the info manual, which merely duplicated information available elsewhere,
+    has been removed
+  * other small fixes and improvements have been made
+
+-------------------------------------------------------------------
+Sat Dec 13 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 2.3.0:
+  * code cleanup
+  * portability fixes
+
+-------------------------------------------------------------------
+Mon Aug  4 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new upstream version:
+  minor bugfixes
+
+-------------------------------------------------------------------
+Sun Jul 27 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new upstream version:
+  * minor bugfixes
+
+-------------------------------------------------------------------
+Tue May 13 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new upstream version:
+  * minor bugfixes
+
+-------------------------------------------------------------------
+Wed May  7 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 2.2.58
+- now a GNU project
+- changed license to GPLv3
+- changed URL and Source (URL)
+
+-------------------------------------------------------------------
+Mon Feb 25 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 2.2.56
+
+-------------------------------------------------------------------
+Tue Feb  5 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 2.2.53
+
+-------------------------------------------------------------------
+Mon Nov 19 00:00:00 UTC 2007 - guru@unixtech.be
+
+- update to 2.2.52
+
+-------------------------------------------------------------------
+Mon Nov 12 00:00:00 UTC 2007 - guru@unixtech.be
+
+- update to 2.2.50
+
+-------------------------------------------------------------------
+Mon Oct 29 00:00:00 UTC 2007 - guru@unixtech.be
+
+- update to 2.2.49
+
+-------------------------------------------------------------------
+Tue Oct 16 00:00:00 UTC 2007 - guru@unixtech.be
+
+- update to 2.2.48
+
+-------------------------------------------------------------------
+Sun Oct 14 00:00:00 UTC 2007 - guru@unixtech.be
+
+- update to 2.2.45
+
+-------------------------------------------------------------------
+Fri Oct 12 00:00:00 UTC 2007 - guru@unixtech.be
+
+- update to 2.2.44
+
+-------------------------------------------------------------------
+Wed Oct  3 00:00:00 UTC 2007 - guru@unixtech.be
+
+- moved to openSUSE Build Service
+- new upstream version
+

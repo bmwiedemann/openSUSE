@@ -1,0 +1,143 @@
+-------------------------------------------------------------------
+Thu Jan  8 09:32:15 UTC 2015 - jengelh@inai.de
+
+- Improve package summary and description. Drop --with-pic which
+  is enabled implicitly anyway, remove redundant Requires.
+
+-------------------------------------------------------------------
+Tue Aug 13 12:04:26 UTC 2013 - jengelh@inai.de
+
+- Some metadata spruce-up: add current URLs, softer wildcarding
+  in the files list, more robust make install call
+
+-------------------------------------------------------------------
+Tue Aug 13 11:39:07 UTC 2013 - prusnak@opensuse.org
+
+- updated to 1.2.8
+  * Added the definition for INADDR_LOOPBACK
+  * Added an Xcode project for iOS
+  * SDL_net is now under the zlib license
+  * Added SDLNet_UDP_SetPacketLoss() to simulate random packet loss
+  * Added SDLNet_GetLocalAddresses() to query local interfaces
+  * Removed obsolete OpenTransport code
+  * Added Android.mk to build on the Android platform
+  * Fixed to compile cleanly with g++
+  * Fixed the code to use socklen_t where appropriate
+  * Added pkg-config support
+  * Fixed C++ compilation with -Wold-style-cast
+  * Enable multicast receiving on 224.0.0.1 on Windows (already worked on UNIX)
+
+-------------------------------------------------------------------
+Sat Sep 17 10:23:20 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Mon Aug  1 09:38:04 UTC 2011 - jengelh@medozas.de
+
+- Update baselibs.conf to also ship libSDL_net-devel-32bit
+
+-------------------------------------------------------------------
+Sat Jul  2 14:53:38 UTC 2011 - jengelh@medozas.de
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)
+
+-------------------------------------------------------------------
+Sat Dec 19 19:13:31 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Wed Oct  7 14:52:35 CEST 2009 - prusnak@suse.cz
+
+- fix provides and obsoletes [bnc#544957]
+
+-------------------------------------------------------------------
+Wed May 20 16:32:01 CEST 2009 - prusnak@suse.cz
+
+- follow Shared Library Policy
+
+-------------------------------------------------------------------
+Wed Feb 25 16:04:00 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files
+
+-------------------------------------------------------------------
+Wed Jul 25 18:11:19 CEST 2007 - prusnak@suse.cz
+
+- updated to 1.2.7
+  * set server TCP sockets to blocking mode
+
+-------------------------------------------------------------------
+Sun Jul 22 18:56:54 CEST 2007 - aj@suse.de
+
+- Cleanup build requires.
+
+-------------------------------------------------------------------
+Fri Mar  2 12:39:27 CET 2007 - prusnak@suse.cz
+
+- cleaned spec file
+
+-------------------------------------------------------------------
+Thu Feb 22 15:38:08 CET 2007 - prusnak@suse.cz
+
+- updated to 1.2.6
+- created devel subpackage
+
+-------------------------------------------------------------------
+Thu Oct 26 11:17:41 CEST 2006 - sndirsch@suse.de
+
+- removed wrong 'extra ;' in SDL_net.h (Bug #214645)
+
+-------------------------------------------------------------------
+Fri Jan 27 10:46:06 CET 2006 - nadvornik@suse.cz
+
+- fixed BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:33:57 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 10 21:45:49 CET 2004 - adrian@suse.de
+
+- add %defattr and %run_ldconfig
+
+-------------------------------------------------------------------
+Fri Jul 25 12:29:04 CEST 2003 - nadvornik@suse.cz
+
+- updated to 1.2.5
+- added buildroot
+
+-------------------------------------------------------------------
+Mon Dec 16 17:48:41 CET 2002 - ro@suse.de
+
+- fix build with automake, use "AUTOMAKE_OPTIONS = foreign" 
+
+-------------------------------------------------------------------
+Mon Sep  2 14:36:43 CEST 2002 - uli@suse.de
+
+- use %_libdir (bug #18726)
+
+-------------------------------------------------------------------
+Thu Jun 13 14:15:36 CEST 2002 - uli@suse.de
+
+- update -> 1.2.4 (bugfixes)
+
+-------------------------------------------------------------------
+Wed Jun 12 00:28:08 CEST 2002 - ro@suse.de
+
+- run autoreconf (fixes build on ppc64)
+
+-------------------------------------------------------------------
+Tue Jan 22 18:23:53 CET 2002 - ro@suse.de
+
+- changed neededforbuild <kdelibs-artsd> to <kdelibs3-artsd>
+
+-------------------------------------------------------------------
+Tue Aug  7 16:53:11 CEST 2001 - uli@suse.de
+
+- initial package
+

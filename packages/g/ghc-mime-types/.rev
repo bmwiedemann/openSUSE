@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b8752ba02e594762b2c797a702e6ca5a</srcmd5>
+    <version>0.1.0.6</version>
+    <time>1432281091</time>
+    <user>dimstar_suse</user>
+    <comment>Basic mime-type handling types and functions</comment>
+    <requestid>307932</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fbd6b92f488c63d260cdc590e4fb2a64</srcmd5>
+    <version>0.1.0.7</version>
+    <time>1462051822</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.0.7
+* Add support for .less files (forwarded request 391621 from mimi_vx)</comment>
+    <requestid>391622</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fb221ef2b06881df954666c0da1566a7</srcmd5>
+    <version>0.1.0.7</version>
+    <time>1468999659</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411926</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>bfb37117cce09a84b6c9d8b7aa5c9842</srcmd5>
+    <version>0.1.0.7</version>
+    <time>1505505470</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525001</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>134081c321ee609e4cc7bd9939601f76</srcmd5>
+    <version>0.1.0.7</version>
+    <time>1527675567</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609793</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8f983b3a2aef666e81fb07a98de34d9b</srcmd5>
+    <version>0.1.0.8</version>
+    <time>1532445615</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update mime-types to version 0.1.0.8.
+  ## 0.1.0.8
+  * Add wasm mime type
+
+- update to 0.1.0.6
+* Add woff2 mime type</comment>
+    <requestid>623808</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>983cf79177cdb2f1f33b3a6eb0c297ba</srcmd5>
+    <version>0.1.0.8</version>
+    <time>1540448830</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643419</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dcb6b76c2c3a83b1f315f0d7c1bf047b</srcmd5>
+    <version>0.1.0.9</version>
+    <time>1545996911</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>661496</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Sun Mar  3 22:05:24 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Run spec-cleaner
+- Fix Source URL
+- Run testsuite as part of %check
+- Update to version 1.2
+  * UPD: add examples of empty arrays/objects to manual
+  * NEW: support -e to ignore empty stdin
+  * NEW: object-path support
+- Update to version 1.1
+  * NEW: type coercion
+  * FIX: quotes in quotes and double quotes at begin of string
+  * FIX: catch null value in assignmen
+  * NEW: support for key:=file.json for reading object values
+    from a file
+  * FIX: "null" is now handled like we handle "true" and "false";
+    disable with -B
+  * NEW: more tests in the test suite
+- Update to version 1.0
+  * NEW: read JSON element values from files
+  * FIX: usage diagnostic
+- Update to version 0.9
+  * UPD: revert support for $JO_PRETTY et. al; it was a bad idea
+- Update to version 0.8
+  * UPD: new test suite
+  * NEW: support for nested elements
+  * NEW: if $JO_PRETTY is set, jo will always pretty-print
+  * NEW: Define $JO_SPACER to any desired number of spaces or
+    tabs for pretty-printing
+- Update to version 0.7
+  * NEW: strings "true"/"false" now default to booleans; avoid with -B
+  * FIX: test.sh get quotes to prevent failures with pdksh
+  * FIX: pretty-print Version if requested
+- Update to version 0.6
+  - NEW: JSONy version with -V
+
+-------------------------------------------------------------------
+Tue Mar  8 11:57:20 UTC 2016 - mrueckert@suse.de
+
+- update to 0.5
+  - proper fix for our fileno patch
+- drop jo-0.4_make_build.patch
+
+-------------------------------------------------------------------
+Tue Mar  8 11:39:33 UTC 2016 - mrueckert@suse.de
+
+- initial package
+

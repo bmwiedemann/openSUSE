@@ -1,0 +1,10 @@
+<package name="mhvtl" project="openSUSE:Factory">
+  <title>Virtual Tape and Library Package</title>
+  <description>Virtual Tape Library consists of several components.
+
+* LLD - A low level driver implemented as a kernel module - mhvtl
+* Target devices - Daemons vtltape(1) and vtllibrary(1) which implement SCSI target device(s) in user-space
+* Utility commands mktape(1), vtlcmd(1)
+* And startup scripts build_library_config(1), make_vtl_devices(1)</description>
+  <devel project="Base:System" package="mhvtl"/>
+</package>

@@ -1,0 +1,594 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9504158fbfbcd4d8112468b99ea3b257</srcmd5>
+    <version>1.8.8</version>
+    <time>1331324615</time>
+    <user>coolo</user>
+    <comment>Fixed the rpmlint warning for the license. Changed from BSD to BSD-3-Clause.</comment>
+    <requestid>107061</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>988a0e5d79392942ec2a821bc02e9057</srcmd5>
+    <version>1.8.8</version>
+    <time>1331579579</time>
+    <user>coolo</user>
+    <comment>fix to fix, add missing executable h5fc for suse &gt; 11.4
+
+This got broken in sr108856. Please also supersede sr108860 against Factory. (forwarded request 108882 from rudi_m)</comment>
+    <requestid>108884</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>baf9ce86260f5aa8d5af4b07a30b94e2</srcmd5>
+    <version>1.8.9</version>
+    <time>1338284626</time>
+    <user>coolo</user>
+    <comment>- Update to 1.8.9
+* Changes documented here:
+  http://www.hdfgroup.org/HDF5/doc/ADGuide/Changes.html (forwarded request 122598 from ocefpaf)</comment>
+    <requestid>122615</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>baf9ce86260f5aa8d5af4b07a30b94e2</srcmd5>
+    <version>1.8.9</version>
+    <time>1340183433</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>c7ea8e6f4c666a5f91d1a520c480ed2f</srcmd5>
+    <version>1.8.9</version>
+    <time>1340718683</time>
+    <user>coolo</user>
+    <comment> - remove unused source file h5comp
+ - enable all tests on ppc again (remove hdf5-1.8.8-tstlite.patch)
+ - build fixes for arm
+   * avoid some false positives &quot;no-return-in-nonvoid-function&quot;
+   * disable some tests on arm only (hdf5-1.8.9-tests-arm.patch) (forwarded request 125770 from rudi_m)</comment>
+    <requestid>125782</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>5709351f021388ab32d5744ed4cdc822</srcmd5>
+    <version>1.8.9</version>
+    <time>1347893836</time>
+    <user>coolo</user>
+    <comment>remove noisy and unneeded entries in changes file as requested (forwarded request 134414 from scorot)</comment>
+    <requestid>134430</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>15402dd7fbe6a1eb64e10498f55ecdd4</srcmd5>
+    <version>1.8.9</version>
+    <time>1348646076</time>
+    <user>coolo</user>
+    <comment>Fix the ugliness of that make install line and make RPM_OPT_FLAGS
+replacement more robust. (forwarded request 135874 from jengelh)</comment>
+    <requestid>135876</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>f172188c825ee3494de8ba8a1a469ee3</srcmd5>
+    <version>1.8.9</version>
+    <time>1348925539</time>
+    <user>coolo</user>
+    <comment>- make sure to install the examples from non-parallel build (forwarded request 136098 from rudi_m)</comment>
+    <requestid>136159</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>610ae5662d892d3f1c34e3bb0a33bd6b</srcmd5>
+    <version>1.8.9</version>
+    <time>1352214266</time>
+    <user>coolo</user>
+    <comment>- fixing baselibs.conf</comment>
+    <requestid>140219</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3ad94beff1001bbb30216d1f0384a0ed</srcmd5>
+    <version>1.8.10</version>
+    <time>1353513651</time>
+    <user>coolo</user>
+    <comment>- Update to 1.8.10, changes documented here:
+  http://www.hdfgroup.org/HDF5/doc/ADGuide/Changes.html
+- remove hdf5-ph5diff.patch (fixed by upstream)
+- add hdf5-fix_printf.patch (forwarded request 142034 from rudi_m)</comment>
+    <requestid>142035</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>3ad94beff1001bbb30216d1f0384a0ed</srcmd5>
+    <version>1.8.10</version>
+    <time>1359109043</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6740aaa1ef4564e8f2604fc8016d674f</srcmd5>
+    <version>1.8.10.patch1</version>
+    <time>1366087462</time>
+    <user>coolo</user>
+    <comment>- Update to 1.8.10-patch1:
+  * official important bug fixes for 1.8.10
+  * see RELEASE.txt &quot;Bug Fixes since HDF5-1.8.10&quot; (forwarded request 163804 from rudi_m)</comment>
+    <requestid>163982</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>30cbd68eaa2dd62c113c2c546eca118f</srcmd5>
+    <version>1.8.11</version>
+    <time>1371544279</time>
+    <user>coolo</user>
+    <comment>- increase hdf5_libver to 8 (forwarded request 178934 from rudi_m)</comment>
+    <requestid>178962</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>c339476288220a55b4630e5dfa07d449</srcmd5>
+    <version>1.8.11</version>
+    <time>1379327778</time>
+    <user>coolo</user>
+    <comment>- build with -O0 also for gcc 4.8 (forwarded request 198947 from pgajdos)</comment>
+    <requestid>198974</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>c339476288220a55b4630e5dfa07d449</srcmd5>
+    <version>1.8.11</version>
+    <time>1379662608</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>682a79c568c14847ae2de2c50c37ac86</srcmd5>
+    <version>1.8.11</version>
+    <time>1380122073</time>
+    <user>coolo</user>
+    <comment>- hdf5-configure-long-double.patch: fix configure check for unsigned long
+  long to long double conversion to not fail spuriously for 128bit long
+  double
+- Increase testsuite timeout for qemu user space build (forwarded request 200299 from Andreas_Schwab)</comment>
+    <requestid>200467</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>83ca6e09abf35f14c59fa39c820b4d45</srcmd5>
+    <version>1.8.12</version>
+    <time>1385496361</time>
+    <user>coolo</user>
+    <comment>- update to 1.8.2:
+    - Added a configuration option to change the default plugin path.
+      The configure option is --with-default-plugindir=location.
+      The cmake option is -DH5_DEFAULT_PLUGINDIR:PATH=location.
+      HDFFV-8513.  (ADB 2013/09/04)
+    - Renamed FFLAGS to FCFLAGS in configure. (ADB 2013/08/13)
+    - CMake can now package a compressed examples file, the default for 
+      Windows binaries from HDF Group.  (ADB  - 2013/07/22)
+    - h5repack: Added the ability to use plugin filters to read and write 
+              files. The option uses the filter number. HDFFV-8345 
+              (ADB - 2013/09/04).
+    - h5dump: Added the option -N --any_path, which searches the file for 
+              paths that match the search path. HDFFV-7989 (ADB - 2013/08/12).
+    - h5dump: Added the optional arg 0 to -A, which excludes attributes 
+              from display. HDFFV-8134 (ADB - 2013/08/01).
+    - Added tutorial examples to C++/examples.  They can be installed by
+      &quot;make install-examples&quot; and, in the installed directory, they can be
+      executed by running the script file run-c++-ex.sh. (BMR - 2013/09/28)
+    - A new class, H5::H5Location, is added to represent the location concept
+      in the C library.  It is a base class to H5::H5File and H5::H5Ojbect,
+      whose member functions are moved into H5::H5Location.  H5::H5File can
+      now inherent those functions.  As a result, an H5::H5File object can have
+      an attribute. (BMR - 2013/09/27)
+    - Added wrappers for H5Rget_obj_type2 to retrieve the type of the object
+      that an object reference points to. (BMR - 2013/09/27)
+	H5O_type_t H5Location::getRefObjType(void *ref, H5R_type_t ref_type)
+    - Added wrappers for H5Aexist to check whether an attribute exists given
+      a name. (BMR - 2013/09/27)
+	bool H5::H5Location::attrExists(const char* name)
+	bool H5::H5Location::attrExists(const H5std_string&amp; name)</comment>
+    <requestid>208529</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>c78c92bffd7e22dfd7700f59800901f3</srcmd5>
+    <version>1.8.12</version>
+    <time>1389883059</time>
+    <user>coolo</user>
+    <comment> (forwarded request 213736 from matz2)</comment>
+    <requestid>213737</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>56192118af38c62c21d9e9367386daa5</srcmd5>
+    <version>1.8.13</version>
+    <time>1403686139</time>
+    <user>coolo</user>
+    <comment>- updated to 1.8.3:
+    - Added an H5free_memory API call. This should be used to free memory 
+      that has been allocated by HDF5 API calls. H5Tget_member_name and 
+      H5Pget_class_name are two examples. The main motivation for this call 
+      is Windows, where it is common for application code and the HDF5 Library 
+      to be using different C run-time libraries (CRT). Using the new call 
+      ensures that the same CRT handles both the allocation and free. This 
+      new function can also be useful in any case where the library uses a 
+      different memory manager than the application, such as when a debug 
+      memory manager is in use or when the HDF5 Library is wrapped for use 
+      in a managed language like Python or Java. Fixes HDFFV-7710, 8519, 
+      and 8851. (DER - 2014/04/11)
+    - The Core VFD (aka Memory VFD) can now be configured to track dirty 
+      regions in the file and only write out the changed regions on 
+      flush/close. Additionally, a &quot;page aggregation&quot; size can be set that 
+      will aggregate small writes into larger writes. For example, setting 
+      a 1 MiB page aggregation size will logically partition the the 
+      in-memory file into 1 MiB pages that will be written out in their 
+      entirety if even a single byte is dirtied. The feature is controlled 
+      via the new H5Pset/get_core_write_tracking() API call. A new 
+      &quot;core_paged&quot; target has been added to the check-vfd target in 
+      test/Makefile.am that exercises the feature over all HDF5 VFD-aware
+      tests. (DER - 2014/04/12)
+    - see http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.8.13-RELEASE.txt
+      for more
+- modified patches:
+  * hdf5-LD_LIBRARY_PATH.patch</comment>
+    <requestid>238365</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>56192118af38c62c21d9e9367386daa5</srcmd5>
+    <version>1.8.13</version>
+    <time>1409301157</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d39b46d9bb162dd24851153212de9b3f</srcmd5>
+    <version>1.8.14</version>
+    <time>1421334065</time>
+    <user>dimstar_suse</user>
+    <comment>- Tag baselibs.conf as source.
+
+- fix typos in ChangeLog</comment>
+    <requestid>281002</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>9fdf319e0f3f16df70c8aa7c86863aa5</srcmd5>
+    <version>1.8.14</version>
+    <time>1432158285</time>
+    <user>dimstar_suse</user>
+    <comment>- update hdf5-non_void_return.patch for GCC 5.x</comment>
+    <requestid>306387</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ad2e071660abcba43178e248f3dde2b6</srcmd5>
+    <version>1.8.15</version>
+    <time>1437803009</time>
+    <user>coolo</user>
+    <comment>- update to 1.8.15
+
+fixed baselibs.conf compared to previous version</comment>
+    <requestid>318150</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>87ad51fa7e472bfc2d1e1d7caf2719a0</srcmd5>
+    <version>1.8.15</version>
+    <time>1438794820</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>319006</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>80de170bc99e485bfa624307827a1fde</srcmd5>
+    <version>1.8.15</version>
+    <time>1439818437</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322321</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>2377a407048e10946c3b7bb926a4fcd9</srcmd5>
+    <version>1.8.15</version>
+    <time>1440337362</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324851</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8fbb6412dec3a29aa770df1fb719f256</srcmd5>
+    <version>1.8.16</version>
+    <time>1458120245</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove timestamps from binaries
+  hdf5-buildcompare.patch
+
+- update to 1.8.16, changes documented here: 
+  https://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.16/src/hdf5-1.8.16-RELEASE.txt
+- rebase hdf5-ldouble-ppc64le.patch
+- remove hdf5-cpp-compilation-errors.patch
+- prepare independent so versions and add TODO</comment>
+    <requestid>368247</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>5c84da5671a7539307c00903f02dad76</srcmd5>
+    <version>1.8.16</version>
+    <time>1459001533</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>379917</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>f319314a3157fb536a04042812442029</srcmd5>
+    <version>1.8.16</version>
+    <time>1461334631</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390404</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9a7d18d96b780e6ed3cb0e2ccf188700</srcmd5>
+    <version>1.8.17</version>
+    <time>1464964508</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>399279</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9778432c2fc31eeea0598b9c429bc81e</srcmd5>
+    <version>1.10.0</version>
+    <time>1470217173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>415435</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>67bab39595a3d39ce53b8f72064ef428</srcmd5>
+    <version>1.10.0</version>
+    <time>1473408834</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>425673</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>1e2140395738344934eb8ae5a6c7a187</srcmd5>
+    <version>1.10.0</version>
+    <time>1476113273</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433492</requestid>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>aadb68a2e7caa0d5bab3461e3d9111a6</srcmd5>
+    <version>1.10.0</version>
+    <time>1505989778</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519640</requestid>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>29309142a63bdce0c78a30cc54c78ec6</srcmd5>
+    <version>1.10.0</version>
+    <time>1508336130</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix some summaries and a Requires: of devel-static. (forwarded request 534940 from eeich)</comment>
+    <requestid>534941</requestid>
+  </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>de0352c1fb783d6fc8f0ef80fc52d97b</srcmd5>
+    <version>1.10.0</version>
+    <time>1509035959</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove openssl-devel and krb5-devel from the BuildRequires. (forwarded request 535822 from eeich)</comment>
+    <requestid>535922</requestid>
+  </revision>
+  <revision rev="37" vrev="7">
+    <srcmd5>41181c8cc0e409d1ec597070b13bf2fe</srcmd5>
+    <version>1.10.0</version>
+    <time>1509723125</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix name: baselib.conf -&amp;gt; baselibs.conf (forwarded request 536948 from eeich)</comment>
+    <requestid>536949</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>84ef677b0fca5e04c818aa007eefe9df</srcmd5>
+    <version>1.10.1</version>
+    <time>1510664773</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.1:
+  https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.1/src/hdf5-1.10.1-RELEASE.txt
+- Fix-warnings-for-missing-returns.patch:
+  replace: hdf5-non_void_return.patch
+- PPC64LE-Fix-long-double-handling.patch:
+  replace: hdf5-ldouble-ppc64le.patch
+- Disable-phdf5-tests.patch:
+  replace: hdf5_disable_testphdf5.patch
+- Disabling validation tests for the MPI variant for now as they 
+  seem to cause issues in OBS. (forwarded request 539811 from eeich)</comment>
+    <requestid>539813</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>a8e9d26eeab7c255e071555eddbca6a1</srcmd5>
+    <version>1.10.1</version>
+    <time>1511273926</time>
+    <user>dimstar_suse</user>
+    <comment>-  temporarily disable make check for PowerPC boo#1058563
+</comment>
+    <requestid>542609</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>009f0307c9f8319b4a3fca2dab745a3c</srcmd5>
+    <version>1.10.1</version>
+    <time>1516091629</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable the openmpi3 flavor in some products. (forwarded request 563894 from eeich)</comment>
+    <requestid>563899</requestid>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>d823aa4b9d0887c8367482bff5156bec</srcmd5>
+    <version>1.10.1</version>
+    <time>1518187860</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable %check stage for mpich builds on s390(x) (bsc#1080022). (forwarded request 574224 from eeich)</comment>
+    <requestid>574225</requestid>
+  </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>70d9b504e86c4bb5703a084790f1a57d</srcmd5>
+    <version>1.10.1</version>
+    <time>1519218674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577081</requestid>
+  </revision>
+  <revision rev="43" vrev="6">
+    <srcmd5>09de638b494cb726d4b4b1ecf6bc5b8d</srcmd5>
+    <version>1.10.1</version>
+    <time>1522832852</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593217</requestid>
+  </revision>
+  <revision rev="44" vrev="7">
+    <srcmd5>6ce6755dabfc3bacc894bfdc790a6f8e</srcmd5>
+    <version>1.10.1</version>
+    <time>1523447808</time>
+    <user>maxlin_factory</user>
+    <comment>- Only build one examples package for all flavors, do not
+  include dependencies as these would be flavor specific
+  (bsc#1088547).</comment>
+    <requestid>594566</requestid>
+  </revision>
+  <revision rev="45" vrev="8">
+    <srcmd5>93d1de9d3321f13962c252ea767986b8</srcmd5>
+    <version>1.10.1</version>
+    <time>1525121710</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix HPC library master packages dependency: make it require
+  the correct flavor (bsc#1091237).</comment>
+    <requestid>602143</requestid>
+  </revision>
+  <revision rev="46" vrev="9">
+    <srcmd5>cca25557ee1d45c46b7a5dcd76a498fe</srcmd5>
+    <version>1.10.1</version>
+    <time>1529919525</time>
+    <user>dimstar_suse</user>
+    <comment>- Handle license file using %license where applicable.
+- Package example package also for HPC build and create
+  a master file for it. (forwarded request 618378 from eeich)</comment>
+    <requestid>618379</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>7399bdea11d09492027411145d8cd3ec</srcmd5>
+    <version>1.10.3</version>
+    <time>1537787599</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637100</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>790f06a3b078270d6c014bec518c0db0</srcmd5>
+    <version>1.10.3</version>
+    <time>1542012295</time>
+    <user>dimstar_suse</user>
+    <comment>- Create main master package, fix dependencies. (forwarded request 648226 from eeich)</comment>
+    <requestid>648227</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>136b204824e876d705cceadc9d91159e</srcmd5>
+    <version>1.10.4</version>
+    <time>1542666803</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace git-archive generated by downloaded tar-ball. (forwarded request 650135 from eeich)</comment>
+    <requestid>650136</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>95ebfd7388c45c96dcebeed2ba43fbc1</srcmd5>
+    <version>1.10.4</version>
+    <time>1543224520</time>
+    <user>dimstar_suse</user>
+    <comment>- Build HDF5 C++ bindings also for the MPI variants, there is no reason
+  not to do it.
+- Enable sz2 support also for MPI variants.
+</comment>
+    <requestid>651201</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>6312355495da9f903347f1362ed62bc9</srcmd5>
+    <version>1.10.4</version>
+    <time>1545141566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658959</requestid>
+  </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>c63f94c6d6f5abe27d6b93ae896236cd</srcmd5>
+    <version>1.10.4</version>
+    <time>1546695741</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build non-HPC on SLE: This helps to save some build
+  cycles.
+
+- Use upstream-recommended %{_rpmconfigdir}/macros.d directory
+  for the rpm macros.</comment>
+    <requestid>662712</requestid>
+  </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>3f10ebc824e1d53d7895e6f27020565a</srcmd5>
+    <version>1.10.4</version>
+    <time>1547540266</time>
+    <user>dimstar_suse</user>
+    <comment>- Reenable 'serial' build for SLE: this build creates hdf5-devel-data.</comment>
+    <requestid>665663</requestid>
+  </revision>
+  <revision rev="54" vrev="6">
+    <srcmd5>960c272325a0e477fee61c8717cdc676</srcmd5>
+    <version>1.10.4</version>
+    <time>1549017964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670067</requestid>
+  </revision>
+  <revision rev="55" vrev="7">
+    <srcmd5>547a0837fba96c96e07d12a91b851953</srcmd5>
+    <version>1.10.4</version>
+    <time>1554372406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690889</requestid>
+  </revision>
+  <revision rev="56" vrev="8">
+    <srcmd5>3f2353d911944079c907c46d0b08ab8f</srcmd5>
+    <version>1.10.4</version>
+    <time>1556622251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697834</requestid>
+  </revision>
+  <revision rev="57" vrev="9">
+    <srcmd5>e7fe47a623276aa8412beccd62db0f4c</srcmd5>
+    <version>1.10.4</version>
+    <time>1562247878</time>
+    <user>dimstar_suse</user>
+    <comment>- Since build machine size issues do not seem to go way, make
+  the %check stage optional: enable with '--with check'. (forwarded request 713408 from eeich)</comment>
+    <requestid>713409</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>37ab5e40dab07584b1459f99a754ad38</srcmd5>
+    <version>1.10.5</version>
+    <time>1567581333</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-list hdf5-mpi.patch in the spec file for the sake of a avoiding
+  a script rejecting the package automatically.
+
+- Update to version 1.10.5:
+  * https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.5/src/hdf5-1.10.5-RELEASE.txt
+- Bump fortran library soname, sonum_F from 100 to 102.
+- Adjust library installation path, use %hpc_prefix/lib64 in x86_64 
+  and %hpc_libdir in all other cases
+- Patches refreshed:
+  * hdf5-LD_LIBRARY_PATH.patch
+  * hdf5-1.8.11-abort_unknown_host_config.patch
+  * PPC64LE-Fix-long-double-handling.patch
+  * hdf5-Remove-timestamps-from-binaries.patch
+  * Disable-phdf5-tests.patch
+- Patch disabled, upstream have changed the file that was being patched,
+  while it could be ported, it's unknown if this patch is still needed.
+  * hdf5-mpi.patch
+- Patch removed, merged upstream
+  * 0001-Fix-return-value-in-test_libver_bounds_open.patch</comment>
+    <requestid>727974</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>83ce35cbb3365e95f961bd7e17f881a4</srcmd5>
+    <version>1.10.5</version>
+    <time>1568190909</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729758</requestid>
+  </revision>
+</revisionlist>

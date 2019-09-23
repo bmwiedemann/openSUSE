@@ -1,0 +1,24 @@
+Index: hydrogen-1.0.0-beta1/src/gui/src/SongEditor/SongEditor.cpp
+===================================================================
+--- hydrogen-1.0.0-beta1.orig/src/gui/src/SongEditor/SongEditor.cpp	2018-03-14 12:03:22.000000000 +0200
++++ hydrogen-1.0.0-beta1/src/gui/src/SongEditor/SongEditor.cpp	2019-04-07 11:57:23.663368541 +0200
+@@ -21,6 +21,7 @@
+  */
+ 
+ #include <assert.h>
++#include <unistd.h>
+ #include <algorithm>
+ #include <memory>
+ 
+Index: hydrogen-1.0.0-beta1/src/gui/src/MainForm.cpp
+===================================================================
+--- hydrogen-1.0.0-beta1.orig/src/gui/src/MainForm.cpp	2018-03-14 12:03:22.000000000 +0200
++++ hydrogen-1.0.0-beta1/src/gui/src/MainForm.cpp	2019-04-07 11:57:23.663368541 +0200
+@@ -20,6 +20,7 @@
+  *
+  */
+ 
++#include <unistd.h>
+ #include <hydrogen/event_queue.h>
+ #include <hydrogen/version.h>
+ #include <hydrogen/hydrogen.h>

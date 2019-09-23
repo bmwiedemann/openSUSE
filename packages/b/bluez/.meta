@@ -1,0 +1,5 @@
+<package name="bluez" project="openSUSE:Factory">
+  <title>Bluetooth Stack for Linux</title>
+  <description>The Bluetooth stack for Linux.</description>
+  <devel project="Base:System" package="bluez"/>
+</package>

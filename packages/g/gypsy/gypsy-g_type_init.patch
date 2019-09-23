@@ -1,0 +1,64 @@
+Index: gypsy-0.9/examples/list-known-gps-devices.c
+===================================================================
+--- gypsy-0.9.orig/examples/list-known-gps-devices.c
++++ gypsy-0.9/examples/list-known-gps-devices.c
+@@ -21,8 +21,6 @@ main (int argc,
+     GPtrArray *known_devices;
+     int i;
+ 
+-    g_type_init ();
+-
+     discovery = gypsy_discovery_new ();
+     known_devices = gypsy_discovery_list_devices (discovery, &error);
+ 
+Index: gypsy-0.9/examples/simple-gps-dbus.c
+===================================================================
+--- gypsy-0.9.orig/examples/simple-gps-dbus.c
++++ gypsy-0.9/examples/simple-gps-dbus.c
+@@ -122,7 +122,6 @@ main (int    argc,
+ 	DBusError error;
+ 	GMainLoop *mainloop;
+ 
+-	g_type_init ();
+ 	conn = get_connection ();
+ 
+ 	dbus_error_init (&error);
+Index: gypsy-0.9/examples/simple-gps-gypsy.c
+===================================================================
+--- gypsy-0.9.orig/examples/simple-gps-gypsy.c
++++ gypsy-0.9/examples/simple-gps-gypsy.c
+@@ -68,8 +68,6 @@ main (int    argc,
+ 		return 0;
+ 	}
+ 
+-	g_type_init ();
+-
+ 	control = gypsy_control_get_default ();
+ 	path = gypsy_control_create (control, argv[1], &error);
+ 	if (path == NULL) {
+Index: gypsy-0.9/examples/simple-gps-satellites.c
+===================================================================
+--- gypsy-0.9.orig/examples/simple-gps-satellites.c
++++ gypsy-0.9/examples/simple-gps-satellites.c
+@@ -43,8 +43,6 @@ main (int    argc,
+ 		return 0;
+ 	}
+ 
+-	g_type_init ();
+-
+ 	control = gypsy_control_get_default ();
+ 	path = gypsy_control_create (control, argv[1], &error);
+ 	if (path == NULL) {
+Index: gypsy-0.9/src/main.c
+===================================================================
+--- gypsy-0.9.orig/src/main.c
++++ gypsy-0.9/src/main.c
+@@ -188,8 +188,6 @@ main (int    argc,
+ 
+ 	umask (022);
+ 
+-	g_type_init ();
+-
+ 	mainloop = g_main_loop_new (NULL, FALSE);
+ 
+ 	conn = dbus_g_bus_get (DBUS_BUS_SYSTEM, &error);

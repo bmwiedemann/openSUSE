@@ -1,0 +1,5 @@
+<package name="argus-client" project="openSUSE:Factory">
+  <title>Client for Network Monitoring Tool</title>
+  <description>Client for Argus network monitoring tool.</description>
+  <devel project="security" package="argus-client"/>
+</package>

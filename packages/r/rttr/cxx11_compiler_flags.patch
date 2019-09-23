@@ -1,0 +1,12 @@
+Index: rttr-0.9.6/CMakeLists.txt
+===================================================================
+--- rttr-0.9.6.orig/CMakeLists.txt
++++ rttr-0.9.6/CMakeLists.txt
+@@ -34,6 +34,7 @@
+ cmake_minimum_required (VERSION 3.0)
+ 
+ project ("rttr" LANGUAGES CXX)
++set(CMAKE_CXX_STANDARD 11)
+ 
+ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake")
+ 

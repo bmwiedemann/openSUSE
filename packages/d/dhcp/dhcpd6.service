@@ -1,0 +1,15 @@
+[Unit]
+Description=ISC DHCPv6 Server
+Before=multi-user.target
+After=remote-fs.target network.target nss-lookup.target time-sync.target slapd.service sssd.service ndsd.service
+
+[Service]
+Type=forking
+Restart=on-abort
+ExecStart=/usr/lib/dhcp/dhcpd -6 start
+ExecStop=/usr/lib/dhcp/dhcpd -6 stop
+
+[Install]
+WantedBy=multi-user.target
+Alias=dhcp6-server.service
+

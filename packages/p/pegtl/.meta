@@ -1,0 +1,5 @@
+<package name="pegtl" project="openSUSE:Factory">
+  <title>Parsing Expression Grammar (PEG) Template Library</title>
+  <description>The Parsing Expression Grammar Template Library (PEGTL) is a C++0x library for creating parsers according to a Parsing Expression Grammar (PEG). Grammars are embedded as regular C++ code, and consist of template hierarchies of classes. These hierarchies naturally correspond to the inductive definition of PEGs. The library extends on the subject of PEGs with new expression types, actions that can be attached to grammar rules, and mechanisms to ensure helpful diagnostics in case of parsing errors.</description>
+  <devel project="devel:libraries:c_c++" package="pegtl"/>
+</package>

@@ -1,0 +1,381 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>713b0a56627d2ed8151d977f3e0d45d2</srcmd5>
+    <version>unknown</version>
+    <time>1284377313</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libvpx based on submit request 46165 from user vuntz
+</comment>
+    <requestid>46165</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7b62256b1aca87e396d9d82003906104</srcmd5>
+    <version>unknown</version>
+    <time>1284462868</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libvpx based on submit request 48039 from user vuntz
+</comment>
+    <requestid>48039</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7328f4fedd8b1b74d4744cfc2911a13f</srcmd5>
+    <version>0.9.5</version>
+    <time>1291221480</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54247 from user adrianSuSE
+</comment>
+    <requestid>54247</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ed5f840d99d956febfea905ac0e33bd2</srcmd5>
+    <version>0.9.5</version>
+    <time>1291221487</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54247
+</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>ed5f840d99d956febfea905ac0e33bd2</srcmd5>
+    <version>0.9.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bde2453c8019fa52e2b7c7fd8688f2c5</srcmd5>
+    <version>0.9.6</version>
+    <time>1299688986</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63747 from user adrianSuSE
+</comment>
+    <requestid>63747</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2a99e5c49ea9a9b6f0834ad886c76879</srcmd5>
+    <version>0.9.6</version>
+    <time>1299688994</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63747
+</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f5280fb28b810921a57873d42b23bdd4</srcmd5>
+    <version>0.9.6</version>
+    <time>1303112933</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67580 from user coolo
+</comment>
+    <requestid>67580</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>6dd8c959698cdfcb061d95bf8ab90066</srcmd5>
+    <version>0.9.6</version>
+    <time>1303112942</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67580
+</comment>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>685c9f2ea004460085ab04e396655daf</srcmd5>
+    <version>0.9.7</version>
+    <time>1314191417</time>
+    <user>saschpe</user>
+    <comment>version update</comment>
+    <requestid>79647</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>aa84c28d82e571631cd503d345653519</srcmd5>
+    <version>0.9.7</version>
+    <time>1314191429</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79647
+</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>9ae007b52535c9db88127761897460ed</srcmd5>
+    <version>0.9.7</version>
+    <time>1318762412</time>
+    <user>lrupp</user>
+    <comment>fixed arm build</comment>
+    <requestid>88011</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>9ae007b52535c9db88127761897460ed</srcmd5>
+    <version>0.9.7</version>
+    <time>1319182145</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>95c5f83650d07c1151920783e5feb407</srcmd5>
+    <version>0.9.7</version>
+    <time>1322583360</time>
+    <user>coolo</user>
+    <comment>- make it build on s390/s390x (forwarded request 94303 from oertel)</comment>
+    <requestid>94304</requestid>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>6a22d215f2454f1f42923fc10772d890</srcmd5>
+    <version>0.9.7</version>
+    <time>1323192373</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>6a22d215f2454f1f42923fc10772d890</srcmd5>
+    <version>0.9.7</version>
+    <time>1340183652</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>604b85a04a0b605e7a0c1a075584d4dd</srcmd5>
+    <version>1.1.0</version>
+    <time>1348427241</time>
+    <user>coolo</user>
+    <comment>Update to 1.1.0 - Needed by gstreamer 1.0 (0.11.99) (forwarded request 134808 from dimstar)</comment>
+    <requestid>134866</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>c8a082ad3b72fb957b46d2ce30d699d1</srcmd5>
+    <version>1.1.0</version>
+    <time>1355474507</time>
+    <user>coolo</user>
+    <comment> (forwarded request 145093 from adrianSuSE)</comment>
+    <requestid>145095</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>c8a082ad3b72fb957b46d2ce30d699d1</srcmd5>
+    <version>1.1.0</version>
+    <time>1359109373</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c43b3ba05ec2f281568ec13ee5030797</srcmd5>
+    <version>1.2.0</version>
+    <time>1359465628</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>150266</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>c43b3ba05ec2f281568ec13ee5030797</srcmd5>
+    <version>1.2.0</version>
+    <time>1379663129</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>37a2d53d16020ce383f7b51b2ffe1a0b</srcmd5>
+    <version>1.3.0</version>
+    <time>1386936540</time>
+    <user>coolo</user>
+    <comment>Update to 1.3.0 (forwarded request 210407 from sumski)</comment>
+    <requestid>210442</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>37a2d53d16020ce383f7b51b2ffe1a0b</srcmd5>
+    <version>1.3.0</version>
+    <time>1409301758</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>50164abc6ab524797afd13a39af8b807</srcmd5>
+    <version>1.3.0</version>
+    <time>1425031663</time>
+    <user>dimstar_suse</user>
+    <comment>- Add baselibs.conf as source 
+
+- Build with -std=gnu89 to deal with GCC 5 defaulting to -std=gnu11
+  and the C11 stddef.h providing a max_align_t that conflicts with
+  the one provided by nestegg/halloc/src/align.h.</comment>
+    <requestid>287339</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5f13500597f8db7834d3037d9f32fc37</srcmd5>
+    <version>1.4.0</version>
+    <time>1431983038</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307704</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>76f638d68c1d35468b3d4dc6b107ee64</srcmd5>
+    <version>1.5.0</version>
+    <time>1450856901</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349677</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>714e2a9a7af8e4f779705be63bb877f7</srcmd5>
+    <version>1.6.0~pre20160318</version>
+    <time>1459237973</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build in SLE_11 by disabling ssse3
+- Fix vpc.pc version with libvpx-pkgconfig-version.patch
+
+- Update to current upstream version to fix CVE-2016-1621 (bnc#972021)
+- enable test suite during build
+- From official Changelog:
+  - Incompatible changes:
+    The VP9 encoder's default keyframe interval changed to 128 from 9999.
+- Drop libvpx-disable-cross-for-arm.patch</comment>
+    <requestid>377649</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>335ed17c46b494abf95bec5656f2ecb6</srcmd5>
+    <version>1.6.0~pre20160610</version>
+    <time>1466977832</time>
+    <user>dimstar_suse</user>
+    <comment>update the snapshot boo#984448</comment>
+    <requestid>401846</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d49429d1448920c6da0d4c3c0430fae1</srcmd5>
+    <version>1.6.0</version>
+    <time>1471428232</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419178</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>22939284c741ea34995192c6d0c02f76</srcmd5>
+    <version>1.6.0</version>
+    <time>1473679325</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>426176</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>94707778e86f2fb4dd3fa6fc9bad1652</srcmd5>
+    <version>1.6.0</version>
+    <time>1483954121</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448414</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>242318175efd915a863f4ab51d91318f</srcmd5>
+    <version>1.6.1</version>
+    <time>1489176158</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477731</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>150c88b7e53a5c27ab9f897b1fb8344a</srcmd5>
+    <version>1.6.1</version>
+    <time>1504814863</time>
+    <user>dimstar_suse</user>
+    <comment>fix DoS attack vector</comment>
+    <requestid>519848</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>73564a7156ee7c20f6a97298c7251e75</srcmd5>
+    <version>1.6.1</version>
+    <time>1516443554</time>
+    <user>dimstar_suse</user>
+    <comment>security fix ... and test balloon for new changelog schema as discussed with DimStar</comment>
+    <requestid>567289</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>36f968d45c1f7748a472b017496ed184</srcmd5>
+    <version>1.6.1</version>
+    <time>1516970153</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>569467</requestid>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>1679d38b5112f477ebff4f30cd689304</srcmd5>
+    <version>1.6.1</version>
+    <time>1520329453</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581995</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e51dd97e7eadaf32f04865bb3b69d9c4</srcmd5>
+    <version>1.7.0</version>
+    <time>1520588046</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.7.0
+  This release focused on high bit depth performance (10/12 bit) and vp9
+  encoding improvements.
+  - Upgrading:
+    This release is ABI incompatible due to new vp9 encoder features.
+    Frame parallel decoding for vp9 has been removed.
+  - Enhancements:
+    vp9 encoding supports additional threads with --row-mt. This can be greater
+    than the number of tiles.
+    Two new vp9 encoder options have been added:
+      --corpus-complexity
+      --tune-content=film
+    Additional tooling for respecting the vp9 &quot;level&quot; profiles has been added.
+  - Bug fixes:
+    A variety of fuzzing issues.
+    vp8 threading fix for ARM.
+    Codec control VP9_SET_SKIP_LOOP_FILTER fixed.
+    Reject invalid multi resolution configurations.
+- drop obsolete CVE-2017-13194.patch
+- switch to git service since no tar ball at the old place anymore
+- so name increase to 5
+- use gnu99 for ppc</comment>
+    <requestid>583650</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>1171821ee85024f539db899a158d1dda</srcmd5>
+    <version>1.8.0</version>
+    <time>1551023931</time>
+    <user>coolo</user>
+    <comment>- disable vsx on ppc64le to fix build failure
+
+- update to version 1.8.0
+  This release focused on encoding performance for realtime and VOD use cases.
+  - Upgrading:
+    This adds and improves several vp9 controls. Most are related to SVC:
+      VP9E_SET_SVC_FRAME_DROP_LAYER:
+        - Frame dropping in SVC.
+      VP9E_SET_SVC_INTER_LAYER_PRED:
+        - Inter-layer prediction in SVC.
+      VP9E_SET_SVC_GF_TEMPORAL_REF:
+        - Enable long term temporal reference in SVC.
+      VP9E_SET_SVC_REF_FRAME_CONFIG/VP9E_GET_SVC_REF_FRAME_CONFIG:
+        - Extend and improve this control for better flexibility in setting SVC
+          pattern dynamically.
+      VP9E_SET_POSTENCODE_DROP:
+        - Allow for post-encode frame dropping (applies to non-SVC too).
+      VP9E_SET_SVC_SPATIAL_LAYER_SYNC:
+        - Enable spatial layer sync frames.
+      VP9E_SET_SVC_LAYER_ID:
+        - Extend api to specify temporal id for each spatial layers.
+      VP9E_SET_ROI_MAP:
+        - Extend Region of Interest functionality to VP9.
+  - Enhancements:
+    2 pass vp9 encoding has improved substantially. When using --auto-alt-ref=6,
+    we see approximately 8% for VBR and 10% for CQ. When using --auto-alt-ref=1,
+    the gains are approximately 4% for VBR and 5% for CQ.
+    For real-time encoding, speed 7 has improved by ~5-10%. Encodes targeted at
+    screen sharing have improved when the content changes significantly (slide
+    sharing) or scrolls. There is a new speed 9 setting for mobile devices which</comment>
+    <requestid>673363</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>c97f52d7b02ad48087569cf274d17b96</srcmd5>
+    <version>1.8.0</version>
+    <time>1556474301</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697763</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>b4e2cd58d09bd81d7406d1cff5bb95b1</srcmd5>
+    <version>1.8.1</version>
+    <time>1564413773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717459</requestid>
+  </revision>
+</revisionlist>

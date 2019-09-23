@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Wed Dec 19 00:14:24 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim rhetorics from descriptions.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:50:15 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Nov  6 17:16:46 UTC 2017 - toddrme2178@gmail.com
+
+- Spec file cleanups
+- rpmlint fixes
+
+-------------------------------------------------------------------
+Tue Oct 24 20:13:04 UTC 2017 - aloisio@gmx.com
+
+- Update to version 0.6.4
+
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Fri Oct 14 19:21:27 UTC 2016 - toddrme2178@gmail.com
+
+- Initial version
+

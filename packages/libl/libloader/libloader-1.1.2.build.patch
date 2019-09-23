@@ -1,0 +1,44 @@
+--- libloader-1.1.3/build.properties	2009-11-17 14:12:00.000000000 +0000
++++ libloader-1.1.3/build.properties	2009-11-17 14:12:48.000000000 +0000
+@@ -1,4 +1,4 @@
+-project.revision=TRUNK-SNAPSHOT
++project.revision=1.1.3
+ ivy.artifact.group=pentaho-library
+ ivy.artifact.id=libloader
+ impl.title=LibLoader
+@@ -6,4 +6,6 @@
+ src.dir=${basedir}/source
+ dependency.libbase.revision=1.1.3
+ dependency.libpixie.revision=1.1.3
+-testsrc.dir=${basedir}/test
+\ No newline at end of file
++testsrc.dir=${basedir}/test
++antcontrib.available=true
++build.cache.dir=lib
+--- libloader-1.1.3/common_build.xml	2009-11-17 14:55:31.000000000 +0000
++++ libloader-1.1.3/common_build.xml	2009-11-17 14:56:48.000000000 +0000
+@@ -1071,6 +1071,7 @@
+         <path refid="classpath" />
+       </classpath>
+       <src path="${src.dir}" />
++      <exclude name="org/pentaho/reporting/libraries/resourceloader/modules/**"/>
+     </javac>
+   </target>
+ 
+@@ -1356,6 +1357,9 @@
+              doctitle="${impl.title} documentation">
+       <link href="http://java.sun.com/j2se/${javac.source}.0/docs/api/" />
+       <classpath refid="classpath" />
++      <packageset dir="source">
++        <exclude name="org/pentaho/reporting/libraries/resourceloader/modules/**"/>
++      </packageset>
+     </javadoc>
+   </target>
+ 
+@@ -1648,4 +1652,4 @@
+     </dot-classpath>
+   </target>
+ 
+-</project>
+\ No newline at end of file
++</project>

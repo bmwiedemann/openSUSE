@@ -1,0 +1,313 @@
+-------------------------------------------------------------------
+Sat Feb  9 06:34:59 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- Do not hardcode default ruby, but use macro
+- package LICENSE as %license
+
+-------------------------------------------------------------------
+Mon Jan 28 16:17:11 UTC 2019 - mvetter@suse.com
+
+- Update to 4.3 :
+  See https://awesomewm.org/apidoc/documentation/89-NEWS.md.html#v43
+- Remove awesome-asciidoc-fix.patch:
+  asciidoctor is used instead of asciidoc now
+
+-------------------------------------------------------------------
+Tue Apr 17 11:53:29 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Wed Feb 28 12:33:10 CET 2018 - tiwai@suse.de
+
+- Fix the documentation build with asciidoctor (bsc#1075764):
+  awesome-asciidoc-fix.patch
+
+-------------------------------------------------------------------
+Thu Oct  5 11:12:50 UTC 2017 - mimi.vx@gmail.com
+
+- relax lua requires for openSUSE:Leap
+
+-------------------------------------------------------------------
+Thu Aug  3 08:07:19 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 4.2:
+  * See https://awesomewm.org/apidoc/documentation/89-NEWS.md.html#v42
+
+-------------------------------------------------------------------
+Mon Jul 24 07:44:01 UTC 2017 - dimstar@opensuse.org
+
+- Use update-alternatives to create default.desktop xsession (boo#1030873)
+
+-------------------------------------------------------------------
+Sun Mar 19 15:12:35 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 4.1:
+  * See https://awesomewm.org/apidoc/documentation/89-NEWS.md.html#v41
+- Use tarball signing.
+
+-------------------------------------------------------------------
+Wed Mar  8 22:31:25 UTC 2017 - sfalken@opensuse.org
+
+- Edited %files section to clear unpackaged files builderror
+  in openSUSE:Factory
+
+-------------------------------------------------------------------
+Mon Jan 16 10:03:50 UTC 2017 - dheidler@suse.com
+
+- Build again with dbus support (boo#1020112).
+
+-------------------------------------------------------------------
+Mon Dec 26 11:58:03 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 4.0:
+  * See https://awesomewm.org/changelogs/short/v4.0
+- Remove awesome-remove_build_timestamp.patch: fixed upstream.
+- Require branding of the same version.
+
+-------------------------------------------------------------------
+Thu Nov 17 14:28:46 UTC 2016 - dimstar@opensuse.org
+
+- Add windowmanager provides (boo#981663).
+
+-------------------------------------------------------------------
+Tue Mar 22 13:20:10 UTC 2016 - kmroz@suse.com
+
+- Update to 3.5.9:
+  - Always send ConfigureNotifies
+  - Don't modify WM_HINTS in client_set_urgent()
+  - Fix awful.ewmh to handle window gravities
+  - Check that the Lua stack is empty in the main loop
+  - Fix unbalance Lua stack usage in event_handle_leavenotify()
+  - Balance the stack in luaA_loadrc()
+  - Fix arguments to luaL_checkstack()
+  - Make client key bindings for e.g. xeyes work again
+  - Change codename
+
+-------------------------------------------------------------------
+Sat Jan 30 19:54:05 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 3.5.8:
+  * Fix window key grabbing.
+  * menubar: handle nil Name in .desktop files.
+
+-------------------------------------------------------------------
+Sat Jan 16 11:01:51 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 3.5.7:
+  * tag.lua: add "property::icon_only" signal.
+  * Make stdout/stderr line buffered.
+  * cmake: s/ESCAPE_QUOTE/ESCAPE_QUOTES/.
+  * awesome_atexit: keep client order always.
+  * Add .travis.yml from master, ignoring functional tests.
+  * awesomeConfig.cmake: Allow setting AWESOME_DATA_DIR.
+  * Fix the definition of A_STRNEQ_CASE.
+  * Fix focus handling with multiple awesome instances.
+  * Remove titlebars from clients during shutdown.
+  * a_dbus_message_iter: Handle DBUS_TYPE_DOUBLE.
+  * Ignore more events while minimising a client.
+  * Screen __index: Don't turn argument into a string.
+  * Keep stacking order across restarts.
+  * Keep client order across restarts.
+  * Force systray redraw on BG colour change.
+  * Fix enter/leave events on titlebars.
+  * Fix compilation.
+  * Handle enter/leave events with detail=Inferior correctly.
+  * Never explicitly focus the root window.
+  * Fix client_apply_size_hints().
+  * Make awesome.quit() during startup work.
+  * Fix obvious typo in xwindow_translate_for_gravity().
+  * Apply window gravity when a window moves.
+  * Refactor code a little.
+  * Apply window gravity for titlebar resizes.
+  * Apply window gravity for border width changes.
+  * Grab client keys on the client window.
+  * Spawn: Improve handling of startup notification.
+  * objects: Add .valid property.
+  * Change codename.
+  * awful.menu: update t new layout api.
+- Require 3.5+ version of awesome-branding.
+
+-------------------------------------------------------------------
+Thu Oct  8 11:55:25 UTC 2015 - sor.alexei@meowr.ru
+
+- Do not require an explicit awesome-branding version (boo#949464).
+
+-------------------------------------------------------------------
+Wed Apr 29 09:43:47 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.5.6 (changes since 3.4.15):
+  * For detailed changelog see:
+    http://awesome.naquadah.org/changelogs/short/v3.5
+    http://awesome.naquadah.org/changelogs/short/v3.5.1
+    http://awesome.naquadah.org/changelogs/short/v3.5.2
+    http://awesome.naquadah.org/changelogs/short/v3.5.3
+    http://awesome.naquadah.org/changelogs/short/v3.5.4
+    http://awesome.naquadah.org/changelogs/short/v3.5.5
+    http://awesome.naquadah.org/changelogs/short/v3.5.6
+- Remove fix-awesome-desktop-launcher.patch: replaced by a regexp.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Wed Aug 13 23:04:21 UTC 2014 - toganm@opensuse.org
+
+- Allow gdm (and possibly other display managers) to show
+  'awesome' in the list of available xsessions
+  * Add fix-awesome-desktop-launcher.patch (freyes@suse.com)
+
+-------------------------------------------------------------------
+Fri Jan  3 00:44:16 UTC 2014 - crrodriguez@opensuse.org
+
+- extend awesome-remove_build_timestamp.patch to avoid
+  needless package republish due to AWESOME_COMPILE_HOSTNAME
+  changing all the time. replace it by the string "OBS".
+
+-------------------------------------------------------------------
+Tue Feb 12 09:04:44 UTC 2013 - toganm@opensuse.org
+
+- Update to 3.4.15
+  * Fix keyboard layouts
+
+- Changes between 3.4.13 and 3.4.14
+
+  * Add NoDisplay to .desktop file (FS#1031)
+  * Remove incorrect comment.
+  * Have only FreeBSD require dynamic linking (FS#743)
+  * Add x11-xcb to the pkg-config checks
+  * naughty: Correctly handle rowstride on icons
+  * Fix client screen in awful.client.setslave
+  * Added initial support for Xlib cursor themes
+
+- Use xz format for the source files
+- Added xcursor to BuildRequires
+
+-------------------------------------------------------------------
+Thu Dec  6 14:25:58 UTC 2012 - toganm@opensuse.org
+
+- Created subpackage awesome-branding-upstream which includes the
+  the default themes of the awesome package
+
+-------------------------------------------------------------------
+Wed Nov  7 08:31:16 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  No indication that the package limits licensing to only version 2 of the
+  GPL
+
+-------------------------------------------------------------------
+Mon Nov  5 15:47:18 UTC 2012 - toganm@opensuse.org
+
+- rathen then the hack use awesome-remove_timestamp_from_build by
+  pascal.bleser@opensuse.org to get rid of build time in builds
+  causing unnecessary builds
+
+-------------------------------------------------------------------
+Mon Sep 24 14:46:14 UTC 2012 - toganm@opensuse.org
+
+- switch back to lua51-devel instead of pkgconfig
+
+-------------------------------------------------------------------
+Thu Sep 13 15:34:10 UTC 2012 - toganm@opensuse.org
+
+- correct missing man locale dirs
+
+-------------------------------------------------------------------
+Sun Aug 19 11:53:08 UTC 2012 - toganm@opensuse.org
+
+- Use vi as the default editor
+
+-------------------------------------------------------------------
+Mon Aug 13 08:30:52 UTC 2012 - toganm@opensuse.org
+
+- Update to 3.4.13
+  - Remove PREFIX, use CMAKE_INSTALL_PREFIX
+  - Simplify client focus code
+  - change codename
+  - awful.titlebar use height not width
+  - xerror: Print numeric infos about the error
+  - Revert "Focus history: Don't ignore unfocusable clients"
+
+-------------------------------------------------------------------
+Fri Jul  6 15:40:58 UTC 2012 - toganm@opensuse.org
+
+- use pkgconfig for available buildrequires
+
+-------------------------------------------------------------------
+Fri Jun 15 22:19:03 UTC 2012 - toganm@opensuse.org
+
+- Update to 3.4.12 for changes see
+  http://awesome.naquadah.org/changelogs/v3.4.12
+  *removed glib-single-include.patch as it is fixed upstream
+
+-------------------------------------------------------------------
+Tue Apr 17 14:53:09 UTC 2012 - toganm@opensuse.org
+
+- update to 3.4.11
+  see  http://awesome.naquadah.org/changelogs/v3.4.10
+  * removed confuse related patch
+  * fix Factory builds with glib-single-include.patch
+
+-------------------------------------------------------------------
+Fri Jul 29 17:39:20 UTC 2011 - chris@computersalat.de
+
+- update to 3.4.10
+  see http://awesome.naquadah.org/changelogs/v3.4.10
+- rebase openSUSE_them patch
+- spec-cleaner
+- fix deps
+  o add cairo-devel (for xcb backend, experimental)
+
+-------------------------------------------------------------------
+Mon Jan 17 19:57:12 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 3.4.9
+
+-------------------------------------------------------------------
+Tue Jun  1 09:38:13 UTC 2010 - adam@mizerski.pl
+
+- added Requires: imlib2-loaders
+
+-------------------------------------------------------------------
+Wed May 12 00:12:25 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 3.4.5
+
+-------------------------------------------------------------------
+Sat Dec 13 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 3.1
+
+
+-------------------------------------------------------------------
+Sun Aug 31 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 2.3.4
+- use in-tree libconfuse (statically linked)
+
+
+-------------------------------------------------------------------
+Sat Aug  2 00:00:00 UTC 2008 - guru@unixtech.be
+
+- moved to X11:windowmanagers/
+- upgrade to 2.3.3
+
+
+-------------------------------------------------------------------
+Wed Jan  2 00:00:00 UTC 2008 - mrueckert@suse.de
+
+- update to version 2.0
+
+-------------------------------------------------------------------
+Sat Oct  6 00:00:00 UTC 2007 - mrueckert@suse.de
+
+- fixed build on older distributions
+
+-------------------------------------------------------------------
+Tue Sep 25 00:00:00 UTC 2007 - mrueckert@suse.de
+
+- update to version 1.1
+
+-------------------------------------------------------------------
+Wed Sep 19 00:00:00 UTC 2007 - mrueckert@suse.de
+
+- initial package

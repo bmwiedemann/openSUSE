@@ -1,0 +1,21 @@
+<package name="GraphicsMagick" project="openSUSE:Factory">
+  <title>Viewer and Converter for Images</title>
+  <description>GraphicsMagick(TM) provides a powerful image manipulation
+andtranslation utility. It is capable of displaying still images and
+animations using the X Window system which provides a simple interface
+forinteractively editing images, and is capable of importing selected
+windows or the entire desktop. GraphicsMagick is one of your choices if
+you need a program to manipulate and display images.It can read and
+write over 88 image formats, including JPEG, TIFF, WMF, SVG, PNG, PNM,
+GIF, andPhoto CD. Besides it allows you to resize, rotate, sharpen,
+color reduce, or add special effects to an image and to save the result
+to any supported format. GraphicsMagick may be used to create animated
+or transparent .gifs, to composite images, to create thumbnail images
+and a lot more. If you want to develop your own applications which use
+GraphicsMagick code or APIs, you need to install GraphicsMagick-devel
+as well.
+
+This package is compiled with Q8, which means that it provides better
+performance on 8 bit images and less.</description>
+  <devel project="graphics" package="GraphicsMagick"/>
+</package>

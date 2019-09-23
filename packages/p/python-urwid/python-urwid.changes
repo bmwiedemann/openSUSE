@@ -1,0 +1,314 @@
+-------------------------------------------------------------------
+Sun Feb 25 16:52:59 UTC 2018 - aloisio@gmx.com
+
+- Update to version 2.0.1
+  * #275: Late fix for proper exception reraising from within
+    main loop (by Andrew Dunai & Adam Sampson)
+  version 2.0.0
+  * Full Python 2.x/3.x support (by Andrew Dunai)
+  * Proper handling & customization of OS signals by GLib event
+    loop (by Federico T)
+  * vterm: Fix handling of NUL characters (by aszlig)
+  * Add 256-color support for fbterm (by Benjamin Yates)
+  * Italics support (by Ian D. Scott)
+  * Store envron's TERM value as a Screen attribute (by Benjamin
+    Yates)
+  * Replaced hashbangs to use proper Python binary (by Douglas La
+    Rocca)
+  * Post-change signal for Edit, CheckBox and RadioButton widgets
+    (by Toshio Kuratomi)
+  * ListBox.body update (by Random User)
+  * SimpleListWalker is now default when setting ListBox.body (by
+    Random User)
+  * #246, #234: SelectEventLoop alarm improvements (by Dave Jones)
+  * #211: Title align & borderless sides for LineBox (by Toshio
+    Kuratomi)
+  * Support for 'home' and 'end' keys in ListBox (by Random User)
+  * Various code cleanups (by Jordan Speicher, Marin Atanasov
+    Nikolov)
+  * CI fixes (by Marlox, Ian Ward, Anatoly Techtonik, Tony
+    Cebzanov & Ondřej Súkup)
+  * Example fixes (by Kenneth Nielsen)
+  * Documentation fixes (by anatoly techtonik, Marcin Kurczewski,
+    mobyte0, Christian Geier & xndcn)
+  * Code cleanup & typo fixes (by Jakub Wilk & Boris Feld)
+  * Integration of tox for easier Python cross-version testing (by
+    Andrew Dunai)
+  * Test fixes (by Michael Hudson-Doyle, Mike Gilbert & Andrew
+    Dunai)
+  * Correct error messages in Decoration (by Marcin Kurczewski)
+  * #141: Fix for StandardTextLayout.calculate_text_segments
+    (by Grzegorz Aksamit)
+  * #221: Fix for raw display should release file descriptors (by
+    Alain Leufroy)
+  * #261: Fix issues with unicode characters in ProgressBar (by
+    Andrew Dunai)
+  * Fix for 'page up' and 'page down' in ListBox when having
+    focusable children (by Random User)
+  * Fixes for examples compatibility with Python 3 (by Lars
+    Kellogg-Stedman)
+  * Fix default screen size on raw display (by Andreas Klöckner)
+  * Fix underlining for padded text (by Random User)
+  * Fix for terminal widget crash with Python 3 (by Sjc1000)
+  * Fix for string formatting error (by Jakub Wilk)
+  * Fix for iterator in WidgetContainerListContentsMixin (by
+    Marlox)
+  * Fix for missing `modified` signal in SimpleFocusListWalker
+    (by Michael Hansen)
+  * Dropped Python 3.2 support
+  * Test coverage is now collected
+
+- Dropped python-urwid-fix_py3_test.patch (merged upstream)
+
+-------------------------------------------------------------------
+Tue May 23 07:37:03 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+- Updated source and homepage URLs
+- Added python-urwid-fix_py3_test.patch to address a failing
+  test with python 3.6.
+
+-------------------------------------------------------------------
+Tue Mar  8 20:13:34 UTC 2016 - freitag@opensuse.org
+
+- update to version 1.3.1:
+ * Fix for screen not getting reset on exception regression
+   (by Rian Hunter)
+ * AttrSpec objects are now comparable (by Random User)
+ * MonitoredList now has a clear method if list has a clear method
+   (by neumond)
+ * Fix for BarGraph hlines sort order (by Heiko Noordhof)
+ * Fix for final output not appearing on exit with some terminals
+   now that extra newline was removed (by Jared Winborne)
+ * Fix for a resizing bug in raw_display (by Esteban null) 
+
+-------------------------------------------------------------------
+Thu May 14 13:09:33 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.3.0:
+  * New AsyncioEventLoop for Python 3.4, Python 3.x with asyncio
+    package or Python 2 with trollius package (by Alex Munroe,
+    Jonas Wielicki, with earlier work by Kelketek Rritaa)
+  * Screen classes now call back to MainLoop using event loop
+    alarms instead of passing timeout values to MainLoop (by Alex
+    Munroe)
+  * Add support for bright backgrounds on linux console (by Russell
+    Warren)
+  * Allow custom sorting of MonitoredList (by Tony Cebzanov)
+  * Fix support for negative indexes with MonitoredFocusList (by
+    Heiko Noordhof)
+  * Documentation fixes (by Ismail, Matthew Mosesohn)
+- additional change from version 1.2.2:
+  * Fix for a serious raw_display performance regression (by Anton
+    Khirnov)
+  * Fix for high color palette detection (by extempo)
+  * Small changes to enable windows support (by Jeanpierre Devin)
+- remove %py_requires macro
+- call python directly, not via %__python macro
+- remove unwanted shebang during %prep, not after build
+  to avoid mtime mismatch
+- run the tests during build
+
+-------------------------------------------------------------------
+Mon Jul 14 15:56:15 UTC 2014 - toddrme2178@gmail.com
+
+- Switched source url to PyPi
+
+-------------------------------------------------------------------
+Mon Jul 14 12:03:32 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 1.2.1
+  * Fix false failures of event loop tests
+  * Remove extra newline generated on exit of raw_display
+  * Documentation fixes (by Paul Ivanov)
+- Update to 1.2.0
+  * Add support for PyPy, drop support for Python 2.4, 2.5
+  * Signals now support using weakly referenced arguments to help
+    avoid leaking objects when a signal consumer is no longer
+    referenced (by Matthijs Kooijman)
+  * Add TornadoEventLoop class (by Alexander Glyzov)
+  * Update GlibEventLoop to use python-gi for Python3 compatibility
+    (by Israel Garcia)
+  * Automate testing with Python 2.6, 2.7, 3.2, 3.3 and PyPy using
+    travis-ci
+  * New container method get_focus_widgets() (by Matthijs Kooijman)
+  * Add support for double and triple click mouse events
+    (by Igor Kotrasiński)
+  * Allow disabling and re-enabling of mouse tracking
+    (by Jim Garrison)
+  * Create section in docs for example program screenshots generated
+    as images like the tutorial examples
+  * Add suggested basic color combination images to manual
+  * Fall back to 80x24 if screen size detection fails
+  * Fix screen.stop(), screen.start() disabling mouse events
+  * Fix to make GridFlow v_sep argument behave as documented
+  * Fix for registering high palette entries in the form "hX" where
+    X > 15 so that basic colors are applied in 88-color mode
+  * Fix for raw_display clear-right escape not working with
+    standout attribute on some terminals
+  * Fix for Terminal widget select loop: retry when interrupted
+- Update to 1.1.2
+  * Move to urwid.org and use sphinx docs for generating whole site,
+    move changelog to docs/changelog.rst
+  * Fix encoding exceptions when unicode used on non-UTF-8 terminal
+  * Fix for suspend and resume applications with ^Z
+  * Fix for tmux and screen missing colors on right bug
+  * Fix Pile zero-weighted items and mouse_event when empty
+  * Fix Terminal select() not retrying when interrupted by signal
+  * Fix for Padding.align and width change not invalidating
+
+-------------------------------------------------------------------
+Mon Jan 14 16:42:26 UTC 2013 - p.drouand@gmail.com
+
+- Update to 1.1.1 version:
+  * Fix for Pile not changing focus on mouse events
+  * Fix for Overlay.get_cursor_coords()
+- Fix the non-executable-files rpm waraning and remove the rpmlint file
+
+-------------------------------------------------------------------
+Wed Jan  2 19:44:41 UTC 2013 - toddrme2178@gmail.com
+
+- Fix building on SLES
+
+-------------------------------------------------------------------
+Thu Nov 15 17:54:54 UTC 2012 - p.drouand@gmail.com
+
+- Update to 1.1.0 release:
+    * New common container API: focus, focus_position, contents,
+      options(), get_focus_path(), set_focus_path(), __getitem__,
+      __iter__(), __reversed__() implemented across all included
+      container widgets
+      A full description doesn't fit here, see the Container Widgets
+      section in the manual for details
+    * New Sphinx-based documentation now included in source:
+      Tutorial rewritten, manual revised and new reference based
+      on updated docstrings (by Marco Giusti, Patrick Totzke)
+    * New list walker SimpleFocusListWalker like SimpleListWalker but
+      updates focus position as items are inserted or removed
+    * New decoration widget WidgetDisable to disable interaction
+      with the widgets it wraps
+    * SelectableIcon selectable text widget used by button widgets is
+      now documented (available since 0.9.9)
+    * Columns widget now tries to keep column in focus visible, hiding
+      columns on the left when necessary
+    * Padding widget now defaults to ('relative', 100) instead of
+      'pack' so that left and right parameters are more useful and more
+      child widgets are supported
+    * New list walker "API Version 2" that is simpler for many list
+      walker uses; "API Version 1" will still continue to be supported
+    * List walkers may now allow iteration from the absolute top or
+      bottom of the list if they provide a positions() method
+    * raw_display now erases to the end of the line with EL escape
+      sequence to improve copy+paste behavior for some terminals
+    * Filler now has top and bottom parameters like Padding's left and
+      right parameters and accepts 'pack' instead of None as a height
+      value for widgets that calculate their own number of rows
+    * Pile and Columns now accepts 'pack' instead of 'flow' for widgets
+      that calculate their own number of rows or columns
+    * Pile and Columns now accept 'given' instead of 'fixed' for
+      cases where the number of rows or columns are specified by the
+      container options
+    * Pile and Columns widgets now accept any iterable to their
+      __init__() methods
+    * Widget now has a default focus_position property that raises
+      an IndexError when read to be consistent with new common container
+      API
+    * GridFlow now supports multiple cell widths within the same widget
+    * BoxWidget, FlowWidget and FixedWidget are deprecated, instead
+      use the sizing() function or _sizing attribute to specify the
+      supported sizing modes for your custom widgets
+    * Some new shift+arrow and numpad input sequences from RXVT and
+      xterm are now recognized
+    * Fix for alarms when used with a screen event loop (e.g.
+      curses_display)
+    * Fix for raw_display when terminal width is 1 column
+    * Fixes for a Columns.get_cursor_coords() regression and a
+      SelectableIcon.get_cursor_coords() bug
+    * Fixes for incorrect handling of box columns in a number of
+      Columns methods when that column is selectable
+    * Fix for Terminal widget input handling with Python 3
+
+-------------------------------------------------------------------
+Sun Jul 29 15:04:44 UTC 2012 - cfarrell@suse.com
+
+- license update: LGPL-2.1+
+  LGPL without version is not acceptable
+
+-------------------------------------------------------------------
+Fri Jul 20 23:32:04 UTC 2012 - p.drouand@gmail.com
+
+- Bump to 1.0.2 release:
+  * Fix for bug when entering Unicode text into Edit widget with
+     bytes caption
+   * Fix a regression when not running in UTF-8 mode
+   * Fix for a MainLoop.remove_watch_pipe() bug
+   * Fix for a bug when packing empty Edit widgets
+   * Fix for a ListBox "contents too long" error with very large
+     Edit widgets
+   * Prevent ListBoxes from selecting 0-height selectable widgets
+     when moving up or down
+   * Fix a number of bugs caused by 0-height widgets in a ListBox
+
+-------------------------------------------------------------------
+Sat Jun  9 03:18:07 UTC 2012 - highwaystar.ru@gmail.com
+
+- python3 package added
+- spec file improved 
+
+-------------------------------------------------------------------
+Thu Dec 08 22:31:27 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.0.1:
+  * fix for a Filler mouse_event() position bug
+  * fix support for mouse positions up to x=255, y=255
+  * fixes for a number of string encoding issues under Python 3
+  * fix for a LineBox border __init__() parameters
+  * fix input input of UTF-8 in tour.py example by converting captions to
+    unicode
+  * prevent raw_display from calling tcseattr() or tcgetattr() on non-ttys
+  * disable curses_display external event loop support: screen resizing and gpm
+    events are not properly supported
+  * mark PollingListWalker as deprecated
+
+- changed arch to _not_ be noarch, contains a shlib file
+
+-------------------------------------------------------------------
+Fri Sep 23 10:14:21 UTC 2011 - saschpe@suse.de
+
+- Update to version 1.0.0:
+  * New support for Python 3.2 from the same 2.x code base,
+    requires distribute instead of setuptools (by Kirk McDonald,
+    Wendell, Marien Zwart) everything except TwistedEventLoop and
+    GLibEventLoop is supported
+  * New experimental Terminal widget with xterm emulation and
+    terminal.py example program (by aszlig)
+  * Edit widget now supports a mask (for passwords), has a
+    insert_text_result() method for full-field validation and
+    normalizes input text to Unicode or bytes based on the caption
+    type used
+  * New TreeWidget, TreeNode, ParentNode, TreeWalker
+    and TreeListBox classes for lazy expanding/collapsing tree
+    views factored out of browse.py example program, with new
+    treesample.py example program (by Rob Lanphier)
+  * MainLoop now calls draw_screen() just before going idle, so extra
+    calls to draw_screen() in user code may now be removed
+  * New MainLoop.watch_pipe() method for subprocess or threaded
+    communication with the process/thread updating the UI, and new
+    subproc.py example demonstrating its use
+  * New PopUpLauncher and PopUpTarget widgets and MainLoop option
+    for creating pop-ups and drop-downs, and new pop_up.py example
+    program
+  * New twisted_serve_ssh.py example (by Ali Afshar) that serves
+    multiple displays over ssh from the same application using
+    Twisted and the TwistedEventLoop
+
+-------------------------------------------------------------------
+Tue Jan 26 12:24:31 UTC 2010 - pascal.bleser@opensuse.org
+
+- upgrade to 0.9.9.1
+
+-------------------------------------------------------------------
+Wed Jun 10 00:29:36 CEST 2009 - dmueller@suse.de
+
+- update to 0.9.8.4
+

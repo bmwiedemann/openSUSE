@@ -1,0 +1,2107 @@
+--------------------------------------------------------------------
+Sat Aug 17 12:00:14 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Portuguese)
+- 4.5.51
+
+--------------------------------------------------------------------
+Fri Apr 5 13:20:57 UTC 2019 - snwint@suse.de
+
+- merge gh#openSUSE/gfxboot#38
+- fix SLES splash calculation (bsc#1129387)
+- 4.5.50
+
+--------------------------------------------------------------------
+Tue Mar 12 08:28:53 UTC 2019 - opensuse-packaging@opensuse.org
+
+- merge gh#openSUSE/gfxboot#37
+- Replace master-boot-code by syslinux version
+- 4.5.49
+
+--------------------------------------------------------------------
+Tue Feb 5 12:53:57 UTC 2019 - snwint@suse.de
+
+- merge gh#openSUSE/gfxboot#35
+- ensure theme builds are reproducible (bsc#1124165)
+- adjust unpack_bootlogo script
+- 4.5.48
+
+--------------------------------------------------------------------
+Mon Sep 10 20:35:08 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Arabic)
+- 4.5.47
+
+--------------------------------------------------------------------
+Tue Jun 19 11:48:09 UTC 2018 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/gfxboot#34
+- rework video mode list composition (bsc#1096971)
+- remove obsolete qemu options from gfxboot script
+- 4.5.46
+
+--------------------------------------------------------------------
+Tue Jun 12 07:36:14 UTC 2018 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/gfxboot#33
+- don't crash if vbe video mode list is empty (bsc#1096971)
+- replace genisoimage with mkisofs
+- 4.5.45
+
+--------------------------------------------------------------------
+Fri Apr 27 14:44:12 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Greek)
+- 4.5.44
+
+--------------------------------------------------------------------
+Fri Apr 27 14:43:07 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Greek)
+- 4.5.43
+
+--------------------------------------------------------------------
+Fri Apr 27 13:03:20 UTC 2018 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/gfxboot#32
+- update git2log script
+- 4.5.42
+
+--------------------------------------------------------------------
+Fri Apr 27 12:59:31 UTC 2018 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/gfxboot#31
+- enhance documentation
+- add sample screenshots
+
+--------------------------------------------------------------------
+Mon Apr 9 18:24:09 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Catalan)
+- 4.5.41
+
+--------------------------------------------------------------------
+Tue Apr 3 12:09:39 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Indonesian)
+- 4.5.40
+
+--------------------------------------------------------------------
+Sat Mar 24 19:52:28 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Spanish)
+- 4.5.39
+
+--------------------------------------------------------------------
+Thu Mar 22 13:42:13 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Portuguese)
+- 4.5.38
+
+--------------------------------------------------------------------
+Thu Mar 22 00:23:10 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Portuguese)
+- 4.5.37
+
+--------------------------------------------------------------------
+Thu Mar 8 17:25:30 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Galician)
+- 4.5.36
+
+--------------------------------------------------------------------
+Sat Mar 3 13:30:12 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Danish)
+- 4.5.35
+
+--------------------------------------------------------------------
+Thu Mar 1 19:55:40 UTC 2018 - antoine.belvire@opensuse.org
+
+- Translated using Weblate (French)
+
+--------------------------------------------------------------------
+Mon Feb 26 14:41:07 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Dutch)
+- 4.5.34
+
+--------------------------------------------------------------------
+Wed Feb 21 22:09:27 UTC 2018 - freek@opensuse.org
+
+- Translated using Weblate (Dutch)
+- 4.5.33
+
+--------------------------------------------------------------------
+Wed Feb 21 13:49:39 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Ukrainian)
+- 4.5.32
+
+--------------------------------------------------------------------
+Tue Feb 20 15:31:16 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Finnish)
+- 4.5.31
+
+--------------------------------------------------------------------
+Tue Feb 20 15:30:50 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Finnish)
+- 4.5.30
+
+--------------------------------------------------------------------
+Fri Feb 2 03:02:10 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Indonesian)
+- 4.5.29
+
+--------------------------------------------------------------------
+Wed Jan 31 23:19:10 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Danish)
+- 4.5.28
+
+--------------------------------------------------------------------
+Wed Jan 31 18:13:36 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Catalan)
+- 4.5.27
+
+--------------------------------------------------------------------
+Sun Jan 28 19:05:45 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Danish)
+- 4.5.26
+
+--------------------------------------------------------------------
+Fri Jan 26 01:32:37 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Japanese)
+- 4.5.25
+
+--------------------------------------------------------------------
+Thu Jan 25 07:52:53 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Slovak)
+
+--------------------------------------------------------------------
+Tue Jan 23 15:07:52 UTC 2018 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/gfxboot#29
+- add config file entries to specify a title for the main screen
+  (bsc#1077188)
+- fix bug processing serial menu entries (bsc#1075852)
+- 4.5.24
+
+--------------------------------------------------------------------
+Thu Oct 5 14:43:02 UTC 2017 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/gfxboot#27
+- fix linear framebuffer activation (bsc#1061383)
+- add gfx mode number and framebuffer address to debug status
+- 4.5.23
+
+--------------------------------------------------------------------
+Tue Sep 12 08:50:07 UTC 2017 - wfeldt@opensuse.org
+
+- color bits detection: add workaround for broken vbe info
+- better fallback video mode selection
+- 4.5.22
+
+--------------------------------------------------------------------
+Tue Sep 12 08:50:07 UTC 2017 - opensuse-packaging@opensuse.org
+
+- bincode: Fix coreboot LFB mode
+
+--------------------------------------------------------------------
+Tue Sep 12 08:50:07 UTC 2017 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/gfxboot#26
+- prefer linear framebuffer modes for drawing (bsc#980570)
+
+--------------------------------------------------------------------
+Tue May 9 14:34:05 UTC 2017 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/gfxboot#24
+- fix UK keyboard setting (bsc#1033202)
+- 4.5.21
+
+-------------------------------------------------------------------
+Wed Nov 23 14:27:20 UTC 2016 - snwint@suse.com
+
+- merge pr gh#openSUSE/gfxboot#22
+- update git2log script
+- adjust keymap names to be consistent again (bsc#1009914)
+- 4.5.20
+
+-------------------------------------------------------------------
+Mon Nov  7 12:16:33 UTC 2016 - snwint@suse.com
+
+- Update ca.po
+- 4.5.19
+
+-------------------------------------------------------------------
+Wed Oct 19 09:17:20 UTC 2016 - snwint@suse.com
+
+- Update ca.po
+- Update lt.po
+- 4.5.18
+
+-------------------------------------------------------------------
+Mon Oct 17 11:07:22 UTC 2016 - snwint@suse.com
+
+- fix bug calculating video and xvideo options (bsc#780621)
+- 4.5.17
+
+-------------------------------------------------------------------
+Fri Oct 14 15:21:57 UTC 2016 - snwint@suse.com
+
+- implement enhanced menu layout engine
+- rework video mode menu
+- adjust to new menu engine
+- adjust to new menu engine
+- use new functions to pass on video menu settings to bootloader
+- again updated sound samples
+- one more text to sample
+- ensure sound samples are loaded only once
+- re-rendered font
+- adjust to changed sox syntax
+- updated texts that are run through espeak
+- updated sound samples
+- 4.5.16
+
+-------------------------------------------------------------------
+Tue Sep 13 13:41:38 UTC 2016 - snwint@suse.com
+
+- Adapted to the new keymaps used by linuxrc and YaST
+- 4.5.15
+
+-------------------------------------------------------------------
+Mon Aug  8 12:31:53 UTC 2016 - snwint@suse.com
+
+- fix boot-label redrawing after language change (bsc#988392)
+- 4.5.14
+
+-------------------------------------------------------------------
+Mon Jun 13 11:47:28 UTC 2016 - snwint@suse.com
+
+- updated translations
+- make 'systemboot' and 'more' menu entries translatable
+- 4.5.13
+
+-------------------------------------------------------------------
+Fri Dec  4 13:37:59 UTC 2015 - snwint@suse.com
+
+- fix booting from submenu (bsc#957893)
+- 4.5.12
+
+-------------------------------------------------------------------
+Thu Nov 12 11:50:22 UTC 2015 - snwint@suse.com
+
+- documented submenu syntax
+- show submenu indicator in RTL layout
+- on leaving a submenu, restore cursor position
+- implement support for sub-menues (bsc#906990)
+- 4.5.11
+
+-------------------------------------------------------------------
+Mon Oct 19 13:16:29 UTC 2015 - snwint@suse.com
+
+- update translations (bsc#950962)
+- 4.5.10
+
+-------------------------------------------------------------------
+Thu Oct  1 14:38:49 UTC 2015 - snwint@suse.com
+
+- implement LEAP boot splash
+- 4.5.9
+
+-------------------------------------------------------------------
+Tue Sep 29 09:21:01 UTC 2015 - snwint@suse.com
+
+- Add a basic README.md
+- 4.5.8
+
+-------------------------------------------------------------------
+Tue Oct 14 13:48:58 CEST 2014 - snwint_jenkins@suse.com
+
+- added 'archive' Makefile target
+- updated git2log
+- 4.5.7
+
+-------------------------------------------------------------------
+Thu Oct  2 17:11:28 CEST 2014 - snwint@suse.de
+
+- work around memory corruption issue seen on hyper-v (bnc#876640)
+- 4.5.6
+
+-------------------------------------------------------------------
+Wed Sep 17 13:00:33 CEST 2014 - snwint@suse.de
+
+- recreated font to match latest translations
+- translation update
+- remove duplicate 'Default' from po file
+- 4.5.5
+
+-------------------------------------------------------------------
+Mon Aug 25 16:29:10 CEST 2014 - snwint@suse.de
+
+- added two more texts to pot file
+- 4.5.4
+
+-------------------------------------------------------------------
+Mon Aug 25 15:57:25 CEST 2014 - snwint@suse.de
+
+- adjust network dialog to latest linuxrc
+- make 'Upgrade" translatable
+- 4.5.3
+
+-------------------------------------------------------------------
+Wed Mar  5 14:41:25 CET 2014 - snwint@suse.de
+
+- install license file
+
+-------------------------------------------------------------------
+Fri Jan 24 15:37:57 CET 2014 - snwint@suse.de
+
+- fix compiler warning
+- hrvoje.senjan: use FT_SYNTHESIS_H macro
+- set min video mode to 1024x576
+- remove use-recommended-freetype-include.patch
+
+-------------------------------------------------------------------
+Wed Dec 11 21:01:43 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added use-recommended-freetype-include.patch -- Freetype upstream 
+  recommends using their macros together with ft2build include. 
+  Positive sideeffect is that this patch makes it build with both 
+  freetype2 2.5.1, and older version
+
+-------------------------------------------------------------------
+Mon Oct  1 10:53:34 CEST 2012 - snwint@suse.de
+
+- start using 'default' video entry
+
+-------------------------------------------------------------------
+Wed Mar 28 14:26:53 CEST 2012 - snwint@suse.de
+
+- ddc test record
+- rework monitor detection
+- new video selection menu
+
+-------------------------------------------------------------------
+Thu Oct 13 09:28:31 CEST 2011 - snwint@suse.de
+
+- fix isohybrid detection
+
+-------------------------------------------------------------------
+Thu Oct 13 08:23:18 CEST 2011 - snwint@suse.de
+
+- don't set init boot option (bnc#723678)
+
+-------------------------------------------------------------------
+Wed Sep 21 14:01:32 UTC 2011 - coolo@suse.com
+
+- do not package the openSUSE theme here, but leave it up for
+  branding-openSUSE
+- remove the fdupes again, way too dangerous in this 
+
+------------------------------------------------------------------- 
+Mon Sep 12 12:18:12 UTC 2011 - toddrme2178@gmail.com
+ 
+- Added check for duplicate files (fix for RPMLINT warning)
+- Added branding provides (fix for RPMLINT warning)
+- Modified summaries (fix for RPMLINT warning)
+- Cleaned up spec file formatting
+ 
+-------------------------------------------------------------------
+Fri Sep  2 16:37:56 CEST 2011 - snwint@suse.de
+
+- make systemd default
+
+-------------------------------------------------------------------
+Fri Sep  2 16:32:15 CEST 2011 - snwint@suse.de
+
+- add config option for default init program
+- use isolinux-config from package
+
+-------------------------------------------------------------------
+Thu Jul  7 17:11:53 CEST 2011 - snwint@suse.de
+
+- added KDE theme
+- update upstream theme
+
+-------------------------------------------------------------------
+Thu Jul  7 16:34:42 CEST 2011 - snwint@suse.de
+
+- added menu to select init variant (bnc#704417)
+- fix script in case we are on no branch
+
+-------------------------------------------------------------------
+Mon Apr 18 15:45:59 CEST 2011 - snwint@suse.de
+
+- restore compat with syslinux 3
+- fix wrong mem access
+- pass back working dir as absolute path
+- pass cwd via sysconfig
+
+-------------------------------------------------------------------
+Fri Apr  8 10:52:32 CEST 2011 - snwint@suse.de
+
+- set version to oS 11.5
+- rewrite chdir to work without bootloader chdir support
+
+-------------------------------------------------------------------
+Thu Feb 24 14:02:03 CET 2011 - snwint@suse.de
+
+- default to hd install with isohybrid boot from hd
+
+-------------------------------------------------------------------
+Mon Feb 21 17:29:56 CET 2011 - snwint@suse.de
+
+- integrated new oS 11.4 branding into git tree
+
+-------------------------------------------------------------------
+Sat Feb 19 18:36:12 UTC 2011 - javier@opensuse.org
+
+- add startup options to data-boot/back.jpg and openSUSE installer
+  to data-install/back.jpg
+
+-------------------------------------------------------------------
+Fri Jan 28 13:01:06 UTC 2011 - lnussel@suse.de
+
+- add a packageand to the Supplements so gfxboot-branding* only gets
+  installed if gfxboot actually is meant to be installed.
+
+-------------------------------------------------------------------
+Thu Jan 27 16:21:02 UTC 2011 - javier@opensuse.org
+
+- update artwork for 11.4
+
+-------------------------------------------------------------------
+Thu Jan 13 17:37:01 CET 2011 - snwint@suse.de
+
+- update virtual box support
+- fix autoselection of emulator for "gfxboot -p" (bnc#661832)
+- add qemu-kvm to the list auf autoselected emulators (bnc#661832)
+
+-------------------------------------------------------------------
+Wed Oct 27 14:05:55 CEST 2010 - snwint@suse.de
+
+- avoid dialogs wider than screen
+
+-------------------------------------------------------------------
+Mon Oct  4 17:49:15 CEST 2010 - snwint@suse.de
+
+- updated translations (bnc#551046)
+- updated help text translations (bnc#551046)
+- create VERSION and changelog from git repo
+
+-------------------------------------------------------------------
+Fri Sep  3 14:56:33 CEST 2010 - snwint@suse.de
+
+- show real product name on serial console (bnc#634299)
+
+-------------------------------------------------------------------
+Thu Aug  5 15:13:18 CEST 2010 - snwint@suse.de
+
+- add 'lang' option if language has been changed
+  [used to be: if != en_US] (bnc#619983)
+- keyboard label was not translatable (bnc#610638)
+
+-------------------------------------------------------------------
+Mon Jul  5 14:39:23 CEST 2010 - snwint@suse.de
+
+- updated translations (bnc#619513)
+
+-------------------------------------------------------------------
+Fri Jun 25 12:20:53 CEST 2010 - snwint@suse.de
+
+- updated translations
+
+-------------------------------------------------------------------
+Mon May 31 15:19:07 CEST 2010 - snwint@suse.de
+
+- clear font flags when setting an undefined font (bnc#609755)
+
+-------------------------------------------------------------------
+Thu May 20 13:52:59 CEST 2010 - snwint@suse.de
+
+- turn on ints explicitly
+- better memory dump
+- don't abuse bit 31 in font pointer (bnc#599478)
+
+-------------------------------------------------------------------
+Wed May 19 11:44:17 CEST 2010 - snwint@suse.de
+
+- fixed openSUSE 11.3 theme
+
+-------------------------------------------------------------------
+Tue May 11 13:58:39 CEST 2010 - jimmac@novell.com
+
+- update background graphics for 11.3
+
+-------------------------------------------------------------------
+Fri Apr 30 16:33:01 CEST 2010 - snwint@suse.de
+
+- strip gfxboot.com related parts from syslinux-3.86 patchset
+- added Asturian (bnc#562202)
+- fixed examples to work with latest gfxboot.c32
+- set valid tss for pm calls
+
+-------------------------------------------------------------------
+Fri Apr 16 17:22:02 CEST 2010 - snwint@suse.de
+
+- reset progress bar status after error
+- fix help text formatting
+
+-------------------------------------------------------------------
+Fri Apr  9 14:31:49 CEST 2010 - snwint@suse.de
+
+- add patches for syslinux 3.86
+- prefer gfxboot.c32 over gfxboot.com
+
+-------------------------------------------------------------------
+Thu Dec 10 12:08:19 CET 2009 - snwint@suse.de
+
+- leave more room for timeout indicator (bnc#551718)
+- center main menu (bnc#562089)
+
+-------------------------------------------------------------------
+Mon Nov 16 14:47:12 CET 2009 - snwint@suse.de
+
+- syslinux patch: fix chdir() return value
+
+-------------------------------------------------------------------
+Fri Oct 30 12:17:52 CET 2009 - snwint@suse.de
+
+- extend interface so it works with gfxboot.c32
+- updated translations (bnc#551046)
+
+-------------------------------------------------------------------
+Mon Oct 19 17:00:37 CEST 2009 - snwint@suse.de
+
+- more examples
+- fix progress indicator for PXE boot
+
+-------------------------------------------------------------------
+Fri Oct 16 13:52:51 CEST 2009 - snwint@suse.de
+
+- support pxe setup in test script
+- added patches for syslinux 3.83
+- improved gfxtest script
+- added some sample themes
+
+-------------------------------------------------------------------
+Mon Oct 12 15:04:10 CEST 2009 - snwint@suse.de
+
+- added swiss french keymap
+- updated speech samples
+
+-------------------------------------------------------------------
+Wed Oct  7 16:27:31 CEST 2009 - snwint@suse.de
+
+- sync keyboard mapping list with yast (bnc#534856)
+
+-------------------------------------------------------------------
+Fri Oct  2 15:37:24 CEST 2009 - snwint@suse.de
+
+- build new font
+- enhanced gfxboot-font
+- cleaned up po files
+- more flexible translation support 
+- livecd: add F4=kerneloptions
+- fix pot file
+
+-------------------------------------------------------------------
+Tue Sep 29 12:05:53 CEST 2009 - snwint@suse.de
+
+- set default install type correctly (bnc#542781)
+
+-------------------------------------------------------------------
+Mon Sep 28 11:50:38 CEST 2009 - snwint@suse.de
+
+- updated language list
+- fixed grub picture (bnc#542113)
+
+-------------------------------------------------------------------
+Thu Sep 24 16:20:57 CEST 2009 - snwint@suse.de
+
+- escape weird chars in URLs
+
+-------------------------------------------------------------------
+Fri Sep 18 14:24:24 CEST 2009 - snwint@suse.de
+
+- F-key assignments configurable via gfxboot.cfg
+
+-------------------------------------------------------------------
+Tue Sep 15 17:19:10 CEST 2009 - snwint@suse.de
+
+- added proxy setup (bnc#329668)
+
+-------------------------------------------------------------------
+Mon Sep 14 16:45:42 CEST 2009 - snwint@suse.de
+
+- fix some nasm warnings
+- updated 11.2 openSUSE theme (bnc#538949)
+- added network config dialog
+
+-------------------------------------------------------------------
+Wed Sep  9 16:15:43 CEST 2009 - snwint@suse.de
+
+- implemented realloc function
+- file read works with files of unknown size (-1)
+- added basic 'restore' function (via F11)
+- Ilyas Bakirov: added Kirghiz support
+- allow empty menus
+- added new gfxtest script
+- support qemu-kvm
+- improved gfxtest script; removed old test script
+- added --version option to gfxboot
+- no fb after F9 for live cd (bnc#526706)
+- gfxboot script works with new syslinux
+
+-------------------------------------------------------------------
+Sun Jul 12 14:37:30 CEST 2009 - coolo@novell.com
+
+- disable as-needed to fix build
+
+-------------------------------------------------------------------
+Wed Dec  3 11:05:44 CET 2008 - snwint@suse.de
+
+- now really update speech samples
+
+-------------------------------------------------------------------
+Tue Dec  2 13:57:18 CET 2008 - snwint@suse.de
+
+- enabled penguin theme for openSUSE
+
+-------------------------------------------------------------------
+Mon Dec  1 10:10:39 CET 2008 - snwint@suse.de
+
+- new texts for speech support (bnc#391313)
+
+-------------------------------------------------------------------
+Thu Nov 20 18:25:14 CET 2008 - snwint@suse.de
+
+- translations, again (bnc#445350)
+
+-------------------------------------------------------------------
+Thu Nov 20 15:19:33 CET 2008 - snwint@suse.de
+
+- updated translations (bnc#445350)
+
+-------------------------------------------------------------------
+Thu Nov 20 12:54:46 CET 2008 - snwint@suse.de
+
+- updated translations
+- removed special livecd menu text replacements
+
+-------------------------------------------------------------------
+Wed Nov 12 12:46:52 CET 2008 - snwint@suse.de
+
+- no beep in installed system (fate#303481)
+
+-------------------------------------------------------------------
+Fri Nov  7 18:29:56 CET 2008 - snwint@suse.de
+
+- fixed 'portuguese' spelling (bnc#442407)
+
+-------------------------------------------------------------------
+Thu Nov  6 15:34:29 CET 2008 - snwint@suse.de
+
+- all menus have speech support now (bnc#391313)
+- speech works with languages != english
+- in input lines the char at cursor position is spoken
+
+-------------------------------------------------------------------
+Tue Nov  4 16:27:57 CET 2008 - snwint@suse.de
+
+- fix last livecd patch
+- can replace '_' with space in menu entries
+
+-------------------------------------------------------------------
+Tue Nov  4 11:29:43 CET 2008 - snwint@suse.de
+
+- for livecds: don't switch to text mode with F9 (bnc#391313)
+- obsolete bootloader-theme-* (bnc#441366)
+
+-------------------------------------------------------------------
+Fri Oct 17 08:52:44 CEST 2008 - olh@suse.de
+
+- add ExclusiveArch x86 x86_64
+
+-------------------------------------------------------------------
+Thu Oct 16 12:46:10 CEST 2008 - snwint@suse.de
+
+- new openSUSE theme
+
+-------------------------------------------------------------------
+Mon Oct  6 16:49:23 CEST 2008 - snwint@suse.de
+
+- updated SLES/SLED themes
+
+-------------------------------------------------------------------
+Mon Sep 29 14:30:19 CEST 2008 - snwint@suse.de
+
+- updated SLE themes
+
+-------------------------------------------------------------------
+Fri Sep 26 18:02:53 CEST 2008 - snwint@suse.de
+
+- translations updated
+
+-------------------------------------------------------------------
+Thu Sep 25 18:29:21 CEST 2008 - snwint@suse.de
+
+- added keyboard selection dialog (bnc#422175)
+
+-------------------------------------------------------------------
+Thu Sep 25 13:05:36 CEST 2008 - snwint@suse.de
+
+- better monitor detection (bnc#407786)
+- fix default video size selection (bnc#407786)
+
+-------------------------------------------------------------------
+Thu Sep 11 16:22:45 CEST 2008 - snwint@suse.de
+
+- support serial lines (fate#301595)
+
+-------------------------------------------------------------------
+Mon Aug 25 11:12:57 CEST 2008 - snwint@suse.de
+
+- needs fribidi
+- really add SLE themes
+
+-------------------------------------------------------------------
+Wed Aug 20 13:40:54 CEST 2008 - snwint@suse.de
+
+- activated SLE themes
+
+-------------------------------------------------------------------
+Tue Aug 19 15:13:36 CEST 2008 - snwint@suse.de
+
+- gfxboot requires perl-HTML-Parser
+
+-------------------------------------------------------------------
+Mon Aug 18 16:03:32 CEST 2008 - snwint@suse.de
+
+- cooperate with mboot module
+- enhanced gfxboot script
+- fixed bug in gfxboot-font ('--add' option cleared char list)
+- support new text formatting tags (<p> & <ul>)
+- new help texts
+- fix help to better tolerate broken help setup
+- bootloader always beeps
+
+-------------------------------------------------------------------
+Mon May 26 18:42:43 CEST 2008 - snwint@suse.de
+
+- make driver update menu configurable
+- added 'download url' item to driver update menu
+- updated translations
+
+-------------------------------------------------------------------
+Mon May 26 17:39:24 CEST 2008 - snwint@suse.de
+
+- worked on 11.0 theme
+
+-------------------------------------------------------------------
+Mon May 19 18:01:47 CEST 2008 - snwint@suse.de
+
+- turn sound off before loading kernel (bnc#392016)
+- partly moved to new theme
+- use 32 bit graphics mode for bootloader
+
+-------------------------------------------------------------------
+Thu May 15 17:43:36 CEST 2008 - snwint@suse.de
+
+- rewrote config file parser
+- move most layout parameters to config file
+
+-------------------------------------------------------------------
+Fri May  9 19:31:34 CEST 2008 - snwint@suse.de
+
+- show F9 hint
+
+-------------------------------------------------------------------
+Fri May  9 16:25:24 CEST 2008 - snwint@suse.de
+
+- updated translations
+
+-------------------------------------------------------------------
+Wed May  7 16:29:34 CEST 2008 - snwint@suse.de
+
+- 'F9' adds 'braille=1' to command line
+
+-------------------------------------------------------------------
+Mon Apr 28 16:39:41 CEST 2008 - snwint@suse.de
+
+- WAV file playback works again
+- added beep when bootloader is ready (fate#303482)
+- added 'visually impaired' mode key (F9) (fate#303482)
+- added speech output
+- added Thai
+
+-------------------------------------------------------------------
+Thu Apr 17 15:00:14 CEST 2008 - snwint@suse.de
+
+- adjusted package requires (bnc#380757)
+
+-------------------------------------------------------------------
+Mon Apr 14 09:56:08 CEST 2008 - snwint@suse.de
+
+- gfxboot doesn't always need a bootloader
+
+-------------------------------------------------------------------
+Fri Apr 11 11:13:45 CEST 2008 - snwint@suse.de
+
+- fix gfxboot script
+- create /boot/message in postin
+
+-------------------------------------------------------------------
+Thu Apr 10 18:21:16 CEST 2008 - snwint@suse.de
+
+- gfxboot can handle themes & translations
+- fixed typo in gfxboot.cfg
+
+-------------------------------------------------------------------
+Tue Apr  8 18:07:26 CEST 2008 - snwint@suse.de
+
+- added 'gfxboot' (boot screen config tool)
+- added man page
+- new themes
+- package layout changed
+
+-------------------------------------------------------------------
+Mon Feb  4 17:18:06 CET 2008 - snwint@suse.de
+
+- added optional 'mediacheck'
+
+-------------------------------------------------------------------
+Mon Feb  4 15:04:56 CET 2008 - snwint@suse.de
+
+- source tree layout changed ('make prep' no longer required)
+
+-------------------------------------------------------------------
+Fri Dec 14 12:45:57 CET 2007 - snwint@suse.de
+
+- adjust BuildRequires
+
+-------------------------------------------------------------------
+Mon Oct  8 14:07:01 CEST 2007 - snwint@suse.de
+
+- Avi Kivity: SS does not survive switch to PM in KVM (#307194)
+
+-------------------------------------------------------------------
+Tue Sep 25 17:06:58 CEST 2007 - snwint@suse.de
+
+- benventuno -> benvenuto (#327546)
+
+-------------------------------------------------------------------
+Fri Sep 14 13:29:29 CEST 2007 - snwint@suse.de
+
+- fixed building non-openSUSE themes
+
+-------------------------------------------------------------------
+Wed Sep 12 17:53:43 CEST 2007 - snwint@suse.de
+
+- always ask for VBE2 info (to e.g. get 1366x768 listed - #298025)
+- new welcome screen animation
+
+-------------------------------------------------------------------
+Mon Sep 10 17:44:44 CEST 2007 - snwint@suse.de
+
+- updated translations
+
+-------------------------------------------------------------------
+Wed Aug 22 11:58:33 CEST 2007 - snwint@suse.de
+
+- fix livecd mode
+
+-------------------------------------------------------------------
+Mon Aug 20 15:44:37 CEST 2007 - snwint@suse.de
+
+- new translations
+
+-------------------------------------------------------------------
+Mon Aug 13 16:09:27 CEST 2007 - snwint@suse.de
+
+- use autohinting for lohit_pa, gulim, FZHeiTi (#299568)
+
+-------------------------------------------------------------------
+Fri Aug 10 12:55:34 CEST 2007 - snwint@suse.de
+
+- allow to set default values for repository
+
+-------------------------------------------------------------------
+Thu Aug  9 16:44:37 CEST 2007 - snwint@suse.de
+
+- change default lang en -> en_US
+- updated po files
+
+-------------------------------------------------------------------
+Thu Jul 26 12:34:29 CEST 2007 - snwint@suse.de
+
+- adjusted menu texts
+
+-------------------------------------------------------------------
+Tue Jul 24 12:50:39 CEST 2007 - snwint@suse.de
+
+- no graphics on problematic via boards (#231104)
+
+-------------------------------------------------------------------
+Mon Jul 23 17:54:29 CEST 2007 - snwint@suse.de
+
+- rewrote line edit function
+- intro aborted if any key pressed (#219570)
+- added Walloon
+- added Sinhala
+- moved 'install - XXX' variants into submenu, added 'repair' entry (#293827)
+- go green
+
+-------------------------------------------------------------------
+Thu Mar 15 15:19:42 CET 2007 - snwint@suse.de
+
+- basic rtl language support
+
+-------------------------------------------------------------------
+Mon Mar 12 16:34:39 CET 2007 - snwint@suse.de
+
+- added new languages
+- two-line panel
+
+-------------------------------------------------------------------
+Fri Feb  9 14:52:45 CET 2007 - snwint@suse.de
+
+- different 'Hindi' spelling
+
+-------------------------------------------------------------------
+Wed Feb  7 16:41:46 CET 2007 - snwint@suse.de
+
+- added Gujarati & Marathi translations
+
+-------------------------------------------------------------------
+Wed Feb  7 16:20:03 CET 2007 - snwint@suse.de
+
+- added some code to debug monitor detection
+- language cleanup
+- added new languages
+
+-------------------------------------------------------------------
+Mon Jan 22 18:09:14 CET 2007 - snwint@suse.de
+
+- fix language/keymap setting (#223518)
+
+-------------------------------------------------------------------
+Fri Nov 24 14:48:48 CET 2006 - snwint@suse.de
+
+- fixed penguin theme bug (#216991)
+- lang menu sometimes shows only locale name
+
+-------------------------------------------------------------------
+Mon Nov 20 17:38:12 CET 2006 - snwint@suse.de
+
+- translations updated
+- minor penguin setup correction
+
+-------------------------------------------------------------------
+Fri Nov 17 17:19:56 CET 2006 - snwint@suse.de
+
+- adjust 640x480 menu sizes (#221139)
+- tuning layout
+- make penguins more likely during winter
+
+-------------------------------------------------------------------
+Wed Nov 15 16:07:47 CET 2006 - snwint@suse.de
+
+- updated documentation
+- get initrd size right for progress bar
+
+-------------------------------------------------------------------
+Tue Nov 14 12:39:08 CET 2006 - snwint@suse.de
+
+- fixed Requires
+
+-------------------------------------------------------------------
+Tue Nov 14 11:23:15 CET 2006 - snwint@suse.de
+
+- fix doc file permission
+
+-------------------------------------------------------------------
+Mon Nov 13 17:48:19 CET 2006 - snwint@suse.de
+
+- help text parser rewritten
+- new translations
+- added final 10.2 theme
+
+-------------------------------------------------------------------
+Tue Nov  7 15:32:39 CET 2006 - snwint@suse.de
+
+- new translations
+
+-------------------------------------------------------------------
+Fri Oct 27 15:03:26 CEST 2006 - snwint@suse.de
+
+- penguin theme is back
+- adjust html help text parser
+
+-------------------------------------------------------------------
+Thu Oct 26 17:34:02 CEST 2006 - snwint@suse.de
+
+- new translations
+
+-------------------------------------------------------------------
+Mon Oct 23 16:12:07 CEST 2006 - snwint@suse.de
+
+- translations updated
+- added 'noinstallopt' option to gfxboot.cfg
+
+-------------------------------------------------------------------
+Mon Sep 25 17:59:34 CEST 2006 - snwint@suse.de
+
+- Arabic is back
+
+-------------------------------------------------------------------
+Mon Sep 25 16:12:44 CEST 2006 - snwint@suse.de
+
+- added 'firmware' menu entry
+
+-------------------------------------------------------------------
+Wed Sep 20 17:43:59 CEST 2006 - snwint@suse.de
+
+- support Punjabi (Gurmukhi script)
+
+-------------------------------------------------------------------
+Wed Sep 20 15:27:33 CEST 2006 - snwint@suse.de
+
+- fixed font rendering bug
+- added some indic fonts
+
+-------------------------------------------------------------------
+Tue Sep 19 17:52:33 CEST 2006 - snwint@suse.de
+
+- use 4 bit for antialiasing (not 3)
+
+-------------------------------------------------------------------
+Tue Sep 19 11:24:44 CEST 2006 - snwint@suse.de
+
+- fix Estonian support
+
+-------------------------------------------------------------------
+Tue Sep 19 00:22:59 CEST 2006 - ro@suse.de
+
+- correct filelist 
+
+-------------------------------------------------------------------
+Mon Sep 18 16:47:46 CEST 2006 - snwint@suse.de
+
+- support antialiased fonts
+- added Estonian
+- put hard disk install option back in
+
+-------------------------------------------------------------------
+Thu Aug 24 17:48:10 CEST 2006 - snwint@suse.de
+
+- 32 bit rewrite finished
+- changed interface to bootloader
+
+-------------------------------------------------------------------
+Mon Aug 21 16:49:49 CEST 2006 - snwint@suse.de
+
+- move to 32 bit, cont.
+
+-------------------------------------------------------------------
+Mon Aug  7 15:55:28 CEST 2006 - snwint@suse.de
+
+- move to 32 bit, cont.
+- added 10.2 openSUSE logos
+
+-------------------------------------------------------------------
+Tue Aug  1 18:27:16 CEST 2006 - snwint@suse.de
+
+- started internal rewrite to run all code in 32 bit pm
+
+-------------------------------------------------------------------
+Mon Jul 24 11:41:01 CEST 2006 - snwint@suse.de
+
+- fixed Zen theme
+
+-------------------------------------------------------------------
+Wed Jul 19 16:12:17 CEST 2006 - snwint@suse.de
+
+- added Catalan & Vietnamese
+- better debug window
+- fixed minor file reading bug
+- better internal locale handling
+- separated en locale into en_GB & en_US
+
+-------------------------------------------------------------------
+Mon Jul 17 15:33:54 CEST 2006 - snwint@suse.de
+
+- more than one boot option line, finished (#160066)
+- added 'about' button
+- make it openSUSE
+- added xen test config
+
+-------------------------------------------------------------------
+Mon Jul 10 12:40:04 CEST 2006 - snwint@suse.de
+
+- use disk image, not floppy for grub testing
+- updated Zen pictures
+- made full panel default
+- ShiftTab now works
+- remove duplicate video modes (#145749)
+- menu bar fits menu text width
+- made 'Text Mode' translatable (#179582)
+- workaround for interlaced mode issue on some ATI cards (#177982)
+- use disk image, not floppy for lilo testing
+- major code cleanup
+- removed ancient compatibility code
+- allow more than one boot option line (for xen)
+- using beta pictures
+
+-------------------------------------------------------------------
+Fri Jun  9 15:23:40 CEST 2006 - snwint@suse.de
+
+- translations updated
+- minor Zen theme change
+
+-------------------------------------------------------------------
+Tue May 23 18:02:27 CEST 2006 - snwint@suse.de
+
+- translations updated
+- added Zen texts & theme
+
+-------------------------------------------------------------------
+Mon May 22 15:36:47 CEST 2006 - snwint@suse.de
+
+- add check to handle insufficient real mode handling in Xen on VMX
+  machines (#175473)
+- allow per menu entry memory checks via mem.min[<label>] and
+  mem.msg[<label>] in gfxboot.cfg
+
+-------------------------------------------------------------------
+Mon May 15 15:52:55 CEST 2006 - snwint@suse.de
+
+- fix random memory corruption when trying to open a nonexistent
+  file (#165846)
+
+-------------------------------------------------------------------
+Tue May  2 15:50:16 CEST 2006 - snwint@suse.de
+
+- translations updated (#170561)
+
+-------------------------------------------------------------------
+Thu Apr 27 16:29:04 CEST 2006 - snwint@suse.de
+
+- implemented inbyte/outbyte to access i/o space (#170167)
+
+-------------------------------------------------------------------
+Wed Apr 19 16:57:32 CEST 2006 - snwint@suse.de
+
+- fix drawing bug (#166914)
+
+-------------------------------------------------------------------
+Fri Apr  7 17:00:16 CEST 2006 - snwint@suse.de
+
+- translations updated
+- fine-tuned splash
+
+-------------------------------------------------------------------
+Tue Apr  4 15:51:18 CEST 2006 - snwint@suse.de
+
+- fixed Khmer menu entry
+
+-------------------------------------------------------------------
+Mon Apr  3 18:36:16 CEST 2006 - snwint@suse.de
+
+- fixed evil memory corruption bug
+
+-------------------------------------------------------------------
+Fri Mar 31 15:02:49 CEST 2006 - snwint@suse.de
+
+- added 'share' input field for smb install
+- some more texts are translatable
+- Live-CD preparations
+
+-------------------------------------------------------------------
+Thu Mar 30 17:07:01 CEST 2006 - snwint@suse.de
+
+- adjusted 640x480 fallback layout
+- added driver update dialog that lets you enter the update file name
+
+-------------------------------------------------------------------
+Wed Mar 29 16:35:12 CEST 2006 - snwint@suse.de
+
+- better 'welcome' screen
+
+-------------------------------------------------------------------
+Tue Mar 28 18:03:59 CEST 2006 - snwint@suse.de
+
+- added new 'welcome' screen
+
+-------------------------------------------------------------------
+Mon Mar 27 16:38:40 CEST 2006 - snwint@suse.de
+
+- translations updated
+
+-------------------------------------------------------------------
+Mon Mar 13 16:51:10 CET 2006 - snwint@suse.de
+
+- added NLD & SLES themes
+
+-------------------------------------------------------------------
+Mon Mar  6 18:19:48 CET 2006 - snwint@suse.de
+
+- new theme, cont.
+- it's now nolapic (#155280)
+- translations updated
+
+-------------------------------------------------------------------
+Tue Feb 28 16:11:53 CET 2006 - snwint@suse.de
+
+- drop dosemu as testing platform
+- new theme, first try
+
+-------------------------------------------------------------------
+Tue Feb 21 10:08:58 CET 2006 - snwint@suse.de
+
+- add noapic boot option (#150030)
+
+-------------------------------------------------------------------
+Tue Feb 14 12:29:44 CET 2006 - snwint@suse.de
+
+- add apic boot option (#150030)
+
+-------------------------------------------------------------------
+Thu Feb  9 17:27:53 CET 2006 - snwint@suse.de
+
+- more defensive monitor detection (#149578)
+- monitor detection can be skipped
+
+-------------------------------------------------------------------
+Thu Jan 26 17:38:35 CET 2006 - snwint@suse.de
+
+- go for 8 bit framebuffer if there are no 16 bit modes (#144742)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:44:15 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 17:17:17 CET 2006 - snwint@suse.de
+
+- better monitor detection
+- cjwatson@ubuntu.com: support big-endian cpio archives (#140119)
+- support direct driverupdate loading from CD-ROM (feat #152)
+- add new languages
+
+-------------------------------------------------------------------
+Mon Jan 16 12:52:52 CET 2006 - snwint@suse.de
+
+- show all options in grub/lilo (#136377)
+- translations & font updated
+
+-------------------------------------------------------------------
+Wed Dec 14 11:37:21 CET 2005 - snwint@suse.de
+
+- fixed to work correctly with grub & lilo
+
+-------------------------------------------------------------------
+Mon Dec  5 16:12:22 CET 2005 - snwint@suse.de
+
+- Colin Watson <cjwatson@ubuntu.com>: build fixes for x86-64
+- fixed kernel splash loading
+- include 'unpack_bootlogo' script in package
+
+-------------------------------------------------------------------
+Wed Nov 30 15:44:06 CET 2005 - snwint@suse.de
+
+- adjust to syslinux 3.11
+- remove some primary words and reimplement them as bytecode
+- read config options from 'gfxboot.cfg'
+
+-------------------------------------------------------------------
+Wed Oct 19 16:42:32 CEST 2005 - snwint@suse.de
+
+- offer Croatian
+
+-------------------------------------------------------------------
+Wed Oct 12 12:37:55 CEST 2005 - snwint@suse.de
+
+- do only aligned dword reads from video memory - some ATI boards
+  need this (#114804)
+
+-------------------------------------------------------------------
+Fri Oct  7 13:39:59 CEST 2005 - snwint@suse.de
+
+- needs syslinux with updated gfx patch
+- texts updated for 10.1
+- implemented filesize, getcwd, chdir commands
+- using new cd layout
+
+-------------------------------------------------------------------
+Thu Sep 29 00:33:14 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Tue Sep 20 11:03:53 CEST 2005 - snwint@suse.de
+
+- better testing script
+- gcc 4.1 compile fixes
+
+-------------------------------------------------------------------
+Fri Sep  9 17:15:37 CEST 2005 - snwint@suse.de
+
+- oops, was already December
+
+-------------------------------------------------------------------
+Mon Sep  5 15:31:59 CEST 2005 - snwint@suse.de
+
+- Finnish texts updated
+
+-------------------------------------------------------------------
+Fri Sep  2 16:32:57 CEST 2005 - snwint@suse.de
+
+- fix color handling bug (#72232)
+- show penguins a bit more often
+
+-------------------------------------------------------------------
+Mon Aug 29 16:54:58 CEST 2005 - snwint@suse.de
+
+- added more keymaps (#113265)
+- long menus are wrapped
+- added 640x480 fallback for i845-like boards
+- new translations
+
+-------------------------------------------------------------------
+Wed Aug 24 18:12:50 CEST 2005 - snwint@suse.de
+
+- a different shade of blue
+- fixed penguin theme drawing bug
+
+-------------------------------------------------------------------
+Mon Aug 22 18:06:21 CEST 2005 - snwint@suse.de
+
+- new translations
+
+-------------------------------------------------------------------
+Mon Aug 22 11:41:44 CEST 2005 - snwint@suse.de
+
+- prepare for jpeg decompression to 8-bit color space
+- add penguin theme
+- Dansk keymap added
+
+-------------------------------------------------------------------
+Mon Aug 15 16:26:59 CEST 2005 - snwint@suse.de
+
+- fixed Dansk locale (#104084)
+- new translations added
+
+-------------------------------------------------------------------
+Fri Aug  5 17:35:01 CEST 2005 - snwint@suse.de
+
+- texts updated
+- support images with alpha channel
+- new theme
+
+-------------------------------------------------------------------
+Thu Jun 23 14:40:05 CEST 2005 - snwint@suse.de
+
+- 32 bit modes now fully supported
+
+-------------------------------------------------------------------
+Wed Jun 22 15:49:20 CEST 2005 - snwint@suse.de
+
+- updated documentation
+
+-------------------------------------------------------------------
+Wed Apr 27 16:32:58 CEST 2005 - snwint@suse.de
+
+- harddisk install option gone (#60128)
+
+-------------------------------------------------------------------
+Fri Apr 22 10:53:15 CEST 2005 - snwint@suse.de
+
+- added live cd entry
+- fixed 16 bit color mode selection (#79312)
+
+-------------------------------------------------------------------
+Wed Apr 20 12:06:39 CEST 2005 - snwint@suse.de
+
+- taiwan text fix (#78946)
+
+-------------------------------------------------------------------
+Mon Apr 11 15:10:04 CEST 2005 - snwint@suse.de
+
+- fixed file reading
+
+-------------------------------------------------------------------
+Mon Mar 21 14:16:04 CET 2005 - snwint@suse.de
+
+- added slowenic translations
+
+-------------------------------------------------------------------
+Wed Mar 16 18:09:47 CET 2005 - snwint@suse.de
+
+- new graphics
+
+-------------------------------------------------------------------
+Wed Mar 16 11:32:21 CET 2005 - snwint@suse.de
+
+- speedup transparent menu drawing
+- adjust some colors
+
+-------------------------------------------------------------------
+Tue Mar 15 17:33:46 CET 2005 - snwint@suse.de
+
+- updated translations
+
+-------------------------------------------------------------------
+Tue Mar  8 14:29:10 CET 2005 - snwint@suse.de
+
+- fixed install source dialogs
+- fixed some memory leaks
+
+-------------------------------------------------------------------
+Mon Mar  7 17:42:48 CET 2005 - snwint@suse.de
+
+- translation fix (#66743)
+- new splash graphics
+- fixed slow timeout (#66730)
+- enabled transparent menus
+
+-------------------------------------------------------------------
+Tue Mar  1 16:04:06 CET 2005 - snwint@suse.de
+
+- new graphics
+- more translation texts fixes
+- prepared for transparent menus
+
+-------------------------------------------------------------------
+Tue Feb 22 16:09:18 CET 2005 - snwint@suse.de
+
+- fixed translation texts
+- ask for smb domain
+- corrected minor drawing error
+
+-------------------------------------------------------------------
+Mon Feb 21 17:47:58 CET 2005 - snwint@suse.de
+
+- 9.3 theme
+- fixed color handling bug
+
+-------------------------------------------------------------------
+Tue Feb 15 11:47:43 CET 2005 - snwint@suse.de
+
+- sync language list with yast2
+- fixed making slp default
+
+-------------------------------------------------------------------
+Mon Feb 14 16:20:35 CET 2005 - snwint@suse.de
+
+- allow selecting slp or cdrom as default install target
+
+-------------------------------------------------------------------
+Tue Feb  8 16:17:35 CET 2005 - snwint@suse.de
+
+- support ukrainian
+
+-------------------------------------------------------------------
+Fri Feb  4 16:26:26 CET 2005 - snwint@suse.de
+
+- use 8x16 console font (8x14 does not always exist)
+- avoid overlap with bootloader memory usage
+- fixed memory addressing problem
+
+-------------------------------------------------------------------
+Tue Feb  1 16:07:34 CET 2005 - snwint@suse.de
+
+- workaround to avoid memory corruption
+- added experimental mouse code (for testing)
+
+-------------------------------------------------------------------
+Mon Jan 31 12:11:31 CET 2005 - snwint@suse.de
+
+- rewrote internal memory management
+- jpeg decoding works
+- support symlinks in cpio archive
+- lots of minor fixes
+- renamed files to stick to 8.3 scheme
+- much improved test script
+- use bold font
+- use 800x600, 16bit color
+- added new help texts
+- can read files from file system (with syslinux)
+
+-------------------------------------------------------------------
+Wed Oct  6 12:10:33 CEST 2004 - snwint@suse.de
+
+- removed temp file
+
+-------------------------------------------------------------------
+Tue Oct  5 14:39:52 CEST 2004 - snwint@suse.de
+
+- added help text for '64bit' switch (#46806)
+
+-------------------------------------------------------------------
+Fri Oct  1 16:35:46 CEST 2004 - snwint@suse.de
+
+- new blue theme
+
+-------------------------------------------------------------------
+Fri Oct  1 15:30:16 CEST 2004 - snwint@suse.de
+
+- polish translations
+- hide passwords (#46094)
+
+-------------------------------------------------------------------
+Mon Sep 27 18:19:44 CEST 2004 - snwint@suse.de
+
+- more languages
+
+-------------------------------------------------------------------
+Mon Sep 20 18:13:10 CEST 2004 - snwint@suse.de
+
+- minor i18n fixes 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:15:13 CEST 2004 - snwint@suse.de
+
+- final graphics
+- added new translations
+
+-------------------------------------------------------------------
+Tue Sep  7 00:53:19 CEST 2004 - ro@suse.de
+
+- added missing el symlink n Home theme
+
+-------------------------------------------------------------------
+Mon Sep  6 17:47:50 CEST 2004 - snwint@suse.de
+
+- do the F-key-move-down magic only for syslinux (#44238)
+- some text cleanup (9.1 -> 9.2, dropped unused liveeval msgs)
+- added new translations
+- preliminary SuSE theme graphics
+
+-------------------------------------------------------------------
+Wed Aug 18 12:23:53 CEST 2004 - snwint@suse.de
+
+- better arabic language support
+
+-------------------------------------------------------------------
+Mon Aug 16 16:28:29 CEST 2004 - snwint@suse.de
+
+- added arabic
+
+-------------------------------------------------------------------
+Mon Aug  9 11:28:32 CEST 2004 - snwint@suse.de
+
+- add 32/64 dualboot code
+- removed obsolete themes
+- switch to 'installation' if some F-key has been used (#41097)
+- don't offer 640x480; instead, select x11 vesa driver
+- assume monitor can display at least 800x600
+
+-------------------------------------------------------------------
+Wed May 12 18:42:13 CEST 2004 - snwint@suse.de
+
+- hide password in lilo (#40348)
+
+-------------------------------------------------------------------
+Fri Apr 16 16:52:00 CEST 2004 - snwint@suse.de
+
+- irqs might have been turned off in some cases
+- new SLES pictures
+
+-------------------------------------------------------------------
+Wed Apr 14 10:07:13 CEST 2004 - snwint@suse.de
+
+- font creation missed some chars (#38223)
+
+-------------------------------------------------------------------
+Thu Apr  8 16:31:58 CEST 2004 - snwint@suse.de
+
+- add SuSE-Live theme
+- use 'install=slp://' (#36982)
+- add new 'biosmem' function
+- live cd layout changes
+- added live cd warning if there's not enough memory
+- added SLES theme (copy of SuSE theme)
+
+-------------------------------------------------------------------
+Tue Apr  6 17:06:26 CEST 2004 - snwint@suse.de
+
+- handle case where we can't set graphics mode (#35806)
+
+-------------------------------------------------------------------
+Mon Apr  5 19:35:52 CEST 2004 - snwint@suse.de
+
+- add HTTP install option
+
+-------------------------------------------------------------------
+Mon Apr  5 16:38:14 CEST 2004 - snwint@suse.de
+
+- add only english to boot/message (#38339)
+
+-------------------------------------------------------------------
+Mon Apr  5 12:16:31 CEST 2004 - snwint@suse.de
+
+- japanese translations, again
+- new boot graphics, again
+
+-------------------------------------------------------------------
+Sat Apr  3 17:54:19 CEST 2004 - snwint@suse.de
+
+- new japanese translations (#38224)
+- not all japanese chars were added to font (#38223)
+
+-------------------------------------------------------------------
+Fri Apr  2 18:41:28 CEST 2004 - snwint@suse.de
+
+- new boot graphics
+
+-------------------------------------------------------------------
+Fri Apr  2 17:55:12 CEST 2004 - snwint@suse.de
+
+- reset timeout if we show some popup during start
+
+-------------------------------------------------------------------
+Fri Apr  2 14:30:34 CEST 2004 - snwint@suse.de
+
+- added amd64 test
+- fixed lilo password dialog
+- use less memory for input dialogs
+- modplayer should work again
+- added russian texts
+
+-------------------------------------------------------------------
+Wed Mar 31 18:23:15 CEST 2004 - snwint@suse.de
+
+- take out romanian install help text; not enough space
+
+-------------------------------------------------------------------
+Wed Mar 31 18:02:26 CEST 2004 - snwint@suse.de
+
+- swedish texts
+- added japanese texts
+- fixed html viewer to work with japanese (allow line
+  breaks at any place)
+- added hungarian, italian and french texts
+
+-------------------------------------------------------------------
+Mon Mar 29 18:19:00 CEST 2004 - snwint@suse.de
+
+- dutch help texts
+- slovene & romanian texts
+
+-------------------------------------------------------------------
+Mon Mar 29 12:27:40 CEST 2004 - snwint@suse.de
+
+- menu texts localized via 'translations.<locale>'
+- new boot graphics
+- added Home theme
+- fixed language setting (#37195)
+- pass lang info to yast (#35841)
+
+-------------------------------------------------------------------
+Mon Mar 22 18:04:08 CET 2004 - snwint@suse.de
+
+- new boot graphics
+- fixed japanese locale name (#36487)
+- added spanish texts
+- added dutch & hungarian texts
+- localized driver update text
+
+-------------------------------------------------------------------
+Wed Mar 17 14:53:24 CET 2004 - snwint@suse.de
+
+- new/updated czech texts
+- reworked themes Makefile
+
+-------------------------------------------------------------------
+Tue Mar 16 16:50:50 CET 2004 - snwint@suse.de
+
+- german help texts
+
+-------------------------------------------------------------------
+Mon Mar 15 15:33:16 CET 2004 - snwint@suse.de
+
+- lang menu constructed from 'languages' file
+
+-------------------------------------------------------------------
+Tue Mar  9 12:49:58 CET 2004 - snwint@suse.de
+
+- added 'SLP' menu entry
+
+-------------------------------------------------------------------
+Mon Mar  8 15:07:47 CET 2004 - snwint@suse.de
+
+- fixed Makefile
+
+-------------------------------------------------------------------
+Mon Mar  8 14:34:08 CET 2004 - snwint@suse.de
+
+- czech translations
+- added dialogs for various install types
+- added 'profiles' menu for laptop people (#32346)
+
+-------------------------------------------------------------------
+Mon Mar  1 19:09:07 CET 2004 - snwint@suse.de
+
+- use translated language names
+
+-------------------------------------------------------------------
+Mon Mar  1 18:01:39 CET 2004 - snwint@suse.de
+
+- fixed theme Makefile
+
+-------------------------------------------------------------------
+Mon Mar  1 15:13:02 CET 2004 - snwint@suse.de
+
+- put texts into *.po files
+- redraw screen after selecting new language
+- some more keymaps
+
+-------------------------------------------------------------------
+Mon Feb 16 12:52:32 CET 2004 - snwint@suse.de
+
+- obsoletes gfxboot-devel
+
+-------------------------------------------------------------------
+Mon Jan 26 16:55:06 CET 2004 - snwint@suse.de
+
+- utf8 support, hi & true color video modes
+- german keyboard mapping really works
+- reworked much of the internals
+- bootlogo file is now normal cpio archive; makes it easier to modify
+
+-------------------------------------------------------------------
+Tue Dec 16 12:19:15 CET 2003 - snwint@suse.de
+
+- moved SLSS theme to 9.0
+- support disk change popups
+
+-------------------------------------------------------------------
+Wed Nov 12 15:05:51 CET 2003 - varkoly@suse.de
+
+- added SLSS theme for the AutoinstallationsCD  of the 
+  SuSE Linux School Server Clients
+
+-------------------------------------------------------------------
+Mon Oct 13 11:13:00 CEST 2003 - snwint@suse.de
+
+- added LiveEval theme
+
+-------------------------------------------------------------------
+Wed Sep 17 15:52:08 CEST 2003 - snwint@suse.de
+
+- make F3 actually do something
+
+-------------------------------------------------------------------
+Mon Sep 15 12:04:16 CEST 2003 - snwint@suse.de
+
+- add splash parameter only if it's already there (#28780)
+
+-------------------------------------------------------------------
+Sat Sep  6 16:04:02 CEST 2003 - snwint@suse.de
+
+- added splash mode selection to install screen
+
+-------------------------------------------------------------------
+Mon Sep  1 18:00:48 CEST 2003 - snwint@suse.de
+
+- SuSE theme updated
+
+-------------------------------------------------------------------
+Mon Sep  1 12:40:35 CEST 2003 - snwint@suse.de
+
+- new SuSE theme
+- removed eject button; doesn't work on too much systems
+- give additional hint if user forgot to turn the dvd over
+
+-------------------------------------------------------------------
+Mon Aug 25 15:33:07 CEST 2003 - snwint@suse.de
+
+- reworked ps code
+- added eject dialog for DVD2
+- support some european keyboard layouts (experimental: press F9)
+
+-------------------------------------------------------------------
+Mon Aug 18 16:54:00 CEST 2003 - snwint@suse.de
+
+- minor bug in SuSE theme
+
+-------------------------------------------------------------------
+Mon Aug 18 15:58:54 CEST 2003 - snwint@suse.de
+
+- new version; cleaned up package
+
+-------------------------------------------------------------------
+Mon Mar 17 17:07:31 CET 2003 - snwint@suse.de
+
+- limit max resolution we offer to 1280x1024
+
+-------------------------------------------------------------------
+Fri Mar 14 10:55:03 CET 2003 - snwint@suse.de
+
+- minor help text corrections (#25139)
+
+-------------------------------------------------------------------
+Wed Mar 12 19:01:04 CET 2003 - snwint@suse.de
+
+- really final splash pictures
+
+-------------------------------------------------------------------
+Mon Mar 10 13:03:41 CET 2003 - snwint@suse.de
+
+- final splash picture
+
+-------------------------------------------------------------------
+Sat Mar  8 13:53:21 CET 2003 - snwint@suse.de
+
+- don't wait 3 seconds in lilo/grub mode
+- get default splash mode from grub config
+- added splash mode 'native' (splash=0)
+
+-------------------------------------------------------------------
+Thu Mar  6 18:47:08 CET 2003 - snwint@suse.de
+
+- updated menu texts
+- show splash 3 seconds
+
+-------------------------------------------------------------------
+Mon Mar  3 18:16:17 CET 2003 - snwint@suse.de
+
+- slightly improved SuSE-splash.pcx
+- support more kernel splash sizes
+
+-------------------------------------------------------------------
+Sat Mar  1 13:57:44 CET 2003 - snwint@suse.de
+
+- show splash before boot menu
+- build different versions for installer and grub/lilo
+
+-------------------------------------------------------------------
+Mon Feb 24 20:22:00 CET 2003 - snwint@suse.de
+
+- removed the logo fading stuff, it makes problems on Radeon cards
+
+-------------------------------------------------------------------
+Tue Feb 18 12:49:10 CET 2003 - snwint@suse.de
+
+- added real help text written by bg@suse.de
+
+-------------------------------------------------------------------
+Mon Feb 17 19:45:08 CET 2003 - snwint@suse.de
+
+- allow more than one dialog at a time to be shown
+
+-------------------------------------------------------------------
+Fri Feb 14 17:08:50 CET 2003 - snwint@suse.de
+
+- added functions for image fading
+- new dialog and progress bar widgets
+- added combo box for splash silent/verbose (for lilo/grub)
+
+-------------------------------------------------------------------
+Sun Feb  9 17:45:24 CET 2003 - snwint@suse.de
+
+- new, extended version
+
+-------------------------------------------------------------------
+Mon Jan 20 16:32:49 CET 2003 - stepan@suse.de
+
+- add OpenSchool theme
+
+-------------------------------------------------------------------
+Wed Nov 13 17:33:13 CET 2002 - ro@suse.de
+
+- use x-devel-packages in neededforbuild 
+- use /usr/X11R6 not /usr/X11
+
+-------------------------------------------------------------------
+Fri Oct 25 14:48:14 CEST 2002 - stepan@suse.de
+
+- update OpenXchange theme to contain UL brand
+
+-------------------------------------------------------------------
+Thu Oct 17 11:44:43 CEST 2002 - stepan@suse.de
+
+- added OpenXchange theme
+
+-------------------------------------------------------------------
+Thu Sep 26 16:33:57 CEST 2002 - snwint@suse.de
+
+- added SuSE-SLES theme
+
+-------------------------------------------------------------------
+Fri Sep 13 16:54:12 CEST 2002 - snwint@suse.de
+
+- fixed UnitedLinux theme
+
+-------------------------------------------------------------------
+Wed Sep 11 16:57:35 CEST 2002 - snwint@suse.de
+
+- adjusted scrollbar color
+- added birthday cake
+
+-------------------------------------------------------------------
+Sun Sep  8 15:01:03 CEST 2002 - snwint@suse.de
+
+- handle 'failsafe' properly (#18566)
+- used to crash if boot image was not found
+
+-------------------------------------------------------------------
+Sat Sep  7 18:51:03 CEST 2002 - snwint@suse.de
+
+- improved sound code
+- added mod file with birthday theme
+
+-------------------------------------------------------------------
+Mon Sep  2 11:54:04 CEST 2002 - snwint@suse.de
+
+- different shade of blue
+
+-------------------------------------------------------------------
+Wed Aug 28 16:27:46 CEST 2002 - snwint@suse.de
+
+- new SuSE theme, again
+
+-------------------------------------------------------------------
+Tue Aug 27 18:39:08 CEST 2002 - snwint@suse.de
+
+- apic is back
+
+-------------------------------------------------------------------
+Tue Aug 27 14:57:02 CEST 2002 - snwint@suse.de
+
+- new SuSE theme
+
+-------------------------------------------------------------------
+Wed Aug 21 16:09:00 CEST 2002 - snwint@suse.de
+
+- added UL theme
+
+-------------------------------------------------------------------
+Mon Aug 19 19:16:22 CEST 2002 - snwint@suse.de
+
+- added sound support
+
+-------------------------------------------------------------------
+Mon Jul 22 11:05:38 CEST 2002 - snwint@suse.de
+
+- accidentally left in debug code
+
+-------------------------------------------------------------------
+Wed Jul 17 15:49:30 CEST 2002 - snwint@suse.de
+
+- slightly changed interface to bootloader for grub
+
+-------------------------------------------------------------------
+Wed May 29 14:02:33 CEST 2002 - snwint@suse.de
+
+- fixed for lib64
+
+-------------------------------------------------------------------
+Thu Mar 21 15:44:03 CET 2002 - snwint@suse.de
+
+- new boot image again
+
+-------------------------------------------------------------------
+Sun Mar 17 17:14:22 CET 2002 - snwint@suse.de
+
+- new boot image
+
+-------------------------------------------------------------------
+Sat Mar  9 16:40:33 CET 2002 - snwint@suse.de
+
+- make seven boot options fit into the boot menu
+
+-------------------------------------------------------------------
+Mon Mar  4 11:41:46 CET 2002 - snwint@suse.de
+
+- added 'boot installed os' option
+
+-------------------------------------------------------------------
+Mon Feb 25 17:53:08 CET 2002 - snwint@suse.de
+
+- added apic menu entry
+
+-------------------------------------------------------------------
+Mon Feb 25 12:09:16 CET 2002 - snwint@suse.de
+
+- new 'failsafe' options
+- increased cmdline input buffer to 256 chars
+
+-------------------------------------------------------------------
+Mon Sep 17 11:16:48 CEST 2001 - snwint@suse.de
+
+- new lilo/installation picture
+- added password dialog (#10544)
+
+-------------------------------------------------------------------
+Sun Sep  9 14:01:47 CEST 2001 - snwint@suse.de
+
+- added 'rmoveto' & 'bootloader' functions
+- final 7.3 lilo/installation picture
+
+-------------------------------------------------------------------
+Fri Aug 10 16:21:54 CEST 2001 - snwint@suse.de
+
+- use preliminary 7.3 picture
+
+-------------------------------------------------------------------
+Mon May 14 10:14:02 CEST 2001 - snwint@suse.de
+
+- pictures were still not correct
+- added README (#7754)
+
+-------------------------------------------------------------------
+Fri May 11 15:00:23 CEST 2001 - snwint@suse.de
+
+- new install picture (last one was one line too short)
+
+-------------------------------------------------------------------
+Wed May  9 19:36:16 CEST 2001 - snwint@suse.de
+
+- new lilo/installation pictures
+- copy suselilo to /boot/message (_not_ suseinstall :-/)
+
+-------------------------------------------------------------------
+Tue May  8 09:19:22 CEST 2001 - snwint@suse.de
+
+- moved /usr/share/gfxboot/suselilo to /boot/messsage
+
+-------------------------------------------------------------------
+Sun May  6 16:04:39 CEST 2001 - snwint@suse.de
+
+- in syslinux: wait for driver update disk if requested
+- put space after image label in boot prompt (#7615)
+
+-------------------------------------------------------------------
+Mon Apr 30 15:31:03 CEST 2001 - snwint@suse.de
+
+- make it work with isolinux
+
+-------------------------------------------------------------------
+Sat Apr 28 17:33:54 CEST 2001 - snwint@suse.de
+
+- nearly final versions of lilo and syslinux graphics
+
+-------------------------------------------------------------------
+Sun Apr  8 19:12:26 CEST 2001 - snwint@suse.de
+
+- new installation and lilo logos
+
+-------------------------------------------------------------------
+Thu Apr  5 12:28:52 CEST 2001 - snwint@suse.de
+
+- created package
+
+

@@ -1,0 +1,15 @@
+Index: kyotocabinet-1.2.76/configure.in
+===================================================================
+--- kyotocabinet-1.2.76.orig/configure.in
++++ kyotocabinet-1.2.76/configure.in
+@@ -35,8 +35,8 @@ MYDOCUMENTFILES="COPYING FOSSEXCEPTION C
+ MYPCFILES="kyotocabinet.pc"
+ 
+ # Building flags
+-MYCFLAGS="-Wall -ansi -pedantic -fPIC -fsigned-char -g0"
+-MYCXXFLAGS="-Wall -fPIC -fsigned-char -g0 -O2"
++MYCFLAGS="-Wall -fPIC -fsigned-char "
++MYCXXFLAGS="-Wall -fPIC -fsigned-char -fvisibility-inlines-hidden"
+ MYCPPFLAGS="-I. -I\$(INCLUDEDIR)"
+ MYCPPFLAGS="$MYCPPFLAGS -DNDEBUG -D_GNU_SOURCE=1"
+ MYCPPFLAGS="$MYCPPFLAGS -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D__EXTENSIONS__"

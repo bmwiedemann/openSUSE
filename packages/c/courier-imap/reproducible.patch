@@ -1,0 +1,25 @@
+merged upstream: https://github.com/svarshavchik/courier-libs/pull/10
+from https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=824037
+
+Date: 2016-05-11
+Description: Use SOURCE_DATE_EPOCH for imapd version
+ Use the environment variable SOURCE_DATE_EPOCH (if set) for imapd
+ PROGRAMVERSION, to make the build reproducible.
+ See https://reproducible-builds.org/specs/source-date-epoch/
+Author: Alexis Bienvenüe <pado@passoire.fr>
+
+Index: courier-imap-4.18.2/libs/imap/configure
+===================================================================
+--- courier-imap-4.18.2.orig/libs/imap/configure
++++ courier-imap-4.18.2/libs/imap/configure
+@@ -18345,7 +18345,9 @@ courier)
+ 	;;
+ esac
+ 
+-date=`date`
++SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-`date +%s`}"
++date=`date -u -d "@$SOURCE_DATE_EPOCH" "+%F %T" 2>/dev/null || date -u -r "$SOURCE_DATE_EPOCH" "+%F %T" 2>/dev/null || date -u "+%F %T"`
++
+ 
+ cat >>confdefs.h <<_ACEOF
+ #define PROGRAMVERSION "$package/${target_cpu}-${target_vendor}-${target_os}/$date"

@@ -1,0 +1,1803 @@
+Subject: zkey: Add volume-type property to support LUKS2 volumes
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary: zkey: Support CCA master key change with LUKS2 volumes using paes     
+Description: Support the usage of protected key crypto for dm-crypt disks in
+             LUKS2 format by providing a tool allowing to re-encipher a 
+             secure LUKS2 volume key when the CCA master key is changed
+Upstream-ID: 1f07a41d5a408c1650d20a688cf10bd02a8e7dd7
+Problem-ID:  SEC1424.1
+
+Upstream-Description:
+
+             zkey: Add volume-type property to support LUKS2 volumes
+
+             Allow to specify a volume-type for a key. This applies to all
+             associated volumes. The volume type can be either 'plain' or
+             'luks2'. New keys created will default to 'luks2', but existing
+             keys that do not have a volume-type property default to 'plain'
+             for compatibility reasons.
+
+             The volume type 'luks2' is only available when the define
+             HAVE_LUKS2_SUPPORT is set in the makefile. This is set only
+             when libcryptsetup version 2.0.3 or newer is available
+             at build time. If the define is not set, the volume-type
+             option is not available to the user, and the volume-type of
+             a key defaults to 'plain'.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Reviewed-by: Hendrik Brueckner <brueckner@linux.ibm.com>
+             Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/Makefile   |    1 
+ zkey/keystore.c |  423 +++++++++++++++++++++++++++++++++++++++++++++-----------
+ zkey/keystore.h |   15 +
+ zkey/zkey.1     |  292 ++++++++++++++++++++++++--------------
+ zkey/zkey.c     |  100 +++++++++++--
+ 5 files changed, 627 insertions(+), 204 deletions(-)
+
+--- a/zkey/Makefile
++++ b/zkey/Makefile
+@@ -12,6 +12,7 @@ ifneq (${HAVE_CRYPTSETUP2},0)
+ 	ifneq (${HAVE_JSONC},0)
+ 		BUILD_TARGETS += zkey-cryptsetup
+ 		INSTALL_TARGETS += install-zkey-cryptsetup
++		CPPFLAGS += -DHAVE_LUKS2_SUPPORT
+ 	else
+ 		BUILD_TARGETS += zkey-cryptsetup-skip-jsonc
+ 		INSTALL_TARGETS += zkey-cryptsetup-skip-jsonc
+--- a/zkey/keystore.c
++++ b/zkey/keystore.c
+@@ -59,6 +59,15 @@ struct key_filenames {
+ #define PROP_NAME_CHANGE_TIME	"update-time"
+ #define PROP_NAME_REENC_TIME	"reencipher-time"
+ #define PROP_NAME_KEY_VP	"verification-pattern"
++#define PROP_NAME_VOLUME_TYPE	"volume-type"
++
++#define VOLUME_TYPE_PLAIN	"plain"
++#define VOLUME_TYPE_LUKS2	"luks2"
++#ifdef HAVE_LUKS2_SUPPORT
++	#define DEFAULT_VOLUME_TYPE	VOLUME_TYPE_LUKS2
++#else
++	#define DEFAULT_VOLUME_TYPE	VOLUME_TYPE_PLAIN
++#endif
+ 
+ #define IS_XTS(secure_key_size) (secure_key_size > SECURE_KEY_SIZE ? 1 : 0)
+ 
+@@ -72,11 +81,12 @@ struct key_filenames {
+ #define REC_KEY_FILE		"Key file name"
+ #define REC_SECTOR_SIZE		"Sector size"
+ #define REC_STATUS		"Status"
+-#define REC_MASTERKEY		"Encrypted with"
++#define REC_MASTERKEY		"Enciphered with"
+ #define REC_CREATION_TIME	"Created"
+ #define REC_CHANGE_TIME		"Changed"
+ #define REC_REENC_TIME		"Re-enciphered"
+ #define REC_KEY_VP		"Verification pattern"
++#define REC_VOLUME_TYPE		"Volume type"
+ 
+ #define pr_verbose(keystore, fmt...)	do {				\
+ 						if (keystore->verbose)	\
+@@ -280,6 +290,85 @@ static int _keystore_valid_sector_size(s
+ 	return 1;
+ }
+ 
++/**
++ *  Checks if the volume type is supported.
++ *
++ * @param[in] volume_type   the volume type
++ *
++ * @returns 1 if the volume type is valid, 0 otherwise
++ */
++static int _keystore_valid_volume_type(const char *volume_type)
++{
++	if (strcasecmp(volume_type, VOLUME_TYPE_PLAIN) == 0)
++		return 1;
++#ifdef HAVE_LUKS2_SUPPORT
++	if (strcasecmp(volume_type, VOLUME_TYPE_LUKS2) == 0)
++		return 1;
++#endif
++	return 0;
++}
++
++/**
++ * Returns the volume type contained in the properties. If no volume type
++ * property is contained, then 'plain' is assumed (for backward comatibility).
++ *
++ * @returns a string containing the volume type. Must be freed by the caller.
++ */
++static char *_keystore_get_volume_type(struct properties *properties)
++{
++	char *type;
++
++	type = properties_get(properties, PROP_NAME_VOLUME_TYPE);
++	if (type == NULL)
++		type = util_strdup(VOLUME_TYPE_PLAIN);
++
++	return type;
++}
++
++/**
++ * Prints a message followed by a list of associated volumes, if volumes are
++ * associated and the volume-type matches (if specified)
++ *
++ * @param[in] msg          the message to display
++ * @param[in] properties   the properties
++ * @param[in] volume_type  the volume type to display the message for (or NULL)
++ *
++ * @returns always zero
++ */
++static int _keystore_msg_for_volumes(const char *msg,
++				     struct properties *properties,
++				     const char *volume_type)
++{
++	char *volumes = NULL;
++	char **volume_list;
++	char *type = NULL;
++	int i;
++
++	if (volume_type != NULL) {
++		type = _keystore_get_volume_type(properties);
++		if (strcasecmp(type, volume_type) != 0)
++			goto out;
++	}
++
++	volumes = properties_get(properties, PROP_NAME_VOLUMES);
++	if (volumes != NULL && strlen(volumes) > 0) {
++		volume_list = str_list_split(volumes);
++
++		util_print_indented(msg, 0);
++		for (i = 0; volume_list[i] != NULL; i++)
++			printf("  %s\n", volume_list[i]);
++		str_list_free_string_array(volume_list);
++	}
++
++out:
++	if (volumes != NULL)
++		free(volumes);
++	if (type != NULL)
++		free(type);
++
++	return 0;
++}
++
+ typedef int (*check_association_t)(const char *value, bool remove,
+ 				   char **normalized, void *private);
+ 
+@@ -712,6 +801,35 @@ static int _keystore_match_filter_proper
+ }
+ 
+ /**
++ * Checks if the volume type property matches the specified volume type.
++ * If the properties do not contain a volume type property, then the default
++ * volume type is assumed.
++ *
++ * @param[in] properties   a properties object
++ * @param[in] volume_type  the volume type to match. Can be NULL. In this case
++ *                         it always matches.
++ *
++ * @returns 1 for a match, 0 for not matched
++ */
++static int _keystore_match_volume_type_property(struct properties *properties,
++						const char *volume_type)
++{
++	char *type;
++	int rc = 0;
++
++	if (volume_type == NULL)
++		return 1;
++
++	type = _keystore_get_volume_type(properties);
++	if (strcasecmp(type, volume_type) == 0)
++		rc = 1;
++
++	free(type);
++	return rc;
++}
++
++
++/**
+  * Checks if a key name matches a name filter
+  *
+  * @param[in] name         the name to check
+@@ -774,6 +892,7 @@ typedef int (*process_key_t)(struct keys
+  * @param[in] apqn_filter    the APQN filter. Can contain wild cards, and
+  *                           mutliple APQN filters separated by commas.
+  *                           NULL means no APQN filter.
++ * @param[in] volume_type    If not NULL, specifies the volume type.
+  * @param[in] process_func   the callback function called for a matching key
+  * @param[in/out] process_private private data passed to the process_func
+  *
+@@ -785,6 +904,7 @@ static int _keystore_process_filtered(st
+ 				      const char *name_filter,
+ 				      const char *volume_filter,
+ 				      const char *apqn_filter,
++				      const char *volume_type,
+ 				      process_key_t process_func,
+ 				      void *process_private)
+ {
+@@ -867,6 +987,15 @@ static int _keystore_process_filtered(st
+ 			goto free_prop;
+ 		}
+ 
++		rc = _keystore_match_volume_type_property(key_props,
++							  volume_type);
++		if (rc == 0) {
++			pr_verbose(keystore,
++				   "Key '%s' filtered out due to volume type",
++				   name);
++			goto free_prop;
++		}
++
+ 		rc = process_func(keystore, name, key_props, &file_names,
+ 				  process_private);
+ 		if (rc != 0) {
+@@ -1122,8 +1251,8 @@ static int _keystore_volume_check(const
+ 	}
+ 
+ 	rc = _keystore_process_filtered(info->keystore, NULL, info->volume,
+-					NULL, _keystore_volume_check_process,
+-					info);
++					NULL, NULL,
++					_keystore_volume_check_process, info);
+ out:
+ 	free((void *)info->volume);
+ 	info->volume = NULL;
+@@ -1418,13 +1547,15 @@ static int _keystore_set_default_propert
+  *                        of two and in range 512 - 4096 bytes. 0 means that
+  *                        the sector size is not specified and the system
+  *                        default is used.
++ * @param[in] volume_type the type of volume
+  */
+ static int _keystore_create_info_file(struct keystore *keystore,
+ 				      const char *name,
+ 				      const struct key_filenames *filenames,
+ 				      const char *description,
+ 				      const char *volumes, const char *apqns,
+-				      size_t sector_size)
++				      size_t sector_size,
++				      const char *volume_type)
+ {
+ 	struct volume_check vol_check = { .keystore = keystore, .name = name };
+ 	struct properties *key_props;
+@@ -1469,6 +1600,19 @@ static int _keystore_create_info_file(st
+ 		goto out;
+ 	}
+ 
++	if (volume_type == NULL)
++		volume_type = DEFAULT_VOLUME_TYPE;
++	if (!_keystore_valid_volume_type(volume_type)) {
++		warnx("Invalid volume-type specified");
++		rc = -EINVAL;
++		goto out;
++	}
++	rc = properties_set(key_props, PROP_NAME_VOLUME_TYPE, volume_type);
++	if (rc != 0) {
++		warnx("Invalid characters in volume-type");
++		goto out;
++	}
++
+ 	rc = _keystore_ensure_vp_exists(keystore, filenames, key_props);
+ 	if (rc != 0) {
+ 		warnx("Failed to generate the key verification pattern: %s",
+@@ -1553,6 +1697,7 @@ out:
+  * @param[in] clear_key_file if not NULL the secure key is generated from the
+  *                        clear key contained in the file denoted here.
+  *                        if NULL, the secure key is generated by random.
++ * @param[in] volume_type the type of volume
+  * @param[in] pkey_fd     the file descriptor of /dev/pkey
+  *
+  * @returns 0 for success or a negative errno in case of an error
+@@ -1561,7 +1706,7 @@ int keystore_generate_key(struct keystor
+ 			  const char *description, const char *volumes,
+ 			  const char *apqns, size_t sector_size,
+ 			  size_t keybits, bool xts, const char *clear_key_file,
+-			  int pkey_fd)
++			  const char *volume_type, int pkey_fd)
+ {
+ 	struct key_filenames file_names = { NULL, NULL, NULL };
+ 	struct properties *key_props = NULL;
+@@ -1603,7 +1748,7 @@ int keystore_generate_key(struct keystor
+ 
+ 	rc = _keystore_create_info_file(keystore, name, &file_names,
+ 					description, volumes, apqns,
+-					sector_size);
++					sector_size, volume_type);
+ 	if (rc != 0)
+ 		goto out_free_props;
+ 
+@@ -1640,14 +1785,15 @@ out_free_key_filenames:
+  *                        of two and in range 512 - 4096 bytes. 0 means that
+  *                        the sector size is not specified and the system
+  *                        default is used.
+- * @param[in] import_file The name of a secure key containing the kley to import
++ * @param[in] import_file The name of a secure key containing the key to import
++ * @param[in] volume_type the type of volume
+  *
+  * @returns 0 for success or a negative errno in case of an error
+  */
+ int keystore_import_key(struct keystore *keystore, const char *name,
+ 			const char *description, const char *volumes,
+ 			const char *apqns, size_t sector_size,
+-			const char *import_file)
++			const char *import_file, const char *volume_type)
+ {
+ 	struct key_filenames file_names = { NULL, NULL, NULL };
+ 	struct properties *key_props = NULL;
+@@ -1686,7 +1832,7 @@ int keystore_import_key(struct keystore
+ 
+ 	rc = _keystore_create_info_file(keystore, name, &file_names,
+ 					description, volumes, apqns,
+-					sector_size);
++					sector_size, volume_type);
+ 	if (rc != 0)
+ 		goto out_free_props;
+ 
+@@ -1722,25 +1868,28 @@ out_free_key_filenames:
+  *                        volumes are not changed.
+  * @param[in] apqns       a comma separated list of APQNs associated with this
+  *                        key, or an APQN prefixed with '+' or '-' to add or
+- *                        remove that APQN respectively. IfNULL then the APQNs
++ *                        remove that APQN respectively. If NULL then the APQNs
+  *                        are not changed.
+  * @param[in] sector_size the sector size to use with dm-crypt. It must be power
+  *                        of two and in range 512 - 4096 bytes. 0 means that
+  *                        the sector size is not specified and the system
+  *                        default is used. Specify -1 if this property should
+  *                        not be changed.
+- *
++ * @param[in] volume_type the type of volume. If NULL then the volume type is
++ *                        not changed.
++ * *
+  * @returns 0 for success or a negative errno in case of an error
+  *
+  */
+ int keystore_change_key(struct keystore *keystore, const char *name,
+ 			const char *description, const char *volumes,
+-			const char *apqns, long int sector_size)
++			const char *apqns, long int sector_size,
++			const char *volume_type)
+ {
+ 	struct volume_check vol_check = { .keystore = keystore, .name = name };
+ 	struct key_filenames file_names = { NULL, NULL, NULL };
+ 	struct properties *key_props = NULL;
+-	char temp[10];
++	char temp[30];
+ 	int rc;
+ 
+ 	util_assert(keystore != NULL, "Internal error: keystore is NULL");
+@@ -1803,6 +1952,21 @@ int keystore_change_key(struct keystore
+ 		}
+ 	}
+ 
++	if (volume_type != NULL) {
++		if (!_keystore_valid_volume_type(volume_type)) {
++			warnx("Invalid volume-type specified");
++			rc = -EINVAL;
++			goto out;
++		}
++
++		rc = properties_set(key_props, PROP_NAME_VOLUME_TYPE,
++				    volume_type);
++		if (rc != 0) {
++			warnx("Invalid characters in volume-type");
++			goto out;
++		}
++	}
++
+ 	rc = _keystore_ensure_vp_exists(keystore, &file_names, key_props);
+ 	/* ignore return code, vp generation might fail if key is not valid */
+ 
+@@ -1849,6 +2013,8 @@ int keystore_rename_key(struct keystore
+ {
+ 	struct key_filenames file_names = { NULL, NULL, NULL };
+ 	struct key_filenames new_names = { NULL, NULL, NULL };
++	struct properties *key_props = NULL;
++	char *msg;
+ 	int rc;
+ 
+ 	util_assert(keystore != NULL, "Internal error: keystore is NULL");
+@@ -1896,12 +2062,28 @@ int keystore_rename_key(struct keystore
+ 		}
+ 	}
+ 
++	key_props = properties_new();
++	rc = properties_load(key_props, new_names.info_filename, 1);
++	if (rc != 0) {
++		warnx("Key '%s' does not exist or is invalid", newname);
++		goto out;
++	}
++
++	util_asprintf(&msg, "The following volumes are associated with the "
++		      "renamed key '%s'. You should adjust the corresponding "
++		      "crypttab entries and 'cryptsetup plainOpen' commands to "
++		      "use the new name.", newname);
++	_keystore_msg_for_volumes(msg, key_props, VOLUME_TYPE_PLAIN);
++	free(msg);
++
+ 	pr_verbose(keystore, "Successfully renamed key '%s' to '%s'", name,
+ 		   newname);
+ 
+ out:
+ 	_keystore_free_key_filenames(&file_names);
+ 	_keystore_free_key_filenames(&new_names);
++	if (key_props != NULL)
++		properties_free(key_props);
+ 
+ 	if (rc != 0)
+ 		pr_verbose(keystore, "Failed to rename key '%s'to '%s': %s",
+@@ -1941,6 +2123,8 @@ static struct util_rec *_keystore_setup_
+ 	util_rec_def(rec, REC_KEY_FILE, UTIL_REC_ALIGN_LEFT, 54, REC_KEY_FILE);
+ 	util_rec_def(rec, REC_SECTOR_SIZE, UTIL_REC_ALIGN_LEFT, 54,
+ 		     REC_SECTOR_SIZE);
++	util_rec_def(rec, REC_VOLUME_TYPE, UTIL_REC_ALIGN_LEFT, 54,
++		     REC_VOLUME_TYPE);
+ 	util_rec_def(rec, REC_KEY_VP, UTIL_REC_ALIGN_LEFT, 54, REC_KEY_VP);
+ 	util_rec_def(rec, REC_CREATION_TIME, UTIL_REC_ALIGN_LEFT, 54,
+ 		     REC_CREATION_TIME);
+@@ -1967,6 +2151,7 @@ static void _keystore_print_record(struc
+ 	size_t sector_size = 0;
+ 	size_t apqns_argz_len;
+ 	char *description;
++	char *volume_type;
+ 	char *reencipher;
+ 	char *creation;
+ 	char *volumes;
+@@ -2001,6 +2186,7 @@ static void _keystore_print_record(struc
+ 	change = properties_get(properties, PROP_NAME_CHANGE_TIME);
+ 	reencipher = properties_get(properties, PROP_NAME_REENC_TIME);
+ 	vp = properties_get(properties, PROP_NAME_KEY_VP);
++	volume_type = _keystore_get_volume_type(properties);
+ 
+ 	util_rec_set(rec, REC_KEY, name);
+ 	if (validation)
+@@ -2039,6 +2225,7 @@ static void _keystore_print_record(struc
+ 	else
+ 		util_rec_set(rec, REC_SECTOR_SIZE, "%lu bytes",
+ 			     sector_size);
++	util_rec_set(rec, REC_VOLUME_TYPE, volume_type);
+ 	if (vp != NULL) {
+ 		len = sprintf(temp_vp, "%.*s%c%.*s",
+ 			      VERIFICATION_PATTERN_LEN / 2, vp,
+@@ -2075,6 +2262,8 @@ static void _keystore_print_record(struc
+ 		free(reencipher);
+ 	if (vp != NULL)
+ 		free(vp);
++	if (volume_type != NULL)
++		free(volume_type);
+ }
+ 
+ struct validate_info {
+@@ -2227,10 +2416,10 @@ static int _keystore_process_validate(st
+ 
+ 	if (valid && is_old_mk) {
+ 		util_print_indented("WARNING: The secure key is currently "
+-				    "enciphered with the OLD CCA master key "
+-				    "and should be re-enciphered with the "
+-				    "CURRENT CCA master key as soon as "
+-				    "possible to avoid data loss\n", 0);
++				    "enciphered with the OLD CCA master key. "
++				    "To mitigate the danger of data loss "
++				    "re-encipher it with the CURRENT CCA "
++				    "master key\n", 0);
+ 		info->num_warnings++;
+ 	}
+ 	if (_keystore_display_apqn_status(properties, name) != 0)
+@@ -2271,7 +2460,7 @@ int keystore_validate_key(struct keystor
+ 	info.num_warnings = 0;
+ 
+ 	rc = _keystore_process_filtered(keystore, name_filter, NULL,
+-					apqn_filter,
++					apqn_filter, NULL,
+ 					_keystore_process_validate, &info);
+ 
+ 	util_rec_free(rec);
+@@ -2458,7 +2647,8 @@ static int _keystore_process_reencipher(
+ 		if (params.complete) {
+ 			warnx("Key '%s' is not valid, re-enciphering is not "
+ 			      "completed", name);
+-			warnx("Possibly the CCA master key not yet been set?");
++			warnx("The new CCA master key might yet have to be set "
++			      "as the CURRENT master key.");
+ 		} else {
+ 			warnx("Key '%s' is not valid, it is not re-enciphered",
+ 			      name);
+@@ -2526,6 +2716,14 @@ static int _keystore_process_reencipher(
+ 						   file_names->info_filename);
+ 		if (rc != 0)
+ 			goto out;
++
++		util_asprintf(&temp, "The following LUKS2 volumes are "
++			      "encrypted with key '%s'. You should also "
++			      "re-encipher the volume key of those volumes "
++			      "using command 'zkey-cryptsetup reencipher "
++			      "<device>':", name);
++		_keystore_msg_for_volumes(temp, properties, VOLUME_TYPE_LUKS2);
++		free(temp);
+ 	}
+ 
+ 	if (params.complete ||
+@@ -2539,12 +2737,11 @@ static int _keystore_process_reencipher(
+ 	}
+ 
+ 	if (params.inplace != 1) {
+-		util_asprintf(&temp, "Staged re-enciphering has completed for "
+-			      "key '%s'. Run 'zkey reencipher' with option "
+-			      "'--complete' when the NEW CCA master key has "
+-			      "been set (moved to the CURRENT master key "
+-			      "register) to complete the re-enciphering "
+-			      "process", name);
++		util_asprintf(&temp, "Staged re-enciphering is initiated for "
++			      "key '%s'. After the NEW CCA master key has been "
++			      "set to become the CURRENT master key run "
++			      "'zkey reencipher' with option '--complete' to "
++			      "complete the re-enciphering process", name);
+ 		util_print_indented(temp, 0);
+ 		free(temp);
+ 	}
+@@ -2613,7 +2810,7 @@ int keystore_reencipher_key(struct keyst
+ 	info.num_skipped = 0;
+ 
+ 	rc = _keystore_process_filtered(keystore, name_filter, NULL,
+-					apqn_filter,
++					apqn_filter, NULL,
+ 					_keystore_process_reencipher, &info);
+ 
+ 	if (rc != 0) {
+@@ -2833,10 +3030,9 @@ static int _keystore_propmp_for_remove(s
+ 				       struct key_filenames *file_names)
+ {
+ 	struct properties *key_prop;
+-	char *volumes = NULL;
+-	char **volume_list = NULL;
+ 	char str[20];
+-	int rc, i;
++	char *msg;
++	int rc;
+ 
+ 	key_prop = properties_new();
+ 	rc = properties_load(key_prop, file_names->info_filename, 1);
+@@ -2845,15 +3041,10 @@ static int _keystore_propmp_for_remove(s
+ 		goto out;
+ 	}
+ 
+-	volumes = properties_get(key_prop, PROP_NAME_VOLUMES);
+-	if (volumes != NULL && strlen(volumes) > 0) {
+-		volume_list = str_list_split(volumes);
+-
+-		warnx("When you remove key '%s' the following volumes will "
+-		      "no longer be usable:", name);
+-		for (i = 0; volume_list[i] != NULL; i++)
+-			fprintf(stderr, "%s\n", volume_list[i]);
+-	}
++	util_asprintf(&msg, "When you remove key '%s' the following volumes "
++		      "will no longer be usable:", name);
++	_keystore_msg_for_volumes(msg, key_prop, VOLUME_TYPE_PLAIN);
++	free(msg);
+ 
+ 	printf("%s: Remove key '%s'? ", program_invocation_short_name, name);
+ 	if (fgets(str, sizeof(str), stdin) == NULL) {
+@@ -2870,9 +3061,6 @@ static int _keystore_propmp_for_remove(s
+ 
+ out:
+ 	properties_free(key_prop);
+-	if (volume_list != NULL)
+-		str_list_free_string_array(volume_list);
+-
+ 	return rc;
+ }
+ 
+@@ -3000,22 +3188,30 @@ out:
+  * @param[in] apqn_filter    the APQN filter. Can contain wild cards, and
+  *                           mutliple APQN filters separated by commas.
+  *                           NULL means no APQN filter.
++ * @param[in] volume_type    The volume type. NULL means no volume type filter.
+  *
+  * @returns 0 for success or a negative errno in case of an error
+  */
+ int keystore_list_keys(struct keystore *keystore, const char *name_filter,
+-		       const char *volume_filter, const char *apqn_filter)
++		       const char *volume_filter, const char *apqn_filter,
++		       const char *volume_type)
+ {
+ 	struct util_rec *rec;
+ 	int rc;
+ 
+ 	util_assert(keystore != NULL, "Internal error: keystore is NULL");
+ 
++	if (volume_type != NULL &&
++	    !_keystore_valid_volume_type(volume_type)) {
++		warnx("Invalid volume-type specified");
++		return -EINVAL;
++	}
++
+ 	rec = _keystore_setup_record(0);
+ 
+ 	rc = _keystore_process_filtered(keystore, name_filter, volume_filter,
+-					apqn_filter, _keystore_display_key,
+-					rec);
++					apqn_filter, volume_type,
++					_keystore_display_key, rec);
+ 	util_rec_free(rec);
+ 
+ 	if (rc != 0)
+@@ -3067,6 +3263,7 @@ struct crypt_info {
+ 			    const char *key_file_name,
+ 			    size_t key_file_size,
+ 			    size_t sector_size,
++			    const char *volume_type,
+ 			    struct crypt_info *info);
+ };
+ 
+@@ -3080,7 +3277,8 @@ struct crypt_info {
+  * @param[in] cipher_spec the cipher specification
+  * @param[in] key_file_name the key file name
+  * @param[in] key_file_size the size of the key file in bytes
+- * @param sector_size    the sector size in bytes or 0 if not specified
++ * @param[in] sector_size    the sector size in bytes or 0 if not specified
++ * @param[in] volume_type the volume type
+  * @param[in] info       processing info
+  *
+  * @returns 0 if successful, a negative errno value otherwise
+@@ -3092,6 +3290,7 @@ static int _keystore_process_cryptsetup(
+ 					const char *key_file_name,
+ 					size_t key_file_size,
+ 					size_t sector_size,
++					const char *volume_type,
+ 					struct crypt_info *info)
+ {
+ 	char temp[100];
+@@ -3099,18 +3298,53 @@ static int _keystore_process_cryptsetup(
+ 	char *cmd;
+ 
+ 	sprintf(temp, "--sector-size %lu ", sector_size);
+-	util_asprintf(&cmd,
+-		      "cryptsetup plainOpen %s--key-file '%s' --key-size %lu "
+-		      "--cipher %s %s%s %s",
+-		      keystore->verbose ? "-v " : "", key_file_name,
+-		      key_file_size * 8, cipher_spec,
+-		      sector_size > 0 ? temp : "", volume, dmname);
+-
+-	if (info->execute) {
+-		printf("Executing: %s\n", cmd);
+-		rc = _keystore_execute_cmd(cmd, "cryptsetup");
++
++	if (strcasecmp(volume_type, VOLUME_TYPE_PLAIN) == 0) {
++		util_asprintf(&cmd,
++			      "cryptsetup plainOpen %s--key-file '%s' "
++			      "--key-size %lu --cipher %s %s%s %s",
++			      keystore->verbose ? "-v " : "", key_file_name,
++			      key_file_size * 8, cipher_spec,
++			      sector_size > 0 ? temp : "", volume, dmname);
++
++		if (info->execute) {
++			printf("Executing: %s\n", cmd);
++			rc = _keystore_execute_cmd(cmd, "cryptsetup");
++		} else {
++			printf("%s\n", cmd);
++		}
++	} else if (strcasecmp(volume_type, VOLUME_TYPE_LUKS2) == 0) {
++		util_asprintf(&cmd,
++			      "cryptsetup luksFormat %s--type luks2 "
++			      "--master-key-file '%s' --key-size %lu "
++			      "--cipher %s %s%s",
++			      keystore->verbose ? "-v " : "", key_file_name,
++			      key_file_size * 8, cipher_spec,
++			      sector_size > 0 ? temp : "", volume);
++
++		if (info->execute) {
++			printf("Executing: %s\n", cmd);
++			rc = _keystore_execute_cmd(cmd, "cryptsetup");
++		} else {
++			printf("%s\n", cmd);
++		}
++
++		free(cmd);
++		if (rc != 0)
++			return rc;
++
++		util_asprintf(&cmd,
++			      "zkey-cryptsetup setvp %s%s", volume,
++			      keystore->verbose ? " -V " : "");
++
++		if (info->execute) {
++			printf("Executing: %s\n", cmd);
++			rc = _keystore_execute_cmd(cmd, "zkey-cryptsetup");
++		} else {
++			printf("%s\n", cmd);
++		}
+ 	} else {
+-		printf("%s\n", cmd);
++		return -EINVAL;
+ 	}
+ 
+ 	free(cmd);
+@@ -3127,7 +3361,8 @@ static int _keystore_process_cryptsetup(
+  * @param[in] cipher_spec the cipher specification
+  * @param[in] key_file_name the key file name
+  * @param[in] key_file_size the size of the key file in bytes
+- * @param sector_size    the sector size in bytes or 0 if not specified
++ * @param[in] sector_size the sector size in bytes or 0 if not specified
++ * @param[in] volume_type the volume type
+  * @param[in] info       processing info (not used here)
+  *
+  * @returns 0 if successful, a negative errno value otherwise
+@@ -3140,26 +3375,35 @@ static int _keystore_process_crypttab(st
+ 				      const char *key_file_name,
+ 				      size_t key_file_size,
+ 				      size_t sector_size,
++				      const char *volume_type,
+ 				      struct crypt_info *UNUSED(info))
+ {
+ 	char temp[1000];
+ 
+-	if (sector_size > 0) {
+-		sprintf(temp,
+-			"WARNING: volume '%s' is using a sector size of %lu. "
+-			"At the time this utility was developed, systemd's "
+-			"support of crypttab did not support to specify a "
+-			"sector size with plain dm-crypt devices. The generated "
+-			"crypttab entry might or might not work, and might need "
+-			"manual adoptions.", volume, sector_size);
+-		util_print_indented(temp, 0);
++	if (strcasecmp(volume_type, VOLUME_TYPE_PLAIN) == 0) {
++		if (sector_size > 0) {
++			sprintf(temp,
++				"WARNING: volume '%s' is using a sector size "
++				"of %lu. At the time this utility was "
++				"developed, systemd's support of crypttab did "
++				"not support to specify a sector size with "
++				"plain dm-crypt devices. The generated "
++				"crypttab entry might or might not work, and "
++				"might need manual adoptions.", volume,
++				sector_size);
++			util_print_indented(temp, 0);
++		}
++
++		sprintf(temp, ",sector-size=%lu", sector_size);
++		printf("%s\t%s\t%s\tplain,cipher=%s,size=%lu,hash=plain%s\n",
++		       dmname, volume, key_file_name, cipher_spec,
++		       key_file_size * 8, sector_size > 0 ? temp : "");
++	} else if (strcasecmp(volume_type, VOLUME_TYPE_LUKS2) == 0) {
++		printf("%s\t%s\n", dmname, volume);
++	} else {
++		return -EINVAL;
+ 	}
+ 
+-	sprintf(temp, ",sector-size=%lu", sector_size);
+-	printf("%s\t%s\t%s\tplain,cipher=%s,size=%lu,hash=plain%s\n",
+-	       dmname, volume, key_file_name, cipher_spec, key_file_size * 8,
+-	       sector_size > 0 ? temp : "");
+-
+ 	return 0;
+ }
+ 
+@@ -3251,6 +3495,7 @@ static int _keystore_process_crypt(struc
+ 	struct crypt_info *info = (struct crypt_info *)private;
+ 	char **volume_list = NULL;
+ 	char *cipher_spec = NULL;
++	char *volume_type = NULL;
+ 	size_t secure_key_size;
+ 	size_t sector_size = 0;
+ 	char *volumes = NULL;
+@@ -3290,6 +3535,8 @@ static int _keystore_process_crypt(struc
+ 		free(temp);
+ 	}
+ 
++	volume_type = _keystore_get_volume_type(properties);
++
+ 	for (i = 0; volume_list[i] != NULL && rc == 0; i++) {
+ 		vol = volume_list[i];
+ 		if (_keystore_match_filter(vol, info->volume_filter,
+@@ -3306,7 +3553,8 @@ static int _keystore_process_crypt(struc
+ 
+ 			rc = info->process_func(keystore, vol, dmname,
+ 					cipher_spec, file_names->skey_filename,
+-					secure_key_size, sector_size, info);
++					secure_key_size, sector_size,
++					volume_type, info);
+ 			if (rc != 0)
+ 				break;
+ 		}
+@@ -3319,6 +3567,8 @@ out:
+ 		str_list_free_string_array(volume_list);
+ 	if (cipher_spec != NULL)
+ 		free(cipher_spec);
++	if (volume_type != NULL)
++		free(volume_type);
+ 	return rc;
+ }
+ 
+@@ -3333,11 +3583,12 @@ out:
+  *                           checks the volume part only.
+  * @param[in] execute        If TRUE the cryptsetup command is executed,
+  *                           otherwise it is printed to stdout
+- *
++ * @param[in] volume_type the type of volume to generate cryptsetup cmds for
++ * *
+  * @returns 0 for success or a negative errno in case of an error
+  */
+ int keystore_cryptsetup(struct keystore *keystore, const char *volume_filter,
+-			bool execute)
++			bool execute, const char *volume_type)
+ {
+ 	struct crypt_info info = { 0 };
+ 	int rc;
+@@ -3346,12 +3597,20 @@ int keystore_cryptsetup(struct keystore
+ 
+ 	if (volume_filter == NULL)
+ 		volume_filter = "*";
++
++	if (volume_type != NULL &&
++	    !_keystore_valid_volume_type(volume_type)) {
++		warnx("Invalid volume-type specified");
++		return -EINVAL;
++	}
++
+ 	info.execute = execute;
+ 	info.volume_filter = str_list_split(volume_filter);
+ 	info.process_func = _keystore_process_cryptsetup;
+ 
+ 	rc = _keystore_process_filtered(keystore, NULL, volume_filter, NULL,
+-					_keystore_process_crypt, &info);
++					volume_type, _keystore_process_crypt,
++					&info);
+ 
+ 	str_list_free_string_array(info.volume_filter);
+ 
+@@ -3376,10 +3635,12 @@ int keystore_cryptsetup(struct keystore
+  *                           The ':dm-name' part of the volume is optional
+  *                           for the volume filter. If not specified, the filter
+  *                           checks the volume part only.
++ * @param[in] volume_type    the type of volume to generate crypttab entries for
+  *
+  * @returns 0 for success or a negative errno in case of an error
+  */
+-int keystore_crypttab(struct keystore *keystore, const char *volume_filter)
++int keystore_crypttab(struct keystore *keystore, const char *volume_filter,
++		      const char *volume_type)
+ {
+ 	struct crypt_info info = { 0 };
+ 	int rc;
+@@ -3388,11 +3649,19 @@ int keystore_crypttab(struct keystore *k
+ 
+ 	if (volume_filter == NULL)
+ 		volume_filter = "*";
++
++	if (volume_type != NULL &&
++	    !_keystore_valid_volume_type(volume_type)) {
++		warnx("Invalid volume-type specified");
++		return -EINVAL;
++	}
++
+ 	info.volume_filter = str_list_split(volume_filter);
+ 	info.process_func = _keystore_process_crypttab;
+ 
+ 	rc = _keystore_process_filtered(keystore, NULL, volume_filter, NULL,
+-					_keystore_process_crypt, &info);
++					volume_type, _keystore_process_crypt,
++					&info);
+ 
+ 	str_list_free_string_array(info.volume_filter);
+ 
+--- a/zkey/keystore.h
++++ b/zkey/keystore.h
+@@ -30,16 +30,17 @@ int keystore_generate_key(struct keystor
+ 			  const char *description, const char *volumes,
+ 			  const char *apqns, size_t sector_size,
+ 			  size_t keybits, bool xts, const char *clear_key_file,
+-			  int pkey_fd);
++			  const char *volume_type, int pkey_fd);
+ 
+ int keystore_import_key(struct keystore *keystore, const char *name,
+ 			const char *description, const char *volumes,
+ 			const char *apqns, size_t sector_size,
+-			const char *import_file);
++			const char *import_file, const char *volume_type);
+ 
+ int keystore_change_key(struct keystore *keystore, const char *name,
+ 			const char *description, const char *volumes,
+-			const char *apqns, long int sector_size);
++			const char *apqns, long int sector_size,
++			const char *volume_type);
+ 
+ int keystore_rename_key(struct keystore *keystore, const char *name,
+ 			const char *newname);
+@@ -63,12 +64,14 @@ int keystore_remove_key(struct keystore
+ 			bool quiet);
+ 
+ int keystore_list_keys(struct keystore *keystore, const char *name_filter,
+-		       const char *volume_filter, const char *apqn_filter);
++		       const char *volume_filter, const char *apqn_filter,
++		       const char *volume_type);
+ 
+ int keystore_cryptsetup(struct keystore *keystore, const char *volume_filter,
+-			bool execute);
++			bool execute, const char *volume_type);
+ 
+-int keystore_crypttab(struct keystore *keystore, const char *volume_filter);
++int keystore_crypttab(struct keystore *keystore, const char *volume_filter,
++		      const char *volume_type);
+ 
+ void keystore_free(struct keystore *keystore);
+ 
+--- a/zkey/zkey.1
++++ b/zkey/zkey.1
+@@ -75,30 +75,32 @@ key repository.
+ .BR generate | gen
+ .I secure\-key\-file
+ .RB [ \-\-keybits | \-k
+-.IB size ]
++.IR size ]
+ .RB [ \-\-xts | \-x ]
+ .RB [ \-\-clearkey | \-c
+-.IB clear\-key\-file ]
++.IR clear\-key\-file ]
+ .RB [ \-\-verbose | \-V ]
+ .
+ .PP
+ .B zkey
+ .BR generate | gen
+ .B \-\-name | \-N
+-.IB key-name
++.IR key-name
+ .RB [ \-\-description | \-d
+-.IB description ]
++.IR description ]
+ .RB [ \-\-volumes | \-l
+-.IB volume1:dmname1[,volume2:dmname2[,...]] ]
++.IR volume1:dmname1[,volume2:dmname2[,...]] ]
+ .RB [ \-\-apqns | \-a
+-.IB card1.domain1[,card2.domain2[,...]] ]
++.IR card1.domain1[,card2.domain2[,...]] ]
+ .RB [ \-\-sector-size | \-S
+-.IB bytes ]
++.IR bytes ]
++.RB [ \-\-volume-type | \-t
++.IR type ]
+ .RB [ \-\-keybits | \-k
+-.IB size ]
++.IR size ]
+ .RB [ \-\-xts | \-x ]
+ .RB [ \-\-clearkey | \-c
+-.IB clear\-key\-file ]
++.IR clear\-key\-file ]
+ .RB [ \-\-verbose | \-V ]
+ .PP
+ Use the
+@@ -115,16 +117,16 @@ The generated secure key can either be s
+ or in the secure key repository. To store the generated secure key in a
+ file, specify the file name with option \fIsecure\-key\-file\fP. To store the
+ secure key in the secure key repository, specify the name of the key using the
+-.B --name
++.B \-\-name
+ option. When storing the secure key in a key repository,
+ additional information can be associated with a secure key using the
+-.B --description
++.B \-\-description
+ ,
+-.B --volumes
++.B \-\-volumes
+ ,
+-.B --apqns
++.B \-\-apqns
+ , or the
+-.B --sector-size
++.B \-\-sector-size
+ options.
+ .
+ .SS "Validating secure AES keys"
+@@ -138,7 +140,7 @@ options.
+ .B zkey
+ .BR validate | val
+ .RB [ \-\-name | \-N
+-.IB key-name ]
++.IR key-name ]
+ .RB [ \-\-verbose | \-V ]
+ .PP
+ Use the
+@@ -156,10 +158,10 @@ secure key repository. To validate a sec
+ the file name with option \fIsecure\-key\-file\fP. To validate secure keys
+ contained in the secure key repository, specify the name of the key
+ or a pattern containing wildcards using the
+-.B --name
++.B \-\-name
+ option. When wildcards are used you must quote the value.
+ If neither option \fIsecure\-key\-file\fP nor option
+-.B --name
++.B \-\-name
+ are specified, then all secure keys contained in the key repository
+ are validated.
+ .
+@@ -171,15 +173,15 @@ are validated.
+ .RB [ \-\-to\-new | \-n ]
+ .RB [ \-\-from\-old | \-o ]
+ .RB [ \-\-output | \-f
+-.IB output\-file ]
++.IR output\-file ]
+ .RB [ \-\-verbose | \-V ]
+ .PP
+ .B zkey
+ .BR reencipher | re
+ .RB [ \-\-name | \-N
+-.IB key-name ]
++.IR key-name ]
+ .RB [ \-\-apqns | \-a
+-.IB card1.domain1[,card2.domain2[,...]] ]
++.IR card1.domain1[,card2.domain2[,...]] ]
+ .RB [ \-\-to\-new | \-n ]
+ .RB [ \-\-from\-old | \-o ]
+ .RB [ \-\-in-place | \-i ]
+@@ -190,7 +192,7 @@ are validated.
+ Use the
+ .B reencipher
+ command to re-encipher an existing secure key with a new master key.
+-A secure key bust be re-enciphered when the master key of the CCA
++A secure key must be re-enciphered when the master key of the CCA
+ cryptographic adapter changes.
+ .PP
+ The CCA cryptographic adapter has three different registers to store
+@@ -243,18 +245,18 @@ secure key repository. To re-encipher a
+ specify the file name with option \fIsecure\-key\-file\fP. To re-encipher
+ secure keys contained in the secure key repository, specify the name of the key
+ or a pattern containing wildcards using the
+-.B --name
++.B \-\-name
+ option. When wildcards are used you must quote the value.
+ You can also specify the
+-.B --apqns
++.B \-\-apqns
+ option to re-encipher those secure
+ keys which are associated with the specified cryptographic adapters (APQNs).
+ You can use wildcards for the APQN specification.
+ When wildcards are used you must quote the value.
+ If both option
+-.B --name
++.B \-\-name
+ and option
+-.B --apqns
++.B \-\-apqns
+ are specified then all secure keys
+ contained in the key repository that match both patterns are re-enciphered.
+ If all both options are omitted, then all secure keys contained in the key
+@@ -265,7 +267,7 @@ performed \fBin-place\fP, or in \fBstage
+ .PP
+ \fB"In-place"\fP immediately replaces the secure key in the repository with
+ the re-enciphered secure key. Re-enciphering from \fBOLD\fP to \fBCURRENT\fP is
+-performed in-place per default. You can use option \fB--in-place\fP to force an
++performed in-place per default. You can use option \fB\-\-in-place\fP to force an
+ in-place re-enciphering for the \fBCURRENT\fP to \fBNEW\fP case. Be aware that
+ a secure key that was re-enciphered in-place from \fBCURRENT\fP to \fBNEW\fP
+ is no longer valid, until the new CCA master key has been made the current one.
+@@ -273,9 +275,9 @@ is no longer valid, until the new CCA ma
+ \fBStaged\fP mode means that the re-enciphered secure key is stored in a
+ separate file in the secure key repository. Thus the current secure key is still
+ valid at this point. Once the new CCA master key has been set (made active), you
+-must rerun the reencipher command with option \fB--complete\fP to complete the
++must rerun the reencipher command with option \fB\-\-complete\fP to complete the
+ staged re-enciphering. Re-enciphering from \fBCURRENT\fP to \fBNEW\fP is
+-performed in staged mode per default. You can use option \fB--staged\fP to force
++performed in staged mode per default. You can use option \fB\-\-staged\fP to force
+ a staged re-enciphering for the \fBOLD\fP to \fBCURRENT\fP case.
+ .PP
+ .B Note:
+@@ -288,15 +290,17 @@ to be installed.
+ .BR import | im
+ .I secure\-key\-file
+ .B \-\-name | \-N
+-.IB key-name
++.IR key-name
+ .RB [ \-\-description | \-d
+-.IB description ]
++.IR description ]
+ .RB [ \-\-volumes | \-l
+-.IB volume1:dmname1[,volume2:dmname2[,...]] ]
++.IR volume1:dmname1[,volume2:dmname2[,...]] ]
+ .RB [ \-\-apqns | \-a
+-.IB card1.domain1[,card2.domain2[,...]] ]
++.IR card1.domain1[,card2.domain2[,...]] ]
+ .RB [ \-\-sector-size | \-S
+-.IB bytes ]
++.IR bytes ]
++.RB [ \-\-volume-type | \-t
++.IR type ]
+ .RB [ \-\-verbose | \-V ]
+ .
+ .PP
+@@ -305,13 +309,13 @@ Use the
+ command to import an existing secure key contained in a file into the the
+ secure key repository. When importing a secure key in a key repository,
+ additional information can be associated with a secure key using the
+-.B --description
++.B \-\-description
+ ,
+-.B --volumes
++.B \-\-volumes
+ ,
+-.B --apqns
++.B \-\-apqns
+ , or the
+-.B --sector-size
++.B \-\-sector-size
+ options.
+ .
+ .SS "Export AES secure keys from the secure key repository"
+@@ -320,7 +324,7 @@ options.
+ .BR export | ex
+ .I secure\-key\-file
+ .B \-\-name | \-N
+-.IB key-name
++.IR key-name
+ .RB [ \-\-verbose | \-V ]
+ .
+ .PP
+@@ -329,7 +333,7 @@ Use the
+ command to export an existing secure key contained in the secure key repository
+ to a file in the file system. Specify the name of the key that is to be exported
+ using the
+-.B --name
++.B \-\-name
+ option. You cannot use wildcards.
+ When wildcards are used you must quote the value.
+ The exported secure key also remains in the secure key repository.
+@@ -339,20 +343,22 @@ The exported secure key also remains in
+ .B zkey
+ .BR list | li
+ .RB [ \-\-name | \-N
+-.IB key-name ]
++.IR key-name ]
+ .RB [ \-\-volumes | \-l
+-.IB volume1[:dmname1][,volume2[:dmname2][,...]] ]
++.IR volume1[:dmname1][,volume2[:dmname2][,...]] ]
+ .RB [ \-\-apqns | \-a
+-.IB card1.domain1[,card2.domain2[,...]] ]
++.IR card1.domain1[,card2.domain2[,...]] ]
++.RB [ \-\-volume-type | \-t
++.IR type ]
+ .RB [ \-\-verbose | \-V ]
+ .
+ .PP
+ Use the
+ .B list
+ command to display a list of secure keys contained in the secure key repository.
+-You can filter the displayed list by key name, associated volumes, and
+-associated cryptographic adapters (APQNs). You can use wildcards for the key
+-name, associated APQNs, and associated volumes. The device-mapper name of an
++You can filter the displayed list by key name, associated volumes, associated
++cryptographic adapters (APQNs), and volume type. You can use wildcards for the
++key name, associated APQNs, and associated volumes. The device-mapper name of an
+ associated volume can be omitted; if it is specified then only those keys are
+ listed that are associated with the specified volume and device-mapper name.
+ .PP
+@@ -369,7 +375,7 @@ modification and last re-encipherment.
+ .B zkey
+ .BR remove | rem
+ .B \-\-name | \-N
+-.IB key-name
++.IR key-name
+ .RB [ \-\-force | \-F ]
+ .RB [ \-\-verbose | \-V ]
+ .
+@@ -378,10 +384,10 @@ Use the
+ .B remove
+ command to remove an existing secure key from the secure key repository.
+ Specify the name of the key that is to be removed using the
+-.B --name
++.B \-\-name
+ option. You cannot use wildcards. The remove command prompts for
+ a confirmation, unless you specify the
+-.B --force
++.B \-\-force
+ option.
+ .PP
+ .B Note:
+@@ -395,43 +401,45 @@ secure key.
+ .B zkey
+ .BR change | ch
+ .B \-\-name | \-N
+-.IB key-name
++.IR key-name
+ .RB [ \-\-description | \-d
+-.IB description ]
++.IR description ]
+ .RB [ \-\-volumes | \-l
+-.IB [+|-]volume1:dmname1[,volume2:dmname2[,...]] ]
++.IR [+|-]volume1:dmname1[,volume2:dmname2[,...]] ]
+ .RB [ \-\-apqns | \-a
+-.IB [+|-]card1.domain1[,card2.domain2[,...]] ]
++.IR [+|-]card1.domain1[,card2.domain2[,...]] ]
+ .RB [ \-\-sector-size | \-S
+-.IB bytes ]
++.IR bytes ]
++.RB [ \-\-volume-type | \-t
++.IR type ]
+ .RB [ \-\-verbose | \-V ]
+ .
+ .PP
+ Use the
+ .B change
+ command to change the description, the associated volumes, the associated
+-cryptographic adapters (APQNs), and the sector size of a secure key contained
+-in the secure key repository. Specify the name of the key that is to be changed
+-using the
+-.B --name
++cryptographic adapters (APQNs), the sector size, and the volume type of a secure
++key contained in the secure key repository. Specify the name of the key that is
++to be changed using the
++.B \-\-name
+ option. You cannot use wildcards.
+ .PP
+ You can set (replace), add, or
+ remove volume and cryptographic adapters (APQN) associations. To set
+ (replace) an association, specify the association with the
+-.B --volumes
++.B \-\-volumes
+ or the
+-.B --apqns
++.B \-\-apqns
+ options. To add an association,
+ specify the new association prefixed with a \fI+\fP with the
+-.B --volumes
++.B \-\-volumes
+ or the
+-.B --apqns
++.B \-\-apqns
+ options. To remove an association,
+ specify the association to remove prefixed with a \fI-\fP with the
+-.B --volumes
++.B \-\-volumes
+ or the
+-.B --apqns
++.B \-\-apqns
+ options. You cannot mix \fI+\fP and
+ \fI-\fP in one specification. You can either add or remove (or set) the
+ associations with one command.
+@@ -447,9 +455,9 @@ command.
+ .B zkey
+ .BR rename | ren
+ .B \-\-name | \-N
+-.IB key-name
++.IR key-name
+ .B \-\-new-name | \-w
+-.IB new-key-name
++.IR new-key-name
+ .RB [ \-\-verbose | \-V ]
+ .
+ .PP
+@@ -457,9 +465,9 @@ Use the
+ .B rename
+ command to rename an existing secure key in the secure key repository.
+ Specify the name of the key that is to be renamed using the
+-.B --name
++.B \-\-name
+ option and the new name using the
+-.B --new-name
++.B \-\-new-name
+ option. You cannot use wildcards.
+ .
+ .SS "Copy (duplicate) existing AES secure keys in the secure key repository"
+@@ -467,11 +475,11 @@ option. You cannot use wildcards.
+ .B zkey
+ .B copy | co
+ .RB \-\-name | \-N
+-.IB key-name
++.IR key-name
+ .B \-\-new-key-name | \-w
+-.IB new-name
++.IR new-name
+ .RB [ \-\-volumes | \-l
+-.IB volume1:dmname1[,volume2:dmname2[,...]] ]
++.IR volume1:dmname1[,volume2:dmname2[,...]] ]
+ .RB [ \-\-verbose | \-V ]
+ .
+ .PP
+@@ -479,15 +487,15 @@ Use the
+ .B copy
+ command to copy (duplicate) an existing secure key in the secure key repository.
+ Specify the name of the key that is to be copied using the
+-.B --name
++.B \-\-name
+ option and the name of the copied key using the
+-.B --new-name
++.B \-\-new-name
+ option. You cannot use wildcards.
+ .PP
+ .B Note:
+ When copying a secure key, the volume associations are not copied, because
+ a specific volume can only be associated with a single secure key. Specify the
+-.B --volumes
++.B \-\-volumes
+ option to associate different
+ volumes with the copied secure key, or use the \fBchange\fP command to associate
+ volumes afterwards.
+@@ -497,45 +505,56 @@ volumes afterwards.
+ .B zkey
+ .BR crypttab | cryptt
+ .RB [ \-\-volumes | \-l
+-.IB volume1[:dmname1][,volume2[:dmname2][,...]] ]
++.IR volume1[:dmname1][,volume2[:dmname2][,...]] ]
++.RB [ \-\-volume-type | \-t
++.IR type ]
+ .RB [ \-\-verbose | \-V ]
+ .
+ .PP
+ Use the
+ .B crypttab
+-command to generate crypttab entries using the \fBplain\fP dm-crypt mode
+-for volumes that are associated with secure keys contained in the secure key
+-repository. Specify the
+-.B --volumes
++command to generate crypttab entries using the \fBplain\fP or \fBLUKS2\fP
++dm-crypt mode for volumes that are associated with secure keys contained in the
++secure key repository. Specify the
++.B \-\-volumes
+ option to limit the list
+ of volumes where crypttab entries are generated for. You can use wildcards.
+ When wildcards are used you must quote the value.
+ The device-mapper name of an associated volume can be omitted; if it is
+ specified then only those volumes with the specified volume and device-mapper
+ name are selected.
++Specify the
++.B \-\-volume-type
++option to generate crypttab entries for the specified volume type only.
+ .
+ .SS "Generate cryptsetup commands for volumes associated with secure AES keys"
+ .
+ .B zkey
+ .BR cryptsetup | crypts
+ .RB [ \-\-volumes | \-l
+-.IB volume1[:dmname1][,volume2[:dmname2][,...]] ]
++.IR volume1[:dmname1][,volume2[:dmname2][,...]] ]
++.RB [ \-\-volume-type | \-t
++.IR type ]
+ .RB [ \-\-run | \-r ]
+ .RB [ \-\-verbose | \-V ]
+ .
+ .PP
+ Use the
+ .B cryptsetup
+-command to generate \fBcryptsetup plainOpen\fP commands for volumes that are
+-associated with secure keys contained in the secure key repository. Specify the
+-.B --volumes
++command to generate \fBcryptsetup plainOpen\fP or \fBcryptsetup luksFormat\fP
++commands for volumes that are associated with secure keys contained in the
++secure key repository. Specify the
++.B \-\-volumes
+ option to limit the list
+ of volumes where cryptsetup commands are generated for. You can use wildcards.
+ When wildcards are used you must quote the value.
+ The device-mapper name of an associated volume can be omitted; if it is
+ specified then only those volumes with the specified volume and device-mapper
+ name are selected. Specify the
+-.B --run
++.B \-\-volume-type
++option to generate cryptsetup commands for the specified volume type only.
++Specify the
++.B \-\-run
+ option to run the generated cryptsetup commands.
+ .
+ .
+@@ -589,8 +608,17 @@ This option is only used for secure keys
+ .TP
+ .BR \-S ", " \-\-sector-size\~\fIbytes\fP
+ Specifies the sector size in bytes used with dm-crypt. It must be a power of two
+-and in the range 512 - 4096 bytes. If omitted, the system default sector size
+-is used.
++and in the range of 512 to 4096 bytes. If omitted, the system default sector
++size is used.
++This option is only used for secure keys contained in the secure key repository.
++.TP
++.BR \-t ", " \-\-volume-type\~\fItype\fP
++Specifies the volume type of the associated volumes used with dm-crypt. Possible
++values are \fBplain\fP and \fBluks2\fP. If omitted, \fBluks2\fP is used.
++This option is only available if
++.B zkey
++has been compiled with LUKS2 support enabled. If LUKS2 support is not enabled,
++the default volume type is \fBplain\fP.
+ This option is only used for secure keys contained in the secure key repository.
+ .
+ .
+@@ -650,7 +678,7 @@ repository is performed in staged mode.
+ secure key is stored in a separate file in the secure key repository. Thus the
+ current secure key is still valid at this point. Once the new CCA master key has
+ been set (made active), you must rerun the reencipher command with option
+-\fB--complete\fP to complete the staged re-enciphering.
++\fB\-\-complete\fP to complete the staged re-enciphering.
+ Re-enciphering from CURRENT to NEW is performed in staged mode per default.
+ This option is only used for secure keys contained in the secure key repository.
+ .TP
+@@ -690,8 +718,17 @@ This option is only used for secure keys
+ .TP
+ .BR \-S ", " \-\-sector-size\~\fIbytes\fP
+ Specifies the sector size in bytes used with dm-crypt. It must be a power of two
+-and in the range 512 - 4096 bytes. If omitted, the system default sector size
+-is used.
++and in the range of 512 to 4096 bytes. If omitted, the system default sector
++size is used.
++This option is only used for secure keys contained in the secure key repository.
++.TP
++.BR \-t ", " \-\-volume-type\~\fItype\fP
++Specifies the volume type of the associated volumes used with dm-crypt. Possible
++values are \fBplain\fP and \fBluks2\fP. If omitted, \fBluks2\fP is used.
++This option is only available if
++.B zkey
++has been compiled with LUKS2 support enabled. If LUKS2 support is not enabled,
++the default volume type is \fBplain\fP.
+ This option is only used for secure keys contained in the secure key repository.
+ .
+ .
+@@ -734,6 +771,15 @@ APQNs. Each APQN association specifies a
+ by a period (like lszcrypt displays it). You can use wildcards in the APQN
+ specification.
+ This option is only used for secure keys contained in the secure key repository.
++.TP
++.BR \-t ", " \-\-volume-type\~\fItype\fP
++Specifies the volume type of the associated volumes used with dm-crypt. Possible
++values are \fBplain\fP and \fBluks2\fP. Only keys with the specified volume
++type are listed.
++This option is only available if
++.B zkey
++has been compiled with LUKS2 support enabled.
++This option is only used for secure keys contained in the secure key repository.
+ .
+ .
+ .
+@@ -791,9 +837,16 @@ This option is only used for secure keys
+ .TP
+ .BR \-S ", " \-\-sector-size\~\fIbytes\fP
+ Specifies the sector size in bytes used with dm-crypt. It must be a power of two
+-and in the range 512 - 4096 bytes. If omitted, the system default sector size
+-is used. Specify \fI0\fP to un-set the sector size so that the system default
+-is used.
++and in the range of 512 to 4096 bytes. Specify \fI0\fP to set the sector size
++to the system default.
++This option is only used for secure keys contained in the secure key repository.
++.TP
++.BR \-t ", " \-\-volume-type\~\fItype\fP
++Specifies the volume type of the associated volumes used with dm-crypt. Possible
++values are \fBplain\fP and \fBluks2\fP.
++This option is only available if
++.B zkey
++has been compiled with LUKS2 support enabled.
+ This option is only used for secure keys contained in the secure key repository.
+ .
+ .
+@@ -845,6 +898,15 @@ specified volume and device-mapper name.
+ the volumes and device-mapper names.
+ When wildcards are used you must quote the value.
+ This option is only used for secure keys contained in the secure key repository.
++.TP
++.BR \-t ", " \-\-volume-type\~\fItype\fP
++Specifies the volume type of the associated volumes used with dm-crypt. Possible
++values are \fBplain\fP and \fBluks2\fP. Only keys with the specified volume
++type are selected to generate crypttab entries for.
++This option is only available if
++.B zkey
++has been compiled with LUKS2 support enabled.
++This option is only used for secure keys contained in the secure key repository.
+ .
+ .
+ .
+@@ -861,10 +923,18 @@ the volumes and device-mapper names.
+ When wildcards are used you must quote the value.
+ This option is only used for secure keys contained in the secure key repository.
+ .TP
+-.BR \-r ", " \-\-run\fP
+-Runs the generated cryptsetup commands. When an execution of a cryptsetup
+-command fails, no further cryptsetup commands are executed, and zkey ends
+-with an error.
++.BR \-t ", " \-\-volume-type\~\fItype\fP
++Specifies the volume type of the associated volumes used with dm-crypt. Possible
++values are \fBplain\fP and \fBluks2\fP. Only keys with the specified volume
++type are selected to generate cryptsetup commands for.
++This option is only available if
++.B zkey
++has been compiled with LUKS2 support enabled.
++This option is only used for secure keys contained in the secure key repository.
++.TP
++.BR \-r ", " \-\-run
++Runs the generated cryptsetup commands. When one of the cryptsetup command fail,
++no further cryptsetup commands are run, and zkey ends with an error.
+ This option is only used for secure keys contained in the secure key repository.
+ .
+ .
+@@ -895,15 +965,20 @@ in file 'seckey.bin'.
+ Generates a secure AES key from the clear key in file 'clearkey.bin' and
+ stores it in file 'seckey.bin'.
+ .TP
+-.B zkey generate --name seckey
++.B zkey generate \-\-name seckey
+ Generates a random 256-bit secure AES key and stores it in the secure key
+-repository under the name 'seckey'.
++repository using the name 'seckey'.
+ .TP
+-.B zkey generate --name seckey --volumes /dev/dasdc1:encvol --apqns 03.004c
++.B zkey generate \-\-name seckey \-\-volumes /dev/dasdc1:encvol \-\-apqns 03.004c
+ Generates a random 256-bit secure AES key and stores it in the secure key
+-repository under the name 'seckey' and associates it with block
++repository using the name 'seckey' and associates it with block
+ device '/dev/dasdc1' and device-mapper name 'encvol', and APQN '03.004c'.
+ .TP
++.B zkey generate \-\-name seckey \-\-volumes /dev/dasdc1:encvol \-\-volume-type luks2
++Generates a random 256-bit secure AES key and stores it in the secure key
++repository using the name 'seckey' and associates it with block
++device '/dev/dasdc1' and device-mapper name 'encvol', and a volume type of luks2.
++.TP
+ .B zkey reencipher seckey.bin \-\-from\-old
+ Re-enciphers the secure key in file 'seckey.bin' which is currently enciphered
+ with the master key in the OLD register with the master key in the CURRENT
+@@ -915,17 +990,17 @@ Re-enciphers the secure key in file 'sec
+ with the master key in the CURRENT register with the master key in the NEW
+ register, and saves the re-enciphered secure key to file 'seckey2.bin'.
+ .TP
+-.B zkey reencipher --name seckey
++.B zkey reencipher \-\-name seckey
+ Re-enciphers the secure key 'seckey' in the secure key repository.
+ .TP
+-.B zkey reencipher --apqns 03.004c
++.B zkey reencipher \-\-apqns 03.004c
+ Re-enciphers all secure keys contained in the secure key repository that are
+ associated with APQN '03.004c'.
+ .TP
+ .B zkey validate seckey.bin
+ Validates the secure key in file 'seckey.bin' and displays its attributes.
+ .TP
+-.B zkey validate --name seckey
++.B zkey validate \-\-name seckey
+ Validates the secure key 'seckey' in the secure key repository and displays its
+ attributes.
+ .TP
+@@ -933,25 +1008,28 @@ attributes.
+ Lists all secure keys in the secure key repository and displays its
+ attributes.
+ .TP
+-.B zkey list --name '*key'
++.B zkey list \-\-name '*key'
+ Lists all secure keys in the secure key repository with names ending with 'key'
+ and displays its attributes.
+ .TP
+-.B zkey change --name seckey --volumes +/dev/dasdc2:encvol2
++.B zkey change \-\-name seckey \-\-volumes +/dev/dasdc2:encvol2
+ Changes the secure key 'seckey' in the secure key repository and adds
+ volume '/dev/dasdc2' with device-mapper name 'encvol2' to the list of associated
+ volumes of this secure key.
+ .TP
+-.B zkey change --name seckey --apqns -03.004c
++.B zkey change \-\-name seckey \-\-apqns -03.004c
+ Changes the secure key 'seckey' in the secure key repository and removes
+ APQN '03.004c' from the list of associated APQNs of this secure key.
+ .TP
+-.B zkey crypttab --volumes '/dev/dasdc*'
++.B zkey crypttab \-\-volumes '/dev/dasdc*'
+ Generates crypttab entries for all volumes that match the pattern '/dev/dasdc*'.
+ .TP
+-.B zkey cryptsetup --volumes '*:enc_dasd'
++.B zkey cryptsetup \-\-volumes '*:enc_dasd'
+ Generates cryptsetup commands for the volumes that uses the device-mapper
+ name 'enc_dasd'.
++.TP
++.B zkey cryptsetup \-\-volume-type luks2
++Generates cryptsetup commands for all volumes of type luks2.
+ .
+ .SH ENVIRONMENT
+ .TP
+--- a/zkey/zkey.c
++++ b/zkey/zkey.c
+@@ -68,6 +68,7 @@ static struct zkey_globals {
+ 	char *volumes;
+ 	char *apqns;
+ 	long int sector_size;
++	char *volume_type;
+ 	char *newname;
+ 	bool run;
+ 	bool force;
+@@ -180,6 +181,16 @@ static struct util_opt opt_vec[] = {
+ 			"used",
+ 		.command = COMMAND_GENERATE,
+ 	},
++#ifdef HAVE_LUKS2_SUPPORT
++	{
++		.option = { "volume-type", required_argument, NULL, 't'},
++		.argument = "type",
++		.desc = "The type of the associated volume(s). Possible values "
++			"are 'plain' and 'luks2'. When this option is omitted, "
++			"the default is 'luks2'",
++		.command = COMMAND_GENERATE,
++	},
++#endif
+ 	/***********************************************************/
+ 	{
+ 		.flags = UTIL_OPT_FLAG_SECTION,
+@@ -211,19 +222,23 @@ static struct util_opt opt_vec[] = {
+ 	},
+ 	{
+ 		.option = {"complete", 0, NULL, 'p'},
+-		.desc = "Completes a pending re-enciphering of a secure AES "
+-			"key that was re-enciphered with the master key in the "
+-			"NEW register",
++		.desc = "Completes a staged re-enciphering. Use this option "
++			"after the new CCA master key has been set (made "
++			"active)",
+ 		.command = COMMAND_REENCIPHER,
+ 	},
+ 	{
+ 		.option = {"in-place", 0, NULL, 'i'},
+-		.desc = "Forces an in-place re-enchipering of a secure AES key",
++		.desc = "Forces an in-place re-enchipering of a secure AES "
++			"key. Re-enciphering from OLD to CURRENT is performed "
++			"in-place per default",
+ 		.command = COMMAND_REENCIPHER,
+ 	},
+ 	{
+ 		.option = {"staged", 0, NULL, 's'},
+-		.desc = "Forces a staged re-enchipering of a secure AES key",
++		.desc = "Forces that the re-enciphering of a secure AES key is "
++			"performed in staged mode. Re-enciphering from CURRENT "
++			"to NEW is performed in staged mode per default",
+ 		.command = COMMAND_REENCIPHER,
+ 	},
+ 	{
+@@ -310,6 +325,16 @@ static struct util_opt opt_vec[] = {
+ 			"used",
+ 		.command = COMMAND_IMPORT,
+ 	},
++#ifdef HAVE_LUKS2_SUPPORT
++	{
++		.option = { "volume-type", required_argument, NULL, 't'},
++		.argument = "type",
++		.desc = "The type of the associated volume(s). Possible values "
++			"are 'plain' and 'luks2'. When this option is omitted, "
++			"the default is 'luks2'",
++		.command = COMMAND_IMPORT,
++	},
++#endif
+ 	/***********************************************************/
+ 	{
+ 		.flags = UTIL_OPT_FLAG_SECTION,
+@@ -358,6 +383,16 @@ static struct util_opt opt_vec[] = {
+ 			"associated with specific crypto cards",
+ 		.command = COMMAND_LIST,
+ 	},
++#ifdef HAVE_LUKS2_SUPPORT
++	{
++		.option = { "volume-type", required_argument, NULL, 't'},
++		.argument = "type",
++		.desc = "The type of the associated volume(s). Possible values "
++			"are 'plain' and 'luks2'. Use this option to list all "
++			"keys with the specified volumes type.",
++		.command = COMMAND_LIST,
++	},
++#endif
+ 	/***********************************************************/
+ 	{
+ 		.flags = UTIL_OPT_FLAG_SECTION,
+@@ -422,11 +457,19 @@ static struct util_opt opt_vec[] = {
+ 		.option = { "sector-size", required_argument, NULL, 'S'},
+ 		.argument = "0|512|4096",
+ 		.desc = "The sector size used with dm-crypt. It must be power "
+-			"of two and in range 512 - 4096 bytes. If this option "
+-			"is omitted, the system default sector size (512) is "
+-			"used",
++			"of two and in range 512 - 4096 bytes. Specify 0 to "
++			"use the system default sector size (512)",
++		.command = COMMAND_CHANGE,
++	},
++#ifdef HAVE_LUKS2_SUPPORT
++	{
++		.option = { "volume-type", required_argument, NULL, 't'},
++		.argument = "type",
++		.desc = "The type of the associated volume(s). Possible values "
++			"are 'plain' and 'luks2'",
+ 		.command = COMMAND_CHANGE,
+ 	},
++#endif
+ 	/***********************************************************/
+ 	{
+ 		.flags = UTIL_OPT_FLAG_SECTION,
+@@ -494,6 +537,17 @@ static struct util_opt opt_vec[] = {
+ 			"volume and the device-mapper name matches",
+ 		.command = COMMAND_CRYPTTAB,
+ 	},
++#ifdef HAVE_LUKS2_SUPPORT
++	{
++		.option = { "volume-type", required_argument, NULL, 't'},
++		.argument = "type",
++		.desc = "The type of the associated volume(s). Possible values "
++			"are 'plain' and 'luks2'. Use this option to select "
++			"the keys by its volume type for which a crypttab "
++			"entry is to be generated",
++		.command = COMMAND_CRYPTTAB,
++	},
++#endif
+ 	/***********************************************************/
+ 	{
+ 		.flags = UTIL_OPT_FLAG_SECTION,
+@@ -512,6 +566,17 @@ static struct util_opt opt_vec[] = {
+ 			"both, the volume and the device-mapper name matches",
+ 		.command = COMMAND_CRYPTSETUP,
+ 	},
++#ifdef HAVE_LUKS2_SUPPORT
++	{
++		.option = { "volume-type", required_argument, NULL, 't'},
++		.argument = "type",
++		.desc = "The type of the associated volume(s). Possible values "
++			"are 'plain' and 'luks2'. Use this option to select "
++			"the keys by its volume type for which a crypttab "
++			"entry is to be generated",
++		.command = COMMAND_CRYPTSETUP,
++	},
++#endif
+ 	{
+ 		.option = {"run", 0, NULL, 'r'},
+ 		.desc = "Runs the generated cryptsetup command",
+@@ -819,7 +884,7 @@ static int command_generate_repository(v
+ 
+ 	rc = keystore_generate_key(g.keystore, g.name, g.description, g.volumes,
+ 				   g.apqns, g.sector_size, g.keybits, g.xts,
+-				   g.clearkeyfile, g.pkey_fd);
++				   g.clearkeyfile,  g.volume_type, g.pkey_fd);
+ 
+ 	return rc != 0 ? EXIT_FAILURE : EXIT_SUCCESS;
+ }
+@@ -1167,7 +1232,8 @@ static int command_import(void)
+ 		g.sector_size = 0;
+ 
+ 	rc = keystore_import_key(g.keystore, g.name, g.description, g.volumes,
+-				 g.apqns, g.sector_size, g.pos_arg);
++				 g.apqns, g.sector_size, g.pos_arg,
++				 g.volume_type);
+ 
+ 	return rc != 0 ? EXIT_FAILURE : EXIT_SUCCESS;
+ }
+@@ -1200,7 +1266,8 @@ static int command_list(void)
+ {
+ 	int rc;
+ 
+-	rc = keystore_list_keys(g.keystore, g.name, g.volumes, g.apqns);
++	rc = keystore_list_keys(g.keystore, g.name, g.volumes, g.apqns,
++				g.volume_type);
+ 
+ 	return rc != 0 ? EXIT_FAILURE : EXIT_SUCCESS;
+ }
+@@ -1239,7 +1306,7 @@ static int command_change(void)
+ 	}
+ 
+ 	rc = keystore_change_key(g.keystore, g.name, g.description, g.volumes,
+-				 g.apqns, g.sector_size);
++				 g.apqns, g.sector_size, g.volume_type);
+ 
+ 	return rc != 0 ? EXIT_FAILURE : EXIT_SUCCESS;
+ }
+@@ -1299,7 +1366,7 @@ static int command_crypttab(void)
+ {
+ 	int rc;
+ 
+-	rc = keystore_crypttab(g.keystore, g.volumes);
++	rc = keystore_crypttab(g.keystore, g.volumes, g.volume_type);
+ 
+ 	return rc != 0 ? EXIT_FAILURE : EXIT_SUCCESS;
+ }
+@@ -1313,7 +1380,7 @@ static int command_cryptsetup(void)
+ {
+ 	int rc;
+ 
+-	rc = keystore_cryptsetup(g.keystore, g.volumes, g.run);
++	rc = keystore_cryptsetup(g.keystore, g.volumes, g.run, g.volume_type);
+ 
+ 	return rc != 0 ? EXIT_FAILURE : EXIT_SUCCESS;
+ }
+@@ -1490,6 +1557,11 @@ int main(int argc, char *argv[])
+ 				return EXIT_FAILURE;
+ 			}
+ 			break;
++#ifdef HAVE_LUKS2_SUPPORT
++		case 't':
++			g.volume_type = optarg;
++			break;
++#endif
+ 		case 'w':
+ 			g.newname = optarg;
+ 			break;

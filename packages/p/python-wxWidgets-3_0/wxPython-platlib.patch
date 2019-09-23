@@ -1,0 +1,40 @@
+From: jmatejek@suse.cz
+References: http://trac.wxwidgets.org/ticket/14779
+
+Do not expect platform dependent and platform independent paths being
+equal.
+
+---
+ wxPython/config.py |    5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+Index: wxPython-src-3.0.0.0/wxPython/config.py
+===================================================================
+--- wxPython-src-3.0.0.0.orig/wxPython/config.py
++++ wxPython-src-3.0.0.0/wxPython/config.py
+@@ -48,6 +48,8 @@ import distutils.command.clean
+ 
+ from cfg_version import *
+ 
++import distutils.sysconfig
++
+ #----------------------------------------------------------------------
+ # flags and values that affect this script
+ #----------------------------------------------------------------------
+@@ -691,7 +693,7 @@ def getExtraPath(shortVer=True, addOpts=
+     if FLAVOUR:
+         ep += "-" + FLAVOUR
+ 
+-    return ep
++    return os.path.join(distutils.sysconfig.get_python_lib(True), ep)
+ 
+ 
+ def getoutput(cmd):
+@@ -726,7 +728,6 @@ def getVisCVersion():
+ # the -arch and -isysroot args provided by Python.
+ 
+ import distutils.unixccompiler
+-import distutils.sysconfig
+ from distutils.errors import DistutilsExecError, CompileError
+ 
+ def _darwin_compiler_fixup(compiler_so, cc_args):

@@ -1,0 +1,19 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/hreinecke/zramcfg.git</param>
+    <param name="filename">zramcfg</param>
+    <param name="versionformat">0.2</param>
+    <param name="revision">e1cf005</param>
+    <!--
+    <param name="versionformat">0.2.git@TAG_OFFSET@</param>
+    <param name="parent-tag">e1cf005</param>
+    <param name="revision">master</param>
+    -->
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*zramcfg*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

@@ -1,0 +1,5 @@
+<package name="rubygem-amq-protocol" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-amq-protocol"/>
+</package>

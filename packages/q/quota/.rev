@@ -1,0 +1,463 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>99dd51c8413422902a2615f41550cb27</srcmd5>
+    <version>3.14</version>
+    <time>1168904094</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="23">
+    <srcmd5>1c533fcca08949f4b8aea3a1b22acacc</srcmd5>
+    <version>3.14</version>
+    <time>1174434189</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="30">
+    <srcmd5>98fd4f35a8913ccba08d32294aa49d9b</srcmd5>
+    <version>3.14</version>
+    <time>1177415860</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ea9b898bf929a57dba9eb5a695279df7</srcmd5>
+    <version>3.14.9</version>
+    <time>1182458999</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>f85358528061398afd77cdcf4dd75b2f</srcmd5>
+    <version>3.14.9</version>
+    <time>1183387733</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>21c50c5de69e9f26a43812294ccd2e13</srcmd5>
+    <version>3.15</version>
+    <time>1184790341</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>2cf406668386d54ed55a7faa2b3c339d</srcmd5>
+    <version>3.15</version>
+    <time>1186686920</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="17">
+    <srcmd5>766be0739259747894e573991b296073</srcmd5>
+    <version>3.15</version>
+    <time>1189723712</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="27">
+    <srcmd5>9cfbeacf5e4be95c1355dc9d7525ba17</srcmd5>
+    <version>3.15</version>
+    <time>1195074968</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="33">
+    <srcmd5>498408da044a766026c132246dee915f</srcmd5>
+    <version>3.15</version>
+    <time>1197055617</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7966f68adac22fbb4a96c06e7afed52d</srcmd5>
+    <version>3.16</version>
+    <time>1205431552</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>cb9169242552fa655fbc7c80121b9b5c</srcmd5>
+    <version>3.16</version>
+    <time>1205513792</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>4c3faa0e83460f171380cad0beba051b</srcmd5>
+    <version>3.16</version>
+    <time>1208204483</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>2cd553bae9ff79766105805c2316b484</srcmd5>
+    <version>3.16</version>
+    <time>1208737795</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="17">
+    <srcmd5>b599bf9cfe0b6926d2bb36126ab72b52</srcmd5>
+    <version>3.16</version>
+    <time>1210030905</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="41">
+    <srcmd5>e46ba4a274fba2903775b7ea7252dd25</srcmd5>
+    <version>3.16</version>
+    <time>1219882879</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="49">
+    <srcmd5>ba03722aa27c8b9a1398128273c581c1</srcmd5>
+    <version>3.16</version>
+    <time>1224693946</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="50">
+    <srcmd5>fba3b12e53e19d58f254281a1313ee0e</srcmd5>
+    <version>3.16</version>
+    <time>1226415139</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f796cdb6bd68e616dc792ff60ef567f2</srcmd5>
+    <version>3.17</version>
+    <time>1231780730</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>d59a05d8db3963b4b0e0753238a71340</srcmd5>
+    <version>3.17</version>
+    <time>1253733454</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/quota based on submit request 20914 from user mseben
+</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>d59a05d8db3963b4b0e0753238a71340</srcmd5>
+    <version>3.17</version>
+    <time>1253733454</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/quota based on submit request 20914 from user mseben
+</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>2ff79d0efcba13629319f4b2b030ce9b</srcmd5>
+    <version>3.17</version>
+    <time>1268925948</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>955387623718220ea086392b5cb006e3</srcmd5>
+    <version>3.17</version>
+    <time>1277720006</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/quota based on submit request 41955 from user mseben
+</comment>
+    <requestid>41955</requestid>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>955387623718220ea086392b5cb006e3</srcmd5>
+    <version>3.17</version>
+    <time>1278667386</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>955387623718220ea086392b5cb006e3</srcmd5>
+    <version>3.17</version>
+    <time>1278678615</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="26" vrev="10">
+    <srcmd5>2e4dca2ea92128c66dad8630ebb4f5a0</srcmd5>
+    <version>3.17</version>
+    <time>1285065288</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/quota based on submit request 47612 from user anicka
+</comment>
+    <requestid>47612</requestid>
+  </revision>
+  <revision rev="27" vrev="13">
+    <srcmd5>2e4dca2ea92128c66dad8630ebb4f5a0</srcmd5>
+    <version>3.17</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="28" vrev="14">
+    <srcmd5>a92308d473debb628551e81804e4a2ef</srcmd5>
+    <version>3.17</version>
+    <time>1298032021</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61747 from user vitezslav_cizek
+</comment>
+    <requestid>61747</requestid>
+  </revision>
+  <revision rev="29" vrev="15">
+    <srcmd5>0ebbe39cd5ec4bee3f2b857d262475bb</srcmd5>
+    <version>3.17</version>
+    <time>1298032029</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61747
+</comment>
+  </revision>
+  <revision rev="30" vrev="14">
+    <srcmd5>73465b039e7c8d7eab69d5c8d462a438</srcmd5>
+    <version>4.00</version>
+    <time>1313740541</time>
+    <user>saschpe</user>
+    <comment>- update to 4.00-pre1
+- dropped nfs-mntpoint patch (merged upstream) (forwarded request 79244 from vitezslav_cizek)</comment>
+    <requestid>79256</requestid>
+  </revision>
+  <revision rev="31" vrev="15">
+    <srcmd5>4282b100cb44b1134b16217bcbbfdd37</srcmd5>
+    <version>4.00</version>
+    <time>1313740552</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79256
+</comment>
+  </revision>
+  <revision rev="32" vrev="16">
+    <srcmd5>e5789eaa7ff036f4702a31e419d0991d</srcmd5>
+    <version>4.00</version>
+    <time>1316766992</time>
+    <user>saschpe</user>
+    <comment>Select libnl-1_1-devel</comment>
+    <requestid>84560</requestid>
+  </revision>
+  <revision rev="33" vrev="17">
+    <srcmd5>b7f3e020df19fa2c47d4f6f144999a01</srcmd5>
+    <version>4.00</version>
+    <time>1317744878</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: Mother Autoconf knows best, so don't interfere (forwarded request 86451 from uli_suse)</comment>
+    <requestid>86464</requestid>
+  </revision>
+  <revision rev="34" vrev="19">
+    <srcmd5>b7f3e020df19fa2c47d4f6f144999a01</srcmd5>
+    <version>4.00</version>
+    <time>1319182420</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="35" vrev="20">
+    <srcmd5>985b3db3aefe5496a6a20f51b54f8cb3</srcmd5>
+    <version>4.00</version>
+    <time>1325658666</time>
+    <user>coolo</user>
+    <comment>- remove call to suse_update_config (very old work around) (forwarded request 97730 from coolo)</comment>
+    <requestid>97883</requestid>
+  </revision>
+  <revision rev="36" vrev="21">
+    <srcmd5>b0b6243a7918d51f7551418b6141eab8</srcmd5>
+    <version>4.00</version>
+    <time>1338903300</time>
+    <user>coolo</user>
+    <comment>- unroll binary file list
+- remove install_nld.patch, not needed since 4.00-pre1
+- remove automake dependency
+- prepare UsrMerge (UsrMerge project), this obsoletes man.patch (forwarded request 123133 from rudi_m)</comment>
+    <requestid>123361</requestid>
+  </revision>
+  <revision rev="37" vrev="22">
+    <srcmd5>0ed3bbe1bc1c41ef5c582a7e2123c913</srcmd5>
+    <version>4.00</version>
+    <time>1339352362</time>
+    <user>coolo</user>
+    <comment>- update to 4.00 final (forwarded request 123446 from rudi_m)</comment>
+    <requestid>124311</requestid>
+  </revision>
+  <revision rev="38" vrev="24">
+    <srcmd5>0ed3bbe1bc1c41ef5c582a7e2123c913</srcmd5>
+    <version>4.00</version>
+    <time>1340184134</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="39" vrev="25">
+    <srcmd5>0c3b93a2c95bdf0920dba58622d83e69</srcmd5>
+    <version>4.00</version>
+    <time>1352093517</time>
+    <user>coolo</user>
+    <comment>- boot.quota is obsoleted by systemd-quotacheck
+  http://www.freedesktop.org/software/systemd/man/systemd-quotacheck.service.html
+- rpc.quota daemon will be migrated to systemd later after investigation
+  on a saner approach. (forwarded request 139895 from elvigia)</comment>
+    <requestid>140013</requestid>
+  </revision>
+  <revision rev="40" vrev="27">
+    <srcmd5>0c3b93a2c95bdf0920dba58622d83e69</srcmd5>
+    <version>4.00</version>
+    <time>1359110269</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="28">
+    <srcmd5>7887aba1ebb96cead53577af7507b77e</srcmd5>
+    <version>4.00</version>
+    <time>1368696626</time>
+    <user>coolo</user>
+    <comment>- portmap --&gt; rpcbind (forwarded request 175494 from elvigia)</comment>
+    <requestid>175499</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>83afd46afcfd968017524f6b2103dc4b</srcmd5>
+    <version>4.01</version>
+    <time>1371544621</time>
+    <user>coolo</user>
+    <comment>- last changes are ompatible again with openSUSE &lt; 12.3
+- update to 4.01
+
+To review only the harmless portability changes only you could compare
+  osc rdiff -r32:6 Base:System/quota  home:rudi_m/quota
+and
+  osc rdiff -r27:6 Base:System/quota  home:rudi_m/quota
+(if rdiff would work at all) (forwarded request 178905 from rudi_m)</comment>
+    <requestid>178961</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>83afd46afcfd968017524f6b2103dc4b</srcmd5>
+    <version>4.01</version>
+    <time>1379664427</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>99afd1d5b7ba15a4d721a2a5b5a19c53</srcmd5>
+    <version>4.01</version>
+    <time>1400588636</time>
+    <user>coolo</user>
+    <comment>- Cleanup with spec-cleaner
+- Remove the compat for the usrmerge
+- Use systemd service files instead of the initscript +
+  added extra workaround for argument parsing.
+- Remove extra SUSE traball with scripts as we reduced it down to
+  one script and unitfile.</comment>
+    <requestid>234674</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0fb57823f4984c014e45297e3aac9088</srcmd5>
+    <version>4.01_git201405011753</version>
+    <time>1402947182</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236949</requestid>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>0fb57823f4984c014e45297e3aac9088</srcmd5>
+    <version>4.01_git201405011753</version>
+    <time>1409303153</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="47" vrev="4">
+    <srcmd5>3fdead37ffe6b8df11c2bbd2bd43da48</srcmd5>
+    <version>4.01_git201405011753</version>
+    <time>1416823729</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262459</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>b1360daaeffd9b033ece266e55530b02</srcmd5>
+    <version>4.02</version>
+    <time>1417438845</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 4.02 release
+  * Mostly few trivial fixes.
+- Properly run all systemd calls on services</comment>
+    <requestid>263311</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>cb5e406ec88e4ea930e0c5366e54f485</srcmd5>
+    <version>4.03</version>
+    <time>1452122678</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to set variables upstream rather than in spec:
+  * 0001-Set-fPIC-and-pie-as-default-params-when-building.patch
+
+- Version update to 4.03 release
+  * Various small updates and fixes
+  * Translations update
+  * autotools based buildsystem
+- Refresh patch:
+  * quota-4.01-warnquota.patch
+- Delete obsolete patch:
+  * quota-4.00-makefile.patch</comment>
+    <requestid>352030</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>e0ca27ad2fa385beaa3280d805c66005</srcmd5>
+    <version>4.03</version>
+    <time>1504617407</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable ldapmail feature wrt bsc#1055450</comment>
+    <requestid>520639</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>4e5946c536b21d2c953fe676f79fa88c</srcmd5>
+    <version>4.03</version>
+    <time>1511517427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545046</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>1a51e24f79e7ab38ffcde9fb78d4c29b</srcmd5>
+    <version>4.04</version>
+    <time>1520933033</time>
+    <user>dimstar_suse</user>
+    <comment>- Add rpcgen to buildrequires
+
+- Version update to 4.04:
+  * support for new kernel interface that allows for repquota(8) to work
+    reliably also for XFS or ext4 with quota feature and generally other
+    filesystem where quota files are not available to quota-tools
+  * IPv6 support for rpc.quotad and all other tools.
+  * Tons of various fixes
+- Drop merged patch 0001-Set-fPIC-and-pie-as-default-params-when-building.patch</comment>
+    <requestid>585814</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>19008bd06985fc4cf8ebc6575cb4b9f3</srcmd5>
+    <version>4.04</version>
+    <time>1534543351</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix high cpu load bsc#1104898:
+  * quota-4.04-Listen-on-a-TCP-socket.patch</comment>
+    <requestid>629380</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>8ae785fe4eb09e9c20c119803ab7f697</srcmd5>
+    <version>4.04</version>
+    <time>1553263932</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 4.04 jsc#SLE-5734:</comment>
+    <requestid>687581</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>c8d71679a81893536e36b6d33c75694b</srcmd5>
+    <version>4.05</version>
+    <time>1554276479</time>
+    <user>dimstar_suse</user>
+    <comment>- Install the license
+
+- Update to 4.05 release jsc#SLE-5734:
+  * This release includes mostly various smaller cleanups and fixes
+    in various areas.
+  * Most visible changes are addition of f2fs and exfs among recognized
+    filesystems.
+- Drop merged patch quota-4.04-Listen-on-a-TCP-socket.patch
+- Remove quot binary functionality could be achieved by using
+  repquota instead</comment>
+    <requestid>690619</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>a9d5fb10c424e2bf48f51c4a37797282</srcmd5>
+    <version>4.05</version>
+    <time>1565695519</time>
+    <user>dimstar_suse</user>
+    <comment>- Update patch quota-4.01-warnquota.patch to match up the git
+  version that was integrated bsc#1144265</comment>
+    <requestid>722815</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>819acc7a0236681e87af1a5f795dfeef</srcmd5>
+    <version>4.05</version>
+    <time>1565963048</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch from git to stop config processing on errors bsc#1144265:
+  * 0001-warnquota-Do-not-ignore-errors-in-config-file.patch</comment>
+    <requestid>723505</requestid>
+  </revision>
+</revisionlist>

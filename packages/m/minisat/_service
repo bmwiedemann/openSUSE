@@ -1,0 +1,15 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">git://github.com/niklasso/minisat.git</param>
+    <param name="scm">git</param>
+    <param name="revision">master</param>
+    <param name="filename">minisat</param>
+    <param name="parent-tag">releases/2.2.0</param>
+    <param name="versionformat">2.2.0+%cd</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>

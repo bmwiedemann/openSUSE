@@ -1,0 +1,28 @@
+From ef94719d7ec2adfd72b38418754786d4e3346176 Mon Sep 17 00:00:00 2001
+From: Ting-Wei Lan <lantw@src.gnome.org>
+Date: Mon, 11 Jan 2016 14:14:30 +0800
+Subject: [PATCH] gsound-play: Call setlocale in main function
+
+It is required to correctly show translated messages on some locales.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=760429
+---
+ tools/gsound-play.vala | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tools/gsound-play.vala b/tools/gsound-play.vala
+index 298ba20..e3a5268 100644
+--- a/tools/gsound-play.vala
++++ b/tools/gsound-play.vala
+@@ -55,6 +55,8 @@ async void play() throws Error
+ 
+ int main(string[] args)
+ {
++    Intl.setlocale (LocaleCategory.ALL, "");
++
+     Environment.set_application_name("gsound-play");
+     
+     var opt_ctx = new OptionContext();
+-- 
+2.18.1
+

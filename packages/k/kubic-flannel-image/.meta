@@ -1,0 +1,5 @@
+<package name="kubic-flannel-image" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:kubic:containers" package="kubic-flannel-image"/>
+</package>

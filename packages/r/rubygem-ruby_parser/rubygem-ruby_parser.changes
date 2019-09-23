@@ -1,0 +1,691 @@
+-------------------------------------------------------------------
+Fri Mar 29 06:16:07 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.13.1
+ see installed History.rdoc
+
+  === 3.13.1 / 2019-03-25
+  
+  * 1 major enhancement:
+  
+    * Overhauled RubyLexer#lex_state to allow for multi-state value.
+  
+  * 5 minor enhancements:
+  
+    * Added RubyParser#current so scripts can poke around inside.
+    * Cleaned up and modernized bin/ruby_parse_extract_error.
+    * Removed RubyLexer#in_lex_state? in favor of State#=~ and #==.
+    * Renamed RubyLexer#in_arg_state? to is_after_operator?.
+    * Replaced all use of :expr_<*> symbols w/ bitfields.
+  
+  * 15 bug fixes:
+  
+    * Added tests to show #233 already fixed.
+    * Fixed a lexer state bug dealing with complex edge case in hash  key w/ interpolated symbol and an array value. Not a great fix. (presidentbeef)
+    * Fixed a number of lex_state check problems.
+    * Fixed alias and undef keyword data.
+    * Fixed bug normalizing to utf-8 on tail of dstr (post-interpolation). (mvz)
+    * Fixed handling of hex chars for bare unicode escape. (mvz)
+    * Fixed handling of invalid string octals more gracefully. Needs generalization.
+    * Fixed lexing of regexps w/ backslashed unicode. I hope.
+    * Fixed parse_percent for EXPR_FITEM edge cases. Fixed bug #125.
+    * Fixed parsing of op_asgn on constants (eg ::X ||= 1).
+    * Fixed precedence of rescue modifier on assignments. (mvz/whitequark)
+    * Fixed some EXPR_FNAME edge cases.
+    * Fixed using unicode in gvars. Fixed bug 202. (331299)
+    * Handle invalid string literals more gracefully.
+    * Minor fix lexing %s[]
+
+-------------------------------------------------------------------
+Thu Mar 14 11:05:23 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.13.0
+ see installed History.rdoc
+
+  === 3.13.0 / 2019-03-12
+  
+  * 3 major enhancements:
+  
+    * Removed 1.8 and 1.9 support. Moved to ruby_parser-legacy gem.
+    * Added tentative 2.6 support.
+    * Updated ruby_parser.yy to ruby 2.4 architecture.
+  
+  * 22 minor enhancements:
+  
+    * Added debug3 and cmp3 rake tasks that use the above tools.
+    * Added tLONELY to compare/normalize.rb
+    * Added tools/munge.rb, tools/ripper.rb, and debugging.md
+    * 2.6: Added trailing .. and ... support.
+    * Extended StackState to log more state changes, making debugging easier.
+    * Extended StackState#store to take an initial value.
+    * Improved logging / debugging in StackState.
+    * Improved normalization and parser compare tasks.
+    * Improved tools/munge.rb output.
+    * In f_arglist, track in_kwarg if no parens.
+    * In process_newline_or_comment, handle NL if in_kwarg there vs normal.
+    * Refactored normalized values to WORDLIST.
+    * Refactored parser: push up to relop and rel_expr.
+    * Removed Keyword.keyword18.
+    * Removed RubyLexer version attr_accessors.
+    * Removed long dead deprecations internal to RubyParserStuff.
+    * Removed version arg to RubyLexer#initialize (default nil + no-op).
+    * Renamed Keyword.keyword19 to Keyword.keyword.
+    * Renamed process_bracing to process_brace_close
+    * Renamed process_curly_brace to process_brace_open
+    * Report first parse error message if all parser versions fail, not last.
+    * Updated parser to track against 2.6.
+  
+  * 11 bug fixes:
+  
+    * Fix some shift/reduce errors.
+    * Fixed BEGIN blocks having different arg value that END blocks. (mvz)
+    * Fixed all reported unused non-terminals/rules.
+    * Fixed bug 272.
+    * Fixed bug in interpolated symbol lists. (strviola)
+    * Fixed bug where block shadow arguments were not registered as lvars. (akimd)
+    * Fixed bug where kwsplat args weren't treated as lvars. (mvz)
+    * Fixed lex_state and other internals in many cases.
+    * Fixed shebang in compare/normalize.rb to use env. Avoids rubygems freaking.
+    * Fixed some more internal state bugs.
+    * Fixed tRCURLY -> tSTRING_DEND for interpolation brace closes.
+
+-------------------------------------------------------------------
+Sat Dec  8 16:30:56 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.12.0
+ see installed History.rdoc
+
+  === 3.12.0 / 2018-12-04
+  
+  * 3 minor enhancements:
+  
+    * 2.5: Allow rescue/ensure/else in normal do blocks. (presidentbeef)
+    * Added stabby proc with do/end as block call argument. (presidentbeef)
+    * Holy cow levels of optimization from presidentbeef. I write slow bad code.
+  
+  * 1 bug fix:
+  
+    * Improve handling of single-quoted symbols and labels. (mvz)
+
+-------------------------------------------------------------------
+Thu Feb 15 11:14:05 UTC 2018 - bgeuken@suse.com
+
+- Update to 3.11.0
+
+  * 1 major enhancement:
+
+    * Expand to support ruby 2.5 parsing.
+
+  * 3 bug fixes:
+
+    * Fixed %r lexing when delimiter is also used in (?X) group.
+    * Restore newline after label to detect required kwarg. (presidentbeef)
+    * Return `s(:self)` target for `self[]` calls. (presidentbeef)
+
+-------------------------------------------------------------------
+Thu Aug  3 19:39:05 UTC 2017 - coolo@suse.com
+
+- updated to version 3.10.1
+ see installed History.rdoc
+
+  === 3.10.1 / 2017-07-21
+  
+  * 2 bug fixes:
+  
+    * Fixed identification of parser version whether Ruby##Parser or Parser::V##.
+    * Fixed squiggly heredoc lexing when using 24 parser.
+  
+  === 3.10.0 / 2017-07-17
+  
+  * 4 minor enhancements:
+  
+    * Added support for 'squiggly heredocs' (indented content). (jjoos)
+    * Bumped oedipus_lex to ~> 2.5.
+    * Bumped sexp_processor to ~> 4.9.
+    * Made STRICT_SEXP=1 safe: converted indexed sexps to semantic calls where needed.
+  
+  * 5 bug fixes:
+  
+    * Clear and restore cmdarg stack around defs args and body. (presidentbeef)
+    * Conditionalize use of sexp_body= to make it compatible w/ sexp_processor 4.9.0
+    * Fix up line numbers in strings with newlines and `#`. (presidentbeef)
+    * Fixed line numbers of resbodies.
+    * Fixed some tracking of lexical state. Fixes bug #249.
+
+-------------------------------------------------------------------
+Fri Apr 14 04:35:40 UTC 2017 - coolo@suse.com
+
+- updated to version 3.9.0
+ see installed History.rdoc
+
+  === 3.9.0 / 2017-04-13
+  
+  * 1 major enhancement:
+  
+    * Added tentative ruby 2.4 support. Probably missing things.
+  
+  * 13 minor enhancements:
+  
+    * Added RubyParser.latest.
+    * Added RubyParser::Parser.version to make version range comparisons easier
+    * Changed superclasses of all parsers to RubyParser::Parser
+    * Cleaned up a lot of the version specific code to be more generic/flexible.
+    * Documented how to add new versions in README.
+    * Moved RubyParser from ruby_parser_extras.rb into ruby_parser.rb to fix bootstrap issues.
+    * Renamed RubyParserStuff#get_match_node to new_match. Aliased and deprecated.
+    * Renamed RubyParserStuff#logop to logical_op. Aliased and deprecated.
+    * Renamed RubyParserStuff#node_assign to new_assign. Aliased and deprecated.
+    * Renamed all parsers to RubyParser::V##.
+    * Revamped grammar preprocessing to make adding new versions easier.
+    * RubyParser.for_current_ruby falls back to latest if current not available.
+    * Subclasses of RubyParser::Parser register themselves into RubyParser::VERSIONS.
+  
+  * 4 bug fixes:
+  
+    * Fixed `&.` after newline. (presidentbeef)
+    * Fixed bug setting line number for hash literals to line of opening brace.
+    * Fixed grammar preprocessing bug.
+    * Properly handle kDO with no-parens stabby lambda. (presidentbeef)
+
+-------------------------------------------------------------------
+Sat Jan 14 05:37:47 UTC 2017 - coolo@suse.com
+
+- updated to version 3.8.4
+ History.txt removed upstream
+
+-------------------------------------------------------------------
+Mon Oct 10 04:36:39 UTC 2016 - coolo@suse.com
+
+- updated to version 3.8.3
+ see installed History.txt
+
+  === 3.8.3 / 2016-10-09
+  
+  * 1 minor enhancement:
+  
+    * Support Ruby 2.1 number literals. (soutaro)
+  
+  * 3 bug fixes:
+  
+    * Fixed line numbers for strs with backslash-newlines. (maxjacobson)
+    * Improved compatibility on tokenizing number. (soutaro)
+    * Refactored and fixed multiline array line numbers. (ptoomey3, with changes)
+
+-------------------------------------------------------------------
+Fri May  6 04:46:21 UTC 2016 - coolo@suse.com
+
+- updated to version 3.8.2
+ see installed History.txt
+
+  === 3.8.2 / 2016-05-05
+  
+  * 2 bug fixes:
+  
+    * Fixed lex_state in interpolated strings. (whitequark)
+    * Fixed safe operator for newline/semicolon contexts. (presidentbeef)
+
+-------------------------------------------------------------------
+Wed Mar  2 05:36:30 UTC 2016 - coolo@suse.com
+
+- updated to version 3.8.1
+ see installed History.txt
+
+  === 3.8.1 / 2016-02-19
+  
+  * 1 bug fix:
+  
+    * Fixed problems with tLONELY in mlhs_node.
+
+-------------------------------------------------------------------
+Fri Feb 19 05:39:05 UTC 2016 - coolo@suse.com
+
+- updated to version 3.8.0
+ see installed History.txt
+
+  === 3.8.0 / 2016-02-18
+  
+  * 1 major enhancement:
+  
+    * Added support for Ruby 2.3.0 and the &. operator. (presidentbeef)
+  
+  * 2 minor enhancements:
+  
+    * Add support for safe attr assign. (presidentbeef)
+    * Added support for safe call. (presidentbeef)
+  
+  * 1 bug fix:
+  
+    * Fixed parsing of { 'a': :b }. (presidentbeef)
+
+-------------------------------------------------------------------
+Mon Jan 25 05:53:24 UTC 2016 - coolo@suse.com
+
+- updated to version 3.7.3
+ see installed History.txt
+
+  === 3.7.3 / 2016-01-21
+  
+  * 2 bug fixes:
+  
+    * Fixed parsing kwargs in defs with no parens. (presidentbeef)
+    * defs should have a nil node if body is empty.
+
+-------------------------------------------------------------------
+Tue Oct 27 05:31:29 UTC 2015 - coolo@suse.com
+
+- updated to version 3.7.2
+ see installed History.txt
+
+  === 3.7.2 / 2015-10-26
+  
+  * 1 bug fix:
+  
+    * I hate regexen. Fixed a lexing bug confusing strings vs labels. (phiggins)
+
+-------------------------------------------------------------------
+Fri Aug  7 04:31:24 UTC 2015 - coolo@suse.com
+
+- updated to version 3.7.1
+ see installed History.txt
+
+  === 3.7.1 / 2015-08-06
+  
+  * 1 minor enhancement:
+  
+    * Improved understandability of lexing postfix symbols.
+  
+  * 2 bug fixes:
+  
+    * Fixed timeout caused by regexp backtracking bug w/ long strings in 2.2 parser. (presidentbeef)
+    * Rename DEBUG env toggle to RB_LINENO_DEBUG. (tenderlove)
+
+-------------------------------------------------------------------
+Fri May 29 04:33:58 UTC 2015 - coolo@suse.com
+
+- updated to version 3.7.0
+ see installed History.txt
+
+  === 3.7.0 / 2015-05-28
+  
+  * 2 major enhancements:
+  
+    * Added preliminary support for ruby 2.2 syntax.
+    * Now writing all 2.x parsers from one source, generating racc files.
+  
+  * 1 minor enhancement:
+  
+    * Added RubyLexer#process_label and hooked it up to "x": and 'x': productions.
+  
+  * 4 bug fixes:
+  
+    * Fixed handling of block_args to be consistent across all parse versions.
+    * Fixed lexing of label assoc args w/ newlines in between k/v. (jeremyf)
+    * Fixed lexing of x?'':y for ruby22 (not a label). (presidentbeef)
+    * clear and restore cmdarg stack around def args and body.
+
+-------------------------------------------------------------------
+Tue Apr 14 04:31:15 UTC 2015 - coolo@suse.com
+
+- updated to version 3.6.6
+
+-------------------------------------------------------------------
+Fri Mar 20 20:49:27 UTC 2015 - coolo@suse.com
+
+- updated to version 3.6.5
+ * 1 minor enhancement:
+ 
+   * Add line numbers from block comments =begin/=end. (presidentbeef)
+
+-------------------------------------------------------------------
+Mon Feb  9 12:30:34 UTC 2015 - coolo@suse.com
+
+- updated to version 3.6.4
+ * 1 bug fix:
+   * Removed shebangs in tests because of bugs (aka 'features') in RPM packaging tools.
+
+-------------------------------------------------------------------
+Wed Oct 15 11:09:53 UTC 2014 - coolo@suse.com
+
+- updated to version 3.6.3
+  * 1 bug fix:
+    * Fixed bug caused by latest version of oedipus_lex not exporting lineno accessor.
+    * Handle return/next/break/yield w/ block call (WHY).
+
+-------------------------------------------------------------------
+Mon Oct 13 06:25:16 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Wed Sep 10 13:57:52 UTC 2014 - mrueckert@suse.de
+
+- added gem2rpm.yml as source
+
+-------------------------------------------------------------------
+Wed Sep 10 09:39:32 UTC 2014 - mrueckert@suse.de
+
+- added a small scriptlet to fix the shebang line of the test
+  scripts
+- also added a gem2rpm.yml for later, but did not regenerate the
+  specfile just yet.
+
+-------------------------------------------------------------------
+Sun May 18 09:04:44 UTC 2014 - coolo@suse.com
+
+- updated to version 3.6.1
+ * 1 bug fix:
+   * Strings that don't match the encoding of the file are now returned as ASCII-8BIT.
+ 
+ * 1 minor enhancement:
+   * Added new_string and switched all parsers to it.
+ 
+ * 1 bug fix:
+   * Fixed line numbers of nodes following multi-line strings. (presidentbeef)
+
+-------------------------------------------------------------------
+Sun Apr  6 05:38:51 UTC 2014 - coolo@suse.com
+
+- updated to version 3.5.0
+ * 1 major enhancement:
+ 
+   * Added initial support for ruby 2.1 syntax. Doesn't have numeric extensions yet.
+ 
+ * 2 minor enhancements:
+ 
+   * Converted ruby_lexer.rex to use new grouping mechanism. ~15% improvement in speed.
+   * Various lexer cleanup.
+ 
+ * 2 bug fixes:
+ 
+   * 2.0/2.1: Fixed block kw args.
+   * Fixed env for kwargs and friends.
+
+-------------------------------------------------------------------
+Sat Feb 22 06:25:42 UTC 2014 - coolo@suse.com
+
+- updated to version 3.4.1
+ * 1 minor enhancement:
+   * Added StackState#store and #restore.
+ 
+ * 1 bug fix:
+   * 1.8/1.9/2.0: Fixed tSTRING_DBEG w/ f'd up amounts of nesting + braces + do/end. yeah. I'm as confused as you are.
+
+-------------------------------------------------------------------
+Thu Feb  6 18:00:20 UTC 2014 - coolo@suse.com
+
+- updated to version 3.4.0
+ * 1 major enhancement:
+ 
+   * Replaced hand-written/optimized f'd-up lexer with an oedipus_lex
+     generated lexer. This makes it roughly 40-50% faster.
+ 
+ * 30 minor enhancements:
+ 
+   * 2.0: Added support for a.b c() do d end.e do |f| g end
+   * 2.0: Added support for a.b c() do d end.e f do |g| h end
+   * Added -s flag to ruby_parse_extract_error to output timings.
+   * Added RubyLexer #command_state and #last_state to deal with oedipus_lex differences.
+   * Added String#lineno and #lineno= because I'm a bad bad person.
+   * Added a bunch of RubyLexer scanning methods: beginning_of_line?, check, scan, etc.
+   * Added a bunch of process_* methods extracted from old yylex. process_amper, etc.
+   * Added lib/.document to save my laptop's battery from pain and suffering
+   * Adjust lineno when we lex a bunch of blank lines.
+   * Attach lineno to tIDENTIFIER values (strings, ugh)
+   * Cleaned up and re-ordered node_assign to be faster (ordered by actual occurrance).
+   * Extend RubyParserStuff#gettable to set the lineno if it comes in with the id.
+   * Extended RubyParserStuff#new_case to take line number.
+   * Finally dropped RPStringScanner's BS #current_line.
+   * Finally dropped RPStringScanner's BS line number calculation (lineno). 
+   * Implemented Sexp#add_all since we now have a test case for it.
+   * Removed :call case of node_assign. I don't think it is possible.
+   * Removed RubyLexer #extra_lines_added. No longer used. Complex heredoc lineno's possible screwed up.
+   * Removed RubyLexer#parse_number. Handled by oedipus_lex.
+   * Removed RubyLexer#yacc_value now that next_token returns pairs.
+   * Removed RubyLexer's @src. Now taken care of by oedipus_lex.
+   * Removed RubyParser#advance. RubyParser#next_token takes care of everything now.
+   * Removed RubyParserExtras#arg_add. (presidentbeef! YAY!)
+   * Removed lib/gauntlet_rubyparser.rb. I just don't use it anymore. Too slow.
+   * RubyLexer#is_label_possible? doesn't need an arg
+
+-------------------------------------------------------------------
+Mon Jan 20 09:29:11 UTC 2014 - coolo@suse.com
+
+- updated to version 3.3.0
+ * Notes:
+ 
+ 39 files failed to parse out of ~834k files makes this 99.9953% or 4.07σ.
+ 
+ * 15 minor enhancements:
+ 
+   * 2.0: Parse kwarg as lvars. (chastell)
+   * Added RubyLexer#beginning_of_line?, check(re), end_of_stream?
+   * Added RubyLexer#process_token_keyword.
+   * Added RubyLexer#scan, #matched, #beginning_of_line? and others to decouple from internals.
+   * Added lexing of \u### and \u{###}."
+   * Added optimizations for simple quoted symbols.
+   * Aliased Lexer#src to ss (since that is what it is).
+   * Allow for 20 in parser class name.
+   * Modified parsers line number calculations for defn nodes.
+   * Removed Env#dynamic, #dynamic?, #use, #used?
+   * Removed RubyLexer#tern. Introduced and disused during 3.0 alpha. (whitequark)
+   * Removed unused RubyLexer#warnings.
+   * Renamed *_RE consts to just * (IDENT_CHAR, ESC, etc).
+   * new_defn now sets arg node line number directly.
+   * zero byte is allowed in symbols for 1.9 / 2.0.
+ 
+ * 11 bug fixes:
+ 
+   * 2.0: Fixed paren-less kwargs in defn.
+   * Don't bother with regexp encoding options on 1.9+ to avoid warnings.
+   * Fix constant re-build on ruby 2.0 + rake 10.
+   * Fix lexing of %i with extra whitespace. (flori)
+   * Fixed RubyParserStuff#new_body to deal with nonsensical code better (begin-empty+else). (snatchev)
+   * Fixed bug lexing h[k]=begin ... end. Use your space bars people!
+   * Fixed env scoping in new lambdas.
+   * Fixed handling of single array arg in attrasgn.
+   * Fixed test to call RubyLexer#reset between assertions.
+   * No longer assigning ivar/cvars to env. Only locals should be in env.
+   * Refactored initialize and reset to more properly re-initialize as needed.
+
+-------------------------------------------------------------------
+Tue Jul 30 18:46:52 UTC 2013 - coolo@suse.com
+
+- updated to version 3.2.2
+ 
+ * 5 bug fixes:
+ 
+   * 1.9/2.0: fixed assocs in return args. (presidentbeef)
+   * Fixed handling of parse error when class is nested in multiple defs. (whitequark)
+   * Fixed lexing of %w[] w/ funny whitespace separators. (whitequark)
+   * Fixed more call nodes that have trailing comma syntax. (presidentbeef)
+   * Fixed more call_args slippage.
+ 
+ === 3.2.1 / 2013-07-03
+ 
+ * 1 bug fix:
+ 
+   * 1.9/2.0: Trailing assocs were being munged into arrays. (presidentbeef)
+ 
+ === 3.2.0 / 2013-07-02
+ 
+ * 1 major enhancement:
+ 
+   * Added (rough draft) 2.0 support. Still missing some small / rare things.
+ 
+ * 12 minor enhancements:
+ 
+   * Added %i(symbol-names...) support. (%I too)
+   * Added 140 more tests, jumping test count from 1376 to 2143. Yay for test reuse!
+   * Added RubyLexer#brace_nest.
+   * Added compare20 rake task to diff the grammar architecture against MRI.
+   * Added lpar_beg and paren_nest to lexer to track state of parens in stabbies
+   * Added shadow nodes for scoped block args.
+   * Compound RubyParser now defaults to 2.0.
+   * Fixed rake to < 10, because 10's file dependency handling is so very broken.
+   * Made it possible to specify version in bin/ruby_parse_extract_error w/ -v 18|19|20
+   * Refactored to RubyParserStuff::ENCODING_ORDER to allow custom tweaking of encoding guessing. (samlown)
+   * Switched `rake debug` to default to 2.0.
+   * Translated some fixes across 1.8 and 1.9 from 2.0.
+ 
+ * 42 bug fixes:
+ 
+   * 2.0: Fixed a number of block args scenarios w/ kwargs
+   * 2.0: Fixed args_tail mismatching against lexer.
+   * 2.0: Fixed assocs to return a hash node.
+   * 2.0: Fixed f_block_kw production.
+   * 2.0: Fixed f_block_kwarg production.
+   * 2.0: Fixed handling of stabby proc args in parens.
+   * 2.0: Fixed lexing of kwsplat nodes.
+   * 2.0: Implemented kwsplat nodes.
+   * Added tUBANG to lexer.
+   ...
+
+-------------------------------------------------------------------
+Sat Apr 20 15:47:11 UTC 2013 - coolo@suse.com
+
+- updated to version 3.1.3
+* 2 bug fixes:
+
+  * Fixed begin w/ else but no rescue. (whitequark)
+  * Removed literal stripping from block_append. Not its job.
+
+-------------------------------------------------------------------
+Tue Mar 19 19:51:44 UTC 2013 - coolo@suse.com
+
+- updated to version 3.1.2
+ * 1 minor enhancement:
+ 
+   * OMG A SECURITY ISSUE FOR CODE NOBODY USES... EVER
+
+-------------------------------------------------------------------
+Sat Dec 22 07:30:18 UTC 2012 - coolo@suse.com
+
+- updated to version 3.1.1
+ * 1 minor enhancement:
+ 
+   * Added MOVE_TIMEOUT env var for ruby_parse_extract_error to move slow files to a sibling directory
+ 
+ * 4 bug fixes:
+ 
+   * 1.9: Fixed lexing of "0o". (whitequark)
+   * 1.9: Fixed parsing of unary plus on literals. (whitequark)
+   * Added timeout arg to RubyParser#process to pass through to the real parser
+   * Updated Synopsis to reflect new options for running RP. (louismullie)
+
+-------------------------------------------------------------------
+Fri Dec  7 09:04:40 UTC 2012 - coolo@suse.com
+
+- updated to version 3.1.0
+ * 2 minor enhancements:
+ 
+   * Added RubyParser.for_current_ruby to provide a parser that matches your runtime. (neilconway)
+   * Duck-typed IDENT_CHAR_RE instead of using RUBY_VERSION
+ 
+ * 3 bug fixes:
+ 
+   * Cleared out body comments in class/module/defn/defs
+   * Flipped lexer tests to US-ASCII to avoid encoding hell
+   * yyerror is now an alias for syntax_error
+
+-------------------------------------------------------------------
+Tue Nov 27 20:01:10 UTC 2012 - coolo@suse.com
+
+- updated to version 3.0.4
+ * 1 bug fix:
+ 
+   * RPStringScanner#lineno was still using byte offset, not char offset. (brynary)
+ 
+ * 1 minor enhancement:
+ 
+   * Improved error output on invalid char in expression.
+ 
+ * 1 bug fix:
+ 
+   * Fixed lexing of no-name ivars. (whitequark)
+ 
+ 52 down makes 99.9767% or 3.7σ. 130 files failed to parse out of 558k.
+ 
+ * 4 minor enhancements:
+ 
+   * Added RP_TIMEOUT env var to override default timeout of 10 seconds.
+   * Minor optimization to RubyLexer#parse_number
+   * Only output parseerror output to stderr if $DEBUG.
+   * ruby_parse_extract_error modified to include 'it' blocks in its search.
+ 
+ * 7 bug fixes:
+ 
+   * 1.9: Fixed args in dot-call forms (eg f.(...)).
+   * 1.9: Fixed lexing stabby lambda w/ do/end
+   * Deal better with DOS files. Ugh.
+   * Fix line number of production after heredoc.
+   * Fixed RubyParser#process to reuse parser instances across calls.
+   * Fixed line numbers for several productions.
+   * new_call sets line number to smallest line number of members.
+
+
+-------------------------------------------------------------------
+Sat Nov  3 10:03:40 UTC 2012 - coolo@suse.com
+
+- updated to version 3.0.1, see the long History.txt
+
+-------------------------------------------------------------------
+Sun Jul 15 12:11:04 UTC 2012 - coolo@suse.com
+
+- fix gem requires
+
+-------------------------------------------------------------------
+Mon Apr  9 18:41:31 UTC 2012 - coolo@suse.com
+
+- update to 2.3.1
+    * Fixed line numbers at end of special var+whitespace (larsch)
+    * Holy crap I was smokin' something good... Fixed 1.9.3 warning
+    * Add -g flag to parser compile if DEBUG
+    * Lexer now embeds line number in yacc_value for keywords, helping fix up line numbers
+    * Fix method line numbers when no args and no parens (quix)
+    * Fixed line numbers on return/break/next w/ result expr. (pjnz)
+    * Fixed some lexing state in order to parse: 'f (1), 2' as 'f(1, 2)'. (invernizzi)
+    * Moved Keyword, Environment, and StackState inside of RubyParser
+    * Added proper dsym and dsym->sym support.
+    * Added extra (failing) tests for call/iter line number checking (quix)
+    * Fixed line numbers for certain call/iter edge cases
+    * Fixed parsing of: alias :"<<" :">>".
+    * Added new accessor canonicalize_conditions to toggle conditional canonicalization (on by default). (confused)
+    * Awesome cleanup: Replaced call to append_block by block_append. (Confusion)
+    * Fixed handling last line of =begin/=end. (raybaxter)
+    * Fixed source line numbers after heredocs. (jbarreneche)
+    * Switched to hoe's racc plugin to clean up rakefile and builds
+    * Fixed empty =begin/end.
+
+-------------------------------------------------------------------
+Mon Mar 26 15:09:44 UTC 2012 - cfarrell@suse.com
+
+- license update: MIT
+  See README.txt
+
+-------------------------------------------------------------------
+Mon Sep  6 14:30:28 UTC 2010 - mrueckert@suse.de
+
+- update to version 2.0.5
+  * Started merging like lexical cases to try to squeeze some
+    optimization out
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Fri Dec 25 01:47:22 UTC 2009 - prusnak@suse.cz
+
+- update to 2.0.4
+  * Changed requires around to be more accurate.
+  * Fixed .autotest for minitest
+  * Fixed emacs escape lexing bug: "\C-\\" (maglev/gemstone)
+  * Fixed octal lexing edgecases. (maglev/gemstone)
+  * Fixed regexp lexing edgecases. (maglev/gemstone)
+
+-------------------------------------------------------------------
+Sun Jul 26 15:23:05 CEST 2009 - dmacvicar@suse.de
+
+- initial package for 2.0.3
+

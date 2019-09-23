@@ -1,0 +1,26 @@
+Index: qoauth-1.0.1/src/src.pro
+================================================================================
+--- qoauth-1.0.1/src/src.pro
++++ qoauth-1.0.1/src/src.pro
+@@ -67,6 +67,21 @@
+     } else {
+       target.path = $${INSTALL_PREFIX}/lib
+     }
++    contains(QMAKE_HOST.arch, ppc64) {
++      target.path = $${INSTALL_PREFIX}/lib64
++    }
++    contains(QMAKE_HOST.arch, ppc64le) {
++      target.path = $${INSTALL_PREFIX}/lib64
++    }
++    contains(QMAKE_HOST.arch, aarch64) {
++      target.path = $${INSTALL_PREFIX}/lib64
++    }
++    contains(QMAKE_HOST.arch, s390x) {
++      target.path = $${INSTALL_PREFIX}/lib64
++    }
++    contains(QMAKE_HOST.arch, riscv64) {
++      target.path = $${INSTALL_PREFIX}/lib64
++    }
+ 
+     headers.path = $${INSTALL_PREFIX}/include/QtOAuth
+     docs.path = $${INSTALL_PREFIX}/share/doc/$${TARGET}-$${VERSION}/html

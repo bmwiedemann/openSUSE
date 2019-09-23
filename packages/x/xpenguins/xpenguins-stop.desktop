@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=killall xpenguins
+Type=Application
+Icon=xpenguins-stop
+Name=xpenguins-stop
+Name[cs]=xpenguins-stop
+Name[de]=xpenguins-stop
+Name[en]=xpenguins-stop
+Comment=stop small pinguins on the desktop
+Comment[cs]=Zastavit malé tučňáky na pracovní ploše
+Comment[en]=stop small pinguins on the desktop

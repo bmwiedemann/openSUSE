@@ -1,0 +1,227 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8d6c9dd5e7b2eacc5e5a013649680b3c</srcmd5>
+    <version>7.30.1</version>
+    <time>1349244313</time>
+    <user>coolo</user>
+    <comment>http://lists.opensuse.org/opensuse-factory/2012-09/msg00642.html</comment>
+    <requestid>136268</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>196c3d3a397fa6b9df2afcce1d93a131</srcmd5>
+    <version>7.30.1</version>
+    <time>1351537566</time>
+    <user>coolo</user>
+    <comment>- Fix build with flex &gt;= 2.5.36
+  * nip2-flex-build.patch</comment>
+    <requestid>139489</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b6dccae3ebeca438504981b7af77e750</srcmd5>
+    <version>7.30.2</version>
+    <time>1358683074</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>149255</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b6dccae3ebeca438504981b7af77e750</srcmd5>
+    <version>7.30.2</version>
+    <time>1359109509</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>24d65a69964bfbfcd28b0d0ac8019878</srcmd5>
+    <version>7.32.0</version>
+    <time>1362731126</time>
+    <user>coolo</user>
+    <comment> (forwarded request 157570 from Dmitry_R)</comment>
+    <requestid>157573</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>22170105e70fc641ffe224f21fbfb639</srcmd5>
+    <version>7.32.1</version>
+    <time>1371456798</time>
+    <user>coolo</user>
+    <comment>- Update to version 7.32.1
+  * remove &quot;fred&quot; from dist (forwarded request 179088 from Dmitry_R)</comment>
+    <requestid>179090</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>52aaf4d7f047b27176c898a027bd09aa</srcmd5>
+    <version>7.34.1</version>
+    <time>1373029523</time>
+    <user>coolo</user>
+    <comment>- Update to version 7.34.1
+  * drag col to far left to insert
+  * fix compat warning text
+  * fix prefs revert to default
+  * reenable scroll-wheel slider change in paintbox and conversionview
+  * insert new columns in alphabetical position (forwarded request 182223 from Dmitry_R)</comment>
+    <requestid>182225</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>52aaf4d7f047b27176c898a027bd09aa</srcmd5>
+    <version>7.34.1</version>
+    <time>1379663374</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f83383447f542bfc8b69794784596428</srcmd5>
+    <version>7.36.0</version>
+    <time>1381062565</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 7.36.0
+  * removed old thing to show API docs
+  * measure now lets you pick the area to measure, and draws sample patches
+  * new column now goes to right of current column, not alphabetically
+  * detect doubleclick on ws tab label background
+  * tabs can be locked
+  * tabs have error indicators (forwarded request 202381 from Dmitry_R)</comment>
+    <requestid>202383</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4b2fa8595cf99d80e1dd365060e00736</srcmd5>
+    <version>7.36.1</version>
+    <time>1381304675</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 7.36.1
+  * better ^Q behaviour</comment>
+    <requestid>202638</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a572e3e6c50901a933c3c2ce27e1138f</srcmd5>
+    <version>7.36.2</version>
+    <time>1382088817</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 7.36.2
+  * add --profile option
+  * fix + button on wsgv</comment>
+    <requestid>203668</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7c5837f1eeb23fcbe16dfb403c630f38</srcmd5>
+    <version>7.36.5</version>
+    <time>1387737413</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 7.36.5
+  * add &quot;merge into ws&quot; item to rmb tab gutter menu
+  * fix progress feedback
+  * error boxes were accidentally supressed
+
+- Update to version 7.36.4
+  * fix bootstrap warnings
+  * use g_mkdir()
+  * better load of workspaces with closed columns (forwarded request 211809 from Dmitry_R)</comment>
+    <requestid>211810</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e557b3f19ac1e20245156586af0cb12a</srcmd5>
+    <version>7.38.0</version>
+    <time>1390247208</time>
+    <user>coolo</user>
+    <comment>- Update to version 7.38.0
+  * version bump due to new release of vips library (forwarded request 214387 from Dmitry_R)</comment>
+    <requestid>214389</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5c5444f2522e9ce6edb5c9809a47edd3</srcmd5>
+    <version>7.38.1</version>
+    <time>1390382066</time>
+    <user>coolo</user>
+    <comment>- Update to version 7.38.1
+  * add scRGB to list of known Types
+  * fix scRGB display (forwarded request 214616 from Dmitry_R)</comment>
+    <requestid>214618</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ae9dbe4e32f5f5a6c986831943efa895</srcmd5>
+    <version>7.40.0</version>
+    <time>1403689651</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238566</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3793b0d7a7cf43c90ef5d93176f4d15a</srcmd5>
+    <version>7.40.1</version>
+    <time>1404157530</time>
+    <user>coolo</user>
+    <comment>- Update to version 7.40.1
+  * larger max size for dialog text</comment>
+    <requestid>238954</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ad4d35d0073a9340d94510e037b2a03d</srcmd5>
+    <version>7.40.3</version>
+    <time>1406661716</time>
+    <user>coolo</user>
+    <comment>- Update to version 7.40.3
+  * fix compile with older libvipes, now goes back to at least 7.30 
+  * don't test IM by default, in case it's not installed
+  * get graph display working again with latest libgvc
+  * fix quoting in magick commands
+  * auto-fallback to gm if no convert found
+  * use libxml2 pretty-printer</comment>
+    <requestid>242811</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>ad4d35d0073a9340d94510e037b2a03d</srcmd5>
+    <version>7.40.3</version>
+    <time>1409301985</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f7f064731d01b2f6dabcd7f8489f7b79</srcmd5>
+    <version>7.40.4</version>
+    <time>1414066854</time>
+    <user>coolo</user>
+    <comment>- Update to version 7.40.4
+  * swap the HP printer profile for a freer one
+  * swap lena for a PD sample</comment>
+    <requestid>258035</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2ecd23e1483a0078b2e1984c89468397</srcmd5>
+    <version>7.42.1</version>
+    <time>1421333912</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280948</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ff98b22cb8c63606c72d0fd6336331aa</srcmd5>
+    <version>8.0</version>
+    <time>1431365903</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305685</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5fddeb7b35fd2482845e65ce6b819c16</srcmd5>
+    <version>8.4.0</version>
+    <time>1483956126</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449214</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>60e3bf289601cec8f1a33a39993ff030</srcmd5>
+    <version>8.6.0</version>
+    <time>1524237962</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>594688</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>1d69bc90a4f8fa413547fdb02b0fee8d</srcmd5>
+    <version>8.6.0</version>
+    <time>1528897184</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616040</requestid>
+  </revision>
+</revisionlist>

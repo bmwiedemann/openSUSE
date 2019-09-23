@@ -1,0 +1,996 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c2730a5864ff5e14198e0af69651ed19</srcmd5>
+    <version>2.0.2</version>
+    <time>1240971983</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ad3524459a7bfcd26a968b488719cdd3</srcmd5>
+    <version>2.0.96</version>
+    <time>1242427466</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>aeea310e9cf272b85d78cb4c1a9a3dd9</srcmd5>
+    <version>2.0.96</version>
+    <time>1242817097</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0c51dce7495a0d254e258dd24d97bbd8</srcmd5>
+    <version>2.0.2</version>
+    <time>1242863581</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>fe53112827b431bf166a7c886e4b0c19</srcmd5>
+    <version>2.0.96</version>
+    <time>1243554411</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8d90e91991c1a83c944ac3c4663525e5</srcmd5>
+    <version>2.1</version>
+    <time>1243941514</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ccbcbaca06a1ad03e90427a08d19719a</srcmd5>
+    <version>2.1</version>
+    <time>1244239932</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>275cc0616b7ab35e2ee7f664fc575203</srcmd5>
+    <version>2.1.1</version>
+    <time>1245237254</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>fb8dbc4a0910ce941d9d3483c8da2c00</srcmd5>
+    <version>2.1.1</version>
+    <time>1248171477</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>328b3adac63db0ec6e5be09dc1fa060e</srcmd5>
+    <version>2.1.1</version>
+    <time>1249937338</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>abb7d72b4626dae7d9c8b703a2086d46</srcmd5>
+    <version>2.1.1</version>
+    <time>1250591349</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/amarok based on submit request 18067 from user Beineri
+</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>b24d785b55a0998e1c3db61ed677629f</srcmd5>
+    <version>2.1.1</version>
+    <time>1251414078</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/amarok based on submit request 19016 from user Beineri
+</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>97426da782613a70abbc295feaf99676</srcmd5>
+    <version>2.1.1</version>
+    <time>1253558713</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/amarok based on submit request 20650 from user Beineri
+</comment>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>97426da782613a70abbc295feaf99676</srcmd5>
+    <version>2.1.1</version>
+    <time>1253558713</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/amarok based on submit request 20650 from user Beineri
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>eb391e2af6855c92e2bc1c5c7b192a2a</srcmd5>
+    <version>2.2.0</version>
+    <time>1257331858</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/amarok based on submit request 23619 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c0ffd2ee3b5bbb9272980d41e7894fd1</srcmd5>
+    <version>2.2.1</version>
+    <time>1258383626</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/amarok based on submit request 24388 from user Beineri
+</comment>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>c92767377bc21a41b39864a056595d90</srcmd5>
+    <version>2.2.1</version>
+    <time>1258723555</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/amarok based on submit request 24704 from user Beineri
+</comment>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>129d3cee011c5695192746b482e3bbff</srcmd5>
+    <version>2.2.1</version>
+    <time>1260198337</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/amarok based on submit request 25736 from user Beineri
+</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fc17010dcd14a4ee4620d09c1dc9c73c</srcmd5>
+    <version>2.2.1.90</version>
+    <time>1261438093</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/amarok based on submit request 27303 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e59e9d28049bb396a7f95587d8374377</srcmd5>
+    <version>2.2.2</version>
+    <time>1263491189</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/amarok based on submit request 29338 from user Beineri
+</comment>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>4401f565ffc4870914b6fde86f3bc047</srcmd5>
+    <version>2.2.2</version>
+    <time>1265749538</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/amarok based on submit request 31959 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bd2dad43b9879fb0c002ddda757a6da8</srcmd5>
+    <version>2.2.90</version>
+    <time>1267058355</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/amarok based on submit request 33420 from user dirkmueller
+</comment>
+    <requestid>33420</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cac2af8d5231e9067f77bb687df2b528</srcmd5>
+    <version>2.3.0</version>
+    <time>1268832247</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/amarok based on submit request 34938 from user wstephenson
+</comment>
+    <requestid>34938</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>da8bf5feec4008bceeb3b9eec5716a13</srcmd5>
+    <version>2.3.0</version>
+    <time>1268922872</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>35d2047a9d15ec68ab53e14bb4b39687</srcmd5>
+    <version>2.3.0</version>
+    <time>1269618483</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/amarok based on submit request 35839 from user llunak
+</comment>
+    <requestid>35839</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>acc1129f04217b77f3dafe81721c61c7</srcmd5>
+    <version>2.3.0</version>
+    <time>1270159821</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/amarok based on submit request 36727 from user llunak
+</comment>
+    <requestid>36727</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>83c6a2ceade3d2370d5b82a6f4c4b85c</srcmd5>
+    <version>2.3.0</version>
+    <time>1274140135</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/amarok based on submit request 40172 from user llunak
+</comment>
+    <requestid>40172</requestid>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>536754d101a721b62e42809278478b5d</srcmd5>
+    <version>2.3.0</version>
+    <time>1277719709</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/amarok based on submit request 42101 from user llunak
+</comment>
+    <requestid>42101</requestid>
+  </revision>
+  <revision rev="29" vrev="8">
+    <srcmd5>536754d101a721b62e42809278478b5d</srcmd5>
+    <version>2.3.0</version>
+    <time>1278667336</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="30" vrev="9">
+    <srcmd5>536754d101a721b62e42809278478b5d</srcmd5>
+    <version>2.3.0</version>
+    <time>1278678562</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>277e9be90f8805ec5800cc49d3d79880</srcmd5>
+    <version>2.3.1</version>
+    <time>1279564698</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/amarok based on submit request 43247 from user dirkmueller
+</comment>
+    <requestid>43247</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>18c811a451a8f1e92b8e33862b04d38e</srcmd5>
+    <version>2.3.1</version>
+    <time>1281737110</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/amarok based on submit request 45543 from user dirkmueller
+</comment>
+    <requestid>45543</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>b6f4a9ee446a400084853dfde0df713e</srcmd5>
+    <version>2.3.1</version>
+    <time>1282917940</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/amarok based on submit request 46215 from user coolo
+</comment>
+    <requestid>46215</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>ba9faefd8306150ca777c44b97cc1fb2</srcmd5>
+    <version>2.3.2</version>
+    <time>1285313782</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/amarok based on submit request 49013 from user coolo
+</comment>
+    <requestid>49013</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>483be82de90c1257ca3f76ee97931877</srcmd5>
+    <version>2.3.2</version>
+    <time>1286488159</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/amarok based on submit request 49965 from user dirkmueller
+</comment>
+    <requestid>49965</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>9e91a4dca3a51819135c3314df2aeaf9</srcmd5>
+    <version>2.3.90</version>
+    <time>1294668476</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57295 from user dirkmueller
+</comment>
+    <requestid>57295</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>32aa887c902e199a624498a780b36d0c</srcmd5>
+    <version>2.3.90</version>
+    <time>1294668488</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57295
+</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>3d6fe1bf8f8f20d192b9a33c5c54e4af</srcmd5>
+    <version>2.4.0</version>
+    <time>1295052254</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58161 from user coolo
+</comment>
+    <requestid>58161</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>2e3a6c224aa30a0eca691e1c0a3580a6</srcmd5>
+    <version>2.4.0</version>
+    <time>1295052261</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58161
+</comment>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>0c6127c0aec6027f35a5263bb8f74773</srcmd5>
+    <version>2.4.0</version>
+    <time>1296844998</time>
+    <user>darix</user>
+    <comment>Accepted submit request 60037 from user wstephenson
+</comment>
+    <requestid>60037</requestid>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>0cdb3426714e01068a10a8841040fcc9</srcmd5>
+    <version>2.4.0</version>
+    <time>1296845014</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 60037
+</comment>
+  </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>f5739fa041feb3e2a200ef6142142a86</srcmd5>
+    <version>2.4.0</version>
+    <time>1297507442</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60595 from user wstephenson
+</comment>
+    <requestid>60595</requestid>
+  </revision>
+  <revision rev="43" vrev="6">
+    <srcmd5>85e084c835005a09fd43df1acea2c7a8</srcmd5>
+    <version>2.4.0</version>
+    <time>1297507451</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60595
+</comment>
+  </revision>
+  <revision rev="44" vrev="9">
+    <srcmd5>85e084c835005a09fd43df1acea2c7a8</srcmd5>
+    <version>2.4.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="45" vrev="10">
+    <srcmd5>a0d5191ca56118eebdee4c6dcc9c2a84</srcmd5>
+    <version>2.4.0</version>
+    <time>1298032347</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61532 from user rwooninck
+</comment>
+    <requestid>61532</requestid>
+  </revision>
+  <revision rev="46" vrev="11">
+    <srcmd5>7e548edd49d0e2e4c96aeb792f969017</srcmd5>
+    <version>2.4.0</version>
+    <time>1298032353</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61532
+</comment>
+  </revision>
+  <revision rev="47" vrev="10">
+    <srcmd5>d9c73d0e4c66616fa6c5fa6c0fee606d</srcmd5>
+    <version>2.4.0.90</version>
+    <time>1302164997</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66262 from user coolo
+</comment>
+    <requestid>66262</requestid>
+  </revision>
+  <revision rev="48" vrev="11">
+    <srcmd5>6ea425ce5f03c4efbc9b3aeff1614500</srcmd5>
+    <version>2.4.0.90</version>
+    <time>1304512998</time>
+    <user>saschpe</user>
+    <comment>Spec file updates - Most inprortand is the cleanup in Buildrequires entries, Removed amarok-rpmlintrc, Removed errmsg-mysql-embedded.diff and no_buildtime.patch patches, Removed amarokNoAudio.desktop from initial-preference.diff patch (forwarded request 68955 from adra)</comment>
+    <requestid>68956</requestid>
+  </revision>
+  <revision rev="49" vrev="12">
+    <srcmd5>d1eca84bda6d7a425337ead1b2e24544</srcmd5>
+    <version>2.4.0.90</version>
+    <time>1304513008</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68956
+</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>b3080b80cde2fc8513b39cee5b7e89aa</srcmd5>
+    <version>2.4.1</version>
+    <time>1309786424</time>
+    <user>saschpe</user>
+    <comment>- Amarok 2.4.1:
+  - Features:
+    * Remote NFS &amp; SMB/CIFS collections now work! (bko#249760, bko#232976, bko#171213, bko#187692)
+    * New &quot;Preview&quot; feature for the Organize Collection dialog
+    * String filtering in the albums applet.
+    * Ability to change text alignment in the lyrics applet.
+    * gpodder.net Service, a Podcast Directory displaying the most used Tags from gpodder.net &amp; the top Podcasts of these Tags
+  - Changes:
+    * The podcast directory service is now based on incremental parsing of OPML without caching in the database.
+    * Plugins can now be optionally enabled in the config dialog
+    * Script selector is moved from the menubar to the config dialog.
+
+    Patch by Andriy Gapon &lt;avg@icyb.net.ua&gt;. (bko#257818)
+    Philipp Schmidt &lt;philschmidt@gmx.net&gt;.  (bko#255325)
+    the order inversion arrow on hover. (bko#209011)
+    (bko#214759)
+      Steven van der Vegt &lt;s.vandervegt@student.utwente.nl&gt;. (bko#178691)
+      import them into Amarok. (bko#193476)
+      playlist. Patch by Felix Geyer &lt;debfx-kde@fobos.de&gt;. (bko#197423)
+      Atkinson &lt;john@fauxnetic.co.uk&gt;. (bko#200445)
+      play list time. (bko#91640)
+    (bko#92400)
+      dialog. (bko#136232, bko#187542)
+  * New Script method to get current track time in milliseconds. (bko#177073)
+    Manager. (bko#176170)
+    (bko#189328)
+    (bko#176031)
+  * Fixed slider mouse events in RTL layouts. (bko#185465)
+  * Detect iPhones as iPods. (bko#184744)
+    (bko#185888)</comment>
+    <requestid>75268</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>4c2ce5d85b90769e6bc6797ce7c5b519</srcmd5>
+    <version>2.4.1</version>
+    <time>1311577313</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>76835</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>d5e01a151c31ea996956aa3c1dcf3b0d</srcmd5>
+    <version>2.4.1</version>
+    <time>1311577324</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76835
+</comment>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>a446322011e6456f8449eac59ea253c2</srcmd5>
+    <version>2.4.3</version>
+    <time>1312285875</time>
+    <user>saschpe</user>
+    <comment>Update to 2.4.3, Removed remove-plasma-service.patch, Rebased ksuseinstall.diff patch to apply cleanly (forwarded request 77616 from adra)</comment>
+    <requestid>77636</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>9fa61f36f188398695222a40b313668b</srcmd5>
+    <version>2.4.3</version>
+    <time>1314106274</time>
+    <user>saschpe</user>
+    <comment>forward to factory</comment>
+    <requestid>79375</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>221da3da52f31f0c6b19fcc991b7a7ea</srcmd5>
+    <version>2.4.3</version>
+    <time>1314106283</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79375
+</comment>
+  </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>492af4310fecc3a9ace0bb0eef9bfe66</srcmd5>
+    <version>2.4.3</version>
+    <time>1315410266</time>
+    <user>saschpe</user>
+    <comment>forward to factory</comment>
+    <requestid>81192</requestid>
+  </revision>
+  <revision rev="57" vrev="5">
+    <srcmd5>6e9051418d722499937d07d3ddfb57ee</srcmd5>
+    <version>2.4.3</version>
+    <time>1315410283</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81192
+</comment>
+  </revision>
+  <revision rev="58" vrev="6">
+    <srcmd5>b5c1d25aa7e71256bb4900cb46b3ce8d</srcmd5>
+    <version>2.4.3</version>
+    <time>1316439386</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile as discussed on opensuse-packaging (forwarded request 82976 from jengelh)</comment>
+    <requestid>82997</requestid>
+  </revision>
+  <revision rev="59" vrev="7">
+    <srcmd5>3e891e41172b2a70e4ecaed0e2e4658a</srcmd5>
+    <version>2.4.3</version>
+    <time>1318344101</time>
+    <user>lrupp</user>
+    <comment>- Remove errmsg-mysql51-embedded.diff as this causes amarok to fail
+  when initializing the collection (bnc#712749)
+- Remove the action for audio-cds as amarok is not really a good
+  player for these (bnc#712749)
+
+I could not really find out what the purpose of the patch errmsg-mysql51-embedded.diff was. So I am not sure if removing it is really the correct 
+solution. (forwarded request 87044 from christiantrippe)</comment>
+    <requestid>87225</requestid>
+  </revision>
+  <revision rev="60" vrev="9">
+    <srcmd5>3e891e41172b2a70e4ecaed0e2e4658a</srcmd5>
+    <version>2.4.3</version>
+    <time>1319181769</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="61" vrev="10">
+    <srcmd5>68e236e666ee9590fed8740913bf3ddb</srcmd5>
+    <version>2.4.3</version>
+    <time>1320671259</time>
+    <user>coolo</user>
+    <comment>- Change ksuseinstall to support the gstreamer-backend instead of
+  the xine one (bnc#728476) (forwarded request 90193 from christiantrippe)</comment>
+    <requestid>90195</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>37429bf70596a6867849ab63c59056cc</srcmd5>
+    <version>2.4.90</version>
+    <time>1322738609</time>
+    <user>coolo</user>
+    <comment>Apply/refresh upstream patch for fix infinite loop in context view eating CPU until mainwindow shown, bnc733421 (forwarded request 94557 from mlin7442)</comment>
+    <requestid>94559</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>b535707115afa4ee09cd41fd278f9007</srcmd5>
+    <version>2.4.90</version>
+    <time>1323190698</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>9bfdfe3cb05c1c7e71f6ccdf02b04d3d</srcmd5>
+    <version>2.4.90</version>
+    <time>1323440685</time>
+    <user>coolo</user>
+    <comment>- remove qt4-qtscript dependency</comment>
+    <requestid>96093</requestid>
+  </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>20b286b6a542b3ebc5abe2efe10549df</srcmd5>
+    <version>2.4.90</version>
+    <time>1323773285</time>
+    <user>coolo</user>
+    <comment>- Fix path to errmsg.sys</comment>
+    <requestid>96327</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>1e0b34076c1231a55cd5763c95bad4d1</srcmd5>
+    <version>2.5.0</version>
+    <time>1324457943</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>97262</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>3023fb6c34771e574374c0c04287a64c</srcmd5>
+    <version>2.5.0</version>
+    <time>1327922616</time>
+    <user>coolo</user>
+    <comment>- Add patch to fix kde#290123</comment>
+    <requestid>101818</requestid>
+  </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>72b2ba610cbafe6d4830781177f280ed</srcmd5>
+    <version>2.5.0</version>
+    <time>1328711807</time>
+    <user>coolo</user>
+    <comment>Forward</comment>
+    <requestid>103132</requestid>
+  </revision>
+  <revision rev="69" vrev="4">
+    <srcmd5>fafcb836c1f433649e075601664ae29b</srcmd5>
+    <version>2.5.0</version>
+    <time>1336541083</time>
+    <user>coolo</user>
+    <comment>remove workaround, fixed in SC 4.8.2 kdelibs
+https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanBruens)</comment>
+    <requestid>116736</requestid>
+  </revision>
+  <revision rev="70" vrev="5">
+    <srcmd5>430e3ff96823882c3fa3dd7a6f2b913c</srcmd5>
+    <version>2.5.0</version>
+    <time>1338476540</time>
+    <user>coolo</user>
+    <comment>- Fix build with ffmpeg 0.11 (forwarded request 122625 from RedDwarf)</comment>
+    <requestid>122658</requestid>
+  </revision>
+  <revision rev="71" vrev="7">
+    <srcmd5>430e3ff96823882c3fa3dd7a6f2b913c</srcmd5>
+    <version>2.5.0</version>
+    <time>1340183170</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="72" vrev="8">
+    <srcmd5>236c7cc016cc0478367a99d88e274c4e</srcmd5>
+    <version>2.5.0</version>
+    <time>1340619661</time>
+    <user>coolo</user>
+    <comment>Ah, make the same error again and again ... The mysql package
+               split has been accepted, so when this SR is accepted, users may
+               1) install the old mysql-community-server package (which is a
+               dependency of e.g. akonadi anyway) 2) wait for the split package
+               to appear as a update. 1 works with the mysql from oS:12.1:Update
+               now, 2 works later (forwarded request 125529 from StefanBruens)</comment>
+    <requestid>125534</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>9b8cc28581790d8da6dbb98bb0d03840</srcmd5>
+    <version>2.6.0</version>
+    <time>1346397158</time>
+    <user>coolo</user>
+    <comment>Update to 2.6 (forwarded request 130759 from TheBlackCat)</comment>
+    <requestid>131411</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>f50ae2c9bc856642e29af15c8411320a</srcmd5>
+    <version>2.6.0</version>
+    <time>1347342857</time>
+    <user>coolo</user>
+    <comment>forward to factory</comment>
+    <requestid>132999</requestid>
+  </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>94919549fcaa4f430574a3b43f9bec25</srcmd5>
+    <version>2.6.0</version>
+    <time>1351891414</time>
+    <user>coolo</user>
+    <comment>- Install the english handbook only with the lang-package as otherwise
+  translations will not be displayed when they are provided by 
+  bundle-lang-kde-* (bnc#695108)
+- No longer Build-require libksuseinstall-devel as the corresponding
+  patch was removed (forwarded request 140018 from christiantrippe)</comment>
+    <requestid>140021</requestid>
+  </revision>
+  <revision rev="76" vrev="4">
+    <srcmd5>96d2f69cc0607a5af808583f111d9ff5</srcmd5>
+    <version>2.6.0</version>
+    <time>1356013423</time>
+    <user>coolo</user>
+    <comment> (forwarded request 145947 from StefanBruens)</comment>
+    <requestid>146128</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>014ac7a82ef60b73acc74f129cc61539</srcmd5>
+    <version>2.7.0</version>
+    <time>1358679371</time>
+    <user>coolo</user>
+    <comment>Update to version 2.7.0</comment>
+    <requestid>149154</requestid>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>014ac7a82ef60b73acc74f129cc61539</srcmd5>
+    <version>2.7.0</version>
+    <time>1359108649</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="79" vrev="4">
+    <srcmd5>74efcce7cc48aa89a592aee4c0ea2c5e</srcmd5>
+    <version>2.7.0</version>
+    <time>1361116547</time>
+    <user>coolo</user>
+    <comment>Fix for track number not shown in Nepomuk collection (forwarded request 155549 from sumski)</comment>
+    <requestid>155566</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>b50e8ee9f0453a6ed68de4e17e13d7e0</srcmd5>
+    <version>2.7.1</version>
+    <time>1368710164</time>
+    <user>coolo</user>
+    <comment>Update to 2.7.1</comment>
+    <requestid>175814</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>65d0e6cadf4a2641b7a78d4bb95945c1</srcmd5>
+    <version>2.7.90</version>
+    <time>1373261213</time>
+    <user>coolo</user>
+    <comment>Update to 2.7.90 - 2.8 beta (forwarded request 182232 from sumski)</comment>
+    <requestid>182242</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>59cc1ce3155411d479468da28c01e543</srcmd5>
+    <version>2.8.0</version>
+    <time>1376920077</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 2.8.0</comment>
+    <requestid>195530</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>eb58635205e72855f8df00dac2ec7aee</srcmd5>
+    <version>2.8.0</version>
+    <time>1377169858</time>
+    <user>scarabeus_factory</user>
+    <comment>Added patch from upstream</comment>
+    <requestid>195823</requestid>
+  </revision>
+  <revision rev="84" vrev="3">
+    <srcmd5>8901ec1ce4bf383352c0386beda1f5f6</srcmd5>
+    <version>2.8.0</version>
+    <time>1378890053</time>
+    <user>coolo</user>
+    <comment>Added some patches from upstream (forwarded request 198138 from sumski)</comment>
+    <requestid>198160</requestid>
+  </revision>
+  <revision rev="85" vrev="5">
+    <srcmd5>8901ec1ce4bf383352c0386beda1f5f6</srcmd5>
+    <version>2.8.0</version>
+    <time>1379661961</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="86" vrev="6">
+    <srcmd5>37f23aa762fc931a8b7e7ec71fd0007e</srcmd5>
+    <version>2.8.0</version>
+    <time>1380807768</time>
+    <user>scarabeus_factory</user>
+    <comment>Explicitly require phonon-backend, as it's possible that in certain conditions users would have none installed. Cleaned up whitespaces in changelog. Please forward to 13.1</comment>
+    <requestid>201644</requestid>
+  </revision>
+  <revision rev="87" vrev="7">
+    <srcmd5>5bb880dba8f06cf51c2ec3a8db758df0</srcmd5>
+    <version>2.8.0</version>
+    <time>1398145066</time>
+    <user>coolo</user>
+    <comment>Remove nepomuk-core from the buildrequires</comment>
+    <requestid>230923</requestid>
+  </revision>
+  <revision rev="88" vrev="8">
+    <srcmd5>a56bf75644dc6c6b026111abfba7fc84</srcmd5>
+    <version>2.8.0</version>
+    <time>1399545481</time>
+    <user>coolo</user>
+    <comment>Added libxml2-devel BuildRequires, was pulled in via libkde4-devel previously</comment>
+    <requestid>232967</requestid>
+  </revision>
+  <revision rev="89" vrev="10">
+    <srcmd5>a56bf75644dc6c6b026111abfba7fc84</srcmd5>
+    <version>2.8.0</version>
+    <time>1409300484</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="90" vrev="11">
+    <srcmd5>72dc77457fe4940b18b13bdc30038814</srcmd5>
+    <version>2.8.0</version>
+    <time>1416425049</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261189</requestid>
+  </revision>
+  <revision rev="91" vrev="12">
+    <srcmd5>d7c1f070942cd377ef7f0aa2121f71f6</srcmd5>
+    <version>2.8.0</version>
+    <time>1419249250</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266019</requestid>
+  </revision>
+  <revision rev="92" vrev="13">
+    <srcmd5>8828135a1fe16de8adbeaa20f6b307e7</srcmd5>
+    <version>2.8.0</version>
+    <time>1421333902</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280747</requestid>
+  </revision>
+  <revision rev="93" vrev="14">
+    <srcmd5>96f6cc92c78cf28560fc32f494926dad</srcmd5>
+    <version>2.8.0</version>
+    <time>1423258590</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284154</requestid>
+  </revision>
+  <revision rev="94" vrev="15">
+    <srcmd5>f4ffa8a9afa1826f4c3bd30901c2fb95</srcmd5>
+    <version>2.8.0</version>
+    <time>1437299054</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315719</requestid>
+  </revision>
+  <revision rev="95" vrev="16">
+    <srcmd5>5b1ccedcccd8aab7fdcc3a19cf0dbce9</srcmd5>
+    <version>2.8.0</version>
+    <time>1443793035</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>334098</requestid>
+  </revision>
+  <revision rev="96" vrev="17">
+    <srcmd5>03ead854442188504701a7aed1611e98</srcmd5>
+    <version>2.8.0</version>
+    <time>1448400507</time>
+    <user>coolo</user>
+    <comment>Drop moodbar as recommends so that we can be free of gstreamer 0.10</comment>
+    <requestid>345037</requestid>
+  </revision>
+  <revision rev="97" vrev="18">
+    <srcmd5>81f869ca10c8125025e7750ef77282ba</srcmd5>
+    <version>2.8.0</version>
+    <time>1450605080</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349550</requestid>
+  </revision>
+  <revision rev="98" vrev="19">
+    <srcmd5>129ba4535b58962038bcf400a50966c7</srcmd5>
+    <version>2.8.0</version>
+    <time>1452377508</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352076</requestid>
+  </revision>
+  <revision rev="99" vrev="20">
+    <srcmd5>c19b8cb660e789f6dc85c3c2e9e868de</srcmd5>
+    <version>2.8.0</version>
+    <time>1456924871</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>362159</requestid>
+  </revision>
+  <revision rev="100" vrev="21">
+    <srcmd5>71d854a89ddc3bbc57df58bbd4ec9f48</srcmd5>
+    <version>2.8.0</version>
+    <time>1460924234</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>388476</requestid>
+  </revision>
+  <revision rev="101" vrev="22">
+    <srcmd5>19c213a074877b1193331979d5bbdb56</srcmd5>
+    <version>2.8.0</version>
+    <time>1463738080</time>
+    <user>dimstar_suse</user>
+    <comment>- Use share-mime-info macros (boo#979301)</comment>
+    <requestid>395606</requestid>
+  </revision>
+  <revision rev="102" vrev="23">
+    <srcmd5>b81d335fe49337f84d9c5c232b5746a2</srcmd5>
+    <version>2.8.0</version>
+    <time>1464689470</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398049</requestid>
+  </revision>
+  <revision rev="103" vrev="24">
+    <srcmd5>f59bb34994f07f91adc8335f6ba0b138</srcmd5>
+    <version>2.8.0</version>
+    <time>1474806473</time>
+    <user>dimstar_suse</user>
+    <comment>Added fix for MPRIS from upstream</comment>
+    <requestid>429267</requestid>
+  </revision>
+  <revision rev="104" vrev="25">
+    <srcmd5>46f41cda38922f0f451446414e3c286d</srcmd5>
+    <version>2.8.0</version>
+    <time>1480693039</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442633</requestid>
+  </revision>
+  <revision rev="105" vrev="26">
+    <srcmd5>9f533edb9f00083ba2af4da49c0dee56</srcmd5>
+    <version>2.8.0</version>
+    <time>1482784917</time>
+    <user>lnussel_factory</user>
+    <comment>- Revert kde4_runtime_requires change
+
+- Recommend kio_audiocd4 for playback of AudioCDs, the standard  kio_audiocd package is KF5 based now
+</comment>
+    <requestid>446959</requestid>
+  </revision>
+  <revision rev="106" vrev="27">
+    <srcmd5>60c101431b11c064386ebc37987a0b89</srcmd5>
+    <version>2.8.0</version>
+    <time>1503999749</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518864</requestid>
+  </revision>
+  <revision rev="107" vrev="28">
+    <srcmd5>50bf850818a4e744484155c114cb5045</srcmd5>
+    <version>2.8.0</version>
+    <time>1505831352</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526986</requestid>
+  </revision>
+  <revision rev="108" vrev="29">
+    <srcmd5>763a2a3b023c10af8ce8033575887c98</srcmd5>
+    <version>2.8.0</version>
+    <time>1508768362</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533711</requestid>
+  </revision>
+  <revision rev="109" vrev="30">
+    <srcmd5>0cbd896c693aea9b749fbf034aa6edc9</srcmd5>
+    <version>2.8.0</version>
+    <time>1510838266</time>
+    <user>dimstar_suse</user>
+    <comment>- Workaround to fix build when openssl 1.1 is the default
+  * Temporarily drop BuildRequires of libgpod-devel and taglib-extras-devel
+    that pull in libimobiledevice-devel
+  * Currently amarok builds against libopenssl1_0_0, but
+    libimobiledevice-devel pulls in libopenssl1_1_0, causing a conflict (forwarded request 538089 from vitezslav_cizek)</comment>
+    <requestid>538203</requestid>
+  </revision>
+  <revision rev="110" vrev="31">
+    <srcmd5>db626e07326d7702ca27e2ff776382cc</srcmd5>
+    <version>2.8.0</version>
+    <time>1511688898</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildIgnore openssl 1.0 headers to not conflict with 1.1 headers
+  required by some deps (forwarded request 545318 from Vogtinator)</comment>
+    <requestid>545319</requestid>
+  </revision>
+  <revision rev="111" vrev="32">
+    <srcmd5>0accd218023bcf91b7aebb02f3531c02</srcmd5>
+    <version>2.8.0</version>
+    <time>1512433565</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547673</requestid>
+  </revision>
+  <revision rev="112" vrev="33">
+    <srcmd5>1dafcec64fbd86b501c4ea8a200b3369</srcmd5>
+    <version>2.8.0</version>
+    <time>1513851873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557834</requestid>
+  </revision>
+  <revision rev="113" vrev="34">
+    <srcmd5>b6e0bef5b5336e672c7237248cead418</srcmd5>
+    <version>2.8.0</version>
+    <time>1515505595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559635</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>63f620529a7812f22445874bfd25a4e1</srcmd5>
+    <version>2.9.0</version>
+    <time>1520588017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.0
+- Drop patches merged upstream:
+  * amarok-taglib-compare.patch
+  * gcc6-workaround.patch
+  * Skip-qtwebkit-parts.patch
+  * 0001-Don-t-add-the-analyzer-applet-when-Phonon-doesn-t-su.patch
+  * 0002-Don-t-allow-adding-Analyzer-applet-when-not-supporte.patch
+  * 0003-Optimization-Don-t-draw-more-than-necessary.patch
+  * 0004-Fix-reading-Album-Artist-Compilation-Disc-Number-in-.patch
+  * 0005-Sync-playlist-search-config-instantly.patch
+  * 0006-Don-t-suppress-html-tag-like-characters.patch
+  * 0007-Fix-performance-issue-with-large-podcast-feeds.patch
+  * 0008-Clean-up-the-leftover-of-strigi-removal.patch
+  * 0009-Fix-Ampache-plugin-connections.patch
+  * Enable_Wikipedia_over_SSL.patch
+  * amarok-ffmpeg3.0.patch
+  * Fix-for-infinite-loop-with-some-Audio-CDs.patch
+  * Fix-MPRIS2-DesktopEntry-value.patch
+  * Fix-crash-during-musicbrainz-search.patch
+  * amarok-2.8.0-find_mysql.patch
+- Don't disable QtWebKit on Leap 42, it's available there
+- Build with libqca2 again, it supports OpenSSL 1.1 now
+- Drop load-scrips-without-qca.patch, no longer necessary
+- Drop revert_solid_workaround.diff, it shouldn't be needed
+- Add Fix-build-with-gcc6.patch to make it compile on Leap 42
+- Adjust initial-preference.diff and flac_mimetype_bnc671581.diff
+- Update Source Url
+</comment>
+    <requestid>584459</requestid>
+  </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>80ce5d72a96a4501fd85b42e959e2555</srcmd5>
+    <version>2.9.0</version>
+    <time>1526370902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606753</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>61cc1ea00b73fffa16f1de150ea05114</srcmd5>
+    <version>2.9.70git.20190820T023444~600806141d</version>
+    <time>1566914126</time>
+    <user>dimstar_suse</user>
+    <comment>Use a Qt5 snapshot for amarok (New try)</comment>
+    <requestid>725141</requestid>
+  </revision>
+</revisionlist>

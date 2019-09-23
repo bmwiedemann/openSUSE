@@ -1,0 +1,14 @@
+|
+| There is no --number-of-intervals but --no-of-intervals option
+|
+--- info/spline.1
++++ info/spline.1	2013-07-15 12:06:38.393439397 +0000
+@@ -107,7 +107,7 @@ The \fB\-k\fP option may not be used if
+ .br
+ .ns
+ .TP
+-.BI \-\-number\-of\-intervals " n"
++.BI \-\-no\-of\-intervals " n"
+ Subdivide the interval over which interpolation occurs into \fIn\fP\^
+ subintervals.
+ The number of data points computed, and written to the

@@ -1,0 +1,1243 @@
+-------------------------------------------------------------------
+Sun Mar 10 11:11:35 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + GNOME goal “App menu retirement”.
+  + GNOME goal “App Icon Redesign”.
+  + A few minor and irrelevant improvements to the code.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 24 15:34:25 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + Build: requires Meson >= 0.47.0.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 24 16:32:51 UTC 2018 - dimstar@opensuse.org
+
+- Help translation-update-upstream finding the right gettext domain
+  name: pass "po %{name}" to the call.
+
+-------------------------------------------------------------------
+Mon Jul 23 20:41:36 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.0:
+  + A few small improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 19 00:13:24 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.3:
+  + Finally write a HACKING file.
+  + Do not show a GtkInfoBar on error, use the WebKitWebView
+    default implementation to simplify the code.
+  + Code refactorings: from DhWindow extract DhNotebook,
+    DhSearchBar and bind_sidebar_and_notebook() function, and
+    delegate more work to DhWebView.
+  + Make the following classes re-usable and move them to the
+    libdevhelp: DhWebView, DhTab, DhTabLabel, DhNotebook and
+    DhSearchBar.
+  + And move dh_window_bind_sidebar_and_notebook() to the
+    libdevhelp.
+  + Flatpak: run Amtk and Devhelp unit tests after building those
+    modules.
+  + Application icons: rename filenames to org.gnome.Devhelp.*, to
+    simplify the Flatpak manifest.
+  + Build system: fix the remaining places where the libdevhelp
+    API/major version was hardcoded, use the variable instead, to
+    easily bump it in the future.
+  + Other small improvements.
+  + Updated translations.
+- Drop la files rm'ing, not needed as we are using meson
+  buildsystem.
+- Pass flatpak_build=false to meson, ensure we build the features
+  we want/need, currently following upstream defaults.
+- Use autosetup macro.
+
+-------------------------------------------------------------------
+Sun Jun  3 23:30:40 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.2:
+  + New and more flexible book management architecture for
+    libdevhelp.
+  + Port other Devhelp classes to DhProfile and DhBookList.
+  + Listen to external changes to the "books-disabled" GSettings
+    key.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 16 00:47:50 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.1:
+  + Update the license from GPLv2+ to GPLv3+.
+  + Add a profile infrastructure in the library, for example to
+    have a generic profile and a GNOME profile in the future.
+  + Overhaul preferences dialog implementation.
+  + Use the Amtk library to create the menus and the GtkShortcuts\
+    Window. It permits to avoid information duplication, and will
+    permit to provide a higher-level libdevhelp API.
+  + A few other small improvements.
+  + Updated translations.
+- Add:
+  + meson BuildRequires and replace configure/make/make_install
+    macros/command with meson/meson_build/meson_install, following
+    upstream port to Meson build system.
+  + gtk-doc and pass gtk_doc option to meson as true now that
+    pre-build documentation are not found anymore into the tarball.
+  + pkgconfig(amtk-5) BuildRequires as a new dependency.
+
+-------------------------------------------------------------------
+Sun Apr  8 12:45:15 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.1:
+  + AppData: update screenshots.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 28 13:52:37 UTC 2018 - badshah400@gmail.com
+
+- Add Requires: devhelp for vim, emac and gedit plugins as these
+  plugins, which are supposed to pop up the devhelp window to
+  search for the selected word/phrase, don't work otherwise.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:38:46 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Mon Mar 12 12:48:00 UTC 2018 - jengelh@inai.de
+
+- Fix description grammar.
+
+-------------------------------------------------------------------
+Sun Mar 11 10:09:08 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Improve default GSettings values.
+  + A few other small improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:24:44 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb 12 11:50:00 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.90:
+  + Flatpak: see books installed on the host (usually installed by
+    traditional Linux distribution packages). The Flatpak needs to
+    be built with the new --enable-flatpak-build configure flag.
+  + Lots of code refactorings, fixing various bugs along the way.
+  + All bugs in bugzilla fixed (only enhancement bugs remaining).
+  + Write more unit tests.
+  + Write first page of *user* documentation (in Mallard), to
+    explain some features of the search in the side panel.
+  + Fix and document a feature useful for integration with other
+    developer tools: filtering by book and page when doing a
+    search, see the README.
+  + Improve error info bar (shown on top of the HTML page), use the
+    TeplInfoBar utility class, copied from the Tepl library.
+  + Bugs fixed: bgo#696905, bgo#790902, bgo#792068, bgo#792443.
+  + Updated translations.
+- Drop emacs.{el,vim} sources again: they are back in the tarball.
+- Add itstool BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Sun Jan  7 20:41:30 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.2:
+  + Deprecate Devhelp index file format version 1 (with file
+    extension *.devhelp or *.devhelp.gz), print warning when
+    loading such index files.
+  + Do not use deprecated GCompletion API, implement re-usable
+    DhCompletion class based on GSequence with an API better suited
+    for Devhelp.
+  + Do not use deprecated GdkScreen API, use GdkMonitor.
+  + Use WebKit's new font size functionality.
+  + Increase number of maximum search results (100 -> 1000).
+  + Use the GtkSearchEntry::search-changed signal, adding a small
+    delay to show search results.
+  + Make right-click menu work in the WebKitWebView.
+  + Do not save/restore GtkWindows x/y positions.
+  + Fixed bugs:
+    - Devhelp applications lacks right-click context menu
+      (bgo#606831).
+    - Add timeout to search entry (bgo#668978).
+    - Searching "GFile" doesn't return an exact match (too many
+      results) (bgo#784652).
+    - dh-sidebar: Crashes when interacting with the GCompletion
+      (bgo#789862).
+    - Start using WebKit's new font size functionality
+      (bgo#790680).
+    - Assertion failed in DhBookManager (bgo#791127).
+  + Updated translations.
+- Update package description adding a descriptive package's content
+  line.
+- Add devhelp's emacs and vim plugins source files until they make
+  their way back into the upstream's tarball.
+- Drop gedit and vim BuildRequires: just own their respectives
+  directories under /usr/share/ instead.
+
+-------------------------------------------------------------------
+Mon Dec 11 03:40:47 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.27.1:
+  + Lots of code refactorings.
+  + Write first unit test.
+  + DhLink: use a union inside the struct to use less memory.
+  + Some minor bug fixes.
+  + Improve API documentation.
+  + Updated translations.
+- Update Url to https://wiki.gnome.org/Apps/Devhelp: current
+  Devhelp's web page.
+- Drop intltool BuildRequires once upstream already did the migration
+  to gettext and deviations from it is not desired to avoid
+  unexpected bugs.
+- Adopt the use of %make_build macro instead of raw make command,
+  following the best practices.
+- Add emacs plugin subpackage.
+
+-------------------------------------------------------------------
+Sat Dec  9 18:14:40 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.1:
+  + Move New Tab button on the right side of the headerbar.
+  + Updated translations.
+- Drop obsolete post(un) handling of:
+  glib2_gsettings_schema_post(un), desktop_database_post(un) and
+  icon_theme_cache_post(un), file-triggers takes care of this now.
+
+-------------------------------------------------------------------
+Sun Sep 10 10:10:24 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  8 22:18:56 UTC 2017 - jengelh@inai.de
+
+- Update package summaries and RPM category.
+  Replace old RPM macros by new constructs.
+  Avoid running fdupes across hardlink boundaries.
+
+-------------------------------------------------------------------
+Tue Aug 22 20:56:16 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.91:
+  + Bump Libtool version.
+  + Bugs fixed: bgo#786008.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug  7 08:57:56 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.2:
+  + Move New Tab action as a button in the headerbar (it's no
+    longer in the hamburger menu).
+  + Refactorings in DhLink.
+  + Rename dh_free_resources() to dh_finalize().
+  + Bugs fixed: bgo#721082, bgo#779386, bgo#783964.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 23 11:04:03 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.1:
+  + Book tree in the side panel: add context menu with Collapse All
+    action.
+  + Update GUI when system fonts change.
+  + Lots of code clean-up and refactorings.
+  + Clean up the GSettings schema.
+  + Use GIO to load the index files.
+  + Several bug fixes in the parser.
+  + Build system:
+    - Disable -Werror by default.
+    - Use git.mk.
+    - Check for gsettings-desktop-schemas with pkg-config.
+  + API:
+    - There has been some API breaks documented in the reference
+      manual, but both Anjuta and gnome-builder should still
+      compile and work fine.
+    - Several fixes in the GTK-Doc comments and GObject
+      Introspection annotations.
+    - Improve documentation, write class descriptions for public
+      classes.
+    - DhBookManager is now a singleton.
+    - Deprecate dh_link_get_page_name().
+    - dh_init() now initializes the i18n.
+    - New function: dh_free_resources().
+  + Bugs fixed: bgo#761292, bgo#775175, bgo#776596, bgo#782511.
+  + Updated translations.
+- Add pkgconfig(gsettings-desktop-schemas) BuildRequires: New
+  dependency.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+
+-------------------------------------------------------------------
+Sun Mar 19 15:11:37 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar 12 10:56:56 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.92:
+  + devhelp 3.23.91 fails to build because of -Werror (bgo#779378).
+  + Add Flatpak build manifest (bgo#779563).
+  + Updated translations.
+- Stop passing disable-Werror to configure: no longer needed since
+  upstream fixed the issues.
+
+-------------------------------------------------------------------
+Sun Feb 26 15:43:30 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.91:
+  + bgo#763518: Add sidebar toggler to the menu.
+  + bgo#770785: Add GTK-Doc API reference and GObject Introspection
+    support.
+  + bgo#771503: fix warning in finalize of sidebar.
+  + bgo#773900: Small build system update.
+  + bgo#774069: unable to build devhelp by jhbuild.
+  + bgo#775261: Make DhLanguage a GObject subclass.
+  + Updated translations.
+- Add gobject-introspection-devel BuildRequires: new dependency.
+- Replace gtk3-devel BuildRequires with pkgconfig(gtk+-3.0):
+  matching what configure looks for.
+- Add pkgconfig(gio-2.0) BuildRequires: not a new dependency, but
+  explicitly list what configure checks for.
+- Pass --disable-Werror to configure: devhelp for now makes use of
+  some deprecated glib functions. Having -Werror in place causes
+  them to be failures.
+- Split out new typelib-1_0-Devhelp-3_0 subpackage, containging the
+  new gi-based typelib. Required by the -devel package.
+
+-------------------------------------------------------------------
+Mon Sep 19 13:16:26 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Wed Sep 14 07:16:32 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Bugs fixed: bgo#771327.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 29 18:13:42 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 15 16:58:28 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Bugs fixed: bgo#763942, bgo#769606.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May  2 20:35:01 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Sun Mar 20 20:33:50 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 15 10:43:56 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 10:49:11 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.90:
+  + Bugs fixed: bgo#645620, bgo#696904, bgo#723135, bgo#741806,
+    bgo#743704, bgo#757177, bgo#757877, bgo#758141, bgo#759691
+    bgo#759692, bgo#761407.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Dec 19 07:13:52 UTC 2015 - damjanovic.ivo@gmail.com
+
+- Update to version 3.19.3
+  + bgo#709658: gedit plugin: too many .plugin files.
+  + bgo#755872: Sometimes a page doesn't get opened.
+  + bgo#756341: Various code improvements and bug fixes.
+  + Updated translations.
+  
+-------------------------------------------------------------------
+Tue Oct 13 15:06:06 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 21 07:58:11 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 10:38:55 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.91:
+  + bgo#704833: books sidebar shouldn't have type ahead find.
+  + bgo#727243: gedit plugin needs to be ported to new menu API.
+  + bgo#749797: Misc code improvements.
+  + bgo#751446: AppData file needs updating for new desktop file
+    name.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun 25 18:21:01 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.3:
+  + bgo#593267: devhelp manpage.
+  + bgo#728384: Make DBus-activatable.
+  + bgo#749452: Misc maintenance stuff.
+  + bgo#749797: Misc code improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 15 09:33:30 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + Update list of official developer documentation sites.
+  + bgo#747016: icon: provide a symbolic variant of the app icon.
+
+-------------------------------------------------------------------
+Mon Mar 23 11:59:05 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Fix warning when book cannot be read (bgo#746609).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 08:34:09 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Disable some WebKit features we don't need (bgo#746166).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  4 12:21:53 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + bgo#745256: Update font size automatically when Xft resolution
+    changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 16 14:41:35 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + bgo#728916: Can't find "_" in the results.
+  + bgo#741806: Added support for XF86Back/XF86Forward keys.
+  + bgo#742447: devhelp crashes with empty documentation file.
+  + bgo#742457: Typo in GSettings conversion file causes
+    gsettings-data-convert to crash.
+  + bgo#742687: DevHelpBookTree is wider when searching.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 22 14:39:45 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 16 20:04:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.92:
+  + libdevhelp: Fix .pc file requires when building with
+    webkit2gtk-4.0 (bgo#735252).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug 24 06:23:41 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.90:
+  + Bugs fixed: Build against webkit2gtk-4.0 (bgo#734324).
+  + Updated translations.
+- Replace pkgconfig(webkit2gtk-3.0) for pkgconfig(webkit2gtk-4.0)
+  BuildRequires as upstream now supports it.
+
+-------------------------------------------------------------------
+Tue Jul 22 13:13:23 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.4:
+  + Bugs fixed: bgo#724098, bgo#724538, bgo#727064, bgo#730445,
+    bgo#730723, bgo#730772, bgo#732897.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 15 14:36:58 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 24 17:32:18 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 17 22:09:47 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  3 14:55:38 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.91:
+  + Bugs fixed: bgo#696573, bgo#723225, bgo#723933.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 15 11:50:19 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + Bugs fixed: bgo#712183, bgo#720167, bgo#720948.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov 11 19:14:30 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 23 16:52:59 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + bgo#707490: Don't use AM_GNU_GETTEXT.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  3 08:02:54 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.91:
+  + Bugs fixed: bgo#700588, bgo#706498.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 20 12:56:07 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Ported to GtkHeaderBar, GtkSearchBar, and more.
+  + Bugs fixed: bgo#700588.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 30 07:05:07 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.5:
+  + Bugs fixed: bgo#703609, bgo#704752, bgo#704805.
+
+-------------------------------------------------------------------
+Mon Jul  8 22:31:22 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.4:
+  + Bugs fixed: bgo#665531, bgo#695758, bgo#696922, bgo#700430.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 15 14:11:21 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.2:
+  + Disconnect signals when preferences dialog is shutdown.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 17 08:20:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Font size is too small by default and don't match system font
+    size (bgo#697026).
+  + Changing preferences crashes/fails after closing one of
+    multiple windows (bgo#697541).
+
+-------------------------------------------------------------------
+Mon Mar 25 15:14:40 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Bugs fixed: bgo#696367, bgo#695455.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 15:31:51 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.91:
+  + Bugs fixed: bgo#569021, bgo#600309, bgo#640567, bgo#665531,
+    bgo#671907, bgo#673320, bgo#693237.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  5 19:09:08 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + This release sees a revamp of the UI according to match
+    GNOME 3 applications.
+  + Bugs fixed: bgo#569021, bgo#646402, bgo#664080, bgo#671907,
+    bgo#679955, bgo#679956, bgo#688955, bgo#690599, bgo#690980,
+    bgo#692242, bgo#692732, bgo#693017, bgo#693023.
+  + Updated translations.
+- Drop gconf2-devel BuildRequires: no longer needed after the port
+  to GSettings.
+
+-------------------------------------------------------------------
+Tue Jan  8 19:30:07 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.3:
+  + bgo#646402: port devhelp to gsettings
+  + bgo#683882: Can't Ctrl+C to copy
+  + bgo#687607: add keywords to the desktop file
+  + bgo#688919: devhelp fails to build with GNU gold due to
+    underlinking
+- Changes from version 3.7.1:
+  + bgo#685710: Switch to WebKit2 by default for 3.7.x
+  + Updated translatons.
+- Replace pkgconfig(webkitgtk-3.0) BuildRequires with
+  pkgconfig(webkit2gtk-3.0), following upstreams move to WebKit2.
+- Replace gconf schema handling with gsettings equivalents.
+
+-------------------------------------------------------------------
+Wed Nov 14 07:45:36 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Fix Ctrl-C to copy.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 24 15:23:16 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 13:48:23 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.92:
+  + Upadted translations.
+
+-------------------------------------------------------------------
+Tue Aug  7 16:40:54 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.5:
+  + Implement application menu (bgo#677927)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 17 06:26:18 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 27 06:30:20 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + bgo#671256: Fix compilation warnings with
+    -Wunused-but-set-variable
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 16:50:27 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.91:
+  + Optional port to WebKit2 (pass --with-webkit2 to configure).
+  + Bugs fixed: bgo#647383, bgo#669696.
+  + Updated translations.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+- Note that we don't build with WebKit2 at the moment, as WebKit2
+  is still considered experimental. We'll switch to it when it will
+  be the default.
+
+-------------------------------------------------------------------
+Tue Dec 20 10:00:34 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.3.3:
+  + Bugs fixed:
+    - bgo#456282: Add globbing/wildcards to search fields
+    - bgo#646398, bgo#649064, bgo#652999, bgo#663789, bgo#666446.
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Remove libwnck-devel BuildRequires: removed upstream.
+- Drop devhelp-fix-multiple-gdk-backends.patch: fixed upstream.
+  Also remove gnome-common BuildRequires and call to
+  gnome-autogen.sh that were needed for the patch.
+- Update descriptions of packages.
+- Update Url tag.
+
+-------------------------------------------------------------------
+Mon Sep 26 19:44:42 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Bugs fixed: bgo#592897, bgo#646399, bgo#646400, bgo#646962,
+    bgo#650542.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Mon Jul  4 14:41:40 CEST 2011 - vuntz@opensuse.org
+
+- Add devhelp-fix-multiple-gdk-backends.patch to fix build against
+  a GTK+ built with more than one backend.
+- Add gnome-common BuildRequires and call to gnome-autogen.sh to
+  have the patch taken into account.
+
+-------------------------------------------------------------------
+Mon Apr  4 15:23:04 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 29 13:30:08 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.92:
+  + Bug fixed: bgo#644221.
+  + Updated translations
+- Changes from version 2.91.91.2:
+  + partial update for gtk-style-context, some deprecated functions
+    are still being used.
+  + Bugs fixed: bgo#643145, bgo#644026;.
+- Changes from version 2.91.90:
+  + bgo#642002: port gedit plugin to GObject Introspection and
+    latest GEdit.
+- Changes from version 2.91.5:
+  + bgo#638748: Adapt to new multi backend GTK+
+  + bgo#638761: Add ellipsize to search combo
+- Changes from version 2.91.4:
+  + bgo#90469: Search function to allow selecting books for search
+  + bgo#349608: Monitor books and update when they change
+  + bgo#353108: Search by language
+  + Other bugs fixed: bgo#601201, bgo#633834, bgo#635162,
+    bgo#636339, bgo#636933.
+- Changes from version 2.91.3:
+  + bgo#606593: Devhelp no longer recognizes "page:" search
+    keyword.
+  + bgo#624197: port to GtkApplication
+  + Other bugs fixed: bgo#630108, bgo#632872, bgo#635162.
+- Changes from version 2.90.5:
+  + bgo#614798: find string is slow
+  + bgo#619202: Add the possibility of enabling or disabling
+    specific books.
+- Drop devhelp-fix-gconf-default.patch: fixed upstream.
+- Update BuildRequires for GNOME3: gtk3-devel instead of
+  gtk2-devel, pkgconfig(webkitgtk-3.0) instead of
+  libwebkitgtk-devel.
+- Drop libunique-devel BuildRequires as it moved to GtkApplication.
+- Remove explicit Requires of gtk2-devel and libwebkitgtk-devel in
+  devel subpackage: the right ones will automatically be added the
+  pkgconfig() way.
+
+-------------------------------------------------------------------
+Sun Feb 13 13:57:57 CET 2011 - vuntz@opensuse.org
+
+- Call missing relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Wed Oct 13 16:27:29 CEST 2010 - vuntz@opensuse.org
+
+- Add devhelp-fix-gconf-default.patch: this fixes the default value
+  of a key of type list to be valid.
+
+-------------------------------------------------------------------
+Tue Sep 28 00:38:52 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + bgo#629174: Fix "disabled_books" GConf key
+  + bgo#629546: missing prototype definition for
+    dh_util_state_load_books_disabled
+  + Updated translations.
+- Drop devhelp-prototype.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Sep 13 14:09:15 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.92:
+  + bgo#629174: Fix "disabled_books" GConf key
+  + Updated translations.
+- Add devhelp-prototype.patch: Also rename the prototypes.
+
+-------------------------------------------------------------------
+Mon Aug 30 16:49:04 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.91:
+  + bgo#627795, Some functions cannot be viewed in Assistant.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 25 16:40:56 CEST 2010 - vuntz@opensuse.org
+
+- Use the %icon_theme_cache_post/%icon_theme_cache_postun macros in
+  %post/%postun to update the hicolor icon theme cache.
+
+-------------------------------------------------------------------
+Sat Aug  7 12:26:01 CEST 2010 - vuntz@opensuse.org
+
+- Change libwebkit-devel BuildRequires (and Requires of devel
+  package) to libwebkitgtk-devel, since this package got renamed.
+
+-------------------------------------------------------------------
+Fri Aug  6 11:20:00 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.6:
+  + bgo#619202, possibility of enabling or disabling specific books
+  + bgo#624197, port to GApplication
+  + bgo#625805, do no disable deprecated GLib functions
+  + Updated translations.
+- Changes from version 2.30.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 29 15:36:50 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 10 16:28:49 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.90:
+  + bgo#601048, Segfaults when typing too fast in the search box
+  + bgo#603623, libdevhelp-1.0.pc is missing webkit-1.0
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec  2 17:10:34 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.3:
+  + bgo#603040, Opening the wrong arrow in the left side bar
+  + Updated translations.
+- Changes from version 2.29.2:
+  + bgo#601651, devhelp needs to link against libgthread
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Nov 14 21:32:59 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.1:
+  + bgo#544388, Fullscreen mode
+  + bgo#593566, Miscellaneous string fixes
+  + Updated translations.
+- Changes from version 2.28.1:
+  + bgo#589435, Track pad horizontal scrolling
+  + bgo#596808, Fix several leaks reported by valgrind
+  + bgo#596810, Clicking close button on a tab always closes the
+    current tab
+  + bgo#598598, Linking across GNOME components
+
+-------------------------------------------------------------------
+Mon Sep 28 13:53:09 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0.1:
+  + badly generated configure file
+- Drop the gnome-autogen.sh call and the related gnome-common
+  BuildRequires.
+
+-------------------------------------------------------------------
+Thu Sep 24 09:37:12 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + bgo#594633 - Remove libwnck from Requires in .pc file
+  + bgo#595567 - devhelp launches along with a spurious empty
+    browser window
+  + Updated translations.
+- No need to rename sr@Latn anymore, fixed upstream.
+- Adding gnome-common BuildRequires in order to gnome-autogen.sh
+  the tarball. Seems the release had an error with a missing
+  symbol.
+- Spec file cleaned with spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Sep  9 04:33:30 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.27.92:
+  - bgo#517003, Translated strings are not being used in gedit's
+    plugin
+  - bgo#552640, New tabs should not steal focus
+  - bgo#563036, Desensitize zoom items when non applicable
+  - bgo#566117, Book titles should be forced to be single line
+  - bgo#566459, generate Enumeration and Flag Types
+  - bgo#568172, Wrong management of fonts
+  - bgo#571626, Space should scroll down
+  - bgo#578964, Make Ctrl+C copy the symbol name in the symbol
+    listing pane
+  - bgo#579539, New tabs don't suit a window well
+  - bgo#585110, Use accessor functions instead direct access
+  - bgo#585670, Blank Screen on DevHelp Assistant
+  - bgo#587984, emacs devhelp-word-at-point clobbers global "w"
+  - bgo#587986, html2xml.py does not close <sub>
+  - bgo#587999, Page sensitive searches have been broken.
+  - bgo#588655, Work around deprecated g_mapped_file_free()
+  - bgo#588850, Installs empty images dir
+  - bgo#590207, link in About dialog is out of date
+  - bgo#590209, toolbar actions could use some is_important love
+  - bgo#591046, Assistant window resizes automatically
+  - bgo#592157, Application name is desktop file and main window is
+    not translatable
+  - bgo#592712, build fails using automake 1.11
+  - bgo#592750, Support silent build rules with automake 1.11
+  - bgo#593174, Incredibly small string fix
+  + Updated translations.
+- Add libunique-devel BuildRequires.
+- Remove autoreconf call.
+
+-------------------------------------------------------------------
+Thu Aug 13 23:43:04 CEST 2009 - captain.magnus@opensuse.org
+
+- Update to version 0.23.1:
+  + This is a build fix release for latest glib
+  + Translation updates
+- Remove devhelp-webkit.patch. New update contains this update
+- Remove devhelp-includes.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Thu Aug  6 14:16:13 CEST 2009 - vuntz@novell.com
+
+- Update devhelp-webkit.patch to the patch from git.
+
+-------------------------------------------------------------------
+Wed Jul 22 13:42:13 CEST 2009 - sbrabec@suse.cz
+
+- Fixed build with the latest glib2.
+- Fixed opening of URIs provided by search (bnc#522359).
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Sat Jan 31 09:03:11 EST 2009 - mboman@suse.de
+
+- Update to version 0.23:
+  + Translation updates 
+
+-------------------------------------------------------------------
+Thu Jan 29 01:54:44 CET 2009 - vuntz@novell.com
+
+- Remove BuildRequires.
+- Remove checks for old openSUSE versions.
+- Remove la files.
+- Add vim-plugin-devhelp package.
+- Split the gedit plugin in the gedit-plugin-devhelp package.
+
+-------------------------------------------------------------------
+Sat Dec 20 09:18:14 EST 2008 - mboman@suse.de
+
+- Update to version 0.22:
+  + This is the first release from the WebKit branch
+  + Translation updates
+- Remove devhelp-nspr-includes.patch: we don't use mozilla anymore.
+
+-------------------------------------------------------------------
+Tue Sep 23 17:31:35 CDT 2008 - maw@suse.de
+
+- Update to version 0.20.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 12 09:59:49 CDT 2008 - maw@suse.de
+
+- Update to version 0.20.0:
+  + Bugs fixed: bgo#499050, bgo#537093, and bgo#539624
+  + Updated translations
+- Drop devhelp-xul19.patch and devhelp-bnc411497-xul19-crash.patch,
+  because they have been upstreamed
+- Add devhelp-nspr-includes.patch.
+
+-------------------------------------------------------------------
+Sat Aug 30 11:39:45 CEST 2008 - mboman@novell.com
+
+- Updated to version 0.19.1:
+  + Add a GType for the DhLink boxed type.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 25 11:39:45 CEST 2008 - vuntz@novell.com
+
+- Add devhelp-bnc411497-xul19-crash.patch to fix crashes with xulrunner 1.9
+  when copying or searching (bnc#411497, bnc#410592)
+
+-------------------------------------------------------------------
+Wed May 21 20:51:45 CEST 2008 - maw@suse.de
+
+- Add devhelp-xul19.patch (bnc#391839).
+
+-------------------------------------------------------------------
+Fri Mar 21 19:53:04 CET 2008 - jpr@suse.de
+
+- Remove obsolete -devel requires
+- Remove obsolete version check
+
+-------------------------------------------------------------------
+Mon Mar  3 21:19:33 CET 2008 - maw@suse.de
+
+- Update to version 0.19:
+  + Use proper size icon for close buttons in tabs (bgo#510984)
+  + Polish the new Zoom UI (bgo #508510 and bgo#508513)
+  + Specify an icon for the GEdit plugin (bgo#512000)
+  + Updated translations
+- Own %{_datadir}/devhelp/books.
+
+-------------------------------------------------------------------
+Thu Feb 28 15:26:13 CET 2008 - ro@suse.de
+
+- do not buildrequire gedit, add needed directories to filelist
+  instead (caused a buildcycle across all of GNOME) 
+
+-------------------------------------------------------------------
+Tue Jan 29 15:47:28 CST 2008 - maw@suse.de
+
+- Update to version 0.17:
+  + Dont run new instance on new display (bgo#354895)
+  + New icons from Andreas Nilsson (bgo#463131)
+  + Add zoom actions (bgo#144517)
+  + Add close buttons to tabs (bgo#479306)
+  + Fix build against xyulrunner 1.9 (bgo#499050)
+  + Remove obsolete dependencies (libgnomeui and gnome-vfs, 
+    bgo#484896) and make libwnck optional
+  + Use po/LINGUAS (bgo#464108)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 17:19:01 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 0.16:
+  * Changed keybinding in GEdit plugin from F7 to F2 to avoid a
+    conflict with GTK+ 2.12
+  * Use theme colors for gecko 1.9 and later
+  * Call g_thread_init
+  * Add --focus-search command line option
+  * Add typeahead searching
+  * Update information about where books should be installed
+  * Add missing mnemonics
+  * Make deprecated keywords grey
+  * Only search for books in the XDG data/home directories
+  * Add advanced (book/page) search options
+  * Improve libdevhelp
+  * Add --version option
+  * Fix mnemomics
+  * Add a very simple gedit plugin
+  * Add quit menu item
+  * Build fixes and clean ups
+  * Lots of Gecko build fixes and improvements
+  * Open external links in browser
+  * UI tweaks
+  * Shiny new icon
+  * Read books installed in XDG data dirs
+  * Use correct category in desktop file
+  * Tab support
+  * Support for multiple windows
+  * Parse the new gtk-doc format
+  * Reuse devhelp windows from the current workspace only
+  * Sync the contents tree with the actual selection
+  * Smart case searching
+  * Use book title + html title as window title
+  * Improve build against various mozilla-derivates
+  * updated translations
+
+-------------------------------------------------------------------
+Thu Aug  9 19:19:44 CEST 2007 - maw@suse.de
+
+- Add a %files section for the -lang subpackage
+- s#%run_ldconfig#/sbin/ldconfig# in %post and %postun.
+
+-------------------------------------------------------------------
+Tue Aug  7 00:56:06 CEST 2007 - mauro@suse.de
+
+- Split out a -lang subpackage.
+- Added %fdupes stuff
+
+-------------------------------------------------------------------
+Wed Feb  7 12:27:30 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552).
+
+-------------------------------------------------------------------
+Wed Jan  3 15:17:05 CET 2007 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Wed Dec 20 18:24:10 CET 2006 - jhargadon@suse.de
+
+- added gconf2 as a PreReq in the specfile (#225739) 
+
+-------------------------------------------------------------------
+Thu Nov 30 17:19:39 CET 2006 - sbrabec@suse.cz
+
+- Fixed xulrunner dependencies for older products.
+
+-------------------------------------------------------------------
+Tue Nov  7 19:19:49 CET 2006 - sbrabec@suse.cz
+
+- Use exact xulrunner version 181 (#216100).
+
+-------------------------------------------------------------------
+Tue Sep  5 10:17:57 CEST 2006 - aj@suse.de
+
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Fri Jul  7 05:35:16 CEST 2006 - lrupp@suse.de
+
+- Fixed mozilla/xulrunner/xulrunner180 dependencies
+
+-------------------------------------------------------------------
+Thu Apr 13 22:40:20 CEST 2006 - jpr@suse.de
+
+- Guard against initializing threads twice (#165486)
+
+-------------------------------------------------------------------
+Fri Feb 17 21:24:36 CET 2006 - sreeves@suse.de
+
+- Update .desktop file (Name, GenericName, Comment, DocPath)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:22 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov 16 16:30:59 CET 2005 - sbrabec@suse.cz
+
+- Fixed mozilla/xulrunner dependencies.
+
+-------------------------------------------------------------------
+Wed Oct 12 02:51:32 CEST 2005 - ro@suse.de
+
+- use mozilla-devel-packages in nfb
+- try xulrunner if nothing else is found
+
+-------------------------------------------------------------------
+Tue Aug 16 14:04:36 CEST 2005 - sbrabec@suse.cz
+
+- Moved /opt/gnome/share/devhelp to gnome-filesystem.
+- Fixed devel dependencies.
+
+-------------------------------------------------------------------
+Fri Aug 12 15:11:54 CEST 2005 - sbrabec@suse.cz
+
+- Fixed requirement to not require symbols provided only by
+  mozilla-nss and mozilla-nspr packages (#98002).
+- Fixed devel requirements.
+
+-------------------------------------------------------------------
+Wed May 11 19:20:33 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 0.10.
+
+-------------------------------------------------------------------
+Thu Apr 28 18:09:01 CEST 2005 - sbrabec@suse.cz
+
+- Install missing translation files.
+
+-------------------------------------------------------------------
+Fri Feb 18 14:59:15 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 0.9.3.
+
+-------------------------------------------------------------------
+Wed Oct 27 11:00:14 CEST 2004 - mmj@suse.de
+
+- Locale rename no to nb
+
+-------------------------------------------------------------------
+Wed Oct 13 14:28:10 CEST 2004 - sbrabec@suse.cz
+
+- Use gnome2-devel-packages in neededforbuild.
+
+-------------------------------------------------------------------
+Thu Sep  9 17:01:27 CEST 2004 - clahey@suse.de
+
+- Run ldconfig.
+- Merge .spec files for pre and post 9.1.
+
+-------------------------------------------------------------------
+Tue Sep 07 15:19:06 CEST 2004 - sbrabec@suse.cz
+
+- Generated shared mime info.
+
+-------------------------------------------------------------------
+Wed May 12 23:49:36 CEST 2004 - clahey@suse.de
+
+- Added gnome-keyring-devel builddep.
+
+-------------------------------------------------------------------
+Thu Mar 18 09:08:55 CET 2004 - adrian@suse.de
+
+- move menu entry into Documentation menu
+
+-------------------------------------------------------------------
+Fri Feb 20 11:41:20 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 0.8.1.
+
+-------------------------------------------------------------------
+Sat Jan 10 17:36:07 CET 2004 - adrian@suse.de
+
+- builad as user
+
+-------------------------------------------------------------------
+Mon Jul 14 14:38:43 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Mon Jun 30 11:22:21 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 0.7.
+
+-------------------------------------------------------------------
+Fri Jun 20 01:35:12 CEST 2003 - ro@suse.de
+
+- added directory to filelist
+
+-------------------------------------------------------------------
+Tue Jun  3 01:32:50 CEST 2003 - ro@suse.de
+
+- run full autoreconf for new libtool 
+
+-------------------------------------------------------------------
+Tue May 27 17:34:27 CEST 2003 - sbrabec@suse.cz
+
+- Initial SuSE version.
+

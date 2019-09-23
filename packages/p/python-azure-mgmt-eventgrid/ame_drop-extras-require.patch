@@ -1,0 +1,11 @@
+diff -Nru azure-mgmt-eventgrid-2.0.0.orig/setup.py azure-mgmt-eventgrid-2.0.0/setup.py
+--- azure-mgmt-eventgrid-2.0.0.orig/setup.py	2019-04-12 13:26:05.191887244 +0200
++++ azure-mgmt-eventgrid-2.0.0/setup.py	2019-04-12 13:26:20.428030729 +0200
+@@ -81,7 +81,4 @@
+         'msrestazure>=0.4.32,<2.0.0',
+         'azure-common>=1.1',
+     ],
+-    extras_require={
+-        ":python_version<'3.0'": ['azure-mgmt-nspkg'],
+-    }
+ )

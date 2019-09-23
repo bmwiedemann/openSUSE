@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Tue Jan  2 15:59:59 UTC 2018 - jengelh@inai.de
+
+- Compact description. Fix RPM groups.
+
+-------------------------------------------------------------------
+Mon Jan  1 07:21:18 UTC 2018 - avindra@opensuse.org
+
+- update to 0.3.2
+  * Accommodate systems without pthread_condattr_setclock
+- 0.3.1
+  * Add support for '-' as a filename for stdin/stdout
+  * Destroy condition variable and mutexes in fstrm_iothr_destroy()
+- 0.3.0
+  * Output file rotation
+  * Change state properly in fstrm_writer_close()
+  * force output flush on sighup
+  * Build on OS X
+- cleanup with spec-cleaner
+- use dist tarball instead of github archive
+
+-------------------------------------------------------------------
+Thu Sep  3 14:30:01 UTC 2015 - mrueckert@suse.de
+
+- require the correct version of libevent to make it fail early
+
+-------------------------------------------------------------------
+Wed Jun 17 09:08:20 UTC 2015 - thehejik@suse.com
+
+- fixed group of shared library- 
+
+-------------------------------------------------------------------
+Tue Jun 16 11:12:38 UTC 2015 - mvetter@suse.com
+
+- cleanup spec file, remove .la
+
+-------------------------------------------------------------------
+Thu Apr  9 02:28:34 UTC 2015 - mrueckert@suse.de
+
+- initial package
+

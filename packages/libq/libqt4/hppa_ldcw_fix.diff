@@ -1,0 +1,29 @@
+author: LaMont Jones <lamont@bld-4.mmjgroup.com>
+
+patch from Ubuntu to properly support hppa.
+
+--- src/corelib/arch/parisc/q_ldcw.s
++++ src/corelib/arch/parisc/q_ldcw.s
+@@ -38,20 +38,10 @@
+ ;** $QT_END_LICENSE$
+ ;**
+ ;****************************************************************************/
+-	.SPACE $PRIVATE$
+-	.SUBSPA $DATA$,QUAD=1,ALIGN=8,ACCESS=31
+-	.SUBSPA $BSS$,QUAD=1,ALIGN=8,ACCESS=31,ZERO,SORT=82
+-	.SPACE $TEXT$
+-	.SUBSPA $LIT$,QUAD=0,ALIGN=8,ACCESS=44
+-	.SUBSPA $CODE$,QUAD=0,ALIGN=8,ACCESS=44,CODE_ONLY
+-	.IMPORT $global$,DATA
+-	.IMPORT $$dyncall,MILLICODE
+-	.SPACE $TEXT$
+-	.SUBSPA $CODE$
+-
++	.text
+ 	.align 4
+ 	.EXPORT q_ldcw,ENTRY,PRIV_LEV=3,ARGW0=GR,RTNVAL=GR
+-q_ldcw
++	.label q_ldcw
+ 	.PROC
+ 	.CALLINFO FRAME=0,CALLS,SAVE_RP
+ 	.ENTRY

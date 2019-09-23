@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Tue Jul  8 09:23:15 UTC 2014 - tchvatal@suse.com
+
+- Fix sle11 build bit better.
+
+-------------------------------------------------------------------
+Mon Jul  7 15:06:28 UTC 2014 - tchvatal@suse.com
+
+- Use junit not junit4 dep.
+
+-------------------------------------------------------------------
+Fri Jun 27 12:49:02 UTC 2014 - tchvatal@suse.com
+
+- Fix build on sle11
+
+-------------------------------------------------------------------
+Fri Jun 27 12:09:10 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Fri May  2 16:56:14 UTC 2014 - dmitry_r@opensuse.org
+
+- Use original source archive
+- Repack ant build files as jrosetta-build-ant-1.0.4.tar.gz
+
+-------------------------------------------------------------------
+Thu Aug  1 04:04:09 UTC 2013 - ierturk@ieee.org
+
+- Update to version 1.0.4
+- Repack as ant project
+
+-------------------------------------------------------------------
+Sat Nov 28 22:55:45 UTC 2009 - kirill.kirillov@gmail.com
+
+- update to 1.0.2
+
+-------------------------------------------------------------------
+Wed Dec 24 2008 Andrea Florio - <andrea@opensuse.org>
+
+- OpenSUSE-EDU porting
+
+-------------------------------------------------------------------
+Tue Dec 09 2008 Andrea Florio - <andrea@links2linux.de> 1.0.1
+
+- packman porting
+
+-------------------------------------------------------------------
+Sun Nov 09 2008 Tomasz Pawel Gajc <tpg@mandriva.org> 1.0.1-0.0.1mdv2009.1
+
+- Revision: 301435
+  + add source and spec files
+  + Created package structure for jrosetta.
+

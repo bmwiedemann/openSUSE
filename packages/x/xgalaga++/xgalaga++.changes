@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Sat May 27 04:58:50 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort input files to make build reproducible
+  (boo#1041090)
+
+-------------------------------------------------------------------
+Mon Nov 24 19:26:02 UTC 2014 - nemysis@gmx.ch
+
+- Initial package creation
+

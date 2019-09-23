@@ -1,0 +1,16 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<!-- original author's repo: https://evilpiepirate.org/git/bcache-tools.git -->
+		<param name="url">git://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools</param>
+		<param name="revision">for-next</param>
+		<!-- colyli repo does not have the tags of evilpiepirate -->
+		<param name="parent-tag">a73679b22c333763597d39c72112ef5a53f55419</param>
+		<param name="versionformat">1.0.8+suse@TAG_OFFSET@</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

@@ -1,0 +1,35 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2014-12-09 17:23:13.621597902 +0100
+References: http://debbugs.gnu.org/cgi/bugreport.cgi?bug=19311
+
+build: do not set compilers _too_ early / workaround automake regression
+---
+ configure.ac |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+Index: libmemcached-1.0.18/configure.ac
+===================================================================
+--- libmemcached-1.0.18.orig/configure.ac
++++ libmemcached-1.0.18/configure.ac
+@@ -13,10 +13,6 @@ m4_include([version.m4])
+ AC_PREREQ([2.61])
+ AC_INIT([libmemcached],VERSION_NUMBER,[http://libmemcached.org/])
+ 
+-# Setup the compilers early on
+-AC_PROG_CC([cc gcc clang])
+-AC_PROG_CXX([c++ g++ clang++])
+-
+ AC_CONFIG_AUX_DIR([build-aux])
+ AC_CONFIG_MACRO_DIR([m4])
+ 
+@@ -61,6 +57,10 @@ LT_LIB_M
+ 
+ AC_SUBST([lt_cv_dlopen_libs])
+ 
++# Setup the compilers early on
++AC_PROG_CC([cc gcc clang])
++AC_PROG_CXX([c++ g++ clang++])
++
+ 
+ AC_PROG_CC_C99
+ AS_IF([test "x${ac_cv_prog_cc_c99}" == "xno"],[AC_MSG_ERROR([No c99 compatible compiler found])])

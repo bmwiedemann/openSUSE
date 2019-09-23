@@ -1,0 +1,50 @@
+--- uucp-1.07/unix/fsusg.h.lfs	2003-05-29 08:08:49.000000000 +0200
++++ uucp-1.07/unix/fsusg.h	2005-07-14 15:18:50.000000000 +0200
+@@ -19,13 +19,19 @@
+    Taylor UUCP.  */
+ 
+ /* Space usage statistics for a filesystem.  Blocks are 512-byte. */
++
++#if ! HAVE_SYS_STATVFS_H  /* not SVR4. */
++typedef long fsblkcnt_t;
++typedef long fsfilcnt_t;
++#endif
++
+ struct fs_usage
+ {
+-  long fsu_blocks;		/* Total blocks. */
+-  long fsu_bfree;		/* Free blocks available to superuser. */
+-  long fsu_bavail;		/* Free blocks available to non-superuser. */
+-  long fsu_files;		/* Total file nodes. */
+-  long fsu_ffree;		/* Free file nodes. */
++  fsblkcnt_t fsu_blocks;	/* Total blocks. */
++  fsblkcnt_t fsu_bfree;		/* Free blocks available to superuser. */
++  fsblkcnt_t fsu_bavail;	/* Free blocks available to non-superuser. */
++  fsfilcnt_t fsu_files;		/* Total file nodes. */
++  fsfilcnt_t fsu_ffree;		/* Free file nodes. */
+ };
+ 
+ extern int get_fs_usage P((char *path, char *disk, struct fs_usage *fsp));
+--- uucp-1.07/unix/fsusg.c.lfs	2003-05-29 08:08:49.000000000 +0200
++++ uucp-1.07/unix/fsusg.c	2005-07-14 15:02:27.000000000 +0200
+@@ -90,16 +90,16 @@
+ 
+ #if ! STAT_NONE
+ 
+-static long adjust_blocks P((long blocks, int fromsize, int tosize));
++static fsblkcnt_t adjust_blocks P((fsblkcnt_t blocks, unsigned long fromsize, unsigned long tosize));
+ 
+ /* Return the number of TOSIZE-byte blocks used by
+    BLOCKS FROMSIZE-byte blocks, rounding away from zero.
+    TOSIZE must be positive.  Return -1 if FROMSIZE is not positive.  */
+ 
+-static long
++static fsblkcnt_t
+ adjust_blocks (blocks, fromsize, tosize)
+-     long blocks;
+-     int fromsize, tosize;
++     fsblkcnt_t blocks;
++     unsigned long fromsize, tosize;
+ {
+   if (tosize <= 0)
+     abort ();

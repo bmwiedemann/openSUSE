@@ -1,0 +1,12 @@
+<package name="python-tzlocal" project="openSUSE:Factory">
+  <title>Tzinfo object for the local timezone</title>
+  <description>This Python module returns a tzinfo object with the local timezone information under Unix and Win-32. It requires pytz, and returns pytz tzinfo objects.
+
+This module attempts to fix a glaring hole in pytz, that there is no way to get the local timezone information, unless you know the zoneinfo name, and under several Linux distros that's hard or impossible to figure out.
+
+With tzlocal you only need to call get_localzone() and you will get a tzinfo object with the local time zone info. On some Unices you will still not get to know what the timezone name is, but you don't need that when you have the tzinfo file. However, if the timezone name is readily available it will be used.
+
+</description>
+  <devel project="devel:languages:python" package="python-tzlocal"/>
+  <url>https://pypi.python.org/pypi/tzlocal/</url>
+</package>

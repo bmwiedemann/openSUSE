@@ -1,0 +1,8 @@
+<package name="ocamlmod" project="openSUSE:Factory">
+  <title>Generate OCaml modules</title>
+  <description>Generate OCaml modules from source files
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocamlmod"/>
+  <url>http://forge.ocamlcore.org/projects/ocamlmod/</url>
+</package>

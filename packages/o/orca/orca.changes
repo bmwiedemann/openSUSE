@@ -1,0 +1,4315 @@
+-------------------------------------------------------------------
+Wed Mar 13 19:45:56 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  8 13:47:45 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Create generic switcher script and use it for all
+    non-gnome-shell switchers.
+  + Improve presentation when initially getting into the Compiz and
+    MATE switchers.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 21 15:54:53 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + Web:
+    - Ensure web contents are scrolled into view during SayAll.
+    - Scroll the current object to the top edge when using
+      structural navigation.
+    - Prevent extra context being presented in contenteditable
+      elements.
+    - Work around YouTube focus issue when navigating by heading.
+    - Improve presentation of graphical/icon-based push buttons.
+    - Increase the likelihood that inline list items will be
+      presented as one line.
+    - Attempt to identify and ignore bogus events from background
+      etherpad.
+    - Fix issue presenting text with links when using etherpad in
+      object mode.
+    - Don't do SayAll for URIs starting with "moz-extension".
+    - Improve interaction and presentation of focusable trees.
+  + LibreOffice: Fix presentation of text selection spanning
+    multiple, partial lines in a list.
+  + General:
+    - Fix hang resulting from building flat review context from
+      objects claiming a bogus, huge bounding box.
+    - Handle broken accessibility tree when generating labelOrName.
+
+-------------------------------------------------------------------
+Fri Feb  1 07:31:04 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.4:
+  + New Commands:
+    - Add unbound command to present current object's size and
+      position.
+    - Add an unbound command to switch between layout mode and
+      object mode.
+  + Web:
+    - Ignore page loads for non-active documents.
+    - Fix presentation of focusable text with MathML children.
+    - Eliminate some chattiness with MathML embedded in links and
+      headings.
+    - Improve finding sentence start in contents with embedded
+      objects.
+    - Make toggle buttons and non-focusable buttons reachable via
+      "b".
+    - Improve consistency in placement of navlist.
+    - Fallback on access key when there is no aria-keyshortcuts
+      value.
+    - Check 'URI' in addition to 'DocURL' when getting URL of
+      document.
+    - Add initial Chromium script. Please note: ATK support in
+      Chromium needs much work. Until that work has been done, Orca
+      will not be able to provide access to Chromium. The current
+      support is very much a work in progress and not yet ready for
+      end-user testing.
+  + LibreOffice: Ensure we fall back on native headers when dynamic
+    headers aren't set.
+  + Braille:
+    - Fail initialization if device is not plugged yet.
+    - On initialization error, make sure to clean BrlAPI
+      connection.
+    - Ensure we don't pan beyond the length of the line being
+      displayed.
+    - Make sure the attribute mask is as long as the text string.
+  + General:
+    - Ignore window deactivations we believe are not
+      user-triggered. (Reduces chattiness when using certain
+      window-manager shortcuts).
+    - Improve performance searching the accessibility tree for
+      needed information.
+    - Don't clear the cache of non-Gecko windows by default
+      (improves performance).
+    - Don't bother checking the mousereview item when mousereview
+      is not active (improves performance).
+    - Fix bug in flat review say all causing us to cut off
+      information.
+    - Fall back on rolename when presenting title of nameless
+      frames.
+    - Ensure we use keyval_name when event_string is absent for
+      keyboard events.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb  1 07:31:01 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.1:
+  + General:
+    - Include the selected item count when presenting selection.
+    - Fix double presentation of items in certain lists.
+    - Handle various instances of objects going defunct.
+    - Present expanded state even when state expandable is not
+      exposed.
+    - Treat expanded events from listboxes and push buttons as
+      presentable events.
+    - Ignore spurious focus claim from gnome-shell window after
+      switcher use.
+    - Add handling for objects with role "redundant object".
+    - Ensure we're not silent when a cell gains focus.
+    - Add initial support for Smuxi (gnome frontend).
+    - Restore X keyboard layout on orca segfault.
+    - Add support for removing user profiles.
+  + Web:
+    - Improve behavior of page summary when caret context is null
+      or the document cannot be found.
+    - Handle component interface failures in label inference.
+    - Sanity-check offsets before calling getRangeExtents().
+    - Make braille presentation of new document web role consistent
+      with old document frame role.
+    - Ensure we correctly speak the role of edit spin buttons.
+  + LibreOffice:
+    - Work around Writer killing focused cell during row insertion
+      and deletion.
+    - Don't present ancestors after editing Calc cell.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb  1 07:30:31 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.30.2:
+  + Braille: Ensure we don't pan beyond the length of the line
+    being displayed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Oct 21 09:14:57 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + General:
+    - Fix presentation of nameless menu items in certain
+      gnome-shell extesions.
+    - Improve presentation of Pluma spell-check dialog.
+    - Fix bug in sentence echo.
+    - Fix issue with profile names containing XML special
+      characters.
+  + Web: Fix some chattiness with SayAll in web content.
+  + LibreOffice: Work around Writer issue preventing presentation
+    of selected text.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 26 16:24:36 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.0:
+  + General:
+    - Present event for non-showing object if it's focused.
+    - Don't present unselected-cell message for text objects.
+    - Don't speak "no focus" even when there is no accessible
+      application focused (it annoys users more than it helps
+      them).
+    - Automatically present details content upon expansion of
+      controlling widget.
+    - Bump version for availability of simulating modifiers in
+      at-spi.
+  + Web:
+    - Ignore bogus focus event for active window from Gecko.
+    - Don't speak row header role with multiple objects are on the
+      same line.
+    - Only prefer the name of links when it's author-provided.
+  + Updated translations.
+- Changes from version 3.29.92:
+  + General:
+    - Fall back on displayed text for labels which lack an
+      accessible name.
+    - Fix regression resulting from presentation of all selected
+      items.
+    - Always treat ROLE_APPLICATION objects as having size.
+  + Web: Clear cache to work around missing state-changed event.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  3 20:01:50 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.4:
+  + General:
+    - Announce when all items in a container have been selected.
+    - Rename selected-text command, bind it to a keystroke, and
+      make it work in spreadsheets and other containers.
+    - Check additional ancestry when trying to find current flat
+      review location.
+    - Limit double-orca caps lock synthesis to within 0.5s.
+    - Minimize looking for unrelated labels in gnome-shell
+      (performance).
+    - Add brief delay before announcing "no focus".
+  + Terminal:
+    - Treat terminal insertions which end at the caret as
+      presentable.
+    - Prevent double-echoing of typed characters.
+  + LibreOffice: Add option to always speak full selected range in
+    spreadsheet.
+  + Speech: Fix issues in recently-added progress marking and SSML
+    support.
+  + Updated translations.
+- Use autosetup macro.
+
+-------------------------------------------------------------------
+Fri Jun 29 00:59:11 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.28.2:
+  + Web + Email: Update Orca to handle "document web" role now
+    used in Gecko.
+  + General: Fix bug causing certain combo boxes to not be
+    presented.
+  + Braille: Fix braille word wrap being incorrectly enabled.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Apr 22 13:24:46 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.1:
+  + Web + Email: Fix Orca-triggered focus change in Thunderbird
+    message composition window.
+  + General: Handle event floods from Caja and Nautilus more
+    efficiently.
+  + Braille:
+    - Release device when braille is deactivated for some
+      applications.
+    - Fix bogus dots appearing after text.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 19:47:03 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.0:
+  + Web + Email:
+    - Ensure focus is grabbed on image links when navigating.
+    - Fix bug causing notifications to trigger browse mode.
+  + LibreOffice: Improve heuristic to identify spellcheck dialog.
+  + General: Ensure list name is presented for ancestor lists.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 16:51:24 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Thu Feb 22 00:54:34 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.91:
+  + Web + Email:
+    - Improve navigation among, and presentation of, editable
+      elements with descendants;
+    - Fix bug in which Orca went silent due to text elements 
+      failing to support the accessible text interface;
+    - Eliminate double presentation of visual labels which also
+      provide the accessible description;
+    - Fix issue causing Orca to skip over certain table content in
+      SayAll;
+    - Improve presentation of displayed text in ARIA dialogs;
+    - Re-enable announcement of page tab switches in Firefox.
+  + LibreOffice:
+    - Work around (bdo#109398);
+    - Eliminate double presentation of redundant frames.
+  + General:
+    - Implement initial support for braille "word wrap";
+    - Improve presentation of locations in file chooser dialog;
+    - Only present text changes from type-ahead entries if they are
+      focused;
+    - Eliminate some chattiness resulting from redundant focus
+      claims from Gtk+ tables;
+    - Eliminate double-presentation of spin button value changes;
+    - Fix bug causing nameless, valueless comboboxes to not be
+      presented;
+    - Fix issues in Orca's documentation.
+  + Updated translations.
+- Replace '+' in LGPL License tag with '-or-later' complying with
+  SPDX 3.0.
+
+-------------------------------------------------------------------
+Tue Dec 19 00:15:25 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.27.3:
+  + Web + Email:
+    - Fixed several issues in presentation of editable content.
+    - Hack around lack of window:activate events for ARIA dialogs.
+    - Fix presentation of find results in new version of Firefox.
+    - Improve handling of focused elements getting destroyed when
+      activated.
+    - Attempt to identify and navigate around non-navigable
+      embedded documents.
+  + General:
+    - Fix:
+      . Chattiness issue caused by off-screen labels in Gtk+
+        listboxes.
+      . Issues to pass 'yelp-check validate'.
+    - Eliminate incorrect presentation of previous panel.
+  + Updated translations.
+- Update Url to https://wiki.gnome.org/Projects/Orca: current
+  Orca project's web page.
+- Point fdupes to the python3 sitelib instead of the build root,
+  which is a practice that must be avoided, and add extra path to
+  the data directory.
+- Adop the use of %make_build macro rather than raw make command,
+  following the best practices.
+
+-------------------------------------------------------------------
+Thu Nov  2 13:17:16 UTC 2017 - mpluskal@suse.com
+
+- Explicitly require python3
+- Small cleanup with spec-clener
+
+-------------------------------------------------------------------
+Tue Oct 24 15:50:30 UTC 2017 - mgorse@suse.com
+
+- Change brltty back to Recommends. It isn't required if only
+  speech is being used, and it might be desirable for it not to be
+  pulled in in some cases (boo#1063172).
+
+-------------------------------------------------------------------
+Fri Sep 15 22:22:02 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.0:
+  + Web:
+    - Add support for aria-errormessage.
+    - Add support for aria-keyshortcuts.
+    - Fix several issues related to presentation of plain text
+      content.
+  + LibreOffice:
+    - Filter out checked event from window which isn't active.
+    - Work around event-ordering issue.
+  + General:
+    - Fix incorrect presentation of old ancestors.
+    - Fix issue related to presentation of status bars.
+    - Remove unneeded try/except around
+      Gdk.notify_startup_complete().
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  8 15:55:14 UTC 2017 - jengelh@inai.de
+
+- Remove filler words from description. Replace some old macros.
+
+-------------------------------------------------------------------
+Tue Aug 15 18:15:30 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.4:
+  + Web:
+    - Add support for DPub ARIA roles.
+    - Add custom localized role names for ARIA feed and figure
+      roles.
+    - Treat articles as "large objects" for the purpose of
+      structural navigation.
+    - Ensure we present infobar-like widgets with role of alert.
+    - Eliminate double presentation of name of widgets which
+      descend from label element.
+    - Fix presentation of checkboxes and radio buttons with
+      descendants when using caret navigation.
+    - Work around Gecko not pruning alt="" images from
+      accessibility tree.
+  + LibreOffice:
+    - Fix bug in presentation of selected item in comboboxes.
+    - Ensure we present focus claims from lists which manage
+      descendants.
+    - Fix performance issue presenting selection changes in
+      spreadsheet.
+  + General:
+    - Work around missing events for popup menus, submenus, and
+      dialogs.
+    - Work around missing state-changed:focused events for Gtk+
+      apps.
+    - Update locusOfFocus to active window even in the case of
+      broken hierarchy.
+    - Fix presentation of cells with multiple renderers.
+    - Handle more instances of dead accessible objects and
+      non-responsive applications.
+    - Eliminate chattiness resulting from events coming from
+      ancestor of locusOfFocus.
+    - Improve presentation of newly-focused listboxes.
+    - Sanity-check values app provides in response to
+      getTextAtOffset().
+    - Address Python 3.6 invalid escape sequence deprecation.
+  + Updated translations.
+- Drop obsolete post(un) handling, macros removed:
+  desktop_database_post(un) and icon_theme_cache_post(un).
+
+-------------------------------------------------------------------
+Mon Mar 20 20:20:03 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Web:
+    - Fix issue in new command to move to the end of the current
+      container.
+    - Fix instance in which we were failing to present
+      contenteditable content.
+    - Sanity check our attempt to hack around broken text from
+      Gecko.
+  + General:
+    - Improve presentation of Gtk+ editable combo boxes.
+    - Attempt to handle children-changed:add event flood from
+      menus.
+  + MATE: Filter out focus events from widgets in windows which
+    claim to be active, but actually are not.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 27 11:38:32 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.91:
+  + Web:
+    - Add structural navigation commands to move to start, end of
+      current container.
+    - Handle bogus/duplicate accessible-application instances we're
+      seeing with Gecko apps built against Gtk+ 3 (eliminates
+      double-presentation during caret-navigation).
+    - Try to prevent SeaMonkey Mail composition from unexpectedly
+      entering browse mode.
+    - Fix issues getting stuck in visually-hidden MathML content.
+    - Prevent generation of unrelated labels for web content
+      (performance).
+    - Fix several issues to improve our workarounds for bugs in
+      Gecko's accessible-text interface.
+    - More work on recovery from zombified elements (improves
+      reliability).
+    - Improve reliability of "sticky" browse mode.
+    - Fix minor issues in new context-presentation support.
+    - Don't present loading messages if document is neither showing
+      nor visible.
+  + MATE:
+    - Work around MATE Panel's less-than-ideal event ordering and
+      missing events in order to improve presentation of it's
+      Applications menu.
+    - Sanity-check windows which claim to be active and ignore
+      bogus window:active events and state-changed:active events
+      from frames.
+  + General:
+    - Don't present new ancestors of menu bars.
+    -  Don't use the pyatspi cache for descriptions to ensure we
+       don't present stale information.
+    - Don't treat insertions as auto-text events if the source is
+      no longer focused.
+    - Fix recent (unstable-version) regression in which labels
+      which label other labels stopped being presented.
+    - Update the active window and conditionally present
+      mouse-triggered focus changes.
+  + Updated translations.
+- Switch package to noarch.
+
+-------------------------------------------------------------------
+Tue Feb  7 13:34:58 UTC 2017 - dimstar@opensuse.org
+
+- Drop typelib-1_0-Wnck-3_0 Requires: this is properly
+  auto-detected since orca added the correct dependency in the
+  code.
+
+-------------------------------------------------------------------
+Thu Feb  2 19:05:15 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.4:
+  + Web:
+    - Optionally announce when entering and leaving blockquotes,
+      lists, tables, panels, forms, and landmarks.
+    - Improve handling of pages where the content is rapidly and
+      repeatedly destroyed and replaced.
+    - Improve workarounds for several Gecko editable-text bugs.
+    - Ensure we always announce ARIA landmark type before setting
+      the caret.
+    - Improve presentation of ARIA regions.
+    - Add custom support for ARIA switch role.
+    - Present messages resulting from use of aria-invalid.
+    - Check for and filter out defunct objects when building
+      elements list.
+    - Eliminate double-speaking of line after document load.
+    - Suppress presentation of irrelevant loading messages
+      resulting from busy state-change events in SeaMonkey's mail
+      client.
+    - Eliminate double-speaking of inferred labels in SayAll.
+    - Fix several instances where new document name was not being
+      presented.
+    - Handle (un)ordered lists in which item text falls outside the
+      item element.
+    - Descend images if they are imagemaps so that we don't fail to
+      present their content.
+  + LibreOffice:
+    - Fix crash presenting certain Writer tables.
+    - Handle LO's recently-corrected exposure of text attributes
+      for spellcheck.
+    - Handle change in LO's accessibility tree for dialogs.
+    - Handle more cases of LO objects becoming defunct.
+    - Don't assume we can always get a string value for Calc input
+      line.
+    - Yet another workaround for yet another missing state-changed
+      event.
+  + General:
+    - Make spoken presentation of accessible description optional.
+    - Work around missing focus-change events when focus changes
+      due to a mouse click.
+    - Use Unicode in translatable strings.
+    - Fix several issues in which we incorrectly update our
+      location based on bogus or redundant accessibility events.
+    - Reduce chattiness associated with presentation of typeahead
+      search.
+    - Include infobar content when presenting status bar and
+      default button.
+    - Reduce chattiness associated with icons which incorrectly
+      implement accessible text.
+    - Improve presentation of editable comboboxes.
+    - Fix bug in which Orca is silent on launch due to inability to
+      access default screen.
+    - Don't generate substring content unnecessarily (performance).
+    - Don't treat an empty table as layout only if the user gives
+      it focus.
+    - Fix bug speaking punctuation when punctuation style is set to
+      NONE.
+    - Stop converting horizontal ellipses to "..." in braille.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 11 10:21:31 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.2:
+  + Improve support for Icedove.
+  + Work around broken accessibility trees causing flat review to
+    fail.
+  + Work around missing state-changed events for LibreOffice toggle
+    buttons.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 11 14:41:46 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Terminal: Reduce some chattiness using vim.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 16 18:47:44 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Chat:
+    - Fix performance issue with Pidgin channels with thousands of
+      users.
+    - Fix bug in presenting chatroom name when app is not active.
+    - Add customization to present chat room name after incoming
+      message.
+  + Flat Review:
+    - Make context menus flat-reviewable.
+    - Improve filtering out of non-showing menu items in flat
+      review.
+    - Take possible margins/padding into account when looking for
+      the descendant at a specified point (performance).
+    - Do not treat collapsed table rows as leaf nodes if they have
+      children.
+  + Web:
+    - Add explicit do-not-descend-for-caret check for ROLE_IMAGE so
+      that we don't present useless information when authors use
+      ARIA's img role on embedded SVG documents.
+    - Handle another instance of broken accessibility trees.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  2 14:47:46 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Flat Review:
+    - Automatically refresh content.
+    - Improve accuracy with respect to what is truly on screen and
+      where it is located.
+    - Improve performance building context.
+    - Fix reviewability of Gtk+ icon panels and Gtk+ spin button
+      values.
+    - Add toolkit-specific handling for special cases (and toolkit
+      bugs).
+    - Make menu-bar menus reviewable, including separators and
+      disabled items which cannot be arrowed to natively.
+    - Make objects which typically display text (but might not
+      implement the text interface) reviewable by word and
+      character.
+    - Fix issue finding initial flat review location in
+      Thunderbird.
+  + Mouse Review:
+    - Dig deeper to find object under pointer for page tab list
+      descendants (So we don't just say "Page Tab").
+    - Fix issue causing Orca to say "blank" in text with embedded
+      objects.
+    - Add word support to all text objects; not just editable text
+      objects.
+    - Work around Gtk+ 3 exposing incorrect text range extents for
+      entries. (So we present the actual word under the mouse).
+    - Add logic to handle windows whose accessible name doesn't
+      match the displayed name.
+    - Add an announcement so that when the user toggles Mouse
+      Review some confirmation is provided.
+  + Terminal:
+    - Fix instance where braille was not being refreshed.
+    - Do not ignore deletion events resulting from BackSpace.
+    - Update some cached information.
+    - Filter out a spurious, unwanted text-delete event from VTE.
+    - Don't treat inserted strings <= 1 char as a terminal autotext
+      event.
+    - Don't treat terminal insertion as command result if terminal
+      isn't locusOfFocus.
+    - Present terminal paste events like we do paste events from
+      other apps.
+    - Work around issues in the text support of VTE which was
+      causing us to present cut-off text.
+    - Attempt to filter out terminal pager text-change noise to
+      reduce chattiness.
+    - Present terminal pager text insertions when they result from
+      a printable key.
+  + Web:
+    - Add a "sticky" browse mode and keybinding.
+    - Do not descend ROLE_EMBEDDED objects for the caret (ARIA
+      compliance).
+    - Treat menu and toolbar descendants as focus mode widgets.
+    - Create new localized role names for ARIA landmark roles.
+    - Don't automatically update locusOfFocus to alerts; just
+      present them.
+    - Improve presentation of Roundcube Mail's list of messages.
+    - Fix issue presenting stale content.
+    - Don't present name and summary for page which is no longer
+      showing or visible.
+    - Attempt to hack around SeaMonkey's broken events for HTML
+      input popups which was causing us to exit focus mode
+      incorrectly.
+    - Improve presentation and handling of editable ARIA combo
+      boxes.
+  + LibreOffice:
+    - Don't treat present "readonly" state for paragraphs in
+      read-only documents.
+    - Add handling for GtkListBox items used by LibreOffice.
+    - Work around a number of LibreOffice bugs which were causing
+      us to to present the wrong thing.
+  + Other:
+    - Ensure we use the system voice for rolename info in WebKitGtk
+      SayAll.
+    - Create new localized rolenames for horizontal and vertical
+      scrollbars bars, sliders, and splitters.
+    - More aggressively verify if a message is from a focused chat.
+    - Fix whereAmI presentation of Gtk+ 3.20 combo boxes.
+    - Remove .desktop file.
+    - Include tool bar when presenting context.
+    - Improve reliability of profile-based synthesis switching.
+    - Do not supress presentation of locking keys in password
+      fields.
+    - Make the progressbar update intervals independent so beeps
+      are always presented when that is desired.
+  + Updated translations.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+
+-------------------------------------------------------------------
+Wed Jul 20 18:28:13 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.3:
+  + Web:
+    - Fix a couple of instances of Orca getting stuck during caret
+      navigation.
+    - Fix bug in setting position via element-list dialogs.
+    - Eliminate double-presentation of inferred labels.
+    - Add more caching for performance.
+  + LibreOffice: Ignore object:state-changed:sensitive events for
+    menu items because LibreOffice is flooding us.
+  + General:
+    - Eliminate hang resulting from AT-SPI2 crash.
+    - Don't show as desktop application in Unity; Orca is part of
+      Universal Access.
+    - Take interfaces into account when looking for non-descendable
+      descendants (helps with performance).
+    - Handle more instances of objects going defunct, apps becoming
+      non-responsive, and apps creating duplicate accessible
+      objects.
+    - Make the output of 'orca -l' more verbose to identify
+      non-responsive apps.
+    - Ensure a script only registers one signal handler for
+      clipboard changes.
+    - Ensure synthesizer is changed when switching profiles via
+      command.
+    - Filter out more duplicate input events.
+    - Support non-srcdir builds in autogen.sh.
+    - Miscellaneous code clean up.
+  + Updated translations.
+- Stop using suse_update_desktop_files macro, upstream no longer
+  ships stand-alone desktop file, and it's not needed for the
+  autostart one.
+
+-------------------------------------------------------------------
+Wed Jul 20 18:28:12 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.1:
+  + General:
+    - Detect and handle row-reordered event spam so valid events
+      can be presented.
+    - Begin refactoring of keyboard event processing.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 20 18:28:11 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.3:
+  + Web: Fix issue updating caret position during structural
+    navigation.
+  + General:
+    - Don't try to catch SIGSEGV; use faulthandler to dump output
+      from crash. This is needed to behave (slightly) better when
+      AT-SPI2 crashes.
+    - Do not supress presentation of locking keys in password
+      fields.
+    - Don't show desktop file in Unity.
+    - Ignore object:state-changed:sensitive events for menu items
+      (perf).
+    - Handle another case of objects going defunct on us.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May 16 16:26:55 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + Performance:
+    - Take interfaces into account when looking for non-descendable
+      descendants.
+    - Cache results of shouldInferLabelFor().
+    - Cache results when filtering contents for presentation.
+    - Give findObjectInContents() smarts for embedded children.
+    - Check setting before generating spoken indentation
+      information.
+  + General:
+    - Add explicit handling for tree items.
+    - Work around another instance of app-created duplicate
+      accessible objects.
+    - Eliminate double presentation of inferred labels.
+    - Work around GNOME Shell's broken text interface for word
+      echo.
+    - Fix desktop file keywords in Slovenian translation.
+    - Handle another instance of an app becoming non-responsive.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 12 20:34:40 UTC 2016 - mgorse@suse.com
+
+- Require python3-gobject-Gdk, since gdk/gtk bindings are now
+  split off from python-gobject.
+
+-------------------------------------------------------------------
+Mon Apr 25 19:09:27 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Gecko:
+    - Fix presentation of title bar in Gecko apps.
+    - Work around Google Maps killing the focused widget.
+    - Fix offset used when evaluating text selection in content
+      with embedded objects.
+    - Don't set new focus to context object if context object is
+      zombie.
+    - Only update locusOfFocus to context replicant if locusOfFocus
+      is a zombie.
+    - Don't use generated text as name for web content which
+      exposes a name, unless it's a combo box or spin button.
+    - Cache label-related information for web content for
+      performance.
+    - Ignore events from Mozilla's self-repair hidden page.
+    - Don't do SayAll for page fragments.
+    - Prevent locusOfFocus change when navigating in SeaMonkey
+      message list.
+  + Unity Panel Service:
+    - Work around labels reporting an index in parent of -1.
+    - Work around label descriptions containing unwanted content.
+    - Fall back on name when labels fail to implement the text
+      interface.
+  + Gtk+:
+    - Handle changes in Gtk+ 3.20 combo boxes.
+    - Only treat cells with non-whitespace chars as real active
+      descendants.
+    - Ignore row-reordered event spam.
+  + General:
+    - Fix a false positive with clipboard messages.
+    - Don't re-present description if it was used as name fallback.
+    - Handle unhandled case of objects becoming defunct.
+    - Fix syntax error in Bulgarian help file.
+  + Updated translations.
+- Add python3-brlapi BuildRequires: Needed for braille support now.
+
+-------------------------------------------------------------------
+Thu Apr 14 15:19:26 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Mon Mar 21 15:42:39 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar 20 19:36:22 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.92:
+  + Return early in allSelectedText() when entire document is
+    selected (performance).
+  + Fix restoration of location when returning to nested document
+    after find in page.
+  + Work around unforunate event order when switching page tabs in
+    Gecko applications.
+  + Eliminate several clipboard/selection-related-presentation
+    false positives.
+  + Treat terminal text insertions resulting from Alt-modified
+    input event as command output.
+  + Map MATE's notification daemon to the notification-daemon
+    script.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  3 02:01:23 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.91:
+  + General:
+    - Fix several issues in presentation of clipboard
+      notifications.
+    - Ignore some uninteresting and spammy events (performance,
+      chattiness).
+    - Don't keep asking the registry for the desktop (performance).
+    - Eliminate several instances of terminal chattiness.
+    - Hack around Pidgin status toggle button bug.
+    - Improve presentation of selection changes in layered panes.
+    - Fix modifier keys being passed to application while in in
+      learn mode.
+    - Add a customization to present updates for status bar
+      progress bars.
+    - Make detailed whereAmI fall back on basic whereAmI
+      presentation.
+    - Speak popovers which are modal but do not claim focus.
+    - Fix incorrect identification of commands entered on Cyrillic
+      keyboards.
+    - Fix presentation of first radio button in a functional (but
+      not actual) group.
+    - Use isSameObject() to detect widgets and windows which were
+      recreated.
+  + Gecko:
+    - Work around multiple accessible objects for one functional
+      window.
+    - Add more, and more performant, zombie replicant recovery
+      utilities.
+    - Grab focus on entries when setting focus mode; not when
+       positioning caret so we don't accidentally trigger popups.
+    - Notify script when locusOfFocus is set from window to
+      contenteditable objects so we're not silent.
+    - Work around broken table interface Gecko issue.
+    - Attempt to identify and present clipboard events caused by
+      elements.
+    - Let default script handle content editable during selection.
+    - Clear content cache when Thunderbird window is deactivated so
+      we don't mistakenly conclude we're in the same document
+      frame.
+    - Fix several caret navigation and structural navigation bugs.
+    - Present object counts for all objects in detailed whereAmI
+      page summary.
+  + LibreOffice:
+    - Update some heuristics to address changed roles in Calc
+      5.1.x.
+    - Handle more cases of Calc becoming non-responsive or
+      crashing.
+    - Work around missing event from LibreOffice Calc.
+  + Updated translations.
+- Add pkgconfig(gstreamer-1.0) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Thu Feb 18 08:36:01 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.90:
+  + New Features and Options:
+    - Present copy, cut, paste, undo, redo, selection deletion, and
+      selection restoration.
+    - Add progress bar beeps.
+    - Add core support for sound-icons (not yet enabled).
+    - Add option to present page summary upon load, and include
+      landmarks in summary.
+    - Speak visited state for links which have been visited.
+    - Make Flat Review SayAll binding independent of focus-tracking
+      SayAll binding.
+    - Speak text indentation during selection.
+    - Add a specific setting for speaking the misspelled indicator.
+  + General:
+    - Improve presentation of selected content in Gecko.
+    - Fix bug in on-the-fly row reading for spreadsheets.
+    - Update support for changes in Calc 5.1.
+    - Fix failure to copy all characters when using flat review
+      copy.
+    - Present the new location when using PageUp/PageDown in web
+      content.
+    - Remove the old and broken-for-years console setup.
+    - Work around broken text-insertion events from gnome-shell.
+    - Handle missing events from Eclipse.
+    - Work around focused links Gtk+ links reporting index in
+      parent of -1.
+
+-------------------------------------------------------------------
+Sat Dec 19 06:32:00 UTC 2015 - damjanovic.ivo@gmail.com
+
+- Update to version 3.19.3:
+  + New Settings and Commands:
+    - Create separate cell-vs-row reading options for tables in
+      GUIs, text documents, and spreadsheets.
+    - Add GUI option to configure capitalization style.
+  + Web:
+    - Improve performance of presentation of web listboxes.
+    - Improve presentation of headings which contain embedded
+      objects.
+    - Improve presentation of non-empty anchors.
+  + General:
+    - Ensure the correct voice is used when generating current
+      line of text.
+    - Call gdk_notify_startup_complete().
+    - Fix several bugs related to presenting the locus of focus.
+    - Fix double-presentation of top-level Gtk+ alerts.
+    - Cache the string in addition to the offsets for selected
+      text (perf.).
+    - Add more sanity checks for defunct objects and applications.
+    - Stop filtering out events from ROLE_FILLER (because some
+      applications lack proper roles).
+    - Don't treat a series of periods as an ellipsis.
+    - Treat ROLE_PAGE as a top-level object when doing Zombie
+      checks (fixes Evince issue).
+    - Don't verbalize punctuation or capitalization for system
+      messages.
+
+-------------------------------------------------------------------
+Fri Nov 27 12:46:50 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.2:
+  + New Settings and Commands:
+    - Add unbound commands to present selected text and link
+      details.
+    - Add GUI to enable rewind/fast-forward and structural
+      navigation in Say All.
+    - Make the use of color names configurable via GUI.
+    - Make speech and braille message settings configurable via
+      GUI.
+    - Add preference and unbound keybinding to have Orca speak
+      numbers as digits.
+    - Add explicit time format option for 12-hour time with
+      seconds.
+    - Break up printable-keys keyecho into alpha, numeric, and
+      punctuation.
+  + Web:
+    - Improve presentation of Twitter timeline items.
+    - Fix several bugs related to navigation to fragments.
+    - Filter out hidden elements when presenting content.
+    - Use Gecko's onChildrenChanged callback for Thunderbird
+      instead of the default (fixes issues related to cache
+      management).
+    - Use isLink() rather than a role check to eliminate false
+      positive from anchors.
+    - Don't look for replicant for zombie locusOfFocus when in
+      focus mode.
+    - Remove application from the list of ARIA landmark types (ARIA
+      1.1 compliance).
+  + Gtk:
+    - Present newly-shown GtkInfoBars.
+    - Improve presentation of GtkEntryCompletion.
+    - Generate all child widgets of GtkListBox items.
+  + General:
+    - Work around several issues related to identifying and keeping
+      track of the active window.
+    - Don't double/multi-present selection-state messages.
+    - Fix bug in which text was not presented because object had a
+      name.
+    - Rewrite and fix several bugs in Orca's progress bar support.
+    - Filter out some more useless/bogus events (for performance).
+    - Handle more instances of the undead (zombies); start handling
+      the dead (fixes various and sundry bugs resulting from
+      objects going defunct on us).
+    - Fix double-presentation and incorrect ordering of frame name
+      changes.
+    - Rewrite setLocusOfFocus and default script's onCaretMoved
+      (improves  performance, eliminates instances of not
+      presenting new location).
+    - Don't display shortcuts if braille verbosity is set to brief.
+    - Add NotShowIn=GNOME; to the desktop file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 10 08:02:29 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.2:
+  + Web:
+    - Fix typeahead search regression in the list-of-elements
+      dialogs.
+    - Fix a couple of issues associated with presenting "busy"
+      pages.
+    - Switch to sticky focus mode in top-level web apps like Google
+      Docs.
+    - Attempt to work around Google Docs editor exposed as
+      ROLE_UNKNOWN.
+    - Don't infer labels for form fields in web apps.
+    - Present text changes resulting from onclick handlers.
+    - Don't generate ancestors for MathML elements and filter out
+      empty utterances (performance).
+    - Eliminate several instances of Gecko chattiness.
+    - Filter out more browser chrome event spam (performance).
+    - Use Orca's web support to say word contents for editable
+      messages in Thunderbird (works around broken text interface
+      implementation).
+    - Work around broken lists in web content.
+    - Don't return the child of a "non-descendable" element as the
+      last document object.
+    - Don't descend links with author-provided names.
+  + General:
+    - Fix issue in which key presses were being echoed in a
+      password field.
+    - Add sanity check for broken accessibility trees when getting
+      the focused child.
+    - Update Gedit spellcheck support for 3.18 and improve
+      heuristic performance.
+    - Do not try to calculate node level for non-tree descendants.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 14 16:01:29 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Web:
+    - Improve presentation of canvas elements which lack fallback
+      content.
+    - Fix for Orca filtering out text elements which have no size
+      due to authoring.
+    - Fix for Orca not doing SayAll on load when the focused object
+      is the document frame.
+    - Workaround several issues which was causing the caret to get
+      "stuck".
+    - Add another fallback "guess" to the label inference code for
+      fields in poorly-authored forms.
+    - Present Firefox "door hanger" alerts.
+    - Filter out selection event spam from browser chrome
+      autocompletes.
+    - Prefer name over label when generating labelOrName (W3C
+      compliance).
+    - Ensure we present aria-roledescription for non-focusable
+      landmarks.
+    - Include object role in the list of landmarks dialog.
+    - Don't treat objects with ROLE_LABEL as an ancestor (causes
+      double presentation of widget name).
+    - Process DOM changes more efficiently for performance.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 21 15:58:38 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Fix flatreview traceback.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 17:57:04 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Web:
+    - Add support for aria-roledescription.
+    - Work around missing object:state-changed:focused events from
+      Gecko.
+    - Fix several instances of Orca getting "stuck" in Gecko
+      content.
+    - Fix bug causing Orca to skip over nested iframe content
+      during SayAll.
+  + General:
+    - Handle tracebacks resulting from Calc crashing.
+    - Explicitly deregister keystroke listeners before shutting
+      down.
+    - Ignore state-changed:busy events seen when printing in
+      Thunderbird.
+    - Eliminate false positive identifying Thunderbird spellcheck
+      dialog.
+    - Fix a performance issue associated with appearance of dialogs
+      with many widgets.
+    - Save messages and add braille output to the
+      notification-daemon script.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  3 09:14:47 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.91:
+  + Web:
+    - Treat (un)ordered HTML lists without list items as if they
+      were divs.
+    - Clear the cache and try once more when the next/previous
+      context cannot be found.
+    - Treat web documents as top-level roles for the purpose of
+      Zombie detection.
+    - Fix MathML line navigation issue.
+    - Fix issue causing Orca to skip certain web content during Say
+      All.
+    - Improve caret navigation around images lacking content,
+      interaction, and size.
+  + General:
+    - Updated documentation.
+    - Add ability to override object role when generating tutorial
+      messages.
+    - Handle more event floods from LibreOffice and gnome-shell.
+    - Handle several "The process appears to be hung" AT-SPI2
+      errors from Firefox and LibreOffice.
+    - Work around broken custom comboboxes and listboxes which lack
+      items.
+    - Fix bug in presentation of chat messages from non-active
+      applications.
+    - Add option to speak 12-hour time without seconds.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 19 19:51:38 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Spellcheck:
+    - Use Orca's spellcheck support in the LibreOffice script.
+    - Perform normal WhereAmI at the end of spellcheck WhereAmI.
+    - Present child position according to user preference.
+    - Fix several chattiness issues.
+  + Gecko:
+    - Handle Gecko-specific text attribute name for misspelled.
+    - Fix traceback getting into Thunderbird preferences.
+    - Fix bug in line navigation of MathML content.
+    - Don't generate ancestors beyond MathML math element.
+    - Don't treat objects with tons of embedded objects as text
+      "chunks".
+    - Don't repeat document-loading message given multiple "busy"
+      events.
+    - Handle input type="number" (which is not exposed like native
+      version).
+    - Ensure object mode navigation presents only content from one
+      object.
+    - Refine heuristic for ignoring object:selection-changed
+      events.
+    - Don't include empty text block elements in structural
+      navigation.
+    - Skip over anchors when looking for next/previous caret
+      context.
+    - Treat lists as text block elements in web content.
+    - Improve how Orca works with Etherpad in Firefox.
+  + LibreOffice: Fix several issues in which focused widgets were
+    not presented.
+  + General:
+    - Use gi.require_version to address PyGIWarning.
+    - Fix several bugs in _generateUnselectedCell().
+    - Don't sanity-check children if there are a huge number of
+      them.
+    - Don't generate availability for list items as it doesn't make
+      sense.
+    - Don't insist upon label visibility for status bar
+      notifications.
+    - Add support to navlist for specifying and jumping to a caret
+      offset.
+    - Begin cleaning up text-attribute-related code.
+    - Eliminate some false positives in isLayoutOnly().
+    - Fix desktop file translations.
+    - Fix typos in translator comments.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul 23 07:03:41 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.4:
+  + MathML: Implement speech support for MathML content in
+    Gecko-based browsers.
+  + Web:
+    - Fix several regressions introduced by the new "web" script.
+    - Don't set the locusOfFocus to non-focused link upon document
+      focus.
+    - Ignore state-changed:busy events from nested web documents.
+    - Create a utility method to get and cache an element's tag.
+  + General:
+    - Handle some changes in the Thunderbird v.38 spellcheck
+      dialog.
+    - Add handling for ROLE_HEADER.
+    - Add support for status bar notifications.
+    - Remove the old "inacessible" metacity/marco hack.
+    - Stop using gnome-autogen.sh.
+    - Mark several command-line strings for translation.
+    - Enable toggling of speech via keybinding when speech is
+      disabled.
+    - Add handling for Evo's "autocomplete" popups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jun 24 12:29:22 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.3:
+  + Gecko:
+    - Fix several issues in Orca's live region support to make
+      Google Docs usable with Orca.
+    - Rewrite Orca's structural navigation support to fix bugs and
+      improve performance.
+    - Create "web" script and use it for Gecko content.
+    - Avoid navigating into tooltip-like popups in web apps.
+    - Fix issues related to Gecko using ROLE_TEXT for static text
+      elements.
+  + General:
+    - Improve performance associated with event floods and dead
+      accessibles.
+    - Fix presentation of newly-misspelled words in LibreOffice
+      Writer.
+    - Present the text of ROLE_FOOTER objects.
+    - Add unbound keybindings to increase and decrease speech
+      volume.
+    - Fall back on parent autocomplete if entry lacks label and
+      name.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 27 22:10:10 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.2:
+  + Gecko:
+    - Update spellchecking support to handle changes in recent
+      releases of Thunderbird.
+    - Fix several SayAll issues.
+    - Fix failure to present the last line in a text area.
+    - Fix failure to move to newly-loaded page fragment.
+    - Fix failure to present expanded state change in ARIA content.
+    - Fix failure to present correct radio button state in ARIA
+      content.
+    - Stop double-presenting find results.
+    - Stop re-generating braille when not needed.
+    - Fix issue presenting focus changes between document frame and
+      child link.
+    - Reset command state when Gecko script is deactivated in order
+      to ensure content is presented after Alt+Tabbing back into
+      Firefox.
+  + General:
+    - Fix several issues related to pyatspi cache not being
+      updated.
+    - Handle traceback when calling findAllDescendants in broken
+      implementation.
+    - Stop repeating tutorial messages when navigating amongst
+      items of the same type.
+    - Work around still more missing object:state-changed:focused
+      events from Gtk+.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 12 19:01:48 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Fix traceback which can occur getting children via relationset.
+  + Add explicit braille handling for ROLE_PAGE so we update the
+    line in Evince.
+  + Change default value of fallbackOnUnicodeData to False.
+  + Attempt to eliminate verbal spewage for links which lack
+    meaningful information.
+  + Ignore text-selection-changed events from Gecko objects with no
+    text.
+  + Hack around yet another missing object:state-changed:focused
+    event for Gtk+.
+  + Provide a symbolic variant of the app icon.
+  + Work around a missing object:state-changed:focused event from
+    LibreOffice.
+  + Fixes to work with newer Firefox, etc (bnc#932719).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 16 06:19:15 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + Don't search for replicants for Gecko zombies when pages are
+    being loaded because it can lead to a hang.
+  + Don't present position in list for the top-level menu of a
+    context menu.
+  + Only present placeholder text if the entry lacks a value.
+  + Use labelAndName instead of labelOrName with toggle buttons so
+    that we fallback on description when name has not been
+    provided.
+  + Work around yet another missing object:state-changed:focused
+    event from Gtk+.
+  + Use datadir and localedir and not DATADIRNAME.
+  + bgo#746400: Speak child position breaks Qt menu item
+    presentation.
+  + Fix issue where translated symbols were being presented in
+    English.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 23 13:10:23 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 18 08:26:55 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Refine the heuristic used to identify layout tables.
+  + Do not speak table details when verbosity level is brief.
+  + Check for the new(ish) accessible roles for documents in
+    structural navigation (needed for table navigation in recent
+    versions of Writer).
+  + Check for Zombie accessibles in Writer's onCaretMoved() so that
+    we don't get tripped up by deleted paragraphs.
+  + Be less aggressive weeding out layout-only siblings for
+    position and set size, because getting it 100% right is
+    non-performant.
+  + Don't look for zombie replicants in ROLE_EMBEDDED objects
+    (fixes hang with Firefox).
+  + Use the default object generation for ROLE_EMBEDDED (fixes
+    bogus information presentation with Firefox).
+  + Correct outdated links to documentation in translator comments,
+    and fix translator comment symbol for bowtie operator.
+  + Present the line rather than all object contents when
+    navigating by landmark.
+  + Update our landmark role list to bring it into alignment with
+    the ARIA spec.
+  + Do not rely on displayedText() when determining if a table cell
+    is blank.
+  + Update position in Gecko content when SayAll is interrupted.
+  + Several fixes related to Gecko killing accessible objects.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 12:38:03 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + General:
+    - Add optional start and end offset arguments for
+      getTextLineAtCaret().
+    - Fix multiple issues related to presentation of widgets and
+      web content.
+    - Don't rely on pyatspi's cache for names.
+    - Add support for XDG_VTNR for braille.
+    - Add formatting strings for ROLE_LABEL so that they get
+      presented.
+    - Work around two cases of dead LibreOffice accessible objects.
+    - Ignore text insertions from menus and menu items.
+    - Add support to identify and present Evolution's Status column
+      header.
+    - Set sayAllOnLoad's default value to False for Evolution.
+    - Add utility methods to identify WebKitGtk content in
+      Evolution.
+    - Add some sanity checking to handle dead accessibles from
+      Evolution.
+    - Validate reportedly-selected children.
+    - Suppress bogus "not selected" presentation in Evo's Messages
+      tree.
+    - Handle a missing event from a mystery object in the Evolution
+      GUI.
+    - Add support for Evolution's GUI.
+    - Implement ability to use structural navigation commands
+      during SayAll.
+    - Remove clickCount from orca_state.py.
+    - Move lastKeyEchoTime to speechdispatcherfactory.py.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 28 22:18:35 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.15.4:
+  + Implement ability to "rewind" and "fast forward" during SayAll.
+  + Add support for presentation of mathematical alphanumeric
+    symbols and operators.
+  + Application-specific shortcut rebinding doesn't persist
+    (bgo#742293).
+  + Eliminate some false positives in the label inference code.
+  + Fix several bugs related to sayAll.
+  + Improve support for presentation of nested tables during
+    structural navigation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec  3 17:37:45 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.3:
+  + Gecko:
+    - Fix several issues related to focus mode toggling on pages
+      which set focus upon page load.
+    - Exclude layout-only/presentational tables in structural
+      navigation.
+  + LibreOffice: Handle a false positive in isSameObject() which
+    prevented paragraph presentation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 11 21:37:00 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.2:
+  + Gecko:
+    - Update the position and command state after a mouse click.
+    - Don't descend tables in findReplicant() - fixes a hang.
+    - More hack removal and reworking of
+      find{Next,Previous}Object().
+    - Don't switch to focus mode if the object is a text block
+      element.
+    - Check for both focusable and focused states when determining
+      text block elements.
+    - Only use focused format type for objects which are not text
+      block elements.
+    - Generate the rolename for links even if they were not "just
+      entered".
+    - Suppress tutorial messages for focus mode widgets when not in
+      focus mode.
+    - Prevent repeating of labels and tutorial messages in entries.
+    - Speak text role for Gecko apps when not in document content.
+    - Remove FOCUSED and SELECTED states as requirements for focus
+      mode.
+  + General: Do not present tutorial messages if the object is not
+    the locusOfFocus.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 12:29:52 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 17 21:42:06 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.92:
+  + Gecko:
+    - Implement support for "layout" mode and "object" mode, the
+      latter being what is traditionally found in Windows screen
+      readers and which will hopefully make the switch to GNU/Linux
+      easier.
+    - Continued reworking of caret navigation by line to improve
+      accuracy and responsiveness and to eliminate getting stuck
+      and looping.
+    - Fix several issues of structural navigation looping.
+    - Allow Orca's navigation commands to work even when content is
+      being loaded, which solves bugs like inability to navigate
+      during a file download.
+    - Fix many bugs related to label inference.
+    - Use the speech and braille generators rather than manually
+      creating the strings in the script.
+    - Present the accessible description for elements given focus
+      via caret navigation and structural navigation.
+    - Do not announce clickables if verbosity level is set to
+      brief.
+    - Add a command to toggle speech verbosity levels on the fly.
+    - Fix a bogus tutorial message being presented for non-editable
+      text.
+  + Other:
+    - Enable autostart for MATE and Cinnamon.
+    - Fix the "bad content sent to speech.speak" bug.
+    - Fix bug preventing binding and rebinding of commands in
+      laptop layout.
+    - Include foreground and background colors in the default
+      spoken text attributes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  8 09:11:21 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.91:
+  + Gecko:
+    - Significant reworking of caret navigation by line to improve
+      accuracy and responsiveness and to eliminate getting stuck
+      and looping.
+    - Fix many bugs related to caret navigation by word.
+    - Add support for aria-hidden="true".
+    - Present longdesc and clickable as part of Where Am I.
+    - Fix an issue with structural navigation into list boxes.
+    - Fix several bugs in presentation of Gecko form fields.
+    - Fix several issues related to braille presentation of ARIA
+      widgets.
+    - Fix a regression introduced in 3.13.90 which caused
+      Thunderbird message composition to not be properly displayed
+      in braille.
+  + LibreOffice: Speak cell coordinates for Writer tables.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 19 20:23:47 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Gecko:
+    - Create Browse and Focus modes to make acceess to web content
+      and web apps more reliable.
+    - Add support for presentation of longdesc and "clickable"
+      elements.
+    - Add support for structural navigation by image and by
+      "clickable".
+    - Present the accessible description when giving focus to
+      objects.
+    - Present expanded state for links which can be expanded.
+    - Fix a number of bugs that caused Orca to loop and/or skip
+      over content.
+    - Fix a number of bugs related to presentation of ARIA.
+    - Improve presentation of list boxes.
+    - Eliminate double-brailling of links in list items.
+    - Fix a couple of SayAll bugs.
+  + Evince:
+    - Fix a traceback that occurred when form field widgets lost
+      focus.
+    - Fix a hang that can occur when using structural navigation
+      with forms.
+  + Other:
+    - Check for accessible names when presenting entries.
+    - Fix bug 732550 - Orca does not announce selection state
+      toggling in Qt.
+    - Fix for Orca going silent when speaking of child position is
+      enabled.
+    - Map 'marco' to 'metacity' in the script manager.
+  + Updated translatiosn.
+
+-------------------------------------------------------------------
+Sat Jul 12 23:07:32 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.3:
+  + Implement support for presenting color names instead of RGB
+    values.
+  + Fix several issues in character echo.
+  + Use the same string when presenting U+00A8.
+  + Present the acute accent using the same name when typing and
+    reading.
+  + Stop using speechdispatcher's KEY command for printable key
+    echo.
+  + Don't double-present punctuation when keyecho and character
+    echo are both enabled.
+  + Always respect braille verbosity levels when presenting widget
+    roles.
+  + Fall back on sayCharacter() when there is no word for sayWord()
+    to present.
+  + Don't present focus changes when navigating by character or
+    word in Writer.
+  + Fix several LibreOffice UI-presentation related issues.
+  + Fix a regression in changing rate and pitch on the fly.
+  + Present focused scrollbars.
+  + Add support for ROLE_DIAL.
+  + Handle an instance of Gtk+ failing to emit
+    object:state-changed:focused events.
+  + Handle some common variations in values for absent text
+    attributes.
+  + Do explicit checks for window-like roles when getting the
+    top-level object.
+  + Remove the non-performant, buggy heuristic hack to find
+    displayed labels.
+  + Convert application settings to use the settings manager's
+    backend.
+  + Use the default script's onTextDeleted callback for
+    gnome-terminal.
+  + Some pre-gsettings-migration cleanup.
+
+-------------------------------------------------------------------
+Mon Jun 30 19:56:13 UTC 2014 - dimstar@opensuse.org
+
+- Add gobjection-introspection BuildRequires in order to get
+  typelib() Requires.
+- Add typelib-1_0-Wnck-3_0 Requires: help zypp in deciding which
+  version of Wnck to use.
+
+-------------------------------------------------------------------
+Sun Jun 15 17:33:54 UTC 2014 - mgorse@suse.com
+
+- Require python3 speechd, wnck, brltty, and brlapi bindings.
+
+-------------------------------------------------------------------
+Sat May 17 15:01:10 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Fix for Orca presenting checked tri-state checkboxes as
+    partially checked.
+  + Update the locusOfFocus when when caret moves in a focused
+    object in Evince.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 15 18:38:54 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Clear saved page-loading state when Gecko script is
+    deactivated.
+  + Add support for ROLE_PAGE now that Evince uses it.
+  + Prefer the name of a button, even if it implements AtkText.
+  + Eliminate a false positive identifying selected text with
+    caret-moved events.
+  + Fix presentation of caret-moved events for Firefox's
+    autocompletes.
+  + Add an explicit check for KP_0 as the Orca Modifier plus Shift.
+  + Eliminate some chattiness presenting combo boxes.
+  + Don't treat the root label as an unrelated label.
+  + Handle yet another case of missing object:state-changed:focused
+    events for Gtk+.
+  + Filter out some superfluous name-changed events from Gtk+ apps.
+  + Updated documentation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 24 18:58:13 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 19 10:27:48 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Filter out a number of extraneous/unwanted accessibility events
+    from Evolution.
+  + Eliminate some text-selection and typeahead search
+    "chattiness".
+  + Generate ancestors for new dialogs even if there is no prior
+    focused object.
+  + bgo#726395: Sometimes flat review presents non-localized
+    rolenames.
+  + Ignore bogus focus claims from LibreOffice fillers and panels.
+  + Add support for non-modal GtkPopover.
+  + Use explicit keyword rather than positional argument for
+    GSettings schema id.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  4 20:15:09 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.91:
+  + Remove the isTextArea check from sayAll.
+  + Work around several additional missing state-changed:focused
+    events.
+  + More tweaking of the new spellcheck support.
+  + Add support for structural navigation by link regardless of
+    visited state.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 19 11:10:12 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Create new, uniform spellcheck support and implement for Gedit
+    and Thunderbird.
+  + Fix the live region announcement review keybindings.
+  + Fix a mysterious Brltty crash triggered by Orca.
+  + Add a sanity check to hopefully work around a Thunderbird
+    timeout.
+
+-------------------------------------------------------------------
+Thu Feb  6 08:06:13 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.5.1:
+  + Correct a stupid error from applying a patch.
+
+-------------------------------------------------------------------
+Tue Feb  4 18:56:36 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.5:
+  + General:
+    - Fix quite a few "chattiness" issues.
+    - bgo#708664: Selection and link indicators messing up braille.
+    - Eliminate duplicated strings when brailling widget
+      information.
+    - Fix presentation of Gedit's find feature results.
+    - Rewrite Orca's support for gnome-search-tool.
+    - Present a message, and don't regenerate speech, when a
+      bookmark is entered.
+    - Add the ability to skip ancestor generation by role on a
+      per-script basis.
+  + Epiphany/WebKitGtk:
+    - Create a custom script for Epiphany to handle window
+      activation and deactivation better.
+    - Ignore WebKitGtk's claim that objects of ROLE_LIST implement
+      AtkText.
+    - Handle ROLE_DOCUMENT_WEB for WebKitGtk content.
+    - Improve saving and restoring the Epiphany caret context.
+  + Gecko:
+    - Handle changes in the Firefox find toolbar hierarchy and
+      events.
+    - Fix a couple of bugs related to presenting a new ARIA alert
+      or dialog.
+    - Don't present text-inserted events for non-ARIA labels.
+    - Only treat properly-marked up ARIA live regions as live
+      regions.
+    - Present listbox details as part of presenting the first
+      focused child.
+    - Do not treat 'busy' state changes from ARIA widgets as
+      document loads.
+    - Don't repeat the "alert" role when navigating in ARIA alerts.
+    - Use the default updateBraille() for ARIA widgets in Gecko
+      content.
+    - Handle more instances of bogus empty text objects from Gecko.
+    - Present find results from Gecko in braille.
+  + LibreOffice:
+    - Fix several braille panning issues.
+    - Fix several issues with presentation of dynamic headers.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 14 19:41:54 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + Gecko:
+    - Use pyatspi.cache.DEFAULT instead of pyatspi.cache.ALL to
+      prevent incorrect caching of object attributes.
+    - Fix a bug isNavigableAria() which was causing us to override
+      native ARIA navigation incorrectly.
+    - Update the locusOfFocus when the caret moves to a Gecko
+      anchor.
+    - Prevent double-speaking autocompleted text in Thunderbird.
+  + LibreOffice:
+    - Don't treat lack of previous row as a row change in Calc.
+    - Strip out periods in addition to the localized "cell" for
+      Calc coordinates.
+    - Recover gracefully when the Calc inputline toolbar is hidden
+      preventing location of the formula text.
+  + General:
+    - Began rewrite of text-selection-changed support.
+    - Speak ROLE_INFO_BAR information.
+    - Work around a missing state-changed event for Gtk+ submenus.
+    - Work around a missing state-changed event for Gtk+ table
+      column headers.
+    - Handle more cases for object:active-descendant:changed.
+    - orca has an automagic dependency on liblouis for braille
+      support (bgo#721017).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Dec 16 21:09:37 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Filter out some chrome events when inferring live regions.
+  + Fixes to prevent hangs when accessing WebKitGtk content.
+  + Fix for a traceback when Thunderbird becomes unresponsive.
+  + Add a check to the Gecko script's onCaretMoved() to be sure the
+    caret actually moved.
+  + Fix bug in column header labels for the links list dialog.
+  + Ignore selection-changed events when the current item's
+    selection is toggled via Space.
+  + Filter out some duplicate state-changed events.
+  + Restore the locus of focus when Alt+Tabbing back into Firefox.
+  + Fix a chattiness issue for Eclipse.
+  + Add a sanity check to prevent a hang when using Firefox.
+  + Clean up the Gecko script's onCaretMoved().
+  + Add handling for row headers in structural navigation.
+  + Fix for Orca not presenting the row when a table regains focus.
+  + Fix menu-related handling (aka hacks) in the Java toolkit
+    script.
+  + Work on the test harness and regression tests.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 20 20:42:37 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.2:
+  + General:
+    - Fix for Orca becoming silent when canceling out of the
+      Preferences dialog with unapplied synthesizer changes.
+    - Fix to prevent Orca becoming silent when a broken/incomplete
+      value interface is encountered.
+    - Do not enqueue accessible events when Orca is being shut down
+      as it can cause Orca to hang.
+    - Do not exit learn mode or repeat the prompt if no application
+      shortcuts are found.
+    - Fix for traceback in the Eclipse script.
+    - Make the "checked" and "pressed" strings context-specific.
+    - Register only one set of script event listeners; not one for
+      each script.
+    - Fix for Orca double-presenting the contents of Nautilus's
+      Places panel.
+    - Fix to prevent Orca from double-speaking name-changed events.
+    - Simplify and fix bugs in the speech generator's ancestry
+      generation.
+    - Check in the default script's onCaretMoved() if the caret
+      really moved.
+    - Use F2 and F3 rather than 1 and 2 to display shortcuts in
+      Learn Mode.
+    - Store basic point-of-reference info when the locusOfFocus
+      changes.
+    - Be sure we have line text before adding a voice to present
+      it.
+    - Workaround for bug 709447 - Orca segfaults when run with the
+      wayland backend.
+    - Remove many old and now obsolete hacks that were slowing Orca
+      down.
+    - Rely upon object:state-changed events instead of focus:
+      events.
+    - Create toolkit scripts for Gtk+ 2, Gtk+ 3, Qt.
+    - Rename the "CALLY" script "clutter" and create a new
+      gnome-shell script.
+    - Put logic needed for all scripts into the default script and
+      remove it from the individual scripts.
+  + Gecko:
+    - Fix for two hangs in Firefox.
+    - Try to minimize some of the excessive chattiness with Gecko
+      radio buttons and list items.
+    - Stop Orca from repeating the end of an autocompleted address
+      in Thunderbird.
+    - Fix and improve alert presentation for Thunderbird and
+      Firefox.
+    - Finding the next/previous caret should not call
+      isLayoutOnly() because it leads to lag.
+    - Implement the "list of" dialog for ARIA landmarks.
+    - Handle timeouts in liveregions._getMessage() more gracefully.
+    - Ignore text-changed events from Thunderbird's status bar.
+    - Stop doing focus grabs when setting the caret position.
+  + LibreOffice:
+    - Present "has formula" when a Calc cell with a formula gains
+      focus.
+    - Prevent Orca from announcing "misspelled" with each keypress.
+    - Work around some brokenness in LibreOffice tables.
+    - Present table cell text, if present, rather than the name in
+      Writer.
+    - Fix structural navigation for tables in LibreOffice Writer.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 16 04:16:34 UTC 2013 - mgorse@suse.com
+
+- Update to version 3.10.3:
+  + General:
+    - Fix for bug 726395 - Sometimes flat review presents
+      non-localized rolenames
+    - Fix a mysterious Brltty crash triggered by Orca
+    - Fix for bug 708664 - Selection and link indicators messing up
+      braille
+    - Fix the live region announcment review keybindings
+    - Fix two hangs when accessing WebKitGtk content
+    - Fix two hangs when accessing Gecko content
+    - Fix bug in column header labels for the links list dialog
+    - Restore the speech server before cleaning up unused servers
+      in Preferences
+    - Add a sanity check for broken value-interface implementations
+    - Fix a possible traceback in eclipse script
+  + New and updated translations: fr, hu, zh_CN
+
+-------------------------------------------------------------------
+Tue Nov 12 08:14:10 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.2 (bnc#849913):
+  + Fix for Orca double-presenting the contents of Nautilus's
+    Places panel.
+  + Fix a bug in presenting text found in WebKitGtk entries.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 16 16:26:31 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.10.1:
+  + General:
+    - Present the wifi network and battery-charged state in the
+      new system status menu.
+    - Present the position and contents when switching pages in
+      gnome-documents.
+    - Fix to make SayAll identify text which is a link in non-HTML
+      documents.
+    - Remove incorrect/obsolete information from Orca's help
+      content.
+  + LibreOffice:
+    - Fix structural navigation for tables in Writer.
+    - Present table cell text, if present, rather than the name in
+      Writer.
+  + Gecko:
+    - Fix for bgo#709573: Orca can hang on a web page in Firefox.
+    - Handle timeouts in liveregions._getMessage() more gracefully.
+    - Ignore text-changed events from Thunderbird's status bar.
+  + Updated translations.
+- Drop hack to remove execution flag from AUTHORS and COPYING, no
+  longer needed.
+
+-------------------------------------------------------------------
+Tue Sep 24 12:38:31 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Orca fails to present GtkButton children of a GtkListBox row
+    (bgo#708497).
+  + Orca does not shut down unused synthesizers which were
+    initialized within the preferences dialog (bgo#707708).
+  + Remove a leftover call to drawOutline() that was missed.
+  + Fix traceback in the Gecko script.
+  + Update the man page so that it doesn't contain false
+    information.
+  + Updated translations.
+- Add hack to remove execution flag from AUTHORS and COPYING.
+
+-------------------------------------------------------------------
+Mon Sep 16 21:47:32 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.92:
+  + Improved support for presenting GtkListBox, GtkListBox items,
+    and their child widgets.
+  + Present accessible name-changed events for the active frame.
+  + Present expandable and expanded states, state changes for
+    menu items.
+  + Fix isSameObject() so that it is more performant and has less
+    false positives.
+  + Fall back on child index when spatially comparing objects with
+    bogus extents.
+  + Fall back on displayed text when flat-reviewing icons that lack
+    name and description.
+  + Remove the "outline" debugging tool. It was always a hack; now
+    it also causes focus loss.
+  + bgo#703472: Fix Makefiles so orca can be a noarch package.
+  + Update orca executable for the recent python dir changes.
+  + Remove deprecated calls to GLib and GObject threads_init.
+- Drop pkgconfig(atk) and pkgconfig(gtk+-3.0) BuildRequires: no
+  longer needed.
+- Drop python3-cairo Requires and BuildRequires: no longer needed.
+- Add hicolor-icon-theme BuildRequires: needed for thepost
+  scriptlets. It used to be pulled in by other dependencies before.
+
+-------------------------------------------------------------------
+Wed Sep  4 06:45:22 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.91:
+  + Text attribute presentation is completely broken for Gecko
+    (bgo#644515).
+  + Workaround for BackSpace and Delete text changed events not
+    being presented.
+  + Handle partially-implemented value interfaces with range of 0
+    to 1.
+  + Fix to present the new sliders in gnome-shell.
+  + Performance:
+    - Only perform braille functions when braille is enabled
+      (bgo#616847).
+    - Add object:active-descendant-changed to events that may be
+      part of an "event flood"
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 21 19:04:46 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.90:
+  + Unbind the "quit" command because gnome-settings-daemon now
+    includes Super+Alt+S.
+  + Prevent Orca from constantly saying "not selected" in
+    gnome-documents.
+  + Present the table dimensions when a table claims focus.
+  + Updated translations.
+- Enable python3-louis BuildRequires and Requires for louis support
+  as we have it in openSUSE now.
+
+-------------------------------------------------------------------
+Wed Jul 31 06:36:42 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.5:
+  + Handle text selection events that cross into a different page.
+  + Present the Evince caret-navigation infobar.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul  9 10:47:56 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.4:
+  + bgo#703645: Use the default locale if no family is specified
+    for the default voice.
+  + Remove deprecated stock items.
+  + bgo#672195: Key bindings are disabled if num lock on even in
+    laptop mode.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jun 22 09:01:11 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.3:
+  + Add structural navigation support for Evince documents
+    (bgo#701787).
+  + Fix for traceback when switching back to English profile.
+  + Fix the accessible apps commandline option.
+  + Orca's word echo does not echo first word typed in an empty
+    libreoffice writer document (bgo#701743).
+  + orca-autostart.desktop unconditionally enables speech and
+    braille (bgo#701549).
+  + Add mapping from gnome-terminal-server to gnome-terminal.
+  + Remove the braille-monitor checkbox from the GUI.
+  + Orca doesn't announce the AltGr key (bgo#671755).
+  + "Screen reader preferences"; not "Orca preferences"
+    (bgo#701166).
+  + "Screen reader settings"; not "Orca settings" (bgo#701187).
+  + And a number of similar changes (e.g. the name of the Orca
+    modifier, along with various other places where "Orca" was
+    being used instead of "screen reader")
+  + Misc refactoring and cleanup.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 28 06:46:18 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.2:
+  + Enabling "Screen reader" tells me "Welcome to Orca"
+    (bgo#700831).
+  + Begin migration of Orca's Evolution script to use Orca's
+    WebKitGtk support.
+  + Use the default script's SayAll functionality in Gedit.
+  + Text Interface Simplification Work and Fixes:
+    - Fix the hang on espeak.sourceforge.net.
+    - Remove an old hack from the Gecko script which now causes us
+      to get stuck on some pages.
+    - Fix the repeated line presentation in Thunderbird.
+    - Use TEXT_BOUNDARY_WORD_START instead of
+      TEXT_BOUNDARY_WORD_END for the Gecko script's goNextWord().
+    - Use TEXT_BOUNDARY_SENTENCE_START instead of
+      TEXT_BOUNDARY_SENTENCE_END for SayAll.
+    - Use getTextAtOffset() instead of getTextAfterOffset().
+    - Use getTextAtOffset() instead of getTextBeforeOffset().
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr 19 16:53:57 UTC 2013 - dimstar@opensuse.org
+
+- Fix package after port to Python 3:
+  + Drop old python2 Requires: pyatspi, python-brlapi,
+    python-cairo, python-gobject, python-gstreamer-0_10,
+    python-louis
+  + Add python3 based Requires: py3atspi, python3-brlapi
+    disabled: missing), python3-cairo, python3-gobject,
+    python3-louis (disabled: missing)
+
+-------------------------------------------------------------------
+Tue Apr 16 20:26:17 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 26 07:11:15 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.8.0:
+  + Fix for bgo#696334 - traceback when analyzing a checkbox for
+    the flat review context.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 19 14:58:34 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.7.92:
+  + Swap the column ordering in the Links List dialog
+  + Fix a couple of missed moved strings related to profile-based
+    language switching.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 11:51:54 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.91:
+  + Signifcant work and progress on profile-based, on-the-fly
+    language switching.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 20 07:39:18 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.90:
+  + Much work and progress on profile-based, on-the-fly language
+    switching.
+  + Better "list shortcuts" and learn mode support and associated
+    hack removal.
+  + More refinements and additions to the new "list of" dialogs:
+    - Implement the "'list of' dialog" feature for tables.
+    - Try harder to position the caret when jumping to an object in
+      the navlist.
+    - Select the row associated with the locusOfFocus in the "list
+      of" dialogs.
+    - Present the number of results for the "list of" dialogs.
+    - Update Orca's keybindings related to bookmarks and "list of"
+      commands.
+  + Add event listeners for, and presentation of, table row and
+    column re-ordering.
+  + Bugs fixed:
+    - Filter out dead childNodes from GtkTreeView.
+    - Present the Orca version upon first entering learn mode
+    - Handle attempts to start Orca from the console more
+      gracefully.
+    - Get Orca to handle table rows which lack ROLE_TABLE_ROW.
+    - Get rid of "odd hacky thing... somewhat drawn from
+      Gnopernicus".
+    - Do not include anchors for structural navigation links.
+    - Do not filter out egg-list-box labels based on STATE_SHOWING.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  5 13:16:06 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + New Feature:
+    - Structural navigation objects are now navigable by "list of"
+      dialogs.
+  + Bug Fixes:
+    - Much better handling of egg-list-box for the new panels in
+      gnome-control-center.
+    - Orca doesnt echo words in gnome-terminal (bgo#693159).
+    - Do not attempt to store an AtspiTable in a dictionary.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 15 14:27:45 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.4:
+  + New Commands (Unbound keybindings):
+    - Cycle amongst saved settings profiles.
+    - Copy and append text from flat review to the clipboard
+  + Web related:
+    - bgo#677615: In Firefox www.google.com links not presented in
+      braille
+    - bgo#675362: Orca doesn't speak certain radio button labels
+      in Firefox
+    - bgo#669377: Cannot read web pages while file download dialog
+      present
+    - Always use the Collection interface for structural navigation
+      and page summary
+    - Do not try to infer labels from widgets deeply buried in
+      table cells
+    - Changes to make Orca's generic label inference code work
+      better with Gecko
+    - Move the Gecko script to use Orca's label inference code
+    - When Gecko reports the end offset is -1, use the
+      characterCount instead
+    - Be sure we have a last input event before checking its time
+      for live region presentation
+  + Other bugs fixed: bgo#684951, bgo#591871, bgo#515817,
+    bgo#600204
+    - Get Orca doing a better job of presenting the Evolution
+      Account Assistant
+    - Handle caret offset of -1 when getting text for non-focused
+      objects
+    - Fix a traceback in the braille monitor
+    - Change the debug level the script manager prints dead
+      accessible warnings
+  + Miscellaneous Cruft Removal
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan  9 18:03:16 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.3:
+  + Provide support to cycle amongst speech-dispatcher's
+    capitalization presentation options
+  + Create a generic UI which can be used in element navigation
+    lists
+  + Add a _getAll() method to structural_navigation.py
+  + Fix for bug 689486 - Broken links to gnome-user-docs in the
+    orca help
+  + Remove a missed call to str.decode()
+  + Make viewing Orca help in Yelp activatable via Learn Mode
+  + Eliminate the Splash window, Main window, and Quit window
+  + Increase the default uppercase pitch to 7.0
+  + Use GLib.source_remove() instead of the deprecated GObject
+    equivalent
+  + Delete the acroread script
+- Changes from version 3.7.2:
+  + General
+    - Replace deprecated GObject functions with their GLib equivalents
+    - Improve performance of building flat review context
+    - Add keywords to the desktop file
+    - Python 3 compatibility fixes for brlapi
+    - bgo#687526: Orca excepts trying to output exceptions
+    - bgo#687527: Handle applications returning 0 as the Value's
+      minimalIncrement
+  + Gecko
+    - bgo#674526: Orca sometimes fails to present download dialog
+      widgets in Firefox
+    - bgo#688057: A page that hangs Orca.
+  + Speech
+    - Most of bgo#688172: Orca gets stuck in uppercase pitch
+    - Fix for Orca continuing to speak when speech is disabled via
+      the Preferences dialog
+    - bgo#687239: Traceback seen in Python 3.3 when there are no
+      settings saved.
+- Changes from version 3.7.0.100:
+  + General
+    - Use subprocess.Popen() instead of the deprecated os.popen()
+    - Use for() instead of map() in cleanup()
+    - Pkill fails to kill Orca in Python 3
+    - Fix for bug 686189 - Use importlib.import_module() instead of
+      __import__() and imp.reload() instead of reload()
+    - Fix for braille email address auto completions in Thunderbird
+- Changes from version 3.7.0.94:
+  + bgo#675288: Orca doesn't always announce selection changes
+    in Nautilus 3.6's icon view
+  + bgo#680228: In Thunderbird 14.0 e-mail address auto completion
+    results are not spoken
+  + bgo#684838: Orca should present the accessible name of sliders
+  + bgo#675656: Mark Hungarian 8 dot computer braille for
+    translation
+- Changes from version 3.7.0.92:
+  + LibreOffice Writer documents should be fully readable and
+    navigable via the braille display
+  + bgo#683795: Orca modifier gets stuck on in Bypass Mode
+  + bgo#683447: Outdated documentation needs to be removed
+  + Updated translations.
+- Change BuildRequires for the port to python 3:
+  + Old ones: python, python-cairo, python-louis, python-speechd,
+    python-brlapi.
+  + New ones: python3, python3-cairo, python3-brlapi,
+    python3-louis, python3-speechd.
+
+-------------------------------------------------------------------
+Tue Nov 27 09:21:14 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.3:
+  + Traceback seen in Python 3.3 when there are no settings saved
+    (turns out it impacts Python 2.x as well) (bgo#687239).
+- Changes from version 3.6.2:
+  + Orca sometimes fails to present download "dialog" widgets
+    (bgo#674526).
+  + A page that hangs orca (bgo#688057)
+  + Fix for Orca continuing to speak when speech is disabled via
+    the preferences dialog.
+  + Improve performance of building flat review context.
+  + Handle applications returning 0 in minimalIncrement for Value
+    (bgo#687527).
+  + Use subprocess.Popen() instead of the deprecated os.popen().
+  + Use for() instead of map() in cleanup().
+  + Use importlib.import_module() instead of __import__() and
+    imp.reload() instead of reload() (bgo#686189).
+  + Fix to braille email address auto completions in Thunderbird.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 16 07:16:30 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Orca doesn't always announce selection changes in Nautilus
+    3.6's icon view (bgo#675288)
+  + In Thunderbird 14.0 e-mail address auto completion results are
+    not spoken (bgo#680228)
+  + Orca should present the accessible name of sliders (bgo#684838)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct  5 09:17:49 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 21:27:48 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.5.92:
+  + LibreOffice Writer documents should be fully readable and
+    navigable via the braille display.
+  + Orca modifier gets stuck on in Bypass Mode (bgo#683795).
+  + Outdated documentation needs to be removed (bgo#683447).
+  + Fix for broken tag in several help translations.
+  + Updated translations.
+- Add pkgconfig(atk) and pkgconfig(atk-bridge-2.0)
+  BuildRequires, configure now checks for them.
+
+-------------------------------------------------------------------
+Tue Sep  4 08:51:19 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.91:
+  + More UnicodeDecodeErrors (bgo#681892)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 21 09:05:42 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + WebKitGtk:
+    - Make WebKitGtk content fully braille scrollable without
+      having to use caret navigation
+    - Fixes for Orca failing to display certain text-only inline
+      WebKitGtk lists and sections
+    - Work around the bogus caretOffset we get for WebKitGtk
+      content which doesn't have the caret
+    - Don't display the braille EOL indicator for non-editable
+      WebKitGtk paragraphs
+    - Handle cases where the default script returns an empty string
+      for WebKitGtk content
+    - Fix for Orca skipping over WebKitGtk list items when
+      scrolling in braille
+    - bgo#664557: Orca does not always reflect the caret location
+      in braille for WebKitGtk content
+    - bgo#681441: Orca should present inline lists and sections
+      from WebKitGtk on the same line in braille
+    - bgo#681387: Orca displays no braille when lists which are not
+      listboxes claim focus in WebKitGtk content
+    - bgo#681363: Do not display roles for non-widget lists, list
+      items, and panels in WebKitGtk content
+  + Use new documentation infrastructure
+  + Move Gecko list presentation code into general presentation code
+  + Bugs fixed: bgo#681569, bgo#626032
+  + Updated translations.
+- Replace gnome-doc-utils-devel BuildRequires with yelp-tools,
+  following upstream.
+
+-------------------------------------------------------------------
+Mon Aug  6 21:56:17 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.5:
+  + WebKitGtk
+    - Cannot perform braille scrolling amongst objects in WebKitGtk
+      content (bgo#677320)
+    - SayAll does not work as expected when focus is on a link in
+      WebKitGtk content (bgo#681294)
+    - Fix for traceback when determining whether a MouseButtonEvent
+      should be ignored
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 17 08:44:55 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + Structural navigation should not kick in when in editable
+    WebKitGtk objects
+  + Access object extents as a bounding box
+  + bgo#679514: settings_test.py script fails because of some still
+    remaining yaml files
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 25 17:33:09 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.3:
+  + bgo#677748: Launcher icon needs 256x256 variant
+  + Fix for Orca not presenting the 'Command not found' label in
+    the gnome-shell run dialog
+  + Work around for Orca not presenting the gnome-shell run dialog
+    text in braille
+  + Handle text implementations which report a caret offset of -1
+    when at the end
+  + Eliminate unneeded and/or problematic imports
+  + Remove more old, no-longer-used/needed code
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun  7 17:57:50 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.2:
+  + Improve Orca's presentation of gnome-shell/clutter dialog boxes
+  + Handle traceback seen with embedded object chars in Yelp
+  + Fix a bug in the state change notifiers
+  + Don't ignore MouseButtonEvent instances due to timestamp
+  + Fix for Orca saying "Primary" for mnemonic Ctrl++
+  + Fix for speech keybindings failing when no speech settings have
+    been saved
+  + Remove the now-redundant 'orca -q/--quit' and 'orca
+    -f/--forcequit' (pkill works reliably)
+  + Ensure we eliminate replaced Orca processes
+  + Handle multiple and alternate installations better
+  + Eliminate the Orca shell script and cause Orca to run as a
+    single process rather than two
+  + bgo#659588: Orca presents Ctrl+Plus and Ctrl+Minus accelerators
+    partially-translated
+  + Other:
+    - Much work towards the Python 3 migration
+    - bgo#658834: Use GDbus via gobject-introspection instead
+      dbus-python
+    - Revert "Interim fix for bgo#672242"
+    - bgo#669813: Remove pyxdg dependency
+    - Get rid of the forced-qui-prefs when there are no settings.
+    - Continued general code cleanup
+    - Code changes to help translators.
+  + Updated translations.
+- Drop python-xdg and dbus-1-python BuildRequires and Requires,
+  following upstream.
+
+-------------------------------------------------------------------
+Wed May 16 18:21:30 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 15 05:31:25 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.2:
+  + Prevent gnome-shell notifications from being double-presented
+  + Try to handle metacity timeouts more gracefully
+  + Prevent Orca from interrupting speech in Anaconda trees
+  + bgo#674237: More unicode errors found with hungarian locale
+  + bgo#674693: Modifier keys pressed alone should interrupt speech
+  + bgo#675522: incorrect comment for translators
+
+-------------------------------------------------------------------
+Tue Apr 17 06:36:06 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.1:
+  + GNOME 3:
+    - Present the name change of the suspend/power off menu item
+    - Prevent nameless panels from delaying presentation of Top Bar
+      button
+    - Prevent focused objects in gnome-shell dialogs from
+      preempting presentation of the dialog itself
+    - Fix for Empathy active descendant presentation getting
+      incorrectly interrupted
+    - Minor adjustments to get Orca working with Empathy 3.4
+    - bgo#672461: Orca now presents the full file list when the
+      file chooser is opened
+  + Unity:
+    - bgo#673397: Using flat review while in Unity Greeter makes
+      Orca stop presenting screen contents
+    - bgo#673157: Unhandled exception when in Unity Greeter
+    - bgo#673648: Orca does not present Unity 2d indicators
+      correctly in braille
+  + Qt:
+    - Fix for Orca incorrectly skipping certain menu item events in
+      KMail
+    - bgo#673142: Unhandled exceptions (GError: No such object
+      path) when using Skype
+  + WebKitGtk:
+    - bgo#673540: List and list item structural navigation
+      sometimes fails
+    - Prevent Orca from double-presenting focused links with
+      structural navigation in lists
+    - bgo#672464: Orca double presents headings which are links
+    - Fix braille rolename presentation
+    - bgo#673757: Pages with alt attribute present, but not
+      actually set, results in traceback
+    - Fix a UnicodeWarning
+  + Gecko:
+    - bgo#673715: Orca double-echoes keys pressed in Thunderbird
+      address fields
+    - bgo#673567: List in Firefox preferences dialog not presented
+  + LibreOffice:
+    - bgo#672787: Unhandled exceptions from dead accessibles in
+      Calc
+    - bgo#673530: Orca multi-presents the focused cell's contents
+      when arrowing in Calc
+    - bgo#672953: Orca is presenting extra "input line frame"
+      announcements in LibreOffice Calc
+  + Orca and AT-SPI:
+    - Handle the new AT-SPI2 timeout errors
+    - Add additional debugging info to help track down
+      hard-to-reproduce issues
+    - Use os.makedirs instead of os.mkdir if the XDG data home
+      directory doesn't exist
+    - Disable braille monitor if the import fails
+    - Ensure 'orca -t' works even without a Desktop
+    - bgo#673336: Problems (re)binding commands with Caps_Lock
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 15:32:21 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 20:03:25 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.92:
+  + Tracebacks seen when interacting with Thunderbird's message
+    filter rules dialog (bgo#672276).
+  + Orca presents an extra panel on places&devices and documents
+    search result (bgo#672242).
+  + Sanity check that we have a desktop to get before we attempt to
+    get its apps
+  + Gecko combobox selection is no longer presented (bgo#659839).
+  + Do not treat "busy indicator" progress bars as progress bars
+    with values.
+  + Handle errors seen when restarting gnome-shell.
+  + Handle GErrors which prevent Orca from speaking menu items in
+    Skype.
+  + Attend to object:state-changed:expanded events for push
+    buttons.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  6 08:39:08 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.91:
+  + Check for (and where appropriate present) expandable and
+    expanded states for toggle buttons and push buttons
+  + Present gnome-shell notifications
+  + Handle Earlybird (Thunderbird pre-release) as Thunderbird
+  + Fix for several UnicodeEncodeError and UnicodeDecodeError bugs
+  + Fix the presentation of mnemonics which are accented letters
+  + Present the localized rolenames we get via pyatspi rather than
+    use Orca's pre-pyatspi rolename code for non-abbreviated
+    rolenames
+  + Remove the old settings migration code from orca.py
+  + Fix for getListOfShortcuts() incorrectly eliminating commands
+  + Add an orca-customizations.py option to override the disabled
+    main window
+  + Fix for Orca not using the specified debug-file when debug flag
+    is not also provided
+  + Fix man page errors
+  + Avoid incorrectly detecting python modules which not installed
+  + Bugs fixed: bgo#666424, bgo#670547, bgo#670596, bgo#670827.
+  + Updated translations.
+- Add python-cairo BuildRequires and Requires: they were missing
+  before.
+
+-------------------------------------------------------------------
+Tue Feb 21 08:31:41 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.90:
+  + Only set the locusOfFocus when gnome-shell selection changes to
+    selected
+  + Clean up Orca's locating and sorting of "unrelated" labels
+  + Clean up Orca's code for capturing of keys for rebinding
+  + Delete an old setting we no longer use (from the pyatspi1 port)
+  + Get rid of orca_state.focusHistory: we no longer use it but we
+    keep storing it
+  + Move input event handlers out of orca.py
+  + Fix notify-osd script to listen for accessible-name/value
+    signals only
+  + Orca needs to speak value changes for objects of
+    ROLE_COLOR_CHOOSER
+  + Use dbus rather than gsettings to check if accessibility
+    support and screen reader are enabled
+  + Remove forced terminal-setup; enable accessibility support
+    instead
+  + Fix a traceback which prevented certain keybindings from
+    binding
+  + bgo#596359: Should set the process name to "orca"
+  + bgo#628473: orca.py should use argparse instead of getopts
+  + bgo#669632: Orca does not present correct mnemonic for menu
+    items
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  7 13:10:18 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.5:
+  + General:
+    - Add handling for RuntimeError now that we get them from
+      pyatspi2
+    - bgo#669216: Orca's console setup option to log out the user
+      no longer works
+    - bgo#668880: traceback in unity-panel-service
+    - bgo#668472: LookupError causes messages in Thunderbird to not
+      be readable
+  + Keyboard and Keybindings:
+    - bgo#666463: Orca needs to present the real modifier for
+      'Primary'
+    - bgo#667717: Pressing the key combination for time/date after
+      any other Orca keyboard shortcut causes the date to be
+      spoken.
+    - Fix for the regressions from the keyboard-related refactoring
+      from the last unstable release.
+  + Updated translations.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Tue Jan 17 08:11:09 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.4:
+  + Stability and Performance:
+    - Explicitly handle dead accessible objects to prevent
+      triggering crashes in GNOME Shell
+    - Refactor InputEvent handling so that it is more performant
+      and less convoluted
+    - Get rid of the fake window:activate event as it is no longer
+      required and may be triggering window manager warnings
+    - Move wayward event management functionality to the Event
+      Manager
+    - Fix for the problem of updatePunctuationLevel() causing
+      breakage for Emacspeak users
+    - bgo#666628: gdk_keymap_translate_keyboard_state() expects
+      Gdk.ModifierType; not int
+    - bgo#666594: app-specific preferences cannot be saved for
+      certain configurations
+  + Keyboard and Keybindings:
+    - Speak state changes in locking keys independent of key echo
+    - Make it possible to use the NumPad as expected in the Desktop
+      Layout
+    - Remove the redundant "alternative" keybinding functionality
+  + Updated translations.
+- Remove checks for old versions of openSUSE (<= 11.1).
+
+-------------------------------------------------------------------
+Tue Dec 20 13:21:08 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.3.3:
+  + General:
+    - bgo#665769: Preferences not saved or restored correctly due
+      to comparing unicode and utf-8 strings
+    - Several fixes to help Orca better cope with dead and
+      vanishing accessible objects
+    - bgo#666416: Leading ellipsis cause incorrect speech output
+    - bgo#666060: Orca does not always speak guessed form field
+      labels when structural navigation is used
+    - bgo#665288: Orca's script manager cannot adequately handle
+      multiple "unknown" applications which embed content from
+      other toolkits
+    - bgo#665191: Orca fails to use the correct toolkit script for
+      "unknown" applications
+  + Keybindings:
+    - bgo#658122: Caps_Lock should not be toggled when Orca
+      commands are used in laptop layout
+    - bgo#665804: Problems binding and rebinding commands with
+      Caps_Lock and Shift
+  + Flat Review:
+    - bgo#664466: Orca's flat review cannot access the top line of
+      gnome-terminal console
+    - bgo#665522: Flat Review broken in Gecko apps with AT-SPI2
+  + WebKitGtk:
+    - Implement label inference (aka "label guess") functionality
+    - Add support for speech presentation of embedded object
+      characters
+    - bgo#665586: Orca does not present the selected menu / menu
+      item for Dojo widgets
+    - bgo#665614: Orca does not present selection changes in radio
+      button groups when the arrow keys are used
+    - bgo#664396: List containing links is not brailled properly
+    - Add LIST_ITEM to the roles treated as widgets in onFocus()
+    - Fix for Orca speaking text table cell role and selection
+      state
+    - Adjust getObjectsFromEOCs to deal with unexpected accessible
+      hyperlink indices
+    - bgo#665223: WebKitGtk-based application scripts should be
+      consolidated
+  + Cruft Removal:
+    - bgo#665216: Remove Orca's support for Gecko-based Yelp v2
+    - bgo#664651: Remove the legacy magnification code
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Mon Nov 21 19:18:21 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.3.2:
+  + Orca does not always present image links in WebKitGtk content
+    [bgo#664386]
+  + Need to move getLinkBasename() functionality out of Gecko
+    script so all scripts can use it [bgo#664384]
+  + Orca does not speak the desktop icon names in fallback mode if
+    tutorial messages are enabled [bgo#659023]
+  + Viewing package list of a www.launchpad.net PPA causes Orca to
+    stop working on Firefox 7.0.1 [bgo#661893]
+  + Cannot re-bind Orca keybindings via Preferences dialog
+    [bgo#660099]
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct 27 08:55:55 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.3.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 18 06:39:05 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.1:
+  + General
+    + bgo#661706: Sanity check needed in Gecko script's
+      getBottomOfFile() to ensure we have a "last object"
+    + bgo#659122: UnicodeDecodeError and UnicodeEncodeError keep
+      cropping up since introspection
+    + bgo#659122: Traceback presenting time and date
+    + bgo#660163: Traceback when try to edit a keybinding
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 27 07:01:34 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + General
+    - bgo#660091: Unbound alternative keybindings in
+      user-settings.conf prevent the preferences window from being
+      shown
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 07:55:47 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.92:
+  + General:
+    - bgo#659054: Orca fails to present decimal values of GtkScale
+      widgets in Gtk+ 3
+    - bgo#659379: Orca is not presenting panel menus and menu items
+      in fallback mode
+    - bgo#617833: Orca should indicate state of NumLock key
+    - Other bug fixes: bgo#652485, bgo#658134, bgo#658781,
+      bgo#658993, bgo#659015, bgo#659122, bgo#659264.
+  + Build fix (bgo#659092).
+  + Updated translations.
+- Drop orca-fix-doc-figures.patch: fixed upstream.
+- Drop gnome-common BuildRequires and call to gnome-autogen.sh:
+  they were only needed for the dropped patch.
+
+-------------------------------------------------------------------
+Wed Sep 14 20:42:11 UTC 2011 - vuntz@opensuse.org
+
+- Add orca-fix-doc-figures.patch: fix installation of doc figures
+  so we don't install non-existing figures, that would result in
+  broken links -- those will break the build of bundle-lang-gnome.
+- Add gnome-common BuildRequires and call to gnome-autogen.sh,
+  needed for the patch above.
+
+-------------------------------------------------------------------
+Tue Sep  6 06:14:43 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.91:
+  + General:
+    - bgo#658141: Need to add support for the 'placeholder-text'
+      object attribute
+    - bgo#658133: Firefox lines which begin with bullets are not
+      always presented by Orca
+    - bgo#657732: stopSpeechOnActiveDescendant shouldn't cut off
+      the presentation of a name-change
+    - bgo#657902: Remove static binding cruft from configure.ac
+      and acinclude.m4
+  + Documentation:
+    - Began update of the Orca 3.2 documentation
+    - bgo#655642: Problems in the docs
+- Drop orca-no-pygtk-configure.patch: fixed upstream.
+- Remove gnome-common BuildRequires and call to gnome-autogen.sh:
+  they were only needed for the above patch.
+
+-------------------------------------------------------------------
+Wed Aug 31 16:09:19 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.90:
+  + General:
+    - bgo#626254: Migrate from PyGTK to PyGObject
+      introspection-based bindings
+    - bgo#652485: Remove deprecated (or soon-to-be deprecated)
+      GtkBox, GtkTable, etc. and use GtkGrid instead.
+    - bgo#657646: Default stopSpeechOnActiveDescendantChanged()
+      should not be so restrictive
+    - bgo#657579: Orca should not present tooltips shown as a
+      result of mouse hovering unless the 'present tooltips'
+      setting is enabled
+  + Gecko
+    - bgo#599361: Significant delay building up the contents of
+      certain lines in Firefox
+    - bgo#650904: Work around AT-SPI2 caching issues with
+      Thunderbird
+  + Updated translations.
+- Remove at-spi-devel, pyatspi, python-gobject-devel,
+  python-gtk-devel BuildRequires: they are not needed with the port
+  to introspection-based bindings.
+- Add pkgconfig(atspi-2), pkgconfig(gtk+-3.0),
+  pkgconfig(pygobject-3.0) BuildRequires: new dependencies.
+- Remove python-gtk Requires as orca has been ported to
+  introspection-based bindings. However, add python-gobject
+  Requires which is still clearly needed.
+- Replace python-wnck Recommends with typelib(Wnck), to follow the
+  change to introspection-based bindings.
+- Add orca-no-pygtk-configure.patch: do not require old bindings
+  for the build.
+- Add call to gnome-autogen.sh for the above patch.
+
+-------------------------------------------------------------------
+Mon Aug 22 13:31:35 UTC 2011 - dimstar@opensuse.org
+
+- Add python-gobject-devel BuildRequires to help the build over the
+  split of gobject gi bindings vs. standard bindings.
+
+-------------------------------------------------------------------
+Tue Aug 16 04:23:01 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.5:
+  + bgo#639535: KeyError: 'profile' traceback; Orca won't launch
+  + bgo#654923: Add Unity to OnlyShowIn value for autostart desktop
+    file
+  + bgo#656305: Improve autotools config
+  + bgo#654114: Map "clutter" to "CALLY" toolkit script
+  + Enhanced Orca's traceit tool.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 25 22:56:10 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.4:
+  + General
+    - bgo#654111: Map 'gtk' to GAIL toolkit script
+    - bgo#634460: Provide date/time information within debug files
+    - bgo#654210: Orca sometimes fails to present the default
+      button in a dialog
+    - bgo#654321: Fix toolkit version reported as 'unknown'
+    - bgo#654426: The speech generator's _generateAncestors()
+      method needs to handle page tabs which do not implement
+      AtkText
+    - bgo#654789: Localize key sequences when presenting them to
+      user
+    - bgo#654795: Improve Orca's speech presentation of WebKitGtk
+      access keys
+    - bgo#654796: Orca is not respecting the 'only speak displayed
+      text' setting with rolename presentation in WebKitGtk content
+  + Tests
+    - Update gtk-demo regression and general tests
+  + Updated translations.
+- Add python-speechd BuildRequires as the python module needs to be
+  there at build time.
+
+-------------------------------------------------------------------
+Tue Jul  5 08:59:16 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.3:
+  + General:
+    - bgo#653642: Alt+F4 followed by Escape leaves the Orca window
+      closed, but Orca still running
+    - bgo#653628: List shortcuts mode: shortcut is spelled out as
+      "shift T A B" instead of saying "shift tab"
+    - bgo#653634: Orca welcome message is cut off
+    - bgo#653624: bash-ism causes error in orca startup script
+    - bgo#653514: The only magnification work Orca should be doing
+      is handling caret and focus tracking
+    - bgo#652500: DBusException seen when Orca is running with
+      gnome-shell mag
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun 16 15:12:01 CEST 2011 - vuntz@opensuse.org
+
+- Drop python-bonobo and python-gconf BuildRequires and Requires as
+  the dependencies got removed in 3.1.2.
+- Drop gnome-speech-devel BuildRequires and gnome-speech Recommends
+  as support for it got removed.
+- Change python-speechd Suggests to Recommends as this is the new
+  default engine for speech.
+- Drop gnome-mag-devel BuildRequires and gnome-mag Recommends as
+  support for it got removed.
+
+-------------------------------------------------------------------
+Tue Jun 14 09:43:06 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.2:
+  + General:
+    - bgo#622764: Remove the gconf dependency
+    - bgo#652408: Remove last remnants of bonobo and friends
+    - bgo#652415: gksu grab can be disabled via gksu-properties
+    - bgo#652413: Orca's enableAutostart setting and GUI widget
+      are redundant in GNOME 3 and should be removed
+    - bgo#646288: Orca needs to respond to the appropriate
+      gsettings keys
+    - bgo#650136: Fall back on combobox name to get the displayed
+      item
+    - Removal of outdated docs and other unused, cruftastic files
+  + Speech:
+    - bgo#652246: Orca starts speaking really slowly after the
+      Quit dialog appears
+    - bgo#652043: In Libreoffice, Orca doesn't present the title
+      bar
+    - bgo#652237: Remove gnome-speech support from the master/
+      3.1.x branch
+    - bgo#647037: Pronunciation rules not being applied until
+      user settings are reloaded
+  + Magnification:
+    - bgo#629321: gsmag.py should use GSettings rather than GConf
+    - bgo#652241: Magnification settings should be controlled by
+      gnome-shell mag/Universal Access tools; not by Orca
+    - bgo#652407: Orca's enableMagnifier setting should be based
+      on the value of screen-magnifier-enabled
+    - bgo#652373: Orca's magnification keybindings are no longer
+      needed in GNOME 3 and should therefore be removed
+    - bgo#652238: Remove gnome-mag support from the master/3.1.x
+      branch
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun  9 13:09:54 CEST 2011 - vuntz@opensuse.org
+
+- Update BuildRequires:
+  + Change dbus-1-python-devel to dbus-1-python since the configure
+    script only checks for the availability of the python module.
+  + Remove unneeded glib2-devel.
+  + Change python-gnome-devel to python-bonobo and python-gconf
+    since the configure script only checks for those two modules.
+  + Add python-wnck, which is checked for.
+- Update dependencies:
+  + Change python-gnome Requires to python-bonobo and python-gconf
+    Requires: we only need those two modules, instead of the full
+    python-gnome.
+  + Change gnome-python-desktop Recommends to python-wnck
+    Recommends for the same reason.
+
+-------------------------------------------------------------------
+Tue May 17 18:34:49 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.1:
+  + bgo#647522: Orca should not speak page loading messages if
+    'only speak displayed text' is enabled
+  + bgo#638883: Orca should present text which auto-inserted into
+    editable, non-terminal widgets
+  + bgo#431030: GtkStatusIcon objects don't have accessible names
+  + bgo#647982: Orca sometimes presents application events in
+    GNOME 3; other times it fails to do so.
+  + bgo#646547: Two typos in prefs string
+  + bgo#640134: Catch pyatspi2's RuntimeErrors
+  + Fix for the problem of punctuation settings not getting
+    properly loaded or unloaded when the application script
+    changes.
+  + Fix for the problem of voice settings not getting properly
+    loaded or unloaded when the application script changes.
+  + Voice settings need to be ACSSs; not dicts.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 28 11:19:14 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.1:
+  + bgo#647982: Orca sometimes presents application events in
+    GNOME 3; other times it fails to do so.
+  + bgo#647824: Turning screen reader "off" should not be equated
+    with "do not autostart in the future".
+  + bgo#647547: The braille monitor should be movable.
+  + bgo#647117: orca autostarted in kde.
+  + bgo#646288: Orca needs to set and respond to the appropriate
+    gsettings keys.
+  + bgo#646475: Traceback seen with gnome-speech.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr  5 17:13:53 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + bgo#646547: Two typos in preferences string
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 28 15:41:14 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.93:
+  + GNOME 3.0:
+    - Use gsettings, and not gconf, to determine if accessibility
+      is enabled.
+    - bgo#640134.
+  + General:
+    - Fix for the problem of punctuation settings not getting
+      properly loaded or unloaded when the application script
+      changes.
+    - Fix for the problem of voice settings not getting properly
+      loaded or unloaded when the application script changes.
+    - Voice settings need to be ACSSs; not dicts.
+- Changes from version 2.91.92:
+  + Provide 'text' title type in the help content so that
+    the logo alt text doesn't wind up being displayed where
+    it should not be.
+  + Various bug fixes: bgo#645241, bgo#645256, bgo#643304,
+    bgo#645278, bgo#643969, bgo#645364, bgo#645362.
+  + Fix for the problem with script loading of version 2 and 3 of
+    Yelp.
+  + Gecko/Yelp 2:
+    - bgo#645117: Traceback when using Orca with Gecko-based Yelp
+  + WebKitGtk/Yelp 3:
+    - bgo#645286: Orca should announce when WebKitGtk content has
+      started or finished loading.
+    - bgo#645290: Orca does not present links in Yelp 3 when those
+      links are made up of multiple objects.
+    - bgo#645359: Orca is not able to set the caret position within
+      a WebKitGtk list item when using structural navigation.
+    - bgo#645366: Orca needs to work around the initial lack of
+      caret in a newly-loaded WebKitGtk page.
+    - bgo#645465: Say All needs to be implemented for
+      WebKitGtk-based apps.
+    - bgo#645474: Orca should provide the option of performing a
+      Say All when WebKitGtk content is loaded.
+  + Clutter/Cally: By default, any selection change on CALLY means
+    a change on locusOfFocus.
+- Changes from version 2.91.91:
+  + bgo#637780: Cannot permanently update settings for the gdm
+    user login session
+  + Various bug fixes: bgo#643195, bgo#643378, bgo#643306,
+    bgo#643067.
+  + Gecko: bgo#634642: Orca can be very slow to find a position in
+    a Gecko list
+- Changes from version 2.91.90:
+  + Various bug fixes: bgo#642212, bgo#642592, bgo#642285,
+    bgo#641017.
+  + OpenOffice/LibreOffice: bgo#640372: OOo seems far less likely
+    to crash frequently if we process its events synchronously
+  + Updated translations.
+- Change from version 2.91.6:
+  + bgo#639673: Orca should support the creation and use of
+    version-specific scripts for applications
+  + Various bug fixes: bgo#641033, bgo#640894, bgo#640218,
+    bgo#640342, bgo#639876, bgo#640194, bgo#640135, bgo#640072,
+    bgo#640132, bgo#639992, bgo#639974, bgo#639668, bgo#639669,
+    bgo#639670, bgo#639671, bgo#638970, bgo#639418, bgo#638672.
+  + WebKitGtk/Yelp 3: bgo#640609, bgo#640591, bgo#640500,
+    bgo#640383, bgo#640451, bgo#640383, bgo#640381, bgo#640379,
+    bgo#640377, bgo#607854.
+- Changes from version 2.91.5:
+  + bgo#631123: updated documentation.
+  + Various bug fixes: bgo#636841, bgo#638623, bgo#638285,
+    bgo#638318, bgo#637667, bgo#637865.
+  + Gecko: bgo#638063, bgo#638053, bgo#638048, bgo#628837.
+- Changes from version 2.91.4:
+  + bgo#570650: Profiles and new settings manager.
+  + Bug fixes: bgo#637667, bgo#637653, bgo#637661, bgo#637670,
+    bgo#637662, bgo#637665, bgo#637654, bgo#637637, bgo#637551,
+    bgo#631123, bgo#637115, bgo#637422, bgo#636824.
+- Changes from version 2.91.3:
+  + Work on bgo#633104: I see three performance related problem
+    with Mozilla Thunderbird and Orca
+  + Bug fixes: bgo#630591, bgo#634862, bgo#634469.
+- Changes from version 2.91.2:
+  + General:
+    - bgo#626266: Discontinue support for OpenTTS system
+    - bgo#634248, bgo#628842, bgo#629586.
+- Changes from version 2.91.1:
+  + General: bgo#631544, bgo#628276.
+  + Upgrade from LGPLv2 to LGPLv2.1.
+- Changes from version 2.91.0:
+  + General: bgo#630274, bgo#630644, bgo#631120, bgo#630142,
+    bgo#609900.
+  + OpenOffice: bgo#630584.
+  + WebKitGtk: bgo#630328: Orca provides no access to WebKitGtk
+    content whatsoever
+- Drop orca-2.32.1-console-setup.patch: fixed upstream
+- Drop gnome-python-desktop BuildRequires, since we are using new
+  pygobject bindings.
+- Add gnome-doc-utils-devel as Build Requires.
+- Call %suse_update_desktop_file for orca-autostart.desktop.
+- Add glib2-tools Requires as the gsettings binary is used to
+  determine if accessibility is enabled.
+
+-------------------------------------------------------------------
+Fri Feb 18 23:33:35 UTC 2011 - mgorse@novell.com
+
+- Add orca-2.32.1-console-setup.patch: fix setting of autostart and
+  keyboard prompt in console setup (bgo#642212).
+
+-------------------------------------------------------------------
+Mon Feb 14 19:49:23 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Sun Feb 13 16:59:20 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Tue Nov 16 09:36:43 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.32.1:
+  + Add a check for xdg python package to configure.in
+  + bgo#631544: Orca crashes at GDM login screen if GDM's
+    .local/share/orca directory does not exist.
+  + bgo#629586: When Orca is in learn mode and the user switches
+    to another application, Orca stops presenting the locusOfFocus
+  + bgo#628842: Orca speaks newly-focused panels in gnome-panel
+    using the default voice rather than the system voice
+  + Updated translations.
+- Add python-xdg BuildRequires and Requires.
+
+-------------------------------------------------------------------
+Tue Sep 28 00:41:52 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 14 08:50:31 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.92:
+  + General:
+    - bgo#609900: Speech page speechdispatcher defaults to zh
+    - bgo#628367: When Orca enters notification mode and the
+                  user switches to another application, Orca stops
+                  presenting the locusOfFocus
+    - bgo#628569: Orca preferences are not getting saved
+                  permanently if a $HOME/.orca exists
+    - bgo#628589: Notification message list message is too long
+    - bgo#543157: It is not always possible to distinguish
+                  on-screen text from Orca's "system" messages
+    - bgo#628410: Add support for object toolkits
+    - bgo#628568: Orca won't die, cannot be replaced if the at-spi
+                  registry daemon dies
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 31 09:59:45 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.91:
+  + General:
+    - bgo#625422: Remove XDG location 'migration' option
+    - bgo#627451: Orca needs a way to repeat the latest
+                  notification messages.
+    - bgo#628275: Orca should be more forgiving when invalid
+                  options and arguments are specified
+    - bgo#628256: orca.die() should call sys.exit() rather than
+                  os._exit()
+    - bgo#628300: Write the errors to the sdterr instead of sdtout
+    - bgo#626272: Plural forms needed for correct localization
+    - bgo#627052: Orca shouldn't ignore of object:text-caret- moved
+                  events which immediately follow a window:activate
+                  event
+    - bgo#627477: Orca splash screen shouldn't be displayed in GDM
+    - bgo#627216: Orca not brailling messages received via
+                  notify-osd
+  + Speech:
+    - bgo#520595: Orca is far too "chatty" for persons with
+                  learning disabilities
+  + Gecko:
+    - bgo#627769: 2.31.91pre say all stops at links and headers
+                  in firefox and thunderbird
+    - bgo#627691: When I say all a webpage content and Orca
+                  attempts to speak an image description, the say
+                  all operation is terminated
+  + OOo:
+    - bgo#627498: Orca should explicitly present the insertion and
+                  deletion of the last row in an OOo Writer table
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 17 11:12:17 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.90:
+  + General:
+    - bgo#577705: When Orca starts doesn't get to the component
+      with focus
+    - bgo#623571: Use %-d format directive, not %d, for non-
+      numeric date format strings
+    - bgo#626967: Orca's shellscript shouldn't use 'exec' for
+      calling the Python script
+    - bgo#626272: Plural forms needed for correct localization
+    - bgo#626640: The Solaris user's PATH is hardcoded
+    - bgo#626498: Traceback seen in orca_gui_prefs.py when
+      trying to bind an unbound command
+    - bgo#626200:  Modules should use script methods for
+      presenting messages
+    - bgo#626075: Speak unicode value of current character has
+      been omitted from the laptop layout
+  + Speech:
+    - bgo#543157: It is not always possible to distinguish on-
+      screen text from Orca's "system" messages
+    - bgo#626713: Orca fails to speak superscript symbols in the
+      correct language when Up/Down Arrow is used
+    - bgo#626197: Orca often fails to associate the correct
+      voice with the correct string when multiple voices are
+      present in an utterance
+    - bgo#626072: Speech Dispatcher can get stuck in a language
+      if the default voice has no language defined
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  6 15:05:18 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.6:
+  + General:
+    - bgo#596108 - Use XDG locations for storing configuration
+      files
+    - bgo#625737, bgo#625719, bgo#624640
+  + Gecko: bgo#616650, bgo#625458, bgo#624979
+  + OpenOffice.org: bgo#620109, bgo#624641, bgo#624628
+  + GCalctool: bgo#625729
+  + Eclipse: bgo#624243
+  + Updated translations.
+- Changes from version 2.31.5:
+  + General:
+    - bgo#373387 - Users should be able to lock/unlock the "Lock"
+      modifier even if Caps Lock is the Orca modifier
+    - bgo#536827 - Provide configuration GUI option to set the
+      Orca key/modifier
+    - bgo#624153, bgo#616585, bgo#623099, bgo#621535, bgo#623414,
+      bgo#622739
+  + Magnification:
+    - bgo#621330 - Setting screen position of magnifier reverts to
+     "Full Screen" upon closing prefs dialog (gs-mag)
+  + Gecko: bgo#623825, bgo#623561
+  + gnome-terminal: bgo#623897
+  + Updated translations.
+- Changes from version 2.31.4:
+  + General:
+    - bgo#606975 - Move to SpeechDispatcher for GNOME 3
+    - bgo#621020 - Fix DBus interface to GNOME Shell Magnifier
+    - bgo#591925 - Give scripts a means by which to filter out
+      events which are no longer relevant
+    - bgo#622755, bgo#622752, bgo#606978, bgo#622042, bgo#622120,
+      bgo#621800, bgo#619809, bgo#621675, bgo#611576, bgo#621000,
+      bgo#621325
+  + Gecko: bgo#622812, bgo#622811, bgo#622821, bgo#618484,
+    bgo#620299, bgo#621158
+  + Eclipse: bgo#620018, bgo#621873
+  + Chat:
+    - bgo#615489 - Migrate Pidgin script to new chat.py
+    - bgo#621469 - The chat-only-if-focused options aren't
+      respected when another script is active
+  + Updated translations.
+- Changes from version 2.31.3:
+  + General:
+    - bgo#618927 - Need to add Open TTS to speech servers
+    - bgo#615968, bgo#620671, bgo#619306, bgo#620320, bgo#620163,
+      bgo#619332
+  + OpenOffice: bgo#620205, bgo#619648, bgo#620156, bgo#619574,
+    bgo#620098, bgo#620097, bgo#620055, bgo#620045, bgo#619949,
+    bgo#613299
+  + Eclipse: bgo#619486
+  + Pidgin: bgo#619473
+  + Updated translations.
+- Changes from version 2.31.2:
+  + General: bgo#619046, bgo#619047, bgo#591034, bgo#618285,
+    bgo#618334, bgo#618464, bgo#618381, bgo#618311, bgo#618192,
+    bgo#609175, bgo#618165, bgo#618166
+  + New Commands:
+    - bgo#619383 - Need unbound keybinding for cycling through
+      key echo options.
+    - bgo#616820 - There is no command to present the list of
+      available Orca keyboard shortcuts.
+    - bgo#617420 - Need unbound keybinding for rotating through
+      punctuation levels.
+  + Braille: bgo#618728, bgo#618337, bgo#618291, bgo#618288,
+    bgo#533660, bgo#618800, bgo#617976
+  + Gecko: bgo#618981, bgo#619139, bgo#618863, bgo#618806,
+    bgo#618827, bgo#618801, bgo#618633
+  + OpenOffice: bgo#619101, bgo#538050, bgo#618790, bgo#618794,
+    bgo#617603
+  + Eclipse:
+    - bgo#618303 - orca needs a custom script for eclipse
+    - bgo#618589
+  + Rhythmbox: bgo#618774
+  + Clutter/Cally:
+    - bgo#616206 - Add new specific toolkit script CALLY
+  + Updated translations.
+- Changes from version 2.31.1:
+  + General: bgo#616848, bgo#617345, bgo#617204, bgo#617113,
+    bgo#617118, bgo#615969, bgo#616459, bgo#615966, bgo#614844,
+    bgo#614826, bgo#594152, bgo#614218
+  + Chat:
+    - bgo#557009 - Orca should provide access to Empathy
+    - bgo#615485 - Orca should support the Instantbird chat
+      client
+    - bgo#607663 - Create a script for Gajim
+    - bgo#589925 - Need to generalize chat support
+  + Firefox: bgo#616945, bgo#615304
+  + Java: bgo#616691, bgo#483222, bgo#616637, bgo#616618,
+    bgo#616587, bgo#483212, bgo#616464
+  + OpenOffice: bgo#364772
+  + Updated translations.
+- Move to brlapi instead of sbl for braille support:
+  + Add python-brlapi BuildRequires and Requires.
+  + Drop orca-bgo550717-brld.patch.
+- Add gnome-python-desktop BuildRequires and Recommends, since the
+  mouse review support requires wnck.
+- Add python-speechd Suggests, for speech-dispatcher support.
+- Update description.
+
+-------------------------------------------------------------------
+Mon Jun 14 15:16:53 CEST 2010 - vuntz@opensuse.org
+
+- Do not add categories to orca.desktop: they were already there
+  (GNOME) or completely wrong (Lockdown,
+  X-SuSE-ControlCenter-LookAndFeel)
+
+-------------------------------------------------------------------
+Thu Apr 29 14:33:15 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.1:
+  + bgo#615304 - Sanity check needed in the Gecko script's
+    updateBraille
+  + bgo#614218 - In orca.desktop.in file the --replace parameter
+    is not present in the exec line
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr  8 01:53:16 CEST 2010 - vuntz@opensuse.org
+
+- BuildRequires and Requires pyatspi instead of python-atspi: this
+  is a virtual name that is provided by the default at-spi stack,
+  so we can easily switch between the stacks without having to
+  change this package again.
+
+-------------------------------------------------------------------
+Mon Mar 29 21:13:38 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + bgo#612558 - Need to map gnome-calculator to the gcalctool
+    script. Note that gnome-calculator is symbolic link to
+    gcalctool.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  8 10:08:44 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.92:
+  + bgo#611321: keybindings.getInputHandler returns unbound
+    commands as potential keybinding candidates
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 21 17:19:58 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.91:
+  + General:
+    - Work on getting the regression tests working on Ubuntu.
+    - Update the gsmag.py experimental module to work with the
+      emerging magnifier D-Bus API. This is throwaway code and the
+      support is not fully working.
+    - bgo#593666 - Add structural navigation key for separators
+    - More work related to bgo#608149 - Orca's caret navigation for
+      Firefox is broken effective the 30th Sept build of FF 3.6.
+      This adds a new per-script settings for yelp and thunderbird
+      because they may use different versions of Gecko than firefox.
+    - bgo#609633 - Orca can lock up the desktop when exiting apps
+      if in flat review
+    - bgo#610134 - Missing liblouis information can cause Orca to
+      stop presenting
+    - bgo#610472 - Orca is redefining the built-in function
+      'next' in structural_navigation.py
+  + Firefox:
+    - bgo#608150 - Firefox 3.6's changes to the hierarchy of tables
+      needs to be handled by Orca
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 10 23:21:21 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.90:
+  + General:
+    - Fix for bgo#608186 - Man page needs live region keybinds
+    - Sanity check to address the traceback reported in bgo#608319.
+    - Fix for bgo#608680 - Please make orca's name translatable in
+      the about dialog
+  + Firefox:
+    - Updated regression tests to use local stylesheets
+    - Work on bgo#608149 - Orca's caret navigation for Firefox is
+      broken effective the 30th Sept build of FF 3.6
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 27 13:03:46 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.6:
+  + General:
+    - Removed some references to the string "CVS" in docs.
+    - Partial fix for bgo#431531 - Orca now speaks the unicode
+      value of a character when you press the "review current
+      character" key (e.g., KP_2) 3X.
+    - bgo#606962 - availability of gnome-speech (or lack thereof)
+      not handled well
+    - bgo#607042 - Orca does not always present sufficient context
+      in Where Am I
+    - bgo#607414 - When I try writing a message with Thunderbird
+      3.0, sometime the message edit box is not spokened after I
+      pressing a tab key after with the subject edit box
+    - bgo#607470 - Update script for Package Manager to include
+      sibling of status bar when presenting status bar contents
+    - Detection code for bgo#607847.  This attempts to find
+      problems with Orca keybindings conflicting or not working
+      with the X Server keymap.
+    - bgo#607901 - Sanity check needed in speakTextSelectionState
+    - bgo#607990 - Orca should present the appearance of the icon
+      for logged errors in packagemanager
+    - bgo#607988 - The messages spoken during a packagemanager
+      search should also be 'flashed' in braille
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 14 05:27:14 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 2.29.5:
+  + Fix for bgo#586445 - Provide an 'About' dialog
+  + Fix for bgo#592424 - Progress bar options in the Preferences
+    dialog cannot be translated properly for all locales
+  + Fix for bgo#593203 - Orca preferences does not fit in 1024x600
+    screen resolution
+  + Translation updates
+
+-------------------------------------------------------------------
+Wed Dec 23 15:27:13 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.4:
+  + General:
+    - bgo#601657 - Preferences cannot be saved.
+    - bgo#603520 - Need to add script mapping to check for Pidgin
+                   with a capital "P"
+    - bgo#604492 - Orca doesn't work well with Packagemanager's new
+                   Recent Searches feature
+    - bgo#604956 - Certain speech settings get improperly restored
+                   to default when setting up Orca initially
+    - bgo#604964 - Orca doesn't present the section headings in
+                   PackageManager's new "Featured Packages" start
+                   page
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec  9 00:13:48 CET 2009 - vuntz@opensuse.org
+
+- Changes pyatspi Requires to python-atspi. This was done in the
+  BuildRequires, but forgotten in Requires. We want to switch to
+  the new at-spi2 stack by default for now.
+
+-------------------------------------------------------------------
+Wed Dec  2 19:38:21 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.2:
+  + Note: as a result of work on bgo#598917, you must now use
+    "orca --replace" if you want the new Orca process to kill any
+    existing processes.
+  + General:
+    - Provisional support for the GNOME Shell Magnifier (a work in
+      progress)
+    - bgo#554688 - Navigation in gconf-editor doesn't work
+    - bgo#597159 - Orca does not provide access to the contents of
+      Packagemanager's HTML container
+    - bgo#597170 - Add support for Banshee script
+    - bgo#598917 - Orca Multiple Instances
+    - bgo#600372 - Orca handles text configuration input
+      incorrectly
+    - bgo#600539 - Man page improvements
+  + Updated translations.
+- Changes from version 2.29.1:
+  + General:
+    - bgo#594022 - cannot launch orca preferences - GError:
+      Duplicate object id 'renderer3'
+    - bgo#595117 - Need to customize the presentation of the
+      Packagemanager package list toggle
+    - bgo#596257 - Generator arguments are not passed along with
+      _generateImage()
+    - bgo#596340 - Exception if no selection is given when choosing
+      a language
+    - bgo#596364 - Create a script for the OpenSolaris Device
+      Driver Utility
+    - bgo#596384 - Orca sometimes fails to speak a newly-focused
+      table in certain OpenSolaris utilities
+    - bgo#596635 - gcalctool script will need to be updated for
+      2.29/2.30/3.0
+    - bgo#598797 - Gnome-Terminal and VTE dump core when using Orca
+  + OpenOffice:
+    - bgo#592917 - Orca doesn't present OOo Writer's Style combo
+      box correctly
+  + Firefox:
+    - Added script mapping for the latest Firefox.
+    - bgo#592634 - The Gecko script's handling of caret navigation
+      interferes when navigating editable messages in Thunderbird
+    - bgo#593520 - The Gecko script's getBottomOfFile needs to be
+      more efficient
+    - bgo#593594 - Orca says "blank" when Firefox returns a bogus
+      value for getTextAtOffset
+    - bgo#593596 - When the user Up Arrows to a line in Firefox
+      which begins with a nested paragraph, Orca fails to present
+      that line
+  + Updated translations.
+- Add BuildRequires and Requires for python-atspi, so we can use
+  the new accessibility stack. We could depend on pyatspi (which is
+  a virtual package that is provided by both python-atspi and
+  python-atspi-corba), but this will make the build service not
+  know what to do for the build.
+- Use python_sitearch.
+- Disable autoreconf call.
+
+-------------------------------------------------------------------
+Tue Sep 22 19:44:36 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + bgo#595117 - Need to customize the presentation of the
+    packagemanager package list toggle
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  9 16:03:43 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.27.92:
+  + General:
+    - bgo#594022 - cannot launch orca preferences - GError:
+      Duplicate object id
+    - Rename X-FullName to X-GNOME-FullName in desktop file
+  + StarOffice/OpenOffice:
+    - bgo#592917 - Orca doesn't present OOo Writer's Style combo
+      box correctly
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 25 16:14:07 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.27.91:
+  + General:
+    - bgo#591282 - add a switch to activate debug when executing
+      orca
+    - bgo#591289 - Need to remove duplicate speechTabLabel from
+      orca-setup.ui
+    - bgo#591382 - Need to add "word_char" to
+      text_attribute_names.py for localization
+    - bgo#591729 - Using cursor routing keys when the caret is
+      panned off the display can cause cursor to jump
+    - bgo#591734 - "No break space" character not spoken
+    - bgo#591805 - Orca speaks the "restrict progress bar update
+      to" label when the app preferences dialog loads
+    - bgo#591907 - "All" hard to translate
+    - bgo#592517 - Cursor position based upon uncontracted text
+      when typing text and contracted braille is enabled
+    - bgo#592741 - Fix .desktop file to meet GNOME goal
+  + OpenOffice/StarOffice:
+    - bgo#356060 - Provide access to tree item level and state in
+      OOo Navigator
+    - bgo#590682 - Orca does not always speak the Paths table of
+      the OOo Options dialog correctly
+    - bgo#592138 - Orca speaks the next character rather than the
+      next word when a paragraph boundary is crossed in Writer
+  + Evolution:
+    - bgo#592708 - Orca should attempt to recognize Evo's Setup
+      Assistant and present the (non-focused) prompts
+  + Firefox/Thunderbird:
+    - bgo#577899 - Strange cursor movements in Firefox
+    - bgo#584103 - Cursor problems when I compose a new message
+      with Thunderbird 3.0B3 pre
+    - bgo#591336 - Need a sanity check in Gecko's
+      searchForCaretLocation
+    - bgo#591351 - SayAll document function doesn't work correctly
+      on some webpages
+    - bgo#591592 - Orca does not speak and braille the appropriate
+      information when moving by headings on all sites
+    - bgo#591807 - Orca sometimes presents the previous line when
+      Home/End is pressed in Gecko
+    - bgo#591860 - Orca grinds to a halt when Ctrl+End is pressed
+      in a really long message in Thunderbird
+    - bgo#592383 - Orca gets stuck when it encounters a paragraph
+      in Firefox which begins with a multi-line-high character
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 10 14:38:15 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 2.27.90:
+  + bgo#480883 - User can pan right in braille indefinitely at the
+    end of a web page
+  + bgo#523693 - Positioning of the cursor when editing text
+  + bgo#570070 - Remove 'item' from spoken string that represents
+    position/index information
+  + bgo#574344 - Support for different progress bar "verbosity
+    levels" should be implemented
+  + bgo#576847 - Add ability to 'flash' braille messages
+  + bgo#578832 - Flash locking modifier key state in braille
+  + bgo#582318 - Pressing panning buttons on the braille display
+    should not interrupt speech
+  + bgo#582491 - Strange message table behavior with Evolution
+  + bgo#589610 - isupper should be used on unicode and not UTF-8
+    strings
+  + bgo#590219 - Incorrect text displayed with Orca quit
+    confirmation dialog when the user using non english locale
+  + bgo#590378 - configure.in and orca.spec.in need updating for
+    compile and runtime dependencies.
+  + bgo#590382 - Orca should have a script for packagemanager
+  + bgo#363820 - Orca should inform the user when text in given
+    cell in Calc is too wide for that column
+  + bgo#590267 - Thunderbird's rendering of smileys as named
+    paragraphs without accessible text causes Orca to speak the
+    tutorial message inappropriately
+  + Updated translations.
+- Add dbus-1-python-devel BuildRequires and dbus-1-python Requires.
+
+-------------------------------------------------------------------
+Tue Aug  4 16:00:38 CEST 2009 - vuntz@novell.com
+
+- Add liblouis-devel and python-louis BuildRequires.
+- Add python-gnome, python-gtk and python-louis Requires.
+- Add gnome-mag Recommends.
+
+-------------------------------------------------------------------
+Sat Aug  1 22:50:17 CEST 2009 - captain.magnus@opensuse.org
+
+- Update to version 2.27.5:
+  + Bugs fixed: bgo#582506, bgo#589362, bgo#434600, bgo#568696,
+    bgo#575784, bgo#578106, bgo#585049, bgo#585417, bgo#585948,
+    bgo#588471, bgo#588774, bgo#589244, bgo#589497, bgo#589504,
+    bgo#480883, bgo#586399, bgo#588910, bgo#589455
+  + Translation updates
+
+-------------------------------------------------------------------
+Sun Jul 19 23:41:15 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 2.27.4
+  + General
+    - bgo#400729 - Orca should provide support for general audio.
+      This adds some latent support for audio that gives people
+      something to experiment with as soon as bgo#570658 is done.
+    - Fix for bgo#561452 - Factor out included "louis" C extension.
+      New requirement: liblouis 1.6.2 and the liblouis 1.6.2
+      "louis" python module
+    - Fix for bgo#568696 - locus of focus changes when updating
+      list of files in nautilus.
+    - Much more work on bgo#570658 - Refactor the speech and
+      braille generators. This refactor is almost complete.
+    - More work on bgo#575614 - Please add speakable characters
+    - Fix for bgo#583199 - orca should not hang itself, or the
+      desktop when brltty is killed.
+    - Fix for bgo#584796 - Invoking the application specific
+      preferences for Orca when the Orca Quit dialog freezes speech
+    - Fix for bgo#585103 - Inconsistent behavior of flat review.
+    - Provisional work on bgo#585417 - Allow pauses to be inserted
+      in speech output.
+    - Fix for bgo#585897 - Pronunciation substitution can miss
+      words due to word delimiters
+    - Fix for bgo#586385 - When using where am I function with
+      Openoffice.org Calc, the spoken row and column information
+      are not marked for translation.
+    - Fix for bgo#586580 - Orca repeats the coordinates of Calc
+      cells.
+    - Fix for bgo#588403 - Implement ability to route the mouse
+      pointer without clicking.
+    - Fix for crash (no bug number) - Prevent stack trace when
+      contracted braille is being used. The trace would also kill
+      speech.
+  + OpenOffice/StarOffice:
+    - Fix for bgo#583811 - Doing a select all in OOo Writer causes
+      Orca to say "selected" for each paragraph.
+  + Thunderbird:
+    - Fix for bgo#584263 - When composing or reply to a message
+      with Thunderbird, the Ctrl+End key combination does not work.
+    - Fix for bgo#584837 - Find dialog fails to move caret to
+      desired location in Thunderbird.
+    - Fix for bgo#568658 - Sometimes Orca announces the wrong
+      subject in Thunderbird.
+  + Firefox:
+    - Fix for bgo#584540 - Orca should not duplicate images and
+      lines of text on facebook
+    - Fix for bgo#585871 - WhereAmI info in FF doesn't include link
+      text.
+    - Fix for bgo#587794 - In some pages I cannot read using the
+      Down Arrow key.
+    - Fix for bgo#588344 - Missed text on a page in Firefox.
+  + Updated translations.
+- Requires python-gstreamer-0_10. Orca does not start without it.
+
+-------------------------------------------------------------------
+Mon Jun 15 23:24:19 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.3:
+  + General:
+    - Much work on bgo#570658 - Refactor the speech and braille
+      generators. This represents a HUGE REFACTOR for Orca.
+    - bgo#583274 - portability for orca script (Thomas Klausner)
+    - bgo#585017 - Orca should speak the toggled state of flat
+      review mode
+    - bgo#585792 - i18n strings should use parameterized forms
+  + OpenOffice:
+    - Significant progress on bgo#574720 - Table Navigation Keys
+      for OpenOffice Writer. Structural navigation can be
+      enabled/disabled in OOo with Orca+Z. Alt + the arrows move by
+      cell, Alt + Home/End move to the beginning/ending of the
+      table respectively.
+    - bgo#583414 - Orca should announce when is at last cell on a
+      table in OOo.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 27 14:48:17 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.2:
+  + General:
+    - bgo#354471 - Text selection from braille input device.
+    - bgo#466841 - Orca doesn't announce items when Alt+Tabbing if
+      Compiz is enabled.
+    - bgo#511468 - Ekiga chat window accessibility problem.
+    - bgo#574221 - left-pane in Ekiga's preference box can't be
+      read at start-up.
+    - bgo#575614 - Please add speakable characters: → and ←.
+    - bgo#577977 - provide speech feedback for "repeat last find"
+      in Gedit.
+    - bgo#581372 - Move cursor routing and six dot key handling
+      from braille.py to script.  With the cleanup from bug #581532
+      to remove the custom brl module and move directly to the
+      brlapi module provided by BrlTTY/BrlAPI, we are now able to
+      handle BrlAPI commands much better.
+    - bgo#581532 - Remove brl module.  Orca now uses the BrlAPI
+      python bindings.
+    - bgo#582028 - Character pronunciations are not used when
+      navigating by line. This provides a fallback to the chnames
+      dictionary.
+    - bgo#582684 - Arrowing left/right across tree tables causes
+      whole row to be spoken.
+  + OpenOffice:
+    - Work on bgo#574720 - Table Navigation Keys for OpenOffice
+      Writer.
+  + Firefox:
+    - bgo#530784 - whereAmI info for list items in web content
+      needs to be improved.
+    - bgo#577900 - Blank lines in Firefox text areas incorrectly
+      spoken.
+  + Updated translations.
+- Disable orca-bgo550717-brld.patch since it needs to be rebased:
+  the code completely changed. Also remove the sbl Requires for
+  now.
+
+-------------------------------------------------------------------
+Tue May  5 19:53:55 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.1:
+  + General:
+    - Much work to handle the transition from subversion to git.
+    - Updated script writer's guide -- the document lives in
+      docs/doc-set/internals.html.
+    - Add setting to disable the pyatspi GIL idle handler:
+      useGILIdleHandler.  This change is made in response to
+      bgo#576954 where it appears as though the GIL idle handler in
+      pyatspi is causing consumers of pyatspi (e.g., Orca and
+      accerciser) to start consuming 100% of a CPU when the machine
+      is idle.  We're pretty sure the GIL handler is not necessary,
+      so this change gets rid of it for the 2.27.1 development
+      build of Orca.  If we see that users notice strange lock ups,
+      however, we may need to change things back.
+    - Adjust debug utilities to print to console and debug log.
+    - bgo#570952 - Orca should be able to run with AT-SPI/D-Bus.
+    - bgo#573535 - Orca should use the 16x16 pixels application
+      icon for Main and Preferences windows.
+    - bgo#575921 - When I working with the gcalctool application,
+      Orca says too lot of the result of the mathematic operations.
+    - bgo#576037 - Bind F1 key to help page.
+    - bgo#576438 - Provide state change information for radio
+      buttons that require you to press space to select them.
+    - bgo#577239 - Cannot navigate by line through multi-line HTML
+      list items in Firefox/Thunderbird when arrowToLineBeginning
+      is False.
+    - bgo#577330 - Detect whether speech dispatcher is installed or
+      not.
+    - bgo#577977 - provide speech feedback for "repeat last find"
+      in Gedit.
+    - bgo#577979 - Pressing Down Arrow from the middle of a
+      multi-line HTML list item initially moves to the beginning of
+      the line when arrowToLineBeginning is False.
+    - bgo#580423 - Remove deprecated libgnomeui dependency. Use
+      DBus org.gnome.SessionManager.Logout instead of
+      gnome.ui.master_client().request_save.
+    - bgo#580329 - Use show_uri() to display help window.
+  + OpenOffice:
+    - bgo#577245 - Present paragraph-style information in
+      OpenOffice.
+    - bgo#578072 - Orca does not always present text attributes in
+      braille in OOo documents.
+  + Updated translations.
+- Remove unneeded BuildRequires: gnome-python-desktop,
+  python-gnome.
+
+-------------------------------------------------------------------
+Tue Apr 14 17:05:34 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.1:
+  + General:
+    - bgo#575921 - When I working with the gcalctool application,
+      Orca says too lot of the result of the mathematic operations
+    - bgo#576037 - Bind F1 key to help page
+    - bgo#576438 - Provide state change information for radio
+      buttons that require you to press space to select them
+    - bgo#577330 - Detect whether speech dispatcher is installed or
+      not
+  + OpenOffice:
+    - bgo#577245 - Present paragraph-style information in
+      OpenOffice
+    - bgo#578072 - Orca does not always present text attributes in
+      braille in OOo documents
+  + Firefox/Thunderbird:
+    - bgo#577239 - Cannot navigate by line through multi-line HTML
+      list items in Firefox/Thunderbird when arrowToLineBeginning
+      is False
+    - bgo#577979 - Pressing Down Arrow from the middle of a
+      multi-line HTML list item initially moves to the beginning of
+      the line when arrowToLineBeginning is False
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 03:25:38 CET 2009 - vuntz@novell.com
+
+- Update to version 2.26.0:
+  + Updates to regression tests, mainly to work with Firefox 3.1
+    Beta 3.
+  + Firefox:
+    - Fix for bgo#570557 - (ARIA) List items not presented.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  6 14:04:59 CET 2009 - vuntz@novell.com
+
+- Update to version 2.25.92:
+  + General:
+    - bgo#387556 - Arrowing past last character at end of line in
+      Orca results in no speech
+    - bgo#419123 - Modified speech settings do not change
+      immediately in preferences dialog.
+    - bgo#517387 - Orca should not read password out in gdm login
+      window
+    - bgo#570390 - Spellcheck in evolution is badly broken
+    - bgo#572215 - Opening preferences launches magnifier
+    - bgo#572218 - Order of variables not changeable
+    - bgo#572294 - Need a sanity check in the default script's
+      locusOfFocusChanged
+    - bgo#573156 - Add a notify-osd script
+    - bgo#573535 - Orca should use the 16x16 pixels application
+      icon for Main and Preferences windows.
+  + Pidgin:
+    - bgo#572303 - Double-speaking of characters entered into
+      pidgin account creation
+  + Thunderbird:
+    - bgo#571812 - Orca does not read the next message in
+      thunderbird when deleting if first column does not change
+  + Firefox:
+    - bgo#570550 - (ARIA) UIUC Number Guessing Game Alert not
+      presented when it changes
+    - bgo#570567 - Where am I for link does not speak the link text
+    - bgo#570757 - Orca can get stuck when browsing pages with
+      embedded panels in FF 3.x
+    - bgo#573174 - Gecko script.py calls debug.printException when
+      there isn't an exception
+    - bgo#573303 - Support text attribute and spelling error
+      notification in FF.
+- Use makeinstall.
+- Do not create /usr/share/pixmaps without any reason.
+- Remove AutoReqProv: it's default now.
+
+-------------------------------------------------------------------
+Tue Feb 17 03:37:29 CET 2009 - vuntz@novell.com
+
+- Update to version 2.25.91:
+  + General:
+    - bgo#419123 - Modified speech settings do not change
+      immediately in preferences dialog.
+    - Additional fix for bug #569118 - Use C_() instead of Q_()
+      with context
+    - bgo#569343 - Speaking of indentation is misleading
+    - bgo#570387 - Clean up the speech tab of the preferences UI.
+  + Firefox:
+    - bgo#555540 - Add support for additional landmark roles
+    - bgo#561660 - For example with firefox 3.0, heading levels
+      incorrect sayed for hungarian grammatical
+    - bgo#568768 - Orca starts at the top of a newly-loaded page
+      rather than the specified fragment.
+    - bgo#570524 - (ARIA) Issues with Dojo combo box interaction.
+    - bgo#570532 - (ARIA) Alert text not brailled when navigating
+      it.
+    - bgo#570551 - (ARIA) UIUC Number Guessing Game Alert Dialog
+      not presented when it appears.
+    - bgo#571058 - (ARIA) Orca's caret navigation is kicking in
+      when it shouldn't be.
+    - bgo#571799 - (ARIA) Need to clean up braille presentation of
+      certain widgets.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  3 08:24:25 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.90:
+  + General
+    * bgo#553678 - orca can act badly at login time
+    * bgo#561548 - Orca locks up when closing some Pidgin
+      conversations.
+    * bgo#562060 - Speech should speak multi case strings
+      as words.  Adjust the regexes used.
+    * bgo#563128 - Text-based setup should offer option to
+      automatically launch Orca on login
+    * bgo#567428 -"readonly text" spoken when caret
+      changes line.
+    * bgo#568751 - Interaction with the punctuation
+      preferences can cause a hang
+    * bgo#568589 - braillegenerator adding image string
+      versus braille.Component for table cells
+    * bgo#568875 - Pressing "Apply" button in preferences
+      dialog causes autostart option to be checked
+    * bgo#569118 - Use C_() instead of Q_() with context
+      NOTE: you need to install SUNWgnu-gettext and rerun your
+      autogen.sh to work with this change on OpenSolaris.
+  + Firefox:
+    * bgo#537303 - Certain FF3 add-ons interfere with
+      Orca's ability to provide access to content.
+    * bgo#552965 - aria-valuetext ignored
+    * bgo#567984 - Structural navigation needs to consider
+      text within the document frame.
+    * bgo#568467 - aria-describedby text spoken twice via
+      Where Am I
+    * bgo#568550 - Add default keybindings for navigating
+      by landmarks
+    * bgo#568631 - Orca does not update the position for
+      same-page links which reference objects by name/id in Firefox
+      3.
+    * bgo#569346 - No speech for image-only ARIA buttons
+      and ARIA menu items
+    * bgo#569835 - Orca should support the ARIA haspopup
+      attribute
+  + Translation updates
+
+-------------------------------------------------------------------
+Sun Feb  1 18:11:30 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.5:
+  + bgo#535221 - Automatic shortcut information spoken
+  + bgo#562060 - Speech should speak multi case strings as words
+  + bgo#562327 - Desktop tutor message order problem
+  + bgo#563171 - src/orca/flat_review.py:getZonesFromText
+    should clip zones based on what text is visible
+  + bgo#563200 - Orca not spoken the character code 8222
+    character.  Added double low quote and single low quote to the
+    character names and punctuation table.
+  + bgo#567428 - "readonly text" spoken when caret changes
+    line (in evolution)
+  + bgo#566954 - ARIA toggle button state not handled correctly
+  + bgo#566955 - Need to remove extra whitespace from braille
+    output for Firefox 3.x.
+  + bgo#567167 - Orca sometimes (re)announces that the document
+    frame has just received focus in Firefox 3.x.
+  + bgo#567864 - Orca stops responding when flat review is used
+    in thunderbird message window and message is closed
+  + Partial fix for bgo#567984 -Structural navigation needs to
+    consider text within the document frame.
+  + Translation updates
+
+-------------------------------------------------------------------
+Tue Jan  6 08:08:31 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.4:
+  + Fix for bgo#354479 - Automatic presentation of "balloon" type
+    messages.
+  + Fix for bgo#564994 - Drop eel dependency
+  + Fix for bgo#565670 - recycling of gtk.CellRendererText()
+  + Fix for bgo#565886 - Extraneous caret-moved events emitted by FF
+    3.1 cause unnecessary braille updating.
+  + Fix for bgo#565944 - Missing whitespace when the end of line
+    braille indicator is followed by an image in FF 3.x.
+  + Fix for bgo#566073 - Orca provides the "tree level" for items in
+    submenus within Firefox 3.x.
+  + Fix for bgo#566180 - Orca inappropriately announces the name and
+    role of (un)ordered list items as part of the context in Firefox
+    3.2.
+  + Fix for bgo#566181 - Changes made to Firefox 3.2 caret-moved events
+    cause Orca to provide unreliable access during the use of the Find
+    toolbar.
+  + Fix for bgo#566361 - Orca inappropriately announces the name of
+    table cells as part of the context in Firefox 3.2.
+  + Translation updates
+
+-------------------------------------------------------------------
+Wed Dec 24 08:38:25 EST 2008 - mboman@suse.de
+
+- Update to version 2.25.3:
+  + Bugs fixed: bgo#563502, bgo#508675, bgo#551891, bgo#554002, bgo#560649,
+    bgo#561540, bgo#562877, bgo#556657, bgo#562532, bgo#495303, bgo#554616,
+    bgo#554616, bgo#554831, bgo#555055, bgo#556470, bgo#558516, bgo#559839,
+    bgo#560466, bgo#552344, bgo#554999, bgo#357545, bgo#434780
+  + Translation updates
+
+-------------------------------------------------------------------
+Thu Oct 16 06:31:41 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.1:
+  + Bugs fixed: bgo#552088, bgo#552343, bgo#553413, bgo#554002, bgo#554111,
+    bgo#368641, bgo#554673, bgo#556049, bgo#556321, bgo#546941, bgo#553877,
+    bgo#535178, bgo#527022, bgo#552887, bgo#554831, bgo#555466
+  + Translation updates
+
+-------------------------------------------------------------------
+Tue Sep 23 08:44:56 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.0:
+  + Bugs fixed: bgo#363793, bgo#403760, bgo#552344, bgo#356041, bgo#552350,
+    bgo#518945, bgo#535188, bgo#542833, bgo#546815, bgo#547496, bgo#547573,
+    bgo#549128, bgo#551626, bgo#553075
+  + Translation updates
+
+-------------------------------------------------------------------
+Sat Sep 13 13:58:10 CEST 2008 - vuntz@novell.com
+
+- Merge the following change by marco@suse.de from autobuild:
+  + added orca-bgo550717-brld.patch patch to have brld support
+    out-of-the-box
+    see also http://bugzilla.gnome.org/show_bug.cgi?id=550717
+  + added sbl as a requirement
+
+-------------------------------------------------------------------
+Wed Sep 10 17:59:24 CDT 2008 - maw@suse.de
+
+- Update to version 2.23.92:
+  + Bugs fixed: bgo#527022 (partial fix), bgo#550249, bgo#515923,
+    bgo#550137, bgo#551077, bgo#551159, bgo#541605, and bgo#550873
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 02 20:23:23 CEST 2008 - mboman@novell.com
+
+- Update to version 2.23.91:
+  + Bugs fixed: bgo#540937, bgo#547774, bgo#548380, bgo#548382,
+    bgo#523416, bgo#523452, bgo#549664, bgo#547477, bgo#549529
+  + Updated translations
+
+-------------------------------------------------------------------
+Tue Aug 26 20:23:23 CEST 2008 - mboman@novell.com
+
+- Update to version 2.23.90:
+  + Use DBus only if DBUS_SESSION_BUS_ADDRESS is defined so as to avoid
+    unexpected launching of a DBus daemon
+  + Bugs fixed: bgo#536985, bgo#540123, bgo#540187, bgo#546277, bgo#546660,
+    bgo#547938, bgo#547895, bgo#535178, bgo#527819, bgo#535183, bgo#542833,
+    bgo#546355, bgo#546895, bgo#547345
+  + Updated translations
+
+-------------------------------------------------------------------
+Sat Aug 09 20:23:23 CEST 2008 - captain.magnus@opensuse.org
+
+- Update to version 2.23.6:
+  + Fix for bug bgo#536985, bgo#542714, bgo#545342, bgo#429390, bgo#544122,
+    bgo#544197, bgo#544771, bgo#545623, bgo#534431, bgo#545946, bgo#520596,
+    bgo#525656, bgo#533095, bgo#534022, bgo#536825, bgo#536985, bgo#538058,
+    bgo#538729, bgo#538773, bgo#540937, bgo#541094, bgo#541437, bgo#542260,
+    bgo#542262, bgo#542367, bgo#542714, bgo#542719, bgo#543775, bgo#435623,
+    bgo#538053, bgo#538056, bgo#538064, bgo#538835, bgo#519515, bgo#530783,
+    bgo#533109, bgo#535023, bgo#536455, bgo#537839, bgo#539075, bgo#540187,
+    bgo#542324, bgo#542927, bgo#543496, bgo#533042, bgo#536451, bgo#536455,
+    bgo#540039, bgo#540407, bgo#540833, bgo#541018, bgo#543024
+  + Updated translations
+
+-------------------------------------------------------------------
+Mon Jun 23 20:23:23 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.4:
+  + Bugs fixed: bgo#487585, bgo#397306, bgo#464194, bgo#517532,
+    bgo#529655, bgo#530368, bgo#435585, bgo#521450, bgo#537851,
+    bgo#507922, bgo#535192, bgo#537425, bgo#531806, bgo#371637,
+    bgo#448817, bgo#463646, bgo#520494, bgo#524998, bgo#534383,
+    bgo#535747, bgo#516565, bgo#533499, bgo#511561, bgo#515665,
+    bgo#527959, bgo#528644, bgo#532069, bgo#533125, bgo#534393,
+    bgo#535149, bgo#517048, bgo#426010, bgo#517127, bgo#517387,
+    bgo#529145, bgo#517736, bgo#522797, bgo#525831, bgo#528147,
+    bgo#528507, bgo#528797, bgo#530541, bgo#531378, bgo#532376,
+    bgo#474673, bgo#523731, bgo#529784, bgo#530766, bgo#517505,
+    bgo#518507, bgo#518518, bgo#518762, bgo#518914, bgo#519901,
+    bgo#520611, bgo#520974, bgo#522657, bgo#523082, bgo#523147,
+    bgo#523309, bgo#523268, bgo#523642, bgo#523712, bgo#525348,
+    bgo#525831, bgo#525592, bgo#525649, bgo#519936, bgo#525644,
+    bgo#525656, bgo#517502, bgo#523018, bgo#491837, bgo#512103,
+    bgo#512503, bgo#515804, bgo#517277, bgo#518893, bgo#519416,
+    bgo#519478, bgo#519587, bgo#519931, bgo#520029, bgo#520612,
+    bgo#520760, bgo#523480, bgo#523759, and bgo#526366
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr 11 17:39:14 CEST 2008 - maw@suse.de
+
+- Update to version 2.22.1:
+  + General:
+    * Much work on regression tests.
+    * Bugs fixed: bgo#520494, bgo#523082, bgo#523147, bgo#523642,
+      bgo#523712, and bgo#525656
+  + OpenOffice:
+    Bug fixed: bgo#523018
+  + Firefox:
+    * Bugs fixed: bgo#519478, bgo#519587, bgo#520029, bgo#520760,
+      bgo#523480, and bgo#523759
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 14 05:51:03 CET 2008 - maw@suse.de
+
+- Update to version 2.22.0:
+  + General:
+    * Fix for bgo#517505 - Orca doesn't present new active descendant
+      when deleting from the top of a list
+    * Fix for bgo#518762 - When using gnome-terminal with multiple tabs,
+      the name on the tab is not announced when switching between tabbed
+      windows
+  + OpenOffice:
+    * Fix for bgo#517502 - Orca should not speak the previously focused
+      menu item when arrowing across the menu bar in OpenOffice
+  + Firefox:
+    * Fix for bgo#491837, Implement Gecko.py 'go to' functions with
+      Collections
+    * Fix for bgo#515804 - Whitespace needs to be removed from speech and
+      braille contexts in FF3
+    * Fix for bgo#517277 - Orca should not get stuck while browsing
+      articles at espn.com
+    * Fix for bgo#518893 - Extra verbosity in web pages
+    * Fix for bgo#519931 - Orca does not read certain news feeds
+      correctly
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  5 01:29:43 CET 2008 - maw@suse.de
+
+- Update to version 2.21.92:
+  + General:
+    * Fix for bgo#419136 - Planner toggle button in main window not
+      accessible
+    * Fix for bgo#486897 - Where Am I doesn't present row/column headers
+    * Fix for bgo#513238 - Flat review is broken in Evolution
+    * Fix for bgo#516321 - Caps lock not correctly reporting the state
+      when toggled
+    * Workaround for bgo#517026 - crash in Open Folder: Deleting the last
+      file in a directory
+  + OOo:
+    * Fix for bgo#515651 - Navigation of cells in oocalc now says "not
+      selected"
+  + Firefox:
+    * Fix for bgo#508163 - Orca tends to be slow in the vicinity of combo
+      boxes in Firefox
+    * Fix for bgo#511885 - Support relevant and channel live region
+      properties
+    * Fix for bgo#512261 - We should implement better support for the FF
+      A11y extension
+    * Fix for bgo#515263 - ARIA tooltips should respect presentToolTips
+      setting
+    * Fix for bgo#512503 - Remove "object:visible-data-changed" listener
+      from Gecko.py
+    * Fix for bgo#515571 - FF3 form field structural navigation should
+      handle form fields that are not in forms
+    * Fix for bgo#516121 - Orca stalls on barackobama.com when navigating
+      by heading in FF3
+    * Fix for bgo#516174 - FF line navigation needs to be more
+      accurate. (We know these aren't all the issues, but hopefully this
+      fix will resolve many of them.)
+    * Fix for bgo#517521 - Gecko.py is throwing exception in onCaretMoved
+    * Fix for bgo#517336 - Spaces interfere with Orca's ability to get
+      the line contents
+    * Fix for bgo#517371 - Orca gets stuck when browsing humanware.ca in FF3
+    * Fix for bgo#517716 - Live regions being output on listitem changes
+      for Bugzilla
+    * Fix for bgo#517752 - (ff3) more orca+left/right inconsistency
+    * Fix for bgo#518502 - Orca doesn't always speak wrapping
+      announcement for link structural nav in FF3
+  + Updated translations.
+
+
+-------------------------------------------------------------------
+Thu Feb 21 15:42:47 CET 2008 - maw@suse.de
+
+- Fix dumb build error.
+
+-------------------------------------------------------------------
+Wed Feb 20 18:32:43 CET 2008 - maw@suse.de
+
+- Update to version 2.21.91:
+  + Bugs fixed: bgo#133275, bgo#354470 (partial), bgo#434654,
+    bgo#440490, bgo#486908, bgo#512608, bgo#512639, bgo#512847,
+    bgo#363830, bgo#462883, bgo#506360, bgo#511354, bgo#511389,
+    bgo#512236, bgo#512303, bgo#513217, bgo#513425, bgo#514427,
+    and bgo#515652
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb  1 16:48:12 CET 2008 - maw@suse.de
+
+- Update to version 2.21.90:
+  + Bugs fixed: bnc#432308, bnc#482294, bnc#503874, bnc#506874,
+    bnc#508682, bnc#510019, bnc#511447, bnc#510207, bnc#483023,
+    bnc#505742, bnc#506360, bnc#509394, bnc#509482, bnc#509588,
+    bnc#509731, bnc#509809, bnc#510478, bnc#511118, bnc#511893,
+    bnc#512270, bnc#354462, bnc#463867, bnc#463881, bnc#485522,
+    bnc#486895, bnc#489504, bnc#504356, bnc#504384, bnc#505293,
+    bnc#505306, bnc#508679, bnc#508777, bnc#490317, bnc#507886,
+    bnc#414762, bnc#480881, bnc#500016, bnc#502084, bnc#504742,
+    bnc#504785, bnc#505102, bnc#506360, bnc#508624, bnc#508784,
+    bnc#509068, bnc#452316, bnc#463881, bnc#464705, bnc#501414,
+    bnc#503965, bnc#451988, bnc#466251, bnc#473009, bnc#501447,
+    bnc#491756, bnc#486726, bnc#486970, bnc#496846, bnc#503527,
+    bnc#486726, bnc#491576, bnc#407647, bnc#472665, bnc#486899,
+    bnc#486901, bnc#486909, bnc#486971, bnc#486976, bnc#487189,
+    bnc#500193, bnc#462883, bnc#468551, bnc#469718, bnc#435201,
+    bnc#469083, bnc#481488, bnc#486918, bnc#486969, bnc#486972,
+    bnc#487226, bnc#487514, bnc#489875, bnc#489913, bnc#489928,
+    bnc#491417, bnc#494651, bnc#485903, bnc#490266, bnc#490568,
+    bnc#462984, bnc#473699, bnc#474958, bnc#483018, bnc#484428,
+    bnc#484499, bnc#489604, bnc#448848, bnc#467664, bnc#486726,
+    bnc#487230, bnc#488391, bnc#489797, bnc#472345, bnc#480501,
+    bnc#478204, bnc#480264, bnc#376517, bnc#435852, bnc#480278,
+    bnc#489490, and bnc#490623
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 19 01:26:18 CEST 2007 - mauro@suse.de
+
+- Bugfixes for b.g.o bugs #472962, #473420, #473422, #473991,
+  #475277.
+
+- Make sure to return pronunciations in script.py overridePronunciations.
+
+- Fix problem in nautilus.py where the util.xxx module methods were
+  still being referenced rather than using the self.xxx stuff.
+
+- Firefox:
+  + Fix for bug 468633 - No output when tabbing to ARIA slider.
+  + Fix for bug 472345 - Cannot arrow out of entries in FF3 if text
+  is inserted via javascript.
+
+- OpenOffice:
+  + Fix for bug 469367 - Orca StarOffice script not properly announcing
+  (potential) indentation in OOo Writer.
+
+-------------------------------------------------------------------
+Mon Sep 10 20:44:29 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.92:
+  + Bugs (bugzilla.gnome.org) fixed: #456970, #471220, #472377,
+    #472407, #469686, #470332, #471537, #471955, and #472029 (in
+    progress)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 31 18:21:08 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.91:
+  + Bugs (bugzilla.gnome.org) fixed: #464714, #461620, #460284,
+    #457988, #462650, #462475, #461719, #455308, #364518, #464855,
+    #470332, #468765, #466764, #469615, #468786, #468098, #467563,
+    #467425, #466725, #466500, #465989 (partially), #465087,
+    #446878, and #356068
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug  8 18:57:11 CEST 2007 - maw@suse.de
+
+- Split off a -lang subpackage.
+
+-------------------------------------------------------------------
+Thu Aug  2 18:05:17 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.6:
+  + Bugs (bugzilla.gnome.org) fixed: #364518, #409731, #415061,
+    #439191, #449964, #455230, #456296, #459080, #460215, #456446,
+    #459618, #460774, and #458142
+  + Updated translations
+- Use %fdupes
+- Remove empty %post.
+
+-------------------------------------------------------------------
+Tue Jul 17 18:58:23 CEST 2007 - mauro@suse.de
+
+- Update to version 2.19.5
+- The string module in orca.py was removed since wasn't being used.
+- Bugfixes for bug #449964, #382601, #400720, #447191, #400720
+
+-------------------------------------------------------------------
+Wed May  9 15:02:55 CEST 2007 - pgajdos@suse.cz
+
+- removed gnome-icon-theme from Requieres and BuildRequieres
+  [#247450]
+
+-------------------------------------------------------------------
+Wed Apr 11 13:26:04 CDT 2007 - maw@suse.de
+
+- Update to version 2.18.1, which
+- Only contains updated translations (ca, da, de, dz, es, gl, gu,
+  nb, and tr).
+
+-------------------------------------------------------------------
+Mon Apr  9 12:57:32 CDT 2007 - maw@suse.de
+
+- Update to version 2.18.0
+- Invalid entries in the .desktop file were removed
+- Improved man pages (b.g.o #414981).
+
+-------------------------------------------------------------------
+Mon Mar 12 09:11:03 CST 2007 - maw@suse.de
+
+- Fix silly build error - don't package %{_datadir}/pixmaps/*.png,
+  which doesn't even exist.
+
+-------------------------------------------------------------------
+Fri Mar  9 15:57:23 CST 2007 - maw@suse.de
+
+- Update to version 2.17.91.
+  * Fix for bug 385949: Better handling of comboboxes in Firefox 3.0.
+  * Work on bug 363830: announce when bold, underline, italics, and
+    the various alignment toggle buttons change state in OpenOffice.
+    (Thanks for the fix, Joanie!)
+  * Fix for bug 397787: Orca now handles if OpenOffice recovery mode
+    better.
+  * Fix for bug 405541: provide better handle brailling of message
+    summaries in Thunderbird message summary list.
+  * Fix for bugs 403767 and 405562: provide better support for
+    autocompletion components in Thunderbird.
+  * Fix for bug 398531: handle the speech preferences tab page better.
+    presses "Quit" or "Preferences" button in Orca Preferences
+    window.  (Thanks for testing, Joanie!)
+  * Work on bug 400763: much improvement to the responsiveness after
+    starting an update from the update manager.
+  * Fix for bugs 400766 and 348464: better handling of autocomplete
+    entries in GTK widgets as used by the "Run..." dialog and Evolution.
+  * Continued work on Gecko.py script for Firefox 3.0.  We're getting
+    there step by step, and it requires work both inside Firefox 3.0
+    and inside Orca.
+  * Updated to support latest BrlAPI.  Orca should now work various
+    versions of BrlTTY and BrlAPI.
+- countless other fixes between 2.17.90 and 1.0.0
+
+-------------------------------------------------------------------
+Fri Mar  9 11:29:26 CET 2007 - sbrabec@suse.cz
+
+- Removed obsolete hicolor icon symlink (#248676).
+
+-------------------------------------------------------------------
+Fri Jan 12 10:44:31 CET 2007 - sbrabec@suse.cz
+
+- Build with gnome-mag and gnome-speech support.
+
+-------------------------------------------------------------------
+Fri Dec 22 14:28:11 CST 2006 - maw@suse.de
+
+- Move to /usr.
+
+-------------------------------------------------------------------
+Fri Oct 20 15:34:43 CEST 2006 - jpr@suse.de
+
+- Recommend gnome-speech so we have a speech engine available
+
+-------------------------------------------------------------------
+Sat Sep 23 17:05:01 CEST 2006 - aj@suse.de
+
+- Fix build with python 2.5.
+
+-------------------------------------------------------------------
+Fri Sep 15 00:22:00 CEST 2006 - jhargadon@suse.de
+
+- update to version 1.0.0
+- Updates to User's Guide, Architecture, Requirements, and Script Writing
+  Guide
+- Fix for bug 353467: run in a terminal if we detect text setup will
+  be used
+- Fix for bug 353476: apply better fallback algorithm to find a
+  working synthesis engine
+- Fix for bug 352578: ensure that checking/unchecking speech in the
+  configuration GUI does the appropriate thing
+- Refixed bug 350854 and fix for bug 353268: do not double read lines
+  in OpenOffice and also make sure focus is properly handled in gedit
+  after a window maximize.
+- Fix for bug 353237: prevent COMM_FAILURE messages when trying to get
+  the object state
+- Fix for bug 352866: add "-q" and "--quit" options to orca script to
+  allow one to more easily kill orca
+- Fix for bug 352240: prevent wrong object report for Java
+  applications in case of different event ordering
+- Fix for bug 352257: improved isSameObject() function
+- Fix for bug 352254: better handling of expand/collapse events for the
+  Java platform
+- translation updates
+
+-------------------------------------------------------------------
+Tue Sep 12 15:04:29 CEST 2006 - rodrigo@suse.de
+
+- Moved Python modules to /usr to make it work.
+
+-------------------------------------------------------------------
+Fri Sep  8 14:51:29 CEST 2006 - rodrigo@suse.de
+
+- Initial submission from GNOME 2.15.x
+

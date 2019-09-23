@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Mon Feb 26 12:44:51 UTC 2018 - opensuse@dstoecker.de
+
+- New systems requires explicit libnsl-devel for building
+
+-------------------------------------------------------------------
+Sun Jul 20 07:45:54 UTC 2014 - coolo@suse.com
+
+- regenerate spec file to use perl macros
+ - fixes build in factory
+
+-------------------------------------------------------------------
+Thu Feb 13 16:19:04 UTC 2014 - opensuse@dstoecker.de
+
+- created
+

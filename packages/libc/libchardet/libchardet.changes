@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Fri May 27 13:25:24 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.0.5:
+  * Fix EUC extended area detection.
+  * Fix control character on US-ASCII detection.
+  * Fix wrong Danash ISO-8859-15 detection.
+  * Fix binary safe problems.
+    + replace detect to detect_r;
+    + replace detect_handledata to detect_handledata_r.
+  * Fix separate model directory
+  * Improve single-byte charset detection confidence algorithm.
+  * Update model of Greek, Hungarian and Thai.
+  * New language model (Arabic, Danish, Esperanto, German, Spanish,
+    Turkish, Vietnamese).
+  * Fix wrong macro in manpages.
+
+-------------------------------------------------------------------
+Sun Fec  8 16:29:10 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

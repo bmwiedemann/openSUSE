@@ -1,0 +1,855 @@
+-------------------------------------------------------------------
+Sat Aug 24 15:42:42 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2019.08.13
+  * mkisofs: The struct attrinfo in apple.h has been enhanced by the
+    struct members objid_low, objid_high, rsrc_length.
+
+-------------------------------------------------------------------
+Mon Aug 12 16:46:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2019.07.22
+  * The smake man page now mentions -N,-T,-u,-w,-j,-m-R
+  * smake: fixed a potential crash when printing current directory
+  * smake: implemented the -C option for gmake compatibility
+
+-------------------------------------------------------------------
+Thu Jul 11 17:42:58 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable LTO: mkisofs makes weird memory accesses otherwise
+  (boo#1141188).
+
+-------------------------------------------------------------------
+Fri Jun 14 07:18:30 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2019.06.13
+  * cdrecord: The manpage now lists all supported media types and
+    which media types are preferred over others.
+  * star 1.6.1: fixed a bug in the FIFO code where star reported "star:
+    Implementation botch: with FIFO_MEOF" as the tar side of the
+    FIFO did sometimes not wait for the FIFO_IWAIT state when
+    called as "star -multivolume -tv f=... f=... ..."
+  * bsh: When expanding file names, the directory entries "." and
+    ".." are now skipped and not part of the results. This is to
+    make bsh to behave similar to the Bourne Shell with respect
+    to globbing.
+
+-------------------------------------------------------------------
+
+Sun Jun  2 07:30:57 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2019.05.28
+  * SCCS: man page and help text updates
+
+-------------------------------------------------------------------
+Thu May  2 19:08:02 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2019.04.29
+  * cdda2wav: The read Fallback-C2 funcion that tries to read
+    with the better Sony SCSI commands did not correctly fall
+    back to the MMC-C2 read function, which has been fixed.
+  * readcd: a new option spt=# allows to limit the number of
+    sectors per transfer for testing purposes.
+  * Bourne Shell: "trap -- ..." now correctly handles "--" even
+    if the next argument is "-".
+  * Bourne Shell: trap now supports a new option -p that allows
+    to restore the whole trap state.
+
+-------------------------------------------------------------------
+Mon Apr  1 10:52:01 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2019.03.29
+  * Bourne Shell: "readonly", "export" and "local" now expand
+    the tilde.
+  * star: several forgotten fields of the tar header now support
+    base-256 encoding.
+  * star: support for new BSD and Linux file flags has been added.
+  * star: The old star format no longer causes a warning when
+    plain files from *BSD are imported on a UNIX with contiguous
+    minor device bits.
+  * star: Support for the "lzma" and "freeze2" compression has
+    been added.
+
+-------------------------------------------------------------------
+Sat Mar 16 08:49:52 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add Conflict markers for file-based conflicts identified
+  by repo-checker.
+
+-------------------------------------------------------------------
+Fri Mar 15 10:09:54 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2019.03.11
+  * star: Support for base-256 numbers in timestamps and UID/GID
+    has been added. This has been planned in the 1990s already,
+    when star invented the base-256 coding, but it has been
+    forgotten in favor of the POSIX.1-2001 enhanded archive
+    headers. Now it seems that GNU tar that copied the format
+    from star uses it for timestamps and UID/GID and we need to
+    implement it in order to get archive compatibility.
+  * star: star did print archives with illegal 32 byte user/group
+    names (where the NUL terminator is missing) "correctly", when
+    in list mode but it used only the first 31 bytes when
+    extractig such archives.
+  * star: Creating multi volume archives without using the FIFO
+    did dump core.
+  * star: Creating multi volume archives without POSIX.1-2001
+    support no longer sets POSIX.1-2001 extension flags for the
+    volume header.
+
+-------------------------------------------------------------------
+Wed Feb 20 18:42:13 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2019.02.18
+  * star 1.6: Two more FIFO problems (mainly visible on Linux)
+    have been fixed.
+
+-------------------------------------------------------------------
+Thu Jan 24 09:08:27 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2019.01.22
+  * star: fixes for a hang and pipe reading issues
+  * star: The debug printing for the FIFO has been enhanced to
+    print more information from the FIFO control structure to
+    debug problems like the ones mentioned above.
+  * star now ignores SIGPIPE.
+
+-------------------------------------------------------------------
+Thu Dec  6 18:38:56 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2018.12.06
+  * sccs-prs now prints the SCCS v6 initial path using the new
+    keyword :Gp:.
+  * sccs-prs now prints the SCCS v6 unified random using the new
+    keyword :Gr:.
+  * sccs: libcomobj: A parser for the SCCS v6 flags has been added.
+  * sccs: libcomobj: A parser for SCCS v6 global meta data has
+    been added.
+- Package sccs.
+
+-------------------------------------------------------------------
+Sun Nov 25 16:42:28 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Package bsh, pfbsh symlinks.
+
+-------------------------------------------------------------------
+Fri Nov 23 19:09:47 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2018.11.22
+  * include/schily/getopt.h: A new include file has been created
+    for our libgetopt that includes an enhanced getopt()
+    implementation.
+  * libschily: resolvenpath() did not work as expected when some
+    path names do not exist. A stat() call that should check
+    whether we already reached the "/" directory caused a return
+    (-1) even with (flags & RSPF_EXIST) == 0. This bug caused
+    star to classify more symlinks as dangerous than needed.
+- Remove schily-linker.diff (resolved upstream)
+
+-------------------------------------------------------------------
+Thu Nov  8 09:32:40 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim SELINUX from schily-2018-05-25_star_configuration.patch,
+  it is already determined by %configure now.
+
+-------------------------------------------------------------------
+Tue Nov  6 16:33:45 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2018.10.30
+  * bsh/Bourne Shell/star: a very long path name could cause a
+    core dump with a "chdir()" operation in some cases.
+  * star: "star -c H=exustar -pax-o binary" now correctly results in
+    unencoded strings for uname/gname/path/linkpath.
+  * star: a new option -no-secure-links allows to disable the secure
+    default behavior.
+  * Changes to libfind options like -mount/-xdev and -perm;
+    for details, see the AN-* files in the documentation directory.
+  * New libfind primaries -chatime, -chctime, -chfile, -chown, etc.
+    see AN-* for details.
+  * star: Added "volatile" to a selection of struct members in
+    struct m_head. This should help to avoid specific
+    optimization from newer compilers that could cause problems
+    with the synchronization of the fifo.
+  * star: make sure that "star -c" results in a non-zero exit
+    code if it is interupted by Ctrl-C.
+  * star: Added new code to allow to debug a hanging FIFO.
+  * star: the path name length and the link name length are now
+    set from the POSIX 2001 extended tar headers in case that a
+    name appears in that extended meta data.
+- Removed schily-2018-05-25_star_lock.patch (no longer needed).
+- Added schily-linker.diff.
+- Add smake and ved subpackages.
+
+-------------------------------------------------------------------
+Wed Aug 29 07:57:23 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2018.08.24
+  * star: SELinux support has been added.
+  * star: dotdot atacks are now also detected if they are based
+    on DOS filesystem semantics.
+  * star: Added a new check for the exit code of the compress
+    program.
+  * star: A hard EOF on input now results in a non-zero exit code.
+  * star: Now defaults to use "ssh" for the remote tape interface.
+  * star: There is now a way to make -no-fsync the default
+    behavior to avoid slow operation on platforms with slow
+    buffer cache.
+  * librmt: added a way to configure the remote shell and the
+    remote tape server path.
+  * star: support for unlimited file path length.
+  * libschily: a new set of gt*() and fgt*() functions with
+    gettext() support have been added.
+  * Bourne Shell: avoid a core dump with missing HOME.
+  * libfind: added a new primary "-call" that allows to call back
+    into the program instead of calling exec().
+  * libfind: new primaries -newerat, -newermt, -newerct.
+- Remove schily-2018-05-25_star_detect_gzip_failures.patch,
+  schily-2018-05-25_star_use_ssh_by_default.patch,
+  schily-2018-05-25_star_no_fsync.patch,
+  schily-2018-05-25_star_selinux.patch
+  (merged upstream)
+- Remove schily-2018-05-25_star_mk.patch (no longer needed)
+
+-------------------------------------------------------------------
+Wed Aug 29 07:45:44 UTC 2018 - jengelh@inai.de
+
+- Drop Conflicts against cpio-mt/tar-rmt, since update-alternatives
+  is used as an arbitraring mechanism.
+- Add Provides: mt, rmt.
+
+-------------------------------------------------------------------
+Sun Aug 19 06:27:37 UTC 2018 - bwiedemann@suse.com
+
+- Run make config before build instead of in the middle,
+  to have reproducible builds (boo#1102408)
+
+-------------------------------------------------------------------
+Wed Jun  6 20:23:02 UTC 2018 - jengelh@inai.de
+
+- Remove schily-2018-05-25_star_bufferoverflow.patch
+  (the bug is long gone, the patch has no effect)
+
+-------------------------------------------------------------------
+Tue Jun  5 08:21:16 UTC 2018 - kstreitova@suse.com
+
+- add patches from the star package
+  * schily-2018-05-25_star_configuration.patch
+  * schily-2018-05-25_star_no_fsync.patch
+  * schily-2018-05-25_star_lock.patch
+  * schily-2018-05-25_star_detect_gzip_failures.patch
+  * schily-2018-05-25_star_bufferoverflow.patch
+  * schily-2018-05-25_star_use_ssh_by_default.patch
+  * schily-2018-05-25_star_mk.patch
+  * schily-2018-05-25_star_selinux.patch
+- add missing BuildRequires for star:
+  * autoconf (because of selinux patch)
+  * libacl-devel
+  * libattr-devel
+  * libselinux-devel
+  * libtool
+- install README-FIRST (as schily-rmt) documentation
+- add noreplace for %_sysconfdir/default/rmt and
+  %_sysconfdir/default/star
+- move srmt from sbindir to bindir
+- do not ship star_sym and suntar
+
+-------------------------------------------------------------------
+Mon May 28 12:20:09 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2018.05.25
+  * star: user name, group name, path and linkpath are now
+    automatically added to the POSIX.1-2001 extended header in
+    case that they include non-ASCII characters (outside the
+    7-bit range).
+- Remove gccwarns.diff (fixed upstream), gcc48wa.diff (we no
+  longer have gcc-4.8)
+
+-------------------------------------------------------------------
+Thu May 17 14:06:18 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2018.05.17
+  * smake: Now using TYPE_MAXVAL(time_t) in gnewtime() instead of
+    the method from 1996, to work around a problem with gcc-8.1
+    and clang-6.0.
+  * mkisofs: The link count computation did incorrectly count all
+    directory entries for large (multi extent) files. This
+    resulted in a link count that was "real number" + (sizeof
+    file / 2GB)
+  * mkisofs: File meta data for UDF directories that refer to a
+    Rock Ridge relocated directory had been emitted as all
+    zeroes.
+  * star: nanosecond timestamp support
+  * libfind: nanosecond timestamp support
+  * star: Added a new archive format "epax". This is the same as
+    "pax", but it always includes a POSIX.1-2001 extended header
+    with timestamps with nanosecond resolution.
+
+-------------------------------------------------------------------
+Wed May 16 16:38:42 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2018.05.02
+  * bsh: fixed a NULL deref when the file content was "#!"
+  * bsh: Avoid a coredump from expressions like
+    "$2222222222222222222" that cause an integer overflow while
+    converting the number.
+  * mkisofs: fixed crash during Joliet info creation
+  * Better support for Address Sanitizer
+  * (s)patch: CVE-2018-1000156 was fixed
+  * star: star -diff is now able to compare nanoseconds in
+    timestamps.
+- Drop mkisofs-j-crash.diff (fixed upstream)
+- Add gccwarns.diff to address some undefined behavior.
+
+-------------------------------------------------------------------
+Tue May  8 15:53:47 UTC 2018 - jengelh@inai.de
+
+- Add update-alternatives handling for (s)rmt and (s)mt
+
+-------------------------------------------------------------------
+Tue May  8 14:48:48 UTC 2018 - jengelh@inai.de
+
+- Add spax and star subpackages
+
+-------------------------------------------------------------------
+Wed Apr 11 19:03:52 UTC 2018 - jengelh@inai.de
+
+- Add iconv-name.diff; rename cp10000 to macintosh to workaround
+  glibc [boo#1089126]
+
+-------------------------------------------------------------------
+Wed Apr  4 12:10:08 UTC 2018 - jengelh@inai.de
+
+- Add mkisofs-j-crash.diff
+
+-------------------------------------------------------------------
+Thu Mar 22 19:36:39 UTC 2018 - jengelh@inai.de
+
+- Move to schily-2018.03.16 source tarball
+  * mkisofs and smake moved their config files to /usr/share/lib.
+  * smake: when an implicit target is made, the result is now
+    searched in the list of obj-directories.
+- Drop fix_chrp_boot.patch (applied upstream)
+- Use cdrecord.spec as a base for schily.spec. The subsequent
+  changelog entries are from cdrecord.changes.
+
+-------------------------------------------------------------------
+Mon Mar 12 12:01:57 UTC 2018 - adam.majer@suse.de
+
+- fix_chrp_boot.patch: chrp-boot option doesn't take any parameters
+  but seems to require one that it doesn't use. Fix it uses no
+  parameters. (bnc#1084893)
+- Always install to /usr/lib/siconv since otherwise mkisofs doesn't
+  find charsets. Needs to be fixed properly later. (bnc#1084892)
+
+-------------------------------------------------------------------
+Thu Dec 14 11:22:32 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.02~a09
+  * Cdda2wav now works around a Linux glibc bug that causes stderr
+    to be illegally buffered.
+  * `cdda2wav -vall` no longer clobbers out-fd= to become stdin
+    when compiled in 64 bit mode.
+
+-------------------------------------------------------------------
+Thu May 11 20:34:15 UTC 2017 - adaugherity@tamu.edu
+
+- Fix build on older distros (e.g. SLE11) -- no caps support in RPM
+- Remove build dependency on mmv (not present on SLE, and its usage
+  is easily replaced with a small shell script).
+- Fix build on older distros (makedepend)
+
+-------------------------------------------------------------------
+Wed Dec 28 23:14:42 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 3.02~a07
+* mkisofs: deduplication for files)
+
+-------------------------------------------------------------------
+Thu Jan 28 23:40:24 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 3.02~a06
+* libscg: fixed a copy/paste problem in the Linux transport that
+  could cause libscg to assume a timeout when no timeout occurred.
+* libscg: add a new generic option interface.
+* libscg: New option "ignore-resid" to work around a Linux kernel
+  problem.
+* mkisofs: better warning messages for rotten directories when in
+  multi-session mode.
+
+-------------------------------------------------------------------
+Thu Dec 31 23:29:41 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 3.02~a05
+* mkisofs now tries to be more immune against rotten iso images
+  when in multi session mode.
+* mkisofs no longer tries to access a string past the null byte
+  when dealing with Joliet.
+* mkisofs fixed a bug related to sorting with multi extent files
+  (greater than 4 GB).
+
+-------------------------------------------------------------------
+Wed Dec 16 23:39:50 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 3.02~a04
+* Support for DVD-Audio was added to mkisofs.
+* Several bug fixes in mkisofs and mkisofs/diag/* programs to make
+  them more robust against rotten ISO images.
+
+-------------------------------------------------------------------
+Wed Dec  2 16:41:26 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 3.02~a03
+* isoinfo no longer eats up all memory when an ISO image
+  with a directory loop is specified.
+
+-------------------------------------------------------------------
+Fri Nov 20 23:23:59 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 3.02~a02
+* Many smaller "isoinfo" enhancements including support for
+  relocated directories.
+
+-------------------------------------------------------------------
+Fri Nov  6 09:29:41 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 3.02~a01
+* libparanoia: work around a bug that resulted from uninitalized
+  statistics data for C2 checks.
+* cdda2wav now supports sound output on Linux again.
+
+-------------------------------------------------------------------
+Sun Aug 30 11:29:42 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 3.01
+* Final version
+
+-------------------------------------------------------------------
+Wed Aug  5 07:49:48 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 3.01~a31
+* Added compile support for Win-10 using non-automake-aware make
+  implementations. Add some workarounds for MinGW32 compilation.
+
+-------------------------------------------------------------------
+Wed Jul  8 07:40:11 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 3.01~a30
+* Added a workaround (with autoconf) for a Cygwin bug with
+  #pragma weak.
+
+-------------------------------------------------------------------
+Thu Jun  4 23:05:39 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 3.01~a29
+* (Several changes for better Haiku compatibility.)
+* Some code fixes include results from automated tests.
+
+-------------------------------------------------------------------
+Wed Mar 25 11:24:07 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 3.01~a28
+* Build system changes only: manpages are installed just once
+
+-------------------------------------------------------------------
+Thu Feb 19 20:32:14 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 3.01~a27
+* dlopen emulation for certain platforms
+
+-------------------------------------------------------------------
+Fri Jan  9 20:29:24 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 3.01~a26
+* Add the HELIOS UNICODE mapping code. This needs to be done at
+  UCS-2 level for Joliet and UDF (instead of UTF-8) and only for
+  Rock Ridge (in case of a UTF-8 based target locale) using UTF-8
+  based translations.
+* Make the Apple extensions work again with "mkisofs -find"
+
+-------------------------------------------------------------------
+Thu Dec  4 12:49:13 UTC 2014 - meissner@suse.com
+
+- run permission handling code unconditionally. bnc#899718
+
+-------------------------------------------------------------------
+Sat Nov 29 23:42:11 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.01~a25
+* Precursory work for localization
+- Run spec-beautifier for spec files
+- Reenable missing capability support [bnc#899718]
+
+-------------------------------------------------------------------
+Mon Sep 22 22:34:31 UTC 2014 - jengelh@inai.de
+
+- Update package metadata: new upstream URLs
+- Remove untracked old changes file
+
+-------------------------------------------------------------------
+Wed May  7 14:12:00 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.01~a24
+* isoinfo now allows the user to extract all files from an ISO
+  image based on the built-in find(1) command. This works even for
+  milti-extent files (files > 4 GB).
+* Some enhancements for the libschily *at() function emulations
+  have been added.
+
+-------------------------------------------------------------------
+Wed Mar  5 02:47:25 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.01~a23
+* Cdrecord now prints timediffs also in hours:minutes:seconds.
+* Cdda2wav no longer includes "c2check" in the "proof" paranoia
+  option to avoid a firmware bug in a TSSTcorp drive.
+* Mkisofs has slightly-reduced CPU time requirements.
+* A problem in isoinfo has been fixed; it did not always print
+  timestamps in `-find -ls` mode.
+
+-------------------------------------------------------------------
+Tue Jan 21 09:47:08 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.01~a22
+* mkisofs includes a new option, -legacy, that allows it to
+  reenable the short options -H/-L/-P; these have been disabled in
+  2006 for compatibility with scripts that have not been updated
+  during the past 10 years.
+* libsiconv now only tries to open a file when the argument
+  includes a slash in its name.
+* libschily::printf() now includes support for %n$ argument
+  reordering for the first 30 arguments.
+- Drop ppc64le.patch (merged upstream)
+
+-------------------------------------------------------------------
+Mon Jan  6 02:59:40 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.01~a21
+* This release adds some workarounds for compiling with MinGW. New
+  functions xcomerr(), xcomerrno(), fxcomerr(), and fxcomerrno() in
+  libschily. A bug in libschily/format.c that caused %.*s to be
+  printed incorrectly has been fixed. Some bugs in the mkisofs man
+  page have been fixed.
+
+-------------------------------------------------------------------
+Thu Jan  2 11:10:24 UTC 2014 - dvaleev@suse.com
+
+- enable ppc64le architecture (ppc64le.patch)
+
+-------------------------------------------------------------------
+Thu Dec 26 21:43:53 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 3.01~a20
+* libparanoia and cdda2wav have been enhanced to give much better
+  results with slightly bad media and new hardware.
+- Enable symbol versions
+
+-------------------------------------------------------------------
+Tue Dec  3 15:15:47 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 3.01~a19
+* This release added different fine-grained privilege handling that
+  keeps root privileges in cases where cdrtools have been called by
+  a privileged program.
+* Libfind now supports "event port" type files.
+* Emulations for *at() functions have been added to libschily.
+- Mark the mkisofs program (combined work) as GPL-2.0 due to
+  some GPL2-only sources (mkisofs/inode.c).
+
+-------------------------------------------------------------------
+Thu Nov 14 02:15:36 UTC 2013 - jengelh@inai.de
+
+- Add gcc48wa.diff to work around broken gcc-4.8 behavior
+
+-------------------------------------------------------------------
+Tue Oct 15 00:23:51 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 3.01a18
+* This release fixes a copy+paste bug in the Linux support code for
+  fine-grained privileges.
+* Libfind no longer leaks filedescriptors with -empty.
+
+-------------------------------------------------------------------
+Fri Oct  4 16:44:03 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 3.01a17
+* Automatic support has been added for ARMv5 and ARMv6.
+
+-------------------------------------------------------------------
+Thu Jul 11 09:44:32 CEST 2013 - zawel1@gmail.com
+
+- Update to 3.01a16
+  * libparanoia: memset() call in i_silence_match() now uses the
+    correct size instead of sizeof (avec)
+  * libparanoia: Use dynamic arrays instead of alloca()/malloc()
+    if available
+
+-------------------------------------------------------------------
+Thu Jun  6 19:04:03 UTC 2013 - jengelh@inai.de
+
+- Update BuildRequires, add License: fields, use %optflags, update
+  descriptions and wrap at 70 cols
+- Remove unused static libraries and dissolve devel subpackage
+  (now provided by libschily-devel, libscg-devel)
+
+-------------------------------------------------------------------
+Mon Jun  3 21:42:52 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 3.01~a15
+* This release warns about lack of fine-grained permissions
+- Temporarily deactivate extra permissions for factory submission
+  while permissions package is not updated
+
+-------------------------------------------------------------------
+Tue May 14 12:58:54 UTC 2013 - jengelh@inai.de
+
+- Add cdda2wav.{easy,paranoid,secure}. permissions.d entries need
+  to be in the same package as the file they are describing, or we
+  get errors during post-build verification.
+- Use tildeversion; according to author, 3.01a14 sorts before 3.01
+- Resync caps list from permissions.d files to .spec file
+
+-------------------------------------------------------------------
+Sun May  5 19:40:01 UTC 2013 - meissner@suse.com
+
+- actually fscaps are also managed by "permissions", leave the
+  %set_permissions calls in.
+- reenabled the sample permission snippets for testing.
+
+-------------------------------------------------------------------
+Sat May  4 12:01:58 UTC 2013 - jengelh@inai.de
+
+- Do not run set_permissions when fscaps are in use
+
+-------------------------------------------------------------------
+Sat May  4 08:26:48 UTC 2013 - meissner@suse.com
+
+- commented out the setuid root equivalent capabilities, cap_sys_admin
+  and cap_dac_override. (bnc#550021)
+- commented out unnecessary and also dangerous cap_net_bind_service
+  (bnc#550021)
+- add correct permission handling also for readcd and cdda2wav
+
+-------------------------------------------------------------------
+Fri May  3 16:39:11 UTC 2013 - jengelh@inai.de
+
+- Linux fscaps support in the RPM package (bnc#550021)
+
+-------------------------------------------------------------------
+Fri May  3 09:14:45 UTC 2013 - davejplater@gmail.com
+
+- Commented out permissions.d files and
+  ran spec cleaner.
+
+-------------------------------------------------------------------
+Mon Apr 22 16:00:38 CEST 2013 - zawel1@gmail.com
+
+- Update to 3.01a14
+  * new autoconf tests for sys/capability.h and cap_*() functions
+	from Linux -lcap
+  * trying to support suid-root-less installation of cdrecord on Linux.
+	NOTE: You need "file caps" support built into your Linux installation.
+  * include/schily/stat.h now contains macros to set the nanoseconds
+	in timestamps in a OS independent way
+  * mkisofs now identifies itdelf by default (inside the APPID string)
+	as being UDF capable.
+  * mkisofs now supports additional file types with UDF: named pipes,
+	sockets, character devices, block devices
+  * mkisofs now supports all three UNIX times with microsecond granularity
+    in UDF
+  * mkisofs now sets correct user/group/permission for symlinks in UDF
+  * mkisofs now supports setuid, setgid, sticky bits in UDF
+
+-------------------------------------------------------------------
+Tue Apr  2 19:10:20 UTC 2013 - jengelh@inai.de
+
+- Dissolve Obsoletes cycle between cdrkit (source package "wodim")
+  and cdrtools. Conflict tags have been submitted to cdrkit.
+
+-------------------------------------------------------------------
+Tue Feb 12 15:12:07 CEST 2013 - zawel1@gmail.com
+
+- Update to 3.01a12
+  * mkisofs: mkisofs now reserves more space for the file names
+    to avoid a path buffer overrun
+  * mkisofs: fixed a bug that caused to put more than one UDF
+    direcory entry for a file in case that the file is a ISO-0660
+    multi-segment file.
+  * mkisofs: fixed a bug that caused the wrong start sector address
+    to be used for UDF in case that the file is a ISO-9660
+    multi-segment file and the -sort option was used.
+  * libschily: libschily::fexecv() now allows to use the parameter
+    "ac" with the value -1 to indicate that the arg count is to be
+    determined by the NULL pointer at the end of the arg list
+  * new include files include/schily/err_*.h are used to
+    encapsulate #error CPP statements that would otherwise always
+    prevent compilation with K&R compilers
+  * mkisofs: new option -ignore-error alows to continue on some
+    errors
+  * mkisofs: Avoid a 32 bit integer overflow while computing sector
+    addresses for Rock Ridge CE entries
+
+-------------------------------------------------------------------
+Mon Oct  1 11:18:20 CEST 2012 - zawel1@gmail.com
+
+- Update to 3.01a08
+  * introduce a dependency for man page subdirectories to allow
+  syncing parallel make calls.
+  * libschily: getperm.c now correctly supports umask +w
+  * libscg & cdrecord: struct scsi_inquiry is now using a union
+  around the vendor ID strings in order to avoid incorrect buffer
+  overflow warnings from GCC-4.x
+  * mkisofs: while introducing the new option -modification-date,
+  we did accidently remove the code to set up the creation date
+  in te PVD. Now creation date again contains correct data.
+
+-------------------------------------------------------------------
+Tue Mar 27 16:14:24 UTC 2012 - davejplater@gmail.com
+
+- Update to version 3.01a07 Fixed non position independent build of
+  cdrecord with "COPTX=-fPIE" and "LDOPTX=-pie -Wl,-pie"
+
+-------------------------------------------------------------------
+Mon Dec 26 07:25:42 UTC 2011 - hnch@gmx.net
+
+- Disabled parallel build.
+
+-------------------------------------------------------------------
+Mon Dec 26 06:54:14 UTC 2011 - hnch@gmx.net
+
+- Update to 3.01a06.
+
+-------------------------------------------------------------------
+Tue Jun  7 11:21:46 UTC 2011 - davejplater@gmail.com
+
+- Update to 3.01a05 via source service.
+
+-------------------------------------------------------------------
+Wed Apr  6 21:34:32 UTC 2011 - davejplater@gmail.com
+
+- Fixed provides, obsoletes and requires to stop cdrtools from
+  requiring packages from wodim.
+
+-------------------------------------------------------------------
+Sat Apr  2 17:24:01 UTC 2011 - asterios.dramis@gmail.com
+
+- Updated to 3.00
+- Spec file updates:
+  * Changed the Name: entry to cdrtools and added cdrecord as a subpackage.
+  * Changes based on rpmdevtools templates and spec-cleaner run.
+  * Updates in Summary: and %description sections.
+  * Removed meta package schily-cdrtools and used the main package for
+    cdrkit-cdrtools-compat removal.
+  * Added Conflicts: for cdda2wav and mkisofs (with icedax and genisoimage
+    respectively).
+  * Use smp_flags with make.
+  * Updates in %install section. Most important:
+    # Remove installed documentation and install it manually in the %files
+      sections.
+    # Install additional programs.
+    # Don't run fdupes in /etc/permissions.d/ (some may want to have different
+      contents in each file).
+  * Updates in %files sections.
+  * Removed the %changelog entries from the spec file.
+
+-------------------------------------------------------------------
+Sat Feb 12 11:49:41 UTC 2011 - hnch@gmx.net
+
+- A lot of cleanup fixes in the spec file, e.g. corrected paths,
+  added debuginfo. Thanks to Křištof Želechovski for the patches.
+
+-------------------------------------------------------------------
+Fri Nov 26 08:28:56 UTC 2010 - hnch@gmx.net
+
+- Small fixes to satisfy rpmlint.
+
+-------------------------------------------------------------------
+Fri Nov 26 08:05:56 UTC 2010 - hnch@gmx.net
+
+- Updated to 3.01a01
+
+-------------------------------------------------------------------
+Wed Jun  2 09:37:28 UTC 2010 - hnch@gmx.net
+
+- Updated to final 3.00
+
+-------------------------------------------------------------------
+Thu Apr 15 11:10:18 CEST 2010 - dmueller@suse.de
+
+- fix requires(pre) -> requires(post)
+
+-------------------------------------------------------------------
+Fri Apr  9 07:09:03 UTC 2010 - hnch@gmx.net
+
+- Reinstalled Prerequisites as Requires(pre)
+
+-------------------------------------------------------------------
+Tue Apr  6 09:56:40 UTC 2010 - hnch@gmx.net
+
+- Updated to 2.01.01a77
+
+-------------------------------------------------------------------
+Tue Feb  2 09:27:07 CET 2010 - hnch@gmx.net
+
+- Updated to 2.01.01a74
+
+-------------------------------------------------------------------
+Mon Jan 11 14:12:51 CET 2010 - hnch@gmx.net
+
+- Updated to 2.01.01a72
+
+-------------------------------------------------------------------
+Tue Jan  5 16:32:18 CET 2010 - meissner@suse.de
+
+- disable the permissions override
+
+-------------------------------------------------------------------
+Tue Dec 29 09:56:45 CET 2009 - hnch@gmx.net
+
+- Updated to 2.01.01a70
+
+-------------------------------------------------------------------
+Tue Dec  1 09:59:23 CET 2009 - hnch@gmx.net
+
+- Updated to 2.01.01a69
+
+-------------------------------------------------------------------
+Fri Nov 20 08:20:33 CET 2009 - hnch@gmx.net
+
+- Updated to 2.01.01a68
+
+-------------------------------------------------------------------
+Wed Nov  4 20:01:16 CET 2009 - hnch@gmx.net
+
+- removed /etc/permissions.d/ entries for readcd, rscsi and cdda2wav again
+
+-------------------------------------------------------------------
+Mon Nov  2 16:10:44 CET 2009 - hnch@gmx.net
+
+- removed conflicting Provides: from schily-cdrtools package
+
+-------------------------------------------------------------------
+Mon Nov  2 14:10:20 CET 2009 - hnch@gmx.net
+
+- Updated to a67
+- added /etc/permissions.d/ entries for readcd, rscsi and cdda2wav as well
+
+-------------------------------------------------------------------
+Mon Oct 26 14:39:26 CET 2009 - hnch@gmx.net
+
+- Once again permissions.d/ files, fixed spec file.
+
+-------------------------------------------------------------------
+Mon Oct 26 14:16:14 CET 2009 - hnch@gmx.net
+
+- Fixed wrong naming of permissions.d/ files.
+
+-------------------------------------------------------------------
+Sun Oct 25 17:45:36 CET 2009 - meissner@suse.de
+
+- import from henneodernich home repo
+- removed up %post illegal operation and instead drop in permission.d snippets
+  4711 in easy mode, 0711 in secure and paranoid modes.
+  added rpmlintrc to allow this temporarily
+- removed unused obsoletes
+- conflict with cdrkit-cdrtools-compat instead of obsoletes
+- alsa-devel buildrequires

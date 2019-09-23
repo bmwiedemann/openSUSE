@@ -1,0 +1,509 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb36728c1096c8e6144aa880d97836e9</srcmd5>
+    <version>4.2.29</version>
+    <time>1166483757</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="8">
+    <srcmd5>38f7791b91372880f301fe7fc3ceeeed</srcmd5>
+    <version>4.2.29</version>
+    <time>1171292244</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0c963cb0a7ad274b943afc90b5fcb9fc</srcmd5>
+    <version>4.2.30</version>
+    <time>1172783846</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>61802648e7838fb402ba005d0f43a8d1</srcmd5>
+    <version>4.2.31</version>
+    <time>1180901045</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="12">
+    <srcmd5>4ea0a65122d65a1b4a49d7835cd69928</srcmd5>
+    <version>4.2.31</version>
+    <time>1185492350</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>919fe6e2e6bfe9109c64c8a8770fbf91</srcmd5>
+    <version>4.2.32</version>
+    <time>1201300958</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>919abc7d4628b6a2c66d0dcd1a5b09e7</srcmd5>
+    <version>4.2.33</version>
+    <time>1203034803</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>734dd243ab5c91e9f3b567b43c5fd613</srcmd5>
+    <version>4.2.33</version>
+    <time>1203989494</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>24ce37674b2f3e6c8ee8ffe7d0faa914</srcmd5>
+    <version>4.4.0</version>
+    <time>1206544195</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="23">
+    <srcmd5>3e8efb62eeb9ca217281e18cd3d64077</srcmd5>
+    <version>4.4.0</version>
+    <time>1217845886</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="27">
+    <srcmd5>7e58ac3bd736f25631c6eb370d7e262a</srcmd5>
+    <version>4.4.0</version>
+    <time>1218486870</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="35">
+    <srcmd5>47af6d468937c55a702a62d3e8c96f5b</srcmd5>
+    <version>4.4.0</version>
+    <time>1219708462</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="38">
+    <srcmd5>6e0b73f8cba838d441d66e377165965d</srcmd5>
+    <version>4.4.0</version>
+    <time>1220638083</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="44">
+    <srcmd5>1d86c4bd6a7019e89f0ad3e0ab7c97f1</srcmd5>
+    <version>4.4.0</version>
+    <time>1236789219</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="45">
+    <srcmd5>6e316bfbbf5601a2b8241038e585216f</srcmd5>
+    <version>4.4.0</version>
+    <time>1247755292</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="47">
+    <srcmd5>6e316bfbbf5601a2b8241038e585216f</srcmd5>
+    <version>4.4.0</version>
+    <time>1247755292</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1d030b2b443b33ed27b2a5d77759a81c</srcmd5>
+    <version>4.4.2</version>
+    <time>1268408717</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/findutils based on submit request 34356 from user prusnak
+</comment>
+    <requestid>34356</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>185c84600fe1e7d83478ee65ddfe9a5e</srcmd5>
+    <version>4.4.2</version>
+    <time>1268923534</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>8b11d6cbf5971741eac65b024aef5491</srcmd5>
+    <version>4.4.2</version>
+    <time>1270135114</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/findutils based on submit request 36633 from user psmt
+</comment>
+    <requestid>36633</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>8b11d6cbf5971741eac65b024aef5491</srcmd5>
+    <version>4.4.2</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>8b11d6cbf5971741eac65b024aef5491</srcmd5>
+    <version>4.4.2</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>18ecc81818c91c865cb2ca17641ea236</srcmd5>
+    <version>4.4.2</version>
+    <time>1285312252</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/findutils based on submit request 44299 from user WernerFink
+</comment>
+    <requestid>44299</requestid>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>9b40a5722b3c7f7a943f016ce1c980b2</srcmd5>
+    <version>4.4.2</version>
+    <time>1285594758</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/findutils based on submit request 49221 from user prusnak
+</comment>
+    <requestid>49221</requestid>
+  </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>86370ac29584179aaf70492dfdd963de</srcmd5>
+    <version>4.4.2</version>
+    <time>1290092635</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53246 from user psmt
+</comment>
+    <requestid>53246</requestid>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>d2c6bf8f6e8c300e942cf883108154ae</srcmd5>
+    <version>4.4.2</version>
+    <time>1290092642</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53246
+</comment>
+  </revision>
+  <revision rev="26" vrev="13">
+    <srcmd5>d2c6bf8f6e8c300e942cf883108154ae</srcmd5>
+    <version>4.4.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="27" vrev="14">
+    <srcmd5>e6c52d4dada8186717ee881f5c99d390</srcmd5>
+    <version>4.4.2</version>
+    <time>1304330075</time>
+    <user>saschpe</user>
+    <comment>make findutils-locate require findutils</comment>
+    <requestid>68850</requestid>
+  </revision>
+  <revision rev="28" vrev="15">
+    <srcmd5>69fcc7af9dc04b6dd13004e04c74e916</srcmd5>
+    <version>4.4.2</version>
+    <time>1304330083</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68850
+</comment>
+  </revision>
+  <revision rev="29" vrev="16">
+    <srcmd5>00db365519b737273d6fc4fc1cc14cda</srcmd5>
+    <version>4.4.2</version>
+    <time>1316516081</time>
+    <user>saschpe</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.) (forwarded request 83520 from jengelh)</comment>
+    <requestid>83726</requestid>
+  </revision>
+  <revision rev="30" vrev="18">
+    <srcmd5>00db365519b737273d6fc4fc1cc14cda</srcmd5>
+    <version>4.4.2</version>
+    <time>1319181878</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="31" vrev="19">
+    <srcmd5>181176488ef9e38a282fb7146402851f</srcmd5>
+    <version>4.4.2</version>
+    <time>1323190709</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94736 from coolo)</comment>
+    <requestid>94746</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>4e00e5b78ea92a897988e83e38b7d4b8</srcmd5>
+    <version>4.5.10</version>
+    <time>1327500077</time>
+    <user>coolo</user>
+    <comment>update to 4.5.10 (forwarded request 100464 from tabraham1)</comment>
+    <requestid>100513</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>b378e6ba696904d9643be2809abbe516</srcmd5>
+    <version>4.5.10</version>
+    <time>1328892397</time>
+    <user>coolo</user>
+    <comment>usrMerge project - move files from toplevel to /usr (forwarded request 102739 from rjschwei)</comment>
+    <requestid>102998</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>a1c191f7fd29cb48ae33a48100078415</srcmd5>
+    <version>4.5.10</version>
+    <time>1329824308</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>106218</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>96e254004d923eb373bc06585172a00a</srcmd5>
+    <version>4.5.10</version>
+    <time>1338476660</time>
+    <user>coolo</user>
+    <comment>- fix build with automake-1.12
+ - add: automake-1.12.patch (forwarded request 122728 from puzel)</comment>
+    <requestid>122775</requestid>
+  </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>96e254004d923eb373bc06585172a00a</srcmd5>
+    <version>4.5.10</version>
+    <time>1340183329</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="37" vrev="7">
+    <srcmd5>ab6d007e9fe5bf8c4fd29eb537ea992b</srcmd5>
+    <version>4.5.10</version>
+    <time>1343672033</time>
+    <user>coolo</user>
+    <comment>Fix build with missing gets declaration (glibc 2.16) (forwarded request 128958 from a_jaeger)</comment>
+    <requestid>128963</requestid>
+  </revision>
+  <revision rev="38" vrev="8">
+    <srcmd5>f0c91be5a05249c9271be211f9dddcac</srcmd5>
+    <version>4.5.10</version>
+    <time>1353952444</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>142500</requestid>
+  </revision>
+  <revision rev="39" vrev="9">
+    <srcmd5>aa006d92abd45a8b11a8b7ca1de0b5d0</srcmd5>
+    <version>4.5.10</version>
+    <time>1355463586</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>145207</requestid>
+  </revision>
+  <revision rev="40" vrev="11">
+    <srcmd5>aa006d92abd45a8b11a8b7ca1de0b5d0</srcmd5>
+    <version>4.5.10</version>
+    <time>1359108878</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="12">
+    <srcmd5>90e72254c3039b3d7a9e937011368c2c</srcmd5>
+    <version>4.5.10</version>
+    <time>1360228470</time>
+    <user>coolo</user>
+    <comment>- Remove useless findutils-automake-1.12.patch (forwarded request 151494 from Andreas_Schwab)</comment>
+    <requestid>151516</requestid>
+  </revision>
+  <revision rev="42" vrev="13">
+    <srcmd5>85a7c929c91777c5c7ee7a413fda641c</srcmd5>
+    <version>4.5.10</version>
+    <time>1364472659</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161186 from m_meister)</comment>
+    <requestid>161235</requestid>
+  </revision>
+  <revision rev="43" vrev="14">
+    <srcmd5>a8ba06d244bb362b22952a46f08b15b0</srcmd5>
+    <version>4.5.10</version>
+    <time>1366791629</time>
+    <user>coolo</user>
+    <comment>Make updatedb skip /var/run/media</comment>
+    <requestid>173003</requestid>
+  </revision>
+  <revision rev="44" vrev="16">
+    <srcmd5>a8ba06d244bb362b22952a46f08b15b0</srcmd5>
+    <version>4.5.10</version>
+    <time>1379662342</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>3f353480526463675cd7b10d931bd8dc</srcmd5>
+    <version>4.5.12</version>
+    <time>1380171847</time>
+    <user>coolo</user>
+    <comment>- Remove patches:
+  - findutils-4.5.10-use_proc_mounts.patch:
+    /etc/mtab is a link to /proc/self/mounts nowadays.
+  - findutils-4.5.10-prune_unknown.patch:
+    merge patch into findutils-4.4.2-updatedb.patch.
+  - findutils-4.5.10-updatedb_ignore_nfsv4.patch:
+    fixed upstream.
+  - findutils-stdio.in.patch:
+    fixed upstream (in included gnulib).
+  - findutils-init_stat_buf.patch:
+    fixed upstream.
+
+- Refresh other patches:
+  - findutils-4.4.2-updatedb.patch:
+    refresh with changes from the above, removed patch.
+  - findutils-4.4.2-xautofs.patch:
+    refresh, and added -xautofs in find's usage text.
+
+- Adapt findutils.spec:
+  - Version bump.
+  - Remove above removed patches.
+  - Add BuildRequires for makeinfo.
+  - configure call: remove --enable-d_type-optimization
+    option because turned on by default since 4.2.15.
+  - Do not remove oldfind's man page in %install.
+  - Add oldfind's binary and man page in %files.
+
+- Update to 4.5.12
+  See /usr/share/doc/packages/findutils/NEWS,
+  section &quot;Major changes in release 4.5.12, 2013-09-22&quot;
+
+- Update to 4.5.11 (2013-02-02)
+  See /usr/share/doc/packages/findutils/NEWS,
+  section &quot;Major changes in release 4.5.11, 2013-02-02&quot;
+ (forwarded request 200285 from bernhard-voelker)</comment>
+    <requestid>200576</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>931a1be55f6627cc4b1f601046328f73</srcmd5>
+    <version>4.5.12</version>
+    <time>1380727188</time>
+    <user>coolo</user>
+    <comment>- Conditionalize the qemu arg size workaround on %qemu_user_space_build (forwarded request 201855 from Andreas_Schwab)</comment>
+    <requestid>201863</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>f0123d4025062d16a2e7e5b4bb45836d</srcmd5>
+    <version>4.5.12</version>
+    <time>1382618434</time>
+    <user>scarabeus_factory</user>
+    <comment>fix spelling of btrfs snapshot directory in prune path</comment>
+    <requestid>204498</requestid>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>2a0903a78ff5ee6f06b4634ea5c4fba8</srcmd5>
+    <version>4.5.12</version>
+    <time>1386942870</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>210737</requestid>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>98d747df2174e5349b419c9d0f2cfb91</srcmd5>
+    <version>4.5.12</version>
+    <time>1387737141</time>
+    <user>scarabeus_factory</user>
+    <comment>The &quot;gnulib&quot; package contains a number of floating-point test cases
+that do not work correctly with the PowerPC long double (&quot;double double&quot;)
+format.  These tests &quot;accidentally&quot; succeeded anyway in the big-endian
+variant, but are now actually failing in little-endian mode.
+
+As is usual for gnulib, those tests end up copied into the source code
+of various packages that use gnulib, including coreutils, findutils,
+grep, and libunistring.
+
+A patch to fix the tests for ppc64le has been submitted to upstream
+to the bug-gnulib mailing list.  We'll work with upstream of the
+other affected packages to make sure the copies are refreshed.
+
+- findutils-gnulib-ppc64le.patch: Fix imported gnulib long double
+  math tests for little-endian PowerPC. (forwarded request 211828 from uweigand)</comment>
+    <requestid>211844</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>9a2e7b6b363f778dc99496b7957b5fc9</srcmd5>
+    <version>4.5.14</version>
+    <time>1407236375</time>
+    <user>coolo</user>
+    <comment>- Upgrade to 4.5.14
+- Refresh patches:
+    findutils-4.4.2-xautofs.patch
+    findutils-gnulib-ppc64le.patch (using -p0 for consistency)
+- findutils.spec (Version): s/4.5.12/4.5/14
+  (%patch1): Remove -p1.
+  (%configure): Remove --without-included-regex option,
+    as it is the default anyway. (forwarded request 243551 from bernhard-voelker)</comment>
+    <requestid>243581</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>9a2e7b6b363f778dc99496b7957b5fc9</srcmd5>
+    <version>4.5.14</version>
+    <time>1409300878</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>28901c692708a6c3eb8f21006f08bad6</srcmd5>
+    <version>4.5.14</version>
+    <time>1420927488</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280168</requestid>
+  </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>a938388adb3ffcb277c58f6fef62cb0a</srcmd5>
+    <version>4.5.14</version>
+    <time>1437477848</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315202</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>0f57fd3f8078cb26fb476fe5e48e6d88</srcmd5>
+    <version>4.5.15</version>
+    <time>1450955735</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350185</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>fb20ae503dd857b416c69c12d12bb339</srcmd5>
+    <version>4.6.0</version>
+    <time>1452941740</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 4.6.0
+    stable release, removing 'oldfind'.
+- Delete now-upstream patches: findutils-gnulib-ppc64le.patch,
+    gnulib-perl522.patch
+- Refresh patch: findutils-4.4.2-xautofs.patch</comment>
+    <requestid>353156</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>c482a222bfc0a34d19d621d0c259bc25</srcmd5>
+    <version>4.6.0</version>
+    <time>1465129070</time>
+    <user>dimstar_suse</user>
+    <comment>- sv-bug-48030-find-exec-plus-does-not-pass-all-arguments.patch:
+  Add upstream patch to fix https://savannah.gnu.org/bugs/?48030</comment>
+    <requestid>399366</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>ab2db69411ab20acc08983264647f679</srcmd5>
+    <version>4.6.0</version>
+    <time>1519844156</time>
+    <user>dimstar_suse</user>
+    <comment>Use %license (boo#1082318). Please forward to SLE, if possible (forwarded request 580085 from favogt)</comment>
+    <requestid>580177</requestid>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>f9abfe81ee42e8da5b37d47287714d08</srcmd5>
+    <version>4.6.0</version>
+    <time>1533549116</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626992</requestid>
+  </revision>
+  <revision rev="59" vrev="5">
+    <srcmd5>3df6af9a4127a993902a252a7dcb5997</srcmd5>
+    <version>4.6.0</version>
+    <time>1562591159</time>
+    <user>dimstar_suse</user>
+    <comment>- Add disable-broken-tests.patch in order to remove broken
+  tests (boo#1138800).
+</comment>
+    <requestid>711587</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>6a76888b349c4d80eae0049e410a5fbd</srcmd5>
+    <version>4.7.0</version>
+    <time>1568190269</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727092</requestid>
+  </revision>
+</revisionlist>

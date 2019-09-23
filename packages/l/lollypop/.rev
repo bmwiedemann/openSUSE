@@ -1,0 +1,1030 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c07913e85bdba93922673eb159685b56</srcmd5>
+    <version>0.9.62</version>
+    <time>1448553814</time>
+    <user>dimstar_suse</user>
+    <comment>New package: Lollypop - A featureful new music player based on GTK3.</comment>
+    <requestid>345788</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3235f45b40a93a313efa33021493e931</srcmd5>
+    <version>0.9.70</version>
+    <time>1448957947</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346689</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d0f43f60ee92f9f04c9d89c57dcd5ff7</srcmd5>
+    <version>0.9.74</version>
+    <time>1449687116</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347639</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>82a43efbb76d8bc12da639fe81cd68dd</srcmd5>
+    <version>0.9.75</version>
+    <time>1451674060</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350825</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7f1950308c0ee9f7240fa12788f43f3e</srcmd5>
+    <version>0.9.82</version>
+    <time>1454628737</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357688</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>79e17838e0ccebda64d41d3144d579a7</srcmd5>
+    <version>0.9.86</version>
+    <time>1456127851</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360081</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>415f3857bc56c8a14b2815597e1a74eb</srcmd5>
+    <version>0.9.91</version>
+    <time>1459002575</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>379929</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e0169d02f672dbc6a3652d278fc5d2c1</srcmd5>
+    <version>0.9.94</version>
+    <time>1460101185</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>385635</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bb6802f884afc039dc98af3442653c1c</srcmd5>
+    <version>0.9.98</version>
+    <time>1461855458</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391925</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7c6d96ff29b4e37b97799f226066533c</srcmd5>
+    <version>0.9.104</version>
+    <time>1462977477</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394627</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>301cada42436f6611a9c74999489f2a0</srcmd5>
+    <version>0.9.107</version>
+    <time>1465336139</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400196</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a8f613dc5d2827c9ba1a28aa32420836</srcmd5>
+    <version>0.9.113</version>
+    <time>1473103413</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424717</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>af96e58700655cb3e55dc6858d60de4b</srcmd5>
+    <version>0.9.205</version>
+    <time>1474886197</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>430252</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3a2c8fbf35a84bab57c165fbb6f87554</srcmd5>
+    <version>0.9.206</version>
+    <time>1475750718</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433221</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2267733df28e3414e970cec64f5de610</srcmd5>
+    <version>0.9.211</version>
+    <time>1476875646</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435880</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1d152454c94e732c51304d6b039da733</srcmd5>
+    <version>0.9.214</version>
+    <time>1479151017</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440169</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>277046da90f720b0daf4273a1e59e752</srcmd5>
+    <version>0.9.217</version>
+    <time>1479837573</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441336</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fb19d7ac0895b346ad6cc68308f85b98</srcmd5>
+    <version>0.9.221</version>
+    <time>1480420223</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442518</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2696bcd32fa87492b35d32781997ba67</srcmd5>
+    <version>0.9.223</version>
+    <time>1482418637</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447178</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2d2a202ea473aafa67d596a48dc1e798</srcmd5>
+    <version>0.9.224</version>
+    <time>1484041926</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449366</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>46badadcaf1c96873d0a55bb6a54acdc</srcmd5>
+    <version>0.9.227</version>
+    <time>1484773005</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451085</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fbce120e193abc4a49b0e75de3c74f87</srcmd5>
+    <version>0.9.229</version>
+    <time>1489759569</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460816</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3c107a211dc24185553e2366f2fc5ff6</srcmd5>
+    <version>0.9.230</version>
+    <time>1491469266</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482741</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9152f041a721aec0c7751ecd2dfabd16</srcmd5>
+    <version>0.9.231</version>
+    <time>1492714507</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487863</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a3ab32d0b1fef9aae9f159d05724b2ac</srcmd5>
+    <version>0.9.233</version>
+    <time>1494938731</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494829</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b89e894b5943cbca705ff947cc790a86</srcmd5>
+    <version>0.9.239</version>
+    <time>1496534533</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500877</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4cde10231f888e83c19ea1e6be82d99d</srcmd5>
+    <version>0.9.240</version>
+    <time>1497603295</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503999</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>394a330e513210cd5040a1516511be96</srcmd5>
+    <version>0.9.244</version>
+    <time>1503592607</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509585</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c70416bc43a0137516d09a80b7835cb6</srcmd5>
+    <version>0.9.303</version>
+    <time>1507571181</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532547</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>90500937f1c0a49ef12c12cf20d95085</srcmd5>
+    <version>0.9.304</version>
+    <time>1508197991</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534157</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>51b440cc7a8cd0ff5b233933633cc8c8</srcmd5>
+    <version>0.9.306</version>
+    <time>1514569903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560179</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>74b6e4acdaeb940355ea6f0e2e60f10d</srcmd5>
+    <version>0.9.400</version>
+    <time>1520588846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584610</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>34fc5eadf7885ceb1e24a89e7a259980</srcmd5>
+    <version>0.9.403</version>
+    <time>1522404509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592290</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d8d7891ab922060d7d3728e99f711b88</srcmd5>
+    <version>0.9.504</version>
+    <time>1523875811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596709</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>5b36e9610f8b5b445ae0842d680bb252</srcmd5>
+    <version>0.9.506</version>
+    <time>1524837683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598814</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>218c103779419f112f42c3e580c732c5</srcmd5>
+    <version>0.9.507</version>
+    <time>1525121760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602247</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>5ec72d77531a9fc05751fa53261d5ef3</srcmd5>
+    <version>0.9.508</version>
+    <time>1525611736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>604408</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e8ce61e6f98871d0cf70d78d7b15f2cc</srcmd5>
+    <version>0.9.512</version>
+    <time>1526646490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610221</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>6888f99168ec90d6bf86c8db276cdd53</srcmd5>
+    <version>0.9.514</version>
+    <time>1527583351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611830</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>5b0d9a574bf9e04c17dbe6d94fe916b8</srcmd5>
+    <version>0.9.515</version>
+    <time>1529501709</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617913</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>04d407767312a851cb6a3fc8d15e4960</srcmd5>
+    <version>0.9.516</version>
+    <time>1530087673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618944</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>711603dd52062117cc98b9687a554c24</srcmd5>
+    <version>0.9.518</version>
+    <time>1530741348</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620512</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e2329b4aa3d1e201416ce8fada2c6b23</srcmd5>
+    <version>0.9.519</version>
+    <time>1531135858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621673</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>504cd5499b915e06fc652155126ffa8c</srcmd5>
+    <version>0.9.520</version>
+    <time>1531947317</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623235</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>96b8dceec40ffa1fa7cc9a21ba3a10b6</srcmd5>
+    <version>0.9.521</version>
+    <time>1532361678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624540</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>a4235cf10e2f090be9ec848421d4778e</srcmd5>
+    <version>0.9.522</version>
+    <time>1535123594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631247</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>d1b94034e7cdd9f296a40abf7172a7cc</srcmd5>
+    <version>0.9.601</version>
+    <time>1537787645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637380</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>03e0112784d151b0bb6d4347db481295</srcmd5>
+    <version>0.9.601</version>
+    <time>1538374687</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lollypop-0.9.601-reproducible.patch: Make build reproducible
+  (boo#1110032).
+</comment>
+    <requestid>638854</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>058f04e95ef02a0a3a011290edcc4e7b</srcmd5>
+    <version>0.9.602</version>
+    <time>1539013611</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.602:
+  * Fix a freeze in playlists (glgo#World/lollypop#1507).
+  * Make build reproducible (glgo#World/lollypop#1502,
+    boo#1110032).
+  * Use Gio.Drive.is_removable() (glgo#World/lollypop#1498).
+  * Updated translations.
+- Drop lollypop-0.9.601-reproducible.patch: Fixed upstream.</comment>
+    <requestid>640328</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>a41b656275253c82e5cd37299f8dc3fa</srcmd5>
+    <version>0.9.604</version>
+    <time>1539093213</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.604:
+  * Fix genres in decade view.
+- Changes from version 0.9.603:
+  * Fix a crash in artist view.</comment>
+    <requestid>640672</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>90215740b469b2bb905a4aea938f2d14</srcmd5>
+    <version>0.9.605</version>
+    <time>1540200259</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.605:
+  * Sort albums with full date (glgo#World/lollypop#1301).
+  * Faster album loading.
+  * Add a button to go from search to artist.
+  * Better Wikipedia search.
+  * Allow importing loved tracks (glgo#World/lollypop#1441).
+  * Enable/disable last.fm scrobbling from main window
+    (glgo#World/lollypop#1509).
+  * Fix some crashes (glgo#World/lollypop#1520,
+    glgo#World/lollypop#1517)
+  * Handle PART= comment in tags (glgo#World/lollypop#1515).
+  * Fix music stop after first enqueued song
+    (glgo#World/lollypop#1514).
+  * Fix genre and artist column widths (glgo#World/lollypop#1513).
+  * Reworked application icon.
+- Updated path to icons in file list: New svg icon added.</comment>
+    <requestid>643243</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>44dcc90a433e3c940bd0ccc7b4cfa248</srcmd5>
+    <version>0.9.607</version>
+    <time>1540451339</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.607:
+  * Fix playlists creation.
+  * Update translations.
+- Change from version 0.9.606:
+  * Fix a crash in radios.</comment>
+    <requestid>643785</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>31e0dc7d380019379319d798130f1ed5</srcmd5>
+    <version>0.9.609</version>
+    <time>1540545053</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.609:
+  * Fix a &quot;sqlite db locked&quot; introduced in 0.9.608.
+- Changes from version 0.9.608:
+  * Fix an issue with multiple disc albums
+    (glgo#World/lollypop#1528).
+  * Fix hang while updating collection (glgo#World/lollypop#1517).
+  * Stop playback if writing to tags on current album
+    (glgo#World/lollypop#1527).</comment>
+    <requestid>644711</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>18d79097ec0d81cd19d7fa6908e339f8</srcmd5>
+    <version>0.9.610</version>
+    <time>1540819374</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.610:
+  * Fix broken MTP sync on GNOME 3.30 (glgo#World/lollypop#1522).
+  * Fix a crash about album discs (glgo#World/lollypop#1511).
+  * Fix broken radio view (glgo#World/lollypop#1529).
+- Remove useless runtime dependency on gobject-introspection.
+</comment>
+    <requestid>645113</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>1eb7c1a8255ed2c3547275675de55e0e</srcmd5>
+    <version>0.9.611</version>
+    <time>1541511508</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.611:
+  * Fix an issue with track management.</comment>
+    <requestid>646258</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>2360522c114ce8eb9ddaa31c46ca34f9</srcmd5>
+    <version>0.9.612</version>
+    <time>1541746610</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.612:
+  * Fix an issue with lyrics (glgo#World/lollypop#1536).
+  * Fix an issue with kid3-cli (glgo#World/lollypop#1527).
+</comment>
+    <requestid>647441</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>d6876c660337e4414fb703b29f6eb4d8</srcmd5>
+    <version>0.9.904</version>
+    <time>1545223856</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.904:
+  * Fix a crash in information popover (glgo#World/lollypop#1564).
+  * Fix a crash upon new album image selection
+    (glgo#World/lollypop#1568).
+  * Make right-click on album more consistent
+    (glgo#World/lollypop#1566).
+  * Don't show an empty similar artists popover when there is no
+    similar artist (glgo#World/lollypop#1565).
+
+- Update to version 0.9.903:
+  * Fix an issue with lyrics translation
+    (glgo#World/lollypop#1563).
+- Changes from version 0.9.902:
+  * Fix empty popover display after clicking &quot;Show Lyrics&quot;
+    (glgo#World/lollypop#1561).
+  * Clarify error message in lyrics view when module textblob is
+    not installed.
+- Add python-textblob as suggested dependency:
+  * It allows lollypop to translate lyrics in user language. Not a
+    new feature, it was actually introduced in 0.9.522.
+  * Note that module textblob is not available in Factory yet.
+
+- Update to version 0.9.901:
+  * Fix a crash in information popover (glgo#World/lollypop#1560).
+- Changes from version 0.9.900:
+  * New navigation mode when sidebar is off.
+  * New smart playlists (glgo#World/lollypop#890).
+  * Faster album loading.
+  * Faster track loading.
+  * Better sync to device.</comment>
+    <requestid>659040</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>0cf8f4d26fbc19b9c30e67ab765ea457</srcmd5>
+    <version>0.9.906</version>
+    <time>1545376911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.906:
+  * Fix bug where cover was never shown.
+- Changes from version 0.9.905:
+  * Bugfixes.</comment>
+    <requestid>660119</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>36b940ea4c76452d390b9191108541c8</srcmd5>
+    <version>0.9.907</version>
+    <time>1545648470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.907:
+  * Fix some playback issues (glgo#World/lollypop#1574).
+  * Import loved tracks from playlists (glgo#World/lollypop#1573).
+  * Fix a crash (glgo#World/lollypop#1571).</comment>
+    <requestid>660733</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>1080b30891dbcaa5c5232672ed443dd7</srcmd5>
+    <version>0.9.908</version>
+    <time>1545996940</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.908:
+  * Fix an issue with artist view.
+  * Various bug fixes (glgo#World/lollypop#1576,
+    glgo#World/lollypop#1577, glgo#World/lollypop#1579,
+    glgo#World/lollypop#1580).</comment>
+    <requestid>661571</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>8aef98afe0c9363d5391ad12e0a3173c</srcmd5>
+    <version>0.9.909</version>
+    <time>1546946905</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.909:
+  * Enhanced drag and drop.
+  * Bug fixes (glgo#World/lollypop#1576, glgo#World/lollypop#1583).</comment>
+    <requestid>663035</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>2eb57c1001891d21749c3b4b3be28bde</srcmd5>
+    <version>0.9.910</version>
+    <time>1547130155</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.910:
+  * Fix a small issue with adaptive mode.</comment>
+    <requestid>663820</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>ac79cedccb7b7090f26ae7819c4140e4</srcmd5>
+    <version>0.9.911</version>
+    <time>1548064714</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.911:
+  * Fix search provider issue (glgo#World/lollypop#1493).
+  * Escape playlists on sync (glgo#World/lollypop#1597).
+  * Scrobble on connect if a track is playing
+    (glgo#World/lollypop#1588).
+  * Fix a crash when object name is empty
+    (glgo#World/lollypop#1596).
+  * Fix radio restore state (glgo#World/lollypop#1595).
+  * Fix scroll volume down when window is not focused
+    (glgo#World/lollypop#1591).</comment>
+    <requestid>666545</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>a5556203bcbb5edef4e8e7b7685c98dc</srcmd5>
+    <version>0.9.912</version>
+    <time>1548335559</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.912:
+  * Fix an issue with playlists (glgo#World/lollypop#1599).
+  * Add an error message for conversion failure when music is on
+    smb share (glgo#World/lollypop#1585).
+  * Increase size of album cover exported for MPRIS
+    (glgo#World/lollypop#1593).</comment>
+    <requestid>667666</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>b1d843d939827e3fc3c7b077513099c0</srcmd5>
+    <version>0.9.914</version>
+    <time>1548452711</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.914:
+  * Fix a crash in radios (glgo#World/lollypop#1606).
+- Changes from version 0.9.913:
+  * Fix issues in collection scanner.
+  * Enhance mini-player (glgo#World/lollypop#1607).</comment>
+    <requestid>668417</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>4d5a1163802fa932de91475d82d02c03</srcmd5>
+    <version>0.9.916</version>
+    <time>1549017951</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.916:
+  * Fix inotify code.
+  * Faster collection scanner.
+
+- Update to version 0.9.915:
+  * Fix an issue with artist playback (glgo#World/lollypop#1611).
+  * Fix an issue with lyrics (glgo#World/lollypop#1606).
+  * Fix an issue in collection scanner.
+  * Fix an issue with collection history.</comment>
+    <requestid>669975</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>c9b9202bfaee1c03cb32c8203454b0d3</srcmd5>
+    <version>0.9.921</version>
+    <time>1550668484</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677602</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>f7a0ac5c029ebb8b11396374964b98b7</srcmd5>
+    <version>0.9.922</version>
+    <time>1551216045</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.922:
+  * Enhanced adaptive mode.
+  * Reworked similar artists popover.
+  * Bug fixes.</comment>
+    <requestid>679055</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>bd396e7d1f6f9370d043df4953db5fb2</srcmd5>
+    <version>0.9.923</version>
+    <time>1551386667</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.9.923:
+  * Fix a crash when adding a track to a playlist
+    (glgo#World/lollypop#1684).
+  * Update icons using colors of the GNOME palette.
+  * Replace Ctrl+s with Ctrl+, for accessing settings
+    (glgo#World/lollypop#1623).</comment>
+    <requestid>679941</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>0f1cec2da5146c6d9610bb86440c6d00</srcmd5>
+    <version>0.9.924</version>
+    <time>1551687855</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.924:
+  * Fix an issue with compilations.</comment>
+    <requestid>681123</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>affd955bc2cc8274c94bbcbf9f27c678</srcmd5>
+    <version>0.9.925</version>
+    <time>1552572141</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.925:
+  * Fix a crash in device manager (glgo#World/lollypop#1698).</comment>
+    <requestid>684859</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>268116f866f0b7e3085d1b43e5790a9f</srcmd5>
+    <version>1.0</version>
+    <time>1552986180</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0:
+  * Spotify/YouTube support is back.
+  * New application menu.
+  * Many bug fixes.
+- Add youtube-dl as recommended dependency.</comment>
+    <requestid>686239</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>63e8f9f9b1f924b496d78184033e02df</srcmd5>
+    <version>1.0.2</version>
+    <time>1553436047</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.2:
+  * Fix a crossfading issue.
+- Changes from version 1.0.1:
+  * Force connect when network is available
+    (glgo#World/lollypop#1588).
+  * Fix a crash on empty collection (glgo#World/lollypop#1712).
+  * Do not empty collection if disk is removed.
+  * Fix search provider.</comment>
+    <requestid>687773</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>772079ecc6c3f96f1f752f63d85dfb5b</srcmd5>
+    <version>1.0.3</version>
+    <time>1553888620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.3:
+  * Fix a crash in Smart Playlists
+  * Add BPM support to Smart Playlists (glgo#World/lollypop#1750).
+  * Add auto playback (glgo#World/lollypop#1748).
+  * Force background color (glgo#World/lollypop#1754).
+  * Fix a crash during startup (glgo#World/lollypop#1751).</comment>
+    <requestid>689816</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>9c143a59a9e8dc75de9baf536c2e2d77</srcmd5>
+    <version>1.0.4</version>
+    <time>1554189822</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.4:
+  * New privacy settings.
+  * Fix a crash (glgo#World/lollypop#1761).
+  * Fix back arrow displayed in &quot;All artists&quot; view.
+    (glgo#World/lollypop#1756).</comment>
+    <requestid>690437</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>6a0277e7dee61ea0330275f6ded362f3</srcmd5>
+    <version>1.0.5</version>
+    <time>1554276518</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.5:
+  * Fix a crash while scanning collection
+    (glgo#World/lollypop#1763).</comment>
+    <requestid>690765</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>81ad813a5707009ad0e72ce39cca1883</srcmd5>
+    <version>1.0.6</version>
+    <time>1555488543</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.6:
+  * Bug fixes.
+  * Workaround a pygobject memory leak (glgo#World/lollypop#1773).
+  * Enhanced MusicBrainz tags support.
+  * Remove lollypop-cli, not maintained and not working.</comment>
+    <requestid>694675</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>ec29f6814112935f95c7cde02fa696a4</srcmd5>
+    <version>1.0.7</version>
+    <time>1556022986</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.0.7:
+  * Fix a crash when selecting albums (glgo#World/lollypop#1783).
+  * Fix a crash when browsing for radio station
+    (glgo#World/lollypop#1777).</comment>
+    <requestid>696837</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>1da8c8d93e3d063b3e36be7db1dfcc9d</srcmd5>
+    <version>1.0.8</version>
+    <time>1557084128</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.8:
+  * Update icon.
+  * Fix short high CPU usage bursts (glgo#World/lollypop#1776).
+  * Use a fixed art size for miniplayer (glgo#World/lollypop#1790).
+  * Add remixers to artist lists (glgo#World/lollypop#1781).</comment>
+    <requestid>700604</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>98c3ac313153d9e0f77a8eea4d411429</srcmd5>
+    <version>1.0.9</version>
+    <time>1557264052</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.9:
+  * Add option for stopping playback after track
+    (glgo#World/lollypop#1775).
+  * Improve warnings when network access is disabled
+    (glgo#World/lollypop#1793).
+  * Fix song switch when crossfading is enabled
+    (glgo#World/lollypop#1794).</comment>
+    <requestid>701412</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>5429cfd6e162bb9ad4eb446722e60b28</srcmd5>
+    <version>1.0.10</version>
+    <time>1557751882</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.10:
+  * Remove space shortcut to fix search with spaces
+    (glgo#World/lollypop#1804).
+  * Fix artist view with multi-disc albums
+    (glgo#World/lollypop#1801).
+  * Allow search by performer (glgo#World/lollypop#1802).
+  * Allow scrolling over FastScroll widget
+    (glgo#World/lollypop#1803).
+  * Show user what will happen on previous button clicked
+    (glgo#World/lollypop#1800).</comment>
+    <requestid>702462</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>8ae930be3880a2504c9e2330cf780c19</srcmd5>
+    <version>1.0.11</version>
+    <time>1558351109</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.11:
+  * Fix &quot;Stop after&quot; feature (glgo#World/lollypop#1814).
+  * Add resize options for album art (glgo#World/lollypop#1810).
+  * Allow per track cover again (glgo#World/lollypop#1356,
+    glgo#World/lollypop#1809).
+  * Locally save albums added from the web
+    (glgo#World/lollypop#1807).</comment>
+    <requestid>704132</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>5f4e11d6146e4edef1b2c73fe9cc7fdb</srcmd5>
+    <version>1.0.12</version>
+    <time>1559029436</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.12:
+  * Prevent view change upon song rate (glgo#World/lollypop#1826).
+  * Prevent scrollbar to be hidden by artist banner
+    (glgo#World/lollypop#1822).
+  * Fix a crash upon click on artist name
+    (glgo#World/lollypop#1821).
+  * Prevent application notifications to pop out of the window
+    (glgo#World/lollypop#1820).</comment>
+    <requestid>705735</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>b09fa4802e7b504acbc664ec627ab82d</srcmd5>
+    <version>1.1.0</version>
+    <time>1561103919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0:
+  * New fullscreen mode.
+  * New MTP sync mode.
+  * New synced lyrics support.</comment>
+    <requestid>711203</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>53daa49dd18ccab63ac80f86e0cb722a</srcmd5>
+    <version>1.1.1</version>
+    <time>1561405964</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1:
+  * Add support for reading synced lyrics from tags.
+  * Fix a crash on playlist update (glgo#World/lollypop#1864).
+  * Don't lose search results upon search mode switch
+    (glgo#World/lollypop#1859).
+  * Fix a case of playback stopping unexpectedly
+    (glgo#World/lollypop#1840).</comment>
+    <requestid>711565</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>054d5c58f55b7d967a5dd2e71a21c1b7</srcmd5>
+    <version>1.1.3.1</version>
+    <time>1561882878</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.3.1:
+  * Fix wrong view displayed when sidebar is disabled
+    (glgo#World/lollypop#1872).
+
+- Update to version 1.1.3:
+  * Bug fixes:
+    glgo#World/lollypop#1865, glgo#World/lollypop#1867,
+    glgo#World/lollypop#1868, glgo#World/lollypop#1869,
+    glgo#World/lollypop#1879, glgo#World/lollypop#1871.</comment>
+    <requestid>712450</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>9ba7e7d15d7acfca018decb8e3db3846</srcmd5>
+    <version>1.1.4.1</version>
+    <time>1562591523</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4.1:
+  * Fix a crash (glgo#World/lollypop#1884).
+- Changes from version 1.1.4:
+  * Fix some crashes (glgo#World/lollypop#1878,
+    glgo#World/lollypop#1880).
+  * Fix a shortcut issue (glgo#World/lollypop#1879).
+  * Fix display of compilations (glgo#World/lollypop#1875).</comment>
+    <requestid>713867</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>2fb3a257c75be6f5c834020055eca240</srcmd5>
+    <version>1.1.4.2</version>
+    <time>1562843806</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4.2:
+  * Fix a crash (glgo#World/lollypop#1885).</comment>
+    <requestid>714114</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>0f4cf9440f2bcf4b4244f6ac421b65fc</srcmd5>
+    <version>1.1.4.3</version>
+    <time>1563259295</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4.3:
+  * Fix an issue in &quot;Decades&quot; view.
+  * Fix a crash when scrolling the artist view
+    (glgo#World/lollypop#1887).</comment>
+    <requestid>715388</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>1a81b1cd2f9ea693cdbedf1802f45d39</srcmd5>
+    <version>1.1.4.4</version>
+    <time>1563456161</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4.4:
+  * Fix an issue with party submenu (glgo#World/lollypop#1896).</comment>
+    <requestid>716123</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>24ca4d86e98ff740a58356c010a750ea</srcmd5>
+    <version>1.1.4.5</version>
+    <time>1563701636</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4.5:
+  * Fix an issue with MTP sync (glgo#World/lollypop#1898).</comment>
+    <requestid>716722</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>f5f3ed4247728bd9b5769918ea1c6d35</srcmd5>
+    <version>1.1.4.6</version>
+    <time>1564302147</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4.6:
+  * Fix an issue with beautifulsoup4.</comment>
+    <requestid>718996</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>6da692891865918f9d73c45d9fd038c1</srcmd5>
+    <version>1.1.4.7</version>
+    <time>1564414283</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4.7:
+  * Remove python-wikipedia dependency.</comment>
+    <requestid>719508</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>f9fdcf6d7a6231b7dfcae95ed222b65d</srcmd5>
+    <version>1.1.4.8</version>
+    <time>1564576593</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4.8:
+  * Fix a crash on Ubuntu 18.04 (glgo#World/lollypop#1907).</comment>
+    <requestid>720008</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>9b7513458a94f835d61a0cf32c63fc87</srcmd5>
+    <version>1.1.4.9</version>
+    <time>1564994319</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4.9:
+  * Another Ubuntu fix (glgo#World/lollypop#1931).</comment>
+    <requestid>720310</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>082f4958fa0dd7114bf5ebc423b53713</srcmd5>
+    <version>1.1.4.11</version>
+    <time>1565105241</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4.11:
+  * Fix an issue with sync code.
+- Changes from version 1.1.4.10:
+  * Fix crash in search (glgo#World/lollypop#1958).</comment>
+    <requestid>721265</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>c88d669cea15a69dc9cc9276a0e74296</srcmd5>
+    <version>1.1.4.12</version>
+    <time>1565695345</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4.12:
+  * Fix adding track to playlist (glgo#World/lollypop#1965).
+  * Fix crash after scan (glgo#World/lollypop#1963).</comment>
+    <requestid>722589</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>e9579b0a9667c1976d57eb668fd0f494</srcmd5>
+    <version>1.1.4.14</version>
+    <time>1565864930</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4.14:
+  * Update genres after removing track.
+- Changes from version 1.1.4.13:
+  * Fix version in meson.build.</comment>
+    <requestid>723291</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>313ac8d8fff6dff93ea00d5aa8419c96</srcmd5>
+    <version>1.1.4.15</version>
+    <time>1566665241</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4.15:
+  * Fix an issue with local artwork.</comment>
+    <requestid>725667</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>996eb0dc93d11d65d474e7eeec23ceb9</srcmd5>
+    <version>1.1.4.16</version>
+    <time>1567679692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4.16:
+  * Do not crash if sidebar is disabled (glgo#World/lollypop#1987).</comment>
+    <requestid>728052</requestid>
+  </revision>
+</revisionlist>

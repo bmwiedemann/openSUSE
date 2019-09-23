@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ff5bc2a533d9cbeeab9d61fda1e5c0a</srcmd5>
+    <version>0.4.13</version>
+    <time>1505416576</time>
+    <user>dimstar_suse</user>
+    <comment>singlespec version of python3-python-magic</comment>
+    <requestid>525959</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b3300ba935cd70f49d1393af19371e00</srcmd5>
+    <version>0.4.15</version>
+    <time>1534940449</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.4.15:
+  * Few test tweaks
+- Enable tests
+- Add patch to fix gzip detection in tests:
+  * magic-tests.patch
+- Add patch to fix working with new file:
+  * magic-new-file.patch
+- Add patch to work with new mimedb:
+  * magic-new-mime.patch
+- Add patch magic-pep8.patch to have other patches apply cleanly</comment>
+    <requestid>630745</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2eb994061340077d3ece9237a7cb7b19</srcmd5>
+    <version>0.4.15</version>
+    <time>1562247867</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the patch magic-new-file.patch to work with newer file
+  package</comment>
+    <requestid>713391</requestid>
+  </revision>
+</revisionlist>

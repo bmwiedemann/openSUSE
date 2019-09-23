@@ -1,0 +1,48 @@
+--- AdmHndlr.c
++++ AdmHndlr.c
+@@ -12,6 +12,7 @@
+ #include "LinuxDefines.h"
+ #include "AdmHndlr.h"
+ #include "serial.h"
++#include <string.h>
+ 
+ 
+ ULONG Adm_SetWWT( ULONG ulWWT ) {
+--- T1Hndlr.c
++++ T1Hndlr.c
+@@ -11,8 +11,11 @@
+ 
+ #include "pcscdefines.h"
+ #include "LinuxDefines.h"
++#include "AdmHndlr.h"
+ #include "T1Hndlr.h"
+ #include "ctapi.h"
++#include <string.h>
++#include <stdio.h>
+ 
+ /* This can actually be read from the ATR but since many
+    smartcard manufacturers still can't figure out what it
+--- ctapi.c
++++ ctapi.c
+@@ -9,6 +9,8 @@
+ ******************************************************************/
+ 
+ #include <stdio.h>
++#include <string.h>
++#include <unistd.h>
+ #include "defines.h"
+ #include "ctapi.h"
+ #include "serial.h"
+--- ifdhandler.c
++++ ifdhandler.c
+@@ -15,8 +15,10 @@
+ #include "ctbcs.h"
+ #include "ifdhandler.h"
+ #include "LinuxDefines.h"
++#include "AdmHndlr.h"
+ #include "T1Hndlr.h"
+ #include <string.h>
++#include <stdio.h>
+ 
+ #define PCSC_DEBUG 1
+ 

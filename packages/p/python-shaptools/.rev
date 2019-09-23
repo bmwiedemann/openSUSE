@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4e9be00e0b1975876f2550c6f9a71829</srcmd5>
+    <version>0.1.0</version>
+    <time>1557321392</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove enum34 dependency from code 
+- Fix the package license to be in synch with repo license.
+- Improved the use of keystore access. When the key_name is informed,
+  the user_name/user_password is not needed.
+- Fix UT to check the inst formatting correctly
+- Move the comment to the right place
+- Enforce the HANA instance nr format.
+- Forces Intance nr always with 2 positions filled with 0
+- Forces right formating on HANA OS admin user.
+- First package version 
+</comment>
+    <requestid>698150</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>85472219f74ae719a4e3bc362071aec2</srcmd5>
+    <version>0.2.1</version>
+    <time>1560338263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709132</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a83a504179a4dfc99a148b3625b747d3</srcmd5>
+    <version>0.2.1</version>
+    <time>1560800043</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709433</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c5d2f866152ee58f281fefcff45e7905</srcmd5>
+    <version>0.3.0</version>
+    <time>1563701619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>716587</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f2c5cd0a0ae1584890fd1433cb03f6c0</srcmd5>
+    <version>0.3.1</version>
+    <time>1563914421</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717873</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1da6a7b46b552d86aee9e2e93fae717a</srcmd5>
+    <version>0.3.1</version>
+    <time>1565179284</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for Power machines
+  (jsc#SLE-4031, jsc#SLE-4143, boo#1137989)</comment>
+    <requestid>721481</requestid>
+  </revision>
+</revisionlist>

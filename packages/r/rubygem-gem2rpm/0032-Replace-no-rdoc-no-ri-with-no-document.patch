@@ -1,0 +1,25 @@
+From 9adb19584120941300dc8269f6a8563eb85b1a1c Mon Sep 17 00:00:00 2001
+From: Stephan Kulow <coolo@suse.de>
+Date: Sat, 23 Feb 2019 07:45:40 +0100
+Subject: [PATCH 32/32] Replace --no-rdoc --no-ri with --no-document
+
+---
+ templates/opensuse.spec.erb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/templates/opensuse.spec.erb b/templates/opensuse.spec.erb
+index b070745..4bcc224 100644
+--- a/templates/opensuse.spec.erb
++++ b/templates/opensuse.spec.erb
+@@ -165,7 +165,7 @@ find -type f -print0 | xargs -0 touch -r %{S:0}
+ <%= config[:gem_install_args] %> \
+ <% end -%>
+ <% if config[:disable_docs] -%>
+-  --no-rdoc --no-ri \
++  --no-document \
+ <% end -%>
+ <% unless spec.executables.empty? -%>
+   --symlink-binaries \
+-- 
+2.20.1
+

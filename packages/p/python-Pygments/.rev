@@ -1,0 +1,266 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c4ce851dc587c4bfc60829f92ae0e3db</srcmd5>
+    <version>1.4</version>
+    <time>1309775853</time>
+    <user>azouhr</user>
+    <comment></comment>
+    <requestid>75205</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f67e09bd336edf76791efbf7fa0f66a1</srcmd5>
+    <version>1.4</version>
+    <time>1309775868</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 75205
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bae9ba855404a2b01a6666d526a1242a</srcmd5>
+    <version>1.4</version>
+    <time>1317024776</time>
+    <user>saschpe</user>
+    <comment>- Disable tests again, breaks i586 build
+
+- Fixed license to BSD-2-Clause
+
+- Change license to BSD-3-Clause (SPDX style)
+- Removed %clean section (has sane default)
+- Added python-distribute requirement</comment>
+    <requestid>84564</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>bae9ba855404a2b01a6666d526a1242a</srcmd5>
+    <version>1.4</version>
+    <time>1319182380</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>b25048ce2bac34d171157f9803a61a5c</srcmd5>
+    <version>1.4</version>
+    <time>1323194232</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4cac8a341d9d852f15b4cfce92c78aa3</srcmd5>
+    <version>1.5</version>
+    <time>1331627945</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.5:
+  - Fix Python 3 terminal highlighting with pygmentize
+  - In the LaTeX formatter, escape special &amp;, &lt; and &gt; chars
+  - In the LaTeX formatter, fix display problems for styles with token
+    background colors
+  - Enhancements to the Squid conf lexer
+  - Several fixes to the reStructuredText lexer
+  - Recognize methods in the ObjC lexer
+  - Fix Lua &quot;class&quot; highlighting: it does not have classes
+  - Fix degenerate regex in Scala lexer  and highlighting bugs
+  - Fix number pattern order in Ocaml lexer
+  - Fix generic type highlighting in ActionScript 3
+  - Fixes to the Clojure lexer
+  - Fix degenerate regex in Nemerle lexer
+  - Fix infinite looping in CoffeeScript lexer
+  - Fix crashes and analysis with ObjectiveC lexer
+  - Add some Fortran 2003 keywords.
+  - Fix Boo string regexes
+  - Add &quot;rrt&quot; style
+  - Fix infinite looping in Darcs Patch lexer.
+  - Lots of misc fixes to character-eating bugs and ordering problems in many
+    different lexers.
+
+- fix Obsoletes</comment>
+    <requestid>109037</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ee2d47a5c90c83944660d97317b6fcc4</srcmd5>
+    <version>1.5</version>
+    <time>1337196940</time>
+    <user>coolo</user>
+    <comment>- Removed files with non-oss license, see bnc#760344
+- Cleanups in python 2 and python 3 spec files (forwarded request 120936 from TheBlackCat)</comment>
+    <requestid>120937</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>ee2d47a5c90c83944660d97317b6fcc4</srcmd5>
+    <version>1.5</version>
+    <time>1340184032</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>ee2d47a5c90c83944660d97317b6fcc4</srcmd5>
+    <version>1.5</version>
+    <time>1359109983</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bee83b4c76ca0696eb5cba56b6c2cbce</srcmd5>
+    <version>1.6</version>
+    <time>1367824122</time>
+    <user>coolo</user>
+    <comment>Update to version 1.6: (forwarded request 174470 from TheBlackCat)</comment>
+    <requestid>174471</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>627a09beb415c30b14cc920c0cf77b8f</srcmd5>
+    <version>1.6</version>
+    <time>1371651764</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179704</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>627a09beb415c30b14cc920c0cf77b8f</srcmd5>
+    <version>1.6</version>
+    <time>1379664113</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>f0d21eef11b322c439c72f8fa1aad013</srcmd5>
+    <version>1.6</version>
+    <time>1382693352</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204633</requestid>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>4b9b406850289115af551d2ae3aa15e0</srcmd5>
+    <version>1.6</version>
+    <time>1397041268</time>
+    <user>coolo</user>
+    <comment>- add LICENSE to doc section (forwarded request 229272 from dirkmueller)</comment>
+    <requestid>229293</requestid>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>4b9b406850289115af551d2ae3aa15e0</srcmd5>
+    <version>1.6</version>
+    <time>1409302801</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3eab771e1c4830e8a73feffcc3b3e985</srcmd5>
+    <version>2.0.2</version>
+    <time>1426485528</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290391</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>331e313c98236d7a953b11659a1a3599</srcmd5>
+    <version>2.1</version>
+    <time>1454149859</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355804</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>233305ea730c939a430851cdb3e49ca5</srcmd5>
+    <version>2.1.1</version>
+    <time>1456127754</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359553</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fbb0d03e6dbedd67f1fa7a78e6fd6de9</srcmd5>
+    <version>2.1.3</version>
+    <time>1477134100</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.3:
+  - Fixed regression in Bash lexer (PR#563)
+  - Fixed Python 3 regression in image formatter (#1215)
+  - Fixed regression in Bash lexer (PR#562)</comment>
+    <requestid>435705</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fbe3990a94c338b59fce7322fb01a486</srcmd5>
+    <version>2.2.0</version>
+    <time>1492618179</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>486646</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>9e0cfefa41d994b41f6f74ab96b8f4d1</srcmd5>
+    <version>2.2.0</version>
+    <time>1506108735</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build in a python2.x only env</comment>
+    <requestid>527385</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>230845b4951c6880186dbe7efdd295cb</srcmd5>
+    <version>2.2.0</version>
+    <time>1532160472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623134</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>5c635e9052d4f489f74d6a4a9d634c8c</srcmd5>
+    <version>2.2.0</version>
+    <time>1545376788</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659309</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>7391f32730ed8a93351c3769a8a3026a</srcmd5>
+    <version>2.2.0</version>
+    <time>1547540017</time>
+    <user>dimstar_suse</user>
+    <comment>- Added denose.patch removing dependency on the nose package.
+  https://bitbucket.org/birkenfeld/pygments-main/issues/1490/remove-nose-dependency</comment>
+    <requestid>664354</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9fa981992400428f23a1481b4edd79fb</srcmd5>
+    <version>2.3.1</version>
+    <time>1551024020</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>673460</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>5188ae7b5ced450f99ae47188af94320</srcmd5>
+    <version>2.3.1</version>
+    <time>1554372243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690449</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>75c53a56536bc6a50738f103f8152950</srcmd5>
+    <version>2.4.0</version>
+    <time>1558427724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704316</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6c62dc77bbfdd201951083faad165d4f</srcmd5>
+    <version>2.4.2</version>
+    <time>1559902689</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.2:
+  - Fix encoding error when guessing lexer with given ``encoding`` option
+    (#1438)
+  - Updated lexers:
+    * Coq (#1430)
+    * MSDOS Session (PR#734)
+    * NASM (#1517)
+    * Objective-C (PR#813, #1508)
+    * Prolog (#1511)
+    * TypeScript (#1515)
+  - Support CSS variables in stylesheets (PR#814, #1356)
+  - Fix F# lexer name (PR#709)
+  - Fix ``TerminalFormatter`` using bold for bright text (#1480)</comment>
+    <requestid>707618</requestid>
+  </revision>
+</revisionlist>

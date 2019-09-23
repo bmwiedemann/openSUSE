@@ -1,0 +1,186 @@
+-------------------------------------------------------------------
+Wed Mar  6 11:21:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.12:
+  * many typo fixes
+  * see changelog.rst for the detailed changes
+
+-------------------------------------------------------------------
+Thu Dec  6 10:05:29 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+
+-------------------------------------------------------------------
+Mon Jul 16 16:17:11 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+  * removed devel from noarch package
+  * made %files section more specific
+
+- update to version 0.7.11:
+  * Clean up some problematic font issues:
+    + Remove the outright broken Goudy Old Style, plus other mostly
+      Adobe-only fonts, from the font_family config setting; it is now
+      simply Georgia, serif which is what the majority of users were
+      rendering anyways.
+    + Clear out the default value of head_font_family (which contained
+      Garamond, a nice but also Adobe only font)
+    + Set head_font_family so it falls back to the value of
+      font_family unless a user has explicitly set it themselves.
+  * :feature:`18 backported` (via :issue:`101`) Add optional next and
+    previous links at the top and bottom of page content. Use theme
+    option show_relbars to enable these. Credit: William Minchin.
+  * :support:`- backported` Miscellaneous project maintenance updates
+    such as adding to Travis CI and enforcing the use of flake8.
+  * :feature:`110 backported` Add badge_branch option allowing
+    configurability of which specific Git branch the Travis, Codecov,
+    etc buttons default to. Credit: @TitanSnow.
+  * :support:`111 backported` Add setuptools-level entrypoint for
+    improved theme distribution compatibility. Thanks to Aaron
+    Carlisle for the patch.
+
+-------------------------------------------------------------------
+Mon Sep 18 05:33:38 UTC 2017 - tbechtold@suse.com
+
+- use files.pythonhosted.org for Source
+
+-------------------------------------------------------------------
+Thu Jun  1 21:01:46 UTC 2017 - dmueller@suse.com
+
+- update to 0.7.10
+  * Add code_highlight to README
+  * Anticipate releases 1.2 with unstable_prehistory feature
+  * Allow to set font-size for body and caption text
+  * Ignore pyenv version file
+  * Combine multiple div.sphinxsidebar definitions
+  * Allow control of body text alignment
+  * Fix a few html mismatched + closing tags
+  * krTheme does have a repo :)
+  * Positive margin-bottom for the sidebar #44
+  * Make directly nested lists indent in narrow screens
+  * Fix a much older typo too
+  * Tweaks to README, mostly layout
+  * Normalize case of faux-booleans in settings documentation.
+  * Fixed navigation for large screens #44
+  * Start putting GH issue numbers in changelog.
+  * Fix styling of emphasized/highlighted lines
+  * Fix duplicate-sphinx-link warning.
+  * New homepage
+  * Add div.highlight configurability
+  * Remove spurious close-LI tag, re #39
+  * That was a dumb typo, stupid self contained ecosystem
+  * Re-apply relations sidebar removed in 1fb8e2f5982b8c87642ae0fb5d953aa3faba82e7
+  * Fix caption config options
+  * Update LICENSE for 2016, also add date range
+  * Tweak changelog entry
+  * Add support for canonical URL headers
+  * remove demo, gitignore #57
+  * Yea let's do this instead, it's cleaner and less confusing.
+  * Removed Gap between Footnote Label and Description
+  * Make fixed sidebar behavior re #57, re #44 opt-in
+  * Include a modern .gitignore for python projects
+  * Move from 0.7 to 1.0
+  * Clean up formatting of example sidebars conf
+  * Configure wheels to be universal
+  * Add margin-bottom to field-list paragraphs so they stand apart
+  * Don't put an underline on linked images.
+  * Fix a couple typos
+  * Github button was deprecated and gave wrong icon
+  * GPG sign and build wheels by default
+  * Set correct variable name for admonition bg
+  * Make width settings configurable
+  * This was actually an overall bad idea due to Sphinx dep pinning :(
+  * Add Codecov support
+  * On second thought
+  * Wuups
+  * Fix up LI-indented code blocks to look consistent w/ top level code blocks
+  * RTD default still RTD's own theme, wuups
+  * Fix #32
+  * More Sphinx specific changelog formatting
+  * Wrap relations sidebar in div, replace div.related styling w/ hide of div.relations
+  * Shuffle README around a bit to make it clear it's now Sphinx default theme.
+  * Ensure dev environments have Sphinx installed, heh
+  * Whitespace & comment in layout
+  * Insert show_related setting & ensure both instances of related nav styling honor it
+  * Implement #78
+  * Update dev reqs re: new release tasks
+  * Remove top margin for sidebar #44
+  * Use correct variable for sidebar hr element.
+  * Use SVG icons for Travis CI button
+  * Expand explanation of enabling related links for existing installs
+  * Reverse order of changelog so appending to it / reading the end of it, is easier
+  * Changelog re #96
+  * Fix top margin for nav when collapsed #44
+  * Tweak README example list to include us now
+  * Fix admonition cross-ref selector
+  * Add div.topic configurability
+  * Use codecs.open w/ utf-8 for README containing Unicode
+  * Make it clearer what we mean by 'enabling' an html sidebar; fixes #98
+  * Use https URL for the "forkme" image on AWS
+  * Add viewcode target highlighting
+  * 1st stab at making a real docs site re #7
+  * Honor core Sphinx html_show_copyright option.
+  * translate "Navigation" in template
+  * Rearrange body so sidebar precedes main document #44
+  * Switch the link to requests from HTTPS to HTTP
+  * Overhaul install docs to be clearer, more informative
+  * fix documentation for `github_type` and `github_count`
+  * Start using invoke release tasks
+  * Add more configurable colors
+  * Might as well start using new changeloggy bits
+  * Move nav div above document div #44
+  * You'd think the syntax highlighting would have tipped me off here
+  * Fix sphinx-build warnings for demo
+  * Improved admonition differentiation
+  * Apply erasure of border-bottom to a.image-reference:hover too, re #77
+  * Copy demo from guzzle_sphinx for testing
+  * Add ability to override collapse in toctree variable.
+  * Remove demo/_build from git
+  * Ignore demo build artifacts
+  * Add setting for recent invocations changes
+  * WIP re: changelog cutover
+  * Happy New Year
+  * Do not show GitHub button if no github_user or github_repo specified
+
+-------------------------------------------------------------------
+Mon Dec 19 17:57:07 UTC 2016 - jmatejek@suse.com
+
+- update for multipython build
+
+-------------------------------------------------------------------
+Wed Jul  8 14:29:06 UTC 2015 - cdenicolo@suse.com
+
+- license update: BSD-3-Clause
+  see LICENSE file.
+
+-------------------------------------------------------------------
+Thu Apr 23 11:11:44 UTC 2015 - mcihar@suse.com
+
+- Compatibility with SLE11
+
+-------------------------------------------------------------------
+Mon Apr 13 16:29:47 UTC 2015 - alarrosa@suse.com
+
+- Removed dependency with python-Sphinx to break a dependency loop when
+  building python-Sphinx (which in turns, requires python-alabaster
+  to be installed)
+
+-------------------------------------------------------------------
+Thu Apr  9 01:54:05 UTC 2015 - termim@gmail.com
+
+- copied from python3-alabaster
+ * add fdupes check
+
+-------------------------------------------------------------------
+Sat Mar 21 20:35:03 UTC 2015 - arun@gmx.de
+
+- update to version 0.7.3:
+  * Hide shadow related styles on bibliography elements, in addition
+    to the earlier change re: border. Thanks again to Philippe Dessus.
+
+-------------------------------------------------------------------
+Sat Mar 14 00:20:15 UTC 2015 - arun@gmx.de
+
+- initial version
+

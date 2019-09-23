@@ -1,0 +1,5 @@
+<package name="trytond_country" project="openSUSE:Factory">
+  <title>The country module of the Tryton application platform.</title>
+  <description></description>
+  <devel project="Application:ERP:GNUHealth:Factory" package="trytond_country"/>
+</package>

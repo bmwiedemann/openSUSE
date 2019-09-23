@@ -1,0 +1,137 @@
+#!/bin/bash
+
+# Copyright 2005 Peter Poeml <apache@suse.de>. All Rights Reserved.
+
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+
+
+debug=false
+
+function usage() {
+	cat <<-EOF
+	usage: $(basename $0) [-r] FILE VAR WORD
+
+	Add word WORD to variable VAR in file FILE, or remove 
+	it if the -r option is given.
+	
+	Example:
+	$(basename $0) /etc/sysconfig/apache2 APACHE_SERVER_FLAGS asdf
+	leads to the change:
+	-APACHE_SERVER_FLAGS="SSL STATUS ruby"
+	+APACHE_SERVER_FLAGS="SSL STATUS ruby asdf"
+
+	If multiple lines matching ^VAR= are found (which happens to be a habit of 
+	mine), only the last one is manipulated.
+
+	It does not work for WORD starting with characters like a dash which
+	prevent word boundary matching.
+	
+	EOF
+}
+
+function find_last_occurrence () {
+	# takes two arguments, FILE and VAR
+	# and return the number of the last line where
+	# VAR occurs in FILE (not commented)
+	grep -n -- "^[[:space:]]*$1" $2 | tail -n 1 | cut -d: -f1
+}
+
+function word_present () {
+	. $file
+	case " ${!var} " in
+	*" $word "*) true;;
+	*) false;;
+	esac
+}
+
+function add_word() {
+	local word=$1
+	local word_quoted=$2
+	if ! word_present; then
+		$debug && cp $file $tmpf
+		sed -i -e "${lineno} { 
+			s/^[[:space:]]*\($var=\".*\)\(\".*\)/\1 $word_quoted\2/; 
+			s/=\" /=\"/ 
+			}" $file
+		$debug && diff -u $tmpf $file
+	else
+		echo \"$word\" already present
+	fi
+	# some balancing for vim"s syntax highlighting
+}
+
+function remove_word() {
+	local word=$1
+	local word_quoted=$2
+	if word_present; then
+		$debug && cp $file $tmpf
+		sed -i -e "${lineno} { 
+			s/\(['\" 	]\)$word_quoted\(['\" 	]\)/\1 \2/g
+			s/  / /g
+			}" $file
+		$debug && diff -u $tmpf $file
+	else
+		echo \"$word\" not present
+	fi
+	# some balancing for vim"s syntax highlighting
+
+}
+
+# poor man's option parsing
+
+case "$1" in
+-h) usage; exit 0;;
+esac
+
+if [ $# -lt 3 ]; then
+	echo not enough arguments
+	echo
+	usage; exit 1
+fi
+
+action=add
+case "$1" in 
+-r) action=remove; shift;;
+esac
+
+file=$1; shift
+var=$1; shift
+word=$1
+word_quoted=${1//\//\\\/}
+
+
+if $debug; then
+	echo FILE: $file
+	echo VAR: $var
+	echo WORD: $word
+	echo current content:
+	grep "^$var=" $file | tail -n 1
+	echo
+fi
+
+
+if ! [ -r $file ]; then
+	echo ${0##*/}: file $file is not a readable file
+	exit 1
+fi
+
+lineno=$(find_last_occurrence $var $file)
+if [ -z $lineno ]; then
+	echo ${0##*/}: variable $var does not occur in $file 
+	exit 1
+fi
+
+$debug && tmpf=$(mktemp /tmp/$(basename $0).XXXXXX)
+
+if [ $action = add ]; then
+	add_word $word $word_quoted $lineno
+else
+	remove_word $word $word_quoted $lineno
+fi
+
+$debug && rm -f $tmpf
+
+exit 0

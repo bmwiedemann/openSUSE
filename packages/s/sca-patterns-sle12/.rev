@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a92039a5fc947e2a2d47168b227ffba1</srcmd5>
+    <version>1.0</version>
+    <time>1515261219</time>
+    <user>dimstar_suse</user>
+    <comment>For SLE15, removed %clean section from spec</comment>
+    <requestid>562004</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e91fa9289f14b1ee8bd7ced587ea6965</srcmd5>
+    <version>1.0</version>
+    <time>1515506140</time>
+    <user>dimstar_suse</user>
+    <comment>New Security Announcement Pattern (forwarded request 562594 from jrecord)</comment>
+    <requestid>562595</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d7148ed44add18727bf98e88199dc088</srcmd5>
+    <version>1.0</version>
+    <time>1516634301</time>
+    <user>dimstar_suse</user>
+    <comment>New Security Announcement Patterns (forwarded request 567803 from jrecord)</comment>
+    <requestid>567804</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>99c5a4438a66c793e1589284284986e2</srcmd5>
+    <version>1.0</version>
+    <time>1517824350</time>
+    <user>dimstar_suse</user>
+    <comment>security announcement patterns (forwarded request 572121 from jrecord)</comment>
+    <requestid>572122</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7a9a6d3bfc4c0500ec16ec52cac663f2</srcmd5>
+    <version>1.0</version>
+    <time>1519218813</time>
+    <user>dimstar_suse</user>
+    <comment>security announcement patterns (forwarded request 578561 from jrecord)</comment>
+    <requestid>578562</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>c97668176d8565d6ddd8ca3150cd9b2f</srcmd5>
+    <version>1.0</version>
+    <time>1530866582</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620918</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>e430ad612b14b4f6c9a025da6e67dccd</srcmd5>
+    <version>1.0</version>
+    <time>1549017987</time>
+    <user>dimstar_suse</user>
+    <comment>Changes from github</comment>
+    <requestid>670139</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,220 @@
+-------------------------------------------------------------------
+Mon Apr 29 05:15:16 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.83
+   see /usr/share/doc/packages/perl-Inline/Changes
+
+  0.83 Sun 28 Apr 2019 11:30:37 AM CEST
+   - Reference Inline::Module in docs related to installation (PR#68
+     @nrdvana++)
+   - create_config_file: don't accidentally skip rest of directory scanning
+     (PR#73 @eserte++)
+   - Merge per-language config, not overwrite (PR#71 @mohawk++)
+
+-------------------------------------------------------------------
+Wed Apr  3 07:05:27 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.82
+   see /usr/share/doc/packages/perl-Inline/Changes
+
+  0.82 Sun 31 Mar 2019 04:10:24 PM CEST
+   - Another fix for @INC PR#69 TINITA
+
+-------------------------------------------------------------------
+Mon Feb  4 06:11:25 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.81
+   see /usr/share/doc/packages/perl-Inline/Changes
+
+-------------------------------------------------------------------
+Tue Apr 14 19:58:13 UTC 2015 - coolo@suse.com
+
+- updated to 0.80
+   see /usr/share/doc/packages/perl-Inline/Changes
+
+-------------------------------------------------------------------
+Fri Nov 23 12:57:47 UTC 2012 - bwiedemann@suse.com
+
+- require make+gcc to avoid
+  https://rt.cpan.org/Public/Bug/Display.html?id=81375
+
+-------------------------------------------------------------------
+Wed Feb  8 02:35:57 UTC 2012 - vcizek@suse.com
+
+- update to 0.50
+      Inline.pm - Bump version number to 0.50
+      Inline.pm - Bring version numbering into line with recommendations made in
+                  http://perldoc.perl.org/perlmodstyle.html#Version-numbering
+      Inline.pm - Rename create_config_file()'s private @INC to @_inc.
+                  (This is just to avoid any confusion that we might be
+                  messing with @INC.)
+                - In creating @_inc, we now additionally grep for the location
+                  of Parse::RecDescent - in case it's in a different PERL5LIB
+                  location to Inline (as generally happens with cpan smokers -
+                  but could happen anywhere).
+                - Update copyright dates throughout.
+      C/t - Make alterations to all of the '.t' files in C/t (except
+            for 00init.t). This is in reponse to ticket 73448, which
+            raised the possibility that Inline may get built with the
+            PERL_INSTALL_ROOT environment variable set.
+      Inline.pod - mention the need to make provision for the
+                   PERL_INSTALL_ROOT environment variable iff it has
+                   been set.
+      As the result of input from David Oswald:
+      Inline.pod - Changes relating to "CONFIGURE_REQUIRES" and fix
+                   typo reported in ticket 73108.
+      Inline-FAQ.pod - Changes relating to "CONFIGURE_REQUIRES"
+      Inline.pm - Bump version to 0.49_01
+      lib/Inline/MakeMaker.pm - Bump version to 0.49_01
+
+-------------------------------------------------------------------
+Thu Dec  8 02:35:25 UTC 2011 - vcizek@suse.com
+
+- update to 0.49
+  * Inline.pm - small alteration to M19_usage_language error message
+    - Have the config file re-created *before* we croak with
+      M19_usage_language(). (Re-creating the config file should
+      alleviate the need to croak, thus allowing the script to
+      complete successfully.) Thanks to Patrick LeBoutillier for
+      the patch, and to David Oswald for pursuing this.
+- licence correction (same as Perl)
+
+-------------------------------------------------------------------
+Sun Nov 20 20:46:11 UTC 2011 - coolo@suse.com
+
+- obsolete perl-Inline-C correctly
+
+-------------------------------------------------------------------
+Fri Nov 18 11:10:23 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Feb 22 10:09:50 UTC 2011 - vcizek@novell.com
+
+- update to 0.48 
+  * new buildrequires - Test::Warn
+  * Makefile.PL - Change the Test::Warn dependency from 0.22 to 0.21 and
+      specify it in top-level Makefile.PL instead of in C/Makefile.PL.
+  * Changes to Inline::C test suite - see C/Changes.
+
+-------------------------------------------------------------------
+Mon Jan 24 11:03:36 UTC 2011 - vcizek@novell.com
+
+- update to 0.47 
+  Version 0.47 released to CPAN. No changes from 0.46_02
+
+-------------------------------------------------------------------
+Wed Dec  1 10:33:17 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:14 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Feb 16 14:13:14 UTC 2010 - coolo@novell.com
+
+- update to 0.46
+  * Changes to Inline.pm, denter.pm, and Inline.pod relating to "fixing" untainting
+   (to the extent that untainting of -T inline scripts works as documented).
+  * C/C.pod - document that *fully qualified* paths for LIBS, INC, TYPEMAPS and MYEXTLIB
+          are needed. (RT ticket 5207)
+  * Inline.pm - remove "defined" from "defined %main::Inline::Config::" as that usage
+            causes a deprecation warning with perl-5.11 and later. (RT ticket 53227)
+  * Inline.pm - fix sub push_overrides (RT ticket 49669)
+            This change responsible for "Subroutine Inline::C::get_parser redefined"
+            warnings that can occur during build stage under certain circumstances.
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Tue Jan 20 15:51:57 CET 2009 - anicka@suse.cz
+
+- update to 0.45
+  * Apply patch to Inline.pm that addresses a problem with
+    whitespace occurring in the name of the build directory.
+  * Fix ParseRegExp.pm.
+  * Fix (in Inline.pm) problem regarding the calling of the same
+    script from different builds of perl.
+  * Allow Inline::install() subroutine to apply to languages other
+    than C and CPP.
+  * Fix C/Makefile.PL so that the C compiler can still be found
+    when $Config{cc} reports something like /some/place/cc.
+  * In C/C.pm, allow for the calling of multiple typemaps, and
+    have the "No Inline C functions bound to Perl" warning 
+    specify the file for which no bindings were found
+  * Minor doc fixes.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:47 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Oct 16 21:59:07 CEST 2003 - mmj@suse.de
+
+- Don't build as root
+- Use %perl_make_install
+
+-------------------------------------------------------------------
+Fri Aug 22 15:05:55 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Jul 14 17:00:41 CEST 2003 - mmj@suse.de
+
+- Use vendor_install target and friends 
+
+-------------------------------------------------------------------
+Tue Jul  1 12:55:03 CEST 2003 - mmj@suse.de
+
+- Use %perl_process_packlist
+
+-------------------------------------------------------------------
+Wed Jun 18 09:56:46 CEST 2003 - coolo@suse.de
+
+- package directories
+
+-------------------------------------------------------------------
+Tue May 13 13:06:42 CEST 2003 - mmj@suse.de
+
+- Package all files
+
+-------------------------------------------------------------------
+Mon Dec  2 14:52:31 CET 2002 - mmj@suse.de
+
+- Update to 0.44
+
+-------------------------------------------------------------------
+Mon Jul 29 12:33:25 CEST 2002 - mls@suse.de
+
+- Fixed neededforbuild for perl-5.8.0
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Wed Aug  1 14:24:54 CEST 2001 - grimmer@suse.de
+
+- update to 0.43
+
+-------------------------------------------------------------------
+Fri Jun 22 15:28:43 CEST 2001 - grimmer@suse.de
+
+- added missing Requires:
+
+-------------------------------------------------------------------
+Fri Jun 22 12:32:18 CEST 2001 - grimmer@suse.de
+
+- initial build (version 0.42), required for latest
+  version of grepmail (probably other packages will need it, too)
+

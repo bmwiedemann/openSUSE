@@ -1,0 +1,11 @@
+diff -Nru azure-mgmt-servicebus-0.5.3.orig/setup.py azure-mgmt-servicebus-0.5.3/setup.py
+--- azure-mgmt-servicebus-0.5.3.orig/setup.py	2019-04-08 12:21:16.373865982 +0200
++++ azure-mgmt-servicebus-0.5.3/setup.py	2019-04-08 12:21:25.817956806 +0200
+@@ -81,7 +81,4 @@
+         'msrestazure>=0.4.32,<2.0.0',
+         'azure-common>=1.1',
+     ],
+-    extras_require={
+-        ":python_version<'3.0'": ['azure-mgmt-nspkg'],
+-    }
+ )

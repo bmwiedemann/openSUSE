@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>061316b16fe762548348277a38ac094e</srcmd5>
+    <version>0.3.0</version>
+    <time>1533627742</time>
+    <user>dimstar_suse</user>
+    <comment>This script allows to generate and update symbol version linker scripts which                                                                             
+adds version information to the exported symbols. The script is intended to be
+integrated as part of a shared library build to check for changes in the set of
+exported symbols and update the symbol version linker script accordingly.</comment>
+    <requestid>627587</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f4fdfaaef757927a7949f392012dbe6e</srcmd5>
+    <version>0.3.0</version>
+    <time>1533887407</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628257</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f8c1917975c0820eda3f95b229a75a9c</srcmd5>
+    <version>0.3.1</version>
+    <time>1534940363</time>
+    <user>dimstar_suse</user>
+    <comment>- Just require python-setuptools not use macros as it gets auto-expanded
+  by lua parser properly
+
+- Update to version 0.3.1
+  * Fixed bug when sorting releases: the older come first
+  * Added missing runtime requirement for setuptools
+  * Added manpage generation</comment>
+    <requestid>630539</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7382c65bfaaadccfdf72eec8b257cc81</srcmd5>
+    <version>0.3.2</version>
+    <time>1566551144</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop no longer needed abimap-0.3.0-disable-pytest-console-script-tests.patch
+  and properly depend on pytest-console-scripts
+
+- Update to 0.3.2:
+  * Fixed broken builds due to changes in warning output
+  * Changed tests to check error messages
+  * Added python 3.7 to testing matrix
+  * Added requirement to verify SNI when checking URLs in docs</comment>
+    <requestid>725248</requestid>
+  </revision>
+</revisionlist>

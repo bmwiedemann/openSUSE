@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>24f3831b440bd9fd9d38742f573e7d1f</srcmd5>
+    <version>1.0.1</version>
+    <time>1529501654</time>
+    <user>maxlin_factory</user>
+    <comment>- Query metadata server in GCE</comment>
+    <requestid>617865</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4385d8e76b8582507cccff8864a90ecd</srcmd5>
+    <version>1.0.1</version>
+    <time>1533045590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626118</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2ad19e25ba32ca5b4f239688c78125eb</srcmd5>
+    <version>1.0.3</version>
+    <time>1560537734</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>709589</requestid>
+  </revision>
+</revisionlist>

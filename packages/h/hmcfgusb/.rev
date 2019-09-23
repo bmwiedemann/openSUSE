@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>34622624a7f232d9784c770db29613b8</srcmd5>
+    <version>0.103</version>
+    <time>1523029641</time>
+    <user>dimstar_suse</user>
+    <comment>- Mark LICENSE as %license
+- rename changes file
+- removed _service and used spec-clean
+- kicked pre-systemd support (SLE11)
+- clean up spec file
+- upgrade to hmcfgusb (0.103-1) unstable; urgency=low
+  * flash-ota: add support for HM-HMOD-UART and TSCUL
+  * hmsniff: add support for HM-MOD-UART
+  * flash-hmmoduart: firmware updating on HM-MOD-UART
+  * flash-ota: various bug-fixes
+- adapt to systemd for newer distros</comment>
+    <requestid>593729</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>024717c86f37cbf92b4750bed0339689</srcmd5>
+    <version>0.103</version>
+    <time>1531135652</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621068</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ddaa848fe633bf77af5cf9fd51863744</srcmd5>
+    <version>0.103</version>
+    <time>1559837727</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706052</requestid>
+  </revision>
+</revisionlist>

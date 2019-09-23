@@ -1,0 +1,6 @@
+<package name="cinnamon-control-center" project="openSUSE:Factory">
+  <title>Utilities to configure the Cinnamon desktop</title>
+  <description>This package contains configuration applets for the Cinnamon desktop, allowing to set accessibility configuration, desktop
+fonts, keyboard and mouse properties, sound setup, desktop theme and background, user interface properties, screen resolution, and other Cinnamon parameters.</description>
+  <devel project="X11:Cinnamon:Factory" package="cinnamon-control-center"/>
+</package>

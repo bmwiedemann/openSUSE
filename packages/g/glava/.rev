@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c7ba98a1b58bd156cc5f3f41b9b07ec</srcmd5>
+    <version>1.5.8</version>
+    <time>1548335527</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial package for openSUSE in version 1.5.8
+</comment>
+    <requestid>667428</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c878946ed3f2650b898c627b304cef10</srcmd5>
+    <version>1.5.8</version>
+    <time>1551113742</time>
+    <user>coolo</user>
+    <comment>- Add Requires libglvnd-devel
+  See: https://github.com/wacossusca34/glava/issues/100</comment>
+    <requestid>678520</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>817afcac827fe1706662e905daf793a9</srcmd5>
+    <version>1.6.0</version>
+    <time>1552380879</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.0:
+  * FIFO support has been added. See README.md for details, also see #78
+  * Added sampling modes for the GLSL smoothing pass to allow for more accurate output
+  * Added support for disabling shader passes through GLSL, see #97
+  * Enhanced rendering and options for graph, courtesy of @arch1t3cht30[3], see #97
+  * Fixed clickthrough on Openbox (and potentially other window managers), see #80
+  * Fixed the two lowest-frequency bars having the same value while running the bars module
+  * Fixed some build issues on Ubuntu, musl, see #94, #91
+  * Fixed a bug with circle that only manifested on some integrated graphics chips, see #70</comment>
+    <requestid>683773</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>27424023b79198dba100bb8518924bd0</srcmd5>
+    <version>1.6.3</version>
+    <time>1552491705</time>
+    <user>coolo</user>
+    <comment>- Update to 1.6.3:
+  * Fixed a spelling error in utils/premutliply.frag that broke
+    native transparency in most modules
+- Changes from 1.6.2:
+  * Fixed a critical issue with --stdin that caused the alpha
+    channel to be garbage data
+  * Added a premultiply step to bars to allow for proper handling
+    of the alpha channel on &quot;native&quot; transparency. This is disabled
+	by default, assign USE_ALPHA to 1 in bars.glsl to enable.
+- Changes from 1.6.1:
+  * A problem with artifacting in circle has been fixed, see #107
+  * --stdin has been added, which binds simple GLSL datatypes to
+    STDIN in shaders. This evaluates to a uniform, and thus can be
+	used to stream some data at runtime to GLava.</comment>
+    <requestid>684552</requestid>
+  </revision>
+</revisionlist>

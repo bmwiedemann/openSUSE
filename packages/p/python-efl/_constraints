@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<constraints>
+  <hardware>
+    <disk>
+      <size unit="G">20</size>
+    </disk>
+    <memory>
+      <size unit="G">6</size>
+    </memory>
+    <physicalmemory>
+      <size unit="G">4</size>
+    </physicalmemory>
+  </hardware>
+</constraints>

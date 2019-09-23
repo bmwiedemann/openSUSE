@@ -1,0 +1,208 @@
+-------------------------------------------------------------------
+Tue Apr  9 06:35:19 UTC 2019 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Update to 0.3.
+  * Require the subprocess32 module.
+  * Don't let bad editor lock UI.
+  * Reorganize documentation.
+  * Improve error handling.
+  * Improve the setup script.
+
+-------------------------------------------------------------------
+Tue Sep 26 17:49:50 UTC 2017 - lazy.kent@opensuse.org
+
+- Update to 0.2.19.
+  * Create temporary files in a subdirectory of /tmp.
+- Correct the source URL.
+
+-------------------------------------------------------------------
+Tue Nov 22 12:39:02 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 0.2.18.
+  * Improve the setup script:
+    + Fix the “Environment” classifier.
+  * Update bug tracker URLs. The project repo has moved to GitHub.
+
+-------------------------------------------------------------------
+Thu Jul 28 14:30:48 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 0.2.17.
+  * Update the XDG Base Directory Specification URL.
+  * Fix typo in the Polish translation.
+  * Don't hardcode the Python interpreter path in script shebangs;
+    use “#!/usr/bin/env python” instead.
+- Correct the source URL.
+
+-------------------------------------------------------------------
+Wed Sep 30 15:06:19 UTC 2015 - lazy.kent@opensuse.org
+
+- Update to 0.2.16.
+  * Drop support for Python 2.5.
+  * Improve error handling.
+  * Improve the manual page:
+    + Use minus sign instead of hyphen in dates.
+  * Remove python-djvulibre version checks. This fixes compatiblity
+    with python-djvulibre ≥ 0.5.
+
+-------------------------------------------------------------------
+Fri Oct 10 13:59:28 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 0.2.15.
+  * Improve the setup script:
+    + Run msgfmt with the --verbose option.
+  * Improve error handling.
+  * Use HTTPS URLs when they are available, in documentation and
+    code.
+  * Document that is possible to edit hyperlinks.
+  * Use the notebook widget regardless of wxPython version.
+  * Don't hardcode path to the binary in the desktop file.
+  * Add experimental support for wxPython 3.0.
+  * Drop support for wxPython 2.6.
+  * Add German translation for the desktop file.
+- Correct build dependencies.
+
+-------------------------------------------------------------------
+Wed Mar  6 08:27:10 UTC 2013 - lazy.kent@opensuse.org
+
+- Fix wrong source installed as icon.
+
+-------------------------------------------------------------------
+Thu Feb 28 20:17:49 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.2.14.
+  * Add "Open recent" submenu.
+  * Do not abort opening a new file if user chose to save the
+    current one.
+  * Check Python version at runtime.
+  * Improve the manual page, as per man-pages(7) recommendations.
+  * Improve the setup script.
+  * Improve error handling.
+- Verify GPG signature.
+- Add BuildRequires: python-devel (as recommended in
+  openSUSE:Packaging Python).
+- Replace BuildRequires: update-desktop-files with
+  desktop-file-utils.
+- Remove %py_requires macro.
+- Don't use '--record-rpm' in install stage; write files into
+  %files section.
+
+-------------------------------------------------------------------
+Thu Oct  4 15:18:04 UTC 2012 - lazy.kent@opensuse.org
+
+- Update to 0.2.13.
+  * Add keyboard shortcuts for “Zoom in” and “Zoom out”.
+  * Fix editing text in external editor: when a zone broader than
+    line without sub-zones existed, djvusmooth incorrectly skipped
+    it when importing text.
+  * Fix segmentation fault on shutdown.
+
+-------------------------------------------------------------------
+Sat Jun 16 18:07:48 UTC 2012 - lazy.kent@opensuse.org
+
+- Update to 0.2.12.
+  * Rename menu item “Edit → Outline → Remove” to “… → Remove all”.
+  * Use our own minimal XDG Base Directory implementation instead
+    of PyXDG.
+  * Add Spanish translation.
+  * Update Russian translation.
+- Doesn't require fdupes.
+
+-------------------------------------------------------------------
+Mon Feb 27 17:02:15 UTC 2012 - lazy.kent@opensuse.org
+
+- Split off lang package.
+- Install icon to icons/hicolor.
+- Remove check for unsupported openSUSE versions.
+
+-------------------------------------------------------------------
+Thu Jan 26 18:34:21 UTC 2012 - lazy.kent@opensuse.org
+
+- Update to 0.2.11.
+  * Don't throw exceptions when using "Fit width", "Fit height" and
+    "Stretch" zoom factors and no page is shown.
+  * Fix a typo in the manual page.
+  * Let the setup.py script build and install binary message
+    catalogs.
+
+-------------------------------------------------------------------
+Sun Nov  6 16:34:54 UTC 2011 - lazy.kent@opensuse.org
+
+- Corrected dependencies (python-distribute for openSUSE >= 1210).
+- Added desktop_database_post/un macros
+- Corrected License tag.
+- Use full URL as a source.
+- spec clean up.
+
+-------------------------------------------------------------------
+Sat Feb 19 15:43:33 UTC 2011 - lazy.kent@opensuse.org
+
+- Update to 0.2.10.
+  * Let the setup.py script build and install manual pages.
+  * Fix the code that was supposed to disable the GUI while an
+    external editor is running.
+  * Fix the manual page: djvusmooth uses XDG_CONFIG_HOME rather
+    than XDG_DATA_HOME.
+- added COPYING
+
+-------------------------------------------------------------------
+Tue Jan 25 08:44:58 UTC 2011 - lazy.kent@opensuse.org
+
+- Update to 0.2.9.
+  * Fix support for external editors that use the
+    overwrite-by-rename technique.
+- Requires python-wxWidgets for openSUSE 11.4
+
+-------------------------------------------------------------------
+Tue Aug 31 21:19:12 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Update to 0.2.8.
+  * Update the Russian translation.
+  * Handle directories with non-ASCII characters (deb#595002).
+  * Fix editing line/arrow annotations (deb#595012).
+
+-------------------------------------------------------------------
+Sat Jun 26 18:31:27 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Update to 0.2.7.
+  * Add Russian translation.
+  * Handle non-ASCII metadata keys.
+- Dropped translation patch (included upstream).
+
+-------------------------------------------------------------------
+Sun Jun 20 08:24:50 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Added Russian translation.
+
+-------------------------------------------------------------------
+Tue Jun 15 22:41:36 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Update to 0.2.6.
+  * Add keyboard shortcut Ctrl+G for “Go to page…”.
+  * Reopen document after save, so that it's possible to display
+    non-cached pages.
+- Dropped obsolete keyboard shortcut patch (fixed upstream).
+
+-------------------------------------------------------------------
+Wed Jun  9 20:04:37 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Added keyboard shortcut for "Go to page…" action.
+- Moved desktop menu entry to Utility/TextEditor.
+
+-------------------------------------------------------------------
+Fri Apr  9 05:21:20 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Update to 0.2.5.
+  * Fix setup.py to install all the required packages.
+- Dropped setup patch (fixed upstream).
+
+-------------------------------------------------------------------
+Thu Apr  8 00:58:24 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Fixed setup script.
+- Added icon.
+
+-------------------------------------------------------------------
+Tue Apr  6 20:52:12 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Initial package created - 0.2.4.
+

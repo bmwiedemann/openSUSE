@@ -1,0 +1,147 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec547f75b32c58330011893d5bdf8bcf</srcmd5>
+    <version>3.1.0</version>
+    <time>1485862773</time>
+    <user>dimstar_suse</user>
+    <comment>this exclude i586</comment>
+    <requestid>452165</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>46c7d771f79160f1f0c87c55093d7fdf</srcmd5>
+    <version>3.1.0</version>
+    <time>1488480220</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>461889</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>774f243c167b659075991e8a9b11a7d3</srcmd5>
+    <version>3.1.0</version>
+    <time>1492714493</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487805</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>091d23dc859fca437d61f73c18db7c59</srcmd5>
+    <version>3.2.4</version>
+    <time>1502629176</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>516098</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7826498a1d0db5762c603a27b92e9dad</srcmd5>
+    <version>3.2.4</version>
+    <time>1504617391</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520609</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>0223bf294b2f12eab6c42a45784da0e7</srcmd5>
+    <version>3.2.4</version>
+    <time>1512042299</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546258</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>697d04965a05cdbdc2500af3f5f6c096</srcmd5>
+    <version>3.2.4</version>
+    <time>1517606538</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571976</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>08d1981c5bfbcfe857682b0dc4a4b68f</srcmd5>
+    <version>3.3.1</version>
+    <time>1520021489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581721</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>de4909a34ecabe679d2e9ed01e482f9f</srcmd5>
+    <version>3.3.1</version>
+    <time>1527684360</time>
+    <user>dimstar_suse</user>
+    <comment>fix changelog to include bsc numbers so this can also be submitted to sle15 
+- Update to version 3.3.1 (bsc#1095184):</comment>
+    <requestid>613030</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>f5519f4db6888036fe5368d3aa11128e</srcmd5>
+    <version>3.3.1</version>
+    <time>1528195975</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>614019</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>cfef9546ef36834294c32007e8d20fbb</srcmd5>
+    <version>3.3.1</version>
+    <time>1528492455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614219</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b32682cfa0a2a9325b9c8dc880bd34a3</srcmd5>
+    <version>3.3.10</version>
+    <time>1542124824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648446</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>8362771f1c9affd89d51c0b6ee656608</srcmd5>
+    <version>3.3.10</version>
+    <time>1544726937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657541</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>397661710b8bbf462e66836d3bab961e</srcmd5>
+    <version>3.3.10</version>
+    <time>1545996836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660070</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3d0ae83204dd5183a4e50f449b9d8a02</srcmd5>
+    <version>3.3.11</version>
+    <time>1549017975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670117</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>269a448bd8bbff5bf606899956acb474</srcmd5>
+    <version>3.3.11</version>
+    <time>1560459704</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708040</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>0d2dc382b81d6715952f1a600e19da8b</srcmd5>
+    <version>3.3.11</version>
+    <time>1560537767</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for aarch64</comment>
+    <requestid>709924</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>d87f2777bc06e7512f3196a579874737</srcmd5>
+    <version>3.3.11</version>
+    <time>1563993382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718153</requestid>
+  </revision>
+</revisionlist>

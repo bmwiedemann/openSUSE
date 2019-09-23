@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Tue Jan  2 19:31:25 UTC 2018 - jason.record@suse.com
+
+- Removed unnecessary %clean from spec
+
+-------------------------------------------------------------------
+Mon Dec 18 19:16:17 UTC 2017 - jason.record@suse.com
+
+- Updated spec file with spec-cleaner suggestions
+- Removed COPYING.GPLv2
+
+-------------------------------------------------------------------
+Fri Jun  2 23:02:01 UTC 2017 - jason.record@suse.com
+
+- Added security patterns (bsc#1042514)
+
+-------------------------------------------------------------------
+Tue Feb 23 19:38:32 UTC 2016 - jrecord@suse.com
+
+- Updated patterns (bsc#953203)
+
+-------------------------------------------------------------------
+Thu Apr  2 17:23:51 UTC 2015 - jrecord@suse.com
+
+- Fixed ocfs2-00004.pl false ro hit (bnc#921627)
+
+-------------------------------------------------------------------
+Wed Jun 18 22:03:22 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  bindnetaddr-7015225.py
+  mcastport-7015225.py
+  corosync-7015215.py
+
+-------------------------------------------------------------------
+Wed Jun  4 20:10:25 UTC 2014 - jrecord@suse.com
+
+- Moved from SLE to HAE category
+- Moved pattern structure to HAE only
+
+-------------------------------------------------------------------
+Thu May 15 16:46:47 UTC 2014 - jrecord@suse.com
+
+- Fixed argument isn't numeric in stop-00001.pl
+
+-------------------------------------------------------------------
+Wed Apr 23 16:34:41 UTC 2014 - jrecord@suse.com
+
+- Fixed haesbd-00004.pl false mismatch on UUID (bnc#867828)
+
+-------------------------------------------------------------------
+Fri Mar 21 18:13:58 UTC 2014 - jrecord@suse.com
+
+- Fixed spec file macro
+
+-------------------------------------------------------------------
+Thu Mar 20 15:48:20 UTC 2014 - jrecord@suse.com
+
+- Removed duplicates with fdupes
+- Fixed FSF address in all patterns
+- Change to System/Monitoring spec Group
+
+-------------------------------------------------------------------
+Sat Feb  8 22:22:18 UTC 2014 - jrecord@suse.com
+
+- Packaged COPYING.GPLv2
+
+-------------------------------------------------------------------
+Fri Jan 31 19:37:14 UTC 2014 - jrecord@suse.com
+
+- includes pertinent patterns from sca-patterns-basic
+- moved patterns from own directory to SLE structure
+
+-------------------------------------------------------------------
+Thu Jan 16 09:34:28 MST 2014 jrecord@suse.com
+
+- relocated files according to FHS
+
+-------------------------------------------------------------------
+Wed Dec 20 09:34:28 MST 2013 jrecord@suse.com
+
+- separated as individual RPM package
+

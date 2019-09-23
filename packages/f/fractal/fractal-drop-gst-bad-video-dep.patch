@@ -1,0 +1,25 @@
+From e78f36c25c095ea09c9c421187593706ad7c4065 Mon Sep 17 00:00:00 2001
+From: Jordan Petridis <jpetridis@gnome.org>
+Date: Sat, 5 Jan 2019 15:46:56 +0200
+Subject: [PATCH] meson: remove dependency on gstreamer-bad-video-1.0
+
+This has been moved to gst-base now.
+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/commit/b9e15fddb14b2cde6470255794ef130523885e9f
+---
+ meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index cb53ea63..d477a3b2 100644
+--- a/meson.build
++++ b/meson.build
+@@ -24,7 +24,6 @@ dependency('gstreamer-player-1.0', version: '>= 1.12')
+ dependency('gstreamer-plugins-base-1.0', version: '>= 1.12')
+ dependency('gstreamer-plugins-bad-1.0', version: '>= 1.12')
+ dependency('gstreamer-bad-audio-1.0', version: '>= 1.12')
+-dependency('gstreamer-bad-video-1.0', version: '>= 1.12')
+ 
+ cargo = find_program('cargo', required: true)
+ gresource = find_program('glib-compile-resources', required: true)
+-- 
+2.18.1

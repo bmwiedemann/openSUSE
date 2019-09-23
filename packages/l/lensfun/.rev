@@ -1,0 +1,357 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e6d82f37109e0c3b90feba4a699251af</srcmd5>
+    <version>0.2.4</version>
+    <time>1265384789</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/lensfun based on submit request 30820 from user llunak
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>01511b9d4bfbd5a0f8ea44adcbbc91ae</srcmd5>
+    <version>0.2.4</version>
+    <time>1268924478</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>01511b9d4bfbd5a0f8ea44adcbbc91ae</srcmd5>
+    <version>0.2.4</version>
+    <time>1278667356</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>01511b9d4bfbd5a0f8ea44adcbbc91ae</srcmd5>
+    <version>0.2.4</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aa25627b36a88e654284e3b8a07eb8d9</srcmd5>
+    <version>0.2.5</version>
+    <time>1289413447</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52674 from user adrianSuSE
+</comment>
+    <requestid>52674</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d30fae1565fa0d54102a6b6553cf5123</srcmd5>
+    <version>0.2.5</version>
+    <time>1289413454</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52674
+</comment>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>e13d98a143948dcb35a9b3c470ccd399</srcmd5>
+    <version>0.2.5</version>
+    <time>1289533136</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>d30fae1565fa0d54102a6b6553cf5123</srcmd5>
+    <version>0.2.5</version>
+    <time>1289569348</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>1aa0768169cb7a56f5693fa0e6af8db2</srcmd5>
+    <version>0.2.5</version>
+    <time>1294657834</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57553 from user adrianSuSE
+</comment>
+    <requestid>57553</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>7493229fc8be6f75606e3447af096ba7</srcmd5>
+    <version>0.2.5</version>
+    <time>1294657844</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57553
+</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>7493229fc8be6f75606e3447af096ba7</srcmd5>
+    <version>0.2.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>809cb62830d0a9c471e560715b19e47b</srcmd5>
+    <version>0.2.5</version>
+    <time>1302510251</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66581 from user coolo
+</comment>
+    <requestid>66581</requestid>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>4465a8c7239ddc9361c629b6d46ef49d</srcmd5>
+    <version>0.2.5</version>
+    <time>1302510258</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66581
+</comment>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>e5af1e689ae506935633ea2924c1118d</srcmd5>
+    <version>0.2.5</version>
+    <time>1308046607</time>
+    <user>saschpe</user>
+    <comment>- Add lensfun-fixcrash.patch: fix crash on malformed database (SVN)
+- Add lensfun-0.2.5-cpuid.patch: fix crash on cpu detection (SVN)
+- set GCC.LDFLAGS to avoid stripping and useless -debug* package. (forwarded request 73447 from fcrozat)</comment>
+    <requestid>73448</requestid>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>6c3fc077c9be569541258df17de81f54</srcmd5>
+    <version>0.2.5</version>
+    <time>1308046621</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73448
+</comment>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>a4f02070c569448db1f5dfd1147a52f2</srcmd5>
+    <version>0.2.5</version>
+    <time>1308052075</time>
+    <user>unknown</user>
+    <comment>trigger service run</comment>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>a96d29f245a1b20d4d59c34bd1a26d8f</srcmd5>
+    <version>0.2.5</version>
+    <time>1309423485</time>
+    <user>saschpe</user>
+    <comment>- Clarified summaries and descriptions (fix for RPMLINT warnings)
+
+- remove download_url service</comment>
+    <requestid>74853</requestid>
+  </revision>
+  <revision rev="18" vrev="16">
+    <srcmd5>2ba1b0d11d142c417480d87febda57d5</srcmd5>
+    <version>0.2.5</version>
+    <time>1309423507</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74853
+</comment>
+  </revision>
+  <revision rev="19" vrev="17">
+    <srcmd5>3a0674f6bcf719da314115a94cf29c76</srcmd5>
+    <version>0.2.5</version>
+    <time>1312808953</time>
+    <user>saschpe</user>
+    <comment>- Switched contents of lensun to noarch lensfun-data package
+- Cleaned up some macros and the %files list (forwarded request 78229 from TheBlackCat)</comment>
+    <requestid>78231</requestid>
+  </revision>
+  <revision rev="20" vrev="18">
+    <srcmd5>0db8784dcf5d06acd1f5154c8c80eb7c</srcmd5>
+    <version>0.2.5</version>
+    <time>1312808962</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78231
+</comment>
+  </revision>
+  <revision rev="21" vrev="19">
+    <srcmd5>a4903b2fe98242f23a44290a61c9e218</srcmd5>
+    <version>0.2.5</version>
+    <time>1314187911</time>
+    <user>saschpe</user>
+    <comment>fix package rename</comment>
+    <requestid>79627</requestid>
+  </revision>
+  <revision rev="22" vrev="20">
+    <srcmd5>e951b8e3eebfc45ccc2947827bf904f6</srcmd5>
+    <version>0.2.5</version>
+    <time>1314187920</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79627
+</comment>
+  </revision>
+  <revision rev="23" vrev="21">
+    <srcmd5>206ea841291d6f2dcef91101fa1214e1</srcmd5>
+    <version>0.2.5</version>
+    <time>1318502248</time>
+    <user>lrupp</user>
+    <comment>- Added provides for obsoletes (fix for RPMLINT warning)
+- Cleaned up spec file formatting (forwarded request 87057 from TheBlackCat)</comment>
+    <requestid>87434</requestid>
+  </revision>
+  <revision rev="24" vrev="23">
+    <srcmd5>206ea841291d6f2dcef91101fa1214e1</srcmd5>
+    <version>0.2.5</version>
+    <time>1319182067</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="25" vrev="24">
+    <srcmd5>a9e9533417734e465fcd0d8822968c85</srcmd5>
+    <version>0.2.5</version>
+    <time>1321277527</time>
+    <user>coolo</user>
+    <comment>forward to factory</comment>
+    <requestid>91317</requestid>
+  </revision>
+  <revision rev="26" vrev="25">
+    <srcmd5>d051395556f0be56c679770ebce5a843</srcmd5>
+    <version>0.2.5</version>
+    <time>1323192146</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="27" vrev="26">
+    <srcmd5>e5d6a97b24b803fe2f43b1c1bbc98006</srcmd5>
+    <version>0.2.5</version>
+    <time>1324458031</time>
+    <user>coolo</user>
+    <comment>- fix build on arm</comment>
+    <requestid>97312</requestid>
+  </revision>
+  <revision rev="28" vrev="27">
+    <srcmd5>dd62a9d5d4e70c5b8d458010a080b834</srcmd5>
+    <version>0.2.5</version>
+    <time>1336035476</time>
+    <user>coolo</user>
+    <comment>update lensdata (forwarded request 115267 from adrianSuSE)</comment>
+    <requestid>115269</requestid>
+  </revision>
+  <revision rev="29" vrev="29">
+    <srcmd5>dd62a9d5d4e70c5b8d458010a080b834</srcmd5>
+    <version>0.2.5</version>
+    <time>1340183550</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>720bc4dc416dfbdca3b7ea09a46b542a</srcmd5>
+    <version>0.2.6</version>
+    <time>1340890309</time>
+    <user>coolo</user>
+    <comment>comment fixes</comment>
+    <requestid>126331</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>d7580baac4f1d54f366e23741e9b3f36</srcmd5>
+    <version>0.2.6</version>
+    <time>1345809298</time>
+    <user>namtrac</user>
+    <comment>- Update lens data for Nikon.
+- Add lens_database_pending_update.diff: pending lens data update
+  for Canon and Samsung. (forwarded request 131416 from fcrozat)</comment>
+    <requestid>131417</requestid>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>d7580baac4f1d54f366e23741e9b3f36</srcmd5>
+    <version>0.2.6</version>
+    <time>1359109224</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>43a350badd12824750a225a06247d3b9</srcmd5>
+    <version>0.2.7</version>
+    <time>1362637705</time>
+    <user>coolo</user>
+    <comment>Update to version 0.2.7. Revised installed documentation. Obsolete patches removed. (forwarded request 157499 from sergeyopensuse)</comment>
+    <requestid>157501</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>f268e8e1ab39e82c642c089e0fbc298b</srcmd5>
+    <version>0.2.7</version>
+    <time>1364651895</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>161715</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>f268e8e1ab39e82c642c089e0fbc298b</srcmd5>
+    <version>0.2.7</version>
+    <time>1379662867</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>0b591bafed296975ad418611c6d85abe</srcmd5>
+    <version>0.2.7</version>
+    <time>1401207824</time>
+    <user>coolo</user>
+    <comment>- Tell doxygen to stop creating files with timestamps to 
+  avoid endless republish. (forwarded request 235471 from elvigia)</comment>
+    <requestid>235506</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>82e2d9c684e5da8d01dedacbfe712b75</srcmd5>
+    <version>0.2.8</version>
+    <time>1403070570</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>236811</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>82e2d9c684e5da8d01dedacbfe712b75</srcmd5>
+    <version>0.2.8</version>
+    <time>1409301471</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0c8fbd56ad21fe9ad3547157cb366d15</srcmd5>
+    <version>0.3.0</version>
+    <time>1425031614</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>287525</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>5ff052ae238171e27058803f1a03c3ba</srcmd5>
+    <version>0.3.0</version>
+    <time>1437383986</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316997</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f327ff688ac3f024ef387cc6571fff75</srcmd5>
+    <version>0.3.1</version>
+    <time>1438899519</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320313</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>333699ac812a3685fd26fdfb827984b2</srcmd5>
+    <version>0.3.2</version>
+    <time>1464075249</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>396570</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>db799c405a1c35c0a9cfe1b2b3a991f7</srcmd5>
+    <version>0.3.2</version>
+    <time>1500975555</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511601</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>e8dafececa2959fb70c62839b415ba6a</srcmd5>
+    <version>0.3.2</version>
+    <time>1508946337</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536408</requestid>
+  </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>4b3381c42456896ddca6711ba4f2804c</srcmd5>
+    <version>0.3.2</version>
+    <time>1512386095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546765</requestid>
+  </revision>
+</revisionlist>

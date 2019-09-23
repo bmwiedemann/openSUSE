@@ -1,0 +1,5 @@
+<package name="gnome-terminal" project="openSUSE:Factory">
+  <title>GNOME Terminal</title>
+  <description>This package provides the GNOME terminal emulator application.</description>
+  <devel project="GNOME:Factory" package="gnome-terminal"/>
+</package>

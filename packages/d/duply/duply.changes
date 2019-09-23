@@ -1,0 +1,241 @@
+-------------------------------------------------------------------
+Sun Jul 29 11:27:23 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Fri Jun  1 21:28:20 UTC 2018 - malcolmlewis@opensuse.org
+
+- Update to version 2.0.4:
+  + Bugfix 114: "duply usage is not current" wrt. purgeFull/Incr.
+  + Bugfix 115: typo in error message - "Not GPG_KEY entries"
+    should be "No".
+  + Bugfix 117: no duply_ prefix when ARCH_DIR is set in conf.
+  + Occasionally shows negative runtimes, (deb#882159).
+- Changes from version 2.0.3:
+  +Bugfix: "line 2231: CMDS: bad array subscript".
+
+-------------------------------------------------------------------
+Tue Aug  8 20:09:42 UTC 2017 - malcolmlewis@opensuse.org
+
+- Update to version 2.0.2:
+  * Bugfix: never insert creds into file:// targets.
+  * Bugfix: avail profiles hint sometimes shortend the names by one
+    char.
+  * Bugfix 108: CMD_NEXT variable should ignore conditional commands
+    (and, or).
+  * Export condition before/after next/prev command as
+    CND_PREV,CND_NEXT now.
+  * Bugfix 97: Unknown command should be ERROR, not WARNING.
+- Changes from version 2.0.1:
+  * Bugfix 104: Duply 2.0 sets wrong archive dir, --name was always
+    'duply_'.
+- Changes from version 2.0:
+  * Made this a major version change, as we broke backward
+    compatibility anyway. If your backend stops working w/ this
+    version create a new profile and export the env vars needed as
+    described in the comments of the conf file directly above the
+    SOURCE setting.
+  * Making sure multi spaces in TARGET survive awk processing.
+  * New env var PROFILE exported to scripts.
+  * Fix 102: expose a unique timestamp variable for pre/post scripts
+    actually a featreq. exporting RUN_START nanosec unix timestamp.
+  * Fix 101: GPG_AGENT_INFO is 'bogus'.
+  * Fix 96: duply cannot handle two consecutive spaces in paths.
+- Update Copyright year.
+
+-------------------------------------------------------------------
+Mon Sep 26 01:42:40 UTC 2016 - malcolmlewis@opensuse.org
+
+- Update to version 1.11.3:
+  + Fix wrong "WARNING: No running gpg-agent ..." when sign key was
+    not set.
+- Changes from version 1.11.2:
+  + Fix "gpg: unsafe" version print out.
+  + Bugfix 91: v1.11 [r47] broke asymmetric encryption when using
+    GPG_KEYS_ENC.
+  + Bugfix 90: S3: TARGET_USER/PASS have no effect, added
+    additional documentation about needed env vars to template
+    conf file.
+- Changes from version 1.11.1:
+  + Reverted duply's default PYTHON to 'python'.
+- Changes from version 1.11:
+  + Remove obsolete --ssh-askpass routine.
+  + Add PYTHON conf var to allow global override of used python
+    interpreter.
+  + Enforced usage of "python2" in PATH as default interpreter for
+    internal use _and_ to run duplicity (setup.py changed the 
+    shebang to the fixed path /usr/bin/python until 0.7.05, which
+    we circumvent this way).
+  + Feature 36: Support gpg-connect-agent as a means to detect if
+    an agent is running, used gpg-agent for detection though.
+  + Quotewrapped run_cmd parameters to protect it from spaces eg.
+    in TMP path.
+  + Key export routine respects gpg-agent usage now.
+- Update copyright year.
+- Add ChangeLog to package.
+
+-------------------------------------------------------------------
+Wed Sep 23 16:20:59 UTC 2015 - malcolmlewis@opensuse.org
+
+- Update to version 1.10.1:
+  + Bugfix 86: Duply+Swift outputs warning.
+  + Bugfix 87: Swift fails without BACKEND_URL.
+- Changes from 1.10:
+  + Featreq 36: busybox issues - fix awk, grep version detection,
+    fix grep failure because --color=never switch is unsupported.
+  + Bugfix 81: --exclude-globbing-filelist is deprecated since
+    0.7.03.
+  + Implemented base-/dirname as bash functions.
+  + Featreq 31 " Support for duplicity Azure backend " - ignored a
+    contributed patch by Scott McKenzie and instead opted for
+    removing almost all code that deals with special env vars
+    required by backends. Adding and modifying these results in too
+    much overhead so I dropped this feature. The future alternative
+    for users is to consult the duplicity manpage and add the
+    needed export definitions to the conf file. Appended a
+    commented example to the template conf below the auth section.
+- Changes from 1.9.2:
+  + Bugfix: exporting keys with gpg2.1 works now.
+  + Documented GPG_OPTS needed for gpg2.1 to conf template.
+  + Bugfix 82: GREP_OPTIONS=--color=always disrupted time
+    calculation.
+  + Added GPG conf var (see conf template for details).
+  + Added grep version output as it is an integral needed binary.
+  + Added PYTHONPATH printout in version output.
+- Changes from 1.9.1:
+  + Export CMD_ERR now for scripts to detect if CMD_PREV
+    failed/succeeded.
+  + Bugfix: CMD_PREV contained command even if it was skipped.
+- Changes from 1.9.0:
+  + Bugfix: env vars were not exported when external script was
+    executable.
+  + Rework GPG_KEY handling, allow virtually anything now (uid,
+    keyid etc.) see gpg manpage, section "How to specify a user ID"
+    let gpg complain when the delivered values are invalid for
+    whatever reason.
+  + Started to rework tmp space checking, exposed folder & writable
+    check. TODO: reimplement enough file space available checking.
+- Changes from 1.8.0:
+  + Add command verifyPath to expose 'verify --file-to-restore'
+    action.
+  + Add time parameter support to verify command.
+  + Add section time formats to usage output.
+
+-------------------------------------------------------------------
+Wed Jul  9 14:54:52 UTC 2014 - kruber@zib.de
+
+- Update to version 1.7.4:
+  + remove ubuntu one support, service is discontinued
+  + featreq 31: add authenticated swift (contributed by Justus Seifert)
+- Update to version 1.7.3:
+  + bugfix: test routines, gpg2 asked for passphrase although GPG_PW was set
+- Update to version 1.7.2:
+  + bugfix: debian Bug#743190 "duply no longer allows restoration without 
+    gpg passphrase in conf file"
+    GPG_AGENT_INFO env var is now needed to trigger --use-agent
+  + bugfix: gpg keyenc test routines didn't work if GPG_PW was not set
+- Update to version 1.7.1:
+  + bugfix: purge-* commands renamed to purgeFull, purgeIncr due to 
+    incompatibility with new minus batch separator 
+- Update to version 1.7.0:
+  + disabled gpg key id plausibility check, too many valid possibilities
+  + featreq 7 "Halt if precondition fails":
+    added and(+), or(-) batch command(separator) support
+  + featreq 26 "pre/post script with shebang line": 
+    if a script is flagged executable it's executed in a subshell 
+    now as opposed to sourced to bash, which is the default
+  + bugfix: do not check if dpbx, swift credentials are set anymore 
+  + bugfix: properly escape profile name, archdir if used as arguments
+  + add DUPL_PRECMD conf setting for use with e.g. trickle
+
+-------------------------------------------------------------------
+Sat Feb  1 18:59:13 UTC 2014 - wr@rosenauer.org
+
+- Update to version 1.6.0:
+  + support gs backend
+  + support dropbox backend
+  + add gpg-agent support to gpg test routines
+  + autoenable --use-agent if passwords were not defined in config
+  + GPG_OPTS are now honored everywhere, keyrings or complete gpg
+    homedir can thus be configured to be located anywhere
+  + always import both secret and public key if avail from config profile
+  + new explanatory comments in initial exclude file
+  + bugfix 7: Duply only imports one key at a time
+- Update to version 1.5.11:
+  + purge-incr command for remove-all-inc-of-but-n-full feature added
+    patch provided by Moritz Augsburger, thanks!
+  + documented version command in man page
+
+-------------------------------------------------------------------
+Tue Jun  4 22:27:01 UTC 2013 - malcolmlewis@opensuse.org
+
+- Updated to version 1.5.10:
+  + Bugfix: exclude filter failed on ubuntu, mawk w/o posix char
+    class support.
+  + Bugfix: fix url_decoding generally and for python3.
+  + Bugfix 3609075: wrong script results in status line
+   (thx David Epping).
+
+-------------------------------------------------------------------
+Sat Dec  1 04:33:53 UTC 2012 - malcolmlewis@opensuse.org
+
+- Updated to 1.5.9:
+  + Bugfix 3588926: filter --exclude* params for restore/fetch ate
+    too much.
+  + Restore/fetch now also ignores --include* or --exclude='foobar'
+- Updates from 1.5.8:
+  + Bugfix 3575487: implement proper cloud files support.
+
+-------------------------------------------------------------------
+Sat Oct  6 15:10:06 UTC 2012 - malcolmlewis@opensuse.org
+
+- Update to version 1.5.7:
+  + Bugfix 3531450: Cannot use space in target URL (file:///)
+    anymore.
+- Updates from 1.5.6:
+  + Commands purge, purge-full have no default value anymore for
+    security reasons; instead max value can be given via cmd line
+    or must be set in profile; else an error is shown.
+  + Minor man page modifications
+- Updates from 1.5.5.5:
+  + Bugfix 3479605: SEL context confused profile folder's
+    permission check.
+  + Colon ':' in url passphrase got ignored, added python driven
+    url_decoding for user & pass to better process special chars.
+
+-------------------------------------------------------------------
+Mon Nov 21 21:54:30 UTC 2011 - malcolmlewis@opensuse.org
+
+- Update to version 1.5.5.4:
+  + Bugfix 3421268: SFTP passwords from conf ignored and always
+    prompted for.
+  + Add support for separate sign passphrase (needs duplicity
+    0.6.14+).
+
+-------------------------------------------------------------------
+Fri Oct  7 21:22:09 UTC 2011 - malcolmlewis@opensuse.org
+
+- Update version to 1.5.5.3:
+  + Bugfix 3416690: repaired preview threw echo1 error.
+  + Fix unknown cmds error usage & friends if more than 2 params
+    were given.
+- Updates from 1.5.5.2:
+  + Bugfix 3409643: ssh key auth did ask for passphrase
+    (--ssh-askpass ?).
+  + Bugfix: mawk does not support \W and did not split multikey
+    definitions.
+  + All parameters should survive  single (') and double (")
+    quotes now.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Wed Aug 17 21:12:49 UTC 2011 - malcolmlewis@opensuse.org
+
+- Initial build. 
+

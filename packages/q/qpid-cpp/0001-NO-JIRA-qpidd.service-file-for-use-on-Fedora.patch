@@ -1,0 +1,58 @@
+From d377a75fc454bd329f9dc340dd13aaab080fcf3a Mon Sep 17 00:00:00 2001
+From: "Darryl L. Pierce" <mcpierce@gmail.com>
+Date: Wed, 3 Apr 2013 10:07:37 -0400
+Subject: [PATCH 1/3] NO-JIRA: qpidd.service file for use on Fedora
+
+This patch provides the needed systemd file for running the Qpid broker
+as a service.
+---
+ qpid/cpp/etc/qpidd-primary.service | 15 +++++++++++++++
+ qpid/cpp/etc/qpidd.service         | 14 ++++++++++++++
+ 2 files changed, 29 insertions(+)
+ create mode 100644 qpid/cpp/etc/qpidd-primary.service
+ create mode 100644 qpid/cpp/etc/qpidd.service
+
+diff --git a/qpid/cpp/etc/qpidd-primary.service b/qpid/cpp/etc/qpidd-primary.service
+new file mode 100644
+index 0000000..f15168c
+--- /dev/null
++++ b/qpid/cpp/etc/qpidd-primary.service
+@@ -0,0 +1,15 @@
++[Unit]
++Description=An AMQP message broker cluster primary daemon.
++Documentation=man:qpidd(1) http://qpid.apache.org/
++Requires=network.target
++After=network.target
++
++[Service]
++User=qpidd
++Group=qpidd
++Type=simple
++EnvironmentFile=/etc/sysconfig/qpidd
++ExecStart=/usr/sbin/qpid-ha -b localhost:$QPID_PORT promote
++
++[Install]
++WantedBy=multi-user.target
+diff --git a/qpid/cpp/etc/qpidd.service b/qpid/cpp/etc/qpidd.service
+new file mode 100644
+index 0000000..10a99d1
+--- /dev/null
++++ b/qpid/cpp/etc/qpidd.service
+@@ -0,0 +1,14 @@
++[Unit]
++Description=An AMQP message broker daemon.
++Documentation=man:qpidd(1) http://qpid.apache.org/
++Requires=network.target
++After=network.target
++
++[Service]
++User=qpidd
++Group=qpidd
++Type=simple
++ExecStart=/usr/sbin/qpidd --config /etc/qpid/qpidd.conf
++
++[Install]
++WantedBy=multi-user.target
+-- 
+1.9.3
+

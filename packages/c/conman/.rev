@@ -1,0 +1,152 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c06cc1bf5944d6ab0d37b9b7efe90820</srcmd5>
+    <version>0.2.7</version>
+    <time>1488641822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>459326</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0a4b6b115eb63a0d4153b82e03086869</srcmd5>
+    <version>0.2.7</version>
+    <time>1497274104</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498655</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2f8162819aea4ec255e26ad25834edde</srcmd5>
+    <version>0.2.7</version>
+    <time>1502893108</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable tcpwrappers on all platforms by default.
+- Fix systemd-specific conditionals in spec file.
+- Remove Provides: group/user(): these are only
+  used by conman, there is no intention to provide
+  them to other packages.
+
+- conman service configured to start as conman:conman user
+
+- conman-suse-fix-expect-scripts.patch:
+  Fixed ssh expect script for SUSE-specific output.</comment>
+    <requestid>516898</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1e5560f200405b33dd6f49b10d0087d6</srcmd5>
+    <version>0.2.8</version>
+    <time>1507391494</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 0.2.8:
+  * Changed project homepage to &amp;lt;https://dun.github.io/conman/&amp;gt;. (#21)
+  * Changed conman.conf default loopback setting to ON.
+  * Changed rpm spec file from sysvinit to systemd.
+  * Added 'server nofile' config directive to increase NOFILE limit. (#17)
+  * Added '-P' cmdline opt to daemon for specifying pidfile. (#20)
+  * Added test console device to aid in development and testing.
+  * Fixed telnet option negotiation loop. (#9)
+  * Fixed arbitrary limit on number of IPMI SOL consoles. (#15)
+  * Fixed 4-character limit on timezones. (#16)
+  * Fixed 1-second delay when connecting the client to a console.
+  * Fixed UDS console reconnect delay to use exponential timeout.
+  * Fixed UDS console reconnect delay to require min connect time before reset.
+  * Fixed UDS console resource leak of pathname during config processing.
+  * Fixed all gcc, clang, and Coverity Scan warnings.
+  * Improved scalability of daemon. (forwarded request 532245 from eeich)</comment>
+    <requestid>532246</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2dc875d0cecb09bd75650574c1ff352d</srcmd5>
+    <version>0.2.8</version>
+    <time>1507571226</time>
+    <user>dimstar_suse</user>
+    <comment>- Set usr/group for conman to root/root on SLE12 for backward
+  compatibility. (forwarded request 532653 from eeich)</comment>
+    <requestid>532666</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8816b3d8075951fc2d71366a7af75c9e</srcmd5>
+    <version>0.2.8</version>
+    <time>1512547104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546487</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>9efa3efa8718d7da7044ca58724e4231</srcmd5>
+    <version>0.2.8</version>
+    <time>1518950719</time>
+    <user>dimstar_suse</user>
+    <comment>- Only update config file for new user once, save backup
+  copy. (forwarded request 577586 from eeich)</comment>
+    <requestid>577587</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>e90ac9a3e4cf86820374516105b96a32</srcmd5>
+    <version>0.2.8</version>
+    <time>1520588816</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not look for the ttyS* group - it should be dialout
+  always (boo#1084571).
+- Fix shebang - remove /usr/bin/env. (forwarded request 584535 from eeich)</comment>
+    <requestid>584536</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>fb8b42b19fa85d15064ed1767fa310e6</srcmd5>
+    <version>0.2.8</version>
+    <time>1532161499</time>
+    <user>dimstar_suse</user>
+    <comment>- If-connect-fails-let-other-side-accept-connection-and-come-back.patch:
+  Make sure conmand connects to a newly created UNIX socket with
+  minimal delay. The implementation uses inotify, however this triggers
+  when the other side bind()s to the socket, however a connection is
+  not possible until the other side calls listen().
+  Thus if the connection fails, reset the poll() timeout to return to
+  connect() as soon as possible (bsc#1101647).
+- Support %license in a backward compatible way. (forwarded request 624088 from eeich)</comment>
+    <requestid>624089</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d88078e9765bcd0a5db83cfcb65c865c</srcmd5>
+    <version>0.2.9</version>
+    <time>1535123461</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.9:
+  - Allowed IPMI defaults to be overridden via libipmiconsole.conf. (#27)
+  - Updated recognized strings for IPMI workaround-flags (FATE#326641).
+
+- Replace
+  If-connect-fails-let-other-side-accept-connection-and-come-back.patch
+  by:
+  Reset-delay-for-unixsock-connect-from-inotify.patch:
+  Upstream chose to fix bsc#1101647 slightly differently.</comment>
+    <requestid>631086</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>1bf8b83f052ab62d493784770d98c5fd</srcmd5>
+    <version>0.2.9</version>
+    <time>1537787627</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Requires(post): %fillup_prereq sed. (forwarded request 637200 from eeich)</comment>
+    <requestid>637201</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>118b6f8f590736360a5dafeba5f40863</srcmd5>
+    <version>0.3.0</version>
+    <time>1537883052</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to conman-0.3.0 (2018-09-15):
+  * Fixed slow connects to Unix socket consoles triggered from
+    inotify. (#28,#29).
+  * Obsoletes: Reset-delay-for-unixsock-connect-from-inotify.patch</comment>
+    <requestid>637874</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>1db5d45d120af37c6c9bbcf4e44a1992</srcmd5>
+    <version>0.3.0</version>
+    <time>1561557885</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712070</requestid>
+  </revision>
+</revisionlist>

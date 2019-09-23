@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>393b5aa9d56326d3f8448a583f597e4c</srcmd5>
+    <version>2.5.1.1</version>
+    <time>1365496051</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>160019</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>284d029ade56d87790bb64f62d507635</srcmd5>
+    <version>2.5.1.3</version>
+    <time>1368696233</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.5.1.3
+%post output is desired as informational.</comment>
+    <requestid>175765</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>284d029ade56d87790bb64f62d507635</srcmd5>
+    <version>2.5.1.3</version>
+    <time>1379664065</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c48d059609223912f0a22bd928093e07</srcmd5>
+    <version>2.5.1.4~test4355</version>
+    <time>1384334236</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to snapshot 2.5.1.4 SVN4355</comment>
+    <requestid>206573</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c48d059609223912f0a22bd928093e07</srcmd5>
+    <version>2.5.1.4~test4355</version>
+    <time>1409302744</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>7044bf438b699b9d8c4f35e58c37a506</srcmd5>
+    <version>2.5.1.4~test4355</version>
+    <time>1427736831</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid strange inequality in Provides tag
+Can't really provide infinitely many versions!</comment>
+    <requestid>293648</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c24efb64b97241eb0b53241b3df7b02b</srcmd5>
+    <version>2.5.1.4</version>
+    <time>1461855299</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>390690</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>770357d9dce05750ee049dfcf7f10e25</srcmd5>
+    <version>2.5.1.5+svn4532</version>
+    <time>1543224031</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 2.5.1.5 SVN4532</comment>
+    <requestid>648882</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>57c750bf195efc5a0d226ea94c238a99</srcmd5>
+    <version>2.5.1.5+svn4532</version>
+    <time>1550220891</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable DUMB music backend</comment>
+    <requestid>668125</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>68155130b256cfa0f7286252a1e23731</srcmd5>
+    <version>2.5.1.5+svn4532</version>
+    <time>1566665185</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable DUMB backend because of its removal from Factory</comment>
+    <requestid>725652</requestid>
+  </revision>
+</revisionlist>

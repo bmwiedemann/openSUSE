@@ -1,0 +1,17 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/kubic-project/salt</param>
+    <param name="scm">git</param>
+    <param name="filename">kubernetes-salt</param>
+    <param name="versionformat">1.5.3+%cd.%h</param>
+    <param name="revision">master</param>
+    <param name="exclude">.git</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">kubernetes-salt</param>
+  </service>
+</services>

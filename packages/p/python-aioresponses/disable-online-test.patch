@@ -1,0 +1,19 @@
+diff -Nru aioresponses-0.5.0.orig/tests/test_aioresponses.py aioresponses-0.5.0/tests/test_aioresponses.py
+--- aioresponses-0.5.0.orig/tests/test_aioresponses.py  2018-09-27 18:47:03.000000000 +0200
++++ aioresponses-0.5.0/tests/test_aioresponses.py       2018-11-19 17:26:55.589542083 +0100
+@@ -1,4 +1,5 @@
+ # -*- coding: utf-8 -*-
++import os
+ import asyncio
+ import re
+ from typing import Coroutine, Generator, Union
+@@ -223,6 +224,8 @@
+ 
+     @asyncio.coroutine
+     def test_address_as_instance_of_url_combined_with_pass_through(self):
++        if os.path.exists('/.buildenv'):
++            return
+         external_api = 'http://httpbin.org/status/201'
+ 
+         @asyncio.coroutine
+

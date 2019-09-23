@@ -1,0 +1,8 @@
+<package name="ocaml-type-conv" project="openSUSE:Factory">
+  <title>Generate OCaml modules</title>
+  <description>Generate OCaml modules from source files
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-type-conv"/>
+  <url>https://github.com/janestreet/type_conv</url>
+</package>

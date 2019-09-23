@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d8518a4a7fa2336b686dfda34109bc1b</srcmd5>
+    <version>20181203</version>
+    <time>1545376847</time>
+    <user>dimstar_suse</user>
+    <comment>add to factory</comment>
+    <requestid>657879</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e401f23d0af30476f2dc178aba12aed5</srcmd5>
+    <version>20181203</version>
+    <time>1545648496</time>
+    <user>dimstar_suse</user>
+    <comment>- adjusted logic for license/doc handling to cover more distributions</comment>
+    <requestid>660850</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e664d18f13c37732203c741aa7ee2807</srcmd5>
+    <version>20190310</version>
+    <time>1552299475</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 20190310</comment>
+    <requestid>683722</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b2b38fad4721e11e0af5049152de66ed</srcmd5>
+    <version>20190615</version>
+    <time>1561195510</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>711442</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1c566f897ba2260ee548dec5759e2ad8</srcmd5>
+    <version>20190912</version>
+    <time>1569235005</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>732082</requestid>
+  </revision>
+</revisionlist>

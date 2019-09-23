@@ -1,0 +1,13 @@
+Index: bind-9.9.4-P2/configure.in
+===================================================================
+--- bind-9.9.4-P2.orig/configure.in	2013-12-20 01:28:28.000000000 +0100
++++ bind-9.9.4-P2/configure.in	2014-01-21 17:55:51.063395215 +0100
+@@ -3914,7 +3914,7 @@ AC_SUBST(DOXYGEN)
+ # empty).  The variable VARIABLE will be substituted into output files.
+ # 
+ 
+-AC_DEFUN(NOM_PATH_FILE, [
++AC_DEFUN([NOM_PATH_FILE], [
+ $1=""
+ AC_MSG_CHECKING(for $2)
+ for d in $3

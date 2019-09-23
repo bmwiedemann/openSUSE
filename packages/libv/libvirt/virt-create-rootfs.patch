@@ -1,0 +1,331 @@
+Index: libvirt-5.7.0/tools/Makefile.am
+===================================================================
+--- libvirt-5.7.0.orig/tools/Makefile.am
++++ libvirt-5.7.0/tools/Makefile.am
+@@ -59,6 +59,7 @@ PODFILES = \
+ 	virt-sanlock-cleanup.pod \
+ 	virt-xml-validate.pod \
+ 	virsh.pod \
++	virt-create-rootfs.pod \
+ 	$(NULL)
+ 
+ MANINFILES = \
+@@ -94,7 +95,7 @@ MAINTAINERCLEANFILES =
+ confdir = $(sysconfdir)/libvirt
+ conf_DATA =
+ 
+-bin_SCRIPTS = virt-xml-validate virt-pki-validate
++bin_SCRIPTS = virt-xml-validate virt-pki-validate virt-create-rootfs
+ bin_PROGRAMS = virsh virt-admin
+ libexec_SCRIPTS = libvirt-guests.sh
+ man1_MANS = \
+@@ -121,6 +122,8 @@ bin_PROGRAMS += virt-host-validate
+ man1_MANS += virt-host-validate.1
+ endif WITH_HOST_VALIDATE
+ 
++man1_MANS += virt-create-rootfs.1
++
+ virt-xml-validate: virt-xml-validate.in Makefile
+ 	$(AM_V_GEN)sed -e 's|[@]schemadir@|$(pkgdatadir)/schemas|g' \
+ 		       -e 's|[@]VERSION@|$(VERSION)|g' \
+Index: libvirt-5.7.0/tools/virt-create-rootfs
+===================================================================
+--- /dev/null
++++ libvirt-5.7.0/tools/virt-create-rootfs
+@@ -0,0 +1,214 @@
++#!/bin/sh
++set -e
++
++function fail
++{
++    echo $1
++    exit 1
++}
++
++function print_help
++{
++cat << EOF
++virt-create-rootfs --root /path/to/rootfs [ARGS]
++
++Create a new root file system to use for distribution containers.
++
++ARGUMENTS
++
++    -h, --help          print this help and exit
++    -r, --root          path where to create the root FS
++    -d, --distro        distribution to install
++    -a, --arch          target architecture
++    -u, --url           URL of the registration server
++    -c, --regcode       registration code for the product
++    -p, --root-pass     the root password to set in the root FS
++    --dry-run           don't actually run it
++EOF
++}
++
++ARCH=$(uname -i)
++ROOT=
++DISTRO=
++URL=
++REG_CODE=
++ROOT_PASS=
++DRY_RUN=
++
++while test $# -gt 0
++do
++    case $1 in
++
++    -h | --help)
++        # usage and help
++        print_help
++        ;;
++
++    -r | --root)
++        if test $# -lt 2; then
++            fail "$1 needs a value"
++        fi
++        ROOT="$2"
++        shift
++        ;;
++
++    -a | --arch)
++        if test $# -lt 2; then
++            fail "$1 needs a value"
++        fi
++        case "$2" in
++            i586 | x86_64)
++                ARCH=$2
++                shift
++                ;;
++            *)
++                fail "$1 valid values are 'i586', 'x86_64'"
++        esac
++        # Sanity checks for the arch
++        HOST_ARCH=$(uname -i)
++        case "$HOST_ARCH" in
++            i?86)
++                if test $ARCH = "x86_64"; then
++                    fail "Host won't run x86_64 container"
++                fi
++            ;;
++        esac
++        ;;
++
++    -u | --url)
++        if test $# -lt 2; then
++            fail "$1 needs a value"
++        fi
++        URL="$2"
++        shift
++        ;;
++
++    -d | --distro)
++        if test $# -lt 2; then
++            fail "$1 needs a value"
++        fi
++        case "$2" in
++            SLED-* | SLES-* | openSUSE-*)
++                DISTRO=$2
++                shift
++                ;;
++            *)
++                fail "$1 valid values are 'SLED-*', 'SLES-*', 'openSUSE-*'"
++        esac
++        ;;
++
++    -c | --regcode)
++        if test $# -lt 2; then
++            fail "$1 needs a value"
++        fi
++        REG_CODE=$2
++        shift
++        ;;
++
++    -p | --root-pass)
++        if test $# -lt 2; then
++            fail "$1 needs a value"
++        fi
++        ROOT_PASS=$2
++        shift
++        ;;
++
++    --dry-run)
++        DRY_RUN="yes"
++        ;;
++
++    *)
++        fail "Unknown option: $1"
++        ;;
++    esac
++
++    shift
++done
++
++if test -z "$ROOT"; then
++    fail "--root argument need to be provided"
++fi
++
++RUN=
++if test "$DRY_RUN" = "yes"; then
++    RUN="echo"
++fi
++
++function call_zypper
++{
++    $RUN zypper --root "$ROOT" $*
++}
++
++function install_sle
++{
++    PRODUCT="$1"
++    VERSION="$2"
++
++    case "$VERSION" in
++        12.0)
++            # Transform into zypper internal version scheme
++            VERSION="12"
++            ;;
++        *)
++            fail "Unhandled SLE version: $VERSION"
++            ;;
++    esac
++
++    # First copy the SUSE GPG keys from the host to the new root
++    rpm -qa gpg-pubkey\* --qf "%{name}-%{version}-%{release}: %{summary}\n" | \
++    grep 'gpg(SuSE Package Signing Key <build@suse.de>)' | \
++    while read -r line; do
++        key=$(echo $line | cut -d ':' -f 1)
++        tmpkey=$(mktemp)
++        rpm -qi $key | sed -n '/BEGIN/,/END/p' > "$tmpkey"
++        rpm --root "$ROOT" --import "$tmpkey"
++        rm "$tmpkey"
++    done
++
++    # SUSE Connect adds the repositories, and refreshes them,
++    # but requires the GPG key to be already imported
++    CONNECT_ARGS=
++    if test -n "$REG_CODE"; then
++        CONNECT_ARGS="$CONNECT_ARGS -r $REG_CODE"
++    fi
++    if test -n "$URL"; then
++        CONNECT_ARGS="$CONNECT_ARGS --url $URL"
++    fi
++    $RUN SUSEConnect -p "$PRODUCT/$VERSION/$ARCH" --root "$ROOT" $CONNECT_ARGS
++
++    # Then we install what we need
++    call_zypper in -t pattern Minimal
++
++    # Create the baseproduct symlink
++    ln -s $PRODUCT.prod "$ROOT/etc/products.d/baseproduct"
++}
++
++case "$DISTRO" in
++    SLED-*)
++        install_sle "SLED" "${DISTRO:5}"
++        ;;
++    SLED-* | SLES-*)
++        install_sle "SLES" "${DISTRO:5}"
++        ;;
++
++    openSUSE-*)
++        VERSION=${DISTRO:9}
++        case "$VERSION" in
++            13.1)
++                REPO="http://download.opensuse.org/distribution/13.1/repo/oss/"
++                UPDATE_REPO="http://download.opensuse.org/update/13.1/"
++                ;;
++            *)
++                fail "Unhandled openSUSE version: $VERSION"
++                ;;
++        esac
++        call_zypper ar "$REPO" "openSUSE"
++        call_zypper ar "$UPDATE_REPO" "openSUSE udpate"
++        call_zypper in --no-recommends -t pattern base
++        ;;
++esac
++
++if test "$DRY_RUN" != "yes"; then
++    echo "pts/0" >> "$ROOT/etc/securetty"
++    chroot "$ROOT" /usr/bin/passwd
++fi
+Index: libvirt-5.7.0/tools/virt-create-rootfs.pod
+===================================================================
+--- /dev/null
++++ libvirt-5.7.0/tools/virt-create-rootfs.pod
+@@ -0,0 +1,77 @@
++=head1 NAME
++
++virt-create-rootfs - tool to create a root file system for distro containers.
++
++=head1 SYNOPSIS
++
++B<virt-create-rootfs> [I<OPTION>]
++
++=head1 DESCRIPTION
++
++The B<virt-create-rootfs> program is a shell script setting up a root file
++system for a distribution container.
++
++The basic structure of most virt-create-rootfs usage is:
++
++  virt-create-rootfs -r /path/to/root -d distro-name
++
++=head1 OPTIONS
++
++=over
++
++=item B<-h, --help>
++
++Display command line help usage then exit.
++
++=item B<-r, --root>
++
++Set the path where to create the new root file system.
++
++=item B<-d, --distro>
++
++Set the name of distribution to use for the root file system.
++
++As of now, only SLED-I<XXX>, SLES-I<XXX> and openSUSE-I<XXX> are implemented
++where I<XXX> is the version number. Note that SUSEConnect is required to
++handle SLE distributions.
++
++=item B<-a, --arch>
++
++Set the target architecture of the root file system to either i586 or x86_64.
++
++=item B<-c, --regcode>
++
++Set the registration code for the product to install in the root file system.
++For SLE distributions, use a registration code from SUSE Customer Center.
++
++=item B<-u, --url>
++
++For SLE distributions, set the registration server to use.
++Default: http://scc.suse.com.
++
++=item B<-p, --root-pass>
++
++If defined, set the root password for the new root file system.
++
++=item B<--dry-run>
++
++Don't do anything, just report what would be done.
++
++=back
++
++=head1 COPYRIGHT
++
++Copyright (C) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
++
++=head1 LICENSE
++
++virt-create-rootfs is distributed under the terms of the GNU LGPL v2+.
++This is free software; see the source for copying conditions. There
++is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
++PURPOSE
++
++=head1 SEE ALSO
++
++L<virsh(1)>, L<http://www.libvirt.org/>
++
++=cut

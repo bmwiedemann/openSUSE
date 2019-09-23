@@ -1,0 +1,20 @@
+Index: diff-lcs-1.1.3/bin/htmldiff
+===================================================================
+--- diff-lcs-1.1.3.orig/bin/htmldiff
++++ diff-lcs-1.1.3/bin/htmldiff
+@@ -1,4 +1,4 @@
+-#!ruby -w
++#!/usr/bin/ruby -w
+ 
+ require 'diff/lcs'
+ require 'diff/lcs/htmldiff'
+Index: diff-lcs-1.1.3/bin/ldiff
+===================================================================
+--- diff-lcs-1.1.3.orig/bin/ldiff
++++ diff-lcs-1.1.3/bin/ldiff
+@@ -1,4 +1,4 @@
+-#!ruby -w
++#!/usr/bin/ruby -w
+ 
+ require 'diff/lcs'
+ require 'diff/lcs/ldiff'

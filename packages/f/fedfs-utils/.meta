@@ -1,0 +1,8 @@
+<package name="fedfs-utils" project="openSUSE:Factory">
+  <title>Linux FedFs Implementation</title>
+  <description>This package contains an implementation for Linux of the Federated
+Filesystem (FedFS) Proposed Standard.  For an introduction to FedFS,
+see RFC 5716, or read the fedfs(7) man page provided in the doc/man
+directory.</description>
+  <devel project="network" package="fedfs-utils"/>
+</package>

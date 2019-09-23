@@ -1,0 +1,180 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c6afd42cfb73570feff997a55277a534</srcmd5>
+    <version>1.2.2</version>
+    <time>1168903347</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b263f73901f5cccfa8b6efded392bba0</srcmd5>
+    <version>1.2.6</version>
+    <time>1185494150</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ddbfa18ce20f04bbfd6cb207cfff4029</srcmd5>
+    <version>1.2.6</version>
+    <time>1185749585</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ea2315e1d082d70a79c0217974a34f35</srcmd5>
+    <version>1.2.6</version>
+    <time>1187202629</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>fc3b54a48734cf5fd8f16f77592e4e7d</srcmd5>
+    <version>1.2.6</version>
+    <time>1187218812</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>fc3b54a48734cf5fd8f16f77592e4e7d</srcmd5>
+    <version>1.2.6</version>
+    <time>1187218812</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>31d938a1bf8af188f4d2fe7162117d45</srcmd5>
+    <version>1.2.6</version>
+    <time>1245366075</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>31d938a1bf8af188f4d2fe7162117d45</srcmd5>
+    <version>1.2.6</version>
+    <time>1245366075</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>e6d994097d288cdab770b86568007d50</srcmd5>
+    <version>1.2.6</version>
+    <time>1268831694</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libmpcdec based on submit request 34961 from user coolo
+</comment>
+    <requestid>34961</requestid>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>f6c89d473bd103f8fbc2d3e248f49ac5</srcmd5>
+    <version>1.2.6</version>
+    <time>1268924637</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>ecff4e397d04cb8ccb25bbf3f0f8caae</srcmd5>
+    <version>1.2.6</version>
+    <time>1268986001</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libmpcdec based on submit request 35120 from user coolo
+</comment>
+    <requestid>35120</requestid>
+  </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>ecff4e397d04cb8ccb25bbf3f0f8caae</srcmd5>
+    <version>1.2.6</version>
+    <time>1278667360</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="16">
+    <srcmd5>ecff4e397d04cb8ccb25bbf3f0f8caae</srcmd5>
+    <version>1.2.6</version>
+    <time>1278678590</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="19">
+    <srcmd5>ecff4e397d04cb8ccb25bbf3f0f8caae</srcmd5>
+    <version>1.2.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="20">
+    <srcmd5>d07331044cf2355327ed267bfda1da6e</srcmd5>
+    <version>1.2.6</version>
+    <time>1303112396</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67594 from user coolo
+</comment>
+    <requestid>67594</requestid>
+  </revision>
+  <revision rev="16" vrev="21">
+    <srcmd5>ea0121516e8d39f2907f0c452bc0cc06</srcmd5>
+    <version>1.2.6</version>
+    <time>1303112403</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67594
+</comment>
+  </revision>
+  <revision rev="17" vrev="23">
+    <srcmd5>ea0121516e8d39f2907f0c452bc0cc06</srcmd5>
+    <version>1.2.6</version>
+    <time>1319182112</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="24">
+    <srcmd5>3e9d3f32fe9431e6589a9d37cae1a5d4</srcmd5>
+    <version>1.2.6</version>
+    <time>1323192278</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="26">
+    <srcmd5>3e9d3f32fe9431e6589a9d37cae1a5d4</srcmd5>
+    <version>1.2.6</version>
+    <time>1340183606</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="27">
+    <srcmd5>5160af4eab058413ecb410f5f7ce4acb</srcmd5>
+    <version>1.2.6</version>
+    <time>1357127925</time>
+    <user>namtrac</user>
+    <comment>- libmpcdec-byteswap.patch, use OS byteswap routines.
+  (that in turns needs AC_USE_SYSTEM_EXTENSIONS)
+ 
+ - build with large file support. (forwarded request 146609 from elvigia)</comment>
+    <requestid>146611</requestid>
+  </revision>
+  <revision rev="21" vrev="29">
+    <srcmd5>5160af4eab058413ecb410f5f7ce4acb</srcmd5>
+    <version>1.2.6</version>
+    <time>1359109307</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="31">
+    <srcmd5>5160af4eab058413ecb410f5f7ce4acb</srcmd5>
+    <version>1.2.6</version>
+    <time>1379663010</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="33">
+    <srcmd5>5160af4eab058413ecb410f5f7ce4acb</srcmd5>
+    <version>1.2.6</version>
+    <time>1409301626</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="34">
+    <srcmd5>8415848e7e858ab3e8a32f8e72357bb4</srcmd5>
+    <version>1.2.6</version>
+    <time>1437478003</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317396</requestid>
+  </revision>
+  <revision rev="25" vrev="35">
+    <srcmd5>33c2cebbf2da9b29d87c9c565843dc91</srcmd5>
+    <version>1.2.6</version>
+    <time>1565962337</time>
+    <user>dimstar_suse</user>
+    <comment>- Minor spec-cleaner run</comment>
+    <requestid>723237</requestid>
+  </revision>
+</revisionlist>

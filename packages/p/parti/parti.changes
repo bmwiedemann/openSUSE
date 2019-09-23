@@ -1,0 +1,141 @@
+--------------------------------------------------------------------
+Thu Jul 25 08:25:16 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/parti#10
+- adjust to isoinfo changes (bsc#1097814)
+- 1.19
+
+--------------------------------------------------------------------
+Thu Apr 26 14:05:19 UTC 2018 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/parti#9
+- improve doc a bit
+- update git2log script to latest version
+- reference obs builds
+- 1.18
+
+--------------------------------------------------------------------
+Wed Apr 25 13:37:55 UTC 2018 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/parti#8
+- extended documentation
+- 1.17
+
+--------------------------------------------------------------------
+Tue Mar 6 10:02:17 UTC 2018 - amajer@suse.de
+
+- merge gh#wfeldt/parti#7
+- Use standard location for isoinfo binary
+- 1.16
+
+-------------------------------------------------------------------
+Mon Mar  5 14:14:58 UTC 2018 - adam.majer@suse.de
+
+- switch to using cdrtools - wodim is to be removed.
+- cdrtools.patch: Use isoinfo from standard locations, like installed
+  by mkisofs.
+
+--------------------------------------------------------------------
+Mon Sep 11 08:36:36 UTC 2017 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/parti#6
+- show more details about extended partition links
+- 1.15
+
+-------------------------------------------------------------------
+Mon Apr  3 10:15:14 UTC 2017 - snwint@suse.com
+
+- update docs a bit
+- code de-duplication
+- re-arrange fat fs output a bit
+- parse vfat super block
+- 1.14
+
+-------------------------------------------------------------------
+Fri Oct 14 14:24:26 CEST 2016 - snwint@suse.com
+
+- show decoded gpt attribute bits
+- 1.13
+
+-------------------------------------------------------------------
+Fri Oct 14 12:19:13 UTC 2016 - snwint@suse.com
+
+- added some GPT GUIDs of linux partitions
+- 1.12
+
+-------------------------------------------------------------------
+Sun Oct 18 17:41:44 UTC 2015 - astieger@suse.com
+
+- spec file updates
+
+-------------------------------------------------------------------
+Mon Oct 12 12:29:40 UTC 2015 - snwint@suse.com
+
+- recognize prep partition type
+- also show file system uuid
+- 1.11
+
+-------------------------------------------------------------------
+Wed Oct  7 08:41:17 UTC 2015 - snwint@suse.com
+
+- gitignore
+- README: links to explain the information being handled
+- Add link to linux-devtools documentation
+- Convert README to Markdown
+- 1.10
+
+-------------------------------------------------------------------
+Wed Jul 22 16:21:21 CEST 2015 - snwint@suse.com
+
+- improved zipl parsing
+- 1.9
+
+-------------------------------------------------------------------
+Fri Jul 17 16:57:22 CEST 2015 - snwint@suse.com
+
+- support parsing zIPL on scsi devices
+- fix endianness issues
+- 1.8
+
+-------------------------------------------------------------------
+Mon Oct 20 15:00:48 CEST 2014 - snwint_jenkins@suse.com
+
+- show file name if partition refers to a file
+- 1.7
+
+-------------------------------------------------------------------
+Fri Oct 17 14:10:46 CEST 2014 - snwint_jenkins@suse.com
+
+- avoid dependency on cdrkit-cdrtools-compat
+- 1.6
+
+-------------------------------------------------------------------
+Fri Oct 17 13:55:48 CEST 2014 - snwint_jenkins@suse.com
+
+- reworked layout and added more info
+- 1.5
+
+-------------------------------------------------------------------
+Thu Oct 16 16:55:47 CEST 2014 - snwint_jenkins@suse.com
+
+- show info about filesystems
+- 1.4
+
+-------------------------------------------------------------------
+Thu Oct 16 15:15:47 CEST 2014 - snwint_jenkins@suse.com
+
+- show file names in el-torito boot entries
+- 1.3
+
+-------------------------------------------------------------------
+Thu Oct 16 12:02:40 CEST 2014 - snwint_jenkins@suse.com
+
+- added 'archive' Makefile target
+- updated git2log script
+- add bios boot partition type
+- 1.2
+
+-------------------------------------------------------------------
+Tue Jul 23 11:30:43 CEST 2013 - snwint@suse.de
+
+- created initial package

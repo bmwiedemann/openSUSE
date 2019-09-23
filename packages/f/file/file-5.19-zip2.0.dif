@@ -1,0 +1,18 @@
+---
+ magic/Magdir/archive |    5 +++++
+ 1 file changed, 5 insertions(+)
+
+--- magic/Magdir/archive
++++ magic/Magdir/archive	2019-02-21 06:49:05.298138025 +0000
+@@ -1064,6 +1064,11 @@
+ 0	string		PK\x07\x08PK\x03\x04	Zip multi-volume archive data, at least PKZIP v2.50 to extract
+ !:mime	application/zip
+ !:ext zip/cbz
++>30	ubelong		0x6d696d65	Zip archive data, at least v2.0 to extract
++>>34	ubelong		0x74797065	\b, mime type
++>>>38	regex		application/[a-z+-]+	\b %s
++!:mime	application/unknown+zip
++!:ext zip/cbz
+ 
+ # Zip archives (Greg Roelofs, c/o zip-bugs@wkuvx1.wku.edu)
+ 0	string		PK\005\006	Zip archive data (empty)

@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>637aa3d6b4134d0b173c0b77fd1b7d52</srcmd5>
+    <version>0.7.2</version>
+    <time>1417160904</time>
+    <user>dimstar_suse</user>
+    <comment>Please accept this new RPM.
+
+Ask from @dimstar for chromium-bsu 262716</comment>
+    <requestid>262947</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c72ed5a5f9c05858bb326780a91e69a2</srcmd5>
+    <version>0.7.2</version>
+    <time>1435053490</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312720</requestid>
+  </revision>
+</revisionlist>

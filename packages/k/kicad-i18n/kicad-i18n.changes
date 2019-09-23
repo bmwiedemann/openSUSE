@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Wed Aug  7 17:47:28 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.1.4
+  + Updates to German, Greek, French, Hungarian, Italian, Japanese, Polish,
+    Portuguese, Russian, Slovak and Simplified Chinese translations.
+
+-------------------------------------------------------------------
+Wed Apr 17 00:42:15 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.1.1
+  + Updates to Italian, Japanese, Polish, Portuguese and Simplified
+    Chinese translations.
+
+-------------------------------------------------------------------
+Mon Mar 11 16:11:57 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.1.0
+  - All languages updated for KiCad 5.1.0
+  - Added Traditional Chinese language subpackage
+
+-------------------------------------------------------------------
+Thu Dec  6 21:12:03 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.0.2
+
+-------------------------------------------------------------------
+Thu Dec  6 11:17:10 UTC 2018 - davejplater@gmail.com
+
+- Update to version 5.0.2
+
+-------------------------------------------------------------------
+Thu Oct 18 19:12:58 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.0.1
+- Fix License in accordance with upstream license
+
+-------------------------------------------------------------------
+Wed Jul 25 12:19:14 UTC 2018 - davejplater@gmail.com
+
+- Update to version 5.0.0
+- English added, Indonesian and Romanian removed.
+
+-------------------------------------------------------------------
+Thu Sep 21 08:43:23 UTC 2017 - jslaby@suse.com
+
+- cs is Czech, not Serbian
+
+-------------------------------------------------------------------
+Tue Sep  5 04:19:53 UTC 2017 - davejplater@gmail.com
+
+- Update to version 4.0.7
+
+-------------------------------------------------------------------
+Thu Mar 23 08:39:35 UTC 2017 - xxxxxmichl@googlemail.com
+
+- updated to version 4.0.6
+
+-------------------------------------------------------------------
+Mon Aug  8 17:49:50 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 4.0.3
+
+-------------------------------------------------------------------
+Mon Mar 21 09:14:43 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 4.0.2
+
+-------------------------------------------------------------------
+Wed Dec  2 15:28:40 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 4.0.0
+
+-------------------------------------------------------------------
+Fri Sep 25 21:43:56 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from kicad-doc package
+- Update to version 4.0.0~20150925

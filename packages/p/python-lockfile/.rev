@@ -1,0 +1,116 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>684a9d53965e6d149dc3b14a1d1469e6</srcmd5>
+    <version>0.9.1</version>
+    <time>1306767134</time>
+    <user>darix</user>
+    <comment>Forwarding Python packages to Factory...</comment>
+    <requestid>67618</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6f4b9a1c2956a4dc0df24f13faf691cb</srcmd5>
+    <version>0.9.1</version>
+    <time>1306767145</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67618
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>6f4b9a1c2956a4dc0df24f13faf691cb</srcmd5>
+    <version>0.9.1</version>
+    <time>1319182395</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>0eb5c3ee7aa9856c358b29edce29db57</srcmd5>
+    <version>0.9.1</version>
+    <time>1323194178</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>5263aabbb02770278c133691d2242288</srcmd5>
+    <version>0.9.1</version>
+    <time>1339587154</time>
+    <user>coolo</user>
+    <comment>- added a patch to fix a TypeError in LockBase.__init__ when the current
+  thread has ident == None</comment>
+    <requestid>124457</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>5263aabbb02770278c133691d2242288</srcmd5>
+    <version>0.9.1</version>
+    <time>1340184065</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>de9e8936d02e1c6daa66747d04148864</srcmd5>
+    <version>0.9.1</version>
+    <time>1340893963</time>
+    <user>coolo</user>
+    <comment>- Less macros</comment>
+    <requestid>126280</requestid>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>de9e8936d02e1c6daa66747d04148864</srcmd5>
+    <version>0.9.1</version>
+    <time>1359110064</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>de9e8936d02e1c6daa66747d04148864</srcmd5>
+    <version>0.9.1</version>
+    <time>1379664211</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>f054ef16c72b00cf4e31af817c6619b9</srcmd5>
+    <version>0.9.1</version>
+    <time>1406177850</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241831</requestid>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>f054ef16c72b00cf4e31af817c6619b9</srcmd5>
+    <version>0.9.1</version>
+    <time>1409302910</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>815f61157000bdc1ac045c3b5e61da63</srcmd5>
+    <version>0.10.2</version>
+    <time>1431247453</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305761</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c0d5ef3f045d388ca1fdf43c3e0543e9</srcmd5>
+    <version>0.10.2</version>
+    <time>1508508707</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533033</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>c1e47b6eeb7de44ef667f6718bdbfca6</srcmd5>
+    <version>0.10.2</version>
+    <time>1545647959</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659478</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c219cee52f2a5023e392a04220f010a1</srcmd5>
+    <version>0.12.2</version>
+    <time>1551216065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>679178</requestid>
+  </revision>
+</revisionlist>

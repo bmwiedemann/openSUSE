@@ -1,0 +1,13 @@
+Index: tango-icon-theme-0.8.90/configure.ac
+===================================================================
+--- tango-icon-theme-0.8.90.orig/configure.ac
++++ tango-icon-theme-0.8.90/configure.ac
+@@ -62,7 +62,7 @@ if test "x$enable_framing" = "xyes"; the
+       fi
+ 
+       # Add the command line options we need here
+-      CONVERT="$CONVERT -bordercolor Transparent -border 1x1"
++      CONVERT="$CONVERT -strip -bordercolor Transparent -border 1x1"
+       AC_SUBST(CONVERT)
+    else
+       AC_MSG_ERROR([ImageMagick is required to build tango-icon-theme])

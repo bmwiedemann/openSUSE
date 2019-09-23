@@ -1,0 +1,309 @@
+-------------------------------------------------------------------
+Tue Sep  3 14:39:35 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- New version 3.4.0. Many changes since 3.2.1, for the full changelog 
+  please read CHANGELOG.md
+- Add new BuildRequires on cryptsetup.
+- Patches refreshed:
+  * build-position-independent-binaries.patch
+- Patches removed, merged upstream:
+  * zypper-install-Fix-dbpath-for-newer-versions-of-SUSE-Linux.patch
+  * Handle-zypper-error-code-correctly.patch
+  * Support-multi-line-bootdef-settings.patch
+  * Add-support-for-numbered-variables.patch
+  * Improve-zypper-integration.patch
+  * Add-unit-tests-for-zypper-installation-on-SLE.patch
+  * Fix-pgp-key-version-strings-and-paths.patch
+- Patches added, fix an issue with the flags order provided by the Makefile
+  * fix_flags_order.patch
+-------------------------------------------------------------------
+Sat Jul 20 18:20:40 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Fix-pgp-key-version-strings-and-paths.patch
+  Fixing pgp key, version strings and paths.
+
+-------------------------------------------------------------------
+Tue Jun 11 14:49:00 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Update to version 3.2.1:
+  This point release fixes the following bugs:
+  * Allows users to join instances with non-suid workflow
+  * Removes false warning when seccomp is disabled on the host
+  * Fixes an issue in the terminal when piping output to commands
+  * Binds NVIDIA persistenced socket when `--nv` is invoked
+
+-------------------------------------------------------------------
+Thu Jun  6 14:10:47 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Improve integration with SUSE Products: add support to create
+  Singularity images with SLE.
+  * build-position-independent-binaries.patch:
+    Make sure, the built binaries adhere to the packaging guidelines.
+  * zypper-install-Fix-dbpath-for-newer-versions-of-SUSE-Linux.patch:
+    Newer SUSE versions use a different path for the RPM database.
+  * Handle-zypper-error-code-correctly.patch:
+    When the installation succeeds by an installation scriptlet fails
+    zypper returns error code 107. Don't treat this as an error.
+  * Support-multi-line-bootdef-settings.patch:
+    In order to specify a repository GPG key, add support for
+    multi line variables.
+  * Add-support-for-numbered-variables.patch:
+    In order to specify a list of additional repos, add support
+    to 'indexed' variables.
+  * Improve-zypper-integration.patch:
+    Improve handling of SUSE repositires:
+    - For SLE, use SUSEConnect to get all product repos.
+    - Allow to specify a repository GPG key.
+    - Allow to specify additional installation repositories.
+  * Add-unit-tests-for-zypper-installation-on-SLE.patch
+    Add unit tests.
+
+-------------------------------------------------------------------
+Sat May 18 15:42:45 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Add group 'singularity', fix ownerships.
+
+-------------------------------------------------------------------
+Thu May 16 07:03:34 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Updated to singularity v3.2.0
+   * [Security related fix](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11328)
+     Instance files are now stored in user's home directory for privacy and
+     many checks have been added to ensure that a user can't manipulate files
+     to change `starter-suid` behavior when instances are joined (many thanks
+     to Matthias Gerstner from the SUSE security team for finding and securely
+     reporting this vulnerability)
+     (CVE-2019-11328, bsc#1128598)
+   * New features / functionalities
+     - Introduced a new basic framework for creating and managing plugins
+     - Added the ability to create containers through multi-stage builds
+     - Created the concept of a Sylabs Cloud "remote" endpoint and added the
+       ability for users and admins to set them through CLI and conf files 
+     - Added caching for images from Singularity Hub
+     - Made it possible to compile Singularity outside of `$GOPATH`
+     - Added a json partition to SIF files for OCI configuration when building
+       from an OCI source
+     - Full integration with Singularity desktop for MacOS code base
+   * New Commands
+     - Introduced the `plugin` command group for creating and managing plugins.
+   * Introduced the `remote` command group to support management of Singularity
+     endpoints.
+   * Added to the `key` command group to improve PGP key management.
+   * Added the `Stage: <name>` keyword to the definition file header and the
+     `from <stage name>` option/argument pair to the `%files` section to
+     support multistage builds
+   * Deprecated / removed commands
+     - The `--token/-t` option has been deprecated in favor of the `singularity
+       remote` command group
+   * Changed defaults / behaviors
+     - Ask to confirm password on a newly generated PGP key
+     - Prompt to push a key to the KeyStore when generated
+     - Refuse to push an unsigned container unless overridden with
+       `--allow-unauthenticated/-U` option
+     - Warn and prompt when pulling an unsigned container without the
+       `--allow-unauthenticated/-U` option
+  For more information check:
+     https://github.com/sylabs/singularity/blob/release-3.2/CHANGELOG.md
+- Updated build-position-independent-binaries.patch
+
+-------------------------------------------------------------------
+Tue Apr  9 09:59:13 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- building now non stripped version 
+
+-------------------------------------------------------------------
+Thu Apr  4 12:24:12 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- updated to singularity v3.1.1
+  * New Commands
+    - New hidden `buildcfg` command to display compile-time parameters 
+    - Added support for `LDFLAGS`, `CFLAGS`, `CGO_` variables in build system
+    - Added `--nocolor` flag to Singularity client to disable color in logging
+  * Removed Commands
+    `singularity capability <add/drop> --desc` has been removed
+    `singularity capability list <--all/--group/--user>` flags have all
+    been removed 
+  * New features / functionalities
+    - The `--builder` flag to the `build` command implicitly sets `--remote`
+    - Repeated binds no longer cause Singularity to exit and fail, just warn
+      instead
+    - Corrected typos and improved docstrings throughout
+    - Removed warning when CWD does not exist on the host system
+    - Added support to spec file for RPM building on SLES 11
+
+-------------------------------------------------------------------
+Wed Mar  6 10:07:37 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- update to singularity 3.1.0 what is reimplementaion in go
+  so this is a complete new build and just reusing the changelog
+  entries, following build differences were made to the upstream
+  spec file
+  * build position independent executable
+  * build stripped executable
+  * added following files: 
+   * build_flags.patch what adds the right build flags
+   * singularity-rpmlintrc which supresses warning of file duplicate 
+     badness dues to different setuid bit
+
+-------------------------------------------------------------------
+Fri Feb 15 18:42:02 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- On Leap 42 or SLE 12 / PackageHub12 do not check the
+  permissions version: unfortunately the version number
+  has no relation to the patch set applied (bsc#1125369).
+
+-------------------------------------------------------------------
+Fri Jan  4 11:05:14 UTC 2019 - eich@suse.com
+
+- Change from /var/singularity to /var/lib/singularity
+- zypper-install-Fix-dbpath-for-newer-versions-of-SUSE-Linux.patch:
+  Fix the RPM db path for later versions of SUSE.
+- Fix warning on bash-completion file about non-executible script.
+
+-------------------------------------------------------------------
+Mon Dec 17 09:48:05 UTC 2018 - cgoll@suse.com
+
+- Updated to 2.6.1 to fix CVE-2018-19295 (bsc#1111411). 
+  * mount points are not mounted with shared mount propagation by 
+    default anymore, as this may result in privilege escalation.
+
+-------------------------------------------------------------------
+Wed Oct 31 12:11:34 UTC 2018 - matthias.gerstner@suse.com
+
+- Also package the directory tree rooted at /var/singularity/.
+  Otherwise running a container fails with:
+
+  'Failed to resolve path to /var/singularity/mnt/container: No such file or directory'
+
+-------------------------------------------------------------------
+Tue Oct 30 16:13:05 UTC 2018 - eich@suse.com
+
+- Add bash completions directory to file list for suse_version < 1500
+  to keep the build checker happy.
+
+-------------------------------------------------------------------
+Sun Oct 14 09:03:26 UTC 2018 - eich@suse.com
+
+- Update to version 2.6.0
+  * Allow admin to specify a non-standard location for mksquashfs binary at 
+    build time with '--with-mksquashfs' option #1662
+  * '--nv' option will use
+    [nvidia-container-cli](https://github.com/NVIDIA/libnvidia-container) if
+    installed #1681
+  * [nvliblist.conf]
+    (https://github.com/singularityware/singularity/blob/master/etc/nvliblist.conf)
+    now has a section for binaries #1681
+  * '--nv' can be made default with all action commands in singularity.conf
+    #1681
+  * '--nv' can be controlled by env vars '$SINGULARITY_NV' and 
+    '$SINGULARITY_NV_OFF' #1681
+  * Refactored travis build and packaging tests #1601
+  * Added build and packaging tests for Debian 8/9 and openSUSE 42.3/15.0 #1713
+  * Restore shim init process for proper signal handling and child reaping when
+    container is initiated in its own PID namespace #1221
+  * Add '-i' option to image.create to specify the inode ratio. #1759
+  * Bind '/dev/nvidia*' into the container when the '--nv' flag is used in 
+    conjuction with the '--contain' flag #1358
+  * Add '--no-home' option to not mount user $HOME if it is not the $CWD and
+    'mount home = yes' is set. #1761
+  * Added support for OAUTH2 Docker registries like Azure Container Registry
+    #1622
+   ### Bug fixes
+  * Fix 404 when using Arch Linux bootstrap #1731
+  * Fix environment variables clearing while starting instances #1766
+
+-------------------------------------------------------------------
+Mon Jul  9 16:37:37 UTC 2018 - eich@suse.com
+
+- Use %license instead of %doc for license files on newer products.
+- Fix bash completion path.
+
+-------------------------------------------------------------------
+Fri Jul  6 08:20:06 UTC 2018 - cgoll@suse.com
+
+- Updated from 2.3.2 to 2.5.2
+- Fix security issues for incorrect access control on systems 
+  supporting overlay file system descirbed in CVE-2018-12021 and
+  bsc#1100333
+  Highlights of 2.5.2
+  * a new `build` command was added to replace `create` + 
+    `bootstrap`
+  * default image format is squashfs, eliminating the need to 
+    specify a size
+  * a `localimage` can be used as a build base, including ext3, 
+    sandbox, and other squashfs images
+  * singularity hub can now be used as a base with the uri
+  * Restore docker-extract aufs whiteout handling that implements 
+    correct extraction of docker container layers.
+  * several bug fixes, see CHANGELOG.md for details
+- Removed: singularity-2.3.2.tar.gz
+- Added: singularity-2.5.2.tar.gz
+- Removed 'notyet' if conditions in specfile to allow files 
+  introduced in v2.5.2
+- Fixed access control on systems supporting overlay file system
+  (CVE-2018-12021, boo#1100333).
+
+-------------------------------------------------------------------
+Mon Nov  6 09:48:19 UTC 2017 - eich@suse.com
+
+- Restrict permissions file version to a version which has
+  the required singularity entries.
+
+-------------------------------------------------------------------
+Thu Nov  2 09:05:09 UTC 2017 - eich@suse.com
+
+- Update to 2.3.2:
+  * Fix for a change that Docker implemented to their registry 
+    RESTful API which broke compatibility with Singularity.
+  * Several other low minor fixes.
+
+-------------------------------------------------------------------
+Thu Oct  5 10:12:04 UTC 2017 - eich@suse.com
+
+- Removed:
+  Do-chdir-before-duing-chroot.patch:
+  After checking with the security team that there are no concerns
+  about doing the chdir() after the chroot(), remove this patch and
+  add a filter to keep rpmlint from complaining (bsc#1028304).
+
+-------------------------------------------------------------------
+Mon Oct  2 21:21:34 UTC 2017 - eich@suse.com
+
+- set permissions for SUID binaries to 4750.
+- fix library packaging for i586.
+- add a README.SUSE
+- temporarily filter filter for non-standard-gid from rpmlint
+  until group 'singularity' is available as known group.
+
+-------------------------------------------------------------------
+Thu Sep 14 19:48:40 UTC 2017 - eich@suse.com
+
+- Update to version 2.3.1:
+  This release includes a fix for a High Severity security issue on older
+  hosts, and other improvements and fixes to previous versions of Singularity.
+  Version 2.3:
+  There are a massive number of fixes, updates, optimizations and awesomeness
+  contained within this release, but here is a brief overview of the major
+  changes you can expect to find in this release:
+
+    Lots of backend library changes to accommodate a more flexible API
+    Restructured Python backend
+    Updated bootstrap backend to make it much more reliable
+    Direct support for the awesome, the fantastic, Singularity-Hub!
+    Ability to run additional commands without root privileges (e.g. create,
+    import, copy, export, etc..).
+    Added ability to pull images from Singularity Hub and Docker
+    Containers now have labels, and are inspect'able
+
+- Do-chdir-before-duing-chroot.patch:
+  Add a chdir() before chroot() just to keep rpmlint from complaining
+  even more. There is a chdir("/") right after the chroot() call.
+
+- Created group 'singularity' and make suid-root binaries only executable
+  by this group.
+
+-------------------------------------------------------------------
+Sat Feb 18 01:16:33 UTC 2017 - eich@suse.com
+
+- Initial import of singuarity 2.2.1.
+

@@ -1,0 +1,17 @@
+[Unit]
+Description=GNU Mailing List Manager
+After=syslog.target network.target apache.target
+
+[Service]
+ExecStartPre=/usr/lib/mailman/bin/mailman-update-cfg
+ExecStartPre=/bin/touch /var/lib/mailman/logs/error
+ExecStartPre=/bin/chown mailman:mailman /var/lib/mailman/logs/error
+ExecStartPre=/bin/chmod 660 /var/lib/mailman/logs/error
+ExecStart=/usr/lib/mailman/bin/mailmanctl -s start
+ExecReload=/usr/lib/mailman/bin/mailmanctl restart
+ExecStop=/usr/lib/mailman/bin/mailman-update-cfg
+ExecStop=/usr/lib/mailman/bin/mailmanctl stop
+Type=forking
+
+[Install]
+WantedBy=multi-user.target

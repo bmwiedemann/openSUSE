@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Thu May 17 13:09:05 UTC 2018 - mcepl@suse.com
+
+- Fix tests
+
+-------------------------------------------------------------------
+Thu May 17 10:26:32 UTC 2018 - mcepl@suse.com
+
+- Run spec-cleaner on the SPEC file.
+- Fix SPEC file to work according to the latest standards
+- Failed to make tests working.
+
+-------------------------------------------------------------------
+Thu Aug 24 13:34:37 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Wed Jul 20 17:05:26 UTC 2016 - antoine.belvire@laposte.net
+
+- Fix build (boo#985412):
+  * Use --record-rpm instead of --record for listing files
+    installed with setup.py
+  * Fix ConcurrentLogHandler-0.9.1-testpath.patch: py files were
+    not installed.
+
+-------------------------------------------------------------------
+Thu Sep 26 23:38:12 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.9.1
+  + Bug fixes - LP Bug 1199332 and LP Bug 1199333
+  +  More gracefully handle out of disk space scenarios. Prevent release()
+     from throwing an exception
+  +  Handle logging.shutdown() in Python 2.7+. Close the lock file stream
+     via close()
+- Changes between 0.9.0 and 0.8.6
+  + Now requires Python 2.6+
+  + Revamp file opening/closing and file-locking internals
+  + Add the 'delay' parameter (delayed log file opening) to better match
+    the core logging functionality in more recent version of Python.
+  + For anyone still using Python 2.3-2.5, please use the latest 0.8.x release
+- Changes between 0.8.6 and 0.8.5
+  + Fix a small packaging bug from the 0.8.5 release.
+  + Updated stresstest.py to always use the correct python version when
+    launching sub-processes instead of the system's default "python"
+- Changes between 0.8.5 and 0.8.4
+  + Bugs resolved Red Hat Bug #858912 and Python Bug #15960
+  + Updated ez_setup.py to 0.7.7
+  + Updated portalocker to 0.3
+  + Initial Python 3 support
+  + Fixed minor spelling mistakes
+- Rebase specfile
+- Rebase ConcurrentLogHandler-0.8.4-testpath.patch to work with upstream changes
+ 
+-------------------------------------------------------------------
+Tue Jun 22 13:10:25 UTC 2010 - hvogel@novell.com
+
+- Initial Package, Version 0.8.4
+
+

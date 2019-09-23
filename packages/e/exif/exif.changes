@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Mon Dec 22 13:18:52 UTC 2014 - meissner@suse.com
+
+- build with PIE
+
+-------------------------------------------------------------------
+Thu Jul 12 20:13:50 UTC 2012 - meissner@suse.com
+
+- * Prevent NULL pointer dereference on out of memory situation.
+    Such a situation could be created when processing an extremely
+    large JPEG file.
+  * libjpeg/jpeg-data.c: Fixed bug that caused exif to read past the end
+    of a buffer. At worst, data->size would underflow which would cause
+    a gigantic read past the end of the heap buffer and likely
+    subsequent crash, which would only happen with a corrupted
+    input file. It might be possible to copy sensitive information
+    from process memory.
+    This fixes CVE-2012-2845
+- lots of translation updates 
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri Dec 17 15:56:53 CET 2010 - meissner@suse.de
+
+- updated to exif 0.6.20:
+  * New translation: ro
+  * Updated translations: it, lv, sk
+  * --no-fixup now honoured during --create-exif to not create default tags
+  * Fixed crash when not enough components were given to --set-value
+  * Made --set-value more forgiving of whitespace
+  * Allow --set-value on UNDEFINED tags (treating them as byte arrays)
+  * Honour --machine-readable with --show-mnote and --show-description
+  * Turned on the --enable-silent-rules configure option
+  * Adding or removing a thumbnail can be done simultaneously with other options
+  * Allow --create-exif to be used in place of an input file
+
+-------------------------------------------------------------------
+Sun Nov 15 17:01:48 CET 2009 - meissner@suse.de
+
+- exif-0.6.19 (2009-11-12):
+  * New translations: fi, ja
+  * Updated translations: sv, vi, zh_CN
+  * Fixed alignment of --list-tags header with --width
+
+- exif-0.6.18 (2009-10-08):
+  * New translations: is, it, lv
+  * Updated translations: da, de, id, nl, pl, sk, sv, vi, zh_CN
+  * Fixed alignment of tables in locales with multibyte character encoding
+    (sfbug #2034873)
+  * Allow setting --tag=0 (needed for the GPS IFD)
+  * --ifd is now honoured while displaying tag contents
+  * --create-exif now creates mandatory EXIF tags with default data
+  * --no-fixup disables attempts to fix tags in existing files
+  * --width option sets width of output lines
+
+-------------------------------------------------------------------
+Sat Nov  8 17:25:48 CET 2008 - meissner@suse.de
+
+- upgraded to 0.6.17
+  * Fixed the output of -s and -t when iconv is configured
+  * Updated translations: pl
+  * Added translations: id nl sk sv vi zh_CN
+  * Fixed a double character encoding conversion problem with recent
+    GNU gettext because version >= 0.10.36 does the conversion of message
+    texts itself.
+
+-------------------------------------------------------------------
+Mon Oct 20 16:47:04 CEST 2008 - meissner@suse.de
+
+- upgraded to 0.6.16.1:
+  * Fixed the output of -s and -t when iconv is configured
+  * Updated translations: pl
+  * Added translations: id nl sk sv vi zh_CN
+  * Fixed a double character encoding conversion problem with recent
+    GNU gettext because version >= 0.10.36 does the conversion of message
+    texts itself.
+- upgraded to 0.6.16:
+  * Updated translations: pl
+
+-------------------------------------------------------------------
+Wed May 23 21:44:33 CEST 2007 - meissner@suse.de
+
+- upgraded to 0.6.15:
+	- misc build fixes and cleanups
+
+-------------------------------------------------------------------
+Sat Mar  3 10:27:11 CET 2007 - aj@suse.de
+
+- Fix BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:46 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Mar 31 17:25:01 CEST 2005 - meissner@suse.de
+
+- Upgraded to 0.6.13 version.
+
+-------------------------------------------------------------------
+Thu Jan 13 12:49:28 CET 2005 - meissner@suse.de
+
+- Bugfixes, mnote printing enhanced.
+
+-------------------------------------------------------------------
+Thu Jul 29 13:36:27 CEST 2004 - meissner@suse.de
+
+- Upgraded to 0.6.10: stability fixes mostly and 0.6.* libexif
+  support.
+
+-------------------------------------------------------------------
+Thu Feb 26 10:36:04 CET 2004 - hmacht@suse.de
+
+- building as non-root
+
+-------------------------------------------------------------------
+Mon Feb 23 16:05:38 CET 2004 - meissner@suse.de
+
+- No longer use libmnote, it is now integrated into libexif.
+
+-------------------------------------------------------------------
+Fri Sep  5 12:30:44 CEST 2003 - meissner@suse.de
+
+- use libmnote.
+
+-------------------------------------------------------------------
+Tue Aug 12 19:01:55 CEST 2003 - postadal@suse.cz
+
+- initial version 0.6
+  * small command-line utility to show and change EXIF information hidden in JPEG files
+

@@ -1,0 +1,5 @@
+<package name="python-tinyrecord" project="openSUSE:Factory">
+  <title></title>
+  <description>Atomic transactions for TinyDB</description>
+  <devel project="devel:languages:python" package="python-tinyrecord"/>
+</package>

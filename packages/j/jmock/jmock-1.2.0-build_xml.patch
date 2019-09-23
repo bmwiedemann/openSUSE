@@ -1,0 +1,56 @@
+--- build.xml	2007-04-10 17:35:42.000000000 +0200
++++ build.xml	2017-09-19 11:13:25.863347487 +0200
+@@ -1,5 +1,5 @@
+ <project name="jMock 1" default="build">
+-	<property name="version" value="DEVELOPER-BUILD"/>
++	<property name="version" value="1.2.0"/>
+ 	
+ 	<target name="build" depends="clean, package"/>
+ 	
+@@ -11,8 +11,7 @@
+ 		<mkdir dir="build/classes"/>
+ 		 <javac srcdir="src"
+ 		 	    destdir="build/classes" 
+-		 		debug="true"
+-		    	source="1.3" target="1.3">
++		 		debug="true">
+             <classpath>
+                 <fileset dir="lib" includes="*.jar"/>
+             </classpath>
+@@ -27,11 +26,13 @@
+ 				<exclude name="test/**"/>
+ 				<exclude name="org/jmock/cglib/**"/>
+ 			</fileset>
++<!--
+ 			<fileset dir="src">
+ 				<exclude name="atest/**"/>
+ 				<exclude name="test/**"/>
+ 				<exclude name="org/jmock/cglib/**"/>
+ 			</fileset>
++-->
+ 		</jar>
+ 		
+ 		<jar destfile="build/jmock-cglib-${version}.jar">
+@@ -39,9 +40,11 @@
+ 			<fileset dir="build/classes">
+ 				<include name="org/jmock/cglib/**"/>
+ 			</fileset>
++<!--
+ 			<fileset dir="src">
+ 				<include name="org/jmock/cglib/**"/>
+ 			</fileset>
++-->
+ 		</jar>
+ 		
+ 		<jar destfile="build/jmock-tests-${version}.jar">
+@@ -97,9 +100,7 @@
+ 		<javac destdir="build/testdata/classes"
+ 		       srcdir="testdata"
+ 			   debug="yes"
+-			   failonerror="yes"
+-		       source="1.5" 
+-		       target="1.5"/>
++			   failonerror="yes"/>
+ 		
+ 		<jar destfile="build/testdata/signed.jar" compress="false">
+ 			<fileset dir="build/testdata/classes/" includes="*"/>

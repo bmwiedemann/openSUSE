@@ -1,0 +1,318 @@
+-------------------------------------------------------------------
+Tue Jun 25 13:53:57 UTC 2019 - pgajdos@suse.com
+
+- test via apache-rex instead
+
+-------------------------------------------------------------------
+Fri May 12 08:28:07 UTC 2017 - pgajdos@suse.com
+
+- amend example in %check to see how output to stderr get
+  logged in error_log
+
+-------------------------------------------------------------------
+Mon Mar 13 11:01:22 UTC 2017 - pgajdos@suse.com
+
+- add a true example to %check
+
+-------------------------------------------------------------------
+Wed Jul 27 13:35:31 UTC 2016 - kstreitova@suse.com
+
+- add mod_fcgid-2.3.9-CVE-2016-1000104.patch - don't allow setting
+  the HTTP_PROXY environment variable from a http header
+  [CVE-2016-1000104], [bsc#988492] 
+- run spec-cleaner to clean specfile
+
+-------------------------------------------------------------------
+Thu Sep  3 11:11:14 UTC 2015 - pgajdos@suse.com
+
+- test module with %apache_test_module_load
+
+-------------------------------------------------------------------
+Thu Jul 16 07:22:02 UTC 2015 - pgajdos@suse.com
+
+- Requries: %{apache_suse_maintenance_mmn}
+  This will pull this module to the update (in released distribution) 
+  when apache maintainer thinks it is good (due api/abi changes).
+
+-------------------------------------------------------------------
+Fri Oct 31 09:32:42 UTC 2014 - pgajdos@suse.com
+
+- call spec-cleaner
+- use apache rpm macros
+
+-------------------------------------------------------------------
+Wed Nov  6 14:03:05 CET 2013 - draht@suse.de
+
+- update to 2.3.9:
+  + obsoletes apache2-mod_fcgid-CVE-2013-4365-bnc844935.diff
+    and fixes CVE-2013-4365 [bnc#844935] (heap overflow).
+    The heap overflow discovery and fix was done by 
+    Robert Matthews <rob tigertech.com>.
+  + quoting and spaces parsing correction for FcgidWrapper directive
+    and commandline options.
+  + logging improvements for access controls
+  + remove redundant processing of Location headers when running in
+    FCGI_AUTHORIZER mode
+
+-------------------------------------------------------------------
+Mon Oct 21 15:05:29 CEST 2013 - draht@suse.de
+
+- Intermediate fix for openSUSE:Factory eg. openSUSE:13.1:
+  apache2-mod_fcgid-CVE-2013-4365-bnc844935.diff fixes a heap
+  overflow identified by CVE-2013-4365 [bnc#844935].
+  This patch will be obsoleted by the next version update (to
+  2.3.9 or higher).
+
+-------------------------------------------------------------------
+Tue Mar 12 16:35:46 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.3.7:
+  + Introduce FcgidWin32PreventOrphans directive on Windows to use
+    OS Job Control Objects to terminate all running fcgi's when the
+    worker process has been abruptly terminated.
+  + Periodically clean out the brigades which are pulling in the
+    request body for handoff to the fcgid child.
+  + Resolve crash during graceful restarts.
+  + Solve latency/cogestion of resolving effective user file access
+    rights when no such info is desired, for config related
+    filename stats.
+  + Fix regression in 2.3.6 which broke process controls when using
+    vhost-specific configuration.
+  + Account for first process in class in the spawn score.
+- Really fix build with apache 2.4: redefining apxs to %{_sbindir}
+  after the branch-check is just wrong.
+
+-------------------------------------------------------------------
+Mon Jan 28 19:18:09 UTC 2013 - dimstar@opensuse.org
+
+- Fix build with apache 2.4: apxs2 moved from %{_sbindir} to
+  %{_bindir}.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:44:06 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sat Sep 17 11:16:14 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Sat Dec  4 13:20:55 UTC 2010 - poeml@cmdline.net
+
+- update to 2.3.6
+  *) SECURITY: CVE-2010-3872 (cve.mitre.org)
+     Fix possible stack buffer overwrite.
+  *) Change the default for FcgidMaxRequestLen from 1GB to 128K.
+     Administrators should change this to an appropriate value based on
+     site requirements.
+  *) Allow FastCGI apps more time to exit at shutdown before being
+     forcefully killed.
+  ...and more fixes, see
+  http://svn.apache.org/viewvc/httpd/mod_fcgid/tags/2.3.6/CHANGES-FCGID?view=markup
+- adjust the somewhat outdated example config file
+
+-------------------------------------------------------------------
+Thu Aug  5 01:06:32 UTC 2010 - mrueckert@suse.de
+
+- update to version 2.3.5
+  mod_fcgid is now an official apache project. During the migration
+  the name of the configuration directives has changed. Please see
+
+  /usr/share/doc/packages/apache2-mod_fcgid/CHANGES-FCGID
+
+  to update your config to the new version.
+- adapted config to the new directives
+
+-------------------------------------------------------------------
+Fri Mar  7 16:57:07 CET 2008 - mrueckert@suse.de
+
+- added directory for the sharedmemory path and the sockets
+  (bnc#365113)
+
+-------------------------------------------------------------------
+Tue Oct 30 14:00:50 CET 2007 - mrueckert@suse.de
+
+- update to version 2.2
+  - Support configuration "PassHeader". Thank Hans Christian
+    Saustrup for the suggestion.
+  - Support apr_shm_remove() in httpd.2.0.X. Thank Hans Christian
+    Saustrup for bug report.
+  - Support configuration "TimeScore". Thank Tim Jensen for the
+    patch.
+  - Support new configurations "MaxRequestInMem" and
+    "MaxRequestLen"
+    - If the length of http request longer than "MaxRequestInMem",
+      it will store in tmp file.
+    - It the length of http request longer than "MaxRequestLen", it
+      will return internal server error.
+    Thank Gabriel Barazer(gabriel at oxeva.fr) for the bug report.
+    Thank Steffen(info at apachelounge.com) for the help on this
+    issue.
+  - Fix miner Sanity check bug. Thank Yuya Tanaka for bug report
+- added SharememPath to the config (#337566)
+
+-------------------------------------------------------------------
+Tue Aug  7 19:59:48 CEST 2007 - poeml@suse.de
+
+- remove "Provides: apache2-mod_fastcgi", since the package is
+  revived
+
+-------------------------------------------------------------------
+Tue Jul 31 18:07:43 CEST 2007 - mrueckert@suse.de
+
+- don't package INSTALL.txt
+- ran dos2unix on the documentation tarball to avoid warnings from
+  rpmlint
+
+-------------------------------------------------------------------
+Mon Apr 16 10:47:38 CEST 2007 - mrueckert@suse.de
+
+- update to version 2.1
+  - Add missing config.m4 and Makefile.in for static linking
+    Thank Mark Drago for notice
+  - FCGIWrapper disallowed in .htaccess
+    Thank Balinares for patch
+  - Bug fix. Authoritative flag reversed
+    Thank Chris Darroch for the patch
+  - Support arguments in FCGIWrapper
+    Thank Andre Nathan for suggestion and great help on testing it.
+  - Support new config "SharememPath", which specifies the location
+    of share memory path.
+  - Check running user is root or not, while suexec is enabled.
+    Thank Chris Holleman for the bug report.
+  - Bug fix. Should not pass respond to auth checkers.
+    Thank Szabolcs Hock for bug report.
+- rediffed patches:
+  mod_fcgid.2.0-warnings.patch => mod_fcgid.2.1-warnings.patch
+- synced docs from the website
+
+-------------------------------------------------------------------
+Wed Nov 29 21:22:00 CET 2006 - mrueckert@suse.de
+
+- update to version 2.0
+  o Support FastCGI Authorizer protocols now.
+  o Add apxs compile instruction in INSTALL.txt.
+    Thank Hans Christian Saustrup, hc at saustrup.net for the suggestion.
+  o Bug fix. (Win32 only) PHP script can not create socket on Win32.
+    Thank bbscool at zjip.com for the bug report and the help.
+  o GREAT patchs from Robert L Mathews, rob at tigertech.com
+    Fix compile warnings
+    Adds a MaxRequestsPerProcess parameter that allows mod_fcgid
+    to exit after handling a certain number of requests
+    Close socket before fork 
+    avoid the 1-second sleep the first time a process is spawned
+  o Print warning log while read data error from FastCGI process.
+  o Apply patch from Scott Lamb, Fix mod_fcgid 1.10 warnings on x86_64
+- removed mod_fcgid.1.07-printf_warnings.patch
+- rediffed patches:
+  mod_fcgid.1.10-warnings.patch => mod_fcgid.2.0-warnings.patch
+  mod_fcgid.1.07-suse_paths.patch => mod_fcgid.2.0-suse_paths.patch
+
+-------------------------------------------------------------------
+Thu Oct 19 15:25:16 CEST 2006 - poeml@suse.de
+
+- fix missing return value of is_kill_allowed()
+
+-------------------------------------------------------------------
+Tue Oct 17 17:33:51 CEST 2006 - poeml@suse.de
+
+- build the module for all MPMs, not only for prefork
+
+-------------------------------------------------------------------
+Wed Aug 30 14:43:15 CEST 2006 - mrueckert@suse.de
+
+- Fix the php example in the config
+
+-------------------------------------------------------------------
+Wed Aug 30 14:37:40 CEST 2006 - mrueckert@suse.de
+
+- mark sample conf file file as config(noreplace)
+
+-------------------------------------------------------------------
+Wed Aug 30 14:25:21 CEST 2006 - mrueckert@suse.de
+
+- minor typo fix for the sample config
+
+-------------------------------------------------------------------
+Wed Aug 30 03:06:11 CEST 2006 - mrueckert@suse.de
+
+- Update to 1.10:
+  o Use poll() instead of select() in UNIX. "It becomes problematic
+    on apache2 with large number of logfiles. Apache2 calls poll()
+    (when OS supports it), and in that case it doesn't need to be
+    recompiled with larger FD_SETSIZE. select() is still limited
+    to FD_SETSIZE."
+    Thank Piotr Gackiewicz gacek at intertele.pl for the patch.
+  o Bug fix: "Some requests fail with HTTP 500 and no errorlog
+    entry is generated"
+    Thank Piotr Gackiewicz gacek at intertele.pl for the patch.
+  o Use anonymouse share memeory to make OS X happy.
+    Thank andkjar at obtech.net for the patch.
+  o Add config.m4, mod_fcgid now can be static linked in
+    httpd (See INSTALL.txt)
+
+-------------------------------------------------------------------
+Sun Jun 18 10:45:21 CEST 2006 - mrueckert@suse.de
+
+- Update to 1.09:
+  o Add configuration DefaultMinClassProcessCount(default 3).
+    Idle fastcgi will not be killed if their count less than
+    DefaultMinClassProcessCount.
+    (Thank Finn Smith, finn at timeghost.net for suggestion)
+  o Add configuration PHP_Fix_Pathinfo_Enable(default 0). If
+    you are using PHP and set cgi.fix_pathinfo=1 in php.ini,
+    please add "PHP_Fix_Pathinfo_Enable 1" in httpd.conf.
+    (Thank Florian Munz, flo at myhosting.de for bug report)
+  o Split error log whle '\r' or '\n' are inside the text send
+    to "stderr". (Thank frederic at jolliton.com for the patch)
+  Additionally from 1.08:
+  o apr_bucket_copy() does not work with buckets from mod_ssl,
+    use apr_bucket_heap_create() instead
+  o Wrapper binary can be stored in a different location to the
+    web content (like /usr/local/apache2/fcgi-bin)
+  o Support "\r\n\r\n " HTTP header from CGI.
+
+- removed mod_fcgid.1.07-bugfixes.patch,
+  mod_fcgid.1.07-apache2.2.0.patch:
+  changes were part of 1.08
+
+-------------------------------------------------------------------
+Mon Mar 20 19:49:08 CET 2006 - mrueckert@suse.de
+
+- added content to apache2-mod_fcgid.conf
+
+-------------------------------------------------------------------
+Mon Mar 20 19:18:40 CET 2006 - mrueckert@suse.de
+
+- added mod_fcgid.1.07-bugfixes.patch:
+  o apr_bucket_copy() does not work with buckets from mod_ssl,
+    use apr_bucket_heap_create() instead
+  o Wrapper binary can be stored in a different location to the
+    web content (like /usr/local/apache2/fcgi-bin)
+  o Support "\r\n\r\n " HTTP header from CGI.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:18 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 19:32:12 CET 2006 - mrueckert@suse.de
+
+- Obsolete/Provide apache2-mod_fastcgi
+
+-------------------------------------------------------------------
+Tue Jan 10 18:21:48 CET 2006 - mrueckert@suse.de
+
+- Added mod_fcgid.1.07-suse_paths.patch to fix the paths
+  in the makefile
+- use the normal build system again
+
+-------------------------------------------------------------------
+Mon Dec 12 23:57:11 CET 2005 - mrueckert@suse.de
+
+- Initial package of version 1.07
+

@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Fri Nov 16 08:38:13 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update dependencies
+- Be more explicit about used backends
+
+-------------------------------------------------------------------
+Thu Nov 15 13:14:16 UTC 2018 - jrivrain@suse.com
+
+ Update to version 3.1.0:
+  * includes support for PLFS (Jeff Inman, Brett Kettering, LANL)
+  * includes support for HDFS (Jeff Inman, LANL)
+  * includes support for S3 (Blair Crossman, Brett Kettering, LANL)
+  * option to use incompressible data transfers (Blair Crossman, LANL)
+  * code cleanup and general usability improvements (Rob Latham, ANL)
+
+-------------------------------------------------------------------
+Sat Oct 21 07:04:48 UTC 2017 - mpluskal@suse.com
+
+- Update mpi dependencies
+
+-------------------------------------------------------------------
+Tue Sep  5 14:39:38 UTC 2017 - mpluskal@suse.com
+
+- Initial package for version 3.0.1

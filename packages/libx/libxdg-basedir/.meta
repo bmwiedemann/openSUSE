@@ -1,0 +1,8 @@
+<package name="libxdg-basedir" project="openSUSE:Factory">
+  <title>XDG Base Directory Specification Library</title>
+  <description>The XDG Base Directory Specification defines where should user files be looked for by defining one or more base directories relative in with they should be located.
+
+This library implements functions to list the directories according to the specification and provides a few higher-level functions.</description>
+  <devel project="X11:windowmanagers" package="libxdg-basedir"/>
+  <url>http://n.ethz.ch/~nevillm/download/libxdg-basedir/</url>
+</package>

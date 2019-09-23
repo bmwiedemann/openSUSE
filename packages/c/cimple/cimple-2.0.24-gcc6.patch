@@ -1,0 +1,35 @@
+diff -ruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-cimple-2.0.24/src/cimple/config.h ./src/cimple/config.h
+--- ../orig-cimple-2.0.24/src/cimple/config.h	2011-11-07 22:00:07.000000000 +0100
++++ ./src/cimple/config.h	2016-06-18 16:38:38.991096260 +0200
+@@ -295,7 +295,7 @@
+ //
+ //==============================================================================
+ 
+-#define CIMPLE_BIT(N) (1 << (N))
++#define CIMPLE_BIT(N) (unsigned int)(1 << (N))
+ 
+ //==============================================================================
+ //
+@@ -466,7 +466,7 @@
+ //==============================================================================
+ 
+ static CIMPLE_UNUSED const char __cimple_version_tag[] = \
+-    "@(#)CIMPLE_VERSION="CIMPLE_VERSION_STRING;
++    "@(#)CIMPLE_VERSION=" CIMPLE_VERSION_STRING;
+ 
+ //==============================================================================
+ //
+diff -ruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-cimple-2.0.24/src/mof/MOF_Qualifier.cpp ./src/mof/MOF_Qualifier.cpp
+--- ../orig-cimple-2.0.24/src/mof/MOF_Qualifier.cpp	2011-11-07 22:00:08.000000000 +0100
++++ ./src/mof/MOF_Qualifier.cpp	2016-06-18 16:47:02.342094234 +0200
+@@ -136,7 +136,9 @@
+         qual_decl->array_index == 0 &&
+         (params == 0 || params->value_type == TOK_NULL_VALUE))
+     {
+-        params->delete_list();
++        if (params) {
++          params->delete_list();
++        }
+         params = new MOF_Literal();
+         params->value_type = TOK_BOOL_VALUE;
+         params->bool_value = true;

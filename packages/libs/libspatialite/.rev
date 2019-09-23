@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5dc0cfd659688711b5688a365252edf9</srcmd5>
+    <version>4.2.0</version>
+    <time>1423214626</time>
+    <user>dimstar_suse</user>
+    <comment>Cool new package</comment>
+    <requestid>284234</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>da83d9178c179ed3d7424ce78f5e4d7c</srcmd5>
+    <version>4.2.0</version>
+    <time>1426064243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>289837</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>90a8c3b69eb91a0336db3e658a92a61d</srcmd5>
+    <version>4.3.0a</version>
+    <time>1447146199</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343014</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9aef75fb1082bd62263dcf39e7c543a3</srcmd5>
+    <version>4.3.0a</version>
+    <time>1512547133</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build documentation
+- Small spec file cleanup</comment>
+    <requestid>548193</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>78384a16a2b77d45169fdd94936a099d</srcmd5>
+    <version>4.3.0a</version>
+    <time>1552985951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685945</requestid>
+  </revision>
+</revisionlist>

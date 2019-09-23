@@ -1,0 +1,4 @@
+# this is primary a syntax file 
+addFilter("script-without-shebang .*/usr/bin/Adie.stx")
+# fox16 doesn't contain any binary - but the subpackages do
+addFilter("W: no-binary")

@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Fri Aug 30 12:30:36 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 6.06
+   see /usr/share/doc/packages/perl-HTTP-Daemon/Changes
+
+  6.06      2019-08-29 14:23:17Z
+    - Delimit IPv6 numeric address with brackets and URI-quote an IPv6 zone
+      separator in url() method output (GH#32) (Petr Pisar)
+    - Handle undef and empty LocalAddr value in new() constructor as an
+      unspecified address (GH#24, RT#123069) (Petr Pisar)
+    - Use IO::Socket::IP for IPv6 support. (GH#31) (Chase Whitener)
+
+-------------------------------------------------------------------
+Sat Jul 27 05:10:35 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 6.05
+   see /usr/share/doc/packages/perl-HTTP-Daemon/Changes
+
+  6.05      2019-07-26 20:41:05Z
+    - Added the .perltidyrc from the libwww-perl distribution
+    - Tidied the test suite with perltidy
+    - Tidied Daemon.pm
+    - Turned on EOL and tab tests
+    - Removed obvious indirect object syntax in test suite
+    - Added IPv6 support. (GH#24) Thanks, @ppisar and @intrigeri
+    - Added IO::Socket::IP as a prerequisite rather than IO::Socket::INET
+
+-------------------------------------------------------------------
+Wed Apr  3 07:01:51 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 6.04
+   see /usr/share/doc/packages/perl-HTTP-Daemon/Changes
+
+  6.04      2019-04-02 13:09:45Z
+    - Remove circular dependency on LWP::RobotUA introduced in 6.02 (GH#29)
+      (Olaf Alders)
+
+-------------------------------------------------------------------
+Tue Apr  2 05:25:21 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 6.03
+   see /usr/share/doc/packages/perl-HTTP-Daemon/Changes
+
+-------------------------------------------------------------------
+Mon Feb 20 10:48:36 UTC 2012 - coolo@suse.com
+
+- updated to 6.01
+  If you bind localhost, don't trust gethostbyaddr() to resolve the
+  address.  [RT#67247]
+  Restore perl-5.8.1 compatiblity.
+
+-------------------------------------------------------------------
+Mon Mar 14 10:13:32 UTC 2011 - vcizek@novell.com
+
+- initial package 6.00
+  * created by cpanspec 1.78.03
+

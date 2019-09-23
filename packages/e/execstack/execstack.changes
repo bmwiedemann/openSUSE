@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Tue Dec  8 08:48:00 UTC 2015 - normand@linux.vnet.ibm.com
+
+- add Conflicts with prelink package
+  and fix rpmlint warnings need commented macros with double %%
+
+-------------------------------------------------------------------
+Tue Dec  1 08:47:54 UTC 2015 - normand@linux.vnet.ibm.com
+
+- remove autosetup in spec as source_validator reporting error
+
+-------------------------------------------------------------------
+Fri Nov 27 17:41:42 UTC 2015 - normand@linux.vnet.ibm.com
+
+- new prelink_add_no_execstack_for_ppc64.patch
+  to bypass for ppc64 archi the gcc linker that do not set
+  a GNU_STACK header in generated elf file.
+
+-------------------------------------------------------------------
+Thu Nov 26 16:11:08 UTC 2015 - normand@linux.vnet.ibm.com
+
+- Init new execstack package: (similar to fedora)
+  This package is built from prelink sources but contains just the
+  execstack binary. It can be used manipulate ELF binaries to run
+  with or without executable stack.

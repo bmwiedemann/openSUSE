@@ -1,0 +1,2073 @@
+-------------------------------------------------------------------
+Thu Jul 11 09:51:49 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 2.2.17 [bsc#1141093]
+  * gpg: Do not try the import fallback if the options are already used.
+  * gpg: Fix regression in option "self-sigs-only".
+  * gpg: With --auto-key-retrieve prefer WKD over keyservers.
+  * gpg: Add "self-sigs-only" and "import-clean" to the keyserver options.
+  * gpg: Avoid printing false AKL error message.
+  * gpg: New command --locate-external-key.
+  * gpg: Make the get_pubkey_byname interface easier to understand.
+  * gpg: Fallback to import with self-sigs-only on too large keyblocks.
+  * gpg: New import and keyserver option "self-sigs-only"
+  * gpg: Make read_block in import.c more flexible.
+  * dirmngr: fix handling of HTTPS redirections during HKP.
+  * dirmngr: Avoid endless loop in case of HTTP error 503.
+  * dirmngr: Do not rewrite the redirection for the "openpgpkey" subdomain.
+  * dirmngr: Support the new WKD draft with the openpgpkey subdomain.
+  * wkd: Change client/server limit back to 64 KiB.
+  * tools: gpgconf: Killing order is children-first.
+  * Return better error code for some getinfo IPC commands.
+  * po: Update Russian translation.
+
+-------------------------------------------------------------------
+Wed Jun 19 21:02:05 UTC 2019 - Jason Sikes <jsikes@suse.de>
+
+- Fix secure memory being disabled before fips checks in libgcrypt [boo#1137307]
+  * Added gnupg-2.2.16-secmem.patch
+
+-------------------------------------------------------------------
+Thu May 30 08:00:37 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 2.2.16
+  * gpg: Fixed i18n markup of some strings.
+  * gpg: Allow deletion of subkeys with --delete-[secret-]key.
+  * gpg: Do not bail on an invalid packet in the local keyring.
+  * gpg: Do not allow creation of user ids larger than our parser allows.
+  * gpg: Do not delete any keys if --dry-run is passed.
+  * gpg: Fix using --decrypt along with --use-embedded-filename.
+  * gpg: Improve the photo image viewer selection.
+  * gpg: enable OpenPGP export of cleartext keys with comments.
+  * gpg: Do not print a hint to use the deprecated --keyserver option.
+  * gpg: Change update_keysig_packet to replace SHA-1 by SHA-256.
+  * gpg: Use just the addrspec from the Signer's UID.
+  * gpg: Accept also armored data from the WKD.
+  * gpg: Set a limit of 5 to the number of keys imported from the WKD.
+  * gpg: Don't use EdDSA algo ID for ECDSA curves.
+  * agent: Stop scdaemon after reload when disable_scdaemon.
+  * agent: For SSH key, don't put NUL-byte at the end.
+  * agent: correct length for uri and comment on 64-bit big-endian platforms
+  * dirmngr: Allow for other hash algorithms than SHA-1 in OCSP.
+  * dirmngr: Improve domaininfo cache update algorithm.
+  * dirmngr: Better error code for http status 413.
+  * g10: Fix possible null dereference.
+  * g10: Fix double free when locating by mbox.
+  * g10: Fix symmetric cipher algo constant for ECDH.
+  * sm: Avoid confusing diagnostic for the default key.
+  * sm: Fix a warning in an es_fopencooie function.
+  * gpgconf: Before --launch check that the config file is fine.
+  * gpgconf: Support --homedir for --launch.
+  * build: Update m4/iconv.m4.
+  * doc: correct documentation for gpgconf --kill.
+  * scd: Add dummy option --application-priority.
+  * common: Fix AWK portability.
+
+-------------------------------------------------------------------
+Thu Mar 28 08:48:36 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- Update to 2.2.15
+  * sm: Allow decryption even if expired keys are configured.
+  * agent: Change command KEYINFO to print ssh fingerprints with other
+    hash algos.
+  * dirmngr: Fix build problems on Solaris due to the use of reserved
+    symbol names.
+  * wkd: New commands --print-wkd-hash and --print-wkd-url for
+    gpg-wks-client.
+
+-------------------------------------------------------------------
+Tue Mar 19 12:11:23 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- Update to 2.2.14:
+  * gpg: Allow import of PGP desktop exported secret keys. Also avoid
+    importing secret keys if the secret keyblock is not valid.
+  * gpg: Do not error out on version 5 keys in the local keyring.
+  * gpg: Make invalid primary key algo obvious in key listings.
+  * sm: Do not mark a certificate in a key listing as de-vs compliant
+    if its use for a signature will not be possible.
+  * sm: Fix certificate creation with key on card.
+  * sm: Create rsa3072 bit certificates by default.
+  * sm: Print Yubikey attestation extensions with --dump-cert.
+  * agent: Fix cancellation handling for scdaemon.
+  * agent: Support --mode=ssh option for CLEAR_PASSPHRASE.
+  * scd: Fix flushing of the CA-FPR DOs in app-openpgp.
+  * scd: Avoid a conflict error with the "undefined" app.
+  * dirmngr: Add CSRF protection exception for protonmail.
+  * dirmngr: Fix build problems with gcc 9 in libdns.
+  * gpgconf: New option --show-socket for use wity --launch.
+  * gpgtar: Make option -C work for archive creation.
+- Removed patches that are included upstream by now:
+  - 0001-libdns-Avoid-using-compound-literals.patch
+  - 0002-libdns-Avoid-using-compound-literals-2.patch
+  - 0003-libdns-Avoid-using-compound-literals-3.patch
+  - 0004-libdns-Avoid-using-compound-literals-4.patch
+  - 0005-libdns-Avoid-using-compound-literals-5.patch
+  - 0006-libdns-Avoid-using-compound-literals-6.patch
+  - 0007-libdns-Avoid-using-compound-literals-7.patch
+  - 0008-libdns-Avoid-using-compound-literals-8.patch
+
+-------------------------------------------------------------------
+Tue Feb 26 11:35:29 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix build with gcc9 [bsc#1121223]
+  * Avoid using compound literals
+    - Upstream bug: https://dev.gnupg.org/T4367
+  * Added upstream patches:
+    - 0001-libdns-Avoid-using-compound-literals.patch
+    - 0002-libdns-Avoid-using-compound-literals-2.patch
+    - 0003-libdns-Avoid-using-compound-literals-3.patch
+    - 0004-libdns-Avoid-using-compound-literals-4.patch
+    - 0005-libdns-Avoid-using-compound-literals-5.patch
+    - 0006-libdns-Avoid-using-compound-literals-6.patch
+    - 0007-libdns-Avoid-using-compound-literals-7.patch
+    - 0008-libdns-Avoid-using-compound-literals-8.patch
+
+-------------------------------------------------------------------
+Fri Feb 22 19:30:29 UTC 2019 - olaf@aepfle.de
+
+- Allow coredumps in X11 desktop sessions (bsc#1124847)
+  gpg-agent unconditionally disables coredumps, which is not
+  supposed to happen in the code path that does just exec(argv[])
+  gnupg-gpg-agent-ulimit.patch
+
+-------------------------------------------------------------------
+Wed Feb 13 06:12:32 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- Update to 2.2.13:
+  * gpg: Implement key lookup via keygrip (using the & prefix).
+  * gpg: Allow generating Ed25519 key from existing key.
+  * gpg: Emit an ERROR status line if no key was found with -k.
+  * gpg: Stop early when trying to create a primary Elgamal key.
+  * gpgsm: Print the card's key algorithms along with their keygrips
+    in interactive key generation.
+  * agent: Clear bogus pinentry cache in the error case.
+  * scd: Support "acknowledge button" feature.
+  * scd: Fix for USB INTERRUPT transfer.
+  * wks: Do no use compression for the the encrypted challenge and response.
+
+Release-info: https://dev.gnupg.org/T4290
+See-also: gnupg-announce/2019q1/000434.html
+
+-------------------------------------------------------------------
+Fri Dec 14 16:11:56 UTC 2018 - atoptsoglou@suse.com
+
+- Update to 2.2.12:
+  * tools: New commands --install-key and --remove-key for
+    gpg-wks-client.  This allows to prepare a Web Key Directory on a
+    local file system for later upload to a web server.
+  * gpg: New --list-option "show-only-fpr-mbox".  This makes the use
+    of the new gpg-wks-client --install-key command easier on Windows.
+  * gpg: Improve processing speed when --skip-verify is used.
+  * gpg: Fix a bug where a LF was accidentally written to the console.
+  * gpg: --card-status now shwos whether a card has the new KDF
+    feature enabled.
+  * agent: New runtime option --s2k-calibration=MSEC.  New configure
+    option --with-agent-s2k-calibration=MSEC.  [#3399]
+  * dirmngr: Try another keyserver from the pool on receiving a 502,
+    503, or 504 error.  [#4175]
+  * dirmngr: Avoid possible CSRF attacks via http redirects.  A HTTP
+    query will not anymore follow a 3xx redirect unless the Location
+    header gives the same host.  If the host is different only the
+    host and port is taken from the Location header and the original
+    path and query parts are kept.
+  * dirmngr: New command FLUSHCRL to flush all CRLS from disk and
+    memory.  [#3967]
+  
+-------------------------------------------------------------------
+Thu Nov  8 15:35:27 UTC 2018 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Code no longer uses libcurl, remove from buildrequires. 
+
+-------------------------------------------------------------------
+Tue Nov  6 12:05:35 UTC 2018 - Karol Babioch <kbabioch@suse.com>
+
+- Update to 2.2.11:
+  * gpgsm: Fix CRL loading when intermediate certicates are not yet trusted.
+  * gpgsm: Fix an error message about the digest algo.
+  * gpg: Fix a wrong warning due to new sign usage check introduced with 2.2.9.
+  * gpg: Print the "data source" even for an unsuccessful keyserver query.
+  * gpg: Do not store the TOFU trust model in the trustdb.
+  * scd: Fix cases of "Bad PIN" after using "forcesig".
+  * agent: Fix possible hang in the ssh handler.
+  * dirmngr: Tack the unmodified mail address to a WKD request.
+  * dirmngr: Tweak diagnostic about missing LDAP server file.
+  * dirmngr: In verbose mode print the OCSP responder id.
+  * dirmngr: Fix parsing of the LDAP port.
+  * wks: Add option --directory/-C to the server.
+  * wks: Add option --with-colons to the client. 
+  * Fix EBADF when gpg et al. are called by broken CGI scripts.
+  * Fix some minor memory leaks and bugs.
+
+-------------------------------------------------------------------
+Thu Oct  4 04:09:12 UTC 2018 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Make package build reproducible (boo#1047218)
+
+-------------------------------------------------------------------
+Thu Aug 30 14:14:08 UTC 2018 - kbabioch@suse.com
+
+- Update to 2.2.10:
+  * Refresh expired keys originating from the WKD
+  * Use a 256 KiB limit for a WKD imported key
+  * New option --known-notation
+  * dirmngr: Validate SRV records in WKD queries
+
+-------------------------------------------------------------------
+Wed Jul 25 05:50:42 UTC 2018 - tchvatal@suse.com
+
+- Add basic udev rules for smartcards to be used with
+  scdaemon, taken from debian:
+  * scdaemon.udev
+
+-------------------------------------------------------------------
+Fri Jul 13 07:13:12 UTC 2018 - astieger@suse.com
+
+- GnuPG 2.2.9:
+  * dirmngr: Fix recursive resolver mode and other bugs in the
+    libdns code
+  * dirmngr: When using libgpg-error 1.32 or later a GnuPG build
+    with NTBTLS support does not anymore block for dozens of
+    seconds before returning data.
+  * gpg: Fix bug in --show-keys which actually imported revocation
+    certificates
+  * gpg: Ignore too long user-ID and comment packets
+  * gpg: Fix crash due to bad German translation.  Improved printf
+    format compile time check.
+  * gpg: Handle missing ISSUER sub packet gracefully in the presence of
+    the new ISSUER_FPR
+  * gpg: Allow decryption using several passphrases in most cases.
+  * gpg: Command --show-keys now enables the list options
+    show-unusable-uids, show-unusable-subkeys, show-notations and
+    show-policy-urls by default.
+  * gpg: Command --show-keys now prints revocation certificates.
+  * gpg: Add revocation reason to the "rev" and "rvs" records of the
+    option --with-colons.  [#1173]
+  * gpg: Export option export-clean does now remove certain expired
+    subkeys; export-minimal removes all expired subkeys.
+  * gpg: New "usage" property for the drop-subkey filters.
+
+-------------------------------------------------------------------
+Fri Jun  8 14:37:06 UTC 2018 - kbabioch@suse.com
+
+- Update to version 2.2.8:
+  * gpg: Decryption of messages not using the MDC mode will now lead to a
+    hard failure even if a legacy cipher algorithm was used. The option
+    --ignore-mdc-error can be used to turn this failure into a warning. Take
+    care: Never use that option unconditionally or without a prior warning.
+  * gpg: The MDC encryption mode is now always used regardless of the
+    cipher algorithm or any preferences.  For testing --rfc2440 can be
+    used to create a message without an MDC.
+  * gpg: Sanitize the diagnostic output of the original file name in
+    verbose mode (bsc#1096745, CVE-2018-12020)
+  * gpg: Detect suspicious multiple plaintext packets in a more reliable way.
+  * gpg: Fix the duplicate key signature detection code.
+  * gpg: The options --no-mdc-warn, --force-mdc, --no-force-mdc,
+    --disable-mdc and --no-disable-mdc have no more effect.
+  * agent: Add DBUS_SESSION_BUS_ADDRESS and a few other envvars to the
+    list of startup environment variables.
+- Refresh gnupg-2.0.18-files-are-digests.patch
+  to gnupg-2.2.8-files-are-digests.patch
+
+-------------------------------------------------------------------
+Fri May  4 14:15:27 UTC 2018 - astieger@suse.com
+
+- GnuPG 2.2.7:
+  * gpg: New option --no-symkey-cache to disable the passphrase
+    cache for symmetrical en- and decryption.
+  * gpg: The ERRSIG status now prints the fingerprint if that is
+    part of the signature
+  * gpg: Relax emitting of FAILURE status lines
+  * gpg: Add a status flag to "sig" lines printed with --list-sigs
+  * gpg: Fix "Too many open files" when using --multifile
+  * ssh: Return an error for unknown ssh-agent flags
+  * dirmngr: Fix a CNAME problem with pools and TLS.  Also use a
+    fixed mapping of keys.gnupg.net to sks-keyservers.net
+  * dirmngr: Try resurrecting dead hosts earlier (from 3h to 1.5h)
+  * dirmngr: Fallback to CRL if no default OCSP responder is
+    configured
+  * dirmngr: Implement CRL fetching via https.  Here a redirection
+    to http is explictly allowed
+  * agent,dirmngr: New sub-command "getenv" for "getinfo" to ease
+    debugging
+
+-------------------------------------------------------------------
+Tue Apr 10 06:32:22 UTC 2018 - kbabioch@suse.com
+
+- GnuPG 2.2.6:
+  * gpg,gpgsm: New option --request-origin to pretend requests coming
+    from a browser or a remote site.
+  * gpg: Fix race condition on trustdb.gpg updates due to too early
+    released lock.
+  * gpg: Emit FAILURE status lines in almost all cases.
+  * gpg: Implement --dry-run for --passwd to make checking a key's
+    passphrase straightforward.
+  * gpg: Make sure to only accept a certification capable key for key
+    signatures.
+  * gpg: Better user interaction in --card-edit for the factory-reset
+    sub-command.
+  * gpg: Improve changing key attributes in --card-edit by adding an
+    explicit "key-attr" sub-command.
+  * gpg: Print the keygrips in the --card-status.
+  * scd: Support KDF DO setup.
+  * scd: Fix suspend/resume handling in the CCID driver.
+  * agent: Evict cached passphrases also via a timer.
+  * agent: Use separate passphrase caches depending on the request
+    origin.
+  * ssh: Support signature flags.
+  * dirmngr: Handle failures related to missing IPv6 support
+    gracefully.
+  * Allow the use of UNC directory names as homedir.  [#3818]
+- Dropped gnupg-CVE-2018-9234.patch since it is included upstream 
+
+-------------------------------------------------------------------
+Thu Apr  5 08:38:58 UTC 2018 - kbabioch@suse.com
+
+- Added gnupg-CVE-2018-9234.patch: Enforce that key certification
+  can only be done with the master key, and not a signing subkey.
+  (bnc#1088255 CVE-2018-9234) 
+
+-------------------------------------------------------------------
+Sun Feb 25 12:14:54 UTC 2018 - astieger@suse.com
+
+- GnuPG 2.2.5:
+  * gpg: Allow the use of the "cv25519" and "ed25519" short names
+    in addition to the canonical curve names in --batch --gen-key
+  * gpg: Make sure to print all secret keys with option --list-only
+    and --decrypt
+  * gpg: Fix the use of future-default with --quick-add-key for
+    signing keys
+  * gpg: Select a secret key by checking availability under
+    gpg-agent
+  * gpg: Fix reversed prompt texts for --only-sign-text-ids
+  * gpg,gpgsm: Fix detection of bogus keybox blobs on 32 bit
+    systems
+  * gpgsm: Fix regression since 2.1 in --export-secret-key-raw
+    which got $d mod (q-1)$ wrong
+  * scd: Support the KDF Data Object of the OpenPGP card 3.3
+  * scd: Fix a regression in the internal CCID driver for certain
+    card readers
+  * dirmngr: Improve returned error description on failure of DNS
+    resolving
+  * wks: Implement command --install-key for gpg-wks-server.
+
+-------------------------------------------------------------------
+Thu Feb 22 15:10:33 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Thu Dec 21 09:44:03 UTC 2017 - astieger@suse.com
+
+- GnuPG 2.2.4:
+  * gpg: Change default preferences to prefer SHA512.
+  * gpg: Print a warning when more than 150 MiB are encrypted using
+    a cipher with 64 bit block size.
+  * gpg: Print a warning if the MDC feature has not been used for a
+    message.
+  * gpg: Fix regular expression of domain addresses in trust
+    signatures
+  * agent: New option --auto-expand-secmem to help with high
+    numbers of concurrent connections. Requires libgcrypt 1.8.2
+    for having an effect.
+  * dirmngr: Cache responses of WKD queries.
+  * gpgconf: Add option --status-fd.
+  * wks: Add commands --check and --remove-key to gpg-wks-server
+  * Increase the backlog parameter of the daemons to 64 and add
+    option --listen-backlog.
+- Not enabled features:
+  * New configure option --enable-run-gnupg-user-socket to first
+    try a socket directory which is not removed by systemd at
+    session end.
+
+-------------------------------------------------------------------
+Tue Nov 21 08:25:48 UTC 2017 - astieger@suse.com
+
+- GnuPG 2.2.3:
+  * dirmngr: Fix crash in case of a CRL loading error
+  * gpgtar: Fix wrong behaviour of --set-filename
+  * gpg: Silence AKL retrieval messages
+  * agent: Use clock or clock_gettime for calibration
+  * agent: Improve robustness of the shutdown pending state
+
+-------------------------------------------------------------------
+Tue Nov  7 20:08:04 UTC 2017 - astieger@suse.com
+
+- GnuPG 2.2.2:
+  * gpg: Avoid duplicate key imports by concurrently running gpg
+    processes
+  * gpg: Fix creating on-disk subkey with on-card primary key
+  * gpg: Fix validity retrieval for multiple keyrings
+  * gpg: Fix --dry-run and import option show-only for secret keys
+  * gpg: Print "sec" or "sbb" for secret keys with import option
+    import-show
+  * gpg: Make import less verbose
+  * gpg: Add alias "Key-Grip" for parameter "Keygrip" and new
+    parameter "Subkey-Grip" to unattended key generation
+  * gpg: Improve "factory-reset" command for OpenPGP cards
+  * gpg: Ease switching Gnuk tokens into ECC mode by using the magic
+    keysize value 25519
+  * gpgsm: Fix --with-colon listing in crt records for fields > 12.
+  * gpgsm: Do not expect X.509 keyids to be unique
+  * agent: Fix stucked Pinentry when using --max-passphrase-days
+  * agent: New option --s2k-count
+  * dirmngr: Do not follow https-to-http redirects
+  * dirmngr: Reduce default LDAP timeout from 100 to 15 seconds
+  * gpgconf: Ignore non-installed components for commands
+    --apply-profile and --apply-defaults
+  * Add configure option --enable-werror
+
+-------------------------------------------------------------------
+Tue Sep 19 19:12:53 UTC 2017 - astieger@suse.com
+
+- GnuPG 2.2.1:
+  * gpg: Fix formatting of the user id in batch mode key generation
+    if only "name-email" is given.
+  * gpgv: Fix annoying "not suitable for" warnings.
+  * wks: Convey only the newest user id to the provider. This is
+    the case if different names are used with the same addr-spec.
+  * wks: Create a complying user id for provider policy mailbox-only.
+  * wks: Add workaround for posteo.de.
+  * scd: Fix the use of large ECC keys with an OpenPGP card.
+  * dirmngr: Use system provided root certificates if no specific
+    HKP certificates are configured. If bu
+
+-------------------------------------------------------------------
+Mon Aug 28 17:21:30 UTC 2017 - astieger@suse.com
+
+- GnuPG 2.2.0:
+  * New long term stable branch, replacing the 2.0.x series
+  * gpg: Reverted change in 2.1.23 so that --no-auto-key-retrieve
+    is again the default boo#1054088
+  * Fixed a few minor bugs
+
+-------------------------------------------------------------------
+Sat Aug 12 16:56:26 UTC 2017 - astieger@suse.com
+
+- GnuPG 2.1.23:
+  * gpg: Options --auto-key-retrieve and --auto-key-locate "local,wkd"
+    are now used by default.  Note: this enables keyserver and Web Key
+    Directory operators to notice when a signature from a locally
+    non-available key is being verified for the first time or when
+    you intend to encrypt to a mail address without having the key
+    locally.  This new behaviour will eventually make key discovery
+    much easier and mostly automatic.  Disable this by adding
+      no-auto-key-retrieve
+      auto-key-locate local
+    to your gpg.conf.
+  * agent: Option --no-grab is now the default.  The new option --grab
+    allows to revert this.
+  * gpg: New import option "show-only".
+  * gpg: New option --disable-dirmngr to entirely disable network
+    access for gpg.
+  * gpg,gpgsm: Tweaked DE-VS compliance behaviour.
+  * New configure flag --enable-all-tests to run more extensive tests
+    during "make check".
+  * gpgsm: The keygrip is now always printed in colon mode as
+    documented in the man page.
+
+-------------------------------------------------------------------
+Fri Jul 28 19:29:52 UTC 2017 - astieger@suse.com
+
+- GnuPG 2.1.22:
+  * gpg: Extend command --quick-set-expire to allow for setting the
+    expiration time of subkeys.
+  * gpg: By default try to repair keys during import. New sub-option
+    no-repair-keys for --import-options.
+  * gpg,gpgsm: Improved checking and reporting of DE-VS compliance.
+  * gpg: New options --key-origin and --with-key-origin. Store the
+    time of the last key update from keyservers, WKD, or DANE.
+  * agent: New option --ssh-fingerprint-digest.
+  * dimngr: Lower timeouts on keyserver connection attempts and made
+    it configurable.
+  * dirmngr: Tor will now automatically be detected and used. The
+    option --no-use-tor disables Tor detection.
+  * dirmngr: Now detects a changed /etc/resolv.conf.
+  * agent,dirmngr: Initiate shutdown on removal of the GnuPG home
+    directory.
+  * gpg: Avoid caching passphrase for failed symmetric encryption.
+  * agent: Support for unprotected ssh keys.
+  * dirmngr: Fixed name resolving on systems using only v6
+    nameservers.
+  * dirmngr: Allow the use of TLS over http proxies.
+  * wks: New man pages for client and server.
+
+-------------------------------------------------------------------
+Fri May 19 11:59:24 UTC 2017 - marco.strigl@suse.com
+
+- GnuPG 2.1.21:
+  * modified gnupg-2.0.18-files-are-digests.patch to work with 
+    obs-sign again bsc#1039899
+
+-------------------------------------------------------------------
+Mon May 15 20:49:25 UTC 2017 - astieger@suse.com
+
+- GnuPG 2.1.21:
+  * gpg,gpgsm: Fix corruption of old style keyring.gpg files,
+    regression in 2.1.20
+  * gpg,dirmngr: Removed the skeleton config file support
+    New installations no longer generate a configuration file.
+    In the absence of a file, SHA-2 family hashes are used.
+    Existing configurations are not touched.   
+    drop gnupg-2.1.19-stronger-defaults.patch FATE#323084 
+  * gpg: Fixed import filter property match bug.
+  * scd: Removed Linux support for Cardman 4040 PCMCIA reader.
+  * scd: Fixed some corner case bugs in resume/suspend handling.
+  * Many minor bug fixes and code cleanup.  
+
+-------------------------------------------------------------------
+Tue Apr  4 14:00:36 UTC 2017 - astieger@suse.com
+
+- GnuPG 2.1.20:
+  * gpg: New properties 'expired', 'revoked', and 'disabled' for the
+    import and export filters.
+  * gpg: New command --quick-set-primary-uid.
+  * gpg: New compliance field for the --with-colon key listing.
+  * gpg: Changed the key parser to generalize the processing of local
+    meta data packets.
+  * gpg: Fixed assertion failure in the TOFU trust model.
+  * gpg: Fixed exporting of zero length user ID packets.
+  * scd: Improved support for multiple readers.
+  * scd: Fixed timeout handling for key generation.
+  * agent: New option --enable-extended-key-format.
+  * dirmngr: Do not add a keyserver to a new dirmngr.conf.  Dirmngr
+    uses a default keyserver.
+  * dimngr: Do not treat TLS warning alerts as severe error when
+    building with GNUTLS.
+  * dirmngr: Actually take /etc/hosts in account.
+  * wks: Fixed client problems on Windows.  Published keys are now set
+    to world-readable.
+  * tests: Fixed creation of temporary directories.
+  * A socket directory for a non standard GNUGHOME is now created on
+    the fly under /run/user.  Thus "gpgconf --create-socketdir" is now
+    optional.  The use of "gpgconf --remove-socketdir" to clean up
+    obsolete socket directories is however recommended to avoid
+    cluttering /run/user with useless directories.
+  * Fixed build problems on some platforms.
+
+-------------------------------------------------------------------
+Tue Mar 14 20:41:55 UTC 2017 - astieger@suse.com
+
+- Use stronger defaults for new users, using SHA-2 digest family
+  for certificates and message signatures - FATE#323084
+  adding gnupg-2.1.19-stronger-defaults.patch
+
+-------------------------------------------------------------------
+Tue Mar  7 12:55:14 UTC 2017 - astieger@suse.com
+
+- GnuPG 2.1.19:
+  * gpg: Print a warning if Tor mode is requested but the Tor
+    daemon is not running.
+  * gpg: New status code DECRYPTION_KEY to print the actual private
+    key used for decryption.
+  * gpgv: New options --log-file and --debug.
+  * gpg-agent: Revamp the prompts to ask for card PINs.
+  * scd: Support for multiple card readers.
+  * scd: Removed option --debug-disable-ticker. Ticker is used
+    only when it is required to watch removal of device/card.
+  * scd: Improved detection of card inserting and removal.
+  * dirmngr: New option --disable-ipv4.
+  * dirmngr: New option --no-use-tor to explicitly disable the use
+    of Tor.
+  * dirmngr: The option --allow-version-check is now required even
+    if the option --use-tor is also used.
+  * dirmngr: Handle a missing nsswitch.conf gracefully.
+  * dirmngr: Avoid PTR lookups for keyserver pools. The are only
+    done for the debug command "keyserver --hosttable".
+  * dirmngr: Rework the internal certificate cache to support
+    classes of certificates. Load system provided certificates on
+    startup.
+  * Add options --tls, --no-crl, and --systrust to the "VALIDATE"
+    command.
+  * dirmngr: Add support for the ntbtls library.
+  * wks: Create mails with a "WKS-Phase" header. Fix detection of
+    Draft-2 mode.
+  * Many other bug fixes and new regression tests.
+- dirmngr: use system certificate store
+
+-------------------------------------------------------------------
+Thu Mar  2 10:12:09 UTC 2017 - jengelh@inai.de
+
+- Rewrite descriptions
+
+-------------------------------------------------------------------
+Tue Jan 24 16:32:04 UTC 2017 - astieger@suse.com
+
+- GnuPG 2.1.18:
+  * gpg: Remove bogus subkey signature while cleaning a key (with
+    export-clean, import-clean, or --edit-key's sub-command clean)
+  * gpg: Allow freezing the clock with --faked-system-time.
+  * gpg: New --export-option flag "backup", new --import-option flag
+    "restore".
+  * gpg-agent: Fixed long delay due to a regression in the progress
+    callback code.
+  * scd: Lots of code cleanup and internal changes.
+  * scd: Improved the internal CCID driver.
+  * dirmngr: Fixed problem with the DNS glue code (removal of the
+    trailing dot in domain names).
+  * dirmngr: Make sure that Tor is actually enabled after changing the
+    conf file and sending SIGHUP or "gpgconf --reload dirmngr".
+  * dirmngr: Fixed Tor access to IPv6 addresses.  Note that current
+    versions of Tor may require that the flag "IPv6Traffic" is used
+    with the option "SocksPort" in torrc to actually allow IPv6
+    traffic.
+  * dirmngr: Fixed HKP for literally given IPv6 addresses.
+  * dirmngr: Enabled reverse DNS lookups via Tor.
+  * dirmngr: Added experimental SRV record lookup for WKD.
+    See commit 88dc3af3d4ae1afe1d5e136bc4c38bc4e7d4cd10 for details.
+  * dirmngr: For HKP use "pgpkey-hkps" and "pgpkey-hkp" in SRV record
+    lookups.  Avoid SRV record lookup when a port is explicitly
+    specified.  This fixes a regression from the 1.4 and 2.0 behavior.
+  * dirmngr: Gracefully handle a missing /etc/nsswitch.conf.  Ignore
+    negation terms (e.g. "[!UNAVAIL=return]" instead of bailing out.
+  * dirmngr: Better debug output for flags "dns" and "network".
+  * dirmngr: On reload mark all known HKP servers alive.
+  * gpgconf: Allow keyword "all" for --launch, --kill, and --reload.
+  * tools: gpg-wks-client now ignores a missing policy file on the
+    server.
+  * Avoid unnecessary ambiguity error message in the option parsing.
+  * Further improvements of the regression test suite.
+  * Fixed building with --disable-libdns configure option.
+  * Fixed a crash running the tests on 32 bit architectures.
+  * Fixed spurious failures on BSD system in the spawn functions.
+    This affected for example gpg-wks-client and gpgconf.
+
+-------------------------------------------------------------------
+Mon Jan  9 09:18:48 UTC 2017 - tchvatal@suse.com
+
+- Remove the fixme, condition around fdupes
+
+-------------------------------------------------------------------
+Sun Dec 25 15:12:44 UTC 2016 - astieger@suse.com
+
+- add runtime dependency to match runtime version check for libksba
+
+-------------------------------------------------------------------
+Tue Dec 20 18:58:55 UTC 2016 - astieger@suse.com
+
+- GnuPG 2.1.17:
+ * gpg: By default new keys expire after 2 years.
+ * gpg: New command --quick-set-expire to conveniently change the
+   expiration date of keys.
+ * gpg: Option and command names have been changed for easier
+   comprehension.  The old names are still available as aliases.
+ * gpg: Improved the TOFU trust model.
+ * gpg: New option --default-new-key-algo.
+ * scd: Support OpenPGP card V3 for RSA.
+ * dirmngr: Support for the ADNS library has been removed. Now using
+   bundled libdns, enabling Tor support on all platforms.
+   New option --standard-resolver can be used to disable this code
+   at runtime.
+ * dirmngr: Lazily launch ldap reaper thread.
+ * tools: New options --check and --status-fd for gpg-wks-client.
+ * The UTF-8 byte order mark is now skipped when reading conf files.
+ * Fixed many bugs and regressions.
+ * Major improvements to the test suite.  For example it is possible
+   to run the external test suite of GPGME.
+
+-------------------------------------------------------------------
+Sat Nov 19 22:07:13 UTC 2016 - astieger@suse.com
+
+- GnuPG 2.1.16:
+ * gpg: New algorithm for selecting the best ranked public key when
+   using a mail address with -r, -R, or --locate-key.
+ * gpg: New option --with-tofu-info to print a new "tfs" record in
+   colon formatted key listings.
+ * gpg: New option --compliance as an alternative way to specify
+   options like --rfc2440, --rfc4880, et al.
+ * gpg: Many changes to the TOFU implementation.
+ * gpg: Improve usability of --quick-gen-key.
+ * gpg: In --verbose mode print a diagnostic when a pinentry is
+   launched.
+ * gpg: Remove code which warns for old versions of gnome-keyring.
+ * gpg: New option --override-session-key-fd.
+ * gpg: Option --output does now work with --verify.
+ * gpgv: New option --output to allow saving the verified data.
+ * gpgv: New option --enable-special-filenames.
+ * agent, dirmngr: New --supervised mode for use by systemd and alike.
+ * agent: By default listen on all available sockets using standard
+   names.
+ * agent: Invoke scdaemon with --homedir.
+ * dirmngr: On Linux now detects the removal of its own socket and
+   terminates.
+ * scd: Support ECC key generation.
+ * scd: Support more card readers.
+ * dirmngr: New option --allow-version-check to download a software
+   version database in the background.
+ * dirmngr: Use system provided CAs if no --hkp-cacert is given.
+ * dirmngr: Use a default keyserver if none is explicitly set
+ * gpgconf: New command --query-swdb to check software versions
+   against an copy of an online database.
+ * gpgconf: Print the socket directory with --list-dirs.
+ * tools: The WKS tools now support draft version -02.
+ * tools: Always build gpg-wks-client and install under libexec.
+ * tools: New option --supported for gpg-wks-client.
+ * The log-file option now accepts a value "socket://" to log to the
+   socket named "S.log" in the standard socket directory.
+ * Provide fake pinentries for use by tests cases of downstream
+   developers.
+ * Fixed many bugs and regressions.
+ * Many changes and improvements for the test suite.
+- drop upstreamed patches:
+  * 0001-common-Follow-up-to-14479e2-fix-void-return-in-non-v.patch
+  * gnupg-2.1.15-bsc993324-status-output.patch
+
+-------------------------------------------------------------------
+Tue Sep 13 13:50:52 UTC 2016 - astieger@suse.com
+
+- avoid mixing up status and colon line output - bsc#993324
+  add gnupg-2.1.15-bsc993324-status-output.patch
+
+-------------------------------------------------------------------
+Thu Sep  1 08:23:28 UTC 2016 - astieger@suse.com
+
+- enable web key discovery tools
+
+-------------------------------------------------------------------
+Wed Aug 31 13:06:28 UTC 2016 - astieger@suse.com
+
+- Add an explicit runtime dependency on libgcrypt >= 1.7.0 to
+  match runtime version check
+
+-------------------------------------------------------------------
+Fri Aug 19 21:22:22 UTC 2016 - astieger@suse.com
+
+- GnuPG 2.1.15:
+ * gpg: Remove the --tofu-db-format option and support for the
+   split TOFU database.
+ * gpg: Add option --sender to prepare for coming features.
+ * gpg: Add option --input-size-hint to help progress indicators.
+ * gpg: Extend the PROGRESS status line with the counted unit.
+ * gpg: Avoid publishing the GnuPG version by default with --armor.
+ * gpg: Properly ignore legacy keys in the keyring cache.
+ * gpg: Always print fingerprint records in --with-colons mode.
+ * gpg: Make sure that keygrips are printed for each subkey in
+   --with-colons mode.
+ * gpg: New import filter "drop-sig".
+ * gpgsm: Fix a bug in the machine-readable key listing.
+ * gpg,gpgsm: Block signals during keyring updates to limits the
+   effects of a Ctrl-C at the wrong time.
+ * g13: Add command --umount and other fixes for dm-crypt.
+ * agent: Fix regression in SIGTERM handling.
+ * agent: Cleanup of the ssh-agent code.
+ * agent: Allow import of overly long keys.
+ * scd: Fix problems with card removal.
+ * dirmngr: Remove all code for running as a system service.
+ * tools: Make gpg-wks-client conforming to the specs.
+ * tests: Improve the output of the new regression test tool.
+ * tests: Distribute the standalone test runner.
+ * tests: Run each test in a clean environment.
+ * Spelling and grammar fixes.
+- fix build error, adding
+  0001-common-Follow-up-to-14479e2-fix-void-return-in-non-v.patch
+
+-------------------------------------------------------------------
+Sun Aug 14 14:12:40 UTC 2016 - astieger@suse.com
+
+- GnuPG 2.1.14:
+  * gpg: Removed options --print-dane-records and --print-pka-records.
+    The new export options "export-pka" and "export-dane" can instead
+    be used with the export command.
+  * gpg: New options --import-filter and --export-filter.
+  * gpg: New import options "import-show" and "import-export".
+  * gpg: New option --no-keyring.
+  * gpg: New command --quick-revuid.
+  * gpg: New options -f/--recipient-file and -F/--hidden-recipient-file
+    to directly specify encryption keys.
+  * gpg: New option --mimemode to indicate that the content is a MIME
+    part.  Does only enable --textmode right now.
+  * gpg: New option --rfc4880bis to allow experiments with proposed
+    changes to the current OpenPGP specs.
+  * gpg: Fix regression in the "fetch" sub-command of --card-edit.
+  * gpg: Fix regression since 2.1 in option --try-all-secrets.
+  * gpgv: Change default options for extra security.
+  * gpgsm: No more root certificates are installed by default.
+  * agent: "updatestartuptty" does now affect more environment
+    variables.
+  * scd: The option --homedir does now work with scdaemon.
+  * scd: Support some more GEMPlus card readers.
+  * gpgtar: Fix handling of '-' as file name.
+  * gpgtar: New commands --create and --extract.
+  * gpgconf: Tweak for --list-dirs to better support shell scripts.
+  * tools: Add programs gpg-wks-client and gpg-wks-server to implement
+    a Web Key Service.  The configure option --enable-wks-tools is
+    required to build them; they should be considered Beta software.
+  * tests: Complete rework of the openpgp part of the test suite.  The
+    test scripts have been changed from Bourne shell scripts to Scheme
+    programs.  A customized scheme interpreter (gpgscm) is included.
+    This change was triggered by the need to run the test suite on
+    non-Unix platforms.
+  * The rendering of the man pages has been improved.
+- drop upstream gnupg-make_--try-all-secrets_work.patch
+
+-------------------------------------------------------------------
+Thu Aug  4 12:17:14 UTC 2016 - tchvatal@suse.com
+
+- Fix date call as the curlified parameter for sure are not parsed
+  correctly by escaping it with %
+
+-------------------------------------------------------------------
+Wed Aug  3 11:56:58 UTC 2016 - astieger@suse.com
+
+- Fix upstream bug 1985: --try-all-secrets doesn't work when
+  decrypting messages encrypted with --hidden-recipient, fixes unit
+  tests of the duplicity package.
+  Adding gnupg-make_--try-all-secrets_work.patch
+- record the fact that gpg-error 1.21 is required
+
+-------------------------------------------------------------------
+Thu Jun 16 20:21:39 UTC 2016 - astieger@suse.com
+
+- GnuPG 2.1.13:
+ * gpg: New command --quick-addkey.  Extend the --quick-gen-key
+   command.
+ * gpg: New --keyid-format "none" which is now also the default.
+ * gpg: New option --with-subkey-fingerprint.
+ * gpg: Include Signer's UID subpacket in signatures if the secret key
+   has been specified using a mail address and the new option
+   --disable-signer-uid is not used.
+ * gpg: Allow unattended deletion of a secret key.
+ * gpg: Allow export of non-passphrase protected secret keys.
+ * gpg: New status lines KEY_CONSIDERED and NOTATION_FLAGS.
+ * gpg: Change status line TOFU_STATS_LONG to use '~' as
+   a non-breaking-space character.
+ * gpg: Speedup key listings in Tofu mode.
+ * gpg: Make sure that the current and total values of a PROGRESS
+   status line are small enough.
+ * gpgsm: Allow the use of AES192 and SERPENT ciphers.
+ * dirmngr: Adjust WKD lookup to current specs.
+ * dirmngr: Fallback to LDAP v3 if v2 is is not supported.
+ * gpgconf: New commands --create-socketdir and --remove-socketdir,
+   new option --homedir.
+ * If a /run/user/$UID directory exists, that directory is now used
+   for IPC sockets instead of the GNUPGHOME directory.  This fixes
+   problems with NFS and too long socket names and thus avoids the
+   need for redirection files.
+ * Speedup fd closing after a fork.
+- drop upstreamed gnupg-fix-signature-checking.patch
+
+-------------------------------------------------------------------
+Thu Jun  2 16:01:40 UTC 2016 - pjanouch@suse.de
+
+- add gnupg-fix-signature-checking.patch (bsc#981020)
+  https://bugs.gnupg.org/gnupg/issue2351
+
+-------------------------------------------------------------------
+Wed May  4 15:37:12 UTC 2016 - astieger@suse.com
+
+- GnuPG 2.1.12:
+ * gpg: New --edit-key sub-command "change-usage" for testing
+   purposes.
+ * gpg: Out of order key-signatures are now systematically detected
+   and fixed by --edit-key.
+ * gpg: Improved detection of non-armored messages.
+ * gpg: Removed the extra prompt needed to create Curve25519 keys.
+ * gpg: Improved user ID selection for --quick-sign-key.
+ * gpg: Use the root CAs provided by the system with --fetch-key.
+ * gpg: Add support for the experimental Web Key Directory key
+   location service.
+ * gpg: Improve formatting of Tofu messages and emit new Tofu specific
+   status lines.
+ * gpgsm: Add option --pinentry-mode to support a loopback pinentry.
+ * gpgsm: A new pubring.kbx is now created with the header blob so
+   that gpg can detect that the keybox format needs to be used.
+ * agent: Add read support for the new private key protection format
+   openpgp-s2k-ocb-aes.
+ * agent: Add read support for the new extended private key format.
+ * agent: Default to --allow-loopback-pinentry and add option
+   --no-allow-loopback-pinentry.
+ * scd: Changed to use the new libusb 1.0 API for the internal CCID
+   driver.
+ * dirmngr: The dirmngr-client does now auto-detect the PEM format.
+ * g13: Add experimental support for dm-crypt.
+ * The man pages for gpg and gpgv are now installed under the correct
+   name (gpg2 or gpg - depending on a configure option).
+
+-------------------------------------------------------------------
+Sun Mar  6 08:17:00 UTC 2016 - astieger@suse.com
+
+- GnuPG 2.1.11:
+ * gpg: New command --export-ssh-key to replace the gpgkey2ssh tool.
+ * gpg: Allow to generate mail address only keys with --gen-key.
+ * gpg: "--list-options show-usage" is now the default.
+ * gpg: Make lookup of DNS CERT records holding an URL work.
+ * gpg: Emit PROGRESS status lines during key generation.
+ * gpg: Don't check for ambigious or non-matching key specification in
+   the config file or given to --encrypt-to.  This feature will return
+   in 2.3.x.
+ * gpg: Lock keybox files while updating them.
+ * gpg: Fix possible keyring corruption. (bug#2193)
+ * gpg: Fix regression of "bkuptocard" sub-command in --edit-key and
+   remove "checkbkupkey" sub-command introduced with 2.1.  (bug#2169)
+ * gpg: Fix internal error in gpgv when using default keyid-format.
+ * gpg: Fix --auto-key-retrieve to work with dirmngr.conf configured
+   keyservers. (bug#2147).
+ * agent: New option --pinentry-timeout.
+ * scd: Fix regression for generating RSA keys on card.
+ * dirmmgr: All configured keyservers are now searched.
+ * dirmngr: Install CA certificate for hkps.pool.sks-keyservers.net.
+   Use this certiticate even if --hkp-cacert is not used.
+ * gpgtar: Add actual encryption code.  gpgtar does now fully replace
+   gpg-zip.
+ * gpgtar: Fix filename encoding problem on Windows.
+ * Print a warning if a GnuPG component is using an older version of
+   gpg-agent, dirmngr, or scdaemon.
+- disable running test which no longer work
+- remove 0001-gpg-Improve-the-keyblock-cache-s-transparency.patch
+  is now upstream
+- the PIE options are implemented in the upstream build, and spec
+  code broke the build. The only remaining broken executable was
+  gpgsplit, which was removed from the package
+
+-------------------------------------------------------------------
+Tue Jan 26 20:23:18 UTC 2016 - astieger@suse.com
+
+- add g13, an experimental tool for accessing encrypted storage
+  with with GnuPG (cards)
+
+-------------------------------------------------------------------
+Tue Jan 19 13:56:58 UTC 2016 - vcizek@suse.com
+
+- fix fingerprint ambiguity (bsc#958891)
+  * https://bugs.gnupg.org/gnupg/issue2198
+  * add 0001-gpg-Improve-the-keyblock-cache-s-transparency.patch
+
+-------------------------------------------------------------------
+Sun Dec  6 14:14:45 UTC 2015 - p.drouand@gmail.com
+
+- Move to pkgconfig() packaging style
+
+-------------------------------------------------------------------
+Fri Dec  4 13:35:40 UTC 2015 - astieger@suse.com
+
+- GnuPG 2.1.10 adds TOFU (Trust-On-First-USe) and anonymous key
+  retrival via Tor.
+ * gpg: New trust models "tofu" and "tofu+pgp".
+ * gpg: New command --tofu-policy.  New options --tofu-default-policy
+   and --tofu-db-format.
+ * gpg: New option --weak-digest to specify hash algorithms which
+   should be considered weak.
+ * gpg: Allow the use of multiple --default-key options; take the last
+   available key.
+ * gpg: New option --encrypt-to-default-key.
+ * gpg: New option --unwrap to only strip the encryption layer.
+ * gpg: New option --only-sign-text-ids to exclude photo IDs from key
+   signing.
+ * gpg: Check for ambigious or non-matching key specification in the
+   config file or given to --encrypt-to.
+ * gpg: Show the used card reader with --card-status.
+ * gpg: Print export statistics and an EXPORTED status line.
+ * gpg: Allow selecting subkeys by keyid in --edit-key.
+ * gpg: Allow updating the expiration time of multiple subkeys at
+   once.
+ * dirmngr: New option --use-tor.  For full support this requires
+   libassuan version 2.4.2 and a patched version of libadns
+   (e.g. adns-1.4-g10-7 as used by the standard Windows installer).
+ * dirmngr: New option --nameserver to specify the nameserver used in
+   Tor mode.
+ * dirmngr: Keyservers may again be specified by IP address.
+ * dirmngr: Fixed problems in resolving keyserver pools.
+ * dirmngr: Fixed handling of premature termination of TLS streams so
+   that large numbers of keys can be refreshed via hkps.
+ * gpg: Fixed a regression in --locate-key [since 2.1.9].
+ * gpg: Fixed another bug for keyrings with legacy keys.
+ * gpgsm: Allow combinations of usage flags in --gen-key.
+ * Make tilde expansion work with most options.
+ * Many other cleanups and bug fixes.
+
+-------------------------------------------------------------------
+Tue Nov 24 10:27:58 UTC 2015 - vcizek@suse.com
+
+- enable tests for PPC64 again,
+  the problem from bsc#935887 went away
+
+-------------------------------------------------------------------
+Fri Nov 20 16:03:03 UTC 2015 - astieger@suse.com
+
+- Improve upgrade to gpg2 from security:privacy w.r.t. libassuan
+  run-time dependencies (boo#955982)
+
+-------------------------------------------------------------------
+Sat Oct 10 11:39:55 UTC 2015 - astieger@suse.com
+
+- GnuPG 2.1.9:
+ * gpg: Allow fetching keys via OpenPGP DANE (--auto-key-locate).\
+   New option --print-dane-records.
+ * gpg: Fix for a problem with PGP-2 keys in a keyring.
+ * gpg: Fail with an error instead of a warning if a modern cipher
+   algorithm is used without a MDC.
+ * agent: New option --pinentry-invisible-char.
+ * agent: Always do a RSA signature verification after creation.
+ * agent: Fix a regression in ssh-add-ing Ed25519 keys.
+ * agent: Fix ssh fingerprint computation for nistp384 and EdDSA.
+ * agent: Fix crash during passprase entry on some platforms.
+ * scd: Change timeout to fix problems with some 2.1 cards.
+ * dirmngr: Displayed name is now Key Acquirer.
+ * dirmngr: Add option --keyserver.  Deprecate that option for gpg.
+   Install a dirmngr.conf file from a skeleton for new installations.
+- update gnupg-add_legacy_FIPS_mode_option.patch for context change
+
+-------------------------------------------------------------------
+Fri Sep 11 06:02:23 UTC 2015 - astieger@suse.com
+
+- GnuPG 2.1.8:
+ * gpg: Sending very large keys to the keyservers works again.
+ * gpg: Validity strings in key listings are now again translatable.
+ * gpg: Emit FAILURE status lines to help GPGME.
+ * gpg: Does not anymore link to Libksba to reduce dependencies.
+ * gpgsm: Export of secret keys via Assuan is now possible.
+ * agent: Raise the maximum passphrase length from 100 to 255 bytes.
+ * agent: Fix regression using EdDSA keys with ssh.
+ * Does not anymore use a build timestamp by default.
+ * The fallback encoding for broken locale settings changed
+   from Latin-1 to UTF-8.
+ * Many code cleanups and improved internal documentation.
+ * Various minor bug fixes.
+
+-------------------------------------------------------------------
+Wed Aug 12 10:58:48 UTC 2015 - astieger@suse.com
+
+- GnuPG 2.1.7:
+ * gpg: Support encryption with Curve25519 if Libgcrypt 1.7 is used.
+ * gpg: In the --edit-key menu: Removed the need for "toggle", changed
+   how secret keys are indicated, new commands "fpr *" and "grip".
+ * gpg: More fixes related to legacy keys in a keyring.
+ * gpgv: Does now also work with a "trustedkeys.kbx" file.
+ * scd: Support some feature from the OpenPGP card 3.0 specs.
+ * scd: Improved ECC support
+ * agent: New option --force for the DELETE_KEY command.
+ * Dropped deprecated gpgsm-gencert.sh
+ * Various other bug fixes.
+
+-------------------------------------------------------------------
+Thu Jul  2 14:26:21 UTC 2015 - astieger@suse.com
+
+- do not run checks on ppc64 for now
+
+-------------------------------------------------------------------
+Wed Jul  1 14:15:28 UTC 2015 - astieger@suse.com
+
+- GnuPG 2.1.6:
+ * agent: New option --verify for the PASSWD command.
+ * gpgsm: Add command option "offline" as an alternative to
+   --disable-dirmngr.
+ * gpg: Do not prompt multiple times for a password in pinentry
+   loopback mode.
+ * Allow the use of debug category names with --debug.
+ * Using gpg-agent and gpg/gpgsm with different locales will now show
+   the correct translations in Pinentry.
+ * gpg: Improve speed of --list-sigs and --check-sigs.
+ * gpg: Make --list-options show-sig-subpackets work again.
+ * gpg: Fix an export problem for old keyrings with PGP-2 keys.
+ * scd: Support PIN-pads on more readers.
+ * dirmngr: Properly cleanup zombie LDAP helper processes and avoid
+   hangs on dirmngr shutdown.
+ * Various other bug fixes.
+- remove documentation make workaround, fixed upstream
+
+-------------------------------------------------------------------
+Sun Jun 28 13:14:03 UTC 2015 - schwab@linux-m68k.org
+
+- Enable workaround for missing dependencies everywhere
+
+-------------------------------------------------------------------
+Mon Jun 15 13:20:33 UTC 2015 - astieger@suse.com
+
+- fix build with openSUSE 13.2 and earlier, call make to
+  compensate for incorrect documentation dependencies.
+
+-------------------------------------------------------------------
+Thu Jun 11 14:32:09 UTC 2015 - astieger@suse.com
+
+- GnuPG 2.1.5:
+ * Support for an external passphrase cache.
+ * Support for the forthcoming version 3 OpenPGP smartcard.
+ * Manuals now show the actual used file names.
+ * Prepared for improved integration with Emacs.
+ * Code cleanups and minor bug fixes.
+
+-------------------------------------------------------------------
+Sun May 17 08:24:15 UTC 2015 - meissner@suse.com
+
+- info deinstall needs to be in %preun
+
+-------------------------------------------------------------------
+Tue May 12 18:04:36 UTC 2015 - astieger@suse.com
+
+- update to 2.1.4:
+ * gpg: Add command --quick-adduid to non-interacitivly add a new
+   user id to an existing key.
+ * gpg: Do no enable honor-keyserver-url by default.  Make it work
+   if enabled.
+ * gpg: Display the serial number in the --card-staus output again.
+ * agent: Support for external password managers.
+   Add option --no-allow-external-cache.
+ * scdaemon: Improved handling of extended APDUs.
+ * Make HTTP proxies work again.
+ * All network access including DNS as been moved to Dirmngr.
+ * Allow building without LDAP support.
+ * Fixed lots of smaller bugs.
+
+-------------------------------------------------------------------
+Sat Apr 11 18:59:42 UTC 2015 - astieger@suse.com
+
+- update to 2.1.3:
+ * gpg: LDAP keyservers are now supported by 2.1.
+ * gpg: New option --with-icao-spelling.
+ * gpg: New option --print-pka-records.  Changed the PKA method to
+   use CERT records and hashed names.
+ * gpg: New command --list-gcrypt-config.  New parameter "curve"
+   for --list-config.
+ * gpg: Print a NEWSIG status line like gpgsm always did.
+ * gpg: Print MPI values with --list-packets and --verbose.
+ * gpg: Write correct MPI lengths with ECC keys.
+ * gpg: Skip legacy PGP-2 keys while searching.
+   (drop 0001-gpg-Skip-legacy-keys-while-searching-keyrings.patch
+    now upstream)
+ * gpg: Improved searching for mail addresses when using a keybox.
+ * gpgsm: Changed default algos to AES-128 and SHA-256.
+ * gpgtar: Fixed extracting files with sizes of a multiple of 512.
+ * dirmngr: Fixed SNI handling for hkps pools.
+   (drop hkps-fix-host-name-verification-when-using-pools.patch
+    now upstream)
+ * dirmngr: extra-certs and trusted-certs are now always loaded
+   from the sysconfig dir instead of the homedir.
+ * Fixed possible problems due to compiler optimization, two minor
+   regressions, and other bugs.
+- refreshed for context changes:
+  * gnupg-2.0.18-files-are-digests.patch
+  * gnupg-add_legacy_FIPS_mode_option.patch
+
+-------------------------------------------------------------------
+Mon Mar 23 11:48:24 UTC 2015 - idonmez@suse.com
+
+- Add hkps-fix-host-name-verification-when-using-pools.patch to
+  fix hkps support w/ pools. Upstream commit dc10d46.
+
+-------------------------------------------------------------------
+Thu Mar 19 15:56:12 UTC 2015 - astieger@suse.com
+
+- Ensure secure memory can be used with default 64k memlock limit
+  Fixes [boo#915931], removes gnupg-large_keys.patch
+- Removed gnupg-remove_development_version_warning.patch, obsolete
+- Removed gnupg-2.0.4-install_tools.diff, replaced by spec install
+- Removed autoconf requirement and autoreconf calls thus obsoleted
+
+-------------------------------------------------------------------
+Tue Feb 24 08:10:22 UTC 2015 - astieger@suse.com
+
+- Fix invalid packet read error when reading keyrings [boo#914625]
+  add 0001-gpg-Skip-legacy-keys-while-searching-keyrings.patch
+
+-------------------------------------------------------------------
+Wed Feb 11 21:48:13 UTC 2015 - astieger@suse.com
+
+- update to 2.1.2:
+ * gpg: The parameter 'Passphrase' for batch key generation works
+   again.
+ * gpg: Using a passphrase option in batch mode now has the
+   expected effect on --quick-gen-key.
+ * gpg: Improved reporting of unsupported PGP-2 keys.
+ * gpg: Added support for algo names when generating keys using
+   --command-fd.
+ * gpg: Fixed DoS based on bogus and overlong key packets.
+ * agent: When setting --default-cache-ttl the value
+   for --max-cache-ttl is adjusted to be not lower than the former.
+ * agent: Fixed problems with the new --extra-socket.
+ * agent: Made --allow-loopback-pinentry changeable with gpgconf.
+ * agent: Fixed importing of unprotected openpgp keys.
+ * agent: Now tries to use a fallback pinentry if the standard
+   pinentry is not installed.
+ * scd: Added support for ECDH.
+ * Fixed several bugs related to bogus keyrings and improved some
+   other code.
+- in gnupg-2.0.18-files-are-digests.patch, change buffer_to_u32 to
+  buf32_to_u32 from host2net.h to match upstream changes
+- now requires automake 1.14
+
+-------------------------------------------------------------------
+Fri Dec 26 21:15:55 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 2.1.1:
+  * gpg: Detect faulty use of --verify on detached signatures.
+  * gpg: New import option "keep-ownertrust".
+  * gpg: New sub-command "factory-reset" for --card-edit.
+  * gpg: A stub key for smartcards is now created by --card-status.
+  * gpg: Fixed regression in --refresh-keys.
+  * gpg: Fixed regresion in %g and %p codes for --sig-notation.
+  * gpg: Fixed best matching hash algo detection for ECDSA and EdDSA.
+  * gpg: Improved perceived speed of secret key listisngs.
+  * gpg: Print number of skipped PGP-2 keys on import.
+  * gpg: Removed the option aliases --throw-keyid and --notation-data;
+    use --throw-keyids and --set-notation instead.
+  * gpg: New import option "keep-ownertrust".
+  * gpg: Skip too large keys during import.
+  * gpg,gpgsm: New option --no-autostart to avoid starting gpg-agent or
+    dirmngr.
+  * gpg-agent: New option --extra-socket to provide a restricted
+    command set for use with remote clients.
+  * gpgconf --kill does not anymore start a service only to kill it.
+  * gpg-pconnect-agent: Add convenience option --uiserver.
+  * More translations (but most of them are not complete).
+  * To support remotely mounted home directories, the IPC sockets may
+    now be redirected.  This feature requires Libassuan 2.2.0.
+  * Improved portability and the usual bunch of bug fixes.
+- removed patch not part of upstream release:
+    gnupg-2.1.0-boo-907198-openpgp_oid_to_str-buffer-overflow.patch
+- refresh for context changes:
+    gnupg-2.0.18-files-are-digests.patch
+    gnupg-2.0.4-install_tools.diff
+- refresh for upstream code changes:
+    gnupg-add_legacy_FIPS_mode_option.patch
+    gnupg-detect_FIPS_mode.patch (MD5 removed)
+
+-------------------------------------------------------------------
+Thu Dec 25 18:09:11 UTC 2014 - dev@stellardeath.org
+
+- Support for large RSA keys
+  This involves compiling with --enable-large-rsa and
+  --enable-large-secmem, as well as patching the number
+  of secmem bytes and IPC bytes to slightly larger values.
+  See https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=739424
+  * added gnupg-large_keys.patch
+  
+-------------------------------------------------------------------
+Wed Dec  3 22:37:59 UTC 2014 - andreas.stieger@gmx.de
+
+- update build requirement versions that changed with 2.1.0
+
+-------------------------------------------------------------------
+Wed Nov 26 19:21:15 UTC 2014 - andreas.stieger@gmx.de
+
+- fix buffer overflow in OID to string conversion function
+  [boo#907198], adding
+  gnupg-2.1.0-boo-907198-openpgp_oid_to_str-buffer-overflow.patch
+
+-------------------------------------------------------------------
+Tue Nov 11 16:10:04 UTC 2014 - vcizek@suse.com
+
+- obsolete dirmngr (shipped with gpg since 2.1.0)
+- spec cleanup after previous update
+- get rid of "THIS IS A DEVELOPMENT VERSION" warning
+  http://lists.gnupg.org/pipermail/gnupg-devel/2014-November/029065.html
+  * added gnupg-remove_development_version_warning.patch
+
+-------------------------------------------------------------------
+Thu Nov  6 17:32:39 UTC 2014 - vcizek@suse.com
+
+- upgrade to 2.1.0 (modern)
+  - The file "secring.gpg" is not anymore used to store the secret
+    keys.  Merging of secret keys is now supported.
+  - All support for PGP-2 keys has been removed for security reasons.
+  - The standard key generation interface is now much leaner.  This
+    will help a new user to quickly generate a suitable key.
+  - Support for Elliptic Curve Cryptography (ECC) is now available.
+  - Commands to create and sign keys from the command line without any
+    extra prompts are now available.
+  - The Pinentry may now show the new passphrase entry and the
+    passphrase confirmation entry in one dialog.
+  - There is no more need to manually start the gpg-agent.  It is now
+    started by any part of GnuPG as needed.
+  - Problems with importing keys with the same long key id have been
+    addressed.
+  - The Dirmngr is now part of GnuPG proper and also takes care of
+    accessing keyserver.
+  - Keyserver pools are now handled in a smarter way.
+  - A new format for locally storing the public keys is now used.
+    This considerable speeds up operations on large keyrings.
+  - Revocation certificates are now created by default.
+  - Card support has been updated, new readers and token types are
+    supported.
+  - The format of the key listing has been changed to better identify
+    the properties of a key.
+  - The gpg-agent may now be used on Windows as a Pageant replacement
+    for Putty in the same way it is used for years on Unix as
+    ssh-agent replacement.
+  - Creation of X.509 certificates has been improved.  It is now also
+    possible to export them directly in PKCS#8 and PEM format for use
+    on TLS servers.
+- dropped patches:
+  * gnupg-2.0.20-automake113.diff
+  * gnupg-2.0.18-tmpdir.diff (socket is created in homedir now)
+- refresh most of the remaining patches
+- added new BuildRequires: gnutls-devel, pkg-config, npth-devel
+
+-------------------------------------------------------------------
+Tue Aug 12 20:19:45 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 2.0.26:
+ * gpg: Fix a regression in 2.0.24 if a subkey id is given
+   to --recv-keys et al.
+ * gpg: Cap attribute packets at 16MB.
+ * gpgsm: Auto-create the ".gnupg" home directory in the same
+   way gpg does.
+ * scdaemon: Allow for certificates > 1024 when using PC/SC.
+- remove URL from package keyring, upstream file metadata changes
+
+-------------------------------------------------------------------
+Tue Jul  1 21:05:55 UTC 2014 - andreas.stieger@gmx.de
+
+- gnupg-add_legacy_FIPS_mode_option.patch (part of [bnc#856312])
+  mentions GCRYCTL_INACTIVATE_FIPS_FLAG, raising the requirement
+  for gcrypt from 1.4.0 (from configure) to 1.6.1 where said flag
+  was introduced. Require this version to build.
+
+-------------------------------------------------------------------
+Mon Jun 30 18:52:36 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 2.0.25:
+ * gpg: Fix a regression in 2.0.24 if more than one keyid is given
+   to --recv-keys et al.
+ * gpg: Cap RSA and Elgamal keysize at 4096 bit also for unattended
+   key generation.
+ * gpgsm: Fix a DISPLAY related problem with
+   --export-secret-key-p12.
+ * scdaemon: Support reader Gemalto IDBridge CT30.
+
+-------------------------------------------------------------------
+Tue Jun 24 22:25:12 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 2.0.24
+  Contains a security fix to stop a possible DoS using garbled
+  compressed data packets which can be used to put gpg into an
+  infinite loop. [bnc#884130] [CVE-2014-4617]
+  * gpg: Avoid DoS due to garbled compressed data packets.
+- further:
+  * gpg: Screen keyserver responses to avoid importing unwanted
+    keys from rogue servers.
+  * gpg: The validity of user ids is now shown by default. To
+    revert this add "list-options no-show-uid-validity" to gpg.conf
+  * gpg: Print more specific reason codes with the INV_RECP status.
+  * gpg: Allow loading of a cert only key to an OpenPGP card.
+  * gpg-agent: Make ssh support for ECDSA keys work with Libgcrypt
+    1.6.
+
+-------------------------------------------------------------------
+Tue Jun  3 21:55:34 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 2.0.23:
+ * gpg: Reject signatures made using the MD5 hash algorithm unless the
+   new option --allow-weak-digest-algos or --pgp2 are given.
+ * gpg: Do not create a trustdb file if --trust-model=always is used.
+ * gpg: Only the major version number is by default included in the
+   armored output.
+ * gpg: Print a warning if the Gnome-Keyring-Daemon intercepts the
+   communication with the gpg-agent.
+ * gpg: The format of the fallback key listing ("gpg KEYFILE") is now more
+   aligned to the regular key listing ("gpg -k").
+ * gpg: The option--show-session-key prints its output now before the
+   decryption of the bulk message starts.
+ * gpg: New %U expando for the photo viewer.
+ * gpgsm: Improved handling of re-issued CA certificates.
+ * scdaemon: Various fixes for pinpad equipped card readers.
+ * Minor bug fixes.
+- Packaging changes:
+  * add gpgtar utility
+  * update and use use source URL for tarball signing key
+  * removed gnupg-2.0.9-RSA_ES.patch, applied upstream
+  * updated for context changes:
+    gnupg-add_legacy_FIPS_mode_option.patch
+    gnupg-2.0.18-files-are-digests.patch
+    gnupg-dont-fail-with-seahorse-agent.patch
+
+-------------------------------------------------------------------
+Tue Apr 29 12:06:03 UTC 2014 - vcizek@suse.com
+
+- add patch by Stephan Mueller which adds an option to enable
+  legacy ciphers in FIPS mode
+  * added gnupg-add_legacy_FIPS_mode_option.patch
+  (part of bnc#856312)
+- added BuildRequires: makeinfo (to build info pages from the
+  patched gnupg.texi)
+
+-------------------------------------------------------------------
+Fri Feb 14 16:14:14 UTC 2014 - vcizek@suse.com
+
+- install scdaemon to /usr/bin (bnc#863645)
+
+-------------------------------------------------------------------
+Sat Oct  5 11:44:42 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 2.0.22 [bnc#844175]
+  * Fixed possible infinite recursion in the compressed packet
+    parser. [CVE-2013-4402]
+  * Improved support for some card readers.
+  * Prepared building with the forthcoming Libgcrypt 1.6.
+  * Protect against rogue keyservers sending secret keys.
+- remove gpg2-CVE-2013-4351.patch, committed upstream
+
+-------------------------------------------------------------------
+Mon Sep 16 11:08:55 UTC 2013 - vcizek@suse.com
+
+- fix CVE-2013-4351 (bnc#840510)
+
+-------------------------------------------------------------------
+Mon Aug 19 17:59:48 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 2.0.21
+ * gpg-agent: By default the users are now asked via the Pinentry
+   whether they trust an X.509 root key.  To prohibit interactive
+   marking of such keys, the new option --no-allow-mark-trusted may
+   be used.
+ * gpg-agent: The command KEYINFO has options to add info from
+   sshcontrol.
+ * The included ssh agent does now support ECDSA keys.
+- now requires libgpg-error 1.11
+- update gnupg-2.0.9-langinfo.patch for upstream whitespace changes
+- drop gnupg-broken-curl-test.patch, no longer required
+
+-------------------------------------------------------------------
+Mon Jun 17 12:48:24 UTC 2013 - coolo@suse.com
+
+- revert usage of gpg-offline to avoid cycles
+
+-------------------------------------------------------------------
+Mon Jun 17 12:40:10 UTC 2013 - coolo@suse.com
+
+- add gnupg-2.0.20-automake113.diff to fix build with automake 1.13
+
+-------------------------------------------------------------------
+Tue May 14 14:00:45 UTC 2013 - vcizek@suse.com
+
+- set safe umask before creating a plaintext file (bnc#780943)
+  added gpg2-set_umask_before_open_outfile.patch
+- select proper ciphers when running in FIPS mode (bnc#808958)
+  added gnupg-detect_FIPS_mode.patch
+
+-------------------------------------------------------------------
+Fri May 10 19:33:24 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 2.0.20
+ * Decryption using smartcards keys > 3072 bit does now work.
+ * New meta option ignore-invalid-option to allow using the same
+   option file by other GnuPG versions.
+ * gpg: The hash algorithm is now printed for sig records in key listings.
+ * gpg: Skip invalid keyblock packets during import to avoid a DoS.
+ * gpg: Correctly handle ports from DNS SRV records.
+ * keyserver: Improve use of SRV records
+ * gpg-agent: Avoid tty corruption when killing pinentry.
+ * scdaemon: Improve detection of card insertion and removal.
+ * scdaemon: Rename option --disable-keypad to --disable-pinpad.
+ * scdaemon: Better support for CCID readers.  Now, the internal CCID
+   driver supports readers without the auto configuration feature.
+ * scdaemon: Add pinpad input for PC/SC, if your reader has pinpad and
+   it supports variable length PIN input, and you specify
+   --enable-pinpad-varlen option.
+ * scdaemon: New option --enable-pinpad-varlen.
+ * scdaemon: Install into libexecdir to avoid accidental execution
+   from the command line.
+ * Assorted bug fixes.
+- refresh gnupg-2.0.9-RSA_ES.patch
+- verify gpg signature of source tarball
+
+-------------------------------------------------------------------
+Wed Mar 27 12:16:19 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Fri Jan 11 20:26:50 UTC 2013 - lazy.kent@opensuse.org
+
+- BuildRequires: libbz2-devel (support BZIP2 compression
+  algorithm) (bnc#798175).
+
+-------------------------------------------------------------------
+Wed Apr 18 10:55:34 UTC 2012 - vcizek@suse.com
+
+- Mention some of the changes in Greg's version update
+
+-------------------------------------------------------------------
+Tue Mar 27 20:38:27 UTC 2012 - gregkh@opensuse.org
+
+- update to upstream 2.0.19
+  * GPG now accepts a space separated fingerprint as a user ID.  This
+    allows to copy and paste the fingerprint from the key listing.
+  * GPG now uses the longest key ID available.  Removed support for the
+    original HKP keyserver which is not anymore used by any site.
+  * Rebuild the trustdb after changing the option --min-cert-level.
+  * Ukrainian translation.
+  * Honor option --cert-digest-algo when creating a cert.
+  * Emit a DECRYPTION_INFO status line.
+  * Improved detection of JPEG files.
+
+-------------------------------------------------------------------
+Tue Dec  6 10:58:36 UTC 2011 - vcizek@suse.com
+
+- fixed licence to GPL-3.0+ (bnc#734878)
+
+-------------------------------------------------------------------
+Wed Nov 30 09:55:47 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Oct  1 15:53:04 UTC 2011 - crrodriguez@opensuse.org
+
+- Test suite hangs in qemu-arm, workaround. 
+
+-------------------------------------------------------------------
+Wed Aug 31 10:00:35 UTC 2011 - puzel@suse.com
+
+- link with -pie 
+
+-------------------------------------------------------------------
+Fri Aug 19 01:11:42 UTC 2011 - crrodriguez@opensuse.org
+
+- libcurl.m4 tests were broken, resulting in the usage
+  of a "fake" internal libcurl.
+
+-------------------------------------------------------------------
+Sat Aug  6 20:19:09 UTC 2011 - andreas.stieger@gmx.de
+
+- update to upstream 2.0.18
+ * Bug fix for newer versions of Libgcrypt.
+ * Support the SSH confirm flag and show SSH fingerprints in ssh
+   related pinentries.
+ * Improved dirmngr/gpgsm interaction for OCSP.
+ * Allow generation of card keys up to 4096 bit.
+- refresh patch gnupg-2.0.10-tmpdir.diff -> gnupg-2.0.18-tmpdir.diff
+- refresh patch gnupg-files-are-digests.patch -> gnupg-2.0.18-files-are-digests.patch
+
+-------------------------------------------------------------------
+Tue Mar 15 09:29:42 UTC 2011 - puzel@novell.com
+
+- update to gnupg-2.0.17
+ * Allow more hash algorithms with the OpenPGP v2 card.
+ * The gpg-agent now tests for a new gpg-agent.conf on a HUP.
+ * Fixed output of "gpgconf --check-options".
+ * Fixed a bug where Scdaemon sends a signal to Gpg-agent running
+   in non-daemon mode.
+ * Fixed TTY management for pinentries and session variable update
+   problem.
+- drop gnupg-CVE-2010-2547.patch (in upstream)
+
+-------------------------------------------------------------------
+Fri Jan  7 13:24:17 CET 2011 - sbrabec@suse.cz
+
+- Removed obsolete BuildRequires of opensc-devel.
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Wed Jul 28 09:39:00 UTC 2010 - puzel@novell.com
+
+- gnupg-CVE-2010-2547.patch (bnc#625947)
+- renumber patches
+
+-------------------------------------------------------------------
+Mon Jul 19 21:49:40 UTC 2010 - puzel@novell.com
+
+- update to gnupg-2.0.16
+ * If the agent's --use-standard-socket option is active, all tools
+   try to start and daemonize the agent on the fly.  In the past this
+   was only supported on W32; on non-W32 systems the new configure
+   option --use-standard-socket may now be used to use this feature by
+   default.
+ * The gpg-agent commands KILLAGENT and RELOADAGENT are now available
+   on all platforms.
+ * Minor bug fixes.
+- drop gnupg-2.0.14-s2kcount.patch (builds fine without it now)
+
+-------------------------------------------------------------------
+Mon Jun  7 09:40:32 UTC 2010 - adrian@suse.de
+
+- add special provides to make sure that obs signd gets correct gpg version
+
+-------------------------------------------------------------------
+Fri Apr  9 12:47:11 UTC 2010 - chris@computersalat.de
+
+- fix deps
+  o libassuan-devel >= 2.0.0
+  o pth / libpth-devel >= 1.3.7
+- added BuildReq libcurl-devel >= 7.10
+- removed BuildReq openldap2
+  is already solved by openldap2-devel
+- removed unrecognized configure options
+  --enable-external-hkp, --enable-shared, --enable-static-rnd
+
+-------------------------------------------------------------------
+Wed Apr  7 14:19:11 UTC 2010 - puzel@novell.com
+
+- add gnupg-dont-fail-with-seahorse-agent.patch (bnc#589994) 
+
+-------------------------------------------------------------------
+Wed Mar 31 13:47:00 UTC 2010 - puzel@novell.com
+
+- update to gnupg-2.0.15 
+ * New command --passwd for GPG.
+ * Fixes a regression in 2.0.14 which prevented unprotection of new
+   or changed gpg-agent passphrases.
+ * Make use of libassuan 2.0 which is available as a DSO.
+
+-------------------------------------------------------------------
+Mon Mar 22 15:09:24 UTC 2010 - puzel@novell.com
+
+- fix files-are-digests patch (bnc#469229)
+
+-------------------------------------------------------------------
+Wed Feb 17 13:29:18 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.0.14:
+  + The default for --include-cert is now to include all
+    certificates in the chain except for the root certificate.
+  + Numerical values may now be used as an alternative to the
+    debug-level keywords.
+  + The GPGSM --audit-log feature is now more complete.
+  + GPG now supports DNS lookups for SRV, PKA and CERT on W32.
+  + New GPGSM option --ignore-cert-extension.
+  + New and changed passphrases are now created with an iteration
+    count requiring about 100ms of CPU work.
+- Add gnupg-2.0.14-s2kcount.patch: use fixed s2k-count number
+  otherwise the gpg2 would want to consult gpg-agent which is not
+  yet installed in the mock chroot (Patch shamelessly stolen from
+  Fedora).
+
+-------------------------------------------------------------------
+Thu Jan 28 14:15:24 UTC 2010 - puzel@novell.com
+
+- fix build for older distributions 
+
+-------------------------------------------------------------------
+Wed Jan 27 16:30:41 UTC 2010 - puzel@novell.com
+
+- port files-are-digests patch from gpg1 (bnc#469229) 
+
+-------------------------------------------------------------------
+Tue Dec 15 20:56:35 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+- SPARC needs large PIE model
+
+-------------------------------------------------------------------
+Sun Dec  6 08:52:32 UTC 2009 - coolo@novell.com
+
+- change -lang require to recommended
+
+-------------------------------------------------------------------
+Fri Nov 13 14:37:58 UTC 2009 - puzel@novell.com
+
+- update to gnupg-2.0.13
+ * GPG now generates 2048 bit RSA keys by default.  The default hash
+   algorithm preferences has changed to prefer SHA-256 over SHA-1.
+   2048 bit DSA keys are now generated to use a 256 bit hash algorithm
+ * The envvars XMODIFIERS, GTK_IM_MODULE and QT_IM_MODULE are now
+   passed to the Pinentry to make SCIM work.
+ * The GPGSM command --gen-key features a --batch mode and implements
+   all features of gpgsm-gencert.sh in standard mode.
+ * New option --re-import for GPGSM's IMPORT server command.
+ * Enhanced writing of existing keys to OpenPGP v2 cards.
+ * Add hack to the internal CCID driver to allow the use of some
+   Omnikey based card readers with 2048 bit keys.
+ * GPG now repeatly asks the user to insert the requested OpenPGP
+   card.  This can be disabled with --limit-card-insert-tries=1.
+ * Minor bug fixes.
+- drop gnupg-2.0.4-default-tty.diff
+
+-------------------------------------------------------------------
+Thu Jun 18 13:22:00 CEST 2009 - puzel@novell.com
+
+- update to gnupg-2.0.12
+ * GPGSM now always lists ephemeral certificates if specified by
+   fingerprint or keygrip.
+ * New command "KEYINFO" for GPG_AGENT.  GPGSM now also returns
+   information about smartcards.
+ * Made sure not to leak file descriptors if running gpg-agent with a
+   command.  Restore the signal mask to solve a problem in Mono.
+ * Changed order of the confirmation questions for root certificates
+   and store negative answers in trustlist.txt.
+ * Better synchronization of concurrent smartcard sessions.
+ * Support 2048 bit OpenPGP cards.
+ * Support Telesec Netkey 3 cards.
+ * The gpg-protect-tool now uses gpg-agent via libassuan.
+ * Changed code to avoid a possible Mac OS X system freeze.
+- drop gpg2-fix-rtsignals.patch (fixed upstream)
+- drop gnupg-1.9.22-ccid-driver-fix.diff (unused)
+
+-------------------------------------------------------------------
+Thu Jun 11 11:19:58 CEST 2009 - puzel@suse.cz
+
+- change BuildRequires: (pth-devel -> libpth-devel) 
+
+-------------------------------------------------------------------
+Mon Jun  1 11:26:12 CEST 2009 - puzel@suse.cz
+
+- BuildRequires: pth-devel 
+
+-------------------------------------------------------------------
+Wed Mar 18 13:51:30 CET 2009 - puzel@suse.cz
+
+- add gpg2-fix-rtsignals.patch (bnc#481463)
+
+-------------------------------------------------------------------
+Thu Mar  5 13:39:42 CET 2009 - puzel@suse.cz
+
+- update to 2.0.11
+  * Fixed a problem in SCDAEMON which caused unexpected card resets.
+  * SCDAEMON is now aware of the Geldkarte.
+  * The SCDAEMON option --allow-admin is now used by default.
+  * GPGCONF now restarts SCdaemon if necessary.
+  * The default cipher algorithm in GPGSM is now again 3DES.  This is
+    due to interoperability problems with Outlook 2003 which still
+    can't cope with AES.
+- dropped gnupg-2.0.10-fix-convert.patch (upstream)
+- dropped gnupg-2.0.10-fix-missing-option.patch (upstream)
+- disabled gnupg-1.9.22-ccid-driver-fix.diff (does not apply and it is
+  not clear what it is good for)
+
+-------------------------------------------------------------------
+Mon Mar  2 15:53:22 CET 2009 - puzel@suse.cz
+
+- gnupg-2.0.10-fix-missing-option.patch (bnc#477362) 
+
+-------------------------------------------------------------------
+Mon Jan 19 16:16:11 CET 2009 - puzel@suse.cz
+
+- add gnupg-2.0.10-fix-convert.patch 
+  - fix broken 'make check' on ppc, s390 and s390x
+
+-------------------------------------------------------------------
+Tue Jan 13 10:38:38 CET 2009 - puzel@suse.cz
+
+- update to 2.0.10
+  * New keyserver helper gpg2keys_kdns as generic DNS CERT
+    lookup.  
+  * New mechanisms "local" and "nodefault" for --auto-key-locate.
+    Fixed a few problems with this option.
+  * New command --locate-keys.
+  * New options --with-sig-list and --with-sig-check.
+  * The option "-sat" is no longer an alias for --clearsign.
+  * The option --fixed-list-mode is now implicitly used and obsolete.
+  * New control statement %ask-passphrase for the unattended key
+    generation.
+  * The algorithm to compute the SIG_ID status has been changed.
+  * [gpgsm] Now uses AES by default.
+  * [gpgsm] Made --output option work with --export-secret-key-p12.
+  * [gpg-agent] Terminate process if the own listening socket is not
+    anymore served by ourself.
+  * [gpg-connect-agent] Accept commands given as command line arguments.
+  * The gpg-preset-passphrase mechanism works again. An arbitrary
+    string may now be used for a custom cache ID.
+  * Admin PINs are cached again (bug in 2.0.9).
+  * Support for version 2 OpenPGP cards.
+
+- specfile changes:
+  * require libadns 
+  * explicit versions for some BuildRequires
+  * BuildRequires libgpg-error
+  * changed license to GPL v3
+  * /etc/gnupg/gnupg.conf is now (noreplace)
+  * documentation is installed with install
+
+-------------------------------------------------------------------
+Wed Jun 11 11:06:09 CEST 2008 - puzel@suse.cz
+
+- fix [bnc#305725] - UTF-8 problems
+  * non latin characters displayed incorrectly by pinentry-*
+
+-------------------------------------------------------------------
+Wed May 21 14:01:14 CEST 2008 - puzel@suse.cz
+
+- added missing gpgconf.conf (bnc#391347)
+
+-------------------------------------------------------------------
+Fri Mar 28 16:14:33 CET 2008 - pcerny@suse.cz
+
+- update to 2.0.9
+  * fixes CVE-2008-1530 (bnc#374254)
+  * removing gnupg-2.0.8-from-upstream.diff (included in release)
+  * removing gnupg-2.0.4-oldkey.diff (accepted by upstream)
+  * removing gnupg-2.0.8-warningfixes.diff 
+    (also appears in upstream)
+- patch gnupg-2.0.9-RSA_ES.patch
+  * adding back support for deprecated RSA_E, RSA_S algorithms
+    (bnc#342979)
+
+-------------------------------------------------------------------
+Wed Mar 26 22:07:29 CET 2008 - coolo@suse.de
+
+- require the split out lang package
+
+-------------------------------------------------------------------
+Sun Mar 23 12:10:56 CET 2008 - coolo@suse.de
+
+- splitting out a third of the package by using a lang subpack
+
+-------------------------------------------------------------------
+Tue Feb 12 19:24:37 CET 2008 - bk@suse.de
+
+- install gpg-zip and gpgsplit again and use -pie for randomisation
+
+-------------------------------------------------------------------
+Wed Feb  6 18:16:34 CET 2008 - bk@suse.de
+
+- add selected upstream fixes and fix gcc and rpmlint warnings 
+
+-------------------------------------------------------------------
+Tue Jan  8 10:48:30 CET 2008 - sassmann@suse.de
+
+- update to GnuPG-2.0.8
+- adapted patches to apply properly
+  * gnupg-1.9.18-tmpdir.diff
+  * gnupg-2.0.4-install_tools.diff
+- gnupg-2.0.5.fixes-from-svn-20070812.diff commented out,
+  included in upstream 2.0.8
+- use optflags during build
+
+-------------------------------------------------------------------
+Wed Sep 12 22:40:46 CEST 2007 - ltinkl@suse.cz
+
+- fix #304749 - gpg2 unable to use old secret key
+
+-------------------------------------------------------------------
+Mon Sep 10 20:13:07 CEST 2007 - ltinkl@suse.cz
+
+- fix gpg2 crash on accessing key (#307666)
+- fix gpg doesn't work on the console (#302323)
+
+-------------------------------------------------------------------
+Fri Aug 10 11:50:20 CEST 2007 - bk@suse.de
+
+- update to GnuPG-2.0.5             - requries libassuan-1.0.2!
+  * Switched license to GPLv3.
+  * Fixed bug when using the --p12-charset without --armor.
+  * The command --gen-key may now be used instead of the
+    gpgsm-gencert.sh script.
+  * Changed key generation to reveal less information about the
+    machine.  Bug fixes for gpg2's card key generation.
+- enable make check to test against build issues in the crypto engine
+- cleanup disabled nld patch for linking with -lgpg-error-nld
+- use %find_lang to label the locale files properly with %lang
+- add opensc-devel to BuildRequrires to enanble smartcard support
+- del Makefile.in patches where we patch Makefile.am and run automake
+- cleanup the standrd GNU INSTALL and the empty VERSION from %doc
+
+-------------------------------------------------------------------
+Thu Jul 26 13:16:22 CEST 2007 - sbrabec@suse.cz
+
+- Build with libassuan-devel.
+
+-------------------------------------------------------------------
+Thu Jun 21 20:31:44 CEST 2007 - ro@suse.de
+
+- install compat symlinks for gpg2 and gpgv2
+- install gpg-zip and gpgsplit
+- added openldap2 to buildrequires (for gpgkeys_ldap) 
+- added fPIE/pie to CFLAGS/LDFLAGS for gpgsplit
+
+-------------------------------------------------------------------
+Wed May 23 19:02:45 CEST 2007 - dmueller@suse.de
+
+- add libusb-devel build requires
+
+-------------------------------------------------------------------
+Wed May 16 14:27:28 CEST 2007 - ltinkl@suse.cz
+
+- remove gpg from Require's (#273491)
+
+-------------------------------------------------------------------
+Fri May 11 13:20:19 CEST 2007 - ltinkl@suse.cz
+
+- updated to 2.0.4 stable snapshot
+
+-------------------------------------------------------------------
+Wed Apr  4 12:42:06 CEST 2007 - ltinkl@suse.cz
+
+- update to 2.0.3
+- fixed #251605 - VUL-0: signing issues within GNUPG
+- removed outdated patches
+
+-------------------------------------------------------------------
+Fri Mar 30 01:58:56 CEST 2007 - ro@suse.de
+
+- added zlib-devel to buildreq 
+
+-------------------------------------------------------------------
+Wed Feb 14 15:14:44 CET 2007 - ltinkl@suse.cz
+
+- fix file conflicts with gpg (#242133)
+
+-------------------------------------------------------------------
+Tue Jan 30 00:34:50 CET 2007 - ro@suse.de
+
+- fix build (exclude possible debuginfo directory) 
+
+-------------------------------------------------------------------
+Mon Jan 29 16:22:15 CET 2007 - ltinkl@suse.cz
+
+- fix #221212 - gpg2 is not updated and do not contain documentation
+- fix #233525 - gpg1/2: bug in vasprintf() implementation
+
+-------------------------------------------------------------------
+Thu Nov 30 16:59:25 CET 2006 - anicka@suse.cz
+
+- fix overflow in openfile.c (CVE-2006-6169, #224108) 
+
+-------------------------------------------------------------------
+Mon Sep 11 13:44:21 CEST 2006 - pnemec@suse.cz
+
+- updated gnupg to new version 1.9.22
+        Enhanced pkcs#12 support
+        Support for the CardMan 4040 PCMCIA
+        Collected bug fixes
+- updated pth library to 2.0.7
+- changed using pinetry-qt to pinentry
+- removed -cfb.diff -signature.patch -cap_large_uid.patch patches
+  they are no longer needed
+- change patch -warnings-fix.diff -ccid-driver-fix.diff
+
+-------------------------------------------------------------------
+Thu Aug 17 11:55:09 CEST 2006 - pnemec@suse.de
+
+- remove unused package in build requires
+
+-------------------------------------------------------------------
+Wed Aug  9 09:32:56 CEST 2006 - pnemec@suse.cz
+
+- fix spec file to build with new gettext 0.15 
+
+-------------------------------------------------------------------
+Mon Aug  7 11:06:19 CEST 2006 - pnemec@suse.cz
+
+- fixed security fix with large uid CVE-2006-3746 [#195569]
+
+-------------------------------------------------------------------
+Thu Feb 23 17:07:18 CET 2006 - pnemec@suse.cz
+
+- fixed signature security problem CVE-2006-0455 (bugzilla#150742)
+
+-------------------------------------------------------------------
+Thu Feb  2 15:37:22 CET 2006 - pnemec@suse.cz
+
+- fixed install info in spec file
+
+-------------------------------------------------------------------
+Thu Jan 26 15:52:26 CET 2006 - sbrabec@suse.cz
+
+- Added missing %install_info.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:18 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Aug  5 12:52:44 CEST 2005 - postadal@suse.cz
+
+- updated to version to 1.9.18
+- removed obsoleted gcc patch
+- added patch tmpdir.diff for using $TMPDIR by gpg-agent [#bug95732] 
+
+-------------------------------------------------------------------
+Tue Jul 12 14:17:11 CEST 2005 - postadal@suse.cz
+
+- updated to version to 1.9.17
+- updated pth to version 2.0.4
+- removed obsoleted patch agent-cache-fix.diff
+- fixed ccid-driver.c
+- fixed gcc4
+- explicitly enabled gpg building in configure
+
+-------------------------------------------------------------------
+Thu Mar 24 13:55:34 CET 2005 - postadal@suse.cz
+
+- fixed caching passphrase in gpg-agent [#71975]
+
+-------------------------------------------------------------------
+Tue Mar 22 18:11:12 CET 2005 - postadal@suse.cz
+
+- fixed on 64bit archs [#72440]
+
+-------------------------------------------------------------------
+Wed Feb 23 15:16:55 CET 2005 - postadal@suse.cz
+
+- security fix for cfb-cipher issue [#65862]
+
+-------------------------------------------------------------------
+Wed Jan 12 16:02:00 CET 2005 - postadal@suse.cz
+
+- update to version 1.9.14
+- removed obsoleted patch automake-fixes.diff
+
+-------------------------------------------------------------------
+Tue Sep 28 08:52:32 CEST 2004 - adrian@suse.de
+
+- link against libpth staticaly to make S/MIME support in kmail
+  usable. Hopefully we can convert this to a native thread implementation
+  later. (#46260)
+
+-------------------------------------------------------------------
+Sat Jul 31 15:07:26 CEST 2004 - adrian@suse.de
+
+- update to version 1.9.10
+
+-------------------------------------------------------------------
+Tue Jul 20 09:01:50 CEST 2004 - adrian@suse.de
+
+- remove openct and opensc packages from nfb
+  (we will need thread support, when enabling card reader support,
+   but it isn't anyway implemented yet in gpg2)
+
+-------------------------------------------------------------------
+Mon Jul 12 17:55:32 CEST 2004 - adrian@suse.de
+
+- use GnuPG 2 sources version 1.9.9
+- opensc support misses some functions atm, support disabled for now
+- threading is disabled, since we do not have a pth package for now
+- prepare for nld
+
+-------------------------------------------------------------------
+Thu Feb 26 13:27:08 CET 2004 - postadal@suse.cz
+
+- adapted some functions to the libgcrypt version 1.1.91 [#34987]
+- added libgpg-error to needforbuild flag
+
+-------------------------------------------------------------------
+Wed Feb 18 14:02:47 CET 2004 - kukuk@suse.de
+
+- Don't build against libpth.
+
+-------------------------------------------------------------------
+Tue Feb 10 16:00:08 CET 2004 - postadal@suse.cz
+
+- fixed code that broke strict aliasing
+
+-------------------------------------------------------------------
+Fri Dec  5 14:35:32 CET 2003 - garloff@suse.de
+
+- disable core dumpe in child after forking. [#33499]
+
+-------------------------------------------------------------------
+Mon Aug 11 14:48:50 CEST 2003 - adrian@suse.de
+
+- cleanup #neededforbuild and requires
+
+-------------------------------------------------------------------
+Mon Aug  4 15:28:41 CEST 2003 - ro@suse.de
+
+- added openct to neededforbuild 
+
+-------------------------------------------------------------------
+Fri Jul 18 14:23:15 CEST 2003 - mc@suse.de
+
+- build against opensc 
+
+-------------------------------------------------------------------
+Thu Jun 19 19:04:45 CEST 2003 - schwab@suse.de
+
+- Add %install_info.
+
+-------------------------------------------------------------------
+Mon Mar 17 15:25:30 CET 2003 - adrian@suse.de
+
+- add signal handler to check if the parent is still alive and
+  exit if not
+- use pinentry-qt by default (/usr/bin/pinentry do not exist)
+
+-------------------------------------------------------------------
+Tue Feb 11 15:38:30 CET 2003 - mc@suse.de
+
+- initial release 
+

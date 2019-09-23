@@ -1,0 +1,395 @@
+<revisionlist>
+  <revision rev="1" vrev="592">
+    <srcmd5>d568cfd3b6b685620fae710f336e277d</srcmd5>
+    <version>1.60</version>
+    <time>1166483832</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="621">
+    <srcmd5>bd177ff4fa0fc9c46ba3cd36100a138e</srcmd5>
+    <version>1.60</version>
+    <time>1178095539</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="638">
+    <srcmd5>18c913cca569b4147bf27b938eb072a8</srcmd5>
+    <version>1.60</version>
+    <time>1185494405</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="672">
+    <srcmd5>7e45e0d0654b0f2473b44ad7ea367977</srcmd5>
+    <version>1.60</version>
+    <time>1203957272</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="674">
+    <srcmd5>12fdad869ea610ad306c28c00504caca</srcmd5>
+    <version>1.60</version>
+    <time>1204931583</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="685">
+    <srcmd5>60bf72a97f240d2cb0da429c48f9603d</srcmd5>
+    <version>1.60</version>
+    <time>1210030856</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="704">
+    <srcmd5>61dbcc77781ca6a85c9318eaa5575799</srcmd5>
+    <version>1.60</version>
+    <time>1218488802</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="716">
+    <srcmd5>f3b2ea89a362e3166de6cb56350a6335</srcmd5>
+    <version>1.60</version>
+    <time>1220886054</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="718">
+    <srcmd5>7f01ff7d27a5a144871fcb69d2261b15</srcmd5>
+    <version>1.60</version>
+    <time>1221278371</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="721">
+    <srcmd5>59e2ac668919b3b3d50e2f2249af01c3</srcmd5>
+    <version>1.60</version>
+    <time>1222378758</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="722">
+    <srcmd5>03fa7d379ba9a9f39447342815de25d8</srcmd5>
+    <version>1.60</version>
+    <time>1225123398</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="723">
+    <srcmd5>6fb3af15c59de24f214b9ba8187b5e23</srcmd5>
+    <version>1.60</version>
+    <time>1225717812</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="724">
+    <srcmd5>00a7ddd357858ba392c4f8578362876a</srcmd5>
+    <version>1.60</version>
+    <time>1226006391</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="725">
+    <srcmd5>55d52f5a80462d5cb1b9e52cbaa22482</srcmd5>
+    <version>1.60</version>
+    <time>1227539692</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="726">
+    <srcmd5>0f9ac6451d00826c36969b80b03795d1</srcmd5>
+    <version>1.60</version>
+    <time>1238026006</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="727">
+    <srcmd5>16b1047a5c212e5d07a53814316f78f1</srcmd5>
+    <version>1.60</version>
+    <time>1242693497</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="728">
+    <srcmd5>c785ec52bf84f09a70a87636ede8ab8b</srcmd5>
+    <version>1.60</version>
+    <time>1244829646</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="729">
+    <srcmd5>262c4c053be62850ddfa97437d56b908</srcmd5>
+    <version>1.60</version>
+    <time>1247150458</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="730">
+    <srcmd5>910bdcbae9409b1655c9554237277434</srcmd5>
+    <version>1.60</version>
+    <time>1249683725</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="731">
+    <srcmd5>5e6dde27cfb7a404ffbcdb96a8a2ae9b</srcmd5>
+    <version>1.60</version>
+    <time>1250122918</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/net-tools based on submit request 17518 from user sax2
+</comment>
+  </revision>
+  <revision rev="21" vrev="732">
+    <srcmd5>0e84aa5faad31092680fe00fd5f35748</srcmd5>
+    <version>1.60</version>
+    <time>1253147463</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/net-tools based on submit request 20374 from user sax2
+</comment>
+  </revision>
+  <revision rev="22" vrev="733">
+    <srcmd5>80ec0c841f469a685bcac8c7c972eba6</srcmd5>
+    <version>1.60</version>
+    <time>1254966081</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/net-tools based on submit request 21957 from user sax2
+</comment>
+  </revision>
+  <revision rev="23" vrev="735">
+    <srcmd5>80ec0c841f469a685bcac8c7c972eba6</srcmd5>
+    <version>1.60</version>
+    <time>1254966081</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/net-tools based on submit request 21957 from user sax2
+</comment>
+  </revision>
+  <revision rev="24" vrev="736">
+    <srcmd5>ab3364566ee6cb420bef8a724bbbdfb1</srcmd5>
+    <version>1.60</version>
+    <time>1258387454</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/net-tools based on submit request 24486 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="25" vrev="737">
+    <srcmd5>eefa7db2d25919f9c25ea1429fb188a5</srcmd5>
+    <version>1.60</version>
+    <time>1260981122</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/net-tools based on submit request 26742 from user sax2
+</comment>
+  </revision>
+  <revision rev="26" vrev="738">
+    <srcmd5>9af07894a9abb6f71eb0000e419622be</srcmd5>
+    <version>1.60</version>
+    <time>1263304924</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/net-tools based on submit request 29029 from user coolo
+</comment>
+  </revision>
+  <revision rev="27" vrev="739">
+    <srcmd5>172b0fb46932542b3ce2ec550598cda2</srcmd5>
+    <version>1.60</version>
+    <time>1268925070</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="28" vrev="740">
+    <srcmd5>20e439b54961ae8702fa0a9a3c81b15c</srcmd5>
+    <version>1.60</version>
+    <time>1268990006</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/net-tools based on submit request 35272 from user coolo
+</comment>
+    <requestid>35272</requestid>
+  </revision>
+  <revision rev="29" vrev="742">
+    <srcmd5>20e439b54961ae8702fa0a9a3c81b15c</srcmd5>
+    <version>1.60</version>
+    <time>1278667370</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="30" vrev="743">
+    <srcmd5>20e439b54961ae8702fa0a9a3c81b15c</srcmd5>
+    <version>1.60</version>
+    <time>1278678600</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="31" vrev="744">
+    <srcmd5>1c1d5be437c30ad9903e812a55606f02</srcmd5>
+    <version>1.60</version>
+    <time>1279652450</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/net-tools based on submit request 43530 from user elvigia
+</comment>
+    <requestid>43530</requestid>
+  </revision>
+  <revision rev="32" vrev="745">
+    <srcmd5>cd40e154d0be10e5c357838198cf6862</srcmd5>
+    <version>1.60</version>
+    <time>1297789837</time>
+    <user>darix</user>
+    <comment>Accepted submit request 61247 from user mrdocs
+</comment>
+    <requestid>61247</requestid>
+  </revision>
+  <revision rev="33" vrev="746">
+    <srcmd5>7ff6926615702b6dc4b908288be78c50</srcmd5>
+    <version>1.60</version>
+    <time>1297789846</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 61247
+</comment>
+  </revision>
+  <revision rev="34" vrev="749">
+    <srcmd5>7ff6926615702b6dc4b908288be78c50</srcmd5>
+    <version>1.60</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="35" vrev="750">
+    <srcmd5>abbc634cd92e61015357ad3900369aae</srcmd5>
+    <version>1.60</version>
+    <time>1317543650</time>
+    <user>lrupp</user>
+    <comment>Applied corrections for Czech translation (bnc#715580);
+Jiri, please review/verify.</comment>
+    <requestid>81918</requestid>
+  </revision>
+  <revision rev="36" vrev="752">
+    <srcmd5>abbc634cd92e61015357ad3900369aae</srcmd5>
+    <version>1.60</version>
+    <time>1319182197</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="37" vrev="753">
+    <srcmd5>11b27e61ed1507042ce37b47262d1195</srcmd5>
+    <version>1.60</version>
+    <time>1323192706</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="38" vrev="755">
+    <srcmd5>11b27e61ed1507042ce37b47262d1195</srcmd5>
+    <version>1.60</version>
+    <time>1340183727</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="39" vrev="756">
+    <srcmd5>68d242efd4307f0dbb489f2f57bd170e</srcmd5>
+    <version>1.60</version>
+    <time>1350022141</time>
+    <user>coolo</user>
+    <comment>- Kernel 3.6 removes if_strip.h - disable STRIP support in factory
+- convert .changes to utf-8 fixing old entry, W: non-utf8-spec-file (forwarded request 137431 from AndreasStieger)</comment>
+    <requestid>137432</requestid>
+  </revision>
+  <revision rev="40" vrev="758">
+    <srcmd5>68d242efd4307f0dbb489f2f57bd170e</srcmd5>
+    <version>1.60</version>
+    <time>1359109496</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="759">
+    <srcmd5>6febdbfa656e4d01eaeed6ef684fc834</srcmd5>
+    <version>1.60</version>
+    <time>1359439185</time>
+    <user>coolo</user>
+    <comment>add etherwake. Taken from fedora. (forwarded request 150014 from jirislaby)</comment>
+    <requestid>150146</requestid>
+  </revision>
+  <revision rev="42" vrev="760">
+    <srcmd5>e8e1bb30780980b7a88f593ad053823b</srcmd5>
+    <version>1.60</version>
+    <time>1359646092</time>
+    <user>coolo</user>
+    <comment>- Remove obsolete traceroute(8) implementation.
+  Modern one is packaged as &quot;traceroute&quot;. to fullfil userspace
+  requirements, Require the new version explicitly.
+ - Fix localized man page installation, the right thing (tm) to
+  do is to use find_lang --with-man --all-name instead. (forwarded request 150334 from elvigia)</comment>
+    <requestid>150414</requestid>
+  </revision>
+  <revision rev="43" vrev="761">
+    <srcmd5>2316895b7b06f50206ed79358eb56f2b</srcmd5>
+    <version>1.60</version>
+    <time>1359730156</time>
+    <user>coolo</user>
+    <comment>- Use Recommends insted of requires for traceroute (forwarded request 150652 from elvigia)</comment>
+    <requestid>150675</requestid>
+  </revision>
+  <revision rev="44" vrev="762">
+    <srcmd5>e74653b69c94f1a13d2b0b071bc2d2d3</srcmd5>
+    <version>1.60</version>
+    <time>1366177290</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 170848 from namtrac)</comment>
+    <requestid>170867</requestid>
+  </revision>
+  <revision rev="45" vrev="764">
+    <srcmd5>e74653b69c94f1a13d2b0b071bc2d2d3</srcmd5>
+    <version>1.60</version>
+    <time>1379663354</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="766">
+    <srcmd5>e74653b69c94f1a13d2b0b071bc2d2d3</srcmd5>
+    <version>1.60</version>
+    <time>1409301966</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="47" vrev="767">
+    <srcmd5>5086599f42408e9a8cfb4f928611a977</srcmd5>
+    <version>1.60</version>
+    <time>1432981960</time>
+    <user>dimstar_suse</user>
+    <comment>catch-up submission</comment>
+    <requestid>308848</requestid>
+  </revision>
+  <revision rev="48" vrev="768">
+    <srcmd5>9874f073052512ba13820383031440b7</srcmd5>
+    <version>1.60</version>
+    <time>1434456252</time>
+    <user>coolo</user>
+    <comment>Remove hostname, domainname, dnsdomainname and require the separate hostname package instead.
+
+See see http://lists.opensuse.org/opensuse-factory/2015-06/msg00133.html</comment>
+    <requestid>311493</requestid>
+  </revision>
+  <revision rev="49" vrev="769">
+    <srcmd5>d7e0b855809fed6dc301fc2eeafff5ae</srcmd5>
+    <version>1.60</version>
+    <time>1464299564</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396898</requestid>
+  </revision>
+  <revision rev="50" vrev="770">
+    <srcmd5>659d730f58843a922c2760e687682c1d</srcmd5>
+    <version>1.60</version>
+    <time>1478288954</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435995</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>1da25e96f4fa93c3085107d420333d2d</srcmd5>
+    <version>2.0+git20170221.479bb4a</version>
+    <time>1498202077</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504900</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>fb75193c2ca8b750ec9c134bb66768a0</srcmd5>
+    <version>2.0+git20170221.479bb4a</version>
+    <time>1511273854</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542459</requestid>
+  </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>9db157ea445307d91213b9d08dd1cc46</srcmd5>
+    <version>2.0+git20170221.479bb4a</version>
+    <time>1522702029</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592091</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>e82d08d77b034ae8ce9d8e04d6e8b833</srcmd5>
+    <version>2.0+git20180626.aebd88e</version>
+    <time>1538501948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>633753</requestid>
+  </revision>
+</revisionlist>

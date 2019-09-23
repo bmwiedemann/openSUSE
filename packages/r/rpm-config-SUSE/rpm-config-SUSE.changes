@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Wed Aug 28 12:12:34 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 0.g35:
+  * Add _distconfdir as /usr/etc
+  * find-provides.ksyms, find-requires.ksyms: cleanup kernel version handling (bsc#1145601).
+  * find-requires.ksyms: fix matching of uninstalled files (bsc#1145601).
+  * add changes
+
+-------------------------------------------------------------------
+Thu Aug 15 17:53:05 UTC 2019 - msuchanek@suse.de
+
+- Update to version 0.g32:
+  * find-provides.ksyms, find-requires.ksyms: cleanup kernel version handling (bsc#1145601).
+  * find-requires.ksyms: fix matching of uninstalled files (bsc#1145601).
+
+-------------------------------------------------------------------
+Wed Aug 14 11:25:25 UTC 2019 - dimstar@opensuse.org
+
+- Update to version 0.g29:
+  * find-requires.ksyms: Move modinfo and modprobe before the ksym dependency code.
+
+-------------------------------------------------------------------
+Tue Jun 18 13:25:45 UTC 2019 - Takashi Iwai <tiwai@suse.de>
+
+- Add support for compressed firmware files
+- Add support for compressed kernel modules
+
+-------------------------------------------------------------------
+Fri May 17 10:37:23 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- macros: avoid emitting bashisms into scriptlets
+
+-------------------------------------------------------------------
+Thu Apr 25 16:15:13 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Provide/require modules with .ko suffix (jsc#SLE-3853)
+
+-------------------------------------------------------------------
+Wed Apr 10 09:59:33 CEST 2019 - kukuk@suse.de
+
+- Don't use bash syntax in %install_info macro [bsc#1131957]
+
+-------------------------------------------------------------------
+Tue Mar  5 16:05:14 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Add automatic kernel module requires for module-load.d files
+  (FATE#326579).
+
+-------------------------------------------------------------------
+Wed Jan 30 13:57:55 CET 2019 - mls@suse.de
+
+- Added macros.d/macros.initrd
+
+-------------------------------------------------------------------
+Tue Dec 18 20:10:04 UTC 2018 - Michal Suchanek <msuchanek@suse.de>
+
+- Add kmod(module) provides to kernel and KMPs (FATE#326579).
+
+-------------------------------------------------------------------
+Wed Oct 24 16:10:40 CEST 2018 - msuchanek@suse.de
+
+- Fix superfluous TOC. dependency (bsc#1113100)
+
+-------------------------------------------------------------------
+Fri Oct 12 14:17:05 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new snapshot 0.g8
+  * %lang_package: fix "empty Requires:" being emitted
+  * %user_group_add: do not ignore errors from useradd
+
+-------------------------------------------------------------------
+Wed Sep  5 11:57:46 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new snapshot 0.g5
+  * Modified %lang_package to not inject -n when -r is given.
+
+-------------------------------------------------------------------
+Sat Aug 18 09:38:18 UTC 2018 - schwab@suse.de
+
+- Break build cycle with rpm
+
+-------------------------------------------------------------------
+Mon Feb 26 03:48:20 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Initial split of RPM vendor configuration from rpm package
+

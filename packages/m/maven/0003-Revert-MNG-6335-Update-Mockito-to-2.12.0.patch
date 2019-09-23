@@ -1,0 +1,180 @@
+From 6b5e263ebd03be9551c4e6aa394ac2334fff7c03 Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Tue, 13 Mar 2018 11:49:16 +0100
+Subject: [PATCH 3/3] Revert "[ MNG-6335] Update Mockito to 2.12.0"
+
+This reverts commit a03489b67d04a4b014ff5d1c151b331a39bf100b.
+---
+ .../DefaultToolchainManagerPrivateTest.java       | 15 +++++++++------
+ .../toolchain/DefaultToolchainManagerTest.java    |  4 ++--
+ .../building/DefaultToolchainsBuilderTest.java    | 14 +++++++-------
+ maven-embedder/pom.xml                            |  1 -
+ pom.xml                                           |  2 +-
+ 5 files changed, 19 insertions(+), 17 deletions(-)
+
+diff --git a/maven-core/src/test/java/org/apache/maven/toolchain/DefaultToolchainManagerPrivateTest.java b/maven-core/src/test/java/org/apache/maven/toolchain/DefaultToolchainManagerPrivateTest.java
+index c937564..1e48441 100644
+--- a/maven-core/src/test/java/org/apache/maven/toolchain/DefaultToolchainManagerPrivateTest.java
++++ b/maven-core/src/test/java/org/apache/maven/toolchain/DefaultToolchainManagerPrivateTest.java
+@@ -20,7 +20,8 @@ package org.apache.maven.toolchain;
+  */
+ 
+ import static org.junit.Assert.assertEquals;
+-import static org.mockito.ArgumentMatchers.anyString;
++import static org.junit.Assert.fail;
++import static org.mockito.Matchers.anyString;
+ import static org.mockito.Mockito.mock;
+ import static org.mockito.Mockito.never;
+ import static org.mockito.Mockito.verify;
+@@ -144,8 +145,9 @@ public class DefaultToolchainManagerPrivateTest
+         verify( logger, never() ).error( anyString() );
+         assertEquals( 2, toolchains.length );
+     }
+-
+-    @Test
++    
++    @SuppressWarnings( "unchecked" )
++    @Test( expected = MisconfiguredToolchainException.class )
+     public void testMisconfiguredToolchain()
+         throws Exception
+     {
+@@ -153,11 +155,12 @@ public class DefaultToolchainManagerPrivateTest
+         MavenSession session = mock( MavenSession.class );
+         MavenExecutionRequest req = new DefaultMavenExecutionRequest();
+         when( session.getRequest() ).thenReturn( req );
++        when(toolchainFactory_basicType.createDefaultToolchain()).thenThrow( MisconfiguredToolchainException.class );
+ 
+         // execute
+-        ToolchainPrivate[] basics = toolchainManager.getToolchainsForType("basic", session);
+-
++        toolchainManager.getToolchainsForType( "basic", session );
++        
+         // verify
+-        assertEquals( 0, basics.length );
++        fail( "Should exit with a MisconfiguredToolchainException" );
+     }
+ }
+diff --git a/maven-core/src/test/java/org/apache/maven/toolchain/DefaultToolchainManagerTest.java b/maven-core/src/test/java/org/apache/maven/toolchain/DefaultToolchainManagerTest.java
+index 84444c0..6e85c42 100644
+--- a/maven-core/src/test/java/org/apache/maven/toolchain/DefaultToolchainManagerTest.java
++++ b/maven-core/src/test/java/org/apache/maven/toolchain/DefaultToolchainManagerTest.java
+@@ -20,6 +20,7 @@ package org.apache.maven.toolchain;
+  */
+ 
+ import static org.junit.Assert.assertEquals;
++import static org.mockito.Matchers.anyMap;
+ import static org.mockito.Matchers.isA;
+ import static org.mockito.Mockito.mock;
+ import static org.mockito.Mockito.verify;
+@@ -38,7 +39,6 @@ import org.apache.maven.toolchain.model.ToolchainModel;
+ import org.codehaus.plexus.logging.Logger;
+ import org.junit.Before;
+ import org.junit.Test;
+-import org.mockito.ArgumentMatchers;
+ import org.mockito.InjectMocks;
+ import org.mockito.Mock;
+ import org.mockito.MockitoAnnotations;
+@@ -142,7 +142,7 @@ public class DefaultToolchainManagerTest
+         executionRequest.setToolchains( toolchainModels );
+         when( session.getRequest() ).thenReturn( executionRequest );
+         ToolchainPrivate basicPrivate = mock( ToolchainPrivate.class );
+-        when( basicPrivate.matchesRequirements( ArgumentMatchers.<String, String>anyMap() ) ).thenReturn( false ).thenReturn( true );
++        when( basicPrivate.matchesRequirements( anyMap() ) ).thenReturn( false ).thenReturn( true );
+         when( toolchainFactory_basicType.createToolchain( isA( ToolchainModel.class ) ) ).thenReturn( basicPrivate );
+ 
+         List<Toolchain> toolchains =
+diff --git a/maven-core/src/test/java/org/apache/maven/toolchain/building/DefaultToolchainsBuilderTest.java b/maven-core/src/test/java/org/apache/maven/toolchain/building/DefaultToolchainsBuilderTest.java
+index fc530df..80fca09 100644
+--- a/maven-core/src/test/java/org/apache/maven/toolchain/building/DefaultToolchainsBuilderTest.java
++++ b/maven-core/src/test/java/org/apache/maven/toolchain/building/DefaultToolchainsBuilderTest.java
+@@ -21,7 +21,8 @@ package org.apache.maven.toolchain.building;
+ 
+ import static org.junit.Assert.assertEquals;
+ import static org.junit.Assert.assertNotNull;
+-import static org.mockito.ArgumentMatchers.any;
++import static org.mockito.Matchers.any;
++import static org.mockito.Matchers.anyMap;
+ import static org.mockito.Mockito.when;
+ 
+ import java.io.IOException;
+@@ -34,7 +35,6 @@ import org.apache.maven.toolchain.model.PersistedToolchains;
+ import org.apache.maven.toolchain.model.ToolchainModel;
+ import org.junit.Before;
+ import org.junit.Test;
+-import org.mockito.ArgumentMatchers;
+ import org.mockito.InjectMocks;
+ import org.mockito.Mock;
+ import org.mockito.MockitoAnnotations;
+@@ -78,7 +78,7 @@ public class DefaultToolchainsBuilderTest
+         toolchain.setType( "TYPE" );
+         toolchain.addProvide( "key", "user_value" );
+         userResult.addToolchain(  toolchain );
+-        when( toolchainsReader.read( any( InputStream.class ), ArgumentMatchers.<String, Object>anyMap()) ).thenReturn( userResult );
++        when( toolchainsReader.read( any( InputStream.class ), anyMap() ) ).thenReturn( userResult );
+ 
+         ToolchainsBuildingResult result = toolchainBuilder.build( request );
+         assertNotNull( result.getEffectiveToolchains() );
+@@ -101,7 +101,7 @@ public class DefaultToolchainsBuilderTest
+         toolchain.setType( "TYPE" );
+         toolchain.addProvide( "key", "global_value" );
+         globalResult.addToolchain(  toolchain );
+-        when( toolchainsReader.read( any( InputStream.class ), ArgumentMatchers.<String, Object>anyMap()) ).thenReturn( globalResult );
++        when( toolchainsReader.read( any( InputStream.class ), anyMap() ) ).thenReturn( globalResult );
+ 
+         ToolchainsBuildingResult result = toolchainBuilder.build( request );
+         assertNotNull( result.getEffectiveToolchains() );
+@@ -131,7 +131,7 @@ public class DefaultToolchainsBuilderTest
+         globalToolchain.setType( "TYPE" );
+         globalToolchain.addProvide( "key", "global_value" );
+         globalResult.addToolchain(  globalToolchain );
+-        when( toolchainsReader.read( any( InputStream.class ), ArgumentMatchers.<String, Object>anyMap()) ).thenReturn( globalResult ).thenReturn( userResult );
++        when( toolchainsReader.read( any( InputStream.class ), anyMap() ) ).thenReturn( globalResult ).thenReturn( userResult );
+ 
+         ToolchainsBuildingResult result = toolchainBuilder.build( request );
+         assertNotNull( result.getEffectiveToolchains() );
+@@ -150,7 +150,7 @@ public class DefaultToolchainsBuilderTest
+         ToolchainsBuildingRequest request = new DefaultToolchainsBuildingRequest();
+         request.setGlobalToolchainsSource( new StringSource( "" ) );
+         ToolchainsParseException parseException = new ToolchainsParseException( "MESSAGE", 4, 2 );
+-        when( toolchainsReader.read( any( InputStream.class ), ArgumentMatchers.<String, Object>anyMap()) ).thenThrow( parseException );
++        when( toolchainsReader.read( any( InputStream.class ), anyMap() ) ).thenThrow( parseException );
+         
+         try
+         {
+@@ -169,7 +169,7 @@ public class DefaultToolchainsBuilderTest
+         ToolchainsBuildingRequest request = new DefaultToolchainsBuildingRequest();
+         request.setGlobalToolchainsSource( new StringSource( "", "LOCATION" ) );
+         IOException ioException = new IOException( "MESSAGE" );
+-        when( toolchainsReader.read( any( InputStream.class ), ArgumentMatchers.<String, Object>anyMap()) ).thenThrow( ioException );
++        when( toolchainsReader.read( any( InputStream.class ), anyMap() ) ).thenThrow( ioException );
+         
+         try
+         {
+diff --git a/maven-embedder/pom.xml b/maven-embedder/pom.xml
+index 8a00565..2a9668b 100644
+--- a/maven-embedder/pom.xml
++++ b/maven-embedder/pom.xml
+@@ -141,7 +141,6 @@ under the License.
+     <dependency>
+       <groupId>org.mockito</groupId>
+       <artifactId>mockito-core</artifactId>
+-      <scope>test</scope>
+     </dependency>
+     <dependency>
+       <groupId>org.fusesource.jansi</groupId>
+diff --git a/pom.xml b/pom.xml
+index ef1d0b0..77b3395 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -53,7 +53,7 @@ under the License.
+     <commonsCliVersion>1.4</commonsCliVersion>
+     <commonsLangVersion>3.5</commonsLangVersion>
+     <junitVersion>4.12</junitVersion>
+-    <mockitoVersion>2.12.0</mockitoVersion>
++    <mockitoVersion>1.10.19</mockitoVersion>
+     <plexusVersion>1.7.1</plexusVersion>
+     <plexusInterpolationVersion>1.24</plexusInterpolationVersion>
+     <plexusUtilsVersion>3.1.0</plexusUtilsVersion>
+-- 
+2.17.1
+

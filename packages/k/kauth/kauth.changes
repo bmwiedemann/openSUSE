@@ -1,0 +1,704 @@
+-------------------------------------------------------------------
+Sat Sep  7 20:36:30 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- No code change since 5.61.0
+- Replace foo-devel with cmake(KF5Foo) in build requirements
+
+-------------------------------------------------------------------
+Wed Aug  7 17:51:08 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- No code change since 5.60.0
+
+-------------------------------------------------------------------
+Fri Jul 19 11:38:31 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * Install in new logging directory when we use kf5 5.59.0
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- Changes since 5.58.0:
+  * Don't hardcode dbus policy install dir
+
+-------------------------------------------------------------------
+Wed May 15 18:16:15 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- Changes since 5.57.0:
+  * Force KAuth helpers to have UTF-8 support (kde#384294)
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:41 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Add const'ref
+  * [kauth] fix last foreach
+  * Improve code: Remove temp container just to iterate
+  * It compiles fine without deprecated method with qt 5.13
+  * Make it compile without foreach
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:35 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * Tell people they should mostly be using KF5::AuthCore
+  * Namespace find_file result
+  * Compile our own helper against AuthCore and not Auth
+  * Fix Windows build [hopefully]
+  * Introduce KF5AuthCore
+- Add a new subpackage for the KF5AuthCore5 library
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:00 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * Remove support for passing gui QVariants to KAuth
+    helpers (bsc#1124863,CVE-2019-7443)
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:42 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * No code changes since 5.53.0
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:42 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * No code changes since 5.52.0
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:02 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * USe new syntax
+
+-------------------------------------------------------------------
+Tue Oct 16 08:01:50 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:51:46 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Remove misleading use of KDE_INSTALL_PYTHONBINDINGSDIR
+  * Remove unused variable
+  * Use QString's multi-arg with multiple string args
+  * Make sure to build with strict compile flags
+  * Fix minor EBN issues
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * None
+
+-------------------------------------------------------------------
+Sun Aug 19 09:18:48 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Avoid warnings for PolkitQt5-1 headers
+  * Honor BUILD_TESTING
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:35 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * Use more nullptr
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:02 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Warning--
+
+-------------------------------------------------------------------
+Sun May 13 21:03:00 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * Warning--
+  * Fix returning of data in the helper example
+
+-------------------------------------------------------------------
+Wed May  9 11:42:33 UTC 2018 - kbabioch@suse.com
+
+- Removed setBadness() from spec file, since it is no longer needed.
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:02 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Remove useless qt version check
+  * Remove not necessary QtCore and co
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:40 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:07 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * Fix linking regression introduced by d47f645a7 (wrong "const")
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:14 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+  * Const'ify. Remove unused variables. Minor optimization
+  * Fix CMake AUTOMOC warning
+  * Autogenerate debug file
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:47 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * We depend against 5.7
+  * Allow to only build the kauth-policy-gen code generator
+  * Add a note about calling the helper from multithreaded applications.
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:13 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * Reduce variable scope
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:37 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:16 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:17 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * API dox: use official name "D-Bus" consistently
+
+-------------------------------------------------------------------
+Wed Jul 12 07:13:58 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * Add missing newline in the apidox
+  * Expand documentation of Persistence attribute
+  * [FEATURE] Option to build & install QCH file with the public API dox
+  * Check error status after every PolKitAuthority usage
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * Use explicit flag value instead of nullptr
+  * Remove HelperProxy::authorizeAction
+  * Verify that whoever is calling us is actually who he says he is
+
+-------------------------------------------------------------------
+Mon May 15 13:53:15 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * Verify that whoever is calling us is actually who he says he is
+- Remove patches, now upstream:
+  * verify-caller-CVE-2017-8422.patch
+
+-------------------------------------------------------------------
+Thu May 11 05:05:08 UTC 2017 - lbeltrame@kde.org
+
+- Add verify-caller-CVE-2017-8422.patch: upstream security fix for
+  local privilege escalation (CVE-2017-8422)
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:44 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * Update docs to Frameworks API
+  * Backend for Mac.
+  * Add support for killing a KAuth::ExecuteJob
+  * Upgrade KF5 version to 5.33.0.
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:14 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Commit translations from l10n-kf5
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Upgrade KF5 version to 5.32.0.
+
+-------------------------------------------------------------------
+Thu Feb  9 09:23:52 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:38:06 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 01:55:28 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * Add timeout property (kde#363200)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 20:10:54 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * Make sure we can do more than one request
+  * Make sure we get to know about progress by reading
+    the program output
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 12:50:02 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:47:05 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:50:29 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:01:57 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:23:24 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:30:02 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:18:51 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 09:54:49 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * Fix kded5 dead lock when a program using kauth exits
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 17:59:18 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * Also perform preAuthAction for Backends with AuthorizeFromHelperCapability
+  * Fix DBus service name of polkit agent
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:41:50 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:03:03 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 16:57:47 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * Handle proxying qInfo messages
+  * Wait for async call starting helper to finish before checking
+    the reply (kde#345234)
+  * Fix variable name, otherwise there's no way the include can work
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:37:01 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:12:39 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:13 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:44:47 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * Make it possible to use kauth-policy-gen from different sources
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:11 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * Make KAUTH_HELPER_INSTALL_ABSOLUTE_DIR available to all KAuth users
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+- Drop 0001-Create-reproducible-builds.patch, merged upstream
+
+-------------------------------------------------------------------
+Sun May  3 19:49:43 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Mon Apr 20 00:29:49 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added 0001-Create-reproducible-builds.patch: makes packages that
+  create polkit policies via KAuth have reproducible builds
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:55 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:55 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:32 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * Fixed generation of KAuth DBus helper service files
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:29 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:49 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:47:36 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * Fix install dir when using KDE_INSTALL_USE_QT_SYS_PATHS
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:55 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:36 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:19 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+- Drop polkit-qt5-support.patch,
+  0001-Pass-trailing-slash-to-searched-backend-helper-plugi.patch
+  and 0001-Fix-race-condition.patch, merged upstream
+
+-------------------------------------------------------------------
+Fri Jul 18 08:12:36 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Install org.kde.kf5auth.conf, now that it's whitelisted
+
+-------------------------------------------------------------------
+Wed Jul 16 21:31:42 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added 0001-Fix-race-condition.patch for resolving bnc#864716
+
+-------------------------------------------------------------------
+Fri Jul 11 09:48:36 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Define kf5_version within package
+
+-------------------------------------------------------------------
+Thu Jul 10 18:19:58 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update polkit-qt5-support.patch to work with latest polkit-qt5-1
+
+-------------------------------------------------------------------
+Tue Jul  1 21:36:06 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+- Added 0001-Pass-trailing-slash-to-searched-backend-helper-plugi.patch,
+  fixes helper/backend plugin loading
+
+-------------------------------------------------------------------
+Wed Jun 11 22:24:49 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added polkit-qt5-support.patch, adds support for polkit-qt-1 Qt5
+  port, https://git.reviewboard.kde.org/r/118264/
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:37 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Added libqt5-linguist-devel BuildRequires
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Sun May  4 01:40:57 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:21 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+
+-------------------------------------------------------------------
+Tue Mar  4 16:40:02 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Wed Feb 26 21:48:39 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Don't package %{_kf5_sysconfdir}/dbus-1/system.d/org.kde.kf5auth.conf,
+  until security review is done
+
+-------------------------------------------------------------------
+Sat Feb  8 02:17:20 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init kauth package
+

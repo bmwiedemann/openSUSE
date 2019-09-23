@@ -1,0 +1,36 @@
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Upstream: https://sourceforge.net/p/cdrdao/patches/27/
+
+Fix build with gcc 6
+====================
+
+[   42s] CdrDriver.cc:498:64: error: narrowing conversion of '255' from 'int' to 'char' inside { } [-Wnarrowing]
+[   42s]  char CdrDriver::REMOTE_MSG_SYNC_[4] = { 0xff, 0x00, 0xff, 0x00 };
+
+
+Index: cdrdao-1.2.3/dao/CdrDriver.cc
+===================================================================
+--- cdrdao-1.2.3.orig/dao/CdrDriver.cc
++++ cdrdao-1.2.3/dao/CdrDriver.cc
+@@ -495,7 +495,7 @@ unsigned char CdrDriver::syncPattern[12]
+   0, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0
+ };
+ 
+-char CdrDriver::REMOTE_MSG_SYNC_[4] = { 0xff, 0x00, 0xff, 0x00 };
++unsigned char CdrDriver::REMOTE_MSG_SYNC_[4] = { 0xff, 0x00, 0xff, 0x00 };
+ 
+ 
+ /* Maps a string to the corresponding driver option value 
+Index: cdrdao-1.2.3/dao/CdrDriver.h
+===================================================================
+--- cdrdao-1.2.3.orig/dao/CdrDriver.h
++++ cdrdao-1.2.3/dao/CdrDriver.h
+@@ -440,7 +440,7 @@ protected:
+   bool fullBurn_;
+ 
+   static unsigned char syncPattern[12];
+-  static char REMOTE_MSG_SYNC_[4];
++  static unsigned char REMOTE_MSG_SYNC_[4];
+ 
+   static int speed2Mult(int);
+   static int mult2Speed(int);

@@ -1,0 +1,5 @@
+<package name="dbus-sharp-glib" project="openSUSE:Factory">
+  <title>Glib integration for DBus</title>
+  <description>This package provides glib integration for Mono.DBus.</description>
+  <devel project="Mono:Factory" package="dbus-sharp-glib"/>
+</package>

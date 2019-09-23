@@ -1,0 +1,430 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0d923045f0230afcf339006bb34d32cb</srcmd5>
+    <version>0.6.8</version>
+    <time>1168903332</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e6e6b724f5472fdfd457ee5788f96e42</srcmd5>
+    <version>0.6.11</version>
+    <time>1173919401</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c87ab654c1ae4b850e78bd3ed3950d4d</srcmd5>
+    <version>0.6.11</version>
+    <time>1175162633</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>207ea5af444cf8bcdbd4a4b3950eb862</srcmd5>
+    <version>0.6.14</version>
+    <time>1184787352</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6ea8792d5c751c2a001880f35045ea0a</srcmd5>
+    <version>1.0</version>
+    <time>1186169621</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>238708d211c03939825382bb5b39a201</srcmd5>
+    <version>1.4</version>
+    <time>1201479327</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1ab9360229fd4709b99b01142a80730a</srcmd5>
+    <version>1.5</version>
+    <time>1204160380</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>412e97581781128cde88139584185e07</srcmd5>
+    <version>1.5</version>
+    <time>1205928079</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9d3a4b68f2cb9e60f7793a4d3dcc70dd</srcmd5>
+    <version>1.6</version>
+    <time>1206544850</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>2012f5aaf8639ce02f0991b08df67ea9</srcmd5>
+    <version>1.6</version>
+    <time>1207830582</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>61045c4c2aa15a31c69b95a15ad5d0a8</srcmd5>
+    <version>1.7</version>
+    <time>1208696204</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7fef8421ec38200b5ac227789c713726</srcmd5>
+    <version>1.8</version>
+    <time>1209133857</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e444337710f0e99823a0341a2324bd26</srcmd5>
+    <version>1.9</version>
+    <time>1216951429</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>03f22a38d0a85409376e0093464a83c5</srcmd5>
+    <version>1.10</version>
+    <time>1223388214</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>52ff0cbf8cc1b303027788fc414afc6e</srcmd5>
+    <version>1.10</version>
+    <time>1224692076</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>7973958957fb58e7a2ba4541c9fc6bca</srcmd5>
+    <version>1.10</version>
+    <time>1231436274</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>7973958957fb58e7a2ba4541c9fc6bca</srcmd5>
+    <version>1.10</version>
+    <time>1231436274</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c2344cf2bc5510c174f0b9e1f11d6f3a</srcmd5>
+    <version>1.15</version>
+    <time>1258366738</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libidn based on submit request 24451 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>a0a3a4de3d2e0587e3a90aa8242ec29e</srcmd5>
+    <version>1.15</version>
+    <time>1263481838</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libidn based on submit request 29089 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>db6a60a2f57876cb1e669cd7019bf182</srcmd5>
+    <version>1.15</version>
+    <time>1268924606</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>db6a60a2f57876cb1e669cd7019bf182</srcmd5>
+    <version>1.15</version>
+    <time>1278667359</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>db6a60a2f57876cb1e669cd7019bf182</srcmd5>
+    <version>1.15</version>
+    <time>1278678590</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="9">
+    <srcmd5>db6a60a2f57876cb1e669cd7019bf182</srcmd5>
+    <version>1.15</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>65f3800344e179d28809e1dbaac94ec0</srcmd5>
+    <version>1.22</version>
+    <time>1304925358</time>
+    <user>saschpe</user>
+    <comment>- Upgrade to version 1.22
+  * Fix memory leak when idna_to_ascii_4i fails
+  * Fix ToUnicode case-insensitivity bug
+  *  Avoid some warnings to make it build with modern gcc on amd64. (forwarded request 69826 from elvigia)</comment>
+    <requestid>69827</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>120153030ffac9b6c7b4e064f95e510a</srcmd5>
+    <version>1.22</version>
+    <time>1304925370</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69827
+</comment>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>0bb8d27d72be2b486ff5b28918511608</srcmd5>
+    <version>1.22</version>
+    <time>1308041030</time>
+    <user>saschpe</user>
+    <comment>Fixed typo in description of libidn.spec (forwarded request 73239 from aturrini)</comment>
+    <requestid>73357</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>956298d0ebc14f44a6f1a496d1a73210</srcmd5>
+    <version>1.22</version>
+    <time>1308041044</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73357
+</comment>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>3710c2c54791dc05220d62ab833fd90f</srcmd5>
+    <version>1.22</version>
+    <time>1317543339</time>
+    <user>lrupp</user>
+    <comment>- Do not build gtk-docs 
+- make check hangs in qemu-arm, workaround the bugs. (forwarded request 85845 from elvigia)</comment>
+    <requestid>85847</requestid>
+  </revision>
+  <revision rev="29" vrev="8">
+    <srcmd5>3710c2c54791dc05220d62ab833fd90f</srcmd5>
+    <version>1.22</version>
+    <time>1319182103</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="30" vrev="9">
+    <srcmd5>12dd955e100229295d472c3c26462a86</srcmd5>
+    <version>1.22</version>
+    <time>1323192253</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>f6c2dd3a6a73c98495f8530adb69abf6</srcmd5>
+    <version>1.23</version>
+    <time>1325007400</time>
+    <user>coolo</user>
+    <comment>- fix URL (forwarded request 98241 from elvigia)</comment>
+    <requestid>98242</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>a570d5fa000688f52fe85855edde5113</srcmd5>
+    <version>1.23</version>
+    <time>1325348375</time>
+    <user>coolo</user>
+    <comment>- Remove redundant tags/sections</comment>
+    <requestid>98399</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>796648b886317b9a50e07fceec6ca326</srcmd5>
+    <version>1.24</version>
+    <time>1337579811</time>
+    <user>coolo</user>
+    <comment>(hopefully) final correction of the license header (forwarded request 120836 from NicoK)</comment>
+    <requestid>120912</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>9b42bf52c820a8eae96db283c5b192c6</srcmd5>
+    <version>1.25</version>
+    <time>1338971471</time>
+    <user>coolo</user>
+    <comment>-Update to 1.25:
+	** MSVC: Build fixes related to _GL_ATTRIBUTE_CONST and
+	   _GL_ATTRIBUTE_PURE.
+	   Reported by Bartosz Brachaczek &lt;b.brachaczek@gmail.com&gt;.
+	** examples: Fix compiler warning about ignoring return value from
+	   fgets.
+	** tests: Ship with a valgrind suppressions file for the strlen
+	   issue.
+	** Update gnulib files and translations.
+	** API and ABI is backwards compatible with the previous version.</comment>
+    <requestid>123626</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>9b42bf52c820a8eae96db283c5b192c6</srcmd5>
+    <version>1.25</version>
+    <time>1340183596</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>469581fd3d9692eb852033aec2b4fc0b</srcmd5>
+    <version>1.25</version>
+    <time>1348646706</time>
+    <user>coolo</user>
+    <comment>- Employ shared library package naming</comment>
+    <requestid>135511</requestid>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>469581fd3d9692eb852033aec2b4fc0b</srcmd5>
+    <version>1.25</version>
+    <time>1359109289</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="8">
+    <srcmd5>469581fd3d9692eb852033aec2b4fc0b</srcmd5>
+    <version>1.25</version>
+    <time>1379662979</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>08e30da8cdc8c583c307f52520cb3f9d</srcmd5>
+    <version>1.28</version>
+    <time>1380172109</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>200305</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>15d0b25d5cdbbfa0595f8446c8e3b80c</srcmd5>
+    <version>1.28</version>
+    <time>1387485456</time>
+    <user>coolo</user>
+    <comment>- disable gpg-offline again to avoid build cycles
+
+- Verify source tarball via gpg-offline 
+
+- Fix gnulib test failure due to SUSE_ASNEEDED.
+
+  * MSVC: Build fixes related to _GL_ATTRIBUTE_CONST and
+    _GL_ATTRIBUTE_PURE.
+    Reported by Bartosz Brachaczek &lt;b.brachaczek@gmail.com&gt;.
+  * examples: Fix compiler warning about ignoring return value from
+    fgets.
+  * tests: Ship with a valgrind suppressions file for the strlen
+    issue.
+  * Update gnulib files and translations.
+  * API and ABI is backwards compatible with the previous version.</comment>
+    <requestid>211683</requestid>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>15d0b25d5cdbbfa0595f8446c8e3b80c</srcmd5>
+    <version>1.28</version>
+    <time>1409301592</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>e85fb7826e334e96d9f19ff204188b0e</srcmd5>
+    <version>1.29</version>
+    <time>1414218766</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257829</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>ebf2b7d7dc1656c32e118353e9eab0dd</srcmd5>
+    <version>1.30</version>
+    <time>1426485246</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 1.30:
+  * punycode.{c,h} files were reimported
+- Cleanup with spec-cleaner</comment>
+    <requestid>290654</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>9d91e70542620aecf0497bd675ee23f6</srcmd5>
+    <version>1.31</version>
+    <time>1437059734</time>
+    <user>coolo</user>
+    <comment>- Add Apache-2.0 license to the license line. Under this is the
+  java code, but we don't build it -&gt; just the sources license
+
+- Version bump to 1.31:
+  * Fixes bnc#923241 CVE-2015-2059 out-of-bounds read with stringprep on
+    invalid UTF-8
+  * Few other triv changes</comment>
+    <requestid>315649</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0d7bb7d18c656118e8e8275958348f38</srcmd5>
+    <version>1.32</version>
+    <time>1439631506</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322607</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>2259757f9b8df98382b3f66bb5c8e4b8</srcmd5>
+    <version>1.33</version>
+    <time>1469742173</time>
+    <user>dimstar_suse</user>
+    <comment>- libidn 1.33 bnc#990189 CVE-2015-8948 CVE-2016-6262 bnc#990191 CVE-2016-6263:
+  * libidn: Fix out-of-bounds stack read in idna_to_ascii_4i.
+  * idn: Solve out-of-bounds-read when reading one zero byte as input.
+  * libidn: stringprep_utf8_nfkc_normalize reject invalid UTF-8.</comment>
+    <requestid>412739</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>f4c721fc4e6705619cbfc2dcd4d5c5d2</srcmd5>
+    <version>1.33</version>
+    <time>1471009019</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>417006</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>80f11fbe5f8342c61163156bba2c3fce</srcmd5>
+    <version>1.33</version>
+    <time>1492417311</time>
+    <user>maxlin_factory</user>
+    <comment>- Add patches to build with gcc7:
+  * libidn-gcc7-part1.patch</comment>
+    <requestid>485065</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>7c7fbf04c276bca21b776fa98bb36b38</srcmd5>
+    <version>1.33</version>
+    <time>1519902351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580134</requestid>
+  </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>ed3b038d241c5da6ab1113728cd4767e</srcmd5>
+    <version>1.33</version>
+    <time>1522317075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591041</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>5b28589031c80a884d345a1aabe4dcf9</srcmd5>
+    <version>1.34</version>
+    <time>1523875564</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592794</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>0d54ecf29171afd1bb3e8a8f2b6145af</srcmd5>
+    <version>1.35</version>
+    <time>1527932968</time>
+    <user>dimstar_suse</user>
+    <comment>- libidn 1.35:
+  * Reflect ABI/API breakage in version 1.34
+  * Added new gnulib files to repository
+  * Fix build issues introduced in 1.34</comment>
+    <requestid>610020</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>3b4bdf52f0165b13587377fc8f75dc84</srcmd5>
+    <version>1.35</version>
+    <time>1552380473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682732</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>606c419fd7cfb00e1c46ce6e0b5b345d</srcmd5>
+    <version>1.35</version>
+    <time>1560337259</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706040</requestid>
+  </revision>
+</revisionlist>

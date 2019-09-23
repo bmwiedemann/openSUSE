@@ -1,0 +1,177 @@
+-------------------------------------------------------------------
+Mon Jun 15 10:22:31 UTC 2015 - schwab@suse.de
+
+- Run specfile through spec-cleaner
+- Build with %{optflags}
+- Force gnu89 inline semantics
+- jfbterm-0.4.7-AUTHORS-encoding.patch: remove backup file
+
+-------------------------------------------------------------------
+Thu Jan 10 12:21:06 UTC 2013 - belphegor@belbel.or.jp
+
+- corrected font paths
+
+-------------------------------------------------------------------
+Fri Mar 25 20:04:32 UTC+8 2012 - hillwood@linuxfans.org
+
+- fix Source URLs
+
+-------------------------------------------------------------------
+Fri Mar 25 20:04:32 UTC+8 2012 - hillwood@linuxfans.org
+
+- add a man page
+- fix AUTHORS encoding to UTF-8
+
+-------------------------------------------------------------------
+Sun Mar 25 10:48:32 UTC+8 2012 - swyear@yahoo.com.tw
+
+- Fix build for X86_64
+
+-------------------------------------------------------------------
+Fri Mar 23 23:50:47 UTC+8 2012 - hillwood@linuxfans.org
+
+- Update to 0.4.7
+  * Fix local exploit
+- Fix build for openSUSE 12.2
+
+-------------------------------------------------------------------
+Wed Dec 21 10:31:38 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Thu Dec  1 16:51:14 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Sep  9 18:41:43 UTC 2010 - aj@suse.de
+
+- BuildRequire utempter-devel
+
+-------------------------------------------------------------------
+Sat Apr 26 10:45:11 CEST 2008 - coolo@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Wed Sep 26 17:54:21 CEST 2007 - mfabian@suse.de
+
+- Bugzilla #309094: fonts are now in /usr/share/fonts.
+
+-------------------------------------------------------------------
+Wed Sep 26 12:16:10 CEST 2007 - mfabian@suse.de
+
+- Bugzilla #309093: don't package terminfo entry, it is already
+  in the terminfo package.
+
+-------------------------------------------------------------------
+Thu Mar 29 17:45:46 CEST 2007 - rguenther@suse.de
+
+- add ncurses-devel BuildRequires 
+
+-------------------------------------------------------------------
+Fri May 19 15:30:38 CEST 2006 - ro@suse.de
+
+- fix build on ppc64 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:02 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Sep 23 01:58:50 CEST 2005 - ro@suse.de
+
+- fix implicit declaration 
+
+-------------------------------------------------------------------
+Thu Oct 30 14:19:24 CET 2003 - ro@suse.de
+
+- package according to permissions.secure and add %run_permissions
+- no root for build
+
+-------------------------------------------------------------------
+Tue Sep 16 22:59:47 CEST 2003 - mfabian@suse.de
+
+- Bugzilla #31101: fix attributes of /usr/bin/jfbterm to agree
+  with /etc/permissions*. Now set to 
+      "%attr(6755,root,tty) /usr/bin/jfbterm"
+
+-------------------------------------------------------------------
+Thu Aug  1 15:58:58 CEST 2002 - mfabian@suse.de
+
+- add /bin/cat /usr/bin/grep to Prereq:
+
+-------------------------------------------------------------------
+Thu Feb  7 15:52:32 CET 2002 - mfabian@suse.de
+
+- canuum really needs the /etc/termcap entry, therefore I added
+  add a "%post" script again which adds termcap entry if
+  the file etc/termcap exists and doesn't yet have an entry for
+  jfbterm
+
+-------------------------------------------------------------------
+Sat Feb  2 19:43:54 CET 2002 - ro@suse.de
+
+- call automake first to fix build 
+
+-------------------------------------------------------------------
+Thu Jan 31 14:13:49 CET 2002 - okir@suse.de
+
+- various security fixes/changes:
+    *	open framebuffer and /dev/console as the very first
+        thing in main(), then drop privs
+    *	use utempter to add/remove utmp entry
+    *	close all open fds > 2 before executing the shell.
+	NB: jfbterm would pass the framebuffer fd to the user's
+	shell.
+
+-------------------------------------------------------------------
+Mon May  7 20:22:18 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Tue Apr 10 13:22:16 CEST 2001 - mfabian@suse.de
+
+- remove "%post" script to add /etc/termcap entry. It is not
+  needed and causes problems when the file /etc/termcap is not
+  yet installed.
+
+-------------------------------------------------------------------
+Sat Apr  7 12:24:25 CEST 2001 - mfabian@suse.de
+
+- forgot to remove "Prereq: /usr/bin/tic"
+
+-------------------------------------------------------------------
+Fri Mar 30 18:57:09 CEST 2001 - uli@suse.de
+
+- disabled direct VGA access for non-x86 archs
+
+-------------------------------------------------------------------
+Tue Mar 27 14:24:57 CEST 2001 - mfabian@suse.de
+
+- don't call "tic" in %post, pack terminfo entry-description
+  into the rpm instead
+
+-------------------------------------------------------------------
+Wed Feb 14 19:27:57 CET 2001 - mfabian@suse.de
+
+- fix compile problem due to "missing linux/config.h"
+
+-------------------------------------------------------------------
+Wed Sep 20 12:38:56 CEST 2000 - mfabian@suse.de
+
+- new package jfbterm, version 0.3.10
+
+- Included fix for buffer overflow in tapp_init(main.c) pointed out
+  by Fumitoshi UKAI <ukai@debian.org> 
+
+- The original version refers to terminfo entry 'kon', but the SuSE
+  rpm version refers to the terminfo entry 'jfbterm', which is
+  actually the same as 'kon' apart from the different name.
+  The terminfo.jfbterm file has been copied from terminfo.kon and
+  only the name has been changed.
+
+- fixed font paths and font file names in config file.

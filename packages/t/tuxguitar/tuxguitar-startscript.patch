@@ -1,0 +1,143 @@
+diff -ru tuxguitar-1.4-src.org/misc/tuxguitar.sh tuxguitar-1.4-src/misc/tuxguitar.sh
+--- tuxguitar-1.4-src.org/misc/tuxguitar.sh
++++ tuxguitar-1.4-src/misc/tuxguitar.sh
+@@ -65,6 +65,8 @@
+     [ -r "$t" ] && f="$t"
+     t="/usr/lib/java/swt.jar"
+     [ -r "$t" ] && f="$t"
++    t="/usr/lib64/java/swt.jar"
++    [ -r "$t" ] && f="$t"
+     t="/usr/lib/java/swt-gtk-3.5.1.jar"
+     [ -r "$t" ] && f="$t"
+     t="/usr/share/java/swt-gtk-3.4.jar"
+@@ -114,7 +116,7 @@
+ 
+ # java
+     [ -z ${JAVA_HOME} ] && t=$(java_guess_) && [ -d "$t" ] && JAVA_HOME="$t"
+-    if [ -d "${JAVA_HOME}" ] ; then
++    if [ -d "${JAVA_HOME}/jre/bin/java" ] ; then
+         export JAVA_HOME
+         JAVA="${JAVA:=${JAVA_HOME}/jre/bin/java}"
+         [ -x ${JAVA} ] && export JAVA
+@@ -123,14 +125,11 @@
+         export JAVA
+     fi
+ 
+-# mozilla
+-    [ -z ${MOZILLA_FIVE_HOME} ] \
+-	&& t=$(mozilla_guess_) && [ -d "$t" ] && MOZILLA_FIVE_HOME="$t"
+-    if [ -d "$MOZILLA_FIVE_HOME" ] ; then
+-        export MOZILLA_FIVE_HOME
+-        export LD_LIBRARY_PATH="$MOZILLA_FIVE_HOME"
+-    else
+-        echo '$MOZILLA_FIVE_HOME not valid : check doc shipped w/ tuxguitar'
++    # mozilla
++    if [ -z $MOZILLA_FIVE_HOME ]; then
++	MOZILLA_FIVE_HOME=/usr/lib64/firefox
++	[ ! -d ${MOZILLA_FIVE_HOME} ] && MOZILLA_FIVE_HOME=/usr/lib64/mozilla
++	[ ! -d ${MOZILLA_FIVE_HOME} ] && MOZILLA_FIVE_HOME=/usr/lib64/iceweasel
+     fi
+ 
+     [ ! -z ${DEBUG} ] && echo "# MOZILLA_FIVE_HOME=${MOZILLA_FIVE_HOME}"
+@@ -144,7 +143,7 @@
+     local PACKAGE_HOME=${PACKAGE_HOME:=/usr/share/${PACKAGE}/}
+ #   local PACKAGE_MAIN=${PACKAGE_MAIN:=org.herac.tuxguitar.gui.TGMain}
+     local PACKAGE_MAIN=${PACKAGE_MAIN:=org.herac.tuxguitar.app.TGMain}
+-    local PACKAGE_LIB=${PACKAGE_LIB:=/usr/lib/jni}
++    local PACKAGE_LIB=${PACKAGE_LIB:=/usr/lib64/tuxguitar}
+ # java env
+     JAVA=${JAVA:=java}
+     CLASSPATH=${CLASSPATH}
+@@ -154,10 +153,78 @@
+     [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
+     t="/usr/share/java/itext.jar"
+     [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/${PACKAGE}-editor-utils.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/${PACKAGE}-gm-utils.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/${PACKAGE}-lib.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/${PACKAGE}-ui-toolkit.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/${PACKAGE}-ui-toolkit-swt.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    
++    # Plugins
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-alsa.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-ascii.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-awt-graphics.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-browser-ftp.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-community.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-compat.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-converter.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-fluidsynth.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-gervill.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-gm-settings.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-gpx.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-gtp.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-gtp-ui.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-image.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-jack.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-jack-ui.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-jsa.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-lilypond.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-midi.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-musicxml.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-oss.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-pdf.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-ptb.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-svg.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-tef.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-tray.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-tuner.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++    t=${PACKAGE_HOME}/plugins/${PACKAGE}-viewer.jar
++    [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
+     t=$(swt_guess_)
+     [ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
+ 
+-    JAVA_FLAGS=${JAVA_FLAGS:="-Xms128m -Xmx128m"}
++    JAVA_FLAGS=${JAVA_FLAGS:="-Xms128m -Xmx512m"}
+     JAVA_FLAGS=" ${JAVA_FLAGS} \
+         -Djava.library.path=${PACKAGE_LIB} \
+         -D${PACKAGE}.share.path=/usr/share/${PACKAGE} \
+@@ -170,6 +237,12 @@
+     [ ! -z ${DEBUG} ] && ${JAVA} -version
+     [ ! -z ${DEBUG} ] && ${JAVA} ${JAVA_FLAGS} ${PACKAGE_MAIN} --version
+ 
++    SWT_GTK3=0
++    export SWT_GTK3
++    
++    # Uncomment for debugging:
++    #echo "${JAVA} ${JAVA_FLAGS} ${PACKAGE_MAIN} $arg \"$@\""
++
+     ${JAVA} ${JAVA_FLAGS} ${PACKAGE_MAIN} $arg "$@"
+ }
+ 

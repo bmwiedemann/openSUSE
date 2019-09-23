@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Mon Apr  1 23:15:55 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim conjecture from description.
+
+-------------------------------------------------------------------
+Mon Jan 21 15:28:32 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Add maven pom file and clean-up the spec file
+
+-------------------------------------------------------------------
+Tue May 15 10:34:34 UTC 2018 - fstrba@suse.com
+
+- Build with source and target 8 to prepare for a possible removal
+  of 1.6 compatibility
+- Run fdupes on documentation
+
+-------------------------------------------------------------------
+Thu Sep  7 11:49:25 UTC 2017 - fstrba@suse.com
+
+- Build with java source and target versions 1.6
+  * fixes build with jdk9
+
+-------------------------------------------------------------------
+Tue Jul  8 08:23:35 UTC 2014 - tchvatal@suse.com
+
+- Redo the bytcode disabling properly.
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Apr 14 17:24:13 UTC 2014 - darin@darins.net
+
+- disable bytecode test on SLES 
+
+-------------------------------------------------------------------
+Fri Oct 25 08:30:33 UTC 2013 - mvyskocil@suse.com
+
+- really apply CVE-2012-5783 patch
+- build with java 6 and higher
+
+-------------------------------------------------------------------
+Thu Mar 28 10:54:13 UTC 2013 - mvyskocil@suse.com
+
+- enhance fix of bnc#803332 / CVE-2012-5783
+  * add a check for subjectAltNames for instance
+
+-------------------------------------------------------------------
+Thu Feb 14 09:10:48 UTC 2013 - mvyskocil@suse.com
+
+- fix bnc#803332: no ssl certificate hostname checking (CVE-2012-5783)
+  * commons-httpclient-CVE-2012-5783.patch
+- add jakarta- compat symlinks
+
+-------------------------------------------------------------------
+Sun Feb  3 20:07:59 UTC 2013 - p.drouand@gmail.com
+
+- Initial release
+

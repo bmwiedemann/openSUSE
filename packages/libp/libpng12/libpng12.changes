@@ -1,0 +1,667 @@
+-------------------------------------------------------------------
+Wed Jul 17 06:52:17 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.2.59
+  Added png_check_chunk_length() function, and check all chunks except
+    IDAT against the default 8MB limit; check IDAT against the maximum
+    size computed from IHDR parameters (Fixes CVE-2017-12652).
+  Initialize memory allocated by png_inflate to zero, using memset, to
+    stop an oss-fuzz "use of uninitialized value" detection in png_set_text_2()
+    due to truncated iTXt or zTXt chunk.
+
+-------------------------------------------------------------------
+Wed Jan 31 10:00:41 UTC 2018 - pgajdos@suse.com
+
+- check with -j1, be explicit
+
+-------------------------------------------------------------------
+Tue Jan 30 21:58:19 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group and grammar issues.
+
+-------------------------------------------------------------------
+Mon Jan  2 11:19:33 UTC 2017 - pgajdos@suse.com
+
+- updated to 1.2.57: fixes CVE-2016-10087
+
+-------------------------------------------------------------------
+Thu Dec 17 16:06:22 UTC 2015 - pgajdos@suse.com
+
+- updated to 1.2.56:
+  Fixed an out-of-range read in png_check_keyword() (Bug report from
+    Qixue Xiao, CVE-2015-8540).
+  Added keyword checks to pngset.c
+
+-------------------------------------------------------------------
+Thu Dec  3 15:21:37 UTC 2015 - pgajdos@suse.com
+
+- updated to 1.2.55:
+  Avoid potential pointer overflow in png_handle_iTXt(), png_handle_zTXt(),
+    png_handle_sPLT(), and png_handle_pCAL() (Bug report by John Regehr).
+  Fixed incorrect implementation of png_set_PLTE() that uses png_ptr
+    not info_ptr, that left png_set_PLTE() open to the CVE-2015-8126
+    vulnerability.
+
+-------------------------------------------------------------------
+Fri Nov 13 07:59:01 UTC 2015 - pgajdos@suse.com
+
+- updated to 1.2.54
+
+-------------------------------------------------------------------
+Fri Aug  7 14:31:26 UTC 2015 - pgajdos@suse.com
+
+- build in build section
+
+-------------------------------------------------------------------
+Fri Feb 27 07:48:23 UTC 2015 - pgajdos@suse.com
+
+- updated to 1.2.53:
+  Issue a png_error() instead of a png_warning() when width is
+    potentially too large for the architecture, in case the calling
+    application has overridden the default 1,000,000-column limit
+    (fixes CVE-2014-9495 and CVE-2015-0973).
+  Display user limits in the output from pngtest.
+  Changed PNG_USER_CHUNK_MALLOC_MAX from unlimited to 8,000,000.
+    This can only be changed at library-build time.  It only
+    affects the maximum memory that can be allocated to an
+    ancillary chunk; it does not limit the size of IDAT
+    data, which is instead limited by PNG_USER_WIDTH_MAX.
+
+-------------------------------------------------------------------
+Mon Jan 19 15:04:59 UTC 2015 - olaf@aepfle.de
+
+- Fix CVE-2013-7354.patch, include limits.h for INT_MAX
+
+-------------------------------------------------------------------
+Thu Nov 20 20:13:50 UTC 2014 - pgajdos@suse.com
+
+- updated to 1.2.52:
+  * Avoid out-of-bounds memory access while checking version string.
+
+-------------------------------------------------------------------
+Tue Apr 22 14:12:09 UTC 2014 - pgajdos@suse.com
+
+- security update:
+  * CVE-2013-7353.patch [bnc#873124]
+  * CVE-2013-7354.patch [bnc#873123]
+
+-------------------------------------------------------------------
+Fri Feb  7 07:43:01 UTC 2014 - pgajdos@suse.com
+
+- updated to 1.2.51:
+  Ignore, with a warning, out-of-range value of num_trans in png_set_tRNS().
+  Replaced AM_CONFIG_HEADER(config.h) with
+     AC_CONFIG_HEADERS([config.h]) in configure.ac
+  Changed default value of PNG_USER_CACHE_MAX from 0 to 32767 in pngconf.h.
+  Avoid a possible memory leak in contrib/gregbook/readpng.c
+  Revised libpng.3 so that "doclifter" can process it.
+  Changed '"%s"m' to '"%s" m' in png_debug macros to improve portability
+    among compilers.
+  Rebuilt the configure scripts with autoconf-2.69 and automake-1.14.1
+  Removed potentially misleading warning from png_check_IHDR().
+  Quiet set-but-not-used warnings in pngset.c
+  Quiet an uninitialized memory warning from VC2013 in png_get_png().
+  Quiet unused variable warnings from clang by porting PNG_UNUSED() from
+    libpng-1.4.6.
+  Added -DZ_SOLO to CFLAGS in contrib/pngminim/*/makefile
+  Added an #ifdef PNG_FIXED_POINT_SUPPORTED/#endif in pngset.c
+
+-------------------------------------------------------------------
+Wed Apr 17 20:38:16 UTC 2013 - coolo@suse.com
+
+- add conflicts in -32bit package
+
+-------------------------------------------------------------------
+Mon Apr 15 13:01:16 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Oct 24 19:01:46 UTC 2012 - jengelh@inai.de
+
+- Add missing baselib requires for compat-devel-32bit
+
+-------------------------------------------------------------------
+Wed Jul 11 08:14:32 UTC 2012 - pgajdos@suse.com
+
+- updated to 1.2.50:
+  Changed "a+w" to "u+w" in Makefile.in to fix CVE-2012-3386.
+
+-------------------------------------------------------------------
+Thu Mar 29 13:23:52 UTC 2012 - pgajdos@suse.com
+
+- updated to 1.2.49: [bnc#754745]
+  Revised png_set_text_2() to avoid potential memory corruption (fixes
+    CVE-2011-3048).
+  Prevent PNG_EXPAND+PNG_SHIFT doing the shift twice.
+
+-------------------------------------------------------------------
+Wed Mar 14 11:22:02 UTC 2012 - pgajdos@suse.com
+
+- updated to 1.2.48:
+  * fixed CVE-2011-3045 [bnc#752008]
+
+-------------------------------------------------------------------
+Mon Feb 20 09:33:11 UTC 2012 - pgajdos@suse.com
+
+- updated to 1.2.47:
+  * fixed CVE-2011-3026 [bnc#747311]
+
+-------------------------------------------------------------------
+Thu Dec  1 10:47:40 UTC 2011 - idoenmez@suse.de
+
+- Name field shouldn't contain a macro 
+
+-------------------------------------------------------------------
+Thu Dec  1 10:26:12 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Oct  5 14:00:55 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %configure macro
+
+-------------------------------------------------------------------
+Tue Jul 12 14:51:49 UTC 2011 - pgajdos@novell.com
+
+- updated to 1.2.46:
+  * fixed CVE-2011-2501 [bnc#702578]
+
+-------------------------------------------------------------------
+Mon Aug 30 14:26:10 UTC 2010 - coolo@novell.com
+
+- fix baselibs.conf after previous change
+
+-------------------------------------------------------------------
+Thu Jul 29 15:09:48 CEST 2010 - pgajdos@suse.cz
+
+- add devel packages to baselibs.conf [bnc#625883]
+
+-------------------------------------------------------------------
+Mon Jun 28 18:43:48 CEST 2010 - pgajdos@suse.cz
+
+- updated to 1.2.44: fixed libpng overflow (CVE-2010-1205)
+  and memory leak [bnc#617866]
+
+-------------------------------------------------------------------
+Fri Jun  4 13:11:14 UTC 2010 - coolo@novell.com
+
+- remove the devel packages from baselibs.conf, not convinced of
+  their usefulness
+
+-------------------------------------------------------------------
+Sat Apr 24 11:38:21 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Thu Feb 25 09:55:15 CET 2010 - pgajdos@suse.cz
+
+- updated to 1.2.43 (fixes [bnc#585403]):
+ * Removed "#define PNG_NO_ERROR_NUMBERS" that was inadvertently added
+    to pngconf.h in version 1.2.41.
+ * Removed leftover "-DPNG_CONFIGURE_LIBPNG" from scripts/makefile.darwin
+    and contrib/pngminim/*/makefile
+ * Relocated png_do_chop() to its original position in pngrtran.c; the
+    change in version 1.2.41beta08 caused transparency to be handled wrong
+    in some 16-bit datastreams (Yusaku Sugai).
+ * Renamed libpng-pc.in back to libpng.pc.in and revised CMakeLists.txt
+    (revising changes made in 1.2.41)
+ * Swapped PNG_UNKNOWN_CHUNKS_SUPPORTED and PNG_HANDLE_AS_UNKNOWN_SUPPORTED
+    in pngset.c to be consistent with other changes in version 1.2.38.
+ * Avoid deprecated references to png_ptr-io_ptr and png_ptr->error_ptr
+    in pngtest.c
+
+-------------------------------------------------------------------
+Mon Dec 14 20:31:24 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Mon Dec  7 09:43:11 CET 2009 - pgajdos@suse.cz
+
+- updated to 1.2.41: 
+  contains numerous cleanups, some new compile-time warnings about 
+  direct struct access (define PNG_NO_PEDANTIC_WARNINGS to enable), 
+  a new xcode build project, and a minor performance improvement 
+  (avoid building 16-bit gamma tables when not needed)
+
+-------------------------------------------------------------------
+Tue Nov 24 14:16:32 CET 2009 - pgajdos@suse.cz
+
+- updated to 1.2.40:
+  Removed an extra png_debug() recently added to png_write_find_filter().
+  Fixed incorrect #ifdef in pngset.c regarding unknown chunk support.
+  Various bugfixes and improvements to CMakeLists.txt (Philip Lowman)
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:28 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Thu Aug 13 15:56:07 CEST 2009 - pgajdos@suse.cz
+
+- updated to 1.2.39:
+  * Added a prototype for png_64bit_product() in png.c
+  * Avoid a possible NULL dereference in debug build, 
+    in png_set_text_2()
+  * Relocated new png_64_bit_product() prototype into png.h
+  * Replaced *.tar.lzma with *.txz in distribution.
+  * Reject attempt to write iCCP chunk with negative embedded 
+    profile length.
+
+-------------------------------------------------------------------
+Mon Jul 20 13:59:43 CEST 2009 - pgajdos@suse.cz
+
+- updated to 1.2.38:
+  * Revised libpng*.txt and libpng.3 to mention calling png_set_IHDR()
+    multiple times and to specify the sample order in the tRNS chunk,
+    because the ISO PNG specification has a typo in the tRNS table.
+  * Changed several PNG_UNKNOWN_CHUNK_SUPPORTED to
+    PNG_HANDLE_AS_UNKNOWN_SUPPORTED, to make the png_set_keep mechanism
+    available for ignoring known chunks even when not saving unknown chunks.
+  * Adopted preference for consistent use of "#ifdef" and "#ifndef" versus
+    "#if defined()" and "if !defined()" where possible.
+  * Added PNG_NO_HANDLE_AS_UNKNOWN in the PNG_LEGACY_SUPPORTED block of
+    pngconf.h, and moved the various unknown chunk macro definitions
+    outside of the PNG_READ|WRITE_ANCILLARY_CHUNK_SUPPORTED blocks.
+
+-------------------------------------------------------------------
+Thu Jun  4 15:16:17 CEST 2009 - pgajdos@suse.cz
+
+- updated to 1.2.37:
+  * fixed bug with new png_memset() of the big_row_buffer
+
+-------------------------------------------------------------------
+Tue May 12 17:38:21 CEST 2009 - pgajdos@suse.cz
+
+- updated to 1.2.36 (see CHANGES)
+
+-------------------------------------------------------------------
+Mon Feb 23 11:20:10 CET 2009 - pgajdos@suse.cz
+
+- fixes possible double free [bnc#472745]
+  (CVE-2009-0040)
+
+-------------------------------------------------------------------
+Mon Jan 19 09:18:12 CET 2009 - pgajdos@suse.cz
+
+- updated to 1.2.34:
+  * fixes CVE-2008-3964 (removed CVE-2008-3964.patch)
+
+-------------------------------------------------------------------
+Tue Jan 13 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Sep 15 17:46:06 CEST 2008 - pgajdos@suse.cz
+
+- fixed CVE-2008-3964 [bnc#424739]
+  * CVE-2008-3964.patch
+
+-------------------------------------------------------------------
+Thu Sep 11 14:23:49 CEST 2008 - pgajdos@suse.cz
+
+- updated to version 1.2.31:
+  * coding bugfixes and enhancements
+
+-------------------------------------------------------------------
+Mon Sep  1 14:08:17 CEST 2008 - aj@suse.de
+
+- Do not package la files.
+
+-------------------------------------------------------------------
+Mon Jun 23 19:17:51 CEST 2008 - pgajdos@suse.cz
+
+- updated to 1.2.29:
+  * fixes to the configure-related build-scripts
+  * security fix that affects programs that attempt to do 
+    special handling of unknown PNG chunks (presumably very 
+    few such programs), along with a reversion to previous 
+    behavior for handling of images with out-of-range tRNS-chunk 
+    values [bnc#378634]
+  * fix for unintentional gray-to-RGB conversion in 
+    png_set_expand_gray_1_2_4_to_8()
+  * various other minor fixes
+- removed makefile-am.patch, issue fixed upstream
+
+-------------------------------------------------------------------
+Sun May 11 12:16:53 CEST 2008 - coolo@suse.de
+
+- fix rename of xxbit packages
+
+-------------------------------------------------------------------
+Tue Apr 22 15:17:41 CEST 2008 - pgajdos@suse.cz
+
+- $(ECHO) substituted by echo in Makefile.in -- fixes package 
+  build in beta (makefile-am.patch)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Apr  3 13:05:17 CEST 2008 - pgajdos@suse.cz
+
+- updated to 1.2.26:
+  * fixed minor coding errors that could lead to crashes in 
+    exceptional cases 
+
+-------------------------------------------------------------------
+Thu Dec  6 02:20:12 CET 2007 - mrueckert@suse.de
+
+- added provides/obsoletes for the old package
+
+-------------------------------------------------------------------
+Fri Nov 30 13:13:50 CET 2007 - nadvornik@suse.cz
+
+- updated to 1.2.23:
+  * more sanity checks, fixes [#332249]
+- adjusted to Shared Library Policy:
+  * renamed package libpng to libpng12-0
+  * created compatibility package libpng3
+
+-------------------------------------------------------------------
+Wed Jul 11 15:27:52 CEST 2007 - nadvornik@suse.cz
+
+- updated to 1.2.18:
+  * security fixes merged upstream
+
+-------------------------------------------------------------------
+Thu Mar 29 09:20:57 CEST 2007 - aj@suse.de
+
+- Add zlib-devel to BuildRequires.
+
+-------------------------------------------------------------------
+Thu Nov 23 18:47:29 CET 2006 - nadvornik@suse.cz
+
+- fixed crash on malformed sPLT chunks CVE-2006-5793 [#219007]
+
+-------------------------------------------------------------------
+Mon Jul 17 17:30:52 CEST 2006 - nadvornik@suse.cz
+
+- make sure PNG_NO_ASSEMBLER_CODE is used consistently
+
+-------------------------------------------------------------------
+Thu Jun 29 19:30:05 CEST 2006 - nadvornik@suse.cz
+
+- updated to 1.2.12:
+  * fixed possible buffer overflow [#189241]
+
+-------------------------------------------------------------------
+Wed Jun 21 18:21:29 CEST 2006 - nadvornik@suse.cz
+
+- updated to 1.2.10:
+  * use autoconf
+  * many bugfixes
+- libpng12-config no longer gives -Wl,-rpath,/usr/lib [#168627]
+- spec file cleanup
+
+-------------------------------------------------------------------
+Fri Feb 24 10:53:43 CET 2006 - nadvornik@suse.cz
+
+- removed libpng-64bit.diff [#153106]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:25 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 16:30:10 CET 2006 - nadvornik@suse.cz
+
+- compile with -fstack-protector
+
+-------------------------------------------------------------------
+Mon Oct 10 14:59:41 CEST 2005 - nadvornik@suse.cz
+
+- fixed incorrect inline asm usage
+
+-------------------------------------------------------------------
+Thu May 19 03:14:59 CEST 2005 - ro@suse.de
+
+- fix libdir in pkgconfig file libpng.pc 
+
+-------------------------------------------------------------------
+Thu Jan 20 17:34:57 CET 2005 - nadvornik@suse.cz
+
+- updated to 1.2.8:
+  * fixed crash of applications that strip the alpha channel
+  * fixed invalid zlib header within the PNG datastream
+
+-------------------------------------------------------------------
+Mon Sep 27 10:45:21 CEST 2004 - sf@suse.de
+
+-  fixed problem with wrong assumption for long on 64bit archs
+   which prevents khunphan from working (#45738)
+	
+
+-------------------------------------------------------------------
+Wed Aug 25 11:11:53 CEST 2004 - kukuk@suse.de
+
+- Avoid /bin/sh PreRequires
+
+-------------------------------------------------------------------
+Mon Aug 16 12:19:02 CEST 2004 - nadvornik@suse.cz
+
+- updated to 1.2.6: included security fixes
+
+-------------------------------------------------------------------
+Mon Jul 19 14:15:38 CEST 2004 - nadvornik@suse.cz
+
+- fixed several buffer overflows [#43008]
+
+-------------------------------------------------------------------
+Wed Jun 16 18:31:10 CEST 2004 - nadvornik@suse.cz
+
+- added missing part of pngtran overflow patch [#42043]
+
+-------------------------------------------------------------------
+Fri Apr 23 16:39:48 CEST 2004 - nadvornik@suse.cz
+
+- fixed reading behind end of string [#39180]
+
+-------------------------------------------------------------------
+Sat Jan 10 22:28:23 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Oct 10 16:58:23 CEST 2003 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Tue Apr  8 01:34:48 CEST 2003 - ro@suse.de
+
+- fix tail calling syntax 
+
+-------------------------------------------------------------------
+Mon Feb 10 11:52:13 CET 2003 - nadvornik@suse.cz
+
+- link the shared library with -lz -lm -lc again
+
+-------------------------------------------------------------------
+Wed Jan 29 10:04:20 CET 2003 - kukuk@suse.de
+
+- Fix libpng-devel requires (add zlib-devel) [Bug #23154]
+
+-------------------------------------------------------------------
+Fri Jan 24 14:21:07 CET 2003 - sbrabec@suse.cz
+
+- Added missing pkgconfig files to %files.
+
+-------------------------------------------------------------------
+Tue Jan 07 11:29:11 CET 2003 - nadvornik@suse.cz
+
+- updated to 1.2.5
+- fixed buffer overflow
+
+-------------------------------------------------------------------
+Wed Jul 31 11:05:50 CEST 2002 - coolo@suse.de
+
+- fix libz dependency, so the resulting libpng is self containing
+
+-------------------------------------------------------------------
+Fri Jul 26 21:21:24 CEST 2002 - adrian@suse.de
+
+- fix neededforbuild
+
+-------------------------------------------------------------------
+Wed Jul 24 17:32:50 CEST 2002 - nadvornik@suse.cz
+
+- updated to 1.2.4:
+  - fixed buffer overflow in pngpread.c when IDAT is 
+    corrupted with extra data
+
+-------------------------------------------------------------------
+Fri Jul 12 16:20:53 CEST 2002 - schwab@suse.de
+
+- Fix makefile.
+
+-------------------------------------------------------------------
+Fri Jul  5 10:41:39 CEST 2002 - kukuk@suse.de
+
+- Use %ix86 macro 
+
+-------------------------------------------------------------------
+Tue Jul  2 09:44:15 CEST 2002 - nadvornik@suse.cz
+
+- updated to 1.2.3
+- changed package version to match the version of source tarball
+
+-------------------------------------------------------------------
+Tue Mar  5 10:38:31 CET 2002 - nadvornik@suse.cz
+
+- fixed permissions for man pages
+
+-------------------------------------------------------------------
+Tue Feb  5 11:47:48 CET 2002 - nadvornik@suse.cz
+
+- added Provides: libpng:/usr/include/png.h to libpng-devel
+
+-------------------------------------------------------------------
+Thu Jan 31 14:10:01 CET 2002 - nadvornik@suse.cz
+
+- back to 1.0.12, libpng 1.2.x will be packed in separate package
+- created devel subpackage to allow parallel instalation of
+  shared libraries 
+
+-------------------------------------------------------------------
+Wed Jan  9 11:33:09 CET 2002 - nadvornik@suse.cz
+
+- update to 1.2.1
+- used macros %{_lib} and %{_libdir}
+
+-------------------------------------------------------------------
+Tue Dec  4 15:23:50 CET 2001 - nadvornik@suse.cz
+
+- update to 1.2.0
+  - shared library version changed to 3.1.2.0
+  - new API for dynamically enabling and disabling certain optimizations  
+- added Provides: libpng-devel for compatibility [bug #11978]
+
+-------------------------------------------------------------------
+Tue Jul 17 12:29:40 CEST 2001 - nadvornik@suse.cz
+
+- update to 1.0.12
+
+-------------------------------------------------------------------
+Tue Apr  3 10:11:24 CEST 2001 - nadvornik@suse.cz
+
+- update to 1.0.10
+- used pnggccrd.c - MMX support on intel
+
+-------------------------------------------------------------------
+Tue Feb 13 14:26:47 CET 2001 - nadvornik@suse.cz
+
+- update to 1.0.9
+
+-------------------------------------------------------------------
+Fri Jan 19 17:13:11 CET 2001 - bk@suse.de
+
+- call pngtest program to have some tests that libpng works.
+- don't remove -O3 when adding RPM_OPT_FLAGS(still do -O3 optimisations)
+
+-------------------------------------------------------------------
+Thu Jan  4 09:23:32 CET 2001 - nadvornik@suse.cz
+
+- changed rpm version to 2.1.0.8 (bug #5062)
+- changed shared library name to libpng.so.2.1.0.8
+
+-------------------------------------------------------------------
+Wed Aug 23 12:01:11 CEST 2000 - nadvornik@suse.cz
+
+- update to 1.0.8
+
+-------------------------------------------------------------------
+Tue Jul 11 15:40:08 CEST 2000 - adrian@suse.de
+
+- seg fault fix in pngrutil.c
+
+-------------------------------------------------------------------
+Mon May 22 10:06:19 CEST 2000 - nadvornik@suse.cz
+
+- changed group
+- changed URL
+
+-------------------------------------------------------------------
+Sat Apr 29 22:31:13 CEST 2000 - kukuk@suse.de
+
+- Make sure libpng.so.2 is linked against libz to avoid problems
+  with missing dependencies. 
+
+-------------------------------------------------------------------
+Mon Apr 10 16:35:05 CEST 2000 - nadvornik@suse.cz
+
+- added URL
+
+-------------------------------------------------------------------
+Tue Apr  4 15:16:50 CEST 2000 - nadvornik@suse.cz
+
+- update to 1.0.6
+- added BuildRoot
+
+-------------------------------------------------------------------
+Tue Jan 25 16:59:36 CET 2000 - ro@suse.de
+
+- update to 1.0.5
+- manpages to /usr/share using macro
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Jun 29 12:25:16 MEST 1999 - ro@suse.de
+
+- moved from /usr/X11R6 to /usr
+
+-------------------------------------------------------------------
+Mon Jun 28 16:09:53 MEST 1999 - ro@suse.de
+
+- update to 1.0.3
+
+-------------------------------------------------------------------
+Wed Feb 17 10:33:29 MET 1999 - ro@suse.de
+
+- added .so.2 link
+
+-------------------------------------------------------------------
+Fri Jan 22 20:08:44 MET 1999 - ro@suse.de
+
+- bump version to 2.1.0 (the version of the installed library)
+
+-------------------------------------------------------------------
+Fri Mar 20 14:32:55 MET 1998 - ro@suse.de
+
+- extracted package from libgr tree
+  update to version 1.0.1
+

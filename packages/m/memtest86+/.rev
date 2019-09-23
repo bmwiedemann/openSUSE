@@ -1,0 +1,268 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>94827d0bc3023109905d5ff6132d70e9</srcmd5>
+    <version>1.65</version>
+    <time>1168903502</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d33dd10fea157ce7f91e454628aad1f4</srcmd5>
+    <version>1.70</version>
+    <time>1169742460</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>eb5dd72987086a4246420d6f0bfa7d42</srcmd5>
+    <version>1.70</version>
+    <time>1171924250</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="30">
+    <srcmd5>8f42d824b059528abc089f233c533ff8</srcmd5>
+    <version>1.70</version>
+    <time>1186698842</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="31">
+    <srcmd5>fc281ed40b0d32ba2f87c88ceed744b4</srcmd5>
+    <version>1.70</version>
+    <time>1186758719</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a9f16e7e51df3fa810417d2f7ec56887</srcmd5>
+    <version>2.01</version>
+    <time>1209643220</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="46">
+    <srcmd5>a9f16e7e51df3fa810417d2f7ec56887</srcmd5>
+    <version>2.01</version>
+    <time>1209643220</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="47">
+    <srcmd5>f2c3960769b0f3f88b6e96053ee2f7c8</srcmd5>
+    <version>2.01</version>
+    <time>1227886083</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2cf8ed31c47648b610cd61dfb72deb3e</srcmd5>
+    <version>4.00</version>
+    <time>1255358537</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/memtest86+ based on submit request 22270 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>2cf8ed31c47648b610cd61dfb72deb3e</srcmd5>
+    <version>4.00</version>
+    <time>1255358537</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/memtest86+ based on submit request 22270 from user coolo
+</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>33d1e994ff37c50283d6ac71635af005</srcmd5>
+    <version>4.00</version>
+    <time>1268924927</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>33d1e994ff37c50283d6ac71635af005</srcmd5>
+    <version>4.00</version>
+    <time>1278667367</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>33d1e994ff37c50283d6ac71635af005</srcmd5>
+    <version>4.00</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>61741af3d928b7ce8e38ab18ad4e1c11</srcmd5>
+    <version>4.10</version>
+    <time>1288265448</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51553 from user coolo
+</comment>
+    <requestid>51553</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>1ee417bd26f75a0ced5ab05e03028fb3</srcmd5>
+    <version>4.10</version>
+    <time>1288265453</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51553
+</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>1ee417bd26f75a0ced5ab05e03028fb3</srcmd5>
+    <version>4.10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>707d44adde7224be29a8381fc8a5fd1c</srcmd5>
+    <version>4.20</version>
+    <time>1303386004</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 67066 from user dirkmueller
+</comment>
+    <requestid>67066</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4bacd43e41989d789db36ab470cb2b26</srcmd5>
+    <version>4.20</version>
+    <time>1303386014</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 67066
+</comment>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>4bacd43e41989d789db36ab470cb2b26</srcmd5>
+    <version>4.20</version>
+    <time>1319182176</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>c9c361f0c75508a5525b2d35fda92b36</srcmd5>
+    <version>4.20</version>
+    <time>1323192532</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>57624862eba6fcc8f4267035a7c4947a</srcmd5>
+    <version>4.20</version>
+    <time>1332239383</time>
+    <user>coolo</user>
+    <comment>The cleanup of the spec was done by some unavoidable osc magic.
+
+The main modification of the package is:
+- PreReq perl to avoid update-bootloader to abort while install; (bnc#730022). (forwarded request 109802 from lmuelle)</comment>
+    <requestid>109810</requestid>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>57624862eba6fcc8f4267035a7c4947a</srcmd5>
+    <version>4.20</version>
+    <time>1340183696</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="9">
+    <srcmd5>b2e722fc79b0051305e4f3998fb8232e</srcmd5>
+    <version>4.20</version>
+    <time>1346914707</time>
+    <user>coolo</user>
+    <comment>- PreReq /sbin/update-bootloader as it is used in the rpm post script hook;
+  (bnc#628878). (forwarded request 132605 from lmuelle)</comment>
+    <requestid>132608</requestid>
+  </revision>
+  <revision rev="24" vrev="10">
+    <srcmd5>a9b94ed0e93b6c8e5fd13a97e83aef8a</srcmd5>
+    <version>4.20</version>
+    <time>1349673266</time>
+    <user>coolo</user>
+    <comment>- declare that the asm inline snippets in movinvr call e.g. rand()
+  and might clobber caller-saved registers a, d, _and_ c.
+  (bnc#773569) (forwarded request 137247 from duwe)</comment>
+    <requestid>137248</requestid>
+  </revision>
+  <revision rev="25" vrev="12">
+    <srcmd5>a9b94ed0e93b6c8e5fd13a97e83aef8a</srcmd5>
+    <version>4.20</version>
+    <time>1359109440</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="14">
+    <srcmd5>a9b94ed0e93b6c8e5fd13a97e83aef8a</srcmd5>
+    <version>4.20</version>
+    <time>1379663281</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e810cd659719da3318533b3abb66ce9b</srcmd5>
+    <version>5.01</version>
+    <time>1394953494</time>
+    <user>coolo</user>
+    <comment>- update to memtest86+-5.01:
+- Added support for up to 2 TB of RAM on X64 CPUs
+- Added experimental SMT support up to 32 cores
+- Added complete detection for memory controllers.
+- Added Motherboard Manufacturer &amp; Model reporting
+- Added CPU temperature reporting
+- Added enhanced Fail Safe Mode (Press F1 at startup)
+- Added support for Intel &quot;Sandy Bridge-E&quot; CPUs
+- Added support for Intel &quot;Ivy Bridge&quot; CPUs
+- Added preliminary support for Intel &quot;Haswell&quot; CPUs
+- Added preliminary support for Intel &quot;Haswell-ULT&quot; CPUs
+- Added support for AMD &quot;Kabini&quot; (K16) CPUs
+- Added support for AMD &quot;Bulldozer&quot; CPUs
+- Added support for AMD &quot;Trinity&quot; CPUs
+- Added support for AMD E-/C-/G-/Z- &quot;Bobcat&quot; CPUs
+- Added support for Intel Atom &quot;Pineview&quot; CPUs
+- Added support for Intel Atom &quot;Cedar Trail&quot; CPUs
+- Added SPD detection on most AMD Chipsets
+- Enforced Coreboot support
+- Optimized run time for faster memory error detection
+- Rewriten lots of memory timings detection code
+- Corrected bugs, bugs and more bugs
+- dropped patch: asm-inline-fix</comment>
+    <requestid>225558</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>5e2402145f013a7a567ebb27fd002c96</srcmd5>
+    <version>5.01</version>
+    <time>1406896465</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243238</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>5e2402145f013a7a567ebb27fd002c96</srcmd5>
+    <version>5.01</version>
+    <time>1409301886</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>652bcb95cdb857d317981d3ef179d4cb</srcmd5>
+    <version>5.01</version>
+    <time>1424622428</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildIgnore gcc-PIE, it does not make sense for this package.</comment>
+    <requestid>287204</requestid>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>d06e9fdad4e0238e367c29297d66fc71</srcmd5>
+    <version>5.01</version>
+    <time>1427736658</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292576</requestid>
+  </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>2f0aecf5744745addda11a7423da3e6b</srcmd5>
+    <version>5.01</version>
+    <time>1446647517</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341775</requestid>
+  </revision>
+  <revision rev="33" vrev="8">
+    <srcmd5>41b43e80d10f2805f36736f4bd5985f9</srcmd5>
+    <version>5.01</version>
+    <time>1533549146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627000</requestid>
+  </revision>
+</revisionlist>

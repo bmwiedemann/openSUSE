@@ -1,0 +1,809 @@
+-------------------------------------------------------------------
+Fri May 10 11:57:35 CEST 2019 - tiwai@suse.de
+
+- Update to alsa-plugins 1.1.9:
+  Fixes for jack and maemo plugins, see
+    https://www.alsa-project.org/wiki/Changes_v1.1.8_v1.1.9
+  for details
+
+-------------------------------------------------------------------
+Mon Mar 25 15:22:20 CET 2019 - tiwai@suse.de
+
+- Build alsa-plugins-aaf conditionally, not stop the whole builds
+  for old distros
+
+-------------------------------------------------------------------
+Wed Mar 20 07:10:16 UTC 2019 - olaf@aepfle.de
+
+- Adjust BuildRequires to use pkgconfig
+
+-------------------------------------------------------------------
+Thu Jan 10 00:50:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop idempotent %if..%endif guards.
+
+-------------------------------------------------------------------
+Tue Jan  8 12:24:54 CET 2019 - tiwai@suse.de
+
+- Update to alsa-plugins 1.1.8:
+  * A52 Output plugin:
+    a52_close: set slave to NULL to avoid double pcm free in open fcn 
+  * AVTP Audio Format (AAF) PCM plugin
+    aaf: AVTPDU transmission periodicity 
+    aaf: Implement Playback mode support 
+    aaf: Load configuration parameters 
+    aaf: Introduce plugin skeleton
+    aaf: Tx multiple AVTPDUs per media clock tick 
+    aaf: Refactor timeout routines 
+    aaf: Refactor AVTPDU reception routines 
+    aaf: Refactor AVTPDU transmission routines 
+    aaf: Add presentation time tolerance 
+    aaf: do not free twice aaf - snd_pcm_close() is called from snd_pcm_ioplug_delete() 
+    aaf: Add support for direct read/write transfers 
+    aaf: Implement dump() ioplug callback 
+    aaf: Implement Capture mode support 
+    aaf: Prepare for Capture mode support 
+    aaf: Implement Playback mode support 
+    aaf: Load configuration parameters 
+    aaf: Introduce plugin skeleton 
+  * Documentation:
+    aaf: AVTPDU transmission periodicity 
+    aaf: Tx multiple AVTPDUs per media clock tick 
+    aaf: Add presentation time tolerance 
+    doc: Fix typo in AAF doc 
+    aaf: Implement Capture mode support 
+    aaf: Implement Playback mode support 
+    aaf: Load configuration parameters 
+    aaf: Introduce plugin skeleton 
+  * Jack PCM plugin:
+    Revert "jack: Fix leaks when jack_set_hw_constraint() fails" 
+  * OSS Mixer -> ALSA Control plugin:
+    Revert "oss: Fix leaks when oss_hw_constraint() fails" 
+  * USB stream plugin:
+    Revert "usb_stream: Fix leaks when us_set_hw_constraint() fails" 
+    pcm_usb_stream: fix signess issues 
+    pcm_usb_stream: remove unused parameter in snd_pcm_us_read() 
+    pcm_usb_stream: fix another leak in snd_pcm_us_open() 
+- Drop obsoleted patches:
+  0001-pcm_usb_stream-fix-another-leak-in-snd_pcm_us_open.patch
+  0002-pcm_usb_stream-remove-unused-parameter-in-snd_pcm_us.patch
+  0003-pcm_usb_stream-fix-signess-issues.patch
+  0004-a52_close-set-slave-to-NULL-to-avoid-double-pcm-free.patch
+  0005-Revert-jack-Fix-leaks-when-jack_set_hw_constraint-fa.patch
+  0006-Revert-usb_stream-Fix-leaks-when-us_set_hw_constrain.patch
+  0007-Revert-oss-Fix-leaks-when-oss_hw_constraint-fails.patch
+- Add a new subpackage alsa-plugins-aaf;
+  currently built only for TW
+
+-------------------------------------------------------------------
+Fri Dec  7 10:51:21 UTC 2018 - bjorn.lie@gmail.com
+
+- Use ffmpeg-4 versions of pkgconfig(libav*).
+
+-------------------------------------------------------------------
+Thu Nov 15 12:50:33 CET 2018 - tiwai@suse.de
+
+- Remove the old override configs as the updated setup-pulseaudio
+  script should handle the new configs (bsc#1116153)
+
+-------------------------------------------------------------------
+Wed Oct 24 14:07:24 CEST 2018 - tiwai@suse.de
+
+- Backport of yet another regression fixes in upstream:
+  0005-Revert-jack-Fix-leaks-when-jack_set_hw_constraint-fa.patch
+  0006-Revert-usb_stream-Fix-leaks-when-us_set_hw_constrain.patch
+  0007-Revert-oss-Fix-leaks-when-oss_hw_constraint-fails.patch
+
+-------------------------------------------------------------------
+Wed Oct 24 09:43:57 CEST 2018 - tiwai@suse.de
+
+- Backport upstream commits:
+  fix memory leaks and other minor issues in usb_stream plugin,
+  fix a regression (appearins in PulseAudio) with a52 plugin:
+  0001-pcm_usb_stream-fix-another-leak-in-snd_pcm_us_open.patch
+  0002-pcm_usb_stream-remove-unused-parameter-in-snd_pcm_us.patch
+  0003-pcm_usb_stream-fix-signess-issues.patch
+  0004-a52_close-set-slave-to-NULL-to-avoid-double-pcm-free.patch
+
+-------------------------------------------------------------------
+Wed Oct 17 11:37:20 CEST 2018 - tiwai@suse.de
+
+- Updated to alsa-plugins 1.1.7:
+  * configure: add --with-alsaaddondir, add default config files for plugins
+  * configure: change --with-alsaaddondir to --with-alsagconfdir and --with-alsalconfdir
+  * samplerate: fix unused variable warning
+  * Renamve rate-lavc to rate-lav
+  * configure script cleanups / fixes
+  * Add explicit -lpthread to *_LIBADD
+  * usb_stream: Fix leaks when us_set_hw_constraint() fails
+  * oss: Fix leaks when oss_hw_constraint() fails
+  * jack: Fix leaks when jack_set_hw_constraint() fails
+  * a52: Fix leaks when a52_set_hw_constraint() fails
+  * jack: Only allow ALSA periods multiple of JACKd period
+  * jack: Allow build with older alsa-lib
+  * jack: Update poll_fd also in draining state
+  * jack: Avoid call to snd_pcm_avail_update() from JACK thread
+- Renamed subpackage alsa-plugins-lavcrate to alsa-plugins-lavrate
+
+-------------------------------------------------------------------
+Fri May  4 14:03:47 UTC 2018 - olaf@aepfle.de
+
+- Use ffmpeg3 versions of pkgconfig(libav*)
+
+-------------------------------------------------------------------
+Mon Apr 23 13:17:44 UTC 2018 - bjorn.lie@gmail.com
+
+- Replace libavcodec-devel with pkgconfig(libavcodec),
+  pkgconfig(libavutil) and pkgconfig(libavresample) BuildRequires
+  and version them to less than the symbol versions provided by
+  ffmpeg4 branch until upstream catches up. Currently provided by
+  new ffmpeg3 compatability package.
+
+-------------------------------------------------------------------
+Wed Apr  4 08:44:10 CEST 2018 - tiwai@suse.de
+
+- Update to alsa-plugins 1.1.6:
+  * Change FSF address (Franklin Street)
+  * jack: Write only valid values to the internal hw_ptr
+  * jack: Use boundary as hw_ptr wrap around
+  * jack: Do not Xrun the ALSA buffer
+  * jack: Report Xruns to user application
+  * jack: Use correct parameter order for snd_pcm_areas_silence()
+- Remove the build conditions for too old distros
+- Use %license file tag
+- Enable avcodec build for SLE15, too
+
+-------------------------------------------------------------------
+Tue Nov 14 15:05:55 CET 2017 - tiwai@suse.de
+
+- Update to alsa-plugins 1.1.5:
+  * pulse: prevent double-free when pulse_hw_constraint returns
+    error 
+
+-------------------------------------------------------------------
+Tue Aug 29 15:32:15 CEST 2017 - tiwai@suse.de
+
+- Disable avcodec-related plugins for SLE packages
+
+-------------------------------------------------------------------
+Tue May 16 15:38:57 CEST 2017 - tiwai@suse.de
+
+- Update to alsa-plugins 1.1.4:
+  * extend configure script to disable more stuff
+  * including previous fix for libavcodec
+- Obsoleted patch:
+  0001-configure-Fix-detection-of-avcodec.h.patches
+
+-------------------------------------------------------------------
+Wed May  3 12:57:48 CEST 2017 - tiwai@suse.de
+
+- Fix the detection of libavcodec header files:
+  0001-configure-Fix-detection-of-avcodec.h.patches
+- Enable the build of a52 and lavcrate plugins for openSUSE
+
+-------------------------------------------------------------------
+Fri Dec  9 12:23:43 UTC 2016 - zaitor@opensuse.org
+
+- Own alsa-lib dir, needed due to changes in alsa.
+
+-------------------------------------------------------------------
+Thu Mar 31 15:27:29 CEST 2016 - tiwai@suse.de
+
+- Update to alsa-plugins 1.1.1:
+  including all previous fixes, fixes of a52 plugin for the recent
+  ffmpeg versions
+- Delete obsoleted patches:
+  0001-speex-Add-missing-include-config.h.patch
+  0002-a52-fix-reported-input-channel-order.patch
+  0003-pph-include-config.h-from-rate_speexrate.c.patch
+
+-------------------------------------------------------------------
+Wed Feb  3 18:09:33 CET 2016 - tiwai@suse.de
+
+- Backport upstream fixes: build fixes with the recent ffmpeg
+  0001-speex-Add-missing-include-config.h.patch
+  0002-a52-fix-reported-input-channel-order.patch
+  0003-pph-include-config.h-from-rate_speexrate.c.patch
+- Drop the obsoleted patch:
+  alsa-plugins-include-config.h.patch
+
+-------------------------------------------------------------------
+Wed Nov 25 11:39:58 CET 2015 - tiwai@suse.de
+
+- Add supplements to 32bit packages to be fetched automatically
+  (bsc#956402)
+
+-------------------------------------------------------------------
+Mon Nov  9 11:50:43 CET 2015 - tiwai@suse.de
+
+- Update to alsa-plugins 1.1.0:
+  including all previous fixes, a small memory leak fix in jack
+  plugin
+- Dropped patches:
+  0001-rate-Allow-LGPL-for-libsamplerate-commercial-license.patch
+  0002-mix-Fix-extplug-version-ifdef-checks.patch
+  0003-a52-Fix-ioplug-version-ifdef-checks.patch
+  0004-pulse-Add-24-bit-data-formats-to-Pulse-plugin.patch
+  0005-arcam-av-Include-sys-select.h-for-fd_set-definition.patch
+  0006-pph-include-speexdsp_types.h-not-speex_types.h.patch
+  0007-pph-Fix-build-with-older-speex.patch
+
+-------------------------------------------------------------------
+Thu Jul  9 15:30:28 CEST 2015 - tiwai@suse.de
+
+- Backport upstream fixes: just minor build fix issues that don't
+  hit us, but kept here for consistency
+  0005-arcam-av-Include-sys-select.h-for-fd_set-definition.patch
+  0006-pph-include-speexdsp_types.h-not-speex_types.h.patch
+  0007-pph-Fix-build-with-older-speex.patch
+- Fix build error with SLE11-SP3 due to lack of speexdsp pkgconfig.
+
+-------------------------------------------------------------------
+Fri May 22 14:19:53 CEST 2015 - tiwai@suse.de
+
+- Backport upstream fixes: fixes for A52 plugin, mix plugin protocol
+  version fix, and enhancement for JACK plugin to support 24bit
+  formats:
+  0001-rate-Allow-LGPL-for-libsamplerate-commercial-license.patch
+  0002-mix-Fix-extplug-version-ifdef-checks.patch
+  0003-a52-Fix-ioplug-version-ifdef-checks.patch
+  0004-pulse-Add-24-bit-data-formats-to-Pulse-plugin.patch
+
+-------------------------------------------------------------------
+Thu Mar 12 12:44:35 UTC 2015 - dimstar@opensuse.org
+
+- BuildRequire pkgconfig(speexdsp) instead of speex-devel: the
+  packages have been rearranged/split.
+- Add alsa-plugins-include-config.h.patch: Fix build with new
+  speexdsp versions. The speexdsp headers expect the caller to set
+  HAVE_STDINT_H (or any of the other appropriate headers, based on
+  platform) in order to define the specific types.
+
+-------------------------------------------------------------------
+Thu Feb 26 17:30:05 CET 2015 - tiwai@suse.de
+
+- Update to alsa-plugins 1.0.29:
+  Just a version bump including previous fixes
+- Drop obsoleted patch:
+  0001-jack-Restore-PID-to-jack-client-name-when-not-specif.patch
+
+-------------------------------------------------------------------
+Sun Nov 09 00:36:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post/postun scripts:
+  option '-p' of 'type' command may be unsupported is some shells,
+  use 'command -v' instead
+
+-------------------------------------------------------------------
+Tue Aug 12 16:00:23 CEST 2014 - tiwai@suse.de
+
+- Backport upstream fix for backward compatibility of jack PCM
+  plugin:
+  0001-jack-Restore-PID-to-jack-client-name-when-not-specif.patch
+
+-------------------------------------------------------------------
+Wed Jun 18 13:14:30 CEST 2014 - tiwai@suse.de
+
+- Updated to alsa-plugins 1.0.28:
+  All pervious fix patches are obsoleted:
+  0001-Check-for-and-include-libavutil.h-to-avoid-unresolve.patch
+  0002-Add-AM_MAINTAINER_MODE-enable-to-configure.in.patch
+  0003-vdownmix-Add-chmap-support.patch
+  0004-upmix-Add-chmap-support.patch
+  0005-a52-Fix-build-error-with-the-recent-version.patch
+  0006-a52-Add-chmap-support.patch
+  0007-a52-Propagate-errors-from-hw.patch
+  0008-a52-switch-to-AV_CODEC_ID-identifiers.patch
+  0009-jack-Allow-to-specify-a-client-name-as-parameters.patch
+
+-------------------------------------------------------------------
+Tue Mar 11 11:13:34 CET 2014 - tiwai@suse.de
+
+- Backport upstream fixes: add chmap support to plugins, fix a52
+  builds, add a new option to jack plugin:
+  0003-vdownmix-Add-chmap-support.patch
+  0004-upmix-Add-chmap-support.patch
+  0005-a52-Fix-build-error-with-the-recent-version.patch
+  0006-a52-Add-chmap-support.patch
+  0007-a52-Propagate-errors-from-hw.patch
+  0008-a52-switch-to-AV_CODEC_ID-identifiers.patch
+  0009-jack-Allow-to-specify-a-client-name-as-parameters.patch
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu May 23 15:47:52 CEST 2013 - tiwai@suse.de
+
+- Backport upstream fixes:
+  0001-Check-for-and-include-libavutil.h-to-avoid-unresolve.patch
+  0002-Add-AM_MAINTAINER_MODE-enable-to-configure.in.patch
+
+-------------------------------------------------------------------
+Fri Apr 12 15:30:20 CEST 2013 - tiwai@suse.de
+
+- Updated to version 1.0.27:
+  including all previous fixes; all 00*-* patches dropped
+
+-------------------------------------------------------------------
+Mon Mar 11 11:10:30 CET 2013 - tiwai@suse.de
+
+- Backport fix patches from upstream:
+  0002-a52-Add-the-support-of-recent-libavcodec-libavutil.patch
+  0003-a52-Fix-build-errors.patch
+  0004-pulse-pulse_pcm_poll_revents-should-return-0-on-succ.patch
+
+-------------------------------------------------------------------
+Fri Feb  1 10:15:12 CET 2013 - tiwai@suse.de
+
+- Correct the package version number to 1.0.26; no content change
+
+-------------------------------------------------------------------
+Fri Nov 30 14:48:08 CET 2012 - tiwai@suse.de
+
+- Improve prebuf setup of pulse plugin:
+  0001-pcm_pulse-set-prebuf-parameter-according-to-software.patch
+
+-------------------------------------------------------------------
+Fri Oct 26 07:32:01 CEST 2012 - tiwai@suse.de
+
+- remove obsoleted alsa-plugins-include.patch
+
+-------------------------------------------------------------------
+Fri Sep  7 15:32:42 CEST 2012 - tiwai@suse.de
+
+- Updated to version 1.0.26:
+  including glibc-2.16 build fix, add support 24bit format to pulse
+
+-------------------------------------------------------------------
+Thu Sep  6 14:15:23 CEST 2012 - tiwai@suse.de
+
+- Add post/postun hooks for pulse plugin to fix the leftover
+  config path (bnc#779039)
+
+-------------------------------------------------------------------
+Sun Jul 29 06:48:43 UTC 2012 - aj@suse.de
+
+- Move _GNU_SOURCE before any header inclusion to fix build with glibc 2.16
+
+-------------------------------------------------------------------
+Fri Mar 30 22:53:11 UTC 2012 - reddwarf@opensuse.org
+
+- stop recommending -32bit packages
+
+-------------------------------------------------------------------
+Wed Jan 25 11:14:55 CET 2012 - tiwai@suse.de
+
+- updated to version 1.0.25; including all previous fixes
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:40 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Tue Sep 27 09:56:18 CEST 2011 - tiwai@suse.de
+
+- Set CLOEXEC flag to left-over fds in pulse plugin
+
+-------------------------------------------------------------------
+Tue Sep 20 10:02:49 CEST 2011 - tiwai@suse.de
+
+- Install pulse plugin setup in the new config.d directory,
+  use the upstream default
+
+-------------------------------------------------------------------
+Sat Sep 17 10:56:52 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri Aug 26 09:47:29 CEST 2011 - tiwai@suse.de
+
+- Fix the build of pulse plugin with a very old PA
+
+-------------------------------------------------------------------
+Fri Aug 26 09:31:00 CEST 2011 - tiwai@suse.de
+
+- Add a better overrun handling with the new PA API
+
+-------------------------------------------------------------------
+Mon Aug  8 09:23:39 CEST 2011 - tiwai@suse.de
+
+- Fix hanging applications when using jack plugin
+
+-------------------------------------------------------------------
+Wed Jul 27 09:38:06 CEST 2011 - tiwai@suse.de
+
+- Add PA_CONTEXT_NOAUTOSPAWN flag when fallback is set for pulse
+  plugins
+
+-------------------------------------------------------------------
+Tue Jul 26 15:44:06 CEST 2011 - tiwai@suse.de
+
+- Add fallback option to pulse plugin
+- Enable the fallback to the system-default in asound-pulse.conf
+
+-------------------------------------------------------------------
+Tue Apr 26 16:43:32 CEST 2011 - tiwai@suse.de
+
+- Upstream fixes:
+  * Fix build of a52 plugin (not used in this package, though)
+  * Fix bogus snd_pcm_avail() zero return in pulse plugin
+
+-------------------------------------------------------------------
+Mon Jan 31 17:26:13 CET 2011 - tiwai@suse.de
+
+- Updated to version 1.0.24:
+  * including previous fixes
+  * Fix documents
+
+-------------------------------------------------------------------
+Thu Sep  2 16:34:02 CEST 2010 - tiwai@suse.de
+
+- Backport upstream fix:
+  pulse: Add handle_underrun option
+
+-------------------------------------------------------------------
+Thu Jun 24 08:54:13 CEST 2010 - tiwai@suse.de
+
+- Backport upstream fix:
+  pulse: Fix invalid buffer pointer return value
+
+-------------------------------------------------------------------
+Mon Apr 19 10:40:26 CEST 2010 - tiwai@suse.de
+
+- updated to version 1.0.23:
+  * including previous fixes
+
+-------------------------------------------------------------------
+Mon Mar  8 14:39:23 CET 2010 - tiwai@suse.de
+
+- Backport upstream fixes:
+ * usb_stream: Check for NULL-ness before dereferencing
+ * usb_stream: Allow user-set period-size and rate
+
+-------------------------------------------------------------------
+Wed Jan 27 18:24:54 CET 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Fri Dec 18 17:37:41 CET 2009 - tiwai@suse.de
+
+- set AUTOMAKE_JOBS for parallel automake
+
+-------------------------------------------------------------------
+Fri Dec 18 17:22:38 CET 2009 - tiwai@suse.de
+
+- updated to version 1.0.22:
+  * upmix 7.1 channels support
+  * fixes for a53 with recent libavcodec
+
+-------------------------------------------------------------------
+Wed Sep  9 14:50:42 CEST 2009 - tiwai@suse.de
+
+- add recommends tags for 32bit packages (bnc#537555)
+
+-------------------------------------------------------------------
+Mon Aug 31 16:22:11 CEST 2009 - tiwai@suse.de
+
+- updated to version 1.0.21:
+  just a version bump including previous fixes
+
+-------------------------------------------------------------------
+Fri Aug  7 16:56:28 CEST 2009 - tiwai@suse.de
+
+- yet another updates of pulse plugin:
+ * replace manual mainloop by pa_mainloop_iterate()
+ * move a couple of PCM related functions from pulse.c to pcm_pulse.c
+ * get rid of redundant state variable
+ * unify stream/context state checks
+ * rework object destruction paths a bit
+ * immediately trigger EIO when connection is dropped
+
+-------------------------------------------------------------------
+Mon Aug  3 12:38:48 CEST 2009 - tiwai@suse.de
+
+- update pulse plugin:
+ * get rid of a number of assert()s
+ * unify destruction of snd_pulse_t
+ * use PA_CONTEXT_IS_GOOD where applicable
+ * call pa_threaded_mainloop_wait() to handle spurious wakeups
+
+-------------------------------------------------------------------
+Thu Jul 30 17:05:35 CEST 2009 - sbrabec@suse.cz
+
+- alsa-plugin-pulse does not work without pulseaudio, add Requires.
+
+-------------------------------------------------------------------
+Fri Jul 17 16:46:27 CEST 2009 - tiwai@suse.de
+
+- fix the missing initialization of OSS PCM plugin
+
+-------------------------------------------------------------------
+Fri Jun 19 16:15:06 CEST 2009 - tiwai@suse.de
+
+- echo-cancelling support in speex dsp plugin
+
+-------------------------------------------------------------------
+Tue Jun  2 16:36:55 CEST 2009 - tiwai@suse.de
+
+- extend rate plugins to follow the new protocol
+
+-------------------------------------------------------------------
+Wed May  6 18:09:13 CEST 2009 - tiwai@suse.de
+
+- updated to version 1.0.20:
+  * including previous patches
+  * arcam-av plugin updates
+
+-------------------------------------------------------------------
+Tue Feb 17 17:33:47 CET 2009 - tiwai@suse.de
+
+- add the support of non-zero numid in external ctl plugins
+  (bnc#462032)
+
+-------------------------------------------------------------------
+Thu Jan 22 14:03:18 CET 2009 - tiwai@suse.de
+
+- updated to version 1.0.19:
+  * just minor updates
+- added speex pre-processing plugin
+- added arcam-av control plugin
+- fix spec file to be compatible with older distro
+
+-------------------------------------------------------------------
+Wed Oct 29 14:33:04 CET 2008 - tiwai@suse.de
+
+- updated to version 1.0.18-final;
+  just including all previous fixes
+
+-------------------------------------------------------------------
+Wed Oct 15 12:20:29 CEST 2008 - tiwai@suse.de
+
+- Fix pulse plugin issues:
+  * broken capture returning -EIO (bnc#435058)
+  * small memory leak
+
+-------------------------------------------------------------------
+Wed Sep 10 18:00:38 CEST 2008 - tiwai@suse.de
+
+- updated to version 1.0.18rc3:
+  * code cleanup in pulse pcm plugin
+  * fix poll handling in pulse pcm
+  * fix S32/FLOAT32 format support in pulse
+  * use PA_STREAM_EARLY_REQUEST
+  * fix channel mappings, buffer metrics
+
+-------------------------------------------------------------------
+Tue Aug 26 16:52:21 CEST 2008 - tiwai@suse.de
+
+- fix build with recent ffmpeg
+
+-------------------------------------------------------------------
+Mon Aug 18 16:58:23 CEST 2008 - tiwai@suse.de
+
+- updated to version 1.0.18-rc2:
+  including previous fixes and additions
+
+-------------------------------------------------------------------
+Wed Aug  6 15:40:34 CEST 2008 - tiwai@suse.de
+
+- updated to git snapshot 20080806:
+  * added usb-stream PCM plugin for US122L devices
+- add config tag to pulse-related config files
+
+-------------------------------------------------------------------
+Mon Jul 28 18:18:48 CEST 2008 - tiwai@suse.de
+
+- fix slient output of short streams (bnc#409645)
+
+-------------------------------------------------------------------
+Wed Jul 16 15:47:24 CEST 2008 - tiwai@suse.de
+
+- don't use assert() for sanity checks (bnc#409532)
+
+-------------------------------------------------------------------
+Tue Jul 15 18:33:26 CEST 2008 - tiwai@suse.de
+
+- updated to version 1.0.17-final:
+  * just a version bump
+
+-------------------------------------------------------------------
+Wed Jun 18 14:51:05 CEST 2008 - tiwai@suse.de
+
+- updated to version 1.0.17rc2:
+  * including last fixes
+
+-------------------------------------------------------------------
+Fri Jun  6 17:51:06 CEST 2008 - tiwai@suse.de
+
+- use plug layer for pulse defult PCM (bnc#397523)
+  this requires the fix in alsa-lib, too
+
+-------------------------------------------------------------------
+Wed Jun  4 13:55:57 CEST 2008 - rodrigo@suse.de
+
+- Added alsa-pulse.conf as configuration file for GNOME installs
+  (bnc#394177) 
+
+-------------------------------------------------------------------
+Mon Jun  2 11:22:23 CEST 2008 - meissner@suse.de
+
+- added baselibs.conf, so 32bit programs get the pulse-alsa 
+  wrapper plugin too.
+
+-------------------------------------------------------------------
+Mon May 26 17:16:25 CEST 2008 - rodrigo@suse.de
+
+- Removed dependency on pulseaudio, pulseaudio package now depends
+  on alsa-plugins-pulse to fix bnc#394177 
+
+-------------------------------------------------------------------
+Mon May 26 17:13:30 CEST 2008 - rodrigo@suse.de
+
+- Added asound-pulse.conf to contain configuration for the ALSA
+  PulseAudio plugin (bnc#394177) 
+
+-------------------------------------------------------------------
+Mon Mar 10 13:17:57 CET 2008 - tiwai@suse.de
+
+- remove some useless asserts in pulse plugin that cause crashes
+
+-------------------------------------------------------------------
+Fri Feb  8 12:21:52 CET 2008 - tiwai@suse.de
+
+- updated to version 1.0.16-final:
+  * just a version bump
+
+-------------------------------------------------------------------
+Tue Jan 22 14:54:31 CET 2008 - tiwai@suse.de
+
+- updated to version 1.0.16rc1:
+  * just a version bump
+
+-------------------------------------------------------------------
+Fri Jan 11 19:54:38 CET 2008 - rodrigo@suse.de
+
+- Depend on libpulse-devel, not pulseaudio-devel 
+
+-------------------------------------------------------------------
+Fri Dec 14 15:33:10 CET 2007 - tiwai@suse.de
+
+- several bug fixes for pulse plugin
+  * fix buffer size handling
+  * handle XRUN properly (requireing the latest alsa-lib)
+
+-------------------------------------------------------------------
+Mon Oct 29 12:16:27 CET 2007 - tiwai@suse.de
+
+- fix invalid assert call in pulse plugin
+
+-------------------------------------------------------------------
+Tue Oct 16 15:12:08 CEST 2007 - tiwai@suse.de
+
+- updated to version 1.0.15:
+  * including all previous fixes
+
+-------------------------------------------------------------------
+Tue Aug 14 16:28:38 CEST 2007 - tiwai@suse.de
+
+- Fix speex resampler plugin bugs
+
+-------------------------------------------------------------------
+Mon Jul 30 18:54:18 CEST 2007 - tiwai@suse.de
+
+- HG patch (as of 2007.07.28)
+  * build modules with -no-undefined option
+  * fix speex resampler bug in 4times upsampling
+  * fix the noise at beginning of playback with samplerate
+    plugin 
+
+-------------------------------------------------------------------
+Tue Jun  5 11:31:44 CEST 2007 - tiwai@suse.de
+
+- updated to version 1.0.14-final:
+  including previous HG fixes
+
+-------------------------------------------------------------------
+Thu May 24 15:33:32 CEST 2007 - tiwai@suse.de
+
+- HG snapshot as of 2007.05.24:
+  * configure option to specify plugin directory
+  * possible to link with external libspeex
+
+-------------------------------------------------------------------
+Wed May  2 12:43:27 CEST 2007 - tiwai@suse.de
+
+- updated to version 1.0.14rc4:
+  including HG fixes
+
+-------------------------------------------------------------------
+Tue Apr 10 18:52:55 CEST 2007 - tiwai@suse.de
+
+- split samplerate to subpackage (the sole GPL-only module).
+- fixed licenses on PDB.
+
+-------------------------------------------------------------------
+Tue Apr  3 14:53:37 CEST 2007 - tiwai@suse.de
+
+- Add explicitly jack and pulseaudio to Requires of each sub
+  package.
+
+-------------------------------------------------------------------
+Wed Mar 14 17:23:03 CET 2007 - tiwai@suse.de
+
+- updated to version 1.0.14rc3:
+  * fix input/output_frames calculation in samplerate plugin
+  * added speex rsampler plugin
+
+-------------------------------------------------------------------
+Thu Feb  8 16:55:48 CET 2007 - tiwai@suse.de
+
+- update to version 1.0.14rc2 - just repackaging from 1.0.14rc1a
+- split internal sub package to its own spec file
+
+-------------------------------------------------------------------
+Tue Dec 19 16:25:43 CET 2006 - tiwai@suse.de
+
+- updated to version 1.0.14rc1:
+  * clean up polyp plugin
+  * added maemo plugin
+- add conditional for internal build (#224415)
+
+-------------------------------------------------------------------
+Fri Aug  4 16:13:45 CEST 2006 - tiwai@suse.de
+
+- updated to version 1.0.12rc2:
+  the previous patches were merged to upstream
+
+-------------------------------------------------------------------
+Wed Jul 12 17:44:15 CEST 2006 - tiwai@suse.de
+
+- rename from polyp to pulse plugin, as polypaudio is renamed
+  to pulseaudio.
+
+-------------------------------------------------------------------
+Tue Jul  4 17:07:48 CEST 2006 - tiwai@suse.de
+
+- updated to version 1.0.12rc1:
+  the previous HG patches were merged
+
+-------------------------------------------------------------------
+Thu Jun  8 12:19:34 CEST 2006 - tiwai@suse.de
+
+- new plugins: polyp and a52
+- split to sub-packages: jack, polyp and a52
+
+-------------------------------------------------------------------
+Mon May 15 13:34:57 CEST 2006 - tiwai@suse.de
+
+- updated to version 1.0.11.
+  * new samplerate plugins
+  * misc bugfixes for JACK plugins
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:11 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Dec 14 16:06:43 CET 2005 - tiwai@suse.de
+
+- updated to 1.0.10-final.
+
+-------------------------------------------------------------------
+Wed Oct 12 19:54:35 CEST 2005 - tiwai@suse.de
+
+- removed glib* from neededforbuild.
+
+-------------------------------------------------------------------
+Wed Oct 12 14:19:52 CEST 2005 - tiwai@suse.de
+
+- updated to version 1.0.10rc1.
+
+-------------------------------------------------------------------
+Thu Jun  2 15:18:11 CEST 2005 - tiwai@suse.de
+
+- initial version: 1.0.9.
+

@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Sat Jul  6 18:54:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of descriptions. Trim history from
+  descriptions.
+- Limit fdupes to the /usr subvolume.
+
+-------------------------------------------------------------------
+Fri Mar 22 11:06:44 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Switch from geos35 to geos as there is no more build problem 
+  with Leap 42.3, it also fixes build on Leap 15.0
+
+-------------------------------------------------------------------
+Sun Sep 30 13:03:54 UTC 2018 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to last 2.5.1 version (Islamorada)
+- Packaging:
+  + spec-cleaner minimal, but don't let it play with the manual
+    patching for lib(64)
+  + add patch fix_hdf5_printErrorStack.patch to replace deprecated
+    and removed printError() function in hdf5 1.10.2+
+
+-------------------------------------------------------------------
+Sat Sep 29 14:39:50 UTC 2018 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Fix build with Tumbleweed (force use of '-std=c++03')
+  Backport old patch lost during transfert in App:Geo from 
+  Staging
+
+-------------------------------------------------------------------
+Tue May 29 12:25:01 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to 2.3.2
+- Drop cmake.patch
+
+-------------------------------------------------------------------
+Mon Nov 13 15:06:17 UTC 2017 - guillaume@opensuse.org
+
+- Update to 2.1.0 (lib version 1.9.0)
+
+-------------------------------------------------------------------
+Mon Nov 13 13:32:51 UTC 2017 - guillaume@opensuse.org
+
+- Fix build with Tumbleweed (force use of '-std=c++03')
+
+-------------------------------------------------------------------
+Wed Jun 28 09:20:23 UTC 2017 - guillaume@opensuse.org
+
+- Update cmake.patch to match 1.8.20.3 version (instead of old 
+  1.8.18.1)
+
+-------------------------------------------------------------------
+Tue Jun 27 13:40:19 UTC 2017 - guillaume@opensuse.org
+
+- Build against geos 3.5 (instead of 3.6) to fix openSUSE Leap 42.x 
+  builds
+
+-------------------------------------------------------------------
+Sun Dec 27 11:06:47 UTC 2015 - mpluskal@suse.com
+
+- Use cmake macros
+- Shorten summary
+- Do not ship static library
+
+----------------------------------------------------------------------------
+* Wed Dec 23 23:48:00 UTC 2015 Angelos Tzotsos <tzotsos@opensuse.org>
+
+- Update to 1.8.20
+
+----------------------------------------------------------------------------
+* Fri Aug 14 09:15:00 UTC 2015 Angelos Tzotsos <tzotsos@opensuse.org>
+
+- Initial build
+- Patch cmake.patch to allow proper cmake build

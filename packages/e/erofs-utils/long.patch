@@ -1,0 +1,56 @@
+From 5c314e288719b59fb8bad90fd1a75b8076baceee Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sun, 8 Sep 2019 16:52:56 +0200
+Subject: [PATCH] build: cure compiler warnings
+
+On i586 I observe:
+
+In file included from inode.c:16:
+inode.c: In function 'erofs_mkfs_build_tree':
+../include/erofs/print.h:27:21: error: format '%lu' expects argument of type
+'long unsigned int', but argument 7 has type 'erofs_nid_t' {aka 'long long unsigned int'} [-Werror=format=]
+   27 | #define pr_fmt(fmt) "EROFS: " FUNC_LINE_FMT fmt "\n"
+../include/erofs/print.h:43:4: note: in expansion of macro 'pr_fmt'
+   43 |    pr_fmt(fmt),    \
+inode.c:792:3: note: in expansion of macro 'erofs_info'
+  792 |   erofs_info("add file %s/%s (nid %lu, type %d)",
+inode.c:792:37: note: format string is defined here
+  792 |   erofs_info("add file %s/%s (nid %lu, type %d)",
+---
+ lib/compress.c | 4 ++--
+ lib/inode.c    | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/lib/compress.c b/lib/compress.c
+index a977c87..cadf598 100644
+--- a/lib/compress.c
++++ b/lib/compress.c
+@@ -457,8 +457,8 @@ int erofs_write_compressed_file(struct erofs_inode *inode)
+ 	ret = erofs_bh_balloon(bh, blknr_to_addr(compressed_blocks));
+ 	DBG_BUGON(ret);
+ 
+-	erofs_info("compressed %s (%lu bytes) into %u blocks",
+-		   inode->i_srcpath, inode->i_size, compressed_blocks);
++	erofs_info("compressed %s (%llu bytes) into %u blocks",
++		   inode->i_srcpath, (unsigned long long)inode->i_size, compressed_blocks);
+ 
+ 	/*
+ 	 * TODO: need to move erofs_bdrop to erofs_write_tail_end
+diff --git a/lib/inode.c b/lib/inode.c
+index 141a300..db9ad99 100644
+--- a/lib/inode.c
++++ b/lib/inode.c
+@@ -789,8 +789,8 @@ fail:
+ 
+ 		d->type = erofs_type_by_mode[d->inode->i_mode >> S_SHIFT];
+ 		erofs_d_invalidate(d);
+-		erofs_info("add file %s/%s (nid %lu, type %d)",
+-			   dir->i_srcpath, d->name, d->nid, d->type);
++		erofs_info("add file %s/%s (nid %llu, type %d)",
++			   dir->i_srcpath, d->name, (unsigned long long)d->nid, d->type);
+ 	}
+ 	erofs_write_dir_file(dir);
+ 	erofs_write_tail_end(dir);
+-- 
+2.23.0
+

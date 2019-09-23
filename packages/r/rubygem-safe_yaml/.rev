@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8923b9eb1a68b4c05cb9c516fe402293</srcmd5>
+    <version>1.0.4</version>
+    <time>1468579826</time>
+    <user>dimstar_suse</user>
+    <comment>needed by jekyll</comment>
+    <requestid>407391</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>08983df65b4a608ca3bddf53f99f5347</srcmd5>
+    <version>1.0.5</version>
+    <time>1560970859</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706022</requestid>
+  </revision>
+</revisionlist>

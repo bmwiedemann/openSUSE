@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Thu Dec 17 09:40:25 UTC 2015 - coolo@suse.com
+
+- updated to 20140910.003
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+
+  Revision history for Perl module
+- Drop fix-provides.diff (included upstream)
+
+-------------------------------------------------------------------
+Thu Feb 19 13:24:45 UTC 2015 - coolo@suse.com
+
+- updated to 20140910.002
+    * Look in the current directory for RangeMessage.xml if it's
+      not in other locations. This can help with various Perl app
+      packagers. (But, also try ISBN_RANGE_MESSAGE env var)
+- add fix-provides.diff to avoid providing ::ISBN without data
+
+-------------------------------------------------------------------
+Sun Sep 21 13:42:01 UTC 2014 - lars@linux-schulserver.de
+
+- updated to 20140910.001:
+  * Update to the latest data (2014-09-10)
+- fix perl path in make_data.pl
+
+-------------------------------------------------------------------
+Tue Jun  4 11:43:57 UTC 2013 - coolo@suse.com
+
+- updated to 20120719.001
+       * Support data from RangeMessage.xml. You can use the latest
+       data from ISBN without updating this module.
+
+       Specify the Test::More version so I cna use subtest.
+       No code or feature changes
+
+-------------------------------------------------------------------
+Tue Nov 30 19:19:51 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sat Sep  4 18:25:47 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- noarch pkg
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Sat Jul 25 19:29:04 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Sun Jun 28 18:47:35 CEST 2009 - chris@computersalat.de
+
+- update to 20081208
+  - 0.00 - Fri Dec  5 12:00:41 2008
+    * Latest data update.
+  - 20081020 - Mon Oct 20 17:44:15 2008
+    * Updated publisher codes thanks to Yakov Shafranovich
+    * Version number is now the update date of the module,
+      in YYYYMMDD. This not the date of the ISBN Agency 
+      updates though.
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- spec mods
+  o fixed deps
+
+-------------------------------------------------------------------
+Tue Feb 12 13:01:45 CET 2008 - lars@linux-schulserver.de
+
+- Update to 1.17:
+  [BUGFIX] RT #29078: Fix publihser ranges for Greece
+
+-------------------------------------------------------------------
+Mon Jul 23 14:46:46 CEST 2007 - lrupp@suse.de
+
+- initial package 1.14
+

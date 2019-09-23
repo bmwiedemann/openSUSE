@@ -1,0 +1,648 @@
+-------------------------------------------------------------------
+Thu Sep  5 14:01:03 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- No code change since 19.08.0
+
+-------------------------------------------------------------------
+Fri Aug  9 08:31:49 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- No code change since 19.04.3
+
+-------------------------------------------------------------------
+Fri Jul 12 07:30:07 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- No code changes since 19.04.2
+
+-------------------------------------------------------------------
+Fri Jun  7 11:55:41 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- No code changes since 19.04.1
+
+-------------------------------------------------------------------
+Fri May 10 05:25:08 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- No code changes since 19.04.0
+
+-------------------------------------------------------------------
+Fri Apr 19 05:16:03 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- No code changes since 18.12.3
+
+-------------------------------------------------------------------
+Thu Mar  7 14:57:37 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * No code changes since 18.12.2
+
+-------------------------------------------------------------------
+Sun Feb 10 17:40:41 UTC 2019 - wbauer@tmo.at
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * No code changes since 18.12.1
+
+-------------------------------------------------------------------
+Wed Jan 16 10:57:16 UTC 2019 - wbauer@tmo.at
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * No code changes since 18.12.0
+- Remove yahoo provider and service, support has been dropped from
+  telepathy-haze/libpurple so trying to add it only gives an error
+  message
+
+-------------------------------------------------------------------
+Fri Dec 14 08:00:34 UTC 2018 - wbauer@tmo.at
+
+- Update to 18.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.08.3:
+  * Unused variable
+  * Compare value
+  * Overrides
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Fri Nov  9 10:53:14 UTC 2018 - wbauer@tmo.at
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * No code changes since 18.08.2
+
+-------------------------------------------------------------------
+Fri Oct 12 08:19:19 UTC 2018 - wbauer@tmo.at
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * None
+
+-------------------------------------------------------------------
+Fri Sep  7 11:59:43 UTC 2018 - wbauer@tmo.at
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * None
+
+-------------------------------------------------------------------
+Fri Aug 17 10:41:57 UTC 2018 - wbauer@tmo.at
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.04.3:
+  * None
+
+-------------------------------------------------------------------
+Fri Jul 13 23:53:53 UTC 2018 - wbauer@tmo.at
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * None
+
+-------------------------------------------------------------------
+Fri Jun  8 07:11:08 UTC 2018 - wbauer@tmo.at
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * None
+
+-------------------------------------------------------------------
+Fri May 25 11:53:47 UTC 2018 - wbauer@tmo.at
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 17.08.3:
+  * Remove obsolete reviewboardrc file
+
+-------------------------------------------------------------------
+Thu Nov 09 23:12:26 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 00:32:37 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 07 07:02:28 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * Fix some pedantic compiler warnings
+
+-------------------------------------------------------------------
+Fri Aug 11 22:46:06 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+  * None
+
+-------------------------------------------------------------------
+Sat Aug  5 18:18:56 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.08-rc.php
+
+
+-------------------------------------------------------------------
+Sun Jul 16 08:39:45 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Jun 07 17:42:58 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * None
+
+-------------------------------------------------------------------
+Wed May 17 20:37:05 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * None
+
+-------------------------------------------------------------------
+Sun Apr 16 10:45:11 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 12 20:25:57 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * None
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:45 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-beta.php
+- Changes since 16.12.3:
+  * port salut plugin to kf5
+
+-------------------------------------------------------------------
+Thu Mar  9 12:41:38 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * None
+
+-------------------------------------------------------------------
+Thu Feb  9 07:11:29 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Sat Jan 14 09:02:52 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+-------------------------------------------------------------------
+Tue Dec 13 19:55:29 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Sat Dec  3 16:40:00 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 12:37:42 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+
+-------------------------------------------------------------------
+Wed Nov  9 06:24:13 UTC 2016 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.08.3
+  * KDE Applications 16.08.3
+  * https://www.kde.org/announcements/announce-applications-16.08.3.php
+
+-------------------------------------------------------------------
+Tue Oct 11 21:03:36 UTC 2016 - lbeltrame@kde.org
+
+- KDE Applications 16.08.2
+https://www.kde.org/announcements/announce-applications-16.08.2.php
+
+-------------------------------------------------------------------
+Fri Sep  9 08:36:03 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.1
+   * KDE Applications 16.08.1
+   * https://www.kde.org/announcements/announce-applications-16.08.1.php
+
+
+-------------------------------------------------------------------
+Fri Aug 12 10:25:56 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.0
+   * KDE Applications 16.08.0
+   * https://www.kde.org/announcements/announce-applications-16.08.0.php
+
+
+-------------------------------------------------------------------
+Mon Aug  8 15:26:53 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.07.90
+   * KDE Applications 16.07.90 (16.08-RC)
+   * https://www.kde.org/announcements/announce-applications-16.08-rc.php
+
+
+-------------------------------------------------------------------
+Fri Jul  8 00:20:06 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.3
+   * KDE Applications 16.04.3
+   * https://www.kde.org/announcements/announce-applications-16.04.3.php
+
+
+-------------------------------------------------------------------
+Fri Jun 10 18:06:47 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.2
+   * KDE Applications 16.04.2
+   * https://www.kde.org/announcements/announce-applications-16.04.2.php
+
+
+-------------------------------------------------------------------
+Sat May  7 10:38:21 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.1
+   * KDE Applications 16.04.1
+   * https://www.kde.org/announcements/announce-applications-16.04.1.php
+
+
+-------------------------------------------------------------------
+Sun Apr 17 06:14:38 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.0
+   * KDE Applications 16.04.0
+   * https://www.kde.org/announcements/announce-applications-16.04.0.php
+
+
+-------------------------------------------------------------------
+Mon Apr 11 06:50:03 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.03.90
+   * KDE Applications 16.04.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.04-rc.php
+
+
+-------------------------------------------------------------------
+Sun Mar 13 15:52:10 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.3
+   * KDE Applications 15.12.3
+   * https://www.kde.org/announcements/announce-applications-15.12.3.php
+   * boo#970855
+
+
+-------------------------------------------------------------------
+Sat Feb 13 08:20:28 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.2
+   * KDE Applications 15.12.2
+   * https://www.kde.org/announcements/announce-applications-15.12.2.php
+   * boo#966605
+
+
+-------------------------------------------------------------------
+Sat Jan  9 18:30:16 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.1
+   * KDE Applications 15.12.1
+   * https://www.kde.org/announcements/announce-applications-15.12.1.php
+   * boo#961265
+
+
+-------------------------------------------------------------------
+Sun Dec 13 13:28:24 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.0
+   * KDE Applications 15.12.0
+   * https://www.kde.org/announcements/announce-applications-15.12.0.php
+   * boo#958887
+
+
+-------------------------------------------------------------------
+Tue Nov 10 20:18:10 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.3
+   * KDE Applications 15.08.3
+   * https://www.kde.org/announcements/announce-applications-15.08.3.php
+   * boo#954531
+
+
+-------------------------------------------------------------------
+Sun Oct 11 13:41:09 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.2
+   * KDE Applications 15.08.2
+   * https://www.kde.org/announcements/announce-applications-15.08.2.php
+
+
+-------------------------------------------------------------------
+Sun Sep 13 19:30:37 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.1
+   * KDE Applications 15.08.1
+   * https://www.kde.org/announcements/announce-applications-15.08.1.php
+
+
+-------------------------------------------------------------------
+Wed Aug 19 19:44:01 UTC 2015 - cgiboudeaux@gmx.com
+
+- Update to KDE Applications 15.08.0
+   * KDE Applications 15.08.0
+   * https://www.kde.org/announcements/announce-applications-15.08.0.php
+
+-------------------------------------------------------------------
+Fri Aug  7 07:09:53 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.07.90
+   * KDE Applications 15.08.0 RC1
+   * https://www.kde.org/announcements/announce-applications-15.08-rc.php
+
+
+-------------------------------------------------------------------
+Mon Jul  6 06:08:10 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.3
+   * KDE Applications 15.04.3
+   * https://www.kde.org/announcements/announce-applications-15.04.3.php
+
+
+-------------------------------------------------------------------
+Sat May 30 15:23:15 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.2
+   * KDE Applications 15.04.2
+   * https://www.kde.org/announcements/announce-applications-15.04.2.php
+
+
+-------------------------------------------------------------------
+Mon May 11 11:31:11 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.1
+   * KDE Applications 15.04.1
+   * https://www.kde.org/announcements/announce-applications-15.04.1.php
+
+
+-------------------------------------------------------------------
+Sat Apr 11 19:20:04 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.0
+   * KDE Applications 15.04.0
+   * https://www.kde.org/announcements/announce-applications-15.04.0.php
+
+
+-------------------------------------------------------------------
+Sat Oct 18 19:24:48 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.9 Final:
+  * Bugfixes since beta release, no upstream changelog
+
+-------------------------------------------------------------------
+Tue Sep 16 16:13:14 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.8.80 (0.9 beta)
+  * OTR support
+  * Improved group chats
+  * Modernised video chats, now based on GStreamer 1.0
+  * Lots of fixes and speed improvements
+
+-------------------------------------------------------------------
+Sat Apr 26 00:16:02 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.8.1:
+  * New bugfix release, no upstream changelog
+
+-------------------------------------------------------------------
+Wed Mar 12 21:50:01 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.8.0 final
+  * New feature release, no upstream changelog
+
+-------------------------------------------------------------------
+Tue Feb 18 19:53:00 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.7.80 (0.8 beta)
+  * New feature release, no upstream changelog
+
+-------------------------------------------------------------------
+Wed Jan 15 03:20:05 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to final 0.7.1
+  * New feature release, no upstream changelog
+  * For more details, see:
+    http://martys.typepad.com/blog/2014/01/kde-telepathy-071-released.html
+
+-------------------------------------------------------------------
+Sun Oct 27 22:21:28 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to final 0.7.0
+  * New feature release, no upstream changelog
+
+-------------------------------------------------------------------
+Mon Oct  7 17:49:06 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Small spec cleanup:
+  * Always BuildRequire on latest ktp-common-internals-devel version
+  * Drop telepathy-butterfly and telepathy-sofiasip Recommends,
+    packages are (no longer) part of openSUSE releases
+  * Use kde macros consistently
+
+-------------------------------------------------------------------
+Thu Sep 26 22:02:08 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 0.6.80
+  * New feature release, please see http://www.sharpley.org.uk/blog/ktp-0.7-beta
+
+-------------------------------------------------------------------
+Thu Aug  8 21:49:12 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 0.6.3
+  * Bugfix release, please see http://www.sharpley.org.uk/blog/ktp-0-6-3
+
+-------------------------------------------------------------------
+Sat May 25 16:45:03 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 0.6.2
+  * Bugfix release, please see http://www.sharpley.org.uk/blog/ktp-0-6-2
+
+-------------------------------------------------------------------
+Wed Apr 17 08:52:35 UTC 2013 - alinm.elena@gmail.com
+
+- upadted to version 0.6.1
+  * Bugfix release, no changelog provided
+
+-------------------------------------------------------------------
+Tue Apr  2 21:18:28 UTC 2013 - alinm.elena@gmail.com
+
+- updated to 0.6.0
+  * New release, please see http://www.sharpley.org.uk/blog/ktp-0-6-beta
+
+-------------------------------------------------------------------
+Sat Mar 16 13:14:08 UTC 2013 - toddrme2178@gmail.com
+
+- Only recommend plugins, don't require them.  Some are no longer
+  available
+
+-------------------------------------------------------------------
+Tue Feb 19 04:55:23 UTC 2013 - mlin@suse.com
+
+- Update to 0.5.3
+  * Bugfix release, please see http://www.sharpley.org.uk/blog/ktp-0-5-3
+
+-------------------------------------------------------------------
+Tue Dec 18 06:08:16 UTC 2012 - mlin@suse.com
+
+- Update to 0.5.2
+  * Bugfix release, please http://www.sharpley.org.uk/blog/ktp-0-5-2
+
+-------------------------------------------------------------------
+Sat Oct  6 12:50:57 UTC 2012 - toddrme2178@gmail.com
+
+- Update to 0.5.1
+  * Bugfix release
+
+-------------------------------------------------------------------
+Tue Aug 28 05:56:48 UTC 2012 - mlin@suse.com
+
+- Update to 0.5.0
+  * Bugfix release
+
+-------------------------------------------------------------------
+Thu Jul 26 09:20:07 UTC 2012 - toddrme2178@gmail.com
+
+- Update to 0.4.1
+  * Bugfix release
+
+-------------------------------------------------------------------
+Mon Dec 26 16:56:03 UTC 2011 - cgiboudeaux@gmx.com
+
+- Rename the package
+
+-------------------------------------------------------------------
+Sat Apr  9 19:58:12 UTC 2011 - cgiboudeaux@gmx.com
+
+- Cleanup
+
+-------------------------------------------------------------------
+Mon Jan  3 23:18:29 UTC 2011 - alinm.elena@gmail.com
+
+- initial commit
+

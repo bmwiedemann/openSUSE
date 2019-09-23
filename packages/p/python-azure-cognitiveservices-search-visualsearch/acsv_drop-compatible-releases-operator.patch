@@ -1,0 +1,12 @@
+diff -Nru azure-cognitiveservices-search-visualsearch-0.2.0.orig/setup.py azure-cognitiveservices-search-visualsearch-0.2.0/setup.py
+--- azure-cognitiveservices-search-visualsearch-0.2.0.orig/setup.py	2018-12-18 00:23:04.000000000 +0100
++++ azure-cognitiveservices-search-visualsearch-0.2.0/setup.py	2019-03-22 12:36:49.068830721 +0100
+@@ -79,7 +79,7 @@
+     ]),
+     install_requires=[
+         'msrest>=0.5.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     extras_require={
+         ":python_version<'3.0'": ['azure-cognitiveservices-search-nspkg'],

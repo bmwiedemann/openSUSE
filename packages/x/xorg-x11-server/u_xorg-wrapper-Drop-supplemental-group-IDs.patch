@@ -1,0 +1,78 @@
+From: Egbert Eich <eich@suse.de>
+Date: Tue Apr 12 15:52:37 2016 +0200
+Subject: [PATCH]xorg-wrapper: Drop supplemental group IDs
+Patch-mainline: to be upstreamed
+References: 
+Signed-off-by: Egbert Eich <eich@suse.com>
+
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ hw/xfree86/xorg-wrapper.c | 48 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 48 insertions(+)
+
+diff --git a/hw/xfree86/xorg-wrapper.c b/hw/xfree86/xorg-wrapper.c
+index d930962..64a43c4 100644
+--- a/hw/xfree86/xorg-wrapper.c
++++ b/hw/xfree86/xorg-wrapper.c
+@@ -36,6 +36,8 @@
+ #include <string.h>
+ #include <sys/ioctl.h>
+ #include <sys/stat.h>
++#include <pwd.h>
++#include <grp.h>
+ #ifdef HAVE_SYS_SYSMACROS_H
+ #include <sys/sysmacros.h>
+ #endif
+@@ -252,6 +254,52 @@ int main(int argc, char *argv[])
+     if (needs_root_rights == 0 || (total_cards && kms_cards == total_cards)) {
+         gid_t realgid = getgid();
+         uid_t realuid = getuid();
++        int ngroups = 0;
++        gid_t *groups = NULL;
++        long int initlen = sysconf(_SC_GETPW_R_SIZE_MAX);
++        size_t len;
++        struct passwd result, *resultp;
++        char *buffer;
++        int e;
++
++        if (initlen == -1)
++            len = 1024;
++        else
++            len = (size_t) initlen;
++        if ((buffer = malloc(len)) < 0) {
++            fprintf(stderr, "%s: Could not allocate memory: %s\n",
++                    progname, strerror(errno));
++            exit (1);
++        }
++        if ((e = getpwuid_r(realuid, &result, buffer, len, &resultp)) > 0) {
++            fprintf(stderr, "%s: Could not get user name: %s\n",
++                    progname, strerror(errno));
++            exit (1);
++        } else if (resultp == NULL) {
++            fprintf(stderr, "%s: Could not find user name for UID %d\n",
++                    progname, realuid);
++            exit (1);
++        }
++        if (getgrouplist(result.pw_name, realgid, groups, &ngroups) < 0) {
++            if ((groups = malloc(sizeof(gid_t) * ngroups)) == NULL) {
++                fprintf(stderr, "%s: Could not allocate memory: %s\n",
++                        progname, strerror(errno));
++                exit (1);
++            }
++            if (getgrouplist(result.pw_name, realgid, groups, &ngroups) < 0) {
++                fprintf(stderr, "%s: Could not get supplementary group list\n",
++                        progname);
++                ngroups = 0;
++            }
++        }
++        if (setgroups(ngroups, groups) == -1) {
++            fprintf(stderr, "%s: Could not set groups: %s\n",
++                    progname, strerror(errno));
++            exit (1);
++        }
++        memset(buffer, 0, len);
++        free(buffer);
++        free(groups);
+ 
+         if (setresgid(-1, realgid, realgid) != 0) {
+             fprintf(stderr, "%s: Could not drop setgid privileges: %s\n",

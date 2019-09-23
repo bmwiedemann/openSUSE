@@ -1,0 +1,84 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9a06bc156b2dd0286cea3aa35abc099c</srcmd5>
+    <version>3.3.2</version>
+    <time>1468482331</time>
+    <user>dimstar_suse</user>
+    <comment>We need this package as a build input for the Haskell library &quot;hlibsass&quot;, which we'd like to submit to Factory once this is available.
+
+This submission addresses the comments from https://build.opensuse.org/request/show/405608.</comment>
+    <requestid>407153</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>30222f6742b4ade095b2c55a00d28998</srcmd5>
+    <version>3.3.2</version>
+    <time>1468580074</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408490</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5dc881adae06f6e2287b9e555332ae93</srcmd5>
+    <version>3.3.2</version>
+    <time>1468999248</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411690</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4138dd46b36413d957a35907dac22b97</srcmd5>
+    <version>3.3.6</version>
+    <time>1480019168</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441861</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f5ae2141a0eefdc781c5679c1b69d4c9</srcmd5>
+    <version>3.4.3</version>
+    <time>1487261136</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457036</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>173764e9655d326cff470588d9d6b3e9</srcmd5>
+    <version>3.4.6</version>
+    <time>1509036388</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536854</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3922283b7cf1fb3e07b2b11bd308a5c7</srcmd5>
+    <version>3.4.9</version>
+    <time>1520778307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585009</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6c787cbe51621bf773d491f6273681cb</srcmd5>
+    <version>3.5.1</version>
+    <time>1522057937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588445</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>484a56251a4fdc1617d0d209d4654182</srcmd5>
+    <version>3.5.3</version>
+    <time>1524741740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600298</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c847352d7b4b4117afb8030bc47fe3c8</srcmd5>
+    <version>3.6.1</version>
+    <time>1563259146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714781</requestid>
+  </revision>
+</revisionlist>

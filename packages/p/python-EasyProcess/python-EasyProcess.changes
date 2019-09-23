@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Sun Sep 15 03:11:23 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix examples to use sys.executable
+
+-------------------------------------------------------------------
+Mon Jun 17 12:15:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.2.7:
+  * Small fixes only
+
+-------------------------------------------------------------------
+Fri Apr  5 23:58:47 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add export LANG=en_US.UTF-8 to fix Leap builds
+
+-------------------------------------------------------------------
+Fri Mar  1 12:54:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.2.5:
+  * Fixes for python 3.7
+  * Many utf8 fixes
+- Switch to github tarball for tests
+
+-------------------------------------------------------------------
+Wed Dec  5 01:05:28 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description. Do not put limitations under
+  "features".
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:32 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Aug 28 19:32:50 UTC 2017 - toddrme2178@gmail.com
+
+- update to version 0.2.3:
+  * no changelog available
+- Implement single-spec version
+- Fix source URL
+
+-------------------------------------------------------------------
+Mon May  4 13:36:58 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.1.9:
+  * no changelog available
+
+-------------------------------------------------------------------
+Thu Oct 24 11:04:50 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Sun Feb 17 14:07:19 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.1.6:
+  * No changelog available
+
+-------------------------------------------------------------------
+Sat Feb 16 14:52:19 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.1.5:
+  * No changelog available
+
+-------------------------------------------------------------------
+Thu Jan 10 18:38:33 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support package
+
+-------------------------------------------------------------------
+Mon Mar 26 11:44:14 UTC 2012 - saschpe@suse.de
+
+- Initial version
+

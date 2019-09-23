@@ -1,0 +1,162 @@
+-------------------------------------------------------------------
+Fri Sep 13 12:20:49 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add o2scl-disable-failing-tests.patch: Disable LU test that
+  fails on x86_64 (gh#awsteiner/o2scl#9).
+
+-------------------------------------------------------------------
+Tue Apr 30 13:52:16 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.923:
+  * A new function "rearrange_and_copy()" was added to the tensor
+    and tensor_grid classes for several kinds of tensor
+    rearrangements.
+  * A new matrix_view_transpose class and a new wordexp() function
+    were created.
+  * The classes cloud_file, boson_rel, eos_had_skyrme,
+    eos_tov_buchdahl, fermion_deriv_rel, fermion_eff,
+    fermion_nonrel, fermion_rel, eos_had_rmf, hist, interpm_krige,
+    and interp_krige_optim classes were improved improved. The
+    particle calibration routines were improved.
+  * The constants were updated for the CODATA 2014 release.
+  * Several updates were made to acol. The handling of tensor and
+    tensor_grid classes was improved. Vector and value
+    specifications were added. The help text was reworked. The
+    autocorr command was improved.
+  * A new class slack_messenger was created to send messages to
+    Slack.
+- Drop o2scl-remove-glob_wrapper-test.patch: incorporated
+  upstream.
+
+-------------------------------------------------------------------
+Tue Oct 30 12:46:53 UTC 2018 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Fix URL (old link dead)
+
+-------------------------------------------------------------------
+Mon Oct 22 14:30:29 UTC 2018 - badshah400@gmail.com
+
+- Update to version 0.922:
+  * In the table class, the set() function no longer automatically
+    adds rows or columns. This prevents some behavior which was
+    not intuitive for users.
+  * Several tensor functions have been added, including
+    tensor::swap_data(), tensor_out(), tensor::min(),
+    tensor::max(), tensor::copy(), tensor::is_valid().
+  * Slicing for tensor_grid objects has been improved.
+  * Copy constructors for tensor and tensor_grid have been
+    created.
+  * A few long double integration classes have been added when
+    higher accuracy is required.
+  * The MCMC classes have been completely reworked, offering
+    better support for OpenMP and MPI parallelism.
+  * The acol command has been expanded and improved in several
+    ways. Code for o2graph has been moved out and the
+    documentation has been improved.
+  * The conversion functions in convert_units now has a const
+    version
+  * The documentation has been improved everywhere.
+  * A new nearest neighbor interpolation type has been added.
+  * A seed bug in rng_gsl has been fixed.
+  * HDF5 I/0 for table3d types now allows const references.
+  * The cloud_file class is updated and simplified.
+  * The prob_dens_func_amr class has been updated.
+  * Some work has been done on heat capacity functions for
+    particle objects.
+  * The fermion_rel::calc_mu() and pair_mu() functions work better
+    now with bad initial guesses.
+  * The tov_solve, eos_tov, eos_cs2_const, and eos_had_rmf_hyp
+    classes are improved.
+- Drop o2scl-decrease-fit_fix-tolerances.patch: upstreamed.
+- Add o2scl-remove-glob_wrapper-test.patch: Remove glob_wrapper()
+  from misc_ts because it isn't platform independent; patch taken
+  from upstream git (gh#awsteiner/o2scl#8).
+
+-------------------------------------------------------------------
+Tue Apr 24 11:59:26 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Enable test only on x86_64 since all other archs do not support 
+  low tolerances
+
+-------------------------------------------------------------------
+Tue Mar 27 15:09:27 UTC 2018 - badshah400@gmail.com
+
+- Disable tests on i586 until test codes are fixed, typically
+  simply by increasing tolerances (gh#awsteiner/o2scl#7).
+
+-------------------------------------------------------------------
+Tue Mar  6 17:09:20 UTC 2018 - badshah400@gmail.com
+
+- Add o2scl-decrease-fit_fix-tolerances.patch: Decrease the
+  tolerance level on fit_fix test to prevent errors on 32-bit
+  systems during make check; patch taken from upstream git
+  (gh#awsteiner/o2scl#7).
+
+-------------------------------------------------------------------
+Tue Mar  6 15:20:58 UTC 2018 - badshah400@gmail.com
+
+- Only enable gsl2 features for openSUSE >= 1500; gsl >= 2.0 is
+  not available for older openSUSE.
+
+-------------------------------------------------------------------
+Tue Feb 27 13:15:57 UTC 2018 - badshah400@gmail.com
+
+- Update to version 0.921:
+  * New vector_autocorr() functions were created to analyze
+    autocorrelations.
+  * The class serach_vec now has improved thread safety.
+  * Kriging classes interpm_krige_nn, interpm_krige, and
+    interp_krige were created. These are still a bit experimental.
+  * A new Robbins-Monro iteration root-finding class has been
+    created. A class smooth_func for smoothing multivariate
+    functions by averaging in a neighborhood has been created.
+    These should help dealing with noisy functions.
+  * All 'funct11' classes have been renamed to 'funct'.
+  * New vector bin size functions have been created.
+  * The 'acol' command has been reworked to handle HDF5 I/O for
+    more types. It can now manipulate vectors, matrices, and
+    tensors in several new ways. The interaction with o2graph in
+    o2sclpy has also been improved.
+  * The Markov chain Monte Carlo classes have been updated, but
+    are still experimental. Similarly with the probability
+    density distribution classes where new bivariate gaussian
+    and AMR-like probability densities were created.
+  * The internal bibliography mechanics have been improved.
+  * Error handling in nucleus_rmf has been improved.
+  * Updates to eos_tov_vectors, eos_had_rmf, eos_tov_vectors,
+    eos_had_skyrme.
+  * Created an eos_cs2_poly class and anneal_para_ts.
+  * Nuclear masses were updated for the 2016 AME data set.
+  * The calculation of dndT, dndmu, and dsdT for relativistic
+    fermions has been improved.
+  * The SFHo and SFHx EOSs were updated.
+  * Several internal changes have been made to allow Ubuntu-style
+    packages. The 'make check' target now works without 'make
+    install'. A snapcraft snap has also been created. These are
+    still in progress.
+- Run tests in a check section.
+- Remove bogus duplicated doc files from non-std location
+  [/usr/search].
+
+-------------------------------------------------------------------
+Tue Aug 29 18:08:59 UTC 2017 - jengelh@inai.de
+
+- Upgrade RPM groups; combine two find calls.
+
+-------------------------------------------------------------------
+Fri Aug 25 11:51:21 UTC 2017 - badshah400@gmail.com
+
+- Fix package groups: shared library -> System/Libraries, devel
+  package -> Productivity/Scientific/Math.
+
+-------------------------------------------------------------------
+Thu Aug 10 15:29:58 UTC 2017 - badshah400@gmail.com
+
+- Use boost-devel instead of libboost_headers-devel where the
+  latter is not available (openSUSE < 1320).
+
+-------------------------------------------------------------------
+Tue Aug  8 15:00:32 UTC 2017 - badshah400@gmail.com
+
+- Initial package.
+

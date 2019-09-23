@@ -1,0 +1,31 @@
+# $Id$
+# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Contributor: m0rph <m0rph.mailbox@gmail.com>
+# Contributor: Tvangeste <i.4m.l33t@yandex.ru>
+
+pkgname=goldendict
+pkgver=1.5.0~rc2+git.20170601T224956
+pkgrel=1
+pkgdesc="Feature-rich dictionary lookup program"
+arch=('i686' 'x86_64')
+packager="Tvangeste <i.4m.l33t@yandex.ru>"
+url="http://goldendict.org/"
+license=('GPL3')
+depends=('hunspell' 'libvorbis' 'libxtst' 'libzip' 'qtwebkit' 'libao' 'ffmpeg' 'lzo' 'bzip2')
+makedepends=('patch')
+provides=('stardict')
+changelog=debian.changelog
+source=("${pkgname}-${pkgver}.tar.gz")
+sha256sums=('SKIP')
+
+build(){
+  cd ${srcdir}/${pkgname}-${pkgver}
+  qmake-qt4 PREFIX=/usr
+  make
+}
+
+package() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+  make INSTALL_ROOT=${pkgdir} install
+}
+

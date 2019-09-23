@@ -1,0 +1,7 @@
+<package name="xrdp" project="openSUSE:Factory">
+  <title>An open source RDP server</title>
+  <description>Based on the work of FreeRDP and rdesktop, xrdp uses the remote desktop protocol to present a GUI to the user.
+
+The goal of this project is to provide a fully functional Linux terminal server, capable of accepting connections from rdesktop, freerdp, and Microsoft's own terminal server / remote desktop clients.</description>
+  <devel project="X11:RemoteDesktop" package="xrdp"/>
+</package>

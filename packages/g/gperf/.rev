@@ -1,0 +1,145 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5319f438253dfde0988fde146cfddb50</srcmd5>
+    <version>3.0.2</version>
+    <time>1168902931</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="123">
+    <srcmd5>5319f438253dfde0988fde146cfddb50</srcmd5>
+    <version>3.0.2</version>
+    <time>1168902931</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="124">
+    <srcmd5>988db9e40d50c543c7610bb704d82109</srcmd5>
+    <version>3.0.2</version>
+    <time>1245260139</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="126">
+    <srcmd5>988db9e40d50c543c7610bb704d82109</srcmd5>
+    <version>3.0.2</version>
+    <time>1245260139</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="127">
+    <srcmd5>94f4ed8ecd3bb8380b7f74c4b93fc691</srcmd5>
+    <version>3.0.2</version>
+    <time>1263479330</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/gperf based on submit request 29048 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0ad0f66ca06360fe9f191f58cd272696</srcmd5>
+    <version>3.0.4</version>
+    <time>1267715315</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/gperf based on submit request 33623 from user prusnak
+</comment>
+    <requestid>33623</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>dcce913c6767bb1a2acfc0e30bf0b2ea</srcmd5>
+    <version>3.0.4</version>
+    <time>1268923855</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>dcce913c6767bb1a2acfc0e30bf0b2ea</srcmd5>
+    <version>3.0.4</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>dcce913c6767bb1a2acfc0e30bf0b2ea</srcmd5>
+    <version>3.0.4</version>
+    <time>1278678580</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>dcce913c6767bb1a2acfc0e30bf0b2ea</srcmd5>
+    <version>3.0.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>dcce913c6767bb1a2acfc0e30bf0b2ea</srcmd5>
+    <version>3.0.4</version>
+    <time>1319181939</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>a0d19b933bf0b9ae3c7ba6cf1453da2c</srcmd5>
+    <version>3.0.4</version>
+    <time>1323191746</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>a0d19b933bf0b9ae3c7ba6cf1453da2c</srcmd5>
+    <version>3.0.4</version>
+    <time>1340183407</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="15">
+    <srcmd5>a0d19b933bf0b9ae3c7ba6cf1453da2c</srcmd5>
+    <version>3.0.4</version>
+    <time>1359108994</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="17">
+    <srcmd5>a0d19b933bf0b9ae3c7ba6cf1453da2c</srcmd5>
+    <version>3.0.4</version>
+    <time>1379662545</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="19">
+    <srcmd5>a0d19b933bf0b9ae3c7ba6cf1453da2c</srcmd5>
+    <version>3.0.4</version>
+    <time>1409301087</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="20">
+    <srcmd5>44398b1c31ed212b2ac29849f0c09e9c</srcmd5>
+    <version>3.0.4</version>
+    <time>1418113024</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264344</requestid>
+  </revision>
+  <revision rev="18" vrev="21">
+    <srcmd5>cb16a5ad72a6457b32c611aab4394a8b</srcmd5>
+    <version>3.0.4</version>
+    <time>1428272709</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gpg signature
+- Correct info requirements
+- Cleanup spec file with spec-cleaner (forwarded request 294208 from pluskalm)</comment>
+    <requestid>294234</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3d75f706007f0a15358b103d03bd5142</srcmd5>
+    <version>3.1</version>
+    <time>1495010686</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448889</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>b2427b0eb11443f9e3efa7a1d1171248</srcmd5>
+    <version>3.1</version>
+    <time>1520502959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583405</requestid>
+  </revision>
+</revisionlist>

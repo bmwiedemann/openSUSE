@@ -1,0 +1,6 @@
+# Two .h files are config files in C include file format
+addFilter("devel-file-in-non-devel-package")
+# Use the name registered by LANANA
+addFilter("incoherent-init-script-name smartd")
+# Still valid for SLE10
+addFilter("obsolete-suse-version-check 1020")

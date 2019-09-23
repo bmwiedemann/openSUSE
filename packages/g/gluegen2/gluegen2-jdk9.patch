@@ -1,0 +1,345 @@
+--- gluegen-v2.3.2/make/build-test.xml	2017-09-18 09:57:45.693803795 +0200
++++ gluegen-v2.3.2/make/build-test.xml	2017-10-06 08:39:37.939654044 +0200
+@@ -134,7 +134,6 @@
+                encoding="UTF-8"
+                source="${target.sourcelevel}" 
+                target="${target.targetlevel}" 
+-               bootclasspath="${target.rt.jar}"
+                debug="${javacdebug}" debuglevel="${javacdebuglevel}">
+             <classpath refid="junit.compile.classpath"/>
+             <compilerarg value="-proc:none"/>
+@@ -150,7 +149,6 @@
+                encoding="UTF-8"
+                source="${target.sourcelevel}" 
+                target="${target.targetlevel}" 
+-               bootclasspath="${target.rt.jar}"
+                debug="${javacdebug}" debuglevel="${javacdebuglevel}">
+             <classpath refid="junit.compile.classpath"/>
+             <compilerarg value="-proc:only"/>
+@@ -168,7 +166,6 @@
+                encoding="UTF-8"
+                source="${target.sourcelevel}" 
+                target="${target.targetlevel}" 
+-               bootclasspath="${target.rt.jar}"
+                debug="${javacdebug}" debuglevel="${javacdebuglevel}">
+             <classpath refid="junit.compile.classpath"/>
+             <compilerarg value="-proc:none"/>
+--- gluegen-v2.3.2/make/build.xml	2017-09-18 09:57:45.685803795 +0200
++++ gluegen-v2.3.2/make/build.xml	2017-10-06 08:43:21.785687756 +0200
+@@ -731,7 +731,6 @@
+            encoding="UTF-8"
+            source="${target.sourcelevel}" 
+            target="${target.targetlevel}" 
+-           bootclasspath="${target.rt.jar}"
+            debug="${javacdebug}" debuglevel="${javacdebuglevel}">
+       <src path="${src.java}" />
+       <src path="${src.generated.java}" />
+@@ -759,7 +758,6 @@
+            encoding="UTF-8"
+            source="${target.sourcelevel}"
+            target="${target.targetlevel}" 
+-           bootclasspath="${host.rt.jar}"
+            debug="${javacdebug}" debuglevel="${javacdebuglevel}">
+       <src path="${src.jcpp}" />
+       <src path="${src.java}" />
+@@ -916,7 +914,6 @@
+            encoding="UTF-8"
+            source="${target.sourcelevel}" 
+            target="${target.targetlevel}" 
+-           bootclasspath="${target.rt.jar}"
+            debug="${javacdebug}" debuglevel="${javacdebuglevel}">
+       <src path="${src.java}" />
+       <src path="${src.generated.java}" />
+@@ -976,7 +973,6 @@
+            encoding="UTF-8"
+            source="${target.sourcelevel}" 
+            target="${target.targetlevel}" 
+-           bootclasspath="${target.rt.jar}"
+            debug="${javacdebug}" debuglevel="${javacdebuglevel}">
+       <src path="${src.java}" />
+       <classpath refid="android.classpath" />
+--- gluegen-v2.3.2/make/gluegen-cpptasks-base.xml	2017-09-18 09:57:45.685803795 +0200
++++ gluegen-v2.3.2/make/gluegen-cpptasks-base.xml	2017-10-06 09:36:23.220445307 +0200
+@@ -963,6 +963,10 @@
+        - Set up java.home.dir appropriately on all platforms.
+       -->
+   <target name="setup.java.home.dir.nonmacosx" unless="isOSX">
++      <!-- In jdk9, there is no '<java-install-dir>/jre' -->
++	  <condition property="java.home.dir" value="${java.home}">
++          <available file="${java.home}/include/jni.h"/>
++	  </condition>
+       <!-- java home dir is up one directory as java.home points to '<java-install-dir>/jre' -->
+       <property name="java.home.dir" value="${java.home}/.." />
+   </target>
+@@ -1478,6 +1482,9 @@
+       <echo message="Linux.x86" />
+       <property name="compiler.cfg.id.base"          value="compiler.cfg.linux.x86" /> 
+       <property name="linker.cfg.id.base"            value="linker.cfg.linux.x86" /> 
++      <condition property="java.lib.dir.platform" value="${java.home.dir}/lib">
++         <available file="${java.home.dir}/lib/libjawt.so"/>
++      </condition>
+       <property name="java.lib.dir.platform"         value="${java.home.dir}/jre/lib/i386" />
+     </target>
+ 
+@@ -1485,6 +1492,9 @@
+       <echo message="Linux.AMD64" />
+       <property name="compiler.cfg.id.base"          value="compiler.cfg.linux.amd64" /> 
+       <property name="linker.cfg.id.base"            value="linker.cfg.linux.amd64" /> 
++      <condition property="java.lib.dir.platform" value="${java.home.dir}/lib">
++         <available file="${java.home.dir}/lib/libjawt.so"/>
++      </condition>
+       <property name="java.lib.dir.platform"         value="${java.home.dir}/jre/lib/amd64" />
+     </target>
+ 
+@@ -1492,6 +1502,9 @@
+       <echo message="Linux.alpha" />
+       <property name="compiler.cfg.id.base"          value="compiler.cfg.linux.alpha" /> 
+       <property name="linker.cfg.id.base"            value="linker.cfg.linux.alpha" /> 
++      <condition property="java.lib.dir.platform" value="${java.home.dir}/lib">
++         <available file="${java.home.dir}/lib/libjawt.so"/>
++      </condition>
+       <property name="java.lib.dir.platform"         value="${java.home.dir}/jre/lib/alpha" />
+     </target>
+ 
+@@ -1499,6 +1512,9 @@
+       <echo message="Linux.armv6" />
+       <property name="compiler.cfg.id.base"          value="compiler.cfg.linux.armv6" /> 
+       <property name="linker.cfg.id.base"            value="linker.cfg.linux.armv6" /> 
++      <condition property="java.lib.dir.platform" value="${java.home.dir}/lib">
++         <available file="${java.home.dir}/lib/libjawt.so"/>
++      </condition>
+       <property name="java.lib.dir.platform"         value="${java.home.dir}/jre/lib/arm" />
+     </target>
+ 
+@@ -1506,6 +1522,9 @@
+       <echo message="Linux.aarch64" />
+       <property name="compiler.cfg.id.base"          value="compiler.cfg.linux.aarch64" /> 
+       <property name="linker.cfg.id.base"            value="linker.cfg.linux.aarch64" /> 
++      <condition property="java.lib.dir.platform" value="${java.home.dir}/lib">
++         <available file="${java.home.dir}/lib/libjawt.so"/>
++      </condition>
+       <property name="java.lib.dir.platform"         value="${java.home.dir}/jre/lib/arm" />
+     </target>
+ 
+@@ -1513,6 +1532,9 @@
+       <echo message="Linux.IA64" />
+       <property name="compiler.cfg.id.base"          value="compiler.cfg.linux" /> 
+       <property name="linker.cfg.id.base"            value="linker.cfg.linux" /> 
++      <condition property="java.lib.dir.platform" value="${java.home.dir}/lib">
++         <available file="${java.home.dir}/lib/libjawt.so"/>
++      </condition>
+       <property name="java.lib.dir.platform"         value="${java.home.dir}/jre/lib/ia64" />
+     </target>
+ 
+@@ -1520,6 +1542,9 @@
+       <echo message="Linux.hppa" />
+       <property name="compiler.cfg.id.base"          value="compiler.cfg.linux" /> 
+       <property name="linker.cfg.id.base"            value="linker.cfg.linux" /> 
++      <condition property="java.lib.dir.platform" value="${java.home.dir}/lib">
++         <available file="${java.home.dir}/lib/libjawt.so"/>
++      </condition>
+       <property name="java.lib.dir.platform"         value="${java.home.dir}/jre/lib/hppa" />
+     </target>
+ 
+@@ -1527,6 +1552,9 @@
+       <echo message="Linux.Mips" />
+       <property name="compiler.cfg.id.base"          value="compiler.cfg.linux" /> 
+       <property name="linker.cfg.id.base"            value="linker.cfg.linux" /> 
++      <condition property="java.lib.dir.platform" value="${java.home.dir}/lib">
++         <available file="${java.home.dir}/lib/libjawt.so"/>
++      </condition>
+       <property name="java.lib.dir.platform"         value="${java.home.dir}/jre/lib/mips" />
+     </target>
+ 
+@@ -1534,6 +1562,9 @@
+       <echo message="Linux.Mipsel" />
+       <property name="compiler.cfg.id.base"          value="compiler.cfg.linux" /> 
+       <property name="linker.cfg.id.base"            value="linker.cfg.linux" /> 
++      <condition property="java.lib.dir.platform" value="${java.home.dir}/lib">
++         <available file="${java.home.dir}/lib/libjawt.so"/>
++      </condition>
+       <property name="java.lib.dir.platform"         value="${java.home.dir}/jre/lib/mipsel" />
+     </target>
+ 
+@@ -1548,6 +1579,9 @@
+       <echo message="Linux.Ppc64" />
+       <property name="compiler.cfg.id.base"          value="compiler.cfg.linux" />
+       <property name="linker.cfg.id.base"            value="linker.cfg.linux" />
++      <condition property="java.lib.dir.platform" value="${java.home.dir}/lib">
++         <available file="${java.home.dir}/lib/libjawt.so"/>
++      </condition>
+       <property name="java.lib.dir.platform"         value="${java.home.dir}/jre/lib/ppc64" />
+     </target>
+ 
+@@ -1555,6 +1589,9 @@
+       <echo message="Linux.Ppc64le" />
+       <property name="compiler.cfg.id.base"          value="compiler.cfg.linux" />
+       <property name="linker.cfg.id.base"            value="linker.cfg.linux" />
++      <condition property="java.lib.dir.platform" value="${java.home.dir}/lib">
++         <available file="${java.home.dir}/lib/libjawt.so"/>
++      </condition>
+       <property name="java.lib.dir.platform"         value="${java.home.dir}/jre/lib/ppc64le" />
+     </target>
+ 
+@@ -1562,6 +1599,9 @@
+       <echo message="Linux.s390" />
+       <property name="compiler.cfg.id.base"          value="compiler.cfg.linux" /> 
+       <property name="linker.cfg.id.base"            value="linker.cfg.linux" /> 
++      <condition property="java.lib.dir.platform" value="${java.home.dir}/lib">
++         <available file="${java.home.dir}/lib/libjawt.so"/>
++      </condition>
+       <property name="java.lib.dir.platform"         value="${java.home.dir}/jre/lib/s390" />
+     </target>
+ 
+@@ -1569,6 +1609,9 @@
+       <echo message="Linux.s390x" />
+       <property name="compiler.cfg.id.base"          value="compiler.cfg.linux" /> 
+       <property name="linker.cfg.id.base"            value="linker.cfg.linux" /> 
++      <condition property="java.lib.dir.platform" value="${java.home.dir}/lib">
++         <available file="${java.home.dir}/lib/libjawt.so"/>
++      </condition>
+       <property name="java.lib.dir.platform"         value="${java.home.dir}/jre/lib/s390x" />
+     </target>
+ 
+@@ -1576,6 +1619,9 @@
+       <echo message="Linux.Sparc" />
+       <property name="compiler.cfg.id.base"          value="compiler.cfg.linux" /> 
+       <property name="linker.cfg.id.base"            value="linker.cfg.linux" /> 
++      <condition property="java.lib.dir.platform" value="${java.home.dir}/lib">
++         <available file="${java.home.dir}/lib/libjawt.so"/>
++      </condition>
+       <property name="java.lib.dir.platform"         value="${java.home.dir}/jre/lib/sparc" />
+     </target>
+ 
+--- gluegen-v2.3.2/make/jogamp-env.xml	2017-09-18 09:57:45.685803795 +0200
++++ gluegen-v2.3.2/make/jogamp-env.xml	2017-10-06 08:45:22.107590077 +0200
+@@ -53,8 +53,8 @@
+                     <equals arg1="${ant.java.version}" arg2="1.7"/>
+                     <equals arg1="${ant.java.version}" arg2="1.8"/>
+                     <equals arg1="${ant.java.version}" arg2="1.9"/>
+-                    <equals arg1="${ant.java.version}" arg2="2.0"/>
+-                    <equals arg1="${ant.java.version}" arg2="2.1"/>
++                    <equals arg1="${ant.java.version}" arg2="9"/>
++                    <equals arg1="${ant.java.version}" arg2="10"/>
+                 </or>
+             </not>
+         </condition>
+@@ -73,8 +73,8 @@
+         <or>
+             <equals arg1="${ant.java.version}" arg2="1.8"/>
+             <equals arg1="${ant.java.version}" arg2="1.9"/>
+-            <equals arg1="${ant.java.version}" arg2="2.0"/>
+-            <equals arg1="${ant.java.version}" arg2="2.1"/>
++            <equals arg1="${ant.java.version}" arg2="9"/>
++            <equals arg1="${ant.java.version}" arg2="10"/>
+         </or>
+     </condition>
+     <echo message="javadoc.xarg1              ${javadoc.xarg1}"/>
+@@ -148,25 +148,17 @@
+         </not>
+     </condition>
+ 
+-    <condition property="target.rt.jar" value="${env.TARGET_RT_JAR}">
+-        <not>
+-         <equals arg1="${env.TARGET_RT_JAR}" arg2="$${env.TARGET_RT_JAR}" casesensitive="true" />
+-        </not>
+-    </condition>
+-
+-    <fail message="You need to specify all properties 'target.sourcelevel', 'target.targetlevel' and 'target.rt.jar' or none at all.">
++    <fail message="You need to specify all properties 'target.sourcelevel' and 'target.targetlevel' or none at all.">
+       <condition>
+         <and>
+             <or>
+               <isset property="target.sourcelevel"/>
+               <isset property="target.targetlevel"/>
+-              <isset property="target.rt.jar"/>
+             </or>
+             <not>
+               <and>
+                   <isset property="target.sourcelevel"/>
+                   <isset property="target.targetlevel"/>
+-                  <isset property="target.rt.jar"/>
+               </and>
+             </not>
+         </and>
+@@ -177,57 +169,22 @@
+           <and>
+               <isset property="target.sourcelevel"/>
+               <isset property="target.targetlevel"/>
+-              <isset property="target.rt.jar"/>
+           </and>
+     </condition>
+ 
+     <property name="target.sourcelevel"       value="${ant.java.version}" />      <!-- default fallback values -->
+     <property name="target.targetlevel"       value="${ant.java.version}" />      <!-- default fallback values -->
+     <!-- Default value for std Java (incl. Java7 on OS X) -->
+-    <condition property="target.rt.jar"
+-               value="${java.home}/lib/rt.jar">
+-               <available file="${java.home}/lib/rt.jar"/>
+-    </condition>
+-    <!-- Default fallback value for Java6 OS X -->
+-    <condition property="target.rt.jar"
+-               value="${java.home}/../Classes/classes.jar">
+-               <available file="${java.home}/../Classes/classes.jar"/>
+-    </condition>
+     <!-- Default fallback value on std Java -->
+     <echo message="target.user.set            ${target.user.set}"/>
+     <echo message="target.sourcelevel         ${target.sourcelevel}"/>
+     <echo message="target.targetlevel         ${target.targetlevel}"/>
+-    <echo message="target.rt.jar              ${target.rt.jar}"/>
+-    <fail message="No target.rt.jar specified not found.">
+-      <condition>
+-        <not>
+-          <isset property="target.rt.jar"/>
+-        </not>
+-      </condition>
+-    </fail>
+ 
+     <property name="host.sourcelevel"         value="${ant.java.version}" />      <!-- default values for compile time components -->
+     <property name="host.targetlevel"         value="${ant.java.version}" />      <!-- default values for compile time components -->
+-    <!-- Default value for std Java (incl. Java7 on OS X) -->
+-    <condition property="host.rt.jar"
+-               value="${java.home}/lib/rt.jar">
+-               <available file="${java.home}/lib/rt.jar"/>
+-    </condition>
+-    <!-- Default fallback value for Java6 OS X -->
+-    <condition property="host.rt.jar"
+-               value="${java.home}/../Classes/classes.jar">
+-               <available file="${java.home}/../Classes/classes.jar"/>
+-    </condition>
++
+     <echo message="host.sourcelevel           ${host.sourcelevel}"/>
+     <echo message="host.targetlevel           ${host.targetlevel}"/>
+-    <echo message="host.rt.jar                ${host.rt.jar}"/>
+-    <fail message="No host.rt.jar specified not found.">
+-      <condition>
+-        <not>
+-          <isset property="host.rt.jar"/>
+-        </not>
+-      </condition>
+-    </fail>
+ 
+     <fail message="Unsupported Target Java version (sourcelevel): ${target.sourcelevel}. Make sure that the version of the Java compiler is 1.6 (6.0) or greater.">
+         <condition>
+@@ -237,8 +194,8 @@
+                     <contains string="${target.sourcelevel}" substring="1.7" casesensitive="false" />
+                     <contains string="${target.sourcelevel}" substring="1.8" casesensitive="false" />
+                     <contains string="${target.sourcelevel}" substring="1.9" casesensitive="false" />
+-                    <contains string="${target.sourcelevel}" substring="2.0" casesensitive="false" />
+-                    <contains string="${target.sourcelevel}" substring="2.1" casesensitive="false" />
++                    <contains string="${target.sourcelevel}" substring="9" casesensitive="false" />
++                    <contains string="${target.sourcelevel}" substring="10" casesensitive="false" />
+                 </or>
+             </not>
+         </condition>
+@@ -251,8 +208,8 @@
+                     <contains string="${target.targetlevel}" substring="1.7" casesensitive="false" />
+                     <contains string="${target.targetlevel}" substring="1.8" casesensitive="false" />
+                     <contains string="${target.targetlevel}" substring="1.9" casesensitive="false" />
+-                    <contains string="${target.targetlevel}" substring="2.0" casesensitive="false" />
+-                    <contains string="${target.targetlevel}" substring="2.1" casesensitive="false" />
++                    <contains string="${target.targetlevel}" substring="9" casesensitive="false" />
++                    <contains string="${target.targetlevel}" substring="10" casesensitive="false" />
+                 </or>
+             </not>
+         </condition>

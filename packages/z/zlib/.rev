@@ -1,0 +1,628 @@
+<revisionlist>
+  <revision rev="1" vrev="4">
+    <srcmd5>9ea8207c1c8c51e4c218238d81c9c08a</srcmd5>
+    <version>1.2.3</version>
+    <time>1166483926</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="37">
+    <srcmd5>16fe57c34a400d82d34679dcb021a6a2</srcmd5>
+    <version>1.2.3</version>
+    <time>1170376390</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="39">
+    <srcmd5>eea303030a3a046641fea45eea35d330</srcmd5>
+    <version>1.2.3</version>
+    <time>1170971764</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="50">
+    <srcmd5>a49d5deeadf5642ebf197043b4a01baa</srcmd5>
+    <version>1.2.3</version>
+    <time>1178464306</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="87">
+    <srcmd5>e5d8806ec6f97d49211656f0117c129e</srcmd5>
+    <version>1.2.3</version>
+    <time>1200106147</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="104">
+    <srcmd5>1e79d7e8a1e89516f0d4ce57ecf3d01a</srcmd5>
+    <version>1.2.3</version>
+    <time>1207826142</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="133">
+    <srcmd5>1e79d7e8a1e89516f0d4ce57ecf3d01a</srcmd5>
+    <version>1.2.3</version>
+    <time>1207826142</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="134">
+    <srcmd5>7e10b340b5b564fa8f8b7d9e6bdb6826</srcmd5>
+    <version>1.2.3</version>
+    <time>1231421728</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="137">
+    <srcmd5>19387ca0b22f745b8627ac18d9ff16a3</srcmd5>
+    <version>1.2.3</version>
+    <time>1237571849</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="138">
+    <srcmd5>d166b96b13faa303173751f0a1cd9539</srcmd5>
+    <version>1.2.3</version>
+    <time>1237916024</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="139">
+    <srcmd5>b88d68b5830155f34a7ab072fdfb99e8</srcmd5>
+    <version>1.2.3</version>
+    <time>1242685664</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="141">
+    <srcmd5>b88d68b5830155f34a7ab072fdfb99e8</srcmd5>
+    <version>1.2.3</version>
+    <time>1242685664</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="142">
+    <srcmd5>41de24b747e115ab2f5f6fa63a87c765</srcmd5>
+    <version>1.2.3</version>
+    <time>1259279646</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/zlib based on submit request 25075 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="14" vrev="143">
+    <srcmd5>64d503a3525c5ef19eff1fd8a477f483</srcmd5>
+    <version>1.2.3</version>
+    <time>1260949860</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/zlib based on submit request 26384 from user mseben
+</comment>
+  </revision>
+  <revision rev="15" vrev="144">
+    <srcmd5>75c7eaeab52068b1ccac68ed137843e6</srcmd5>
+    <version>1.2.3</version>
+    <time>1268926824</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="145">
+    <srcmd5>de61a230a1837602e8d209a5f97c1fd9</srcmd5>
+    <version>1.2.3</version>
+    <time>1278075105</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/zlib based on submit request 42240 from user prusnak
+</comment>
+    <requestid>42240</requestid>
+  </revision>
+  <revision rev="17" vrev="147">
+    <srcmd5>de61a230a1837602e8d209a5f97c1fd9</srcmd5>
+    <version>1.2.3</version>
+    <time>1278667399</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="148">
+    <srcmd5>de61a230a1837602e8d209a5f97c1fd9</srcmd5>
+    <version>1.2.3</version>
+    <time>1278678634</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>67f59976588a517151d25f705a7ad10a</srcmd5>
+    <version>1.2.5</version>
+    <time>1281736674</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/zlib based on submit request 45298 from user elvigia
+</comment>
+    <requestid>45298</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>fe4d15c2b1c540fd58760fc64ba14504</srcmd5>
+    <version>1.2.5</version>
+    <time>1284749141</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/zlib based on submit request 48171 from user elvigia
+</comment>
+    <requestid>48171</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>814a3599fe316e262262c9495a547a21</srcmd5>
+    <version>1.2.5</version>
+    <time>1285144324</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/zlib based on submit request 48747 from user elvigia
+</comment>
+    <requestid>48747</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>f4fa1d4e32201ec01fcad28612fc4a45</srcmd5>
+    <version>1.2.5</version>
+    <time>1293579618</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56541 from user msmeissn
+</comment>
+    <requestid>56541</requestid>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>cc55c77ac8b3dc78dd9be4da10bca955</srcmd5>
+    <version>1.2.5</version>
+    <time>1293579627</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56541
+</comment>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>c22017f278a43d2d405c836ddcadbfcf</srcmd5>
+    <version>1.2.5</version>
+    <time>1294652158</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57609 from user msmeissn
+</comment>
+    <requestid>57609</requestid>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>7f57f6467f8f18ca3ea30ed1feace7bd</srcmd5>
+    <version>1.2.5</version>
+    <time>1294652170</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57609
+</comment>
+  </revision>
+  <revision rev="26" vrev="10">
+    <srcmd5>7f57f6467f8f18ca3ea30ed1feace7bd</srcmd5>
+    <version>1.2.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="27" vrev="11">
+    <srcmd5>a5c2f95ef53d3f04fbdaf4d4182bd8a0</srcmd5>
+    <version>1.2.5</version>
+    <time>1301825633</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65792 from user coolo
+</comment>
+    <requestid>65792</requestid>
+  </revision>
+  <revision rev="28" vrev="12">
+    <srcmd5>a316942d69c9eeba1b5a0ff7493fc5db</srcmd5>
+    <version>1.2.5</version>
+    <time>1301825661</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65792
+</comment>
+  </revision>
+  <revision rev="29" vrev="11">
+    <srcmd5>2692fb43579823e5620ae70d69b56e3d</srcmd5>
+    <version>1.2.5_git201105121450</version>
+    <time>1305530123</time>
+    <user>saschpe</user>
+    <comment>- Update SSE patches, fixes bugs in PPC implementation
+- X86 improvements. (forwarded request 70148 from elvigia)</comment>
+    <requestid>70149</requestid>
+  </revision>
+  <revision rev="30" vrev="12">
+    <srcmd5>69ba5faa5dda58b10cb2402023fcca81</srcmd5>
+    <version>1.2.5_git201105121450</version>
+    <time>1305530136</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70149
+</comment>
+  </revision>
+  <revision rev="31" vrev="13">
+    <srcmd5>cb4c77182ce89c93680413a2d00af432</srcmd5>
+    <version>1.2.5_git201105121450</version>
+    <time>1306739090</time>
+    <user>saschpe</user>
+    <comment>- fix bnc#679345: zlib segfaults when passing NULL to gzopen
+  * return NULL checks back to gz_open</comment>
+    <requestid>71640</requestid>
+  </revision>
+  <revision rev="32" vrev="14">
+    <srcmd5>36994770b1b210dc67bdd90b025b9a98</srcmd5>
+    <version>1.2.5_git201105121450</version>
+    <time>1306739101</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71640
+</comment>
+  </revision>
+  <revision rev="33" vrev="13">
+    <srcmd5>815b9a8e6c53f6cde5a0a120041fd5f1</srcmd5>
+    <version>1.2.5_git201105272030</version>
+    <time>1307345935</time>
+    <user>saschpe</user>
+    <comment>- Fix two bugs that will break ia64 systems only. (forwarded request 72177 from elvigia)</comment>
+    <requestid>72178</requestid>
+  </revision>
+  <revision rev="34" vrev="14">
+    <srcmd5>9a310b8e1080a474aa7510575eb59ad4</srcmd5>
+    <version>1.2.5_git201105272030</version>
+    <time>1307345944</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72178
+</comment>
+  </revision>
+  <revision rev="35" vrev="15">
+    <srcmd5>4800531314b96d170c18eb733ef77122</srcmd5>
+    <version>1.2.5_git201105272030</version>
+    <time>1309436069</time>
+    <user>saschpe</user>
+    <comment>minor rewording of LICENSES, see bnc#652333 (forwarded request 74630 from dimstar)</comment>
+    <requestid>74641</requestid>
+  </revision>
+  <revision rev="36" vrev="16">
+    <srcmd5>2095474107b12fdafbd1044d41a1496a</srcmd5>
+    <version>1.2.5_git201105272030</version>
+    <time>1309436099</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74641
+</comment>
+  </revision>
+  <revision rev="37" vrev="17">
+    <srcmd5>92884a16ef6375701011ff4deb18951a</srcmd5>
+    <version>1.2.5_git201105272030</version>
+    <time>1314601937</time>
+    <user>saschpe</user>
+    <comment>- Use __attribute__ target in SSE optimized functions
+  so the compiler defines __MMX__ __SSE__ etc, this probably
+  only matters in 32 bit. what version to use is still 
+  determined at runtime by cpuid. (forwarded request 79913 from elvigia)</comment>
+    <requestid>79914</requestid>
+  </revision>
+  <revision rev="38" vrev="18">
+    <srcmd5>628bf03cbcc1632c3c3d9f789af7d18b</srcmd5>
+    <version>1.2.5_git201105272030</version>
+    <time>1314601946</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79914
+</comment>
+  </revision>
+  <revision rev="39" vrev="19">
+    <srcmd5>ec8a05b5f5c1a10152971ff255e276fc</srcmd5>
+    <version>1.2.5_git201105272030</version>
+    <time>1317744971</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (not %configure, this is not
+  autoconf) (forwarded request 86488 from uli_suse)</comment>
+    <requestid>86496</requestid>
+  </revision>
+  <revision rev="40" vrev="21">
+    <srcmd5>ec8a05b5f5c1a10152971ff255e276fc</srcmd5>
+    <version>1.2.5_git201105272030</version>
+    <time>1319182647</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="41" vrev="22">
+    <srcmd5>2fb786085f9bee25f39112a3ccb6eb70</srcmd5>
+    <version>1.2.5_git201105272030</version>
+    <time>1321275102</time>
+    <user>coolo</user>
+    <comment>-open file descriptors with O_CLOEXEC but only in the·
+  gzopen() case, not in gzdopen() as that would change
+  the calling application' semantics.
+  It is responsability of the caller to ensure O_CLOEXEC is used
+  in such scenario.
+
+  only matters in 32 bit. what version to use is still
+- Fix two bugs that will break ia64 systems only.
+ * This are integrated now,including support for a number
+  now with comments,performance numbers,and ia64 support
+- Update SSE2/MMX patches to version 2.
+  this makes the library up to 6 times faster.
+- use compiler profile information to make libz slightly faster.
+    contributions in contrib/
+- refresh patches with fuzz=0
+- added LICENSE file, for GPL licensed contrib files, however
+  mail either the security team or me.
+- add patch from gentoo that makes zlib to only export
+- run make test in the check section.
+- remove libgz completely (obsolete long ago)
+- supply format arguments to gzprintf().
+- update to 1.2.2
+- update to 1.2.1
+- remove executable bits from manpage and include file
+- prevent double free() (security problem) with
+- added Provides zlib-devel for compatibility
+- install main lib in /%{_lib} not /usr/%{_lib}
+- sorted (forwarded request 91106 from elvigia)</comment>
+    <requestid>91199</requestid>
+  </revision>
+  <revision rev="42" vrev="17">
+    <srcmd5>133fc85613354b8fa0c87272eddc9479</srcmd5>
+    <version>1.2.5.2_git201109121534</version>
+    <time>1321876290</time>
+    <user>coolo</user>
+    <comment>- Do not include the codename in soversion. (forwarded request 92512 from elvigia)</comment>
+    <requestid>92513</requestid>
+  </revision>
+  <revision rev="43" vrev="18">
+    <srcmd5>de15f2c2e23c24f9f22a4d6fde6f72b1</srcmd5>
+    <version>1.2.5.2_git201109121534</version>
+    <time>1323705609</time>
+    <user>coolo</user>
+    <comment>- zlib has it's own spdx license, so use it :) (forwarded request 95769 from coolo)</comment>
+    <requestid>95861</requestid>
+  </revision>
+  <revision rev="44" vrev="19">
+    <srcmd5>4ec282188578e7ebc8a45c34bf4aaccd</srcmd5>
+    <version>1.2.5.2_git201109121534</version>
+    <time>1325007593</time>
+    <user>coolo</user>
+    <comment>- use configure options for library paths. Also fixes
+  the pkg-config file to not have /usr/local bnc#738169 (forwarded request 97895 from msmeissn)</comment>
+    <requestid>97969</requestid>
+  </revision>
+  <revision rev="45" vrev="20">
+    <srcmd5>310d15762e702908aa12b728a9f355fe</srcmd5>
+    <version>1.2.5.2_git201109121534</version>
+    <time>1329405918</time>
+    <user>coolo</user>
+    <comment>remove redundant sections in spec</comment>
+    <requestid>105270</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e8e28361226edb603cfd37ff219b068f</srcmd5>
+    <version>1.2.7</version>
+    <time>1336452763</time>
+    <user>coolo</user>
+    <comment>Update to 1.2.7
+Passed the spec file through spec cleaner (forwarded request 116645 from worldcitizen)</comment>
+    <requestid>116646</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>e8e28361226edb603cfd37ff219b068f</srcmd5>
+    <version>1.2.7</version>
+    <time>1340184422</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>fddf63fb503be73c19954ed48780b33e</srcmd5>
+    <version>1.2.7</version>
+    <time>1350969367</time>
+    <user>coolo</user>
+    <comment>- buildignore checks for now to get bootstrapping working
+
+- add longest_match performance patch (fate#314093)
+  * suggested by IBM, sent upstream
+- rename the main library package to libz1 according Shared
+  Library Policy
+- profiling build can be enabled via build --with profiling
+- use the human-readable package description from zlib.net
+- add rpmlintrc</comment>
+    <requestid>138959</requestid>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>9fbb13c2ce1da3fb5cdc2038ae53834b</srcmd5>
+    <version>1.2.7</version>
+    <time>1354178042</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>143502</requestid>
+  </revision>
+  <revision rev="50" vrev="6">
+    <srcmd5>fcd5313ea0d5e8ecc22869053f847ec4</srcmd5>
+    <version>1.2.7</version>
+    <time>1356731547</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146287</requestid>
+  </revision>
+  <revision rev="51" vrev="8">
+    <srcmd5>fcd5313ea0d5e8ecc22869053f847ec4</srcmd5>
+    <version>1.2.7</version>
+    <time>1359110785</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="52" vrev="9">
+    <srcmd5>e5c41da93e8540ab3d037f8184c6d6d2</srcmd5>
+    <version>1.2.7</version>
+    <time>1362497966</time>
+    <user>coolo</user>
+    <comment>- libz1-32bit obsoletes zlib-32bit &lt;= 1.2.7 (fixes bnc#806310)</comment>
+    <requestid>157375</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>a15144daff2de37cc339ff249fd566be</srcmd5>
+    <version>1.2.8</version>
+    <time>1368697506</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.2.8
+  * Add new inflateGetDictionary() function
+  * Fix bug where gzopen() immediately followed by gzclose()
+    would write an empty file instead of an empty gzip stream.
+  * Fix bug in gzclose() when gzwrite() runs out of memory</comment>
+    <requestid>175521</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>be7c2a79c57e7d3da64c51beefbc2390</srcmd5>
+    <version>1.2.8</version>
+    <time>1375125239</time>
+    <user>coolo</user>
+    <comment>- zlib-format.patch, backport missing sle11 feature back to openSUSE
+  bnc#831880</comment>
+    <requestid>184761</requestid>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>be7c2a79c57e7d3da64c51beefbc2390</srcmd5>
+    <version>1.2.8</version>
+    <time>1379665195</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="56" vrev="6">
+    <srcmd5>be7c2a79c57e7d3da64c51beefbc2390</srcmd5>
+    <version>1.2.8</version>
+    <time>1409303880</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="57" vrev="7">
+    <srcmd5>06eb4581649ef1141ba554dd5afe66b1</srcmd5>
+    <version>1.2.8</version>
+    <time>1413382753</time>
+    <user>coolo</user>
+    <comment>- Install examples to cover another angle from bnc#890228
+- Cleanup with spec-cleaner</comment>
+    <requestid>252159</requestid>
+  </revision>
+  <revision rev="58" vrev="8">
+    <srcmd5>5e1a943f0710785fc7211a8a68a0afd8</srcmd5>
+    <version>1.2.8</version>
+    <time>1435652055</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove zlib-devel-static, nothing should use libz.a anyway.
+- Package minizip library, everything using it should now pull
+  minizip-devel and unbundle it bnc#935864</comment>
+    <requestid>313382</requestid>
+  </revision>
+  <revision rev="59" vrev="9">
+    <srcmd5>6938af520ab32a5624e32f19dfd6472d</srcmd5>
+    <version>1.2.8</version>
+    <time>1435658866</time>
+    <user>dimstar_suse</user>
+    <comment>Reverting back to rev 57, devel static is still required</comment>
+  </revision>
+  <revision rev="60" vrev="10">
+    <srcmd5>b242557a0d3560b5a1d24d3485e6e64d</srcmd5>
+    <version>1.2.8</version>
+    <time>1437477900</time>
+    <user>coolo</user>
+    <comment>- Require zlib-devel in zlib-devel-static to fix previous change
+
+- Bring back zlib-devel-static. Needed by binutils
+
+- Remove zlib-devel-static, nothing should use libz.a anyway.
+- Package minizip library, everything using it should now pull
+  minizip-devel and unbundle it bnc#935864</comment>
+    <requestid>316403</requestid>
+  </revision>
+  <revision rev="61" vrev="11">
+    <srcmd5>d4e1ef121637c87f0b6cb6afbeba5758</srcmd5>
+    <version>1.2.8</version>
+    <time>1444130578</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>333783</requestid>
+  </revision>
+  <revision rev="62" vrev="12">
+    <srcmd5>6a9cf81577a0fa5d0de049baaae55339</srcmd5>
+    <version>1.2.8</version>
+    <time>1481153245</time>
+    <user>dimstar_suse</user>
+    <comment>- Include fixes for bnc#1003580 bnc#1003579 bnc#1003577:
+  * zlib-bnc1003577.patch
+  * zlib-bnc1003579-part2.patch
+  * zlib-bnc1003579.patch
+  * zlib-bnc1003580.patch</comment>
+    <requestid>443701</requestid>
+  </revision>
+  <revision rev="63" vrev="13">
+    <srcmd5>ebec2c7d3ad689c0170661dce7f5b194</srcmd5>
+    <version>1.2.8</version>
+    <time>1481964326</time>
+    <user>dimstar_suse</user>
+    <comment>- Include fixes for bnc#1003580 bnc#1003579 bnc#1003577 bnc#1013882:
+  * zlib-bnc1003580.patch refreshed
+  * zlib-bnc1013882.patch CVE-2016-9843</comment>
+    <requestid>445412</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>457fb83f60024a921b346e192b3a4a04</srcmd5>
+    <version>1.2.11</version>
+    <time>1495637125</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494524</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>1f77179aae42439fca8725579ec0da05</srcmd5>
+    <version>1.2.11</version>
+    <time>1496681312</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500414</requestid>
+  </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>d27e6e54c2306924ceed3d791c9bf83b</srcmd5>
+    <version>1.2.11</version>
+    <time>1497786479</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503255</requestid>
+  </revision>
+  <revision rev="67" vrev="4">
+    <srcmd5>d73d629a7c794b90860a3c75b7163c09</srcmd5>
+    <version>1.2.11</version>
+    <time>1527001057</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to safeguard against negative values in uInt bsc#1071321:
+  * 0001-Do-not-try-to-store-negative-values-in-unsigned-int.patch</comment>
+    <requestid>607454</requestid>
+  </revision>
+  <revision rev="68" vrev="5">
+    <srcmd5>f3ccdd4c4a08e8af38f80c9edd5bdd5f</srcmd5>
+    <version>1.2.11</version>
+    <time>1530001784</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch for fate#325307 zlib speedup on power8:
+  * zlib-power8-fate325307.patch</comment>
+    <requestid>618098</requestid>
+  </revision>
+  <revision rev="69" vrev="6">
+    <srcmd5>232d9228a703fd1039e1bb70a608e895</srcmd5>
+    <version>1.2.11</version>
+    <time>1553503631</time>
+    <user>dimstar_suse</user>
+    <comment>- Try to safely abort if we get NULL ptr bsc#1110304 bsc#1129576:
+  * zlib-power8-fate325307.patch</comment>
+    <requestid>686469</requestid>
+  </revision>
+  <revision rev="70" vrev="7">
+    <srcmd5>986f39ec5cd8cab299c30e35498fafee</srcmd5>
+    <version>1.2.11</version>
+    <time>1561557541</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not enable the previous patchset on s390 but just s390x
+  bsc#1137624
+
+- Add patchset for s390 improvements jsc#SLE-5807 bsc#1136717:
+  * 410.patch</comment>
+    <requestid>708284</requestid>
+  </revision>
+  <revision rev="71" vrev="8">
+    <srcmd5>ea0d8fa95f412b0d49ea025d511e622e</srcmd5>
+    <version>1.2.11</version>
+    <time>1562591368</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712987</requestid>
+  </revision>
+  <revision rev="72" vrev="9">
+    <srcmd5>0fa90fc885b8c9b4189780b6dddaf5e6</srcmd5>
+    <version>1.2.11</version>
+    <time>1563258512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714702</requestid>
+  </revision>
+  <revision rev="73" vrev="10">
+    <srcmd5>dba95cd5e1f3e1d65572f8463317efde</srcmd5>
+    <version>1.2.11</version>
+    <time>1564996661</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the s390 patchset bsc#1137624:
+  * 410.patch</comment>
+    <requestid>715995</requestid>
+  </revision>
+</revisionlist>

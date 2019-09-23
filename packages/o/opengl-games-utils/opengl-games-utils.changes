@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Fri Jul 29 15:33:52 UTC 2016 - rpm@fthiessen.de
+
+- Ported to be compatible with POSIX-shell instead of bash.
+
+-------------------------------------------------------------------
+Tue Apr 24 14:24:55 UTC 2012 - klaussfreire@gmail.com
+
+- Require glxinfo by binary path
+- Fix category to match official list
+
+-------------------------------------------------------------------
+Fri Jan 11 12:01:15 CET 2008 - claes.backstrom@fsfe.org
+
+- Fix DRI detection to work with dual head configurations
+
+-------------------------------------------------------------------
+Mon Dec 31 17:50:01 CET 2007 - claes.backstrom@fsfe.org
+
+- Initial package built from Fedora package (0.1-5)
+

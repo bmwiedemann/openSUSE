@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Fri Jul  6 10:21:02 UTC 2018 - sndirsch@suse.com
+
+- Update to version 1.1.4
+  * Contains some tiny bugfixes sitting in git unreleased for too long.
+
+-------------------------------------------------------------------
+Sat Jun  1 19:47:21 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.1.3:
+  This bug fix release primarily provides the fix for the recently announced
+  security vulnerability CVE-2013-1985.
+
+-------------------------------------------------------------------
+Sun Feb 17 17:21:53 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+- Avoid calling fdupes outside of /usr
+
+-------------------------------------------------------------------
+Wed Apr 11 15:18:19 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.1.2:
+  + Janitorial cleanups
+  + Build configuration improvements
+
+-------------------------------------------------------------------
+Tue Feb  7 22:17:49 UTC 2012 - jengelh@medozas.de
+
+- Split xorg-x11-libs into separate packages

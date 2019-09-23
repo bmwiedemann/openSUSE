@@ -1,0 +1,86 @@
+From 1a405368c25f76db054fd3befa7fb72e7a5e1f2e Mon Sep 17 00:00:00 2001
+From: Matthias Andree <matthias.andree@gmx.de>
+Date: Wed, 8 Jun 2016 22:34:23 +0200
+Subject: [PATCH] A few Python 3 compatibility fixes.
+
+Still needs 2to3 to be run under Python 3.
+---
+ fetchmailconf.py | 20 +++++++++++++-------
+ 1 file changed, 13 insertions(+), 7 deletions(-)
+
+diff --git a/fetchmailconf.py b/fetchmailconf.py
+index 697e4f7..5c0b8ed 100755
+--- a/fetchmailconf.py
++++ b/fetchmailconf.py
+@@ -5,12 +5,17 @@
+ # Matthias Andree <matthias.andree@gmx.de>
+ # Requires Python with Tkinter, and the following OS-dependent services:
+ #	posix, posixpath, socket
++
++# WARNING: this needs to be updated for fetchmail 6.4's SSL options,
++# and other recent new options;
++# WARNING: to be compatible with Python 3, needs to be run thru 2to3.py.
+ from __future__ import print_function
+ 
+-version = "1.57"
++version = "1.58"
+ 
+ from Tkinter import *
+ from Dialog import *
++
+ import sys, time, os, string, socket, getopt, tempfile
+ 
+ #
+@@ -227,9 +232,9 @@ class Server:
+ 
+ class User:
+     def __init__(self):
+-        if os.environ.has_key("USER"):
++        if "USER" in os.environ:
+             self.remote = os.environ["USER"]	# Remote username
+-        elif os.environ.has_key("LOGNAME"):
++        elif "LOGNAME" in os.environ:
+             self.remote = os.environ["LOGNAME"]
+         else:
+             print("Can't get your username!")
+@@ -1123,7 +1128,7 @@ class ServerEdit(Frame, MyWidget):
+         self.subwidgets[username] = UserEdit(username, self).edit(mode, Toplevel())
+ 
+     def user_delete(self, username):
+-        if self.subwidgets.has_key(username):
++        if username in self.subwidgets:
+             self.subwidgets[username].destruct()
+         del self.server[username]
+ 
+@@ -1627,7 +1632,7 @@ class UserEdit(Frame, MyWidget):
+ 
+     def destruct(self):
+         # Yes, this test can fail -- if you delete the parent window.
+-        if self.parent.subwidgets.has_key(self.user.remote):
++        if self.user.remote in self.parent.subwidgets:
+             del self.parent.subwidgets[self.user.remote]
+         self.master.destroy()
+ 
+@@ -2029,7 +2034,7 @@ def copy_instance(toclass, fromdict):
+ 
+ if __name__ == '__main__':
+ 
+-    if not os.environ.has_key("DISPLAY"):
++    if "DISPLAY" not in os.environ:
+         print("fetchmailconf must be run under X")
+         sys.exit(1)
+ 
+@@ -2130,8 +2135,9 @@ COPYING in the source or documentation directory for details.""")
+ 
+     try:
+         execfile(tmpfile)
+-    except:
++    except Exception as e:
+         print("Can't read configuration output of fetchmail --configdump.")
++        print(repr(e))
+         os.remove(tmpfile)
+         sys.exit(1)
+ 
+--
+libgit2 0.26.0
+

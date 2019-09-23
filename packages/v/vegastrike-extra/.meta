@@ -1,0 +1,10 @@
+<package name="vegastrike-extra" project="openSUSE:Factory">
+  <title>Extra textures and content for Vega Strike</title>
+  <description>Extra, optional texture files and content for Vega Strike,
+a GPL 3D OpenGL Action RPG space sim that allows a player 
+to trade and bounty hunt.
+
+This package is not essential for playing the game.
+</description>
+  <devel project="games" package="vegastrike-extra"/>
+</package>

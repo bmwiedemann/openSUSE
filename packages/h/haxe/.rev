@@ -1,0 +1,174 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>76a9ab9259b775fa56af8ae72c68870b</srcmd5>
+    <version>3.2.0</version>
+    <time>1450084401</time>
+    <user>coolo</user>
+    <comment>This is Andy from the Haxe Foundation, which is the organisation behind Haxe and NekoVM.
+We're in the process of easing the installation process across different Linux distros. We have already packaged and submitted to Debian and Fedora, and we would like to maintain a package for openSUSE Factory.</comment>
+    <requestid>343738</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>71b87c7ab1b7f6957e208ca7768e653e</srcmd5>
+    <version>3.2.1</version>
+    <time>1452611553</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 3.2.1.
+- Moved the haxe standard library files to _datadir.
+- Generate man pages using help2man.
+- Spec file clean-up.
+  * Clarified license.
+  * Manually cp files instead of using &quot;make install&quot;.
+  * Added BuildRoot as suggested in openSUSE specfile guidelines.</comment>
+    <requestid>352642</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5d726980aa6da24bd08bc3f528c4a53f</srcmd5>
+    <version>3.4.0</version>
+    <time>1486635507</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 3.4.0
+  * Backward compatible to Haxe 3.2.
+  * Improvements and new features:
+    + Three new targets: 1. HashLink, 2. Lua, 3. PHP7
+    + Major improvements to compiler services for IDE support
+    + Improved C++ output.
+    + Improved static code analysis.
+    + New language additions: Any, import.hx, @:structInit, etc.
+  * Detail available at https://haxe.org/blog/haxe-3.4-release/</comment>
+    <requestid>455450</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e7cd3847542f8efe053ad24fb88b6bf9</srcmd5>
+    <version>3.4.2</version>
+    <time>1490318611</time>
+    <user>dimstar_suse</user>
+    <comment>Updated Haxe from 3.4.0 to 3.4.2, which is a minor release with no backward incompatible changes.</comment>
+    <requestid>482160</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>74f87236eef701b475739771ca34a426</srcmd5>
+    <version>3.4.3</version>
+    <time>1506453385</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 3.4.3
+  * Backward compatible to Haxe 3.4.2.
+  * Various fixes, mostly related to php output.
+  * Detail available at https://github.com/HaxeFoundation/haxe/
+    blob/3.4.3/extra/CHANGES.txt#L1-L20</comment>
+    <requestid>528744</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e32c3d0a3887f0260648f018fbed2644</srcmd5>
+    <version>3.4.3</version>
+    <time>1507065502</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530624</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5b86254b8c7938c4ea90007bcf98a579</srcmd5>
+    <version>3.4.4</version>
+    <time>1507571223</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 3.4.4
+  * Backward compatible to Haxe 3.4.3.
+  * Fix flash target broken when compiled with OCaml 4.05.
+  * Detail available at https://github.com/HaxeFoundation/haxe/
+    blob/3.4.4/extra/CHANGES.txt#L1-L8
+- Trim filler wording from description.
+- Updated to 3.4.3
+  * Backward compatible to Haxe 3.4.2.
+  * Various fixes, mostly related to php output.
+  * Detail available at https://github.com/HaxeFoundation/haxe/
+    blob/3.4.3/extra/CHANGES.txt#L1-L20
+- Updated to 3.4.2
+  * Backward compatible to Haxe 3.4.0.
+  * Improvements:
+    + Various fixes in cpp and php7 output.
+    + Added source maps generation for php7.
+  * Detail available at https://github.com/HaxeFoundation/haxe/
+    blob/3.4.2/extra/CHANGES.txt#L1-L35
+- Updated to 3.4.0
+  * Backward compatible to Haxe 3.2.
+  * Improvements and new features:
+    + Three new targets: 1. HashLink, 2. Lua, 3. PHP7
+    + Major improvements to compiler services for IDE support
+    + Improved C++ output.
+    + Improved static code analysis.
+    + New language additions: Any, import.hx, @:structInit, etc.
+  * Detail available at https://haxe.org/blog/haxe-3.4-release/
+- Updated to 3.2.1.
+- Moved the haxe standard library files to _datadir.
+- Generate man pages using help2man.
+- Spec file clean-up.
+  * Clarified license.
+  * Manually cp files instead of using &quot;make install&quot;.
+  * Added BuildRoot as suggested in openSUSE specfile guidelines.
+- Fix haxelib shell script to properly pass arguments
+- Updated to 4.2.0:
+  * New features:
+    + all: added @:noPrivateAccess to re-enable access
+      restrictions within @:privateAccess
+    + cpp: some support for @:nativeGen metadata
+  * Bugfixes:
+    + all: @:generic classes with constructor constraints detection
+    + all: variable initialization check issue in loop condition
+    + all: pattern matching on @:enum abstracts via field access
+    + all: missing implicit casts in Map literals (#4100)
+    + all: various minor issues in haxe.xml.Parser
+    + all: class path issue when HAXE_STD_PATH is set (#4163)
+    + js: DCE issue related to printing enums (#4197)
+    + js: various issues with the new Bytes implementation
+    + php: EOF handling in FileInput.readByte (#4082)
+    + cs/java: Math.fround implementation (#4177)
+    + cs/java: some cases of Std.parseInt failing (#4132)
+    + cpp: compilation without -main (#4199)
+  * General improvements and optimizations:
+    + all: --macro keep no longer causes types to be included
+      for compilation
+    + php: support interpolation in php code
+    + js: added variable number of arguments support
+      in js.html.* classes
+    + js: refined new HTML externs
+  * Macro features and changes:
+    + macro: [breaking] synced FClosure and FInstance
+      with the compiler updates
+- %install section refactoring.
+- general spec file clean-up.
+- Added missing files to resolve builds issue.
+- Fixed various warnings.
+- imported package from dmacvicar
+- update to version 3.1.3
+</comment>
+    <requestid>532617</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0277059741814396d8b585fcbe55e9df</srcmd5>
+    <version>3.4.5</version>
+    <time>1517932086</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.5
+  * Backward compatible to Haxe 3.4.4.
+  * Bugfixes and improvements to php and js targets as well as dce.
+  * Detail available at https://github.com/HaxeFoundation/haxe/
+    blob/3.4.5/extra/CHANGES.txt#L1-L16
+- Compile haxelib as a valid binary using `nekotools boot -c ...`.</comment>
+    <requestid>572527</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>035d9b478cc7a475f616c4677fd71b20</srcmd5>
+    <version>3.4.7</version>
+    <time>1519396295</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.7
+  * Backward compatible to Haxe 3.4.5.
+  * Fixed compiler cannot find std lib when executed by another
+    program.
+  * Fixed compiler failure for some output directories.
+  * Bugfixes to php, as3 targets as well as code completion.
+  * Detail available at https://github.com/HaxeFoundation/haxe/
+    blob/3.4.7/extra/CHANGES.txt#L1-L18</comment>
+    <requestid>579334</requestid>
+  </revision>
+</revisionlist>

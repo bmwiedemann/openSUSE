@@ -1,0 +1,13 @@
+diff --git a/libf2c/arithchk.c b/libf2c/arithchk.c
+index 8e15722..a1a03ac 100644
+--- a/libf2c/arithchk.c
++++ b/libf2c/arithchk.c
+@@ -110,7 +110,7 @@ icheck(void)
+ 	return 0;
+ 	}
+ 
+-char *emptyfmt = "";	/* avoid possible warning message with printf("") */
++const char emptyfmt[] = "";	/* avoid possible warning message with printf("") */
+ 
+  static Akind *
+ ccheck(void)

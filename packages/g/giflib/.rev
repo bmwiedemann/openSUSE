@@ -1,0 +1,314 @@
+<revisionlist>
+  <revision rev="1" vrev="14">
+    <srcmd5>98ffa0f31f39500eb8440a078de1fb54</srcmd5>
+    <version>4.1.4</version>
+    <time>1166483795</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="121">
+    <srcmd5>a9797861e1447101ae47cd5082cf13e6</srcmd5>
+    <version>4.1.4</version>
+    <time>1207829773</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>32b90c3dc77ddfa157d5bc330fd7134d</srcmd5>
+    <version>4.1.6</version>
+    <time>1220574278</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="9">
+    <srcmd5>4548763cb0563e8bbfb0b18e669d0b79</srcmd5>
+    <version>4.1.6</version>
+    <time>1227880888</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="10">
+    <srcmd5>d538aba2b4862a249b9cc2fe5a6c9e37</srcmd5>
+    <version>4.1.6</version>
+    <time>1229340683</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>1699dc985090df80a6572de441fadde8</srcmd5>
+    <version>4.1.6</version>
+    <time>1231951931</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>1699dc985090df80a6572de441fadde8</srcmd5>
+    <version>4.1.6</version>
+    <time>1231951931</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>3b71122209b1825f7a0ea22280750c58</srcmd5>
+    <version>4.1.6</version>
+    <time>1263481903</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/giflib based on submit request 29100 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>a62d964a09876de70b6b7b09aa398f21</srcmd5>
+    <version>4.1.6</version>
+    <time>1268923714</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="17">
+    <srcmd5>a62d964a09876de70b6b7b09aa398f21</srcmd5>
+    <version>4.1.6</version>
+    <time>1278667346</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="18">
+    <srcmd5>a62d964a09876de70b6b7b09aa398f21</srcmd5>
+    <version>4.1.6</version>
+    <time>1278678577</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>d2f1634512b1a4ffb0f831dc4cb63c1f</srcmd5>
+    <version>4.1.6</version>
+    <time>1283512074</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/giflib based on submit request 46607 from user elvigia
+</comment>
+    <requestid>46607</requestid>
+  </revision>
+  <revision rev="13" vrev="22">
+    <srcmd5>d2f1634512b1a4ffb0f831dc4cb63c1f</srcmd5>
+    <version>4.1.6</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="23">
+    <srcmd5>1440ec3789b6adb27d32a76cce262631</srcmd5>
+    <version>4.1.6</version>
+    <time>1306838808</time>
+    <user>saschpe</user>
+    <comment>Fixed typos and email delimiters in giflib.spec (forwarded request 71781 from aturrini)</comment>
+    <requestid>72059</requestid>
+  </revision>
+  <revision rev="15" vrev="24">
+    <srcmd5>0d7d99954a07e815589d39e685d0b709</srcmd5>
+    <version>4.1.6</version>
+    <time>1306838817</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72059
+</comment>
+  </revision>
+  <revision rev="16" vrev="25">
+    <srcmd5>f4624fe34ec3ebe1395d4cff762c60d7</srcmd5>
+    <version>4.1.6</version>
+    <time>1316681093</time>
+    <user>saschpe</user>
+    <comment>Implement shlib naming (libgif4), and a little grammar update in %descr. (forwarded request 84155 from jengelh)</comment>
+    <requestid>84261</requestid>
+  </revision>
+  <revision rev="17" vrev="26">
+    <srcmd5>8fd867d3618398c55a3ae9872f1ff9c5</srcmd5>
+    <version>4.1.6</version>
+    <time>1318344810</time>
+    <user>lrupp</user>
+    <comment>- annotate functions from gif_lib_private.h with visibility
+  hidden so they are not exported. (forwarded request 87211 from elvigia)</comment>
+    <requestid>87280</requestid>
+  </revision>
+  <revision rev="18" vrev="28">
+    <srcmd5>8fd867d3618398c55a3ae9872f1ff9c5</srcmd5>
+    <version>4.1.6</version>
+    <time>1319181904</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="29">
+    <srcmd5>8a19a79f49a496b7c68b12bea5c87fcb</srcmd5>
+    <version>4.1.6</version>
+    <time>1323191555</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="30">
+    <srcmd5>3d885e086fc2ecf30e234716032b7e60</srcmd5>
+    <version>4.1.6</version>
+    <time>1329318899</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104269</requestid>
+  </revision>
+  <revision rev="21" vrev="32">
+    <srcmd5>3d885e086fc2ecf30e234716032b7e60</srcmd5>
+    <version>4.1.6</version>
+    <time>1340183364</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5d81814f1bf4ff05ed3ab0380f6b5102</srcmd5>
+    <version>5.0.3</version>
+    <time>1357568072</time>
+    <user>coolo</user>
+    <comment>Factory has a very old version</comment>
+    <requestid>147340</requestid>
+  </revision>
+  <revision rev="23" vrev="33">
+    <srcmd5>9d25012cf7fae24e50a6a1fee112dedb</srcmd5>
+    <version>4.1.6</version>
+    <time>1357639313</time>
+    <user>coolo</user>
+    <comment>osc copypac from project:openSUSE:Factory package:giflib revision:21</comment>
+  </revision>
+  <revision rev="24" vrev="35">
+    <srcmd5>9d25012cf7fae24e50a6a1fee112dedb</srcmd5>
+    <version>4.1.6</version>
+    <time>1359108934</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>4a45261092cb5f0baf251d985b87ae08</srcmd5>
+    <version>5.0.3</version>
+    <time>1362736175</time>
+    <user>coolo</user>
+    <comment>add giflib-automake-1_13.patch, fix build with automake-1.13.1 (forwarded request 157086 from seife)</comment>
+    <requestid>157087</requestid>
+  </revision>
+  <revision rev="26" vrev="36">
+    <srcmd5>cc2bb3e22a3a0d0c5b8117dae513e351</srcmd5>
+    <version>4.1.6</version>
+    <time>1363089240</time>
+    <user>coolo</user>
+    <comment>osc copypac from project:openSUSE:Factory package:giflib revision:24</comment>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>62f7af69ce360f82cf7e8f16049136e9</srcmd5>
+    <version>5.0.3</version>
+    <time>1363982887</time>
+    <user>coolo</user>
+    <comment>osc copypac from project:openSUSE:Factory package:giflib revision:25</comment>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>09bb531d4bb69790ad1679052ac6c9c0</srcmd5>
+    <version>5.0.3</version>
+    <time>1364472712</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161339 from m_meister)</comment>
+    <requestid>161370</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9b3814d02c6aa8fa6f45ebea72462d50</srcmd5>
+    <version>5.0.4</version>
+    <time>1372270667</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 5.0.4 (forwarded request 180938 from jengelh)</comment>
+    <requestid>180963</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>faeef7e787c08df682e9e7f3d8ba2544</srcmd5>
+    <version>5.0.5</version>
+    <time>1378126539</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 5.0.5 (bugfix release) (forwarded request 196962 from jengelh)</comment>
+    <requestid>196963</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>faeef7e787c08df682e9e7f3d8ba2544</srcmd5>
+    <version>5.0.5</version>
+    <time>1379662445</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>faeef7e787c08df682e9e7f3d8ba2544</srcmd5>
+    <version>5.0.5</version>
+    <time>1409300983</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>9259ac9eabe997363c1109892a4b7852</srcmd5>
+    <version>5.1.1</version>
+    <time>1422287196</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup a bit
+- Remove obsolete sle10 deprecations
+- Fix one tiny rpmlint warning
+
+- Update to version 5.1.1 
+  + Numerous minor fixes in getarg.c. Affects only the utilities, not the
+    core library.
+  + Fix SourceForge bug #59 DGifOpen can segfault if DGifGetScreenDesc fails.
+  + SourceForge patch #20: In gifalloc, fix usage of realloc() in case of failure.
+  + Fix SourceForge bug #61 Leak in gifsponge.
+  + glibtoolize port fix for OS X.
+
+- Update to new upstream release 5.1.0
+* Minor API change to assist library wrappers in dynamic languages,
+  removal of the the gif2raw utility, and various minor fix patches
+  for unusual edge cases.
+* API changes to functions:
+  GifErrorString returns const char *;
+  EGifGetGifVersion returns const char *;
+  EGifCloseFile takes another int *errorcode;
+  DGifCloseFile takes another int *errorcode;</comment>
+    <requestid>281404</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>4d3b58db2e33a60a54a344c969389ead</srcmd5>
+    <version>5.1.2</version>
+    <time>1453508060</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#960319, CVE-2015-7555</comment>
+    <requestid>354774</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>85f0fb6c872e133fd11195654b5a3f45</srcmd5>
+    <version>5.1.3</version>
+    <time>1459237992</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.3
+ * Prevent malloc randomess from causing the header output routine
+   to emit a GIF89 version string even when no GIF89 features are
+   present.
+ * Prevent malloc randomess from producing sporadic failures by causing
+   sanity checks added in 5.1.2 to misfire.
+ * Bulletproof gif2rgb against 0-height images. Addressed sf#78:
+   Heap overflow in gif2rgb with images of size 0, also sf#82.
+ * Remove unnecessary duplicate EGifClose() in gifcolor.c. Fixes sf#83
+   introduced in 5.1.2.
+ * Fix sf#84: incorrect return of DGifSlurp().
+- Add giflib-sf-88.patch to fix sf#88</comment>
+    <requestid>378396</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>fc70db86a0eac5b2d1e22c75d1489ed8</srcmd5>
+    <version>5.1.4</version>
+    <time>1460837262</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#974847, CVE-2016-3977</comment>
+    <requestid>388191</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>a48dd0e577fd0d7b5658b9c20796fdff</srcmd5>
+    <version>5.1.4</version>
+    <time>1512292078</time>
+    <user>dimstar_suse</user>
+    <comment>- Keep timestamps before patch updates them to fix build-compare
+
+- Added fix-autoconf11.patch for fixing build with older autoconf,
+  requires for SLE11.</comment>
+    <requestid>546173</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>e9df4b21a65036add1ea63af4df1ff88</srcmd5>
+    <version>5.1.4</version>
+    <time>1542579837</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648854</requestid>
+  </revision>
+</revisionlist>

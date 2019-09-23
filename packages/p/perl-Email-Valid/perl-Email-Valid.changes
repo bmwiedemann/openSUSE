@@ -1,0 +1,202 @@
+-------------------------------------------------------------------
+Wed Sep 28 05:22:42 UTC 2016 - coolo@suse.com
+
+- updated to 1.202
+   see /usr/share/doc/packages/perl-Email-Valid/Changes
+
+-------------------------------------------------------------------
+Tue Sep 27 05:21:21 UTC 2016 - coolo@suse.com
+
+- updated to 1.202
+   see /usr/share/doc/packages/perl-Email-Valid/Changes
+
+  1.202     2016-09-25 21:48:09-04:00 America/New_York
+          - avoid using a new Net::DNS feature, which should restore function
+            with old versions of Net::DNS
+
+-------------------------------------------------------------------
+Sun Sep 25 05:15:55 UTC 2016 - coolo@suse.com
+
+- updated to 1.201
+   see /usr/share/doc/packages/perl-Email-Valid/Changes
+
+-------------------------------------------------------------------
+Sat Sep 24 05:18:44 UTC 2016 - coolo@suse.com
+
+- updated to 1.201
+   see /usr/share/doc/packages/perl-Email-Valid/Changes
+
+  1.201     2016-09-22 19:21:01-04:00 America/New_York
+          - mx check once again allows for A records; a future check may
+            allow mx-only checks on purpose
+
+-------------------------------------------------------------------
+Mon Apr  4 09:38:59 UTC 2016 - coolo@suse.com
+
+- updated to 1.200
+   see /usr/share/doc/packages/perl-Email-Valid/Changes
+
+  1.200     2016-03-27 17:36:57-04:00 America/New_York
+          - skip more tests when Net::Domain::TLD not available, as required
+  
+  1.199     2016-03-27 09:58:03-04:00 America/New_York
+          - More "no MX found" fixes (thanks, Troy Morehouse)
+          - treat restricted/reserved TLDs (invalid, test, example, localhost)
+            as invalid (thanks, Steve Bertrand!)
+          - Made first mention of various external modules be L<> linked.
+          - Added link to RFC822 to SEE ALSO
+          - Various typo and formatting fixes
+
+-------------------------------------------------------------------
+Thu Oct 29 09:53:59 UTC 2015 - coolo@suse.com
+
+- updated to 1.198
+   see /usr/share/doc/packages/perl-Email-Valid/Changes
+
+  1.198     2015-10-25 22:36:37-04:00 America/New_York
+          - fix a typo that caused the MX check to die
+
+-------------------------------------------------------------------
+Sat Oct 17 08:43:21 UTC 2015 - coolo@suse.com
+
+- updated to 1.197
+   see /usr/share/doc/packages/perl-Email-Valid/Changes
+
+  1.197     2015-10-16 22:57:05-04:00 America/New_York
+          - improve detection of "no MXes" (thanks, Troy Morehouse)
+          - avoid some avoidable warnings (thanks, Svetlana)
+
+-------------------------------------------------------------------
+Tue Apr 14 20:02:00 UTC 2015 - coolo@suse.com
+
+- updated to 1.196
+   see /usr/share/doc/packages/perl-Email-Valid/Changes
+
+  1.196     2015-02-05 22:31:29-05:00 America/New_York
+          - AOL "local rules" no longer enforced
+  
+  1.195     2014-09-01 08:38:58-04:00 America/New_York
+          - handle domain part with MX but no A record (thanks, Karel Miko)
+  
+  1.194     2014-05-28 17:21:53-04:00 America/New_York
+          - yhaoo.com grew an MX record; use something that won't
+  
+  1.193     2014-03-26 22:29:28-04:00 America/New_York
+          - improve behavior on CNAME MX records
+
+-------------------------------------------------------------------
+Fri Oct  4 09:11:41 UTC 2013 - coolo@suse.com
+
+- updated to 1.192
+           if Net::DNS is not available, do not test null mx validity
+
+           update bugtracker, repo, etc.
+ 
+           mxcheck fails when remote MX record is "."
+ 
+           drop use of bytes.pm; any bug fixed by that should be fixed again
+           properly
+
+-------------------------------------------------------------------
+Tue Jun  4 08:43:46 UTC 2013 - coolo@suse.com
+
+- updated to 0.190
+          fix skip test count
+
+          addresses in the form rjbs@[1.2.3.4], when allowed by allow_ip,
+          are not failed for the tld check (reported by Marcel Grünauer)
+
+          fix [rt.cpan.org #75736], in which 0@domain.com was considered
+          invalid (thanks for the fix from Steve Bertrand)
+
+-------------------------------------------------------------------
+Mon Feb 27 10:06:49 UTC 2012 - coolo@suse.com
+
+- updated to 0.187
+    addresses in the form rjbs@[1.2.3.4] are now (correctly) considered
+    valid; this can be disabled with the -allow_ip option
+    (this resolves RT#48398)
+
+    check email address length and localpart length (thanks, Steve
+    Bertrand!)
+
+    use blessed($x) instead of wrapping an ->isa called in eval{}; this
+    patch (thanks, Felipe Bergo!) was submitted to avoid problems with
+    people who have global __DIE__ handlers, but was applied to just
+    avoid the dumb eval{}; people with __DIE__ are otherwise on their
+    own, here
+
+-------------------------------------------------------------------
+Fri Dec  2 10:59:53 UTC 2011 - coolo@suse.com
+
+- update to 0.185
+    do not die in t/valid.t when testing for working DNS
+    avoid a pointless warning
+    check TLD validity before MX records
+    reject addresses with non-ASCII characters
+
+-------------------------------------------------------------------
+Tue Apr 26 18:11:54 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.184
+      initialize Net::DNS resolver earlier
+       (address RT #56828, thanks mschout @ github)
+      reject addresses with any octets that are &128
+       (address RT #50230, thanks Adriano Ferreira and Graham Barr)
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:51 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct  6 12:26:07 UTC 2009 - jfunk@funktronics.ca
+
+- Update to 0.182
+  - skip DNS tests on machines with lying DNS
+- 0.181     2009-03-23
+  - explicitly require perl5 version 6
+  - update some module metadata (Alexandr Ciornii)
+  - remove hateful indirect method notation (Alexandr Ciornii)
+- 0.180     2009-01-16
+  - add repo location to metadata
+- 0.179   Mon Nov 27 2006
+  - bug 23657: fix domain label regex: thanks, Nobuaki ITO!
+- 0.178   Sat Nov 25 2006
+  - reduce cases in which IO::CaptureOutput is needed on Win32
+    (bug 22062, thanks Alexandr Ciornii)
+- 0.177   Sat Nov 25 2006
+  - resolve bug 22710: make fqdn rule more strict: domains must be multiple
+    valid domain labels, and domain labels must be [a-z0-9][-a-z0-9]*
+    replace UNIVERSAL:: with eval{}-wrapping
+- 0.176   Thu Jul 27 2006
+  - further improve DNS stuff: try to make Net::DNS a prereq if we think
+    we'll need it later
+- 0.175   Sat Jun 24 2006
+  - attempt to improve nslookup-location on Cygwin
+
+-------------------------------------------------------------------
+Sun Apr 12 2009 Christian Boltz
+
+- some build and rpmlint fixes (unpackaged directories, unsafe RPM_BUILD_ROOT cleanup)
+
+-------------------------------------------------------------------
+Tue Jun 20 2006 James Oakley <jfunk@funktronics.ca> - 0.174-1
+
+- Build under build service
+
+-------------------------------------------------------------------
+Fri Nov 11 2005 James Oakley <jfunk@funktronics.ca> - 0.15-ft.3
+
+- Build for SL10
+
+-------------------------------------------------------------------
+Thu May 12 2005 James Oakley <jfunk@funktronics.ca> - 0.15-ft.2
+
+- Build for SL93
+
+-------------------------------------------------------------------
+Fri Nov 19 2004 James Oakley <jfunk@funktronics.ca> - 0.15-ft.1
+
+- Build for SL92
+

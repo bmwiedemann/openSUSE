@@ -1,0 +1,134 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>94b60c26e1e9f7483caee2dd1ea7e2ef</srcmd5>
+    <version>0.6.0</version>
+    <time>1354109722</time>
+    <user>coolo</user>
+    <comment>Please add, future OpenStack dependency.</comment>
+    <requestid>142497</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>94b60c26e1e9f7483caee2dd1ea7e2ef</srcmd5>
+    <version>0.6.0</version>
+    <time>1359110141</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7990622235e52b8cfec9afbe7cb6036e</srcmd5>
+    <version>0.8.1</version>
+    <time>1361821326</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.8.1:
+  + Upstream provides no changelog
+- LICENSE isn't part of upstream sources anymore</comment>
+    <requestid>156113</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3dfcb2407ed54d26d3dc5d1a68e68447</srcmd5>
+    <version>0.8.1</version>
+    <time>1362773810</time>
+    <user>coolo</user>
+    <comment>- Allow jsonschema==1.0 too</comment>
+    <requestid>157000</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eab6a616795f6e33aeb19c8354dfdd43</srcmd5>
+    <version>1.0.0</version>
+    <time>1368451882</time>
+    <user>coolo</user>
+    <comment>- update to 1.0.0:
+  * stable release (forwarded request 174612 from dirkmueller)</comment>
+    <requestid>174796</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a2091d8d1258e6a4ae7e1aa669515f3c</srcmd5>
+    <version>1.0.0</version>
+    <time>1372145731</time>
+    <user>coolo</user>
+    <comment>- add allow-jsonschema-3.diff (forwarded request 180563 from dirkmueller)</comment>
+    <requestid>180764</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b6f52ecd2d3b8681aed04bb16351600e</srcmd5>
+    <version>1.0.1</version>
+    <time>1373566440</time>
+    <user>coolo</user>
+    <comment>- update to 1.0.1:
+  - drop allow-jsonschema-3.diff (forwarded request 182831 from dirkmueller)</comment>
+    <requestid>182843</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>b6f52ecd2d3b8681aed04bb16351600e</srcmd5>
+    <version>1.0.1</version>
+    <time>1379664311</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>aac0083dd15ca7291d963b32958c309b</srcmd5>
+    <version>1.0.1</version>
+    <time>1382693681</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204681</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>aac0083dd15ca7291d963b32958c309b</srcmd5>
+    <version>1.0.1</version>
+    <time>1409303019</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6037a229a321eb7e6b32f4c1fc3fed33</srcmd5>
+    <version>1.1.0</version>
+    <time>1410967620</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249860</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>66990fe40348e1a5a8aa845060f3f415</srcmd5>
+    <version>1.2.0</version>
+    <time>1481153429</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441396</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>9312b635af90c63ad3d896c3252f344c</srcmd5>
+    <version>1.2.0</version>
+    <time>1504617281</time>
+    <user>dimstar_suse</user>
+    <comment>- convert to singlespec (forwarded request 518319 from tbechtold)</comment>
+    <requestid>518320</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9b34b392e59e0c99287cd7abc0e4a940</srcmd5>
+    <version>1.3.0</version>
+    <time>1512378078</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>544314</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b495a6ee851521f68c205fc33362283f</srcmd5>
+    <version>1.3.0</version>
+    <time>1545648361</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659750</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>68bffd3e92198aecc274120550ad51c9</srcmd5>
+    <version>1.3.3</version>
+    <time>1558939106</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.2:
+  * README failed parsing in non utf-8 environments. Enforce encoding. #37
+  * Move unittests to tests/ directory
+  * Upstream no longer ships tests on pypi</comment>
+    <requestid>705263</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Wed Jun  7 11:52:27 UTC 2017 - jengelh@inai.de
+
+- Add ht-gcc7.diff
+
+-------------------------------------------------------------------
+Wed Feb 11 20:13:50 CET 2015 - benoit.monin@gmx.fr
+
+- update to version 2.1.0:
+  * updated included minilzo
+  * new disassembler: Atmel AVR 8-bit microcontroller
+  * [x86] SHA instructions
+  * Fixed some crashes involving corrupt ELF files
+  * More advanced display and handling of PE relocations
+  * PE checksum calculation
+- refresh patch ht-no-date.diff
+
+-------------------------------------------------------------------
+Fri Jan  9 00:37:26 UTC 2015 - jengelh@inai.de
+
+- Use original tarball/source URL
+
+-------------------------------------------------------------------
+Sat Jun 22 17:52:38 UTC 2013 - jengelh@inai.de
+
+- Provide the program under an altername name "hte" so as to
+  continue to be able to install it alongside LyX in openSUSE 13.1
+  (where lyx has a new requirement on tex4ht).
+
+-------------------------------------------------------------------
+Fri Jun 14 00:24:06 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 2.0.22
+* Fixed selection of nodes in call chain
+* Added ability to view/edit 64 bit symbols and relocation for ELFs
+* Added new option "editor/scroll offset" which determines how many
+  extra lines the cursor should be visible when scolling
+* Fixed loading of ELF files for alpha
+
+-------------------------------------------------------------------
+Thu Feb 28 23:02:32 UTC 2013 - jengelh@inai.de
+
+- Drop call to autoreconf; this is no longer necessary
+
+-------------------------------------------------------------------
+Fri Dec 21 05:06:40 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 2.0.21
+* support new x86 opcodes (adcx, adox, clac, stac, rdseed)
+* fixed usage of unaliged pointers
+* ncurses API 6 support
+- Add ht-no-date.diff
+
+-------------------------------------------------------------------
+Sun Mar  4 11:19:50 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 2.0.20
+* Last version had a bug preventing load of 32 bit ELFs
+
+-------------------------------------------------------------------
+Tue Feb 28 12:19:50 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 2.0.19
+* fixed a crash with the "follow" function on invalid addresses
+  in analyser
+* AVX, AVX2, BMI, BMI2 and TBM instruction support on x86
+* fixed loading of ELF files with no section headers
+
+-------------------------------------------------------------------
+Mon Feb 13 10:47:40 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Fri Dec  2 16:42:19 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Mar 28 22:56:35 UTC 2011 - jengelh@medozas.de
+
+- Enable detection of inverse hyperbolic math functions and make
+  them available in the evaluator.
+
+-------------------------------------------------------------------
+Wed Mar 23 13:03:48 UTC 2011 - jengelh@medozas.de
+
+- Initial package for build.opensuse.org
+

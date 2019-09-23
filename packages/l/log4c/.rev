@@ -1,0 +1,215 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>325f92be0b880e21c43a8262d285d49b</srcmd5>
+    <version>1.2.1</version>
+    <time>1202701353</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e241016f651c097606e3a6df11a7782a</srcmd5>
+    <version>1.2.1</version>
+    <time>1203035558</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>97950c9c6c3fd4d70fe90999a46634cc</srcmd5>
+    <version>1.2.1</version>
+    <time>1203426808</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>5021e67d272050c52c3d83437adae2d7</srcmd5>
+    <version>1.2.1</version>
+    <time>1203555376</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>2eb52e6d0af660ed1684eb417e78fbc5</srcmd5>
+    <version>1.2.1</version>
+    <time>1215547969</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>625145d5b44cbb883c07798426ecdb55</srcmd5>
+    <version>1.2.1</version>
+    <time>1217651159</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>852c7fdeafe427a36c76ec516dede86d</srcmd5>
+    <version>1.2.1</version>
+    <time>1224718057</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>5faa219d16d38b86047666c40b729b4a</srcmd5>
+    <version>1.2.1</version>
+    <time>1227882728</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>70f5eda4ebbe8731e49d1ca66cb28e99</srcmd5>
+    <version>1.2.1</version>
+    <time>1231722420</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>70f5eda4ebbe8731e49d1ca66cb28e99</srcmd5>
+    <version>1.2.1</version>
+    <time>1231722420</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>d24d57852255478cb121554c1540f9a6</srcmd5>
+    <version>1.2.1</version>
+    <time>1263490520</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/log4c based on submit request 29376 from user coolo
+</comment>
+  </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>41e17724960f116c586356ff51e67343</srcmd5>
+    <version>1.2.1</version>
+    <time>1266507178</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/log4c based on submit request 32740 from user coolo
+</comment>
+  </revision>
+  <revision rev="13" vrev="16">
+    <srcmd5>b742ee81eccdbf304469fa8da5425d47</srcmd5>
+    <version>1.2.1</version>
+    <time>1268924842</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="14" vrev="18">
+    <srcmd5>b742ee81eccdbf304469fa8da5425d47</srcmd5>
+    <version>1.2.1</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="19">
+    <srcmd5>b742ee81eccdbf304469fa8da5425d47</srcmd5>
+    <version>1.2.1</version>
+    <time>1278678594</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="22">
+    <srcmd5>b742ee81eccdbf304469fa8da5425d47</srcmd5>
+    <version>1.2.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="24">
+    <srcmd5>b742ee81eccdbf304469fa8da5425d47</srcmd5>
+    <version>1.2.1</version>
+    <time>1319182157</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="25">
+    <srcmd5>4019ce28ac76025bc01dbddbf875d5af</srcmd5>
+    <version>1.2.1</version>
+    <time>1323192419</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="26">
+    <srcmd5>6c304492b16831b3452d1b7e110976b1</srcmd5>
+    <version>1.2.1</version>
+    <time>1329242609</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104005</requestid>
+  </revision>
+  <revision rev="20" vrev="28">
+    <srcmd5>6c304492b16831b3452d1b7e110976b1</srcmd5>
+    <version>1.2.1</version>
+    <time>1340183671</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="29">
+    <srcmd5>ae9bd8894fdc08d5390f50a91bf0a418</srcmd5>
+    <version>1.2.1</version>
+    <time>1344064928</time>
+    <user>coolo</user>
+    <comment>- Add fonts, amssymb style, and makeindex (forwarded request 129667 from WernerFink)</comment>
+    <requestid>129686</requestid>
+  </revision>
+  <revision rev="22" vrev="31">
+    <srcmd5>ae9bd8894fdc08d5390f50a91bf0a418</srcmd5>
+    <version>1.2.1</version>
+    <time>1359109405</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="33">
+    <srcmd5>ae9bd8894fdc08d5390f50a91bf0a418</srcmd5>
+    <version>1.2.1</version>
+    <time>1379663177</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f872c14a2ad2b7ac0abb428d952c5856</srcmd5>
+    <version>1.2.4</version>
+    <time>1381781053</time>
+    <user>scarabeus_factory</user>
+    <comment>- make check fails on symlinks made by fdupes
+  * run check in build phase then
+
+- Update to 1.2.4
+  * new date_local and date_local_r appenders
+  * fixed several warnings
+  * public API functions with format strings are marked by GNU
+    C format attribute
+  1.2.3:
+  * use UTF-8 encoding in AUTHORS file
+  * update FSF address in license and headers
+  * manpage for log4c-config
+  * pkgconfig file
+  * fixed memory leaks in log4c_ini()/log4c_fini()
+  * use more recent autotools
+  1.2.1:
+  * added log4c_appender_syslog_set_facility()
+  * rollingfile appender crash fixes
+  * load only first log4crc file
+  * fixed crash on messages longer than 1024 bytes
+  * added one missing C++ declaration
+  * fixed reopening of the stream appender
+  * proper copy message over end of the file in mmap appender
+  * various small other fixes
+- Use pristine upstream tarball and source url
+- Reformat spec file and add make check call
+- Call fdupes on documentation and manual pages
+- Drop log4crc.sample installation and moved to documentation
+  of devel package
+- Moved unecessary documentation files (README, AUTHORS, ChangeLog)</comment>
+    <requestid>203208</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>fc5095c86688d26ae468c64b4aad46e4</srcmd5>
+    <version>1.2.4</version>
+    <time>1406698498</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242905</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>fc5095c86688d26ae468c64b4aad46e4</srcmd5>
+    <version>1.2.4</version>
+    <time>1409301812</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>aefec8b5922ab0507778920aa958c9b4</srcmd5>
+    <version>1.2.4</version>
+    <time>1426680503</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291206</requestid>
+  </revision>
+</revisionlist>

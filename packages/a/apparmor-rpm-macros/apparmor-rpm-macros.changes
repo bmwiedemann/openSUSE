@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Mon Aug 19 11:08:48 CEST 2019 - kukuk@suse.de
+
+- Don't assume systemctl is already installed or available at all.
+- Files in /usr/lib/rpm/macros.d are no config files
+
+-------------------------------------------------------------------
+Wed May  8 16:53:08 UTC 2019 - Christian Boltz <suse-beta@cboltz.de>
+
+- move macros.apparmor from /etc/rpm/ to /usr/lib/rpm/macros.d/
+
+-------------------------------------------------------------------
+Wed Feb 28 06:37:37 UTC 2018 - tbechtold@suse.com
+
+- Check if apparmor is active before reloading a profile (bsc#1083226)
+  Otherwise a package using the %apparmor_reload macro in %post
+  automatically enables the profile even if apparmor itself is
+  not active.
+
+-------------------------------------------------------------------
+Sat Aug 26 19:08:14 UTC 2017 - suse-beta@cboltz.de
+
+- %apparmor_reload: skip and regenerate cache to make sure the latest
+  profile gets always used (even if the existing cache is newer)
+
+-------------------------------------------------------------------
+Wed Jan 11 11:01:29 UTC 2017 - jengelh@inai.de
+
+- RPM group fix
+
+-------------------------------------------------------------------
+Wed Jul 13 22:38:35 UTC 2016 - ushamim@linux.com
+
+- Initial creation of macro, only contains %apparmor_reload

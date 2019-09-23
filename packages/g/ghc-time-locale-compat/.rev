@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>97472cfc95da1fa065f636aee6fd65bf</srcmd5>
+    <version>0.1.1.1</version>
+    <time>1450856957</time>
+    <user>dimstar_suse</user>
+    <comment>time-locale-compat: Compatibility of TimeLocale between old-locale and time-1.5</comment>
+    <requestid>348693</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>be24a692da436e31ac47b2fdf6029ca5</srcmd5>
+    <version>0.1.1.2</version>
+    <time>1465938514</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.1.2 (forwarded request 401651 from mimi_vx)</comment>
+    <requestid>401652</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>90b923cf52db5bbc272bfce14faf6fe7</srcmd5>
+    <version>0.1.1.3</version>
+    <time>1467359928</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.1.3 (forwarded request 404951 from mimi_vx)</comment>
+    <requestid>404952</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7fa96e0bd955c97fe5e30d9de1b5a41f</srcmd5>
+    <version>0.1.1.3</version>
+    <time>1468999574</time>
+    <user>dimstar_suse</user>
+    <comment>revert (forwarded request 411863 from mimi_vx)</comment>
+    <requestid>411864</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3ce3d247cadd93d892c752049e588ccd</srcmd5>
+    <version>0.1.1.3</version>
+    <time>1505506761</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525543</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1901ec15977e3342a9d7f67667bed055</srcmd5>
+    <version>0.1.1.4</version>
+    <time>1527675287</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-time-locale-compat to the latest version.</comment>
+    <requestid>607908</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5c534a4552d732543f7796b9183c89c2</srcmd5>
+    <version>0.1.1.4</version>
+    <time>1532161424</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 0.1.1.3
+- update to 0.1.1.2</comment>
+    <requestid>623878</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>673c6e41b7553c261f316e2cf0c5a557</srcmd5>
+    <version>0.1.1.5</version>
+    <time>1535963696</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>632489</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7bc0bf7e579d42cfa91a34e1e72b7be5</srcmd5>
+    <version>0.1.1.5</version>
+    <time>1540451186</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643475</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,13 @@
+diff --git a/data/urfkill.conf b/data/urfkill.conf
+index 109f787..7187017 100644
+--- a/data/urfkill.conf
++++ b/data/urfkill.conf
+@@ -8,7 +8,7 @@
+ # urfkilld will drop root privilege and switch to the user after
+ # the devices nodes are opened.
+ #
+-user=root
++user=urfkill
+ 
+ ## Type:    boolean (true/false)
+ ## Default: true

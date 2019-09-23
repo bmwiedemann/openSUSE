@@ -1,0 +1,3373 @@
+Index: net-snmp-5.7.2/LICENSE.VELOCITY
+===================================================================
+--- /dev/null
++++ net-snmp-5.7.2/LICENSE.VELOCITY
+@@ -0,0 +1,41 @@
++/* Portions of these files are subject to the following copyright(s).  See
++ * the Net-SNMP's COPYING file for more details and other copyrights
++ * that may apply:
++ */
++/*
++ * Portions of these files are copyrighted by:
++ * Copyright © 2003 Sun Microsystems, Inc. All rights reserved.
++ * Use is subject to license terms specified in the COPYING file
++ * distributed with the Net-SNMP package.
++ */
++/*
++ * Copyright © 2002-2008, Velocity Software, Inc.
++ * All rights reserved.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions are met:
++ *
++ **  Redistributions of source code must retain the above copyright notice,
++ *   this list of conditions and the following disclaimer.
++ *
++ **  Redistributions in binary form must reproduce the above copyright
++ *   notice, this list of conditions and the following disclaimer in the
++ *   documentation and/or other materials provided with the distribution.
++ *
++ **  Neither the name of the Velocity Software, Inc. nor the
++ *   names of its contributors may be used to endorse or promote
++ *   products derived from this software without specific prior written
++ *   permission.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
++ * IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
++ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
++ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR
++ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
++ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
++ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
++ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
++ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
++ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
++ * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++ */
+Index: net-snmp-5.7.2/agent/mibgroup/velocity.h
+===================================================================
+--- /dev/null
++++ net-snmp-5.7.2/agent/mibgroup/velocity.h
+@@ -0,0 +1,28 @@
++/*
++ *  Velocity 'wrapper' interface which is an extension of the host resources
++ *	calls the per-group interfaces from 'hr_*.h' and 'velocity_*.h'
++ */
++
++	config_require(host/hr_system)
++	config_require(velocity/velocity_system)
++	config_require(host/hrh_storage)
++	config_require(host/hr_device)
++	config_require(host/hr_other)
++	config_require(host/hr_proc)
++	config_require(host/hr_network)
++	config_require(host/hr_print)
++	config_require(host/hr_disk)
++	config_require(host/hr_partition)
++	config_require(host/hrh_filesys)
++	config_require(velocity/velocity_swrun)
++	config_require(host/hr_swrun)
++	config_require(host/hr_swinst)
++	config_require(velocity/velocity_app)
++/*	config_require(ucd-snmp/proc) */
++
++/* add the host resources mib to the default mibs to load */
++config_add_mib(HOST-RESOURCES-MIB)
++config_add_mib(HOST-RESOURCES-TYPES)
++config_add_mib(UCD-SNMP-MIB)
++config_add_mib(VELOCITY-MIB)
++config_add_mib(VELOCITY-TYPES)
+Index: net-snmp-5.7.2/agent/mibgroup/velocity/velocity_app.c
+===================================================================
+--- /dev/null
++++ net-snmp-5.7.2/agent/mibgroup/velocity/velocity_app.c
+@@ -0,0 +1,499 @@
++#include <net-snmp/net-snmp-config.h>
++
++#ifdef solaris2
++#define _KMEMUSER               /* Needed by <sys/user.h> */
++#include <sys/types.h>          /* helps define struct rlimit */
++#endif
++
++#if HAVE_IO_H                   /* win32 */
++#include <io.h>
++#endif
++#if HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++#if HAVE_UNISTD_H
++#include <unistd.h>
++#endif
++#if HAVE_STRING_H
++#include <string.h>
++#else
++#include <strings.h>
++#endif
++#if HAVE_MALLOC_H
++#include <malloc.h>
++#endif
++#include <math.h>
++#include <ctype.h>
++#include <sys/types.h>
++#if HAVE_NETINET_IN_H
++#include <netinet/in.h>
++#endif
++#if TIME_WITH_SYS_TIME
++# ifdef WIN32
++#  include <sys/timeb.h>
++# else
++#  include <sys/time.h>
++# endif
++# include <time.h>
++#else
++# if HAVE_SYS_TIME_H
++#  include <sys/time.h>
++# else
++#  include <time.h>
++# endif
++#endif
++#if HAVE_KVM_H
++#include <kvm.h>
++#endif
++#if HAVE_WINSOCK_H
++#include <winsock.h>
++#endif
++
++#if HAVE_DMALLOC_H
++#include <dmalloc.h>
++#endif
++
++#include <net-snmp/net-snmp-includes.h>
++#include <net-snmp/agent/net-snmp-agent-includes.h>
++
++#include "struct.h"
++#include "velocity_app.h"
++#ifdef USING_UCD_SNMP_ERRORMIB_MODULE
++#include "../ucd-snmp/errormib.h"
++#else
++#define setPerrorstatus(x) snmp_log_perror(x)
++#endif
++#include "util_funcs.h"
++#include "kernel.h"
++#include "errno.h"
++
++static struct myvelocityApp *get_velocityApp_instance(struct myvelocityApp *, oid);
++struct myvelocityApp  *velocityAppwatch = NULL;
++int             numvelocityApps = 0;
++#define ID_SIZE 300
++
++void
++init_velocity_app(void)
++{
++
++    /*
++     * define the structure we're going to ask the agent to register our
++     * information at 
++     */
++    struct variable2 extensible_velocityApp_variables[] = {
++        {MIBINDEX, ASN_INTEGER, RONLY, var_extensible_velocityApp, 1, {MIBINDEX}},
++        {ERRORNAME, ASN_OCTET_STR, RONLY, var_extensible_velocityApp, 1,
++         {ERRORNAME}},
++	{APPPID, ASN_OCTET_STR, RONLY, var_extensible_velocityApp, 1, {APPPID}}, 
++        {APPMIN, ASN_INTEGER, RONLY, var_extensible_velocityApp, 1, {APPMIN}},
++        {APPMAX, ASN_INTEGER, RONLY, var_extensible_velocityApp, 1, {APPMAX}},
++        {APPCOUNT, ASN_INTEGER, RONLY, var_extensible_velocityApp, 1,
++         {APPCOUNT}},
++	{APPIDS, ASN_OCTET_STR, RONLY, var_extensible_velocityApp, 1,
++         {APPIDS}},
++        {ERRORFLAG, ASN_INTEGER, RONLY, var_extensible_velocityApp, 1,
++         {ERRORFLAG}},
++        {ERRORMSG, ASN_OCTET_STR, RONLY, var_extensible_velocityApp, 1,
++         {ERRORMSG}},
++    };
++
++    /*
++     * Define the OID pointer to the top of the mib tree that we're
++     * registering underneath 
++     */
++    oid             velocityApp_variables_oid[] = { 1, 3, 6, 1, 4, 1, 15601, 6, 1 };
++
++    /*
++     * register ourselves with the agent to handle our mib tree 
++     */
++    REGISTER_MIB("velocity/velocity_app", extensible_velocityApp_variables, variable2,
++                 velocityApp_variables_oid);
++
++    snmpd_register_config_handler("app", velocityApp_parse_config,
++                                  velocityApp_free_config,
++                                  "application-name [max-num] [min-num]");
++}
++
++
++
++/*
++ * Define snmpd.conf reading routines first.  They get called
++ * automatically by the invocation of a macro in the proc.h file. 
++ */
++
++void
++velocityApp_free_config(void)
++{
++    struct myvelocityApp  *ptmp, *ptmp2;
++
++    for (ptmp = velocityAppwatch; ptmp != NULL;) {
++        ptmp2 = ptmp;
++        ptmp = ptmp->next;
++        free(ptmp2);
++    }
++    velocityAppwatch = NULL;
++    numvelocityApps = 0;
++}
++
++/*
++ * find a give entry in the linked list associated with a proc name 
++ */
++static struct myvelocityApp *
++get_velocityApp_by_name(char *name)
++{
++    struct myvelocityApp  *ptmp;
++
++    if (name == NULL)
++        return NULL;
++
++    for (ptmp = velocityAppwatch; ptmp != NULL && strcmp(ptmp->name, name) != 0;
++         ptmp = ptmp->next);
++    return ptmp;
++}
++
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <unistd.h>
++
++void
++velocityApp_parse_config(const char *token, char *cptr)
++{
++    char            tmpname[STRMAX];
++    char tmppid[STRMAX];
++    struct myvelocityApp **procp = &velocityAppwatch;
++    struct stat stat_buf;
++    const char none[] = "NONE";  
++    int statrc, retc;
++    char *tmpstr;
++
++    /*
++     * don't allow two entries with the same name 
++     */
++    /* retc = strcpy(tmpstr,cptr); */
++    tmpstr = cptr;
++    copy_nword(tmpstr, tmpname, sizeof(tmpname));
++    if (get_velocityApp_by_name(tmpname) != NULL) {
++        config_perror("Already have an entry for this process.");
++        return;
++    }
++    DEBUGMSGTL(("velocity/velocity_app", "tmpname = %s \n", tmpname));
++    tmpstr = skip_not_white(tmpstr);
++    tmpstr = skip_white(tmpstr);
++    copy_nword(tmpstr, tmppid, sizeof(tmppid));
++    retc = strcmp(tmppid, none);
++    DEBUGMSGTL(("velocity/velocity_app", "tmppid = %s retc = %d\n", tmppid, retc));
++    statrc = stat(tmppid, &stat_buf);
++    DEBUGMSGTL(("velocity/velocity_app", "tmppid = %s statrc = %d st_mode = %d\n", tmppid, statrc, S_ISREG(stat_buf.st_mode)));
++    if (retc == 0 || S_ISREG(stat_buf.st_mode)) {
++	DEBUGMSGTL(("velocity/velocity_app", "Valid app string %s %s\n", tmpname, tmppid));
++    }
++    else {
++	config_perror("Incorrect syntax for app statement. Must give either keyword NONE or absolute file.");
++	return;
++    }
++
++    /*
++     * skip past used ones 
++     */
++    while (*procp != NULL)
++        procp = &((*procp)->next);
++
++    (*procp) = (struct myvelocityApp *) calloc(1, sizeof(struct myvelocityApp));
++    if (*procp == NULL)
++        return;                 /* memory alloc error */
++    numvelocityApps++;
++    /*
++     * not blank and not a comment 
++     */
++    copy_nword(cptr, (*procp)->name, sizeof((*procp)->name)); 
++    cptr = skip_not_white(cptr);
++    cptr = skip_white(cptr);
++    copy_nword(cptr, (*procp)->pidfile, sizeof((*procp)->pidfile));
++    DEBUGMSGTL(("velocity/velocity_app", "Read:  %s %s\n",
++		(*procp)->name, (*procp)->pidfile));
++    cptr = skip_not_white(cptr);
++    if ((cptr = skip_white(cptr))) {
++	(*procp)->max = atoi(cptr);
++	cptr = skip_not_white(cptr);
++	if ((cptr = skip_white(cptr)))
++	    (*procp)->min = atoi(cptr);
++	else
++	    (*procp)->min = 0;
++    } else {
++	(*procp)->max = 0;
++	(*procp)->min = 0;
++    }
++    DEBUGMSGTL(("velocity/velocity_app", "Read:  %s (%d) (%d)\n",
++		(*procp)->name, (*procp)->max, (*procp)->min));
++}
++
++
++static struct myvelocityApp *
++get_velocityApp_instance(struct myvelocityApp *proc, oid inst)
++{
++    int             i;
++
++    if (proc == NULL)
++        return (NULL);
++    for (i = 1; (i != (int) inst) && (proc != NULL); i++)
++        proc = proc->next;
++    return (proc);
++}
++#include <dirent.h>
++#include <fcntl.h>
++
++/*
++ * The routine that handles everything 
++ */
++
++u_char         *
++var_extensible_velocityApp(struct variable *vp,
++                    oid * name,
++                    size_t * length,
++                    int exact,
++                    size_t * var_len, WriteMethod ** write_method)
++{
++
++    DIR *dir;
++    struct myvelocityApp  *proc;
++    static long     long_ret;
++    static char     errmsg[ID_SIZE];
++
++    char * cmdline = NULL;
++    struct dirent *ent;
++    static char fn[19];
++    FILE * fd;
++    char temp[ID_SIZE];
++    size_t len = 0;
++    ssize_t read;
++    int statrc, retc;
++    struct stat stat_buff;
++    const char none[] = "NONE";
++    char * temp2;
++
++   if (header_simple_table
++        (vp, name, length, exact, var_len, write_method, numvelocityApps))
++        return (NULL);
++    if ((proc = get_velocityApp_instance(velocityAppwatch, name[*length - 1]))) {
++        switch (vp->magic) {
++        case MIBINDEX:
++            long_ret = name[*length - 1];
++            return ((u_char *) (&long_ret));
++	case ERRORNAME:        /* process name to check for */
++	    *var_len = strlen(proc->name);
++            return ((u_char *) (proc->name));
++	case APPPID:
++	    *var_len = strlen(proc->pidfile);
++ 	    DEBUGMSGTL(("velocity/velocity_app", "pid file is %s\n", proc->name ));
++           return ((u_char *) (proc->pidfile));
++        case APPMIN:
++            long_ret = proc->min;
++            return ((u_char *) (&long_ret));
++        case APPMAX:
++            long_ret = proc->max;
++            return ((u_char *) (&long_ret));
++        case APPCOUNT:
++	    DEBUGMSGTL(("velocity/velocity_app", "pid file is %s\n", proc->pidfile ));
++	    retc = strcmp(proc->pidfile, none);
++	    DEBUGMSGTL(("velocity/velocity_app", "retc is %d, pid is %s, none is %s.\n", retc, proc->pidfile, none));
++	    DEBUGMSGTL(("velocity/velocity_app", "pid length is %d, none length is %d\n",strlen(proc->pidfile), strlen(none)));
++	    if ( retc == 0 || strlen(proc->pidfile) == 0 ) { 
++		DEBUGMSGTL(("velocity/velocity_app", "Calling count"));
++ 		long_ret = sh_count_velocityApps(proc->name);
++	    }
++	    else {
++		if (proc->pidfile != NULL) {
++		    if ((fd = fopen(proc->pidfile, "r")) == NULL) break;
++		    read = getline(&cmdline, &len, fd);
++		    fclose(fd);
++		    if (len == -1 ) break;
++		    DEBUGMSGTL(("velocity/velocity_app", "Length returned is %d\n",len));
++		    DEBUGMSGTL(("velocity/velocity_app", "cmdline is %s\n",cmdline));
++		    cmdline = skip_white(cmdline);
++		    copy_nword(cmdline, errmsg, sizeof(errmsg));
++		    sprintf(fn,"/proc/%s",errmsg);
++		    DEBUGMSGTL(("velocity/velocity_app", "Filename is %s\n",fn));
++		    statrc = stat(fn, &stat_buff);
++		    DEBUGMSGTL(("velocity/velocity_app", "statrc = %d\n",statrc));
++	            if (cmdline)
++	                free(cmdline);
++		    if (statrc == 0 ) {
++			DEBUGMSGTL(("velocity/velocity_app", "process found - %s\n", fn));
++			long_ret = 1;
++		    }
++		    else {
++			DEBUGMSGTL(("velocity/velocity_app", "process not found - %s\n",fn));
++			long_ret = 0;
++		    }
++		}
++	    }		
++	    DEBUGMSGTL(("velocity/velocity_app", "Return %d\n", long_ret));
++            return ((u_char *) (&long_ret));
++        case APPIDS:
++	    if (strcmp(proc->pidfile, none) == 0 || strlen(proc->pidfile) == 0) { 
++		if ((dir = opendir("/proc")) == NULL) {
++		    sprintf(fn,"-1");
++		    return ((u_char *) fn);
++		}
++		errmsg[0] = 0;
++		while (NULL != (ent = readdir(dir))) {
++		    if(!(ent->d_name[0] >= '0' && ent->d_name[0] <= '9')) continue;
++		    /* read /proc/XX/cmdline */
++		    sprintf(fn,"/proc/%s/cmdline",ent->d_name);
++		    if((fd = fopen(fn, "r")) == NULL) break;
++		    read = getline(&cmdline,&len, fd);
++		    fclose(fd);
++		    if(read == -1) continue;
++		    while(--read && !cmdline[read]);
++		    while(--read) if(!cmdline[read]) cmdline[read] = ' ';
++		    if(strstr(cmdline,proc->name) != NULL ) {
++			snprintf(temp,sizeof(errmsg),"%s %s", errmsg, ent->d_name);
++			
++			strcpy(errmsg,temp);
++		    }
++		}
++		closedir(dir);
++	    }
++	    else {
++		DEBUGMSGTL(("velocity/velocity_app", "Appid\n"));
++		if ((fd = fopen(proc->pidfile, "r")) == NULL) break;
++		read = getline(&cmdline, &len, fd);
++		fclose(fd);
++		if (len == -1 ) break;
++		cmdline = skip_white(cmdline);
++		copy_nword(cmdline, errmsg, sizeof(errmsg));
++		sprintf(fn,"/proc/%s",errmsg);
++		DEBUGMSGTL(("velocity/velocity_app", "Filename is %s\n",fn));
++		statrc = stat(fn, &stat_buff);
++		DEBUGMSGTL(("velocity/velocity_app", "statrc = %d\n",statrc));
++		if (statrc == 0 ) {
++		    DEBUGMSGTL(("velocity/velocity_app", "process id is - %s \n", errmsg));
++		}
++		else {
++		     DEBUGMSGTL(("velocity/velocity_app", "process id should be - %s\n", errmsg));
++		     errmsg[0] = 0;
++		}
++	    }
++	    DEBUGMSGTL(("velocity/velocity_app", "errmsg string is %s\n", errmsg));
++	    if (cmdline)
++	        free(cmdline);
++            *var_len = strlen(errmsg);
++            return ((u_char *) errmsg);
++        case ERRORFLAG:
++	    if (strcmp(proc->pidfile, none) == 0 || strlen(proc->pidfile) == 0) { 
++		long_ret = sh_count_velocityApps(proc->name);
++	    }
++	    else {
++	        if ((fd = fopen(proc->pidfile, "r")) == NULL) break;
++		read = getline(&cmdline, &len, fd);
++		fclose(fd);
++		if (len == -1 ) break;
++		cmdline = skip_white(cmdline);
++		copy_nword(cmdline, errmsg, sizeof(errmsg));
++		sprintf(fn,"/proc/%s",errmsg);
++		DEBUGMSGTL(("velocity/velocity_app", "Filename is %s\n",fn));
++		statrc = stat(fn, &stat_buff);
++		DEBUGMSGTL(("velocity/velocity_app", "statrc = %d\n",statrc));
++	        if (cmdline)
++	            free(cmdline);
++		if (statrc == 0 ) {
++		    DEBUGMSGTL(("velocity/velocity_app", "process found - %s ", fn));
++		    long_ret = 1;
++		}
++		else {
++		    DEBUGMSGTL(("velocity/velocity_app", "process not found - %s",fn));
++		    long_ret = 0;
++		}
++	    }		
++            if (long_ret >= 0 &&
++                ((proc->min && long_ret < proc->min) ||
++                 (proc->max && long_ret > proc->max) ||
++                 (proc->min == 0 && proc->max == 0 && long_ret < 1))) {
++                long_ret = 1;
++            } else {
++                long_ret = 0;
++            }
++            return ((u_char *) (&long_ret));
++        case ERRORMSG:
++ 	    if (strcmp(proc->pidfile, none) == 0 || strlen(proc->pidfile) == 0) { 
++		long_ret = sh_count_velocityApps(proc->name);
++	    }
++	    else {
++	        if ((fd = fopen(proc->pidfile, "r")) == NULL) break;
++		read = getline(&cmdline, &len, fd);
++		fclose(fd);
++		if (len == -1 ) break;
++		cmdline = skip_white(cmdline);
++		copy_nword(cmdline, errmsg, sizeof(errmsg));
++		sprintf(fn,"/proc/%s",errmsg);
++		DEBUGMSGTL(("velocity/velocity_app", "Filename is %s\n",fn));
++		statrc = stat(fn, &stat_buff);
++		DEBUGMSGTL(("velocity/velocity_app", "statrc = %d\n",statrc));
++	        if (cmdline)
++	            free(cmdline);
++		if (statrc == 0 ) {
++		    DEBUGMSGTL(("velocity/velocity_app", "process found - %s\n ", fn));
++		    long_ret = 1;
++		}
++		else {
++		    DEBUGMSGTL(("velocity/velocity_app", "process not found - %s\n",fn));
++		    long_ret = 0;
++		}
++	    }
++            if (long_ret < 0) {
++                errmsg[0] = 0;  /* catch out of mem errors return 0 count */
++            } else if (proc->min && long_ret < proc->min) {
++                snprintf(errmsg, sizeof(errmsg),
++                        "Too few %s running (# = %d)",
++                        proc->name, (int) long_ret);
++            } else if (proc->max && long_ret > proc->max) {
++                snprintf(errmsg, sizeof(errmsg),
++                        "Too many %s running (# = %d)",
++                        proc->name, (int) long_ret);
++            } else if (proc->min == 0 && proc->max == 0 && long_ret < 1) {
++                snprintf(errmsg, sizeof(errmsg),
++                        "No %s process running.", proc->name);
++            } else {
++                errmsg[0] = 0;
++            }
++            errmsg[ sizeof(errmsg)-1 ] = 0;
++            *var_len = strlen(errmsg);
++            return ((u_char *) errmsg);
++        }
++        return NULL;
++    }
++    return NULL;
++}
++
++
++int
++sh_count_velocityApps(char *velocityAppname)
++{
++    DIR *dir;
++    char *cmdline = NULL;
++    struct dirent *ent;
++    FILE *fd;
++    size_t len;
++    char fn[18];
++    int total = 0;
++
++    if ((dir = opendir("/proc")) == NULL) return -1;
++    while (NULL != (ent = readdir(dir))) {
++	if(!(ent->d_name[0] >= '0' && ent->d_name[0] <= '9')) continue;
++	/* read /proc/XX/cmdline */
++	sprintf(fn,"/proc/%s/cmdline",ent->d_name);
++	if((fd = fopen(fn, "r")) == NULL) break;
++	len = getline(&cmdline,&len,fd);
++	fclose(fd);
++	if(len == -1) continue;
++	cmdline[len] = 0;
++	while(--len && !cmdline[len]);
++	while(--len) if(!cmdline[len]) cmdline[len] = ' ';
++	if(strstr(cmdline,velocityAppname) != NULL ) total++;
++	if (cmdline)
++	    free(cmdline);
++    }
++    closedir(dir);
++    return total;
++}
++
+Index: net-snmp-5.7.2/agent/mibgroup/velocity/velocity_app.h
+===================================================================
+--- /dev/null
++++ net-snmp-5.7.2/agent/mibgroup/velocity/velocity_app.h
+@@ -0,0 +1,38 @@
++/*
++ *  Application watching mib group
++ */
++#ifndef _MIBGROUP_APP_H
++#define _MIBGROUP_APP_H
++
++config_require(util_funcs)
++
++     void            init_velocity_app(void);
++
++     extern FindVarMethod var_extensible_velocityApp;
++     int             sh_count_velocityApps(char *);
++     int             sh_list_velocityApps(char *, char *);
++
++/*
++ * config file parsing routines 
++ */
++     void            velocityApp_free_config(void);
++     void            velocityApp_parse_config(const char *, char *);
++ 
++struct myvelocityApp {
++    char            name[STRMAX];
++    char            pidfile[STRMAX];
++    int             min;
++    int             max;
++    struct myvelocityApp  *next;
++};
++
++
++#include "mibdefs.h"
++
++#define APPPID 3
++#define APPMIN 4
++#define APPMAX 5
++#define APPCOUNT 6
++#define APPIDS 7
++
++#endif                          /* _MIBGROUP_APP_H */
+Index: net-snmp-5.7.2/agent/mibgroup/velocity/velocity_swrun.c
+===================================================================
+--- /dev/null
++++ net-snmp-5.7.2/agent/mibgroup/velocity/velocity_swrun.c
+@@ -0,0 +1,1595 @@
++/*
++ *  Velocity MIB - Running Software group implementation - velocity_swrun.c
++ *      (also includes Running Software Performance group extensions to the
++ *       standard host resources MIB)   
++ */
++
++#include <net-snmp/net-snmp-config.h>
++#if HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++#include <fcntl.h>
++#if HAVE_UNISTD_H
++#include <unistd.h>
++#endif
++
++#include <sys/param.h>
++#include <ctype.h>
++#if HAVE_SYS_PSTAT_H
++#include <sys/pstat.h>
++#endif
++#if HAVE_SYS_USER_H
++#ifdef solaris2
++#define _KMEMUSER
++#endif
++#include <sys/user.h>
++#endif
++#if HAVE_SYS_PROC_H
++#include <sys/proc.h>
++#endif
++#if HAVE_KVM_H
++#include <kvm.h>
++#endif
++#if HAVE_SYS_SYSCTL_H
++#include <sys/sysctl.h>
++#endif
++#if HAVE_DIRENT_H && !defined(cygwin)
++#include <dirent.h>
++#else
++# define dirent direct
++# if HAVE_SYS_NDIR_H
++#  include <sys/ndir.h>
++# endif
++# if HAVE_SYS_DIR_H
++#  include <sys/dir.h>
++# endif
++# if HAVE_NDIR_H
++#  include <ndir.h>
++# endif
++#endif
++#ifdef cygwin
++#include <windows.h>
++#include <sys/cygwin.h>
++#include <tlhelp32.h>
++#include <psapi.h>
++#endif
++
++#if _SLASH_PROC_METHOD_
++#include <procfs.h>
++#endif
++
++#if HAVE_STRING_H
++#include <string.h>
++#else
++#include <strings.h>
++#endif
++
++#include <stdio.h>
++
++#include <pwd.h>
++#include <grp.h>
++#include <net-snmp/output_api.h>
++#include "host_res.h"
++#include "velocity_swrun.h"
++#include <net-snmp/agent/auto_nlist.h>
++#include "kernel.h"
++#if solaris2
++#include "kernel_sunos5.h"
++#endif
++
++        /*********************
++	 *
++	 *  Initialisation & common implementation functions
++	 *
++	 *********************/
++void            Init_VELOCITY_SWRun(void);
++int             Get_Next_VELOCITY_SWRun(void);
++void            End_VELOCITY_SWRun(void);
++int             header_velocityswrun(struct variable *, oid *, size_t *, int,
++                               size_t *, WriteMethod **);
++int             header_velocityswrunEntry(struct variable *, oid *, size_t *,
++                                    int, size_t *, WriteMethod **);
++
++#ifdef dynix
++pid_t           nextproc;
++static prpsinfo_t lowpsinfo, mypsinfo;
++#endif
++#ifdef cygwin
++static struct external_pinfo *curproc;
++static struct external_pinfo lowproc;
++#elif !defined(linux)
++static int      LowProcIndex;
++#endif
++#if defined(hpux10) || defined(hpux11)
++struct pst_status *proc_table;
++struct pst_dynamic pst_dyn;
++#elif HAVE_KVM_GETPROCS
++struct kinfo_proc *proc_table;
++#elif defined(solaris2)
++int            *proc_table;
++#else
++struct proc    *proc_table;
++#endif
++#ifndef dynix
++int             current_proc_entry;
++#endif
++
++
++#define	VELOCITYSWRUN_OSINDEX		1
++
++#define	VELOCITYSWRUN_INDEX		2
++#define	VELOCITYSWRUN_NAME		3
++#define	VELOCITYSWRUN_ID		4
++#define	VELOCITYSWRUN_PATH		5
++#define	VELOCITYSWRUN_PARAMS		6
++#define	VELOCITYSWRUN_TYPE		7
++#define	VELOCITYSWRUN_STATUS		8
++#define VELOCITYSWRUN_PPID              9
++#define VELOCITYSWRUN_PGRP              10
++
++#define	VELOCITYSWRUNPERF_CPU_USER     	11
++#define	VELOCITYSWRUNPERF_CPU_SYS	12
++#define	VELOCITYSWRUNPERF_MEM		13
++#define	VELOCITYSWRUNPERF_CPU_CUMM_USER 14
++#define	VELOCITYSWRUNPERF_CPU_CUMM_SYS  15
++#define	VELOCITYSWRUNPERF_MIN_FAULT     16
++#define	VELOCITYSWRUNPERF_MAJ_FAULT     17
++#define	VELOCITYSWRUNPERF_MIN_FAULT_CUMM 18
++#define	VELOCITYSWRUNPERF_MAJ_FAULT_CUMM 19
++#define	VELOCITYSWRUNPERF_RSS           20
++#define	VELOCITYSWRUNPERF_PRIO          21
++#define VELOCITYSWRUNPERF_ALL           22
++#define VELOCITYSWRUNPERF_UID           23
++#define VELOCITYSWRUNPERF_UNAME         24
++
++struct variable4 velocityswrun_variables[] = {
++    {VELOCITYSWRUN_OSINDEX, ASN_INTEGER, RONLY, var_velocityswrun, 1, {1}},
++    {VELOCITYSWRUN_INDEX, ASN_INTEGER, RONLY, var_velocityswrun, 3, {2, 1, 1}},
++    {VELOCITYSWRUN_NAME, ASN_OCTET_STR, RONLY, var_velocityswrun, 3, {2, 1, 2}},
++    {VELOCITYSWRUN_ID, ASN_OBJECT_ID, RONLY, var_velocityswrun, 3, {2, 1, 3}},
++    {VELOCITYSWRUN_PATH, ASN_OCTET_STR, RONLY, var_velocityswrun, 3, {2, 1, 4}},
++    {VELOCITYSWRUN_PARAMS, ASN_OCTET_STR, RONLY, var_velocityswrun, 3, {2, 1, 5}},
++    {VELOCITYSWRUN_TYPE, ASN_INTEGER, RONLY, var_velocityswrun, 3, {2, 1, 6}},
++    {VELOCITYSWRUN_STATUS, ASN_INTEGER, RONLY, var_velocityswrun, 3, {2, 1, 7}},
++    {VELOCITYSWRUN_PPID, ASN_INTEGER, RONLY, var_velocityswrun, 3, {2, 1, 8}},
++    {VELOCITYSWRUN_PGRP, ASN_INTEGER, RONLY, var_velocityswrun, 3, {2, 1, 9}}
++};
++
++struct variable4 velocityswrunperf_variables[] = {
++    {VELOCITYSWRUNPERF_CPU_USER, ASN_INTEGER, RONLY, var_velocityswrun, 3, {1, 1, 1}},
++    {VELOCITYSWRUNPERF_CPU_SYS, ASN_INTEGER, RONLY, var_velocityswrun, 3, {1, 1, 2}},
++    {VELOCITYSWRUNPERF_MEM, ASN_INTEGER, RONLY, var_velocityswrun, 3, {1, 1, 3}},
++    {VELOCITYSWRUNPERF_CPU_CUMM_USER, ASN_INTEGER, RONLY, var_velocityswrun, 3, {1, 1, 4}},
++    {VELOCITYSWRUNPERF_CPU_CUMM_SYS, ASN_INTEGER, RONLY, var_velocityswrun, 3, {1, 1, 5}},
++    {VELOCITYSWRUNPERF_MIN_FAULT, ASN_INTEGER, RONLY, var_velocityswrun, 3, {1, 1, 6}},
++    {VELOCITYSWRUNPERF_MAJ_FAULT, ASN_INTEGER, RONLY, var_velocityswrun, 3, {1, 1, 7}},
++    {VELOCITYSWRUNPERF_MIN_FAULT_CUMM, ASN_INTEGER, RONLY, var_velocityswrun, 3, {1, 1, 8}},
++    {VELOCITYSWRUNPERF_MAJ_FAULT_CUMM, ASN_INTEGER, RONLY, var_velocityswrun, 3, {1, 1, 9}},
++    {VELOCITYSWRUNPERF_RSS, ASN_INTEGER, RONLY, var_velocityswrun, 3, {1, 1, 10}},
++    {VELOCITYSWRUNPERF_PRIO, ASN_INTEGER, RONLY, var_velocityswrun, 3, {1, 1, 11}},
++    {VELOCITYSWRUNPERF_ALL, ASN_OCTET_STR, RONLY, var_velocityswrun, 3, {1, 1, 12}},
++    {VELOCITYSWRUNPERF_UID, ASN_OCTET_STR, RONLY, var_velocityswrun, 3, {1, 1, 13}},
++    {VELOCITYSWRUNPERF_UNAME, ASN_OCTET_STR, RONLY, var_velocityswrun, 3, {1, 1, 14}}
++};
++
++oid             velocityswrun_variables_oid[] = { 1, 3, 6, 1, 4, 1, 15601, 4 };
++oid             velocityswrunperf_variables_oid[] = { 1, 3, 6, 1, 4, 1, 15601, 5 };
++
++#ifdef cygwin
++
++/*
++ * a lot of this is "stolen" from cygwin ps.cc
++ */
++
++typedef         BOOL(WINAPI * ENUMPROCESSMODULES) (HANDLE hProcess,
++                                                   HMODULE * lphModule,
++                                                   DWORD cb,
++                                                   LPDWORD lpcbNeeded);
++
++typedef         DWORD(WINAPI * GETMODULEFILENAME) (HANDLE hProcess,
++                                                   HMODULE hModule,
++                                                   LPTSTR lpstrFIleName,
++                                                   DWORD nSize);
++
++typedef         DWORD(WINAPI * GETPROCESSMEMORYINFO) (HANDLE hProcess,
++                                                      PPROCESS_MEMORY_COUNTERS
++                                                      pmc, DWORD nSize);
++
++typedef         HANDLE(WINAPI * CREATESNAPSHOT) (DWORD dwFlags,
++                                                 DWORD th32ProcessID);
++
++typedef         BOOL(WINAPI * PROCESSWALK) (HANDLE hSnapshot,
++                                            LPPROCESSENTRY32 lppe);
++
++ENUMPROCESSMODULES myEnumProcessModules;
++GETMODULEFILENAME myGetModuleFileNameEx;
++CREATESNAPSHOT  myCreateToolhelp32Snapshot;
++PROCESSWALK     myProcess32First;
++PROCESSWALK     myProcess32Next;
++GETPROCESSMEMORYINFO myGetProcessMemoryInfo = NULL;
++cygwin_getinfo_types query = CW_GETPINFO;
++
++static BOOL WINAPI
++dummyprocessmodules(HANDLE hProcess,
++                    HMODULE * lphModule, DWORD cb, LPDWORD lpcbNeeded)
++{
++    lphModule[0] = (HMODULE) * lpcbNeeded;
++    *lpcbNeeded = 1;
++    return 1;
++}
++
++static DWORD WINAPI
++GetModuleFileNameEx95(HANDLE hProcess,
++                      HMODULE hModule, LPTSTR lpstrFileName, DWORD n)
++{
++    HANDLE          h;
++    DWORD           pid = (DWORD) hModule;
++    PROCESSENTRY32  proc;
++
++    h = myCreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
++    if (!h)
++        return 0;
++    proc.dwSize = sizeof(proc);
++    if (myProcess32First(h, &proc))
++        do
++            if (proc.th32ProcessID == pid) {
++                CloseHandle(h);
++                strcpy(lpstrFileName, proc.szExeFile);
++                return 1;
++            }
++        while (myProcess32Next(h, &proc));
++    CloseHandle(h);
++    return 0;
++}
++
++#define FACTOR (0x19db1ded53ea710LL)
++#define NSPERSEC 10000000LL
++#define NSPERMSEC 10000LL
++
++static time_t   __stdcall
++to_time_t(PFILETIME ptr)
++{
++    long            rem;
++    long long       x =
++        ((long long) ptr->dwHighDateTime << 32) +
++        ((unsigned) ptr->dwLowDateTime);
++    x -= FACTOR;
++    rem = x % NSPERSEC;
++    rem += NSPERSEC / 2;
++    x /= NSPERSEC;
++    x += rem / NSPERSEC;
++    return x;
++}
++
++static long
++to_msec(PFILETIME ptr)
++{
++    long long       x =
++        ((long long) ptr->dwHighDateTime << 32) +
++        (unsigned) ptr->dwLowDateTime;
++    x /= NSPERMSEC;
++    return x;
++}
++
++#endif                          /* cygwin */
++
++
++void
++init_velocity_swrun(void)
++{
++#ifdef cygwin
++    OSVERSIONINFO   ver;
++    HMODULE         h;
++
++    memset(&ver, 0, sizeof ver);
++    ver.dwOSVersionInfoSize = sizeof ver;
++    GetVersionEx(&ver);
++
++    if (ver.dwPlatformId == VER_PLATFORM_WIN32_NT) {
++        h = LoadLibrary("psapi.dll");
++        if (h) {
++            myEnumProcessModules =
++                (ENUMPROCESSMODULES) GetProcAddress(h,
++                                                    "EnumProcessModules");
++            myGetModuleFileNameEx =
++                (GETMODULEFILENAME) GetProcAddress(h,
++                                                   "GetModuleFileNameExA");
++            myGetProcessMemoryInfo =
++                (GETPROCESSMEMORYINFO) GetProcAddress(h,
++                                                      "GetProcessMemoryInfo");
++            if (myEnumProcessModules && myGetModuleFileNameEx)
++                query = CW_GETPINFO_FULL;
++            else
++                snmp_log(LOG_ERR, "velocity_swrun failed NT init\n");
++        } else
++            snmp_log(LOG_ERR, "velocity_swrun failed to load psapi.dll\n");
++    } else {
++        h = GetModuleHandle("KERNEL32.DLL");
++        myCreateToolhelp32Snapshot =
++            (CREATESNAPSHOT) GetProcAddress(h, "CreateToolhelp32Snapshot");
++        myProcess32First =
++            (PROCESSWALK) GetProcAddress(h, "Process32First");
++        myProcess32Next = (PROCESSWALK) GetProcAddress(h, "Process32Next");
++        myEnumProcessModules = dummyprocessmodules;
++        myGetModuleFileNameEx = GetModuleFileNameEx95;
++        if (myCreateToolhelp32Snapshot && myProcess32First
++            && myProcess32Next)
++#if 0
++            /*
++             * This doesn't work after all on Win98 SE 
++             */
++            query = CW_GETPINFO_FULL;
++#else
++            query = CW_GETPINFO;
++#endif
++        else
++            snmp_log(LOG_ERR, "velocity_swrun failed non-NT init\n");
++    }
++#endif                          /* cygwin */
++#ifdef PROC_SYMBOL
++    auto_nlist(PROC_SYMBOL, 0, 0);
++#endif
++#ifdef NPROC_SYMBOL
++    auto_nlist(NPROC_SYMBOL, 0, 0);
++#endif
++
++    proc_table = 0;
++
++    REGISTER_MIB("velocity/velocity_swrun", velocityswrun_variables, variable4,
++                 velocityswrun_variables_oid);
++    REGISTER_MIB("velocity/velocity_swrun", velocityswrunperf_variables, variable4,
++                 velocityswrunperf_variables_oid);
++}
++
++/*
++ * header_velocityswrun(...
++ * Arguments:
++ * vp     IN      - pointer to variable entry that points here
++ * name    IN/OUT  - IN/name requested, OUT/name found
++ * length  IN/OUT  - length of IN/OUT oid's 
++ * exact   IN      - TRUE if an exact match was requested
++ * var_len OUT     - length of variable or 0 if function returned
++ * write_method
++ * 
++ */
++
++int
++header_velocityswrun(struct variable *vp,
++               oid * name,
++               size_t * length,
++               int exact, size_t * var_len, WriteMethod ** write_method)
++{
++#define VELOCITYSWRUN_NAME_LENGTH	9
++    oid             newname[MAX_OID_LEN];
++    int             result;
++
++    DEBUGMSGTL(("velocity/velocity_swrun", "var_velocityswrun: \n"));
++    DEBUGMSGOID(("velocity/velocity_swrun", name, *length));
++    DEBUGMSG(("velocity/velocity_swrun", " %d\n", exact));
++
++    memcpy((char *) newname, (char *) vp->name, vp->namelen * sizeof(oid));
++    newname[VELOCITYSWRUN_NAME_LENGTH] = 0;
++    result = snmp_oid_compare(name, *length, newname, vp->namelen + 1);
++    if ((exact && (result != 0)) || (!exact && (result >= 0)))
++        return (MATCH_FAILED);
++    memcpy((char *) name, (char *) newname,
++           (vp->namelen + 1) * sizeof(oid));
++    *length = vp->namelen + 1;
++
++    *write_method = 0;
++    *var_len = sizeof(long);    /* default to 'long' results */
++    return (MATCH_SUCCEEDED);
++}
++
++int
++header_velocityswrunEntry(struct variable *vp,
++                    oid * name,
++                    size_t * length,
++                    int exact,
++                    size_t * var_len, WriteMethod ** write_method)
++{
++#define VELOCITYSWRUN_ENTRY_NAME_LENGTH	11
++    oid             newname[MAX_OID_LEN];
++    int             pid, LowPid = -1;
++    int             result;
++
++    DEBUGMSGTL(("velocity/velocity_swrun", "var_velocityswrunEntry: \n"));
++    DEBUGMSGOID(("velocity/velocity_swrun", name, *length));
++    DEBUGMSG(("velocity/velocity_swrun", " %d\n", exact));
++
++    memcpy((char *) newname, (char *) vp->name, vp->namelen * sizeof(oid));
++
++    /*
++     *  Find the "next" running process
++     */
++    Init_VELOCITY_SWRun();
++    for (;;) {
++        pid = Get_Next_VELOCITY_SWRun();
++#ifndef linux
++#ifndef dynix
++        DEBUGMSG(("velocity/velocity_swrun",
++                  "(index %d (entry #%d) ....", pid, current_proc_entry));
++#else
++        DEBUGMSG(("velocity/velocity_swrun", "pid %d; nextproc %d ....\n", pid,
++                  nextproc));
++#endif
++#endif
++        if (pid == -1)
++            break;
++        newname[VELOCITYSWRUN_ENTRY_NAME_LENGTH] = pid;
++        DEBUGMSGOID(("velocity/velocity_swrun", newname, *length));
++        DEBUGMSG(("velocity/velocity_swrun", "newname\n"));
++        result = snmp_oid_compare(name, *length, newname, vp->namelen + 1);
++        if (exact && (result == 0)) {
++            LowPid = pid;
++#ifdef cygwin
++            lowproc = *curproc;
++#elif  dynix
++            memcpy(&lowpsinfo, &mypsinfo, sizeof(prpsinfo_t));
++#elif !defined(linux)
++            LowProcIndex = current_proc_entry - 1;
++#endif
++            DEBUGMSGTL(("velocity/velocity_swrun", " saved\n"));
++            /*
++             * Save process status information 
++             */
++            break;
++        }
++        if ((!exact && (result < 0)) && (LowPid == -1 || pid < LowPid)) {
++            LowPid = pid;
++#ifdef cygwin
++            lowproc = *curproc;
++#elif !defined(linux)
++            LowProcIndex = current_proc_entry - 1;
++#endif
++            /*
++             * Save process status information 
++             */
++            DEBUGMSG(("velocity/velocity_swrun", " saved"));
++        }
++        DEBUGMSG(("velocity/velocity_swrun", "\n"));
++    }
++    End_VELOCITY_SWRun();
++
++    if (LowPid == -1) {
++        DEBUGMSGTL(("velocity/velocity_swrun", "... index out of range\n"));
++        return (MATCH_FAILED);
++    }
++
++    newname[VELOCITYSWRUN_ENTRY_NAME_LENGTH] = LowPid;
++    memcpy((char *) name, (char *) newname,
++           (vp->namelen + 1) * sizeof(oid));
++    *length = vp->namelen + 1;
++    *write_method = 0;
++    *var_len = sizeof(long);    /* default to 'long' results */
++
++    DEBUGMSGTL(("velocity/velocity_swrun", "... get process stats\n"));
++    DEBUGMSGOID(("velocity/velocity_swrun", name, *length));
++    DEBUGMSG(("velocity/velocity_swrun", "\n"));
++    return LowPid;
++}
++
++        /*********************
++	 *
++	 *  System specific implementation functions
++	 *
++	 *********************/
++
++
++u_char         *
++var_velocityswrun(struct variable * vp,
++            oid * name,
++            size_t * length,
++            int exact, size_t * var_len, WriteMethod ** write_method)
++{
++    int             pid = 0;
++    static char     string[256];
++#ifdef HAVE_SYS_PSTAT_H
++    struct pst_status proc_buf;
++#elif defined(solaris2)
++#if _SLASH_PROC_METHOD_
++    static psinfo_t psinfo;
++    static psinfo_t *proc_buf;
++    int             procfd;
++    char            procfn[sizeof "/proc/00000/psinfo"];
++#else
++    static struct proc *proc_buf;
++    char           *cp1;
++#endif                          /* _SLASH_PROC_METHOD_ */
++    static time_t   when = 0;
++    time_t          now;
++    static int      oldpid = -1;
++#endif
++#if HAVE_KVM_GETPROCS
++    char          **argv;
++#endif
++#ifdef linux
++    FILE           *fp;
++    int             fd;
++    char            buf[256];
++    char            buff[1024];
++    char            uid[33];
++    char            gid[33];
++    char            unknown[] = "unknown";
++    int             bsize;
++    int             i;
++    int             uid1, uid2, uid3, uid4;
++    int             gid1, gid2, gid3, gid4;
++    struct passwd*  pwd;
++    struct group*   grp;
++    char *username = NULL;
++    char *groupname = NULL;
++#endif
++    char           *cp;
++
++    if (vp->magic == VELOCITYSWRUN_OSINDEX) {
++        if (header_velocityswrun(vp, name, length, exact, var_len, write_method)
++            == MATCH_FAILED)
++            return NULL;
++    } else {
++
++        pid =
++            header_velocityswrunEntry(vp, name, length, exact, var_len,
++                                write_method);
++        if (pid == MATCH_FAILED)
++            return NULL;
++    }
++
++#ifdef HAVE_SYS_PSTAT_H
++    if (pstat_getproc(&proc_buf, sizeof(struct pst_status), 0, pid) == -1)
++        return NULL;
++#elif defined(solaris2)
++    time(&now);
++    if (pid == oldpid) {
++        if (now != when)
++            oldpid = -1;
++    }
++    if (oldpid != pid || proc_buf == NULL) {
++#if _SLASH_PROC_METHOD_
++        proc_buf = &psinfo;
++        sprintf(procfn, "/proc/%.5d/psinfo", pid);
++        if ((procfd = open(procfn, O_RDONLY)) != -1) {
++            if (read(procfd, proc_buf, sizeof(*proc_buf)) !=
++                sizeof(*proc_buf))
++                abort();
++            close(procfd);
++        } else
++            proc_buf = NULL;
++#else
++        if (kd == NULL)
++            return NULL;
++        if ((proc_buf = kvm_getproc(kd, pid)) == NULL)
++            return NULL;
++#endif
++        oldpid = pid;
++        when = now;
++    }
++#endif
++
++    switch (vp->magic) {
++    case VELOCITYSWRUN_OSINDEX:
++#if NO_DUMMY_VALUES
++        return NULL;
++#else
++        long_return = 1;        /* Probably! */
++        return (u_char *) & long_return;
++#endif
++
++    case VELOCITYSWRUN_INDEX:
++        long_return = pid;
++        return (u_char *) & long_return;
++    case VELOCITYSWRUN_NAME:
++#ifdef HAVE_SYS_PSTAT_H
++        sprintf(string, "%s", proc_buf.pst_cmd);
++        cp = strchr(string, ' ');
++        if (cp != NULL)
++            *cp = '\0';
++#elif defined(dynix)
++        sprintf(string, "%s", lowpsinfo.pr_fname);
++        cp = strchr(string, ' ');
++        if (cp != NULL)
++            *cp = '\0';
++#elif defined(solaris2)
++#if _SLASH_PROC_METHOD_
++        if (proc_buf)
++            strcpy(string, proc_buf->pr_fname);
++        else
++            strcpy(string, "<exited>");
++#else
++        strcpy(string, proc_buf->p_user.u_comm);
++#endif
++#elif HAVE_KVM_GETPROCS
++        strcpy(string, proc_table[LowProcIndex].kp_proc.p_comm);
++#elif defined(linux)
++        sprintf(string, "/proc/%d/status", pid);
++        if ((fp = fopen(string, "r")) == NULL)
++            return NULL;
++        fgets(buf, sizeof(buf), fp);    /* Name: process name */
++        cp = buf;
++        while (*cp != ':')
++            ++cp;
++        ++cp;
++        while (isspace(*cp))
++            ++cp;
++        strcpy(string, cp);
++        fclose(fp);
++#elif defined(cygwin)
++        if (lowproc.process_state & (PID_ZOMBIE | PID_EXITED))
++            strcpy(string, "<defunct>");
++        else if (lowproc.ppid) {
++            cygwin_conv_to_posix_path(lowproc.progname, string);
++            cp = strrcvelocity(string, '/');
++            if (cp)
++                strcpy(string, cp + 1);
++        } else if (query == CW_GETPINFO_FULL) {
++            DWORD           n = lowproc.dwProcessId & 0xffff;
++            HANDLE          h =
++                OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ,
++                            FALSE, n);
++
++            if (h) {
++                HMODULE         hm[1000];
++                if (!myEnumProcessModules(h, hm, sizeof hm, &n)) {
++                    snmp_log(LOG_DEBUG, "no module handle for %lu\n", n);
++                    n = 0;
++                }
++                if (n
++                    && myGetModuleFileNameEx(h, hm[0], string,
++                                             sizeof string)) {
++                    cp = strrcvelocity(string, '\\');
++                    if (cp)
++                        strcpy(string, cp + 1);
++                } else
++                    strcpy(string, "*** unknown");
++                CloseHandle(h);
++            } else {
++                snmp_log(LOG_INFO, "no process handle for %lu\n", n);
++                strcpy(string, "** unknown");
++            }
++        } else
++            strcpy(string, "* unknown");
++        cp = strchr(string, '\0') - 4;
++        if (cp > string && strcasecmp(cp, ".exe") == 0)
++            *cp = '\0';
++#else
++#if NO_DUMMY_VALUES
++        return NULL;
++#endif
++        sprintf(string, "process name");
++#endif
++        *var_len = strlen(string);
++        /*
++         * remove trailing newline 
++         */
++        if (*var_len) {
++            cp = string + *var_len - 1;
++            if (*cp == '\n')
++                --(*var_len);
++        }
++        return (u_char *) string;
++    case VELOCITYSWRUN_ID:
++        *var_len = nullOidLen;
++        return (u_char *) nullOid;
++    case VELOCITYSWRUN_PATH:
++#ifdef HAVE_SYS_PSTAT_H
++        /*
++         * Path not available - use argv[0] 
++         */
++        sprintf(string, "%s", proc_buf.pst_cmd);
++        cp = strchr(string, ' ');
++        if (cp != NULL)
++            *cp = '\0';
++#elif defined(dynix)
++        /*
++         * Path not available - use argv[0] 
++         */
++        sprintf(string, "%s", lowpsinfo.pr_psargs);
++        cp = strchr(string, ' ');
++        if (cp != NULL)
++            *cp = '\0';
++#elif defined(solaris2)
++#ifdef _SLASH_PROC_METHOD_
++        if (proc_buf)
++            strcpy(string, proc_buf->pr_psargs);
++        else
++            sprintf(string, "<exited>");
++        cp = strchr(string, ' ');
++        if (cp)
++            *cp = 0;
++#else
++        cp = proc_buf->p_user.u_psargs;
++        cp1 = string;
++        while (*cp && *cp != ' ')
++            *cp1++ = *cp++;
++        *cp1 = 0;
++#endif
++#elif HAVE_KVM_GETPROCS
++        strcpy(string, proc_table[LowProcIndex].kp_proc.p_comm);
++#elif defined(linux)
++        sprintf(string, "/proc/%d/cmdline", pid);
++        if ((fp = fopen(string, "r")) == NULL)
++            return NULL;
++        if (fgets(buf, sizeof(buf) - 1, fp))    /* argv[0] '\0' argv[1] '\0' .... */
++            strcpy(string, buf);
++        else {
++            /*
++             * swapped out - no cmdline 
++             */
++            fclose(fp);
++            sprintf(string, "/proc/%d/status", pid);
++            if ((fp = fopen(string, "r")) == NULL)
++                return NULL;
++            fgets(buf, sizeof(buf), fp);        /* Name: process name */
++            cp = strchr(buf, ':');
++            ++cp;
++            while (isspace(*cp))
++                ++cp;
++            strcpy(string, cp);
++            cp = strchr(string, '\n');
++            if (cp)
++                *cp = 0;
++        }
++        fclose(fp);
++#elif defined(cygwin)
++        if (lowproc.process_state & (PID_ZOMBIE | PID_EXITED))
++            strcpy(string, "<defunct>");
++        else if (lowproc.ppid)
++            cygwin_conv_to_posix_path(lowproc.progname, string);
++        else if (query == CW_GETPINFO_FULL) {
++            DWORD           n = lowproc.dwProcessId & 0xFFFF;
++            HANDLE          h =
++                OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ,
++                            FALSE, n);
++            if (h) {
++                HMODULE         hm[1000];
++                if (!myEnumProcessModules(h, hm, sizeof hm, &n))
++                    n = 0;
++                if (!n
++                    || !myGetModuleFileNameEx(h, hm[0], string,
++                                              sizeof string))
++                    strcpy(string, "*** unknown");
++                CloseHandle(h);
++            } else
++                strcpy(string, "** unknown");
++        } else
++            strcpy(string, "* unknown");
++#else
++#if NO_DUMMY_VALUES
++        return NULL;
++#endif
++        sprintf(string, "/bin/wombat");
++#endif
++        *var_len = strlen(string);
++        return (u_char *) string;
++    case VELOCITYSWRUN_PARAMS:
++#ifdef HAVE_SYS_PSTAT_H
++        cp = strchr(proc_buf.pst_cmd, ' ');
++        if (cp != NULL) {
++            cp++;
++            sprintf(string, "%s", cp);
++        } else
++            string[0] = '\0';
++#elif defined(dynix)
++        cp = strchr(lowpsinfo.pr_psargs, ' ');
++        if (cp != NULL) {
++            cp++;
++            sprintf(string, "%s", cp);
++        } else
++            string[0] = '\0';
++#elif defined(solaris2)
++#ifdef _SLASH_PROC_METHOD_
++        if (proc_buf) {
++            cp = strchr(proc_buf->pr_psargs, ' ');
++            if (cp)
++                strcpy(string, cp + 1);
++            else
++                string[0] = 0;
++        } else
++            string[0] = 0;
++#else
++        cp = proc_buf->p_user.u_psargs;
++        while (*cp && *cp != ' ')
++            cp++;
++        if (*cp == ' ')
++            cp++;
++        strcpy(string, cp);
++#endif
++#elif HAVE_KVM_GETPROCS
++        string[0] = 0;
++        argv = kvm_getargv(kd, proc_table + LowProcIndex, sizeof(string));
++        if (argv)
++            argv++;
++        while (argv && *argv) {
++            if (string[0] != 0)
++                strcat(string, " ");
++            strcat(string, *argv);
++            argv++;
++        }
++#elif defined(linux)
++        sprintf(string, "/proc/%d/cmdline", pid);
++        if ((fp = fopen(string, "r")) == NULL)
++            return NULL;
++        memset(buf, 0, sizeof(buf));
++
++        /*
++         * argv[0] '\0' argv[1] '\0' .... 
++         */
++        if (!fgets(buf, sizeof(buf) - 2, fp)) {
++            /*
++             * maybe be empty (even argv[0] is missing) 
++             */
++            string[0] = '\0';
++            *var_len = 0;
++            fclose(fp);
++            return string;
++        }
++
++        /*
++         * Skip over argv[0] 
++         */
++        cp = buf;
++        while (*cp)
++            ++cp;
++        ++cp;
++        /*
++         * Now join together separate arguments. 
++         */
++        while (1) {
++            while (*cp)
++                ++cp;
++            if (*(cp + 1) == '\0')
++                break;          /* '\0''\0' => End of command line */
++            *cp = ' ';
++        }
++
++        cp = buf;
++        while (*cp)
++            ++cp;
++        ++cp;
++        strcpy(string, cp);
++        fclose(fp);
++#elif defined(cygwin)
++        string[0] = 0;
++#else
++#if NO_DUMMY_VALUES
++        return NULL;
++#endif
++        sprintf(string, "-h -q -v");
++#endif
++        *var_len = strlen(string);
++        return (u_char *) string;
++    case VELOCITYSWRUNPERF_ALL:
++#if defined(linux)
++        sprintf(string, "/proc/%d/stat", pid);
++        if ((fp = fopen(string, "r")) == NULL)
++            return NULL;
++        fgets(buf, sizeof(buf), fp);
++	strcpy(string,buf);
++
++        fclose(fp);
++#endif
++        *var_len = strlen(string);
++        return (u_char *) string;
++    case VELOCITYSWRUNPERF_UID:
++#if defined(linux)
++        sprintf(string, "/proc/%d/status", pid);
++        DEBUGMSG(("velocity/velocity_swrun", "In UID string=%s\n",string));
++        if ((fd = open(string, O_RDONLY, 0)) == -1)
++            return NULL;
++        bsize = read(fd, buff, sizeof(buff));   
++        buff[bsize-1] = 0;
++        DEBUGMSG(("velocity/velocity_swrun", "In UID buff=%s\n",buff));
++        cp = strstr(buff, "Uid:");
++        DEBUGMSG(("velocity/velocity_swrun", "In UID cp=%s\n",cp));
++        if (cp)
++            sscanf(cp, "%*s %s %*s %*s %*s %*s %s", uid, gid);
++        else {
++            return NULL;
++        }
++        strcpy(string,uid);
++        strcat(string," ");
++        strcat(string,gid);
++        DEBUGMSG(("velocity/velocity_swrun", "In UID end string=%s\n",string));
++        close(fd);
++#endif
++        *var_len = strlen(string);
++        return (u_char *) string;
++    case VELOCITYSWRUNPERF_UNAME:
++#if defined(linux)
++        sprintf(string, "/proc/%d/status", pid);
++        DEBUGMSG(("velocity/velocity_swrun", "UName string=%s\n",string));
++        if ((fd = open(string, O_RDONLY, 0)) == -1)
++            return NULL;
++        bsize = read(fd, buff, sizeof(buff));   
++        buff[bsize-1] = 0;
++        DEBUGMSG(("velocity/velocity_swrun", "UName buff=%s\n",buff));
++        cp = strstr(buff, "Uid:");
++        DEBUGMSG(("velocity/velocity_swrun", "UName cp=%s\n",cp));
++        if (cp)
++            sscanf(cp, "%*s %d %*s %*s %*s %*s %d", &uid1, &gid1);
++        else {
++            return NULL;
++        }
++        DEBUGMSG(("velocity/velocity_swrun", "UName uid1=%d gid1=%d\n", uid1, gid1));
++        pwd = getpwuid(uid1);
++        if ( pwd == NULL )
++            username = unknown;
++        else username = pwd->pw_name;
++        grp = getgrgid(gid1);
++        if ( grp == NULL )
++            groupname = unknown;
++        else groupname = grp->gr_name;
++/*       strcpy(string,username);
++        strcat(string," ");
++        strcat(string,groupname); */
++	sprintf(string,"%s %s %d %d", username, groupname, uid1, gid1);
++        DEBUGMSG(("velocity/velocity_swrun", "UName end string=%s\n",string));
++        close(fd);
++#endif
++        *var_len = strlen(string);
++        return (u_char *) string;
++    case VELOCITYSWRUN_TYPE:
++#ifdef PID_MAXSYS
++        if (pid < PID_MAXSYS)
++            long_return = 2;    /* operatingSystem */
++        else
++#endif
++            long_return = 4;    /* application */
++        return (u_char *) & long_return;
++    case VELOCITYSWRUN_STATUS:
++#if defined(cygwin)
++        if (lowproc.process_state & PID_STOPPED)
++            long_return = 3;    /* notRunnable */
++        else if (lowproc.process_state & PID_ZOMBIE)
++            long_return = 4;    /* invalid */
++        else
++            long_return = 1;    /* running */
++#elif !defined(linux)
++#if defined(hpux10) || defined(hpux11)
++        switch (proc_table[LowProcIndex].pst_stat) {
++        case PS_STOP:
++            long_return = 3;    /* notRunnable */
++            break;
++        case PS_SLEEP:
++            long_return = 2;    /* runnable */
++            break;
++        case PS_RUN:
++            long_return = 1;    /* running */
++            break;
++        case PS_ZOMBIE:
++        case PS_IDLE:
++        case PS_OTHER:
++        default:
++            long_return = 4;    /* invalid */
++            break;
++        }
++#else
++#if HAVE_KVM_GETPROCS
++        switch (proc_table[LowProcIndex].kp_proc.p_stat) {
++#elif defined(dynix)
++        switch (lowpsinfo.pr_state) {
++#elif defined(solaris2)
++#if _SLASH_PROC_METHOD_
++        switch (proc_buf ? proc_buf->pr_lwp.pr_state : SIDL) {
++#else
++        switch (proc_buf->p_stat) {
++#endif
++#else
++        switch (proc_table[LowProcIndex].p_stat) {
++#endif
++        case SSTOP:
++            long_return = 3;    /* notRunnable */
++            break;
++        case 0:
++#ifdef SSWAP
++        case SSWAP:
++#endif
++#ifdef SSLEEP
++        case SSLEEP:
++#endif
++#ifdef SWAIT
++        case SWAIT:
++#endif
++            long_return = 2;    /* runnable */
++            break;
++#ifdef SACTIVE
++        case SACTIVE:
++#endif
++#ifdef SRUN
++        case SRUN:
++#endif
++#ifdef SONPROC
++        case SONPROC:
++#endif
++            long_return = 1;    /* running */
++            break;
++        case SIDL:
++        case SZOMB:
++        default:
++            long_return = 4;    /* invalid */
++            break;
++        }
++#endif
++#else
++        sprintf(string, "/proc/%d/stat", pid);
++        if ((fp = fopen(string, "r")) != NULL) {
++            fgets(buf, sizeof(buf), fp);
++            cp = buf;
++            for (i = 0; i < 2; ++i) {   /* skip two fields */
++                while (*cp != ' ')
++                    ++cp;
++                ++cp;
++            }
++
++            switch (*cp) {
++            case 'R':
++                long_return = 1;        /* running */
++                break;
++            case 'S':
++                long_return = 2;        /* runnable */
++                break;
++            case 'D':
++            case 'T':
++                long_return = 3;        /* notRunnable */
++                break;
++            case 'Z':
++            default:
++                long_return = 4;        /* invalid */
++                break;
++            }
++            fclose(fp);
++        } else
++            long_return = 4;    /* invalid */
++#endif
++        return (u_char *) & long_return;
++
++    case VELOCITYSWRUN_PPID:
++#if defined(linux)
++        sprintf(string, "/proc/%d/stat", pid);
++        if ((fp = fopen(string, "r")) == NULL)
++            return NULL;
++        fgets(buf, sizeof(buf), fp);
++        cp = buf;
++        for (i = 0; i < 3; ++i) {      /* skip 3 fields */
++            while (*cp != ' ')
++                ++cp;
++            ++cp;
++        }
++
++        long_return = atoi(cp); /* Parent Process ID */
++
++        fclose(fp);
++#endif
++        return (u_char *) & long_return;
++    case VELOCITYSWRUN_PGRP:
++#if defined(linux)
++        sprintf(string, "/proc/%d/stat", pid);
++        if ((fp = fopen(string, "r")) == NULL)
++            return NULL;
++        fgets(buf, sizeof(buf), fp);
++        cp = buf;
++        for (i = 0; i < 4; ++i) {      /* skip 4 fields */
++            while (*cp != ' ')
++                ++cp;
++            ++cp;
++        }
++
++        long_return = atoi(cp); /* Process group ID */
++
++        fclose(fp);
++#endif
++        return (u_char *) & long_return;
++    case VELOCITYSWRUNPERF_CPU_USER:
++#if defined(linux)
++        sprintf(string, "/proc/%d/stat", pid);
++        if ((fp = fopen(string, "r")) == NULL)
++            return NULL;
++        fgets(buf, sizeof(buf), fp);
++        cp = buf;
++        for (i = 0; i < 13; ++i) {      /* skip 13 fields */
++            while (*cp != ' ')
++                ++cp;
++            ++cp;
++        }
++
++        long_return = atoi(cp); /* utime */
++        fclose(fp);
++#endif
++        return (u_char *) & long_return;
++    case VELOCITYSWRUNPERF_CPU_SYS:
++#if defined(linux)
++        sprintf(string, "/proc/%d/stat", pid);
++        if ((fp = fopen(string, "r")) == NULL)
++            return NULL;
++        fgets(buf, sizeof(buf), fp);
++        cp = buf;
++        for (i = 0; i < 14; ++i) {      /* skip 14 fields */
++            while (*cp != ' ')
++                ++cp;
++            ++cp;
++        }
++
++        long_return = atoi(cp); /* stime */
++        fclose(fp);
++#endif
++        return (u_char *) & long_return;
++    case VELOCITYSWRUNPERF_CPU_CUMM_USER:
++#if defined(linux)
++        sprintf(string, "/proc/%d/stat", pid);
++        if ((fp = fopen(string, "r")) == NULL)
++            return NULL;
++        fgets(buf, sizeof(buf), fp);
++        cp = buf;
++        for (i = 0; i < 15; ++i) {      /* skip 15 fields */
++            while (*cp != ' ')
++                ++cp;
++            ++cp;
++        }
++
++        long_return = atoi(cp); /* cutime */
++
++        fclose(fp);
++#endif
++        return (u_char *) & long_return;
++    case VELOCITYSWRUNPERF_CPU_CUMM_SYS:
++#if defined(linux)
++        sprintf(string, "/proc/%d/stat", pid);
++        if ((fp = fopen(string, "r")) == NULL)
++            return NULL;
++        fgets(buf, sizeof(buf), fp);
++        cp = buf;
++        for (i = 0; i < 16; ++i) {      /* skip 16 fields */
++            while (*cp != ' ')
++                ++cp;
++            ++cp;
++        }
++
++        long_return = atoi(cp); /* cstime */
++
++        fclose(fp);
++#endif
++        return (u_char *) & long_return;
++    case VELOCITYSWRUNPERF_MIN_FAULT:
++#if defined(linux)
++        sprintf(string, "/proc/%d/stat", pid);
++        if ((fp = fopen(string, "r")) == NULL)
++            return NULL;
++        fgets(buf, sizeof(buf), fp);
++        cp = buf;
++        for (i = 0; i < 9; ++i) {      /* skip 9 fields */
++            while (*cp != ' ')
++                ++cp;
++            ++cp;
++        }
++
++        long_return = atoi(cp); /* minflt */
++
++        fclose(fp);
++#endif
++        return (u_char *) & long_return;
++    case VELOCITYSWRUNPERF_MAJ_FAULT:
++#if defined(linux)
++        sprintf(string, "/proc/%d/stat", pid);
++        if ((fp = fopen(string, "r")) == NULL)
++            return NULL;
++        fgets(buf, sizeof(buf), fp);
++        cp = buf;
++        for (i = 0; i < 11; ++i) {      /* skip 11 fields */
++            while (*cp != ' ')
++                ++cp;
++            ++cp;
++        }
++
++        long_return = atoi(cp); /* majflt */
++
++        fclose(fp);
++#endif
++        return (u_char *) & long_return;
++    case VELOCITYSWRUNPERF_MIN_FAULT_CUMM:
++#if defined(linux)
++        sprintf(string, "/proc/%d/stat", pid);
++        if ((fp = fopen(string, "r")) == NULL)
++            return NULL;
++        fgets(buf, sizeof(buf), fp);
++        cp = buf;
++        for (i = 0; i < 10; ++i) {      /* skip 10 fields */
++            while (*cp != ' ')
++                ++cp;
++            ++cp;
++        }
++
++        long_return = atoi(cp); /* cminflt */
++
++        fclose(fp);
++#endif
++        return (u_char *) & long_return;
++    case VELOCITYSWRUNPERF_MAJ_FAULT_CUMM:
++#if defined(linux)
++        sprintf(string, "/proc/%d/stat", pid);
++        if ((fp = fopen(string, "r")) == NULL)
++            return NULL;
++        fgets(buf, sizeof(buf), fp);
++        cp = buf;
++        for (i = 0; i < 12; ++i) {      /* skip 12 fields */
++            while (*cp != ' ')
++                ++cp;
++            ++cp;
++        }
++
++        long_return = atoi(cp); /* cmajflt */
++
++        fclose(fp);
++#endif
++        return (u_char *) & long_return;
++    case VELOCITYSWRUNPERF_RSS:
++#if defined(linux)
++        sprintf(string, "/proc/%d/stat", pid);
++        if ((fp = fopen(string, "r")) == NULL)
++            return NULL;
++        fgets(buf, sizeof(buf), fp);
++        cp = buf;
++        for (i = 0; i < 23; ++i) {      /* skip 23 fields */
++            while (*cp != ' ')
++                ++cp;
++            ++cp;
++        }
++
++        long_return = atoi(cp); /* rss */
++
++        fclose(fp);
++#endif
++        return (u_char *) & long_return;
++    case VELOCITYSWRUNPERF_PRIO:
++#if defined(linux)
++        sprintf(string, "/proc/%d/stat", pid);
++        if ((fp = fopen(string, "r")) == NULL)
++            return NULL;
++        fgets(buf, sizeof(buf), fp);
++        cp = buf;
++        for (i = 0; i < 18; ++i) {      /* skip 18 fields */
++            while (*cp != ' ')
++                ++cp;
++            ++cp;
++        }
++
++        long_return = atoi(cp); /* priority */
++
++        fclose(fp);
++#endif
++        return (u_char *) & long_return;
++    case VELOCITYSWRUNPERF_MEM:
++#ifdef HAVE_SYS_PSTAT_H
++        long_return = (proc_buf.pst_rssize << PGSHIFT) / 1024;
++#elif defined(dynix)
++        long_return = (lowpsinfo.pr_rssize * MMU_PAGESIZE) / 1024;
++#elif defined(solaris2)
++#if _SLASH_PROC_METHOD_
++        long_return = proc_buf ? proc_buf->pr_rssize : 0;
++#else
++        long_return = proc_buf->p_swrss;
++#endif
++#elif HAVE_KVM_GETPROCS
++#if defined(freebsd3) && !defined(darwin)
++        long_return =
++            proc_table[LowProcIndex].kp_eproc.e_vm.vm_map.size / 1024;
++#else
++        long_return = proc_table[LowProcIndex].kp_eproc.e_vm.vm_tsize +
++            proc_table[LowProcIndex].kp_eproc.e_vm.vm_ssize +
++            proc_table[LowProcIndex].kp_eproc.e_vm.vm_dsize;
++        long_return = long_return * (getpagesize() / 1024);
++#endif
++#elif defined(linux)
++        sprintf(string, "/proc/%d/stat", pid);
++        if ((fp = fopen(string, "r")) == NULL)
++            return NULL;
++        fgets(buf, sizeof(buf), fp);
++        cp = buf;
++        for (i = 0; i < 22; ++i) {      /* skip 22 fields */
++            while (*cp != ' ')
++                ++cp;
++            ++cp;
++        }
++        long_return = atoi(cp)  / 1024; /* perfmem in K */
++        fclose(fp);
++#elif defined(cygwin)
++        {
++            DWORD           n = lowproc.dwProcessId;
++            HANDLE          h =
++                OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ,
++                            FALSE, n);
++            PROCESS_MEMORY_COUNTERS pmc;
++
++            if (h) {
++                if (myGetProcessMemoryInfo
++                    && myGetProcessMemoryInfo(h, &pmc, sizeof pmc))
++                    long_return = pmc.WorkingSetSize / 1024;
++                else {
++                    snmp_log(LOG_INFO, "no process times for %lu (%lu)\n",
++                             lowproc.pid, n);
++                    long_return = 0;
++                }
++                CloseHandle(h);
++            } else {
++                snmp_log(LOG_INFO, "no process handle for %lu (%lu)\n",
++                         lowproc.pid, n);
++                long_return = 0;
++            }
++        }
++#else
++#if NO_DUMMY_VALUES
++        return NULL;
++#endif
++        long_return = 16 * 1024;        /* XXX - 16M! */
++#endif
++        return (u_char *) & long_return;
++    default:
++        DEBUGMSGTL(("snmpd", "unknown sub-id %d in var_velocityswrun\n",
++                    vp->magic));
++    }
++    return NULL;
++}
++
++
++        /*********************
++	 *
++	 *  Internal implementation functions
++	 *
++	 *********************/
++
++#if defined(linux)
++
++DIR            *vsprocdir = NULL;
++struct dirent  *procentry_p;
++
++void
++Init_VELOCITY_SWRun(void)
++{
++    if (vsprocdir != NULL)
++        closedir(vsprocdir);
++    vsprocdir = opendir("/proc");
++}
++
++int
++Get_Next_VELOCITY_SWRun(void)
++{
++    int             pid;
++    procentry_p = readdir(vsprocdir);
++
++    if (procentry_p == NULL)
++        return -1;
++
++    pid = atoi(procentry_p->d_name);
++    if (pid == 0)
++        return (Get_Next_VELOCITY_SWRun());
++    return pid;
++}
++
++void
++End_VELOCITY_SWRun(void)
++{
++    if (vsprocdir)
++        closedir(vsprocdir);
++    vsprocdir = NULL;
++}
++
++#elif defined(cygwin)
++
++static pid_t    curpid;
++
++void
++Init_VELOCITY_SWRun(void)
++{
++    cygwin_internal(CW_LOCK_PINFO, 1000);
++    curpid = 0;
++}
++
++int
++Get_Next_VELOCITY_SWRun(void)
++{
++    curproc =
++        (struct external_pinfo *) cygwin_internal(query,
++                                                  curpid | CW_NEXTPID);
++    if (curproc)
++        curpid = curproc->pid;
++    else {
++        curpid = -1;
++    }
++    return curpid;
++}
++
++void
++End_VELOCITY_SWRun(void)
++{
++    cygwin_internal(CW_UNLOCK_PINFO);
++}
++
++#elif defined(dynix)
++
++void
++Init_VELOCITY_SWRun(void)
++{
++    nextproc = 0;
++}
++
++int
++Get_Next_VELOCITY_SWRun(void)
++{
++    getprpsinfo_t  *select = 0;
++
++    DEBUGMSGTL(("velocity/velocity_swrun::GetNextVELOCITY_SWRun",
++                "nextproc == %d... &nextproc = %u\n", nextproc,
++                &nextproc));
++    if ((nextproc = getprpsinfo(nextproc, select, &mypsinfo)) < 0) {
++        return -1;
++    } else {
++        DEBUGMSGTL(("velocity/velocity_swrun::GetNextVELOCITY_SWRun",
++                    "getprpsinfo returned %d\n", nextproc));
++        return mypsinfo.pr_pid;
++    }
++
++}
++
++void
++End_VELOCITY_SWRun(void)
++{
++    /*
++     * just a stub... because it's declared 
++     */
++}
++
++#else                           /* linux */
++
++static int      nproc;
++
++void
++Init_VELOCITY_SWRun(void)
++{
++    size_t          bytes;
++    static time_t   iwhen = 0;
++    time_t          now;
++
++    time(&now);
++    if (now == iwhen) {
++        current_proc_entry = 0;
++        return;
++    }
++    iwhen = now;
++
++#if defined(hpux10) || defined(hpux11)
++    pstat_getdynamic(&pst_dyn, sizeof(struct pst_dynamic), 1, 0);
++    nproc = pst_dyn.psd_activeprocs;
++    bytes = nproc * sizeof(struct pst_status);
++    if ((proc_table =
++         (struct pst_status *) realloc(proc_table, bytes)) == NULL) {
++        current_proc_entry = nproc + 1;
++        return;
++    }
++    pstat_getproc(proc_table, sizeof(struct pst_status), nproc, 0);
++
++#elif defined(solaris2)
++    if (!getKstatInt("unix", "system_misc", "nproc", &nproc)) {
++        current_proc_entry = nproc + 1;
++        return;
++    }
++    bytes = nproc * sizeof(int);
++    if ((proc_table = (int *) realloc(proc_table, bytes)) == NULL) {
++        current_proc_entry = nproc + 1;
++        return;
++    }
++    {
++        DIR            *f;
++        struct dirent  *dp;
++#if _SLASH_PROC_METHOD_ == 0
++        if (kd == NULL) {
++            current_proc_entry = nproc + 1;
++            return;
++        }
++#endif
++        f = opendir("/proc");
++        current_proc_entry = 0;
++        while ((dp = readdir(f)) != NULL && current_proc_entry < nproc)
++            if (dp->d_name[0] != '.')
++                proc_table[current_proc_entry++] = atoi(dp->d_name);
++        closedir(f);
++    }
++#elif HAVE_KVM_GETPROCS
++    {
++        if (kd == NULL) {
++            nproc = 0;
++            return;
++        }
++        proc_table = kvm_getprocs(kd, KERN_PROC_ALL, 0, &nproc);
++    }
++#else
++
++    current_proc_entry = 1;
++#ifndef bsdi2
++    nproc = 0;
++
++    if (auto_nlist(NPROC_SYMBOL, (char *) &nproc, sizeof(int)) == 0) {
++        snmp_log_perror("Init_VELOCITY_SWRun-auto_nlist NPROC");
++        return;
++    }
++#endif
++    bytes = nproc * sizeof(struct proc);
++
++    if (proc_table)
++        free((char *) proc_table);
++    if ((proc_table = (struct proc *) malloc(bytes)) == NULL) {
++        nproc = 0;
++        snmp_log_perror("Init_VELOCITY_SWRun-malloc");
++        return;
++    }
++
++    {
++        int             proc_table_base;
++        if (auto_nlist
++            (PROC_SYMBOL, (char *) &proc_table_base,
++             sizeof(proc_table_base)) == 0) {
++            nproc = 0;
++            snmp_log_perror("Init_VELOCITY_SWRun-auto_nlist PROC");
++            return;
++        }
++        if (klookup(proc_table_base, (char *) proc_table, bytes) == 0) {
++            nproc = 0;
++            snmp_log_perror("Init_VELOCITY_SWRun-klookup");
++            return;
++        }
++    }
++#endif
++    current_proc_entry = 0;
++}
++
++int
++Get_Next_VELOCITY_SWRun(void)
++{
++    while (current_proc_entry < nproc) {
++#if defined(hpux10) || defined(hpux11)
++        return proc_table[current_proc_entry++].pst_pid;
++#elif defined(solaris2)
++        return proc_table[current_proc_entry++];
++#elif HAVE_KVM_GETPROCS
++        if (proc_table[current_proc_entry].kp_proc.p_stat != 0)
++            return proc_table[current_proc_entry++].kp_proc.p_pid;
++#else
++        if (proc_table[current_proc_entry].p_stat != 0)
++            return proc_table[current_proc_entry++].p_pid;
++        else
++            ++current_proc_entry;
++#endif
++
++    }
++    return -1;
++}
++
++void
++End_VELOCITY_SWRun(void)
++{
++    current_proc_entry = nproc + 1;
++}
++#endif
++
++int
++vscount_processes(void)
++{
++#if !(defined(linux) || defined(cygwin)) || defined(hpux10) || defined(hpux11) || defined(solaris2) || HAVE_KVM_GETPROCS
++    int             i;
++#endif
++    int             total = 0;
++
++    Init_VELOCITY_SWRun();
++#if defined(hpux10) || defined(hpux11) || HAVE_KVM_GETPROCS || defined(solaris2)
++    total = nproc;
++#else
++#if !defined(linux) && !defined(cygwin) && !defined(dynix)
++    for (i = 0; i < nproc; ++i) {
++        if (proc_table[i].p_stat != 0)
++#else
++    while (Get_Next_VELOCITY_SWRun() != -1) {
++#endif
++        ++total;
++    }
++#endif                          /* !hpux10 && !hpux11 && !HAVE_KVM_GETPROCS && !solaris2 */
++    End_VELOCITY_SWRun();
++    return total;
++}
+Index: net-snmp-5.7.2/agent/mibgroup/velocity/velocity_swrun.h
+===================================================================
+--- /dev/null
++++ net-snmp-5.7.2/agent/mibgroup/velocity/velocity_swrun.h
+@@ -0,0 +1,13 @@
++/*
++ *  Velocity MIB - Running Software group interface - velocity_swrun.h
++ *      (also includes Running Software Performance group extenstions to the
++ *       standard host resources MIB)    
++ */
++#ifndef _MIBGROUP_VELOCITYSWRUN_H
++#define _MIBGROUP_VELOCITYSWRUN_H
++
++extern void     init_velocity_swrun(void);
++extern FindVarMethod var_velocityswrun;
++
++
++#endif                          /* _MIBGROUP_VELOCITYSWRUN_H */
+Index: net-snmp-5.7.2/agent/mibgroup/velocity/velocity_system.c
+===================================================================
+--- /dev/null
++++ net-snmp-5.7.2/agent/mibgroup/velocity/velocity_system.c
+@@ -0,0 +1,403 @@
++/*
++ *  Velocity MIB - system group implementation - velocity_system.c
++ *
++ */
++ 
++#include <net-snmp/net-snmp-config.h>
++#if HAVE_STRING_H
++#include <string.h>
++#else
++#include <strings.h>
++#endif
++ 
++#include <net-snmp/net-snmp-includes.h>
++#include <net-snmp/agent/net-snmp-agent-includes.h>
++ 
++#include "host.h"
++#include "host_res.h"
++#include "velocity_system.h"
++#include <net-snmp/agent/auto_nlist.h>
++ 
++#ifdef HAVE_SYS_PROC_H
++#include <sys/param.h>
++#include "sys/proc.h"
++#endif
++#if HAVE_UTMPX_H
++#include <utmpx.h>
++#else
++#include <utmp.h>
++#endif
++ 
++#ifdef linux
++#ifdef HAVE_LINUX_TASKS_H
++#include <linux/tasks.h>
++#else
++/*
++ * If this file doesn't exist, then there is no hard limit on the number
++ * of processes, so return 0 for velocitySystemMaxProcesses.
++ */
++#define NR_TASKS	0
++#endif
++#endif
++ 
++#if defined(hpux10) || defined(hpux11)
++#include <sys/pstat.h>
++#endif
++ 
++#ifdef HAVE_SYS_SYSCTL_H
++#include <sys/sysctl.h>
++#endif
++ 
++#if !defined(UTMP_FILE) && defined(_PATH_UTMP)
++#define UTMP_FILE _PATH_UTMP
++#endif
++ 
++#if defined(UTMP_FILE) && !HAVE_UTMPX_H
++void            setutent(void);
++void            endutent(void);
++struct utmp    *getutent(void);
++#endif                          /* UTMP_FILE */
++ 
++ 
++        /*********************
++	 *
++	 *  Kernel & interface information,
++	 *   and internal forward declarations
++	 *
++	 *********************/
++ 
++static int      get_load_dev(void);
++static int      count_users(void);
++extern int      count_processes(void);
++ 
++ 
++        /*********************
++	 *
++	 *  Initialisation & common implementation functions
++	 *
++	 *********************/
++ 
++#define	VELOCITYSYS_UPTIME		1
++#define	VELOCITYSYS_DATE		2
++#define	VELOCITYSYS_LOAD_DEV		3
++#define	VELOCITYSYS_LOAD_PARAM	4
++#define	VELOCITYSYS_USERS		5
++#define	VELOCITYSYS_PROCS		6
++#define	VELOCITYSYS_MAXPROCS		7
++#define	VELOCITYSYS_PAGEIN              8
++#define	VELOCITYSYS_PAGEOUT             9
++#define	VELOCITYSYS_SWAPIN             10
++#define	VELOCITYSYS_SWAPOUT            11
++#define	VELOCITYSYS_INTR               12
++#define	VELOCITYSYS_CTXT               13
++#define	VELOCITYSYS_PROCTOTAL          14
++ 
++#define	VELOCITY_TYPE_PAGE 101
++#define	VELOCITY_TYPE_INTR 102
++#define	VELOCITY_TYPE_CTXT 103
++#define	VELOCITY_TYPE_SWAP 104
++#define	VELOCITY_TYPE_PROCTOTAL 105
++ 
++#define VELOCITY_IN 200
++#define VELOCITY_OUT 201
++ 
++struct variable2 velocitysystem_variables[] = {
++    {VELOCITYSYS_UPTIME, ASN_TIMETICKS, RONLY, var_velocitysys, 1, {1}},
++    {VELOCITYSYS_DATE, ASN_OCTET_STR, RONLY, var_velocitysys, 1, {2}},
++    {VELOCITYSYS_LOAD_DEV, ASN_INTEGER, RONLY, var_velocitysys, 1, {3}},
++    {VELOCITYSYS_LOAD_PARAM, ASN_OCTET_STR, RONLY, var_velocitysys, 1, {4}},
++    {VELOCITYSYS_USERS, ASN_GAUGE, RONLY, var_velocitysys, 1, {5}},
++    {VELOCITYSYS_PROCS, ASN_GAUGE, RONLY, var_velocitysys, 1, {6}},
++    {VELOCITYSYS_MAXPROCS, ASN_INTEGER, RONLY, var_velocitysys, 1, {7}},
++    {VELOCITYSYS_PAGEIN, ASN_INTEGER, RONLY, var_velocitysys, 1, {8}},
++    {VELOCITYSYS_PAGEOUT, ASN_INTEGER, RONLY, var_velocitysys, 1, {9}},
++    {VELOCITYSYS_SWAPIN, ASN_INTEGER, RONLY, var_velocitysys, 1, {10}},
++    {VELOCITYSYS_SWAPOUT, ASN_INTEGER, RONLY, var_velocitysys, 1, {11}},
++    {VELOCITYSYS_INTR, ASN_INTEGER, RONLY, var_velocitysys, 1, {12}},
++    {VELOCITYSYS_CTXT, ASN_INTEGER, RONLY, var_velocitysys, 1, {13}},
++    {VELOCITYSYS_PROCTOTAL, ASN_INTEGER, RONLY, var_velocitysys, 1, {14}}
++};
++oid             velocitysystem_variables_oid[] = { 1, 3, 6, 1, 4, 1, 15601, 1 };
++ 
++#ifdef linux
++int             linux_stat(int, int);
++#endif
++ 
++ 
++ 
++void
++init_velocity_system(void)
++{
++#ifdef NPROC_SYMBOL
++    auto_nlist(NPROC_SYMBOL, 0, 0);
++#endif
++ 
++    REGISTER_MIB("velocity/velocity_system", velocitysystem_variables, variable2,
++                 velocitysystem_variables_oid);
++}
++ 
++/*
++ * header_velocitysys(...
++ * Arguments:
++ * vp     IN      - pointer to variable entry that points here
++ * name    IN/OUT  - IN/name requested, OUT/name found
++ * length  IN/OUT  - length of IN/OUT oid's
++ * exact   IN      - TRUE if an exact match was requested
++ * var_len OUT     - length of variable or 0 if function returned
++ * write_method
++ */
++ 
++int
++header_velocitysys(struct variable *vp,
++             oid * name,
++             size_t * length,
++             int exact, size_t * var_len, WriteMethod ** write_method)
++{
++#define VELOCITYSYS_NAME_LENGTH	9
++    oid             newname[MAX_OID_LEN];
++    int             result;
++ 
++    DEBUGMSGTL(("velocity/velocity_system", "var_velocitysys: "));
++    DEBUGMSGOID(("velocity/velocity_system", name, *length));
++    DEBUGMSG(("velocity/velocity_system", " %d\n", exact));
++ 
++    memcpy((char *) newname, (char *) vp->name, vp->namelen * sizeof(oid));
++    newname[VELOCITYSYS_NAME_LENGTH] = 0;
++    result = snmp_oid_compare(name, *length, newname, vp->namelen + 1);
++    if ((exact && (result != 0)) || (!exact && (result >= 0)))
++        return (MATCH_FAILED);
++    memcpy((char *) name, (char *) newname,
++           (vp->namelen + 1) * sizeof(oid));
++    *length = vp->namelen + 1;
++ 
++    *write_method = 0;
++    *var_len = sizeof(long);    /* default to 'long' results */
++    return (MATCH_SUCCEEDED);
++}
++ 
++int
++linux_stat(int stat_type, int in_or_out)
++{
++    FILE           *fp;
++    char            buf[100];
++    int             in = -1, out = -1;
++ 
++    if ((fp = fopen("/proc/stat", "r")) == NULL)
++        return -1;
++ 
++    while (fgets(buf, sizeof(buf), fp) != NULL) {
++        if ((!strncmp(buf, "page", 4) && stat_type == VELOCITY_TYPE_PAGE) ||
++            (!strncmp(buf, "intr", 4) && stat_type == VELOCITY_TYPE_INTR) ||
++	    (!strncmp(buf, "ctxt", 4) && stat_type == VELOCITY_TYPE_CTXT) ||
++	    (!strncmp(buf, "processes", 9) && stat_type == VELOCITY_TYPE_PROCTOTAL) ||
++	    (!strncmp(buf, "swap", 4) && stat_type == VELOCITY_TYPE_SWAP)) {
++            sscanf(buf, "%*s %d %d", &in, &out);
++	    DEBUGMSGTL(("string found", " %s  type - %d\n", buf, stat_type));
++            break;
++        }
++	else {
++	    DEBUGMSGTL(("string not found", " %s type - %d\n", buf, stat_type ));
++	}
++    }
++ 
++    fclose(fp);
++    return (in_or_out == VELOCITY_IN ? in : out);
++ 
++}
++ 
++ 
++ 
++        /*********************
++	 *
++	 *  System specific implementation functions
++	 *
++	 *********************/
++ 
++u_char         *
++var_velocitysys(struct variable * vp,
++          oid * name,
++          size_t * length,
++          int exact, size_t * var_len, WriteMethod ** write_method)
++{
++    static char     string[100];
++    time_t          now;
++#ifndef NR_TASKS
++    int             nproc = 0;
++#endif
++#ifdef linux
++    FILE           *fp;
++#endif
++#if CAN_USE_SYSCTL && defined(CTL_KERN) && defined(KERN_MAXPROC)
++    static int      maxproc_mib[] = { CTL_KERN, KERN_MAXPROC };
++    int             buf_size;
++#endif
++#if defined(hpux10) || defined(hpux11)
++    struct pst_static pst_buf;
++#endif
++ 
++    if (header_velocitysys(vp, name, length, exact, var_len, write_method) ==
++        MATCH_FAILED)
++        return NULL;
++ 
++    switch (vp->magic) {
++    case VELOCITYSYS_UPTIME:
++        long_return = get_uptime();
++        return (u_char *) & long_return;
++    case VELOCITYSYS_DATE:
++        (void *) time(&now);
++        return (u_char *) date_n_time(&now, var_len);
++    case VELOCITYSYS_LOAD_DEV:
++        long_return = get_load_dev();
++        return (u_char *) & long_return;
++    case VELOCITYSYS_LOAD_PARAM:
++#ifdef linux
++        fp = fopen("/proc/cmdline", "r");
++        fgets(string, sizeof(string), fp);
++        fclose(fp);
++#else
++#if NO_DUMMY_VALUES
++        return NULL;
++#endif
++        sprintf(string, "ask Dave");    /* XXX */
++#endif
++        *var_len = strlen(string);
++        return (u_char *) string;
++    case VELOCITYSYS_PAGEIN:
++        long_return = linux_stat(VELOCITY_TYPE_PAGE,VELOCITY_IN);
++        return (u_char *) & long_return;
++    case VELOCITYSYS_PAGEOUT:
++        long_return = linux_stat(VELOCITY_TYPE_PAGE,VELOCITY_OUT);
++        return (u_char *) & long_return;
++    case VELOCITYSYS_SWAPIN:
++        long_return = linux_stat(VELOCITY_TYPE_SWAP,VELOCITY_IN);
++        return (u_char *) & long_return;
++    case VELOCITYSYS_SWAPOUT:
++        long_return = linux_stat(VELOCITY_TYPE_SWAP,VELOCITY_OUT);
++        return (u_char *) & long_return;
++    case VELOCITYSYS_CTXT:
++        long_return = linux_stat(VELOCITY_TYPE_CTXT,VELOCITY_IN);
++        return (u_char *) & long_return;
++    case VELOCITYSYS_PROCTOTAL:
++        long_return = linux_stat(VELOCITY_TYPE_PROCTOTAL,VELOCITY_IN);
++        return (u_char *) & long_return;
++    case VELOCITYSYS_INTR:
++#ifdef linux
++        long_return = linux_stat(VELOCITY_TYPE_INTR,VELOCITY_IN);
++#endif
++        return (u_char *) & long_return;
++    case VELOCITYSYS_USERS:
++        long_return = count_users();
++        return (u_char *) & long_return;
++    case VELOCITYSYS_PROCS:
++#if USING_VELOCITY_VELOCITY_SWRUN_MODULE
++        long_return = count_processes();
++#else
++#if NO_DUMMY_VALUES
++        return NULL;
++#endif
++        long_return = 0;
++#endif
++        return (u_char *) & long_return;
++    case VELOCITYSYS_MAXPROCS:
++#if defined(NR_TASKS)
++        long_return = NR_TASKS; /* <linux/tasks.h> */
++#elif CAN_USE_SYSCTL && defined(CTL_KERN) && defined(KERN_MAXPROC)
++        buf_size = sizeof(nproc);
++        if (sysctl(maxproc_mib, 2, &nproc, &buf_size, NULL, 0) < 0)
++            return NULL;
++        long_return = nproc;
++#elif defined(hpux10) || defined(hpux11)
++        pstat_getstatic(&pst_buf, sizeof(struct pst_static), 1, 0);
++        long_return = pst_buf.max_proc;
++#elif defined(NPROC_SYMBOL)
++        auto_nlist(NPROC_SYMBOL, (char *) &nproc, sizeof(int));
++        long_return = nproc;
++#else
++#if NO_DUMMY_VALUES
++        return NULL;
++#endif
++        long_return = 0;
++#endif
++        return (u_char *) & long_return;
++    default:
++        DEBUGMSGTL(("snmpd", "unknown sub-id %d in var_velocitysys\n",
++                    vp->magic));
++    }
++    return NULL;
++}
++ 
++ 
++        /*********************
++	 *
++	 *  Internal implementation functions
++	 *
++	 *********************/
++ 
++                /*
++                 *  Return the DeviceIndex corresponding
++                 *   to the boot device
++                 */
++static int
++get_load_dev(void)
++{
++    return (HRDEV_DISK << HRDEV_TYPE_SHIFT);    /* XXX */
++}
++ 
++static int
++count_users(void)
++{
++    int             total = 0;
++#if HAVE_UTMPX_H
++#define setutent setutxent
++#define getutent getutxent
++#define endutent endutxent
++    struct utmpx   *utmp_p;
++#else
++    struct utmp    *utmp_p;
++#endif
++ 
++    setutent();
++    while ((utmp_p = getutent()) != NULL) {
++#ifndef UTMP_HAS_NO_TYPE
++        if (utmp_p->ut_type == USER_PROCESS)
++#endif
++            ++total;
++    }
++    endutent();
++    return total;
++}
++ 
++#if defined(UTMP_FILE) && !HAVE_UTMPX_H
++ 
++static FILE    *utmp_file;
++static struct utmp utmp_rec;
++ 
++void
++setutent(void)
++{
++    if (utmp_file)
++        fclose(utmp_file);
++    utmp_file = fopen(UTMP_FILE, "r");
++}
++ 
++void
++endutent(void)
++{
++    if (utmp_file) {
++        fclose(utmp_file);
++        utmp_file = NULL;
++    }
++}
++ 
++struct utmp    *
++getutent(void)
++{
++    if (!utmp_file)
++        return NULL;
++    while (fread(&utmp_rec, sizeof(utmp_rec), 1, utmp_file) == 1)
++        if (*utmp_rec.ut_name && *utmp_rec.ut_line)
++            return &utmp_rec;
++    return NULL;
++}
++ 
++#endif                          /* UTMP_FILE */
+Index: net-snmp-5.7.2/agent/mibgroup/velocity/velocity_system.h
+===================================================================
+--- /dev/null
++++ net-snmp-5.7.2/agent/mibgroup/velocity/velocity_system.h
+@@ -0,0 +1,12 @@
++/*
++ *  Velocity MIB - system group interface - velocity_system.h
++ *
++ */
++#ifndef _MIBGROUP_VELOCITYSYSTEM_H
++#define _MIBGROUP_VELOCITYSYSTEM_H
++
++extern void     init_velocity_system(void);
++extern FindVarMethod var_velocitysys;
++
++
++#endif                          /* _MIBGROUP_VELOCITYSYSTEM_H */
+Index: net-snmp-5.7.2/mibs/VELOCITY-MIB.txt
+===================================================================
+--- /dev/null
++++ net-snmp-5.7.2/mibs/VELOCITY-MIB.txt
+@@ -0,0 +1,671 @@
++VELOCITY-MIB DEFINITIONS ::= BEGIN
++
++IMPORTS
++MODULE-IDENTITY, OBJECT-TYPE, mib-2,
++Integer32, Counter32, Gauge32, TimeTicks, enterprises FROM SNMPv2-SMI
++
++TEXTUAL-CONVENTION, DisplayString,
++TruthValue, DateAndTime, AutonomousType   FROM SNMPv2-TC
++
++MODULE-COMPLIANCE, OBJECT-GROUP           FROM SNMPv2-CONF
++
++InterfaceIndexOrZero                      FROM IF-MIB;
++
++velocityMibModule MODULE-IDENTITY
++   LAST-UPDATED "200607310000Z"    -- 31 July 2006
++   ORGANIZATION "Velocity Software Inc."
++   CONTACT-INFO
++       "Dennis Andrews
++       Postal: Velocity Software, Inc.
++               106-D Castro St.
++               Mountain View, CA 94041
++               USA
++       Phone:  650-964-8867
++       Fax:    650-964-9012
++       Email:  dennis@velocitysoftware.com"
++   DESCRIPTION
++       "This MIB is an extension of the host MIB. This MIB currently
++       only runs on linux. This is the original version."
++   ::= { velocityMIBAdminInfo 1 }
++
++velocity     OBJECT IDENTIFIER ::= { enterprises 15601 }
++
++velocitySystem        OBJECT IDENTIFIER ::= { velocity 1 }
++velocitySWRun         OBJECT IDENTIFIER ::= { velocity 4 }
++velocitySWRunPerf     OBJECT IDENTIFIER ::= { velocity 5 }
++velocityAppTable      OBJECT IDENTIFIER ::= { velocity 6 }
++velocityMIBAdminInfo  OBJECT IDENTIFIER ::= { velocity 7 }
++
++-- The Host Resources System Group
++
++velocitySystemUptime OBJECT-TYPE
++    SYNTAX     TimeTicks
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "The amount of time since this host was last
++        initialized.  Note that this is different from
++        sysUpTime in the SNMPv2-MIB [RFC1907] because
++        sysUpTime is the uptime of the network management
++        portion of the system."
++    ::= { velocitySystem 1 }
++
++velocitySystemDate OBJECT-TYPE
++    SYNTAX     DateAndTime
++    MAX-ACCESS read-write
++    STATUS     current
++    DESCRIPTION
++        "The host's notion of the local date and time of day."
++    ::= { velocitySystem 2 }
++
++velocitySystemInitialLoadDevice OBJECT-TYPE
++    SYNTAX     Integer32 (1..2147483647)
++    MAX-ACCESS read-write
++    STATUS     current
++    DESCRIPTION
++        "The index of the velocityDeviceEntry for the device from
++        which this host is configured to load its initial
++        operating system configuration (i.e., which operating
++        system code and/or boot parameters).
++
++        Note that writing to this object just changes the
++        configuration that will be used the next time the
++        operating system is loaded and does not actually cause
++        the reload to occur."
++    ::= { velocitySystem 3 }
++
++velocitySystemInitialLoadParameters OBJECT-TYPE
++    SYNTAX     InternationalDisplayString (SIZE (0..128))
++    MAX-ACCESS read-write
++    STATUS     current
++    DESCRIPTION
++        "This object contains the parameters (e.g. a pathname
++        and parameter) supplied to the load device when
++        requesting the initial operating system configuration
++        from that device.
++
++     Note that writing to this object just changes the
++     configuration that will be used the next time the
++     operating system is loaded and does not actually cause
++     the reload to occur."
++    ::= { velocitySystem 4 }
++
++velocitySystemNumUsers OBJECT-TYPE
++    SYNTAX     Gauge32
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "The number of user sessions for which this host is
++        storing state information.  A session is a collection
++        of processes requiring a single act of user
++        authentication and possibly subject to collective job
++        control."
++    ::= { velocitySystem 5 }
++
++velocitySystemProcesses OBJECT-TYPE
++    SYNTAX     Gauge32
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "The number of process contexts currently loaded or
++        running on this system."
++    ::= { velocitySystem 6 }
++
++velocitySystemMaxProcesses OBJECT-TYPE
++    SYNTAX     Integer32 (0..2147483647)
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "The maximum number of process contexts this system
++        can support.  If there is no fixed maximum, the value
++        should be zero.  On systems that have a fixed maximum,
++        this object can help diagnose failures that occur when
++        this maximum is reached."
++    ::= { velocitySystem 7 }
++
++velocitySystemPageIn OBJECT-TYPE
++    SYNTAX     Integer32 (0..2147483647)
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "Total number of pages that the system paged in"
++    ::= { velocitySystem 8 }
++
++velocitySystemPageOut OBJECT-TYPE
++    SYNTAX     Integer32 (0..2147483647)
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "Total number of pages that the system paged out"
++    ::= { velocitySystem 9 }
++
++velocitySystemSwapIn OBJECT-TYPE
++    SYNTAX     Integer32 (0..2147483647)
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "Total number of swap pages that have been brought in"
++    ::= { velocitySystem 10 }
++
++velocitySystemSwapOut OBJECT-TYPE
++    SYNTAX     Integer32 (0..2147483647)
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "Total number of swap pages that have been swapped out"
++    ::= { velocitySystem 11 }
++
++velocitySystemInterupts OBJECT-TYPE
++    SYNTAX     Integer32 (0..2147483647)
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "Total number of interupts since system boot"
++    ::= { velocitySystem 12 }
++
++velocitySystemContext OBJECT-TYPE
++    SYNTAX     Integer32 (0..2147483647)
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "Total number of context switches the system had done."
++    ::= { velocitySystem 13 }
++
++velocitySystemProcessTotal OBJECT-TYPE
++    SYNTAX     Integer32 (0..2147483647)
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "Total number of processes the system has started since boot."
++    ::= { velocitySystem 14 }
++
++
++
++
++-- The Velocity Running Software Group
++--
++-- The velocitySWRunTable contains an entry for each distinct piece of
++-- software that is running or loaded into physical or virtual
++-- memory in preparation for running.  This includes the velocity's
++-- operating system, device drivers, and applications.
++
++velocitySWOSIndex OBJECT-TYPE
++    SYNTAX     Integer32 (1..2147483647)
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "The value of the velocitySWRunIndex for the velocitySWRunEntry
++        that represents the primary operating system running
++        on this velocity.  This object is useful for quickly and
++        uniquely identifying that primary operating system."
++    ::= { velocitySWRun 1 }
++
++velocitySWRunTable OBJECT-TYPE
++    SYNTAX     SEQUENCE OF VelocitySWRunEntry
++    MAX-ACCESS not-accessible
++    STATUS     current
++    DESCRIPTION
++        "The (conceptual) table of software running on the
++        velocity."
++    ::= { velocitySWRun 2 }
++
++velocitySWRunEntry OBJECT-TYPE
++    SYNTAX     VelocitySWRunEntry
++    MAX-ACCESS not-accessible
++    STATUS     current
++    DESCRIPTION
++        "A (conceptual) entry for one piece of software
++        running on the velocity Note that because the installed
++        software table only contains information for software
++        stored locally on this velocity, not every piece of
++        running software will be found in the installed
++        software table.  This is true of software that was
++        loaded and run from a non-local source, such as a
++        network-mounted file system.
++
++        As an example of how objects in this table are named,
++        an instance of the velocitySWRunName object might be named
++        velocitySWRunName.1287"
++    INDEX { velocitySWRunIndex }
++    ::= { velocitySWRunTable 1 }
++
++VelocitySWRunEntry ::= SEQUENCE {
++        velocitySWRunIndex       Integer32,
++        velocitySWRunName        InternationalDisplayString,
++        velocitySWRunID          ProductID,
++        velocitySWRunPath        InternationalDisplayString,
++        velocitySWRunParameters  InternationalDisplayString,
++        velocitySWRunType        INTEGER,
++        velocitySWRunStatus      INTEGER,
++        velocitySWRunPPID        Integer32,
++        velocitySWRunPGRP        Integer32
++    }
++
++velocitySWRunIndex OBJECT-TYPE
++    SYNTAX     Integer32 (1..2147483647)
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "A unique value for each piece of software running on
++        the velocity.  Wherever possible, this should be the
++        system's native, unique identification number."
++    ::= { velocitySWRunEntry 1 }
++
++velocitySWRunName OBJECT-TYPE
++    SYNTAX     InternationalDisplayString (SIZE (0..64))
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "A textual description of this running piece of
++        software, including the manufacturer, revision,  and
++        the name by which it is commonly known.  If this
++        software was installed locally, this should be the
++        same string as used in the corresponding
++        velocitySWInstalledName."
++    ::= { velocitySWRunEntry 2 }
++
++velocitySWRunID OBJECT-TYPE
++    SYNTAX     ProductID
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "The product ID of this running piece of software."
++    ::= { velocitySWRunEntry 3 }
++
++velocitySWRunPath OBJECT-TYPE
++    SYNTAX     InternationalDisplayString (SIZE(0..128))
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "A description of the location on long-term storage
++        (e.g. a disk drive) from which this software was
++        loaded."
++    ::= { velocitySWRunEntry 4 }
++
++velocitySWRunParameters OBJECT-TYPE
++    SYNTAX     InternationalDisplayString (SIZE(0..128))
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "A description of the parameters supplied to this
++        software when it was initially loaded."
++    ::= { velocitySWRunEntry 5 }
++
++velocitySWRunType OBJECT-TYPE
++    SYNTAX     INTEGER {
++                   unknown(1),
++                   operatingSystem(2),
++                   deviceDriver(3),
++                   application(4)
++               }
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "The type of this software."
++    ::= { velocitySWRunEntry 6 }
++
++velocitySWRunStatus OBJECT-TYPE
++    SYNTAX     INTEGER {
++                   running(1),
++                   runnable(2),    -- waiting for resource
++                                   -- (i.e., CPU, memory, IO)
++                   notRunnable(3), -- loaded but waiting for event
++                   invalid(4)      -- not loaded
++               }
++    MAX-ACCESS read-write
++    STATUS     current
++    DESCRIPTION
++        "The status of this running piece of software.
++        Setting this value to invalid(4) shall cause this
++        software to stop running and to be unloaded. Sets to
++        other values are not valid."
++    ::= { velocitySWRunEntry 7 }
++
++velocitySWRunPPID OBJECT-TYPE
++    SYNTAX     Integer32 (1..2147483647)
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "The ID of the parent process."
++    ::= { velocitySWRunEntry 8 }
++
++velocitySWRunPGRP OBJECT-TYPE
++    SYNTAX     Integer32 (1..2147483647)
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "The ID of the process group that the process belongs to."
++    ::= { velocitySWRunEntry 9 }
++
++
++-- The Velocity Resources Running Software Performance Group
++--
++-- The velocitySWRunPerfTable contains an entry corresponding to
++-- each entry in the velocitySWRunTable.
++
++velocitySWRunPerfTable OBJECT-TYPE
++    SYNTAX     SEQUENCE OF VelocitySWRunPerfEntry
++    MAX-ACCESS not-accessible
++    STATUS     current
++    DESCRIPTION
++        "The (conceptual) table of running software
++        performance metrics."
++    ::= { velocitySWRunPerf 1 }
++
++velocitySWRunPerfEntry OBJECT-TYPE
++    SYNTAX     VelocitySWRunPerfEntry
++    MAX-ACCESS not-accessible
++    STATUS     current
++    DESCRIPTION
++        "A (conceptual) entry containing software performance
++        metrics.  As an example, an instance of the
++        velocitySWRunPerfCPU object might be named
++        velocitySWRunPerfCPU.1287"
++    AUGMENTS { velocitySWRunEntry }  -- This table augments information in
++                               -- the velocitySWRunTable.
++    ::= { velocitySWRunPerfTable 1 }
++
++VelocitySWRunPerfEntry ::= SEQUENCE {
++        velocitySWRunPerfCPUUser      Integer32,
++        velocitySWRunPerfCPUSys       Integer32,
++        velocitySWRunPerfMem          KBytes,
++        velocitySWRunPerfCPUCummUser  Integer32,
++        velocitySWRunPerfCPUCummSys   Integer32,
++        velocitySWRunPerfMinFault     Integer32,
++        velocitySWRunPerfMajFault     Integer32,
++        velocitySWRunPerfMinFaultCumm Integer32,
++        velocitySWRunPerfMajFaultCumm Integer32,
++        velocitySWRunPerfRss          Integer32,
++        velocitySWRunPerfPrio         Integer32,
++	velocitySWRunPerfAll          InternationalDisplayString,
++	velocitySWRunPerfUID          InternationalDisplayString,
++	velocitySWRunPerfUName        InternationalDisplayString
++}
++
++velocitySWRunPerfCPUUser OBJECT-TYPE
++    SYNTAX     Integer32 (0..2147483647)
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "The number of centi-seconds of the User's CPU
++        resources consumed by this process.  Note that on a
++        multi-processor system, this value may increment by
++        more than one centi-second in one centi-second of real
++        (wall clock) time."
++    ::= { velocitySWRunPerfEntry 1 }
++
++velocitySWRunPerfCPUSys OBJECT-TYPE
++    SYNTAX     Integer32 (0..2147483647)
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "The number of centi-seconds of the system's CPU
++        resources consumed by this process.  Note that on a
++        multi-processor system, this value may increment by
++        more than one centi-second in one centi-second of real
++        (wall clock) time."
++    ::= { velocitySWRunPerfEntry 2 }
++
++velocitySWRunPerfMem OBJECT-TYPE
++    SYNTAX     KBytes
++    UNITS      "KBytes"
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "The total amount of real system memory allocated to
++        this process."
++    ::= { velocitySWRunPerfEntry 3 }
++
++velocitySWRunPerfCPUCummUser OBJECT-TYPE
++     SYNTAX     Integer32 (0..2147483647)
++     MAX-ACCESS read-only
++     STATUS     current
++     DESCRIPTION
++         "The number of cummulative centi-seconds of the total user's CPU
++         resources consumed by this process.  Note that on a
++         multi-processor system, this value may increment by
++         more than one centi-second in one centi-second of real
++         (wall clock) time."
++     ::= { velocitySWRunPerfEntry 4 }
++
++velocitySWRunPerfCPUCummSys OBJECT-TYPE
++     SYNTAX     Integer32 (0..2147483647)
++     MAX-ACCESS read-only
++     STATUS     current
++     DESCRIPTION
++         "The number of cummulative centi-seconds of the total system's CPU
++         resources consumed by this process.  Note that on a
++         multi-processor system, this value may increment by
++         more than one centi-second in one centi-second of real
++         (wall clock) time."
++     ::= { velocitySWRunPerfEntry 5 }
++
++velocitySWRunPerfMinFault OBJECT-TYPE
++     SYNTAX     Integer32 (0..2147483647)
++     MAX-ACCESS read-only
++     STATUS     current
++     DESCRIPTION
++         "The number of minor page faults. (Those that have not
++          required loading a page from disk.)"
++     ::= { velocitySWRunPerfEntry 6 }
++
++velocitySWRunPerfMajFault OBJECT-TYPE
++     SYNTAX     Integer32 (0..2147483647)
++     MAX-ACCESS read-only
++     STATUS     current
++     DESCRIPTION
++         "The number of major page faults. (Those that have
++          required loading a page from disk.)"
++     ::= { velocitySWRunPerfEntry 7 }
++
++velocitySWRunPerfMinFaultCumm OBJECT-TYPE
++     SYNTAX     Integer32 (0..2147483647)
++     MAX-ACCESS read-only
++     STATUS     current
++     DESCRIPTION
++         "The number of minor page faults for this process and its
++          children. (Those that have not required loading a page 
++          from disk.)"
++     ::= { velocitySWRunPerfEntry 8 }
++
++velocitySWRunPerfMajFaultCumm OBJECT-TYPE
++     SYNTAX     Integer32 (0..2147483647)
++     MAX-ACCESS read-only
++     STATUS     current
++     DESCRIPTION
++         "The number of major page faults. for this process and its
++          children. (Those that have required loading a page from disk.)"
++     ::= { velocitySWRunPerfEntry 9 }
++
++velocitySWRunPerfRss OBJECT-TYPE
++     SYNTAX     Integer32 (0..2147483647)
++     MAX-ACCESS read-only
++     STATUS     current
++     DESCRIPTION
++         "The number of pages in real memory minus 3 for administrative
++          purposes. This is just the pages which count towards text,
++          data, or stack space. This does not include pages which
++          have not been demand-loaded in, or which are swapped out."
++     ::= { velocitySWRunPerfEntry 10 }
++
++velocitySWRunPerfPrio OBJECT-TYPE
++     SYNTAX     Integer32 (0..2147483647)
++     MAX-ACCESS read-only
++     STATUS     current
++     DESCRIPTION
++         "The standard nice value, plus fifteen.  The value is never
++          negative in the kernel."
++     ::= { velocitySWRunPerfEntry 11 }
++
++velocitySWRunPerfAll OBJECT-TYPE
++     SYNTAX     InternationalDisplayString (SIZE (0..256))
++     MAX-ACCESS read-only
++     STATUS     current
++     DESCRIPTION
++         "The complete information from the stat file for the given process"
++     ::= { velocitySWRunPerfEntry 12 }
++
++velocitySWRunPerfUID OBJECT-TYPE
++    SYNTAX     InternationalDisplayString (SIZE(0..128))
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "The owning user ID and group ID of this process."
++    ::= { velocitySWRunPerfEntry 13 }
++
++velocitySWRunPerfUName OBJECT-TYPE
++    SYNTAX     InternationalDisplayString (SIZE(0..128))
++    MAX-ACCESS read-only
++    STATUS     current
++    DESCRIPTION
++        "The name of the owning user ID and group of this process."
++    ::= { velocitySWRunPerfEntry 14 }
++
++velocityAppTable OBJECT-TYPE
++    SYNTAX      SEQUENCE OF AppEntry
++    MAX-ACCESS  not-accessible
++    STATUS      current
++    DESCRIPTION
++        "A table containing a list of applications that are of special
++         interest. The process table is searched for the given string
++         that identifies the given process(s). Other than being able to
++	 return the process ids of interest this is the same MIB is the
++	 UCD-snmp proc MIB. "
++    ::= { velocity 6 }
++
++velocityAppEntry OBJECT-TYPE
++    SYNTAX      velocityAppEntry
++    MAX-ACCESS  not-accessible
++    STATUS      current
++    DESCRIPTION
++        "An entry containing an application and its statistics."
++    INDEX       { appIndex }
++    ::= { velocityAppTable  1 }
++
++velocityAppEntry ::= SEQUENCE {
++    velocityAppIndex             Integer32,
++    velocityAppNames             DisplayString,
++    velocityAppPid               DisplayString,
++    velocityAppMin               Integer32,
++    velocityAppMax               Integer32,
++    velocityAppCount             Integer32,
++    velocityAppIds		 DisplayString,
++    velocityAppErrorFlag         Integer32,
++    velocityAppErrMessage        DisplayString
++}
++
++velocityAppIndex OBJECT-TYPE
++    SYNTAX	Integer32 (0..65535)
++    MAX-ACCESS	read-only
++    STATUS	current
++    DESCRIPTION
++	"Reference Index for each observed application."
++    ::= { velocityAppEntry 1 }
++
++velocityAppNames OBJECT-TYPE
++    SYNTAX	DisplayString
++    MAX-ACCESS	read-only
++    STATUS	current
++    DESCRIPTION
++	"The application name we're counting/checking on."
++    ::= { velocityAppEntry 2 }
++
++velocityAppPid OBJECT-TYPE
++    SYNTAX	DisplayString
++    MAX-ACCESS	read-only
++    STATUS	current
++    DESCRIPTION
++	"The absolute location of the PID file for the application."
++    ::= { velocityAppEntry 3 }
++
++velocityAppMin OBJECT-TYPE
++    SYNTAX	Integer32
++    MAX-ACCESS	read-only
++    STATUS	current
++    DESCRIPTION
++	"The minimum number of processes for that applicationes that should be
++	 running.  An error flag is generated if the number of
++	 running processes is < the minimum."
++    ::= { velocityAppEntry 4 }
++
++velocityAppMax OBJECT-TYPE
++    SYNTAX	Integer32
++    MAX-ACCESS	read-only
++    STATUS	current
++    DESCRIPTION
++	"The maximum number of processes for that application that should be
++	 running.  An error flag is generated if the number of
++	 running processes is > the maximum."
++    ::= { velocityAppEntry 5 }
++
++velocityAppCount OBJECT-TYPE
++    SYNTAX	Integer32
++    MAX-ACCESS	read-only
++    STATUS	current
++    DESCRIPTION
++	"The number of current applications running with the name
++	 in question."
++    ::= { velocityAppEntry 6 }
++
++velocityAppIds OBJECT-TYPE
++    SYNTAX	DisplayString
++    MAX-ACCESS	read-only
++    STATUS	current
++    DESCRIPTION
++	"The list of process Ids that match the Application name."
++    ::= { velocityAppEntry 7 }
++
++velocityAppErrorFlag OBJECT-TYPE
++    SYNTAX	Integer32
++    MAX-ACCESS	read-only
++    STATUS	current
++    DESCRIPTION
++	"A Error flag to indicate trouble with a application.  It
++	 goes to 1 if there is an error, 0 if no error."
++    ::= { velocityAppEntry 100 }
++
++velocityAppErrMessage OBJECT-TYPE
++    SYNTAX	DisplayString
++    MAX-ACCESS	read-only
++    STATUS	current
++    DESCRIPTION
++	"An error message describing the problem (if one exists)."
++    ::= { velocityAppEntry 101 }
++
++velocityMIBCompliances OBJECT IDENTIFIER ::= { velocityMIBAdminInfo 2 }
++velocityMIBGroups      OBJECT IDENTIFIER ::= { velocityMIBAdminInfo 3 }
++
++    velocitySystemGroup OBJECT-GROUP
++        OBJECTS {
++            velocitySystemUptime, velocitySystemDate,
++            velocitySystemInitialLoadDevice,
++            velocitySystemInitialLoadParameters,
++            velocitySystemNumUsers, velocitySystemProcesses,
++            velocitySystemMaxProcesses
++        }
++        STATUS current
++        DESCRIPTION
++            "The Velocity System Group."
++        ::= { velocityMIBGroups 1 }
++
++    velocitySWRunGroup OBJECT-GROUP
++        OBJECTS {
++            velocitySWOSIndex, velocitySWRunIndex, velocitySWRunName,
++            velocitySWRunID, velocitySWRunPath, velocitySWRunParameters,
++            velocitySWRunType, velocitySWRunStatus, velocitySWRunPPID,
++	    velocitySWRunPGRP
++        }
++        STATUS current
++        DESCRIPTION
++            "The Velocity Resources Running Software Group."
++        ::= { velocityMIBGroups 4 }
++
++    velocitySWRunPerfGroup OBJECT-GROUP
++        OBJECTS { velocitySWRunPerfCPUUser, velocitySWRunPerfCPUSys, velocitySWRunPerfMem, velocitySWRunPerfCPUCummUser, velocitySWRunPerfCPUCummSys }
++        STATUS current
++        DESCRIPTION
++            "The Velocity Resources Running Software
++            Performance Group."
++        ::= { velocityMIBGroups 5 }
++
++END
+Index: net-snmp-5.7.2/mibs/VELOCITY-TYPES.txt
+===================================================================
+--- /dev/null
++++ net-snmp-5.7.2/mibs/VELOCITY-TYPES.txt
+@@ -0,0 +1,23 @@
++VELOCITY-TYPES DEFINITIONS ::= BEGIN
++
++IMPORTS
++  MODULE-IDENTITY, OBJECT-IDENTITY        FROM SNMPv2-SMI
++
++velocityMibModule MODULE-IDENTITY
++   LAST-UPDATED "200607310000Z"    -- 31 July 2006
++   ORGANIZATION "Velocity Software Inc."
++   CONTACT-INFO
++       "Dennis Andrews
++       Postal: Velocity Software, Inc.
++               106-D Castro St.
++               Mountain View, CA 94041
++               USA
++       Phone:  650-964-8867
++       Fax:    650-964-9012
++       Email:  dennis@velocitysoftware.com"
++   DESCRIPTION
++       "This MIB is an extension of the host MIB. This MIB currently
++       only runs on linux. This is the original version."
++   ::= { velocityMIBAdminInfo 4 }
++
++END

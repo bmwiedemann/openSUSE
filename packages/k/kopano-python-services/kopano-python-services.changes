@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Thu Sep 12 18:23:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to upstream snapshot 8.7.83
+  * Split Python services into their own RPM package

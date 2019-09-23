@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Mon Jun 17 23:34:03 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 9.0.18.1
+  * Fix CUdeviceptr definition for 64bit CPU
+- Changes from version 9.0.18.0
+  * Initial release for SDK 9.0 
+
+-------------------------------------------------------------------
+Sat Feb 23 02:10:38 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 8.2.15.7
+  * Add cuMipmappedArrayDestroy
+
+-------------------------------------------------------------------
+Wed Dec  5 23:59:44 UTC 2018 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 8.2.15.6
+  * CUDA 10: Add external semaphore API
+  * Add a subset of CUDA kernel interaction API
+  * Add CUDA function cuMemAllocPitch
+
+-------------------------------------------------------------------
+Tue Nov  6 17:14:47 UTC 2018 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 8.2.15.5
+  * Add CUDA function cuDeviceGetAttribute V2
+  * Guard against multiple definitions of CUuuid
+  * Add cuGetDeviceUuid, load as optional function
+
+-------------------------------------------------------------------
+Sun Oct  7 19:29:11 UTC 2018 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 8.2.15.1
+  * Update for CUDA 10
+    This adds support for the CUDA/Vulkan interop API, which
+    requires very new driver versions. As such, we allow the
+    symbols to be optionally loaded.
+
+-------------------------------------------------------------------
+Fri Jun 29 21:37:39 UTC 2018 - 9+suse@cirno.systems
+
+- Update to version 8.1.24.2
+  * SDK 8.1
+
+-------------------------------------------------------------------
+Fri Jun 29 00:27:13 UTC 2018 - 9+suse@cirno.systems
+
+- Init, 8.0.14.2

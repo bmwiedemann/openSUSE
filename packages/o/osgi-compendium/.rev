@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>963e6e87ba2d24f1bf811bd580f4c5df</srcmd5>
+    <version>6.0.0</version>
+    <time>1551386347</time>
+    <user>coolo</user>
+    <comment>new package</comment>
+    <requestid>673451</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d22a5c4926ad0c8606c1e321ff40889c</srcmd5>
+    <version>6.0.0</version>
+    <time>1555488504</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build against upcoming geronimo-specs</comment>
+    <requestid>694540</requestid>
+  </revision>
+</revisionlist>

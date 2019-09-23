@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Thu May  3 14:07:08 UTC 2018 - toddrme2178@gmail.com
+
+- Use %license tag
+
+-------------------------------------------------------------------
+Wed Aug 23 15:02:46 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 5.4
+  * Python-3.6 compatibility for tests.
+- Update to version 5.3
+  * Fixes :func:`~coretypes.Mono.__eq__` to ensure equality among
+  :class:`~coretypes.Mono` subclasses compare equal when it makes
+  sense to do so.
+
+-------------------------------------------------------------------
+Thu May 18 00:17:50 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Fix source URL
+- Update to version 0.5.2
+  * No upstream changelog
+
+-------------------------------------------------------------------
+Fri Feb 26 13:05:06 UTC 2016 - tbechtold@suse.com
+
+- Require python-python-dateutil. package was renamed
+
+-------------------------------------------------------------------
+Fri Jul 10 08:04:26 UTC 2015 - toddrme2178@gmail.com
+
+- update to version 0.4.6:
+  * no changelog available
+
+-------------------------------------------------------------------
+Thu May 21 14:02:51 UTC 2015 - toddrme2178@gmail.com
+
+- specfile: DataShape->datashape in several places
+- update to version 0.4.5:
+  * no changelog available
+- update to version 0.4.4:
+  * no changelog available
+
+-------------------------------------------------------------------
+Tue Mar  3 15:17:04 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+

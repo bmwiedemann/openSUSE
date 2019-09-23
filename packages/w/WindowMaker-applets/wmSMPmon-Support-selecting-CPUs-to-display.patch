@@ -1,0 +1,112 @@
+From 44951834af92649eaa364a586b883960a7dce22f Mon Sep 17 00:00:00 2001
+From: Michael Andres <ma@suse.de>
+Date: Thu, 8 Apr 2010 12:00:28 +0200
+Subject: [PATCH] Support selecting CPUs to display
+
+---
+ wmSMPmon/wmSMPmon.1 |    5 +++++
+ wmSMPmon/wmSMPmon.c |   44 +++++++++++++++++++++++++++++++++++++++++---
+ 2 files changed, 46 insertions(+), 3 deletions(-)
+
+diff --git a/wmSMPmon/wmSMPmon.1 b/wmSMPmon/wmSMPmon.1
+index d231128..601c539 100644
+--- a/wmSMPmon/wmSMPmon.1
++++ b/wmSMPmon/wmSMPmon.1
+@@ -40,6 +40,11 @@ little graphs. Style 2 shows the two graphs on top of each
+ other. Style 3 uses a mirror like type. The default style is 1, which
+ is also the style used on single CPU systems.
+ .TP
++.B \-c1 IDX, \-c2 IDX
++On systems with more than 2 CPUs, select the CPUs to show. Per default CPU
++number 1 and 2 are shown. On a quad CPU systems you may launch second wmSMPmon
++showing CPUs number 3 and 4.
++.TP
+ .B \-no-swap
+ Do not monitor swap.
+ .SH "SEE ALSO"
+diff --git a/wmSMPmon/wmSMPmon.c b/wmSMPmon/wmSMPmon.c
+index 47cdc55..ebb621c 100644
+--- a/wmSMPmon/wmSMPmon.c
++++ b/wmSMPmon/wmSMPmon.c
+@@ -56,6 +56,8 @@ int main(int argc, char **argv)
+                         no_swap = FAUX,
+                         draw_graph = FAUX,
+                         NumCPUs,      /* number of CPUs */
++                        CPUidx0 = 0,
++                        CPUidx1 = 1,
+                         i = 0,        /* counter */
+                         mem = 0, /* current memory/swap scaled to 0-100 */
+                         prec_mem = 0, /* memory from previous round */
+@@ -107,6 +109,36 @@ int main(int argc, char **argv)
+       {
+         usage(NumCPUs, NULL) ;
+       }
++      if(!strncmp(argv[i], "-c1", 3))
++      {
++         i ++ ;
++         if(i == argc)
++             /* parameter missing! */
++             usage(NumCPUs, "no CPU number given when using -c1");
++         else
++             CPUidx0 = atoi(argv[i])-1; /* argv numbered 1..numCPUs */
++
++	 if (CPUidx0 >= NumCPUs)
++	    usage(NumCPUs, "CPU number too high (-c1)");
++
++         i ++ ;
++         continue;
++      }
++      if(!strncmp(argv[i], "-c2", 3))
++      {
++         i ++ ;
++         if(i == argc)
++             /* parameter missing! */
++             usage(NumCPUs, "no CPU number given when using -c2");
++         else
++             CPUidx1 = atoi(argv[i])-1; /* argv numbered 1..numCPUs */
++
++	 if (CPUidx1 >= NumCPUs)
++	    usage(NumCPUs, "CPU number too high (-c2)");
++
++         i ++ ;
++         continue;
++      }
+       if(!strncmp(argv[i], "-g", 2) && NumCPUs > 1)
+       {
+             /* we only support this on SMP systems */
+@@ -180,7 +212,7 @@ int main(int argc, char **argv)
+       {
+         CPU_Load = Get_CPU_Load(CPU_Load, NumCPUs);
+ 
+-        load = CPU_Load[0];
++        load = CPU_Load[CPUidx0];
+         load0t = load0t + load ;
+          if(load != load0o)
+          {
+@@ -195,7 +227,7 @@ int main(int argc, char **argv)
+          {
+                /* we have two CPUs -> do CPU 1 */
+                /* FIXME: What about more CPUs? */
+-           load = CPU_Load[1];
++           load = CPU_Load[CPUidx1];
+ 
+            if(load != load1o)
+              {
+@@ -341,7 +373,13 @@ void usage(int cpus, const char *str)
+      {
+        fputs("          -g STYLE  graph style (try 2 or 3, default is 1).\n", stderr);
+      }
+-   
++
++   if(cpus > 2)
++     {
++       fputs("          -c1 IDX   CPU to show as 1st CPU (1..numCPUs, default 1).\n", stderr);
++       fputs("          -c2 IDX   CPU to show as 2nd CPU (1..numCPUs, default 2).\n", stderr);
++     }
++
+    fputs("          -no-swap  don't monitore swap size.\n\n"
+          "<redseb@goupilfr.org> http://goupilfr.org\n"
+          "<phir@gcu-squad.org> http://gcu-squad.org\n"
+-- 
+1.6.4.2
+

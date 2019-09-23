@@ -1,0 +1,6 @@
+<package name="perl-Image-Info" project="openSUSE:Factory">
+  <title>Extract meta information from image files</title>
+  <description>This module provide functions to extract various kind of meta information
+from image files.</description>
+  <devel project="devel:languages:perl" package="perl-Image-Info"/>
+</package>

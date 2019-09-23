@@ -1,0 +1,13 @@
+Index: tmon-1.0/Makefile
+===================================================================
+--- tmon-1.0.orig/Makefile	2016-02-02 00:56:08.000000000 +0100
++++ tmon-1.0/Makefile	2016-02-19 14:09:48.070837904 +0100
+@@ -23,7 +23,7 @@ TMON_LIBS += $(shell pkg-config --libs $
+ 		     echo -lpanel -lncurses)
+ 
+ CFLAGS    += $(shell pkg-config --cflags $(STATIC) panelw ncursesw 2> /dev/null || \
+-		     pkg-config --cflags $(STATIC) panel ncurses 2> /dev/null)
++		     pkg-config --cflags $(STATIC) panel ncurses 2> /dev/null || echo -I/usr/include/ncurses)
+ 
+ OBJS = tmon.o tui.o sysfs.o pid.o
+ OBJS +=

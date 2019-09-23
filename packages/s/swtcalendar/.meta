@@ -1,0 +1,5 @@
+<package name="swtcalendar" project="openSUSE:Factory">
+  <title>SWTCalendar</title>
+  <description>GUI date picker for Java using SWT</description>
+  <devel project="Java:packages" package="swtcalendar"/>
+</package>

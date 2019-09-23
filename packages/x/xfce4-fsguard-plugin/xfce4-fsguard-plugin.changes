@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Fri Aug 16 12:28:12 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Tue Aug 13 18:24:02 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.1.1
+  * Translation updates 
+
+-------------------------------------------------------------------
+Tue Jul 16 16:02:41 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Package renamed to follow upstream name xfce4-foo-plugin
+- Use lang subpackage for manual edits instead of %lang_package macro 
+- Cleaned up spec file
+- Added bcond for git master builds
+- Only add NEWS and omi Changelog
+- Move COPYING under %license macro 
+
+-------------------------------------------------------------------
+Sun Nov 27 12:15:33 UTC 2016 - seife+obs@b1-systems.com
+
+- update to version 1.1.0
+  - port to gtk+3/libxfce4ui-2/libxfce4panel-2.0
+
+-------------------------------------------------------------------
+Tue Mar  3 21:25:45 UTC 2015 - gber@opensuse.org
+
+- update to version 1.0.2
+  - properly resize image _and_ btn so that the image is not
+    shrinked
+  - updated translations
+
+-------------------------------------------------------------------
+Sun Jul  1 07:49:20 UTC 2012 - gber@opensuse.org
+
+- update to version 1.0.1
+  - better compliance with panel plugin HIG
+  - fix look on transparent/colored panels
+  - added compatibility with xfce4-panel v.4.9.0+
+  - fix config loading
+  - port to libxfce4ui
+  - build the plugin as a module
+- dropped obsolete xfce4-fsguard-plugin-fix-config-loading.patch
+
+-------------------------------------------------------------------
+Sun Apr 29 09:55:41 UTC 2012 - gber@opensuse.org
+
+- add dependency on exo-tools since exo-open is used
+
+-------------------------------------------------------------------
+Fri Apr 20 10:10:36 UTC 2012 - gber@opensuse.org
+
+- corrected license
+- added documentation files
+
+-------------------------------------------------------------------
+Tue Apr 17 19:37:48 UTC 2012 - gber@opensuse.org
+
+- corrected source URL
+
+-------------------------------------------------------------------
+Sun Apr 15 08:05:03 UTC 2012 - gber@opensuse.org
+
+- recommend -lang subpackage
+
+-------------------------------------------------------------------
+Tue Apr  3 17:02:21 UTC 2012 - gber@opensuse.org
+
+- added xfce4-fsguard-plugin-fix-config-loading.patch in order to
+  fix the loading of the configuration file
+
+-------------------------------------------------------------------
+Tue Apr  3 15:20:37 UTC 2012 - gber@opensuse.org
+
+- specfile cleanup
+- correct dependencies
+- split off -lang subpackage
+
+-------------------------------------------------------------------
+Wed Mar  9 11:00:00 UTC 2011 - gber@opensuse.org
+
+- new package (split off from xfce4-panel-plugins)
+

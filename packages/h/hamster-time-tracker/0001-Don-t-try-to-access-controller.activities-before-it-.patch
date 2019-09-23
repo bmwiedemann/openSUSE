@@ -1,0 +1,44 @@
+From f2d568919394346f020586c2a1bd98a434744f31 Mon Sep 17 00:00:00 2001
+From: Hedayat Vatankhah <hedayat.fwd@gmail.com>
+Date: Wed, 19 Dec 2018 15:20:36 +0330
+Subject: [PATCH 1/6] Don't try to access controller.activities before it is
+ filled
+
+---
+ extension/extension.js | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/extension/extension.js b/extension/extension.js
+index cc3dfc6..065dfc7 100644
+--- a/extension/extension.js
++++ b/extension/extension.js
+@@ -174,7 +174,7 @@ function Controller(extensionMeta) {
+                 windowsProxy_vanished_callback.bind(this));
+ 
+             this.apiProxy.connectSignal('ActivitiesChanged', Lang.bind(this, this.refreshActivities));
+-            this.activities = this.refreshActivities();
++            this.refreshActivities();
+ 
+             Main.panel.menuManager.addMenu(this.panelWidget.menu);
+             Main.wm.addKeybinding("show-hamster-dropdown",
+@@ -218,15 +218,11 @@ function Controller(extensionMeta) {
+                 controller.apiProxy.GetActivitiesRemote("", Lang.bind(this, function([response], err) {
+                   controller.runningActivitiesQuery = false;
+                   controller.activities = response;
++                  global.log('ACTIVITIES HAMSTER: ', controller.activities);
+                 }));
+-
+-                global.log('ACTIVITIES HAMSTER: ', controller.activities);
+-                return controller.activities;
+             }
+ 
+-            let result = getActivities(this);
+-            this.activities = result;
+-            return result;
++            getActivities(this);
+         },
+ 
+         /**
+-- 
+2.20.1
+

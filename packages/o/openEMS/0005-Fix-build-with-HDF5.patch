@@ -1,0 +1,25 @@
+From 5122ac9c44f47c9e1642dd675113c4c14cd60ff2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Wed, 27 Dec 2017 08:35:53 +0100
+Subject: [PATCH 5/6] Fix build with HDF5
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 032f53fce782..7cf465e0a8d0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -108,7 +108,7 @@ find_package(TinyXML REQUIRED)
+ ADD_DEFINITIONS( -DTIXML_USE_STL )
+ 
+ # hdf5
+-find_package(HDF5 1.8 COMPONENTS C HL REQUIRED)
++find_package(HDF5 1.8 COMPONENTS CXX HL REQUIRED)
+ INCLUDE_DIRECTORIES (${HDF5_INCLUDE_DIRS})
+ link_directories(${HDF5_LIBRARIES})
+ 
+-- 
+2.15.1
+

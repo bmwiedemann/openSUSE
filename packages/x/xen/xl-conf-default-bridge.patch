@@ -1,0 +1,13 @@
+Index: xen-4.4.0-testing/tools/examples/xl.conf
+===================================================================
+--- xen-4.4.0-testing.orig/tools/examples/xl.conf
++++ xen-4.4.0-testing/tools/examples/xl.conf
+@@ -30,7 +30,7 @@
+ #vif.default.script="vif-bridge"
+ 
+ # default bridge device to use with vif-bridge hotplug scripts
+-#vif.default.bridge="xenbr0"
++vif.default.bridge="br0"
+ 
+ # Reserve a claim of memory when launching a guest. This guarantees immediate
+ # feedback whether the guest can be launched due to memory exhaustion

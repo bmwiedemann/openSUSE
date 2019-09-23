@@ -1,0 +1,8 @@
+<package name="python-whois_similarity_distance" project="openSUSE:Factory">
+  <title>Calculate the WHOIS Similarity Distance between two given domains</title>
+  <description>This algorithm allows you to determine a numeric distance between two given domains, using their WHOIS information.
+
+</description>
+  <devel project="devel:languages:python" package="python-whois_similarity_distance"/>
+  <url>https://github.com/stratosphereips/whois-similarity-distance</url>
+</package>

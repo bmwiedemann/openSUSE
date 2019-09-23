@@ -1,0 +1,1371 @@
+-------------------------------------------------------------------
+Mon Aug 26 04:22:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.14.1
+  * Fix a two-finger interaction (click + drag) was interpreted
+    as scroll event instead of the intended action
+  * The RollerMouse v3 now has debouncing disabled so the
+    double-click button works.
+
+-------------------------------------------------------------------
+Sun Aug 11 15:39:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop conditionals for wacom support, all current releases of
+  openSUSE have wacom support available.
+- Update git-urls to current gitlab home.
+
+-------------------------------------------------------------------
+Sun Aug 11 06:30:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.14
+  * The calibration matrix is now returned correctly even when it
+    is the identity matrix. And the tablet pressure range is
+    scaled correctly into the available physical range.
+    Previously, the bottom 5% where effectively missing and
+    pressure offset on worn-out pens handling took some of the
+    scale away from the top.
+  * Improved thumb detection for touchpads. On Clickpad devices,
+    this should make interactions where a thumb is resting on the
+    touchpad or dropped during an interaction more reliable.
+  * The Dell Canvas Totem is now supported by libinput. It is
+    exposed as a new tool type through the tablet interface along
+    with two new axes. Note that this is only low-level support,
+    the actual integration of the totem needs Wayland protocol
+    changes and significant changes in all applications that want
+    to make use of it.
+  * Touch-capable tablets now tie both devices together for
+    rotation.
+  * Tablet proximity out handling for tablets that are unreliably
+    sending proximity out events is now always timeout-based. It
+    is no longer necessary to add per-device quirks to enable
+    this feature and it is completely transparent on devices that
+    work correctly anyway.
+
+-------------------------------------------------------------------
+Fri Jun 28 07:27:31 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.13.4
+  * Added a quirk for the Lenovo X1 Yoga 1st gen and a
+    Lenovo X230 trackpoint quirk
+  * Better Thinkpad T480 trackpoint multiplier
+
+-------------------------------------------------------------------
+Wed May 29 19:53:12 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.13.2:
+  * Apple Bluetooth touchpads are now recognized with the correct
+    touch size, which should make finger detection more reliable.
+  * External tablets with a touchpad component (e.g. Wacom Intuos
+    Pro series) will now rotate the touchpad by 180 degrees when
+    set to left-handed. Previously only the tablet pen rotated,
+    leaving pen and touch with two different orientations. Note
+    that users need to set both the tablet and the touchpad to
+    left-handed to have this work correctly; a better fix is in the
+    works but taking longer than anticipated.
+  * The button scroll timeout reduction introduced in 1.13 is
+    reverted again, it caused a few regressions. If you had issues
+    with your middle button, that's likely going to fix it.
+
+-------------------------------------------------------------------
+Tue Apr  9 07:59:33 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.13.1
+  * Add quirk files for a HP Spectre 13 tablet, the trackpoint in
+    the IBM USB UltraNav keyboard and the Toshiba Satellite
+    L855-14E Touchpad.
+
+-------------------------------------------------------------------
+Fri Mar 29 08:48:00 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.13
+  * Touch arbitration has improved for tablets, especially on
+    touch screens. A timer set on pen proximity out means we
+    don't get ghost touches anymore when the hand lifts off
+    slower than the pen itself.
+  * Location-based touch arbitration means that parts of the
+    screen can be interacted with even while the pen is in
+    proximity.
+  * libinput uses the tilt information where available to disable
+    touches in a rectangle around the pen where the hand is
+    likely to be but leaves the rest of the touchscreen available
+    otherwise. Where the UI supports it, this allows for bimanual
+    interaction.
+
+-------------------------------------------------------------------
+Mon Jan 21 11:46:35 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to new upstream release 1.12.6
+  * Two quirks for specific devices (Contour Roller Mouse and the
+    Acer Spin 5), two little cleanups.
+
+-------------------------------------------------------------------
+Mon Jan  7 11:11:54 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.12.5
+  * Fixes an issue with the Asus VivoBook Flip 14 TP412UA, the
+    tablet mode switch is "stuck", causing the keyboard and
+    touchpad to stop working. A quirk was added to rectify this.
+
+-------------------------------------------------------------------
+Tue Dec 18 12:44:52 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.12.4
+  * Three hardware-specific quirks for the HP Spectre x360
+    (touchpad pressure thresholds), the Macbook Pro 11,2 (palm
+    thresholds) and the Lenovo T480s (missing
+    INPUT_PROP_BUTTONPAD) were added.
+
+-------------------------------------------------------------------
+Wed Nov  7 09:26:29 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.12.3
+  * A new quirk "AttrEventCodeDisable" was added
+
+-------------------------------------------------------------------
+Wed Oct 24 08:08:11 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.12.2
+  * The Lenovo x220t and x60t do not disable the keyboard in
+    tablet-mode anymore.
+  * Button debouncing is now disabled on VMware virtual devices.
+  * The Wacom Intuos Pro PTH-660 palm threshold was restored to
+    the original value, it was changed accidentally.
+  * libinput now assumes that you only have one thumb per hand,
+    which is a statistically well-supported approximation.
+  * A 2-finger movement out of the software button area now will
+    no longer trigger spurious pointer motion events if one
+    finger exits the button area before the other one.
+  * The Wacom Intuos Pro PTH-660, when connected over Bluetooth,
+    sometimes caused an invalid event sequence that caused
+    libinput to lose track of the tap counter which again
+    triggered an assertion later.
+
+-------------------------------------------------------------------
+Wed Oct  3 11:22:55 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.12.1
+  * A few entries there had to be corrected/added, including the
+    one for the MS Nano Transceiver, the Dell XPSL322X touchpad
+    and some of the Elan Touchpad quirks. A new quirk was added
+    for the Kensington Orbit trackball which is confused about
+    it's non-existing middle button and for the Asus UX302LA
+    touchpad which thinks pressure isn't necessary once two
+    fingers are down.
+  * Apple touchpads randomly triggered an assert (under very
+    specific, but easy enough to trigger conditions), which is
+    fixed now.
+- Remove 0001-quirks-fix-the-trackpoint-multiplier-for-the-Dell-E7.patch
+
+-------------------------------------------------------------------
+Mon Oct  1 10:14:25 UTC 2018 - sndirsch@suse.com
+
+- 0001-quirks-fix-the-trackpoint-multiplier-for-the-Dell-E7.patch
+  * refix the trackpoint multiplier for the Dell E7470 (boo#1013647,
+    fdo#106323, gitlab issue#148)
+
+-------------------------------------------------------------------
+Tue Sep 11 07:55:44 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.12.0
+  * Fixed: The tablet axis smoothing previously caused some axes
+    to change value even though the "axis has changed" bit wasn't
+    set in the event.
+  * The delta for tablet axis events is now always 0 for tip
+    up/down events. This works around the pointer jumps seen on
+    some devices when the tip is pressed/released.
+  * The fuzz handling (i.e. hysteresis auto-detection) was
+    restored after being accidentally removed during the
+    hwdb->quirks rework.
+
+-------------------------------------------------------------------
+Fri Jul 27 06:39:22 UTC 2018 - kbabioch@suse.com
+
+- Update to 1.11.3
+  * Improve HP Chromebook 14 pressure ranges 
+  * Several documentation updates
+
+-------------------------------------------------------------------
+Sat Jul  7 20:46:41 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.11.2:
+  * Add a trackpoint range entry for the Lenovo X270.
+  * Better lid handling for the Lenovo Thinkpad Yoga models.
+  * Fixed touchpad palm detection on the Lenovo X1 Carbon 6th.
+  * Change pressure ranges for the XPS13 9333.
+
+-------------------------------------------------------------------
+Wed Jun 20 09:42:20 UTC 2018 - kbabioch@suse.com
+
+- Update to 1.11.1 
+  - udev: the IBM X41 Tablet must not disable the keyboard in tablet mode
+  - filter: cap trackpoint scale factor at 1.0
+  - touchpad: don't pair external touchpads with lid/tablet mode switches
+  - tools: fix grab argument passing for libinput debug-events
+
+-------------------------------------------------------------------
+Tue Jun  5 11:36:37 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 1.11.0
+  * Automatic parsing of the trackpoint sensitivity sysfs file
+    was reverted, since this caused the trackpoint to send NaN
+    deltas on some devices, notiably the Lenovo CompactKeyboard
+    with Trackpoint.
+  * A new tool pair is available now: libinput record and
+    libinput replay. These tools supersede the
+    evemu-record/evemu-play tools currently used to debug events.
+  * The touchpad jitter detection code has been improved to
+    reduce the number of false positives. Some touchpads require
+    the kernel fuzz setting to be set to avoid pointer jitter
+    though, please see this page for details:
+    https://wayland.freedesktop.org/libinput/doc/latest/touchpad_jitter.html
+  * A new touchpad acceleration code has been merged, the
+    behavior now resembles the pointer acceleration of macOS. You
+    will notice that your touchpad is slower at slow speeds and
+    accelerates sooner. At the same time, the speed range
+    available has been greatly extended, so the slowest speed and
+    highest speed are quite significantly apart now. This should,
+    hopefully, allow all users to select a speed to match their
+    preferences.
+  * The maximum delta for trackpoints has been increased,
+    reducing the amount of pressure required to move the pointer
+    around the screen.
+  * A bunch of trackpoint range hwdb entries to set the expected
+    range for some common devices were merged. The
+    POINTINGSTICK_SENSITIVITY udev property is now ignored,
+    instead we just read that value directly from sysfs.
+- Remove 0001-udev-default-to-a-trackpoint-range-of-160-for-the-ne.patch,
+  0002-udev-support-firmware-detection-for-pointing-sticks.patch
+  (upstreamed)
+
+-------------------------------------------------------------------
+Fri Jun  1 10:24:50 UTC 2018 - mwilck@suse.com
+
+- spec file: added "udevadm hwdb --update" to %post
+  Without this, changes to the hwdb file won't be visible
+- spec file: fixed build error on Leap 42.3
+
+-------------------------------------------------------------------
+Wed May 30 07:57:31 UTC 2018 - mwilck@suse.com
+
+- Fix ALPS trackpoint speed (bsc#1013647, fdo#106323)
+  backported from upstream 1.10.902
+  * added 0001-udev-default-to-a-trackpoint-range-of-160-for-the-ne.patch
+  * added 0002-udev-support-firmware-detection-for-pointing-sticks.patch
+- spec file: use %license for COPYING
+
+-------------------------------------------------------------------
+Fri May 18 07:14:56 UTC 2018 - jengelh@inai.de
+
+- Update to new bugfix release 1.10.7
+  * The Logitech Wireless Touchpad and the MacBook Pro 5,5 had
+    their palm thresholds added/updated.
+  * A tapping bug caused taps to be ignored after thumb detection.
+
+-------------------------------------------------------------------
+Tue May  1 12:03:33 UTC 2018 - jengelh@inai.de
+
+- Update to new bugfix release 1.10.6
+  * Improve responsiveness for Apple Magic Trackpad.
+  * evdev: don't suspend keyboard on ThinkPad X1 Yoga 1st
+    in tablet mode.
+  * evdev: disable ABS_MT_TOOL_PALM on the Lenovo X1
+    Carbon 6th gen.
+  * udev: add the P50 to the T450 jumping motion quirks.
+
+-------------------------------------------------------------------
+Thu Apr 19 07:04:52 UTC 2018 - jengelh@inai.de
+
+- Update to new bugfix release 1.10.5
+  * The Logitech K400 has button debouncing disabled to avoid
+    missing double-taps. The Dell XPS13 L322X had the touchpad
+    pressure ranges added to provide better responsiveness. And
+    the Lenovo T440, T450s and X280 laptops had the trackpoint
+    ranges added to provide better trackpoint acceleration.
+
+-------------------------------------------------------------------
+Tue Apr 10 01:35:22 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.10.4:
+  * Biggest user-noticeable change is that the hysteresis threshold
+    is significantly reduced to 0.25 of a mm now or to the kernel
+    fuzz value where present. This should make touchpads a bit more
+    snappy.
+  * Two fixes for touchpad touch handling, one affecting semi-mt
+    devices with hovering capability and one affecting the Apple
+    touchpads where a touch can get erroneously detected as as
+    exceeding the speed thesholds.
+  * The rest - documentation and tool fixes. Nandor's udev fix
+    fixes a race condition in the test suite.
+
+-------------------------------------------------------------------
+Wed Mar 14 08:56:20 UTC 2018 - jengelh@inai.de
+
+- Update to bugfix release 1.10.3
+  * Fix a crasher triggered by a specific event sequence during
+    3-finger gestures (and on some touchpads 2-finger gestures).
+  * Fix the new pointer jitter detection. A bitmask got lost and
+    the software compared 32 bits instead of only the 3 it ought
+    to care about.
+
+-------------------------------------------------------------------
+Wed Mar  7 09:21:36 UTC 2018 - jengelh@inai.de
+
+- Update to bugfix release 1.10.2
+  * Fixes an assertion that triggered when the tapping code lost
+    track of the finger count. This was triggered by palm
+    detection, but only by specific event sequences.
+  * Hysteresis is disabled by default now, but if libinput detect
+    pointer jitter/wobble, the hysteresis is enabled for the rest
+    of the session.
+
+-------------------------------------------------------------------
+Sun Mar  4 13:57:37 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 1.10.1
+  * This release fixes three crashers, one during tapping, two on
+    startup/resume when the device node or seat were not assigned
+    correctly.
+
+-------------------------------------------------------------------
+Tue Feb 13 08:59:48 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 1.10.0
+  * Dropping of the touchpad hysteresis. Previously, we employed
+    a hysteresis to avoid pointer wobbles. A side-effect of that
+    hysteresis was that small pointer motion wasn't as reactive
+    as it should be. A previous attempt in 2016 to drop it failed
+    (too many devices still needed it) so this time round we have
+    a different approach: we analyse the event sequence from the
+    touchpad and if we find it doesn't wobble, we disable the
+    hysteresis for good. In most cases, this happens fast enough
+    that you won't even notice, resulting in a more reactive
+    pointer.
+  * Touchpad tapping now handles palm detection where applicable,
+    resting a palm on a touchpad while tapping should not confuse
+    libinput anymore. Previously, palm touches were treated like
+    any other touch, causing unexpected 2 and 3-finger clicks.
+  * Some of the newer Wacom tablets (and older, worn-out ones)
+    can have a leftover pressure on tip up. This caused libinput
+    to miss out on the proximity event, leading to a constantly
+    in-proximity tool. A new threshold for proximity out fixes
+    this.
+- Remove 0001-evdev-add-a-quirk-to-disable-debouncing-on-the-MS-Na.patch
+  (included upstream)
+
+-------------------------------------------------------------------
+Thu Feb  8 00:02:32 UTC 2018 - jengelh@inai.de
+
+- Add 0001-evdev-add-a-quirk-to-disable-debouncing-on-the-MS-Na.patch
+
+-------------------------------------------------------------------
+Thu Dec 14 08:33:23 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.9.4
+  * This fixes a regression introduced in 1.9.3 where some key
+    events got lost or arrived out-of-order.
+
+-------------------------------------------------------------------
+Tue Nov 28 09:51:32 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.9.3
+  * New button debouncing code that makes the stuck buttons a
+    thing of the past.
+- Add kill-env.diff
+
+-------------------------------------------------------------------
+Wed Nov 15 10:22:51 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.9.2
+  * Support for multiple paired keyboards for
+    disable-while-typing. This is required for some of Razer's
+    products where the keyboard exports multiple virtually
+    identical event nodes.
+
+-------------------------------------------------------------------
+Thu Nov  9 19:40:43 UTC 2017 - aavindraa@gmail.com
+
+- Update to version 1.9.1:
+  * Stop a crash when a lid was opened/closed multiple times while
+    typing.
+  * Reduction of the palm edge zone to a maximum width of 8mm (this
+    notably helps users of recent macs that have large touchpads)
+  * Benjamin's fix to the device groups enables touch arbitration
+    on the Dell Canvas 27 (still needs libwacom changes)
+- Remove name specification from %setup, not needed
+
+-------------------------------------------------------------------
+Wed Nov  1 18:35:25 UTC 2017 - zaitor@opensuse.org
+
+- Use autosetup macro.
+- Stop rm'ing la files, no longer exists as we are using meson
+  buildsystem.
+
+-------------------------------------------------------------------
+Wed Oct 25 21:41:24 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.9.0:
+  * Fix build with meson 0.43 (option parser became stricter).
+  * Touchpads can now use pressure-based palm detection if the
+    hardware supports it.
+  * On touchpads with ABS_MT_TOUCH_MAJOR/MINOR we can now use those
+    for touch detection (especially if per-touch pressure is not
+    available).
+  * Touchpads now ignore extra fingers while the pointer-
+    controlling finger is moving.
+  * Trackpoints have had their pointer acceleration re-done.
+  * Pointer devices now have button debouncing automagically
+    enabled.
+  * The tablet-mode switch on hybrid laptop/tablet devices (e.g.
+    Lenovo Yoga) now disables the touchpad, trackpoint and internal
+    keyboard to avoid fake touches when the tablet is placed on a
+    lap or just held with the fingers on those devices.
+
+-------------------------------------------------------------------
+Thu Oct  5 19:49:03 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.8.3:
+  * Two user-visible fixes: The Wacom Mobile Studio Pro pad device
+    was previously ignored because of its accelerometer tag, this
+    is fixed now. And touchpads that are explicitly disabled by the
+    user now stay disabled after a lid open event.
+  * The rest is all related to the test suite to make sure it still
+    runs correctly. Finally, a stray printf was removed from
+    libinput-debug-events.
+
+-------------------------------------------------------------------
+Thu Sep  7 08:11:12 UTC 2017 - jengelh@inai.de
+
+- Update to new bugfix release 1.8.2
+  * Change in experience is that 2-slot touchpads (e.g. most
+    Lenovos before kernel 4.12) do not support 3fg pinch anymore
+    - instead we assume swipe for three fingers, which makes
+    gestures a lot more reliable (3-finger swipe is much more
+    common than 3-finger pinch anyway).
+
+-------------------------------------------------------------------
+Wed Aug 30 20:25:21 UTC 2017 - zaitor@opensuse.org
+
+- Pass --includedir="%_includedir/%name"  to meson, set includedir
+  to "standard" for openSUSE, align with what we had before the
+  switch to meson as buildsystem.
+
+-------------------------------------------------------------------
+Mon Jul 24 17:13:19 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.8.1:
+  * This release includes a build fix for the meson build (together
+    with better meson instructions).
+  * The palm edge zone is slightly increased from 5% to 8% to avoid
+    accidental palm touches in the edges. On most modern touchpads
+    that works out to be a 5mm to 8mm increase.
+  * The second one is a straightforward bugfix: if the keyboard was
+    removed while disable-while-typing was active, the touchpad
+    would never turn on again.
+
+-------------------------------------------------------------------
+Mon Jul  3 19:26:37 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.8.0:
+  * libinput debug-gui is now installed by default unless disabled.
+  * The biggest change in this release is that libinput has
+    switched to meson as primary build system.
+  * The second big change that is user-visible is that we have
+    switched to a git-like approach to handling the helper tools
+    for libinput. The previously installed tools of
+    libinput-debug-events and libinput-list-devices are now
+    "libinput debug-events" and "libinput list-devices",
+    respectively. For the 1.8.x releases compat-wrappers are in
+    place.
+  * Tablet stylus events now average across multiple events to stop
+    the wobbly lines previously produced by libinput.
+  * On touchpads that provide MT_TOOL_PALM, i.e.
+    in-kernel/in-firmware palm detection we now honor that bit and
+    treat that touch as palm.
+  * Tapping has seen some fixes for previously broken timestamps in
+    the multi-tap use-cases.
+  * The lid switch handling now uses a udev property to tell us
+    whether a keyboard is external or internal. Together with some
+    improved state tracking it should make the lid switch handling
+    more reliable on devices where the lid switch is broken. The
+    property is also used for disable-while-typing which makes it
+    easier to special-case hardware.
+- Switch buildsystem to meson following upstream changes.
+- Following the above, add meson BuildRequires.
+- Add graphviz, pkgconfig(cairo), pkgconfig(glib-2.0) and
+  pkgconfig(gtk+-3.0) BuildRequires, new dependencies (for
+  debug-gui).
+- Pass tests=false to meson, not possible to run on the obs.
+- Following the above, drop pkgconfig(check) BuildRequires, no
+  longer needed.
+- Drop xz BuildRequires: Not needed for any current openSUSE
+  release.
+- Drop autoconf, automake and libtool #git BuildRequires, no longer
+  needed when building with meson.
+- Add libinput-rpmlintrc, silence erronus rpmlint warnings.
+
+-------------------------------------------------------------------
+Fri Jun  9 07:58:39 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.7.3
+  * Fix a crash caused by the lid switch handler on device removal
+    (depending on the removal order, an assertion was triggered).
+  * A slight palm detection improvement - tapping in
+    the palm edge detection zone is now ignored, thus reducing the
+    number of inadvertant focus changes while typing. Previously,
+    we only ignored those taps in the top half of the touchpad.
+
+-------------------------------------------------------------------
+Wed May 10 18:50:20 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.7.2:
+  * The main change here are patches that change the pressure
+    ranges for Elantech touchpads down to something more lenient.
+    Previously, the range was set too high, causing the touchpad to
+    behave erratically unless the finger pressure was quite high.
+- Drop libinput-elantech-pressure-levels.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Apr 25 09:11:04 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.7.1
+  * One patch fixes a test case failure for recent systemd
+    versions, the other patch fixes a minor issue with the
+    touchpad code that was likely never triggered anyway.
+
+-------------------------------------------------------------------
+Sat Apr 15 02:03:21 UTC 2017 - badshah400@gmail.com
+
+- Add libinput-elantech-pressure-levels.patch to fix pressure
+  sensitivity for ELANTECH touchpads causing uncomfortable
+  two-finger taps, scrolls (boo#1034335, fdo#100463).
+
+-------------------------------------------------------------------
+Thu Mar 23 09:20:46 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.7.0
+  * cyapa touchpads now have a custom pressure ranage
+  * support for switches, in particular lid switches
+  * Touchpads now use pressure values to detect touches instead of
+    relying on BTN_TOUCH
+  * Wheel tilt events are now handled as such provided the device
+    is correctly labeled by the hwdb.
+  * Middle mouse button emulation is now compatible with scroll
+    wheel emulation, i.e. it is possible to set scroll wheel
+    emulation on the right mouse button and still enjoy middle
+    button emulation.
+
+-------------------------------------------------------------------
+Wed Mar  8 09:34:25 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.6.3:
+  * A few small fixes that likely affect few users only: the
+    minimum size for horizontal edge scrolling has been reduced to
+    40mm and hovering touches inside a software button area are
+    handled better now. Since we don't use pressure-based touches
+    in 1.6.x, this is unlikely to be noticed.
+  * Requesting an invalid mode group index doesn't crash anymore,
+    that's pretty much UX improvement 101.
+- Drop libinput-fix-crasher.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Mar  1 19:51:34 UTC 2017 - zaitor@opensuse.org
+
+- Add libinput-fix-crasher.patch: Fix a crash when requesting
+  invalid mode group indices.
+
+-------------------------------------------------------------------
+Tue Feb 21 22:25:16 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.6.2
+  * The top middle button on the Lenovo *40 series touchpad was
+    extended by 4mm to match the markings better.
+  * The Apple onebutton touchpad default to clickfinger behavior.
+  * libinput-debug-devices now hides the keycode by default. All
+    "normal" keys simply print as "***" instead of e.g. "KEY_A".
+
+-------------------------------------------------------------------
+Thu Feb  2 09:40:16 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.6.1
+  * Tap timeout reduction from 1.6 has been reverted back to the
+    previous default of 180ms.
+  * The kernel LED support for tablet pads is now available.
+
+-------------------------------------------------------------------
+Thu Jan 19 23:55:57 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.6.0
+* New touchpad acceleration. This better reflects finger motion,
+  but can also go a lot faster than before, alleviating some
+  concerns that the touchpad is too slow.
+* The tap parameters have also been changed to provide for a more
+  responsive cursor.
+* The Asus X555LAB now has a smaller middle software button.
+
+-------------------------------------------------------------------
+Thu Dec  8 17:01:38 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.5.3:
+  * The HP Pavilion DM4 has a quirk added to disable (jumpy)
+    multitouch events.
+  * The calibration matrix udev property is now parsed for the path
+    backend (and parsed in a locale-independent manner).
+  * We now sync the BTN_TOOL_FINGER state on init. If your touchpad
+    didn't respond until you put two fingers down, this is fixed
+    now (observed on one elantech touchpad).
+
+-------------------------------------------------------------------
+Fri Nov 25 09:21:12 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.5.2
+  * Tweak the handling of touchpad deltas which leads to much more
+    responsive pointer motion.
+  * A custom quirk for the HP Zbook Studio G3 was added.
+
+-------------------------------------------------------------------
+Fri Nov 11 08:57:41 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.5.1
+  * Joysticks are now ignored. The code was in before but did not
+    work correctly.
+  * A quirk for the YHP Compat 6910 was added.
+  * support for the new MOUSE_WHEEL_CLICK_COUNT udev property
+
+-------------------------------------------------------------------
+Thu Sep 15 19:16:54 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.5.0:
+  * A large part of this release cycle was internal cleanups and
+    improvements to the test suite, only few new features were
+    added.
+  * libinput has built-in palm detection when the trackpoint is in
+    use. The Lenovo *60 series (and possibly others) randomly send
+    a single trackpoint event which used to trigger this palm
+    detection and disable the touchpad for 300ms. To the user, this
+    looked like a stuttering touchpad. This is fixed now.
+  * For touchpads, we now have a new configuration option to allow
+    a 1/2/3 finger tap be mapped to left, middle and right,
+    respectively. The default remains at left/right/middle.
+  * In the disable-while-typing code we now ignore modifier
+    combinations like ctrl+s to avoid unnecessary timeouts and
+    delays.
+  * Other touchpad-related fixes include more responsive two-finger
+    scrolling and better touch point transition handling (i.e. less
+    pointer jumps after tapping and two-finger scrolling).
+  * For tablets we now have automatic touch arbitration in
+    userspace, i.e. we disable the touch input whenever a pen is in
+    proximity to avoid erroneous pointer moves. Touch arbitration
+    is currently handled by the kernel but is being phased out over
+    the next couple of kernel releases. In the future this may
+    allow for smart touch arbitration based on input areas, for now
+    we simply copy the kernel's behavior and turn touch events off.
+
+-------------------------------------------------------------------
+Tue Aug 30 08:28:20 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.4.2
+* touchpad: on a non-clickpad, reset the motion history on
+  nfingers change
+* touchpad: reset the edge scroll state on touch up if edge
+  scroll is disabled
+* touchpad: always reset the motion history on finger changes
+
+-------------------------------------------------------------------
+Fri Aug  5 06:37:56 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.4.1
+* udev: do not overwrite a previously set device group
+* touchpad: use the udev ID_INPUT_TOUCHPAD_INTEGRATION
+  property if available
+
+-------------------------------------------------------------------
+Mon Jul 18 06:27:39 UTC 2016 - jengelh@inai.de
+
+- Update to new upstrem release 1.4.0
+* Mode support for graphics tablets. On many tablets, buttons,
+  rings and strips can be used in virtualised modes, reflected by
+  physical LEDs on the touchpad. For example, a ring may send
+  scroll events when in mode 0 but zoom events in mode 1.
+* Ssupport for rotation on some relative devices. This is
+  particularly useful for trackballs that may be permanently
+  placed at a nonzero rotation angle.
+
+-------------------------------------------------------------------
+Fri Jun 24 07:32:24 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.3.3
+* libinput 1.2 dropped using a hysteresis for touchpad devices
+  because modern touchpads are more precise than older touchpads.
+  Since it was found that even those newer touchpads are prone to
+  a wobbling cursor when a finger is held still on the touchpad,
+  more touchpads were marked over time with the wobbly tag,
+  defeating the whole idea. The default hysteresis is now
+  restored for all touchpads.
+* Tablet pad capabilities are now listed in libinput-list-devices.
+
+-------------------------------------------------------------------
+Thu Jun 16 06:44:52 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.3.2
+* It is now warned about when a touchpad's events are significantly
+  outside the kernel-announced range. This usually indicates that a
+  hwdb entry is needed to make the touchpad work properly.
+
+-------------------------------------------------------------------
+Mon May 30 09:24:29 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.3.1
+* The pressure change check we used to detect finger releases has
+  been adjusted to just apply to the Lenovo *50 and *60 series,
+  it didn't work too well on other touchpads and resulted in
+  jerky motion.
+* An error message was generated for 3-finger swipes on some touchads that had
+  gestures disabled, this is fixed now.
+
+-------------------------------------------------------------------
+Tue May 10 04:55:31 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.3.0
+* touchpad: exclude Logitech touchpads from disable-while-typing
+
+-------------------------------------------------------------------
+Thu Apr 21 07:57:12 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.2.902
+* Support for so-called tablet pads, i.e. the actual tablet part of
+  a graphics tablet.
+* Addition of middle buttons for touchpads with a software button
+  area. Previously, a middle button could be triggered by pressing
+  with a finger in the left and right button area simultanously.
+  Too many touchpads are unable to reliably detect both fingers.
+  The middle button area is always available when software buttons
+  are enabled and encompasses the center 15–20mm on the touchpad.
+* Touchscreens that have a fuzz value set on the kernel device are
+  now defuzzed in libinput, thus stopping pointer wobbles
+  previously seen when holding the finger still. Note that libinput
+  does not _set_ the fuzz value, it merely uses it. Employ a udev
+  rule or hwdb entry to set this on your device if needed.
+
+-------------------------------------------------------------------
+Tue Apr 19 07:57:48 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.2.4
+* The top software button area on the T440-series touchpads is now
+  30mm high when the touchpad is disabled to make it easier to hit
+  those buttons.
+* The udev hwdb entries for the Chromebooks were updated to
+  accommodate for udev's silent replacing of non-alphanumeric
+  characters with '_'.
+* Added a fuzz filter to tablet devices.
+
+-------------------------------------------------------------------
+Mon Apr 11 22:10:09 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.2.3:
+  * The handling of the T450 jerky cursor motion had a bug, causing
+    libinput to complain about invalid states (fdo#94601). This is
+    fixed now.
+  * The top software buttons on the T440 generation touchpads had
+    their left-handed button mapping applied twice, effectively
+    cancelling it out (fdo#94733). Fixed now, the top buttons will
+    be mapped correctly in left-handed mode.
+  * The Wacom airbrush pen slider range now sends the correct
+    [-1, 1] normalized range.
+  * And finally, the config call to fetch the default profile
+    libinput_device_config_accel_get_default_profile() actually
+    returns the default profile now.
+- Drop libinput-touchpad-fixes.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Apr  7 16:07:03 UTC 2016 - zaitor@opensuse.org
+
+- Add libinput-touchpad-fixes.patch: Fix left-handed top software
+  trackpoint buttons (fdo#94733), and only post motion events if
+  we have motion.
+
+-------------------------------------------------------------------
+Fri Mar 18 20:05:35 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.2.2:
+  * The two main changes are better cursor handling on the Lenovo
+    T450/T460-generation touchpads and the rejection of mislabelled
+    tablet devices.
+
+-------------------------------------------------------------------
+Tue Mar  8 14:14:33 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.2.1:
+  * One fix for touchpads: we added a patch in 1.2 to look at
+    relative finger positions during gestures to decide whether a
+    gesture would be a pinch or a swipe gesture. This caused some
+    two-finger scrolls to be detected as pinch gesture (fdo#94264).
+    The patch added in this release fixes this issue.
+
+-------------------------------------------------------------------
+Wed Feb 24 14:06:35 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.2.0:
+  * New stable branch, nothing significant has changed since
+    version 1.1.902.
+
+-------------------------------------------------------------------
+Thu Feb 18 22:43:08 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.1.902:
+  * One significant change to the API: the data provided by the
+    tablet tilt API is now in degrees rather than the previous
+    normalized value range.
+  * libinput now has an option to disable tap-and-drag.
+  * Bugfixes include fixing the the artpen rotation in left-handed
+    mode and a fix to prevent an invalid serial number on proximity
+    in (if the kernel doesn't immediately give us a serial number).
+
+-------------------------------------------------------------------
+Thu Feb 18 22:43:07 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.1.901:
+  * The main feature merged in this cycle is graphics tablet tool
+    support. Devices tagged by udev as ID_INPUT_TABLET are handled
+    by libinput now and exposed with the
+    LIBINPUT_DEVICE_CAP_TABLET_TOOL capability. Note that this
+    currently only includes tablet tool support, including stylus,
+    eraser, cursor, lens cursor, etc. The "pad" part of the tablet
+    is not yet integrated.
+  * Further in this release is support for three-finger pinch
+    gestures on supported hardware. As already announced in 1.1.5,
+    semi-mt touchpads do not support gesture recognition, the data
+    is not reliable enough.
+  * We still reserve the right to change the new tablet API before
+    the 1.2 release, though we don't expect the need for any
+    changes.
+- Add pkgconfig(libwacom) BuildRequires: New dependency for wacom
+  support.
+
+-------------------------------------------------------------------
+Thu Feb 18 22:43:06 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.1.8:
+  * Two small fixes to the touchpad code. Synaptics semi-mt devices
+    are now using a hysteresis again to stop the cursor from
+    wobbling (expected fallout from 1.1.6).
+  * The no-tappping zone on the far left/right edges has been
+    extended down from half the touchpad to the top edge of the
+    software buttons (if any). This prevents phantom taps when a
+    palm briefly touches the edge of the touchpad.
+- Changes from version 1.1.7:
+  * This release fixes an issue introduced by 1.1.6's new
+    disable-while-typing handling. If dwt was disabled while a key
+    was held down, the touchpad remained disabled due to a
+    recurring timer. This is fixed now.
+  * The other change enables the touchpad motion hysteresis by
+    default for all ALPS Rushmore touchpads (firmware 0x310).
+- Changes from version 1.1.6:
+  * The calculation of finger motion for multifinger gestures
+    (including two-finger scrolling) was buggy. A slow two-finger
+    motion could double the effective speed under some
+    circumstances, causing scroll jumps. This has been fixed now.
+  * The touchpad motion hysteresis is now deactivated by default.
+    This may negatively affect some (especially older) touchpads,
+    and we'll have to re-enable the hysteresis on those. If you
+    notice pointer wobbles when hold the finger still please file a
+    bug so we can address this. Everyone else should see a smoother
+    motion especially on small and tiny motions making single-pixel
+    elements much easier to target.
+  * Disable-while-typing now works when a key is held down. And the
+    pairing algorithm has been improved to avoid cases where the
+    touchpad was paired with an external USB keyboard, despite
+    there being a internal keyboard.
+  * Last: the mode button on the Cyborg RAT 5 is now disabled. This
+    button is special, on each press it cycles through 3 'modes',
+    sending a release event for the current button and a down event
+    for the next event code. This causes stuck buttons, since we
+    have nothing in userspace that would handle that button as
+    intended, disabling it is the current solution.
+
+-------------------------------------------------------------------
+Mon Jan 25 15:38:41 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.1.5:
+  * This release fixes a disable-while-typing issue on the Macbook
+    Pro and works around some middle-finger tap issues on semi-mt
+    devices. Unfortunately, due to the inconsistent (and often
+    garbage) data that semi-mt touchpads send we had to resort to
+    disabling pinch gestures on those devices to make three-finger
+    taps reliable.
+
+-------------------------------------------------------------------
+Tue Dec 22 13:04:12 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.1.4:
+  * One significant change: previously, we used to take the
+    device's fd from open_restricted() and start synching the
+    device immediately. If the fd is not closed between a
+    close_restricted() and a subsequent open_restricted(), or if
+    the time between opening the fd and handing it to libinput is
+    great enough, some events accumulate on the fd and are (in
+    part) immediately replayed after opening the device or
+    confusing libinput. We now drain any pending events on the fd
+    after the caller hands it to us.
+
+-------------------------------------------------------------------
+Wed Dec 16 22:07:02 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.1.3:
+  * Only one change that affects users, and that one is limited to
+    users of the Lenovo x220 with an updated touchpad firmware
+    version 8.1.
+- Changes from version 1.1.2:
+  * The 2-finger scroll threshold was reduced to 1mm which
+    significantly reduces the delay users experienced when
+    scrolling.
+  * BTN_TOOL_* events are not posted as button events anymore.
+    These aren't button events anyway, they are signals from the
+    kernel that a different tool is being used.
+  * Once diagonal scrolling was triggered, scroll events without a
+    horizontal or vertical would still have the matching axis flag
+    set and look like scroll stop events to the caller.
+  * On a semi-mt touchpad with hovering capabilities, releasing
+    both fingers within the same event frame caused a bug log
+    message, this is fixed now.
+
+-------------------------------------------------------------------
+Tue Nov 24 12:44:41 UTC 2015 - alarrosa@suse.com
+
+- List the package contents inside /lib/udev since we don't
+  want libinput-udev to own /lib/udev itself, which is already owned
+  by the udev package.
+- Modified summary of libinput-udev to begin with a capital letter
+  as required by rpmlint.
+
+-------------------------------------------------------------------
+Tue Nov 17 10:06:44 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.1.1:
+  * Two significant fixes and a couple of other cleanups.
+  * Pointer acceleration is now initialized for pointer-like device
+    without buttons. Some devices have rel x/y axes but no buttons
+    and aren't tagged as pointers by udev. If such a device sent an
+    event it could cause a crash in libinput.
+  * An error in in the struct list handling caused device groups to
+    write to invalid memory. The immediate effect observed was that
+    the log priority changed seemingly randomly, but different
+    optimization options may cause other effects.
+
+-------------------------------------------------------------------
+Wed Oct 28 23:05:43 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.1.0:
+  * This is a relatively small update, most of the bugfixes have
+    found their way into the libinput 1.0.x releases.
+  * The big addition here is the introduction of pointer
+    acceleration profiles, or, more specifically, the "flat"
+    profile. By default, libinput provides some (device-specific)
+    pointer acceleration as outlined in
+    http://wayland.freedesktop.org/libinput/doc/latest/pointer-acceleration.html
+  * There is significant demand for the device to move
+    unaccelerated, i.e. the device's virtual movements to move 1:1
+    to the physical movements. Changing the device's acceleration
+    profile to the "flat" profile achieves exactly that. For a
+    device in the flat profile, the speed setting range merely
+    multiples the deltas with a constant value (for a speed of 0,
+    the default, the value is 1).
+- Drop
+  libinput-touchpad-serial-synaptics-needto-fake-new-touches.patch
+  We have kernel-4.2.x in Tumbleweed now.
+
+-------------------------------------------------------------------
+Mon Oct 26 20:14:05 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.0.2:
+  * This release contains two tapping fixes. A multitap (triple
+    tap, quadruple tap, ...) caused one too many click events,
+    particularly noticable during a double-tap-and-hold dragging
+    process.
+  * The second fix avoids erroneous click events when two fingers
+    are placed on the touchpad and one finger is released within
+    the tap timeout. This can happen when executing short but
+    frequent two-finger scroll movements.
+
+-------------------------------------------------------------------
+Thu Sep  3 14:34:43 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.0.1
+  * filter: fix constant acceleration for the X230
+
+-------------------------------------------------------------------
+Wed Aug 26 07:01:59 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.0.0
+  * doc: inverse event type restriction of x and y accessors
+  * doc: ellipse instead of ellipsis
+  * test: fix gcc warning about missing prototypes
+  * doc: fix more typos
+  * doc: add a diagram for evemu and note that libinput doesn't recordings
+  * configure.ac: libinput 1.0
+
+-------------------------------------------------------------------
+Fri Aug 21 08:34:34 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.99.1:
+  * Release candidate for libinput 1.0.
+  * No additions to the API, this release only contains a couple of
+    bugfixes and general improvements.
+  * The most obvious fix is that natural scrolling now also works
+    for edge scrolling. The threshold needed to trigger scrolling
+    on a touchpad was reduced to 2mm in 0.21 but a bug prevented
+    that from activating until 5mm movement was hit.
+  * Touchpad scrolling now uses unaccelerated motion data. This
+    provides better behavior for short consecutive scroll motions
+    and a better 1:1 mapping between finger and content, especially
+    with natural scrolling.
+  * The pointer acceleration code has been cleaned up, though the
+    focus here was to make it easier to understand for developers.
+    The functionality remained largely the same aside from a few
+    bugfixes.
+
+-------------------------------------------------------------------
+Tue Aug  4 16:35:20 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.21.0:
+  * A new addition to the API is the configuration option to toggle
+    disable-while-typing. It's still enabled by default, but can
+    now be disabled for the use-cases where it is problematic
+    (games, for example). The API is the usual quartett of
+    configuration options:
+    - libinput_device_config_dwt_is_available
+    - libinput_device_config_dwt_set_enabled
+    - libinput_device_config_dwt_get_enabled
+    - libinput_device_config_dwt_get_default_enabled
+  * The second addition to the API is the ability to get the time
+    in microseconds from an event:
+    - libinput_event_gesture_get_time_usec
+    - libinput_event_keyboard_get_time_usec
+    - libinput_event_pointer_get_time_usec
+    - libinput_event_touch_get_time_usec
+  * libinput switched internally to use µs for all timestamps which
+    will help those devices that have a sampling frequency of more
+    than 1000Hz.
+  * Thumb detection, added for 0.20, has seen fine-tuning to reduce
+    the number of misdetection. Likewise, the gesture code has seen
+    a bunch of changes to tune the reliability of gesture
+    detection, especially on semi-mt touchpads.
+  * Scrolling is now more reactive too, with reduced thresholds
+    before scrolling kicks in.
+  * Merged a bunch of device-specific device handling to
+    work around quirks and deficiencies in some touchpad hardware.
+- Add
+  libinput-touchpad-serial-synaptics-needto-fake-new-touches.patch
+  following upstreams advice for kernel 4.1.
+
+-------------------------------------------------------------------
+Sat Jul 18 08:28:06 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to version 0.20.0:
+  * The big new addition in this release is support for touchpad
+    gestures. Two types of gestures are supported: swipe and pinch.
+    Swipe is triggered by a movement of 3+ fingers in the same
+    direction, pinch is triggered by two fingers moving towards or
+    away from each other and/or a rotation around a logical center.
+    Both gestures, once triggered, can move around the touchpad,
+    making it possible to use them for fine-grained motion.
+  * Edge scrolling is now possible on clickpads too and thus available
+    on all touchpads. Thumb detection was added, it is now possible
+    to rest the thumb on a clickpad while moving a pointer without
+    interference
+  * libinput now requires touchpads to have a resolution. If the
+    kernel device does not set it and none of the hwdb rules do either,
+    libinput assigns a default resolution to the device. This may have
+    an effect on your touchpad, please file a bug if you notice
+    anything untoward. On the positive side it removes the magic
+    numbers sprinkled through the code
+
+-------------------------------------------------------------------
+Thu Jul  9 19:22:18 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.19.0:
+  * The biggest change in this release is improved pointer
+    acceleration code. Previously, slow movements were decelerated.
+    For anything resembling normal motion the pointer response is
+    effectively 1:1, making the cursor respond nicely to your mouse
+    movement.
+  * Low-dpi devices had a bug where they would skip pixels for
+    small movements. This was caused by the pointer normalization
+    to 1000dpi. Devices with a native resolution below 1000dpi now
+    have their own acceleration curve, providing much better
+    behaviour.
+  * The side-effect of this is that we had to drop the pretense of
+    normalization to 1000dpi. The documentation has been adjusted.
+  * The second side-effect is that the unaccelerated data is now
+    closer (or equal) to the device native resolution.
+  * The second user-visible change is disabling of tap drag-lock by
+    default. A new config API triplett is available to enable it:
+    libinput_device_config_tap_set_drag_lock_enabled
+    libinput_device_config_tap_get_drag_lock_enabled
+    libinput_device_config_tap_get_default_drag_lock_enabled
+  * Other fixes include better responsiveness of the touchpad when
+    switching from the trackpoint to the touchpad and a smaller
+    edge scroll motion threshold. And of course the usual bugfixes.
+
+-------------------------------------------------------------------
+Tue Jun 23 08:12:33 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.18.0:
+  * Touchpad handling has improved filters for erroneous small
+    movements. Palm detection in the edge scrolling zone has been
+    disabled, it previously caused unreliable edge scrolling on
+    larger touchpads.
+  * Alps touchpads now always provide a config option for middle
+    button emulation - these devices don't know whether a middle
+    button is available, providing the option (and defaulting to
+    emulation on) allows users to have a better out-of-the-box
+    experience.
+  * Note that license boilerplate code has changed - it now carries
+    the MIT license as intended. See the commit log for bc9f16b40e
+    for details.
+  * No API changes or additions.
+
+-------------------------------------------------------------------
+Sat Jun  6 16:21:16 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.17.0:
+  * The timeout for the tap-and-drag has been significantly
+    reduced.
+  * Really slow mouse movement got swallowed because the
+    acceleration calculations timed out and returned an
+    acceleration factor of 0.
+  * Basic thumb detection was added for clickfinger behaviour, it
+    is now possible to execute a single click with a thumb while
+    the pointer-moving finger is resting on the touchpad.
+- Changes from version 0.16.0:
+  * Touchpads with ABS_MT_DISTANCE such as the Chromebook Pixel are
+    now supported.
+  * The tapping code now allows ending a tap-and-drag with an extra
+    tap, i.e. the sequence becomes:
+    tap, finger down, move .... move, finger up, tap
+  * Also in the touchpad code: disable-while-typing has been added.
+
+-------------------------------------------------------------------
+Wed May  6 10:24:26 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.15.0:
+  * One new API was added: libinput_device_keyboard_has_key() which
+    does what it says on the box.
+  * A new tool is now available: libinput-debug-events
+    This tool allows debugging libinput events directly, it works
+    as something like an evtest to libinput. Note that it is very
+    much a debugging tool only, do not rely on any specific
+    behavior or output format.
+  * A new udev property POINTINGSTICK_CONST_ACCEL is now supported
+    for pointing sticks. If set for a compatible device, the input
+    data is multiplied with a constant factor.
+  * We've added support for the LIBINPUT_MODEL_xzy udev tag. This
+    enables us to tag specific models or series in udev and apply
+    required quirks.
+  * A couple of bugfixes, mainly in the touchpad code. The
+    doubletap timeout is now longer but multi-tapping is generally
+    more responsive now.
+  * Clickfinger behavior was fixed to allow left-clicks even when a
+    touch isn't present on the device.
+  * Button scrolling is enabled by default on some devices now,
+    specifically on devices without a scroll wheel but with a
+    middle button.
+
+-------------------------------------------------------------------
+Mon May  4 20:07:31 UTC 2015 - zaitor@opensuse.org
+
+- Also set Version to 0.14.1, no need to have a diff there.
+
+-------------------------------------------------------------------
+Wed Apr 22 14:37:33 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.14.1:
+  * libinput now provides middle button emulation for physical
+    buttons and, for some devices, a configuration interface to
+    enable said emulation.
+  * A new tool "libinput-list-devices" was added. This tool lists
+    the locally recognised devices and their respective
+    configuration options and configuration defaults. Note that due
+    to the design of libinput, this tool can only show the
+    _default_ configurations, not the _current_ configuration of
+    each device.
+  * The pointer acceleration range has been widened to allow for
+    greater deceleration and greater acceleration. Since we retain
+    the [-1, 1] range, you may see a slight slowdown or speedup. To
+    get the previous behaviour, use the value: current setting *
+    2.0/3.0.
+  * Five (or more) finger tapping is now handled correctly, though
+    note we only send events for up to three fingers. libinput now
+    supports multi-tap and drag, so e.g. three taps will execute a
+    triple-click.
+  * Palm detection now avoids accidental tapping, see
+    http://wayland.freedesktop.org/libinput/doc/latest/palm_detection.html
+  * And of course the usual bugfixing, including letting libinput
+    handle more devices such as keyboards with scroll wheels or
+    devices that only consist of a wheel.
+- Add tool subpackage.
+
+-------------------------------------------------------------------
+Wed Apr  8 19:46:59 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.13.0
+  * No API changes were merged in this release, the ABI is
+    compatible with 0.12.0.
+  * The tap motion threshold is now a fixed distance on all
+    touchpads (withphysical resolution). This stops the delay in
+    pointer motion seen on some devices.
+  * The edge scrolling motion threshold now accumulates, so even a
+    slow scroll will eventually trigger edge scrolling.
+  * The velocity calculation on slow movements was fixed, this
+    should provide a slightly more responsive and accurate
+    touchpad motion, especially on direction changes.
+  * To ease development, libinput will now print warnings when a
+    caller does wrong event conversions (e.g. requesting a touch
+    event when the event is a pointer event, etc.).
+
+-------------------------------------------------------------------
+Sat Mar 14 20:24:07 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 0.12.0
+* The new features (since 0.11) are device groups and the use of
+  udev tagging for device identification. Device groups are a
+  labelling system to allow callers to identify which libinput
+  devices are part of the same physical device.
+* libinput's API and ABI are now stable
+* Fixes to correctly handle Protocol A multitouch devices.
+* Buttonless touchpads are now supported (e.g. the touch portion of
+  the Wacom Intuos tablets), on those touchpads tapping is enabled
+  by default.
+
+-------------------------------------------------------------------
+Mon Feb  9 01:35:57 UTC 2015 - zaitor@opensuse.org
+
+- Update to new upstream release 0.10.0
+* A call to libinput_device_config_accel_set_speed() with a value
+  of NAn triggered an assert() in libinput.
+* Pointer devices with absolute axes (such as the ones used in VMs)
+  had an uninitialized pointer acceleration speed, triggering a
+  warning in the xorg libinput driver.
+- Changes from upstream release 0.9.0
+* Support for hovering fingers on touchpads. Some touchpads detect
+  fingers before actually touching the surface causing unexpected
+  motion events. libinput now handles such touchpads.
+* Click methods are now configurable, see below for more details.
+* Support for the Lenovo X1 Carbon 3rd was added. Note that this
+  requires kernel patches and a udev hwdb addition.
+- API additions:
+* libinput_device_config_click_get_methods
+* libinput_device_config_click_get_method
+* libinput_device_config_click_get_default_method
+* libinput_device_config_click_set_method
+
+-------------------------------------------------------------------
+Sun Jan 25 13:33:04 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 0.8.0
+* Improved touchpad support. For example, it is not necessary
+  anymore to lift all fingers when switching from scrolling to
+  pointer movement.
+* Scroll event types were merged. Previously we supplied horiz/vert
+  scrolling as separate event, even in diagnonal scrolling.
+  Now each scroll event may contain one or more axes.
+* Support for axis sources: a scroll event can be of source finger,
+  wheel or continuous. This enables callers to implement kinetic
+  ("fling") scrolling.
+* Scroll wheel events now return the data in degrees. A matching
+  udev hwdb system is in place to adjust this when needed. A
+  "discrete" scroll value is available if you are interested in
+  the clicks only.
+* Left-handed configuration was renamed. For future tablet support,
+  the button-based naming was inappropriate. A simple
+  search/replace fixes this.
+
+-------------------------------------------------------------------
+Fri Dec 12 02:00:29 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.7.0
+* Devices can be disabled/enabled at runtime. This includes smart
+  disabling of touchpads when a USB mouse is plugged in, and smart
+  disabling of the T440 touchpads so that the top buttons still
+  work even when the touchpad is disabled.
+* Edge scrolling is available on some devices, and the scroll
+  method can be switched at runtime
+* Trackpoints can scroll by pressing the middle button and moving
+  the stick. This button-scrolling method is also available on
+  other devices on request.
+* Pointer acceleration is becoming device-resolution independent,
+  provided your device has a DPI entry in the udev hwdb. This makes
+  high-resolution gaming mice behave normally. See this post for
+  more details:
+  http://who-t.blogspot.com/2014/12/building-a-dpi-database-for-mice.html
+* Pointer speed can be changed at runtime.
+* Natural scrolling is now available, for touchpads and mice.
+* Devices can be switched to left-handed, libinput handles the
+  details.
+* Devices can be asked to change their assigned logical seat at
+  runtime.
+* Relative pointer events also provide unaccelerated motion. Note
+  that this is _not_ raw data as it comes from the device, it is
+  normalized to 1000dpi.
+
+-------------------------------------------------------------------
+Fri Sep 12 10:54:15 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.6.0
+* This release has some API changes, namely:
+  "libinput_device_get_keys" is deprecated.
+* Initial device state can now always be assumed to be that no
+  keys are pressed. Calibration of touch devices has been changed
+  to be using a normalized calibration matrix. While
+  libinput_device_calibrate has undergone this change, it has
+  also been deprecated and replaced with a configuration API.
+* The implicit reading of the udev parameter WL_CALIBRATION has
+  been removed in favor for LIBINPUT_CALIBRATION_MATRIX. The
+  usage of WL_CALIBRATION was broken because the translation part
+  of its matrix was in pixels which is a metric not available in
+  libinput. The new calibration matrix avoids this by having the
+  translation be normalized to the dimension of the device
+  dimensions. See the documentation for details about how to use
+  the LIBINPUT_CALIBRATION_MATRIX udev parameter.
+
+-------------------------------------------------------------------
+Fri Aug 22 21:14:17 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.5.0
+* Device information (name, vendor id, product id) getters
+* The beginning of a configuration API. So far tapping on touchpads
+  can be enabled or disabled.
+* As a side effect, tapping is now disabled by default and needs
+  explicit enabling via the new API.
+
+-------------------------------------------------------------------
+Sun Jul 13 11:22:54 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.4.0:
+* The logging system now works per-context instead of per library
+  and dropped the userdata argument.
+* libinput_destroy() was changed to libinput_unref(), plus you
+  now have libinput_ref() too.
+* A couple of renames of constants for API consistency.
+  Triggered by the logging changes, creation of udev seats is now
+  different.
+* A couple of bugfixes, mainly in the touchpad code.
+  Absolute event coordinates are now provided in mm, not
+  device-specific coordinates. This doesn't change anything for
+  callers using the respective_get_transformed() function.
+* ref/unref() is now available for the libinput context itself.
+
+-------------------------------------------------------------------
+Thu May  1 21:25:26 UTC 2014 - dimstar@opensuse.org
+
+- Add baselibs.conf: provide libinput0-32bit. Required by
+  libclutter-gst-2_0-0-32bit.
+
+-------------------------------------------------------------------
+Thu Feb 27 18:34:17 UTC 2014 - jengelh@inai.de
+
+- Update to initial upstream tarball release, version 0.1.0
+
+-------------------------------------------------------------------
+Wed Jan 29 12:05:34 UTC 2014 - jengelh@inai.de
+
+- Initial package (version 0.0.90~git301) for build.opensuse.org

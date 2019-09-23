@@ -1,0 +1,5 @@
+<package name="maven-remote-resources-plugin" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="maven-remote-resources-plugin"/>
+</package>

@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Wed Jul 18 12:59:43 UTC 2018 - fvogt@suse.com
+
+- Switch to version 4.0.0 from https://github.com/Aetf/libtsm:
+  * Add soft-black and base16-light and -dark color palettes
+  * Support underline/italic rendering (with a patched version of kmscon)
+  * Support 24-bit true color
+  * Support Ctrl + Arrow keys
+  * Support custom title using OSC
+  * Bug fixes:
+    + Repsonse to 'CSI c' contains random bytes
+    + Fix invalid cpr values
+- Run make check in %check
+- Add patch to fix make check:
+  * 0001-Fix-filename-in-test_common.h.patch
+- Add patch to add palette with default linux console colors:
+  * 0001-Add-new-palette-with-standard-VGA-colors.patch
+
+-------------------------------------------------------------------
+Sun Aug  3 06:04:01 UTC 2014 - jengelh@inai.de
+
+- Initial package (version 3) for build.opensuse.org

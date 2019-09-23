@@ -1,0 +1,244 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b1bb4733c54fb33c69ffcdbc77f594a6</srcmd5>
+    <version>1.07</version>
+    <time>1168903863</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f79805d090f0a4213f974bf73c07a6df</srcmd5>
+    <version>1.12</version>
+    <time>1184602573</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>31b8e63aeb476723f56252c2d25bdf46</srcmd5>
+    <version>1.15</version>
+    <time>1207460568</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c415640512322ec6a944a73a3cd248f7</srcmd5>
+    <version>1.18</version>
+    <time>1220890322</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>af33814ca8379c191391d14615b4df00</srcmd5>
+    <version>1.18</version>
+    <time>1221586086</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>57b7387fa9f6aabc7f02a14f8f7c3c33</srcmd5>
+    <version>1.20</version>
+    <time>1234474352</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>44143f3683156aef4e2775ff2d8cc189</srcmd5>
+    <version>1.24</version>
+    <time>1247502207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>44143f3683156aef4e2775ff2d8cc189</srcmd5>
+    <version>1.24</version>
+    <time>1247502207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>de441bc7805166ab94e5d48a6ffbf2b5</srcmd5>
+    <version>1.26</version>
+    <time>1263229613</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Log-Log4perl based on submit request 28388 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e339cbd70373a23d129c45edd914935a</srcmd5>
+    <version>1.27</version>
+    <time>1266508267</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Log-Log4perl based on submit request 32692 from user coolo
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8c6bed37eb2228f8fddc97a31310a5c3</srcmd5>
+    <version>1.28</version>
+    <time>1268832117</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Log-Log4perl based on submit request 34953 from user coolo
+</comment>
+    <requestid>34953</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e7be8c028dea997d1fd83fc86f486d5d</srcmd5>
+    <version>1.28</version>
+    <time>1268925515</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>f4e535bd9c715370123e074608f2a6b8</srcmd5>
+    <version>1.28</version>
+    <time>1270599651</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Log-Log4perl based on submit request 37125 from user computersalat
+</comment>
+    <requestid>37125</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>f4e535bd9c715370123e074608f2a6b8</srcmd5>
+    <version>1.28</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>f4e535bd9c715370123e074608f2a6b8</srcmd5>
+    <version>1.28</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c2b493550149560f9a1cb0333046ef3c</srcmd5>
+    <version>1.29</version>
+    <time>1279651456</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Log-Log4perl based on submit request 43502 from user computersalat
+</comment>
+    <requestid>43502</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>b34860566cad1fff9e513fb4e68586ba</srcmd5>
+    <version>1.29</version>
+    <time>1291582951</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54583 from user coolo
+</comment>
+    <requestid>54583</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>ccec8c9002fc54c34d182dcb8919692b</srcmd5>
+    <version>1.29</version>
+    <time>1291582956</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54583
+</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>ccec8c9002fc54c34d182dcb8919692b</srcmd5>
+    <version>1.29</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>08a88590100160471097ba870feb7b23</srcmd5>
+    <version>1.33</version>
+    <time>1314187518</time>
+    <user>saschpe</user>
+    <comment>update to 1.33</comment>
+    <requestid>79599</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>ca48aeb8de0dac2e4b3b04ba0aa32245</srcmd5>
+    <version>1.33</version>
+    <time>1314187532</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79599
+</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>ca48aeb8de0dac2e4b3b04ba0aa32245</srcmd5>
+    <version>1.33</version>
+    <time>1319182284</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6fe2b71a74490042df8c3f1670203e1f</srcmd5>
+    <version>1.34</version>
+    <time>1324458141</time>
+    <user>coolo</user>
+    <comment>- update to 1.34
+   *    (ms) InternalDebug now replaces all instances of INTERNAL_DEBUG,
+             not just the first one.
+   *    (ms) Added test case for get_logger() with a ref() on the actual
+             object instead of on a static category. Updated docs.
+   *    (ms) %d{e} in PatternLayout now returns epoch seconds
+   *    (ms) [RT#72056] Messages blocked by an appender threshold are no
+             longer passed on to the L4p::Appender::Buffer as undefined
+             entries.</comment>
+    <requestid>97108</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>43510c077d2292a5239311f54d48bf60</srcmd5>
+    <version>1.36</version>
+    <time>1338476906</time>
+    <user>coolo</user>
+    <comment>- updated to 1.36
+   *    (ms) [rt.cpan.org #74833] Reini Urban fixed &quot;defined @array&quot; for
+             perl 5.16
+   *    (ms) [rt.cpan.org #74836] Cope with Carp's questionable decision to
+             add a trailing dot to its messages.
+   *    (ms) [rt.cpan.org #73462] Changed logwarn/logcluck/logcarp/error_warn 
+             to warn() unconditionally and send the message to log4perl which
+             will log it only if the log level conditions are met.
+   *    (ms) [rt.cpan.org #73598] Gerda Shank reported test suite problems
+             with DBD::CSV-0.26. Bumped up to DBD::CSV-0.33 if installed.</comment>
+    <requestid>122889</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>43510c077d2292a5239311f54d48bf60</srcmd5>
+    <version>1.36</version>
+    <time>1340183870</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>43510c077d2292a5239311f54d48bf60</srcmd5>
+    <version>1.36</version>
+    <time>1359109728</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>43510c077d2292a5239311f54d48bf60</srcmd5>
+    <version>1.36</version>
+    <time>1379663735</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="9">
+    <srcmd5>43510c077d2292a5239311f54d48bf60</srcmd5>
+    <version>1.36</version>
+    <time>1409302362</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>008fa6e75f42764679039440d86b7bc2</srcmd5>
+    <version>1.47</version>
+    <time>1459002036</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update (forwarded request 375948 from coolo)</comment>
+    <requestid>376389</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a73195a70560d1b3eb58c88765a0022c</srcmd5>
+    <version>1.48</version>
+    <time>1479662241</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440746</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>86dadf7b18406cc61c835757794a4b09</srcmd5>
+    <version>1.49</version>
+    <time>1488547997</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460877</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+diff -uNr perftest-4.4.orig/src/get_clock.h perftest-4.4/src/get_clock.h
+--- perftest-4.4.orig/src/get_clock.h	2018-10-09 14:42:28.000000000 +0200
++++ perftest-4.4/src/get_clock.h	2019-07-12 17:31:03.319951614 +0200
+@@ -70,6 +70,14 @@
+ 	asm volatile ("mov %0=ar.itc" : "=r" (ret));
+ 	return ret;
+ }
++#elif defined(__ARM_ARCH_6ZK__)
++typedef unsigned long long cycles_t;
++static inline cycles_t get_cycles(void) 
++{ 
++	cycles_t        clk;
++	asm volatile ("mrc p15, 0, %0, c15, c12, 1" : "=r" (clk));
++	return clk;
++}
+ #elif defined(__ARM_ARCH_7A__)
+ typedef unsigned long long cycles_t;
+ static inline cycles_t get_cycles(void)

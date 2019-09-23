@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bfd5f13b18686ef1699094a8b75cdd5d</srcmd5>
+    <version>1.2.0</version>
+    <time>1551386548</time>
+    <user>coolo</user>
+    <comment>I want to maintain openbsc in Factory</comment>
+    <requestid>678105</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fa9e17c02d18d7a0b6f0984b37dd6278</srcmd5>
+    <version>1.3.1</version>
+    <time>1566463800</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.3.1</comment>
+    <requestid>723414</requestid>
+  </revision>
+</revisionlist>

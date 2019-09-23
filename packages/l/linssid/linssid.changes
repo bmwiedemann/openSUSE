@@ -1,0 +1,155 @@
+-------------------------------------------------------------------
+Tue Aug 27 10:26:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid use of ®/™ signs in specfiles as per guidelines.
+
+-------------------------------------------------------------------
+Wed May 22 19:00:42 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Refreshed linssid-use-shared-qwt-qt5.patch to use pkgconfig
+
+-------------------------------------------------------------------
+Mon Apr 22 15:27:58 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to Version 3.6
+  * Attempts to resolve 802.11s mesh network nodes to their
+    master. If otherwise not reported, marks SSID field of mesh
+    node APs as "<mesh-masterSSID>".
+  version 3.5:
+  * New vendor database and search scheme that now looks in ieee
+    oui large, medium, and small block databases. Previously only
+    looked in large block database because that's where 98% of
+    all devices are found.
+  * Displays SSID of attach points with no SSID as "<hidden>".
+  version 3.4:
+  * Fixes location and owner of ".linssid.prefs" and
+    "LinSSID.datalog".
+    Instead of placed in /root and owned by root they are now
+    placed in "$HOME" and owned by "$USER" when launched with
+    linssid-pkexec which is the normal .desktop launch.
+  * Fixed some wrongly addressed cosmetic icons.
+  * Updated vendor data file. (Version 3.3 had some trailing
+    characters that messed up data logging.)
+  * Sundry under-the-hood optimizations.
+  version 3.3:
+  * Adds selection of table font size in preferences dialog.
+  version 3.2:
+  * Now shows mark for control channel on the channel plots.
+    Very useful for making sure your control channel(s) don't
+    overlap with the neighbors'.
+  * Fixes potential memory leak with attached plots.
+  version 3.1:
+  * Big change - now requires polkit (policykit) authentication.
+    No way around this as debian/ubuntu/* has emasculated su and
+    sudo.
+    A step backward IMHO. Now the whole app must run as root.
+    So, all of the prefs and log files are now in /root and are
+    owned by root. And, the whole app must run as root instead
+    of just well-tested system parts.
+  * Major rewrite of the synchronization between the main window
+    and the data getter.
+  * Install rewrite
+  * Desktop file fix
+  * Updated vendor database
+  version 3.0:
+  * Fix race condition with large number of SSID
+  * Updated vendor database
+
+- Refreshed linssid-icons.patch and
+  linssid-use-shared-qwt-qt5.patch
+
+-------------------------------------------------------------------
+Wed Oct 11 13:16:37 UTC 2017 - aloisio@gmx.com
+
+- Fixed future Factory build, see (boo#1062783)
+
+-------------------------------------------------------------------
+Sat Jul 29 17:47:56 UTC 2017 - aloisio@gmx.com
+
+- Dropped linssid-use-static-qwt.patch and
+  qwt-6.1.3.tar.bz2
+- Added linssid-use-shared-qwt-qt5.patch
+- Build against system qwt6-qt5 shared lib
+- Added linssid-icons-patch to fix icons locations
+- Fixed executable path
+
+-------------------------------------------------------------------
+Fri Sep 30 10:33:18 UTC 2016 - aloisio@gmx.com
+
+- Update to version 2.9
+  * Conversion from old linux wireless tools to nl80211 tools.
+  * New information displayed - bandwidth, make and model of
+    router (when available)
+  * Updated vendor database
+
+- Updated bundled qwt library to 6.1.3 and added attendant
+  linssid-use-static-qwt.patch
+
+- Dropped linssid-fix-make-and-compile-errors-2.7.patch and
+  linssid-qt-5_4-static-const-fix.patch
+
+-------------------------------------------------------------------
+Sat Oct 24 16:11:20 UTC 2015 - aloisio@gmx.com
+
+- Fixed Leap build
+
+-------------------------------------------------------------------
+Mon Jan 26 10:18:31 UTC 2015 - novell@tower-net.de
+
+- Added linssid-qt-5_4-static-const-fix.patch for OpenSUSE > 13.2:
+  + Fix compiling with Qt >= 5.4
+
+-------------------------------------------------------------------
+Thu Nov 20 12:31:57 UTC 2014 - aloisio@gmx.com
+
+- Added required dependencies
+
+-------------------------------------------------------------------
+Sat Nov  1 14:18:41 UTC 2014 - aloisio@gmx.com
+
+- Update to version 2.7:
+  + Hopefully fixes an occassional problem in some configurations where LinSSID hangs during
+    scan when the wifi interface is connected to an attach point
+  + Updated vendor database
+
+-------------------------------------------------------------------
+Sun Jul 27 19:10:51 UTC 2014 - malcolmlewis@opensuse.org
+
+- Update to version 2.6:
+  + Fixes a possible bug in interface detection
+  + Static link to libboost-regex (openSUSE dropped in patch)
+  + Update vendor database
+- Updates from version 2.5:
+  + Fixes an issue with how the zsh shell interprets command lines.
+    Huge thanks to Alex Stelmachonak.
+- Updates from version 2.4:
+  + Same as 2.3 code but necessary to get a i386 build through
+    Canonical. Long story.
+- Updates from version 2.3:
+  + Fixed issue with RTL8187SE card and driver not providing
+    frequency resulting in LinSSID crash.
+  + Renamed the column that displays WEP, WPA2, etc., to "Privacy".
+  + Added column for protocol {a,b,g,n}. (Note that many drivers do
+    not report protocol.).
+  + Modified data logging format to reflect as above.
+  + Added buttons for immediate clear or set of plotting of all
+    visible attach points.
+  + Improved response to Plot column check boxes.
+  + Cleaned up a few minor bugs.
+  + Updated vendor database.
+- Updates from version 2.2:
+  + Fixes several small bugs.
+  + Adds a status display line to top panel.
+  + Now built with QT5 and Qwt 6.1.
+  + Updated wifi vendor database.
+- Rebase linssid-fix-make-and-compile-errors.patch to clean up
+  linssid-app.pro build errors and desktop file.
+
+-------------------------------------------------------------------
+Fri Feb 28 20:24:08 UTC 2014 - malcolmlewis@opensuse.org
+
+- Initial build.
+- Add linssid-fix-make-and-compile-errors.patch: Clean up pro,
+  desktop files and fix compile errors.
+- Add linssid_wrapper script to ensure the /usr/sbin path is set
+  and removed when finished.

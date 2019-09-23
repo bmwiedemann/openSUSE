@@ -1,0 +1,172 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3fc63648d3c9e683f74c344973029fb7</srcmd5>
+    <version>0.10.4</version>
+    <time>1336471398</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115441</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>aabf1cd943ce233d01a7d61aa7b5100a</srcmd5>
+    <version>0.10.4</version>
+    <time>1336653293</time>
+    <user>coolo</user>
+    <comment>license update: BSD-3-Clause and MIT
+See COPYING (forwarded request 116002 from babelworx)</comment>
+    <requestid>116729</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fbd7af155a275facd2eabe7b5bb35fbe</srcmd5>
+    <version>0.10.4</version>
+    <time>1338280608</time>
+    <user>coolo</user>
+    <comment>- Add supplements so the driver is picked automatically
+  by the package manager if the user has suitable hardware.</comment>
+    <requestid>121905</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9d10277898197d79ab26054191330dc7</srcmd5>
+    <version>0.10.4</version>
+    <time>1338582787</time>
+    <user>coolo</user>
+    <comment>- remove hw supplements (bnc#764395)</comment>
+    <requestid>123188</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>9d10277898197d79ab26054191330dc7</srcmd5>
+    <version>0.10.4</version>
+    <time>1340184350</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e0a2510a85054e550bd276ddbd07523c</srcmd5>
+    <version>0.10.7</version>
+    <time>1347723062</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134020</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>e0a2510a85054e550bd276ddbd07523c</srcmd5>
+    <version>0.10.7</version>
+    <time>1359110616</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>f3d99eac10af784b1c2897be294ebacb</srcmd5>
+    <version>0.10.7</version>
+    <time>1365426262</time>
+    <user>coolo</user>
+    <comment>- u_Fixed-build-with-INPUT_API-19.patch
+  * Added dummy parameters to miPointerSetPosition(...) to fix
+    build with INPUT_API &gt;= 19.
+
+- Add mibstore.patch, fixes build with xorg-server 1.14 
+- Replace xf86UnMapVidMem with pci_device_unmap_range
+- Stop including xf86Priv.h
+- introduce hardware supplements conditional on xorg-x11-server
+  package (bnc#810333)</comment>
+    <requestid>163062</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>b59843b4e3b7977f4ce2ec7f7b5ff236</srcmd5>
+    <version>0.10.7</version>
+    <time>1377248989</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195917</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>b59843b4e3b7977f4ce2ec7f7b5ff236</srcmd5>
+    <version>0.10.7</version>
+    <time>1379665031</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>b59843b4e3b7977f4ce2ec7f7b5ff236</srcmd5>
+    <version>0.10.7</version>
+    <time>1409303714</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>897d8bc736aae3c0ade5bf851b3fdcf6</srcmd5>
+    <version>0.10.7</version>
+    <time>1423595826</time>
+    <user>dimstar_suse</user>
+    <comment>- U_sis-fix-build-against-latest-xserver.patch/
+  U_sis-more-build-fixes-against-master-X-server.patch
+  * fixes build against xorg-server 1.17</comment>
+    <requestid>284476</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>39abb15cdc44db984518fb45aed21e85</srcmd5>
+    <version>0.10.8</version>
+    <time>1441295972</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.8:
+  * Remove mibstore.h
+  * Stop including xf86Priv.h
+  * Fix HDisplay/VDisplay typos
+  * Remove upload / download EXA hooks
+  * sis: fix build against latest xserver
+  * sis: more build fixes against master X server.
+  * sis: force build, who uses this crazy code anyways
+  * Replace xf86UnMapVidMem with pci_device_unmap_range
+  * Fix format-security warnings
+- supersedes patches:
+  * U_Remove-mibstore.h.patch
+  * U_Replace-xf86UnMapVidMem-with-pci_device_unmap_range.patch
+  * U_Stop-including-xf86Priv.h.patch
+  * U_sis-fix-build-against-latest-xserver.patch
+  * U_sis-more-build-fixes-against-master-X-server.patch
+  * u_Fixed-build-with-INPUT_API-19.patch</comment>
+    <requestid>328255</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>702cd5825a2b076f27177baffd7600b9</srcmd5>
+    <version>0.10.8</version>
+    <time>1443793085</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>334129</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>d3ee03b38b0c7d35f82a77d9825d5b57</srcmd5>
+    <version>0.10.8</version>
+    <time>1481030578</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch
+  * Adapt Block/WakeupHandler signature for ABI 23</comment>
+    <requestid>442925</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>84192514c2a998ceb88817e70f7bcfec</srcmd5>
+    <version>0.10.9</version>
+    <time>1485862436</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>452707</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>952ef76daab9a043ca47c42a5eadb8ca</srcmd5>
+    <version>0.10.9</version>
+    <time>1496681412</time>
+    <user>dimstar_suse</user>
+    <comment>- includes everything needed for missing sle issue entries:
+  fate #315643-315645, 319159-319161, 319618 (bsc#1041339)</comment>
+    <requestid>499104</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>b2591547ce72dc7ca65f30ec1f5ca8a7</srcmd5>
+    <version>0.10.9</version>
+    <time>1527277106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611733</requestid>
+  </revision>
+</revisionlist>

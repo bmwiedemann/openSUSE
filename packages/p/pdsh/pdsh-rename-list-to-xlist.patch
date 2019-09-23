@@ -1,0 +1,44 @@
+diff --git a/src/common/list.c b/src/common/list.c
+index 4612d84..a814820 100644
+--- a/src/common/list.c
++++ b/src/common/list.c
+@@ -95,7 +95,7 @@ struct listNode {
+ };
+ 
+ struct listIterator {
+-    struct list          *list;         /* the list being iterated           */
++    struct xlist         *list;         /* the list being iterated           */
+     struct listNode      *pos;          /* the next node to be iterated      */
+     struct listNode     **prev;         /* addr of 'next' ptr to prv It node */
+     struct listIterator  *iNext;        /* iterator chain for list_destroy() */
+@@ -104,7 +104,7 @@ struct listIterator {
+ #endif /* !NDEBUG */
+ };
+ 
+-struct list {
++struct xlist {
+     struct listNode      *head;         /* head of the list                  */
+     struct listNode     **tail;         /* addr of last node's 'next' ptr    */
+     struct listIterator  *iNext;        /* iterator chain for list_destroy() */
+@@ -727,7 +727,7 @@ list_node_destroy (List l, ListNode *pp)
+ static List
+ list_alloc (void)
+ {
+-    return(list_alloc_aux(sizeof(struct list), &list_free_lists));
++    return(list_alloc_aux(sizeof(struct xlist), &list_free_lists));
+ }
+ 
+ 
+diff --git a/src/common/list.h b/src/common/list.h
+index 2976ea1..ab5f646 100644
+--- a/src/common/list.h
++++ b/src/common/list.h
+@@ -55,7 +55,7 @@
+  *  Data Types  *
+  ****************/
+ 
+-typedef struct list * List;
++typedef struct xlist * List;
+ /*
+  *  List opaque data type.
+  */

@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>099157181f6c9b12ed781f6e36a87e57</srcmd5>
+    <version>1.5.3</version>
+    <time>1442653483</time>
+    <user>coolo</user>
+    <comment>needed for rubygem-sinatra  (currently in openSUSE:Factory:Staging:adi:7)</comment>
+    <requestid>331470</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1c1478a3e466d1bd661a1ecfe17c2a70</srcmd5>
+    <version>2.0.0</version>
+    <time>1496926891</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497706</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2ed7daef2f9eed3772e8d7c594592a07</srcmd5>
+    <version>2.0.1</version>
+    <time>1519041820</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>577914</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d4686aa0e480623aa61f5547ad311d18</srcmd5>
+    <version>2.0.3</version>
+    <time>1531947056</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621027</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0de5d8694b28b05bb1194c7b9fe18ada</srcmd5>
+    <version>2.0.4</version>
+    <time>1543953429</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653709</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>77cf9b6ebc9fae45fd7cc6edc21598e9</srcmd5>
+    <version>2.0.5</version>
+    <time>1551687663</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679535</requestid>
+  </revision>
+</revisionlist>

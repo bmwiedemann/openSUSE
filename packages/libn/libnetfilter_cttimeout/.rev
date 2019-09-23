@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>108ec879547d0b1bea2edc3c8345f1f4</srcmd5>
+    <version>0.0.0.10</version>
+    <time>1331579718</time>
+    <user>coolo</user>
+    <comment>For the newly proposed ct_timeout extension to kernel 3.4/3.5</comment>
+    <requestid>107572</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>205ee4a5362687a334615200fcb0999d</srcmd5>
+    <version>1.0.0</version>
+    <time>1338280427</time>
+    <user>coolo</user>
+    <comment>- Update to first official tarball release 1.0.0
+* Add ICMPv6 support
+* add new parameter type to nfct_timeout_snprintf</comment>
+    <requestid>122503</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>205ee4a5362687a334615200fcb0999d</srcmd5>
+    <version>1.0.0</version>
+    <time>1340183610</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>44d39ed3b44761d285ca60e0948a64be</srcmd5>
+    <version>1.0.0</version>
+    <time>1355474280</time>
+    <user>coolo</user>
+    <comment>- Verify GPG signature</comment>
+    <requestid>144972</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>44d39ed3b44761d285ca60e0948a64be</srcmd5>
+    <version>1.0.0</version>
+    <time>1359109311</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>44d39ed3b44761d285ca60e0948a64be</srcmd5>
+    <version>1.0.0</version>
+    <time>1379663017</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>44d39ed3b44761d285ca60e0948a64be</srcmd5>
+    <version>1.0.0</version>
+    <time>1409301636</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>fa2548cf6893bf49c32232c655d7ff7b</srcmd5>
+    <version>1.0.0</version>
+    <time>1411721544</time>
+    <user>coolo</user>
+    <comment>- Drop gpg-offline</comment>
+    <requestid>252273</requestid>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>66c318371519493e01b7d321b2acc49d</srcmd5>
+    <version>1.0.0</version>
+    <time>1418251477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>264528</requestid>
+  </revision>
+</revisionlist>

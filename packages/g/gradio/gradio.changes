@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Thu Sep 12 06:42:53 UTC 2019 - mvetter@suse.com
+
+- Update to 7.3:
+  * This will probably be the last version of Gradio.
+    It includes updated translations and small minor improvements.
+    The successor of Gradio will be Shortwave.
+  * Update de.haeckerfelix.gradio.json 
+  * The Appdata files now go to /usr/share/metainfo
+  * Fix animation in app menu
+  * Fix menubutton because glade destroyed it
+  * Fix vala warnings
+  * Update translations
+
+-------------------------------------------------------------------
+Tue Dec 25 21:05:31 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 7.2:
+  * Minor user interface improvements.
+  * Use GtkFileChooserNative for importing / exporting library.
+  * Removed AppMenu.
+  * Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 22 09:30:35 UTC 2018 - mvetter@suse.com
+
+- Update to version 7.1:
+  * Simplified filter options
+  * Optionally display technical information
+  * Filter by tags
+  * Tags can be edited
+  * Updated translations
+  * Some design tweaks
+  * Show detailed export status (m3u)
+  * Access to radio-browser.info database
+
+-------------------------------------------------------------------
+Sat Dec 16 15:56:13 UTC 2017 - mvetter@suse.com
+
+- Update to version 7.0:
+  * The "Discover" section is back
+  * Merged "Add" and "Search" page
+  * New unified library view
+  * Library can now be exported as M3U playlist
+  * New first launch experience
+  * Connection to the database is now encrypted
+  * Collections can now be renamed
+  * Stations can now be removed from collections
+  * Redesigned selection toolbar
+  * Redesigned application menu
+  * Redesigned collections popover
+  * Some performance and memory usage improvements
+
+-------------------------------------------------------------------
+Tue Sep 26 08:31:01 UTC 2017 - mvetter@suse.com
+
+- Update to version 6.0.2:
+  * Add GNOME Shell search provider
+  * Bugfix #213[2] cannot play m3u8 stations
+  * Bugfix #214[3] application is not translated
+
+-------------------------------------------------------------------
+Mon Sep 18 13:35:32 UTC 2017 - mvetter@suse.com
+
+- Update to versoin 6.0.1:
+  * New keyboard shortcuts
+  * New translations
+  * bugfix #208[1] Duplicated appmenu on non GNOME desktops
+  * bugfix #209[2] No title is displayed if it contains an & sign
+- Remove gradio-add-missed-translation.patch
+
+-------------------------------------------------------------------
+Sun Sep 10 20:32:59 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 6.0
+- Switch to meson build system following upstream port.
+- Add gradio-add-missed-translation.patch: Add translation already
+  in place in tarball, but missing in LINGUAS file.
+
+-------------------------------------------------------------------
+Sun Feb  5 07:21:47 UTC 2017 - mailaender@opensuse.org
+
+- update to version 5.0
+
+-------------------------------------------------------------------
+Sat Jul 30 07:02:20 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging of version 4.0.1
+

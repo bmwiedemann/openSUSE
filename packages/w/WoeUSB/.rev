@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8ddf62ad8fa324f6be3583ade6dd7288</srcmd5>
+    <version>2.2.2</version>
+    <time>1516633813</time>
+    <user>dimstar_suse</user>
+    <comment>- inital package for version 2.2.2
+</comment>
+    <requestid>564185</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>46ce22177125e25f634cb001c2e3f312</srcmd5>
+    <version>2.2.2</version>
+    <time>1516711975</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>568207</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>46f319503f9cf1c8d36fb446f882fea7</srcmd5>
+    <version>3.1.4</version>
+    <time>1521579607</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.1.4:
+ * no changelog available, please see https://github.com/slacka/WoeUSB/commits/master
+</comment>
+    <requestid>588553</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>13c6dbb3d01c1c6e5569a3b454d63e0b</srcmd5>
+    <version>3.1.5</version>
+    <time>1522404470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592195</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>44f42b3f5cc15c1d12c0bf35ae22c186</srcmd5>
+    <version>3.2.1</version>
+    <time>1525960252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605712</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0d6eb6390229f2cfd4e1ee5960b2ca86</srcmd5>
+    <version>3.2.2</version>
+    <time>1534774780</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 3.2.2
+  * This release improves compatibility with space-included filenames.</comment>
+    <requestid>630308</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>00f99dddf724fccb752aba1578b3adbc</srcmd5>
+    <version>3.2.4</version>
+    <time>1536876110</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635481</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>28959ebfc4de9b7f649c9fbac0427e88</srcmd5>
+    <version>3.2.9</version>
+    <time>1537187256</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635964</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1d088621ce8e1b0a39be43cf73889902</srcmd5>
+    <version>3.2.10</version>
+    <time>1537436537</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636594</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1649d7dce9316840c9cfc51804fca97f</srcmd5>
+    <version>3.2.12</version>
+    <time>1545996898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661436</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>5b771810e8fc57857160ee7909e2c4a2</srcmd5>
+    <version>3.2.12</version>
+    <time>1554372509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691313</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1c4d0bf07ecb3f8e68130bf37e0fca5d</srcmd5>
+    <version>3.3.0</version>
+    <time>1556202027</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697502</requestid>
+  </revision>
+</revisionlist>

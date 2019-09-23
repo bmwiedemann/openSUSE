@@ -1,0 +1,7 @@
+<package name="fvwm-themes" project="openSUSE:Factory">
+  <title>FVWM Configuration Framework</title>
+  <description>FVWM Themes is a powerful configuration framework for FVWM, designed to
+be easily extendable and configurable.	It includes several prebuilt
+themes and a pack of images and sounds.</description>
+  <devel project="X11:windowmanagers" package="fvwm-themes"/>
+</package>

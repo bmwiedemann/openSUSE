@@ -1,0 +1,84 @@
+Index: powerman-2.3.24/configure
+===================================================================
+--- powerman-2.3.24.orig/configure
++++ powerman-2.3.24/configure
+@@ -788,6 +788,7 @@ ac_subst_vars='am__EXEEXT_FALSE
+ am__EXEEXT_TRUE
+ LTLIBOBJS
+ LIBOBJS
++RUN_AS_GROUP
+ RUN_AS_USER
+ pkgconfigdir
+ WITH_PKG_CONFIG_FALSE
+@@ -970,6 +971,7 @@ with_ncurses
+ with_tcp_wrappers
+ with_pkgconfig_dir
+ with_user
++with_group
+ '
+       ac_precious_vars='build_alias
+ host_alias
+@@ -1643,6 +1645,7 @@ Optional Packages:
+                           where to install pkg-config *.pc files
+                           (EPREFIX/lib/pkgconfig)
+   --with-user=username    user for powerman daemon (daemon)
++  --with-group=groupname  group for powerman daemon (daemon)
+ 
+ Some influential environment variables:
+   CC          C compiler command
+@@ -15307,9 +15310,10 @@ fi
+ 
+ 
+ 
+-# what user to run daemon as
++# what user and group to run daemon as
+ 
+     RUN_AS_USER="daemon"
++    RUN_AS_GROUP="daemon"
+     { $as_echo "$as_me:$LINENO: checking user to run as" >&5
+ $as_echo_n "checking user to run as... " >&6; }
+ 
+@@ -15333,11 +15337,34 @@ _ACEOF
+ $as_echo "${RUN_AS_USER}" >&6; }
+ 
+ 
++    { $as_echo "$as_me:$LINENO: checking group to run as" >&5
++$as_echo_n "checking group to run as... " >&6; }
++
++# Check whether --with-group was given.
++if test "${with_group+set}" = set; then :
++  withval=$with_group;        case "${withval}" in
++            yes|no)
++                    ;;
++            *)
++                    RUN_AS_GROUP="${withval}"
++                    ;;
++            esac
++fi
++
++
++cat >>confdefs.h <<_ACEOF
++#define RUN_AS_GROUP "${RUN_AS_GROUP}"
++_ACEOF
++
++    { $as_echo "$as_me:$LINENO: result: ${RUN_AS_GROUP}" >&5
++$as_echo "${RUN_AS_GROUP}" >&6; }
++
++
+ 
+ ##
+ # Epilogue.
+ ##
+-ac_config_files="$ac_config_files Makefile powerman.spec libpowerman/Makefile libpowerman/libpowerman.pc liblsd/Makefile libcommon/Makefile powerman/Makefile powermand/Makefile httppower/Makefile snmppower/Makefile plmpower/Makefile etc/Makefile scripts/Makefile scripts/powerman heartbeat/Makefile man/Makefile man/powerman.1 man/libpowerman.3 man/powerman.conf.5 man/powerman.dev.5 man/httppower.8 man/plmpower.8 man/powermand.8 man/vpcd.8 test/Makefile"
++ac_config_files="$ac_config_files Makefile powerman.spec libpowerman/Makefile libpowerman/libpowerman.pc liblsd/Makefile libcommon/Makefile powerman/Makefile powermand/Makefile httppower/Makefile snmppower/Makefile plmpower/Makefile etc/Makefile scripts/Makefile scripts/powerman scripts/powerman.service heartbeat/Makefile man/Makefile man/powerman.1 man/libpowerman.3 man/powerman.conf.5 man/powerman.dev.5 man/httppower.8 man/plmpower.8 man/powermand.8 man/vpcd.8 test/Makefile"
+ 
+ 
+ cat >confcache <<\_ACEOF
+@@ -16282,6 +16309,7 @@ do
+     "etc/Makefile") CONFIG_FILES="$CONFIG_FILES etc/Makefile" ;;
+     "scripts/Makefile") CONFIG_FILES="$CONFIG_FILES scripts/Makefile" ;;
+     "scripts/powerman") CONFIG_FILES="$CONFIG_FILES scripts/powerman" ;;
++    "scripts/powerman.service") CONFIG_FILES="$CONFIG_FILES scripts/powerman.service" ;;
+     "heartbeat/Makefile") CONFIG_FILES="$CONFIG_FILES heartbeat/Makefile" ;;
+     "man/Makefile") CONFIG_FILES="$CONFIG_FILES man/Makefile" ;;
+     "man/powerman.1") CONFIG_FILES="$CONFIG_FILES man/powerman.1" ;;

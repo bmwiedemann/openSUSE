@@ -1,0 +1,50 @@
+From 6dc1db3fb84d46e34dd1385c374a575a0fbc5c3d Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Wed, 6 Feb 2019 21:05:27 +0100
+Subject: [PATCH 1/2] add environment variable for number of workers
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ systemd/fcgiwrap.service   |  4 +++-
+ systemd/sysconfig.fcgiwrap | 13 +++++++++++++
+ 2 files changed, 16 insertions(+), 1 deletion(-)
+ create mode 100644 systemd/sysconfig.fcgiwrap
+
+diff --git a/systemd/fcgiwrap.service b/systemd/fcgiwrap.service
+index 0b32e02..b22f5e1 100644
+--- a/systemd/fcgiwrap.service
++++ b/systemd/fcgiwrap.service
+@@ -3,8 +3,10 @@ Description=Simple CGI Server
+ After=nss-user-lookup.target
+ 
+ [Service]
++Environment=FCGI_WORKERS=1
++EnvironmentFile=-/etc/sysconfig/fcgiwrap
+ Type=simple
+-ExecStart=/usr/sbin/fcgiwrap
++ExecStart=/usr/sbin/fcgiwrap -c $FCGI_WORKERS
+ User=nginx
+ Group=nginx
+ 
+diff --git a/systemd/sysconfig.fcgiwrap b/systemd/sysconfig.fcgiwrap
+new file mode 100644
+index 0000000..29de03e
+--- /dev/null
++++ b/systemd/sysconfig.fcgiwrap
+@@ -0,0 +1,13 @@
++## Path:	Network/WWW
++## Description:	Settings for fcgiwrap
++## Type:	integer
++## Default:	1
++## ServiceReload: fcgiwrap
++#
++# The fcgiwrap service is used to spawn FastCGI worker
++# processes that will invoke FastCGI scripts when the
++# web server needs to execute them.
++#
++# Number of FastCGI workers to spawn
++FCGI_WORKERS="1"
++
+-- 
+2.20.1
+

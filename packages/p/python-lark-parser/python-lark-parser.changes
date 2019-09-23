@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Wed Sep 11 13:06:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.5:
+  * Lark transformers can now visit tokens as wel
+  * Fixed long-standing non-determinism and prioritization bugs in Earley.
+  * Serialize tool now supports multiple start symbols
+  * iter_subtrees, find_data and find_pred methods are now included in standalone parser
+  * Bugfixes for the transformer interface, for the custom lexer, for grammar imports, and many more
+
+-------------------------------------------------------------------
+Mon Aug 26 13:28:28 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Drop no longer necessary disable_test.patch
+- Replace %doc entry docs/ with docs/* to avoid extra sub-directory
+- Added Suggests: python-Js2Py for optional runtime dependency
+- Update to v0.7.3
+  * Added a new tool called Serialize, that stores Lark's internal
+    state as JSON. That will allow for integration with other languages.
+  * Minor bugfix regarding line-counting and the \s regex
+- from v0.7.2
+  * Lark now allows you to specify the start symbol when calling
+    Lark.parse() (requires pre-declaration of all possible start states,
+    see the start option)
+  * Negative priority now allowed in rules and terminals
+  * Also includes many minor bugfixes, optimizations, and improvements
+    to documentation
+
+-------------------------------------------------------------------
+Tue May 21 14:06:52 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.7.1
+    Lark can now serialize its parsers, resulting in simplified stand-alone code.
+    Bugfix for v_args (Issue #350)
+    Improvements and bugfixes for importing rules from grammar files
+    Performance improvement for the reconstructor feature
+    New Earley implementation with SPPF support
+    Added support for importing rules between grammars. The import mechanism
+      is namespace-aware.
+    Added the maybe_placeholders option, which causes optionals of the form
+     [expr] to return None when not matched, instead of just not appearing.
+     (optionals of the form expr? maintain the previous behavior of not
+     appearing unless matched)
+    Plenty of bugfixes, better errors, and better docs
+
+-------------------------------------------------------------------
+Thu Mar 14 16:41:11 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description.
+
+-------------------------------------------------------------------
+Wed Mar 13 15:21:17 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- initial commit
+- add disable_test.patch - skip test without needed data

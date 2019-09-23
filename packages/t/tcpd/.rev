@@ -1,0 +1,224 @@
+<revisionlist>
+  <revision rev="1" vrev="731">
+    <srcmd5>0f8bf02f6cc640bf34452ace72175e34</srcmd5>
+    <version>7.6</version>
+    <time>1166483879</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="820">
+    <srcmd5>09e7a64911f5f8af44dfcb93d1ba4778</srcmd5>
+    <version>7.6</version>
+    <time>1207834452</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="854">
+    <srcmd5>09e7a64911f5f8af44dfcb93d1ba4778</srcmd5>
+    <version>7.6</version>
+    <time>1207834452</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="855">
+    <srcmd5>d9e39171d1ce7cf96005bb05da626a5a</srcmd5>
+    <version>7.6</version>
+    <time>1223915978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="856">
+    <srcmd5>733bfe077533a7b358987514e4b29073</srcmd5>
+    <version>7.6</version>
+    <time>1226963699</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="857">
+    <srcmd5>2064e061371d3bc13b28d7982fcf883e</srcmd5>
+    <version>7.6</version>
+    <time>1231463072</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="859">
+    <srcmd5>2064e061371d3bc13b28d7982fcf883e</srcmd5>
+    <version>7.6</version>
+    <time>1231463072</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="860">
+    <srcmd5>b79837b3f5f07f5635b4860743187781</srcmd5>
+    <version>7.6</version>
+    <time>1260978223</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/tcpd based on submit request 26747 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="861">
+    <srcmd5>a4f43a23eaaf42608eddccc29bba34a7</srcmd5>
+    <version>7.6</version>
+    <time>1268411835</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/tcpd based on submit request 34318 from user coolo
+</comment>
+    <requestid>34318</requestid>
+  </revision>
+  <revision rev="10" vrev="862">
+    <srcmd5>d55313c29266eafe5435bcbcb30a74f9</srcmd5>
+    <version>7.6</version>
+    <time>1268926302</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="864">
+    <srcmd5>d55313c29266eafe5435bcbcb30a74f9</srcmd5>
+    <version>7.6</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="865">
+    <srcmd5>d55313c29266eafe5435bcbcb30a74f9</srcmd5>
+    <version>7.6</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="868">
+    <srcmd5>d55313c29266eafe5435bcbcb30a74f9</srcmd5>
+    <version>7.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="869">
+    <srcmd5>0d5bc8c275483f6a002cdeb0e567c22b</srcmd5>
+    <version>7.6</version>
+    <time>1317941444</time>
+    <user>lrupp</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86725 from uli_suse)</comment>
+    <requestid>86931</requestid>
+  </revision>
+  <revision rev="15" vrev="871">
+    <srcmd5>0d5bc8c275483f6a002cdeb0e567c22b</srcmd5>
+    <version>7.6</version>
+    <time>1319182508</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="872">
+    <srcmd5>268e02f7e45889d6e9a6521e898f3182</srcmd5>
+    <version>7.6</version>
+    <time>1323194862</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="873">
+    <srcmd5>d5ad735a904e853b5bda1044d7916e27</srcmd5>
+    <version>7.6</version>
+    <time>1335190423</time>
+    <user>coolo</user>
+    <comment>- Refresh all patches 
+- Also, pass getconf LFS_CFLAGS into CFLAGS (forwarded request 114926 from elvigia)</comment>
+    <requestid>114927</requestid>
+  </revision>
+  <revision rev="18" vrev="875">
+    <srcmd5>d5ad735a904e853b5bda1044d7916e27</srcmd5>
+    <version>7.6</version>
+    <time>1340184261</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="876">
+    <srcmd5>0504634e3500e38d0320bf75a82e53c5</srcmd5>
+    <version>7.6</version>
+    <time>1358873744</time>
+    <user>coolo</user>
+    <comment>- Implement shared library packaging guidelines (split libwrap0)
+- Parallel build with %_smp_mflags instead of %jobs
+- Remove redundant %clean sections (forwarded request 149340 from jengelh)</comment>
+    <requestid>149396</requestid>
+  </revision>
+  <revision rev="20" vrev="878">
+    <srcmd5>0504634e3500e38d0320bf75a82e53c5</srcmd5>
+    <version>7.6</version>
+    <time>1359110467</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="879">
+    <srcmd5>1bd836ea7a293045487859350dbd71ac</srcmd5>
+    <version>7.6</version>
+    <time>1365174580</time>
+    <user>coolo</user>
+    <comment>- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162761 from namtrac)</comment>
+    <requestid>162800</requestid>
+  </revision>
+  <revision rev="22" vrev="880">
+    <srcmd5>70726ad563cf076c4de385a90e354bab</srcmd5>
+    <version>7.6</version>
+    <time>1370432309</time>
+    <user>coolo</user>
+    <comment>- tcpd-ocloexec.patch: Use O_CLOEXEC whenever neccesary, 
+  otherwise fd leaks will follow. (forwarded request 177206 from elvigia)</comment>
+    <requestid>177264</requestid>
+  </revision>
+  <revision rev="23" vrev="882">
+    <srcmd5>70726ad563cf076c4de385a90e354bab</srcmd5>
+    <version>7.6</version>
+    <time>1379664777</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="883">
+    <srcmd5>02cb7941ad95df5487d394db118a49cf</srcmd5>
+    <version>7.6</version>
+    <time>1408634692</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>245239</requestid>
+  </revision>
+  <revision rev="25" vrev="885">
+    <srcmd5>02cb7941ad95df5487d394db118a49cf</srcmd5>
+    <version>7.6</version>
+    <time>1409303457</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="886">
+    <srcmd5>152a8211de7a11769fe15e57c0704b41</srcmd5>
+    <version>7.6</version>
+    <time>1417438829</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup with spec-cleaner
+- Remove obsolete sections of provides from 2k6
+- Remove static library</comment>
+    <requestid>263341</requestid>
+  </revision>
+  <revision rev="27" vrev="887">
+    <srcmd5>99110300abf522928f4c7823a69911fa</srcmd5>
+    <version>7.6</version>
+    <time>1440135327</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319595</requestid>
+  </revision>
+  <revision rev="28" vrev="888">
+    <srcmd5>c8839ddb8b0f0d8e80ef28bb82eb5e2a</srcmd5>
+    <version>7.6</version>
+    <time>1460631592</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>386259</requestid>
+  </revision>
+  <revision rev="29" vrev="889">
+    <srcmd5>1e48d0baa61da5dbe6ab9e06d03c216e</srcmd5>
+    <version>7.6</version>
+    <time>1496930968</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500899</requestid>
+  </revision>
+  <revision rev="30" vrev="890">
+    <srcmd5>5864db7dc856526626bae341f4025671</srcmd5>
+    <version>7.6</version>
+    <time>1567678290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723009</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,13 @@
+--- ppp-2.4.3/pppd/plugins/pppoatm/Makefile.linux
++++ ppp-2.4.3/pppd/plugins/pppoatm/Makefile.linux
+@@ -36,8 +36,8 @@
+ 	$(CC) $(CFLAGS) -o $@ -shared $^ $(LIBS)
+ 
+ install: all
+-	$(INSTALL) -d -m 755 $(LIBDIR)
+-	$(INSTALL) -c -m 4550 $(PLUGIN) $(LIBDIR)
++	$(INSTALL) -m 755 $(PLUGIN) $(LIBDIR)
++	$(INSTALL) $? $(LIBDIR)
+ 
+ clean:
+ 	rm -f *.o *.so

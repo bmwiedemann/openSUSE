@@ -1,0 +1,228 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>09530bd27603da90185a97bf708a314d</srcmd5>
+    <version>1.6.11</version>
+    <time>1332246582</time>
+    <user>coolo</user>
+    <comment>OBS-related</comment>
+    <requestid>110112</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e074af54dfec76f37dc4234d3172811d</srcmd5>
+    <version>1.6.11</version>
+    <time>1332831529</time>
+    <user>coolo</user>
+    <comment>remove installed .cvsignore files
+(needed to correctly build against SLES11 SP1/SP2) (forwarded request 110914 from cberendt)</comment>
+    <requestid>111076</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eaf8d1c35cd1966d2fde2511029f3f24</srcmd5>
+    <version>1.6.12</version>
+    <time>1337173462</time>
+    <user>coolo</user>
+    <comment>- update to 1.6.12:
+  * Silenced warnings (by James McEwan). (forwarded request 120759 from coolo)</comment>
+    <requestid>120899</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>eaf8d1c35cd1966d2fde2511029f3f24</srcmd5>
+    <version>1.6.12</version>
+    <time>1340184163</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>64916e7bec817ecdb395bbfff16dc588</srcmd5>
+    <version>1.6.13</version>
+    <time>1342424961</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>127933</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b30246f847196e194dd87075ccfa4378</srcmd5>
+    <version>1.6.14</version>
+    <time>1346488431</time>
+    <user>namtrac</user>
+    <comment>- updated to version 1.6.14
+  * Added JRuby 1.7 support (by Mina Nagy).
+  * Take into account color escape sequences when wrapping text (by Mark J.
+    Titorenko).</comment>
+    <requestid>132189</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>915b90741a4aaa122e712e5997713796</srcmd5>
+    <version>1.6.15</version>
+    <time>1349632871</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137367</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>915b90741a4aaa122e712e5997713796</srcmd5>
+    <version>1.6.15</version>
+    <time>1359110322</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6763a67b477dd28b77d263efd025291b</srcmd5>
+    <version>1.6.16</version>
+    <time>1363900495</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>160195</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6d117b83d63b93fdf274e4cfa6dd4b52</srcmd5>
+    <version>1.6.18</version>
+    <time>1367222198</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>173595</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>22a686f5097415a5aea4b06362138e9e</srcmd5>
+    <version>1.6.19</version>
+    <time>1368696814</time>
+    <user>coolo</user>
+    <comment>- updated to version 1.6.19
+ * Fixed `terminal_size()` with jline2 (by presidentbeef).</comment>
+    <requestid>175281</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>22a686f5097415a5aea4b06362138e9e</srcmd5>
+    <version>1.6.19</version>
+    <time>1379664529</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a95a3e1ffc95ea559d8c3964476ee228</srcmd5>
+    <version>1.6.20</version>
+    <time>1383231336</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>204160</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e1d79d109f49742d0e7fcd96fa97a5f1</srcmd5>
+    <version>1.6.21</version>
+    <time>1395147869</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>226290</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>e1d79d109f49742d0e7fcd96fa97a5f1</srcmd5>
+    <version>1.6.21</version>
+    <time>1409303238</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>7b3eb769eb0097b937198cba929abe0d</srcmd5>
+    <version>1.6.21</version>
+    <time>1413263492</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255324</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>566dd5e88e82aab545a54fedb1d15583</srcmd5>
+    <version>1.6.21</version>
+    <time>1414066839</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258003</requestid>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>1d825acc108e5c1442bb67b8769a2ed5</srcmd5>
+    <version>1.6.21</version>
+    <time>1415118578</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259445</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>90dd29127abf9aa9939117854ac333f3</srcmd5>
+    <version>1.7.0</version>
+    <time>1424436659</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286939</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>620c921044590c6a961d7aaebe36d62c</srcmd5>
+    <version>1.7.1</version>
+    <time>1425031815</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287960</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c6012c9d3175f255d11b289fddb503e5</srcmd5>
+    <version>1.7.2</version>
+    <time>1429948389</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>298756</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>038cbbab192af4a7b90cfee511877dd2</srcmd5>
+    <version>1.7.3</version>
+    <time>1438548372</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319964</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>24191f94c67b38e51d5faa61f132f938</srcmd5>
+    <version>1.7.5</version>
+    <time>1442474452</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330985</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>aabed03cdf1ab7e87613fecdb11ea8b0</srcmd5>
+    <version>1.7.7</version>
+    <time>1443335991</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333103</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d6725191b1f31b5aee169758654e82ba</srcmd5>
+    <version>1.7.8</version>
+    <time>1444833901</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>337899</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>49109885f0d8480638f90eabaa71e823</srcmd5>
+    <version>1.7.10</version>
+    <time>1512547252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>550207</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>83afd0c51d538877f30e5e0ddb25171c</srcmd5>
+    <version>2.0.0</version>
+    <time>1530303914</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>616234</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5d2471b9f6c8deb75733fb7c2e1aab5c</srcmd5>
+    <version>2.0.2</version>
+    <time>1560970807</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705996</requestid>
+  </revision>
+</revisionlist>

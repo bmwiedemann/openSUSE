@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Fri Dec 14 17:35:21 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.12:
+  * Support compressed cloned images
+- Enable exfat support
+
+-------------------------------------------------------------------
+Thu Oct 19 09:20:32 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.3.11 (boo#1130986):
+  * update xfs
+
+-------------------------------------------------------------------
+Tue Feb 21 11:41:31 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.3.5a:
+  * Support for fuse
+  * Several bugfixes and internal changes
+  * Resolves boo#1028904 CVE-2017-6596
+
+-------------------------------------------------------------------
+Sun Jul  3 08:48:06 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.2.89:
+  * small bugfixes
+
+-------------------------------------------------------------------
+Sun Mar 20 21:21:30 UTC 2016 - mpluskal@suse.com
+
+- Switch to 0.2.88 (as 0.3 branch seems to be currently abandoned)
+- Enable more filesystems
+- Remove ppc excludes as build now succeeds
+- Cleanup spec file
+- Drop upstreamed partclone-missing-includes.patch
+
+-------------------------------------------------------------------
+Thu Aug 13 08:05:27 UTC 2015 - normand@linux.vnet.ibm.com
+
+- ExcludeArch:    ppc ppc64 ppc64le
+  PowerPC do not support the fail-mbr/fail-mbr.S
+
+-------------------------------------------------------------------
+Wed Jun 24 10:17:18 UTC 2015 - dimstar@opensuse.org
+
+- Add partclone-missing-includes.patch: Fix build with GCC5 by
+  correctly including the needed headers.
+
+-------------------------------------------------------------------
+Sat Mar 21 21:21:33 UTC 2015 - mpluskal@suse.com
+
+- Remove conditions that applied to old releases
+
+-------------------------------------------------------------------
+Wed Mar 18 08:42:11 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.3.0~gitbcaa
+  * for a full list of changes see attached Changelog
+
+-------------------------------------------------------------------
+Thu Oct  3 10:13:31 UTC 2013 - fisiu@opensuse.org
+
+- Update to 0.2.58:
+  * ship failmbr
+  * fixed jfs issues
+  * fixed ncurses interface
+  * updated doc and man pages
+
+-------------------------------------------------------------------
+Wed Nov  7 10:30:28 UTC 2012 - fisiu@opensuse.org
+
+- Update to 0.2.48:
+  * fixed VMFS-5 and NTFS cloning
+  * updated the ntfsfixboot version
+  * memory usage optimized
+  * updated man pages
+- Build with support for btrfs, extfs, fat, hfsp, ntfs, reiserfs.
+
+-------------------------------------------------------------------
+Thu Apr 19 02:26:17 UTC 2012 - highwaystar.ru@gmail.com
+
+- update to 0.2.38 
+
+-------------------------------------------------------------------
+Sun Sep 19 08:07:37 UTC 2010 - highwaystar.ru@gmail.com
+
+- built with ntfs support
+- built with jfs support
+
+-------------------------------------------------------------------
+Fri Sep 17 02:24:55 UTC 2010 - highwaystar.ru@gmail.com
+
+- initial build for openSUSE
+- not all filesystems supported yet 
+

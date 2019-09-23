@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69cd5f28c4f81d94796fd2bd91478efb</srcmd5>
+    <version>0.8</version>
+    <time>1451674043</time>
+    <user>dimstar_suse</user>
+    <comment>As this package will be required by letsencrypt, it would be great to have it in factory...</comment>
+    <requestid>349399</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1f1059346ca45c4c311873930aebfca8</srcmd5>
+    <version>0.10</version>
+    <time>1495011044</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490793</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6acc90782821ac49c4f57f0ddbf6d515</srcmd5>
+    <version>0.10</version>
+    <time>1507755394</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527186</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0c74b6f88b5561e14095ba85cc2e8318</srcmd5>
+    <version>0.10</version>
+    <time>1545648276</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659696</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b44f37863b010078b388194a79ebaf8a</srcmd5>
+    <version>0.14</version>
+    <time>1556621989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697385</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b79d41c86b931e8f1bbd85331ac2cd35</srcmd5>
+    <version>0.14</version>
+    <time>1560971602</time>
+    <user>dimstar_suse</user>
+    <comment>- export LANG=en_US.UTF-8 during %build and %install . This fixes
+  the build for older distros which fail with:
+  UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position \
+    1468: ordinal not in range(128)</comment>
+    <requestid>710828</requestid>
+  </revision>
+</revisionlist>

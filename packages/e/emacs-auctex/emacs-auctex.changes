@@ -1,0 +1,526 @@
+-------------------------------------------------------------------
+Fri Jun 21 13:08:00 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Fix the two last upstream commits by adding patch
+  utf8-names-fix-boo1135326.patch which is kind of a backport for
+  bug boo#1135326 
+
+-------------------------------------------------------------------
+Wed Jul 25 08:47:45 UTC 2018 - werner@suse.de
+
+- Add patches/commits from upstream utf8-names-3b1ffcd8.patch and
+  utf8-names-a8ea1273.patch to be able handle files names with
+  UTF-8 characters as well
+
+-------------------------------------------------------------------
+Wed Apr 18 07:56:53 UTC 2018 - werner@suse.de
+
+- Update to 12.1 due bug boo#1088548
+  * AUCTeX now requires GNU Emacs 24 or higher.  Support for XEmacs has
+
+  * Besides the change in the supported version of Emacs, there has
+    been no functional change in this release, which is equivalent to
+    version 11.92.
+  * preview-latex is compatible with Ghostscript 9.22 where the
+    operator '.runandhide' is removed.  All occurrences of
+    '.runandhide' in preview-latex are replaced by alternative code
+    making it work with Ghostscript 9.22 again.
+  * AUCTeX has a new customize option
+    'TeX-math-input-method-off-regexp'.  When you begin to input a math
+    formula, the current input method is turned off if its name matches
+    this regular expression.
+  * The window system focus is pulled back to Emacs when viewing with
+    evince-compatible viewers if a new customize option
+    'TeX-view-evince-keep-focus' is non-nil.
+  * The usual dose of bug fixes was administered.
+  * Now AUCTeX has a logo.  The LaTeX code to create it is available in
+    the 'etc/' directory of the package.
+  * Add support for 'upmendex', an extension of 'makeindex' capable of
+    sorting indexes by unicode based ICU.
+  * Fix preview-latex to interact correctly with Japanese LaTeX.  The
+    parsing routine was made robust not to be confused by the 7-bit
+    encoding of Japanese text and the necessary option to LaTeX command
+    is kept even when preamble caching is enabled.
+  * The new "Glossaries" entry in 'TeX-command-list' runs the command
+    'makeglossaries'.
+  * Fontification of control symbols has been improved.  Characters
+    defined in 'font-latex-match-simple-exclude-list' do not receive
+    any fontification.  In DocTeX mode, the character '_' is removed
+    from 'font-latex-match-simple-exclude-list' in order to fontify
+    macros like '\__module_foo:nnn' correctly.
+  * Fontification of math environments has been improved.  Optional
+    and/or mandatory argument(s) to environments are not fontified.
+  * 'preview.sty' loads 'luatex85.sty' if possible and should be
+    compatible with newer luaTeX versions.
+  * AUCTeX has a new customize option 'TeX-ispell-verb-delimiters'.
+    This string contains usual characters used as delimiters for
+    in-line verbatim macros like '\verb'.  Text between delimiters
+    after an in-line verbatim macro will be skipped during spell
+    checking.
+  * Fontification of in-line verbatim macros has been improved.
+    'font-latex.el' recognizes an optional or a mandatory argument for
+    macros like '\Verb' from 'fancyvrb.sty', '\mint' and '\mintinline'
+    from 'minted.sty' and fontifies verbatim content correctly.
+  * AUCTeX can put and parse labels in optional argument of
+    environments.  Inserting labels is done by new function
+    'LaTeX-env-label-as-keyval'.  A new customize option
+    'LaTeX-listing-label' is available as prefix to labels in code
+    typesetting environments, e.g.  'lstlisting' environment provided
+    by 'listings' package.  'LaTeX-listing-label' defaults to 'lst:'.
+    Parsing of labels for later referencing relies on two requirements:
+      1. Label should come as last key-value argument, and
+      2. label must be enclosed in braces, e.g.
+              \begin{lstlisting}[caption=Some Caption,label={lst:foo}]
+              ...
+              \end{lstlisting}
+  * The function 'LaTeX-label' now takes a second optional argument
+    'NO-INSERT'.  When non-'nil', 'LaTeX-label' reads a label and
+    returns it as a string.  This argument is also passed to any
+    function bound to 'LaTeX-label-function' (see next item).
+  * *Incompatible change:* The signature for the function passed with
+    the customize option 'LaTeX-label-function' has changed.  The
+    function bound to this variable is now expected to take an optional
+    second argument 'NO-INSERT'.  When this argument is non-'nil', the
+    function should read and only return a label as a string; insertion
+    is done by another function.
+  * Directory local variables were ineffective for
+    'japanese-latex-mode' and 'japanese-plain-tex-mode'.  This bug was
+    fixed.  (This was actually done in AUCTeX 11.90, but not
+    advertised)
+  * The output of Japanese text from Japanese TeX engines is decoded
+    correctly for most cases, according to the encoding of the TeX
+    documents and the locale.  The difference between MS Windows, macOS
+    and unix-like OS is taken into account.  (This was actually done in
+    AUCTeX 11.90, but not advertised)
+  * Quite a few new LaTeX packages are supported.
+  * As usual, many bugs were fixed.
+
+-------------------------------------------------------------------
+Thu Jun 29 09:00:16 UTC 2017 - werner@suse.de
+
+- Update to 11.90
+   * In addition to the completion performed by 'TeX-complete-symbol',
+     AUCTeX now also supports the new Emacs standard completion-at-point
+     facility (see the Emacs command 'completion-at-point').  This also
+     means that modern completion UIs like company-mode work out of the
+     box in TeX and LaTeX buffers.
+   * Completion is now aware of being inside a math environment and then
+     completes math macros.
+   * AUCTeX is able to display several levels of super- and subscripts,
+     each one raised above and a bit smaller than its basis.  For this
+     feature, have a look at the customize options
+     'font-latex-fontify-script' (especially the new values
+     'multi-level' and 'invisible') and
+     'font-latex-fontify-script-max-level'.  Also, the script characters
+     '^' and '_' are also fontified with a special face named
+     'font-latex-script-char-face'.
+   * Parsing of format specification in various tabular environments has
+     been improved.  The function 'LaTeX-insert-item' ('C-c <LFD>')
+     inserts suitable number of ampersands for '*{num}{cols}'
+     constructs.  Style files for LaTeX packages 'tabularx', 'tabulary',
+     'longtable', 'dcolumn' and 'siunitx' are adapted to take advantage
+     of this improvement.
+   * AUCTeX has a new Ispell dictionary 'tex-ispell.el' for macros and
+     environments which will be skipped during spell checking.  The
+     activiation of this feature is controlled by a new customize option
+     'TeX-ispell-extend-skip-list', which is set to 't' and activated by
+     default.
+   * AUCTeX has a new customize option 'TeX-raise-frame-function' that
+     is currently only used by Evince and Atril inverse search to raise
+     the Emacs frame.
+   * When inserting a new float, AUCTeX will now prompt for a
+     short-caption if the length of the caption provided is greater than
+     a certain size.  This size is controlled via a new user option
+     'LaTeX-short-caption-prompt-length'.
+   * Parsing of the compilation log has been reworked.  You should
+     encounter fewer mistaken files while navigating through errors and
+     warnings.
+   * Two new user options, 'TeX-ignore-warnings' and
+     'TeX-suppress-ignored-warnings', allow ignoring certain warnings
+     after compilation of the document.
+   * A new option, 'TeX-PDF-from-DVI', controls if and how to produce a
+     PDF file by converting a DVI file.  This supersedes
+     'TeX-PDF-via-dvips-ps2pdf' which is still recognized but marked as
+     obsolete and may be removed in future releases.
+   * Support for a number of external viewers has been added
+   * A new function, 'TeX-documentation-texdoc', for reading
+     documentation with 'texdoc' has been added.  'TeX-doc' is still
+     available but now 'C-c ?' runs 'TeX-documentation-texdoc'.
+   * AUCTeX has a new custom option
+     'LaTeX-reftex-cite-format-auto-activate' which controls the
+     automatic activation of citation formats provided by RefTeX when a
+     style file is loaded and RefTeX is enabled.  Currently,
+     'biblatex.el', 'harvard.el', 'jurabib.el' and 'natbib.el' use this
+     feature.  If you have customized 'reftex-cite-format' and want to
+     use your settings, you should set this variable to 'nil'.
+   * AUCTeX now has limited support for the TikZ package.  For the
+     moment, this includes some basic support for prompting the user of
+     arguments to the '\draw' macro.
+   * The style 'graphicx.el' went through a bigger overhaul.  The
+     optional argument of command '\includegraphics' now supports
+     key-val query; keys can independently be chosen anytime by pressing
+     the <,> key.  As a side effect, the variable
+     'LaTeX-includegraphics-options-alist' is now no-op and is removed
+     from 'tex-style.el'.  You can safely remove any customization of it
+     from your init file.  The mandatory argument of '\includegraphics'
+     knows about image file extensions supported by the used engine and
+     offers them for inclusion.
+   * Support for other LaTeX packages was improved, and style files for
+     several new packages were added.
+   * Many bugs were crushed along the way.
+- Remove patch 0001-Fix_bug_in_subfigure_style_filee.patch as now upstream
+
+-------------------------------------------------------------------
+Tue Sep 20 14:20:47 UTC 2016 - werner@suse.de
+
+- Add patch 0001-Fix_bug_in_subfigure_style_filee.patch
+  to fix build with GNU Emacs 25.1 
+
+-------------------------------------------------------------------
+Fri Nov 13 19:25:26 UTC 2015 - auxsvr@gmail.com
+
+- Remove auctex-11.86-dinbrief.dif, as it's been merged upstream, and
+  everything in auctex-11.87.dif except for the dvips part (now in
+  dvips.patch).  
+- Update to 18.89.
+  * You can now run all commands needed to compile a document and then
+    open the viewer with a single command: 'TeX-command-run-all', bound
+    to 'C-c C-a'.
+  * Commands such as LaTeX and View can now be executed conveniently on
+    the current section (or part, chapter, subsection, etc).  See
+    'LaTeX-command-section' and 'LaTeX-command-section-change-level'.
+  * Forward and backward search with Evince now also work when only a
+    region of the document is compiled/viewed.
+  * To open the PDF output file you can now use also PDF Tools, a
+    document viewer for Emacs.  With it, as a plus, forward and
+    backward search is accurate at word level.
+  * With new option 'TeX-PDF-via-dvips-ps2pdf' it is possible to
+    compile a document to DVI and then convert it to PDF using
+    'dvips'-'ps2pdf' before viewing it.
+  * New option 'TeX-file-line-error' allows to select file:line:error
+    style for error messages.
+  * Indent '\[...\]' math mode as a regular environment by default.
+  * Now AUCTeX suggests to run 'makeindex' when appropriate.
+  * 'TeX-view-program-list' can contain, as third optional element of
+    each item, the name of the executable(s) needed to open the viewer.
+  * 'TeX-expand-list' variable has been split into 'TeX-expand-list'
+    and 'TeX-expand-list-builtin'.  Only the former is intended to be
+    customized by the user, the latter contains built-in expanders.
+    You might want to keep in 'TeX-expand-list' only new expansion
+    strings.
+  * When new option 'TeX-check-engine' is non-nil, before running LaTeX
+    commands AUCTeX will check whether the correct engine has been set,
+    based upon known restrictions posed by LaTeX packages.
+  * Basic support to ConTeXt Mark IV has been added.  Users can now
+    select the Mark version to be used with new option
+    'ConTeXt-Mark-version', and AUCTeX is able to catch error messages
+    in the output log of a Mark IV document.
+
+-------------------------------------------------------------------
+Sun Sep 13 10:50:46 UTC 2015 - auxsvr@gmail.com
+
+- Update to 11.88
+  * 'TeX-PDF-mode' is now enabled.
+  * 'biblatex' support was greatly expanded.  If parsing is enabled, AUCTeX
+     looks at 'backend' option to decide whether to use Biber or BibTeX. The
+     'LaTeX-biblatex-use-Biber' variable was changed to be file local only
+     and is no more customizable.by default.
+  * Now you can insert '$...$' or '\(...\)' by typing a single '$'.  To do
+    this, customize the new option 'TeX-electric-math'.
+    'TeX-math-close-double-dollar' was removed.
+  * Brace pairing feature was enhanced in LaTeX documents.  Support for
+    '\bigl', '\Bigl', '\biggl' and '\Biggl', the same as the one for
+    '\left', was added to 'TeX-insert-macro'.  For example, 'C-c <RET> bigl
+    <RET> ( <RET>' inserts '\bigl(\bigr)'.
+   * You can insert brace pair '()', '{}' and '[]' by typing a single left
+     brace if the new user option 'LaTeX-electric-left-right-brace' is
+     enabled.
+
+-------------------------------------------------------------------
+Tue Oct  7 02:17:49 UTC 2014 - crrodriguez@opensuse.org
+
+- No shared libraries are needed for build, this is a noarch 
+  package.
+
+-------------------------------------------------------------------
+Wed Sep 25 10:19:49 UTC 2013 - werner@suse.de
+
+- Make it build again as we have now a site-start.d below site-lisp 
+
+-------------------------------------------------------------------
+Fri Jun  7 07:25:10 UTC 2013 - werner@suse.de
+
+- Use latest upstream update of dinbrief.el
+
+-------------------------------------------------------------------
+Thu Jun  6 10:50:17 UTC 2013 - werner@suse.de
+
+- Update to auctex 11.87
+  * Includes the preview fix for ghostscript
+  * Includes the changes for font-late.elc
+- Remove auctex-11.86-font-latex.5.194.patch
+
+-------------------------------------------------------------------
+Thu Jun  6 10:27:26 UTC 2013 - werner@suse.de
+
+- Add patch auctex-11.86-font-latex.5.194.patch from upstream to
+  make GNU emacs 24.3 silent about font-late.elc (reported by
+  Johannes Roth)
+
+-------------------------------------------------------------------
+Fri Feb 22 17:08:38 UTC 2013 - werner@suse.de
+
+- Make dinbrief work again
+
+-------------------------------------------------------------------
+Mon Jul 23 10:04:12 UTC 2012 - werner@suse.de
+
+- Use texlive-texinfo for build and add also all LaTeX styles to
+  be scanned during AucTeX build.
+- Use texinfo *and* makeinfo for build as both are required
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Oct 13 12:09:48 CEST 2010 - werner@suse.de
+
+- Allow also to read PDF file its self to be able to generate the
+  descriptions of those file (based on patch of Dieter Jurzitza)
+
+-------------------------------------------------------------------
+Wed Aug 11 18:58:43 CEST 2010 - werner@suse.de
+
+- Make fix for bnc#623719 more flexible
+
+-------------------------------------------------------------------
+Sun Jul 25 07:20:32 UTC 2010 - aj@suse.de
+
+- Package all info files.
+
+-------------------------------------------------------------------
+Wed Jul 21 14:29:50 CEST 2010 - werner@suse.de
+
+- Update to auctex 11.86
+   * Parsing of LaTeX output was improved.  It is now less likely that
+     AUCTeX opens a non-existent file upon calling `TeX-next-error'; a
+     problem for example encountered when using MiKTeX 2.8.  In addition
+     quoted file names as emitted by MiKTeX are now supported.
+   * A new framework for the definition and selection of viewers was
+     implemented.  If you have customizations regarding viewers you
+     will have to redo them in this new framework or reenable the old
+     one.  See the section on viewers in the manual for details.
+   * Comprehensive editing support for PSTricks was added.
+   * Support for various LaTeX packages was added, e.g. `tabularx',
+     `CJK', and `hyperref'.
+   * An easy way to switch between TeX engines (PDFTeX, LuaTeX, XeTeX,
+     Omega) was added.
+   * Support for SyncTeX was added.  This involves the command line
+     options for LaTeX and the viewer.
+   * Folding can now be customized to use macro arguments as replacement
+     text.
+   * `preview.sty' now works with XeTeX.
+   * A lot of smaller and larger bugs have been squashed.
+
+-------------------------------------------------------------------
+Wed Jul 21 14:04:52 CEST 2010 - werner@suse.de
+
+- Fix the usage of ghostscript for preview mode also switch over to
+  faster dvipng mode which is much faster than ghostscript (bnc#623719)
+
+-------------------------------------------------------------------
+Mon Mar 17 11:34:56 CET 2008 - werner@suse.de
+
+- Use texlive-tools instead of lacheck
+
+-------------------------------------------------------------------
+Tue Mar 11 12:04:09 CET 2008 - werner@suse.de
+
+- Avoid overlong file lists use find and xargs instead
+
+-------------------------------------------------------------------
+Mon Mar 10 17:46:37 CET 2008 - werner@suse.de
+
+- Make it work with texlive and texlive-latex
+- Update to auctec 11.85
+  + News in 11.85
+   * Font locking has been improved significantly.
+   * The license was updated to GPLv3.
+   * Support for the nomencl, flashcards and comment LaTeX packages
+     as well as the Icelandic language option of babel were added.
+   * Support for folding of math macros was added.
+   * Lots of minor bugs in features and documentation fixed.
+  + News in 11.84
+   * AUCTeX has been changed in order to accommodate file names
+     containing spaces.
+   * Support for folding of comments was added.
+   * The TeX tool bar is now available and enabled by default in
+     plain TeX mode.
+   * Bug fix in the display of math subscripts and superscripts.
+   * Bug fix `TeX-doc' for Emacs 21.
+   * There has been quite a number of other bug fixes to various
+     features and documentation across the board.
+
+-------------------------------------------------------------------
+Sun Apr 29 11:47:53 CEST 2007 - aj@suse.de
+
+- Fix Requires for texlive.
+
+-------------------------------------------------------------------
+Fri Apr 27 16:48:24 CEST 2007 - werner@suse.de
+
+- Make it build with texlive
+
+-------------------------------------------------------------------
+Fri Mar  2 14:04:02 CET 2007 - werner@suse.de
+
+- No binary anymore is no architecture
+
+-------------------------------------------------------------------
+Thu Jun 29 19:36:17 CEST 2006 - werner@suse.de
+
+- Update to 11.83
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:41 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 22 19:24:06 CEST 2005 - werner@suse.de
+
+- Update to 11.55
+- Use newer dinbrief.el
+- Build as non root user
+
+-------------------------------------------------------------------
+Tue Sep 21 19:18:14 CEST 2004 - werner@suse.de
+
+- encl, cc ... should be included within letter environment
+
+-------------------------------------------------------------------
+Fri Jan  9 17:09:00 CET 2004 - werner@suse.de
+
+- Update to 11.14
+
+-------------------------------------------------------------------
+Tue Jul  2 16:44:07 CEST 2002 - werner@suse.de
+
+- Update to auc-tex 11.11 (bug #16605)
+
+-------------------------------------------------------------------
+Fri Feb 22 15:47:41 CET 2002 - werner@suse.de
+
+- Make conditionals in font-lock work with emacs 21.1
+
+-------------------------------------------------------------------
+Sat Feb  9 23:49:20 CET 2002 - ro@suse.de
+
+- removed te_fr from neededforbuild 
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:13 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Thu Nov  8 14:25:54 CET 2001 - werner@suse.de
+
+- Add all libs reqired by emacs to neededforbuild
+
+-------------------------------------------------------------------
+Fri Mar 16 12:01:17 CET 2001 - werner@suse.de
+
+- Mark tex-site.el as config file
+
+-------------------------------------------------------------------
+Tue Mar 13 12:45:19 CET 2001 - ro@suse.de
+
+- added emacs-x11 to neededforbuild 
+
+-------------------------------------------------------------------
+Wed Mar  7 14:10:33 CET 2001 - werner@suse.de
+
+- Rename package to emacs-auctex
+
+-------------------------------------------------------------------
+Fri Nov 17 09:16:28 CET 2000 - ro@suse.de
+
+- ge_exec -> emacs
+
+-------------------------------------------------------------------
+Tue Jun  6 12:56:18 CEST 2000 - ro@suse.de
+
+- doc relocation 
+
+-------------------------------------------------------------------
+Fri Feb 25 13:54:49 CET 2000 - werner@suse.de
+
+	- Change dvips print command to be able to avoid config.lp
+	  within teTeX package
+
+-------------------------------------------------------------------
+Thu Feb 24 17:22:45 CET 2000 - werner@suse.de
+
+	- Make it work for all teTeX versions
+	- /usr/info -> /usr/share/info
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Sat Aug 14 00:18:19 CEST 1999 - werner@suse.de
+
+	- Make dinbrief.sty comaptible to xemacs
+
+-------------------------------------------------------------------
+Thu Jul  8 21:04:26 CEST 1999 - werner@suse.de
+
+	- New version 9.9p
+	- A few changes to my dinbrief.sty
+
+-------------------------------------------------------------------
+Thu Apr 15 12:24:13 CEST 1999 - werner@suse.de
+
+	- added export LC_CTYPE=ISO-8859-1 to install section
+
+-------------------------------------------------------------------
+Wed Nov 18 12:01:51 MET 1998 - werner@suse.de
+
+	- Change file list because of the new tetex version
+
+-------------------------------------------------------------------
+Mon Jul 27 13:00:13 MEST 1998 - bs@suse.de
+
+- added export LC_CTYPE=ISO-8859-1 to build section - emacs needs it.
+
+-------------------------------------------------------------------
+Fri Jul 10 12:14:01 MEST 1998 - bs@suse.de
+
+- added xaw3d to neededforbuild (ge_exec needs it)
+
+----------------------------------------------------------------------------
+Mon Jun  2 18:50:31 MET DST 1997 - werner@suse.de
+	- removed /usr/info/latex*.gz ... because it's included in tetex
+
+----------------------------------------------------------------------------
+Wed May 28 14:40:01 MET DST 1997 - werner@suse.de
+	- New version 9.7p
+	- Skip X-emacs: xemacs-19.15 has an integrated
+	  auctex version 9.7l
+	- Added ltx-help.el, latex(2e).info due
+	  the auctex-9.7p does not has it anymore
+
+----------------------------------------------------------------------------
+Mon Nov  4 16:12:03 MET DST 1996 - werner@suse.de
+
+
+- auctex: Version 9.5a für GNU-emacs und X-emacs
+
+

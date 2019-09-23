@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Mon Sep 15 15:15:08 UTC 2014 - coolo@suse.com
+
+- updated to 1.100602
+  typo fixes (thanks, David Steinbrunner)
+
+-------------------------------------------------------------------
+Tue Nov 26 07:31:00 UTC 2013 - coolo@suse.com
+
+- updated to 1.100601
+  update bugtracker and repo metadata
+
+-------------------------------------------------------------------
+Mon Feb 13 10:52:19 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Mon Jun 20 08:54:44 UTC 2011 - coolo@novell.com
+
+- regenerate with newer cpanspec
+
+-------------------------------------------------------------------
+Thu Mar 31 08:38:51 UTC 2011 - coolo@novell.com
+
+- update to version 1.100600
+   fix documention: the argument is "truncate" not "elite"
+   (thanks for the report, Tommy Stanton!)
+
+-------------------------------------------------------------------
+Sat Jan 22 19:47:27 UTC 2011 - coolo@novell.com
+
+- initial package 1.100570
+  * created by cpanspec 1.78.03
+

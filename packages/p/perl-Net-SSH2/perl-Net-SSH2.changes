@@ -1,0 +1,408 @@
+-------------------------------------------------------------------
+Sat Mar 30 06:30:48 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.70
+   see /usr/share/doc/packages/perl-Net-SSH2/Changes
+
+  0.70  2019-3-17
+  	- Documentation improvements.
+  	- SFTP stat was not reporting errors correctly (bug report and
+            patch by Thomas Lochmatter).
+
+-------------------------------------------------------------------
+Sun Feb 25 06:40:15 UTC 2018 - coolo@suse.com
+
+- updated to 0.69
+   see /usr/share/doc/packages/perl-Net-SSH2/Changes
+
+  0.69  2018-2-24
+  	- Fix META.yml generation (bug report by Slaven Rezic).
+
+-------------------------------------------------------------------
+Thu Dec 14 06:40:10 UTC 2017 - coolo@suse.com
+
+- updated to 0.68
+   see /usr/share/doc/packages/perl-Net-SSH2/Changes
+
+  0.68  2017-12-13
+          - Fix build when using perl 5.26 which doesn't have "." in
+            @INC anymore (patch by Marc-Philip Werner).
+
+-------------------------------------------------------------------
+Sun Dec  3 06:44:27 UTC 2017 - coolo@suse.com
+
+- updated to 0.67
+   see /usr/share/doc/packages/perl-Net-SSH2/Changes
+
+  0.67  2017-12-02
+          - Fix Net::SSH2::Listener "accept" method (patch by
+            Marc-Philip Werner).
+          - Fix Net::SSH2::SFTP "readlink" and "realpath" methods (patch
+            by Marc-Philip Werner).
+
+-------------------------------------------------------------------
+Tue Oct  3 07:52:43 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Fri Jul 21 05:56:46 UTC 2017 - coolo@suse.com
+
+- updated to 0.66
+   see /usr/share/doc/packages/perl-Net-SSH2/Changes
+
+  0.66  2017-07-19
+          - Warn about readline being called in non-blocking mode.
+
+-------------------------------------------------------------------
+Thu Jun 15 05:59:12 UTC 2017 - coolo@suse.com
+
+- updated to 0.65
+   see /usr/share/doc/packages/perl-Net-SSH2/Changes
+
+-------------------------------------------------------------------
+Fri Oct 14 05:59:55 UTC 2016 - coolo@suse.com
+
+- updated to 0.63
+   see /usr/share/doc/packages/perl-Net-SSH2/Changes
+
+  0.63
+          - die_with_error errors pointed to that method instead of its
+            caller.
+          - Fix case in user message.
+          - Silence warning in perl 5.10.
+
+-------------------------------------------------------------------
+Sun Jun 12 13:28:44 UTC 2016 - coolo@suse.com
+
+- updated to 0.62
+   see /usr/share/doc/packages/perl-Net-SSH2/Changes
+
+  0.62  2016-06-07
+          - Code handling the conversion of arguments accepting both
+            integers and constant names was broken for undef.
+  
+  0.61  2016-06-03
+          - "auth" method was skipping agent authentication always (bug
+            report and patch by NIkolay A. Fetisov).
+
+-------------------------------------------------------------------
+Sat May 28 10:18:23 UTC 2016 - coolo@suse.com
+
+- updated to 0.60
+   see /usr/share/doc/packages/perl-Net-SSH2/Changes
+
+  0.60  2016-05-23
+          - Fix connecting to a custom port (bug report by Ferenc Erki).
+  
+  0.59_23  2016-05-19
+          - Fix handling of eof in Channel read2 method.
+          - Several documentation corrections.
+          - Add example/benchmark.pl to the distribution.
+  
+  0.59_22  2016-05-18
+          - Add support for some additional constants.
+          - Make remote login name default to be the same as the local
+            one.
+          - Several documentation improvements.
+  
+  0.59_21  2016-05-13
+          - Conversion of stream_id arguments has been moved to a
+            typemap.
+          - Channel 'flush' was not handling 'all' properly.
+  
+  0.59_20  2016-05-11
+          - Method timeout is not available in old libssh2 versions.
+  
+  0.59_19  2016-05-10
+           - Honour timeout setting from _ask_user method.
+  
+  0.59_18  2016-05-09
+          - Fix failing test caused by a remote SIGPIPE (bug report by
+            Ferenc Erki).
+          - Work-around libssh2_channel_wait_closed bug.
+          - Fix channel and file PRINTF methods.
+          - Improve tests.
+  
+  0.59_17  2016-05-06
+          - Port Channel "readline" method to File class.
+          - Implement File getc in XS for improved performance.
+          - Add workaround for perl bug around EOF method of tied file
+            handles.
+          - Add more tests.
+          - Several documentation improvements.
+  
+  0.59_16  2016-05-04
+          - Save EAGAIN errors after every libssh2 channel and session
+            call.
+          - Extend exit_signal method to return the tree values comming
+            back from libssh2_channel_exit_signal.
+          - Make Channel blocking method be just a wrapper for session
+            blocking method.
+          - Add channel wait_eof method.
+          - Make exit_signal and exit_status call wait_closed under the
+            hood, otherwise they could return a wrong result.
+          - Make wait_closed call wait_eof under the hood to avoid bad
+            usage errors.
+          - Add method exit_signal_number that translates the result of
+            exit_signal to the matching local signal number (note that
+            on the remote machine the signal number may be different).
+          - Channel CLOSE now mimics real file handles better and sets
+            $?.
+          - Improve the test script so that it can be better automated.
+  
+  0.59_15  2016-05-03
+          - Channel and SFTP READLINE and readline methods were not
+            handling correctly undef as the end of line marker
+            (i.e. $/=undef).
+          - SFTP and Channel BINMODE methods were returning undef
+            instead of 1.
+          - Add even more tests!
+          - Add more tests (contributed by Chris Kirke).
+          - SFTP file READ was broken (reported by Chris Kirke).
+  
+  0.59_14  2016-04-28
+          - READLINE was not clearing the error code correctly.
+  
+  0.59_13  2016-04-26
+          - Detect EOF in most cases (cannot be done always due to
+            libssh2 limitations) in "readline" and "getc".
+          - Clear error before returning from "readline" as it returns
+            undef for compatibility with Perl builtin even when no error
+            has happened.
+          - Several documentation improvements.
+  
+  0.59_12  2016-04-26
+          *** WARNING: backward incompatible change: "READLINE" had an
+            undocumented hard coded timeout of 250ms which made the
+            method unreliable. That timeout has been removed. If
+            desired, the old behaviour can be attained setting
+            non-blocking mode or with a global timeout.
+          - Add Channel "readline" method.
+          - Add Channel "getc" method.
+          - Cleanup of the channel tie interface.
+  
+  0.59_11  2016-04-22
+          - Add channel method "read2".
+          - Do not retry read operations when "libssh2_channel_read_ex"
+            returns 0 (bug report by Ferenc Erki).
+          - Fix definitions for LIBSSH2_ERROR_NONE,
+            LIBSSH2_SESSION_BLOCK_INBOUND and
+            LIBSSH2_SESSION_BLOCK_OUTBOUND.
+          - Scale timeout values passed between IO::Socket::* (using
+            seconds) and libssh2 (using miliseconds).
+          - Several documentation improvements.
+  
+  0.59_10  2016-04-19
+          - Don't warn when undef is passed to method "timeout".
+          - Add more tests.
+          - Several documentation improvements.
+  
+  0.59_09  2016-04-18
+          - Method "read" was not returning errors correctly.
+          - Typemaps for 64bit integers were broken
+          - Restrict the channel type to "session" in method "channel".
+          - The realclean target of the generated Makefile was deleting
+            const-c.inc and const-xs.inc which are not generated
+            anymore.
+          - Several documentation improvements.
+  
+  0.59_08  2016-04-18
+          - Get extended diagnosis messages when $ENV{AUTOMATED_TESTING}
+            is set.
+  
+  0.59_07  2016-04-17
+          - In auth, do not call authentications methods unless they are
+            supported by the server.
+          - Fix minor scp_get issue
+          - Add workaround for getpwuid not being available on MS
+            Windows.
+          - Several documentation fixes.
+  
+  0.59_06  2016-04-17
+          - Add method die_with_error into Net::SSH2::SFTP
+          - Several documentation improvements.
+  
+  0.59_05  2016-04-16
+          - Switch the order of "policy" and "known_host_path" arguments
+            in method "check_hostkey".
+          - Improve "check_hostkey" method adding support for using a
+            callback as policy.
+          - Rename "remote_port" to "port", "remote_hostname" to
+            "hostname" and "check_remote_hostkey" to "check_hostkey".
+          - Rewrite constant generation code
+          - Several documentation improvements.
+  
+  0.59_04  2016-04-13
+          - Use libssh2 function "libssh2_scp_send64" when available. It
+            allows sending files bigger than 4GB.
+          - Improve the way the user is prompted.
+          - Improve "check_remote_hostkey" method (WIP).
+          - Add scat.pl sample script
+          - Several documentation improvements.
+          - Remove File::Slurp dependency in test script.
+  
+  0.59_03  2016-04-12
+          - Fix Channel "read" method that was hanging in blocking mode.
+          - Add "check_remote_hostkey" method for easy remote host key
+            verification (WIP)
+          - Add "die_with_error" method.
+          - Several documentation improvements.
+  
+  0.59_02  2016-04-12
+          - Fix "auth_list" method.
+          - Fix handling of "lib" argument in Makefile.PL.
+          - Compilation was broken for perls 5.8.0 .. 5.8.3.
+          - Several documentation improvements.
+  
+  0.59_01  2016-04-11
+          *** WARNING: this release includes lots of changes, some
+              visible, most internal. Regressions are expected. Also,
+              it introduces some minor backward incompatible changes -
+              but in those cases, the old behavior was broken or insane
+              anyway.
+  
+          - libssh2 version 1.7.0 is now recommended. The module would
+            still compile against older versions, but not all its
+            features will be available.
+          - Makefile.PL has been refactored and improved. Now it is
+            better able to find the library libssh2 and compile code
+            using it.
+          - Lots of XS code refactoring has been performed in order to
+            simplify the module internals. Specifically, now typemaps
+            are used extensively to convert between C and Perl
+            types. Also, some complex non-performance-critical functions
+            have been moved to the Perl side or broken in a high level
+            Perl wrapper and a low level simpler C wrapper.
+          - KnownHost methods now return undef on error instead of
+            die'ing. Note that this submodule is still marked as
+            experimental.
+          - Die when data containing wide characters is passed
+            (i.e. outside the latin1 range). In previous versions,
+            methods on this module would happily accept strings
+            internally encoded as latin1 or utf8 and pass then along
+            untouched, resulting in unreliable behavior.
+          - In 32bit perls, return offsets and file sizes as NVs when
+            required to avoid overflow.
+          - Method "new" now also accepts the options "compress" and
+            "sigpipe".
+          - Passing options to "connect" is now deprecated.
+          - Passing a file descriptor number to "connect" is not
+            supported anymore (it was already broken).
+          - Method "connect" consistently returns undef on error. The
+            error code can be retrieved calling the "error" method
+            (requires libssh2 1.7.0). In previous versions, some errors
+            made the method die.
+          - Timeouts are handled correctly inside "connect".
+          - Report EAGAIN in the same way as any other error. This
+            introduces a minor backward incompatibility, but the old
+            behavior was utterly insane and undocumented, and so
+            probably, nobody was using it right anyway!
+          - Use libssh2_session_set_last_error function for storage of
+            the Perl level errors (required libssh2 1.7.0). This may
+            introduce some minor backward incompatibilities, but the old
+            code was broken and unreliable anyway.
+
+-------------------------------------------------------------------
+Sat Dec 26 10:01:28 UTC 2015 - coolo@suse.com
+
+- updated to 0.58
+   see /usr/share/doc/packages/perl-Net-SSH2/Changes
+
+  0.58  2015-12-20
+          - rereleas as stable
+  
+  0.57_03  2015-12-5
+          - remove MYMETA.* from distribution (fixes #rt108717, reported
+            by Alexandr Ciornii)
+          - workaround bug in libssh2_agent_disconnect (fixes #28,
+            reported by Tore Anderson)
+  
+  0.57_02  2015-10-29
+          - Module::Install::CheckLib was missing
+  
+  0.57_01  2015-10-26
+          - reimplement scp_put and scp_get methods fixing several issues
+          - add support for Mac Homebrew and its keg-only OpenSSL
+
+-------------------------------------------------------------------
+Wed Dec  2 12:06:14 UTC 2015 - coolo@suse.com
+
+- updated to 0.56
+   see /usr/share/doc/packages/perl-Net-SSH2/Changes
+
+  0.56  2015-10-9
+          - add support for auth_publickey_frommemory method (patch by
+            Adam Osuchowski)
+          - several documentation improvements
+          - fix broken test, rsa were not used for authentication
+            (#rt107382 reported by sisyphus)
+          - fix broken test, sock method can return both IO::Socket::IP
+            and IO::Socket::INET objects (#rt107381 reported by
+            sisyphus)
+          - improves docs for Net::SFTP::File::write method (#rt58911
+            reported by Salvatore Bonaccorso).
+  
+  0.55  2015-09-27
+          - rerelease as stable
+          - fix errors in test script
+  
+  0.54_02  2015-09-13
+          - channel write method was concealing errors
+          - several doc improvements (patches by Jason Lewis)
+  
+  0.54_01  2015-08-27
+          - on auth method use key passphrase instead of password to
+            refer to the private key passphrase - using password will be
+            deprecated in future releases and is now warned
+          - add support for IPv6 via IO::Socket::IP (patch submitted by
+            Baldur Kristinsson)
+          - use binmode when transferring data from/to the local
+            filesystem in SCP methods
+          - add support for password-interact authentication
+          - add fallback option to auth method
+          - allow undef as the publickey path (patch submitted by Yuni
+            Kim)
+          - on channel write method, when blocking mode is set, call
+            libssh2_channel_write repeatly until the buffer is empty
+          - on channel read method, when non-blocking mode is set, don't
+            call libssh2_channel_read repeatly until the buffer is
+            filled
+          - add Net::SSH2 known_hosts method and Net::SSH2::KnownHosts
+            class
+          - add keepalive_config and keepalive_send methods
+          - add channel methods "window_write", "window_read" and
+            "receive_window_adjust"
+          - add "Compress" option into "connect" method
+          - add "flags" method
+          - exit_signal was generating SIGSEGV
+          - improve callback handling
+          - several documentation clarifications added
+          - fix several memory leaks
+          - fix several file descriptor leaks
+          - Lots of other minor tweaks
+
+-------------------------------------------------------------------
+Thu Jan  8 15:25:31 UTC 2015 - seife+obs@b1-systems.com
+
+- add Net-SSH2-0.53-newer-openssl.diff to fix deadlock on SLE11SP3
+- fix build on 13.2+ by using "rm -f", file does no longer exist.
+
+-------------------------------------------------------------------
+Thu Mar 20 23:51:17 UTC 2014 - lars@linux-schulserver.de
+
+- update to 0.53
+  - add support for ldargs, and LIBSSH2_LIB, LIBSSH2_INCLUDE,
+    LIBSSH2_LDARGS env vars while building (RT#88265)
+  - detect scp not being installed on the remote and return undef from
+    scp_put (krimdomu: Jan) (GitHub PR: #17)
+  - turn off -std=c89 -pedantic-errors for all builds except authors not
+    on mingw or solaris
+  - remove #warning, not standard C89, throws an error on non-threaded
+    builds due to -pedantic-errors (RT#87398)
+
+-------------------------------------------------------------------
+Thu Apr 18 15:04:08 UTC 2013 - lars@linux-schulserver.de
+
+- initial version 0.48
+

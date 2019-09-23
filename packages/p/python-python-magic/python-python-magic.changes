@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Thu Jul  4 12:09:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update the patch magic-new-file.patch to work with newer file
+  package
+
+-------------------------------------------------------------------
+Tue Aug 21 10:31:23 UTC 2018 - tchvatal@suse.com
+
+- Version update to 0.4.15:
+  * Few test tweaks
+- Enable tests
+- Add patch to fix gzip detection in tests:
+  * magic-tests.patch
+- Add patch to fix working with new file:
+  * magic-new-file.patch
+- Add patch to work with new mimedb:
+  * magic-new-mime.patch
+- Add patch magic-pep8.patch to have other patches apply cleanly
+
+-------------------------------------------------------------------
+Thu Sep 14 00:17:15 UTC 2017 - toddrme2178@gmail.com
+
+- Fix python-magic conflicts
+
+-------------------------------------------------------------------
+Thu Sep  7 20:06:52 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+- Update to version 0.4.13
+  * No changelog
+
+-------------------------------------------------------------------
+Tue Feb  3 19:12:38 UTC 2015 - toddrme2178@gmail.com
+
+- Explicitly require file
+
+-------------------------------------------------------------------
+Mon Feb  2 23:16:35 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+

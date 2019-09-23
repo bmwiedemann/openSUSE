@@ -1,0 +1,166 @@
+-------------------------------------------------------------------
+Wed Jan  9 22:14:36 UTC 2019 - Jonathan Brownell <jbrownell@suse.com>
+
+- Use proper memcached path on Red Hat platforms
+
+-------------------------------------------------------------------
+Wed Aug  8 13:56:44 UTC 2018 - tchvatal@suse.com
+
+- Kill memcache deamon at the end of the tests
+
+-------------------------------------------------------------------
+Wed Aug  8 13:28:02 UTC 2018 - tchvatal@suse.com
+
+- Version update to 1.59 bsc#1131840:
+  * Various fixes for python 3.7 and 3.6
+- Run tests
+
+-------------------------------------------------------------------
+Thu Aug 24 13:52:44 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Tue Nov 15 13:13:46 UTC 2016 - dmueller@suse.com
+
+- update to 1.58:
+  *  Fixing a performance regression in v1.54 in Python 2, using cPickle again.
+  *  Support for "stats slabs".
+  *  Pin Six version to >= 1.4
+  *  setup.py build process pulls version from memcached.py
+  *  delete() and delete_multi() now default the "time" argument to None,
+     since the protocol doesn't allow a time in some implementations.
+     Patch by oremj #27
+
+-------------------------------------------------------------------
+Tue Oct  6 11:21:23 UTC 2015 - mcihar@suse.cz
+
+- update to 1.57:
+   * Fix for #75 and #76, mc.set(key, False) results in "ValueError:
+     invalid literal for int()".  Reported by Carlos Sanchez on github.
+
+-------------------------------------------------------------------
+Thu Jul 30 14:54:21 UTC 2015 - tbechtold@suse.com
+
+- update to 1.56:
+   *  More patches for python3 from Victor Stinner #67.  Thanks!
+   *  Tests moved out into their own unittest testcases.
+      Patch by Jeremy Thurgood.
+   *  Adding support for pluggable compressors.  Patch by cactus on github.
+   *  Adding support for "noreply".  Patch by cactus on github.
+   *  Allowing empty key in _multi() calls.  Suggested by sergio97 on github.
+
+-------------------------------------------------------------------
+Thu Apr 23 07:08:57 UTC 2015 - mcihar@suse.cz
+
+- Update to 1.54:
+   *  Numerous patches to attempt to get Python 3 working, but
+      tests are still failing under Python 3, so this code is not ready
+      yet.
+   *  MemcachedKeyCharacterError better describes key problem.
+      Suggested by Roy Smith
+   *  Added touch(), patch by erankor on github.
+   *  Allow empty server list, patch by zewt on github.
+   *  If unknown flags in get request, raises a value error rather than the
+      code bombing out.
+   *  Setting the SERVER_MAX_* values after import did not work, despite
+      being documented to.  Reported by alexf101 on github.
+- Run testsuite in %check, adjust build requires
+
+-------------------------------------------------------------------
+Thu Oct 24 11:12:45 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Sun Jun 23 21:21:17 UTC 2013 - dmueller@suse.com
+
+- update to 1.53:
+  *  Fixing set_multi() so that if the server closes the connection
+     it will no longer raise AttributeError.  Issue found and resolution
+     reviewed by Ben Hoyt.
+  *  readline() now will mark the connection dead if the read fails.
+     It was just closing it before.  This is related to the set_multi()
+     change but worth noting separately.  Thanks to Ben Hoyt.
+  *  Changing check_keys to use re.match() instead of str.translate(),
+     because re.match() works with Python < 2.6.
+     Found by Giovanni Di Milia.
+
+-------------------------------------------------------------------
+Mon May 27 10:30:36 UTC 2013 - dmueller@suse.com
+
+- update to 1.51:
+  *  Add a MANIFEST.in file, patch by Daniel Widerin.
+  *  Client() now takes a "check_keys" option, which defaults to True.
+     If False, it disables the checking of keys to ensure they have
+     acceptable size and are composed of non-control characters.
+     Suggested by Ben Hoyt.
+  *  Converting control character checking of keys based on performance
+     testing of alternatives by Ben Hoyt.
+  *  Converted unicode tests from using u'', patch from Eren Güve.
+  *  Included license file (pull request by "Philippe" pombredanne).
+  *  Doing a "set" after server goes away, raised AttributeError:
+     'NoneType' object has no attribute 'sendall'.  Patch by Ken Lalonde
+  *  incr/decr return None instead of 0 on server connection failure.
+     Suggested by Ivan Virabyan
+  *  Supports IPv6 connections using: "inet6:[fd00::32:19f7]:11000".
+     Patch by Romain Courteaud
+- python-memcached-ipv6-and-or.patch: remove. Solved differently upstream
+
+-------------------------------------------------------------------
+Fri Apr 26 09:20:00 UTC 2013 - speilicke@suse.com
+
+- Add python-memcached-ipv6-and-or.patch: Add IPv6 support and fix
+  hostData port return value
+
+-------------------------------------------------------------------
+Fri Apr 26 09:14:11 UTC 2013 - speilicke@suse.com
+
+- Update to version 1.48:
+  + Dropped HTML docu
+
+-------------------------------------------------------------------
+Fri Apr  1 11:23:28 UTC 2011 - oliver.bengs@opensuse.org
+
+- added %{py_requires}
+- make use of --record-rpm from setuptools
+
+-------------------------------------------------------------------	
+Sat Feb 26 14.13.54 UTC 2011 - stian@viskjer.net
+
+- python-memcached 1.47
+  * Bug #680359: useOldServerHashFunction() is broken. It now 
+    correctly switches back to the old memcache hash function.
+
+- python-memcached 1.46
+  * Bug #471727: Changed the delete() code to explicitly check for
+    both NOT_FOUND and DELETED as the responses and return
+    successful for both. It also logs an error if one of these two
+    responses is not found. Also added a test to ensure that
+    delete() works.
+  * When using set_multi and one value is too big, traceback
+    TypeError: 'int' object is unsubscriptable.
+    Patch by Orjan Persson
+  * Fixing Bug #529855: Server host can now be bare host without
+    ":<port>". Fix proposed by Roger Binns.
+  * Fixing Bug #491164: Typo fix, "compession" -> "compRession".
+  * Fixing Bug #509712: "TypeError: 'NoneType' object is
+    unsubscriptable" Also fixed some other similar code to not have
+    issues with that.
+  * Also related to 509712 and 628339: readline() now returns ''
+    instead of None when a server dies. This should be safer.
+    Patch suggested by Denis Otkidach.
+  * Fixing Bug #628339: Read from server sometimes fails.
+    Patch by Jeremy Cowles.
+  * Fixing Bug #633553: Add stat arguments support to get_stats().
+    Patch by Ryan Lane.
+  * Changing the license to the PSF License.
+  * Removing Evan's e-mail address at his request, changing
+    authorship to Sean.
+
+-------------------------------------------------------------------	
+Fri Nov 26 23.00.00 UTC 2010 - stian@viskjer.net
+
+- python-memcached 1.45
+  * Initial specfile based on Fedora's v1.43-6
+

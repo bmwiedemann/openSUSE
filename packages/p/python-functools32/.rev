@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>80b4a68f97906ec9d130e654bb3de366</srcmd5>
+    <version>3.2.3.2</version>
+    <time>1440135625</time>
+    <user>dimstar_suse</user>
+    <comment>This package is required by the latest version of python-jsonschema, which is already in openSUSE:Factory and which is itself required by a ton of other packages.</comment>
+    <requestid>322410</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ffc4ad31de157af80fe427f000deb2db</srcmd5>
+    <version>3.2.3.2</version>
+    <time>1492011328</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486633</requestid>
+  </revision>
+</revisionlist>

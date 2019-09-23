@@ -1,0 +1,415 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c50d94c5894d84a8ff3a6590f31bbbaa</srcmd5>
+    <version>2.3.1.2.trunk</version>
+    <time>1168447445</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>39efb09d929421bdd70155394d8aca08</srcmd5>
+    <version>2.4.0</version>
+    <time>1185792713</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="76">
+    <srcmd5>d21f1b9da700830930fb57eb6d880c23</srcmd5>
+    <version>2.4.0</version>
+    <time>1203955748</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f744a6930d59228fb8e74e555b34dc88</srcmd5>
+    <version>2.4.1</version>
+    <time>1206871326</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>84e437a4b2a2b2de53ac1ce9681d2ecf</srcmd5>
+    <version>2.4.2</version>
+    <time>1216052941</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>165fe15869d5e97e0860b1a67cd7d0ea</srcmd5>
+    <version>2.4.3</version>
+    <time>1224691154</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6752bd22d8386d61fc3a3b54d68d9d8e</srcmd5>
+    <version>2.4.4</version>
+    <time>1233182303</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>997edbdfbf42be3927fbc4906fb46cec</srcmd5>
+    <version>2.4.5</version>
+    <time>1238702069</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e4be1bb87830a08818f675d29dd8555b</srcmd5>
+    <version>2.4.5.1</version>
+    <time>1246695949</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8a0ce31ee119ec2380b427a4369dda2e</srcmd5>
+    <version>2.4.5.2</version>
+    <time>1248729233</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4231f0c2b5d51e3513e260bdbd72393d</srcmd5>
+    <version>2.4.7</version>
+    <time>1251297746</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/gphoto based on submit request 18612 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>4231f0c2b5d51e3513e260bdbd72393d</srcmd5>
+    <version>2.4.7</version>
+    <time>1251297746</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/gphoto based on submit request 18612 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bbe49e76461d2daaae3ede76f88b8b77</srcmd5>
+    <version>2.4.8</version>
+    <time>1264435307</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/gphoto based on submit request 30377 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>ead662e59d91358a54665b57258c473d</srcmd5>
+    <version>2.4.8</version>
+    <time>1268923858</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c9a8a00b798f07e460b9be5c11387346</srcmd5>
+    <version>2.4.9</version>
+    <time>1271370180</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/gphoto based on submit request 37698 from user msmeissn
+</comment>
+    <requestid>37698</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>c9a8a00b798f07e460b9be5c11387346</srcmd5>
+    <version>2.4.9</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>c9a8a00b798f07e460b9be5c11387346</srcmd5>
+    <version>2.4.9</version>
+    <time>1278678580</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>40d0dd3c9cb8f42783b0549aeabfc7fd</srcmd5>
+    <version>2.4.9</version>
+    <time>1280957308</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/gphoto based on submit request 44507 from user coolo
+</comment>
+    <requestid>44507</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4d3f7af8901ad2fcbee99c03b753549e</srcmd5>
+    <version>2.4.10</version>
+    <time>1282575469</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/gphoto based on submit request 45618 from user msmeissn
+</comment>
+    <requestid>45618</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>4d3f7af8901ad2fcbee99c03b753549e</srcmd5>
+    <version>2.4.10</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d2ada8e3129f4ca8fd9d59a0fa68f901</srcmd5>
+    <version>2.4.11</version>
+    <time>1303381678</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67903 from user licensedigger
+</comment>
+    <requestid>67903</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>970f88ff5ddc3703c69db23c52cd3f6d</srcmd5>
+    <version>2.4.11</version>
+    <time>1303381687</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67903
+</comment>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>970f88ff5ddc3703c69db23c52cd3f6d</srcmd5>
+    <version>2.4.11</version>
+    <time>1319181939</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>62ffbd04226fafd4aec88ffbd7d884c6</srcmd5>
+    <version>2.4.11</version>
+    <time>1323191747</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d7dcab17972fbc1593b681ca0be26d1e</srcmd5>
+    <version>2.4.11.1</version>
+    <time>1329242455</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104038</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>879d0c8223816d7e74e8f594f8affeb4</srcmd5>
+    <version>2.4.14</version>
+    <time>1334641500</time>
+    <user>coolo</user>
+    <comment>Update to 2.4.14</comment>
+    <requestid>113726</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>879d0c8223816d7e74e8f594f8affeb4</srcmd5>
+    <version>2.4.14</version>
+    <time>1340183408</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>fb36d6e250353188703d5071c54890a0</srcmd5>
+    <version>2.5.0</version>
+    <time>1347618331</time>
+    <user>namtrac</user>
+    <comment>- updated to 2.5.0
+  - match libgphoto2 2.5.0 api release</comment>
+    <requestid>134170</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>240f0274e587715832b26e66ded4aee4</srcmd5>
+    <version>2.5.0.2</version>
+    <time>1357813406</time>
+    <user>coolo</user>
+    <comment>- updated to 2.5.0.2 temp snapshot
+ * Fixed that the meaning of --keep and --no-keep was switched.
+ * Allow passing absolute filenames to
+   -p, -d, -r/--rmdir, -m/--mkdir, -t, --show-info, --get-metadata,
+   --get-raw-data, --get-audio-data,
+   like e.g.:
+   gphoto2 -p /store_00010001/DCIM/100D7000/DSC_0001.JPG
+ * -L --quiet  now prints a list of all files, 1 per line.
+ * -l --quiet  now prints a list of all folders, 1 per line.</comment>
+    <requestid>147801</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>240f0274e587715832b26e66ded4aee4</srcmd5>
+    <version>2.5.0.2</version>
+    <time>1359108996</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ceeefc785b6572dedca00a9051d97cb4</srcmd5>
+    <version>2.5.1</version>
+    <time>1362730204</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157783</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>09b2f150992b8d41d7d9bf62c019e8f0</srcmd5>
+    <version>2.5.2</version>
+    <time>1368694828</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>175320</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>09b2f150992b8d41d7d9bf62c019e8f0</srcmd5>
+    <version>2.5.2</version>
+    <time>1379662547</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7fde765bac8f0ee0938ebf66f5330afb</srcmd5>
+    <version>2.5.3</version>
+    <time>1389725522</time>
+    <user>coolo</user>
+    <comment>- updated to 2.5.3 final
+  - --show-exif bugfix
+  - translations updates
+- make check</comment>
+    <requestid>213702</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3fdf5b5ec4e1a814a704073892e12357</srcmd5>
+    <version>2.5.4</version>
+    <time>1395750129</time>
+    <user>coolo</user>
+    <comment>(prerequires libgphoto2 2.5.4 checkin)
+
+
+- updated to 2.5.4 release
+  - --skip-existing option that skips if a local file would already exist
+  - %F for foldername inclusion added to format strings for --filename
+  - add the commandline arguments to the debug log</comment>
+    <requestid>227263</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d13b1db2dc70ac17989eed415dd7e6bb</srcmd5>
+    <version>2.5.5</version>
+    <time>1408353845</time>
+    <user>lnussel</user>
+    <comment>- updated to 2.5.5 release
+  manpage updated
+  updated translations
+  bugfix for DST usage in handling date/time widgets
+  adjusted wait time heuristics after capture
+  --debug-loglevel=(debug|verbose|data|all) option added to select debug verbosity
+  fixed --filename with cross-device usage</comment>
+    <requestid>245006</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>d13b1db2dc70ac17989eed415dd7e6bb</srcmd5>
+    <version>2.5.5</version>
+    <time>1409301089</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>b8f28f382fa11e7ab6a860db41ba4cde</srcmd5>
+    <version>2.5.5</version>
+    <time>1416347222</time>
+    <user>dimstar_suse</user>
+    <comment>- remove gpg-offline usage, now checked by source services.</comment>
+    <requestid>261892</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d5778966cd40c6355e60b819df8885ce</srcmd5>
+    <version>2.5.6</version>
+    <time>1419331826</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.6 release
+  wait-event can now match on strings
+  translations updates
+  do not use trigger capture in multi-frame capture</comment>
+    <requestid>266174</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0ffd586273ec3db53857c6551a51e6d8</srcmd5>
+    <version>2.5.8</version>
+    <time>1436331570</time>
+    <user>coolo</user>
+    <comment>- updated to 2.5.8 release
+  * --keep-raw option added, which leaves non-JPEG files on camera during
+    capture or wait-event-and-download
+  * --show-preview option split out of --capture-preview. --show-preview
+    now displays the ascii art preview, --capture-preview no longer does.
+  * updated translations: french, ukrainian, vietnamese, russian, polish,
+    dutch, hungarian, esperanto, serbian, danish
+- updated gphoto2.keyring to use my new key</comment>
+    <requestid>315145</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>ac0a9488469263bd068ff2687d1fe1b2</srcmd5>
+    <version>2.5.9</version>
+    <time>1448553678</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.9 release
+  Now maintained (source and issue tracker) in GIT at https://github.com/gphoto/gphoto2 
+  * Added testcamera.pl, a tool for testing attached cameras with gphoto2.
+  * fixed some bugs
+  * report trigger capture in --ability
+  * capture-preview can honor filename and prefixes
+  * updated translations: french, ukrainian, vietnamese, polish, russian, italian</comment>
+    <requestid>345131</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f4c1731d87f11f9ba23302cec12f47db</srcmd5>
+    <version>2.5.10</version>
+    <time>1459422170</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.10 release
+* use new single configuration set/get if possible
+* updated translations: serbian, russian, hungarian, vietnamese, ukrainian, polish, swedish, brazilian portuguese
+* require libgphoto2 2.5.10 or newer</comment>
+    <requestid>380967</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>161eaa213999f9315b4b554d5ab82b94</srcmd5>
+    <version>2.5.11</version>
+    <time>1479837372</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.11 release
+* some errors result in exit 0, where it should have been an error exit
+* some windows bugfixes
+* translation updates: icelandic</comment>
+    <requestid>441098</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>57b455f510ad9f0498f7f56c4e0c793f</srcmd5>
+    <version>2.5.14</version>
+    <time>1497109878</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.14 release
+  * translation updates: french, esperanto
+  * some bugfixes</comment>
+    <requestid>501210</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>62cb7938a05c037f5032d0c8b6202e97</srcmd5>
+    <version>2.5.15</version>
+    <time>1507896222</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.15 release
+  * In the config getters, print out the Readonly flag and also an END marker
+  * Fixed &quot;now&quot; timesetting also for set-config-value</comment>
+    <requestid>532180</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b4afbd33b68046d81440b5b7b29a8653</srcmd5>
+    <version>2.5.17</version>
+    <time>1524144564</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.17 release
+  * report new GP_EVENT_FILE_CHANGED event
+  * some bugfixes</comment>
+    <requestid>597265</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>003c9bb288013e4610e106eee84f517a</srcmd5>
+    <version>2.5.20</version>
+    <time>1540819360</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.20 release
+  * maximum number in file ranges bumped from 16384 to 65536
+  * add shell commands to match commandline: summary, storage-info, trigger-capture
+  * fixed a fd leak
+  * translations: updated simplified chinese</comment>
+    <requestid>645041</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>7017d3bec1f01dd07bcb81bb4c283cc9</srcmd5>
+    <version>2.5.23</version>
+    <time>1559580672</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.23 release
+  - bugfixes</comment>
+    <requestid>706977</requestid>
+  </revision>
+</revisionlist>

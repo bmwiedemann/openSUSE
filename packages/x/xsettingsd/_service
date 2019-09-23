@@ -1,0 +1,14 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/derat/xsettingsd.git</param>
+    <param name="filename">xsettingsd</param>
+    <param name="versionformat">0.0+git%cd</param>
+    <param name="revision">e4cf99698f0d178bad7609b2acd43acd8280bbeb</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

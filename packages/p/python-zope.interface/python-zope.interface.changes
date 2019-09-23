@@ -1,0 +1,245 @@
+-------------------------------------------------------------------
+Fri Apr  5 10:24:37 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 4.6.0
+  * Add support for Python 3.7
+  * Fix verifyObject for class objects with staticmethods on Python 3.
+
+-------------------------------------------------------------------
+Thu Dec  6 11:45:14 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+
+-------------------------------------------------------------------
+Tue Aug 28 11:29:16 UTC 2018 - tchvatal@suse.com
+
+- Version update to 4.5.0:
+  * Allow registering and unregistering instance methods as listeners. See issue 12 and PR 102.
+  * Synchronize and simplify zope/__init__.py. See issue 114
+  * Avoid exceptions when the __annotations__ attribute is added to interface definitions with Python 3.x type hints. See issue 98.
+  * Fix the possibility of a rare crash in the C extension when deallocating items. See issue 100.
+
+-------------------------------------------------------------------
+Mon Jun 19 13:01:14 UTC 2017 - okurz@suse.com
+
+- Cover building python3 packages as well
+
+-------------------------------------------------------------------
+Sat Jun 17 16:38:43 UTC 2017 - okurz@suse.com
+
+- Update to 4.4.2
+ * Fix a regression storing zope.component.persistentregistry.PersistentRegistry instances. See issue 85.
+ * Fix a regression that could lead to the utility registration cache of Components getting out of sync. See issue 93.
+- Update to 4.4.1
+ * Simplify the caching of utility-registration data. In addition to simplification, avoids spurious test failures when checking for leaks in tests with persistent registries. See pull 84.
+ * Raise ValueError when non-text names are passed to adapter registry methods: prevents corruption of lookup caches.
+- Update to 4.4.0
+ * Avoid a warning from the C compiler. (https://github.com/zopefoundation/zope.interface/issues/71)
+ * Add support for Python 3.6.
+- Update to 4.3.3
+ * Correct typos and ReST formatting errors in documentation.
+ * Add API documentation for the adapter registry.
+ * Ensure that the LICENSE.txt file is included in built wheels.
+ * Fix C optimizations broken on Py3k. See the Python bug at: http://bugs.python.org/issue15657 (https://github.com/zopefoundation/zope.interface/issues/60)
+- Update to 4.3.2
+ * Fix equality testing of implementedBy objects and proxies. (https://github.com/zopefoundation/zope.interface/issues/55)
+- Prevent duplicate doc package generation
+- Cleanup duplicates in build tree
+
+-------------------------------------------------------------------
+Sat Mar 11 12:16:24 UTC 2017 - okurz@suse.com
+
+- Convert package to singlespec
+
+-------------------------------------------------------------------
+Tue Nov 15 10:11:54 UTC 2016 - dmueller@suse.com
+
+- update to 4.3.1:
+- Support Components subclasses that are not hashable.
+  (https://github.com/zopefoundation/zope.interface/issues/53)
+- Add the ability to sort the objects returned by ``implementedBy``.
+  This is compatible with the way interface classes sort so they can
+  be used together in ordered containers like BTrees.
+  (https://github.com/zopefoundation/zope.interface/issues/42)
+- Make ``setuptools`` a hard dependency of ``setup.py``.
+- Change a linear algorithm (O(n)) in ``Components.registerUtility`` and
+  ``Components.unregisterUtility`` into a dictionary lookup (O(1)) for
+  hashable components. This substantially improves the time taken to
+  manipulate utilities in large registries at the cost of some
+  additional memory usage. (https://github.com/zopefoundation/zope.interface/issues/46)
+
+-------------------------------------------------------------------
+Fri May 15 12:10:59 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 4.1.2:
+  * Add support for PyPy3.
+  * Remove unittest assertions deprecated in Python3.x.
+  * Add zope.interface.document.asReStructuredText, which formats
+    the generated text for an interface using ReST double-backtick
+    markers.
+- fix documentation generation
+- pass -q to test to avoid spamming the build log
+
+-------------------------------------------------------------------
+Tue Sep 16 13:53:43 UTC 2014 - tbechtold@suse.com
+
+- Update to version 4.1.1:
+  * Added support for Python 3.4.
+
+-------------------------------------------------------------------
+Sun Feb 16 18:55:17 UTC 2014 - os-dev@jacraig.com
+
+- Update to 4.1.0:
+  * Updated ``boostrap.py`` to version 2.2.
+  * Added ``@named(name)`` declaration, that specifies the component name, so
+    it does not have to be passed in during registration.
+- Change source URL, .zip not available for this version.
+
+-------------------------------------------------------------------
+Thu Dec 19 06:14:23 UTC 2013 - coolo@suse.com
+
+- BuildIgnore our own name - required by python-repoze.sphinx.autointerface,
+  but of course not needed
+
+-------------------------------------------------------------------
+Thu Aug  1 08:37:20 UTC 2013 - hpj@urpla.net
+
+- add unzip to BuildRequires
+
+-------------------------------------------------------------------
+Thu Aug  1 07:19:44 UTC 2013 - speilicke@suse.com
+
+- Ship upstream tarbal (zipfile) and fix Source URL
+
+-------------------------------------------------------------------
+Mon Jul 29 11:17:31 UTC 2013 - hpj@urpla.net
+
+- Updated to 4.0.5:
+  * Fixed a bug where a decorated method caused false positive failures on verifyClass().
+
+- Updated to 4.0.4:
+  * Fixed a bug that was revealed by porting zope.traversing. During a loop, the loop body modified a weakref dict causing a RuntimeError error.
+
+- generate documentation in -doc package
+- enable tests
+
+-------------------------------------------------------------------
+Mon Jan 14 13:53:10 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Mon Jan 14 13:52:19 UTC 2013 - p.drouand@gmail.com
+
+- Update to 4.0.3 version:
+  * Fleshed out PyPI Trove classifiers.
+- Remove duplicate files with fdupes
+
+-------------------------------------------------------------------
+Sat Oct 13 21:42:08 CST 2012 - douglarek@outlook.com
+
+- Fix spec bugs
+
+- Updated to 4.0.1
+    * Dropped explicit DeprecationWarnings for "class advice" APIS (these APIs are still deprecated under Python 2.x, and still raise an exception under Python 3.x, but no longer cause a warning to be emitted under Python 2.x).
+    * Automated build of Sphinx HTML docs and running doctest snippets via tox.
+    * Deprecated the "class advice" APIs from zope.interface.declarations: implements, implementsOnly, and classProvides. In their place, prefer the equivalent class decorators: @implementer, @implementer_only, and @provider. Code which uses the deprecated APIs will not work as expected under Py3k.
+    * Removed use of '2to3' and associated fixers when installing under Py3k. The code is now in a "compatible subset" which supports Python 2.6, 2.7, and 3.2, including PyPy 1.8 (the version compatible with the 2.7 language spec).
+    * Dropped explicit support for Python 2.4 / 2.5 / 3.1.
+    * Added support for PyPy.
+    * Added support for continuous integration using tox and jenkins.
+    * Added 'setup.py dev' alias (runs setup.py develop plus installs nose and coverage).
+    * Added 'setup.py docs' alias (installs Sphinx and dependencies).
+    * Replaced all unittest coverage previously accomplished via doctests with unittests. The doctests have been moved into a docs section, managed as a Sphinx collection.
+    * LP #910987: Ensure that the semantics of the lookup method of zope.interface.adapter.LookupBase are the same in both the C and Python implementations.
+    * LP #900906: Avoid exceptions due to tne new __qualname__ attribute added in Python 3.3 (see PEP 3155 for rationale). Thanks to Antoine Pitrou for the patch.
+
+-------------------------------------------------------------------
+Wed Feb  1 15:27:18 UTC 2012 - saschpe@suse.de
+
+- Simplified macro usage
+
+-------------------------------------------------------------------
+Fri Sep 23 10:27:03 UTC 2011 - saschpe@suse.de
+
+- Update to version 3.8.0:
+  * New module zope.interface.registry
+  * No longer Python 2.4 compatible (tested under 2.5, 2.6, 2.7, and 3.2).
+
+-------------------------------------------------------------------
+Tue Sep  6 15:16:18 UTC 2011 - saschpe@suse.de
+
+- Added provides/obsoletes for python-zope-interface
+
+-------------------------------------------------------------------
+Tue Sep  6 13:44:49 UTC 2011 - saschpe@suse.de
+
+- Renamed to python-zope.interface (from python-zopeinterface)
+- Simplyfied spec file
+- Update to version 3.7.0:
+  * LP #570942: Now correctly compare interfaces from different modules
+    but with the same names.
+  * LP #811792:  work around buggy behavior in some subclasses of
+    zope.interface.interface.InterfaceClass, which invoke __hash__
+    before initializing __module__ and __name__.  The workaround
+    returns a fixed constant hash in such cases, and issues a UserWarning.
+  * LP #804832: Under PyPy, zope.interface should not build its C
+    extension. Also, prevent attempting to build it under Jython.
+  * Add a tox.ini for easier xplatform testing.
+  * Fix testing deprecation warnings issued when tested under Py3K.
+  * LP 804951: InterfaceClass instances were unhashable under Python 3.x.
+  * LP #570942: Now correctly compare interfaces  from different modules
+    but with the same names.
+
+-------------------------------------------------------------------
+Wed Dec 15 14:34:50 UTC 2010 - saschpe@suse.de
+
+- add documentation files: COPYRIGHT.txt CHANGES.txt LICENSE.txt
+
+-------------------------------------------------------------------
+Sun Dec 12 15:50:03 UTC 2010 - saschpe@gmx.de
+
+- update to 3.6.1
+  * A non-ascii character in the changelog made 3.6.0 uninstallable
+    on Python 3 systems with another default encoding than UTF-8.
+  * Fixed compiler warnings under GCC 4.3.3.
+  * Python 2.3 is no longer supported.
+  * Use the standard Python doctest module instead of
+    zope.testing.doctest, which has been deprecated.
+  * Allow to bootstrap on Jython.
+- re-packaged with py2pack
+  * now builds on all RPM-based distros
+
+-------------------------------------------------------------------
+Tue Jun  3 04:41:14 CEST 2008 - crrodriguez@suse.de
+
+- needs fno-strict-aliasing
+
+-------------------------------------------------------------------
+Thu Aug  2 16:51:01 CEST 2007 - jmatejek@suse.cz
+
+- update to 3.3.0
+  * corresponds to new Zope versions
+  * adapter-lookup written in C to simplify application debugging
+  * various bugfixes
+
+-------------------------------------------------------------------
+Thu Oct 19 17:08:43 CEST 2006 - jmatejek@suse.cz
+
+- minor changes for better 64bit compatibility with PEP353
+
+-------------------------------------------------------------------
+Tue Feb 28 16:46:04 CET 2006 - jmatejek@suse.cz
+
+- updated to reflect python changes due to #149809
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:55 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Apr 14 11:58:57 CEST 2005 - mcihar@suse.cz
+
+- new package
+

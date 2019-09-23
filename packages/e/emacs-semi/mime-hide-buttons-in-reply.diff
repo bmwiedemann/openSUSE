@@ -1,0 +1,61 @@
+---
+ mime-view.el |   27 +++++++++++++++++----------
+ 1 file changed, 17 insertions(+), 10 deletions(-)
+
+--- a/mime-view.el
++++ b/mime-view.el
+@@ -77,6 +77,12 @@ buttom. Nil means don't scroll at all."
+   :group 'mime-view
+   :type '(repeat file))
+ 
++(defcustom mime-view-content-types-to-show '(application)
++  "Content types which have MIME buttons rendered."
++  :group 'mime-view
++  :type '(repeat sexp))
++
++(defvar mime-hide-buttons-in-reply nil)
+ 
+ ;;; @ in raw-buffer (representation space)
+ ;;;
+@@ -1078,10 +1084,14 @@ MEDIA-TYPE must be (TYPE . SUBTYPE), TYP
+     (or situation
+ 	(setq situation
+ 	      (mime-find-entity-preview-situation entity default-situation)))
+-    (let ((button-is-invisible
+-	   (eq (cdr (or (assq '*entity-button situation)
+-			(assq 'entity-button situation)))
+-	       'invisible))
++    (let* ((entity-button (cdr (or (assq '*entity-button situation)
++                                   (assq 'entity-button situation))))
++           (button-is-visible
++            (or mime-view-buttons-visible
++                (and entity-button
++                     (not (eq entity-button 'invisible)))
++                (member (cdr (assq 'type (mime-entity-content-type entity)))
++                        mime-view-content-types-to-show)))
+ 	  (header-is-visible
+ 	   (eq (cdr (or (assq '*header situation)
+ 			(assq 'header situation)))
+@@ -1094,11 +1104,8 @@ MEDIA-TYPE must be (TYPE . SUBTYPE), TYP
+       (set-buffer preview-buffer)
+       (setq nb (point))
+       (narrow-to-region nb nb)
+-      (or button-is-invisible
+-          ;; (if (mime-view-entity-button-visible-p entity)
+-	  (mime-view-insert-entity-button entity)
+-          ;;   )
+-	  )
++      (when (and button-is-visible (not mime-hide-buttons-in-reply))
++	  (mime-view-insert-entity-button entity))
+       (if header-is-visible
+ 	  (let ((header-presentation-method
+ 		 (or (cdr (assq 'header-presentation-method situation))
+@@ -1122,7 +1129,7 @@ MEDIA-TYPE must be (TYPE . SUBTYPE), TYP
+ 	      (if (functionp body-presentation-method)
+ 		  (funcall body-presentation-method entity situation)
+ 		(mime-display-text/plain entity situation)))
+-	  (when button-is-invisible
++	  (when (not button-is-visible)
+ 	    (goto-char (point-max))
+ 	    (mime-view-insert-entity-button entity)
+ 	    )

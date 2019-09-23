@@ -1,0 +1,13 @@
+<package name="strip-nondeterminism" project="openSUSE:Factory">
+  <title></title>
+  <description>File::StripNondeterminism is a Perl module for stripping bits of
+non-deterministic information, such as timestamps and file system
+order, from files such as gzipped files, ZIP archives, and Jar files.
+It can be used as a post-processing step to make a build reproducible,
+when the build process itself cannot be made deterministic.  It is used
+as part of the Reproducible Builds project.
+
+strip-nondeterminism contains the File::StripNondeterminism Perl module, 
+and the strip-nondeterminism command line utility.</description>
+  <devel project="devel:languages:perl" package="strip-nondeterminism"/>
+</package>

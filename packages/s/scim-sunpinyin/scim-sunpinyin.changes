@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Thu Nov 23 17:20:47 UTC 2017 - dimstar@opensuse.org
+
+- Add scim-sunpinyin-scons-on-py3.patch: Fix build with scons using
+  python3 as interpreter.
+
+-------------------------------------------------------------------
+Wed Jul 24 11:30:49 UTC 2013 - i@marguerite.su
+
+- fix openSUSE:Factory rpm 4.11 build
+
+-------------------------------------------------------------------
+Wed Oct 31 09:50:59 UTC 2012 - fjkong@suse.com
+
+- fix: scim-setup window won't appear. 
+  remove some deprecated functions, BuildRequire gtk3-devel
+
+-----------------------------------------------------------
+Sat Sep 15 20:56:31 CST 2012 - hillwood@linuxfans.org
+
+- Cleanup specfile.
+
+-----------------------------------------------------------
+Thu Sep  8 03:17:02 UTC 2011 - stecue@gmail.com
+
+- Rename libsunpinyin3-devel to libsunpinyin-devel to keep 
+  consistent with M17N.
+  
+-----------------------------------------------------------
+Thu Feb 24 00:00:00 CST 2011 - hillwood@linuxfans.org
+
+- new release 2.0.3
+

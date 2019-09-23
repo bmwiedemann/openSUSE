@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4ebc83a5a4b99887502dde59c5396c54</srcmd5>
+    <version>1.4.0</version>
+    <time>1485682584</time>
+    <user>dimstar_suse</user>
+    <comment>new package, moved from packman</comment>
+    <requestid>451400</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8ebaa5749eea1a05c6026829ae2b5b10</srcmd5>
+    <version>1.4.0</version>
+    <time>1485863189</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453387</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f8e530e102ccb9fa822aa995a1212714</srcmd5>
+    <version>1.4.0</version>
+    <time>1493819892</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492465</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>dfc8c2c39cee505b6d8faf02812d503e</srcmd5>
+    <version>1.4.0</version>
+    <time>1517606517</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571909</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9dab5d6b6d555b2792737dcde0cdc395</srcmd5>
+    <version>1.4.1</version>
+    <time>1521716774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589680</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>24e98ce24d9cf77adaf11bf1ecdeb9f7</srcmd5>
+    <version>1.4.1</version>
+    <time>1525121907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602532</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>076487403836fe8babb39d4d2e348db5</srcmd5>
+    <version>1.4.2</version>
+    <time>1557404901</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701722</requestid>
+  </revision>
+</revisionlist>

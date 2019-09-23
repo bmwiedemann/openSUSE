@@ -1,0 +1,16 @@
+<package name="perl-HTTP-Cookies" project="openSUSE:Factory">
+  <title>HTTP cookie jars</title>
+  <description>This class is for objects that represent a &quot;cookie jar&quot; -- that is, a
+database of all the HTTP cookies that a given LWP::UserAgent object knows
+about.
+
+Cookies are a general mechanism which server side connections can use to
+both store and retrieve information on the client side of the connection.
+For more information about cookies refer to
+&lt;URL:http://curl.haxx.se/rfc/cookie_spec.html&gt; and
+&lt;URL:http://www.cookiecentral.com/&gt;. This module also implements the new
+style cookies described in _RFC 2965_. The two variants of cookies are
+supposed to be able to coexist happily.</description>
+  <devel project="devel:languages:perl" package="perl-HTTP-Cookies"/>
+  <url>http://search.cpan.org/dist/HTTP-Cookies/</url>
+</package>

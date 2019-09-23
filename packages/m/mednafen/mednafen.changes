@@ -1,0 +1,262 @@
+-------------------------------------------------------------------
+Thu Apr 25 06:34:29 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to mednafen 1.22.2
+  * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
+
+-------------------------------------------------------------------
+Tue Jan 29 09:42:24 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to mednafen 1.22.1
+  * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
+
+-------------------------------------------------------------------
+Thu May  3 16:24:19 UTC 2018 - ilya@ilya.pp.ua
+
+- Update to mednafen 1.21.3
+  * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
+
+-------------------------------------------------------------------
+Mon Apr 16 17:35:08 UTC 2018 - ilya@ilya.pp.ua
+
+- Update to mednafen 1.21.2
+  * https://mednafen.github.io/documentation/ChangeLog.txt
+  * migrate to SDL2.
+- Specified correct license.
+- Remove CFLAGS and CXXFLAGS modifications.
+
+-------------------------------------------------------------------
+Mon Mar 12 18:29:18 UTC 2018 - ilya@ilya.pp.ua
+
+- Remove -O3 flag (build success but not run).
+- Add %defattr(0644,root,root,-) to %files macro.
+
+-------------------------------------------------------------------
+Fri Mar  9 21:17:21 UTC 2018 - ilya@ilya.pp.ua
+
+- Refresh spec-file via spec-cleaner.
+- Add %license macro.
+- Return -O3 flag.
+
+-------------------------------------------------------------------
+Mon Sep 18 22:19:52 UTC 2017 - ilya@ilya.pp.ua
+
+- Update to mednafen 0.9.48
+  * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
+
+-------------------------------------------------------------------
+Sun Sep  3 08:56:39 UTC 2017 - ilya@ilya.pp.ua
+
+- Remove devel files from doc.
+
+-------------------------------------------------------------------
+Tue Aug 29 17:34:51 UTC 2017 - ilya@ilya.pp.ua
+
+- Fix run (remove -O3, probably in the future I will return).
+- Fix sound (add alsa-devel to Build require).
+- Add separate packages for doc and lang.
+
+-------------------------------------------------------------------
+Sun Aug 27 21:52:03 UTC 2017 - ilya@ilya.pp.ua
+
+- Update to mednafen 0.9.47
+  * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
+
+-------------------------------------------------------------------
+Thu Aug 10 22:54:03 UTC 2017 - ilya@ilya.pp.ua
+
+- Update to mednafen 0.9.46
+  * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
+
+-------------------------------------------------------------------
+Sat Jul 15 20:36:27 UTC 2017 - ilya@ilya.pp.ua
+
+- Update spec-file
+
+-------------------------------------------------------------------
+Sat Jun 10 14:49:06 UTC 2017 - ilya@ilya.pp.ua
+
+- update to mednafen 0.9.45.1
+  * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
+
+-------------------------------------------------------------------
+Fri Jun  2 22:58:19 UTC 2017 - ilya@ilya.pp.ua
+
+- update to mednafen 0.9.45
+  * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
+
+-------------------------------------------------------------------
+Sat Apr 22 21:25:34 UTC 2017 - 13ilya@gmail.com
+
+- update to mednafen 0.9.44.1
+  * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
+
+-------------------------------------------------------------------
+Sat Apr 22 00:07:34 UTC 2017 - 13ilya@gmail.com
+
+- update to mednafen 0.9.44
+  * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
+
+-------------------------------------------------------------------
+Mon Feb 27 12:12:26 UTC 2017 - 13ilya@gmail.com
+
+- update to mednafen 0.9.43
+  * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
+
+-------------------------------------------------------------------
+Sat Feb 11 13:18:53 UTC 2017 - jengelh@inai.de
+
+- Update description. Simplify %build steps.
+
+-------------------------------------------------------------------
+Wed Feb  8 00:52:59 UTC 2017 - 13ilya@gmail.com
+
+- update to mednafen 0.9.42
+  * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
+
+-------------------------------------------------------------------
+Sat Jan 21 14:39:50 UTC 2017 - 13ilya@gmail.com
+
+- update to mednafen 0.9.41
+  * ChangeLog https://mednafen.github.io/documentation/ChangeLog.txt
+
+-------------------------------------------------------------------
+Sun Sep 25 20:55:11 EEST 2016 - 13ilya@gmail.com
+
+- update to 0.9.39.2,
+  removed old fix patches
+ Patch0:         Compile-fix
+
+-------------------------------------------------------------------
+Fri Apr 11 15:09:54 UTC 2014 - duwe@suse.com
+
+- update to 0.9.33.2,
+  removed old fix patches
+ Patch0:         %name-rpmlint.patch
+ Patch1:         %name-gcc45.patch
+  introduce new
+ Patch0:         Compile-fix
+
+-------------------------------------------------------------------
+Sun Apr 11 09:11:53 UTC 2010 - cmorve69@yahoo.es
+
+- update -> 0.8.C
+
+-------------------------------------------------------------------
+Tue Nov 25 00:00:00 CET 2008 - uli@suse.de
+
+- update -> 0.8.A
+  - NES:  Cleaned up the iNES loading code a bit, and added support for WRAM
+    on a few mappers that nominally shouldn't have WRAM, enabled if the
+    battery-backed bit is set in the iNES header.  Fixes "Family BASIC", and
+    probably a few bootleg games as well.
+  - NES:  Added partially-broken support for mapper 163.
+  - NES:  Added support for mapper 241.
+  - Fixed string constant-to-(char *) problems in drivers/cheat.cpp
+  - Added setting "osd.state_display_time", to control the length of time,
+    in milliseconds, the save state/movie screen is displayed after
+    selecting a save state or movie.
+  - The most recently-saved save state slot will now be colored differently
+    when selecting a save state slot.  Increased the brightness of non-empty
+    save state slots.  Empty save state slots are now black instead of being
+    partially transparent.
+  - PC-FX:  Fixed bugs in "Play Audio Track Index" and "Read Subchannel" MMC
+    commands, fixing the totally broken cinematic sequences in "Boundary
+    Gate".  There may still be bugs in these commands that don't cause any
+    known problems with games, so I will need to run tests on a real system.
+  - GBA: An error loading the custom colormap file is now treated as fatal.
+  - Updated the Russian translation with the translation done by rubicon.
+  - Added configure script option "--enable-altivec/--disable-altivec
+    (default: enabled)" for compiling on PowerPC architectures where AltiVec
+    is not supported, or causes problems.  This configure script option is
+    untested, however.
+  - Input for the virtual device on virtual port N will be disabled when the
+    buttons on the virtual device on virtual port N are being configured.
+    The last button pressed when in button configuration may still be taken
+    as virtual device input, however(a fix for this would be too invasive,
+    and so will be done in the 0.9.x unstable tree).
+  - PCE:  Added several missing input-related state variables to save
+    states, fixing several netplay/movie desynchronization issues under
+    certain situations.
+  - Fixed a bug when creating an SDL source surface, whose negative
+    effects(clipping rightmost columns) could be triggered when the "sdl"
+    vdriver setting was used with certain xscale and yscale settings that
+    would cause a 1:1 pixel copy operation.
+  - PC-FX:  Improved PSG LFO emulation again(Tyoushin Heiki Zeroigar uses it
+    for some sound effects, other games likely use it as well in similar
+    roles).
+  - PCE:  Improved PSG LFO emulation again(Hanii in the Sky, Juuouki, and
+    Flash Hiders use LFO).
+  - PCE: Altered the Street Fighter 2 autodetection code to be
+    data-agnostic.  The SF2 mapper will now be enabled for any ROM images
+    2MiB and over in size.
+  - Fixed a call to putenv(), to pass a static character array initialized
+    to a string constant instead of a string constant directly.
+  - Fixed a few argument descriptions(invoked with the -help command-line
+    switch) that weren't properly gettextized.
+  - Debugger:  Fixed a bug in the trace log code.  It would cause the
+    emulator to lock up if the user pressed Enter/Return in the prompt popup
+    without any text in the input field.
+  - SMS:  Removed the old unused Z80 emulator code from when SMS Plus was
+    assimilated.
+- fixed bugs found by rpmlint
+
+-------------------------------------------------------------------
+Tue Jun 10 00:00:00 CEST 2008 - uli@suse.de
+
+- update -> 0.8.9:
+  - GB: Corrected a lack of address masking in most of the cart RAM
+    emulation code.  Fixes a few Chinese GameBoy Color games.
+  - NES: (Re?)-added support for mapper 240(it was erroneously listed in the
+    documentation as being supported...).
+  - GBA:  Fixed a buffer overflow in the ROM image loading code.
+  - PC-FX:  Several variables related to subchannel reading weren't being
+    saved in save states.  Fixed.  (This fixes save states made within the
+    BIOS' CD-DA player)
+  - PCE: Altered how the ADPCM read and write addresses are set.  Fixes the
+    Super CD version of "Tengai Makyou Ziria", and "CD Mahjong Bishoujo
+    Chuushinha".  Thanks to Exophase and ChrlyMac for the tips. ***(This
+    change may potentially cause regressions.  If it does, please report
+    them at http://forum.fobby.net )***
+  - PC-FX: Fixed a few deprecated const string to char* conversions in
+    v810_cpuD.cpp.
+  - PCE: Fixed a bug with Arcade Card emulation with a tip from Exophase.
+    The ADPCM sound effects in Garou Densetsu II work correctly now.
+  - PCE: Reads from the timer count register the cycle it is set to reload
+    after expiring will now return 0x7F.  Fixes "Battle Royale".
+
+-------------------------------------------------------------------
+Fri Apr  4 00:00:00 CEST 2008 - uli@suse.de
+
+- update -> 0.8.8
+  - Added boolean setting "debugger.autostepmode" that, when set to 1, will
+    cause Mednafen to automatically start the debugger in step mode after a
+    game is loaded(only if Mednafen has a debugger for the emulated system,
+    of course).
+  - NES: Fixed CNROM emulation initialization bug.
+  - PCE: ADPCM software reset was erroneously also resetting the playback
+    frequency. Fixed. (Fixes ADPCM voices in Gulliver Boy)
+  - PCE: Fixed disassembly of the JMP $(AAAA, X) instruction.
+  - PCE, PC-FX: Improved PSG LFO emulation.
+  - PC-FX: Emulated gamepad button presses weren't being decoded from the
+    driver-side data correctly(causing problems on big-endian platforms).
+    Fixed.
+  - PC-FX: Improved the logging of the ROM font system call in the debugger,
+    to also include the callee address and the size of the glyph being
+    requested.
+  - PC-FX: Disassembly of the "nop" instruction will no longer show the
+    virtually meaningless operand.
+  - PC-FX: Fixed alignment and prettified the disassembly of LDSR and STSR
+    instructions.
+  - SMS: SMS pause and 2-player support were erroneously commented out. Fixed.
+
+-------------------------------------------------------------------
+Mon Jan 21 00:00:00 CET 2008 - uli@suse.de
+
+- update -> 0.8.7
+
+-------------------------------------------------------------------
+Wed Oct 24 00:00:00 CEST 2007 - uli@suse.de
+
+- update -> 0.8.4-rc3
+

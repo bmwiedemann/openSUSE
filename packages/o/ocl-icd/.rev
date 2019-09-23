@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ca55b608cb8748f038be3ab3a19a853</srcmd5>
+    <version>2.1.3</version>
+    <time>1435870093</time>
+    <user>dimstar_suse</user>
+    <comment>Part of OpenCL stack</comment>
+    <requestid>314091</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>864849f7bcf50039ffa8df2cbf74cd71</srcmd5>
+    <version>2.2.7</version>
+    <time>1441727041</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329368</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e79791e02a2a3e913173e488f7da2fda</srcmd5>
+    <version>2.2.8</version>
+    <time>1453998258</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356045</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>456a85d2e63c0e573f56f90b54fe65f0</srcmd5>
+    <version>2.2.8</version>
+    <time>1455701168</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359471</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8be4432bfe489ddd77a67f49448caec4</srcmd5>
+    <version>2.2.11</version>
+    <time>1485250738</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451806</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d00dd8f46fb4c4019c355a03db0cd746</srcmd5>
+    <version>2.2.11</version>
+    <time>1499880993</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509642</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>127390bd1509cc3de9afd00b89f9f412</srcmd5>
+    <version>2.2.11</version>
+    <time>1548335496</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667197</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>177d8433ec5bb6dcb68d1c774bc7a4e7</srcmd5>
+    <version>2.2.12</version>
+    <time>1567001091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726255</requestid>
+  </revision>
+</revisionlist>

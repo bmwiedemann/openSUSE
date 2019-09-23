@@ -1,0 +1,5 @@
+<package name="python-wxWidgets-3_0" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:wxWidgets" package="python-wxWidgets-3_0"/>
+</package>

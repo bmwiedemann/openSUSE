@@ -1,0 +1,13 @@
+Index: cscope-15.7/src/mypopen.c
+===================================================================
+--- cscope-15.7.orig/src/mypopen.c
++++ cscope-15.7/src/mypopen.c
+@@ -160,7 +160,7 @@ mypopen(char *cmd, char *mode)
+ 		fcntl(yourside, F_DUPFD, stdio);
+ #endif
+ 		close(yourside);
+-		execlp(shell, mybasename(shell), "-c", cmd, (void *)0);
++		execlp(shell, mybasename(shell), "-c", cmd, NULL);
+ 		_exit(1);
+ 	} else if (pid > 0)
+ 		tstat = signal(SIGTSTP, SIG_DFL);

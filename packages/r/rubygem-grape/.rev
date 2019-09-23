@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>60806407182114b92e20463c0217071c</srcmd5>
+    <version>1.0.1</version>
+    <time>1518697493</time>
+    <user>dimstar_suse</user>
+    <comment>required for building portus</comment>
+    <requestid>570725</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e31caee88544e468b214e9bff9b6fcdd</srcmd5>
+    <version>1.0.2</version>
+    <time>1518813809</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>576989</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8d3fa1427418026b82c1c092c3695f9f</srcmd5>
+    <version>1.0.3</version>
+    <time>1531946989</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621004</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>316248a4d91888275357779eaa538824</srcmd5>
+    <version>1.1.0</version>
+    <time>1540448431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643119</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d5fcb99e049dba1c31fc697efe76f6a6</srcmd5>
+    <version>1.2.2</version>
+    <time>1548062741</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656375</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>37c70efd76ca965c1f549ed3ac33616d</srcmd5>
+    <version>1.2.3</version>
+    <time>1560970793</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705991</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>688ecf1aa296ba98533d490b4618599b</srcmd5>
+    <version>1.2.4</version>
+    <time>1565096974</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>717297</requestid>
+  </revision>
+</revisionlist>

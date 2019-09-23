@@ -1,0 +1,24 @@
+---
+ Makefile.PL |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -112,7 +112,7 @@ sub post_initialize {
+ #define U8 U8
+ #include "encode.h"
+ END
+-    foreach my $table (keys %tables) {
++    foreach my $table (sort keys %tables) {
+         print XS qq[#include "${table}.h"\n];
+     }
+     print XS <<"END";
+@@ -141,7 +141,7 @@ PROTOTYPES: DISABLE
+ BOOT:
+ {
+ END
+-    foreach my $table (keys %tables) {
++    foreach my $table (sort keys %tables) {
+         print XS qq[#include "${table}.exh"\n];
+     }
+     print XS "}\n";

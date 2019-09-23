@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Fri Jul  5 12:24:40 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
+
+- Make pkg.install more resilient, allowing retries during install
+
+-------------------------------------------------------------------
+Tue Jul  2 11:18:50 UTC 2019 - Diego Vinicius Akechi <dakechi@suse.com>
+
+- Version bump 0.2.2
+  * Change the salt-formula directories permissions to 0750 to avoid
+    conflicts with the package salt-standalone-formulas-configuration.
+
+  * Correct the required package name to
+    salt-standalone-formulas-configuration
+
+-------------------------------------------------------------------
+Tue Jun 11 11:40:06 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Create package version 0.2.1 with fixed spec files. Now the package
+  is available in all SLE12 and SLE15 versions (boo#1137989, jsc#SLE-4031)
+
+-------------------------------------------------------------------
+Fri May 31 13:14:43 UTC 2019 - Diego Vinicius Akechi <dakechi@suse.com>
+
+- Version bump 0.2.0
+  * Include the salt-formulas-configuration dependency on
+    SLE/Leap 15-SP1 and higher. This package configures the shared salt
+    formulas location (/usr/share/salt-formulas) to be used by SUMA 4.0
+    or salt in standalone mode.
+  * Drops the habootstrap-formula-suma package, as the forms metadata
+    will be available only on SUMA 4.0 using the shared location.
+
+-------------------------------------------------------------------
+Thu May 16 09:13:17 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Remove network repository installation
+
+-------------------------------------------------------------------
+Thu Apr 25 12:26:43 UTC 2019 - Diego Vinicius Akechi <dakechi@suse.com>
+
+- Changed requires from salt-saphana to salt-shaptools.
+
+-------------------------------------------------------------------
+Tue Feb 19 17:21:39 UTC 2019 - dakechi@suse.com
+
+- Update to version 1.0.0+git.1550242845.0e69ab8:
+  * Allow pre-configured packages
+  * Update package installation to use ha pattern for SUSE distros
+  * Update join_timer parameter description
+  * Allow custom timer before cluster join
+  * Improve pre validation state to check the proper parameters
+  * Create suma form and adapt states to that
+  * Add new feature to the formula: - Ntp connection - SSH keys management - Watchdog - Mandatory pacakges and RA packages
+  * Add new options to configure the cluster in creation
+  * Update ha formula to use crmsh salt code
+  * Updated README and added comment about NET_IP in Vagrantfile
+
+- Consolidate the SUMA specific package into one .spec file
+
+-------------------------------------------------------------------
+Fri Sep 14 13:42:59 UTC 2018 - kgronlund@suse.com
+
+- Update to version 1.0.0+git.1536931866.e47f6ce:
+  * Pillar data has to be defined in a separate SLS
+  * Revised pillar data layout to make usage simpler
+  * Drop extraneous dash in join args
+  * Set group in metadata.yml
+
+-------------------------------------------------------------------
+Thu Sep 06 13:25:22 UTC 2018 - kgronlund@suse.com
+
+- Update to version 1.0.0+git.1536240306.8442de8:
+  * Add metadata.yml
+
+-------------------------------------------------------------------
+Thu Sep  6 12:37:13 UTC 2018 - kgronlund@suse.com
+
+- Initial version
+

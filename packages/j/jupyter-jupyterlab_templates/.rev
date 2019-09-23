@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2ab246090cb8ca1e108ede12aad99cd2</srcmd5>
+    <version>0.0.8</version>
+    <time>1558532344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.0.8
+  * Allow to delete default template #20
+  * Docs update/formatting/bugfixes/better linting/move to pytest
+- Rename to to match jupyter package naming guidelines.
+- Disable python2 build since jupyterlab no longer supports python2
+- Update to 0.0.7
+  * fixing icon
+  * remove ujson
+  * badges
+- Update to 0.0.5
+  * fixing #10 svg parsing error for icon
+  * fixed missing template names in firefox
+- Avoid bashism in scriptlet.
+- Use || true syntax instead of exit 0
+- Use %license tag
+- Initial version
+</comment>
+    <requestid>699506</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7ae09e827e3b6bc73d889976e58673fa</srcmd5>
+    <version>0.0.8</version>
+    <time>1559643160</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dependency name
+</comment>
+    <requestid>707297</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b13267f17a418bdd45d4cee3204d35cb</srcmd5>
+    <version>0.2.0</version>
+    <time>1569234729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>730779</requestid>
+  </revision>
+</revisionlist>

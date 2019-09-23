@@ -1,0 +1,415 @@
+-------------------------------------------------------------------
+Mon Mar  5 15:58:50 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group. Update summaries.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:34:01 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Dec 19 13:05:15 UTC 2016 - sor.alexei@meowr.ru
+
+- Remove the lynx build dependency: of questionable need.
+- Build for Gtk3 unconditionally.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Wed May 25 23:35:32 UTC 2016 - sreeves@suse.com
+
+- Update to GNOME 3.20.2 Fate#318572
+
+-------------------------------------------------------------------
+Thu Jan 14 12:11:44 UTC 2016 - dimstar@opensuse.org
+
+- Do not require sound-theme-freedesktop by libcanberra0: if this
+  is wanted on a default install, it is up to the DE pattern to
+  recommend/require this - it is not needed for the libraries
+  proper functioning.
+
+-------------------------------------------------------------------
+Mon Dec 28 16:43:10 UTC 2015 - zaitor@opensuse.org
+
+- Split out libcanberra-gtk-devel and libcanberra-gtk3-devel
+  sub-packages, this will make it possible for us to build
+  dependant packages without having to pull in both gtk2 and gtk3.
+
+-------------------------------------------------------------------
+Fri Nov  6 00:54:02 UTC 2015 - zaitor@opensuse.org
+
+- Split out a new sub-package canberra-gtk-play-gnome: Currently
+  there are no desktop-login, desktop-logout or session-ready
+  sounds in the freedesktop sound theme, so installing this will
+  require a different sound-theme for it to be operational. Having
+  this in a own sub-package will avoid logspam about missing files.
+  Fixes boo#953862.
+
+-------------------------------------------------------------------
+Wed Feb  6 15:38:50 UTC 2013 - dimstar@opensuse.org
+
+- Drop pkgconfig(gstreamer-1.0) BuildRequires: no longer build the
+  gstreamer backend. The default is PulseAudio, with a fallback to
+  alsa, which is sufficient. Helps against issues like bnc#800963.
+
+-------------------------------------------------------------------
+Fri Nov  9 18:27:56 UTC 2012 - michael.meeks@suse.com
+
+- Add libcanberra-broadway-fix.patch: Fix crash with
+  libcanberra-gtk-module's and non-X11 displays (bnc#789066).
+
+-------------------------------------------------------------------
+Tue Sep 25 11:52:28 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.30:
+  + Minor bug fixes
+  + Explicitly require x11 for GTK linking
+  + Port to GStreamer 1.0.
+- Add pkgconfig(glib-2.0) BuildRequires so it can be versioned.
+- Add pkgconfig(x11) BuildRequires: new explicit dependency.
+- Drop libcanberra-gst10.patch: fixed upstream.
+- Drop libtool BuildRequires and call to ./autogen.sh: no patch
+  requires bootstrapping.
+
+-------------------------------------------------------------------
+Mon Sep  3 16:07:52 UTC 2012 - dimstar@opensuse.org
+
+- Add libcanberra-gst10.patch: Port libcanberra to GStreamer 1.0.
+- Add libtool BuildRequires and call ./autogen.sh in build, as
+  above patch touches the build system
+- Replace pkgconfig(gstreamer-0.10) BuildRequires with
+  pkgconfig(gstreamer-1.0).
+
+-------------------------------------------------------------------
+Mon Jul  2 19:19:56 UTC 2012 - dimstar@opensuse.org
+
+- Add libcanberra-multi-backend.patch: Set the 'multi'-backend as
+  default and fix it to also work without the driver list being
+  passed from the command line. Fixes bnc#763243.
+
+-------------------------------------------------------------------
+Mon Jul  2 09:51:09 UTC 2012 - dimstar@opensuse.org
+
+- Add "# to be sourced" to libcanberra-gtk-module.sh (bnc#750980).
+  Xinitrc newly distinguishes between scripts that need to be
+  sourced and scripts that should be executed. As executing is the
+  default, scripts need to 'request to be sourced' using this
+  special tag.
+
+-------------------------------------------------------------------
+Wed May 16 06:11:59 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.29:
+  + Drop GConf usage.
+  + A couple of bugfixes.
+- Drop pkgconfig(gconf-2.0) BuildRequires and gconf schemas
+  packaging, as GConf usage got removed upstream.
+
+-------------------------------------------------------------------
+Sun Dec  4 13:45:30 UTC 2011 - dimstar@opensuse.org
+
+- Add libltdl-devel BuildRequires: it is required and was
+  implicitly brought in before.
+- Change gconf2-devel BuildRequires to pkgconfig(gconf-2.0).
+- Clean spec file using spec-cleaner.
+
+-------------------------------------------------------------------
+Mon Mar  7 15:34:08 UTC 2011 - fcrozat@novell.com
+
+- Fix directory ownership of
+  %{_libdir}/gnome-settings-daemon-3.0/gtk-modules in
+  gtk-module-common.
+- Remove --disable-rpath configure option: it's obsolete.
+
+-------------------------------------------------------------------
+Wed Mar  2 16:06:54 CET 2011 - fcrozat@novell.com
+
+- Update to version 0.28:
+  + enable gtk module by default in gnome3
+  + update login autostart files for gnome3
+- Stop making libcanberra-gtk-module-common noarch as there's a
+  file in %{_libdir}.
+
+-------------------------------------------------------------------
+Fri Feb 18 12:28:26 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.27:
+  + add utility to play boot up sound
+  + systemd: add unit for bootup and shutdown sounds
+  + cache: don't use $HOME when it is not set
+  + gtk3: skip gtk_quit_add() for now
+- Remove libcanberra-gtkquit.patch: fixed upstream
+
+-------------------------------------------------------------------
+Tue Feb 15 15:47:54 UTC 2011 - fcrozat@novell.com
+
+- Enable gtk+ 3 build by setting build_gtk3 to 1.
+- Add libcanberra-gtkquit.patch: do not use removed GTK+ 3 API.
+
+-------------------------------------------------------------------
+Tue Oct  5 10:26:51 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.26:
+  + Gtk+ 3.x fixes.
+
+-------------------------------------------------------------------
+Mon Aug  9 11:25:04 CEST 2010 - vuntz@opensuse.org
+
+- Disable the build of the GTK+ 3 support: with it,
+  canberra-gtk-play is built against GTK+ 3, which is something we
+  don't want to have at the moment. This is done with a define, so
+  it's easy to re-enable the GTK+ 3 support.
+
+-------------------------------------------------------------------
+Thu Jul 22 10:19:07 CEST 2010 - vuntz@opensuse.org
+
+- Improve summaries and descriptions.
+- Change alsa-devel, gstreamer-0_10-devel, gtk2-devel, gtk3-devel,
+  libpulse-devel, libvorbis-devel BuildRequires to pkgconfig()
+  BuildRequires for: alsa, gstreamer-0.10, gtk+-2.0, gtk+-3.0,
+  libpulse, vorbisfile.
+- Remove explicit Requires of libcanberra0 in libcanberra-gtk0.
+- Split libcanberra-gtk in libcanberra-gtk-module-common,
+  libcanberra-gtk2-module and canberra-gtk-play subpackages.
+- Rename libcanberra-gtk3 to libcanberra-gtk3-module.
+- Make libcanberra-gtk2-module and libcanberra-gtk3-module depend
+  on libcanberra-gtk-module-common, and add Supplements to install
+  them when libcanberra0 and gtk2/gtk3 are installed.
+- Add Provides/Obsoletes for libcanberra-gtk to canberra-gtk-play,
+  and add Supplements for gnome-session and gdm there too since
+  this package provides login sound.
+- Remove gtk-doc and gtk2-devel Requires in devel package: gtk-doc
+  is not needed and gtk2 will be automatically added with
+  pkgconfig() Requires.
+
+-------------------------------------------------------------------
+Tue Jul 13 16:37:13 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.25:
+  + gtk: optionally build for both gtk2 and gtk3
+  + cache: don't use destructors unless running in valgrind
+  + build fixes
+- Add gtk3-devel BuildRequires.
+- Create gtk3-0 and gtk3 subpackages for GTK+ 3 support.
+
+-------------------------------------------------------------------
+Sun May  9 21:53:46 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.24:
+  + fdo#27048: Compile with -DSEAL_ENABLE
+  + props: set a couple of additional properties by default and
+    ensure clients may override them
+  + pulse: fix finish notification for cached sample playback
+  + fork: call getpid() only once
+  + build-sys: bump sonames for v0.24
+  + pulse: fix use after free in stream_drain_cb().
+- Drop libcanberra-fix-pulse-crash.patch, fixed by upstream.
+
+-------------------------------------------------------------------
+Thu Apr  1 19:49:35 CEST 2010 - vuntz@opensuse.org
+
+- Add libcanberra-fix-pulse-crash.patch to fix a crash in
+  libcanberra that makes many apps crash. Fix bnc#591729.
+
+-------------------------------------------------------------------
+Sun Feb 21 16:06:30 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.23:
+  + Fix fd leak in libcanberra
+  + vorbis: support the recently defined 6.1 and 7.1 modes
+  + gstreamer: add missing unistd.h inclusion
+  + pulse: pass selected device to server when playing
+  + vala: update vapi file for new defintions
+  + pulse: fix minor race with sound cancellation
+
+-------------------------------------------------------------------
+Tue Jan  5 16:29:48 CET 2010 - jengelh@medozas.de
+
+- Package baselibs.conf
+
+-------------------------------------------------------------------
+Sat Nov 14 12:08:07 CET 2009 - vuntz@opensuse.org
+
+- Update to version 0.22:
+  + gtk: add missing cast
+  + gtk: only use GdkEvent::window if it is set
+- Changes from version 0.21:
+  + gtk: Do not dereference a null window.
+- Changes from version 0.20:
+  + gtk: fix casting
+- Changes from version 0.19:
+  + gtk: verify that a widget is realized before we try to access
+    its XID
+  + gtk: refresh event->window after dequeing
+  + gtk: even if GtkSettings is not available use context
+  + gtk: fix calculation of event hpos/vpos
+
+-------------------------------------------------------------------
+Tue Oct  6 19:49:38 CEST 2009 - vuntz@opensuse.org
+
+- Move vala .vapi files to devel package: it's only needed to
+  compile an application willing to use libcanberra.
+
+-------------------------------------------------------------------
+Mon Sep 28 18:10:48 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 0.18:
+  + gtk-module: don't leak memory when reading X11 properties
+  + gtk-module: recognize sticky windows properly
+  + gtk-module: don't generate sound events for undecorated popups
+  + pulse: when coming back from event loop wait, check if the
+    context still exists
+  + gtk-module: ignore xembed windows
+  + props: introduce CA_PROP_WINDOW_DESKTOP
+  + gtk: add various validity checks before using data from
+    GdkWindow
+  + gtk: initialize window.desktop property by default
+- Changes from version 0.17:
+  + gnome: play system-ready sound when gdm is ready
+  + pulse: relax latency requirements as much as possible to save
+    CPU
+  + gtk-module: fix handling menu popup detection
+  + gtk-module: make sure to process queued events before quitting
+  + vala: add vala .vapi files
+  + define properties for window position/size information
+  + gtk: generate window position/size properties in
+    ca_gtk_proplist_set_for_widget()
+  + gtk-module: properly detect whether a module is iconized
+  + gtk-module: clean up debug logging
+  + gtk: introduce two environment variables to force use of event
+    sounds/input feedback
+  + gtk-module: generate event sounds for drag/drop
+  + gtk-module: generate event sound when expander is expanded
+
+-------------------------------------------------------------------
+Thu Aug 27 16:46:02 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.16:
+  + add description to autostart file
+  + dso: quieten gcc a bit
+  + implement ca_context_playing() call
+  + vorbis: fix implicit channel map decoding master
+- Use spec-cleaner script to split BuildRequires/Requires lines,
+  and reorder the preamble.
+
+-------------------------------------------------------------------
+Wed Aug  5 11:54:06 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.15:
+  + gtk-module: use gdk_threads_add_idle_full instead of
+    g_idle_full() for thread-safety reasons
+  + pulse: split up handling of outstanding structs into part where
+    the lock must be taken and where not
+  + dso: don't assume LT_ERROR_MAX is size of table[]
+  + gtk: don't take gdk lock since it is not recursive and it might
+    already be taken
+
+-------------------------------------------------------------------
+Mon Jul 20 10:53:32 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.14:
+  + pulse: don't hang if vorbis hits EOF earlier than advertised
+  + be a bit more verbose on error conditions
+  + pulse: rework reconnection logic, to not enter endless loop
+    when server is not reachable, and can never be reached
+- Changes from version 0.13:
+  + pulse: use nofail
+  + canberra-gtk-play: add -V option for volume
+  + pulse: set volume when streaming directly
+  + pulse: don't hang when operation gets canceled
+  + make libcanberra-gtk multihead safe
+  + oss: initialize oss fd properly to avoid closing inappropriate
+    file descriptors
+  + remove deprecated GTK+ symbol. Fixes fdo#21358.
+  + add proper multichannel support (includes of WAVEX files)
+  + alsa: disable multichannel support for alsa
+  + oss: document lacking multichannel support for oss
+  + canberra-gtk-play: implement --property=
+  + pulse: implement canberra.force_channel property that forces an
+    event sound to a specific channel position
+  + fix missing fallback theme breaking the user specified one
+  + proplist: set prev_item when adding a new key/value pair
+
+-------------------------------------------------------------------
+Fri May 29 00:59:58 CEST 2009 - crrodriguez@suse.de
+
+- fix -devel package dependencies 
+
+-------------------------------------------------------------------
+Tue Apr 14 14:56:03 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.12:
+  + if supported, leave the volume for event sounds unspecified
+  + build system updates
+  + various fixes and updates for the PulseAudio backend
+  + detect forks and return an error for all functions in that case
+  + don't crash if there is no default display on initialization.
+    Fixes fdo#20693
+
+-------------------------------------------------------------------
+Fri Feb  6 11:14:31 EST 2009 - hfiguiere@suse.de
+
+- Review changes.
+
+-------------------------------------------------------------------
+Wed Jan 28 02:04:42 WET 2009 - lmedinas@gmail.com
+
+- Update to version 0.11:
+  + major GStreamer backend fixes
+  + update to libtool 2.2
+  + a few other fixes
+
+-------------------------------------------------------------------
+Tue Nov 25 17:22:20 CET 2008 - sbrabec@suse.cz
+
+- Supplement gtk2-32bit/gtk2-64bit in baselibs.conf (bnc#354164).
+
+-------------------------------------------------------------------
+Fri Oct 10 14:20:25 CEST 2008 - sbrabec@suse.cz
+
+- Update to version 0.10:
+  * install Gtk+ module using GConf
+  * few other fixes
+
+-------------------------------------------------------------------
+Fri Oct 10 14:17:51 CEST 2008 - sbrabec@suse.cz
+
+- Devel file contains gtk files => requires libcanberra-gtk0.
+
+-------------------------------------------------------------------
+Fri Aug 29 12:36:49 CEST 2008 - rodrigo@suse.de
+
+- Update to version 0.8:
+  + New OSS and GStreamer backends
+  + Portability fixes for FreeBSD/Solaris
+  + Multi backend works now
+- Splitted packages a bit more, adding a -gtk subpackage to contain
+  the GTK stuff
+- Renamed -gtk2 subpackage to -gtk0
+- Some other fixes in the .spec file
+
+-------------------------------------------------------------------
+Thu Aug 28 12:59:51 CEST 2008 - rodrigo@suse.de
+
+- BuildRequire update-desktop-files
+- Added missing %description for libcanberra
+
+-------------------------------------------------------------------
+Thu Aug 28 10:37:21 CEST 2008 - rodrigo@suse.de
+
+- Fixed rpmlint errors
+
+-------------------------------------------------------------------
+Wed Aug 27 16:58:19 CEST 2008 - rodrigo@suse.de
+
+- Don't remove README file
+
+-------------------------------------------------------------------
+Wed Aug 27 15:53:12 CEST 2008 - rodrigo@suse.de
+
+- Fixed Source file name
+
+-------------------------------------------------------------------
+Wed Aug 27 13:50:58 CEST 2008 - rodrigo@suse.de
+
+- First package of libcanberra, needed for new gnome-control-center

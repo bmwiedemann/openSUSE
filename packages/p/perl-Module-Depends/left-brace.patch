@@ -1,0 +1,13 @@
+Index: Module-Depends-0.16/t/depends.t
+===================================================================
+--- Module-Depends-0.16.orig/t/depends.t
++++ Module-Depends-0.16/t/depends.t
+@@ -44,7 +44,7 @@ like(
+ $notthere->dist_dir('t/empty')->find_modules;
+ like(
+     $notthere->error,
+-    qr{^No {Build,Makefile}.PL found },
++    qr/^No \{Build,Makefile\}.PL found /,
+     "fails on empty dir"
+ );
+ 

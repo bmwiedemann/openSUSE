@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>33b7c16ff09886d9fd01446ac3d3af79</srcmd5>
+    <version>2.4.1</version>
+    <time>1491566054</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>482637</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7f590d622193afa1bdc6f5ba71d5ab01</srcmd5>
+    <version>2.6.0</version>
+    <time>1503593706</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.0:
+    * Add support for Django up to 1.10.
+    * Remove support for Django&amp;lt;1.7
+    * Properly handle `^0.X.Y` in a NPM-compatible way
+    * According to SemVer 2.0.0, build numbers aren't ordered.
+    * Remove specs of the ``Spec('&amp;lt;1.1.3+')`` form
+    * Comparing ``Version('0.1.0')`` to ``Version('0.1.0+bcd')`` has new
+      rules
+    * :func:`semantic_version.compare` returns ``NotImplemented`` when its
+      parameters differ only by build metadata
+    * ``Spec('&amp;lt;=1.3.0')`` now matches ``Version('1.3.0+abde24fe883')``
+    * Fix handling of bumping pre-release versions, thanks to @minchinweb.
+    * Add support for NPM-style ``^1.2.3`` and ``~2.3.4`` specs, thanks to @skwashd
+    * Fix tests for Django 1.7+, thanks to @mhrivnak.
+- convert to singlespec (forwarded request 518098 from tbechtold)</comment>
+    <requestid>518099</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c3e6aab04a555600694846630168b49a</srcmd5>
+    <version>2.6.0</version>
+    <time>1545648225</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659663</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>49905b8fc4bfa25f301e4f073491726a</srcmd5>
+    <version>2.8.2</version>
+    <time>1568190938</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.8.2:
+  * various major parsing fixes</comment>
+    <requestid>729784</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,10 @@
+<package name="jack_capture" project="openSUSE:Factory">
+  <title>A small program to record via JACK</title>
+  <description>jack_capture is a small program to capture whatever
+sound is going out to your speakers into a file.
+
+Author: Kjetil S. Matheussen
+
+</description>
+  <devel project="multimedia:apps" package="jack_capture"/>
+</package>

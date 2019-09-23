@@ -1,0 +1,5 @@
+<package name="perl-MIME-tools" project="openSUSE:Factory">
+  <title>modules for parsing (and creating!) MIME entities</title>
+  <description>Modules for parsing (and creating!) MIME entities</description>
+  <devel project="devel:languages:perl" package="perl-MIME-tools"/>
+</package>

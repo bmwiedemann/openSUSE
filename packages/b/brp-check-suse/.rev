@@ -1,0 +1,505 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>873983d0417250fc2146c981a6df78d1</srcmd5>
+    <version>1.0</version>
+    <time>1220536800</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="8">
+    <srcmd5>845efda55005ce62b610ab05bfba2864</srcmd5>
+    <version>1.0</version>
+    <time>1222261538</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="9">
+    <srcmd5>001da745c90ddfe5d3bffb0f41d3d93e</srcmd5>
+    <version>1.0</version>
+    <time>1223311409</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="10">
+    <srcmd5>dcc1acae71e4fa7e49fa87832ac8ae0b</srcmd5>
+    <version>1.0</version>
+    <time>1223482626</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="11">
+    <srcmd5>438a0de3c694e4af3ba9aee2f815a7c7</srcmd5>
+    <version>1.0</version>
+    <time>1224112539</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="12">
+    <srcmd5>4adb3c00f292a7454fde80b36e25cf77</srcmd5>
+    <version>1.0</version>
+    <time>1224682279</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>2af48b84050e12c4a67b043d6fa086b0</srcmd5>
+    <version>1.0</version>
+    <time>1226448450</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>b84f6aac7e868063b7bc6e3cc00a47c6</srcmd5>
+    <version>1.0</version>
+    <time>1227195667</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>45e446505f44cae4483810440deed361</srcmd5>
+    <version>1.0</version>
+    <time>1228410202</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>e1be32657c796a43a272f6b31a57a9fe</srcmd5>
+    <version>1.0</version>
+    <time>1229445722</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>794241bc37cb7bbaf2ea7a1f789d0a94</srcmd5>
+    <version>1.0</version>
+    <time>1231433857</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="18">
+    <srcmd5>580ca981abf77784ce6b035cdac91928</srcmd5>
+    <version>1.0</version>
+    <time>1231951677</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>8227d404181317a6a84fec4e30e716f4</srcmd5>
+    <version>1.0</version>
+    <time>1235693753</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="21">
+    <srcmd5>4d275256d6d0f0cf586d5049bb27159c</srcmd5>
+    <version>1.0</version>
+    <time>1253208719</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/brp-check-suse based on submit request 20587 from user oertel
+</comment>
+  </revision>
+  <revision rev="15" vrev="22">
+    <srcmd5>048858a58bb81a37ad15633af1c49742</srcmd5>
+    <version>1.0</version>
+    <time>1253231478</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/brp-check-suse based on submit request 20594 from user oertel
+</comment>
+  </revision>
+  <revision rev="16" vrev="24">
+    <srcmd5>048858a58bb81a37ad15633af1c49742</srcmd5>
+    <version>1.0</version>
+    <time>1253231478</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/brp-check-suse based on submit request 20594 from user oertel
+</comment>
+  </revision>
+  <revision rev="17" vrev="25">
+    <srcmd5>04b5264caa7236c49dab5557ffc72dce</srcmd5>
+    <version>1.0</version>
+    <time>1265917503</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/brp-check-suse based on submit request 32339 from user oertel
+</comment>
+  </revision>
+  <revision rev="18" vrev="26">
+    <srcmd5>6bf30d655b624e5375ad69493bfdeb0a</srcmd5>
+    <version>1.0</version>
+    <time>1266499284</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/brp-check-suse based on submit request 32563 from user oertel
+</comment>
+  </revision>
+  <revision rev="19" vrev="27">
+    <srcmd5>84168cde45c3f3fd8b09c3d57f3a800e</srcmd5>
+    <version>1.0</version>
+    <time>1268923115</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="20" vrev="28">
+    <srcmd5>b4c4082073106b4efecb976e3ebec10d</srcmd5>
+    <version>1.0</version>
+    <time>1271186546</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/brp-check-suse based on submit request 37831 from user oertel
+</comment>
+    <requestid>37831</requestid>
+  </revision>
+  <revision rev="21" vrev="30">
+    <srcmd5>b4c4082073106b4efecb976e3ebec10d</srcmd5>
+    <version>1.0</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="31">
+    <srcmd5>b4c4082073106b4efecb976e3ebec10d</srcmd5>
+    <version>1.0</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="32">
+    <srcmd5>5ac12602c0f53275781f72bf8fb419a4</srcmd5>
+    <version>1.0</version>
+    <time>1290160954</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53367 from user coolo
+</comment>
+    <requestid>53367</requestid>
+  </revision>
+  <revision rev="24" vrev="33">
+    <srcmd5>db08d0afe44f7dd0ce5ed85d6f79ac36</srcmd5>
+    <version>1.0</version>
+    <time>1290160959</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53367
+</comment>
+  </revision>
+  <revision rev="25" vrev="34">
+    <srcmd5>593ad373fdabcdf13652dc9b13c13533</srcmd5>
+    <version>1.0</version>
+    <time>1294933566</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58060 from user oertel
+</comment>
+    <requestid>58060</requestid>
+  </revision>
+  <revision rev="26" vrev="35">
+    <srcmd5>9442f41e29bd2ee22b18e5043fe79623</srcmd5>
+    <version>1.0</version>
+    <time>1294933571</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58060
+</comment>
+  </revision>
+  <revision rev="27" vrev="38">
+    <srcmd5>9442f41e29bd2ee22b18e5043fe79623</srcmd5>
+    <version>1.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="28" vrev="39">
+    <srcmd5>cccba69646d06c3e012078b5ea78ed58</srcmd5>
+    <version>1.0</version>
+    <time>1299509008</time>
+    <user>saschpe</user>
+    <comment>Copy from IBS home:dec16180:ldig:branches:SUSE:Factory:Head/brp-check-suse based on submit request 11015 from user dec16180
+</comment>
+  </revision>
+  <revision rev="29" vrev="40">
+    <srcmd5>7b526e6ed58d61692488e3cc5cac561e</srcmd5>
+    <version>1.0</version>
+    <time>1304339955</time>
+    <user>saschpe</user>
+    <comment>- try to make sure it really is a libtool file before taking any action</comment>
+    <requestid>68758</requestid>
+  </revision>
+  <revision rev="30" vrev="41">
+    <srcmd5>7c05e6968f57d8b668e4d011d75fcc11</srcmd5>
+    <version>1.0</version>
+    <time>1304339964</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68758
+</comment>
+  </revision>
+  <revision rev="31" vrev="42">
+    <srcmd5>77b447a4f2ccc1c787ce89b5b10d6458</srcmd5>
+    <version>1.0</version>
+    <time>1305552765</time>
+    <user>saschpe</user>
+    <comment> - remove brp-pie, replaced with rpmlint check</comment>
+    <requestid>70195</requestid>
+  </revision>
+  <revision rev="32" vrev="43">
+    <srcmd5>e59f67e57a74a5965da2b1e3cf7f3f97</srcmd5>
+    <version>1.0</version>
+    <time>1305552778</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70195
+</comment>
+  </revision>
+  <revision rev="33" vrev="44">
+    <srcmd5>75ccd585d1434b17afa37f6fe6a462bc</srcmd5>
+    <version>1.0</version>
+    <time>1310471353</time>
+    <user>darix</user>
+    <comment>- do no longer check for libraries in /usr (bnc#696004) (forwarded request 76058 from coolo)</comment>
+    <requestid>76088</requestid>
+  </revision>
+  <revision rev="34" vrev="45">
+    <srcmd5>dd33b1221c81486e215c54e84539eb11</srcmd5>
+    <version>1.0</version>
+    <time>1310471373</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 76088
+</comment>
+  </revision>
+  <revision rev="35" vrev="46">
+    <srcmd5>7df71daf9de3334fb4729798c7f1643e</srcmd5>
+    <version>1.0</version>
+    <time>1316616968</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>83849</requestid>
+  </revision>
+  <revision rev="36" vrev="48">
+    <srcmd5>7df71daf9de3334fb4729798c7f1643e</srcmd5>
+    <version>1.0</version>
+    <time>1319181795</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="37" vrev="49">
+    <srcmd5>1d144d8b67baf595b9091f6642d07a69</srcmd5>
+    <version>1.0</version>
+    <time>1323190906</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="38" vrev="50">
+    <srcmd5>6457764e3d062d39f747f6083e7a092e</srcmd5>
+    <version>1.0</version>
+    <time>1323705365</time>
+    <user>coolo</user>
+    <comment>- let rpm call everything below /usr/lib/rpm/brp-suse.d and do no
+  longer define a hard coded list of brp scripts (forwarded request 96285 from coolo)</comment>
+    <requestid>96293</requestid>
+  </revision>
+  <revision rev="39" vrev="51">
+    <srcmd5>f905b663136e062919a5e19496ca99eb</srcmd5>
+    <version>1.0</version>
+    <time>1331579510</time>
+    <user>coolo</user>
+    <comment>- Add brp-check-xdg-menus.patch: Accept all icons specified in icon
+  naming spec.</comment>
+    <requestid>108808</requestid>
+  </revision>
+  <revision rev="40" vrev="52">
+    <srcmd5>595d2a62962eca732fb05d3514fa1d18</srcmd5>
+    <version>1.0</version>
+    <time>1331899797</time>
+    <user>coolo</user>
+    <comment>- integrate brp-check-xdg-menus.patch (and add to git)
+- ignore empty elements in rpath</comment>
+    <requestid>109105</requestid>
+  </revision>
+  <revision rev="41" vrev="54">
+    <srcmd5>595d2a62962eca732fb05d3514fa1d18</srcmd5>
+    <version>1.0</version>
+    <time>1340183214</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="42" vrev="55">
+    <srcmd5>35fb280a0219b70eb8efb67e1c6baf55</srcmd5>
+    <version>1.0</version>
+    <time>1341214507</time>
+    <user>saschpe</user>
+    <comment>- do not allow symlinks to point to itself (not existant as result) (forwarded request 126814 from coolo)</comment>
+    <requestid>126819</requestid>
+  </revision>
+  <revision rev="43" vrev="56">
+    <srcmd5>1ec6ad2b847d733ffd067aefcdb987d0</srcmd5>
+    <version>1.0</version>
+    <time>1352795873</time>
+    <user>coolo</user>
+    <comment>- document the need for full perl</comment>
+    <requestid>140949</requestid>
+  </revision>
+  <revision rev="44" vrev="58">
+    <srcmd5>1ec6ad2b847d733ffd067aefcdb987d0</srcmd5>
+    <version>1.0</version>
+    <time>1359108716</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="60">
+    <srcmd5>1ec6ad2b847d733ffd067aefcdb987d0</srcmd5>
+    <version>1.0</version>
+    <time>1379662057</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>f7a18c9c8cd42271e5d9bd3962425af1</srcmd5>
+    <version>13.2+git20140224.a3fcc48</version>
+    <time>1393342870</time>
+    <user>scarabeus_factory</user>
+    <comment>- switch to _service fetching from github
+- fix brp-symlinks to avoid errors on links to alternatives and
+  remove check-broken-symlinks.diff</comment>
+    <requestid>223631</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>237141d5df52b00a0478e23a901c416d</srcmd5>
+    <version>13.2+git20140702.039494f</version>
+    <time>1404973482</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239311</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>6bf15d4b9945f44e814450c5e676307e</srcmd5>
+    <version>13.2+git20140727.d76b99d</version>
+    <time>1406698455</time>
+    <user>coolo</user>
+    <comment>this package is crucial as it can cause failure of build for every package
+
+I believe that all the changes are mature enough to be propagated to
+openSUSE:Factory and test it against all the packages.
+
+I'll check failing packages after submission and rebuild.
+
+Lets break everything :)
+
+
+- brp-25-symlink: add mising '/etc/alternatives' back to whitelist
+
+- brp-25-symlink: fix eating /./ in path
+
+- massive rewrite of brp-25-symlink to reduce number of calls our
+  tests shown speedup from 8,5 mins to 1 min for kernel-default
+  (year ago)
+
+- All GTK apps are allowed to assume the presence of the
+  Adwaita-icon-theme package; As a result of this, we now accept icons
+  in icons/Adwaita on the whitelist (just as hicolor).
+  patch by DimStar
+
+- remove brp-20-check-la, it is broken and la files are mostly
+  deleted anyway
+- reduction of number of calls used by using more bashism, passing
+  more regexp at once, use more double quotes
+   brp-15-strip-debug
+   brp-45-tcl
+   brp-50-check-python
+   brp-60-hook</comment>
+    <requestid>242571</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>e90f60bee428224f234d38f3fecc0321</srcmd5>
+    <version>13.2+git20140727.d76b99d</version>
+    <time>1407485423</time>
+    <user>lnussel</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>243778</requestid>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>e90f60bee428224f234d38f3fecc0321</srcmd5>
+    <version>13.2+git20140727.d76b99d</version>
+    <time>1409300584</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>9222caab12ad640d70f2ccf85cc153e0</srcmd5>
+    <version>13.2+git20140829.9539e1d</version>
+    <time>1415118442</time>
+    <user>coolo</user>
+    <comment>- Update to version 13.2+git20140829.9539e1d:
+  + xdg_menu: use File::Find instead of calling out to find
+  + brp-25-symlink: fix missing alternatives
+  + brp-25-symlink: fix eating /./ in path
+  + brp-25-symlink: massive rewrite to reduce number of calls
+  + brp-40-rootfs: reduce number of calls
+  + brp-60-hook: add some double quotes
+  + brp-50-check-python: add some double quotes, remove commented code
+  + Adwaita is a defined icon theme mandatory installed as dependency to GTK3.</comment>
+    <requestid>257777</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>e5021390a1896a601b31e96d0b16b04e</srcmd5>
+    <version>13.2+git20150217.031533d</version>
+    <time>1425030945</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286487</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>42cb997d6012c543edbf727c48cfa6ee</srcmd5>
+    <version>13.2+git20150217.031533d</version>
+    <time>1429768528</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>298040</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>7e2965e11e320e055ac0b7e5f2e29a02</srcmd5>
+    <version>13.2+git20150521.971ea2f</version>
+    <time>1453799661</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355223</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>3525fb8c16ecd2ca78b259f75e53cb52</srcmd5>
+    <version>84.87+git20160906.bb0a7d0</version>
+    <time>1473679271</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20160906.bb0a7d0:
+  * brp-25-symlink: handle properly symlinks to root directory
+  * - do not fail over new DefaultLayout element
+  * neededforbuild -&gt; BuildRequires
+  * properly create tarball
+  * Hint to the desktop category rules. (#6)</comment>
+    <requestid>425199</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>120600a8ac2ddd3e739e807d6d7cfb53</srcmd5>
+    <version>84.87+git20170602.cec5415</version>
+    <time>1497273004</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501311</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>2a0747a24aabcec1e618d7674d3f26c2</srcmd5>
+    <version>84.87+git20180809.3335364</version>
+    <time>1537187130</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634754</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>3f43c3d45829985b4e45178dcf2b0d90</srcmd5>
+    <version>84.87+git20181106.224b37d</version>
+    <time>1542012631</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20181106.224b37d:
+  * brp-15-strip-debug: deal with libs where file outputs
+    more text after &quot;not stripped&quot; (bsc#1114695)</comment>
+    <requestid>646678</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>e689c55d66a4d501406c8fa0a3fbc3b1</srcmd5>
+    <version>84.87+git20190423.d0bda31</version>
+    <time>1562591380</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713085</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>d3edb2c27773f6386b7284f632275aab</srcmd5>
+    <version>84.87+git20190702.bac0cab</version>
+    <time>1564413821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714178</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>af5db3eebd8a8e896c4aee0194a4debc</srcmd5>
+    <version>84.87+git20190807.d5563f2</version>
+    <time>1567678151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721541</requestid>
+  </revision>
+</revisionlist>

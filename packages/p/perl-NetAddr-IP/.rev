@@ -1,0 +1,239 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>232c605d98a2671e3a951167f521efab</srcmd5>
+    <version>3.32</version>
+    <time>1168903884</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>353f0540b8dcb1e4d9595abbb2ecc71c</srcmd5>
+    <version>4.004</version>
+    <time>1170167177</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="103">
+    <srcmd5>353f0540b8dcb1e4d9595abbb2ecc71c</srcmd5>
+    <version>4.004</version>
+    <time>1170167177</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="104">
+    <srcmd5>98f8ae5b6a940f82d90d7b8e454b65a2</srcmd5>
+    <version>4.004</version>
+    <time>1245337740</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>63fecfd980dac56fd911a3d41ad25982</srcmd5>
+    <version>4.026</version>
+    <time>1248823193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>63fecfd980dac56fd911a3d41ad25982</srcmd5>
+    <version>4.026</version>
+    <time>1248823193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>20469357e79b6f67b0f8721ee5f2901e</srcmd5>
+    <version>4.026</version>
+    <time>1268925553</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d48f9d517e7e610202be23851ca62cb6</srcmd5>
+    <version>4.027</version>
+    <time>1271807804</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-NetAddr-IP based on submit request 38388 from user computersalat
+</comment>
+    <requestid>38388</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d48f9d517e7e610202be23851ca62cb6</srcmd5>
+    <version>4.027</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>d48f9d517e7e610202be23851ca62cb6</srcmd5>
+    <version>4.027</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>36e69809f82edb3f498696961867cba3</srcmd5>
+    <version>4.030</version>
+    <time>1281392857</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-NetAddr-IP based on submit request 44990 from user computersalat
+</comment>
+    <requestid>44990</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>900a9dee8a395decd8a931aedca44eff</srcmd5>
+    <version>4.030</version>
+    <time>1291583411</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54597 from user coolo
+</comment>
+    <requestid>54597</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>10c387a0e7f70220ba6d97ea7d7a23ea</srcmd5>
+    <version>4.030</version>
+    <time>1291583417</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54597
+</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>10c387a0e7f70220ba6d97ea7d7a23ea</srcmd5>
+    <version>4.030</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a127173aaa0cc973ad45069a21c7be3b</srcmd5>
+    <version>4.042</version>
+    <time>1301655105</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65734 from user coolo
+</comment>
+    <requestid>65734</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>6060ee31dfdcb27223611606fa874590</srcmd5>
+    <version>4.042</version>
+    <time>1301655119</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65734
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ed99690f5c9ba7b61bede90c716a76d0</srcmd5>
+    <version>4.043</version>
+    <time>1302246078</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66420 from user licensedigger
+</comment>
+    <requestid>66420</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>2843fde50420b59a7b7b7443c14d341e</srcmd5>
+    <version>4.043</version>
+    <time>1302246086</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66420
+</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a3a58d6d55a9517fbb1167e2dae9d933</srcmd5>
+    <version>4.044</version>
+    <time>1316437795</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>82389</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>a3a58d6d55a9517fbb1167e2dae9d933</srcmd5>
+    <version>4.044</version>
+    <time>1319182294</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ecb22560dcbdd689e6904f96bacd295a</srcmd5>
+    <version>4.058</version>
+    <time>1324547668</time>
+    <user>coolo</user>
+    <comment>- updated to 4.058
+      up rev for documentation update
+      update documentation in InetBase v0.06
+      Lite.pm v1.40
+      add call to InetBase::fillIPv4 to all uses of gethostbyname
+      break out the code in InetBase v0.05 that expands short IPv4 
+      addresses into dotquad format to account for broken BSD 
+      implementations of inet_aton and gethostbyname that do 
+      not recognize the short format. EXPORT this as sub 'fillIPv4'
+      in Util.pm v1.45, add 'fillIPv4' to calls to gethostbyname to 
+      work around broken inet_aton and gethostbyname implementations
+      in certain BSD implementations
+
+- update to 4.056, see Changes - a lot of them</comment>
+    <requestid>97120</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>2345630617b861508b81591141ae1024</srcmd5>
+    <version>4.058</version>
+    <time>1331124257</time>
+    <user>coolo</user>
+    <comment>Fixed typo in perl-NetAddr-IP.spec description (forwarded request 108294 from aturrini)</comment>
+    <requestid>108307</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>2345630617b861508b81591141ae1024</srcmd5>
+    <version>4.058</version>
+    <time>1340183894</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>2345630617b861508b81591141ae1024</srcmd5>
+    <version>4.058</version>
+    <time>1359109766</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6f0162c97ab0361a34cbbe1016a04ca2</srcmd5>
+    <version>4.069</version>
+    <time>1371140202</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0+ or ClArtistic
+See COPYING and Artistic (forwarded request 178301 from babelworx)</comment>
+    <requestid>178315</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>6f0162c97ab0361a34cbbe1016a04ca2</srcmd5>
+    <version>4.069</version>
+    <time>1379663798</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>21068975a4dea02286a062ec52dc0e53</srcmd5>
+    <version>4.071</version>
+    <time>1385562664</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208440</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>20c81780d9bb34ff1fdc97b6d77a261c</srcmd5>
+    <version>4.072</version>
+    <time>1392111895</time>
+    <user>coolo</user>
+    <comment>- updated to 4.072
+  modify Makefile.PL to bypass missing 'pod2text'</comment>
+    <requestid>221508</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>20c81780d9bb34ff1fdc97b6d77a261c</srcmd5>
+    <version>4.072</version>
+    <time>1409302434</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>75c237733692250cfea65fd0a1b213ae</srcmd5>
+    <version>4.079</version>
+    <time>1467541086</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398556</requestid>
+  </revision>
+</revisionlist>

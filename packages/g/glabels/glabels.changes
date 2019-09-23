@@ -1,0 +1,372 @@
+-------------------------------------------------------------------
+Sat Apr 28 16:40:01 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.4.1:
+  + Fixed crash when providing invalid file on command line.
+  + Fixed crash of glabels-batch due to missing function prototype.
+  + Added "Language" headers to po files.
+  + Fixed wrapping issue with text objects when auto_shrink is
+    enabled.
+  + Fixed out-of-bounds read in text_nodes.
+  + Fixed crash when searching select product combo boxes.
+  + Fixed portability issue to signedness of char type.
+  + New templates.
+  + Updated translations.
+- Drop glabels-missing-function-prototype.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jul  4 19:43:49 UTC 2017 - malcolmlewis@opensuse.org
+
+- Drop conditional barcode BuildRequires, barcode-devel have made a
+  comeback.
+
+-------------------------------------------------------------------
+Sun Apr 24 10:42:24 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.4.0:
+  + Fixed missing contacts when importing from vcard.
+  + Create vcard composite address entry from components, if
+    missing.
+  + Auto-detect file encoding of CSV files.
+  + Fixed sensitivity of first handle of line objects.
+  + Object dragging enhancements.
+  + Fixed problem with setting shadow color of line and text
+    objects from key.
+  + Use current label's path to set default "save as" directory.
+  + Added properties dialog.
+  + Fixed potential crash on "Select All".
+  + Fixed delayed rotate/flip.
+  + Fixed clipping issue when drawing beyond label editor's drawing
+    area.
+  + Removed final windowing system and dbus dependencies from
+    glabels-3-batch.
+  + Added a GS1 input mode for Datamatrix barcodes using the zint
+    backend.
+  + Numerous new templates and fixes to the product database.
+  + Updated translations.
+- Add glabels-missing-function-prototype.patch: Add missing
+  function prototype to header, fixes build.
+
+-------------------------------------------------------------------
+Tue Nov 11 19:51:55 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.2.1 (boo#921140):
+  + Fixed "new label dialog" crash introduced with Gtk 3.14.
+  + Fixed text box layout problems with center and right alignment.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan 25 21:59:27 UTC 2014 - zaitor@opensuse.org
+
+- Add conditional barcode BuildRequires for 13.2 and newer, as
+  barcode-devel was dropped from factory.
+
+-------------------------------------------------------------------
+Mon Dec 23 22:23:59 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.2.0:
+  + Fixed bug causing object editor to remain active after object
+    deleted.
+  + Embed text directly to printsrteam rather than outline.
+  + Added workaround for pango kerning bug (bgo#700592).
+  + Fixed many gtk+ deprecations.
+  + Document updates.
+  + Additional templates and fixes.
+  + Updated to workaround evolution-data-server API breakage.
+  + Fixed desktop file validation problems.
+  + Updated translations.
+- Drop glabels-eds-3.6.patch: fixed upstream.
+- Add itstool BuildRequires: new dependency for building help.
+
+-------------------------------------------------------------------
+Tue Aug 13 17:27:32 UTC 2013 - dap.darkness@gmail.com
+
+- Minor spec-file cleanups.
+
+-------------------------------------------------------------------
+Tue Aug 13 11:19:00 UTC 2013 - nekolayer@yandex.ru
+
+- Add qrcode-devel BuildRequires: Add support for qr-codes.
+
+-------------------------------------------------------------------
+Wed Oct 24 09:53:46 UTC 2012 - p.drouand@gmail.com
+
+- Update to version 3.0.1:
+  + Fixed bug causing extra pages to be printed when doing a
+    document merge
+  + Fixed font scaling problems when doing a document merge
+  + Added missing dependencies to libglabels and libglbarcode
+    pkg-config files
+  + Fixed invalid gsettings schema file
+  + Fixed incorrect clip region for rectangular labels
+  + Numerous new templates and fixes
+  + Updated translations.
+- Drop glabels-unused_screenshot.patch: fixed upstream.
+- Add glabels-eds-3.6.patch: Fix build wth e-d-s 3.6.
+- Add explicit (but not new) pkgconfig()-BuildRequires, to reflect
+  more precisely what configure checks for (avoiding issues for
+  future packaging changes in underlying packages):
+  + cairo, pangocair, gobject-2.0
+- Remove glib2-devel and libxml-devel Requires from -devel file:
+  they are added automatically by rpm/pkg-config.
+- Drop alternative post/postun scripts for openSUSE < 11.3.
+- No longer pass --disable-scrollkeeper to configure (it's an
+  unknown parameter) and do not delete a non-existing scrollkeeper
+  directory in install section.
+
+-------------------------------------------------------------------
+Tue Jul  3 19:39:25 UTC 2012 - dimstar@opensuse.org
+
+- Add glabels-unused_screenshot.patch: Do not install dangling
+  symlinks.
+
+-------------------------------------------------------------------
+Mon Oct  3 07:41:42 UTC 2011 - vuntz@opensuse.org
+
+- Add explicit shared-mime-info BuildRequires since we use the
+  %mime_database_* macros.
+
+-------------------------------------------------------------------
+Sat May 28 01:05:01 CEST 2011 - vuntz@opensuse.org
+
+- Change license tag to GPLv3+ after license change upstream.
+- Add barcode-devel BuildRequires to build GNU Barcode backend.
+- Remove pkgconfig BuildRequires: we know it comes with
+  pkgconfig(glib-2.0).
+
+-------------------------------------------------------------------
+Sun May 22 13:53:29 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.0.0:
+  + Reorganization of alignment menus
+  + Allow glabels-batch to be run outside of windowing system
+  + CSV parser now more closely follows RFC 4180
+  + Added templates
+  + Updated translations
+- Changes from version 2.3.1:
+  + Migrated to GNOME 3 platform
+  + Updated manual and ported to Mallard
+  + Added text merge backend that uses semicolon delimeters
+  + Improve appearance of shadows of boxes and ellipses
+  + Added shadow property of image objects
+  + Added native support for SVG images
+  + Added full-featured barcode backend for libzint
+  + Refactoring of barcode subsystem
+  + New logo and theme friendly icons
+  + Added support for elliptical templates
+  + Added many new templates
+  + Updated translations
+- Changes from version 2.3.0:
+  + Removed use of deprecations in platform
+  + Major refactoring of code
+  + Added Undo/Redo capability
+  + GnuBarcode backend is now optional and is no longer distributed
+    with glabels
+  + IEC16022 (datamatrix) barcode backend is now optional and is no
+    longer distributed with glabels
+  + Added optional IEC18004 (QRCode) barcode backend
+  + Added optional Zint barcode backend (currently ony supports
+    GS1-128).
+  + Now uses "XDG Base Directory Specification" to locate user
+    templates
+  + New wizard based "New Label" dialog
+  + Can now manage user created templates from within glabels
+  + New "Insert Field" button
+  + Allow pasting of images and text from other apps as new objects
+  + Fixed focus problems which prevented proper copy and paste
+    operation within the text editor
+  + CSV merge backend can now harvest 1st line of CSV file for
+    field names
+  + New font selection widget
+  + New color selection widget
+  + Support parallel installation with older versions of glabels
+  + Updated license to GPL3+
+  + Updated translations.
+- Drop glabels-build-fix.patch: no longer needed after refactoring.
+- Replace old-style -devel BuildRequires with pkgconfig() ones, and
+  move to GNOME 3 libraries:
+  + old ones: evolution-data-server-devel, glib2-devel,
+    gnome-doc-utils-devel, gtk2-devel, libxml2-devel.
+  - new ones: glib-2.0, gnome-doc-utils, gtk+-3.0, libebook-1.2,
+    librsvg-2.0, libxml-2.0.
+- Drop no longer needed BuildRequires:
+  + libglade2-devel, libgnomeui-devel
+- Remove now unknown configure options:
+  + disable-update-mimedb
+  + disable-update-desktopdb
+- Add glib_settings_post/poat and icon_theme_cache_post/post to the
+  respective post/postun scriptlets.
+
+-------------------------------------------------------------------
+Mon Feb 14 17:52:37 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Sat Feb 12 17:51:59 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %mime_database_post/postun because the package ships a mime
+    type definition.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Tue Apr 20 22:42:11 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.2.8:
+  * fixes a crash that makes glabels completely unusable on the
+    latest distributions which use GNOME 2.30 (GLib 2.24.0 in
+    particular)
+
+-------------------------------------------------------------------
+Wed Mar  3 12:26:17 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.2.7:
+  + Fixed limitation on encoded image sizes (fix only valid if
+    libxml 2.7+ is installed)
+  + Fixed focus behavior of canvas so that focus does not get
+    stolen when highlighting text in the object editor
+  + New templates
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec  2 01:05:27 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.2.6:
+  + Fixed drawing artifact with round labels.
+  + Fixed several memory issues.
+  + Fixed several UI inconsistencies when changing merge source.
+  + Fixed potiential crash when doing a document merge.
+  + Now makes a better guess at locale defaults (page size and
+    units).
+  + New templates.
+  + Updated user documentation.
+  + Updated translations.
+- Add evolution-data-server-devel, gnome-doc-utils-devel,
+  gtk2-devel, libxml2-devel BuildRequires.
+- Remove scrollkeeper BuildRequires.
+- Pass --disable-scrollkeeper to configure.
+- Do not package omf files twice.
+- Create a devel subpackage.
+
+-------------------------------------------------------------------
+Mon Aug 31 15:01:26 CEST 2009 - ro@suse.de
+
+- fix archive compression 
+
+-------------------------------------------------------------------
+Thu Aug  6 10:53:16 CEST 2009 - dominique-obs@leuenberger.net
+
+- Many changes since 2.0.4, for more details see NEWS.
+- --disable-scrollkeeper is unknown to configure. Delete the files
+  before finalizing the installation.
+- Remove AutoReqProv: on, as it's now default.
+- Disable glabels-2.0.4.patch, partly upstreamed, unsure about the
+  remaining parts.
+- Add --disable-static to configure call.
+- Use makeinstall macro.
+- Do not package *.la files.
+- Spec cleanups, removing old version checks.
+- Cleaned BuildRequires: dropped aspell-devel, gnutls-devel
+  libgnomeui-devel, libwnck-devel, pcre-devel, perl-XML-devel and
+  tidy, added glib2-devel and intltool.
+
+-------------------------------------------------------------------
+Thu Oct 11 16:39:38 CEST 2007 - sbrabec@suse.cz
+
+- Removed bogus dependency on mDNSResponder.
+
+-------------------------------------------------------------------
+Thu Aug  9 19:32:33 CEST 2007 - maw@suse.de
+
+- Fix up the lang subpackage.
+- s#%run_ldconfig#/sbin/ldconfig# in %post and %postun.
+
+-------------------------------------------------------------------
+Wed Aug  8 04:26:32 CEST 2007 - mauro@suse.de
+
+- Split out a -lang subpackage
+- Add %fdupes stuff
+
+-------------------------------------------------------------------
+Mon Jan 15 14:13:58 CET 2007 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Mon Dec  4 18:37:58 CET 2006 - sbrabec@suse.cz
+
+- Do not overwrite global MIME database (#225657).
+- Update MIME database correctly.
+- Do not delete valid desktop file.
+- Use correct mandir.
+
+-------------------------------------------------------------------
+Sat Sep  9 17:37:12 CEST 2006 - meissner@suse.de
+
+- fixed warnings caused by new return; checks.
+
+-------------------------------------------------------------------
+Tue Sep  5 09:21:30 CEST 2006 - meissner@suse.de
+
+- use rpm_opt_flags. fixed resulting warnings.
+
+-------------------------------------------------------------------
+Fri Sep  1 19:39:56 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.0.4
+- Use filechooser for GnomeFileEntrys in merge properties dialog and
+  object editor image page
+- New configure option to disable update-mime-database and 
+  update-desktop-database
+- Minor cleanup.
+- New templates and fixes 
+- Added document merge tutorial to help documentation
+- translation updates
+- Fixed packing style of printer selection dialog
+- New templates
+
+-------------------------------------------------------------------
+Thu Jul 27 13:39:20 CEST 2006 - sbrabec@suse.cz
+
+- Call ldconfig, do not depend on devel packages (#192742).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:37 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 19 15:54:31 CET 2006 - snbarth@suse.de
+
+- Fixed file list
+
+-------------------------------------------------------------------
+Mon Dec 19 14:57:56 CET 2005 - ro@suse.de
+
+- added library .so symlinks to filelist 
+
+-------------------------------------------------------------------
+Tue Jan 25 15:31:00 CET 2005 - snbarth@suse.de
+
+- update to version 2.0.2
+
+  - added perl-XML-Parser to neededforbuild
+  - now contains glabels-application-x-glabels.png 
+
+-------------------------------------------------------------------
+Fri Jan 21 13:01:52 CET 2005 - snbarth@suse.de
+
+- fixed 64bit build issue
+
+-------------------------------------------------------------------
+Thu Jan 20 16:55:21 CET 2005 - snbarth@suse.de
+
+- initial version (2.0.1)
+

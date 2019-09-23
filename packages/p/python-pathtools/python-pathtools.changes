@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:51:20 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Feb  9 05:23:46 UTC 2018 - tbechtold@suse.com
+
+- Do not require the Flask sphinx theme for doc build
+
+-------------------------------------------------------------------
+Sun Apr 23 07:24:48 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+- Added docs
+
+-------------------------------------------------------------------
+Thu Oct 24 11:09:53 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Jan 31 13:10:30 UTC 2012 - saschpe@suse.de
+
+- Initial version
+

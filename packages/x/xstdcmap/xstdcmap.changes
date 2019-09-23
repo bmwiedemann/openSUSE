@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Thu Feb 21 11:19:32 UTC 2019 - sndirsch@suse.com
+
+- Update to version 1.0.4
+  * This release delivers some minor cleanups and janitorial
+    maintenance.
+
+-------------------------------------------------------------------
+Mon Feb 25 19:13:54 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.3:
+  + Constify some char * to fix gcc warnings.
+  + Combine usage message into single string.
+  + Add -version option.
+  + Replace sprintf with snprintf.
+  + -help should not fail if display cannot be opened.
+  + Mark Exit() & usage() with _X_NORETURN, cleanup previous
+    workarounds.
+  + config:
+    - Add missing AC_CONFIG_SRCDIR.
+    - Replace deprecated AM_CONFIG_HEADER with AC_CONFIG_HEADERS.
+    - Move man pages into their own directory.
+    man: remove trailing spaces and tabs.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xstdcmap from xorg-x11. Initial version: 1.0.2.
+

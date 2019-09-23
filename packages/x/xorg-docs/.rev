@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cd79a4b6bb3be8189218a367e633339d</srcmd5>
+    <version>1.6</version>
+    <time>1337588889</time>
+    <user>coolo</user>
+    <comment>- Rename source and binary package from xorg-x11-doc to
+  xorg-docs (upstream name).
+- Add Provides/Obsoletes for xorg-x11-doc to smooth upgrades.
+- Remove docbook-utils BuildRequires: it's not needed.</comment>
+    <requestid>121177</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>28ab386c0569b9cbd9e31de129279bb6</srcmd5>
+    <version>1.7</version>
+    <time>1339531226</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.7 / 7.7</comment>
+    <requestid>124383</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>28ab386c0569b9cbd9e31de129279bb6</srcmd5>
+    <version>1.7</version>
+    <time>1340184376</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>28ab386c0569b9cbd9e31de129279bb6</srcmd5>
+    <version>1.7</version>
+    <time>1359110667</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>28ab386c0569b9cbd9e31de129279bb6</srcmd5>
+    <version>1.7</version>
+    <time>1379665099</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>28ab386c0569b9cbd9e31de129279bb6</srcmd5>
+    <version>1.7</version>
+    <time>1409303785</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dffa33b2be9162fc0333180a945e8a0e</srcmd5>
+    <version>1.7.1</version>
+    <time>1430780176</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7
+  * This release provides various minor updates &amp; corrections that have
+    accumulated since the last katamari, without waiting forever for
+    someone to step up to create the next katamari.</comment>
+    <requestid>305331</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b4e9087cce86ff3e349e64fa04018197</srcmd5>
+    <version>1.7.1</version>
+    <time>1503593473</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516110</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>0b58c5cef87b4cc460b59d5b78a54529</srcmd5>
+    <version>1.7.1</version>
+    <time>1538374685</time>
+    <user>dimstar_suse</user>
+    <comment>- reproducable_build.patch (boo#1110020)</comment>
+    <requestid>638850</requestid>
+  </revision>
+</revisionlist>

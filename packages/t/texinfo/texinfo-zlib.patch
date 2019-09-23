@@ -1,0 +1,127 @@
+Index: texinfo-6.6/install-info/Makefile.in
+===================================================================
+---
+ texinfo-6.6/install-info/Makefile.in    |    2 -
+ texinfo-6.6/install-info/install-info.c |   56 +++++++++++++++++++++++++++-----
+ 2 files changed, 49 insertions(+), 9 deletions(-)
+
+--- texinfo-6.6/install-info/Makefile.in
++++ texinfo-6.6/install-info/Makefile.in	2019-08-27 13:50:21.423140298 +0000
+@@ -218,7 +218,7 @@ am__installdirs = "$(DESTDIR)$(bindir)"
+ PROGRAMS = $(bin_PROGRAMS)
+ am_ginstall_info_OBJECTS = install-info.$(OBJEXT)
+ ginstall_info_OBJECTS = $(am_ginstall_info_OBJECTS)
+-ginstall_info_LDADD = $(LDADD)
++ginstall_info_LDADD = $(LDADD) -lzio
+ am__DEPENDENCIES_1 =
+ ginstall_info_DEPENDENCIES = $(top_builddir)/gnulib/lib/libgnu.a \
+ 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+--- texinfo-6.6/install-info/install-info.c
++++ texinfo-6.6/install-info/install-info.c	2019-08-27 13:51:57.493361483 +0000
+@@ -19,6 +19,7 @@
+ #include <getopt.h>
+ #include <regex.h>
+ #include <argz.h>
++#include <zio.h>
+ 
+ #define TAB_WIDTH 8
+ 
+@@ -698,34 +699,59 @@ open_possibly_compressed_file (char *fil
+ 
+   *opened_filename = filename;
+   f = fopen (*opened_filename, FOPEN_RBIN);
++  if (!compression_program)
++    compression_program = &local_compression_program;
++  *compression_program = NULL;
++  if (f)
++    {
++      nread = fread (data, sizeof (data), 1, f);
++      if (nread == 1)
++	{
++	  if (data[0] == '\x1f' && data[1] == '\x8b')
++	    *compression_program = "gzip";
++	  else if (data[0] == '\x1f' && data[1] == '\x9d')
++	    *compression_program = "gzip";
++	  else if (data[0] == '\x1f' && data[1] == '\x9e')
++	    *compression_program = "gzip";
++	  else if (data[0] == 'B' && data[1] == 'Z' && data[2] == 'h')
++	    *compression_program = "bzip2";
++	}
++      fclose (f);
++      f = fzopen (*opened_filename, FOPEN_RBIN);
++    }
+   if (!f)
+     {
+       *opened_filename = concat (filename, ".gz", "");
+-      f = fopen (*opened_filename, FOPEN_RBIN);
++      f = fzopen (*opened_filename, FOPEN_RBIN);
++      *compression_program = "gzip";
+     }
+   if (!f)
+     {
+       free (*opened_filename);
+       *opened_filename = concat (filename, ".xz", "");
+-      f = fopen (*opened_filename, FOPEN_RBIN);
++      f = fzopen (*opened_filename, FOPEN_RBIN);
++      *compression_program = "xz";
+     }
+   if (!f)
+     {
+       free (*opened_filename);
+       *opened_filename = concat (filename, ".bz2", "");
+-      f = fopen (*opened_filename, FOPEN_RBIN);
++      f = fzopen (*opened_filename, FOPEN_RBIN);
++      *compression_program = "bzip2";
+     }
+   if (!f)
+     {
+       free (*opened_filename);
+       *opened_filename = concat (filename, ".lz", "");
+-      f = fopen (*opened_filename, FOPEN_RBIN);
++      f = fzopen (*opened_filename, FOPEN_RBIN);
++      *compression_program = "lzma";
+     }
+   if (!f)
+     {
+      free (*opened_filename);
+      *opened_filename = concat (filename, ".lzma", "");
+-     f = fopen (*opened_filename, FOPEN_RBIN);
++     f = fzopen (*opened_filename, FOPEN_RBIN);
++     *compression_program = "lzma";
+     }
+ #ifdef __MSDOS__
+   if (!f)
+@@ -850,7 +876,7 @@ determine_file_type:
+     *compression_program = "lzma";
+ #endif
+ 
+-  else
++  else if (!*compression_program)
+     *compression_program = NULL;
+ 
+   /* Seek back over the magic bytes.  */
+@@ -958,8 +984,22 @@ output_dirfile (char *dirfile, int dir_n
+ 
+   if (compression_program)
+     {
+-      char *command = concat (compression_program, ">", dirfile);
+-      output = popen (command, "w");
++      output = NULL;
++      if (*compression_program == 'g' || *compression_program == 'z')
++	output = fzopen (dirfile, "wg");
++      if (*compression_program == 'b')
++	output = fzopen (dirfile, "wb");
++      if (*compression_program == 'Z')
++	output = fzopen (dirfile, "wZ");
++      if (*compression_program == 'l')
++	output = fzopen (dirfile, "wl");
++      if (*compression_program == 'x')
++	output = fzopen (dirfile, "wx");
++      if (!output)
++	{
++	  char *command = concat (compression_program, ">", dirfile);
++	  output = popen (command, "w");
++	}
+     }
+   else
+     output = fopen (dirfile, "w");

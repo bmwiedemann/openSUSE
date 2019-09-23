@@ -1,0 +1,219 @@
+-------------------------------------------------------------------
+Fri Mar 15 09:35:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 8.0.4
+  * Avoid a full GC when growing finalizer tables if in
+    incremental mode.
+  * Avoid potential race in hb_sz access between realloc and
+    reclaim_block.
+  * Ensure result of every variant of MS_TIME_DIFF has unsigned
+    long type.
+  * Fix 'unexpected mark stack overflow' abort in push_all_stack.
+
+-------------------------------------------------------------------
+Tue Jan  8 13:51:13 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add libatomic_ops-devel as a package require, since it shows up
+  in bdw-gc.pc.
+
+-------------------------------------------------------------------
+Tue Jan  8 02:37:16 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 8.0.2
+  * Explicitly unblock GC signals on GC initialization.
+  * Add initial RISC-V support.
+  * Never return null by C++ GC allocators and gc_cpp
+    operator new.
+  * Add AO primitives implementation to GC based on C11 atomic
+    intrinsic.
+  * Change pointer arguments of push_all[_eager]/conditional API
+    to void * type.
+  * Change type of hb_sz field (of hblkhdr) from size_t to word.
+  * Decide between memory unmapping and mprotect-based dirty bits
+    at runtime.
+  * New API function (GC_dump_named) to produce named dumps.
+  * New API function (get_size_map_at) to get content of size_map
+    table.
+  * New API to stop and start the GC world externally.
+  * New API to turn on manual VDB at runtime.
+
+-------------------------------------------------------------------
+Tue Jan 30 00:23:41 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 7.6.4
+  * Also enable the TSX workaround for i386 (Linux)
+  * Relax mark_mutex attribute needed to disable elision (Linux/x64)
+  * Process all PT_LOAD segments before PT_GNU_RELRO segments (Glibc)
+  * Add API function to calculate total memory in use by all GC blocks
+  * Add API function to set/modify GC log file descriptor (Unix)
+  * Add alt-stack registration support
+  * Implement the finalization extension API
+  * Implement thread suspend/resume API (Linux threads only)
+
+-------------------------------------------------------------------
+Mon Feb  1 10:03:41 UTC 2016 - rguenther@suse.com
+
+- Force -std=gnu++98 for C++ testcases.
+
+-------------------------------------------------------------------
+Thu Mar  5 09:42:40 UTC 2015 - jengelh@inai.de
+
+- Update homepage URLs
+
+-------------------------------------------------------------------
+Mon Dec 29 17:51:02 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 7.4.2
+* Add config option to use STGRTMIN-based signals for thread
+  suspend/resume.
+* Allow parallel mark to be enabled on powerpc-linux systems.
+* Fix 'Array subscript is above array bounds' GCC warning in
+  GC_new_kind/proc.
+* Fix 'attribute declaration must precede definition' warning.
+* Fix GC_finalized_malloc failure on disclaim_test.
+* Fix GC_sig_suspend initialization when non-constant SIGRTMIN used.
+* Fix data roots registration for Android/x86 and NDK ARM 'gold'
+  linker.
+* Fix find stackbottom on BlueGene P/Q systems.
+* Fix machdep .lo files path in configure (SPARC, IA-64).
+* Fix ok_init assignment (missing cast) in GC_new_kind_inner.
+- Remove aarch64-support.patch; merged on upstream release
+- gc project has a new home; update URL tag and download source URL
+
+-------------------------------------------------------------------
+Sun May 26 20:09:26 UTC 2013 - jengelh@inai.de
+
+- Make use of external libatomic_ops --
+  openSUSE has it in a separate source package
+- Fix version: 7.2d is not a prerelease, so there is no need to
+  call it 7.1*
+- More portable make install call; more robust file list
+
+-------------------------------------------------------------------
+Sat May 25 19:16:48 UTC 2013 - root@localhost
+
+- libatomic_ops-aarch64.patch: update makefile to install missing headers,
+  don't use AO_EXPECT_FALSE.
+
+-------------------------------------------------------------------
+Sat May 18 08:10:09 UTC 2013 - schwab@suse.de
+
+- aarch64-support.patch: aarch64 support for gc from upstream
+- libatomic_ops-aarch64.patch: aarch64 support for libatomic_ops from
+  upstream add-aarch64-support branch
+
+-------------------------------------------------------------------
+Mon Mar 25 14:50:51 UTC 2013 - dmueller@suse.com
+
+- update to 7.2d
+  + no upstream changelog available, but bring it two years
+    further up to date
+- remove all patches. All upstream meanwhile
+- fix packaging of atomic_ops.pc 
+
+-------------------------------------------------------------------
+Sun Mar  3 20:42:59 UTC 2013 - jengelh@inai.de
+
+- Record autoconf requirements in spec file
+
+-------------------------------------------------------------------
+Tue Aug  7 15:23:30 UTC 2012 - uli@suse.com
+
+- fix for malloc()/calloc() overflows (CVE-2012-2673, bnc#765444)
+
+-------------------------------------------------------------------
+Sat Feb 11 08:55:11 UTC 2012 - coolo@suse.com
+
+- put the provides for libatomic-ops-devel in a package actually
+  in existance
+
+-------------------------------------------------------------------
+Sun Dec 25 16:02:21 UTC 2011 - idonmez@suse.com
+
+- Provide libatomic-ops-devel package too 
+
+-------------------------------------------------------------------
+Tue Dec 13 09:55:10 UTC 2011 - werner@suse.de
+
+- To use this with asymptote from TeX Live large config is required.
+  Also fast garbage collection iby using pthread-based parallel mark
+  implementation will help a lot.
+
+-------------------------------------------------------------------
+Sat Oct  1 05:39:10 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Fri Sep 30 19:06:55 UTC 2011 - crrodriguez@opensuse.org
+
+- Workaround qemu-arm bugs. 
+
+-------------------------------------------------------------------
+Thu Sep 22 11:26:47 UTC 2011 - jengelh@medozas.de
+
+- Implement shlib policy
+- Resolve rpmlint warning "no-pkg-config-provides"
+- Remove redundant/obsolete tags (cf. specfile guidelines;
+  License field is inherited from (main) subpackage)
+
+-------------------------------------------------------------------
+Mon Jun 20 15:08:02 UTC 2011 - pgajdos@novell.com
+
+- updated to 7.2alpha6
+  * many bug fixes and new features from 6.6, see doc/README.changes
+    for older changes and ChangeLog for recent changes
+
+-------------------------------------------------------------------
+Thu Apr  2 15:40:11 CEST 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+- run make check
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Tue Nov 11 09:35:00 CET 2008 - olh@suse.de
+
+- use gcc built-in atomic functions, to fix w3m build
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Feb 25 06:37:27 CET 2008 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-postin errors 
+
+-------------------------------------------------------------------
+Wed Nov 21 18:00:27 CET 2007 - uli@suse.de
+
+- implicit malloc() redirection breaks some apps (bug #335123)
+
+-------------------------------------------------------------------
+Sat May 26 23:51:37 CEST 2007 - ro@suse.de
+
+- split off devel package 
+
+-------------------------------------------------------------------
+Mon Jan 30 15:45:19 CET 2006 - uli@suse.de
+
+- enabled malloc redirection, C++ support
+- fixed shared libs
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:07 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 11 13:42:27 CET 2006 - uli@suse.de
+
+- initial package
+

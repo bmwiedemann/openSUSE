@@ -1,0 +1,44 @@
+From e9601db421071203202ddb0122e8826859238e73 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <mrueckert@suse.de>
+Date: Thu, 10 Nov 2016 15:46:22 +0100
+Subject: [PATCH 25/32] allow running commands after patching
+
+but before we actually rebuild the gem.
+needed for libv8 gem.
+---
+ gem2rpm.yml.documentation   | 2 ++
+ templates/opensuse.spec.erb | 5 +++++
+ 2 files changed, 7 insertions(+)
+
+diff --git a/gem2rpm.yml.documentation b/gem2rpm.yml.documentation
+index 376eacd..fbed82e 100644
+--- a/gem2rpm.yml.documentation
++++ b/gem2rpm.yml.documentation
+@@ -22,6 +22,8 @@
+ # :patches:
+ #   foo.patch: -p1
+ #   bar.patch:
++# :post_patch:
++#   if you need to fiddle with the source dir before rebuilding the gem
+ # ## used by gem2rpm
+ # :sources:
+ # - foo.desktop
+diff --git a/templates/opensuse.spec.erb b/templates/opensuse.spec.erb
+index ae2d458..e6e9a1a 100644
+--- a/templates/opensuse.spec.erb
++++ b/templates/opensuse.spec.erb
+@@ -143,6 +143,11 @@ PreReq:         update-alternatives
+ <% config[:patches].each_with_index do |patch, i| -%>
+ %patch<%= i %> <%= patch[1] if patch[1] %>
+ <% end -%>
++<% if config[:post_patch] -%>
++# MANUAL
++<%= config[:post_patch] %>
++# /MANUAL
++<% end -%>
+ find -type f -print0 | xargs -0 touch -r %{S:0}
+ %gem_build
+ <% end -%>
+-- 
+2.20.1
+

@@ -1,0 +1,10 @@
+<package name="python-PyMeta3" project="openSUSE:Factory">
+  <title>PyMeta</title>
+  <description>PyMeta is an implementation of OMeta, an object-oriented pattern-matching
+language developed by Alessandro Warth
+(http://www.cs.ucla.edu/~awarth/ometa/). PyMeta provides a compact syntax based
+on Parsing Expression Grammars (PEGs) for common lexing, parsing and
+tree-transforming activities in a way that's easy to reason about for Python
+programmers.</description>
+  <devel project="devel:languages:python" package="python-PyMeta3"/>
+</package>

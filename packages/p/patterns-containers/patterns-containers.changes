@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Thu Sep  5 12:38:55 CEST 2019 - kukuk@suse.de
+
+- Add reg to kubernetes utilities pattern
+
+-------------------------------------------------------------------
+Sat Aug 24 11:18:27 CEST 2019 - kukuk@suse.de
+
+- Add hello-kubic-k8s-yaml to kubeadm pattern
+
+-------------------------------------------------------------------
+Thu Aug  8 20:24:44 CEST 2019 - kukuk@suse.de
+
+- Add yomi salt states to Kubic admin node
+
+-------------------------------------------------------------------
+Wed Jul 31 11:24:21 CEST 2019 - kukuk@suse.de
+
+- Add kubic loadbalancer pattern
+
+-------------------------------------------------------------------
+Sun Jul 28 10:29:12 CEST 2019 - kukuk@suse.de
+
+- Add kail to kubernetes_utilities
+
+-------------------------------------------------------------------
+Fri Jul 26 12:57:51 CEST 2019 - kukuk@suse.de
+
+- Add weave-k8s-yaml to kubeadm pattern
+
+-------------------------------------------------------------------
+Tue Jul 12 16:00:15 CEST 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Add Rook manifest files to Kubic
+
+-------------------------------------------------------------------
+Tue Jun 25 10:55:05 CEST 2019 - kukuk@suse.de
+
+- Add new pattern for kubernetes utilities 
+
+-------------------------------------------------------------------
+Fri Jun  7 10:49:52 CEST 2019 - kukuk@suse.de
+
+- Add flannel-k8s-yaml
+
+-------------------------------------------------------------------
+Fri May 24 15:44:14 UTC 2019 - Michal Rostecki <mrostecki@opensuse.org>
+
+- kubeadm pattern:
+  - add cilium-k8s-yaml
+
+-------------------------------------------------------------------
+Fri May 10 15:00:37 CEST 2019 - kukuk@suse.de
+
+- kubeadm pattern:
+  - remove multipath-tools, no need to install it by default
+
+-------------------------------------------------------------------
+Fri May 10 10:43:53 CEST 2019 - kukuk@suse.de
+
+- kubeadm pattern:
+  - Adjust name of kured yaml file to kured-k8s-yaml
+  - Add metallb-k8s-yaml
+
+-------------------------------------------------------------------
+Tue May 07 14:46:12 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Add kubic_worker and kubic_admin patterns [boo#1134332]
+
+-------------------------------------------------------------------
+Thu Apr 11 12:12:26 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Correctly obsolete patterns-caasp-* version 4.0 
+
+-------------------------------------------------------------------
+Tue Mar 19 15:47:34 CET 2019 - Richard Brown <rbrown@suse.com>
+
+- Initial version

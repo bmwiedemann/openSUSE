@@ -1,0 +1,10 @@
+<package name="python-pymad" project="openSUSE:Factory">
+  <title>Python Module to use the MPEG Audio Decoder Library </title>
+  <description>pymad is a Python module that allows Python programs to use the MPEG Audio
+Decoder library. pymad provides a high-level API, similar to the pyogg module,
+allowing to read PCM data from MPEG audio streams.
+
+</description>
+  <devel project="devel:languages:python" package="python-pymad"/>
+  <url>http://spacepants.org/src/pymad</url>
+</package>

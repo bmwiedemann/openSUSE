@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Tue Aug 14 05:27:25 UTC 2018 - coolo@suse.com
+
+- updated to 0.12
+   see /usr/share/doc/packages/perl-Font-FreeType/Changes
+
+-------------------------------------------------------------------
+Mon Mar 19 06:20:56 UTC 2018 - coolo@suse.com
+
+- updated to 0.10
+   see /usr/share/doc/packages/perl-Font-FreeType/Changes
+
+  0.10_1 2018-03-18 dmol@cpan.org
+   - No changes since 0.10_1
+  
+  0.10_1 2018-03-17 dmol@cpan.org
+   - Allow to lookup glyphs by name (mauzo)
+
+-------------------------------------------------------------------
+Thu Oct 19 05:21:51 UTC 2017 - coolo@suse.com
+
+- updated to 0.09
+   see /usr/share/doc/packages/perl-Font-FreeType/Changes
+
+  0.09 2017-10-18 dmol@cpan.org
+   - Fallback to default charmap for 2.8.1 for backward-compatibility
+     for FNT-fonts
+  
+  0.08_1 2015-05-02 dmol@cpan.org
+   - Added .gitignore file (htl10@users.sourceforge.net)
+   - Remove generated files from MANIFEST listing (htl10@users.sourceforge.net)
+   - Removed unused variables and silenced some compiler warnings
+     (htl10@users.sourceforge.net)
+
+-------------------------------------------------------------------
+Mon Sep 28 08:43:50 UTC 2015 - coolo@suse.com
+
+- updated to 0.07
+   see /usr/share/doc/packages/perl-Font-FreeType/Changes
+
+  0.07 2015-09-27 dmol@cpan.org
+   - No changes since 0.07_2
+  
+  0.07_2 2015-09-24 dmol@cpan.org
+   - Try to support utf8_to_uvchr_buf for older perls
+  
+  0.07_1 2015-09-24 dmol@cpan.org
+   - Fix UTF-8 string usage on non-intel architectures (GH#17)
+
+-------------------------------------------------------------------
+Sat Jul 18 08:44:06 UTC 2015 - coolo@suse.com
+
+- updated to 0.06
+   see /usr/share/doc/packages/perl-Font-FreeType/Changes
+
+  0.06 2015-01-27 dmol@cpan.org
+   - No changes since 0.06_1
+  
+  0.06_1 2015-01-27 dmol@cpan.org
+   - Allow optionally fallback to missing glyph
+
+-------------------------------------------------------------------
+Tue Apr 14 20:04:21 UTC 2015 - coolo@suse.com
+
+- updated to 0.05
+   see /usr/share/doc/packages/perl-Font-FreeType/Changes
+- build.patch no longer needed
+
+-------------------------------------------------------------------
+Thu Nov 17 13:51:12 UTC 2011 - coolo@suse.com
+
+- use original tar
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:29 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:00 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:31:38 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Sun Aug 12 10:09:51 CEST 2007 - aj@suse.de
+
+- Fix spec file to build.
+
+-------------------------------------------------------------------
+Fri Aug 10 17:57:47 CEST 2007 - mfabian@suse.de
+
+- fix build.
+
+-------------------------------------------------------------------
+Thu Jun 28 12:17:25 CEST 2007 - mfabian@suse.de
+
+- new package: perl-Font-Freetype version 0.03.

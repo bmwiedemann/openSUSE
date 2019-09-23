@@ -1,0 +1,123 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d2498e9a5de19eb9fecdd4117ae26c5e</srcmd5>
+    <version>3.0.0</version>
+    <time>1305018410</time>
+    <user>saschpe</user>
+    <comment>New package for GNOME 3: gtk3 branch of gtksourceviewmm; this depends on gtk3 branch of gtksourceview (submitted as sr#69095)</comment>
+    <requestid>69187</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5ff81ecaddfc23a6feaa3b500a0f7560</srcmd5>
+    <version>3.0.0</version>
+    <time>1305018419</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69187
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d2fc240cea4afc5e20bb26990cccc8e2</srcmd5>
+    <version>3.2.0</version>
+    <time>1317543121</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85686</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>d2fc240cea4afc5e20bb26990cccc8e2</srcmd5>
+    <version>3.2.0</version>
+    <time>1319181957</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>d13d4231e2b870b61f6181a519af27d0</srcmd5>
+    <version>3.2.0</version>
+    <time>1323191846</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>d13d4231e2b870b61f6181a519af27d0</srcmd5>
+    <version>3.2.0</version>
+    <time>1340183425</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>d13d4231e2b870b61f6181a519af27d0</srcmd5>
+    <version>3.2.0</version>
+    <time>1359109028</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>700d369f0bf097b2e197be8dfea8dd4c</srcmd5>
+    <version>3.2.0</version>
+    <time>1364927802</time>
+    <user>coolo</user>
+    <comment>spec cleanup</comment>
+    <requestid>162180</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>700d369f0bf097b2e197be8dfea8dd4c</srcmd5>
+    <version>3.2.0</version>
+    <time>1379662588</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>700d369f0bf097b2e197be8dfea8dd4c</srcmd5>
+    <version>3.2.0</version>
+    <time>1409301136</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7cab67f46aa142274ea92bff00226060</srcmd5>
+    <version>3.12.0</version>
+    <time>1430576026</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304818</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a5c426ec4145bce2a7145bbf72294d6b</srcmd5>
+    <version>3.18.0</version>
+    <time>1459254488</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>364616</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>353d6287f5bc7743155da89c270c7f95</srcmd5>
+    <version>3.18.0</version>
+    <time>1466814187</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404213</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4c32eed779fe619435ac8349c2b1e065</srcmd5>
+    <version>3.21.2</version>
+    <time>1474623190</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>426756</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bba2d82a52b77e4f3d5b113e3b313441</srcmd5>
+    <version>3.21.3</version>
+    <time>1484041876</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449336</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>1bf305a569b74b3e8370f306da30e2ab</srcmd5>
+    <version>3.21.3</version>
+    <time>1520588587</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix SRPM group. Update summaries. (forwarded request 583011 from jengelh)</comment>
+    <requestid>583034</requestid>
+  </revision>
+</revisionlist>

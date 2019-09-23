@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Sun Sep 24 06:39:10 UTC 2017 - coolo@suse.com
+
+- add no-more-encoding.diff to fix test with perl 5.26
+  (https://rt.cpan.org/Public/Bug/Display.html?id=115098)
+
+-------------------------------------------------------------------
+Tue Aug  6 22:46:18 UTC 2013 - rcurtis@suse.com
+
+- Updated spec file to replace perl_requires macro with preferred SUSE Requires:  perl >= x.x format
+
+-------------------------------------------------------------------
+Mon Aug  5 10:10:37 UTC 2013 - cfarrell@suse.com
+
+- license update: Artistic-1.0 or GPL-1.0+
+  SPDX syntax
+
+-------------------------------------------------------------------
+Wed Dec  1 13:36:09 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Aug  4 12:51:34 UTC 2010 - chris@computersalat.de
+
+- initial package 0.14
+  * created by cpanspec 1.78
+

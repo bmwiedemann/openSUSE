@@ -1,0 +1,6 @@
+<package name="build" project="openSUSE:Factory">
+  <title>A Script to Build SUSE Linux RPMs</title>
+  <description>This package provides a script for building RPMs for SUSE Linux in a
+chroot environment.</description>
+  <devel project="openSUSE:Tools" package="build"/>
+</package>

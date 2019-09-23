@@ -1,0 +1,310 @@
+-------------------------------------------------------------------
+Sun Sep  1 19:42:51 UTC 2019 - wbauer@tmo.at
+
+- Update to version 2.1.1
+  * Fix HTTP seeding (kde#382375)
+  * Fix a few issues found by clang-tidy
+  * Some build fixes that get triggered on certain versions of
+    Qt/KF5 frameworks
+- Drop fix-build-with-qt5.6.patch, merged upstream
+- Drop require-lower-LibGMP.patch, no longer necessary as all
+  current distribution versions have gmp 6
+- Remove conditionals for no longer supported distribution versions
+- Add missing requirements to the devel package
+- Update URL, ktorrent.org doesn't exist any more
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sat Sep  2 09:20:11 UTC 2017 - wbauer@tmo.at
+
+- Update to version 2.1.0
+- Update build requirements
+- Add fix-build-with-qt5.6.patch to fix build with Qt 5.6 or lower
+- Drop Fix-logging-framework-spamming.patch, merged upstream
+
+-------------------------------------------------------------------
+Sat Feb 11 23:00:32 UTC 2017 - jengelh@inai.de
+
+- Fix RPM group, remove redundant %clean section.
+
+-------------------------------------------------------------------
+Wed Feb  1 13:00:35 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Sun Oct 23 21:54:45 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added Fix-logging-framework-spamming.patch (kde#362195)
+
+-------------------------------------------------------------------
+Sun Sep  4 14:57:47 UTC 2016 - astieger@suse.com
+
+- libktorrent 2.0.1:
+  * Fix ui lags and hangs when downloading to ntfs partition
+
+-------------------------------------------------------------------
+Fri Apr 29 18:58:13 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added require-lower-LibGMP.patch: 6.0.0 version was chosen
+  randomly, and we know the code compiles with at least 5.1.3
+
+-------------------------------------------------------------------
+Sat Apr 16 11:33:32 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to version 2.0
+  * Ported to Qt5/KF5
+  * QHttp-based tracker communication was dropped in favour of KIO-based one
+  * Optimize queue data structures shown up be callgrind
+  * fix issues found by Coverity static analyzer
+
+-------------------------------------------------------------------
+Fri Jan 18 10:33:50 UTC 2013 - nico.kruber@gmail.com
+
+- Update to version 1.3.1
+  * Add workaround for broken handling of btrfs subvolumes by
+    solid (kde#306825)
+  * Fix crash when preallocating diskspace when a file is enabled
+    during the download of a torrent (kde#307178) 
+  * Make sure stats get updated properly during data check
+    (kde#308707)
+  * Bind peer sockets to preferred interface for outbound
+    connections
+  * Fix bug causing UDP connections not to get established on
+    FreeBSD because FIONREAD returns the size of the data and the
+    peer address (Review: 108076)
+
+-------------------------------------------------------------------
+Wed Sep  5 04:36:19 UTC 2012 - mlin@suse.com
+
+- Update to version 1.3.0
+  * Do not pass link local IPv6 addresses to ip parameter of tracker 
+    (kde#305187)
+  * Implement BEP 32, IPv6 DHT (kde#295194)
+  * Revamp DHT code and follow spec more closely on routing table
+  * Revamp SingleFileCache, MultiFileCache and data preallocation
+  * Webseeds now follow connection limits (kde#184941)
+  * Add new SignalCatcher class to handle UNIX signals (kde#296835)
+  * Make TimeEstimator return sortable values (kde#298542)
+  * Keep track of partitions files of torrents are on
+  * Add methods to check if storage is mounted
+  * Make sure all trackers are used of a magnet link 
+    (kde#302997, kde#303269)
+  * Fix warning message about locale being recreated
+  * Fix crash in DHT code caused by infinite recursion (kde#300974)
+
+-------------------------------------------------------------------
+Wed Jun 20 08:10:42 UTC 2012 - mlin@suse.com
+
+- Update to version 1.2.1
+  * Fix deadlock in webseeding code (295719)
+  * Fix individual torrent download limit not working
+  * Fix build on FreeBSD
+  * Fix crash due to attempting to call pop_front on an empty list (299536)
+
+-------------------------------------------------------------------
+Tue Mar  6 10:12:46 UTC 2012 - mlin@suse.com
+
+- Update to version 1.2.0, also lists changes what changed in rc1
+  * Fix large file preallocation when not using quick preallocation in some cases
+  * Disable current open file checking, it causes performance issues in some situations
+  * Don't use the gcrypt version macro in it's version check
+  * Make it possible to check data on chunk ranges instead of the entire torrent
+  * Move data file jobs are now done one after the other
+  * Implement partial seeding extension
+  * Add support for IPv6 traffic class field
+  * Make sure a torrent is restarted when it was auto stopped and more files are selected for downloading
+  * Emit finished signal when torrent is found completely downloaded in data check
+  * Seeders and leechers shown in view is now the maximum of all trackers and not the sum
+  * Do not add trackers with unsupported protocols
+  * Improve SIGBUS handling, fixes a crash
+  * Remove usage of several deprecated KDE3 networking classes
+  * Remove obsolete functions of data check during upload
+  * Simplify blocklist interface
+  * Revamp networking code
+  * Remove thread from DHT code
+  * Prevent file descriptor exhaustion from happening
+  * Do not count non piece data in upload speed calculation
+  * Fix IPv6 address parsing bug
+  * Improve performance of µTP code
+  * Fix crash in DHT packet receive code
+  * Fill ip parameter of tracker announce with current IPv6 address if not filled in by user in settings
+  * Fix crash in PeerManager
+  * Fix crash at exit when datachecker job is running
+  * Fix crash due to bug in smaller then operator of net::Address
+  * Fix crash due to race condition in logging initialization
+
+-------------------------------------------------------------------
+Thu Nov 24 20:18:48 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 1.1.3:
+  * Fix bug causing UPnP not to work properly if there is a question mark in
+    the controlurl
+  * Fix crash in webseed code (kde#281605)
+- Spec file updates:
+  * Changes based on spec-cleaner run.
+  * Renamed License: to GPL-2.0+ (SPDX style).
+
+-------------------------------------------------------------------
+Wed Aug 17 07:55:49 UTC 2011 - javier@opensuse.org
+
+- Update to 1.1.2:
+  * Fix bug causing time left calculation to return something when 
+    a torrent is paused (bko#272182)
+  * Improve performance of UTP delay window algorithm
+  * Fix files not getting downloaded when they change from only 
+    seed to some other priority
+  * Fix crash when cleaning up mse::StreamSocket (bko#277076)
+
+-------------------------------------------------------------------
+Mon May  2 20:04:12 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates:
+  * Simplified License: to GPLv2+ which is the main license.
+  * Fix locales removal if suse_version is not set.
+  * %kde_post_install is not needed.
+
+-------------------------------------------------------------------
+Mon May  2 00:50:56 UTC 2011 - javier@opensuse.org
+
+- Update to 1.1.1
+  * Fix deadlock in utp::OutputQueue when packet sending fails
+  * Fix bug causing scrape not to be done after first announce 
+  * Fix crash in DHT code caused by invalid addresses (269657)
+  * Fix crash in DHT code caused by unsynchronized access to a QSet (270127)
+  * Fix bug causing running time to be wrong when pausing torrents (271521)
+
+-------------------------------------------------------------------
+Wed Mar 16 18:01:19 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 1.1.0:
+  * Improve performance of chunk selection code when there are many chunks
+  * Fix crash in peer authentication cleanup (bko#266622)
+  * Fix crash due to SIGBUS handler being overwritten by KDE's crash dialog
+    system (bko#266842)
+  * Be more lenient towards torrents with wrong announce-list field
+    (bko#268145)
+  * Fix root cause of SHA1HashGen crashes in 1.0 series (bko#268162)
+- Spec file updates:
+  * Removed Authors: from %description (requirement for Factory submissions).
+  * Minor update in %files section.
+
+-------------------------------------------------------------------
+Sat Feb 26 10:30:55 UTC 2011 - coolo@novell.com
+
+- recommend -lang package again
+
+-------------------------------------------------------------------
+Fri Feb 25 20:12:14 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to libktorrent-1.0.99rc1 (1.1rc1):
+  * Fix bug in UPnP so that it works properly with D-Link DIR 635 routers
+  * Fix crash due to manipulating timers in the wrong thread (261903)
+  * Fix compiler warning in TimeEstimator (262618)
+  * Fix crash due to cleaning up timer in the wrong thread (260712)
+  * Fix crash due to not properly cleaning up Peers and everything related when
+    switching to superseeding mode (261529)
+  * Fix invalid read in utp timer cleanup code (263800)
+  * Fix crashes at exit (264378, 256639)
+- Spec file updates:
+  * Changes based on rpmdevtools templates and spec-cleaner run.
+  * Updates in Summary:, Url: and %description.
+  * Changed License: to GPLv2+ and LGPLv2+ and MIT and BSD.
+  * Updates in Buildrequires:, %build, %install and %files sections.
+  * Use Suggests: and not Recommends: for lang package.
+  * Removed %pre /sbin/ldconfig section (not needed).
+- Removed libktorrent-1.1beta1-sprseedcrash.patch (fixed upstream).
+- Removed libktorrent-po.tar.bz2 (not needed, its included in the package).
+
+-------------------------------------------------------------------
+Sat Jan 15 14:09:54 UTC 2011 - davejplater@gmail.com
+
+- Added patch libktorrent-1.1beta1-sprseedcrash.patch to fix crash
+  when switching from seeding to superseeding or vice versa, while
+  the torrent is running mostly with a private torrent. See :
+  kde #(261529), first reported in kde #(262560).
+
+-------------------------------------------------------------------
+Mon Jan  3 09:26:13 UTC 2011 - davejplater@gmail.com
+
+- Update to libktorrent-1.0.80 (1.1beta1) fix kde #(261679) crash
+  with rss syndication plugin.
+- Upstream changes :
+  * Video streaming support
+  * Superseeding support
+  * Data file moves are now tracked in the GUI
+  * The GUI has been redesigned and now makes proper use of KDE's
+    KParts technologie
+  * The search plugin now uses webkit
+  * Exclusion patterns have been added to the syndication plugin
+    filters
+  * And many other smaller changes. For a full overview of all the
+    changes, take a look in the ChangeLog's of libktorrent and
+    ktorrent
+
+-------------------------------------------------------------------
+Fri Dec 17 20:16:44 UTC 2010 - davejplater@gmail.com
+
+- Update to git20101211 fixes crash see (kde#260338)
+- Upstream changes :
+  *Backport several utp bugfixes from trunk.
+  *Fix crash due to not checking for 0 pointer in multimedia file
+   check.
+  *Backport file selection bug from master CCBUG: 258138
+
+-------------------------------------------------------------------
+Tue Nov 30 22:24:44 UTC 2010 - davejplater@gmail.com
+
+- Update to git20101130 to fix (kde#258078)
+- Upstream changes :                                                                                                                                                                
+  *Add LIBKTORRENT_VERSION macro                                                                                                                                                    
+  *Update MINOR version of master branch to 1                                                                                                                                       
+  *Improve MultiDataChecker file handling                                                                                                                                           
+  *Privatize PeerManager                                                                                                                                                            
+  *Use weak pointers in PeerConnector and Authenticate,                                                                                                                             
+   should fix a crash                                                                                                                                                               
+  *Fix ChangeLog                                                                                                                                                                    
+
+-------------------------------------------------------------------
+Mon Nov 22 09:37:42 UTC 2010 - tittiatcoke@gmail.com
+
+- Update to the latest git snapshot to build KGet with torrent 
+  support in KDE 4.6 Beta 1
+
+-------------------------------------------------------------------
+Mon Oct 18 19:34:25 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 1.0.4: Fixing a deadlock and a crash in the µTP 
+                   protocol code
+
+-------------------------------------------------------------------
+Tue Aug 31 10:06:20 UTC 2010 - aj@suse.de
+
+- Recommend instead of require lang package since it's not mandatory.
+
+-------------------------------------------------------------------
+Mon Aug 30 17:39:28 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 1.0.3: Fixing several bugs and rare crashes
+
+-------------------------------------------------------------------
+Fri Jul  9 08:53:03 UTC 2010 - beineri@opensuse.org
+
+- update to 1.0.2: bugfixes, renames libktorrent1 to libktorrent2
+
+-------------------------------------------------------------------
+Tue Jun 15 05:44:46 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 1.0.1
+  * Bugfixes
+
+-------------------------------------------------------------------
+Mon Jun  7 13:56:22 CEST 2010 - dmueller@suse.de
+
+- fix -lang package generation
+
+-------------------------------------------------------------------
+Wed May 26 05:35:41 UTC 2010 - tittiatcoke@gmail.com
+
+- Initial package 1.0.0
+

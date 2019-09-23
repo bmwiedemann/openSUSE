@@ -1,0 +1,738 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b5b1ee8f045617b772e0e0c137db6c37</srcmd5>
+    <version>4.96.0</version>
+    <time>1393936157</time>
+    <user>coolo</user>
+    <comment>Init KIO package</comment>
+    <requestid>224295</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>48bbf64c68a2786e231ef23dcce64028</srcmd5>
+    <version>4.97.0</version>
+    <time>1394450286</time>
+    <user>coolo</user>
+    <comment>Update to 4.97.0</comment>
+    <requestid>224805</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9fcf93fe4212368830b3bf2560db5792</srcmd5>
+    <version>4.98.0</version>
+    <time>1396452129</time>
+    <user>coolo</user>
+    <comment>Update to 4.98.0</comment>
+    <requestid>228480</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>85d142c490a630fa90d6f283e4de4e57</srcmd5>
+    <version>4.99.0</version>
+    <time>1400092015</time>
+    <user>coolo</user>
+    <comment>Update to 4.99.0</comment>
+    <requestid>233169</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5d97c8b3af0821499c8db4bf611101ff</srcmd5>
+    <version>4.100.0</version>
+    <time>1402403800</time>
+    <user>coolo</user>
+    <comment>4.100.0</comment>
+    <requestid>236291</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8212fe87abe1530a7f8e68aff362005d</srcmd5>
+    <version>5.0.0</version>
+    <time>1405611084</time>
+    <user>coolo</user>
+    <comment>Define kf5_version within package</comment>
+    <requestid>240395</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0d983fcc36634e85b48f031ea80d80c7</srcmd5>
+    <version>5.1.0</version>
+    <time>1408196527</time>
+    <user>lnussel</user>
+    <comment>Update to 5.1.0</comment>
+    <requestid>244426</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0d983fcc36634e85b48f031ea80d80c7</srcmd5>
+    <version>5.1.0</version>
+    <time>1409301388</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>794f650c9c8aeddd7fa37116f43e3d87</srcmd5>
+    <version>5.2.0</version>
+    <time>1410534217</time>
+    <user>coolo</user>
+    <comment>Update to 5.2.0</comment>
+    <requestid>248912</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>5565bc3be1c5861d29b590897bf42da7</srcmd5>
+    <version>5.2.0</version>
+    <time>1412155351</time>
+    <user>coolo</user>
+    <comment>Add 0001-Add-new-KIO-job-KIO-fileSystemFreeSpace-that-allows-.patch from upstream:  allows you to get a filesystem's total and available space.</comment>
+    <requestid>252511</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c8cb36e5ac97e4ec83afe9bc1579cedc</srcmd5>
+    <version>5.3.0</version>
+    <time>1412690383</time>
+    <user>coolo</user>
+    <comment>Update to 5.3.0</comment>
+    <requestid>254433</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c569584f5deb18a84b65b59e79a7b76f</srcmd5>
+    <version>5.4.0</version>
+    <time>1415664589</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.4.0</comment>
+    <requestid>259965</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2184e7f7b019fdf2f900bab60b5f4811</srcmd5>
+    <version>5.5.0</version>
+    <time>1419159537</time>
+    <user>coolo</user>
+    <comment>Update to 5.5.0, please merge with Qt 5.4 submit, thanks.</comment>
+    <requestid>264918</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1bffde24282a06189c72d887a16f19e2</srcmd5>
+    <version>5.6.0</version>
+    <time>1422532353</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.6.0.</comment>
+    <requestid>280396</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b934010cc5f03e7061a8c50eab2cb7a4</srcmd5>
+    <version>5.7.0</version>
+    <time>1424095582</time>
+    <user>coolo</user>
+    <comment>Update to 5.7.0.</comment>
+    <requestid>286091</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>54c0ba686df25371f265ca43e45a93a1</srcmd5>
+    <version>5.8.0</version>
+    <time>1426494816</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.8.0.</comment>
+    <requestid>290584</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6fecd996c0aab30036a5fa7ab2b7b3ae</srcmd5>
+    <version>5.9.0</version>
+    <time>1428949598</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.9.0.</comment>
+    <requestid>295532</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6d076203b5ae44482b8fc1a1661be2aa</srcmd5>
+    <version>5.10.0</version>
+    <time>1431365806</time>
+    <user>coolo</user>
+    <comment>Update to 5.10.0.</comment>
+    <requestid>306019</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a35cebb8be91d8f1b32349618dfb3ad1</srcmd5>
+    <version>5.11.0</version>
+    <time>1435054151</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.11</comment>
+    <requestid>311883</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3e5ece6ff26b5f561e146fce5f0cd44e</srcmd5>
+    <version>5.12.0</version>
+    <time>1436887685</time>
+    <user>coolo</user>
+    <comment>Update to 5.12.0</comment>
+    <requestid>315943</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>461ccb4481795927ca9254fe114bdfec</srcmd5>
+    <version>5.13.0</version>
+    <time>1441173003</time>
+    <user>coolo</user>
+    <comment>- Added show-custom-folder-icons-sgain.patch (kde#350612)
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * Kill unneeded QUrl wrappers
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php</comment>
+    <requestid>324136</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d5723a96409bb53af3b4bbf7a5cf67c5</srcmd5>
+    <version>5.14.0</version>
+    <time>1443071541</time>
+    <user>coolo</user>
+    <comment>Update to 5.14.0</comment>
+    <requestid>330675</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d7646c08f1a9b475dcfc9f7de4909aef</srcmd5>
+    <version>5.15.0</version>
+    <time>1445286332</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.15.0</comment>
+    <requestid>337651</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>387c8307264ecbaf2d778a575e87bc33</srcmd5>
+    <version>5.16.0</version>
+    <time>1448400237</time>
+    <user>coolo</user>
+    <comment>Update to 5.16.0</comment>
+    <requestid>344527</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>9e1c438625d1c397a275013d28da6711</srcmd5>
+    <version>5.16.0</version>
+    <time>1449686473</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346534</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b3df3675025d04a0819ee1e1f8dd5ea2</srcmd5>
+    <version>5.17.0</version>
+    <time>1451389996</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.17.0</comment>
+    <requestid>348567</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0d1d41469ebdff0787ef5f1c0da973f8</srcmd5>
+    <version>5.18.0</version>
+    <time>1453279555</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.18.0</comment>
+    <requestid>352873</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>0395862f4bd1bfef79e193dca567c257</srcmd5>
+    <version>5.18.0</version>
+    <time>1453799674</time>
+    <user>dimstar_suse</user>
+    <comment>Fix an openQA test</comment>
+    <requestid>355765</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c305bf5356409d5d695a4cd946f350e1</srcmd5>
+    <version>5.19.0</version>
+    <time>1456336543</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.19.0</comment>
+    <requestid>360971</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b5736d7e8d08e490cc0b000de53f5b31</srcmd5>
+    <version>5.20.0</version>
+    <time>1458120606</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.20.0</comment>
+    <requestid>371064</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>c1e47f64ebcd8e9bfab05dab5132bd7c</srcmd5>
+    <version>5.20.0</version>
+    <time>1459001380</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>375747</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>74365682ffaac8673c07e487e4abd929</srcmd5>
+    <version>5.21.0</version>
+    <time>1460481598</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.21.0</comment>
+    <requestid>387006</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>df1add5df39bafbf8153ae944b9bc17d</srcmd5>
+    <version>5.22.0</version>
+    <time>1463652485</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.22.0</comment>
+    <requestid>395657</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>cfe7401e8814e99016a6a60c937a6f8a</srcmd5>
+    <version>5.23.0</version>
+    <time>1467541384</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.23.0</comment>
+    <requestid>402613</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c4f96731750867aca832efdc0824e537</srcmd5>
+    <version>5.24.0</version>
+    <time>1468578950</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.24.0</comment>
+    <requestid>407504</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>fea75649099b5153e9825d7db08feb07</srcmd5>
+    <version>5.25.0</version>
+    <time>1472475904</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.25.0</comment>
+    <requestid>420880</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c3fca227d7d0b22845b52fda982ecb63</srcmd5>
+    <version>5.26.0</version>
+    <time>1473888279</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.26.0</comment>
+    <requestid>426572</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>45da5d8a1a2e4d28c8907e0b2703fe0b</srcmd5>
+    <version>5.26.0</version>
+    <time>1476113379</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Fix-kio-using-only-tls1.0.patch
+
+- Added Fix-launching-terminal-desktop-files-with-konsole.patch
+  (kde#368949, boo#1003125)</comment>
+    <requestid>434063</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>025f0050730f43e81634a2aaf5fce883</srcmd5>
+    <version>5.27.0</version>
+    <time>1477650061</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.27.0</comment>
+    <requestid>436833</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>8d3cdb86f9287dc215954f4e63d649cf</srcmd5>
+    <version>5.28.0</version>
+    <time>1479382371</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.28.0</comment>
+    <requestid>440492</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>8f85edaca30bb5b2ae6d955ad24b7a49</srcmd5>
+    <version>5.29.0</version>
+    <time>1481969385</time>
+    <user>dimstar_suse</user>
+    <comment>5.29.0</comment>
+    <requestid>446262</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>aec923194aae761de536de99b6dbf172</srcmd5>
+    <version>5.30.0</version>
+    <time>1485860594</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.30 for Plasma 5.9 Beta testing</comment>
+    <requestid>451125</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>4c2f4aa2a94d15460a899c44230d3360</srcmd5>
+    <version>5.31.0</version>
+    <time>1488558657</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix security issue with proxy configuration (boo#1027520)
+  * sanitize-url-for-proxy.patch
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php</comment>
+    <requestid>461718</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>4f61d36ad891c3fef43a226777f1abaa</srcmd5>
+    <version>5.32.0</version>
+    <time>1490706642</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Frameworks 5.32.0</comment>
+    <requestid>481518</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>3affc031ad828197b064d5f43c07e3ba</srcmd5>
+    <version>5.32.0</version>
+    <time>1492516032</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487586</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>0042b8040903b28998d99e3bf63c2037</srcmd5>
+    <version>5.33.0</version>
+    <time>1493579939</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Frameworks 5.33.0</comment>
+    <requestid>492070</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>20dfb64b1f1fdfa05f2cd97a26789b05</srcmd5>
+    <version>5.33.0</version>
+    <time>1496058089</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to allow running PIE enabled binaries (kde#350018):
+  * 0001-Identify-PIE-binaries-application-x-sharedlib-as-exe.patch</comment>
+    <requestid>498963</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>1be5ea6216a6b54ba182913948b1651c</srcmd5>
+    <version>5.34.0</version>
+    <time>1496327245</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * Fix quoting of preprocessor-definition.
+  * KDirSortFilterProxyModel: bring back natural sorting (kde#343452)
+  * Fill UDS_CREATION_TIME with the value of st_birthtime on FreeBSD
+  * http slave: send error page after authorization failure (kde#373323)
+  * kioexec: delegate upload to a kded module (kde#252026, kde#370532)
+  * Fix KDirlister Gui Test setting URL scheme twice
+  * Delete kiod modules on exit
+  * Don't apply the workaround before Qt 5.8.0
+  * Generate a moc_predefs.h file for KIOCore (kde#371721)
+  * kioexec: fix support for --suggestedfilename
+- Remove patches, now upstream:
+  * enable-natural-sorting-in-KDirSortFilterProxyModel.patch
+- Use %find_lang --with-man --all-name
+- Use %kf5_find_htmldocs</comment>
+    <requestid>498966</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>0bb3b6631f503379347846a72ea794b0</srcmd5>
+    <version>5.35.0</version>
+    <time>1499291475</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.35</comment>
+    <requestid>502952</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>b6dbb7f8c093e345bdb86c7d347b15a2</srcmd5>
+    <version>5.36.0</version>
+    <time>1500279848</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.36.0</comment>
+    <requestid>509914</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>638a61aee19529206634475e9fc75feb</srcmd5>
+    <version>5.37.0</version>
+    <time>1503591073</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518456</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>e60a30b72a744781dd4471ceb14b3b4c</srcmd5>
+    <version>5.38.0</version>
+    <time>1505831073</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.38</comment>
+    <requestid>526654</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>218f2b24905d3725d453d52ea84a390e</srcmd5>
+    <version>5.39.0</version>
+    <time>1509105357</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.39.0</comment>
+    <requestid>536332</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>0101cbb59dede227dbfde67d4e3c7043</srcmd5>
+    <version>5.39.0</version>
+    <time>1510320981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538578</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>ec91290bfecb8191126baf86b11982f0</srcmd5>
+    <version>5.40.0</version>
+    <time>1510839532</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.40.0</comment>
+    <requestid>541667</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>ca73ce1eb408f8211ff708547f331f1d</srcmd5>
+    <version>5.40.0</version>
+    <time>1512733697</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix error upon directory creation with Dolphin (kde#387073):
+  * Add kio-5.40-fix-directory-creation.patch.
+
+(Bug occurs with Qt 5.9.3+.) (forwarded request 547257 from 1Antoine1)</comment>
+    <requestid>547260</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>86735f78f686526e8182d6a0061e5a39</srcmd5>
+    <version>5.41.0</version>
+    <time>1515505362</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.41 (forwarded request 559020 from luca_b)</comment>
+    <requestid>559448</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>16aabece30e38b59a40488d2ea7aa8b7</srcmd5>
+    <version>5.41.0</version>
+    <time>1516092068</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix layout of icons in the file dialog (kde#352776):
+  * 0001-Fix-KFilePreviewGenerator-LayoutBlocker.patch</comment>
+    <requestid>563770</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>18eadaef804e1ce3893632982ecb5612</srcmd5>
+    <version>5.42.0</version>
+    <time>1516633748</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Too many changes to list here
+- Add upstream patch fix-overlap-of-first-item-in-kfileplacesview.patch:
+  * Fixes overlapping in items in the places view
+- Dropped patches, now upstream:
+  * fix-handling-of-KCookieAdvice_AcceptForSession.patch</comment>
+    <requestid>567244</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>fd5ac45d2631ad619b791561549fe217</srcmd5>
+    <version>5.43.0</version>
+    <time>1518813109</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.43.0</comment>
+    <requestid>576540</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>8fb7e048b4a7b04d56d97ca94aa72827</srcmd5>
+    <version>5.44.0</version>
+    <time>1521578768</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.44</comment>
+    <requestid>586838</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>e0cbe46fe8f7662829d5a0df1007cb40</srcmd5>
+    <version>5.45.0</version>
+    <time>1524143815</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.45</comment>
+    <requestid>596879</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>ac4715940a3704ee989d4380a4b9d462</srcmd5>
+    <version>5.45.0</version>
+    <time>1525779146</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Revert-Support-NTFS-hidden-files.patch to revert the new
+  support for NTFS hidden files, it caused the mount point itself
+  to be hidden (boo#1091780, kde#392913)
+
+I'd vote for Leap 15.0 as well... (forwarded request 604374 from wolfi323)</comment>
+    <requestid>604385</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>7927709b7264f72ea46f43ec87385135</srcmd5>
+    <version>5.46.0</version>
+    <time>1526646115</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.46.0</comment>
+    <requestid>607567</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>f289ce920ab6ec045e85483d60569b2e</srcmd5>
+    <version>5.46.0</version>
+    <time>1527933215</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't recommend kio-extras5</comment>
+    <requestid>613490</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>d4a28f832f2b00752902858c1955481c</srcmd5>
+    <version>5.47.0</version>
+    <time>1529666459</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Frameworks 5.47.0</comment>
+    <requestid>616769</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>fa7646f2e0b821109f47d969c7a56ce4</srcmd5>
+    <version>5.48.0</version>
+    <time>1532160813</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.48.0 (forwarded request 623248 from luca_b)</comment>
+    <requestid>623290</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>18cda1dfc861bb61416f535883b212b8</srcmd5>
+    <version>5.49.0</version>
+    <time>1535122442</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.49.0</comment>
+    <requestid>630616</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>a04a534214161b47f4802b5c90141a64</srcmd5>
+    <version>5.50.0</version>
+    <time>1538374031</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.50</comment>
+    <requestid>636006</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>f049b16fd947477521eb824b6487c8ca</srcmd5>
+    <version>5.51.0</version>
+    <time>1540200088</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix kio_help crashing on start:
+  * 0001-kio_help-Fix-crash-in-QCoreApplication-when-accessin.patch
+
+- Run spec-cleaner
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Too many changes to list here</comment>
+    <requestid>642972</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>cdbcf39b36f375c3a9cb191df4fd4834</srcmd5>
+    <version>5.52.0</version>
+    <time>1542202527</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.52.0</comment>
+    <requestid>648524</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>4ce496507cb6f2192aa0dac9ec01425a</srcmd5>
+    <version>5.53.0</version>
+    <time>1545223317</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.53</comment>
+    <requestid>658573</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>1710599e884bbaa4ded4aaec7dd66ca8</srcmd5>
+    <version>5.54.0</version>
+    <time>1548062633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666008</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>aed6504291cb7b98a0525e77b72f2023</srcmd5>
+    <version>5.55.0</version>
+    <time>1550150784</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.55.0</comment>
+    <requestid>674247</requestid>
+  </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>3d4e1ce5c1cc890cf3fffdb66f92c8d8</srcmd5>
+    <version>5.55.0</version>
+    <time>1551385840</time>
+    <user>coolo</user>
+    <comment> (forwarded request 677631 from alarrosa)</comment>
+    <requestid>678696</requestid>
+  </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>17d4e2dd8f5975c113cee3bc4668387a</srcmd5>
+    <version>5.55.0</version>
+    <time>1552042721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681092</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>a4a8310ac2f957a63704b4359869c058</srcmd5>
+    <version>5.56.0</version>
+    <time>1553157990</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.56.0</comment>
+    <requestid>686748</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>99b826d3ec79aa73f79d08da71d14fae</srcmd5>
+    <version>5.57.0</version>
+    <time>1555701784</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Frameworks 5.57.0</comment>
+    <requestid>695231</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>09d94ff7ef6e4385234bf9fa33d6ac55</srcmd5>
+    <version>5.58.0</version>
+    <time>1558427372</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.58 (forwarded request 703255 from luca_b)</comment>
+    <requestid>703359</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>e95acb0400d66fb4e7f5f1ac3d75a666</srcmd5>
+    <version>5.59.0</version>
+    <time>1561194737</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.59.0</comment>
+    <requestid>710749</requestid>
+  </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>65330ec34282364c6371a9fd15379f2e</srcmd5>
+    <version>5.59.0</version>
+    <time>1561882783</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch to fix downloaded files (via http) getting an
+  &quot;invalid&quot; modification time (boo#1104595, kde#374420)
+  * copyjob-Only-set-modification-time-if-the-kio-slave-provided-it.patch (forwarded request 712340 from wolfi323)</comment>
+    <requestid>712345</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>bdb5712f092b672b69ac17c7ba7fa6d9</srcmd5>
+    <version>5.60.0</version>
+    <time>1564136148</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.60.0</comment>
+    <requestid>715887</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>3b3f5b2a4803ce9736966857e6e6fb06</srcmd5>
+    <version>5.61.0</version>
+    <time>1566241724</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.61</comment>
+    <requestid>722472</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>9628895530a78ccf87f5920f57b1f57d</srcmd5>
+    <version>5.62.1</version>
+    <time>1569234513</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.62.1</comment>
+    <requestid>731382</requestid>
+  </revision>
+</revisionlist>

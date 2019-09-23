@@ -1,0 +1,214 @@
+-------------------------------------------------------------------
+Tue Feb 26 14:02:36 UTC 2019 - José Iván López González <jlopez@suse.com>
+
+- Version bump (bsc#1124009)
+- 4.1.0
+
+-------------------------------------------------------------------
+Mon Aug 20 09:56:45 CEST 2018 - schubi@suse.de
+
+- Changed dir of COPYING file.
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Fri Apr  6 18:54:42 UTC 2018 - mfilka@suse.com
+
+- bnc#1087957 - version bump
+- 4.0.0
+
+-------------------------------------------------------------------
+Thu Jun  2 08:58:27 UTC 2016 - igonzalezsosa@suse.com
+
+- Drop yast2-transfer-devel-doc package (fate#320356)
+- 3.1.3
+
+-------------------------------------------------------------------
+Mon Jan 26 13:56:18 UTC 2015 - jreidinger@suse.com
+
+- fixed \r character lost during conversion to Ruby (bnc#344123)
+- 3.1.2
+
+-------------------------------------------------------------------
+Wed Nov 13 15:56:18 UTC 2013 - jreidinger@suse.com
+
+- Add explicit COPYING file
+
+-------------------------------------------------------------------
+Thu Sep 19 17:40:31 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Thu Aug  1 05:56:06 UTC 2013 - lslezak@suse.cz
+
+- move the development documentation to devel-doc subpackage
+- removed yast2-testsuite Buildrequire
+- 3.0.1
+
+-------------------------------------------------------------------
+Wed Jul 31 08:43:29 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Tue Nov 13 11:21:46 CET 2012 - tgoettlicher@suse.de
+
+- confirmed license gpl v2
+- 2.21.1
+
+-------------------------------------------------------------------
+Tue Apr 10 15:57:11 CEST 2012 - tgoettlicher@suse.de
+
+- BuildRequire libxcrypt-devel only for < 12.2
+
+-------------------------------------------------------------------
+Fri Nov 25 12:26:08 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Jul 29 14:16:32 CEST 2011 - ug@suse.de
+
+- add support for client certificates for HTTPS
+- 2.21.0
+
+-------------------------------------------------------------------
+Fri Oct  9 14:13:13 CEST 2009 - ug@suse.de
+
+- 2.18.1
+
+-------------------------------------------------------------------
+Fri Jun 19 12:31:51 CEST 2009 - mvidner@suse.cz
+
+- Using autodocs-cc.ami, which contains a fix for automake 1.11.
+
+-------------------------------------------------------------------
+Mon May 25 15:29:01 CEST 2009 - ug@suse.de
+
+- send ACK package for the last DATA package that was received
+  via TFTP
+- 2.18.0
+
+-------------------------------------------------------------------
+Fri Jan  4 09:46:04 CET 2008 - ug@suse.de
+
+- follow HTTP code 301 and 302 (#344123)
+- version 2.16.1
+
+-------------------------------------------------------------------
+Tue Sep 25 17:19:44 CEST 2007 - ug@suse.de
+
+- version 2.16.0
+
+-------------------------------------------------------------------
+Thu Jan 11 16:57:46 CET 2007 - ug@suse.de
+
+- *.la files removed
+
+-------------------------------------------------------------------
+Wed Nov 29 16:46:20 CET 2006 - ug@suse.de
+
+- version 2.15.0
+
+-------------------------------------------------------------------
+Thu Nov  9 17:04:09 CET 2006 - ug@suse.de
+
+- version 2.14.0
+
+-------------------------------------------------------------------
+Thu Sep 14 00:49:15 CEST 2006 - ro@suse.de
+
+- added yast2-core-devel to BuildRequires·
+
+-------------------------------------------------------------------
+Thu Jun  1 12:52:30 CEST 2006 - locilka@suse.cz
+
+- Marking FTP, TFTP and HTTP modules as Stable.
+
+-------------------------------------------------------------------
+Mon Mar  6 19:38:10 CET 2006 - locilka@suse.cz
+
+- Ajusted BuildRequires for package
+- 2.13.3
+
+-------------------------------------------------------------------
+Thu Jan  5 10:36:25 CET 2006 - locilka@suse.cz
+
+- Adding enhancement wanted and created by ug@suse.de
+  Adding functionality which allows to disable the strict HTTPS
+  more to more useful. The default behavior is unchanged.
+- 2.13.2
+
+-------------------------------------------------------------------
+Thu Dec 15 14:01:05 CET 2005 - locilka@suse.cz
+
+- Fixed bug #135829
+  Curl library was called with wrong data-type. The bug appeared on
+  big-endian 64bits only (Such as s390x).
+- 2.13.1
+
+-------------------------------------------------------------------
+Wed Nov 30 12:31:13 CET 2005 - locilka@suse.cz
+
+- Added debugging message into the Curl::Get function
+- 2.13.0
+
+-------------------------------------------------------------------
+Thu Apr 28 13:29:25 CEST 2005 - locilka@suse.cz
+
+- Changing package maintainer to locilka@suse.cz
+- 2.12.0
+
+-------------------------------------------------------------------
+Wed May  5 23:51:38 CEST 2004 - nashif@suse.de
+
+- Fixed bug #39996: fixed tftp 'put'
+
+-------------------------------------------------------------------
+Fri Apr  2 17:44:04 CEST 2004 - nashif@suse.de
+
+- License changed to GPL
+
+-------------------------------------------------------------------
+Fri Mar 19 14:58:52 CET 2004 - mvidner@suse.cz
+
+- added AGENT_LIBADD so that agents work from standalone Perl
+
+-------------------------------------------------------------------
+Sun Jan 25 03:11:53 CET 2004 - nashif@suse.de
+
+- First version with new interpreter
+- 2.9.1
+
+-------------------------------------------------------------------
+Thu Jun 12 03:38:06 CEST 2003 - nashif@suse.de
+
+- Fixed file list
+
+-------------------------------------------------------------------
+Tue Feb  4 05:27:39 CET 2003 - nashif@suse.de
+
+- Added FTP Get
+- 2.7.0
+
+-------------------------------------------------------------------
+Mon Aug  5 18:04:25 CEST 2002 - nashif@suse.de
+
+- Added URI parser
+- 2.6.1
+
+-------------------------------------------------------------------
+Wed Jul 17 04:40:01 CEST 2002 - nashif@suse.de
+
+- Merged tftp and  curl agents
+- 2.6.0
+
+-------------------------------------------------------------------
+Fri Jul 12 13:02:40 2002 - nashif@suse.de
+
+- Initial version
+

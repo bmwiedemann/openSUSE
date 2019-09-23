@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Thu Aug 23 09:38:47 UTC 2018 - tchvatal@suse.com
+
+- Version update to 1.2.6:
+  * Support for python3
+- Add patch to unbundle six:
+  * PyXB-unbundle-six.patch
+
+-------------------------------------------------------------------
+Tue Mar 17 14:44:43 UTC 2015 - tchvatal@suse.com
+
+- Fix build on sle11 as it is needed for java-packages
+
+-------------------------------------------------------------------
+Sat Jan 24 13:30:49 UTC 2015 - p.drouand@gmail.com
+
+- Remove python direct dependency; let RPM handle it
+
+-------------------------------------------------------------------
+Sat Jan 24 08:23:15 UTC 2015 - mailaender@opensuse.org
+
+- update to version 1.2.4
+
+-------------------------------------------------------------------
+Fri Jun 13 11:09:45 UTC 2014 - tchvatal@suse.com
+
+- update to version 1.2.3
+
+-------------------------------------------------------------------
+Tue Apr 5 00:00:00 CST 2011 - tzotsos@opensuse.org
+
+- initial OBS build

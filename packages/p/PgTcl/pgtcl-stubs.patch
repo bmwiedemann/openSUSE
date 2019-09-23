@@ -1,0 +1,26 @@
+Index: libpgtcl-1.7/configure
+===================================================================
+--- libpgtcl-1.7.orig/configure	2008-05-23 20:49:16.000000000 +0200
++++ libpgtcl-1.7/configure	2013-10-02 14:51:53.680504110 +0200
+@@ -6770,7 +6770,7 @@
+ fi
+ done
+ 
+-#LIBS=$SAVE_LIBS
++LIBS=$SAVE_LIBS
+ 
+ 
+ 
+Index: libpgtcl-1.7/configure.in
+===================================================================
+--- libpgtcl-1.7.orig/configure.in	2008-05-23 21:06:35.000000000 +0200
++++ libpgtcl-1.7/configure.in	2013-10-02 14:49:46.117186531 +0200
+@@ -116,7 +116,7 @@
+ SAVE_LIBS=$LIBS
+ LIBS="$PG_LIBS $LIBS $TCL_LIB_SPEC"
+ AC_CHECK_FUNCS(Tcl_NewDictObj PQexecParams PQexecPrepared PQsendQueryParams PQsendQueryPrepared PQserverVersion lo_truncate)
+-#LIBS=$SAVE_LIBS
++LIBS=$SAVE_LIBS
+ 
+ 
+ AC_SUBST(LIBPG)

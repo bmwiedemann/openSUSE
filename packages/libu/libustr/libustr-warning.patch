@@ -1,0 +1,13 @@
+Index: ustr-1.0.4/ustr-compiler.h
+===================================================================
+--- ustr-1.0.4.orig/ustr-compiler.h
++++ ustr-1.0.4/ustr-compiler.h
+@@ -16,7 +16,7 @@
+ #ifdef va_copy
+ # define USTR_CONF_HAVE_VA_COPY 1
+ # define USTR__VA_COPY(x, y)   va_copy(x, y)
+-#elif __va_copy
++#elif defined __va_copy
+ # define USTR_CONF_HAVE_VA_COPY 1
+ # define USTR__VA_COPY(x, y) __va_copy(x, y)
+ #else

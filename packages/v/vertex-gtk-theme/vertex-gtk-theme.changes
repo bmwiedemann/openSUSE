@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Thu Oct 25 12:16:46 UTC 2018 - sor.alexei@meowr.ru
+
+- Support GTK+ 3.24.
+- Disable GNOME Shell support for openSUSE Leap 15.1 and newer.
+
+-------------------------------------------------------------------
+Tue May  9 16:45:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 20170128:
+  * Fixes for GNOME 3.22.
+  * Bugfixes.
+- Remove vertex-gtk-theme-gtk-3.22.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Sep 24 10:10:00 UTC 2016 - sor.alexei@meowr.ru
+
+- Add vertex-gtk-theme-gtk-3.22.patch: fix building with Gtk 3.22.
+
+-------------------------------------------------------------------
+Mon Apr 11 10:02:03 UTC 2016 - sor.alexei@meowr.ru
+
+- Add Gtk3 build dependency for theme to know for which version to
+  build for.
+
+-------------------------------------------------------------------
+Sat Apr  2 17:02:31 UTC 2016 - virtuousfox@gmail.com
+
+- Update to 20160329:
+  * Add support for Gnome 3.20.
+  * Add Budgie v10.x support.
+  * Bugfixes.
+
+-------------------------------------------------------------------
+Sun Sep 27 15:37:48 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 20150923:
+  * Add GNOME 3.18 support.
+- Force Adwaita icon theme.
+
+-------------------------------------------------------------------
+Wed Jul 22 09:01:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 20150718:
+  * Bugfix release.
+
+-------------------------------------------------------------------
+Sat May  2 12:24:14 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

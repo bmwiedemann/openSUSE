@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Wed Jun 13 06:31:45 UTC 2018 - bwiedemann@suse.com
+
+- Add reproducible.patch to not have the embedded tarball vary
+  across builds
+
+-------------------------------------------------------------------
+Tue Aug 22 08:22:21 UTC 2017 - tchvatal@suse.com
+
+- Add patch to build with lua5.3 (upstream merged in git):
+  * cardpeek-lua5.3.patch
+- Convert to pkgconfig style dependencies
+
+-------------------------------------------------------------------
+Wed Mar 15 12:42:13 UTC 2017 - dimstar@opensuse.org
+
+- Explicitly package files installed by make install into _docdir:
+  rpm 4.13 no longer implicitly packages those files.
+
+-------------------------------------------------------------------
+Thu Jul 30 10:17:16 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.8.4:
+  + Works with Homebrew on OS X out of the box on Yosemite.
+  + Has now a 'console' mode, as an alternative to the GTK+ GUI.
+  + New and improved mifare classic 1k/4k script.
+  + EMV script enhancements (thanks to A. Kozlik) and some minor
+    bug fixes.
+  + Improvements in GSM script.
+  + Enable minimal "app bundling" on Mac OSX.
+  + Many bug fixes and improvements.
+- BuildRequire lua52-devel on openSUSE > 13.2 (current Tumbleweed):
+  cardpeek has not been ported to LUA 5.3 yet.
+
+-------------------------------------------------------------------
+Thu Dec 25 15:13:02 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 0.8.3
+  + Added initial OpenPGP card support
+  + Added clipboard copy in text format (with ctrl-c)
+  + Added compatibility with FreeBSD
+  + Added optional block signature computation to tachogrpah cards
+  + Added Gironde/Grenoble Calypso French network data
+  + Introduce experimental online secure script update, with RSA signature
+  + Updated documentation
+  + Minor change in XML cardpeek format
+  + Many bugfixes and improvements
+
+-------------------------------------------------------------------
+Wed Feb 12 18:00:23 UTC 2014 - prusnak@opensuse.org
+
+- updated to 0.8.2
+- drop obsoleted patches (included upstream)
+
+-------------------------------------------------------------------
+Thu Aug 22 17:13:46 CEST 2013 - sbrabec@suse.cz
+
+- New package.
+

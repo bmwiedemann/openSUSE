@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Wed Sep 11 10:55:01 CEST 2019 - kukuk@suse.de
+
+- Replace vim with nano (less dependency, default what others are
+  using, including in documentation)
+
+-------------------------------------------------------------------
+Mon Aug 12 13:25:41 CEST 2019 - kukuk@suse.de
+
+- MicroOS base: remove update-checker, the only on openSUSE usefull
+  functionality (orphaned packages) does not work due a zypper bug.
+
+-------------------------------------------------------------------
+Fri Aug  9 09:43:09 CEST 2019 - kukuk@suse.de
+
+- Add zypper-needs-restarting to MicroOS base pattern
+
+-------------------------------------------------------------------
+Wed Jun  5 10:24:52 CEST 2019 - kukuk@suse.de
+
+- Add bcache-tools to DVD [bsc#1136815]
+
+-------------------------------------------------------------------
+Fri May 10 15:02:13 CEST 2019 - kukuk@suse.de
+
+- Add multipath-tools to DVD for the case the installer needs it
+
+-------------------------------------------------------------------
+Wed May  8 15:44:23 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Add wpa_supplicant to media [boo#1134429]
+
+-------------------------------------------------------------------
+Mon May  6 16:29:46 CEST 2019 - kukuk@suse.de
+
+- Add cryptsetup to media [bsc#1134139]
+
+-------------------------------------------------------------------
+Fri Apr 26 13:48:16 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove salt-master and -minion from onlyDVD pattern
+  Not needed for MicroOS, will be used in Kubic via system_roles 
+
+-------------------------------------------------------------------
+Thu Apr 11 12:04:28 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Correctly obsolete patterns-caasp-* version 4.0 
+
+-------------------------------------------------------------------
+Thu Apr  4 13:40:39 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Require tftpboot-installation for MicroOS, not Tumbleweed-Kubic 
+
+-------------------------------------------------------------------
+Wed Apr  3 13:10:25 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Add pattern-microos-basesystem pattern to provide pattern() = basesystem 
+
+-------------------------------------------------------------------
+Tue Apr  2 09:25:36 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Fix "additonal" typos
+- Fix accidental use of Provides instead of Requires
+
+-------------------------------------------------------------------
+Mon Apr  1 12:37:26 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- onlyDVD patterns no longer require container runtime patterns 
+
+-------------------------------------------------------------------
+Wed Mar 27 14:13:02 CET 2019 - kukuk@suse.de
+
+- Remove fipscheck from base pattern
+
+-------------------------------------------------------------------
+Wed Mar 20 18:20:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Compact %install section.
+
+-------------------------------------------------------------------
+Mon Mar 18 14:07:11 CET 2019 - Richard Brown <rbrown@suse.com>
+
+- Initial version

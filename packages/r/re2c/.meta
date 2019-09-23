@@ -1,0 +1,9 @@
+<package name="re2c" project="openSUSE:Factory">
+  <title>Tool for generating C-based recognizers from regular expressions</title>
+  <description>re2c is a tool for writing fast and flexible lexers. Unlike other such
+tools, it concentrates solely on generating efficient code for matching
+regular expressions. This makes it suitable for a wide variety of
+applications. The generated scanners approach hand-crafted ones in
+terms of size and speed.</description>
+  <devel project="devel:tools:compiler" package="re2c"/>
+</package>

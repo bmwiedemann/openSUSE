@@ -1,0 +1,25 @@
+From: <Greg.Freemyer@gmail.com>
+Upstream: openSUSE-specific, but merging is nevertheless welcome
+
+src: kill __DATE__ and __TIME__
+
+These macros are undesired on at least OBS (and rpmlint subsequently
+warns about their use). Besides, they do not add any noticable value
+because packages may get recompiled at practically any time.
+                                                 -<jengelh@inai.de>
+
+Index: libewf-20120813/ewftools/info_handle.c
+===================================================================
+--- libewf-20120813.orig/ewftools/info_handle.c
++++ libewf-20120813/ewftools/info_handle.c
+@@ -4193,10 +4193,6 @@ int dfxml_build_environment_fprint(
+ #endif		
+ 	fprintf(
+ 	 stream,
+-	 "\t\t\t<compilation_date>" __DATE__ " " __TIME__ "</compilation_date>\n" );
+-
+-	fprintf(
+-	 stream,
+ 	 "\t\t\t<library name=\"libewf\" version=\"%s\"/>\n",
+ 	 LIBEWF_VERSION_STRING );
+ 

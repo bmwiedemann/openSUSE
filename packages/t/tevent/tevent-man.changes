@@ -1,0 +1,405 @@
+-------------------------------------------------------------------
+Tue Mar  5 18:22:33 UTC 2019 - dmulder@suse.com
+
+- Update to version 0.9.39
+  + py_tevent: add_timer takes float argument
+  + C99 build fixes.
+  + Fix standalone build of tevent.
+
+-------------------------------------------------------------------
+Wed Feb  6 17:50:12 UTC 2019 - dmulder@suse.com
+
+- Update to version 0.9.38
+  + Deprecate tevent wrapper api again
+  + Build fixes
+  + The build uses python3 by default:
+  + --extra-python would take python2 now
+  + To build with python2 only use:
+    PYTHON=python2 ./configure
+    PYTHON=python2 make
+    PYTHON=python2 make install
+
+-------------------------------------------------------------------
+Tue Sep 25 07:37:57 UTC 2018 - Samuel Cabrero <scabrero@suse.de>
+
+- Update license to LGPL-3.0
+
+-------------------------------------------------------------------
+Wed Aug  8 16:28:21 UTC 2018 - dmulder@suse.com
+
+- Update to version 0.9.37
+  + simplify "poll" and "poll_mt" backends
+  + make tevent_abort() reachable for backends
+  + add tevent_common_invoke_*_handler() functions
+  + add tevent_context_same_loop() function
+  + add tevent_context_wrapper_create() infrastructure
+  + add tevent_req_profile infrastructure
+
+-------------------------------------------------------------------
+Fri Mar 16 17:57:04 UTC 2018 - jmcdonough@suse.com
+
+- Update to version 0.9.36; (bso#13291);
+  + improve documentation of tevent_queue_add_optimize_empty()
+  + add tevent_queue_entry_untrigger()
+  + Minor cleanup. wakeup_fd can always be gotten from the event context.
+  + Use smb_set_close_on_exec() in example code.
+- Use tirpc on newer sytems
+
+-------------------------------------------------------------------
+Tue Nov 28 17:31:07 UTC 2017 - scabrero@suse.com
+
+- Update to version 0.9.34; (bsc#1069666);
+  + Remove unused select backend
+  + Fix a race condition in tevent_threaded_schedule_immediate();
+    (bso#13130);
+
+-------------------------------------------------------------------
+Wed Jul 26 08:49:04 UTC 2017 - scabrero@suse.com
+
+- Update to version 0.9.33
+  + make tevent_req_print() more robust against crashes
+
+-------------------------------------------------------------------
+Fri Jun 30 11:58:18 UTC 2017 - scabrero@suse.com
+
+- Update to version 0.9.32
+  + Fix mutex locking in tevent_threaded_context_destructor().
+  + Fix a memleak on FreeBSD.
+  + Re-init threading in tevent_re_initialise().
+  + Include the finish location in tevent_req_default_print().
+
+-------------------------------------------------------------------
+Mon Feb  6 15:00:05 UTC 2017 - jengelh@inai.de
+
+- Drop redundant PreReq for ldconfig; this is autodetected.
+  Set RPM group right.
+
+-------------------------------------------------------------------
+Thu Feb  2 14:57:25 UTC 2017 - aaptel@suse.com
+
+ - Use https urls.
+
+-------------------------------------------------------------------
+Tue Jan 24 17:21:20 UTC 2017 - ddiss@suse.com
+
+- Update to version 0.9.31; (bsc#1032915).
+  + Add tevent_req_reset_endtime
+  + Make talloc_free safe when threaded_contexts exist
+  + Add tevent_update_timer
+  + Factor out tevent_common_insert_timer
+  + Add threaded immediate activation
+
+-------------------------------------------------------------------
+Wed Sep 14 08:49:43 UTC 2016 - jmcdonough@suse.com
+
+- Update to version 0.9.29.
+  + performance improvements.
+
+-------------------------------------------------------------------
+Tue Mar 15 16:43:15 UTC 2016 - lmuelle@suse.com
+
+- Require talloc 2.1.6 at build-time; (bsc#954658).
+
+-------------------------------------------------------------------
+Sun Feb 21 16:53:17 UTC 2016 - lmuelle@suse.com
+
+- Avoid a file collision for non SUSE build targets; (bsc#966174).
+
+-------------------------------------------------------------------
+Wed Feb 19 15:48:45 UTC 2016 - lmuelle@suse.com
+
+- Update to 0.9.28; (bsc#954658).
+  + Fix memory leak when old signal action restored (bso#11742).
+- Update to 0.9.27.
+  + Fix bug in poll backend - poll_event_loop_poll() exits the for loop on
+    POLLNVAL instead of continuing to find an event that is ready.
+  + Fix ETIME handling for Solaris event ports (bso#11728).
+
+-------------------------------------------------------------------
+Wed Nov 11 17:52:45 UTC 2015 - lmuelle@suse.com
+
+- Update to 0.9.26; (bsc#954658).
+  + New tevent_thread_proxy API
+  + Minor build fixes
+
+-------------------------------------------------------------------
+Fri Oct 30 15:18:10 UTC 2015 - lmuelle@suse.com
+
+- Disable rpath-install and silent-rules while configure.
+
+-------------------------------------------------------------------
+Sun Oct 25 13:48:42 UTC 2015 - lmuelle@suse.com
+
+- Add python3-tevent; (bsc#951911).
+
+-------------------------------------------------------------------
+Thu Oct 22 21:03:11 UTC 2015 - lmuelle@suse.com
+
+- Require python-talloc-devel instead of pytalloc-devel.
+
+-------------------------------------------------------------------
+Mon Sep  7 22:14:42 UTC 2015 - lmuelle@suse.com
+
+- Recommend to install tevent-man from libtevent-devel on post-10.3 systems.
+
+-------------------------------------------------------------------
+Mon Sep  7 17:50:34 UTC 2015 - lmuelle@suse.com
+
+- Remove superfluous _name define.
+
+-------------------------------------------------------------------
+Mon Sep  7 17:06:26 UTC 2015 - lmuelle@suse.com
+
+- Update the Samba Library Distribution Key file 'tevent.keyring';
+  (bso#945116).
+
+-------------------------------------------------------------------
+Thu Aug 20 08:58:37 UTC 2015 - dimstar@opensuse.org
+
+- Create 2nd spec-file tevent-man.spec: build the man pages in a
+  separate cycle in order to avoid the follwing build cycle:
+  doxygen -> curl -> krb5-mini -> libverto -> tevent -> doxygen.
+- Recommend tevent-man for installation.
+
+-------------------------------------------------------------------
+Sat Jun 27 17:20:12 UTC 2015 - lmuelle@suse.com
+
+- Update to 0.9.25.
+  + Fix compile error in Solaris ports backend.
+  + Fix access after free in tevent_common_check_signal(); (bso#11308).
+  + Improve pytevent bindings.
+  + Testsuite fixes.
+  + Improve the documentation of the tevent_add_fd() assumtions. It must be
+    talloc_free'ed before closing the fd! (bso##11141); (bso#11316).
+
+-------------------------------------------------------------------
+Thu Mar  5 11:16:25 UTC 2015 - lmuelle@suse.com
+
+- Update to 0.9.24.
+  + Ignore unexpected signal events in the same way the epoll backend does.
+
+-------------------------------------------------------------------
+Fri Feb 27 19:36:39 UTC 2015 - lmuelle@suse.com
+
+- Update to 0.9.23.
+  + Update the tevent_data.dox tutrial stuff to fix some errors, including
+    white space problems.
+  + Use tevent_req_simple_recv_unix in a few places.
+
+-------------------------------------------------------------------
+Thu Nov  6 13:21:57 UTC 2014 - lmuelle@suse.com
+
+- Use the upstream tar ball, as signature verification is now able to handle
+  compressed archives.
+
+-------------------------------------------------------------------
+Tue Oct 28 15:45:11 UTC 2014 - lmuelle@suse.com
+
+- Remove dependency on gpg-offline as signature checking is implemented in the
+  source validator.
+
+-------------------------------------------------------------------
+Sun Oct  5 17:40:34 UTC 2014 - lmuelle@suse.com
+
+- Update to 0.9.22.
+  + remove unused exit_code in tevent_select.c
+  + remove unused exit_code in tevent_poll.c
+  + build: improve detection of srcdir
+  + lib: tevent: make TEVENT_SIG_INCREMENT atomic.
+  + Update flags in tevent pkgconfig file
+
+-------------------------------------------------------------------
+Tue Sep 23 20:41:59 UTC 2014 - lmuelle@suse.com
+
+- Utilize doxygen to generate the API documentation and package it.
+
+-------------------------------------------------------------------
+Mon Feb 17 22:00:55 UTC 2014 - lmuelle@suse.com
+
+- Update to 0.9.21.
+  + add tevent_req_set_cleanup_fn()
+  + add/use tevent_req_destructor
+  + add doxygen comments for tevent_num_signals() and
+    tevent_sa_info_queue_count()
+  + Add prototypes
+  + Only build "std_fallback_to_poll" when epoll is around
+  + fix crash bug in tevent_queue_immediate_trigger()
+  + Fix CID 1138326 Unchecked return value
+- Update to 0.9.20.
+  + give the user the chance to ask for TEVENT_NUM_SIGNALS and
+    TEVENT_SA_INFO_QUEUE_COUNT
+  + change TEVENT_SA_INFO_QUEUE_COUNT from 64 to 256
+  + tevent_epoll_set_panic_fallback() can be a void function
+  + make use of talloc_get_type_abort() in tevent_epoll.c, tevent_signal.c,
+    tevent_select.c, and tevent_queue.c
+  + use talloc_get_type_abort() in the documentation examples
+  + add tevent_queue_wait_send/recv()
+  + tevent_req_create() already uses ZERO_STRUCT(req)
+  + let tevent_req_received() clear the private_cancel function
+  + cancel the timeout timer when the request is finished
+  + Use talloc_pooled_object for tevent_req_create
+  + Remove a pointless goto
+  + Add tevent_received to tevent_req_simple_recv_ntstatus
+  + Fix tutorial reference
+  + Add echo server sample code
+  + Sync to tevent 0.9.18 from upstream
+  + expose tevent_context_init_ops
+
+-------------------------------------------------------------------
+Fri Dec  6 13:51:45 UTC 2013 - lmuelle@suse.com
+
+- Update to 0.9.19.
+  + Remove the signal pipe if no signal events are around
+  + document tevent_req_create state zeroing
+  + Fix Coverity ID 989236 Operands don't affect result
+  + Add tevent tutorial files and link it on the mainpage
+  + Only set poll_ev->delete=false if it was true
+
+-------------------------------------------------------------------
+Fri Dec  6 13:42:37 UTC 2013 - lmuelle@suse.com
+
+- Verify source tar ball gpg signature.
+
+-------------------------------------------------------------------
+Thu Aug 29 12:12:58 UTC 2013 - lmuelle@suse.com
+
+- PreReq /sbin/ldconfig from python-tevent.
+
+-------------------------------------------------------------------
+Thu Aug 29 10:54:02 UTC 2013 - lmuelle@suse.com
+
+- Add python-tevent to baselibs.conf.
+
+-------------------------------------------------------------------
+Tue Jul  2 11:47:29 UTC 2013 - lmuelle@suse.com
+
+- Add tevent.pyc and pyo to the file list of python-tevent for post Centos and
+  RHEL 5 and Fedora 11 builds.
+
+-------------------------------------------------------------------
+Tue Apr  9 14:44:24 UTC 2013 - lmuelle@suse.com
+
+- Update to 0.9.18.
+  + Adding new timer events is now faster, if there's
+    a large number of timer events.
+  + sigprocmask does not work on FreeBSD to stop further signals in a signal
+    handler.
+  + TEVENT_NUM_SIGNALS is calculated by configure in order
+    to support realtime signals on freebsd.
+  + ./configure --disable-python was fixed for the standalone build.
+  + Several crash bugs in the poll backend are fixed.
+  + The poll backend removes deleted events from the cached pollfd array now.
+  + The poll doesn't pass pollfd.events == 0 to poll() and maintains a list
+    of disabled events, instead of consuming 100% cpu and/or triggering
+    the callers handler.
+  + The poll backend detects POLLNVAL and reports EBADF
+    instead of consuming 100% cpu.
+  + The select backend supports separate handlers
+    for TEVENT_FD_READ and TEVENT_FD_WRITE.
+  + The poll and select backends are now doing fair queuing of fd events.
+  + The epoll has better error checking and supports separate handlers
+    for TEVENT_FD_READ and TEVENT_FD_WRITE.
+  + The standard backend was rewritten to be a tiny
+    wrapper on top of epoll with a fallback to poll,
+    which means that it doesn't use select directly anymore.
+  + TEVENT_TRACE_BEFORE_LOOP_ONCE and TEVENT_TRACE_AFTER_LOOP_ONCE are added
+    in order to allow the application to hook in before and after the
+    loop_once() backend function is called.
+    The TEVENT_HAS_LOOP_ONCE_TRACE_POINTS define can be used to
+    detect the new feature.
+
+-------------------------------------------------------------------
+Thu Aug 30 16:25:22 UTC 2012 - lmuelle@suse.com
+
+- Update to 0.9.17.
+  + Add threaded poll_mt testcase
+  + tevent_poll: Decouple poll_ev->fds handling from adding/removing fds
+  + tevent: Refer to the correct header in testsuite.c
+
+-------------------------------------------------------------------
+Tue Aug  7 21:49:07 UTC 2012 - lmuelle@suse.com
+
+- Update to 0.9.16.
+  + Adds tevent_*_trace_*() and tevent_context_init_ops().
+  + Move tevent.py to the arch-specific directory.
+
+-------------------------------------------------------------------
+Thu Jun 28 16:29:25 UTC 2012 - lmuelle@suse.com
+
+- Disable rpath while configure.
+
+-------------------------------------------------------------------
+Wed Jun 13 16:09:22 UTC 2012 - ddiss@suse.com
+
+- Tag GPLv3 due to tevent_util.h license; (bnc#765270).
+
+-------------------------------------------------------------------
+Sun Jun  3 21:52:07 UTC 2012 - lmuelle@suse.com
+
+- Define library name and use it instead of libtevent0.
+
+-------------------------------------------------------------------
+Sat Jun  2 15:46:14 UTC 2012 - lmuelle@suse.com
+
+- Rename package to tevent and add an independent libtevent0 subpackage.
+- Enhance and polish the package descriptions and summaries.
+
+-------------------------------------------------------------------
+Sat Jun  2 00:04:43 UTC 2012 - lmuelle@suse.com
+
+- Define and use talloc version macro.
+
+-------------------------------------------------------------------
+Fri Jun  1 15:41:27 UTC 2012 - lmuelle@suse.com
+
+- BuildIgnore libtalloc to prevent a package conflict on Fedora systems.
+
+-------------------------------------------------------------------
+Thu May 31 21:33:31 UTC 2012 - lmuelle@suse.com
+
+- Define python_sitelib and python_sitearch if undefined.
+
+-------------------------------------------------------------------
+Thu May 31 12:01:45 UTC 2012 - lmuelle@suse.com
+
+- BuildRequire libtalloc-devel instead of libtalloc2-devel.
+- Rename libtevent2-devel to libtevent-devel.
+
+-------------------------------------------------------------------
+Wed May 30 15:30:59 UTC 2012 - lmuelle@suse.com
+
+- Remove superfluous AutoReqProv on line.
+
+-------------------------------------------------------------------
+Fri May 25 08:10:05 UTC 2012 - lmuelle@suse.com
+
+- BuildRequire pkg-config.
+- Move _tevent.so to the python-tevent package.
+
+-------------------------------------------------------------------
+Wed May 16 13:28:23 UTC 2012 - lmuelle@suse.com
+
+- Cleanup BuildRequires and spec file in general.
+- BuildRequire doxygen, libtalloc2-devel >= 2.0.7, python-devel, and
+  pytalloc-devel >= 2.0.7.
+- Require libtalloc2-devel >= 2.0.7 and pkg-config from the devel package.
+- Move python files to an independent python-tevent package.
+
+-------------------------------------------------------------------
+Mon May 14 14:56:44 UTC 2012 - lmuelle@suse.com
+
+- Adjust licence.
+- Require libtevent0 = %{version} from the devel package.
+- Extend the description of the devel package.
+
+-------------------------------------------------------------------
+Mon May 14 14:26:10 UTC 2012 - lmuelle@suse.com
+
+- BuildRequire libtalloc2-devel.
+- Remove superfluous BuildRequires to talloc libraries.
+
+-------------------------------------------------------------------
+Wed Sep  7 17:52:30 UTC 2011 - lars@samba.org
+
+- Initial independent libtevent0 package.
+

@@ -1,0 +1,6 @@
+<package name="cyrus-sasl" project="openSUSE:Factory">
+  <title>Implementation of Cyrus SASL API</title>
+  <description>This is the Cyrus SASL API. It can be used on the client or server side
+to provide authentication. See RFC 2222 for more information.</description>
+  <devel project="network" package="cyrus-sasl"/>
+</package>

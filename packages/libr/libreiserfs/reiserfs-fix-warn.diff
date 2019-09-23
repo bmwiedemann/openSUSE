@@ -1,0 +1,41 @@
+diff -uNrp progsreiserfs-0.3.0.5.orig/include/reiserfs/debug.h progsreiserfs-0.3.0.5/include/reiserfs/debug.h
+--- progsreiserfs-0.3.0.5.orig/include/reiserfs/debug.h	2004-04-18 19:55:59.000000000 +0200
++++ progsreiserfs-0.3.0.5/include/reiserfs/debug.h	2005-12-19 17:24:28.378104804 +0100
+@@ -63,7 +63,7 @@
+ #endif
+ 
+ extern int libreiserfs_assert(int cond, char *cond_text, char *file, int line, 
+-			      char *function);
++			      const char *function);
+ 
+ #endif
+ 
+diff -uNrp progsreiserfs-0.3.0.5.orig/libreiserfs/debug.c progsreiserfs-0.3.0.5/libreiserfs/debug.c
+--- progsreiserfs-0.3.0.5.orig/libreiserfs/debug.c	2004-04-18 19:04:24.000000000 +0200
++++ progsreiserfs-0.3.0.5/libreiserfs/debug.c	2005-12-19 17:13:35.947864587 +0100
+@@ -32,7 +32,7 @@
+ 
+ #ifdef DEBUG
+ int libreiserfs_assert(int cond, char *cond_text, char *file,
+-		       int line, char *function)
++		       int line, const char *function)
+ {
+ 	reiserfs_exception_option_t opt;
+ 
+diff -uNrp progsreiserfs-0.3.0.5.orig/libreiserfs/object.c progsreiserfs-0.3.0.5/libreiserfs/object.c
+--- progsreiserfs-0.3.0.5.orig/libreiserfs/object.c	2004-04-18 19:34:23.000000000 +0200
++++ progsreiserfs-0.3.0.5/libreiserfs/object.c	2005-12-19 17:12:05.236704625 +0100
+@@ -372,10 +372,11 @@ static void reiserfs_object_make_absolut
+ 					       char *absolute) 
+ {
+ 	if (name[0] != '/') {
+-		char cwd[_POSIX_PATH_MAX];
++		char cwd[_POSIX_PATH_MAX], *ptr;
+ 		
+ 		memset(cwd, 0, sizeof(cwd));
+-		getcwd(cwd, sizeof(cwd));
++		ptr = getcwd(cwd, sizeof(cwd));
++		ASSERT(ptr != NULL, abort());
+ 		
+ 		strncpy(absolute, cwd, _POSIX_PATH_MAX);
+ 		strncat(absolute, "/", 1);

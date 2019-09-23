@@ -1,0 +1,309 @@
+-------------------------------------------------------------------
+Fri Mar  2 20:16:32 UTC 2018 - crrodriguez@opensuse.org
+
+- Use system's default libpng library, not libpng12 
+
+-------------------------------------------------------------------
+Tue Feb 27 19:20:43 UTC 2018 - crrodriguez@opensuse.org
+
+- Remove buildrequires on xorg-x11-devel 
+
+-------------------------------------------------------------------
+Tue Jan 23 15:15:24 UTC 2018 - davejplater@gmail.com
+
+- Update to release 0.99.10
+- Removed incorporated xine-ui-rpmlintrc.diff and reproducible.patch.
+- Rebased xine-ui-AUTOMAKE.diff, xine-ui-desktop.patch and
+  xine-ui-crippled-LOCAL.diff.
+- Upstream changes:
+  *Added manual video single step feature.
+  *Show millisecond time in slow motion.
+  *Updated spanish translation.
+  *Make desktop file output reproducible.
+  *Deadlock and crash fixes.
+  * Memory and resource leak fixes.
+
+-------------------------------------------------------------------
+Wed May  3 08:48:06 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to make build fully reproducible
+  by not having variations in mime type order in .desktop file
+
+-------------------------------------------------------------------
+Thu Apr 20 06:57:38 UTC 2017 - davejplater@gmail.com
+
+- Fix desktop file with xine-ui-desktop.patch
+
+-------------------------------------------------------------------
+Mon Mar 30 11:37:51 UTC 2015 - wbauer@tmo.at
+
+- delete xine-ui-array-overflow.diff, it was not applied anyway
+  since 0.99.8 because it's included upstream now
+
+-------------------------------------------------------------------
+Wed Mar 25 15:07:18 UTC 2015 - lnussel@suse.de
+
+- add upstream download URL
+
+-------------------------------------------------------------------
+Fri Mar  6 13:05:17 UTC 2015 - wbauer@tmo.at
+
+- update to 0.99.9
+  * Handle building using libreadline 6.3 and libcaca 0.99 beta 19.
+  * More shutdown fixes.
+  * Show DVD & BluRay menu names.
+  * More *BSD support – NetBSD, DragonFlyBSD.
+
+-------------------------------------------------------------------
+Fri Apr 11 00:00:00 UTC 2014 - Manfred.Tremmel@iiv.de
+
+- update to 0.99.8
+  * Fixed opening file using menus
+  * Fixed exit on panel close
+  * Fixed deadlocks
+  * Fixed segfault at exit
+  * Fixed keymap editor deadlock
+
+-------------------------------------------------------------------
+Mon Dec 30 11:02:00 UTC 2013 - Manfred.Tremmel@iiv.de
+
+- added missing supported mime types in desktop file
+
+-------------------------------------------------------------------
+Fri Mar  1 06:14:46 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Mon Jul 30 07:12:51 UTC 2012 - coolo@suse.com
+
+- just take the default libjpeg
+
+-------------------------------------------------------------------
+Fri Jun 15 04:02:00 UTC 2012 - coolo@suse.de
+
+- cleanup unused patches
+
+-------------------------------------------------------------------
+Mon Jun 11 17:46:00 UTC 2012 - Manfred.Tremmel@iiv.de
+
+- fixed stringcompare problems rpmlint reported
+
+-------------------------------------------------------------------
+Sun Jun 10 15:05:00 UTC 2012 - Manfred.Tremmel@iiv.de
+
+- update to 0.99.7:
+  * Support for comments in .m3u playlists
+  * Avoid possible overflows when handling media marks & M3U files.
+  * Fixes for libpng 1.5 and header checking.
+  * xine-bugreport uses $TMPDIR.
+  * Spanish translation update from Carlos E. Robinson M.
+  * Czech translation update.
+  * Use only ASCII for "picture" texts in skin.
+  * Fix of the help texts encoding.
+  * Avoid a deadlock in the tooltips code.
+  * Set combo box menu windows' override-redirect flags.
+  * MRL browser recognises a few more extensions.
+  * Fix LIRC library detection (build time).
+  * Fix a segfault which prevented the display of the help window.
+  * Make building of fbxine optional (--with-fb; enabled by default).
+  * "ToggleFullscreen" command takes an optional numeric parameter,
+    controlling whether full-screen mode is switched on or off.
+  * New command "Close".
+  * Rename default.avi to default.mpv since it's actually an MPEG.
+  * Replace the splash .mpv with a PNG (from xine-lib).
+  * Support use of JPEG images for splash etc.
+  * Make use of XScreenSaver.
+  * Set dialogue windows' maximum sizes.
+  * Fix LIRC check so that it doesn't fail if liblircclient0.pc (which is
+    Debian-specific) is missing.
+  * Recognise "authentication needed" messages from xine-lib 1.2.
+  * Handle "file is empty" messages from xine-lib.
+  * Add support for XINE_EVENT_MRL_REFERENCE_EXT.
+  * Use re-entrant XML parser functions (if available).
+  * Distribute xine_splash.xcf (source for xine_splash.png).
+  * Tidy up building of common function libraries; ensure all replacement
+    function sources are distributed.
+  * xine.desktop now says that xine can accept files or URLs.
+
+-------------------------------------------------------------------
+Sat Jun 02 00:00:00 UTC 2012 - Manfred.Tremmel@iiv.de
+
+- deactivated xine-ui-libpng15.diff causes crashes
+
+-------------------------------------------------------------------
+Sat May 26 13:45:00 UTC 2012 - Manfred.Tremmel@iiv.de
+
+- update to 0.99.6:
+  * Use pkg-config only; xine-config is deprecated.
+  * Fix build with libpng 1.4.
+  * Fix build on Mac OS X.
+  * Fix segfaults caused by our getline() (only used if no system getline()).
+  * Add front-end support for .ass subtitles.
+  * Point xine-bugreport at the current bugs list; note the bug tracker URL.
+  * Disable character substitution code (xine bug 30). Let's see what breaks...
+  * Set menu windows' override-redirect flag (xine bug 24)
+  * Automatically load opensubtitle-like filenames <name>.*.<subext>
+  * New/updated spanish manpage translations from Carlos E. Robinson
+  * Fixed possible corruption and overflow of keybindings table
+  * Mark the toolbar window as such; should fix control panel visibility issues
+    in full-screen mode with some window managers. [bug SF 1750100]
+  * New command/keybinding from Richard van Paasen:
+    "PVRSetFrequency" changes frequency on ivtv cards (input_pvr).
+  * Install a shared-mime-info entry for .tox files, contributed by
+    Peter Fox in bug #10.
+  * New commands/keybindings from Richard van Paasen:
+    "PVRSetInput" changes input on ivtv cards (input_pvr);
+    "PVRSetMark", "PVRSetName", "PVRSave" enable saving
+    of live streams from ivtv cards (input_pvr).
+  * New command/keybinding from Richard van Paasen:
+    "SetPosition100%" jumps to end of stream.
+  * Recognize .rmvb files, closes debian bug #437864.
+  * Recognize .m2p files, closes debian bug #419002.
+  * Fixes for stdctl race conditions, contributed by Stas Sergeev
+  * Resetting the video controls restores the driver default settings
+    instead of fixed center values
+  * New commands/keybindings from Stas Sergeev:
+    "SelectMrl" with a numeric parameter allows to select an MRL directly
+    by its position number in the playlist.
+    "KeyBindingsEnable" with optional numeric parameter allows to enable/disable
+    the keybindings (disabled by param equal to 0, else enabled), so stdctl can
+    get exclusive control over the keys with disabled bindings; this command is
+    not bound to a key by default for an obvious reason (don't dare to bind) ;-)
+  * Enhanced commands/keybindings with contributions from Stas Sergeev:
+    "PlaylistStop" accepts a numeric parameter to set the stop state absolutely
+    (continue if param equals 0, else stop) and persistent, i.e. not reset to
+    "continue" after playing current stream, as opposed to the usual toggling
+    without parameter; usual toggling is now also possible when no stream is
+    currently played, allowing to change the selection at any time.
+    "ToggleLoopMode" and "ToggleAspectRatio" accept a numeric parameter as index
+    to make a direct selection from the list of their possible states
+  * Stdctl enhancements and fixes from Stas Sergeev:
+    Feedback messages and echoing of key presses to standard output added,
+    clean exit upon closing standard input connection or quitting xine-ui,
+    multiple commands in one command string handled
+  * Fixed wrong locale path (introduced in previous release) and related crash
+    concerning tooltips, closes debian bug #432798.
+  * ASCII Art updates:
+  *   fixed aalib detection in configure
+  *   build with libcaca >= 0.99, fixes xine bug #50
+  *   update CACA output due to changes in xine-lib
+  * Various memleak and memory access fixes, for example:
+  *   skin downloader crash
+  *   cleaner destroy of the widgets in xine toolkit ("kamikaze patch")
+  *   proper free after strsep()
+  *   opening multiple times TV settings window
+  * Fixed string encoding conversion, closes xine bug #14.
+  * Fixed loading of playlist containing relative paths, closes xine bug #52,
+    save old playlist with absolute paths on exit.
+  * Fixed possible integer overflow when parsing PNG files in skins, closes
+    xine bug #153.
+  * Lock display on exit, xine bug #193.
+  * Drag & drop race condition fixes.
+- build against xine-lib 1.2 not 1.1
+
+-------------------------------------------------------------------
+Mon Jan  9 15:17:30 UTC 2012 - pgajdos@suse.com
+
+- build also against libpng15
+  * libpng15.patch
+
+-------------------------------------------------------------------
+Thu Sep 29 08:59:41 UTC 2011 - lnussel@suse.de
+
+- add missing -lpthread and -lXext to LDFLAGS
+- fix an (harmless) array overflow
+
+-------------------------------------------------------------------
+Thu Aug 11 19:27:07 UTC 2011 - aj@suse.de
+
+- Remove inclusion of <curl/types.h>, it's obsolete in curl since
+  2004.
+
+-------------------------------------------------------------------
+Thu May 12 14:22:06 UTC 2011 - mhopf@novell.com
+
+- Fix path to help directory (bnc #680277)
+
+-------------------------------------------------------------------
+Sun Apr  4 19:06:38 CEST 2010 - ro@suse.de
+
+- fix build with libpng14 (png_check_sig replaced by png_sig_cmp) 
+
+-------------------------------------------------------------------
+Sun Nov 15 22:01:26 CET 2009 - meissner@suse.de
+
+- refreshed patches with fuzz=0
+
+-------------------------------------------------------------------
+Mon May 25 13:55:53 CEST 2009 - lnussel@suse.de
+
+- lirc -> lirc-devel in BuildRequires
+
+-------------------------------------------------------------------
+Fri Sep 26 12:33:23 CEST 2008 - mhopf@suse.de
+
+- Fix broken locale support.
+
+-------------------------------------------------------------------
+Fri Aug 22 15:49:15 CEST 2008 - lnussel@suse.de
+
+- include skins previously contained in xine-extra package
+
+-------------------------------------------------------------------
+Tue Feb 26 03:02:40 CET 2008 - crrodriguez@suse.de
+
+- use find_lang macro
+
+-------------------------------------------------------------------
+Tue Jan 29 17:17:09 CET 2008 - lnussel@suse.de
+
+- fix path to logo image
+
+-------------------------------------------------------------------
+Fri May  4 12:22:31 CEST 2007 - mhopf@suse.de
+
+- Update to 0.99.5:
+  * Included many patches upstream
+  * Updated language translations.
+  * Handle audio amp level event.
+  * Further VDR keys added.
+  * Harmonized appearance of non-skinned windows with more space
+  * Shortcut keys unused in a particular window work transparent now,
+    i.e. as configured by their key bindings
+  * Added support for gnome screen saver
+  * Fixes and improvements for appearance and behaviour
+  * Video window: User magnification ignored and auto-resizing on new stream
+    maintained in background if not in visible windowed mode.
+  * Improved positioning of menu windows and menu navigation by keyboard
+  * OSD improvements in xitk
+  * followed freedesktop standards (desktop file and icons)
+  * support gapless playback while switching streams (requires xine-lib >= 1.1.1)
+  * Many additional fixes and enhancements ...
+
+-------------------------------------------------------------------
+Mon Jan 15 16:55:56 CET 2007 - mhopf@suse.de
+
+- Update of formatstrings security fix.
+
+-------------------------------------------------------------------
+Fri Jan 12 18:17:26 CET 2007 - mhopf@suse.de
+
+- Security: Fix multiple missing "%s" formatstrings. #233516
+
+-------------------------------------------------------------------
+Wed Oct 11 18:53:10 CEST 2006 - mhopf@suse.de
+
+- Fixed for building w/o automake.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Tue Oct 10 18:59:55 CEST 2006 - mhopf@suse.de
+
+- Fixed detection of crippled package for general playback (mpeg2 + ffmpeg).
+
+-------------------------------------------------------------------
+Wed Sep 27 10:00:36 CEST 2006 - lnussel@suse.de
+
+- build package separate from xine-lib
+

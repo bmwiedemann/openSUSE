@@ -1,0 +1,71 @@
+From: ben <bkurtz@users.noreply.github.com>
+Date: Wed, 5 Jul 2017 20:14:05 +0000
+Git-commit: 3da760b509a61227a468ddd28bbd53efeab50ac7
+References: bsc#1087487
+Subject: [PATCH] fix net byte/packet stats on 32-bit linux
+
+32-bit linux systems often use 32-bit values for network byte/packet counters, but we've been assuming 64-bit rollover if the system supports strtoull.  Per d17a120fe4a9905122ab521c5608d752e57246b6, this was because some 32-bit systems use 64-bit network byte/packet counters, so it's not sufficient to check system type.  Instead, just see if the previous value looks like a 32-bit or 64-bit value - if someone's going from a value that fits in 32 bits to one that's overflowed 64 in between checks, a) that's absurd bandwidth, and b) it's no longer a reasonable assumption that they only rolled over *once* either.
+Acked-by: John Jolly <jjolly@suse.de>
+---
+ libmetrics/linux/metrics.c | 24 ++++++++++++++++++++----
+ 1 file changed, 20 insertions(+), 4 deletions(-)
+
+diff --git a/libmetrics/linux/metrics.c b/libmetrics/linux/metrics.c
+index 3ec35802..a13cc1cd 100644
+--- a/libmetrics/linux/metrics.c
++++ b/libmetrics/linux/metrics.c
+@@ -264,7 +264,11 @@ void update_ifdata ( char *caller )
+                        l_bytes_in += rbi - ns->rbi;
+                     } else {
+                        debug_msg("update_ifdata(%s) - Overflow in rbi: %"PRI_STAT" -> %"PRI_STAT,caller,ns->rbi,rbi);
+-                       l_bytes_in += STAT_MAX - ns->rbi + rbi;
++                       if ( ns->rbi <= ULONG_MAX ) { /* assume it's more reasonable that the counter rolled over at ULONG_MAX than ULLONG_MAX */
++                          l_bytes_in += ULONG_MAX - ns->rbi + rbi;
++                       } else {
++                          l_bytes_in += STAT_MAX - ns->rbi + rbi;
++                       }
+                     }
+                     ns->rbi = rbi;
+ 
+@@ -273,7 +277,11 @@ void update_ifdata ( char *caller )
+                        l_pkts_in += rpi - ns->rpi;
+                     } else {
+                        debug_msg("updata_ifdata(%s) - Overflow in rpi: %"PRI_STAT" -> %"PRI_STAT,caller,ns->rpi,rpi);
+-                       l_pkts_in += STAT_MAX - ns->rpi + rpi;
++                       if ( ns->rpi <= ULONG_MAX ) {
++                          l_pkts_in += ULONG_MAX - ns->rpi + rpi;
++                       } else {
++                          l_pkts_in += STAT_MAX - ns->rpi + rpi;
++                       }
+                     }
+                     ns->rpi = rpi;
+ 
+@@ -286,7 +294,11 @@ void update_ifdata ( char *caller )
+                        l_bytes_out += rbo - ns->rbo;
+                     } else {
+                        debug_msg("update_ifdata(%s) - Overflow in rbo: %"PRI_STAT" -> %"PRI_STAT,caller,ns->rbo,rbo);
+-                       l_bytes_out += STAT_MAX - ns->rbo + rbo;
++                       if ( ns->rbo <= ULONG_MAX ) {
++                          l_bytes_out += ULONG_MAX - ns->rbo + rbo;
++                       } else {
++                          l_bytes_out += STAT_MAX - ns->rbo + rbo;
++                       }
+                     }
+                     ns->rbo = rbo;
+ 
+@@ -295,7 +307,11 @@ void update_ifdata ( char *caller )
+                        l_pkts_out += rpo - ns->rpo;
+                     } else {
+                        debug_msg("update_ifdata(%s) - Overflow in rpo: %"PRI_STAT" -> %"PRI_STAT,caller,ns->rpo,rpo);
+-                       l_pkts_out += STAT_MAX - ns->rpo + rpo;
++                       if ( ns->rpo <= ULONG_MAX ) {
++                          l_pkts_out += ULONG_MAX - ns->rpo + rpo;
++                       } else {
++                          l_pkts_out += STAT_MAX - ns->rpo + rpo;
++                       }
+                     }
+                     ns->rpo = rpo;
+                   }
+-- 
+2.13.6
+

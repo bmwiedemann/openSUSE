@@ -1,0 +1,44 @@
+Index: acpica-unix-20190405/source/compiler/aslcompile.c
+===================================================================
+--- acpica-unix-20190405.orig/source/compiler/aslcompile.c	2019-04-05 17:12:58.000000000 +0200
++++ acpica-unix-20190405/source/compiler/aslcompile.c	2019-04-08 16:12:09.102476939 +0200
+@@ -647,8 +647,6 @@ void
+ AslCompilerFileHeader (
+     UINT32                  FileId)
+ {
+-    struct tm               *NewTime;
+-    time_t                  Aclock;
+     char                    *Prefix = "";
+ 
+ 
+@@ -690,13 +688,9 @@ AslCompilerFileHeader (
+     }
+ 
+     /* Compilation header with timestamp */
+-
+-    (void) time (&Aclock);
+-    NewTime = localtime (&Aclock);
+-
+     FlPrintFile (FileId,
+-        "%sCompilation of \"%s\" - %s%s\n",
+-        Prefix, AslGbl_Files[ASL_FILE_INPUT].Filename, asctime (NewTime),
++        "%sCompilation of \"%s\"\n",
++        Prefix, AslGbl_Files[ASL_FILE_INPUT].Filename,
+         Prefix);
+ 
+     switch (FileId)
+Index: acpica-unix-20190405/source/compiler/aslutils.c
+===================================================================
+--- acpica-unix-20190405.orig/source/compiler/aslutils.c	2019-04-05 17:12:58.000000000 +0200
++++ acpica-unix-20190405/source/compiler/aslutils.c	2019-04-08 16:12:09.102476939 +0200
+@@ -547,8 +547,8 @@ UtDisplayOneSummary (
+     {
+         /* Compiler name and version number */
+ 
+-        FlPrintFile (FileId, "%s version %X [%s]\n\n",
+-            ASL_COMPILER_NAME, (UINT32) ACPI_CA_VERSION, __DATE__);
++        FlPrintFile (FileId, "%s version %X\n\n",
++            ASL_COMPILER_NAME, (UINT32) ACPI_CA_VERSION);
+     }
+ 
+     /* Summary of main input and output files */

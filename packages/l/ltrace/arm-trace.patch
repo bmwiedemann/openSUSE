@@ -1,0 +1,13 @@
+Index: ltrace-0.7.91/sysdeps/linux-gnu/arm/trace.c
+===================================================================
+--- ltrace-0.7.91.orig/sysdeps/linux-gnu/arm/trace.c
++++ ltrace-0.7.91/sysdeps/linux-gnu/arm/trace.c
+@@ -170,7 +170,7 @@ arm_get_next_pcs(struct process *proc,
+ 		}
+ 	else
+ 		switch (opcode) {
+-			uint32_t operand1, operand2, result = 0;
++			uint32_t operand1, operand2, result;
+ 		case 0x0:
+ 		case 0x1:			/* data processing */
+ 		case 0x2:

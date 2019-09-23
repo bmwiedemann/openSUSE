@@ -1,0 +1,134 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1408f4233ad7448dd9b58ddd175dbad6</srcmd5>
+    <version>20110918</version>
+    <time>1363900253</time>
+    <user>coolo</user>
+    <comment>part of gEDA
+http://lists.opensuse.org/opensuse-factory/2012-12/msg00538.html</comment>
+    <requestid>146947</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1408f4233ad7448dd9b58ddd175dbad6</srcmd5>
+    <version>20110918</version>
+    <time>1379663520</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3fe95d272cffa67953aec1e7a2b0335b</srcmd5>
+    <version>20140316</version>
+    <time>1395297150</time>
+    <user>coolo</user>
+    <comment>- Update to version 20140316
+  Featires:
+  * GTK gui uses GL now, including a pseudo-3D mode.
+  * Brazilian translation added, others updated.
+  * Many internationalization tweaks.
+  * Mice with right-left scroll wheels now supported.
+  * Major upgrades to the GCode exporter.
+  * rat-thickness parameter can take a 'px' suffix.
+  * metric and imperial grids are now more independent.
+  * photo exporter supports multiple color schemes.
+  * gerbers can be output in metric.
+  * There's now a difference between &quot;found&quot; (what the netlist wants)
+    and &quot;connected&quot; (what the copper says).
+  * PNG exporter has --fill-holes to omit the &quot;drill helper&quot; completely.
+  * gerber drill files now 0.1mil resolution.
+  * XY file is now IPC 7531 compliant.
+  Bug Fixes:
+  * Fix pan locking up pcb if you leave the window.
+  * Many bugfixes related to the metric conversion, including the
+    two autorouters.
+  * ps alignment marks fixed.
+  * route styles in *.pcb files may contain units.
+  * able to select more parts by their mark when their mark is on-grid.
+  * gtk route selector may now have nothing selected, if the board
+    has custom route settings.
+  * drc no longer hangs when some layers are skipped.
+  * ps_bloat works again.
+  * EPS header is more standards-compliant.
+  * PS outlines are only drawn on copper layers, not mask layers.
+  * cursor position and zoom are no longer written to the *.pcb file. (forwarded request 226652 from Dmitry_R)</comment>
+    <requestid>226653</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>3fe95d272cffa67953aec1e7a2b0335b</srcmd5>
+    <version>20140316</version>
+    <time>1409302127</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>344621d8c38be3f07d0e5ad932c37ddc</srcmd5>
+    <version>20140316</version>
+    <time>1415953146</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261342</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>ad7ae248f34617b266220c3b2e8ce878</srcmd5>
+    <version>20140316</version>
+    <time>1419896982</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266494</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>4fa352c854fbc8cb188161deb20992eb</srcmd5>
+    <version>20140316</version>
+    <time>1425566416</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix desktop menu categories</comment>
+    <requestid>288658</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>967f1e164a8973aa9bd447f1b79e8a91</srcmd5>
+    <version>4.0.0</version>
+    <time>1487681396</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458827</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1e55dc4d6c88507b846265a258cdffdb</srcmd5>
+    <version>4.0.1</version>
+    <time>1496927024</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501780</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fa4540f5d97083ff052cb9d42435999e</srcmd5>
+    <version>4.0.2</version>
+    <time>1504617559</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520983</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>260469454d4c623d3405fbdfe5d79de0</srcmd5>
+    <version>4.1.2</version>
+    <time>1531232073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620334</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ea6472430e92f1cfc85a88c0b31d29f6</srcmd5>
+    <version>4.1.3</version>
+    <time>1539093242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640705</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d5b58144d526e056d87d4ccae476f115</srcmd5>
+    <version>4.2.0</version>
+    <time>1559375767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706386</requestid>
+  </revision>
+</revisionlist>

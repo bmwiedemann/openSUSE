@@ -1,0 +1,3 @@
+Requires: kernel-%1
+Provides: virtualbox-kmp = %version
+

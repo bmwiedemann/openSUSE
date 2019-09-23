@@ -1,0 +1,103 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f86b4165afd1fd94bc1032b1ded4d430</srcmd5>
+    <version>1.5.2</version>
+    <time>1432799641</time>
+    <user>dimstar_suse</user>
+    <comment>X.509 Certificate and CRL validation</comment>
+    <requestid>308006</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f1b6f63e108462573b21b39bfa67e38e</srcmd5>
+    <version>1.6.0</version>
+    <time>1440479968</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324499</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2c4872b3d4b8c321153029b4c0bbdb43</srcmd5>
+    <version>1.6.2</version>
+    <time>1442474390</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.2</comment>
+    <requestid>330784</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b37a5e9ed4fa052f05941ac1d9cecc4c</srcmd5>
+    <version>1.6.3</version>
+    <time>1444285448</time>
+    <user>coolo</user>
+    <comment>- update to 1.6.3</comment>
+    <requestid>334002</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>940f28b5ef107e5ffac76f18c2136dfc</srcmd5>
+    <version>1.6.3</version>
+    <time>1468999203</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411618</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3bb8902f528ae85be2b8341373bd82da</srcmd5>
+    <version>1.6.4</version>
+    <time>1477135259</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433426</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2e51890e09abc86168ff9b79aedb6690</srcmd5>
+    <version>1.6.5</version>
+    <time>1478377630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.5 with cabal2obs.</comment>
+    <requestid>438559</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9d95cb05e8f54d71da334909881c47b6</srcmd5>
+    <version>1.6.8</version>
+    <time>1504206114</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>513543</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dd5037c29c6d81b43296145ef3318440</srcmd5>
+    <version>1.6.10</version>
+    <time>1527675362</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-x509-validation to the latest version.</comment>
+    <requestid>607928</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1ca48cc88b9888c2924cfd193372edc6</srcmd5>
+    <version>1.6.10</version>
+    <time>1532161472</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 1.6.3
+- update to 1.6.2
+- update to 1.6.0</comment>
+    <requestid>623898</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>d1a0708178f5951b43687ad2256be023</srcmd5>
+    <version>1.6.10</version>
+    <time>1540451254</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643494</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>14d6de38de8172151b68d968f5fce9e1</srcmd5>
+    <version>1.6.11</version>
+    <time>1541746392</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>646366</requestid>
+  </revision>
+</revisionlist>

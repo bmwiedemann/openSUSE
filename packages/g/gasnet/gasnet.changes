@@ -1,0 +1,156 @@
+-------------------------------------------------------------------
+Mon Jan  7 08:45:39 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add gasnet-build-hostname.patch to make build reproducible (boo#1084909)
+
+-------------------------------------------------------------------
+Thu Oct  5 13:04:42 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Force load of MPI environment
+- Use OpenMPI2 instead of OpenMPI1 except for ppc64be (unsupported by OpenMPI >= 2)
+
+-------------------------------------------------------------------
+Wed Sep  6 08:20:22 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Force timer to use POSIX RT instead of native, as native is not
+  precise enough in VM and causes validation to crash.
+
+-------------------------------------------------------------------
+Fri Sep  1 17:03:06 UTC 2017 - junghans@votca.org
+
+- Version update to 1.30.0:
+  * InfiniBand Verbs (ibv-conduit)
+    - Improve the handling of GASNET_PHYSMEM_* env vars
+
+ * Libfabric (ofi-conduit)
+    - Fix bug 3426: Unbounded recursion within gasnetc_ofi_poll()
+    - Significant improvements to AM buffer management and wire header overheads
+    - Finer-grained control over AM buffering, see ofi-conduit/README
+    - Initialization cleanups for stricter compliance with the OFI specification
+    - Support for the Intel(R) True Scale Fabric provider, psm, has been removed.
+      The Intel(R) Omni-Path Fabric is still supported through the psm2 provider.
+    - We now recommend ofi-conduit for the Intel Omni-Path fabric.
+    - The conduit has been validated on libfabric version 1.5.0.
+
+  * Intel Omni-Path PSM2 (psm-conduit)
+    - This conduit is now DEPRECATED.
+    - Use of ofi-conduit with libfabric's psm2 provider is recommended for users
+      of the Intel Omni-Path fabric.
+
+  * GASNet tools
+    - Fix bug 3448: x86*/Linux timers once again default to use of the TSC due
+      to addition of new logic for correct calibration on newer Intel CPUs.
+    - Add gasnett_nsleep()
+
+-------------------------------------------------------------------
+Fri Aug 11 05:18:19 UTC 2017 - bwiedemann@suse.com
+
+- Add gasnet-build-id.patch to fix build-compare (boo#1047218)
+
+-------------------------------------------------------------------
+Fri Jun 30 07:37:04 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Remove BuildRequires for libpsm2-compat
+- Build with OFI support on x86
+
+-------------------------------------------------------------------
+Fri Jun  9 08:17:36 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Enable OFI conduit on x86_64
+- Disable debug to build GASnet in optimized mode
+- Add gasnet-date-time.patch to remove build date/times from binaries
+- Add gasnet-s390-support.patch and enable s390/s390x builds
+
+-------------------------------------------------------------------
+Thu Jun  8 11:37:26 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Remove version dependency to libibverbs
+
+-------------------------------------------------------------------
+Wed May 31 12:54:20 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Build gasnet for all arch but s390*, s390x not supported by upstream:
+  https://upc-bugs.lbl.gov/bugzilla/show_bug.cgi?id=3523  
+- PSM2 support is only for x86_64
+
+-------------------------------------------------------------------
+Tue May 16 15:38:38 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Support gasnet over OFI and ibverbs
+
+-------------------------------------------------------------------
+Fri Apr  7 15:23:19 CEST 2017 - pth@suse.de
+
+- Remove conflict marker.
+
+-------------------------------------------------------------------
+Fri Mar 31 12:04:16 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Fix dynamic linking for PSM libraries
+
+-------------------------------------------------------------------
+Fri Mar 31 13:35:50 CEST 2017 - pth@suse.de
+
+- GASnet relies on libpsm2-compat which again only supports x86_64
+  so make GASnet do the same.  
+
+-------------------------------------------------------------------
+Wed Mar 29 07:57:50 CEST 2017 - pth@suse.de
+
+- Make dependencies on libs now coming from rdma-core versioned.
+
+-------------------------------------------------------------------
+Sat Mar 18 19:02:30 UTC 2017 - junghans@votca.org
+
+- Version update to 1.28.2, lot of changes, see:
+  https://gasnet.lbl.gov/dist/ChangeLog
+
+-------------------------------------------------------------------
+Mon Feb  6 14:52:50 UTC 2017 - jengelh@inai.de
+
+- Declare bash as build shell
+
+-------------------------------------------------------------------
+Mon Oct 24 16:17:17 UTC 2016 - junghans@votca.org
+
+- Version update to 1.28.0, lot of changes, see:
+  https://gasnet.lbl.gov/dist/ChangeLog
+
+-------------------------------------------------------------------
+Mon Oct 17 08:54:54 UTC 2016 - jengelh@inai.de
+
+- Implement shared library naming guideline
+- Trim description
+
+-------------------------------------------------------------------
+Tue Sep 20 02:39:45 UTC 2016 - junghans@votca.org
+
+- added %check block and related patch from upstream:
+  https://bitbucket.org/berkeleylab/gasnet/pull-requests/37
+- link shared libs, so that deps are fulfilled
+
+-------------------------------------------------------------------
+Mon Sep 12 15:26:11 UTC 2016 - junghans@votca.org
+
+- Added upstream patch to support overwriting of flags:
+  https://bitbucket.org/berkeleylab/gasnet/pull-requests/34
+- Build shared libs manually as upstream doesn't want to support them:
+  https://bitbucket.org/berkeleylab/gasnet/pull-requests/36
+  but we need them for legion package
+
+-------------------------------------------------------------------
+Sun Sep  4 23:26:38 UTC 2016 - junghans@votca.org
+
+- Update to GASNet 1.26.4
+  Details: https://gasnet.lbl.gov/dist/ChangeLog
+
+-------------------------------------------------------------------
+Sun May 29 15:29:33 UTC 2016 - junghans@votca.org
+
+- import into Science overlay
+
+-------------------------------------------------------------------
+Thu Mar 10 10:52:14 UTC 2016 - nirmoy.das@suse.com
+
+- Initial package, version: 1.26.0(fate#319250) 
+

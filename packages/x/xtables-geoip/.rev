@@ -1,0 +1,347 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5f8ef5c2e92fb47095ab9b3a5e99d40f</srcmd5>
+    <version>2010.01</version>
+    <time>1264077602</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/xtables-geoip based on submit request 30125 from user jengelh
+</comment>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dcfdd4142a271546182cf865195b0889</srcmd5>
+    <version>2010.02</version>
+    <time>1265750436</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/xtables-geoip based on submit request 31718 from user jengelh
+</comment>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ed13fe404aae79f37e28d24affa155e7</srcmd5>
+    <version>2010.02</version>
+    <time>1268926700</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>01ffc71012c3e0847b8780faa3e1a383</srcmd5>
+    <version>2010.04</version>
+    <time>1272318448</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/xtables-geoip based on submit request 38832 from user jengelh
+</comment>
+    <requestid>38832</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>01ffc71012c3e0847b8780faa3e1a383</srcmd5>
+    <version>2010.04</version>
+    <time>1278667397</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>01ffc71012c3e0847b8780faa3e1a383</srcmd5>
+    <version>2010.04</version>
+    <time>1278678631</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fdea268fbf97282b03ead329a15dafb1</srcmd5>
+    <version>2010.06</version>
+    <time>1279915793</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/xtables-geoip based on submit request 43683 from user coolo
+</comment>
+    <requestid>43683</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>08740e2a855a047fffca9a13db86dfdd</srcmd5>
+    <version>2010.10</version>
+    <time>1286313588</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/xtables-geoip based on submit request 49711 from user jengelh
+</comment>
+    <requestid>49711</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a163ae1de600cccf84c2d3f20adab024</srcmd5>
+    <version>2010.11</version>
+    <time>1289224591</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52265 from user jengelh
+</comment>
+    <requestid>52265</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1cc71e20d81b62cf91bf382bbab2395e</srcmd5>
+    <version>2010.11</version>
+    <time>1289224600</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52265
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ed15a5e239825c647e1cfd97b22d8ea3</srcmd5>
+    <version>2011.01</version>
+    <time>1296624301</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 59733 from user jengelh
+</comment>
+    <requestid>59733</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>689e010c9f3ec53b56466c11ade643e1</srcmd5>
+    <version>2011.01</version>
+    <time>1296624308</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 59733
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3ebc7ab67d790b80048b9e667bfaa4ff</srcmd5>
+    <version>2011.02</version>
+    <time>1297786194</time>
+    <user>darix</user>
+    <comment>Accepted submit request 61211 from user jengelh
+</comment>
+    <requestid>61211</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>3ebc7ab67d790b80048b9e667bfaa4ff</srcmd5>
+    <version>2011.02</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>90796ba997bd5df25f519da0a5a1bd35</srcmd5>
+    <version>2011.04</version>
+    <time>1302511817</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66568 from user licensedigger
+</comment>
+    <requestid>66568</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>a69543fb547c3ae02301a97efb5c0eee</srcmd5>
+    <version>2011.04</version>
+    <time>1302511827</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66568
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ca71d038f4e107171974066e647ba60a</srcmd5>
+    <version>2011.07</version>
+    <time>1310379786</time>
+    <user>saschpe</user>
+    <comment>- update database files to 2011.07; ~1940 new subnets</comment>
+    <requestid>75993</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>826012d81aa68cb15c447a6a6c935895</srcmd5>
+    <version>2011.09</version>
+    <time>1316681628</time>
+    <user>saschpe</user>
+    <comment>- update database files to 2011.09</comment>
+    <requestid>84302</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>826012d81aa68cb15c447a6a6c935895</srcmd5>
+    <version>2011.09</version>
+    <time>1319182617</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>92191e8a48b1658a32a078ae3dd9e591</srcmd5>
+    <version>2011.12</version>
+    <time>1325767827</time>
+    <user>coolo</user>
+    <comment>- update db files to 2011.12
+- removing LGPL from License: field, it applies only to libGeoIP,
+  which is not shipped in any form in xtables-geoip
+
+- LICENSE is BSD-4-Clause and LGPL-2.1+ is mentioned</comment>
+    <requestid>98804</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>bbc69f83d2eda9ca9f8f3d1cbc4e6d53</srcmd5>
+    <version>2012.04</version>
+    <time>1334641854</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113797</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d1d9b622ca71c2223a445fae7094aff8</srcmd5>
+    <version>2012.06</version>
+    <time>1339352444</time>
+    <user>coolo</user>
+    <comment>- update db files to 2012.06
+* 634 new IPv4 ranges, 463 new IPv6 ranges</comment>
+    <requestid>123974</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>d1d9b622ca71c2223a445fae7094aff8</srcmd5>
+    <version>2012.06</version>
+    <time>1340184387</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a4614b7f220c7609d89a1ae7ae2f68bc</srcmd5>
+    <version>2012.08</version>
+    <time>1345809211</time>
+    <user>namtrac</user>
+    <comment>- update db files to 2012.08</comment>
+    <requestid>131432</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>cb3881de5f92b919920254f682020b5f</srcmd5>
+    <version>2012.11</version>
+    <time>1352909056</time>
+    <user>coolo</user>
+    <comment>- update database files to the November 2012 release</comment>
+    <requestid>141221</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>cb3881de5f92b919920254f682020b5f</srcmd5>
+    <version>2012.11</version>
+    <time>1359110700</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f8e8c45eadc23f7d1fa7e0c6676ba9ee</srcmd5>
+    <version>2013.03</version>
+    <time>1363340974</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>159467</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0322082d06a807d1e4dd57bf8eb4e312</srcmd5>
+    <version>2013.05</version>
+    <time>1368454064</time>
+    <user>coolo</user>
+    <comment>- update db files to 2013.05</comment>
+    <requestid>175004</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>0322082d06a807d1e4dd57bf8eb4e312</srcmd5>
+    <version>2013.05</version>
+    <time>1379665124</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>75b5439c65fd1270546451e01837ccfc</srcmd5>
+    <version>2014.01</version>
+    <time>1391376266</time>
+    <user>coolo</user>
+    <comment>- Update DB files to 2014.01</comment>
+    <requestid>213313</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9e66af12be31ee8e33f3452570beb235</srcmd5>
+    <version>2014.06</version>
+    <time>1405253171</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>239636</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>9e66af12be31ee8e33f3452570beb235</srcmd5>
+    <version>2014.06</version>
+    <time>1409303811</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a2809c6bf56a565eafa62fc3428df6b9</srcmd5>
+    <version>2014.12</version>
+    <time>1418737757</time>
+    <user>dimstar_suse</user>
+    <comment>- Update database files to 2014.12</comment>
+    <requestid>265326</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>56790a7d7295ef51bcbde2ec98f10069</srcmd5>
+    <version>2015.03</version>
+    <time>1427736805</time>
+    <user>dimstar_suse</user>
+    <comment>- Update database files to 2015.03</comment>
+    <requestid>293571</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>e6491540631864326d4bf5411137b0bd</srcmd5>
+    <version>2015.06</version>
+    <time>1435652173</time>
+    <user>dimstar_suse</user>
+    <comment>- Update database files to 2015.06</comment>
+    <requestid>313661</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e1e2d3f4079b05c05f545d06bad490e7</srcmd5>
+    <version>2015.07</version>
+    <time>1438076588</time>
+    <user>dimstar_suse</user>
+    <comment>- Update database files to 2015.07</comment>
+    <requestid>318511</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>1cee7f1d61bc5b73f893a7fa5b9fd6ed</srcmd5>
+    <version>2015.08</version>
+    <time>1440135684</time>
+    <user>dimstar_suse</user>
+    <comment>- Update database files to 2015.08</comment>
+    <requestid>324281</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>1d549ee8ee4c6613f782e9df40a12766</srcmd5>
+    <version>2015.11</version>
+    <time>1447454162</time>
+    <user>dimstar_suse</user>
+    <comment>- Update database files to 2015.11.03</comment>
+    <requestid>344062</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>85677917b808b0f63f386d5a61fabca8</srcmd5>
+    <version>2016.05</version>
+    <time>1463498169</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>395704</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>b16f7196151203f186f1e05878d59bcd</srcmd5>
+    <version>2016.09</version>
+    <time>1475242358</time>
+    <user>dimstar_suse</user>
+    <comment>- Update database files to 2016.09.07</comment>
+    <requestid>430510</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3a31249b1400748034e9f89a552457e2</srcmd5>
+    <version>20180905</version>
+    <time>1537018501</time>
+    <user>maxlin_factory</user>
+    <comment>- Update database files to 20180905</comment>
+    <requestid>634240</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>a27caaebc1ce606953269ef4f46ae73a</srcmd5>
+    <version>20190129</version>
+    <time>1549361934</time>
+    <user>coolo</user>
+    <comment>- Update database files to 20190129</comment>
+    <requestid>671237</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>bed38d0cbc18c9c4006a5d62f22d0a89</srcmd5>
+    <version>20190521</version>
+    <time>1558690255</time>
+    <user>dimstar_suse</user>
+    <comment>- Update database files to 20190521</comment>
+    <requestid>704807</requestid>
+  </revision>
+</revisionlist>

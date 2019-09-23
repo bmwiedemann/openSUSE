@@ -1,0 +1,11 @@
+--- Makefile
++++ Makefile
+@@ -5,7 +5,7 @@
+ CXXFLAGS  += $(CFLAGS) -fno-exceptions
+ CC = $(CXX)
+ 
+-CFLAGS    += -Wall -W -Werror
++CFLAGS    += -Wall -W
+ CFLAGS    += -g
+ CFLAGS    += -O2
+ CFLAGS    += -MP -MD

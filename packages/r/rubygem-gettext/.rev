@@ -1,0 +1,282 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>128afef1baff3fc2ca0ac2991297898f</srcmd5>
+    <version>2.1.0</version>
+    <time>1287757956</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51176 from user tserong
+</comment>
+    <requestid>51176</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ed76c2b6c3489ba7c51e09404b2887a6</srcmd5>
+    <version>2.1.0</version>
+    <time>1287757962</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51176
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>ed76c2b6c3489ba7c51e09404b2887a6</srcmd5>
+    <version>2.1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>ed76c2b6c3489ba7c51e09404b2887a6</srcmd5>
+    <version>2.1.0</version>
+    <time>1319182437</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>7153b143857af5ab75e0b31eb4fc9c74</srcmd5>
+    <version>2.1.0</version>
+    <time>1329405799</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104513 from coolo)</comment>
+    <requestid>104711</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3b33802414c5a152e46e5505c3b12ee9</srcmd5>
+    <version>2.2.1</version>
+    <time>1339362858</time>
+    <user>coolo</user>
+    <comment>Version update, the most important is Ruby 1.9 support.
+
+Note: the spec file has been regenerated with new gem2rpm. (forwarded request 124078 from lslezak)</comment>
+    <requestid>124180</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>3b33802414c5a152e46e5505c3b12ee9</srcmd5>
+    <version>2.2.1</version>
+    <time>1340184162</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fa299cc97b3454adba7ad34dbc972317</srcmd5>
+    <version>2.3.2</version>
+    <time>1348381843</time>
+    <user>coolo</user>
+    <comment>- updated to version 2.3.2
+  * Fixed the bug that untranslated messages are included in a .mo file.
+    [Github #11][Reported by Ramón Cahenzli]
+- dropping provides for names that were last seen on 10.1
+
+- updated to version 2.3.1
+  It's a Bug and package fix release.
+  Then, it's also encoding support release, only if you use Ruby 1.9.
+  
+  ### Improvements
+  
+    * [xgettext] Added backword compatibility method
+      (GetText::RGetText.run).
+      [Suggested by Fotos Georgiadis]
+    * [xgettext] Removed deprecated parse argument support.
+    * [erb parer] Assumed the encoding in the magic comment of the
+      input file as the encoding of it.
+    * [ruby parser] Assumed the encoding in the magic comment of the
+      input file as the encoding of it.
+    * [xgettext] Added the &quot;--output-encoding&quot; option to set encoding of
+      output pot file.
+    * [xgettext] Used UTF-8 as the default encoding of output pot file.
+    * [xgettext] Supported multiple encoding sources.
+  
+  ### Changes
+  
+    * [MoFile] Returned nil instead of &quot;&quot; as msgstr when its msgid isn't
+      translated (when this msgstr is &quot;&quot;).
+    * [PoParser] Converted msgstr from &quot;&quot; to nil when parsing.</comment>
+    <requestid>135263</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a3e1412d5b23097b2298065ba1061bb1</srcmd5>
+    <version>2.3.3</version>
+    <time>1352093556</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>140094</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2f4cfd67c2292ce836295a0a3c3eab89</srcmd5>
+    <version>2.3.6</version>
+    <time>1357038228</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146590</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>2f4cfd67c2292ce836295a0a3c3eab89</srcmd5>
+    <version>2.3.6</version>
+    <time>1359110319</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c4d910eb45dc4586b0872fead2a733fc</srcmd5>
+    <version>2.3.7</version>
+    <time>1362736698</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157746</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a2b6b6846a35f099be5e14b25d85eac9</srcmd5>
+    <version>2.3.8</version>
+    <time>1366473133</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>172464</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>db46342605dc92e8e0f4522aa61b4bd8</srcmd5>
+    <version>2.3.9</version>
+    <time>1368713971</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>175674</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>48b110f48125540117817d34d8eb7632</srcmd5>
+    <version>2.3.9</version>
+    <time>1373953097</time>
+    <user>coolo</user>
+    <comment>- fix usage of update-alternatives</comment>
+    <requestid>182945</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>48b110f48125540117817d34d8eb7632</srcmd5>
+    <version>2.3.9</version>
+    <time>1379664524</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1c05d9c5398ceb4201799d2aacb74810</srcmd5>
+    <version>3.0.1</version>
+    <time>1380298003</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200763</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d09e2548d6e94c6d20a9a317647def53</srcmd5>
+    <version>3.0.2</version>
+    <time>1381064331</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202189</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>59d0dd70a24a7092dbbaef596d518ef9</srcmd5>
+    <version>3.0.3</version>
+    <time>1387452809</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>211318</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>14cda58a8d464e159db0d7085289e763</srcmd5>
+    <version>3.0.6</version>
+    <time>1392238263</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221473</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>cd4e4577e94daca0735ecbe884646e82</srcmd5>
+    <version>3.1.0</version>
+    <time>1393394357</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223800</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7df59084ce2977cc60023fe5006f5cde</srcmd5>
+    <version>3.1.1</version>
+    <time>1395475860</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>226974</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>917272c657e85e0dd3b55d0964ca6776</srcmd5>
+    <version>3.1.2</version>
+    <time>1400682462</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>234899</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>917272c657e85e0dd3b55d0964ca6776</srcmd5>
+    <version>3.1.2</version>
+    <time>1409303235</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>61f83cea1112267ebe26c480d97f7cdf</srcmd5>
+    <version>3.1.2</version>
+    <time>1413263470</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255299</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>67b7ac8a5cbe905481b788d054608e56</srcmd5>
+    <version>3.1.6</version>
+    <time>1424117570</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>285517</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>14e0e2c311568efbdb405bf328d903ec</srcmd5>
+    <version>3.1.7</version>
+    <time>1443335993</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333104</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3e9dc33551dc5dba44368a002b281401</srcmd5>
+    <version>3.2.1</version>
+    <time>1458333548</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355652</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b212f1a030b326af91893f0c360964cb</srcmd5>
+    <version>3.2.2</version>
+    <time>1463124221</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394295</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8b98bf41e00fd11e62bc01b3d481793c</srcmd5>
+    <version>3.2.4</version>
+    <time>1506453235</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520439</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5aff1fcfec4aabf8d92f7a37c649080e</srcmd5>
+    <version>3.2.5</version>
+    <time>1514028027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559336</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d5fdfd0ead2422fe53230de4ac2f058d</srcmd5>
+    <version>3.2.9</version>
+    <time>1520588668</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>584188</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Tue Jul  9 12:47:17 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.6.2
+  * The init script is now installed to /etc/ rather than
+    /usr/local/etc by default.
+  * Minor bugfixes
+- Drop fuse-install-fix.patch, not needed with -Duseroot=false
+- Add conf-rename.patch, which is split from the above now
+  removed patch
+
+-------------------------------------------------------------------
+Thu Jun 20 09:48:24 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO due to symbol versioning (boo#1138803).
+
+-------------------------------------------------------------------
+Thu Jun 13 14:54:44 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.6.1
+  * Fixed version number (release 3.6.0 was shipped with a declared
+    version of 3.0.0).
+
+-------------------------------------------------------------------
+Thu Jun 13 12:07:16 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.6.0
+  * Added a new example (passthrough_hp). The functionality is
+    similar to passthrough_ll, but the implementation focuses
+    on performance and correctness rather than simplicity.
+  * Added support for fuse kernel feature max_pages which allows
+    to increase the maximum number of pages that can be used per
+    request. This feature was introduced in kernel 4.20.
+    max_pages is set based on the value in max_write. 
+    By default max_write will be 1MiB now for kernels that
+    support max_pages. If you want smaller buffers or writes
+    you have to set max_write manually.
+
+-------------------------------------------------------------------
+Wed Apr 17 07:48:52 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.5.0:
+  * Changed ioctl commands to "unsigned int" in order to support
+    commands which do not fit into a signed int. Commands issued
+    by applications are still truncated to 32 bits.
+  * Added SMB2 to whitelist (so users can now mount FUSE
+    filesystems on mountpoints within SMB 2.0 filesystems).
+  * Added a new cache_readdir flag to fuse_file_info to enable
+    caching of readdir results. Supported by kernels 4.20 and newer.
+  * Add support and documentation for FUSE_CAP_NO_OPENDIR_SUPPORT.
+
+-------------------------------------------------------------------
+Tue Mar 19 14:35:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Amend License: field with BSD2c, from
+  https://github.com/libfuse/libfuse/commit/4c699e7debd99b178b9574e7dd20f36937ef296e#diff-3f1e2bdc537057b6ac2f74d095a431b8
+
+-------------------------------------------------------------------
+Mon Mar 18 06:52:39 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.4.2
+  * The examples/passthrough_ll.c example filesystem has been significantly extended.
+  * Support for copy_file_range has been added.
+  * Build system updates for non-Linux systems. 
+  * Fixed a memory leak
+  * Added OpenAFS and HFS+ to whitelist 
+  * Docu updates
+
+-------------------------------------------------------------------
+Thu Nov 29 08:30:24 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions.
+- Do not make documentation mandatory.
+
+-------------------------------------------------------------------
+Mon Nov 26 13:22:12 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.3.0
+  * The auto_unmount mode now works correctly in combination with
+    autofs.
+  * The FUSE_CAP_READDIRPLUS_AUTO capability is no longer enabled by
+    default unless the file system defines both a readdir() and a
+    readdirplus() handler.
+  * The description of the FUSE_CAP_READDIRPLUS_AUTO flag has been
+    improved.
+  * Allow open /dev/fuse file descriptors to be passed via mountpoints
+    of the special format /dev/fd/%u. This allows mounting to be
+    handled by the parent so the FUSE filesystem process can run
+    fully unprivileged.
+  * Add a drop_privileges option to mount.fuse3 which causes it to open
+    /dev/fuse and mount the file system itself, then run the FUSE file
+    filesystem fully unprivileged and unable to re-acquire privilege
+    via setuid, fscaps, etc.
+  * Documented under which conditions the fuse_lowlevel_notify_*
+    functions may block.
+  * The chmod, chown, truncate, utimens and getattr handlers of
+    the high-level API now all receive an additional struct
+    fuse_file_info pointer. There are more API changes, consult
+    https://github.com/libfuse/libfuse/releases/tag/fuse-3.3.0
+    for details.
+
+-------------------------------------------------------------------
+Thu Oct  4 10:51:37 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
+
+- Initial release v3.2.6

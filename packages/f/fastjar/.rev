@@ -1,0 +1,152 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>2425e4e4ac155b4088f01c0d00567b91</srcmd5>
+    <version>0.92</version>
+    <time>1168902727</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="32">
+    <srcmd5>2e1960b561cfb9d5b18ffd2a9f047040</srcmd5>
+    <version>0.92</version>
+    <time>1175162231</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>58b09f7c9154ef0c6f08a27dd399b18a</srcmd5>
+    <version>0.95</version>
+    <time>1219077150</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>58b09f7c9154ef0c6f08a27dd399b18a</srcmd5>
+    <version>0.95</version>
+    <time>1219077150</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>25fafc66c81b60cb30cfd652560fb289</srcmd5>
+    <version>0.98</version>
+    <time>1267751610</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:compiler/fastjar based on submit request 33679 from user rguenther
+</comment>
+    <requestid>33679</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9a048a2c9de9713a50b8e450bdad0353</srcmd5>
+    <version>0.98</version>
+    <time>1268923516</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>cb2fb6287f9d8f8d849a2be0201143e3</srcmd5>
+    <version>0.98</version>
+    <time>1277136034</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/fastjar based on submit request 40627 from user mvyskocil
+</comment>
+    <requestid>40627</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>cb2fb6287f9d8f8d849a2be0201143e3</srcmd5>
+    <version>0.98</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>cb2fb6287f9d8f8d849a2be0201143e3</srcmd5>
+    <version>0.98</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>cb2fb6287f9d8f8d849a2be0201143e3</srcmd5>
+    <version>0.98</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>e6dea2ec4e857fbb72b9dc47d7474669</srcmd5>
+    <version>0.98</version>
+    <time>1316688451</time>
+    <user>saschpe</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.) (forwarded request 83504 from jengelh)</comment>
+    <requestid>84377</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>e6dea2ec4e857fbb72b9dc47d7474669</srcmd5>
+    <version>0.98</version>
+    <time>1319181874</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>748e807e312cfb6e0ef1a6e03c0c1c98</srcmd5>
+    <version>0.98</version>
+    <time>1323191346</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="15">
+    <srcmd5>748e807e312cfb6e0ef1a6e03c0c1c98</srcmd5>
+    <version>0.98</version>
+    <time>1340183320</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="17">
+    <srcmd5>748e807e312cfb6e0ef1a6e03c0c1c98</srcmd5>
+    <version>0.98</version>
+    <time>1359108867</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="18">
+    <srcmd5>87331e20037ff34b32e30b68a16b0b38</srcmd5>
+    <version>0.98</version>
+    <time>1364310781</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161182 from m_meister)</comment>
+    <requestid>161196</requestid>
+  </revision>
+  <revision rev="17" vrev="20">
+    <srcmd5>87331e20037ff34b32e30b68a16b0b38</srcmd5>
+    <version>0.98</version>
+    <time>1379662324</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="22">
+    <srcmd5>87331e20037ff34b32e30b68a16b0b38</srcmd5>
+    <version>0.98</version>
+    <time>1409300856</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="23">
+    <srcmd5>d0a5f547bc3b795090df1b3b5568daa3</srcmd5>
+    <version>0.98</version>
+    <time>1429605945</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295468</requestid>
+  </revision>
+  <revision rev="20" vrev="24">
+    <srcmd5>985edc13869459c4e98bc5370152e96d</srcmd5>
+    <version>0.98</version>
+    <time>1496230215</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply patches from debian to be up-par:
+  * fix-update-mode.diff
+  * jartool.diff
+- Remove patch fastjar-0.98-fix.patch
+  * Merged in jartool.diff
+- Remove patch fastjar-0.98-directory-traversal.patch
+  * Merged in jartool.diff</comment>
+    <requestid>496810</requestid>
+  </revision>
+</revisionlist>

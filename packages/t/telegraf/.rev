@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4938119b1286924ec1aed0ccfec6cad7</srcmd5>
+    <version>1.8.3</version>
+    <time>1554115043</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689753</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f850b4e5b9e93f860c4a417509b266b</srcmd5>
+    <version>1.12.0</version>
+    <time>1568190739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729388</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>291e923520d0ffcfee4df70d1a17e73e</srcmd5>
+    <version>1.12.0</version>
+    <time>1569235119</time>
+    <user>dimstar_suse</user>
+    <comment>Was trying to give them benefit of the doubt, but if you insist.
+
+- Trim future goals from description, it is not in the scope
+  of openSUSE package descriptions. (forwarded request 729707 from jengelh)</comment>
+    <requestid>732254</requestid>
+  </revision>
+</revisionlist>

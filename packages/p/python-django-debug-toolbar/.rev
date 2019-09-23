@@ -1,0 +1,127 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>35de1d99a9f5136573d6c5cd505a5dda</srcmd5>
+    <version>0.9.4</version>
+    <time>1331900555</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>109088</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>35de1d99a9f5136573d6c5cd505a5dda</srcmd5>
+    <version>0.9.4</version>
+    <time>1340184046</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>35de1d99a9f5136573d6c5cd505a5dda</srcmd5>
+    <version>0.9.4</version>
+    <time>1359110017</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>35de1d99a9f5136573d6c5cd505a5dda</srcmd5>
+    <version>0.9.4</version>
+    <time>1379664159</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>b311be8d9de46c1cb5f585e9f6c9860b</srcmd5>
+    <version>0.9.4</version>
+    <time>1382692422</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204543</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>14f7fb9bee82302f50d5c85b47a7c060</srcmd5>
+    <version>0.10.2</version>
+    <time>1387382102</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.10.2:
+  + Upstream provides no changelog</comment>
+    <requestid>206257</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>59ae7db21d6ffd4d029bc063522cc821</srcmd5>
+    <version>1.2.1</version>
+    <time>1406914036</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243373</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>59ae7db21d6ffd4d029bc063522cc821</srcmd5>
+    <version>1.2.1</version>
+    <time>1409302850</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>579aaea91f7301350e2e2a9e37c530d5</srcmd5>
+    <version>1.3.0</version>
+    <time>1426680332</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290994</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c3172e4666d4ec3b7caedb8441d45f1a</srcmd5>
+    <version>1.9.1</version>
+    <time>1533732875</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.9.1:
+  * Many many changes to list
+  * Fix building with latest djangos
+- Convert to singlespec</comment>
+    <requestid>628036</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f5150c8336be331104809c936cd086b4</srcmd5>
+    <version>1.11</version>
+    <time>1550668384</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677458</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>fcf2eb65f48161e18f4a8e89517aca06</srcmd5>
+    <version>1.11</version>
+    <time>1556622069</time>
+    <user>dimstar_suse</user>
+    <comment>- Export the lang to make sure we build on older openSUSE releases</comment>
+    <requestid>697472</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>77a14d3545562566e2da24ae9a95d148</srcmd5>
+    <version>1.11</version>
+    <time>1558037404</time>
+    <user>dimstar_suse</user>
+    <comment>- add t_integrations.patch to fix tests with django-2.2</comment>
+    <requestid>703432</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>178911ea3c938892e52da4cd9d7adbd6</srcmd5>
+    <version>2.0</version>
+    <time>1568720267</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.0:
+  * Updated StaticFilesPanel to be compatible with Django 3.0.
+  * The ProfilingPanel is now enabled but inactive by default.
+  * Fixed toggling of table rows in the profiling panel UI.
+  * The ProfilingPanel no longer skips remaining panels or middlewares.
+  * Improved the installation documentation.
+  * Fixed a possible crash in the template panel.
+  * Added support for psycopg2 Composed objects.
+  * Changed the Jinja2 tests to use Django's own Jinja2 template backend.
+  * Added instrumentation to queries using server side cursors.
+  * Removed support for Python 2.
+  * Removed support for Django's deprecated MIDDLEWARE_CLASSES setting.
+Too many small improvements and cleanups to list them all.
+- Remove merged patch t_integrations.patch</comment>
+    <requestid>731227</requestid>
+  </revision>
+</revisionlist>

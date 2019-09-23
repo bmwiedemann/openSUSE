@@ -1,0 +1,143 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>68e3203ef62648d0607f3a485d2d7091</srcmd5>
+    <version>2.0_20141118</version>
+    <time>1435870088</time>
+    <user>dimstar_suse</user>
+    <comment>Part of OpenCL stack</comment>
+    <requestid>314087</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4e6a77254dce72bf79904ce203f375fe</srcmd5>
+    <version>2.1_20151117</version>
+    <time>1448553711</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>345554</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8b15ef1d07b52f7dad89f3e97b578d49</srcmd5>
+    <version>2.1+git.20160105</version>
+    <time>1461855305</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390759</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1e612d1079557268bd1fd60bbe3f0513</srcmd5>
+    <version>2.2+git.20160614</version>
+    <time>1467360058</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2+git.20160614:
+  * Append _khr suffix to cl_kernel_sub_group_info typedef in cl_ext.h
+  * Mark clGetKernelSubGroupInfoKHR as deprecated</comment>
+    <requestid>405609</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>02b9692cd6ebb956a91429b808a58e20</srcmd5>
+    <version>2.2+git.20161018</version>
+    <time>1480341946</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2+git.20161018:
+  * added CL_DEVICE_HALF_FP_CONFIG define
+  * Fix gcc -Wundef warning
+  * cl_halfn declarations
+  * added headers for Intel vendor extensions
+  * Add tokens for cl_img_use_gralloc_ptr, cl_img_cached_allocations and  cl_img_yuv_image extensions (#13)</comment>
+    <requestid>441758</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>32b81d27e064848c07dbc0a69b3ffba6</srcmd5>
+    <version>2.2+git.20170213</version>
+    <time>1487384354</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2+git.20170213:
+  * adding half defines to cl_platform.h
+  * adding cl_arm_import_memory extension
+  * adding cl_arm_shared_virtual_memory extension
+  * OpenCL 2.1 CL_FLT_EPSILON fix
+  * Replace hexdecimal fp constants with decimal fp constants
+  * header updates for cl_intel_planar_yuv header updates for cl_intel_device_side_avc_motion_estimation
+  * Fix -Wundef warning under Ubuntu 14.04</comment>
+    <requestid>457630</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5f310e71bb78d4a0f1d04b7321f2afea</srcmd5>
+    <version>2.2+git.20170617</version>
+    <time>1498046292</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2+git.20170617:
+  * Bug 14749 - Incorrect clGetKernelSubGroupInfoKHR typedef in cl_ext.h
+  * Remove C++ headers from repository
+  * Update to March 2015 Khronos Free Use License
+  * Remove unneeded EGL includes from cl_egl.h
+  * Add snapshot of OpenCL 1.2 headers
+  * Update to March 2015 Khronos Free Use License
+  * Remove unneeded EGL includes from cl_egl.h
+  * Add snapshot of OpenCL 1.1 headers
+  * Update to March 2015 Khronos Free Use License
+  * Add snapshot of OpenCL 1.0 headers
+  * Update to March 2015 Khronos Free Use License
+  * added CL_DEVICE_HALF_FP_CONFIG define
+  * added CL_DEVICE_HALF_FP_CONFIG define
+  * Fix gcc -Wundef warning
+  * cl_halfn declarations
+  * Fix gcc -Wundef warning
+  * cl_halfn declarations
+  * added headers for Intel vendor extensions
+  * added headers for Intel vendor extensions
+  * Add tokens for cl_img_use_gralloc_ptr, cl_img_cached_allocations and  cl_img_yuv_image extensions (#13)
+  * Add tokens for cl_img_use_gralloc_ptr, cl_img_cached_allocations and  cl_img_yuv_image extensions (#13)
+  * adding half defines to cl_platform.h
+  * adding cl_arm_shared_virtual_memory extension
+  * adding cl_arm_import_memory extension
+  * adding half defines to cl_platform.h
+  * adding cl_arm_import_memory extension
+  * adding cl_arm_shared_virtual_memory extension
+  * initial OpenCL 2.2 headers commit
+  * added clSetProgramReleaseCallback and CL_INVALID_SPEC_ID</comment>
+    <requestid>505188</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8c5d5b1fc6734d4c5cff77e71a4632b6</srcmd5>
+    <version>2.2+git.20181211</version>
+    <time>1547540201</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2+git.20181211:
+  * Fixed w4201 triggering with MSVC in /W4 /Za builds
+  * add suffixed enums for cl_khr_mipmap_image
+  * Remove all Apple specific content from headers
+  * Create CODE_OF_CONDUCT.md
+  * Add enums for cl_arm_get_core_id
+  * Rename CL_IMPORT_TYPE_SECURE_ARM
+  * Add CL_DEVICE_DOUBLE_FP_CONFIG
+  * remove CL_DEVICE_HALF_FP_CONFIG
+  * added clSetCommandQueueProperty to unified headers
+  * Unified Headers
+  * Added following Qualcomm extensions:
+  * Add cl_khr_il_program to OpenCL 1.2 and 2.0 headers
+  * added cl_khr_create_command_queue
+  * Use correctly rounded decimal mathematical constants
+  * Shorten CL_DBL_MAX for Visual Studio to fix token overflow
+  * Anon structs supported in C11
+  * add LICENSE file</comment>
+    <requestid>664685</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e5eb535c91461ec1a316ed221de5f152</srcmd5>
+    <version>2.2+git.20190806</version>
+    <time>1565721907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2+git.20190806:
+  * Add definitions for cl_arm_job_slot_selection (#52)
+  * Fix _cl_image_desc for OpenCL 1.2 compatibility
+  * Simplify the definition of deprecation prefixes/suffixes (#45)
+  * added suffixed enums for cl_khr_image2d_from_buffer
+  * drop __attribute__((aligned(X))) from cl_X defs
+  * small typo fix for pfn_notify
+  * removing comments around arguments:
+  * Use __vector instead of vector to fix altivec builds
+  * Fix clCreateFromGLBuffer error code result type</comment>
+    <requestid>723096</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>327cbe6965a92784463065af9a2a1363</srcmd5>
+    <version>2.2.1</version>
+    <time>1508434336</time>
+    <user>dimstar_suse</user>
+    <comment>needed by ymcd, build dependency of vim-plugin-youcompleteme</comment>
+    <requestid>533841</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f2f4525a4e1b1b91d726fae23f651eae</srcmd5>
+    <version>3.1.6</version>
+    <time>1543311737</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651957</requestid>
+  </revision>
+</revisionlist>

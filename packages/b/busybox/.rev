@@ -1,0 +1,557 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2a4625295665e5b313ab001dacec44e5</srcmd5>
+    <version>1.2.2</version>
+    <time>1168902386</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5229dd49dbaaf8fc3dbddb8756b26d5e</srcmd5>
+    <version>1.4.2</version>
+    <time>1177800039</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>477766b5c25ba7922ebd1f27b3bf6422</srcmd5>
+    <version>1.4.2</version>
+    <time>1178541001</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>7b36c45d15ddb9cfd45fa180c8dc9b55</srcmd5>
+    <version>1.4.2</version>
+    <time>1178893891</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>32d71683408198a8bb6b13609d657288</srcmd5>
+    <version>1.6.1</version>
+    <time>1184564185</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c1617adca74edd5bfc2c053ae9168c06</srcmd5>
+    <version>1.8.1</version>
+    <time>1195463933</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ec1b094235fc0c477ec86ca0d3c35175</srcmd5>
+    <version>1.8.2</version>
+    <time>1200604225</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="31">
+    <srcmd5>b83409229a6c0b843c328b99c3559d4c</srcmd5>
+    <version>1.8.2</version>
+    <time>1216935405</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="44">
+    <srcmd5>c81c462456b21f25630e4aef02b26ec6</srcmd5>
+    <version>1.8.2</version>
+    <time>1219442891</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="47">
+    <srcmd5>c27877ecc90d188d41a7d14c0903567c</srcmd5>
+    <version>1.8.2</version>
+    <time>1220645490</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e88b44fd4540b4c47f1d0600a7c76240</srcmd5>
+    <version>1.12.1</version>
+    <time>1224690123</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>1bcbc89f4586177da05c9198f9a76a48</srcmd5>
+    <version>1.12.3</version>
+    <time>1231464179</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>624d6ea4b3b7b0c8da3f104c1614ca5d</srcmd5>
+    <version>1.12.3</version>
+    <time>1249677884</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>624d6ea4b3b7b0c8da3f104c1614ca5d</srcmd5>
+    <version>1.12.3</version>
+    <time>1249677884</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>3c2d215d696bf1897862b59dac4ee7f5</srcmd5>
+    <version>1.12.3</version>
+    <time>1268923134</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>3c2d215d696bf1897862b59dac4ee7f5</srcmd5>
+    <version>1.12.3</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>3c2d215d696bf1897862b59dac4ee7f5</srcmd5>
+    <version>1.12.3</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>e34f22dfc7c04022bdb457867cdc9c4b</srcmd5>
+    <version>1.12.3</version>
+    <time>1285064601</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/busybox based on submit request 48586 from user elvigia
+</comment>
+    <requestid>48586</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>63274cf2894afcad1ba09a3554f47c14</srcmd5>
+    <version>1.17.2</version>
+    <time>1286488576</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/busybox based on submit request 49925 from user prusnak
+</comment>
+    <requestid>49925</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>7925a2fdbd8b1f3550b712f5df2ce24a</srcmd5>
+    <version>1.17.2</version>
+    <time>1288701486</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51834 from user coolo
+</comment>
+    <requestid>51834</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>e13af4499a8c6483ea24d527390e7f73</srcmd5>
+    <version>1.17.2</version>
+    <time>1288701509</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51834
+</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>e13af4499a8c6483ea24d527390e7f73</srcmd5>
+    <version>1.17.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2e8c1e736c60653654e05686dbb0fca5</srcmd5>
+    <version>1.18.3</version>
+    <time>1300700006</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64515 from user coolo
+</comment>
+    <requestid>64515</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>76b65d540538acac275ef42385412fac</srcmd5>
+    <version>1.18.3</version>
+    <time>1300700022</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64515
+</comment>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>8a9b8025d58f0856280f0a6cebe8910e</srcmd5>
+    <version>1.18.3</version>
+    <time>1316616983</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>83850</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>1f267650d470032c62cd05298b85f192</srcmd5>
+    <version>1.18.3</version>
+    <time>1317744451</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro, set HOSTCC
+
+- cross-build fix: use %__cc macro, set HOSTCC (forwarded request 86375 from uli_suse)</comment>
+    <requestid>86402</requestid>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>1f267650d470032c62cd05298b85f192</srcmd5>
+    <version>1.18.3</version>
+    <time>1319181799</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>fe12f97b59c6906fde626a91dd361724</srcmd5>
+    <version>1.18.3</version>
+    <time>1323190922</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="29" vrev="8">
+    <srcmd5>f503ebc7aa1baf036942238747d7731d</srcmd5>
+    <version>1.18.3</version>
+    <time>1323190924</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fc6b0ab2915fef7f29a6932f7fded32e</srcmd5>
+    <version>1.19.4</version>
+    <time>1334215210</time>
+    <user>coolo</user>
+    <comment>- busybox-1.19.4-typedef_umode_t.patch:
+  fix compile as umode_t is only defined with KERNEL and is
+  used in header linux/linux/ext2_fs.h
+
+- update to 1.19.4
+  - fix getty, mdev, modinfo and wget
+- update to 1.19.3
+  - fix chpasswd, crond, inetd, syslogd, tail, tftp
+- update to 1.19.2
+  - fix ash/hush, cttyhack, find, grep, less, patch, sed, top, 
+    uncompress
+- update to 1.19.0:
+  - countless fixes in all utility programs, please see
+    http://www.busybox.net/ for details
+- remove obsolete patches previously marked as upstreamed
+
+- busybox-1.19.4-typedef_umode_t.patch:
+  fix compile as umode_t is only defined with KERNEL and is
+  used in header linux/linux/ext2_fs.h 
+
+- update to 1.19.4
+  - fix getty, mdev, modinfo and wget
+- update to 1.19.3
+  - fix chpasswd, crond, inetd, syslogd, tail, tftp
+- update to 1.19.2
+  - fix ash/hush, cttyhack, find, grep, less, patch, sed, top,
+    uncompress
+- update to 1.19.0:
+  - countless fixes in all utility programs, please see
+    http://www.busybox.net/ for details (forwarded request 113102 from oertel)</comment>
+    <requestid>113273</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>3fa78f88bb9241ec41bd34938017c4a2</srcmd5>
+    <version>1.19.4</version>
+    <time>1338998536</time>
+    <user>coolo</user>
+    <comment>more complete fix for latest ext2_fs.h breakage from busybox git (forwarded request 123855 from seife)</comment>
+    <requestid>123856</requestid>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>3fa78f88bb9241ec41bd34938017c4a2</srcmd5>
+    <version>1.19.4</version>
+    <time>1340183220</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>c9a0a29a8cb3bfc3f7ac2dd9ce844633</srcmd5>
+    <version>1.19.4</version>
+    <time>1346075574</time>
+    <user>coolo</user>
+    <comment>- Add missing sys/resource include (glibc 2.16)
+
+- fix path in busybox.install (bnc#680153)
+
+- Add missing sys/resource include (glibc 2.16)</comment>
+    <requestid>129593</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>9a579488da172ca2fc63833ecaef4117</srcmd5>
+    <version>1.20.2</version>
+    <time>1355463288</time>
+    <user>coolo</user>
+    <comment>update to 1.20.2 (forwarded request 144839 from posophe)</comment>
+    <requestid>145072</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>9a579488da172ca2fc63833ecaef4117</srcmd5>
+    <version>1.20.2</version>
+    <time>1359108722</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>dcacd37afc5d6c73ab9942230b1ac23a</srcmd5>
+    <version>1.20.2</version>
+    <time>1376912003</time>
+    <user>scarabeus_factory</user>
+    <comment>- Build against glibc-devel-static to work around uClibc segfault;
+  (bnc#758843).
+  * Remove uClibc specific busybox.uClibc-build-fix.patch.
+  * Add busybox-static.SuSE.config, which specifies CONFIG_STATIC=y. (forwarded request 186665 from dmdiss) (forwarded request 186728 from msmeissn)</comment>
+    <requestid>186768</requestid>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>dcacd37afc5d6c73ab9942230b1ac23a</srcmd5>
+    <version>1.20.2</version>
+    <time>1379662064</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>935da49c6b4bda59ceac7b86bbfe4dad</srcmd5>
+    <version>1.21.1</version>
+    <time>1387451187</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.21.1
+  + fixes for ntfs detection (big-endian fix)
+  + xz decompression of concatenated streams
+  + mdev acquired a [ENV=regex;] extension instead of undocumented
+    subsystem match hack it used to have prior to 1.21.x. 
+- Changes from 1.21.0
+  + udhcpc: gracefully handle packets with CHECKSUM_PARTIAL
+  + ifupdown: improve compatibility with Debian
+  + get_linux_version_code: don't fail on Linux version strings
+    like &quot;3.0-foo&quot;
+  + build system: fix build failure when only gunzip is selected
+  + CONFIG_PID_FILE_PATH: new configuration option for pidfile paths
+  + declare strings with ALIGN1, as appropriate
+  + nanddump: use the right operator of logic AND
+  + nanddump: skip bad blocks when instructed to do so
+  + nanddump: invert the meaning of the -o parameter to match upstream
+  + mount: fix -o user=foo mishandling, fix unc= generation, add prefixpath=
+  + build system: fix build of kconfig on Darwin
+  + tar: support -J, --xz explicit compression option
+  + simplify copyright/license notice that appears in the binary
+  + mdev: tell kernel that we didn't find the firmware
+  + lineedit: fix Alt-D when cursor==0
+  + lineedit: histfile can get emptied when CONFIG_FEATURE_EDITING_SAVE_ON_EXIT=y
+  + build system: stop .eh_frame generation
+  + build system: fix build failure when compressed help is selected, but bz2 compression is not
+  + scripts/kconfig/mconf: work on systems w/o SIGWINCH
+  + platform.h: disable ALIGNn macros for s390[x]
+  + adduser: install to /usr, not /, like all other similar tools
+  + ash: fix &quot;read -s&quot; + ^C. Closes 5504
+  + ash: fix a bug in &gt;${varexp} handling. Closes 5282
+  + ash: implement export -n
+  + ash: revert wrong &quot;fix&quot; for an apparent memory leak. Closes 5822
+  + awk: fix FS assignment behavior. Closes 5108
+  + awk: make -F STR interpret escape sequences. Closes 5126
+  + brctl: fix build failure by s/strtotimeval/bb_strtotimeval/ (android has strtotimeval)
+  + busybox: tweak help text and copyright year
+  + decompress_uncompress: comment out debug printout on corrupted data
+  + decompress_uncompress: move 'code' variable into loop - sole user
+  + dhcpd: write lease file on exit
+  + dpkg: fix creation of .list files (were empty since b768aeb). Closes 5324
+  + du: document incompatibility with standard tool
+  + examples/mdev_fat.conf: small addition
+  + find: if DESKTOP=y, support -wholename (synonym for -path)
+  + find: make -mindepth N -xdev correctly stop on mountpoints
+  + ftpd: fix MDTM's month value. Closes 5336
+  + ftpd: free allocated string on error path
+  + getty: fix for NOCTTY killing us with SIGHUP
+  + grep: fix grep -Fw not respecting the -w option. Closes 5792
+  + ifconfig: do not accept &quot;ifconfig eth0 up 1.2.3.4/17&quot; (ip with mask). Closes 5786
+  + libbb: correctness/size tweaks in signal-related helpers
+  + lineedit: in !EDITING config, return -1 on fgets error
+  + login: increase login name size limit from 32 to 64
+  + lpr: don't send 0-byte print jobs (compat)
+  + man: fix handling of gzipped manpages
+  + mdev: add support for $DEVNAME and /dev/mdev.log debug aid
+  + mdev: fix mode of dir1 in =dir1/dir2/file rule
+  + mdev: remove undocumented subsystem/devname matching hack
+  + mdev: when found, print major,minor into mdev.log
+  + modprobe_small: make rmmod to NOT remove dependencies. Closes 5162
+  + mount: do not pass &quot;comment=ANYTHING&quot; option to kernel. Closes 5240
+  + mount: fix the wrongly stored fs creation time
+  + mount: set up RO loop device if mount -o ro. Closes 4784
+  + mount: support strictatime option. Closes 5240
+  + ntpd: on time step, kill all outstanding replies from other peers
+  + sed: fix handling of s/// which has empty matches
+  + sed: fix zero chars match/replace
+  + sha3: make size/speed optimization decision configurable
+  + syslogd: do not segfault on parse error when using default config. Closes 5762
+  + telnet: convert CR -&gt; CR LF, not CR -&gt; CR NUL when sending data to server
+  + telnet: convert Enter -&gt; CR LF in line mode too
+  + tftpd: fix -u USER to work with chroot. Closes 5348
+  + top/ps: argv0:&quot;gdm-session-worker [pam/gdm-password]&quot; == comm:&quot;gdm-session-wor&quot;
+  + top: do not touch stdin if -b
+  + top: fix &quot;last CPU&quot; parsing
+  + top: implement scrolling up/down (_very_ useful)
+  + udhcp[cd]: fix binding to network aliases. Closes 5432, 5438
+  + udhcpc: make -O &lt;numeric_opt&gt; work. Closes 5402
+  + udhcpc[6]: show select timeout in log
+  + unzip: make options parsing more robust on getopt w/o gnu extensions
+  + vi: do not set autoindent by default
+  + vi: nuke FEATURE_VI_OPTIMIZE_CURSOR
+  + vi: save/restore screen upon invocation
+  + volume_id/ext: detect ext4 too
+  + wget: correctly handle failure to -c (continue)
+  + wget: make -c _not_ truncate the file
+  + wget: reorder fread and poll: poll only if fread returns EAGAIN. Closes 5426
+  + wget: try reading after poll timeout - stdio may have buffered data. Closes 5426
+  + acpid: add missing lid switch definition
+  + tar: fix 256-bit encoded number decoding
+  + udhcpc[6]: allow discover_retries == 0 (infinite)
+  + ash: fix a memory leak
+  + sysctl: implement -q
+  + powertop: fix error message
+  + sha3sum: new applet
+  + fbset: respect rgba configuration lines in fb.modes
+  + fbsplash: support non-RGB565 pixels in 16-bit mode
+  + flashcp: remove unused variable opts
+  + mount: add unc option to CIFS mount (needed for Linux 3.4+)
+  + nanddump: make dumping read-only partitions work
+  + ps: use separate get_uptime() and make it work on non-linux too
+  + declare strings with ALIGN1, as appropriate
+  + udhcpc6: depend on ipv6
+  + include sys/resource.h where needed
+  + disable format security warnings
+  + build system: use pkg-config to look up selinux libs
+  + ifenslave: fix missing close paren
+  + sed: allow 'w' cmd to use two address form
+  + tar: implement --no-recursion
+  + unzip: ignore chmod errors
+  + brctl: fix description and usage
+  + su: do not change to home dir unless -l
+  + ntpd: fix incorrect m_status field in outgoing packets. Closes 5120
+  + dmesg: handle multi-char log levels
+  + klogd: handle multi-char log levels
+  + syslogd: add option to log to Linux kernel printk buffer
+  + syslogd: convert dummy functions to statics and get rid of IF_FEATURE_* checks
+  + config: do not refer to HTTPS for wget
+  + sendmail: use host rather than NIS domain name for HELO
+  + mktemp: fix mktemp -u temp.XXXXXX returning garbage when TMPDIR is set
+  + blkid: show filesystem when both label and UUID are missing, but type is known
+  + volume_id: add exFAT detection
+  + ln: support -T and -v
+  + sed: support long opts and -iSFX
+  + mkdir,rmdir: accept and ignore -v, --verbose
+  + mv: accept but ignore -v
+  + blkid: add type display for btrfs
+  + blkid: add support for nilfs2
+  + blkid: add type display for hfsplus
+  + volume_id: display hfs[+] 128-bit UUID properly
+  + volume_id: uuid_format small code shrink
+  + volume_id: add squashfs detection
+  + testsuite: some more awk tests related to conditions
+  + modinfo: match more standard module fields and fix version field
+  + inetd: fix build failure in Android
+  + android: fix 'stat', ifdef S_TYPEIS* in coreutiles/stat.c
+  + platform.h: Android tweaks: ioprio defines, BB_ADDITIONAL_PATH
+  + android: some sensible defconfig changes
+  + libbb: add missing_syscalls.c: for now, only Android syscalls
+  + fbsplash: fix regression from e4fa7b7
+  + adduser: make it accept &quot;adduser USER GROUP&quot; form
+  + wget: add dummy --no-cache
+  + testsuite: make mkfs.minix test not fail spuriously on big endian
+  + refactor correct_password.c to avoid one if (forwarded request 210745 from posophe)</comment>
+    <requestid>211087</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>935da49c6b4bda59ceac7b86bbfe4dad</srcmd5>
+    <version>1.21.1</version>
+    <time>1409300595</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>8304511004b6fc35a6d9fd34a92e1aff</srcmd5>
+    <version>1.22.1</version>
+    <time>1410080913</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247683</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>2f58e6e002685f93618a97699fe84a60</srcmd5>
+    <version>1.22.1</version>
+    <time>1413616088</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256698</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>1ecd53b9ab352561a67ddfc539611c9f</srcmd5>
+    <version>1.23.2</version>
+    <time>1430113593</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>303927</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>f4dfa9ac08050d06e9b52b7d3e23a914</srcmd5>
+    <version>1.24.1</version>
+    <time>1452262910</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351875</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>a7d241564da66f1a375e91f0b8b618dd</srcmd5>
+    <version>1.24.1</version>
+    <time>1457532982</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>367533</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>1727f004b9b54a996a0cb80f878386e6</srcmd5>
+    <version>1.25.1</version>
+    <time>1478521514</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438723</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>7dae482f236f57e8ef7ac645b0dc27a0</srcmd5>
+    <version>1.26.2</version>
+    <time>1502560724</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 1.26.2:
+  * many updates and fixes to individual tools
+
+- update to 1.26.2:
+  * many updates and fixes to individual tools</comment>
+    <requestid>507998</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>9664628eaa0de74438b19a86ef33942a</srcmd5>
+    <version>1.26.2</version>
+    <time>1516443717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566408</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>5eba6ee31c7040b975d7cca41f33f7ef</srcmd5>
+    <version>1.26.2</version>
+    <time>1536678637</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>631395</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>f8a4975dd53dfad1df426dd303a7ab0b</srcmd5>
+    <version>1.30.1</version>
+    <time>1554379949</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690641</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>1e85312f13d415bee6274e7c86771ad4</srcmd5>
+    <version>1.30.1</version>
+    <time>1565864557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720716</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>186e24082ada026c747a89a164f30e2d</srcmd5>
+    <version>1.30.1</version>
+    <time>1567848328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726502</requestid>
+  </revision>
+</revisionlist>

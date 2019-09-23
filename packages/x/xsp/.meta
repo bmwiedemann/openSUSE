@@ -1,0 +1,6 @@
+<package name="xsp" project="openSUSE:Factory">
+  <title>Small Web Server Hosting ASP.NET</title>
+  <description>The XSP server is a small Web server that hosts the Mono System.Web
+classes for running what is commonly known as ASP.NET.</description>
+  <devel project="Mono:Factory" package="xsp"/>
+</package>

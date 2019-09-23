@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Wed Jul 17 08:07:43 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the lrelease executable name.
+
+-------------------------------------------------------------------
+Fri Feb  9 14:36:24 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.9.8
+  * Use gold linker.
+  * Added HoldPeak HP-90EPC (tstenner).
+  * Use pkgconfig for spec file.
+  version 0.9.7
+  * Added Voltcraft VC870 (Florian Evers)
+  * Added VA symbols to display apparent power
+  * Added cosphi symbols to display the power factor
+  version 0.9.6
+  * Code clean up
+  * fix translation loading
+  * Fix message handler
+  * Fix file export (leading zero of the time stamp)
+  * Fix console logging on Windows
+  * Remove 1/10s sample rate -> don't work with most devices
+  * Use infinity sign to set endless recoder
+  * Fix hang of M-4660A
+  version 0.9.5
+  * Port to Qt5
+  * Use C++14
+  * Add translation support
+
+- Switch to fork of the original project that supports Qt5
+
+- Added QtDMM-0.9.2-newmodels.patch
+
+-------------------------------------------------------------------
+Sat Aug  2 15:08:40 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 0.9.0
+  * QtDMM was ported to Qt4.x
+  * QtDMM was relicensed from GPL 2.0 to GPL 3
+  * Added TekPower TP4000ZC / digitek DT4000ZC
+  * Added PeakTech 3430
+
+-------------------------------------------------------------------
+Fri Jul 18 12:03:53 CEST 2008 - hmacht@suse.de
+
+- remove QtDMM-vc940.patch and QtDMM-fix-includes.patch
+- update to 0.8.12:
+  Version 0.8.12
+    - Added PeakTech 4015A (Jochen Puchalla)
+    - Added Tenma 72-7745 (Laurent Perez)
+    - Bugfix McVoice M-980T (Erik Hobel)
+    - Added Digitech QM1462 (Peter Halasz)
+    - Added Digitek INO2513
+    - Added Raio Shack 22-812 (Bruce Lilly)
+    - Corrected typo in dmmgraph (Erik Hobel)
+
+  Version 0.8.11
+    - Mac OS X port
+
+  Version 0.8.10
+    - Added Sinometer MAS-343
+    - Adedd PeakTech 3330
+    - Bugfix in VC820 protocoll
+    - Added Voltrcaft VC940
+    - Added Digitech QM1537
+    - Added Uni-Trend UT30A and UT30E
+    - Added Digitek DT-9062
+    - Confirmation Voltcraft M-3860
+    - Added PeakTech 4360
+
+  Version 0.8.9
+    - Added Voltcraft M-3610D
+    - Added Iso-Tech IDM 73
+
+-------------------------------------------------------------------
+Tue Oct 23 10:37:25 CEST 2007 - hmacht@suse.de
+
+- add QtDMM-fix-includes.patch to fix errors due to gcc4.3 
+
+-------------------------------------------------------------------
+Mon Jul  2 11:33:06 CEST 2007 - ckornacker@suse.de
+
+- added VC940 support 
+
+-------------------------------------------------------------------
+Fri Mar 30 13:53:44 CEST 2007 - trenn@suse.de
+
+- updated to version 0.8.8
+  changelog copied from the project site:
+- gcc 4.1 compatibility
+- Added Digitech QM1538, MASTECH MAS-345, M-345pro, Voltcraft M-4650CR
+- Context menu for graph
+- Improved import
+
+-------------------------------------------------------------------
+Wed Jan 25 21:33:55 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 09:38:08 CET 2006 - hmacht@suse.de
+
+- update to version 0.8.7
+- fix extra qualification in header file
+
+-------------------------------------------------------------------
+Mon Oct 17 10:04:59 CEST 2005 - hmacht@suse.de
+
+- created new package
+

@@ -1,0 +1,12 @@
+--- grepmail
++++ grepmail
+@@ -35,6 +35,9 @@
+ use FileHandle;
+ use Carp;
+ 
++# prevent another used only once warning
++my $dummystar = $Mail::Mbox::MessageParser::OLDSTDERR;
++
+ # Set to 1 to enable caching capability
+ $USE_CACHING = 1;
+ 

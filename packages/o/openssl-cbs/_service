@@ -1,0 +1,16 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://github.com/Maistra/openssl-cbs</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">openssl-cbs</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">maistra(.*)</param>
+    <param name="revision">maistra-0.12.0</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>

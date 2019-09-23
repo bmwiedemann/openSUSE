@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8be332b0cb707a372c5005a93fea1a8c</srcmd5>
+    <version>0.2.0</version>
+    <time>1525426321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603865</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>65c98658b0fd2666a713e42856425d8f</srcmd5>
+    <version>0.2.0</version>
+    <time>1545648086</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659564</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3b25a22176684f394c35b3bce515f85e</srcmd5>
+    <version>0.6.0</version>
+    <time>1559375090</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705222</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f45cf70f97ed00deef10675145bcd2e6</srcmd5>
+    <version>0.7.0</version>
+    <time>1561050279</time>
+    <user>dimstar_suse</user>
+    <comment>Remove unnecessary tarball v0.6.0.tar.gz.</comment>
+    <requestid>711147</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6e6d3b87f65d8b1748d1770c4121428d</srcmd5>
+    <version>0.7.1</version>
+    <time>1563914366</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.1:
+  * [BUGFIX] multiprocess: don't crash on missing gauge_live/sum files (#424)
+  * [BUGFIX] correctly bind method on Python 2.x (#403)</comment>
+    <requestid>717851</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>546c11e63c718d5c30ccbca7b98a13b3</srcmd5>
+    <version>0.7.1</version>
+    <time>1564414341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719594</requestid>
+  </revision>
+</revisionlist>

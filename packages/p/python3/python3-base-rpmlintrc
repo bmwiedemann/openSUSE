@@ -1,0 +1,7 @@
+# RPM macros are not configuration:
+addFilter("non-conffile-in-etc.*/etc/rpm/macros.python3")
+# This file is required for testing
+addFilter("devel-file-in-non-devel-package.*/usr/lib.*/python3.*/distutils/tests/xxmodule.c")
+# Obviously, these files are meant to be empty:
+addFilter("zero-length.*/usr/lib.*/python3.*/test/nullcert.pem")
+addFilter("zero-length.*/usr/lib.*/python3.*/test/namespace_pkgs/module_and_namespace_package/a_test/empty")

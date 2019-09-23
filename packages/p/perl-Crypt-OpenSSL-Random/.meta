@@ -1,0 +1,6 @@
+<package name="perl-Crypt-OpenSSL-Random" project="openSUSE:Factory">
+  <title>Crypt::OpenSSL::Random Perl module</title>
+  <description>Crypt::OpenSSL::Random provides the ability to seed and query the OpenSSL
+library's pseudo-random number generator</description>
+  <devel project="devel:languages:perl" package="perl-Crypt-OpenSSL-Random"/>
+</package>

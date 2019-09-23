@@ -1,0 +1,249 @@
+-------------------------------------------------------------------
+Thu Sep 20 18:23:03 UTC 2018 - Jason Sikes <jsikes@suse.de>
+
+- Changed "openssl" requirement to "openssl(cli)"
+  * (bsc#1101470)
+
+-------------------------------------------------------------------
+Tue Mar 20 13:39:33 CET 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Thu Dec 14 17:22:55 CET 2017 - kukuk@suse.de
+
+- Revert last change since we fixed systemd-preset-branding and
+  this requires is no longer needed.
+
+-------------------------------------------------------------------
+Fri Dec  8 07:20:49 UTC 2017 - kukuk@suse.com
+
+- Re-add systemd requires, else package will be installed to early
+  and services never enabled [bsc#1071776].
+
+-------------------------------------------------------------------
+Thu Nov 23 16:03:55 CET 2017 - kukuk@suse.de
+
+- Don't require systemd, since we could be used in environments
+  like container images, where we don't have systemd. If systemd
+  is installed the systemd units will be used, else they are not
+  needed.
+
+-------------------------------------------------------------------
+Mon Aug 07 13:58:01 UTC 2017 - lnussel@suse.de
+
+- Update to version 2+git20170807.10b2785:
+  * Check TRANSACTIONAL_UPDATE is set (boo#1045942)
+  * Add systemd units
+
+-------------------------------------------------------------------
+Mon Jun 19 13:31:02 CEST 2017 - kukuk@suse.de
+
+- Run update-ca-certificate by systemd unit when the content of
+  one of the paths changes. Needed for read-only root and/or
+  transactional updates.
+
+-------------------------------------------------------------------
+Wed Nov 11 08:18:47 UTC 2015 - lnussel@suse.de
+
+- Update to version 2+git20151110.c15593c:
+  + set proper umask (boo#948724)
+
+-------------------------------------------------------------------
+Wed Mar 25 08:12:28 UTC 2015 - lnussel@suse.de
+
+- require p11-kit-tools >= 0.23.1
+
+-------------------------------------------------------------------
+Tue Mar 24 10:30:21 UTC 2015 - lnussel@suse.de
+
+- Update to version 2+git20150324.e3ee392:
+  + p11-kit 0.23.1 supports pem-directory-hash now
+- use service file to generate tarball
+
+-------------------------------------------------------------------
+Sat Nov 08 04:32:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in postun script
+
+-------------------------------------------------------------------
+Tue Aug  5 11:09:24 UTC 2014 - lnussel@suse.de
+
+- use rpm -qf to determine if a ssl cert is owned by some other
+  package and therefore doesn't need to be migrated (related to
+  bnc#890205).
+
+-------------------------------------------------------------------
+Mon Aug  4 15:35:27 UTC 2014 - lnussel@suse.de
+
+- add p11 kit header to set label of migrated certificates to the
+  file name of the previous one (bnc#890205)
+
+-------------------------------------------------------------------
+Wed Jul 30 11:45:54 UTC 2014 - lnussel@suse.de
+
+- removed the version in the Obsoletes. The package in SLE11 got
+  version updated (bnc#887099).
+
+-------------------------------------------------------------------
+Thu Jul 17 09:51:16 UTC 2014 - meissner@suse.com
+
+- clarify the start order of the generators, as certbundle.run 
+  semi-depends on etc_ssl.run via a timestamp. (bnc#883386)
+
+-------------------------------------------------------------------
+Mon Jun 23 15:24:13 UTC 2014 - lnussel@suse.de
+
+- fix directory permissions for real this time (bnc#871639)
+
+-------------------------------------------------------------------
+Wed Jun  4 11:10:24 UTC 2014 - lnussel@suse.de
+
+- don't keep certificates with marker (bnc#875647)
+
+-------------------------------------------------------------------
+Thu May  8 15:41:43 UTC 2014 - lnussel@suse.de
+
+- copy custom pem files in /etc/ssl/certs to /etc/pki/anchors on
+  update (bnc#875647)
+
+-------------------------------------------------------------------
+Mon Apr  7 15:07:44 UTC 2014 - lnussel@suse.de
+
+- Fix typo in man page
+
+-------------------------------------------------------------------
+Fri Apr  4 11:38:17 UTC 2014 - lnussel@suse.de
+
+- package correct permissions of generated  directories (bnc#871639)
+
+-------------------------------------------------------------------
+Fri Dec  6 09:16:11 UTC 2013 - lnussel@suse.de
+
+- etc_ssl.run: fix typo
+- turn /etc/ssl/certs into a symlink to /var/lib/ca-certificates/pem
+
+-------------------------------------------------------------------
+Wed Oct 16 15:11:26 UTC 2013 - lnussel@suse.de
+
+- fix typo in README (bnc#845500)
+- remove old extractcerts.pl
+
+-------------------------------------------------------------------
+Tue Aug 27 12:53:44 UTC 2013 - lnussel@suse.de
+
+- re-enable the CA bundle again for glib-networking (bnc#825903)
+
+-------------------------------------------------------------------
+Tue Aug 27 07:11:04 UTC 2013 - lnussel@suse.de
+
+- make sure we have p11-kit >= 0.19.3 which has the 'trust' command
+  (bnc#836560)
+
+-------------------------------------------------------------------
+Mon Aug  5 11:24:04 UTC 2013 - lnussel@suse.de
+
+- don't remove symlinks to other locations in /etc/ssl/certs
+- use the trust binary instead of p11-kit to extract trust
+
+-------------------------------------------------------------------
+Thu Jun 27 16:17:51 UTC 2013 - lnussel@suse.de
+
+- disable generating ca-bundle for now again so people don't submit
+  new packages that use this file.
+
+-------------------------------------------------------------------
+Mon Jun 24 21:09:16 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Explicitly require p11-kit, otherwise trusted certificates won't
+  be generated
+
+-------------------------------------------------------------------
+Mon Jun 24 12:46:30 UTC 2013 - lnussel@suse.de
+
+- update manpage
+
+-------------------------------------------------------------------
+Thu Jun 20 09:15:52 UTC 2013 - lnussel@suse.de
+
+- use p11-kit to generate the files
+
+-------------------------------------------------------------------
+Fri May  4 11:55:14 UTC 2012 - lnussel@suse.de
+
+- give hint about SSL_CTX_set_default_verify_paths in cert bundle
+
+-------------------------------------------------------------------
+Mon Oct 24 11:57:53 UTC 2011 - coolo@suse.com
+
+- require coreutils for %post script
+
+-------------------------------------------------------------------
+Mon Jun 20 12:49:52 UTC 2011 - lnussel@suse.de
+
+- fix spurious rpm warning if no java exists (bnc#634793)
+- move java.run to java-ca-certificates
+
+-------------------------------------------------------------------
+Mon Sep 27 14:58:03 UTC 2010 - lnussel@suse.de
+
+- catch FileNotFoundException (bnc#623365)
+
+-------------------------------------------------------------------
+Fri May 21 12:46:55 UTC 2010 - mvyskocil@suse.cz
+
+* Use the gcc-java and fastjar for build to avoid dependency problems
+* build keystore.class only to allow noarch package
+
+-------------------------------------------------------------------
+Wed May 19 09:57:41 UTC 2010 - lnussel@suse.de
+
+- create java bundles
+
+-------------------------------------------------------------------
+Tue Apr 27 14:17:24 UTC 2010 - lnussel@suse.de
+
+- also use hooks from /usr/lib/ca-certificates/update.d
+- replace bundle file with symlink to file in /var as it's auto
+  generated
+
+-------------------------------------------------------------------
+Wed Apr 21 13:20:07 UTC 2010 - lnussel@suse.de
+
+- force rebuilding all certificate stores in %post
+  This also makes sure we update the hash links in /etc/ssl/certs
+  as openssl changed the hash format between 0.9.8 and 1.0
+
+-------------------------------------------------------------------
+Thu Apr  8 13:16:43 UTC 2010 - lnussel@suse.de
+
+- actually install certbundle.run (bnc#594501)
+
+-------------------------------------------------------------------
+Thu Apr  8 09:15:28 UTC 2010 - lnussel@suse.de
+
+- it's ca-bundle.pem rather than cert.pem
+
+-------------------------------------------------------------------
+Thu Apr  8 07:51:25 UTC 2010 - lnussel@suse.de
+
+- obsolete openssl-certs (bnc#594434) 
+- update manpage (bnc#594501)
+
+-------------------------------------------------------------------
+Thu Apr  1 13:00:37 UTC 2010 - lnussel@suse.de
+
+- include /etc/ca-certificates.conf as %ghost
+
+-------------------------------------------------------------------
+Fri Mar 26 15:26:01 UTC 2010 - lnussel@suse.de
+
+- generate ca-bundle with hook script
+- don't use trusted certificates in ca-bundle file for compatibility
+  with gnutls
+
+-------------------------------------------------------------------
+Wed Mar 24 10:31:47 UTC 2010 - lnussel@suse.de
+
+- new package
+

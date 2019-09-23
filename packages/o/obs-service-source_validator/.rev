@@ -1,0 +1,440 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8e50d8bbb5097a9b4e9d932ad915a1c1</srcmd5>
+    <version>0.1</version>
+    <time>1310471880</time>
+    <user>darix</user>
+    <comment>required to work on factory</comment>
+    <requestid>76040</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5d1d7d67705221bdb42b7121f8160ae4</srcmd5>
+    <version>0.1</version>
+    <time>1310471904</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 76040
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>5d1d7d67705221bdb42b7121f8160ae4</srcmd5>
+    <version>0.1</version>
+    <time>1319182209</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>d3621c84fc88b009f55d322b2b458e5d</srcmd5>
+    <version>0.1</version>
+    <time>1327064721</time>
+    <user>coolo</user>
+    <comment>trigger service run</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>6701b68271712183a927b334d109db8e</srcmd5>
+    <version>0.1</version>
+    <time>1329383188</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104430 from coolo)</comment>
+    <requestid>104803</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>247dcca2532c67d3f0593d947a2e9929</srcmd5>
+    <version>0.1</version>
+    <time>1330520942</time>
+    <user>coolo</user>
+    <comment>- fix requires for factory (forwarded request 107125 from dirkmueller)</comment>
+    <requestid>107506</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cb9feef742a6f62c9e5488de47133c2e</srcmd5>
+    <version>0.2</version>
+    <time>1334216597</time>
+    <user>coolo</user>
+    <comment>See request 110107</comment>
+    <requestid>113097</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a4eb5670cca874169a3a906d0311f67e</srcmd5>
+    <version>0.2</version>
+    <time>1336492885</time>
+    <user>coolo</user>
+    <comment>- use --nodeps with rpmbuild in 20-files-present-and-referenced</comment>
+    <requestid>115846</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>09c488e4cfb5c4b40173a077dc3a628c</srcmd5>
+    <version>0.2</version>
+    <time>1339707317</time>
+    <user>coolo</user>
+    <comment>- also ignore Requires(.*) lines (bnc#724609) 
+
+- allow %{nil} just as %nil</comment>
+    <requestid>124858</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>09c488e4cfb5c4b40173a077dc3a628c</srcmd5>
+    <version>0.2</version>
+    <time>1340183744</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>4657f3c0c7635c0eb81a8217b065acb2</srcmd5>
+    <version>0.2</version>
+    <time>1357576153</time>
+    <user>coolo</user>
+    <comment>- exit if tmpdir creation fails (bnc#796918)</comment>
+    <requestid>147390</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>ac9e00f674136c18a464f1108204a9a4</srcmd5>
+    <version>0.2</version>
+    <time>1358689217</time>
+    <user>coolo</user>
+    <comment>- also allow %undefine</comment>
+    <requestid>148977</requestid>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>ac9e00f674136c18a464f1108204a9a4</srcmd5>
+    <version>0.2</version>
+    <time>1359109525</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>3b7b28d2c5fa6d463e583bc6f7af389d</srcmd5>
+    <version>0.2</version>
+    <time>1360007730</time>
+    <user>coolo</user>
+    <comment>- check_patches_applied: allow #patches as comment</comment>
+    <requestid>150911</requestid>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>38c869c8e10dfeff4e44a78a72e8205a</srcmd5>
+    <version>0.2</version>
+    <time>1362119844</time>
+    <user>coolo</user>
+    <comment>- allow PKGBUILD build description file for archlinux</comment>
+    <requestid>156451</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6d3553c48667b0056560361a29656071</srcmd5>
+    <version>0.3</version>
+    <time>1371646329</time>
+    <user>coolo</user>
+    <comment>- add patch from mmeissner to verify .sig files
+- add _service to ease update</comment>
+    <requestid>179590</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>5d0b0232f4dd6049fa9cc007117b7efb</srcmd5>
+    <version>0.3</version>
+    <time>1373228375</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>182409</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>0980c90b41963aa1bf000e836f7df59d</srcmd5>
+    <version>0.3</version>
+    <time>1376381769</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to latest git:
+  2b2c89d  also check for orphan files when _services are used
+  197b519  Check the Buildservice magic files (_link/_service)
+           with xmllint
+  a6d922c  Cleanup keyring check
+  f936138  removed the incorrect basename checking, also do not look
+           for .gpg files as we currently use either .sig or .asc (forwarded request 186098 from dirkmueller)</comment>
+    <requestid>186779</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>0980c90b41963aa1bf000e836f7df59d</srcmd5>
+    <version>0.3</version>
+    <time>1379663399</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>f907d42c90e3d251d0c6d20181d4edb3</srcmd5>
+    <version>0.3</version>
+    <time>1389277823</time>
+    <user>coolo</user>
+    <comment>add xmllint to requires</comment>
+    <requestid>213268</requestid>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>10b1a1d737092b1317a07e69a7965300</srcmd5>
+    <version>0.3</version>
+    <time>1401641758</time>
+    <user>coolo</user>
+    <comment>Add rpm-build require for centos 6 (forwarded request 235566 from T1loc)</comment>
+    <requestid>235568</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6fb83dec9b7ab3a6c3e4c7923fed5f1d</srcmd5>
+    <version>0.4</version>
+    <time>1403772151</time>
+    <user>coolo</user>
+    <comment>- update to git (0.4):
+   - warn about unmentioned baselibs.conf and rpmlintrc
+   - Handle Jan Engelhardt tarball signatures that are done before
+     compression
+   - handle %global like %define in output_versions
+   - Support ARM build hosts
+   - do not complain about temporary directories when running source services (on server esp.)
+   - also check for orphan files when _services are used
+     When _service mode is disabled or loc</comment>
+    <requestid>238621</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>eecf0fc1d993d71dfd70157334cb7282</srcmd5>
+    <version>0.4</version>
+    <time>1408196258</time>
+    <user>lnussel</user>
+    <comment>- update from git:
+  - more work on dealing with util-linux 
+
+- update from git:
+  - hack for util-linux specfiles (bnc#891829)</comment>
+    <requestid>244637</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>eecf0fc1d993d71dfd70157334cb7282</srcmd5>
+    <version>0.4</version>
+    <time>1409302014</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3822d01d4efe2f947ef27cd04bd197b3</srcmd5>
+    <version>0.5</version>
+    <time>1412142027</time>
+    <user>coolo</user>
+    <comment>- update from git:
+  - allow all files mentioned in .dsc too
+  - import old md5 based keys like for postfix and putty</comment>
+    <requestid>253119</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>ebd436b00b635b9726c476c429d71107</srcmd5>
+    <version>0.5</version>
+    <time>1416823863</time>
+    <user>dimstar_suse</user>
+    <comment>- remove PKGBUILD file again as it breaks source validator
+
+- update from git:
+  - Don't use gpg's --pgp2 option which was removed in gnupg 2.1.0</comment>
+    <requestid>261434</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>0e0b7521e747f096138c138c72acdac3</srcmd5>
+    <version>0.5</version>
+    <time>1425031733</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>287501</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c7d6f4eda5aa2792196048bbefb9f4ec</srcmd5>
+    <version>0.5+git20150420.23830c1</version>
+    <time>1430165218</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>298286</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ceb301592b19fba1763ee688b8884f89</srcmd5>
+    <version>0.5+git20150513.7c2f7ae</version>
+    <time>1431753139</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306719</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f164846dfd5bf9ac87590ad93a53082f</srcmd5>
+    <version>0.5+git20150611.b85a5d4</version>
+    <time>1434133775</time>
+    <user>dimstar_suse</user>
+    <comment>unbreak it again for packages using services</comment>
+    <requestid>311560</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8b8477ac974dd59bf5d66c31b3fe190c</srcmd5>
+    <version>0.5+git20150622.3c3fa65</version>
+    <time>1437477976</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317218</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b32925d5a1f9783287272d45fccd56f6</srcmd5>
+    <version>0.6+git20160222.62c56d3</version>
+    <time>1457354228</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>367518</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>93686f175146ed56fdf5899133cf6861</srcmd5>
+    <version>0.6+git20160531.fbfe336</version>
+    <time>1465129158</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399248</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>803e251439d7b4593e8e1067d2a90528</srcmd5>
+    <version>0.6+git20160617.cfadcb0</version>
+    <time>1467359709</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>404504</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>239336e8cf37ec85127d9122619e3286</srcmd5>
+    <version>0.6+git20160707.a6ff89d</version>
+    <time>1470217035</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>412535</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>eaed9ae0bbbbd6dec877de47bf8a2f88</srcmd5>
+    <version>0.6+git20170111.82ea590</version>
+    <time>1485250149</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>451187</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>45b1cfd3bb4e923949c14ac94667d5a3</srcmd5>
+    <version>0.6+git20170719.d4384e5</version>
+    <time>1502011740</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512828</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f3e99bd91955067dc1acc17bc7d78f03</srcmd5>
+    <version>0.6+git20170811.369eb25</version>
+    <time>1503308108</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6+git20170811.369eb25:
+  * ignore expand errors with macro scripts
+
+- Update to version 0.6+git20170809.6818366:
+  * Ignore not referenced appimage.yml file
+  * Don't use rpmbuild to extract sources, patches etc. from a spec (bnc#938556 CVE-2017-9274)
+
+last submission had wrong tar ball for unknown reason</comment>
+    <requestid>516111</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>9b770664608ce77b511b32498579ca8e</srcmd5>
+    <version>0.6+git20170830.0775ae8</version>
+    <time>1505331446</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6+git20170830.0775ae8:
+  * Fix typo in egrep _service
+  * Refactor helpers/spec_sources into helpers/spec_query
+  * Use helpers/spec_query in 20-files-present-and-referenced
+  * Do not use rpm --specfile to query the subpackage names
+  * Remove unused RPMBUILD variable
+  * Do not use a grouping
+  * Silence another build warning wrt issue #54 (forwarded request 519610 from scarabeus_iv)</comment>
+    <requestid>523716</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>7d6904e383fbdd665c22a302706b6979</srcmd5>
+    <version>0.6+git20170922.230bbc4</version>
+    <time>1506340198</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6+git20170922.230bbc4:
+  * deal with nil, flavor defines in output_versions
+  * defining flavor in last change was not needed, remove
+  * 45-stale-changes: use spec_query instead of output_versions
+    using the specfile parser from the build package
+    (boo#1059858)</comment>
+    <requestid>528265</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>373d2522ba595678c74ee2b9cf0a7127</srcmd5>
+    <version>0.6+git20170922.230bbc4</version>
+    <time>1509530778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537436</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>3185c3d6e9d2512e66fde6f658c692a7</srcmd5>
+    <version>0.7</version>
+    <time>1512292193</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>546415</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e996445d70f5915767ec01254786c3b5</srcmd5>
+    <version>0.9</version>
+    <time>1514569609</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>558812</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c391f9987fe9d4142d9f257c1c03281f</srcmd5>
+    <version>0.12</version>
+    <time>1517096334</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>569748</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>ad2cfb123c35481ee6f52d247aa73c3c</srcmd5>
+    <version>0.13</version>
+    <time>1518187464</time>
+    <user>dimstar_suse</user>
+    <comment>is fixing the failure of glibc submission</comment>
+    <requestid>573284</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>adc9441d60cda6589aeebe21a7a25675</srcmd5>
+    <version>0.16</version>
+    <time>1526737285</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.16:
+  * 60-spec-filelist: check for LICENSE or COPYING files
+    marked as %doc
+
+- Update to version 0.15:
+  * 70-baselibs: call spec_query with and without the
+    --no-conditionals switch
+
+- Update to version 0.14:
+  * 70-baselibs: call spec_query with --no-conditionals so that
+    checking package tevent sees the python3-tevent package for
+    the baselibs checker
+  * Build-depend on obs-build to fix Debian build</comment>
+    <requestid>607611</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>949a8033922e84098e0066c44047a31c</srcmd5>
+    <version>0.17</version>
+    <time>1529665943</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 0.17:
+  * make path for helpers variable
+  * fix for #bsc985980
+</comment>
+    <requestid>617027</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>8560d7c978614218e29b48daaed14ca8</srcmd5>
+    <version>0.18</version>
+    <time>1530087499</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.18:
+  * /usr/include/X11 is still a valid path.</comment>
+    <requestid>618982</requestid>
+  </revision>
+</revisionlist>

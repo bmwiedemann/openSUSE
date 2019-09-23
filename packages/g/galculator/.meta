@@ -1,0 +1,8 @@
+<package name="galculator" project="openSUSE:Factory">
+  <title>A GTK 2 based calculator</title>
+  <description>Galculator is a GTK 2 based calculator with ordinary notation/reverse
+polish notation, a formula entry mode, different number bases
+(DEC, HEX, OCT, BIN) and different units of angular measure
+(DEG, RAD, GRAD).</description>
+  <devel project="X11:lxde" package="galculator"/>
+</package>

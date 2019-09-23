@@ -1,0 +1,5 @@
+<package name="rubygem-gettext_activerecord" project="openSUSE:Factory">
+  <title>Localization support for ActiveRecord by Ruby-GetText-Package</title>
+  <description>Localization support for ActiveRecord by Ruby-GetText-Package.</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-gettext_activerecord"/>
+</package>

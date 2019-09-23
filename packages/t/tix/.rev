@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="78">
+    <srcmd5>8630caa383abd155b422094914de7da5</srcmd5>
+    <version>8.1.4</version>
+    <time>1168904350</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b39779a522fa200d1a3504c9db4ac47f</srcmd5>
+    <version>8.4.0</version>
+    <time>1181214990</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2ec35f75029317b4a2304799090a6979</srcmd5>
+    <version>8.4.3</version>
+    <time>1207465682</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="49">
+    <srcmd5>2ec35f75029317b4a2304799090a6979</srcmd5>
+    <version>8.4.3</version>
+    <time>1207465682</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="50">
+    <srcmd5>a83523f948e1db940fe1026b1f24b2b9</srcmd5>
+    <version>8.4.3</version>
+    <time>1245341298</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="52">
+    <srcmd5>a83523f948e1db940fe1026b1f24b2b9</srcmd5>
+    <version>8.4.3</version>
+    <time>1245341298</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="53">
+    <srcmd5>d8c7a2b3500584d64475f07a4996ddfb</srcmd5>
+    <version>8.4.3</version>
+    <time>1268926342</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="55">
+    <srcmd5>d8c7a2b3500584d64475f07a4996ddfb</srcmd5>
+    <version>8.4.3</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="56">
+    <srcmd5>d8c7a2b3500584d64475f07a4996ddfb</srcmd5>
+    <version>8.4.3</version>
+    <time>1278678622</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="59">
+    <srcmd5>d8c7a2b3500584d64475f07a4996ddfb</srcmd5>
+    <version>8.4.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="61">
+    <srcmd5>d8c7a2b3500584d64475f07a4996ddfb</srcmd5>
+    <version>8.4.3</version>
+    <time>1319182522</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="62">
+    <srcmd5>dea7179468f411467f0f17150d3517a0</srcmd5>
+    <version>8.4.3</version>
+    <time>1325660499</time>
+    <user>coolo</user>
+    <comment>- tcl's license is BSD-3-Clause
+
+- add autoconf as buildrequire to avoid implicit dependency (forwarded request 97552 from coolo)</comment>
+    <requestid>97584</requestid>
+  </revision>
+  <revision rev="13" vrev="64">
+    <srcmd5>dea7179468f411467f0f17150d3517a0</srcmd5>
+    <version>8.4.3</version>
+    <time>1340184277</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="66">
+    <srcmd5>dea7179468f411467f0f17150d3517a0</srcmd5>
+    <version>8.4.3</version>
+    <time>1359110493</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="67">
+    <srcmd5>bc1337a93ea7f8b60765f490849652bf</srcmd5>
+    <version>8.4.3</version>
+    <time>1372744046</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>181520</requestid>
+  </revision>
+  <revision rev="16" vrev="69">
+    <srcmd5>bc1337a93ea7f8b60765f490849652bf</srcmd5>
+    <version>8.4.3</version>
+    <time>1379664825</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="71">
+    <srcmd5>bc1337a93ea7f8b60765f490849652bf</srcmd5>
+    <version>8.4.3</version>
+    <time>1409303505</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="72">
+    <srcmd5>e7e5e77c70dbeb28bcf449a17c2f546b</srcmd5>
+    <version>8.4.3</version>
+    <time>1550049355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669139</requestid>
+  </revision>
+</revisionlist>

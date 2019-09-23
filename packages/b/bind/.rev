@@ -1,0 +1,1382 @@
+<revisionlist>
+  <revision rev="1" vrev="42">
+    <srcmd5>ff8e3666e9561f7c6c2dfbaf58a9c599</srcmd5>
+    <version>9.3.2</version>
+    <time>1166483714</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="54">
+    <srcmd5>497db2e04166fd64f35d22c07487d5c0</srcmd5>
+    <version>9.3.2</version>
+    <time>1167872002</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fc96e39fcd6b5c9eaf5310d793dde008</srcmd5>
+    <version>9.3.3</version>
+    <time>1169216621</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ebafbe713583d21afa54b3aae3752cd4</srcmd5>
+    <version>9.3.4</version>
+    <time>1169770199</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9fff1bea8010ba6ae138d25883bda63d</srcmd5>
+    <version>9.4.0</version>
+    <time>1172823396</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5edc53434e73661ac1724ae96802982b</srcmd5>
+    <version>9.4.0</version>
+    <time>1173168095</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>7183f66a961046095f04d599a4e35036</srcmd5>
+    <version>9.4.0</version>
+    <time>1175173599</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>fe769d0616dcdea8e449b1144216379b</srcmd5>
+    <version>9.4.0</version>
+    <time>1175264817</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7be50652909eed1337d8e4c8997fcb5d</srcmd5>
+    <version>9.4.1</version>
+    <time>1178464287</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>c3a7584294792fbed74a2c6fe4fc228e</srcmd5>
+    <version>9.4.1</version>
+    <time>1179393748</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>3756c1676746e00267d0d0c9dbc0ecaa</srcmd5>
+    <version>9.4.1</version>
+    <time>1180217423</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>13753e356e9977be9625ae25bb5171e9</srcmd5>
+    <version>9.4.1.P1</version>
+    <time>1186675276</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>77fa2703d852941baec4d0582beb6eeb</srcmd5>
+    <version>9.4.2</version>
+    <time>1196957428</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="17">
+    <srcmd5>01873fe352e2262526752c68c09d271e</srcmd5>
+    <version>9.4.2</version>
+    <time>1204159757</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="27">
+    <srcmd5>a2d62a5dae4a19f6398c3be6a61ebc91</srcmd5>
+    <version>9.4.2</version>
+    <time>1207825719</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="33">
+    <srcmd5>77bc23a559c79cf41d91d14aa7b0d096</srcmd5>
+    <version>9.4.2</version>
+    <time>1210092751</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="45">
+    <srcmd5>68fed1c9af64e0cea74435628f67e9c2</srcmd5>
+    <version>9.4.2</version>
+    <time>1216155920</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6a34ad941827e59fb28fc151b7ad5f84</srcmd5>
+    <version>9.5.0P1</version>
+    <time>1216675545</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>ca86c89ed4b7a6748817d8337ba4dea5</srcmd5>
+    <version>9.5.0P1</version>
+    <time>1217152460</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>549e9a73b81deb808646267d3e39bf5b</srcmd5>
+    <version>9.5.0P2</version>
+    <time>1218662472</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>4380d305448f7d747c68a20cf10e5422</srcmd5>
+    <version>9.5.0P2</version>
+    <time>1219708005</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>1e876e6d04d0cf21ff49f4dd16e61ef9</srcmd5>
+    <version>9.5.0P2</version>
+    <time>1220637569</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="14">
+    <srcmd5>c1f882f0addad57a2955208b8a10a21d</srcmd5>
+    <version>9.5.0P2</version>
+    <time>1223303011</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="15">
+    <srcmd5>b9216add8f01a46cb351ce57bba9f26c</srcmd5>
+    <version>9.5.0P2</version>
+    <time>1225636465</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="16">
+    <srcmd5>86362d92f3bac630b1504a8a9d0bd656</srcmd5>
+    <version>9.5.0P2</version>
+    <time>1226936507</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="17">
+    <srcmd5>8ad402632eaac85fec042a166df63d99</srcmd5>
+    <version>9.5.0P2</version>
+    <time>1227879999</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="18">
+    <srcmd5>b2601f6bcca342ec55ba914dfb604089</srcmd5>
+    <version>9.5.0P2</version>
+    <time>1229339967</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>7ab2f68fa1ba635a66e84e2425a37e87</srcmd5>
+    <version>9.6.0P1</version>
+    <time>1233949210</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>faacaa323778ac5e458a3bc7dc74a7d9</srcmd5>
+    <version>9.6.0P1</version>
+    <time>1235162344</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>4bdb2298d5f678d9a7d2b2c173a6ae7a</srcmd5>
+    <version>9.6.0P1</version>
+    <time>1236554277</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>282654768d460cd130911e6e614ae69d</srcmd5>
+    <version>9.6.0P1</version>
+    <time>1240512460</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1ce5422c19ee0ef863e02b74bc1e1680</srcmd5>
+    <version>9.6.1</version>
+    <time>1245447436</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>d1cac6c85ffd3ade6603fd995992d2c4</srcmd5>
+    <version>9.6.1</version>
+    <time>1246633148</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3fd8afcdfd82a64ad13c19066edb370b</srcmd5>
+    <version>9.6.1P1</version>
+    <time>1250176821</time>
+    <user>autobuild</user>
+    <comment>Copy from network/bind based on submit request 17349 from user ug
+</comment>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>da69f17f5ea5a5ffffb19c5e647000ce</srcmd5>
+    <version>9.6.1P1</version>
+    <time>1254518964</time>
+    <user>autobuild</user>
+    <comment>Copy from network/bind based on submit request 21418 from user ug
+</comment>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>da69f17f5ea5a5ffffb19c5e647000ce</srcmd5>
+    <version>9.6.1P1</version>
+    <time>1254518964</time>
+    <user>autobuild</user>
+    <comment>Copy from network/bind based on submit request 21418 from user ug
+</comment>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>dc24ed1427334b27ac2b2c99f09ff675</srcmd5>
+    <version>9.6.1P1</version>
+    <time>1258363910</time>
+    <user>autobuild</user>
+    <comment>Copy from network/bind based on submit request 24471 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="38" vrev="6">
+    <srcmd5>320d906e4f3bea625b7f76333d628156</srcmd5>
+    <version>9.6.1P1</version>
+    <time>1258540182</time>
+    <user>autobuild</user>
+    <comment>Copy from network/bind based on submit request 24628 from user ug
+</comment>
+  </revision>
+  <revision rev="39" vrev="7">
+    <srcmd5>cbd36273476dc7f29241d3f1c9262d47</srcmd5>
+    <version>9.6.1P1</version>
+    <time>1258971068</time>
+    <user>autobuild</user>
+    <comment>Copy from network/bind based on submit request 24759 from user ug
+</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>af8cc711948ebd262be4299dba59cc8a</srcmd5>
+    <version>9.6.1P2</version>
+    <time>1259322976</time>
+    <user>autobuild</user>
+    <comment>Copy from network/bind based on submit request 25024 from user ug
+</comment>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>8bf5ab8c41b1ba6d2c6ae365863dbf7b</srcmd5>
+    <version>9.6.1P2</version>
+    <time>1262865278</time>
+    <user>autobuild</user>
+    <comment>Copy from network/bind based on submit request 28015 from user ug
+</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>777c54adac210db36c448945648637c8</srcmd5>
+    <version>9.6.1P3</version>
+    <time>1264066950</time>
+    <user>autobuild</user>
+    <comment>Copy from network/bind based on submit request 30072 from user ug
+</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>723806463321ed850c7515385ef63c70</srcmd5>
+    <version>9.7.0</version>
+    <time>1266497245</time>
+    <user>autobuild</user>
+    <comment>Copy from network/bind based on submit request 32791 from user ug
+</comment>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>7cf07f480d4335e4b1f4503eb4d7b5c1</srcmd5>
+    <version>9.7.0</version>
+    <time>1268923023</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>a5409d40c426688b76e04e3884e0c4fa</srcmd5>
+    <version>9.7.0</version>
+    <time>1271186444</time>
+    <user>autobuild</user>
+    <comment>Copy from network/bind based on submit request 37088 from user ug
+</comment>
+    <requestid>37088</requestid>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>e8af43bfcc2d73ae43fbf11a83343eac</srcmd5>
+    <version>9.7.0</version>
+    <time>1272914133</time>
+    <user>autobuild</user>
+    <comment>Copy from network/bind based on submit request 39284 from user ug
+</comment>
+    <requestid>39284</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>88c5e20bf3e9f23f4be8ed9090040417</srcmd5>
+    <version>9.7.0P2</version>
+    <time>1274775673</time>
+    <user>autobuild</user>
+    <comment>Copy from network/bind based on submit request 40419 from user ug
+</comment>
+    <requestid>40419</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>baf41c70ef4591dcd4728278e88d0558</srcmd5>
+    <version>9.7.1</version>
+    <time>1277196338</time>
+    <user>autobuild</user>
+    <comment>Copy from network/bind based on submit request 41829 from user ug
+</comment>
+    <requestid>41829</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>baf41c70ef4591dcd4728278e88d0558</srcmd5>
+    <version>9.7.1</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>baf41c70ef4591dcd4728278e88d0558</srcmd5>
+    <version>9.7.1</version>
+    <time>1278678565</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>dc03643b0385b1db441abfda09a4778d</srcmd5>
+    <version>9.7.1</version>
+    <time>1280498386</time>
+    <user>autobuild</user>
+    <comment>Copy from network/bind based on submit request 43979 from user ug
+</comment>
+    <requestid>43979</requestid>
+  </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>91c9abba8f99432ff863ee50dd855442</srcmd5>
+    <version>9.7.2P2</version>
+    <time>1290517207</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 53765 from user ug
+</comment>
+    <requestid>53765</requestid>
+  </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>a905da2f40a2003bf1260554928992df</srcmd5>
+    <version>9.7.2P2</version>
+    <time>1290517214</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 53765
+</comment>
+  </revision>
+  <revision rev="54" vrev="6">
+    <srcmd5>636d88603eb0e0652b6b8482c52fabdd</srcmd5>
+    <version>9.7.2P2</version>
+    <time>1290520455</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53778 from user ug
+</comment>
+    <requestid>53778</requestid>
+  </revision>
+  <revision rev="55" vrev="7">
+    <srcmd5>4e511241b7cd7ec7c5a3166925d387fb</srcmd5>
+    <version>9.7.2P2</version>
+    <time>1290520465</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53778
+</comment>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>af30b23221ded6be5de71ac8dbf15285</srcmd5>
+    <version>9.7.2P3</version>
+    <time>1291586810</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54349 from user ug
+</comment>
+    <requestid>54349</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>4d84db17c8e8314b02fc028ae371b0c8</srcmd5>
+    <version>9.7.2P3</version>
+    <time>1291586817</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54349
+</comment>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>2613630ebc2a2f7de1dd8bc08266e304</srcmd5>
+    <version>9.7.2P3</version>
+    <time>1292768246</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 56204 from user msmeissn
+</comment>
+    <requestid>56204</requestid>
+  </revision>
+  <revision rev="59" vrev="5">
+    <srcmd5>6480b8c916658dc915498c10d5261a51</srcmd5>
+    <version>9.7.2P3</version>
+    <time>1292768255</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 56204
+</comment>
+  </revision>
+  <revision rev="60" vrev="8">
+    <srcmd5>6480b8c916658dc915498c10d5261a51</srcmd5>
+    <version>9.7.2P3</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>ea9a69d857f395935e29973a29a2d2db</srcmd5>
+    <version>9.7.3</version>
+    <time>1298547369</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 62687 from user ug
+</comment>
+    <requestid>62687</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>fc6ebd4e606db55c412eff7c4f024812</srcmd5>
+    <version>9.7.3</version>
+    <time>1298547378</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 62687
+</comment>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>0d5394ebea7d6dc2867c652a4ff2b2e6</srcmd5>
+    <version>9.8.0</version>
+    <time>1306138064</time>
+    <user>saschpe</user>
+    <comment>add update-desktop-utils to buildrequires for desktop file (forwarded request 70688 from msmeissn)</comment>
+    <requestid>70812</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>d06dec851d94f4205c5f6cc333041cb6</srcmd5>
+    <version>9.8.0</version>
+    <time>1306398110</time>
+    <user>saschpe</user>
+    <comment>- Build with -DNO_VERSION_DATE to avoid timestamps in binaries. (forwarded request 71091 from elvigia)</comment>
+    <requestid>71177</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>fea1fbd75031e889bbc1a2cec6f8a60f</srcmd5>
+    <version>9.8.0</version>
+    <time>1306398121</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71177
+</comment>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>e892d9cc2e6a13ac69c77e11be1e9dd3</srcmd5>
+    <version>9.8.0P4</version>
+    <time>1312380536</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>77846</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>32e9731907087fb1e74924ebcae1085b</srcmd5>
+    <version>9.8.0P4</version>
+    <time>1312380548</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77846
+</comment>
+  </revision>
+  <revision rev="68" vrev="4">
+    <srcmd5>332ab7e9ad7598b7964d50a173e2fb04</srcmd5>
+    <version>9.8.0P4</version>
+    <time>1314889133</time>
+    <user>saschpe</user>
+    <comment>bnc#710430 (forwarded request 80345 from rhafer)</comment>
+    <requestid>80484</requestid>
+  </revision>
+  <revision rev="69" vrev="5">
+    <srcmd5>44c0395a9718254f2076b18e61c6f0bd</srcmd5>
+    <version>9.8.0P4</version>
+    <time>1314889143</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80484
+</comment>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>160be3b278390ce4c38313835b858bfe</srcmd5>
+    <version>9.8.1</version>
+    <time>1315232429</time>
+    <user>lrupp</user>
+    <comment>* fixed SSL in chroot environment (bnc#715881)
+
+* Added a new include file with function typedefs for the DLZ
+  &quot;dlopen&quot; driver. [RT #23629]
+* Added a tool able to generate malformed packets to allow testing of
+  how named handles them. [RT #24096]
+* The root key is now provided in the file bind.keys allowing DNSSEC
+  validation to be switched on at start up by adding
+  &quot;dnssec-validation auto;&quot; to named.conf. If the root key provided
+  has expired, named will log the expiration and validation will not
+  work. More information and the most current copy of bind.keys can
+  be found at http://www.isc.org/bind-keys. *Please note this feature
+  was actually added in 9.8.0 but was not included in the 9.8.0
+  release notes. [RT #21727]
+* If named is configured with a response policy zone (RPZ) and a
+  query of type RRSIG is received for a name configured for RRset
+  replacement in that RPZ, it will trigger an INSIST and crash the
+  server. RRSIG. [RT #24280]
+* named, set up to be a caching resolver, is vulnerable to a user
+  querying a domain with very large resource record sets (RRSets)
+  when trying to negatively cache the response. Due to an off-by-one
+  error, caching the response could cause named to crash. [RT #24650]
+  [CVE-2011-1910]
+* Using Response Policy Zone (RPZ) to query a wildcard CNAME label
+  with QUERY type SIG/RRSIG, it can cause named to crash. Fix is
+  query type independant. [RT #24715]
+* Using Response Policy Zone (RPZ) with DNAME records and querying
+  the subdomain of that label can cause named to crash. Now logs that
+  DNAME is not supported. [RT #24766]
+* Change #2912 populated the message section in replies to UPDATE</comment>
+    <requestid>80897</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>78316600abf83335736a5cdf12c574a0</srcmd5>
+    <version>9.8.1</version>
+    <time>1316459094</time>
+    <user>lrupp</user>
+    <comment>- very first restart can create broken chroot
+  (bnc#718441)</comment>
+    <requestid>82468</requestid>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>4549db8a3f908f7c578270a20304af8e</srcmd5>
+    <version>9.8.1</version>
+    <time>1317740053</time>
+    <user>oertel</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 85954 from coolo)</comment>
+    <requestid>86242</requestid>
+  </revision>
+  <revision rev="73" vrev="5">
+    <srcmd5>4549db8a3f908f7c578270a20304af8e</srcmd5>
+    <version>9.8.1</version>
+    <time>1319181788</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="74" vrev="6">
+    <srcmd5>06039f5aa40d2e79f77e87887f822943</srcmd5>
+    <version>9.8.1</version>
+    <time>1319635267</time>
+    <user>coolo</user>
+    <comment>- on a 64bit system a chrooted bind failed to start if 32bit
+  libs were installed (bnc#716745)</comment>
+    <requestid>89350</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>010e9ccff0d931a5ba4f3e0bd97e8295</srcmd5>
+    <version>9.8.1P1</version>
+    <time>1330618726</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>106242</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>353e274e744585e5a2b1f22650247b09</srcmd5>
+    <version>9.9.0</version>
+    <time>1336472728</time>
+    <user>coolo</user>
+    <comment>- many dnssec fixes and features (too many to list them
+  here, check the changelog)
+- improved startup time
+- improved scalability
+- Added support for Uniform Resource Identifier (URI) resource
+  records
+- Local copies of slave zones are now saved in raw format by
+  default to improve startup performance
+  BIND 9.9 changes the default storage format for slave zone
+  files from text to raw.  Because named's behavior when a slave
+  server cannot read or parse a zone file is to move the offending
+  file out of the way and retransfer the zone, slave servers
+  that are updated from a pre-9.9.0 version of BIND and which
+  have existing copies of slave zone data may wind up with
+  extraneous copies of zone data stored, as the existing
+  text-format zone file copies will be moved aside to filenames
+  of the format db-###### and journal files to the format
+  jn-######  (where # represents a hexadecimal digit.)
+- many many bugfixes. Please read changelog for details
+- fixed handling of TXT records in ldapdump
+  (bnc#743758)
+- 9.9.0</comment>
+    <requestid>116455</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>cc2793224a76660cc83010d109b823dd</srcmd5>
+    <version>9.9.0</version>
+    <time>1336655590</time>
+    <user>coolo</user>
+    <comment>- added patch to fix an assertion failure</comment>
+    <requestid>120594</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>e45f05d27be9d159f07a8f32b4373dc8</srcmd5>
+    <version>9.9.1</version>
+    <time>1337757699</time>
+    <user>coolo</user>
+    <comment>- this version has no new features but only bugfixes
+- Addresses a race condition that can cause named to to crash when
+  the masters list for a zone is updated via rndc reload/reconfig
+- Fixes a race condition in zone.c that can cause named to crash
+  during the processing of rndc delzone
+- Prevents a named segfault from resolver.c due to procedure
+  fctx_finddone() not being thread-safe
+- SDB now handles unexpected errors from back-end database drivers
+  gracefully instead of exiting on an assert.
+- Prevents named crashes as a result of dereferencing a NULL pointer
+  in zmgr_start_xfrin_ifquota if the zone was being removed while
+  there were zone transfers still pending
+- Corrects a parser bug that could cause named to crash while
+  reading a malformed zone file
+- many more smaller fixes
+- version 9.9.1</comment>
+    <requestid>121732</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>3c3047e547c5a4f3b78ff74f793becdf</srcmd5>
+    <version>9.9.1P1</version>
+    <time>1338991536</time>
+    <user>coolo</user>
+    <comment>- updated dnszone-schema.txt
+
+- VUL-0: bind remote DoS via zero length rdata field
+  CVE-2012-1667
+  bnc#765315
+- 9.9.1-P1</comment>
+    <requestid>123696</requestid>
+  </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>3c3047e547c5a4f3b78ff74f793becdf</srcmd5>
+    <version>9.9.1P1</version>
+    <time>1340183201</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>4ee7ce660a4c488f8621958c40df3bec</srcmd5>
+    <version>9.9.1P2</version>
+    <time>1343734032</time>
+    <user>coolo</user>
+    <comment>- Prevents a named assert (crash) when validating caused by using
+  &quot;Bad cache&quot; data before it has been initialized.  [RT #30025]
+  (bnc#772945)
+- ISC_QUEUE handling for recursive clients was updated to address a
+  race condition that could cause a memory leak.  This rarely occurred
+  with UDP clients, but could be a significant problem for a server
+  handling a steady rate of TCP queries.  [RT #29539 &amp; #30233]
+- Under heavy incoming TCP query loads named could experience a
+  memory leak which could lead to significant reductions in query
+  response or cause the server to be terminated on systems with
+  &quot;out of memory&quot; killers. [RT #29539]
+  (bnc#772946)
+- A condition has been corrected where improper handling of zero-length
+  RDATA could cause undesirable behavior, including termination of
+  the named process.  [RT #29644]
+- 9.9.1-P2
+
+- license update: ISC
+  ISC is generally seen as the correct license for bind</comment>
+    <requestid>128983</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>a57666340c5160292c1df5c79300be8a</srcmd5>
+    <version>9.9.1P3</version>
+    <time>1347882476</time>
+    <user>coolo</user>
+    <comment>- Named could die on specially crafted record.
+  [RT #30416] (bnc#780157) CVE-2012-4244
+- 9.9.1-P3
+- updated dnszone-schema.txt from upstream.</comment>
+    <requestid>134434</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>33aece0a925bc3787b5072415d29aaef</srcmd5>
+    <version>9.9.1P3</version>
+    <time>1351155547</time>
+    <user>namtrac</user>
+    <comment>- Specially crafted DNS data can cause a lockup in named.
+  CVE-2012-5166, bnc#784602.
+- 9.9.1-P4</comment>
+    <requestid>138821</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>9f750eaa6f8151e05d9a24576bb60551</srcmd5>
+    <version>9.9.2</version>
+    <time>1353133152</time>
+    <user>coolo</user>
+    <comment>- updated to 9.9.2
+  https://kb.isc.org/article/AA-00798
+  Security:
+  * A deliberately constructed combination of records could cause
+    named to hang while populating the additional section of a
+    response. [CVE-2012-5166] [RT #31090]
+  * Prevents a named assert (crash) when queried for a record whose
+    RDATA exceeds 65535 bytes.  [CVE-2012-4244]  [RT #30416]
+  * Prevents a named assert (crash) when validating caused by using &quot;Bad
+    cache&quot; data before it has been initialized. [CVE-2012-3817]  [RT #30025]
+  * A condition has been corrected where improper handling of zero-length
+    RDATA could cause undesirable behavior, including termination of the
+    named process. [CVE-2012-1667]  [RT #29644]
+  * ISC_QUEUE handling for recursive clients was updated to address a race
+    condition that could cause a memory leak. This rarely occurred with
+    UDP clients, but could be a significant problem for a server handling
+    a steady rate of TCP queries. [CVE-2012-3868]  [RT #29539 &amp; #30233]
+  New Features
+  * Elliptic Curve Digital Signature Algorithm keys and signatures in
+    DNSSEC are now supported per RFC 6605. [RT #21918]
+  * Introduces a new tool &quot;dnssec-checkds&quot; command that checks a zone
+    to determine which DS records should be published in the parent zone,
+    or which DLV records should be published in a DLV zone, and queries
+    the DNS to ensure that it exists. (Note: This tool depends on python;
+    it will not be built or installed on systems that do not have a python
+    interpreter.)  [RT #28099]
+  * Introduces a new tool &quot;dnssec-verify&quot; that validates a signed zone,
+    checking for the correctness of signatures and NSEC/NSEC3 chains.
+    [RT #23673]
+  * Adds configuration option &quot;max-rsa-exponent-size &lt;value&gt;;&quot; that can</comment>
+    <requestid>141386</requestid>
+  </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>f1d8418a88abcfdec28eca899c2c956f</srcmd5>
+    <version>9.9.2</version>
+    <time>1353402916</time>
+    <user>coolo</user>
+    <comment>- added a ratelimiting (draft RFC) patch from Paul Vixie.
+  see http://www.redbarn.org/dns/ratelimits
+  suggested by Stefan Schaefer &lt;stefan@invis-server.org&gt;</comment>
+    <requestid>141805</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>0ba07898307f5455897ad3ac12bf7908</srcmd5>
+    <version>9.9.2P1</version>
+    <time>1354885607</time>
+    <user>namtrac</user>
+    <comment>- Updated to 9.9.2-P1 (bnc#792926)
+  https://kb.isc.org/article/AA-00828
+  * Security Fixes
+    Prevents named from aborting with a require assertion failure on
+    servers with DNS64 enabled.  These crashes might occur as a result of
+    specific queries that are received.  (Note that this fix is a subset
+    of a series of updates that will be included in full in BIND 9.8.5
+    and 9.9.3 as change #3388, RT #30996).  [CVE-2012-5688] [RT #30792]
+    A deliberately constructed combination of records could cause
+    named to hang while populating the additional section of a
+    response. [CVE-2012-5166] [RT #31090]
+    Prevents a named assert (crash) when queried for a record whose
+    RDATA exceeds 65535 bytes.  [CVE-2012-4244]  [RT #30416]
+    Prevents a named assert (crash) when validating caused by using
+    &quot;Bad cache&quot; data before it has been initialized. [CVE-2012-3817]
+    [RT #30025]
+    A condition has been corrected where improper handling of zero-length
+    RDATA could cause undesirable behavior, including termination of
+    the named process. [CVE-2012-1667]  [RT #29644]
+    ISC_QUEUE handling for recursive clients was updated to address a race
+    condition that could cause a memory leak. This rarely occurred with
+    UDP clients, but could be a significant problem for a server handling
+    a steady rate of TCP queries. [CVE-2012-3868]  [RT #29539 &amp; #30233]
+New Features
+    Elliptic Curve Digital Signature Algorithm keys and signatures in
+    DNSSEC are now supported per RFC 6605. [RT #21918]
+    Introduces a new tool &quot;dnssec-checkds&quot; command that checks a zone to
+    determine which DS records should be published in the parent zone,
+    or which DLV records should be published in a DLV zone, and queries
+    the DNS to ensure that it exists. (Note: This tool depends on python;</comment>
+    <requestid>144433</requestid>
+  </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>0ba07898307f5455897ad3ac12bf7908</srcmd5>
+    <version>9.9.2P1</version>
+    <time>1359108700</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="88" vrev="4">
+    <srcmd5>11650b86c26e679db89ebdc7eb2eea8e</srcmd5>
+    <version>9.9.2P1</version>
+    <time>1364472599</time>
+    <user>coolo</user>
+    <comment>- Updated to 9.9.2-P2 (bnc#811876)
+  Fix for: https://kb.isc.org/article/AA-00871 CVE-2013-2266
+  * Security Fixes
+    Removed the check for regex.h in configure in order to disable regex
+    syntax checking, as it exposes BIND to a critical flaw in libregex
+    on some platforms. [RT #32688]
+- added gpg key source verification</comment>
+    <requestid>161413</requestid>
+  </revision>
+  <revision rev="89" vrev="5">
+    <srcmd5>71ec0411ddf04255f4937521b112b6a4</srcmd5>
+    <version>9.9.2P1</version>
+    <time>1368448991</time>
+    <user>coolo</user>
+    <comment>- Use updated config.guess/sub in the embedded idnkit sources (forwarded request 174818 from Andreas_Schwab)</comment>
+    <requestid>174827</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>9a0c7735ae94cc5656895c347d3a4f32</srcmd5>
+    <version>9.9.3P1</version>
+    <time>1372740264</time>
+    <user>coolo</user>
+    <comment>- Updated to 9.9.3-P1
+  Various bugfixes and some feature fixes. (see CHANGES files)
+  Security and maintenance issues:
+  -	[security]	Caching data from an incompletely signed zone could
+			trigger an assertion failure in resolver.c [RT #33690]
+  -	[security]	Support NAPTR regular expression validation on
+			all platforms without using libregex, which
+			can be vulnerable to memory exhaustion attack
+			(CVE-2013-2266). [RT #32688]
+  -	[security]	RPZ rules to generate A records (but not AAAA records)
+			could trigger an assertion failure when used in
+			conjunction with DNS64 (CVE-2012-5689). [RT #32141]
+  -	[bug]		Fixed several Coverity warnings.
+			Note: This change includes a fix for a bug that
+			was subsequently determined to be an exploitable
+			security vulnerability, CVE-2012-5688: named could
+			die on specific queries with dns64 enabled.
+			[RT #30996]
+  -	[maint]		Added AAAA for D.ROOT-SERVERS.NET.
+  -	[maint]		D.ROOT-SERVERS.NET is now 199.7.91.13.
+- Updated to current rate limiting + rpz patch from 
+  http://ss.vix.su/~vjs/rrlrpz.html
+- moved dnssec-* helpers to bind-utils package. bnc#813911</comment>
+    <requestid>181326</requestid>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>cca9582686be0c8f8809fb17fe3c73eb</srcmd5>
+    <version>9.9.3P1</version>
+    <time>1374155255</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>183526</requestid>
+  </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>5c9fa314c0123c4a1f62432ca50ac838</srcmd5>
+    <version>9.9.3P1</version>
+    <time>1374701438</time>
+    <user>coolo</user>
+    <comment>- Remove non-working apparmor profiles (bnc#740327).</comment>
+    <requestid>184213</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>8d960fa9cdc3ac74d29c68f7b18a62f8</srcmd5>
+    <version>9.9.3P2</version>
+    <time>1376152105</time>
+    <user>scarabeus_factory</user>
+    <comment>- Systemd doesn't set $TERM, and hence breaks tput (bnc#823175).
+
+- Improve pie_compile.diff (bnc#828874).
+- dnssec-checkds and dnssec-coverage need python-base.
+- disable rpath in libtool.
+
+- Update to 9.9.3P2 fixes CVE-2013-4854, bnc#831899.
+  * Incorrect bounds checking on private type 'keydata' can lead
+    to a remotely triggerable REQUIRE failure.</comment>
+    <requestid>186266</requestid>
+  </revision>
+  <revision rev="94" vrev="3">
+    <srcmd5>8d960fa9cdc3ac74d29c68f7b18a62f8</srcmd5>
+    <version>9.9.3P2</version>
+    <time>1379662035</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="95" vrev="4">
+    <srcmd5>3ac834e5b522a02be3ccb86f016457e8</srcmd5>
+    <version>9.9.3P2</version>
+    <time>1386936102</time>
+    <user>coolo</user>
+    <comment>- Fix generation of /etc/named.conf.include
+  (bnc#828678, bnc#848777, bnc#814978).</comment>
+    <requestid>210487</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>053f0b364bfe5259a77ae4d801385c32</srcmd5>
+    <version>9.9.4P2</version>
+    <time>1391105648</time>
+    <user>coolo</user>
+    <comment>- Add the sdb-ldap backend module (fate#313216).
+- Details can be found here:
+  * http://bind9-ldap.bayour.com/
+  * http://bind9-ldap.bayour.com/dnszonehowto.html
+
+- Update to version 9.9.4P2
+  * Fixes named crash when handling malformed NSEC3-signed zones
+    (CVE-2014-0591, bnc#858639)
+  * Obsoletes workaround-compile-problem.diff
+- Replace rpz2+rl-9.9.3-P1.patch by rpz2-9.9.4.patch, rl is now
+  supported upstream (--enable-rrl).</comment>
+    <requestid>215020</requestid>
+  </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>ac20fe916860bd5a11a3f4eadb260564</srcmd5>
+    <version>9.9.4P2</version>
+    <time>1400783857</time>
+    <user>coolo</user>
+    <comment>- use %_rundir macro 
+- Remove obsolete patch &quot;workaround-compile-problem.diff&quot;</comment>
+    <requestid>233016</requestid>
+  </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>4cfa2d98e78db7eae62085cb7fdbb613</srcmd5>
+    <version>9.9.4P2</version>
+    <time>1401958177</time>
+    <user>coolo</user>
+    <comment>add stuff for DNSSEC validation to named.conf (forwarded request 235970 from computersalat)</comment>
+    <requestid>236023</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>ca5e9cdcaf7bec22e317828be0af4792</srcmd5>
+    <version>9.9.5P1</version>
+    <time>1407227056</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243383</requestid>
+  </revision>
+  <revision rev="100" vrev="3">
+    <srcmd5>ca5e9cdcaf7bec22e317828be0af4792</srcmd5>
+    <version>9.9.5P1</version>
+    <time>1409300562</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="101" vrev="4">
+    <srcmd5>59d4e4d64874dcb72cd4962453f53850</srcmd5>
+    <version>9.9.5P1</version>
+    <time>1410795638</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248826</requestid>
+  </revision>
+  <revision rev="102" vrev="5">
+    <srcmd5>7089104564cc44b51ca73d227c9839ea</srcmd5>
+    <version>unknown</version>
+    <time>1418978488</time>
+    <user>dimstar_suse</user>
+    <comment>- Corrections to baselibs.conf
+
+- Update to version 9.10.1-P1
+  - A flaw in delegation handling could be exploited to put named into an
+    infinite loop.  This has been addressed by placing limits on the number of
+    levels of recursion named will allow (default 7), and the number of
+    iterative queries that it will send (default 50) before terminating a
+    recursive query (CVE-2014-8500); (bnc#908994).
+    The recursion depth limit is configured via the &quot;max-recursion-depth&quot;
+    option, and the query limit via the &quot;max-recursion-queries&quot; option.
+    [RT #37580]
+  - When geoip-directory was reconfigured during named run-time, the
+    previously loaded GeoIP data could remain, potentially causing wrong ACLs
+    to be used or wrong results to be served based on geolocation
+    (CVE-2014-8680). [RT #37720]; (bnc#908995).
+  - Lookups in GeoIP databases that were not loaded could cause an assertion
+    failure (CVE-2014-8680). [RT #37679]; (bnc#908995).
+  - The caching of GeoIP lookups did not always handle address families
+    correctly, potentially resulting in an assertion failure (CVE-2014-8680).
+    [RT #37672]; (bnc#908995).
+
+- Convert some hard PreReq to leaner Requires(pre).
+- Typographical and orthographic fixes to description texts.
+
+- Fix bashisms in the createNamedConfInclude script.
+- Post scripts: remove '-e' option of 'echo' that may be unsupported
+  in some POSIX-compliant shells.
+
+- Add openssl engines to the lwresd chroot.
+- Add /etc/lwresd.conf with attribute ghost to the list of files.</comment>
+    <requestid>264811</requestid>
+  </revision>
+  <revision rev="103" vrev="6">
+    <srcmd5>5677eadacd41a04b1c08d8b430d36be9</srcmd5>
+    <version>unknown</version>
+    <time>1421959732</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282345</requestid>
+  </revision>
+  <revision rev="104" vrev="7">
+    <srcmd5>f56d17d0e6bd8b7f6380af15cddc44e8</srcmd5>
+    <version>unknown</version>
+    <time>1423812887</time>
+    <user>dimstar_suse</user>
+    <comment>- PowerPC can build shared libraries for sure.
+  idnkit-powerpc-ltconfig.patch (forwarded request 285468 from k0da)</comment>
+    <requestid>285623</requestid>
+  </revision>
+  <revision rev="105" vrev="8">
+    <srcmd5>e0b268d1b12a9abf5edc7aec8ae2dbda</srcmd5>
+    <version>unknown</version>
+    <time>1431248218</time>
+    <user>coolo</user>
+    <comment>- Depend on systemd macros and sysvinit on post-12.3 only.
+- Create empty lwresd.conf at build time.
+- Reduce file list pre-13.1.
+
+- Update to version 9.10.2
+  - Handle timeout in legacy system test. [RT #38573]
+  - dns_rdata_freestruct could be called on a uninitialised structure when
+    handling a error. [RT #38568]
+  - Addressed valgrind warnings. [RT #38549]
+  - UDP dispatches could use the wrong pseudorandom
+    number generator context. [RT #38578]
+  - Fixed several small bugs in automatic trust anchor management, including a
+    memory leak and a possible loss of key state information. [RT #38458]
+  - 'dnssec-dsfromkey -T 0' failed to add ttl field. [RT #38565]
+  - Revoking a managed trust anchor and supplying an untrusted replacement
+    could cause named to crash with an assertion failure.
+    (CVE-2015-1349) [RT #38344]
+  - Fix a leak of query fetchlock. [RT #38454]
+  - Fix a leak of pthread_mutexattr_t. [RT #38454]
+  - RPZ could send spurious SERVFAILs in response
+    to duplicate queries. [RT #38510]
+  - CDS and CDNSKEY had the wrong attributes. [RT #38491]
+  - adb hash table was not being grown. [RT #38470]
+- Update bind.keyring
+- Update baselibs.conf due to updates to libdns160 and libisc148
+
+- Enable export libraries to support plugin development.
+  Install DNSSEC root key.
+  Expose new interface for developing dynamic zone database.
+  + dns_dynamic_db.patch</comment>
+    <requestid>305964</requestid>
+  </revision>
+  <revision rev="106" vrev="9">
+    <srcmd5>6ca19c17585435eea39f64136c907188</srcmd5>
+    <version>unknown</version>
+    <time>1436111894</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>313681</requestid>
+  </revision>
+  <revision rev="107" vrev="10">
+    <srcmd5>af4809a4344ffa81b05a5357eb816f5a</srcmd5>
+    <version>unknown</version>
+    <time>1437477998</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>317302</requestid>
+  </revision>
+  <revision rev="108" vrev="11">
+    <srcmd5>febf7b53e306032977007625642524e4</srcmd5>
+    <version>unknown</version>
+    <time>1439190746</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 9.10.2-P3
+  Security Fixes
+  * A specially crafted query could trigger an assertion failure in message.c.
+    This flaw was discovered by Jonathan Foote, and is disclosed in
+    CVE-2015-5477. [RT #39795]
+  * On servers configured to perform DNSSEC validation, an assertion failure
+    could be triggered on answers from a specially configured server.
+    This flaw was discovered by Breno Silveira Soares, and is disclosed
+    in CVE-2015-4620. [RT #39795]
+  Bug Fixes
+  * Asynchronous zone loads were not handled correctly when the zone load was
+    already in progress; this could trigger a crash in zt.c. [RT #37573]
+  * Several bugs have been fixed in the RPZ implementation:
+    + Policy zones that did not specifically require recursion could be treated
+      as if they did; consequently, setting qname-wait-recurse no; was
+      sometimes ineffective. This has been corrected. In most configurations,
+      behavioral changes due to this fix will not be noticeable. [RT #39229]
+    + The server could crash if policy zones were updated (e.g. via
+      rndc reload or an incoming zone transfer) while RPZ processing
+      was still ongoing for an active query. [RT #39415]
+    + On servers with one or more policy zones configured as slaves, if a
+      policy zone updated during regular operation (rather than at startup)
+      using a full zone reload, such as via AXFR, a bug could allow the RPZ
+      summary data to fall out of sync, potentially leading to an assertion
+      failure in rpz.c when further incremental updates were made to the zone,
+      such as via IXFR. [RT #39567]
+    + The server could match a shorter prefix than what was
+      available in CLIENT-IP policy triggers, and so, an unexpected
+      action could be taken. This has been corrected. [RT #39481]
+    + The server could crash if a reload of an RPZ zone was initiated while</comment>
+    <requestid>319467</requestid>
+  </revision>
+  <revision rev="109" vrev="12">
+    <srcmd5>53058ac7f1a8d2d41d1cbb54fc38dbb6</srcmd5>
+    <version>unknown</version>
+    <time>1443694872</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>333033</requestid>
+  </revision>
+  <revision rev="110" vrev="13">
+    <srcmd5>d5b7a1f98834afde27766ecae09fc8d4</srcmd5>
+    <version>unknown</version>
+    <time>1445511387</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid double %setup, it confuses some versions of quilt.
+- Summary/description update (forwarded request 336332 from jengelh)</comment>
+    <requestid>336452</requestid>
+  </revision>
+  <revision rev="111" vrev="14">
+    <srcmd5>1286dfd06c336e57ac7ee85ccfb5f631</srcmd5>
+    <version>unknown</version>
+    <time>1450861019</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 9.10.3-P2 to fix a remote denial of service by
+  misparsing incoming responses (CVE-2015-8000, bsc#958861).</comment>
+    <requestid>350227</requestid>
+  </revision>
+  <revision rev="112" vrev="15">
+    <srcmd5>7a726496d912ec28edd53bb24cae2fad</srcmd5>
+    <version>unknown</version>
+    <time>1453997991</time>
+    <user>dimstar_suse</user>
+    <comment>- Security update 9.10.3-P3:
+  * Specific APL data could trigger an INSIST (CVE-2015-8704,
+    bsc#962189).
+  * Certain errors that could be encountered when printing out or
+    logging an OPT record containing a CLIENT-SUBNET option could
+    be mishandled, resulting in an assertion failure
+    (CVE-2015-8705, bsc#962190).
+  * Authoritative servers that were marked as bogus (e.g.
+    blackholed in configuration or with invalid addresses) were
+    being queried anyway.</comment>
+    <requestid>354931</requestid>
+  </revision>
+  <revision rev="113" vrev="16">
+    <srcmd5>fba6c9b23236dc4ca7706b3be3035502</srcmd5>
+    <version>unknown</version>
+    <time>1456821533</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361595</requestid>
+  </revision>
+  <revision rev="114" vrev="17">
+    <srcmd5>571f440f7c2acc7ed2a0c386c1a079b0</srcmd5>
+    <version>unknown</version>
+    <time>1458333209</time>
+    <user>dimstar_suse</user>
+    <comment>- Security update 9.10.3-P3:
+  * CVE-2016-1285, bsc#970072: assert failure on input parsing can
+    cause premature exit.
+  * CVE-2016-1286, bsc#970073: An error when parsing signature
+    records for DNAME can lead to named exiting due to an assertion
+    failure.
+  * CVE-2016-2088, bsc#970074: a deliberately misconstructed packet
+    containing multiple cookie options to cause named to terminate
+    with an assertion failure.</comment>
+    <requestid>370068</requestid>
+  </revision>
+  <revision rev="115" vrev="18">
+    <srcmd5>6d0a06cbd5b5ca24925cdc2d9a1bf4a1</srcmd5>
+    <version>unknown</version>
+    <time>1462051491</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390129</requestid>
+  </revision>
+  <revision rev="116" vrev="19">
+    <srcmd5>e70ddebf3d3fb8da535f7ce0490783b4</srcmd5>
+    <version>unknown</version>
+    <time>1467359703</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>404235</requestid>
+  </revision>
+  <revision rev="117" vrev="20">
+    <srcmd5>65f6460bbf8e820df906b15f48bed5ba</srcmd5>
+    <version>unknown</version>
+    <time>1475023095</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>430623</requestid>
+  </revision>
+  <revision rev="118" vrev="21">
+    <srcmd5>9fbfe25ea84f8687267f43c50fe7a67d</srcmd5>
+    <version>unknown</version>
+    <time>1478167877</time>
+    <user>dimstar_suse</user>
+    <comment>Apply cve-2016-8864.patch to fix CVE-2016-8864 (bsc#1007829). (forwarded request 438189 from psimons)</comment>
+    <requestid>438333</requestid>
+  </revision>
+  <revision rev="119" vrev="22">
+    <srcmd5>a11ddd5b611d2791f888f48fe9ff98be</srcmd5>
+    <version>unknown</version>
+    <time>1485380328</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452040</requestid>
+  </revision>
+  <revision rev="120" vrev="23">
+    <srcmd5>1a87cacee83c63eeb30d3c55141a213f</srcmd5>
+    <version>unknown</version>
+    <time>1487384100</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457428</requestid>
+  </revision>
+  <revision rev="121" vrev="24">
+    <srcmd5>6bd0d5a239350474428974a83bd59787</srcmd5>
+    <version>unknown</version>
+    <time>1487980136</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459475</requestid>
+  </revision>
+  <revision rev="122" vrev="25">
+    <srcmd5>15fcfca24fc801d1d095ae2c64a1bd9e</srcmd5>
+    <version>unknown</version>
+    <time>1490965495</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482314</requestid>
+  </revision>
+  <revision rev="123" vrev="26">
+    <srcmd5>d933d7ded5107fa2145a25ef8b2f1eb3</srcmd5>
+    <version>unknown</version>
+    <time>1495295749</time>
+    <user>dimstar_suse</user>
+    <comment>a- Fix named init script to dynamically find the location of the
+   openssl engines (boo#1040027). (forwarded request 496935 from dimstar)</comment>
+    <requestid>496968</requestid>
+  </revision>
+  <revision rev="124" vrev="27">
+    <srcmd5>67d606b94542fb49b8ee797af22ac251</srcmd5>
+    <version>unknown</version>
+    <time>1499152121</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507946</requestid>
+  </revision>
+  <revision rev="125" vrev="28">
+    <srcmd5>62a614b4a54644a2820bd6e8416246db</srcmd5>
+    <version>unknown</version>
+    <time>1501406518</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510389</requestid>
+  </revision>
+  <revision rev="126" vrev="29">
+    <srcmd5>6342b53e026df5701ddb84b89ec9a5eb</srcmd5>
+    <version>unknown</version>
+    <time>1504981428</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable JSON statistics</comment>
+    <requestid>521995</requestid>
+  </revision>
+  <revision rev="127" vrev="30">
+    <srcmd5>bf7b63bbd35f1e251441d5f9d5584fa7</srcmd5>
+    <version>unknown</version>
+    <time>1505502547</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>525963</requestid>
+  </revision>
+  <revision rev="128" vrev="31">
+    <srcmd5>f0219b08850c9417a45181f4b8a25a84</srcmd5>
+    <version>unknown</version>
+    <time>1511426081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544110</requestid>
+  </revision>
+  <revision rev="129" vrev="32">
+    <srcmd5>963483450ac709200b628b6147db2f32</srcmd5>
+    <version>9.11.2</version>
+    <time>1515875766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554965</requestid>
+  </revision>
+  <revision rev="130" vrev="33">
+    <srcmd5>06738aa60e15429a4c4c928afc34e55d</srcmd5>
+    <version>9.11.2</version>
+    <time>1516970271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568772</requestid>
+  </revision>
+  <revision rev="131" vrev="34">
+    <srcmd5>a325effd687b354ceb941161b25f9f4a</srcmd5>
+    <version>9.11.2</version>
+    <time>1518281540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574246</requestid>
+  </revision>
+  <revision rev="132" vrev="35">
+    <srcmd5>faee7defcdc75ae52b12fc8801cba8a3</srcmd5>
+    <version>9.11.2</version>
+    <time>1518950363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577263</requestid>
+  </revision>
+  <revision rev="133" vrev="36">
+    <srcmd5>f31c56fc536d3b4c49ab66e2fe1bf78a</srcmd5>
+    <version>9.11.2</version>
+    <time>1519902079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580553</requestid>
+  </revision>
+  <revision rev="134" vrev="37">
+    <srcmd5>bfeb8cb7f0baa2980df6daeec1b8c334</srcmd5>
+    <version>9.11.2</version>
+    <time>1524144759</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598053</requestid>
+  </revision>
+  <revision rev="135" vrev="38">
+    <srcmd5>2c1f3d6f03a5b3d03073d378c44db007</srcmd5>
+    <version>9.11.2</version>
+    <time>1527084489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611520</requestid>
+  </revision>
+  <revision rev="136" vrev="39">
+    <srcmd5>cdf1c1b385d2f38c490eab8855c92bce</srcmd5>
+    <version>9.11.2</version>
+    <time>1529065906</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>614834</requestid>
+  </revision>
+  <revision rev="137" vrev="40">
+    <srcmd5>1921156831a62baeea7636230b27bbae</srcmd5>
+    <version>9.11.2</version>
+    <time>1530741015</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619226</requestid>
+  </revision>
+  <revision rev="138" vrev="41">
+    <srcmd5>827d35147f24a8f90ec6e4a05bdd5745</srcmd5>
+    <version>9.11.2</version>
+    <time>1532774224</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623945</requestid>
+  </revision>
+  <revision rev="139" vrev="42">
+    <srcmd5>efc4f24dcca51c9246408da4729fc04d</srcmd5>
+    <version>9.11.2</version>
+    <time>1538502246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637886</requestid>
+  </revision>
+  <revision rev="140" vrev="43">
+    <srcmd5>4058f704fee02894f171df6030001197</srcmd5>
+    <version>9.11.2</version>
+    <time>1545222233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656817</requestid>
+  </revision>
+  <revision rev="141" vrev="44">
+    <srcmd5>1c5684c8571c0abef50537bf622f8f70</srcmd5>
+    <version>9.11.2</version>
+    <time>1555588624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694780</requestid>
+  </revision>
+  <revision rev="142" vrev="45">
+    <srcmd5>1c20ca6bacd0fba8df44c6d2e8d209cb</srcmd5>
+    <version>9.11.2</version>
+    <time>1564413784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717460</requestid>
+  </revision>
+</revisionlist>

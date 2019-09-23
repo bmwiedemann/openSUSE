@@ -1,0 +1,506 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c66ecfbb92c03eab8e1bfe8f660a15d9</srcmd5>
+    <version>2</version>
+    <time>1325658258</time>
+    <user>coolo</user>
+    <comment>resubmit after SPDX</comment>
+    <requestid>97609</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a91003b451a34fe24defecdde1f2902e</srcmd5>
+    <version>3</version>
+    <time>1326107083</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3
+* new APIs in libkmod: get symbols from module, parsing the ELF
+  section, dependency symbols, insert module like modprobe
+* support for Xz-compressed modules
+* the depmod tool</comment>
+    <requestid>99207</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>491f0db3528a47598d9f46dfa5679247</srcmd5>
+    <version>5</version>
+    <time>1328711918</time>
+    <user>coolo</user>
+    <comment>Previous SR did not work due to Source0 being used twice accidentally.
+- Update to new upstream release 5</comment>
+    <requestid>103147</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7f17aaeb4b548f199d194ebc55201ec8</srcmd5>
+    <version>6</version>
+    <time>1331147364</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 6
+* New API: kmod_module_apply_filter, a function to apply filters
+  in a list of modules
+* Lookup modules.builtin.bin to decide if a module is built into
+  the kernel
+* Resolve infinite loops with softdeps and user configs with
+  install commands</comment>
+    <requestid>107901</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>988827fc2f3b755235a283d3d81e023b</srcmd5>
+    <version>6</version>
+    <time>1331627653</time>
+    <user>coolo</user>
+    <comment>- place binary in /usr tree (UsrMerge project)</comment>
+    <requestid>108783</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>53f5bf340e860056300c3479b296ae8a</srcmd5>
+    <version>7</version>
+    <time>1334818188</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 7
+* build-sys: don't set CFLAGS and LDFLAGS.
+* build-sys: re-organize configure.ac.
+* configure.ac: Move link only flags out of CFLAGS and into LDFLAGS.
+* Add CC_CHECK_LDFLAGS_APPEND m4 macro.
+* config: use order /etc, /run, /lib.
+* modprobe: set log prio to 0 if user passed -q arg.
+* modprobe: always try to remove all modules in command line.
+* modprobe: don't check if module builtin to decide if it's builtin.
+* modprobe: fix error path in removing modules.</comment>
+    <requestid>114359</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2ba7a3a8446986c998c2a95eb0ae588c</srcmd5>
+    <version>8</version>
+    <time>1334927868</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 8
+* doc: remove links to NULL going nowhere.
+* modprobe: handle -ENOENT return from init_module.
+* doc: silent man page generation and fix gtk-doc warnings.
+* modprobe: fix typo in config dump: option-&gt;options.</comment>
+    <requestid>114761</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>787941fa4d0c0636f6c69d800017d1aa</srcmd5>
+    <version>8</version>
+    <time>1335165311</time>
+    <user>coolo</user>
+    <comment>- Restore patch descriptions
+  (and use `quilt setup` for rediff in future)</comment>
+    <requestid>114895</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>787941fa4d0c0636f6c69d800017d1aa</srcmd5>
+    <version>8</version>
+    <time>1340183531</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>63d08a1145431f20a4f745233656f038</srcmd5>
+    <version>9</version>
+    <time>1340625627</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 9
+* build-sys: allow compressed modules in testsuite
+* build-sys: Make dirs writable on rootfs creation
+* depmod: use ferror and fclose to check for error
+* depmod: return error when index is truncated due to ENOSPC
+* depmod: fix coding-style issue in array declaration
+* depmod: fail if any index could not be created
+* depmod: don't return error if modules.builtin don't exist
+* libkmod-util: split function for usec conversion
+* libkmod-util: add missing stdbool.h include
+- Fix broken testsuites on 32bit systems.
+  add: fix-32bits.diff</comment>
+    <requestid>125589</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0fff061531647d0b92dc241d6fc554ae</srcmd5>
+    <version>10</version>
+    <time>1348669256</time>
+    <user>coolo</user>
+    <comment>- Provide the &quot;modutils&quot; virtual symbol
+- Update to new upstream release 10
+* Read coresize from /sys if supported
+* Add flag to kmod_module_probe_insert() to apply blacklisting
+  during probe only if mod is an alias. Now modprobe uses this
+  flag by default.</comment>
+    <requestid>134993</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>980c2d2898a6fca4137e348b6628a384</srcmd5>
+    <version>11</version>
+    <time>1352973466</time>
+    <user>coolo</user>
+    <comment>- Update to kmod-11
+* Fix testsuite defining symbols twice on 32 bit systems
+* Allow to check generated files against correct ones
+* libkmod now keeps a file opened after the first call to
+* kmod_module_get_{info,versions,symbols,dependency_symbols}. This
+  reduces signficantly the amount of time depmod tool takes to
+  execute. Particularly if compressed modules are used.
+* Remove --with-rootprefix from build system. It was not a great
+  idea after all and should not be use since it causes more harm
+  than benefits.
+* Hide --wait option on rmmod. This feature is being targeted for
+  removal from kernel. rmmod still accepts this option, but it is
+  hidden now: man page and usage() says nothing about it and if
+  it is used, user will get a 10s sleep. This way we can check and
+  help if anyone is using this feature.
+* Refactor message logging on all tools, giving proper prefix,
+  routing everything to syslog when asked for, etc.
+* Fix parsing of modules.order when using compressed modules
+* Usage messages go to stdout instead of stderr
+* Fix memory leak in hash implementation</comment>
+    <requestid>141315</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>580bc69d97b71bfd34c8f8779fd367f3</srcmd5>
+    <version>11</version>
+    <time>1354524386</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>143721</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4759a16093a0da12fe506a1759f78471</srcmd5>
+    <version>12</version>
+    <time>1355138382</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 12
+* Fix removing vermagic from module when told to force load a module
+* Fix removing __versions section when told to force load a
+  module: we need to mangle the section header, not the section.
+* modinfo no longer fails while loading a module from file when
+  path contains &quot;.ko&quot; substring</comment>
+    <requestid>144408</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>4759a16093a0da12fe506a1759f78471</srcmd5>
+    <version>12</version>
+    <time>1359109194</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0f1321faf2b88cadaebe44c832c6f60f</srcmd5>
+    <version>13</version>
+    <time>1366214270</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 13
+* depmod: --symbol-prefix actually requires an argument
+* depmod: fix builtin symbols resolution when the prefix symbol is set
+* libkmod: Use secure_getenv if available
+* rmmod: Teach rmmod about builtin modules
+* libkmod: add finit_module logic
+* modprobe: Fix assertion on --show-depends with bogus config file
+* Many other bugfixes see https://lwn.net/Articles/546711</comment>
+    <requestid>171051</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>639b1404fedcbbd327859b950741eb4c</srcmd5>
+    <version>14</version>
+    <time>1373981625</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>183080</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>639b1404fedcbbd327859b950741eb4c</srcmd5>
+    <version>14</version>
+    <time>1379662818</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ef8a3ea477632ae8d19ccc85e9a87909</srcmd5>
+    <version>15</version>
+    <time>1380216871</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200719</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>968a0338e7128347635aa434e19b9e31</srcmd5>
+    <version>16</version>
+    <time>1389628383</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 16</comment>
+    <requestid>213453</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>f1ddbad390b72e6458716189bab94ff4</srcmd5>
+    <version>16</version>
+    <time>1393681121</time>
+    <user>coolo</user>
+    <comment>- Remove &quot;rmmod -w&quot; documentation and getopt entry
+- modprobe: Recognize --allow-unsupported-modules on commandline
+  (fate#316971)
+- libkmod-config: Recognize allow_unsupported_modules in the
+  configuration (fate#316971)
+
+- Drop the non-upstream kmod-no-static.diff; the size difference is
+  negligible. (forwarded request 223975 from michal-m)</comment>
+    <requestid>223987</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5575c85a262b6eb2d86376e44431d454</srcmd5>
+    <version>17</version>
+    <time>1397540127</time>
+    <user>coolo</user>
+    <comment> (forwarded request 229859 from matwey)</comment>
+    <requestid>229957</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>f0d2b2dbc2fbc476ff206b898b7134a8</srcmd5>
+    <version>17</version>
+    <time>1400388555</time>
+    <user>coolo</user>
+    <comment> (forwarded request 234278 from matwey)</comment>
+    <requestid>234279</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4998fc4dbf9c1fba07ca5f7cf0af4d2d</srcmd5>
+    <version>18</version>
+    <time>1403772158</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 18</comment>
+    <requestid>238661</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>4998fc4dbf9c1fba07ca5f7cf0af4d2d</srcmd5>
+    <version>18</version>
+    <time>1409301402</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>ef599d140cb3b67d2f7b42304cecb6f9</srcmd5>
+    <version>18</version>
+    <time>1410080981</time>
+    <user>coolo</user>
+    <comment>- Do not filter unsupported modules when running a vanilla kernel
+  (bnc#871066).</comment>
+    <requestid>247497</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>ed2271add4380909f6421d4333d6bc63</srcmd5>
+    <version>18</version>
+    <time>1416347748</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>261732</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>da46ea198d7c13857649afff567b2f17</srcmd5>
+    <version>19</version>
+    <time>1417246789</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>263053</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>a10df84bb6d01a8fbf4797ae929449d6</srcmd5>
+    <version>19</version>
+    <time>1424826987</time>
+    <user>dimstar_suse</user>
+    <comment>- kmod-blacklist-fixtest.patch: tag the test in test-blacklist correctly</comment>
+    <requestid>287247</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>d3f853e08d935bce0639ff13e8a87483</srcmd5>
+    <version>19</version>
+    <time>1426485353</time>
+    <user>dimstar_suse</user>
+    <comment>- 0001-use-correct-sort-method-in-test-array.patch: use correct test
+  bsc#920930</comment>
+    <requestid>289854</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>f44da8d2736fecf30c036c116bf9a8e4</srcmd5>
+    <version>19</version>
+    <time>1428272737</time>
+    <user>dimstar_suse</user>
+    <comment>- If kmod packge changes, regenerate the initrd. (forwarded request 294242 from elvigia)</comment>
+    <requestid>294252</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b61071912d310da8636cff7d262a5f25</srcmd5>
+    <version>20</version>
+    <time>1430165253</time>
+    <user>coolo</user>
+    <comment>- Update to kmod 20
+[forward #xxxxxx by mmarek]</comment>
+    <requestid>298366</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>aaa4f6a55b8d979775713c656e951df2</srcmd5>
+    <version>21</version>
+    <time>1447882290</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>344376</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d23f38ce5362daf40cb3fedfbf239551</srcmd5>
+    <version>22</version>
+    <time>1450471907</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>348854</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>9d968fef1a802ca198baf020988baaf0</srcmd5>
+    <version>22</version>
+    <time>1455789955</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix kernel master build for ppc64le
+  depmod-Ignore_PowerPC64_ABIv2_.TOC.symbol.patch (forwarded request 358575 from k0da)</comment>
+    <requestid>358579</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>6153df70b691ef563db8bcb52f934675</srcmd5>
+    <version>22</version>
+    <time>1459936247</time>
+    <user>dimstar_suse</user>
+    <comment>- Ignore make check error of ppc64 architecture, bypass boo#897845 (forwarded request 382767 from michel_mno)</comment>
+    <requestid>382785</requestid>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>2987f6aaa4d9c320078455fffd1e5afa</srcmd5>
+    <version>22</version>
+    <time>1468169180</time>
+    <user>dimstar_suse</user>
+    <comment>- libkmod: Handle long lines in /proc/modules (bsc#983754)
+  0001-libkmod-Handle-long-lines-in-proc-modules.patch (forwarded request 403054 from michal-m)</comment>
+    <requestid>403055</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>865990ef953fed679effa2f009a3685d</srcmd5>
+    <version>23</version>
+    <time>1469742255</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 23</comment>
+    <requestid>414529</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>5f621feff8b0ac1641fe50b0b5e366b0</srcmd5>
+    <version>23</version>
+    <time>1480018731</time>
+    <user>dimstar_suse</user>
+    <comment>Fix bug boo#1008186 (forwarded request 441318 from ykaukab)</comment>
+    <requestid>441319</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ccfa2fad59bfc683d6bc5a6bb0ced58b</srcmd5>
+    <version>24</version>
+    <time>1499880627</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 24</comment>
+    <requestid>508706</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>e771e03e4602604612835a6888296e10</srcmd5>
+    <version>24</version>
+    <time>1502559143</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>514061</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>ce2b0379cc2191a203c338b15ed46635</srcmd5>
+    <version>24</version>
+    <time>1508197765</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533088</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>d0fee7cd2ed8233dca8e2b2639dad46f</srcmd5>
+    <version>24</version>
+    <time>1511426423</time>
+    <user>dimstar_suse</user>
+    <comment>Move dependency on suse-module-tools to kmod-compat (bsc#1047911) (forwarded request 543909 from michals)</comment>
+    <requestid>543991</requestid>
+  </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>538686c5de4653cc73b4f4f514c624c4</srcmd5>
+    <version>24</version>
+    <time>1512140008</time>
+    <user>dimstar_suse</user>
+    <comment>- Add bug reference (forwarded request 546545 from michals)</comment>
+    <requestid>546550</requestid>
+  </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>d1b274923d3eb67b8cf95a3240495b9d</srcmd5>
+    <version>24</version>
+    <time>1512847540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555182</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e2bb05cd6b5c258cb5b3308254f3b5b4</srcmd5>
+    <version>25</version>
+    <time>1517931694</time>
+    <user>dimstar_suse</user>
+    <comment>forward 571723</comment>
+    <requestid>572302</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>debbd54d72185daf07aa856b426f56ea</srcmd5>
+    <version>25</version>
+    <time>1520852520</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix PKCS#7 signature display in modinfo (bsc#1077693).</comment>
+    <requestid>584632</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>44e7551d5d37cbed99c538b28bd01e5c</srcmd5>
+    <version>25</version>
+    <time>1522058524</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589122</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>1d5d44e3170a64e7a2db8da8af0cdef9</srcmd5>
+    <version>25</version>
+    <time>1523875404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595282</requestid>
+  </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>fa73f78ad87200ca2cd8b4bb8e6e5479</srcmd5>
+    <version>25</version>
+    <time>1529666030</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616225</requestid>
+  </revision>
+  <revision rev="51" vrev="6">
+    <srcmd5>d7749706319cf0f71a7134194ca3f1db</srcmd5>
+    <version>25</version>
+    <time>1532774284</time>
+    <user>dimstar_suse</user>
+    <comment>- Add enum.patch.</comment>
+    <requestid>624075</requestid>
+  </revision>
+  <revision rev="52" vrev="7">
+    <srcmd5>3ebe4b000b0647a84f0bc1cbdb4d29ef</srcmd5>
+    <version>25</version>
+    <time>1545996729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659771</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>00295b9275a5f89ac8991477638ad410</srcmd5>
+    <version>26</version>
+    <time>1557141549</time>
+    <user>dimstar_suse</user>
+    <comment>kmod 26</comment>
+    <requestid>699853</requestid>
+  </revision>
+</revisionlist>

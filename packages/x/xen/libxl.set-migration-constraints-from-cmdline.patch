@@ -1,0 +1,579 @@
+From 77deb80879859ed279e24a790ec08e9c5d37dd0e Mon Sep 17 00:00:00 2001
+From: Olaf Hering <olaf@aepfle.de>
+Date: Wed, 5 Feb 2014 14:37:53 +0100
+Subject: libxl: set migration constraints from cmdline
+
+Add new options to xl migrate to control the process of migration.
+The intention is to optionally abort the migration if it takes too long
+to migrate a busy guest due to the high number of new dirty pages.
+Currently the guest is suspended to transfer the remaining dirty pages.
+The suspend/resume cycle will cause a time jump. This transfer can take
+a long time, which can confuse the guest if the time jump is too far.
+The new options allow to override the built-in default values, which are
+not changed by this patch.
+
+--max_iters <number>  Number of iterations before final suspend (default: 30)
+
+--max_factor <factor> Max amount of memory to transfer before final suspend (default: 3*RAM)
+
+--min_remaing <pages> Number of dirty pages before stop&copy (default: 50)
+
+--abort_if_busy       Abort migration instead of doing final suspend.
+
+The changes to libxl change the API, handle LIBXL_API_VERSION == 0x040200.
+
+v8:
+  - merge --min_remaing changes
+  - tools/libxc: print stats if migration is aborted
+  - use special _suse version of lib calls to preserve ABI
+
+v7:
+  - remove short options
+  - update description of --abort_if_busy in xl.1
+  - extend description of --abort_if_busy in xl help
+  - add comment to libxl_domain_suspend declaration, props is optional
+
+v6:
+ - update the LIBXL_API_VERSION handling for libxl_domain_suspend
+   change it to an inline function if LIBXL_API_VERSION is defined to 4.2.0
+ - rename libxl_save_properties to libxl_domain_suspend_properties
+ - rename ->xlflags to ->flags within that struct
+
+v5:
+ - adjust libxl_domain_suspend prototype, move flags, max_iters,
+   max_factor into a new, optional struct libxl_save_properties
+ - rename XCFLAGS_DOMSAVE_NOSUSPEND to XCFLAGS_DOMSAVE_ABORT_IF_BUSY
+ - rename LIBXL_SUSPEND_NO_FINAL_SUSPEND to LIBXL_SUSPEND_ABORT_IF_BUSY
+ - rename variables no_suspend to abort_if_busy
+ - rename option -N/--no_suspend to -A/--abort_if_busy
+ - update xl.1, extend description of -A option
+
+v4:
+ - update default for no_suspend from None to 0 in XendCheckpoint.py:save
+ - update logoutput in setMigrateConstraints
+ - change xm migrate defaults from None to 0
+ - add new options to xl.1
+ - fix syntax error in XendDomain.py:domain_migrate_constraints_set
+ - fix xm migrate -N option name to match xl migrate
+
+v3:
+ - move logic errors in libxl__domain_suspend and fixed help text in
+   cmd_table to separate patches
+ - fix syntax error in XendCheckpoint.py
+ - really pass max_iters and max_factor in libxl__xc_domain_save
+ - make libxl_domain_suspend_0x040200 declaration globally visible
+ - bump libxenlight.so SONAME from 2.0 to 2.1 due to changed
+   libxl_domain_suspend
+
+v2:
+ - use LIBXL_API_VERSION and define libxl_domain_suspend_0x040200
+ - fix logic error in min_reached check in xc_domain_save
+ - add longopts
+ - update --help text
+ - correct description of migrate --help text
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ docs/man/xl.pod.1                |   20 +++++++++++++++++++
+ tools/libxc/include/xenguest.h   |    7 ++++++
+ tools/libxc/xc_nomigrate.c       |   10 +++++++++
+ tools/libxc/xc_sr_common.h       |    1 
+ tools/libxc/xc_sr_save.c         |   22 +++++++++++++++------
+ tools/libxl/libxl.c              |   29 ++++++++++++++++++++++++----
+ tools/libxl/libxl.h              |   15 ++++++++++++++
+ tools/libxl/libxl_dom_save.c     |    1 
+ tools/libxl/libxl_internal.h     |    4 +++
+ tools/libxl/libxl_save_callout.c |    4 ++-
+ tools/libxl/libxl_save_helper.c  |    8 ++++---
+ tools/libxl/xl_cmdimpl.c         |   40 +++++++++++++++++++++++++++++++++------
+ tools/libxl/xl_cmdtable.c        |   23 ++++++++++++++--------
+ 13 files changed, 156 insertions(+), 28 deletions(-)
+
+Index: xen-4.12.0-testing/docs/man/xl.1.pod.in
+===================================================================
+--- xen-4.12.0-testing.orig/docs/man/xl.1.pod.in
++++ xen-4.12.0-testing/docs/man/xl.1.pod.in
+@@ -459,6 +459,26 @@ Display huge (!) amount of debug informa
+ 
+ Leave the domain on the receive side paused after migration.
+ 
++=item B<--max_iters> I<number>
++
++Number of iterations before final suspend (default: 30)
++
++=item B<--max_factor> I<factor>
++
++Max amount of memory to transfer before final suspend (default: 3*RAM)
++
++=item B<--min_remaining>
++
++Number of remaining dirty pages. If the number of dirty pages drops that
++low the guest is suspended and the remaing pages are transfered to <host>.
++
++=item B<--abort_if_busy>
++
++Abort migration instead of doing final suspend/transfer/resume if the
++guest has still dirty pages after the number of iterations and/or the
++amount of RAM transferred. This avoids long periods of time where the
++guest is suspended.
++
+ =back
+ 
+ =item B<remus> [I<OPTIONS>] I<domain-id> I<host>
+Index: xen-4.12.0-testing/tools/libxc/include/xenguest.h
+===================================================================
+--- xen-4.12.0-testing.orig/tools/libxc/include/xenguest.h
++++ xen-4.12.0-testing/tools/libxc/include/xenguest.h
+@@ -29,6 +29,7 @@
+ #define XCFLAGS_HVM       (1 << 2)
+ #define XCFLAGS_STDVGA    (1 << 3)
+ #define XCFLAGS_CHECKPOINT_COMPRESS    (1 << 4)
++#define XCFLAGS_DOMSAVE_ABORT_IF_BUSY  (1 << 5)
+ 
+ #define X86_64_B_SIZE   64 
+ #define X86_32_B_SIZE   32
+@@ -131,10 +132,20 @@ typedef enum {
+  *        doesn't use checkpointing
+  * @return 0 on success, -1 on failure
+  */
++int xc_domain_save_suse(xc_interface *xch, int io_fd, uint32_t dom, uint32_t max_iters,
++                        uint32_t max_factor, uint32_t flags /* XCFLAGS_xxx */,
++                        uint32_t min_remaining,
++                        struct save_callbacks* callbacks, int hvm,
++                        xc_migration_stream_t stream_type, int recv_fd);
++static inline
+ int xc_domain_save(xc_interface *xch, int io_fd, uint32_t dom,
+                    uint32_t flags /* XCFLAGS_xxx */,
+                    struct save_callbacks* callbacks, int hvm,
+-                   xc_migration_stream_t stream_type, int recv_fd);
++                   xc_migration_stream_t stream_type, int recv_fd)
++{
++    return xc_domain_save_suse(xch,io_fd,dom,0,0,flags,0,callbacks,hvm,stream_type,recv_fd);
++}
++
+ 
+ /* callbacks provided by xc_domain_restore */
+ struct restore_callbacks {
+Index: xen-4.12.0-testing/tools/libxc/xc_nomigrate.c
+===================================================================
+--- xen-4.12.0-testing.orig/tools/libxc/xc_nomigrate.c
++++ xen-4.12.0-testing/tools/libxc/xc_nomigrate.c
+@@ -20,9 +20,11 @@
+ #include <xenctrl.h>
+ #include <xenguest.h>
+ 
+-int xc_domain_save(xc_interface *xch, int io_fd, uint32_t dom, uint32_t flags,
+-                   struct save_callbacks* callbacks, int hvm,
+-                   xc_migration_stream_t stream_type, int recv_fd)
++int xc_domain_save_suse(xc_interface *xch, int io_fd, uint32_t dom, uint32_t max_iters,
++                        uint32_t max_factor, uint32_t flags,
++                        uint32_t min_remaining,
++                        struct save_callbacks* callbacks, int hvm,
++                        xc_migration_stream_t stream_type, int recv_fd)
+ {
+     errno = ENOSYS;
+     return -1;
+Index: xen-4.12.0-testing/tools/libxc/xc_sr_save.c
+===================================================================
+--- xen-4.12.0-testing.orig/tools/libxc/xc_sr_save.c
++++ xen-4.12.0-testing/tools/libxc/xc_sr_save.c
+@@ -525,6 +525,11 @@ static int send_memory_live(struct xc_sr
+         policy_decision = precopy_policy(*policy_stats, data);
+         x++;
+ 
++        if ( policy_decision == XGS_POLICY_ABORT )
++        {
++            rc = -1;
++            break;
++        }
+         if ( stats.dirty_count > 0 && policy_decision != XGS_POLICY_ABORT )
+         {
+             rc = update_progress_string(ctx, &progress_str);
+@@ -545,6 +550,11 @@ static int send_memory_live(struct xc_sr
+ 
+         policy_decision = precopy_policy(*policy_stats, data);
+ 
++        if ( policy_decision == XGS_POLICY_ABORT )
++        {
++            rc = -1;
++            break;
++        }
+         if ( policy_decision != XGS_POLICY_CONTINUE_PRECOPY )
+            break;
+ 
+@@ -965,9 +975,71 @@ static int save(struct xc_sr_context *ct
+     return rc;
+ };
+ 
+-int xc_domain_save(xc_interface *xch, int io_fd, uint32_t dom,
+-                   uint32_t flags, struct save_callbacks* callbacks,
+-                   int hvm, xc_migration_stream_t stream_type, int recv_fd)
++static struct suse_flags {
++    struct xc_sr_context *ctx;
++    unsigned long cnt;
++    uint32_t max_iters;
++    unsigned long max_factor;
++    long min_remaining;
++    long dirty_count;
++    uint32_t abort_if_busy;
++} suse_flags;
++
++static int suse_precopy_policy(struct precopy_stats stats, void *user)
++{
++    xc_interface *xch = suse_flags.ctx->xch;
++
++    suse_flags.cnt++;
++    errno = 0;
++    DBGPRINTF("%s: domU %u: #%lu iteration %u total_written %u dirty_count %ld",
++              __func__, suse_flags.ctx->domid, suse_flags.cnt, stats.iteration, stats.total_written, stats.dirty_count);
++
++    if ( stats.dirty_count >= 0 )
++        suse_flags.dirty_count = stats.dirty_count;
++
++    /* Stop loop after N iterations */
++    if ( stats.iteration > suse_flags.max_iters )
++    {
++        IPRINTF("%s: domU %u, too many iterations (%u/%u)",
++                __func__, suse_flags.ctx->domid, stats.iteration, suse_flags.max_iters);
++        goto out;
++    }
++    /* Suspend domU in case only few dirty pages remain */
++    if ( stats.dirty_count >= 0 && stats.dirty_count < suse_flags.min_remaining )
++    {
++        IPRINTF("%s: domU %u, dirty_count reached (%ld/%ld)",
++                __func__, suse_flags.ctx->domid, stats.dirty_count, suse_flags.min_remaining);
++        goto suspend;
++    }
++    /* Stop loop if too much memory was transfered (formula incorrect for ballooned domU) */
++    if ( stats.total_written > suse_flags.max_factor * suse_flags.ctx->save.p2m_size )
++    {
++        IPRINTF("%s: domU %u, too much memory transfered (%u/%lu)",
++                __func__, suse_flags.ctx->domid, stats.total_written, suse_flags.max_factor * suse_flags.ctx->save.p2m_size);
++        goto out;
++    }
++    /* Keep going */
++    return XGS_POLICY_CONTINUE_PRECOPY;
++
++out:
++    if ( suse_flags.abort_if_busy )
++    {
++        errno = EBUSY;
++        PERROR("%s: domU %u busy, dirty pages %ld/%lu after %u iterations, %u pages transfered",
++                __func__, suse_flags.ctx->domid,
++                suse_flags.dirty_count, suse_flags.ctx->save.p2m_size,
++                stats.iteration, stats.total_written);
++        return XGS_POLICY_ABORT;
++    }
++suspend:
++    return XGS_POLICY_STOP_AND_COPY;
++}
++
++int xc_domain_save_suse(xc_interface *xch, int io_fd, uint32_t dom,
++                        uint32_t max_iters, uint32_t max_factor, uint32_t flags,
++                        uint32_t min_remaining,
++                        struct save_callbacks* callbacks, int hvm,
++                        xc_migration_stream_t stream_type, int recv_fd)
+ {
+     struct xc_sr_context ctx =
+         {
+@@ -982,6 +1054,19 @@ int xc_domain_save(xc_interface *xch, in
+     ctx.save.checkpointed = stream_type;
+     ctx.save.recv_fd = recv_fd;
+ 
++    if ( callbacks->precopy_policy )
++    {
++        errno = EBUSY;
++        PERROR("%s: precopy_policy already set (%p)", __func__, callbacks->precopy_policy);
++        return -1;
++    }
++    callbacks->precopy_policy = suse_precopy_policy;
++    suse_flags.ctx = &ctx;
++    suse_flags.max_iters = max_iters ? : 5;
++    suse_flags.max_factor = max_factor ? : 3;
++    suse_flags.min_remaining = min_remaining ? : 50;
++    suse_flags.abort_if_busy = !!(flags & XCFLAGS_DOMSAVE_ABORT_IF_BUSY);
++
+     /* If altering migration_stream update this assert too. */
+     assert(stream_type == XC_MIG_STREAM_NONE ||
+            stream_type == XC_MIG_STREAM_REMUS ||
+Index: xen-4.12.0-testing/tools/libxl/libxl.h
+===================================================================
+--- xen-4.12.0-testing.orig/tools/libxl/libxl.h
++++ xen-4.12.0-testing/tools/libxl/libxl.h
+@@ -1533,8 +1533,23 @@ int libxl_domain_suspend(libxl_ctx *ctx,
+                          int flags, /* LIBXL_SUSPEND_* */
+                          const libxl_asyncop_how *ao_how)
+                          LIBXL_EXTERNAL_CALLERS_ONLY;
++
++typedef struct {
++    int flags; /* LIBXL_SUSPEND_* */
++    int max_iters;
++    int max_factor;
++    int min_remaining;
++} libxl_domain_suspend_suse_properties;
++
++#define LIBXL_HAVE_DOMAIN_SUSPEND_SUSE
++int libxl_domain_suspend_suse(libxl_ctx *ctx, uint32_t domid, int fd,
++                              const libxl_domain_suspend_suse_properties *props, /* optional */
++                              const libxl_asyncop_how *ao_how)
++                              LIBXL_EXTERNAL_CALLERS_ONLY;
++
+ #define LIBXL_SUSPEND_DEBUG 1
+ #define LIBXL_SUSPEND_LIVE 2
++#define LIBXL_SUSPEND_ABORT_IF_BUSY 4
+ 
+ /*
+  * Only suspend domain, do not save its state to file, do not destroy it.
+Index: xen-4.12.0-testing/tools/libxl/libxl_dom_save.c
+===================================================================
+--- xen-4.12.0-testing.orig/tools/libxl/libxl_dom_save.c
++++ xen-4.12.0-testing/tools/libxl/libxl_dom_save.c
+@@ -380,6 +380,7 @@ void libxl__domain_save(libxl__egc *egc,
+ 
+     dss->xcflags = (live ? XCFLAGS_LIVE : 0)
+           | (debug ? XCFLAGS_DEBUG : 0)
++          | (dss->xlflags & LIBXL_SUSPEND_ABORT_IF_BUSY ? XCFLAGS_DOMSAVE_ABORT_IF_BUSY : 0)
+           | (dss->hvm ? XCFLAGS_HVM : 0);
+ 
+     /* Disallow saving a guest with vNUMA configured because migration
+Index: xen-4.12.0-testing/tools/libxl/libxl_domain.c
+===================================================================
+--- xen-4.12.0-testing.orig/tools/libxl/libxl_domain.c
++++ xen-4.12.0-testing/tools/libxl/libxl_domain.c
+@@ -486,8 +486,9 @@ static void domain_suspend_cb(libxl__egc
+ 
+ }
+ 
+-int libxl_domain_suspend(libxl_ctx *ctx, uint32_t domid, int fd, int flags,
+-                         const libxl_asyncop_how *ao_how)
++static int do_libxl_domain_suspend(libxl_ctx *ctx, uint32_t domid, int fd,
++                                   const libxl_domain_suspend_suse_properties *props,
++                                   const libxl_asyncop_how *ao_how)
+ {
+     AO_CREATE(ctx, domid, ao_how);
+     int rc;
+@@ -507,9 +508,15 @@ int libxl_domain_suspend(libxl_ctx *ctx,
+     dss->domid = domid;
+     dss->fd = fd;
+     dss->type = type;
+-    dss->live = flags & LIBXL_SUSPEND_LIVE;
+-    dss->debug = flags & LIBXL_SUSPEND_DEBUG;
+     dss->checkpointed_stream = LIBXL_CHECKPOINTED_STREAM_NONE;
++    if (props) {
++        dss->live = props->flags & LIBXL_SUSPEND_LIVE;
++        dss->debug = props->flags & LIBXL_SUSPEND_DEBUG;
++        dss->max_iters = props->max_iters;
++        dss->max_factor = props->max_factor;
++        dss->min_remaining = props->min_remaining;
++        dss->xlflags = props->flags;
++    }
+ 
+     rc = libxl__fd_flags_modify_save(gc, dss->fd,
+                                      ~(O_NONBLOCK|O_NDELAY), 0,
+@@ -557,6 +564,20 @@ int libxl_domain_suspend_only(libxl_ctx
+     return AO_CREATE_FAIL(rc);
+ }
+ 
++int libxl_domain_suspend_suse(libxl_ctx *ctx, uint32_t domid, int fd,
++                              const libxl_domain_suspend_suse_properties *props,
++                              const libxl_asyncop_how *ao_how)
++{
++    return do_libxl_domain_suspend(ctx, domid, fd, props, ao_how);
++}
++
++int libxl_domain_suspend(libxl_ctx *ctx, uint32_t domid, int fd, int flags,
++                         const libxl_asyncop_how *ao_how)
++{
++    libxl_domain_suspend_suse_properties props = { .flags = flags };
++    return do_libxl_domain_suspend(ctx, domid, fd, &props, ao_how);
++}
++
+ int libxl_domain_pause(libxl_ctx *ctx, uint32_t domid)
+ {
+     int ret;
+Index: xen-4.12.0-testing/tools/libxl/libxl_internal.h
+===================================================================
+--- xen-4.12.0-testing.orig/tools/libxl/libxl_internal.h
++++ xen-4.12.0-testing/tools/libxl/libxl_internal.h
+@@ -3470,6 +3470,10 @@ struct libxl__domain_save_state {
+     /* private */
+     int rc;
+     int hvm;
++    int max_iters;
++    int max_factor;
++    int min_remaining;
++    int xlflags;
+     int xcflags;
+     libxl__domain_suspend_state dsps;
+     union {
+Index: xen-4.12.0-testing/tools/libxl/libxl_save_callout.c
+===================================================================
+--- xen-4.12.0-testing.orig/tools/libxl/libxl_save_callout.c
++++ xen-4.12.0-testing/tools/libxl/libxl_save_callout.c
+@@ -89,7 +89,9 @@ void libxl__xc_domain_save(libxl__egc *e
+         libxl__srm_callout_enumcallbacks_save(&shs->callbacks.save.a);
+ 
+     const unsigned long argnums[] = {
+-        dss->domid, dss->xcflags, dss->hvm, cbflags,
++        dss->domid,
++        dss->max_iters, dss->max_factor, dss->min_remaining,
++        dss->xcflags, dss->hvm, cbflags,
+         dss->checkpointed_stream,
+     };
+ 
+Index: xen-4.12.0-testing/tools/libxl/libxl_save_helper.c
+===================================================================
+--- xen-4.12.0-testing.orig/tools/libxl/libxl_save_helper.c
++++ xen-4.12.0-testing/tools/libxl/libxl_save_helper.c
+@@ -251,6 +251,9 @@ int main(int argc, char **argv)
+         io_fd =                             atoi(NEXTARG);
+         recv_fd =                           atoi(NEXTARG);
+         uint32_t dom =                      strtoul(NEXTARG,0,10);
++        uint32_t max_iters =                strtoul(NEXTARG,0,10);
++        uint32_t max_factor =               strtoul(NEXTARG,0,10);
++        uint32_t min_remaining =            strtoul(NEXTARG,0,10);
+         uint32_t flags =                    strtoul(NEXTARG,0,10);
+         int hvm =                           atoi(NEXTARG);
+         unsigned cbflags =                  strtoul(NEXTARG,0,10);
+@@ -262,8 +265,10 @@ int main(int argc, char **argv)
+         startup("save");
+         setup_signals(save_signal_handler);
+ 
+-        r = xc_domain_save(xch, io_fd, dom, flags, &helper_save_callbacks,
+-                           hvm, stream_type, recv_fd);
++        r = xc_domain_save_suse(xch, io_fd, dom, max_iters, max_factor, flags,
++                                min_remaining,
++                                &helper_save_callbacks, hvm, stream_type,
++                                recv_fd);
+         complete(r);
+ 
+     } else if (!strcmp(mode,"--restore-domain")) {
+Index: xen-4.12.0-testing/tools/xl/xl_cmdtable.c
+===================================================================
+--- xen-4.12.0-testing.orig/tools/xl/xl_cmdtable.c
++++ xen-4.12.0-testing/tools/xl/xl_cmdtable.c
+@@ -159,15 +159,22 @@ struct cmd_spec cmd_table[] = {
+       &main_migrate, 0, 1,
+       "Migrate a domain to another host",
+       "[options] <Domain> <host>",
+-      "-h              Print this help.\n"
+-      "-C <config>     Send <config> instead of config file from creation.\n"
+-      "-s <sshcommand> Use <sshcommand> instead of ssh.  String will be passed\n"
+-      "                to sh. If empty, run <host> instead of ssh <host> xl\n"
+-      "                migrate-receive [-d -e]\n"
+-      "-e              Do not wait in the background (on <host>) for the death\n"
+-      "                of the domain.\n"
+-      "--debug         Print huge (!) amount of debug during the migration process.\n"
+-      "-p              Do not unpause domain after migrating it."
++      "-h                      Print this help.\n"
++      "-C <config>             Send <config> instead of config file from creation.\n"
++      "-s <sshcommand>         Use <sshcommand> instead of ssh.  String will be passed\n"
++      "                        to sh. If empty, run <host> instead of ssh <host> xl\n"
++      "                        migrate-receive [-d -e]\n"
++      "-e                      Do not wait in the background (on <host>) for the death\n"
++      "                        of the domain.\n"
++      "--debug                 Print huge (!) amount of debug during the migration process.\n"
++      "-p                      Do not unpause domain after migrating it.\n"
++      "\n"
++      "SUSE Linux specific options:\n"
++      "--max_iters <number>    Number of iterations before final suspend (default: 30)\n"
++      "--max_factor <factor>   Max amount of memory to transfer before final suspend (default: 3*RAM).\n"
++      "--min_remaining <pages> Number of remaining dirty pages before final suspend (default: 50).\n"
++      "--abort_if_busy         Abort migration instead of doing final suspend, if number\n"
++      "                        of iterations or amount of transfered memory is exceeded."
+     },
+     { "restore",
+       &main_restore, 0, 1,
+Index: xen-4.12.0-testing/tools/xl/xl_migrate.c
+===================================================================
+--- xen-4.12.0-testing.orig/tools/xl/xl_migrate.c
++++ xen-4.12.0-testing/tools/xl/xl_migrate.c
+@@ -177,6 +177,8 @@ static void migrate_do_preamble(int send
+ }
+ 
+ static void migrate_domain(uint32_t domid, const char *rune, int debug,
++                           int max_iters, int max_factor,
++                           int min_remaining, int abort_if_busy,
+                            const char *override_config_file)
+ {
+     pid_t child = -1;
+@@ -185,7 +187,13 @@ static void migrate_domain(uint32_t domi
+     char *away_domname;
+     char rc_buf;
+     uint8_t *config_data;
+-    int config_len, flags = LIBXL_SUSPEND_LIVE;
++    int config_len;
++    libxl_domain_suspend_suse_properties props = {
++        .flags = LIBXL_SUSPEND_LIVE,
++        .max_iters = max_iters,
++        .max_factor = max_factor,
++        .min_remaining = min_remaining,
++    };
+ 
+     save_domain_core_begin(domid, override_config_file,
+                            &config_data, &config_len);
+@@ -204,10 +212,12 @@ static void migrate_domain(uint32_t domi
+     xtl_stdiostream_adjust_flags(logger, XTL_STDIOSTREAM_HIDE_PROGRESS, 0);
+ 
+     if (debug)
+-        flags |= LIBXL_SUSPEND_DEBUG;
+-    rc = libxl_domain_suspend(ctx, domid, send_fd, flags, NULL);
++        props.flags |= LIBXL_SUSPEND_DEBUG;
++    if (abort_if_busy)
++        props.flags |= LIBXL_SUSPEND_ABORT_IF_BUSY;
++    rc = libxl_domain_suspend_suse(ctx, domid, send_fd, &props, NULL);
+     if (rc) {
+-        fprintf(stderr, "migration sender: libxl_domain_suspend failed"
++        fprintf(stderr, "migration sender: libxl_domain_suspend_suse failed"
+                 " (rc=%d)\n", rc);
+         if (rc == ERROR_GUEST_TIMEDOUT)
+             goto failed_suspend;
+@@ -537,13 +547,18 @@ int main_migrate(int argc, char **argv)
+     char *rune = NULL;
+     char *host;
+     int opt, daemonize = 1, monitor = 1, debug = 0, pause_after_migration = 0;
++    int max_iters = 0, max_factor = 0, min_remaining = 0, abort_if_busy = 0;
+     static struct option opts[] = {
+         {"debug", 0, 0, 0x100},
++	{"max_iters", 1, 0, 0x101},
++	{"max_factor", 1, 0, 0x102},
++	{"min_remaining", 1, 0, 0x103},
++	{"abort_if_busy", 0, 0, 0x104},
+         {"live", 0, 0, 0x200},
+         COMMON_LONG_OPTS
+     };
+ 
+-    SWITCH_FOREACH_OPT(opt, "FC:s:ep", opts, "migrate", 2) {
++    SWITCH_FOREACH_OPT(opt, "FC:s:epM:m:A", opts, "migrate", 2) {
+     case 'C':
+         config_filename = optarg;
+         break;
+@@ -563,6 +578,18 @@ int main_migrate(int argc, char **argv)
+     case 0x100: /* --debug */
+         debug = 1;
+         break;
++    case 0x101:
++        max_iters = atoi(optarg);
++        break;
++    case 0x102:
++        max_factor = atoi(optarg);
++        break;
++    case 0x103:
++        min_remaining = atoi(optarg);
++        break;
++    case 0x104:
++        abort_if_busy = 1;
++        break;
+     case 0x200: /* --live */
+         /* ignored for compatibility with xm */
+         break;
+@@ -596,7 +623,8 @@ int main_migrate(int argc, char **argv)
+                   pause_after_migration ? " -p" : "");
+     }
+ 
+-    migrate_domain(domid, rune, debug, config_filename);
++    migrate_domain(domid, rune, debug, max_iters, max_factor, min_remaining,
++                   abort_if_busy, config_filename);
+     return EXIT_SUCCESS;
+ }
+ 

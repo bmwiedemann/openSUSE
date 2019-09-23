@@ -1,0 +1,176 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0d78d7745f6cb12906d8e8a096724efc</srcmd5>
+    <version>7.2</version>
+    <time>1166483906</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="45">
+    <srcmd5>ca518ac8406932f1ce4f07d1808f1ba2</srcmd5>
+    <version>7.2</version>
+    <time>1179994638</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b9239e88c2fdf53913ecf85a3c1adeb8</srcmd5>
+    <version>7.3</version>
+    <time>1191367163</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>266ce592a5f3443392848d197a95e670</srcmd5>
+    <version>7.4</version>
+    <time>1221234478</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>266ce592a5f3443392848d197a95e670</srcmd5>
+    <version>7.4</version>
+    <time>1221234478</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>7963350495f732de26917414000c1be4</srcmd5>
+    <version>7.4</version>
+    <time>1264072933</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-libX11-ccache based on submit request 29883 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>245ef569d5e72ea40eeed69be6de6b9f</srcmd5>
+    <version>7.4</version>
+    <time>1268926650</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4afa236de1c11ee3a028164e4f072b67</srcmd5>
+    <version>7.5</version>
+    <time>1270246833</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11-libX11-ccache based on submit request 36811 from user sndirsch
+</comment>
+    <requestid>36811</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4afa236de1c11ee3a028164e4f072b67</srcmd5>
+    <version>7.5</version>
+    <time>1278667396</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>4afa236de1c11ee3a028164e4f072b67</srcmd5>
+    <version>7.5</version>
+    <time>1278678627</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5f0b76755028f130886dbb130697df88</srcmd5>
+    <version>7.6</version>
+    <time>1293579625</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56477 from user sndirsch
+</comment>
+    <requestid>56477</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>5f0b76755028f130886dbb130697df88</srcmd5>
+    <version>7.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>b90d1b06e21eea60b7513700140d5fba</srcmd5>
+    <version>7.6</version>
+    <time>1302521365</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66794 from user coolo
+</comment>
+    <requestid>66794</requestid>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>d8c5fe1ca5d3c8133fc1154cceecfe57</srcmd5>
+    <version>7.6</version>
+    <time>1302521374</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66794
+</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>d8c5fe1ca5d3c8133fc1154cceecfe57</srcmd5>
+    <version>7.6</version>
+    <time>1319182606</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>8630b05fde1a6e51dca28dceaea0f697</srcmd5>
+    <version>7.6</version>
+    <time>1323195435</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>427794e9d25d7b24c13594349319d54b</srcmd5>
+    <version>7.6</version>
+    <time>1329477073</time>
+    <user>coolo</user>
+    <comment>- removed unnecessary xorg-x11-devel from BuildRequires</comment>
+    <requestid>105539</requestid>
+  </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>427794e9d25d7b24c13594349319d54b</srcmd5>
+    <version>7.6</version>
+    <time>1340184379</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="13">
+    <srcmd5>036df915049744db29a918ce67437329</srcmd5>
+    <version>7.6</version>
+    <time>1340733963</time>
+    <user>coolo</user>
+    <comment>- use proper Buildrequires: xorg-x11 --&gt; mkcomposecache, xbiff</comment>
+    <requestid>126158</requestid>
+  </revision>
+  <revision rev="20" vrev="15">
+    <srcmd5>036df915049744db29a918ce67437329</srcmd5>
+    <version>7.6</version>
+    <time>1359110672</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="16">
+    <srcmd5>7d0d5edea1ece2f02c4127de66e525e3</srcmd5>
+    <version>7.6</version>
+    <time>1365232846</time>
+    <user>coolo</user>
+    <comment>- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162720 from namtrac)</comment>
+    <requestid>162808</requestid>
+  </revision>
+  <revision rev="22" vrev="18">
+    <srcmd5>7d0d5edea1ece2f02c4127de66e525e3</srcmd5>
+    <version>7.6</version>
+    <time>1379665104</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="20">
+    <srcmd5>7d0d5edea1ece2f02c4127de66e525e3</srcmd5>
+    <version>7.6</version>
+    <time>1409303789</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="21">
+    <srcmd5>850cb3d4865103d848ca6ef47d0548fe</srcmd5>
+    <version>7.6</version>
+    <time>1538502121</time>
+    <user>dimstar_suse</user>
+    <comment>- make package arch again (boo#1110020)</comment>
+    <requestid>638844</requestid>
+  </revision>
+</revisionlist>

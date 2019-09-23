@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Fri Jul 19 09:09:50 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.2.4
+ see installed CHANGELOG.md
+
+  ## 0.2.4
+  
+  - Use FFI to speed up memory lookup on Mac (darwin) by roughly 12x (#32)
+
+-------------------------------------------------------------------
+Thu Nov 22 05:10:02 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.2.3
+ see installed CHANGELOG.md
+
+  ## 0.2.3
+  
+  -  Silence BigDecimal deprecation warning under Ruby 2.5 (#26)
+
+-------------------------------------------------------------------
+Wed May 16 08:01:34 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.2.2
+ see installed CHANGELOG.md
+
+  ## 0.2.2
+  
+  - Fix support for Ruby 2.4 (#23)
+
+-------------------------------------------------------------------
+Wed Sep 14 04:31:14 UTC 2016 - coolo@suse.com
+
+- updated to version 0.2.1
+ see installed CHANGELOG.md
+
+  ## 0.2.1
+  
+  - Windows support.
+
+-------------------------------------------------------------------
+Tue Mar 31 00:07:49 UTC 2015 - mrueckert@suse.de
+
+- initial package
+

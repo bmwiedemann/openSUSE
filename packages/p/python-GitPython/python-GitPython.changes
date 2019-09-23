@@ -1,0 +1,212 @@
+-------------------------------------------------------------------
+Fri Mar 15 13:52:47 UTC 2019 - tchvatal@suse.com
+
+- Update to version 2.1.11.1531661757.92a4819:
+  * Bump version to 2.1.11
+  * fix whitespace violation
+  * Update test_docs.py
+  * Dedent code blocks in tutorial.
+  * Allow pathlib.Path in Repo.__init__
+  * Fix small typo
+  * Fix exception on import in MacOS
+  * Bump to 2.1.10
+  * Add change in type support
+  * Get correcly rename change_type.
+- Simplify the service file and generating of the tarball
+  and base everything on a tag
+
+-------------------------------------------------------------------
+Wed Mar 13 12:09:51 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite and remove bcond test
+- Add merged_pr_793.patch already merged upstream to fix Python 3.7,
+  especially git submodules
+- Add test_blocking_lock_file-extra-time.patch to avoid an
+  indeterministic timing failure
+- Add test-skips.patch to skip one expected failure and workaround
+  two unknown failures
+- Remove test suite from the runtime package
+- Add doc/source/*.rst to %docs
+- Remove dependency on python3-mock
+- Set build dependency ddt minimum version 1.1.1
+
+-------------------------------------------------------------------
+Tue Dec  4 12:48:28 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Sep 27 11:17:43 UTC 2018 - comurphy@suse.com
+
+- Require git-core instead of git
+
+-------------------------------------------------------------------
+Tue Aug  7 14:58:46 UTC 2018 - toddrme2178@gmail.com
+
+- update to 2.1.11
+  * Update test_docs.py
+  * Dedent code blocks in tutorial.
+  * Exception when constructing a Repo() from a pathlib.Path acknowledged help wanted
+  * Allow pathlib.Path in Repo.__init__
+  * Fix exception on import in MacOS
+  * Failed import raises non-ImportError exception on MacOS
+- update to 2.1.10
+  * Fix rename change type & support 'change in type' acknowledged
+  * Configurable chunk size
+  * Avoid from_timestamp() function to raise an exception when the offset…
+  * Adding files to repository that is located directly in the root acknowledged
+  * git: index: base: use os.path.relpath
+
+-------------------------------------------------------------------
+Sat Apr 14 17:16:15 UTC 2018 - arun@gmx.de
+
+- update to version 2.1.9:
+  * Drop support for EOL Python 2.6 and 3.3
+  * Allow mmap not just for py2.6, 2.7 and 3.6+ but also 3.0+
+  * Fix doc typos
+
+-------------------------------------------------------------------
+Wed Jan 17 16:12:22 UTC 2018 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 2.1.8
+  * bugfixes
+- Update to version 2.1.6
+  * bugfixes
+  * support for worktrees
+- Update to version 2.1.3
+  * bugfixes
+- Update to version 2.1.1
+  * bugfixes
+- Update to version 2.1.0
+  * Much better windows support!
+  * The `GIT_DIR` environment variable does not override the `path` argument when
+    initializing a `Repo` object anymore. However, if said `path` unset, `GIT_DIR`
+    will be used to fill the void.
+- Update to version 2.0.9
+  * Bugfixes
+  * `tag.commit` will now resolve commits deeply.
+  * `Repo` objects can now be pickled, which helps with multi-processing.
+  * `Head.checkout()` now deals with detached heads, which is when it will return
+    the `HEAD` reference instead.
+  * `DiffIndex.iter_change_type(...)` produces better results when diffing
+
+-------------------------------------------------------------------
+Wed Aug 31 17:27:54 UTC 2016 - dmueller@suse.com
+
+- update to 2.0.8:
+  * Py2.6 support dropped
+  * lots of new features and bugfixes
+
+-------------------------------------------------------------------
+Wed May  6 09:41:17 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.0.1:
+  * A list of all issues can be found on github
+- additional changes from version 1.0.0:
+  * This version is equivalent to v0.3.7, but finally acknowledges
+    that GitPython is stable and production ready
+- additional changes from version 0.3.7:
+  * IndexFile.add() will now write the index without any extension
+    data by default
+  * Renamed ignore_tree_extension_data keyword argument in
+    IndexFile.write(...) to ignore_extension_data
+  * If the git command executed during Remote.push(...)|fetch(...)
+    returns with an non-zero exit code and GitPython didn't obtain
+    any head-information, the corresponding GitCommandError will be
+    raised
+  * If the git executable can't be found in the PATH or at the path
+    provided by GIT_PYTHON_GIT_EXECUTABLE, this is made obvious by
+    throwing GitCommandNotFound, both on unix and on windows.
+  * A list of all issues can be found on github
+- additional changes from version 0.3.6:
+  * special members like __init__ are now listed in the API
+    documentation
+  * tutorial section was revised entirely, more advanced examples
+    were added
+  * As rev_parse will now throw BadName as well as BadObject,
+    client code will have to catch both exception types
+  * Repo.working_tree_dir now returns None if it is bare
+  * IndexFile.add() previously raised AssertionError when paths
+    where used with bare repository, now it raises
+    InvalidGitRepositoryError
+  * Added Repo.merge_base() implementation. See the respective
+    issue on github
+  * [include] sections in git configuration files are now respected
+  * Added GitConfigParser.rename_section()
+  * Added Submodule.rename()
+  * A list of all issues can be found on github
+- additional changes from version 0.3.5:
+  * push/pull/fetch operations will not block anymore
+  * diff() can now properly detect renames, both in patch and raw
+    format
+  * repo.odb.update_cache() is now called automatically after fetch
+    and pull operations
+  * Repo(path) will not automatically search upstream anymore and
+    find any git directory on its way up
+  * IndexFile.commit() now runs the pre-commit and post-commit hooks
+  * A list of all issues can be found on github
+- additional changes from version 0.3.4:
+  * Internally, hexadecimal SHA1 are treated as ascii encoded
+    strings
+  * Id attribute of Commit objects is now hexsha, instead of binsha
+  * IMPORTANT: If you were using the config_writer(), you
+    implicitly relied on __del__ to work as expected to flush
+    changes. To be sure changes are flushed under PY3, you will
+    have to call the new release() method to trigger a flush
+  * The Tree now has a .join('name') method which is equivalent to
+    tree / 'name'
+- additional changes from version 0.3.3:
+  * When fetching, pulling or pushing, and an error occours, it
+    will not be reported on stdout anymore
+  * Code Cleanup (in preparation for python 3 support)
+- additional changes from version 0.3.2.1:
+  * Fix for #207
+- additional changes from version 0.3.2:
+  * Release of most recent version as non-RC build, just to allow
+    pip to install the latest version right away.
+- update project URL
+- point the source URL to pypi
+- set a minimum version for python-gitdb and add it to
+  BuildRequires to validate dependencies at build time.
+- add python-ordereddict as dependency for SLE11 (python 2.6)
+- remove outdated py_requires
+
+-------------------------------------------------------------------
+Thu Sep 26 13:13:58 UTC 2013 - speilicke@suse.com
+
+- Require git-core for the cgit backend (bnc#841684)
+
+-------------------------------------------------------------------
+Tue Jun 26 09:55:59 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Wed Jul  6 20:34:02 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 0.3.2.RC1;
+- Regenerate spec file with py2pack;
+- Building as noarch now.
+
+-------------------------------------------------------------------
+Tue Sep  7 13:31:06 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 0.3.0-beta2;
+- Bzip2 source file.
+
+-------------------------------------------------------------------
+Thu Jul  8 15:11:43 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 0.3.0-beta1.
+
+-------------------------------------------------------------------
+Wed Apr  7 11:58:12 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 0.2.0-beta1;
+- Spec file cleaned with spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Nov 24 11:21:41 UTC 2009 - alexandre@exatati.com.br
+
+- Initial pacakge (0.1.6) for openSUSE.

@@ -1,0 +1,53 @@
+From 4610bd81a1cbab5ca5b619569eb61b5d87fbada8 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 4 Mar 2019 12:18:59 +0100
+Subject: [PATCH 5/6] Overview: show error window if opening help fails
+
+Displaying the help files requires a help browser. Inform the
+user if that's missing. Note that we don't receive an exception
+if only the help _files_ are missing. In this case the help browser
+itself displays an error message in the help dialog (at least
+"yelp" under GNOME behaves that way).
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ src/hamster/overview.py | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/src/hamster/overview.py b/src/hamster/overview.py
+index c61c521..f836a0d 100755
+--- a/src/hamster/overview.py
++++ b/src/hamster/overview.py
+@@ -17,6 +17,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with Project Hamster.  If not, see <http://www.gnu.org/licenses/>.
+ 
++import sys
+ import bisect
+ import datetime as dt
+ import itertools
+@@ -542,8 +543,19 @@ class Overview(Controller):
+         return True
+ 
+     def on_help_clicked(self, menu):
+-        gtk.show_uri(gdk.Screen().get_default(), "help:hamster-time-tracker",
+-                     gdk.CURRENT_TIME)
++        uri = "help:hamster-time-tracker"
++        try:
++            gtk.show_uri(gdk.Screen().get_default(), uri,
++                         gdk.CURRENT_TIME)
++        except gi.repository.GLib.Error:
++            msg = sys.exc_info()[1].args[0]
++            dialog = gtk.MessageDialog(self.window, 0, gtk.MessageType.ERROR,
++                                       gtk.ButtonsType.CLOSE,
++                                       _("Failed to open {}").format(uri))
++            fmt = _('Error: "{}" - is a help browser installed on this Computer?')
++            dialog.format_secondary_text(fmt.format(msg))
++            dialog.run()
++            dialog.destroy()
+ 
+     def on_prefs_clicked(self, menu):
+         dialogs.prefs.show(self)
+-- 
+2.20.1
+

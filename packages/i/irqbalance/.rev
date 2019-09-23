@@ -1,0 +1,405 @@
+<revisionlist>
+  <revision rev="1" vrev="61">
+    <srcmd5>0e3682f9b12e90bd1d6bee3e6a04c5de</srcmd5>
+    <version>0.09</version>
+    <time>1168903074</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="91">
+    <srcmd5>d8812698e8d9697c2a685e0fe960636d</srcmd5>
+    <version>0.09</version>
+    <time>1175628697</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3b8fd0d2ac33d896835117cf3ef36c3e</srcmd5>
+    <version>0.55</version>
+    <time>1176413406</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>23f20b5433620033305d3d6de33b442c</srcmd5>
+    <version>0.55</version>
+    <time>1176707138</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>46cbac2e968209de2117841b7430b972</srcmd5>
+    <version>0.55</version>
+    <time>1177626533</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="54">
+    <srcmd5>20e85d3ac25d15e8f9f5abed4700db8b</srcmd5>
+    <version>0.55</version>
+    <time>1197479575</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="106">
+    <srcmd5>d092a6814eb7899f52b011e8c025e9ea</srcmd5>
+    <version>0.55</version>
+    <time>1218837416</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="120">
+    <srcmd5>cc86a1c7bbb9ec348ee616d707d7af71</srcmd5>
+    <version>0.55</version>
+    <time>1225927839</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="121">
+    <srcmd5>16c92222b690f8489b5f044c3df43031</srcmd5>
+    <version>0.55</version>
+    <time>1245281822</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="123">
+    <srcmd5>16c92222b690f8489b5f044c3df43031</srcmd5>
+    <version>0.55</version>
+    <time>1245281822</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="124">
+    <srcmd5>dd0645fc8acc14b8dbd16bc884267282</srcmd5>
+    <version>0.55</version>
+    <time>1268924042</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="126">
+    <srcmd5>dd0645fc8acc14b8dbd16bc884267282</srcmd5>
+    <version>0.55</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="127">
+    <srcmd5>dd0645fc8acc14b8dbd16bc884267282</srcmd5>
+    <version>0.55</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>94d764d5ebda333cf7b9992e215e4bb1</srcmd5>
+    <version>0.56_svn201010021305</version>
+    <time>1286138517</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/irqbalance based on submit request 49667 from user elvigia
+</comment>
+    <requestid>49667</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b218be76cf55e4dad7b56d652a08806e</srcmd5>
+    <version>0.56_svn201010021305</version>
+    <time>1289418780</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52641 from user elvigia
+</comment>
+    <requestid>52641</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>54ee5a7f5d2066532f66f5d7e2919dfa</srcmd5>
+    <version>0.56_svn201010021305</version>
+    <time>1289418787</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52641
+</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>54ee5a7f5d2066532f66f5d7e2919dfa</srcmd5>
+    <version>0.56_svn201010021305</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>c9550f5c036c2a7575ac0499a9f9f49c</srcmd5>
+    <version>0.56_svn201010021305</version>
+    <time>1310044069</time>
+    <user>saschpe</user>
+    <comment>Add systemd service file (forwarded request 75233 from a_jaeger)</comment>
+    <requestid>75575</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>d6b33e65c6662f19746a4480714710e9</srcmd5>
+    <version>0.56_svn201010021305</version>
+    <time>1310044083</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75575
+</comment>
+  </revision>
+  <revision rev="20" vrev="9">
+    <srcmd5>5711634d2269623a8a19badc18e72304</srcmd5>
+    <version>0.56_svn201010021305</version>
+    <time>1313674489</time>
+    <user>darix</user>
+    <comment>- Run spec-cleaner on spec file
+- Don't start irqbalance by default, testing confirmed that it does
+  not make any difference on machines with less than 32 cores 
+  nowadays (GKH's comment) (forwarded request 79033 from saschpe)</comment>
+    <requestid>79058</requestid>
+  </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>b57f3613016c2273a66aabc6bcd550c0</srcmd5>
+    <version>0.56_svn201010021305</version>
+    <time>1313674497</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 79058
+</comment>
+  </revision>
+  <revision rev="22" vrev="11">
+    <srcmd5>550dcb9e542bbfc0ac13932f384aa873</srcmd5>
+    <version>0.56_svn201010021305</version>
+    <time>1318762241</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequire to avoid a hidden require from projconfig (forwarded request 87938 from coolo)</comment>
+    <requestid>88034</requestid>
+  </revision>
+  <revision rev="23" vrev="13">
+    <srcmd5>550dcb9e542bbfc0ac13932f384aa873</srcmd5>
+    <version>0.56_svn201010021305</version>
+    <time>1319181993</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>61212276012794b0117b325f5b11f071</srcmd5>
+    <version>1.0</version>
+    <time>1323175928</time>
+    <user>coolo</user>
+    <comment>- Use systemd macros in pre/post scripts (forwarded request 94398 from elvigia)</comment>
+    <requestid>94430</requestid>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>ce635e92241649b36186766bb227bf4a</srcmd5>
+    <version>1.0</version>
+    <time>1323869604</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>96436</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>48a8380699b2c6e9a8aa540567027fe6</srcmd5>
+    <version>1.0.3</version>
+    <time>1337004881</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.3 and make spec file to spec-cleaner clean.</comment>
+    <requestid>120606</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>48a8380699b2c6e9a8aa540567027fe6</srcmd5>
+    <version>1.0.3</version>
+    <time>1340183468</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>9a9c97e842268ddf2d311d992ea8c2bb</srcmd5>
+    <version>1.0.3</version>
+    <time>1340719300</time>
+    <user>coolo</user>
+    <comment>- Correct bogus /etc/sysconfig/irqbalance comment:
+  Service is started as daemon by default, on single and multi core
+  systems - bnc#768391</comment>
+    <requestid>126002</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>92d5618e331f478b521c1ea79b98b4a9</srcmd5>
+    <version>1.0.4</version>
+    <time>1348561552</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>135535</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>5fe573ed63695b941bbbd01d339a0ddf</srcmd5>
+    <version>1.0.4</version>
+    <time>1353952631</time>
+    <user>coolo</user>
+    <comment>- Ensure that EnvironmentFile from irqbalance.service points to
+  /etc/sysconfig/irqbalance environment config file. (forwarded request 142450 from rmilasan)</comment>
+    <requestid>142720</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>5fe573ed63695b941bbbd01d339a0ddf</srcmd5>
+    <version>1.0.4</version>
+    <time>1359109090</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>55a3a1b48325b335c21411e7546edee8</srcmd5>
+    <version>1.0.4</version>
+    <time>1364896497</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161567 from m_meister)</comment>
+    <requestid>161594</requestid>
+  </revision>
+  <revision rev="33" vrev="7">
+    <srcmd5>55a3a1b48325b335c21411e7546edee8</srcmd5>
+    <version>1.0.4</version>
+    <time>1379662682</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3a8c9666d963d39c27f17ae191a34601</srcmd5>
+    <version>1.0.7</version>
+    <time>1387174062</time>
+    <user>coolo</user>
+    <comment>- enable ppc64le 
+
+- Update to version 1.0.7
+  + No changelog available
+- Drop sysvinit support as no target systems use it anymore
+- Keep rcirq_balancer, make it symlink to /usr/sbin/service
+- Remove syslog.target in irqbalance.service
+  Please see http://lists.opensuse.org/archive/opensuse-packaging/2013-05/msg00102.html
+- Change Group for valid one</comment>
+    <requestid>210835</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>6c2103109d0984290653097e15c842ed</srcmd5>
+    <version>1.0.7</version>
+    <time>1403176111</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237530</requestid>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>6c2103109d0984290653097e15c842ed</srcmd5>
+    <version>1.0.7</version>
+    <time>1409301246</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>56c27d0a3bcd3e9c2302a2780124aae3</srcmd5>
+    <version>1.0.7</version>
+    <time>1410513545</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248599</requestid>
+  </revision>
+  <revision rev="38" vrev="6">
+    <srcmd5>b6bbdca071cd75d5bfe93a3f96784424</srcmd5>
+    <version>1.0.7</version>
+    <time>1411221041</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>250199</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ee9ff7c471c2bcd728edc6d1cf4b03f6</srcmd5>
+    <version>1.0.8</version>
+    <time>1422134401</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282577</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ae48560ab3a99ca3a9047da0176171c4</srcmd5>
+    <version>1.0.9</version>
+    <time>1426794944</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291211</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>b98bc0d8bfca9a73e1c14aaa6573e7d3</srcmd5>
+    <version>1.0.9</version>
+    <time>1447353438</time>
+    <user>dimstar_suse</user>
+    <comment>- enable build for %arm</comment>
+    <requestid>343149</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>732f65c282a6fa0e23fedeea639d17fb</srcmd5>
+    <version>1.0.9</version>
+    <time>1448400684</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345019</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>1429d744f97bf9915a8f455c0331602d</srcmd5>
+    <version>1.1.0</version>
+    <time>1454491125</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354610</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>1a88c4333a587b991ee80ce5fe350ec1</srcmd5>
+    <version>1.1.0</version>
+    <time>1456622831</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361230</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>e7b87becfe77322077ba75142fa73faa</srcmd5>
+    <version>1.1.0</version>
+    <time>1480693102</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>442691</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>c2c1d24f29763cbf249bd546aaaf891b</srcmd5>
+    <version>1.2.0</version>
+    <time>1484818559</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0:
+ * sort_irq logic rework to fix unintended ordering
+ * removal of the affinity_hint infrastructure as its not needed
+ * fixes for invalid cpumask parsing
+ * many other minior fixes (see git log)
+ * Aarch64 support
+ * live interactive monitoring of irqbalance and live adjustment with irqbalance-ui
+- remove fix-aarch64-support.patch: upstreamed
+- add install-man-pages.patch
+- add aarch64-compile-fixes.patch</comment>
+    <requestid>449922</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>82ed20a03b0d2c1bd7b7e09c55464190</srcmd5>
+    <version>1.2.0</version>
+    <time>1486552357</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455092</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>ccc2a1631206ef69d5d5046ad7de081d</srcmd5>
+    <version>1.2.0</version>
+    <time>1489178694</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477538</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>2cbab7c07f494eeb4a6cf977cfaea706</srcmd5>
+    <version>1.2.0</version>
+    <time>1512042077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545240</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>9ec894cf8dbd193c522db662e801217c</srcmd5>
+    <version>1.4.0</version>
+    <time>1539250801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639963</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>75b9713bdc38bd232fd8e4171701a8ba</srcmd5>
+    <version>1.6.0+git20190711.f7fdebb</version>
+    <time>1563259106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714762</requestid>
+  </revision>
+</revisionlist>

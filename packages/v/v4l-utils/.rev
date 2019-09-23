@@ -1,0 +1,272 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3c66e6d1508e6013ead49e96da342b1a</srcmd5>
+    <version>0.8.5</version>
+    <time>1312811159</time>
+    <user>saschpe</user>
+    <comment>The libv4l project name was changed to v4l-utils (see http://linuxtv.org/downloads/v4l-utils/). So I'm submitting v4l-utils as a new package. I'll submit a delete request in Factory for the libv4l package, to be accepted ONLY if this sr gets accepted</comment>
+    <requestid>78075</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3c66e6d1508e6013ead49e96da342b1a</srcmd5>
+    <version>0.8.5</version>
+    <time>1319182545</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>773db73d6b6b85ac530fed8583e5a31f</srcmd5>
+    <version>0.8.5</version>
+    <time>1321887026</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>92862</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>27e4312cc108e336ed0b215ba21076df</srcmd5>
+    <version>0.8.5</version>
+    <time>1323195066</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>6c1496d6ceafcf74a425f54459400336</srcmd5>
+    <version>0.8.5</version>
+    <time>1329405879</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104017</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>29b38d1ecd5178d5b44ea5b8c0861fc2</srcmd5>
+    <version>0.8.6</version>
+    <time>1330434992</time>
+    <user>coolo</user>
+    <comment>Update to v0.8.6, Spec file updates (forwarded request 107058 from adra)</comment>
+    <requestid>107064</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>53201ed0793524ab6fc1fd7bb34776b3</srcmd5>
+    <version>0.8.7</version>
+    <time>1334693005</time>
+    <user>coolo</user>
+    <comment>Update to v0.8.7, Rebased disable_rds_compilation.patch to apply cleanly (forwarded request 113287 from adra)</comment>
+    <requestid>113289</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b1876cfc511eddcb0131750a08d58718</srcmd5>
+    <version>0.8.8</version>
+    <time>1335190438</time>
+    <user>coolo</user>
+    <comment>Update to v0.8.8 (forwarded request 114958 from adra)</comment>
+    <requestid>114962</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>97af44642ec1ddbef571ec03269a1f2c</srcmd5>
+    <version>0.8.8</version>
+    <time>1338528291</time>
+    <user>coolo</user>
+    <comment>Added a patch (libdvbv5-Add-missing-includes.patch) in order to fix compilation due to missing includes (forwarded request 122964 from adra)</comment>
+    <requestid>122967</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>97af44642ec1ddbef571ec03269a1f2c</srcmd5>
+    <version>0.8.8</version>
+    <time>1340184304</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>63f07000b16e875f2c98cc5ca4786576</srcmd5>
+    <version>0.8.8</version>
+    <time>1350936782</time>
+    <user>coolo</user>
+    <comment>Add udev-rules-dir.patch and BuildRequires udev to fix build with new udev rules directory location. (forwarded request 138923 from fcrozat)</comment>
+    <requestid>138927</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>53464f45028770478517d95fefa47447</srcmd5>
+    <version>0.8.9</version>
+    <time>1352093653</time>
+    <user>coolo</user>
+    <comment>Update to version 0.8.9, Removed libdvbv5-Add-missing-includes.patch (fixed upstream) (forwarded request 140028 from adra)</comment>
+    <requestid>140029</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>53464f45028770478517d95fefa47447</srcmd5>
+    <version>0.8.9</version>
+    <time>1359110534</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>43ad9b250c95d63fb5276b9bc0eb34d2</srcmd5>
+    <version>0.8.9</version>
+    <time>1363950576</time>
+    <user>coolo</user>
+    <comment>- add use-openat-if-available.patch:
+  * prefer openat over deprecated open syscall (fixes aarch64) (forwarded request 159669 from dirkmueller)</comment>
+    <requestid>159818</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>43ad9b250c95d63fb5276b9bc0eb34d2</srcmd5>
+    <version>0.8.9</version>
+    <time>1379664902</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>5283fc7dc2a0b464d1fd8b21a03071ca</srcmd5>
+    <version>0.8.9</version>
+    <time>1397738620</time>
+    <user>scarabeus_factory</user>
+    <comment>fix compiled-in paths by specifying PREFIX and LIBDIR correctly during build</comment>
+    <requestid>230078</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>58a4f424b0590f03259e4049bf2ca1d0</srcmd5>
+    <version>1.0.1</version>
+    <time>1402947771</time>
+    <user>coolo</user>
+    <comment>Update to version 1.0.1, Updated build requirements, Removed/Added patches (forwarded request 236327 from adra)</comment>
+    <requestid>236344</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a095fd592032f2f42a14bd738a9d1744</srcmd5>
+    <version>1.2.1</version>
+    <time>1406556683</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242579</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>a095fd592032f2f42a14bd738a9d1744</srcmd5>
+    <version>1.2.1</version>
+    <time>1409303592</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1ddd2a6dcd06ad17ea6008e128e53825</srcmd5>
+    <version>1.6.2</version>
+    <time>1423216156</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283718</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>7dadec6e0c35e6fee7bb121fa206f208</srcmd5>
+    <version>1.6.2</version>
+    <time>1426485274</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup few conditions for better readability</comment>
+    <requestid>290667</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c08b2d8d572c806108f06d83a65b4743</srcmd5>
+    <version>1.6.3</version>
+    <time>1442474294</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330589</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5ac1d64d6b5c05c24322a9d9e1d79fa4</srcmd5>
+    <version>1.8.0</version>
+    <time>1443684495</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>333934</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2f5292a2ea3307588e2707f017ed3158</srcmd5>
+    <version>1.8.1</version>
+    <time>1452535851</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.8.1:
+  * See changelog file for in-depth decription of the fixes</comment>
+    <requestid>352568</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>c6a48ee0ceaa2412635117a851b539e6</srcmd5>
+    <version>1.8.1</version>
+    <time>1463652225</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>395082</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>4a24ee6e1c992f5c38390c0162b56677</srcmd5>
+    <version>1.10.0</version>
+    <time>1465847354</time>
+    <user>dimstar_suse</user>
+    <comment>- Run over with spec-cleaner
+
+- Update to version 1.10.0:
+  * Lots of changes: See ChangeLog for details.</comment>
+    <requestid>401375</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>462f878d932507f9f4ba3b4ef3472545</srcmd5>
+    <version>1.10.1</version>
+    <time>1470508576</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416871</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>23af8e72dd01f7289a923d1c88eeb3eb</srcmd5>
+    <version>1.12.2</version>
+    <time>1487462224</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457069</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9a86512aa41e7244e01f9675da0560b5</srcmd5>
+    <version>1.12.3</version>
+    <time>1492417300</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>485050</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c88ef6f77d8f1b5e68e7b713c0f497f3</srcmd5>
+    <version>1.12.5</version>
+    <time>1499754906</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508986</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f7ce6318bea517eb5904b25dbc66146a</srcmd5>
+    <version>1.14.1</version>
+    <time>1518095368</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573588</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>36b8c5707e25e847f69f106611514c47</srcmd5>
+    <version>1.14.2</version>
+    <time>1528492170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614069</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>5a1417e8b7ea1f169a00138e2791addd</srcmd5>
+    <version>1.14.2</version>
+    <time>1538672284</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639365</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>82b0d93d42e49d9990042257cc767672</srcmd5>
+    <version>1.14.2</version>
+    <time>1568982989</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729339</requestid>
+  </revision>
+</revisionlist>

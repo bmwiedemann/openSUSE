@@ -1,0 +1,234 @@
+-------------------------------------------------------------------
+Sat Jul  6 15:44:32 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Uodate to version 2.13.2:
+ - Fixed DeprecationWarning on python 3.7: "'U' mode is deprecated".
+
+-------------------------------------------------------------------
+Sat Feb 16 09:11:51 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 2.13.1:
+ - Documentation update for the new ``buildout query`` command.
+
+-------------------------------------------------------------------
+Sun Jan 27 18:40:17 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 2.13.0:
+  * Get information about the configuration with new command ``buildout query``.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:56:23 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Sep 17 19:55:23 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.12.2:
+ - Upon an error, buildout exits with a non-zero exit code. This now also works
+   when running with ``-D``.
+ - Fixed most 'Deprecation' and 'Resource' warnings.
+- update to version 2.12.1:
+ - zc.buildout now explicitly requests zc.recipe.egg >=2.0.6 now.
+
+-------------------------------------------------------------------
+Sat Jul  7 08:43:13 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 2.12.0:
+ - Add a new buildout option ``allow-unknown-extras`` to enable
+   installing requirements that specify extras that do not exist. This
+   needs a corresponding update to zc.recipe.egg. See `issue 457
+   <https://github.com/buildout/buildout/issues/457>`_.
+   zc.recipe.egg has been updated to 2.0.6 for this change.
+- update to version 2.11.5:
+ - Fix for `issue 295 <https://github.com/buildout/buildout/issues/295>`_. On
+   windows, deletion of temporary egg files is more robust now.
+
+-------------------------------------------------------------------
+Mon May 21 06:46:25 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 2.11.4:
+ - Fix for `issue 451 <https://github.com/buildout/buildout/issues/451>`:
+   distributions with a version number that normalizes to a shorter version
+   number (3.3.0 to 3.3, for instance) can be installed now.
+
+-------------------------------------------------------------------
+Sat Apr 14 12:54:46 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 2.11.3:
+ - Update to use the new PyPI at https://pypi.org/.
+
+-------------------------------------------------------------------
+Mon Mar 19 19:17:43 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 2.11.2:
+ - Fix for the #442 issue: AttributeError on
+   ``pkg_resources.SetuptoolsVersion``.
+
+-------------------------------------------------------------------
+Fri Mar  2 19:17:01 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 2.11.1:
+ - Made upgrade check more robust. When using extensions, the improvement
+   introduced in 2.11 could prevent buildout from restarting itself when it
+   upgraded setuptools.
+
+-------------------------------------------------------------------
+Sun Jan 21 21:24:40 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 2.11.0:
+ - Installed packages are added to the working set immediately. This helps in
+   some corner cases that occur when system packages have versions that
+   conflict with our specified versions.
+- update to verion 2.10.0
+ - Setuptools 38.2.0 started supporting wheels. Through setuptools, buildout
+   now also supports wheels! You need at least version 38.2.3 to get proper
+   namespace support.
+   This setuptools change interfered with buildout's recent support for
+   buildout.wheel <https://github.com/buildout/buildout.wheel>, resulting in
+   a sudden "Wheels are not supported" error message (see issue 435
+   <https://github.com/buildout/buildout/issues/425>). Fixed by making
+   setuptools the default, though you can still use the buildout.wheel if you
+   want.
+- remove test boundary condition from specfile
+
+-------------------------------------------------------------------
+Fri Dec  1 17:20:19 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to 2.9.6:
+ * Fixed: could not install eggs when sdist file name and package name had different case.
+
+-------------------------------------------------------------------
+Sat Sep 23 21:46:43 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to 2.9.5
+ * Use HTTPS for PyPI's index.  PyPI redirects HTTP to HTTPS by default
+   now so using HTTPS directly avoids the potential for that redirect
+   being modified in flight.
+
+-------------------------------------------------------------------
+Sat Aug 19 10:56:24 UTC 2017 - sebix+novell.com@sebix.at
+
+- singlespec
+- update to 2.9.4
+- rename to python-zc.buildout
+
+-------------------------------------------------------------------
+Sun Sep 29 13:37:33 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 2.2.1
+  + distutils scripts: correct order of operations on from ... import
+    lines (see https://github.com/buildout/buildout/issues/134).
+  + Add an --allow-site-packges option to bootstrap.py, defaulting to False.
+    If the value is false, strip any "site packages" (as defined by the
+    site module) from sys.path before attempting to import setuptools / pkg_resources.
+  + Updated the URL used to fetch ez_setup.py to the official,
+    non-version- pinned version.
+- Changes between version 2.2.0 and 2.1.0
+  + Handle both addition and subtraction of elements (+= and -=) on
+    the same key in the same section. Forward-ported from buildout 1.6.
+  + Suppress the useless Link to <URL> ***BLOCKED*** by --allow-hosts error
+    message being emitted by distribute / setuptools.
+  + Extend distutils script generation to support module docstrings and
+   _future__ imports.
+  + Refactored picked versions logic to make it easier to use for plugins.
+  + Use get_win_launcher API to find Windows launcher (falling back to resource
+   _string for cli.exe).
+  + Remove data_files from setup.py: it was installing README.txt in current
+    directory during installation (merged from 1.x branch).
+  + Switch dependency from distribute 0.6.x to setuptools 0.7.x.
+- Use download url as source url
+- Replace python-distribute with python-setuptools BuildRequires
+- Add documentation from tarball
+
+-------------------------------------------------------------------
+Mon Mar 25 02:20:16 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 2.1.0:
+  - Meta-recipe support
+  - Conditional sections
+  - Buildout now accepts a --version command-line option to print
+    its version.
+  Fixed: Builout didn't exit with a non-zero exit status if there was a
+         failure in combination with an upgrade.
+  Fixed: We now fail with an informative error when an old bootstrap
+         script causes buildout 2 to be used with setuptools.
+  Fixed: An error incorrectly suggested that buildout 2 implemented all
+         of the functionality of dumppickedversions.
+  Fixed: Buildout generated bad scripts when no eggs needed to be added
+         to sys.path.
+  Fixed: Buildout didn't honour Unix umask when generating scripts.
+         https://bugs.launchpad.net/zc.buildout/+bug/180705
+  Fixed: update-versions-file didn't work unless
+         show-picked-versions was also set.
+         https://github.com/buildout/buildout/issues/71
+
+-------------------------------------------------------------------
+Thu Feb 21 15:48:40 UTC 2013 - p.drouand@gmail.com
+- Update to version 1.7.1:
+  * Fixed: Constraints intended to prevent upgrading to
+    buildout-2-compatible recipes weren't expressed correctly, leading to
+    unintendional use of zc.recipe.egg-2.0.0a3. 
+- Update to version 1.7.0:
+  * Unless version requirements are specified, buildout won't upgrade
+    itself past version 1.
+  * Versions in versions sections can now be simple constraints, like <2.0dev
+    in addition to being simple versions.
+  * This is used to prevent upgrading zc.recipe.egg and zc.recipe.testrunner
+    past version 1.
+  * If buildout is bootstrapped with a non-final release, it won't downgrade 
+    itself to a final release.
+  * Fix: distribute 0.6.33 broke Python 2.4 compatibility
+    remove data_files from setup.py, which was installing README.txt in
+    current directory during installation [Domen Kožar]
+    Windows fix: use cli-64.exe/cli.exe depending on 64/32 bit and try cli.exe
+    if cli-64.exe is not found, fixing 9c6be7ac6d218f09e33725e07dccc4af74d8cf97
+ *  Windows fix: buildout init was broken, re.sub does not like a single backslash
+ *  fixed all builds on travis-ci
+    use os._exit insted of sys.exit after ugrade forking
+    Revert cfa0478937d16769c268bf51e60e69cd3ead50f3, it only broke a feature
+
+-------------------------------------------------------------------
+Tue Mar 13 14:11:41 UTC 2012 - alexandre@exatati.com.br
+
+- Regenerate spec file with py2pack.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:54:18 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Wed Oct 13 01:19:05 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.5.2.
+
+-------------------------------------------------------------------
+Mon Aug 30 01:34:50 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.5.1.
+
+-------------------------------------------------------------------
+Wed Aug 25 03:35:19 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.5.0.
+
+-------------------------------------------------------------------
+Fri Aug 20 16:48:44 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.4.4.
+
+-------------------------------------------------------------------
+Sat May  1 13:55:17 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.5.0b2.
+
+-------------------------------------------------------------------
+Mon Nov  2 11:51:11 UTC 2009 - alexandre@exatati.com.br
+
+- Update to 1.4.2.
+
+-------------------------------------------------------------------
+Fri Oct 16 00:13:54 UTC 2009 - alexandre@exatati.com.br
+
+- Initial package (1.4.1) for openSUSE.

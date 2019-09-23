@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3441803d5c80b7883ec4e972a74db9d0</srcmd5>
+    <version>105</version>
+    <time>1423130402</time>
+    <user>dimstar_suse</user>
+    <comment>eatmydata, a LD_PRELOAD library, used in openQA.</comment>
+    <requestid>283904</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>26885f4b6409499130506b2a23b1e30e</srcmd5>
+    <version>105</version>
+    <time>1427445691</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293247</requestid>
+  </revision>
+</revisionlist>

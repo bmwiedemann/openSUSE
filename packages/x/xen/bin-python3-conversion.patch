@@ -1,0 +1,448 @@
+Index: xen-4.10.0-testing/tools/misc/xencons
+===================================================================
+--- xen-4.10.0-testing.orig/tools/misc/xencons
++++ xen-4.10.0-testing/tools/misc/xencons
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ ##############################################
+ # Console client for Xen guest OSes
+@@ -27,13 +27,13 @@ def __recv_from_sock(sock):
+     while not stop:
+         try:
+             data = sock.recv(1024)
+-        except socket.error, error:
++        except socket.error as error:
+             if error[0] != errno.EINTR:
+                 raise
+         else:
+             try:
+                 os.write(1, data)
+-            except os.error, error:
++            except os.error as error:
+                 if error[0] != errno.EINTR:
+                     raise
+     os.wait()
+@@ -42,7 +42,7 @@ def __send_to_sock(sock):
+     while 1:
+         try:
+             data = os.read(0,1024)
+-        except os.error, error:
++        except os.error as error:
+             if error[0] != errno.EINTR:
+                 raise
+         else:
+@@ -50,7 +50,7 @@ def __send_to_sock(sock):
+                 break
+             try:
+                 sock.send(data)
+-            except socket.error, error:
++            except socket.error as error:
+                 if error[0] == errno.EPIPE:
+                     sys.exit(0)
+                 if error[0] != errno.EINTR:
+@@ -73,20 +73,20 @@ def connect(host,port):
+ 
+     if os.fork():
+         signal.signal(signal.SIGCHLD, __child_death)
+-        print "************ REMOTE CONSOLE: CTRL-] TO QUIT ********"
++        print("************ REMOTE CONSOLE: CTRL-] TO QUIT ********")
+         tcsetattr(0, TCSAFLUSH, nattrs)
+         try:
+             __recv_from_sock(sock)
+         finally:
+             tcsetattr(0, TCSAFLUSH, oattrs)
+-            print
+-            print "************ REMOTE CONSOLE EXITED *****************"
++            print()
++            print("************ REMOTE CONSOLE EXITED *****************")
+     else:
+         signal.signal(signal.SIGPIPE, signal.SIG_IGN)
+         __send_to_sock(sock)
+ 
+ if __name__ == '__main__':
+     if len(sys.argv) != 3:
+-        print sys.argv[0] + " <host> <port>"
++        print(sys.argv[0] + " <host> <port>")
+         sys.exit(1)
+     connect(str(sys.argv[1]),int(sys.argv[2]))
+Index: xen-4.10.0-testing/tools/misc/xencov_split
+===================================================================
+--- xen-4.10.0-testing.orig/tools/misc/xencov_split
++++ xen-4.10.0-testing/tools/misc/xencov_split
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ import sys, os, os.path as path, struct, errno
+ from optparse import OptionParser
+@@ -51,7 +51,7 @@ def xencov_split(opts):
+         dir = opts.output_dir + path.dirname(fn)
+         try:
+             os.makedirs(dir)
+-        except OSError, e:
++        except OSError as e:
+             if e.errno == errno.EEXIST and os.path.isdir(dir):
+                 pass
+             else:
+@@ -89,8 +89,8 @@ def main():
+ if __name__ == "__main__":
+     try:
+         sys.exit(main())
+-    except Exception, e:
+-        print >>sys.stderr, "Error:", e
++    except Exception as e:
++        print("Error:", e, file=sys.stderr)
+         sys.exit(1)
+     except KeyboardInterrupt:
+         sys.exit(1)
+Index: xen-4.10.0-testing/tools/misc/xenpvnetboot
+===================================================================
+--- xen-4.10.0-testing.orig/tools/misc/xenpvnetboot
++++ xen-4.10.0-testing/tools/misc/xenpvnetboot
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ #
+ # Copyright (C) 2010 Oracle. All rights reserved.
+ #
+@@ -17,9 +17,9 @@ import time
+ import string
+ import random
+ import tempfile
+-import commands
+ import subprocess
+-import urlgrabber
++import subprocess
++import urllib.request as request
+ from optparse import OptionParser
+ 
+ 
+@@ -58,7 +58,7 @@ def mount(dev, path, option=''):
+     else:
+         mountcmd = '/bin/mount'
+     cmd = ' '.join([mountcmd, option, dev, path])
+-    (status, output) = commands.getstatusoutput(cmd)
++    (status, output) = subprocess.getstatusoutput(cmd)
+     if status != 0:
+         raise RuntimeError('Command: (%s) failed: (%s) %s' % (cmd, status, output))
+ 
+@@ -79,7 +79,7 @@ class Fetcher:
+ 
+     def prepare(self):
+         if not os.path.exists(self.tmpdir):
+-            os.makedirs(self.tmpdir, 0750)
++            os.makedirs(self.tmpdir, 0o750)
+ 
+     def cleanup(self):
+         pass
+@@ -89,8 +89,8 @@ class Fetcher:
+         suffix = ''.join(random.sample(string.ascii_letters, 6))
+         local_name = os.path.join(self.tmpdir, 'xenpvboot.%s.%s' % (os.path.basename(filename), suffix))
+         try:
+-            return urlgrabber.urlgrab(url, local_name, copy_local=1)
+-        except Exception, err:
++            return request.urlretrieve(url, local_name)
++        except Exception as err:
+             raise RuntimeError('Cannot get file %s: %s' % (url, err))
+ 
+ 
+@@ -155,7 +155,7 @@ class TFTPFetcher(Fetcher):
+         suffix = ''.join(random.sample(string.ascii_letters, 6))
+         local_name = os.path.join(self.tmpdir, 'xenpvboot.%s.%s' % (os.path.basename(filename), suffix))
+         cmd = '/usr/bin/tftp %s -c get %s %s' % (host, os.path.join(basedir, filename), local_name)
+-        (status, output) = commands.getstatusoutput(cmd)
++        (status, output) = subprocess.getstatusoutput(cmd)
+         if status != 0:
+             raise RuntimeError('Command: (%s) failed: (%s) %s' % (cmd, status, output))
+         return local_name
+@@ -202,7 +202,7 @@ Supported locations:
+ 
+     if not opts.location and not opts.kernel and not opts.ramdisk:
+         if not opts.quiet:
+-            print >> sys.stderr, 'You should at least specify a location or kernel/ramdisk.'
++            print('You should at least specify a location or kernel/ramdisk.', file=sys.stderr)
+             parser.print_help(sys.stderr)
+         sys.exit(1)
+ 
+@@ -228,14 +228,14 @@ Supported locations:
+         fetcher = TFTPFetcher(location, opts.output_directory)
+     else:
+         if not opts.quiet:
+-            print >> sys.stderr, 'Unsupported location: %s' % location
++            print('Unsupported location: %s' % location, file=sys.stderr)
+         sys.exit(1)
+ 
+     try:
+         fetcher.prepare()
+-    except Exception, err:
++    except Exception as err:
+         if not opts.quiet:
+-            print >> sys.stderr, str(err)
++            print(str(err), file=sys.stderr)
+         fetcher.cleanup()
+         sys.exit(1)
+ 
+@@ -247,15 +247,15 @@ Supported locations:
+             for (kernel_path, _) in XEN_PATHS:
+                 try:
+                     kernel = fetcher.get_file(kernel_path)
+-                except Exception, err:
++                except Exception as err:
+                     if not opts.quiet:
+-                        print >> sys.stderr, str(err)
++                        print(str(err), file=sys.stderr)
+                     continue
+                 break
+ 
+         if not kernel:
+             if not opts.quiet:
+-                print >> sys.stderr, 'Cannot get kernel from loacation: %s' % location
++                print('Cannot get kernel from loacation: %s' % location, file=sys.stderr)
+             sys.exit(1)
+ 
+         ramdisk = None
+@@ -265,9 +265,9 @@ Supported locations:
+             for (_, ramdisk_path) in XEN_PATHS:
+                 try:
+                     ramdisk = fetcher.get_file(ramdisk_path)
+-                except Exception, err:
++                except Exception as err:
+                     if not opts.quiet:
+-                        print >> sys.stderr, str(err)
++                        print(str(err), file=sys.stderr)
+                     continue
+                 break
+     finally:
+@@ -280,7 +280,7 @@ Supported locations:
+     elif opts.output_format == 'simple0':
+         output = format_simple(kernel, ramdisk, opts.args, '\0')
+     else:
+-        print >> sys.stderr, 'Unknown output format: %s' % opts.output_format
++        print('Unknown output format: %s' % opts.output_format, file=sys.stderr)
+         sys.exit(1)
+ 
+     sys.stdout.flush()
+Index: xen-4.10.0-testing/tools/python/scripts/convert-legacy-stream
+===================================================================
+--- xen-4.10.0-testing.orig/tools/python/scripts/convert-legacy-stream
++++ xen-4.10.0-testing/tools/python/scripts/convert-legacy-stream
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ 
+ """
+@@ -39,16 +39,16 @@ def info(msg):
+             for line in msg.split("\n"):
+                 syslog.syslog(syslog.LOG_INFO, line)
+         else:
+-            print msg
++            print(msg)
+ 
+ def err(msg):
+     """Error message, routed to appropriate destination"""
+     if log_to_syslog:
+         for line in msg.split("\n"):
+             syslog.syslog(syslog.LOG_ERR, line)
+-    print >> sys.stderr, msg
++    print(msg, file=sys.stderr)
+ 
+-class StreamError(StandardError):
++class StreamError(Exception):
+     """Error with the incoming migration stream"""
+     pass
+ 
+@@ -637,7 +637,7 @@ def open_file_or_fd(val, mode):
+         else:
+             return open(val, mode, 0)
+ 
+-    except StandardError, e:
++    except Exception as e:
+         if fd != -1:
+             err("Unable to open fd %d: %s: %s" %
+                 (fd, e.__class__.__name__, e))
+@@ -723,7 +723,7 @@ def main():
+ if __name__ == "__main__":
+     try:
+         sys.exit(main())
+-    except SystemExit, e:
++    except SystemExit as e:
+         sys.exit(e.code)
+     except KeyboardInterrupt:
+         sys.exit(1)
+Index: xen-4.10.0-testing/tools/python/scripts/verify-stream-v2
+===================================================================
+--- xen-4.10.0-testing.orig/tools/python/scripts/verify-stream-v2
++++ xen-4.10.0-testing/tools/python/scripts/verify-stream-v2
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ 
+ """ Verify a v2 format migration stream """
+@@ -25,7 +25,7 @@ def info(msg):
+             for line in msg.split("\n"):
+                 syslog.syslog(syslog.LOG_INFO, line)
+         else:
+-            print msg
++            print(msg)
+ 
+ def err(msg):
+     """Error message, routed to appropriate destination"""
+@@ -33,7 +33,7 @@ def err(msg):
+         if log_to_syslog:
+             for line in msg.split("\n"):
+                 syslog.syslog(syslog.LOG_ERR, line)
+-        print >> sys.stderr, msg
++        print(msg, file=sys.stderr)
+ 
+ def stream_read(_ = None):
+     """Read from input"""
+@@ -86,7 +86,7 @@ def read_stream(fmt):
+         err(traceback.format_exc())
+         return 1
+ 
+-    except StandardError:
++    except Exception:
+         err("Script Error:")
+         err(traceback.format_exc())
+         err("Please fix me")
+@@ -114,7 +114,7 @@ def open_file_or_fd(val, mode, buffering
+         else:
+             return open(val, mode, buffering)
+ 
+-    except StandardError, e:
++    except Exception as e:
+         if fd != -1:
+             err("Unable to open fd %d: %s: %s" %
+                 (fd, e.__class__.__name__, e))
+@@ -168,7 +168,7 @@ def main():
+ if __name__ == "__main__":
+     try:
+         sys.exit(main())
+-    except SystemExit, e:
++    except SystemExit as e:
+         sys.exit(e.code)
+     except KeyboardInterrupt:
+         sys.exit(2)
+Index: xen-4.10.0-testing/tools/xenmon/xenmon.py
+===================================================================
+--- xen-4.10.0-testing.orig/tools/xenmon/xenmon.py
++++ xen-4.10.0-testing/tools/xenmon/xenmon.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ #####################################################################
+ # xenmon is a front-end for xenbaked.
+@@ -248,8 +248,8 @@ def display(scr, row, col, str, attr=0):
+         scr.keypad(0)
+         _c.echo()
+         _c.endwin()
+-        print "Your terminal screen is not big enough; Please resize it."
+-        print "row=%d, col=%d, str='%s'" % (row, col, str)
++        print("Your terminal screen is not big enough; Please resize it.")
++        print("row=%d, col=%d, str='%s'" % (row, col, str))
+         sys.exit(1)
+ 
+ 
+@@ -704,7 +704,7 @@ def main():
+         try:
+             writelog()
+         except:
+-            print 'Quitting.'
++            print('Quitting.')
+     stop_xenbaked()
+ 
+ if __name__ == "__main__":
+Index: xen-4.10.0-testing/tools/xentrace/xentrace_format
+===================================================================
+--- xen-4.10.0-testing.orig/tools/xentrace/xentrace_format
++++ xen-4.10.0-testing/tools/xentrace/xentrace_format
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ # by Mark Williamson, (C) 2004 Intel Research Cambridge
+ 
+@@ -7,8 +7,7 @@
+ import re, sys, string, signal, struct, os, getopt
+ 
+ def usage():
+-    print >> sys.stderr, \
+-          "Usage: " + sys.argv[0] + """ defs-file
++    print("Usage: " + sys.argv[0] + """ defs-file
+           Parses trace data in binary format, as output by Xentrace and
+           reformats it according to the rules in a file of definitions.  The
+           rules in this file should have the format ({ and } show grouping
+@@ -29,7 +28,7 @@ def usage():
+           this script may not be able to keep up with the output of xentrace
+           if it is piped directly.  In these circumstances you should have
+           xentrace output to a file for processing off-line.
+-          """
++          """, file=sys.stderr)
+     sys.exit(1)
+ 
+ def read_defs(defs_file):
+@@ -49,7 +48,7 @@ def read_defs(defs_file):
+ 
+         m = reg.match(line)
+ 
+-        if not m: print >> sys.stderr, "Bad format file" ; sys.exit(1)
++        if not m: print("Bad format file", file=sys.stderr) ; sys.exit(1)
+ 
+         defs[str(eval(m.group(1)))] = m.group(2)
+ 
+@@ -83,8 +82,8 @@ interrupted = 0
+ 
+ try:
+     defs = read_defs(arg[0])
+-except IOError, exn:
+-    print exn
++except IOError as exn:
++    print(exn)
+     sys.exit(1)
+ 
+ # structure of trace record (as output by xentrace):
+@@ -211,7 +210,7 @@ while not interrupted:
+         if cpu >= len(last_tsc):
+             last_tsc += [0] * (cpu - len(last_tsc) + 1)
+         elif tsc < last_tsc[cpu] and tsc_in == 1:
+-            print "TSC stepped backward cpu %d !  %d %d" % (cpu,tsc,last_tsc[cpu])
++            print("TSC stepped backward cpu %d !  %d %d" % (cpu,tsc,last_tsc[cpu]))
+ 
+         # provide relative TSC
+         if last_tsc[cpu] > 0 and tsc_in == 1:
+@@ -239,18 +238,20 @@ while not interrupted:
+ 
+         try:
+ 
+-            if defs.has_key(str(event)): 
+-                print defs[str(event)] % args
++            if str(event) in defs:
++                print(defs[str(event)] % args)
+             else:
+-                if defs.has_key(str(0)): print defs[str(0)] % args
++                if str(0) in defs: print(defs[str(0)] % args)
+         except TypeError:
+-            if defs.has_key(str(event)):
+-                print defs[str(event)]
+-                print args
++            if str(event) in defs:
++                print(defs[str(event)])
++                print(args)
+             else:
+-                if defs.has_key(str(0)):
+-                    print defs[str(0)]
+-                    print args
++                if str(0) in defs:
++                    print(defs[str(0)])
++                    print(args)
+ 
+ 
+-    except IOError, struct.error: sys.exit()
++    except IOError as xxx_todo_changeme:
++        struct.error = xxx_todo_changeme
++        sys.exit(1)

@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Mon Apr 15 18:49:11 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim storytelling from description.
+
+-------------------------------------------------------------------
+Mon Apr  8 22:55:42 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Run spec-cleaner
+- Update to 0.13:
+  * Add --filter/-f option to only show selected event types.
+  * Add -C/--command option to only show events for a particular
+    command.
+  * Fix #include file for major() and minor() to avoid a warning
+    with recent glibc.
+
+-------------------------------------------------------------------
+Mon Jan 12 12:58:52 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.9
+  + power-usage-report: Adjust parsing to also work for powertop 2.6.
+- Clean-up spec file
+- Fix project Url 
+- Use download Url as source
+- Remove make and gcc explicit requirements; it's implicit
+
+-------------------------------------------------------------------
+Mon Apr 15 07:16:20 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  no indication of GPL-3.0 "only" license in package
+
+-------------------------------------------------------------------
+Fri Apr 12 13:50:56 CEST 2013 - pth@suse.de
+
+- Initial package
+- Add explicit BuildRequires for glibc-devel, gcc and make

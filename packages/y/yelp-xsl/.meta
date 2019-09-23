@@ -1,0 +1,5 @@
+<package name="yelp-xsl" project="openSUSE:Factory">
+  <title>XSL stylesheets for the yelp help browser</title>
+  <description>This package contains XSL stylesheets that are used by the yelp help browser.</description>
+  <devel project="GNOME:Factory" package="yelp-xsl"/>
+</package>

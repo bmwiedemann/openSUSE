@@ -1,0 +1,238 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e520fd935f63f9c9bc8469f37117aff6</srcmd5>
+    <version>1.0.7</version>
+    <time>1480018866</time>
+    <user>dimstar_suse</user>
+    <comment>Popular backup solution, should be in Factory</comment>
+    <requestid>437726</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>31056a2648bd625f0db5a7d78eb071e4</srcmd5>
+    <version>1.0.7</version>
+    <time>1480786006</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>443093</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e71973dd55296b3d93e4d26813106603</srcmd5>
+    <version>1.0.9</version>
+    <time>1483955892</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448660</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a4f0cbf06c30b04131d268ca184f481c</srcmd5>
+    <version>1.0.10</version>
+    <time>1494938795</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495110</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b916c4d1693875b9ca93a3e3b4916f58</srcmd5>
+    <version>1.0.11</version>
+    <time>1501840801</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>513823</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>61f6656fa9085a247cc3fccc4639621f</srcmd5>
+    <version>1.1.0</version>
+    <time>1507571209</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to borgbackup 1.1.0 
+- Changelog:
+  * Major new features in the 1.1 release series are:
+    * borg recreate: remove files from existing archives and re-chunk or
+      re-compress them. This finally allows deduplication between legacy
+      Attic / Borg 0.xx archives and Borg 1.x archives. This is an
+      experimental feature.
+    * borg diff: show differences between two archives.
+    * borg mount: show all recorded versions of files with the &quot;versions view&quot;.
+    * borg list: more formatting options, including generation of hashes and
+      per-file chunk statistics.
+    * borg create: automatic compression mode (-C auto,zlib/lz4/...), faster
+      handling of many files, experimental support for inclusion patterns
+      (--patterns, --patterns-from), files cache mode control (mtime/ctime)
+    * borg export-tar: streaming export of GNU tar compatible archives.
+    * Archive comments
+    * BLAKE2b256-based encryption modes, and &quot;authenticated&quot; modes that provide
+      data integrity without encryption. These provide better performance than
+      the existing SHA-256-based modes on most hardware, except where the x86
+      SHA extensions are available (e.g. AMD Ryzen).
+    * Repository indices and the Borg cache now use checksums to detect bitrot
+      and other corruption.
+    * A documented JSON API has been added to the most vital commands
+      (borg list, borg info and borg create).
+    * Structured JSON logging is available for all commands.
+    * --prefix has been supplemented with --glob-archives (-a), --sort-by,
+      --last and --first options. These can be used for borg list, borg info,
+      borg mount, borg check, borg delete and borg prune.
+  * Quality of life improvements:
+    * options that imply output (--show-rc, --show-version, --list, --stats, (forwarded request 532595 from alarrosa)</comment>
+    <requestid>532608</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8482342815377e0129f77963ef645bd8</srcmd5>
+    <version>1.1.1</version>
+    <time>1508876558</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to borgbackup 1.1.1
+- Compatibility notes:
+  * When upgrading from borg 1.0.x to 1.1.x, please note:
+    * read all the compatibility notes for 1.1.0*, starting from 1.1.0b1.
+    * borg might ask some security-related questions once after upgrading.
+      You can answer them either manually or via environment variable.
+      One known case is if you use unencrypted repositories, then it will ask
+      about a unknown unencrypted repository one time.
+    * your first backup with 1.1.x might be significantly slower (it might
+      completely read, chunk, hash a lot files) - this is due to the
+      --files-cache mode change (and happens every time you change mode). You
+      can avoid the one-time slowdown by using the pre-1.1.0rc4-compatible mode
+      (but that is less safe for detecting changed files than the default).
+      See the --files-cache docs for details.
+  * The deprecated --no-files-cache is not a global/common option any more, but
+    only available for borg create (it is not needed for anything else).
+    Use --files-cache=disabled instead of --no-files-cache.
+  * The nodump flag (&quot;do not backup this file&quot;) is not honoured any more by
+    default because this functionality (esp. if it happened by error or
+    unexpected) was rather confusing and unexplainable at first to users.
+    If you want that &quot;do not backup NODUMP-flagged files&quot; behaviour, use:
+    borg create --exclude-nodump ...
+- Fixes:
+  * borg recreate: correctly compute part file sizes. fixes cosmetic, but
+    annoying issue as borg check complains about size inconsistencies of part
+    files in affected archives. you can solve that by running borg recreate
+    on these archives.
+  * bsdflags support: do not open BLK/CHR/LNK files, avoid crashes and slowness
+  * recreate: don't crash on attic archives w/o time_end
+  * don't crash on repository filesystems w/o hardlink support (forwarded request 535946 from alarrosa)</comment>
+    <requestid>535956</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c83fca8aabfd809c646fff8171d318b8</srcmd5>
+    <version>1.1.2</version>
+    <time>1510761349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540469</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8688e877a1c3eb85c92df18ff3572605</srcmd5>
+    <version>1.1.3</version>
+    <time>1513015064</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555920</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bf78c4effa90be6f27d843bef3149e13</srcmd5>
+    <version>1.1.4</version>
+    <time>1515623911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563314</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>7e061ac91cec648210d903ef7579bfa2</srcmd5>
+    <version>1.1.4</version>
+    <time>1517516995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571668</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>41ee81c29c711603defe1fe69f830eaf</srcmd5>
+    <version>1.1.4</version>
+    <time>1520021558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581926</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>68eb0d802cb740a8a314374d2892dfab</srcmd5>
+    <version>1.1.4</version>
+    <time>1520588799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584480</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2b89f0c483b1060f5c7492f555b01069</srcmd5>
+    <version>1.1.5</version>
+    <time>1524237947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593399</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a5ae42d3ef452b1375f31f913b612fc0</srcmd5>
+    <version>1.1.5</version>
+    <time>1525343588</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603006</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>055485cc65e5620a7de37e562cc439fb</srcmd5>
+    <version>1.1.5</version>
+    <time>1527583323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611721</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0f69e26d0729fa3c13ee84cea0bdec50</srcmd5>
+    <version>1.1.6</version>
+    <time>1529402161</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616273</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9d4fda4275492a4bcc8185982540ac4d</srcmd5>
+    <version>1.1.7</version>
+    <time>1534322154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628911</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>17e264d3cf69aea4cee5d3bd48ca2760</srcmd5>
+    <version>1.1.8</version>
+    <time>1544539801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657157</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>20ee0d74f170cc7b4e036455e4bc9b2f</srcmd5>
+    <version>1.1.9</version>
+    <time>1550573869</time>
+    <user>maxlin_factory</user>
+    <comment>- Modify patch fix-msgpack-requirement.patch to allow msgpack-0.5.4
+  as well. See patch for discussion.
+- Clean-up dependency blocks (forwarded request 674341 from frispete)</comment>
+    <requestid>674342</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>2d8b084b4a05bb30064009c1ee9fc289</srcmd5>
+    <version>1.1.9</version>
+    <time>1552207245</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682884</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d21c980bda6310e00808c5c3ec04b0fa</srcmd5>
+    <version>1.1.10</version>
+    <time>1558690342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704976</requestid>
+  </revision>
+</revisionlist>

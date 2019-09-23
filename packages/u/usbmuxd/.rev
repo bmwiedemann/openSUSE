@@ -1,0 +1,244 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e222d01678fc36683bbaac682ecb08c</srcmd5>
+    <version>1.0.3</version>
+    <time>1271893477</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/usbmuxd based on submit request 36628 from user FunkyM
+</comment>
+    <requestid>36628</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>be62ca82d943c51e9d31a06295b26b8f</srcmd5>
+    <version>1.0.4</version>
+    <time>1275259702</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/usbmuxd based on submit request 40853 from user FunkyM
+</comment>
+    <requestid>40853</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>be62ca82d943c51e9d31a06295b26b8f</srcmd5>
+    <version>1.0.4</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>be62ca82d943c51e9d31a06295b26b8f</srcmd5>
+    <version>1.0.4</version>
+    <time>1278678624</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>ec7454ae2f865833d8babcd729512420</srcmd5>
+    <version>1.0.4</version>
+    <time>1279542683</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/usbmuxd based on submit request 42737 from user FunkyM
+</comment>
+    <requestid>42737</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>47ef011731b241eb4062e452de29986c</srcmd5>
+    <version>1.0.5</version>
+    <time>1280502256</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/usbmuxd based on submit request 43884 from user a_jaeger
+</comment>
+    <requestid>43884</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7e8161f347957900004a7622d3ac6f3f</srcmd5>
+    <version>1.0.6</version>
+    <time>1289831386</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53012 from user coolo
+</comment>
+    <requestid>53012</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>7e70bddeb0c8554cf850720bd5c99eb2</srcmd5>
+    <version>1.0.6</version>
+    <time>1289831394</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53012
+</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>1260c85ce808920ffd34d0c09b20c009</srcmd5>
+    <version>1.0.6</version>
+    <time>1291994245</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55355 from user prusnak
+</comment>
+    <requestid>55355</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>e6856c91134589c108adaab7b5c46fe3</srcmd5>
+    <version>1.0.6</version>
+    <time>1291994254</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55355
+</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>e6856c91134589c108adaab7b5c46fe3</srcmd5>
+    <version>1.0.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>4657b2f521af10e915411d49dc7a1e94</srcmd5>
+    <version>1.0.7</version>
+    <time>1301558592</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65570 from user coolo
+</comment>
+    <requestid>65570</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>afed458bbc6a91eabbf694b46e8b584b</srcmd5>
+    <version>1.0.7</version>
+    <time>1301558600</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65570
+</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>c4edf24047dfaa21f944f2cd01292914</srcmd5>
+    <version>1.0.7</version>
+    <time>1309334577</time>
+    <user>saschpe</user>
+    <comment>Add 32-bit compat libs (depends on SR#74785)</comment>
+    <requestid>74788</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>a49303b31a1bd8924c4506a87ba74670</srcmd5>
+    <version>1.0.7</version>
+    <time>1309334588</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74788
+</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>a49303b31a1bd8924c4506a87ba74670</srcmd5>
+    <version>1.0.7</version>
+    <time>1319182543</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>968dce54d5a4995789b57f4b14894279</srcmd5>
+    <version>1.0.7</version>
+    <time>1327486150</time>
+    <user>coolo</user>
+    <comment>- remove _service, too fragile</comment>
+    <requestid>100898</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b80a9c4b22491d042af91373e8a3922b</srcmd5>
+    <version>1.0.8</version>
+    <time>1334692995</time>
+    <user>coolo</user>
+    <comment>license update: (GPL-2.0 or GPL-3.0) and LGPL-2.1+
+See README (forwarded request 113848 from babelworx)</comment>
+    <requestid>113849</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>b80a9c4b22491d042af91373e8a3922b</srcmd5>
+    <version>1.0.8</version>
+    <time>1340184301</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>a3861f610c5ccd7c764c9d01f26856c2</srcmd5>
+    <version>1.0.8</version>
+    <time>1350646746</time>
+    <user>coolo</user>
+    <comment>- Fix build with new udev rules location (forwarded request 138513 from fcrozat)</comment>
+    <requestid>138520</requestid>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>a3861f610c5ccd7c764c9d01f26856c2</srcmd5>
+    <version>1.0.8</version>
+    <time>1359110530</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>15a5e66e524630c7000c729c6142dfd7</srcmd5>
+    <version>1.0.8</version>
+    <time>1365147323</time>
+    <user>coolo</user>
+    <comment>Mention name of the patch I added in the previous request in the changes file, as requested by Benjamin Brunner:
+https://bugzilla.novell.com/show_bug.cgi?id=811801#c5 (forwarded request 162236 from marc_schuetz)</comment>
+    <requestid>162609</requestid>
+  </revision>
+  <revision rev="23" vrev="9">
+    <srcmd5>15a5e66e524630c7000c729c6142dfd7</srcmd5>
+    <version>1.0.8</version>
+    <time>1379664896</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="10">
+    <srcmd5>40f1354618eb6c864c58c2d436f272e7</srcmd5>
+    <version>1.0.8</version>
+    <time>1385705134</time>
+    <user>coolo</user>
+    <comment>- define _udevrulesdir only if not already in place
+- add systemd service %pre %post scriptlets
+- run %udev_rules_update if such macro is defined (forwarded request 208176 from elvigia)</comment>
+    <requestid>208374</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>cee6a049db7976b664fae9d26fb795f9</srcmd5>
+    <version>1.0.9git20140528</version>
+    <time>1405573075</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241033</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>cee6a049db7976b664fae9d26fb795f9</srcmd5>
+    <version>1.0.9git20140528</version>
+    <time>1409303584</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2bf45a47dc0fb17e410a419fb9fb8bca</srcmd5>
+    <version>1.1.0</version>
+    <time>1414613370</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>258329</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>1c6e254c346773262de0c4ec34457f3b</srcmd5>
+    <version>1.1.0</version>
+    <time>1496089198</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498838</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>1f4b4f289cbbca97eb6b84c5e349620d</srcmd5>
+    <version>1.1.0</version>
+    <time>1556312125</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>698174</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>fcd80ecc20e8247c76c515a82096c47f</srcmd5>
+    <version>1.1.0</version>
+    <time>1568025356</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729235</requestid>
+  </revision>
+</revisionlist>

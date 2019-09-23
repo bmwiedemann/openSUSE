@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bf47a09a0710d4d889722b376785ab4b</srcmd5>
+    <version>1.8.1</version>
+    <time>1460482308</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>381084</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3deb996c521743117db08516b5ff6fb8</srcmd5>
+    <version>1.9.1</version>
+    <time>1489345396</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477690</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>86477163da0252298bcfd59534bc2f19</srcmd5>
+    <version>1.9.7</version>
+    <time>1504206209</time>
+    <user>dimstar_suse</user>
+    <comment>fixed boo#1044087; removed wdm dependency; prevent 'have choice' for rubygem-addressable</comment>
+    <requestid>519591</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e8aebb103fb84d2a4a10a6ef0cda9406</srcmd5>
+    <version>1.9.7</version>
+    <time>1506679041</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529155</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>6531970cbd8502985670652e06f8e5ee</srcmd5>
+    <version>1.9.7</version>
+    <time>1508770352</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535821</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>9028a59e2babc6f44ebd1b69cd1553f6</srcmd5>
+    <version>1.9.7</version>
+    <time>1510045197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539001</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>031ca36ee11284ec63c5ac3e40d79348</srcmd5>
+    <version>1.9.7</version>
+    <time>1517323485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570871</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e727a8df576c32c8e5c0a270191c73a3</srcmd5>
+    <version>2.1.1</version>
+    <time>1530866523</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.1.1; adjusted to allow builds with rubygem-net-ssh 5.0.x</comment>
+    <requestid>620645</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>41c50065488df248a7826144c205e2b1</srcmd5>
+    <version>2.1.2</version>
+    <time>1532361640</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.1.2</comment>
+    <requestid>624450</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>28f3f7d99122c9b5d3196536f8f0d252</srcmd5>
+    <version>2.1.5</version>
+    <time>1542580409</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649965</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4871d76d3238456e65dcb2f74eee5393</srcmd5>
+    <version>2.2.0</version>
+    <time>1543311791</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.2.0, needs additional rubygem vagrant_cloud, that was submitted in sr#650613 and was already accepted</comment>
+    <requestid>651996</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7385e3fc71d35d3cfe011b9af0ce18fc</srcmd5>
+    <version>2.2.2</version>
+    <time>1551784732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670890</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>5ffbd689e7d5cefafff4dcf3c94ef76f</srcmd5>
+    <version>2.2.2</version>
+    <time>1552299367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683594</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6447d62e7a9fa82cd773f85232ec8e49</srcmd5>
+    <version>2.2.4</version>
+    <time>1553635963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687930</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>1b27ff213914650b8e4864246dcaf651</srcmd5>
+    <version>2.2.4</version>
+    <time>1556622405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699490</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>91f6cd9625fd31850f1eb88944e5b6ca</srcmd5>
+    <version>2.2.5</version>
+    <time>1568624001</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731069</requestid>
+  </revision>
+</revisionlist>

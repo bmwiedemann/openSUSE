@@ -1,0 +1,571 @@
+-------------------------------------------------------------------
+Fri Jun  7 10:47:41 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.26.1:
+  * Changes to build the kmod with 5.1 kernels [#1413]
+  * Explicitly disable psl to address build failures on MAC OS [#1417]
+  * Fix handling of container metadata in "infra" events [#1418]
+- Changes for version 0.26.0:
+  * Perform docker metadata fetches asynchronously: When new containers are discovered, fetch metadata about the container asynchronously, which should significantly reduce the likelihood of dropped system call events. [#1326] [#1378] [#1374] [#1381] [#1373] [#1382] [#1388] [#1389] [#1384] [#1392] [#1396] [#1411]
+  * Add field to display time in ISO 8601 UTC [#1317] [#1360]
+  * Performance improvements of ring buffer processing [#1372]
+  * Support major/minor device numbers for fd events [#1315] #1383]
+  * Add the ability to prepend encoded log severity in the log message [#1327]
+  * Raise the iov limit in eBPF [#1390]
+  * Changes to pull user event logging out into a separate component. [#1375]
+  * Log a debug message when looking up an IP address of an incomplete container [#1398]
+  * Support cri-o container metadata caching [#1399]
+  * Logging API with lazy parameter evaluation [#1394]
+  * Support BPM container type [#1319]
+  * Fix bug in fullcapture range check [#1386]
+  * Allow chisels to receive the full content of big buffers. [#1361]
+  * start the analyzer before forcing next for a scap file [#1366]
+  * Create a grpc_channel_registry for all channels [#1369]
+  * Modified the behavior of fullcapture port range [#1370]
+  * Check file before dereferencing [#1397]
+  * Fix build for older kernels (<3.9) [#1400]
+  * Added -fno-stack-protector to avoid clang errors [#1401]
+  * Addl loop prevention for traverse_parent_state [#1411]
+  * Add interfaces for async metrics collection [#1346]
+  * Use epel 7-11 (7-9 is no longer available) [#1362]
+  * Make some global variables related to fetching container state thread-local [#1356]
+  * Allow downloading prebuilt modules without SSL verification [#1358]
+  * add test helper to container manager. [#1365]
+  * Cleanup old docker images after building a new ebpf-probe-builder [#1367]
+  * valgrind clean for analyzer end to end test [#1387]
+  * flush flags change to new namespace, add code enabling easy use of sinsp_threadinfo in std::set/map [#1395]
+  * add friend class for unit testing [#1406]
+- Changes for version 0.25.0:
+  * Support Linux 5.0
+  * CRI container runtime support
+  * runtimeSpec.linux returned by containerd is an object, not an array (#1343)
+  * Fix gRPC build with gcc 7 (#1322)
+  * CRI-O container support (#1310)
+  * Fix check for Docker pause containers [SMAGENT-1305] (#1306)
+  * Detect CRI pod sandbox containers (#1297)
+  * Container Runtime Interface support (#1277)
+  * Prebuilt probes
+  * Prebuild minikube kernel modules (#1294)
+  * Build probe modification to include Fedora-Atomic. [SMAGENT-1251] (#1293)
+  * Fix for newer versions of LXC not being detected (#1345)
+  * [SMAGENT-1433] pull legacy GCC artifacts from local cache as debian no longer supports (#1342)
+  * Use TBB_INCLUDE_DIR for consistency w/ falco agent (#1329)
+  * SMAGENT-1297: Rebuild gcc-plugins before building kernel module (#1305)
+  * Modified BPF probe builder (#1301)
+  * Call set*ent() before reading the user/group NSS database (#1341)
+  * Properly initialize default settings for tracers (#1339)
+  * Fix bpf ptrace filler (#1338)
+  * Fix potential memory leak in libelf (#1337)
+  * Fix case where fclose could be called twice. (#1330)
+  * Handle mmap failure gracefully (#1324)
+  * Add stream event details in csysdig output (#1335)
+  * SMAGENT-1400: Make sinsp_logger thread-safe (#1333)
+  * Never drop socket syscalls to ensure we have fdinfo for subsequent binds. SMAGENT-1270 (#1312)
+  * Infer fd info for sendto system call [SMAGENT-1282] (#1304)
+  * Async framework base [SMAGENT-1247] (#1303)
+  * Handle events for unknown threads after scap start [SMAGENT-1082] (#1296)
+  * Add ability to print filtercheck field names only (#1288)
+- Add patches to fix build issues with shared components:
+  * sysdig-include.patch
+  * sysdig-linking.patch
+
+-------------------------------------------------------------------
+Wed Feb 13 11:44:17 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.24.2:
+  * Added the ability to specify a set of ports where data is captured with bigger snaplen (20000) (#1256)
+  * Made fd resolution work for getsockopt (#1280)
+  * Check getsockopt event before accessing it (#1284)
+  * Fixed snprintf placeholder for size_t/{u,}int64_t (#1279)
+  * Disabled reading environment from /proc by default (#1272)
+  * Excluding suppressed processes during initial /proc scan (#1269)
+  * Fixed Windows build in CYGWIN environment (#1270)
+  * Changes to eliminate warnings with gcc 5.4 (#1271)
+  * Trigger build errors for extra compiler warnings (#1265)
+  * Handling thread table overflows (#1263)
+  * Deleted threadinfos that we failed to add to the thread table (#1260)
+  * Reduce CPU usage (#1261)
+  * Lua parser interfaces (#1254)
+  * Fixed a compile issue when trying to make the project using VS2017 on Windows 10 (#1248)
+  * Added ifdef guards to socket options with (#1257),(#1258)
+  * Improved getsockopt()/setsockopt() support (#1188)
+  * Fix fd.net comparisons with in operator (#1252)
+  * Only check out sysdig for initial invocation (#1251)
+  * Build probe modules only with sysdig directory (#1244)
+  * Fixed spelling and copy/pased comment errors (#1250)
+- Changes for version 0.24.1:
+  * Fix struct packing
+- Changes for version 0.24.0:
+  * Switch to Apache 2.0 License: All userspace code moves from GPL to Apache 2 license. Kernel module switches to dual-license MIT + GPLv2. Enjoy! [#1233] [#1242]
+  * Complete IPv6 Support. Sysdig previously had partial IPv6 support, but this release rounds out full support for ipv6 addresses in filter fields, csysdig, etc. [#1204]
+  * loginuid support. Add user.loginuid & user.loginname to track login users, which do not change despite sudo/su operations. [#1189] [#1214] [#1218] [#1219] [#1227]
+  * Track connections by domain name: New fields fd.*ip.name allow matching connection ips with resolved domain names. [#1213]
+  * Add endswith filter to support suffix matching on strings [#1209]
+  * Add minikube support to the kernel module probe loader script [#1205]
+  * Improve error string return handling at startup/when reading capture files [#1215]
+  * Disable boot2docker kernel module builds for pre-built kernel modules [#1232]
+  * eBPF Support Improvements/Fixes [#1235] [#1236] [#1237] [#1239]
+  * Improve/fix windows build [#1242]
+  * Don't drop setns events when in dropping mode [#1198]
+  * At startup, wait a bit for an existing sysdig-probe module to be unloaded before loading a new one [#1201]
+  * Support extracting container metadata for containers spawned with just an image id and not an image name [#1207]
+  * Properly extract image metadata when the image contains a host:port component [#1206]
+  * Minor compilation bug fixes [#1212]
+  * Small packaging fixes [#1228] [#1229] [#1231]
+  * Fix an inconsistency when writing capture files containing unknown fds [#1234]
+
+-------------------------------------------------------------------
+Tue Sep  4 12:33:45 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.23.1:
+  * Fix ia32 check on BPF for 4.14 and 4.15 kernels
+  * Adjust wrong events lengths when reading older captures [#1195]
+  * More flexible captures: the flexibility of the capture format/reading process has been improved to allow backward and forward-compatibility [#1163]
+  * Support logging elapsed time on tracers [#1186]
+  * Fixes on custom containers support [#1170]
+  * Avoid invalid free() calls around m_suppressed_pointers [#1184]
+  * Properly set the address list total length when reading a capture [#1185]
+
+-------------------------------------------------------------------
+Mon Jul 23 07:58:49 UTC 2018 - mpluskal@suse.com
+
+- Update to version 0.22:
+  * eBPF support for sysdig: eBPF as the instrumentation backend in kernel space (beta)
+  * Parsing an argument passed to sysdig-probe-loader as a custom URL for the kernel module like -e SYSDIG_PROBE_URL=http://54.183.253.176:52354 [#1085]
+  * Several changes to expand the set of events that are skipped by falco, and to centralize the logic for knowing which events to skip [#1105]
+  * Improved proc lookup in libsinsp [#1107] [#1110] [#1112]
+  * Improved performance [#1126] [#1120] [#1121] [#1137]
+  * In dropping mode, drop events that don't change system state [#1123]
+  * Introduce non-STL thread table API [#1142]
+  * Add the ability to ignore events by process name (comm). At the scap level, ignoring is by tid. At the sinsp level, as threads are added/removed from the thread table the comm is checked against a set of comms and if found the tid is added to the scap-level ignore hash table [#1139]
+  * The container_manager can now receive callbacks to call when a new container is detected or an inactive one is removed [#1133]
+  * Add support for adding custom container types alongside Docker etc (on sinsp level) [#1149]
+  * Parse and store three new container_info fields: repository, tag and digest [#1127]
+  * Skip proc scan in sinsp_dumper w/ threads_from_sinsp=true [#1164]
+  * Allow k8s filterchecks with analyzer [#1160]
+  * When creating the sysdig docker image, add the ability to directly set the sysdig version via the environment variable SYSDIG_VERSION [#1166]
+- Drop upstreamed patch:
+  * sysdig_proto_ops_getname.patch
+
+-------------------------------------------------------------------
+Mon Jun 25 11:59:35 UTC 2018 - joop.boonen@opensuse.org
+
+- Patch sysdig_proto_ops_getname.patch to fix build
+  - Seth Forshee : Update for proto_ops.getname() prototype changes in Linux 4.17 (#1114)  
+
+-------------------------------------------------------------------
+Thu May 10 08:08:38 UTC 2018 - mpluskal@suse.com
+
+- Update to version 0.21.0:
+  * Track Versioning in Capture Files: With this release, we will increment the pcap major/minor version in capture files when a release adds new event types, additional event fields, etc. that are incompatible with earlier sysdig versions. [#1081] [#1084]
+  * Add s390x as a platform using Docker [#1029]
+  * When saving container information, also store certain mesos-related environment information associated with the first process in the container [#1021] [#1057]
+  * New filtercheck fd.connected returns whether or not a network connection file descriptor is actually bound to a remote endpoint. Think of udp sockets that only use sendto() vs udp sockets that use connect() and then send(), or tcp sockets that have been created but not connect()ed yet. [#1051]
+  * New filtercheck fd.name_changed is true when an event changes the connection information for a connection fd. This can occur in some cases such as udp connections where a connect() changes the connection information for a fd.
+  * Make the thread table size configurable via sinsp::set_max_thread_table_size() [#1056]
+  * Add support for new AWS Linux 2 AMI [#1058]
+  * Add process group id to execve events [#1044] [#1080]
+  * Expand the set of system calls returned by the driver when in dropping mode [#1075]
+  * Handle AT_FDCWD arguments to linkat, openat, etc. and resolve the path relative to the cwd [#1020]
+
+-------------------------------------------------------------------
+Thu Mar  1 12:31:38 UTC 2018 - mpluskal@suse.com
+
+- Modernise spec file using spec-cleaner
+
+-------------------------------------------------------------------
+Thu Feb  8 21:05:25 UTC 2018 - mpluskal@suse.com
+
+- Update to version 0.20.0:
+  * Use dithered boxes to increase the number of available colors for spectrogram/subsecoffset views [#961] [#963] [#966]
+  * Add the ability to log json parse errors to a separate log file [#975] [#981] [#990]
+  * Update the embedded jsonpp implementation to 0.10.6 [#975] [#982]
+  * Reduce inactive container scan time from 20 minutes to 30 seconds [#985]
+  * Added the ability to parse and represent RAW sockets [#991]
+  * Handle finit_module syscall [#996] [#1001]
+  * Add error message when scap_open() is called with incorrect mode [#997]
+  * Use explicit versions for all Docker API Endpoints [#1000]
+  * Report more detailed errors when PPM_IOCTL_GET_N_TRACEPOINT_HIT fails [#1016]
+  * Add support for bpf/seccomp syscalls [#1031] [#1033]
+  * When trying to build the kernel module using dkms fails, include dkms.log output along with the failure [#1038]
+
+-------------------------------------------------------------------
+Mon Oct  9 13:28:50 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.19.1:
+  * Fix a compilation issue on old versions of kernels 2.6.32 shipped by RHEL/CentOS
+- Changes for version 0.19.0:
+  * Add per-cpu counters when a tracepoint is hit [#947]
+  * mq_unlink syscall reports as ptrace [#927]
+  * Fixed copy-paste typo [#946]
+  * expose the event masking/unmasking mechanism at the inspector level [#951]
+  * Fix targetViewFilter for "Accessed Files" in wsysdig_summary chisel [#952]
+  * Various improvements and fixes for Sysdig Inspect
+- Changes for version 0.18.0:
+  * Changed language of CLA to also cover government contributions [#902]
+  * Support mapped container docker networking mode, currently used by k8s pods [#922]
+  * Allow an external event capture dumper object to be used together with an inspector object [#912]
+  * Handle reading large execve args/env that might otherwise cause a page fault [#920]
+  * Add container events (container start/stop/etc) to capture files. In the future, will also be used for orchestrator information. [#935]
+  * Add the executable path as a filterable/displayable item proc.exepath [#845] [#934]
+  * Small README changes [#936]
+  * Support additional flags to clone() syscall [#909]
+  * Support page faults as events [#904]
+  * Support for upcoming visualization product [#931]
+  * Compilation fixes for sysdig monitor agent [#942]
+  * Fix minor problems found by valgrind [#938]
+  * Fix crash when reading large messages from docker daemon [#932]
+  * Better cleanup of failed installation of the sysdig driver under coreos [#926]
+  * Ensure that a parent's ptid is set when an execve fills in information on a new process [#914]
+  * Fix IN operator so it works with non-string values [#913]
+  * fix compile errors with newer versions of libcurl [#895] [#911]
+  * fix compile errors when O_DIRECTORY not defined [#907]
+  * Use session id, not process group id, for proc.sid [#904] [#905]
+  * Small docs fixes related to container.mount.* [#901]
+  * Update installation script to use latest version of EPEL repository [#897]
+- Drop no longer needed sysdig-curlbuild.patch
+
+-------------------------------------------------------------------
+Tue Sep  5 08:17:42 UTC 2017 - mpluskal@suse.com
+
+- Fix building with recent curl (gh#draios/sysdig#895):
+  * sysdig-curlbuild.patch
+
+-------------------------------------------------------------------
+Mon Jul 31 20:55:47 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.17.0 (boo#1051562):
+  * New features:
+    + Support netlink sockets [#809]
+  * Bug fixes:
+    + Fix a bug on cgroups parsing that prevented sysdig to start [#835]
+    + Allow sysdig to read k8s state from very large k8s environments [#856]
+    + Improve compatibility with older linux kernels [#889]
+    + Improve rkt detection by checking the existence of files into /var/lib/rkt [#893]
+
+-------------------------------------------------------------------
+Mon May  8 12:20:34 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.16.0:
+  * New features:
+    + support for Kernel 4.11
+    + sysdig -N is now the default option, server port decoding can be reenabled with -R
+    + Decode unshare syscall
+  * Bugfixes:
+    + Fix rkt detection for containers created before sysdig runs
+    + Fix container detection if docker itself is running inside a container
+    + Fix detection of lxc containers
+    + Fix compilation issues on RHEL5
+    + Fix memory leak on spy_users chisel
+   
+-------------------------------------------------------------------
+Sun Apr  2 07:59:03 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.15.1 (boo#1032025):
+  * Bug fixes:
+    + Fixed driver compilation issues on armv6l
+    + Fixes on Kubernetes support
+    + Regression on rkt detection #748
+    + Fixed high cpu usage when sysdig was used with -M parameter, #783
+    + Fixed a memory leak #772
+
+-------------------------------------------------------------------
+Tue Feb 28 07:48:27 UTC 2017 - joop.boonen@opensuse.org
+
+- Update to version 0.15.0
+  * New Features
+    + Support for Linux Kernel 4.10
+    + Use /proc/<pid>/status instead of custom ioctl to get process vpid for kernels >= 4.1
+  * Bug fixes
+    + Various fixes on Kubernetes ingestion
+    + Fix some happening deadlocks in the driver when ioctl were exiting with error
+    + Fix mkdir and rmdir events, they were skipped in case of page faults
+    + Bugfix on topports_server chisel
+    + Avoid some cases of infinite loop when evaluating filters like proc.aname
+  * Fixed sysdig-no_return_random.patch https://github.com/draios/sysdig/issues/734
+
+-------------------------------------------------------------------
+Wed Jan 25 07:59:18 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.14.0:
+  * JSON output is not: an object per event separated by newline,
+    instead of objects inside array as before.
+  * New filter proc.pcmdline, which represents the full command
+    line (proc.name + proc.args) of the parent of the process
+    generating the event
+  * Fixes for kernel version 4.9.3
+  * Improved detection of Mesos containers
+  * Fix compilation with HAS_CAPTURE disabled on Linux
+  * Fixes for merged captures support
+- Add sysdig-no_return_random.patch
+- Enable building on more platforms
+
+-------------------------------------------------------------------
+Sat Dec 24 11:29:45 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.13.0 (boo#1017181):
+  * Ability to open concatenated capture files
+  * evtin.* fields can be used also for displaying now
+  * Fix driver for Kernel 4.9
+  * Fix on IPv4 mapped IPv6 parsing
+  * Fix memory leak #694
+  * Fix issue #687 about connecting to an K8s API server via HTTPS
+
+-------------------------------------------------------------------
+Tue Nov 15 10:33:24 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.12.1:
+  * Compilation issues when using non-bundled OpenSSL #672
+  * Compilation issues under S390 architecture
+  * Various issues on k8s parsing
+  * Stale thread info when parsing processes within containers #665
+  * Avoid getting cwd from driver, causes issues on Kernel 4.8
+- Changes for version 0.12.0:
+  * New filters container.mount.* to match container mount points
+  * New filter container.privileged to match containers running in
+    privileged mode
+  * Support latest kubernetes features: k8s.deployment.* and
+    k8s.rs.* filters are now available
+  * Added glob operator for strings, works as classic shell glob
+    path matcher
+  * Added pmatch operator
+  * Add less package on docker image
+- Drop upstreamed sysdig-do-not-use-private-jq-api.patch
+- Enable building on s390x
+
+-------------------------------------------------------------------
+Sat Aug 20 05:42:07 UTC 2016 - mpluskal@suse.com
+
+- Use current macros for KMP building
+  * drop sysdig-kmp-preamble
+- Use exclusivearch instead of excluding architectures
+
+-------------------------------------------------------------------
+Fri Jul 15 14:51:11 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.11.0:
+  * Support for tracers. A way to add user level events to sysdig 
+    stream. Seeannouncement blog post.
+  * New csysdig views: Traces List, Traces Summary, Traces 
+    Spectogram
+  * New evtin.* and span.* filters startswith operand for strings, 
+    ex: fd.name startswith /etc
+  * evt.is_open_{read,write} fields, true or false if an event is 
+    an open() in read or write
+  * Improved performances of Kubernetes metadata parsing.
+  * Bug fixes for IPv6
+- Add sysdig-do-not-use-private-jq-api.patch to allow building
+  with system JQ
+
+-------------------------------------------------------------------
+Sun Jul  3 20:18:27 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.10.1:
+  * Minor bugfixes, mostly related to Kubernetes and Mesos parsing
+
+-------------------------------------------------------------------
+Fri Jun 17 07:15:22 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.10.0:
+  * setsid event
+  * proc.sid filter field: the session id of the process 
+    generating the event
+  * proc.sname filter field: the name of the current process 
+    session leader
+  * --force-term-compat command line option: try to configure 
+    simple terminal
+  * settings (xterm-1002) that work better with terminals like 
+    putty
+  * Many minor bugfixes
+  * builds with gcc6 (boo#985121)
+- Use pkgconfig() style dependencies
+- Build with lua-5.1 as builds fail with lua-5.2 and later
+
+-------------------------------------------------------------------
+Tue Apr 12 18:33:49 UTC 2016 - mpluskal@suse.com
+
+- Update to 0.9.0
+	* Mesos and Marathon support:
+		+ csysdig views: Mesos Tasks, Mesos Frameworks, Marathon Apps, 
+      arathon Groups
+		+ -m sysdig/csysdig parameter to specify URLs for Mesos Master 
+      Marathon API
+		+ -pm sysdig parameter to get a Mesos-friendly event output
+		+ Filter fields: mesos.task.name, mesos.task.id,
+      mesos.task.label, mesos.task.labels, mesos.framework.name, 
+      mesos.framework.id, marathon.app.name, marathon.app.id, 
+      marathon.app.label, marathon.app.labels, marathon.group.name, 
+      marathon.group.id
+	* icontains filter comparison operator: case-insensitive string 
+    comparison
+	* Support for SSL based authentication and bearer token 
+    authentication against the Kubernetes API server. Previously, 
+    SSL was just supported for CA verification. See the updated 
+    documentation for -K
+	* New actions on csysdig views: lsof and renice
+	* New network filter fields that support a CIDR notation 
+    (e.g. 127.0.0.1/24): fd.net, fd.cnet, fd.snet, fd.lnet, fd.rnet
+
+-------------------------------------------------------------------
+Sat Feb  6 17:21:53 UTC 2016 - mpluskal@suse.com
+
+- Update to 0.8.0
+  * Bug fixes
+    + Better terminal mouse handling for csysdig
+    + Minor bugfixes
+  * New and updated features
+    + rkt support (when running sysdig in a container, bind 
+      mounting the rkt directory is necessary, e.g. -v 
+      /var/lib/rkt:/host/var/lib/rkt:ro for Docker)
+    + chroot event
+    + container.type: the container type, e.g. docker or rkt
+    + Prebuild sysdig-probe for Debian kernels
+
+-------------------------------------------------------------------
+Tue Jan 26 19:36:57 UTC 2016 - mpluskal@suse.com
+
+- Update to 0.7.1
+  * Fix sysdig-probe compilation for kernel < 3.4.0
+  * Fix compilation on OSX
+- Changes for 0.7.0
+  * Fix sysdig-probe for kernel 4.4
+  * Fix a remotely possible deadlock during ioctl calls
+  * Fix Kubernetes support when data returned from the API server 
+    is particularly big
+  * Minor bugfixes
+  * Spectrogram views in csysdig: spectro_all (System call latency 
+    spectrogram) and spectro_file (File I/O latency spectrogram)
+  * Ability to authenticate to a Kubernetes API server using a 
+    certificate, via -K <file_name> or --k8s-api-cert=<file_name>.
+    Can also be specified via the environment variable 
+    SYSDIG_K8S_API_CERT
+  * Ability to sort columns in csysdig views using the keyboard 
+  * --filter-proclist: apply the filter to the process table
+  * -M: add the possibility to stop collecting after X seconds 
+    evt.latency.quantized: 10-base log of the delta between an 
+    exit event and the correspondent enter event evt.latency.human: 
+    delta between an exit event and the correspondent enter event, 
+    as a human readable string (e.g. 10.3ms)
+
+-------------------------------------------------------------------
+Sat Dec 19 11:14:55 GMT 2015 - aspiers@suse.com
+
+- Fix .spec file bug which was causing Frankenstein kernel modules:
+  https://github.com/draios/sysdig/issues/496#issuecomment-165929462
+
+-------------------------------------------------------------------
+Fri Dec 18 08:22:11 UTC 2015 - mpluskal@suse.com
+
+- Exclude archs on which build fails
+
+-------------------------------------------------------------------
+Thu Dec 17 21:47:36 GMT 2015 - aspiers@suse.com
+
+- Fix whitespace issues in .spec and .changes files
+- Remove duplicate %{_datadir} directory from %files
+
+-------------------------------------------------------------------
+Thu Dec 17 20:28:01 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.6.0
+  * Full support to Kubernetes, even when saving events to a trace
+    file
+  * semget system event
+  * access system event
+  * Automatically build sysdig-probe for boot2docker releases
+  * Properly filter process table serialization in a trace file
+    when a process filter is used
+  * Some csysdig actions now ask the user for confirmation
+  * various bugfixes
+  * drop GH_496_fix.patch
+
+-------------------------------------------------------------------
+Sun Dec 13 19:33:06 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.5.1
+  * Fix connection to HTTPS Kubernetes API servers
+  * Properly compile bundled OpenSSL
+  * Fix sysdig-probe build on Linux 4.3
+  * Minor bugfixes
+- Changes for 0.5.0:
+  * Full Kubernetes support!
+  * Add a convenient USE_BUNDLED_DEPS CMake option to
+    enable/disable all bundled dependencies at once.
+  * New build/runtime dependencies: libb64, libcurl, openssl.
+- Add GH_496_fix.patch
+- Update dependencies and not use anything bundled
+
+-------------------------------------------------------------------
+Wed Nov  4 21:45:48 UTC 2015 - rpm@fthiessen.de
+
+- Updated to 0.4.0, notable changes:
+  * Support ia32 emulation on 64bit kernels
+  * HTTP chisels now support UNIX sockets (e.g. Docker API)
+  * New events: mount, umount
+  * Support Docker containers when running in a different cgroup
+    root layout
+  * csysdig view actions: press F7 or F8 while inside a csysdig
+    view to see what actions are supported
+
+-------------------------------------------------------------------
+Wed Nov  4 18:48:03 UTC 2015 - rpm@fthiessen.de
+
+- Updated to 0.2.0, notable changes:
+  * New version scheme
+  * Update ncurses so it will compile on GCC 5
+  * Don't use GCC 5 inside the Docker container,
+    because older kernels are still not ready
+  * Support CPU hotplug
+  * Fix improper access to socket structure during accept()
+  * Docker image now includes the RUN label to make it easier to
+    run sysdig on Atomic Linux
+  * New events: semop, semctl, ppoll
+  * Port numbers will be automatically converted to service names
+    unless -N is specified
+
+-------------------------------------------------------------------
+Wed Aug 12 10:44:31 UTC 2015 - mpluskal@suse.com
+
+- Use proper cmake macros
+- Remove conditions around fdupes as package does not build for 
+  old releases anyway
+- Enable parallel build
+
+-------------------------------------------------------------------
+Tue Aug 11 12:15:11 UTC 2015 - boris@steki.net
+
+- updated from 0.1.99 to 0.1.102
+- notable changes:
+  * Support for decoding setns and flock syscall
+  * Parse O_CLOEXEC flag on open and related syscalls
+  * Parse CLONE_NEWUSER flag on clone
+  * Support truncated tracefiles
+  * Now sysdig can rotate tracing file when capturing, using -C, -e, -W, -G
+  * Better extraction/filtering capabilities for event 
+    related to multiple file descriptors, like poll
+  * Precompiled kernel modules for older coreos releases
+  * This release introduces csysdig, the awesome ncurses user interface for sysdig
+  * Support for intercepting signals via the signaldeliver event:
+    parameters are source pid, destination pid and signal type
+  * Docker container ships with GCC 4.8 other than the 
+    latest from Debian, to increase compatibility
+  * echo_fds chisel has a better formatting
+  * Correctly show container output even when
+    renaming containers on Docker >= 1.5
+
+-------------------------------------------------------------------
+Sun May  3 09:54:48 UTC 2015 - joop.boonen@opensuse.org
+
+-  Cleaned and corrected the spec file
+
+-------------------------------------------------------------------
+Wed Mar 25 10:28:50 UTC 2015 - joop.boonen@opensuse.org
+
+- Cleaned the spec file up
+- Build version 0.1.99 
+
+-------------------------------------------------------------------
+Wed May 28 15:30:32 UTC 2014 - m4mnux@gmail.com
+
+- Initial version 
+

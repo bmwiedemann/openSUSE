@@ -1,0 +1,12 @@
+diff --git a/configure b/configure
+index eb38925..163f255 100755
+--- a/configure
++++ b/configure
+@@ -19397,6 +19397,7 @@ SQLRETURN  SQL_API SQLColAttribute (SQLHSTMT StatementHandle,
+ 	SQLUSMALLINT ColumnNumber, SQLUSMALLINT FieldIdentifier,
+ 	SQLPOINTER CharacterAttribute, SQLSMALLINT BufferLength,
+ 	SQLSMALLINT *StringLength, SQLLEN * NumericAttribute) {
++  return 0;
+ }
+ int
+ main ()

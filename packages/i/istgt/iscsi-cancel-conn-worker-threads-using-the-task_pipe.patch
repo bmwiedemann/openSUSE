@@ -1,0 +1,172 @@
+From 077e65d1019edd4998b7af73b8934410c3e97bac Mon Sep 17 00:00:00 2001
+From: David Disseldorp <ddiss@suse.de>
+Date: Wed, 27 Mar 2013 18:30:27 +0100
+Subject: [PATCH 05/12] iscsi: cancel conn worker threads using the task_pipe
+
+Currently istgt_iscsi_drop_*_conns() use pthread_cancel() to tell the
+connection worker thread to exit. This is unnecessary, as the worker
+thread already accepts exit requests via the task_pipe.
+---
+ src/istgt_iscsi.c | 87 ++++++++++---------------------------------------------
+ 1 file changed, 16 insertions(+), 71 deletions(-)
+
+diff --git src/istgt_iscsi.c src/istgt_iscsi.c
+index 7f241d8..8a76379 100644
+--- src/istgt_iscsi.c
++++ src/istgt_iscsi.c
+@@ -5260,9 +5260,8 @@ wait_all_task(CONN_Ptr conn)
+ }
+ 
+ static void
+-worker_cleanup(void *arg)
++worker_cleanup(CONN_Ptr conn)
+ {
+-	CONN_Ptr conn = (CONN_Ptr) arg;
+ 	ISTGT_LU_Ptr lu;
+ 	int rc;
+ 
+@@ -5538,9 +5537,6 @@ worker(void *arg)
+ 	conn->exec_lu_task = NULL;
+ 	lu_task = NULL;
+ 
+-	pthread_cleanup_push(worker_cleanup, conn);
+-	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
+-
+ 	conn->use_sender = 0;
+ 	if (conn->istgt->swmode >= ISTGT_SWMODE_NORMAL) {
+ 		/* create sender thread */
+@@ -5589,7 +5585,6 @@ worker(void *arg)
+ 			}
+ 		}
+ 
+-		pthread_testcancel();
+ 		if (conn->state != CONN_STATE_RUNNING) {
+ 			break;
+ 		}
+@@ -5705,9 +5700,6 @@ worker(void *arg)
+ 		execute_pdu:
+ 			opcode = BGET8W(&conn->pdu.bhs.opcode, 5, 6);
+ 
+-#if 0
+-			pthread_testcancel();
+-#endif
+ 			if (conn->state != CONN_STATE_RUNNING) {
+ 				break;
+ 			}
+@@ -5926,62 +5918,7 @@ worker(void *arg)
+ 
+     cleanup_exit:
+ 	;
+-	pthread_cleanup_pop(0);
+-	conn->state = CONN_STATE_EXITING;
+-	if (conn->sess != NULL) {
+-		SESS_MTX_LOCK(conn);
+-		lu = conn->sess->lu;
+-		if (lu != NULL && lu->queue_depth != 0) {
+-			rc = istgt_lu_clear_task_IT(conn, lu);
+-			if (rc < 0) {
+-				ISTGT_ERRLOG("lu_clear_task_IT() failed\n");
+-			}
+-			istgt_clear_all_transfer_task(conn);
+-		}
+-		SESS_MTX_UNLOCK(conn);
+-	}
+-	if (conn->pdu.copy_pdu == 0) {
+-		xfree(conn->pdu.ahs);
+-		conn->pdu.ahs = NULL;
+-		if (conn->pdu.data != conn->pdu.shortdata) {
+-			xfree(conn->pdu.data);
+-		}
+-		conn->pdu.data = NULL;
+-	}
+-	wait_all_task(conn);
+-
+-	if (conn->use_sender) {
+-		ISTGT_TRACELOG(ISTGT_TRACE_DEBUG, "stop sender thread (%d)\n", conn->id);
+-		/* stop sender thread */
+-		MTX_LOCK(&conn->result_queue_mutex);
+-		rc = pthread_cond_broadcast(&conn->result_queue_cond);
+-		MTX_UNLOCK(&conn->result_queue_mutex);
+-		if (rc != 0) {
+-			ISTGT_ERRLOG("cond_broadcast() failed\n");
+-			/* ignore errors */
+-		}
+-		rc = pthread_join(conn->sender_thread, NULL);
+-		if (rc != 0) {
+-			ISTGT_ERRLOG("pthread_join() failed\n");
+-			/* ignore errors */
+-		}
+-	}
+-
+-	close(conn->sock);
+-#ifdef ISTGT_USE_KQUEUE
+-	close(kq);
+-	conn->kq = -1;
+-#endif /* ISTGT_USE_KQUEUE */
+-	sleep(1);
+-	ISTGT_TRACELOG(ISTGT_TRACE_DEBUG, "worker %d end\n", conn->id);
+-
+-	/* cleanup conn & sess */
+-	ISTGT_TRACELOG(ISTGT_TRACE_DEBUG, "cleanup LOCK\n");
+-	MTX_LOCK(&g_conns_mutex);
+-	g_conns[conn->id] = NULL;
+-	istgt_remove_conn(conn);
+-	MTX_UNLOCK(&g_conns_mutex);
+-	ISTGT_TRACELOG(ISTGT_TRACE_DEBUG, "cleanup UNLOCK\n");
++	worker_cleanup(conn);
+ 
+ 	return NULL;
+ }
+@@ -6719,7 +6656,6 @@ istgt_iscsi_drop_all_conns(CONN_Ptr conn)
+ 	istgt_yield();
+ 	sleep(1);
+ 	if (num > max_conns + 1) {
+-		printf("try pthread_cancel\n");
+ 		for (i = 0; i < g_nconns; i++) {
+ 			xconn = g_conns[i];
+ 			if (xconn == NULL)
+@@ -6741,9 +6677,14 @@ istgt_iscsi_drop_all_conns(CONN_Ptr conn)
+ 					    xconn->initiator_addr,
+ 					    xconn->cid);
+ 				}
+-				rc = pthread_cancel(xconn->thread);
++				rc = write(xconn->task_pipe[1], "E", 1);
++				if (rc < 0 || rc != 1) {
++					ISTGT_ERRLOG("write() failed\n");
++					continue;
++				}
++				rc = pthread_join(xconn->thread, NULL);
+ 				if (rc != 0) {
+-					ISTGT_ERRLOG("pthread_cancel() failed rc=%d\n", rc);
++					ISTGT_ERRLOG("pthread_join() failed rc=%d\n", rc);
+ 				}
+ 			}
+ 		}
+@@ -6803,7 +6744,6 @@ istgt_iscsi_drop_old_conns(CONN_Ptr conn)
+ 	istgt_yield();
+ 	sleep(1);
+ 	if (num > max_conns + 1) {
+-		printf("try pthread_cancel\n");
+ 		for (i = 0; i < g_nconns; i++) {
+ 			xconn = g_conns[i];
+ 			if (xconn == NULL)
+@@ -6825,9 +6765,14 @@ istgt_iscsi_drop_old_conns(CONN_Ptr conn)
+ 					    xconn->initiator_addr,
+ 					    xconn->cid);
+ 				}
+-				rc = pthread_cancel(xconn->thread);
++				rc = write(xconn->task_pipe[1], "E", 1);
++				if (rc < 0 || rc != 1) {
++					ISTGT_ERRLOG("write() failed\n");
++					continue;
++				}
++				rc = pthread_join(xconn->thread, NULL);
+ 				if (rc != 0) {
+-					ISTGT_ERRLOG("pthread_cancel() failed rc=%d\n", rc);
++					ISTGT_ERRLOG("pthread_join() failed rc=%d\n", rc);
+ 				}
+ 			}
+ 		}
+-- 
+2.1.2
+

@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Wed Dec 27 10:54:48 UTC 2017 - dimstar@opensuse.org
+
+- Revert last change: reconfigure_post_* does not know a -n
+  parameter, which in turn results in warnings (rpm < 4.14) or
+  errors (rpm >= 4.14).
+
+  > reconfigure_fonts_post: invalid option -- 'n'
+  > error: Unknown option n in reconfigure_fonts_post(c)
+
+-------------------------------------------------------------------
+Mon Dec 18 14:18:10 CET 2017 - jsmeix@suse.de
+
+- Call reconfigure_fonts_* -n binary_RPM_package_name
+  on openSUSE Tumbleweed and Leap 15.0 and SLE15 and later
+  (boo#1067213).
+
+-------------------------------------------------------------------
+Wed Oct  4 12:24:39 CEST 2017 - jsmeix@suse.de
+
+- Do no longer mess around with the original fonts: Do no longer
+  try to "improve" the appearance of glyphs in certain fonts in
+  a SUSE-sepcific way. Provide the fonts as originally intended.
+  Now neither the SUSE-sepcific ghostscript-fonts-std-8.11.patch
+  nor special tools like t1ascii and t1binary from the t1utils RPM
+  are needed to build a RPM package that only contains fonts.
+  Cf. the entry below dated "Tue Mar 27 16:57:57 CEST 2012".
+
+-------------------------------------------------------------------
+Fri Sep 28 16:35:29 CEST 2012 - jsmeix@suse.de
+
+- Set the version is the same version as the current ghostscript
+  package i.e. 9.06 because this ghostscript-fonts-* packages
+  are the right ones for this Ghostscript version.
+
+-------------------------------------------------------------------
+Fri Sep 28 10:46:03 CEST 2012 - jsmeix@suse.de
+
+- Have SuSEconfig.pango stuff in RPM scriptlets only
+  if suse_version < 1220 because since openSUSE 12.2
+  there is no longer SuSEconfig.pango (see the "declined"
+  comment of OBS submitrequest 136232).
+
+-------------------------------------------------------------------
+Thu Sep 27 13:22:44 CEST 2012 - jsmeix@suse.de
+
+- Using an absolute path as source in symbolic link in spec file
+  to avoid an issue with /usr/sbin/Check in SLE11, SLE_11_SP1,
+  and SLE_11_SP2 that would wrongly convert a relative path
+  ../ghostscript/fonts into a ../ghostscript/fonts.gz file.
+  Afterwards /usr/lib/rpm/brp-symlink converts it to a relative
+  path so that the binary RPM gets the intended symbolic link
+  /usr/share/fonts/ghostscript -> ../ghostscript/fonts
+  (bnc#778879).
+
+-------------------------------------------------------------------
+Wed Sep 26 10:09:22 CEST 2012 - jsmeix@suse.de
+
+- Provide a link /usr/share/fonts/ghostscript which points to
+  /usr/share/ghostscript/fonts (the directory where Ghostscript
+  expects its fonts) to make the Ghostscript fonts also appear
+  in the directory /usr/share/fonts/ where applications
+  search for fonts (bnc#778879).
+
+-------------------------------------------------------------------
+Tue Sep 25 14:58:06 CEST 2012 - jsmeix@suse.de
+
+- Fix the negligent changes done by the below "prepare spec file
+  for dropping SuSEconfig.fonts" so that it builds again for
+  all released openSUSE versions (up to 12.2) because only
+  if suse_version > 1220 one can BuildRequire fontpackages-devel
+  which provides the RPM macros like reconfigure_fonts_post,
+  reconfigure_fonts_postun, and reconfigure_fonts_posttrans.
+
+-------------------------------------------------------------------
+Mon Aug  6 16:40:38 UTC 2012 - pgajdos@suse.com
+
+- prepare spec file for dropping SuSEconfig.fonts (openFATE#313536)
+
+-------------------------------------------------------------------
+Wed Mar 28 10:40:34 CEST 2012 - jsmeix@suse.de
+
+- Have the version the same as the current ghostscript package
+  (currently Ghostscript version 9.05). This versioning scheme
+  makes sense because this ghostscript-fonts-* packages are the
+  right ones for this Ghostscript version (see bnc#735824).
+
+-------------------------------------------------------------------
+Tue Mar 27 16:57:57 CEST 2012 - jsmeix@suse.de
+
+- ghostscript-fonts-std-8.11.patch is made by mfabian@suse.de
+  see https://bugzilla.novell.com/show_bug.cgi?id=suse36778
+  (bnc#51778).
+  It changes weight of "Nimbus Roman No9 L:style=Medium Italic"
+  and "Nimbus Roman No9 L:style=Medium" back to "Bold" instead
+  of "Medium".
+  ghostscript-fonts-std-8.11.patch must be listed as SourceNNN
+  because it is applied via an explicit patch call in install
+  section but the SUSE internal check_if_valid_source_dir tool
+  could abort with fatal error because it thinks this patch
+  is not applied
+  (see https://bugzilla.novell.com/show_bug.cgi?id=649207#c17).
+
+-------------------------------------------------------------------
+Tue Mar 27 12:19:14 CEST 2012 - jsmeix@suse.de
+
+- Initial ghostscript-fonts package.
+

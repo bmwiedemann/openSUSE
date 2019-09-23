@@ -1,0 +1,6 @@
+<package name="lxqt-themes" project="openSUSE:Factory">
+  <title>Themes, graphics and icons for LXQt.</title>
+  <description></description>
+  <devel project="X11:LXQt" package="lxqt-themes"/>
+  <url>https://github.com/lxde/lxqt-themes</url>
+</package>

@@ -1,0 +1,110 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b9f6e54c6cc503dc1ae4f92a6160697</srcmd5>
+    <version>1346395283</version>
+    <time>1346691308</time>
+    <user>namtrac</user>
+    <comment>add coccigrep, a semantic grep based on coccinelle</comment>
+    <requestid>132254</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cd55ad8194a0641e41f66c8f9bf3cb37</srcmd5>
+    <version>20120910</version>
+    <time>1350415894</time>
+    <user>coolo</user>
+    <comment>update to latest snapshot. Use date as a version, not unix timestamp. This is allowed by newer tar_scm and makes much more sense.</comment>
+    <requestid>138326</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>574f4d14da45002143465ad01f8ba52b</srcmd5>
+    <version>20121222</version>
+    <time>1356960289</time>
+    <user>namtrac</user>
+    <comment>update to latest snapshot (20121222) (forwarded request 146731 from jirislaby)</comment>
+    <requestid>146732</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>574f4d14da45002143465ad01f8ba52b</srcmd5>
+    <version>20121222</version>
+    <time>1359108758</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cf9f2a350cfd0428b70f2c23d48c696f</srcmd5>
+    <version>20130723</version>
+    <time>1377430568</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>196204</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>cf9f2a350cfd0428b70f2c23d48c696f</srcmd5>
+    <version>20130723</version>
+    <time>1379662128</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>073c42c458ce3cac73d18cacb1a2b4ff</srcmd5>
+    <version>20140217</version>
+    <time>1404487104</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239326</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>073c42c458ce3cac73d18cacb1a2b4ff</srcmd5>
+    <version>20140217</version>
+    <time>1409300659</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b9f2ba4f3baab26aae59f8a9a0f92e1d</srcmd5>
+    <version>20140913</version>
+    <time>1411370570</time>
+    <user>coolo</user>
+    <comment>update to 20140913</comment>
+    <requestid>249286</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>53e61c896db28892956231433617088a</srcmd5>
+    <version>20150112</version>
+    <time>1421333948</time>
+    <user>dimstar_suse</user>
+    <comment>update to 20150112</comment>
+    <requestid>281374</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fcc475f1fb8c8ccd6f1f2f37f06bc08d</srcmd5>
+    <version>1.16+git.20160815</version>
+    <time>1477990778</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20160815:
+  * forcing a type to be present was arbitrary
+  * vim plugin: fix interactive mode
+  * document void option usage in vim plugin
+  * Add python3 support
+  * Add support for python 3.4
+  * setup: use and complete install_requires
+  * Fix syntax error in python3 environment.</comment>
+    <requestid>438070</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>d814430e75c3006da56e675bdc3166bd</srcmd5>
+    <version>1.16+git.20160815</version>
+    <time>1478780539</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>439174</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a4ed73154865c0efbdd4634c16518b5b</srcmd5>
+    <version>1.17+git.20180322</version>
+    <time>1530866712</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621050</requestid>
+  </revision>
+</revisionlist>

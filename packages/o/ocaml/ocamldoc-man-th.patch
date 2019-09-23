@@ -1,0 +1,52 @@
+http://caml.inria.fr/mantis/view.php?id=7281
+---
+ ocamldoc/odoc_man.ml |   10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+--- a/ocamldoc/odoc_man.ml
++++ b/ocamldoc/odoc_man.ml
+@@ -871,7 +871,7 @@ class man =
+         let b = new_buf () in
+         bs b (".TH \""^cl.cl_name^"\" ");
+         bs b !man_section ;
+-        bs b (" source: "^Odoc_misc.current_date^" ");
++        bs b (" "^Odoc_misc.current_date^" ");
+         bs b "OCamldoc ";
+         bs b ("\""^(match !Global.title with Some t -> t | None -> "")^"\"\n");
+ 
+@@ -929,7 +929,7 @@ class man =
+         let b = new_buf () in
+         bs b (".TH \""^ct.clt_name^"\" ");
+         bs b !man_section ;
+-        bs b (" source: "^Odoc_misc.current_date^" ");
++        bs b (" "^Odoc_misc.current_date^" ");
+         bs b "OCamldoc ";
+         bs b ("\""^(match !Global.title with Some t -> t | None -> "")^"\"\n");
+ 
+@@ -1021,7 +1021,7 @@ class man =
+         let b = new_buf () in
+         bs b (".TH \""^mt.mt_name^"\" ");
+         bs b !man_section ;
+-        bs b (" source: "^Odoc_misc.current_date^" ");
++        bs b (" "^Odoc_misc.current_date^" ");
+         bs b "OCamldoc ";
+         bs b ("\""^(match !Global.title with Some t -> t | None -> "")^"\"\n");
+ 
+@@ -1103,7 +1103,7 @@ class man =
+         let b = new_buf () in
+         bs b (".TH \""^m.m_name^"\" ");
+         bs b !man_section ;
+-        bs b (" source: "^Odoc_misc.current_date^" ");
++        bs b (" "^Odoc_misc.current_date^" ");
+         bs b "OCamldoc ";
+         bs b ("\""^(match !Global.title with Some t -> t | None -> "")^"\"\n");
+ 
+@@ -1209,7 +1209,7 @@ class man =
+         let b = new_buf () in
+         bs b (".TH \""^name^"\" ");
+         bs b !man_section ;
+-        bs b (" source: "^Odoc_misc.current_date^" ");
++        bs b (" "^Odoc_misc.current_date^" ");
+         bs b "OCamldoc ";
+         bs b ("\""^(match !Global.title with Some t -> t | None -> "")^"\"\n");
+         bs b ".SH NAME\n";

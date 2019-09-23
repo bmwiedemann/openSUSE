@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Mon Jun  3 17:04:50 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix jupyter dependencies.
+- Update to 0.1.4
+  This is a bug fix release, mainly to resolve an incompatibility with Spyder 3.3.2. 
+  + Issues Closed 
+    * Resolve CI test failures with Python 2
+    * Update handling of temp directory for Spyder 3.3.2
+    * Update tests for pytest v4
+    * Remove untitled notebooks after they are closed
+  + Pull Requests Merged 
+    * PR: Delete file when closing notebook if in temp dir
+    * PR: Specify Qt 5 in CI test script
+    * PR: Use test fixture as pytest intends it
+    * PR: Fix Spyder 3.3.2 import of TEMPDIR
+
+-------------------------------------------------------------------
+Sat Dec 22 05:46:14 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.1.3
+  + Issues Closed
+    * Tests leave temporary directories in the home dir
+    * test_open_notebook fails when running tests twice in a row
+    * Set up pep8speaks
+    * Make plugin compatible with Spyder's split-plugins change
+    * Be more robust when starting notebook
+    * Migrate to CircleCI 2.0
+    * TypeError when parsing JSON when shutting kernel down
+    * Opening console for notebook without kernel yields an error
+    * Spyder notebook complains about missing file or directory: 'jupyter'
+  + Pull Requests Merged
+    * PR: Display error when opening console for notebook with no kernel
+    * PR: Do not call the jupyter executable when opening notebooks ([157](https://github.com/spyder-ide/spyder-notebook/issues/157), [141](https://github.com/spyder-ide/spyder-notebook/issues/141))
+    * PR: Remove temporary directory created in test_open_notebook()
+    * PR: Update to Spyder 4 after the split-plugins merge
+    * PR: Make tests use a temporary directory
+    * PR: More robust parsing of server reply in NotebookClient.get_kernel_id()
+    * PR: Upgrade to CircleCI v2.0
+
+-------------------------------------------------------------------
+Thu Aug 16 08:06:07 UTC 2018 - jengelh@inai.de
+
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Mon Aug 13 17:46:24 UTC 2018 - toddrme2178@gmail.com
+
+- Update description per upstream request.
+
+-------------------------------------------------------------------
+Tue Sep 12 21:00:15 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

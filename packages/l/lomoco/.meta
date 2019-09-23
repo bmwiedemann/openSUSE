@@ -1,0 +1,13 @@
+<package name="lomoco" project="openSUSE:Factory">
+  <title>Tool for setting the special features of some Logitech mice</title>
+  <description>lomoco can configure vendor-specific options on Logitech USB mice (or
+dual-personality mice plugged into the USB port). A number of recent
+devices are supported. The program is mostly useful in setting the
+resolution to 800 cpi on mice that boot at 400 cpi (such as the
+MX-500), and disabling SmartScroll or Cruise Control for those who
+would rather use the two extra buttons as ordinary mouse buttons.
+
+You can configure which features should be enabled in
+/etc/sysconfig/logitech_mouse</description>
+  <devel project="games:tools" package="lomoco"/>
+</package>

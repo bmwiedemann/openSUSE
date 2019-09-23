@@ -1,0 +1,23 @@
+--- Imakefile
++++ Imakefile
+@@ -10,4 +10,4 @@
+ SRCS = wmmixer.cc
+ OBJS = wmmixer.o
+ 
+-ComplexProgramTarget(wmmixer)
++ComplexCplusplusProgramTarget(wmmixer)
+--- wmmixer.cc
++++ wmmixer.cc
+@@ -503,7 +503,7 @@
+    }
+ }
+ 
+-void checkVol(bool forced=true){
++void checkVol(bool forced){
+    mixctl->readVol(channel[curchannel], true);
+    int nl=mixctl->readLeft(channel[curchannel]);
+    int nr=mixctl->readRight(channel[curchannel]);
+--- wmmixer.man
++++ wmmixer.man
+@@ -0,0 +1 @@
++

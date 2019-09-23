@@ -1,0 +1,84 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aadb7c964866932eaac6b9feb8f7e675</srcmd5>
+    <version>1.4.0</version>
+    <time>1499291816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>497854</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5c1c31c2d9b94b48d41c33a6a3346c8b</srcmd5>
+    <version>2.2.0.1</version>
+    <time>1504521371</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed version number
+- Update to version 2.2.0-1
+  * Improved video management functionalities.
+  * Allows creating new video categories
+  * Allows renaming of title and playlist entries
+  * Group rename of playlist entries
+  * Improved contextmenu with grouping of various categories
+  * Allows getting information for entire collection
+  * TMDB support added
+  * Supports both duckduckgo and google as search engine backend
+    for getting information from either TVDB or TMDB.
+  * Keyboard shortcuts have been changed
+  * Allows direct jump on title starting with letter when keyboard
+    button pertaining to that letter is pressed
+  * Firefox related bug fixed when loading subtitles
+  * New background image modes with shortcuts (ctrl+0 and ctrl+9)
+    added
+  * Some image resizing issues fixed with python-pillow
+  * Allows using the application as both server as well as client
+  * Added new MyServer addon for managing peer-to-peer mode.
+  * Servers can broadcast themselves in the local network so that
+    clients can discover it without having to remember local IP
+    address of each media server.
+  * Allows modifying broadcast message of server
+  * Users can manually set server's upload speed
+  * mpv now remembers last aspect ratio
+  * Better OSD display on changing aspect ratio
+  * Critical bug fixed in deleting bookmarked playlist
+  version 2.0.0-0:
+  * Various modules separated and major overhaul of large codebase
+  * Headless browser included
+  * Proper support added for qtwebkit along with qtwebengine as
+    backend for headless browser
+  * Multiple bug fixes
+</comment>
+    <requestid>520367</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8934aac0bd615f15f9b74126fdddb2c0</srcmd5>
+    <version>2.8.0.0</version>
+    <time>1510322301</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540287</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4d7e3cabde554653eca3b48ba63bc9ce</srcmd5>
+    <version>3.9.0.1</version>
+    <time>1560337749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695930</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>61f23c5e7410514ae0687d820daa188c</srcmd5>
+    <version>4.1.0.1</version>
+    <time>1560971307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710414</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5093e4e2fdae7734c56c3dc5e1b4b932</srcmd5>
+    <version>4.2.0.1</version>
+    <time>1563259241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714983</requestid>
+  </revision>
+</revisionlist>

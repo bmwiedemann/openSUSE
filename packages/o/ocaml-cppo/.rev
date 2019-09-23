@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bfdae94f5cdac3516b33045bdba9e38c</srcmd5>
+    <version>1.3.2</version>
+    <time>1476874833</time>
+    <user>dimstar_suse</user>
+    <comment>fate#320836</comment>
+    <requestid>414562</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c4d59bd3d786f5414c6c41082f4f2db2</srcmd5>
+    <version>1.5.0</version>
+    <time>1495883883</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>498037</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3a0ca2bfd306fa4cf69d3f306f820ca8</srcmd5>
+    <version>1.5.0</version>
+    <time>1496926967</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>501574</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>81583293b5d5fb0fe0545b30b2a67889</srcmd5>
+    <version>1.5.0</version>
+    <time>1503061286</time>
+    <user>dimstar_suse</user>
+    <comment>- Use Group: Development/Languages/OCaml
+
+- Update Url
+
+- Wrap specfile conditionals to fix quilt setup
+
+- Remove autodeps for pre openSUSE 12.1 releases</comment>
+    <requestid>512520</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>68d6e49676d3d1f707bf23b51819fdcf</srcmd5>
+    <version>1.6.5</version>
+    <time>1550668260</time>
+    <user>maxlin_factory</user>
+    <comment>Update install files for ocaml-dune 1.7.1, which generates a dune-package file instead of a $PACKAGENAME.dune file. (forwarded request 677229 from onthewings)</comment>
+    <requestid>677298</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="106">
+    <srcmd5>f84d0654305b08ab65677be00e0098ed</srcmd5>
+    <version>1.5.1</version>
+    <time>1166483837</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3b3ea153ab1e363d816b086ec40b0fa7</srcmd5>
+    <version>1.5.2</version>
+    <time>1179395434</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ba9c8e6265e6cea137d51ef1dfc6f4ac</srcmd5>
+    <version>1.5.2</version>
+    <time>1179423113</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="71">
+    <srcmd5>29c474adcd8ca99330902e5d2bcbbe18</srcmd5>
+    <version>1.5.2</version>
+    <time>1198348441</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="176">
+    <srcmd5>b98b0491c080838779b2427e47ee6f0e</srcmd5>
+    <version>1.5.2</version>
+    <time>1227193144</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="178">
+    <srcmd5>b98b0491c080838779b2427e47ee6f0e</srcmd5>
+    <version>1.5.2</version>
+    <time>1227193144</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="179">
+    <srcmd5>8b67348f058be3e17127ab6ffe07d9a2</srcmd5>
+    <version>1.5.2</version>
+    <time>1266508086</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/opensp based on submit request 32750 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="180">
+    <srcmd5>48cdf1600055ff4215907d9eaff66c59</srcmd5>
+    <version>1.5.2</version>
+    <time>1268925225</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="182">
+    <srcmd5>48cdf1600055ff4215907d9eaff66c59</srcmd5>
+    <version>1.5.2</version>
+    <time>1278667374</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="183">
+    <srcmd5>48cdf1600055ff4215907d9eaff66c59</srcmd5>
+    <version>1.5.2</version>
+    <time>1278678607</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="184">
+    <srcmd5>2d21fbffec273e76ce320929b8095444</srcmd5>
+    <version>1.5.2</version>
+    <time>1294652278</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57360 from user prusnak
+</comment>
+    <requestid>57360</requestid>
+  </revision>
+  <revision rev="12" vrev="185">
+    <srcmd5>c1a98469d0f1a044c95f85e0a0f7c254</srcmd5>
+    <version>1.5.2</version>
+    <time>1294652287</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57360
+</comment>
+  </revision>
+  <revision rev="13" vrev="188">
+    <srcmd5>c1a98469d0f1a044c95f85e0a0f7c254</srcmd5>
+    <version>1.5.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="190">
+    <srcmd5>c1a98469d0f1a044c95f85e0a0f7c254</srcmd5>
+    <version>1.5.2</version>
+    <time>1319182217</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="191">
+    <srcmd5>0bc096c60ebc8a94820bff030dabc594</srcmd5>
+    <version>1.5.2</version>
+    <time>1322073441</time>
+    <user>coolo</user>
+    <comment>- fix source link
+
+- add libtool as buildrequire to avoid implicit dependency</comment>
+    <requestid>93126</requestid>
+  </revision>
+  <revision rev="16" vrev="192">
+    <srcmd5>f9ed622103c833becdf11dd666fabe89</srcmd5>
+    <version>1.5.2</version>
+    <time>1323192880</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="193">
+    <srcmd5>f0123df70797b3e12702b36eb9b9124e</srcmd5>
+    <version>1.5.2</version>
+    <time>1323192881</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="195">
+    <srcmd5>f0123df70797b3e12702b36eb9b9124e</srcmd5>
+    <version>1.5.2</version>
+    <time>1340183758</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="197">
+    <srcmd5>f0123df70797b3e12702b36eb9b9124e</srcmd5>
+    <version>1.5.2</version>
+    <time>1359109543</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="199">
+    <srcmd5>f0123df70797b3e12702b36eb9b9124e</srcmd5>
+    <version>1.5.2</version>
+    <time>1379663428</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="201">
+    <srcmd5>f0123df70797b3e12702b36eb9b9124e</srcmd5>
+    <version>1.5.2</version>
+    <time>1409302047</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

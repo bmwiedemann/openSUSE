@@ -1,0 +1,288 @@
+From a202311e948868ea2c81377a4a6889d8c97e8105 Mon Sep 17 00:00:00 2001
+From: Sergey Zhupanov <zhupanov@devvm30151.prn1.facebook.com>
+Date: Fri, 26 Jan 2018 19:25:32 -0800
+Subject: [PATCH] Re-worked replacement of memset with proper init to make it
+ gcc 4.8 compliant.
+
+Summary: Closes https://github.com/facebook/watchman/pull/565
+
+Reviewed By: wez
+
+Differential Revision: D6827004
+
+Pulled By: zhupanov
+
+fbshipit-source-id: 9515eebd7aa48528a10245030e46b6cb37a6d7c2
+---
+ FileDescriptor.cpp       | 5 +++--
+ Pipe.cpp                 | 2 +-
+ listener.cpp             | 5 +++--
+ log.cpp                  | 3 ++-
+ main.cpp                 | 5 +++--
+ stream_unix.cpp          | 3 ++-
+ stream_win.cpp           | 2 +-
+ watcher/fsevents.cpp     | 4 ++--
+ watcher/kqueue.cpp       | 9 ++++++---
+ watcher/win32.cpp        | 2 +-
+ winbuild/posix_spawn.cpp | 6 +++---
+ 11 files changed, 27 insertions(+), 19 deletions(-)
+
+Index: watchman-4.9.0/FileDescriptor.cpp
+===================================================================
+--- watchman-4.9.0.orig/FileDescriptor.cpp
++++ watchman-4.9.0/FileDescriptor.cpp
+@@ -151,7 +151,7 @@ bool FileDescriptor::isNonBlock() const
+  * If the case does not match, throws an exception. */
+ static void checkCanonicalBaseName(const char *path) {
+ #ifdef __APPLE__
+-  struct attrlist attrlist = {};
++  struct attrlist attrlist;
+   struct {
+     uint32_t len;
+     attrreference_t ref;
+@@ -160,6 +160,7 @@ static void checkCanonicalBaseName(const
+   w_string_piece pathPiece(path);
+   auto base = pathPiece.baseName();
+ 
++  memset(&attrlist, 0, sizeof(attrlist));
+   attrlist.bitmapcount = ATTR_BIT_MAP_COUNT;
+   attrlist.commonattr = ATTR_CMN_NAME;
+ 
+@@ -236,7 +237,7 @@ FileDescriptor openFileHandle(const char
+ #else // _WIN32
+   DWORD access = 0, share = 0, create = 0, attrs = 0;
+   DWORD err;
+-  SECURITY_ATTRIBUTES sec = {};
++  auto sec = SECURITY_ATTRIBUTES();
+ 
+   if (!strcmp(path, "/dev/null")) {
+     path = "NUL:";
+Index: watchman-4.9.0/Pipe.cpp
+===================================================================
+--- watchman-4.9.0.orig/Pipe.cpp
++++ watchman-4.9.0/Pipe.cpp
+@@ -11,7 +11,7 @@ Pipe::Pipe() {
+ #ifdef _WIN32
+   HANDLE readPipe;
+   HANDLE writePipe;
+-  SECURITY_ATTRIBUTES sec = {};
++  auto sec = SECURITY_ATTRIBUTES();
+ 
+   sec.nLength = sizeof(sec);
+   sec.bInheritHandle = FALSE; // O_CLOEXEC equivalent
+Index: watchman-4.9.0/listener.cpp
+===================================================================
+--- watchman-4.9.0.orig/listener.cpp
++++ watchman-4.9.0/listener.cpp
+@@ -442,7 +442,7 @@ static std::shared_ptr<watchman_client>
+ #ifdef _WIN32
+ static void named_pipe_accept_loop(const char *path) {
+   HANDLE handles[2];
+-  OVERLAPPED olap = {};
++  auto olap = OVERLAPPED();
+   HANDLE connected_event = CreateEvent(NULL, FALSE, TRUE, NULL);
+ 
+   if (!connected_event) {
+@@ -573,7 +573,7 @@ static void accept_loop(FileDescriptor&&
+ bool w_start_listener(const char *path)
+ {
+ #ifndef _WIN32
+-  struct sigaction sa = {};
++  struct sigaction sa;
+   sigset_t sigset;
+ #endif
+ 
+@@ -648,6 +648,7 @@ bool w_start_listener(const char *path)
+ 
+   /* allow SIGUSR1 and SIGCHLD to wake up a blocked thread, without restarting
+    * syscalls */
++  memset(&sa, 0, sizeof(sa));
+   sa.sa_handler = wakeme;
+   sa.sa_flags = 0;
+   sigaction(SIGUSR1, &sa, NULL);
+Index: watchman-4.9.0/log.cpp
+===================================================================
+--- watchman-4.9.0.orig/log.cpp
++++ watchman-4.9.0/log.cpp
+@@ -298,8 +298,9 @@ static LONG WINAPI exception_filter(LPEX
+ 
+ void w_setup_signal_handlers(void) {
+ #ifndef _WIN32
+-  struct sigaction sa = {};
++  struct sigaction sa;
+ 
++  memset(&sa, 0, sizeof(sa));
+   sa.sa_sigaction = crash_handler;
+   sa.sa_flags = SA_SIGINFO|SA_RESETHAND;
+ 
+Index: watchman-4.9.0/main.cpp
+===================================================================
+--- watchman-4.9.0.orig/main.cpp
++++ watchman-4.9.0/main.cpp
+@@ -49,7 +49,7 @@ static void compute_file_name(char **str
+ 
+ static bool lock_pidfile(void) {
+ #if !defined(USE_GIMLI) && !defined(_WIN32)
+-  struct flock lock = {};
++  struct flock lock;
+   pid_t mypid;
+ 
+   // We defer computing this path until we're in the server context because
+@@ -58,6 +58,7 @@ static bool lock_pidfile(void) {
+   compute_file_name(&pid_file, compute_user_name(), "pid", "pidfile");
+ 
+   mypid = getpid();
++  memset(&lock, 0, sizeof(lock));
+   lock.l_type = F_WRLCK;
+   lock.l_start = 0;
+   lock.l_whence = SEEK_SET;
+@@ -886,7 +887,7 @@ static json_ref build_command(int argc,
+ 
+   // Read blob from stdin
+   if (json_input_arg) {
+-    json_error_t err = {};
++    auto err = json_error_t();
+     w_jbuffer_t buf;
+ 
+     auto cmd = buf.decodeNext(w_stm_stdin(), &err);
+Index: watchman-4.9.0/stream_unix.cpp
+===================================================================
+--- watchman-4.9.0.orig/stream_unix.cpp
++++ watchman-4.9.0/stream_unix.cpp
+@@ -222,7 +222,7 @@ std::unique_ptr<watchman_stream> w_stm_f
+ std::unique_ptr<watchman_stream> w_stm_connect_unix(
+     const char* path,
+     int timeoutms) {
+-  struct sockaddr_un un = {};
++  struct sockaddr_un un;
+   int max_attempts = timeoutms / 10;
+   int attempts = 0;
+   int bufsize = WATCHMAN_IO_BUF_SIZE;
+@@ -238,6 +238,7 @@ std::unique_ptr<watchman_stream> w_stm_c
+     return nullptr;
+   }
+ 
++  memset(&un, 0, sizeof(un));
+   un.sun_family = PF_LOCAL;
+   memcpy(un.sun_path, path, strlen(path));
+ 
+Index: watchman-4.9.0/stream_win.cpp
+===================================================================
+--- watchman-4.9.0.orig/stream_win.cpp
++++ watchman-4.9.0/stream_win.cpp
+@@ -715,7 +715,7 @@ int w_poll_events(struct watchman_event_
+ FileDescriptor w_handle_open(const char* path, int flags) {
+   DWORD access = 0, share = 0, create = 0, attrs = 0;
+   DWORD err;
+-  SECURITY_ATTRIBUTES sec = {};
++  auto sec = SECURITY_ATTRIBUTES();
+ 
+   if (!strcmp(path, "/dev/null")) {
+     path = "NUL:";
+Index: watchman-4.9.0/watcher/fsevents.cpp
+===================================================================
+--- watchman-4.9.0.orig/watcher/fsevents.cpp
++++ watchman-4.9.0/watcher/fsevents.cpp
+@@ -275,7 +275,7 @@ static fse_stream* fse_stream_make(
+     const std::shared_ptr<w_root_t>& root,
+     FSEventStreamEventId since,
+     w_string& failure_reason) {
+-  FSEventStreamContext ctx = {};
++  auto ctx = FSEventStreamContext();
+   CFMutableArrayRef parray = nullptr;
+   CFStringRef cpath = nullptr;
+   double latency;
+@@ -439,7 +439,7 @@ fail:
+ 
+ void FSEventsWatcher::FSEventsThread(const std::shared_ptr<w_root_t>& root) {
+   CFFileDescriptorRef fdref;
+-  CFFileDescriptorContext fdctx = {};
++  auto fdctx = CFFileDescriptorContext();
+ 
+   w_set_thread_name("fsevents %s", root->root_path.c_str());
+ 
+Index: watchman-4.9.0/watcher/kqueue.cpp
+===================================================================
+--- watchman-4.9.0.orig/watcher/kqueue.cpp
++++ watchman-4.9.0/watcher/kqueue.cpp
+@@ -70,7 +70,7 @@ KQueueWatcher::KQueueWatcher(w_root_t* r
+ }
+ 
+ bool KQueueWatcher::startWatchFile(struct watchman_file* file) {
+-  struct kevent k = {};
++  struct kevent k;
+ 
+   auto full_name = w_dir_path_cat_str(file->parent, file->getName());
+   {
+@@ -98,6 +98,7 @@ bool KQueueWatcher::startWatchFile(struc
+     return false;
+   }
+ 
++  memset(&k, 0, sizeof(k));
+   EV_SET(
+       &k,
+       rawFd,
+@@ -139,7 +140,7 @@ std::unique_ptr<watchman_dir_handle> KQu
+     struct timeval,
+     const char* path) {
+   struct stat st, osdirst;
+-  struct kevent k = {};
++  struct kevent k;
+ 
+   auto osdir = w_dir_open(path);
+ 
+@@ -168,6 +169,7 @@ std::unique_ptr<watchman_dir_handle> KQu
+         std::string("directory replaced between opendir and open: ") + path);
+   }
+ 
++  memset(&k, 0, sizeof(k));
+   auto dir_name = dir->getFullPath();
+   EV_SET(
+       &k,
+@@ -254,7 +256,7 @@ bool KQueueWatcher::consumeNotify(
+         fflags,
+         flags_label);
+     if ((fflags & (NOTE_DELETE|NOTE_RENAME|NOTE_REVOKE))) {
+-      struct kevent k = {};
++      struct kevent k;
+ 
+       if (w_string_equal(path, root->root_path)) {
+         w_log(
+@@ -267,6 +269,7 @@ bool KQueueWatcher::consumeNotify(
+       }
+ 
+       // Remove our watch bits
++      memset(&k, 0, sizeof(k));
+       EV_SET(&k, fd, EVFILT_VNODE, EV_DELETE, 0, 0, nullptr);
+       kevent(kq_fd.fd(), &k, 1, nullptr, 0, 0);
+       wlock->name_to_fd.erase(path);
+Index: watchman-4.9.0/watcher/win32.cpp
+===================================================================
+--- watchman-4.9.0.orig/watcher/win32.cpp
++++ watchman-4.9.0/watcher/win32.cpp
+@@ -109,7 +109,7 @@ void WinWatcher::readChangesThread(const
+   DWORD size = WATCHMAN_BATCH_LIMIT * (sizeof(FILE_NOTIFY_INFORMATION) + 512);
+   std::vector<uint8_t> buf;
+   DWORD err, filter;
+-  OVERLAPPED olap = {};
++  auto olap = OVERLAPPED();
+   BOOL initiate_read = true;
+   HANDLE handles[2] = {olapEvent, ping};
+   DWORD bytes;
+Index: watchman-4.9.0/winbuild/posix_spawn.cpp
+===================================================================
+--- watchman-4.9.0.orig/winbuild/posix_spawn.cpp
++++ watchman-4.9.0/winbuild/posix_spawn.cpp
+@@ -242,9 +242,9 @@ static int posix_spawn_common(
+     const posix_spawn_file_actions_t *file_actions,
+     const posix_spawnattr_t *attrp,
+     char *const argv[], char *const envp[]) {
+-  STARTUPINFOEX sinfo = {};
+-  SECURITY_ATTRIBUTES sec = {};
+-  PROCESS_INFORMATION pinfo = {};
++  auto sinfo = STARTUPINFOEX();
++  auto sec = SECURITY_ATTRIBUTES();
++  auto pinfo = PROCESS_INFORMATION();
+   char *cmdbuf;
+   char *env_block;
+   DWORD create_flags = CREATE_NO_WINDOW|EXTENDED_STARTUPINFO_PRESENT;

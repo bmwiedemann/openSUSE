@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fbf8ecb19bd2088246c1f6c019f49f6e</srcmd5>
+    <version>1.1.0</version>
+    <time>1557834050</time>
+    <user>dimstar_suse</user>
+    <comment>- New Python dependency required for the Python Azure SDK</comment>
+    <requestid>698120</requestid>
+  </revision>
+</revisionlist>

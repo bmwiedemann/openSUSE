@@ -1,0 +1,339 @@
+-------------------------------------------------------------------
+Tue Mar 19 15:12:11 UTC 2019 - Atri B <badshah400@gmail.com>
+
+- Update to version 0.6.3:
+  * New features and improvements:
+    - Implement "Insert Citations..." dialog
+    - Implement indenting/unindenting by Tab/Shift+Tab
+    - Make synchronization granularity configurable (highlight
+      corresponding character, word, or line)
+    - Add ability to distinguish identically named files by
+      displaying the respective folders they are in in the window
+      title, window menu, and under "Open Recent"
+    - Implement "Fit to content width" PDF zoom (which ignores
+      empty space around the text)
+    - Disable unavailable typesetting engines
+    - Allow to change the editor font size by Ctrl+Mousewheel
+    - Improve the detection of spellchecking languages (add
+      ability to search multiple directories and list all results)
+    - Hide the menu bar in PDF full screen mode
+    - Rework/expand code completion strings
+    - Add/update syntax highlighting for LaTeX, ConTeXt, Lua, DTX,
+      and BibTeX
+    - Add cleanup-patterns for beamer files .nav & .snm
+    - Add new/unified icons for typeset and zooming
+    - Display paper size and file size in the PDF metadata
+  * Bug fixes:
+    - Fix infinite loop in syntax highlighter (which caused
+      significant slow-down especially for large files)
+    - Fix underline when spellchecking with syntax highlighting
+    - Fix "Place on Left/Right", especially on multi-screen setups
+    - Avoid 'file "" not found' errors when synchronizing
+    - Fix synchronization while searching in a PDF
+    - Fix fine-grained synchronization near paragraph boundaries
+    - Fix the PDF copy menu command
+    - Fix PDF text selection
+    - Fix font color reset when searching and using stylesheets
+    - Fix crashes when working with locked PDFs
+    - Fix unexpected cursor movement when using a combination of
+      backspace and up/down arrow keys (thanks to @mgkuhn)
+    - Fix the font in the log parser output
+    - Fix persistent magnifying glass
+    - Remove unimplemented PDF menu items cut, paste, clear
+- Use cmake rpm macros.
+- Drop conditionals for outdated openSUSE versions.
+- New BuildRequires:
+  * texlive-tex-bin: needed to detect and configure the location
+    of tex binary.
+  * Qt5Test to determine QT version.
+  * python3-devel: Switch to python3 based scripting plugin.
+- Use %%license to install COPYING file.
+- Minor spec file cleanups using spec-cleaner.
+
+-------------------------------------------------------------------
+Sun Apr 30 21:52:52 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.6.2:
+  + Implement handling of links to external files in the PDF
+    preview.
+  + Implement a simple screen calibration widget to allow adapting
+    the PDF preview to the screen's resolution.
+  + Improve responsiveness when opening large documents.
+  + Use old content instead of rendering placeholers after a PDF
+    was reloaded to facilitate seeing changes.
+  + Improve the usability of the "Remove Aux Files..." dialog by
+    letting the user toogle the selection by clicking anywhere on
+    the row.
+  + Add support for the bibliography program "biber" by default.
+  + Allow custom zoom levels in the PDF status bar context menu.
+  + Bugs fixed:
+    - Fix PDF zoom speed for high-resolution mouse-wheels.
+    - Fix a deadlock causing TeXworks to hang when loading PDF
+      annotations such as links.
+    - Fix crash when changing files outside TeXworks.
+    - Fix crash when syncing from an if-block in the TeX file.
+    - Fix crash when reloading a PDF while text was selected.
+    - Fix enabling of the first/previous/next/last page toolbar
+      buttons in the PDF preview.
+    - Fix the wrong appearance of the PDF magnifier in some cases.
+    - Fix truncation issues and misreported Windows versions in
+      "Email to mailing list".
+
+-------------------------------------------------------------------
+Sun Jul 17 08:06:33 UTC 2016 - jengelh@inai.de
+
+- Trim irrelevant parts from description
+
+-------------------------------------------------------------------
+Sun May  1 23:24:55 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.6.1:
+  + Fix "Jump to Source" from PDF context menu
+  + Fix fine-sync'ing close to PDF line boundaries
+  + Fix loading of Qt-global translations
+  + Fix pixel-alignment after zoomFitWindow in continuous mode
+  + Fix handling of changing scroll bar visibilities in
+    zoomFitWidth and zoomFitWindow
+  + Allow horizontal scrolling by Shift+MouseWheel
+  + Updated translations
+
+-------------------------------------------------------------------
+Mon Apr 11 04:34:38 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.6.0:
+  + Complete redesign of the PDF previewer using QtPDF by Charlie
+    Sharpsteen
+  + Fast and responsive preview even at very high magnifications
+  + New page modes: continuous scrolling and two-column layout
+  + Text selection/copying from the PDF
+  + Go back to previous view after clicking on a link using
+    Alt+left arrow
+  + Fix disappearing spellcheck underline with some fonts/font
+    sizes in Qt 5
+  + Update the width of the line number display when changing the
+    editor font
+  + Show a note in the "About Scripts" dialog for disabled script
+    languages
+  + Explicitly add a "Quit TeXworks" menu item to the global
+    menubar on Mac OS X
+  + Make Qt5 the default framework for building TeXworks
+  + Add support for Lua 5.3.
+- When building with QT5, add BuildRequires on
+  pkgconfig(Qt5Concurrent) as this a necessary dependency this
+  version onwards.
+- Set the cmake variable TeXworks_DIC_DIR to the proper
+  installation location of myspell dicts in openSUSE to make
+  texworks find them.
+
+-------------------------------------------------------------------
+Mon Apr 27 23:04:45 UTC 2015 - badshah400@gmail.com
+
+- Update to version 0.4.6:
+  + Implement character-level synchronization by using text
+    searching to assist SyncTeX.
+  + Lift hardwrap line length limitation and implement (hard)
+    unwrap.
+  + Always show console output tab while typesetting to show
+    progress.
+  + Improve the handling of UTF-8 byte order marks.
+  + Improve the log parsing script.
+  + Improve the handling of script errors.
+  + Work around a race condition that causes lines to become
+    invisible, subsequently leading to a crash.
+  + Fix incorrectly accumulating indent.
+  + Fix SyncTeX initialization with non-ASCII filenames.
+  + Fix selection of whole lines and when selecting right-to-left.
+  + Fix hangs and crashes when using "Fit to ..." in the PDF view.
+  + Fix a crash when running an invalid system command from
+    scripts.
+  + Fix encoding issues when reading environment variables.
+  + Fix scrolling when searching for multi-line strings.
+  + Fix auto-completion when working with RTL languages.
+  + Improve the handling of Retina displays in Mac OS X.
+  + Fix a crash when opening PDF files from the Windows
+    Explorer.
+  + Provide texworks.appdata.xml for *nix platforms.
+  + Fix compilation with Qt 5.
+  + Improve the CMake build system.
+  + Add support for Lua 5.2.
+  + Move development from Google Code to GitHub.
+- Drop conditionals referring to out-of-support openSUSE
+  releases.
+- Update source URL.
+- Use CMake based build system.
+- Build with Qt5 for openSUSE >= 13.2.
+- Drop manual from filelist, no longer bundled by upstream, see
+  http://www.tug.org/texworks/#Documentation instead.
+
+-------------------------------------------------------------------
+Sun Apr 14 21:07:21 UTC 2013 - badshah400@gmail.com
+
+- Update to version 0.4.5:
+  + Fix "Restore defaults" in preferences dialog
+  + Fix removal and selection of text moved via drag'n'drop
+  + Fix default saving location
+  + Keep UTF-8 BOMs in files that have them
+  + Make "Goto Source" lead to the last active source window
+  + Implement close button for the console output panel
+  + Implement "Open PDF with TeX" option
+  + Improve compatibility with OS color schemes
+  + New encoding support for "Mac Central European Roman"
+  + Code cleanup
+  + Updated log parser (improve handling of long messages and file
+    paths)
+  + New script properties/functions: cursorPosition,
+    getEngineList()
+
+-------------------------------------------------------------------
+Sun Apr 29 08:45:11 UTC 2012 - badshah400@gmail.com
+
+- Update to version 0.4.4:
+  + Fix crash caused by Qt when adding lines at the beginning of a
+    document
+  + Fix search/replace for multi-line strings
+  + Work around layout issues which cause lines to disappear
+  + Fix building with BSD make
+  + Fix block selection of last paragraph
+  + Fix overwrite of "Find all occurrences" option
+  + Improve "Unable to execute..." error dialog
+  + Rename "Show/Hide Output Panel" to "Show/Hide Console Output"
+    in the menu and the preferences dialog
+  + Remove subject and add instructions to body of the "email to
+    mailinglist"
+  + Bring the window running TeX to the top at the beginning of
+    typesetting to ensure that the console output is visible
+  + Allow symlinks and display only folders in "path for programs"
+    in the preferences dialog
+  + Add "Clear Recent Files" to "Open Recent" menu
+  + Add an autocompletion entry to the preferences dialog
+  + Add Lua(La)TeX to the default tools (and drop LaTeXmk by
+    default)
+  + Add an option to open log files
+  + Add CMake support (experimental)
+  + Update SyncTeX to version 1.17
+  + Update URLs to http://www.tug.org/texworks/
+  + Some enhancements to functions available to scripting
+  + Avoid showing an empty message box for script results
+  + Resolve symlinks when looking for scripts
+  + Expose the scripts' titles, authors, filenames, etc. to
+    scripting
+  + Update/improve scripts: open pdf in default viewer, derive
+    spellchecking language from babel package, log parser.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:56:50 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sat Jul 16 18:08:58 UTC 2011 - badshah400@gmail.com
+
+- Update to version 0.4.3
+  + Fix bug in autocompletion that could cause data loss 
+
+-------------------------------------------------------------------
+Wed Jun 29 09:15:21 UTC 2011 - badshah400@gmail.com
+
+- Update to version 0.4.2
+  + Work around layout issues with Qt 4.7.2 that caused TeXworks to
+    crash sometimes
+  + Fix autocompletion at the beginning of a line
+  + Respect per-file setting "None" for syntax highlighting, smart
+    quotes, and auto indent
+  + Update SyncTeX to version 1.16
+  + Allow to disable autocompletion by editing the configuration file
+  + Fix runtime warning about empty file watchers
+  + Enhance Mac patches for poppler
+  + Improve installation and packaging routines
+
+-------------------------------------------------------------------
+Fri May 27 08:47:21 UTC 2011 - badshah400@gmail.com
+
+- Update to version 0.4.1
+  + Option to always close the output panel after typesetting
+  + Invoke "Goto page" and "Goto line" from the status bar widgets
+  + Implement pdf zoom menu from the status bar widget
+  + Allow to reload a file with selectable encoding
+  + Implement "Help > Settings and Resources..." for easy access,
+    in particular to customizable resources
+  + Speed up program start-up
+  + Add \begin{document} to the auto-completion
+  + Work around the almost invisible highlighting when searching
+    with the "Find all occurences" option
+  + Improve highlighting of auto-completed text
+  + Let typeset combobox adjust size dynamically
+  + Remove the "+" from the zoom tool icon in the PDF preview
+  + Reduce size of packages
+  + Fix handling of non-existent files in automatic resource
+    updates
+  + Fix handling of TEXEDIT environment variable; add support for
+    the MIKTEX_EDITOR environment variable
+  + Fix several compile time and runtime warnings
+  + Fix invisible icons in application switcher with compiz
+  + Rename default ConTeXt tools
+  + Add more extensions for associating files with TeXworks
+  + Add support for Python 3.2
+  + Clean up unused code & files
+
+-------------------------------------------------------------------
+Tue Apr 19 19:26:10 UTC 2011 - badshah400@gmail.com
+
+- Correct pkgconfig dependency for lua plugin package
+
+-------------------------------------------------------------------
+Sat Apr 16 09:14:15 UTC 2011 - badshah400@gmail.com
+
+- Split out python scripting and lua scripting plugins in
+  respective subpackages
+- Correctly point to myspell dictionaries, this enables the
+  dictionaries in texworks' spell-checker (thanks to Mike)
+- Install the user-manual (thanks to Mike)
+
+-------------------------------------------------------------------
+Mon Mar 21 19:11:33 UTC 2011 - badshah400@gmail.com
+
+- Correct version number to 0.4.0 in keeping with upstream
+
+-------------------------------------------------------------------
+Mon Mar 21 06:17:07 UTC 2011 - badshah400@gmail.com
+
+- Update to version 0.4:
+  + Support scripting (QtScript, Lua, Python)
+  + "Save all" menu item
+  + Auto-completion for the beamer class
+  + Support background color/font flags in syntax highlighting
+  + Implement a command line parser
+  + Automatically update resources when installing new releases
+  + Implement "Smarten quotes" for a selection
+  + Only display each language once in the sellchecker
+    language selection
+  + Preserve documemt view when reloading after external changes
+  + Handle different file encodings and line ending conventions
+    and allow the user to change them
+  + Make pdflatex the default on fresh installations
+  + Indicate a document's modification state in the windows menu
+  + Improve the "Email to mailing list" template
+  + Make "Highlight current line" color palette-aware
+  + Update SyncTeX to 1.9
+  + Allow Esc and Return in the tags and search result windows
+  + Improve "Remove Auxiliary Files" dialog
+  + Fix handling of external file links in PDF's
+  + Numerous bug fixes
+  + Set TeXworks as the default editor when hitting 'e' after
+    a TeX error
+- Remove texworks-default_to_pdflatex.patch in favor of upstream
+  implementation
+- Remove auxiliary .desktop file and icons, implemented properly
+  upstream
+
+-------------------------------------------------------------------
+Sat Sep 25 21:51:21 UTC 2010 - badshah400@gmail.com
+
+- Remove incorrect entries from .desktop file
+- Cleanup of spec file
+
+-------------------------------------------------------------------
+Sun Aug  1 23:57:44 UTC 2010 - badshah400@gmail.com
+
+- Initial package following openSUSE packaging guidelines
+

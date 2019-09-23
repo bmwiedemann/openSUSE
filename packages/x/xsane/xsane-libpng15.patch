@@ -1,0 +1,29 @@
+http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=649800
+--- xsane-0.998.orig/src/xsane-save.c
++++ xsane-0.998/src/xsane-save.c
+@@ -4928,8 +4928,11 @@ int xsane_save_png(FILE *outfile, int co
+     xsane_back_gtk_error(buf, TRUE);
+     return -1; /* error */
+   }
+-
++#if PNG_LIBPNG_VER_MAJOR == 1 && PNG_LIBPNG_VER_MINOR >= 4
++  if ( setjmp( png_jmpbuf ( png_ptr ) ) )
++#else
+   if (setjmp(png_ptr->jmpbuf))
++#endif
+   {
+     snprintf(buf, sizeof(buf), "%s %s", ERR_DURING_SAVE, ERR_LIBPNG);
+     xsane_back_gtk_error(buf, TRUE);
+@@ -5119,7 +5122,11 @@ int xsane_save_png_16(FILE *outfile, int
+     return -1; /* error */
+   }
+ 
++#if PNG_LIBPNG_VER_MAJOR == 1 && PNG_LIBPNG_VER_MINOR >= 4
++  if ( setjmp( png_jmpbuf ( png_ptr ) ) )
++#else
+   if (setjmp(png_ptr->jmpbuf))
++#endif
+   {
+     snprintf(buf, sizeof(buf), "%s %s", ERR_DURING_SAVE, ERR_LIBPNG);
+     xsane_back_gtk_error(buf, TRUE);
+

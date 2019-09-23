@@ -1,0 +1,12 @@
+[Unit]
+Description=A remote-mail retrieval utility
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/fetchmail
+User=fetchmail
+ExecStart=/usr/lib/fetchmail-systemd-exec
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target

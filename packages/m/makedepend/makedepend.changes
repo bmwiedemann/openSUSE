@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Fri Mar 22 11:47:42 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.6
+  * This minor maintenance release fixes some bugs, lifts a limit,
+    clears some compiler warnings, boosts performance, and includes
+    other janitorial cleanups.
+- supersedes u_Escape-special-characters-in-paths.patch
+
+-------------------------------------------------------------------
+Fri Mar 18 05:52:22 UTC 2016 - eich@suse.com
+
+- u_Escape-special-characters-in-paths.patch
+  Make gets confused by certain special characters in Makefiles.
+  Escape them. This is a problem particularly with ':' in OBS
+  paths.
+
+-------------------------------------------------------------------
+Sat Aug 17 21:53:12 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.5:
+  + Don't crash if an option's argument is missing.
+  + Assume signal handlers return void, as C89 requires.
+  + Unsafe use of strcpy() in makedepend (fdo#56091).
+  + Store len in a size_t instead of an int in redirect().
+  + Mark fatalerr & catch as _X_NORETURN.
+  + Replace deprecated Automake INCLUDES variable with AM_CPPFLAGS.
+  + Makedepend rename fails on CIFS mounted shares (fdo#52099).
+  + autogen.sh: Implement GNOME Build API.
+  + configure: Drop AM_MAINTAINER_MODE.
+  + Fix a comment typo.
+  + Convert more sprintf calls to snprintf.
+  + Remove unnecessary casts from malloc/realloc calls.
+  + Remove fallbacks for Imake configuration, assume autoconf.
+  + Move i_listlen in struct inclist for better packing in 64-bit
+    builds.
+  + config: Remove unnecessary calls from configure.ac.
+  + Update configure.ac initialization to X.Org standard form.
+  + unifdef -U__UNIXOS2__.
+  + makedepend: Build with automake-1.13 broken (fdo#59005).
+  + configure.ac: use AM_MAINTAINER_MODE.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split makedepend from xorg-x11-util-devel.
+  Initial version: 1.0.4.
+

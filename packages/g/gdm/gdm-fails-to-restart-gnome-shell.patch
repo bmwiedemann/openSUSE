@@ -1,0 +1,13 @@
+Index: gdm-3.32.0+2/daemon/gdm-display.c
+===================================================================
+--- gdm-3.32.0+2.orig/daemon/gdm-display.c
++++ gdm-3.32.0+2/daemon/gdm-display.c
+@@ -696,7 +696,7 @@ gdm_display_unmanage (GdmDisplay *self)
+         }
+ 
+         elapsed = g_timer_elapsed (priv->server_timer, NULL);
+-        if (elapsed < 3) {
++        if (elapsed < 10) {
+                 g_warning ("GdmDisplay: display lasted %lf seconds", elapsed);
+                 _gdm_display_set_status (self, GDM_DISPLAY_FAILED);
+         } else {

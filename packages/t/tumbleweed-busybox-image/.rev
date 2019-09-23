@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7603af72cc6fbc239f31dff29c7c22d2</srcmd5>
+    <version>1.0.0</version>
+    <time>1555053316</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove bash, kiwi &gt;= 9.17.35 don't need them anymore
+- Add workaround that .kconfig uses bash syntax
+- Initial version
+</comment>
+    <requestid>692896</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2cee8809bb57310931f621f83cbba030</srcmd5>
+    <version>1.0.0</version>
+    <time>1557751814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701940</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>66c4441622b51a1c20cb36574f943bf1</srcmd5>
+    <version>1.0.0</version>
+    <time>1559375564</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix labels
+
+- Move to official opensuse repository</comment>
+    <requestid>706322</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6bb67ccddb4c03329f6c42a1d1a79fa0</srcmd5>
+    <version>1.0.0</version>
+    <time>1564994435</time>
+    <user>dimstar_suse</user>
+    <comment>- Add subcommand with /bin/sh, as the default /bin/bash does
+  not exist (forwarded request 720623 from kukuk)</comment>
+    <requestid>720624</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>3659d9aa316ff853725b9d19337ce1ab</srcmd5>
+    <version>1.0.0</version>
+    <time>1568983153</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729421</requestid>
+  </revision>
+</revisionlist>

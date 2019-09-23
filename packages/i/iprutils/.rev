@@ -1,0 +1,536 @@
+<revisionlist>
+  <revision rev="1" vrev="5">
+    <srcmd5>703bd5ed4188d9493ab2d766123b7bc9</srcmd5>
+    <version>2.2.3</version>
+    <time>1168903066</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f915ef42ac24baf9040de33c9179c9b3</srcmd5>
+    <version>2.2.4</version>
+    <time>1170609699</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="8">
+    <srcmd5>820c760b6001ff63e245dca4a7c0031e</srcmd5>
+    <version>2.2.4</version>
+    <time>1175162531</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e443dc2555aae0dbb739345d1d4de7e2</srcmd5>
+    <version>2.2.6</version>
+    <time>1182383896</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b7edf9038c5c88b2e4f421c159693c4c</srcmd5>
+    <version>2.2.8</version>
+    <time>1193182666</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>90f5b74e7c7b086b0ccf87e47144dfb6</srcmd5>
+    <version>2.2.8</version>
+    <time>1194304948</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f323f031e91e1e2611ea898a18970e47</srcmd5>
+    <version>2.2.9</version>
+    <time>1208796281</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d0fb8dfda714344425543072e6528dca</srcmd5>
+    <version>2.2.10</version>
+    <time>1219881859</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>7080f03e87525f44d0c12457e415aa3e</srcmd5>
+    <version>2.2.10</version>
+    <time>1220049244</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5ace12b1478d39b67beec6e8fea3f808</srcmd5>
+    <version>2.2.11</version>
+    <time>1222703006</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2ec9b385f8b615cc29fb49537d98ae09</srcmd5>
+    <version>2.2.12</version>
+    <time>1225213294</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>96e2ec27cccc1d4afcaecfb676294b58</srcmd5>
+    <version>2.2.13</version>
+    <time>1227191436</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>9f1f0e5ac0f326deeae2636fc283b971</srcmd5>
+    <version>2.2.13</version>
+    <time>1236645123</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>e7a36fdba692e46c0a47bf22ab20588c</srcmd5>
+    <version>2.2.13</version>
+    <time>1245260418</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>e7a36fdba692e46c0a47bf22ab20588c</srcmd5>
+    <version>2.2.13</version>
+    <time>1245260418</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>bfd328f8ff23987bac2ded25041148ed</srcmd5>
+    <version>2.2.13</version>
+    <time>1263227801</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/iprutils based on submit request 29054 from user coolo
+</comment>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>82c223e10d034db8f86fceda24ac805a</srcmd5>
+    <version>2.2.13</version>
+    <time>1268924036</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>82c223e10d034db8f86fceda24ac805a</srcmd5>
+    <version>2.2.13</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="10">
+    <srcmd5>82c223e10d034db8f86fceda24ac805a</srcmd5>
+    <version>2.2.13</version>
+    <time>1278678583</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>ed9a4ec41277bdfb8e6a4dd101f6b5ea</srcmd5>
+    <version>unknown</version>
+    <time>1284125988</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/iprutils based on submit request 47597 from user coolo
+</comment>
+    <requestid>47597</requestid>
+  </revision>
+  <revision rev="21" vrev="12">
+    <srcmd5>b9bd71ac7bb9c964867fddf8d62c53cf</srcmd5>
+    <version>2.2.13</version>
+    <time>1288265555</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51556 from user coolo
+</comment>
+    <requestid>51556</requestid>
+  </revision>
+  <revision rev="22" vrev="13">
+    <srcmd5>99489a55ca2940ea1bb26ad8bcf585d0</srcmd5>
+    <version>2.2.13</version>
+    <time>1288265559</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51556
+</comment>
+  </revision>
+  <revision rev="23" vrev="14">
+    <srcmd5>55a72a9e9030e9530b3ece8780644898</srcmd5>
+    <version>2.2.13</version>
+    <time>1288701405</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51864 from user coolo
+</comment>
+    <requestid>51864</requestid>
+  </revision>
+  <revision rev="24" vrev="15">
+    <srcmd5>be21f79f709d57d1a3c0d937b0e80212</srcmd5>
+    <version>2.2.13</version>
+    <time>1288701411</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51864
+</comment>
+  </revision>
+  <revision rev="25" vrev="18">
+    <srcmd5>be21f79f709d57d1a3c0d937b0e80212</srcmd5>
+    <version>2.2.13</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="26" vrev="19">
+    <srcmd5>d84f90c2b1e7dbe9dc985c77ef075d51</srcmd5>
+    <version>2.2.13</version>
+    <time>1317744736</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86404 from uli_suse)</comment>
+    <requestid>86446</requestid>
+  </revision>
+  <revision rev="27" vrev="21">
+    <srcmd5>d84f90c2b1e7dbe9dc985c77ef075d51</srcmd5>
+    <version>2.2.13</version>
+    <time>1319181991</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="28" vrev="22">
+    <srcmd5>ca34246f51aa7c75b0b44669c647381f</srcmd5>
+    <version>2.2.13</version>
+    <time>1323191975</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="29" vrev="13">
+    <srcmd5>16d01fb17b1659993c9d754426d196c0</srcmd5>
+    <version>2.3.9</version>
+    <time>1332415985</time>
+    <user>coolo</user>
+    <comment>- update to 2.3.9 
+  dropped iprutils-noswab.patch (merged upstream)
+  Long time no update, so many changes:
+  - Adds support for FPGA updates.
+  - Only uses primary adapter for initialize and format disk task.
+  - Fixes segmentation fault when qac is not available.
+  - Increases maximum dump size.
+  - Adds initial support for sis64 asymmetric access changes.
+  - Fixes segmentation faults when trying to display certain information.
+  - Fixes code incompatibility with libsysfs version 1.
+  - Adds Resource Path display for SIS64 devices.
+  - Adds support for the new live dump functionality.
+  - Fixes battery info for little endian architectures.
+  - Fixes buffer overflow when the SCSI Host ID is equal or greater than 1000.
+  - Fixes firmware image files left open after getting firmware level.
+  - Changes IOA DRAM size display from hex to decimal base.
+  - Handles SG_IO ioctl error with older distros which caused disk microcode
+    download to fail with JBOD's.
+  - Fixes platform location display on blades.
+  - Fixes the Platform Location Information display for hotplug adapters and
+    displays the information for non-hotplug adapters.
+  - Fixes a NULL pointer dereference which caused the daemons to silently fail.
+  - Fixes several potential memory leak problems.
+  - Add support for SSD drives. (forwarded request 110178 from vitezslav_cizek)</comment>
+    <requestid>110269</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3e0a6cb497e078f508315a75c7cd7d44</srcmd5>
+    <version>2.3.10</version>
+    <time>1337578062</time>
+    <user>coolo</user>
+    <comment>- update to version 2.3.10 
+- clean up spec file</comment>
+    <requestid>121297</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>3e0a6cb497e078f508315a75c7cd7d44</srcmd5>
+    <version>2.3.10</version>
+    <time>1340183465</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d044c6e28d569d7a92acecbdb138e3aa</srcmd5>
+    <version>2.3.13</version>
+    <time>1358664673</time>
+    <user>coolo</user>
+    <comment>- update to 2.3.13
+  - Fixes Platform Location for 32bit adapter.
+  - Adds support for optical devices.
+  - Fixes platform location for disks.
+  - Addes supporting suspend/resume utility for BlueHawk.
+  - Fixes raid array delete error.
+  - Fixes deleting an array logs I/O errors.
+  - Fixes buffer overflow in disk details.
+  - Fixes wrong status on an array for the secondary controller.
+  - Fixes add_string_to_body() for non-interactive interface.
+  - Fixes IOA asymmetric access mode change.
+  - Gets location code when SES page 4 is unavailable.
+  - Fixes physical location error if disk is vses disk. (forwarded request 148748 from k0da)</comment>
+    <requestid>148817</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>d044c6e28d569d7a92acecbdb138e3aa</srcmd5>
+    <version>2.3.13</version>
+    <time>1359109087</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>954e4ea67696721cb96ea8ff263c1996</srcmd5>
+    <version>2.3.15</version>
+    <time>1373029488</time>
+    <user>coolo</user>
+    <comment>- Release 2.3.15
+  - Add support for 4K bytes/sector disks in iprutils
+- Release 2.3.14
+  - Fixes stale information after hot plug a disk into an array
+  - Segmentation fault when removing a disk with hot spare disk
+  - Fxied sysfs error when updating microcode
+  - Fixes the platform location issue for Tres drawer
+  - Fix hop count defines (forwarded request 182190 from k0da)</comment>
+    <requestid>182221</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>954e4ea67696721cb96ea8ff263c1996</srcmd5>
+    <version>2.3.15</version>
+    <time>1379662678</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>932c6ebd41545e0064c270e54d4c9571</srcmd5>
+    <version>2.3.15</version>
+    <time>1386693763</time>
+    <user>coolo</user>
+    <comment>- build on ppc64le (forwarded request 210019 from k0da)</comment>
+    <requestid>210042</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>91735f032a99154751f07f35ae57ae66</srcmd5>
+    <version>2.3.16</version>
+    <time>1389953042</time>
+    <user>coolo</user>
+    <comment>version update to 2.3.16 (FATE#315573) (forwarded request 213712 from jloeser)</comment>
+    <requestid>213728</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f842b04fdb747fd93154c661f51d5f21</srcmd5>
+    <version>2.4.0</version>
+    <time>1392832504</time>
+    <user>coolo</user>
+    <comment>version update to 2.4.0 (bnc#860283, bnc#862958)</comment>
+    <requestid>222705</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>821e0cc46f126e83a821eee8ca17ccaf</srcmd5>
+    <version>2.4.0</version>
+    <time>1394901349</time>
+    <user>coolo</user>
+    <comment>fix for firmware level showed as &quot;FFFFFFF&quot; (BNC#867744)</comment>
+    <requestid>225780</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>54c3dbe5559af2d15639de56db679193</srcmd5>
+    <version>2.4.0</version>
+    <time>1395896928</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>227123</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3f2d78a43eaf871319f9dd81f275b85b</srcmd5>
+    <version>2.4.1</version>
+    <time>1397450541</time>
+    <user>coolo</user>
+    <comment>version update to 2.4.1 (BNC#870888) (forwarded request 229740 from jloeser)</comment>
+    <requestid>229875</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>7c1679aadeb85ba5fdaaa5dfe99f525f</srcmd5>
+    <version>2.4.1</version>
+    <time>1399703549</time>
+    <user>coolo</user>
+    <comment>fix generation of ipr dump file (BNC#876235); fix for GTO dual configuration in query-path-status (BNC#876236) (forwarded request 232818 from jloeser)</comment>
+    <requestid>233105</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>5c45d56e0334b5ddcff2a26008f1372b</srcmd5>
+    <version>2.4.1</version>
+    <time>1400218190</time>
+    <user>coolo</user>
+    <comment>iprutils does not require libsysfs as dependency anymore (BNC#876661) (forwarded request 233734 from jloeser)</comment>
+    <requestid>233814</requestid>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>818dbb7e1cc6ed8fb951413262640c07</srcmd5>
+    <version>2.4.1</version>
+    <time>1401092883</time>
+    <user>coolo</user>
+    <comment>- also add the %pre snippets for service addition. (forwarded request 233868 from msmeissn)</comment>
+    <requestid>235192</requestid>
+  </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>86caa632ae44a05887f953ba6632f7b9</srcmd5>
+    <version>2.4.1</version>
+    <time>1401641893</time>
+    <user>coolo</user>
+    <comment>- make the %pre/%post sections unconditional. bnc#877576 (forwarded request 235487 from msmeissn)</comment>
+    <requestid>235691</requestid>
+  </revision>
+  <revision rev="46" vrev="6">
+    <srcmd5>cd5fdc2efbebbe67b7e6eae6a85fb530</srcmd5>
+    <version>2.4.1</version>
+    <time>1405264583</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239472</requestid>
+  </revision>
+  <revision rev="47" vrev="8">
+    <srcmd5>cd5fdc2efbebbe67b7e6eae6a85fb530</srcmd5>
+    <version>2.4.1</version>
+    <time>1409301241</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="9">
+    <srcmd5>182ca593f628f19df9e4abaccb96a05b</srcmd5>
+    <version>2.4.1</version>
+    <time>1409761290</time>
+    <user>coolo</user>
+    <comment>&quot;read intensive&quot; disks are now showing up in iprconfig menu (bnc#890872) (forwarded request 246611 from jloeser)</comment>
+    <requestid>247110</requestid>
+  </revision>
+  <revision rev="49" vrev="10">
+    <srcmd5>0b114381cd05dac7a692716743571d8c</srcmd5>
+    <version>2.4.1</version>
+    <time>1411127745</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250060</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>b23c9d319a3d37f9e5e5a2c4c05a4772</srcmd5>
+    <version>2.4.8</version>
+    <time>1438794816</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>318980</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>853a369bcd6a31cca0077ebaeb8e9588</srcmd5>
+    <version>2.4.9</version>
+    <time>1446764479</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.9
+ - Add support for sync cache managed array write cache on supported adapters
+ - Add supportconfig plugin
+ - Misc build cleanups and fixes
+ - Microcode download UI enhancements
+ - Add new show-ucode-levels to list all microcode levels for all ipr devices
+ - Add support to change rebuild rate from ncurses
+- Don't enable sosreport by default (iprutils.nososreport.patch)
+- Drop python from BuildRequires
+- Spec file cleanup
+- Specify explicitly systemd unitdir, upstream is buggy here.
+
+- Build only for Power architectures. IPR adapters are mainly 
+  presented there. 
+
+- Don't package sos report plugin (bsc#951575)</comment>
+    <requestid>341204</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>dd487bc8c76a8b5d6429ac0107ba69d5</srcmd5>
+    <version>2.4.11</version>
+    <time>1460837284</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>389798</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>58f0bf0cb60f61f0439078afc0739386</srcmd5>
+    <version>2.4.12</version>
+    <time>1470934394</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417087</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>511246030a6eaddb8b8fdcf119e45efd</srcmd5>
+    <version>2.4.13</version>
+    <time>1472246088</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>421764</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>6a9ac557b7bbaf2ac2825023912d86ce</srcmd5>
+    <version>2.4.13</version>
+    <time>1473547884</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>424550</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>f4d9021ea048eb3a9fbfd888197ae929</srcmd5>
+    <version>2.4.13</version>
+    <time>1486552372</time>
+    <user>dimstar_suse</user>
+    <comment>- Export LIBS and not LDFLAGS
+- Switch over to ncurses ABI 6
+
+- Require pkgconfig form5 and ncurses5 for build</comment>
+    <requestid>455187</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>31027db8e08ed456c309818fc79ea8f5</srcmd5>
+    <version>2.4.14</version>
+    <time>1489178701</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477561</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>0660e92759217114224703a5993b246b</srcmd5>
+    <version>2.4.15</version>
+    <time>1509193125</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536221</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>56e8547a1cd579a2957b51cb313b004c</srcmd5>
+    <version>2.4.15</version>
+    <time>1520415075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582547</requestid>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>0856a51fb439577154ad839b02e71a0a</srcmd5>
+    <version>2.4.15</version>
+    <time>1522062341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590594</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>f9f2a9f300c35e3d872cd9ea417afb03</srcmd5>
+    <version>2.4.16</version>
+    <time>1528895718</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>614471</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>547e796bfb2d60057b2849fc309fd01c</srcmd5>
+    <version>2.4.17</version>
+    <time>1542202135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646818</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>23a09f6bef7d26e52a50fab7587c236c</srcmd5>
+    <version>2.4.17</version>
+    <time>1556914032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698689</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>8865a9b34ae25a31a5ca9863af96eea2</srcmd5>
+    <version>2.4.18</version>
+    <time>1560458206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708094</requestid>
+  </revision>
+</revisionlist>

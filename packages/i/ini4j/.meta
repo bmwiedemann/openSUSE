@@ -1,0 +1,7 @@
+<package name="ini4j" project="openSUSE:Factory">
+  <title>Java API for handling Windows ini file format</title>
+  <description>The [ini4j] is a simple Java API for handling configuration files in
+Windows .ini format. Additionally, the library includes Java
+Preferences API implementation based on the .ini file.</description>
+  <devel project="Java:packages" package="ini4j"/>
+</package>

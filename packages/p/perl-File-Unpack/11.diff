@@ -1,0 +1,22 @@
+diff --git a/Unpack.pm b/Unpack.pm
+index d5354ac..966111b 100644
+--- a/Unpack.pm
++++ b/Unpack.pm
+@@ -104,7 +104,7 @@ my $UNCOMP_BUFSZ = 1024;
+ 
+ # unpack will give up, after unpacking that many levels. It is more likely we
+ # got into a loop by then, than really have that many levels.
+-my $RECURSION_LIMIT = 200;
++my $RECURSION_LIMIT = 50;
+ 
+ # Suggested place, where admins should install the helpers bundled with this module.
+ sub _default_helper_dir { $ENV{FILE_UNPACK_HELPER_DIR}||'/usr/share/File-Unpack/helper' }
+@@ -855,7 +855,7 @@ sub unpack
+ 
+   if (($self->{recursion_level}||0) > $RECURSION_LIMIT)
+     {
+-      push @{$self->{error}}, "unpack('$archive','$destdir'): recursion limit $RECURSION_LIMIT";
++      warn "unpack('$archive','$destdir'): recursion limit $RECURSION_LIMIT";
+       ## this is only an emergency stop.
+       return 1;
+     }

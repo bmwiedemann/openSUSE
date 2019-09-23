@@ -1,0 +1,171 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>93d7905feff7da1db446fe81d5b23ff5</srcmd5>
+    <version>2.019</version>
+    <time>1339362101</time>
+    <user>coolo</user>
+    <comment>dependency by new otrs</comment>
+    <requestid>124257</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>93d7905feff7da1db446fe81d5b23ff5</srcmd5>
+    <version>2.019</version>
+    <time>1340183897</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>93d7905feff7da1db446fe81d5b23ff5</srcmd5>
+    <version>2.019</version>
+    <time>1359109770</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6fdff31c534351e36ed922ab10b50943</srcmd5>
+    <version>2.020</version>
+    <time>1375365545</time>
+    <user>coolo</user>
+    <comment>update to 2.020 (forwarded request 185436 from computersalat)</comment>
+    <requestid>185437</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>6fdff31c534351e36ed922ab10b50943</srcmd5>
+    <version>2.020</version>
+    <time>1379663803</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7e7da557342218987817bc9628168276</srcmd5>
+    <version>2.022</version>
+    <time>1406521885</time>
+    <user>coolo</user>
+    <comment>- updated to 2.022
+     - Added $pdf-&gt;version() get/set method.  When opening an existing
+       PDF, the existing version number will now be retained.
+ 
+     - Renamed the following in PDF::API2:
+         - importpage to import_page
+         - openScalar to open_scalar
+ 
+       The old names are deprecated.
+ 
+     - [RT #69503] Fix the -firstpage option to $pdf-&gt;preferences() so
+       that it doesn't always lead to a crash (reported by Dietrich
+       Streifert).
+ 
+     - [RT #47974] Accept malformed xref subsections (with a warning)
+       that have extraneous spaces on the first line (reported by
+       Abhinav Kaushik).
+ 
+     - [RT #94505] For Code128 barcodes, the initial character set is
+       now optional (defaults to B or C depending on the content to be
+       encoded).  The initial character set can be passed as a capital
+       letter, and the program will die if an invalid character set is
+       requested (requested by Andrea Nall).
+ 
+     - Interleaved 2 of 5 barcodes now prepend a zero when an odd
+       number of digits is specified, which is standard behavior.
+       Previously, a zero was appended instead.
+ 
+     - $page-&gt;rotate(0) now sets rotation to 0 degrees rather than
+       deleting an existing page rotation command.  Page rotation is</comment>
+    <requestid>242618</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>7e7da557342218987817bc9628168276</srcmd5>
+    <version>2.022</version>
+    <time>1409302439</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c0853da7adadb6a8bbd0ba479587f502</srcmd5>
+    <version>2.023</version>
+    <time>1429107998</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296678</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7896a1b1d6e0a1c06688fa297ffc7726</srcmd5>
+    <version>2.025</version>
+    <time>1443585134</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333937</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>592dd4b34df80d6dff8bf286da05aa96</srcmd5>
+    <version>2.027</version>
+    <time>1458120981</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>373122</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5e3599926d2656b2b511262b78d3b588</srcmd5>
+    <version>2.028</version>
+    <time>1466326090</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401463</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ab9ee28b0945d8678e67abf2690c40d7</srcmd5>
+    <version>2.029</version>
+    <time>1476351142</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434400</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d39c6995057ba81f25687ebf40087eb1</srcmd5>
+    <version>2.030</version>
+    <time>1476997799</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>436489</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>830842aecebc9534e8aa9ab91f376898</srcmd5>
+    <version>2.031</version>
+    <time>1487260995</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456913</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>699f13d844f13ce75061ad2c59acc822</srcmd5>
+    <version>2.033</version>
+    <time>1500670057</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509618</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a41c08391c36c5a7b7739aa96d9d8fc3</srcmd5>
+    <version>2.034</version>
+    <time>1562056777</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712936</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cb6664721851e900c958f622d8f79cc4</srcmd5>
+    <version>2.035</version>
+    <time>1565864919</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723266</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>56c1114941c679fc8d76dd9506f394d4</srcmd5>
+    <version>2.036</version>
+    <time>1569235086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732132</requestid>
+  </revision>
+</revisionlist>

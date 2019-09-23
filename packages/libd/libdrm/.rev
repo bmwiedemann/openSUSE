@@ -1,0 +1,1412 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd3c135e403e77a157f4138d4410194c</srcmd5>
+    <version>2.3.0</version>
+    <time>1168903298</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="54">
+    <srcmd5>12020062371ded33519a0d18037eb38a</srcmd5>
+    <version>2.3.0</version>
+    <time>1199136350</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="74">
+    <srcmd5>36aa37c3f064123d8d404f672fc46651</srcmd5>
+    <version>2.3.0</version>
+    <time>1207830287</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>323bdaebfc8f882a982f8c12bc7cd236</srcmd5>
+    <version>2.3.1</version>
+    <time>1215545649</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>70a4fd6a2a19828b11ffa2b0b94bbe2e</srcmd5>
+    <version>2.4.0</version>
+    <time>1219568632</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>e8eee9e4fcc0f31c450bc10890d72c8e</srcmd5>
+    <version>2.4.0</version>
+    <time>1222268976</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>46172544a7b233e78bbd6908b73e50f8</srcmd5>
+    <version>2.4.0</version>
+    <time>1222433895</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>c39f11be9dd8ccb745b1db92a1c78a61</srcmd5>
+    <version>2.4.0</version>
+    <time>1223740519</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>54307cbcd955a4206f5936de25bb11e9</srcmd5>
+    <version>2.4.0</version>
+    <time>1224694617</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0a76053e70162a845dd7518317b3522c</srcmd5>
+    <version>2.4.1</version>
+    <time>1225711308</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9de3f61437cc526fe352aed2f315386b</srcmd5>
+    <version>2.4.1</version>
+    <time>1231436038</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>0827609605f0729f66d2cf17517f1048</srcmd5>
+    <version>2.4.1</version>
+    <time>1232749775</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d7bf7ef1b893af77daec1f7ae6002ee7</srcmd5>
+    <version>2.4.5</version>
+    <time>1235646993</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9507e2510c4da55afc9083b8e242ce59</srcmd5>
+    <version>2.4.9</version>
+    <time>1240512746</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b6d7f9b4f5e823070c2e5fcb6ad029b3</srcmd5>
+    <version>2.4.11</version>
+    <time>1242686879</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3ccc18b4a2536d50392aa817cd5dc9eb</srcmd5>
+    <version>2.4.14</version>
+    <time>1254519078</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 21402 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>3ccc18b4a2536d50392aa817cd5dc9eb</srcmd5>
+    <version>2.4.14</version>
+    <time>1254519078</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 21402 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>893d1a9e304402f4aa1c82b828bd6316</srcmd5>
+    <version>2.4.14</version>
+    <time>1256918409</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 23400 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>b79339497a11f0a63ac87a01f812683a</srcmd5>
+    <version>2.4.14</version>
+    <time>1257161962</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 23530 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>56b4c4518d3a5e2e6d3636f8d16793b0</srcmd5>
+    <version>2.4.15</version>
+    <time>1259918338</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 25353 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f9d5b84b69997d659e14f61ba354324f</srcmd5>
+    <version>2.4.16</version>
+    <time>1260269440</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 25647 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>21f1ce17b4848ead4d1dc7a640cc3e89</srcmd5>
+    <version>2.4.16</version>
+    <time>1260951645</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 26726 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c35c8b4809498eed0b1ac9d41457f16d</srcmd5>
+    <version>2.4.17</version>
+    <time>1262968248</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 28097 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>e4d3a3ed5242d25f75169e2dd8e34943</srcmd5>
+    <version>2.4.17</version>
+    <time>1266504541</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 32799 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>db8d61c9d57259d0e743e42e9b06076f</srcmd5>
+    <version>2.4.18</version>
+    <time>1267751178</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 33640 from user sndirsch
+</comment>
+    <requestid>33640</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>891ea4a5212735a09ca049133d519509</srcmd5>
+    <version>2.4.18</version>
+    <time>1268924540</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>c658ae6acf9f06ce6840be9bc288fe1b</srcmd5>
+    <version>2.4.18</version>
+    <time>1268949762</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 35133 from user coolo
+</comment>
+    <requestid>35133</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>dc701dbf9c8c544160c681ae1c54d971</srcmd5>
+    <version>2.4.19</version>
+    <time>1269559022</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 35610 from user sndirsch
+</comment>
+    <requestid>35610</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>60bb9a4451aeca87ad7d813a345a296d</srcmd5>
+    <version>2.4.20</version>
+    <time>1271251069</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 37474 from user sndirsch
+</comment>
+    <requestid>37474</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>f73539254ca4a2d82e9728adb94f234c</srcmd5>
+    <version>2.4.20</version>
+    <time>1275494914</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 40949 from user sndirsch
+</comment>
+    <requestid>40949</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>fc24625fd26051103d5f6c7d2963fb20</srcmd5>
+    <version>2.4.21</version>
+    <time>1277733595</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 42059 from user sndirsch
+</comment>
+    <requestid>42059</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>fc24625fd26051103d5f6c7d2963fb20</srcmd5>
+    <version>2.4.21</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>fc24625fd26051103d5f6c7d2963fb20</srcmd5>
+    <version>2.4.21</version>
+    <time>1278678589</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>6114b8c296b2287b8491c6fec4bf3b95</srcmd5>
+    <version>2.4.21</version>
+    <time>1279538951</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 42707 from user sndirsch
+</comment>
+    <requestid>42707</requestid>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>d06be53290a68b60285e594cea391c07</srcmd5>
+    <version>2.4.21</version>
+    <time>1283511743</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 46575 from user sndirsch
+</comment>
+    <requestid>46575</requestid>
+  </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>f70153db66ab27adb831d3dc8af6ede1</srcmd5>
+    <version>2.4.21</version>
+    <time>1284750070</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 48177 from user sndirsch
+</comment>
+    <requestid>48177</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>528416e1ae89bd02d0ad06ba464127f1</srcmd5>
+    <version>2.4.22</version>
+    <time>1285970193</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/libdrm based on submit request 49510 from user sndirsch
+</comment>
+    <requestid>49510</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>f2d79ee491938b7f102d1ef3d715e7ae</srcmd5>
+    <version>2.4.22</version>
+    <time>1288961235</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52032 from user sndirsch
+</comment>
+    <requestid>52032</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>4789b20e60f9f030b5568d028141e832</srcmd5>
+    <version>2.4.22</version>
+    <time>1288961241</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52032
+</comment>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>a63b9c1fc0a8e2634fe33422e46a35d2</srcmd5>
+    <version>2.4.22</version>
+    <time>1289217163</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52361 from user sndirsch
+</comment>
+    <requestid>52361</requestid>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>ba6ff77f4ded6c6eaf7c06a3ab6abe73</srcmd5>
+    <version>2.4.22</version>
+    <time>1289217174</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52361
+</comment>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>c4afaa5e66e25e4b763d31f82c45662e</srcmd5>
+    <version>2.4.22</version>
+    <time>1291586518</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54717 from user sndirsch
+</comment>
+    <requestid>54717</requestid>
+  </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>2e285e684ac74f1e742425f269068148</srcmd5>
+    <version>2.4.22</version>
+    <time>1291586530</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54717
+</comment>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>d559b4462cf975b82c000a3edcf0e1a4</srcmd5>
+    <version>2.4.23</version>
+    <time>1292240193</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55686 from user sndirsch
+</comment>
+    <requestid>55686</requestid>
+  </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>377a903a29fda12182f25565703d59e7</srcmd5>
+    <version>2.4.23</version>
+    <time>1292240203</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55686
+</comment>
+  </revision>
+  <revision rev="46" vrev="5">
+    <srcmd5>25bae23f92331f49e531b63d79b4801c</srcmd5>
+    <version>2.4.23</version>
+    <time>1293578052</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56444 from user sndirsch
+</comment>
+    <requestid>56444</requestid>
+  </revision>
+  <revision rev="47" vrev="6">
+    <srcmd5>89bd0527b69bf61afb326e3f587c9d1e</srcmd5>
+    <version>2.4.23</version>
+    <time>1293578076</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56444
+</comment>
+  </revision>
+  <revision rev="48" vrev="7">
+    <srcmd5>5ebec9abd92def04f443dbbbd5c626bb</srcmd5>
+    <version>2.4.23</version>
+    <time>1294238985</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57126 from user sndirsch
+</comment>
+    <requestid>57126</requestid>
+  </revision>
+  <revision rev="49" vrev="8">
+    <srcmd5>a9a3ead787a778c726924dc20e64c1f6</srcmd5>
+    <version>2.4.23</version>
+    <time>1294238990</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57126
+</comment>
+  </revision>
+  <revision rev="50" vrev="11">
+    <srcmd5>a9a3ead787a778c726924dc20e64c1f6</srcmd5>
+    <version>2.4.23</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="51" vrev="12">
+    <srcmd5>e5df1a8fa48f1c06f3d62af2d224e5ca</srcmd5>
+    <version>2.4.23</version>
+    <time>1306397150</time>
+    <user>saschpe</user>
+    <comment>- install the binaries of dristat, drmstat, drmmodeprint and
+  drmmodetest instead of the useless libtool wrappers ... 
+
+- removed patch: enable_test_tools.diff.
+  - Building and installing dristat and drmstat can be done
+    from the spec file. Same is true for installing drmmodeprint
+    and drmmodetest.</comment>
+    <requestid>71285</requestid>
+  </revision>
+  <revision rev="52" vrev="13">
+    <srcmd5>12e81171669f88ad18f5fef4deef1cb1</srcmd5>
+    <version>2.4.23</version>
+    <time>1306397166</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71285
+</comment>
+  </revision>
+  <revision rev="53" vrev="12">
+    <srcmd5>7a30a6a6dc7d271be69736c83f0ef894</srcmd5>
+    <version>2.4.26</version>
+    <time>1308734502</time>
+    <user>saschpe</user>
+    <comment>- Update to libdrm 2.6.26
+- obsoletes intel-Export-CONSTANT_BUFFER-addressing-mode.patch
+- a bunch of fixes
+- new Intel API for use by mesa</comment>
+    <requestid>74294</requestid>
+  </revision>
+  <revision rev="54" vrev="13">
+    <srcmd5>1e55d83ea1d8b95a078e2a8d550f1a8d</srcmd5>
+    <version>2.4.26</version>
+    <time>1308734511</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74294
+</comment>
+  </revision>
+  <revision rev="55" vrev="14">
+    <srcmd5>8307dc8cf0f0bd9b18daea7cb060cbab</srcmd5>
+    <version>2.4.26</version>
+    <time>1317912134</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: move testing to %check section</comment>
+    <requestid>86753</requestid>
+  </revision>
+  <revision rev="56" vrev="16">
+    <srcmd5>8307dc8cf0f0bd9b18daea7cb060cbab</srcmd5>
+    <version>2.4.26</version>
+    <time>1319182084</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>fb0dab0b4e28e820a4b91776bdb088bf</srcmd5>
+    <version>2.4.27</version>
+    <time>1320487108</time>
+    <user>coolo</user>
+    <comment>- Update to libdrm 2.4.27 
+  * required for latest intel driver ...</comment>
+    <requestid>89949</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>26d49558791dd191be49eae9c57ca367</srcmd5>
+    <version>2.4.27</version>
+    <time>1321268535</time>
+    <user>coolo</user>
+    <comment>- add libtool as explicit buildrequire to avoid implicit dependency from prjconf</comment>
+    <requestid>91256</requestid>
+  </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>15358be3cb1321cabedcf4c4149a2206</srcmd5>
+    <version>2.4.27</version>
+    <time>1323192191</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>c5a5a853e66a32f6fa320bb7b0c2109e</srcmd5>
+    <version>2.4.30</version>
+    <time>1328890596</time>
+    <user>coolo</user>
+    <comment>- Update to libdrm-2.4.30
+  * required for lastest Mesa</comment>
+    <requestid>103492</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>5cb81e88082d1cd1a115e1f02a089ebe</srcmd5>
+    <version>2.4.31</version>
+    <time>1329476462</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.4.31
+* radeon: add surface allocator helper v10
+* intel: add sprite ioctl defines and struct for i915 sprite code
+- Remove autoreconf call for now, there are no patches that
+  would necessitate this
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+- Package shlibs separately according to policy
+- Package description updates</comment>
+    <requestid>105528</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>6f1ae64982e02528f86c9e8687892aff</srcmd5>
+    <version>2.4.31</version>
+    <time>1330081526</time>
+    <user>coolo</user>
+    <comment>- don't package libdrm-intel on ppc, ppc64. As there is not intel
+  cards</comment>
+    <requestid>106472</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>2bcf0f4a6d17f865306205a47803eaa7</srcmd5>
+    <version>2.4.31</version>
+    <time>1330434831</time>
+    <user>coolo</user>
+    <comment>- fix build on arm</comment>
+    <requestid>107144</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>3e420735b1c782555fe9a79df3706f05</srcmd5>
+    <version>2.4.33</version>
+    <time>1336471116</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115370</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>3e420735b1c782555fe9a79df3706f05</srcmd5>
+    <version>2.4.33</version>
+    <time>1340183576</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="66" vrev="4">
+    <srcmd5>b04f1de75a60e5966505b9aa3fb919ce</srcmd5>
+    <version>2.4.33</version>
+    <time>1341169202</time>
+    <user>coolo</user>
+    <comment>- U_intel-add-Ivy-Bridge-GT2-server-variant.patch 
+  * intel: add Ivy Bridge GT2 server variant (bnc#769209)
+
+- enable omapdrm support 
+
+- back to libdrm 2.4.33, since 2.4.34 currentlz requires Mesa git
+  master changes for nouveau Mesa driver build
+
+- update to version 2.4.34, see NEWS for detail, here follows 
+  packaging changes only.
+  + nouveau.h was moved out from its subdirectory (upstream change)
+  + lidrm_nouveau version bumped to 2.
+  + remove obsolete configure options.
+  + Fix many more &quot;implicit declarations&quot; and &quot;undefined references&quot;</comment>
+    <requestid>126628</requestid>
+  </revision>
+  <revision rev="67" vrev="5">
+    <srcmd5>a057974c827ca1df1e181d51cf6f62d4</srcmd5>
+    <version>2.4.33</version>
+    <time>1341222616</time>
+    <user>coolo</user>
+    <comment>Disable valgrind support for armv5 since valgrind only supports armv7 (forwarded request 126875 from Guillaume_G)</comment>
+    <requestid>126876</requestid>
+  </revision>
+  <revision rev="68" vrev="6">
+    <srcmd5>e8935e1c548a84ee41b84b8998591ec8</srcmd5>
+    <version>2.4.33</version>
+    <time>1341833383</time>
+    <user>coolo</user>
+    <comment>- build omap support only on %arm platform</comment>
+    <requestid>127194</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>5c0fc7aa047455583229f4ddb322d1b8</srcmd5>
+    <version>2.4.39</version>
+    <time>1347894015</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.4.39:
+  + radeon: add prime import/export support
+  + intel: Use VG_CLEAR on the context destroy ioctl as well.
+  + radeon: fix allocation of MSAA surfaces on r600-r700
+  + radeon: align r600 msaa buffers to a multiple of macrotile size
+    * num samples  
+  + tests/modetest: Add a forgotten return, needed for opensuse buildservice
+  + omap: include omap_drm.h independently
+  
+
+- Update to version 2.4.38:
+  + Bugfix release
+
+- Update to version 2.4.37:
+  + Put the proper context APIs in place.
+- Add a patch to build 2.4.37 successfully!
+  + Added N_0001-Add-a-forgotten-return-needed-for-opensuse-buildserv.patch
+
+- Update to version 2.4.36:
+  + packaging changes:
+    - nouveau.h was moved out from its subdirectory (upstream change)
+    - lidrm_nouveau version bumped to 2
+    - Removed --enable-nouveau-experimental-api from configure
+      it is now stable and will build without it
+  + new in this release:
+    - Context API and wait render timeout API added to libdrm for Intel</comment>
+    <requestid>134678</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>4ad8ee384ea72e39519cc86524c00c3f</srcmd5>
+    <version>2.4.39</version>
+    <time>1348574681</time>
+    <user>coolo</user>
+    <comment>- u_Fix-compilation-on-systems-that-don-t-provide-O_CLOE.patch 
+  * Fix compilation on systems that don't provide O_CLOEXEC.
+    Patch suggestion by Thomas Klausner &lt;wiz%NetBSD.org@localhost&gt;.
+    See also http://mail-index.netbsd.org/pkgsrc-changes/2012/08/13/msg076887.html
+
+- let libdrm-devel require libkms-devel</comment>
+    <requestid>135779</requestid>
+  </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>14f91339eca6bbedb4e23fc06f6413f5</srcmd5>
+    <version>2.4.39</version>
+    <time>1349243887</time>
+    <user>coolo</user>
+    <comment>- Require libdrm_omap1-32bit only on ARM (forwarded request 136194 from namtrac)</comment>
+    <requestid>136206</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>3d0ad3fd05a61b56436c78bd6812712a</srcmd5>
+    <version>2.4.40</version>
+    <time>1354887475</time>
+    <user>namtrac</user>
+    <comment>Update to version 2.4.40:
+Note:
+ + New manpages
+ + vmwgfx is no longer experimental and is always build (forwarded request 140285 from tobijk)</comment>
+    <requestid>144513</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>59b35ff1dfadd62743a5d509b7c972eb</srcmd5>
+    <version>2.4.41</version>
+    <time>1358412331</time>
+    <user>coolo</user>
+    <comment>Update to version 2.4.41:
+Please note:
+The official tar.bz2 for this release is broken and there is no git tag, but looking at the history, 2.4.41 should be this commit:
+http://cgit.freedesktop.org/mesa/drm/commit/?id=007bff7a034741dcf9d1716583f91fc4453d4112
+
+Man pages are disabled for this build, upstream disabled them for this release. (forwarded request 148743 from tobijk)</comment>
+    <requestid>148744</requestid>
+  </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>59b35ff1dfadd62743a5d509b7c972eb</srcmd5>
+    <version>2.4.41</version>
+    <time>1359109259</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>305e655dd52e2529af790bf73f357245</srcmd5>
+    <version>2.4.42</version>
+    <time>1360229600</time>
+    <user>coolo</user>
+    <comment>update to version 2.4.42 (forwarded request 151312 from tobijk)</comment>
+    <requestid>151313</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>c374b1d1359345a10bade6eed248dbfd</srcmd5>
+    <version>2.4.42</version>
+    <time>1362119055</time>
+    <user>coolo</user>
+    <comment>- disable valgrind support for aarch64 (forwarded request 156730 from dirkmueller)</comment>
+    <requestid>156763</requestid>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>c51f609e090c036bc44439d2816fbd69</srcmd5>
+    <version>2.4.42</version>
+    <time>1364303356</time>
+    <user>coolo</user>
+    <comment>libdrm header files do not include kms header files...
+- Remove unneeded dependency on libkms-devel (forwarded request 161049 from jengelh)</comment>
+    <requestid>161152</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>b0faef40e0e6ee4f50f6b1037858136f</srcmd5>
+    <version>2.4.43</version>
+    <time>1364473065</time>
+    <user>coolo</user>
+    <comment>Update to 2.4.43 (forwarded request 161384 from tobijk)</comment>
+    <requestid>161387</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>25adbb313b14e2778b7c1984611da2cc</srcmd5>
+    <version>2.4.44</version>
+    <time>1366472688</time>
+    <user>coolo</user>
+    <comment>update to version 2.4.44 (forwarded request 172497 from tobijk)</comment>
+    <requestid>172501</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>d58cfbb792ae75ff1bb44de6fbfec643</srcmd5>
+    <version>2.4.45</version>
+    <time>1369641105</time>
+    <user>coolo</user>
+    <comment>update to version 2.4.45 (forwarded request 176288 from tobijk)</comment>
+    <requestid>176298</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>47c2881ba6bf75f3510760ab1ebbb0c6</srcmd5>
+    <version>2.4.46</version>
+    <time>1372862169</time>
+    <user>coolo</user>
+    <comment>Update to 2.4.46 (forwarded request 181791 from sumski)</comment>
+    <requestid>181854</requestid>
+  </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>a2b482d6cbf25456704ca8d1599f202f</srcmd5>
+    <version>2.4.46</version>
+    <time>1378748662</time>
+    <user>coolo</user>
+    <comment>- buildrequire valgrind on the arch list that valgrind builds on (forwarded request 196833 from oertel)</comment>
+    <requestid>197994</requestid>
+  </revision>
+  <revision rev="83" vrev="4">
+    <srcmd5>a2b482d6cbf25456704ca8d1599f202f</srcmd5>
+    <version>2.4.46</version>
+    <time>1379662930</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="84" vrev="5">
+    <srcmd5>8a729f10e5a6811c9420c98fb2c4cd8a</srcmd5>
+    <version>2.4.46</version>
+    <time>1379922279</time>
+    <user>coolo</user>
+    <comment>- Added U_radeon-pad-CS-to-8-DW.patch from upstream -- aligns the 
+  IB to 8 DWs. r6xx also require at least 4 DW alignment to avoid 
+  a hw bug.</comment>
+    <requestid>199494</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>d5473cc37deaeef01a482ba0634cd92e</srcmd5>
+    <version>2.4.47</version>
+    <time>1381735752</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to version 2.4.47 (forwarded request 203004 from sumski)</comment>
+    <requestid>203012</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>8386fca605dcb107b5cb9eb8ad0c8889</srcmd5>
+    <version>2.4.47</version>
+    <time>1383035868</time>
+    <user>coolo</user>
+    <comment>- updated to re-uploaded 2.4.47 tarball with correct checksums</comment>
+    <requestid>204885</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>48abfd2b73513eb99ac97b59c9c537bf</srcmd5>
+    <version>2.4.48</version>
+    <time>1385442626</time>
+    <user>coolo</user>
+    <comment>Update to 2.4.48 (forwarded request 207135 from sumski)</comment>
+    <requestid>208309</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>72d2d7833b00952ecf24c9aa2045a680</srcmd5>
+    <version>2.4.49</version>
+    <time>1385620623</time>
+    <user>coolo</user>
+    <comment>Update to 2.4.49 + upstream crashfix (forwarded request 208594 from sumski)</comment>
+    <requestid>208677</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>b7114422aec3696c93a93c6262c4e409</srcmd5>
+    <version>2.4.50</version>
+    <time>1386778895</time>
+    <user>coolo</user>
+    <comment>Update to version 2.4.50 (forwarded request 209357 from sumski)</comment>
+    <requestid>209364</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>3abca3855436f5ddbc864d211413e161</srcmd5>
+    <version>2.4.51</version>
+    <time>1389385223</time>
+    <user>coolo</user>
+    <comment>update to 2.4.51 (forwarded request 213250 from tobijk)</comment>
+    <requestid>213253</requestid>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>726408f10ef04f5651d6e0f4b2dc2030</srcmd5>
+    <version>2.4.51</version>
+    <time>1389953052</time>
+    <user>coolo</user>
+    <comment>Make libdrm-devel require the new libdrm_freedreno1. With this change, xf86-video-freedreno is ready to be copypac'ed from the same repository. (forwarded request 213992 from a_faerber)</comment>
+    <requestid>213993</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>30060caba30e8230f1d0502fa6a51d33</srcmd5>
+    <version>2.4.52</version>
+    <time>1390596119</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.4.52
+  + intel: squash unused variable 'bo_gem'
+  + intel: Handle malloc fails in context create
+  + intel: Merge latest i915_drm.h
+  + drm: Initialize or valgrind-clear modesetting ioctl arguments.
+  + intel: Track whether a buffer is idle to avoid trips to the kernel.
+  + tests/kmstest: support exynos
+  + Mark debug_print with __attribute__ ((format(__printf__, 1, 0)))
+  + intel: Create a new drm_intel_bo offset64 field.
+  + freedreno: add fd_device_new_dup()
+  + modetest: add the possibility to select the refresh frequency for a mode</comment>
+    <requestid>214748</requestid>
+  </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>c3473db536376b744c6d7b7373d7997b</srcmd5>
+    <version>2.4.52</version>
+    <time>1392806175</time>
+    <user>coolo</user>
+    <comment>With open questions on the theoretical-only exynos GPL-2.0+ situation remaining (SR#215419), let's meanwhile fix the freedreno GPL-2.0 part by backporting the relicensing to MIT (bnc#860595). (forwarded request 222489 from a_faerber)</comment>
+    <requestid>222553</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>285fa187838e7befbe829300087fe659</srcmd5>
+    <version>2.4.53</version>
+    <time>1397540130</time>
+    <user>coolo</user>
+    <comment>update to latest stable (forwarded request 229838 from tobijk)</comment>
+    <requestid>229973</requestid>
+  </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>a94927cb6fb14f86575fb3edc9ccc321</srcmd5>
+    <version>2.4.53</version>
+    <time>1398524516</time>
+    <user>coolo</user>
+    <comment>- u_No-longer-hardcode-path-for-drm.h-include-in-qxl_drm.patch:
+  * No longer hardcode path for drm.h include in qxl_drm.h, i.e.
+    handle it the same as in other &lt;driver&gt;_drm.h files; change
+    required for KMS support in xf86-video-qxl (bnc#870501)</comment>
+    <requestid>231237</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>0ee5cea9afd3d1ef2f3e9be685394c6e</srcmd5>
+    <version>2.4.54</version>
+    <time>1399376370</time>
+    <user>coolo</user>
+    <comment>fix typos (forwarded request 232623 from tobijk)</comment>
+    <requestid>232640</requestid>
+  </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>a705090097531cf68206f54161e0a32a</srcmd5>
+    <version>2.4.54</version>
+    <time>1401126791</time>
+    <user>coolo</user>
+    <comment>Enable valgrind support for ARMv6 and ppc64le, too (forwarded request 235315 from a_faerber)</comment>
+    <requestid>235343</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>e94f21e78bad870d8d9c36d7d19499af</srcmd5>
+    <version>2.4.55</version>
+    <time>1406645278</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242684</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>f6f55b0e2570f45eb54033f7036e1221</srcmd5>
+    <version>2.4.56</version>
+    <time>1406793839</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242932</requestid>
+  </revision>
+  <revision rev="100" vrev="3">
+    <srcmd5>f6f55b0e2570f45eb54033f7036e1221</srcmd5>
+    <version>2.4.56</version>
+    <time>1409301539</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>5d214b248fd5567401eef3d44251f892</srcmd5>
+    <version>2.4.58</version>
+    <time>1412142013</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253084</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>4d9adb76b01ae9e9252f1cb16b0cc272</srcmd5>
+    <version>2.4.59</version>
+    <time>1423732843</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.59:
+  * bugfixes
+  * more Intel Skylake support</comment>
+    <requestid>285058</requestid>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>d9d13cdd516f09a6562e1214dbfffd26</srcmd5>
+    <version>2.4.59</version>
+    <time>1425031496</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287296</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>70eaa29005f01d4cc44089bd9f8a939c</srcmd5>
+    <version>2.4.60</version>
+    <time>1427273660</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292262</requestid>
+  </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>5ac0b5c1ca8cd726a53884366cd4511c</srcmd5>
+    <version>2.4.60</version>
+    <time>1428651947</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295018</requestid>
+  </revision>
+  <revision rev="106" vrev="3">
+    <srcmd5>4c20360d2e1411ad538d5a9405f7eb3b</srcmd5>
+    <version>2.4.60</version>
+    <time>1430594816</time>
+    <user>dimstar_suse</user>
+    <comment>- U_nouveau-Do-not-add-most-bo-s-to-the-global-bo-list.patch
+  U_nouveau-make-nouveau-importing-global-buffers-comple.patch
+  * reverse apply these patches in order to fix a regression in
+    2.4.60 triggered by new legacy tray in GNOME 3.16.0 (fdo#89842)</comment>
+    <requestid>304507</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>6110b458051ab4a426a85ce0b93ee8c5</srcmd5>
+    <version>2.4.61</version>
+    <time>1431248194</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.4.61
+  * Release to fix regression in nouveau in 2.4.60, but brings lots
+    of android changes and other fixes.
+- deprecates reverse applied patches
+  * U_nouveau-Do-not-add-most-bo-s-to-the-global-bo-list.patch
+  * U_nouveau-make-nouveau-importing-global-buffers-comple.patch</comment>
+    <requestid>305916</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>3738725ec824052d760af431d5b5b88f</srcmd5>
+    <version>2.4.62</version>
+    <time>1436111665</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.4.62
+  * This release introduces the atomic and blob APIs, adds support
+    for new devices (AMD Bonaire) and a new flag for coherent BOs
+    in nouveau.</comment>
+    <requestid>314483</requestid>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>1ee9f00e5dfdd8f206601b9fac3e2f06</srcmd5>
+    <version>2.4.62</version>
+    <time>1439190614</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319023</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>a269447e5c6f3bfbd31655dd3451708d</srcmd5>
+    <version>2.4.63</version>
+    <time>1439825173</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>323323</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>582be8a2b7638ddf4dbc94b8a5a394e0</srcmd5>
+    <version>2.4.64</version>
+    <time>1440153747</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>324391</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>31f2871661d3f30f6b7ab38e5ae5741f</srcmd5>
+    <version>2.4.65</version>
+    <time>1443684460</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.65
+  * bugfixes</comment>
+    <requestid>332536</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>919e2cb8350b834751a4c2e4d699160d</srcmd5>
+    <version>2.4.66</version>
+    <time>1452027206</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351815</requestid>
+  </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>98d460a743dae1634b11623d6f9893b4</srcmd5>
+    <version>2.4.66</version>
+    <time>1455190365</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable valgrind support for all architectures if not
+  explicitely enabled by a macro (boo#963979).</comment>
+    <requestid>357605</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>362e8a5ffeda7a8fff366f93c75c112a</srcmd5>
+    <version>2.4.67</version>
+    <time>1456127813</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359920</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>5d3fe9d07521bae0552e595c69196e10</srcmd5>
+    <version>2.4.68</version>
+    <time>1462260858</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.68
+  * bugfixes 
+- removed no longer needed patch
+  u_Fix-compilation-on-systems-that-don-t-provide-O_CLOE.patch
+  (https://lists.freedesktop.org/archives/dri-devel/2016-April/105283.html)</comment>
+    <requestid>391952</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>600940095c92bc6e2462fce86080f518</srcmd5>
+    <version>2.4.70</version>
+    <time>1470217112</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415066</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>2e506bbd9e76615e64040462ef4d4585</srcmd5>
+    <version>2.4.71</version>
+    <time>1475749758</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433086</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>e1620fddba1ce2e5699a01ffd04e2044</srcmd5>
+    <version>2.4.73</version>
+    <time>1479381787</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.73
+  * headers: Add README file
+  * xd86drm: read more than 128 bytes of uevent in drmParsePciBusInfo
+- update to 2.4.72
+   * amdgpu: check parameters in amdgpu_query_gpu_info
+   * intel: Export raw GEM mmap interfaces
+   * intel: Migrate handle/name lookups from linear lists to hashtables
+   * intel: Look prime handle up in handle hash table
+   * Silence runtime complaints on platform devices
+   * amdgpu: add the function to get the marketing name (v4)
+   * intel: Add uthash.h to Makefile.sources.
+   * amdgpu: Add amdgpu_asic_id.h to Makefile.sources.
+   * freedreno: Add fd_ringbuffer_flush2 to symbol check.
+   * headers: Sync drm{,_mode}.h with the kernel
+   * Add drmModePageFlipTarget
+   * intel: Add new symbols to intel-symbol-check
+   * intel: Allow some codenames in INTEL_DEVID_OVERRIDE
+   * add libsync.h helper
+   * freedreno: sync uapi header
+   * freedreno: add fence fd support
+   * Return an -ENODEV from drmGetDevice() when no device was found.</comment>
+    <requestid>440391</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>a8c884896ab6a2e8ce4a518cfef8d865</srcmd5>
+    <version>2.4.74</version>
+    <time>1483954205</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448426</requestid>
+  </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>7f6ae6e74d063f6cc73a0698ee450295</srcmd5>
+    <version>2.4.74</version>
+    <time>1485510335</time>
+    <user>dimstar_suse</user>
+    <comment>- enabled build of manual pages (bnc#1021810)</comment>
+    <requestid>452384</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>e11b6fce501a2efc973e1950b47f43bb</srcmd5>
+    <version>2.4.75</version>
+    <time>1485862174</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453392</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>221bc3fd9fcbf9840340f24d3488ffea</srcmd5>
+    <version>2.4.79</version>
+    <time>1491907403</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>487032</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>07813128e411f2846c138148a1fa9dfc</srcmd5>
+    <version>2.4.80</version>
+    <time>1492516089</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>488972</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>fe0df90fe428330673a45d1299b1541d</srcmd5>
+    <version>2.4.81</version>
+    <time>1496392265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.81
+  * Export drmDevicesEqual
+  * configure: Fix the &lt;sys/sysmacros.h&gt; check
+  * Fix stray caller of drmCompareDevices
+  * amdgpu/: concisely &amp;&amp; consistently check null ptrs in canonical form
+  * amdgpu: Use the canonical form in branch predicate
+  * Add pl111 as a KMS driver for utils.
+  * Add the DPI encoder/connector types to KMS utils.
+  * amdgpu: add raven family id
+  * modetest: fix printing of fourcc on BE machines
+  * amdgpu/drm: add AMDGPU_HW_IP_VCN_DEC
+  * amdgpu/drm: add AMDGPU_HW_IP_VCN_ENC
+  * amdgpu: add the interface of waiting multiple fences
+  * amdgpu: add a test for amdgpu_cs_wait_fences
+  * amdgpu: add missing extern &quot;C&quot; headers
+  * freedreno: fix double-free on exit</comment>
+    <requestid>498488</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>5a9af53b61bb524334846459ed20ab4a</srcmd5>
+    <version>2.4.82</version>
+    <time>1500892301</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511747</requestid>
+  </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>acd1fe308df24a82463b52606bc53295</srcmd5>
+    <version>2.4.82</version>
+    <time>1502011423</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514046</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>88bd4f14a7bfd8cec653926e51864cbf</srcmd5>
+    <version>2.4.83</version>
+    <time>1506955780</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530125</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>5dcaca8c27954ee1698247fe93fc6bd2</srcmd5>
+    <version>2.4.84</version>
+    <time>1508769372</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533782</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>955d13b56aaa82ff62ade090b8a0cff2</srcmd5>
+    <version>2.4.85</version>
+    <time>1508946314</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536263</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>a2043c5fc8fff51e846b9b996fc3e170</srcmd5>
+    <version>2.4.87</version>
+    <time>1509820091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538312</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>e7bb768eb4701b328e6bf8e4b37007c6</srcmd5>
+    <version>2.4.88</version>
+    <time>1510321296</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539320</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>f9e05ff7631fb5ba247db9b74ce42122</srcmd5>
+    <version>2.4.89</version>
+    <time>1516091663</time>
+    <user>dimstar_suse</user>
+    <comment>- U_intel-Add-more-Coffeelake-PCI-IDs.patch
+  * Add more Coffeelake PCI IDs (request by Intel)
+
+- Update to version 2.4.89:
+  libdrm release with leasing and syncobj api updates, updated amdgpu marketing
+  ids, amdgpu tests, updated uapi headers &amp; etnaviv updates.</comment>
+    <requestid>565786</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>9e6efb31a2a2076e46438bdbf0be023f</srcmd5>
+    <version>2.4.90</version>
+    <time>1519307835</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded defattr stanza
+
+- Remove pthread-stubs dependency
+
+- Remove unneeded autotool dependencies
+
+- Update to version 2.4.90:
+   + Add meson build system
+   + always define HAVE_FREEDRENO_KGSL
+   + always define HAVE_CAIRO
+   + always define HAVE_VALGRIND
+   + amdgpu: Update deadlock test to not assert on ECANCELED
+   + amdgpu: Fix segfault in deadlock test.
+   + amdgpu: fix 32bit VA manager max address
+   + amdgpu: use the high VA range if possible v2
+   + amdgpu: fix high VA mask
+   + amdgpu: fix inefficient vamgr algorithm
+   + amdgpu: clean up non list code path for vamgr v2
+   + amdgpu: add amdgpu_query_sw_info for querying high bits of 32-bit address space
+   + amdgpu: Don't print error message if parse_one_line returned -EAGAIN
+   + amdgpu: Don't dereference device_handle after amdgpu_device_deinitialize
+   + amdgpu: Symlink .editorconfig to tests/amdgpu
+   + amdgpu: Disable deadlock test suite by default for SI ASICs
+   + amdgpu: Disable VM test suite by default for SI ASICs
+   + amdgpu: Add amdgpu_query_sw_info to amdgpu-symbol-check
+   + amdgpu: fix not to add amdgpu.ids when building without amdgpu
+   + android: Move gralloc handle struct to libdrm
+   + android: Add version variable to gralloc_handle_t
+   + android: Mark gralloc_handle_t magic variable as const
+   + android: Remove member name from gralloc_handle_t
+   + android: Change gralloc_handle_t members to be fixed width
+   + autotools: Include meson.build files in tarball
+   + configure: remove unused HAVE_CUNIT define
+   + configure: remove unused HAVE_INSTALL_TESTS define
+   + configure: always define HAVE_LIBDRM_ATOMIC_PRIMITIVES and HAVE_LIB_ATOMIC_OPS
+   + drm: Fix 32-bit drmSyncobjWait.
+   + exynos/tests: use #ifdef for never-defined token
+   + fix return value for syncobj wait
+   + freedreno: clamp priority based on # of rings
+   + headers: sync up amdgpu_drm.h with drm-next
+   + intel: Add more Coffeelake PCI IDs
+   + meson: fix the install path of amdgpu.ids
+   + meson: set proper pkg-config version for libdrm_freedreno
+   + meson: set the minimum version correctly
+   + meson: fix libdrm_nouveau pkgconfig include directories
+   + meson: include headers in root directory in ext_libdrm
+   + meson: cleanup whitespace
+   + meson: add missing HAVE_RADEON
+   + meson: sort HAVE_* defines
+   + meson,configure: remove unused HAVE_OMAP define
+   + meson,configure: remove unused HAVE_TEGRA define
+   + meson,configure: remove unused HAVE_FREEDRENO define
+   + meson,configure: remove unused HAVE_ETNAVIV define
+   + meson,configure: always define HAVE_{INTEL,VMWGFX,NOUVEAU,EXYNOS,VC4,RADEON}
+   + meson,configure: turn undefined preprocessor tokens warnings into errors
+   + meson,configure: add warning when using undefined preprocessor tokens
+   + modetest: Fix to check return value of asprintf()
+   + remove unnecessary double-semicolon
+   + README: Add note about meson
+   + test/amdgpu: fix compiler warnings
+   + tests/amdgpu: add bo eviction test
+   + tests/amdgpu: add missing config.h include
+   + tests/amdgpu: add parentheses to make operation priority explicit
+   + tests/amdgpu: drop unused variables
+   + tests/amdgpu: execute write linear on all the available rings
+   + tests/amdgpu: execute const fill on all the available rings
+   + tests/amdgpu: execute copy linear on all the available rings
+   + tests/etnaviv: drop unused `return 0`
+   + tests/util: fix signed/unsigned comparisons
+   + tests/util: drop unused parameters
+   + xf86drmHash: remove always-false #if guards
+   + xf86atomic: fix -Wundef warning
+
+- Remove upstreamed patch U_intel-Add-more-Coffeelake-PCI-IDs.patch</comment>
+    <requestid>578816</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>601f504e2897fe77a98b0e97ef6ae84e</srcmd5>
+    <version>2.4.91</version>
+    <time>1520502964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583409</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>d09e92771bb861f732639f0fa7884d22</srcmd5>
+    <version>2.4.92</version>
+    <time>1526219799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606137</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>e4675ef7579e7b60be0a20615497ceda</srcmd5>
+    <version>2.4.93</version>
+    <time>1534774641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628975</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>e2cdbaea84c95c54190eeab845ada90a</srcmd5>
+    <version>2.4.95</version>
+    <time>1539590741</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.95
+  * This release adds a fallback for realpath() which was blocked by the
+    web-browser sand-boxing. While the browsers are fixed-up they seem to have
+    little incentive to roll bugfix releases :-\</comment>
+    <requestid>640387</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>526153e3338a91c50840dd6ca8a8a50b</srcmd5>
+    <version>2.4.96</version>
+    <time>1540319730</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.96
+  * libdrm: Allow dynamic drm majors on linux
+  * amdgpu/test: Allow BO mapping flags to be passed in tests
+  * amdgpu/test: Fix deadlock tests for AI and RV v2
+  * xf86drmHash: remove redundant zero init
+  * freedreno/msm: get rid of ring_bo unref hack
+  * freedreno: expose refcnt'ing on ringbuffers
+  * freedreno: add flags param for rb creation
+  * freedreno/msm: support suballocation for stateobj rb's
+  * freedreno: remove deprecated ringmarker API
+  * freedreno/msm: remove reset of linked rings
+  * freedreno/msm: simplify emit_reloc_ring() vfunc
+  * freedreno/msm: use hashtable to track submit.cmds table
+  * freedreno/msm: simplify msm_ringbuffer_flush()
+  * freedreno/msm: handle ring-reloc to other stateobjs
+  * freedreno/kgsl: fix build
+  * freedreno/msm: fix c90 warning</comment>
+    <requestid>642663</requestid>
+  </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>820709ec7a023e3c953c7db49dda1ea1</srcmd5>
+    <version>2.4.96</version>
+    <time>1545996744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659961</requestid>
+  </revision>
+  <revision rev="141" vrev="3">
+    <srcmd5>528d4e21bf66de5fd5c4bc32c2ea8f90</srcmd5>
+    <version>2.4.96</version>
+    <time>1547211660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663031</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>b7cc2de9470a96834dae7293212f410d</srcmd5>
+    <version>2.4.97</version>
+    <time>1548537510</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.97
+  * amdgpu: update to latest marketing names from 18.50
+  * amdgpu/test: Add illegal register and memory access test v2
+  * amdgpu/test: Disable deadlock tests for all non gfx8/9 ASICs.
+  * amdgpu/test: Enable deadlock test for CI family (gfx7)
+  * amdgpu: add VM test to exercise max/min address space
+  * doc: Rename README&amp;CONTRIBUTING to .rst
+  * Avoid hardcoded strlens in drmParseSubsystemType().
+  * drm: Attempt to parse SPI devices as platform bus devices.
+  * xf86drmHash: remove unused loop variable
+  * meson: fix typo in compiler flag
+  * tests: skip drmdevice test if the machine doesn't have any drm device
+  * freedreno: remove always-defined #ifdef
+  * xf86atomic: #undef internal define
+  * README: reflow the project description to improve readability
+  * xf86drm: implement drmParseSubsystemType for DragonFly
+  * libdrm: Use DRM_IOCTL_GET_PCIINFO on DragonFly
+  * tests/amdgpu/vcn: fix the nop command in IBs
+  * gitignore: sort file
+  * gitignore: add _build
+  * amdgpu: update amdgpu_drm.h
+  * amdgpu: add a faster BO list API
+  * android: Fix 32-bit app crashing in 64-bit Android</comment>
+    <requestid>667855</requestid>
+  </revision>
+  <revision rev="143" vrev="2">
+    <srcmd5>2a95cdd060a736b971592d82669f443c</srcmd5>
+    <version>2.4.97</version>
+    <time>1551024039</time>
+    <user>coolo</user>
+    <comment>- back to subpackage name libdrm-tools as requested by
+  jengelh@inai.de
+
+- Switch to meson buildsystem:
+  * Update Git-clone/web to new gitlab home.
+  * Add meson BuildRequires and macros.
+  * Add fdupes BuildRequires and macros, remove duplicate files.
+  * Rename libdrm-tools to drm-tools, follow openSUSE packaging
+    guidelines and silence a rpmlint warning. Add Obsoletes and
+    Provides to ensure smooth upgrades.
+  * Tweak descriptions for several sub-packages.
+  * Drop custom test install and run, run plain meson_test provided
+    by upstream.</comment>
+    <requestid>673473</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>919b4912d35b93bb9ed24b702dcae8b7</srcmd5>
+    <version>2.4.98</version>
+    <time>1556311311</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 2.4.98
+  * This release adds marketing names for AMDGPU devices, a 
+    fallback path in drmDevice for devices lacking OF data
+    and drmIsMaster API, amongst other changes.</comment>
+    <requestid>697100</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>e1733574700249934a38c098d3c9f139</srcmd5>
+    <version>2.4.99</version>
+    <time>1562590981</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.99
+  * bug fixes</comment>
+    <requestid>713239</requestid>
+  </revision>
+</revisionlist>

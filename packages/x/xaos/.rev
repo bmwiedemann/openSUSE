@@ -1,0 +1,182 @@
+<revisionlist>
+  <revision rev="1" vrev="167">
+    <srcmd5>2131036673bc6a7964adb423e7c45f39</srcmd5>
+    <version>3.1</version>
+    <time>1168904508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="317">
+    <srcmd5>b959fd48f127b1fc1fd22e7b251743d1</srcmd5>
+    <version>3.1</version>
+    <time>1204069916</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="379">
+    <srcmd5>b959fd48f127b1fc1fd22e7b251743d1</srcmd5>
+    <version>3.1</version>
+    <time>1204069916</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="380">
+    <srcmd5>dac9e572be745712ae3804b1d2bb7a25</srcmd5>
+    <version>3.1</version>
+    <time>1245363803</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="382">
+    <srcmd5>dac9e572be745712ae3804b1d2bb7a25</srcmd5>
+    <version>3.1</version>
+    <time>1245363803</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="383">
+    <srcmd5>c58a37a1d9b4f5a46d0a1032e127e7d4</srcmd5>
+    <version>3.1</version>
+    <time>1268926530</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="385">
+    <srcmd5>c58a37a1d9b4f5a46d0a1032e127e7d4</srcmd5>
+    <version>3.1</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="386">
+    <srcmd5>c58a37a1d9b4f5a46d0a1032e127e7d4</srcmd5>
+    <version>3.1</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="389">
+    <srcmd5>c58a37a1d9b4f5a46d0a1032e127e7d4</srcmd5>
+    <version>3.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a98dc6ae9a5c06e491709da9bab39225</srcmd5>
+    <version>3.5</version>
+    <time>1316504218</time>
+    <user>lrupp</user>
+    <comment>- updated to 3.5
+ o Fixed crash bug when using -render command line option with user formulas
+ o Removed support for unmaintained platforms (DOS, BeOS, Plan 9, etc.)
+ o Updated documentation to reflect infrastructure changes
+   (Discussion and issue tracking have moved to Google Groups and Google Code)
+ o Additional fractal examples by J.B. Langston
+ ... see NEWS for more
+- obsolete patch removed
+
+- spec cleanup
+- obsolete patches removed
+- convert all xpf-files to UNIX format
+- added fdupes and dos2unix to BuildRequires
+
+- use find_lang macro
+- fixed to compile with gcc4
+- no svgalib
+- man,info to usr/share
+- change for new gcc 2.95.2</comment>
+    <requestid>82444</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>a98dc6ae9a5c06e491709da9bab39225</srcmd5>
+    <version>3.5</version>
+    <time>1319182577</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>303044d61386b78e0ce8b046c7a07e86</srcmd5>
+    <version>3.5</version>
+    <time>1323195220</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>4594c5915279c1eaae183fe92ecfc453</srcmd5>
+    <version>3.5</version>
+    <time>1339701122</time>
+    <user>coolo</user>
+    <comment>- fix protoype with new gcc (forwarded request 125011 from coolo)</comment>
+    <requestid>125013</requestid>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>4594c5915279c1eaae183fe92ecfc453</srcmd5>
+    <version>3.5</version>
+    <time>1340184332</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>9a870553e32674b0606a84fd3eb19c11</srcmd5>
+    <version>3.5</version>
+    <time>1347619366</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134080</requestid>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>9a870553e32674b0606a84fd3eb19c11</srcmd5>
+    <version>3.5</version>
+    <time>1359110588</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>1dc6b942e742355cd125072403c50ae7</srcmd5>
+    <version>3.5</version>
+    <time>1365619366</time>
+    <user>coolo</user>
+    <comment>- builds also with libpng16</comment>
+    <requestid>163417</requestid>
+  </revision>
+  <revision rev="18" vrev="13">
+    <srcmd5>1dc6b942e742355cd125072403c50ae7</srcmd5>
+    <version>3.5</version>
+    <time>1379664988</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="15">
+    <srcmd5>1dc6b942e742355cd125072403c50ae7</srcmd5>
+    <version>3.5</version>
+    <time>1409303667</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="16">
+    <srcmd5>99064aa834b69828dbe5dee144ad9e73</srcmd5>
+    <version>3.5</version>
+    <time>1425377750</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288554</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ea6b168f718d3a13a52124836ef8f4ec</srcmd5>
+    <version>3.6</version>
+    <time>1428949909</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295742</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>6ee40f4e32b374e68cebc218620bfb08</srcmd5>
+    <version>3.6</version>
+    <time>1521716803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589688</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>42e23f7d2e25276c927f366d96c5eec6</srcmd5>
+    <version>3.6</version>
+    <time>1536876193</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635554</requestid>
+  </revision>
+</revisionlist>

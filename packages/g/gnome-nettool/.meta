@@ -1,0 +1,6 @@
+<package name="gnome-nettool" project="openSUSE:Factory">
+  <title>GNOME Interface for Various Networking Tools</title>
+  <description>GNOME Nettool is a set of front-ends to various networking command line
+tools, like ping, netstat, ifconfig, whois, traceroute, and finger.</description>
+  <devel project="GNOME:Factory" package="gnome-nettool"/>
+</package>

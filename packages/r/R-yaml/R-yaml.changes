@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Thu Dec 20 19:41:21 UTC 2018 - mailaender@opensuse.org
+
+- update to version 2.2.0
+
+-------------------------------------------------------------------
+Tue Apr  3 18:08:21 UTC 2018 - darin@darins.net
+
+- remove %check
+
+-------------------------------------------------------------------
+Tue Apr  3 18:03:08 UTC 2018 - darin@darins.net
+
+- removed Recommends/BuildRequires based on Suggests
+
+-------------------------------------------------------------------
+Wed Mar 28 16:15:50 UTC 2018 - darin@darins.net
+
+- added gcc-c++ build dependency
+
+-------------------------------------------------------------------
+Sat Dec 16 13:26:23 UTC 2017 - mailaender@opensuse.org
+
+- update to version 2.1.16
+
+-------------------------------------------------------------------
+Thu Oct  9 20:30:36 UTC 2014 - darin@darins.net
+
+- updated source to latest release
+
+-------------------------------------------------------------------
+Fri Apr 18 14:20:00 UTC 2014 - darin@darins.net
+
+- fix packaging
+
+-------------------------------------------------------------------
+Wed Apr 16 23:28:18 UTC 2014 - darin@darins.net
+
+- update spec
+
+-------------------------------------------------------------------
+Mon May  7 00:00:00 UTC 2012 - darin@darins.net
+
+- initial package for OpenSuSE
+

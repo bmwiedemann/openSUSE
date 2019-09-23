@@ -1,0 +1,163 @@
+-------------------------------------------------------------------
+Fri Aug  2 06:11:53 UTC 2019 - Jan Fajerski <jan.fajerski@suse.com>
+
+- Add network-online (Wants and After) dependency to systemd unit bsc#1143913
+
+-------------------------------------------------------------------
+Tue Apr 16 08:15:25 UTC 2019 - Jan Fajerski <jan.fajerski@suse.com>
+
+- Update to 0.16.2
+  + Bug Fixes:
+    * Redact notifier URL from logs to not leak secrets embedded in the URL
+    * Allow sending of unauthenticated SMTP requests when smtp_auth_username is not supplied
+
+-------------------------------------------------------------------
+Fri Feb  8 10:42:37 UTC 2019 - Jan Fajerski <jan.fajerski@suse.com>
+
+- Update to 0.16.1:
+  + Bug Fixes:
+    * Do not populate cluster info if clustering is disabled in API v2
+- Update to 0.16.0:
+  + Deprecate API v1
+  + Remove api/v1/alerts/groups GET endpoint
+  + Revert Alertmanager working directory changes in Docker image back to /alertmanager
+  + Using the recommended label syntax for maintainer in Dockerfile
+  + Change alertmanager_notifications_total to count attempted notifications, not only successful ones (#1578)
+  + Run as nobody inside container
+  + Support w for weeks when creating silences, remove y for year
+  + Features:
+    * Introduce OpenAPI generated API v2
+    * Lookup parts in strings using regexp.MatchString in templates
+    * Support image/thumb url in attachment in Slack notifier
+    * Support custom TLS certificates for the email notifier
+    * Add support for images and links in the PagerDuty notification config
+    * Add support for grouping by all labels
+    * [amtool] Add timeout support to amtool commands
+    * [amtool] Added config routes tools for vizualization and testing routes
+    * [amtool] Support adding alerts using amtool
+  + Enhancements:
+    * Add support for --log.format
+    * Add CORS support to API v2
+    * Support HTML, URL title and custom sounds for Pushover
+    * Update Alert compact view
+    * Support adding custom fields to VictorOps notifications
+    * Add help link in UI to Alertmanager documentation
+    * Enforce HTTP or HTTPS URLs in Alertmanager config
+    * Make OpsGenie API Key a templated string
+    * Add name, value and SlackConfirmationField to action in Slack notifier
+    * Show more alert information on silence form and silence view pages
+    * Add cluster peers DNS refresh job
+  + Bug Fixes:
+    * Fix unmarshalling of secret URLs in config
+    * Do not write groupbyall and groupby when marshaling config
+    * Make a copy of firing alerts with EndsAt=0 when flushing
+    * Respect regex matchers when recreating silences in UI
+    * Change DefaultGlobalConfig to a function in Alertmanager configuration
+    * Fix email template typo in alert-warning style
+    * Fix silence redirect on silence creation UI page
+    * Add missing callback_id parameter in Slack notifier
+    * Throw error if no auth mechanism matches in email notifier
+    * Use quoted-printable transfer encoding for the email notifier
+    * Do not merge expired gossip messages
+    * Fix "PLAIN" auth during notification via smtp-over-tls on port 465
+    * [amtool] Support for assuming first label is alertname in silence add and query
+    * [amtool] Support assuming first label is alertname in alert query with matchers
+    * [amtool] Fix config path check in amtool
+    * [amtool] Fix rfc3339 example texts
+    * [amtool] Fixed issue with loading path of a default configs
+- Update to 0.15.3
+  + Bug Fixes:
+    * Fix alert merging supporting both empty and set EndsAt property for firing alerts send by Prometheus
+- Update to 0.15.2:
+  + Enhancements:
+    * [amtool] Add support for stdin to check-config
+    * Log PagerDuty v1 response on BadRequest
+  + Bug Fixes:
+    * Correctly encode query strings in notifiers (#1516)
+    * Add cache control headers to the API responses to avoid IE caching
+    * Avoid listener blocking on unsubscribe
+    * Fix a bunch of unhandled errors
+    * Update PagerDuty API V2 to send full details on resolve
+    * Validate URLs at config load time
+    * Fix Settle() interval
+    * Fix email to be green if only none firing
+    * Handle errors in notify
+    * Fix templating of hipchat room id
+- Update to 0.15.1:
+  + Bug Fixes:
+    * Fix email template typo in alert-warning style
+    * Fix regression in Pager Duty config
+    * Catch templating errors in Wechat Notify
+    * Fail when no private address can be found for cluster
+    * Make sure we don't miss the first pushPull when joining cluster
+    * Fix concurrent read and wirte group error in dispatch
+- Update to 0.15.0:
+  + [amtool] Update silence add and update flags
+  + Replace deprecated InstrumentHandle
+  + Validate Slack field config and only allow the necessary input
+  + Remove legacy alert ingest endpoint
+  + Move to memberlist as underlying gossip protocol including cluster flag changes from --mesh.xxx to --cluster.xxx
+  + Move Alertmanager working directory in Docker image to /etc/alertmanager
+  + The default group by is no labels.
+  + Features:
+    * [amtool] Filter alerts by receiver
+    * Wait for mesh to settle before sending alerts
+    * [amtool] Support basic auth in alertmanager url
+    * Make HTTP clients used for integrations configurable
+  + Enhancements:
+    * Support receiving alerts with end time and zero start time
+    * Sort dispatched alerts by job+instance
+    * Support alert query filters active and unprocessed
+    * [amtool] Expose alert query flags --active and --unprocessed
+    * Add Slack actions to notifications
+  + Bug Fixes:
+    * Register nflog snapShotSize metric
+    * Sort alerts in correct order before flushing to notifiers
+    * Don't reset initial wait timer if flush is in-progress
+    * Fix resolved alerts still inhibiting
+    * Template wechat config fields
+    * Notify resolved alerts properly
+    * Fix parsing for label values with commas
+    * Hide sensitive Wechat configuration
+    * Prepopulate matchers when recreating a silence
+    * Fix wechat panic
+    * Allow empty matchers in silences/filtering
+    * Properly configure HTTP client for Wechat integration
+
+-------------------------------------------------------------------
+Thu Mar 15 12:46:43 UTC 2018 - jan.fajerski@suse.com
+
+- fix config token in alermanager.yml hipchat_url -> hipchat_api_url 
+
+-------------------------------------------------------------------
+Wed Mar 14 07:34:17 UTC 2018 - jan.fajerski@suse.com
+
+- spec: fix argument for %fdupes
+- Update to 0.14.0:
+  + Enhancements:
+    * Allow templating PagerDuty receiver severity
+    * Include receiver name in failed notifications log messages
+    * Add mesh metrics
+  + Bug fixes:
+    * Don't notify of resolved alerts if none were reported firing
+    * Notify only when new firing alerts are added
+    * Don't count alerts with EndTime in the future as resolved
+
+-------------------------------------------------------------------
+Thu Jan 25 11:58:41 UTC 2018 - kkaempf@suse.com
+
+- Update to 0.13.0
+  See https://github.com/prometheus/alertmanager/releases
+
+-------------------------------------------------------------------
+Thu Jul 27 09:04:14 UTC 2017 - tserong@suse.com
+
+- Add BuildRequires: fdupes
+
+-------------------------------------------------------------------
+Thu May 25 02:25:05 UTC 2017 - tserong@suse.com
+
+- Initial version
+- Adjust default settings
+- Added:
+* 0001-Default-settings.patch

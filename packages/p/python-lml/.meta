@@ -1,0 +1,5 @@
+<package name="python-lml" project="openSUSE:Factory">
+  <title>lml</title>
+  <description>Load me later. A lazy plugin management system</description>
+  <devel project="devel:languages:python" package="python-lml"/>
+</package>

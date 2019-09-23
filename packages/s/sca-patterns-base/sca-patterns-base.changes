@@ -1,0 +1,241 @@
+-------------------------------------------------------------------
+Tue Jan  2 19:29:45 UTC 2018 - jason.record@suse.com
+
+- Removed unnecessary %clean from spec
+
+-------------------------------------------------------------------
+Mon Dec 18 17:45:42 UTC 2017 - jason.record@suse.com
+
+- Updated spec file with spec-cleaner suggestions
+
+-------------------------------------------------------------------
+Fri Jun  2 22:59:46 UTC 2017 - jason.record@suse.com
+
+- Updated SLES12SP2 global library value (bsc#1042515)
+
+-------------------------------------------------------------------
+Thu Jun  1 21:49:01 UTC 2017 - jason.record@suse.com
+
+- Added getRegExSectionRaw to Core.py
+
+-------------------------------------------------------------------
+Fri Jun  3 16:27:12 UTC 2016 - jason.record@suse.com
+
+- Updated Core.py documentation
+
+-------------------------------------------------------------------
+Tue Apr 26 15:44:28 UTC 2016 - jrecord@suse.com
+
+- Assigned correct kernel version for global SLE12SP1 (bsc#977269)
+
+-------------------------------------------------------------------
+Tue Feb 23 19:37:11 UTC 2016 - jrecord@suse.com
+
+- Updated patterns (bsc#953203)
+
+-------------------------------------------------------------------
+Wed Aug 26 17:07:36 UTC 2015 - jrecord@suse.com
+
+- Fixed oes.ncsActive to detect active cluster better
+
+-------------------------------------------------------------------
+Thu Jul 30 16:31:12 UTC 2015 - jrecord@suse.com
+
+- Added python library function:
+  SUSE.getConfigFileLVM
+- Updated constant SLE11SP4 in SUSE.pm, SUSE.rc, SUSE.py
+- Added constants to all SUSE libraries
+  SLE11SP5, SLE12SP1, SLE12SP2, SLE12SP3, SLE12SP4, SLE12SP5
+
+-------------------------------------------------------------------
+Fri Jun 26 18:59:04 UTC 2015 - jrecord@suse.com
+
+- Added python library functions:
+  SUSE.getFileSystems
+  SUSE.getGrub2Config
+  SUSE.getBasicFIPSData
+
+-------------------------------------------------------------------
+Wed Jun 24 19:47:14 UTC 2015 - jrecord@suse.com
+
+- Added python library function:
+  SUSE.getBasicVirtualization
+  SUSE.getProcCmdLine
+
+-------------------------------------------------------------------
+Wed Jun 24 16:24:01 UTC 2015 - jrecord@suse.com
+
+- Added MPIO.py python library, with functions:
+  MPIO.devicesManaged
+  MPIO.convertKeyValue
+  MPIO.getManagedDevices
+  MPIO.getDiskID
+  MPIO.partitionManagedDevice
+- Added python library functions:
+  Xen.getConfigFiles
+  Xen.getDiskValueList
+
+-------------------------------------------------------------------
+Fri May  1 18:23:02 UTC 2015 - jrecord@suse.com
+
+- Added python library functions:
+  SUSE.getZypperProductList
+  SUSE.getZypperRepoList
+  SUSE.getSCCInfo
+  SUSE.getSCRunTime
+
+-------------------------------------------------------------------
+Fri Jan 30 17:27:09 UTC 2015 - jrecord@suse.com
+
+- Update Makefile for submissions
+
+-------------------------------------------------------------------
+Tue Jan 27 16:49:20 UTC 2015 - jrecord@suse.com
+
+- Updated python/SUSE.py docs
+
+-------------------------------------------------------------------
+Tue Jan 13 16:35:08 UTC 2015 - jrecord@suse.com
+
+- Updated perl docs on OESLinux.pm
+
+-------------------------------------------------------------------
+Sat Jan 10 17:32:28 UTC 2015 - jrecord@suse.com
+
+- Created new OES library oes.py
+
+-------------------------------------------------------------------
+Mon Dec 15 21:10:45 UTC 2014 - jrecord@suse.com
+
+- Added SLE11SP4 to bash SUSE library
+- Added SLE12SP1 to all SUSE libraries
+- SDP::SUSE::getFileSystems() now ignores lines starting with ---
+
+-------------------------------------------------------------------
+Tue Dec  2 23:02:29 UTC 2014 - jrecord@suse.com
+
+- Created new SUSE Manger library suma.py
+
+-------------------------------------------------------------------
+Tue Sep 23 18:40:03 UTC 2014 - jrecord@suse.com
+
+- Added the PatchInfo class to SUSE.py
+
+-------------------------------------------------------------------
+Tue Jul 22 17:22:01 UTC 2014 - jrecord@suse.com
+
+- Fixed getServiceInfo for unknown services (bnc#888241)
+
+-------------------------------------------------------------------
+Thu Jun 26 20:12:10 UTC 2014 - jrecord@suse.com
+
+- Fixed SUSE.getHostInfo OES patchlevel error
+- Added Python SUSE.securityAnnouncementPackageCheck
+- SDP::SUSE::securityAnnouncementPackageCheck error when not installed
+- getSection in Core.pm excludes commented lines
+
+-------------------------------------------------------------------
+Thu Jun 19 18:44:44 UTC 2014 - jrecord@suse.com
+
+- getSection in Core.py excludes commented lines
+- Removed unecessary python imported libraries
+- Added listSections to Core.py
+- Added haeEnabled to HAE.py
+- Added haeConnected to HAE.Py
+- Added getNodeInfo to HAE.py
+- Added getConfigCTDB to HAE.py
+- Added getConfigCorosync to HAE.py
+- Added getClusterConfig to HAE.Py
+
+-------------------------------------------------------------------
+Fri Jun 13 16:43:26 UTC 2014 - jrecord@suse.com
+
+- Fixed TypeError: cannot concatenate 'str' and 'exceptions.IOError' objects
+
+-------------------------------------------------------------------
+Thu Jun 12 17:49:37 UTC 2014 - jrecord@suse.com
+
+- Fixed getSection to find valid sections (bnc#882507)
+
+-------------------------------------------------------------------
+Wed Jun 11 18:07:02 UTC 2014 - jrecord@suse.com
+
+- Updated HAE.py documentation
+- Added HAE.py with getSBDInfo 
+- Added getHostInfo to SUSE.py
+- Added getSeriveInfo to SUSE.py
+
+-------------------------------------------------------------------
+Thu May 15 17:20:15 UTC 2014 - jrecord@suse.com
+
+- Fixed eDirStatus() in Perl eDir.pm when ndsstat is missing
+
+-------------------------------------------------------------------
+Mon May 12 17:57:50 UTC 2014 - jrecord@suse.com
+
+- Fixed build errors for common directory
+
+-------------------------------------------------------------------
+Fri May  2 13:55:11 UTC 2014 - jrecord@suse.com
+
+- Removed debug printouts
+
+-------------------------------------------------------------------
+Mon Apr 28 21:30:18 UTC 2014 - jrecord@suse.com
+
+- Removed SUSE.getVersion, SUSE.normalizeVersionName and CVE.py
+  No patterns currently use or plan to this library and functions
+- Added Core.normalizeVersionString and Core.compareLooseVersions
+- Added new Core.compareVersions that checks left significant elements
+
+-------------------------------------------------------------------
+Mon Mar 31 21:02:47 UTC 2014 - jrecord@suse.com
+
+- Added STATUS_IGNORE to Core.pm
+
+-------------------------------------------------------------------
+Thu Mar 20 13:54:18 UTC 2014 - jrecord@suse.com
+
+- Removed hash pling from libraries
+
+-------------------------------------------------------------------
+Thu Mar 13 19:55:29 UTC 2014 - jrecord@suse.com
+
+- Updated copyright FSF address in all libraries
+- Change to System/Monitoring spec Group
+
+-------------------------------------------------------------------
+Fri Feb 21 23:08:54 UTC 2014 - jrecord@suse.com
+
+- Added SUSE.py python functions
+  getServiceDInfo, serviceHealthD
+
+-------------------------------------------------------------------
+Thu Jan 22 07:13:01 MST 2014 jrecord@suse.com
+
+- python Core.getSection excludes commented lines
+
+-------------------------------------------------------------------
+Thu Jan 17 07:13:01 MST 2014 jrecord@suse.com
+
+- moved libraries to root of lib directory
+- relocated files according to FHS
+- added Xen.py library
+- added pydoc elements to python libraries for documentation
+- added STATUS_IGNORE to all Core libraries
+
+-------------------------------------------------------------------
+Wed Jan 08 07:13:01 MST 2014 jrecord@suse.com
+
+- fixed build errors
+
+-------------------------------------------------------------------
+Thu Jan 02 07:13:01 MST 2014 jrecord@suse.com
+
+- moved pat to sca-appliance-patdev
+
+-------------------------------------------------------------------
+Wed Dec 20 07:13:01 MST 2013 jrecord@suse.com
+
+- separated as individual RPM package
+

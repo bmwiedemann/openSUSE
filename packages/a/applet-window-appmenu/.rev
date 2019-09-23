@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c14526a8aaccf2d065a6d3926d706c7</srcmd5>
+    <version>0.4.2</version>
+    <time>1561641968</time>
+    <user>dimstar_suse</user>
+    <comment>see Factory mailinglist</comment>
+    <requestid>712119</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>28ee4c931e7e398beb2f0d4d8520b1b7</srcmd5>
+    <version>0.4.2</version>
+    <time>1561970657</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712636</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7b56eea175e576934f3daecfac3ec306</srcmd5>
+    <version>0.5.0</version>
+    <time>1563018634</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0:
+  * provide a relevant background for window buttons in configuration
+    window to fix contrast issues
+  * support new Latte v0.9 Communicator API
+  * support new Latte v0.9 Windows Tracking interface when in Latte
+    dock/panel
+
+- Update to version 0.5.0:
+  * show app menus also for inactive windows in multi-screen
+    environment through Latte WindowsTracking v0.9 interface
+  * improve appearance when in Latte edit mode
+  * use new Latte Communicator API for v0.9</comment>
+    <requestid>714930</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>861070cb598558bff6885873bfd0e506</srcmd5>
+    <version>0.5.1</version>
+    <time>1565694947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.1:
+  * fix buttons vertical positioning. Previously there were cases
+    where buttons had 1px. difference with surrounding applets</comment>
+    <requestid>721105</requestid>
+  </revision>
+</revisionlist>

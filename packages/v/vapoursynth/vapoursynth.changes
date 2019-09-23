@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Mon Aug  5 07:19:01 UTC 2019 - mvetter@suse.com
+
+- Update to 47:
+  * fixed a crash in vdecimate when both dryrun and clip2 is set (no1d)
+  * updated zimg to 2.9.2 to fix a crash that would happen on certain invalid input combinations
+  * removed dependency on nasm
+  * improved message handler api and core info api
+  * various installer improvements including a warning if the vs2019 runtimes aren't installed
+- Update vapoursynth-version.patch
+
+-------------------------------------------------------------------
+Mon Jul  1 11:21:05 UTC 2019 - mvetter@suse.com
+
+- Update to version 46: 
+  * added a fallback to how the appdata path is retrieved which
+    works even if %USERPROFILE% isn't set
+  * the default number of threads used is now based on the process
+    affinity on windows, linux and bsd
+  * added an option to vspipe to make it not modify the current
+    working directory
+  * added a better equality check for the Format class in python
+  * fixed doubleweave sometimes using the opposite field order (dubhater)
+  * fixed broken output when stride wasn't equal to width in the
+    python output function (stuxcrystal)
+  * relaxed mask clip requirements in maskedmerge (dubhater)
+  * fixed overflow with int16 in maskedmerge (dubhater)
+  * fixed swapped fields in doubleweave (dubhater)
+  * fixed selectevery breaking and leaking when there are no frames to return
+
+-------------------------------------------------------------------
+Mon Jan  7 13:10:23 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 45 (boo#1120873):
+  * avfs now uses utf8 filename support when available in avs+
+  * avfs now prints the used mount point
+  * removed accept_lowecase setting from the python bindings
+  * fixed frame duration calculation in clipinfo (dubhater)
+  * fixed bug that prevented adding vertical margins in subtext
+    (dubhater)
+  * documentation updates
+- Changes for version 44:
+  * fixed crop with compatbgr32 format where top and bottom crop
+    would be switched
+  * fixed crash in scdetect with one frame clips, now it simply
+    returns an error since the operation is pointless
+  * fixed potential multithreading issues in vsscript (stuxcrystal)
+  * the resizer will now properly apply a shift even if no actual
+    resizing/format conversion is being done
+  * added experimental large page support and changed cache logic
+    (sekrit-twc)
+  * minor documentation updates
+- Drop no longer needed patch:
+  * vapoursynth-upstream-fix-for-aarch64.patch
+
+-------------------------------------------------------------------
+Thu Apr 26 15:51:41 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Add patch to fix aarch64 build:
+  * vapoursynth-upstream-fix-for-aarch64.patch
+
+-------------------------------------------------------------------
+Fri Feb 16 20:01:01 UTC 2018 - olaf@aepfle.de
+
+- Obsolete libvapoursynth to cleanup old packages during upgrade
+
+-------------------------------------------------------------------
+Fri Feb  9 08:32:43 UTC 2018 - mpluskal@suse.com
+
+- Update to version 43:
+  * Mostly bugfixes and internal changes (see provided ChangeLog
+    for details)
+
+-------------------------------------------------------------------
+Sun Dec  3 07:14:31 UTC 2017 - mpluskal@suse.com
+
+- Create subpackag for python bindings
+- Enable libass, ffmpeg, ImageMagick and Tesseract OCR support
+
+-------------------------------------------------------------------
+Thu Nov 30 13:45:01 UTC 2017 - jengelh@inai.de
+
+- vapoursynth-devel needs to pull in libvapoursynth-script0
+
+-------------------------------------------------------------------
+Mon Nov 27 12:23:01 UTC 2017 - mpluskal@suse.com
+
+- Rename previously added patch to match our patching guidelines:
+  * vapoursynth-version.patch
+
+-------------------------------------------------------------------
+Mon Nov 27 10:54:23 UTC 2017 - jengelh@inai.de
+
+- Correct package version (it is 40 not R40, as per configure.ac).
+- Resolve project ambiguity in %description.
+- Add SLPP versioning to libvapoursynth.
+- Add missing Group: tags to subpackages.
+- Move bigger doc directory to -devel.
+
+-------------------------------------------------------------------
+Mon Nov 20 08:36:07 UTC 2017 - mpluskal@suse.com
+
+- Update to version R40
+- Clean up spec file a bit
+
+-------------------------------------------------------------------
+Sat Nov  5 12:31:06 UTC 2016 - antispace@codesector.co
+
+- Updated to R35
+- Added disclaimer comment block
+- Renamed plugin package names to include 'plugin-'
+
+-------------------------------------------------------------------
+Sat Oct 22 00:33:23 UTC 2016 - antispace@codesector.co
+
+- Cleaned up package descriptions and Summary tags
+
+-------------------------------------------------------------------
+Sat Oct 22 00:22:31 UTC 2016 - antispace@codesector.co
+
+- Renamed main package to libvapoursynth
+
+-------------------------------------------------------------------
+Sat Oct 22 00:13:24 UTC 2016 - antispace@codesector.co
+
+- Packaged R34
+- Split plugins into their own separate packages

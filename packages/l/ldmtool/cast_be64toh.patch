@@ -1,0 +1,74 @@
+commit b8a77565458a0b183f1fd0e0af224fd0d5b3d8c8
+Author: Matthew Booth <mbooth@redhat.com>
+Date:   Mon Sep 24 16:23:01 2012 +0100
+
+    Cast result of be64toh() to uint64_t
+    
+    glibc 2.16 makes a change to be64toh() which breaks libldm. In the new glibc,
+    be64toh() returns unsigned long long int regardless of wordsize. This breaks in
+    combination with PRIu64 on x86_64, which expects unsigned long.
+    
+    It's not clear to me whether this is a regression in glibc, or a failure of gcc
+    to recognise that unsigned long long int and unsigned long are the same thing on
+    x86_64.
+    
+    There's a Fedora bug open against glibc here:
+    https://bugzilla.redhat.com/show_bug.cgi?id=859427
+
+diff --git a/src/ldm.c b/src/ldm.c
+index a55723c..0273ddb 100644
+--- a/src/ldm.c
++++ b/src/ldm.c
+@@ -1090,18 +1090,18 @@ _find_vmdb(const void * const config, const gchar * const path,
+             "    Size: %" PRIu64 "\n"
+             "    Flags2: %016" PRIo64,
+             path,
+-            be64toh(tocblock->seq1),
+-            be64toh(tocblock->seq2),
++            (uint64_t) be64toh(tocblock->seq1),
++            (uint64_t) be64toh(tocblock->seq2),
+             tocblock->bitmap[0].name,
+             be16toh(tocblock->bitmap[0].flags1),
+-            be64toh(tocblock->bitmap[0].start),
+-            be64toh(tocblock->bitmap[0].size),
+-            be64toh(tocblock->bitmap[0].flags2),
++            (uint64_t) be64toh(tocblock->bitmap[0].start),
++            (uint64_t) be64toh(tocblock->bitmap[0].size),
++            (uint64_t) be64toh(tocblock->bitmap[0].flags2),
+             tocblock->bitmap[1].name,
+             be16toh(tocblock->bitmap[1].flags1),
+-            be64toh(tocblock->bitmap[1].start),
+-            be64toh(tocblock->bitmap[1].size),
+-            be64toh(tocblock->bitmap[1].flags2));
++            (uint64_t) be64toh(tocblock->bitmap[1].start),
++            (uint64_t) be64toh(tocblock->bitmap[1].size),
++            (uint64_t) be64toh(tocblock->bitmap[1].flags2));
+ 
+     /* Find the start of the DB */
+     *vmdb = NULL;
+@@ -1150,8 +1150,8 @@ _find_vmdb(const void * const config, const gchar * const path,
+             be16toh((*vmdb)->version_major),
+             be16toh((*vmdb)->version_minor),
+             (*vmdb)->disk_group_guid,
+-            be64toh((*vmdb)->committed_seq),
+-            be64toh((*vmdb)->pending_seq),
++            (uint64_t) be64toh((*vmdb)->committed_seq),
++            (uint64_t) be64toh((*vmdb)->pending_seq),
+             be32toh((*vmdb)->n_committed_vblks_vol),
+             be32toh((*vmdb)->n_committed_vblks_comp),
+             be32toh((*vmdb)->n_committed_vblks_part),
+@@ -1276,10 +1276,10 @@ _read_privhead_off(const int fd, const gchar * const path,
+             be16toh(privhead->version_minor),
+             privhead->disk_guid,
+             privhead->disk_group_guid,
+-            be64toh(privhead->logical_disk_start),
+-            be64toh(privhead->logical_disk_size),
+-            be64toh(privhead->ldm_config_start),
+-            be64toh(privhead->ldm_config_size));
++            (uint64_t) be64toh(privhead->logical_disk_start),
++            (uint64_t) be64toh(privhead->logical_disk_size),
++            (uint64_t) be64toh(privhead->ldm_config_start),
++            (uint64_t) be64toh(privhead->ldm_config_size));
+ 
+     return TRUE;
+ }

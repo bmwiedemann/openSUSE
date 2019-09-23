@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Fri Nov  3 08:11:04 UTC 2017 - olaf@aepfle.de
+
+- Version 3.5.8.20171102.1b93c9c
+  Fixed an issue with SQLite savepoints, if the savepoint name
+  contained special characters. Savepoint names are now always quoted.
+
+-------------------------------------------------------------------
+Fri Mar 31 11:16:50 UTC 2017 - olaf@aepfle.de
+
+- Version 3.5.3.20170331.3494a8b
+
+-------------------------------------------------------------------
+Sun Mar 19 19:14:30 UTC 2017 - olaf@aepfle.de
+
+- Version 3.5.2.20170319.e79d1ef
+
+-------------------------------------------------------------------
+Wed Feb 22 09:00:44 UTC 2017 - olaf@aepfle.de
+
+- Initial version 3.5.1.20170216.2927d43

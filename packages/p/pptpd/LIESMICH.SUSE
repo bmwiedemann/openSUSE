@@ -1,0 +1,115 @@
+Beispiel:
+
+
+Verschluesselter PPP-Tunnel von Windows-Client zu Linux-Server.
+===============================================================
+
+(siehe auch "http://pptpclient.sourceforge.net/documentation.phtml")
+
+Der Linux-Server hat die IP-Adresse 10.10.0.208.  Der Tunnel bekommt am
+Serverende die Adresse 192.168.1.1 und am Clientende die Adresse 192.168.1.2.
+
+Es muessen die Pakete ppp und pptpd installiert sein.
+
+
+In /etc/pptpd.conf sind folgende Tags zu aendern bzw. zu aktivieren
+(Kommentarzeichen # am Zeilenanfang entfernen).
+===================================================================
+
+speed 115200
+
+option /etc/ppp/options.pptp
+
+debug
+
+localip 192.168.1.1
+remoteip 192.168.1.2
+
+
+In /etc/ppp/options.pptp sollten die folgenden Zeilen stehen.
+=============================================================
+
+lock
+debug
+auth
+require-chap
+require-mschap
+require-mschap-v2
+require-mppe-40
+require-mppe-128
+name poseidon
+proxyarp
+
+
+In /etc/ppp/chap-secrects muessen diese Zeile stehen.
+=====================================================
+
+# INBOUND CONNECTIONS
+#client         hostname        <password>      192.168.1.1
+pptptest        poseidon        pptptest        *
+
+
+Das Kommando zum starten des pptpd eingeben.
+============================================
+
+rcpptpd start
+
+
+Fertig ist der Tunnelserver!
+
+
+Der Windows-Client (95/98/NT) muss den Tunnelserver per TCP/IP erreichen
+koennen.  Testen mittels "ping 10.10.0.208" in der Dosbox von Windows.  Wenn
+die Verbindung klappt kann auf dem Windows-Client die Microsoft VPN-Software
+installiert und konfiguriert werden.
+
+1. Start->Einstellungen->Systemsteuerung->Netzwerk
+2. Klick Hinzufuegen
+3. Waehle Netzwerkkarte
+4. Klick Hinzufuegen
+5. Waehle Microsoft als Hersteller
+6. Waehle Microsoft Virtual Private Networking Adapter
+7. Klick OK
+8. Die verlangten Disketten/CD's einlegen und den Anweisungen folgen.
+9. Windows Neustart (wie sollte es auch anders sein)
+
+Warten, warten, warten, ...
+
+Wenn Windows wieder da ist geht's weiter.
+
+1. Start->Programme->Zubehoer->Kommunikation->DFÜ-Netzwerk
+2. Doppelklick auf "Neue Verbindung erstellen"
+3. Einen Namen fuer die Verbindung ausdenken und eintragen.
+4. Waehle "Microsoft VPN Adapter" als Geraet.
+5. Klick Weiter
+6. Die IP-Adresse Linux-Servers 10.10.0.208 eingeben.
+7. Klick Weiter
+8. Klick Fertig stellen
+9. Mit rechter Maustaste auf die neuerstellte Verbindung klicken
+   und Eigenschaften auswaehlen.
+10. Waehler Server Types
+11. aktiviere Require encrypted password
+12. deakiviere netbeui, ipx/spx compatible
+13. Klick TCP/IP Settings
+14. deaktiviere Use IP header compression
+15. deaktiviere Use default gw on remote network nur wenn die default
+    route nicht durch den Tunnel verlaufen soll. (Achtung wahrscheinlich
+    haben Sie schon eine default route auf dem bereits aktiven Netzwerk-
+    interface.)
+16. Doppelklick auf die neue Verbindung
+17. Als User name pptptest und als Password pptptest eingeben.
+18. Klick Connect
+
+Schon geht's los! :-) Wenn sie den Bugfix fuer Windows 98 eingespielt haben,
+den es unter "ftp://ftp.microsoft.com/softlib/mslfiles/dun40.exe" gibt.  Damit
+unterstuetzt Windows 98 allerdings nur 40 Bit Schluessel.  Wann Microsoft auch
+ausserhalb der USA laengere Schluessel (Linux unterstuetzt bereits 128 Bit)
+anbietet ist uns nicht bekannt.
+
+Mit Windows 95 geht es genauso, allerdings muss das DFÜ-Netzwerk Update auf
+Version 1.3 (frei von Microsoft herunterladbar) installiert sein.
+
+Viel Spass,
+
+Juergen Scheiderer <bsupport@suse.de>
+

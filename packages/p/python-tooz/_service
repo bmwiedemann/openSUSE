@@ -1,0 +1,13 @@
+<services>
+  <service mode="disabled" name="renderspec">
+    <param name="input-template">https://raw.githubusercontent.com/openstack/rpm-packaging/stable/stein/openstack/tooz/tooz.spec.j2</param>
+    <param name="output-name">python-tooz.spec</param>
+    <param name="requirements">https://raw.githubusercontent.com/openstack/tooz/stable/stein/requirements.txt</param>
+    <param name="changelog-email">cloud-devel@suse.de</param>
+    <param name="changelog-provider">gh,openstack,tooz</param>
+  </service>
+  <service mode="disabled" name="download_files">
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="format_spec_file" mode="disabled"/>
+</services>

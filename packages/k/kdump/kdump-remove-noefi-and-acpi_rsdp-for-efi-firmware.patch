@@ -1,0 +1,53 @@
+From 3ea13723f93cc22d163f1f1c8e64ccef3fa32471 Mon Sep 17 00:00:00 2001
+From: "Lee, Chun-Yi" <jlee@suse.com>
+Date: Tue, 5 Mar 2019 15:06:10 +0800
+Subject: Remove noefi and acpi_rsdp for EFI firmware
+References: bsc#1123940
+Upstream: merged
+Git-commit: 3ea13723f93cc22d163f1f1c8e64ccef3fa32471
+
+The noefi and acpi_rsdp can be removed because kernel passes necessary
+EFI data for kexec via setup_data since 1fec05336 patch be introduced
+in v3.14 kernel. (bsc#1098210)
+
+On the other hand, the MOK (machine owner key) doesn't work with noefi.
+It causes that third-party signed kernel modules can not be loaded by
+crash kernel. Crash kernel can provide EFI runtime services for loading
+MOK after noefi be removed. (bsc#1123940)
+
+The kdump without noefi has been tested on Huawei Kunlun, Intel
+minnowboard and KVM-OVMF.
+
+Signed-off-by: Lee, Chun-Yi <jlee@suse.com>
+Acked-by: Petr Tesarik <ptesarik@suse.com>
+---
+ init/load.sh |   11 -----------
+ 1 file changed, 11 deletions(-)
+
+--- a/init/load.sh
++++ b/init/load.sh
+@@ -5,7 +5,6 @@
+ 
+ KDUMPTOOL=/usr/sbin/kdumptool
+ KEXEC=/sbin/kexec
+-EFI_SYSTAB=/sys/firmware/efi/systab
+ FADUMP_ENABLED=/sys/kernel/fadump_enabled
+ FADUMP_REGISTERED=/sys/kernel/fadump_registered
+ 
+@@ -97,16 +96,6 @@ function build_kdump_commandline()
+             kernelrelease=$(uname -r)
+             commandline="$commandline kernelversion=$kernelrelease"
+         fi
+-
+-	if [ -f /sys/firmware/efi/systab ] ; then
+-	    local acpi_addr
+-	    if grep -q '^ACPI20=' /sys/firmware/efi/systab ; then
+-		acpi_addr=$(awk -F'=' '/^ACPI20=/ {print $2}' "$EFI_SYSTAB")
+-	    else
+-		acpi_addr=$(awk -F'=' '/^ACPI=/ {print $2}' "$EFI_SYSTAB")
+-	    fi
+-	    commandline="$commandline noefi acpi_rsdp=$acpi_addr"
+-	fi
+     fi
+ 
+     commandline="$commandline $KDUMP_COMMANDLINE_APPEND"

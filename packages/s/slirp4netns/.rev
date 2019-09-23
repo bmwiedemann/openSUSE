@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa788154d5e08dbbb77b85ae9367d1a2</srcmd5>
+    <version>0.1+gitr54_39e87c0e6634</version>
+    <time>1540447980</time>
+    <user>dimstar_suse</user>
+    <comment>- Introduce slirp4netns in version 0.1 to support rootless Podman:
+  slirp4netns provides user-mode networking (&quot;slirp&quot;) for unprivileged network
+  namespaces. A common use-case of slirp4netns is to enable network access for
+  rootless container engines such as Podman.
+</comment>
+    <requestid>642671</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>97c04d6beaab18c37d2ab273e948aab3</srcmd5>
+    <version>0.3.0~beta1</version>
+    <time>1553435825</time>
+    <user>dimstar_suse</user>
+    <comment>- Change _service to use releases instead of git commit references (forwarded request 686893 from RBrownSUSE)</comment>
+    <requestid>686894</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>749727e6ce0aa633a842972baccb226a</srcmd5>
+    <version>0.3.0</version>
+    <time>1554189476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689750</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b21794872879fac913f1427c7c88700c</srcmd5>
+    <version>0.3.2</version>
+    <time>1565179193</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720977</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2f4e83a895807f3a175e889ae8f2bcdc</srcmd5>
+    <version>0.3.2</version>
+    <time>1565473431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721683</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6d8549b29f264eab8375ce3556c9305e</srcmd5>
+    <version>0.4.1</version>
+    <time>1567423376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727614</requestid>
+  </revision>
+</revisionlist>

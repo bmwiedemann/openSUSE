@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c38c4cdb603e6fc93323d526b407d8dd</srcmd5>
+    <version>1.1.0</version>
+    <time>1553263702</time>
+    <user>dimstar_suse</user>
+    <comment>- Use noun phrase in summary.
+- Initial spec for v1.1.0
+</comment>
+    <requestid>687179</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5634a1e5c6d890a599f34431a716af60</srcmd5>
+    <version>1.1.0</version>
+    <time>1566479147</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches to work with new pytest:
+  * pytest4.patch</comment>
+    <requestid>725257</requestid>
+  </revision>
+</revisionlist>

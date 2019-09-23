@@ -1,0 +1,176 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>ff223d59ef1e576b30990396a24f2c10</srcmd5>
+    <version>1.1.3</version>
+    <time>1222094000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>8c8966d747bbad78bdd4ccfada610e49</srcmd5>
+    <version>1.1.3</version>
+    <time>1222270707</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>a33931c1eb33aafbceb7981f5f0cf7ac</srcmd5>
+    <version>1.1.3</version>
+    <time>1225100838</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>44ffd09fdb9564860aa9526bd316831e</srcmd5>
+    <version>1.1.3</version>
+    <time>1226069513</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>ab4542c5a6bdadaccb84f2d9513973ff</srcmd5>
+    <version>1.1.3</version>
+    <time>1227279248</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>9a86a8d6a96e323f3609d805cb7ca71c</srcmd5>
+    <version>1.1.3</version>
+    <time>1228234672</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>2a4dde25658cc28d766b74cc5ab4ff32</srcmd5>
+    <version>1.1.3</version>
+    <time>1248881503</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>2a4dde25658cc28d766b74cc5ab4ff32</srcmd5>
+    <version>1.1.3</version>
+    <time>1248881503</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>009f0ad01ad0633952c2e3f5c0569db5</srcmd5>
+    <version>1.1.3</version>
+    <time>1258727619</time>
+    <user>autobuild</user>
+    <comment>Copy from security/trustedgrub based on submit request 24783 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>dafe70d8a93462e5683be4d188ce463d</srcmd5>
+    <version>1.1.3</version>
+    <time>1268926378</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>25b56e04e497e3bc3adcc06085b5a288</srcmd5>
+    <version>1.1.3</version>
+    <time>1271375015</time>
+    <user>autobuild</user>
+    <comment>Copy from security/trustedgrub based on submit request 37915 from user duwe
+</comment>
+    <requestid>37915</requestid>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>25b56e04e497e3bc3adcc06085b5a288</srcmd5>
+    <version>1.1.3</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>25b56e04e497e3bc3adcc06085b5a288</srcmd5>
+    <version>1.1.3</version>
+    <time>1278678623</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="20">
+    <srcmd5>25b56e04e497e3bc3adcc06085b5a288</srcmd5>
+    <version>1.1.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="22">
+    <srcmd5>25b56e04e497e3bc3adcc06085b5a288</srcmd5>
+    <version>1.1.3</version>
+    <time>1319182530</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="23">
+    <srcmd5>fb0140ffc9a51e957b5f2ac3f5c393f4</srcmd5>
+    <version>1.1.3</version>
+    <time>1323290458</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 95156 from coolo)</comment>
+    <requestid>95191</requestid>
+  </revision>
+  <revision rev="17" vrev="24">
+    <srcmd5>53e80d8c400a3429e91c217a9535d11b</srcmd5>
+    <version>1.1.3</version>
+    <time>1339701090</time>
+    <user>coolo</user>
+    <comment>if accepted please submit to Factory also (forwarded request 124957 from toganm)</comment>
+    <requestid>125014</requestid>
+  </revision>
+  <revision rev="18" vrev="26">
+    <srcmd5>53e80d8c400a3429e91c217a9535d11b</srcmd5>
+    <version>1.1.3</version>
+    <time>1340184286</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="27">
+    <srcmd5>a08ed7c512cf9372fc09eb3f74173b33</srcmd5>
+    <version>1.1.3</version>
+    <time>1352732815</time>
+    <user>coolo</user>
+    <comment>- make it build, added ncurses-devel for x86_64 too</comment>
+    <requestid>140913</requestid>
+  </revision>
+  <revision rev="20" vrev="29">
+    <srcmd5>a08ed7c512cf9372fc09eb3f74173b33</srcmd5>
+    <version>1.1.3</version>
+    <time>1359110506</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="30">
+    <srcmd5>b1ede6afaeba104cfcfde5f8c9ba9f23</srcmd5>
+    <version>1.1.3</version>
+    <time>1367238239</time>
+    <user>coolo</user>
+    <comment>- Added makeinfo BuildRequire to fix build with new automake (forwarded request 173450 from m_meister)</comment>
+    <requestid>173716</requestid>
+  </revision>
+  <revision rev="22" vrev="31">
+    <srcmd5>0f4dd7326c9289e545c55e7cf703a1b4</srcmd5>
+    <version>1.1.3</version>
+    <time>1374847155</time>
+    <user>coolo</user>
+    <comment>- Fix build for rpm-4.11</comment>
+    <requestid>184425</requestid>
+  </revision>
+  <revision rev="23" vrev="33">
+    <srcmd5>0f4dd7326c9289e545c55e7cf703a1b4</srcmd5>
+    <version>1.1.3</version>
+    <time>1379664846</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="35">
+    <srcmd5>0f4dd7326c9289e545c55e7cf703a1b4</srcmd5>
+    <version>1.1.3</version>
+    <time>1409303531</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="36">
+    <srcmd5>01a2daef912c139b22e8b82b39b7a0fa</srcmd5>
+    <version>1.1.3</version>
+    <time>1491896503</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>485090</requestid>
+  </revision>
+</revisionlist>

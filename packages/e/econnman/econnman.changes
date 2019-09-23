@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Tue Apr 24 04:37:13 UTC 2018 - avvissu@yandex.by
+
+- Install icon from adwaita-icon-theme
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Wed Feb 14 18:58:17 UTC 2018 - jengelh@inai.de
+
+- Pick a more fitting RPM group.
+
+-------------------------------------------------------------------
+Sat Dec  2 15:46:44 UTC 2017 - avvissu@yandex.by
+
+- Update sourceURL
+
+-------------------------------------------------------------------
+Mon Oct  2 23:13:57 UTC 2017 - avvissu@yandex.by
+
+- Check list of dependencies (add BuildRequires: connman python3-efl)
+- Add the PYTHON=python3 variable to the configure command
+- Fix the python version to run
+- Fix: Icon file not found
+- Replace categories defined
+- Build a noarch pakage
+- Fix build on Mageia
+
+-------------------------------------------------------------------
+Mon Sep 12 01:40:37 UTC 2016 - simonf.lees@suse.com
+
+- Migrate to python3
+
+-------------------------------------------------------------------
+Sun Dec 15 21:52:02 UTC 2013 - sleep_walker@suse.cz
+
+- simplify build and run time dependencies
+- pipe through spec-cleaner
+
+-------------------------------------------------------------------
+Tue Dec 10 07:47:14 UTC 2013 - sleep_walker@suse.cz
+
+- license fix
+
+-------------------------------------------------------------------
+Tue Dec 10 07:41:52 UTC 2013 - sleep_walker@suse.cz
+
+- get new git snapshot to fix compilation against python-efl (from Nightly)
+- take also updated desktop.patch (from Nightly)
+
+-------------------------------------------------------------------
+Thu Nov 29 22:15:38 UTC 2012 - sleep_walker@suse.cz
+
+- econnman needs efreet, not e17
+
+-------------------------------------------------------------------
+Thu Nov 29 05:52:03 UTC 2012 - simon@simotek.net
+
+- add missing python-edje dependency should this also go into python-elementry?
+
+-------------------------------------------------------------------
+Sat Nov  3 19:32:41 UTC 2012 - simon@simotek.net
+
+- add connman dependency
+- add python-ecore and python-evas deps (these should go into python-elementry oneday.
+
+-------------------------------------------------------------------
+Sun Sep 23 23:20:24 UTC 2012 - sleep_walker@suse.cz
+
+- let there be econnman!
+

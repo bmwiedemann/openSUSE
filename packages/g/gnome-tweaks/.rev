@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5db99018c02ceb7d6286ff5eeaed7b35</srcmd5>
+    <version>3.27.92</version>
+    <time>1521051920</time>
+    <user>dimstar_suse</user>
+    <comment>Replaces gnome-tweak-tools</comment>
+    <requestid>584815</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>96f90528f7fa9baf5d43e517a9a8c875</srcmd5>
+    <version>3.28.0</version>
+    <time>1521192889</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.28.0</comment>
+    <requestid>587483</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>628514149e316f81f6d560da305ee923</srcmd5>
+    <version>3.28.0</version>
+    <time>1522061041</time>
+    <user>dimstar_suse</user>
+    <comment>t-u-u / boo#1086036 (forwarded request 589311 from dimstar)</comment>
+    <requestid>589996</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d73e0bb934e4f40fc42fcca4c1f4e469</srcmd5>
+    <version>3.28.1</version>
+    <time>1524144127</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 594663 from iznogood)</comment>
+    <requestid>596124</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d8edafad851db14281bd4eae0eaae070</srcmd5>
+    <version>3.30.1</version>
+    <time>1539757122</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638980</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1452d64275fae8ef19015e5c5a252299</srcmd5>
+    <version>3.30.2</version>
+    <time>1545223654</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657856</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e948c98645e5e5c29182a15b09c3b6dc</srcmd5>
+    <version>3.32.0</version>
+    <time>1556914311</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 695653 from dimstar)</comment>
+    <requestid>695700</requestid>
+  </revision>
+</revisionlist>

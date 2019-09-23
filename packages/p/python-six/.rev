@@ -1,0 +1,340 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dabddaed69a6c461390daaabed4bbb43</srcmd5>
+    <version>1.1.0</version>
+    <time>1339076389</time>
+    <user>coolo</user>
+    <comment>This is required by the most recent python-dateutil.  python-dateutil will build successfully without python-six, but packages further down the dependency change will fail because it is not present.  This package is holding up several other submissions, including python-dateutil and python-numpy.</comment>
+    <requestid>123753</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>dabddaed69a6c461390daaabed4bbb43</srcmd5>
+    <version>1.1.0</version>
+    <time>1340184092</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6b4f7f317d7774defbeffb89f55497a7</srcmd5>
+    <version>1.2.0</version>
+    <time>1348232173</time>
+    <user>coolo</user>
+    <comment>Update to 1.2.0. (forwarded request 133713 from poorboywilly)</comment>
+    <requestid>134630</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a11b8a93d40f48d97e8e5da43a61a5d7</srcmd5>
+    <version>1.2.0</version>
+    <time>1353848680</time>
+    <user>coolo</user>
+    <comment>Removed openSUSE 11.4 spec file workarounds (forwarded request 142453 from TheBlackCat) (forwarded request 142454 from TheBlackCat)</comment>
+    <requestid>142455</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>a11b8a93d40f48d97e8e5da43a61a5d7</srcmd5>
+    <version>1.2.0</version>
+    <time>1359110122</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9445e2f53d7394fe5bb93ec3c99ae660</srcmd5>
+    <version>1.3.0</version>
+    <time>1367487895</time>
+    <user>coolo</user>
+    <comment>- update to 1.3.0:
+  - In six.iter(items/keys/values/lists), passed keyword arguments through to the
+  underlying method.
+  - Add six.iterlists().
+  - Fix Jython detection.
+
+- Removed openSUSE 11.4 spec file workarounds
+
+- update to 1.3.0:
+  - In six.iter(items/keys/values/lists), passed keyword arguments through to the
+  underlying method.
+  - Add six.iterlists().
+  - Fix Jython detection. (forwarded request 173719 from dirkmueller)</comment>
+    <requestid>173926</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e66e8fcedb46a09bbba20bc534bb4af3</srcmd5>
+    <version>1.3.0</version>
+    <time>1371650139</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>180007</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>afad9b809d3a20944250a65cef55a8f5</srcmd5>
+    <version>1.3.0</version>
+    <time>1375284290</time>
+    <user>coolo</user>
+    <comment>- Run testsuite
+- Build and package HTML documentation</comment>
+    <requestid>184924</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>385831b7a224e04953c75f1908e7b2b4</srcmd5>
+    <version>1.4.1</version>
+    <time>1378238753</time>
+    <user>coolo</user>
+    <comment>- update to 1.4.1:
+  - Issue #31: Add six.moves mapping for UserString.
+  - Pull request #12: Add six.add_metaclass, a decorator for adding a metaclass to
+    a class.
+  - Add six.moves.zip_longest and six.moves.filterfalse, which correspond
+    respectively to itertools.izip_longest and itertools.ifilterfalse on Python 2
+    and itertools.zip_longest and itertools.filterfalse on Python 3.
+  - Issue #25: Add the unichr function, which returns a string for a Unicode
+    codepoint.
+  - Issue #26: Add byte2int function, which complements int2byte.
+  - Issue #23: Allow multiple base classes to be passed to with_metaclass.
+  - Issue #24: Add six.moves.range alias. This exactly the same as the current
+  xrange alias.
+  - Pull request #5: Create six.moves.urllib, which contains abstractions for a
+    bunch of things which are in urllib in Python 3 and spread out across urllib,
+    urllib2, and urlparse in Python 2. (forwarded request 197130 from dirkmueller)</comment>
+    <requestid>197207</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>385831b7a224e04953c75f1908e7b2b4</srcmd5>
+    <version>1.4.1</version>
+    <time>1379664284</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>e747ee58db38f50e32b8c86eb1f674c6</srcmd5>
+    <version>1.4.1</version>
+    <time>1389278293</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>213151</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fb8c84ec8bd34df7577ea88966739b82</srcmd5>
+    <version>1.5.2</version>
+    <time>1392222179</time>
+    <user>coolo</user>
+    <comment>Update to 1.5.2, needed for a newer scrapy package (forwarded request 221526 from thomas-schraitle)</comment>
+    <requestid>221585</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4f919f5956166931dbe50538fe3be0c6</srcmd5>
+    <version>1.5.2</version>
+    <time>1393705207</time>
+    <user>coolo</user>
+    <comment>- Include in SLE 12 (FATE #315990) (forwarded request 223981 from rjschwei)</comment>
+    <requestid>224212</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>207e3bb7768edbe04c3f940aa5aca33e</srcmd5>
+    <version>1.6.1</version>
+    <time>1399017101</time>
+    <user>coolo</user>
+    <comment>- update to 1.6.1:
+  - Raise an AttributeError for six.moves.X when X is a module not available in
+    the current interpreter.
+  - Raise an AttributeError for every attribute of unimportable modules.
+  - Issue #56: Make the fake modules six.moves puts into sys.modules appear not to
+    have a __path__ unless they are loaded.
+  - Pull request #28: Add support for SplitResult.
+  - Issue #55: Add move mapping for xmlrpc.server.
+  - Pull request #29: Add move for urllib.parse.splitquery. (forwarded request 231414 from dirkmueller)</comment>
+    <requestid>231440</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5a128ed0695f851eeefe8d6a6735d714</srcmd5>
+    <version>1.7.2</version>
+    <time>1403723997</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238514</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4fc7f78db571a6b9cf18a58ef187f810</srcmd5>
+    <version>1.7.3</version>
+    <time>1409151176</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>245257</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>4fc7f78db571a6b9cf18a58ef187f810</srcmd5>
+    <version>1.7.3</version>
+    <time>1409302993</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>80627b743c8da29a5525f2e8309fa01f</srcmd5>
+    <version>1.8.0</version>
+    <time>1410981814</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249565</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b8f76b9e20fcdebe593a8ad62b39c706</srcmd5>
+    <version>1.9.0</version>
+    <time>1422346105</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282749</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>bef3990df11d98f7db30b84f10c193dd</srcmd5>
+    <version>1.9.0</version>
+    <time>1429658078</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297891</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>c618b1ac0d83685787c7e1f4ac3241f6</srcmd5>
+    <version>1.9.0</version>
+    <time>1438899822</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320370</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9dc235ee899817aa561dc2b7a4305735</srcmd5>
+    <version>1.10.0</version>
+    <time>1445287633</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>337375</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>d2e34540496a1ffe49eff9de49f28d5e</srcmd5>
+    <version>1.10.0</version>
+    <time>1453507449</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354719</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>b58fa61e441d1c08230172abc9fa353e</srcmd5>
+    <version>1.10.0</version>
+    <time>1456242803</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358478</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>01054314e2c3f752dffcbed5646949be</srcmd5>
+    <version>1.10.0</version>
+    <time>1488216510</time>
+    <user>dimstar_suse</user>
+    <comment>first batch of singlespec packages</comment>
+    <requestid>460248</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b275e6d5a5435b6a57e0a5ea4823c0d1</srcmd5>
+    <version>1.11.0</version>
+    <time>1506678773</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Source url
+
+- README-&gt;README.rst, add CHANGES
+- update to version 1.11.0:
+  * Pull request #178: `with_metaclass` now properly proxies
+    `__prepare__` to the underlying metaclass.
+  * Pull request #191: Allow `with_metaclass` to work with metaclasses
+    implemented in C.
+  * Pull request #203: Add parse_http_list and parse_keqv_list to
+    moved urllib.request.
+  * Pull request #172 and issue #171: Add unquote_to_bytes to moved
+    urllib.parse.
+  * Pull request #167: Add `six.moves.getoutput`.
+  * Pull request #80: Add `six.moves.urllib_parse.splitvalue`.
+  * Pull request #75: Add `six.moves.email_mime_image`.
+  * Pull request #72: Avoid creating reference cycles through
+    tracebacks in `reraise`.
+
+- Fix Source url
+
+- README-&gt;README.rst, add CHANGES
+- update to version 1.11.0:
+  * Pull request #178: `with_metaclass` now properly proxies
+    `__prepare__` to the underlying metaclass.
+  * Pull request #191: Allow `with_metaclass` to work with metaclasses
+    implemented in C.
+  * Pull request #203: Add parse_http_list and parse_keqv_list to
+    moved urllib.request.
+  * Pull request #172 and issue #171: Add unquote_to_bytes to moved
+    urllib.parse.</comment>
+    <requestid>529092</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>7f9c1437d566be1aee2858478edabf80</srcmd5>
+    <version>1.11.0</version>
+    <time>1508769515</time>
+    <user>dimstar_suse</user>
+    <comment>- remove egg-info directory before installation if it exists,
+  because setuptools produce directory and six switched to distutils
+  that produce a file
+  (and because rpm can't handle that by itself)
+  fixes bsc#1057496</comment>
+    <requestid>534285</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>6d1e6e07b167672cffeb00b0688804c9</srcmd5>
+    <version>1.11.0</version>
+    <time>1534543184</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove argparse dependency
+
+- Remove argparse dependency</comment>
+    <requestid>628634</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>91f86d78fbd70160290ee8058ed8ea32</srcmd5>
+    <version>1.11.0</version>
+    <time>1536147873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632909</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3f10ff80e9b3c367303bb0519a5783fd</srcmd5>
+    <version>1.12.0</version>
+    <time>1544816879</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+    * `six.add_metaclass` now preserves `__qualname__` from the
+      original class.
+    * Add `six.ensure_binary`, `six.ensure_text`, and
+      `six.ensure_str`.
+- Because of cyclical dependencies between six and Sphinx, we
+  need to to do multibuild.</comment>
+    <requestid>656810</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>c3f95e6a30b0c704edb038b734170b61</srcmd5>
+    <version>1.12.0</version>
+    <time>1548704838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668762</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>6ccb9883677c62e60c07cf6c7055aeac</srcmd5>
+    <version>1.12.0</version>
+    <time>1560862145</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix pytest call
+- Fixdocumentation package generating</comment>
+    <requestid>709049</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>c5db8c7e400750641b15d91cda62ee84</srcmd5>
+    <version>1.12.0</version>
+    <time>1564484452</time>
+    <user>dimstar_suse</user>
+    <comment>- Simplify the pytest call</comment>
+    <requestid>716252</requestid>
+  </revision>
+</revisionlist>

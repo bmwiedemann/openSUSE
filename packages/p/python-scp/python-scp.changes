@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Mon Mar 25 13:59:28 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.13.2
+  *  Fix AssertionError in recursive get() when `_rename` is set and
+     server sends a POPD at the end (`_depth > 0`)
+
+-------------------------------------------------------------------
+Wed Mar 13 13:52:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.13.1:
+  * Guard against some malformed messages from the server
+  * Remove all introspection logic for progress callback introduced in 0.12
+  * progress callback only accept 3 arguments again
+  * Introduce progress4 parameter which accepts the peername as 4th argument
+  * Fix progress callback failing when it is an instance or class method
+  * Fix README.rst for PyPI
+  * Add possibility of getting the peer IP and port from the progress callback
+  * Make putfo() work with file-like objects that don't provide getvalue()
+  * Add putfo() method, allowing one to upload a file-like object
+  * Add top-level get() and put() functions for convenience
+  * Increase default socket time from 5 to 10 seconds
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:01 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Aug  6 18:01:13 UTC 2017 - mardnh@gmx.de
+
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Mon Aug 15 09:21:22 UTC 2016 - mardnh@gmx.de
+
+- use python-setuptools instead of python-distribute
+
+-------------------------------------------------------------------
+Fri Jan 22 11:26:51 UTC 2016 - mardnh@gmx.de
+
+- initial package
+

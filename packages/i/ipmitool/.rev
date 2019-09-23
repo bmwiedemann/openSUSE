@@ -1,0 +1,306 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>6ebb4f10dc266b62ab4a1176935b6f2d</srcmd5>
+    <version>1.8.8cvs20061013</version>
+    <time>1168903062</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6096254498dadd2d776641922a6d19f0</srcmd5>
+    <version>1.8.9</version>
+    <time>1173299230</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>26b0076fcd8765cd9ef22a4896323230</srcmd5>
+    <version>1.8.9</version>
+    <time>1173379754</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="54">
+    <srcmd5>bf1a0c0701d80eacf9ea9a9caf3f56f3</srcmd5>
+    <version>1.8.9</version>
+    <time>1200607877</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1402fb8d292e2199a5862e0044766c5e</srcmd5>
+    <version>1.8.10</version>
+    <time>1221265721</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>72fb49cb3e654b2aec6ae582d729a1c2</srcmd5>
+    <version>1.8.10</version>
+    <time>1222433647</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="108">
+    <srcmd5>72fb49cb3e654b2aec6ae582d729a1c2</srcmd5>
+    <version>1.8.10</version>
+    <time>1222433647</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="109">
+    <srcmd5>7b9b0b0d7cb418d24468ce9f875e3bec</srcmd5>
+    <version>1.8.10</version>
+    <time>1224003899</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="111">
+    <srcmd5>7b9b0b0d7cb418d24468ce9f875e3bec</srcmd5>
+    <version>1.8.10</version>
+    <time>1224003899</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c749eeb04b36eaf6a0d43296527613d7</srcmd5>
+    <version>1.8.11</version>
+    <time>1267803093</time>
+    <user>autobuild</user>
+    <comment>Copy from systemsmanagement:wbem/ipmitool based on submit request 34171 from user coolo
+</comment>
+    <requestid>34171</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>5835d386a4747d5742be3ecd5342a31c</srcmd5>
+    <version>1.8.11</version>
+    <time>1268924033</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>5835d386a4747d5742be3ecd5342a31c</srcmd5>
+    <version>1.8.11</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>5835d386a4747d5742be3ecd5342a31c</srcmd5>
+    <version>1.8.11</version>
+    <time>1278678583</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>5835d386a4747d5742be3ecd5342a31c</srcmd5>
+    <version>1.8.11</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>cb1ea1bff48c33786f359d87697a5b5b</srcmd5>
+    <version>1.8.11</version>
+    <time>1316001791</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>82092</requestid>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>043968b76a87b1561d315f58f0f62c7b</srcmd5>
+    <version>1.8.11</version>
+    <time>1316001802</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82092
+</comment>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>043968b76a87b1561d315f58f0f62c7b</srcmd5>
+    <version>1.8.11</version>
+    <time>1319181991</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="13">
+    <srcmd5>f2974dc193659a0a90ed22947e74aa4a</srcmd5>
+    <version>1.8.11</version>
+    <time>1323085437</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>95343</requestid>
+  </revision>
+  <revision rev="19" vrev="14">
+    <srcmd5>11ded75141f6c3eee8fa0d399ba8c4a7</srcmd5>
+    <version>1.8.11</version>
+    <time>1329400628</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104363 from coolo)</comment>
+    <requestid>105228</requestid>
+  </revision>
+  <revision rev="20" vrev="16">
+    <srcmd5>11ded75141f6c3eee8fa0d399ba8c4a7</srcmd5>
+    <version>1.8.11</version>
+    <time>1340183465</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="18">
+    <srcmd5>11ded75141f6c3eee8fa0d399ba8c4a7</srcmd5>
+    <version>1.8.11</version>
+    <time>1359109086</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>741d70b2272d74e3fedd26413edbcba7</srcmd5>
+    <version>1.8.12</version>
+    <time>1362773631</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157918</requestid>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>376f0e2a449dc84fe5f79f86fecb5ccf</srcmd5>
+    <version>1.8.12</version>
+    <time>1363775879</time>
+    <user>coolo</user>
+    <comment>- fix build on BE arches (ipmitool-bigendian.patch) (forwarded request 159786 from k0da)</comment>
+    <requestid>159950</requestid>
+  </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>abead93ab2b76252f20048df284e3f7b</srcmd5>
+    <version>1.8.12</version>
+    <time>1373985395</time>
+    <user>coolo</user>
+    <comment>- Run format_spec_file so it is up par with others.
+
+- fix GCC 4.3 build
+  * Adds patch: old-gcc-options.patch</comment>
+    <requestid>183424</requestid>
+  </revision>
+  <revision rev="25" vrev="13">
+    <srcmd5>abead93ab2b76252f20048df284e3f7b</srcmd5>
+    <version>1.8.12</version>
+    <time>1379662677</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>cdb707426eb8203ecd5251d3bce71429</srcmd5>
+    <version>1.8.13</version>
+    <time>1380896114</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to 1.8.13
+  Changes: many, see
+  http://sourceforge.net/projects/ipmitool/files/ipmitool/1.8.13/
+- drop patches included upstream
+  * compile-fixes.patch
+  * ekanalyzer_fix_wrong_type_comparison.patch
+  * increase_possible_fw_file_size.patch
+  * ipmitool-bigendian.patch
+  * old-gcc-options.patch</comment>
+    <requestid>202141</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>38789cd4de979edff78cafe025d8918a</srcmd5>
+    <version>1.8.13</version>
+    <time>1392789786</time>
+    <user>coolo</user>
+    <comment>- Added 3 services:
+    1) exchange-bmc-os-info - fate#315999
+       Shows SLES string as OS in the service processor info
+    2) bmc-snmp-proxy - fate#316000 
+       Exports sel (BMC Error log) via snmpd
+    3) ipmievd - fate#316002
+       Logs sel to syslog
+1. and 2. are very Dell specific and should not get enabled by default
+3. got converted to a native systemd service. Still needs autoconf
+   adjusting to get send mainline
+1. and 2. have somewhat bigger Init V init scripts and time was not
+   enough to convert them. Therefore they were added via insserv
+   and friends as well
+   Add ipmitool_adjust_suse.paths
+- Updated to latest git version:
+  Add ipmitool_update_to_git_head_31_01_2014_b0aad15d67007c74b.patch</comment>
+    <requestid>222773</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>81c50c400c85dbe14c1aefe743b6a773</srcmd5>
+    <version>1.8.13</version>
+    <time>1394806588</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>225856</requestid>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>81c50c400c85dbe14c1aefe743b6a773</srcmd5>
+    <version>1.8.13</version>
+    <time>1409301239</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7ab5f469bda0c2ea6f4bd28d419489d2</srcmd5>
+    <version>1.8.15</version>
+    <time>1445287894</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to latest ipmitool source code
+  commit 999cd0ad9192b19ec57574e7aca111571f4d21d8
+  Date:   Fri Mar 6 09:03:05 2015 -0600
+  and throw away patches that went mainline.
+* Remove: fix_dell_oem_exitcode
+
+- Add correct exit code on Dell specific commands which did not get mainline
+  yet (bnc#886184)
+* Add patch: fix_dell_oem_exitcode
+
+- Update to latest ipmitool sources.
+  This is version 1.8.15 (git tag: IPMITOOL_1_8_15) plus mainline patches up
+  to commit 708be8bc450f907cddb6d9e4b83aee6ba67b7d04
+  Date:   Fri Jan 9 12:48:35 2015 +0100
+* Add: latest_compile_fixes.patch
+* Add: ipmitool-1_8_15_HEAD.patch
+* Remove: automake-1.13.patch
+* Remove: sdradd_close_file_handle.patch
+* Remove: ipmitool-1.8.10-implicit-fortify-decl.patch</comment>
+    <requestid>339092</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c390da4e2d7dd7b9e5370d42de4150dd</srcmd5>
+    <version>1.8.18</version>
+    <time>1502366707</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514253</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>e0f93773389eab66032c232561e6abc1</srcmd5>
+    <version>1.8.18</version>
+    <time>1507391531</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532263</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>ff5c5b33075ceb89a2b9828a68d9f8d3</srcmd5>
+    <version>1.8.18</version>
+    <time>1530567125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619773</requestid>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>be89ec415673c24513232de57bf92186</srcmd5>
+    <version>1.8.18</version>
+    <time>1533214740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626783</requestid>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>3fadeb6e9063193b19ff37eb0d762683</srcmd5>
+    <version>1.8.18</version>
+    <time>1538502489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639394</requestid>
+  </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>2bb87f53baa091bff92cc64cfebf3b1d</srcmd5>
+    <version>1.8.18</version>
+    <time>1567582449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728023</requestid>
+  </revision>
+</revisionlist>

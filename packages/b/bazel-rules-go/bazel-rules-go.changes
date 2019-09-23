@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Wed Feb 20 11:15:57 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to version 0.16.5:
+  * nogo is a new framework for running static analysis as part of
+    Bazel builds. Developers can write their own analyzers which
+    run alongside the compiler on each Go package. Analyzers may
+    stop the build when they detect problems.
+  * rules_go now uses the new cc_common module to collect C / C++
+    flags. This ensures compatibility with future versions of
+    Bazel, since the CROSSTOOL-related fields in CcToolchainInfo
+    are being removed soon.
+  * go_download_sdk now supports goos and goarch attributes. These
+    may be useful for remote execution when the execution platform
+    is different from the host platform.
+  * Cgo now declares internal targets in each supported mode that
+    influences the selection of source files and dependencies with
+    build constraints.
+  * Support for Go 1.11.4 and 1.10.7.
+  * Several Bazel compatibility fixes and small bug fixes.
+  * Exclude srcs and their runfiles from Go rule runfiles.
+  * De-duplicate dependencies with the same import path.
+
+-------------------------------------------------------------------
+Tue Jan  8 09:43:29 UTC 2019 - Michał Rostecki <mrostecki@suse.de>
+
+- Initial version 0.15.0+git.20181003

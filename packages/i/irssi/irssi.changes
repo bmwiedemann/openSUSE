@@ -1,0 +1,1159 @@
+-------------------------------------------------------------------
+Thu Aug 29 00:29:56 UTC 2019 - Ailin Nemui <ailin.nemui@gmail.com>
+
+- update to 1.2.2
+  - Fix a use after free issue when receiving IRCv3 CAP
+    information from the server (GL#34) CVE-2019-15717
+  - Fix a crash during startup when windows weren't fully
+    initialised yet (#1114, bdo#935813)
+
+-------------------------------------------------------------------
+Fri Jun 28 21:27:15 UTC 2019 - Ailin Nemui <ailin.nemui@gmail.com>
+
+- update to 1.2.1
+  ! Contains all changes from 1.1.3
+  ! Contains all changes from 1.0.8
+  - Fix a test on big endian machines (#1014)
+  - Fix the compile time conditionality of wcwidth
+    implementation (#1019, gentoo#677804, #720)
+  - Fix /save no longer working on old Solaris (pre
+    POSIX.1-2008) (#1042, #1043)
+  - Fix regression of #764 where display of 8-bit (legacy
+    encoding) in the input prompt was broken (#1018,
+    #1057). Initial patch by Артём Курашов
+  - Fix regression of #779 where autolog_ignore_targets would
+    not matching itemless windows anymore (#1012, #1013)
+  - Fix a use after free issue when sending the SASL login on
+    (automatic and manual) reconnects (#1055, #1058). Reported
+    by ilbelkyr. CVE-2019-13045
+
+-------------------------------------------------------------------
+Mon Feb 11 20:17:22 UTC 2019 - Ailin Nemui <ailin.nemui@gmail.com>
+
+- update to 1.2.0
+  * Improved the /STATUSBAR commands (#858)
+  * /SET no longer shows `=' between setting and value (#886)
+  * /CUBES removed from default config (available as script)
+    (#956)
+  * /1 /2 /3 ... removed from default config (available as new
+    setting window_number_commands) (#958)
+  * Always redraw the screen on resize. By David Phillips (#896)
+  * Private notices intended for channels are now displayed on
+    the channel (new setting notice_channel_context) (#959)
+  + Imported the "Off-the-record" module into Irssi tree (#854,
+    #589, #196)
+  + Initial support for sideways split windows (#697, #431,
+    #224, #807, FS#310, #947, #955, #989)
+  + Change the implementation of `wcwidth'. This is used to
+    calculate the width of emojis on your terminal screen (#917,
+    #720)
+  + Make the wcwidth functions available from Perl (#973):
+        string_width(str)
+        string_chars_for_width(str, width)
+        wcwidth(char)
+  + Added completion_keep_word setting (#979)
+  + Allow activity_hide_targets to hide activity in itemless
+    windows (#967, #997, #1001, #1003)
+  + Added activity_hide_visible setting (#990)
+  + Allow hiding of lines through the /IGNORE system (#901,
+    #900, #892, #890, #884, #937)
+  + Add window_default_hidelevel setting. By Doug Freed (#941)
+  + Add activity_hide_window_hidelevel setting, defaulting to ON
+    (#938)
+  + Add autolog_only_saved_channels setting, to autolog only
+    channels that are in the config (#968)
+  + Add format support for the input line. By Ben Paxton,
+    originally by Jonas Hurrelmann (#764, FS#621, #1004)
+        use Irssi::TextUI;
+        gui_input_set_extent(pos, text)
+        gui_input_set_extents(pos, len, left, right)
+        gui_input_clear_extents(pos, len)
+        gui_input_get_extent(pos)
+        gui_input_get_text_and_extents()
+        gui_input_set_text_and_extents(...)
+  + Parsing of IRCv3 CAP 3.2 (#775, #869)
+  + Show CAP-related events in the user interface (#918, #916,
+    #870, #704)
+  + Continue using separators when addressing multiple nicks
+    with tab completion. By Manish Goregaokar (#822)
+  + Bind Shift-tab by default. By Niklas Luokkala (#830, #829)
+  + Fuzzing more things (#913, #780, #813)
+  - Disconnect SASL properly in case the SASL module got
+    unloaded from server (#931, #629, #618, #616)
+  - Fix backward completion jumping to the first instead of last
+    word (#979)
+  - Improve empty topic handling (#961, #905, #911, #897, #888)
+  - Prevent config truncation when no space left. By dequis and
+    Lukas Waymann (#922, #925, #910, #909, #906, #871, #817)
+  - Also time-out servers in lookup phase (#866, #130)
+  - Fix build with LibreSSL 2.7. By Dorian Harmans (#865)
+  - Fix a crash when appending to a textbuffer without
+    line. Reported by Jari Matilainen (#862)
+  - Fix segfault on sending large messages (#803, #796, #802)
+  - Fix segfault on invalid statusbar config (#993, #994)
+  - Fix random memory writes on restoring queries of foreign
+    protocols (#999, #1000)
+  - Make default keybinds deletable (#859, #507)
+  - Fix freeze when resizing Irssi very small (#946)
+  - Compare channels case-insensitively, avoiding confusions
+    with the config file (#857, #856)
+  - Fix DCC GET on Android. By Martin Staron (#844)
+  - Improve rawlog performance (#957)
+  - Fix nick escaping erroneously escaping quotes (#978, #974,
+    #709)
+  - Protect against theme recursion, improve padding
+    performance, limit alignment padding. Credit to Oss-Fuzz
+    (#835, #851, #850, #846, #848)
+  - Fix recursive loop in replaces (#833, GL#23)
+  - Fix headers for compilation of C modules (#939)
+  - Documentation. By Zero King (#814). (#852)
+  - Sync NEWS, docs, scripts (#849, #855)
+  - Build system (#868, #867, #985, #988)
+  - Fix build on IBM i and AIX. By Calvin Buckley (#975)
+  - Misc fixes (#840, #839, #843, #953, #962). Tests (#806,
+    #875, #905, #964, #1011). Fuzzing (#929).
+
+-------------------------------------------------------------------
+Tue Feb  5 13:51:02 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Wed Jan  9 13:29:11 UTC 2019 - Ailin Nemui <ailin.nemui@gmail.com>
+
+- update to 1.1.2
+  - Fix the resetting of window hiddenlevel (#861)
+  - Fix clearing of hidelevel in layout (#951)
+  - Fix accessing unallocated text when checking entry position
+    (#930)
+  - Fix uninitialised memory on empty lines (#873, GL#31, #878,
+    #877, #907, #914)
+  - Fix use-after-free on expiration of hidden lines (#948)
+    (CVE-2019-5882 boo#1121396)
+  - Fix use-after-frees. By Maya Rashish (#919)
+  - Fix out of bounds access in help display when window width
+    is small (#949)
+  - Fix paste_join_multiline (#971)
+  - Correctly check for errno when displaying SSL errors. By
+    Janik Rabe (#895)
+  - Fix wrong signal emission argument count (#965)
+  - Documentation (#920). Sync NEWS, scripts (#849)
+  - Fix Perl detection on MacOS. By Dominyk Tiller (#927)
+  - Misc fixes. By Jaroslav Škarvada (#982)
+
+-------------------------------------------------------------------
+Thu Feb 15 11:08:19 UTC 2018 - ailin.nemui@gmail.com
+
+- update to 1.1.1 (bsc#1081238):
+  - Restore compatibility with OpenSSL < 1.0.2 (#820, #831)
+  - Fix test compilation on some platforms (#815, #816)
+  - Fix portability and backwards compatibility of test runner
+    (#818, #845)
+  - Prevent use after free error during the execution of some
+    commands. Found by Joseph Bisch (GL#17, GL!24).
+  - Revert netsplit print optimisation due to crashes (#465, #809,
+    #812, #819, #824). CVE-2018-7054
+  - Fix use after free when SASL messages are received in
+    unexpected order (GL#26, GL!33). CVE-2018-7053
+  - Fix null pointer dereference in the tab completion when an
+    empty nick is joined (GL#24, GL!31). CVE-2018-7050
+  - Fix use after free when entering oper password (GL#22,
+    GL!32).
+  - Fix null pointer dereference when too many windows are
+    opened (GL#27, #837). CVE-2018-7052
+  - Fix out of bounds access in theme strings when the last
+    escape is incomplete. Credit to Oss-Fuzz (#842). CVE-2018-7051
+  - Fix out of bounds write when using negative counts on window
+    resize (GL#25, GL#29, #836).
+  - Minor help correction. By William Jackson (#834).
+
+-------------------------------------------------------------------
+Tue Jan 16 02:49:12 UTC 2018 - avindra@opensuse.org
+
+- update to 1.1.0
+  * Changes
+    + Colour is now re-set when reaching a comma, matching mIRC
+      behaviour
+    + Irssi now shows the initial nick and name on first start
+    + lynx is no longer required to run autogen.sh
+    + The command history no longer permits wrapping around
+    + /foreach now correctly sends arguments as commands, stopping
+      you from embarassing AMSGs
+    + /server does not connect to servers anymore, use /server
+      connect to change servers
+    + The net_ip_compare API function is now deprecated, and the
+      previously deprecated net_connect has been removed
+  * Additions
+    + Add an option to ignore all channels or ignore all queries
+      using /set activity_hide_targets
+    + Add a startup warning if the TERM var is wrong inside tmux /
+      screen
+    + Add option to hide certain levels from the textbuffer using /
+      window hidelevel
+    + Irssi now has its first unit test (for mode parsing)
+    + Added access to global command history when using window
+      history, and a binding to erase entries from the command
+      history (erase_history_entry)
+    + -alternate_nick is now available as a network specific
+      property
+    + On FreeBSD, Irssi now supports Capsicum sandbox (/capsicum
+      enter)
+    + Filenames (directories) ending with a / now tab-complete
+    + UTF-8 should now work in regular expressions when using
+      GRegex (the default)
+    + Nicks are now properly escaped on completion
+    + /server add -port now works
+    + Add a setting key_timeout to make key sequences
+      automatically re-set when not finished
+    + Warn users about expired client certificates, as servers
+      may refuse them
+    + Add a new net_start_ssl function for StartTLS. This is
+      available from ABI 8 and can be used by protocol modules
+    + The %# code is now stored in the textbuffer, so for example
+      web scripts can make use of it
+    + Add new setting break_wide which can be used to enable
+      breaking of wide characters (for east-asian users)
+    + Add fuzzing code
+  * Fixes
+    + Netsplits show properly again
+    + Do not error on blank lines when using /exec -o
+    + Detect used nickname as reported by server
+    + Prevent use after free error during the execution of some
+      commands
+    + Fix MODE parameter parsing when colon was used at a place
+      Irssi didn't expect
+    + Fixed code to compile with -Werror=declaration-after-statement
+    + Clang-format is now supported for git-clang-format
+    + Fix use after free when changing the network of hilights
+    + Fix positioning error when tab-completing non-ascii strings
+    + In-development issues
+    + Clarify Alis in /help list
+    + Improve /lastlog performance from O(N^2) to O(N)
+    + Fix a segfault on "script destroyed" signal
+    + Fix early ISON error
+    + Documentation improvements
+    + Minor cleanups
+    + Fix space issue in glib-2.0.m4
+- cleanup with spec-cleaner
+- drop regex-patch-653.patch
+  * fixed upstream in 79bbca4644cad7f2dee89c7ac6b8f9acc2c8b427
+
+-------------------------------------------------------------------
+Sat Jan  6 13:47:12 UTC 2018 - ailin.nemui@gmail.com
+
+- update to 1.0.6 (bsc#1074958)
+  - Fix invalid memory access when reading hilight configuration
+    (#787, #788).
+  - Fix null pointer dereference when the channel topic is set
+    without specifying a sender (GL#20, GL!25). CVE-2018-5206
+  - Fix return of random memory when using incomplete escape
+    codes (GL#21, GL!26). CVE-2018-5205
+  - Fix heap buffer overflow when completing certain strings
+    (GL#19, GL!27). CVE-2018-5208
+  - Fix return of random memory when using an incomplete
+    variable argument (GL#18, GL!28). CVE-2018-5207
+
+-------------------------------------------------------------------
+Sun Oct 22 13:46:51 UTC 2017 - ailin.nemui@gmail.com
+
+- update to 1.0.5 (boo#1064540)
+  - Fix missing -sasl_method '' in /NETWORK (#718, #719).
+  - Fix incorrect restoration of term state when hitting SUSP
+    inside screen (#737, #733).
+  - Fix out of bounds read when compressing colour
+    sequences. Found by Hanno Böck (GL#12, GL!18). CVE-2017-15228
+  - Fix use after free condition during a race condition when
+    waiting on channel sync during a rejoin (GL#13, GL!19).
+    CVE-2017-15227
+  - Fix null pointer dereference when parsing certain malformed
+    CTCP DCC messages (GL#14, GL!20).
+    CVE-2017-15721
+  - Fix crash due to null pointer dereference when failing to
+    split messages due to overlong nick or target (GL#15, GL!21).
+    CVE-2017-15723
+  - Fix out of bounds read when trying to skip a safe channel ID
+    without verifying that the ID is long enough (GL#16, GL!22).
+    CVE-2017-15722
+  - Fix return of random memory when inet_ntop failed (#769).
+  - Minor statusbar help update. By Robert Bisewski (#758,
+    #763).
+
+-------------------------------------------------------------------
+Thu Jul  6 13:41:08 UTC 2017 - ailin.nemui@gmail.com
+
+- update to 1.0.4
+  - Fix null pointer dereference when parsing invalid timestamp (GL#10,
+    GL!15). Reported by Brian 'geeknik' Carpenter. CVE-2017-10965
+    boo#1047709
+  - Fix use-after-free condition when removing nicks from the internal
+    nicklist (GL#11, GL!16). Reported by Brian 'geeknik' Carpenter.
+    CVE-2017-10966
+  - Fix incorrect string comparison in DCC file names (#714).
+  - Fix regression in Irssi 1.0.3 where it would claim "Invalid time '-1'"
+    (#716, #722).
+  - Fix a bug when using \n to separate lines with expand_escapes (#723).
+  - Retain screen output on improper exit, to better see any error
+    messages (#287, #721).
+  - Minor help update (#729).
+
+-------------------------------------------------------------------
+Tue Jun  6 19:48:30 UTC 2017 - ailin.nemui@gmail.com
+
+- update to 1.0.3
+  - Fix out of bounds read when scanning expandos (GL!11).
+  - Fix invalid memory access with quoted filenames in DCC
+    (GL#8, GL!12). bsc#1043052 CVE-2017-9469
+  - Fix null-pointer dereference on DCC without address (GL#9, GL!13).
+    bsc#1043051 CVE-2017-9468
+  - Improve integer overflow handling. Originally reported by
+    oss-fuzz#525 (#706).
+  - Improve nicklist performance from O(N^2) to O(N) (#705).
+  - Fix initial screen redraw delay. By Stephen Oberholtzer
+    (#680, bdo#856201).
+  - Fix incorrect reset of true colours when resetting background. (#711).
+  - Fix missing -notls option in /SERVER. By Jari Matilainen (#117, #702).
+  - Fix minor history glitch on overcounter (#462, #685).
+  - Improved OpenSSL detection at compile time. By Rodrigo Rebello (#677).
+  - Improved NetBSD Terminfo detection. By Maya Rashish (#694, #698).
+  - Add missing syntax info for COMPLETION (#687, #688).
+  - Minor typo correction in help. By Michael Hansen (#707).
+
+-------------------------------------------------------------------
+Mon Mar 13 16:06:57 UTC 2017 - astieger@suse.com
+
+- add references to previous change
+
+-------------------------------------------------------------------
+Sat Mar 11 21:10:03 UTC 2017 - ailin.nemui@gmail.com
+
+- irssi 1.0.2 fixes a vulnerability that could result in denial of
+  service or worse during a netjoin in certain circumstances (CVE
+  pending) bsc#1029020
+  - Prevent some null-pointer crashes (GL!9).
+  - Fix compilation with OpenSSL 1.1.0 (#628, #597).
+  - Correct dereferencing of already freed server objects during
+    output of netjoins. Found by APic (GL!10, GL#7).
+  - Fix in command arg parser to detect missing arguments in tail place
+    (#652, #651).
+  - Fix regression that broke incoming DCC file transfers (#667, #656).
+  - Fix issue with escaping \ in evaluated strings (#669, #520).
+- Added regex-patch-653.patch from Upstream PR#653 to improve UTF8
+  support in GRegex
+
+-------------------------------------------------------------------
+Mon Feb  6 08:14:57 UTC 2017 - astieger@suse.com
+
+- irssi 1.0.1:
+  * Fix Perl compilation in object dir
+  * Fix incorrect HELP SERVER example
+  * Correct memory leak in /OP and /VOICE
+  * Fix regression that broke second level completion
+  * Correct missing NULL termination in perl_parse boo#1023638
+  * Sync broken mail.pl script
+  * Prevent a memory leak during the processing of the SASL
+    response boo#1023637
+
+-------------------------------------------------------------------
+Fri Jan  6 11:46:55 UTC 2017 - idonmez@suse.com
+
+- Update to version 1.0.0
+  * irssiproxy can now forward all tags through a single port.
+  * The kill buffer now remembers consecutive kills. New bindings
+    were added: yank_next_cutbuffer and append_next_kill.
+  * autolog_ignore_targets and activity_hide_targets learn a new
+    syntax tag/* and * to ignore whole networks or everything.
+  * hilight got a -matchcase flag to hilight case sensitively.
+  * Display TLS connection information upon connect. You can disable
+    this by setting tls_verbose_connect to FALSE
+  * Certificate pinning for TLS certificates
+  * /names and $[…] now uses utf8 string operations.
+  * New setting completion_nicks_match_case
+  * /channel /server /network now support modify subcommand.
+  * New option sasl_disconnect_on_failure to disconnect when SASL
+    log-in failed.
+- Drop not applied irssi-0.8.15_ssl_proxy.patch
+- Run through spec-cleaner, remove support for old openSUSE/SUSE
+  releases.
+
+-------------------------------------------------------------------
+Fri Jan  6 11:28:09 UTC 2017 - astieger@suse.com
+
+- irssi 0.8.21 fixes four vulnerabilities that could result in
+  denial of service (remote crash) when connecting to malicious
+  servers or receiving specially crafted data [boo#1018357]:
+  * CVE-2017-5193: NULL pointer dereference in the nickcmp function
+  * CVE-2017-5194: out of bounds read in certain incomplete control codes
+  * CVE-2017-5195: out of bounds read in certain incomplete character sequences
+  * CVE-2017-5196: Correct an error when receiving invalid nick message
+  * CVE-2017-5356: out of bounds read in format string [boo#1019809]
+- drop irssi-0.8.20-buf.pl.patch, upstream
+
+-------------------------------------------------------------------
+Thu Oct  6 11:31:53 UTC 2016 - meissner@suse.com
+
+- irssi-0.8.20-buf.pl.patch: Fixed a information disclosure in buf.pl
+  (CVE-2016-7553 bsc#1001215)
+
+-------------------------------------------------------------------
+Wed Sep 21 22:24:11 UTC 2016 - mrueckert@suse.de
+
+- disable PIE on sle11
+
+-------------------------------------------------------------------
+Wed Sep 21 22:07:13 UTC 2016 - mrueckert@suse.de
+
+- add BR for xz to fix build on sle11
+- switch to %{?_smp_mflags}
+- pass --disable-silent-rules to get verbose makefiles again
+
+-------------------------------------------------------------------
+Wed Sep 21 20:23:55 UTC 2016 - meissner@suse.com
+
+- Update to version 0.8.20
+  - Correct the name of an emitted sasl signal (#484)
+  - Correct the prototype for the 'message private' signal (#515)
+  - Corrections in away and hilight help text (#477, #518)
+  - /squery and /servlist commands have been restored.
+  - Where Irssi would previously only report "System error" on connect,
+    it will now try harder to retrieve the system error message.
+  - Fixed issue with +channels not working properly (#533)
+  - Fixed crash in optchan when item has no server (#485)
+  - Fixed random remote crash in the nicklist handling (#529)
+  - Fixed remote crash due to incorrect bounds checking on
+  formats, reported by Gabriel Campana and Adrien Guinet from
+  Quarkslab. (CVE-2016-7044, CVE-2016-7045, bsc#999199)
+
+-------------------------------------------------------------------
+Sat Mar 26 19:12:55 UTC 2016 - idonmez@suse.com
+
+- Update to version 0.8.19
+  * Fixed regression when joining and parting channels on IRCnet
+  * Fixed SASL EXTERNAL
+  * Fixed regression when not using SASL
+  * Fixed incorrect SSL disconnects when using SSL from modules/scripts
+  * Fixed regression where proxy_string could not be configured or
+	certain file transfers could not be accepted
+  * Fixed storing layout of !channels
+  * Fixed restoration of bracketed paste mode on quit
+  * Make the usage of meta-O for cursor keys configurable with
+	/set term_appkey_mode off
+
+-------------------------------------------------------------------
+Wed Mar  2 08:18:10 UTC 2016 - idonmez@suse.com
+
+- Update to version 0.8.18
+  New Features
+  + CAP SASL PLAIN login is now supported natively.
+  + Paste bracket markers can be requested from terminal with
+    /set paste_use_bracketed_mode on
+  + "Self messages" generated by some bouncers can now be received in
+     the proper window.
+  + Try to split long lines on spaces to avoid words being splitted.
+    Adds a new option: split_line_on_space which defaults to on.
+  + Add setting hilight_nick_matches_everywhere (#56).
+  + The config parser is more robust and prints out better diagnostics
+    on incorrect config files.
+  + Ctrl+^ (FS#721) and Ctrl+J can now be bound.
+  + Command history can be cleared with /window history -clear
+  + /hilight -mask -line is now supported (FS#275).
+  + CHANTYPES are now supported.
+  + Improved reload speed of ignores.
+  + Add -date feature to /lastlog
+  + irssiproxy can be more easily enabled and disabled.
+  + Expando for hostname (FS#829).
+  + UNIX sockets can now also be specified in the config file.
+  + Disable SSLv3 due to the POODLE vulnerability.
+  + SSL ciphers can now be specified per server.
+  + Added SNI support for SSL.
+
+  Bugfixes
+  + /ignore now respects -pattern on merge (#78).
+  + irssiproxy (BNC) module now uses correct line endings.
+  + Fix missing lines on large pastes (FS#905).
+  + Correctly preserve STATUSMSG prefixes (#291).
+  + Fix infinite recursion in key bindings (FS#817).
+  + Fix incomplete awaylog caused by buffering.
+  + Fix calculation of UTF-8 string length display in some cases.
+  + Fix some Perl warnings related to @ISA.
+  + EXEC windowitems now get proper references on the Perl side.
+  + Incremental help file improvements.
+  + ANSI attributes are now properly reset.
+  + Fixed regression where text would blink when terminal lacks color support.
+  + Permit the usage of Freenode extban syntax in /ban (#150)
+  + Fixed regression in scriptassist on unload of scripts.
+  + Fixed regression in -actcolor %n
+- Remove irssi-0.8.15-ssl-passphrase.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Sun Jan 10 21:46:19 UTC 2016 - astieger@suse.com
+
+- downloads moved to github
+- verify source signature
+
+-------------------------------------------------------------------
+Thu Jan  1 22:18:21 UTC 2015 - meissner@suse.com
+
+- build with PIE
+
+-------------------------------------------------------------------
+Fri Oct 17 13:23:08 UTC 2014 - mrueckert@suse.de
+
+- update to 0.8.17
+  + Document that SSL connections aren't properly handled during
+    /UPGRADE. See Github PR #39.
+  + Synchronize scripts with scripts.irssi.org.
+  + Performance enhancement of the nicklist as well as the
+    window_item_find function. See Github PR #24.
+  + Disallow unloading of static modules.
+  + Allow UTF-8 characters in /bind. See Github PR #18.
+  + Split overlong outgoing messages instead of silently truncating
+    them.
+    Adds two new options: 'split_line_end' and 'split_line_start'.
+    - 'split_line_end' contains a string added to the end of line
+      fragments.
+    - 'split_line_start' contains a string added to the beginning
+      of line
+    fragments. See Github PR #29.
+  + Added special /ignore NO_ACT level to ignore only activity (see
+    /help ignore).
+  + Support for 256 and true color terminals (see Github PR #48).
+  + Support for italics (see Github PR #58).
+  + Rewrote many help files.
+  - Fixed various compiler warnings and use of deprecated
+    functions.
+  - Fixed Perl API usage and added PERL_NO_GET_CONTEXT to reduce
+    code size.
+  - Fixed format_get_text Perl API. See Github PR #23.
+  - Fixed gui_printtext_after and term_refresh_*() visibility. See
+    Github PR #22.
+  - Fixed issue where UTF-8 characters was corrupted once for every
+    32k text. See Github PR #12.
+  - Fixed redrawing issue with right-aligned statusbar.
+  - Fixed use-after-free bug with cached settings values. See
+    Github PR #147.
+
+-------------------------------------------------------------------
+Thu Sep  4 15:31:08 UTC 2014 - mrueckert@suse.de
+
+- add conditional to enable socks support but disable by default.
+  unless we can find a way to have socks support so it works
+  without an existing socks.conf.
+
+-------------------------------------------------------------------
+Tue Jul 29 16:16:01 UTC 2014 - mrueckert@suse.de
+
+- disable ssl_passphrase patch but keep it until the discussion
+  with upstream ended:
+  https://github.com/irssi/irssi/issues/103
+
+-------------------------------------------------------------------
+Mon Jul 14 23:47:23 UTC 2014 - mrueckert@suse.de
+
+- update to 0.8.16
+  + Add -noautosendcmd to /SERVER and /CONNECT. Passing this option
+    will force Irssi to not execute the content of the autosendcmd
+    chatnet-setting upon connect.
+  + Accept names replies with nick!user@host instead of just nick,
+    if they are enabled (see bug #805).
+  - Set window binds for channel items as sticky when re-creating
+    window binds as part of /layout save. This fixes the bug where
+    previously saved channel windows forgets their window number
+    upon reconnect.
+  + Add experimental support for DNSSEC DANE validation of
+    certificates.
+  + Strip the argument for boolean options (see bug #769).
+  + Freenode have been readded to the list of networks in the
+    default configuration file.
+  + Disabled support for the insecure SSLv2 protocol.
+  + Various documentation enhancements.
+  + Add -ssl_pass to /connect and /server (see bug #305).
+  - Fix crashing bug that can happen if the terminal height
+    decreases before the first window is created.
+  - Fixed minor compiler warnings.
+  - Fixed possible crashing bug when processing an octal escape
+    sequence.
+  - Fixed the /ignore -network option (see bug #748).
+  - Fixed signal handling for /exec'd commands. Irssi now sends the
+    signal to the process group id instead of the process id.
+  - Fixed segfault generated by SSL disconnections (see bug #752).
+  - Fix compilation when build with -Werror=format-security. Patch
+    by Jaroslav Skarvada.
+- refreshed irssi-0.8.15-ssl-passphrase.patch to apply without fuzz
+  again
+- disable irssi-0.8.15_ssl_proxy.patch for now
+
+-------------------------------------------------------------------
+Wed Jan 22 17:50:40 UTC 2014 - mrueckert@suse.de
+
+- added irssi-0.8.16_missing_prototype_warnings.patch:
+  Fixes a compiler warning about missing prototype for SOCKSinit
+- added -DGLIB_DISABLE_DEPRECATION_WARNINGS to reduce the noise
+- added dante-devel as requires to irssi-devel so plugins can be
+  compiled again
+
+-------------------------------------------------------------------
+Thu Sep 26 12:38:58 UTC 2013 - ddiss@suse.com
+
+- irssi-0.8.15-ssl-passphrase.patch
+  Fix prompt breakage following SSL certificate passphrase prompt;
+  (bnc#842532).
+
+-------------------------------------------------------------------
+Thu Sep  5 17:44:34 CEST 2013 - mls@suse.de
+
+- add libperl_requires, as we link against libperl and thus
+  need a specific version of perl
+
+-------------------------------------------------------------------
+Mon Jun 10 16:16:30 UTC 2013 - mrueckert@suse.de
+
+- only enable socks support on opensuse
+
+-------------------------------------------------------------------
+Mon Feb 11 11:19:29 UTC 2013 - mrueckert@suse.de
+
+- added dante-devel to buildrequires to fix the socks support
+  (bnc#794748)
+- added -fno-strict-aliasing to the cflags
+
+-------------------------------------------------------------------
+Mon Feb 13 10:47:57 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Tue Jan 11 08:23:57 UTC 2011 - aj@suse.de
+
+- Fix build for older openSUSE distros.
+
+-------------------------------------------------------------------
+Wed Dec 29 13:00:46 UTC 2010 - aj@suse.de
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Jul 29 22:20:01 UTC 2010 - pascal.bleser@opensuse.org
+
+- add desktop file and icon
+
+-------------------------------------------------------------------
+Mon Apr 26 15:25:35 UTC 2010 - mrueckert@suse.de
+
+- disable proxy patch until we got a decision upstream
+
+-------------------------------------------------------------------
+Mon Apr 26 14:46:16 UTC 2010 - mrueckert@suse.de
+
+- added irssi-0.8.15_ssl_proxy.patch: when using a proxy, use the
+  ssl hostname of the proxy (based on the patch from
+  https://bugs.launchpad.net/ubuntu/+source/irssi/+bug/565182)
+  (bnc#596005) CVE-2010-1154, CVE-2010-1155
+
+-------------------------------------------------------------------
+Sun Apr  4 20:08:53 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.8.15: (bnc#596005) CVE-2010-1154, CVE-2010-1155
+  * add active_window_ignore_refnum option
+  * show new Charybdis +q list in channel windows (numerics 728 and
+    729)
+  * allow servers to belong to multiple networks
+  * improve paste detection: Irssi now detects a paste if it reads
+    at least three bytes in a single read; subsequent reads are
+    associated to the same paste if they happen before
+    'paste_detect_time' time since the last read. If no read occurs
+    after 'paste_detect_time' time the paste buffer is flushed; if
+    there is at least one complete line its content is sent as a
+    paste, otherwise it is processed normally
+  * show "target changing too fast" messages in the channel/query
+    window
+  * use default trusted CAs if nothing is specified
+  * show why an SSL certificate failed validation
+  * make own nick and actions use default colour instead of white
+  * fix disconnects when sending large amounts of data over SSL
+  * show all nicks instead of just the first in an /accept *
+    listing
+  * make several signals without parameters available to perl again
+  * close the config file fd after saving
+  * check if an SSL certificate matches the hostname of the server
+    we are connecting to
+  * fix bash'isms, use command -v instead of which and use bc -l in
+    /CALC
+  * fix a crash with handling the DCC queue
+  * fix crash when checking for fuzzy nick match when not on the
+    channel
+
+-------------------------------------------------------------------
+Wed Jul 29 00:25:43 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 0.8.14:
+  * make /reset an alias for /set -default
+  * make /unset an alias for /set -clear
+  * allow ctrl+home / ctrl+end to go to the beginning / end of scrollback
+  * accept WHOX reply (354 numeric) as a /who reply
+  * show numerics directed at channels in the channel window
+  * the time duration parser is more strict now
+  * fix out of bounds access in event_wallops()
+  * fix the autolog_ignore_targets logic to work correctly with manually opened log files
+
+-------------------------------------------------------------------
+Wed Jun 10 16:21:15 CEST 2009 - mrueckert@suse.de
+
+- added irssi-0.8.x_wallop_off_by_one.patch:
+  fix of by one in wallop handling (bnc#510837) CVE-2009-1959
+
+-------------------------------------------------------------------
+Wed Apr  1 17:25:56 CEST 2009 - mrueckert@suse.de
+
+- update to 0.8.13
+  + Reject some obviously invalid values in /set.
+  + Add perl bindings for Window::get_history_lines
+  + Use an io channel to write the config file.
+  + Use memory slices instead of memory chunks for text buffer.
+  + Remove methods to create/destroy TextBuffer and TextBufferView and low level api to add/remove lines, scripts should be fine using Window::print_after and TextBufferView::remove_line.
+  + Add print_after method to Window perl object analogous to gui_printtext_after but which also expands formats and forces a full line.
+  + Better mapping of signal parameters to Perl. All signals used in scripts now need to be registered with Irssi::signal_register.
+  + Add public header with interfaces to manage statusbar items (bug #535)
+  + Recode: assume utf-8 encoding for an ascii string in which no escape character occurs (bug #392).
+  + Allow /BAN, /UNBAN, /KICBAN, /KNOCKOUT if channel is not synced.  Requesting ban lists from an unsynced channel will ask them from the server, banning a user whose u@h irssi does not know will ban nick!*@* and only bans irssi knows about can be removed.
+  + Allow storing multiple "other" prefixes such as +q and +a (original patch by JasonX)
+  + Add /set autolog_ignore_targets for cherry-picking targets that shouldn't get logged.
+  + Add support for 16 colors. Formats KBGCRMYW and mirc colors are now mapped to colors 8-15. fe-text translates colors 8-15 to bold/blink+0-7 if the terminal supports only 8 colors. If your theme uses one of the high color formats and you really want bold you can change %FMT<string> to %fmt%_<string>%_, it will work fine in all irssi versions.
+  + Better 005 PREFIX support (bug #580).
+  + Display 407 numerics other than "duplicate channel".
+  + Fix display of ratbox-style operspy whois.
+  + Recode outgoing irc away messages (bug #412).
+  + Recode outgoing irc quit messages.
+  + Remove scrollback_levelclear_levels setting and add a 'level' option to 'sb levelclear' to specify a comma separated list of levels.
+  + Add perl __WARN__ handler for scripts (bug #427).
+  + Add Irssi::command_parse_options function to parse options for a command.
+  + Revert recode changes introduced in 0.8.12.
+  + Add completion for /WINDOW SERVER.
+  + Support for reading kicks/msgs from TARGMAX/MAXTARGETS 005 tokens.
+  + Enhancements to the redirections code.
+  + Support for RPL_WHOISACTUALLY (338 numeric) for both ratbox and ircu (bug #428).
+  + -idle option of /notify is gone.
+  + /layout save now makes window-channel bindings instantly effective (bug #35).
+  + /ping without arguments does not send anymore a ctcp ping to a channel (bug #542).
+  + Track IRC operator status of nicks a bit better.
+  + new 'actlist_names' option to add active items names in 'act' statusbar item.
+  + new 'word_completion_backward' command to scroll backwards in the completion list.
+  + add 'list' option to /bind to print all the available commands.
+  + show setter/time in +I lists
+  + apply -usermode before -autosendcmd (bug #548).
+  + reduce memory usage of the scrollback buffer and make the display in /sb status more accurate (higher).
+  + fix data getting dropped when a lot is sent at a time (e.g. when attaching to irssi-proxy, bug #528).
+  + introduce the type Irssi::Irc::Client and signals to communicate with proxy clients to allow for scripting parts of the irssi-proxy.
+  + Add sb_search.pl, a script for /SCROLLBACK SEARCH
+  - Fix /NOTIFY list when nick is seen joining (bug #642).
+  - Include hostmask in 001 event sent by proxy (bug #650).
+  - Be more power-friendly: don't run any always-on <1s timers (bug #641).
+  - Don't get confused by a failed /JOIN -window (bug #644).
+  - Properly initialize embedded Perl (PERL_SYS_INIT3).
+  - Replace invalid utf-8 bytes with U+FFFD when drawing a line.
+  - Properly unload the original script when using /script load to reload it. (bug #525, patch by Lukas Mai)
+  - Clean up script loading in general:
+     * Don't leak local variables to eval'd code.
+     * Set filename/line number to get better error messages from perl.
+     * Use three-arg open and lexical filehandles to avoid surprises.
+     * Include error reason in message for unopenable scripts.
+     * Don't wrap script code in sub handler { } - this avoids spurious warnings and
+       should at least allow __END__ to work properly.
+    (Patch by Lukas Mai)
+  - Fix NETSPLIT_SERVER_REC in signals for Perl.
+  - Remove buggy /SCROLLBACK redraw and /SET scrollback_save_formats.
+  - Always preserve the active mainwindow when resizing.
+  - Ignore DNS not found errors when considering reconnect.
+  - Do not strip the comma in a mirc color if it is not followed by a digit (bug #250).
+  - Fix building perl module with perl-5.10 (bug #630).
+  - fix leak with $L expando.
+  - fix possible crash with /script reset.
+  - ignore exceptions take precedence over ignores in all cases.
+  - honour -channels preference for ignore -replies (bug #227).
+  - Fix mode display in whois with unreal (379 numeric) (bug #479).
+  - Fix regressions that prevented external modules from building/working (bugs #537 #539).
+  - Fix /set hilight_level not taking effect immediately (bug #598).
+  - Fix bold, blinking and indentation in /LASTLOG and buf.pl.
+
+-------------------------------------------------------------------
+Mon Mar 10 16:16:52 CET 2008 - mrueckert@suse.de
+
+- drop irssi-0.8.10rc5-install_vendor.diff:
+  we had --with-perl-lib=vendor since quite some time and it
+  achieves the same.
+
+-------------------------------------------------------------------
+Sat Oct  6 13:16:57 CEST 2007 - mrueckert@suse.de
+
+- Update to 0.8.12:
+  | + Some changes to character set recoding.
+  | + Rewrite SSL connection/handshake code.
+  | + Remove support for glib 1.x.
+  | + Do not send our hostname to the server (bug #488).
+  | + Add $tag to 'window' item in default configuration.
+  | + Pick up host changes on charybdis and ircu servers
+  |   (396 numeric).
+  | + Show various errors such as "cannot send to channel" and
+  |   "cannot /msg, user is +g" in the channel or query window, if
+  |   possible, and always include the user or channel name.
+  | + Channel forwarding in hyperion and charybdis is now
+  |   recognized (470 numeric) and the target channel is joined in
+  |   the window where the original channel would have been joined.
+  | + Add support for the ACCEPT command, which is part of the
+  |   CALLERID server side ignore system in hybrid7 and derived
+  |   ircds.
+  | + Make /WINDOW GOTO start searching at the window after the
+  |   active one and stop at the one before (bug #332).
+  | + Improve completion for /SET.
+  | + Use CASEMAPPING dependent comparison to match channel names.
+  |   Patch by Jon Mayo (bug #436).
+  | + Various improvements to the help files.
+  | + Add Perl bindings for some gui_entry methods
+  | + Make alt/meta+arrow keys work in recent versions of xterm
+  |   (bug #496)
+  | - Fix DCC get when file size is 0 (bug #494).
+  | - Ignore empty lines when pasting.
+  | - Fix large file support on AIX (bug #404).
+  | - Remove broken code that prevents unloading of a script in
+  |   some cases.
+  | - Fix logging lines with no target to all logs, broken in
+  |   0.8.11.
+  | - Fix casemapping dependent nick and channel matching (bug
+  |   #436).
+  | - Update chanop flag before emitting nick mode changed signal
+  |   (patch by Johan Kiviniemi)
+  | - Fix recognition of realnames starting with spaces in /WHO.
+  | - Show "Target left IRC" error messages fully (instead of
+  |   reporting no such nick "*")
+  | - Repair channels_rejoin_unavailable. Enabled by default, this
+  |   retries joins that failed because of netsplits (channel
+  |   temporarily unavailable (437), duplicate channel). A few
+  |   servers abuse 437 for juped channels which should not be
+  |   retried, you should disable channels_rejoin_unavailable if
+  |   this is a problem.
+  | - Display 437 and 407 numerics if channels_rejoin_unavailable
+  |   is not enabled (bug #495).
+  | - Don't add the same mask to the /KNOCKOUT list multiple times
+  |   (bug #510).
+  | - Use MSGLEVEL_NICKS again for printing a nick change in
+  |   queries, broken in r2389.
+  | - Fix some /LASTLOG -before/-after issues.
+  | - Some fixes to the build system.
+  | - Fix paste sending the first line twice (bug #405)
+  | - When parsing a numeric option verify that the whole argument,
+  |   rather than only the first character, is numeric.
+  | - Some fixes for notices, actions and ctcps to @#channel and
+  |   +#channel (bug #46)
+- removed irssi-0.8.11_support-meta-cursor-xterm.patch:
+  included in 0.8.12
+
+-------------------------------------------------------------------
+Fri Sep 28 17:36:23 CEST 2007 - mrueckert@suse.de
+
+- export the proper PKG_CONFIG_PATH so glib2 is found on sles9
+
+-------------------------------------------------------------------
+Fri Sep 28 17:26:05 CEST 2007 - mrueckert@suse.de
+
+- added pkgconfig to the buildrequires for sles9
+
+-------------------------------------------------------------------
+Mon Sep 10 21:59:22 CEST 2007 - mrueckert@suse.de
+
+- replaced irssi-support-meta-cursor-xterm.patch
+  with irssi-0.8.11_support-meta-cursor-xterm.patch: (#294166)
+  the original patch from the bug broke the handling on other
+  terminals. use the updated patch from svn.
+
+-------------------------------------------------------------------
+Thu Aug 23 00:47:49 CEST 2007 - mrueckert@suse.de
+
+- added irssi-support-meta-cursor-xterm.patch: (#294166)
+  fix meta-key in newer xterms. patch from upstream bug
+  http://bugs.irssi.org/?do=details&task_id=496#comment737
+- delete unneeded static lib and la file for libirc_proxy
+- a little spec file cleanup
+
+-------------------------------------------------------------------
+Wed Aug  1 16:40:00 CEST 2007 - mrueckert@suse.de
+
+- added irssi-0.8.11-avoid_version.patch:
+  plugins dont need to be versioned
+
+-------------------------------------------------------------------
+Thu Apr 26 21:58:50 CEST 2007 - mrueckert@suse.de
+
+- Update to 0.8.11:
+  | + Add completion for /WINDOW GOTO
+  | + New crapbuster-like "scrollback levelclear" command
+  | + irssi now aborts a connection when, on an attempt to connect,
+  |   the server returns code 432 (Erroneous Nickname), bug #425
+  | + Allow identifiers in config file to start with a digit, bug
+  |   #177.
+  | + Modify Irssi::UI::Window::command to restore the original
+  |   active window only if the command executed has not made
+  |   another one active, bug #403.
+  | + Make awaylog_file respect --home, bug #304
+  | + Send /QUOTE immediately if server didn't send the 001 event
+  |   yet
+  | + If dcc_own_ip contains IPv4 address, listen only in IPv4
+  | + Negative scroll_page_count scrolls screensize-n lines
+  |   (Patch by Chris Moore)
+  | + Sort nicks with custom prefix by the order defined in
+  |   isupport in /NAMES
+  | + New perl command send_raw_first, patch by ComradeP (Bug 413)
+  | + Let the module loader also check for fe_common_$protocol
+  |   files
+  | + Don't wait for all /NAMES replies before syncing if we can't
+  |   combine queries anyways (Patch by jilles)
+  | + Renamed irc.efnet.net to irc.efnet.org
+  | + /SCROLLBACK CLEAR accepts the same arguments as /CLEAR
+  | + Check if binary exists and can be executed before /UPGRADE
+  | + Change default value of override_coredump_limit to OFF
+  | + UPTIME command by Lauri Nurmi with some modifications
+  |   (Bug 458)
+  | + Remove CR and LF from Perl commands, to make it harder to
+  |   introduce a security bug
+  | + Remove bookmark on a line when line is removed (instead of
+  |   moving it)
+  | + Don't fallback to generic word completer if the command
+  |   specific completion list is not empty.
+  | + Recognize cursor left and cursor right sequences sent by
+  |   recent xterm
+  | - Fix some UTF-8 issues, bugs #452 (Patch by Yi-Hsuan Hsin),
+  |   #459, #460
+  | - Fixed segfault on quit introduced in 0.8.10
+  | - Fixed a bug where tab-completion didn't work with utf8/big5
+  |   properly
+  | - Ignore joins without a nick from broken servers
+  | - Fix whois_hide_safe_channel_id: only look at the beginning of
+  |   a channel name, not in the middle
+  | - Don't assume that 7bit ascii strings are encoded in UTF-8,
+  |   only validate the strings when they contain octest with
+  |   highest bit set (patch by Mikko Rauhala)
+  | - Make random really random when resolving
+  | - Don't get confused by a join command with too many arguments,
+  |   keys can't have spaces in them (Bug 437)
+  | - Don't crash on /QUIT with scripts causing and catching
+  |   signals on UNLOAD
+  | - Fix %k and %K mappings in curses frontend
+  | - Fix bold on monochrome terminals in terminfo frontend
+  | - Fixed colors with TERM=xterm-{88,256}color in terminfo
+  |   frontend
+  | - Fix crash with one line high terminal in terminfo frontend
+  | - Fix building with srcdir != builddir
+  | - Don't get confused and keep saying "Netsplit over" on every
+  |   join for user that only rejoined some channels
+  | - Fix crash in /EXEC (Bug 439)
+  | - Fix format string in printtext_dest call from Perl, patch by
+  |   loafier
+  | - Fix memory leaks in expandos_deinit by Nicolas Collignon (Bug
+  |   419)
+  | - Detect off_t size using AC_CHECK_SIZEOF because it works also
+  |   when cross-compiling in autoconf-2.50 and higher
+  | - Fix failed assertion when the config file is unreadable,
+  |   patch by Daniel Koning (Bug 164)
+  | - Removed automatic glib downloading and compiling.
+  | - Fix /FORMAT -delete daychange so it doesn't print an empty
+  |   line
+  | - Forbid /WINDOW SHOW when the target window is sticky rather
+  |   than when there is a window bound to the container of the
+  |   target window.
+  | - Improve interaction between autolog and non autolog logs
+  | - Recognize local oper mode on ircnet (mode +O)
+  | - Properly initialize reference count for a new setting (Bug
+  |   #235)
+- removed irssi-0.8.10-invalid_pointer_quit_crash.patch:
+  included upstream
+-------------------------------------------------------------------
+Thu Mar 29 19:12:27 CEST 2007 - dmueller@suse.de
+
+- update BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 28 18:37:55 CEST 2006 - mrueckert@suse.de
+
+- added irssi-0.8.10-invalid_pointer_quit_crash.patch:
+  Dont crash on /quit (#206451)
+
+-------------------------------------------------------------------
+Tue Jul 25 07:00:31 CEST 2006 - olh@suse.de
+
+- remove unused subversion and lynx from buildrequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:42 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Dec 11 12:00:47 CET 2005 - mrueckert@suse.de
+
+- 0.8.10 is final!
+  o Recode support
+  o Isupport (005 numeric)
+  o Passive DCC support.
+  o Many memleak fixes.
+  o Network specific ignoring.
+  o Updated internal error handling.
+  o Complete 64bit support.
+  o Revised default aliases.
+  o Updated paste detection and settings.
+  o Tons of bugfixes.
+
+-------------------------------------------------------------------
+Wed Nov 30 22:52:13 CET 2005 - mrueckert@suse.de
+
+- Update to 0.8.10rc8
+- disabled the irssi.conf patch
+
+-------------------------------------------------------------------
+Tue Nov 22 21:53:21 CET 2005 - mrueckert@suse.de
+
+- Update to 0.8.10rc7
+
+-------------------------------------------------------------------
+Sun Sep 25 17:41:09 CEST 2005 - mrueckert@suse.de
+
+- Update to 0.8.10rc6
+
+-------------------------------------------------------------------
+Thu Sep  8 14:11:01 CEST 2005 - mrueckert@suse.de
+
+- Update to r3986
+
+-------------------------------------------------------------------
+Tue Sep  6 11:33:29 CEST 2005 - mrueckert@suse.de
+
+- Update to r3983
+
+-------------------------------------------------------------------
+Mon Aug 22 12:19:03 CEST 2005 - mrueckert@suse.de
+
+- Update to r3942
+
+-------------------------------------------------------------------
+Thu Jun  2 13:02:40 CEST 2005 - mrueckert@suse.de
+
+- update to version 0.8.10rc5 (r3756)
+  o many memory leaks fixed
+  o recode support
+    | you can now specify incoming/outgoing charset per channel/query
+  o many small bug fixes
+
+-------------------------------------------------------------------
+Fri Apr  1 13:59:44 CEST 2005 - mmj@suse.de
+
+- #include "../config.h" instead of "config.h" (thanks for the
+  help coolo)
+
+-------------------------------------------------------------------
+Wed Mar 17 13:50:40 CET 2004 - mmj@suse.de
+
+- Default the terminal type setting to UTF8.
+
+-------------------------------------------------------------------
+Thu Dec 11 10:09:58 CET 2003 - mmj@suse.de
+
+- Update to 0.8.9 including:
+  o Fixes a remote crash with:
+    | non-x86 hardware (one requiring memory alignmentation)
+    | script using "gui print text" signal (with x86 hardware too)
+  o SET auto_whowas OFF allows now disabling automatic /whowas
+  o If pasted line starts with command char, treat it as command
+    always
+
+-------------------------------------------------------------------
+Mon Nov 24 10:26:15 CET 2003 - mmj@suse.de
+
+- Update to 0.8.8 including:
+  o Settings changes - we have now "time", "size" and "level"
+    setting types.
+  o Pasting detection. All keys except CR and LF are pasted as-is
+    into prompt in pasting mode.
+  o If pasting more lines than /SET paste_verify_line_count,
+    irssi asks if you actually want to do that.
+  o Support for sending SSL certificate to server
+  o Other minor enhancements bugfixes
+
+-------------------------------------------------------------------
+Wed Oct 15 11:57:48 CEST 2003 - mmj@suse.de
+
+- Use %defattr
+- Don't build as root
+
+-------------------------------------------------------------------
+Fri Sep  5 15:18:21 CEST 2003 - sf@suse.de
+
+- remove '-g -W' from compile options
+
+-------------------------------------------------------------------
+Fri Sep  5 14:55:52 CEST 2003 - sf@suse.de
+
+- patch for 64bit [Bug 24861]
+
+-------------------------------------------------------------------
+Wed Aug 20 20:07:13 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Aug  4 01:15:47 CEST 2003 - mmj@suse.de
+
+- Patch to use install_vendor with perl
+
+-------------------------------------------------------------------
+Sun Jul 27 22:41:47 CEST 2003 - mmj@suse.de
+
+- Add gnome-filesystem to nfb
+
+-------------------------------------------------------------------
+Mon Jul 14 21:34:45 CEST 2003 - mmj@suse.de
+
+- Use vendor_install and friends
+- Clean up the specfile a bit
+
+-------------------------------------------------------------------
+Tue May 13 01:38:11 CEST 2003 - mmj@suse.de
+
+- Remove files that should not be packaged
+
+-------------------------------------------------------------------
+Mon May 12 22:06:02 CEST 2003 - mmj@suse.de
+
+- Also package the manpage
+
+-------------------------------------------------------------------
+Mon Apr  7 11:04:35 CEST 2003 - mmj@suse.de
+
+- head -1 have to be head -n 1 with the new coreutils.
+
+-------------------------------------------------------------------
+Mon Jan 13 15:48:42 CET 2003 - mmj@suse.de
+
+- Also package the Irssi.pm file
+
+-------------------------------------------------------------------
+Tue Nov 19 17:17:11 CET 2002 - mmj@suse.de
+
+- Update to 0.8.6 which includes tons of changes, biggest ones:
+  + SSL support
+  + DCC send queues
+  + Better support for !channels
+- Switch to glib2
+
+-------------------------------------------------------------------
+Mon Sep 23 15:54:34 CEST 2002 - mmj@suse.de
+
+- Make perl_use_lib not be in BuildRoot:
+
+-------------------------------------------------------------------
+Tue Aug 13 13:28:16 CEST 2002 - mmj@suse.de
+
+- Apply patch from mls for the Perl 5.8 threading enabled.
+
+-------------------------------------------------------------------
+Mon Jul 22 11:23:29 CEST 2002 - mmj@suse.de
+
+- Initial package created, version 0.8.5
+
+-------------------------------------------------------------------

@@ -1,0 +1,288 @@
+-------------------------------------------------------------------
+Thu Jul 18 11:28:56 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to 1.23.0:
+  * Update translations
+- remove patches:
+  * libmatekbd-gtk-3.20.patch: we don't support gtk3.20 anymore
+- BuildRequire gtk3 >= 3.22 
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * Rename g_strv_equal to matekbd_strv_equal.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Jun 16 15:48:41 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.2:
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Apr 11 10:12:43 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1:
+  * Use GdkScreen resolution for font in keyboard status
+    notification icon.
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Mar 16 14:33:02 UTC 2018 - crrodriguez@opensuse.org
+
+- Package should buildrequire pkgconfig(x11, pango, cairo)
+  to have a complete list of requirements.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.0:
+  * Require GTK+ 3.22 and GLib 2.50.
+  * matekbd-status: Fix the Gdk-CRITICAL warning on creating the
+    status bar icon.
+  * Avoid deprecated gdk_screen_get_monitor_(),
+    gdk_screen_get_width/height(), gdk_screen_get_number()
+    functions.
+  * matekbd-indicator: Don't expand.
+  * An implementation of WidthOfScreen and HeightOfScreen.
+  * Update translations.
+- Add libmatekbd-gtk-3.20.patch: Restore GLib 2.48 and GTK+ 3.20
+  support.
+
+-------------------------------------------------------------------
+Mon Apr 10 10:00:19 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.2 (changes since 1.18.0):
+  * matekbd-indicator: Do not use deprecated gdk_cairo_create.
+  * A fix for a strange GtkIconInfo behaviour.
+  * matekbd-indicator: Do not use deprecated GtkAlignment.
+  * keyboard-drawing: Set a CSS name matekbd-keyboard-drawing.
+  * Slightly increase the font size for the key labels.
+  * matekbd-keyboard-drawing: Don't unset double buffering.
+  * matekbd-keyboard-drawing: Handle XkbGetKeyboard() failing.
+  * matekbd-keyboard-drawing: Prevent gtk+ keynav from taking
+    focus away.
+  * Fix some introspection warnings.
+  * show-layout.ui: Do not use deprecated widgets.
+  * UI: Expand kbdraw vertically.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * NEWS: Use consistent, project wide, markdown-like formatting to
+    make generating release announcements easier.
+  * Move to GTK+3 (>= 3.14), drop the GTK+2 code and --with-gtk
+    build option.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * Require libxklavier 5.2 and use its introspection.
+  * GTK+3: Fix some deprecations.
+  * distcheck: Explicitly use a currently selected GTK+ version.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun May 22 15:13:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.1:
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0:
+  * Some more fixes and cleanups.
+  * Update translations.
+  * Fix Changelog generation.
+- Enable GObject Introspection.
+
+-------------------------------------------------------------------
+Mon Jan 25 19:56:45 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.0:
+  * Drop MateConf migration script.
+  * Reduce introspection build warnings.
+  * Fix some Gtk3 deprecations.
+
+-------------------------------------------------------------------
+Sun Nov 29 19:29:57 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.1:
+  * Update translations.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0.
+- Add baselibs.conf.
+
+-------------------------------------------------------------------
+Thu Oct 15 18:45:24 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11.0:
+  * Add GObject introspection.
+  * Retrieve strings directly from gschema (requires intltool
+    0.50.1).
+  * Layout view/print dialog: remove useless Help button.
+  * Layout view/print dialog: some UI fixes.
+  * Some GTK+3 fixes.
+  * Some more fixes and cleanups.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Oct 14 06:17:24 UTC 2015 - sor.alexei@meowr.ru
+
+- Fix ABI version.
+
+-------------------------------------------------------------------
+Tue Apr 14 16:50:00 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.10.0
+  * bugfixes release
+
+-------------------------------------------------------------------
+Mon Mar 23 15:41:27 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.9.90 (unstable)
+  * bugfixes release
+
+-------------------------------------------------------------------
+Tue Jan 13 14:22:52 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.9.2 (unstable)
+  + fix possible dereference of NULL pointer
+  + fix UI load in GTK+3 build
+  + update translations
+
+-------------------------------------------------------------------
+Sun Jul 13 15:40:54 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.1 (unstable)
+  + bugfix release
+
+-------------------------------------------------------------------
+Wed Mar  5 10:17:12 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  + no changes since version 1.7.90
+
+-------------------------------------------------------------------
+Sat Feb 15 17:37:14 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.90 (unstable)
+  + Improved indicator font customization
+  + GTK3 support
+- Remove useless pkgconfig(gtk-doc) and xz require
+
+-------------------------------------------------------------------
+Wed Jan  1 16:19:14 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.6.2
+  + improved indicator font customization
+  + explicit declaration of internal libxklavier functions
+    from lingnomekbd:
+    https://git.gnome.org/browse/libgnomekbd/commit/?id=18332fedc6a24e4efeecfdc78a006140c667568a
+    https://bugzilla.gnome.org/show_bug.cgi?id=643754
+
+-------------------------------------------------------------------
+Fri Sep 20 16:03:32 UTC 2013 - p.drouand@gmail.com
+
+- Readd Recommends: %{name}-lang in libmatekbd1 package
+
+-------------------------------------------------------------------
+Fri Sep 20 12:04:15 UTC 2013 - p.drouand@gmail.com
+
+- Remove Recommends: %{name}-lang and add Provides: %{name} = %{version}
+  to automatically install lang package with library 
+
+-------------------------------------------------------------------
+Fri Sep 20 10:39:45 UTC 2013 - p.drouand@gmail.com
+
+- the library rely on the glib schema to be present; add 
+  Requires: matekbd-common in libmatekbd1 package that needs
+  glib schemas
+- Use %lang_package macro instead of create lang subpackage manually
+- Fix library subpackage group to System/Libraries
+- libmatekbd package doesn't exist; matekbd-common must recommends
+  libmatekbd-lang 
+
+-------------------------------------------------------------------
+Thu Sep 19 14:59:19 UTC 2013 - cdenicolo@suse.com
+
+- license update: LGPL-2.1+
+  LGPL is "or laterÃÃ".
+
+-------------------------------------------------------------------
+Tue Jun 25 14:23:55 UTC 2013 - johann.luce@wanadoo.fr
+
+- Update to version 1.6.1
+  + Fixes to use make dist
+  + Fix previous commit typo in schema
+  + Add missing keys in GSettings schema
+  + Group concensus: just delete unused code; git log stores it
+  + Clean up compile, fix bug with handling variants. Closes #8
+
+-------------------------------------------------------------------
+Wed Apr  3 13:17:42 UTC 2013 - johann.luce@wanadoo.fr
+
+- Update to version 1.6.0
+  + Add Recommends:     %{name}-lang = %{version}-%{release}
+  + update translations
+
+-------------------------------------------------------------------
+Fri Feb  8 19:12:30 UTC 2013 - nmo.marques@gmail.com
+
+- Update to version 1.5.1
+  + now requires automake 1.13
+  + fix desktop gschema
+  + rename configure
+  + minor fixes
+- Update license to match release
+
+-------------------------------------------------------------------
+Sun Nov 18 02:09:03 UTC 2012 - nmo.marques@gmail.com
+
+- Add xz to BRs; update contact in RPM changelog and minor spec
+  fixes
+
+-------------------------------------------------------------------
+Tue Oct  9 20:24:02 UTC 2012 - nmarques@mate-desktop.org
+
+- Update to version 1.5.0
+  + Switch to gsettings (dropped mateconf)
+  + Removed old obsolete plugin system for keyboard indicators
+- Remove mateconf-2.0 dependencies and macros
+- Improve summaries and descriptions
+
+-------------------------------------------------------------------
+Sat Sep  8 02:28:57 UTC 2012 - nmarques@mate-desktop.org
+
+- Copypac to X11:MATE
+  + minor cosmetic fixes
+
+-------------------------------------------------------------------
+Fri Aug  3 17:28:46 CST 2012 - hillwood@linuxfans.org
+
+- Update to version 1.4.0 
+
+-------------------------------------------------------------------
+Sun Jun 17 19:47:06 UTC 2012 - nmarques@mate-desktop.org
+
+- Use mateconf macros on .spec and some cleanups
+
+-------------------------------------------------------------------
+Sat Jun 16 17:57:03 UTC 2012 - nmarques@mate-desktop.org
+
+- Update to version 1.2.0
+
+-------------------------------------------------------------------
+Fri Dec 30 20:03:19 UTC 2011 - nmarques@opensuse.org
+
+- Initial package from version 1.1.0
+

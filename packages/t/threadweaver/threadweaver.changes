@@ -1,0 +1,608 @@
+-------------------------------------------------------------------
+Sat Sep  7 20:37:22 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Remove unused includes
+
+-------------------------------------------------------------------
+Wed Aug  7 17:52:01 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- No code change since 5.60.0
+
+-------------------------------------------------------------------
+Fri Jul 19 11:50:05 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:41 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- No code changes since 5.59.0
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:14 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- No code changes since 5.58.0
+
+-------------------------------------------------------------------
+Wed May 15 18:16:19 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- No code changes since 5.57.0
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:45 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * It compiles fine without deprecated method
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:38 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * Make it compile without foreach
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:28 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * delete copy constructor and assignment operator of some internal classes
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:56 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * No code changes since 5.53.0
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:46 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * No code changes since 5.52.0
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:09 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Fix minor EBN issues and typos
+
+-------------------------------------------------------------------
+Tue Oct 16 08:02:55 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:50:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Use strict compile flags
+  * Fix minor typos
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:47 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * None
+
+-------------------------------------------------------------------
+Sun Aug 19 09:19:40 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Honor BUILD_TESTING
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:53 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * None
+- Remove patch kill_not_needed_stuff.diff: it is a maintenance
+  cost for very little benefit
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:11 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Warning--
+
+-------------------------------------------------------------------
+Sun May 13 21:03:13 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:09 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Remove not necessary QtCore and co
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:43 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:13 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:24 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+  * Fix cmake warning
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:50 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:18 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * CMake cleanup: Don't hardcode -std=c++0x
+  * Add .arcconfig
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:48 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * Fix memory leak
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:19 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * Do not leak symbols of pimpl classes, protect with Q_DECL_HIDDEN
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:45 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * Add missing export to QueueSignals
+
+-------------------------------------------------------------------
+Wed Jul 12 07:14:05 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * Fixup parent commit
+  * Work-around MSVC2017 compiler bug
+  * [FEATURE] Option to build & install QCH file with the public API dox
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:44 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * None
+
+-------------------------------------------------------------------
+Mon May 15 13:53:15 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * Fix some CMake warnings
+
+-------------------------------------------------------------------
+Sat Apr 15 10:12:00 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * Upgrade KF5 version to 5.33.0.
+
+-------------------------------------------------------------------
+Sun Mar 19 14:51:18 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Upgrade KF5 version to 5.32.0.
+
+-------------------------------------------------------------------
+Thu Feb  9 10:21:18 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Mon Jan  9 00:01:09 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 02:07:03 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 22:26:07 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 13:14:01 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 21:15:27 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 22:18:02 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:07:50 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:45:47 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:47:07 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:31:53 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 10:05:16 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 18:10:28 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:46:33 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:13:17 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 17:07:12 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:37:49 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:13:46 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:55 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:45:32 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:08:06 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:50:52 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sat Apr  4 14:41:03 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+
+-------------------------------------------------------------------
+Sat Mar  7 16:59:01 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:38 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:34 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:54 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:47:51 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+
+-------------------------------------------------------------------
+Sat Oct  4 18:00:04 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:41 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+- Added kill_not_needed_stuff.diff: don't add dependancies which are
+  useless and used for never installed examples
+- Drop pkgconfig(Qt5Test) BuildRequires
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:24 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+- Harden required Qt5 libs versions
+
+-------------------------------------------------------------------
+Tue Jul  1 21:36:12 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:44 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Sun May  4 01:41:29 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:56 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+
+-------------------------------------------------------------------
+Tue Mar  4 16:39:57 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Sat Feb  8 02:20:19 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init threadweaver package
+

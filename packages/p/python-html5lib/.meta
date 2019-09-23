@@ -1,0 +1,17 @@
+<package name="python-html5lib" project="openSUSE:Factory">
+  <title>HTML parser based on the WHAT-WG Web Applications</title>
+  <description>HTML parser designed to follow the WHATWG HTML5 specification. The parser is designed to handle all
+flavours of HTML and parses invalid documents using well-defined error handling rules compatible
+with the behaviour of major desktop web browsers.
+Output is to a tree structure; the current release supports output to ElementTree (including
+cElementTree and lxml.etree), minidom, and a custom simpletree format.
+html5lib also includes a HTML sanitizer, &quot;treewalkers&quot; for converting various tree formats into
+streams and filters and serializers to operate on those streams.
+
+Author:
+--------
+    James Graham &lt;jg307@cam.ac.uk&gt;
+</description>
+  <devel project="devel:languages:python" package="python-html5lib"/>
+  <url>http://code.google.com/p/html5lib</url>
+</package>

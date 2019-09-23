@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Mon Sep  9 15:00:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.22.0:
+  * Adds ability to check CSRF double submit token from form data instead of
+    headers
+
+-------------------------------------------------------------------
+Tue Aug 27 06:49:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim metadata redundancies from summary. Trim filler wording
+  from description.
+
+-------------------------------------------------------------------
+Mon Aug 12 15:45:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.21.0:
+  * Require flask 1.0 or greater (#263)
+  * Move docs to pallets-sphinx-themes (#261)
+  * Add a new JWT_DECODE_ISSUER option for use with other JWT providers (#259)
+  * Gracefully handle errors for malformed tokens (#246)
+
+-------------------------------------------------------------------
+Tue Jul 23 18:52:53 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
+
+- Update Flask minimum version requirement.
+
+-------------------------------------------------------------------
+Wed Jul 17 13:57:14 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v3.20.0 (2019-07-17)
+  + Initial release.

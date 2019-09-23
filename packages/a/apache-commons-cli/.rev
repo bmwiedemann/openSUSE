@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4286196f1ce974735025ce24a2e04502</srcmd5>
+    <version>1.2</version>
+    <time>1401264098</time>
+    <user>coolo</user>
+    <comment>Preparing for scilab
+http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
+    <requestid>235030</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b4a4c6a8547797e660345ee61bc1660c</srcmd5>
+    <version>1.2</version>
+    <time>1404161379</time>
+    <user>coolo</user>
+    <comment>FWD Java:packages fixes</comment>
+    <requestid>238883</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b4a4c6a8547797e660345ee61bc1660c</srcmd5>
+    <version>1.2</version>
+    <time>1409300491</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>237522e64d7d8d9fc0d1a9240efb1149</srcmd5>
+    <version>1.2</version>
+    <time>1417809890</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264101</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>2a14fbc1028eddb56fb0fff0c520edd0</srcmd5>
+    <version>1.2</version>
+    <time>1427982728</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292593</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>16480a226de9f41da3b713fadede1ad9</srcmd5>
+    <version>1.2</version>
+    <time>1495442841</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with new javapackages-tools</comment>
+    <requestid>496661</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>a89b576c86b700f0f4348ed043859d50</srcmd5>
+    <version>1.2</version>
+    <time>1505416699</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>526043</requestid>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>84a4de2c419c4de07bc6ede2510b012f</srcmd5>
+    <version>1.2</version>
+    <time>1508197861</time>
+    <user>dimstar_suse</user>
+    <comment>Condition correctly the maven defines</comment>
+    <requestid>533046</requestid>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>73fac7ae87504f5ac08fb1b00edecf57</srcmd5>
+    <version>1.2</version>
+    <time>1530993483</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620744</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9f0c8c3dbe423aa14867b72533864ad1</srcmd5>
+    <version>1.4</version>
+    <time>1540988479</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>645582</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>a9312e53367a4b0b7c13edeeb48006a9</srcmd5>
+    <version>1.4</version>
+    <time>1549458454</time>
+    <user>coolo</user>
+    <comment>cleanup</comment>
+    <requestid>671927</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>775c140a3fb2da388bf288fa43d7444e</srcmd5>
+    <version>1.4</version>
+    <time>1553700137</time>
+    <user>dimstar_suse</user>
+    <comment>Disregard the pom parent</comment>
+    <requestid>689039</requestid>
+  </revision>
+</revisionlist>

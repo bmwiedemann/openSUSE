@@ -1,0 +1,96 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d2ee4d1b053199894aeba04361f8efa3</srcmd5>
+    <version>3.1.99.10</version>
+    <time>1529402181</time>
+    <user>maxlin_factory</user>
+    <comment>- Initial package for 3.2rc10.
+- Add drop-user-config.patch, move configuring user account to rpm spec.
+- Add firewalld profile.
+- Add README.SUSE
+</comment>
+    <requestid>616316</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d40071c5ff7b193122987fc0548d0093</srcmd5>
+    <version>3.1.99.10</version>
+    <time>1533045835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626639</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e2f5124f95f3d971e2a8597d9e871f0d</srcmd5>
+    <version>3.2.2</version>
+    <time>1551114064</time>
+    <user>coolo</user>
+    <comment>- Really use upstream tarball from the source url
+
+- Update to release 3.2.2
+  Version 3.2 introduces two big new features – MPRIS support and a &quot;native&quot; Shairport
+  Sync D-Bus interface. MPRIS offers a standard set of facilities for implementing remote
+  control and the native D-Bus interface allows local programs to interact
+  directly with Shairport Sync.
+  When used with either of these interfaces, Shairport Sync offers access
+  to the remote control commands available to control the source, and also
+  offers access to metadata, including titles and cover art. These new features
+  are experimental, but are already useful.
+  This release of Shairport Sync contains important bug fixes and stability
+  improvements and is recommended for all users. If offers better synchronisation,
+  better compatibility with third-party AirPlay sources, greater stability when
+  used with YouTube and macOS system sound, faster resynchronisation, better
+  performance on noisy or congested networks and many other improvements.
+  A quick INSTALL guide for the Raspberry Pi, a how-to CAR INSTALL guide and
+  a note about installing to OpenBSD have been added.
+- See https://github.com/mikebrady/shairport-sync/releases for details</comment>
+    <requestid>678921</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>286c0e40935977e9cdc0b1f051641879</srcmd5>
+    <version>3.2.2</version>
+    <time>1552986190</time>
+    <user>dimstar_suse</user>
+    <comment>- Transform bash-specific sh code to POSIX sh in scriptlets.
+- Do not hide errors from useradd.
+- Reduce hard scriptlet dependency on systemd;
+  %service_* does not need it. (forwarded request 686235 from jengelh)</comment>
+    <requestid>686252</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0ec41a65d6370eee4a2d02c9ee3081e4</srcmd5>
+    <version>3.3.1</version>
+    <time>1561406017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 3.3.1
+  * Fix a bug in the MQTT documentation and add sanity checking for the port
+    chosen -- thanks to David Crook.
+  * Fix a bug that caused manual format and rate settings to be ignored --
+    thanks to Jörg Krause.
+  * Add missing support for format settings S24_LE, S24_BE, S32_LE and S32_BE.
+  * Fix a bug that caused dither to be too loud.
+  * Fix error message for invalid 
+  * Automatic Format and Speed Selection for alsa devices. Using the alsa back
+    end, when you specify the output device, Shairport Sync will now, by
+    default, select the best output format and speed. For instance, if your
+    output device is capable of 32-bit operation, it will be selected. In some
+    situations, this will give a noticeable improvement in sound quality – see
+    the discussion of audio improvements below. The greatest bit depth will
+    always be selected, and the lowest speed that is a multiple of 44,100.
+  * Audio Transient Reduction: A Disable Standby feature to eliminate certain
+    faint-but-annoying audible pops and clicks has been added for alsa devices.
+    The setting prevents an output device entering standby mode and thus
+    minimises standby/busy transitions, which can sometimes be heard. It is
+    pretty impressive, especially combined with fixes to the dithering code
+    described below. If you can enable 24- or 32-bit audio output to your output
+    device, you can get even better results. This feature is available in the
+    ALSA back end (standard in Linux) when it is driving output devices that can
+    provide precision delay information, i.e. most hardware output devices and
+    possibly some virtual devices.
+  * New active/inactive program hooks. Basically, these are &quot;deglitched&quot;
+    replacements for play start/play end program hooks. When a play session
+    starts, the system goes active. When the play session ends, the system
+    remains active for a period determined by the active_state_timeout setting,
+    10 seconds by default. If another play session starts before the period (forwarded request 711702 from hillwood)</comment>
+    <requestid>711703</requestid>
+  </revision>
+</revisionlist>

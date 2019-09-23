@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a82bd2e51c7eb41d1ef12aac49efe3ad</srcmd5>
+    <version>0.7.0</version>
+    <time>1474623095</time>
+    <user>dimstar_suse</user>
+    <comment>required for Hibiscus</comment>
+    <requestid>424721</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7974a49c0cfdf0c2784ff1c403b9143a</srcmd5>
+    <version>0.10.0</version>
+    <time>1502186368</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514893</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>977384d6d57c922c394220c5cf69a26c</srcmd5>
+    <version>0.10.0</version>
+    <time>1505920334</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527292</requestid>
+  </revision>
+</revisionlist>

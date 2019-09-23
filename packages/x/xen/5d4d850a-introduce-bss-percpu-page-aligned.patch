@@ -1,0 +1,127 @@
+# Commit 6c9639a72f0ca3a9430ef75f375877182281fdef
+# Date 2019-08-09 16:36:58 +0200
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+xen/link: Introduce .bss.percpu.page_aligned
+
+Future changes are going to need to page align some percpu data.
+
+Shuffle the exact link order of items within the BSS to give
+.bss.percpu.page_aligned appropriate alignment, even on CPU0, which uses
+.bss.percpu itself.
+
+Insert explicit alignment such that there won't be a gap between
+__per_cpu_start and the first actual per-CPU object.  The POINTER_ALIGN
+for __bss_end is to cover the lack of SMP_CACHE_BYTES alignment, as the
+loops which zero the BSS use pointer-sized stores on all architectures.
+
+Rework __DEFINE_PER_CPU() so the caller passes in all attributes, and
+adjust DEFINE_PER_CPU{,_READ_MOSTLY}() to match.  This has the added bonus
+that it is now possible to grep for .bss.percpu and find all the users.
+
+Finally, introduce DEFINE_PER_CPU_PAGE_ALIGNED() which specifies the
+section attribute and verifies the type's alignment.
+
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+Make DEFINE_PER_CPU_PAGE_ALIGNED() verify the alignment rather than
+specifying it. It is the underlying type which should be suitably aligned.
+
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Acked-by: Julien Grall <julien.grall@arm.com>
+Acked-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+--- a/xen/arch/arm/xen.lds.S
++++ b/xen/arch/arm/xen.lds.S
+@@ -195,14 +195,16 @@ SECTIONS
+        *(.bss.stack_aligned)
+        . = ALIGN(PAGE_SIZE);
+        *(.bss.page_aligned)
+-       *(.bss)
+-       . = ALIGN(SMP_CACHE_BYTES);
++       . = ALIGN(PAGE_SIZE);
+        __per_cpu_start = .;
++       *(.bss.percpu.page_aligned)
+        *(.bss.percpu)
+        . = ALIGN(SMP_CACHE_BYTES);
+        *(.bss.percpu.read_mostly)
+        . = ALIGN(SMP_CACHE_BYTES);
+        __per_cpu_data_end = .;
++       *(.bss)
++       . = ALIGN(POINTER_ALIGN);
+        __bss_end = .;
+   } :text
+   _end = . ;
+--- a/xen/arch/x86/xen.lds.S
++++ b/xen/arch/x86/xen.lds.S
+@@ -277,14 +277,16 @@ SECTIONS
+        __bss_start = .;
+        *(.bss.stack_aligned)
+        *(.bss.page_aligned*)
+-       *(.bss)
+-       . = ALIGN(SMP_CACHE_BYTES);
++       . = ALIGN(PAGE_SIZE);
+        __per_cpu_start = .;
++       *(.bss.percpu.page_aligned)
+        *(.bss.percpu)
+        . = ALIGN(SMP_CACHE_BYTES);
+        *(.bss.percpu.read_mostly)
+        . = ALIGN(SMP_CACHE_BYTES);
+        __per_cpu_data_end = .;
++       *(.bss)
++       . = ALIGN(POINTER_ALIGN);
+        __bss_end = .;
+   } :text
+   _end = . ;
+--- a/xen/include/asm-arm/percpu.h
++++ b/xen/include/asm-arm/percpu.h
+@@ -10,10 +10,8 @@ extern char __per_cpu_start[], __per_cpu
+ extern unsigned long __per_cpu_offset[NR_CPUS];
+ void percpu_init_areas(void);
+ 
+-/* Separate out the type, so (int[3], foo) works. */
+-#define __DEFINE_PER_CPU(type, name, suffix)                    \
+-    __section(".bss.percpu" #suffix)                            \
+-    __typeof__(type) per_cpu_##name
++#define __DEFINE_PER_CPU(attr, type, name) \
++    attr __typeof__(type) per_cpu_ ## name
+ 
+ #define per_cpu(var, cpu)  \
+     (*RELOC_HIDE(&per_cpu__##var, __per_cpu_offset[cpu]))
+--- a/xen/include/asm-x86/percpu.h
++++ b/xen/include/asm-x86/percpu.h
+@@ -7,10 +7,8 @@ extern unsigned long __per_cpu_offset[NR
+ void percpu_init_areas(void);
+ #endif
+ 
+-/* Separate out the type, so (int[3], foo) works. */
+-#define __DEFINE_PER_CPU(type, name, suffix)                    \
+-    __section(".bss.percpu" #suffix)                            \
+-    __typeof__(type) per_cpu_##name
++#define __DEFINE_PER_CPU(attr, type, name) \
++    attr __typeof__(type) per_cpu_ ## name
+ 
+ /* var is in discarded region: offset to particular copy we want */
+ #define per_cpu(var, cpu)  \
+--- a/xen/include/xen/percpu.h
++++ b/xen/include/xen/percpu.h
+@@ -9,9 +9,17 @@
+  * The _##name concatenation is being used here to prevent 'name' from getting
+  * macro expanded, while still allowing a per-architecture symbol name prefix.
+  */
+-#define DEFINE_PER_CPU(type, name) __DEFINE_PER_CPU(type, _##name, )
++#define DEFINE_PER_CPU(type, name) \
++    __DEFINE_PER_CPU(__section(".bss.percpu"), type, _ ## name)
++
++#define DEFINE_PER_CPU_PAGE_ALIGNED(type, name) \
++    typedef char name ## _chk_t \
++        [BUILD_BUG_ON_ZERO(__alignof(type) & (PAGE_SIZE - 1))]; \
++    __DEFINE_PER_CPU(__section(".bss.percpu.page_aligned"), \
++                     type, _ ## name)
++
+ #define DEFINE_PER_CPU_READ_MOSTLY(type, name) \
+-	__DEFINE_PER_CPU(type, _##name, .read_mostly)
++    __DEFINE_PER_CPU(__section(".bss.percpu.read_mostly"), type, _ ## name)
+ 
+ /* Preferred on Xen. Also see arch-defined per_cpu(). */
+ #define this_cpu(var)    __get_cpu_var(var)

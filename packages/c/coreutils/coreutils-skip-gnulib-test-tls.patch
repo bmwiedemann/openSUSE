@@ -1,0 +1,37 @@
+Subject: Skip the gnulib test 'test-tls' on some platforms
+
+On i586, x86_64, ppc and ppc64, this test is known to sometimes fail
+with a diagnostic like:
+
+  Starting test_tls ...*** Error in `./test-tls': free(): invalid pointer: 0x00007f21500008c0 ***
+  ======= Backtrace: =========
+  /lib64/libc.so.6(+0x7406f)[0x7f215845006f]
+  /lib64/libc.so.6(+0x7989e)[0x7f215845589e]
+  /lib64/libpthread.so.0(+0x7ee2)[0x7f215878fee2]
+  /lib64/libpthread.so.0(+0x813e)[0x7f215879013e]
+  /lib64/libc.so.6(clone+0x6d)[0x7f21584c3d6d]
+
+* gnulib-tests/gnulib.mk (test-tls): Comment to skip for now.
+
+---
+ gnulib-tests/gnulib.mk |    7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+Index: gnulib-tests/gnulib.mk
+===================================================================
+--- gnulib-tests/gnulib.mk.orig
++++ gnulib-tests/gnulib.mk
+@@ -2360,9 +2360,10 @@ EXTRA_DIST += test-timespec.c macros.h
+ 
+ ## begin gnulib module tls-tests
+ 
+-TESTS += test-tls
+-check_PROGRAMS += test-tls
+-test_tls_LDADD = $(LDADD) @LIBMULTITHREAD@ @YIELD_LIB@
++# Fails on i586 and x86_64.
++#TESTS += test-tls
++#check_PROGRAMS += test-tls
++#test_tls_LDADD = $(LDADD) @LIBMULTITHREAD@ @YIELD_LIB@
+ 
+ EXTRA_DIST += test-tls.c
+ 

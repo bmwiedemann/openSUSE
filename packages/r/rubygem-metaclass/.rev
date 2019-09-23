@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>369c2f4619f8bf5084f101c07241ba22</srcmd5>
+    <version>0.0.1</version>
+    <time>1337195380</time>
+    <user>coolo</user>
+    <comment>needed for mocha</comment>
+    <requestid>121148</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>369c2f4619f8bf5084f101c07241ba22</srcmd5>
+    <version>0.0.1</version>
+    <time>1340184166</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>34a38e9d9b37a34ec7b69450a3c6abd9</srcmd5>
+    <version>0.0.1</version>
+    <time>1344066194</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>129761</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>34a38e9d9b37a34ec7b69450a3c6abd9</srcmd5>
+    <version>0.0.1</version>
+    <time>1359110327</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>34a38e9d9b37a34ec7b69450a3c6abd9</srcmd5>
+    <version>0.0.1</version>
+    <time>1379664541</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>82c6d16febbd9add86e6bce081a434e6</srcmd5>
+    <version>0.0.2</version>
+    <time>1390482527</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>214702</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7198e65e2f7c957304030dacd662afbf</srcmd5>
+    <version>0.0.4</version>
+    <time>1393310232</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223644</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>7198e65e2f7c957304030dacd662afbf</srcmd5>
+    <version>0.0.4</version>
+    <time>1409303248</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>12e5261bfb00c2c107f8312850e4856f</srcmd5>
+    <version>0.0.4</version>
+    <time>1413263475</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255305</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>401d2d194c3c54a452ff17be9baaadf0</srcmd5>
+    <version>0.0.4</version>
+    <time>1415118600</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259494</requestid>
+  </revision>
+</revisionlist>

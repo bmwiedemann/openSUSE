@@ -1,0 +1,216 @@
+-------------------------------------------------------------------
+Tue Dec 11 15:12:57 UTC 2018 - buckyballreaction@gmail.com
+
+- Add physfs-empty_dir_fix.patch (hg a29fef4a20fd, fixes creation 
+  of empty files when a directory doesn't exist)
+- Removed physfs-gcc7.patch (fixed in upstream)
+
+-------------------------------------------------------------------
+Mon Dec 10 17:24:33 UTC 2018 - buckyballreaction@gmail.com
+
+- Notable changes in 3.0.1:
+  * Trying to use the new mount functions (PHYSFS_mountIo, 
+    PHYSFS_mountMemory, PHYSFS_mountHandle) with a NULL filename 
+    would cause several problems. This now reports an error without
+    mounting. Docs have been corrected to reflect this reality. 
+  * Trying to mounting an archive inside a .zip file with 
+    PHYSFS_mountHandle() would crash with a NULL pointer 
+    dereference. Fixed. 
+  * Trying to access a file in the search path named "." or 
+    ".." no longer succeeds. Previously, this bug meant you could 
+    enumerate (but not access) files in the parent of a mounted 
+    native directory. Trying to open "." or ".." might have crashed 
+    or hung PhysicsFS. This only applies to the literal string "." 
+    or ".."; if there was a '/' char in the path, PhysicsFS would 
+    correctly reject a path with an element named as such. 
+  * Trying to mount a symlink to a directory would 
+    (incorrectly) fail on Unix and Apple platforms instead of 
+    mounting the directory the symlink points to. Fixed. 
+  * Fixed several crashes/hangs that a maliciously-crafted .iso 
+    file could trigger.
+- Notable changes in 3.0.0:
+  * PhysicsFS now is super-easy to build. You can usually just 
+    drop all the C files into your project and compile it with 
+    everything else without any magic configuration step. The CMake
+    file is still there and useful for packaging, etc, but it's 
+    100% optional. 
+  * ZIP files can now use the newer zip64 format. 
+  * ZIP files may be password-protected. As the PkWare specs 
+    specify, each file in the .zip may have a different password, 
+    so you call PHYSFS_openRead(a, "file_that_i_want.txt$PASSWORD")
+    to make it work. Note that this is a wildly insecure way to 
+    protect your app's data, both in how you'd have to manage 
+    passwords and that "traditional" PkWare crypto is not really 
+    hardened anyhow. But if you have a basic password-protected 
+    archive, PhysicsFS can get into it now! 
+  * 7zip support has been rewritten and improved. 
+  * ISO9660 archives are now supported. 
+  * VDF (Gothic/Gothic2) archives are now supported. 
+  * SLB (Independence War) archives are now supported. 
+  * Everything behind the scenes now uses an abstract i/o 
+    interface (PHYSFS_Io) instead of talking directly to files, and 
+    this interface is available to applications. This allows you to 
+    mount anything as an archive that you can wrap in a PHYSFS_Io, 
+    through the new PHYSFS_mountIo() function. The obvious and most 
+    useful implementations are already implemented for you behind 
+    the scenes on top of PHYSFS_Io: PHYSFS_mountMemory() to mount 
+    an archive that's in a block of RAM, and PHYSFS_mountHandle() 
+    to mount from a PHYSFS_File*...that is to say: you now have an 
+    interface to do archives inside archives. 
+  * The abstract interface that PhysicsFS uses to talk to 
+    archives (PHYSFS_Archiver) is now public, so apps can implement 
+    their own archivers and register them into the system. If you 
+    have a custom archive format for your app, you can plug it into 
+    PhysicsFS at runtime without modifying PhysicsFS itself. 
+  * There's now a PHYSFS_getPrefDir() to figure out where it is 
+    safe to write files on a given platform. This is usually a 
+    per-user, per-application space, and should be used instead of 
+    PHYSFS_getUserDir(). It might report something under 
+    ~/Library/Application Support on a Mac, somewhere under AppData 
+    for Windows, or ~/.local/share on Linux, etc. 
+  * There's now a PHYSFS_unmount() to match 2.0.0's 
+    PHYSFS_mount(). 
+  * There's now a PHYSFS_utf8FromUtf16(), so stop using 
+    PHYSFS_utf8FromUcs2().   :) 
+  * There's now PHYSFS_utf8stricmp() for case-insensitive UTF-8 
+    string comparison, in case you need to compare filenames. 
+  * Enumerating files can now report errors, instead of quietly 
+    dropping files when there were problems. Enumeration callbacks 
+    can now return results too ("keep going", "stop enumerating, no 
+    error I just got what I needed", "something went wrong, stop 
+    and return an error to the app"). 
+  * There is now a PHYSFS_stat() call that returns metadata on 
+    a specific file as a whole instead of using 
+    PHYSFS_isDirectory(), PHYSFS_getLastModTime(), etc 
+    separately). 
+  * There's now a PHYSFS_readBytes() function that operates 
+    more like Unix read()...the older PHYSFS_read() operates more 
+    like ANSI C's fread(), but had undefined behavior if it reads 
+    half an object. There is also an equivalent 
+    PHYSFS_writeBytes(). 
+  * Errors are now reported by numeric codes your app can 
+    process (there's a function to turn them into human readable 
+    strings). Apps can set the per-thread error code now, too, 
+    which is useful if you're writing an PHYSFS_Archiver or 
+    PHYSFS_Io. 
+  * The OS/2 port has Unicode support now. 
+  * The Windows port now uses UTF-16 for Unicode instead of 
+    UCS-2, and dropped the ANSI fallbacks (so among other hurdles, 
+    you'll need to bring your own UNICOWS.DLL if you want Win95 
+    support still). 
+  * Lots of improvements, redesigns, bug fixes, corner cases, 
+    and optimizations. 
+  * There's now a buildbot that makes sure this builds across 
+    two dozen different targets on every commit: 
+    https://physfs-buildbot.icculus.org/waterfall 
+  * New platforms: iOS, Android, Emscripten, WinRT (UWP, 
+    Windows Phone, Windows Store), Win64, QNX, Solaris, Hurd, 
+    Debian/kFreeBSD, ArcaOS, probably others. 
+  * Dropped platforms: BeOS (Haiku is still supported), Windows 
+    CE (Windows Phone is supported), Windows 95/98/ME (WinXP and 
+    later are supported) MacOS Classic (macOS and iOS are 
+    supported). Even these might work with minor patches if there's 
+    an urgent demand. 
+  * Probably many other things. This work encompasses many 
+    years of effort and quite a bit of internal redesign.
+
+-------------------------------------------------------------------
+Wed Jun 21 15:05:36 UTC 2017 - dimstar@opensuse.org
+
+- Add physfs-gcc7.patch: Fix build with gcc7 (boo#1041279).
+
+-------------------------------------------------------------------
+Sat Aug 20 20:47:15 UTC 2016 - mailaender@opensuse.org
+
+- Add a pkgconfig file
+
+-------------------------------------------------------------------
+Wed Feb 10 10:20:38 UTC 2016 - mpluskal@suse.com
+
+- Use cmake macros
+
+-------------------------------------------------------------------
+Tue Nov 26 17:22:01 UTC 2013 - speilicke@suse.com
+
+- Remove physfs-2.0.2-gcc46.patch (merged upstream)
+
+-------------------------------------------------------------------
+Fri Nov 15 20:04:27 UTC 2013 - mailaender@opensuse.org
+
+- Source code now packaged in a .tar.bz2 instead of .tar.gz.
+- Fixed "make docs" for out-of-tree builds.
+- No longer builds annoying wxWidgets test program by default.
+- Fixed logic bug in UTF-8 string processing.
+- Fixed infinite loop on some .zip files with symlinks.
+- Fixed building of readline support in test program.
+- Fixed .zip archiver losing files in some cases.
+- Corrected copyright dates in license.
+- Other minor tweaks and fixes.
+
+-------------------------------------------------------------------
+Mon Mar  5 15:23:30 UTC 2012 - cfarrell@suse.com
+
+- license update: (LGPL-2.1+ or CPL-1.0) and Zlib
+  For a license such as this brackets are needed to avoid ambiguity
+
+-------------------------------------------------------------------
+Tue Feb 14 07:36:49 UTC 2012 - coolo@suse.com
+
+- use original tar and avoid _service files
+- trying to convert the license to spdx.org
+
+-------------------------------------------------------------------
+Sun Apr  3 06:12:07 UTC 2011 - reddwarf@opensuse.org
+
+- Fix gcc 4.6 compilation
+- Use %optflags
+
+-------------------------------------------------------------------
+Mon Feb 21 21:23:54 UTC 2011 - reddwarf@opensuse.org
+
+- update to version 2.0.2
+  * Fixed bug where zip and qpak could fail to locate an existing file.
+  * Fixed overflow on zero-sized buffers when converting to UTF-8.
+
+-------------------------------------------------------------------
+Wed Feb 16 22:50:07 UTC 2011 - reddwarf@opensuse.org
+
+- update to version 2.0.1
+  * lzma support
+  * unicode support
+  * improved CD-ROM/DVD-ROM detection
+  * API extended with new functions
+- use source services
+- run spec-cleaner
+- follow SLPP
+- adapt to new cmake build system
+
+-------------------------------------------------------------------
+Fri Mar 13 16:38:29 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files
+- fix rpmlint warnings 
+- fix -devel package dependencies
+
+-------------------------------------------------------------------
+Thu Apr  5 09:31:46 CEST 2007 - lnussel@suse.de
+
+- build test program with readline support
+- install man pages into proper directory
+- use %jobs
+
+-------------------------------------------------------------------
+Mon Apr  2 15:26:15 CEST 2007 - rguenther@suse.de
+
+- add zlib-devel BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:12 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Aug 14 14:30:06 CEST 2005 - sndirsch@suse.de
+
+- created package; useful e.g. for building lincity-ng
+

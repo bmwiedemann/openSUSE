@@ -1,0 +1,464 @@
+-------------------------------------------------------------------
+Mon Apr  8 12:37:18 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.32.0
+  - Change openstack-dev to openstack-discuss
+  - fix bug link in readme
+  - Update links in README
+  - Add release note link in README
+  - Remove setup.py check from pep8 job
+  - add lib-forward-testing-python3 test job
+  - Fix the conflict of urlparse between python2 and python3
+  - Shift Limestone Networks profile to openstacksdk
+  - Use template for lower-constraints
+  - Update reno for stable/rocky
+  - Update min tox version to 2.0
+  - switch documentation job to new PTI
+  - Change python3.5 job to python3.7 job on Stein+
+  - add python 3.6 unit test job
+  - Invalid link of doc reference
+  - import zuul job settings from project-config
+  - Applying the HTTPS protocal in configuration.rst
+
+-------------------------------------------------------------------
+Tue Sep  4 08:02:53 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.31.2
+  - Add missing auth url from betacloud to docs
+  - Update reno for stable/queens
+  - pypy is not checked at gate
+  - Add image_format for VEXXHOST profile
+  - Add osc tips jobs back
+  - Add release note for the vendor data regression
+  - Add Limestone Networks vendor info
+  - Add os-client-config tips jobs
+  - Zuul: Remove project name
+  - Rename python-openstacksdk to openstacksdk
+  - Add cache methods back to OpenSackConfig
+  - fix link to openstacksdk in deprecation block
+  - Remove service-type override tests
+  - Fix F405 additional strictness
+  - fix tox python3 overrides
+  - Use 'none' auth plugin
+  - Remove DataCentred from list of vendors
+  - Remove app_name config tests
+  - Replace guts with openstack.config
+  - fix saltstack breakage introduced in v1.31.0
+  - Updated from global requirements
+  - add lower-constraints job
+
+-------------------------------------------------------------------
+Fri Feb 23 13:18:56 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Tue Feb 13 10:08:06 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.29.0
+  - Update make_rest_client to work with version discovery
+  - Update globals safely
+  - Protect against p_opt not having prompt attribute
+  - Split docs requirements and update tox.ini
+  - Fix doc typo
+  - Add shade-tox-tips jobs
+  - Make the get_service_type() overrides tolernat of no defaults
+  - Remove osc devstack tips jobs
+  - Do not apply format expansions to passwords
+  - Add shade-functional-tips jobs
+  - Update the documentation link for doc migration
+  - Updates for stestr
+  - Manually sync with g-r
+  - Fix requires_floating_ip
+  - Treat clouds.yaml with one cloud like envvars
+  - DataCentred supports Keystone V3 and Glance V2.
+  - Add betacloud to the vendors
+  - Consume the osc-functional-devstack-tips job
+  - Update reno for stable/pike
+  - Remove setting of version/release from releasenotes
+  - Remove OSIC
+  - Updated from global requirements
+  - Added nat_source flag for networks.
+
+-------------------------------------------------------------------
+Mon Nov 27 12:58:27 UTC 2017 - dmueller@suse.com
+
+- switch to singlespec version
+
+-------------------------------------------------------------------
+Mon Aug  7 08:33:26 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.28.0
+  - Revert "Use interface not endpoint_type for keystoneclient"
+  - Fix interactions with keystoneauth from newton
+  - modify test-requirement according to requirements project
+  - Add ability to skip yaml loading
+  - rearrange existing documentation to follow the new standard layout
+  - Make _fix_argv() somewhat compatible with Argparse action='append'
+  - Add support for overriding mistral service type
+  - [Fix gate]Update test requirement
+  - Update reno for stable/ocata
+  - Docs: add a note about rackspace API keys
+  - Keep a singleton to support multiple get_config calls
+  - use openstackdocstheme html context
+  - Use interface not endpoint_type for keystoneclient
+  - Add helper scripts to print version discovery info
+  - OVH supports qcow2
+  - Add support for bailing on invalid service versions
+  - Pass ironic microversion through from api_version
+  - Remove out of date comment
+  - Add support for indicating required floating IPs
+  - Add ability to pass in user_agent
+  - fix location of team tags in README
+  - Remove the keystoneclient auth fallback
+  - Add helper method to fetch service catalog
+  - Add ironicclient to constructors list
+  - Revert "Revert "Use interface not endpoint_type for keystoneclient""
+  - Don't pop from os.environ
+  - Stop special-casing idenity catalog lookups
+  - switch from oslosphinx to openstackdocstheme
+  - Add designateclient to constructors list
+  - turn on warning-is-error in documentation build
+  - Fix typo for baremetal_service_type
+
+-------------------------------------------------------------------
+Fri Feb 10 15:28:26 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.26.0:
+  - Revert "Split auth plugin loading into its own method"
+  - Add docutils contraint on 0.13.1 to fix building
+  - Fix interface_key for identity clients
+  - Use upper-constraints for tox envs
+  - Update ECS image_api_version to 1
+  - Enable release notes translation
+  - Update swift constructor to be Session aware
+  - Remove validate_auth_ksc
+  - Fix AttributeError in `get_config`
+  - Update reno for stable/newton
+  - Revert "Fix interface_key for identity clients"
+  - Normalize cloud config before osc-lib call
+  - List py35 in the default tox env list
+  - Show team and repo badges on README
+  - Fix a bunch of tests
+  - Add setter for session constructor
+  - Don't create envvars cloud if cloud or region are set
+  - Using assertIsNone() instead of assertEqual(None, ...)
+  - Magnum's service_type is container_infra
+  - cloud_config:get_session_endpoint: catch Keystone EndpointNotFound
+  - modify the home-page info with the developer documentation
+  - Add OpenTelekomCloud to the vendors
+  - Split auth plugin loading into its own method
+  - Update homepage with developer documentation page
+  - Support token_endpoint as an auth_type
+  - Add fuga.io to vendors
+  - Add support for Murano
+  - Add ability to configure Session constructor
+  - Remove 3.4 from tox envlist
+  - Add support for volumev3 service type
+  - Clarify how to set SSL settings
+  - Revert "Remove validate_auth_ksc"
+  - Don't build releasenotes in normal docs build
+
+-------------------------------------------------------------------
+Fri Sep  2 12:35:01 UTC 2016 - tbechtold@suse.com
+
+- update to version 1.21.1
+  * Go ahead and handle YAML list in region_name
+
+-------------------------------------------------------------------
+Wed Aug 31 13:09:16 UTC 2016 - tbechtold@suse.com
+
+- update to version 1.21.0
+  * Add prompting for KSA options
+  * Clean up vendor support list
+
+-------------------------------------------------------------------
+Tue Aug 30 15:47:15 UTC 2016 - tbechtold@suse.com
+
+- update to version 1.20.1
+  * Precedence final solution
+  * Refactor fix magic in get_one_cloud()
+  * Fix precedence for pass-in options
+  * Add the new DreamCompute cloud
+  * Add release notes for 1.19.0 release
+  * Add test for precedence rules
+  * Pass the argparse data into to validate_auth
+  * Add support for deprecating cloud profiles
+  * Update Internap information
+  * Revert "Fix precedence for pass-in options"
+  * Add support for listing a cloud as shut down
+  * Add support for configuring split-stack networks
+  * Update citycloud to list new regions
+  * Pop domain-id from the config if we infer values
+
+-------------------------------------------------------------------
+Mon Jul  4 15:33:30 UTC 2016 - tbechtold@suse.com
+
+- update to 1.18.0:
+  * Reword the entries in the README a bit
+  * Add shade constructor helper method
+  * Rename session_client to make_rest_client
+  * Add helper method for OpenStack SDK constructor
+  * Add missing "cloud" argument to _validate_auth_ksc
+  * Workaround bad required params in troveclient
+  * Trivial: Remove 'MANIFEST.in'
+  * Trivial: remove openstack/common from flake8 exclude list
+  * drop python3.3 support in classifier
+  * Fix formatting in readme file
+  * Remove discover from test-requirements.txt
+  * Add version string
+  * Pull the network settings from the actual dict
+  * Clarify one-per-cloud network values
+  * Flesh out netowrk config list
+  * Change network info indication to a generic list
+  * Update reno for stable/mitaka
+  * Add osic vendor profile
+  * Update the README a bit
+  * Allow session_client to take the same args as make_client
+  * Fix formulation
+  * Add release notes
+  * Send swiftclient username/password and token
+  * Remove HP and RunAbove from vendor profiles
+  * Added SSL support for VEXXHOST
+  * Add support for zetta.io
+  * Stop ignoring v2password plugin
+  * Go ahead and remove final excludes
+  * Don't set project_domain if not project scoped
+  * Clean up removed hacking rule from [flake8] ignore lists
+  * set up release notes build
+- Switch to upstream .spec file
+- Use renderspec source service to render .spec.j2 upstream
+  template
+
+-------------------------------------------------------------------
+Thu Mar  3 07:31:46 UTC 2016 - tbechtold@suse.com
+
+- Switch to .spec from rpm-packaging upstream project
+
+-------------------------------------------------------------------
+Mon Feb 15 19:45:56 UTC 2016 - dmueller@suse.com
+
+- update to 1.14.0:
+  * Fix a precedence problem with auth arguments
+  * Return empty dict instead of None for lack of file
+  * Pass version arg by name not position
+  * Use _get_client in make_client helper function
+  * Add barbicanclient support
+  * Remove openstack-common.conf
+  * Add IBM Public Cloud
+  * Replace assertEqual(None, *) with assertIsNone in tests
+  * Update auth urls and identity API versions
+  * Stop hardcoding compute in simple_client
+  * Update volume API default version from v1 to v2
+  * Debug log a deferred keystone exception, else we mask some useful diag
+  * Fix README.rst, add a check for it to fit PyPI rules
+  * Use reno for release notes
+  * add URLs for release announcement tools
+  * Allow filtering clouds on command line
+
+-------------------------------------------------------------------
+Fri Jan  8 09:07:51 UTC 2016 - dmueller@suse.com
+
+- update to 1.13.1:
+  * Munge region_name to '' if set to None
+  * Fix some README typos
+  * Fix token_endpoint usage
+  * remove python 2.6 os-client-config classifier
+  * If cloud doesn't list regions expand passed name
+  * Fix glance endpoints with endpoint_override
+  * Allow passing in explicit version for legacy_client
+  * Pass endpoint override to constructors
+  * Support backwards compat for _ args
+  * Add backwards compat mapping for auth-token
+  * Replace assertEqual(None, *) with assertIsNone in tests
+  * Allow arbitrary client-specific options
+  * Add ceilometer constructor to known constructors
+  * Add support for generalized per-region settings
+  * Fix a README typo - hepler is not actually a thing
+  * Make client constructor optional
+  * Updated README to clarify legacy client usage
+  * Add simple helper function for client construction
+  * Add method for registering argparse options
+  * Update vexxhost to Identity v3
+  * Make sure that cloud always has a name
+  * Remove optional keystoneauth1 imports
+  * Add BHS1 to OVH
+  * Handle cinder v2
+  * Add support for secure.yaml file for auth info
+  * Fix lack of parenthesis around boolean logic
+  * Only pass timeout to swift if we have a value
+  * Fix name of the object-store api key
+  * Refactor per-service key making
+  * Add support for legacy envvar prefixes
+  * Fix JSON schema
+  * Workaround a dispute between osc and neutronclient
+  * Workaround for int value with verbose_level
+  * Remove unneeded workaround for ksc
+  * Add default API version for magnum service
+  * Work around a bug in keystoneclient constructor
+  * Return cache settings as numbers not strings
+  * Add method to get a mounted session from config
+  * Convert floats to string
+  * Don't assume pass_version_arg=False for network
+  * Update network api version in defaults.json
+  * Dont turn bools into strings
+  * Use requestsexceptions for urllib squelching
+  * Normalize int config values to string
+  * Disable spurious urllib warnings
+  * Add logging module support
+  * Add methods for getting Session and Client objects
+  * Update conoha's vendor profile to include SJC
+  * Use json for in-tree cloud data
+  * Update auro to indicate move to neutron
+  * Copy values in backwards_interface differently
+  * Fix typo in Catalyst region configs
+  * Aligned a few words in the docs
+  * Sort vendor list
+  * Add conoha public cloud
+  * Allow for templated variables in auth_url
+  * Use assertDictEqual to test dict equality
+  * Always pull regions from vendor profiles
+  * Clean up cache interface, add support for services
+  * Add Rackspace LON region
+  * Validate requested region against region list
+  * Fix documentation around regions
+  * Add an API reference to the docs
+  * Pass OpenStackConfig in to CloudConfig for caches
+  * Add auth hook for OpenStackClient
+  * Adds some lines to complete table formatting
+  * Add universal=1 to setup.cfg to build python 3 wheels
+  * Some cleanup
+  * Fix two typos
+  * Put in override for Rackspace broken neutron
+  * Support passing force_ipv4 to the constructor
+  * identity version is 2.0
+  * Handle OS_CLOUD and OS_REGION_NAME friendly-like
+  * Added SWITCHengines vendor file
+  * update RST for readme so pypi looks pretty
+
+-------------------------------------------------------------------
+Sat Sep 26 17:52:40 UTC 2015 - tbechtold@suse.com
+
+- update to 1.7.5:
+  * Fix a little error with the None auth type
+  * Change ignore-errors to ignore_errors
+  * Handle ksa opt with no deprecated field
+  * Fall back to keystoneclient arg processing
+  * Fix typo in ovh region names
+  * Move plugin loader creation to try block
+  * Convert auth kwargs '-' to '_'
+  * Properly handle os- prefixed args in fix_args
+  * Test kwargs passing not just argparse
+  * Allow configuring domain id once
+  * Add internap to the vendor list
+  * Fix typo in comment - we use ksa not ksc
+  * Defer plugin validation to keystoneauth
+  * Remove an extra line
+  * Add Datacentred to the vendor list
+  * Add ultimum to list of vendors
+  * Add Enter Cloud Suite to vendors list
+  * Add elastx to vendor support matrix
+  * Switch the image default to v2
+  * Update auro auth_url and region information
+  * Add citycloud to the vendors list
+  * Return keystoneauth plugins based on auth args
+  * Remove duplicate lines that are the same as default
+  * Add default version number for heat
+  * Update OVH public cloud information
+  * Handle empty defaults.yaml file
+  * Do not treat project_name and project_id the same
+  * Revert "Revert "Use the correct auth_plugin for token authentication""
+
+-------------------------------------------------------------------
+Sat Aug 29 17:37:31 UTC 2015 - tbechtold@suse.com
+
+- update to 1.6.3:
+  * Revert "Use the correct auth_plugin for token authentication"
+  * Ignore infra CI env vars
+  * Use the correct auth_plugin for token authentication
+  * Align to generic password auth-type
+  * Clarify floating ip use for vendors
+  * Add per-service endpoint overrides
+  * Remove requirements.txt from tox.ini
+  * Remove py26 and py33 from tox.ini
+  * Rename 'endpoint_type' to 'interface'
+  * Have service name default to None
+  * Remove region list from single cloud
+  * Fix set_default() when used before config init
+  * Specify the config file with environment variable
+  * Add support for configuring region lists with yaml
+  * Fix rendering issue in Readme
+  * Clean up vendor data
+  * Add support for indicating preference for IPv6
+  * Normalize project_name aliases
+
+-------------------------------------------------------------------
+Mon Aug 24 19:43:00 UTC 2015 - dmueller@suse.com
+
+- avoid build cycle with oslotest
+
+-------------------------------------------------------------------
+Wed Jul 29 10:27:04 UTC 2015 - tbechtold@suse.com
+
+- Unify spec file. Use fedora compatible files macros
+
+-------------------------------------------------------------------
+Thu Jun 25 08:39:54 UTC 2015 - tbechtold@suse.com
+
+- update to 1.4.0:
+  * Add some accessor methods to CloudConfig
+  * Add missing tests
+  * Add test to check cert and key as a tuple
+  * Use one yaml file per vendor
+  * Raise warning when a vendor profile is missing
+  * Some cleanup in the README.rst
+  * Add support for OVH Public Cloud
+  * Add SSL documentation to README.rst
+  * Stringify project details
+  * Raise a warning with conflicting SSL params
+  * Change references of "clouds.yaml" for real file
+  * Raise a warning when using 'cloud' in config
+  * Add cloud vendor files config in doc
+  * Provide a helper method to get requests ssl values
+  * Add more defaults to our defaults file
+  * Change naming in vendor doc to match vendors.py
+  * Add auro to list of known vendors
+  * Add list of image params needed to disable agents
+
+-------------------------------------------------------------------
+Wed Jun  3 14:07:52 UTC 2015 - tbechtold@suse.com
+
+- update to 1.2.0:
+  * Add set_one_cloud method
+  * Add tests for get_cloud_names
+  * Add flag to indicate handling of security groups
+  * Don't normalize too deeply
+  * Add tests for cloud config comparison
+  * Add inequality method
+  * Add an equality method for CloudConfig
+  * Capture the filename used for config
+  * Normalize all keys down to _ instead of -
+  * Expose method for getting a list of cloud names
+  * Rename cloud to profile
+  * Don't pass None as the cloud name
+  * Change overriding defaults to kwarg
+  * Add tests for OSC usage
+  * Use appdirs for platform-independent locations
+  * Add UnitedStack
+  * Expose function to get defaults dict
+  * Add default versions for trove and ironic
+  * Sort defaults list for less conflicts
+  * Only add fall through cloud as a fall through
+  * Add flag to indicate where floating ips come from
+  * get_one_cloud should use auth merge
+  * Also accept .yml as a suffix
+  * Remove crufty lines from README
+  * Update vendor support to reflect v2 non-task
+  * Add flag to trigger task interface for rackspace
+- Add python-appdirs as Requires/BuildRequires
+
+-------------------------------------------------------------------
+Fri Apr 24 16:18:02 UTC 2015 - tbechtold@suse.com
+
+- Initial packaging
+

@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Thu Sep 27 19:43:13 UTC 2018 - sndirsch@suse.com
+
+- reproducable_build.patch (boo#1110020) 
+
+-------------------------------------------------------------------
+Fri Aug 11 11:10:47 UTC 2017 - pgajdos@suse.com
+
+- do not require lynx for build, it seems like it is not needed
+  at all [bsc#1052980]
+
+-------------------------------------------------------------------
+Mon May  4 14:39:26 UTC 2015 - sndirsch@suse.com
+
+- Update to version 1.7
+  * This release provides various minor updates & corrections that have
+    accumulated since the last katamari, without waiting forever for
+    someone to step up to create the next katamari.
+
+-------------------------------------------------------------------
+Sun Jun 10 21:07:08 UTC 2012 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.7 / 7.7
+
+-------------------------------------------------------------------
+Thu Apr 19 08:26:41 UTC 2012 - vuntz@opensuse.org
+
+- Rename source and binary package from xorg-x11-doc to
+  xorg-docs (upstream name).
+- Add Provides/Obsoletes for xorg-x11-doc to smooth upgrades.
+- Remove docbook-utils BuildRequires: it's not needed.
+
+-------------------------------------------------------------------
+Wed Oct 19 14:05:14 UTC 2011 - idonmez@suse.com
+
+- Add xmlto dependency to fix bnc#698117
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Thu May 19 12:33:23 UTC 2011 - eich@suse.de
+
+- Removed patch: excluded man pages to X and Xsecurity (which
+  are shipped with the server package) explicitely in the spec
+  file.
+
+-------------------------------------------------------------------
+Tue Dec 21 02:38:11 UTC 2010 - sndirsch@novell.com
+
+- bumped version number to 7.6 
+
+-------------------------------------------------------------------
+Sun Dec 19 14:54:25 UTC 2010 - sndirsch@novell.com
+
+- xorg-docs 1.6
+  * This release continues the work to convert documents to 
+    DocBook/XML, to move documents to the modules they more
+    logically belong in, to clean up the documents already
+    converted to DocBook/XML and to finalize the Release Notes
+   for the X11R7.6 katamari.
+
+-------------------------------------------------------------------
+Fri Nov 12 12:08:40 UTC 2010 - sndirsch@novell.com
+
+- xorg-docs 1.5.99.901 (1.6 RC1)
+  * This package provides the X Window System documentation that
+    doesn't belong in a more specific package. It used to provide
+    a lot of docs that did belong in more specific packages, but
+    that has largely been corrected in this release:
+    git diff --shortstat xorg-docs-1.5..xorg-docs-1.5.99.901
+      155 files changed, 27570 insertions(+), 112431 deletions(-)
+    The protocol specifications have mostly moved to the matching
+    proto modules. The library API references  have mostly moved
+    to the matching lib modules. The server internals docs have
+    mostly moved to the xorg-server module.
+    What's left has mostly (but not yet completely) been converted
+    to Docbook XML, from troff, SGML, and other formats.
+- adjusted xorg-x11-doc.diff
+
+-------------------------------------------------------------------
+Wed Apr  7 12:07:36 CEST 2010 - sndirsch@suse.de
+
+- unfuzzed 'xorg-x11-doc.diff'
+
+-------------------------------------------------------------------
+Sun Apr  4 15:01:26 CEST 2010 - sndirsch@suse.de
+
+- xorg-docs 1.5 
+- bumped version number to 7.5
+
+-------------------------------------------------------------------
+Thu Sep 11 14:20:00 CEST 2008 - sndirsch@suse.de
+
+- bumped release number to 7.4 
+
+-------------------------------------------------------------------
+Tue Oct 23 09:15:26 CEST 2007 - sndirsch@suse.de
+
+- enabled build of HTML/PDF docs (Bug #335450) 
+
+-------------------------------------------------------------------
+Sat Sep 29 12:22:02 CEST 2007 - sndirsch@suse.de
+
+- bumped version to 7.3 
+
+-------------------------------------------------------------------
+Tue Jul  3 20:28:15 CEST 2007 - sndirsch@suse.de
+
+- move X(7) and security(7) manual pages to xorg-x11-server package
+
+-------------------------------------------------------------------
+Sun Mar  4 15:36:58 CET 2007 - sndirsch@suse.de
+
+- updated xorg-docs to release 1.4
+  * Major re-organization of the sgml docs. They are now converted
+    from linuxdoc to docbook and rely on the docbook2x series of
+    tools, so your build environments need to be updated.
+- updated xorg-sgml-doctools to release 1.2
+  * Update definitions for the 7.2 katamari release 
+
+-------------------------------------------------------------------
+Wed Nov  8 22:46:50 CET 2006 - sndirsch@suse.de
+
+- updated xorg-docs to release 1.3
+  * several updates contributed by Alan Coopersmith, David Nusinow,
+    Eamon Walsh, Juliusz Chroboczek
+- updated xorg-sgml-doctools to release 1.1.1 
+  * Install defs to the more standard ${prefix}/share/sgml/X11
+    which will allow the docbook tools to find them under normal
+    conditions
+
+-------------------------------------------------------------------
+Thu Oct 26 07:27:53 CEST 2006 - sndirsch@suse.de
+
+- set version to 7.2 in specfile 
+
+-------------------------------------------------------------------
+Fri Jul 28 14:43:48 CEST 2006 - sndirsch@suse.de
+
+- use "-fno-strict-aliasing" 
+
+-------------------------------------------------------------------
+Thu Jul 27 11:35:46 CEST 2006 - sndirsch@suse.de
+
+- use $RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Mon Jun 26 11:12:49 CEST 2006 - sndirsch@suse.de
+
+- created package 
+

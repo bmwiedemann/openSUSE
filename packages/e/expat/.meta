@@ -1,0 +1,25 @@
+<package name="expat" project="openSUSE:Factory">
+  <title>XML Parser Toolkit</title>
+  <description>Expat is an XML 1.0 parser written in C. It aims to be fully
+conformant. It is currently not a validating XML processor. The current
+production version of expat can be downloaded from
+ftp://ftp.jclark.com/pub/xml/expat.zip. The directory xmltok contains a
+low-level library for tokenizing XML. The interface is documented in
+xmltok/xmltok.h. The directory xmlparse contains an XML parser library
+that is built on top of the xmltok library. The interface is documented
+in xmlparse/xmlparse.h. The directory sample contains a simple example
+program using this interface. The file sample/build.bat is a batch
+file to build the example using Visual C++. The directory xmlwf
+contains the xmlwf application, which uses the xmlparse library. The
+arguments to xmlwf are one or more files to check for well-formedness.
+An option -d dir can be specified. For each well-formed input file, the
+corresponding canonical XML is written to dir/f, where f is the
+filename (without any path) of the input file. A -x option causes
+references to external general entities to be processed. A -s option
+makes documents that are not stand-alone cause an error (a document is
+considered stand-alone if it is intrinsically stand-alone because it
+has no external subset and no references to parameter entities in the
+internal subset or it is declared as stand-alone in the XML
+declaration).</description>
+  <devel project="devel:libraries:c_c++" package="expat"/>
+</package>

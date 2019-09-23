@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Thu Jun 20 10:58:15 UTC 2019 - pgajdos@suse.com
+
+- run the testsuite, make it passing
+- modified patches
+  https://github.com/rspivak/slimit/commit/40956e7fc6e954b3e6d7b629faeb3303f5efb7ea
+  % python-slimit-fix-python3.patch (amended)
+
+-------------------------------------------------------------------
+Thu Jan 31 11:13:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop odict, not really required from python 2.7+
+
+-------------------------------------------------------------------
+Sun Jun 30 13:02:51 UTC 2018 - sor.alexei@meowr.ru
+
+- Update for the multipython build.
+- Do not run tests: there aren't any.
+- Add python-slimit-add-licence.patch: Include the licence file
+  that is present in git since 4111f2d.
+- Add python-slimit-fix-python3.patch: Take commit e833165 from
+  https://github.com/rspivak/slimit/pull/65 by Lele Gaifax.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:14:36 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Sep 10 18:37:51 UTC 2013 - os-dev@jacraig.com
+
+- Update to 0.8.1:
+  * Bug fix: Fix syntax error in the output of for statement with some form of
+    expressions
+- Changes from 0.8.0:
+  * Python 3.x support
+  * Bug fix: slimit removes parentheses from ternary expression, causes syntax
+    error in jQuery
+  * Bug fix: simple identifier in FOR init
+  * Bug fix: using $ for mangled function names conflicts with jQuery
+
+-------------------------------------------------------------------
+Thu Sep  5 21:14:10 UTC 2013 - os-dev@jacraig.com
+
+- Add requires for odict and ply >= 3.4, they are necessary to run slimit.
+
+-------------------------------------------------------------------
+Fri Jun 22 00:52:14 UTC 2012 - os-dev@jacraig.com
+
+- Update to 0.7.4:
+  * Bug fix: https://github.com/rspivak/slimit/issues/34 'class' is reserved
+    keyword now
+- Changes from 0.7 to 0.7.3:
+  * Bug fix (unary op in FOR init)
+  * Added support for get/set properties
+  * Function call support in FOR init section
+  * Multiline string support
+- Added >= 3.4 to python-ply requirement, setup.py indicates that version
+
+-------------------------------------------------------------------
+Tue Apr 10 08:57:26 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.6.2:
+  * Better multiline handling
+
+-------------------------------------------------------------------
+Mon Mar 12 08:43:00 UTC 2012 - saschpe@suse.de
+
+- Initial version

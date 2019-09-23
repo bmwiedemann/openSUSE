@@ -1,0 +1,380 @@
+-------------------------------------------------------------------
+Sun Mar 17 14:08:51 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve FIXME for "proper Requires".
+- Generalize description.
+
+-------------------------------------------------------------------
+Wed Apr 18 13:45:03 UTC 2018 - sndirsch@suse.com
+
+- marked avrdude.keyring and debian.avrdude.udev as sources in 
+  specfile
+
+-------------------------------------------------------------------
+Tue Nov 14 15:55:04 UTC 2017 - lnussel@suse.de
+
+- add USB IDs for Arduino Micro
+- add download URL and keyring
+
+-------------------------------------------------------------------
+Wed Jul 12 11:51:50 UTC 2017 - pcervinka@suse.com
+
+- remove incorrect provides in library subpackage
+- remove not needed obsoletes in library subpackage
+- make libftdi1 build dependency only for openSUSE
+- spec file cleaned by spec-cleaner
+
+-------------------------------------------------------------------
+Mon Dec 12 15:58:08 UTC 2016 - kkaempf@suse.com
+
+- drop parport from 50-avrdude.rules for udev (bsc#994883)
+  limit to USB
+
+-------------------------------------------------------------------
+Fri Mar 18 13:03:52 UTC 2016 - kkaempf@suse.com
+
+- Update to 6.3
+  * New devices supported:
+  - ATmega48PB, ATmega88PB, ATmega168PB
+  - ATtiny28 (HVPP-only device)
+  - AT90PWM216 (bug #42310: New part description for AT90PWM216)
+  - ATmega32M1 (patch #7694 Add support for the atmega32m1)
+  * New programmers supported:
+  - Atmel mEDBG: xplainedmini, xplainedmini_dw
+  - ftdi_syncbb
+  -  uncompatino, ttl232r (FTDI TTL232R-5V with ICSP adapter)
+     (patch #8529 2 more ftdi_syncbb devices)
+  - Atmel DFU, using FLIP protocol version 1 (AT90USB and ATmegaU
+    devices), or version 2 (Xmega devices)
+  - Atmel-ICE (ARM/AVR), JTAG, PDI, debugWIRE, ISP modi
+
+  * Major changes compared to the previous version:
+  - The stk500v2 implementation now uses its own higher-level
+    command implementation for byte-wide access, rather than the
+    historic SPI_MULTI command where all the low-level ISP
+    implementation had to be assembled manually inside AVRDUDE. In
+    addition to the traditional STK500, this implementation is also
+    used by all the more modern Atmel tools (AVRISPmkII, JTAGICEmkII
+    in ISP mode, STK600 in ISP mode).
+  - The -B option can be suffixed with "Hz", "kHz", or "MHz", in
+    order to specify a bitclock frequency rather than period.
+  - Print part id after signature (patch #8440 )
+  - buspirate: Also support "cpufreq" extended parameter
+    in binary mode (patch #8504 )
+  - The "-P net:" syntax (forwarding of serial data over TCP) is now
+    also implemented for Win32 systems.
+  - Atmel EDBG protocol support added (JTAGICE3, XplainedPro, Atmel-ICE)
+
+- disable IPv6 temporarily
+
+-------------------------------------------------------------------
+Thu Apr  3 14:23:45 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- include released tarball from upstream
+- disable source service
+- refresh patch avrdude-5.11-no-builddate.diff 
+
+-------------------------------------------------------------------
+Mon Feb 10 15:25:41 UTC 2014 - max@suse.com
+
+- Bump version number to 6.1 in _service to reflect upstream.
+- Generate udev rules from avrdude-usbdevices, which has a simpler
+  and easier to maintain format. This also simplifies following
+  further upstream changes in udev rules syntax.
+- IPv6-enable the "-P net:host:port" option (avrdude-ipv6.patch).
+
+-------------------------------------------------------------------
+Sat Feb  8 08:07:24 UTC 2014 - sndirsch@suse.com
+
+- no longer use an URL for the source, since the tarball is generated 
+
+-------------------------------------------------------------------
+Sat Feb  8 05:54:19 UTC 2014 - coolo@suse.com
+
+- set the _service to localonly
+
+-------------------------------------------------------------------
+Fri Jan 17 09:34:47 UTC 2014 - bugs@vdm-design.de
+
+- work around systemd-udev warnings, by moving comments in the
+  udev rules file to the beginning of a line.
+
+-------------------------------------------------------------------
+Fri Feb 15 12:05:11 UTC 2013 - max@suse.com
+
+- Build the info file only, no PS/PDF documentation.
+- Don't require libftdi for older SUSE versions.
+
+-------------------------------------------------------------------
+Thu Feb  7 16:09:24 UTC 2013 - max@suse.com
+
+- Build from svn snapshot (last official release is too old).
+- avrdude-use-serial-device-for-serbb.patch is no longer needed.
+- Add UDB IDs for Arduino Leonardo and LUFA ACM bootloaders.
+- Give access to programmer devices only to local users.
+- Build documentation from source instead of importing pre-built
+  html and pdf documentation.
+- Disable documentation building on releases older than 12.3 due
+  to texinfo problems.
+
+-------------------------------------------------------------------
+Sat Dec  8 11:27:23 UTC 2012 - jw@suse.com
+
+- Did not build.
+- 5.11 tar balls are now missing again. retrying with 5.11.1
+- typo in spec file fixed.
+
+-------------------------------------------------------------------
+Wed Nov 21 14:23:27 UTC 2012 - jw@suse.com
+
+- All this should have been part of my earlier submit sr#142228:
+  * obsoleted upstreamed patches: tn4313.diff, avrdude_butterfly_mk.patch
+  * pulled patch from o:F: avrdude-use-serial-device-for-serbb.patch
+  * dropped dubious patch: avrdude-5.5.usbtiny.64bit.patch
+
+-------------------------------------------------------------------
+Thu Nov 21 00:29:51 UTC 2012 - jw@suse.com
+
+- retrying sr#110452, sr#141518, so that we can finally close bnc#736064
+- merged a commit that was only made to o:F
+
+-------------------------------------------------------------------
+Wed Mar 21 14:49:39 UTC 2012 - jw@suse.com
+
+- Reverted to version 5.11 -- the 5.11.1 tarball was missing.
+
+-------------------------------------------------------------------
+Tue Oct 18 13:51:22 UTC 2011 - max@suse.com
+
+- Version 5.11.1 from savannah
+- Add libftdi1-devel to BuildRequires to support additional
+  programmers.
+
+-------------------------------------------------------------------
+Thu Sep 29 13:04:01 UTC 2011 - seife+obs@b1-systems.com
+
+- don't use download_files service - it breaks all the time
+- remove builddate from binary to avoid unnecessary republising
+
+-------------------------------------------------------------------
+Sat Sep 17 13:54:59 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Sun Aug 28 11:09:50 CEST 2011 - madworm_de.novell@spitzenpfeil.org
+
+- Version 5.11 from savannah
+
+-------------------------------------------------------------------
+Mon Jun 20 06:19:17 PM UTC 2011 - madworm_de.novell@spitzenpfeil.org
+
+- https://savannah.nongnu.org/patch/?7559
+  DTR/RTS twiddling didn't match the Arduino 'auto-reset' hardware
+  for the programmer type 'arduino'
+
+-------------------------------------------------------------------
+Mon Mar  7 19:14:33 UTC 2011 - jw@novell.com
+
+- bnc#676024, support for attiny4313 added according to 
+  http://savannah.nongnu.org/patch/?7393
+
+-------------------------------------------------------------------
+Mon Mar  7 18:58:41 UTC 2011 - jw@novell.com
+
+- Resurrected the changelog.
+  /usr/lib/osc/source_validators/helpers/check_dates_in_changes
+  misinterpretes timestamps 2010-01-01 within changelog entries as 
+  new changelog entries.
+
+-------------------------------------------------------------------
+Mon Sep  6 13:58:00 UTC 2010 - max@novell.com
+
+- Use ATTRS instead of SYSFS in udev rules.
+- Add old USBasp VID/PID to udev rules.
+- Dropped most of the .changes file to make osc happy.
+
+-------------------------------------------------------------------
+Sat May 15 15:44:09 UTC 2010 - jw@novell.com
+
+- fixed mkbutterfly target, to test the bootloader response in the loop, 
+  instead of once afterwards.
+
+-------------------------------------------------------------------
+Thu Feb 11 18:18:06 CET 2010 - max@suse.de
+
+- Remove unused source and patch files.
+- Remove special cases for distributions we don't build for.
+- Move from /opt/cross to /usr, as this is not a cross compile
+  tool for which there is a "native" counterpart.
+- Use the pre-built pdf from upstream to avoid the latex dependency.
+- Add proper info file handling.
+- Add udev rules for USB programmers and USB serial adapters, so
+  that they can be accessed by all users. This is considered safe
+  as this is a very specialized package that will probably only get
+  installed on development machines with no untrusted local or
+  remote users.
+
+-------------------------------------------------------------------
+Fri Jan 22 16:59:10 CET 2010 - jw@suse.de
+
+- update to avrdude-5.10
+  bug #28660: Problem with loading intel hex rom files that exceed
+  0x10000 bytes
+  * fileio.c: Fix two byte shifts.
+  * configure.ac: Fix FreeBSD default serial port name.
+  * doc/avrdude.texi: (Dito.)
+  * jtagmkII.c: If entering JTAG mode fails with a bad JTAG ID
+  message, retry with external reset applied (in case the target
+  is in sleep mode or has asserted the JTD bit).
+
+-------------------------------------------------------------------
+Fri Jan 22 16:33:23 CET 2010 - jw@suse.de
+
+- added /usr/bin/avrdude symlink, 
+  so that /opt/cross/bin is no longer needed in PATH
+
+-------------------------------------------------------------------
+Tue Jan  5 21:46:20 UTC 2010 - jw@novell.com
+
+- added avrdude_butterfly_mk.patch
+  mikrokopter.de uses a modified version of butterfly.
+  This patch creates an avrdude providing bot the unchanged butterfly and
+  a new mkbutterfly. env BUTTERFLY_MK=1 avrdude -c butterfly is also provided.
+  Sent upstream as https://savannah.nongnu.org/patch/?7056
+
+-------------------------------------------------------------------
+Mon Dec 28 19:38:45 CET 2009 - bernhard@bwalle.de
+
+- Add "texinfo-dvi" to BuildRequires for Fedora/RHEL/CentOS
+  to fix finally the build because of a missing "texi2dvi".
+
+-------------------------------------------------------------------
+Mon Dec 28 14:12:45 CET 2009 - bernhard@bwalle.de
+
+- Give /etc/modprobe.d/avrdude_parport the 'conf' extension to make
+  new versions of module-init-tools happy.
+- Add "texinfo" to BuildRequires for Fedora/RHEL/CentOS.
+
+-------------------------------------------------------------------
+Thu Dec 17 00:24:00 UTC 2009 - jw@novell.com
+
+- readded other half of half-upstreamed avrdude-5.5.usbtiny.64bit.patch
+- convertUniToAscii bug, HVPP of EEPROM bug, serious memory corruption 
+  ATmega163 fix, tcsetattr() on Solaris bug, Crash in stk500v2_open,
+  xmega problems with JTAGICEmkII, New devices: ATXMEGA64A1, ATXMEGA192A1,
+  ATXMEGA256A1, ATXMEGA64A3, ATXMEGA128A3, ATXMEGA192A3, ATXMEGA256A3,
+  ATXMEGA256A3B, ATXMEGA16A4, ATXMEGA32A4, ATXMEGA64A4, ATXMEGA128A4
+- bnc#564303
+
+-------------------------------------------------------------------
+Tue Dec 15 11:42:04 UTC 2009 - jw@novell.com
+
+- avrdude 5.8 first test
+
+-------------------------------------------------------------------
+Tue Sep 30 16:07:38 CEST 2008 - kukuk@suse.de
+
+- Fix libusb BuildRequires
+
+-------------------------------------------------------------------
+Fri Aug  8 21:13:36 CEST 2008 - sndirsch@suse.de
+
+- avrdude-5.5.usbtiny.64bit.patch
+  * fixes initialization of USBtinyISP on 64bit (bnc #415773)
+
+-------------------------------------------------------------------
+Mon Jun 23 21:00:18 CEST 2008 - bwalle@suse.de
+
+- don't use default_parallel for "serbb" devices like the "ponyser"
+  programmer (https://savannah.nongnu.org/bugs/index.php?23685)
+
+-------------------------------------------------------------------
+Mon Feb  4 17:11:33 CET 2008 - jw@suse.de
+
+- added /etc/udev/rules.d/98-parport.rules
+  as a possible fix for bnc#235059
+  (must not be named 99-*, because of bnc#358391)
+
+-------------------------------------------------------------------
+Wed Nov 21 05:39:26 CET 2007 - sndirsch@suse.de
+
+- avrdude 5.5
+  * support for the USBtinyISP programmer (patch #6233)
+  * support for the C2N232I serial bitbang programmer (patch #6121)
+  * Bugfixes.
+
+-------------------------------------------------------------------
+Sun Oct 28 13:44:04 CET 2007 - bwalle@suse.de
+
+- Link against libreadline to have history.
+- rpmlint: Start "Summary" with a capital letter.
+- rpmlint: Remove BuildRequires for SuSE < 9.3.
+
+-------------------------------------------------------------------
+Thu Oct 18 21:56:17 CEST 2007 - bwalle@suse.de
+
+- Link against libusb to have USB support.
+- Switch from gzip to bzip2 for the source file to save space.
+
+-------------------------------------------------------------------
+Sat Aug  4 22:30:32 CEST 2007 - sndirsch@suse.de
+
+- updated to release 5.4
+  * New devices supported:
+    - AT90PWM2B/AT90PWM3B
+  * Bugfixes.
+  * Source code rearranged so that the functionality is now built
+    into a libavrdude.a library where main.c is currently the only
+    existing frontend.
+  * Implement ATmega256x support for butterfly/avr109.
+
+-------------------------------------------------------------------
+Sun May  6 21:58:41 CEST 2007 - sndirsch@suse.de
+
+- updated to release 5.3.1 
+
+-------------------------------------------------------------------
+Fri Apr 20 21:28:36 CEST 2007 - sndirsch@suse.de
+
+- switched to TeXLive packages
+
+-------------------------------------------------------------------
+Thu Mar 29 22:33:00 CEST 2007 - sndirsch@suse.de
+
+- added flex/bison to Buildrequires 
+
+-------------------------------------------------------------------
+Mon Jan 15 10:37:53 CET 2007 - sndirsch@suse.de
+
+- removed resmgr config file (Bug #235059)
+
+-------------------------------------------------------------------
+Fri Oct 20 03:51:35 CEST 2006 - sndirsch@suse.de
+
+- update to release 5.2 
+  * bugfixes
+
+-------------------------------------------------------------------
+Wed Jan 25 23:42:44 CET 2006 - sndirsch@suse.de
+
+- update to release 5.1:
+  * New devices supported:
+    - ATmega640/1280/1281
+    - ATtiny24/44/84
+  * JTAG mkII support now works with libusb-win32, too
+  * JTAG ICE mkI support has been added
+  * Solaris support has been added (including ecpp(7D) 
+    parallel-port bit-bang mode)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:34 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan  8 18:42:22 CET 2006 - sndirsch@suse.de
+
+- created package 
+

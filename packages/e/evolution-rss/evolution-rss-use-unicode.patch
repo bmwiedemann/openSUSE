@@ -1,0 +1,339 @@
+From d7ad8037693c02c891b76fb65e54a256bc445bf0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Piotr=20Dr=C4=85g?= <piotrdrag@gmail.com>
+Date: Sun, 13 Nov 2016 18:10:58 +0100
+Subject: [PATCH 1/2] Use Unicode in translatable strings
+
+See https://developer.gnome.org/hig/stable/typography.html
+
+https://bugzilla.gnome.org/show_bug.cgi?id=774366
+---
+ src/evolution-rss.schemas.in.in       | 4 ++--
+ src/org-gnome-evolution-rss.eplug.xml | 2 +-
+ src/org-gnome-evolution-rss.error.xml | 8 ++++----
+ src/rss-config-factory.c              | 6 +++---
+ src/rss.c                             | 8 ++++----
+ 5 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/src/evolution-rss.schemas.in.in b/src/evolution-rss.schemas.in.in
+index 9fd631a..51a960d 100644
+--- a/src/evolution-rss.schemas.in.in
++++ b/src/evolution-rss.schemas.in.in
+@@ -22,9 +22,9 @@
+       <type>bool</type>
+       <default>true</default>
+       <locale name="C">
+-        <short>Display article's summary</short>
++        <short>Display article’s summary</short>
+         <long>
+-    	    Evolution will show article's summary instead of article's
++    	    Evolution will show article’s summary instead of article’s
+     	    web page. Summary can also be HTML.
+         </long>
+       </locale>
+diff --git a/src/org-gnome-evolution-rss.eplug.xml b/src/org-gnome-evolution-rss.eplug.xml
+index c3c6254..b7d3b77 100644
+--- a/src/org-gnome-evolution-rss.eplug.xml
++++ b/src/org-gnome-evolution-rss.eplug.xml
+@@ -13,7 +13,7 @@ This plugin adds RSS Feeds support for Evolution mail. RSS support was built upo
+ 
+ Evolution RSS can display article using summary view or HTML view.
+ 
+-HTML can be displayed using the following engines: gtkHTML, Apple's Webkit or Firefox/Gecko.
++HTML can be displayed using the following engines: gtkHTML, Apple’s Webkit or Firefox/Gecko.
+ 
+ <b>Version: evolution-rss +VERSION+</b>
+ 
+diff --git a/src/org-gnome-evolution-rss.error.xml b/src/org-gnome-evolution-rss.error.xml
+index 23b6df7..0c66ac4 100644
+--- a/src/org-gnome-evolution-rss.error.xml
++++ b/src/org-gnome-evolution-rss.error.xml
+@@ -4,12 +4,12 @@
+   translation-domain="+GETTEXT_PACKAGE+"
+   translation-localedir="+LOCALEDIR+">
+   <error id="readrss" type="info">
+-    <_primary>Reading RSS Feeds...</_primary>
++    <_primary>Reading RSS Feeds…</_primary>
+     <button stock="gtk-cancel" response="GTK_RESPONSE_CANCEL"/>
+   </error>
+ 
+   <error id="rssmsg" type="info">
+-    <_primary>Updating Feeds...</_primary>
++    <_primary>Updating Feeds…</_primary>
+     <button stock="gtk-cancel" response="GTK_RESPONSE_CANCEL"/>
+   </error>
+ 
+@@ -25,8 +25,8 @@
+   </error>
+ 
+ <error type="question" id="ask-delete-feed" default="GTK_RESPONSE_CANCEL">
+-	<_title>Delete "{0}"?</_title>
+-	<_primary>Really delete feed '{0}'?</_primary>
++	<_title>Delete “{0}”?</_title>
++	<_primary>Really delete feed “{0}”?</_primary>
+ 	<button stock="gtk-cancel" response="GTK_RESPONSE_CANCEL"/>
+ 	<button stock="gtk-delete" response="GTK_RESPONSE_OK"/>
+ </error>
+diff --git a/src/rss-config-factory.c b/src/rss-config-factory.c
+index e4db056..24f92ce 100644
+--- a/src/rss-config-factory.c
++++ b/src/rss-config-factory.c
+@@ -2392,7 +2392,7 @@ decorate_import_fs (gpointer data)
+ 	vbox1 = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+ #endif
+ 	checkbutton1 = gtk_check_button_new_with_mnemonic (
+-			_("Show article's summary"));
++			_("Show article’s summary"));
+ 	gtk_widget_show (checkbutton1);
+ 	gtk_box_pack_start (
+ 		GTK_BOX (vbox1),
+@@ -2903,7 +2903,7 @@ export_opml(gchar *file)
+ 	struct tm *tmp;
+ 	FILE *f;
+ 
+-	gchar *msg = g_strdup(_("Exporting feeds..."));
++	gchar *msg = g_strdup(_("Exporting feeds…"));
+ #if EVOLUTION_VERSION < 22904
+ 	import_dialog = e_error_new(
+ 			GTK_WINDOW(rf->preferences),
+@@ -3056,7 +3056,7 @@ void
+ process_cookies(SoupCookieJar *jar)
+ {
+ 	GSList *list = NULL;
+-	gchar *msg = g_strdup(_("Importing cookies..."));
++	gchar *msg = g_strdup(_("Importing cookies…"));
+ 	GtkWidget *import_dialog, *import_label, *import_progress;
+ 	GtkWidget *content_area;
+ 
+diff --git a/src/rss.c b/src/rss.c
+index 469fdaf..ee78445 100644
+--- a/src/rss.c
++++ b/src/rss.c
+@@ -859,11 +859,11 @@ receive_cancel(GtkButton *button, struct _send_info *info)
+ #if EVOLUTION_VERSION < 30504
+ 		if (info->status_label)
+ 			gtk_label_set_markup (GTK_LABEL (info->status_label),
+-				_("Cancelling..."));
++				_("Cancelling…"));
+ #else
+ 		if (info->progress_bar)
+ 			gtk_progress_bar_set_text ((GtkProgressBar *)info->progress_bar,
+-				_("Cancelling..."));
++				_("Cancelling…"));
+ #endif
+ 		info->state = SEND_CANCELLED;
+ 		readrss_dialog_cb(NULL, NULL);
+@@ -1201,7 +1201,7 @@ EPopupItem rss_menu_items[] = {
+ 	{ E_POPUP_ITEM, "05.rss-browser.03", N_("Zoom _Out"), rss_popup_zoom_out, NULL, "zoom-out", EM_POPUP_URI_HTTP },
+ 	{ E_POPUP_ITEM, "05.rss-browser.04", N_("_Normal Size"), rss_popup_zoom_orig, NULL, "zoom-original", EM_POPUP_URI_HTTP },
+ 	{ E_POPUP_BAR, "05.rss-browser.05", NULL, NULL, NULL, NULL },
+-	{ E_POPUP_ITEM, "05.rss-browser.06", N_("_Print..."), NULL, NULL, "document-print", EM_POPUP_SELECT_ONE },
++	{ E_POPUP_ITEM, "05.rss-browser.06", N_("_Print…"), NULL, NULL, "document-print", EM_POPUP_SELECT_ONE },
+ 	{ E_POPUP_ITEM, "05.rss-browser.07", N_("Save _As"), NULL, NULL, "document-save-as", 0},
+ 	{ E_POPUP_BAR, "05.rss-browser.08", NULL, NULL, NULL, NULL },
+ 	{ E_POPUP_ITEM, "05.rss-browser.09", N_("_Open Link in Browser"), rss_popup_link_open, NULL, NULL, EM_POPUP_URI_HTTP },
+@@ -3634,7 +3634,7 @@ org_gnome_evolution_rss(void *ep, EMEventTargetSendReceive *t)
+ 		GTK_PROGRESS_BAR (progress_bar), TRUE);
+ 	gtk_progress_bar_set_text (
+ 		GTK_PROGRESS_BAR (progress_bar),
+-		_("Waiting..."));
++		_("Waiting…"));
+ 	gtk_widget_set_margin_bottom (progress_bar, 12);
+ 
+ 	cancel_button = gtk_button_new_with_mnemonic ("_Cancel");
+-- 
+2.16.4
+
+
+From 4cd2e87a9eb7be5446a9b3919166f8ef1d6571d1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Piotr=20Dr=C4=85g?= <piotrdrag@gmail.com>
+Date: Sun, 13 Nov 2016 18:49:58 +0100
+Subject: [PATCH 2/2] Remove markup from strings in UI files
+
+See https://wiki.gnome.org/Initiatives/GnomeGoals/RemoveMarkupInMessages
+
+https://bugzilla.gnome.org/show_bug.cgi?id=684121
+---
+ src/rss-html-rendering.ui | 30 +++++++++++++++++++----------
+ src/rss-main.ui           | 48 +++++++++++++++++++++++++++++++----------------
+ 2 files changed, 52 insertions(+), 26 deletions(-)
+
+diff --git a/src/rss-html-rendering.ui b/src/rss-html-rendering.ui
+index d1590a5..edf1c15 100644
+--- a/src/rss-html-rendering.ui
++++ b/src/rss-html-rendering.ui
+@@ -26,8 +26,10 @@
+                         <child>
+                           <object class="GtkLabel" id="label3">
+                             <property name="visible">True</property>
+-                            <property name="label" translatable="yes">&lt;b&gt;Engine: &lt;/b&gt;</property>
+-                            <property name="use_markup">True</property>
++                            <property name="label" translatable="yes">Engine: </property>
++                            <attributes>
++                              <attribute name="weight" value="bold"/>
++                            </attributes>
+                           </object>
+                           <packing>
+                             <property name="expand">False</property>
+@@ -69,8 +71,10 @@
+                             <child>
+                               <object class="GtkLabel" id="label6">
+                                 <property name="visible">True</property>
+-                                <property name="label" translatable="yes">&lt;b&gt;Minimum font size:&lt;/b&gt;</property>
+-                                <property name="use_markup">True</property>
++                                <property name="label" translatable="yes">Minimum font size:</property>
++                                <attributes>
++                                  <attribute name="weight" value="bold"/>
++                                </attributes>
+                               </object>
+                               <packing>
+                                 <property name="expand">False</property>
+@@ -223,8 +227,10 @@
+                         <child>
+                           <object class="GtkLabel" id="label2">
+                             <property name="visible">True</property>
+-                            <property name="label" translatable="yes">&lt;b&gt;Network timeout:&lt;/b&gt;</property>
+-                            <property name="use_markup">True</property>
++                            <property name="label" translatable="yes">Network timeout:</property>
++                            <attributes>
++                              <attribute name="weight" value="bold"/>
++                            </attributes>
+                           </object>
+                           <packing>
+                             <property name="expand">False</property>
+@@ -272,8 +278,10 @@
+             <child type="label">
+               <object class="GtkLabel" id="label1">
+                 <property name="visible">True</property>
+-                <property name="label" translatable="yes">&lt;b&gt;HTML Rendering&lt;/b&gt;</property>
+-                <property name="use_markup">True</property>
++                <property name="label" translatable="yes">HTML Rendering</property>
++                <attributes>
++                  <attribute name="weight" value="bold"/>
++                </attributes>
+               </object>
+             </child>
+           </object>
+@@ -331,8 +339,10 @@
+             <child type="label">
+               <object class="GtkLabel" id="label5">
+                 <property name="visible">True</property>
+-                <property name="label" translatable="yes">&lt;b&gt;Article Notification&lt;/b&gt;</property>
+-                <property name="use_markup">True</property>
++                <property name="label" translatable="yes">Article Notification</property>
++                <attributes>
++                  <attribute name="weight" value="bold"/>
++                </attributes>
+               </object>
+             </child>
+           </object>
+diff --git a/src/rss-main.ui b/src/rss-main.ui
+index bb15c25..a22853a 100644
+--- a/src/rss-main.ui
++++ b/src/rss-main.ui
+@@ -249,8 +249,10 @@
+                 <child>
+                   <object class="GtkLabel" id="label94">
+                     <property name="visible">True</property>
+-                    <property name="label" translatable="yes">&lt;b&gt;HTML Rendering&lt;/b&gt;</property>
+-                    <property name="use_markup">True</property>
++                    <property name="label" translatable="yes">HTML Rendering</property>
++                    <attributes>
++                      <attribute name="weight" value="bold"/>
++                    </attributes>
+                   </object>
+                   <packing>
+                     <property name="expand">False</property>
+@@ -379,8 +381,10 @@
+                         <property name="visible">True</property>
+                         <property name="xalign">0</property>
+                         <property name="yalign">0</property>
+-                        <property name="label" translatable="yes">&lt;span weight="bold"&gt;Start up&lt;/span&gt;</property>
+-                        <property name="use_markup">True</property>
++                        <property name="label" translatable="yes">Start up</property>
++                        <attributes>
++                          <attribute name="weight" value="bold"/>
++                        </attributes>
+                       </object>
+                       <packing>
+                         <property name="expand">False</property>
+@@ -520,8 +524,10 @@
+                     <property name="visible">True</property>
+                     <property name="xalign">0</property>
+                     <property name="yalign">0</property>
+-                    <property name="label" translatable="yes">&lt;span weight="bold"&gt;Feed display&lt;/span&gt;</property>
+-                    <property name="use_markup">True</property>
++                    <property name="label" translatable="yes">Feed display</property>
++                    <attributes>
++                      <attribute name="weight" value="bold"/>
++                    </attributes>
+                   </object>
+                   <packing>
+                     <property name="expand">True</property>
+@@ -619,8 +625,10 @@
+                     <property name="visible">True</property>
+                     <property name="xalign">0</property>
+                     <property name="yalign">0</property>
+-                    <property name="label" translatable="yes">&lt;span weight="bold"&gt;Feed enclosures&lt;/span&gt;</property>
+-                    <property name="use_markup">True</property>
++                    <property name="label" translatable="yes">Feed enclosures</property>
++                    <attributes>
++                      <attribute name="weight" value="bold"/>
++                    </attributes>
+                   </object>
+                   <packing>
+                     <property name="expand">True</property>
+@@ -1362,8 +1370,10 @@
+                     <property name="row_spacing">10</property>
+                     <child>
+                       <object class="GtkLabel" id="feed_name_label">
+-                        <property name="label" translatable="yes">&lt;b&gt;Feed Name: &lt;/b&gt;</property>
+-                        <property name="use_markup">True</property>
++                        <property name="label" translatable="yes">Feed Name: </property>
++                        <attributes>
++                          <attribute name="weight" value="bold"/>
++                        </attributes>
+                       </object>
+                       <packing>
+                         <property name="top_attach">2</property>
+@@ -1400,8 +1410,10 @@
+                     <child>
+                       <object class="GtkLabel" id="label18">
+                         <property name="visible">True</property>
+-                        <property name="label" translatable="yes">&lt;b&gt;Feed URL:&lt;/b&gt;</property>
+-                        <property name="use_markup">True</property>
++                        <property name="label" translatable="yes">Feed URL:</property>
++                        <attributes>
++                          <attribute name="weight" value="bold"/>
++                        </attributes>
+                         <property name="justify">right</property>
+                       </object>
+                       <packing>
+@@ -1453,8 +1465,10 @@
+                     </child>
+                     <child>
+                       <object class="GtkLabel" id="location_label">
+-                        <property name="label" translatable="yes">&lt;b&gt;Location:&lt;/b&gt;</property>
+-                        <property name="use_markup">True</property>
++                        <property name="label" translatable="yes">Location:</property>
++                        <attributes>
++                          <attribute name="weight" value="bold"/>
++                        </attributes>
+                       </object>
+                       <packing>
+                         <property name="top_attach">3</property>
+@@ -1925,8 +1939,10 @@
+                     <child type="label">
+                       <object class="GtkLabel" id="label9">
+                         <property name="visible">True</property>
+-                        <property name="label" translatable="yes">&lt;b&gt;Advanced options&lt;/b&gt;</property>
+-                        <property name="use_markup">True</property>
++                        <property name="label" translatable="yes">Advanced options</property>
++                        <attributes>
++                          <attribute name="weight" value="bold"/>
++                        </attributes>
+                       </object>
+                     </child>
+                   </object>
+-- 
+2.16.4
+

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>06922ffddbd1abf733c80c45bfe242eb</srcmd5>
+    <version>1.2.0~rc6</version>
+    <time>1496089145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>492168</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>15523ea47388d43640e93008c71c7417</srcmd5>
+    <version>1.2.0~rc7</version>
+    <time>1516711955</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.2.0~rc7</comment>
+    <requestid>560015</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ec9cc519e795c1ae3dadf1f25def8562</srcmd5>
+    <version>1.2.0~rc7</version>
+    <time>1531813253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622806</requestid>
+  </revision>
+</revisionlist>

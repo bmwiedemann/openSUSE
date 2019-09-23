@@ -1,0 +1,44 @@
+Index: grub-2.02~beta2/util/grub.d/10_linux.in
+===================================================================
+--- grub-2.02~beta2.orig/util/grub.d/10_linux.in
++++ grub-2.02~beta2/util/grub.d/10_linux.in
+@@ -31,7 +31,7 @@ CLASS="--class gnu-linux --class gnu --c
+ if [ "x${GRUB_DISTRIBUTOR}" = "x" ] ; then
+   OS=GNU/Linux
+ else
+-  OS="${GRUB_DISTRIBUTOR} GNU/Linux"
++  OS="${GRUB_DISTRIBUTOR}"
+   CLASS="--class $(echo ${GRUB_DISTRIBUTOR} | tr 'A-Z' 'a-z' | cut -d' ' -f1|LC_ALL=C sed 's,[^[:alnum:]_],_,g') ${CLASS}"
+ fi
+ 
+@@ -129,7 +129,7 @@ linux_entry ()
+   message="$(gettext_printf "Loading Linux %s ..." ${version})"
+   sed "s/^/$submenu_indentation/" << EOF
+ 	echo	'$(echo "$message" | grub_quote)'
+-	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ro ${args}
++	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ${args}
+ EOF
+   if test -n "${initrd}" ; then
+     # TRANSLATORS: ramdisk isn't identifier. Should be translated.
+Index: grub-2.02~beta2/util/grub.d/20_linux_xen.in
+===================================================================
+--- grub-2.02~beta2.orig/util/grub.d/20_linux_xen.in
++++ grub-2.02~beta2/util/grub.d/20_linux_xen.in
+@@ -31,7 +31,7 @@ CLASS="--class gnu-linux --class gnu --c
+ if [ "x${GRUB_DISTRIBUTOR}" = "x" ] ; then
+   OS=GNU/Linux
+ else
+-  OS="${GRUB_DISTRIBUTOR} GNU/Linux"
++  OS="${GRUB_DISTRIBUTOR}"
+   CLASS="--class $(echo ${GRUB_DISTRIBUTOR} | tr 'A-Z' 'a-z' | cut -d' ' -f1|LC_ALL=C sed 's,[^[:alnum:]_],_,g') ${CLASS}"
+ fi
+ 
+@@ -122,7 +122,7 @@ linux_entry ()
+         fi
+ 	multiboot	${rel_xen_dirname}/${xen_basename} placeholder ${xen_args} \${xen_rm_opts}
+ 	echo	'$(echo "$lmessage" | grub_quote)'
+-	module	${rel_dirname}/${basename} placeholder root=${linux_root_device_thisversion} ro ${args}
++	module	${rel_dirname}/${basename} placeholder root=${linux_root_device_thisversion} ${args}
+ EOF
+   if test -n "${initrd}" ; then
+     # TRANSLATORS: ramdisk isn't identifier. Should be translated.

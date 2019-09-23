@@ -1,0 +1,67 @@
+From 221dc7d785352a532264341785a779a3d3467f68 Mon Sep 17 00:00:00 2001
+From: Marek Kasik <mkasik@redhat.com>
+Date: Fri, 24 Mar 2017 14:26:57 +0100
+Subject: [PATCH] Fix showing of toolbar in fullscreen mode
+
+Draw children of ovBox when needed. Automatic drawing
+of subwindows of widgets was removed in Gtk+ commit
+580ea227a6bb19ad6c6d4766b3a36dbad24583f3
+(widget: Redo drawing code).
+
+https://bugzilla.gnome.org/show_bug.cgi?id=770484
+---
+ vinagre/view/ovBox.c | 31 +++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
+
+diff --git a/vinagre/view/ovBox.c b/vinagre/view/ovBox.c
+index 6f0ee73..3344871 100644
+--- a/vinagre/view/ovBox.c
++++ b/vinagre/view/ovBox.c
+@@ -459,6 +459,32 @@ ViewOvBoxUnrealize(GtkWidget *widget) // IN
+ 
+ }
+ 
++static gint
++ViewOvBoxDraw(GtkWidget *widget, // IN
++              cairo_t   *cr)     // IN
++{
++  ViewOvBox *that;
++  ViewOvBoxPrivate *priv;
++  int wx, wy;
++
++  that = VIEW_OV_BOX(widget);
++  priv = that->priv;
++
++  gdk_window_get_position (priv->underWin, &wx, &wy);
++  cairo_save (cr);
++  cairo_translate (cr, wx, wy);
++  gtk_widget_draw (priv->under, cr);
++  cairo_restore (cr);
++
++  gdk_window_get_position (priv->overWin, &wx, &wy);
++  cairo_save (cr);
++  cairo_translate (cr, wx, wy);
++  gtk_widget_draw (priv->over, cr);
++  cairo_restore (cr);
++
++  return FALSE;
++}
++
+ 
+ /*
+  *-----------------------------------------------------------------------------
+@@ -714,6 +740,11 @@ ViewOvBoxClassInit(ViewOvBoxClass *klass) // IN
+    widgetClass->size_allocate = ViewOvBoxSizeAllocate;
+    widgetClass->style_set = ViewOvBoxStyleSet;
+ 
++   if ((gtk_major_version > (3)) ||
++       (gtk_major_version == (3) && gtk_minor_version > (19)) ||
++       (gtk_major_version == (3) && gtk_minor_version == (19) && gtk_micro_version >= (7)))
++     widgetClass->draw = ViewOvBoxDraw;
++
+    klass->set_over = ViewOvBoxSetOver;
+ 
+    parentClass = g_type_class_peek_parent(klass);
+-- 
+2.12.1
+

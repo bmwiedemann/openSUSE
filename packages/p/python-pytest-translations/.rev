@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4643d44c9807ef9ba24226d46b01f640</srcmd5>
+    <version>2.0.0</version>
+    <time>1540819259</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-pytest-translations, required by python-Flask-Security, which is required by pgadmin4</comment>
+    <requestid>644604</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>826e66639777da54bfca442129e1b69a</srcmd5>
+    <version>2.0.0</version>
+    <time>1566479159</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner
+- Make sure the tests are executed properly</comment>
+    <requestid>725259</requestid>
+  </revision>
+</revisionlist>

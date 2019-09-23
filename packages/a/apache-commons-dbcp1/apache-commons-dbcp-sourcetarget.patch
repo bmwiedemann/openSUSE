@@ -1,0 +1,40 @@
+--- commons-dbcp-1.4-src/build.xml	2010-02-07 17:59:20.000000000 +0100
++++ commons-dbcp-1.4-src/build.xml	2018-12-13 17:31:58.987624926 +0100
+@@ -133,6 +133,7 @@
+       <property name="src.java.dir" value="${src.dir}/java"/>
+       <property name="src.test.dir" value="${src.dir}/test"/>
+       <property name="javac.source" value="1.4" />
++      <property name="javac.target" value="1.4" />
+ 
+       <mkdir dir="${src.dir}"/>
+       <copy todir="${src.dir}" filtering="yes">
+@@ -153,7 +154,8 @@
+       <property name="src.dir" value="${basedir}/src"/>
+       <property name="src.java.dir" value="${src.dir}/java"/>
+       <property name="src.test.dir" value="${src.dir}/test"/>
+-      <property name="javac.source" value="1.5" />
++      <property name="javac.source" value="1.7" />
++      <property name="javac.target" value="1.7" />
+    </target>
+ 
+    <target name="prepare" depends="init,prepare-nojdbc4,prepare-jdbc4"/>
+@@ -194,7 +196,8 @@
+              debug="${javac.debug}"
+              deprecation="${javac.deprecation}"
+              optimize="${javac.optimize}"
+-             source="${javac.source}">
++             source="${javac.source}"
++             target="${javac.target}">
+          <exclude name="org/apache/commons/dbcp/BasicDataSourceFactory.java"
+              unless="jndi.present"/>
+          <exclude name="org/apache/commons/dbcp/datasources/**"
+@@ -211,7 +214,8 @@
+              debug="${javac.debug}"
+              deprecation="${javac.deprecation}"
+              optimize="${javac.optimize}"
+-             source="${javac.source}">
++             source="${javac.source}"
++             target="${javac.target}">
+         <classpath>
+           <pathelement location="${build.classes.dir}" /> 
+           <pathelement location="${build.test-classes.dir}" /> 

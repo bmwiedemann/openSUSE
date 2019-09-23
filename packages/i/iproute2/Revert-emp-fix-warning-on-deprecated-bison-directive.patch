@@ -1,0 +1,28 @@
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Tue, 25 Nov 2014 08:39:36 +0100
+Subject: Revert "emp: fix warning on deprecated bison directive"
+Patch-mainline: Never, temporary workaround
+
+This reverts commit edd3979272e46d17456a4dabc3e9acf59e561d5a.
+
+For SLE11 only. Its bison [version 2.3] does not allow new syntax.
+---
+ tc/emp_ematch.y | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tc/emp_ematch.y b/tc/emp_ematch.y
+index 2e6cf3530ef2..753e3075df71 100644
+--- a/tc/emp_ematch.y
++++ b/tc/emp_ematch.y
+@@ -9,7 +9,7 @@
+ %locations
+ %token-table
+ %error-verbose
+-%name-prefix "ematch_"
++%name-prefix="ematch_"
+ 
+ %union {
+ 	unsigned int i;
+-- 
+2.14.1
+

@@ -1,0 +1,248 @@
+-------------------------------------------------------------------
+Tue Jul  2 18:40:00 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix failing builds with CMake 3.14 and later
+  Add fix_deprecated_FIND_PACKAGE_wxWidgets_usage.patch
+
+-------------------------------------------------------------------
+Sun Mar 24 00:01:04 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add conflicts for the legacy libOpenSceneGraph1-devel and
+  libOpenThreads1-devel packages, which install into the same location.
+
+-------------------------------------------------------------------
+Wed Oct 10 11:12:43 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 3.6.3
+  * big bunch of fixes for performance and compatibility
+  * fixes for crashes
+  * for details see Changelog
+
+-------------------------------------------------------------------
+Thu Jul 12 21:35:18 UTC 2018 - mimi.vx@gmail.com
+
+- update to 3.6.2
+  * Removed deprecated xine plugin to simplify licensing
+  * big bunch of fixes for performance and compatibility
+  * for details see Changelog
+
+-------------------------------------------------------------------
+Tue May 29 08:10:16 UTC 2018 - mimi.vx@gmail.com
+
+- update to bugfix release 3.6.1
+  * big bunch of fixes for performance and compatibility
+  * for details see Changelog
+
+-------------------------------------------------------------------
+Tue Apr 17 07:22:07 UTC 2018 - mimi.vx@gmail.com
+
+- update to 3.6.0
+- drop 8e26ebd23ef9_Fixed_coverity_detected_defect_OOB_read.patch
+- drop 01c712e85195_Explicit_signed_char_declarations.patch
+ * OpenThreads::Affinity introduced to enable setting of processor affinity
+      on viewer and database threads
+  * osgText rewritten to improve visual quality, add signed distance field
+      support and full GLES2/3 and GL3/4 support
+  * Added VertexArrayObject support, enable full OpenGL Core Profile support
+  * Added OpenCASCADE plugin
+  * Added STEP (.stp) plugin
+  * Improvements to FBX and COLLADA loaders
+  * Improvements to gles plugin to provide better Sketchfab support
+  * Added osgemscripten example
+  * Improvements to osgAnimation
+  * NodeVisitor ValueMap for storing values that can be stored and accessed
+      across frames, such as update, event and cull traversals
+  * ShapeDrawable rewritten as an osg::Geometry to improve performance and flexibility
+  * Added osg::MultiDrawArrays support
+  * Added osgdeferred example that illustrates how to implement deferred rendering
+  * Added MultiDrawIndirect support
+  * Moved glDispatchCompute control out of osg::Program into a dedicated
+      osg::DispatchCompute class to improve control of compute shaders
+  * KdTree support added for PolytopeIntersector, and ability to work with
+      points, lines and polygons
+  * osgQt has been moved out to it's own dedicated osgQt github repository
+  * CMake build support for iOS bitcode builds
+  * CoverityScan testing introduced, fixes bring defect density to 0.0 
+      per 1,0000 lines of code!
+
+
+-------------------------------------------------------------------
+Wed Feb 14 14:35:05 UTC 2018 - mimi.vx@gmail.com 
+
+- update to 3.4.1
+ * Improves to GLES support across platforms
+ * Full support for osgText and on screen stats across all platfroms
+ * Build fixes to allow compilation against recent
+     3rd party depdendency changes
+ * Range of runtime fixes
+
+-------------------------------------------------------------------
+Fri Dec 15 13:58:15 UTC 2017 - crrodriguez@opensuse.org
+
+- Switch to QT5, as QT4 is dead.
+- Remove manual requires on -devel package.
+
+-------------------------------------------------------------------
+Sat Aug 19 17:20:07 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Add 8e26ebd23ef9_Fixed_coverity_detected_defect_OOB_read.patch
+  Fix out-of-bound-read, also required for the next patch to apply
+- Add 01c712e85195_Explicit_signed_char_declarations.patch
+  Fix compilation on architectures where char is unsigned
+
+-------------------------------------------------------------------
+Sat Feb  4 01:29:01 UTC 2017 - jengelh@inai.de
+
+- Trim description
+
+-------------------------------------------------------------------
+Tue Aug 23 01:30:15 UTC 2016 - rpm@fthiessen.de
+
+- Fixed source url, required for factory submission
+
+-------------------------------------------------------------------
+Sun Jul 31 19:33:09 UTC 2016 - jengelh@inai.de
+
+- Rectify shared library package name
+
+-------------------------------------------------------------------
+Sat May 21 19:06:13 UTC 2016 - rpm@fthiessen.de
+
+- Fixed BuildRequires (libjasper, and gdal).
+
+-------------------------------------------------------------------
+Tue Nov 24 16:45:01 UTC 2015 - rpm@fthiessen.de
+
+- Update to 3.4.0
+- Removed OpenSceneGraph-gcc43.patch, not more needed
+- Removed OpenSceneGraph-libgif6.patch, fixed upstream
+
+-------------------------------------------------------------------
+Wed Nov 18 09:26:28 UTC 2015 - Rene.vanPaassen@gmail.com
+
+- Removed OpenSceneGraph-giflib.patch, patched upstream 
+
+-------------------------------------------------------------------
+Tue Nov 17 19:10:32 UTC 2015 - Rene.vanPaassen@gmail.com
+
+- Update to 3.2.3
+- fixes building osgearth 2.7.0 
+
+-------------------------------------------------------------------
+Wed Feb 11 12:44:34 UTC 2015 - mpluskal@suse.com
+
+- Update to 3.2.1:
+  * no changelog provided by upstream
+- Fix building with recent giflib (OpenSceneGraph-giflib.patch)
+
+-------------------------------------------------------------------
+Mon Jan  7 08:23:59 UTC 2014 - bruno@ioda-net.ch
+
+- update to 3.2.0 stable release
+  see http://svn.openscenegraph.org/osg/OpenSceneGraph/tags/OpenSceneGraph-3.2.1-rc1/ChangeLog
+- updated _opt_so_nr from 12 to 13
+- packaging 
+	make verbose 1 
+	use C(XX)_FLAGS_RELEASE for applying optflags correctly
+	fix some rpmlint warnings 
+- removed patches:
+  * OpenSceneGraph-xine12.patch : merged upstream
+- modified patches:
+  * OpenSceneGraph-libgif6.patch : partially merged upstream
+    First part redone against 3.2.0
+
+-------------------------------------------------------------------
+Thu Oct  3 12:23:10 UTC 2013 - seife+obs@b1-systems.com
+
+- libOpenThreads-devel does not have a huge dependency
+
+-------------------------------------------------------------------
+Wed Apr  3 08:07:16 UTC 2013 - joop.boonen@opensuse.org
+
+- Created OpenSceneGraph-libgif6.patch
+  Used Raymond Wooninck kdelibs patch as a template
+  https://git.reviewboard.kde.org/r/109478/ 
+
+-------------------------------------------------------------------
+Sun Sep 02 23:55:21 UTC 2012 - thorstenb@flightgear.org
+
+- Dropped gtk-glext install dependency for openSUSE factory
+
+-------------------------------------------------------------------
+Sun Sep 02 14:42:18 UTC 2012 - thorstenb@flightgear.org
+
+- Dropped gtk-glext dependency for openSUSE factory
+- Removed obsolete openSUSE versions from spec file
+
+-------------------------------------------------------------------
+Mon Jul 02 21:56:18 UTC 2012 - thorstenb@flightgear.org
+
+- Patch to compile with libxine >= 1.2.0
+
+-------------------------------------------------------------------
+Sun Feb 19 09:27:03 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Kill build-time dependency on XUL; it is nowhere referenced
+- Remove illegal Obsoletes/Provides (see shlib pol.)
+- Ensure pkgconfig symbols are generated
+
+-------------------------------------------------------------------
+Thu Sep  1 05:49:19 UTC 2011 - highwaystar.ru@gmail.com
+
+- update to 3.0.1 
+
+-------------------------------------------------------------------
+Sat Jul  2 16:58:37 UTC 2011 - jengelh@medozas.de
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)
+
+-------------------------------------------------------------------
+Tue Apr 13 00:00:00 UTC 2010 - toni@links2linux.de
+
+- update to 2.8.3
+- added docs
+- added ffmpeg based plugins
+- added gdal based plugins
+- split-off viewers (FLTK, QT, SDL, WX) to keep dependencies smaller
+- new sonames ==> libOpenSceneGraph65
+
+-------------------------------------------------------------------
+Tue Oct 27 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 2.8.2
+
+-------------------------------------------------------------------
+Thu May 21 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 2.8.1
+
+-------------------------------------------------------------------
+Fri Feb 13 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 2.8.0
+- new sonames ==> libOpenSceneGraph55
+
+-------------------------------------------------------------------
+Tue Oct 07 00:00:00 UTC 2008 - toni@links2linux.de
+
+- update to 2.6.1
+- new sonames ==> libOpenSceneGraph48
+
+-------------------------------------------------------------------
+Fri Aug 08 00:00:00 UTC 2008 - toni@links2linux.de
+
+- update to 2.6.0
+- new sonames ==> libOpenThreads11, libOpenSceneGraph44
+
+-------------------------------------------------------------------
+Mon May 12 00:00:00 UTC 2008 - toni@links2linux.de
+
+- update to 2.4.0
+- new sonames ==> libOpenThreads10, libOpenSceneGraph35
+
+-------------------------------------------------------------------
+Sat Feb 02 00:00:00 UTC 2008 - toni@links2linux.de
+
+- initial version 2.2

@@ -1,0 +1,11 @@
+<package name="perl-NetAddr-IP" project="openSUSE:Factory">
+  <title>Manages IPv4 and IPv6 addresses and subnets</title>
+  <description>This module provides an object-oriented abstraction on top of IP addresses
+or IP subnets, that allows for easy manipulations. Version 4.xx of
+NetAdder::IP will will work older versions of Perl and does *not* use
+Math::BigInt as in previous versions.
+
+The internal representation of all IP objects is in 128 bit IPv6 notation.
+IPv4 and IPv6 objects may be freely mixed.</description>
+  <devel project="devel:languages:perl" package="perl-NetAddr-IP"/>
+</package>

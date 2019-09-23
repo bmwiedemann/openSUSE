@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c99fdf70f1418622ec537f9c51f542cd</srcmd5>
+    <version>1.8.3</version>
+    <time>1503925873</time>
+    <user>dimstar_suse</user>
+    <comment>- pkg rename vaapi-intel-driver &gt; intel-vaapi-driver
+  * add Obsoletes/Provides
+  * add Supplements for xf86-video-intel
+
+That's the official name of the software project. No changes in the sources.
+Hope we don't need to go through legal review again ...
+
+vaapi-intel-driver needs to be dropped then.</comment>
+    <requestid>517524</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f5a2f995ce7dffbbf3b9b62c9aab27dd</srcmd5>
+    <version>1.8.3</version>
+    <time>1504103006</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unnecessary ldconfig calls.</comment>
+    <requestid>519471</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8f4d998a3b27211b35645362bcec1ccf</srcmd5>
+    <version>2.0.0</version>
+    <time>1510837441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542207</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d86ef57dce0068be3668f57fbc878389</srcmd5>
+    <version>2.1.0</version>
+    <time>1526022844</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605109</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a880ea9f775bc79eb6cfa0b22b82e4a7</srcmd5>
+    <version>2.1.0</version>
+    <time>1529402615</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617212</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>76022730b052c3ed374a11e886f79523</srcmd5>
+    <version>2.2.0</version>
+    <time>1542125017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0
+  * Bump version to 2.2.0
+  * Add new PCI ID for KBL-Y
+  * Add meson support
+  * Fix for VC1 decoding issues
+  * Fix VP8 encoding issues
+  * Fix the over-run issue in HEVC encoding
+  * Fix the max MV length in MPEG-2 encoding
+  * Fix packed header mode
+  * Fix building issue on Android</comment>
+    <requestid>648742</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4e792403a254f0f36b705786f4b915af</srcmd5>
+    <version>2.3.0</version>
+    <time>1546946903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663033</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ce97603aa88fb3a13f50197902f8b903</srcmd5>
+    <version>2.3.0</version>
+    <time>1551024961</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677712</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>46e8a80c22dc7f18ba777a74be37af2d</srcmd5>
+    <version>2.3.0</version>
+    <time>1553611353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685565</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,213 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>3ca1876457e9e75dbd56669ccb06f5c5</srcmd5>
+    <version>1.8.0.10</version>
+    <time>1243564648</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>3ca1876457e9e75dbd56669ccb06f5c5</srcmd5>
+    <version>1.8.0.10</version>
+    <time>1243564648</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>98a5e6c9df53fa28ca737093ced86f87</srcmd5>
+    <version>1.8.0.10</version>
+    <time>1268923950</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>98a5e6c9df53fa28ca737093ced86f87</srcmd5>
+    <version>1.8.0.10</version>
+    <time>1278667350</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>98a5e6c9df53fa28ca737093ced86f87</srcmd5>
+    <version>1.8.0.10</version>
+    <time>1278678581</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>2e303fd936875279c3b644f5005bbc75</srcmd5>
+    <version>1.8.0.10</version>
+    <time>1295283919</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58451 from user mvyskocil
+</comment>
+    <requestid>58451</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>54c438c5879f65b9edfd430b9615230f</srcmd5>
+    <version>1.8.0.10</version>
+    <time>1295283928</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58451
+</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>54c438c5879f65b9edfd430b9615230f</srcmd5>
+    <version>1.8.0.10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>54c438c5879f65b9edfd430b9615230f</srcmd5>
+    <version>1.8.0.10</version>
+    <time>1319181972</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>dcca0095c3430d3d1ccfd08946ba44d3</srcmd5>
+    <version>1.8.0.10</version>
+    <time>1323191902</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>0d6c7830d6a98c0735a78dc24f066420</srcmd5>
+    <version>1.8.0.10</version>
+    <time>1325660456</time>
+    <user>coolo</user>
+    <comment>- fix hsqldb_lic.txt packaged in hsqldb-manual and hsqldb (forwarded request 97046 from dirkmueller)</comment>
+    <requestid>98606</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9ddc7865d5d063ad3ead7e9ad400d101</srcmd5>
+    <version>1.8.1.13</version>
+    <time>1339781709</time>
+    <user>coolo</user>
+    <comment>- Update to 1.8.1.3
+  * adds support for fast closing of huge database files
+  * better query optimisation. 
+  * bugfixes
+- add maven pom
+- fix build with jdk7
+- run su with -s /bin/sh in initscript</comment>
+    <requestid>124693</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>9ddc7865d5d063ad3ead7e9ad400d101</srcmd5>
+    <version>1.8.1.13</version>
+    <time>1340183441</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>9ddc7865d5d063ad3ead7e9ad400d101</srcmd5>
+    <version>1.8.1.13</version>
+    <time>1359109053</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>77f77cdef1b98567080c5b19fd940dd3</srcmd5>
+    <version>2.2.9</version>
+    <time>1378899543</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198271</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>77f77cdef1b98567080c5b19fd940dd3</srcmd5>
+    <version>2.2.9</version>
+    <time>1379662622</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>77f77cdef1b98567080c5b19fd940dd3</srcmd5>
+    <version>2.2.9</version>
+    <time>1409301179</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>174234f8808d94423bc202798798c924</srcmd5>
+    <version>2.3.2</version>
+    <time>1422611977</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283135</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>9aa31a6d80db394042dd8c8e18a7908d</srcmd5>
+    <version>2.3.2</version>
+    <time>1427982964</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292615</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a3fae17be05af2a2c696d90178a0ce98</srcmd5>
+    <version>2.3.3</version>
+    <time>1439190697</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 2.3.3:
+  * Various serveral minor issues
+  * No obvious detailed changelog
+- Fix build with jdk8 by tweaking doclint:
+  * hsqldb-apidocs.patch</comment>
+    <requestid>319381</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>67271a49f708de4dcbf97584c70c9101</srcmd5>
+    <version>2.3.3</version>
+    <time>1496230182</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496719</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>cb5bdac6ca8b70444a817da58ec8ca36</srcmd5>
+    <version>2.3.3</version>
+    <time>1505333983</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>522229</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>de6c2f2758bacc83fdcdff17004983a7</srcmd5>
+    <version>2.3.3</version>
+    <time>1508508729</time>
+    <user>dimstar_suse</user>
+    <comment>Doclint is switched off by default</comment>
+    <requestid>533052</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>e88bb466b1784714233e657f7ccd0060</srcmd5>
+    <version>2.3.3</version>
+    <time>1512041991</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545041</requestid>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>ac3c8c2b93e233cec6ff10cb6943821d</srcmd5>
+    <version>2.3.3</version>
+    <time>1513941411</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk10</comment>
+    <requestid>557939</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f1a8389065f81744dd650fddc5767303</srcmd5>
+    <version>2.4.1</version>
+    <time>1532446385</time>
+    <user>dimstar_suse</user>
+    <comment>Adapt to the new augmented OpenJDK 11</comment>
+    <requestid>623088</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>baea608dfb8937bfbc4714421a3a6228</srcmd5>
+    <version>2.4.1</version>
+    <time>1561557665</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709511</requestid>
+  </revision>
+</revisionlist>

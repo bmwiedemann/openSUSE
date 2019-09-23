@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/boombatower/tumbleweed-cli.git</param>
+    <param name="changesrevision">3cdc47c852bf4de9799fcb587a3ec0215b922051</param>
+  </service>
+</servicedata>

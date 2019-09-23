@@ -1,0 +1,5 @@
+<package name="httperf" project="openSUSE:Factory">
+  <title></title>
+  <description>httperf is a tool for measuring web server performance. It provides a flexible facility for generating various HTTP workloads and for measuring server performance.</description>
+  <devel project="benchmark" package="httperf"/>
+</package>

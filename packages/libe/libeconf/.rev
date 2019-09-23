@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>32b29ab9fb740b863ab276c03c726474</srcmd5>
+    <version>0.0.0+git20190902.dd17c11</version>
+    <time>1567581152</time>
+    <user>dimstar_suse</user>
+    <comment>Fix Int64 handling on 32bit architectures</comment>
+    <requestid>727773</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0cfb71237afdc35cddd7e10878b2164d</srcmd5>
+    <version>0.3.0+git20190905.0ca8fe2</version>
+    <time>1567850032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728808</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b7611ec2c4a4f3c137d01d297347beef</srcmd5>
+    <version>0.3.0+git20190906.0e60a88</version>
+    <time>1568720200</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>730681</requestid>
+  </revision>
+</revisionlist>

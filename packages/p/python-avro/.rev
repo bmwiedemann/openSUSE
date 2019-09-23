@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>45ea834461708fb6f30a4fc0337927e3</srcmd5>
+    <version>1.8.2</version>
+    <time>1544094998</time>
+    <user>dimstar_suse</user>
+    <comment>serialization and RPC framework</comment>
+    <requestid>652759</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ca72e43801d6bef704a34c9743c3adbe</srcmd5>
+    <version>1.8.2</version>
+    <time>1548335666</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>667873</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7007812808f82c81a7e978a1ad14c4c1</srcmd5>
+    <version>1.9.0</version>
+    <time>1561195487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711314</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>45b69e1f14737dc290cb6486ac4fc2d4</srcmd5>
+    <version>1.9.1</version>
+    <time>1568623825</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.9.0:
+  * no upstream changelog</comment>
+    <requestid>730689</requestid>
+  </revision>
+</revisionlist>

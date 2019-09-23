@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Tue Apr 10 20:51:39 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group.
+
+-------------------------------------------------------------------
+Tue Apr 10 13:04:04 UTC 2018 - mpluskal@suse.com
+
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Mar  9 08:56:07 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-Firmware
+  Use SUSE-Firmware to describe firmware which can be freely distributed in
+  non-modifiable form. The SUSE- prefix should be used until SPDX.org
+  accept the license upstream
+
+-------------------------------------------------------------------
+Sat Feb 25 04:23:07 UTC 2012 - crrodriguez@opensuse.org
+
+- Use rpmoptflags 
+- Fix buffer overflow (!) in strncat usage
+  This library needs a full security review, code stinks.
+
+-------------------------------------------------------------------
+Sun Sep 18 00:03:13 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Add baselibs configuration
+
+-------------------------------------------------------------------
+Thu Mar 24 12:56:07 CET 2011 - tiwai@suse.de
+
+- Version 3.6.5:
+  Fix crash with two instances opened at the same time
+
+-------------------------------------------------------------------
+Mon Jan 24 18:57:07 UTC 2011 - andrea@opensuse.org
+
+- added crystalhd-libs-define-first.patch: this patch fix building
+  failures. bc_dts_defs.h us types defined into bc_dts_types.h that
+  was included after instead of before  
+
+-------------------------------------------------------------------
+Tue Dec  7 08:14:50 CET 2010 - tiwai@suse.de
+
+- Update to version 3.6.4: fix S3/S4 (bnc#639155, bnc#639156)
+
+-------------------------------------------------------------------
+Mon Nov 15 11:55:04 CET 2010 - dmueller@suse.de
+
+- make it exclusive for x86, x86_64 
+
+-------------------------------------------------------------------
+Fri Sep  3 14:08:07 CEST 2010 - tiwai@suse.de
+
+- initial version: 3.6.0
+

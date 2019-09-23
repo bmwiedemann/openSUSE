@@ -1,0 +1,463 @@
+From 9d6bd3190fbd74052976c4c36f105c6efd9e0fe7 Mon Sep 17 00:00:00 2001
+From: Yuri Chornoivan <yurchor@ukr.net>
+Date: Sat, 11 Aug 2018 20:38:18 +0300
+Subject: [PATCH 05/35] Fix minor EBN issues
+
+---
+ src/convert.cpp                            |  8 ++++----
+ src/dialogs/findfilesdialog.cpp            |  1 -
+ src/dialogs/latexcommanddialog.cpp         |  1 -
+ src/dialogs/listselector.cpp               | 16 ++++++++--------
+ src/dialogs/pdf-wizard/pdfdialog.cpp       | 12 ++++++------
+ src/dialogs/projectdialogs.cpp             |  6 +++---
+ src/dialogs/quickdocumentdialog.cpp        |  1 -
+ src/dialogs/userhelpdialog.cpp             |  1 -
+ src/dialogs/usermenu/usermenutree.cpp      |  4 ++--
+ src/errorhandler.cpp                       |  1 -
+ src/kileactions.cpp                        |  1 -
+ src/kileappIface.h                         |  2 +-
+ src/kiledocmanager.cpp                     |  4 ++--
+ src/kilehelp.cpp                           |  8 ++++----
+ src/kilestdtools.cpp                       |  2 +-
+ src/main.cpp                               |  2 +-
+ src/parser/latexoutputparser.cpp           |  4 ++--
+ src/scripting/script.cpp                   |  2 +-
+ src/symbolviewclasses.h                    |  4 ++--
+ src/usermenu/usermenu.cpp                  |  2 +-
+ src/widgets/codecompletionconfigwidget.cpp |  1 -
+ src/widgets/projectview.cpp                |  2 +-
+ 22 files changed, 39 insertions(+), 46 deletions(-)
+
+diff --git a/src/convert.cpp b/src/convert.cpp
+index 038f2588..edc88ece 100644
+--- a/src/convert.cpp
++++ b/src/convert.cpp
+@@ -59,11 +59,11 @@ QString ConvertMap::encodingNameFor(const QString & name)
+ 
+     std = std.toLower();
+ 
+-    if(std.startsWith("iso8859-")) {
++    if(std.startsWith(QLatin1String("iso8859-"))) {
+         return "latin" + std.right(1);
+     }
+ 
+-    if(std.startsWith("cp")) {
++    if(std.startsWith(QLatin1String("cp"))) {
+         return "cp" + std.right(4);
+     }
+ 
+@@ -81,11 +81,11 @@ QString ConvertMap::isoNameFor(const QString & name)
+ 
+     std = std.toLower();
+ 
+-    if(std.startsWith("latin")) {
++    if(std.startsWith(QLatin1String("latin"))) {
+         return "ISO 8859-" + std.right(1);
+     }
+ 
+-    if(std.startsWith("cp")) {
++    if(std.startsWith(QLatin1String("cp"))) {
+         return "cp " + std.right(4);
+     }
+ 
+diff --git a/src/dialogs/findfilesdialog.cpp b/src/dialogs/findfilesdialog.cpp
+index eb3ff75f..dd2b444c 100644
+--- a/src/dialogs/findfilesdialog.cpp
++++ b/src/dialogs/findfilesdialog.cpp
+@@ -69,7 +69,6 @@
+ #include <KUrlCompletion>
+ #include <KUrlRequester>
+ #include <KConfigGroup>
+-#include <QDialogButtonBox>
+ 
+ #include "kiledebug.h"
+ #include "kileconfig.h"
+diff --git a/src/dialogs/latexcommanddialog.cpp b/src/dialogs/latexcommanddialog.cpp
+index 6e37c7ee..dfa8de00 100644
+--- a/src/dialogs/latexcommanddialog.cpp
++++ b/src/dialogs/latexcommanddialog.cpp
+@@ -35,7 +35,6 @@
+ #include <QTabWidget>
+ #include <KConfigGroup>
+ #include <QDialogButtonBox>
+-#include <QPushButton>
+ 
+ #include "kileconfig.h"
+ #include "kiledebug.h"
+diff --git a/src/dialogs/listselector.cpp b/src/dialogs/listselector.cpp
+index 0be85afc..0798834a 100644
+--- a/src/dialogs/listselector.cpp
++++ b/src/dialogs/listselector.cpp
+@@ -203,8 +203,8 @@ void ManageCompletionFilesDialog::fillTreeView() {
+     std::sort(list.begin(), list.end());
+     m_listView->clear();
+     foreach(QString filename, list) {
+-        QString expectedLocalPath = m_localCompletionDirectory + "/" + filename;
+-        QString expectedGlobalPath = m_globalCompletionDirectory + "/" + filename;
++        QString expectedLocalPath = m_localCompletionDirectory + '/' + filename;
++        QString expectedGlobalPath = m_globalCompletionDirectory + '/' + filename;
+         if (QFileInfo(expectedLocalPath).exists() && QFileInfo(expectedLocalPath).isReadable()) {
+             QTreeWidgetItem* item = new QTreeWidgetItem(m_listView, QStringList() << filename << i18n("yes"));
+             item->setCheckState(2, previouslySelectedItems.contains(filename) ? Qt::Checked : Qt::Unchecked);
+@@ -235,14 +235,14 @@ void ManageCompletionFilesDialog::addCustomCompletionFiles()
+ 
+     foreach (QString file, files) {
+         QFileInfo fileInf(file);
+-        QFileInfo localFile(m_localCompletionDirectory + "/" + fileInf.fileName());
++        QFileInfo localFile(m_localCompletionDirectory + '/' + fileInf.fileName());
+         if (localFile.exists()) {
+-            const QString dialog_text = i18n("A local completion file with the name \"%1\" already exists.\nDo you want to replace this file?").arg(localFile.fileName());
++            const QString dialog_text = i18n("A local completion file with the name \"%1\" already exists.\nDo you want to replace this file?", localFile.fileName());
+             const QString dialog_caption = i18n("Replace Local File?");
+             if (KMessageBox::questionYesNo(this, dialog_text, dialog_caption) == KMessageBox::Yes) {
+                 if (!QFile::remove(localFile.absoluteFilePath())) {
+-                    KMessageBox::error(this, i18n("An error occurred while removing the file \"%1\".\nPlease check the file permissions.")
+-                                       .arg(localFile.fileName()), i18n("Remove Error"));
++                    KMessageBox::error(this, i18n("An error occurred while removing the file \"%1\".\nPlease check the file permissions.",
++                                       localFile.fileName()), i18n("Remove Error"));
+                     continue;
+                 }
+             }
+@@ -253,8 +253,8 @@ void ManageCompletionFilesDialog::addCustomCompletionFiles()
+         }
+         // Copy selected file to local directory.
+         if (!QFile::copy(fileInf.absoluteFilePath(),localFile.absoluteFilePath())) {
+-            KMessageBox::error(this, i18n("Cannot copy the file to the local directory!\nPlease check the access permissions of the directory \"%1\".")
+-                               .arg(localFile.absolutePath()), i18n("Copy Error"));
++            KMessageBox::error(this, i18n("Cannot copy the file to the local directory!\nPlease check the access permissions of the directory \"%1\".",
++                               localFile.absolutePath()), i18n("Copy Error"));
+         }
+         else {
+             // Add file to QTreeWidget or change status to local if a global file with the same name exists.
+diff --git a/src/dialogs/pdf-wizard/pdfdialog.cpp b/src/dialogs/pdf-wizard/pdfdialog.cpp
+index 836b7836..6abc5fac 100644
+--- a/src/dialogs/pdf-wizard/pdfdialog.cpp
++++ b/src/dialogs/pdf-wizard/pdfdialog.cpp
+@@ -473,7 +473,7 @@ void PdfDialog::readNumberOfPages(int scriptmode, const QString &output)
+     }
+     else {
+         QString s = output;
+-        numpages = s.remove("\n").toInt(&ok);
++        numpages = s.remove('\n').toInt(&ok);
+     }
+ 
+     setNumberOfPages(numpages);
+@@ -717,7 +717,7 @@ QString PdfDialog::readPermissions()
+     QString permissions;
+     for (int i = 0; i < m_pdfPermissionKeys.size(); ++i) {
+         if ( m_pdfPermissionWidgets.at(i)->isChecked() ) {
+-            permissions += m_pdfPermissionPdftk.at(i) + " ";
++            permissions += m_pdfPermissionPdftk.at(i) + ' ';
+         }
+     }
+     return permissions;
+@@ -805,7 +805,7 @@ void PdfDialog::slotTaskChanged(int)
+             s = i18n("All options for 'pdfpages'");
+             m_PdfDialog.m_edParameter->setValidator(0);
+         }
+-        m_PdfDialog.m_lbParamInfo->setText(" (" + s + ")");
++        m_PdfDialog.m_lbParamInfo->setText(" (" + s + ')');
+ 
+         m_PdfDialog.m_lbParameter->setText(labeltext);
+         m_PdfDialog.m_lbParameter->show();
+@@ -1499,7 +1499,7 @@ QString PdfDialog::buildPageList(bool even)
+ 
+     int start = ( even ) ? 2 : 1;
+     for (int i=start; i<=m_numpages; i+=2 ) {
+-        s += number.setNum(i) + ",";
++        s += number.setNum(i) + ',';
+     }
+ 
+     if ( !s.isEmpty() ) {
+@@ -1572,10 +1572,10 @@ QString PdfDialog::buildDeletePageList()
+         }
+         int to = searchPages(&arr,from+1,m_numpages,false) - 1;
+         if ( !result.isEmpty() ) {
+-            result += ",";
++            result += ',';
+         }
+         if ( from < to ) {
+-            result += QString::number(from) + "-" + QString::number(to);
++            result += QString::number(from) + '-' + QString::number(to);
+         }
+         else {
+             result += QString::number(from);
+diff --git a/src/dialogs/projectdialogs.cpp b/src/dialogs/projectdialogs.cpp
+index 8eafd539..c1b17cbf 100644
+--- a/src/dialogs/projectdialogs.cpp
++++ b/src/dialogs/projectdialogs.cpp
+@@ -89,7 +89,7 @@ KileProjectDialogBase::KileProjectDialogBase(const QString &caption, KileDocumen
+     // combo box for default graphics extension
+     m_defaultGraphicsExtensionCombo = new QComboBox(this);
+     KileDocument::Extensions extManager;
+-    QStringList imageExtensions = extManager.images().split(" ");
++    QStringList imageExtensions = extManager.images().split(' ');
+     foreach (const QString &extension, imageExtensions) {
+         const QString extName = extension.mid(1); // all characters right of "."
+         m_defaultGraphicsExtensionCombo->addItem(extension, extName);
+@@ -595,14 +595,14 @@ bool KileNewProjectDialog::testDirectoryIsUsable(const QDir& dir)
+ 
+     if (!dir.exists()) {
+         KMessageBox::error(this, i18n("<p>Could not create the project folder \"\n%1\"</p>."
+-                                      "<p>Please check whether you have write permissions.</p>").arg(dir.path()));
++                                      "<p>Please check whether you have write permissions.</p>", dir.path()));
+         return false;
+     }
+ 
+     QFileInfo fi(dir.absolutePath());
+     if (!fi.isDir() || !fi.isWritable()) {
+         KMessageBox::error(this, i18n("<p>The project folder \"(%1)\" is not writable.</p>"
+-                                      "<p>Please check the permissions of the project folder.</p>").arg(dir.path()));
++                                      "<p>Please check the permissions of the project folder.</p>", dir.path()));
+         return false;
+     }
+     return true;
+diff --git a/src/dialogs/quickdocumentdialog.cpp b/src/dialogs/quickdocumentdialog.cpp
+index 3fee343e..9915570e 100644
+--- a/src/dialogs/quickdocumentdialog.cpp
++++ b/src/dialogs/quickdocumentdialog.cpp
+@@ -42,7 +42,6 @@ copyright            : Thomas Fischer <t-fisch@users.sourceforge.net>
+ #include <QTabWidget>
+ #include <KConfigGroup>
+ #include <QDialogButtonBox>
+-#include <QPushButton>
+ 
+ #include "widgets/categorycombobox.h"
+ #include "kiledebug.h"
+diff --git a/src/dialogs/userhelpdialog.cpp b/src/dialogs/userhelpdialog.cpp
+index 1cdb2bac..1ee0a13e 100644
+--- a/src/dialogs/userhelpdialog.cpp
++++ b/src/dialogs/userhelpdialog.cpp
+@@ -32,7 +32,6 @@
+ #include <QUrl>
+ #include <KConfigGroup>
+ #include <QDialogButtonBox>
+-#include <QPushButton>
+ #include <QVBoxLayout>
+ #include <QFileDialog>
+ 
+diff --git a/src/dialogs/usermenu/usermenutree.cpp b/src/dialogs/usermenu/usermenutree.cpp
+index 59619a82..95d6914e 100644
+--- a/src/dialogs/usermenu/usermenutree.cpp
++++ b/src/dialogs/usermenu/usermenutree.cpp
+@@ -113,7 +113,7 @@ void UserMenuTree::initEnvPathlist()
+     // Returns the environment of the calling process as a list of key=value pairs.
+     QStringList environment = QProcess::systemEnvironment();
+     foreach ( const QString &s, environment ) {
+-        if ( s.startsWith("PATH=") ) {
++        if ( s.startsWith(QLatin1String("PATH=")) ) {
+             envpath = s.mid(5);
+             break;
+         }
+@@ -142,7 +142,7 @@ bool UserMenuTree::isItemExecutable(const QString &filename)
+ 
+     // search in all paths
+     for (int i=0; i<m_envPathlist.size(); ++i ) {
+-        bool executable = QFileInfo(m_envPathlist[i]+"/"+filename).isExecutable();
++        bool executable = QFileInfo(m_envPathlist[i]+'/'+filename).isExecutable();
+         if ( executable ) {
+             // move to front
+             if ( i > 0 ) {
+diff --git a/src/errorhandler.cpp b/src/errorhandler.cpp
+index f650a1bf..25d6d7c8 100644
+--- a/src/errorhandler.cpp
++++ b/src/errorhandler.cpp
+@@ -26,7 +26,6 @@
+ #include <KActionCollection>
+ #include <KLocalizedString>
+ #include <QUrl>
+-#include <QTabWidget>
+ #include <KTextEditor/Document>
+ #include <KTextEditor/View>
+ #include <KSelectAction>
+diff --git a/src/kileactions.cpp b/src/kileactions.cpp
+index 3be5e810..c373751d 100644
+--- a/src/kileactions.cpp
++++ b/src/kileactions.cpp
+@@ -41,7 +41,6 @@
+ #include <KIconLoader>
+ #include <KConfigGroup>
+ #include <QDialogButtonBox>
+-#include <QPushButton>
+ #include <QVBoxLayout>
+ #include <QFileDialog>
+ 
+diff --git a/src/kileappIface.h b/src/kileappIface.h
+index 46a13e41..3b17a045 100644
+--- a/src/kileappIface.h
++++ b/src/kileappIface.h
+@@ -19,7 +19,7 @@
+ #define KILEAPPIFACE_H
+ 
+ #include <QObject>
+-#include <QtDBus/QtDBus>
++#include <QtDBus>
+ 
+ /*
+  * 	This files servers as our source for the xml file net.sourceforge.kile.main.xml
+diff --git a/src/kiledocmanager.cpp b/src/kiledocmanager.cpp
+index 7c22338f..29e95f65 100644
+--- a/src/kiledocmanager.cpp
++++ b/src/kiledocmanager.cpp
+@@ -2493,8 +2493,8 @@ void Manager::deleteDocumentAndViewSettingsGroups(const QUrl &url)
+         if(!KSharedConfig::openConfig()->hasGroup(groupName)) { // 'groupName' might have been deleted
+             continue;                                       // work around bug 384039
+         }
+-        if(groupName.startsWith("Document-Settings")
+-                || groupName.startsWith("View-Settings")) {
++        if(groupName.startsWith(QLatin1String("Document-Settings"))
++                || groupName.startsWith(QLatin1String("View-Settings"))) {
+             int urlIndex = groupName.indexOf("URL=");
+             if(urlIndex >= 0 && groupName.mid(urlIndex + 4) == urlString) {
+                 KSharedConfig::openConfig()->deleteGroup(groupName);
+diff --git a/src/kilehelp.cpp b/src/kilehelp.cpp
+index 4496de23..440ece73 100644
+--- a/src/kilehelp.cpp
++++ b/src/kilehelp.cpp
+@@ -124,9 +124,9 @@ QString Help::locateTexLivePath(const QStringList &paths)
+     for (QStringList::ConstIterator it = paths.begin(); it != paths.end(); ++it) {
+         // Remove any leading or trailing ", this is commonly used in the environment variables
+         QString path = (*it);
+-        if (path.startsWith("\""))
++        if (path.startsWith('\"'))
+             path = path.right(path.length() - 1);
+-        if (path.endsWith("\""))
++        if (path.endsWith('\"'))
+             path = path.left(path.length() - 1);
+ 
+         if ( re.indexIn(path) > 0 ) {
+@@ -284,7 +284,7 @@ void Help::helpLatex(HelpType type)
+         default:
+             return;
+         }
+-        filename = m_latex2eReference + "#" + link;
++        filename = m_latex2eReference + '#' + link;
+     }
+ 
+     // show help file
+@@ -304,7 +304,7 @@ void Help::helpKeyword(KTextEditor::View *view)
+         KILE_DEBUG_MAIN << "about to show help for '" << word << "' (section " << m_dictHelpTex[word] << " )";
+ 
+         if ( m_contextHelpType == HelpLatex2eRefs ) {
+-            showHelpFile( m_latex2eReference + "#" + m_dictHelpTex[word] );
++            showHelpFile( m_latex2eReference + '#' + m_dictHelpTex[word] );
+         }
+         else if ( m_contextHelpType == HelpTexRefs ) {
+             showHelpFile( m_texdocPath + m_texrefsReference + m_dictHelpTex[word] );
+diff --git a/src/kilestdtools.cpp b/src/kilestdtools.cpp
+index 883b0378..7a60f324 100644
+--- a/src/kilestdtools.cpp
++++ b/src/kilestdtools.cpp
+@@ -534,7 +534,7 @@ void LaTeX::checkAutoRun()
+             Base *tool = manager()->createTool("Asymptote", QString());
+ 
+             if(tool) {
+-                configureAsymptote(tool, targetDir() + '/' + S() + "-" + QString::number(i + 1) + '.' + tool->from());
++                configureAsymptote(tool, targetDir() + '/' + S() + '-' + QString::number(i + 1) + '.' + tool->from());
+                 // e.g. for LivePreview, it is necessary that the paths are copied to child processes
+                 tool->copyPaths(this);
+                 runChildNext(tool);
+diff --git a/src/main.cpp b/src/main.cpp
+index e05c88ae..3b027160 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -42,7 +42,7 @@ Q_LOGGING_CATEGORY(LOG_KILE_CODECOMPLETION, "org.kde.kile.codecompletion", QtWar
+ 
+ bool isProject(const QUrl url)
+ {
+-    return url.fileName().endsWith(".kilepr");
++    return url.fileName().endsWith(QLatin1String(".kilepr"));
+ }
+ 
+ QString readDataFromStdin()
+diff --git a/src/parser/latexoutputparser.cpp b/src/parser/latexoutputparser.cpp
+index 9c60b421..a7d4de6c 100644
+--- a/src/parser/latexoutputparser.cpp
++++ b/src/parser/latexoutputparser.cpp
+@@ -155,7 +155,7 @@ void LaTeXOutputParser::updateFileStack(const QString &strLine, short& dwCookie)
+         //The partial filename was followed by '(', this means that TeX is signalling it is
+         //opening the file. We are sure the filename is complete now. Don't call updateFileStackHeuristic
+         //since we don't want the filename on the stack twice.
+-        if(strLine.startsWith('(') || strLine.startsWith("\\openout")) {
++        if(strLine.startsWith('(') || strLine.startsWith(QLatin1String("\\openout"))) {
+             //push the filename on the stack and mark it as 'reliable'
+             m_stackFile.push(LOFStackItem(strPartialFileName, true));
+ // 				qCDebug(LOG_KILE_PARSER) << "\tpushed : " << strPartialFileName << endl;
+@@ -170,7 +170,7 @@ void LaTeXOutputParser::updateFileStack(const QString &strLine, short& dwCookie)
+             strPartialFileName.clear();
+             detectError(strLine, dwCookie);
+         }
+-        else if(strLine.startsWith("No file")) {
++        else if(strLine.startsWith(QLatin1String("No file"))) {
+ // 				qCDebug(LOG_KILE_PARSER) << "No file: " << strLine << endl;
+             dwCookie = Start;
+             strPartialFileName.clear();
+diff --git a/src/scripting/script.cpp b/src/scripting/script.cpp
+index dcde7a4b..343ab431 100644
+--- a/src/scripting/script.cpp
++++ b/src/scripting/script.cpp
+@@ -131,7 +131,7 @@ Script::Script(unsigned int id, const QString& file)
+ {
+     m_name = QFileInfo(file).fileName();
+ 
+-    if(m_name.endsWith(".js")) { // remove the extension
++    if(m_name.endsWith(QLatin1String(".js"))) { // remove the extension
+         m_name = m_name.left(m_name.length() - 3);
+     }
+ }
+diff --git a/src/symbolviewclasses.h b/src/symbolviewclasses.h
+index 7ce8c140..894f5c1a 100644
+--- a/src/symbolviewclasses.h
++++ b/src/symbolviewclasses.h
+@@ -10,8 +10,8 @@
+ #ifndef SYMBOLVIEWCLASSES_H
+ #define SYMBOLVIEWCLASSES_H
+ 
+-#include <QtCore/QObject>
+-#include <QtCore/QString>
++#include <QObject>
++#include <QString>
+ 
+ struct Preamble {
+     QString className;
+diff --git a/src/usermenu/usermenu.cpp b/src/usermenu/usermenu.cpp
+index eeebf7b2..8588eca6 100644
+--- a/src/usermenu/usermenu.cpp
++++ b/src/usermenu/usermenu.cpp
+@@ -811,7 +811,7 @@ void UserMenu::execActionProgramOutput(KTextEditor::View *view, const UserMenuDa
+     }
+ 
+     // build commandline
+-    QString cmdline = menudata.filename + " " + menudata.parameter;
++    QString cmdline = menudata.filename + ' ' + menudata.parameter;
+     bool useTemporaryFile = cmdline.contains("%M");
+ 
+     bool needsSelection = menudata.needsSelection;
+diff --git a/src/widgets/codecompletionconfigwidget.cpp b/src/widgets/codecompletionconfigwidget.cpp
+index 3ef4f52b..59a37685 100644
+--- a/src/widgets/codecompletionconfigwidget.cpp
++++ b/src/widgets/codecompletionconfigwidget.cpp
+@@ -34,7 +34,6 @@
+ #include <KLocalizedString>
+ #include <KMessageBox>
+ #include <QPushButton>
+-#include <QTabWidget>
+ #include <KConfigGroup>
+ 
+ #include "dialogs/listselector.h"
+diff --git a/src/widgets/projectview.cpp b/src/widgets/projectview.cpp
+index 4e8cbc8b..03aad263 100644
+--- a/src/widgets/projectview.cpp
++++ b/src/widgets/projectview.cpp
+@@ -276,7 +276,7 @@ void ProjectView::slotClicked(QTreeWidgetItem *item)
+                 //determine mimeType and open file with preferred application
+                 QMimeDatabase db;
+                 QMimeType pMime = db.mimeTypeForUrl(itm->url());
+-                if(pMime.name().startsWith("text/")) {
++                if(pMime.name().startsWith(QLatin1String("text/"))) {
+                     emit(fileSelected(itm->url()));
+                 }
+                 else {
+-- 
+2.20.1
+

@@ -1,0 +1,6 @@
+<package name="powerpc-utils-python" project="openSUSE:Factory">
+  <title>powerpc-utils-python</title>
+  <description>This package contains Pthon based utilities which are intended for maintenance
+of IBM powerpc platforms.</description>
+  <devel project="hardware" package="powerpc-utils-python"/>
+</package>

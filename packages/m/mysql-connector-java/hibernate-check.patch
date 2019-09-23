@@ -1,0 +1,32 @@
+Description: Do not compile MultiTenantConnectionProvider since it requires Hibernate 4 which isn't in Debian yet
+Author: Emmanuel Bourg <ebourg@apache.org>
+Forwarded: not-needed
+--- a/build.xml
++++ b/build.xml
+@@ -244,6 +244,7 @@
+                 </not>
+             </condition>
+         </fail>
++<!--
+         <fail message="Hibernate libraries, required for build tasks, must be in the directory '${com.mysql.jdbc.extra.libs}/hibernate4'.">
+             <condition>
+                 <not>
+@@ -251,6 +252,7 @@
+                 </not>
+             </condition>
+         </fail>
++-->
+     </target>
+ 
+ 
+@@ -889,8 +891,10 @@
+                bootclasspath="${com.mysql.jdbc.jre6.rtjar}"
+                source="1.6"
+                target="1.6">
++<!--
+             <include name="**/FabricMultiTenantConnectionProvider.java" />
+             <include name="**/HibernateFabric.java" />
++-->
+             <include name="**/JDBC4*.java" />
+             <exclude name="**/JDBC42*.java" />
+             <include name="com/mysql/jdbc/exceptions/jdbc4/*" />

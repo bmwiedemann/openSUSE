@@ -1,0 +1,2539 @@
+-------------------------------------------------------------------
+Thu Feb  7 16:01:27 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Remove requirements on upower: it is long deprecated and there
+  is no longer a Qt4 based desktop to use it (boo#1124573)
+
+-------------------------------------------------------------------
+Mon Oct  1 12:03:07 UTC 2018 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add 0001-Fix-the-smbclient-4.9-check.patch to fix the libsmbclient
+  symbols check in kdebase4-runtime.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Sat Dec 16 13:17:50 UTC 2017 - fabian@ritter-vogt.de
+
+- Do not build against QCA
+
+-------------------------------------------------------------------
+Tue Dec 12 15:34:02 UTC 2017 - wbauer@tmo.at
+
+- Add 0001-Make-kssl-compile-against-OpenSSL-1.1.0.patch (backported
+  from KF5's kdelibs4support) to allow building with openSSL 1.1.0
+
+-------------------------------------------------------------------
+Sun Dec 10 13:12:59 UTC 2017 - dimstar@opensuse.org
+
+- Escape the usage of %{VERSION} when calling out to rpm.
+  RPM 4.14 has %{VERSION} defined as 'the main packages version'.
+
+-------------------------------------------------------------------
+Sat Dec  2 16:46:52 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to not build against Qt4 WebKit:
+  * Skip-qtwebkit-parts.patch
+  * Vade retro satana
+
+-------------------------------------------------------------------
+Thu Nov 09 23:13:38 CET 2017 - lbeltrame@kde.org
+
+- Update to 4.14.38
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 4.14.37:
+  * Prepare for 4.14.38
+
+-------------------------------------------------------------------
+Tue Oct 17 07:58:31 UTC 2017 - wbauer@tmo.at
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 4.14.35:
+  * Fix build with >=enchant-2
+
+-------------------------------------------------------------------
+Fri Aug 11 23:32:45 UTC 2017 - christophe@krop.fr
+
+- Update to 17.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 4.14.34:
+  * Support SVG in Konqueror's about page
+  * [cmake]: De-duplicate "else" to fix build with cmake-3.9
+
+-------------------------------------------------------------------
+Sat Jul 15 23:01:55 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 4.14.33:
+  * Prepare for 4.14.34
+
+-------------------------------------------------------------------
+Wed Jun 07 17:43:06 CEST 2017 - lbeltrame@kde.org
+
+- Update to 4.14.33
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 4.14.32:
+  * Prepare for 4.14.33
+
+-------------------------------------------------------------------
+Wed May 17 20:38:06 CEST 2017 - lbeltrame@kde.org
+
+- Update to 4.14.32
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 4.14.31:
+  * Verify that whoever is calling us is actually who he says he is
+  * Prepare for 4.14.32
+  * http slave: send error page after authorization failure (kde#373323)
+- Drop upstreamed patches:
+  * fix-kauth-bypass-CVE-2017-8422.patch
+
+-------------------------------------------------------------------
+Wed May  3 12:02:09 UTC 2017 - alarrosa@suse.com
+
+- Add fix-kauth-bypass-CVE-2017-8422.patch to fix an exploit
+  against kauth that would allow to bypass it (bsc#1036244,
+  CVE-2017-8422)
+
+-------------------------------------------------------------------
+Sun Apr 16 11:10:22 CEST 2017 - lbeltrame@kde.org
+
+- Update to 4.14.31
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.php
+- Changes since 4.14.30:
+  * Prepare for 4.14.31
+  * khtml: Delete pointer _before_ returning.
+
+
+-------------------------------------------------------------------
+Wed Apr 12 20:25:28 CEST 2017 - lbeltrame@kde.org
+
+  * Update to 17.03.90
+
+-------------------------------------------------------------------
+Thu Mar  9 18:57:57 UTC 2017 - alarrosa@suse.com
+
+- Drop kio-sanitize-url-for-proxy.patch which was merged upstream
+
+-------------------------------------------------------------------
+Thu Mar  9 12:46:33 CET 2017 - lbeltrame@kde.org
+
+- Update to 4.14.30
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 4.14.29:
+  * Prepare for 4.14.30
+  * Sanitize URLs before passing them to FindProxyForURL
+
+
+-------------------------------------------------------------------
+Wed Mar  1 20:55:31 UTC 2017 - fabian@ritter-vogt.de
+
+- Add upstream patch to fix kio security issue (boo#1027520)
+  * kio-sanitize-url-for-proxy.patch
+
+-------------------------------------------------------------------
+Thu Feb  9 07:29:12 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Sat Jan 14 10:04:42 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+-------------------------------------------------------------------
+Tue Dec 13 20:12:58 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to version 4.14.27
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Wed Nov  9 06:10:50 UTC 2016 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.08.3
+  * KDE Applications 16.08.3
+  * https://www.kde.org/announcements/announce-applications-16.08.3.php
+
+-------------------------------------------------------------------
+Tue Oct 11 20:47:44 UTC 2016 - lbeltrame@kde.org
+
+- KDE Applications 16.08.2
+https://www.kde.org/announcements/announce-applications-16.08.2.php
+
+- Drop upstreamed patch omit-strigi.patch
+
+-------------------------------------------------------------------
+Fri Sep  9 08:10:47 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to 4.14.24
+   * KDE Applications 16.08.1
+   * https://www.kde.org/announcements/announce-applications-16.08.1.php
+
+- Drop upstreamed patch KDE_HAVE_GCC_VISIBILITY-fix.patch
+
+-------------------------------------------------------------------
+Sat Aug 14 18:26:16 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to 4.14.23
+   * KDE Applications 16.08.0
+   * https://www.kde.org/announcements/announce-applications-16.08.0.php
+
+- Add upstream patch KDE_HAVE_GCC_VISIBILITY-fix.patch to fix the
+  value so that GCC6 is taken into account
+
+-------------------------------------------------------------------
+Tue Aug  9 09:26:23 UTC 2016 - adrian@suse.de
+
+- get rid of opensuse_bs macro
+
+-------------------------------------------------------------------
+Tue Jun 14 22:20:46 UTC 2016 - wbauer@tmo.at
+
+- Use shared-mime-info macros (boo#979301)
+
+-------------------------------------------------------------------
+Fri Jun 10 18:26:16 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to 4.14.21
+   * KDE Applications 16.04.2
+   * https://www.kde.org/announcements/announce-applications-16.04.2.php
+
+
+-------------------------------------------------------------------
+Wed May 25 07:55:08 UTC 2016 - martin.liska@suse.com
+
+- Add patch gcc6-fix-errors.patch to fix errors reported by GCC6.
+
+-------------------------------------------------------------------
+Sun Apr 17 06:42:39 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to 4.14.19
+   * KDE Applications 16.04.0
+   * https://www.kde.org/announcements/announce-applications-16.04.0.php
+
+
+-------------------------------------------------------------------
+Sun Mar 13 15:55:15 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to 4.14.18
+   * KDE Applications 15.12.3
+   * https://www.kde.org/announcements/announce-applications-15.12.3.php
+   * boo#970855
+
+
+-------------------------------------------------------------------
+Sat Feb 13 08:07:30 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to 4.14.17
+   * KDE Applications 15.12.2
+   * https://www.kde.org/announcements/announce-applications-15.12.2.php
+   * boo#966605
+
+
+-------------------------------------------------------------------
+Sun Jan 31 20:45:01 UTC 2016 - tittiatcoke@gmail.com
+
+- Add patch omit-strigi.patch to make strigi optional. For the
+  Plasma5 desktop this is no longer needed/used and it would
+  make it possible to drop the strigi package
+
+-------------------------------------------------------------------
+Sat Jan  9 18:50:38 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to 4.14.16
+   * KDE Applications 15.12.1
+   * https://www.kde.org/announcements/announce-applications-15.12.1.php
+   * boo#961265
+
+- Drop upstream patch bko355275.patch
+
+-------------------------------------------------------------------
+Fri Jan 8 19:40:07 UTC 2016 - tittiatcoke@gmail.com
+
+- Drop support for Nepomuk which is no longer used
+
+-------------------------------------------------------------------
+Thu Jan 7 13:40:07 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to 4.14.15
+   * KDE Applications 15.12.0
+   * https://www.kde.org/announcements/announce-applications-15.12.0.php
+   * boo#958887
+
+- Included upstream patch bko355275.patch to resolve the issue
+  with Kopete crashing when closing windows. (bko#355275)
+
+-------------------------------------------------------------------
+Wed Dec  9 12:27:46 UTC 2015 - tchvatal@suse.com
+
+- Use yast2 sw_single package instead of invoking zypper in
+  interactive mode. bnc#858018
+
+-------------------------------------------------------------------
+Tue Nov 10 20:56:07 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to 4.14.14
+   * KDE Applications 15.08.3
+   * https://www.kde.org/announcements/announce-applications-15.08.3.php
+   * boo#954531
+
+- Drop upstreamed patches:
+  * sync-with-upstream-FindGettext.patch
+  * Give-unique-names-to-the-targets-created-by-KDE4Macros.cmake.patch
+
+-------------------------------------------------------------------
+Fri Oct  9 17:13:31 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update sync-with-upstream-FindGettext.patch to remain compatible
+  with all users of kdelibs' module
+
+-------------------------------------------------------------------
+Thu Oct  8 16:38:24 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added patches to fix build for users of KDE4Macros and FindGettext
+  kdelibs' (> 4.14.11, where CMP0002 is set to NEW) modules:
+  sync-with-upstream-FindGettext.patch
+  Give-unique-names-to-the-targets-created-by-KDE4Macros.cmake.patch
+
+-------------------------------------------------------------------
+Sun Sep 20 18:50:02 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to 4.14.12
+   * KDE Applications 15.08.1
+   * https://www.kde.org/announcements/announce-applications-15.08.1.php
+
+
+-------------------------------------------------------------------
+Mon Aug 24 16:57:28 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to 4,14,11
+   * KDE Applications 15.08.0
+   * https://www.kde.org/announcements/announce-applications-15.08.0.php
+
+
+-------------------------------------------------------------------
+Mon Jul  6 06:20:48 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to 4.14.10
+   * KDE Applications 15.04.3
+   * https://www.kde.org/announcements/announce-applications-15.04.3.php
+
+
+-------------------------------------------------------------------
+Sat May 30 13:18:20 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to 4.14.9
+   * KDE Applications 15.04.2
+   * https://www.kde.org/announcements/announce-applications-15.04.2.php
+
+
+-------------------------------------------------------------------
+Mon May 11 10:40:31 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to 4.14.8
+   * KDE Applications 15.04.1
+   * https://www.kde.org/announcements/announce-applications-15.04.1.php
+
+
+-------------------------------------------------------------------
+Mon May 11 10:39:34 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.1
+   * KDE Applications 15.04.1
+   * https://www.kde.org/announcements/announce-applications-15.04.1.php
+
+
+-------------------------------------------------------------------
+Sat Apr 11 14:01:47 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to 4.14.7
+  * KDE Applications 15.04.0
+  * See https://www.kde.org/announcements/announce-applications-15.04.0.php
+
+-------------------------------------------------------------------
+Tue Mar  3 10:10:28 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to 4.14.6
+   * KDE Applications 14.12.3
+   * See https://www.kde.org/announcements/announce-applications-14.12.3.php
+
+-------------------------------------------------------------------
+Sun Feb  1 10:18:53 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to 4.14.5
+   * KDE Applications 14.12.2
+   * See https://www.kde.org/announcements/announce-applications-14.12.2.php
+
+-------------------------------------------------------------------
+Mon Jan 12 19:24:16 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to 4.14.4
+   * KDE Applications 14.12.1
+   * See https://www.kde.org/announcements/announce-applications-14.12.1.php
+- Drop upstreamed patch boo907135.patch
+
+-------------------------------------------------------------------
+Wed Nov 26 13:21:34 UTC 2014 - tittiatcoke@gmail.com
+
+- Add patch boo907135.patch to resolve crashes for Konqueror as
+  reported with boo#907135
+
+-------------------------------------------------------------------
+Tue Nov 18 10:23:11 UTC 2014 - wbauer@tmo.at
+
+- ksuseinstall.diff: use zypper instead of yast to install packages.
+  "yast -i" is deprecated, and just calls "zypper --non-interactive install"
+  on 13.2. But this fails to install the packages when there are
+  conflicts (e.g. a vendor change is needed), so added the
+  "--force-resolution" option as well. (boo#858018)
+
+-------------------------------------------------------------------
+Sat Nov 15 15:20:56 UTC 2014 - wbauer@tmo.at
+
+- adapt ksuseinstall to changes in zypper's output in openSUSE 13.1.
+  This fixes the installation of packages. (boo#858018)
+
+-------------------------------------------------------------------
+Mon Nov 10 02:20:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post/postun scripts
+
+-------------------------------------------------------------------
+Sun Nov  9 20:23:05 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.14.3
+   * KDE 4.14.3 SC Bugfix Release
+   * See http://www.kde.org/announcements/announce-4.14.3.php
+
+- Drop patch utilize_xdg_runtime_dir.patch due to upstream inclusion
+-------------------------------------------------------------------
+Sun Oct 12 11:58:31 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.14.2
+   * KDE 4.14.2 SC Bugfix Release
+   * See http://www.kde.org/announcements/announce-4.14.2.php
+- Add upstream patch utilize_xdg_runtime_dir.patch to create
+  temporary sockets in the XDG_RUNTIME_DIR. This should make
+  the system more responsive during high IO load
+
+-------------------------------------------------------------------
+Sat Sep 13 16:20:09 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.14.1
+   * KDE 4.14.1 SC Bugfix Release
+   * See http://www.kde.org/announcements/announce-4.14.1.php
+
+-------------------------------------------------------------------
+Fri Aug 15 08:16:44 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.14.0
+   * KDE 4.14.0 SC Final Release
+   * See http://www.kde.org/announcements/4.14/
+
+-------------------------------------------------------------------
+Thu Jul 17 16:47:38 UTC 2014 - cgiboudeaux@gmx.com
+
+- Update to 4.13.90
+   * KDE 4.14 Beta 2 release
+   * See http://www.kde.org/announcements/announce-4.14-beta2.php
+
+-------------------------------------------------------------------
+Thu Jul 10 22:29:10 UTC 2014 - cgiboudeaux@gmx.com
+
+- Update to 4.13.80
+   * KDE 4.14 Beta 1 release
+   * See http://www.kde.org/announcements/announce-4.14-beta1.php
+- Drop silence-warnings-with-cmake-3.patch (fixed upstream)
+- Drop CVE-2014-3494.diff (fixed upstream)
+
+-------------------------------------------------------------------
+Thu Jun 19 10:27:15 UTC 2014 - tittiatcoke@gmail.com
+
+- Add CVE-2014-3494.diff to fix a security issue that was detected.
+  The issue would make a man-in-the-middle attack possible on pop3
+  account passwords.
+
+-------------------------------------------------------------------
+Sun Jun  8 18:27:15 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.13.2
+   * KDE 4.13  release
+   * See http://www.kde.org/announcements/announce-4.13.2.php
+- Drop avoid-automounting.patch due to upstream inclusion
+
+-------------------------------------------------------------------
+Sat May 24 23:25:09 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added 0001-Drop-Nepomuk-from-KParts-LINK_INTERFACE_LIBRARIES.patch:
+  Nepomuk is only used in a private header, browserrun_p.h, thus it
+  is not needed as KParts public dependancy; makes it possible to
+  drop libsoprano-devel from libkde4-devel Requires
+
+-------------------------------------------------------------------
+Sat May 24 18:35:28 UTC 2014 - wbauer@tmo.at
+
+- Revert upstream commit avoid-automounting.patch (to avoid
+  auto-mounting in KDiskFreeSpaceInfo::freeSpaceInfo) as it caused
+  a regression (kde#334776)
+
+-------------------------------------------------------------------
+Sat May 24 14:21:17 UTC 2014 - tittiatcoke@gmail.com
+
+- Drop openSUSE patch make-strigi-optional.patch to restore
+  the old kio behavior again to show file information during
+  copy actions. (bnc#879506)
+
+-------------------------------------------------------------------
+Fri May  9 16:39:26 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.13.1
+   * KDE 4.13.1  bug fix release
+   * See http://www.kde.org/announcements/announce-4.13.1.php
+
+-------------------------------------------------------------------
+Sun May  4 00:28:57 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Cut down Requires of devel subpackage, as those libraries are used
+  privately: OpenEXR-devel, avahi-compat-mDNSResponder-devel,
+  enchant-devel, giflib-devel, libacl-devel, libattica-devel,
+  libbz2-devel, libidn-devel, libpolkit-qt-1-devel, libxslt-devel,
+  pcre-devel and pkgconfig(libxml-2.0)
+  * This on average reduces number of installed packages that need
+    libkde4-devel as BuildRequires by 40
+
+-------------------------------------------------------------------
+Thu May  1 23:18:42 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added silence-warnings-with-cmake-3.patch: since cmake 3.0 use of
+  the LOCATION target property is disallowed while it is used in
+  KDE4Macros.cmake -- makes build logs more readable
+
+-------------------------------------------------------------------
+Tue Apr 15 09:32:22 UTC 2014 - sweet_f_a@gmx.de
+
+- remove unused and unmaintained ssl certificates (bnc#873680)
+
+-------------------------------------------------------------------
+Fri Apr 11 16:42:45 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.13.0
+   * KDE 4.13  release
+   * See http://www.kde.org/announcements/4.13/
+
+-------------------------------------------------------------------
+Thu Mar 27 17:36:42 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.97
+   * KDE 4.13 RC  release
+   * See http://www.kde.org/announcements/announce-4.13-rc.php
+
+-------------------------------------------------------------------
+Thu Mar 20 18:02:42 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.95
+   * KDE 4.13 Beta 3  release
+   * See http://www.kde.org/announcements/announce-4.13-beta3.php
+
+-------------------------------------------------------------------
+Thu Mar 13 20:06:10 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.90
+   * KDE 4.13 Beta 2  release
+   * See http://www.kde.org/announcements/announce-4.13-beta2.php
+
+-------------------------------------------------------------------
+Fri Mar  7 09:55:47 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.80
+   * KDE 4.13 Beta 1  release
+   * See http://www.kde.org/announcements/announce-4.13-beta1.php
+
+- Added openSUSE patches make-strigi-optional.patch and
+  0001-Ommit-Solid-s-qDebug-and-qWarning-messages.patch
+
+-------------------------------------------------------------------
+Sat Feb  1 10:07:12 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.2
+   * KDE 4.12.2  release
+   * See http://www.kde.org/announcements/announce-4.12.2.php
+
+- Drop upstreamed patch
+   * 0001-Fix-display-of-interlaced-GIF-images-with-giflib-v5.patch
+
+-------------------------------------------------------------------
+Tue Jan 21 10:10:35 UTC 2014 - wbauer@tmo.at
+
+- Added 0001-Fix-display-of-interlaced-GIF-images-with-giflib-v5.patch:
+  With giflib v5 GIF images don't need to be deinterlaced manually,
+  fixes display of interlaced GIF images in KHTML on 13.1 (kde#330148)
+
+-------------------------------------------------------------------
+Sat Jan 11 15:32:25 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.1
+   * KDE 4.12.1  release
+   * See http://www.kde.org/announcements/announce-4.12.1.php
+
+-------------------------------------------------------------------
+Thu Jan  9 13:52:12 UTC 2014 - idonmez@suse.com
+
+- Remove gamin-devel dependency, KDirWatch can use in-kernel inotify
+  functionality instead.
+
+-------------------------------------------------------------------
+Wed Jan  8 13:53:33 UTC 2014 - adrian@suse.de
+
+- use gamin-devel instead of unmaintained fam(-devel) package
+
+-------------------------------------------------------------------
+Sat Dec 14 18:00:14 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.12.0
+   * KDE 4.12.0  release
+   * See http://www.kde.org/announcements/4.12.php
+
+-------------------------------------------------------------------
+Mon Dec  9 21:54:21 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Small cleanup:
+   * Remove {?sles_version} and unsupported %{suse_version} checks
+   * Remove rpmlintrc file, it was used only for sles
+   * Remove alsa-devel and cups-devel requires from devel package,
+     they are not needed
+   * Remove grantlee-devel BuildRequires, it is needed only for tests,
+     which we don't build
+   * Adapt BuildRequires, and Requires to current requirements, as per
+     CMakeLists.txt
+   * Drop dubious kderev define
+   * Delete unused 0001-verbose.patch
+
+-------------------------------------------------------------------
+Fri Nov 29 06:59:36 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.97
+   * KDE 4.12 RC 1 release
+   * See http://www.kde.org/announcements/announce-4.12-rc.php
+
+-------------------------------------------------------------------
+Fri Nov 29 06:55:14 UTC 2013 - tittiatcoke@gmail.com
+
+- Drop patch fix_kio_global_qfile_include.patch due to upstream
+  inclusion
+
+-------------------------------------------------------------------
+Sun Nov 24 15:22:18 UTC 2013 - ctrippe@opensuse.org
+
+- Add fix_kio_global_qfile_include.patch to change the include of
+  QFile in kio/kio/global.h to be consistent with the other Qt includes
+
+-------------------------------------------------------------------
+Sat Nov 23 22:14:13 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.95
+   * KDE 4.12 Beta 3 release
+   * See http://www.kde.org/announcements/announce-4.12-beta3.php
+
+-------------------------------------------------------------------
+Sat Nov 16 17:47:09 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.90
+   * KDE 4.12 Beta 2 release
+   * See http://www.kde.org/announcements/announce-4.12-beta2.php
+
+-------------------------------------------------------------------
+Sat Nov  9 22:47:53 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.80
+   * KDE 4.12 Beta 1 release
+   * See http://www.kde.org/announcements/announce-4.12-beta1.php
+
+ - Dropped 0001-verbose.patch as we are now on 4.12
+    master.
+
+-------------------------------------------------------------------
+Sat Nov  2 15:00:09 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.3
+   * KDE 4.11.3 bugfix release
+   * See http://www.kde.org/announcements/announce-4.11.3.php
+
+-------------------------------------------------------------------
+Sat Nov  2 14:56:50 UTC 2013 - tittiatcoke@gmail.com
+
+- Drop patches due to upstream inclusion:
+  * 0001-Fix-association-with-derived-mimetype-again.patch
+  * 0001-Improve-fix-for-association-with-derived-mimetypes.patch
+
+-------------------------------------------------------------------
+Mon Oct 21 14:30:48 UTC 2013 - wbauer@tmo.at
+
+- Added 0001-Improve-fix-for-association-with-derived-mimetypes.patch,
+  improves the last fix for mimetype handling (kde#321706)
+
+-------------------------------------------------------------------
+Fri Oct 18 15:40:44 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added 0001-Fix-association-with-derived-mimetype-again.patch, fixes
+  remaining issues in mimetype handling, see e.g. kde#324502
+
+-------------------------------------------------------------------
+Sat Sep 28 15:04:18 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.2
+   * KDE 4.11.2 bugfix release
+   * See http://www.kde.org/announcements/announce-4.11.2.php
+
+-------------------------------------------------------------------
+Tue Sep  3 22:29:25 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added 0001-verbose.patch which disables qDebug for udisks2 queries,
+  which resulted in ugly output, when e.g. starting dolphin from CLI
+
+-------------------------------------------------------------------
+Sun Sep  1 09:55:15 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.1
+   * KDE 4.11.1 bugfix release
+   * See http://www.kde.org/announcements/announce-4.11.1.php
+
+-------------------------------------------------------------------
+Sun Sep  1 09:49:01 UTC 2013 - tittiatcoke@gmail.com
+
+- Drop upstream patches to prepare for the 4.11.1 update:
+  * 0001-when-the-request-theme-does-not-exist-delete-all-old.patch
+  * 0002-Fix-crash-when-failing-to-get-audio-CD-block-device.patch
+  * 0003-Fix-reordering-of-apps-for-a-derived-mimetype.patch
+
+-------------------------------------------------------------------
+Mon Aug 26 14:54:36 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added patch from upstream:
+  0003-Fix-reordering-of-apps-for-a-derived-mimetype.patch -- fixes
+  a bug introduced by 871cccc8a88a60 that made it impossible to
+  re-order file type associations both in System settings and in
+  the open with list (kde#321706)
+
+-------------------------------------------------------------------
+Sat Aug 17 20:52:53 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added two patches from upstream 4.11 branch:
+  0001-when-the-request-theme-does-not-exist-delete-all-old.patch
+  fixes crash on non-existing plasma themes (kde#320855) and
+  0002-Fix-crash-when-failing-to-get-audio-CD-block-device.patch
+  fixes crash when failing to get audio CD block device (kde#314544)
+
+-------------------------------------------------------------------
+Thu Aug  8 14:55:48 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.0
+   * KDE 4.11 Final release
+   * See http://www.kde.org/announcements/4.11/
+
+-------------------------------------------------------------------
+Thu Jul 25 21:10:36 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 4.10.97
+  * KDE 4.11 RC 2 release
+  * See http://www.kde.org/announcements/announce-4.11-rc2.php
+
+-------------------------------------------------------------------
+Sun Jul 21 15:54:56 UTC 2013 - tittiatcoke@gmail.com
+
+- Remove the part where the official KDE_VERSION_STRING is
+  changed. This is causing issues upstream with automatic bug
+  reporting and it is no longer required.
+
+-------------------------------------------------------------------
+Thu Jul 18 19:04:23 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Remove obsolete patches:
+  windeco-color.diff -- we can define colors in oS branding
+  fix_kdeclarative_install_location.diff -- no longer needed
+  hotplug-kde3.diff, kde3-applications.diff -- kde3 is no more
+  kdebug-areas-update.diff -- kupdateapplet is also not available
+  no longer
+
+-------------------------------------------------------------------
+Mon Jul 15 08:13:02 UTC 2013 - cgiboudeaux@gmx.com
+
+- Update to 4.10.95
+ * KDE 4.11 RC 1 release
+ * See http://www.kde.org/announcements/announce-4.11-rc1.php
+
+-------------------------------------------------------------------
+Tue Jul  2 12:12:34 UTC 2013 - tittiatcoke@gmail.com
+
+- Utilize the new _kde_branding_version macro to set the correct
+  branding version.
+
+-------------------------------------------------------------------
+Thu Jun 27 18:07:10 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.90
+   * KDE 4.11 Beta 1 release
+   * See http://www.kde.org/announcements/announce-4.11-beta2.php
+
+-------------------------------------------------------------------
+Sun Jun 16 23:59:28 UTC 2013 - jengelh@inai.de
+
+- Explicitly list libattr-devel as BuildRequires
+
+-------------------------------------------------------------------
+Thu Jun 13 19:06:59 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.80
+   * KDE 4.11 Beta 1 release
+   * See http://www.kde.org/announcements/announce-4.11-beta1.php
+- Drop kjs-stacklimit.diff, patch is icluded in this release
+
+-------------------------------------------------------------------
+Sat Jun  1 09:20:08 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.4
+   * Bugfix release
+   * See http://www.kde.org/announcements/announce-4.10.4.php
+   * resolves bnc#8122760
+- Dropped patches included in this release: fix-freeX11Pixmaps.patch,
+  Fix-KWindowSystem-compositingChanged-signal.patch and
+  dont-show-passwords-contained-in-HTTP-URLs-in-error-messages.patch
+
+-------------------------------------------------------------------
+Mon May 27 18:42:23 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added Fix-KWindowSystem-compositingChanged-signal.patch, fixes
+  long standing bug of KWin clients (e.g. plasma) not detecting
+  compositing state (kde#179042)
+
+-------------------------------------------------------------------
+Sun May 12 15:26:36 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added exclude-qtuitools-symbols-from-public-libraries.patch:
+  We are using -Bsymbolic-functions link flags in kde4 macros,
+  so this patch exlcudes qtuitools symbols from libs that link to
+  qtuitools, as otherwise users of those libs are crashing
+  (bnc#819437, kde#303576, kde#231077, qtbug#437)
+
+-------------------------------------------------------------------
+Fri May 10 14:00:37 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added patches from upstream:
+  fix-freeX11Pixmaps.patch, fixes crashing of plasma-desktop and
+  Amarok (kde#319137)
+  dont-show-passwords-contained-in-HTTP-URLs-in-error-messages.patch,
+  the patch fixes an old issue where password was passed in error
+  messages
+
+-------------------------------------------------------------------
+Sat May  4 16:47:51 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.3
+   * Bugfix release
+   * See http://www.kde.org/announcements/announce-4.10.3.php
+   * resolves bnc#818500
+
+-------------------------------------------------------------------
+Thu Apr 11 06:22:25 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Tue Apr  9 06:36:04 UTC 2013 - lnt-sysadmin@lists.lrz.de
+
+- Drop kio_revert_slow_filesystems.patch, fixed upstream (kde#288824).
+
+-------------------------------------------------------------------
+Mon Apr  1 19:13:48 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.2
+  * Bugfixes
+- Drop kdelibs-4.10.0-giflib5.patch, it is pushed upstream
+- Replace kjs-stacklimit.diff with a correct fix
+
+-------------------------------------------------------------------
+Sat Mar 16 20:54:16 UTC 2013 - schwab@linux-m68k.org
+
+- Add kjs-stacklimit.diff:
+  * Fix overflow computing availableStackSize from stack limit (kde#316923)
+
+-------------------------------------------------------------------
+Wed Mar 13 20:44:30 UTC 2013 - seife+obs@b1-systems.com
+
+- fix build with giflib-5 (kdelibs-4.10.0-giflib5.patch)
+
+-------------------------------------------------------------------
+Sat Mar  2 15:31:49 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.1
+ * Contains bug fixes. See http://www.kde.org/announcements/
+   for more information
+
+-------------------------------------------------------------------
+Thu Feb  7 18:56:22 UTC 2013 - wbauer@tmo.at
+
+- changed clever-menu.patch:
+  * added method KServiceGroup::addSortOrderEntry(), needed to fix
+    bnc#356553
+
+-------------------------------------------------------------------
+Thu Jan 31 17:42:11 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.0
+ * This is the final release for 4.10. Contains bugfixes
+- Dropped make-plasma-widgets-respect-plasma-button-colors.patch,
+  included upstream
+
+-------------------------------------------------------------------
+Tue Jan 29 12:17:59 UTC 2013 - lnt-sysadmin@lists.lrz.de
+
+- Add kio_revert_slow_filesystems.patch to work around bnc#776141.
+  This is a workaround, reverting to KDE 4.7.3 behavior.
+  A fix should come from upstream (kde#288824).
+
+-------------------------------------------------------------------
+Mon Jan 21 03:50:35 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added make-plasma-widgets-respect-plasma-button-colors.patch,
+  fixes kde#310389, kde#263979
+
+-------------------------------------------------------------------
+Thu Jan 17 07:59:34 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.9.98
+ * This is the third RC release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Thu Jan  3 21:04:43 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.9.97
+ * This is the second RC release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Thu Dec 27 12:21:46 UTC 2012 - hrvoje.senjan@gmail.com
+
+- Clean the BuildRequirements:
+  * alsa-devel, cups-devel and unzip are not required
+  * Minimal required versions are cmake >= 2.8.9 and Qt >= 4.8.0
+
+-------------------------------------------------------------------
+Wed Dec 19 18:31:05 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.95
+ * This is the first RC release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Sat Dec  1 19:57:40 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.90
+ * This is the second Beta release for 4.10. Contains bugfixes
+
+-------------------------------------------------------------------
+Sun Nov 25 11:39:38 UTC 2012 - tittiatcoke@gmail.com
+
+- Drop patch 4_7_branch.diff as it is not used at all
+
+-------------------------------------------------------------------
+Tue Nov 24 14:08:11 UTC 2012 - cgiboudeaux@gmx.com
+
+- Fix the SLES build
+  * Replace 'BuildRequires:pkgconfig(bzip2)'
+  * Disable the polkit backend (polkit is not available in SLES)
+  * Add kdelibs4-rpmlintrc to silence the percent-in-dependency and percent-in-provides errors
+    (rpmlint complains about 'Requires: %{name}-branding = %{brandingversion}' and
+     'Provides: %{name}-branding = %{brandingversion}')
+- Remove obsolete conditions
+
+-------------------------------------------------------------------
+Sat Nov 24 12:46:55 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.80
+  * see http://www.kde.org/announcements/announce-4.10-beta1.php
+- Remove the patches enable-solid-udisks2-backend.diff and
+  kdelibs4-fix-python3-install.diff as it is now included upstream
+
+-------------------------------------------------------------------
+Sun Nov 18 16:52:05 UTC 2012 - hrvoje.senjan@gmail.com
+
+- Explicitly require pkgconfig(bzip2) for 12.3
+- Recommend media-player-info for kde#269447, kde#269451
+
+-------------------------------------------------------------------
+Fri Nov  2 19:06:02 UTC 2012 - ctrippe@opensuse.org
+
+- Fix the path for docs in /etc/kde4rc which is used by
+  bundle-lang-kde-* (bnc#695108)
+
+-------------------------------------------------------------------
+Fri Nov  2 16:44:45 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.3
+  * see http://kde.org/announcements/announce-4.9.3.php for details
+
+-------------------------------------------------------------------
+Thu Nov  1 09:02:07 UTC 2012 - einar@heavensinferno.net
+
+- Update the upstream patch for Python 3 installation, backporting
+  the work done upstream (under review) for 4.10
+
+-------------------------------------------------------------------
+Sat Oct 13 08:10:10 UTC 2012 - einar@heavensinferno.net
+
+- Add patch from upstream to enable correct Python 3 installation:
+  this is a prerequisite to provide PyKDE4 Python 3 packages.
+- Currently the patch is enabled just for Factory (openSUSE 12.3)
+
+-------------------------------------------------------------------
+Sat Sep 29 09:52:50 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.2
+  * see http://kde.org/announcements/announce-4.9.2.php for details
+
+-------------------------------------------------------------------
+Tue Sep 25 14:23:31 UTC 2012 - tittiatcoke@gmail.com
+
+- Add upstream patch to bring udisks2 support for solid.
+  The udisks2 solid backend will replace the udisks only on
+  Factory (openSUSE 12.3)
+
+-------------------------------------------------------------------
+Thu Sep 13 20:12:03 UTC 2012 - ctrippe@opensuse.org
+
+- BuildRequires: krb5-devel to enable kerberos support (bnc#780300)
+
+-------------------------------------------------------------------
+Tue Sep 11 08:18:29 UTC 2012 - dmueller@suse.com
+
+- require the right shared-desktop-ontologies package
+
+-------------------------------------------------------------------
+Wed Sep  5 12:03:15 UTC 2012 - dmueller@suse.com
+
+- update to 4.9.1
+  * see http://kde.org/announcements/4.9.1/ for details
+
+-------------------------------------------------------------------
+Mon Jul 30 18:31:35 UTC 2012 - ctrippe@opensuse.org
+
+- Remove herqq support as this causes frequent crashes (bnc#768368)
+
+-------------------------------------------------------------------
+Mon Jul 30 16:51:37 UTC 2012 - dmueller@suse.com
+
+- update to 4.8.5
+  * see http://kde.org/announcements/changelogs/changelog4_8_4to4_8_5.php for details
+- remove upstreamed patches
+
+-------------------------------------------------------------------
+Mon Jul  2 08:00:13 UTC 2012 - mlin@suse.com
+
+- Apply to a upstream patch to mount vfat filesystem with flush
+  option. (bnc#746394, kde#273792)
+
+-------------------------------------------------------------------
+Tue Jun 26 09:56:49 UTC 2012 - idonmez@suse.com
+
+- Add patches to fix Soprano crashes
+
+-------------------------------------------------------------------
+Fri Jun  1 13:53:09 UTC 2012 - dmueller@suse.com
+
+- update to 4.8.4
+  * see http://kde.org/announcements/changelogs/changelog4_8_3to4_8_4.php for details
+
+-------------------------------------------------------------------
+Tue May 29 09:29:30 UTC 2012 - toddrme2178@gmail.com
+
+- Re-enable building with herqq/hupnp support.  The licensing issues have all been resolved (see bnc#710616)
+  This allows browsing of upnp servers in kio as well as upnp playback in amarok.
+
+-------------------------------------------------------------------
+Thu May 24 18:26:54 UTC 2012 - coolo@suse.com
+
+- fix brandingversion
+
+-------------------------------------------------------------------
+Sun Apr 29 20:52:53 UTC 2012 - dmueller@suse.com
+
+- update to 4.8.3
+  * see http://kde.org/announcements/changelogs/changelog4_8_2to4_8_3.php for details
+
+-------------------------------------------------------------------
+Sun Apr 15 17:07:24 UTC 2012 - ctrippe@opensuse.org
+
+- Make XF86Calculator key work (bnc#726550, kde#257900)
+
+-------------------------------------------------------------------
+Sat Apr 14 08:20:02 UTC 2012 - dmueller@suse.com
+
+- fix build on older distributions
+
+-------------------------------------------------------------------
+Sun Apr  1 17:40:36 UTC 2012 - wstephenson@suse.com
+
+- Remove wrongly added %kde_runtime_requires macro
+
+-------------------------------------------------------------------
+Fri Mar 30 01:01:55 CEST 2012 - dmueller@suse.de
+
+- update to 4.8.2
+  * see http://kde.org/announcements/changelogs/changelog4_8_1to4_8_2.php for details
+
+-------------------------------------------------------------------
+Mon Mar 26 08:21:56 UTC 2012 - cornelis@solcon.nl
+
+- Do not build aspell backend, only enchant. This is less confusing, as there is no interface for choosing the backend. Aspell is still supported by the enchant backend, but default is hunspell.
+
+-------------------------------------------------------------------
+Wed Mar 14 09:47:52 UTC 2012 - kruber@zib.de
+
+- added fix for KMail2 crashes from
+  https://bugs.kde.org/show_bug.cgi?id=295474#c27
+
+-------------------------------------------------------------------
+Tue Mar  6 01:21:08 UTC 2012 - stefan.bruens@rwth-aachen.de
+
+- fix crash due to race in fstabstorageaccess constructor
+- cache fstabstorageaccess interface instance
+- solid udisks/upower backends:
+  * fix solid call to org.freedesktop.Properties.GetAll
+  * do not call Properties method on Root object
+
+-------------------------------------------------------------------
+Fri Mar  2 23:14:20 CET 2012 - dmueller@suse.de
+
+- update to 4.8.1
+  * see http://kde.org/announcements/changelogs/changelog4_8_0to4_8_1.php for details
+
+-------------------------------------------------------------------
+Mon Feb 27 11:52:01 UTC 2012 - saschpe@suse.de
+
+- Local service run of spec formatter broke it
+
+-------------------------------------------------------------------
+Mon Feb 27 11:04:20 UTC 2012 - saschpe@suse.de
+
+- The 'factory-auto' review script doesn't like macros in Name:
+
+-------------------------------------------------------------------
+Mon Jan 30 14:07:45 UTC 2012 - giecrilj@stegny.2a.pl
+
+- update documentation (bnc#743337)
+- move meinproc4_simple to doc
+- mark doc as GFDL
+- unmark config in /usr/share (config is in /etc)
+- reinstate checkXML.1 (why was it killed?)
+- remove kde4-doxygen.sh (build time only script)
+
+-------------------------------------------------------------------
+Mon Jan 30 10:31:47 UTC 2012 - toddrme2178@gmail.com
+
+- Fixed aspell detection
+
+-------------------------------------------------------------------
+Wed Jan 18 20:57:14 CET 2012 - dmueller@suse.de
+
+- update to 4.8.0
+  * first stable release of KDE 4.8 (only critical fixes over 4.7.98)
+  * see http://kde.org/announcements/4.8/ for details
+
+
+-------------------------------------------------------------------
+Tue Jan 10 16:32:19 CET 2012 - dmueller@suse.de
+
+- update to 4.7.98
+  * RC2+ milestone release of KDE 4.8
+  *  see http://kde.org/announcements/4.8/ for details
+
+
+-------------------------------------------------------------------
+Fri Dec  2 01:58:27 CET 2011 - dmueller@suse.de
+
+- update to 4.7.4
+  * see http://kde.org/announcements/changelogs/changelog4_7_3to4_7_4.php for details
+
+-------------------------------------------------------------------
+Wed Nov  2 20:21:47 CET 2011 - dmueller@suse.de
+
+- update to 4.7.3
+  * see http://kde.org/announcements/changelogs/changelog4_7_2to4_7_3.php for details
+
+-------------------------------------------------------------------
+Fri Oct 21 08:44:30 UTC 2011 - wstephenson@suse.com
+
+- Remove PulseAudio 1.0 patch, superseded by PA 1.1
+
+-------------------------------------------------------------------
+Wed Oct 19 10:48:30 UTC 2011 - wstephenson@suse.com
+
+- Add 4.7 branch diff
+- Remove first time login fix patch, now upstream
+
+-------------------------------------------------------------------
+Mon Oct 17 11:20:33 UTC 2011 - coolo@suse.com
+
+- make branding requires for old distros backwards - will hopefully
+  fade out as time goes by
+
+-------------------------------------------------------------------
+Sun Oct 16 20:09:02 UTC 2011 - wstephenson@suse.com
+
+- Patch PulseAudio cmake module with same fix as phonon
+
+-------------------------------------------------------------------
+Thu Oct 13 09:48:29 UTC 2011 - coolo@suse.com
+
+- fix first time login - patch pushed to 4.7 branch too
+
+-------------------------------------------------------------------
+Thu Oct  6 09:49:45 UTC 2011 - coolo@suse.com
+
+- for 12.1 provide all files in branding-upstream, not just the
+  background
+
+-------------------------------------------------------------------
+Sun Oct  2 16:40:22 CEST 2011 - dmueller@suse.de
+
+- update to 4.7.2
+  * see http://kde.org/announcements/changelogs/changelog4_7_1to4_7_2.php for details
+
+-------------------------------------------------------------------
+Thu Sep  1 23:17:04 CEST 2011 - dmueller@suse.de
+
+- update to 4.7.1
+  * Bugfixes over KDE 4.7.0
+  *  see http://kde.org/announcements/changelogs/changelog4_7_0to4_7_1.php for details
+
+-------------------------------------------------------------------
+Tue Aug 30 08:37:13 UTC 2011 - idonmez@suse.com
+
+- Refresh kdelibs-4.7-branch.patch:
+  * Fix a crash that occurs while rating in KNewStuff
+
+-------------------------------------------------------------------
+Fri Aug 26 13:29:50 UTC 2011 - idonmez@novell.com
+
+- Refresh kdelibs-4.7-branch.patch:
+   * Unbreak kickoff menu
+
+-------------------------------------------------------------------
+Thu Aug 25 09:31:47 UTC 2011 - coolo@novell.com
+
+- herqq is unacceptable as LGPLv3 (for now), so leave it for
+  people building themselves
+
+-------------------------------------------------------------------
+Wed Aug 24 08:32:59 UTC 2011 - idonmez@novell.com
+
+ - Refresh kdelibs-4.7-branch.patch
+   * Fix regression in KLockFile
+
+-------------------------------------------------------------------
+Sat Aug 13 23:43:19 UTC 2011 - toddrme2178@gmail.com
+
+ - Added herqq-devel buildrequires (adds UPnP support)
+ - Added kde4_runtime_requires macros (fix for RPMLINT warning)
+ - Made building position-independent (fix for RPMLINT warning)
+ - Added doc macros
+ - Removed redundant buildrequires and requires
+ - Cleaned up spec file formatting
+
+-------------------------------------------------------------------
+Thu Aug 11 14:32:33 UTC 2011 - idonmez@novell.com
+
+- Add kdelibs-4.7-branch.patch
+  * Fix fd leaks in KIO
+  * Fix potential crash in KIO
+  * Always use platform palette and fonts
+  * Fix crash in QThreadPrivate::finish due to terminate() without
+    wait().
+  * Properly handle empty HTTP auth challenges
+- Drop kdewidgets-in-designer.patch, already fixed in branch
+- Refreshed plasma-libs.diff
+
+-------------------------------------------------------------------
+Fri Jul 29 09:45:26 UTC 2011 - idonmez@novell.com
+
+- Add kdewidgets-in-designer.patch, fix KDE widgets not showing up
+  in Qt Designer, upstream r101804
+
+-------------------------------------------------------------------
+Tue Jul 26 12:06:56 UTC 2011 - cgiboudeaux@gmx.com
+
+- Spec cleanup
+- Fix some rpmlint warnings:
+  * W: permissions-missing-verifyscript missing (start_kdeinit)
+  * W: permissions-missing-requires missing 'permissions' in PreReq
+  * W: permissions-missing-postin missing %set_permissions
+  * W: non-executable-script /usr/share/kde4/apps/kconf_update/ksslcertificatemanager.upd.sh
+
+-------------------------------------------------------------------
+Fri Jul 22 20:19:40 CEST 2011 - dmueller@suse.de
+
+- update to 4.7.0
+  * Small fixes over KDE 4.7 RC2
+  *  see http://kde.org/announcements/4.7 for details
+
+
+-------------------------------------------------------------------
+Thu Jul 21 12:48:40 UTC 2011 - idonmez@novell.com
+
+- Update to 4.6.95
+
+-------------------------------------------------------------------
+Fri Jul  1 11:26:23 CEST 2011 - dmueller@suse.de
+
+- update to 4.6.5
+  * Bugfixes over KDE 4.6.5
+  *  see http://kde.org/announcements/changelogs/changelog4_6_4to4_6_5.php for details
+
+
+-------------------------------------------------------------------
+Thu Jun  2 19:47:21 CEST 2011 - dmueller@suse.de
+
+- update to 4.6.4
+  * Bugfixes over KDE 4.6.3
+  *  see http://kde.org/announcements/changelogs/changelog4_6_3to4_6_4.php for details
+
+
+-------------------------------------------------------------------
+Wed May 18 20:08:01 UTC 2011 - ctrippe@opensuse.org
+
+- fix double post problem with konqueror (kde#272466)
+
+-------------------------------------------------------------------
+Thu Apr 28 18:06:17 CEST 2011 - dmueller@suse.de
+
+- update to 4.6.3
+  * Bugfixes over KDE 4.6.2
+  *  see http://kde.org/announcements/changelogs/changelog4_6_2to4_6_3.php for details
+
+
+-------------------------------------------------------------------
+Fri Apr  1 16:01:31 CEST 2011 - dmueller@suse.de
+
+- update to 4.6.2
+  * Bugfixes over KDE 4.6.1
+  *  see http://kde.org/announcements/changelogs/changelog4_6_1to4_6_2.php for details
+
+
+-------------------------------------------------------------------
+Tue Mar  8 14:09:12 CET 2011 - dmueller@suse.de
+
+- update to 4.6.1
+  * Bugfixes over KDE 4.6.0
+  *  see http://kde.org/announcements/changelogs/changelog4_6_0to4_6_1.php for details
+- remove upstreamed patches
+
+-------------------------------------------------------------------
+Tue Feb 22 12:18:38 UTC 2011 - coolo@novell.com
+
+- work around random error on first startup, bnc#668185,
+  kubuntu has a similiar patch applied
+
+-------------------------------------------------------------------
+Thu Feb 17 14:07:35 UTC 2011 - wstephenson@novell.com
+
+- call update-mime-database in pre/post install scripts
+
+-------------------------------------------------------------------
+Tue Feb 15 11:05:26 UTC 2011 - wstephenson@novell.com
+
+- don't show synthetic volume label when none is really available,
+  allow kio_sysinfo to fall back to device path (bnc#670426)
+
+-------------------------------------------------------------------
+Wed Jan 19 23:13:55 CET 2011 - dmueller@suse.de
+
+- update to KDE Platform 4.6.0
+  * Plasma applets can be written in QML
+  * Plasma data engines can be written in Javascript
+  * Plasma data engines can use generic cache for offline mode
+  * udev, udisks, upower replace HAL in Solid
+  * For more details, see http://kde.org/announcements/4.6
+- add patch from 4.6 branch to fix plasma crash on exit
+
+-------------------------------------------------------------------
+Wed Jan 12 21:44:32 UTC 2011 - wstephenson@novell.com
+
+- Add dependencies on udisks and upower for 11.3 and up for Solid
+
+-------------------------------------------------------------------
+Tue Jan  4 18:07:17 CET 2011 - dmueller@suse.de
+
+- update to 4.5.95
+  * KDE 4.6 RC2
+  * no upstream changelog available.
+
+-------------------------------------------------------------------
+Wed Dec 22 11:38:53 CET 2010 - dmueller@suse.de
+
+- update to 4.5.90
+  * KDE 4.6 RC1
+  * no upstream changelog available.
+
+-------------------------------------------------------------------
+Sun Dec 19 15:41:28 UTC 2010 - tittiatcoke@gmail.com
+
+- For 11.2 and 11.3 only : Will build now with polkit-qt-1
+  v 0.99.1, which is an official requirement of KDE 4.6
+
+-------------------------------------------------------------------
+Fri Dec  3 17:13:51 CET 2010 - dmueller@suse.de
+
+- update to 4.5.85
+  * KDE 4.6 Beta2
+  * Final Beta before RC, various fixes from Beta1
+  * no upstream changelog available.
+
+-------------------------------------------------------------------
+Sat Nov 27 22:46:32 UTC 2010 - tittiatcoke@gmail.com
+
+- For 11.2 and 11.3 only : Added patch to revert changes that
+  requires a higher version of polkit-qt-1
+
+-------------------------------------------------------------------
+Fri Nov 19 17:13:14 CET 2010 - dmueller@suse.de
+
+- update to 4.5.80
+  * KDE 4.6 Beta1
+  * no upstream changelog available.
+
+-------------------------------------------------------------------
+Tue Nov 16 13:31:31 UTC 2010 - cristian.rodriguez@opensuse.org
+
+-  Closing the shell via CTRL+D crashes [bko#246652]
+
+-------------------------------------------------------------------
+Thu Nov 11 16:25:51 CET 2010 - dmueller@suse.de
+
+- fix build with gcc 4.6
+
+-------------------------------------------------------------------
+Mon Nov  8 11:10:32 CET 2010 - dmueller@suse.de
+
+- tighten qt4 dependencies
+
+-------------------------------------------------------------------
+Thu Oct 28 22:12:22 CEST 2010 - dmueller@suse.de
+
+- update to 4.5.3
+  * see http://kde.org/announcements/changelogs/changelog4_5_2to4_5_3.php for details
+
+-------------------------------------------------------------------
+Tue Oct 12 12:37:10 UTC 2010 - wstephenson@novell.com
+
+- update branch diff for various bugs in 4.5:
+  * Crash on configure toolbars (bko#170806)
+  * KCookieJar can't read cookies from another port (bko#149991)
+  * Fix oversized number input widgets (bko#221989)
+  * CSS conformance issue (bko#252280)
+  * Fix helper protocols such as mailto: and telnet:
+  * Plasma crash on comic applet switch (bko#253387)
+  * HTTPS urls in KMail do not open properly in browser (bko#253294)
+  * Mailto: links in FireFox started by kmailservice fail (bnc#644236)
+  * Crash in directory listings when toggling
+    show hidden files flag (bko#193364)
+
+-------------------------------------------------------------------
+Fri Oct  8 19:54:27 UTC 2010 - tittiatcoke@gmail.com
+
+- Upstream patch added for kmail issue (bko#253414)
+
+-------------------------------------------------------------------
+Thu Sep 30 23:43:29 CEST 2010 - dmueller@suse.de
+
+- update to 4.5.2
+  * see http://kde.org/announcements/changelogs/changelog4_5_1to4_5_2.php for details
+
+-------------------------------------------------------------------
+Sat Sep 25 12:58:28 UTC 2010 - llunak@novell.com
+
+- build apidocs separately to reduce build time
+
+-------------------------------------------------------------------
+Thu Sep  9 19:20:28 UTC 2010 - aj@suse.de
+
+- BuildRequire utempter-devel
+
+-------------------------------------------------------------------
+Fri Aug 27 13:36:20 CEST 2010 - dmueller@suse.de
+
+- update to 4.5.1
+  * see http://kde.org/announcements/changelogs/changelog4_5_0to4_5_1.php for details
+
+-------------------------------------------------------------------
+Fri Aug 13 22:01:00 UTC 2010 - javier@opensuse.org
+
+- new package: kdelibs4-apidocs (bnc#596021)
+
+-------------------------------------------------------------------
+Thu Jul 29 13:54:52 CEST 2010 - dmueller@suse.de
+
+- update to 4.5.0
+  * KDE 4.5.0 final (version bump over RC3)
+
+
+-------------------------------------------------------------------
+Sat Jul 24 00:03:12 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.95
+  * KDE 4.5 RC3 (not announced)
+  * critical fixes for 4.5.0 release
+
+
+-------------------------------------------------------------------
+Sat Jul 17 23:51:38 UTC 2010 - reddwarf@opensuse.org
+
+- Add libsoprano-devel Require to libkde4-devel
+
+-------------------------------------------------------------------
+Fri Jul 16 18:19:41 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.93svn1149349
+
+-------------------------------------------------------------------
+Thu Jul  8 01:23:34 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.5
+  * bugfixes over 4.4.4
+  * see http://kde.org/announcements/changelogs/changelog4_4_4to4_4_5.php for details
+
+-------------------------------------------------------------------
+Tue Jun 22 12:58:48 UTC 2010 - llunak@novell.com
+
+- make hal required, there are way too many things that break
+  otherwise (bnc#613898)
+
+-------------------------------------------------------------------
+Sun Jun 20 21:13:58 UTC 2010 - cmorve69@yahoo.es
+
+- remove mimetypes already provided by the system
+
+-------------------------------------------------------------------
+Fri Jun 18 16:31:09 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.4
+  * bugfixes over 4.4.3
+  * see http://kde.org/announcements/changelogs/changelog4_4_3to4_4_ 4.php for details
+  * for most modules only version number as a change (4_4_BRANCH.diff already contained the diff
+
+-------------------------------------------------------------------
+Tue Jun 15 11:37:13 UTC 2010 - llunak@novell.com
+
+- add a Recommends: on hal, needed for device notifications
+
+-------------------------------------------------------------------
+Fri Jun 11 11:41:48 UTC 2010 - llunak@novell.com
+
+- fix flash on-demand installation, use mimetype name instead
+  of mimetype description for detecting
+- use ksuseinstall for the actual installation instead of poiting
+  to .ymp to be consistent with installing in 11.3
+
+-------------------------------------------------------------------
+Tue Jun  1 12:53:39 UTC 2010 - llunak@novell.com
+
+- make ksuseinstall refresh also newly enabled repos (bnc#608562)
+
+-------------------------------------------------------------------
+Mon May 31 17:17:35 UTC 2010 - llunak@novell.com
+
+- fix 'Super User Mode' applications sometimes not working
+  properly (bnc#450203)
+
+-------------------------------------------------------------------
+Tue May 25 08:04:47 UTC 2010 - llunak@novell.com
+
+- do not consider type/* mimetypes for application installation,
+  most packages do not provide them anyway
+
+-------------------------------------------------------------------
+Wed May 19 11:10:03 UTC 2010 - llunak@novell.com
+
+- avoid going back in Novell bugzilla increasing severity (bnc#561367)
+
+-------------------------------------------------------------------
+Mon May 17 12:45:27 UTC 2010 - llunak@novell.com
+
+- update 4_4_BRANCH.diff: various fixes, translation updates
+
+-------------------------------------------------------------------
+Thu May 13 12:45:47 UTC 2010 - llunak@novell.com
+
+- update 4_4_BRANCH.diff: avoid excessive debug output (bnc#588154)
+
+-------------------------------------------------------------------
+Thu Apr 29 22:22:50 CEST 2010 - dmueller@suse.de
+
+- update to 4.4.3
+  * bugfixes over 4.4.2
+  * see http://kde.org/announcements/changelogs/changelog4_4_2to4_4_3.php for details
+
+-------------------------------------------------------------------
+Tue Apr 27 08:40:38 UTC 2010 - llunak@novell.com
+
+- require 11.3 branding on 11.3
+
+-------------------------------------------------------------------
+Sat Apr 24 09:59:56 UTC 2010 - cmorve69@yahoo.es
+
+- don't modify KDE_VERSION_STRING for development projects
+
+-------------------------------------------------------------------
+Thu Apr 22 14:36:34 CEST 2010 - dmueller@suse.de
+
+- remove dependency cycle
+
+-------------------------------------------------------------------
+Mon Apr 19 15:39:30 UTC 2010 - llunak@novell.com
+
+- fixes for on-demand package installation
+
+-------------------------------------------------------------------
+Mon Apr 12 16:05:54 UTC 2010 - llunak@novell.com
+
+- improvements to on-demand package installation
+
+-------------------------------------------------------------------
+Wed Apr  7 14:42:16 CEST 2010 - ro@suse.de
+
+- add libksuseinstall1 to baselibs.conf (needed by libkde4)
+
+-------------------------------------------------------------------
+Tue Apr  6 09:17:32 UTC 2010 - wstephenson@novell.com
+
+- Add patch for kfiledialog keyboard navigation (bko#205781)
+
+-------------------------------------------------------------------
+Thu Apr  1 15:48:02 UTC 2010 - llunak@novell.com
+
+- ksuseinstall, for on-demand package installation
+- on-demand installation of apps for mimetypes without handlers
+
+-------------------------------------------------------------------
+Fri Mar 26 18:45:50 CET 2010 - dmueller@suse.de
+
+- update to 4.4.2
+  * bugfixes over 4.4.1
+  * http://kde.org/announcements/changelogs/changelog4_4_1to4_4_2.php for details
+
+-------------------------------------------------------------------
+Fri Feb 26 20:54:51 CET 2010 - dmueller@suse.de
+
+- update to 4.4.1
+  * bugfixes over 4.4.0
+  * see http://kde.org/announcements/changelogs/changelog4_4_0to4_4_1.php for details
+
+-------------------------------------------------------------------
+Thu Feb  4 12:53:10 CET 2010 - dmueller@suse.de
+
+- update to 4.4.0
+  * Critical bugfixes only over 4.3.98
+  * see http://www.kde.org/announcements/4.4/ for general overview
+
+-------------------------------------------------------------------
+Wed Feb  3 13:39:44 UTC 2010 - llunak@novell.com
+
+- KDE4_SERIALIZE_TOOL support
+
+-------------------------------------------------------------------
+Mon Feb  1 20:38:37 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Sun Jan 31 21:25:40 CET 2010 - dmueller@suse.de
+
+- update to 4.3.98
+  * see http://www.kde.org/announcements/announce-4.4-rc3.php for details
+
+-------------------------------------------------------------------
+Wed Jan 20 02:01:16 CET 2010 - dmueller@suse.de
+
+- update to 4.3.95
+  * see http://www.kde.org/announcements/announce-4.4-rc2.php for details
+
+-------------------------------------------------------------------
+Sat Jan  9 14:55:33 UTC 2010 - coolo@novell.com
+
+- refresh patch to compile on factory
+
+-------------------------------------------------------------------
+Wed Jan  6 18:53:16 CET 2010 - dmueller@suse.de
+
+- update to 4.3.90
+  * see http://www.kde.org/announcements/announce-4.4-rc1.php for details
+
+-------------------------------------------------------------------
+Fri Dec 18 13:47:40 CET 2009 - dmueller@suse.de
+
+- update to 4.3.85
+  * see http://www.kde.org/announcements/announce-4.4-beta2.php for details
+
+-------------------------------------------------------------------
+Tue Dec  8 14:28:46 UTC 2009 - llunak@novell.com
+
+- do not obsolete libknotificationitem-1-1, older packages may
+  still need it as a dependency
+
+-------------------------------------------------------------------
+Fri Dec  4 18:59:55 CET 2009 - dmueller@suse.de
+
+- update to 4.3.80:
+  * see http://techbase.kde.org/Schedules/KDE4/4.4_Feature_Plan
+
+-------------------------------------------------------------------
+Sun Nov 15 19:36:22 CET 2009 - dmueller@suse.de
+
+- refresh patches
+
+-------------------------------------------------------------------
+Mon Nov  2 22:02:22 CET 2009 - dmueller@suse.de
+
+- update to 4.3.3
+  * see http://kde.org/announcements/changelogs/changelog4_3_2to4_3_3.php for details
+
+-------------------------------------------------------------------
+Mon Oct 19 04:46:12 UTC 2009 - beineri@opensuse.org
+
+- fix common crash in KHTMLPart destructor (kde#209960, bnc#548018)
+
+-------------------------------------------------------------------
+Tue Oct 13 17:38:01 CEST 2009 - llunak@novell.com
+
+- avoid invisible texts in OOo KDE4 file dialogs (bnc#529640)
+
+-------------------------------------------------------------------
+Fri Oct  9 15:17:05 CEST 2009 - llunak@novell.com
+
+- fix Ctrl+W KHTML crash (kde#207173)
+
+-------------------------------------------------------------------
+Thu Oct  8 22:37:45 CEST 2009 - llunak@novell.com
+
+- use xdg-user-dir locations (bnc#540574)
+
+-------------------------------------------------------------------
+Thu Oct  8 17:58:59 CEST 2009 - llunak@novell.com
+
+- do not miss some translations from .desktop files (bnc#442800)
+
+-------------------------------------------------------------------
+Mon Oct  5 19:01:45 CEST 2009 - llunak@novell.com
+
+- make disabling initial ksycoca check work (bnc#536545)
+
+-------------------------------------------------------------------
+Sun Oct  4 10:55:56 UTC 2009 - beineri@opensuse.org
+
+- update khtml to 4.3.2 release level for several crash fixes, like
+  gmail (kde#202699), bahn.de (kde#204050), kde#192755, kde#206038
+
+-------------------------------------------------------------------
+Thu Sep 24 12:24:18 UTC 2009 - beineri@opensuse.org
+
+- created kdelibs4-branding-upstream subpackage for app about pages
+- add Fedora PolicyKit patch to allow partition mount (bnc#533246)
+- update 4_3_BRANCH.diff:
+   - Logout from utmp when the KPtyProcess finishes
+   - Fix kio_http to be able to authenticate against a http server
+     that returns no body with 401 error code like eGroupware
+   - several minor khtml and plasma bug fixes
+
+-------------------------------------------------------------------
+Wed Sep  9 16:11:31 UTC 2009 - beineri@opensuse.org
+
+- update 4_3_BRANCH.diff:
+   - khtml bug fixes
+   - plasma performance and bug fixes
+   - fix default browser if konqueror is not installed (kde#206581)
+   - improved translations
+
+-------------------------------------------------------------------
+Fri Aug 28 13:57:53 CEST 2009 - dmueller@suse.de
+
+- update to 4.3.1
+  * see http://kde.org/announcements/changelogs/changelog4_3_0to4_3_1.php for details
+
+-------------------------------------------------------------------
+Wed Aug 26 20:03:49 UTC 2009 - beineri@opensuse.org
+
+- ignore inline attribute in applications.menu as its implementation
+  is broken and continue to rely on short-menu.diff (bnc#529057)
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Tue Aug 18 07:14:48 CEST 2009 - beineri@opensuse.org
+
+- update 4_3_BRANCH.diff:
+   * fix KIO::unmount() parameters
+   * download less nepomuk ontology data
+   * schedule jobs to prevent spawning of too many ioslaves
+   * fix possible data loss bug in kio/kfileitem (kde#195385)
+
+-------------------------------------------------------------------
+Fri Aug  7 13:09:22 CEST 2009 - beineri@opensuse.org
+
+- branch update for kio and Plasma caching fixes
+
+-------------------------------------------------------------------
+Wed Jul 29 18:09:38 CEST 2009 - dmueller@suse.de
+
+- update to 4.3.0
+  * see http://kde.org/announcements/4.3 for details
+
+-------------------------------------------------------------------
+Fri Jul 24 14:31:03 CEST 2009 - llunak@novell.com
+
+- fix the OOM patch to not break 'ps ux'
+
+-------------------------------------------------------------------
+Tue Jul 21 22:25:46 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.98
+
+-------------------------------------------------------------------
+Tue Jul 21 14:34:03 CEST 2009 - llunak@novell.com
+
+- bison and flex requires for Solid
+
+-------------------------------------------------------------------
+Tue Jul 21 14:20:07 CEST 2009 - llunak@novell.com
+
+- add protection against OOM-killer from KDE trunk
+
+-------------------------------------------------------------------
+Wed Jul  8 18:09:54 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.96
+
+-------------------------------------------------------------------
+Wed Jun 24 19:55:15 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.95
+
+-------------------------------------------------------------------
+Wed Jun  3 23:00:37 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.90
+
+-------------------------------------------------------------------
+Wed Jun  3 08:11:33 CEST 2009 - beineri@opensuse.org
+
+- fix previous fix
+
+-------------------------------------------------------------------
+Tue Jun  2 23:45:34 CEST 2009 - dmueller@suse.de
+
+- restore files that were deleted during last checkin cycle
+
+-------------------------------------------------------------------
+Wed May 27 22:07:08 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.88svn973768
+
+-------------------------------------------------------------------
+Tue May 19 14:36:21 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.87svn969966
+
+-------------------------------------------------------------------
+Mon May 18 21:42:10 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.86svn967995
+
+-------------------------------------------------------------------
+Thu May 14 19:31:22 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.85 (KDE 4.3 Beta1)
+
+-------------------------------------------------------------------
+Tue May 12 19:25:52 CEST 2009 - beineri@opensuse.org
+
+- bump to 4.2.3.1 to help solver with libqt4 update (bnc#502984)
+
+-------------------------------------------------------------------
+Thu Apr 30 21:04:42 CEST 2009 - dmueller@suse.de
+
+- update to 4.2.3
+  * see http://kde.org/announcements/changelogs/changelog4_2_2to4_2_3.php
+
+-------------------------------------------------------------------
+Thu Apr 09 11:49:23 CEST 2009 - beineri@opensuse.org
+
+- update 4_2_BRANCH.diff: some html fixes and fix start menu not
+  getting focus and not closing with anywhere click (kde#188655)
+
+-------------------------------------------------------------------
+Fri Apr  3 17:49:37 CEST 2009 - wstephenson@suse.de
+
+- add patch so that Qt 4.5 users on < 11.2 do not suffer kde#186038
+
+-------------------------------------------------------------------
+Fri Mar 27 00:43:01 CET 2009 - dmueller@suse.de
+
+- update to 4.2.2
+  * see http://kde.org/announcements/changelogs/changelog4_2_1to4_2_2.php
+
+-------------------------------------------------------------------
+Sun Mar 15 20:13:23 CET 2009 - coolo@suse.de
+
+- update 4_2_BRANCH.diff for some khtml fixes
+
+-------------------------------------------------------------------
+Fri Feb 27 00:20:22 CET 2009 - dmueller@suse.de
+
+- update to 4.2.1
+  * see http://kde.org/announcements/changelogs/changelog4_2_0to4_2_1.php
+
+-------------------------------------------------------------------
+Thu Feb 26 17:30:00 CET 2009 - dmueller@suse.de
+
+- add missing buildrequires for proper utemper support (bnc#478661)
+
+-------------------------------------------------------------------
+Wed Feb 18 20:14:31 CET 2009 - coolo@suse.de
+
+- update 4_2_BRANCH.diff again to fix plasma regressions that
+  caused staying plasma applets
+
+-------------------------------------------------------------------
+Thu Feb 12 19:22:49 CET 2009 - coolo@suse.de
+
+- update 4_2_BRANCH.diff:
+    * several plasma fixes from their hack event
+    * khtml fixes
+
+-------------------------------------------------------------------
+Mon Feb  9 14:56:41 CET 2009 - coolo@suse.de
+
+- only take the first part of the release into kdeversion
+
+-------------------------------------------------------------------
+Wed Feb  4 16:21:12 CET 2009 - stbinner@suse.de
+
+- backport app dupes in sycoca prevention (bnc#463326, bnc#468696)
+
+-------------------------------------------------------------------
+Tue Feb  3 07:04:34 CET 2009 - stbinner@suse.de
+
+- update 4_2_BRANCH.diff:
+   * kdecore: Repair klauncher support for unique-applications
+   * kdecore: Fix "klauncher hangs when kdeinit4 dies".
+   * kio: Properly update the directory view when aborting a move
+     operation, otherwise confusion and data loss could happen.
+   * kded: directories with desktop files were not watched anymore
+- allow creation of Plasma containments without toolbox
+
+-------------------------------------------------------------------
+Thu Jan 22 02:34:27 CET 2009 - dmueller@suse.de
+
+- update to 4.2.0
+
+-------------------------------------------------------------------
+Sat Jan 17 12:12:26 CET 2009 - dmueller@suse.de
+
+- don't hardcode rebuild counter
+
+-------------------------------------------------------------------
+Tue Jan 13 18:13:17 CET 2009 - stbinner@suse.de
+
+- update to 4.1.96
+
+-------------------------------------------------------------------
+Fri Jan  9 13:23:19 CET 2009 - dmueller@suse.de
+
+- update to 4.1.87 (KDE 4.2 Januar snapshot)
+
+-------------------------------------------------------------------
+Mon Jan  5 11:43:37 CET 2009 - dmueller@suse.de
+
+- build with acl support
+
+-------------------------------------------------------------------
+Fri Jan  2 01:43:36 CET 2009 - cgoncalves@opensuse.org
+
+- get a missing Flash plugin not from Adobe but non-oss
+  (original idea from bnc#304999)
+
+-------------------------------------------------------------------
+Fri Dec 12 16:48:09 CET 2008 - wstephenson@suse.de
+
+- Fix display of autocomplete widget (bnc#448621, kde#176058)
+
+-------------------------------------------------------------------
+Thu Dec 11 13:15:02 CET 2008 - dmueller@suse.de
+
+- hide kde3's ktip in kde 4.x sessions (bnc#458323)
+
+-------------------------------------------------------------------
+Thu Nov 20 11:04:22 CET 2008 - wstephenson@suse.de
+
+- update branch diff
+  * Fix maximised main windows not being session restored to
+    correct size (kde#150772)
+
+-------------------------------------------------------------------
+Tue Nov 18 18:25:31 CET 2008 - stbinner@suse.de
+
+- make single click in file dialog only select file (bnc#427318)
+
+-------------------------------------------------------------------
+Tue Nov 11 11:48:43 CET 2008 - stbinner@suse.de
+
+- install Solid powermanagement interfaces for Powerdevil
+
+-------------------------------------------------------------------
+Fri Nov  7 16:57:33 CET 2008 - llunak@suse.cz
+
+- shortcut handling fixes (bnc#420480)
+
+-------------------------------------------------------------------
+Fri Oct 31 11:12:06 CET 2008 - dmueller@suse.de
+
+- update to 4.1.3
+  * see http://kde.org/announcements/changelogs/changelog4_1_2to4_1_3.php
+
+-------------------------------------------------------------------
+Wed Oct 29 13:24:35 CET 2008 - stbinner@suse.de
+
+- load translations also from kde4-SLE catalog
+
+-------------------------------------------------------------------
+Wed Oct 22 16:47:35 CEST 2008 - stbinner@suse.de
+
+- debug_package_requires depend also on %release
+
+-------------------------------------------------------------------
+Wed Oct 15 10:05:46 CEST 2008 - dmueller@suse.de
+
+- update branch diff:
+  * fixes frequent kded4 crashes in global accel handling
+
+-------------------------------------------------------------------
+Thu Sep 25 18:59:04 CEST 2008 - dmueller@suse.de
+
+- update to 4.1.2
+  * see http://kde.org/announcements/changelogs/changelog4_1_1to4_1_2.php
+
+-------------------------------------------------------------------
+Thu Sep 25 15:27:24 CEST 2008 - schwab@suse.de
+
+- Mark register stack in collector.
+
+-------------------------------------------------------------------
+Mon Sep 15 15:14:54 CEST 2008 - llunak@suse.cz
+
+- read .desktop file translations from .mo files if not present
+  (fate#300461)
+
+-------------------------------------------------------------------
+Sat Sep 13 13:14:44 CEST 2008 - stbinner@suse.de
+
+- actually apply patch from last commit
+
+-------------------------------------------------------------------
+Fri Sep 12 14:47:01 CEST 2008 - llunak@suse.cz
+
+- support for Display key (fate#4147)
+
+-------------------------------------------------------------------
+Mon Sep  8 11:44:37 CEST 2008 - stbinner@suse.de
+
+- update branch diff
+
+-------------------------------------------------------------------
+Thu Aug 28 10:47:30 CEST 2008 - dmueller@suse.de
+
+- update to 4.1.1
+  * see http://kde.org/announcements/changelogs/changelog4_1to4_1_1.php
+
+-------------------------------------------------------------------
+Thu Aug 21 18:59:17 CEST 2008 - stbinner@suse.de
+
+- patch to build against Strigi 0.6
+
+-------------------------------------------------------------------
+Thu Aug 21 00:17:16 CEST 2008 - dmueller@suse.de
+
+- update branch diff
+
+-------------------------------------------------------------------
+Sat Aug 16 16:36:40 CEST 2008 - stbinner@suse.de
+
+- 4_1_BRANCH update (fixes eg kde#167826)
+
+-------------------------------------------------------------------
+Thu Jul 31 13:21:51 CEST 2008 - dmueller@suse.de
+
+- 4_1 BRANCH update
+
+-------------------------------------------------------------------
+Mon Jul 28 17:19:27 CEST 2008 - llunak@suse.cz
+
+- return kdesu password timeout back to 2 hours (bnc#404521)
+
+-------------------------------------------------------------------
+Wed Jul 23 12:50:21 CEST 2008 - dmueller@suse.de
+
+- update to 4.1.0
+
+-------------------------------------------------------------------
+Fri Jul 18 01:59:09 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.99
+
+-------------------------------------------------------------------
+Mon Jul 14 10:51:22 CEST 2008 - dmueller@suse.de
+
+- tighten version dependencies within kdelibs4 (bnc#405655)
+
+-------------------------------------------------------------------
+Fri Jul 11 12:36:07 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.98
+
+-------------------------------------------------------------------
+Fri Jul  4 00:21:35 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.85
+
+-------------------------------------------------------------------
+Thu Jun 26 17:47:31 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.84
+
+-------------------------------------------------------------------
+Wed Jun 18 21:22:04 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.83
+
+-------------------------------------------------------------------
+Tue Jun 10 14:27:05 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.82
+
+-------------------------------------------------------------------
+Mon Jun  9 23:37:52 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.81
+
+-------------------------------------------------------------------
+Mon May 26 16:42:49 CEST 2008 - llunak@suse.cz
+
+- add locale and html bundle paths to kde4rc (bnc#393960)
+
+-------------------------------------------------------------------
+Tue May 20 18:00:09 CEST 2008 - llunak@suse.cz
+
+- do not always default to kdesu remembering password (bnc#386531)
+
+-------------------------------------------------------------------
+Tue May 20 17:26:40 CEST 2008 - llunak@suse.cz
+
+- fix last patch (bnc#389765)
+
+-------------------------------------------------------------------
+Mon May 19 18:39:23 CEST 2008 - llunak@suse.cz
+
+- fix kdesu sometimes being broken when password saving is used
+  (bnc#389765)
+
+-------------------------------------------------------------------
+Thu May 15 20:07:30 CEST 2008 - dmueller@suse.de
+
+- fix off-by-one in progress calculation (bnc#382809)
+
+-------------------------------------------------------------------
+Wed May 14 16:40:59 CEST 2008 - llunak@suse.cz
+
+- support for KDE3 hotplug actions (bnc#378338)
+
+-------------------------------------------------------------------
+Fri May  9 18:23:41 CEST 2008 - dmueller@suse.de
+
+- 4_0_BRANCH.diff update:
+  * fixes crash handler not always being installed
+
+-------------------------------------------------------------------
+Fri May  9 16:34:25 CEST 2008 - llunak@suse.cz
+
+- kdelibs4.1 functionality for kdepim4.1
+
+-------------------------------------------------------------------
+Thu May  8 18:05:11 CEST 2008 - dmueller@suse.de
+
+- fix klauncher crash on exit (bnc#373637)
+- fix widget painting issues in khtml (bnc#377963)
+
+-------------------------------------------------------------------
+Thu May  1 18:43:02 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.4
+   * http://www.kde.org/announcements/changelogs/changelog4_0_3to4_0_4.php
+
+-------------------------------------------------------------------
+Fri Apr 25 18:01:32 CEST 2008 - llunak@suse.cz
+
+- change kdesu defaults to keeping a password for 5min (bnc#216796)
+
+-------------------------------------------------------------------
+Thu Apr 17 00:09:55 CEST 2008 - dmueller@suse.de
+
+- load suse translations
+
+-------------------------------------------------------------------
+Thu Apr 10 16:38:10 CEST 2008 - dmueller@suse.de
+
+- fix detection of KDE 4.1 akonadi backport
+
+-------------------------------------------------------------------
+Thu Apr 10 16:28:28 CEST 2008 - stbinner@suse.de
+
+- don't dump mime types of KDE3 apps but give it only low priority
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Apr  3 11:27:04 CEST 2008 - stbinner@suse.de
+
+- add YCP highlighting for kate-part (bnc#371979)
+
+-------------------------------------------------------------------
+Thu Mar 27 22:58:51 CET 2008 - dmueller@suse.de
+
+- update to 4.0.3
+
+-------------------------------------------------------------------
+Mon Mar 17 17:02:42 CET 2008 - dmueller@suse.de
+
+- fix window icon not being selected properly (bnc#371677)
+- fix workspace crashes during drive unplug (bnc#360059)
+
+-------------------------------------------------------------------
+Mon Mar 17 14:15:44 CET 2008 - dmueller@suse.de
+
+- fix solid crashes on deletion (bnc#360059)
+
+-------------------------------------------------------------------
+Sun Mar 16 17:51:41 CET 2008 - stbinner@suse.de
+
+- backport UDS_TARGET_URL from trunk for kde4-kio_beagle
+
+-------------------------------------------------------------------
+Thu Mar 13 21:36:54 CET 2008 - dmueller@suse.de
+
+- add compatibility with KDE 4.1 kdepimlibs
+
+-------------------------------------------------------------------
+Tue Mar 11 17:40:50 CET 2008 - dmueller@suse.de
+
+- update 4_0_BRANCH.diff
+  * fixes full screen handling, kssl security dialog changes
+  * ksycoca recreation fix
+
+-------------------------------------------------------------------
+Wed Feb 27 15:33:11 CET 2008 - dmueller@suse.de
+
+- update to 4.0.2
+
+-------------------------------------------------------------------
+Wed Feb  6 11:04:20 CET 2008 - stbinner@suse.de
+
+- move Kicker/KDesktop prevention from autostarting in KDE4 here
+
+-------------------------------------------------------------------
+Mon Feb  4 18:55:13 CET 2008 - stbinner@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Mon Feb  4 18:07:21 CET 2008 - llunak@suse.cz
+
+- add support for KDE3 autostart
+
+-------------------------------------------------------------------
+Thu Jan 31 01:49:44 CET 2008 - dmueller@suse.de
+
+- update to KDE 4.0.1
+
+-------------------------------------------------------------------
+Sun Jan 27 22:37:30 CET 2008 - stbinner@suse.de
+
+- add clever-menu.diff port
+
+-------------------------------------------------------------------
+Wed Jan 23 16:11:33 CET 2008 - stbinner@suse.de
+
+- update 4_0_BRANCH.diff
+- patch more places to use ~/.kde4
+
+-------------------------------------------------------------------
+Sun Jan 20 09:39:53 CET 2008 - stbinner@suse.de
+
+- update 4_0_BRANCH.diff
+
+-------------------------------------------------------------------
+Sat Jan  5 18:21:13 CET 2008 - stbinner@suse.de
+
+- update to 4.0 release
+
+-------------------------------------------------------------------
+Wed Jan  2 14:43:25 CET 2008 - stbinner@suse.de
+
+- update to 3.97.2
+
+-------------------------------------------------------------------
+Sun Dec 16 15:20:36 CET 2007 - dmueller@suse.de
+
+- update to 3.97.1
+
+-------------------------------------------------------------------
+Thu Dec  6 12:31:27 CET 2007 - dmueller@suse.de
+
+- restore source compatibility
+
+-------------------------------------------------------------------
+Wed Dec  5 18:10:29 CET 2007 - dmueller@suse.de
+
+- update to 3.97.0
+
+-------------------------------------------------------------------
+Tue Dec  4 16:36:32 CET 2007 - dmueller@suse.de
+
+- update to 3.96.3
+
+-------------------------------------------------------------------
+Wed Nov 28 11:24:02 CET 2007 - dmueller@suse.de
+
+- update to 3.96.2
+
+-------------------------------------------------------------------
+Wed Nov 21 18:57:22 CET 2007 - dmueller@suse.de
+
+- update to 3.96.1
+
+-------------------------------------------------------------------
+Wed Nov 14 17:36:00 CET 2007 - dmueller@suse.de
+
+- update to 3.96.0
+
+-------------------------------------------------------------------
+Tue Nov  6 11:20:36 CET 2007 - dmueller@suse.de
+
+- update to 3.95.2
+
+-------------------------------------------------------------------
+Thu Nov  1 11:40:43 CET 2007 - dmueller@suse.de
+
+- update to 3.95.1
+
+-------------------------------------------------------------------
+Thu Nov  1 10:45:52 CET 2007 - dmueller@suse.de
+
+- add nepomuk library to the filelist
+
+-------------------------------------------------------------------
+Tue Oct 30 15:33:14 CET 2007 - dmueller@suse.de
+
+- update to 3.95
+
+-------------------------------------------------------------------
+Thu Oct 18 18:05:03 CEST 2007 - dmueller@suse.de
+
+- update to 3.94.1 snapshot
+
+-------------------------------------------------------------------
+Thu Oct 18 17:26:29 CEST 2007 - dmueller@suse.de
+
+- fix QCA2 pkgconfig detection
+
+-------------------------------------------------------------------
+Tue Oct 16 18:28:25 CEST 2007 - dmueller@suse.de
+
+- Require avahi-compat-mDNSResponder-devel instead of libavahi-devel
+
+-------------------------------------------------------------------
+Thu Oct 11 18:24:47 CEST 2007 - sbrabec@suse.cz
+
+- Require libavahi-devel instead of mDNSResponder-devel.
+
+-------------------------------------------------------------------
+Mon Oct  8 23:04:10 CEST 2007 - dmueller@suse.de
+
+- update to KDE 4.0 Beta3
+
+-------------------------------------------------------------------
+Tue Oct  2 13:29:34 CEST 2007 - stbinner@suse.de
+
+- update to 3.93.0.svn720093
+
+-------------------------------------------------------------------
+Wed Sep 26 13:31:35 CEST 2007 - stbinner@suse.de
+
+- update to 3.93.0.svn717236
+
+-------------------------------------------------------------------
+Thu Sep 13 14:04:11 CEST 2007 - stbinner@suse.de
+
+- update to 3.93.0.svn712047
+
+-------------------------------------------------------------------
+Thu Aug 30 11:26:29 CEST 2007 - dmueller@suse.de
+
+- update to KDE 4.0 Beta 2
+
+-------------------------------------------------------------------
+Thu Aug 23 16:58:49 CEST 2007 - stbinner@suse.de
+
+- update to 3.92.0.svn704014
+
+-------------------------------------------------------------------
+Thu Aug 16 11:39:05 CEST 2007 - stbinner@suse.de
+
+- update to 3.92.0.svn700733
+
+-------------------------------------------------------------------
+Thu Aug  9 09:53:32 CEST 2007 - stbinner@suse.de
+
+- update to 3.92.0.svn697324
+
+-------------------------------------------------------------------
+Tue Aug  7 09:13:57 CEST 2007 - coolo@suse.de
+
+- take the SVN commit that adapts to new strigi
+
+-------------------------------------------------------------------
+Thu Aug  2 23:12:09 CEST 2007 - dmueller@suse.de
+
+- fix kdeprint_management soname
+
+-------------------------------------------------------------------
+Sat Jul 28 21:10:36 CEST 2007 - stbinner@suse.de
+
+- update to KDE 4.0 Beta 1
+
+-------------------------------------------------------------------
+Mon Jul 16 11:21:23 CEST 2007 - stbinner@suse.de
+
+- add patch to change back the generic library version to be in sync
+  with the major KDE version and instead define an override for those
+  libraries that clash (SVN commit 688504)
+
+-------------------------------------------------------------------
+Thu Jul 12 15:31:46 CEST 2007 - stbinner@suse.de
+
+- update to 3.91.0.svn672297
+
+-------------------------------------------------------------------
+Sat Jun 23 10:13:25 CEST 2007 - stbinner@suse.de
+
+- update to 3.90.1.svn672297, run fdupes
+
+-------------------------------------------------------------------
+Mon Jun 11 18:41:44 CEST 2007 - dmueller@suse.de
+
+- fix kdeinit not finding kdeinit4 modules on x86_64
+
+-------------------------------------------------------------------
+Fri Jun  8 08:57:44 CEST 2007 - stbinner@suse.de
+
+- update to 3.90.1.svn672297
+
+-------------------------------------------------------------------
+Fri Jun  1 10:55:12 CEST 2007 - coolo@suse.de
+
+- update to 3.90.1.svn670163
+
+-------------------------------------------------------------------
+Fri Jun  1 10:53:30 CEST 2007 - coolo@suse.de
+
+- use kde4-filesystem's macros for easier spec file
+
+-------------------------------------------------------------------
+Wed May 30 14:29:45 CEST 2007 - coolo@suse.de
+
+- let other packages follow kdelibs's guidance on installation paths
+
+-------------------------------------------------------------------
+Tue May 29 14:14:35 CEST 2007 - coolo@suse.de
+
+- fix installation paths
+
+-------------------------------------------------------------------
+Mon May 28 19:09:55 CEST 2007 - dmueller@suse.de
+
+- update to 3.90.1.svn668118
+
+-------------------------------------------------------------------
+Tue May 15 18:58:48 CEST 2007 - stbinner@suse.de
+
+- own more basic directories
+
+-------------------------------------------------------------------
+Sat May 12 06:54:38 CEST 2007 - stbinner@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Fri May 11 19:51:34 CEST 2007 - dmueller@suse.de
+
+- libkdeinit -> libkdeinit4
+
+-------------------------------------------------------------------
+Thu May 10 21:08:28 CEST 2007 - stbinner@suse.de
+
+- own some more icon directories
+
+-------------------------------------------------------------------
+Tue May  8 17:54:09 CEST 2007 - stbinner@suse.de
+
+- added a missing dependency
+
+-------------------------------------------------------------------
+Mon May  7 08:58:31 CEST 2007 - stbinner@suse.de
+
+- update to new SVN snapshot (roughly KDE 4.0 Alpha)
+
+-------------------------------------------------------------------
+Mon Apr 30 22:50:46 CEST 2007 - ro@suse.de
+
+- added unzip to buildrequires
+
+-------------------------------------------------------------------
+Thu Apr 26 22:34:41 CEST 2007 - stbinner@suse.de
+
+- initial package in abuild
+

@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Tue Nov 28 14:43:25 UTC 2017 - crrodriguez@opensuse.org
+
+- Cleanup BuildRequires so only what is actually required
+  is pulled for build.
+
+-------------------------------------------------------------------
+Sun Jan  1 11:47:08 UTC 2017 - jengelh@inai.de
+
+- Trim %clean, authors, and move stray export command to %build
+  section where it makes more sense.
+
+-------------------------------------------------------------------
+Thu Jun 30 12:00:00 UTC 2016 - Kai-Uwe Behrmann <ku.b@gmx.de>
+
+- remove _service to appeace the factory gate keeper
+- remove xcalib.1.patch, it is included in the release
+- remove xcalib-makefile.patch, makefile is not used
+
+-------------------------------------------------------------------
+Sun May 26 12:00:00 UTC 2015 - Kai-Uwe Behrmann <ku.b@gmx.de>
+
+- try to fix build script for Arch_Extra
+
+-------------------------------------------------------------------
+Wed Nov 26 22:00:00 UTC 2014 - Kai-Uwe Behrmann <ku.b@gmx.de>
+
+- try to fix buildrequires for ScientificLinux_7
+
+-------------------------------------------------------------------
+Wed Nov 26 21:00:00 UTC 2014 - Kai-Uwe Behrmann <ku.b@gmx.de>
+
+- fix buildrequires for SLES
+
+-------------------------------------------------------------------
+Wed Nov 26 20:00:00 UTC 2014 - Kai-Uwe Behrmann <ku.b@gmx.de>
+
+- fix buildrequires for RH/CentOS
+
+-------------------------------------------------------------------
+Wed Nov 26 12:00:00 UTC 2014 - Kai-Uwe Behrmann <ku.b@gmx.de>
+
+- update to 0.9.0
+- use cmake build system
+- change profile install path to be more package specific
+- move man page to package
+- add XRandR support
+- fix rounding errors
+
+-------------------------------------------------------------------
+Sun Sep 28 12:05:00 UTC 2014 - Kai-Uwe Behrmann <ku.b@gmx.de>
+
+- add Arch PKGBUILD
+
+-------------------------------------------------------------------
+Sat Sep 27 12:05:00 UTC 2014 - Kai-Uwe Behrmann <ku.b@gmx.de>
+
+- fix spec file to compile CentOS and RHEL
+
+-------------------------------------------------------------------
+Thu Dec  8 11:05:21 UTC 2011 - coolo@suse.com
+
+- this should be GPL-2.0+, GPL is not a license on spdx.org
+
+-------------------------------------------------------------------
+Thu Sep 21 12:00:01 UTC 2011 - Kai-Uwe Behrmann <ku.b@gmx.de> - 0.4.2
+
+- add spec license
+- remove name, version and revision macros
+- add man page from debian project
+
+-------------------------------------------------------------------
+
+* Fri Dec 26 2008 - P. Linnell mrdocs at opensuse.org
+- spec file cleanups
+* Thu Apr 24 2008 - P. Linnell <mrodcs at scribus.info>
+- fix build on CentOS and RHEL
+* Mon Aug 27 2007 - P. Linnell <mrodcs at scribus.info>
+- 0.8 release
+-applied gl.tter's patch for Win32 multi-monitor support
+-applied bleader's patch for FGLRX multi-monitor support
+-added support for LUTs bigger than in the profile linear interpolation is used for creating the values in between
+-Cchanged -n parameter: now the size of the simulated LUT must be given after -n/-noaction paramter
+* Sun Jul 29 2007  - P. Linnell <mrodcs at scribus.info>
+- try to fix more cross platform BuildRequires
+* Sun Jun 24 2007  - P. Linnell <mrodcs at scribus.info>
+- first build server package
+- make 2nd package with the profiles in openicc directory
+

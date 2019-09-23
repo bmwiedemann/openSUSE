@@ -1,0 +1,11 @@
+--- src/properties.c
++++ src/properties.c
+@@ -497,7 +497,7 @@
+ 
+   if (anim->mask == 0)
+   {
+-    wmessage("XPM file '%s' does not have a transparent colour");
++    wmessage("XPM file '%s' does not have a transparent colour",path);
+     exit(-1);
+   }
+ }

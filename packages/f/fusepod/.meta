@@ -1,0 +1,8 @@
+<package name="fusepod" project="openSUSE:Factory">
+  <title>FUSEPod is a virtual user-space filesystem that mounts your iPod</title>
+  <description>FUSEPod is a virtual user-space filesystem that mounts your iPod into a
+directory for easy browsing of the songs it contains. It can discover
+where your iPod is mounted, supports read and remove operations, and
+has a configurable directory layout.</description>
+  <devel project="filesystems" package="fusepod"/>
+</package>

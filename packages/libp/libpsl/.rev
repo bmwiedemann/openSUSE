@@ -1,0 +1,164 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8f6a35e8d31b04958d2f8404f59b2683</srcmd5>
+    <version>0.11.0</version>
+    <time>1448400680</time>
+    <user>coolo</user>
+    <comment>Library for the Public Suffix List.
+Depends on SR#344681</comment>
+    <requestid>344682</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c03539a27fc863207fbe0481efdcf58f</srcmd5>
+    <version>0.11.0</version>
+    <time>1449689605</time>
+    <user>dimstar_suse</user>
+    <comment>fix SLE 11 build
+update descriptions and categories</comment>
+    <requestid>346650</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ab4880ff570452e1868cdcb3bb2cd672</srcmd5>
+    <version>0.12.0</version>
+    <time>1452535822</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352509</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>61ee4e875bf3676ca4643d12d28c8aae</srcmd5>
+    <version>0.12.0</version>
+    <time>1454833368</time>
+    <user>dimstar_suse</user>
+    <comment>- Add baselibs.conf</comment>
+    <requestid>357961</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cf83c08a69e43d547f5180e877cda984</srcmd5>
+    <version>0.13.0</version>
+    <time>1458120305</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>368961</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9fcd0b89232aa7c34d6f8651b6be8edf</srcmd5>
+    <version>0.14.0</version>
+    <time>1470413612</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416382</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f4b868ef8bea5e026b1de91e2e81d6b2</srcmd5>
+    <version>0.15.0</version>
+    <time>1479300389</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440349</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>12a998e4418f2e8ec94050bc372720ef</srcmd5>
+    <version>0.15.0</version>
+    <time>1480584212</time>
+    <user>dimstar_suse</user>
+    <comment>split psl-make-dafsa to break build cycle with publicsuffix</comment>
+    <requestid>441832</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6bd1be3c0b25de084f22d8624597ecf6</srcmd5>
+    <version>0.16.1</version>
+    <time>1482784631</time>
+    <user>lnussel_factory</user>
+    <comment>libpsl 0.16.1</comment>
+    <requestid>446400</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>48dd4da48ad82bd94454228403fe24d5</srcmd5>
+    <version>0.17.0</version>
+    <time>1485597731</time>
+    <user>dimstar_suse</user>
+    <comment>libpsl 0.17.0</comment>
+    <requestid>452023</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>13d9b9b12044cd1634b8985dc9157a80</srcmd5>
+    <version>0.17.0</version>
+    <time>1492009883</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486464</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6bac335b7bfe27b0152392e0e8a66c7c</srcmd5>
+    <version>0.18.0</version>
+    <time>1502186274</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>511666</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>298bd21aa13b5221f4c2cecf438396c4</srcmd5>
+    <version>0.19.1</version>
+    <time>1510665432</time>
+    <user>dimstar_suse</user>
+    <comment>libpsl 0.19.1</comment>
+    <requestid>540305</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>8d4e7259de3a0ae5af01065c6f70ba7b</srcmd5>
+    <version>0.19.1</version>
+    <time>1515342051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561479</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>462c7780425c79be1a13b9f07cb70191</srcmd5>
+    <version>0.20.0</version>
+    <time>1519554879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579117</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f0293facf4b24094400fc250bb78784e</srcmd5>
+    <version>0.20.0</version>
+    <time>1519747003</time>
+    <user>dimstar_suse</user>
+    <comment>Use %license (boo#1082318). Please forward to SLE, if possible (forwarded request 580101 from favogt)</comment>
+    <requestid>580140</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>822bcdcf42c125e2a40f6c84592aef20</srcmd5>
+    <version>0.20.1</version>
+    <time>1519902149</time>
+    <user>dimstar_suse</user>
+    <comment>libpsl 0.20.1 (forwarded request 580650 from AndreasStieger)</comment>
+    <requestid>580652</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c8b9ce7a530997c1ab03fb7be5fa6d01</srcmd5>
+    <version>0.20.2</version>
+    <time>1525611298</time>
+    <user>dimstar_suse</user>
+    <comment>libpsl 0.20.2</comment>
+    <requestid>602273</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3e6f848635cf1e805bb15aea0ffa780b</srcmd5>
+    <version>0.21.0</version>
+    <time>1559580163</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704678</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>7ed49c99b542005b0d3ed11835a770d2</srcmd5>
+    <version>0.21.0</version>
+    <time>1561882831</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>712385</requestid>
+  </revision>
+</revisionlist>

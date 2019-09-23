@@ -1,0 +1,151 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aca75af8eb91e0864a1ac2eba54e4f16</srcmd5>
+    <version>2.1</version>
+    <time>1410514103</time>
+    <user>coolo</user>
+    <comment>new package needed for new ruby pkging</comment>
+    <requestid>248348</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>05770b5caf2da7dbbf4859a4317e5b9c</srcmd5>
+    <version>2.1</version>
+    <time>1411221070</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249630</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>db717bd06e3bb0ae9ce05db39af2f02c</srcmd5>
+    <version>2.1</version>
+    <time>1413782828</time>
+    <user>coolo</user>
+    <comment>- update gem_packages template from git
+
+- we dont always have /usr/bin/ruby, use perl for patching the
+  version in the bin wrapper. also replaced the sed for patching
+  the shebang line.
+- fixed a bad bug in the shebang line. we had an additional &quot;.&quot;
+  there.
+
+- install gemrc on all distros
+
+- dont delete .a files. there are actually gems where we need them
+  like rubygem-libv8 for rubygem-therubyracer
+
+- fix the case where we dont symlink the binaries. 
+
+- gem_cleanup macro was missed when updating for old ruby versions.
+
+- switch from &quot;ruby -rrubygems -e 
+  'print Gem::Specification.new.base_dir'&quot;
+  to &quot;gem env gemdir&quot;
+ 
+
+- gem_build_cleanup: also delete static library files
+
+- ruby 1.8 support:
+  - gem_packages.sh: change to /usr/src/packages when
+    /home/abuild/rpmbuild doesn't exist.
+  - gem_packages template:
+    - require rbconfigpackagingsupport to fix the ruby_install_name
+      dependent variables. we do that for all distros but catch the</comment>
+    <requestid>257498</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5f03db08da180607eb18c72856994b2b</srcmd5>
+    <version>2.1</version>
+    <time>1415201185</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>258690</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>5a9f292a0deaeac8257047403153de3f</srcmd5>
+    <version>2.1</version>
+    <time>1419331938</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266116</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>ffe567d39c8dfa6e3f1ae454f04a4a7d</srcmd5>
+    <version>2.1</version>
+    <time>1422024364</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282339</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>b96d9149bbd3a9e01070137219568143</srcmd5>
+    <version>2.1</version>
+    <time>1430980083</time>
+    <user>coolo</user>
+    <comment>- Fix patching of the shebang line (forwarded request 305056 from darix)</comment>
+    <requestid>305057</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>4ee7eae41a34774ec245931bdff1f3a2</srcmd5>
+    <version>2.1</version>
+    <time>1436111766</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>312526</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>8344784e97803d170b5fa2ea0ec75511</srcmd5>
+    <version>2.1</version>
+    <time>1457686018</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>367890</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>b38946811dca3c21182b7a5749e9fbeb</srcmd5>
+    <version>2.1</version>
+    <time>1497949106</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503701</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>758573bea2990931600f0b171018edf1</srcmd5>
+    <version>2.1</version>
+    <time>1513852038</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>558540</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>cd7a2c1b207872d426896b4b318c3dd2</srcmd5>
+    <version>2.1</version>
+    <time>1518426512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574040</requestid>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>867f90ee758194573ca7a3c278cb0505</srcmd5>
+    <version>2.1</version>
+    <time>1531469607</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620969</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f8c37801b1784d0366f9d7c612364d9c</srcmd5>
+    <version>2.6</version>
+    <time>1551468574</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679513</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>e829fa1466a918c4c8219f33a3829f64</srcmd5>
+    <version>2.6</version>
+    <time>1561882461</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>711680</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Thu Jul 30 10:45:11 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.9.35:
+  + Fixed a possible segfault if CONTENT_TYPE is not specified.
+- Changes from version 0.9.34:
+  + Haserl is now compatible with Lua 5.3 (in addition to 5.1, and
+    5.2).
+  + Fix processing of headers in rfc2388.c.
+
+-------------------------------------------------------------------
+Sat Jan 17 18:40:37 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.9.33
+  *	Fix various security vulnerabilities - most serious is a 
+    Heap Overflow Vulnerability in sliding_buffer.c
+  * Allow PUT and DELETE method (But prefix is still POST/GET)
+  *	On POST/PUT, Content-Type is not x-www-urlencoded, then
+	the body of the message is stored verbatim in POST_body=
+- Remove obsolete fix-make.diff
+- Remove autoreconf calling; not needed anymore
+- Use %configure instead of./configure
+
+-------------------------------------------------------------------
+Fri Dec  2 16:34:08 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Oct 12 09:08:35 UTC 2010 - coolo@novell.com
+
+- add patch to fix makefile syntax
+
+-------------------------------------------------------------------
+Mon Sep 27 01:15:43 CEST 2010 - ro@suse.de
+
+- add pkg-config to buildrequires 
+
+-------------------------------------------------------------------
+Tue Aug 19 22:44:03 CEST 2008 - garloff@suse.de
+
+- Update to haserl-0.9.24:
+  * bash extensions
+  * regression tests (make check)
+  * docu updates
+  * myputenv enhancements
+  * observe CONTENT_LENGTH
+
+-------------------------------------------------------------------
+Thu Nov 29 10:55:25 CET 2007 - garloff@suse.de
+
+- Update to haserl-0.9.21:
+  * Command line option handling reworked
+  * major refactoring
+  * various little bugs killed
+  * lua support
+  * custom handler for uploading large files 
+  * new comment tag
+
+-------------------------------------------------------------------
+Tue Jul 10 19:16:30 CEST 2007 - garloff@suse.de
+
+- Initial creation of package haserl-0.8.0
+

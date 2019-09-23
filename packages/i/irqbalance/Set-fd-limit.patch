@@ -1,0 +1,12 @@
+Index: irqbalance-1.6.0/misc/irqbalance.service
+===================================================================
+--- irqbalance-1.6.0.orig/misc/irqbalance.service	2019-07-01 17:12:55.781596074 +0200
++++ irqbalance-1.6.0/misc/irqbalance.service	2019-07-01 17:13:22.025596492 +0200
+@@ -13,6 +13,7 @@ ReadOnlyPaths=/
+ ReadWritePaths=/proc/irq
+ RestrictAddressFamilies=AF_UNIX
+ RuntimeDirectory=irqbalance/
++LimitNOFILE=4096
+ 
+ [Install]
+ WantedBy=multi-user.target

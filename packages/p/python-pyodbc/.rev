@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0fd581c84111884747ae51539afec49f</srcmd5>
+    <version>4.0.24</version>
+    <time>1534940554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630837</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>630461f43d854afeb8358528976468a3</srcmd5>
+    <version>4.0.24</version>
+    <time>1535367572</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631541</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b97400f6c250633945eac9257c402c2a</srcmd5>
+    <version>4.0.25</version>
+    <time>1549140599</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.0.25:
+  * support for SQL Server Table-Valued Paramaters has arrived. See test_tvp in the SQL Server unit tests.
+  * Support for IBM DB/2 DECFLOAT type (#472) by @c-dy
+  * Better SQL Server and FreeTDS tests with known driver issues (#469) by @gordthompson.
+  * Fix &quot;function sequence error&quot; with fast executemany (#450) by @v-makouz.</comment>
+    <requestid>670555</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>29c134e3ee0d5cf11d2db54d7985c3be</srcmd5>
+    <version>4.0.26</version>
+    <time>1552299473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683721</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>113f946f7cc30de69169d9423c66c781</srcmd5>
+    <version>4.0.27</version>
+    <time>1565695417</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.27: 
+  * Use int instead of bigint when possible (based on size of data) 
+    to work with drivers that don't support bigint at all.
+  * Support SQL Server datetime2 precision. Previously more data 
+    was passed than the column precision causing an error.
+  * Make Informix unit tests work again.
+  * Correct encoding error on big-endian machines for connection 
+    errors. Default to native UTF16 instead of UTF16-LE.
+  * Fix MySQL unit tests.</comment>
+    <requestid>722652</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>512db4e15484dd1f62330d122b581b80</srcmd5>
+    <version>4.0.27</version>
+    <time>1568805036</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731160</requestid>
+  </revision>
+</revisionlist>

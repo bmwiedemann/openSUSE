@@ -1,0 +1,388 @@
+<revisionlist>
+  <revision rev="1" vrev="43">
+    <srcmd5>fb2c7f82ba3d543eb53c131ed69a5571</srcmd5>
+    <version>1.2.0</version>
+    <time>1166483835</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="49">
+    <srcmd5>d529ee856bbb491ea78fdce33d6c6da9</srcmd5>
+    <version>1.2.0</version>
+    <time>1166488500</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="53">
+    <srcmd5>d6042cf25a0c8aa4a649d084bf284978</srcmd5>
+    <version>1.2.0</version>
+    <time>1168276788</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="55">
+    <srcmd5>0f5a6f3eea5fb493eb993d0622966077</srcmd5>
+    <version>1.2.0</version>
+    <time>1168561903</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="62">
+    <srcmd5>5389e3867da71dd17e9fbe5adba6f658</srcmd5>
+    <version>1.2.0</version>
+    <time>1175185398</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="91">
+    <srcmd5>577c1791009e477442d3a4b7759bf44a</srcmd5>
+    <version>1.2.0</version>
+    <time>1189421277</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="126">
+    <srcmd5>a68a8116a4d036dd241cbf95f3888886</srcmd5>
+    <version>1.2.0</version>
+    <time>1206545186</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="129">
+    <srcmd5>e020168576559323cec42204015946bf</srcmd5>
+    <version>1.2.0</version>
+    <time>1207459307</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="131">
+    <srcmd5>3ad938010c0c69d383ccd6eaca844b42</srcmd5>
+    <version>1.2.0</version>
+    <time>1207833513</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="138">
+    <srcmd5>2bacb4f3d6f1c9253b00a18f2718bd00</srcmd5>
+    <version>1.2.0</version>
+    <time>1210363877</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="158">
+    <srcmd5>515ad2e0685cf61db59588dfe179c728</srcmd5>
+    <version>1.2.0</version>
+    <time>1219337373</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="168">
+    <srcmd5>9de2447e68a4ebba47f412a1416b768b</srcmd5>
+    <version>1.2.0</version>
+    <time>1226939919</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="169">
+    <srcmd5>89c4a35c10b69d091abc8e514b12c16c</srcmd5>
+    <version>1.2.0</version>
+    <time>1231461755</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="170">
+    <srcmd5>65802fa0bfa07ff6a2bd6169d2d523e0</srcmd5>
+    <version>1.2.0</version>
+    <time>1232625973</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="173">
+    <srcmd5>21e69c8627fd75986b363702f35fce83</srcmd5>
+    <version>1.2.0</version>
+    <time>1234482954</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="175">
+    <srcmd5>21e69c8627fd75986b363702f35fce83</srcmd5>
+    <version>1.2.0</version>
+    <time>1234482954</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="176">
+    <srcmd5>4b0542d488b34027805914e2856e4ab6</srcmd5>
+    <version>1.2.0</version>
+    <time>1258970806</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/openslp based on submit request 24669 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="18" vrev="177">
+    <srcmd5>968930202ffeb5521d73a2dce15af54d</srcmd5>
+    <version>1.2.0</version>
+    <time>1263479451</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/openslp based on submit request 29031 from user coolo
+</comment>
+  </revision>
+  <revision rev="19" vrev="178">
+    <srcmd5>9784df0e5afd9cdb8ce07addec485023</srcmd5>
+    <version>1.2.0</version>
+    <time>1268925224</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="20" vrev="180">
+    <srcmd5>9784df0e5afd9cdb8ce07addec485023</srcmd5>
+    <version>1.2.0</version>
+    <time>1278667374</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="181">
+    <srcmd5>9784df0e5afd9cdb8ce07addec485023</srcmd5>
+    <version>1.2.0</version>
+    <time>1278678607</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="182">
+    <srcmd5>38039c725b8a6c1e0cdd4efdffa8bcc8</srcmd5>
+    <version>1.2.0</version>
+    <time>1287139177</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/openslp based on submit request 50412 from user mlschroe
+</comment>
+    <requestid>50412</requestid>
+  </revision>
+  <revision rev="23" vrev="185">
+    <srcmd5>38039c725b8a6c1e0cdd4efdffa8bcc8</srcmd5>
+    <version>1.2.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="186">
+    <srcmd5>a499532e9ae01b7bd5cd12b9b1107ec3</srcmd5>
+    <version>1.2.0</version>
+    <time>1299080686</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63171 from user prusnak
+</comment>
+    <requestid>63171</requestid>
+  </revision>
+  <revision rev="25" vrev="187">
+    <srcmd5>6c33a524cbce7e665ccb987622b07e85</srcmd5>
+    <version>1.2.0</version>
+    <time>1299080700</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63171
+</comment>
+  </revision>
+  <revision rev="26" vrev="189">
+    <srcmd5>6c33a524cbce7e665ccb987622b07e85</srcmd5>
+    <version>1.2.0</version>
+    <time>1319182217</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="27" vrev="190">
+    <srcmd5>dc6d72ec3212326a71fdb0b232b95aab</srcmd5>
+    <version>1.2.0</version>
+    <time>1321460389</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 91731 from coolo)</comment>
+    <requestid>91810</requestid>
+  </revision>
+  <revision rev="28" vrev="191">
+    <srcmd5>46874d42e5664e4dfa88db8d776a5319</srcmd5>
+    <version>1.2.0</version>
+    <time>1323192879</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="29" vrev="192">
+    <srcmd5>ceea608aec6bd1f62b9532a4a7e4f4f3</srcmd5>
+    <version>1.2.0</version>
+    <time>1328711633</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>102488</requestid>
+  </revision>
+  <revision rev="30" vrev="193">
+    <srcmd5>9633ea63a7560db7e2f32f93c8b480e4</srcmd5>
+    <version>1.2.0</version>
+    <time>1328732397</time>
+    <user>coolo</user>
+    <comment>- move the systemd requires to the server subpackage</comment>
+    <requestid>103433</requestid>
+  </revision>
+  <revision rev="31" vrev="195">
+    <srcmd5>9633ea63a7560db7e2f32f93c8b480e4</srcmd5>
+    <version>1.2.0</version>
+    <time>1340183758</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="32" vrev="196">
+    <srcmd5>c0d719e9af47f00f0b9baee090fa0e12</srcmd5>
+    <version>1.2.0</version>
+    <time>1346488363</time>
+    <user>namtrac</user>
+    <comment>- openslp-ocloexec.patch: open all internal fds with O_CLOEXEC
+  so we do not leak them on fork() .. execve() particulary
+  important in the shared library. (forwarded request 131594 from elvigia)</comment>
+    <requestid>132112</requestid>
+  </revision>
+  <revision rev="33" vrev="197">
+    <srcmd5>4028ec0bafd0855358ba87bfd7bfd900</srcmd5>
+    <version>1.2.0</version>
+    <time>1350629327</time>
+    <user>coolo</user>
+    <comment>- buildrequire systemd through the pkgconfig provide to get
+  systemd-mini in build environments (to break cycles) (forwarded request 138708 from coolo)</comment>
+    <requestid>138726</requestid>
+  </revision>
+  <revision rev="34" vrev="199">
+    <srcmd5>4028ec0bafd0855358ba87bfd7bfd900</srcmd5>
+    <version>1.2.0</version>
+    <time>1359109543</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="200">
+    <srcmd5>c9e45ebd5cc99d02cd84853d6699ae69</srcmd5>
+    <version>1.2.0</version>
+    <time>1366177400</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 164132 from namtrac)</comment>
+    <requestid>170868</requestid>
+  </revision>
+  <revision rev="36" vrev="201">
+    <srcmd5>8db7d28065ecd9d708e9eed7db177368</srcmd5>
+    <version>1.2.0</version>
+    <time>1373985970</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>183216</requestid>
+  </revision>
+  <revision rev="37" vrev="203">
+    <srcmd5>8db7d28065ecd9d708e9eed7db177368</srcmd5>
+    <version>1.2.0</version>
+    <time>1379663428</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>70b855f6e2034f80827f2aff88307d37</srcmd5>
+    <version>2.0.0</version>
+    <time>1393098272</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>223216</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>cd39eba76421d0f309a4daa192d3be89</srcmd5>
+    <version>2.0.0</version>
+    <time>1398278137</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>230501</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>cd39eba76421d0f309a4daa192d3be89</srcmd5>
+    <version>2.0.0</version>
+    <time>1409302046</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>b7db2bf8401754f2785ae5e14f916d4d</srcmd5>
+    <version>2.0.0</version>
+    <time>1410326910</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>248039</requestid>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>f45b49bc98e69f61c0ebb2bb9607395a</srcmd5>
+    <version>2.0.0</version>
+    <time>1427109264</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291317</requestid>
+  </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>d09bcc956c978717b5dda7b906400a5a</srcmd5>
+    <version>2.0.0</version>
+    <time>1474115810</time>
+    <user>dimstar_suse</user>
+    <comment>-&gt;</comment>
+    <requestid>427243</requestid>
+  </revision>
+  <revision rev="44" vrev="8">
+    <srcmd5>d84a8a5edb4d7967c09696682b4187fd</srcmd5>
+    <version>2.0.0</version>
+    <time>1476430054</time>
+    <user>dimstar_suse</user>
+    <comment>-&gt;</comment>
+    <requestid>434545</requestid>
+  </revision>
+  <revision rev="45" vrev="9">
+    <srcmd5>bcba1abca763019c72f50f84c18463f6</srcmd5>
+    <version>2.0.0</version>
+    <time>1482784893</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>446826</requestid>
+  </revision>
+  <revision rev="46" vrev="10">
+    <srcmd5>fefdb2a4eb61424b3241a8ac856c52bf</srcmd5>
+    <version>2.0.0</version>
+    <time>1484474196</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449492</requestid>
+  </revision>
+  <revision rev="47" vrev="11">
+    <srcmd5>dc793dc795f9042b9418aa07acfb5d02</srcmd5>
+    <version>2.0.0</version>
+    <time>1497786559</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503531</requestid>
+  </revision>
+  <revision rev="48" vrev="12">
+    <srcmd5>e0cc567a0f07c6575735d57fab54f3a0</srcmd5>
+    <version>2.0.0</version>
+    <time>1512291862</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546559</requestid>
+  </revision>
+  <revision rev="49" vrev="13">
+    <srcmd5>6b685da1e2c706fb5254a7092371a752</srcmd5>
+    <version>2.0.0</version>
+    <time>1521579080</time>
+    <user>dimstar_suse</user>
+    <comment>-&gt;</comment>
+    <requestid>586340</requestid>
+  </revision>
+  <revision rev="50" vrev="14">
+    <srcmd5>130fc22f9d5f17cf32ecd51941014835</srcmd5>
+    <version>2.0.0</version>
+    <time>1523875371</time>
+    <user>dimstar_suse</user>
+    <comment>-&gt;</comment>
+    <requestid>595666</requestid>
+  </revision>
+  <revision rev="51" vrev="15">
+    <srcmd5>c95dc4bfd50bdf55a60a85aaf4da2d31</srcmd5>
+    <version>2.0.0</version>
+    <time>1536148069</time>
+    <user>dimstar_suse</user>
+    <comment>Now compiles when ENABLE_SLPv2_SECURITY is not defined. Enjoy! (forwarded request 631860 from jsikes)</comment>
+    <requestid>632857</requestid>
+  </revision>
+  <revision rev="52" vrev="16">
+    <srcmd5>f165b15eda38652012c4e66dd68397b2</srcmd5>
+    <version>2.0.0</version>
+    <time>1560457978</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitely require library on develpackage and do not pull
+  in the base package with slptool binary (forwarded request 709401 from scarabeus_iv)</comment>
+    <requestid>709417</requestid>
+  </revision>
+  <revision rev="53" vrev="17">
+    <srcmd5>a5d17c680c4f9c294a08ae68c0957a57</srcmd5>
+    <version>2.0.0</version>
+    <time>1566551001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724027</requestid>
+  </revision>
+</revisionlist>

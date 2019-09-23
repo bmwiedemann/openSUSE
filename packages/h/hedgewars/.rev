@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e7f4047a673bbb3d9361a3052b87c63c</srcmd5>
+    <version>0.9.22</version>
+    <time>1476350830</time>
+    <user>dimstar_suse</user>
+    <comment>spec file cleaned, project should be IP clean and slow release cycle makes it easy to maintain</comment>
+    <requestid>415146</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>105d95ae641ab5d1c5a40d70776fe9d9</srcmd5>
+    <version>0.9.22</version>
+    <time>1479151022</time>
+    <user>dimstar_suse</user>
+    <comment>- Minor description fixes (forwarded request 440203 from jengelh)</comment>
+    <requestid>440237</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ad00e9013737d32ce971f3c7e02bcc47</srcmd5>
+    <version>0.9.22</version>
+    <time>1512378095</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace libopenssl-devel BuildRequires with pkgconfig(openssl),
+  allowing OBS to pick openssl 1.0 (which is required due to Qt4
+  not being able to be ported to openSSL 1.1). (forwarded request 546447 from dimstar)</comment>
+    <requestid>546484</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d8af8549d7ae1a886dd52ff5a83d9ee7</srcmd5>
+    <version>0.9.23</version>
+    <time>1516359121</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>561248</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3c75488d1ea1eb9429265b78f12834f3</srcmd5>
+    <version>0.9.24.1</version>
+    <time>1531592714</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>622475</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5d4e02b61fbb2894aad555bc9603abaf</srcmd5>
+    <version>0.9.25</version>
+    <time>1551386600</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679557</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5a1517823687e2bc3443679dd206efa6</srcmd5>
+    <version>0.9.25</version>
+    <time>1560760427</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix builds on 32bit archs, use CLang+Pas2C instead of FPC
+- Spec file cleanups:
+  * use bcond_with{,out} for disabling/enabling features
+  * remove several unused BuildRequires
+  * remove obsolete xpm icon
+  * use metainfo instead of appdata dir
+  * remove defattr
+  * use %license for Fonts_LICENSE.txt, add COPYING (forwarded request 710016 from StefanBruens)</comment>
+    <requestid>710021</requestid>
+  </revision>
+</revisionlist>

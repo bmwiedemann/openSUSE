@@ -1,0 +1,9 @@
+<package name="perl-Package-Generator" project="openSUSE:Factory">
+  <title>Generate new packages quickly and easily</title>
+  <description>This module lets you quickly and easily construct new packages.
+It gives them unused names and sets up their package data,
+if provided.
+
+  Author:	Ricardo Signes, &lt;rjbs@cpan.org&gt;</description>
+  <devel project="devel:languages:perl" package="perl-Package-Generator"/>
+</package>

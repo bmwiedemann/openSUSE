@@ -1,0 +1,1293 @@
+-------------------------------------------------------------------
+Tue Aug 20 20:07:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.30.7:
+  + Fix compatibility with Vala 0.46.
+
+-------------------------------------------------------------------
+Tue Aug 20 11:29:26 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.30.6:
+  + Fix issue with Flickr authentication introduced in 0.30.5.
+
+-------------------------------------------------------------------
+Wed Aug 14 12:32:40 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.30.5:
+  + Update appdata release information.
+  + Fix crash in Piwigo if system certificate store is empty.
+  + Fix crash in Google Photos if album has no title.
+  + Fix crash in Google Photos and Flickr if the OAuth flow fails
+    in WebKit.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 25 08:50:20 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.30.4:
+  + Re-release of 0.30.3 with proper version number.
+- Changes from version 0.30.3:
+  + Fix building against GExiv2 0.12 and later.
+  + Fix camera fall-back icon.
+  + Fix icon resource fall-backs.
+  + Fix issue with ACDSEE hierarchical tags.
+  + Fix compile issue with recent vala.
+  + Fix focus issue in slideshow.
+  + Updated translations.
+- Drop shotwell-Adapt-to-gexiv2-changes.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Feb  7 17:06:25 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.30.2:
+  + Fix maximize on Wayland when double-clicking on title-bar.
+  + Do not hide the cursor when showing the slideshow settings
+    dialog.
+  + Fix compatibility with recent vala compilers.
+  + Fix crash when dismissing file modifications on close.
+  + Fix issues with google and flickr not being able to log in.
+  + Replace picasaweb publishing with Google Photos publishing.
+  + Comply with Flick API TOS.
+  + Updated translations.
+- Drop upstream fixed patches:
+  + shotwell-Fix_double-click_maximize.patch.
+  + shotwell-slideshow_Suspend_hiding_cursor.patch.
+  + shotwell-vala-fixes.patch.
+  + shotwell-Fix_crash_when_dismissing_modifications.patch.
+  + shotwell-authenticator_Fix_google_and_flickr_auth.patch.
+- Update calls passed to meson to align with upstreams changes.
+
+-------------------------------------------------------------------
+Tue Jan 15 22:41:15 UTC 2019 - bjorn.lie@gmail.com
+
+- Add shotwell-Adapt-to-gexiv2-changes.patch: Fix build with new
+  libgexiv2, rebased patch from master branch.
+- Add bug fix patches from upstream stable branch:
+  + shotwell-Fix_double-click_maximize.patch: Fix double-click
+    maximize artifacts on Wayland.
+  + shotwell-slideshow_Suspend_hiding_cursor.patch: slideshow:
+    Suspend hiding the cursor.
+  + shotwell-vala-fixes.patch: vala: Accept
+    string.index_of_nth_char() to return long or int for new valac.
+  + shotwell-Fix_crash_when_dismissing_modifications.patch: direct:
+    Fix crash when dismissing modifications.
+  + shotwell-authenticator_Fix_google_and_flickr_auth.patch:
+    authenticator: Fix google and flickr authenticator.
+
+-------------------------------------------------------------------
+Sat Sep 29 13:05:03 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.30.1:
+  + Fix appdata URLs.
+  + Fix "Show in file manager" issues with single quotes.
+  + Fix cancelling in sharing dialog.
+  + Fix progress bar in sharing dialog.
+  + Piwigo: Fix issue with empty dialog after cancelling upload.
+  + Fix setting the slideshow delay with the spinner.
+  + Fix icon fall-back for extensions.
+  + Fix a critical when an image does not have any meta-data.
+  + Fix GPS coordinate link in extended information for western
+    longitudes.
+
+-------------------------------------------------------------------
+Sun Sep 23 08:11:57 UTC 2018 - sean@suspend.net
+
+- Update to version 0.30.0:
+  + Last-minute fix for random segfaults in GSettings
+    (glgo#GNOME/shotwell#34).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jul 15 17:45:25 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.28.4:
+  + Fix slideshow settings dialog.
+  + Fix Google login sequence.
+  + Fix MTP device unmounting.
+  + Work-around issue where PTP cameras would not be recognized
+    anymore.
+  + Bugs fixed: bgo#796370, glgo#GNOME/shotwell#12.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jun  2 22:23:22 UTC 2018 - bjorn.lie@gmail.com
+
+- Drop pkgconfig(gconf-2.0) BuildRequires: No longer needed, nor
+  used.
+
+-------------------------------------------------------------------
+Tue May  8 04:45:29 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.28.3:
+  + Fix spacings in search toolbar.
+  + Fix "Out of memory" issues when scrolling through large
+    collections.
+  + Bugs fixed: bgo#786702.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr  9 19:45:13 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.28.2:
+  + Fix saved search dialog on Gtk 3.18.
+  + Fix crash when editing images with alpha channel.
+  + Fix logging in to Piwigo when password contains &.
+  + Bugs fixed: bgo#718742, bgo#794673.
+- Drop update-desktop-files BuildRequires and stop passing
+  suse_update_desktop_file macro: No longer needed.
+
+-------------------------------------------------------------------
+Sun Mar 25 18:45:02 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.28.1:
+  + The paperbag. Unbreak all publishers.
+  + Fix a missing symbol error.
+  + Bugs fixed: bgo#794293.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 12 22:09:24 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  8 16:42:50 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.27.92:
+  + Fix log in to Piwigo if password contains &.
+  + Fix deleting two photos when pressing Delete.
+  + Bugs fixed: bgo#718742, bgo#793818.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  5 18:37:41 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.27.4:
+  + Fix a crash when importing in-place from DAV.
+  + Fix a crash when removing the last photo of an event.
+  + Bugs fixed: bgo#786531, bgo#792498.
+  + Updated translations.
+- Changes from version 0.27.3:
+  + Fix upgrading from Shotwell 0.7.2.
+  + Make Histogram widget accessible by keyboard.
+  + Add F4 as shortcut for the Date/Time dialog.
+  + Fix an issue where the date/time picker was out-of-sync with
+    the calendar widget.
+  + Refactor shotwell.ui into smaller ui files and make some of the
+    dialogs templated.
+  + Rewrite saved search dialog to use GtkListBox.
+  + Add a very simple Piwigo server to do offline testing.
+  + Add labels to sliders in adjustment tool.
+  + Fix issue where Shotwell would fall back to the internal
+    developer if the RAW+JPEG pair did not contain an embedded
+    development in the RAW files.
+  + Fix showing the help when running from build folder.
+  + Fix issue with linking the plugin interfaces multiple times.
+  + Fix install location for appdata.
+  + Bugs fixed: bgo#716431, bgo#717126, bgo#753943, bgo#790185,
+    bgo#790469, bgo#791893, bgo#792058.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan  2 15:41:01 UTC 2018 - zaitor@opensuse.org
+
+- Update to version 0.27.2:
+  + Improve the wording for the "Width or Height" scaling
+    constraint.
+  + Fix unmounting the camera when it is mounted via mtp, not
+    gphoto2.
+  + Speed up color transformations.
+  + Refactor Tumblr and Flickr code to use common OAuth1 base
+    class.
+  + Flickr: Do the authentication in Shotwell, not calling the
+    system browser.
+  + Fix sorting by title.
+  + Fix searching for newly added keywords.
+  + Make it possible to edit month and year easily in date/time
+    picker.
+  + Doc: Fix keybord shortcut for publishing pane.
+  + Bugs fixed: bgo#718977, bgo#729857, bgo#736643, bgo#779677,
+    bgo#781472, bgo#786821, bgo#787553, bgo#790668.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Dec  2 22:49:43 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.27.1:
+  + Properly dist meson files with autotools.
+  + Dist apport helper with autotools.
+  + Fix checking against unity.
+  + Build the graphics-processor binary when building with meson.
+  + Hide toolbar in fullscreen when disabled in settings.
+  + When clicking ok in import, hide file selector.
+  + Properly xml-escape the file names in wallpaper.xml.
+  + Do not re-encode JPEG previews.
+  + Only create thumbs for RAW imports once.
+  + Use APPSTREAM instead of APPDATA.
+  + Improve RAW/JPEG pair matching by sorting file list.
+  + Fix deprecated "find" icons.
+  + Fix help for non-recursive photo import.
+  + Fix menu-bar injection.
+  + Avoid data corruption when importing from camera.
+  + Re-use RAW/JPEG association from camera import.
+  + Rename backing photo when importing to lower case.
+  + Improve description of mass-storage cameras.
+  + Improve top-level tool-tips on navigation tree.
+  + More unicode use.
+  + When trashing without trash available, also remove RAW file.
+  + Fix trimming of EXIF thumbs from Canon cameras.
+  + Import Videos even if they use application/x-extension-mp4.
+  + Fix missing event pictures when not copying thumbnails.
+  + Remove Rajce and Yandex plugin from default build.
+  + Remove useless submenu on saved searches.
+  + Fix some criticals on context menu actions.
+  + Some code clean-ups.
+  + Remove locale-dependent keyboard shortcuts.
+  + Fix Help to pass yelp-check.
+  + Fix crash on removing last photo from import roll.
+  + Fix window icon of start-up dialog.
+  + Speed-up event creation on import and merge.
+  + Bugs fixed: bgo#717735, bgo#719142, bgo#719186, bgo#741962,
+    bgo#748666, bgo#772339, bgo#773206, bgo#777626, bgo#782753,
+    bgo#783956, bgo#784661, bgo#784883, bgo#785196, bgo#785503,
+    bgo#785711, bgo#785761, bgo#787400.
+  + Updated translations.
+- Drop post(un) handling of glib2_gsettings_schema_post(un),
+  desktop_database_post(un) and icon_theme_cache_post(un), we have
+  file-triggers taking care of this now.
+- Switch to meson build-system:
+  + Add meson BuildRequires.
+  + Replace autotools macros with meson, meson_build and
+    meson_install.
+  + Clean up spec, run spec-cleaner, use autosetup macro.
+- Add shotwell-rpmlintrc, filter out expected rpmlint warnings.
+
+-------------------------------------------------------------------
+Sun Aug 20 11:07:17 UTC 2017 - zaitor@opensuse.org
+
+- Drop pkgconfig(unique-3.0) BuildRequires: No longer needed.
+- Add appstream-glib BuildRequires, support AppData.
+
+-------------------------------------------------------------------
+Fri Jun 30 19:17:26 UTC 2017 - zaitor@opensuse.org
+
+- Replace itstool with gettext BuildRequires, align with what
+  current versions of shotwell depends on.
+
+-------------------------------------------------------------------
+Wed Jun 21 19:29:08 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.27.0:
+  + Remove F-Spot import support.
+  + Create a commandline utility to test image transformations.
+  + Speed up color transformations a bit.
+  + Bump GTK+ requirement to 3.18 and remove deprecated functions.
+  + Clean-up histogram drawing code.
+  + Run thumbnailer with nice 19.
+  + Update VAAPI blacklisting for video thumbnailer and new plugin
+    structure.
+  + Add configurable image background.
+  + Split several dialogs from shotwell.ui file.
+  + Move Tumblr to default plugin set.
+  + Remove some unnecessary memcpys on import.
+  + Add Meson build support.
+  + Some more ngettext for plurals.
+  + Add --fullscreen/-f option for viewer.
+  + Add option to install Ubuntu apport hook.
+  + Fix issue when importing to NTFS-backed vboxfs.
+  + Fix GSettings schema search path for running out-of-tree.
+  + Work around "Camera locked: -53" error on GNOME.
+  + Fix issue with missing highlight on dnd actions.
+  + Bugs fixed: bgo#716448, bgo#716499, bgo#716547, bgo#716599,
+    bgo#716708, bgo#716830, bgo#717767, bgo#718809, bgo#718846,
+    bgo#719020, bgo#719031, bgo#719240, bgo#733652, bgo#742563,
+    bgo#752008, bgo#760868, bgo#768938, bgo#773267, bgo#774650,
+    bgo#780811, bgo#781567, bgo#781897, bgo#783250.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun  2 07:11:35 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.26.2:
+  + Fix issue when minimizing publishing UI on Unity.
+  + Fix browsing on GVFS-mounted file systems.
+  + Fix missing linebreaks in comments when writing back meta-data.
+  + Fix crash when no import plugin is selected.
+  + Updated translations.
+  + Bugs fixed: bgo#719240, bgo#733652, bgo#781897, bgo#783250.
+- Changes from version 0.26.1:
+  + Fix "About" wording.
+  + Fix missing Keyboard shortcuts.
+  + Viewer: Fix context menu.
+  + Bugs fixed: bgo#780415, bgo#780811.
+  + Updated translations.
+- Drop shotwell-fix-crash-without-importer.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Jun  1 20:22:25 UTC 2017 - dimstar@opensuse.org
+
+- Add shotwell-fix-crash-without-importer.patch: Fix crash when no
+  import plugin is enabled (bgo#78350, boo#1040047).
+
+-------------------------------------------------------------------
+Mon Mar 20 17:05:22 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.26.0:
+  + Fix build on non-glibc systems.
+  + Fix missing optimisation in standard configure call.
+  + bugs fixed: bgo#779844, bgo#780116.
+- Changes from version 0.25.92:
+  + Fix navigation issue when deleting image in fullscreen view.
+  + Fix toolbox not visible on Mate in fullscreen view.
+  + Fix navigation in viewer when saving modified photo.
+  + Fix wrong macro in manpage.
+  + Clean-up some dependencies.
+  + Make it possible to enable/disable individual publishers.
+  + Remove obsolete UI file.
+  + Move all icons in the resource file.
+  + Move ui files into resources.
+  + Remove obsolete Glade helpers.
+  + Clean-up printing dialog a little.
+  + Piwigo: Append .jpg extension to published raw files.
+  + Fix keyboard accessibility of CCW rotation.
+  + Fix massive memory consumption when importing videos.
+  + Fix context menu of viewer.
+  + Fix a useless string copy.
+  + Use default measurements depending on locale when none are set.
+  + Bugs fixed: bgo#715501, bgo#729091, bgo#732663, bgo#734816,
+    bgo#775158, bgo#779558, bgo#779844, bgo#779989.
+- Changes from version 0.25.90:
+  + Remove obsolete option to create new folders on Picasa web
+    albums.
+  + Update Google API keys.
+  + Fix Youtube upload by porting to libgdata.
+  + Use embedded thumbnails in RAW files when default developer is
+    set to Camera.
+  + Remove accidental raw development while importing.
+  + Fix "Export" menu accidentally being labelled as "Save As".
+  + Bugs fixed: bgo#717305, bgo#718248, bgo#777910.
+- Changes from version 0.25.5:
+  + Fix setting of gamma value and color matrix in libraw
+    (bgo#778174).
+  + Extract web publishing authenticators into separate library.
+    That should make it possible to easily support UOA and GOA
+    without patching Shotwell.
+- Changes from version 0.25.4:
+  + Publishing: Use HTTPS everywhere.
+- Changes from version 0.25.3:
+  + Fix event page context menu.
+  + Try to guess character set of string when UTF-8 validation
+    fails.
+  + Fix tags context menu.
+  + Properly switch menu bar when changing pages.
+  + Fix rating.
+  + Fix a critical about reparenting a popup menu.
+  + Fix sidebar context menu.
+  + Fix toolbar in camera import page.
+  + Update glade files for all publishers.
+  + Flickr: Simplify OAuth parsing by using libsoup.
+  + Fix accelerators not coming from menu model.
+  + Add <Ctrl>-f as shortcut for search bar.
+  + Remove AppMenu, needs more thinking about the design.
+  + Flickr: Use human-readable size of upload quota.
+  + Fix leave fullscreen option.
+  + Fix upload issues with flickr.
+  + Fix several disabled actions when switching away from pages.
+  + Fix actions in fullscreen.
+  + Fix several typos.
+  + Piwigo: Fix title and comments on upload.
+  + Bugs fixed: bgo#776298, bgo#776527, bgo#776589, bgo#776614,
+    bgo#776839.
+  + Updated translations.
+- Add pkgconfig(gcr-3), pkgconfig(gcr-ui-3) and pkgconfig(libgdata)
+  BuildRequires: new dependencies for the various publishers.
+
+-------------------------------------------------------------------
+Tue Jan 31 21:51:52 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.24.5:
+  + Publishing: Use HTTPS consistently.
+  + Updated translations.
+- Turn on HTTPS encyption all over the publishing plugins. Users
+  using Tumblr and Yandex.Fotki publishing are strongly advised to
+  change their passwords and reauthenticate Shotwell to those
+  services after upgrade.
+  Users of Picasa and Youtube publishing are strongly advised to
+  reauthenticate (Log out and back in) Shotwell to those services
+  after upgrade.
+
+-------------------------------------------------------------------
+Sun Jan 29 18:06:48 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.24.4:
+  + Piwigo: Fix title and comments for uploaded images.
+  + Fix icon file name for Serbian and Korean.
+  + Improved duplicate detection.
+  + Bugs fixed: bgo#718107, bgo#775196, bgo#776664.
+  + Updated translations.
+- Run spec-cleaner, add pkgconfig BuildRequires, and modernize
+  spec.
+- Add fdupes BuildRequires and use macro: Remove duplicate files.
+
+-------------------------------------------------------------------
+Mon Dec 19 16:28:04 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.24.3:
+  + Fix issue with unique constraint on Photo database table
+    (bgo#772223).
+  + Updated translations.
+- Changes from version 0.24.2:
+  + Blacklist vaapi decoder to prevent crash when discovering
+    videos in parallel.
+  + Remove paranthesis that will break newer vala compiler.
+  + Fix a double close() in thumbnailer.
+  + Only enable SQL debugging if the variable is really set.
+  + Bugs fixed: bgo#762416, bgo#774057.
+
+-------------------------------------------------------------------
+Mon Oct 17 08:12:48 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.24.1:
+  + Add debug output when shifting day of event.
+  + Add debug output of Shotwell's current timezone.
+  + Fix Vala generic handling with recent Vala compiler.
+  + Fix focus handling when in fullscreen (bgo#771969).
+  + Remove obsolete CSS style.
+  + Prevent a critical in Piwigo uploader.
+  + Fix issue with accessability in recent Vala compiler.
+  + Fix album creation with Piwigo uploader (bgo#772648).
+  + Add option to enable SQL debugging without recompilation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 19:11:21 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.24.0:
+  + Fix a memory leak in library mode.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 12 19:44:12 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.23.7:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 29 19:54:32 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.23.6:
+  + Fix locale-dependent times.
+  + Use nl_langinfo instead of custom LConv.
+  + Fix renaming of tags and saved searches.
+  + Improve message shown on empty camera.
+  + Make thm a recognized extension for JPEG files.
+  + Bugs fixed: bgo#716533, bgo#718796, bgo#731480, bgo#759246.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 16 12:31:32 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.23.5:
+  + Remove obsolete files.
+  + Plugins: Load icons and GtkBuilder files from GResource.
+  + Offer a way to hide the bottom toolbar.
+  + Fix .desktop file generation.
+  + Use Gtk.MessageDialog's printf-style API for strings.
+  + Add SQL indexes to PhotoTable.
+  + Add Language headers to po files.
+  + Update INSTALL file.
+  + Really remove reference to external hmac_sha1.
+  + Disambiguate strings for time ranges.
+  + Implement linked tags.
+  + Make it more clear that something failed if SSL conncetion was
+    not possible.
+  + Add option to filter by saved search.
+  + Explicitly link plugins to their dependencies.
+  + Fix typo in GSettings schema.
+  + Re-add --disable-extra-plugins configure option.
+  + Fix settings migrator and thumbnailer path.
+  + Bump debian compat for proper --libexecdir parameter.
+  + Bugs fixed: https://bugs.archlinux.org/task/50129, bgo#717523,
+    bgo#717321, bgo#741962, bgo#742670, bgo#747368, bgo#750902,
+    bgo#767473, bgo#768360.
+  + Updated translations.
+- Drop pkgconfig(rest-0.7) BuildRequires: no longer needed.
+- Add ldconfig call to post/postun as we install libraries.
+
+-------------------------------------------------------------------
+Mon Jul 25 09:34:06 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.23.4:
+  + Plugins: Fix linking error.
+- Changes from version 0.23.3:
+  + libraw: Fix binding of ProcessedImage.data.
+  + graw: Prevent needless array duplication.
+  + Fix screenshot URLs in appdata.
+  + db: Add option to trace SQL statements.
+  + Change build system to autotools.
+  + Add help, appdata, gsettings and desktop files to translation
+    system.
+  + Change way help is built and installed.
+  + Always install the manpage.
+  + Several translation fixes.
+  + Make message more clear that there are no photos matching a
+    filter.
+  + Bugs fixed: bgo#715578, bgo#717064, bgo#719122, bgo#719200,
+    bgo#730665, bgo#730669, bgo#740873, bgo#741508, bgo#744251,
+    bgo#744254, bgo#744255, bgo#768054.
+  + Updated translations.
+- Add itstool BuildRequires: New dependency.
+- Replace pkgconfig(gnome-doc-utils) for yelp-tools BuildRequires:
+  following upstreams port.
+- Start using normal configure macro following upstream changes.
+  Due to this, stop exporting cflags and libdir.
+
+-------------------------------------------------------------------
+Tue Jun 21 15:28:32 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.23.2:
+  + Use yelp-build to generate HTML docs.
+  + Remove gphoto-2.4 support.
+  + Fix background color drawing (bgo#766864).
+  + Port GtkNotebook to GtkStack (bgo#744289).
+  + Fix missing scroll bars in events (bgo#766864).
+  + Fix URLs in manpage.
+  + Clean up external functions.
+  + Port librest's internal hmac_sha1 implementation to Vala.
+  + Fix multiplication of symbols in plugins.
+  + Request "popup" login in Facebook.
+  + Update help regarding publishing permissions in Facebook
+    (bgo#766919).
+  + Add source SVG for new app icons.
+  + Update logo for help.
+  + Remove executable flag on images.
+  + Piwigo: Let libsoup parse the cookie.
+  + Remove string utility functions in publishing plugins.
+  + Remove a libgee work-around, bump to 0.10 minimum version.
+  + Make filter toolbar buttons contain text and image.
+  + Move commonly used functions into shared library to prevent
+    multiple definition of symbols.
+  + Bugs fixed: bgo#744289, bgo#766864, bgo#766919, bgo#767042.
+  + Updated translations.
+- Drop sourceservice, switch back to release tarballs now that we
+  have an active working upstream again.
+- Package the new library, but not split it out as shotwell is the
+  only consumer as of now.
+
+-------------------------------------------------------------------
+Tue May 24 00:20:34 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.23.1+git.20160523:
+  + Update Facebook application id. Facebook integration works
+    again (bgo#748991).
+  + Remove obsolete VAPIs.
+  + Remove custom WEXITSTATUS implementation.
+  + Fix an assert in file monitor caused by renaming a file
+    (bgo#759403).
+  + Rename "Yorba website" to "Shotwell website" in About dialog so
+    it actually says what it does.
+  + Change the way how shotwell checks whether it runs uninstalled
+    to allow running with symlinks (bgo#747374).
+  + Copyright was transferred from Yorba to SFC.
+  + Do not block closing the viewer if there was an issue loading
+    the photo (bgo#740436).
+  + Remove remaining references to .gnome2 directory (bgo#766339).
+  + Update icons to hires versions and add a symbolic one
+    (bgo#717326).
+  + If we can't find any pixbuf representation of the Photo, push
+    an empty pixmap to force the display of the error message
+    (bgo#766338).
+  + Fix a critical when get_metadata returns null.
+  + Remove deprecated calls to gtk_widget_render_icon()
+    (bgo#719188).
+  + Panic out if we cannot open the file in the viewer.
+  + Make toolbar use GtkOverlay instead of implementing a custom
+    pop-up to prevent all kinds of issues with overlaying other
+    applications or toolboxes (bgo#756126).
+  + Remove criticals caused by mouse hiding algorithm.
+  + Updated translations.
+- Update Url to new home.
+
+-------------------------------------------------------------------
+Mon Apr 25 21:18:37 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.23.0+git.20160425:
+  + Fix css.
+  + Don't use GtkHeaderBar on dialogs if the gtk-dialogs-use-header
+    setting is not set.
+  + Use proper umask for creating directories.
+  + build:
+    - Don't build plugins twice.
+    - Call pkg-config only once.
+    - Speed up parallel builds.
+  + data: Fix contradicting icon license.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Apr 16 15:09:34 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.22.1+git.20160416:
+  + build: Remove some shell magic.
+  + Do not use Posix.system().
+  + Update .gitignore.
+  + Removed execution permissions of formats page.
+  + Fixed mentions to UI's option/item/button labels.
+  + Add '<gui>' tag to option/item/button mentions.
+  + Change "Date and Time" help's page filename to fit its content.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 14 15:34:16 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+- Drop 0001-Shotwell-flickr-api-change-fix.patch and
+  0001-Shotwell-crashes-when-adjusting-date-time-Closes-bug.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jan 06 16:58:55 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.22.0+git.20160103 (based on source service):
+  + Port to webkit2gtk-4.0.
+  + Don't pack webview into a scrolled window.
+  + Have all soup sessions validate TLS certificates (boo#958382).
+  + facebook: Don't disable XSS auditor.
+  + Updated translations.
+- Replace pkgconfig(webkitgtk-3.0) BuildRequires with
+  pkgconfig(webkit2gtk-4.0), following upstreams port to WebKit2.
+
+-------------------------------------------------------------------
+Fri Aug 28 09:43:01 UTC 2015 - cxiong@suse.com
+
+- Add 0001-Shotwell-flickr-api-change-fix.patch:
+  Flickr's API has gone to HTTPS only, this patch backport
+  upstream fix for it (bnc#943559, bgo#732432).
+
+-------------------------------------------------------------------
+Tue Mar 24 08:10:41 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.22.0:
+  + Improved metadata support for Facebook upload (bgo#742163).
+  + Saved search now properly supports text is-set, not-set
+    (bgo#743924, bgo#743923).
+  + Import title, exposure time when available.
+  + User interface improvements (bgo#744291, bgo#719284, more).
+  + Sort photos by filename (bgo#717878).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  3 13:03:27 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.21.0:
+  + User interface refresh (bgo#742326, bgo#742443).
+  + Fix Shotwell Viewer .desktop file (bgo#743799).
+  + Natural sorting of photo titles (bgo#717960).
+  + Improved video thumbnailer (bgo#739396, bgo#741821).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct 31 22:00:16 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.20.2:
+  + Set Desktop Slideshow dialog resource now included in
+    distribution (bgo#739095).
+  + Check for rendering failure in video thumbnailer (bgo#738245).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct  8 23:42:19 UTC 2014 - mgorse@suse.com
+
+- Add
+  0001-Shotwell-crashes-when-adjusting-date-time-Closes-bug.patch:
+  Fix a crash when updating the date/time of a photo (bnc#899715).
+
+-------------------------------------------------------------------
+Fri Oct  3 07:46:55 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.20.1:
+  + Correct problems with navigating photos in full-screen mode
+    (bgo#737092).
+  + Better memory utilization via more conservative pixbuf cache
+    (bgo#715198).
+  + Fixes minor bugs detected by better Vala code analysis.
+
+-------------------------------------------------------------------
+Sat Sep 20 12:06:53 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.20.0:
+  + Fix crash when deleting a photo in Shotwell Photo Viewer.
+  + Fix crash when deleting a photo.
+  + Better detection of corrupt files while importing.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 22 06:42:34 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.19.0:
+  + Support for Rajce.net and Gallery 3 photo services added.
+  + Set background image for lock screen.
+  + Better detection of corrupt images during import.
+  + Various bug fixes.
+  + Updated translations.
+- Drop upstream fixed patches shotwell-vala.patch and
+  0001-Remove-photo-from-the-collection-when-deleting-in-si.patch.
+
+-------------------------------------------------------------------
+Thu Jul 24 14:36:30 UTC 2014 - dimstar@opensuse.org
+
+- Add shotwell-vala.patch: Fix build with vala 0.25.1 (bgo#733650).
+
+-------------------------------------------------------------------
+Wed Jul 23 16:49:07 UTC 2014 - mgorse@suse.com
+
+- Add
+  0001-Remove-photo-from-the-collection-when-deleting-in-si.patch:
+  fix possible crash after deleting photo (bnc#869348, bgo#732964).
+
+-------------------------------------------------------------------
+Wed Jul  2 07:09:57 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.18.1:
+  + Fix Flickr publishing errors due to Flickr moving to HTTPs-only.
+  + Fix crash when updating photo data/time.
+  + Fix crash due to nested tag and changing sidebar selection.
+  + Corrected URLs to point to new gnome.org pages.
+
+-------------------------------------------------------------------
+Wed Mar 19 16:19:30 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.18.0:
+  + Compile and install translated help files.
+  + Updated translations.
+- Add pkgconfig(gnome-doc-utils) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Tue Mar  4 23:40:37 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.17.2:
+  + UNIX pipe unnecessarily left open for each imported video.
+  + Improved searching for event comments and diacritics.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 20 17:52:45 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.17.1:
+  + Parent folder names as search keywords rolled back
+    (bgo#722756).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb  5 12:23:34 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.17.0:
+  + Include parent folder names for keyword search.
+  + Tumblr publishing fixed.
+  + Bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov 25 21:18:59 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.15.1:
+  + Install Tumblr plugin resources.
+  + Fix crash when video thumbnails are being inspected and
+    created.
+
+-------------------------------------------------------------------
+Fri Oct  4 15:15:58 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.15.0:
+  + Copy and paste color adjustments between photos.
+  + Highlights detail adjustment.
+  + YouTube plugin now uses OAuth / OpenID.
+  + Videos in Missing Files now re-import properly.
+  + Improvements when thumbnailing videos.
+  + Numerous bug fixes.
+- Drop upstream fixed patches:
+  + shotwell-no-libexecdir.patch.
+  + shotwell-build-with-LibRaw-0.15.patch.
+  + shotwell-vala-0.21.1.patch.
+  + shotwell-fix-bnc835758.patch.
+- Pass --libexec %{_libexecdir}/%{name} to configure.
+
+-------------------------------------------------------------------
+Wed Aug 28 21:57:47 UTC 2013 - dimstar@opensuse.org
+
+- Add shotwell-fix-bnc835758.patch: fix crash on importing AVI
+  files with "Mon Mar  3 09:44:56 2008" date format (bnc#835758).
+
+-------------------------------------------------------------------
+Fri Aug  9 08:46:32 UTC 2013 - dimstar@opensuse.org
+
+- Add shotwell-vala-0.21.1.patch: Fix build with Vala 0.21.1.
+
+-------------------------------------------------------------------
+Sun Jun 23 11:38:50 UTC 2013 - zaitor@opensuse.org
+
+- Add shotwell-build-with-LibRaw-0.15.patch, fix build with
+  LibRaw-0.15.
+
+-------------------------------------------------------------------
+Thu Apr  4 21:05:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.14.1:
+  + Fixes a critical issue where Shotwell could close unexpectedly
+    when working with RAW photos in direct-edit mode.
+  + The Facebook Connector now recovers smoothly from type 7
+    errors.
+  + EXIF-oriented photos uploaded to Facebook now appear in their
+    correct orientation, even when the strip metadata option is
+    turned on in the Facebook Connector.
+  + Fixes an issue where incorrect view filter settings were
+    applied on tag and event pages.
+  + The Camera Developer is now disabled for RAW images that lack a
+    suitable paired or embedded JPEG.
+  + Assorted smaller bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 19 15:08:32 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.14.0:
+  + A folder tree in the sidebar provides a directory-hierarchy
+    view of your Shotwell library.
+  + Dramatically improved user experience for RAW photographers.
+  + Comprehensive logging of photo and video import.
+  + The Facebook Connector now uses the Facebook Graph API.
+  + The Shotwell video subsystem now relies on GStreamer 1.0.
+  + New slideshow effects.
+  + Improved Piwigo support.
+  + Ability to show and hide the main Shotwell sidebar.
+  + Numerous bug fixes.
+  + Updated translations.
+- Replace BuildRequires for port to GStreamer 1.0:
+  + Old: pkgconfig(gstreamer-0.10), pkgconfig(gstreamer-base-0.10),
+    pkgconfig(gstreamer-pbutils-0.10).
+  + New: pkgconfig(gstreamer-1.0), pkgconfig(gstreamer-base-1.0),
+    pkgconfig(gstreamer-pbutils-1.0).
+
+-------------------------------------------------------------------
+Wed Oct 10 20:01:24 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.13.1:
+  + Fixes an issue in which Shotwell would crash after deleting all
+    photos present in a view.
+  + Fixes an issue where Shotwell would not include all selected
+    photos during a Nautilus "Send To..." export operation
+  + Corrects a problem in which the file chooser dialog used to
+    select Shotwell's library location would inappropriately select
+    the parent directory of the chosen directory
+  + Shotwell now properly inhibits the system screensaver when
+    playing a slideshow
+  + Fixes an issue in which the search filter bar could become
+    invisible even though a filter was being applied
+  + A progress bar now correctly appears during long batch rotate
+    and auto-enhance operations
+  + Shotwell no longer crashes when certain kinds of malformed
+    responses are received from remote servers during photo
+    publishing
+  + Corrected translation and desktop integration error.
+- Add shotwell-no-libexecdir.patch: Move the migrator binary from
+  /usr/libexec/shotwell to /usr/lib/shotwell, which is our
+  %{_libexecdir} specification.
+
+-------------------------------------------------------------------
+Fri Sep 28 20:34:19 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.13.0:
+  + The Shotwell Extras plugins now include support for publishing
+    photos to Tumblr
+  + Shotwell correctly handles dates before 1969
+  + Shotwell lets you remove sensitive information from photos
+    before publishing them to social media sites
+  + Shotwell regenerates thumbnails automatically, making migrating
+    libraries between computers easier
+  + The Picasa connector now uses OAuth authentication for enhanced
+    security
+  + Bug fixes
+  + Updated translations.
+- Drop shotwell-0.12.3-libgphoto25.patch: fixed upstream.
+- Add pkgconfig(json-glib-1.0) BuildRequires: new dependency.
+- Remove obsolete openSUSE version conditions (<= 11.3).
+
+-------------------------------------------------------------------
+Fri Sep 14 20:06:35 UTC 2012 - idonmez@suse.com
+
+- Add shotwell-0.12.3-libgphoto25.patch to fix compilation with
+  libgphoto2 2.5.0
+
+-------------------------------------------------------------------
+Mon May 14 07:49:07 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.12.3:
+  + Corrects an issue where tags could be inappropriately removed
+    from a library.
+  + Enhances support for AVCHD-capable cameras.
+  + Prevents a soft lockup that could occur when certain very dark
+    images were autoenhanced.
+  + Corrects an issue where pressing the zoom hotkeys in certain
+    parts of the application could cause a crash.
+
+-------------------------------------------------------------------
+Thu Apr 12 16:26:42 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.12.2:
+  + Corrects an issue where graphical corruption of the UI could
+    occur if the user navigated away from a camera page while
+    camera previews were being generated.
+  + Adds enhanced support for the Unity desktop environment.
+  + Clarified several strings.
+  + The application now recovers gracefully from corrupted tag
+    data.
+
+-------------------------------------------------------------------
+Fri Mar 30 07:16:09 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.12.1:
+  + Fix a critical issue where the application could not be started
+    in direct-edit mode.
+
+-------------------------------------------------------------------
+Wed Mar 28 12:26:34 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.12.0:
+  + Several bug fixes and stability enhancements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 21 21:27:31 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.93:
+  + A new straighten tool
+  + Migrated from GTK 2 to GTK 3
+  + Flickr login now uses OAuth authentication
+  + Plugins can now implement new import sources; F-Spot import is
+    now implemented via such a plugin.
+  + Shotwell now imports only photos from the DCIM directory on
+    Android devices
+  + Saved searches can exclude all photos tagged with a given
+    string
+  + Many bug fixes
+- Drop shotwell-no-max-vala.patch: fixed upstream.
+- Replace pkgconfig()-style BuildRequires for port to GTK3:
+  + Removed: webkit-1.0, unique-1.0, gtk+-2.0
+  + Added: webkitgtk-3.0, unique-3.0, gtk+-3.0
+- Add pkgconfig(rest-0.7) BuildRequires, new dependency.
+- Remove the hack to remove --fatal-warnings from configure.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:56:03 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sun Nov  6 23:57:39 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.11.6:
+  + Fixes a critical bug in which adding or modifying tags in the
+    single-photo view could result in the loss of tag data.
+
+-------------------------------------------------------------------
+Wed Oct 19 09:27:38 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.11.5:
+  + Fixes a collection concurrent access issue that could cause
+    Shotwell to crash during F-Spot import for users still
+    affected by this issue even after installing Shotwell 0.11.4.
+
+-------------------------------------------------------------------
+Fri Oct 14 15:34:17 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.11.4:
+  + Fixes two collection concurrent access issues that could cause
+    Shotwell to crash during F-Spot import.
+
+-------------------------------------------------------------------
+Wed Oct 12 10:44:09 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.11.3:
+  + Fixes a critical issue where Shotwell could crash immediately
+    following a photo import.
+  + Fixes a critical issue where Shotwell could crash if the user
+    entered a tag name containing a slash ("/") character.
+  + Long error messages in the Publishing dialog box are now
+    wrapped correctly.
+
+-------------------------------------------------------------------
+Wed Sep 21 10:54:18 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.11.2:
+  + Increases stability working with hierarchical tags.
+  + Importing hierarchical tags from F-Spot now works properly.
+  + Fixes "server redirect contained no session key" errors in
+    the Facebook Connector.
+  + Corrects problems with item counts over mixed media.
+  + Various small fixes and enhancements.
+- Rebase shotwell-no-max-vala.patch.
+
+-------------------------------------------------------------------
+Fri Sep  9 08:56:28 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.11.1:
+  + RAW+JPEG pairing now works on file import
+  + Startup crashes fixed
+  + Hierarchical tag issues resolved
+  + RAW developer bugs fixed
+  + Resolved internationalization problems
+  + Various small fixes and enhancements
+- Drop shotwell-disable-schema-compile.patch: fixed upstream.
+- Drop shotwell-remove-gconf-schema.patch: fixed upstream.
+- Add shotwell-no-max-vala.patch: allow to build against vala
+  0.13/0.14.
+
+-------------------------------------------------------------------
+Wed Sep  7 00:37:15 UTC 2011 - vuntz@opensuse.org
+
+- Add shotwell-disable-schema-compile.patch: add a
+  --disable-schemas-compile configure option to not call
+  glib-compile-schemas on install.
+- Add shotwell-remove-gconf-schema.patch: remove gconf schema.
+- Remove --disable-schemas-install from configure, and add
+  --disable-schemas-compile there.
+- Remove manual removal of gsettings schema blob: it's not created
+  anymore.
+- Remove all the gconf schema packaging machinery.
+- Remove unneeded pkgconfig() BuildRequires that disappeared in
+  previous releases: dbus-glib-1, gnome-vfs-2.0, json-glib-1.0.
+- Add explicit pkgconfig(gio-unix-2.0) BuildRequires.
+
+-------------------------------------------------------------------
+Sat Aug 27 20:28:20 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.11.0:
+  + Hierarchical tags
+  + Support for RAW+JPEG and selectable RAW developer
+  + Switched from GConf to GSettings
+  + "Hide Photos Already Imported" is now persistent
+  + New Saved Search options
+  + Mimics no longer stored in home directory
+  + Added support for BMP format
+  + Many, many bugfixes
+- Add pkgconfig(gstreamer-pbutils-0.10) BuildRequires: new
+  dependency.
+- Add gsettings schema handling with %glib2_gsettings_schema_*
+  macros.
+- Manually remove gsettings schema blob since "make install"
+  creates it, but this shouldn't get packaged.
+
+-------------------------------------------------------------------
+Wed Aug 10 11:58:24 UTC 2011 - dimstar@opensuse.org
+
+- Remove --fatal-warnings from the Makefile for now. This fixes
+  build failures with Vala 0.13.x. Upstream is working together
+  with the vala developers on an actual solution. See also
+  http://redmine.yorba.org/issues/3760.
+
+-------------------------------------------------------------------
+Sat Jun  4 20:07:01 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.10.1:
+  + Fixes "Hide Photos Already Imported"
+  + Multiple editing bugs fixed
+  + Resolves crash when two or more cameras have the same name
+  + Documentation now includes saved searches
+  + Piwigo bugs fixed
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri May 27 11:43:20 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.10:
+  + Dynamic view of photo library through saved search feature
+  + Automatic database backup
+  + Adjust date/time for videos
+  + Added Valadate testing framework
+  + Shotwell video thumbnailer eliminates Totem dependency
+  + Crop tool is now more flexible
+  + Filenames no longer used as titles on Facebook and Picasa
+    uploads
+  + Many bug fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 26 15:29:05 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.9.3:
+  + Resolves issue where setting the desktop background didn't work
+    in Gnome3
+  + Mimics are now deleted when a RAW photo is removed
+  + Event dates are now only shown once in the Event view
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 18 14:59:59 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.9.2:
+  + Resolves translation issue where shotwell.mo is installed in
+    wrong location
+  + Fixes issue where cancelling Flickr upload can crash Shotwell
+  + Fixes issue where creating a Picasa Web album with an ampersand
+    in the name crashes Shotwell
+  + Resolves bug where selecting "Publish" in single photo mode
+    publishes the entire library instead of the selected photo
+  + Async I/O in publishing operations is now stopped when the user
+    cancels the operation
+  + Issue fixed on Fedora where the text was cut off in publishing
+    dialog
+  + Fixes issue with ratings filter where it didn't function when
+    the search bar was hidden.
+
+-------------------------------------------------------------------
+Fri Apr  8 11:23:08 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.9.1:
+  + Fixes many crashes and other issues in publishing plugins.
+  + Fixes issues where paths and filenames are not displayed
+    correctly after a failed import.
+  + Fixed issue where text search in event and camera import pages
+    was a string match instead of a keyword match.
+  + For enhanced compatibility with GNOME 3, the desktop name of
+    the Shotwell application has changed from
+    "Shotwell Photo Manager" to simply "Shotwell".
+  + Shotwell now provides a configure script option to set the name
+    of the system library directory to either lib or lib64.
+  + Enhanced visibility of red-eye reticle.
+  + Fixed issue where the Adjust palette could be positioned
+    partially off-screen
+  + Plugins now respect --debug switch in configure script.
+  + The event containing undated photos could be incorrectly
+    labelled "(null)" in the events directory page.
+- Pass --lib=%{_lib} to configure in order to get the plugins
+  installed in the correct location.
+
+-------------------------------------------------------------------
+Mon Apr  4 16:37:47 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.9.0:
+  + New search bar can filter by media type, rating, and text
+    matching. (Titles, filename, tag and event names are searched.)
+  + TIFF support
+  + Extensible plugin framework for Web publishing and slideshow
+    transitions.
+  + Print multiple photos, and multiple photos per page.
+  + Configurable user directory pattern during import.
+  + Edit multiple photo titles at once.
+  + Improved rendering of underexposed RAW photos.
+  + Various improvements and bug fixes.
+- BuildRequire pkgconfig(gnome-vfs-2.0).
+
+-------------------------------------------------------------------
+Sat Feb 12 19:51:20 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Tue Jan 11 21:33:59 CET 2011 - dimstar@opensuse.org
+
+- Update to version 0.8.1:
+  + Fixes a problem where Shotwell could crash unexpectedly at
+    startup or when reading/writing metadata to files.
+  + Fixes a problem where Shotwell could hang when importing
+    voice-annotated videos.
+  + Fixes a problem where Shotwell failed to import date and time
+    information for some camera-generated MP4 videos.
+  + Shotwell can now delete video files from camera memory.
+  + Shotwell now supports the 3GP video format common on mobile
+    phones and RAW files with the SRW suffix generated by Samsung
+    cameras.
+  + Translation fixes and updates.
+- Drop shotwell-fix-build-recent-vala.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Jan  7 12:40:13 CET 2011 - vuntz@opensuse.org
+
+- Add shotwell-fix-build-recent-vala.patch to fix build with vala
+  0.10.2.
+
+-------------------------------------------------------------------
+Tue Dec 28 01:42:20 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.8.0:
+  + Video support for Ogg, AVI, MP4, Quicktime, and WMV files.
+  + Upload videos to major Web services, including YouTube,
+    Facebook, Flickr, and PicasaWeb.
+  + Runtime monitoring of library directory and auto-import of
+    newly created files.
+  + Background writing of metadata (tags, titles, rating,
+    orientation, exposure date) to master files (user
+    configurable).
+  + Flagging of photos for batch operations.
+  + Set multiple photos to desktop background slideshow.
+  + Various bug fixes.
+  + Numerous translation updates.
+- Add BuildRequires: pkgconfig(gstreamer-0.10),
+  pkgconfig(gstreamer-base-0.10) and pkgconfig(json-glib-1.0).
+
+-------------------------------------------------------------------
+Tue Dec 14 15:47:23 CET 2010 - vuntz@opensuse.org
+
+- Own /usr/share/gnome and /usr/share/gnome/help to fix build.
+
+-------------------------------------------------------------------
+Sat Sep 11 18:35:43 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.7.2:
+  + Fixed major startup problem when the user's Pictures directory
+    is actually a symbolic link.
+  + Fixed potential crasher when the user's Pictures directory
+    contains a large number of subdirectories.
+  + No longer asking if copying or linking if importing from
+    Pictures directory (which will always be linked).
+  + Fixed issue when logging in to PicasaWeb with a password with a
+    '+' character.
+  + Fixed update problem when using an external editor on a photo
+    that was edited externally in an earlier session.
+  + Various bug fixes.
+  + Numerous translation updates.
+
+-------------------------------------------------------------------
+Tue Sep  7 00:39:41 CEST 2010 - vuntz@opensuse.org
+
+- Use libraw-devel-static BuildRequires instead of libraw-devel.
+
+-------------------------------------------------------------------
+Fri Aug 27 03:34:46 CEST 2010 - badshah400@gmail.com
+
+- Update to version 0.7.1:
+  + Fixed a critical bug that caused Shotwell to crash when
+    deleting the only photo in an event
+  + F-Spot import now correctly interprets older databases
+  + Fixed an issue where pressing F11 would not exit full-screen
+    mode
+  + Translation updates for several languages
+  + Updated documentation
+- Changes from version 0.7.0:
+  + Migration support for F-Spot users: Shotwell can import photos
+    directly from your F-Spot library, preserving tags and ratings.
+  + Photos can be rated on a 1-5 star scale or marked as rejected.
+    A filter button supports viewing only photos of a specified
+    rating or better.
+  + A new Last Import page in the sidebar gives you instant
+    access to your most recently imported photo roll.
+  + Sidebar functionality and appearance have been improved with
+    new icons and inline renaming.
+  + Shotwell scans your library files at startup, looking for
+    changes. Maintains library consistency when working with
+    photos in other applications.
+- Remove shotwell-fix-libraw-config-64.patch, fixed upstream
+
+-------------------------------------------------------------------
+Wed Aug 11 16:12:09 CEST 2010 - vuntz@opensuse.org
+
+- Initial package (version 0.6.1).
+

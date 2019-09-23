@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Mon Jul 15 07:38:44 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 5.0.0
+
+  * Remove support to Rails < 5.2.
+  * Support Rails 6.
+
+-------------------------------------------------------------------
+Tue May 30 05:11:02 UTC 2017 - coolo@suse.com
+
+- updated to version 4.2.2
+ see installed CHANGELOG.md
+
+  ## 4.2.2 (May 24, 2017) ##
+  
+  *   Support digest resolution for coffee templates.
+
+-------------------------------------------------------------------
+Fri Jul  1 04:29:20 UTC 2016 - coolo@suse.com
+
+- updated to version 4.2.1
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Sat Dec 19 05:31:17 UTC 2015 - coolo@suse.com
+
+- updated to version 4.1.1
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Feb  9 09:03:41 UTC 2015 - coolo@suse.com
+
+- updated to version 4.1.0
+ *   Default to .coffee extension instead of .js.coffee
+ *   Register coffee extension for rake notes.
+
+-------------------------------------------------------------------
+Sun Oct 20 12:05:40 UTC 2013 - coolo@suse.com
+
+- updated to version 4.0.1
+ *   Drop support to Rails `4.0.0.rc` releases
+ *   Bump railties version to 4.0.0.beta.
+ *   Bump railties version to ~> 3.2.0.
+ *   Add coffee-script.js for asset pipeline. Now your app will support
+     `<script type="text/coffeescript">` in views.
+ *   Add Action View template handler for coffee views.
+- remove coffee-rails-4.0.0.diff
+
+-------------------------------------------------------------------
+Sat Jul 20 11:22:04 UTC 2013 - coolo@suse.com
+
+- add coffee-rails-4.0.0.diff to fix rpm requires
+
+-------------------------------------------------------------------
+Sat Apr 27 05:40:46 UTC 2013 - coolo@suse.com
+
+- updated to version 4.0.0
+
+-------------------------------------------------------------------
+Fri Oct 14 09:19:16 UTC 2011 - fcastelli@suse.com
+
+- update to version 3.1.1
+
+-------------------------------------------------------------------
+Wed Aug 31 08:33:46 UTC 2011 - fcastelli@suse.com
+
+- update to version 3.1.0
+
+-------------------------------------------------------------------
+Tue Aug 30 13:04:39 UTC 2011 - aduffeck@suse.com
+
+- initial package
+

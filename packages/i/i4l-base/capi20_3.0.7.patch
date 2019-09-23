@@ -1,0 +1,60 @@
+--- rcapid/rcapid.c.orig	2000-01-29 19:52:25.000000000 +0100
++++ rcapid/rcapid.c	2012-09-28 10:47:54.076169700 +0200
+@@ -172,18 +172,6 @@
+ }
+ 
+ 
+-word
+-get_word(char **p) {
+-	return(get_byte(p) | (get_byte(p) << 8));
+-}
+-
+-
+-word
+-get_netword(char **p) {
+-	return((get_byte(p) << 8) | get_byte(p));
+-}
+-
+-
+ dword
+ get_dword(char **p) {
+ 	return(get_word(p) | (get_word(p) << 16));
+@@ -191,38 +179,6 @@
+ 
+ 
+ char *
+-put_byte(char **p, byte val) {
+-	**p = val;
+-	*p += 1;
+-	return(*p);
+-}
+-
+-
+-char *
+-put_word(char **p, word val) {
+-	put_byte(p, val & 0xff);
+-	put_byte(p, (val & 0xff00) >> 8);
+-	return(*p);
+-}
+-
+-
+-char *
+-put_netword(char **p, word val) {
+-	put_byte(p, (val & 0xff00) >> 8);
+-	put_byte(p, val & 0xff);
+-	return(*p);
+-}
+-
+-
+-char *
+-put_dword(char **p, dword val) {
+-	put_word(p, val & 0xffff);
+-	put_word(p, (val & 0xffff0000) >> 16);
+-	return(*p);
+-}
+-
+-
+-char *
+ put_struct(char **p, int len, char *val) {
+ 	if(len < 255)
+ 		put_byte(p, len);

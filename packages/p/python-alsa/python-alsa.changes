@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Wed Apr  4 12:16:47 CEST 2018 - tiwai@suse.de
+
+- Rename to python-alsa package
+- Follow the standard single spec for python2 & 3
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Apr  4 10:23:48 CEST 2018 - tiwai@suse.de
+
+- Update to version 1.1.6:
+  * Change FSF address (Franklin Street)
+  * initial python3 support
+  * alsaseq: simplify TCONSTADD
+  * hctltest2: use 'hw:0' device instead 'default'
+  * common.h: fix InternFromString()
+  * fix tp_free() calls, remove wrong PyObject_GC_Del use
+  * gitignore: add pyalsa/*.so
+  * setup.py: check for the existence of the build directory
+  * setup: add some missing fields, add header files from pyalsa to MANIFEST
+- Use %license file tag
+
+-------------------------------------------------------------------
+Thu Feb 26 17:36:52 CET 2015 - tiwai@suse.de
+
+- Update to pyalsa 1.0.29: fixes included:
+  alsaseq: fix memory leaks
+  alsaseq: remove dead code in Sequencer_set_clientname()
+
+-------------------------------------------------------------------
+Fri Mar  1 16:27:37 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Fri Sep  7 15:34:58 CEST 2012 - tiwai@suse.de
+
+- Updated to version 1.0.26:
+  just include previous fixes
+
+-------------------------------------------------------------------
+Mon Mar 12 15:05:09 CET 2012 - tiwai@suse.de
+
+- Updated to version 1.0.25
+  - Add register_poll for alsaseq
+  - alsa-python mixer: add poll_fds property
+  - ctltest1.py: use new class member names
+  - alsamixer: Fix bad PyArg_ParseTuple format strings
+- Two backport fixes from upstream:
+    Fix get_volume_array() for mono channels
+    Fix pyalsa tests for new function names
+
+-------------------------------------------------------------------
+Mon Mar 21 16:50:33 UTC 2011 - coolo@novell.com
+
+- licenses package is about to die
+
+-------------------------------------------------------------------
+Mon Apr 26 09:45:36 CEST 2010 - tiwai@suse.de
+
+- fixed license tag (for overseen GPLv2 file) (bnc#599559)
+- add missing COPYING* files
+
+-------------------------------------------------------------------
+Mon Apr 19 10:57:26 CEST 2010 - tiwai@suse.de
+
+- initial version: 1.0.22
+

@@ -1,0 +1,14 @@
+|
+| Avoid broken postscript due not initialized variable
+|
+--- graph/plotter.c
++++ graph/plotter.c	2013-07-15 12:01:45.577438754 +0000
+@@ -1011,7 +1011,7 @@ set_graph_parameters (Multigrapher *mult
+   multigrapher->x_trans.output_min = 0.0;
+   multigrapher->x_trans.output_max = (double)PLOT_SIZE;
+   multigrapher->x_trans.output_range = multigrapher->x_trans.output_max - multigrapher->x_trans.output_min;
+-  multigrapher->x_trans.output_min = 0.0;
++  multigrapher->y_trans.output_min = 0.0;
+   multigrapher->y_trans.output_max = (double)PLOT_SIZE;
+   multigrapher->y_trans.output_range = multigrapher->y_trans.output_max - multigrapher->y_trans.output_min;
+ 

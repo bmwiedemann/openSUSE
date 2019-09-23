@@ -1,0 +1,213 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cfb2dec2c0644d898c662cff93d5abed</srcmd5>
+    <version>1.34</version>
+    <time>1277827376</time>
+    <user>autobuild</user>
+    <comment>Copy from network:ha-clustering:Factory/csync2 based on submit request 42260 from user tserong
+</comment>
+    <requestid>42260</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cfb2dec2c0644d898c662cff93d5abed</srcmd5>
+    <version>1.34</version>
+    <time>1278667400</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cfb2dec2c0644d898c662cff93d5abed</srcmd5>
+    <version>1.34</version>
+    <time>1278678635</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>cfb2dec2c0644d898c662cff93d5abed</srcmd5>
+    <version>1.34</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>cfb2dec2c0644d898c662cff93d5abed</srcmd5>
+    <version>1.34</version>
+    <time>1319181836</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>f7e73f4d36ee652a82347e2eff38c58f</srcmd5>
+    <version>1.34</version>
+    <time>1319635337</time>
+    <user>coolo</user>
+    <comment>Add csync2-rm-ssl-cert script, remove explicit lib requires (without the latter, csync2 doesn't run/install presumably due to lib version mismatch)</comment>
+    <requestid>89351</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>bb6342d5b3748f5e8700798ead3cca05</srcmd5>
+    <version>1.34</version>
+    <time>1323191095</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>cc56cdde8232c9ac4d4b344e9025e114</srcmd5>
+    <version>1.34</version>
+    <time>1329823022</time>
+    <user>coolo</user>
+    <comment>- factory has librsync split into devel package (forwarded request 106108 from coolo)</comment>
+    <requestid>106187</requestid>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>12e71574d6aa2255a0c3b8d7f9772b4b</srcmd5>
+    <version>1.34</version>
+    <time>1336035294</time>
+    <user>coolo</user>
+    <comment>Fix protocol breakage when target directories don't exist</comment>
+    <requestid>115599</requestid>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>dec1ea1185192767a9b353a277a1e1da</srcmd5>
+    <version>1.34</version>
+    <time>1338902995</time>
+    <user>coolo</user>
+    <comment>Drop requirement on libgnutls-extra-devel (unnecessary on openSUSE, and indeed breaks the build on 12.2) (forwarded request 123455 from tserong)</comment>
+    <requestid>123456</requestid>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>dec1ea1185192767a9b353a277a1e1da</srcmd5>
+    <version>1.34</version>
+    <time>1340183263</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>dec1ea1185192767a9b353a277a1e1da</srcmd5>
+    <version>1.34</version>
+    <time>1359108788</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>63247ea09aef1462ad3f2e7771ab3ebb</srcmd5>
+    <version>1.34</version>
+    <time>1362118623</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 156773 from coolo)</comment>
+    <requestid>156788</requestid>
+  </revision>
+  <revision rev="14" vrev="19">
+    <srcmd5>15cfce5a49c84613759e289ba294d7ba</srcmd5>
+    <version>1.34</version>
+    <time>1369640625</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176004</requestid>
+  </revision>
+  <revision rev="15" vrev="21">
+    <srcmd5>15cfce5a49c84613759e289ba294d7ba</srcmd5>
+    <version>1.34</version>
+    <time>1379662187</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dbada9450ea57c582e47853646d7c815</srcmd5>
+    <version>2.0+git.1368794815.cf835a7</version>
+    <time>1381474430</time>
+    <user>scarabeus_factory</user>
+    <comment>csync2 update for 13.1 (includes COPYING in %doc)
+
+- Update to upstream version 2.0-rc2.  Changes since 1.34 too numerous to list, but include:
+  + Database abstraction layer (default build uses sqlite3)
+  + IPv6 support
+  + Native GnuTLS support
+  + tempdir and lock-timeout config options
+  + do-local-only config option for actions
+- Reworked patches and extra source being carried in openSUSE:
+  + Added csync2.socket and csync2@.service for use via systemd
+  + Added add-ac_prog_cpp.patch
+  + Added fix-csync2_ssl_cert-filename.patch
+  + Added fix-sonames.patch
+  + Added add-COPYING.patch
+  + Updated csync2-fix-xinetd.patch
+  + Updated README.quickstart
+  + Removed fix-missing-sentinels.diff (upstream)
+  + Removed csync2-1.34-pure-gnutls-r2.patch (obsolete)
+  + Removed force-debug-stderr-off-inetd.patch (obsolete)
+  + Removed bind-to-local-hostname.patch (obsolete)</comment>
+    <requestid>200704</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>dbada9450ea57c582e47853646d7c815</srcmd5>
+    <version>2.0+git.1368794815.cf835a7</version>
+    <time>1409300722</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>375bccca1e940a0a93b4eca9c8be5a30</srcmd5>
+    <version>2.0+git.1368794815.cf835a7</version>
+    <time>1427564320</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293253</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0462546ffa40dd452b4e0f3989622b77</srcmd5>
+    <version>2.0+git.1461714863.10636a4</version>
+    <time>1463498176</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>395990</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>b5b05e546d09f1f6f75c7546e8f88685</srcmd5>
+    <version>2.0+git.1461714863.10636a4</version>
+    <time>1500275488</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510186</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>0572079a8066b58d301ce62ad26da0aa</srcmd5>
+    <version>2.0+git.1461714863.10636a4</version>
+    <time>1502629170</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>516067</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8d9e5053f2a2df142c5061ba3ca39d26</srcmd5>
+    <version>2.0+git.1529072214.b66d298</version>
+    <time>1534774745</time>
+    <user>dimstar_suse</user>
+    <comment>- comparison of peer names provided via command line should not be case sensitive (bsc#1082576)
+- fix for inetd stderr &gt;&amp; stdout
+- fix log message when generating backup files, demote log level
+- document -l and -N switches
+ 
+
+- Avoid systemd service removal errors when uninstalling (bsc#1093165)</comment>
+    <requestid>629416</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>691eb89d817bd25be403e876e756ca6a</srcmd5>
+    <version>2.0+git.1542296533.b974921</version>
+    <time>1559029358</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0+git.1542296533.b974921:
+  * Convert documentation to asciidoc
+  * Add error handling for out-of-memory while parsing config file
+  * create_key: use all random bits; add some error handling
+- Update patches
+  * Add 0001-Add-COPYING-as-docfile.patch
+  * Add 0002-Patch-sonames.patch
+  * Add 0003-Set-AC_PROG_CPP-in-configure.ac.patch
+  * Remove add-COPYING.patch
+  * Remove add-ac_prog_cpp.patch
+  * Remove fix-sonames.patch
+</comment>
+    <requestid>705608</requestid>
+  </revision>
+</revisionlist>

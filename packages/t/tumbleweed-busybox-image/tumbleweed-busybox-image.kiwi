@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<image schemaversion="6.5" name="tumbleweed-busybox-image" xmlns:suse_label_helper="com.suse.label_helper">
+  <description type="system">
+    <author>Thorsten Kukuk</author>
+    <contact>kukuk@suse.com</contact>
+    <specification>openSUSE busybox container</specification>
+  </description>
+  <preferences>
+    <type image="docker">
+      <containerconfig
+	name="opensuse/busybox"
+        tag="latest"
+	additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%"
+	maintainer="Thorsten Kukuk &lt;kukuk@suse.com&gt;">
+	<subcommand execute="/bin/sh"/>
+        <labels>
+          <suse_label_helper:add_prefix prefix="org.opensuse.tumbleweed.busybox">
+            <label name="org.opencontainers.image.title" value="openSUSE Busybox Container"/>
+            <label name="org.opencontainers.image.description" value="Small image containing busybox."/>
+            <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
+            <label name="org.opencontainers.image.vendor" value="openSUSE Project"/>
+            <label name="org.opencontainers.image.url" value="https://www.opensuse.org/"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/busybox:%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
+          </suse_label_helper:add_prefix>
+        </labels>
+        <history author="Thorsten Kukuk &lt;kukuk@suse.com&gt;">openSUSE Busybox Container</history>
+      </containerconfig>
+    </type>
+    <version>1.0.0</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-check-signatures>false</rpm-check-signatures>
+    <rpm-excludedocs>true</rpm-excludedocs>
+  </preferences>
+  <repository>
+    <source path="obsrepositories:/"/>
+  </repository>
+  <packages type="bootstrap">
+    <package name="busybox-container"/>
+  </packages>
+</image>

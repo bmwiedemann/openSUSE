@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Wed Feb  8 19:58:27 UTC 2017 - callumjfarmer13@gmail.com
+
+- update to 0.0.20161208
+
+-------------------------------------------------------------------
+Thu May  5 12:20:23 UTC 2016 - sleep_walker@opensuse.org
+
+- get rid of hacks
+
+-------------------------------------------------------------------
+Thu Apr 21 22:19:23 UTC 2016 - sleep_walker@opensuse.org
+
+- new git snapshot (ab3d82e, 2016-04-16)
+   syncing version with releases
+- add LICENSE and README.md to package
+
+-------------------------------------------------------------------
+Sat Apr 16 07:43:54 UTC 2016 - tcech@suse.com
+
+- new git snapshot (2efd6cd, 2016-04-02)
+   _a lot_ of changes - see GIT log
+
+-------------------------------------------------------------------
+Sat Sep 19 20:14:17 UTC 2015 - sleep_walker@opensuse.org
+
+- Initial package (version 0.0.20150916) for build.opensuse.org

@@ -1,0 +1,208 @@
+-------------------------------------------------------------------
+Fri Oct 31 11:01:51 UTC 2014 - andrea@opensuse.org
+
+- removed conflicting files.
+
+-------------------------------------------------------------------
+Fri Oct 24 20:35:41 UTC 2014 - trcs@gmx.com
+
+- upgrade openSUSE branding based on new upstream lxde-common 
+  0.99.0
+- removed patches:
+  * lxde-common-0.5.5-lxde-logout.patch
+  * lxde-common-0.5.5-lxpanel.patch
+  * lxde-common-0.5.5-openbox-menu.patch
+  * lxde-common-0.5.5-openbox-shortcut.patch
+  * lxde-common-0.5.5-openbox-titlebar-font.patch
+  * lxde-common-0.5.5-pcmanfm-default.patch
+  * lxde-common-0.5.5-use-Adwaita-as-default-theme.patch 
+- added patches:
+  * lxde-common-0.99.0-lxde-logout.patch
+  * lxde-common-0.99.0-lxpanel.patch
+  * lxde-common-0.99.0-openbox-menu.patch
+  * lxde-common-0.99.0-openbox-shortcut.patch
+  * lxde-common-0.99.0-openbox-titlebar-font.patch
+  * lxde-common-0.99.0-pcmanfm-default.patch
+  * lxde-common-0.99.0-use-Adwaita-as-default-theme.patch
+- spec file clean up
+
+-------------------------------------------------------------------
+Mon Sep  8 12:21:00 UTC 2014 - trcs@gmx.com
+
+- minor config changes
+  * lxde-common-0.5.5-openbox-shortcut.patch
+    + use xfce4-screenshooter (new in LXDE pattern) to take 
+      screenshots
+- require xkill in spec file because it is asigned to C-A-Escape
+  in lxde-common-0.5.5-openbox-shortcut.patch but it is not
+  installed by default
+
+-------------------------------------------------------------------
+Fri Aug  1 12:41:19 UTC 2014 - trcs@gmx.com
+
+- Updated lxde-common-0.5.5-pcmanfm-default.patch to set Path Bar setting
+  to Button. That makes navigation easier when Side Pane is set to Places 
+  (the default option)
+- Added require openbox-adwaita-ob-theme in the spec file
+- Cosmetic changes:
+  * Openbox: 
+    - update lxde-common-0.5.5-use-Adwaita-as-default-theme.patch to use
+      Adwaita as Openbox theme too
+    - add lxde-common-0.5.5-openbox-titlebar-font.patch to set a font that makes 
+      both titlebar buttons and text have a more appealing size and appearance
+  * LXPanel:
+    - use color background instead of an image, the current image doesn't fit well
+      with the theme
+    - make panel and panel icons slightly bigger
+    - replace suse.png with a more recent and scalable start-here-branding.svg
+
+-------------------------------------------------------------------
+Sun Jun 15 07:31:17 UTC 2014 - trcs@gmx.com
+
+- applied spec-cleaner
+- removed checks and patches for discontinued versions
+  * removed lxde-common-0.5.5-pcmanfm-default-11.4.patch
+- change from Clearlooks to Adwaita as default theme and cursor theme
+  * added lxde-common-0.5.5-use-Adwaita-as-default-theme.patch
+
+-------------------------------------------------------------------
+Tue Oct 11 11:16:35 UTC 2011 - gber@opensuse.org
+
+- use wallpapers from wallpaper-branding-openSUSE for >= 12.1
+- removed unneeded build dependencies
+
+-------------------------------------------------------------------
+Thu Sep 22 08:28:56 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typos in lxde-common-branding-openSUSE.spec
+
+-------------------------------------------------------------------
+Sat Jul 30 10:48:05 UTC 2011 - andrea@opensuse.org
+
+- bunped version to 12.1 
+
+-------------------------------------------------------------------
+Sat Jul 30 09:46:49 UTC 2011 - andrea@opensuse.org
+
+- upgrade suse branding based on new upstream 0.5.5 lxde-common
+- removed patches now in upstream code
+
+-------------------------------------------------------------------
+Wed Jul 27 06:24:04 UTC 2011 - andrea@opensuse.org
+
+- fixed bug bnc#698167 
+
+-------------------------------------------------------------------
+Sun Jul 10 18:05:03 UTC 2011 - andrea@opensuse.org
+
+- removed useless pkgconfig and gtk2-devel buildrequires 
+- fixed license tag
+
+-------------------------------------------------------------------
+Wed Mar 23 16:20:08 UTC 2011 - andrea@opensuse.org
+
+- fixed log-out image, 11.4 branding is complete 
+
+-------------------------------------------------------------------
+Mon Mar 21 10:33:25 UTC 2011 - andrea@opensuse.org
+
+- fixed firefox link on default panel .desktop file
+
+-------------------------------------------------------------------
+Sun Nov 21 09:06:46 UTC 2010 - andrea@opensuse.org
+
+- Improved startlxde script to fix black background of first login 
+
+-------------------------------------------------------------------
+Wed Nov  3 23:08:12 UTC 2010 - andrea@opensuse.org
+
+- Fixed startlxde script to copy pcmanfm.conf in the proper
+  location bnc#651089
+
+-------------------------------------------------------------------
+Mon Jun  7 14:11:01 UTC 2010 - andrea@opensuse.org
+
+- changed RPM Group to System/GUI/LXDE
+
+-------------------------------------------------------------------
+Sun May 30 12:49:41 UTC 2010 - andrea@opensuse.org
+
+- updated suse-logout.png to fit 11.3 branding
+
+-------------------------------------------------------------------
+Tue May 18 08:14:50 UTC 2010 - andrea@opensuse.org
+
+- Fixed pipemenu conf file to provide pcmanfm 0.9.x compatibility
+- Sync pcmanfm new conf file
+
+-------------------------------------------------------------------
+Mon May 17 20:43:06 UTC 2010 - guido+opensuse.org@berhoerster.name
+
+- adapt to new openbox-pipemenu
+
+-------------------------------------------------------------------
+Tue May 11 11:19:18 UTC 2010 - guido+opensuse.org@berhoerster.name
+
+- offer the complete applications menu by default
+
+-------------------------------------------------------------------
+Fri Mar 26 12:24:14 UTC 2010 - andrea@opensuse.org
+
+- modified lxde-common-startlxde.diff patch to fix bnc#591407
+
+-------------------------------------------------------------------
+Tue Mar 23 07:44:27 UTC 2010 - andrea@opensuse.org
+
+- added "print" keybind on openbox configuration 
+
+-------------------------------------------------------------------
+Mon Mar  1 11:50:42 UTC 2010 - andrea@opensuse.org
+
+- added lxde-common-0.5.0-pcmanfm2.patch to switch to pcmanfm2 
+- moved pcmanfm-default.diff to
+  lxde-common-0.5.0-pcmanfm-default.patch
+- bump version to 11.3
+
+-------------------------------------------------------------------
+Tue Feb  9 12:45:18 UTC 2010 - andrea@opensuse.org
+
+- lxsession export dbus information now, gnome-keyring now work
+  out of the box. Fixed bnc#564703  
+
+-------------------------------------------------------------------
+Thu Dec 24 14:35:13 UTC 2009 - andrea@opensuse.org
+
+- spec file cleanup 
+
+-------------------------------------------------------------------
+Wed Dec 23 16:38:46 UTC 2009 - andrea@opensuse.org
+
+- added workaround to bnc#564703 
+
+-------------------------------------------------------------------
+Wed Dec 16 00:31:43 UTC 2009 - andrea@opensuse.org
+
+-  openSUSE 11.2 Branding complete
+
+-------------------------------------------------------------------
+Tue Dec 15 22:03:18 UTC 2009 - andrea@opensuse.org
+
+- changed some openbox keyboard shortcuts to make
+  user life easier 
+
+-------------------------------------------------------------------
+Fri Dec 11 08:27:12 UTC 2009 - andrea@opensuse.org
+
+- branding rebuilt on new lxde-common package 
+
+-------------------------------------------------------------------
+Wed Dec  9 23:28:16 UTC 2009 - andrea@opensuse.org
+
+- removed battery applet, it make the panel crash
+- removed volume applt, use gmixer now (much more powerful) 
+
+-------------------------------------------------------------------
+Fri Jul 17 17:51:38 CEST 2009 - andrea@opensuse.org
+
+- new package 
+

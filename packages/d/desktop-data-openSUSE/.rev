@@ -1,0 +1,612 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ea54b10b710951ab2cef15489a51a550</srcmd5>
+    <version>11.0</version>
+    <time>1200367752</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="5">
+    <srcmd5>8b885404f25b12257748c7cb2be40f36</srcmd5>
+    <version>11.0</version>
+    <time>1200872575</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="13">
+    <srcmd5>576919e29656b0801d9ba9d605b8c878</srcmd5>
+    <version>11.0</version>
+    <time>1202486666</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="18">
+    <srcmd5>080b3f9945c605496ac26c7187419834</srcmd5>
+    <version>11.0</version>
+    <time>1203034085</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="25">
+    <srcmd5>87bf0d1ae026608d2f2f1786fd5cb6c2</srcmd5>
+    <version>11.0</version>
+    <time>1204748280</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="26">
+    <srcmd5>b50cd75db34c66f4be152c900c9a8623</srcmd5>
+    <version>11.0</version>
+    <time>1204767913</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="28">
+    <srcmd5>a22723ebc8196a224a5a489c11bbf676</srcmd5>
+    <version>11.0</version>
+    <time>1204918842</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="38">
+    <srcmd5>0799ad80b48d4592d7d26ed6e7488f30</srcmd5>
+    <version>11.0</version>
+    <time>1207682540</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="41">
+    <srcmd5>ec9bafc9efb772df058e029d19e007df</srcmd5>
+    <version>11.0</version>
+    <time>1208297958</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="43">
+    <srcmd5>c31c57cdd4f972a5f7227d16ea85956b</srcmd5>
+    <version>11.0</version>
+    <time>1208739367</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="45">
+    <srcmd5>ee72aeeef49b99c30bfd55ccbb977cdf</srcmd5>
+    <version>11.0</version>
+    <time>1209127878</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="46">
+    <srcmd5>3f200eeea618dbff29f1c9c9d02baf5b</srcmd5>
+    <version>11.0</version>
+    <time>1209147356</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="48">
+    <srcmd5>26a43a90e27eecfbb86b7dd778016e5d</srcmd5>
+    <version>11.0</version>
+    <time>1209395945</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="51">
+    <srcmd5>ea6b8995fa02cd9a1c73c6afdff6c1cd</srcmd5>
+    <version>11.0</version>
+    <time>1210189332</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="56">
+    <srcmd5>7fda60c04e521b2ba212c78f4df366a1</srcmd5>
+    <version>11.0</version>
+    <time>1211269255</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="58">
+    <srcmd5>17b9e081181aef9ec4da409f81b36730</srcmd5>
+    <version>11.0</version>
+    <time>1211577974</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="59">
+    <srcmd5>570ea165d00321ada8fa06b15b1dcb02</srcmd5>
+    <version>11.0</version>
+    <time>1211621363</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fb50b59997b0067cde65ee62580a2b60</srcmd5>
+    <version>11.1</version>
+    <time>1215807961</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="33">
+    <srcmd5>42c5920ca85686b3947b1c47a6f4fed1</srcmd5>
+    <version>11.1</version>
+    <time>1223908274</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="34">
+    <srcmd5>71af8aa10b54aa6e8d16a0f8c5936f80</srcmd5>
+    <version>11.1</version>
+    <time>1224170169</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="35">
+    <srcmd5>f66dea023d9704833f1675915184952a</srcmd5>
+    <version>11.1</version>
+    <time>1225816418</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="36">
+    <srcmd5>7dfb2cbcb396ec359b4e5869d8d002f9</srcmd5>
+    <version>11.1</version>
+    <time>1226416216</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>610306686ea12c981cf62089e0d6c6ad</srcmd5>
+    <version>11.2</version>
+    <time>1233954527</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>5df34a5ddaffdac6d36a12b65501568d</srcmd5>
+    <version>11.2</version>
+    <time>1241657346</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>8538abc6bf8dfe1fc4dccde4bb58bff3</srcmd5>
+    <version>11.2</version>
+    <time>1241735520</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>db6f6c6bf85c51e277500f7b7fe08620</srcmd5>
+    <version>11.2</version>
+    <time>1247757071</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>cc3fe7b310838fa3abef799d9a9c7c71</srcmd5>
+    <version>11.2</version>
+    <time>1250513081</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-data-openSUSE based on submit request 17973 from user Beineri
+</comment>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>4d3e465505df2873a6accad02e02e8af</srcmd5>
+    <version>11.2</version>
+    <time>1251745959</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-data-openSUSE based on submit request 19353 from user Beineri
+</comment>
+  </revision>
+  <revision rev="29" vrev="7">
+    <srcmd5>6f6ffd39ad28319ce1e8143be2b287f0</srcmd5>
+    <version>11.2</version>
+    <time>1251835768</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-data-openSUSE based on submit request 19457 from user Beineri
+</comment>
+  </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>fa059698ba10cf932bd3aff737b6c9d3</srcmd5>
+    <version>11.2</version>
+    <time>1254524357</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-data-openSUSE based on submit request 21587 from user wstephenson
+</comment>
+  </revision>
+  <revision rev="31" vrev="9">
+    <srcmd5>531e43cbd226bcdf82bcc4c5692015da</srcmd5>
+    <version>11.2</version>
+    <time>1255347200</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-data-openSUSE based on submit request 22214 from user Beineri
+</comment>
+  </revision>
+  <revision rev="32" vrev="11">
+    <srcmd5>531e43cbd226bcdf82bcc4c5692015da</srcmd5>
+    <version>11.2</version>
+    <time>1255347200</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-data-openSUSE based on submit request 22214 from user Beineri
+</comment>
+  </revision>
+  <revision rev="33" vrev="12">
+    <srcmd5>3b0b1b367cb07361d0b1810592fff1eb</srcmd5>
+    <version>11.2</version>
+    <time>1268923319</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e1400857c760edee56040f3b0974129a</srcmd5>
+    <version>11.3</version>
+    <time>1273631413</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-data-openSUSE based on submit request 39718 from user coolo
+</comment>
+    <requestid>39718</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>e1400857c760edee56040f3b0974129a</srcmd5>
+    <version>11.3</version>
+    <time>1278667342</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>e1400857c760edee56040f3b0974129a</srcmd5>
+    <version>11.3</version>
+    <time>1278678571</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>5ac5722a8ccb93a9689bbadae72173af</srcmd5>
+    <version>11.3</version>
+    <time>1281312888</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-data-openSUSE based on submit request 44857 from user vuntz
+</comment>
+    <requestid>44857</requestid>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>f8846c29940b01ea1e749ad97889f715</srcmd5>
+    <version>11.3</version>
+    <time>1285280732</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-data-openSUSE based on submit request 48808 from user vuntz
+</comment>
+    <requestid>48808</requestid>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>74a36cf0724556d704f9f72ba3439079</srcmd5>
+    <version>11.3</version>
+    <time>1289831860</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53034 from user wstephenson
+</comment>
+    <requestid>53034</requestid>
+  </revision>
+  <revision rev="40" vrev="7">
+    <srcmd5>d770e38e612b60b4ed91e1d472bcd1f6</srcmd5>
+    <version>11.3</version>
+    <time>1289831872</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53034
+</comment>
+  </revision>
+  <revision rev="41" vrev="6">
+    <srcmd5>8522fcb9ec50435abaf11e80292b0b6c</srcmd5>
+    <version>11.4</version>
+    <time>1294393343</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57013 from user dirkmueller
+</comment>
+    <requestid>57013</requestid>
+  </revision>
+  <revision rev="42" vrev="7">
+    <srcmd5>2a470d63a8fe61bff47ffd3f23477809</srcmd5>
+    <version>11.4</version>
+    <time>1294393354</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57013
+</comment>
+  </revision>
+  <revision rev="43" vrev="8">
+    <srcmd5>5b3ce7060cd1f07123b8561f0fb42545</srcmd5>
+    <version>11.4</version>
+    <time>1295284296</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58519 from user coolo
+</comment>
+    <requestid>58519</requestid>
+  </revision>
+  <revision rev="44" vrev="9">
+    <srcmd5>9756a776a756b0f7c3f7630e39f43e22</srcmd5>
+    <version>11.4</version>
+    <time>1295284315</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58519
+</comment>
+  </revision>
+  <revision rev="45" vrev="10">
+    <srcmd5>95cb22c8b9457ae4ed54b1779823f135</srcmd5>
+    <version>11.4</version>
+    <time>1297386890</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60515 from user wstephenson
+</comment>
+    <requestid>60515</requestid>
+  </revision>
+  <revision rev="46" vrev="11">
+    <srcmd5>c4ffaae7438f86f66228a4051c6c193d</srcmd5>
+    <version>11.4</version>
+    <time>1297386897</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60515
+</comment>
+  </revision>
+  <revision rev="47" vrev="14">
+    <srcmd5>c4ffaae7438f86f66228a4051c6c193d</srcmd5>
+    <version>11.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="48" vrev="15">
+    <srcmd5>8f88677a2e624c1b616e2ed6293eb5ba</srcmd5>
+    <version>11.4</version>
+    <time>1298304344</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62340 from user vuntz
+</comment>
+    <requestid>62340</requestid>
+  </revision>
+  <revision rev="49" vrev="16">
+    <srcmd5>49830ad131539a0d790f4441df0dfce9</srcmd5>
+    <version>11.4</version>
+    <time>1298304351</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 62340
+</comment>
+  </revision>
+  <revision rev="50" vrev="17">
+    <srcmd5>e490cec885708a17959eaa5ab4217895</srcmd5>
+    <version>11.4</version>
+    <time>1315815815</time>
+    <user>saschpe</user>
+    <comment>- Added package-manager-icon of sizes 64x64, 128x128, 256x256
+  and scalable svg (bnc#713902)
+- Add post and postun macros to update hicolor icon-theme cache
+- Add patch to fix the category of package-manager.desktop file
+- Bumped release number 
+
+- Added patch to fix hidden entries (bnc#686786)</comment>
+    <requestid>81853</requestid>
+  </revision>
+  <revision rev="51" vrev="18">
+    <srcmd5>446dc2994274d1fecebea1153ede519a</srcmd5>
+    <version>11.4</version>
+    <time>1315815822</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81853
+</comment>
+  </revision>
+  <revision rev="52" vrev="16">
+    <srcmd5>5cb435bff8fc79c6afe52b611c6282a1</srcmd5>
+    <version>12.1</version>
+    <time>1316680898</time>
+    <user>saschpe</user>
+    <comment>Fix build (forwarded request 84242 from vuntz)</comment>
+    <requestid>84260</requestid>
+  </revision>
+  <revision rev="53" vrev="17">
+    <srcmd5>b035a2121560154d985f8038855ca346</srcmd5>
+    <version>12.1</version>
+    <time>1316766243</time>
+    <user>saschpe</user>
+    <comment>Update for wallpaper changes (forwarded request 84513 from vuntz)</comment>
+    <requestid>84528</requestid>
+  </revision>
+  <revision rev="54" vrev="18">
+    <srcmd5>07684d714c14c9de3c7d7412070ee57f</srcmd5>
+    <version>12.1</version>
+    <time>1317049362</time>
+    <user>oertel</user>
+    <comment>Drop update-alternatives Requires (forwarded request 84860 from vuntz)</comment>
+    <requestid>84880</requestid>
+  </revision>
+  <revision rev="55" vrev="19">
+    <srcmd5>c245484b13b0c0c1196a21e4d2d5e862</srcmd5>
+    <version>12.1</version>
+    <time>1317049367</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 84880
+</comment>
+  </revision>
+  <revision rev="56" vrev="20">
+    <srcmd5>29a88ab93b99d5f2dc1a9e9aeca92e7c</srcmd5>
+    <version>12.1</version>
+    <time>1318428696</time>
+    <user>lrupp</user>
+    <comment>Integrate hidden-fix.diff in git (forwarded request 87407 from vuntz)</comment>
+    <requestid>87444</requestid>
+  </revision>
+  <revision rev="57" vrev="21">
+    <srcmd5>f14c334f1d53b27968f49dd0c4c8f3ef</srcmd5>
+    <version>12.1</version>
+    <time>1318962704</time>
+    <user>coolo</user>
+    <comment>- desktop-data is fine with any wallpaper branding for 12.1</comment>
+    <requestid>88610</requestid>
+  </revision>
+  <revision rev="58" vrev="23">
+    <srcmd5>f14c334f1d53b27968f49dd0c4c8f3ef</srcmd5>
+    <version>12.1</version>
+    <time>1319181845</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>857922ebcd4eb36c36f00784f057a94e</srcmd5>
+    <version>12.2</version>
+    <time>1322828473</time>
+    <user>coolo</user>
+    <comment>- bump version to 12.2</comment>
+    <requestid>94923</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>001b9d12f9504268cb6eb5d74b174e74</srcmd5>
+    <version>12.2</version>
+    <time>1323191146</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="61" vrev="4">
+    <srcmd5>001b9d12f9504268cb6eb5d74b174e74</srcmd5>
+    <version>12.2</version>
+    <time>1340183276</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>9988eb1a0f6f81bb5ed17d2b85c87c55</srcmd5>
+    <version>12.3</version>
+    <time>1355135510</time>
+    <user>coolo</user>
+    <comment>- bump version to 12.3</comment>
+    <requestid>144942</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>adb9dca3cb47c42f6b054157a5c4bf4d</srcmd5>
+    <version>12.3</version>
+    <time>1358863748</time>
+    <user>coolo</user>
+    <comment>- Update for changes to XDG menu spec (bnc#443364):
+  * Edutainment is now two top level menus, Education and Science
+  * All additional categories allowed for Education are now 
+    permitted for Science
+  * Monitor additional category is permitted for System and Network
+  * Spirituality, Maps, Feed, NetworkService, Shooter additional
+    categories were added</comment>
+    <requestid>149456</requestid>
+  </revision>
+  <revision rev="64" vrev="4">
+    <srcmd5>adb9dca3cb47c42f6b054157a5c4bf4d</srcmd5>
+    <version>12.3</version>
+    <time>1359108807</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="65" vrev="5">
+    <srcmd5>d3d5fb3c5bad4dd4bd74392307b21c38</srcmd5>
+    <version>12.3</version>
+    <time>1359639742</time>
+    <user>coolo</user>
+    <comment>- Fix Audio players show up in Video Player submenun (bnc#788628)
+- Fix application menu schema warning from kbuildsycoca (bnc#789456) (forwarded request 150272 from wstephenson)</comment>
+    <requestid>150523</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>20edc46bd3eca83cb12d7a9fda86f9f1</srcmd5>
+    <version>13.1</version>
+    <time>1366832550</time>
+    <user>coolo</user>
+    <comment>- bump version to 13.1</comment>
+    <requestid>173297</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>ddc4b4f513c727d1e9f89c381287e1bf</srcmd5>
+    <version>13.1</version>
+    <time>1378302751</time>
+    <user>coolo</user>
+    <comment>- remove supplements and move it to the patterns. Supplements
+  are rather intransparent (forwarded request 197119 from coolo)</comment>
+    <requestid>197386</requestid>
+  </revision>
+  <revision rev="68" vrev="4">
+    <srcmd5>ddc4b4f513c727d1e9f89c381287e1bf</srcmd5>
+    <version>13.1</version>
+    <time>1379662220</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>9723c126182ba93b9aad60eef5d19981</srcmd5>
+    <version>13.2</version>
+    <time>1393705237</time>
+    <user>coolo</user>
+    <comment>- bump version to 13.2</comment>
+    <requestid>224180</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>9c2daaef46f0b57823f6849629324f1e</srcmd5>
+    <version>13.2</version>
+    <time>1406836199</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243110</requestid>
+  </revision>
+  <revision rev="71" vrev="4">
+    <srcmd5>9c2daaef46f0b57823f6849629324f1e</srcmd5>
+    <version>13.2</version>
+    <time>1409300756</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="72" vrev="5">
+    <srcmd5>3097543089053293a0d4f4d55371cf97</srcmd5>
+    <version>13.2</version>
+    <time>1413048360</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254737</requestid>
+  </revision>
+  <revision rev="73" vrev="6">
+    <srcmd5>747131458db91232a2767124042ba5db</srcmd5>
+    <version>13.2</version>
+    <time>1413384078</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256354</requestid>
+  </revision>
+  <revision rev="74" vrev="7">
+    <srcmd5>1aed256a3a52a6ca529e7a56efa38e05</srcmd5>
+    <version>13.2</version>
+    <time>1415953117</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261173</requestid>
+  </revision>
+  <revision rev="75" vrev="8">
+    <srcmd5>d4ff1f0dbacb2a9664946c547fda4036</srcmd5>
+    <version>13.2</version>
+    <time>1417160752</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262577</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>8a4f654a9560ded4f99b1a3fe159e70e</srcmd5>
+    <version>13.3</version>
+    <time>1451390317</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>350921</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>1d2cd58ee3cac5ac8e2b3cb20215de0a</srcmd5>
+    <version>13.3</version>
+    <time>1454628630</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356710</requestid>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>3299bd430f44e583b60cde9a9b9b10ed</srcmd5>
+    <version>13.3</version>
+    <time>1456432937</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360902</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>ac6477acb5050423b7c1175340e6c1d4</srcmd5>
+    <version>15.0.20171024</version>
+    <time>1509723102</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.0.20171024:
+  * Remove update_rpm: the package has been converted to _service
+
+- Update to version 15.0.20171023:
+  * Drop /etc/skel/public_html (boo#1064226).</comment>
+    <requestid>536932</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>5637776d7a7b81f71e988f6ba2ea1d48</srcmd5>
+    <version>15.0.20171024</version>
+    <time>1512216652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545919</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>492a87b6e810160e9890df436d8d18f3</srcmd5>
+    <version>15.1.20181213</version>
+    <time>1545866641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657955</requestid>
+  </revision>
+</revisionlist>

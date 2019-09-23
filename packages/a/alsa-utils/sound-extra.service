@@ -1,0 +1,8 @@
+[Unit]
+Description=Load extra kernel modules for sound stuff
+After=alsasound.service
+ConditionPathExists=/proc/asound
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/systemd/scripts/load-sound-modules.sh

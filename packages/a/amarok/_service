@@ -1,0 +1,14 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+   <param name="changesgenerate">enable</param>
+   <param name="versionformat">2.9.70git.%ci~%h</param>
+   <param name="url">git://anongit.kde.org/amarok</param>
+   <param name="scm">git</param>
+   <param name="filename">amarok</param>
+  </service>
+  <service name="recompress" mode="disabled">
+   <param name="file">*.tar</param>
+   <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled" />
+</services>

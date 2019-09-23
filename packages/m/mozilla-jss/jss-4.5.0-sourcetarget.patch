@@ -1,0 +1,29 @@
+--- jss-4.5.0/build_java.pl	2018-09-20 12:13:12.662798762 +0200
++++ jss-4.5.0/build_java.pl	2018-09-20 12:15:08.730013522 +0200
+@@ -347,7 +347,7 @@
+     if( scalar(@source_list) > 0 ) {
+         ensure_dir_exists($class_dir);
+         ensure_dir_exists($jni_header_dir);
+-        print_do("$javac $javac_opt_flag $add_modules_flag $javac_deprecation_flag -sourcepath . -d $class_dir " .
++        print_do("$javac -source 8 -target 8 $javac_opt_flag $add_modules_flag $javac_deprecation_flag -sourcepath . -d $class_dir " .
+             "$classpath " . join(" ",@source_list));
+ 
+         #
+@@ -355,7 +355,7 @@
+         # by compiling the ones we want with "-h $jni_header_dir" flag
+         #
+         ensure_dir_exists($jni_header_dir);
+-        print_do("$javac $javac_opt_flag $add_modules_flag $javac_deprecation_flag -sourcepath . -d $class_dir -h $jni_header_dir " .
++        print_do("$javac -source 8 -target 8 $javac_opt_flag $add_modules_flag $javac_deprecation_flag -sourcepath . -d $class_dir -h $jni_header_dir " .
+             "$classpath " . join(" ", @wanted_sources) );
+ 
+         print_do("sh -c 'cd $dist_dir/classes && $jar cvmf $dist_dir/MANIFEST.MF $dist_dir/xpclass.jar *'");
+@@ -445,7 +445,7 @@
+     ensure_dir_exists("$dist_dir/jssdoc");
+     my $targets = join(" ", @packages);
+     print "$targets\n";
+-    print_do("$javadoc -breakiterator $add_modules_flag $classpath -sourcepath . -d $dist_dir/jssdoc $html_header_opt $targets");
++    print_do("$javadoc -source 8 -breakiterator $add_modules_flag $classpath -sourcepath . -d $dist_dir/jssdoc $html_header_opt $targets");
+     print_do("cp $dist_dir/jssdoc/index.html $dist_dir/jssdoc/index.html.bak");
+     print_do("cp $dist_dir/jssdoc/overview-summary.html $dist_dir/jssdoc/index.html");
+ }

@@ -1,0 +1,16 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://gitlab.freedesktop.org/upower/upower.git</param>
+    <param name="scm">git</param>
+    <param name="version">0.99.11</param>
+    <param name="revision">UPOWER_0_99_11</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>
+

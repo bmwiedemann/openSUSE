@@ -1,0 +1,64 @@
+From a631c0c47e73f2e1ae0d91fd2ae1a8ba0428ab7f Mon Sep 17 00:00:00 2001
+From: Artur Twardowski <32247490+artur-twardowski@users.noreply.github.com>
+Date: Mon, 26 Aug 2019 03:05:59 +0200
+Subject: [PATCH] Fix invalid MIDI Program Change decoding (#5154)
+
+---
+ src/core/midi/MidiAlsaSeq.cpp | 10 +++++-----
+ src/core/midi/MidiClient.cpp  |  6 +++++-
+ 2 files changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/src/core/midi/MidiAlsaSeq.cpp b/src/core/midi/MidiAlsaSeq.cpp
+index e420ebc08..56fd956d4 100644
+--- a/src/core/midi/MidiAlsaSeq.cpp
++++ b/src/core/midi/MidiAlsaSeq.cpp
+@@ -563,7 +563,7 @@ void MidiAlsaSeq::run()
+ 
+ 				case SND_SEQ_EVENT_CONTROLLER:
+ 					dest->processInEvent( MidiEvent(
+-								MidiControlChange,
++							MidiControlChange,
+ 							ev->data.control.channel,
+ 							ev->data.control.param,
+ 							ev->data.control.value, source ),
+@@ -572,11 +572,11 @@ void MidiAlsaSeq::run()
+ 
+ 				case SND_SEQ_EVENT_PGMCHANGE:
+ 					dest->processInEvent( MidiEvent(
+-								MidiProgramChange,
++							MidiProgramChange,
+ 							ev->data.control.channel,
+-							ev->data.control.param,
+-							ev->data.control.value, source ),
+-									MidiTime() );
++							ev->data.control.value,	0,
++							source ),
++								MidiTime() );
+ 					break;
+ 
+ 				case SND_SEQ_EVENT_CHANPRESS:
+diff --git a/src/core/midi/MidiClient.cpp b/src/core/midi/MidiClient.cpp
+index b88c64db1..e22daf235 100644
+--- a/src/core/midi/MidiClient.cpp
++++ b/src/core/midi/MidiClient.cpp
+@@ -222,12 +222,16 @@ void MidiClientRaw::parseData( const unsigned char c )
+ 		case MidiNoteOff:
+ 		case MidiNoteOn:
+ 		case MidiKeyPressure:
+-		case MidiProgramChange:
+ 		case MidiChannelPressure:
+ 			m_midiParseData.m_midiEvent.setKey( m_midiParseData.m_buffer[0] - KeysPerOctave );
+ 			m_midiParseData.m_midiEvent.setVelocity( m_midiParseData.m_buffer[1] );
+ 			break;
+ 
++		case MidiProgramChange:
++			m_midiParseData.m_midiEvent.setKey( m_midiParseData.m_buffer[0] );
++			m_midiParseData.m_midiEvent.setVelocity( m_midiParseData.m_buffer[1] );
++			break;
++
+ 		case MidiControlChange:
+ 			m_midiParseData.m_midiEvent.setControllerNumber( m_midiParseData.m_buffer[0] );
+ 			m_midiParseData.m_midiEvent.setControllerValue(  m_midiParseData.m_buffer[1] );
+-- 
+2.16.4
+

@@ -1,0 +1,38 @@
+# /lib/systemd/system/klogd.service
+#
+# This file is part of package klogd.
+#
+# Copyright (c) 2011 SuSE LINUX Products GmbH, Germany.
+# Author: Werner Fink
+# Please send feedback to http://www.suse.de/feedback
+#
+# Description:
+#
+#  Used to start klogd, the System Kernel Logging Service
+#  if and only if the System Logger does not provide this
+#  its self.  If the System Logger can do Kernel Logging
+#  Service this file should be masked by a symbolic link
+#  from /etc/systemd/system/klogd.service to /dev/null.
+#
+#  If klogd.service is started then BindsTo=syslog.service
+#  within unit section to make it disappear if syslogd dies.
+#
+
+[Unit]
+Description=System Kernel Logging Service
+Requisite=syslogd.service
+BindsTo=syslogd.service
+After=syslogd.service
+RefuseManualStart=true
+
+[Service]
+Type=simple
+StandardOutput=syslog
+StandardError=syslog
+Environment=KERNEL_LOGLEVEL=1
+Environment=KLOGD_PARAMS=
+EnvironmentFile=-/etc/sysconfig/syslog
+ExecStart=/sbin/klogd -n -c $KERNEL_LOGLEVEL $KLOGD_PARAMS -x
+
+[Install]
+WantedBy=multi-user.target

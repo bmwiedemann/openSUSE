@@ -1,0 +1,15 @@
+diff -ur fail2ban-0.9.3-orig/config/action.d/iptables-common.conf fail2ban-0.9.3/config/action.d/iptables-common.conf
+--- fail2ban-0.9.3-orig/config/action.d/iptables-common.conf	2015-08-01 03:32:13.000000000 +0200
++++ fail2ban-0.9.3/config/action.d/iptables-common.conf	2015-08-26 13:35:33.542992089 +0200
+@@ -55,8 +55,10 @@
+ #          running concurrently and causing irratic behavior.  -w was introduced
+ #          in iptables 1.4.20, so might be absent on older systems
+ #          See https://github.com/fail2ban/fail2ban/issues/1122
++#          The default option "-w" can be used for openSUSE versions 13.2+ and
++#          for updated versions of openSUSE 13.1; SLE 12 supports this option.
+ # Values:  STRING
+-lockingopt = -w
++lockingopt =
+ 
+ # Option:  iptables
+ # Notes.:  Actual command to be executed, including common to all calls options

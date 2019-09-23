@@ -1,0 +1,57 @@
+commit 3d7e7549a2aace210b32d0dcd70d836f219ab88e
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Tue Jun 26 07:46:08 2018 +0200
+
+    openmpi btl openib backport device params from master
+    
+    Backport support for newer HCA from the master branch
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git ompi/mca/btl/openib/mca-btl-openib-device-params.ini ompi/mca/btl/openib/mca-btl-openib-device-params.ini
+index 6b1106f94af2..6e852647f391 100644
+--- ompi/mca/btl/openib/mca-btl-openib-device-params.ini
++++ ompi/mca/btl/openib/mca-btl-openib-device-params.ini
+@@ -234,6 +234,11 @@ use_eager_rdma = 1
+ mtu = 4096
+ max_inline_data = 0
+ 
++[QLogic FastLinQ QL41000]
++vendor_id = 0x1077
++vendor_part_id = 32880
++receive_queues = P,65536,64
++
+ ############################################################################
+ 
+ # Chelsio's OUI is 0x0743.  0x1425 is the PCI ID.
+@@ -262,6 +267,14 @@ mtu = 2048
+ receive_queues = P,65536,64
+ max_inline_data = 280
+ 
++[Chelsio T6]
++vendor_id = 0x1425
++vendor_part_id = 0x6400,0x6401,0x6402,0x6403,0x6404,0x6405,0x6406,0x6407,0x6408,0x6409,0x640d,0x6410,0x6411,0x6414,0x6415
++use_eager_rdma = 1
++mtu = 2048
++receive_queues = P,65536,64
++max_inline_data = 280
++
+ ############################################################################
+ 
+ # I'm *assuming* that 0x4040 is the PCI ID...
+@@ -316,3 +329,15 @@ use_eager_rdma = 1
+ mtu = 2048
+ receive_queues = P,65536,64
+ max_inline_data = 72
++
++############################################################################
++
++# Broadcom NetXtreme-E RDMA Ethernet Controller
++
++[Broadcom Cumulus]
++vendor_id = 0x14e4
++vendor_part_id = 0x16d7
++use_eager_rdma = 1
++mtu = 1024
++receive_queues = P,65536,256,192,128
++max_inline_data = 96

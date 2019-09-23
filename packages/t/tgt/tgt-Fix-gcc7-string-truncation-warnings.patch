@@ -1,0 +1,102 @@
+From 2de8bebe132e3b998bf4848d0bd22b50367ad4b8 Mon Sep 17 00:00:00 2001
+From: Lee Duncan <lduncan@suse.com>
+Date: Sat, 16 Feb 2019 10:29:19 -0800
+Subject: [PATCH] Fix gcc7 string truncation warnings.
+
+Mostly, this is fixed by checking the legnth
+of strings to be copied, making sure they will
+fit where they are being copied to, and
+erroring out if the copy will not fit. Then
+we can just use strcpy(). We also use
+scsi_sprintf() for copying to SCSI structures,
+with their special requirements.
+---
+ usr/mgmt.c   | 9 +++++++--
+ usr/smc.c    | 9 +++++++--
+ usr/spc.c    | 9 ++++++---
+ usr/tgtadm.c | 6 +++++-
+ 4 files changed, 25 insertions(+), 8 deletions(-)
+
+diff --git a/usr/mgmt.c b/usr/mgmt.c
+index de23f1469494..00a4e08c01dc 100644
+--- a/usr/mgmt.c
++++ b/usr/mgmt.c
+@@ -797,11 +797,16 @@ int ipc_init(void)
+ 		goto close_lock_fd;
+ 	}
+ 
+-	snprintf(mgmt_path, sizeof(mgmt_path), "%s.%d", path, control_port);
++	snprintf(mgmt_path, sizeof(mgmt_path) - 1, "%s.%d", path, control_port);
++	if (strlen(mgmt_path) > (sizeof(addr.sun_path) - 1)) {
++		eprintf("managment path too long: %s\n", mgmt_path);
++		goto close_ipc_fd;
++	}
+ 	unlink(mgmt_path);
+ 	memset(&addr, 0, sizeof(addr));
+ 	addr.sun_family = AF_LOCAL;
+-	strncpy(addr.sun_path, mgmt_path, sizeof(addr.sun_path));
++	/* no need for strncpy because we already checked length */
++	strcpy(addr.sun_path, mgmt_path);
+ 
+ 	err = bind(fd, (struct sockaddr *) &addr, sizeof(addr));
+ 	if (err) {
+diff --git a/usr/smc.c b/usr/smc.c
+index b80aba272909..bbc7b7fc7b88 100644
+--- a/usr/smc.c
++++ b/usr/smc.c
+@@ -732,8 +732,13 @@ static tgtadm_err config_slot(struct scsi_lu *lu, struct tmp_param *tmp)
+ 			adm_err = TGTADM_SUCCESS;
+ 			break;
+ 		}
+-		strncpy(s->barcode, tmp->barcode, sizeof(s->barcode));
+-		strncpy(s->volume_tag, tmp->volume_tag, sizeof(s->volume_tag));
++		if (strlen(tmp->barcode) > sizeof(s->barcode) ||
++		    strlen(tmp->volume_tag) > sizeof(s->volume_tag)) {
++			eprintf("barcode or volume tag too large?");
++			break;
++		}
++		strcpy(s->barcode, tmp->barcode);
++		strcpy(s->volume_tag, tmp->volume_tag);
+ 		set_slot_full(s, 0, NULL);
+ 		adm_err = TGTADM_SUCCESS;
+ 		break;
+diff --git a/usr/spc.c b/usr/spc.c
+index 82a6ec9ee863..902d5bf4a60b 100644
+--- a/usr/spc.c
++++ b/usr/spc.c
+@@ -289,9 +289,12 @@ int spc_inquiry(int host_no, struct scsi_cmd *cmd)
+ 		data[7] = 0x02;
+ 
+ 		memset(data + 8, 0x20, 28);
+-		strncpy((char *)data + 8, attrs->vendor_id, VENDOR_ID_LEN);
+-		strncpy((char *)data + 16, attrs->product_id, PRODUCT_ID_LEN);
+-		strncpy((char *)data + 32, attrs->product_rev, PRODUCT_REV_LEN);
++		scsi_sprintf((char *)data + 8, VENDOR_ID_LEN, "%-*s",
++			     VENDOR_ID_LEN, attrs->vendor_id);
++		scsi_sprintf((char *)data + 16, PRODUCT_ID_LEN, "%-*s",
++			     PRODUCT_ID_LEN, attrs->product_id);
++		scsi_sprintf((char *)data + 32, PRODUCT_REV_LEN, "%-*s",
++			     PRODUCT_REV_LEN, attrs->product_rev);
+ 
+ 		desc = (uint16_t *)(data + 58);
+ 		for (i = 0; i < ARRAY_SIZE(attrs->version_desc); i++)
+diff --git a/usr/tgtadm.c b/usr/tgtadm.c
+index 5572c3888a80..cb3eb1cd126f 100644
+--- a/usr/tgtadm.c
++++ b/usr/tgtadm.c
+@@ -224,7 +224,11 @@ static int ipc_mgmt_connect(int *fd)
+ 	snprintf(mgmt_path, sizeof(mgmt_path), "%s.%d",
+ 			 path, control_port);
+ 
+-	strncpy(addr.sun_path, mgmt_path, sizeof(addr.sun_path));
++	if (strlen(mgmt_path) > (sizeof(addr.sun_path) - 1)) {
++		eprintf("management path too long: %s\n", mgmt_path);
++		return EINVAL;
++	}
++	strcpy(addr.sun_path, mgmt_path);
+ 
+ 	err = connect(*fd, (struct sockaddr *) &addr, sizeof(addr));
+ 	if (err < 0)
+-- 
+2.16.4
+

@@ -1,0 +1,1838 @@
+-------------------------------------------------------------------
+Mon Aug 26 09:35:43 CEST 2019 - schubi@suse.de
+
+- Using rb_default_ruby_abi tag in the spec file in order to
+  handle several ruby versions (bsc#1146403).
+- 4.2.2
+
+-------------------------------------------------------------------
+Fri Jul 19 09:38:47 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added "BuildRequires: update-desktop-files"
+- Related to the previous desktop file changes (fate#319035)
+- 4.2.1
+
+-------------------------------------------------------------------
+Fri May 31 12:35:20 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Tue Feb 26 11:35:36 UTC 2019 - José Iván López González <jlopez@suse.com>
+
+- Version bump (bsc#1124009)
+- 4.1.0
+
+-------------------------------------------------------------------
+Sun Nov 25 20:58:08 UTC 2018 - Noah Davis <noahadvs@gmail.com>
+
+- Provide icon with module (boo#1109310)
+- 4.0.2
+
+-------------------------------------------------------------------
+Tue Oct 16 16:49:23 CEST 2018 - schubi@suse.de
+
+- Added license file to spec.
+
+-------------------------------------------------------------------
+Mon Aug 20 09:30:53 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Thu Jun 28 15:21:35 CEST 2018 - schubi@suse.de
+
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.0.1
+
+-------------------------------------------------------------------
+Fri Apr  6 18:52:02 UTC 2018 - mfilka@suse.com
+
+- bnc#1087957 - version bump
+- 4.0.0
+
+-------------------------------------------------------------------
+Fri Feb  6 13:15:42 UTC 2015 - ancor@suse.com
+
+- The unit tests are now compatible with RSpec 3 (bnc#916364)
+- 3.1.11
+
+-------------------------------------------------------------------
+Fri Feb  6 10:37:58 UTC 2015 - lslezak@suse.cz
+
+- updated restart popup message, make clear that only YaST will be
+  restarted (not the system) (bnc#913437)
+- 3.1.10
+
+-------------------------------------------------------------------
+Thu Jan 29 12:01:20 UTC 2015 - jreidinger@suse.com
+
+- remove obsolete legacy patch callbacks 
+- 3.1.9
+
+-------------------------------------------------------------------
+Thu Dec  4 09:50:39 UTC 2014 - jreidinger@suse.com
+
+- remove X-KDE-Library from desktop file (bnc#899104)
+
+-------------------------------------------------------------------
+Thu Sep  4 12:24:10 UTC 2014 - mvidner@suse.com
+
+- Use a more flexible rubygem requirement syntax (bnc#895069)
+- 3.1.7
+
+-------------------------------------------------------------------
+Tue Jul 29 14:45:05 CEST 2014 - aschnell@suse.de
+
+- fixed spelling in spec file (bnc#889021)
+- 3.1.6
+
+-------------------------------------------------------------------
+Wed May 28 08:16:10 UTC 2014 - lslezak@suse.cz
+
+- fixed starting registration module (bnc#868211)
+- 3.1.5
+
+-------------------------------------------------------------------
+Tue Mar 25 11:33:10 CET 2014 - jsuchome@suse.cz
+
+- fixed a typo (bnc#870049)
+- 3.1.4
+
+-------------------------------------------------------------------
+Fri Mar  7 17:21:05 CET 2014 - locilka@suse.com
+
+- Reporting products that have reached their end of support when
+  Online Update module is started (FATE#316172)
+- 3.1.3
+
+-------------------------------------------------------------------
+Mon Feb 10 10:44:16 CET 2014 - locilka@suse.com
+
+- Added functionality which informs user that some of the selected
+  patches (listed) will need rebooting. User can then continue,
+  skip all those patches, or tune the selection of patches manually
+  (FATE#312509).
+- 3.1.2
+
+-------------------------------------------------------------------
+Wed Nov 13 15:56:18 UTC 2013 - jreidinger@suse.com
+
+- Add explicit COPYING file
+
+-------------------------------------------------------------------
+Thu Sep 19 12:17:52 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Wed Jul 31 08:34:42 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Mon Jul 15 14:11:23 CEST 2013 - jsuchome@suse.cz
+
+- call PkgCommit to save changes even when nothing was selected
+  for (un)installation (bnc#811237)
+- 2.24.0
+
+-------------------------------------------------------------------
+Fri Dec  7 21:25:49 CET 2012 - jsuchome@suse.cz
+
+- if release notes package was updated, show release notes at the
+  end (fate#314072)
+- 2.23.1 
+
+-------------------------------------------------------------------
+Thu Oct 25 15:40:08 CEST 2012 - jsuchome@suse.cz
+
+- remove the call of obsolete inst_suseconfig
+- 2.23.0 
+
+-------------------------------------------------------------------
+Thu Mar 29 15:36:01 CEST 2012 - jsuchome@suse.cz
+
+- merged proofread texts
+- 2.22.2
+
+-------------------------------------------------------------------
+Thu Mar 29 12:18:57 CEST 2012 - jsuchome@suse.cz
+
+- corectly handle the output of installation's ContinueCancel popup
+- 2.22.1
+
+-------------------------------------------------------------------
+Wed Jan 25 08:42:18 CET 2012 - jsuchome@suse.cz
+
+- confirmed license
+- 2.22.0 
+
+-------------------------------------------------------------------
+Fri Dec  9 15:42:10 CET 2011 - jsuchome@suse.cz
+
+- show package name in progress log when removing it (bnc#731485)
+- 2.21.5 
+
+-------------------------------------------------------------------
+Fri Nov 25 12:23:01 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Sep 23 13:45:08 UTC 2011 - lslezak@suse.cz
+
+- use Pkg::IsAnyResolvable() instead of obsoleted 
+  Pkg::PkgAnyToInstall() and Pkg::PkgAnyToDelete()
+- 2.21.4
+
+-------------------------------------------------------------------
+Fri Sep 23 09:23:09 CEST 2011 - visnov@suse.cz
+
+- added dialog title
+- 2.21.3 
+
+-------------------------------------------------------------------
+Thu Sep 22 15:07:11 UTC 2011 - lslezak@suse.cz
+
+- removed obsoleted Pkg::PkgEstablish() call (does nothing, will
+  be removed)
+- fixed package dependencies
+- 2.21.2
+
+-------------------------------------------------------------------
+Thu Sep 22 10:59:11 CEST 2011 - jsuchome@suse.cz
+
+- 2.21.1 
+
+-------------------------------------------------------------------
+Fri Aug  5 12:34:29 CEST 2011 - tgoettlicher@suse.de
+
+- fixed .desktop file (bnc #681249)
+
+-------------------------------------------------------------------
+Fri Apr  8 12:54:35 CEST 2011 - jsuchome@suse.cz
+
+- initialize package management after reboot (bnc#672966)
+- 2.21.0 
+
+-------------------------------------------------------------------
+Thu Jan 20 14:43:08 CET 2011 - jsuchome@suse.cz
+
+- run repositories module for adding update source (bnc#658711)
+- 2.20.2 
+
+-------------------------------------------------------------------
+Tue Nov  2 14:52:22 UTC 2010 - lslezak@suse.cz
+
+- updated to match the changed StartPackage callback signature
+- 2.20.1
+
+-------------------------------------------------------------------
+Tue Oct  5 10:47:00 UTC 2010 - lslezak@suse.cz
+
+- install yast2-online-update-configuration package if needed
+  (bnc#609778)
+- 2.20.0
+
+-------------------------------------------------------------------
+Wed Jan 13 18:56:03 CET 2010 - kmachalkova@suse.cz
+
+- Adjusted .desktop file(s) to wrap /sbin/yast2/ calls in xdg-su
+  where root privileges are needed, removed X-KDE-SubstituteUID key 
+  (bnc#540627)
+
+-------------------------------------------------------------------
+Wed Jan 13 09:20:17 CET 2010 - jsuchome@suse.cz
+
+- inst_you: do not run again if there's no patch left (bnc#515138)
+- 2.19.2
+
+-------------------------------------------------------------------
+Wed Jan 13 08:33:11 CET 2010 - jsuchome@suse.cz
+
+- call inst_suse_register if no update repo is present (bnc#565094)
+- 2.19.1
+
+-------------------------------------------------------------------
+Wed Dec 16 13:22:57 CET 2009 - jsuchome@suse.cz
+
+- better message for telling user to reboot, show list of patches
+  that require a reboot (bnc#497217)
+- 2.19.0
+
+-------------------------------------------------------------------
+Thu Nov 26 07:49:16 UTC 2009 - lslezak@suse.cz
+
+- don't show "Continue" button when the software management is
+  locked (bnc#558625)
+
+-------------------------------------------------------------------
+Thu Oct  8 13:45:25 CEST 2009 - jsuchome@suse.cz
+
+- reverted check for online update source, repositories not tagged
+  (bnc#459527)
+- 2.18.5
+
+-------------------------------------------------------------------
+Thu Sep  3 14:36:03 CEST 2009 - jsuchome@suse.cz
+
+- added keywords to desktop file
+- removed online_update_setup, it was replaced by
+  online_update_configuration from registration module
+- 2.18.4
+
+-------------------------------------------------------------------
+Thu Aug 20 16:41:01 CEST 2009 - jsuchome@suse.cz
+
+- fixed help texts: do not mention YaST2 (bnc#532518)
+- 2.18.3 
+
+-------------------------------------------------------------------
+Tue Jun 16 14:27:46 CEST 2009 - mvidner@suse.cz
+
+- Using autodocs-ycp.ami, which contains a fix for automake 1.11.
+
+-------------------------------------------------------------------
+Tue Apr 21 21:31:52 CEST 2009 - jsuchome@suse.cz
+
+- new check for online update source (bnc#459527)
+- offer registration if online update source not found (bnc#459527)
+- 2.18.2
+
+-------------------------------------------------------------------
+Mon Mar 23 15:41:08 CET 2009 - jsuchome@suse.cz
+
+- do not reset the user locks (bnc#483648)
+- 2.18.1 
+
+-------------------------------------------------------------------
+Mon Mar 23 15:20:57 CET 2009 - lslezak@suse.cz
+
+- removed obsoleted SourceManager::SyncYaSTInstSourceWithZMD()
+  call (bnc#480845)
+
+-------------------------------------------------------------------
+Tue Mar  3 15:53:55 CET 2009 - jsuchome@suse.cz
+
+- inst_you: generic message for reboot (bnc#479835)
+- after reboot during installation, return `reboot_same_step, if
+  there are remaining patches (bnc#475650)
+- 2.18.0
+
+-------------------------------------------------------------------
+Tue Feb 17 15:47:08 CET 2009 - ug@suse.de
+
+- fixed autoyast client
+
+-------------------------------------------------------------------
+Fri Feb 13 15:59:20 CET 2009 - jsuchome@suse.cz
+
+- correct placing of solver call (bnc#474601) 
+
+-------------------------------------------------------------------
+Wed Feb 11 17:47:24 CET 2009 - locilka@suse.cz
+
+- Calling solver if some patches are selected during second stage
+  installation (bnc #474601).
+
+-------------------------------------------------------------------
+Wed Feb 11 15:02:14 CET 2009 - jsuchome@suse.cz
+
+- refresh the source data which were possibly cleared (bnc#474711)
+
+-------------------------------------------------------------------
+Mon Jan 19 13:00:46 CET 2009 - jsuchome@suse.cz
+
+- added option to open Repository management and Online Update
+  Configuration from the package selector (bnc#459540, fate#303458)
+
+-------------------------------------------------------------------
+Fri Jan  9 11:37:25 CET 2009 - ug@suse.de
+
+- removed from autoyast UI (bnc#464789)
+
+-------------------------------------------------------------------
+Mon Dec  8 15:34:46 CET 2008 - jsuchome@suse.cz
+
+- do not return integer value to let YOU restart itself (bnc#457167)
+- 2.17.13 
+
+-------------------------------------------------------------------
+Mon Dec  8 15:24:11 CET 2008 - lslezak@suse.cz
+
+- Fixed the data type for solver flags (bnc#457233)
+- 2.17.12
+
+-------------------------------------------------------------------
+Fri Dec  5 15:47:52 CET 2008 - jsuchome@suse.cz
+
+- when there are patches for package management available, tell
+  solver to not bring recommended packages (bnc#450528)
+- 2.17.11 
+
+-------------------------------------------------------------------
+Thu Oct 30 13:50:48 CET 2008 - locilka@suse.cz
+
+- Fixed 'Conflicts with yast2-wagon' (bnc #439934).
+- 2.17.10
+
+-------------------------------------------------------------------
+Wed Oct 22 15:26:51 CEST 2008 - locilka@suse.cz
+
+- PatchCD control file moved to yast2-wagon.
+- 2.17.9
+
+-------------------------------------------------------------------
+Tue Oct 21 16:35:54 CEST 2008 - jsuchome@suse.cz
+
+- show support status in package selection (bnc#435479)
+- 2.17.8
+
+-------------------------------------------------------------------
+Tue Sep 23 15:53:54 CEST 2008 - jsuchome@suse.cz
+
+- dropped automatic online update (bnc#428372), the functionality
+  was moved to yast2-registration module (fate#303458)
+- 2.17.7
+
+-------------------------------------------------------------------
+Tue Sep  9 11:19:43 CEST 2008 - jsuchome@suse.cz
+
+- merged texts from proofread 
+- preliminary solution for starting Online Update Configuration
+  from package selector (fate#303458)
+- 2.17.6
+
+-------------------------------------------------------------------
+Fri Aug 22 10:00:42 CEST 2008 - jsuchome@suse.cz
+
+- inform user if relogin is required after update (fate#304889)
+- 2.17.5
+
+-------------------------------------------------------------------
+Fri Aug  8 08:56:09 CEST 2008 - jsuchome@suse.cz
+
+- button labels adapted to current style guide (#bnc398480)
+- 2.17.4
+
+-------------------------------------------------------------------
+Tue Jul  8 13:00:19 CEST 2008 - jsuchome@suse.cz
+
+- Run online update during autoinstallation (fate#301298)
+- 2.17.3
+
+-------------------------------------------------------------------
+Tue Jul  8 11:43:27 CEST 2008 - jsuchome@suse.cz
+
+- different progress caption for CD Update (bnc#385186) 
+
+-------------------------------------------------------------------
+Mon Jul  7 11:46:22 CEST 2008 - jsuchome@suse.cz
+
+- when deleting packages, show correct progress info (bnc#403280)
+- 2.17.2 
+
+-------------------------------------------------------------------
+Fri Jun 27 11:22:46 CEST 2008 - lslezak@suse.cz
+
+- adapted to the new patch messages and patch scripts callbacks
+  (bnc#401220)
+- 2.17.1
+
+-------------------------------------------------------------------
+Tue Jun 17 13:52:44 CEST 2008 - lslezak@suse.cz
+
+- use Pkg::SourceSaveAll() instead of Pkg::SourceFinishAll()
+  (bnc#395738)
+- 2.17.0
+
+-------------------------------------------------------------------
+Wed May 21 07:46:01 CEST 2008 - jsuchome@suse.cz
+
+- correct order of arguments for cronjob command (bnc#391144)
+- 2.16.15
+
+-------------------------------------------------------------------
+Fri May 16 16:40:22 CEST 2008 - jsrain@suse.cz
+
+- added categories Settings and System into desktop file
+  (bnc #382778)
+
+-------------------------------------------------------------------
+Mon May  5 15:46:48 CEST 2008 - jsuchome@suse.cz
+
+- added warning about the patch selection also to inst_you
+- solver needs to be run before preselecting patches (bnc#385216)
+- 2.16.14
+
+-------------------------------------------------------------------
+Thu Apr 24 13:44:10 CEST 2008 - jsuchome@suse.cz
+
+- Patch CD: ensure first CD is in drive before synchronization with
+  ZMD (bnc#381594)
+- 2.16.13
+
+-------------------------------------------------------------------
+Thu Apr 24 13:06:59 CEST 2008 - jsuchome@suse.cz
+
+- warn user if there are selected patches not for package management,
+  do not run solver silently (bnc#367057)
+- 2.16.12
+
+-------------------------------------------------------------------
+Tue Apr 15 14:01:30 CEST 2008 - jsuchome@suse.cz
+
+- merged texts from proofread 
+- 2.16.11
+
+-------------------------------------------------------------------
+Tue Apr  8 13:56:58 CEST 2008 - jsuchome@suse.cz
+
+- enable selecting CD URL for Patch CD (fate#303475)
+- 2.16.10
+
+-------------------------------------------------------------------
+Wed Apr  2 16:48:59 CEST 2008 - lslezak@suse.cz
+
+- adapted to the new callback registration scheme (fate#302296)
+- 2.16.9
+
+-------------------------------------------------------------------
+Mon Mar 17 12:43:32 CET 2008 - jsrain@suse.cz
+
+- added 'StartupNotify=true' to the desktop file (bnc #304964)
+
+-------------------------------------------------------------------
+Tue Mar 11 13:33:52 CET 2008 - lslezak@suse.cz
+
+- adapted to the new ProvideProgress callback signature (#168935)
+- 2.16.8
+
+-------------------------------------------------------------------
+Thu Feb 21 12:41:45 CET 2008 - jsuchome@suse.cz
+
+- do not add same source twice (#272666)
+- 2.16.7
+
+-------------------------------------------------------------------
+Mon Dec 17 13:02:29 CET 2007 - jsuchome@suse.cz
+
+- cron is needed for writing cron jobs (#348680)
+- 2.16.6 
+
+-------------------------------------------------------------------
+Mon Dec  3 15:11:07 CET 2007 - jsuchome@suse.cz
+
+- merged texts from proofread 
+
+-------------------------------------------------------------------
+Mon Nov 19 16:14:51 CET 2007 - jsuchome@suse.cz
+
+- correct fix of #279491 merged from SP1 code
+- show visible label that patch installation was finished (#191400)
+- 2.16.5
+
+-------------------------------------------------------------------
+Thu Nov 15 16:03:56 CET 2007 - jsuchome@suse.cz
+
+- report error of Pkg::SourceStartManager (#180172)
+- 2.16.4 
+
+-------------------------------------------------------------------
+Wed Nov 14 14:46:39 CET 2007 - jsuchome@suse.cz
+
+- sources are called repositories now (F302970)
+- 2.16.3 
+
+-------------------------------------------------------------------
+Thu Nov  8 13:46:46 CET 2007 - jsuchome@suse.cz
+
+- fix check for nil return value of clients (#339749)
+- 2.16.2 
+
+-------------------------------------------------------------------
+Wed Oct 31 09:23:13 CET 2007 - jsuchome@suse.cz
+
+- use --quiet option for zypper in cron job (#335305)
+- 2.16.1
+
+-------------------------------------------------------------------
+Wed Oct 10 14:37:12 CEST 2007 - jsuchome@suse.cz
+
+- do not log progress on DoneDownload callback (#331271)
+- 2.16.0
+
+-------------------------------------------------------------------
+Wed Sep 19 09:16:05 CEST 2007 - jsuchome@suse.cz
+
+- removed popup used for debugging (#326247)
+- 2.15.23
+
+-------------------------------------------------------------------
+Mon Sep 17 10:39:22 CEST 2007 - jsuchome@suse.cz
+
+- register download callbacks (#309127)
+- 2.15.22 
+
+-------------------------------------------------------------------
+Fri Sep 14 21:12:47 CEST 2007 - jsuchome@suse.cz
+
+- show random time only in Mode::config (#310384)
+- 2.15.21 
+
+-------------------------------------------------------------------
+Fri Aug 10 14:13:51 CEST 2007 - jsuchome@suse.cz
+
+- fixed typo
+
+-------------------------------------------------------------------
+Wed Aug  1 10:17:48 CEST 2007 - jsuchome@suse.cz
+
+- show warning if no update source is available (F300635)
+- removed unused testsuites
+- 2.15.20
+
+-------------------------------------------------------------------
+Fri Jul 13 12:39:33 CEST 2007 - jsuchome@suse.cz
+
+- fixed restarting during installation (#291361)
+- 2.15.19
+
+-------------------------------------------------------------------
+Fri Jul 13 08:57:21 CEST 2007 - jsuchome@suse.cz
+
+- removed duplicated entries from desktop files
+- 2.15.18 
+
+-------------------------------------------------------------------
+Mon Jun 18 14:57:58 CEST 2007 - jsuchome@suse.cz
+
+- Automatic Online Update: remove option for "only downloading"
+  patches (missing support in zypper, F302159)
+- 2.15.17
+
+-------------------------------------------------------------------
+Tue Jun  5 09:08:58 CEST 2007 - jsuchome@suse.cz
+
+- when the package selector is skipped, check if there are not
+  licenses to show (#279491)
+- 2.15.16
+
+-------------------------------------------------------------------
+Tue May 29 13:39:38 CEST 2007 - jsuchome@suse.cz
+
+- use zypper intseatd of rug for automatic online update (#273133)
+- 2.15.15
+
+-------------------------------------------------------------------
+Fri May 25 16:12:47 CEST 2007 - jsuchome@suse.cz
+
+- DonePackage and DoneProvide callbacks return "I" (#277351)
+- 2.15.14
+
+-------------------------------------------------------------------
+Fri May 25 13:30:04 CEST 2007 - jsrain@suse.cz
+
+- removed outdated translations from .desktop-files (#271209)
+
+-------------------------------------------------------------------
+Wed May 16 10:33:40 CEST 2007 - jsuchome@suse.cz
+
+- added support for simplified UI (#273619)
+- 2.15.13 
+
+-------------------------------------------------------------------
+Fri May  4 10:47:39 CEST 2007 - jsuchome@suse.cz
+
+- added command line support for Automatic Online Update (#269901)
+- 2.15.12 
+
+-------------------------------------------------------------------
+Thu Apr 26 15:28:39 CEST 2007 - jsuchome@suse.cz
+
+- fixed obsolete help text (#267960)
+- 2.15.11 
+
+-------------------------------------------------------------------
+Mon Apr  2 14:25:20 CEST 2007 - jsuchome@suse.cz
+
+- synchronize the new sources with ZMD (#259285)
+- do not save the sources when module was aborted (#259293)
+- 2.15.10 
+
+-------------------------------------------------------------------
+Wed Mar 21 16:04:43 CET 2007 - jsuchome@suse.cz
+
+- added missing cd_update.ycp file
+- 2.15.9 
+
+-------------------------------------------------------------------
+Tue Mar  6 15:35:18 CET 2007 - jsuchome@suse.cz
+
+- show 'reboot now' popup also on installed system (#250606)
+- 2.15.8 
+
+-------------------------------------------------------------------
+Thu Mar  1 14:07:15 CET 2007 - jsuchome@suse.cz
+
+- added basic command line support (#249306)
+- removed obsoleted variables and files
+- 2.15.7
+
+-------------------------------------------------------------------
+Tue Feb 20 14:21:45 CET 2007 - jsuchome@suse.cz
+
+- do not change Finish button label (#246497)
+- 2.15.6 
+
+-------------------------------------------------------------------
+Mon Feb 19 10:58:57 CET 2007 - jsuchome@suse.cz
+
+- do not install Patch CD desktop file on s390 (#241507)
+- 2.15.5
+
+-------------------------------------------------------------------
+Fri Feb 16 08:09:29 CET 2007 - jsuchome@suse.cz
+
+- changed source prefix for Patch CD (#244983)
+- reload the target before checking for new patches (#232247)
+- 2.15.4 
+
+-------------------------------------------------------------------
+Thu Feb  1 10:03:59 CET 2007 - jsuchome@suse.cz
+
+- check "close window" event in the UI (#241012)
+- 2.15.3 
+
+-------------------------------------------------------------------
+Wed Jan 31 14:43:52 CET 2007 - jsuchome@suse.cz
+
+- check for updater application during autoinstallation (#236928)
+- 2.15.2 
+
+-------------------------------------------------------------------
+Fri Jan 19 13:12:05 CET 2007 - jsuchome@suse.cz
+
+- do not wait for user input after installation of patches (#228535)
+- 2.15.1 
+
+-------------------------------------------------------------------
+Thu Dec 14 13:27:02 CET 2006 - jsuchome@suse.cz
+
+- added write progress
+- 2.15.0 
+
+-------------------------------------------------------------------
+Mon Nov 13 16:33:24 CET 2006 - jsuchome@suse.cz
+
+- prevent infinite loop in inst_you (#220218)
+- 2.14.2 
+
+-------------------------------------------------------------------
+Wed Nov  8 15:45:50 CET 2006 - jsuchome@suse.cz
+
+- schema file moved from autoyast package (#215249)
+- use zypper as updater application if rug is not available (#218987)
+- 2.14.1
+
+-------------------------------------------------------------------
+Mon Nov  6 11:00:54 CET 2006 - jsuchome@suse.cz
+
+- new version for new product
+- 2.14.0 
+
+-------------------------------------------------------------------
+Mon Oct 30 16:23:23 CET 2006 - locilka@suse.cz
+
+- Fixed packager include path.
+- 2.13.49
+
+-------------------------------------------------------------------
+Mon Oct 16 16:38:07 CEST 2006 - lslezak@suse.cz
+
+- script callbacks (feature #100233)
+- 2.13.48
+
+-------------------------------------------------------------------
+Tue Aug 29 14:54:29 CEST 2006 - lslezak@suse.cz
+
+- added missing ProgressPatchDownload() callback handler (#202357)
+- 2.13.47
+
+-------------------------------------------------------------------
+Tue Aug 22 15:35:42 CEST 2006 - jsuchome@suse.cz
+
+- initialize DiskUsage counter during installation (#197497)
+- 2.13.46
+
+-------------------------------------------------------------------
+Thu Aug 17 12:50:39 CEST 2006 - jsuchome@suse.cz
+
+- new callbacks for Patch and Delta RPMs (#168844)
+- fixed generation of cron job: don't ask for confirmation (#194424)
+- 2.13.45
+
+-------------------------------------------------------------------
+Wed Jul 12 08:30:43 CEST 2006 - jsuchome@suse.cz
+
+- fixed restart message after patching package management (#171546)
+- changed name in desktop file for automatic update config (#157871)
+- added more progress information during initialization (#191270)
+- support for checking patches before inst_you is run
+- code cleanup 
+- 2.13.44
+
+-------------------------------------------------------------------
+Wed Jun 28 14:15:47 CEST 2006 - jsuchome@suse.cz
+
+- shown one more "Please wait" popup during start (#188172)
+- correctly restart module on installed system (#188541)
+- 2.13.43
+
+-------------------------------------------------------------------
+Wed Jun 14 09:53:01 CEST 2006 - jsuchome@suse.cz
+
+- fix of restarting inst_you after libzypp update (#184452)
+- 2.13.42
+
+-------------------------------------------------------------------
+Fri Jun  9 16:31:37 CEST 2006 - jsuchome@suse.cz
+
+- report error when Patch CD not entered (#182802)
+- 2.13.41
+
+-------------------------------------------------------------------
+Mon May 22 12:47:48 CEST 2006 - jsuchome@suse.cz
+
+- fixed updating of cron rule, remove .bak file (#176734)
+- 2.13.40 
+
+-------------------------------------------------------------------
+Thu May 18 09:27:59 CEST 2006 - jsuchome@suse.cz
+
+- better check for restarted yast during installation (#167561)
+- 2.13.39
+
+-------------------------------------------------------------------
+Thu May 18 09:09:25 CEST 2006 - jsuchome@suse.cz
+
+- do not exit when only packages (and no patches) are selected for
+  installation or deletion (#175668)
+- 2.13.38
+
+-------------------------------------------------------------------
+Fri May 12 11:47:42 CEST 2006 - jsuchome@suse.cz
+
+- remove product_post.ycp if present (#174812)
+- 2.13.37
+
+-------------------------------------------------------------------
+Fri May  5 15:30:41 CEST 2006 - jsuchome@suse.cz
+
+- fixed broken dialog in online_update_setup (#172668)
+- 2.13.36
+
+-------------------------------------------------------------------
+Thu Apr 27 16:03:24 CEST 2006 - jsuchome@suse.cz
+
+- show the popup for restarting yast also on installed system
+- 2.13.35 
+
+-------------------------------------------------------------------
+Thu Apr 27 15:58:37 CEST 2006 - visnov@suse.cz
+
+- fix the dialog term for patch messages (#170155)
+- 2.13.34 
+
+-------------------------------------------------------------------
+Tue Apr 25 15:55:46 CEST 2006 - jsuchome@suse.cz
+
+- 'Patch CD Update': save CD source at the end
+- 2.13.33
+
+-------------------------------------------------------------------
+Mon Apr 24 23:18:27 CEST 2006 - jsrain@suse.de
+
+- removed SortKey from online_update_setup.desktop (#168768)
+- 2.13.32
+
+-------------------------------------------------------------------
+Fri Apr 21 12:43:19 CEST 2006 - jsuchome@suse.cz
+
+- removed part breaking inst_you (#168286)
+- 2.13.31
+
+-------------------------------------------------------------------
+Fri Apr 21 11:32:00 CEST 2006 - jsuchome@suse.cz
+
+- force unselecting packages with ResolvableNeutral (#168278)
+- 2.13.30
+
+-------------------------------------------------------------------
+Thu Apr 20 17:04:52 CEST 2006 - jsuchome@suse.cz
+
+- inst_you: use `restart_same_step instead of `restart_yast to get
+  inst_you again after restarting during installation (#167561)
+- 2.13.29
+
+-------------------------------------------------------------------
+Thu Apr 20 11:27:11 CEST 2006 - jsuchome@suse.cz
+
+- removed obsolete usage of you_auto_install parameters
+- 2.13.28 
+
+-------------------------------------------------------------------
+Wed Apr 19 14:07:56 CEST 2006 - jsuchome@suse.cz
+
+- create temporary CD source for 'Patch CD Update'
+- 2.13.27
+
+-------------------------------------------------------------------
+Tue Apr 18 15:11:45 CEST 2006 - jsuchome@suse.cz
+
+- return negative value when yast should be restarted so ncurses
+  menu can exit
+- 2.13.26 
+
+-------------------------------------------------------------------
+Fri Apr 14 14:21:24 CEST 2006 - jsuchome@suse.cz
+
+- install packagemanager related patches first, than restart yast
+  (#165540)
+- skipped installation if no patch is selected (#163253)
+- 2.13.25
+
+-------------------------------------------------------------------
+Fri Apr 14 13:14:12 CEST 2006 - visnov@suse.cz
+
+- initialize target before sources (#165849)
+- 2.13.24 
+
+-------------------------------------------------------------------
+Wed Apr 12 11:34:00 CEST 2006 - jsuchome@suse.cz
+
+- run online update in manual mode if requested in control file (#165503)
+- 2.13.23
+
+-------------------------------------------------------------------
+Fri Apr  7 11:28:18 CEST 2006 - jsuchome@suse.cz
+
+- ask for aborting update
+- return false for all progress callbacks after abort
+  (workaround for #160966)
+- 2.13.22 
+
+-------------------------------------------------------------------
+Wed Apr  5 16:51:25 CEST 2006 - jsuchome@suse.cz
+
+- changed label for "Skipping interactive patches"
+- 2.13.21
+
+-------------------------------------------------------------------
+Tue Apr  4 13:19:34 CEST 2006 - jsuchome@suse.cz
+
+- fixed reading the cron rule (#161253)
+- 2.13.20
+
+-------------------------------------------------------------------
+Fri Mar 31 17:58:51 CEST 2006 - mvidner@suse.cz
+
+- No unlocking after all, so no need to reinitialize (#160319).
+- 2.13.19
+
+-------------------------------------------------------------------
+Fri Mar 31 15:13:51 CEST 2006 - jsuchome@suse.cz
+
+- online_update_install: full progress when no patch was installed,
+  do not change button labels during installation
+- 2.13.18 
+
+-------------------------------------------------------------------
+Thu Mar 30 15:10:12 CEST 2006 - mvidner@suse.cz
+
+- inst_you: Do not call Pkg::Init, inst_suse_register did it
+  already; get package list only after zypp comes back up.
+- Don't run the module if another process has the zypp lock (#160319).
+- 2.13.17
+
+-------------------------------------------------------------------
+Wed Mar 29 17:19:51 CEST 2006 - visnov@suse.cz
+
+- fix patch message callback
+- call PkgEstablish and preselect patches before
+  starting patch selector
+- 2.13.16
+
+-------------------------------------------------------------------
+Wed Mar 29 09:17:34 CEST 2006 - jsuchome@suse.cz
+
+- do not check user input in DoneProvide and DonePackage callbacks
+  (#160966)
+
+-------------------------------------------------------------------
+Tue Mar 28 09:53:04 CEST 2006 - locilka@suse.cz
+
+- Refreshing all sources (with autorefresh enabled) before the
+  online is started (#154990).
+- 2.13.15
+
+-------------------------------------------------------------------
+Mon Mar 27 15:12:43 CEST 2006 - jsuchome@suse.cz
+
+- adapt the cron rule (online_update -> rug) after update
+- "Total Progress" now shows the progress of the whole update process
+- 2.13.14
+
+-------------------------------------------------------------------
+Fri Mar 24 15:40:09 CET 2006 - visnov@suse.cz
+
+- Show progress bars when installing patches at installation time
+- 2.13.13 
+
+-------------------------------------------------------------------
+Thu Mar 23 17:08:55 CET 2006 - mvidner@suse.cz
+
+- Rug can now add the source for YaST. Wait for it and read it
+  (#156139).
+- 2.13.12
+
+-------------------------------------------------------------------
+Thu Mar 23 16:39:33 CET 2006 - visnov@suse.cz
+
+- First support for patch callbacks
+
+-------------------------------------------------------------------
+Tue Mar 21 12:41:36 CET 2006 - mvidner@suse.cz
+
+- Moved online update code back from autoyast2 to
+  yast2-online-update (#151213).
+- 2.13.11
+
+-------------------------------------------------------------------
+Tue Mar 21 08:46:48 CET 2006 - jsuchome@suse.cz
+
+- desktop files moved to yast2-online-update-frontend package
+- 2.13.10 
+
+-------------------------------------------------------------------
+Mon Mar 20 16:33:27 CET 2006 - mvidner@suse.cz
+
+- online_update_install: PkgSolve before PkgCommit (jsuchome)
+- 2.13.9
+
+-------------------------------------------------------------------
+Thu Mar 16 18:04:13 CET 2006 - mvidner@suse.cz
+
+- inst_you: use Pkg::PkgEstablish and Pkg::ResolvablePreselectPatches, 
+  call UI when solving fails
+
+-------------------------------------------------------------------
+Tue Mar 14 10:19:26 CET 2006 - jsuchome@suse.cz
+
+- use PkgCommit to install patches 
+- 2.13.8
+
+-------------------------------------------------------------------
+Mon Mar 13 17:18:29 CET 2006 - jsuchome@suse.cz
+
+- back to PackageSelector
+- 2.13.7 
+
+-------------------------------------------------------------------
+Mon Feb 27 18:00:57 CET 2006 - lslezak@suse.cz
+
+- install all available patches
+- 2.13.6
+
+-------------------------------------------------------------------
+Fri Feb 17 10:39:30 CET 2006 - jsuchome@suse.cz
+
+- files used by autoyast moved to autoyast module (#151213)
+- 2.13.5
+
+-------------------------------------------------------------------
+Mon Feb 13 15:10:05 CET 2006 - jsuchome@suse.cz
+
+- added online_update_setup client for the automatic update setup,
+  adapted the automatic configuration to use rug (#149903)
+- 2.13.4
+
+-------------------------------------------------------------------
+Mon Feb 13 14:15:38 CET 2006 - ug@suse.de
+
+- fix #140081 (disable of online update not possible with UI)
+- initialize random number generator
+
+-------------------------------------------------------------------
+Fri Feb 10 11:26:19 CET 2006 - jsuchome@suse.cz
+
+- online_update.ycp is just a wrapper for calling web-updater
+- 2.13.3
+
+-------------------------------------------------------------------
+Mon Nov 14 17:21:12 CET 2005 - ma@suse.de
+
+- Strip '<br>' from YOU error message (#132517)
+- 2.13.2
+
+-------------------------------------------------------------------
+Tue Oct  4 15:11:44 CEST 2005 - mir@suse.de
+
+- bugfix: "Edit Server" failed with an https-URL. This
+  fix needs the getUrl2 and editUrl2 from yast2-packager-2.13.1
+  or later. (Bug #118781) (from 2.9.20)
+- 2.13.1
+
+-------------------------------------------------------------------
+Tue Oct  4 11:17:04 CEST 2005 - mir@suse.de
+
+- changed authentication logic in online_update_start.ycp
+  so that authentication data is not displayed in the url
+  after "edit server" (bug #96204) (from 2.9.19)
+- 2.13.0
+
+-------------------------------------------------------------------
+Mon Sep  5 14:47:24 CEST 2005 - jsrain@suse.cz
+
+- fixed rebooting after kernel update during installation (#115287)
+- 2.12.4
+
+-------------------------------------------------------------------
+Thu Jul 28 15:30:43 CEST 2005 - mir@suse.de
+
+- merged changes from translation
+- 2.12.3
+
+-------------------------------------------------------------------
+Wed Jul 27 19:01:35 CEST 2005 - mir@suse.de
+
+- new desktop files
+- 2.12.2
+
+-------------------------------------------------------------------
+Mon Jul 25 17:00:21 CEST 2005 - mir@suse.de
+
+- added libxml2 to neededforbuild
+- 2.12.1
+
+-------------------------------------------------------------------
+Tue Jul 19 18:08:20 CEST 2005 - jsrain@suse.cz
+
+- reboot if kernel was updated during installation, restart YaST
+  if any of YaST packages were updated
+
+-------------------------------------------------------------------
+Mon Apr 25 12:17:13 CEST 2005 - nashif@suse.de
+
+- Fixed bug scheduling onlineupdate in autoyast, weekly updates were
+  not possible (#77147)
+
+-------------------------------------------------------------------
+Wed Feb 23 13:31:29 CET 2005 - mir@suse.de
+
+- automatic online update setup (cronjob): "skip patches with
+  pre-install messages" is default.
+- 2.11.9
+
+-------------------------------------------------------------------
+Mon Feb  7 15:38:35 CET 2005 - mir@suse.de
+
+- Merged in proofread textx
+  PO-Revision-Date: 2005-02-05 18:47+0100
+- 2.11.8
+
+-------------------------------------------------------------------
+Thu Jan 27 20:26:35 CET 2005 - mir@suse.de
+
+- Automatic Online Update has new option -P (skip patches with pre
+  information), (#49887) (feature 120379)
+- 2.11.7
+
+-------------------------------------------------------------------
+Mon Jan 24 21:44:33 CET 2005 - nashif@suse.de
+
+- Adapted to new argument map when going back during installation
+- 2.11.6
+
+-------------------------------------------------------------------
+Wed Jan 12 15:05:32 CET 2005 - mir@suse.de
+
+- bugfix: checkbox "enable automatic update" remained checked
+  even after switching off (#46341)
+- bugfix: weekly setting in automatic update was not obeyed
+  (resulting in daily mode) (no bugzilla entry)
+- 2.11.5
+
+-------------------------------------------------------------------
+Mon Jan 10 19:06:20 CET 2005 - mir@suse.de
+
+- bugfix: aborting the installation displayed a misleading error
+  message ("no packagage installed" instead of "incomplete")
+  (#47869)
+- 2.11.4
+
+-------------------------------------------------------------------
+Mon Jan 10 16:54:09 CET 2005 - mir@suse.de
+
+- bugfix: aborting the selection went back instead of aborting
+  the update. (#49579)
+- 2.11.3
+
+-------------------------------------------------------------------
+Wed Jan  5 16:50:24 CET 2005 - mir@suse.de
+
+- save value of checkbox remove_packages into sysconfig (#49349)
+- 2.11.2
+
+-------------------------------------------------------------------
+Thu Nov  4 15:51:58 CET 2004 - kkaempf@suse.de
+
+- adapt to new Mode:: API
+- 2.11.1
+
+-------------------------------------------------------------------
+Wed Oct  6 10:48:28 CEST 2004 - jsrain@suse.cz
+
+- append slash to the end of URL if it is missing (#46631)
+
+-------------------------------------------------------------------
+Wed Sep 29 11:48:16 CEST 2004 - jsrain@suse.cz
+
+- do not show wrong base architecture (#46319)
+- 2.10.3
+
+-------------------------------------------------------------------
+Mon Sep 27 15:59:12 CEST 2004 - jsrain@suse.cz
+
+- don't access the FTP server anonymously if username and password
+  was given (#43731)
+- 2.10.2
+
+-------------------------------------------------------------------
+Fri Aug 27 15:13:39 CEST 2004 - arvin@suse.de
+
+- merged proof read messages
+
+-------------------------------------------------------------------
+Thu Jul  1 15:07:06 CEST 2004 - lnussel@suse.de
+
+- merge 9.1 branch
+- turn online_update_dialogs.ycp into module OnlineUpdateDialogs to avoid
+  using different versions of that file in clients and modules
+- 2.10.0
+
+-------------------------------------------------------------------
+Fri Apr 16 13:43:59 CEST 2004 - cschum@suse.de
+
+- Ask for "Username" instead of "Code" as the registration code
+  isn't longer used as YOU login for the maintenance web.
+- 2.9.12
+
+-------------------------------------------------------------------
+Mon Apr  5 09:48:21 CEST 2004 - gs@suse.de
+
+- fixed cd_update.desktop for ncurses menu (bug #38088)
+- V 2.9.11
+
+-------------------------------------------------------------------
+Fri Apr 02 15:59:59 CEST 2004 - arvin@suse.de
+
+- finally changed license to GPL for good
+
+-------------------------------------------------------------------
+Thu Mar 25 10:28:22 CET 2004 - cschum@suse.de
+
+- Add yast2-packager to neededforbuilds.
+- 2.9.9
+
+-------------------------------------------------------------------
+Tue Mar 23 14:19:43 CET 2004 - lnussel@suse.de
+
+- set sort key in desktop file to move module icon to front (#36466)
+
+-------------------------------------------------------------------
+Mon Mar 15 10:43:26 CET 2004 - arvin@suse.de
+
+- ignore return value of online_update in inst_you (bug #35848)
+
+-------------------------------------------------------------------
+Wed Mar 10 01:50:44 CET 2004 - sh@suse.de
+
+- Migration to new wizard
+- V 2.9.6
+
+-------------------------------------------------------------------
+Fri Mar  5 11:10:30 CET 2004 - cschum@suse.de
+
+- Adapt to stricter type checking of YCP interpreter.
+- 2.9.5
+
+-------------------------------------------------------------------
+Mon Mar  1 12:44:06 CET 2004 - cschum@suse.de
+
+- Moved patch download and installation logic from YCP code
+  to packagemanager.
+- 2.9.4
+
+-------------------------------------------------------------------
+Sat Feb 07 23:11:28 CET 2004 - arvin@suse.de
+
+- removed config files (*.y2cc)
+
+-------------------------------------------------------------------
+Wed Feb  4 16:45:35 CET 2004 - cschum@suse.de
+
+- Split off you_server to own package.
+- 2.9.2
+
+-------------------------------------------------------------------
+Wed Feb  4 11:28:07 CET 2004 - nashif@suse.de
+
+- Enable automatic online-update with autoyast
+
+-------------------------------------------------------------------
+Tue Feb  3 10:12:18 CET 2004 - cschum@suse.de
+
+- Fixed retrieval of server list.
+
+-------------------------------------------------------------------
+Mon Feb  2 18:24:53 CET 2004 - cschum@suse.de
+
+- Fixed neededforbuild and file list.
+- 2.9.1
+
+-------------------------------------------------------------------
+Mon Feb  2 14:35:08 CET 2004 - cschum@suse.de
+
+- Adapted to new YCP interpreter.
+- 2.9.0
+
+-------------------------------------------------------------------
+Fri Nov 21 15:32:08 CET 2003 - cschum@suse.de
+
+- Added module you_server for configuration of local YOU server.
+
+-------------------------------------------------------------------
+Sun Sep 14 20:57:13 CEST 2003 - adrian@suse.de
+
+- make it working in kcontrol
+
+-------------------------------------------------------------------
+Fri Sep  5 11:46:01 CEST 2003 - cschum@suse.de
+
+- Merged proofreading results.
+- 2.8.7
+
+-------------------------------------------------------------------
+Tue Sep  2 14:46:52 CEST 2003 - cschum@suse.de
+
+- Fix warning dialog, which appears when suseservers list can't be
+  fetched (#28589).
+
+-------------------------------------------------------------------
+Mon Sep  1 17:16:04 CEST 2003 - cschum@suse.de
+
+- Use Label and Popup modules instead of common_messages.ycp and
+  common_popups.ycp. Fixes #29687.
+
+-------------------------------------------------------------------
+Tue Aug 20 10:55:04 CEST 2003 - cschum@suse.de
+
+- Close FTP connection after download (#28040).
+- Fix help text on start page (#28799).
+- Small layout fixes on start page (#28577).
+- Usability fixes for automatic update setup dialog (#28525).
+- Layout fixes for system information box (#28527).
+- Make URL edit work with new event handling (#28577).
+- 2.8.4
+
+-------------------------------------------------------------------
+Tue Aug 12 14:42:32 CEST 2003 - gs@suse.de
+
+- merge texts from proofread
+
+-------------------------------------------------------------------
+Fri Jul 25 13:59:54 CEST 2003 - cschum@suse.de
+
+- Make configurable in /etc/sysconfig/online_update if manual patch
+  selection is called and if packages are removed after
+  installation (#22244).
+
+-------------------------------------------------------------------
+Tue Jul 22 14:26:00 CEST 2003 - cschum@suse.de
+
+- Added support for YCP scripts as part of patches.
+- Long running scripts can now be canceled.
+- Added "Try again" option to download and install error dialogs.
+- Added option to edit server URL in a dialog.
+- Renamed "Expert" button to "New Server...".
+
+-------------------------------------------------------------------
+Fri May 16 15:04:31 CEST 2003 - cschum@suse.de
+
+- Rewrote YOU authentification code.
+
+-------------------------------------------------------------------
+Tue Mar 11 15:30:48 CET 2003 - arvin@suse.de
+
+- avoid empty screen before starting you during installation
+
+-------------------------------------------------------------------
+Mon Mar 10 13:33:22 CET 2003 - arvin@suse.de
+
+- during installation wait with starting of you until connection
+  is really up (bug #24354)
+
+-------------------------------------------------------------------
+Wed Feb 26 16:42:38 CET 2003 - cschum@suse.de
+
+- Use widget with scrollbars for pre/postinformation text (#24370).
+
+-------------------------------------------------------------------
+Wed Feb 26 15:57:41 CET 2003 - arvin@suse.de
+
+- fixed starting and stopping of internet connection for
+  online update run during installation (bug #24354)
+
+-------------------------------------------------------------------
+Wed Feb 26 15:19:33 CET 2003 - cschum@suse.de
+
+- Fixed setup of automatic update (Missing linefeed at end of cron
+  file).
+
+-------------------------------------------------------------------
+Mon Feb 24 13:16:33 CET 2003 - cschum@suse.de
+
+- Activate "reload patches" check box, if signature check failed
+  (bug #23959).
+- Removed space which confused y2menu (bug #23714)
+- Read CMDLINE_OPTIONS variable from sysconfig/online_update.
+
+-------------------------------------------------------------------
+Thu Feb 20 18:27:42 CET 2003 - arvin@suse.de
+
+- don't start online-update during installation if no network
+  is configured (bug #23926)
+
+-------------------------------------------------------------------
+Mon Feb 10 17:24:54 CET 2003 - cschum@suse.de
+
+- Return `auto instead of `abort, when user cancels update.
+- If download of mirror list fails, give user the choice to
+  continue or abort.
+
+-------------------------------------------------------------------
+Fri Feb  7 16:03:37 CET 2003 - cschum@suse.de
+
+- Return correct return value when module is finished.
+- Removed obsolete test code.
+- Include .pot file in source RPM.
+
+-------------------------------------------------------------------
+Wed Jan 29 13:44:49 CET 2003 - cschum@suse.de
+
+- Merged proofread texts.
+
+-------------------------------------------------------------------
+Fri Jan 24 13:57:05 CET 2003 - cschum@suse.de
+
+- Moved sysconfig/online-update from yast2-online-update to
+  yast2-packagemanager.
+
+-------------------------------------------------------------------
+Mon Jan 20 13:18:02 CET 2003 - cschum@suse.de
+
+- Adapted help texts to actually describe the current interface.
+
+-------------------------------------------------------------------
+Thu Dec 19 14:25:57 CET 2002 - cschum@suse.de
+
+- Removed obsolete code (online_update_load.ycp,
+  online_update_details.ycp, online_update_close.ycp).
+- Added progress callbacks (OnlineUpdateCallbacks.ycp).
+- Removed suseservers.ycp. /etc/suseservers is now accessed via the
+  packagemanager.
+- Added option to choose if patches are all reloaded from the
+  server or if previously downloaded files are reused.
+- Added details information to most error dialog.
+- Added option to skip download/installation of patches to
+  download/installation error dialogs.
+- Save user name and password in /var/lib/YaST2/you/password
+  instead of /etc/sysconfig/online-update.
+- Added progress display for patch download and installation.
+- Don't call SuSEconfig if no patches have been installed.
+- Added dialog to setup automatic update by cron job.
+- Show when last successfull update has been performed.
+- Removed obsolete entries from sysconfig.online-update.
+- 2.7.1
+
+-------------------------------------------------------------------
+Mon Dec  2 11:20:49 CET 2002 - cschum@suse.de
+
+- Fixed wrong assignment of username and password in
+  authentifcation dialog for business products.
+
+-------------------------------------------------------------------
+Wed Oct 23 13:30:25 CEST 2002 - cschum@suse.de
+
+- Run SuSEconfig after installation of patches.
+- Fixed "Browse" button in dialog for adding directory source.
+
+-------------------------------------------------------------------
+Wed Oct  2 14:04:22 CEST 2002 - cschum@suse.de
+
+- Use themed image as header.
+
+-------------------------------------------------------------------
+Wed Sep 11 17:06:23 CEST 2002 - cschum@suse.de
+
+- Fixed problem of vanishing Expert button when there are long
+  URLs in the combo box.
+
+-------------------------------------------------------------------
+Tue Sep 10 17:38:42 CEST 2002 - cschum@suse.de
+
+- Added correct status and error messages for Patch CD update.
+- Removed a double declaration error.
+
+-------------------------------------------------------------------
+Fri Sep  6 17:00:41 CEST 2002 - cschum@suse.de
+
+- Added Provides/Obsoletes for y2t_online_update.
+- Start with cd URL when called as PatchCD-Update.
+- Reenabled Expert button for choosing URL via dialogs.
+- Removed obsolete code.
+
+-------------------------------------------------------------------
+Thu Sep  5 18:16:54 CEST 2002 - cschum@suse.de
+
+- Fixed pre-selection of patches.
+- Fixed bug which prevented the patch selection from taking effect.
+
+-------------------------------------------------------------------
+Thu Sep  5 11:34:43 CEST 2002 - cschum@suse.de
+
+- Implemented regcode/password authentification for business
+  products.
+- Implemented .auto.get and .auto.install options.
+
+-------------------------------------------------------------------
+Mon Sep  2 17:16:33 CEST 2002 - cschum@suse.de
+
+- added new title picture.
+- reactivated authentification code.
+
+-------------------------------------------------------------------
+Thu Aug 29 17:05:43 CEST 2002 - gs@suse.de
+
+- online udpate uses new package manager interface
+
+-------------------------------------------------------------------
+Tue Aug 27 20:00:00 CEST 2002 - jsuchome@suse.cz
+
+- provide/obsolete old translation packages
+
+-------------------------------------------------------------------
+Tue Aug 20 11:11:14 CEST 2002 - gs@suse.de
+
+- PreRequ: %fillup_prereq  added to spec-file
+
+-------------------------------------------------------------------
+Thu Aug 15 11:39:09 CEST 2002 - jsuchome@suse.cz
+
+- Merged proofread texts for the second translation round.
+
+-------------------------------------------------------------------
+Mon Jul 29 11:50:36 CEST 2002 - gs@suse.de
+
+- insert corrected text from proof reading
+
+-------------------------------------------------------------------
+Mon Jul 15 16:19:51 CEST 2002 - gs@suse.de
+
+- use the correct path for the image data, help text improved
+
+-------------------------------------------------------------------
+Thu Jul 11 15:58:57 CEST 2002 - arvin@suse.de
+
+- make package build
+
+-------------------------------------------------------------------
+Wed Jul  3 14:50:07 CEST 2002 - msvec@suse.cz
+
+- renamed to yast2-online-update
+- merged with yast2-agent-you
+- 2.6.1
+
+-------------------------------------------------------------------
+Fri Mar 22 12:15:54 CET 2002 - schubi@suse.de
+
+- taking long language names for patch descriptions #15365
+  otherwise only english patchdescriptions are shown.
+
+-------------------------------------------------------------------
+Wed Mar 20 17:35:57 CET 2002 - gs@suse.de
+
+- use /usr/lib/rpm/gnupg/pubring.gpg to check the signature in
+  the patch descriptions
+- show the new special online update image
+- don't load the /etc/suseservers file if it's a CD update
+
+-------------------------------------------------------------------
+Mon Mar  4 15:00:10 CET 2002 - schubi@suse.de
+
+- Bugfix while updating strange packages via http #14041
+
+-------------------------------------------------------------------
+Wed Feb 27 11:07:30 CET 2002 - gs@suse.de
+
+- bugfixes: disable the Abort button in details dialog, initialize
+  the agent also in mode auto_install, show correct info 'Connected to'
+
+-------------------------------------------------------------------
+Mon Feb 25 15:27:45 CET 2002 - gs@suse.de
+
+- internal changes (don't initialize the package agent, use correct
+  language information)
+
+-------------------------------------------------------------------
+Fri Feb 22 14:25:10 CET 2002 - schubi@suse.de
+
+- Starting YOU in batchmode corrected #13196
+- Aborting dialog correctly #13274
+- Showing popup while loading available serverlist
+- prefent flickering when installing new packages #12889;
+- Checking uploaded packages for the correct version
+- bugix while writing mode::you_server
+
+-------------------------------------------------------------------
+Mon Feb 18 17:37:43 CET 2002 - gs@suse.de
+
+- internal changes
+
+-------------------------------------------------------------------
+Tue Feb 12 14:07:42 CET 2002 - gs@suse.de
+
+- check for string arguments; correct settings for YOU agent
+- rename sysconfig/you to sysconfig/onlineupdate
+
+-------------------------------------------------------------------
+Mon Feb 11 17:31:59 CET 2002 - schubi@suse.de
+
+- checking version of the package which has been uploaded
+
+-------------------------------------------------------------------
+Fri Feb  8 18:27:45 CET 2002 - lnussel@suse.de
+
+- command line argument is of type string
+
+-------------------------------------------------------------------
+Fri Feb  8 17:22:21 CET 2002 - gs@suse.de
+
+- bugfixes and internal changes (replace the user_settings,
+  initialize for package installation, change source medium
+  works correctly, Requires for new agents added ...)
+
+-------------------------------------------------------------------
+Mon Feb  4 15:01:00 CET 2002 - gs@suse.de
+
+- rename rc.config.y2c_online_update to sysconfig.you
+- internal changes
+
+-------------------------------------------------------------------
+Tue Dec  4 13:51:59 CET 2001 - schubi@suse.de
+
+- DisplayRegistrationPopup added
+
+-------------------------------------------------------------------
+Mon Sep 24 18:11:49 CEST 2001 - gs@suse.de
+
+- first server entry in /etc/suseservers is default ftp server
+
+-------------------------------------------------------------------
+Tue Sep 18 16:59:20 CEST 2001 - gs@suse.de
+
+- Internal changes ( obsolete defines removed or replaced )
+- checking for YaST2 version works correctly now
+
+-------------------------------------------------------------------
+Fri Aug 24 14:06:27 MEST 2001 - schubi@suse.de
+
+- YOU has and batchmode
+  yast2 online_update .auto.get ( getting all patches )
+  yast2 online_update .auto.install ( installing patches )
+- New batch class "optional"
+
+-------------------------------------------------------------------
+Mon Aug 20 17:22:52 CEST 2001 - gs@suse.de
+
+- Patch CD Update: write the information to install from CD
+  to /var/lib/YaST/install.inf
+
+-------------------------------------------------------------------
+Mon Aug  6 12:13:00 CEST 2001 - gs@suse.de
+
+- Patch CD Update shows correct error popup if the patch CD is not found
+
+-------------------------------------------------------------------
+Mon May  7 17:03:54 CEST 2001 - sh@suse.de
+
+- Use new UI(`GetLanguate()) parameter
+- accept next button in export mode.
+- error popup xxx server not found ( Bug 8872 )
+- Enable installing NEW packages
+
+-------------------------------------------------------------------
+Mon Apr 30 15:29:43 MEST 2001 - gs@suse.de
+
+- name is: Patch CD Update, popup text changed again (bug 6796)
+- Showing package description while installing rpm s ( #6573 )
+
+-------------------------------------------------------------------
+Thu Apr 26 17:50:12 MEST 2001 - gs@suse.de
+
+- special icon for CD update
+- delete patches with status .new or .error before download of new path descriptions
+
+-------------------------------------------------------------------
+Tue Apr 24 11:24:58 MEST 2001 - gs@suse.de
+
+- helptext and popup text (bug 6796) changed
+
+-------------------------------------------------------------------
+Thu Apr 19 19:09:47 MEST 2001 - gs@suse.de
+
+- menuentry file for CD installation added
+- CD Update: return to start dialog, if source media is not set to CD
+
+-------------------------------------------------------------------
+Tue Apr 17 13:48:06 MEST 2001 - gs@suse.de
+
+- rename of translation package
+
+-------------------------------------------------------------------
+Fri Apr 13 12:18:15 MEST 2001 - gs@suse.de
+
+- Patch installation from CD starts with screen Available Patches
+
+-------------------------------------------------------------------
+Fri Apr  6 15:21:34 MEST 2001 - gs@suse.de
+
+- default installation source is CD if module is called with .cd_default
+
+-------------------------------------------------------------------
+Wed Mar  7 11:36:22 MET 2001 - schubi@suse.de
+
+- Checking connection via socket ( not ping )
+- Loading available server-list from http and load it BEFORE
+  the user can select one server.
+- Loading server-list can be switched off by a rc.config variable.
+- Setting progress-bars to zero after closing the connection
+- Updating YaST2 modules at first. Every further patch can only
+  installed by a second run.
+- The packages can stored on another ftp server ( e.g. nvidea)
+  although the patch desciption is e.g. on ftp.suse.com
+
+
+-------------------------------------------------------------------
+Sat Jan 20 15:27:32 MET 2001 - schubi@suse.de
+
+- server-path of uni-aachen changed
+
+-------------------------------------------------------------------
+Thu Jan 18 19:52:02 MET 2001 - schubi@suse.de
+
+- Button "not install" to "Do not install" changed
+- default installation mode to manuell changed
+
+-------------------------------------------------------------------
+Tue Jan 16 17:30:55 MET 2001 - schubi@suse.de
+
+- insert new ftp-mirrows
+  inform the user about patch sizes
+
+-------------------------------------------------------------------
+Mon Jan 15 19:03:17 MET 2001 - schubi@suse.de
+
+- Translations added.
+- Changed Richtext-widget to logview
+
+-------------------------------------------------------------------
+Fri Jan 12 17:42:31 MET 2001 - schubi@suse.de
+
+- Getting ftp server list from suse.de
+
+-------------------------------------------------------------------
+Mon Jan  8 18:05:06 CET 2001 - kkaempf@suse.de
+
+- provide scrconf/etc_suseservers.scr
+
+-------------------------------------------------------------------
+Mon Jan  8 17:57:02 CET 2001 - kkaempf@suse.de
+
+- provide include/suseservers.ycp
+
+-------------------------------------------------------------------
+Thu Jan  4 16:46:49 MET 2001 - schubi@suse.de
+
+- ftp-update via modem and isdn
+
+-------------------------------------------------------------------
+Thu Jan  4 10:02:12 MET 2001 - schubi@suse.de
+
+- bugfix in pgp-key checking
+
+-------------------------------------------------------------------
+Thu Dec 21 17:21:21 MET 2000 - schubi@suse.de
+
+- progress bar for file-loading added
+- pgp-key check for every package  added
+
+-------------------------------------------------------------------
+Mon Dec 18 17:51:24 CET 2000 - kkaempf@suse.de
+
+- provide list of SuSE servers in /etc/suseservers (standard-URL format)
+
+-------------------------------------------------------------------
+Mon Dec 18 13:21:00 CET 2000 - kkaempf@suse.de
+
+- keep list of servers in /etc/suseservers file
+
+-------------------------------------------------------------------
+Wed Dec 13 19:14:57 MET 2000 - schubi@suse.de
+
+- new menue-entry
+
+-------------------------------------------------------------------
+Tue Dec 12 09:09:25 MET 2000 - schubi@suse.de
+
+- reading targetroot via SCR
+  user messages added for pgp security
+
+-------------------------------------------------------------------
+Mon Dec 11 08:31:26 MET 2000 - schubi@suse.de
+
+- ftp-server-settings added
+
+-------------------------------------------------------------------
+Thu Dec  7 13:29:18 CET 2000 - arvin@suse.de
+
+- use bz2 instead of gz
+
+-------------------------------------------------------------------
+Wed Nov 29 14:24:25 MET 2000 - gs@suse.de
+
+- version 1.0.1 - runs initially - but needs more testing
+
+-------------------------------------------------------------------
+Sun Nov 17 12:00:00 MET 2000 - gs@suse.de
+
+- initial version

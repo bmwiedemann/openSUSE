@@ -1,0 +1,28 @@
+Index: php/Makefile.local
+===================================================================
+--- php/Makefile.local.orig	2007-01-01 19:13:30.000000000 +0100
++++ php/Makefile.local	2007-06-19 22:30:14.299778497 +0200
+@@ -35,7 +35,7 @@ all: build
+ 
+ config:
+ 	@if [ ! -f ./configure ]; then $(PHP)ize 2>/dev/null; fi
+-	@if [ ! -f ./Makefile ]; then ./configure --with-php-config=$(PHP)-config; fi
++	@if [ ! -f ./Makefile ]; then LDFLAGS="-L../.libs/" ./configure --with-php-config=$(PHP)-config; fi
+ 
+ build: config
+ 	@$(MAKE) $(MFLAGS) -f Makefile
+Index: php/config.m4
+===================================================================
+--- php/config.m4.orig	2007-05-19 21:26:56.000000000 +0200
++++ php/config.m4	2007-06-19 22:33:50.728987356 +0200
+@@ -41,8 +41,8 @@ if test "$PHP_UUID" != "no"; then
+     dnl  avoid linking conflict with a potentially existing uuid_create(3) in libc
+     AC_CHECK_FUNC(uuid_create,[
+         SAVE_LDFLAGS="$LDFLAGS"
+-        LDFLAGS="$LDFLAGS -Wl,-Bsymbolic"
+-        AC_TRY_LINK([],[], [EXTRA_LDFLAGS="$EXTRA_LDFLAGS -Wl,-Bsymbolic"])
++        LDFLAGS="$LDFLAGS ../.libs/libuuid.la -Wl,-Bsymbolic"
++        AC_TRY_LINK([],[], [EXTRA_LDFLAGS="$EXTRA_LDFLAGS ../.libs/libuuid.la -Wl,-Bsymbolic"])
+         LDFLAGS="$SAVE_LDFLAGS"])
+ fi
+ 

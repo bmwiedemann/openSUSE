@@ -1,0 +1,12 @@
+diff -Nru azure-mgmt-reservations-0.3.1.orig/setup.py azure-mgmt-reservations-0.3.1/setup.py
+--- azure-mgmt-reservations-0.3.1.orig/setup.py	2018-11-05 19:24:34.000000000 +0100
++++ azure-mgmt-reservations-0.3.1/setup.py	2019-04-01 10:20:40.778035545 +0200
+@@ -79,7 +79,7 @@
+     install_requires=[
+         'msrest>=0.5.0',
+         'msrestazure>=0.4.32,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     extras_require={
+         ":python_version<'3.0'": ['azure-mgmt-nspkg'],

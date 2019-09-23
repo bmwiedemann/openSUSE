@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>049cfd965365f51429bec803d345bd80</srcmd5>
+    <version>4.2.1</version>
+    <time>1499291786</time>
+    <user>dimstar_suse</user>
+    <comment>Final version GNU Health 3.2</comment>
+    <requestid>507768</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e587c77c0cd7df20f37da3590b331f90</srcmd5>
+    <version>4.2.2</version>
+    <time>1510837418</time>
+    <user>dimstar_suse</user>
+    <comment>bnc1065671</comment>
+    <requestid>542144</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7eef8172ab5c14b9717969d8a10640b3</srcmd5>
+    <version>4.2.3</version>
+    <time>1513245638</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>556567</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0453a7210dd2f568c71bd64361772d1f</srcmd5>
+    <version>4.2.4</version>
+    <time>1544632269</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1117105 bugfix Release of GNU Health</comment>
+    <requestid>657441</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>439ea4e4620555abcd2d4743ea82a292</srcmd5>
+    <version>4.6.1</version>
+    <time>1548064175</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.6.1 - bugfix release
+- Version 4.2.4 - Bugfix Release
+- Version 4.2.3 - Bugfix Release
+- Version 4.2.2 - Bugfix Release
+- Version 4.2.1
+ 
+- Tryton Release 4.2 
+- initial build on OBS
+  Versio 4.0.2
+</comment>
+    <requestid>664374</requestid>
+  </revision>
+</revisionlist>

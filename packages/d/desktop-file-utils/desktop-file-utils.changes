@@ -1,0 +1,534 @@
+-------------------------------------------------------------------
+Wed Jul 31 21:17:49 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.24:
+  + Allow desktop file spec version 1.2.
+  + Add Budgie, Deepin, Enlightenment and Pantheon to list of
+    registered desktop environments.
+  + Sort output lines internally to conserve reproducibility.
+  + Use pledge(2) on OpenBSD to limit capabilities.
+  + Fix missing ; when appending to a list not ending with one.
+  + Add font as valid media type.
+  + Fix broken emacs blocking compile.
+- Drop desktop-file-utils-add-Pantheon.patch: Fixed upstream.
+- Drop no longer needed manual install of emacs lisp file.
+- Use modern macros.
+
+-------------------------------------------------------------------
+Wed Jul 31 16:41:20 CEST 2019 - sbrabec@suse.com
+
+- Remove BuildRequires: xz. Unpacking xz now works out of the box.
+- Mute %filetriggerpostun on uninstall.
+
+-------------------------------------------------------------------
+Fri Jul 19 22:06:36 CEST 2019 - sbrabec@suse.com
+
+- Revert pkconfig package name change back to correct pkg-config.
+
+-------------------------------------------------------------------
+Wed Jun 19 10:05:28 UTC 2019 - Cliff Zhao <qzhao@suse.com>
+
+- Add desktop-file-utils-add-Pantheon.patch: Backporting upstream 
+  patch to Add Pantheon to desktop env list(fdo#105785 bnc#1094774).
+
+-------------------------------------------------------------------
+Wed May  8 09:36:13 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move RPM macros to %_rpmmacrodir.
+
+-------------------------------------------------------------------
+Fri Mar  2 14:07:32 UTC 2018 - crrodriguez@opensuse.org
+
+- suse-update-mime-defaults requires coreutils and awk
+  add both to package requires
+
+-------------------------------------------------------------------
+Mon Oct  9 16:01:45 CEST 2017 - sbrabec@suse.com
+
+- suse-update-mime-defaults: Do not be confused by "r" environment
+  variable. Requires DESTDIR=/foo command line argument instead
+  (boo#1049867).
+
+-------------------------------------------------------------------
+Thu Jun 22 10:07:09 UTC 2017 - dimstar@opensuse.org
+
+- Replace %desktop_database_post/postun with respective file
+  triggers in desktop-file-utils: any file put into
+  /usr/share/applications will trigger the execution of the script.
+  In order to not break the macros short-term they are being
+  redefined to %nil.
+
+-------------------------------------------------------------------
+Sat Oct 15 06:57:19 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.23:
+  + Accept version 1.1 desktop files.
+  + Add Cinnamon, EDE and LXQt to the list of registered desktop
+    environments (fdo#73497, fdo#56353, fdo#79561).
+  + Allow multipart/related MIME type; it's used for MHTML
+    (fdo#93376).
+  + Ensure DBusActivatable filenames conform to reverse-DNS
+    notation (fdo#66904).
+  + Downgrade trailing semicolons to optional (fdo#76902).
+  + Fix buffer over-read (fdo#94303).
+- Drop upstreamed fixed patches:
+  + desktop-file-utils-fdo94303-fix-buffer-over-read.patch.
+  + U_add-Cinnamon-desktop-environment_50271fe.patch.
+  + U_add-EDE-desktop-environment_97d6ba3.patch.
+  + U_trailing-semicolons-are-optional_aec5711.patch.
+- Rebase desktop-file-utils-suse-keys.patch.
+
+-------------------------------------------------------------------
+Wed Oct 12 19:28:12 UTC 2016 - dimstar@opensuse.org
+
+- Use standardized patch tags as documented at
+  https://en.opensuse.org/openSUSE:Packaging_Patches_guidelines.
+
+-------------------------------------------------------------------
+Tue May 24 08:40:37 UTC 2016 - dimstar@opensuse.org
+
+- Fix suse-update-mime-defaults: Ensure the directory structure to
+  write the cache info to is in place (boo#976973).
+
+-------------------------------------------------------------------
+Mon May  9 21:03:33 CEST 2016 - hpj@suse.com
+
+- Add desktop-file-utils-fdo94303-fix-buffer-over-read.patch
+  (fdo#94303).
+
+-------------------------------------------------------------------
+Wed Apr 13 21:01:34 CEST 2016 - hpj@suse.com
+
+ - Update to GNOME 3.20 Fate#318572
+
+-------------------------------------------------------------------
+Tue Mar 10 15:17:27 UTC 2015 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Update suse-update-mime-defaults to search subfolders for desktop
+  files by changing to find from simple ls bnc#867135
+
+-------------------------------------------------------------------
+Mon Jan  5 16:36:42 UTC 2015 - dimstar@opensuse.org
+
+- http://standards.freedesktop.org/mime-apps-spec/mime-apps-spec-latest.html
+  + the mime app list is now called $desktop-mimeapps.list in place
+    of $desktop-defaults.list. Each DE is allowed to have 'better'
+    defaults.
+
+-------------------------------------------------------------------
+Mon Dec 15 00:09:35 UTC 2014 - stefan.bruens@rwth-aachen.de
+
+- Add U_trailing-semicolons-are-optional_aec5711.patch
+  bfo#76902, fixes a no longer correct rpmlint warning for some
+  upstream desktop files without trailing semicolon
+- Add U_add-EDE-desktop-environment_97d6ba3.patch,
+  U_add-Cinnamon-desktop-environment_50271fe.patch
+  bfo#56353, bfo#73497
+
+-------------------------------------------------------------------
+Fri Aug 30 17:55:02 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 0.22:
+  + desktop-file-validate
+    - add DBusActivatable key to allowed keys
+    - warn about OnlyShowIn in Action groups
+    - allow validating multiple desktop files
+    - improve help output
+    - update man page
+  + update-desktop-database
+    - list only once a desktop file per mime type
+  + misc
+    - honor NOCONFIGURE=1
+- Rebase desktop-file-utils-suse-keys.patch to new release
+
+-------------------------------------------------------------------
+Thu Oct 11 14:07:29 UTC 2012 - vuntz@opensuse.org
+
+- Update to verison 0.21:
+  + desktop-file-validate:
+    - update to current version of menu specification:
+      . only print hint if no main category is present, not an
+        error
+      . make Science a main category
+      . add new registered categories: Adult, Feed, Humanities,
+        Maps, Shooter, Spirituality, XFCE
+      . update related categories
+      . add TDE to list of registered OnlyShowIn
+    - accept and validate GNOME3/GSettings for AutostartCondition
+    - output hint if more than one main category is present
+    - output hint about suggested related categories
+  + misc:
+    - do not require glib >= 2.28 for build
+
+-------------------------------------------------------------------
+Mon Oct  1 11:22:30 UTC 2012 - vuntz@opensuse.org
+
+- Import SuSEconfig script from glib2 here:
+  + This is needed as SuSEconfig is now dead, and we need a way to
+    generate the defaults.list file needed for the default MIME
+    associations. Part of bnc#782120.
+  + Add suse-update-mime-defaults as source, and install it.
+  + Call suse-update-mime-defaults in %post.
+  + Call suse-update-mime-defaults from the %desktop_database_post
+    and %desktop_database_postun macros defined in
+    macros.desktop-file-utils. This way, packages using those
+    macros will regenerate the defaults.list files on
+    install/removal.
+
+-------------------------------------------------------------------
+Wed Sep 26 08:24:42 UTC 2012 - idonmez@suse.com
+
+- BuildIgnore dbus-1-x11 to break the cycle
+
+-------------------------------------------------------------------
+Tue Mar  6 09:27:34 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.20:
+  + desktop-file-install:
+    - fix list of locale strings without trailing slash
+  + desktop-file-validate:
+    - add MATE and Razor to list of registered environments
+    - validate Desktop Actions
+- Rebase desktop-file-utils-suse-keys.patch.
+
+-------------------------------------------------------------------
+Tue Dec 20 15:17:51 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.19:
+  + desktop-file-install:
+    - respect order of edit options
+    - add --add-not-show-in/--remove-not-show-in options
+    - add options to set Name, GenericName, Comment, Icon keys
+    - add --set-key/--set-value options to set an arbitrary key
+    - remove localized keys when setting/removing a key
+    - copy translations when copying a key
+    - create a desktop-file-edit symlink to desktop-file-install to
+      simply edit .desktop files (without having to pass --dir)
+    - look at RPM_BUILD_ROOT to know where to install desktop files
+    - minor UI improvements
+  + desktop-file-validate:
+    - add Unity to list of registered environments
+    - deal with various zz-application/zz-winassoc-XXX mime types
+    - mark all zz-application/* MIME types as aliases
+    - add support for updated Keywords key
+  + update-desktop-database:
+    - deal with various zz-application/zz-winassoc-XXX mime types
+    - mark all zz-application/* MIME types as aliases
+    - ignore desktop files with Hidden=true
+  + misc:
+    - modernize build system a bit
+    - update man pages
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Remove /bin/rm and /bin/rmdir PreReq: those were only needed for
+  the old %postun scriptlet that got removed a while ago.
+- Drop desktop-file-utils-unity.patch: fixed upstream.
+- Rebase desktop-file-utils-suse-keys.patch.
+
+-------------------------------------------------------------------
+Wed Oct 19 14:33:50 UTC 2011 - vuntz@opensuse.org
+
+- Revert the MIME defaults heuristic changes: this won't work
+  without a glib2 patch that will not get in for now, and this
+  creates warnings in scriptlets.
+
+-------------------------------------------------------------------
+Wed Oct  5 20:41:12 CEST 2011 - sbrabec@suse.cz
+
+- Added MIME defaults heuristic (bnc#456026, fdo#30214).
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Mon Jul 25 15:55:16 CEST 2011 - vuntz@opensuse.org
+
+- Add desktop-file-utils-unity.patch: add Unity to list of accepted
+  desktop environments; taken from git.
+
+-------------------------------------------------------------------
+Sat Feb 19 12:27:01 CET 2011 - vuntz@opensuse.org
+
+- Drop SuSEconfig.desktop-file-utils: we don't use SuSEconfig
+  anymore to run update-desktop-database, since we now rely on each
+  individual package to do that with the %desktop_database_post and
+  %desktop_database_postun macros.
+- Remove %postun scriptlet: nothing will touch
+  /usr/local/share/applications/ automatically anymore, so removing
+  the files there won't be needed anymore.
+
+-------------------------------------------------------------------
+Tue Jan 18 08:41:03 CET 2011 - vuntz@opensuse.org
+
+- Fix %desktop_database_postun macros to not call
+  update-desktop-database twice.
+
+-------------------------------------------------------------------
+Thu Jan 13 11:09:11 CET 2011 - vuntz@opensuse.org
+
+- Update to version 0.18:
+  + desktop-file-validate:
+    - accept x-scheme-handler/* mime types
+  + update-desktop-database:
+    - sort mime types alphabetically in generated cache
+    - accept x-scheme-handler/* mime types
+  + misc:
+    - improve build system
+    - minor documentation fixes
+
+-------------------------------------------------------------------
+Tue Oct 12 12:19:16 UTC 2010 - lnussel@suse.de
+
+- fix macros
+
+-------------------------------------------------------------------
+Thu Oct  7 14:11:12 CEST 2010 - vuntz@opensuse.org
+
+- Add rpm macros to update the mime database:
+  %desktop_database_post and %desktop_database_postun. This will
+  replace SuSEconfig.desktop-file-utils in the future, once we have
+  converted packages.
+- Add a %post scriptlet to update the desktop database.
+
+-------------------------------------------------------------------
+Fri Sep 10 12:34:14 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.17:
+  + desktop-file-validate:
+    - accept chemical/* mime types as valid types
+    - make icon names with an extension for Icon key a non-fatal
+      error
+  + update-desktop-database:
+    - accept chemical/* mime types as valid types
+    - ignore --verbose if --quiet is also passed
+    - make sure to always output lists in the keyfile we generate
+  + misc:
+    - improve build system
+    - update documentation
+    - add man pages
+- Tag desktop-file-utils-suse-keys.patch.
+
+-------------------------------------------------------------------
+Wed Mar 10 04:21:26 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.16:
+  + desktop-file-install
+    - do not unlink the destination file if it's the same as the
+      source file in desktop-file-install
+  + desktop-file-validate
+    - check that a main category is included in the Categories
+    - check that categories required by another one are present
+    - do not always show warnings about KDE specific uses
+    - check that the Comment does not look like the Name and the
+      GenericName
+    - display error about multiple keys with the same name earlier
+    - improve MIME type check to make sure that the MIME types are
+      valid
+    - add LXDE in the list of registered OnlyShowIn values
+    - add "warning" to error strings to make them easily greppable
+    - handle AutostartCondition key, as proposed for the autostart
+      specification and used in GNOME
+    - accept empty Categories key as valid
+    - make new errors non-fatal to give some time to maintainers to
+      fix their .desktop file after a release of desktop-file-utils
+    - plug leak
+    - code cleanups
+  + update-desktop-database
+    - improve MIME type check to make sure that the MIME types are
+      valid
+    - improve error messages
+    - fix format string vulnerability warning
+  + misc
+    - use AM_SILENT_RULES
+    - improve build system
+- Drop desktop-file-utils-LXDE-key.patch: fixed upstream.
+- Manually install desktop-entry-mode.el since we don't want to add
+  a BuildRequires on emacs (that would introduce a build loop), and
+  recent automake require an installed emacs to install this file.
+
+-------------------------------------------------------------------
+Fri Feb 19 13:01:54 CET 2010 - vuntz@opensuse.org
+
+- Make Requires on aaa_base unversioned: there was no reason to
+  version it, or at least not anymore; and this is needed for the
+  Moblin merge.
+
+-------------------------------------------------------------------
+Sun Dec 13 17:01:01 UTC 2009 - andrea@opensuse.org
+
+- added LXDE patch, since this is now a valide DE
+
+-------------------------------------------------------------------
+Thu Aug 20 10:52:02 CEST 2009 - beineri@opensuse.org
+
+- remove KDE3 traces (bnc#531122), will add to kdelibs3 package
+
+-------------------------------------------------------------------
+Mon Aug 17 10:57:18 CEST 2009 - vuntz@novell.com
+
+- Remove emacs-nox BuildRequires, and instead pass --with-lispdir
+  to configure to break a build loop.
+- Update description.
+
+-------------------------------------------------------------------
+Mon Mar 10 13:23:58 CET 2008 - sbrabec@suse.cz
+
+- Updated to version 0.15:
+  * make the extension check for Icon key a warning instead of an
+    error for now
+  * Fix a crash in update-desktop-database when there's no group
+  * Fix a crash in the validator happening for very small lines
+
+-------------------------------------------------------------------
+Mon Oct 29 12:55:53 CET 2007 - dmueller@suse.de
+
+- update to 0.14:
+  o make desktop-file-install print an error when trying to install a
+   non-existing desktop file, or a desktop file that can't be read (Vincent)
+  o make the validator check the content of the Icon key (Vincent)
+  o make the validator accept X-Foo as a valid environment (this was added to
+    the spec) (Stanislav Brabec, Vincent)
+  o really handle the -m command line argument for desktop-file-install
+    (Matthias Clasen)
+  o make desktop-file-install accept as one valid argument multiple
+    categories/only-show-in/mime-types values. Now --add-category="GNOME;GTK"
+    works as expected. (Vincent)
+  o make desktop-file-install validate the created desktop file before removing
+    the original file, and unlink it if it's not valid (Vincent)
+  o code cleanups for desktop-file-install (Vincent)
+
+-------------------------------------------------------------------
+Wed Sep 12 13:49:14 CEST 2007 - coolo@suse.de
+
+- don't require path names
+
+-------------------------------------------------------------------
+Thu Jul 12 17:28:29 CEST 2007 - dmueller@suse.de
+
+- allow X-SUSE in OnlyShowIn
+
+-------------------------------------------------------------------
+Tue Jun  5 10:13:26 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 0.13:
+  * rewrite validator, and update it for desktop entry specification 1.0.
+    The validator should be stricter and report more useful messages.
+  * add --warn-kde and --no-warn-deprecated command line options to
+    desktop-file-validate
+  * port desktop-file-install to GKeyFile
+  * don't require --vendor for desktop-file-install
+  * some general module cleanup
+
+-------------------------------------------------------------------
+Wed May  2 22:10:21 CEST 2007 - dmueller@suse.de
+
+- add patch to validate suse keys
+
+-------------------------------------------------------------------
+Fri Apr 27 15:56:11 CEST 2007 - sbrabec@suse.cz
+
+- Fixed invalid error for missing "Encoding" (Freedesktop#10093).
+
+-------------------------------------------------------------------
+Thu Apr 19 12:04:11 CEST 2007 - sbrabec@suse.cz
+
+- Correctly initialize XDG_DATA_DIRS in SuSEconfig (#240603).
+
+-------------------------------------------------------------------
+Fri Feb 23 14:26:02 CET 2007 - sbrabec@suse.cz
+
+- Updated to version 0.12:
+  * improves category validation code to not catch false positives
+  * make category validation code non-fatal
+  * fix mem leaks and double frees
+
+-------------------------------------------------------------------
+Mon Jan 15 18:07:26 CET 2007 - sbrabec@suse.cz
+
+- Spec file cleanup.
+- Fixed path in SuSEconfig.desktop-file-utils.
+
+-------------------------------------------------------------------
+Mon Jan  8 00:08:19 CET 2007 - ro@suse.de
+
+- GNOME moved to /usr
+
+-------------------------------------------------------------------
+Fri Oct 20 14:58:03 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 0.11:
+  * Validate desktop file categories.
+  * Use GKeyFile instead of the old egg code in
+    update-desktop-database.
+  * Use GOption instead of popt.
+  * Fix grammar problem in one of the strings.
+  * NULL terminate search patch in update-desktop-database.
+  * Fix language to encoding mapping to match spec.
+
+-------------------------------------------------------------------
+Sat Feb 25 14:09:31 CET 2006 - aj@suse.de
+
+- Reduce BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:26 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Mar 17 10:24:17 CET 2005 - sbrabec@suse.cz
+
+- Explicitly require /etc/profile.d/xdg-enviroment.sh.
+
+-------------------------------------------------------------------
+Wed Mar 16 12:22:52 CET 2005 - sbrabec@suse.cz
+
+- Ensure, that $XDG_DATA_DIRS is defined in
+  SuSEconfig.desktop-file-utils (#71978).
+
+-------------------------------------------------------------------
+Sun Feb 27 23:00:21 CET 2005 - ro@suse.de
+
+- try to fix postun script
+
+-------------------------------------------------------------------
+Fri Feb 25 15:56:31 CET 2005 - sbrabec@suse.cz
+
+- Added SuSEconfig.desktop-file-utils (#66605).
+
+-------------------------------------------------------------------
+Thu Jan 06 15:22:57 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 0.10.
+
+-------------------------------------------------------------------
+Tue Aug 24 17:33:29 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 0.7.
+
+-------------------------------------------------------------------
+Sun Jan 11 10:18:49 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Thu Aug 07 12:51:48 CEST 2003 - sbrabec@suse.cz
+
+- Updated to actual CVS snapshot.
+- Prefix changed to /opt/gnome (now depends on gnome-vfs).
+
+-------------------------------------------------------------------
+Tue Jul 29 01:27:05 CEST 2003 - ro@suse.de
+
+- added gnome-filesystem to neededforbuild
+
+-------------------------------------------------------------------
+Mon Jun 02 17:41:48 CEST 2003 - sbrabec@suse.cz
+
+- Initial SuSE package.
+

@@ -1,0 +1,298 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5d753f18882857d9595740b1fb29d997</srcmd5>
+    <version>8.40</version>
+    <time>1307364319</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66734</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f62896e19a244f22d4051f833d31f03f</srcmd5>
+    <version>8.40</version>
+    <time>1307364328</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66734
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>f62896e19a244f22d4051f833d31f03f</srcmd5>
+    <version>8.40</version>
+    <time>1319182280</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bfe0df424ce9e4a3d4c18228e278b1bd</srcmd5>
+    <version>8.65</version>
+    <time>1324476162</time>
+    <user>coolo</user>
+    <comment>- clean up requires around perl(IO::Compress).  It was previously wrong.
+
+- update to 8.65
+  * /usr/bin/exiftool was previously packaged as only an application and the perl(Image::ExifTool) module was not available for use.
+  * Thus the standalone exiftool package has now been obsoleted
+  * And /usr/bin/exiftool is now included in this package as a sub-package in addition to the perl library modules
+  *
+  * A significant number of new file formats, etc. are now supported, see
+  * http://cpansearch.perl.org/src/EXIFTOOL/Image-ExifTool-8.65/Changes</comment>
+    <requestid>96669</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>bfe0df424ce9e4a3d4c18228e278b1bd</srcmd5>
+    <version>8.65</version>
+    <time>1340183862</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>15499926396796aa80080bdbc525b88c</srcmd5>
+    <version>9.01</version>
+    <time>1348734395</time>
+    <user>coolo</user>
+    <comment>Version upgrade to latest production release - tested perl module only upgrades and had to add a conflicts statement to get the app to update as well. (forwarded request 135734 from gregfreemyer)</comment>
+    <requestid>136021</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8593ff89dbef2f195ebdf5f02a412983</srcmd5>
+    <version>9.01</version>
+    <time>1349246840</time>
+    <user>coolo</user>
+    <comment>A SR was done to graohics::exiftool to break out perl-File-RandomAccess as a sub-package.  Do the same here. (forwarded request 136475 from gregfreemyer)</comment>
+    <requestid>136479</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>8593ff89dbef2f195ebdf5f02a412983</srcmd5>
+    <version>9.01</version>
+    <time>1359109710</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0925c3838af82f7458591846e3a0be77</srcmd5>
+    <version>9.13</version>
+    <time>1364277624</time>
+    <user>coolo</user>
+    <comment>Update to latest production release - 9.13</comment>
+    <requestid>161027</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>eadfff5a11432bbee150c2cf36d8a445</srcmd5>
+    <version>9.34</version>
+    <time>1375728605</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 9.34 (forwarded request 185925 from jengelh)</comment>
+    <requestid>185945</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>eadfff5a11432bbee150c2cf36d8a445</srcmd5>
+    <version>9.34</version>
+    <time>1379663718</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a4159c22e8e21e7faa954b4183692e01</srcmd5>
+    <version>9.53</version>
+    <time>1394386741</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>224993</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>a4159c22e8e21e7faa954b4183692e01</srcmd5>
+    <version>9.53</version>
+    <time>1409302342</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1226fc747968ca61a11afe11ca41e167</srcmd5>
+    <version>9.70</version>
+    <time>1410361347</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248270</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>165b8fe9348c0433628aedac0d2f9b23</srcmd5>
+    <version>9.92</version>
+    <time>1429346418</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.92:
+  * Add support for PRISM pmi and prm tags and update to PRISM 3.0.
+  * Add read support for Audible .AA files.
+  * Add support for Adobe XMP-creatorAtom tags.
+  * Add a couple of new XMP-xmpDM tags.
+  * Add a new CanonModelID and a new Ricoh WhiteBalance.
+  * Add a new Olympus CameraType.
+  * Add a new Nikon LensID.
+  * Update to XMP PLUS 1.2.1 specification.
+  * Enhance DOF calculation to use AverageFocusDistance or
+    FocusDistanceUpper/Lower if available.
+  * Patch to tolerate different version numbers in XMP namespace
+    URI's.
+- perl(Archive::Zip) is recommended by exiftool, not required.
+
+- Update to 9.91 (changes since 9.70):
+  * Added a couple of mew CanonModelID's
+  * Added a couple of new Nikon LensID's
+  * Added minor warning when deleting all PDF metadata (because
+    it isn't really deleted)
+  * Added a new Samsung LensType
+  * Added a new Sony/Minolta LensType
+  * Decode &quot;Sound &amp; Shot&quot; trailer written by some Samsung Galaxy
+    models
+  * Decode a number of new Sony tags including FocusDistance2
+  * Decode a number of new Canon and Kodak tags
+  * Decode a new EXIF tag
+  * Decode a few new CanonCustom tags
+  * Recognize the JPE file extension
+  * Fixed swapped CanonCustom AEMicroadjustment/FEMicroadjustment</comment>
+    <requestid>297375</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a2fcd629a11e9e8bb44f9ab591a8be77</srcmd5>
+    <version>9.93</version>
+    <time>1430113622</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>304049</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a20bf8181f4f0fae0d5d50015f9abd1f</srcmd5>
+    <version>10.00</version>
+    <time>1440871473</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>324697</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fa2782c5298ee02ca86e543fa0e56ab8</srcmd5>
+    <version>10.10</version>
+    <time>1453799723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>355714</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6ef327b1cd4988a6bea10204179e2aee</srcmd5>
+    <version>10.15</version>
+    <time>1462178691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>393061</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>86afa5206789f54d829ee41517487fea</srcmd5>
+    <version>10.20</version>
+    <time>1466326209</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>402829</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>719bd22317b99521673ff0d4c2d8aa01</srcmd5>
+    <version>10.36</version>
+    <time>1480342160</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>442057</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>08fea9e3f138d7437f8b0a1176e2fe58</srcmd5>
+    <version>10.40</version>
+    <time>1487261080</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>456958</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>066e978cd31338b8e0ebe83bfdd0d341</srcmd5>
+    <version>10.50</version>
+    <time>1493020186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>489816</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f713cb5c25f9ed83d19f6da405c8c255</srcmd5>
+    <version>10.55</version>
+    <time>1497109902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>502673</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b55ed2bb6aa6081c2d616c2d94dcd1a3</srcmd5>
+    <version>10.80</version>
+    <time>1519396314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579494</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a0dd36dff669b3135ea6ffc7eacd53e7</srcmd5>
+    <version>11.00</version>
+    <time>1528896959</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>614922</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c315af1eccc892b8a660f26aa58116c2</srcmd5>
+    <version>11.01</version>
+    <time>1529501385</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617499</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5d91229a1c6fac1674ac4afc8e35db9e</srcmd5>
+    <version>11.11</version>
+    <time>1538374773</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 11.11.</comment>
+    <requestid>638979</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>da9cf7b358947fd88f998b19326e5718</srcmd5>
+    <version>11.24</version>
+    <time>1547540180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664608</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3eb7af2a51a11d5b7078faed643a07cd</srcmd5>
+    <version>11.27</version>
+    <time>1550574006</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>676917</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>63b7f088fb694df3ff0098c830cda563</srcmd5>
+    <version>11.29</version>
+    <time>1551687843</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 11.29.</comment>
+    <requestid>681100</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>178a0acd0a0df41c0ab542917bf39d6b</srcmd5>
+    <version>11.30</version>
+    <time>1552207074</time>
+    <user>coolo</user>
+    <comment>- Update to version 11.30.</comment>
+    <requestid>682623</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>16ab2e86f4b729b33e424787d1f7bbc2</srcmd5>
+    <version>11.50</version>
+    <time>1560459725</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 11.50, see Image-ExifTool-11.50.tar.gz for details
+</comment>
+    <requestid>709348</requestid>
+  </revision>
+</revisionlist>

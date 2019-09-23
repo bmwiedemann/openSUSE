@@ -1,0 +1,541 @@
+-------------------------------------------------------------------
+Thu Sep  5 14:00:51 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- Changes since 19.08.0:
+  * Use non-deprecated overload of KWindowSystem::minimizeWindow
+
+-------------------------------------------------------------------
+Fri Aug  9 08:31:30 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- No code change since 19.07.90
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:50 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- Changes since 19.07.80:
+  * Remove now unused KDBusServiceStarter code
+  * Provide DBus activation file for kontact
+  * Move data files (desktop files etc.) under data/ like in kmail and korganizer
+
+-------------------------------------------------------------------
+Tue Jul 23 11:59:03 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * When we use framework 5.59.0 we can use new logging file directory
+  * Allow parts (like kmail) to set a custom caption in guiActivateEvent
+  * It was fixed in 5.13.0beta2
+  * Show "hide_show_sidebar" action in menu.
+  * Use qOverload directly
+  * It compiles fine without foreach
+
+-------------------------------------------------------------------
+Fri Jul 19 08:44:32 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use %_kf5_debugdir for logging categories.
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:36 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- Changes since 19.04.2:
+  * i18n: use rc.cpp for extra sources
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:55 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- No code changes since 19.04.1
+
+-------------------------------------------------------------------
+Fri May 10 05:37:16 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- No code changes since 19.04.0
+
+-------------------------------------------------------------------
+Sat Apr 20 06:51:57 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- No code changes since 19.03.90
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:42 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * Workaround qt5.13 bug
+
+-------------------------------------------------------------------
+Wed Mar 27 06:41:06 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Make it compiles against qt5.13
+  * USe QStringLiteral
+  * Update copyright
+  * Fix minor EBN issues and typo
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:20 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * No code changes since 18.12.2
+
+-------------------------------------------------------------------
+Sat Feb 09 08:25:16 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * No code changes since 18.12.1
+
+-------------------------------------------------------------------
+Fri Jan 11 05:42:25 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * No code changes since 18.12.0
+
+-------------------------------------------------------------------
+Fri Dec 14 06:09:15 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * No code changes since 18.11.90
+
+-------------------------------------------------------------------
+Mon Dec 03 20:56:07 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * Fix potential mem leak (found by asan)
+  * Use HTTPS for the Kontact website
+
+-------------------------------------------------------------------
+Tue Nov 20 06:22:39 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:57:11 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 08 20:43:42 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * No code changes since 18.08.2
+
+-------------------------------------------------------------------
+Thu Oct 11 20:07:07 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 06 18:43:04 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Aug 16 22:06:07 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * None
+
+-------------------------------------------------------------------
+Thu Jul 26 13:00:51 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * Add location hint for Parts' toolbars (kde#383916)
+  * We depend against qt5.9
+  * ‘if you to hide’ → ‘if you want to hide’
+  * Improve size panel icon rendering
+  * kcmkontact.cpp - skip disabled plugins when making the "start with component" combobox.
+
+-------------------------------------------------------------------
+Fri Jul 13 04:50:04 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * None
+
+-------------------------------------------------------------------
+Fri Jun 08 05:00:04 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * Fix Bug 394767 - Error message at start with Qt 5.11 (kde#394767)
+- Dropped patches, now upstream:
+  * fix-error-window-kontact.patch
+
+-------------------------------------------------------------------
+Tue Jun  5 07:31:15 UTC 2018 - lbeltrame@kde.org
+
+- Add upstream patch fix-error-window-kontact.patch:
+  * Fix error window being displayed at Kontact start (kde#394767)
+
+-------------------------------------------------------------------
+Fri May 11 05:18:03 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 18.04.0:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 18 07:49:39 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.0.php
+- Changes since 18.03.90:
+  * None
+
+-------------------------------------------------------------------
+Fri Apr 06 07:09:51 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.03.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04-rc.php
+- Changes since 17.12.3:
+  * Add missing override
+  * Add override
+  * src/iconsidepane.cpp - iconsidepane spacing between icons (for Qt5.9.1)
+
+-------------------------------------------------------------------
+Thu Mar 08 23:52:08 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.3.php
+- Changes since 17.12.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Feb 07 08:48:35 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.2.php
+- Changes since 17.12.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Jan 11 23:41:16 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.1.php
+- Changes since 17.12.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 09 14:59:08 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.0.php
+- Changes since 17.11.90:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 02 10:12:37 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-rc.php
+- Changes since 17.11.80:
+  * Revert this changes. We can add KDEPIM_DEV_VERSION so I don't understand why it was removed. Or it was necessary to remove KDEPIM_DEV_VERSION. but it always used
+
+-------------------------------------------------------------------
+Mon Nov 20 06:59:20 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-beta.php
+- Changes since 17.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 09 23:12:01 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 00:32:27 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * Restore the full help menu for Kontact
+
+-------------------------------------------------------------------
+Thu Sep 07 07:02:22 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * iconsidepane.cpp - properly redraw the iconside panel when changing icon size
+
+-------------------------------------------------------------------
+Fri Aug 11 22:45:53 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Aug  5 18:18:28 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.08-rc.php
+
+
+-------------------------------------------------------------------
+Sat Jul 15 23:00:16 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * Disable context menu here
+  * Add missing include
+  * Make it compile on windows
+
+-------------------------------------------------------------------
+Wed Jun 07 17:42:55 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * None
+
+-------------------------------------------------------------------
+Wed May 17 20:36:44 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * Take vertical scrollbar into account when calculating navbar width
+  * Fix the link to handbook on Kontact introduction screen
+- Drop upstreamed patches:
+  * 0001-Take-vertical-scrollbar-into-account-when-calculatin.patch
+
+-------------------------------------------------------------------
+Sat Apr 22 12:49:13 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to fix scrollbars in navigation pane:
+  * 0001-Take-vertical-scrollbar-into-account-when-calculatin.patch
+
+-------------------------------------------------------------------
+Sun Apr 16 10:45:07 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 12 20:25:49 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * None
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:38 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-beta.php
+- Changes since 16.12.3:
+  * Remove mailcommon dependancy
+  * Remove not necessary signal/slot. Use QActionGroup signal
+  * Disable more feature
+  * Clean up
+  * Add summary
+  * update kontact docbook to kf5, delete kontact-admin docbook + import valid info to kontact docbook
+  * Update copyright
+  * port to for(...:...)
+  * Add ECMCoverageOption
+
+-------------------------------------------------------------------
+Thu Mar  9 12:40:13 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * None
+
+-------------------------------------------------------------------
+Thu Feb  9 07:04:30 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Sat Jan 14 09:00:12 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+-------------------------------------------------------------------
+Tue Dec 13 19:50:02 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Thu Dec  8 09:21:01 UTC 2016 - lbeltrame@kde.org
+
+- Update license as pointed out by legal review
+
+-------------------------------------------------------------------
+Tue Dec  6 10:59:59 UTC 2016 - wbauer@tmo.at
+
+- Cleanup build requirements
+
+-------------------------------------------------------------------
+Sat Dec  3 16:35:54 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 12:34:49 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+
+-------------------------------------------------------------------
+Sun Nov 27 12:32:34 UTC 2016 - tittiatcoke@gmail.com
+
+- Update spec-files to be consistent wiht KA
+

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6eb2cc7a8dcb46d50007daff7794a973</srcmd5>
+    <version>2.10.0</version>
+    <time>1474476456</time>
+    <user>dimstar_suse</user>
+    <comment>optional dep for rubygem-puppet</comment>
+    <requestid>421780</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>97111e24f459abc2183472ddd4706938</srcmd5>
+    <version>2.11.0</version>
+    <time>1483047986</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447127</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>70aadfa207fc81e36b220cfba8508ea1</srcmd5>
+    <version>2.11.2</version>
+    <time>1518426901</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>574944</requestid>
+  </revision>
+</revisionlist>

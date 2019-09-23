@@ -1,0 +1,247 @@
+-------------------------------------------------------------------
+Wed Jan 17 15:13:10 UTC 2018 - fvogt@suse.com
+
+- Fix combination of os_has_tinyxml and use_cmake_macro
+
+-------------------------------------------------------------------
+Wed Jul 26 07:03:36 UTC 2017 - wagner-thomas@gmx.at
+
+- update to 1.9.2
+  * fix a use-after-free bug that was introduced in v1.9-rc1
+  * cast booleans to int before writing the XML config
+  * support reading the config file from pipes
+  * add "-t" option to set syslog tag
+  * allow read/write in standard reverse mode
+  * reject empty passwords
+  * support building with openssl 1.1 
+- removed now unneeded 0001-Use-INITIALIZE_EASYLOGGINGPP-in-Error.cpp.patch
+
+-------------------------------------------------------------------
+Sun Apr 23 08:52:20 UTC 2017 - wagner-thomas@gmx.at
+
+- patch 0001-Use-INITIALIZE_EASYLOGGINGPP-in-Error.cpp.patch fixes 
+  some undefined references. See upstream issue
+  https://github.com/vgough/encfs/issues/291
+  With this patch, the %cmake macro can now be used for building if 
+  version of cmake is greater than 3.3
+- improved detection of tinyxml: now builds on more architectures 
+  and SLE12 SP2
+
+-------------------------------------------------------------------
+Sat Mar  4 12:03:10 UTC 2017 - wagner-thomas@gmx.at
+
+- update to 1.9.1
+  * Fix empty log file creation
+  * Link with libintl when available
+  * add LIB_INSTALL_DIR override during build to aid in customized install 
+    locations
+  * upgrade easylogging++
+- update to 1.9
+  * switch to CMake
+  * OSX build improvements, RPATH setup
+  * Drop Boost dependency. Uses tinyxml2 to read existing XML config archives.
+  * Drop librlog dependency. Uses easylogging++ for logging.
+  * add encfs_create operation
+  * replace getdir with readdir
+  * cleanup includes and reformat code
+  * allow writes in reverse mode when no header is used
+  * make use of C++11 (eg std unordered_map in place of GNU internal hashmap)
+- split *.mo files to a separate package encfs-lang
+- preperation to include checks
+- removed cmake-libdir-name.patch and old-perm-checks.patch which are not
+  needed any more
+- install tinyxml2-3 if not available in the official repos 
+- configure-fix.patch: also not needed anymore
+
+-------------------------------------------------------------------
+Wed Feb  1 10:35:31 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Wed Mar  9 14:53:51 UTC 2016 - p.drouand@gmail.com
+
+- Update to version 1.8.1
+  * No short chanlog available; please read
+    /usr/share/doc/packages/encfs/ChangeLog
+
+-------------------------------------------------------------------
+Sun Mar 15 23:07:36 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.8
+  * No short chanlog available; please read the ChangeLog file into
+    /usr/share/doc/packages/encfs/ChangeLog
+- Update Url to new project home
+- Use download Url as source
+- Copy DESIGN.md, PERFORMANCE.mde and TRANSLATORS into doc directory
+- Remove obsolete patchs
+  * encfs-1.7.4-fixReverseAbsoluteSymlinks.diff
+  * encfs-1.7.4-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Mon Nov 17 00:33:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in encfssh script
+- add patches:
+  * encfs-1.7.4-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Tue Apr  1 12:48:54 UTC 2014 - wagner-thomas@gmx.at
+
+- applied patchencfs-1.7.4-fixReverseAbsoluteSymlinks.diff from
+	https://code.google.com/p/encfs/issues/detail?id=29
+  	This fixes encoding of symlinks starting with a "/"
+- Added patches:
+  * encfs-1.7.4-fixReverseAbsoluteSymlinks.diff
+
+-------------------------------------------------------------------
+Mon Feb  4 14:31:08 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:58 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Tue Aug 30 00:59:55 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix build, axing all m4 macros was a bad idea...
+
+-------------------------------------------------------------------
+Fri Dec  3 14:14:02 CET 2010 - mszeredi@suse.cz
+
+- updated to version 1.7.4
+  * fixes bug with --reverse option setting which causes files to
+    be stored incorrectly
+
+-------------------------------------------------------------------
+Mon Sep  6 17:08:43 CEST 2010 - mszeredi@suse.cz
+
+- updated to version 1.7.2
+  * allow per-block random bytes to be configured independently of
+    per-block MAC.
+  * new IV initialization
+  * fix component configuration to ease adding flags or config
+
+-------------------------------------------------------------------
+Mon Jun 28 14:21:29 CEST 2010 - mszeredi@suse.cz
+
+- updated to version 1.6.0
+  * build fixes
+  * add support for version field within serialized config
+  * add options to help automate filesystem creation
+  * modification and access times can be changed for symlinks
+  * try to maintain modtime during rename
+-------------------------------------------------------------------
+Fri Jun 19 10:35:46 CEST 2009 - coolo@novell.com
+
+- disable as-needed for this package as it fails to build with it
+
+-------------------------------------------------------------------
+Wed Jun  3 13:44:08 CEST 2009 - mszeredi@suse.cz
+
+- fix compile error due to missing "const" qualifier
+
+-------------------------------------------------------------------
+Wed Oct 29 11:25:51 CET 2008 - mszeredi@suse.de
+
+- updated to version 1.5.0
+  * fix bug in export - wasn't able to export symlinks (launchpad bug
+    #201974)
+  * add makeKey program and showKey option to encfsctl
+  * remove logs in Context, which displayed plaintext names
+  * use PBKDF2 for key generation with salt and variable iteration
+    count
+  * allow for automatic upgrade to PBKDF2 when changing passwords
+  * enable file hole support by default
+
+-------------------------------------------------------------------
+Tue Apr 15 11:00:58 CEST 2008 - mszeredi@suse.de
+
+- updated to version 1.4.2
+  * move buffer management to avoid memory leak in case of decoding
+    error
+  * reverse encryption support
+  * fix rename bug by tracking and applying undo in all error paths
+    (launchpad bug #160214)
+  * add '-o' option which passes arg through to fuse
+  * add -h option
+  * add mount-on-demand
+  * change license file to GPL3
+  * enlarge max password length
+  * run extpass command via shell, to allow passing arguments
+    to program
+  * fix directory rename issue (launchpad bug #183358)
+  * no arg required for stdinpass
+  * ensure paths end in '/'. fixes (launchpad bug #184905)
+  * add zero-block pass-through option, enabling allow-holes code
+  * fix bug in export - wasn't able to export symlinks (launchpad
+    bug #201974)
+  * switch to V6 XML config format
+
+-------------------------------------------------------------------
+Wed Oct 24 21:43:16 CEST 2007 - mszeredi@suse.de
+
+- Fix compile errors and warnings in beta
+
+-------------------------------------------------------------------
+Fri Aug 10 19:34:35 CEST 2007 - bk@suse.de
+
+- Add "Requires: fuse" to ensure that fuse is present (285101#c29)
+- Use %find_lang to mark locale files with missing %lang (rpmlint)
+
+-------------------------------------------------------------------
+Thu Mar 29 10:46:17 CEST 2007 - meissner@suse.de
+
+- buildrequires zlib-devel 
+
+-------------------------------------------------------------------
+Thu Feb 15 10:32:43 CET 2007 - mszeredi@suse.cz
+
+- updated to version 1.3.2
+  * fix failure to process HMAC correctly in case of read error
+  * builds with GCC 4.2
+  * add workaround for group permission problem in 'public' mode
+
+-------------------------------------------------------------------
+Mon May 15 13:23:08 CEST 2006 - tiwai@suse.de
+
+- updated to version 1.3.1.
+  * ports for fuse-2.5
+  * bugfixes for null filename encryption
+  * fix directory rename error
+  * new translations
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:42 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 18:25:11 CET 2006 - tiwai@suse.de
+
+- fix the build with fuse 2.5.0.
+
+-------------------------------------------------------------------
+Tue Nov 15 18:26:04 CET 2005 - tiwai@suse.de
+
+- updated to version 1.2.5.
+
+-------------------------------------------------------------------
+Fri Sep 30 19:03:34 CEST 2005 - tiwai@suse.de
+
+- updated to version 1.2.4.
+
+-------------------------------------------------------------------
+Wed May 25 18:19:02 CEST 2005 - tiwai@suse.de
+
+- initial version: 1.2.2
+

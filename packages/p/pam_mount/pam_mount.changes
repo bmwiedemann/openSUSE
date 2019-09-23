@@ -1,0 +1,544 @@
+-------------------------------------------------------------------
+Sat Nov 17 09:18:54 UTC 2018 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Add pam_mount-2.16-fix-luks2-mount.patch:
+  fix mounting of LUKS2 volumes 
+  [fate#326986, bsc#1123309, pam_mount-2.16-fix-luks2-mount.patch]
+
+-------------------------------------------------------------------
+Fri Sep 30 08:13:57 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.16
+* the sgrp match is now implemented by asking for the user's
+  group list instead of asking for the group's user list. (The
+  latter can easily be orders of magnitude larger, which is why
+  some LDAP servers may be configured not to return the list at
+  all.)
+
+-------------------------------------------------------------------
+Mon Dec  1 13:43:06 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.15
+* Use new helper= option in util-linux, allowing umount.crypt to be
+  called on umount.
+* Fix a crash in ehd_log due to lack of va_start call
+
+-------------------------------------------------------------------
+Tue Sep 23 16:51:52 UTC 2014 - jengelh@inai.de
+
+- Drop gpg-offline build-time requirement; this is now handled by
+  the local source validator
+
+-------------------------------------------------------------------
+Tue Aug 27 10:23:17 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 2.14
+* Bugfix: pam_mount printed "ehd_logctl: feature 1 is already zero"
+  at each login (bnc#811119)
+* pmt-ehd: avoid miscalculating blockdev size obtained from BLKGETSIZE64
+* correctly mkdir mountpoint if requested, and only remove mountpoint
+  if actually created
+* restore DOMAIN_USER and DOMAIN_NAME expansion in mount options
+* add an "allow_discard" option for volumes to enable trim support
+  on the block device without enabling it for the filesystem.
+* config: regexes can now be used for the <user> and <group>
+  configuration options
+- Remove pam_mount-38a15cc3-ehd_logctl-debug.diff (applied upstream)
+
+-------------------------------------------------------------------
+Sun Feb  3 14:16:32 UTC 2013 - wstephenson@suse.com
+
+- Suppress useless debug output on using pam_mount
+
+-------------------------------------------------------------------
+Sun Dec  9 17:48:35 UTC 2012 - jengelh@inai.de
+
+- Avoid running fdupes on /etc
+- Depend on gpg-offline only for openSUSE >= 12.3
+- Do require ofl and fd0ssh now, as they are now separate
+  installables starting with 12.3
+
+-------------------------------------------------------------------
+Thu Nov 29 18:23:56 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signature.
+
+-------------------------------------------------------------------
+Mon Feb 13 12:36:39 UTC 2012 - cfarrell@suse.com
+
+- license update: LGPL-2.1+ and GPL-2.0+
+  See the COPYING file. There are GPL-2.0+ components aggregated
+
+-------------------------------------------------------------------
+Thu Dec 15 11:50:44 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 2.13
+* pam_mount: restore keyfile support for non-crypto mounts
+
+-------------------------------------------------------------------
+Thu Oct  6 11:42:36 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 2.12 (bnc#722480)
+* mount.crypt: restore support for files >= 4 GB
+
+-------------------------------------------------------------------
+Tue Aug 30 05:45:50 UTC 2011 - jengelh@medozas.de
+
+- Fix "error: incorrect format: missing { after %" on run of %post
+
+-------------------------------------------------------------------
+Wed Aug 10 11:00:29 UTC 2011 - jengelh@medozas.de
+
+- Add commit 2f8daad from upstream - call umount.crypt directly
+  from pam_mount.so while mount.crypt is having no support for
+  utab (bnc#671276); also add commit eb20a26 for better wording of
+  this situation.
+
+-------------------------------------------------------------------
+Sun Aug  7 00:09:17 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 2.11
+* Allow specifying CIFS/NCP/NFS <volume>s without a
+  "server" attribute (this allows AD integration via pam_winbind)
+* Added a handful of diagnostics to umount.crypt to determine
+  failure to find vfsmounts
+* Use /run directory for our variadic data
+* pmt-ehd: Exclusively create LUKS partitions from now on
+
+-------------------------------------------------------------------
+Fri Apr 15 11:21:08 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 2.10
+* loop-linux: wait for loop device deallocation to succeed
+* crypto: avoid premature attempt of unloading the loop device
+* mtab: cope with mtab-less systems in staleness check
+* mount.crypt: reduce mtab-less message from error to warning
+
+-------------------------------------------------------------------
+Thu Apr  7 00:15:50 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 2.9
+* Support for mount --bind/--move
+* mount.crypt: warn about unwritable /etc/mtab
+- %VERSION should have been %%VERSION in post
+- Run spec-beautifier
+
+-------------------------------------------------------------------
+Mon Feb 14 15:37:32 UTC 2011 - coolo@novell.com
+
+- do not recommend hxtools, it's a huge collection of random stuff
+  (ranging from mc syntax files to xfs repair tools)
+
+-------------------------------------------------------------------
+Sat Jan 15 17:14:10 UTC 2011 - jengelh@medozas.de
+
+- update to version 2.8
+* shipped fd0ssh and ofl were removed; the original ones from
+  hxtools are required
+* fix an improper refcount drop (rhbz#622930)
+* %(shell EXPR) is now activated and usable from the global config
+  file
+* mountpoint creation has been redone and now works better
+* remove mountpoint early when mount failed
+* fix truncation of groups on FUSE mounts
+* invocation of mount.fuse was broken due to missing space in
+  config
+
+-------------------------------------------------------------------
+Fri Aug 27 15:12:24 UTC 2010 - jengelh@medozas.de
+
+- remove unnecessary Requires(pre)
+- do not needlessy run autoreconf
+- update to version 2.5
+* new mount.crypt program that now uses libcryptsetup rather than
+  the cryptsetup binary
+* HXformat2 is now used. This invalidates old constructs like
+  %(before=\"-o\"...) which need to be replaced by new syntax
+  (see /usr/share/doc/packages/pam_mount/changelog.txt)
+* fusermount now called with secondary groups initialized
+* add support for keyfile passthru using -ofsk_cipher=none
+
+-------------------------------------------------------------------
+Fri Aug 20 19:52:55 UTC 2010 - lars@samba.org
+
+- rdconf: do not warn about missing fskeyhash when no fskey specified;
+  (bnc#626127); http://bugs.debian.org/580430
+
+-------------------------------------------------------------------
+Tue Jun  1 13:42:01 CEST 2010 - mc@suse.de
+
+- use full paths in wrapper scripts (bnc#607200) 
+
+-------------------------------------------------------------------
+Wed Apr  7 23:43:17 UTC 2010 - jengelh@medozas.de
+
+- update to version 1.34
+  * decrease login refcount on logout when no volumes are defined
+- tag provided mount.{crypt,encfs13} wrappers as #!/bin/bash (not
+  /bin/sh) because they use [[/]] and =~; use ${0##*/} over
+  extra calling basename.
+
+-------------------------------------------------------------------
+Sun Jan 10 01:52:56 CET 2010 - jengelh@medozas.de
+
+- update to version 1.33
+  * avoid multi-free of auth token when pam_mount is rerun in a
+    PAM stack
+  * avoid NULL dereference when there is an empty line in mtab
+- adjust BuildRequires as upstream really requires
+- package baselibs.conf
+- convert PreReq to Requires(pre,post)
+- remove CFLAGS="$RPM_OPT_FLAGS", it is implicit
+- use _smp_mflags
+
+-------------------------------------------------------------------
+Fri Dec 18 13:14:17 CET 2009 - mc@suse.de
+
+- update to version 1.32
+  * luserconf: fix skipping luser volume mounting
+  * config: allow arbitrary source paths for tmpfs 
+  * fix a potential strlen(NULL) on login
+  * umount.crypt: do not remove entry from /etc/mtab twice
+  * luserconf: delayed parsing and mounting of luserconf volumes
+  * documentation fixes
+
+-------------------------------------------------------------------
+Thu Nov 19 11:12:36 CET 2009 - mc@suse.de
+
+- backport some code to fix the sudo crash (bnc#544154)
+
+-------------------------------------------------------------------
+Mon Jul 27 12:01:46 CEST 2009 - mc@novell.com
+
+- update to version 1.27
+  * mounting: stdout from mount programs is now discarded
+  * config: do parse <cryptumount> elements from .xml
+  * mount: pass fstype to NFS mount program
+  * config: map "nfs4" fstype to NFSMOUNT
+  * pam_mount: PAM function return code audit
+  * config: warn about ignored "server" attribute in <volume>
+  * config: print error message on config file syntax error 
+
+-------------------------------------------------------------------
+Wed Jun 24 19:32:40 CEST 2009 - sbrabec@suse.cz
+
+- Supplement pam-32bit/pam-64bit in baselibs.conf (bnc#354164).
+
+-------------------------------------------------------------------
+Mon May 11 12:01:56 CEST 2009 - mc@suse.de
+
+- update to version 1.25
+  - fix splitting of "NTDOMAIN\username" strings
+  - config: broaden variable expansion to resolve a case where it
+    did not do expected expansion with AUFS
+  - mount.crypt: write options, not "defaults" to /etc/mtab
+  - mount.crypt: keysize truncation must happen later
+  - mount.crypt: pass -o ro/rw down to mount program
+  - mount.crypt: support for -o remount
+  - mount.crypt: support overriding keysize
+  - mount.crypt: must pass -s option to cryptsetup
+  - mount.crypt: add "Deprecated Mount options" section to manpage
+  - pam_mount: fix a double free that can happen when stale entries are in cmtab
+  - pam_mount: first-time overriding of mntoptions failed to work
+  - pmvarrun: do not segfault when no username is specified (corner-case)
+  - pmvarrun: recognize internal _PMT_DEBUG_LEVEL env var
+  - mtab: automatically ignore and remove stale entries from cmtab
+  - pam_mount: fix unexpected termination after pam_mount ran
+  - doc: list support contacts in man page
+
+-------------------------------------------------------------------
+Wed Feb 18 12:46:10 CET 2009 - mc@suse.de
+
+- update to version 1.18
+  * lot of fixes and new Features.
+    see /usr/share/doc/packages/pam_mount/changelog.txt
+    for details
+
+-------------------------------------------------------------------
+Thu Jan 29 16:00:36 CET 2009 - crrodriguez@suse.de
+
+- reduce buildRequires after libHX changes
+
+--------------------------------------------------------------------
+Mon Jan 12 11:23:15 CET 2009 - mc@suse.de
+
+- fix <logout> feature (bnc#461333)
+  * enable automatic wait, term and kill. Required to terminate
+    pulseaudio
+  * add <logout> during convert to converted config
+- remove passwdehd. (CVE-2008-5138) (bnc#465303)
+  does not work at all with new config format.
+- recognize required and deny options for luserconf
+  (bnc#463524)
+
+-------------------------------------------------------------------
+Tue Nov  4 13:55:40 CET 2008 - mc@suse.de
+
+- fix failing convert script. (bnc#438842) 
+
+-------------------------------------------------------------------
+Mon Oct 27 10:12:23 CET 2008 - mc@suse.de
+
+- remove lsof callback from convert script. lsof is not needed
+  in this version of pam_mount. (bnc#438842) 
+
+-------------------------------------------------------------------
+Tue Oct 14 17:43:19 CEST 2008 - mc@suse.de
+
+- fix checking deny options 
+
+-------------------------------------------------------------------
+Mon Oct 13 16:21:01 CEST 2008 - mc@suse.de
+
+- replace also options which are specified in a volume
+  (bnc#433845) 
+
+-------------------------------------------------------------------
+Thu Sep 25 14:59:05 CEST 2008 - mc@suse.de
+
+- fix reading the key from harddisk.
+- using losteup command directly (bnc#427343) 
+
+-------------------------------------------------------------------
+Fri Sep  5 09:49:13 CEST 2008 - mc@suse.de
+
+- version 0.47
+  - mount.crypt: add missing null command to conform to sh syntax
+    (SF bug #2089446)
+  - conf: fix printing of strings when luser volume options were not ok
+  - conf: re-add luserconf security checks
+  - add support for encfs 1.3.x (1.4.x already has been in for long)
+  - conf: add the "noroot" attribute for <volume> to force mounting with
+    the unprivileged user account (required for FUSE filesystems)
+  - replace fixed-size buffers and arrays with dynamic ones (complete)
+    (obsolets pam_mount-0.45-bump-max-par.diff)
+
+-------------------------------------------------------------------
+Mon Sep  1 10:56:59 CEST 2008 - mc@suse.de
+
+- version 0.45 
+  * fix double-freeing the authentication token
+  * use ofl instead of lsof/fuser
+  * kill-on-logout support (terminate processes that would stand in the
+    way of unmounting)
+    (remove suse patch which supports this)
+  * mount.crypt: auto-detect necessity for running losetup
+
+-------------------------------------------------------------------
+Mon Aug 18 11:56:07 CEST 2008 - mc@suse.de
+
+- version 0.44
+  - mount.crypt: fix option slurping
+  - properly handle simple sgrp config items
+  - src: correct error check in run_lsof()
+  - conf: check that slash follows home tilde
+  - conf: wildcard inadvertently matched root sometimes
+
+-------------------------------------------------------------------
+Mon Aug 11 18:27:56 CEST 2008 - mc@suse.de
+
+- version 0.43
+  - remove davfs support
+  - pass fsck definition from pam_mount.conf.xml to mount.crypt
+  - document pam_mount.conf.xml defaults
+  - do not call fsck from within pam_mount for encrypted devices,
+    let mount.crypt do it
+
+-------------------------------------------------------------------
+Mon Jun 23 13:24:01 CEST 2008 - mc@suse.de
+
+- version 0.41 
+  - add missing pgrp/sgrp attribute handling for simple user control
+  - mount.crypt: handle arbitrary argument order
+  - correct extended sgrp handling
+  - manpages: add missing description for <fsck>, and reorder <path>
+  - the documentation in pam_mount.conf.xml has been reworked and
+    split off into pam_mount.conf(5).
+  - extensive user selection for <volume> (revised)
+  - case-insensitive matching for user, pgrp, sgrp
+  - fixed segfault when more than one volume was defined
+  - extended user selection for <volume>
+  - fix an unwanted inversion for handling <options allow=" (nonempty) ">
+  - store per-volume option list in ordered form --
+    essentially fixes the problem of "user" (implies noeexec)
+    overriding "exec"
+  - fix null pointer deref (from new UID/GID range support)
+  - mount.crypt uses normal sleep from coreutils again
+  - truecrypt 5.x is not supported because the truecrypt CLI component
+    that pam_mount requires was removed
+  - <volume> tag in pam_mount.conf.xml supports UID and GID ranges now
+  - fix HAVE_LIBCRYPTO regression;
+    crypto was always disabled even if openssl present
+- remove pam_mount-0.35-fix-configure.dif (is upstream now)
+
+-------------------------------------------------------------------
+Tue Apr 22 16:44:52 CEST 2008 - mc@suse.de
+
+- use upstream fix for bnc#381292 
+
+-------------------------------------------------------------------
+Fri Apr 18 14:35:59 CEST 2008 - mc@suse.de
+
+- fix configure (bnc#381292) 
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Apr  7 11:41:25 CEST 2008 - mc@suse.de
+
+- update to version 0.35
+  - mount.crypt: fix loop device detection
+  - mount.crypt: wait for dm devices to show up
+  - fixed: mount flag and value were one argument
+  - pmvarrun: support unprivileged mode
+  - Support for SSH keyboard-interactive authenticated volumes
+  - documentation updates
+
+-------------------------------------------------------------------
+Wed Apr  2 18:02:12 CEST 2008 - mc@suse.de
+
+- update to version 0.32
+- notify about unknown options in /etc/pam.d/*
+- support "debug" option for pam_mount in /etc/pam.d/*
+- mount.crypt: detect loop devices by major number
+- Fixed parsing of old-style pam_mount.conf with spaces in group names,
+  copy-and-paste typos and a missing return value. Added workaround for
+  CIFS volumes within NFS mounts with "root_squash" option.
+- allow --keyfile to be used for non-LUKS too
+- luksClose is the same as Remove (in umount.crypt)
+- convert "local" fstype entries from old configuration format correctly.
+- fixed parsing of old pam_mount.conf with spaces in group names
+- fixed: When no volumes were to be mounted, return value
+  was not PAM_SUCCESS.
+
+-------------------------------------------------------------------
+Mon Oct  8 13:47:45 CEST 2007 - mc@suse.de
+
+- update to version 0.29
+  * pam_mount switched to an XML configuration.
+  * added truecrypt support
+  * add an "invert" attribute
+  * split group matching into multiple attributes
+  * properly detect loop64 support
+  * NT domain placeholders
+  * Implement the "soft_try_pass" option
+  * add "nullok" option
+  * --keyfile option added to mount.crypt
+
+-------------------------------------------------------------------
+Fri Sep 21 11:39:03 CEST 2007 - mc@suse.de
+
+- remove the loopdevice for the image too
+  [#326802]
+
+-------------------------------------------------------------------
+Thu Sep 20 15:05:57 CEST 2007 - mc@suse.de
+
+- add required dependencies [#326802]
+
+-------------------------------------------------------------------
+Wed Apr  4 17:52:41 CEST 2007 - crivera@suse.de
+
+- Don't package mount_ehd, it's only for
+  OpenBSD. Fixes 256214.
+
+-------------------------------------------------------------------
+Thu Mar 29 12:54:40 CEST 2007 - mc@suse.de
+
+- add zlib-devel to BuildRequires 
+
+-------------------------------------------------------------------
+Tue Mar 13 10:18:26 CET 2007 - mc@suse.de
+
+- fix reference counting of pmvarrun app
+  [#252243]
+
+-------------------------------------------------------------------
+Tue Jan 23 17:13:45 CET 2007 - mc@suse.de
+
+- fix umount encrypted homedirectories
+  [#237793] 
+
+-------------------------------------------------------------------
+Thu Jan 18 09:25:19 CET 2007 - mc@suse.de
+
+- disable debug
+- increase MAX_PAR to be able to read longer keys
+
+-------------------------------------------------------------------
+Fri Jan 12 10:34:36 CET 2007 - mc@suse.de
+
+- add patch to kill all remaining user processes before
+  unmounting crypted partition
+  (pam_mount-0.18-umount-home-dir.dif)
+
+-------------------------------------------------------------------
+Fri Dec  8 17:21:12 CET 2006 - dgollub@suse.de
+
+- use UID of specified user for owner change of mount point
+  (pam_mount-chownuid-fix.diff)
+
+-------------------------------------------------------------------
+Tue Sep 12 10:38:15 CEST 2006 - mc@suse.de
+
+- Update to 0.18
+  * fixes memory corruptions, zero termination, segfaults 
+  * A crash on x86_64 has been fixed. pam_mount now changes 
+    to the root directory before attempting to (un)mount
+
+-------------------------------------------------------------------
+Mon Jul 31 16:00:42 CEST 2006 - kukuk@suse.de
+
+- Update to version 0.16
+  bugfix release
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:14 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Dec 22 11:09:27 CET 2005 - varkoly@suse.de
+
+- Update to version 0.10.0 
+
+-------------------------------------------------------------------
+Mon Dec 19 15:14:06 CET 2005 - ro@suse.de
+
+- added symlinks to package 
+
+-------------------------------------------------------------------
+Mon Jul 11 14:57:44 CEST 2005 - schubi@suse.de
+
+- Update to version 0.9.25
+
+-------------------------------------------------------------------
+Mon Apr 11 10:20:42 CEST 2005 - kukuk@suse.de
+
+- Update to version 0.9.22 [Bug #65110]
+
+-------------------------------------------------------------------
+Thu Jan 15 23:44:49 CET 2004 - kukuk@suse.de
+
+- Build as user
+- Add pam-devel to neededforbuild
+
+-------------------------------------------------------------------
+Mon Jan 12 15:03:38 CET 2004 - kukuk@suse.de
+
+- Update to version 0.9.9
+
+-------------------------------------------------------------------
+Mon Oct 27 12:14:28 CET 2003 - kukuk@suse.de
+
+- Update to version 0.9.6 [Bug #32216]
+
+-------------------------------------------------------------------
+Wed May 28 17:00:11 CEST 2003 - kukuk@suse.de
+
+- Initial package
+

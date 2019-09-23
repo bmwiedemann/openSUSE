@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Tue Jan 20 10:42:29 UTC 2015 - jengelh@inai.de
+
+- Clear inbox-path, drop selected-in-boldface, include
+  Cc/Attachment fields in default compose header list again.
+  Use standard thread sorting.
+- Demote Suggests to Enhances to work around zypper's suboptimal
+  default preferences. [bnc#912611]
+
+-------------------------------------------------------------------
+Tue Jan 13 09:23:38 UTC 2015 - jengelh@inai.de
+
+- Disable IMAP-over-SSH by defualt [bnc#912611]
+
+-------------------------------------------------------------------
+Mon Feb 17 23:45:43 UTC 2014 - jengelh@inai.de
+
+- Add SUSE-WTFPL-2.0 back: required for Factory
+
+-------------------------------------------------------------------
+Tue Feb 11 08:20:30 UTC 2014 - cfarrell@suse.com
+
+- license update: WTFPL-2.0
+  We deleted SUSE-WTFPL-2.0 as WTFPL-2.0 was entered on the official
+  spdx.org/licenses list
+
+-------------------------------------------------------------------
+Wed Nov 13 19:54:02 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 0) for build.opensuse.org

@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>17501c34140346651af5b486eb750ec0</srcmd5>
+    <version>1</version>
+    <time>1298032369</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61427 from user dimstar
+</comment>
+    <requestid>61427</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d23967c19949bf839007fafa204017a8</srcmd5>
+    <version>1</version>
+    <time>1298032376</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61427
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>d23967c19949bf839007fafa204017a8</srcmd5>
+    <version>1</version>
+    <time>1319182513</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>6f47008a08d8b8a0c73ca01eec4e68fd</srcmd5>
+    <version>1</version>
+    <time>1323194881</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>6f47008a08d8b8a0c73ca01eec4e68fd</srcmd5>
+    <version>1</version>
+    <time>1340184267</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>6f47008a08d8b8a0c73ca01eec4e68fd</srcmd5>
+    <version>1</version>
+    <time>1359110473</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>6f47008a08d8b8a0c73ca01eec4e68fd</srcmd5>
+    <version>1</version>
+    <time>1379664789</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>6f47008a08d8b8a0c73ca01eec4e68fd</srcmd5>
+    <version>1</version>
+    <time>1409303469</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

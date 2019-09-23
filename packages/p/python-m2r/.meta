@@ -1,0 +1,5 @@
+<package name="python-m2r" project="openSUSE:Factory">
+  <title>Markdown to reStructuredText converter</title>
+  <description>M2R converts a markdown file including reST markups to a valid reST format.</description>
+  <devel project="devel:languages:python" package="python-m2r"/>
+</package>

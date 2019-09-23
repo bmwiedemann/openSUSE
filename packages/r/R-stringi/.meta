@@ -1,0 +1,5 @@
+<package name="R-stringi" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:R:released" package="R-stringi"/>
+</package>

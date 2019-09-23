@@ -1,0 +1,10 @@
+
+## Type:           string
+## Default:        ""
+## Config:         ""
+## ServiceRestart: syslog
+#
+# Parameters for Syslog New-Generation - see syslog-ng(8)
+#
+SYSLOG_NG_PARAMS=""
+

@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>978ce0ff2dee9ed0c8fb7f6472987e31</srcmd5>
+    <version>0.1.19</version>
+    <time>1495883603</time>
+    <user>dimstar_suse</user>
+    <comment>Addition of new package &quot;skopeo&quot; which is used within kiwi and is a general container image conversion utility (usually used in conjunction with umoci).</comment>
+    <requestid>488873</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dcd2b8b56c6cd10813f7ffd22d1cec67</srcmd5>
+    <version>0.1.23</version>
+    <time>1502186347</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512231</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bba723a5ef7a19cac12812cd21f456c4</srcmd5>
+    <version>0.1.23</version>
+    <time>1505920072</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526914</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8c1f2439d2ab1deeef35942e06548901</srcmd5>
+    <version>0.1.24</version>
+    <time>1508946449</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536391</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9166efb816a3a91b12e19f3a5d6ac8c3</srcmd5>
+    <version>0.1.26</version>
+    <time>1511194026</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>543858</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>8df2694acf05ed9588f4b34579a172d7</srcmd5>
+    <version>0.1.26</version>
+    <time>1517824135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>572038</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>be9a0a0275f5daa807c7700228975711</srcmd5>
+    <version>0.1.26</version>
+    <time>1518697393</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575776</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6f6f1a95860958c9962fb6c2a8fe8396</srcmd5>
+    <version>0.1.28</version>
+    <time>1522934901</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593177</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2eac464af15fc5dec443d5bde1542824</srcmd5>
+    <version>0.1.31</version>
+    <time>1533214498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626419</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>34730c50d70e49ce8a5a75a1ebaa45e8</srcmd5>
+    <version>0.1.32</version>
+    <time>1542749002</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649486</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>5eaa4bd1a620bcca3596082bdeb192c8</srcmd5>
+    <version>0.1.32</version>
+    <time>1543827889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652143</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>026d7a034696d71137ccfe67bbd834c6</srcmd5>
+    <version>0.1.39</version>
+    <time>1565362319</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721555</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Fri Aug 25 14:14:02 UTC 2017 - jengelh@inai.de
+
+- RPM group fixes. Remove redundant %clean section. Replace
+  %__-type macro indirections.
+
+-------------------------------------------------------------------
+Wed Aug 23 13:28:24 UTC 2017 - vcizek@suse.com
+
+- Add openssl 1.1 compatibility (bsc#1055285)
+  * add liboauth-openssl_1.1_compatibility.patch from
+    https://github.com/x42/liboauth/issues/9
+
+-------------------------------------------------------------------
+Thu Feb 12 16:12:09 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.0.3
+  * clarify documentation of oauth_curl
+  * fix possible memleak in oauth_curl (only relevant if an error occurs)
+  * fix TOCTOU in oauth_curl_post_file: the file may change between
+    stat() and fopen()
+
+-------------------------------------------------------------------
+Thu Nov 22 14:18:44 UTC 2012 - crrodriguez@opensuse.org
+
+- Remove dependency bloat on curl/openssl on main and devel
+  packages. 
+
+-------------------------------------------------------------------
+Sat Nov 19 20:44:55 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Jul 11 08:49:44 UTC 2011 - coolo@novell.com
+
+- add baselibs.conf to allow libgdata13 to link against it
+
+-------------------------------------------------------------------
+Mon Mar 14 22:57:57 UTC 2011 - gregkh@suse.de
+
+- bump to 0.9.4 release
+
+-------------------------------------------------------------------
+Mon Sep 27 01:01:30 UTC 2010 - gregkh@suse.de
+
+- bump to 0.9.1 release
+- add libopenssl-devel install dependancy to liboauth-devel
+
+-------------------------------------------------------------------
+Wed Jul 28 19:45:36 UTC 2010 - mrueckert@suse.de
+
+- fix warning about shared library packaging policy
+
+-------------------------------------------------------------------
+Tue Jul 27 21:18:27 UTC 2010 - gregkh@suse.de
+
+- initial creation of the package
+
+-------------------------------------------------------------------

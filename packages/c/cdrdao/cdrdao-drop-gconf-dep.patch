@@ -1,0 +1,21 @@
+From: Franciscarlos Santos Soares <prof.franciscarlos@gmail.com>
+Date: Wed, 11 Jul 2018 13:15:14 -0300
+Subject: Remove dependency on gconf
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: cdrdao-1.2.3/configure.ac
+===================================================================
+--- cdrdao-1.2.3.orig/configure.ac
++++ cdrdao-1.2.3/configure.ac
+@@ -8,7 +8,7 @@ AM_INIT_AUTOMAKE
+ AM_CONFIG_HEADER(config.h)
+ AM_MAINTAINER_MODE
+ AC_CANONICAL_HOST
+-AM_GCONF_SOURCE_2
++#AM_GCONF_SOURCE_2
+ 
+ AC_ARG_WITH(pcctsbin,[  --with-pcctsbin=dir     set directory of PCCTS parser generator executables],[pcctsbin=$withval],[pcctsbin=default])
+ 

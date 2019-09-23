@@ -1,0 +1,9 @@
+<package name="accountsservice" project="openSUSE:Factory">
+  <title>D-Bus Service to Manipulate User Account Information</title>
+  <description>The accountsservice server provides a set of D-Bus interfaces for
+querying and manipulating user account information.
+
+The implementation is based on the useradd, usermod and userdel
+commands.</description>
+  <devel project="GNOME:Factory" package="accountsservice"/>
+</package>

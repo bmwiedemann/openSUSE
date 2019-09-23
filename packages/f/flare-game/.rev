@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>147255983e8a615ee07ef09fc9fc3c04</srcmd5>
+    <version>0.20</version>
+    <time>1489021236</time>
+    <user>dimstar_suse</user>
+    <comment>correct the license and remove the 13.1 workaround</comment>
+    <requestid>459438</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>93b38708ba6b5065711b4a5df703eaa5</srcmd5>
+    <version>1.0</version>
+    <time>1522596392</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587185</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f3b9b25996f9909c0745fc999d13081b</srcmd5>
+    <version>1.09.01</version>
+    <time>1546946629</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658851</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d09246092ad479c07d1bf43404797e4b</srcmd5>
+    <version>1.10</version>
+    <time>1558340942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703958</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>89f0f5133838b1f3c59b57d280801bd5</srcmd5>
+    <version>1.11</version>
+    <time>1564414153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719371</requestid>
+  </revision>
+</revisionlist>

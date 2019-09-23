@@ -1,0 +1,23 @@
+From f729ac3a9c9e50351ba7a0c604cbee6013ef2d87 Mon Sep 17 00:00:00 2001
+From: Mel Gorman <mgorman@suse.de>
+Date: Wed, 29 May 2013 11:26:02 +0100
+Subject: [PATCH] Suppress an rpmlint warning related to RPM_OPT_FLAGS
+
+Making depends does not appear to require the flags but rpmlint complains
+so keep it happy.
+
+Signed-off-by: Mel Gorman <mgorman@suse.de>
+
+diff --git a/Makefile b/Makefile
+index d6134f8..f695e73 100644
+--- a/Makefile
++++ b/Makefile
+@@ -58,7 +58,7 @@ distclean: clean
+ depend: .depend
+ 
+ .depend:
+-	${CC} -MM -DDEPS_RUN -I. ${SOURCES} > .depend.X && mv .depend.X .depend
++	${CC} ${CFLAGS} -MM -DDEPS_RUN -I. ${SOURCES} > .depend.X && mv .depend.X .depend
+ 
+ include .depend
+ 

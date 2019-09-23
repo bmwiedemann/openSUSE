@@ -1,0 +1,8 @@
+<package name="libbytesize" project="openSUSE:Factory">
+  <title>A library for working with sizes in bytes</title>
+  <description>The LibBytesize is a C library that facilitates work with sizes in
+bytes. Be it parsing the input from users or producing a nice human readable
+representation of a size in bytes this library takes localization into
+account. It also provides support for sizes bigger than MAXUINT64.</description>
+  <devel project="devel:libraries:c_c++" package="libbytesize"/>
+</package>

@@ -1,0 +1,218 @@
+-------------------------------------------------------------------
+Fri Jun 21 09:59:29 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.7.10
+  * Fix the FIXME in XIValuatorClass case of copy_classes function in XExtInt.c
+  * _XIPassiveGrabDevice needs to set time value
+  * Replace open-coded FP3232_TO_DOUBLE
+  * autogen: add default patch prefix
+  * autogen.sh: use quoted string variables
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * Update configure.ac bug URL for gitlab migration
+  * Update README for gitlab migration
+  * man: add a bunch of missing spaces
+  * Update XIChangeHierarchy.txt
+
+-------------------------------------------------------------------
+Mon Jan 23 09:58:45 UTC 2017 - sndirsch@suse.com
+
+- Update to version 1.7.9:
+  * Plug a memory leak
+  * Check that allocating a buffer succeeded
+  * Fix possible free of uninitialized pointer
+
+-------------------------------------------------------------------
+Fri Oct 28 23:26:17 UTC 2016 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.7.8:
+  The changes of 1.7.7 are included.
+  + Fix a crash introduced in the 1.7.7 release.
+  + Properly validate server responses.
+
+-------------------------------------------------------------------
+Tue Dec 22 17:34:13 UTC 2015 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.7.6:
+  One significant change here: libXi was using raw serial numbers in event
+  cookies, the one read off the wire. All other events don't use that number
+  but a Xlib-internal serial number which is similar but not always the same.
+  This could cause events to look out of order. With this release, libXi is
+  now using the same serial number for event cookies as it uses for all other
+  events.
+
+-------------------------------------------------------------------
+Fri Sep 11 12:09:30 UTC 2015 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.7.5:
+  A couple of important bugfixes that have accumulated over the last
+  year.
+  + Fix version check in _XIAllowEvents
+  + Advance the request buffer by the right amount in XIChangeHierarchy
+  + Fix double unlock when _XiCheckExtInit return -1.
+  + XIChangeHierarchy: Add missing unlock.
+  + Do not return NoSuchExtension casted to pointer as an error.
+  + XIGetClientPointer: Return False on error.
+  + Fix logic in _XIAllowEvents and prevent double unlock.
+  + Refactor XGetExtensionVersion.
+  + XIGrabDevice: Unlock display in error path.
+
+-------------------------------------------------------------------
+Fri Jul 18 11:53:44 UTC 2014 - sndirsch@suse.com
+
+- Update to version 1.7.4
+  * Fix locking bugs with XIAllowTouchEvents() and XIUngrabTouchBegin() 
+
+-------------------------------------------------------------------
+Fri Jul 11 09:51:19 UTC 2014 - sndirsch@suse.com
+
+- Update to version 1.7.3
+  * Two important patches fixing deadlocks when using XIPassiveGrab
+    requests.  You're recommended to updated. Note that we now
+    require libX11 1.6, that's a new dependency over 1.7.2 but it's
+    over a year old by now anyway.
+- added baselibs.conf as source to specfile
+
+-------------------------------------------------------------------
+Wed Jul  3 23:20:44 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.7.2:
+  Only one minor change since the RC. Again, this release contains the fixes
+  for CVE-2013-1998, CVE-2013-1984 and CVE-2013-1995 so you're encouraged to
+  update.
+  + Remove check that can never be true.
+  
+-------------------------------------------------------------------
+Fri Jun 28 12:32:47 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.7.1.901:
+  First and likely only RC for libXi 1.7.2. This one has a bunch of changes
+  for CVE-2013-1998, CVE-2013-1984 and CVE-2013-1995. These relate to various
+  integer overflows and other corruption that happens if we trust the server
+  a bit too much on the data we're being sent.
+  On top of those fixes, the sequence number in XI2 events is now set
+  propertly too (#64687).
+
+-------------------------------------------------------------------
+Fri Apr  5 13:51:01 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.7.1:
+  Only a single fix: including the XFixes header to get the typedef for
+  PointerBarrier. Naturally, this adds a pkgconfig build-time dependency on
+  XFixes.
+  Why? The header shipped with 1.7 typedef'd PointerBarrier. If you #include
+  both XI and Xfixes headers, you will end up with a duplicate typedef.
+  This is not an issue on gcc >= 4.6 since the two typedef's are the same.
+  On earlier versions this will trigger an error. gcc 4.6 -pedantic-errors
+  will trigger the same error.
+
+-------------------------------------------------------------------
+Tue Mar 19 18:19:37 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+- Avoid calling fdupes outside of /usr
+
+-------------------------------------------------------------------
+Thu Mar  7 01:35:11 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.7:
+  The feature added in this revision is pointer barrier events and releases.
+  Pointer barriers themselves are an XFixes 5 feature, XI 2.3 adds two
+  disctinct features to barriers:
+  + the ability for clients to get notified if pointer movement is restricted
+    by a barrier
+  + the ability for clients to allow a pointer to move through a barrier
+    after it was constrained by the barrier
+  For a more verbose explanation of these features please refer to:
+  http://who-t.blogspot.com.au/2012/12/whats-new-in-xi-23-pointer-barrier.html
+
+---------------------------------------------------------
+Wed May  9 08:43:58 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.6.1:
+  + Major bugs fixed:
+    - wrong button and mask copy
+    - raw event sourceid is now set
+  + Small cleanups and bug fixes.
+
+-------------------------------------------------------------------
+Wed Apr 11 17:03:20 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.6.0:
+  + Implement XI 2.2 (which provides multitouch)
+  + Various cleanups and bug fixes
+- Changes from version 1.5.0:
+  + Implement XI 2.1 (which provides smooth scrolling)
+  + Various cleanups and bug fixes
+  + Man page improvements
+- Changes from version 1.4.2:
+  + Various cleanups and bug fixes
+  + Build configuration improvements
+- Changes from version 1.4.1:
+  + Important fixes for bugs that cause clients to misbehave.
+
+-------------------------------------------------------------------
+Sun Feb 12 02:09:10 UTC 2012 - jengelh@medozas.de
+
+- Update homepage URL and set a minimal package description
+  (found one in tarball announcement mails)
+
+-------------------------------------------------------------------
+Fri Feb 10 15:56:36 UTC 2012 - sndirsch@suse.com
+
+- improved -devel provides/obsoletes for openSUSE 12.2
+
+-------------------------------------------------------------------
+Fri Feb 10 14:20:33 UTC 2012 - sndirsch@suse.com
+
+- added provides/obsoletes for old libXi6-devel package 
+
+-------------------------------------------------------------------
+Thu Feb  9 16:44:18 UTC 2012 - jengelh@medozas.de
+
+- Rename SRPM from libXi6 to libXi (no Obsoletes needed for BRPMs)
+
+-------------------------------------------------------------------
+Sun Feb  5 01:37:10 UTC 2012 - jengelh@medozas.de
+
+- Remove apparently unused (Build)Requires on Xau, Xdmcp, xtrans
+- Add required runtime dependency on libXext-devel
+  (XInput2.h uses libXext-devel:Xge.h)
+- Use pkgconfig() symbols to pull in BuildRequires
+- Remove redundant tags/sections like %clean
+- Parallel build with %_smp_mflags
+
+-------------------------------------------------------------------
+Wed Nov  3 04:46:01 UTC 2010 - sndirsch@novell.com
+
+- update to release 1.4.0
+  * This version doesn't add new features but has seen numerous
+    packaging cleanups and a number of miscellaneous fixes.
+
+-------------------------------------------------------------------
+Sat Sep  4 16:21:10 UTC 2010 - sndirsch@novell.com
+
+- update to release 1.3.1
+  A few minor build system cleanups but I've cherry-picked only
+  those that didn't require a macros update for this version. The
+  requirements are thus the same as for 1.3.0.
+  A couple of random other fixes, most notably two display lock
+  fixes. The other fix that's quite prominent is the
+  initialization of the extension with a server-specific number of
+  events. Previously, libXi 1.3 running against a non-XI2 enabled
+  server would result in mishandling of events (pending extension
+  initialization order).
+- update to release 1.3.2
+  Brown paper bag release. Just one commit, fixing up a erroneous
+  conflict resolution that resulted in an inverted condition for
+  the asciidoc/xmlto checks and an error when building man pages.
+
+-------------------------------------------------------------------
+Fri Apr  2 17:28:57 CEST 2010 - sndirsch@suse.de
+
+- use real version number instead of the one from X.Org 
+
+-------------------------------------------------------------------
+Sat Jan 16 05:11:17 CET 2010 - sndirsch@suse.de
+
+- created package 
+

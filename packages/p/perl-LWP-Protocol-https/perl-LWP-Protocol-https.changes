@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Thu Sep 13 15:42:12 UTC 2018 - pmonrealgonzalez@suse.com
+
+- 6.07      2017-02-19
+    - Cleaned up the Changes log
+    - Explicitly add hostname for SNI to start_SSL (GH PR#17)
+    - Fix the license name
+    - Update some documentation on SSL args
+    - Fix bug when checking for Mozilla::CA (GH PR#29)
+ 
+- Refreshed patch LWP-Protocol-https-6.04-systemca.diff
+
+- Cleaned spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Apr 23 06:00:03 UTC 2015 - coolo@suse.com
+
+- updated to 6.06
+   see /usr/share/doc/packages/perl-LWP-Protocol-https/Changes
+
+  2014-04-18 LWP-Protocol-https 6.06
+  
+  Mike Schilli (3):
+        Merge pull request #12 from drieux/subjectAltName
+        Merge pull request #9 from chorny/master
+        Updated libwww requirement to 6.06 to fix failing t/proxy.t test cases.
+  
+  Gisle Aas (2):
+        Getopt::Long isn't actually used
+        Merge pull request #7 from noxxi/master
+  
+  Alexandr Ciornii (1):
+        better diagnostics in case of failures in apache.t
+  
+  Karen Etheridge (1):
+        Merge pull request #8 from cpansprout/patch-1
+  
+  Steffen Ullrich (1):
+        correct behavior for https_proxy, this goes together with change to 
+        libwww-perl cb80c2ddb7, new method _upgrade_sock in LWP::Protocol::https
+  
+  cpansprout (1):
+        Typo fix: envirionment =~ s/io/o/
+  
+  drieux (1):
+        support for subjectAltName
+  
+  
+  _______________________________________________________________________________
+
+-------------------------------------------------------------------
+Thu May 15 09:39:07 UTC 2014 - vcizek@suse.com
+
+- fix for CVE-2014-3230 (bnc#876862)
+  * perl-LWP-Protocol-https: Environment variables HTTPS_CA_DIR or
+    HTTPS_CA_FILE disable hostname verification
+  * added CVE-2014-3230.patch
+
+-------------------------------------------------------------------
+Wed Apr 30 17:23:34 UTC 2014 - lchiquitto@suse.com
+
+- Remove old tarball (6.03).
+
+-------------------------------------------------------------------
+Wed Jul  3 09:32:03 UTC 2013 - lnussel@suse.de
+
+- Version 6.04
+  * Fix IO::Socket::SSL warnings when not verifying hostname.
+  * Doc spelling fix.
+- Remove usage of Mozilla::CA entirely. IO::Socket::SSL will do the
+  right thing instead.
+
+-------------------------------------------------------------------
+Tue Feb 21 11:26:38 UTC 2012 - coolo@suse.com
+
+- updated to 6.03
+  * Skip test if offline [RT#74163]
+  * Typo fixes
+  * Restore perl-5.8.1 compatibility.
+
+-------------------------------------------------------------------
+Tue Mar 29 12:06:43 UTC 2011 - vcizek@novell.com
+
+- initial package 6.02
+  * created by cpanspec 1.78.03
+
+  This module used to be bundled with the libwww-perl, but it was unbundled in
+  v6.02 in order to be able to declare its dependencies properly for the CPAN
+  tool-chain.  Applications that need https support can just declare their
+  dependency on LWP::Protocol::https and will no longer need to know what
+  underlying modules to install.

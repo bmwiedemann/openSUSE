@@ -1,0 +1,5 @@
+<package name="ca-certificates" project="openSUSE:Factory">
+  <title>Utilities for system wide CA certificate installation</title>
+  <description>Utilities for system wide CA certificate installation</description>
+  <devel project="Base:System" package="ca-certificates"/>
+</package>

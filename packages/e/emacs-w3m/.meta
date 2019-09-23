@@ -1,0 +1,13 @@
+<package name="emacs-w3m" project="openSUSE:Factory">
+  <title>An interface program to use w3m with Emacs</title>
+  <description>Emacs-w3m is an interface program to use w3m with Emacs.
+
+W3 is the most well known WEB browser which works on (X)Emacs, but it
+is very slow. Emacs-w3m is an alternative. It uses w3m, which is a pager
+with WWW capability, developed by Akinori ITO. It is a pager, but it
+can be used as a text-mode WWW browser.
+
+</description>
+  <devel project="M17N" package="emacs-w3m"/>
+  <url>http://emacs-w3m.namazu.org/</url>
+</package>

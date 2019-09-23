@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Wed Mar 25 16:08:38 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.8.4
+  * Updated man page (doc/sopwith.6) to match Debian's manual page.
+  * Bring Sopwith up to date with bug fixes provided by Fedora.
+    This should avoid crash on start-up problems and makes
+    compiling more robust.
+- Changes from version 1.8.3
+  * The function asynclos() in swasynio.c includes a parameter
+    which is never used. Calling functions do not bother passing
+    a parameter. To avoid undefined behaviour the definition of
+    aynclos() has been fixed. (bdo#748172)
+  * Updated manual page to provide current default keys and
+    mention the location of the custom keys file (~/.sopwith/keys)
+  * Removed stray object files from tarball.
+  * Added rule to makefile "tarball" which performs more
+    complete clean-up and makes tarball in parent directory.
+- Changes from version 1.8.2
+  * Added SDL_CFLAGS flag to src/Makefile to bring us
+    in line with FreeBSD patches.
+  * Updated copyright notice on help screen.
+  * Removed compiler optimiations to avoid crashes when game is
+    built using versions of GCC newer than 4.6.
+- Changes from version 1.8.1
+  * Corrected initialization error would would prevent sound
+    from playing at start-up.
+  * Updated documentation to include command line flags for
+   playing music (-p) and starting Sopwith in quiet mode (-q).
+- Changes from version 1.8.0
+  * Most distributions are moving to GTK-3, sopwith's legacy code uses
+    GTK-2. Dropping GTK support in favour of SDL.
+  * Modified configure script.
+  * Patched crash caused by failure to find a suitable video device.
+  * Modified src/sdl/video.c to add new check.
+  * Fixed configure warings related to datarootdir variable.
+- Changes from version 1.7.5
+  * Cleaned up code to avoid compile warnings. Sopwith now
+    builds cleanly using Clang 3.0 and GCC 4.6.
+  * Added custom keys option. Controls can be altered by
+    adjusting the values in the ~/.sopwith/keys file. On
+    Windows this file should be located in the user's profile
+    under "AppData/Local/.sopwith/keys".
+- Changes from version 1.7.4
+  * Added man page patch to update documentation.
+  * Added include statements in vid_vga.c and sdl/video.c to bring
+    us in line with Debian's patches.
+  * Applied patch to swasynio.c to correct spelling errors.
+  * Oil tank explosions should be a little more intense now. These
+    larger/faster explosions can be turned off at the command line
+    by using the "-e" flag. (bdo#188298.)
+- Changes from version 1.7.3
+  * Added range check patch to avoid crashes when plan or missile 
+   is close to the edge of the map. (bdo#224518 and bdo#258751)
+  * Mouse pointer no longer appears over Sopwith window.
+    (bdo#187930)
+  * Depreciated gtk branch, updated configure/makefile scripts.
+  * Sound is now turned off by default. Sound can be turned on using
+    the -p flag from the command line.
+  * Fixed socket check in tcpcomm.c (error returns -1, not less than -2).
+  * When AI plane is chasing the player's plane, the AI plane will
+    now shoot if it is in position. (swauto.c)
+  * When the player's plane is damaged, the auto-pilot is less
+    manouverable, just like the player's controls. (swauto.c)
+  * Holding down the X or Z keys now causes the player's plane to
+    constantly speed up or slow down. Previously, the key had
+    to be rapidly tapped to change speed. (bdo#188301)
+  * Updated title screen to show exit message.
+  * Fixed compiler warning in swconf.c
+- Changes from version 1.7.2
+  * Cleaned up some compile errors from gcc 4.4.1 on Ubuntu.
+    (bdo#582399)
+  * Added -g command line option. -g and a number, such as -g2
+    will start the game on difficulty level 2. Normally the
+    game starts at zero. (bdo#582398)
+- Correct source Url
+- Remove fixed on upstream patches
+  * sopwith-gcc4.patch
+  * sopwith.6.patch
+  * sopwith-gtk-video.patch
+  * sopwith-sdl-video.patch
+  * sopwith-vid_vga.patch
+- Update sopwith-gpl.diff
+- Add sopwith-fix-string-include.patch
+- Remove gtk2-devel of require list; upstream has dropped gtk support
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Fri Aug  3 13:53:52 UTC 2012 - lnussel@suse.de
+
+- use font header file from SDL_gfx (bnc#774330)
+
+-------------------------------------------------------------------
+Mon Jul 23 11:35:50 UTC 2012 - lnussel@suse.de
+
+- initial package version 1.7.1 based on Fedora's
+

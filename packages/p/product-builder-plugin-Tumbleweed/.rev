@@ -1,0 +1,120 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7036288d5c01b51509cfe0216069b9a4</srcmd5>
+    <version>1.0~pre.1492089529.4685cf8</version>
+    <time>1494088175</time>
+    <user>dimstar_suse</user>
+    <comment>new product builder for Leap 15</comment>
+    <requestid>491635</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>adea15f9fcec7a9d9f56b52fdb93e251</srcmd5>
+    <version>1.0~pre.1492089529.4685cf8</version>
+    <time>1495469381</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497151</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cc240e3acd6cacdf8bd75d5c313926f6</srcmd5>
+    <version>1.0~pre.1495630701.9f80a3d</version>
+    <time>1496327661</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>500173</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c008f3706ad0a3f576d91ae91c54f584</srcmd5>
+    <version>1.0~pre.1497944896.b201a36</version>
+    <time>1498485163</time>
+    <user>dimstar_suse</user>
+    <comment>bugfixes</comment>
+    <requestid>505846</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6d4f718caf90065db0e64d7d90a9df54</srcmd5>
+    <version>1.0~pre.1499787351.59487ac</version>
+    <time>1499788581</time>
+    <user>dimstar_suse</user>
+    <comment>add support for susedata tool
+</comment>
+    <requestid>509509</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b90c1bbf00fd5eb1d6109d40407fd3be</srcmd5>
+    <version>1.0~pre.1502701492.44addf1</version>
+    <time>1503060986</time>
+    <user>dimstar_suse</user>
+    <comment>- fix adding of license.tar.gz to repodata</comment>
+    <requestid>516779</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e45d112bb3b0e21dc7d92ae525e5451c</srcmd5>
+    <version>1.0~pre.1503061558.bf11442</version>
+    <time>1503392798</time>
+    <user>dimstar_suse</user>
+    <comment>- fix signing of CHECKSUMS file</comment>
+    <requestid>517572</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4c0217e7bd3ea887ac7dc5fa832a1185</srcmd5>
+    <version>1.0~pre.1503641982.ffb521b</version>
+    <time>1503929784</time>
+    <user>dimstar_suse</user>
+    <comment>create also pubkey file for repomd.xml</comment>
+    <requestid>518640</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1bfd8aa11286b0eb04efb42ccef9e228</srcmd5>
+    <version>1.0~pre.1505229734.e75d199</version>
+    <time>1505331490</time>
+    <user>dimstar_suse</user>
+    <comment>support multiple license files on multi product media</comment>
+    <requestid>523756</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>47023ce5e86579d48edc2ebb1ce9c971</srcmd5>
+    <version>1.0~pre.1505901051.22e279d</version>
+    <time>1506340365</time>
+    <user>dimstar_suse</user>
+    <comment>- fix product specific license cleanup and naming scheme</comment>
+    <requestid>527497</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1701a1d086f5a567b7b38873d8942e00</srcmd5>
+    <version>1.0~pre.1509619089.24f326a</version>
+    <time>1509820115</time>
+    <user>dimstar_suse</user>
+    <comment>- download instsys again on NET install media. Follow linuxrc
+  default now.
+- fix cleanup code for mini media</comment>
+    <requestid>538318</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>97a88bc401ff7796fab49b89f5247010</srcmd5>
+    <version>1.0~pre.1516716020.44dfdf4</version>
+    <time>1516803898</time>
+    <user>dimstar_suse</user>
+    <comment>- removed kexec line (bsc#990374)</comment>
+    <requestid>568586</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3444bb29d7f0e5216884d62fe57d44e6</srcmd5>
+    <version>1.1~pre.1548856050.054a6a1</version>
+    <time>1549623976</time>
+    <user>coolo</user>
+    <comment>- support multiple product repoid tags
+
+- add dependency to instsource-susedata for disk usage meta data</comment>
+    <requestid>670146</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ca80130ad502f8ca3b982335fa4dde1a</srcmd5>
+    <version>1.1~pre.1549882033.98140aa</version>
+    <time>1549882732</time>
+    <user>dimstar_suse</user>
+    <comment>- instsys comes from remote source again
+  (keep avoiding kexec call)</comment>
+    <requestid>673285</requestid>
+  </revision>
+</revisionlist>

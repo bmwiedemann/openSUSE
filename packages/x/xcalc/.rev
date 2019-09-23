@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f783d8141c5f286b91c2e7f7a04b970c</srcmd5>
+    <version>1.0.4.1</version>
+    <time>1336471226</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115398</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f783d8141c5f286b91c2e7f7a04b970c</srcmd5>
+    <version>1.0.4.1</version>
+    <time>1340184335</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>f783d8141c5f286b91c2e7f7a04b970c</srcmd5>
+    <version>1.0.4.1</version>
+    <time>1359110592</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>640214e4cf016e2b30ce2ce9816a5776</srcmd5>
+    <version>1.0.5</version>
+    <time>1360075677</time>
+    <user>coolo</user>
+    <comment>Update to version 1.0.5 (forwarded request 149196 from Zaitor)</comment>
+    <requestid>151263</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>640214e4cf016e2b30ce2ce9816a5776</srcmd5>
+    <version>1.0.5</version>
+    <time>1379664994</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>640214e4cf016e2b30ce2ce9816a5776</srcmd5>
+    <version>1.0.5</version>
+    <time>1409303674</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d88b539c50fcbe89522c42d7eab2d5e3</srcmd5>
+    <version>1.0.6</version>
+    <time>1422960018</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283723</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>465434ad0c854071e26879c965a9d549</srcmd5>
+    <version>1.0.7</version>
+    <time>1550574147</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.0.7
+  * This release fixes things that cause warnings from gcc or
+    cppcheck, as well as assorted build system maintenance and
+    tuneups.</comment>
+    <requestid>677159</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f57a1b05583d6e8396e9134587f88cc1</srcmd5>
+    <version>1.1.0</version>
+    <time>1560338222</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0
+  * This release adds base conversion (decimal, octal, hexadecimal),
+    bitwise ops (and, or, xor, not, shift left/right, truncate), and
+    a modulo operator to the default TI (infix, i.e. not RPN/postfix)
+    calculator mode.  It also binds the Return key to the &quot;=&quot; button.</comment>
+    <requestid>709093</requestid>
+  </revision>
+</revisionlist>

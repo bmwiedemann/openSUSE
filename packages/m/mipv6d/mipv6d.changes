@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Tue Dec 12 09:43:31 UTC 2017 - meissner@suse.com
+
+- mipv6d-openssl11.patch: mipv6d ported to openssl 1.1.
+
+-------------------------------------------------------------------
+Tue Dec 12 07:40:52 UTC 2017 - mt@suse.de
+
+- Build against libopenssl-1_0_0-devel
+- Fixed incorrect memset lengths and added explicit braces around
+  conditional debug macro calls that may expand to empty if-body.
+  New patch file: mipv6-2.0.2-umip-0.4.diff
+
+-------------------------------------------------------------------
+Wed Mar 15 17:48:31 UTC 2017 - dimstar@opensuse.org
+
+- Drop SysV init script, replaced with a systemd unit.
+- Add the relevant systemd macros to the scriptlets.
+
+-------------------------------------------------------------------
+Thu Feb 11 07:38:05 UTC 2016 - meissner@suse.com
+
+- Use the builtin libnetlink, as the upstream is no longer compatible
+  to the one mipv6d was developed against.
+
+-------------------------------------------------------------------
+Tue Aug 26 12:17:52 UTC 2014 - jengelh@inai.de
+
+- Replace libnl-1_1-devel build time dependency by libnetlink-devel
+  where -lnetlink really lives.
+
+-------------------------------------------------------------------
+Tue Mar 12 14:02:37 UTC 2013 - cfarrell@suse.com
+
+- License update: GPL-2.0
+  No indication of aggregation.
+
+-------------------------------------------------------------------
+Wed Mar  6 06:16:28 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Fri Dec  2 12:58:22 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Nov  3 13:04:34 UTC 2011 - mt@suse.com
+
+- Updated to git master commit 74528e1f fixing a memory leak,
+  adopted build requires, touched ghost mip6d.conf, test the
+  config size in the init script.
+
+-------------------------------------------------------------------
+Fri Sep 16 12:02:37 UTC 2011 - jengelh@medozas.de
+
+- Select libnl-1_1-devel
+
+-------------------------------------------------------------------
+Mon Jan 10 17:02:01 UTC 2011 - mt@suse.de
+
+- Added mip6d init script
+
+-------------------------------------------------------------------
+Mon Jan 10 15:25:20 UTC 2011 - mt@suse.de
+
+- Switched to mipv6-2.0.2-umip-0.4 from http://www.umip.org/, git
+  repository master at commit b9ea7fd6, including various fixes
+  and features, NEMO support and addressing the security issues as
+  reported and fixed in the past by Sebastian Krahmer (bnc#424311,
+  CVE-2010-2522, CVE-2010-2523).
+
+-------------------------------------------------------------------
+Thu Sep  9 13:32:06 UTC 2010 - mt@suse.de
+ 
+- security fixes (bnc#424311):
+  * CVE-2010-2522 mipv6 daemon local message spoofing
+  * CVE-2010-2523 mipv6 daemon remote buffer overflow
+
+-------------------------------------------------------------------
+Wed Aug  5 15:10:00 CEST 2009 - aj@suse.de
+
+- Fix build with new glibc (mipv6d-build.patch).
+
+-------------------------------------------------------------------
+Fri Sep  5 14:24:13 CEST 2008 - kkeil@suse.de
+
+- first version 2.0.2
+
+

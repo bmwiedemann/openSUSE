@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Fri Sep 21 06:23:43 UTC 2018 - olaf@aepfle.de
+
+- Use -std=gnu99 to fix compilation of bogus C code
+
+-------------------------------------------------------------------
+Fri Aug 24 13:57:57 UTC 2018 - tchvatal@suse.com
+
+- Update to 0.30.0:
+  * Update bundled waf to 2.0.9
+  * Fix various typos in comments
+  * Various fixes in the testsuite
+
+-------------------------------------------------------------------
+Mon Jan  8 09:12:15 UTC 2018 - tchvatal@suse.com
+
+- Tweak a bit more py3 dep to not pull whole python but just base
+- Fix group on one of the subpkgs
+
+-------------------------------------------------------------------
+Fri Jan  5 12:49:59 UTC 2018 - davejplater@gmail.com
+
+- Remove python-base dependency and change headers in python scripts
+  to python3
+
+-------------------------------------------------------------------
+Thu Nov  2 11:24:42 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.28.0:
+  * Add support for reading from a user provided callback
+  * Add serd_node_from_substring()
+  * Fix strict parsing of abolute URI schemes
+  * Fix parsing of hex escapes in file URIs (thanks Johannes Mueller)
+  * Gracefully handle applications that write corrupt UTF-8
+  * Fix hangs when reading corrupt UTF-8
+  * Add support for TriG and NQuads
+  * Add support for braindead SPARQL PREFIX and BASE directives
+  * Add serd_node_new_relative_uri()
+  * Fix construction and comparison of URIs with UTF-8 characters
+  * Report I/O errors with message and return appropriate status code
+  * Report missing statement separator errors
+  * Fix potential out of bounds read
+  * Fix unaligned memory access, undefined behaviour which breaks on ARM
+  * Fix documentation generation
+  * Update serdi man page
+- Use python3
+- Run spec-cleaner
+- Rename devel subpackage
+- Run tests during build
+
+-------------------------------------------------------------------
+Mon Jan 30 22:06:32 UTC 2017 - jengelh@inai.de
+
+- Fix mismatching RPM group
+- Rename soname macro to sover as it does not contain a name
+
+-------------------------------------------------------------------
+Thu Jan 12 08:32:04 UTC 2017 - olaf@aepfle.de
+
+- Add baselibs.conf for gstreamer-plugins-bad-32bit
+
+-------------------------------------------------------------------
+Wed Dec 16 08:52:37 UTC 2015 - olaf@aepfle.de
+
+- Add BuildRoot: for SLE_11
+
+-------------------------------------------------------------------
+Tue Nov 24 18:45:34 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.22.0
+  * Remove dependence on fmax() to avoid portability issues
+  * Fix serd_reader_read_file() for URIs with escaped characters (spaces)
+  * Add serd_reader_set_strict() and -l (lax) option to serdi to tolerate
+    parsing URIs with escaped characters
+  * Fix reading statements ending with a blank then dot with no space
+  * Fix clash resolution when a blank node ID prefix is set
+  * Fix serializing fractional decimals that would round up
+  * Add support for Turtle named inline nodes extension
+  * Report errors for invalid IRI characters and missing terminators
+  * Show serdi errors in standard format
+  * Fix warnings when building with ISO C++ compilers
+  * Upgrade to waf 1.8.14
+
+-------------------------------------------------------------------
+Mon Mar 23 01:49:40 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.20.0
+  * Support new RDF 1.1 Turtle
+  * Don't write xsd:decimal literals to Turtle bare if they would not be read
+    back with the same type
+  * Fix possible crash in serd_writer_end_anon() when writing invalid lists
+  * Generate blank names like _:b1 and _:B2 not _:genid1 _:docid2
+  * Correctly handle posix_memalign failure
+  * Fix const-correctness violation for reader input string
+  * Add -lm to pkg-config libs
+  * Update to waf 1.7.14
+
+-------------------------------------------------------------------
+Tue Jan  8 11:38:10 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 0.18.2
+  * Fix crash when serd_node_new_decimal is called with infinity or NaN
+  * Fix crash when resolving against non-standard base URIs
+  * Fix bug that caused "a" abbreviation in non-predicate position
+  * Disable timestamps in HTML documentation for reproducible build
+  * Fix clashing symbol "error" in amalgamation build
+  * Update to waf 1.7.8 and autowaf r90 (install docs to versioned directory)
+- Remove serd-0.18.0-build_compare.patch. Applied upstream.
+
+-------------------------------------------------------------------
+Sun Aug 26 21:12:29 UTC 2012 - reddwarf@opensuse.org
+
+- Update to 0.18.0
+  * Support digits at start of local names as per new Turtle
+    grammar
+  * Add incremental read interface suitable for reading from
+    infinite streams
+  * Add -e option to serdi to use incremental reading
+  * Add error callback to reader and writer for custom error
+    reporting
+  * Add -q option to serdi to suppress all non-data
+    output, e.g. errors
+  * Reset indent when finishing a write
+  * Report write size correctly when invalid UTF-8 is encountered
+    and a replacement character is written
+  * Strip down API documentation to a single clean page
+  * Fix various hyper-strict warnings
+  * Do not require a C++ compiler to build
+  * Add option to build utilities as static binaries
+  * Upgrade to waf 1.7.2
+- Add serd-0.18.0-build_compare.patch to make build reproducible
+
+-------------------------------------------------------------------
+Wed Aug  8 22:29:36 UTC 2012 - reddwarf@opensuse.org
+
+- First version of the package
+

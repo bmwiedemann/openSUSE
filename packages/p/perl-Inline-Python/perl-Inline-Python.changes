@@ -1,0 +1,147 @@
+-------------------------------------------------------------------
+Sat Aug  5 05:45:00 UTC 2017 - coolo@suse.com
+
+- updated to 0.56
+   see /usr/share/doc/packages/perl-Inline-Python/Changes
+
+  0.56 Fri  Aug 04 15:30:00 CEST 2017 (Stefan Seifert)
+  	- Fix floating point related test failures on some machines.
+
+-------------------------------------------------------------------
+Wed Jul  5 05:40:56 UTC 2017 - coolo@suse.com
+
+- updated to 0.55
+   see /usr/share/doc/packages/perl-Inline-Python/Changes
+
+  0.55 Tue  Jul 03 09:30:00 CEST 2017 (Stefan Seifert)
+  	- Pass Python floats as floats to Perl, not as string.
+
+-------------------------------------------------------------------
+Wed Jun 14 05:44:10 UTC 2017 - coolo@suse.com
+
+- updated to 0.54
+   see /usr/share/doc/packages/perl-Inline-Python/Changes
+
+  0.54 Tue  Jun 13 08:40:00 CEST 2017 (Stefan Seifert)
+  	- Fix object stringification crashing on Perl < 5.16 (RT #122082)
+
+-------------------------------------------------------------------
+Fri Jun  9 05:51:43 UTC 2017 - coolo@suse.com
+
+- updated to 0.53
+   see /usr/share/doc/packages/perl-Inline-Python/Changes
+
+  0.53 Fri  Jun 02 12:10:00 CEST 2017 (Stefan Seifert)
+  	- Better support for serializing booleans with JSON
+  	- Support calling Perl objects with overloaded code dereferencing
+  	- Support overloaded stringification of Perl objects
+
+-------------------------------------------------------------------
+Fri Dec  2 06:36:50 UTC 2016 - coolo@suse.com
+
+- updated to 0.52
+   see /usr/share/doc/packages/perl-Inline-Python/Changes
+
+  0.52 Thu  Dec 01 20:31:00 CET 2016 (Stefan Seifert)
+  	- Fix test failing on lots of machines
+  	  by Linas Valiukas
+
+-------------------------------------------------------------------
+Fri Nov 11 06:39:48 UTC 2016 - coolo@suse.com
+
+- updated to 0.51
+   see /usr/share/doc/packages/perl-Inline-Python/Changes
+
+  0.51 Thu  Nov 09 08:45:00 CET 2016 (Stefan Seifert)
+  	- Fix memory leak when passing dict with Unicode keys to Perl
+  	  by Linas Valiukas
+
+-------------------------------------------------------------------
+Mon Jul  4 12:46:34 UTC 2016 - coolo@suse.com
+
+- updated to 0.50
+   see /usr/share/doc/packages/perl-Inline-Python/Changes
+
+  0.50 Thu  Jun 30 14:30:00 CEST 2016 (Stefan Seifert)
+  	- Fix memory corruption after passing a dict with a non-string key to Perl
+
+-------------------------------------------------------------------
+Wed Sep  9 08:52:25 UTC 2015 - coolo@suse.com
+
+- updated to 0.49
+   see /usr/share/doc/packages/perl-Inline-Python/Changes
+
+-------------------------------------------------------------------
+Wed Sep  9 08:52:23 UTC 2015 - coolo@suse.com
+
+- updated to 0.40
+   see /usr/share/doc/packages/perl-Inline-Python/Changes
+
+-------------------------------------------------------------------
+Fri Apr 22 18:15:09 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.39
+      - Added py_is_tuple and made Pl2Py recognize an array ref that has
+        been a tuple before in Python.
+      - Fixed memory corruption on a Python function calling a Perl function
+        that changed the stack pointer.
+      - Fixed several memory leaks (scalars and dict keys).
+      - Fixed wrong refcount of return values in py_eval (RT #48081)
+      - Fixed accessing Unicode keys in a dict passed from Perl.
+      - Fixed compatability of t/30floats.t with Python 2.7.
+  
+      - Fix Perl assertion fail if __getitem__ called multiple times
+      - Fix "Attempt to free unreferenced scalar" sometimes happening when
+        calling a Perl sub with named parameters from Python.
+      - Fix several memory leaks found using valgrind
+      - Add py_finalize to be able to shut down the Python interpreter.
+  
+      - Added line numbers to Python exception messages.
+      - Fixed passing of a perl code ref through Python space.
+      - Allow passing references to methods from Python to Perl.
+      - Implemented py_has_attr complementing py_get_attr.
+      - We now support stringification of Python objects via __str__ methods.
+      - Fixed segfault when accessing a Python object's attributes throws an
+        exception.
+      - Fixed some problems with the test suite, hopefully making installation
+        work on more machines.
+      - Fixed compilation on Win32, linking still seems broken though :(
+  
+      - Fixed a segfault when passing dicts with Unicode keys to Perl
+      - Pass Python exceptions to Perl instead of just printing to STDERR
+
+-------------------------------------------------------------------
+Wed Jun  2 23:33:09 UTC 2010 - jw@novell.com
+
+- update to 0.35. Changelog since 0.3.0:
+	- Fixed floats sometimes getting converted to int when transfered from
+	  Perl to Python. Thanks to John McCullough for a great bug report.
+	- Fixed refcounting of positional arguments in named argument calls to
+	  Perl subs.
+	- Added support for named arguments for Perl subs
+	- Perl UTF-8 strings now get converted to Python Unicode strings and
+	  vice versa. This could potentially lead to incompatibilities with
+	  existing code.
+	- Return lists of Perl subs no longer get reversed before passing to
+	  Python.
+	- Implement access to Inline::Python::Object data
+
+-------------------------------------------------------------------
+Thu Dec  3 23:33:12 UTC 2009 - jw@novell.com
+
+- updated to 0.30, added make test, fixed dependencies, 
+  added happy_gcc.patch
+
+-------------------------------------------------------------------
+* Wed Mar 22 2006 Dries Verachtert <dries@ulyssis.org> - 0.22-1.2
+- Rebuild for Fedora Core 5.
+
+* Fri Mar  4 2005 Dries Verachtert <dries@ulyssis.org> - 0.22-1
+- Updated to release 0.22.
+
+* Wed Dec 29 2004 Dries Verachtert <dries@ulyssis.org> - 0.21-1
+- Updated to release 0.21.
+
+* Thu Jul 22 2004 Dries Verachtert <dries@ulyssis.org> - 0.20-1
+- Initial package.
+

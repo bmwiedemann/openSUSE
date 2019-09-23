@@ -1,0 +1,440 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ee68d643b821d81850594f139f66b908</srcmd5>
+    <version>0.9.22</version>
+    <time>1349373571</time>
+    <user>coolo</user>
+    <comment>ressurect package, needed for upcoming systemd</comment>
+    <requestid>136836</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ee68d643b821d81850594f139f66b908</srcmd5>
+    <version>0.9.22</version>
+    <time>1359109303</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>af33bac0429b989dc8e42acb3f13c5bf</srcmd5>
+    <version>0.9.27</version>
+    <time>1370925295</time>
+    <user>coolo</user>
+    <comment>- drop test_tls_options if build is in OBS
+  libmicrohttpd-drop-test_tls_options.patch
+
+- More robust make install call
+- Remove redundant %clean section
+- Requires(pre) is useless without a %pre script
+
+- Update to 0.9.27
+  + performance improvements for POST processing
+  + new API call to reduce the number of select calls (if in &quot;external&quot;
+    select mode)
+  + new function to allow applications to stop MHD from processing new
+    incoming connections while finishing ongoing requests
+  + fixes an initialization problem on some platforms
+  + fixes bug in the postprocessor's URL parser.
+  + SSL connections are no longer dropped if the system uptime is less
+    than the connection timeout
+  + allows creating responses with zero bytes using
+    MHD_create_response_from_callback.
+  + few &quot;const&quot; statements have been added to allow keeping more static
+    strings in ROM.
+  + post processor now tolerates uploads which don't contain &quot;\r\n&quot; and
+    also returns keys which don't have a matching value
+  + fixes the loss of a parameter in processing POST data from IE8 and
+    Chrome. It automatically sets a &quot;Connection: close&quot; header if the
+    client requests the connection to be closed. Finally, given both
+    'chunked' encoding and 'content-length', MHD now ignores the
+    'content-length' header as per the RFC
+  + adds support for building libmicrohttpd for Android
+  + fixes an issue with data in TLS buffers sometimes not being completely</comment>
+    <requestid>177876</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d59a528775e8d7bf445126a60924e84d</srcmd5>
+    <version>0.9.28</version>
+    <time>1374757649</time>
+    <user>coolo</user>
+    <comment>- Update to 0.9.28
+  + support for epoll-based event loops (Linux-only)
+  + various new options:
+    - MHD_USE_DUAL_STACK for binding to IPv4 and IPv6 at the same time
+    - MHD_USE_PIPE_FOR_SHUTDOWN to cleanly support MHD_quiesce_daemon on
+      non-Linux systems
+    - MHD_CONNECTION_INFO_CONNECTION_FD to allow COMET applications to
+      disable TCP Nagle
+    - MHD_OPTION_CONNECTION_MEMORY_INCREMENT for better control over
+      buffer size allocations
+  + and fixes various minor bugs</comment>
+    <requestid>184175</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d59a528775e8d7bf445126a60924e84d</srcmd5>
+    <version>0.9.28</version>
+    <time>1379663005</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d48bbc06196cd17746d3381001950fb9</srcmd5>
+    <version>0.9.30</version>
+    <time>1380876221</time>
+    <user>scarabeus_factory</user>
+    <comment>
+REMOVED DEBIAN FILES: noone bother to update them since 0.9.22, so kill em all
+
+BTW: should go to 13.1
+
+- Update to 0.9.30
+  + implements the &quot;SHOULD&quot; clause of RFC 2616 section 8.1.4, which
+    may reduce bandwidth consumption when clients cancel requests.
+  + fixes build errors with various combinations of operating systems,
+    libc versions, and configure flags.
+  + fixes a use-after-free crash when using epoll() in combination with
+     read errors
+  0.9.29:
+  + epoll can now also be used with SSL connections
+  + following recent HTTP/1.1 clarfications, MHD no longer send
+    a &quot;Content-length&quot; header in CONNECT responses.
+  + the &quot;MHD_add_connection&quot; call now consistently sets an &quot;errno&quot;
+    value to indicate the cause of errors.
+    Connections added this way are now always processed immediately.
+  + fixes a recently-introduced bug which prevented HTTP pipelining
+    from working properly in some cases and a build error in
+    conjunction with the &quot;--disable-messages&quot; configure option.
+- Enable build of (experimental) SPDY support.</comment>
+    <requestid>202028</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8af8a77d83c049cf81d52fb1a13377ef</srcmd5>
+    <version>0.9.33</version>
+    <time>1391360932</time>
+    <user>coolo</user>
+    <comment>- refresh libmicrohttpd-drop-test_tls_options.patch
+  - add there also ignoring test_https_sni
+- Update to 0.9.33
+  + Fixed an issue with a missing argument in the postexample.
+  + Fixed issue with bogus offset increment involving sendfile on
+    GNU/Linux.  Adding support for SNI.
+  + Fix for per-worker daemon pipes enabled with
+    MHD_USE_SUSPEND_RESUME that were not closed in MHD_stop_daemon.
+  + Fixing warnings and build issue if --disable-https is given to
+    configure.
+  +
+  0.9.32:
+  + Security fix: do not read past 0-terminator when unescaping
+    strings (thanks to Florian Weimer for reporting).
+  + Signaling n times for shutdown works, but for resume we need to
+    wake up the correct daemon. Even if we signal n times in
+    that case also, there's no guarantee that some daemon can't
+    run through its select loop more than once before the
+    daemon we want to wake up gets a chance to read.  Thus we
+    need a signal pipe per thread in the thread pool IF
+    MHD_suspend_connection is used.  This introduces a new flag
+    MHD_USE_SUSPEND_RESUME to add those additional pipes and
+    only allow MHD_suspend_connection to be used in conjunction
+    with this flag.
+    Also, as MHD_resume_connection() will be called on a
+    non-daemon thread, but none of the queue insert/delete
+    calls are thread safe, we need to be concerned about (a)
+    corrupting the queue, and (b) having to add mutex
+    protection around every access to the queues, including
+    loops through timer queues, etc. This wasn't a problem (forwarded request 215320 from sleep_walker)</comment>
+    <requestid>215346</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c277ae338e9b15fa1e587dd37a736b7a</srcmd5>
+    <version>0.9.34</version>
+    <time>1398499124</time>
+    <user>coolo</user>
+    <comment>- remove dependency on gpg-offline, source validator already
+  does that
+
+- Version bump to 0.9.34:
+  * Drop tls patch seems to build fine
+  * Remove code for other distros we build against 13.1+ anywhere
+    within obs and it just clutters the spec.
+  * Explicitely name switches in configure to make sure things go
+    the desired way.
+  * Fix install of libmicrohttpspdy pc file.
+  + Added support for TCP FASTOPEN.
+  + Removed dependency on plibc for simpler compilation for W32.
+  + Added configure option &quot;--disable-pipes&quot; to use socketpairs
+    instead of pipes for signalling to child threads. Pipes are
+    always disabled on W32.
+  + Corrected some uses of 'int' vs. 'size_t'.
+  + MHD_USE_DUAL_STACK in libmicrohttpd currently just *inhibits
+    setting* the IPV6_V6ONLY socket option, but per Microsoft's
+    documentation the default on Windows is that this is enabled, thus
+    MHD_USE_DUAL_STACK will not work (since it leaves the
+    default). libmicrohttpd should probably just unconditionally set
+    IPV6_V6ONLY to the desired value when the option is available.
+  + Allow Keep-Alive with HTTP 1.0 (if explicitly requested),
+    and automatically set &quot;Connection: Keep-Alive&quot; in response
+    in this case as well.
+  + Adding explicit annotations to hide symbols that are not for
+    export in the C code (gcc 4.0 or higher only).
+  + Adding a few lines to avoid warnings from picky compilers.
+- Added patches:
+  * libmicrohttpd-0.9.34-spdy-pc.patch</comment>
+    <requestid>231403</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>43ad2742211367c5f38d7f026c00aa4b</srcmd5>
+    <version>0.9.34</version>
+    <time>1399017107</time>
+    <user>coolo</user>
+    <comment>- disable problematic test case that causes the testsuite to deadlock
+  just too often (disable-stalling-test.patch)</comment>
+    <requestid>231645</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a6becf213700e39681dfce37f82a5408</srcmd5>
+    <version>0.9.34</version>
+    <time>1399703545</time>
+    <user>coolo</user>
+    <comment>- do not define test_data before system header inclusion, libgcrypt
+  uses this as argument parameters. (libmicrohttpd_test_data.patch)</comment>
+    <requestid>233093</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>a6becf213700e39681dfce37f82a5408</srcmd5>
+    <version>0.9.34</version>
+    <time>1409301619</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bc8058f0367146ad51d061dfd9f7346b</srcmd5>
+    <version>0.9.39</version>
+    <time>1420754730</time>
+    <user>dimstar_suse</user>
+    <comment>- libmicrohttpd.keyring: replaced maintainers keyring by new one with:
+  pub  4096R/E29FC3CC 2014-12-09
+  uid                            Christian Grothoff &lt;grothoff@gnunet.org&gt;
+  uid                            Christian Grothoff &lt;christian@grothoff.org&gt;
+  uid                            Christian Grothoff &lt;christian.grothoff@inria.fr&gt;
+  sub  4096R/117E1AFB 2014-12-09
+
+- updated to 0.9.39
+- dropped libmicrohttpd-0.9.34-spdy-pc.patch (included upstream)</comment>
+    <requestid>280265</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5ddd767682596383ab6f1061980b037f</srcmd5>
+    <version>0.9.40</version>
+    <time>1429346312</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295679</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3d5b020820a29be279dff2e33069c078</srcmd5>
+    <version>0.9.41</version>
+    <time>1430891207</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305207</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6a4690a44cff96ccfdf16e0a3f190468</srcmd5>
+    <version>0.9.42</version>
+    <time>1437398057</time>
+    <user>coolo</user>
+    <comment>- fux build for SLES11:
+ * explicitly require libgnutls-devel in -devel package
+
+- fix build for SLES11:
+ * update disable-stalling-test.patch: Instead of disabling testcase
+   in Makefile disable testcases in code, this could be even better
+   we can disable only broken test but not the whole testcase.
+ * add libmicrohttpd_test_session.patch: Disable test relying on
+   available libcurl version
+   (see https://gnunet.org/bugs/view.php?id=3893 for details) 
+ * wrap libmicrosdpy into macro to disable building on
+   systems with openssl &lt; 1.0.1
+- update to 0.9.42:
+ * fix off-by-one in MHD_start_daemon_va() error handling logic
+ * fix #3784: actually implement MHD_CONNECTION_INFO_SOCKET_CONTEXT</comment>
+    <requestid>317166</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1678eb6e415ca42176b5ac0758951d69</srcmd5>
+    <version>0.9.43</version>
+    <time>1443684424</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>332087</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>828533792b37f553342715c9ca5996bf</srcmd5>
+    <version>0.9.44</version>
+    <time>1444833670</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.44
+  * Various fixes for W32 VS project files.
+  * Fix digest authentication with URL arguments where value-less 
+    keys are given before the last argument.
+  * Do not use shutdown() on listen socket if 
+    MHD_USE_PIPE_FOR_SHUTDOWN is set.</comment>
+    <requestid>336053</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c335989f0ce0145cb9fc31a94ea93c44</srcmd5>
+    <version>0.9.45</version>
+    <time>1446647560</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341903</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>570f7b03138b09943fbb25f7f1dcbfb1</srcmd5>
+    <version>0.9.46</version>
+    <time>1447587935</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343498</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>183e447e1c2337171b60e081530d3d42</srcmd5>
+    <version>0.9.46</version>
+    <time>1448400786</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>344773</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ecb8fa3791b53111ace2b1295823c6ec</srcmd5>
+    <version>0.9.47</version>
+    <time>1449995784</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>347526</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bf7c7ff8bc7611f18badc8a5bf1d9254</srcmd5>
+    <version>0.9.48</version>
+    <time>1450856921</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349883</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a24eec5da28bb8bccccdb13632b41f8b</srcmd5>
+    <version>0.9.49</version>
+    <time>1462051483</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390047</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ba2f60e80dd63de347ec8ecb79d756e8</srcmd5>
+    <version>0.9.50</version>
+    <time>1465335885</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399933</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>72db335c811c1c0bcc5d6166ef13a50d</srcmd5>
+    <version>0.9.52</version>
+    <time>1481964314</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.9.52:
+  * See provided Changelog for details
+- Refresh patch:
+  * disable-stalling-test.patch</comment>
+    <requestid>445403</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>061bef43f09544b32dc62008cea77558</srcmd5>
+    <version>0.9.52</version>
+    <time>1489176782</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not abort on failing tests, as they randomly fail quite a lot
+  bsc#1012840</comment>
+    <requestid>478441</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0a20918242defb296900f51b33f3124e</srcmd5>
+    <version>0.9.54</version>
+    <time>1495267758</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494916</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>1cbc43ff91a587812cec88fc20ff1a0b</srcmd5>
+    <version>0.9.55</version>
+    <time>1496225505</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.9.55 bsc#1041216:
+  * See provided Changelog for details
+
+- Update to 0.9.33 bsc#854443 CVE-2013-7038 CVE-2013-7039</comment>
+    <requestid>499625</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>69fdbe2df7ee8e21fd12c42ccba99c5e</srcmd5>
+    <version>0.9.57</version>
+    <time>1512546880</time>
+    <user>dimstar_suse</user>
+    <comment>- Install copying
+
+- Update to version 0.9.57:
+  * See provided Changelog for details
+- Drop no longer needed patches:
+  * libmicrohttpd_test_data.patch
+  * disable-stalling-test.patch</comment>
+    <requestid>547134</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f84db0cff23a47aa19c06f246ac271f9</srcmd5>
+    <version>0.9.59</version>
+    <time>1519902378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580334</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>050271e31694e4166c09d225d9d92ec8</srcmd5>
+    <version>0.9.61</version>
+    <time>1544441028</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656222</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>7b894c36df60375a80572a0bf74f2975</srcmd5>
+    <version>0.9.63</version>
+    <time>1551023861</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>673241</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>220514a2aeceead61aa56298228527b2</srcmd5>
+    <version>0.9.64</version>
+    <time>1561405644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708974</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e361e256d26e32fb685f2348e7e71971</srcmd5>
+    <version>0.9.65</version>
+    <time>1563790481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713706</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2ad35225b4fa2c022c2d302015e9a042</srcmd5>
+    <version>0.9.66</version>
+    <time>1565179186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720699</requestid>
+  </revision>
+</revisionlist>

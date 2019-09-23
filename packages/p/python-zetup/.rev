@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d27f9e7936bcce175a40f6ccae62d444</srcmd5>
+    <version>0.2.42</version>
+    <time>1526371668</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-moretools</comment>
+    <requestid>603758</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8530e1796e5e8d04da94961fe1eb5eb1</srcmd5>
+    <version>0.2.43</version>
+    <time>1535705183</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.43:
+  * Various entry point fixes</comment>
+    <requestid>632144</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0848a821863b8853121cb4ef8120e866</srcmd5>
+    <version>0.2.45</version>
+    <time>1552572009</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.45:
+  * Cleanup whitespace/formatting/docstrings
+  * Print install hints
+  * Fix various py3 compats</comment>
+    <requestid>684699</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3e009f4d7f4412475212f908b7d88300</srcmd5>
+    <version>0.2.48</version>
+    <time>1557751712</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.48:
+  * various requirement updates</comment>
+    <requestid>694779</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>76beac48d489ed32f355f2e0f89266cf</srcmd5>
+    <version>0.2.48</version>
+    <time>1559643148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707286</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e2c45c5ea50ef18613542516dd34de79</srcmd5>
+    <version>0.2.63</version>
+    <time>1567679641</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.63:
+  * Various fixes all around</comment>
+    <requestid>724502</requestid>
+  </revision>
+</revisionlist>

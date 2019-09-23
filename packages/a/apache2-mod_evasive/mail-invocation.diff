@@ -1,0 +1,24 @@
+diff -uNr mod_evasive.orig/mod_evasive20.c mod_evasive/mod_evasive20.c
+--- mod_evasive.orig/mod_evasive20.c	2014-05-22 08:49:48.255033765 +0200
++++ mod_evasive/mod_evasive20.c	2014-05-22 10:35:52.362010725 +0200
+@@ -42,7 +42,7 @@
+ 
+ /* BEGIN DoS Evasive Maneuvers Definitions */
+ 
+-#define MAILER	"/bin/mail %s"
++#define MAILER	"/usr/bin/mail -t %s"
+ #define  LOG( A, ... ) { openlog("mod_evasive", LOG_PID, LOG_DAEMON); syslog( A, __VA_ARGS__ ); closelog(); }
+ 
+ #define DEFAULT_HASH_TBL_SIZE   3097ul  // Default hash table size
+diff -uNr mod_evasive.orig/mod_evasiveNSAPI.c mod_evasive/mod_evasiveNSAPI.c
+--- mod_evasive.orig/mod_evasiveNSAPI.c	2005-10-08 19:47:21.000000000 +0200
++++ mod_evasive/mod_evasiveNSAPI.c	2014-05-22 10:36:04.309558479 +0200
+@@ -50,7 +50,7 @@
+ /* BEGIN DoS Evasive Maneuvers Definitions */
+ 
+ #define DEFAULT_LOG_DIR "/tmp"
+-#define MAILER	"/bin/mail %s"
++#define MAILER	"/usr/bin/mail -t %s"
+ #define  LOG( A, ... ) { openlog("mod_dosevasive", LOG_PID, LOG_DAEMON); syslog( A, __VA_ARGS__ ); closelog(); }
+ 
+ #define DEFAULT_HASH_TBL_SIZE   3097ul  // Default hash table size

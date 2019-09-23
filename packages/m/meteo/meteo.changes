@@ -1,0 +1,155 @@
+-------------------------------------------------------------------
+Mon May  6 19:33:29 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.9.7:
+  * Update some locale strings
+  * Merge branch 'master' of gitlab.com:bitseater/meteo
+  * Add dutch language
+
+-------------------------------------------------------------------
+Mon Feb 18 14:40:27 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.9.6:
+  * Read the Docs
+
+-------------------------------------------------------------------
+Mon Feb  4 17:30:57 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.9.5:
+  * Update README
+  * New icons
+  * Update screenshots
+
+-------------------------------------------------------------------
+Thu Dec  6 15:26:20 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.9.0:
+  * Use hardcoded API key.
+  * Fixed issues: 99, 100, 101, 102, 104, 105, 106.
+
+-------------------------------------------------------------------
+Wed Aug  8 14:50:01 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.8.5:
+  * Add support to RPM build.
+  * Fixed issues: none.
+- Switch to metainfo from appdata
+
+-------------------------------------------------------------------
+Wed Jun 13 01:38:38 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.8.4:
+  * Migration to GitLab.com.
+  * Fixed issues: 98.
+- Rename to meteo
+
+-------------------------------------------------------------------
+Thu Jun  7 21:41:39 UTC 2018 - avvissu@yandex.by
+
+- Switch to gitlab
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Thu Jun  7 21:21:53 UTC 2018 - jengelh@inai.de
+
+- Use noun phrasing.
+
+-------------------------------------------------------------------
+Mon Jun  4 17:50:15 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.8.3:
+  * Delete built-in API key which is blocked by OWM.
+  * Fixed issues: 92, 96, 97.
+
+-------------------------------------------------------------------
+Tue May  8 22:53:47 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.8.1:
+  * Simplify gettext strings.
+  * Add new update interval.
+  * Add more information to indicator.
+  * Add new translations.
+  * Show location on indicator menu.
+  * Add run on startup option.
+  * Change wind speed units.
+  * Fixed issues: 72, 74, 80, 81, 82, 83, 84, 85, 86, 87, 88.
+
+-------------------------------------------------------------------
+Mon Mar 26 14:49:11 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.7.0:
+  * Update de.po
+  * Update screenshot and spanish po
+  * Update lt.po
+  * Update en.po
+  * Several fixes to fr.po
+  * Adding info to indicator. Fix issue #57
+  * Fix issue #35 and #50
+  * Add de.po
+  * Add German
+  * Remove granite
+  * Update current cache file
+  * Fix issue #58
+  * Remove snap to separate repo
+  * Snap without glib
+
+-------------------------------------------------------------------
+Fri Mar  2 19:36:19 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.6.1:
+  * New snapcraft file and update readme.md
+  * Update support for appimage and snapcraft
+  * Update readme and add appimage creator
+  * Update README.md
+  * Update appdata
+
+-------------------------------------------------------------------
+Fri Feb 23 15:48:20 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.6.0:
+  * Fix issue #52
+- Add pkgconfig(granite)
+
+-------------------------------------------------------------------
+Fri Feb 16 19:25:20 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.5.4:
+  * Merge pull request #45 from welaq/patch-2
+  * Update lt.po
+  * Update flatpak manifiest.
+  * Start minimized. Optional
+  * Start minimized. Fix some issues with gresouce.
+  * Merge pull request #41 from bil-elmoussaoui/gresource
+  * load css from gresource, improve the constants file
+  * Merge pull request #40 from bil-elmoussaoui/i18n
+  * Update appdata and new screenshots.
+  * Add files via upload
+  * Delete screenshot_4.png
+  * Updated appdata and screenshots
+  * Avoid appstream validation
+  * Improve appdata.xml
+  * Change to validate Appstream
+  * Merge pull request #37 from bil-elmoussaoui/patch-1
+  * fix the indententation
+
+-------------------------------------------------------------------
+Fri Feb  9 13:50:46 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.5.2:
+  * Fix gnome issue
+  * Update readme to v0.5
+  * Release v0.5
+  * Update Maps Layers and conectors
+  * Change remove by destroy on update
+  * Some minor fixes and maps views
+  * Delete cmake support
+  * Update to meson build
+- Build with meson
+- Add pkgconfig({webkit2gtk-4.0,appindicator3-0.1})
+- Add  HiDPI icons
+
+-----------------------------------------------------------------
+Sun Jan 21 09:37:56 UTC 2018 - avvissu@yandex.by
+
+- Initial package  
+

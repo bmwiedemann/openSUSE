@@ -1,0 +1,268 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>6bfa5f31801f451ca30713dcdf64dbfd</srcmd5>
+    <version>0.8.1</version>
+    <time>1216262335</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0960bb981a06a60e76f73fce335500ce</srcmd5>
+    <version>0.8.6</version>
+    <time>1219709678</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0960bb981a06a60e76f73fce335500ce</srcmd5>
+    <version>0.8.6</version>
+    <time>1219709678</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>766c8c18a673c5c931895d2ede221383</srcmd5>
+    <version>0.8.6</version>
+    <time>1268924303</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>766c8c18a673c5c931895d2ede221383</srcmd5>
+    <version>0.8.6</version>
+    <time>1278667355</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>766c8c18a673c5c931895d2ede221383</srcmd5>
+    <version>0.8.6</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>766c8c18a673c5c931895d2ede221383</srcmd5>
+    <version>0.8.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1fabc88e38ba7785d5b021b4a44737b8</srcmd5>
+    <version>0.8.7</version>
+    <time>1316004992</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>82093</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>953f6a7e6d60bf21f40c7e920b10e468</srcmd5>
+    <version>0.8.7</version>
+    <time>1316005001</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82093
+</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>953f6a7e6d60bf21f40c7e920b10e468</srcmd5>
+    <version>0.8.7</version>
+    <time>1319182053</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>98b3f82b2556b61b8d221204db7837e7</srcmd5>
+    <version>0.8.7</version>
+    <time>1323192118</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>c6045b8cbbe1ec54560eb7e24a5a9272</srcmd5>
+    <version>0.8.7</version>
+    <time>1333389002</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 109808 from dimstar)</comment>
+    <requestid>112191</requestid>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>c6045b8cbbe1ec54560eb7e24a5a9272</srcmd5>
+    <version>0.8.7</version>
+    <time>1340183533</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>c6045b8cbbe1ec54560eb7e24a5a9272</srcmd5>
+    <version>0.8.7</version>
+    <time>1359109198</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ec639edb5271c4c7bb6a1c83ac819a7f</srcmd5>
+    <version>0.9.0</version>
+    <time>1365160197</time>
+    <user>coolo</user>
+    <comment>- Split off -devel subpackage
+
+- Update to 0.9.0
+  * Use CMake as buildsystem (added FindCMPI.cmake and
+    FindKonkretCMPI.cmake modules)
+  * Python bindings for the MOF parser
+  * Fixed using experimental schema
+  * Assertion crash fixed
+  * Add missing headers
+  * Many other minor bugs fixed</comment>
+    <requestid>162519</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>953d4ad27a519935d50e171c2c482633</srcmd5>
+    <version>0.9.0</version>
+    <time>1368450402</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174923</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2d701612e4e32d0f9446e26d18b16cd6</srcmd5>
+    <version>0.9.0_35_g9729565</version>
+    <time>1372925446</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>181856</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>8821f8858eedc3a490e3a96cf127aeb3</srcmd5>
+    <version>0.9.0_35_g9729565</version>
+    <time>1373564049</time>
+    <user>coolo</user>
+    <comment>- fix libkonkretmof so symlinks
+  add fix-libkonkretmof-so-symlinks.patch</comment>
+    <requestid>182814</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f5ed4c18dc3928d5dd98f8504a5ee616</srcmd5>
+    <version>0.9.1</version>
+    <time>1375364243</time>
+    <user>coolo</user>
+    <comment>- Update to 0.9.1
+  - Add support for embedded instances
+  - Support varlist in KReturn2
+  - Fix return type for generated indication functions
+  - Enable direct calls
+  - Fix method arguments that are both input and output
+
+- Fix build for SLE11 (old swig, old cmake)
+  Add swig-classic.patch</comment>
+    <requestid>185366</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>f5ed4c18dc3928d5dd98f8504a5ee616</srcmd5>
+    <version>0.9.1</version>
+    <time>1379662826</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>80e69688a3d86e3d6eb8c5b02008d1e7</srcmd5>
+    <version>0.9.2</version>
+    <time>1382692213</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>204642</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>28cf7426cdf3411500154d2147eb1a37</srcmd5>
+    <version>0.9.2</version>
+    <time>1391375974</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>215033</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>3038722a5832eeec0f0f9f67f86f908b</srcmd5>
+    <version>0.9.2</version>
+    <time>1392184984</time>
+    <user>coolo</user>
+    <comment>- Add '%doc README NEWS COPYING' directive to the spec file
+- Needed in SLE12 due to openlmi-providers dependency (fate#316180) (forwarded request 221856 from pwieczorkiewicz)</comment>
+    <requestid>221876</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>b83dcac47f85c2a97bc99a848d4dbb17</srcmd5>
+    <version>0.9.2</version>
+    <time>1399031901</time>
+    <user>coolo</user>
+    <comment>- Honor the fact that string properties with EmbeddedInstance
+  qualifier are handled as instance properties.
+  Fixes compatibility issue with cim-schema 2.40.0
+  Add 0001-Honor-that-string-properties-with-EmbeddedInstance-q.patch
+
+- Fix devel dependencies (cmake, sblim-cmpi-devel, cim-schema)
+- Drop cim-server from requires.
+
+- Follow shared library policy
+  rename 'konkretcmpi' to 'libkonkretcmpi0'</comment>
+    <requestid>231971</requestid>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>b83dcac47f85c2a97bc99a848d4dbb17</srcmd5>
+    <version>0.9.2</version>
+    <time>1409301410</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>894012e79b9abb695f60fd40667b9329</srcmd5>
+    <version>0.9.2</version>
+    <time>1423596209</time>
+    <user>dimstar_suse</user>
+    <comment>** this fixes openlmi-provider build **
+
+- add upstream patch
+  konkretcmpi-0.9.2-fix-returning-instance-from-method.patch
+- fix konkretmof.so name (SUSE cmake bug)
+- fix konkretcmpi-python file path
+- apply sle10.patch on SLE10 only
+
+- fix rhel6 build</comment>
+    <requestid>284926</requestid>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>beba5affc947712742a68f4569db411e</srcmd5>
+    <version>0.9.2</version>
+    <time>1424255994</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>286541</requestid>
+  </revision>
+  <revision rev="28" vrev="9">
+    <srcmd5>7cc37e4447f6fa649b6b560d659a3321</srcmd5>
+    <version>0.9.2</version>
+    <time>1427445677</time>
+    <user>dimstar_suse</user>
+    <comment>- back out konkretmof.so name fix</comment>
+    <requestid>293212</requestid>
+  </revision>
+  <revision rev="29" vrev="10">
+    <srcmd5>857defd2fb24587501359bfcc2d03828</srcmd5>
+    <version>0.9.2</version>
+    <time>1438750332</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>320405</requestid>
+  </revision>
+  <revision rev="30" vrev="11">
+    <srcmd5>8c4617e6ca9f3028d5d4d3159d55d9b7</srcmd5>
+    <version>0.9.2</version>
+    <time>1459002567</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>379746</requestid>
+  </revision>
+  <revision rev="31" vrev="12">
+    <srcmd5>fcf9de7b23bf6281eee7958252c21332</srcmd5>
+    <version>0.9.2</version>
+    <time>1469081886</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>412263</requestid>
+  </revision>
+</revisionlist>

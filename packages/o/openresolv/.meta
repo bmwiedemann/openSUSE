@@ -1,0 +1,11 @@
+<package name="openresolv" project="openSUSE:Factory">
+  <title> openresolv - the DNS management framework </title>
+  <description>/etc/resolv.conf is a file that holds the configuration for the local resolution of domain names.
+Normally this file is either static or maintained by a local daemon, normally a DHCP daemon.
+openresolv will make sure, that multiple processes (eg. dhcpcd, NetworkManager, openvpn)
+can write the resolv.conf without overwriting each others changes.
+
+openresolv can generate a combined resolv.conf or a configuration file for a local nameserver
+(like unbound, dnsmasq or bind).</description>
+  <devel project="network" package="openresolv"/>
+</package>

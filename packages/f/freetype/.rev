@@ -1,0 +1,188 @@
+<revisionlist>
+  <revision rev="1" vrev="1173">
+    <srcmd5>42a05aa202acfda6a39425230f315b15</srcmd5>
+    <version>1.3.1</version>
+    <time>1168902783</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1213">
+    <srcmd5>6f6da0b9db975b227918c3b2029cb134</srcmd5>
+    <version>1.3.1</version>
+    <time>1177275291</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1224">
+    <srcmd5>6d343f6e02779a15ea5acee58b75dc71</srcmd5>
+    <version>1.3.1</version>
+    <time>1179394522</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1328">
+    <srcmd5>008fbfe96059e061e43562d4eac57632</srcmd5>
+    <version>1.3.1</version>
+    <time>1207169128</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1331">
+    <srcmd5>10924e643573a74cb70b8d422bcd156a</srcmd5>
+    <version>1.3.1</version>
+    <time>1207829613</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1389">
+    <srcmd5>10924e643573a74cb70b8d422bcd156a</srcmd5>
+    <version>1.3.1</version>
+    <time>1207829613</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1390">
+    <srcmd5>7ae98963acf54e8613671678d54404f2</srcmd5>
+    <version>1.3.1</version>
+    <time>1225636846</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1391">
+    <srcmd5>12d107cac5a602089966987fafcc1a47</srcmd5>
+    <version>1.3.1</version>
+    <time>1229340633</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1392">
+    <srcmd5>48edb7c688e8dd69dade8bb1820279fa</srcmd5>
+    <version>1.3.1</version>
+    <time>1244236898</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1394">
+    <srcmd5>48edb7c688e8dd69dade8bb1820279fa</srcmd5>
+    <version>1.3.1</version>
+    <time>1244236898</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1395">
+    <srcmd5>145d095ba13fbc8640f31f1acefac6d4</srcmd5>
+    <version>1.3.1</version>
+    <time>1265270760</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/freetype based on submit request 31441 from user coolo
+</comment>
+  </revision>
+  <revision rev="12" vrev="1396">
+    <srcmd5>11d3031b7cd910643dcaeb5b1d1a9d15</srcmd5>
+    <version>1.3.1</version>
+    <time>1268923587</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="1398">
+    <srcmd5>11d3031b7cd910643dcaeb5b1d1a9d15</srcmd5>
+    <version>1.3.1</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="1399">
+    <srcmd5>11d3031b7cd910643dcaeb5b1d1a9d15</srcmd5>
+    <version>1.3.1</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="1400">
+    <srcmd5>68083120d199ee046ae16fd4f59b2040</srcmd5>
+    <version>1.3.1</version>
+    <time>1292846203</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 56373 from user elvigia
+</comment>
+    <requestid>56373</requestid>
+  </revision>
+  <revision rev="16" vrev="1401">
+    <srcmd5>9fb2af548f8e900623bb887da1cbea47</srcmd5>
+    <version>1.3.1</version>
+    <time>1292846212</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 56373
+</comment>
+  </revision>
+  <revision rev="17" vrev="1404">
+    <srcmd5>9fb2af548f8e900623bb887da1cbea47</srcmd5>
+    <version>1.3.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="1406">
+    <srcmd5>9fb2af548f8e900623bb887da1cbea47</srcmd5>
+    <version>1.3.1</version>
+    <time>1319181885</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="1407">
+    <srcmd5>eb70bc0c16c8f3c6d90756a63c7afe93</srcmd5>
+    <version>1.3.1</version>
+    <time>1329405173</time>
+    <user>coolo</user>
+    <comment>- license update: SUSE-Freetype or GPL-2.0+
+
+- Split main package into libttf2 (shared library policy) and
+  a devel subpackage
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+- replace suse_update_config with patch to update the files,
+  this package really needs to disappear soon</comment>
+    <requestid>104942</requestid>
+  </revision>
+  <revision rev="20" vrev="1409">
+    <srcmd5>eb70bc0c16c8f3c6d90756a63c7afe93</srcmd5>
+    <version>1.3.1</version>
+    <time>1340183338</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1410">
+    <srcmd5>8bb8a33fdef79858ca66d4b4975a516c</srcmd5>
+    <version>1.3.1</version>
+    <time>1343734247</time>
+    <user>coolo</user>
+    <comment>- do not package ttf2$TEX - the source in texlive is more uptodate (forwarded request 129305 from coolo)</comment>
+    <requestid>129389</requestid>
+  </revision>
+  <revision rev="22" vrev="1412">
+    <srcmd5>8bb8a33fdef79858ca66d4b4975a516c</srcmd5>
+    <version>1.3.1</version>
+    <time>1359108890</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1414">
+    <srcmd5>8bb8a33fdef79858ca66d4b4975a516c</srcmd5>
+    <version>1.3.1</version>
+    <time>1379662366</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1415">
+    <srcmd5>7afdebbe5796c1e842a59868f3a6f32a</srcmd5>
+    <version>1.3.1</version>
+    <time>1409151183</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245534</requestid>
+  </revision>
+  <revision rev="25" vrev="1417">
+    <srcmd5>7afdebbe5796c1e842a59868f3a6f32a</srcmd5>
+    <version>1.3.1</version>
+    <time>1409300902</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1418">
+    <srcmd5>9b899c0caeeae0bb0f23291241e40ed4</srcmd5>
+    <version>1.3.1</version>
+    <time>1512734116</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548568</requestid>
+  </revision>
+</revisionlist>

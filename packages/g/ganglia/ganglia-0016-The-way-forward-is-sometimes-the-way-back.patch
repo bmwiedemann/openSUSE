@@ -1,0 +1,46 @@
+From: David M Noriega <david.noriega@locationlabs.com>
+Date: Fri, 10 Feb 2017 15:45:30 -0800
+Git-commit: d1cb65515671d0e3b5fa2c4e16bef5360ad026d6
+References: bsc#1087487
+Subject: [PATCH] The way forward is sometimes the way back
+
+RE: c8ca8bc68fae775d588aeef8e35db3f9255b48c3
+
+The assumption that the sflow vm metric will always be of the form
+name.vcpu_num is incorrect for environments where the virt name is the
+fqdn.
+Acked-by: John Jolly <jjolly@suse.de>
+---
+ gmetad/gmetad.c      | 2 +-
+ gmetad/process_xml.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gmetad/gmetad.c b/gmetad/gmetad.c
+index e04368fe..3e212937 100644
+--- a/gmetad/gmetad.c
++++ b/gmetad/gmetad.c
+@@ -323,7 +323,7 @@ write_root_summary(datum_t *key, datum_t *val, void *arg)
+        return 0;
+ 
+    /* Don't write a summary for metris that appears to be sFlow VM metrics */
+-   if (gmetad_config.unsummarized_sflow_vm_metrics && (p = strchr(name, '.')) != NULL && *(p+1) == 'v')
++   if (gmetad_config.unsummarized_sflow_vm_metrics && (p = strrchr(name, '.')) != NULL && *(p+1) == 'v')
+      return 0;
+ 
+    ganglia_scoreboard_inc(METS_SUMRZ_ROOT);
+diff --git a/gmetad/process_xml.c b/gmetad/process_xml.c
+index 15abc75c..fc28701e 100644
+--- a/gmetad/process_xml.c
++++ b/gmetad/process_xml.c
+@@ -1172,7 +1172,7 @@ finish_processing_source(datum_t *key, datum_t *val, void *arg)
+       return 0;
+ 
+    /* Don't save to RRD if this metrics appears to be an sFlow VM metrics */
+-   if (gmetad_config.unsummarized_sflow_vm_metrics && (p = strchr(name, '.')) != NULL && *(p+1) == 'v')
++   if (gmetad_config.unsummarized_sflow_vm_metrics && (p = strrchr(name, '.')) != NULL && *(p+1) == 'v')
+        return 0;
+ 
+    switch (tt->type)
+-- 
+2.13.6
+

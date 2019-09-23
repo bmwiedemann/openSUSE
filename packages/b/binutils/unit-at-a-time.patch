@@ -1,0 +1,15 @@
+Index: ld/testsuite/ld-selective/selective.exp
+===================================================================
+--- ld/testsuite/ld-selective/selective.exp.orig
++++ ld/testsuite/ld-selective/selective.exp
+@@ -47,8 +47,8 @@ set seltests {
+     {A::foo() B::foo() dropme1() dropme2()} {*-*-*}}
+ }
+ 
+-set cflags "-w -O -ffunction-sections -fdata-sections"
+-set cxxflags "-fno-exceptions -fno-rtti"
++set cflags "-w -O -ffunction-sections -fdata-sections -fno-unit-at-a-time"
++set cxxflags "-fno-exceptions -fno-rtti -fno-unit-at-a-time"
+ set ldflags "--gc-sections -Bstatic"
+ 
+ if [istarget mips*-*] {

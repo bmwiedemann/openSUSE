@@ -1,0 +1,818 @@
+-------------------------------------------------------------------
+Thu May 31 12:01:13 UTC 2018 - badshah400@gmail.com
+
+- Update to version 0.145:
+  + Do not use front() on empty vector.
+  + Bug 793228 nzb file with empty segment lists crash pan.
+  + Bug 793277 Use after free in main().
+  + Updated translations.
+- Drop patches incorporated upstream:
+  + pan-fix-empty-nzb-crash.patch.
+  + pan-do-not-use-front-on-empty-vector.patch.
+  + pan-fix-use-after-free-in-main.patch.
+
+-------------------------------------------------------------------
+Fri May  4 21:39:13 UTC 2018 - bjorn.lie@gmail.com
+
+- Add upstream bug fix patches:
+  + pan-fix-use-after-free-in-main.patch: Use after free in main()
+    (bgo#793277).
+  + pan-fix-empty-nzb-crash.patch: nzb file with empty segment
+    lists crash pan (bgo#793228).
+  + pan-do-not-use-front-on-empty-vector.patch: Do not use front()
+    on empty vector.
+
+-------------------------------------------------------------------
+Thu Feb  8 09:34:12 UTC 2018 - okurz@suse.com
+
+- Adapt license file location according to new suggestion around
+  %%license
+
+-------------------------------------------------------------------
+Mon Jan 15 19:51:50 UTC 2018 - zaitor@opensuse.org
+
+- Update to version 0.144:
+  * Validate pan.appdata.xml.in and tweak cleanfiles.
+  * Remove outdated FSF address.
+  * Update README.
+  * Add man page.
+  * Upgrade pan.appdata.xml.in.
+  * Require GMime 3.0 to be explicitly enabled, don't fallback to
+    it (bgo#791435).
+  * Patch for GMime 3.0. Porting to GMime 3.0 still not completed
+    (bgo#786438).
+  * Can't open nzb files from desktop (bgo#789988).
+  * Follow Icon Theme Specification.
+  * Updated translations.
+- Drop update-desktop-files BuildRequires and stop using
+  suse_update_desktop_file macro and drop post(un) handling of
+  desktop_database_post, no longer needed.
+- Use autosetup and make_build macros, modernize spec.
+- Update description.
+
+-------------------------------------------------------------------
+Tue Dec 26 19:12:17 UTC 2017 - jengelh@inai.de
+
+- Remove filler wording from description.
+- Avoid running fdupes across partition boundaries.
+
+-------------------------------------------------------------------
+Fri Dec 22 18:51:15 UTC 2017 - asterios.dramis@gmail.com
+
+- Update to version 0.143:
+  * Use xdg-open instead of deprecated gnome-open.
+  * Fix nits wrt GMime 3.0.
+  * First patch to enable GMime 3.0 lib. Porting to GMime 3.0 not
+    yet completed.
+  * One more Unicode apostrophe.
+  * Edit strings.
+  * Added autohiding attachments panel.
+  * Fixed groups/body panels resizing in GTK 3.
+  * Attempt to fix display of threads with unread articles.
+  * Use Unicode in translatable strings.
+  * Fixed showing combobox options unlocalized.
+  * Enable all TLS versions supported by GnuTLS.
+  * Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 28 22:46:10 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.142:
+  * Update docs for password storage change.
+  * Fix some ISO C++ 11 warnings.
+  * Change use-gnome-keyring to use-password-storage.
+  * Build libsecret & gcr with gtk3 only, gnome-keyring with gtk2.
+  * Remove dependency on deprecated libgnome-keyring. New libraries
+    used: libsecret and gcr (GTK+ 3 only).
+  * Rewrite autogen.sh to drop dependency on gnome-common.
+  * Nuke intltool.
+  * Forgot to update HELP_LINGUAS.
+  * Fix the strftime test for mingw64.
+  * Update docs and include COPYING-DOCS.
+  * Re-add help menu item for manual.
+  * Add new documentation infrastructure.
+  * Fixed typos in a string.
+  * Improve help.
+  * Final fixes to the help system.
+  * Tweak the help support.
+  * Add gnome-doc-utils basic support.
+  * Add Pan manual.
+  * Fix size of preference window too large (bgo#697983).
+  * Fix Header Pane menu not shown when built without option
+    --with-gnutls (bgo#777711).
+  * Mention crypto in configure output.
+  * Updated translations.
+- Drop old conditionals for gtk2 and obsolete versions of openSUSE.
+- Following the above and upstream changes, drop the following
+  BuildRequires: intltool, translation-update-upstream,
+  pkgconfig(gmime-2.4), pkgconfig(gnome-keyring-1),
+  pkgconfig(gtk+-2.0) and pkgconfig(gtkspell-2.0).
+- Following upstream changes, add new BuildRequires: gettext, 
+  libxml2-tools, itstool pkgconfig(libsecret-1) and
+  pkgconfig(gcr-3).
+- Pass --enable-manual to configure, build the new manual.
+
+-------------------------------------------------------------------
+Sat Mar  4 19:33:12 UTC 2017 - asterios.dramis@gmail.com
+
+- Update to version 0.141:
+  * Treat a 500 response to MODE READER as OK.
+  * Fix various memory leaks.
+  * Fix for clang static analyzer.
+  * Fix for cannot start after removing last news server.
+  * Do not overwrite silently draft file (bgo#704227).
+  * Get rid of deprecated g_atexit() calls.
+  * Fix for closing Pan without server config (bgo#729329).
+  * Deprecated g_type_init() with glib2 > 2.36.
+  * Updated translations.
+
+-------------------------------------------------------------------
+Mon May 30 13:04:58 UTC 2016 - badshah400@gmail.com
+
+- Switch to building with gtk3: bnc#728311 and bgo#669403 seem to
+  be solved for the combination of recent gtk3 and current version
+  of pan.
+
+-------------------------------------------------------------------
+Mon May 30 09:35:13 UTC 2016 - badshah400@gmail.com
+
+- Update to version 0.140:
+  + Long list of changes, see entries under v0.140 at
+    https://git.gnome.org/browse/pan2/plain/NEWS.
+- Drop fix-desktop-file-11.0.diff; incorporated upstream. Also
+  drop gnome-patch-translation BuildRequires and all patch0 related
+  commands.
+- No longer add News and Network categories to desktop file by
+  invoking suse_update_desktop_file; already added to upstream
+  desktop file.
+- Package appdata file.
+- Upstream dropped CHANGELOG file and replaced it with NEWS.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+
+-------------------------------------------------------------------
+Mon Jul 23 02:50:41 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.139:
+  + std::logic_error thrown ("basic_string::_S_construct null not
+    valid") (bgo#678445)
+  + Added error popup for posting to a disabled server.
+  + Patches to SSL socket handling.
+  + Clear last-visited (group/article) on middle-click.
+  + Updated translations.
+- Changes from version 0.138:
+  + Hotkey for showing/hiding signatures in the article body.
+    (bgo#350496)
+  + Keep position on selected item on re-order. (bgo#443702)
+  + Remember last read post. (bgo#448416)
+  + Open url in browser. (bgo#464335)
+  + Signature printed double when line needs to be wrapped.
+    (bgo#533178)
+  + Tasks marked "Stopped" should also remain stopped when pan is
+    restarted. (bgo#543319)
+  + "Save at" options other then %g and %G. (bgo#550007)
+  + Filter Cross-posters. (bgo#587585)
+  + pan 136 using secure ssl and get continuous popups for certs
+    but no  connection. (bgo#673927)
+  + PO message very difficult to translate. (bgo#675953)
+  + Pan crashes while fetching new headers. (bgo#677741)
+  + Updated translations.
+- Changes from version 0.137:
+  + Bugfix release for errors regarding segfaults etc. with thread
+    handling.
+  + Colorize group names.
+  + Fix three-horizontal-pane layout between sessions.
+  + Stop tasks when there is no space left on device.
+  + Honour default attachments folder setting if group folder is
+    not set.
+  + Updated translations.
+- Drop pan-fix-warnings.patch and pan-gtkspell3.patch, fixed
+  upstream.
+- Remove ref to (bgo#669403) fixed upstream.
+- Added upstream bugref to patchtag (bgo#680468).
+- Pass --enable-gkr to configure, it's set to auto-off if not.
+- Pass --enable-libnotify to configure, it's set to off if not.
+- Pass --with-dbus to configure, it's set to off if not.
+
+-------------------------------------------------------------------
+Wed Apr 11 20:00:34 UTC 2012 - zaitor@opensuse.org
+
+- Add pan-gtkspell3.patch: Make configure look for the right
+  pkgconfig name for gtkspell3.
+
+-------------------------------------------------------------------
+Tue Apr 10 06:27:37 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.136:
+  + Support for uploading attachments (with NZB creation) to
+    Usenet.
+  + Selectable Content-Transfer-Encoding.
+  + Selectable GtkSpell default language.
+  + Support for encrypting and signing articles with a
+    public/private PGP key.
+  + Connections can now be encrypted with TLS 1.0.
+  + Various bugfixes/enhancements from Bugzilla.
+  + Auto-Cache/-Download/-Delete/-Mark read based on scores.
+  + D-Bus support for automatic batch addition of new files to the
+    Download Queue.
+  + Status Icon support.
+  + GNOME Keyring support for safely storing server passwords.
+  + Updated translations.
+- Rebase fix-desktop-file-11.0.diff, and stop updating pan.desktop
+  there: instead remove pan.desktop in %prep, so it will get
+  rebuilt.
+- Drop pan-glib-2.31.patch: fixed upstream.
+- Add pan-fix-warnings.patch: fix some gcc warnings breaking the
+  build.
+- Add pkgconfig(enchant) BuildRequires to keep building spelling
+  support.
+- Add pkgconfig(gnome-keyring-1) BuildRequires on 12.1 and later to
+  enable password storage.
+- Add pkgconfig(gnutls) BuildRequires and pass --with-gnutls to
+  configure for TLS support.
+- Add pkgconfig(libnotify) BuildRequires for notifications support.
+
+-------------------------------------------------------------------
+Thu Jan 31 08:20:25 UTC 2012 - zaitor@opensuse.org
+ 
+- Rebuilt package against GTK2, instead of GTK3 (for now).
+  + No spell-check in Pan. bnc#725971
+  + Pan groups panel re-sizes itself and gets stuck in new
+    position. bnc#728311
+  + Corrected erroneous sourceurl in specfile.   
+
+-------------------------------------------------------------------
+Thu Jan 12 08:18:32 UTC 2012 - dimstar@opensuse.org
+
+- Build openSUSE > 12.1 against gmime 2.6: Conditionally change
+  pkgconfig(gmime-2.4) BuildRequires to pkgconfig(gmime-2.6).
+
+-------------------------------------------------------------------
+Thu Dec  1 13:59:30 UTC 2011 - dimstar@opensuse.org
+
+- Add pan-glib-2.31.patch: Fix build with glib 2.31.
+
+-------------------------------------------------------------------
+Fri Oct 14 17:43:28 CEST 2011 - sbrabec@suse.cz
+
+- Use translation compendium gnome-patch-translation.
+
+-------------------------------------------------------------------
+Mon Jun 27 16:41:33 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.135:
+  + Improve URI detection in the body pane.
+  + Make highlighting of URIs in the body pane optional.
+  + Add a newsrc autosave timer.
+  + Fix mailto URI encoding. (bgo#648375)
+  + Create a NZB file from the list of articles.
+  + Optional compatibility with GTK+ 3.
+  + Fix the text-massager-test failure. (bgo#642746)
+  + Support format=flowed in text-massager.
+  + Guess deliberate line breaks.
+  + Saving articles from the NZB file no longer causes articles to
+    be queued multiple times.
+  + Separate line length check for each quote level. Should only be
+    for quoted levels.
+  + Add the wrap selected option to the post editor.
+  + Slightly improve Pan.ico. (bgo#499214)
+  + Updated translations.
+- Drop pan-0.134-handle-nzb-multipart.patch: fixed upstream.
+- Use favor_gtk2 to switch between gtk2 and gtk3 builds. Changes
+  for gtk3 build:
+  + use pkgconfig(gtk+-3.0) instead of pkgconfig(gtk+-2.0), and do
+    not use pkgconfig(gtkspell-2.0) as gtkspell requires gtk2.
+  + pass --with-gtk3 to configure.
+- Drop call to autoreconf, which is not needed by anything.
+
+-------------------------------------------------------------------
+Mon May 30 19:52:12 CEST 2011 - sbrabec@suse.cz
+
+- Merged changes from Daniel Rahn and openSUSE:Factory.
+
+-------------------------------------------------------------------
+Mon May 30 09:48:24 UTC 2011 - daniel.rahn@novell.com
+
+- Add pan-0.134-handle-nzb-multipart.patch: fix nzb handling of
+  multipart messages, bnc#685759.
+
+-------------------------------------------------------------------
+Sun Feb 20 10:55:05 CET 2011 - vuntz@opensuse.org
+
+- Update to version 0.134:
+  + No window icon when running in NZB-mode. (bgo#574419)
+  + Use GRegex instead of PCRE. (bgo#596653)
+  + Tooltips missing from two 'Post Article' toolbar buttons.
+    (bgo#548860)
+  + Infinite loop with server that doesn't support LIST NEWSGROUPS.
+    (bgo#545220)
+  + Add port to server dialog. (bgo#527313)
+  + Support 64 bit article numbers. (bgo#549655)
+  + Don't queue xover for 0 connections. (bgo#596682)
+  + Make wrapping honor changes in compose-wrap pref. (bgo#596680)
+  + Change nzb task saving delay & add pref. (bgo#596683)
+  + Port to GMime 2.4 & 2.5. (bgo#541676, bnc#683008)
+  + Spawn editor asynchronously. (bgo#465763)
+  + Change allocation buffer for article tree.
+  + Save some more memory by re-ordering a few variables.
+  + Don't save files as executable.
+  + Fix handling of multibyte spaces in text-massager.
+  + Re-write multipart handling for viewing.
+  + Change default mime-type for incoming attachments. (bgo#135734)
+  + Add some additional mime types.
+  + Fix bug in multipart article mids.
+  + Add console support for windows.
+  + Update filter-info and scorefile-test to support non-overview
+    headers.
+  + Skip non-overview test if not cached.
+  + Allow scoring article on all headers.
+  + Promote rescore_articles to data interface.
+  + Update score when article is cached.
+  + Add regex support to search. (bgo#351196)
+  + Additional info for about & User-Agent. (bgo#424083)
+  + Allow subject line use in save path. (bgo#403797)
+  + Improve regexes used for squashing subject line.
+  + Reduce memory allocation for multiparts.
+  + Allow newsrc paths relative to PAN_HOME.
+  + Save tasks on exit. (bgo#609355)
+  + Always show full revision info in UA hdr.
+  + Remember size of post window.
+  + Add tests for subject line.
+  + Make separator user configurable.
+  + Add support for Face header.
+  + Fix various crashes.
+  + Stop using deprecated API and behaviors (including bgo#579753,
+    bgo#596648).
+  + Build fixes (including bgo#573722).
+  + Updated translations.
+- Update fix-desktop-file-11.0.diff to apply without fuzz.
+- Drop pan-0.133-gcc44.patch: fixed upstream.
+- Drop pan-gmime24.patch: fixed upstream.
+- Remove pcre-devel BuildRequires as pan now uses GRegex.
+- Remove xf86tools Requires: this is now provided by x11-tools, and
+  there is nothing useful for pan there.
+
+-------------------------------------------------------------------
+Sat Feb 12 19:36:20 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Sun Aug 22 12:29:02 UTC 2010 - dimstar@opensuse.org
+
+- Switch to gmime 2.4:
+  + Change gmime-devel BuildRequires to pkgconfig(gmime-2.4).
+  + Add pan-gmime24.patch in order to be able to build against gmime
+    2.4; taken from http://github.com/lostcoder/pan2/commit/eb4a0e36
+  + Call autoreconf, as pan-gmime24.patch touches configure.in.
+- Change gtk2-devel BuildRequires to pkgconfig(gtk+-2.0) and
+  gtkspell-devel to pkgconfig(gtkspell-2.0).
+- Clean spec file using spec-cleaner.
+- Tag patches.
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Sat Feb 28 00:17:59 CET 2009 - crrodriguez@suse.de
+
+- fix build with GCC 4.4 
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Thu Feb 12 09:07:34 CET 2009 - drahn@suse.de
+
+- update to stable release 0.133
+- obsoletes patches for CVE-2008-2363, glib-compat and gcc 4.3 
+- remove esound-devel from BuildRequires
+
+-------------------------------------------------------------------
+Wed Feb 11 01:20:09 CET 2009 - ro@suse.de
+
+- use sr@latin instead of sr@Latn
+
+-------------------------------------------------------------------
+Fri May 30 07:28:35 CEST 2008 - drahn@suse.de
+
+- fix for heap overflow (bnc#395452)
+  CVE-2008-2363
+
+-------------------------------------------------------------------
+Mon Apr  7 12:35:01 CEST 2008 - drahn@suse.de
+
+- add glib compat layer to abstract glib API 
+  obsoletes previous g_assert centric patch
+
+-------------------------------------------------------------------
+Fri Feb 29 01:38:41 CET 2008 - ro@suse.de
+
+- fix include file to get g_assert 
+
+-------------------------------------------------------------------
+Fri Dec 14 11:51:55 CET 2007 - drahn@suse.de
+
+- pan-gcc-4.3.diff - fix compilation with GCC 4.3
+- fix-desktop-file-11.0.diff - fix desktop file for >10.3
+
+-------------------------------------------------------------------
+Tue Aug  7 23:34:53 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage.
+
+-------------------------------------------------------------------
+Sun Aug  5 10:26:30 CEST 2007 - drahn@suse.de
+
+- update to version 0.132 (sync with BS) "Waxed in Black"
+- fix some crashes and lockups
+
+-------------------------------------------------------------------
+Fri Jan 12 12:59:35 CET 2007 - sbrabec@suse.cz
+
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Mon Jan  8 00:11:33 CET 2007 - ro@suse.de
+
+- GNOME moved to /usr 
+
+-------------------------------------------------------------------
+Sun Nov 19 14:13:32 CET 2006 - drahn@suse.de
+
+- update to release 0.119 (sync with BS)
+  - 0.119 "Karma Hunters"
+  - 0.118 "Gustaf Von Musterhausen"
+  - 0.117 "We'll fly and we'll fall and we'll burn"
+  - multiple bugfixes and performance improvements
+
+-------------------------------------------------------------------
+Sat Nov 18 17:06:50 CET 2006 - stbinner@suse.de
+
+- Fix Name entry of .desktop file post openSUSE 10.2
+
+-------------------------------------------------------------------
+Tue Sep 12 17:04:43 CEST 2006 - drahn@suse.de
+
+- update to release 0.112 
+  - 0.112 "FIXME"
+  - 0.111 "Tweedy"
+  - 0.110 "Beable Beable"
+  - countless bugfixes in all areas
+
+-------------------------------------------------------------------
+Thu Sep  7 21:28:56 CEST 2006 - aj@suse.de
+
+- Build with RPM_OPT_FLAGS.
+- Build against gtkspell.
+
+-------------------------------------------------------------------
+Tue Sep  5 07:29:31 CEST 2006 - aj@suse.de
+
+- Further cleanup of BuildRequires.
+
+-------------------------------------------------------------------
+Tue Sep  5 00:31:39 CEST 2006 - ro@suse.de
+
+- first step to cleanup BuildRequires
+
+-------------------------------------------------------------------
+Tue Aug 22 12:29:09 CEST 2006 - drahn@suse.de
+
+- update to beta 0.109
+
+-------------------------------------------------------------------
+Mon May 29 21:02:56 CEST 2006 - drahn@suse.de
+
+- update to beta 0.99
+
+-------------------------------------------------------------------
+Wed May  3 07:48:39 CEST 2006 - drahn@suse.de
+
+- update to beta 0.95
+
+-------------------------------------------------------------------
+Sun Apr 23 17:13:44 CEST 2006 - drahn@suse.de
+
+- update to beta 0.94
+
+-------------------------------------------------------------------
+Thu Apr 20 08:03:26 CEST 2006 - drahn@suse.de
+
+- update to beta release 0.93
+- enable spell check
+- temporarily remove preferences patch
+
+-------------------------------------------------------------------
+Sat Feb 18 00:47:25 CET 2006 - gekker@suse.de
+
+- Update desktop file for UI team
+
+-------------------------------------------------------------------
+Wed Feb 15 09:34:08 CET 2006 - stbinner@suse.de
+
+- fix Name/GenericName in .desktop file
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:36 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Oct 14 18:59:33 CEST 2005 - ro@suse.de
+
+- removed libzvt from neededforbuild (unused) 
+
+-------------------------------------------------------------------
+Tue Jun 28 16:53:29 CEST 2005 - sbrabec@suse.cz
+
+- Call desktop-launch to get default browser (#9006).
+
+-------------------------------------------------------------------
+Sun May  1 15:40:04 CEST 2005 - mmj@suse.de
+
+- Fix for gcc4
+- Enable parallel build
+
+-------------------------------------------------------------------
+Thu Apr 14 17:17:06 CEST 2005 - sbrabec@suse.cz
+
+- Added audiofile-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Wed Mar 16 06:43:47 CET 2005 - clahey@suse.de
+
+- Move desktop file so that it'll be found.
+
+-------------------------------------------------------------------
+Wed Nov 10 18:03:49 CET 2004 - ro@suse.de
+
+- removed gnome1 stuff from neededforbuild
+
+-------------------------------------------------------------------
+Wed Oct 27 17:12:48 CEST 2004 - mmj@suse.de
+
+- Rename locale no to nb
+
+-------------------------------------------------------------------
+Tue May 11 22:39:09 CEST 2004 - clahey@suse.de
+
+- Added patch to use gnome-open.
+
+-------------------------------------------------------------------
+Fri Feb 20 15:49:48 CET 2004 - sbrabec@suse.cz
+
+- Fixed names of GNOME2 packages.
+
+-------------------------------------------------------------------
+Wed Jan 28 10:53:32 CET 2004 - drahn@suse.de
+
+- update to 0.14.2
+- set default editor to gedit 
+
+-------------------------------------------------------------------
+Sat Jan 10 20:37:34 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Tue Aug 19 15:25:59 CEST 2003 - sbrabec@suse.cz
+
+- Updated neededforbuild (rename of librsvg2, eel2).
+
+-------------------------------------------------------------------
+Fri Aug 15 21:56:28 CEST 2003 - adrian@suse.de
+
+- add Categories
+
+-------------------------------------------------------------------
+Mon Jul 14 11:33:37 CEST 2003 - drahn@suse.de
+
+- finally renamed package to PAN 
+- changed PREFIX to /opt/gnome 
+- use %find_lang
+
+-------------------------------------------------------------------
+Mon Jun 16 09:27:18 CEST 2003 - drahn@suse.de
+
+- add patch for PAN incorrectly handling sockets 
+
+-------------------------------------------------------------------
+Mon May 12 07:36:49 CEST 2003 - drahn@suse.de
+
+- update to new stable version 0.14.0 
+- cleanup of #neededforbuild and #usedforbuild
+
+-------------------------------------------------------------------
+Wed Jan 15 10:11:49 CET 2003 - drahn@suse.de
+
+- update to new stable version 0.13.3
+- bugfixes:
+     * Fixed a serious 0.13.1 memory leak, and 0.13.2.92 cache 
+       overflow, caused by the Task Manager window. 
+     * Fixed a race condition that could cause Pan to crash on startup 
+       when the ``restore tasks?'' dialog appeared.
+
+-------------------------------------------------------------------
+Mon Nov 11 23:49:54 CET 2002 - ro@suse.de
+
+- changed neededforbuild <xf86 xdevel> to <x-devel-packages>
+
+-------------------------------------------------------------------
+Sat Nov  9 17:50:30 CET 2002 - drahn@suse.de
+
+- update to new stable version 0.13.2
+- bugfixes:
+     * Fix 0.13.1 bug that crashed Pan when it encountered user-defined 
+       filters whose names included underscores.
+     * Fix large 0.13.1 memory leak in the Task Manager.
+
+-------------------------------------------------------------------
+Mon Oct 14 06:40:44 CEST 2002 - drahn@suse.de
+
+- update to new stable version 0.13.1
+- bugfixes:
+    * Posted messages from 0.13.0 lacked the proper encoding header.
+    * Fix 0.13.0 crash caused by forwarding email.
+    * Fixed 0.13.0 message corruption fix in the composer when a 
+      signature contains 8bit characters.
+    * Don't save the attachment when the user presses the escape key.
+
+-------------------------------------------------------------------
+Fri Sep 27 14:34:35 CEST 2002 - ro@suse.de
+
+- Added alsa alsa-devel to neededforbuild (esound)
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Fri Aug 23 09:04:22 CEST 2002 - drahn@suse.de
+
+- fixed broken desktop file (#18219)
+
+-------------------------------------------------------------------
+Mon Aug 19 13:27:48 CEST 2002 - drahn@suse.de
+
+- fixed wrong declarations in gmime-message-part.c 
+
+-------------------------------------------------------------------
+Mon Aug 19 08:27:05 CEST 2002 - drahn@suse.de
+
+- update to new stable version 0.13.0
+- fixed several bugs:
+		* About a dozen minor memory leaks fixed 
+		* Fixed 0.12.0 bug where the external editor used when 
+		  comparing a message had to use UTF-8
+		* Fixed 0.12.0 bug that caused Pan to crash on mouseover 
+		  of some URLs. 
+
+-------------------------------------------------------------------
+Tue Jul 23 07:15:18 CEST 2002 - drahn@suse.de
+
+- Update to new stable release 0.12.1
+- Fixed various bugs that would cause gnpan to loose articles 
+
+-------------------------------------------------------------------
+Thu Jun 27 17:51:04 CEST 2002 - schwab@suse.de
+
+- Fix conflicting declarations.
+
+-------------------------------------------------------------------
+Thu Jun 27 12:28:52 CEST 2002 - drahn@suse.de
+
+- adjusted build process for GNOME 2.0
+- fixed desktop-file for menu generation 
+
+-------------------------------------------------------------------
+Fri Jun 21 13:13:31 CEST 2002 - drahn@suse.de
+
+- cleanup directories to fit GNOME 2.0 layout
+
+-------------------------------------------------------------------
+Thu Jun 20 09:19:03 CEST 2002 - drahn@suse.de
+
+- switched to stable version 0.12.0 for GNOME 2.0
+- fixed some memory leaks and improved i18n
+- fixed decoding of quoted-printable headers 
+
+-------------------------------------------------------------------
+Wed Apr 24 10:09:23 CEST 2002 - drahn@suse.de
+
+- update to stable version 0.11.3
+    Bug fixes:
+    * Fixed bug that caused multi-part binary posts with subjects like
+      (3/28) instead of (03/28) to be seen as incomplete. Thanks to Craig
+      Orsinger for reporting this.
+    * Fixed various memory leaks. 
+ 
+
+-------------------------------------------------------------------
+Fri Feb  8 19:11:28 CET 2002 - drahn@suse.de
+
+- update to stable version 0.11.2 
+
+-------------------------------------------------------------------
+Sat Feb  2 12:32:01 CET 2002 - drahn@suse.de
+
+- update to version 0.11.1.94
+     Bug fixes:
+     * Fixed 0.10.0.93 bug that caused a GUI lockup under arcane 
+       circumstances when reading articles.	
+     * Fixed 0.11.1.92 bug that caused Pan to crash when emptying
+       a group which had an article displayed in the text pane.
+     * Fixed 0.11.1.92 bug that caused a GUI lockup under other
+       arcane circumstances.
+     * Fixed 0.11.1.92 bug that caused the first article read to
+       not be displayed if the user started up Pan in zoom mode.
+     * Fixed several other 0.11.1.93 deadlock issues.
+     * Now handles '~' in the TMPDIR environmental variable.
+
+-------------------------------------------------------------------
+Thu Jan 31 09:13:15 CET 2002 - drahn@suse.de
+
+- update to version 0.11.1.93
+     Bug fixes:
+     * Fixed 0.11.1.92 bug that caused cached articles to not be
+       marked as read when the user read them.  
+     * Fixed 0.11.1.92 bug that made the "Edit Filter" dialog too
+       wide to fit even on large screens.
+     * Fixed 0.10.0 bug where new articles that automatically get
+       deleted by user-defined rules could still appear in the
+       article pane.
+     * Fixed a long-standing NNTP server connection corruption bug.
+     * Fixed a couple of long-standing GUI thread bugs.
+
+-------------------------------------------------------------------
+Wed Jan 23 16:13:50 CET 2002 - drahn@suse.de
+
+- update to version 0.11.1.92
+     Bug fixes:
+     * Fixed 0.11.1.90 bug that caused Pan to crash sometimes 
+       when reading or decoding articles.
+     * Fixed 0.11.1.90 bug that caused pan to crash on a SIGPIPE 
+       signal when a news server connection closed unexpectedly.
+     * Fixed 0.11.1.90 bug that caused Pan to not authenticate 
+       properly on at least one older NNTP server.
+     * Fixed 0.10.0.93 memory leak that didn't free all article 
+       information on duplicate or user-deleted articles.
+
+-------------------------------------------------------------------
+Wed Jan  9 09:02:37 CET 2002 - drahn@suse.de
+
+- update to version 0.11.1.90
+     Features:
+     * Support for Microsoft Secure Password Authentication ("SPA")
+     * more translations
+     Bug fixes:
+     * fixed a huge memory leak
+     * fixed thread safety bugs
+     * fixed "Get New Headers" command
+
+-------------------------------------------------------------------
+Tue Dec 11 09:28:03 CET 2001 - hhetter@suse.de
+
+- updated to stable version 0.11.1
+	Featuring:
+	* The left/right arrow keys now collapse/expand the 
+	  currently-selected threads
+	* Added 'Newsreader' to the 'Headers to Show' selection 
+	  in the preferences 
+	* New Simplified Chinese translation
+	* New Portuguese translation 
+	Bug fixes:
+	* Fixed "supercede article" bug
+	* Small task manager bug fixes
+- setup -n pan  to build in directory pan instead of gnpan
+- functionality test on i386
+
+-------------------------------------------------------------------
+Fri Nov 30 08:22:05 CET 2001 - drahn@suse.de
+
+- update to version 0.11.0.92
+- fixed several bugs that could cause gnpan to crash 
+
+-------------------------------------------------------------------
+Tue Nov 13 12:16:42 CET 2001 - drahn@suse.de
+
+- fixed SPEC file to build on (hopefully) all architectures 
+
+-------------------------------------------------------------------
+Fri Nov  9 07:30:49 CET 2001 - drahn@suse.de
+
+- first SuSE package - version 0.11.0
+- renamed package and binary to gnpan because of conflicts with different
+  package 

@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Fri Mar  6 12:21:11 UTC 2015 - dimstar@opensuse.org
+
+- BuildRequire pkgconfig(systemd) in place of systemd-devel: the
+  smaller dependency is perfectly sufficient for this package.
+
+-------------------------------------------------------------------
+Thu Mar  5 18:02:51 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.15
+  * Added iso15693 (NFC type5) support.
+  * Added Secure Element support (seeld).
+  * Added iso14443-B (NFC type4b) support.
+  * Added NFC type5 RMB (Read Multiple Block) support.
+  * Fixed NFC type1 dynamic read.
+  * Fixed NFC type1 check_presence to only read the tag ID.
+  * Fixed NFC type2 CC magic number check.
+  * Fixed NFC type4 NDEF detection and handling code.
+  * Fixed NFC type4 check_presence implementation.
+  * Fixed PHDC coding style and potential bugs.
+  * Fixed the constant poll loop to retry on busy adapters.
+  * Fixed an agent memory leak.
+  * Fixed and cleaned the build system.
+- Remove obsolete macros
+
+-------------------------------------------------------------------
+Tue Jun 10 04:39:32 UTC 2014 - acho@susue.com
+
+- Move nfctool from neard-test to neard and neard-test Require neard.
+ (bnc#881554)
+
+-------------------------------------------------------------------
+Wed May 21 15:06:07 UTC 2014 - jsegitz@novell.com
+
+- added necessary macros for systemd files
+
+-------------------------------------------------------------------
+Sun Feb  2 21:54:37 UTC 2014 - jengelh@inai.de
+
+- Use libnl3 instead of libnl1
+- Remove redundant %clean section, more robust make install call,
+  and a simplified file list
+
+-------------------------------------------------------------------
+Wed Jan 22 02:53:02 UTC 2014 - acho@suse.com
+
+- add %doc AUTHORS COPYING ChangeLog README
+
+-------------------------------------------------------------------
+Fri Jan 17 03:39:44 UTC 2014 - acho@suse.com
+
+- Remove Unnecessary BuildRequires:  systemd and systemd-devel.
+
+-------------------------------------------------------------------
+Thu Jan 16 05:06:00 UTC 2014 - acho@suse.com
+
+- Clean empty %post.(bnc#837978)
+
+- Add 'send_destination' to org.neard.conf.(bnc#837978)
+
+- Add 'ACTION=="add"' for udev rule.(bnc#837978)
+
+-------------------------------------------------------------------
+Wed Jan 15 06:43:49 UTC 2014 - acho@suse.com
+
+- use --prefix=%_prefix, kill the %clean section. kill has_systemd.
+  (bnc#837978)
+
+- add udev rules to enable this service by systemd.
+
+- remove systemctl from %post.
+-------------------------------------------------------------------
+Wed Dec 18 12:36:37 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-2.0
+  majority of files have GPL-2.0 (only) license
+
+-------------------------------------------------------------------
+Tue Dec 17 11:54:23 UTC 2013 - acho@suse.com
+
+- Add neard.service to enable neard.(bnc#837978)
+  Fixed systemd BuildRequires version.
+
+-------------------------------------------------------------------
+Fri Dec  6 10:43:14 UTC 2013 - acho@suse.com
+
+- Rmove neard-rpmlintrc.
+  whitelist the "org.neard.conf" DBUS service.(bnc#837978)
+
+-------------------------------------------------------------------
+Thu Oct 24 09:44:41 UTC 2013 - acho@suse.com
+
+- Initial neard package - version 0.13 (fate#315616)
+

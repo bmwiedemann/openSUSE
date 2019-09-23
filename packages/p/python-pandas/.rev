@@ -1,0 +1,196 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e59a553fe607b4c4778754afe6b7e199</srcmd5>
+    <version>0.19.0</version>
+    <time>1485382723</time>
+    <user>dimstar_suse</user>
+    <comment>Python 2 version of python3-pandas, which is already in openSUSE:Factory.  This is one of the most important scientific and mathematical packages in the python software ecosystem.</comment>
+    <requestid>436929</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>12d0f8cbdf621d087902096bf0232bf5</srcmd5>
+    <version>0.19.2</version>
+    <time>1492011288</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486220</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>84c4dcb106c242c35206352bd2de3a35</srcmd5>
+    <version>0.19.2</version>
+    <time>1494263065</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493376</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e35bec7a3e77256397274ec3336d8a52</srcmd5>
+    <version>0.20.1</version>
+    <time>1496226128</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499830</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5ae1cf724a13e750b12ec29a8683d4a3</srcmd5>
+    <version>0.20.3</version>
+    <time>1507570863</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530452</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>093cca319b168eba16d9d04c9b747896</srcmd5>
+    <version>0.21.0</version>
+    <time>1510322201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539578</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>030957a5a3aa7b278877c38ddbd133d1</srcmd5>
+    <version>0.21.1</version>
+    <time>1513677497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557957</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7eb999cf8ac15cd879421a53d0891184</srcmd5>
+    <version>0.22.0</version>
+    <time>1515342181</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562156</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>155cf003701a01bed1962dc2d9606014</srcmd5>
+    <version>0.22.0</version>
+    <time>1516091841</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner
+
+- Drop commented code to allow us py3 only build</comment>
+    <requestid>563565</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9a551f8755d3a9d509316736e9531486</srcmd5>
+    <version>0.23.0</version>
+    <time>1526737085</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.23.0:
+  * Round-trippable JSON format with ‘table’ orient.
+  * Instantiation from dicts respects order for Python 3.6+.
+  * Dependent column arguments for assign.
+  * Merging / sorting on a combination of columns and index levels.
+  * Extending Pandas with custom types.
+  * Excluding unobserved categories from groupby.
+  * Changes to make output shape of DataFrame.apply consistent.
+
+- Do not bother generating pandas doc if it is already in both
+  html and pdf provided by upstream, just point to the URL</comment>
+    <requestid>610084</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>89b3aec0831163e30be219d106d84107</srcmd5>
+    <version>0.23.0</version>
+    <time>1528195995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614047</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>87c2e68ab155912d3094911fb344ccde</srcmd5>
+    <version>0.23.1</version>
+    <time>1529402366</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616619</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ab1ad8aaeaa2f3b52368bd8428147fd9</srcmd5>
+    <version>0.23.3</version>
+    <time>1531947259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622580</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5c568bf8a857c6d0542c3be9749c14ce</srcmd5>
+    <version>0.23.4</version>
+    <time>1533549265</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627515</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>f4bea123f8669884414ac1b056c28ea9</srcmd5>
+    <version>0.23.4</version>
+    <time>1533887385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628224</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2c65ac86c72d9b6e8dbb805b3f36e4ca</srcmd5>
+    <version>0.24.1</version>
+    <time>1551215960</time>
+    <user>dimstar_suse</user>
+    <comment>- Add requirement for at least 4 GB of physical memory
+
+- Do not delete tests, they are used even by other inheriting packages
+  for their testing
+- Execute tests
+
+- Update to 0.24.1
+  * The default ``sort`` value for :meth:`Index.union` has changed from ``True`` to ``None`` (:issue:`24959`).
+    The default *behavior*, however, remains the same
+  * Fixed regression in :meth:`DataFrame.to_dict` with ``records`` orient raising an
+    ``AttributeError`` when the ``DataFrame`` contained more than 255 columns, or
+    wrongly converting column names that were not valid python identifiers (:issue:`24939`, :issue:`24940`).
+  * Fixed regression in :func:`read_sql` when passing certain queries with MySQL/pymysql (:issue:`24988`).
+  * Fixed regression in :class:`Index.intersection` incorrectly sorting the values by default (:issue:`24959`).
+  * Fixed regression in :func:`merge` when merging an empty ``DataFrame`` with multiple timezone-aware columns on one of the timezone-aware columns (:issue:`25014`).
+  * Fixed regression in :meth:`Series.rename_axis` and :meth:`DataFrame.rename_axis` where passing ``None`` failed to remove the axis name (:issue:`25034`)
+  * Fixed regression in :func:`to_timedelta` with `box=False` incorrectly returning a ``datetime64`` object instead of a ``timedelta64`` object (:issue:`24961`)
+  * Fixed regression where custom hashable types could not be used as column keys in :meth:`DataFrame.set_index` (:issue:`24969`)
+  * Bug in :meth:`DataFrame.groupby` with :class:`Grouper` when there is a time change (DST) and grouping frequency is ``'1d'`` (:issue:`24972`)
+  * Fixed the warning for implicitly registered matplotlib converters not showing. See :ref:`whatsnew_0211.converters` for more (:issue:`24963`).
+  * Fixed AttributeError when printing a DataFrame's HTML repr after accessing the IPython config object (:issue:`25036`)
+
+- Update to 0.24.0
+  Highlights include:
+  * Optional Integer NA Support
+  * New APIs for accessing the array backing a Series or Index
+  * A new top-level method for creating arrays
+  * Store Interval and Period data in a Series or DataFrame
+  * Support for joining on two MultiIndexes</comment>
+    <requestid>677956</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4449708a753088d8dce7c30bffc9bb66</srcmd5>
+    <version>0.24.2</version>
+    <time>1552902210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685823</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7fbf2653dbe6b60be3a8e19f6c7543c3</srcmd5>
+    <version>0.25.0</version>
+    <time>1566240498</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Version 0.25.0
+
+All packages broken by this update should be fixed now.</comment>
+    <requestid>724138</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d00bc5a20a565e9a9cfc354e5d35cd77</srcmd5>
+    <version>0.25.1</version>
+    <time>1567580613</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727291</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Tue May  7 01:41:21 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Change License from MIT to MIT and Python-2.0
+
+-------------------------------------------------------------------
+Mon Mar 11 11:15:09 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+
+-------------------------------------------------------------------
+Tue Dec  4 12:48:20 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Nov 16 19:11:06 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.17.1
+  * This release address a packaging error because of an erroneous declaration that
+    any built wheels are universal.
+- Update to version 0.17.0
+  * Fix ``from collections import ChainMap`` after install_aliases() (issue #226)
+  * Fix multiple import from ``__future__`` bug in futurize (issue #113)
+  * Add support for proper %s formatting of newbytes
+  * Properly implement iterator protocol for newrange object
+  * Fix ``past.translation`` on read-only file systems
+  * Fix Tkinter import bug introduced in Python 2.7.4 (issue #262)
+  * Correct TypeError to ValueError in a specific edge case for newrange
+  * Support inequality tests betwen newstrs and newbytes
+  * Add type check to __get__ in newsuper
+  * Fix fix_divsion_safe to support better conversion of complex expressions, and
+    skip obvious float division.
+
+-------------------------------------------------------------------
+Thu Apr  6 16:24:20 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+
+-------------------------------------------------------------------
+Fri Nov 25 08:26:47 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.16.0
+* Fix newbytes constructor bug.
+* Fix semantics of bool() with newobject.
+* Fix standard_library.install_aliases() on PyPy
+* Fix assertRaises for pow and compile` on Python 3.5.
+* Fix return argument of future.utils.ensure_new_type
+	 if conversion to new type does not exist.
+* Add missing cmp_to_key for Py2.6.
+* Allow the old_div fixer to be disabled.
+* Improve compatibility with Google App Engine.
+* Add some missing imports to the tkinter and tkinter.filedialog
+	 package namespaces
+* Fix raise_from on PY3 when the exception cannot be recreated from its repr.
+
+-------------------------------------------------------------------
+Tue Oct 11 13:27:45 UTC 2016 - ms@suse.com
+
+- Tracker changelog entry to add python-future to SLE12 (bnc#999200)
+
+-------------------------------------------------------------------
+Wed Sep 21 15:56:12 UTC 2016 - okurz@suse.com
+
+- Fix rpm uninstall warnings by removing alternatives in postun as
+  discussed in https://build.opensuse.org/request/show/427095
+
+-------------------------------------------------------------------
+Thu Sep 15 15:18:21 UTC 2016 - toddrme2178@gmail.com
+
+- Fix update-alternatives usage.
+
+-------------------------------------------------------------------
+Fri Sep  9 03:28:19 UTC 2016 - glin@suse.com
+
+- Remove %ghost from %{_bindir}/futurize and %{_bindir}/pasteurize
+  (fate#320644)
+
+-------------------------------------------------------------------
+Mon Dec 14 08:19:07 UTC 2015 - glin@suse.com
+
+- initial import: 0.15.2 (fate#320644)
+

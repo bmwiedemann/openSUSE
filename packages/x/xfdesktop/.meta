@@ -1,0 +1,9 @@
+<package name="xfdesktop" project="openSUSE:Factory">
+  <title>Desktop manager for the Xfce Desktop Environment</title>
+  <description>Xfdesktop is a desktop manager for the Xfce Desktop Environment which can set
+the background image, provides a right-click menu to launch applications and
+can optionally show files (including application launchers) or iconified
+windows, includes gradient support for background color, saturation support for
+background images, as well as real multiscreen and xinerama support.</description>
+  <devel project="X11:xfce" package="xfdesktop"/>
+</package>

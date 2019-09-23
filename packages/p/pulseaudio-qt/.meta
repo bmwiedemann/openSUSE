@@ -1,0 +1,5 @@
+<package name="pulseaudio-qt" project="openSUSE:Factory">
+  <title>Qt bindings for PulseAudio</title>
+  <description>Pulseaudio-Qt is a library providing Qt bindings to PulseAudio.</description>
+  <devel project="KDE:Extra" package="pulseaudio-qt"/>
+</package>

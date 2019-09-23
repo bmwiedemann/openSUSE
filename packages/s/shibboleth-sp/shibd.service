@@ -1,0 +1,20 @@
+[Unit]
+Description=Shibboleth Service Provider Daemon
+After=network.target
+Before=apache2.service
+
+[Service]
+Type=notify
+NotifyAccess=main
+User=shibd
+ExecStart=/usr/sbin/shibd -f -F
+StandardInput=null
+StandardOutput=null
+StandardError=journal
+TimeoutStopSec=5s
+TimeoutStartSec=150s
+Restart=on-failure
+RestartSec=30s
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,6 @@
+<package name="raspberrypi-firmware-config" project="openSUSE:Factory">
+  <title></title>
+  <description>Binary bootloader and firmware files for Raspberry Pi</description>
+  <devel project="openSUSE:Factory" package="raspberrypi-firmware"/>
+  <bcntsynctag>raspberrypi-firmware</bcntsynctag>
+</package>

@@ -1,0 +1,10 @@
+/var/log/varnish/*.log {
+    su varnish varnish
+    missingok
+    notifempty
+    sharedscripts
+    delaycompress
+    postrotate
+        /etc/init.d/varnish reload
+    endscript
+}

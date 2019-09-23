@@ -1,0 +1,6 @@
+<package name="liblqr" project="openSUSE:Factory">
+  <title>LiquidRescale seam-carving library</title>
+  <description>The Liquid Rescale (lqr) library provides a C/C++ API for performing
+non-uniform resizing of images by the seam-carving technique.</description>
+  <devel project="KDE:Distro:Factory" package="liblqr"/>
+</package>

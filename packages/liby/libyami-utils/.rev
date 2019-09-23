@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e4d358d3db7cc1edd327eca24ac3f6e</srcmd5>
+    <version>1.1.0</version>
+    <time>1489759563</time>
+    <user>dimstar_suse</user>
+    <comment>New package see https://lists.opensuse.org/opensuse-factory/2017-02/msg00770.html</comment>
+    <requestid>460808</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4e81e2ec366d8fca5d5f49d585880c74</srcmd5>
+    <version>1.1.0</version>
+    <time>1494088239</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>492936</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c69a22f134871537d195f027066b4439</srcmd5>
+    <version>1.3.0</version>
+    <time>1526022899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605696</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c2bca55bc607cbb16f7d76f8dcf5aa9e</srcmd5>
+    <version>1.3.1</version>
+    <time>1550151135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674406</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5fa634d2376c3d1964007fcb0257a191</srcmd5>
+    <version>1.3.1</version>
+    <time>1561557875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712062</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Tue Mar 12 11:59:22 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.0.2, which is just a bugfix release.
+
+-------------------------------------------------------------------
+Mon Oct 30 14:45:32 UTC 2017 - jmatejek@suse.com
+
+- do not build for Lua 5.2
+
+-------------------------------------------------------------------
+Thu Jul 13 16:12:32 UTC 2017 - tchvatal@suse.com
+
+- Switch to multibuild spec for all lua versions
+
+-------------------------------------------------------------------
+Fri Feb 17 07:34:12 UTC 2017 - callumjfarmer13@gmail.com
+
+- Version to 1.0.1
+
+-------------------------------------------------------------------
+Mon Mar  2 18:05:58 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 0.12.1:
+  * no upstream changelog provided
+
+-------------------------------------------------------------------
+Mon Mar  2 17:55:14 UTC 2015 - tchvatal@suse.com
+
+- Initial commit. Required for neovim.
+

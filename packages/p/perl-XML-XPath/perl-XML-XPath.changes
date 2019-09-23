@@ -1,0 +1,218 @@
+-------------------------------------------------------------------
+Thu Nov  8 07:08:40 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.44
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.44  2018-10-11 MANWAR
+        - Added new test for axis descendant.
+  
+  1.43  2018-10-10 MANWAR
+        - Fix memory leak in XML::XPath::Parser (PR #6), Thanks @niner.
+
+-------------------------------------------------------------------
+Thu Aug  3 06:29:16 UTC 2017 - coolo@suse.com
+
+- updated to 1.42
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.42  2017-07-30 MANWAR
+        - Fixed GitHub issue #5 (abstract is undef in meta files). Thanks @y.
+
+-------------------------------------------------------------------
+Sat Jul 29 06:35:42 UTC 2017 - coolo@suse.com
+
+- updated to 1.41
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.41  2017-07-28 MANWAR
+        - Fixed GitHub issue #4 (can't use non-ascii first character as element name). Thanks @nanis, @ikegami.
+
+-------------------------------------------------------------------
+Mon Nov 14 07:30:28 UTC 2016 - coolo@suse.com
+
+- updated to 1.40
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.40  2016-11-13 MANWAR
+        - Proposed fix for RT #118726.
+
+-------------------------------------------------------------------
+Fri Nov 11 07:35:02 UTC 2016 - coolo@suse.com
+
+- updated to 1.39
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.39  2016-11-08 MANWAR
+        - Proposed fix for RT #118643.
+
+-------------------------------------------------------------------
+Tue Nov  1 07:34:05 UTC 2016 - coolo@suse.com
+
+- updated to 1.38
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.38  2016-10-31 MANWAR
+        - Fixed parser caching as reported by Jeremy (mysticprune).
+
+-------------------------------------------------------------------
+Sun Jun 12 14:02:45 UTC 2016 - coolo@suse.com
+
+- updated to 1.37
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.37  2016-06-02 MANWAR
+        - Fixed annoying warnings.
+
+-------------------------------------------------------------------
+Thu May  5 10:29:52 UTC 2016 - coolo@suse.com
+
+- updated to 1.36
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.36  2016-04-14 MANWAR
+        - Fixed issue RT #68932 (/usr/bin/xpath outputs unwanted text when quiet mode ist set).
+
+-------------------------------------------------------------------
+Thu Apr  7 10:19:30 UTC 2016 - coolo@suse.com
+
+- updated to 1.35
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.35  2016-04-06 MANWAR
+        - Fixed issue RT #113576 (XML::XPath::Node::Element::getAttributeNode() uses unspecified behaviour).
+
+-------------------------------------------------------------------
+Fri Mar 11 11:06:21 UTC 2016 - coolo@suse.com
+
+- updated to 1.34
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.34  2016-03-08 MANWAR
+        - Applied the patch to script examples/xpath (kindly provided by GREGOA).
+
+-------------------------------------------------------------------
+Mon Mar  7 11:15:24 UTC 2016 - coolo@suse.com
+
+- updated to 1.33
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.33  2016-03-02 MANWAR
+        - Fixed issue RT #112584 (use of /d modifier in transliteration operator).
+  
+  1.32  2016-02-23 MANWAR
+        - Applied the following patches kindly provided by GREGOA:
+  
+          https://anonscm.debian.org/cgit/pkg-perl/packages/libxml-xpath-perl.git/tree/debian/patches/fix-stringification-overload.patch
+          https://anonscm.debian.org/cgit/pkg-perl/packages/libxml-xpath-perl.git/tree/debian/patches/test.patch
+          https://anonscm.debian.org/cgit/pkg-perl/packages/libxml-xpath-perl.git/tree/debian/patches/xpath-option-to-work-without-internet-connection.patch
+
+-------------------------------------------------------------------
+Tue Feb 23 10:41:22 UTC 2016 - coolo@suse.com
+
+- updated to 1.31
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.31  2016-02-22 MANWAR
+        - Proposed fix for RT #112017.
+
+-------------------------------------------------------------------
+Sun Feb  7 10:57:01 UTC 2016 - coolo@suse.com
+
+- updated to 1.30
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.30  2016-02-04 MANWAR
+        - Fixed issue RT #15902 (Quoting warnings with translate).
+        - Fixed issue RT #21154 (translate() function does not remove characters or support -)
+  
+  1.29  2016-02-03 MANWAR
+        - Fixed issue RT# 26144 (createNode doesn't honor position() predicate).
+  
+  1.28  2016-01-31 MANWAR
+        - Changed the LICENSE information about the package XML::XPath::PerlSAX as per
+          Matt Sergeant email response (dated 2016-01-30).
+  
+  1.27  2016-01-30 MANWAR
+        - Fixed issue RT# 32012 (Debian bug #187583, http://bugs.debian.org/187583).
+
+-------------------------------------------------------------------
+Wed Jan 27 10:53:13 UTC 2016 - coolo@suse.com
+
+- updated to 1.26
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.26  2016-01-25 MANWAR
+        - Fixed inconsistent version issue (CPANTS).
+        - Added key 'provides' to the Makefile.PL script.
+        - Added unit test scripts t/meta-json.t and t/meta-yml.t
+  
+  1.25  2016-01-20 MANWAR
+        - Merged in GitHub PR #2, thanks to sdeseille.
+        - Merged t/45overloading_number_operator.t and t/99rt_11724.t into t/45cmp_nodeset.t
+
+-------------------------------------------------------------------
+Wed Jan 20 10:57:03 UTC 2016 - coolo@suse.com
+
+- updated to 1.24
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.24  2016-01-19 MANWAR
+        - Fixed issue RT# 111278 (XML::XPath::PerlSAX doesn't compile).
+
+-------------------------------------------------------------------
+Tue Jan 19 10:40:24 UTC 2016 - coolo@suse.com
+
+- updated to 1.23
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.23  2016-01-18 MANWAR
+        - Fixed issues RT# 6363 (using < in a query returns results as if <= had been used).
+  
+  1.22  2016-01-13 MANWAR
+        - Fixed issues RT# 30818 and RT# 80277.
+
+-------------------------------------------------------------------
+Wed Jan 13 10:42:00 UTC 2016 - coolo@suse.com
+
+- updated to 1.21
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+  1.21  2016-01-12 MANWAR
+        - Fixed issues RT# 14957 and RT# 30819.
+  
+  1.20  2016-01-10 MANWAR
+        - Fixed issues RT# 26143 and RT# 68703.
+
+-------------------------------------------------------------------
+Wed Jan  6 10:44:48 UTC 2016 - coolo@suse.com
+
+- updated to 1.19
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+
+-------------------------------------------------------------------
+Wed Feb 27 06:19:21 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Wed Dec  1 13:36:24 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:32:31 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Jul 30 12:49:58 CEST 2007 - mvidner@suse.cz
+
+- package created, needed for yast2-metapackage-handler
+- v 1.13
+

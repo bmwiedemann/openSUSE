@@ -1,0 +1,16 @@
+Index: ogg.m4
+===================================================================
+--- ogg.m4.orig
++++ ogg.m4
+@@ -19,9 +19,9 @@ AC_ARG_ENABLE(oggtest,AC_HELP_STRING([--
+   elif test "x$ogg_prefix" = "xno" || test "x$ogg_prefix" = "xyes" ; then
+     OGG_LIBS=""
+   elif test "x$ogg_prefix" != "x" ; then
+-    OGG_LIBS="-L$ogg_prefix/lib"
++    OGG_LIBS="-L$ogg_prefix/lib64"
+   elif test "x$prefix" != "xNONE" -a "x$prefix" != "x/usr"; then
+-    OGG_LIBS="-L$prefix/lib"
++    OGG_LIBS="-L$prefix/lib64"
+   fi
+ 
+   if test "x$ogg_prefix" != "xno" ; then

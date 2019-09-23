@@ -1,0 +1,172 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>02fc1312b3c015f6ac9b85e9fdcb7a39</srcmd5>
+    <version>1.2.4</version>
+    <time>1272214491</time>
+    <user>autobuild</user>
+    <comment>Copy from network:vpn/xl2tpd based on submit request 38490 from user a_jaeger
+</comment>
+    <requestid>38490</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dc347e11590529fd4dc8ac52f7b9b339</srcmd5>
+    <version>1.2.4</version>
+    <time>1273095988</time>
+    <user>autobuild</user>
+    <comment>Copy from network:vpn/xl2tpd based on submit request 39523 from user k0da
+</comment>
+    <requestid>39523</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>dc347e11590529fd4dc8ac52f7b9b339</srcmd5>
+    <version>1.2.4</version>
+    <time>1278667396</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>dc347e11590529fd4dc8ac52f7b9b339</srcmd5>
+    <version>1.2.4</version>
+    <time>1278678627</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>dc347e11590529fd4dc8ac52f7b9b339</srcmd5>
+    <version>1.2.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>dc347e11590529fd4dc8ac52f7b9b339</srcmd5>
+    <version>1.2.4</version>
+    <time>1319182600</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c06d7cf1ca227717ec5751339e596993</srcmd5>
+    <version>1.3.0</version>
+    <time>1321887052</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>92805</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>5ca952e4e7582d5db1c4c8bcb2e59297</srcmd5>
+    <version>1.3.0</version>
+    <time>1323195364</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>5ca952e4e7582d5db1c4c8bcb2e59297</srcmd5>
+    <version>1.3.0</version>
+    <time>1340184369</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>f384c4bfef65ce0bd3087ad178be4c92</srcmd5>
+    <version>1.3.0</version>
+    <time>1346691412</time>
+    <user>namtrac</user>
+    <comment>- Add systemd support. (forwarded request 132224 from elvigia)</comment>
+    <requestid>132226</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>0c7f68d8055e438426adea5aad3aee8f</srcmd5>
+    <version>1.3.0</version>
+    <time>1353515046</time>
+    <user>coolo</user>
+    <comment>xl2tpd Add kernel support for 2.6.23+(bnc#790250) (forwarded request 142236 from BinLi)</comment>
+    <requestid>142253</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>a7d65a9982e5340e72237d97d9176348</srcmd5>
+    <version>1.3.0</version>
+    <time>1354531887</time>
+    <user>coolo</user>
+    <comment>- don't use old version of if_pppol2tp.h (bnc#791109) (forwarded request 143657 from k0da)</comment>
+    <requestid>143658</requestid>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>a7d65a9982e5340e72237d97d9176348</srcmd5>
+    <version>1.3.0</version>
+    <time>1359110651</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>4f59d789cc07777af2dc7620fe9159cd</srcmd5>
+    <version>1.3.0</version>
+    <time>1363900567</time>
+    <user>coolo</user>
+    <comment>- Use /usr/lib/tmpfile.d for tmpfiles configuration
+
+- Added /etc/tmpfiles.d/xl2tpd.conf file (bnc#807605)</comment>
+    <requestid>159723</requestid>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>4f59d789cc07777af2dc7620fe9159cd</srcmd5>
+    <version>1.3.0</version>
+    <time>1379665077</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>6122b9cc52404837498f280c3e126d41</srcmd5>
+    <version>1.3.0</version>
+    <time>1389101905</time>
+    <user>coolo</user>
+    <comment>Removed another occurrence of newline in a comment in xl2tpd.conf, related to bnc#856928. (forwarded request 212850 from auxsvr)</comment>
+    <requestid>212856</requestid>
+  </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>370e77b5d34cdf77058b04d475572731</srcmd5>
+    <version>1.3.0</version>
+    <time>1404157513</time>
+    <user>coolo</user>
+    <comment>- switch to /run on openSUSE newer than 13.1</comment>
+    <requestid>238803</requestid>
+  </revision>
+  <revision rev="18" vrev="16">
+    <srcmd5>370e77b5d34cdf77058b04d475572731</srcmd5>
+    <version>1.3.0</version>
+    <time>1409303764</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>50a3b16f9c225dec6fcd514e82ac8497</srcmd5>
+    <version>1.3.6</version>
+    <time>1428949882</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295633</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2f6c2525e61445429f7f229b160108a6</srcmd5>
+    <version>1.3.10</version>
+    <time>1510232235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537044</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1ecdd9d34bde4807ea1470b0a83ba023</srcmd5>
+    <version>1.3.13</version>
+    <time>1553262925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687038</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>70aad1b093b0a353b0ba7b9c3638d6ee</srcmd5>
+    <version>1.3.14</version>
+    <time>1555830120</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695319</requestid>
+  </revision>
+</revisionlist>

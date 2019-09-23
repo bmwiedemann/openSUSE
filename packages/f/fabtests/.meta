@@ -1,0 +1,9 @@
+<package name="fabtests" project="openSUSE:Factory">
+  <title>User-space RDMA Fabric Interfaces</title>
+  <description>
+libfabric provides a user-space API to access high-performance fabric
+services, such as RDMA.
+  </description>
+  <devel project="openSUSE:Factory" package="libfabric"/>
+  <bcntsynctag>libfabric</bcntsynctag>
+</package>

@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Fri Jan 11 14:55:12 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.5.1:
+  * Implementing discovery filter by UUIDs (java) and fixing a bug
+    with discovery filter by UUIDs (c++)
+- Drop no longer needed tinyb-gcc7.patch
+
+-------------------------------------------------------------------
+Sat Jun 10 10:36:57 UTC 2017 - mpluskal@suse.com
+
+- Fix building on gcc7:
+  * tinyb-gcc7.patch
+
+-------------------------------------------------------------------
+Tue Aug 23 13:04:42 UTC 2016 - jengelh@inai.de
+
+- Trim filler words from description
+
+-------------------------------------------------------------------
+Sat Aug 20 18:19:30 UTC 2016 - mpluskal@suse.com
+
+- Initial package for version 0.5.0
+

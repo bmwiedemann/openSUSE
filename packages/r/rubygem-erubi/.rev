@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9f0f0d15a13bd9761566fec99539ed82</srcmd5>
+    <version>1.6.1</version>
+    <time>1504521385</time>
+    <user>dimstar_suse</user>
+    <comment>new package for rails 5.1</comment>
+    <requestid>520407</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>122ef161a82ec83f7f8f2130421bec55</srcmd5>
+    <version>1.7.0</version>
+    <time>1512651073</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 1.7.0
+  * Fix escaping in erubi/capture_end, the setting was previously inverted (jeremyevans) (#10) (forwarded request 533889 from mschnitzer)</comment>
+    <requestid>533898</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>be5f3493d829f6decdc2cf9f8cdb2f98</srcmd5>
+    <version>1.7.1</version>
+    <time>1520588664</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>584186</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7ca89c4b7abd00f4e8c23d7f5eebf9bb</srcmd5>
+    <version>1.8.0</version>
+    <time>1551687591</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679519</requestid>
+  </revision>
+</revisionlist>

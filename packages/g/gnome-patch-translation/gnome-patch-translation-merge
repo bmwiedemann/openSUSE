@@ -1,0 +1,30 @@
+#! /bin/bash
+
+set -o errexit
+
+mkdir -p gnome-patch-translation-merged
+cd gnome-patch-translation-files
+msgcomm --more-than=0 -o ../gnome-patch-translation-merged/gnome-patch-translation.pot ../HEADER.pot *.pot
+ls -1 *.po | sed 's/^.*-//;s/\.po//' | sort -u >../gnome-patch-translation-merged/lang.lst
+touch empty.po
+for LNG in $(<../gnome-patch-translation-merged/lang.lst) ; do
+    msgcomm --more-than=0 -o ../gnome-patch-translation-merged/$LNG.po empty.po *-$LNG.po
+done
+rm empty.po
+
+cd ../gnome-patch-translation-merged
+for PO in *.po ; do
+    msgmerge -o $PO.new $PO gnome-patch-translation.pot
+    mv $PO.new $PO
+done
+
+cd ../gnome-patch-translation
+for PO in *.po ; do
+    if test -f ../gnome-patch-translation-merged/$PO ; then
+	msgmerge -o $PO.new $PO ../gnome-patch-translation-merged/$PO
+    else
+	echo "WARNING: Translation $PO has no use in any project!"
+	msgmerge -o $PO.new $PO ../gnome-patch-translation-merged/gnome-patch-translation.pot
+    fi
+    mv $PO.new $PO
+done

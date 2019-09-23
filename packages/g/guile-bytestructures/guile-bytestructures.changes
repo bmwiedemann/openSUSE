@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Wed Aug 28 14:06:20 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 1.0.6:
+  * Various R6RS fixes.
+  * Add support for upcoming Guile 3.0. 
+
+-------------------------------------------------------------------
+Wed Jan 30 10:35:11 UTC 2019 - jbrielmaier@suse.de
+
+- Update to version 1.0.5:
+  * small bug fixes 
+
+-------------------------------------------------------------------
+Thu Jun 14 09:28:40 UTC 2018 - jbrielmaier@suse.de
+
+- Update to version 1.0.3
+  * fixes bsc#1097626
+  * fixes https://github.com/TaylanUB/scheme-bytestructures/issues/30 
+  * add test suite
+- package test suite (not executable by default, due to complaining
+  about #!/usr/bin/env)
+
+-------------------------------------------------------------------
+Fri Mar  9 18:15:53 UTC 2018 - sleep_walker@opensuse.org
+
+- move copying from %doc to %license
+- make package compatibile with guile 2.0
+
+-------------------------------------------------------------------
+Tue Jan 23 08:43:44 UTC 2018 - jbrielmaier@suse.com
+
+- Update to Version 1.0.1
+
+  * using release tarball instead of git commit
+  * removed obsolet _service file
+
+-------------------------------------------------------------------
+Sun Dec 10 18:41:32 UTC 2017 - jbrielmaier@suse.com
+
+- Build from master commit 7ed31b1 
+
+-------------------------------------------------------------------
+Sun Dec 10 17:48:53 UTC 2017 - jbrielmaier@suse.com
+
+- Initial version of guile-bytestructures build from master

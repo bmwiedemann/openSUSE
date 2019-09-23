@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Mon Jun 18 20:12:48 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.6.4:
+  * Use same real value comparison as WFMath.
+  * Remove checking new pointer.
+  * Remove unused string.
+  * Use epsilon for float comparison.
+  * Replace deprecated INCLUDES with AM_CPPFLAGS.
+- Drop unneeded patches:
+  * atlascpp-0.6.2-Werror.patch: Current version builds just fine
+    with -Werror, so let's keep it.
+  * fsf.patch: FSF postal address was updated by upstream in every
+    header and in COPYING.
+- Fix license: LGPL-2.1-only (according to COPYING file) and
+  GPL-2.0-or-later (according to some file headers).
+
+-------------------------------------------------------------------
+Sun Oct 30 23:45:46 UTC 2016 - jengelh@inai.de
+
+- Update RPM groups, summary and descriptions.
+
+-------------------------------------------------------------------
+Wed Oct 12 04:28:46 UTC 2016 - mailaender@opensuse.org
+
+- Don't package libtool archives.
+- Add fsf.patch to fix the FSF address in the license file.
+
+-------------------------------------------------------------------
+Thu Feb 27 15:55:32 UTC 2014 - joop.boonen@opensuse.org
+
+- Build version 0.6.3 
+
+-------------------------------------------------------------------
+Tue May 22 16:36:02 UTC 2012 - joop.boonen@opensuse.org
+
+- Build version 0.6.2 using the provided spec file as a template
+
+-------------------------------------------------------------------

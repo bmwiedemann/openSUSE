@@ -1,0 +1,117 @@
+-------------------------------------------------------------------
+Wed Aug 21 08:46:42 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Change BR to pkgconf
+- Change Requires to Recommends for pkgconf and cmake
+
+-------------------------------------------------------------------
+Tue Jul 16 09:18:30 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.2.7
+  * Fix unsetting initial XIDs
+- Fix running the tests
+
+-------------------------------------------------------------------
+Mon Jul 15 09:30:54 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.2.6
+  * Fix manpage installation
+  * Fix cmake-config installation
+  * Fixed running with sanitizers
+
+-------------------------------------------------------------------
+Tue Jul 25 09:17:48 UTC 2017 - asn@cryptomilk.org
+
+- Update to version 1.2.4
+  * Added deadlock workaround for glibc < 2.24
+  * Fixed a possible deadlock bug if uid_wrapper is turned off
+
+-------------------------------------------------------------------
+Fri Jul 14 13:24:08 UTC 2017 - asn@cryptomilk.org
+
+- Update to version 1.2.3
+  * Logging is always turned on now
+  * Fixed a memory leak
+  * Limited number of groups during fork+exec
+
+-------------------------------------------------------------------
+Thu Jul 13 06:54:57 UTC 2017 - asn@cryptomilk.org
+
+- Update to version 1.2.2
+  * Added support for fork'ed and then exec'ed processes
+  * Added support for Alpha
+
+-------------------------------------------------------------------
+Mon Mar 21 18:17:52 UTC 2016 - asn@cryptomilk.org
+
+- Update to version 1.2.1
+  * Documented missing options.
+  * Fixed a comipilation issue with -O3.
+
+-------------------------------------------------------------------
+Sun Feb 14 11:47:01 UTC 2016 - jengelh@inai.de
+
+- Editorial fixes to the description
+
+-------------------------------------------------------------------
+Thu Oct 29 11:57:14 UTC 2015 - asn@cryptomilk.org
+
+- Update to version 1.2.0
+  * Added privilege checks for all set*uid and set*gid functions.
+  * Added a lot more and accurate tests which work as root.
+  * Fixed some minor issues
+
+-------------------------------------------------------------------
+Wed Sep  2 11:30:45 UTC 2015 - asn@cryptomilk.org
+
+- Update to version 1.1.1
+  * Fixed getres(uid|gid) detection if unsupported.
+  * Fixed the configure on Solaris
+  * Added a lot more tests
+
+-------------------------------------------------------------------
+Fri Jun 26 06:52:03 UTC 2015 - mpluskal@suse.com
+
+- Rename rpmlintrc so that it complies with packaging guidelines
+- Add rpmlintrc as source 
+
+-------------------------------------------------------------------
+Thu Jun 25 15:30:48 UTC 2015 - asn@cryptomilk.org
+
+- Fix make install
+
+-------------------------------------------------------------------
+Mon May 11 08:35:22 CEST 2015 - asn@cryptomilk.org
+
+- Cleanup specfile
+
+-------------------------------------------------------------------
+Wed Jan 21 12:48:00 UTC 2015 - asn@cryptomilk.org
+
+- Update to version 1.1.0
+  * Added support for gesresuid().
+  * Added support for gesresgid().
+  * Added MacOSX support.
+  * Added fully working thread support.
+  * Added more tests.
+  * Fixed issues with older gcc versions.
+
+-------------------------------------------------------------------
+Mon Oct  6 08:50:39 UTC 2014 - asn@cryptomilk.org
+
+- Fix test on AArch64.
+
+-------------------------------------------------------------------
+Thu Jul 31 07:43:35 UTC 2014 - asn@cryptomilk.org
+
+- Update to version 1.0.2.
+  * Added better logging system.
+  * Added a mapnpage
+  * Added build and install instructions
+  * Fixed threading issue in the desctructor.
+
+-------------------------------------------------------------------
+Thu Feb 13 10:25:37 UTC 2014 - asn@cryptomilk.org
+
+- Initial package.
+

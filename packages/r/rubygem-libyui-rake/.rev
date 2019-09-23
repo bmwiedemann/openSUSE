@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b89c41b7ca8ec66396b70011bc9ae31f</srcmd5>
+    <version>0.1.4</version>
+    <time>1473888899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>427227</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d4a73d7f94fb4b9c83cae59240f5c5c8</srcmd5>
+    <version>0.1.5</version>
+    <time>1476780042</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>434538</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>806d53b2cbcd64b2ec40a2fe4356c144</srcmd5>
+    <version>0.1.7</version>
+    <time>1497603279</time>
+    <user>dimstar_suse</user>
+    <comment>- Update sle12sp3 target and add sle15 target (bnc#1044312)
+- 0.1.7
+
+- Update sle12sp2 target (bnc#1009324)
+- 0.1.6</comment>
+    <requestid>503909</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>520a00b52a28f67206eb8a4e43366211</srcmd5>
+    <version>0.1.10</version>
+    <time>1529501356</time>
+    <user>maxlin_factory</user>
+    <comment>submit new version 0.1.10</comment>
+    <requestid>617472</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9e63f46ec80f91385a3eef8b3db5f2cc</srcmd5>
+    <version>0.1.11</version>
+    <time>1539013481</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 0.1.11</comment>
+    <requestid>640095</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>255dee2c9f426a2ac98a900562858747</srcmd5>
+    <version>0.1.13</version>
+    <time>1541666916</time>
+    <user>dimstar_suse</user>
+    <comment>- Changed the SLE12-SP4 SR target to the :Update subproject
+  (bsc#1113887)
+- 0.1.13
+
+- Remove qrc from license check (boo#1112041)
+- 0.1.12</comment>
+    <requestid>646576</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c13bac42f95117c2949401ae15de2d01</srcmd5>
+    <version>0.1.14</version>
+    <time>1553611577</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 0.1.14</comment>
+    <requestid>688731</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f71d1c94a698e8e29896a042f8d59ae2</srcmd5>
+    <version>0.1.19</version>
+    <time>1567849872</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 0.1.19</comment>
+    <requestid>728529</requestid>
+  </revision>
+</revisionlist>

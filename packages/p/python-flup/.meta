@@ -1,0 +1,5 @@
+<package name="python-flup" project="openSUSE:Factory">
+  <title>Random assortment of WSGI servers</title>
+  <description>A random collection of WSGI modules for Python</description>
+  <devel project="devel:languages:python" package="python-flup"/>
+</package>

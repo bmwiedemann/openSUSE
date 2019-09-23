@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Wed Aug  7 23:57:03 UTC 2013 - jengelh@inai.de
+
+- Update to final 0.10.6
+* There are no changes other than the version number
+
+-------------------------------------------------------------------
+Fri May 31 16:14:13 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 0.10.5
+* Adjust for new libnfc4-1.7.0 API
+
+-------------------------------------------------------------------
+Sun Mar  3 19:48:29 UTC 2013 - jengelh@inai.de
+
+- Make sure m4 directory exists before running autoreconf
+
+-------------------------------------------------------------------
+Fri Jun 15 18:06:51 UTC 2012 - jengelh@inai.de
+
+- Initial package for build.opensuse.org

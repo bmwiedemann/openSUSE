@@ -1,0 +1,226 @@
+-------------------------------------------------------------------
+Mon Oct  2 11:21:08 UTC 2017 - jengelh@inai.de
+
+- Trim build characteristics from description.
+
+-------------------------------------------------------------------
+Mon Oct  2 10:47:27 UTC 2017 - tchvatal@suse.com
+
+- Version update to 0.1.4:
+  * Fix several issues found by oss-fuzz.
+  * Require C++11 for build.
+  * Fix issues found by coverity.
+  * Various code cleanups.
+
+-------------------------------------------------------------------
+Wed Feb  1 12:46:46 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Mon Aug  1 08:48:34 UTC 2016 - tchvatal@suse.com
+
+- Disable silent rules
+- Remove sle11 support code
+
+-------------------------------------------------------------------
+Thu Jul 21 07:30:07 UTC 2016 - fstrba@suse.com
+
+- Upgrade to upstream version 0.1.3
+  * Improvements for CMX parsers
+    - More robust parsing using the pointers from CMX header
+    - Implement almost all fills
+    - Implement outline properties
+    - Implement embedded raster images
+    - Implement transparency lens for fills
+  * Some fixes for CDR parsers
+    - Consider fill/outline styles
+  * Tools
+    - Make cmx2* and cdr2* tools handle both CDR and CMX
+
+-------------------------------------------------------------------
+Sat Dec 26 13:04:36 UTC 2015 - fstrba@suse.com
+
+- Upgrade to updstream version 0.1.2
+  * Fix various crashes and hangs when reading broken files found
+    with the help of american-fuzzy-lop.
+  * Fix build with boost 1.59. (rhbz#1258127)
+  * Fix various problems detected by Coverity.
+  * Do not drop empty text lines. (tdf#67873)
+  * Make --help output of all command line tools more
+    help2man-friendly.
+  * Several other small improvements.
+
+-------------------------------------------------------------------
+Wed Nov 11 11:08:29 UTC 2015 - idonmez@suse.com
+
+- Fix compilation with boost 1.59 
+
+-------------------------------------------------------------------
+Fri Nov 28 08:43:28 UTC 2014 - fstrba@suse.com
+
+- Upgrade to upstream version 0.1.1
+  * Fix several problems found by Coverity.
+  * Fix crash when NULL is passed as input stream.
+  * Fix various crashes and hangs when reading broken files found
+    with the help of american-fuzzy-lop.
+  * Only export public symbols on Linux.
+- Remove patch: libcdr-0.1.0-pkgconfig.patch
+- Add patch: libcdr-0.1.1-pkgconfig.patch
+  * Rediff to apply to current context
+
+-------------------------------------------------------------------
+Fri Jul 25 07:15:32 UTC 2014 - fstrba@suse.com
+
+- Added patch: libcdr-0.1.0-pkgconfig.patch
+  * Remove the Requires.private which breaks SLE11 builds
+
+-------------------------------------------------------------------
+Mon May 26 09:30:13 UTC 2014 - fstrba@suse.com
+
+- Upgrade to upstream version 0.1.0
+  * ABI change
+  * Remove dependency on libwpd-devel and libwpg-devel
+  * Add dependency on librevenge-devel
+
+-------------------------------------------------------------------
+Thu Apr 10 10:36:05 UTC 2014 - fstrba@suse.com
+
+- Update to upstream version 0.0.16
+  * Brownbag release
+  * Upstream relicensing to MPL-2.0
+
+-------------------------------------------------------------------
+Thu Apr 10 09:51:43 UTC 2014 - fstrba@suse.com
+
+- Fix mistake in licensing
+  * 0.0.x line is still tripple LGPL-2.0+ or GPL-2.0+ or MPL-1.1
+
+-------------------------------------------------------------------
+Tue Apr  8 07:42:45 UTC 2014 - fstrba@suse.com
+
+- Update to upstream version 0.0.15
+  * Approximation of splines by cubic beziers
+  * Support CorelDraw x7 file-format
+  * Add a palette #0x03 for spot colours (0x19)
+  * first iteration of YIQ255 support
+  * hard-depend on libwpd >= 0.9.5
+  * settle license on MPL-2.0
+- Removed unneeded patches:
+  * libcdr-0.0.14-pkgconfig.patch
+  * libcdr-0.0.14-wpx_seek_end.patch
+
+-------------------------------------------------------------------
+Sat Jan 25 21:27:54 UTC 2014 - tchvatal@suse.com
+
+- Format with spec-cleaner and noarch documentation.
+
+-------------------------------------------------------------------
+Sat Jan 18 15:31:13 UTC 2014 - crrodriguez@opensuse.org
+
+- build with -fvisibility-inlines-hidden, saving around 300 
+ entries in the exported symbol table.
+- build with --disable-werror, there are no warnings but werror
+  during deployment is undesirable.
+
+-------------------------------------------------------------------
+Fri Nov  1 09:09:17 UTC 2013 - tchvatal@suse.com
+
+- Remove conditionals for docs and use verbose build.
+
+-------------------------------------------------------------------
+Tue Oct  8 14:59:07 UTC 2013 - fstrba@suse.com
+
+- liblcms2 and zlib are compile-time dependencies only
+  * Add patch to remove the requirements from *.pc file
+
+-------------------------------------------------------------------
+Fri Jul 26 07:06:40 UTC 2013 - fstrba@suse.com
+
+- Performance regression fix
+  * Add patch to unconditionally use WPX_SEEK_END
+  * Depend on libwpd-devel >= 0.9.5 that has WPX_SEEK_END
+
+-------------------------------------------------------------------
+Mon May 27 10:21:51 UTC 2013 - fridrich.strba@suse.com
+
+- Update to upstream version 0.0.14
+  * Miscellaneous coverity fixes
+  * Be more gracious with broken documents
+  * Change source code layout in order to allow including
+    of headers from the tarball directly.
+  * Fix issues with angle units
+
+-------------------------------------------------------------------
+Mon Apr 22 13:25:32 UTC 2013 - fridrich.strba@suse.com
+
+- Update to upstream version 0.0.13
+  * Extend text support to CDR versions 5 and 6
+  * Fix text parser for CDR version 13+
+  * Parse text format strings in CDR version 16
+  * Text colour support for CDR versions 5 - 16
+  * Add dependency on boost for both json property string
+    parser and for extraction of colour information
+- Added build dependency on boost-devel
+
+-------------------------------------------------------------------
+Mon Apr  8 16:51:21 CEST 2013 - fridrich.strba@suse.com
+
+- Update to upstream version 0.0.12
+  * rewrite of ellitical arc transforms, fixes a fdo#62538
+  * multiple fixes for text encondings
+  * added cdr2text and cmx2text tools in order to make string
+    encoding debugging easier
+- Removed upstreamed patch
+
+-------------------------------------------------------------------
+Fri Mar  1 14:24:12 CET 2013 - fridrich.strba@suse.com
+
+- Update to upstream version 0.0.11
+  * Fix positions of circles and their transformations
+  * Fix issues with large angle when the angles are negative
+  * Implement reading of multi-paragraph text
+  * Fix tranformation of bitmaps
+  * Miscellaneous coverity fixes
+  * Miscellaneous fixes of the SVG generator
+- Upstream patch for text encoding overrides in styles
+
+-------------------------------------------------------------------
+Fri Jan 25 15:47:08 CET 2013 - fridrich.strba@suse.com
+
+- Update to upstream version 0.0.10
+  * Fix wrong encoding of some text strings
+  * New dependency on libicu-devel
+- Upstream patch fixing large-angle computation
+
+-------------------------------------------------------------------
+Tue Nov 13 07:58:32 UTC 2012 - cfarrell@suse.com
+
+- license update: LGPL-2.0+ or GPL-2.0+ or MPL-1.1
+  Use either ^or^ or ^and^ to specify a license aggregation or compilation.
+  Semicolons and colons are ambigous and confusing
+
+-------------------------------------------------------------------
+Mon Nov  5 13:57:02 CET 2012 - fridrich.strba@suse.com
+
+- Update to upstream version 0.0.9
+  * Fix wrong positions of grouped objects in newer
+    CorelDraw file-formats
+
+-------------------------------------------------------------------
+Mon Jun 11 13:09:23 UTC 2012 - jengelh@inai.de
+
+- SPDX license field
+
+-------------------------------------------------------------------
+Mon Jun 11 14:32:55 CEST 2012 - fridrich.strba@suse.com
+
+- Update to upstream version 0.0.8
+  * initial text support
+- Remove upstreamed patch
+
+-------------------------------------------------------------------
+Fri Apr 27 08:48:31 CEST 2012 - fridrich.strba@suse.com
+
+- Initial package of libcdr
+

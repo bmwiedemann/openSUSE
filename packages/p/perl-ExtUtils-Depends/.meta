@@ -1,0 +1,38 @@
+<package name="perl-ExtUtils-Depends" project="openSUSE:Factory">
+  <title>Easily build XS extensions that depend on XS extensions</title>
+  <description>This module tries to make it easy to build Perl extensions that use
+functions and typemaps provided by other perl extensions. This means that a
+perl extension is treated like a shared library that provides also a C and
+an XS interface besides the perl one.
+
+This works as long as the base extension is loaded with the RTLD_GLOBAL
+flag (usually done with a
+
+	sub dl_load_flags {0x01}
+
+in the main .pm file) if you need to use functions defined in the module.
+
+The basic scheme of operation is to collect information about a module in
+the instance, and then store that data in the Perl library where it may be
+retrieved later. The object can also reformat this information into the
+data structures required by ExtUtils::MakeMaker's WriteMakefile function.
+
+When creating a new Depends object, you give it a name, which is the name
+of the module you are building. You can also specify the names of modules
+on which this module depends. These dependencies will be loaded
+automatically, and their typemaps, header files, etc merged with your new
+object's stuff. When you store the data for your object, the list of
+dependencies are stored with it, so that another module depending on your
+needn't know on exactly which modules yours depends.
+
+For example:
+
+  Gtk2 depends on Glib
+
+  Gnome2::Canvas depends on Gtk2
+
+  ExtUtils::Depends-&gt;new ('Gnome2::Canvas', 'Gtk2');
+     this command automatically brings in all the stuff needed
+     for Glib, since Gtk2 depends on it.</description>
+  <devel project="devel:languages:perl" package="perl-ExtUtils-Depends"/>
+</package>

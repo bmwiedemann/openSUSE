@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Thu Mar  7 12:58:45 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- updated to 0.65
+   see /usr/share/doc/packages/perl-Test-Differences/Changes
+
+  0.67   2019-03-06
+      - Correctly compare subroutine references
+
+  0.66   2019-02-27
+      - Fix tests on Windows (thanks to Serguei Trouchelle)
+
+-------------------------------------------------------------------
+Thu Feb 21 10:59:44 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Added test dependencies during build:
+  * Test::Pod >= 1.22, Test::Pod::Coverage >= 1.08
+- Cleaned with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb 20 06:33:52 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.65
+   see /usr/share/doc/packages/perl-Test-Differences/Changes
+
+  0.65   2019-02-19
+      - Canonical repo is now https://github.com/DrHyde/perl-modules-Test-Differences
+      - Fix discrepancies in copyright notices (thanks to Christian Neukirchen
+        for pointing them out)
+      - Make the tests more consistent (thanks to genio)
+      - Add unicode tests
+      - Fix whitespace issue in tests when using recent Test::More in verbose mode
+        (thanks to ntnyi for debugging)
+      - Get rid of Build.PL, just use Makefile.PL
+
+-------------------------------------------------------------------
+Fri Nov 27 10:04:22 UTC 2015 - coolo@suse.com
+
+- updated to 0.64
+   see /usr/share/doc/packages/perl-Test-Differences/Changes
+
+  0.64 Sun November 22, 2015
+      - Bump dependency version for Text::Diff to avoid a buggy release
+      - Make tests pass with relocation perl (see
+        https://rt.cpan.org/Ticket/Display.html?id=103133)
+
+-------------------------------------------------------------------
+Sat Feb  7 16:23:02 UTC 2015 - coolo@suse.com
+
+- updated to 0.63
+    - Minor doco-fixes
+    - Remove use of flatten, always use Data::Dumper for saner, more readable
+      output, fixes RT #95446 (David Precious (bigpresh))
+
+-------------------------------------------------------------------
+Mon Sep 15 15:15:09 UTC 2014 - coolo@suse.com
+
+- updated to 0.62
+   - Document the Text::Diff unicode fix.
+   - Add ability to customise 'Got' and 'Expected' column headers
+
+-------------------------------------------------------------------
+Tue Dec 27 13:30:21 UTC 2011 - coolo@suse.com
+
+- fix typo in provide
+
+-------------------------------------------------------------------
+Sun Nov 20 12:31:30 UTC 2011 - coolo@suse.com
+
+- update to 0.61
+    - Allow an option to override Sortkeys in C<eq_or_diff>. Thanks to Mark
+      Zealey for the suggestion.
+    - Unnumbered tests. There's no point to them.
+    - Make '' and undef not equal. Thanks to Pavel Shaydo for the patch.
+    - Made Data::Dumper minimum version 2.126 to resolve
+      https://rt.cpan.org/Ticket/Display.html?id=60798. Thanks to
+      jjnapiork@cpan.org  for the report and fix.
+
+-------------------------------------------------------------------
+Wed Dec  1 09:44:38 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:11 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jul 25 06:54:27 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.500)
+

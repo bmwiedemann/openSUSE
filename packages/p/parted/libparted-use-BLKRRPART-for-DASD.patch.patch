@@ -1,0 +1,81 @@
+From: Petr Uzel <petr.uzel@suse.cz>
+Date: Fri, 14 Feb 2014 09:12:47 +0100
+Subject: libparted: use BLKRRPART for DASDs
+References: bnc#862139
+Patch-mainline: no, upstream dropped proper DASD support
+
+This reverts upstream commit 9fa0e1800db5b9f094ae481fd95a51da03f19e95.
+This reverts upstream commit 1223b9fc07859cb619c80dc057bd05458f9b5669.
+and some fixups on top
+---
+ libparted/arch/linux.c |   50 ++++++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 41 insertions(+), 9 deletions(-)
+
+Index: parted-3.2/libparted/arch/linux.c
+===================================================================
+--- parted-3.2.orig/libparted/arch/linux.c
++++ parted-3.2/libparted/arch/linux.c
+@@ -3097,6 +3097,34 @@ _disk_sync_part_table (PedDisk* disk)
+ }
+ 
+ static int
++_kernel_reread_part_table (PedDevice* dev)
++{
++        LinuxSpecific*  arch_specific = LINUX_SPECIFIC (dev);
++        int             retry_count = 9;
++
++        sync();
++        while (ioctl (arch_specific->fd, BLKRRPART)) {
++                retry_count--;
++                sync();
++                if (retry_count == 3)
++                        sleep(1); /* Pause to allow system to settle */
++
++                if (!retry_count) {
++                        ped_exception_throw (
++                                PED_EXCEPTION_WARNING,
++                                PED_EXCEPTION_IGNORE,
++                        _("WARNING: the kernel failed to re-read the partition "
++                          "table on %s (%s).  As a result, it may not "
++                          "reflect all of your changes until after reboot."),
++                                dev->path, strerror (errno));
++                        return 0;
++                }
++        }
++
++        return 1;
++}
++
++static int
+ _have_blkpg ()
+ {
+         static int have_blkpg = -1;
+@@ -3114,15 +3142,19 @@ static int
+ linux_disk_commit (PedDisk* disk)
+ {
+         if (disk->dev->type != PED_DEVICE_FILE) {
+-
+-		/* We now require BLKPG support.  If this assertion fails,
+-		   please write to the mailing list describing your system.
+-		   Assuming it's never triggered, ...
+-		   FIXME: remove this assertion in 2012.  */
+-		assert (_have_blkpg ());
+-
+-		if (!_disk_sync_part_table (disk))
+-			return 0;
++                /* The ioctl() command BLKPG_ADD_PARTITION does not notify
++                 * the devfs system; consequently, /proc/partitions will not
++                 * be up to date, and the proper links in /dev are not
++                 * created.  Therefore, if using DevFS, we must get the kernel
++                 * to re-read and grok the partition table.
++                 */
++                /* Work around kernel dasd problem so we really do BLKRRPART */
++		if (disk->dev->type == PED_DEVICE_DASD)
++		       return _kernel_reread_part_table(disk->dev);
++
++		assert(_have_blkpg());
++		if (!_disk_sync_part_table(disk))
++		       return 0;
+         }
+ 
+         return 1;

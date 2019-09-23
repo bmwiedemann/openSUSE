@@ -1,0 +1,131 @@
+<revisionlist>
+  <revision rev="1" vrev="18">
+    <srcmd5>1aa93b37b7f516ec52bee5431c4a210c</srcmd5>
+    <version>1.2.9</version>
+    <time>1168903447</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="56">
+    <srcmd5>436793044ab384a29c8ecb854194dbaa</srcmd5>
+    <version>1.2.9</version>
+    <time>1175174894</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>94b44082f4d74ba0775f1481290a3f92</srcmd5>
+    <version>1.2.10</version>
+    <time>1207297990</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="53">
+    <srcmd5>94b44082f4d74ba0775f1481290a3f92</srcmd5>
+    <version>1.2.10</version>
+    <time>1207297990</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="54">
+    <srcmd5>793dca174a96c846b1acf1837498da3f</srcmd5>
+    <version>1.2.10</version>
+    <time>1245365812</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="56">
+    <srcmd5>793dca174a96c846b1acf1837498da3f</srcmd5>
+    <version>1.2.10</version>
+    <time>1245365812</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="57">
+    <srcmd5>454164ae1715d985b7b34f1e04dfdb69</srcmd5>
+    <version>1.2.10</version>
+    <time>1268924844</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="59">
+    <srcmd5>454164ae1715d985b7b34f1e04dfdb69</srcmd5>
+    <version>1.2.10</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="60">
+    <srcmd5>454164ae1715d985b7b34f1e04dfdb69</srcmd5>
+    <version>1.2.10</version>
+    <time>1278678594</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="63">
+    <srcmd5>454164ae1715d985b7b34f1e04dfdb69</srcmd5>
+    <version>1.2.10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="65">
+    <srcmd5>454164ae1715d985b7b34f1e04dfdb69</srcmd5>
+    <version>1.2.10</version>
+    <time>1319182158</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="66">
+    <srcmd5>649c27e155862fd2e3c739c155241c63</srcmd5>
+    <version>1.2.10</version>
+    <time>1323192429</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="68">
+    <srcmd5>649c27e155862fd2e3c739c155241c63</srcmd5>
+    <version>1.2.10</version>
+    <time>1340183672</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="70">
+    <srcmd5>649c27e155862fd2e3c739c155241c63</srcmd5>
+    <version>1.2.10</version>
+    <time>1359109406</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="71">
+    <srcmd5>117fd327e62bc2da05b617961bc05686</srcmd5>
+    <version>1.2.10</version>
+    <time>1364240301</time>
+    <user>coolo</user>
+    <comment>Push parts from GNOME:Factory</comment>
+    <requestid>160897</requestid>
+  </revision>
+  <revision rev="16" vrev="73">
+    <srcmd5>117fd327e62bc2da05b617961bc05686</srcmd5>
+    <version>1.2.10</version>
+    <time>1379663187</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="75">
+    <srcmd5>117fd327e62bc2da05b617961bc05686</srcmd5>
+    <version>1.2.10</version>
+    <time>1409301814</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="76">
+    <srcmd5>52f0423da7de640afafc65daeb373dd3</srcmd5>
+    <version>1.2.10</version>
+    <time>1520588425</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581286 from dimstar)</comment>
+    <requestid>582853</requestid>
+  </revision>
+  <revision rev="19" vrev="77">
+    <srcmd5>e3c44a582445b665cc3c21cd2d6bfd6a</srcmd5>
+    <version>1.2.10</version>
+    <time>1522062218</time>
+    <user>dimstar_suse</user>
+    <comment>- Make version in the injected .pc file a variable, which is
+  dynamically updated to %{version} (boo#880273). (forwarded request 588464 from dimstar)</comment>
+    <requestid>590336</requestid>
+  </revision>
+</revisionlist>

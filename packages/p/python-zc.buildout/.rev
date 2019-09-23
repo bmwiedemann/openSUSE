@@ -1,0 +1,112 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5a3062df6f08b133df514190ca5ce8bd</srcmd5>
+    <version>2.9.4</version>
+    <time>1503925960</time>
+    <user>dimstar_suse</user>
+    <comment>renamed from python-zc.buildout
+See Request#518161</comment>
+    <requestid>518162</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>917c251ec8c752260acddd054f74e161</srcmd5>
+    <version>2.9.5</version>
+    <time>1507896997</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533149</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bfb0b8c7f91da6384b6df8ce9039e7fd</srcmd5>
+    <version>2.9.6</version>
+    <time>1513014987</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>555307</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>87cf3b383f13ba99e4fbcf59a454d6e4</srcmd5>
+    <version>2.11.0</version>
+    <time>1517234331</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>570414</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8d3c42793b1e6345668181220d598ee7</srcmd5>
+    <version>2.11.1</version>
+    <time>1520778337</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>585154</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d8d9060eb642598551edb0bfa6a0f42c</srcmd5>
+    <version>2.11.3</version>
+    <time>1525426216</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.11.3:
+ - Update to use the new PyPI at https://pypi.org/.
+- update to version 2.11.2:
+ - Fix for the #442 issue: AttributeError on
+   ``pkg_resources.SetuptoolsVersion``.
+</comment>
+    <requestid>603216</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e051b889607604af82bf955d4dcbe479</srcmd5>
+    <version>2.11.4</version>
+    <time>1527583087</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.11.4:
+ - Fix for `issue 451 &lt;https://github.com/buildout/buildout/issues/451&gt;`:
+   distributions with a version number that normalizes to a shorter version
+   number (3.3.0 to 3.3, for instance) can be installed now.
+</comment>
+    <requestid>611052</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e4eda19c28aafc37756566b74de3270a</srcmd5>
+    <version>2.12.0</version>
+    <time>1531592747</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>622788</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e26f436ab55c841b0ecade3d116505e3</srcmd5>
+    <version>2.12.2</version>
+    <time>1537883028</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>637768</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1d044e6bd2d1bb0bef321ef3dc9dac7d</srcmd5>
+    <version>2.12.2</version>
+    <time>1544726769</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654084</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>95d169147c5248398dc765c5a53c2120</srcmd5>
+    <version>2.13.1</version>
+    <time>1551216032</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.13.1:
+ - Documentation update for the new ``buildout query`` command.
+- Update to version 2.13.0:
+  * Get information about the configuration with new command ``buildout query``.
+</comment>
+    <requestid>679041</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cab18e7d112f0a65a7c8e88663efc1e6</srcmd5>
+    <version>2.13.2</version>
+    <time>1563259248</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>715008</requestid>
+  </revision>
+</revisionlist>

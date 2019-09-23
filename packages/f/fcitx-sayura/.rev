@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>12eb36ef1e8a5e3a5f14c8b433865589</srcmd5>
+    <version>0.1.0</version>
+    <time>1348147737</time>
+    <user>coolo</user>
+    <comment>new package: fcitx-sayura</comment>
+    <requestid>134484</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>12eb36ef1e8a5e3a5f14c8b433865589</srcmd5>
+    <version>0.1.0</version>
+    <time>1359108871</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2958e9a189c30ee51d4bd2c910fb3519</srcmd5>
+    <version>0.1.1</version>
+    <time>1373283318</time>
+    <user>coolo</user>
+    <comment>update version 0.1.1 (forwarded request 181685 from MargueriteSu)</comment>
+    <requestid>181686</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>2958e9a189c30ee51d4bd2c910fb3519</srcmd5>
+    <version>0.1.1</version>
+    <time>1379662331</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>2958e9a189c30ee51d4bd2c910fb3519</srcmd5>
+    <version>0.1.1</version>
+    <time>1409300865</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d2eb06aadc7a049eadb2864bafdfaa6a</srcmd5>
+    <version>0.1.2</version>
+    <time>1513677076</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547526</requestid>
+  </revision>
+</revisionlist>

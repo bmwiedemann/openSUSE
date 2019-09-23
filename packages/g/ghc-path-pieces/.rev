@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec4386d7e377eb46a8bbcaf826d1b753</srcmd5>
+    <version>0.2.1</version>
+    <time>1447146174</time>
+    <user>dimstar_suse</user>
+    <comment>path-pieces: Components of paths.</comment>
+    <requestid>342359</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e413fd36d741fd534af88ad9e0d1be79</srcmd5>
+    <version>0.2.1</version>
+    <time>1469382726</time>
+    <user>dimstar_suse</user>
+    <comment>See https://lists.opensuse.org/opensuse-haskell/2016-07/msg00000.html for details.</comment>
+    <requestid>412404</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e7b2fce647eaa30be64e306c3dcd3973</srcmd5>
+    <version>0.2.1</version>
+    <time>1505505811</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525133</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3e6334f157ccde941b2bdd55cf1b8472</srcmd5>
+    <version>0.2.1</version>
+    <time>1527675597</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609799</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>74c3e4f783783b77667c616965838e7c</srcmd5>
+    <version>0.2.1</version>
+    <time>1532445660</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 0.2.1
+- initial commit</comment>
+    <requestid>623827</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>55b790bfafa2284e342b5272ffdecf73</srcmd5>
+    <version>0.2.1</version>
+    <time>1540450919</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643437</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,42 @@
+From aed6ec849a35cab0e7cf1c64ddf55539d8427d16 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 2 Aug 2019 14:30:59 +0200
+Subject: [PATCH 2/2] Fix two definition mismatches in contrib/mmg3d
+
+The FILE*/int mismatch could even lead to crashes, in case sizeof(FILE*)
+!= sizeof(int).
+---
+ contrib/mmg3d/build/sources/pattern.c | 3 ++-
+ contrib/mmg3d/build/sources/quality.c | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/contrib/mmg3d/build/sources/pattern.c b/contrib/mmg3d/build/sources/pattern.c
+index d099405..31b98e9 100644
+--- a/contrib/mmg3d/build/sources/pattern.c
++++ b/contrib/mmg3d/build/sources/pattern.c
+@@ -47,7 +47,8 @@ along with MMG3D. If not, see <http://www.gnu.org/licenses/>.
+ 
+ 
+ unsigned char MMG_arfa[3][4] = { {2,0,1,3}, {1,2,0,3}, {0,1,2,3} }; 
+-extern int MMG_permar[10][4];
++// defined in anularcutting.c
++extern int MMG_permar[12][4];
+ extern int MMG_pointar[64][2];
+ extern int ddebug;
+ //insert ip on ia-ib
+diff --git a/contrib/mmg3d/build/sources/quality.c b/contrib/mmg3d/build/sources/quality.c
+index c8f93d7..68cc74d 100644
+--- a/contrib/mmg3d/build/sources/quality.c
++++ b/contrib/mmg3d/build/sources/quality.c
+@@ -46,7 +46,7 @@ along with MMG3D. If not, see <http://www.gnu.org/licenses/>.
+ #include "mesh.h"  
+ 
+ 
+-double MMG_rao(pMesh mesh,int k,int inm);
++double MMG_rao(pMesh mesh,int k,FILE *inm);
+ double MMG_caltetrao(pMesh mesh,pSol sol,int iel) {
+ 	return(MMG_rao(mesh,iel,0));
+ }
+-- 
+2.22.0
+

@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>33057c271792667bc842f599c0c2344d</srcmd5>
+    <version>0.5.2</version>
+    <time>1448553771</time>
+    <user>dimstar_suse</user>
+    <comment>path: Path</comment>
+    <requestid>345712</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1c573d5a4137471ea1fe25d39a5e2575</srcmd5>
+    <version>0.5.3</version>
+    <time>1448957971</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.3
+* Added conversion functions.</comment>
+    <requestid>346746</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4cae7c581bf14006325acd14e8e77e08</srcmd5>
+    <version>0.5.7</version>
+    <time>1458120817</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.7
+* Fix haddock problem.
+* Reject only .. and .
+* Use filepath's isValid function for additional sanity checks
+* Disable parsing of path consisting only of &quot;.&quot;
+* Add NFData instance for Path
+* Some typo/docs improvements
+* Add standard headers to modules (forwarded request 368103 from mimi_vx)</comment>
+    <requestid>368106</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9078fe76108e849dbca09c9bd14bef05</srcmd5>
+    <version>0.5.8</version>
+    <time>1466814064</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.8
+* Add Aeson instances. (forwarded request 403554 from mimi_vx)</comment>
+    <requestid>403555</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>645e24b08fed9f17b3113c6d3aae090f</srcmd5>
+    <version>0.5.8</version>
+    <time>1468999757</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411949</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>08063f32e1a21e506a8c2feec597204c</srcmd5>
+    <version>0.5.9</version>
+    <time>1473103238</time>
+    <user>dimstar_suse</user>
+    <comment>version update (forwarded request 421666 from psimons)</comment>
+    <requestid>421749</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f812da6c63f474465c8308788d2c0524</srcmd5>
+    <version>0.5.11</version>
+    <time>1484232659</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447701</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fa2357508626045ca8e2dcb74573f345</srcmd5>
+    <version>0.5.12</version>
+    <time>1487681149</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>456884</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>de5b1494485b17560201f1527b009663</srcmd5>
+    <version>0.5.12</version>
+    <time>1489536412</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>478060</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c3035b0c5691645f5df56636c9cd471a</srcmd5>
+    <version>0.5.13</version>
+    <time>1491896580</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485150</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>0b4e3bf7119c0a8588f6b4b3cd6e475c</srcmd5>
+    <version>0.5.13</version>
+    <time>1505505803</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525130</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7359ae5fe7342cf68bd7b01389b7f1cc</srcmd5>
+    <version>0.6.1</version>
+    <time>1527675084</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-path to the latest version.</comment>
+    <requestid>607852</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>b3bc890950080ac8027c71b6ad37249b</srcmd5>
+    <version>0.6.1</version>
+    <time>1532161313</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623825</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>6fe9117399b0f13dc7ab1f82a61604ca</srcmd5>
+    <version>0.6.1</version>
+    <time>1540450885</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643435</requestid>
+  </revision>
+</revisionlist>

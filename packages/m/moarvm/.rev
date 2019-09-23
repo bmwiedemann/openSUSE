@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4cdfb383079589ee0f035becc340caab</srcmd5>
+    <version>2014.02</version>
+    <time>1394516799</time>
+    <user>coolo</user>
+    <comment>Dropped leading '0.' in version.</comment>
+    <requestid>225424</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a8e2546584d5de6bd6f3e51a2ae768ef</srcmd5>
+    <version>2014.02</version>
+    <time>1394806618</time>
+    <user>coolo</user>
+    <comment>fix file list for i586 debuginfo builds</comment>
+    <requestid>225566</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>92460056fc06000a6811c02b6a135285</srcmd5>
+    <version>2014.08</version>
+    <time>1408957447</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>245760</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>92460056fc06000a6811c02b6a135285</srcmd5>
+    <version>2014.08</version>
+    <time>1409301907</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0cdc37c02a15b0bc5e5e13bd078f9404</srcmd5>
+    <version>2015.05</version>
+    <time>1435053433</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>312535</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eb0ff4822c144c9693fd382a03ffd6ca</srcmd5>
+    <version>2016.01</version>
+    <time>1455190674</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>358564</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9bf1e46dd12743dbc53e2817d9338044</srcmd5>
+    <version>2016.07</version>
+    <time>1469831230</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 414802 from niner9)</comment>
+    <requestid>414992</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>07f9328d27dfd5e041ec670f674ea32b</srcmd5>
+    <version>2016.10</version>
+    <time>1477410226</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>437076</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a28d134472c7301c1edb2f04ba45c75e</srcmd5>
+    <version>2016.12</version>
+    <time>1483048135</time>
+    <user>lnussel_factory</user>
+    <comment>-&gt;</comment>
+    <requestid>447295</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1be514cb90883b7a44ff736c0ea422b9</srcmd5>
+    <version>2017.05</version>
+    <time>1497786641</time>
+    <user>dimstar_suse</user>
+    <comment>Request 503681 was declined due to &quot;A Patch (moarvm-remove-rpath.diff) is being deleted without this removal being referenced in the changelog.&quot;
+
+Added information about the removal to the corresponding changelog entry.</comment>
+    <requestid>503685</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4acbeff26d90cdb03b03be11d22bd8cd</srcmd5>
+    <version>2017.07</version>
+    <time>1501406821</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512992</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c7e83e6cc37464398deeb7bacaadec9e</srcmd5>
+    <version>2017.08.1</version>
+    <time>1503393049</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518010</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>5dd7f46925865f6ba70834df8b56e565</srcmd5>
+    <version>2018.01</version>
+    <time>1518514118</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574663</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>280051490853b1670a9d49ac8c9cbd84</srcmd5>
+    <version>2018.03</version>
+    <time>1521716581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589114</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>93d8eaa1e477d04eb0b8da40c00a9cab</srcmd5>
+    <version>2018.04.1</version>
+    <time>1525611687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602782</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>c2a98a9b34496a4553d73ced24b27412</srcmd5>
+    <version>2018.04.1</version>
+    <time>1533045603</time>
+    <user>dimstar_suse</user>
+    <comment>Add reproducible.patch to make build independent of build system CPU type (boo#1100677) (forwarded request 626135 from bmwiedemann)</comment>
+    <requestid>626162</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>b2b55ed87d617f3b10af26b3a86a921e</srcmd5>
+    <version>2018.10</version>
+    <time>1543223987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648567</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>a08159017c96b1d303952eb86dc2206f</srcmd5>
+    <version>2018.12</version>
+    <time>1547130019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662295</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>307ee40f450825e12ed264675588a24d</srcmd5>
+    <version>2019.03</version>
+    <time>1555237426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693912</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>d3440b61067a5370ca2547f4598450e8</srcmd5>
+    <version>2019.07</version>
+    <time>1568190843</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2019.07</comment>
+    <requestid>729693</requestid>
+  </revision>
+</revisionlist>

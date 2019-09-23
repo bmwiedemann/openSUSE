@@ -1,0 +1,25 @@
+From 44536c352878d2c6b6e05eb884cd8aa72832dc84 Mon Sep 17 00:00:00 2001
+From: Dinar Valeev <dvaleev@suse.com>
+Date: Thu, 31 Jul 2014 16:40:14 +0200
+Subject: [PATCH] workaround fail on ppc64
+
+---
+ test/tree2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/tree2.c b/test/tree2.c
+index d5d4c72..d345873 100644
+--- a/test/tree2.c
++++ b/test/tree2.c
+@@ -462,7 +462,7 @@ hubbub_error unref_node(void *ctx, void *node)
+ 
+ 		n->refcnt--;
+ 
+-		printf("Unreferencing node %p (%d) [%d : %s]\n", node, 
++		printf("Unreferencing node %p (%d) [%d : %s] \n", node, 
+ 				n->refcnt, n->type, 
+ 				n->type == ELEMENT ? n->data.element.name : "");
+ 
+-- 
+1.8.5.2
+

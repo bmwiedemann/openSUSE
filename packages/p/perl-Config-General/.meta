@@ -1,0 +1,16 @@
+<package name="perl-Config-General" project="openSUSE:Factory">
+  <title>Generic Config Module</title>
+  <description>This module opens a config file and parses its contents for you. The *new*
+method requires one parameter which needs to be a filename. The method
+*getall* returns a hash which contains all options and its associated
+values of your config file.
+
+The format of config files supported by *Config::General* is inspired by
+the well known Apache config format, in fact, this module is 100%
+compatible to Apache configs, but you can also just use simple name/value
+pairs in your config files.
+
+In addition to the capabilities of an Apache config file it supports some
+enhancements such as here-documents, C-style comments or multiline options.</description>
+  <devel project="devel:languages:perl" package="perl-Config-General"/>
+</package>

@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a37c572773487a1c2b5a5f5cfd913d67</srcmd5>
+    <version>0.6.0</version>
+    <time>1503593591</time>
+    <user>dimstar_suse</user>
+    <comment>required by latest version of python-ZODB</comment>
+    <requestid>517026</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e99e1f554e3c30c1bdb03dfada0130a1</srcmd5>
+    <version>1.0.1</version>
+    <time>1532681818</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1:
+  * Fix a memory leak in pickle protocol 3 under Python 2. See issue 36.
+  * Add support for Jython 2.7.
+  * Add support for Python 3.5 and 3.6.
+  * Drop support for Python 2.6 and 3.2 and 3.3</comment>
+    <requestid>625396</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9ea6d173ab74ef13dad7ffcc1e01eea3</srcmd5>
+    <version>1.0.3</version>
+    <time>1555053346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693257</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3398b538d3a0e3eac712966b96e9fbe2</srcmd5>
+    <version>1.0.4</version>
+    <time>1560862697</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.4:
+  * Fix pickle corruption under certain conditions. See pull request 47.</comment>
+    <requestid>710333</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,10 @@
+--- biosdevname-0.6.1-orig/biosdevname.rules.in	2014-11-03 19:07:11.000000000 +0100
++++ biosdevname-0.6.1/biosdevname.rules.in	2015-04-10 14:44:37.937236074 +0200
+@@ -19,6 +19,6 @@
+ 
+ # using NAME= instead of setting INTERFACE_NAME, so that persistent
+ # names aren't generated for these devices, they are "named" on each boot.
+-SUBSYSTEMS=="pci", PROGRAM="/sbin/biosdevname --policy physical -i %k", NAME="%c",  OPTIONS+="string_escape=replace"
++SUBSYSTEMS=="pci", PROGRAM="/sbin/biosdevname --policy physical --smbios 2.6 --nopirq -i %k", NAME="%c",  OPTIONS+="string_escape=replace"
+ 
+ LABEL="netdevicename_end"

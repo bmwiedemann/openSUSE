@@ -1,0 +1,255 @@
+-------------------------------------------------------------------
+Thu Aug 22 14:04:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.0.7
+  * Allow constraints on any metavariables. Constraints can be
+    specified by comprehension (= { … } or != { … }, with each
+    item referring to a constant identifier or an inherited
+    meta-variable, and curly-brackets can be omitted for a single
+    item), regular expression (~ "..." or !~ "..."), integer
+    comparison (<, <, >=, >) or scripts (:script:…). Constraints
+    can be used in conjunctions (&&), disjunctions (||) and can
+    be negated (!) and parenthesed.
+  * Allow script finalizers for parallel computation. See
+    tests/countcalls.cocci and tests/countcalls_python.cocci
+  * Allow disjunctions on a wider range of syntactic
+    constructions (function definitions, variable declarations,
+    …).
+
+-------------------------------------------------------------------
+Mon Jul 29 09:43:52 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pre-shipped binaries for spgen and spgen.opt: since these
+  are x86_64 binaries, they would not be usable on i586 builds of
+  coccinella.
+
+-------------------------------------------------------------------
+Wed Jan 24 11:30:59 UTC 2018 - jengelh@inai.de
+
+- Build under rpm 4.14
+
+-------------------------------------------------------------------
+Tue Nov 28 10:25:02 UTC 2017 - jengelh@inai.de
+
+- Add kill-env.diff
+
+-------------------------------------------------------------------
+Tue Nov 28 01:14:03 UTC 2017 - aavindraa@gmail.com
+
+- use %make_install macro
+- remove useless directory creation
+
+-------------------------------------------------------------------
+Sun Nov 26 22:45:58 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.0.6
+  * Allow \ in #define in semantic patch rules, to allow body
+    with multiple lines, potentially including changes. As a side
+    effect, \ is also allowed in when specifications, again to
+    allow patterns to stretch over multiple lines.
+  * Add identifier list metavariables for #define parameter lists
+  * Support for Python 3. Pycaml has been patched.
+- Remove coccinelle-1.0.4.patch (merged)
+
+-------------------------------------------------------------------
+Mon May 30 08:22:09 UTC 2016 - olaf@aepfle.de
+
+- Use ocamlfind(camlp4) to refer to camlp4
+- Add coccinelle-1.0.4.patch
+
+-------------------------------------------------------------------
+Tue May 24 14:20:12 UTC 2016 - olaf@aepfle.de
+
+- Fix build with ocaml-4.03
+  Use ocaml-parmap and ocaml-menhir instead of old built-in copies
+  Use ocaml-pcre
+
+-------------------------------------------------------------------
+Tue Dec 15 00:00:00 CET 2015 - dsterba@suse.cz
+
+- Update to 1.0.4
+* Language:
+* Length for statement list metavariables
+* Conjunction (analogous to disjunction)
+* Drop Circles, Stars
+* Drop Unique
+* Default values for script metavariables
+* Features:
+* Introduce .cocciconfig configuration file
+* Add some support for MetaStmtList.  Allowed at top level of {}.
+* timeout of 0 is no timeout, to allow cancelling this option.
+* Bugfixes:
+* Allow virtual variable definition to contain an =.
+* Improvement when exists rule contains when forall.
+
+-------------------------------------------------------------------
+Sat Aug 22 14:30:59 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.0.2
+  * Positions of C tokens are now computed while lexing rather than
+    during a distinct pass. This makes use of the Lexing.new_line 
+    function which has been introduced in OCaml 3.11. Coccinelle 
+    can thus no longer be compiled with OCaml 3.10. --use-gitgrep 
+    falls back to --use-coccigrep for a non-git repository.
+  * ocaml coccilib allows propagating identifiers, expressions, 
+    statements, listlens, and positions to subsequent matching rules
+  * Allow @S, for statement metavariable S on expressions
+  * Exploit explicit positive constraints (no regexps) on 
+    identifiers in file filtering
+  * Ability to declare a rule as matching an identifier.  Doesn't 
+    work properly for names of typedefs, enums, structures, or 
+    unions.
+  * Iso: allow mixed for model for the case where the model is just
+     a metavar
+  * Allow ! to propagate into == or other ops in more cases.
+
+-------------------------------------------------------------------
+Wed Aug  5 14:22:01 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.0.1
+  * Language:
+    + allow static on type-level declarers
+  * Features:
+    +  add --use-gitgrep option, for scanning with git grep
+  * Bugfix:
+    + Take into account constraints when determining whether a 
+      metavar is pure don't add switch fall through when a default 
+      is hidden under another case label.
+
+-------------------------------------------------------------------
+Tue May  5 12:43:14 UTC 2015 - mpluskal@suse.com
+
+- Update to release 1.0.0
+  * see changes.txt for full list of changes
+
+-------------------------------------------------------------------
+Fri Feb 20 00:00:00 CET 2015 - dsterba@suse.cz
+
+- Update to new upstream release 1.0.0~rc24
+  * global expression x
+  * Varargs support
+  * Inline in function prototypes
+  * #ifdef on kernel version
+  * Parallelism in Coccinelle
+    * --jobs <int>: Run the specified number of jobs in parallel.
+    * --chunksize <int>. The specified number of files are dispatched as a
+      single unit of parallelism.
+- Update to new upstream release 1.0.0~rc23
+  * Ability to add, but not match or remove, attributes.
+  * Some parsing and pretty printing improvements.
+
+-------------------------------------------------------------------
+Thu Nov 27 13:21:13 UTC 2014 - jslaby@suse.com
+
+- fix spatch link. The target did not exist.
+
+-------------------------------------------------------------------
+Thu Oct  2 15:01:42 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.0.0~rc22
+* Limited matching of decimal format strings, with the --ibm option
+* Better support for functions that have no specified return type.
+- Drop fix-no_prepare_ocamlcocci-arguments.patch (merged)
+
+-------------------------------------------------------------------
+Thu Sep  9 14:25:25 UTC 2013 - mcgrof@suse.com
+
+- Update to new upstream release 1.0.0~rc21
+* Support decimal type with the --ibm option
+* Support some matching on pragmas
+* Initialize and finalize rules contain a metavariable declaration
+  region.
+* Allow some parameters of a function not to have names.
+* Eliminate the reliance on grep in most cases for worth trying,
+  to improve performance.
+* Allow multidecls when removing variable names or when modifying
+  type.
+* Take fresh declarations into account when computing
+  get_constants to create dependencies
+* Leave ifdefs-like directives in unparsed code, if they don't have
+  beginning or ending counterparts.
+* Improve type inference performance when many files included by
+  using maps.
+- Add fix-no_prepare_ocamlcocci-arguments.patch: fix incorrect
+  call to two functions
+
+-------------------------------------------------------------------
+Thu May  9 17:51:39 UTC 2013 - jengelh@inai.de
+
+- Switch to using pkgconfig()-type BuildRequires
+
+-------------------------------------------------------------------
+Fri May  3 06:30:09 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.0.0~rc17
+* allow __ at the beginning of a struct or union name
+* unparsing with precedence (insertion of parentheses when needed)
+* Type metavariables no longer match a case where there is no type
+  in the C code.
+* An expression list metavariable can now be attached with @ to a
+  parameter list metavariable, to allow using the parameter names as
+  an argument list.
+
+-------------------------------------------------------------------
+Wed Oct  3 16:18:10 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.0.0~rc15
+* See http://coccinelle.lip6.fr/distrib/changes.html for
+  the (quite large) set of new features and bugfixes
+
+-------------------------------------------------------------------
+Thu Sep  6 01:17:08 UTC 2012 - jengelh@inai.de
+
+- spatch requires the python base modules (like site.py) to run
+
+-------------------------------------------------------------------
+Mon Feb 13 10:45:09 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sun Jul 10 19:08:55 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 1.0.0
+* Addition of initializer list metavariables.
+* Allow multiple position variables per token
+* ++ can now be associated with - code
+* Allow /* */ comments as smpl comments, not only as + code
+* Add support for && (label addresses)
+* local idexpression metavariable no longer matches static local x
+* see http://coccinelle.lip6.fr/distrib/changes.html for details
+
+-------------------------------------------------------------------
+Thu Jan 20 13:41:16 UTC 2011 - jengelh@medozas.de
+
+- Update to version 0.2.5-rc2
+* Make a very small attempt to parse C++ code, amounting to
+  accepting identifiers containing ::, tilde, and template
+  invocations.
+* support matching and removing some preprocessor directives
+* support for ocaml scripting
+* print rule name when a script rule crashes
+- Fix python x.y.0 detection
+
+-------------------------------------------------------------------
+Sat Apr 24 19:14:40 UTC 2010 - jengelh@medozas.de
+
+- disable stripping on ocaml -custom binaries to make program
+  usable
+
+-------------------------------------------------------------------
+Thu Mar 25 00:51:20 UTC 2010 - jengelh@medozas.de
+
+- install all files required by spatch, not just the binary itself
+  (otherwise it does not even run)
+
+-------------------------------------------------------------------
+Mon Mar 15 12:25:23 UTC 2010 - jengelh@medozas.de
+
+- new upstream release: 0.2.2
+
+-------------------------------------------------------------------
+Thu Feb 25 00:34:23 UTC 2010 - jengelh@medozas.de
+
+- Initial submission of version 0.2.1
+

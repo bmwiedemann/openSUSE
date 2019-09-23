@@ -1,0 +1,388 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>de80bab82914263f12436b2e2f8fa2d1</srcmd5>
+    <version>2015.10.23</version>
+    <time>1447882466</time>
+    <user>dimstar_suse</user>
+    <comment>Bootloader firmware for the Raspberry Pi (armv6l/armv7l) - needed to boot into u-boot-rpi/-rpi2 packages and the kernel.</comment>
+    <requestid>341325</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>25bc4e3a1c129655ed94a158cf9f2800</srcmd5>
+    <version>2015.12.08</version>
+    <time>1450605160</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347964</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>394d42f27e38f4b06d2540b017dc281d</srcmd5>
+    <version>2016.01.13</version>
+    <time>1453280067</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353663</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3d70fffa3eaa19b50bfac3a5578ce5f8</srcmd5>
+    <version>2016.02.01</version>
+    <time>1455701064</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357765</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e5b56788ea3a4e1092da254c89050959</srcmd5>
+    <version>2016.02.29</version>
+    <time>1457353438</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>363614</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cb40173a31f130f8d8b400005c816efe</srcmd5>
+    <version>2016.03.04</version>
+    <time>1457533037</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>367656</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f146017c2d4c38f263c8b4245b8ad99a</srcmd5>
+    <version>2016.04.05</version>
+    <time>1460358859</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>385305</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>96b5637dd58f7e79f66947c71efc0aa8</srcmd5>
+    <version>2016.04.27</version>
+    <time>1462342792</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>392063</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d2376ff321c29213ba23d3a59ad6c40e</srcmd5>
+    <version>2016.04.27</version>
+    <time>1463498056</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393758</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>42ddc6e7e795eb7413af91b88a6b6faa</srcmd5>
+    <version>2016.04.27</version>
+    <time>1464014329</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396619</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>65aa06f9e917e52f9a265148f42a7a9a</srcmd5>
+    <version>2016.05.20</version>
+    <time>1465847728</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399332</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e941e770f4bded28cd8874ea20dd6cf5</srcmd5>
+    <version>2016.05.20</version>
+    <time>1466681744</time>
+    <user>dimstar_suse</user>
+    <comment>Split config.txt off into new separate packages</comment>
+    <requestid>402786</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c602e657769531e1e7475acb9fc266b9</srcmd5>
+    <version>2016.07.15</version>
+    <time>1469382786</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412735</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d91cbe7eaea1a578537add0475e5a1ad</srcmd5>
+    <version>2016.08.23</version>
+    <time>1472111890</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>421726</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1d217d2aa60c679705b6193a263c3dd9</srcmd5>
+    <version>2016.09.02</version>
+    <time>1473103426</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424755</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>03edac3ad19715eb434701cb9f93aa31</srcmd5>
+    <version>2016.09.02</version>
+    <time>1473798270</time>
+    <user>dimstar_suse</user>
+    <comment>Use default frequencies in config-rpi{2,3}.txt (bsc#989511)</comment>
+    <requestid>427056</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>240df531c77af396cb977fb06a0329ae</srcmd5>
+    <version>2016.09.02</version>
+    <time>1474016554</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427907</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>160ca37755df7b1a32a777475ae7fdca</srcmd5>
+    <version>2016.09.21</version>
+    <time>1475242362</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>430544</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>61883eca1cf83a43971f05b4c717193b</srcmd5>
+    <version>2016.10.11</version>
+    <time>1476780046</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434563</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>173144b3a2e0583a922d07d63aa1aaca</srcmd5>
+    <version>2016.10.20</version>
+    <time>1477410282</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>437246</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>bf2e719e6cc3a5d10233142e900ba666</srcmd5>
+    <version>2016.11.16</version>
+    <time>1479837491</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440958</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>82709bfb0aee940e77d616a9f6234bdd</srcmd5>
+    <version>2017.01.10</version>
+    <time>1484660121</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449939</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>667211cef3e28b9b0a8cfbaa232ca2d7</srcmd5>
+    <version>2017.02.20</version>
+    <time>1487681520</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459353</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d5e0fcad34bec5e44b259e8df0ba898b</srcmd5>
+    <version>2017.04.04</version>
+    <time>1494345705</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489226</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>428cbb1df3d569069dc83b4e2b00ab85</srcmd5>
+    <version>2017.08.22</version>
+    <time>1503593754</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518401</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5c17252b01691513cbf17a044e535d12</srcmd5>
+    <version>2017.10.11</version>
+    <time>1507897145</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533615</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>84875be0f3762a7a0c9ddd9686c92ab4</srcmd5>
+    <version>2017.11.17</version>
+    <time>1511817430</time>
+    <user>dimstar_suse</user>
+    <comment>Update to abfb4be3e1 (2017-11-17) and add rpi0w sub-package and config (boo#1069828)</comment>
+    <requestid>545579</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ab614468a39a9f662ad771d279bfb28b</srcmd5>
+    <version>2018.01.17</version>
+    <time>1517824284</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571375</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>fde6a61ad5a7a6aa2011723d208b4192</srcmd5>
+    <version>2018.02.09</version>
+    <time>1519041668</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577294</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>0dec42165485e1eff45d08612d015981</srcmd5>
+    <version>2018.02.09</version>
+    <time>1519145733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578147</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>42f4f1190237f19e002f1056d5db0472</srcmd5>
+    <version>2018.03.13</version>
+    <time>1521193335</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586979</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>85d01f9a980bcd27f05e68e2469e1678</srcmd5>
+    <version>2018.03.13</version>
+    <time>1523029669</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow user defined config options (bsc#1088356)
+- Move HDMI workaround to rpi3 section (fixes RPi2 HDMI output)</comment>
+    <requestid>593846</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1fc1ec26eee61a5197e9e603917c1355</srcmd5>
+    <version>2018.04.16</version>
+    <time>1524489965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599354</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>9e46fd2342ea2cef8ed22e9fa8655602</srcmd5>
+    <version>2018.06.03</version>
+    <time>1528492671</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to ab802d3 (2018-06-03):
+  * revert: sdram: Reduce address skew from -10 to -5
+  * sdram: Reduce address skew from -10 to -5 
+  * platform: Avoid improving the schmoo on Pi3+
+  * platform: Latest AVS rules
+  * sdram: Increase read/write latency for higher sdram frequencies
+  * power: Add boot-time 3b+ PMIC register logging
+  * power: Continue to probe PMIC after error
+  * Match phy setup same as bootcode for device mode initialisation
+  * Add logging_messages to UART
+  * Fix 3B+ bootcode.bin only booting
+  * video_encode: Filter the list of encoders based on variant
+  * mmal: Relax requirement on a buffer in mmal_port_send_buffer
+  * platform: avs: Also apply chicken bits to boost voltage
+- Allow u-boot to set arm_control to support 32-bit images on RPi3
+- Update to ab802d3 (2018-06-03)
+- Allow u-boot to set arm_control to support 32-bit images on RPi3
+</comment>
+    <requestid>614851</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ecd18f6520b75278ddd7445ccd338023</srcmd5>
+    <version>2018.07.09</version>
+    <time>1531380037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622084</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f982c68c7f6193611365a285eee7e742</srcmd5>
+    <version>2018.08.10</version>
+    <time>1534543512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629592</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>135e33398aa130380b179eb504de5254</srcmd5>
+    <version>2018.10.15</version>
+    <time>1539869598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642580</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>59f668adbaf7dfc13d3ded4973ff1502</srcmd5>
+    <version>2018.11.05</version>
+    <time>1542750236</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650382</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>6a637197da87315fa4086d11e0387c58</srcmd5>
+    <version>2018.11.05</version>
+    <time>1544189974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655977</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>9606539eff7e3e6e19146e42298d5725</srcmd5>
+    <version>2018.12.21</version>
+    <time>1546947017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663593</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>afeba03a0606b0f50e5e178fcacdedaf</srcmd5>
+    <version>2019.01.22</version>
+    <time>1549018074</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670300</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>37868daa428be65a89111286eca3cb0f</srcmd5>
+    <version>2019.03.08</version>
+    <time>1552207213</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682849</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>66fdc81c7ba854bfb0306ab8cd26f116</srcmd5>
+    <version>2019.05.28</version>
+    <time>1559728018</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707764</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>57293d6af6ac968ccb44b2b4de8e9cf0</srcmd5>
+    <version>2019.07.09</version>
+    <time>1563455983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714610</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>b1c2ec28767bf1e1b83484760068a197</srcmd5>
+    <version>2019.09.04</version>
+    <time>1567849933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728555</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>72dd937cf7731621bb0fa0fe61170000</srcmd5>
+    <version>2019.09.04</version>
+    <time>1568805226</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731581</requestid>
+  </revision>
+</revisionlist>

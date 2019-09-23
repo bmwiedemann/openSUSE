@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Mon Mar  5 14:48:38 UTC 2018 - sndirsch@suse.com
+
+- Update to version 1.0.5
+  * Print which option was in error along with usage message
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
+Thu Feb  6 10:29:20 UTC 2014 - sndirsch@suse.com
+
+- fixed license to X11 in specfile 
+
+-------------------------------------------------------------------
+Mon May 20 21:13:07 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.4:
+  + Add -V option to print command version.
+  + Combine usage message into a single string.
+  + Mark usage() as _X_NORETURN to satisfy -Wmissing-noreturn
+    warning.
+  + config: move man pages into their own directory.
+  + man: replace hard coded man page section with substitution
+    strings.
+  + man: remove trailing spaces and tabs.
+- Add pkgconfig(xproto), configure now checks for it.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split appres from xorg-x11. Initial version: 1.0.3.
+

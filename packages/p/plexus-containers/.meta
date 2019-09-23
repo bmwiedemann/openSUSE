@@ -1,0 +1,5 @@
+<package name="plexus-containers" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="plexus-containers"/>
+</package>

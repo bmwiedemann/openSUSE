@@ -1,0 +1,43 @@
+.\" (C) Copyright 2016 Ana Custura <ana@netstat.org.uk>
+.TH DNSTRACEROUTE "1" "December 2016" "User Commands"
+.SH NAME
+dnstraceroute \- DNS traceroute utility
+.SH DESCRIPTION
+dnstraceroute is a traceroute utility to figure out the path that a DNS request is passing through to get to its destination. 
+Comparing it to a network traceroute can help identify if DNS traffic is routed via any unwanted path.
+.PP
+.SH USAGE
+usage: dnstraceroute [\-h] [\-q] [\-a] [\-s server] [\-p port] [\-c count] [\-t type] [\-w wait] hostname
+.SH OPTIONS
+.TP
+\fB\-h\fR  \fB\-\-help\fR
+Show this help
+.TP
+\fB\-q\fR  \fB\-\-quiet\fR
+Quiet
+.TP
+\fB\-e\fR  \fB\-\-expert\fR
+Print expert hints if available
+.TP
+\fB\-a\fR  \fB\-\-asn\fR
+Turn on AS# lookups for each hop encountered
+.TP
+\fB\-s\fR  \fB\-\-server\fR
+DNS server to use (default: first system resolver)
+.TP
+\fB\-p\fR  \fB\-\-port\fR
+DNS server port number (default: 53)
+.TP
+\fB\-c\fR  \fB\-\-count\fR
+Maximum number of hops (default: 30)
+.TP
+\fB\-w\fR  \fB\-\-wait\fR
+Maximum wait time for a reply (default: 5)
+.TP
+\fB\-t\fR  \fB\-\-type\fR
+DNS request record type (default: A)
+.TP
+\fB\-C\fR  \fB\-\-color\fR
+Print colorful output
+.SH SEE ALSO
+Full Documentation available at https://dnsdiag.org/

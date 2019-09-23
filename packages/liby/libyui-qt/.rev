@@ -1,0 +1,492 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e062b11c7dcd1af6376975a217ebd365</srcmd5>
+    <version>2.42.1</version>
+    <time>1344528072</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>130480</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c60ef78581a92a98065cba768a76eb05</srcmd5>
+    <version>2.42.1</version>
+    <time>1346830277</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>132537</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fea505b5c17100d12f5691f37ef9e600</srcmd5>
+    <version>2.42.2</version>
+    <time>1347347538</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>133255</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8d704e94eb2603b5957e5a76fcf7f5cc</srcmd5>
+    <version>2.42.2</version>
+    <time>1353438958</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>142040</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>1db300782d4ef67c4f5341d5357a3d43</srcmd5>
+    <version>2.42.2</version>
+    <time>1354712321</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>143929</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7c5e0bee639d3fcccf526b7245fd136b</srcmd5>
+    <version>2.42.3</version>
+    <time>1356731079</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146354</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>7c5e0bee639d3fcccf526b7245fd136b</srcmd5>
+    <version>2.42.3</version>
+    <time>1359109388</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a217a583230af93dcd06c73a28dd9ea0</srcmd5>
+    <version>2.42.5</version>
+    <time>1360008903</time>
+    <user>coolo</user>
+    <comment>- fixed bnc #801311: read locale directory from YSettings
+- Version 2.42.5
+
+- fixed to use new YSettings, theme path can be set by program</comment>
+    <requestid>151159</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8af2ff21ac10ad3f13642336e494a2b2</srcmd5>
+    <version>2.43.3</version>
+    <time>1368469386</time>
+    <user>coolo</user>
+    <comment>- use a common toplevel CMakeLists.txt
+- fix building *-doc pkgs
+- introduce bootstrap.sh
+- Version 2.43.3
+
+- fix build issues
+- Version 2.43.2
+
+- use SONAME from libyui instead of VERSION.cmake
+- Version 2.43.1
+- fixed bnc #801311: read locale directory from YSettings
+- Version 2.42.5</comment>
+    <requestid>175284</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4df13f8a47e38115bb5ca3d9dc9e5cad</srcmd5>
+    <version>2.43.4</version>
+    <time>1373992655</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>183437</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c6d2069c4f535b557ac370b114b91ec7</srcmd5>
+    <version>2.43.5</version>
+    <time>1376129893</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>186397</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>c6d2069c4f535b557ac370b114b91ec7</srcmd5>
+    <version>2.43.5</version>
+    <time>1379663149</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>b96bbfa379fb8f1bfc800529c8b1b5bb</srcmd5>
+    <version>2.43.5</version>
+    <time>1382259177</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>203846</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a9c91d6598c47f42fcbc6254dae23eda</srcmd5>
+    <version>2.44.0</version>
+    <time>1389284718</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>210775</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7953bf9c7ea2aa24c3dbbb5824a8f0b5</srcmd5>
+    <version>2.45.2</version>
+    <time>1393681084</time>
+    <user>coolo</user>
+    <comment>submit new version 2.45.2</comment>
+    <requestid>224123</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>804be2fc1f96337e2b7837f618e503bf</srcmd5>
+    <version>2.46.0</version>
+    <time>1394566419</time>
+    <user>coolo</user>
+    <comment>submit new version 2.46.0</comment>
+    <requestid>225564</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0ad3d228ee202ba0095d4e14d76d97bc</srcmd5>
+    <version>2.46.1</version>
+    <time>1395400433</time>
+    <user>coolo</user>
+    <comment>submit new version 2.46.1</comment>
+    <requestid>225715</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b15b5c4f5cf24cdd817440ce348b9266</srcmd5>
+    <version>2.46.3</version>
+    <time>1395610217</time>
+    <user>scarabeus_factory</user>
+    <comment>submit new version 2.46.3</comment>
+    <requestid>227026</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7a6cf0e6c1c5214480ef26dabc128b16</srcmd5>
+    <version>2.46.4</version>
+    <time>1396701776</time>
+    <user>coolo</user>
+    <comment>submit new version 2.46.4</comment>
+    <requestid>228321</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>720213af1567381b105b533dbe8ca2e8</srcmd5>
+    <version>2.46.5</version>
+    <time>1397387599</time>
+    <user>coolo</user>
+    <comment>submit new version 2.46.5</comment>
+    <requestid>229597</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1705e7d199488e0ddafee3cbf34cc3ac</srcmd5>
+    <version>2.46.7</version>
+    <time>1399376426</time>
+    <user>coolo</user>
+    <comment>submit new version 2.46.7</comment>
+    <requestid>231047</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d64696c8ddaa8f17cb1d20bca7d84f73</srcmd5>
+    <version>2.46.8</version>
+    <time>1400006743</time>
+    <user>coolo</user>
+    <comment>submit new version 2.46.8</comment>
+    <requestid>233574</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b28409c8bfaa48db63d451027d96a14f</srcmd5>
+    <version>2.46.10</version>
+    <time>1400733510</time>
+    <user>coolo</user>
+    <comment>submit new version 2.46.10</comment>
+    <requestid>234934</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4ffd447e3178b029550028c9b8035d06</srcmd5>
+    <version>2.46.11</version>
+    <time>1401641831</time>
+    <user>coolo</user>
+    <comment>submit new version 2.46.11</comment>
+    <requestid>235802</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>21379b18df588a4e49254dfe15a8d6ad</srcmd5>
+    <version>2.46.12</version>
+    <time>1405520182</time>
+    <user>coolo</user>
+    <comment>submit new version 2.46.12</comment>
+    <requestid>239910</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>cb862ef2eb25cfb2f557949656c969fb</srcmd5>
+    <version>2.46.13</version>
+    <time>1408550030</time>
+    <user>lnussel</user>
+    <comment>submit new version 2.46.13</comment>
+    <requestid>244784</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>cb862ef2eb25cfb2f557949656c969fb</srcmd5>
+    <version>2.46.13</version>
+    <time>1409301781</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3a74b31e01d928ce5727c196513f3c9a</srcmd5>
+    <version>2.46.14</version>
+    <time>1421873531</time>
+    <user>coolo</user>
+    <comment>submit new version 2.46.14</comment>
+    <requestid>282104</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2e40ba73bbf434168e1d41d808727349</srcmd5>
+    <version>2.46.15</version>
+    <time>1422790076</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.46.15</comment>
+    <requestid>283457</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a4103209938199b22b75c98fd15e6e51</srcmd5>
+    <version>2.46.16</version>
+    <time>1423215944</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.46.16</comment>
+    <requestid>284010</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>2e40ba73bbf434168e1d41d808727349</srcmd5>
+    <version>2.46.15</version>
+    <time>1423561571</time>
+    <user>dimstar_suse</user>
+    <comment>Revert the automatic keyboard shortcut handling - gives us more snapshot chance</comment>
+    <requestid>285047</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1c58a0bec59c85275a42eb04f3da7844</srcmd5>
+    <version>2.46.17</version>
+    <time>1423732879</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.46.17</comment>
+    <requestid>285112</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>4eb65095dc69659cc1b0f99e3662c375</srcmd5>
+    <version>2.46.18</version>
+    <time>1430983310</time>
+    <user>coolo</user>
+    <comment>submit new version 2.46.18</comment>
+    <requestid>305586</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>fd77d4a83802d5886d4384d1c3c1116b</srcmd5>
+    <version>2.46.20</version>
+    <time>1443335929</time>
+    <user>coolo</user>
+    <comment>submit new version 2.46.20</comment>
+    <requestid>332576</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>6aa8929e97b7c13a36733c91428d4106</srcmd5>
+    <version>2.46.21</version>
+    <time>1444833663</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.46.21</comment>
+    <requestid>335946</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>beaf679ffbfefef1bc902d221f4a495a</srcmd5>
+    <version>2.46.22</version>
+    <time>1462178622</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.46.22</comment>
+    <requestid>391672</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>3cb9165aa3b15b59009793e785c8dd15</srcmd5>
+    <version>2.46.23</version>
+    <time>1463497597</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.46.23</comment>
+    <requestid>395952</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>6dcdd55a8294bc7b99319d026dc4bd61</srcmd5>
+    <version>2.46.24</version>
+    <time>1472246015</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.46.24</comment>
+    <requestid>421127</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e6d5b5a2b0ffcdc7ebffc9d28be31f3e</srcmd5>
+    <version>2.46.26</version>
+    <time>1475358613</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.46.26</comment>
+    <requestid>430409</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>b860a3dc32b42c52fd3e80843f730909</srcmd5>
+    <version>2.46.27</version>
+    <time>1476350722</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.46.27</comment>
+    <requestid>434285</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f8878a000ea84da83320b80af0a4d0d9</srcmd5>
+    <version>2.46.30</version>
+    <time>1476790107</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.46.30</comment>
+    <requestid>435871</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d2a4f75196e5adc001e1e4f8f89cb9a5</srcmd5>
+    <version>2.47.0</version>
+    <time>1479904545</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.47.0</comment>
+    <requestid>441213</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>f19c60e173be4654e69bdf603984e0e7</srcmd5>
+    <version>2.47.1</version>
+    <time>1486716458</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.47.1</comment>
+    <requestid>454995</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ad73067752ae40dec82444dee60e20ba</srcmd5>
+    <version>2.47.2</version>
+    <time>1502560948</time>
+    <user>maxlin_factory</user>
+    <comment>submit new version 2.47.2</comment>
+    <requestid>515037</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>bcfb295c3d0cef1aee34e58466fa056a</srcmd5>
+    <version>2.47.3</version>
+    <time>1503392685</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.47.3</comment>
+    <requestid>517154</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>fff275300791ee8e2ec726cea041180c</srcmd5>
+    <version>2.49.1</version>
+    <time>1518596338</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.49.1</comment>
+    <requestid>573804</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>e8e9ac756b654e5c907cbca3dbb15605</srcmd5>
+    <version>2.49.2</version>
+    <time>1524742219</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.49.2</comment>
+    <requestid>599964</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a130f35b158b8f96687c003ff905d344</srcmd5>
+    <version>2.49.3</version>
+    <time>1525959852</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.49.3</comment>
+    <requestid>605137</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>2780524f4d75a754ebe16d890c226610</srcmd5>
+    <version>2.49.4</version>
+    <time>1526578308</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.49.4</comment>
+    <requestid>607152</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>b7f3437abd9d1c1374b9a9adbb6ce017</srcmd5>
+    <version>2.49.5</version>
+    <time>1533214524</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.49.5</comment>
+    <requestid>626443</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>17bf3a708ea5f8b2c792db1f8ce24092</srcmd5>
+    <version>2.49.5</version>
+    <time>1536678587</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631260</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>85194fd9576bee4244cff5a62d69867d</srcmd5>
+    <version>2.49.7</version>
+    <time>1541152159</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.49.7</comment>
+    <requestid>644600</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>f2213115e77b351395354644796aaaa1</srcmd5>
+    <version>2.49.13</version>
+    <time>1546245862</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.49.13</comment>
+    <requestid>659317</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>0d8915e8dbc583a1310968fe8b53b4d8</srcmd5>
+    <version>2.49.14</version>
+    <time>1548061678</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.49.14</comment>
+    <requestid>664699</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>5400f0c0775ea2586dec816044c7c966</srcmd5>
+    <version>2.49.15</version>
+    <time>1551687297</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.49.15</comment>
+    <requestid>680158</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>697021d67a82813d2af747dfb7efdddc</srcmd5>
+    <version>2.49.16</version>
+    <time>1552989920</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.49.16</comment>
+    <requestid>684729</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>72a942c4c81c6f32ed1f33c2d12cfc9d</srcmd5>
+    <version>2.50.2</version>
+    <time>1555830157</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.50.2</comment>
+    <requestid>695612</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>8a635ceb677b6198a35b88f9e1aac192</srcmd5>
+    <version>2.49.16</version>
+    <time>1555929200</time>
+    <user>maxlin_factory</user>
+    <comment>revert libyui stack updates due to https://bugzilla.opensuse.org/show_bug.cgi?id=1132980</comment>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>d6047f68ec1aedb85f746872984af5b6</srcmd5>
+    <version>2.50.4</version>
+    <time>1561732495</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.50.4</comment>
+    <requestid>704280</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>9c9eddf0a7965a3d1a86688ad449e5ad</srcmd5>
+    <version>2.50.5</version>
+    <time>1567848647</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.50.5</comment>
+    <requestid>727977</requestid>
+  </revision>
+</revisionlist>

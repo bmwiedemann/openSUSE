@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Wed Oct 17 02:01:32 UTC 2018 - psimons@suse.com
+
+- Update haddock-library to version 1.7.0.
+  ## Changes in version 1.7.0
+
+   * Make `Documentation.Haddock.Parser.Monad` an internal module
+
+  ## Changes in version 1.6.1
+
+   * Replace `attoparsec` with `parsec` (#799)
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:26 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Jul 17 19:31:19 UTC 2018 - psimons@suse.com
+
+- Update haddock-library to version 1.6.0.
+  ## Changes in version 1.6.0
+
+   * `MetaDoc` stores package name for since annotations
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update haddock-library to version 1.5.0.1.
+ * Support for parsing unicode operators (#458)
+ * Bifunctor, Bifoldable and Bitraversable instances for DocH and MetaDoc
+ * Support for grid tables
+   * added `DocTable` constructor to `DocH`
+   * added `Table`, `TableCell` and `TableRow` data types
+   * added `markupTable` to `DocMarkupH` data type
+ * Move markup related data types to haddock-library
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Wed Apr 19 13:32:16 UTC 2017 - psimons@suse.com
+
+- Update to version 1.4.3 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu Sep 15 06:51:07 UTC 2016 - psimons@suse.com
+
+- Update to version 1.4.2 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 16:59:00 UTC 2016 - psimons@suse.com
+
+- Update to version 1.2.1 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Fri Aug  7 07:16:17 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.2.1
+
+-------------------------------------------------------------------
+Tue May 12 14:40:38 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.2.0
+* no upstream changelog
+
+-------------------------------------------------------------------
+Mon Apr 20 12:03:43 UTC 2015 - mimi.vx@gmail.com
+
+- remove unneeded dep
+
+-------------------------------------------------------------------
+Tue Feb  3 13:09:32 UTC 2015 - mimi.vx@gmail.com
+
+- initial commit of haddoc-library package

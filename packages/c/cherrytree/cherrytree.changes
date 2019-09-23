@@ -1,0 +1,1023 @@
+-------------------------------------------------------------------
+Sat Mar  2 20:02:03 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.38.8:
+  + Improved implementation of deletion of recent documents entry.
+  + Ctrl+Space to toggle To-Do List Item State.
+  + Fix detection of missing installation of xterm required in code
+    execution on linux (with default settings).
+  + Horizontal rule insert without hard coded newline before (still
+    newline after).
+  + Updated translations.
+- Changes from version 0.38.7:
+  + Bugfix:
+    - Problem of locale.getdefaultlocale behavioural change in
+      python.
+    - Must not allow deletion of a node that is read only.
+  + Allow deletion of a recent documents entry via entry submenu.
+  + Renamed two iterated find dialog labels from Find & Find to
+    Find Previous & Find Next.
+  + Moved python-appindicator from Depends: to Recommends:
+  + Export to html, include node name not working without links
+    tree.
+- Changes from version 0.38.6:
+  + Bugfix:
+    - Do not throw error when failing to clean temporary directory.
+    - Workaround for locale.get issues.
+    - Import from html of table error resulting in paste from
+      clipboard error.
+    - Multilevel numbered lists not restarting from one.
+    - Wrap line with a single very long word.
+  + Todo list characters configurable in config.cfg.
+  + Import from zim, support for codebox.
+
+-------------------------------------------------------------------
+Fri Jul  6 20:06:07 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.38.5:
+  + Bugfixes:
+    - When save on exit is enabled and write to disk fails, changes
+      are lost (gh#giuspen/cherrytree#358).
+    - Superscript and subscript tags not recognized when copied
+      from external source (gh#giuspen/cherrytree#355).
+    - Workaround for bug in locale module
+      (gh#giuspen/cherrytree#368).
+  + Added syntax highlighting for go language.
+  + Implemented support for opening a text file from the command
+    line with cherrytree.
+
+-------------------------------------------------------------------
+Mon Jul  2 19:50:23 UTC 2018 - kstreitova@suse.com
+
+- Recommends p7zip-full for TW as 7za binary used in cherrytree was
+  moved there
+
+-------------------------------------------------------------------
+Thu Feb  8 18:03:36 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.38.4:
+  + Support for zoom in tables with both Ctrl+Mouse Wheel or
+    Ctrl+Plus/Minus.
+  + Copy/paste rich text with dark background to light background,
+    fix too light color.
+  + Tree visible status now persistent after system tray hide/show
+    and between sessions.
+  + Default value changes for web link color (less bright blue) and
+    codebox auto resize (to False).
+  + No special chars auto replacements for code – only for rich and
+    plain text.
+  + Paste from rich text and import from html – support fot tag
+    <code> to codebox.
+  + Tab key also valid to switch between table cell.
+- Changes from version 0.38.3:
+  + Bugfix saving sqlite document (syntax error).
+  + Plain text to have font independent from rich text.
+  + Right click menu inside of codeboxes, added cut/copy as plain
+    text.
+  + Paste rich text from clipboard fix.
+  + HTML-export IOError: 'filename too long'.
+  + Bugfix in export to pdf.
+
+-------------------------------------------------------------------
+Sat Sep  2 03:28:20 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 0.38.2:
+  + Bug fixes:
+    - In importing from cherrytree file (links broken).
+    - In exporting to HTML (‘#’ in node name).
+    - The problem with underscoring character in recent filenames.
+    - The problem with importing from keynote.
+  + Left arrow key press with focus on an already collapsed
+    tree node, now moves the selection to the node parent.
+  + Added right click menus cut & copy as plain text to the 
+    automatic syntax highlighting nodes.
+
+-------------------------------------------------------------------
+Wed Jan 25 23:56:23 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.37.6:
+  + Added auto apply of links to nodes as you type [[node name]] in
+    rich text nodes.
+  + The text formatted monospace has now by default gray.
+  + background; configurable in config.cfg.
+  + Fixed problem causing the highlighted line to have wrong
+    background.
+  + Fixed crash caused by too large tooltip hovering a link.
+  + Updated translations.
+- Changes from version 0.37.5:
+  + Tthe password protected documents now use 7zip fastest
+    compression resulting in faster save and slightly larger
+    documents.
+  + Added auto apply of web links as you type in rich text nodes.
+  + Added auto apply of links to nodes as you type in rich text
+    nodes (CamelCase nodes names only).
+  + Added proper scrolling to cursor after pasting of multiple
+    lines of text from the clipboard.
+  + Added palette to the color picker dialog for the node name.
+  + Fixed bugs related to export to pdf of tables and codeboxes.
+  + Limited the spell check to rich text nodes after currently
+    unresolvable problems with plain text spell check.
+- Changes from version 0.37.4:
+  + Bugfix: regression since 0.37.0 for trees with more than 11
+    levels and cherries per node level.
+  + Added groovy language syntax highlighting support.
+  + Updated translations.
+- Changes from version 0.37.3:
+  + Bugfix: problem with sqlite storage (ctb, ctx), bold node name
+    and plain text node.
+  + For the document type XML (ctd, ctz) changed the generated XML
+    to be pretty (indented).
+  + Change to slightly larger 'small font' in formatted text.
+
+-------------------------------------------------------------------
+Fri Jul 15 12:06:40 UTC 2016 - luke.nukem.jones@gmail.com
+
+- Update to version 0.37.2:
+  + fixed problems introduced with configurability of the bulleted 
+    lists chars.
+  + fixed problem with search in selected node and subnodes and 
+    progressbar.
+  + the latest applied formatting is now remembered between 
+    sessions.
+  + the Ctrl+Space shortcut now allows to enter and exit the 
+    codeboxes.
+  + updated translations.
+- Changes from version 0.37.1:
+  + bugfix: import of text documents bad decoding (added new 
+    dependency python-chardet).
+  + bugfix: copy/paste of table row not working.
+  + the chars used for the multi level bulleted lists are 
+    configurable editing config.cfg (editor/chars_listbul).
+  + the chars used for the toc are configurable editing 
+    config.cfg (editor/chars_toc).
+  + updated translations.
+
+-------------------------------------------------------------------
+Sun May 29 02:19:50 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.37.0:
+  + Implemented configurability of most of the keyboard shortcuts
+    (few of them cannot be changed).
+  + Implemented quick access to last visited nodes with
+    configurable number of buttons on the node name header.
+  + Implemented the possibility to select from a list the default
+    icon for all the (non code) nodes in the tree; code nodes have
+    by default explicit icons related to the programming language.
+  + Implemented the possibility for any node to set an icon from a
+    list.
+  + Implemented the possibility for any node to set color and
+    boldness for the node name.
+  + Implemented control of the vertical space around lines.
+  + Implemented the possibility to disable the smart quotes auto
+    replacement.
+  + Implemented the option to have the links underlined or not.
+  + Implemented the tree node action “move right” to make a node
+    son of the above sibling; taking shortcut Shift+Right.
+  + Implemented the possibility at mouse click on the node to
+    expand it and to have the focus moved to the text.
+  + Implemented the import from RedNotebook.
+  + Added in the preferences dialog the possibility to reset to the
+    default values the toolbar and the special characters.
+- Changes from version 0.36.9:
+  + New icons for codebox and table, fixed icon for image.
+  + Updated translations.
+- Changes from version 0.36.8:
+  + Fixed bug in font zoom in/out on tree and text with ctrl down
+    and mouse wheel up/down.
+- Changes from version 0.36.7:
+  + Implemented font zoom in/out on tree and text with ctrl down
+    and mouse wheel up/down.
+  + Implemented auto replace as you type of single and double
+    quotes with smart quotes.
+  + Export to html: it is now possibile to override the default
+    styles.css in the preferences dir.
+  + Updated icons of rich text color foreground/background.
+  + Updated translations.
+- Changes from version 0.36.6:
+  + Fixes in exports to html, pdf, txt.
+
+-------------------------------------------------------------------
+Wed Feb 17 13:31:44 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.36.5:
+  + Fixed color of highlighted line in rich text with light
+    background.
+  + Fixed generation of pdf with colors coming from dark background
+    not suitable for white background.
+  + Fixed missing checks in read only nodes.
+  + Fixed problem with html pasted from clipboard.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb  7 08:49:28 UTC 2016 - mailaender@opensuse.org
+
+- Update to version 0.36.4
+  + Added the configurable option to highlight the current line
+    also for rich text nodes.
+  + Spell check working in both rich text and plain text nodes (not
+    in code nodes).
+  + Special chars auto-replaced: “==> ” becoming “⇒ “, “<== ”
+    becoming “⇐ ” and “<=> ” becoming “⇔ “.
+  + Added support for “rust” programming language syntax
+    highlighting.
+  + Bugfix in duplicating nodes with images and tables.
+  + Bugfix in lists change level and in numbered lists start with
+    selected text.
+  + Bugfix in insertion of today’s node (F8) and non ascii chars.
+  + Bugfix copying from plain text to rich text and automatic web
+    link formatting.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Dec 31 06:00:47 UTC 2015 - badshah400@gmail.com
+
+- Update to version 0.36.3:
+  + Bugfix in searches.
+  + Added syntax highlightings Markdown and Markdown Extra.
+- Changes from previous versions:
+  + See /usr/share/doc/packages/cherrytree/changelog.txt.
+
+-------------------------------------------------------------------
+Thu Jul  9 20:38:23 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.35.9:
+  + Export to HTML now supports also the embedded files.
+  + Cursor position not restored after closing and reopening the
+    main window.
+  + When pressing Tab with a table focused, do not delete the table
+    but put the cursor after the table.
+  + Toolbar and node name header visibility state not
+    saved/restored properly with system tray docking enabled.
+  + Import from zim: improved preserving of links between nodes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 28 16:09:13 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.35.8:
+  + Protected documents: better checks at extraction time to cope
+    with 7zip extracting zero size files after a wrong password.
+  + Protected documents bugfix: windows 7za.exe wrong path detected
+    causing wrong password error.
+  + Import from plain text file in WIN_OS allow user to select an
+    extension different than txt (in linux any text file is
+    automatically detected).
+  + Changed behaviour of HOME and END key presses in text: at first
+    press move the cursor to start or end of the line, at second go
+    to smart start or end (start or end excluding spaces).
+  + Dialog tablecolumnhandle: change active radiobutton with Tab
+    and auto focus to text entry.
+  + Added support for Scala programming language (from
+    gtksourceview-3.0/language-specs).
+  + Bugfix in import from html and notecase and nested span tags
+  + Bugfix: changing a node syntax highlighting from code to plain
+    text and vice versa did not update the font.
+  + Bugfix: if a node has the read only property set, do not let
+    the user change the node type.
+  + Bugfix: after changing node type from rich to non rich text,
+    the undo removes all text.
+  + Bugfix: preferences dialog, the timestamp format help button
+    was linked to a web page listing options not implemented in the
+    python version; now the link goes to the exact python
+    implementation.
+
+-------------------------------------------------------------------
+Mon Feb  2 14:52:02 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.35.7:
+  + Improved checks at password protected documents save time after
+    reports of data loss in windows os.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Dec 25 19:05:48 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 0.35.6:
+  + The middle (or wheel) click on a link to file or folder opens
+    the parent directory of the target file or folder.
+  + Added tree right click menu item to bookmark the selected node.
+  + Bugfix in reading a cherrytree XML document.
+  + Bugfix in relative links click.
+  + Bugfix in import from treepad lite.
+  + Updated translations.
+- Changes from version 0.35.4:
+  + Bugfix:
+    - Conversion from rich text to plain text of links results in
+      the link target only if the link is the sole text copied and
+      is not a link to node.
+    - Relative links are to be relative to the document folder and
+      not to the executable folder.
+    - Right click over a selection including a link causes
+      deselection if the right click is over the link.
+    - Import from tuxcards.
+    - Paste from firefox on windows with russian language page.
+    - Paste text in a codebox causing an auto resize, change node
+      without saving before, go back to the older node, the text
+      pasted in the codebox is lost.
+  + Changed automatic conversion from ascii chars to “todo list”
+    from “[ ] ” to “[] ".
+- Changes from version 0.35.4:
+  + Bugfix:
+    - Export to plain text and conversion from rich text to plain
+      text problems in 0.35.3.
+    - Automatic list set after inserting "* " and "[ ] " problems
+      in 0.35.3.
+    - Crash in codebox auto expansion.
+    - Crash loading the links dialog.
+- Changes from version 0.35.3:
+  + Fixed bugs in copying rich text between cherrytree, libreoffice
+    and gmail preserving the rich text properties; as a consequence
+    the html import/export was improved.
+  + Fixed bugs in importing text files with non utf-8 encoding.
+  + Fixed bug in automatic word selection when applying a
+    formatting.
+  + Fixed bug in TOC not recognizing headers.
+  + Fixed bug causing the codeboxes with automatic expansion to
+    crash.
+  + Fixed bugs in the conversion between the three list types.
+  + Changed the behaviour of the direction arrows in the tree
+    navigation: the left key collapses the node, the right key
+    expands the node, the up and down arrows move the selection up
+    and down not only between siblings (as it was before) but in
+    the whole tree.
+  + Links copy and paste: when converting from a rich text source
+    to a plain text destination, now the link target is preserved,
+    the link label is dropped.
+  + Improved the links dialog navigation: the Tab key toggles
+    between the link types, the tree is navigable using the four
+    direction arrows and typing text while the focus is on the tree
+    searches for a node name.
+  + Added “Common Lisp” syntax highlighting definition from
+    kfyatek-dev.jogger.pl.
+  + Fixed bugs in import from KeyNote.
+  + Other minor fixes.
+- Changes from 0.35.2:
+  + Bugfix: drag n drop with destination before the first sibling.
+  + Bugfix: codebox memory of latest used settings.
+  + Updated translations.
+- Changes from version 0.35.1:
+  + bugfix: pressing cancel on node add/edit dialog still inserts
+    corrupted node.
+- Changes from version 0.35.0:
+  + The toolbar is now configurable in a dedicated preferences
+    dialog tab.
+  + Added configurable option to use relative paths in links to
+    files and folders.
+  + Added limit of 10 MB to embedded files. embedding larger files
+    is not safe.
+  + Implemented the possibility to open embedded files with double
+    click or right click menu.
+  + The embedded files have now the time of latest edit and the
+    size visible in tooltip.
+  + Added configurable option to have codeboxes expand
+    automatically.
+  + The following commands now work also inside of the codeboxes:
+    - text row cut/copy/delete/up/down, text change case, text
+      duplicate, insertion of special chars, timestamp, horizontal
+      rule, lists handling.
+  + Added right click menu to cut, copy and delete embedded files
+    and anchors.
+  + Added menu item and shortcut (Ctrl+Alt+R) to toggle the Read
+    Only property of the selected node.
+  + When we double click on text we are used to see the word under
+    mouse to be selected. Now it is possible in configuration to
+    add chars to include in the selection (e.g. adding ‘@’ you
+    select whole text me@mail).
+  + Added tooltip in find all matches dialog indicating the full
+    node path.
+  + Improved the tree in links dialog and node change father
+    dialog.
+  + Added menu item to open the directory containing the
+    preferences files.
+  + Fixed several bugs.
+
+-------------------------------------------------------------------
+Sun Aug 17 13:35:55 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.34.1:
+  + Fixed bug introduced in 0.34.0 in search and/or replace, all
+    matches.
+  + Fixed bug in handling of image format not recognized when
+    pasting uri from clipboard.
+  + Ctrl+Shift+A not only to show the “Find All Matches” dialog but
+    also hide it.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug  9 11:13:27 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.34.0:
+  + Implemented the possibility to embed files of any type in the
+    cherrytree documents: a clip icon image is inserted in the rich
+    text and right clicking on it the file can be saved to a disk
+    location. The clip icon size is configurable in the preferences
+    dialog.
+  + Implemented the possibility to associate links to the images
+    through right click menu item. When the image has a link
+    associated, a colored arrow is visible over the image.
+  + Added right click menu item to insert newline in table cell and
+    restored functionality of the shortcut Ctrl+period.
+  + Added shortcuts for text Foreground and Background color
+    Shift+Alt+F and Shift+Alt+B.
+  + Added shortcuts Ctrl+Alt+1, Ctrl+Alt+2 and Ctrl+Alt+3 for lists
+    bulleted, numbered and todo.
+  + Added shortcuts Ctrl+Plus and Ctrl+Minus to increase/decrease the
+    font of tree and text.
+  + The number of backups to keep is now configurable.
+  + Added import from EssentialPIM HTML file.
+  + Fixed several bugs.
+  + Handling of cases when dbus is not working properly causing
+    Cherrytree not to start, this happens so far only on windows in
+    some cases and may be a firewall related problem. In these cases
+    the centralized instances control is disabled and cherrytree
+    still works.
+
+-------------------------------------------------------------------
+Sun Jan 19 17:16:40 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.32.0:
+  + When selecting print/export to pdf there’s now an option to
+    start new nodes in new pages.
+  + The links colors are now configurable.
+  + The wrapped lines indentation is now configurable.
+  + Added menu item and shortcut (F8) to insert a node with the
+    date of today in hierarchy year/month/day.
+  + In node properties dialog added the opportunity to insert tags
+    choosing between the existing tags.
+  + F1 is now shortcut for the online manual.
+  + Updated PowerShell syntax highlighting definition file.
+  + Fixed several bugs.
+- Drop conditional macros used for obsolete openSUSE versions.
+
+-------------------------------------------------------------------
+Tue Dec 24 18:23:57 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.31.5:
+  + Fixed bug in pasting data from clipboard.
+  + Opening a new file from menu it done again in current instance
+    (restored old behavior).
+  + Bugfix: in links dialog the latest selected node was not
+    selected by default anymore.
+- Changes from version 0.31.4:
+  + Bugfix: cannot change foreground and background color.
+  + Bugfix: row wrongly recognized as a list row after pressing
+    enter.
+  + Updated PowerShell syntax highlighting.
+- Changes from version 0.31.3:
+  + Updated translations.
+- Changes from version 0.31.2:
+  + Bugfix: cannot open document if option to reload latest
+    document at startup is disabled.
+- Changes from version 0.31.1:
+  + Bugfix: cannot change node type from rich text to automatic
+    syntax highlighting.
+  + Bugfix: import from zim errors.
+- Changes from version 0.31.0:
+  + Added import from one plain text file or a folder of plain text
+    files.
+  + Added direct export to pdf without going through the print
+    dialog, working also in windows without need of installing
+    software that creates pdf.
+  + Improved the todo lists using different chars (automatic
+    conversion) and three states like zim-wiki (not done, done ok
+    and done fail).
+  + Added function to strip trailing spaces in code nodes (from
+    right click menu).
+  + Ctrl+Shift+E to expand all nodes, Ctrl+Shift+L to collapse all
+    nodes.
+  + When opening new file or starting a new empty file will do it
+    on a new window if the current is not empty.
+  + Right click on a link lets you choose to edit/cut/copy/dismiss/
+    delete the underlying link.
+  + It is now possible to insert a link if no text is selected, the
+    link name will be asked in this case.
+  + Added line num column in search all matches list dialog.
+  + Added syntax highlighting for PowerShell.
+  + Fixed bugs.
+  + updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 30 18:57:25 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.30.5:
+  + Fixed critical bug that caused loss of unsaved data after
+    import of nodes from a cherrytree document of type sqlite
+    unprotected to sqlite protected.
+  + bugfix: node position in the tree after imports.
+  + bugfix: TOC generation for selected node and subnodes.
+- Changes from version 0.30.4:
+  + Fixed critical bug causing loss of data in cherrytree when
+    using sqlite as data storage type.
+  + Fixed bug: middle (or wheel) click on tree node to
+    expand/collapse.
+  + Improved paste of data from web page selection.
+- Changes from version 0.30.2:
+  + cherrytree can now work also without python-enchant installed,
+    in this case it is not possible to activate spell check in the
+    preferences dialog.
+  + Double click on a node or enter key press on a node now toggles
+    expanded/collapsed state (before entered node properties
+    dialog).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 24 09:01:48 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.30.1:
+  + License change GPLV2+ to GPLV3+.
+  + Fixed bug with error dialog with autosave and tree empty.
+- Changes from version 0.30.0:
+  + Added spell check using the library pygtkspellcheck (which uses
+    pyenchant).
+  + Added opportunity to insert special characters in text using
+    top menu or right click menu. It is possible to edit the
+    default list of characters in the preferences dialog.
+  + Added export to single plain text file.
+  + Improved TOC of the whole tree including links to all existing
+    nodes of the tree, not only those with tags h1, h2 and h3.
+  + Added menu item and shortcut (Ctrl+Shift+J) to expand/collapse
+    the selected tree node.
+  + Added shortcut to remove formatting from selected rich text
+    (Ctrl+Shift+R).
+  + Added basic import from keynote (.knt).
+  + Added configurable option to enable/disable the option to
+    reload the document from the last session at application start
+   (before it was always enabled).
+  + Fixed bug in shortcut to paste to rich text node as plain text,
+    discarding formatting (Ctrl+Shift+V).
+  + Fixed several bugs in export to HTML and PDF.
+  + Fixed bugs in import from Zim, Tomboy and Gnote.
+  + Fixed several other bugs.
+  + Updated translations.
+- Add python-enchant BuildRequires, new dependency.
+
+-------------------------------------------------------------------
+Tue Apr 16 17:19:55 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.29.4:
+  + The color chooser palette keeps now memory of the latest 20
+    colors used.
+  + In the export to plain text of the rich text nodes, codeboxes
+    and tables are also included.
+  + Fixed a couple of minor bugs.
+- Changes from version 0.29.3:
+  + Bugfix: problem of file paths with non ascii characters.
+  + Bugfix: unwanted expanding of nodes when adding child node.
+  + Bugfix: window position not restored in xfce window manager
+    after hide() and show().
+  + Bugfixes in print to pdf.
+  + Bugfixes in pasting tables from web pages to rich text nodes.
+  + Several icons were changed adding a border to make them visible
+    in dark themes.
+  + The latest palette for foreground and background is restored in
+    new sessions.
+- Changes from version 0.29.2:
+  + Bugfix: scrollbar position not restored when going back to an
+    already visited node.
+  + Bugfix: on windows os error when using filenames including non
+    latin characters.
+  + Added back support for pygtk versions < 2.22 (broken in 0.29
+    and 0.29.1).
+- Changes from version 0.29.1:
+  + Updated Chinese, Spanish and German languages.
+  + Added limit of recent documents to 10.
+  + Added back support for python versions < 2.7 (broken in 0.29).
+- Changes from version 0.29:
+  + Several bugs fixed.
+  + When running cherrytree from command line it is possible to
+    indicate a node name to focus as argument (cherrytree filepath
+    -n nodename).
+  + Added shortcut to toggle focus between tree and text (Ctrl+J).
+  + Updated several icons related to text formatting to have an
+    unique style/theme for all of them.
+  + Added the preferences option to collapse all nodes when loading
+    the tree (now there are the options to expand all, collapse all
+    or restore from latest session).
+  + Added import from zim.
+
+-------------------------------------------------------------------
+Fri Nov 30 20:18:42 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.28.5:
+  + Fixed several bugs:
+  + Export to html: the font of tree and text is now set to the one
+    in use in cherrytree at export time.
+- Changes from version 0.28.4:
+  + fixed internationalization/localization bugs and other minor
+    bugs.
+- Changes from version 0.28.3:
+  + Updated translations.
+- Changes from version 0.28.2:
+  + Fixed bugs: cannot "save file as" in 0.28.1.
+
+-------------------------------------------------------------------
+Wed Oct 31 12:06:47 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.28.1:
+  + Fixed several bugs.
+  + ctrl+period inserts a newline in a table cell.
+
+-------------------------------------------------------------------
+Thu Oct 11 12:52:41 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.28:
+  + reduced the size of the preferences dialog adopting tabs.
+  + some special symbols are automatically inserted after typing
+    the characters that compose them followed by spacebar; ctrl+z
+    undoes the replacement.
+  + added import from Mempad.
+  + fixed several bugs.
+
+-------------------------------------------------------------------
+Sun Sep 23 18:22:22 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.27.1:
+  + Fixed bug: print / save as pdf of the whole tree not working in
+    0.27.
+
+-------------------------------------------------------------------
+Sat Sep 22 17:32:22 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.27:
+  + Added preference option to enable the periodic check of the
+    cherrytree document file for external updates
+  + Added preference option to choose between appindicator and
+    systray for panel docking
+  + Added opportunity to restore the latest search all matches
+    dialog with shortcut (Ctrl+Shift+A)
+  + Added preference options for text and tree to choose between
+    dark theme, light theme or custom colors
+  + Added the opportunity to print / save as pdf / export of the
+    selected text only
+  + Added the opportunity to include the node name in print / save
+    as pdf
+  + Added import from Gnote
+  + Shortcut for paste as plain text in rich text node
+    (Ctrl+Shift+V)
+  + Adopted python ConfigParser for saving preferences, old
+    preferences will be lost
+  + Fixed several bugs.
+
+-------------------------------------------------------------------
+Sun Jul 22 11:35:21 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.26.3:
+  + Bug fixes.
+
+-------------------------------------------------------------------
+Tue Jun 12 06:30:27 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.26.2:
+  + Bug fixes.
+
+-------------------------------------------------------------------
+Mon Jun 11 18:10:25 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.26.1:
+  + Fixed minor bug
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 17 19:02:14 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.26:
+  + WARNING: documents edited with a version >= 0.26 cannot be
+    edited again with a version < 0.26.
+  + added text formatting superscript, subscript, monospace and h3.
+  + h1, h2 and h3 formatting is now automatically applied to the
+    whole row.
+  + the switch between rich text and automatic syntax highlighting
+    for the nodes is now simpler.
+  + the dialog to choose the file storage type is now file
+    extension oriented.
+  + it is now possible to configure the default rich text
+    foreground and background, so is for the tree.
+  + the horizontal rule inserted characters are now configurable.
+  + the TOC now includes h3 and can be created also for the whole
+    tree.
+  + the links anchors size is now configurable.
+  + fixed several bugs.
+  + we have now a complete manual of the application linked at
+    help–manual.
+
+-------------------------------------------------------------------
+Fri Feb 24 12:27:46 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.25.4:
+  + Bug fixes.
+
+-------------------------------------------------------------------
+Sat Feb  4 13:58:27 CET 2012 - zaitor@opensuse.org
+
+- Update to version 0.25.3:
+  + Bug fixes.
+
+-------------------------------------------------------------------
+Tue Jan 24 10:26:20 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.25.2:
+  + Bug fixes.
+
+-------------------------------------------------------------------
+Sat Jan 21 09:48:04 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.25.1:
+  + Middle click on the tree expands/collapses
+  + Bug fixes.
+
+-------------------------------------------------------------------
+Mon Jan 16 13:35:26 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.25:
+  + Add support for a database format, in addition to XML format.
+  + Various bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan  4 09:35:30 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.24:
+  + Add AppIndicator support.
+  + Add options: show white spaces, highlight current line,
+    gtksouceview style scheme.
+  + Make it possible to move a row up/down.
+  + Various bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct  3 07:33:22 UTC 2011 - vuntz@opensuse.org
+
+- Add explicit shared-mime-info BuildRequires since we use the
+  %mime_database_* macros.
+
+-------------------------------------------------------------------
+Wed Sep 21 19:49:23 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.23.1:
+  + Handle double-click on bookmarks
+  + Fix bugs in find all matches
+- Stop manually removing cherrytree.glade.h: it is now gone.
+
+-------------------------------------------------------------------
+Sat Sep 17 22:52:56 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Mon Sep  5 07:43:54 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.23:
+  + The limit of undoable steps per node is now configurable (lower
+    the limit to save ram).
+  + Add iterated find dialog.
+  + Add timestamp insert utility.
+  + Various bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 15 22:35:25 CEST 2011 - malcolmlewis@opensuse.org
+
+- Update to version 0.22.2:
+  + Fixed minor bugs.
+  + Updated translations.
+- Remove incorrectly installed header file from translation
+  update.
+
+-------------------------------------------------------------------
+Thu Jun 23 16:43:05 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.22.1:
+  + Add .txt extension to single files of export to plain text
+  + Improve import from clipboard html
+  + Fix bug when pasting web url from clipboard
+- Stop using source services, as Factory is moving away from it.
+
+-------------------------------------------------------------------
+Wed Jun  8 11:39:35 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.22:
+  + Add the right click option ‘paste as plain text’ to the rich
+    text nodes
+  + Add imports from tomboy and knowit
+  + All the exports (pdf/html/txt/ctd) now offer the options: only
+    current node / current node and subnodes / all the tree
+  + Implement simple clickable to-do lists.
+  + Fix misc bugs
+
+-------------------------------------------------------------------
+Tue May  3 07:54:36 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.21.3:
+  + Fixed bug involving the formatting property 'small'
+  + Fixed shortcut for node deletion not working
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr 29 23:45:37 UTC 2011 - dimstar@opensuse.org
+
+- Update to 0.21.2:
+  + fixed minor bugs.
+
+-------------------------------------------------------------------
+Fri Apr 29 10:12:30 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.21.1:
+  + create config directory on startup
+- Convert to source service: download_url, recompress and
+  set_version.
+
+-------------------------------------------------------------------
+Tue Apr 26 18:42:00 UTC 2011 - badshah400@gmail.com
+
+- Update to version 0.21
+  + fixed bugs
+  + added links to folders
+  + added custom action for clicked link to files and folders
+  + added some customizable properties to the codeboxes
+  + added fullscreen mode
+  + implemented the cut/copy/paste of a table row
+  + tables: keyboard navigation across cells, rows, etc. 
+  + now multiple instances are allowed and handled
+  + added the opportunity to sort the whole tree
+  + improvements to the find utility while searching patterns in a
+    table/codebox 
+
+-------------------------------------------------------------------
+Tue Mar 15 10:48:10 CET 2011 - badshah400@gmail.com
+
+- Update to version 0.20.1:
+  + Critical bug fixes
+  + Support keyboard based moving of selected item among all the
+    tree nodes
+
+-------------------------------------------------------------------
+Tue Mar  1 05:23:27 UTC 2011 - badshah400@gmail.com
+
+- Update to version 0.20:
+  + New features:
+    - Nodes can now be read-only
+    - Easily open recently opened documents
+    - Import from leo outliner
+    - Utilities to cut/copy the whole underlying row
+    - History of visited notes with option to go back/forward
+    - Bookmark handling
+    - Generate index.html when exporting tree to html
+    - Remember latest picked color for background/foreground
+  + Bug fixes
+
+-------------------------------------------------------------------
+Sat Feb 12 16:59:44 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %mime_database_post/postun because the package ships a mime
+    type definition.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Remove shared-mime-info Requires: if it's not there, then we
+  simply don't need to update the mime database.
+
+-------------------------------------------------------------------
+Wed Jan 19 18:01:20 CET 2011 - badshah400@gmail.com
+
+- Update to version 0.19.3:
+  + Bug fixes with tree nodes drag and drop
+  + In the anchor insert dialog, fix cursor to lie always in the
+    entry text field
+
+-------------------------------------------------------------------
+Sun Jan 16 14:33:56 CET 2011 - badshah400@gmail.com
+
+- Update to version 0.19.2:
+  + Bug fixes
+  + Improved text duplication functionality, introducing rich text
+    duplication
+- Changes from version 0.19.1
+  + Bug fixes
+  + Tree nodes drag and drop implemented
+  + Updated French localization
+
+-------------------------------------------------------------------
+Fri Jan  7 19:44:00 CET 2011 - vuntz@opensuse.org
+
+- Update to version 0.19:
+  + Write a backup of old file when saving.
+  + Add support for a password-protected format.
+  + Add a "toggle case" feature.
+  + Small bug fixes.
+  + Updated translations.
+- Add p7zip Recommends to support the password-protected format.
+- Re-add the removal of cherrytree.glade.h: the file is still
+  installed, and it shouldn't.
+
+-------------------------------------------------------------------
+Wed Dec 29 14:02:14 CET 2010 - badshah400@gmail.com
+
+- Update to version 0.18.1:
+  + Bug fixes and memory usage improvements
+  + Update copyright year to 2011  
+- Changes from version 0.18:
+  + Documents edited with 0.18 cannot be opened with earlier
+    cherrytree versions
+  + Option to specify tags for a node to use when searching for a
+    node
+  + Implemented export to plain text document
+  + Implemented import from treepad lite
+  + Introduced submenus in tree menu
+  + Added option to display the tree on the right side rather than
+    on the left (default)
+  + Copy/paste of a selection now works also for images
+  + Added Galician language
+  + Bug fixes
+- Remove spec file hackery to delete unnecessary source files in
+  installed package -- taken care of upstream
+
+-------------------------------------------------------------------
+Sat Dec 18 05:33:30 CET 2010 - badshah400@gmail.com
+
+- Update to version 0.17.1:
+  + Fixed copy/paste bugs
+- Fix build issues with openSUSE 11.1 and 11.2
+
+-------------------------------------------------------------------
+Wed Dec 15 07:07:33 UTC 2010 - badshah400@gmail.com
+
+- Update to version 0.17:
+  + Many copy/paste improvements.
+  + Nodes import: it is now possible to specify where to attach
+    them
+  + Tree nodes sorting is now case insensitive
+  + Various bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 25 17:53:45 CET 2010 - badshah400@gmail.com
+
+- Update to version 0.16:
+  + Improved printing of codeboxes/code nodes
+  + Implemented neutral nodes icons/hide nodes icons
+  + New: export whole tree or a single node to html
+  + New: insert table-of-contents for node
+- Recommend lang package instead of Requiring it
+
+-------------------------------------------------------------------
+Fri Oct 22 17:46:50 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.15:
+  + Improved the find/replace utility adding the 'all matches'
+    option which allows to find/replace all matches at once and
+    list the results
+  + Fixed find/replace bugs
+  + Added the menu item (help--check newer version) and preferences
+    dialog option to automatically check for newer version
+  + Fixed bugs in the import from basket
+  + Fixed bug in the printing of codeboxes bigger than the A4 size
+  + Fixed bug in bulleted and numbered lists
+  + Added the find/replace menu items to right click menus,
+    reorganized some menu items
+  + When inserting a codebox, if some text is highlighted it will
+    be automatically moved into the codebox
+  + Fixed bug crashing the app when closing from top right cross
+    and then selecting cancel.
+
+-------------------------------------------------------------------
+Sun Sep 19 09:15:42 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.14.2:
+  + Removed the shebang lines from the top of non executable
+    python source files
+  + Changed the cherrytree process name from python to cherrytree
+  + Improved import from basket
+  + Fixed codebox print/save as pdf bugs
+  + Rearranged the messy rich text right click menu
+- Drop cherrytree-remove-shebang-line.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Sep 13 09:48:21 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.14.1:
+  + added Ukrainian and French languages.
+
+-------------------------------------------------------------------
+Tue Sep  7 08:25:25 UTC 2010 - coolo@novell.com
+
+- Fix build with python 2.7, by fixing a filename in the file list.
+
+-------------------------------------------------------------------
+Mon Aug 30 18:43:23 UTC 2010 - badshah400@gmail.com
+
+- Removed unsafe sed hack from spec file to delete unnecessary
+  shebang lines in favour of cherrytree-remove-shebang-line.patch
+- Cleanup of spec file
+
+-------------------------------------------------------------------
+Fri Aug 27 22:08:06 UTC 2010 - badshah400@gmail.com
+
+- Fix build errors
+
+-------------------------------------------------------------------
+Fri Aug 27 21:18:47 UTC 2010 - badshah400@gmail.com
+
+- Initial package (version 0.14)
+

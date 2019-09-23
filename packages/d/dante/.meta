@@ -1,0 +1,11 @@
+<package name="dante" project="openSUSE:Factory">
+  <title>A Free Socks v4 and v5 Client Implementation</title>
+  <description>Dante is a free implementation of the following proxy protocols: socks
+version 4, socks version 5 (rfc1928), and msproxy. It can be used as a
+firewall between networks. It is being developed by Inferno Nettverk
+A/S, a Norwegian consulting company. Commercial support is available.
+
+This package contains the dynamic libraries required to make existing
+applications become socks clients.</description>
+  <devel project="server:proxy" package="dante"/>
+</package>

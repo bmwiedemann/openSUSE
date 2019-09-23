@@ -1,0 +1,12 @@
+<package name="synergy" project="openSUSE:Factory">
+  <title>synergy</title>
+  <description>Synergy lets you easily share a single mouse and keyboard between multiple computers with different operating systems, each with its own display, without special hardware. It's intended for users with multiple computers on their desk since each system uses its own display.
+
+Redirecting the mouse and keyboard is as simple as moving the mouse off the edge of your screen.  Synergy also merges the clipboards of all the systems into one, allowing cut-and-paste between systems. Furthermore, it synchronizes screen savers so they all start and stop together and, if screen locking is enabled, only one screen requires a password to unlock them all.
+
+Visit http://synergy2.sourceforge.net/ to find the Windows client.
+
+This is a slighty improved version of the SUSE standard package.</description>
+  <devel project="X11:Utilities" package="synergy"/>
+  <url>http://synergy-foss.org/</url>
+</package>

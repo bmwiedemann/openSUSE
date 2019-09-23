@@ -1,0 +1,175 @@
+-------------------------------------------------------------------
+Tue Mar 26 16:00:06 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove accidental runtime dep on python-dbm
+
+-------------------------------------------------------------------
+Tue Mar 26 10:41:33 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- The tests are failing in the release but work on the git
+  so lets hope there is some release in future that will allow
+  us to enable them
+
+-------------------------------------------------------------------
+Mon Feb 11 11:36:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the buildrequires to match up properly
+
+-------------------------------------------------------------------
+Mon Feb 11 04:14:13 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add missing dependencies pytz and dbm
+- Activate tests, currently broken
+- Fix %license
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:12 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Jul  5 09:04:12 UTC 2017 - tbechtold@suse.com
+
+- add Requires for python3-dbm
+
+-------------------------------------------------------------------
+Fri May 19 14:12:32 UTC 2017 - tbechtold@suse.com
+
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Thu Jul 14 17:39:14 UTC 2016 - dmueller@suse.com
+
+- add license
+
+-------------------------------------------------------------------
+Mon Jan 11 09:37:54 UTC 2016 - toddrme2178@gmail.com
+
+- Add python-pbr dependency.
+
+-------------------------------------------------------------------
+Thu Sep 10 12:07:18 UTC 2015 - tbechtold@suse.com
+
+- Fix python-python-subunit Requires version
+
+-------------------------------------------------------------------
+Tue Sep 16 06:22:45 UTC 2014 - tbechtold@suse.com
+
+- update to version 0.0.20:
+  * Tests will be reliably tagged with worker-%d. The previous tagging logic
+    had an implicit race - the tag id was looked up via a closure which gets
+    the state of the pos variable at the position the overall loop has advanced
+    too, not the position when the closure was created.
+    (Robert Collins, #1316858)
+  * Passing --subunit to all testr commands will now consistently output subunit
+    v2. Previously it would output v1 for stored streams and v2 for live
+    streams. (Robert Collins)
+  * ``run`` was outputting bad MIME types - test/plain, not text/plain.
+    (Robert Collins)
+  * Test filtering was failing under python3 and would only apply the
+    filters to the first test listed by discover. (Clark Boylan, #1317607)
+  * Tests that are enumerated but not executed will no longer reset the test
+    timing data. Enumeration was incorrectly recording a 0 timestamp for
+    enumerated tests. This leads to poor scheduling after an interrupted test
+    run. (Robert Collins, #1322763)
+  * Version 0.0.18 of subunit is now a hard dependency - the v2 protocol solves
+    key issues in concurrency and stream handling. Users that cannot use subunit
+    v2 can run an older testrepository, or contact upstream to work through
+    whatever issue is blocking them. (Robert Collins)
+  * When list-tests encounters an error, a much clearer response will
+    now be shown. (Robert Collins, #1271133)
+  * The ``get_subunit_stream`` methods now return subunit v2 streams rather
+    than v1 streams, preparing the way for storage of native v2 streams in
+    the repository. (Robert Collins)
+  * ``UI.output_stream`` is now tested for handling of non-utf8 bytestreams.
+    (Robert Collins)
+
+-------------------------------------------------------------------
+Thu Feb 13 13:56:39 UTC 2014 - speilicke@suse.com
+
+- Implement update-alternatives
+
+-------------------------------------------------------------------
+Thu Jan 30 08:59:07 UTC 2014 - dmueller@suse.com
+
+- fix requires 
+
+-------------------------------------------------------------------
+Sun Nov 17 17:12:34 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.0.18
+  + ``run`` now accepts ``--isolated`` as a parameter, which will cause each
+    selected test to be run independently. This can be useful to both workaround
+    isolation bugs and detect tests that can not be run independently.
+
+  + ``capture_ids`` in test_run now returns a list of captures, permitting tests
+    that need to test multiple runs to do so.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:15:47 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Fri Jul 19 10:56:40 UTC 2013 - dmueller@suse.com
+
+- update to 0.0.17:
+ * Restore the ability to import testrepository.repository.memory on Python 2.6.
+ * A new testr.conf option ``group_regex`` can be used for grouping
+   tests so that they get run in the same backend runner. (Matthew Treinish)
+ * Fix Python 3.* support for entrypoints; the initial code was Python3
+   incompatible. (Robert Collins, Clark Boylan, #1187192)
+ * Switch to using multiprocessing to determine CPU counts.
+  (Chris Jones, #1092276)
+ * The cli UI now has primitive differentiation between multiple stream types.
+   This is not yet exposed to the end user, but is sufficient to enable the
+   load command to take interactive input without it reading from the raw
+   subunit stream on stdin. (Robert Collins)
+ * The scheduler can now groups tests together permitting co-dependent tests to
+   always be scheduled onto the same backend. Note that this does not force
+   co-dependent tests to be executed, so partial test runs (e.g. --failing)
+   may still fail.  (Matthew Treinish, Robert Collins)
+ * When test listing fails, testr will now report an error rather than
+   incorrectly trying to run zero tests. A test listing failure is detected by
+   the returncode of the test listing process. (Robert Collins, #1185231)
+
+-------------------------------------------------------------------
+Thu Jul 11 15:55:27 UTC 2013 - dmueller@suse.com
+
+- tighten runtime requires 
+
+-------------------------------------------------------------------
+Tue Apr 30 09:17:02 UTC 2013 - dmueller@suse.com
+
+- add buildrequires to satisfy test suite run 
+
+-------------------------------------------------------------------
+Mon Apr 29 12:15:17 UTC 2013 - dmueller@suse.com
+
+- update to 0.0.15:
+  * Expects subunit v2 if the local library has v2 support in the subunit
+  library. This should be seamless if the system under test shares the
+  Python libraries. If it doesn't, either arrange to use ``subunit-2to1``
+  or upgrade the subunit libraries for the system under test.
+
+-------------------------------------------------------------------
+Sat Apr 20 18:58:56 UTC 2013 - toddrme2178@gmail.com
+
+- Add BuildRequires: python-extras 
+
+-------------------------------------------------------------------
+Tue Jan 15 15:43:14 UTC 2013 - dmueller@suse.com
+
+- add requires to python-discover for SLE11
+
+-------------------------------------------------------------------
+Tue Jan 15 15:28:53 UTC 2013 - saschpe@suse.de
+
+- Run testsuite
+- Package some documentation
+
+-------------------------------------------------------------------
+Tue Jan 15 13:53:29 UTC 2013 - dmueller@suse.com
+
+- Initial package (0.0.13)
+

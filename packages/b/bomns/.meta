@@ -1,0 +1,21 @@
+<package name="bomns" project="openSUSE:Factory">
+  <title>Best old-school Deathmatch game ever (only for two players)</title>
+  <description>The gameplay of Bomns for Linux is quite simple: just move around the level,
+picking up powerups and avoiding powerdowns, all the while laying bomns and
+plotting your opponent's desctruction. A bomn will do 5 damage to the other
+player, and running into them will do 1 damage. The first to kill their
+opponent before the time runs out is declared the winner.
+
+Player one controls:
+  Move      : arrow keys
+  Drop Bomn : enter
+
+Player two controls:
+  Move      : w,a,s,d
+  Drop Bomn : spacebar
+
+Other controls:
+  Enter/exit fullscreen mode: f
+  Quit current game         : escape</description>
+  <devel project="games" package="bomns"/>
+</package>

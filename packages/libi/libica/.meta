@@ -1,0 +1,6 @@
+<package name="libica" project="openSUSE:Factory">
+  <title>libica2</title>
+  <description>This package contains the interface library routines used by IBM modules to interface with the IBM eServer Cryptographic Accelerator (ICA).
+</description>
+  <devel project="devel:openSUSE:Factory" package="libica"/>
+</package>

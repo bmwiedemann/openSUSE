@@ -1,0 +1,10 @@
+<package name="libvirt" project="openSUSE:Factory">
+  <title>A C toolkit to interract with the virtualization capabilities of Linux</title>
+  <description>Libvirt is a C toolkit to interact with the virtualization
+capabilities of Linux. Virtualization of the Linux Operating System means
+the ability to run multiple instances of Operating Systems concurrently
+on a single hardware system where the basic resources are driven by a
+Linux instance. The library aims to provide long term stable C API
+to interact with Linux virtualization technologies.</description>
+  <devel project="Virtualization" package="libvirt"/>
+</package>

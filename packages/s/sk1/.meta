@@ -1,0 +1,10 @@
+<package name="sk1" project="openSUSE:Factory">
+  <title>Python-Based Vector Drawing Program</title>
+  <description>The program sK1 is an open source vector graphics editor similar to
+CorelDRAW, Adobe Illustrator, or Freehand. First of all sK1 is oriented
+for PostScript processing. It features CMYK colorspace support, CMYK
+support in Postscript, a Cairo-based engine, color managment, universal
+CDR importer (7-X3 versions), and a modern Ttk based (former Tile
+widgets) user interface.</description>
+  <devel project="graphics" package="sk1"/>
+</package>

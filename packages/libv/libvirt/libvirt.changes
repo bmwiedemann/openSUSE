@@ -1,0 +1,4937 @@
+-------------------------------------------------------------------
+Thu Sep  5 22:21:03 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Add apparmor-abstractions as a required package for daemon
+  bsc#1142992
+
+-------------------------------------------------------------------
+Wed Sep  4 20:54:24 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 5.7.0
+  - Experimental split of libvirtd into separate daemons
+  - bsc#1145440, bsc#1145586
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    93c1d5fe-network-fix-ability-to-use-openvswitch-with-vlans.patch,
+    blockcopy-check-dst-identical-device.patch,
+    suse-libvirtd-service-xen.patch
+
+-------------------------------------------------------------------
+Thu Aug 15 19:54:20 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- network: fix ability to use openvswitch with vlans (bsc#1145651)
+  - Added patch:
+    93c1d5fe-network-fix-ability-to-use-openvswitch-with-vlans.patch
+
+-------------------------------------------------------------------
+Mon Aug  5 19:24:35 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 5.6.0
+  - Enable proper use of systemd socket	activation with libvirtd
+  - bsc#1133719
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    xen-pv-cdrom.patch, xen-sxpr-disk-type.patch
+- qemu: fix default value of security_default_confined
+  Updated suse-qemu-conf.patch
+  bsc#1143871
+
+-------------------------------------------------------------------
+Tue Jul  2 21:24:26 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 5.5.0
+  - CVE-2019-10161, CVE-2019-10166, CVE-2019-10167, CVE-2019-10168
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    aed6a032-CVE-2019-10161.patch,
+    db0b7845-CVE-2019-10166.patch,
+    8afa68ba-CVE-2019-10167.patch,
+    bf6c2830-CVE-2019-10168.patch
+
+-------------------------------------------------------------------
+Thu Jun 20 14:55:04 UTC 2019 - Jim Fehlig <jfehlig@suse.com>
+
+- api: disallow virConnect*HypervisorCPU,
+  virConnectGetDomainCapabilities, virDomainManagedSaveDefineXML,
+  and virDomainSaveImageGetXMLDesc on read-only connections
+  aed6a032-CVE-2019-10161.patch, db0b7845-CVE-2019-10166.patch,
+  8afa68ba-CVE-2019-10167.patch, bf6c2830-CVE-2019-10168.patch
+  CVE-2019-10161, CVE-2019-10166, CVE-2019-10167, CVE-2019-10168
+  bsc#1138301, bsc#1138302, bsc#1138303, bsc#1138305
+
+-------------------------------------------------------------------
+Wed Jun 12 15:03:47 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop systemd BuildRequires: there is already pkgconfig(systemd)
+  present, which is the same package.
+
+-------------------------------------------------------------------
+Mon Jun  3 17:05:52 UTC 2019 - Jim Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 5.4.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    5cd9db3a-cputest-add-data-E3-1225-v5.patch,
+    538d8735-cpu_map-Define-md-clear-CPUID-bit.patch,
+    96f41cd7-admin-reject-clients.patch,
+    f111e094-locking-restrict-sockets-to-mode-0600.patch,
+    e37bd65f-logging-restrict-sockets-to-mode-0600.patch,
+    76b420d0-build-libqemutestdriver-lto-fix.patch
+
+-------------------------------------------------------------------
+Thu May 30 16:08:06 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- build: fix linking libqemutestdriver with LTO enabled
+  76b420d0-build-libqemutestdriver-lto-fix.patch
+  boo#1133253
+
+-------------------------------------------------------------------
+Thu May 30 06:58:30 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use %make_build in order to provide verbose output.
+
+-------------------------------------------------------------------
+Thu May 23 17:07:21 UTC 2019 - Jim Fehlig <jfehlig@suse.com>
+
+- spec: add systemd-container dependency to qemu and lxc drivers
+  bsc#1136109
+
+-------------------------------------------------------------------
+Tue May 21 17:15:09 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- admin: reject clients unless their UID matches the server UID
+  CVE-2019-10132
+  96f41cd7-admin-reject-clients.patch,
+  f111e094-locking-restrict-sockets-to-mode-0600.patch,
+  e37bd65f-logging-restrict-sockets-to-mode-0600.patch
+  bsc#1134348
+
+-------------------------------------------------------------------
+Mon May 20 21:50:28 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- cpu_map: add cpu feature md-clear. CVE-2018-12126,
+  CVE-2018-12127, CVE-2018-12130, CVE-2019-11091
+  5cd9db3a-cputest-add-data-E3-1225-v5.patch,
+  538d8735-cpu_map-Define-md-clear-CPUID-bit.patch
+  bsc#1111331, bsc#1135273
+
+-------------------------------------------------------------------
+Wed May  8 17:03:43 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 5.3.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    ff376c62-tests-fix-mocking-stat-lstat.patch,
+    ebe9c6ea-qemu-firmware-dirent.patch,
+    2a07c990-api-CVE-2019-3886.patch,
+    ae076bb4-remote-CVE-2019-3886.patch,
+    f66f70ac-snapshot-fix-use-after-free.patch,
+    89237d53-conf-expose-virDomainSCSIDriveAddressIsUsed.patch,
+    ee2c5ef3-test-scsi-disk.patch,
+    ddc72f99-qemu-check-dup-drive-address.patch,
+    22dc3e94-revert-f1d65853.patch
+
+-------------------------------------------------------------------
+Thu Apr 25 20:42:03 UTC 2019 - Jim Fehlig <jfehlig@suse.com>
+
+- Fix build with LTO enabled
+  Adjusted support-managed-pci-xen-driver.patch
+  boo#1133253
+
+-------------------------------------------------------------------
+Fri Apr 19 17:06:42 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- qemu: fix CDROM media change when using virDomainAttachDevice
+  89237d53-conf-expose-virDomainSCSIDriveAddressIsUsed.patch,
+  ee2c5ef3-test-scsi-disk.patch,
+  ddc72f99-qemu-check-dup-drive-address.patch,
+  22dc3e94-revert-f1d65853.patch
+  boo#1132127
+
+-------------------------------------------------------------------
+Thu Apr 11 23:00:48 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Fix and re-enable snapshot tests
+  f66f70ac-snapshot-fix-use-after-free.patch
+
+-------------------------------------------------------------------
+Fri Apr  5 19:58:10 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- CVE-2019-3886: disallow virDomainGetHostname and virDomainGetTime
+  for read-only connections and users
+  2a07c990-api-CVE-2019-3886.patch,
+  ae076bb4-remote-CVE-2019-3886.patch
+  bsc#1131595
+- spec: BuildRequires rpcgen since ae076bb4-remote-CVE-2019-3886.patch
+  touches remote_protocol.x
+
+-------------------------------------------------------------------
+Wed Apr  3 18:08:00 UTC 2019 - Jim Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 5.2.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    4ec3cf9a-apparmor-rules.patch,
+    f38ef0fa-no-RDMA-check.patch,
+    411cdaf8-apparmor-check-profile-name.patch,
+    696239ba-qemu-fix-query-cpus-fast.patch,
+    09eb1ae0-conf-add-xenbus-controller.patch,
+    fb059757-libxl-add-xenbus-controller.patch,
+    ec5a1191-libxl-support-max-grant-frames.patch,
+    5a64c202-xenconfig-support-max-grant-frames.patch
+  - Added patches:
+    ff376c62-tests-fix-mocking-stat-lstat.patch,
+    ebe9c6ea-qemu-firmware-dirent.patch
+
+-------------------------------------------------------------------
+Thu Mar 21 21:40:06 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- apparmor: reintroduce upstream lxc mount rules
+  Drop apparmor-no-mount.patch
+  bsc#1130129
+
+-------------------------------------------------------------------
+Fri Mar 15 23:21:06 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- supportconfig: collect rotated logs in /var/log/libvirt/*
+  Modified libvirt-supportconfig
+  bsc#1124667
+
+-------------------------------------------------------------------
+Wed Mar 13 23:09:27 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- hook: encode incoming XML to UTF-8 before passing to lxml etree
+  fromstring method
+  Modifed suse-qemu-domain-hook.py
+  boo#1123642
+
+-------------------------------------------------------------------
+Wed Mar 13 21:09:58 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- libxl: change autoballooning default to disabled
+  suse-libxl-disable-autoballoon.patch
+  jsc#SLE-3059
+
+-------------------------------------------------------------------
+Wed Mar 13 18:59:43 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- conf: add new 'xenbus' controller type
+  09eb1ae0-conf-add-xenbus-controller.patch
+- libxl: support Xen's max_grant_frames setting with maxGrantFrames
+  attribute on the xenbus controller
+  fb059757-libxl-add-xenbus-controller.patch,
+  ec5a1191-libxl-support-max-grant-frames.patch,
+  5a64c202-xenconfig-support-max-grant-frames.patch
+  bsc#1126325
+
+-------------------------------------------------------------------
+Wed Mar 13 18:57:13 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Replace patches with upstream variants
+  Old:
+  0001-apparmor-Check-libvirtd-profile-status-by-name.patch,
+  0001-qemu-Fix-query-cpus-fast-target-architecture-detecti.patch
+  New:
+  411cdaf8-apparmor-check-profile-name.patch,
+  696239ba-qemu-fix-query-cpus-fast.patch
+
+-------------------------------------------------------------------
+Mon Mar 11 22:50:43 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+-  util: skip RDMA detection for non-PCI network devices
+   f38ef0fa-no-RDMA-check.patch
+   bsc#1112182
+
+-------------------------------------------------------------------
+Wed Mar  6 20:34:53 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- qemu: s390: show correct CPU status after guest crash
+  0001-qemu-Fix-query-cpus-fast-target-architecture-detecti.patch
+  bsc#1127841
+
+-------------------------------------------------------------------
+Wed Mar  6 17:11:49 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- apparmor: fix more fallout from changing libvirtd profile to a
+  named profile
+  4ec3cf9a-apparmor-rules.patch,
+  0001-apparmor-Check-libvirtd-profile-status-by-name.patch
+  boo#1125841
+
+-------------------------------------------------------------------
+Mon Mar  4 18:52:57 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 5.1.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    11c8aca9-libxl-set-mem-after-balloon.patch,
+    70c2933d-apparmor-named-profiles.patch,
+    a3ab6d42-apparmor-conv-libvirtd-named-profile.patch,
+    b6440119-qemu-conf-sev.patch,
+    a404ac34-qemu-cgroup-sev.patch,
+    6fd4c8f8-qemu-domain-sev.patch,
+    17f6a257-security-dac-sev.patch,
+    a2d3dea9-qemu-caps-dac-override-sev.patch,
+    620d9dd5-qemu-no-dac-override-nonroot.patch
+  - jsc#SLE-3887, jsc#SLE-4480, jsc#SLE-4577
+
+-------------------------------------------------------------------
+Wed Feb 27 19:01:22 UTC 2019 - jfehlig@suse.com
+
+- spec: disable VirtualBox driver
+
+-------------------------------------------------------------------
+Tue Feb 19 23:36:28 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- qemu: don't use CAP_DAC_OVERRIDE capability if non-root
+  620d9dd5-qemu-no-dac-override-nonroot.patch
+  boo#1125665
+
+-------------------------------------------------------------------
+Fri Feb  8 21:32:29 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- qemu: fix issues related to restricted permissions on /dev/sev
+  b6440119-qemu-conf-sev.patch, a404ac34-qemu-cgroup-sev.patch,
+  6fd4c8f8-qemu-domain-sev.patch, 17f6a257-security-dac-sev.patch,
+  a2d3dea9-qemu-caps-dac-override-sev.patch
+  bsc#1124842
+
+-------------------------------------------------------------------
+Wed Jan 23 20:53:29 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- apparmor: add support for named profiles and convert libvirtd
+  profile to a named profile
+  70c2933d-apparmor-named-profiles.patch,
+  a3ab6d42-apparmor-conv-libvirtd-named-profile.patch
+  boo#1118952
+- libxl: save current memory value after successful balloon
+  11c8aca9-libxl-set-mem-after-balloon.patch
+  bsc#1120813
+
+-------------------------------------------------------------------
+Wed Jan 23 10:23:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Noun phrase for %description doc.
+- Remove idempotent %if..%endif pair around
+  %package bash-completion.
+- Reduce hard requirements on bash-c and documentation.
+
+-------------------------------------------------------------------
+Thu Jan 17 16:50:57 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Enable bash completion in Leap15/SLE15 and newer
+
+-------------------------------------------------------------------
+Tue Jan 15 22:25:14 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 5.0.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Remove UML hypervisor driver
+  - Dropped patches:
+    de09ae2f-libxl-support-openvswitch.patch,
+    0a1b5653-xenconfig-support-openvswitch.patch
+  - FATE#320928, FATE#325817, FATE#326380, FATE#326698
+
+-------------------------------------------------------------------
+Wed Jan  2 16:02:39 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Requires: ncurses expands to Requires: libncurses5, which
+  is not required by any component of this package. Remove it
+  along with the BuildRequires: ncurses-devel
+
+-------------------------------------------------------------------
+Mon Dec  3 21:58:53 UTC 2018 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 4.10.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    14d03b27-libxl-rm-redundant-virObjectEventStateQueue.patch,
+    82452a5d-libxl-rm-goto-libxlDomainShutdownThread.patch,
+    da4b0fd9-libxl-support-soft-reset.patch,
+    libxl-qemu-emulator-caps.patch
+  - Added patches:
+    de09ae2f-libxl-support-openvswitch.patch,
+    0a1b5653-xenconfig-support-openvswitch.patch
+  - FATE#320928, FATE#325817, FATE#326380, FATE#326698
+
+-------------------------------------------------------------------
+Tue Nov  6 18:33:26 UTC 2018 - James Fehlig <jfehlig@suse.com>
+
+- libxl: add support for soft reset
+  14d03b27-libxl-rm-redundant-virObjectEventStateQueue.patch,
+  82452a5d-libxl-rm-goto-libxlDomainShutdownThread.patch,
+  da4b0fd9-libxl-support-soft-reset.patch
+  bsc#1081516
+
+-------------------------------------------------------------------
+Mon Nov  5 15:10:31 UTC 2018 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 4.9.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - FATE#326371
+
+-------------------------------------------------------------------
+Fri Oct 19 16:47:18 UTC 2018 - jfehlig@suse.com
+
+- Update SLE15 SP1 with openSUSE Factory package
+  FATE#325848, FATE#326368
+- FATE and bug references made in the SLE15 package since the last
+  Factory update: FATE#325817, bsc#959329, bsc#1074014,
+  bsc#1106420, bsc#1108395
+- Patches in SLE15 package that are dropped by this update:
+  1b0c42ff-libvirtd-depend-machined.patch,
+  ac4a12db-libxl-fix-hasManagedSave.patch
+
+-------------------------------------------------------------------
+Tue Oct  2 19:55:14 UTC 2018 - jfehlig@suse.com
+
+- Update to libvirt 4.8.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    60b4fd90-libxl-rm-vm-finish-phase.patch,
+    e39c66d3-libxl-fix-p2p-migration.patch,
+    47da84e0-libxl-fix-job-handling-migsrc.patch,
+    0149464a-libxl-fix-job-handling-migdst.patch,
+    5ea2abb3-libxl-join-mig-rcv-thread.patch
+
+-------------------------------------------------------------------
+Mon Sep 24 10:42:27 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix RPM groups. Remove idempotent %if..%endif guards.
+- Remove redundant %clean section.
+
+-------------------------------------------------------------------
+Wed Sep 19 22:01:11 UTC 2018 - James Fehlig <jfehlig@suse.com>
+
+- libxl: fix VM migration on busy hosts
+  60b4fd90-libxl-rm-vm-finish-phase.patch,
+  e39c66d3-libxl-fix-p2p-migration.patch,
+  47da84e0-libxl-fix-job-handling-migsrc.patch,
+  0149464a-libxl-fix-job-handling-migdst.patch,
+  5ea2abb3-libxl-join-mig-rcv-thread.patch
+  bsc#1108086
+
+-------------------------------------------------------------------
+Wed Sep  5 04:08:21 UTC 2018 - jfehlig@suse.com
+
+- Update to libvirt 4.7.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    9ed59012--revert-jansson1.patch,
+    54f2b5e3-revert-jansson2.patch,
+    b56950fd-revert-jansson3.patch,
+    6c3d66ac-revert-jansson4.patch,
+    8e373e6d-revert-jansson5.patch,
+    6f99de31-revert-jansson6.patch,
+    f204cf51-revert-jansson7.patch,
+    5a58b5ed-revert-jansson8.patch,
+    63f6e0e9-revert-jansson9.patch,
+    8687eba-revert-jansson10.patch,
+    e96e71d8-revert-jansson11.patch,
+    d99a8959-revert-jansson12.patch,
+    074a7e14-revert-jansson13.patch,
+    86db0db9-revert-jansson14.patch
+
+-------------------------------------------------------------------
+Tue Aug 14 03:23:24 UTC 2018 - jfehlig@suse.com
+
+- Revert switch to jansson
+  boo#1104820
+  - Dropped:
+    temp-build-fix.patch
+  - Added:
+    9ed59012--revert-jansson1.patch,
+    54f2b5e3-revert-jansson2.patch,
+    b56950fd-revert-jansson3.patch,
+    6c3d66ac-revert-jansson4.patch,
+    8e373e6d-revert-jansson5.patch,
+    6f99de31-revert-jansson6.patch,
+    f204cf51-revert-jansson7.patch,
+    5a58b5ed-revert-jansson8.patch,
+    63f6e0e9-revert-jansson9.patch,
+    8687eba-revert-jansson10.patch,
+    e96e71d8-revert-jansson11.patch,
+    d99a8959-revert-jansson12.patch,
+    074a7e14-revert-jansson13.patch,
+    86db0db9-revert-jansson14.patch
+
+-------------------------------------------------------------------
+Mon Aug 13 18:06:51 UTC 2018 - jfehlig@suse.com
+
+- spec: don't restart libvirt-guests when updating libvirt-client
+  bsc#1104662
+
+-------------------------------------------------------------------
+Mon Aug  6 16:38:32 UTC 2018 - jfehlig@suse.com
+
+- Update to libvirt 4.6.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Switch from yajl to jansson
+  - Dropped patches:
+    libvirt-4.5.0-apparmor-add-missing-comma.patch
+  - Patches added to fix upstream bugs:
+    temp-build-fix.patch
+
+-------------------------------------------------------------------
+Fri Aug  3 09:31:55 UTC 2018 - antoine.belvire@opensuse.org
+
+- Fix apparmor failure at startup because of syntax error in
+  libvirt profile:
+  * Add libvirt-4.5.0-apparmor-add-missing-comma.patch (picked
+    from upstream).
+
+-------------------------------------------------------------------
+Thu Jul  5 16:25:57 UTC 2018 - jfehlig@suse.com
+
+- Update to libvirt 4.5.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    67c56f6e-libxl-logfd-leak-fix.patch
+- spec: use more macros in file paths
+- libxl: Implement virDomainBlockResize
+  0001-libxl-add-support-for-BlockResize-API.patch
+  FATE#325467, bsc#1094325, bsc#1094725
+
+-------------------------------------------------------------------
+Wed Jul  4 15:27:05 UTC 2018 - jfehlig@suse.com
+
+- spec: enable gluster storage backend for openSUSE
+
+-------------------------------------------------------------------
+Mon Jun 25 14:17:03 UTC 2018 - jfehlig@suse.com
+
+- spec: BuildRequires glusterfs-devel when gluster support is
+  enabled
+
+-------------------------------------------------------------------
+Tue Jun  5 22:56:28 UTC 2018 - jfehlig@suse.com
+
+- spec: use wireshark plugin directory from pkg-config
+
+-------------------------------------------------------------------
+Tue Jun  5 22:15:26 UTC 2018 - jfehlig@suse.com
+
+- virt-aa-helper: add SUSE path to OVMF and AAVMF images
+  Adjusted suse-ovmf-paths.patch
+  boo#1095556
+
+-------------------------------------------------------------------
+Mon Jun  4 22:32:54 UTC 2018 - jfehlig@suse.com
+
+- Update to libvirt 4.4.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - CVE-2018-3639
+  - Dropped patches:
+    1dbca2ec-CVE-2018-3639.patch, 92673422-CVE-2018-3639.patch
+- libxl: fix leaking logfile fds
+  67c56f6e-libxl-logfd-leak-fix.patch
+  bsc#1094480
+
+-------------------------------------------------------------------
+Tue May 22 14:44:51 UTC 2018 - jfehlig@suse.com
+
+- cpu: add support for 'ssbd' and 'virt-ssbd' CPUID feature bits
+  CVE-2018-3639
+  1dbca2ec-CVE-2018-3639.patch, 92673422-CVE-2018-3639.patch
+  bsc#1092885
+
+-------------------------------------------------------------------
+Mon May  7 17:06:10 UTC 2018 - jfehlig@suse.com
+
+- spec: enable libssh support for suse_version >= 1500
+
+-------------------------------------------------------------------
+Wed May  2 21:42:09 UTC 2018 - jfehlig@suse.com
+
+- Update to libvirt 4.3.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Remove legacy Xen driver
+  - Dropped patches:
+    09877303-virSocketAddrParseInternal.patch,
+    412afdb8-intro-virSocketAddrParseAny.patch
+
+-------------------------------------------------------------------
+Thu Apr  5 21:08:11 UTC 2018 - jfehlig@suse.com
+
+- util: improvements in error handling
+  09877303-virSocketAddrParseInternal.patch,
+  412afdb8-intro-virSocketAddrParseAny.patch
+  bsc#1080957
+
+-------------------------------------------------------------------
+Thu Apr  5 15:22:16 UTC 2018 - jfehlig@suse.com
+
+- Update to libvirt 4.2.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    6b3d716e-keycodemap-py3.patch,
+    33c6eb96-fix-libvirtd-reload-deadlock.patch,
+    464889ff-rpc-aquire-ref-dispatch.patch,
+    c6f1d519-rpc-simplify-dispatch.patch,
+    06e7ebb6-rpc-invoke-dispatch-unlocked.patch,
+    86cae503-rpc-fix-pre-exec.patch,
+    eefabb38-rpc-virtlockd-virtlogd-single-thread.patch,
+    fbf31e1a-CVE-2018-1064.patch,
+    fb327ac2-virtlockd-admin-socket.patch,
+    64370c4b-libxl-MigrateBegin.patch,
+    99486799-libxl-MigrateConfirm.patch,
+    f5eacf2a-libxl-MigratePerform.patch,
+    4e6fcdb6-libxl-libxlDomObjFromDomain-cleanup.patch,
+    fe51dbda-libxl-use-FindByRef.patch,
+    60b3fcd9-libxl-MigratePrepare.patch,
+    3c89868c-libxl-lock-after-ListRemove.patch,
+    13e81fc6-libxl-EndJob-on-error.patch,
+    594b8b99-libxl-DefineXMLFlags-API-pattern.patch,
+    c66e344e-libxl-dont-deref-NULL.patch,
+    83edaf44-libxl-dont-hardcode-sched-weight.patch,
+    apibuild-py3.patch
+
+-------------------------------------------------------------------
+Wed Mar 21 22:43:28 UTC 2018 - jfehlig@suse.com
+
+- libxl: don't hardcode scheduler weight
+  83edaf44-libxl-dont-hardcode-sched-weight.patch
+  bsc#1086377
+
+-------------------------------------------------------------------
+Tue Mar 20 20:20:18 UTC 2018 - jfehlig@suse.com
+
+- libxl: fixes and improvements in migration APIs
+  64370c4b-libxl-MigrateBegin.patch,
+  99486799-libxl-MigrateConfirm.patch,
+  f5eacf2a-libxl-MigratePerform.patch,
+  4e6fcdb6-libxl-libxlDomObjFromDomain-cleanup.patch,
+  fe51dbda-libxl-use-FindByRef.patch,
+  60b3fcd9-libxl-MigratePrepare.patch,
+  3c89868c-libxl-lock-after-ListRemove.patch,
+  13e81fc6-libxl-EndJob-on-error.patch,
+  594b8b99-libxl-DefineXMLFlags-API-pattern.patch,
+  c66e344e-libxl-dont-deref-NULL.patch
+  bsc#1080957
+
+-------------------------------------------------------------------
+Thu Mar 15 15:44:28 UTC 2018 - jfehlig@suse.com
+
+- lockd: fix typo in virtlockd-admin.socket
+  fb327ac2-virtlockd-admin-socket.patch
+  bsc#1085386
+
+-------------------------------------------------------------------
+Wed Mar 14 21:40:53 UTC 2018 - jfehlig@suse.com
+
+- Install correct firewall service file depending on availability
+  of firewalld vs SuSEfirewall2
+  libvirtd-relocation-server.xml
+  bsc#1083455
+
+-------------------------------------------------------------------
+Wed Mar 14 13:52:55 UTC 2018 - jfehlig@suse.com
+
+- qemu: avoid denial of service reading from QEMU guest agent
+  CVE-2018-1064
+  fbf31e1a-CVE-2018-1064.patch
+  bsc#1083625
+
+-------------------------------------------------------------------
+Tue Mar 13 22:09:26 UTC 2018 - jfehlig@suse.com
+
+- virtlockd: fix loosing lock on re-exec
+  464889ff-rpc-aquire-ref-dispatch.patch,
+  c6f1d519-rpc-simplify-dispatch.patch,
+  06e7ebb6-rpc-invoke-dispatch-unlocked.patch,
+  86cae503-rpc-fix-pre-exec.patch,
+  eefabb38-rpc-virtlockd-virtlogd-single-thread.patch
+  bsc#1076861
+
+-------------------------------------------------------------------
+Tue Mar 13 21:55:47 UTC 2018 - jfehlig@suse.com
+
+- libvirtd: fix potential deadlock when reloading
+  33c6eb96-fix-libvirtd-reload-deadlock.patch
+  bsc#1079150
+
+-------------------------------------------------------------------
+Mon Mar  5 15:55:07 UTC 2018 - jfehlig@suse.com
+
+- Update to libvirt 4.1.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    72adaf2f-revert-qemu-monitor-error-report.patch,
+    71d56a39-nodedev-fix-parse-PCI-address.patch,
+    68eed56b-conf-smbios-oem-strings.patch,
+    76977061-qemu-smbios-oem-strings.patch,
+    0c710a37-libxl-resume-lock-on-mig-failure.patch,
+    759b4d1b-virlog-determine-the-hostname-on-startup-CVE-2018-67.patch,
+    c2dc6698-fix-deadlock-obtaining-hostname.patch,
+    c391e07e-libxl-clock-settings.patch,
+    ef71caea-libxl-memalign.patch,
+    suse-apparmor-signal.patch
+
+-------------------------------------------------------------------
+Fri Feb 23 22:09:04 UTC 2018 - jfehlig@suse.com
+
+- libxl: round memory values to next 1MiB increment
+  ef71caea-libxl-memalign.patch
+  bsc#1082041
+
+-------------------------------------------------------------------
+Wed Feb 21 23:32:55 UTC 2018 - jfehlig@suse.com
+
+- libxl: add support for specifying clock offset and adjustment
+  c391e07e-libxl-clock-settings.patch
+  bsc#1082161
+
+-------------------------------------------------------------------
+Fri Feb  9 13:28:14 UTC 2018 - cbosdonnat@suse.com
+
+- Remove all uses of python2 during the build (bsc#1080034)
+    6b3d716e-keycodemap-py3.patch
+    apibuild-py3.patch
+- Determine hostname early to avoid code injection
+  in lxc driver. (bsc#1080042)
+    759b4d1b-virlog-determine-the-hostname-on-startup-CVE-2018-67.patch
+    c2dc6698-fix-deadlock-obtaining-hostname.patch
+- Add basic support of connectGetAllDomainStats for lxc driver
+  (fate#323742)
+    0001-Extract-stats-functions-from-the-qemu-driver.patch
+    0002-lxc-implement-connectGetAllDomainStats.patch
+
+-------------------------------------------------------------------
+Fri Jan 26 15:44:30 UTC 2018 - jfehlig@suse.com
+
+- qemu: Support setting OEM strings in SMBIOS
+  68eed56b-conf-smbios-oem-strings.patch,
+  76977061-qemu-smbios-oem-strings.patch
+  FATE#323624
+- libxl: resume lock process after failed migration
+  0c710a37-libxl-resume-lock-on-mig-failure.patch
+  bsc#1076861
+
+-------------------------------------------------------------------
+Thu Jan 25 16:46:32 UTC 2018 - jfehlig@suse.com
+
+- qemu hook: Change shebang to /usr/bin/python3
+- spec: Require python lxml in daemon-hooks subpackage
+
+-------------------------------------------------------------------
+Fri Jan 19 16:31:53 UTC 2018 - jfehlig@suse.com
+
+- Update to libvirt 4.0.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    2d07f1f0-fix-storage-crash.patch,
+    69ed99c7-dom0-persistent.patch,
+    8599aedd-libvirt-guests-dom0-filter.patch,
+    0f33025a-virt-aa-helper-handle-more-disk-images.patch,
+    b475a91b-add-virStringFilterChars-string-utility.patch,
+    faec1958-lxc-set-hostname-based-on-container-name.patch,
+    2089ab21-netserver-close-clients-before-stopping-all-drivers.patch,
+    fix-virt-aa-helper-profile.patch,
+  - Patches added to fix upstream bugs:
+    72adaf2f-revert-qemu-monitor-error-report.patch,
+    71d56a39-nodedev-fix-parse-PCI-address.patch
+  - CVE-2018-5748, CVE-2017-5715, bsc#1071651, bsc#1076500
+
+-------------------------------------------------------------------
+Thu Jan 11 16:52:43 UTC 2018 - jfehlig@suse.com
+
+- Add a qemu hook script providing functionality similar to Xen's
+  block-dmmd script
+  suse-qemu-domain-hook.py
+  FATE#324177
+
+-------------------------------------------------------------------
+Wed Jan  3 10:46:26 UTC 2018 - cbosdonnat@suse.com
+
+- Fix apparmor rules for virt-aa-helper (bsc#1074265)
+  fix-virt-aa-helper-profile.patch
+- Lift VirtualBox dependency version to include 5.2.x
+- Update upstreamed patches
+  Removed patches:
+  * daemon-close-crasher.patch
+  * lxc-hostname.patch
+  Added patches:
+  * 2089ab21-netserver-close-clients-before-stopping-all-drivers.patch
+  * b475a91b-add-virStringFilterChars-string-utility.patch
+  * faec1958-lxc-set-hostname-based-on-container-name.patch
+-------------------------------------------------------------------
+Wed Dec 20 16:58:50 UTC 2017 - cbosdonnat@suse.com
+
+- Close clients before drivers are cleaned up to avoid crash at
+  libvirtd stop (bsc#1073730)
+  daemon-close-crasher.patch
+- Set a hostname on lxc containers based on guest's name.
+  lxc-hostname.patch
+- Enhance apparmor rules for virt-aa-helper (bsc#1070916)
+  0f33025a-virt-aa-helper-handle-more-disk-images.patch
+
+-------------------------------------------------------------------
+Mon Dec 18 17:08:28 UTC 2017 - jfehlig@suse.com
+
+- libvirt-guests: fix 'stop' operation when action is 'suspend'
+  69ed99c7-dom0-persistent.patch,
+  8599aedd-libvirt-guests-dom0-filter.patch
+  bsc#1070130
+
+-------------------------------------------------------------------
+Thu Dec 14 23:04:20 UTC 2017 - jfehlig@suse.com
+
+- storage: Don't dereference driver object if virStorageSource is
+  not initialized
+  2d07f1f0-fix-storage-crash.patch
+  bsc#1072974
+
+-------------------------------------------------------------------
+Mon Dec  4 18:30:11 UTC 2017 - jfehlig@suse.com
+
+- Update to libvirt 3.10.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - bsc#1070285, bsc#1070478, boo#1070914,
+  - FATE#323473, FATE#324365, FATE#324479
+
+-------------------------------------------------------------------
+Fri Dec  1 21:54:24 UTC 2017 - jfehlig@suse.com
+
+- Update to libvirt 3.10.0 RC2
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    8056721c-qemu-null-storage-source.patch,
+    74a13be4-xdr-flags.patch,
+    apparmor-rules-for-new-mediation-features.patch,
+    apparmor-fine-grained-mount-rules.patch
+  - bsc#1070285, bsc#1070478, FATE#323473, FATE#324479
+
+-------------------------------------------------------------------
+Thu Nov 30 18:18:35 UTC 2017 - jfehlig@suse.com
+
+- spec: remove use of 'systemctl enable'
+  bsc#1038401
+
+-------------------------------------------------------------------
+Thu Nov 30 02:18:23 UTC 2017 - jfehlig@suse.com
+
+- spec: enable firewalld support for SLE15, Leap15, and Tumbleweed
+  FATE#320794
+
+-------------------------------------------------------------------
+Thu Nov 23 13:47:54 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Nov 22 22:25:43 UTC 2017 - kukuk@suse.de
+
+- spec: Add BuildRequires for libtirpc-devel in preparation of
+  removal of sunrpc from glibc
+- build: Use XDR_CFLAGS in more places
+  74a13be4-xdr-flags.patch
+
+-------------------------------------------------------------------
+Wed Nov 22 19:05:39 UTC 2017 - olaf@aepfle.de
+
+- Replace hardcoded libvirt with Name tag when refering to subpkgs
+- Remove dependencies to /bin/sh in libs and nss %post scripts
+
+-------------------------------------------------------------------
+Fri Nov 17 21:59:28 UTC 2017 - jfehlig@suse.com
+
+- apparmor: allow libvirtd to send signals to unconfined processes
+  suse-apparmor-signal.patch
+  boo#1065123
+
+-------------------------------------------------------------------
+Fri Nov 17 18:37:43 UTC 2017 - jfehlig@suse.com
+
+- qemu: Tolerate storage source private data being NULL
+  8056721c-qemu-null-storage-source.patch
+  bsc#1068752
+
+-------------------------------------------------------------------
+Wed Nov  8 21:10:34 UTC 2017 - jfehlig@suse.com
+
+- apparmor: add rules for new mediation features
+  apparmor-rules-for-new-mediation-features.patch,
+  apparmor-fine-grained-mount-rules.patch
+  bsc#1066124, boo#1065123
+- spec: unconditionally enable the wireshark dissector
+
+-------------------------------------------------------------------
+Wed Nov  8 11:04:04 UTC 2017 - cbosdonnat@suse.com
+
+- Replace %{with_sle_build} by ! 0%{?is_opensuse}
+  bsc#940315
+
+-------------------------------------------------------------------
+Thu Nov  2 20:44:57 UTC 2017 - jfehlig@suse.com
+
+- Update to libvirt 3.9.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    c44b29aa-apparmor-dnsmasq-ptrace.patch,
+    441d3eb6-qemu-tls-client-verify-server-cert.patch
+
+-------------------------------------------------------------------
+Mon Oct 16 22:02:16 UTC 2017 - jfehlig@suse.com
+
+- qemu: ensure TLS clients always verify the server certificate
+  CVE-2017-1000256
+  441d3eb6-qemu-tls-client-verify-server-cert.patch
+  bsc#1062563
+
+-------------------------------------------------------------------
+Thu Oct 12 23:25:48 UTC 2017 - jengelh@inai.de
+
+- Do not ignore errors from useradd/groupadd.
+- Invoke/expand %service_* just once per scriptlet.
+- Replace some old macros.
+
+-------------------------------------------------------------------
+Tue Oct 10 19:50:22 UTC 2017 - jfehlig@suse.com
+
+- spec: libvirt-daemon-qemu requires libvirt-daemon-driver-storage
+  bsc#1062620
+
+-------------------------------------------------------------------
+Mon Oct  9 16:34:50 UTC 2017 - jfehlig@suse.com
+
+- spec: reload libvirtd Apparmor profile in %post
+  bsc#1060860
+
+-------------------------------------------------------------------
+Fri Oct  6 22:46:12 UTC 2017 - jfehlig@suse.com
+
+- apparmor: add dnsmasq ptrace rule to libvirtd profile
+  c44b29aa-apparmor-dnsmasq-ptrace.patch
+  bsc#1060860
+
+-------------------------------------------------------------------
+Thu Oct  5 15:19:24 UTC 2017 - jfehlig@suse.com
+
+- spec: Add dependency to UEFI firmwares since paths are specified
+  at build time
+
+-------------------------------------------------------------------
+Wed Oct  4 14:40:18 UTC 2017 - jfehlig@suse.com
+
+- Update to libvirt 3.8.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    92bd87a2-ryzen-test-data.patch,
+    5c83b360-epyc-test-data.patch,
+    a0b62843-epyc-cpu-model.patch,
+    f305d8a1-apparmor-attach_disconnected.patch,
+    b482925c-apparmor-ptrace-support.patch
+
+-------------------------------------------------------------------
+Tue Oct  3 23:37:12 UTC 2017 - jfehlig@suse.com
+
+- Enable firewalld support for openSUSE >= 42.2
+
+-------------------------------------------------------------------
+Tue Sep 26 22:38:42 UTC 2017 - jfehlig@suse.com
+
+- apparmor: Add rules for kernel 4.13 ptrace checks
+  b482925c-apparmor-ptrace-support.patch
+  Drop temporary workaround apparmor-ptrace-support.patch
+  bsc#1058847
+- apparmor: Add rules for denial encountered when starting
+  confined domains
+  f305d8a1-apparmor-attach_disconnected.patch,
+  suse-apparmor-libnl-paths.patch
+  Drop old, useless, undocumented apparmor-fixes.patch
+
+-------------------------------------------------------------------
+Wed Sep 20 16:28:46 UTC 2017 - jfehlig@suse.com
+
+- apparmor: add temporary profile fixes to allow starting domains
+  apparmor-ptrace-support.patch
+  bsc#1058847
+
+-------------------------------------------------------------------
+Fri Sep 15 17:29:55 UTC 2017 - jfehlig@suse.com
+
+- cpu: Add new EPYC CPU model
+  92bd87a2-ryzen-test-data.patch, 5c83b360-epyc-test-data.patch,
+  a0b62843-epyc-cpu-model.patch
+  bsc#1052825
+
+-------------------------------------------------------------------
+Fri Sep 15 16:20:34 UTC 2017 - jfehlig@suse.com
+
+- Update to libvirt 3.7.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    8982f3ab-util-hash-header.patch,
+    0b1ecf7b-virHashCodeGen-mockable.patch,
+    f536b0dd-tests-arch-independent-hash.patch,
+    e4cb8500-avoid-malicious-ssh-hostname-as-args.patch
+
+-------------------------------------------------------------------
+Fri Sep  1 19:55:30 UTC 2017 - jfehlig@suse.com
+
+- Support OVMF 4MB firmware images
+  Adjustment to spec file and suse-ovmf-paths.patch
+
+-------------------------------------------------------------------
+Thu Aug 31 19:33:01 UTC 2017 - jfehlig@suse.com
+
+- supportconfig plugin: list active networks, interfaces and
+  storage pools
+
+-------------------------------------------------------------------
+Tue Aug 29 22:34:42 UTC 2017 - jfehlig@suse.com
+
+- rpc: avoid ssh interpreting malicious hostname as arguments
+  e4cb8500-avoid-malicious-ssh-hostname-as-args.patch
+  bsc#1053600
+
+-------------------------------------------------------------------
+Thu Aug  3 17:56:42 UTC 2017 - jfehlig@suse.com
+
+- Update to libvirt 3.6.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+- Fix unit tests on s390x and ppc64
+  8982f3ab-util-hash-header.patch,
+  0b1ecf7b-virHashCodeGen-mockable.patch.
+  f536b0dd-tests-arch-independent-hash.patch
+- Patch cleanup
+  - Renamed libvirtd-defaults.patch to
+    suse-libvirtd-disable-tls.patch
+  - Renamed libvirtd-init-script.patch to
+    suse-libvirtd-sysconfig-settings.patch
+  - Renamed virtlockd-init-script.patch to
+    suse-virtlockd-sysconfig-settings.patch
+  - Renamed virtlogd-init-script.patch to
+    suse-virtlogd-sysconfig-settings.patch
+  - Renamed libvirt-guests-init-script.patch to
+    suse-libvirt-guests-service.patch
+  - Combined suse-libvirtd-service.patch and
+    systemd-service-xen.patch to suse-libvirtd-service-xen.patch
+    since both patches add Xen support to libvirtd service file
+  - Pull OVMF-related changes from suse-qemu-conf.patch into a
+    new suse-ovmf-paths.patch
+
+-------------------------------------------------------------------
+Wed Jul 26 22:53:11 UTC 2017 - jfehlig@suse.com
+
+- Add a supportconfig plugin
+  libvirt-supportconfig
+  FATE#323661
+
+-------------------------------------------------------------------
+Wed Jul 26 15:49:21 UTC 2017 - jfehlig@suse.com
+
+- Remove Requires on bridge-utils
+  FATE#323639
+
+-------------------------------------------------------------------
+Fri Jul 21 07:47:46 UTC 2017 - dmueller@suse.com
+
+- drop dependency on xen for armv6hl (not supported and does not
+  build)
+
+-------------------------------------------------------------------
+Wed Jul  5 18:00:31 UTC 2017 - jfehlig@suse.com
+
+- Update to libvirt 3.5.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    5004f121-virFdStreamThread-dont-exceed-length.patch,
+    1a4b21f1-set-EOF-on-end-of-stream.patch
+
+-------------------------------------------------------------------
+Thu Jun 29 19:05:17 UTC 2017 - jengelh@inai.de
+
+- Remove --with-pic which is only for static libs
+- Use %_smp_mflags instead of just %jobs
+
+-------------------------------------------------------------------
+Wed Jun  7 22:07:38 UTC 2017 - jfehlig@suse.com
+
+- misc spec file cleanup
+  - remove checks for old distros well beyond EOL
+  - enable wireshark dissector for Leap >= 42.2 and Factory
+  - remove support for old, non-systemd distros
+  - replace $RPM_ shell vars with modern macros
+
+-------------------------------------------------------------------
+Tue Jun  6 22:01:24 UTC 2017 - jfehlig@suse.com
+
+- Don't exceed specified length when reading from stream
+  5004f121-virFdStreamThread-dont-exceed-length.patch,
+  1a4b21f1-set-EOF-on-end-of-stream.patch
+
+-------------------------------------------------------------------
+Fri Jun  2 17:23:04 UTC 2017 - jfehlig@suse.com
+
+-  Update to libvirt 3.4.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    aeda1b8c-qemu-no-error-shutdown.patch,
+    8023b21a-conf-ioapic.patch, 6b5c6314-qemu-irqchip.patch,
+    2020e2c6-conf-intremap.patch, 04028a9d-qemu-intremap.patch,
+    d12781b4-conf-iommu-cache-mode-attr.patch,
+    a5691448-qemu-iommu-cache-mode.patch,
+    3a276c65-conf-iommu-def-stability-check.patch,
+    935d927a-conf-iommu-ABI-stability-check.patch,
+    4cd3f241-fix-NULL-disk-source.patch,
+    975ea20f-loopback-macro.patch,
+    dbb85e0c-libxl-graphics-listen-addr.patch,
+    libxl-def-usbctrl.patch, revert-2841e675-mtu.patch
+  - FATE#321335, bsc#1031056, bsc#1037774, bsc#1040207, bsc#1040213
+
+-------------------------------------------------------------------
+Mon May 22 17:30:44 UTC 2017 - jfehlig@suse.com
+
+- libxl: add default listen address for VNC and spice
+  975ea20f-loopback-macro.patch,
+  dbb85e0c-libxl-graphics-listen-addr.patch
+  bsc#1040207
+- xenconfig: fix handling of NULL disk source
+  4cd3f241-fix-NULL-disk-source.patch
+  bsc#1040213
+
+-------------------------------------------------------------------
+Mon May 15 21:21:56 UTC 2017 - jfehlig@suse.com
+
+- qemu: add support for 288 VCPUS
+  aeda1b8c-qemu-no-error-shutdown.patch,
+  8023b21a-conf-ioapic.patch,
+  6b5c6314-qemu-irqchip.patch,
+  2020e2c6-conf-intremap.patch,
+  04028a9d-qemu-intremap.patch,
+  d12781b4-conf-iommu-cache-mode-attr.patch,
+  a5691448-qemu-iommu-cache-mode.patch,
+  3a276c65-conf-iommu-def-stability-check.patch,
+  935d927a-conf-iommu-ABI-stability-check.patch
+  FATE#321335
+- revert commit 2841e675: qemu: propagate bridge MTU into qemu
+  "host_mtu"
+  revert-2841e675-mtu.patch
+  bsc#1037774
+
+-------------------------------------------------------------------
+Mon May  8 16:44:59 UTC 2017 - jfehlig@suse.com
+
+-  Update to libvirt 3.3.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Bug fixes:
+    bsc#978121, bsc#1017017, bsc#1032863, bsc#1033117, bsc#1034024,
+    bsc#1034146, bsc#1035995
+- libxl: updated libxl-def-usbctrl.patch
+  bsc#1031056
+
+-------------------------------------------------------------------
+Fri Apr 28 03:30:51 UTC 2017 - jfehlig@suse.com
+
+- Update to libvirt 3.3.0 RC1
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    ae102b5d7-qemu-fix-regression-when-hyperv-vendor_id-feature-is-used.patch
+  - Bug fixes:
+    bsc#978121, bsc#1017017, bsc#1032863, bsc#1033117, bsc#1034024,
+    bsc#1034146
+- libxl: add default controllers for USB devices
+  libxl-def-usbctrl.patch
+  bsc#1031056
+
+-------------------------------------------------------------------
+Wed Apr 12 22:06:09 UTC 2017 - petracvv@opensuse.org
+
+- qemu: Fix regression when hyperv/vendor_id feature is used
+  Added patch:
+  ae102b5d7-qemu-fix-regression-when-hyperv-vendor_id-feature-is-used.patch
+  boo#1033893
+
+-------------------------------------------------------------------
+Mon Apr  3 04:40:57 UTC 2017 - jfehlig@suse.com
+
+- Update to libvirt 3.2.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    67dcb797-virTimeBackOffWait-sleepcap.patch,
+    85af0b80-qemu-adaptive-montimeout.patch,
+    d68cb4f55-extract-the-request-sending-code-from-virNetlin.patch,
+    754515b7d-add-virNetlinkDumpCommand.patch,
+    3ee35d7d6-more-uses-of-SYSCTL_PATH.patch,
+    5dd607059-add-virNetDevGetName.patch,
+    00d28a78b-check-accept_ra-before-enabling-ipv6-forward.patch
+- Add Conflicts=xendomains.service to libvirtd service
+  suse-libvirtd-service.patch
+  bsc#1015348
+
+-------------------------------------------------------------------
+Thu Mar 23 14:42:07 UTC 2017 - jengelh@inai.de
+
+- RPM group fix
+
+-------------------------------------------------------------------
+Wed Mar 22 08:30:55 UTC 2017 - cbosdonnat@suse.com
+
+- Fail to start network instead of losing routes if IPv6 forwarding
+  is required. bsc#1025252
+  Added patches:
+    00d28a78b-check-accept_ra-before-enabling-ipv6-forward.patch
+    3ee35d7d6-more-uses-of-SYSCTL_PATH.patch
+    5dd607059-add-virNetDevGetName.patch
+    754515b7d-add-virNetlinkDumpCommand.patch
+    d68cb4f55-extract-the-request-sending-code-from-virNetlin.patch
+
+-------------------------------------------------------------------
+Thu Mar 16 14:23:16 UTC 2017 - jfehlig@suse.com
+
+- qemu: Fix monitor timeout with large memory VMs
+  67dcb797-virTimeBackOffWait-sleepcap.patch
+  85af0b80-qemu-adaptive-montimeout.patch
+  bsc#1013113
+
+-------------------------------------------------------------------
+Tue Mar  7 22:49:32 UTC 2017 - mwilck@suse.com
+
+- network: don't use dhcp-authoritative on static networks
+  bsc#1015588
+  * added network-don-t-use-dhcp-authoritative-on-static-netwo.patch
+
+-------------------------------------------------------------------
+Fri Mar  3 14:11:24 UTC 2017 - jfehlig@suse.com
+
+- Update to libvirt 3.1.0
+  - Modularize storage driver by splitting it into backend-specific
+    subpackages
+  - CVE-2017-2635, bsc#1027075
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    b018ada3-shunloadtest-build-fix.patch,
+    f86a7a83-libxl-dom0-balloon-fix.patch,
+    6e4759d0-libxl-timer-fix.patch,
+    87df87e0-libxl-timer-tsc-emulate.patch,
+    b4386fda-xenconfig-timer-fix.patch,
+    d3970925-timer-tests.patch,
+    321a28c6-libxl-default-disk-format.patch,
+    bd116810-libxl-fix-disk-detach.patch,
+    ff225538-libxl-autoballoon-setting.patch,
+    c89a6e78-libxl-physinfo-cleanup.patch,
+    d2b77608-libxl-maxmem-fix.patch,
+    79692c38-libxl-dom0-maxmem.patch,
+    4ab0c959-libxl-mem-leak.patch,
+    2dc1cf19-libxl-double-free.patch,
+    apparmor-errormsg-fix.patch,
+    apparmor-alt-seclabel.patch,
+    qemu-disable-namespaces.patch
+
+-------------------------------------------------------------------
+Thu Mar  2 09:01:21 UTC 2017 - jengelh@inai.de
+
+- Drop author list from description. Fix summary to be more
+  accurate as to what the subpackage pertains to.
+
+-------------------------------------------------------------------
+Sat Feb 18 18:22:02 CET 2017 - kukuk@suse.de
+
+- Don't call insserv if we use systemd and don't require it.
+
+-------------------------------------------------------------------
+Thu Feb 16 23:57:37 UTC 2017 - jfehlig@suse.com
+
+- libxl: more fixes for dom0 maxmem setting
+  4ab0c959-libxl-mem-leak.patch, 2dc1cf19-libxl-double-free.patch
+  bsc#1017762
+
+-------------------------------------------------------------------
+Fri Feb 10 20:29:46 UTC 2017 - jfehlig@suse.com
+
+- apparmor: don't fail on non-apparmor <seclabel>
+  apparmor-errormsg-fix.patch, apparmor-alt-seclabel.patch
+  bsc#1023436
+
+-------------------------------------------------------------------
+Fri Feb 10 18:39:37 UTC 2017 - jfehlig@suse.com
+
+- libxl: fix reporting of domain maximum memory
+  ff225538-libxl-autoballoon-setting.patch,
+  c89a6e78-libxl-physinfo-cleanup.patch,
+  d2b77608-libxl-maxmem-fix.patch,
+  79692c38-libxl-dom0-maxmem.patch
+  bsc#1017762
+
+-------------------------------------------------------------------
+Fri Feb 10 16:47:49 UTC 2017 - jfehlig@suse.com
+
+- libxl: set disk format to raw if not specified and fix disk
+  detach
+  321a28c6-libxl-default-disk-format.patch,
+  bd116810-libxl-fix-disk-detach.patch
+  bsc#1003379
+
+-------------------------------------------------------------------
+Thu Feb  9 23:35:08 UTC 2017 - jfehlig@suse.com
+
+- libxl: fix timer configurations
+  6e4759d0-libxl-timer-fix.patch,
+  87df87e0-libxl-timer-tsc-emulate.patch,
+  b4386fda-xenconfig-timer-fix.patch, d3970925-timer-tests.patch
+  bsc#1019969
+
+-------------------------------------------------------------------
+Thu Feb  2 23:27:42 UTC 2017 - jfehlig@suse.com
+
+- SLE12 SP2 bugs merged via version updates of the Factory libvirt
+  package:
+  bsc#986718
+- SLE12 SP2 FATEs merged via version updates of the Factory libvirt
+  package:
+  FATE#316228, FATE#316628, FATE#319531, FATE#319810, FATE#320490
+- Replaced libxl-dom0-balloon-fix.patch with upstream patch
+  f86a7a83-libxl-dom0-balloon-fix.patch
+
+-------------------------------------------------------------------
+Fri Jan 27 17:53:23 UTC 2017 - jfehlig@suse.com
+
+- Fix dom0 ballooning with Xen >= 4.8
+  libxl-dom0-balloon-fix.patch
+  bsc#1020755
+
+-------------------------------------------------------------------
+Fri Jan 27 17:31:32 UTC 2017 - jfehlig@suse.com
+
+- SLE12 SP2 bugs merged via version updates of the Factory libvirt
+  package:
+  bsc#996020, bsc#987002, bsc#997278, bsc#998005, bsc#998389,
+  bsc#1001446, bsc#1001698, bsc#1005288, bsc#1013991, bsc#1016253,
+  bsc#1017086, bsc#1017762, bsc#1018189
+
+-------------------------------------------------------------------
+Fri Jan 27 17:01:39 UTC 2017 - jfehlig@suse.com
+
+- virt-create-rootfs is a temporary SLE-only hack that was never
+  added to the Factory libvirt package, causing it to be dropped
+  when rebasing SLE on Factory. Add it now but only apply
+  associated patch when building for SLE.
+  virt-create-rootfs.patch
+  bsc#995981
+
+-------------------------------------------------------------------
+Wed Jan 18 23:34:31 UTC 2017 - jfehlig@suse.com
+
+- Update to libvirt 3.0.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Add b018ada3-shunloadtest-build-fix.patch to fix 'make check'
+    failures
+  - Add qemu-disable-namespaces.patch to temporarily disable
+    qemu namespace feature until all issues are resolved
+
+-------------------------------------------------------------------
+Wed Dec 28 10:20:49 UTC 2016 - matwey.kornilov@gmail.com
+
+- In order to avoid issues like bsc#1017189, explicitly specify
+  supported VirtualBox versions
+
+-------------------------------------------------------------------
+Mon Dec  5 02:12:56 UTC 2016 - jfehlig@suse.com
+
+- Update to libvirt 2.5.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+- Import new public signing key
+
+-------------------------------------------------------------------
+Wed Nov 16 18:13:18 UTC 2016 - jfehlig@suse.com
+
+- spec: explicitly set qemu-bridge-helper path to /usr/lib/
+  bsc#999070
+
+-------------------------------------------------------------------
+Tue Nov  8 10:18:44 UTC 2016 - cbosdonnat@suse.com
+
+- Package org.libvirt.api.policy polkit file (bsc#959297)
+- Fix postun systemd services cleanup
+- Mark /etc/libvirt/nwfilter/*.xml files as config files 
+
+-------------------------------------------------------------------
+Wed Nov  2 16:44:57 UTC 2016 - jfehlig@suse.com
+
+- Update to libvirt 2.4.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+
+-------------------------------------------------------------------
+Wed Oct  5 13:58:27 UTC 2016 - jfehlig@suse.com
+
+- Update to libvirt 2.3.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    pci-use-driver-override-sysfs.patch,
+    virHostdevFindUSBDevice-privsyms.patch, libxl-usb-vendor.patch,
+    apparmor-qemu-bridge-helper.patch
+
+-------------------------------------------------------------------
+Fri Sep  2 18:30:27 UTC 2016 - jfehlig@suse.com
+
+- Update to libvirt 2.2.0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    856965b3-qemu-secdriver.patch,
+    541e9ae6-cpu-vendor-crash-fix.patch,
+    d53d4650-qemu-rbd-auth.patch
+
+-------------------------------------------------------------------
+Sat Aug 20 23:25:09 UTC 2016 - jfehlig@suse.com
+
+- libxl: allow vendor/product addressing for USB hostdevs
+  virHostdevFindUSBDevice-privsyms.patch, libxl-usb-vendor.patch
+  bsc#989646
+- qemu: fix auth for rbd network disks
+  d53d4650-qemu-rbd-auth.patch
+  bsc#988998
+- Replace cpumodel-vendor-crash-fix.patch with upstream variant
+  541e9ae6-cpu-vendor-crash-fix.patch
+  bsc#992425
+
+-------------------------------------------------------------------
+Fri Aug 12 15:29:37 UTC 2016 - jfehlig@suse.com
+
+- Update to libvirt 2.1.0
+  - New subpackages libvirt-libs and libvirt-admin
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    c8f08e48-systemd-notify-fix.patch
+- qemu: fix qemu.conf security_driver regression in 2.1.0 release
+  856965b3-qemu-secdriver.patch
+
+-------------------------------------------------------------------
+Fri Aug  5 22:27:44 UTC 2016 - jfehlig@suse.com
+
+- cpu_x86: fix libvirtd segfault when host cpu is 'qemu64'
+  cpumodel-vendor-crash-fix.patch
+  bsc#992425
+
+-------------------------------------------------------------------
+Fri Aug  5 08:05:39 UTC 2016 - cbosdonnat@suse.com
+
+- bsc#988279. Move the qemu-bridge-helper apparmor profile from the
+  qemu abstraction to the usr.sbin.libvirtd profile.
+  apparmor-qemu-bridge-helper.patch
+
+-------------------------------------------------------------------
+Wed Aug  3 19:31:11 UTC 2016 - jfehlig@suse.com
+
+- spec: minor improvements to logic enabling numactl and numad
+  support and fix nested if indentation
+  FATE#319979
+
+-------------------------------------------------------------------
+Tue Aug  2 17:17:25 UTC 2016 - jfehlig@suse.com
+
+- Update patches providing support for driver_override sysfs
+  interface with latest upstream variant. Dropped
+  pci-simplify-stub.patch and updated
+  pci-use-driver-override-sysfs.patch
+  bsc#986718
+
+-------------------------------------------------------------------
+Sat Jul 30 17:25:38 UTC 2016 - jfehlig@suse.com
+
+- spec: enable numactl and numad support for aarch64
+  FATE#319979, bsc#991377
+
+-------------------------------------------------------------------
+Fri Jul 15 14:57:40 UTC 2016 - jfehlig@suse.com
+
+- BuildRequires: use librbd-devel instead of ceph-devel
+- Enable rbd support for aarch64
+  bsc#979473
+
+-------------------------------------------------------------------
+Thu Jul 14 22:39:08 UTC 2016 - jfehlig@suse.com
+
+- Use driver_override sysfs interface for binding/unbinding
+  PCI stub drivers
+  pci-simplify-stub.patch, pci-use-driver-override-sysfs.patch
+  bsc#986718
+
+-------------------------------------------------------------------
+Tue Jul 12 19:57:40 UTC 2016 - jfehlig@suse.com
+
+- systemd: fix ready notification on abstract socket
+  c8f08e48-systemd-notify-fix.patch
+  boo#987668
+
+-------------------------------------------------------------------
+Fri Jul  1 14:16:04 UTC 2016 - jfehlig@suse.com
+
+- Update to libvirt 2.0.0
+  - Change version scheme to match libvirt's time-driven release
+    schedule. <major> will be incremented on first release of
+    new calendar year, <minor> on each monthly release, and
+    <micro> on stable branch maintenance release
+  - Include libvirt-admin utility and API
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    apparmor-dont-scrub-environment-of-virtlogd-process.patch,
+    e33cd67a-xenconfig-backendtype-fix.patch
+
+-------------------------------------------------------------------
+Mon Jun 20 21:26:41 UTC 2016 - jfehlig@suse.com
+
+- spec: Recent simplification allows using a common spec file for
+  SLE and openSUSE
+- Add SLE patches missing in openSUSE
+  libxl-dom-reset.patch, libxl-set-migration-constraints.patch,
+  libxl-set-cach-mode.patch
+
+-------------------------------------------------------------------
+Thu Jun 16 18:39:54 UTC 2016 - jfehlig@suse.com
+
+- xenconfig: fix conversion of <driver> to backendtype
+  e33cd67a-xenconfig-backendtype-fix.patch
+  bsc#984798
+
+-------------------------------------------------------------------
+Wed Jun 15 18:51:29 UTC 2016 - jfehlig@suse.com
+
+- Advertise aarch64 UEFI firmware paths
+  - adjust spec file to include aarch64 paths in
+    '--with-loader-nvram=' configure option
+  - adjust qemu.conf 'nvram' option to include the SUSE paths
+  bsc#981836, bsc#983747
+
+-------------------------------------------------------------------
+Thu Jun  9 15:12:19 UTC 2016 - jfehlig@suse.com
+
+- apparmor: Don't scrub environment of virtlogd process
+  apparmor-dont-scrub-environment-of-virtlogd-process.patch
+  boo#980441
+
+-------------------------------------------------------------------
+Mon Jun  6 14:59:59 UTC 2016 - jfehlig@suse.com
+
+- Update to libvirt 1.3.5
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    e4d131b8-mv-virDomainDefPostParseInternal.patch,
+    3e428670-post-parse-implicit-video.patch,
+    538012c8-default-vram.patch, 96b21fb0-vram-tests.patch,
+    400e716d-libxl-noprope-emulator.patch,
+    b90c4b5f-tests-use-qemu-xen.patch,
+    fccf2725-libxl-API-4.4.patch,
+    5325123d-libxl-migv2-save-restore.patch,
+    f9edcfa4-libxl-migv2-migration.patch,
+    a1c9a81a-libxl-rbd-fix.patch,
+    ba566428-libxl-dom-iface-addrs.patch
+- spec: simplify and cleanup by removing many conditionals that
+  are never toogled. Also drop conditionals for suse_version <
+  1310
+
+-------------------------------------------------------------------
+Fri May 27 10:15:43 UTC 2016 - jengelh@inai.de
+
+- Avoid suppressing errors during useradd/groupadd
+
+-------------------------------------------------------------------
+Wed May 25 16:41:11 UTC 2016 - jfehlig@suse.com
+
+-  libxl: add domainInterfaceAddresses API
+   ba566428-libxl-dom-iface-addrs.patch
+   bsc#979425
+
+-------------------------------------------------------------------
+Wed May 25 14:55:16 UTC 2016 - jfehlig@suse.com
+
+- libxl: default to qemu driver for network disks
+  a1c9a81a-libxl-rbd-fix.patch
+  boo#981094
+
+-------------------------------------------------------------------
+Wed May 18 04:55:22 UTC 2016 - jfehlig@suse.com
+
+- spec: Remove %defattr usage
+  Inspired by upstream commit 90f9193c
+
+-------------------------------------------------------------------
+Fri May 13 18:12:40 UTC 2016 - jfehlig@suse.com
+
+- libxl: support Xen migration stream V2
+  fccf2725-libxl-API-4.4.patch,
+  5325123d-libxl-migv2-save-restore.patch,
+  f9edcfa4-libxl-migv2-migration.patch
+  bsc#978361
+
+-------------------------------------------------------------------
+Fri May 13 17:23:24 UTC 2016 - jfehlig@suse.com
+
+- Fix default video RAM setting
+  e4d131b8-mv-virDomainDefPostParseInternal.patch,
+  3e428670-post-parse-implicit-video.patch,
+  538012c8-default-vram.patch, 96b21fb0-vram-tests.patch,
+  400e716d-libxl-noprope-emulator.patch,
+  b90c4b5f-tests-use-qemu-xen.patch
+  bsc#979397
+
+-------------------------------------------------------------------
+Fri May  6 16:38:37 UTC 2016 - olaf@aepfle.de
+
+- Remove unknown locales to fix build in old dists
+
+-------------------------------------------------------------------
+Tue May  3 02:26:32 UTC 2016 - jfehlig@suse.com
+
+- Update to libvirt 1.3.4
+  - Add support for migration data compression in QEMU driver
+  - Drop libvirtd.socket
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches: 216650f1-libxl-build-fix.patch,
+    6d8b6d28-mark-implicit-video-primary.patch,
+    03e8d5fb-qemu-perf-memory-corruption.patch,
+    libvirtd-systemd-socket.patch
+
+-------------------------------------------------------------------
+Mon Apr 18 21:32:37 UTC 2016 - jfehlig@suse.com
+
+- qemu: perf: Fix crash/memory corruption on failed VM start
+  03e8d5fb-qemu-perf-memory-corruption.patch
+  bsc#977131
+
+-------------------------------------------------------------------
+Mon Apr 18 19:34:10 UTC 2016 - jfehlig@suse.com
+
+- Fix setting implicit video devices as primary
+  6d8b6d28-mark-implicit-video-primary.patch
+  bsc#977150
+
+-------------------------------------------------------------------
+Tue Apr 12 22:01:50 UTC 2016 - jfehlig@suse.com
+
+- Update to libvirt 1.3.3
+  - perf events
+  - post-copy migration support
+  - NSS module
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Add rpmlintrc file to filter shlib-policy-name-error for
+    new libnss_libvirt plugin
+- Fix build with Xen4.7
+  216650f1-libxl-build-fix.patch
+
+-------------------------------------------------------------------
+Fri Mar 18 20:13:41 UTC 2016 - jfehlig@suse.com
+
+- spec: restart daemons in %posttrans after connection drivers
+  have been processed
+  bsc#854343, bsc#968483
+
+-------------------------------------------------------------------
+Thu Mar  3 18:40:08 UTC 2016 - jfehlig@suse.com
+
+- libxl: advertise system qemu instead of qemu-xen in caps
+  libxl-qemu-emulator-caps.patch
+  FATE#320638
+
+-------------------------------------------------------------------
+Tue Mar  1 16:07:08 UTC 2016 - jfehlig@suse.com
+
+- Update to libvirt 1.3.2
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+
+-------------------------------------------------------------------
+Thu Feb 18 16:49:00 UTC 2016 - jfehlig@suse.com
+
+- libxl: Add support for block-{dmmd,drbd,npiv} scripts
+  libxl-support-block-script.patch
+  bsc#954872
+
+-------------------------------------------------------------------
+Sat Jan 23 01:19:22 UTC 2016 - jfehlig@suse.com
+
+- qemu: set /usr/share/qemu/ovmf-x86_64-ms-{code,vars}.bin as
+  default UEFI firmwares for x86_64
+  bsc#961853
+
+-------------------------------------------------------------------
+Mon Jan 18 18:30:52 UTC 2016 - jfehlig@suse.com
+
+- Update to libvirt 1.3.1
+  - CVE-2015-5313
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches: 034e47c3-CVE-2015-5313.patch,
+    ace1ee22-qemuxml2argv-test.patch, add-with-login-shell.patch,
+    virt-aa-helper-rw-mounts.patch
+
+-------------------------------------------------------------------
+Tue Dec 22 02:21:44 UTC 2015 - jfehlig@suse.com
+
+- spec: perform one-time enable and start of virtlogd.socket when
+  upgrading from libvirt < 1.3.0. Inspired by upstream libvirt.git
+  commit da054f35.
+
+-------------------------------------------------------------------
+Fri Dec 18 16:08:37 UTC 2015 - jfehlig@suse.com
+
+- CVE-2015-5313: don't allow '/' in filesystem volume names
+  034e47c3-CVE-2015-5313.patch
+  bsc#953110
+- Fix failing qemuxml2argv test on 32-bit platforms
+  ace1ee22-qemuxml2argv-test.patch
+
+-------------------------------------------------------------------
+Thu Dec 17 22:57:56 UTC 2015 - jfehlig@suse.com
+
+- Update to libvirt 1.3.0
+  - New virtlogd log daemon
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patch: 703ec1b7-qemu-bridge-helper-fix.patch
+  - Added patch: virtlogd-init-script.patch
+
+-------------------------------------------------------------------
+Thu Dec  3 10:16:34 UTC 2015 - cbosdonnat@suse.com
+
+- Run udevadm settle after removing NICs in lxc driver.
+  bsc#829033. lxc-wait-after-eth-del.patch
+-------------------------------------------------------------------
+Tue Nov 17 14:40:41 UTC 2015 - cbosdonnat@suse.com
+
+- Don't add apparmor deny rw rule for 9P readonly mounts.
+  bsc#952849. virt-aa-helper-rw-mounts.patch
+
+-------------------------------------------------------------------
+Mon Nov  9 23:20:22 UTC 2015 - cbosdonnat@suse.com
+
+- Don't package virt-login-shell anymore as shipping it as
+  non-setuid doesn't make sense. bsc#837609
+  add-with-login-shell.patch
+
+-------------------------------------------------------------------
+Wed Nov  4 20:05:21 UTC 2015 - normand@linux.vnet.ibm.com
+
+- Detect path of qemu-bridge-helper during %configure
+  - add qemu-tools as BuildRequires for suse_version > 1130
+  - add upstream patch 703ec1b7-qemu-bridge-helper-fix.patch
+
+-------------------------------------------------------------------
+Wed Nov  4 14:52:41 UTC 2015 - jfehlig@suse.com
+
+- Update to libvirt 1.2.21
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped patches:
+    disable-virCgroupGetPercpuStats-test.patch
+
+-------------------------------------------------------------------
+Mon Nov  2 21:14:10 UTC 2015 - jfehlig@suse.com
+
+- spec: some minor wireshark fixups. Essentially a backport of
+  commit 7c8250d7.
+
+-------------------------------------------------------------------
+Fri Oct 16 08:51:24 UTC 2015 - cbosdonnat@suse.com
+
+- spec: remove all dependencies on apparmor to keep it optional.
+  bsc#949793
+
+-------------------------------------------------------------------
+Tue Oct 13 15:13:38 UTC 2015 - jfehlig@suse.com
+
+- xenconfig: set disk type to BLOCK when driver is not tap or file
+  xen-sxpr-disk-type.patch
+  bsc#938228
+
+-------------------------------------------------------------------
+Fri Oct  9 17:11:14 UTC 2015 - jfehlig@suse.com
+
+- spec: the libvirt apparmor profiles #include files from the
+  apparmor-profiles package, thus should have a dependency on it
+  bsc#949793
+
+-------------------------------------------------------------------
+Wed Oct  7 12:44:47 UTC 2015 - olaf@aepfle.de
+
+- Remove Wants=xencommons.service from libvirtd.service
+  xencommons is already enabled by a global preset, and the
+  absence of xen-tools.rpm causes a systemd warning
+
+-------------------------------------------------------------------
+Thu Oct  2 17:28:17 UTC 2015 - jfehlig@suse.com
+
+- Update to libvirt 1.2.20
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped upstream patches:
+    3468542f-virFileUnlink.patch,
+    8b1d84e6-refreshVol-failure.patch,
+    e0025d29-storage-mode-check.patch,
+    ba25c214-libxl-log-level.patch,
+    56945e13-libxl-AttachDeviceConfig-hostdev.patch
+
+-------------------------------------------------------------------
+Thu Sep 17 05:29:23 UTC 2015 - cyliu@suse.com
+
+- bsc#945962: SLES12 SP1 Beta3 - Pass-through NIC device via virsh
+  not available to VM.
+  56945e13-libxl-AttachDeviceConfig-hostdev.patch
+
+-------------------------------------------------------------------
+Tue Sep 15 17:37:36 UTC 2015 - jfehlig@suse.com
+
+- libxl: set driver log level to the log_level specified in
+  libvirtd.conf
+  ba25c214-libxl-log-level.patch
+  bsc#945796
+
+-------------------------------------------------------------------
+Mon Sep 14 08:18:12 UTC 2015 - cbosdonnat@suse.com
+
+- CVE-2015-5247 - denial of service through root-squash NFS storage
+  bsc#945645
+  3468542f-virFileUnlink.patch
+  8b1d84e6-refreshVol-failure.patch
+  e0025d29-storage-mode-check.patch
+
+-------------------------------------------------------------------
+Wed Sep  2 06:14:17 UTC 2015 - jfehlig@suse.com
+
+- Update to libvirt 1.2.19
+  - Improved ppc64 support
+  - New virDomainRename API
+  - Support for PCI Express controllers in QEMU
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped upstream patches:
+    269d39af-storage-allocation-fix.patch,
+    26c5fa3a-virt-aa-helper-missing-doc.patch,
+    d25a5e08-virt-aa-helper-simplify-restriction-logic.patch,
+    2f01cfdf-virt-aa-helper-allow-ovmf.patch,
+    91fdcefa-virt-aa-helper-allow-nvram.patch,
+    52970dec-virt-aa-helper-improve-valid-path.patch,
+    44a54eb0-libxl-fix-refcnt-MigrationDstArgs.patch,
+    15120b8c-libxl-no-resume-on-suspend-fail.patch,
+    e80b84a7-libxl-acquire-job-on-migrate.patch,
+    60acb38-revert-curmem-inactive-dom.patch
+
+-------------------------------------------------------------------
+Fri Aug 28 17:41:30 UTC 2015 - jfehlig@suse.com
+
+- Replace local libxl patches with upstream variants
+  Dropped:
+  0003-libxl-fix-ref-counting-of-libxlMigrationDstArgs.patch
+  0004-libxl-don-t-attempt-to-resume-domain-when-suspend-fa.patch
+  0005-libxl-acquire-a-job-when-receiving-a-migrating-domai.patch
+  Added:
+  44a54eb0-libxl-fix-refcnt-MigrationDstArgs.patch
+  15120b8c-libxl-no-resume-on-suspend-fail.patch
+  e80b84a7-libxl-acquire-job-on-migrate.patch
+  bsc#936185
+- Added another virt-aa-helper upstream patch
+  52970dec-virt-aa-helper-improve-valid-path.patch
+  lp#1483071
+- Added upstream patch to fix libvirt-tck memory balloon test
+  failure on Xen
+  60acb38-revert-curmem-inactive-dom.patch
+
+-------------------------------------------------------------------
+Wed Aug 26 14:38:40 UTC 2015 - cbosdonnat@suse.com
+
+- Fix generated apparmor profile to allow access to ovmf and nvram.
+  26c5fa3a-virt-aa-helper-missing-doc.patch
+  2f01cfdf-virt-aa-helper-allow-ovmf.patch
+  91fdcefa-virt-aa-helper-allow-nvram.patch
+  d25a5e08-virt-aa-helper-simplify-restriction-logic.patch
+  lp#1483071
+
+-------------------------------------------------------------------
+Mon Aug 24 16:18:10 UTC 2015 - jfehlig@suse.com
+
+- storage: only run safezero if allocation is > 0
+  269d39af-storage-allocation-fix.patch
+  bsc#942085
+
+-------------------------------------------------------------------
+Mon Aug  3 23:32:39 UTC 2015 - jfehlig@suse.com
+
+- Update to libvirt 1.2.18
+  - libxl: support dom0
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped upstream patches:
+    e44bcae-virt-aa-helper-trailing-slash.patch,
+    a55a5e7-virt-aa-helper-log.patch,
+    61dab0f-virt-aa-helper-renaming.patch,
+    24f3c2f-virt-aa-helper-fix-caps.patch,
+    45697fe5-libxl-support-dom0.patch,
+    e9c27344-libxl-fix-virDomainObj-state.patch,
+    4ffb21c8-libxl-dom0-state-fix.patch,
+    qemu-nbd-cleanup-fix.patch
+
+-------------------------------------------------------------------
+Fri Jul 31 18:51:38 UTC 2015 - jfehlig@suse.com
+
+- Fix crash in libxl driver on receiving side
+  0003-libxl-fix-ref-counting-of-libxlMigrationDstArgs.patch
+  0004-libxl-don-t-attempt-to-resume-domain-when-suspend-fa.patch
+  0005-libxl-acquire-a-job-when-receiving-a-migrating-domai.patch
+  bsc#936185
+
+-------------------------------------------------------------------
+Fri Jul 10 18:35:27 UTC 2015 - jfehlig@suse.com
+
+- libxl: set dom0 state to running
+  4ffb21c8-libxl-dom0-state-fix.patch
+  bsc#937316
+- libxl: support management of dom0
+  45697fe5-libxl-support-dom0.patch
+  bsc#937316
+- libxl: libxl: fix setting state of virDomainObj
+  e9c27344-libxl-fix-virDomainObj-state.patch
+  bsc#934937
+
+-------------------------------------------------------------------
+Fri Jul 10 13:29:51 UTC 2015 - cbosdonnat@suse.com
+
+- Fixed virt-aa-helper bugs preventing virt-sandbox to work.
+  24f3c2f-virt-aa-helper-fix-caps.patch
+  61dab0f-virt-aa-helper-renaming.patch
+  a55a5e7-virt-aa-helper-log.patch
+  e44bcae-virt-aa-helper-trailing-slash.patch
+  bsc#936841
+- Fixed crasher due to uninitialized values
+  qemu-nbd-cleanup-fix.patch bsc#936841
+
+-------------------------------------------------------------------
+Thu Jul  2 11:23:15 MDT 2015 - jfehlig@suse.com
+
+- Update to libvirt 1.2.17
+  - parallels driver renamed to vz (Virtuozzo)
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+- spec: re-enable tests that have received upstream fixes and
+  are now passing
+
+-------------------------------------------------------------------
+Wed Jun  3 11:29:32 MDT 2015 - jfehlig@suse.com
+
+- Remove unsupported settings in libvirtd.socket unit file when
+  systemd version < 214
+  libvirtd-systemd-socket.patch
+  bsc#933043
+- spec: always apply Apparmor and netcontrol patches
+
+-------------------------------------------------------------------
+Tue Jun  2 09:27:22 MDT 2015 - jfehlig@suse.com
+
+- spec: Add libvirtd.socket unit file to service_add_pre and
+  service_del_postun macros
+
+-------------------------------------------------------------------
+Mon Jun  1 09:31:11 MDT 2015 - jfehlig@suse.com
+
+- Update to libvirt 1.2.16
+  - Introduce pci-serial
+  - Introduce virDomainSetUserPassword API
+  - Introduce protected key mgmt ops
+  - Add domain vmport feature
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches c0d3f608-libxl-soundhw.patch and
+    8910e063-arch-caps.patch
+  - Drop polkit-10-virt.rules in favor of upstream 50-libvirt.rules
+
+-------------------------------------------------------------------
+Wed May 20 08:29:00 UTC 2015 - dmacvicar@suse.de
+
+- qemu: fix regression defaulting to host arch
+  8910e063-arch-caps.patch
+  rhb#1219191
+
+-------------------------------------------------------------------
+Wed May  6 09:51:21 MDT 2015 - jfehlig@suse.com
+
+- spec: build libxl driver for aarch64 and remove useless
+  'suse_version <= 1220' conditional
+
+-------------------------------------------------------------------
+Tue May  5 09:35:12 MDT 2015 - jfehlig@suse.com
+
+- libxl: support virtual sound devices in HVM domains
+  c0d3f608-libxl-soundhw.patch
+  bsc#875216
+
+-------------------------------------------------------------------
+Mon May  4 09:00:24 MDT 2015 - jfehlig@suse.com
+
+- Update to libvirt 1.2.15
+  - Implement virDomainAddIOThread and virDomainDelIOThread
+  - libxl: Introduce configuration file for libxl driver
+  - Add VIR_DOMAIN_EVENT_ID_DEVICE_ADDED event
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches da33a1ac-lxc-init-statedir.patch and
+    open-ns-files-readonly.patch
+- spec file fixups for building --without-driver-modules
+
+-------------------------------------------------------------------
+Mon Apr 20 13:19:09 UTC 2015 - cbosdonnat@suse.com
+
+- boo#926765: add libvirt-daemon-driver-qemu dependency on
+  libvirt-daemon-driver-storage.
+
+-------------------------------------------------------------------
+Thu Apr  9 09:35:26 UTC 2015 - cbosdonnat@suse.com
+
+- boo#926153: make sure /var/run/libvirt/lxc folder exists when
+  starting the driver. da33a1ac-lxc-init-statedir.patch
+- Fix lxc-enter-namespace for 3.19+ kernels.
+  open-ns-files-readonly.patch
+
+
+-------------------------------------------------------------------
+Thu Apr  2 08:38:03 MDT 2015 - jfehlig@suse.com
+
+- Disable building wireshark dissector.  Commit 37397320
+  requires wireshark pkgconfig, which SUSE wireshark packages
+  do not provide.
+- Disable building the legacy Xen driver since Xen no longer
+  provides the xend toolstack.  Remove xend-specific patches
+  while at it: fix-pci-attach-xen-driver.patch,
+  xen-name-for-devid.patch
+
+-------------------------------------------------------------------
+Thu Apr  2 08:18:55 MDT 2015 - jfehlig@suse.com
+
+- Update to libvirt 1.2.14
+  - qemu: Implement memory device hotplug
+  - Implement public API for virDomainPinIOThread
+  - Implement public API for virDomainGetIOThreadsInfo
+  - SRIOV NIC offload feature discovery
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop disable-hugepage-test.patch in favor of upstream fix
+
+-------------------------------------------------------------------
+Tue Mar 31 14:39:20 MDT 2015 - jfehlig@suse.com
+
+- Fix build on older distros containing a polkit package that lacks
+  support for /etc/polkit-1/rules.d drop directory
+
+-------------------------------------------------------------------
+Wed Mar 25 09:10:46 MDT 2015 - jfehlig@suse.com
+
+- Disable interface driver if libnetcontrol cannot be initialized
+  Modified libvirt-suse-netcontrol.patch
+  boo#920551
+
+-------------------------------------------------------------------
+Mon Mar 16 17:17:49 MDT 2015 - jfehlig@suse.com
+
+- Fix crash in libnetcontrol-backed interface driver
+  Modified libvirt-suse-netcontrol.patch
+  boo#920551
+
+-------------------------------------------------------------------
+Thu Mar 12 07:48:35 UTC 2015 - fcastelli@suse.com
+
+- Instruct polkit to allow memebers of the 'libvirt' group to connect
+  to libvirt without providing any password (bnc#920804)
+- Added polkit-10-virt.rules to fix bnc#920804
+
+-------------------------------------------------------------------
+Wed Mar 11 09:29:29 MDT 2015 - jfehlig@suse.com
+
+- Change default setting of security_default_confined in
+  /etc/libvirt/qemu.conf instead of in code.  Making the change in
+  code changes the default behavior for all users, even those that
+  have a custom security setup in their /etc/libvirt/qemu.conf.
+  Modified suse-qemu-conf.patch
+  bsc#921586
+
+-------------------------------------------------------------------
+Mon Mar  9 16:51:08 UTC 2015 - cbosdonnat@suse.com
+
+- Fixed a number of QEMU apparmor abstraction problems. bsc#921355
+  apparmor-fixes.patch
+
+-------------------------------------------------------------------
+Mon Mar  2 12:05:43 MST 2015 - jfehlig@suse.com
+
+- Update to libvirt 1.2.13
+  - qemu: improved support for host and guest NUMA
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+
+-------------------------------------------------------------------
+Tue Jan 27 15:45:56 MST 2015 - jfehlig@suse.com
+
+- Update to libvirt 1.2.12
+  - CVE-2015-0236: qemu: Check ACLs when dumping security info
+    from snapshots
+  - CVE-2015-0236: qemu: Check ACLs when dumping security info
+    from save image
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches: 30c6aecc-apparmor-lib64.patch,
+    apparmor-xen-fixup.patch, apparmor-allow-helpers.patch,
+    apparmor-tck-raw-packets.patch
+  - Disable a hugepage test that is failing on ppc, ppc64, and
+    ppc64le architectures - disable-hugepage-test.patch
+
+-------------------------------------------------------------------
+Tue Jan 20 13:29:02 UTC 2015 - cbosdonnat@suse.com
+
+- Fixed patches to pass make syntax-check
+
+-------------------------------------------------------------------
+Tue Jan 20 01:46:52 UTC 2015 - mlatimer@suse.com
+
+- Apparmor profile regression breaks Xen domains. bsc#913799
+  apparmor-xen-fixup.patch
+  apparmor-allow-helpers.patch
+  apparmor-tck-raw-packets.patch
+
+-------------------------------------------------------------------
+Mon Jan  5 09:44:12 UTC 2015 - cbosdonnat@suse.com
+
+- Replaced hard to maintain install-apparmor-profiles.patch
+  by upstreamed 30c6aecc-apparmor-lib64.patch.
+- Reformatted libvirt.spec and libvirtd.init to pass upstream make
+  syntax-check
+
+-------------------------------------------------------------------
+Sat Dec 27 22:08:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in libvirt-guests.sh script
+- update patches:
+  + libvirt-guests-init-script.patch
+
+-------------------------------------------------------------------
+Mon Dec 15 09:48:02 UTC 2014 - cbosdonnat@suse.com
+
+- Update to libvirt 1.2.11
+  - Implement public API for virDomainGetFSInfo
+  - qemu: Add define for the new throttle options
+  - CVE-2014-8131: Fix possible deadlock and segfault in qemuConnectGetAllDomainStats()
+  - CVE-2014-7823: dumpxml: security hole with migratable flag
+- Drop upstream patches: 2222123-virt-aa-helper-crash.patch,
+  433b427-iplink-name.patch,
+  52691f99-qemu-mig-crash.patch,
+  72fecf1-lxc-resolve-symlinks.patch,
+  b1674ad5-CVE-2014-7823.patch,
+  ba9b7252-sys-net-rw.patch,
+  c264eea-virt-aa-helper-sandbox.patch,
+  e50457d-lxc-unmount-check.patch,
+  cgroup-all-devices.patch,
+  libvirt-ppc64le-support.patch
+
+
+-------------------------------------------------------------------
+Wed Dec 10 13:22:14 UTC 2014 - cbosdonnat@suse.com
+
+- Get /proc/sys/net/ipv[46] read-write for wicked to work in
+  containers. bsc#904432. ba9b7252-sys-net-rw.patch
+- Fixed allowing devices for containers.
+  cgroup-all-devices.patch
+
+-------------------------------------------------------------------
+Wed Dec  3 05:01:13 MST 2014 - jfehlig@suse.com
+
+- qemu: Fix crash in tunnelled migration
+  52691f99-qemu-mig-crash.patch
+  boo#908008
+
+-------------------------------------------------------------------
+Thu Nov 20 11:56:16 UTC 2014 - cbosdonnat@suse.com
+
+- Fix potential crasher in virt-aa-helper
+  2222123-virt-aa-helper-crash.patch
+- ip link add now needs the 'name' parameter.
+  433b427-iplink-name.patch
+- Fixes for virt-sandbox-service to work:
+  - Allow adding virt-sandbox service config to apparmor rules.
+    c264eea-virt-aa-helper-sandbox.patch
+  - fix symlink resolving for containers to start.
+    72fecf1-lxc-resolve-symlinks.patch
+  - fix unmounting file system if it contains the source to mount.
+    e50457d-lxc-unmount-check.patch
+
+-------------------------------------------------------------------
+Tue Nov 18 17:21:55 UTC 2014 - cbosdonnat@suse.com
+
+- Remove security_driver = "none" in qemu config. This completely
+  disabled all security drivers instead of probing them.
+- Changed default value of QEMU's security_default_confined to 0 to
+  keep QEMU domains unconfined by default.
+
+-------------------------------------------------------------------
+Mon Nov 10 22:01:31 MST 2014 - jfehlig@suse.com
+
+- CVE-2014-7823: dumpxml: security hole with migratable flag
+  b1674ad5-CVE-2014-7823.patch
+  bsc#904176
+
+-------------------------------------------------------------------
+Thu Nov  6 16:00:24 UTC 2014 - cbosdonnat@suse.com
+
+- Fix Qemu AppArmor abstraction.
+  - qemu-block.so was denied on x86_64. install-apparmor-profiles.patch
+  - Temporary fix access to screenshot temporary file. bsc#904426.
+    qemu-apparmor-screenshot.patch
+
+-------------------------------------------------------------------
+Mon Nov  3 11:08:49 MST 2014 - jfehlig@suse.com
+
+- Update to libvirt 1.2.10
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+
+-------------------------------------------------------------------
+Mon Oct 27 21:20:08 UTC 2014 - cbosdonnat@suse.com
+
+- Added package wireshark-plugin-libvirt to provide the wireshark
+  dissector for the libvirt RPC protocol
+
+-------------------------------------------------------------------
+Thu Oct  2 15:28:40 MDT 2014 - jfehlig@suse.com
+
+- spec: Remove gpg-offline build dependency and use of gpg_verify
+  to verify tarball since this task can be performed by source
+  services
+
+-------------------------------------------------------------------
+Wed Oct  1 11:53:17 MDT 2014 - jfehlig@suse.com
+
+- Update to libvirt 1.2.9
+  - Introduce virNodeAllocPages
+  - event: introduce new event for tunable values
+  - Add support for fetching statistics of completed jobs
+  - CVE-2014-3657: domain_conf: fix domain deadlock
+  - CVE-2014-3633: qemu: blkiotune: Use correct definition when
+    looking up disk
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches: 3e745e8f-CVE-2014-3633.patch,
+    libvirt-guests-wait-for-ntp.patch
+- Verify tarball with associated .asc file
+  Add: libvirt.keyring, libvirt-1.2.9.tar.gz.asc
+  Use upstream .gz tarball instead of locally generated .bz2
+
+-------------------------------------------------------------------
+Thu Sep 18 22:42:38 MDT 2014 - jfehlig@suse.com
+
+- CVE-2014-3633: Use correct definition when looking up disk in
+  qemu blkiotune
+  3e745e8f-CVE-2014-3633.patch
+  bnc#897783
+
+-------------------------------------------------------------------
+Wed Sep 10 10:24:26 MDT 2014 - jfehlig@suse.com
+
+- spec: do not require dmidecode on older code 11
+
+-------------------------------------------------------------------
+Mon Sep  8 11:20:36 MDT 2014 - jfehlig@suse.com
+
+- Wait for ntp service before running libvirt-guests
+  libvirt-guests-wait-for-ntp.patch
+  bnc#895194
+
+-------------------------------------------------------------------
+Thu Sep  4 16:09:23 MDT 2014 - jfehlig@suse.com
+
+- Canonicalize host arch name ppc64le to ppc64
+  ppc64le-canonical-name.patch
+  bnc#894956
+
+-------------------------------------------------------------------
+Tue Sep  2 09:17:06 MDT 2014 - jfehlig@suse.com
+
+- Update to libvirt 1.2.8
+  - virDomainBlockCopy with XML destination, typed params
+  - Introduce API for retrieving bulk domain stats
+  - Introduce virDomainOpenGraphicsFD API
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+
+-------------------------------------------------------------------
+Mon Sep  1 14:48:26 UTC 2014 - cbosdonnat@suse.com
+
+- bnc#893999: remove mount rules from libvirt-lxc apparmor
+  abstraction file as those aren't handled by our kernel.
+  apparmor-no-mount.patch
+
+-------------------------------------------------------------------
+Fri Aug 29 16:12:28 UTC 2014 - mlatimer@suse.com
+
+- bnc#894232 - Update apparmor profile to allow raw packets
+  install-apparmor-profiles.patch
+
+-------------------------------------------------------------------
+Thu Aug 21 01:29:21 CEST 2014 - ro@suse.de
+
+- remove not necessary hunks from libvirt-ppc64le-support.patch
+- move new patches to section for to be upstreamed
+
+-------------------------------------------------------------------
+Wed Aug 20 01:23:46 CEST 2014 - ro@suse.de
+
+- add patch: libvirt-power8-models.patch
+  add current power8 cpu models to map 
+
+-------------------------------------------------------------------
+Tue Aug 19 17:12:50 CEST 2014 - ro@suse.de
+
+- add patch: libvirt-ppc64le-support.patch
+  add preliminary ppc64le support to libvirt 
+
+-------------------------------------------------------------------
+Fri Aug  8 03:23:10 UTC 2014 - cyliu@suse.com
+
+- bnc#820399 - virsh blockcopy should refuse identical device
+  blockcopy-check-dst-identical-device.patch   
+
+-------------------------------------------------------------------
+Mon Aug  4 09:32:57 MDT 2014 - jfehlig@suse.com
+
+- Update to libvirt 1.2.7
+  - Introduce virConnectGetDomainCapabilities
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches: dba3432b-virt-lxc-convert-fix.patch,
+    9b1e4cd5-skip-useless-apparmor-files.patch,
+    9265f8ab-apparmor-lxc-rework.patch,
+    add-nocow-to-vol-xml.patch,
+    lxc-keep-caps-feature.patch,
+    lxc-keep-caps-feature-conversion.patch,
+    lxc-keep-caps-feature-doc.patch,
+    lxc-net-target-name.patch,
+    lxc-net-target-name-conversion.patch,
+    lxc-net-target-name-doc.patch
+
+-------------------------------------------------------------------
+Wed Jul 16 12:07:33 UTC 2014 - cbosdonnat@suse.com
+
+- lxc AppArmor profile now only restricting potentially dangerous
+  accesses. fdo#886460
+- Add virt-lxc-convert to libvirt-daemon-driver-lxc package
+
+- added patches:
+  * 9265f8ab-apparmor-lxc-rework.patch
+  * 9b1e4cd5-skip-useless-apparmor-files.patch
+
+-------------------------------------------------------------------
+Wed Jul 16 11:40:35 UTC 2014 - cbosdonnat@suse.com
+
+- virt-lxc-convert: force free to output values in bytes
+
+- added patches:
+  * dba3432b-virt-lxc-convert-fix.patch
+
+-------------------------------------------------------------------
+Wed Jul 16 11:33:31 UTC 2014 - cbosdonnat@suse.com
+
+- lxc: allow setting a custom name for container NICs as LXC is
+  is able to do it.
+  lxc-net-target-name.patch,
+  lxc-net-target-name-conversion.patch,
+  lxc-net-target-name-doc.patch 
+
+-------------------------------------------------------------------
+Wed Jul  2 12:49:36 MDT 2014 - jfehlig@suse.com
+
+- Move 'Requires' of qemu from libvirt-daemon-qemu subpackage to
+  libvirt-daemon-driver-qemu
+  bnc#885267
+
+-------------------------------------------------------------------
+Wed Jul  2 12:42:35 MDT 2014 - jfehlig@suse.com
+
+- Temporarily disable virt-aa-helper-test, which fails in Factory
+
+-------------------------------------------------------------------
+Wed Jul  2 11:31:22 MDT 2014 - jfehlig@suse.com
+
+- Update to libvirt 1.2.6
+  - libxl: add migration support and fixes
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patch libxl-migration-support.patch
+  - Drop ia64-clone.patch since libvirt is not built for IA64
+
+-------------------------------------------------------------------
+Wed Jun 25 13:42:00 UTC 2014 - cbosdonnat@suse.com
+
+- lxc-keep-caps-feature.patch: allow to keep/drop additional
+  capabilities for LXC containers. bnc#881465
+- lxc-keep-caps-feature-conversion.patch: convert lxc.cap.drop to
+  the new domain configuration.
+- lxc-keep-caps-feature-doc.patch: documentation for the new feature.
+
+-------------------------------------------------------------------
+Mon Jun  2 10:48:21 MDT 2014 - jfehlig@suse.com
+
+- Disable failing virportallocatortest on aarch64
+
+-------------------------------------------------------------------
+Sun Jun  1 21:44:06 MDT 2014 - jfehlig@suse.com
+
+- Update to libvirt 1.2.5
+  - Introduce virDomain{Get,Set}Time APIs
+  - Introduce virDomainFSFreeze() and virDomainFSThaw() public API
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches:
+    b98bf811-add-paravirt-shutdown-flag.patch,
+    c4fe29f8-use-shutdown-flag.patch,
+    da744120-use-reboot-flag.patch,
+    d6b27d3e-CVE-2014-0179.patch,
+    fd43d1f8-libxl-iface-hostdev.patch,
+    99f50208-managed-hostdev-iface.patch,
+    292d3f2d-libselinux-build-fix1.patch,
+    b109c097-libselinux-build-fix2.patch
+
+-------------------------------------------------------------------
+Wed May 28 17:13:29 MDT 2014 - jfehlig@suse.com
+
+- Add upstream patches that fix build with libselinux 2.3
+  Added: 292d3f2d-libselinux-build-fix1.patch,
+         b109c097-libselinux-build-fix2.patch
+  Dropped: libselinux-build-fix.patch
+
+-------------------------------------------------------------------
+Wed May 28 12:42:34 UTC 2014 - cbosdonnat@suse.com
+
+- Fix the build breakers brought by libselinux 2.3.
+  libselinux-build-fix.patch
+
+-------------------------------------------------------------------
+Tue May 20 15:13:22 MDT 2014 - jfehlig@suse.com
+
+- spec: libvirt-daemon package owns /etc/libvirt, not libvirt-client
+  bnc#878056
+
+-------------------------------------------------------------------
+Mon May 12 15:22:08 MDT 2014 - jfehlig@suse.com
+
+- libxl: Fix <interface type='hostdev'> syntax for SR-IOV devices
+  fd43d1f8-libxl-iface-hostdev.patch,
+  99f50208-managed-hostdev-iface.patch
+
+-------------------------------------------------------------------
+Tue May  6 11:53:14 MDT 2014 - jfehlig@suse.com
+
+- Update to libvirt 1.2.4
+  - Primarily a bug-fix release.  See http://libvirt.org/news.html
+    for a detailed list of bug fixes and improvements
+  - Drop upstream patches:
+    0e0c1a74-domid-fix.patch, 7a1452f5-libxl-empty-cdrom.patch
+- libxl: Support ACPI shutdown event
+  b98bf811-add-paravirt-shutdown-flag.patch,
+  c4fe29f8-use-shutdown-flag.patch, da744120-use-reboot-flag.patch
+  bnc#872777
+- libx: Support migration
+  libxl-migration-support.patch
+  bnc#875193
+
+-------------------------------------------------------------------
+Mon May  5 16:47:43 MDT 2014 - jfehlig@suse.com
+
+- CVE-2014-0179: Don't expand entities when parsing XML
+  d6b27d3e-CVE-2014-0179.patch
+  bnc#873705
+
+-------------------------------------------------------------------
+Wed Apr 16 07:46:52 UTC 2014 - dmueller@suse.com
+
+- blacklist one more unit test for qemu_linux_user builds
+
+-------------------------------------------------------------------
+Tue Apr  8 09:44:50 MDT 2014 - jfehlig@suse.com
+
+- libxl: Set disk format for empty cdrom device
+  0e0c1a74-domid-fix.patch, 7a1452f5-libxl-empty-cdrom.patch
+  bnc#872517
+
+-------------------------------------------------------------------
+Mon Apr  7 14:34:59 CST 2014 - cyliu@suse.com
+
+- Fate#315125: add NOCOW flag
+  add-nocow-to-vol-xml.patch
+
+-------------------------------------------------------------------
+Wed Apr  2 13:38:50 UTC 2014 - cbosdonnat@suse.com
+
+- Removed libxl-hvm-vnc.patch: went upstream in another form
+
+-------------------------------------------------------------------
+Wed Apr  2 12:06:04 UTC 2014 - cbosdonnat@suse.com
+
+- Update to libvirt 1.2.3
+  - add new virDomainCoreDumpWithFormat API
+  - conf: Introduce virDomainDeviceGetInfo API
+  - more features and fixes on bhyve driver
+  - lot of cleanups and improvement on the Xen driver
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+
+
+-------------------------------------------------------------------
+Fri Mar 14 13:44:06 MDT 2014 - jfehlig@suse.com
+
+- Add /usr/sbin/rc{libvirtd,virtlockd,libvirt-guests} symlinks
+  to preserve backwards compatibility
+  bnc#868190
+
+-------------------------------------------------------------------
+Tue Mar  4 11:43:25 MST 2014 - jfehlig@suse.com
+
+- Improve lock manager comments in qemu.conf
+  Updated suse-qemu-conf.patch
+
+-------------------------------------------------------------------
+Tue Mar  4 17:03:47 UTC 2014 - speilicke@suse.com
+
+- Create /etc/libvirt/hooks to allow using hook scripts
+
+-------------------------------------------------------------------
+Sun Mar  2 20:32:21 MST 2014 - jfehlig@suse.com
+
+- Update to libvirt 1.2.2
+  - add LXC from native conversion tool
+  - vbox: add support for v4.2.20+ and v4.3.4+
+  - CVE-2013-6456 (bnc#857490)
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches: 37564b47-xend-parse-response.patch,
+    4f20084-fix-apparmor-install-patch.patch
+  - Add local disable-virCgroupGetPercpuStats-test.patch to disable
+    failing virCgroupGetPercpuStats test in 'make check'
+
+-------------------------------------------------------------------
+Mon Feb 24 16:40:31 MST 2014 - jfehlig@suse.com
+
+- daemon-qemu: Require qemu instead of kvm to align with
+  recent changes to the qemu package structure
+
+-------------------------------------------------------------------
+Fri Feb 14 14:51:52 MST 2014 - jfehlig@suse.com
+
+- spec: fix dependencies of daemon-config-network and
+  daemon-config-nwfilter subpackages.  Influenced by upstream
+  commits cf76c4b3 and dca5ce4c 
+
+-------------------------------------------------------------------
+Fri Feb 14 14:37:42 MST 2014 - jfehlig@suse.com
+
+- Remove libvirtd, virtlockd, and libvirt-guests init scripts when
+  using systemd
+  bnc#863540  
+
+-------------------------------------------------------------------
+Wed Feb 12 15:58:18 UTC 2014 - cbosdonnat@suse.com
+
+- Fix the path to libvirtd AppArmor template profile
+
+-------------------------------------------------------------------
+Wed Jan 29 14:50:27 MST 2014 - jfehlig@suse.com
+
+- Fix parsing xend http response
+  37564b47-xend-parse-response.patch
+  rhb#1055165
+
+-------------------------------------------------------------------
+Wed Jan 22 10:02:06 MST 2014 - jfehlig@suse.com
+
+- Add CAP_SYS_PACCT capability to libvirtd AppArmor profile
+  Modified install-apparmor-profiles.patch
+  bnc#817407
+
+-------------------------------------------------------------------
+Mon Jan 20 18:22:59 MST 2014 - jfehlig@suse.com
+
+- Fix build on code 11
+- Fix rpmlint warning
+
+-------------------------------------------------------------------
+Mon Jan 20 17:40:10 MST 2014 - jfehlig@suse.com
+
+- Following the upstream pattern, introduce the
+  daemon-config-network subpackage to handle defining the default
+  network
+  bnc#859041
+
+-------------------------------------------------------------------
+Fri Jan 17 12:30:48 MST 2014 - jfehlig@suse.com
+
+- Update to libvirt 1.2.1
+  - CVE-2014-0028, CVE-2014-1447, CVE-2013-6458, CVE-2013-6457,
+    CVE-2013-6436
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Dropped upstream patches: 5e397d9c-test-fix-dbus-crash.patch,
+    78af457e-fix-virnettlscontexttest.patch,
+    9faf3f29-LXC-memtune.patch, f8c1cb90-CVE-2013-6436.patch,
+    libxl-hvm-nic.patch
+
+-------------------------------------------------------------------
+Thu Dec 26 17:01:48 MST 2013 - jfehlig@suse.com
+
+- Ignore 'make check' on older, code 11 base
+
+-------------------------------------------------------------------
+Thu Dec 26 12:16:13 UTC 2013 - cbosdonnat@suse.com
+
+- Fixed and reenabled unit tests. bnc#854694
+
+-------------------------------------------------------------------
+Fri Dec 20 13:13:03 MST 2013 - jfehlig@suse.com
+
+- Remove dependency on pm-utils from libvirt-client
+  bnc#856381
+
+-------------------------------------------------------------------
+Fri Dec 20 09:04:45 MST 2013 - jfehlig@suse.com
+
+- CVE-2013-6436: Fix crashes in lxc memtune code, one of which
+  results in DoS
+  f8c1cb90-CVE-2013-6436.patch, 9faf3f29-LXC-memtune.patch
+  bnc#854486
+
+-------------------------------------------------------------------
+Fri Dec  6 15:49:34 MST 2013 - jfehlig@suse.com
+
+- More adjustments to the spec file to fix package dependency
+  issues
+  bnc#848918
+
+-------------------------------------------------------------------
+Fri Dec  6 11:03:54 MST 2013 - jfehlig@suse.com
+
+- Update to libvirt 1.2.0
+  - Add support for gluster pool
+  - Separation of python binding
+  - vbox: add support for 4.3 APIs
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Updated and renamed clone.patch to ia64-clone.patch
+- Enabled numad support for openSUSE >= 13.1
+
+-------------------------------------------------------------------
+Wed Dec  4 14:28:14 MST 2013 - jfehlig@suse.com
+
+- Link with same versions of libnl used by netcontrol to prevent
+  crashing libvirtd on start
+
+-------------------------------------------------------------------
+Wed Dec  4 10:43:28 MST 2013 - jfehlig@suse.com
+
+- Add '/etc/sasl2' to libvirt-client file list to fix Factory build
+
+-------------------------------------------------------------------
+Tue Nov 26 20:02:48 MST 2013 - jfehlig@suse.com
+
+- Fix starting of libvirtd when NetworkManager is enabled
+  Modified libvirt-suse-netcontrol.patch
+
+-------------------------------------------------------------------
+Tue Nov 26 14:51:44 MST 2013 - jfehlig@suse.com
+
+- Allow execution of libvirt hook scripts in /etc/libvirt/hooks/
+  in libvirtd AppArmor profile
+
+-------------------------------------------------------------------
+Wed Nov 20 10:57:57 MST 2013 - jfehlig@suse.com
+
+- Update to libvirt 1.1.4
+  - Add support for AArch64 architecture
+  - Various improvements on test code and test driver
+  - Don't link virt-login-shell against libvirt.so
+  - Close all non-stdio FDs in virt-login-shell
+  - Only allow 'stderr' log output when running setuid
+  - Fix perms for virConnectDomainXML{To,From}Native
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches: e7f400a1-CVE-2013-4296.patch,
+    2dba0323-CVE-2013-4297.patch, db7a5688-CVE-2013-4311.patch,
+    e65667c0-CVE-2013-4311.patch, 922b7fda-CVE-2013-4311.patch,
+    e4697b92-CVE-2013-4311.patch, 8294aa0c-CVE-2013-4399.patch,
+    484cc321-fix-spice-migration.patch,
+    79552754-libvirtd-chardev-crash.patch,
+    57687fd6-CVE-2013-4401.patch, ae53e5d1-CVE-2013-4400.patch,
+    8c3586ea-CVE-2013-4400.patch, b7fcc799a-CVE-2013-4400.patch,
+    3e2f27e1-CVE-2013-4400.patch, 5a0ea4b7-CVE-2013-4400.patch,
+    843bdb2f-CVE-2013-4400.patch,
+    bd773e74-lxc-terminate-machine.patch,
+    e350826c-python-fix-fd-passing.patch
+
+-------------------------------------------------------------------
+Tue Nov 19 14:23:27 MST 2013 - jfehlig@suse.com
+
+- Allow execution of Xen binaries in /usr/lib{,64}/xen/bin in
+  libvirtd AppArmor profile
+  bnc#849524
+
+-------------------------------------------------------------------
+Tue Nov 19 13:09:31 MST 2013 - jfehlig@suse.com
+
+- Require libvirt-daemon-<hypervisor> in the main libvirt package
+  for each supported hypervisor
+  bnc#850882
+
+-------------------------------------------------------------------
+Mon Nov  4 15:44:39 MST 2013 - jfehlig@suse.com
+
+- Fix initialization of libxl NIC devices
+  libxl-hvm-nic.patch
+  bnc#848918
+
+-------------------------------------------------------------------
+Wed Oct 30 08:35:47 MDT 2013 - jfehlig@suse.com
+
+- Fix typo in libvirtd apparmor profile which prevented the profile
+  from loading
+  bnc#848216
+
+-------------------------------------------------------------------
+Fri Oct 25 13:10:27 MDT 2013 - jfehlig@suse.com
+
+- libxl driver: fix initialization of VNC and SDL info for
+  HVM domains
+  libxl-hvm-vnc.patch
+  bnc#847566
+- Allow libvirtd apparmor profile to access /etc/xen/scripts/*
+
+-------------------------------------------------------------------
+Tue Oct 22 21:37:08 MDT 2013 - jfehlig@suse.com
+
+- Fix file descriptor passing in python bindings
+  e350826c-python-fix-fd-passing.patch
+  rhb#1021434
+
+-------------------------------------------------------------------
+Tue Oct 22 14:37:08 MDT 2013 - cbosdonnat@suse.com
+
+- Have systemd terminate the machine as a workaround of fdo#68370
+  bd773e74-lxc-terminate-machine.patch
+  bnc#842834
+
+-------------------------------------------------------------------
+Tue Oct 22 12:28:03 MDT 2013 - jfehlig@suse.com
+
+- Spec file fixes to only package libvirt-login-shell when
+  building the LXC driver
+
+-------------------------------------------------------------------
+Mon Oct 21 11:33:03 MDT 2013 - jfehlig@suse.com
+
+- CVE-2013-4400: Unsantized use of env variables allows privilege
+  escalation via virt-login-shell
+  ae53e5d1-CVE-2013-4400.patch, 8c3586ea-CVE-2013-4400.patch,
+  b7fcc799a-CVE-2013-4400.patch, 3e2f27e1-CVE-2013-4400.patch,
+  5a0ea4b7-CVE-2013-4400.patch, 843bdb2f-CVE-2013-4400.patch
+  bnc#837609
+- CVE-2013-4401: Fix perms for virConnectDomainXML{To,From}Native
+  57687fd6-CVE-2013-4401.patch
+  bnc#845704
+
+-------------------------------------------------------------------
+Fri Oct 18 14:42:39 MDT 2013 - jfehlig@suse.com
+
+- Move hypervisor-specific files out of libvirt-daemon package
+  and into libvirt-daemon-<hypervisor> subpackage
+  bnc#845851
+- conf: Don't crash on invalid chardev source definition
+  79552754-libvirtd-chardev-crash.patch
+  bnc#845704, rhb#1012196
+
+-------------------------------------------------------------------
+Thu Oct 17 14:14:46 MDT 2013 - jfehlig@suse.com
+
+- Use newer libnl3 instead of libnl-1_1
+  bnc#845540
+
+-------------------------------------------------------------------
+Mon Oct 14 22:20:41 MDT 2013 - jfehlig@suse.com
+
+- Move virt-login-shell to new subpackage libvirt-login-shell,
+  requiring users to opt-in for this setuid binary.  Note: For now,
+  virt-login-shell will not have setuid permissions, pending
+  resolution of bnc#837609
+
+-------------------------------------------------------------------
+Mon Oct 14 21:25:49 MDT 2013 - jfehlig@suse.com
+
+- qemu: Fix seamless SPICE migration
+  484cc321-fix-spice-migration.patch
+  bnc#842301
+
+-------------------------------------------------------------------
+Mon Oct 14 20:33:43 MDT 2013 - jfehlig@suse.com
+
+- CVE-2013-4399: Fix crash in libvirtd when events are registered
+  and ACLs active
+  8294aa0c-CVE-2013-4399.patch
+  bnc#844052, bnc#842300
+
+-------------------------------------------------------------------
+Mon Oct 14 16:40:25 MDT 2013 - jfehlig@suse.com
+
+- Update the stale gettext BuildRequires and Requires dependencies
+  in the spec file
+  bnc#841325
+
+-------------------------------------------------------------------
+Mon Oct 14 16:01:46 MDT 2013 - jfehlig@suse.com
+
+- virt-aa-helper apparmor profile was denying read access to
+  /proc/$PID/*.  Give read accesss to these files.
+  Updated install-apparmor-profiles.patch
+  bnc#841720
+
+-------------------------------------------------------------------
+Mon Oct 14 13:46:14 MDT 2013 - jfehlig@suse.com
+
+- libvirtd apparmor profile was denying access to
+  /usr/lib/xen/bin/qemu-system-i386, which is now the default
+  emulator used with Xen guests
+  Updated install-apparmor-profiles.patch
+  bnc#845648
+
+-------------------------------------------------------------------
+Thu Oct  3 11:04:26 MDT 2013 - jfehlig@suse.com
+
+- Fix condrestart|try-restart invocation of virtlockd init script
+  Modifed virtlockd-init-script.patch
+
+-------------------------------------------------------------------
+Tue Sep 17 16:29:20 MDT 2013 - jfehlig@suse.com
+
+- CVE-2013-4311: Add support for using 3-arg pkcheck syntax for
+  process
+  db7a5688-CVE-2013-4311.patch, e65667c0-CVE-2013-4311.patch,
+  922b7fda-CVE-2013-4311.patch, e4697b92-CVE-2013-4311.patch
+  bnc#836931
+
+-------------------------------------------------------------------
+Thu Sep  5 15:28:28 MDT 2013 - jfehlig@suse.com
+
+- CVE-2013-4296: Fix crash in remoteDispatchDomainMemoryStats
+  e7f400a1-CVE-2013-4296.patch
+  bnc#838638
+- CVE-2013-4297: Fix crash in virFileNBDDeviceAssociate
+  2dba0323-CVE-2013-4297.patch
+  bnc#838642
+
+-------------------------------------------------------------------
+Tue Sep  3 11:04:45 MDT 2013 - jfehlig@suse.com
+
+- Update to libvirt 1.1.2
+  - various improvements to libxl driver
+  - systemd integration improvements
+  - Add flag to BaselineCPU API to return detailed CPU features
+  - Introduce a virt-login-shell binary
+  - conf: add startupPolicy attribute for harddisk
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches: bcef0f01-libxl-console.patch,
+    9d0557b9-legacy-xen-double-free.patch,
+    d7a45bf2-legacy-xen-dumpxml.patch, 0e671a16-CVE-2013-4239.patch
+  - Includes fixes for bnc#837530, bnc#837531, bnc#837999
+
+-------------------------------------------------------------------
+Tue Aug 13 10:47:37 MDT 2013 - jfehlig@suse.com
+
+- Fix memory corruption in legacy Xen driver
+  0e671a16-CVE-2013-4239.patch
+  bnc#834598
+- Upstream patches to fix dumpxml in legacy Xen driver
+  9d0557b9-legacy-xen-double-free.patch,
+  d7a45bf2-legacy-xen-dumpxml.patch
+
+-------------------------------------------------------------------
+Wed Jul 31 16:53:28 MDT 2013 - jfehlig@suse.com
+
+- Backport upstream patch implementing domainOpenConsole in the
+  libxl driver.  Allows 'virsh console dom-name' to work with
+  Xen libxl toolstack.
+  bcef0f01-libxl-console.patch
+
+-------------------------------------------------------------------
+Tue Jul 30 14:25:26 MDT 2013 - jfehlig@suse.com
+
+- Update to libvirt 1.1.1
+  - Adding device removal or deletion events
+  - Introduce new domain create APIs to pass pre-opened FDs to LXC
+  - Add interface versions for Xen 4.3
+  - Add new public API virDomainSetMemoryStatsPeriod
+  - Various LXC improvements
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches: f38c8185-CVE-2013-2230.patch,
+    fd2e3c4c-xen-sysctl-domctl.patch, dfc69235-CVE-2013-4153.patch,
+    96518d43-CVE-2013-4154.patch, fe89fd3b-storage-pool-deadlock.patch
+  - Drop relax-qemu-usergroup-check.patch - no longer needed
+    after hypervisor-specific daemon package split
+
+-------------------------------------------------------------------
+Mon Jul 22 17:17:42 MDT 2013 - jfehlig@suse.com
+
+- Unlock the storage volume object after looking it up
+  fe89fd3b-storage-pool-deadlock.patch
+  rhb#980676
+
+-------------------------------------------------------------------
+Mon Jul 22 10:39:01 MDT 2013 - jfehlig@suse.com
+
+- CVE-2013-4153: Fix double free of returned JSON array in
+  qemuAgentGetVCPUs()
+  dfc69235-CVE-2013-4153.patch
+- CVE-2013-4154: Prevent crash of libvirtd without guest agent
+  configuration
+  96518d43-CVE-2013-4154.patch
+  bnc#830498
+
+-------------------------------------------------------------------
+Wed Jul 17 11:45:21 MDT 2013 - jfehlig@suse.com
+
+- Fix legacy xen driver with Xen 4.3
+  fd2e3c4c-xen-sysctl-domctl.patch
+
+-------------------------------------------------------------------
+Wed Jul 10 15:38:44 MDT 2013 - jfehlig@suse.com
+
+- CVE-2013-2230: Fix crash when multiple event callbacks were
+  registered
+  f38c8185-CVE-2013-2230.patch
+  bnc#827801
+
+-------------------------------------------------------------------
+Mon Jul 10 13:53:08 MDT 2013 - jfehlig@suse.com
+
+- Update to libvirt 1.1.0
+  - Extensible migration APIs
+  - Add a policy kit access control driver
+  - various improvements in the Xen and libxl drivers
+  - improve networking support on BSD
+  - agent based vCPU hotplug support
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches: 244e0b8c-CVE-2013-2218.patch
+
+-------------------------------------------------------------------
+Mon Jul  8 12:43:45 MDT 2013 - jfehlig@suse.com
+
+- Only require lzop if suse_version > 1210
+
+-------------------------------------------------------------------
+Wed Jul  3 11:14:11 MDT 2013 - jfehlig@suse.com
+
+- Fix typo in spec file
+
+-------------------------------------------------------------------
+Wed Jul  3 10:20:05 MDT 2013 - jfehlig@suse.com
+
+- Enable support for netcontrol by default
+- Only require libvirt-daemon-driver-interface when building the
+  interface driver
+
+-------------------------------------------------------------------
+Mon Jul  1 09:25:41 MDT 2013 - jfehlig@suse.com
+
+- CVE-2013-2218: Fix crash listing network interfaces with filters
+  244e0b8c-CVE-2013-2218.patch
+
+-------------------------------------------------------------------
+Tue Jun 11 10:36:17 MDT 2013 - jfehlig@suse.com
+
+- Add xencommons as 'Wanted' in the systemd libvirtd service file
+  systemd-service-xen.patch
+  bnc#820888
+
+-------------------------------------------------------------------
+Mon Jun 10 09:14:39 MDT 2013 - jfehlig@suse.com
+
+- Fix build for SLE11 SP2
+
+-------------------------------------------------------------------
+Fri Jun  7 15:40:47 MDT 2013 - jfehlig@suse.com
+
+- Add a README to the empty packages.  Provides some info about
+  their purpose and satisfies suse-filelist-empty check.
+  Drop rpmlintrc
+
+-------------------------------------------------------------------
+Fri Jun  7 08:14:38 MDT 2013 - jfehlig@suse.com
+
+- Fix typo in spec file: devel package requires doc package, not
+  docs
+
+-------------------------------------------------------------------
+Thu Jun  6 16:05:39 MDT 2013 - jfehlig@suse.com
+
+- Add rpmlintrc to get around suse-filelist-empty error on
+  older distros.
+
+-------------------------------------------------------------------
+Thu Jun  6 11:59:26 MDT 2013 - jfehlig@suse.com
+
+- Refactor libvirt spec file to create subpackages for the various
+  libvirtd components.  This allows installing a libvirtd tailored
+  for the underlying virtualizer.  E.g. on a KVM/QEMU virtualizer
+  only the libvirt-daemon-qemu package needs installed.
+  Similarly, only libvirt-daemon-xen on a Xen virtualizer and 
+  libvirt-daemon-lxc on LXC.
+
+-------------------------------------------------------------------
+Tue Jun  4 16:44:30 MDT 2013 - jfehlig@suse.com
+
+- Update to libvirt 1.0.6
+  - Move VirtualBox driver into libvirtd
+  - Support for static routes on a virtual bridge
+  - Various improvement for hostdev SCSI support
+  - Switch to VIR_STRDUP and VIR_STRNDUP
+  - Various cleanups and improvement in Xen and LXC drivers
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches: f493d83f-cgroup-swap-control.patch,
+    486a86eb-cgroups-docs.patch, 0ced83dc-cgroup-escape-dot.patch,
+    bbe97ae9-no-cgroups.patch, c2cf5f1c-no-cgroups-fix.patch,
+    95c6cc34-selinux.patch
+
+-------------------------------------------------------------------
+Tue May 21 08:32:02 MDT 2013 - jfehlig@suse.com
+
+- Update to libvirt 1.0.5.1 stable release
+  - qemu: Fix cgroup handling when setting VCPU BW
+  - daemon: fix leak after listing all volumes
+  - Fix iohelper usage with streams opened for read
+  - util: fix virFileOpenAs return value and resulting error logs
+  - iscsi: don't leak portal string when starting a pool
+  - don't mention disk controllers in generic controller errors
+  - conf: don't crash on a tpm device with no backends
+  - qemu: allocate network connections sooner during domain startup
+  -  Make detect_scsi_host_caps a function on all architectures
+  - Fix release of resources with lockd plugin
+  - Fix potential use of undefined variable in remote dispatch code
+  - Fix F_DUPFD_CLOEXEC operation args
+  - qemu: fix stupid typos in VFIO cgroup setup/teardown
+  - network: fix network driver startup for qemu:///session
+- Remove patches that are included in the 1.0.5.1 release
+  0471637d-cgroups-vcpu-bw.patch, a2214c52-iohelper.patch,
+  ca697e90-CVE-2013-1962.patch
+
+-------------------------------------------------------------------
+Mon May 20 14:41:16 MDT 2013 - jfehlig@suse.com
+
+- Don't mount selinux fs in LXC if selinux is disabled
+  95c6cc34-selinux.patch
+  bnc#814680
+
+-------------------------------------------------------------------
+Sat May 18 09:15:00 MDT 2013 - jfehlig@suse.com
+
+- fix leak after listing all volumes - CVE-2013-1962
+  ca697e90-CVE-2013-1962.patch
+  bnc#820397
+- Fix iohelper usage with streams opened for read
+  a2214c52-iohelper.patch
+- Cope with missing swap cgroup controls
+  f493d83f-cgroup-swap-control.patch
+  bnc#819976
+- Fix cgroup handling when setting VCPU BW
+  0471637d-cgroups-vcpu-bw.patch
+  rhb#963592
+- Escape a leading '.' with '_' in the cgroup names
+  0ced83dc-cgroup-escape-dot.patch
+- Add missing documentation on new cgroup layout
+  486a86eb-cgroups-docs.patch
+- Another fix related to systems with no cgroups
+  c2cf5f1c-no-cgroups-fix.patch
+  bnc#819963
+
+-------------------------------------------------------------------
+Thu May 16 16:25:13 MDT 2013 - jfehlig@suse.com
+
+- Fix botched backport of commit bbe97ae9
+
+-------------------------------------------------------------------
+Mon May 13 09:32:56 MDT 2013 - jfehlig@suse.com
+
+- Fix starting domains when kernel has no cgroups support
+  bbe97ae9-no-cgroups.patch
+
+-------------------------------------------------------------------
+Thu May  2 13:14:00 MDT 2013 - jfehlig@suse.com
+
+- Update to libvirt 1.0.5
+  - PPC64: Add NVRAM device
+  - Add XML config for resource partitions
+  - Add support for TPM
+  - NPIV storage migration support
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+
+-------------------------------------------------------------------
+Tue Apr  2 15:26:18 MDT 2013 - jfehlig@suse.com
+
+- Update to libvirt 1.0.4
+  - qemu: support passthrough for iscsi disks
+  - various S390 improvements
+  - various LXC bugs fixes and improvements
+  - add API for thread cancellation
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches: ce4557c3-apparmor-tapfd-label.patch
+    libvirt-iptables-1.4.18.diff
+
+-------------------------------------------------------------------
+Sun Mar 24 20:05:28 UTC 2013 - seife+obs@b1-systems.com
+
+- add libvirt-iptables-1.4.18.diff, fix masquerading with iptables
+  v1.4.18 (--state match is deprectated, use conntrack instead)
+
+-------------------------------------------------------------------
+Fri Mar  8 12:00:39 MST 2013 - jfehlig@suse.com
+
+- Fix PCI device attach for xen HVM domains
+  fix-pci-attach-xen-driver.patch
+  FATE#313570
+
+-------------------------------------------------------------------
+Fri Mar  8 09:06:27 MST 2013 - jfehlig@suse.com
+
+- Apparmor security driver: Ensure tapfd's are labled when
+  generating the guest profile.
+  Modified install-apparmor-profiles.patch, added upstream patch
+  ce4557c3-apparmor-tapfd-label.patch
+  bnc#807940
+
+-------------------------------------------------------------------
+Thu Mar  7 09:10:33 MST 2013 - jfehlig@suse.com
+
+- Grant permission to use datagram packets in libvirtd apparmor
+  profile.
+  Remove AF_PACKET.patch, modify install-apparmor-profiles.patch
+  bnc#801145
+
+-------------------------------------------------------------------
+Wed Mar  6 09:14:25 MST 2013 - jfehlig@suse.com
+
+- Add 'managed' PCI passthrough support to legacy xen driver
+  support-managed-pci-xen-driver.patch
+  FATE#313570
+
+-------------------------------------------------------------------
+Tue Mar  5 08:50:33 MST 2013 - jfehlig@suse.com
+
+- Update to libvirt 1.0.3
+  - Introduce virDomainMigrate*CompressionCache APIs
+  - Introduce virDomainGetJobStats API
+  - Add basic support for VDI images
+  - Introduce API virNodeDeviceLookupSCSIHostByWWN
+  - Various locking improvements
+  - Many incremental improvements and bug fixes, see
+    http://libvirt.org/news.html
+  - Drop upstream patches: a6b8bae5-python-generator-fix1.patch,
+    25ea8e47-python-generator-fix2.patch,
+    567779e5-libxl-default-disk-backend.patch
+
+-------------------------------------------------------------------
+Thu Feb 28 17:18:17 MST 2013 - jfehlig@suse.com
+
+- Fix path to qemu-bridge-helper in libvirt-qemu apparmor profile
+  Modified install-apparmor-profiles.patch
+
+-------------------------------------------------------------------
+Mon Feb 25 12:30:24 MST 2013 - jfehlig@suse.com
+
+- Fix detach of managed PCI devices from inactive domains.
+  Detected while running test cases for FATE #313570.
+  Modified xen-name-for-devid.patch
+
+-------------------------------------------------------------------
+Thu Feb 21 15:48:39 MST 2013 - jfehlig@suse.com
+
+- spec: Fix installation of default network
+
+-------------------------------------------------------------------
+Wed Feb 20 16:37:03 MST 2013 - jfehlig@suse.com
+
+- Fix default setting of backend field of libxl_device_disk
+  567779e5-libxl-default-disk-backend.patch
+  rhb#912488
+
+-------------------------------------------------------------------
+Tue Feb 12 16:17:36 MST 2013 - jfehlig@suse.com
+
+- Fix build on IA64
+  Modified clone.patch
+
+-------------------------------------------------------------------
+Thu Feb  7 10:23:10 MST 2013 - jfehlig@suse.com
+
+- Fix error handling in python bindings
+  a6b8bae5-python-generator-fix1.patch
+  25ea8e47-python-generator-fix2.patch
+  bnc#802619
+
+-------------------------------------------------------------------
+Sun Feb  3 14:42:19 UTC 2013 - crrodriguez@opensuse.org
+
+- Require modutils instead of module-init-tools. 
+
+-------------------------------------------------------------------
+Wed Jan 30 11:28:32 MST 2013 - jfehlig@suse.com
+
+- Update to libvirt 1.0.2
+  - LXC improvements
+  - S390 architecture improvements
+  - Power architecture improvements
+  - large Coverity report cleanups and associated bug fixes
+  - virTypedParams* APIs to help with those data structures
+  - libxenlight driver improvements
+  - Fixes CVE-2013-0170, bnc#800976
+  - Drop upstream patches: 68e7bc45-libxl-link-fix.patch,
+    462a6962-script-fixes1.patch, cb854b8f-script-fixes2.patch,
+    5ec4b22b-script-fixes3.patch, a1fd56cb-script-fixes4.patch,
+    66ff2ddc-virtlockd-systemd-file-perms.patch
+
+-------------------------------------------------------------------
+Mon Jan 21 20:59:16 MST 2013 - jfehlig@suse.com
+
+- Unconditionally build sanlock support
+  bnc#799262
+
+-------------------------------------------------------------------
+Mon Jan 21 20:54:39 MST 2013 - jfehlig@suse.com
+
+- Fix interface management functions that were broken when
+  rebasing libvirt-suse-netcontrol.patch
+  bnc#799444 (SLES bug that affect Factory too)
+
+-------------------------------------------------------------------
+Sat Jan  5 11:39:02 MST 2013 - jfehlig@suse.com
+
+- Update to libvirt 1.0.1
+  - Introduce virtlockd daemon
+  - parallels: add disk and network device support
+  - Add virDomainSendProcessSignal API
+  - Introduce virDomainFSTrim() public API
+  - add fuse support for libvirt lxc
+  - Add Gluster protocol as supported network disk backend
+  - various snapshot improvements
+- Add upstream patches to fix bugs in 1.0.1
+  66ff2ddc-virtlockd-systemd-file-perms.patch,
+  462a6962-script-fixes1.patch, cb854b8f-script-fixes2.patch,
+  5ec4b22b-script-fixes3.patch, a1fd56cb-script-fixes4.patch,
+  68e7bc45-libxl-link-fix.patch
+- Rework SUSE patches for the various init scripts
+  Dropped use-init-script-redhat.patch and added
+  libvirtd-init-script.patch, libvirt-guests-init-script.patch,
+  and virtlockd-init-script.patch
+
+-------------------------------------------------------------------
+Fri Nov  2 11:19:46 MDT 2012 - jfehlig@suse.com
+
+- Update to libvirt 1.0.0
+  - virNodeGetCPUMap: Define public API
+  - Add systemd journal support
+  - Add a qemu capabilities cache manager
+  - USB migration support
+  - various improvement and fixes when using QMP QEmu interface
+  - Support for Xen 4.2 in legacy xen driver
+  - Lot of localization enhancements
+  - Drop upstream patches: 371ddc98-xen-sysctl-9.patch,
+    416eca18-xenstore-header-fix.patch,
+    f644361b-virCommand-env.patch, 2b32735a-virCommand-env.patch,
+    9785f2b6-fix-xen-sysctl9.patch
+
+-------------------------------------------------------------------
+Tue Oct 23 14:33:40 MDT 2012 - jfehlig@suse.com
+
+- Fix Xen sysctl version 9 support
+  9785f2b6-fix-xen-sysctl9.patch
+
+-------------------------------------------------------------------
+Thu Oct 11 08:34:36 MDT 2012 - jfehlig@suse.com
+
+- Add upstream patches to support latest libguestfs
+  f644361b-virCommand-env.patch
+  2b32735a-virCommand-env.patch
+
+-------------------------------------------------------------------
+Thu Sep 27 10:35:25 MDT 2012 - jfehlig@suse.com
+
+- Fix build when using -werror
+  416eca18-xenstore-header-fix.patch
+
+-------------------------------------------------------------------
+Wed Sep 26 14:24:42 MDT 2012 - jfehlig@suse.com
+
+- Support Xen sysctl version 9
+  371ddc98-xen-sysctl-9.patch
+  bnc#781425
+
+-------------------------------------------------------------------
+Tue Sep 25 16:20:43 MDT 2012 - jfehlig@suse.com
+
+- Temporarily disable building libxl driver.  The current
+  implementation does not support libxl in Xen 4.2.
+
+-------------------------------------------------------------------
+Tue Sep 25 16:17:29 MDT 2012 - jfehlig@suse.com
+
+- Update to libvirt 0.10.2
+  - network: define new API virNetworkUpdate
+  - add support for QEmu sandbox support
+  - blockjob: add virDomainBlockCommit
+  - node_memory: Define the APIs to get/set memory parameters
+  - list: Define new API virConnectListAllSecrets
+  - list: Define new API virConnectListAllNWFilter
+  - list: Define new API virConnectListAllNodeDevices
+  - list: Define new API virConnectListAllInterfaces
+  - list: Define new API virConnectListAllNetworks
+  - list: Define new API virStoragePoolListAllVolumes
+  - list: Define new API virStorageListAllStoragePools
+  - parallels: add support of containers to the driver
+  - Add PMSUSPENDED life cycle event
+  - Add per-guest S3/S4 state configuration
+  - qemu: Support for Block Device IO Limits
+
+-------------------------------------------------------------------
+Fri Sep  7 13:42:10 MDT 2012 - jfehlig@suse.com
+
+- Update to libvirt 0.10.1
+  - Bug fix release for critical bugs in 0.10.0
+  - Drop upstream patch f781e276-xen-driver-fix.patch
+
+-------------------------------------------------------------------
+Fri Aug 31 11:20:35 MDT 2012 - jfehlig@suse.com
+
+- Update to libvirt 0.10.0
+  - agent: add qemuAgentArbitraryCommand()
+  - Introduce virDomainPinEmulator and virDomainGetEmulatorPinInfo
+  - network: use firewalld instead of iptables, when available
+  - network: make network driver vlan-aware
+  - esx: Implement network driver
+  - driver for parallels hypervisor
+  - Various LXC improvements
+  - Add virDomainGetHostname
+  - Drop upstream patches
+    4036aa91-systemd.patch
+    6039a2cb-CVE-2012-3445.patch
+
+-------------------------------------------------------------------
+Thu Aug 30 21:20:11 MDT 2012 - jfehlig@suse.com
+
+- Fix xen driver following changes to make it stateful
+  f781e276-xen-driver-fix.patch
+  bnc#778006
+
+-------------------------------------------------------------------
+Wed Aug  8 11:42:28 MDT 2012 - jfehlig@suse.com
+
+- Update to libvirt 0.9.13
+  - S390: support for s390(x)
+  - snapshot: implement new APIs for esx and vbox
+  - snapshot: new query APIs and many improvements
+  - virsh: Allow users to reedit rejected XML
+  - nwfilter: add DHCP snooping
+  - storage backend: Add RBD (RADOS Block Device) support
+  - sVirt support for LXC domains inprovement
+  - Drop upstream patches
+    0dda594d-libvirtd-shutdown-deadlock.patch
+    9c77bf04-fix-virnetserver-refcnt.patch
+    57349ffc-lxc-ctrl.patch
+    revert-d8978c90.patch
+
+-------------------------------------------------------------------
+Mon Aug  6 18:02:14 MDT 2012 - jfehlig@suse.com
+
+_ Update to libvirt 0.9.12
+  - qemu: allow snapshotting of sheepdog and rbd disks
+  - blockjob: add new AP
+  - many bug fixes and improvements
+
+-------------------------------------------------------------------
+Wed Aug  1 11:42:58 MDT 2012 - jfehlig@suse.com
+
+- daemon: Fix crash in virTypedParameterArrayClear
+  CVE-2012-3445
+  6039a2cb-CVE-2012-3445.patch
+  bnc#773955
+
+-------------------------------------------------------------------
+Tue Jul 10 09:17:01 MDT 2012 - jfehlig@suse.com
+
+- libvirtd.service: ensure libvirtd starts after network
+  4036aa91-systemd.patch
+  bnc#767932
+
+-------------------------------------------------------------------
+Fri Jun 22 16:26:01 MDT 2012 - jfehlig@suse.com
+
+- Add upstream patch to fix ref count of virNetServer object
+  9c77bf04-fix-virnetserver-refcnt.patch
+
+-------------------------------------------------------------------
+Thu Jun 21 11:56:35 MDT 2012 - jfehlig@suse.com
+
+- Fix libvirtd deadlock on shutdown
+  0dda594d-libvirtd-shutdown-deadlock.patch
+  bnc#767797
+
+-------------------------------------------------------------------
+Wed Jun 20 23:40:14 MDT 2012 - jfehlig@suse.com
+
+- Fix segfault in libvirt_lxc
+  57349ffc-lxc-ctrl.patch
+  bnc#767448
+
+-------------------------------------------------------------------
+Wed Jun 20 10:48:35 MDT 2012 - jfehlig@suse.com
+
+- Fix build on i586
+  revert-d8978c90.patch
+
+-------------------------------------------------------------------
+Tue Jun 19 17:48:26 MDT 2012 - jfehlig@suse.com
+
+- Update to libvirt 0.9.11.4 stable release
+
+-------------------------------------------------------------------
+Tue Jun 12 14:18:23 MDT 2012 - jfehlig@suse.com
+
+- VUL-1: Fix hotplug support for usb devices with same vendorID,
+  productID
+  9914477e-usb-search-funcs.patch
+  05abd150-usb-improve-hotplug.patch
+  bnc#766559
+
+-------------------------------------------------------------------
+Wed May 30 16:00:38 MDT 2012 - jfehlig@suse.com
+
+- Add capability 'audit_write' to libvirtd apparmor profile
+  update install-apparmor-profiles.patch
+  bnc#764388
+- Update to libvirt 0.9.11.3 stable release
+
+-------------------------------------------------------------------
+Wed Apr 25 12:26:25 MDT 2012 - jfehlig@suse.com
+
+- Copy user in virURIParse
+  4eb1c256-viruri-user.patch
+  bnc#757766
+
+-------------------------------------------------------------------
+Wed Apr 25 08:27:04 MDT 2012 - jfehlig@suse.com
+
+- yajl is availabile in all supported SUSE products, so always
+  use it when building libvirtd
+
+-------------------------------------------------------------------
+Thu Apr 12 11:19:38 MDT 2012 - jfehlig@suse.com
+
+- Update to libvirt 0.9.11
+  - Add support for the suspend event
+  - Add support for event tray moved of removable disks
+  - qemu: Support numad
+  - cpustats: API, improvements and qemu support
+  - qemu: support type='hostdev' network devices at domain start
+  - Introduce virDomainPMWakeup API
+  - network: support Open vSwitch
+  - snapshot improvements
+
+-------------------------------------------------------------------
+Mon Mar 26 12:59:04 MDT 2012 - jfehlig@suse.com
+
+- Remove unconditional define of 'with_netcontrol'
+
+-------------------------------------------------------------------
+Thu Feb 16 09:59:52 MST 2012 - jfehlig@suse.com
+
+- Add a note in /etc/libvirt/qemu.conf describing administrator
+  vigilance required when enabling a lock manager such as sanlock
+
+-------------------------------------------------------------------
+Thu Feb 16 09:01:58 MST 2012 - jfehlig@suse.com
+
+- Recommend dmidecode if suse_version > 1110.  dmidecode is used
+  by virConnectGetSysinfo.
+
+-------------------------------------------------------------------
+Wed Feb 15 22:00:42 MST 2012 - jfehlig@suse.com
+
+- Add upstream patches to fix issues with older PolicyKit
+  c05ec920-polkit0-build.patch
+  fcdfa31f-polkit0-auth.patch
+
+-------------------------------------------------------------------
+Wed Feb 15 11:57:25 MST 2012 - jfehlig@suse.com
+
+- Update to libvirt 0.9.10
+  - Add support for sVirt in the LXC driver
+  - Add new API virDomainBlockRebase
+  - Add api to set and get domain metadata
+  - virDomainGetDiskErrors public API
+  - Add rawio attribute to disk element of domain XML
+  - Introduce virDomainPMSuspendForDuration API
+  - Add virStorageVolResize() API
+  - Add a virt-host-validate command to sanity check HV config
+  - Add new virDomainShutdownFlags API
+  - QEMU guest agent support
+
+-------------------------------------------------------------------
+Wed Feb  8 11:12:28 MST 2012 - jfehlig@suse.com
+
+- Fix libvirtd apparmor profile to work with libxenlight toolstack
+  Updated install-apparmor-profiles.patch
+  bnc#745890
+
+-------------------------------------------------------------------
+Wed Jan 25 14:40:32 MST 2012 - jfehlig@suse.com
+
+- Fix init script packaging after enabling systemd support
+
+-------------------------------------------------------------------
+Tue Jan 24 14:26:47 MST 2012 - jfehlig@suse.com
+
+- Fix %files after enabling sanlock support
+
+-------------------------------------------------------------------
+Wed Jan 18 15:58:57 MST 2012 - jfehlig@suse.com
+
+- Enable libvirt integration with sanlock
+
+-------------------------------------------------------------------
+Wed Jan 11 09:32:28 MST 2012 - jfehlig@suse.com
+
+- During configure, libvirt checks for availability of iptables
+  binary and doesn't actually use anything from iptables-devel
+  package, hence only need 'BuildRequires: iptables'.
+
+-------------------------------------------------------------------
+Mon Jan  9 15:45:33 MST 2012 - jfehlig@suse.com
+
+- Update to libvirt 0.9.9
+  - Add new API virDomain{S,G}etInterfaceParameters
+  - Add new API virDomain{G,S}etNumaParameters
+  - Add support for ppc64 qemu
+  - Support Xen domctl v8
+
+-------------------------------------------------------------------
+Wed Jan  4 16:41:32 MST 2012 - jfehlig@suse.com
+
+- Fixup systemd support as per openSUSE systemd packaging
+  guidelines.
+
+-------------------------------------------------------------------
+Tue Jan  3 09:20:43 MST 2012 - jfehlig@suse.com
+
+- Use %fdupes for duplicate file checking instead of hand-rolled
+  function
+
+-------------------------------------------------------------------
+Wed Dec 14 18:13:11 MST 2011 - jfehlig@suse.com
+
+- CVE-2011-4600: unintended firewall port exposure after restarting
+  libvirtd when defining a bridged forward-mode network
+  ae1232b2-CVE-2011-4600.patch
+  bnc#736082
+
+- Post-0.9.8 upstream systemd patches
+  10404671-systemd-build-fix.patch 478a4d07-systemd-build-fix.patch
+  
+- Update to libvirt 0.9.8
+  - Add support for QEMU 1.0
+  - Add first parts of PPC cpu driver
+  - Add new API virDomain{Set, Get}BlockIoTune
+  - block_resize: Define the new API
+  - Add a public API to invoke suspend/resume on the host
+  - Various improvements for LXC containers
+  - Define keepalive protocol and add virConnectIsAlive API
+  - Add support for STP and VLANfiltering
+  - Numerous bug fixes and improvements
+
+-------------------------------------------------------------------
+Tue Dec 13 21:37:19 MST 2011 - jfehlig@suse.com
+
+- Add support for QEMU 1.0
+  dd8e8956-qemu-1.0.patch
+  bnc#736569
+
+-------------------------------------------------------------------
+Wed Nov 30 09:53:25 MST 2011 - jfehlig@suse.com
+
+- Allow qemu driver (and hence libvirtd) to load when qemu
+  user:group does not exist.  The kvm or qemu package, which may
+  not exist on a xen host, creates qemu user:group.
+  relax-qemu-usergroup-check.patch
+
+-------------------------------------------------------------------
+Mon Nov 28 14:57:04 MST 2011 - jfehlig@suse.com
+
+- Handle empty strings in s-expression returned by xend
+  a495365d-sexpr-empty-str.patch
+  bnc#731344
+- Allow libvirtd to access libvirt_{io,part}helper when confined
+  by apparmor
+  Update install-apparmor-profiles.patch
+  bnc#730435
+
+-------------------------------------------------------------------
+Mon Nov 21 12:34:55 MST 2011 - jfehlig@suse.com
+
+- Accommodate Xen domctl version 8
+  xen-domctl-ver8.patch
+
+-------------------------------------------------------------------
+Sun Nov 20 06:25:30 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Nov 15 15:05:36 MST 2011 - jfehlig@suse.com
+
+- Fix build when using older PolicyKit
+  d47ab3fe-polkit0.patch
+
+-------------------------------------------------------------------
+Wed Nov  9 18:52:18 MST 2011 - jfehlig@suse.com
+
+- Update to libvirt 0.9.7
+  - esx: support vSphere 5.x
+  - vbox: support for VirtualBox 4.1
+  - Introduce the virDomainOpenGraphics API
+  - Add AHCI support to qemu driver
+  - snapshot: many improvements and 2 new APIs
+  - api: Add public api for 'reset'
+
+-------------------------------------------------------------------
+Tue Oct 18 15:20:11 MDT 2011 - jfehlig@suse.com
+
+- Add AHCI controller support to qemu driver
+  c1bc3d89-qemu-add-ahci.patch
+- Set security driver to 'none' in /etc/libvirt/qemu.conf.  Users
+  must opt-in for Apparmor confinement of qemu instances.
+  suse-qemu-conf.patch
+
+-------------------------------------------------------------------
+Thu Sep 22 21:08:11 MDT 2011 - jfehlig@suse.com
+
+- Revert upstream commit f84aedad, which is not needed since
+  affected SUSE kvm packages have the necessary qemu fix
+  f84aedad-revert.patch
+
+-------------------------------------------------------------------
+Thu Sep 22 20:43:51 MDT 2011 - jfehlig@suse.com
+
+- Update to libvirt 0.9.6
+  - Fix shutdown regression with buggy qemu
+
+-------------------------------------------------------------------
+Wed Sep 21 20:12:16 UTC 2011 - andrea.turrini@gmail.com
+
+- Fixed typos in libvirt.spec
+
+-------------------------------------------------------------------
+Tue Sep 20 11:51:44 MDT 2011 - jfehlig@suse.com
+
+- Update to libvirt 0.9.5
+  - many snapshot improvements
+  - latency: Define new public API and structure
+  - USB2 and various USB improvements
+  - storage: Add fs pool formatting
+  - Add public API for getting migration speed
+  - Add basic driver for Microsoft Hyper-V
+  - Many bug fixes and improvements
+
+-------------------------------------------------------------------
+Fri Sep 16 12:50:51 MDT 2011 - jfehlig@suse.com
+
+- Enable building with libnetcontrol
+
+-------------------------------------------------------------------
+Fri Sep 16 12:02:37 UTC 2011 - jengelh@medozas.de
+
+- Select libnl-1_1-devel
+
+-------------------------------------------------------------------
+Wed Sep 14 17:18:36 MDT 2011 - jfehlig@suse.com
+
+- Set qemu migration speed unlimited when migrating to file
+  7e5f6a51-rpc-generator.patch b12354be-mig-speed-1.patch
+  1282bd80-mig-speed-2.patch 6f84e110-mig-speed-3.patch
+  829bce17-mig-speed-4.patch 8fc40c51-mig-speed-5.patch
+  ef1065cf-mig-speed-6.patch 0257ba8f-mig-speed-7.patch
+  bnc#706436
+
+-------------------------------------------------------------------
+Wed Sep 14 16:12:49 MDT 2011 - jfehlig@suse.com
+
+- Increase max size of buffer used to receive xend response
+  57c95175-xend-buff-size.patch
+- Don't overwrite useful error messages in legacy xen driver
+  32620dab-fix-xen-err-msg.patch
+  bnc#711096
+
+-------------------------------------------------------------------
+Wed Sep 14 15:49:37 MDT 2011 - jfehlig@suse.com
+
+- Add upstream patches to stop excessive logging
+  7f2498ef-no-log-invalid.patch 6ff9fc26-quiet-libxl-logging.patch
+
+-------------------------------------------------------------------
+Wed Sep 14 12:06:36 MDT 2011 - jfehlig@suse.com
+
+- Add 'Conflicts: kvm < 0.14.1' to ensure libvirt is using a
+  kvm package that creates qemu user:group.  Remove user:group
+  creation from libvirt
+  bnc#694883
+- Add libvirt group at package installation
+  bnc#694885
+
+-------------------------------------------------------------------
+Thu Sep  8 11:11:07 MDT 2011 - jfehlig@suse.com
+
+- Explicitly add 'BuildRequires: libgcrypt-devel' since it is no
+ longer required by libgnutls-devel
+
+-------------------------------------------------------------------
+Thu Sep  8 10:21:11 MDT 2011 - jfehlig@suse.com
+
+- netcf is buggy and not well maintained in SUSE.  Disable it in
+  libvirt
+
+-------------------------------------------------------------------
+Thu Sep  8 10:15:32 MDT 2011 - jfehlig@suse.com
+
+- polkit support was mistakenly disabled, re-enable
+
+-------------------------------------------------------------------
+Wed Aug 24 20:29:37 MDT 2011 - jfehlig@novell.com
+
+- Add cgconfig to Should-{Start,Stop} in libvirtd init script
+  bnc#712245
+
+-------------------------------------------------------------------
+Fri Aug 19 15:21:39 MDT 2011 - jfehlig@suse.com
+
+- Fix apparmor profile location and content
+  update install-apparmor-profiles.patch
+  bnc#705668
+
+-------------------------------------------------------------------
+Wed Aug 17 16:24:17 MDT 2011 - jfehlig@suse.com
+
+- Fix libvirtd SIGHUP handler
+  9e093f0b-libvirtd-sighup.patch
+
+-------------------------------------------------------------------
+Wed Aug 17 09:13:41 CEST 2011 - dmueller@suse.de
+
+- add baselibs.conf to sources
+
+-------------------------------------------------------------------
+Mon Aug  8 15:21:42 MDT 2011 - jfehlig@suse.com
+
+- Enable apparmor security dirver, SLES bnc#705668
+  install-apparmor-profiles.patch
+
+-------------------------------------------------------------------
+Thu Aug  4 11:07:32 MDT 2011 - jfehlig@suse.com
+
+- Update to libvirt 0.9.4
+ - bandwidth QoS control
+ - Add new API virDomainBlockPull*
+ - save: new API to manipulate save file images
+ - CPU bandwidth limits support
+ - allow to send NMI and key event to guests
+ - new API virDomainUndefineFlags
+ - Implement code to attach to external QEMU instances
+ - various missing python binding
+ - bios: Add support for SGA
+ - Numerous improvements and documentation / bug fixes
+
+-------------------------------------------------------------------
+Wed Jul 13 14:37:42 MDT 2011 - jfehlig@suse.de
+
+- Add some upstream patches to fix memory leaks and some bugs
+  in new rpc code
+  c2ddd536-cert-key-order.patch 3e5d48ef-rpc-1.patch
+  927dfcf6-rpc-2.patch 2c85644b-rpc-3.patch afe8839f-rpc-4.patch
+  3cfdc57b-rpc-5.patch 7518ad75-remote-mem-leak.patch
+  a34e193f-statstest.patch 41828514-skip-xen-tests.patch
+  eb314315-pv-kernel-cmdline.patch 00d3c5a6-remove-dead-code.patch
+  b8adfcc6-fix-polkit0-build.patch b2534529-unused-param.patch
+
+-------------------------------------------------------------------
+Tue Jul  5 14:15:22 MDT 2011 - jfehlig@suse.de
+
+- Update to libvirt 0.9.3
+  - vcpupin: introduce the new libvirt API (virDomainGetVcpupinInfo)
+  - Add TXT record support for virtual DNS service
+  - Support reboots with the QEMU driver
+  - Introduce virDomainGetControlInfo API
+  - virNodeGetMemoryStats: Expose new API
+  - virNodeGetCPUTime: Implement public API
+  - send-key: Defining the public API
+  - vcpupin: introduce a new libvirt API (virDomainPinVcpuFlags)
+  - support multifunction PCI device
+  - lxc: various improvements
+
+-------------------------------------------------------------------
+Fri Jul  1 10:10:23 MDT 2011 - jfehlig@suse.de
+
+- Create qemu user:group if necessary at package installation.
+  More fallout from bnc#694883
+
+-------------------------------------------------------------------
+Thu Jun 30 14:48:51 MDT 2011 - jfehlig@suse.de
+
+- VUL-0: libvirt: integer overflow in VirDomainGetVcpus
+  774b21c1-CVE-2011-2511.patch
+  bnc#703084
+
+-------------------------------------------------------------------
+Thu Jun 30 10:44:17 MDT 2011 - jfehlig@suse.de
+
+- Enable building libvirt with audit support
+  bnc#694891
+
+-------------------------------------------------------------------
+Mon Jun 13 14:50:32 CST 2011 - lidongyang@novell.com
+
+- fate#311371 Enhance yast to configure live migration for
+  Xen and KVM
+  add firewall service file for libvirt
+
+-------------------------------------------------------------------
+Thu Jun  9 09:38:44 MDT 2011 - jfehlig@suse.de
+
+- Invoke qemu instances as user:group qemu:qemu by default
+  bnc#694883
+
+-------------------------------------------------------------------
+Mon Jun  6 11:40:13 MDT 2011 - jfehlig@suse.de
+
+- Update to libvirt 0.9.2
+  - Framework for lock manager plugins
+  - API for network config change transactions (netcf required)
+  - flags for setting memory parameters
+  - virDomainGetState public API
+  - qemu: allow blkstat/blkinfo calls during migration
+  - Introduce migration v3 API
+  - Defining the Screenshot public API
+  - public API for NMI injection
+- spec file: Adjust some directory attributes to support running
+  non-privileged qemu instances
+
+-------------------------------------------------------------------
+Mon May 15 15:53:21 MDT 2011 - jfehlig@suse.de
+
+- Remove vi_VN locale if suse_version < 11.3
+
+-------------------------------------------------------------------
+Thu May 12 13:40:09 UTC 2011 - fcrozat@suse.com
+
+- Enable cap_ng when building lxc support.
+
+-------------------------------------------------------------------
+Thu May  5 19:01:54 MDT 2011 - jfehlig@suse.de
+
+- Update to libvirt 0.9.1
+  - support various persistent domain updates
+  - improvements on memory APIs
+  - Add virDomainEventRebootNew
+  - various improvements to libxl drive
+  - Spice: support audio, images and stream compression
+
+-------------------------------------------------------------------
+Tue Apr 12 15:26:02 MDT 2011 - jfehlig@suse.de
+
+- Move libvirt-iohelper from client to base package
+
+-------------------------------------------------------------------
+Tue Apr 12 05:11:22 UTC 2011 - coolo@opensuse.org
+
+- fix baselibs.conf not to requires source 32bit
+
+-------------------------------------------------------------------
+Mon Apr 11 16:48:48 MDT 2011 - jfehlig@suse.de
+
+- Install log dir for libxl
+  f7e9b448-libxl-build.patch
+
+-------------------------------------------------------------------
+Mon Apr  4 16:02:23 MDT 2011 - jfehlig@novell.com
+
+- Update to libvirt 0.9.0 final
+  - Support cpu usage tuning
+  - Add public APIs for storage volume upload/download
+  - Add public API for setting migration speed on the fly
+  - Add libxenlight driver
+  - qemu: support migration to fd
+  - add virDomain{Get,Set}BlkioParameters
+  - introduce a new libvirt API (virDomainSetMemoryFlags)
+  - Expose event loop implementation as a public API
+  - Dump the debug buffer to libvirtd.log on fatal signal
+  - Audit support
+  - Numerous enhancements and bug fixes
+
+-------------------------------------------------------------------
+Thu Mar 31 14:16:17 MST 2011 - jfehlig@novell.com
+
+- Update to libvirt 0.9.0 RC3
+
+-------------------------------------------------------------------
+Thu Mar 24 10:23:30 UTC 2011 - coolo@novell.com
+
+- use %first_lang before changing symlinks, find_lang removes
+  unsupported languages
+
+-------------------------------------------------------------------
+Tue Mar 15 09:37:20 MDT 2011 - jfehlig@novell.com
+
+- VUL-0: libvirt: several API calls do not honour read-only
+  connection
+  71753cb7-CVE-2011-1146.patch
+  bnc#678406
+
+-------------------------------------------------------------------
+Mon Mar  7 11:47:17 MST 2011 - jfehlig@novell.com
+
+- Add baselibs.conf file to build xxbit packages
+  for multilib support
+  bnc#676921
+
+-------------------------------------------------------------------
+Fri Feb 25 12:38:09 MST 2011 - jfehlig@novell.com
+
+- Minor fixes for libvirt-guests
+  bnc#653398
+
+-------------------------------------------------------------------
+Thu Feb 17 20:39:22 MST 2011 - jfehlig@novell.com
+
+- Do not add drive 'boot=on' param when a kernel is specified
+  efc2594b-boot-param.patch
+
+-------------------------------------------------------------------
+Thu Feb 17 10:26:11 MST 2011 - jfehlig@novell.com
+
+- Update to libvirt 0.8.8 final
+  - sysinfo: expose new API
+  - cgroup blkio weight support
+  - smartcard device support
+  - qemu: Support per-device boot ordering
+
+-------------------------------------------------------------------
+Tue Feb 15 09:02:30 MST 2011 - jfehlig@novell.com
+
+- Update to libvirt 0.8.8 RC3
+
+-------------------------------------------------------------------
+Fri Feb 11 11:43:16 MST 2011 - jfehlig@novell.com
+
+- Update to libvirt 0.8.8 RC1
+
+-------------------------------------------------------------------
+Mon Jan 31 09:14:37 MST 2011 - jfehlig@novell.com
+
+- Remove explicit dependency on libyajl
+  libvirt.spec
+  bnc#668225
+
+-------------------------------------------------------------------
+Fri Jan 21 11:04:07 MST 2011 - jfehlig@novell.com
+
+- Retry JSON monitor 'cont' cmd on MigrationExpected error
+  4301b95a-json-cont-cmd.patch
+
+-------------------------------------------------------------------
+Tue Jan 18 14:57:18 MST 2011 - jfehlig@novell.com
+
+- Add support for specifying Hardware Assisted Paging (HAP) in
+  libvirt domain XML.
+  48a5dccd-hap1.patch
+  04197350-hap2.patch
+  af521a01-hap3.patch 
+  79f56c66-hap4.patch
+  094c6f4a-hap-fix.patch
+  bnc#659665
+
+-------------------------------------------------------------------
+Tue Jan 18 09:25:18 MST 2011 - jfehlig@novell.com
+
+- Enabled yajl for suse_version >= 1140
+
+-------------------------------------------------------------------
+Fri Jan 14 15:39:16 MST 2011 - jfehlig@novell.com
+
+- Fix generation of dnsmasq's --dhcp-hostsfile option
+  a43c7338-dnsmasq-hostfile-fix.patch
+- Disable yajl support as the library does not yet exist in
+  SuSE distros.
+
+-------------------------------------------------------------------
+Tue Jan 11 16:40:27 MST 2011 - jfehlig@novell.com
+
+- Support libvirt-guests on SuSE distros
+  use-libvirt-guests-on-suse.patch
+  bnc#653398
+
+-------------------------------------------------------------------
+Mon Jan  3 13:12:21 MST 2011 - jfehlig@novell.com
+
+- Update to libvirt 0.8.7
+  - Preliminary support for VirtualBox 4.0
+  - IPv6 support
+  - Add VMware Workstation and Player driver
+  - Add network disk support
+
+-------------------------------------------------------------------
+Wed Dec 22 14:41:46 MST 2010 - jfehlig@novell.com
+
+- Fix VNC port reservation race in qemu driver
+  c58b1056-init-bitmap-size.patch
+  bnc#659431
+
+-------------------------------------------------------------------
+Fri Dec 10 16:31:02 MDT 2010 - jfehlig@novell.com
+
+- Do not limit insserv_cleanup to SLES
+
+-------------------------------------------------------------------
+Thu Dec  9 17:28:43 MDT 2010 - jfehlig@novell.com
+
+- disable building openvz driver
+
+-------------------------------------------------------------------
+Mon Nov  1 17:27:29 MDT 2010 - jfehlig@novell.com
+
+- Update to libvirt 0.8.6
+  - new API virDomainIsUpdated
+  - Add support for iSCSI target auto-discovery
+  - QED: Basic support for QED images
+  - Introduce a virDomainOpenConsole API
+  - Support for SPICE graphics
+  - Add a sysinfo and SMBIOS support
+  - Implement virsh qemu-monitor-command
+- Enabled yajl, macvtap, and virtualport for suse_version >= 1140
+
+-------------------------------------------------------------------
+Mon Nov  1 17:27:29 MDT 2010 - jfehlig@novell.com
+
+- Fix build when using "policy kit 0"
+  polkit0.patch
+
+-------------------------------------------------------------------
+Mon Nov  1 16:12:54 MDT 2010 - jfehlig@novell.com
+
+- Update to libvirt 0.8.5
+  - Enable JSON and netdev features in QEMU > 0.13
+  - framework for auditing integration
+  - framework for DTrace/SystemTap integration
+  - Setting the number of vcpu at boot
+  - Enable support for nested SVM
+  - Virtio plan9fs filesystem QEMU
+  - Memory parameter controls
+  - portability to OS-X
+  - lot of bug fixes and other improvements
+
+-------------------------------------------------------------------
+Wed Oct 13 17:44:27 MDT 2010 - jfehlig@novell.com
+
+- cannot restart dead libvirtd without manually removing pidfile
+  modified libvirtd.init
+  bnc#645755
+
+-------------------------------------------------------------------
+Mon Oct 11 19:04:21 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Fix package dependencies so can be installed without
+  pulling excess of optional components 
+
+-------------------------------------------------------------------
+Tue Oct  5 16:29:42 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Support dropping capabilities with cap-ng library in 
+  openSUSE >= 11.3
+
+-------------------------------------------------------------------
+Tue Sep 28 14:20:32 MDT 2010 - jfehlig@novell.com
+
+- Fix build when virtualport support is available but macvtap is
+  disabled.
+  vport-configure.patch
+
+-------------------------------------------------------------------
+Thu Sep 23 02:42:39 MDT 2010 - jfehlig@novell.com
+
+- Fix CDROM media change for Xen PV domains
+  modified xen-pv-cdrom.patch
+  bnc#636231
+
+-------------------------------------------------------------------
+Fri Sep 10 15:45:04 MDT 2010 - jfehlig@novell.com
+
+- Update to libvirt 0.8.4
+  - various improvements to UML driver
+  - documentation improvements
+  - lot of bug fixes and other improvements
+  - enable ESX driver for openSUSE
+
+-------------------------------------------------------------------
+Fri Aug  6 21:53:21 MDT 2010 - jfehlig@novell.com
+
+- Update to libvirt 0.8.3
+  - Support vSphere 4.1
+  - Qemu arbitrary monitor commands
+  - Qemu Monitor API entry point
+  - lots of improvements and bug fixes
+
+-------------------------------------------------------------------
+Fri Jul  9 14:35:04 MDT 2010 - jfehlig@novell.com
+
+- VUL-0: multiple issues in libvirt
+  CVE-2010-223x-000[1-0].patch, CVE-2010-223x-0010.patch,
+  CVE-2010-2242-nat.patch
+  bnc#618155
+
+-------------------------------------------------------------------
+Fri Jun 25 09:02:38 MDT 2010 - jfehlig@novell.com
+
+- Use netcat-openbsd, which contains a proper 'nc' program
+  supporting the '-U' option.  Drop socat.patch.
+  bnc#611023
+
+-------------------------------------------------------------------
+Mon Jun 21 10:00:13 MDT 2010 - jfehlig@novell.com
+- Re-enable numa support now that bnc#598488 is resolved.
+
+-------------------------------------------------------------------
+Fri Jun  4 13:16:31 MDT 2010 - jfehlig@novell.com
+- Allocate buffer to hold xend content
+  bnc#609738
+  xend-buff-size.patch
+
+- Add upstream fixes to bitmap code that was introduced to fix
+  bnc#594024
+  bitmap-alloc.patch
+  bitmap-fixes.patch
+
+-------------------------------------------------------------------
+Tue Jun  1 13:52:21 MDT 2010 - jfehlig@novell.com
+
+- Fix race in VNC port reservation with qemu/KVM domains
+  bnc#594024
+  vnc-race-{1,2,3}.patch
+
+-------------------------------------------------------------------
+Wed May 12 11:29:44 MDT 2010 - jfehlig@novell.com
+
+- Don't package directories/files under /var/run
+- Add upstream commit 34a7f3f6 to fix unintentional breakage of
+  RPC protocol.
+- Disable numa support in openSUSE11.3/Factory pending resolution
+  of bnc#598488
+
+-------------------------------------------------------------------
+Fri Apr 30 15:25:52 MDT 2010 - jfehlig@novell.com
+
+- Update to libvirt 0.8.1
+  - Add virDomainGetBlockInfo API to query disk sizing
+  - Start dnsmasq from libvirtd with --dhcp-hostsfile option
+  - lots of improvements and bug fixes
+
+-------------------------------------------------------------------
+Mon Apr 12 18:15:38 MDT 2010 - jfehlig@novell.com
+
+- Update to libvirt 0.8.0
+  - Snapshot API framework
+  - Add managed save API entry points
+  - Timer subselection for domain clock
+  - Add hook utilities
+  - Network filtering API
+  - Introduce a new virDomainUpdateDeviceFlags public API
+  - Introduce a new public API for domain events
+  - Public virDomainMigrateSetMaxDowntime API
+  - Add public API for volume wiping
+  - xenapi: Initial commit of the new driver
+  - lots of improvements and bug fixes
+
+-------------------------------------------------------------------
+Fri Mar 26 17:20:11 MDT 2010 - jfehlig@novell.com
+
+- Fix 'virsh dominfo' crash when no security driver is configured
+  fix-no-secdriver.patch
+
+-------------------------------------------------------------------
+Sun Mar 21 21:20:17 MST 2010 - jfehlig@novell.com
+
+- Updated to version 0.7.7
+  - Introduce public API for domain async job handling
+  - macvtap support
+  - Add QEMU support for virtio channel
+  - Add persistence of PCI addresses to QEMU
+  - Functions for computing baseline CPU from a set of host CPUs
+  - Public API for virDomain{Attach,Detach}DeviceFlags
+  - lots of improvements and bug fixes
+
+-------------------------------------------------------------------
+Tue Mar  9 10:40:49 MST 2010 - jfehlig@novell.com
+
+- Ensure yast-created bridges are not manipulated by libvirt
+  bnc#584757
+  Modified suse-network.patch
+
+-------------------------------------------------------------------
+Wed Mar  3 19:03:03 MST 2010 - jfehlig@novell.com
+
+- Fix ordering of xen disks to preserve 'bootable' flag
+  bnc#474738
+  xend-disk-order.patch
+- Add support for blktap2 disks
+  xen-tap2-support.patch
+
+-------------------------------------------------------------------
+Mon Mar  1 15:48:51 MST 2010 - jfehlig@novell.com
+
+- Fix listing of yast-created bridges
+  bnc#583754
+  Modified suse-network.patch
+
+-------------------------------------------------------------------
+Mon Feb 22 11:05:41 MST 2010 - jfehlig@novell.com
+
+- Add support for new XEN_DOMCTL_INTERFACE_VERSION version 7.
+  xen-domctl-ver7.patch
+
+-------------------------------------------------------------------
+Mon Feb 15 15:40:51 MST 2010 - jfehlig@novell.com
+
+- Unconditionally add /var/log/libvirt/{qemu,lxc,uml} directories.
+  bnc#579522
+
+-------------------------------------------------------------------
+Thu Feb  4 12:36:48 MST 2010 - jfehlig@novell.com
+
+- Updated to version 0.7.6
+  - Implement support for multi IQN
+  - Implement CPU topology support for QEMU driver
+  - Use QEmu new device adressing when possible
+  - Implement SCSI controller hotplug/unplug for QEMU
+  - lots of improvements and bug fixes
+
+-------------------------------------------------------------------
+Wed Jan 27 17:48:18 MST 2010 - jfehlig@novell.com
+
+- Support new XEN_SYSCTL_INTERFACE_VERSION 7 in libvirt
+  bnc#574124
+  xen-sysctl-v7.patch
+- Add upstream patches as prelude to fixing various device
+  attach/detach issues
+  devflag-0[1-9].patch
+- Fix attaching/detaching disk device from inactive Xen guest
+  bnc#500586 and bnc#573748
+
+-------------------------------------------------------------------
+Tue Jan 12 12:36:15 MST 2010 - jfehlig@novell.com
+
+- Fix migration with Xen4.0
+  bnc#569598
+  Add xen-migration-params.patch
+  Remove migrate-params.patch
+
+-------------------------------------------------------------------
+Wed Jan  6 18:02:00 MST 2010 - jfehlig@novell.com
+
+- Fix freeing of uninitialized pointer when using HAL in
+  node device driver
+  node-dev-free.patch
+
+-------------------------------------------------------------------
+Mon Jan  4 14:14:41 MST 2010 - jfehlig@novell.com
+
+- Require virt-utils package for common tools such as qemu-img
+
+-------------------------------------------------------------------
+Tue Dec 29 10:26:55 MST 2009 - jfehlig@novell.com
+
+- Updated to version 0.7.5
+  - Add new API virDomainMemoryStats to header and drivers
+  - Public API and domain extension for CPU flags
+  - expose SR IOV physical/virtual function relationships
+  - Support for JSON mode monitor [deactivated]
+  - Support for interface model='netfront'
+  - vbox: Add support for version 3.1
+  - Support QEMU's virtual FAT block device driver
+  - lots of improvements and bug fixes
+- Fix libvirt xen hypervisor driver to work with domctl interface
+  version 6
+  xen-shr-pages.patch
+
+-------------------------------------------------------------------
+Mon Dec  7 14:51:36 MST 2009 - jfehlig@novell.com
+
+- Plumb domain description in xend backend
+  xend-description-tag.patch
+
+-------------------------------------------------------------------
+Tue Nov 24 17:46:08 MST 2009 - jfehlig@novell.com
+
+- Fix listing of defined but inactive Xen domains
+  xen-list-defined.patch
+
+-------------------------------------------------------------------
+Tue Nov 24 10:29:03 MST 2009 - jfehlig@novell.com
+
+- Updated to version 0.7.4
+  - Implement a node device backend using libudev
+  - New APIs for checking some object properties
+  - Fully asynchronous monitor I/O processing
+  - add MAC address based port filtering to qemu
+  - support for IPv6 / multiple addresses per interfaces
+  - lots of improvements and bug fixes
+
+-------------------------------------------------------------------
+Thu Nov 19 16:48:36 MST 2009 - jfehlig@novell.com
+
+- Fix compilation against xen-unstable
+  xen-max-vcpus.patch
+- Modify detach-disk.patch as per upstream suggestions
+
+-------------------------------------------------------------------
+Wed Nov  4 20:53:11 MDT 2009 - jfehlig@novell.com
+
+- spec file: Fix polkit vs PolicyKit Requires
+
+-------------------------------------------------------------------
+Mon Oct 19 14:13:47 MDT 2009 - jfehlig@novell.com
+
+- Fix compilation when selinux is enabled
+  selinux-ldflags.patch
+- Fix compilation warnings
+  updated snapshots.patch
+  virsh-warning.patch
+
+-------------------------------------------------------------------
+Thu Oct 15 22:26:35 MDT 2009 - jfehlig@novell.com
+
+- Updated to version 0.7.2
+  - sVirt AppArmor security driver
+  - Add public API definition for data stream handling
+  - ESX add esxDomainDefineXML()
+  - LXC: suspend/resume support
+  - Big code tree cleanup
+  - Lots of bug fixes and improvements
+
+-------------------------------------------------------------------
+Tue Oct 13 16:28:03 MDT 2009 - jfehlig@novell.com
+
+- Add ocfs2 to list of supported fs pool types
+  fate#307387
+
+-------------------------------------------------------------------
+Mon Oct 12 22:39:42 MDT 2009 - jfehlig@novell.com
+
+- Build phyp driver ifarch ppc64
+  fate#307096
+- Fix memory leaks in libvirtd's message processing
+  msg-proc-memleak.patch
+
+-------------------------------------------------------------------
+Tue Sep 29 08:34:28 MDT 2009 - jfehlig@novell.com
+
+- Fix connection ref counting in xen drivers
+  xen-refcnt.patch
+
+-------------------------------------------------------------------
+Fri Sep 25 11:41:23 MDT 2009 - jfehlig@novell.com
+
+- Fix abort in virsh when specifying a connection URI
+  vshdeinit-recurse.patch
+
+-------------------------------------------------------------------
+Wed Sep 23 11:10:37 MDT 2009 - jfehlig@novell.com
+
+- Workaround for missing pkgconfig file in device-mapper-devel
+  devmap-no-pkgconfig.patch
+  bnc#540942
+
+-------------------------------------------------------------------
+Mon Sep 21 10:30:02 MDT 2009 - jfehlig@novell.com
+
+- Updated to version 0.7.1
+  - Add support for encrypted (qcow) volume creation
+  - Secret manipulation public API
+  - Multipath storage support module
+  - VBox add Storage Volume support
+  - Support configuration of huge pages in guests
+  - Support new PolicyKit 1.0 API
+  - Compressed save image format for Qemu
+  - Qemu add host PCI device hotplug support
+
+-------------------------------------------------------------------
+Wed Aug 26 15:52:37 MDT 2009 - jfehlig@novell.com
+
+- Updated to version 0.7.0
+  - Interface implementation based on netcf (disabled on SuSE)
+  - Add new net filesystem glusterfs
+  - Initial VMWare ESX driver
+  - Add support for VBox 3 and event callbacks on vbox
+  - First version of the Power Hypervisor driver
+  - Run QEMU guests as an unprivileged user (still root on SuSE)
+  - Support cgroups in QEMU driver
+  - QEmu hotplug NIC support
+  - Storage cloning for LVM and Disk backends
+
+-------------------------------------------------------------------
+Tue Jul  7 10:03:37 MDT 2009 - jfehlig@novell.com
+
+- Updated to version 0.6.5
+  - create storage volumes on disk backend
+  - drop of capabilities based on libcap-ng when possible
+  - forbid autostart on transcient networks
+  - re-detection of transient VMs after libvirtd restart
+  - create and destroy NPIV support
+  - other bug fixes and cleanups
+
+-------------------------------------------------------------------
+Fri Apr 24 14:26:39 MDT 2009 - jfehlig@novell.com
+
+- Removed unnecessary call to fillup_and_insserv macro in
+  %post scriptlet
+
+-------------------------------------------------------------------
+Wed Apr 22 17:33:01 MDT 2009 - jfehlig@novell.com
+
+- Updated to version 0.6.2
+  - support SASL auth for VNC server
+  - memory ballooning in QEMU
+  - SCSI HBA storage pool support
+  - PCI passthrough in Xen driver
+  - new APIs for Node device detach reattach and reset
+  - sVirt mandatory access control support
+  - thread safety of the API and event handling
+  - allow QEmu domains to survive daemon restart
+  - extended logging capabilities
+  - support copy-on-write storage volumes
+  - support of storage cache control options for QEMU/KVM
+- Improvements from lnussel@suse.de
+  - add %jobs macro again
+  - package default qemu network and augeas config files again
+  - don't start libvirtd by default (bnc#496838)
+
+-------------------------------------------------------------------
+Mon Apr 20 17:01:38 CEST 2009 - crrodriguez@suse.de
+
+- use --disable-static instead of just removing static libraries 
+
+-------------------------------------------------------------------
+Fri Jan 30 16:11:54 MST 2009 - jfehlig@novell.com
+
+- Fix build for architectures not supporting numa
+- Forward port suse-network.patch and snapshots.patch
+
+-------------------------------------------------------------------
+Wed Jan 28 15:45:25 MST 2009 - jfehlig@novell.com
+
+- Updated to version 0.5.1
+  - CPU and scheduler support for LXC
+  - SDL display configuration
+  - domain lifecycle event support for QEmu and Xen with python
+    bindings
+  - KVM/QEmu migration support
+  - User Mode Linux driver
+  - API for node device enumeration using HAL and DeviceKit with
+    python bindings
+  - Many bug fixes and improvements
+
+-------------------------------------------------------------------
+Fri Jan  9 09:41:49 MST 2009 - jfehlig@novell.com
+
+- Added missing html and png files to libvirt-doc package
+  devhelp.patch
+  bnc#463810
+
+-------------------------------------------------------------------
+Mon Dec 15 12:40:41 MST 2008 - jfehlig@novell.com
+
+- Patch for CVE-2008-5086
+  bnc#459009
+
+-------------------------------------------------------------------
+Fri Dec  5 13:52:31 MST 2008 - jfehlig@novell.com
+
+- Fix migration of Xen domains
+  bnc#456946
+
+-------------------------------------------------------------------
+Tue Dec  2 10:43:20 MST 2008 - jfehlig@novell.com
+
+- Refresh xen-maxmem.patch to match upstream
+  bnc#431766
+
+-------------------------------------------------------------------
+Tue Nov 25 14:09:08 MST 2008 - jfehlig@novell.com
+
+- Add network to Required-Start in libvirtd init script
+  bnc#448756
+
+-------------------------------------------------------------------
+Mon Nov 24 10:51:53 MST 2008 - jfehlig@novell.com
+
+- Fix connecting/disconnecting ISO via virt-manager
+  bnc#446773
+
+-------------------------------------------------------------------
+Thu Nov 20 21:53:13 MST 2008 - jfehlig@novell.com
+
+- Fix detach of Xen tap devices
+  bnc#410644 and bnc#411633
+
+-------------------------------------------------------------------
+Thu Nov  6 19:14:29 MST 2008 - jfehlig@novell.com
+
+- Fix handling of iso/cdrom for xen pv domains.
+  bnc#437388
+
+-------------------------------------------------------------------
+Wed Nov  5 15:06:16 MST 2008 - jfehlig@novell.com
+
+- Expose networks managed outside of libvirt as read-only.
+  bnc#441633
+
+-------------------------------------------------------------------
+Wed Nov  5 14:55:33 MST 2008 - jfehlig@novell.com
+
+- Fix vnc port assignement in domain XML
+  bnc#441625
+
+-------------------------------------------------------------------
+Thu Oct 23 16:33:37 MDT 2008 - jfehlig@novell.com
+
+- Add upstream patches to fix ordering problem with setting up
+  cgroup containment on LXC domains.
+  bnc#437816
+
+-------------------------------------------------------------------
+Mon Oct 20 15:00:11 MDT 2008 - jfehlig@novell.com
+
+- Remove IA64 from list of architectures supporting Xen.
+
+-------------------------------------------------------------------
+Fri Oct 10 10:48:19 MDT 2008 - jfehlig@novell.com
+
+- Added upstream patches providing additional LXC support
+  bnc#433881
+
+-------------------------------------------------------------------
+Mon Oct  6 15:36:17 MDT 2008 - jfehlig@novell.com
+
+- Use xend vs hypercall interface to change max mem setting
+  bnc#431766
+
+-------------------------------------------------------------------
+Wed Oct  1 16:04:21 MDT 2008 - jfehlig@novell.com
+
+- Enabled libvirtd listen mode in libvirtd init script.
+
+-------------------------------------------------------------------
+Tue Sep 30 19:07:45 MDT 2008 - jfehlig@novell.com
+
+- Updated to version 0.4.6
+  - avoid a segfault if missing qemu emulator
+  - reading vncdisplay from xend domain
+  - segfault in OpenVZ
+  - fix parsing of pool without a source
+- Fixed bug in network interface parsing
+  - vif-parsing.patch submitted upstream
+
+-------------------------------------------------------------------
+Tue Sep 16 13:02:40 MDT 2008 - jfehlig@novell.com
+
+- open-iscsi package required for iscsi storage backend
+
+-------------------------------------------------------------------
+Mon Sep 15 15:59:28 MDT 2008 - jfehlig@novell.com
+
+- Updated to version 0.4.5
+  - NETNS support for Linux containers
+  - unified XML domain and network parsing for all drivers
+  - OpenVZ features improvements
+  - OpenVZ and Linux containers support now default
+  - USB device passthrough for QEmu/KVM
+  - storage pool source discovery
+  - other bug fixes and improvements
+
+-------------------------------------------------------------------
+Thu Sep  4 15:49:55 CEST 2008 - kwolf@suse.de
+
+- Added Python bindings for the snapshot functions 
+
+-------------------------------------------------------------------
+Wed Sep  3 21:09:27 CEST 2008 - kwolf@suse.de
+
+- Implemented listing of snapshots for Xen and in virsh 
+
+-------------------------------------------------------------------
+Tue Sep  2 13:23:22 CEST 2008 - kwolf@suse.de
+
+- Added snapshot support. Implemented snapshot_create/apply/delete
+  for Xen.
+
+-------------------------------------------------------------------
+Fri Aug 29 17:37:53 MDT 2008 - jfehlig@novell.com
+
+- Fixed bugs in nfs storage pool creation/deletion
+
+-------------------------------------------------------------------
+Thu Aug 28 18:23:42 MDT 2008 - jfehlig@novell.com
+
+- Fixed bugs in LVM storage pool creation.
+  logical-storage-driver.patch submitted upstream
+
+-------------------------------------------------------------------
+Wed Aug 27 11:35:45 MDT 2008 - jfehlig@novell.com
+
+- Changed mDNS advertisement of libvirtd service to disabled by
+  default.  Enable in libvirtd.conf.
+- Disable libvirtd from listening on TLS socket by default.  User
+  must enable after setting up CA and issuing certificates.
+
+-------------------------------------------------------------------
+Mon Aug 25 14:53:33 MDT 2008 - jfehlig@novell.com
+
+- Enabled iscsi storage driver support
+- Enabled ssh transport using socat.  SuSE's version of netcat
+  does not support connecting to UDS.
+- Fixed spec file breakage due to SELinux enablement
+
+-------------------------------------------------------------------
+Fri Aug 22 17:07:08 CEST 2008 - prusnak@suse.cz
+
+- enabled SELinux support [Fate#303662]
+
+-------------------------------------------------------------------
+Mon Aug 11 22:16:21 MDT 2008 - jfehlig@novell.com
+
+- Cleanup of libvirtd init script
+- Removed dnsmasq from BuildRequires
+
+-------------------------------------------------------------------
+Sat Aug  9 01:10:52 MDT 2008 - jfehlig@novell.com
+
+- Adjustments to spec file
+  + Added /var/lib/libvirt directory
+  + Enabled LXC support if suse_version > 1100, fate #304001
+  + Cleaned up some rpmlint warnings
+
+-------------------------------------------------------------------
+Sun Jul  6 11:16:25 MDT 2008 - jfehlig@novell.com
+
+- Updated to libvirt 0.4.4
+  + Bug fixes: QEmu network serialization, internal memory allocation
+    fixes, virsh large file config problem, xen list APIs when max is
+    zero, string escape problems in the xm driver
+  + Improvements: add autogen to tarballs, improve iSCSI support
+  + Cleanups: const-ness fixed, string helpers for enumeations
+- spec file adjustments
+  + Remove ExclusiveArch
+  + Common spec file for all products
+  + Support for building/running without Xen
+
+-------------------------------------------------------------------
+Fri May  9 09:34:56 MDT 2008 - jfehlig@novell.com
+
+- Adjust libvirtd PolicyKit configuration file to match standard
+  suse procedures.  bnc#388769
+
+-------------------------------------------------------------------
+Mon May  5 11:18:49 MDT 2008 - jfehlig@novell.com
+
+- Fix path to iptables.  bnc#386280
+
+-------------------------------------------------------------------
+Thu Apr 24 14:00:06 MDT 2008 - jfehlig@novell.com
+
+- Fix Xen 3.2 hypercalls.  bnc#378798
+
+-------------------------------------------------------------------
+Thu Apr 10 11:43:14 MDT 2008 - jfehlig@novell.com
+
+- Fix NULL pointer dereference in auth callback.  bnc#373180,
+  bnc#354995
+
+-------------------------------------------------------------------
+Wed Jan  9 15:45:34 MST 2008 - jfehlig@novell.com
+
+- Remove Requires of nc package.  netcat is the equivalent but it
+  does not support unix domain sockets so no need to require it
+  either.
+
+-------------------------------------------------------------------
+Tue Jan  8 17:07:49 CET 2008 - coolo@suse.de
+
+- do not require a non existant package, but change it to a recommend
+  to digestmd5
+
+-------------------------------------------------------------------
+Fri Jan  4 11:06:25 MST 2008 - jfehlig@novell.com
+
+- Updated to libvirt-0.4.0
+  - SASL based authentication for libvirt remote support
+  - PolicyKit authentication
+  - Documentation: example files for QEMU and libvirtd configuations,
+    authentication documentation updates
+  - Bug fixes, improvements and code cleanup
+
+-------------------------------------------------------------------
+Tue Oct  9 14:00:25 MDT 2007 - jfehlig@novell.com
+
+- Updated to libvirt 0.3.3
+  - Avahi mDNS daemon export
+  - NUMA support
+  - Bug fixes
+- Cleanup rpmlint warnings
+
+-------------------------------------------------------------------
+Mon Oct  8 09:56:02 MDT 2007 - jfehlig@novell.com
+
+- Removed 'jobs' option from make invocation in spec file.  Appears
+  to be a subtle dependency issue in one of the makefiles which is
+  causing problems with generation of python bindings when jobs > 1.
+  Bug #329032.
+
+-------------------------------------------------------------------
+Mon Aug 20 17:45:13 MDT 2007 - jfehlig@novell.com
+
+- Added init script for libvirtd.  libvirtd is needed to support
+  management of qemu/kvm guests.  Some Xen networking is handled
+  through libvirt as well - bug #298021.
+
+-------------------------------------------------------------------
+Mon Jul 23 17:08:09 MDT 2007 - jfehlig@novell.com
+
+- Update to libvirt-0.3.0
+  - Secure Remote support
+  - Documentation: remote support, description of the URI connection
+    strings, update of virsh man page, matrix of libvirt API/hypervisor
+    support with version informations
+  - Bug fixes: examples Makefile.am generation, SetMem fix, URI
+    handling and ordering of drivers, fix virsh help without hypervisor,
+    id marshalling fix, fix virConnectGetMaxVcpus on remote, avoid
+    a realloc leak, scheduler parameters handling for Xen, various
+    early remote bug fixes, remove virsh leaks of domains references,
+    configCache refill bug, fix XML serialization bugs
+  - Improvements: QEmu switch to XDR-based protocol, device attach/detach
+    commands OCaml bindings, new entry points virDomainGetConnect and
+    virNetworkGetConnect useful for bindings, reunitifaction of remote
+    and qemu daemon under a single libvirtd with a config file
+  - Cleanups: parsing of connection URIs, messages from virsh,
+    Coverage files, Solaris fixes, avoid [r]index calls, release
+    information in Xen backend, virsh cpupin command cleanups,
+    xen:/// suppport as standard Xen URI, improve driver
+    selection/decline mechanism, error reporting on XML dump,
+    Remove unused virDomainKernel structure, daemon event loop event
+    handling, various unifications cleanup in the daemon merging,
+    internal file and timer monitoring API, remove libsysfs dependancy,
+    call brctl program directly, virBuffer functions cleanups,
+    make init script LSB compliant, error handling on lookup functions,
+    remove internal virGetDomainByID, revamp of xen subdrivers interfaces
+  - Localization updates
+
+-------------------------------------------------------------------
+Tue Jun 12 09:05:17 MDT 2007 - ccoffing@novell.com
+
+- Update to libvirt-0.2.3.
+- Fix duplicate files found by rpmlint.
+
+-------------------------------------------------------------------
+Wed May 23 09:11:18 MDT 2007 - ccoffing@novell.com
+
+- Fix rpmlint errors.
+
+-------------------------------------------------------------------
+Fri Apr 27 10:18:41 MDT 2007 - ccoffing@novell.com
+
+- Update to libvirt-0.2.2.
+
+-------------------------------------------------------------------
+Wed Mar  7 18:50:05 CET 2007 - sbrabec@suse.cz
+
+- Created -doc subpackage (#248813).
+- Do not remove valid locales.
+- Fixed docdir destination.
+- Build with CFLAGS.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Tue Feb 20 15:38:15 MST 2007 - jfehlig@novell.com
+
+- Removed usr/lib/libvirt_proxy setuid binary from package.  Fixes
+  bug #246610.
+
+-------------------------------------------------------------------
+Fri Feb 16 19:36:23 MST 2007 - jfehlig@novell.com
+
+- Updated to latest release.  Many of the issues seen in virt-manager
+  have been caused by bugs / missing functionality in libvirt.  This
+  upate provides a better basis for virt-manager.
+
+-------------------------------------------------------------------
+Wed Jan 10 17:06:55 MST 2007 - jfehlig@novell.com
+
+- Updated to latest release, version 0.1.10.  Submitting to SLES10 SP1
+  to provide base functionality for FATE feature 301181.
+   - more localizations
+   - bug fixes:
+      - VCPU info breakages on xen 3.0.3
+      - xenDaemonListDomains buffer overflow (Daniel Berrange)
+      - reference count bug when creating Xen domains (Daniel Berrange)
+   - improvements:
+      - support graphic framebuffer for Xen paravirt (Daniel Berrange)
+      - VNC listen IP range support (Daniel Berrange)
+      - support for default Xen config files and inactive domains of 3.0.4 (Daniel Berrange)
+
+-------------------------------------------------------------------
+Fri Dec  8 16:28:42 MST 2006 - jfehlig@novell.com
+
+- Updated to latest release, version 0.1.9.
+   - python bindings: release interpeter lock when calling C (Daniel Berrange)
+   - don't raise HTTP error when looking informations for a domain
+   - some refactoring to use the driver for all entry points
+   - better error reporting (Daniel Berrange)
+   - fix OS reporting when running as non-root
+   - provide XML parsing errors
+   - extension of the test framework (Daniel Berrange)
+   - fix the reconnect regression test
+   - python bindings: Domain instances now link to the Connect to avoid garbage collection and disconnect
+   - separate the notion of maximum memory and current use at the XML level
+   - Fix a memory leak (Daniel Berrange)
+   - add support for shareable drives
+   - add support for non-bridge style networking configs for guests(Daniel Berrange)
+   - python bindings: fix unsigned long marshalling (Daniel Berrange)
+   - new config APIs virConfNew() and virConfSetValue() to build configs from scratch
+   - hot plug device support based on Michel Ponceau patch
+   - added support for inactive domains, new APIs, various associated cleanup (Daniel Berrange)
+   - special device model for HVM guests (Daniel Berrange)
+   - add API to dump core of domains (but requires a patched xend)
+   - pygrub bootloader informations take over <os> informations
+   - updated the localization strings
+
+-------------------------------------------------------------------
+Fri Oct 20 13:00:55 MDT 2006 - jfehlig@novell.com
+
+- Updated to latest release, version 0.1.8.
+   -  Bug for system with page size != 4k
+   -  vcpu number initialization (Philippe Berthault)
+   -  don't label crashed domains as shut off (Peter Vetere)
+   -  fix virsh man page (Noriko Mizumoto)
+   -  blktapdd support for alternate drivers like blktap (Daniel Berrange)
+   -  memory leak fixes (xend interface and XML parsing) (Daniel Berrange)
+   -  compile fix
+   -  mlock/munlock size fixes (Daniel Berrange)
+   -  improve error reporting
+- Updated to latest release, version 0.1.7.
+   -  fix a memory bug on getting vcpu informations from xend (Daniel Berrange)
+   -  fix another problem in the hypercalls change in Xen changeset
+       86d26e6ec89b when getting domain informations (Daniel Berrange)
+
+-------------------------------------------------------------------
+Tue Sep 26 11:34:56 MDT 2006 - jfehlig@novell.com
+
+- Updated to latest release, version 0.1.6.  This release includes
+  fix in hypercall driver so local patch has been removed.
+
+-------------------------------------------------------------------
+Wed Sep 13 15:31:26 MDT 2006 - jfehlig@novell.com
+
+- Fixed bug in hypercall driver introduced in version 0.1.5.
+  Patch sumbmitted upstream and included locally until next release.
+
+-------------------------------------------------------------------
+Mon Sep 11 15:26:02 MDT 2006 - jfehlig@novell.com
+
+- Updated to latest release, version 0.1.5
+  - Support for new hypercalls change in Xen changeset 86d26e6ec89b
+  - bug fixes: virParseUUID() was wrong, netwoking for paravirt guestsi
+     (Daniel Berrange), virsh on non-existent domains (Daniel Berrange),
+     string cast bug when handling error in python (Pete Vetere), HTTP
+     500 xend error code handling (Pete Vetere and Daniel Berrange)
+  - improvements: test suite for SEXPR <-> XML format conversions (Daniel
+     Berrange), virsh output regression suite (Daniel Berrange), new environ
+     variable VIRSH_DEFAULT_CONNECT_URI for the default URI when connecting
+     (Daniel Berrange), graphical console support for paravirt guests
+     (Jeremy Katz), parsing of simple Xen config files (with Daniel Berrange),
+     early work on defined (not running) domains (Daniel Berrange),
+     virsh output improvement (Daniel Berrange
+
+-------------------------------------------------------------------
+Mon Aug 28 12:22:45 MDT 2006 - jfehlig@novell.com
+
+- Updated to latest release, version 0.1.4
+  - bug fixes: spec file fix (Mark McLoughlin), error report problem (with
+    Hugh Brock), long integer in Python bindings (with Daniel Berrange), XML
+    generation bug for CDRom (Daniel Berrange), bug whem using number() XPath
+    function (Mark McLoughlin), fix python detection code, remove duplicate
+    initialization errors (Daniel Berrange)
+  - improvements: UUID in XML description (Peter Vetere), proxy code
+    cleanup, virtual CPU and affinity support + virsh support (Michel
+    Ponceau, Philippe Berthault, Daniel Berrange), port and tty informations
+    for console in XML (Daniel Berrange), added XML dump to driver and proxy
+    support (Daniel Berrange), extention of boot options with support for
+    floppy and cdrom (Daniel Berrange), features block in XML to report/ask
+    PAE, ACPI, APIC for HVM domains (Daniel Berrange), fail saide-effect
+    operations when using read-only connection, large improvements to test
+    driver (Daniel Berrange)
+  - documentation: spelling (Daniel Berrange), test driver examples.
+
+-------------------------------------------------------------------
+Wed Aug 16 11:19:29 MDT 2006 - jfehlig@novell.com
+
+- Added ExclusiveArch tag so as to only build on x86 and x86_64
+
+-------------------------------------------------------------------
+Mon Jul 31 13:27:05 MDT 2006 - jfehlig@novell.com
+
+- initial submission of libvirt package, version 0.1.3
+

@@ -1,0 +1,6 @@
+<package name="widelands" project="openSUSE:Factory">
+  <title>Widelands</title>
+  <description>Open Source realtime-strategy game about map control</description>
+  <devel project="games" package="widelands"/>
+  <url>https://wl.widelands.org/</url>
+</package>

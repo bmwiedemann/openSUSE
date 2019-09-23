@@ -1,0 +1,26 @@
+Because of commit 76eb7cef6b84ca804f4db340e23ad9c501767c32
+xc_private.h now contains a definition of iovec. This conflicts
+when building qemu traditional xen_platform.c which includes
+hw.h which includes qemu-common.h which already has a definition
+of iovec
+Index: xen-4.12.0-testing/tools/libxc/xc_private.h
+===================================================================
+--- xen-4.12.0-testing.orig/tools/libxc/xc_private.h
++++ xen-4.12.0-testing/tools/libxc/xc_private.h
+@@ -50,6 +50,8 @@
+ #endif
+ 
+ #if defined(__MINIOS__)
++#ifndef HAVE_IOVEC
++#define HAVE_IOVEC
+ /*
+  * MiniOS's libc doesn't know about sys/uio.h or writev().
+  * Declare enough of sys/uio.h to compile.
+@@ -58,6 +60,7 @@ struct iovec {
+     void *iov_base;
+     size_t iov_len;
+ };
++#endif
+ #else
+ #include <sys/uio.h>
+ #endif

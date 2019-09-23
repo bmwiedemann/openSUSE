@@ -1,0 +1,188 @@
+-------------------------------------------------------------------
+Fri Aug 30 01:11:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.7.1:
+  * #108: Revert linecache optimization introduced in 1.7.0 which broke remote execution.
+
+-------------------------------------------------------------------
+Mon Aug 12 15:44:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.7:
+  * Fix flaky hangs
+
+-------------------------------------------------------------------
+Wed Jul 24 08:57:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.6.1:
+  * Internal change to avoid using deprecated funcargs name in pytest 5+.
+- Obsoletes pytest4.patch
+
+-------------------------------------------------------------------
+Fri Jul 19 09:14:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to play with new pytest rather than restricting:
+  * pytest4.patch
+
+-------------------------------------------------------------------
+Thu Jul 18 08:47:00 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- use pytest4 to run testsuite, pytest-5 for testsuite isn't supported
+
+-------------------------------------------------------------------
+Mon Apr  1 08:31:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.6.0:
+  * ``execnet`` no longer supports Python 2.6 and 3.3 (#85). Users of those Python versions
+    using a recent enough ``pip`` should not be affected, as ``pip`` will only install
+    ``1.5.0`` for them.
+  * Update test suite to support ``pytest>4``.
+- Remove pytest4.patch merged upstream
+- Remove fix_apipkg.patch merged upstream
+
+-------------------------------------------------------------------
+Tue Feb 12 14:25:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build with pytest 4 and newer:
+  * pytest4.patch
+
+-------------------------------------------------------------------
+Wed Aug  8 11:32:26 UTC 2018 - mimi.vx@gmail.com
+
+- add fix_apipkg.patch -- fixes tests with apipkg > 1.4.0 
+
+-------------------------------------------------------------------
+Sun Jul 15 23:10:06 UTC 2018 - mimi.vx@gmail.com
+
+-  drop -doc subpackage - causes circular dependency with python-requests ->
+   python-hypothesis -> python-Babel
+
+-------------------------------------------------------------------
+Sat Nov 11 17:20:57 UTC 2017 - arun@gmx.de
+
+- specfile
+  * CHANGELOG -> CHANGELOG.rst
+  * README.txt -> README.rst
+
+- update to version 1.5.0:
+  * support shell escaping in python pathnames of popen.
+    Eugene Ciurana discovered that execnet breaks if you use pathnames
+    with spaces in a "python=" part of a spec. We now use shlex.split
+    to split the string.  There is a potential for regressions if you
+    used quote or escape sequences as part of your python command.
+  * Only insert importdir into sys.path if it is not already in the
+    path.
+    This prevents a bug when using enum34 with python 3.6 and
+    pytest-xdist.
+    The issue is that enum34 installs an 'enum' module in
+    site-packages which is normally shadowed by the stdlib version of
+    enum, however in gateway_bootstrap.py site-packages is added at
+    the front the the search path. This means on the workers enum34 is
+    hit for import enum which in turn causes import re to fail (as it
+    makes use of the new enum features in 3.6).
+
+-------------------------------------------------------------------
+Fri Apr 21 20:01:07 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+- Enabled tests
+
+-------------------------------------------------------------------
+Wed Feb 24 10:48:05 UTC 2016 - osynge@suse.com
+
+- Added depenedency on python-apipkg
+
+-------------------------------------------------------------------
+Mon Feb 22 17:27:02 UTC 2016 - osynge@suse.com
+
+- Update to version 1.4.1:
+  * fix issue33 -- index.txt to correctly mention MIT instead of GPL.
+  * fix issue35 -- adapt some doctests, fix some channel tests for py3.
+  * use subprocess32 when available for python < 3.
+  * try to be a bit more careful when interpreter is shutting down
+    to avoid random exceptions, thanks Alfredo Deza.
+  * ignore errors on orphan file removal when rsyncing
+  * fix issue34 -- limit use of import based bootstrap
+  * de-vendor apipkg and use the pypi dependency instead
+    (this also fixes the bpython interaction issues)
+  * Fix issue38: provide ability to connect to Vagrant VMs easily
+    using :code:`vagrant_ssh=defaut` or :code:`vagrant_ssh=machinename`
+    this feature is experimental and will be refined in future releases.
+    Thanks Christian Theune for the discussion and the initial pull request.
+  * add support for serializing the "complex" type. Thanks Sebastian
+    Koslowski.
+  * fix a regression of the Serializer created by the implied opcode ordering
+    which resulted in a incompatible opcode mapping
+
+-------------------------------------------------------------------
+Fri Dec 12 20:06:01 UTC 2014 - tbechtold@suse.com
+
+- Update to version 1.2:
+  * fix issue22 -- during interpreter shutdown don't throw
+    an exception when we can't send a termination sequence
+    anymore as we are about to die anyway.
+  * fix issue24 -- allow concurrent creation of gateways
+    by guarding automatic id creation by a look.
+    Thanks tlecomte.
+  * majorly refactor internal thread and IO handling.
+    execnet can now operate on different thread models,
+    defaults to "thread" but allows for eventlet and
+    gevent if it is installed.
+  * gateway.remote_exec() will now execute in multiple
+    threads on the other side by default.  The previous
+    neccessity of running "gateway.remote_init_threads()"
+    to allow for such concurrency is gone.  The latter
+    method is now a no-op and will be removed in future
+    versions of execnet.
+  * fix issue20: prevent AttributError at interpreter shutdown
+    by not trying to send close/last_message messages if the
+    world around is half destroyed.
+  * fix issue21: allow to create local gateways with sudo aka
+    makegateway("popen//python=sudo python").
+    Thanks Alfredo Deza for the PR.
+  * streamline gateway termination and simplify proxy
+    implementation. add more internal tracing.
+  * if execution hangs in computation, we now try to
+    send a SIGINT to ourselves on Unix platforms
+    instead of just calling thread.interrupt_main()
+  * change license from GPL to MIT
+  * introduce execnet.dump/load variants of dumps/loads
+    serializing/unserializing mechanism.
+  * improve channel.receive() communication latency on python2
+    by changing the default timeout of the underlying Queue.get
+    to a regular None instead of the previous default -1
+    which caused an internal positive timeout value
+    (a hack probably introduced to allow CTRL-C to pass
+    through for <python2.5 versions).
+  * extended ssh-syntax to allow passing of command line args,
+    e.g.  "ssh= -p 50 hostname". The options are passed to
+    the underlying ssh client binary.  Thanks tundish.
+  * fix issue15: interoperability with inspect.getstack().
+    Thanks Peter Feiner.
+  * fix issue10 : skip PYTHONDONTWRITEBYTECODE test if
+    it we are running with PYTHONDONTWRITEBYTECODE set.
+  * dont try the jython pid fixup on a RemoteIO
+  * avoid accidentally setting exc_info() in gateway_base.py
+- Remove BuildRequires for unzip. .tar.gz release from pypi
+  is use now used
+
+-------------------------------------------------------------------
+Wed Oct  9 17:25:37 UTC 2013 - p.drouand@gmail.com
+
+- Disable tests: fails for instance
+- Fix build for SLES11
+
+-------------------------------------------------------------------
+Tue Oct  8 09:35:02 UTC 2013 - mvyskocil@suse.com
+
+- Install a generated documentation 
+
+-------------------------------------------------------------------
+Fri Oct  4 07:56:36 UTC 2013 - mvyskocil@suse.com
+
+- Build documentation with Sphinx 
+
+-------------------------------------------------------------------
+Thu Oct  3 12:38:43 UTC 2013 - mvyskocil@suse.com
+
+- Initial packaging execnet 1.1 for openSUSE 
+

@@ -1,0 +1,5 @@
+<package name="python-cbor" project="openSUSE:Factory">
+  <title></title>
+  <description>Concise Binary Object Representation library</description>
+  <devel project="devel:languages:python" package="python-cbor"/>
+</package>

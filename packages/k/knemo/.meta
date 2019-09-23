@@ -1,0 +1,8 @@
+<package name="knemo" project="openSUSE:Factory">
+  <title>A KDE Network Monitor</title>
+  <description>This package is based on the package 'knemo' from project 'openSUSE:Factory:Contrib'.
+
+KNemo offers a network monitor similar to the one found in Windows. It
+ displays an icon in the systray for every network interface.</description>
+  <devel project="KDE:Extra" package="knemo"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="slirp4netns" project="openSUSE:Factory">
+  <title>User-mode networking for unprivileged network namespaces</title>
+  <description>slirp4netns provides user-mode networking (&quot;slirp&quot;) for unprivileged network namespaces. A common use-case of slirp4netns is to enable network access for rootless container engines such as CRI-O and Podman.</description>
+  <devel project="devel:kubic" package="slirp4netns"/>
+</package>

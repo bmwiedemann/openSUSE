@@ -1,0 +1,34 @@
+--- pam_pkcs11-0.5.3/etc/pam_pkcs11.conf.example.in	2005-09-12 05:12:55.000000000 -0400
++++ pam_pkcs11-0.5.3/etc/pam_pkcs11.conf.example.in	2007-03-01 10:42:20.000000000 -0500
+@@ -9,7 +9,7 @@ pam_pkcs11 {
+   nullok = true;
+ 
+   # Enable debugging support.
+-  debug = true; 
++  debug = false; 
+ 
+   # Do not prompt the user for the passwords but take them from the
+   # PAM_ items instead.
+@@ -24,7 +24,12 @@ pam_pkcs11 {
+   use_authtok = false;
+ 
+   # Filename of the PKCS #11 module. The default value is "default"
+-  use_pkcs11_module = opensc;
++  use_pkcs11_module = nss;
++
++  pkcs11_module nss {
++    nss_dir = /etc/pki/nssdb;
++    crl_policy = none;
++  }
+ 
+   pkcs11_module opensc {
+     module = /usr/lib/opensc-pkcs11.so;
+@@ -112,7 +112,7 @@
+   # If used null mapper should be the last in the list :-)
+   # Also you should select at least one mapper, otherwise
+   # certificate will not match :-)
+-  use_mappers = digest, cn, pwent, uid, mail, subject, null;
++  use_mappers = ms;
+ 
+   # When no absolute path or module info is provided, use this
+   # value as module search path

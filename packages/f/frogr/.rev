@@ -1,0 +1,196 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0dca1377727809806144d95bd8145f52</srcmd5>
+    <version>0.5</version>
+    <time>1308062735</time>
+    <user>saschpe</user>
+    <comment>New package: small tool to administrate your flickr account</comment>
+    <requestid>72582</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>57e7c401e9183d52bc3db840feb9b9a8</srcmd5>
+    <version>0.5</version>
+    <time>1308062745</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72582
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1fba8e8240b52a977187bfdef1e70c4e</srcmd5>
+    <version>0.5</version>
+    <time>1311079554</time>
+    <user>saschpe</user>
+    <comment>Fix builde (forwarded request 76393 from vuntz)</comment>
+    <requestid>76414</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>828fe1cf155a09e706ffff9288f4e7c6</srcmd5>
+    <version>0.5</version>
+    <time>1311079563</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76414
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8e429ca8053dc0f9b986f159bacc321c</srcmd5>
+    <version>0.6</version>
+    <time>1313496970</time>
+    <user>saschpe</user>
+    <comment>Update to version 0.6 (forwarded request 78763 from dimstar)</comment>
+    <requestid>78972</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>172deb25def210dd2292a91e897078d1</srcmd5>
+    <version>0.6.1</version>
+    <time>1313999322</time>
+    <user>saschpe</user>
+    <comment>Update to 0.6.1</comment>
+    <requestid>79357</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>fcd6db438119886fd122fcae7c4686c7</srcmd5>
+    <version>0.6.1</version>
+    <time>1317744595</time>
+    <user>oertel</user>
+    <comment>Cleanup (forwarded request 86172 from vuntz)</comment>
+    <requestid>86345</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>fcd6db438119886fd122fcae7c4686c7</srcmd5>
+    <version>0.6.1</version>
+    <time>1319181886</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>1843722ba6005a47754122791dcabd62</srcmd5>
+    <version>0.6.1</version>
+    <time>1323191423</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4ac440eb44c5023c69eafda4295be847</srcmd5>
+    <version>0.7</version>
+    <time>1338903035</time>
+    <user>coolo</user>
+    <comment>Push G:A</comment>
+    <requestid>123657</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>4ac440eb44c5023c69eafda4295be847</srcmd5>
+    <version>0.7</version>
+    <time>1340183340</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>7ddc82a96ce014e539ac392b9bb1751a</srcmd5>
+    <version>0.7</version>
+    <time>1340975752</time>
+    <user>coolo</user>
+    <comment>Fix doc to not make bundle-lang-gnome-extras fail (forwarded request 126596 from dimstar)</comment>
+    <requestid>126604</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>7ddc82a96ce014e539ac392b9bb1751a</srcmd5>
+    <version>0.7</version>
+    <time>1359108893</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>11279f3e38c613a56a28f2a34fe8f23b</srcmd5>
+    <version>0.8</version>
+    <time>1363104723</time>
+    <user>coolo</user>
+    <comment>push staged updates from GNOME:Apps</comment>
+    <requestid>158673</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>068aca2b994c7c2305644e9eea0feac2</srcmd5>
+    <version>0.8</version>
+    <time>1378892082</time>
+    <user>coolo</user>
+    <comment>- Remove -DGTK_DISABLE_DEPRECATED from configure.ac in order to
+  allow building against Gtk+ 3.9.x. (forwarded request 198079 from Zaitor)</comment>
+    <requestid>198139</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>068aca2b994c7c2305644e9eea0feac2</srcmd5>
+    <version>0.8</version>
+    <time>1379662369</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d5cad56e6451af8cebc96b86f8273053</srcmd5>
+    <version>0.9</version>
+    <time>1390214501</time>
+    <user>coolo</user>
+    <comment>Update to version 0.9 (forwarded request 214264 from Zaitor)</comment>
+    <requestid>214346</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b784079bfbaca55b2928b1d09201606a</srcmd5>
+    <version>0.10</version>
+    <time>1406793866</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243094</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>b784079bfbaca55b2928b1d09201606a</srcmd5>
+    <version>0.10</version>
+    <time>1409300906</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5c3979dd924cf5e0b08d41d8738bd5cb</srcmd5>
+    <version>0.11</version>
+    <time>1421232331</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281035</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3d60a19f8f41757e230f4e62a0f2a886</srcmd5>
+    <version>1.0</version>
+    <time>1452122685</time>
+    <user>dimstar_suse</user>
+    <comment>New rel</comment>
+    <requestid>352097</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fd99de73185727952a8e4087569738ae</srcmd5>
+    <version>1.2</version>
+    <time>1476351106</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434293</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>09e1630b13173293b20b292e25b9b33d</srcmd5>
+    <version>1.3</version>
+    <time>1496089160</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497053</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4981d91a0129fdfc0030bd72fb857041</srcmd5>
+    <version>1.4</version>
+    <time>1516359085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560751</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d54eac98d2955d2b2aa84121ad07e677</srcmd5>
+    <version>1.5</version>
+    <time>1543953235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652229</requestid>
+  </revision>
+</revisionlist>

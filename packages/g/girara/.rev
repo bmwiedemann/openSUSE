@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>315669b1d7c183bcef3a84ff076d473f</srcmd5>
+    <version>0.2.3</version>
+    <time>1414744782</time>
+    <user>coolo</user>
+    <comment>Girara - minimalistic and simplified UI library used by Zathura and Jumanji</comment>
+    <requestid>258692</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>55bc402b95f86158cc0f082b54d91e23</srcmd5>
+    <version>0.2.4</version>
+    <time>1431365976</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306312</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>13f8f64e58f2c0e0fff55fcae3a5ee3a</srcmd5>
+    <version>0.2.5</version>
+    <time>1456320345</time>
+    <user>dimstar_suse</user>
+    <comment>-  update to 0.2.5
+* Make scrollbar styleable
+* Build with C11 standard
+* Enable LFS everywhere
+* Home key mapping
+* Bind ctrl-[,j,]
+* Update translations</comment>
+    <requestid>361162</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>11ff2eb0f5f66de5c708cb8fbed0de41</srcmd5>
+    <version>0.2.6</version>
+    <time>1464964728</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399664</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c3f8c9f937636595bfe1537bc5c41b38</srcmd5>
+    <version>0.2.6</version>
+    <time>1476997761</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435863</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f6fab1988b427777f626e391fd729ee1</srcmd5>
+    <version>0.2.7</version>
+    <time>1486635341</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454815</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>de80e880d9b0401ae2757f0223672cac</srcmd5>
+    <version>0.2.8</version>
+    <time>1517323345</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.7
+- respect optflags
+- spec-cleaned
+* Adopt CSS to newer GTK+ 3 releases
+* Remove obsolete features
+* Update translations
+* Various fixes and improvments</comment>
+    <requestid>569893</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2fd4ede63d3496a68dc47dd381533821</srcmd5>
+    <version>0.3.0</version>
+    <time>1527197078</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.0
+* Make colors changeable during runtime
+* various fixes
+* Replace deprecated GTK+ 3 functions
+* Replace build system with meson
+* Adopt CSS to newer GTK+ 3 releases
+* remove obsoleted features (forwarded request 611517 from mimi_vx)</comment>
+    <requestid>611518</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>40ca20cd1d073cf260a5bf2d4b5ab5f9</srcmd5>
+    <version>0.3.2</version>
+    <time>1551024695</time>
+    <user>coolo</user>
+    <comment>- update to 0.3.2
+* Various fixes and improvements
+* Update transations (forwarded request 671012 from mimi_vx)</comment>
+    <requestid>671013</requestid>
+  </revision>
+</revisionlist>

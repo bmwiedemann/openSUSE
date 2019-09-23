@@ -1,0 +1,113 @@
+From 82e2d743cc0a3016fb8d5371a9c92f862e0f40b1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Tue, 28 Nov 2017 15:31:33 +0100
+Subject: [PATCH 19/25] Fix uninitialized value reported by valgrind
+
+Date: Tue Dec 13 17:51:55 CET 2016
+Author: Marcus Meissner
+Bug: 1015155
+---
+ args.c         | 1 +
+ cimXmlParser.c | 4 +++-
+ objectImpl.c   | 6 +++---
+ providerDrv.c  | 2 +-
+ providerMgr.c  | 2 +-
+ result.c       | 2 +-
+ 6 files changed, 10 insertions(+), 7 deletions(-)
+
+diff --git a/args.c b/args.c
+index 930de17cfb9d..5f867c1e5678 100644
+--- a/args.c
++++ b/args.c
+@@ -207,6 +207,7 @@ __new_empty_args(int mm_add, CMPIStatus *rc)
+                  *tArgs;
+   int             state;
+ 
++  memset(&args, 0, sizeof(args));
+   args.args = a;
+   tArgs = memAddEncObj(mm_add, &args, sizeof(args), &state);
+   tArgs->mem_state = state;
+diff --git a/cimXmlParser.c b/cimXmlParser.c
+index d214099851c8..e5586e63b0b6 100644
+--- a/cimXmlParser.c
++++ b/cimXmlParser.c
+@@ -54,7 +54,7 @@ Throw(XmlBuffer __attribute__ ((unused)) *xb, char *msg)
+ static XmlBuffer *
+ newXmlBuffer(char *s)
+ {
+-  XmlBuffer      *xb = malloc(sizeof(*xb));
++  XmlBuffer      *xb = calloc(1, sizeof(*xb));
+   xb->base = xb->cur = (char *) strdup(s);
+   xb->last = xb->cur + strlen(xb->cur);
+   xb->nulledChar = 0;
+@@ -1714,6 +1714,8 @@ scanCimXmlRequest(CimRequestContext *ctx, char *xmlData, int *rc)
+   ParserControl   control;
+   *rc=0;
+ 
++  memset(&control, 0, sizeof(control));
++
+   XmlBuffer      *xmb = newXmlBuffer(xmlData);
+   control.xmb = xmb;
+   control.reqHdr.buffer = xmb;
+diff --git a/objectImpl.c b/objectImpl.c
+index e9c889cdeb09..eaed22a821c1 100644
+--- a/objectImpl.c
++++ b/objectImpl.c
+@@ -225,12 +225,12 @@ addClStringN(ClObjectHdr * hdr, const char *str, unsigned int length)
+     for (; nmax <= l; nmax *= 2);
+     buf =
+         setStrBufPtr(hdr,
+-                     malloc(((nmax - 1) * sizeof(char)) +
+-                            sizeof(ClStrBuf)));
++                     calloc(1, ((nmax - 1) * sizeof(char)) +
++                               sizeof(ClStrBuf)));
+     buf->bMax = nmax;
+     buf->bUsed = buf->iUsed = 0;
+     buf->iMax = 16;
+-    setStrIndexPtr(buf, malloc(sizeof(*buf->indexPtr) * 16));
++    setStrIndexPtr(buf, calloc(1, sizeof(*buf->indexPtr) * 16));
+     hdr->flags |= HDR_Rebuild;
+   }
+ 
+diff --git a/providerDrv.c b/providerDrv.c
+index 75c5ebd2e2ba..d6e2bb3fb0cc 100644
+--- a/providerDrv.c
++++ b/providerDrv.c
+@@ -1177,7 +1177,7 @@ makeSafeResponse(BinResponseHdr* hdr, BinResponseHdr** out)
+     len += (hdr->object[i].type == MSG_SEG_CHARS ? PADDED_LEN(hdr->object[i].length) : hdr->object[i].length);
+   }
+ 
+-  outHdr = malloc(len +rvl + 8);
++  outHdr = calloc(1, len +rvl + 8);
+   memcpy(outHdr, hdr, size);
+ 
+   if (rvl) {
+diff --git a/providerMgr.c b/providerMgr.c
+index 47841f9c4b1c..aeb5093f896c 100644
+--- a/providerMgr.c
++++ b/providerMgr.c
+@@ -1341,7 +1341,7 @@ intInvokeProvider(BinRequestContext * ctx, ComSockets sockets)
+           object[i].length);
+   }
+ 
+-  buf = malloc(l + 8);
++  buf = calloc(1, l + 8);
+ 
+   if (ctx->noResp & 1) {
+     hdr->options |= BRH_NoResp;
+diff --git a/result.c b/result.c
+index d894e417538d..314a7cfff733 100644
+--- a/result.c
++++ b/result.c
+@@ -91,7 +91,7 @@ prepResultBuffer(NativeResult * nr, unsigned long length)
+     nr->dMax *= 2;
+ 
+   nr->dNext = 0;
+-  nr->data = malloc(nr->dMax);
++  nr->data = calloc(1, nr->dMax);
+ 
+   nr->sMax = nr->dMax / 400;
+   nr->sNext = 0;
+-- 
+2.15.0
+

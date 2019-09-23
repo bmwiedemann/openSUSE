@@ -1,0 +1,11 @@
+<package name="dvbsnoop" project="openSUSE:Factory">
+  <title>DVB / MPEG stream analyzer program</title>
+  <description>Its purpose is to debug, dump or view digital stream information (e.g. digital
+television broadcasts) send via satellite, cable or terrestrial. Streams can be
+SI, PES or TS. Basically you can describe dvbsnoop as a &quot;swiss army knife&quot;
+analyzing program for DVB, MHP, DSM-CC or MPEG - similar to TCP network sniffer
+programs like the old and famous snoop on Sun Solaris or tcpdump on Linux
+(which is in fact a kind of a clone of SunOS 'snoop'). You may also analyze
+offline mpeg streams, e.g. stored on DVD or mpeg2 movie files.</description>
+  <devel project="multimedia:apps" package="dvbsnoop"/>
+</package>

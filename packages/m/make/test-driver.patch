@@ -1,0 +1,23 @@
+Index: make-4.2.1/Makefile.am
+===================================================================
+--- make-4.2.1.orig/Makefile.am
++++ make-4.2.1/Makefile.am
+@@ -188,8 +188,8 @@ check-regression: tests/config-flags.pm
+ 		     rm -f tests/$$f; ln -s ../srctests/$$f tests; \
+ 		   done; fi ;; \
+ 	    esac; \
+-	    echo "cd tests && $(PERL) ./run_make_tests.pl -srcdir $(abs_srcdir) -make ../make$(EXEEXT) $(MAKETESTFLAGS)"; \
+-	    cd tests && $(PERL) ./run_make_tests.pl -srcdir '$(abs_srcdir)' -make '../make$(EXEEXT)' $(MAKETESTFLAGS); \
++	    echo "cd tests && $(PERL) -I. ./run_make_tests.pl -srcdir $(abs_srcdir) -make ../make$(EXEEXT) $(MAKETESTFLAGS)"; \
++	    cd tests && $(PERL) -I. ./run_make_tests.pl -srcdir '$(abs_srcdir)' -make '../make$(EXEEXT)' $(MAKETESTFLAGS); \
+ 	  else \
+ 	    echo "Can't find a working Perl ($(PERL)); the test suite requires Perl."; \
+ 	  fi; \
+Index: make-4.2.1/tests/run_make_tests
+===================================================================
+--- make-4.2.1.orig/tests/run_make_tests
++++ make-4.2.1/tests/run_make_tests
+@@ -1,2 +1,2 @@
+ #!/bin/sh
+-exec perl $0.pl ${1+"$@"}
++exec perl -I ${0%/*} $0.pl ${1+"$@"}

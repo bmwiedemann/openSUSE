@@ -1,0 +1,27 @@
+From bd99b78b720acf12426a64399fbcf59b91b7b3eb Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Thu, 9 May 2019 18:59:03 +0200
+Subject: [PATCH 12/18] todaysFactsWidget: add missing bind()
+
+Without this, Lang.bind() in constructRow() throws the error
+"Error: first argument to Lang.bind() must be an object, not undefined"
+---
+ extension/widgets/todaysFactsWidget.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/extension/widgets/todaysFactsWidget.js b/extension/widgets/todaysFactsWidget.js
+index cb74fd7..1d8acf5 100644
+--- a/extension/widgets/todaysFactsWidget.js
++++ b/extension/widgets/todaysFactsWidget.js
+@@ -176,7 +176,7 @@ class TodaysFactsWidget extends St.ScrollView {
+         let rowCount = 0;
+         let layout = this.facts_widget.layout_manager;
+         for (let fact of facts) {
+-            let rowComponents = constructRow(fact, ongoingFact, this._controller, this._panelWidget.menu);
++            let rowComponents = Lang.bind(this, constructRow)(fact, ongoingFact, this._controller, this._panelWidget.menu);
+             for (let component of rowComponents) {
+                 layout.pack(component, rowComponents.indexOf(component), rowCount);
+             }
+-- 
+2.21.0
+

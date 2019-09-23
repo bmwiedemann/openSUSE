@@ -1,0 +1,10 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+# Currently gotools.log contains $RPM_BUILD_ROOT and there's nothing
+# to be done about that and neither do we care
+addFilter ("gcc.*-testresults.*file-contains-buildroot")
+
+# The package should _not_ be noarch, testresults differ from architecture
+# to architecture
+addFilter ("gcc.*-testresults.*no-binary")

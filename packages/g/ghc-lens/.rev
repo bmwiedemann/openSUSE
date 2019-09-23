@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a38511c628e46e4562549218c0a21b88</srcmd5>
+    <version>4.17</version>
+    <time>1533412390</time>
+    <user>dimstar_suse</user>
+    <comment>Add xmonad, xmobar, and their dependencies to Factory.</comment>
+    <requestid>627263</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3497c32712e738671f5c50e34c2d005a</srcmd5>
+    <version>4.17</version>
+    <time>1540448232</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642874</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>56082afb98f4839b4accdb89c0c07de8</srcmd5>
+    <version>4.17.1</version>
+    <time>1557389408</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>700201</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>28e2b99af27751d52a2dab1babbfcb19</srcmd5>
+    <version>4.17.1</version>
+    <time>1560971467</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710631</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>25bb6ad2788123741c033dd8a6473ae2</srcmd5>
+    <version>4.17.1</version>
+    <time>1565694972</time>
+    <user>dimstar_suse</user>
+    <comment>minor version update, required for adi:8</comment>
+    <requestid>721731</requestid>
+  </revision>
+</revisionlist>

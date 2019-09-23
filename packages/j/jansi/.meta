@@ -1,0 +1,11 @@
+<package name="jansi" project="openSUSE:Factory">
+  <title>Java library for generating and interpreting ANSI escape sequences</title>
+  <description>Jansi is a java library that allows you to use ANSI escape sequences
+in your Java console applications. It implements ANSI support on platforms
+which don't support it, like Windows, and provides graceful degradation for
+when output is being sent to output devices which cannot support ANSI sequences.
+
+</description>
+  <devel project="Java:packages" package="jansi"/>
+  <url>http://fusesource.github.io/jansi/</url>
+</package>

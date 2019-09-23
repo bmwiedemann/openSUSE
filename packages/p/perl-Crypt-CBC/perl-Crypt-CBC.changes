@@ -1,0 +1,180 @@
+-------------------------------------------------------------------
+Tue Aug  6 17:49:08 UTC 2013 - coolo@suse.com
+
+- updated to 2.33
+  - Fix minor RT bugs 83175 and 86455.
+
+-------------------------------------------------------------------
+Mon Jun  3 15:59:58 UTC 2013 - coolo@suse.com
+
+- updated to 2.32
+      - Fixes "Taint checks are turned on and your key is tainted" error when autogenerating salt and IV.
+      - Fixes to regular expressions to avoid rare failures to
+         correctly strip padding in decoded messages.
+      - Add padding type = "none".
+      - Both fixes contributed by Bas van Sisseren.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:00 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Fri Aug 26 23:14:51 UTC 2011 - chris@computersalat.de
+
+- remove Author from desc
+- added bcond_with opt
+  o test optional pkgs via local build (osc build --with opt)
+- fix deps for CentOS
+- some spec cleanup
+
+-------------------------------------------------------------------
+Wed Dec  8 14:08:46 UTC 2010 - coolo@novell.com
+
+- avoid even more requires to avoid even more cycles
+
+-------------------------------------------------------------------
+Tue Nov 30 20:54:59 UTC 2010 - coolo@novell.com
+
+- remove extra requires to avoid cycle
+
+-------------------------------------------------------------------
+Wed Nov 24 20:33:31 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+  o fix deps
+- noarch pkg
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Fri Feb 27 10:47:24 CET 2009 - anicka@suse.cz
+
+- update to 2.30
+ * setting $cipher correctly
+
+-------------------------------------------------------------------
+Thu Jun 19 16:36:38 CEST 2008 - anicka@suse.cz
+
+- update to 2.29
+ * Fixed errors that occurred when encrypting/decrypting utf8 
+   strings in Perl's more recent than 5.8.8.
+
+-------------------------------------------------------------------
+Wed Apr  2 13:49:11 CEST 2008 - anicka@suse.cz
+
+- update to 2.28
+ - Fixed bug in onesandzeroes test that causes it to fail 
+   with Rijndael module is not installed.
+ - When taint mode is turned on and user is using a tainted key, 
+   explicitly check tainting of key in order to avoid "cryptic" 
+   failure messages from some crypt modules.
+ - Fixed onezeropadding test, which was not reporting 
+   its test count properly.
+ - Fixed failure of oneandzeroes padding when plaintext size is
+   an even multiple of blocksize.
+ - Added new "rijndael_compat" padding method, which is compatible
+   with the oneandzeroes padding method used by Crypt::Rijndael in
+   CBC mode.
+
+-------------------------------------------------------------------
+Mon Oct  8 09:26:27 CEST 2007 - anicka@suse.cz
+
+- update to 2.24
+  * Fixed failure to run under taint checks with Crypt::Rijndael
+    or Crypt::OpenSSL::AES (and maybe other Crypt modules).
+  * Added checks for other implementations of CBC which add no
+    standard padding at all when cipher text is an even multiple
+    of the block size.
+
+-------------------------------------------------------------------
+Tue Dec 12 13:07:03 CET 2006 - anicka@suse.cz
+
+- update to 2.22
+* Fixed bug in which plaintext encrypted with the 
+  -literal_key option could not be decrypted using a new 
+  object created with the same -literal_key.
+* Added documentation confirming that -literal_key must be 
+  accompanied by a -header of 'none' and a manually specificied IV.
+
+-------------------------------------------------------------------
+Thu Oct 19 16:58:09 CEST 2006 - anicka@suse.cz
+
+- update to 2.21
+* Fixed bug in which new() failed to work when first option is 
+  -literal_key.
+* Added ability to pass a preinitialized Crypt::* block cipher 
+  object instead of the class name.
+
+-------------------------------------------------------------------
+Thu Sep 14 12:18:51 CEST 2006 - anicka@suse.cz
+
+- update to 2.19
+  * Renamed Crypt::CBC-2.16-vulnerability.txt so that 
+    package installs correctly under Cygwin
+
+-------------------------------------------------------------------
+Fri Jul 14 08:50:45 CEST 2006 - anicka@suse.cz
+
+- update to 2.18
+  * added lots of documentation
+  * fixed using 8 byte IVs when generating the old-style RandomIV 
+    style header for the Rijndael algorithm. 
+  * versions 2.17 and higher will not decrypt messages
+    encrypted with versions 2.16 and lower unless you pass 
+    an optional value 'randomiv' to the new() call
+
+-------------------------------------------------------------------
+Wed Apr  5 16:18:58 CEST 2006 - schubi@suse.de
+
+- Bug 153627 - VUL-0: perl-Crypt-CBC: ciphertext weakness when using certain block algorithms
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:34 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jul 11 15:59:03 CEST 2005 - schubi@suse.de
+
+- update to 2.14 
+
+-------------------------------------------------------------------
+Fri Apr 15 11:06:17 CEST 2005 - schubi@suse.de
+
+- update to 2.12 
+
+-------------------------------------------------------------------
+Sun Jan 11 11:32:08 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 14:18:13 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Fri Jul 18 12:24:30 CEST 2003 - choeger@suse.de
+
+- use install_vendor and new %perl_process_packlist macro
+
+-------------------------------------------------------------------
+Tue Jun 17 11:04:55 CEST 2003 - choeger@suse.de
+
+- updated filelist
+- update to version 2.08
+
+-------------------------------------------------------------------
+Mon May 19 13:53:36 CEST 2003 - choeger#@suse.de
+
+- remove installed (but unpackaged) file perllocal.pod
+
+-------------------------------------------------------------------
+Wed Aug 14 11:12:58 CEST 2002 - choeger@suse.de
+
+- new package, version 2.07
+

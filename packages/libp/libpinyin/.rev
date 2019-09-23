@@ -1,0 +1,262 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5f95fcaa26f8eca33d12d368ede0eff7</srcmd5>
+    <version>0.5</version>
+    <time>1329805935</time>
+    <user>coolo</user>
+    <comment>dependency for fcitx-libpinyin</comment>
+    <requestid>104258</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0b9503c3a276b1826d037311f0bee27b</srcmd5>
+    <version>0.5</version>
+    <time>1338903165</time>
+    <user>coolo</user>
+    <comment> (forwarded request 123296 from MargueriteSu)</comment>
+    <requestid>123297</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>0b9503c3a276b1826d037311f0bee27b</srcmd5>
+    <version>0.5</version>
+    <time>1340183622</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bca782fd5d06e0e44402ec21f9433013</srcmd5>
+    <version>0.6.91</version>
+    <time>1340720070</time>
+    <user>coolo</user>
+    <comment>- update to 0.6.91
+- add cmake scripts
+- fixes jv,ju in ABC and more (forwarded request 125667 from hillwood)</comment>
+    <requestid>125731</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>49aa762bb2e6fbcf404351dbf84184fe</srcmd5>
+    <version>0.7.0</version>
+    <time>1345973545</time>
+    <user>namtrac</user>
+    <comment>remove obsoletes/provides, since it should be possible to install two library packages at the same time. (forwarded request 130235 from a_jaeger)</comment>
+    <requestid>130268</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>afc913588220427ca1f6366b01ba79e9</srcmd5>
+    <version>0.7.1</version>
+    <time>1347347400</time>
+    <user>coolo</user>
+    <comment> (forwarded request 133399 from hillwood)</comment>
+    <requestid>133400</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2ca9546f3736b476fd9e5700fd774bf2</srcmd5>
+    <version>0.7.1</version>
+    <time>1347619475</time>
+    <user>namtrac</user>
+    <comment> (forwarded request 134221 from MargueriteSu)</comment>
+    <requestid>134222</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>8c8e5a47abcc9a831fe88add053bc801</srcmd5>
+    <version>0.7.1</version>
+    <time>1347832048</time>
+    <user>namtrac</user>
+    <comment>use upstream standard source. (forwarded request 134456 from MargueriteSu)</comment>
+    <requestid>134472</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ec940836ea330c1dfd65f616f08481df</srcmd5>
+    <version>0.7.91</version>
+    <time>1350381661</time>
+    <user>coolo</user>
+    <comment> (forwarded request 138091 from MargueriteSu)</comment>
+    <requestid>138099</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7fab4e69126269cb4edffc196b745c65</srcmd5>
+    <version>0.8.0</version>
+    <time>1355911819</time>
+    <user>coolo</user>
+    <comment>- update 0.8.0. 
+  bug fixes (forwarded request 145808 from hillwood)</comment>
+    <requestid>145809</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>7fab4e69126269cb4edffc196b745c65</srcmd5>
+    <version>0.8.0</version>
+    <time>1359109328</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9b80cdae4397825d9bef7b6f5709052d</srcmd5>
+    <version>0.9.93</version>
+    <time>1372839867</time>
+    <user>coolo</user>
+    <comment>- update version 0.9.93
+  * see commit log for collective updates.
+  * https://github.com/libpinyin/libpinyin/commits/master
+- add patch: libpinyin-0.9.0-avoid_download_at_buildtime.patch</comment>
+    <requestid>181744</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>9b80cdae4397825d9bef7b6f5709052d</srcmd5>
+    <version>0.9.93</version>
+    <time>1379663048</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>868e235a012a3cd28cbf69f3f29c9e16</srcmd5>
+    <version>1.0.0</version>
+    <time>1393601101</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 1.0.0
+  * bug fixes
+  * added some pinyins, such as &quot;陆 liu4&quot;, &quot;单 shan4&quot;.
+- update patch file.</comment>
+    <requestid>224176</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>6eff120ff82fa9a31ddf850bab12373a</srcmd5>
+    <version>1.0.0</version>
+    <time>1405611101</time>
+    <user>coolo</user>
+    <comment>use update-alternatives to resolve conflicts with libzhuyin</comment>
+    <requestid>241250</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>eada6e90a74065d753be4a398c6d1602</srcmd5>
+    <version>1.0.0</version>
+    <time>1406479644</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242512</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>eada6e90a74065d753be4a398c6d1602</srcmd5>
+    <version>1.0.0</version>
+    <time>1409301667</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0fae8538bb18d428253674010331dec2</srcmd5>
+    <version>1.0.99.20150212</version>
+    <time>1424121179</time>
+    <user>coolo</user>
+    <comment>- Update patch file:
+  remove old: libpinyin-1.0.0-avoid_download_at_buildtime.patch
+  add new: libpinyin-1.0.99.20150212-avoid_download_at_buildtime.patch (forwarded request 286198 from hillwood)</comment>
+    <requestid>286199</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5dde59005714bd4730f24c00d7cab870</srcmd5>
+    <version>1.1.0</version>
+    <time>1428652332</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0
+  * support to export user phrases. (forwarded request 294866 from hillwood)</comment>
+    <requestid>294867</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4753464e58ba3280b9bc103af393d254</srcmd5>
+    <version>1.2.0+git20150731.958c597</version>
+    <time>1441726727</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>328230</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2c7f7263d6182e696c414e7e3733d419</srcmd5>
+    <version>1.3.0+git20151204.7b790c9</version>
+    <time>1451390350</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350721</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a92fdc872bff322f94d680173bf66c79</srcmd5>
+    <version>1.5.92</version>
+    <time>1471105843</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418373</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c6a9fee4ad6e0143e782e7a3473a7ed7</srcmd5>
+    <version>1.6.0</version>
+    <time>1473548077</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.0
+  * fixes https://github.com/libpinyin/ibus-libpinyin/issues/56
+  * fixes pinyin_remember_user_input function
+  * fixes pinyin_get_character_offset function
+  * fixes compute_pronunciation_possibility function
+  * fixes pinyin_get_character_offset function (forwarded request 425955 from hillwood)</comment>
+    <requestid>425957</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ab5c68f1511a19d2a7c43d2e7e99d1cb</srcmd5>
+    <version>1.7.0</version>
+    <time>1486306172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>454047</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>17acc881efb34168e6d4c54dac430738</srcmd5>
+    <version>1.7.0</version>
+    <time>1498202333</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505801</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ab79aab4885619227eefc0f04362592f</srcmd5>
+    <version>2.1.0</version>
+    <time>1507896865</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532834</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4900daa145cfa6a578cbed330988104c</srcmd5>
+    <version>2.1.91</version>
+    <time>1520253855</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2.1.91
+  * Fix zhuyin parsers
+  * Use model15. (forwarded request 582463 from hillwood)</comment>
+    <requestid>582465</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b4554f71c99c70297f9d9baa2733ce0f</srcmd5>
+    <version>2.2.0</version>
+    <time>1527583020</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2.2.0
+  * Bug fixes
+- Drop libpinyin-fix_double_pinyin.patch. Fixed with other way by upstream. (forwarded request 610977 from hillwood)</comment>
+    <requestid>610979</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>57552ecf6e5a0d35e9ae35d0a610a85f</srcmd5>
+    <version>2.2.1</version>
+    <time>1539342669</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2.2.1
+  * Fix predicted candidates (forwarded request 641280 from hillwood)</comment>
+    <requestid>641281</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1b10d40eaaacc569dfc4076e2582b32d</srcmd5>
+    <version>2.3.0</version>
+    <time>1553611467</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2.3.0
+  * Update pinyin data 
+- Drop libpinyin-avoid_download_at_buildtime.patch, merged by upstream. (forwarded request 688145 from hillwood)</comment>
+    <requestid>688174</requestid>
+  </revision>
+</revisionlist>

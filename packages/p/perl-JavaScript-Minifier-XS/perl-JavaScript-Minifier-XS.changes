@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Thu Apr  9 18:51:44 UTC 2015 - coolo@suse.com
+
+- translate module::build's version to what rpm understands
+
+-------------------------------------------------------------------
+Sat Mar 14 15:54:51 UTC 2015 - coolo@suse.com
+
+- updated to 0.11
+     - RT #58416; don't segfault when trying to minify non-javascript
+ 
+ 0.10        Mon Jan 26 22:46 PST 2015
+     - RT #64948; allow builds on older versions of Perl.
+       Thanks to Michael Robinton and Ruslan Zakirov.
+     - Lowered minimum Perl version to v5.6.0, as detected by
+       Perl::MinimumVersion.
+     - RT #51008; allow for minification of JS code that returns regexps from
+       functions.
+       Thanks to James Barton, Robert Krimen, and Randy Stauner.
+     - Added "xt/test-compile.t" to test minification against a wider range of
+       JS.  While not a 100% guarantee that the JS still works, it does provide
+       a wider range of JS to test against.
+
+-------------------------------------------------------------------
+Tue May  3 06:01:35 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.09
+    * created by cpanspec 1.78.04
+

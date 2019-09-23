@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Tue Oct  3 08:19:37 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Fri Nov 18 11:07:33 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:36 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Nov 11 20:47:02 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+  o fix deps
+- noarch pkg
+
+-------------------------------------------------------------------
+Sat Dec 26 20:55:57 UTC 2009 - lars@linux-schulserver.de
+
+- initial version 0.14
+

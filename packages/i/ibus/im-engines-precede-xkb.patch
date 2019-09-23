@@ -1,0 +1,24 @@
+commit 389d179c0b15664e23af2f26c17b3b5f316bc4e5
+Author: Fuminobu TAKEYAMA <ftake@geeko.jp>
+Date:   Tue Oct 7 20:23:42 2014 +0900
+
+    make IM engines precede xkb engines so that users can input
+    CJK letters without switching IMs at the first login
+
+diff --git a/ui/gtk3/panel.vala b/ui/gtk3/panel.vala
+index 76cea23..1ff56fb 100644
+--- a/ui/gtk3/panel.vala
++++ b/ui/gtk3/panel.vala
+@@ -411,10 +411,10 @@ class Panel : IBus.PanelService {
+                 get_engines_from_locale(engines);
+ 
+         string[] names = {};
+-        foreach (unowned IBus.EngineDesc engine in xkb_engines)
+-            names += engine.get_name();
+         foreach (unowned IBus.EngineDesc engine in im_engines)
+             names += engine.get_name();
++        foreach (unowned IBus.EngineDesc engine in xkb_engines)
++            names += engine.get_name();
+ 
+         m_settings_general.set_strv("preload-engines", names);
+     }

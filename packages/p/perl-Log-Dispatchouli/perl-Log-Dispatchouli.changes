@@ -1,0 +1,116 @@
+-------------------------------------------------------------------
+Tue Jul 30 05:13:32 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.019
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+
+  2.019     2019-07-27 16:13:30-04:00 America/New_York
+          - fix an initialization ordering bug for loggers using stdio
+
+-------------------------------------------------------------------
+Sat Jul 27 05:13:39 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.018
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+
+  2.018     2019-07-26 18:36:56-04:00 America/New_York
+          - add enable_stdout and enable_stderr to, uh, enable stdout and enable
+            stderr (after initial construction)
+
+-------------------------------------------------------------------
+Wed Mar 13 06:19:11 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.017
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+
+  2.017     2019-03-12 21:10:26-04:00 America/New_York
+          - syslog_socket can now be supplied to replace the native socket for
+            Sys::Syslog (thanks, Jon Stuart!)
+
+-------------------------------------------------------------------
+Thu Feb 22 06:32:28 UTC 2018 - coolo@suse.com
+
+- updated to 2.016
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+
+  2.016     2018-02-21 12:47:46-05:00 America/New_York
+          - the Proxy logger now respects the same overloading as the root logger
+          - muted works as a constructor argument (thanks, Dan Book)
+
+-------------------------------------------------------------------
+Tue Oct 18 05:38:39 UTC 2016 - coolo@suse.com
+
+- updated to 2.015
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+
+  2.015     2016-10-17 15:42:54-04:00 America/New_York
+          - Log::Dispatchouli subclass can now provide its own proxy_class
+            method to use something other than Log::Dispatchouli::Proxy
+
+-------------------------------------------------------------------
+Sun Oct 16 05:33:37 UTC 2016 - coolo@suse.com
+
+- updated to 2.014
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+
+  2.014     2016-10-14 18:28:36-04:00 America/New_York
+          - non-trial release of v2.013
+  
+  2.013     2016-07-30 16:34:57-04:00 America/New_York (TRIAL RELEASE)
+          - minor optimizations to callbacks (thanks, Olivier Mengué)
+
+-------------------------------------------------------------------
+Tue Apr 14 17:51:14 UTC 2015 - coolo@suse.com
+
+- updated to 2.012
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+
+  2.012     2014-11-30 08:49:01-05:00 America/New_York
+            avoid a newly-introduced warning on older perls (thanks, Christopher
+            J. Madsen)
+  
+  2.011     2014-11-29 08:50:45-05:00 America/New_York
+            some optimizations in timestamp and pid logging (thanks, Olivier
+            Mengué)
+
+-------------------------------------------------------------------
+Mon Sep 15 15:15:10 UTC 2014 - coolo@suse.com
+
+- updated to 2.010
+ add the file_format option (thanks, Randy Stauner)
+
+-------------------------------------------------------------------
+Mon Feb 24 08:45:09 UTC 2014 - coolo@suse.com
+
+- updated to 2.009
+  load the Proxy class earlier, to get it loaded prefork
+
+-------------------------------------------------------------------
+Fri Oct  4 09:15:21 UTC 2013 - coolo@suse.com
+
+- updated to 2.008
+        fix test for JSON::PP, which doesn't always follow orders about
+        spaces!  (thanks, Dagfinn Ilmari Mannsåker!)
+        doc fixes and tests (thanks George Hartzell and Randy Stauner)
+
+-------------------------------------------------------------------
+Wed Jun  5 11:48:28 UTC 2013 - coolo@suse.com
+
+- updated to 2.006
+          put the ->info, ->fatal, ->debug methods on proxies, too
+          (thanks George Hartzell)
+
+-------------------------------------------------------------------
+Sat Apr 30 15:13:06 UTC 2011 - coolo@opensuse.org
+
+- updated to 2.005
+    add log_file and log_path options
+    BUG FIX:  it is okay to replace the default logger, always
+    add config_id to allow faking Global equality when testing
+
+-------------------------------------------------------------------
+Mon Jan 17 18:12:58 UTC 2011 - coolo@novell.com
+
+- initial package 2.002
+  * created by cpanspec 1.78.03
+

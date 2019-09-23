@@ -1,0 +1,31 @@
+From 88616a67fcdcf3bbc201ed1736b31a61da7f609e Mon Sep 17 00:00:00 2001
+From: Marek Goldmann <goldmann@fedoraproject.org>
+Date: Fri, 15 Jun 2012 11:32:27 +0200
+Subject: [PATCH 4/4] Add TARGET property to ConfigurationPermission
+
+---
+ src/main/java/org/osgi/service/cm/ConfigurationPermission.java |    8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/main/java/org/osgi/service/cm/ConfigurationPermission.java b/src/main/java/org/osgi/service/cm/ConfigurationPermission.java
+index 3af9088..7b8f3e3 100644
+--- a/src/main/java/org/osgi/service/cm/ConfigurationPermission.java
++++ b/src/main/java/org/osgi/service/cm/ConfigurationPermission.java
+@@ -40,6 +40,14 @@ public final class ConfigurationPermission extends BasicPermission {
+ 	public final static String	CONFIGURE			= "configure";
+ 
+ 	/**
++	 * The permission to be updated, that is, act as a Managed Service or
++	 * Managed Service Factory. The action string {@value #TARGET}.
++	 * 
++	 * @since 1.4
++	 */
++	public final static String		TARGET				= "target";
++
++	/**
+ 	 * Create a new ConfigurationPermission.
+ 	 * 
+ 	 * @param name Name must be &quot;*&quot;.
+-- 
+1.7.10.2
+

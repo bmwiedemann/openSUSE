@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Wed Jun 22 02:35:02 UTC 2016 - sflees@suse.de
+
+- boo#983953 alt-F4 and Ctrl-Alt-X keybindings don't match other 
+  desktops
+
+-------------------------------------------------------------------
+Thu Oct 22 06:51:04 UTC 2015 - simon@simotek.net
+- tidy up for leap (remove extra tasks module from shelf) remove
+some modules that the wizard should load.
+
+-------------------------------------------------------------------
+Wed Jun 10 06:51:04 UTC 2015 - simon@simotek.net
+
+- At recomendation of DimStar, Obsolete but don't provide e17 profiles
+
+-------------------------------------------------------------------
+Mon Sep 22 02:41:39 UTC 2014 - simon@simotek.net
+
+- e19 version of profiles for openSUSE 13.2
+   Adds a dock profile
+   uses and configures the package config module
+
+-------------------------------------------------------------------
+Fri Feb 21 11:57:13 UTC 2014 - simon@simotek.net
+
+- require enlightenment-theme-dft for default.edj in e18
+  Don't obsolete old packages
+
+-------------------------------------------------------------------
+Tue Feb 18 10:58:51 UTC 2014 - simon@simotek.net
+
+- Conflict with old e17
+
+-------------------------------------------------------------------
+Thu Dec 19 15:29:52 UTC 2013 - sleep_walker@suse.cz
+
+- fix spec for new version of profile
+
+-------------------------------------------------------------------
+Fri Dec 13 12:48:36 UTC 2013 - simon@simotek.net
+
+- Fork for enlightenment e18 and make it work.
+
+-------------------------------------------------------------------
+Fri Dec 13 12:41:57 UTC 2013 - simon@simotek.net
+
+- rename to e17-*
+
+-------------------------------------------------------------------
+Fri Oct 18 23:17:24 UTC 2013 - simon@simotek.net
+
+- Fixed bug 844178
+  Removed Ctrl+W (Close Window) Key binding
+  Moved swich workspace to Alt+Shift F* from Alt F* 
+      (Alt F2 and Alt F4 were used for other bindings)
+
+-------------------------------------------------------------------
+Sat Sep 28 12:10:22 UTC 2013 - simon@simotek.net
+
+- Use openSUSE theme as main theme and for splash,
+  Icon is now green
+
+-------------------------------------------------------------------
+Fri Sep 13 11:48:50 UTC 2013 - simon@simotek.net
+
+- And version really should match the version of the tar.
+  This time i will wait for it to build to submit it
+
+-------------------------------------------------------------------
+Fri Aug 30 23:29:08 UTC 2013 - simon@simotek.net
+
+- Removed ls that was added for debugging then forgotten about
+
+-------------------------------------------------------------------
+Sun Aug 18 05:54:43 UTC 2013 - simon@simotek.net
+
+- let there be a working profile in e-profiles-openSUSE
+  Still need some work, but key bindings and the theme are working
+
+-------------------------------------------------------------------
+Fri Jan 11 00:13:55 UTC 2013 - sleep_walker@suse.cz
+
+- add LICENSE and AUTHORS files
+- correct license of the package
+
+-------------------------------------------------------------------
+Wed Jan  9 11:46:11 UTC 2013 - sleep_walker@suse.cz
+
+- replace %make_install with make install DESTDIR="%buildroot"
+
+-------------------------------------------------------------------
+Wed Jan  9 10:51:53 UTC 2013 - sleep_walker@suse.cz
+
+- let there be e-profiles-openSUSE!
+

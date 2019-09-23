@@ -1,0 +1,3068 @@
+Index: configure.ac
+===================================================================
+--- configure.ac.orig	2018-01-23 15:09:34.754548489 +0200
++++ configure.ac	2018-01-23 15:10:06.827563191 +0200
+@@ -708,6 +708,7 @@ AC_DEFUN([XINE_LOCATE_MEDIA],
+ ])
+ 
+ XINE_LOCATE_MEDIA([XINE_LOGO_MRL], [jpg png mpv], [mpv], [xine-ui_logo], [logo], [official logo MRL])
++XINE_LOCATE_MEDIA([XINE_LOGO_CRIPPLED_MRL], [jpg png mpv], [mpv], [xine-ui_logo-crippled], [logo], [logo mrl for reduced functionality])
+ XINE_LOCATE_MEDIA([XINE_SPLASH], [jpg png], [png], [xine_splash], [splash], [splash image filename])
+ 
+ XINE_VISDIR="${datadir}/xine/visuals"
+Index: misc/xine-check.sh.in
+===================================================================
+--- misc/xine-check.sh.in.orig	2018-01-23 15:09:34.754548489 +0200
++++ misc/xine-check.sh.in	2018-01-23 15:10:06.827563191 +0200
+@@ -602,7 +602,13 @@ if test -n "$skindir"; then
+       if test -f xine-ui_logo.mpv || test -f xine-ui_logo.png || test -f xine-ui_logo.jpg; then
+         msg logo-exists
+       else
+-        msg no-xine-logo 2
++        if test -f xine-ui_logo-crippled.png; then
++          msg ONLY the CRIPPLED logo exists
++          msg this is NOT a full enabled version of xine !
++          msg most likely it is not possible to play DVDs !
++        else
++          msg no-xine-logo 2
++        fi
+       fi
+       skins=
+       for dir in *; do
+Index: src/xitk/common.h
+===================================================================
+--- src/xitk/common.h.orig	2018-01-23 15:09:34.754548489 +0200
++++ src/xitk/common.h	2018-01-23 15:10:06.827563191 +0200
+@@ -245,6 +245,8 @@ typedef struct {
+ 
+   int                       logo_mode;
+   const char               *logo_mrl;
++  const char               *logo_crippled_mrl;
++  int                       logo_select;
+   pthread_mutex_t           logo_mutex;
+   int                       logo_has_changed;
+   int                       display_logo;
+Index: src/xitk/main.c
+===================================================================
+--- src/xitk/main.c.orig	2018-01-23 15:09:34.758548614 +0200
++++ src/xitk/main.c	2018-01-23 15:10:12.923756244 +0200
+@@ -416,6 +416,9 @@ static void main_change_logo_cb(void *da
+   gGui_t *gui = gGui;
+   gui->logo_mrl = cfg->str_value;
+ }
++static void main_change_logo_crippled_cb(void *data, xine_cfg_entry_t *cfg) {
++  gGui->logo_crippled_mrl = cfg->str_value;
++}
+ static void sub_autoload_cb(void *data, xine_cfg_entry_t *cfg) {
+   gGui_t *gui = gGui;
+   gui->subtitle_autoload = cfg->num_value;
+@@ -1427,6 +1430,9 @@ int main(int argc, char *argv[]) {
+   char                  **session_argv     = NULL;
+   int                     session_argv_num = 0;
+   int                     retval           = 0;
++  const char * const     *decoders;
++  const char * const     *d;
++  int                     i;
+   pthread_mutexattr_t     mutexattr;
+   
+   /* Set stdout always line buffered to get every     */
+@@ -2251,6 +2257,25 @@ int main(int argc, char *argv[]) {
+ 						CONFIG_LEVEL_EXP,
+ 						main_change_logo_cb, 
+ 						CONFIG_NO_DATA);
++  gGui->logo_crippled_mrl = xine_config_register_string (__xineui_global_xine_instance, "gui.logo_crippled_mrl", XINE_LOGO_CRIPPLED_MRL,
++						_("Logo mrl (reduced functionality)"),
++						CONFIG_NO_HELP,
++						CONFIG_LEVEL_EXP,
++						main_change_logo_crippled_cb,
++						CONFIG_NO_DATA);
++
++  /*
++   * Check for important codecs and select logo
++   */
++  decoders = xine_list_video_decoder_plugins (__xineui_global_xine_instance);
++  i = 0;
++  for (d = decoders; *d; d++) {
++    if (strcmp (*d, "mpeg2") == 0)
++      i |= 1;
++    if (strcmp (*d, "ffmpegvideo") == 0)
++      i |= 2;
++  }
++  gGui->logo_select = (i == 3) ? 0 : 1;
+ 
+   gui->event_queue = xine_event_new_queue(gui->stream);
+   xine_event_create_listener_thread(gui->event_queue, event_listener, NULL);
+Index: src/xitk/videowin.c
+===================================================================
+--- src/xitk/videowin.c.orig	2018-01-23 15:09:34.758548614 +0200
++++ src/xitk/videowin.c	2018-01-23 15:22:49.568151904 +0200
+@@ -1,18 +1,18 @@
+-/* 
++/*
+  * Copyright (C) 2000-2017 the xine project
+- * 
++ *
+  * This file is part of xine, a free video player.
+- * 
++ *
+  * xine is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+  * the Free Software Foundation; either version 2 of the License, or
+  * (at your option) any later version.
+- * 
++ *
+  * xine is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  * GNU General Public License for more details.
+- * 
++ *
+  * You should have received a copy of the GNU General Public License
+  * along with this program; if not, write to the Free Software
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
+@@ -94,7 +94,7 @@ static struct {
+   int                    fullscreen_width;
+   int                    fullscreen_height;
+ 
+-  int                    xinerama_fullscreen_x; /* will contain paramaters for very 
++  int                    xinerama_fullscreen_x; /* will contain paramaters for very
+ 						   fullscreen in xinerama mode */
+   int                    xinerama_fullscreen_y;
+   int                    xinerama_fullscreen_width;
+@@ -138,14 +138,14 @@ static struct {
+   int                    XF86_modelines_count;
+ #endif
+ 
+-  int                    hide_on_start; /* user use '-H' arg, don't map 
++  int                    hide_on_start; /* user use '-H' arg, don't map
+ 					   video window the first time */
+ 
+   struct timeval         click_time;
+ 
+   pthread_t              second_display_thread;
+   int                    second_display_running;
+-  
++
+   int                    logo_synthetic;
+ 
+   pthread_mutex_t        mutex;
+@@ -184,17 +184,17 @@ static void _video_window_zoom_small_cb(
+   gVw.zoom_small_stream = cfg->num_value;
+ }
+ 
+-static Bool have_xtestextention(void) {  
++static Bool have_xtestextention(void) {
+   gGui_t *gui = gGui;
+   Bool xtestext = False;
+ #ifdef HAVE_XTESTEXTENSION
+   int dummy1 = 0, dummy2 = 0, dummy3 = 0, dummy4 = 0;
+-  
++
+   XLockDisplay(gui->video_display);
+   xtestext = XTestQueryExtension(gui->video_display, &dummy1, &dummy2, &dummy3, &dummy4);
+   XUnlockDisplay(gui->video_display);
+ #endif
+-  
++
+   return xtestext;
+ }
+ 
+@@ -204,32 +204,32 @@ static void _set_window_title(void) {
+   XSync(gui->video_display, False);
+ }
+ 
+-/* 
++/*
+  * very small X event loop for the second display
+  */
+ static __attribute__((noreturn)) void *second_display_loop (void *dummy) {
+   gGui_t *gui = gGui;
+-  
++
+   while(gVw.second_display_running) {
+     XEvent   xevent;
+     int      got_event;
+ 
+     xine_usec_sleep(20000);
+-    
++
+     do {
+         XLockDisplay(gui->video_display);
+         got_event = XPending(gui->video_display);
+         if( got_event )
+           XNextEvent(gui->video_display, &xevent);
+         XUnlockDisplay(gui->video_display);
+-        
++
+         if( got_event && gui->stream ) {
+           video_window_handle_event(&xevent, NULL);
+         }
+     } while (got_event);
+ 
+   }
+-  
++
+   pthread_exit(NULL);
+ }
+ 
+@@ -246,7 +246,7 @@ static void video_window_find_visual (Vi
+   if (gui->prefered_visual_id == None) {
+     /*
+      * List all available TrueColor visuals, pick the best one for xine.
+-     * We prefer visuals of depth 15/16 (fast).  Depth 24/32 may be OK, 
++     * We prefer visuals of depth 15/16 (fast).  Depth 24/32 may be OK,
+      * but could be slow.
+      */
+     vinfo_tmpl.screen = gui->video_screen;
+@@ -267,18 +267,18 @@ static void video_window_find_visual (Vi
+ 	  pref = 2;
+ 	else
+ 	  pref = 1;
+-	
++
+ 	if (pref > best_visual) {
+ 	  best_visual = pref;
+ 	  best_visual_index = i;
+-	}  
++	}
+       }
+-      
++
+       if (best_visual_index != -1) {
+ 	depth = vinfo[best_visual_index].depth;
+ 	visual = vinfo[best_visual_index].visual;
+       }
+-      
++
+       XFree(vinfo);
+     }
+   } else {
+@@ -287,7 +287,7 @@ static void video_window_find_visual (Vi
+      */
+     vinfo_tmpl.visualid = gui->prefered_visual_id;
+     vinfo = XGetVisualInfo(gui->video_display,
+-			   VisualIDMask, &vinfo_tmpl, 
++			   VisualIDMask, &vinfo_tmpl,
+ 			   &num_visuals);
+     if (vinfo == NULL) {
+       printf(_("gui_main: selected visual %#lx does not exist, trying default visual\n"),
+@@ -305,14 +305,14 @@ static void video_window_find_visual (Vi
+     XGetWindowAttributes(gui->video_display, (DefaultRootWindow(gui->video_display)), &attribs);
+ 
+     depth = attribs.depth;
+-  
++
+     if (XMatchVisualInfo(gui->video_display, gui->video_screen, depth, TrueColor, &vinfo)) {
+       visual = vinfo.visual;
+     } else {
+       printf (_("gui_main: couldn't find true color visual.\n"));
+ 
+       depth = DefaultDepth (gui->video_display, gui->video_screen);
+-      visual = DefaultVisual (gui->video_display, gui->video_screen); 
++      visual = DefaultVisual (gui->video_display, gui->video_screen);
+     }
+   }
+ 
+@@ -383,7 +383,7 @@ static void video_window_lock_opacity (v
+  * output_width/output_height
+  * visible_width/visible_height/visible_aspect
+  */
+-static void video_window_adapt_size (void) { 
++static void video_window_adapt_size (void) {
+   gGui_t *gui = gGui;
+   XSizeHints            hint;
+   XWMHints             *wm_hint;
+@@ -418,28 +418,28 @@ static void video_window_adapt_size (voi
+ 
+       if(gui->video_display != gui->display) {
+         video_window_find_visual (&gVw.visual, &gVw.depth);
+-        gVw.colormap = DefaultColormap(gui->video_display, gui->video_screen); 
++        gVw.colormap = DefaultColormap(gui->video_display, gui->video_screen);
+       }
+-      
++
+       /* This couldn't happen, but we're paranoid ;-) */
+-      if((rootwindow = xitk_get_desktop_root_window(gui->video_display, 
++      if((rootwindow = xitk_get_desktop_root_window(gui->video_display,
+ 						    gui->video_screen, &wparent)) == None)
+ 	rootwindow = DefaultRootWindow(gui->video_display);
+ 
+       attr.override_redirect = True;
+       attr.background_pixel  = gui->black.pixel;
+-      
++
+       border_width = 0;
+ 
+       if(gui->wid)
+ 	gui->video_window = gui->wid;
+       else
+ 	gui->video_window = XCreateWindow(gui->video_display, rootwindow,
+-					   0, 0, gVw.fullscreen_width, gVw.fullscreen_height, 
+-					   border_width, 
+-					   CopyFromParent, CopyFromParent, CopyFromParent, 
++					   0, 0, gVw.fullscreen_width, gVw.fullscreen_height,
++					   border_width,
++					   CopyFromParent, CopyFromParent, CopyFromParent,
+ 					   CWBackPixel | CWOverrideRedirect, &attr);
+-      
++
+       if(gui->video_display == gui->display)
+         xitk_widget_list_set(gVw.wl, WIDGET_LIST_WINDOW, (void *) gui->video_window);
+ 
+@@ -455,13 +455,13 @@ static void video_window_adapt_size (voi
+ 	XSelectInput(gui->video_display,
+                      gui->video_window,
+                      ExposureMask & (~(ButtonPressMask | ButtonReleaseMask)));
+-      
++
+       _set_window_title();
+-      
++
+       gcv.foreground         = gui->black.pixel;
+       gcv.background         = gui->black.pixel;
+       gcv.graphics_exposures = False;
+-      gVw.gc = XCreateGC(gui->video_display, gui->video_window, 
++      gVw.gc = XCreateGC(gui->video_display, gui->video_window,
+ 			  GCForeground | GCBackground | GCGraphicsExposures, &gcv);
+ 
+       if(gui->video_display == gui->display)
+@@ -477,9 +477,9 @@ static void video_window_adapt_size (voi
+       video_window_lock_opacity();
+ 
+       XClearWindow(gui->video_display, gui->video_window);
+-      
++
+       XMapWindow(gui->video_display, gui->video_window);
+-      
++
+       XLowerWindow(gui->video_display, gui->video_window);
+ 
+       gVw.old_widget_key = gVw.widget_key;
+@@ -487,18 +487,18 @@ static void video_window_adapt_size (voi
+       XUnlockDisplay (gui->video_display);
+ 
+       if(gui->video_display == gui->display)
+-        gVw.widget_key = xitk_register_event_handler("video_window", 
+-						    gui->video_window, 
++        gVw.widget_key = xitk_register_event_handler("video_window",
++						    gui->video_window,
+ 						    video_window_handle_event,
+ 						    NULL,
+ 						    gui_dndcallback,
+ 						    NULL, NULL);
+-    
++
+       return;
+     }
+-    
++
+     XUnlockDisplay (gui->video_display);
+-    
++
+     return;
+   }
+ 
+@@ -511,7 +511,7 @@ static void video_window_adapt_size (voi
+   if(( (!(gVw.fullscreen_req & WINDOWED_MODE)) || (!(gVw.fullscreen_mode & WINDOWED_MODE)))
+      && (gVw.XF86_modelines_count > 1)) {
+     int search = 0;
+-    
++
+     /* skipping first entry because it is the current modeline */
+     for(search = 1; search < gVw.XF86_modelines_count; search++) {
+        if(gVw.XF86_modelines[search]->hdisplay >= gVw.video_width)
+@@ -524,7 +524,7 @@ static void video_window_adapt_size (voi
+      */
+     if((!(gVw.fullscreen_mode & WINDOWED_MODE)) && (search >= gVw.XF86_modelines_count))
+        search = 0;
+-       
++
+     /* just switching to a different modeline if necessary */
+     if(!(search >= gVw.XF86_modelines_count)) {
+        if(XF86VidModeSwitchToMode(gui->video_display, XDefaultScreen(gui->video_display), gVw.XF86_modelines[search])) {
+@@ -532,17 +532,17 @@ static void video_window_adapt_size (voi
+ #ifdef HAVE_XINERAMA
+ 	  int dummy_event, dummy_error;
+ #endif
+-	  
+-	  gui->XF86VidMode_fullscreen = 1;	  
++
++	  gui->XF86VidMode_fullscreen = 1;
+ 	  gVw.fullscreen_width        = gVw.XF86_modelines[search]->hdisplay;
+ 	  gVw.fullscreen_height       = gVw.XF86_modelines[search]->vdisplay;
+-	  
++
+ 	  /* update pixel aspect */
+-	  res_h = (DisplayWidth  (gui->video_display, gui->video_screen)*1000 
++	  res_h = (DisplayWidth  (gui->video_display, gui->video_screen)*1000
+ 		   / DisplayWidthMM (gui->video_display, gui->video_screen));
+ 	  res_v = (DisplayHeight (gui->video_display, gui->video_screen)*1000
+ 		   / DisplayHeightMM (gui->video_display, gui->video_screen));
+-  
++
+ 	  gui->pixel_aspect    = res_v / res_h;
+ #ifdef HAVE_XINERAMA
+ 	  if (XineramaQueryExtension(gui->video_display, &dummy_event, &dummy_error)) {
+@@ -563,9 +563,9 @@ static void video_window_adapt_size (voi
+ 	   * to the middle of the video window
+ 	   */
+ 	  XWarpPointer(gui->video_display, None, gui->video_window, 0, 0, 0, 0, gVw.fullscreen_width/2, gVw.fullscreen_height/2);
+-	  
++
+ 	  XF86VidModeSetViewPort(gui->video_display, XDefaultScreen(gui->video_display), 0, 0);
+-          
++
+ 	  /*
+ 	   * if this is true, we are back at the original resolution, so there
+ 	   * is no need to further worry about anything.
+@@ -597,7 +597,7 @@ static void video_window_adapt_size (voi
+ 	knowLocation = 1;
+       }
+     }
+-    
++
+     if (gVw.fullscreen_req & FULLSCR_XI_MODE) {
+       hint.x = gVw.xinerama_fullscreen_x;
+       hint.y = gVw.xinerama_fullscreen_y;
+@@ -605,10 +605,10 @@ static void video_window_adapt_size (voi
+       hint.height = gVw.xinerama_fullscreen_height;
+       gVw.fullscreen_width = hint.width;
+       gVw.fullscreen_height = hint.height;
+-    } 
++    }
+     else {
+       /* Get mouse cursor position */
+-      XQueryPointer(gui->video_display, RootWindow(gui->video_display, gui->video_screen), 
++      XQueryPointer(gui->video_display, RootWindow(gui->video_display, gui->video_screen),
+ 		    &root_win, &dummy_win, &x_mouse, &y_mouse, &dummy_x, &dummy_y, &dummy_opts);
+ 
+       for (i = 0; i < gVw.xinerama_cnt; i++) {
+@@ -627,7 +627,7 @@ static void video_window_adapt_size (voi
+ 	      XScreenNumberOfScreen(XDefaultScreenOfDisplay(gui->video_display)))) {*/
+ 	  hint.x = gVw.xinerama[i].x_org;
+ 	  hint.y = gVw.xinerama[i].y_org;
+-	  
++
+ 	  if(knowLocation == 0) {
+ 	    gVw.old_xwin = hint.x;
+ 	    gVw.old_ywin = hint.y;
+@@ -638,7 +638,7 @@ static void video_window_adapt_size (voi
+ 	    hint.height = gVw.xinerama[i].height;
+ 	    gVw.fullscreen_width = hint.width;
+ 	    gVw.fullscreen_height = hint.height;
+-	  } 
++	  }
+ 	  else {
+ 	    hint.width  = gVw.video_width;
+ 	    hint.height = gVw.video_height;
+@@ -647,7 +647,7 @@ static void video_window_adapt_size (voi
+ 	}
+       }
+     }
+-  } 
++  }
+   else {
+     hint.x = 0;
+     hint.y = 0;
+@@ -663,7 +663,7 @@ static void video_window_adapt_size (voi
+   hint.x = 0;
+   hint.y = 0;   /* for now -- could change later */
+ #endif /* HAVE_XINERAMA */
+-  
++
+   gVw.visible_width  = gVw.fullscreen_width;
+   gVw.visible_height = gVw.fullscreen_height;
+   gVw.visible_aspect = gui->pixel_aspect;
+@@ -674,8 +674,8 @@ static void video_window_adapt_size (voi
+ 			      &gVw.visible_width, &gVw.visible_height,
+ 			      &gVw.visible_aspect);
+     tvout_get_size_and_aspect(gui->tvout,
+-			      &hint.width, &hint.height, NULL);    
+-    tvout_set_fullscreen_mode(gui->tvout, 
++			      &hint.width, &hint.height, NULL);
++    tvout_set_fullscreen_mode(gui->tvout,
+ 			      !(gVw.fullscreen_req & WINDOWED_MODE) ? 1 : 0,
+ 			      gVw.visible_width, gVw.visible_height);
+   }
+@@ -718,7 +718,7 @@ static void video_window_adapt_size (voi
+     gVw.colormap = gui->colormap;
+     if(gui->video_display != gui->display) {
+       video_window_find_visual (&gVw.visual, &gVw.depth);
+-      gVw.colormap = DefaultColormap(gui->video_display, gui->video_screen);  
++      gVw.colormap = DefaultColormap(gui->video_display, gui->video_screen);
+     }
+     /*
+      * open fullscreen window
+@@ -786,7 +786,7 @@ static void video_window_adapt_size (voi
+       if ((!(gVw.fullscreen_mode & WINDOWED_MODE)) && (gui->visual == gVw.visual)) {
+ //#ifdef HAVE_XF86VIDMODE
+ //	if(gVw.XF86_modelines_count > 1) {
+-	if ((gVw.visible_width != gVw.output_width) 
++	if ((gVw.visible_width != gVw.output_width)
+ 	    || (gVw.visible_height != gVw.output_height)) {
+ 	   /*
+ 	    * resizing the video window may be necessary if the modeline or tv mode has
+@@ -800,13 +800,13 @@ static void video_window_adapt_size (voi
+ //#endif
+         gVw.fullscreen_mode = gVw.fullscreen_req;
+ 	XUnlockDisplay (gui->video_display);
+-	
++
+ 	return;
+       }
+-      
++
+       xitk_get_window_position(gui->video_display, gui->video_window,
+       			       &gVw.old_xwin, &gVw.old_ywin, &dummy, &dummy);
+-      
++
+       if(gui->video_display == gui->display)
+         xitk_unregister_event_handler(&gVw.old_widget_key);
+       old_video_window = gui->video_window;
+@@ -816,10 +816,10 @@ static void video_window_adapt_size (voi
+     gVw.visual   = gui->visual;
+     gVw.depth    = gui->depth;
+     gVw.colormap = gui->colormap;
+-    
++
+     if(gui->video_display != gui->display) {
+       video_window_find_visual (&gVw.visual, &gVw.depth);
+-      gVw.colormap = DefaultColormap(gui->video_display, gui->video_screen); 
++      gVw.colormap = DefaultColormap(gui->video_display, gui->video_screen);
+     }
+ 
+     /*
+@@ -835,22 +835,22 @@ static void video_window_adapt_size (voi
+     if(gui->wid)
+       gui->video_window = gui->wid;
+     else
+-      gui->video_window = 
+-	XCreateWindow (gui->video_display, DefaultRootWindow(gui->video_display), 
+-		       hint.x, hint.y, gVw.visible_width, gVw.visible_height, 
++      gui->video_window =
++	XCreateWindow (gui->video_display, DefaultRootWindow(gui->video_display),
++		       hint.x, hint.y, gVw.visible_width, gVw.visible_height,
+ 		       border_width, gVw.depth, InputOutput,
+ 		       gVw.visual,
+ 		       CWBackPixel | CWBorderPixel | CWColormap, &attr);
+-  
++
+     if(gui->video_display == gui->display)
+       xitk_widget_list_set(gVw.wl, WIDGET_LIST_WINDOW, (void *) gui->video_window);
+-    
++
+     if(gui->vo_port) {
+       XUnlockDisplay (gui->video_display);
+       xine_port_send_gui_data(gui->vo_port, XINE_GUI_SEND_DRAWABLE_CHANGED, (void*)gui->video_window);
+       XLockDisplay (gui->video_display);
+     }
+-    
++
+     if (gVw.xclasshint_fullscreen != NULL)
+       XSetClassHint(gui->video_display, gui->video_window, gVw.xclasshint_fullscreen);
+ 
+@@ -862,18 +862,18 @@ static void video_window_adapt_size (voi
+ #endif
+     hint.win_gravity = StaticGravity;
+     hint.flags  = PPosition | PSize | PWinGravity;
+-    
++
+     _set_window_title();
+-    
++
+     XSetWMNormalHints (gui->video_display, gui->video_window, &hint);
+-        
++
+     XSetWMHints(gui->video_display, gui->video_window, gVw.wm_hint);
+ 
+     video_window_lock_opacity();
+ 
+     gVw.output_width    = hint.width;
+     gVw.output_height   = hint.height;
+-    
++
+     /*
+      * wm, no borders please
+      */
+@@ -885,9 +885,9 @@ static void video_window_adapt_size (voi
+ 		    PropModeReplace, (unsigned char *) &mwmhints,
+ 		    PROP_MWM_HINTS_ELEMENTS);
+ 
+-  } 
++  }
+   else {
+-       
++
+ #ifndef HAVE_XINERAMA
+     hint.x           = 0;
+     hint.y           = 0;
+@@ -895,7 +895,7 @@ static void video_window_adapt_size (voi
+     hint.height      = gVw.win_height;
+ #endif
+     hint.flags       = PPosition | PSize;
+-    
++
+     /*
+      * user sets window geom, move back to original location.
+      */
+@@ -906,7 +906,7 @@ static void video_window_adapt_size (voi
+ 
+     gVw.old_win_width  = hint.width;
+     gVw.old_win_height = hint.height;
+-    
++
+     gVw.output_width  = hint.width;
+     gVw.output_height = hint.height;
+ 
+@@ -923,21 +923,21 @@ static void video_window_adapt_size (voi
+ #ifdef HAVE_XINERAMA
+ 	   int dummy_event, dummy_error;
+ #endif
+-	   
++
+ 	   XF86VidModeSwitchToMode(gui->video_display, XDefaultScreen(gui->video_display), gVw.XF86_modelines[0]);
+ 	   XF86VidModeSetViewPort(gui->video_display, XDefaultScreen(gui->video_display), 0, 0);
+ 
+ 	   gui->XF86VidMode_fullscreen = 0;
+-       
++
+ 	   gVw.fullscreen_width  = gVw.XF86_modelines[0]->hdisplay;
+ 	   gVw.fullscreen_height = gVw.XF86_modelines[0]->vdisplay;
+-	   
++
+ 	   /* update pixel aspect */
+-	   res_h = (DisplayWidth  (gui->video_display, gui->video_screen)*1000 
++	   res_h = (DisplayWidth  (gui->video_display, gui->video_screen)*1000
+ 		    / DisplayWidthMM (gui->video_display, gui->video_screen));
+ 	   res_v = (DisplayHeight (gui->video_display, gui->video_screen)*1000
+ 		    / DisplayHeightMM (gui->video_display, gui->video_screen));
+-  
++
+ 	   gui->pixel_aspect    = res_v / res_h;
+ #ifdef HAVE_XINERAMA
+ 	   if (XineramaQueryExtension(gui->video_display, &dummy_event, &dummy_error)) {
+@@ -959,16 +959,16 @@ static void video_window_adapt_size (voi
+ 	old_video_window = gui->video_window;
+       }
+       else {
+-	
++
+ 	/* Update window size hints with the new size */
+ 	XSetNormalHints(gui->video_display, gui->video_window, &hint);
+-	
+-	XResizeWindow (gui->video_display, gui->video_window, 
++
++	XResizeWindow (gui->video_display, gui->video_window,
+ 		       gVw.win_width, gVw.win_height);
+-	
++
+ 	XUnlockDisplay (gui->video_display);
+-	
+-	return;	
++
++	return;
+       }
+     }
+ 
+@@ -976,7 +976,7 @@ static void video_window_adapt_size (voi
+     gVw.visual            = gui->visual;
+     gVw.depth             = gui->depth;
+     gVw.colormap          = gui->colormap;
+-      
++
+     if(gui->video_display != gui->display) {
+       video_window_find_visual (&gVw.visual, &gVw.depth);
+       gVw.colormap = DefaultColormap(gui->video_display, gui->video_screen);
+@@ -995,7 +995,7 @@ static void video_window_adapt_size (voi
+     else
+       gui->video_window =
+ 	XCreateWindow(gui->video_display, DefaultRootWindow(gui->video_display),
+-		      hint.x, hint.y, hint.width, hint.height, border_width, 
++		      hint.x, hint.y, hint.width, hint.height, border_width,
+ 		      gVw.depth, InputOutput, gVw.visual,
+ 		      CWBackPixel | CWBorderPixel | CWColormap, &attr);
+ 
+@@ -1007,7 +1007,7 @@ static void video_window_adapt_size (voi
+       xine_port_send_gui_data(gui->vo_port, XINE_GUI_SEND_DRAWABLE_CHANGED, (void*)gui->video_window);
+       XLockDisplay (gui->video_display);
+     }
+-    
++
+     if(gVw.borderless) {
+       if (gVw.xclasshint_borderless != NULL)
+ 	XSetClassHint(gui->video_display, gui->video_window, gVw.xclasshint_borderless);
+@@ -1036,14 +1036,14 @@ static void video_window_adapt_size (voi
+ 		      PROP_MWM_HINTS_ELEMENTS);
+     }
+   }
+-  
++
+   if(!(gui->no_mouse))
+     XSelectInput(gui->video_display, gui->video_window, INPUT_MOTION | KeymapStateMask);
+   else
+     XSelectInput(gui->video_display,
+ 		 gui->video_window,
+ 		 (INPUT_MOTION | KeymapStateMask) & (~(ButtonPressMask | ButtonReleaseMask)));
+-  
++
+   wm_hint = XAllocWMHints();
+   if (wm_hint != NULL) {
+     wm_hint->input = True;
+@@ -1064,42 +1064,42 @@ static void video_window_adapt_size (voi
+   else {
+     /* Map window. */
+ 
+-    if((gui->always_layer_above || 
+-	((!(gVw.fullscreen_mode & WINDOWED_MODE)) && is_layer_above())) && 
++    if((gui->always_layer_above ||
++	((!(gVw.fullscreen_mode & WINDOWED_MODE)) && is_layer_above())) &&
+        !wm_not_ewmh_only()) {
+       xitk_set_layer_above(gui->video_window);
+     }
+-        
++
+     XRaiseWindow(gui->video_display, gui->video_window);
+     XMapWindow(gui->video_display, gui->video_window);
+-    
++
+     while(!xitk_is_window_visible(gui->video_display, gui->video_window))
+       xine_usec_sleep(5000);
+ 
+-    if((gui->always_layer_above || 
+-	((!(gVw.fullscreen_mode & WINDOWED_MODE)) && is_layer_above())) && 
++    if((gui->always_layer_above ||
++	((!(gVw.fullscreen_mode & WINDOWED_MODE)) && is_layer_above())) &&
+        wm_not_ewmh_only()) {
+       xitk_set_layer_above(gui->video_window);
+     }
+-    
++
+     /* inform the window manager that we are fullscreen. This info musn't be set for xinerama-fullscreen,
+        otherwise there are 2 different window size for one fullscreen mode ! (kwin doesn't accept this) */
+     if( !(gVw.fullscreen_mode & WINDOWED_MODE)
+      && !(gVw.fullscreen_mode & FULLSCR_XI_MODE)
+      && wm_not_ewmh_only())
+       xitk_set_ewmh_fullscreen(gui->video_window);
+-    
++
+   }
+-  
++
+   XSync(gui->video_display, False);
+ 
+-  if(gVw.gc != None) 
++  if(gVw.gc != None)
+     XFreeGC(gui->video_display, gVw.gc);
+ 
+   gVw.gc = XCreateGC(gui->video_display, gui->video_window, 0L, &xgcv);
+   if(gui->video_display == gui->display)
+     xitk_widget_list_set(gVw.wl, WIDGET_LIST_GC, gVw.gc);
+-      
++
+   if ((!(gVw.fullscreen_mode & WINDOWED_MODE))) {
+     /* Waiting for visibility, avoid X error on some cases */
+ 
+@@ -1122,9 +1122,9 @@ static void video_window_adapt_size (voi
+   /* The old window should be destroyed now */
+   if(old_video_window != None) {
+     XDestroyWindow(gui->video_display, old_video_window);
+-     
++
+     if(gui->cursor_grabbed)
+-       XGrabPointer(gui->video_display, gui->video_window, 1, 
++       XGrabPointer(gui->video_display, gui->video_window, 1,
+ 		    None, GrabModeAsync, GrabModeAsync, gui->video_window, None, CurrentTime);
+   }
+ 
+@@ -1133,19 +1133,19 @@ static void video_window_adapt_size (voi
+   gVw.old_widget_key = gVw.widget_key;
+ 
+   if(gui->video_display == gui->display)
+-    gVw.widget_key = xitk_register_event_handler("video_window", 
+-						  gui->video_window, 
++    gVw.widget_key = xitk_register_event_handler("video_window",
++						  gui->video_window,
+ 						  video_window_handle_event,
+ 						  NULL,
+ 						  gui_dndcallback,
+ 						  NULL, NULL);
+-  
++
+   /* take care about window decoration/pos */
+   {
+     Window tmp_win;
+-    
++
+     XLockDisplay (gui->video_display);
+-    XTranslateCoordinates(gui->video_display, gui->video_window, DefaultRootWindow(gui->video_display), 
++    XTranslateCoordinates(gui->video_display, gui->video_window, DefaultRootWindow(gui->video_display),
+ 			  0, 0, &gVw.xwin, &gVw.ywin, &tmp_win);
+     XUnlockDisplay (gui->video_display);
+   }
+@@ -1171,7 +1171,7 @@ void video_window_dest_size_cb (void *da
+   gGui_t *gui = gGui;
+ 
+   pthread_mutex_lock(&gVw.mutex);
+-  
++
+   gVw.frame_width = video_width;
+   gVw.frame_height = video_height;
+ 
+@@ -1184,13 +1184,13 @@ void video_window_dest_size_cb (void *da
+   if(gVw.stream_resize_window && (gVw.fullscreen_mode & WINDOWED_MODE)) {
+ 
+     if(gVw.video_width != video_width || gVw.video_height != video_height) {
+-      
++
+       if((video_width > 0) && (video_height > 0)) {
+ 	float xmag, ymag;
+ 
+         get_default_mag(video_width, video_height, &xmag, &ymag);
+ 
+-        /* FIXME: this is supposed to give the same results as if a 
++        /* FIXME: this is supposed to give the same results as if a
+          * video_window_set_mag(xmag, ymag) was called. Since video_window_adapt_size()
+          * check several other details (like border, xinerama, etc) this
+          * may produce wrong values in some cases. (?)
+@@ -1203,7 +1203,7 @@ void video_window_dest_size_cb (void *da
+       }
+     }
+   }
+-  
++
+   if (!(gVw.fullscreen_mode & WINDOWED_MODE)) {
+     *dest_width  = gVw.visible_width;
+     *dest_height = gVw.visible_height;
+@@ -1223,7 +1223,7 @@ void video_window_dest_size_cb (void *da
+ void video_window_frame_output_cb (void *data,
+ 				   int video_width, int video_height,
+ 				   double video_pixel_aspect,
+-				   int *dest_x, int *dest_y, 
++				   int *dest_x, int *dest_y,
+ 				   int *dest_width, int *dest_height,
+ 				   double *dest_pixel_aspect,
+ 				   int *win_x, int *win_y) {
+@@ -1303,7 +1303,7 @@ void video_window_set_fullscreen_mode (i
+   gGui_t *gui = gGui;
+ 
+   pthread_mutex_lock(&gVw.mutex);
+-  
++
+   if(!(gVw.fullscreen_mode & req_fullscreen)) {
+ 
+ #ifdef HAVE_XINERAMA
+@@ -1373,7 +1373,7 @@ void video_window_set_cursor(int cursor)
+ 
+   if(cursor) {
+     gVw.current_cursor = cursor;
+-    
++
+     if(gVw.cursor_visible) {
+       gVw.cursor_timer = 0;
+       switch(gVw.current_cursor) {
+@@ -1389,7 +1389,7 @@ void video_window_set_cursor(int cursor)
+       }
+     }
+   }
+-  
++
+ }
+ 
+ /*
+@@ -1400,12 +1400,12 @@ void video_window_set_cursor_visibility(
+ 
+   if(gui->use_root_window)
+     return;
+-  
++
+   gVw.cursor_visible = show_cursor;
+ 
+   if(show_cursor)
+     gVw.cursor_timer = 0;
+-  
++
+   if(show_cursor) {
+     if(gVw.current_cursor == CURSOR_ARROW)
+       xitk_cursors_restore_window_cursor(gui->video_display, gui->video_window);
+@@ -1414,11 +1414,11 @@ void video_window_set_cursor_visibility(
+   }
+   else
+     xitk_cursors_define_window_cursor(gui->video_display, gui->video_window, xitk_cursor_invisible);
+-  
++
+ }
+ 
+-/* 
+- * Get cursor visiblity (boolean) 
++/*
++ * Get cursor visiblity (boolean)
+  */
+ int video_window_is_cursor_visible(void) {
+   return gVw.cursor_visible;
+@@ -1432,8 +1432,8 @@ void video_window_set_cursor_timer(int t
+   gVw.cursor_timer = timer;
+ }
+ 
+-/* 
+- * hide/show video window 
++/*
++ * hide/show video window
+  */
+ void video_window_set_visibility(int show_window) {
+   gGui_t *gui = gGui;
+@@ -1442,31 +1442,31 @@ void video_window_set_visibility(int sho
+     return;
+ 
+   xine_port_send_gui_data(gui->vo_port, XINE_GUI_SEND_VIDEOWIN_VISIBLE, (void *)(intptr_t)show_window);
+-  
++
+   pthread_mutex_lock(&gVw.mutex);
+ 
+   gVw.show = show_window;
+- 
++
+   /* Switching to visible: If new window size requested meanwhile, adapt window */
+   if((gVw.show) && (gVw.fullscreen_mode & WINDOWED_MODE) &&
+      (gVw.win_width != gVw.old_win_width || gVw.win_height != gVw.old_win_height))
+     video_window_adapt_size();
+ 
+   XLockDisplay(gui->video_display);
+-  
++
+   if(gVw.show == 1) {
+ 
+-    if((gui->always_layer_above || 
+-	(((!(gVw.fullscreen_mode & WINDOWED_MODE)) && is_layer_above()) && 
++    if((gui->always_layer_above ||
++	(((!(gVw.fullscreen_mode & WINDOWED_MODE)) && is_layer_above()) &&
+        (gVw.hide_on_start == 0))) && (!wm_not_ewmh_only())) {
+       xitk_set_layer_above(gui->video_window);
+     }
+-    
++
+     XRaiseWindow(gui->video_display, gui->video_window);
+     XMapWindow(gui->video_display, gui->video_window);
+-    
+-    if((gui->always_layer_above || 
+-	(((!(gVw.fullscreen_mode & WINDOWED_MODE)) && is_layer_above()) && 
++
++    if((gui->always_layer_above ||
++	(((!(gVw.fullscreen_mode & WINDOWED_MODE)) && is_layer_above()) &&
+        (gVw.hide_on_start == 0))) && (wm_not_ewmh_only())) {
+       xitk_set_layer_above(gui->video_window);
+     }
+@@ -1480,9 +1480,9 @@ void video_window_set_visibility(int sho
+   }
+   else
+     XUnmapWindow (gui->video_display, gui->video_window);
+-  
++
+   XUnlockDisplay (gui->video_display);
+-  
++
+   /* User used '-H', now he want to show video window */
+   if(gVw.hide_on_start == -1)
+     gVw.hide_on_start = 0;
+@@ -1536,12 +1536,12 @@ void video_window_init (window_attribute
+     gVw.wl                 = xitk_widget_list_new();
+     xitk_widget_list_set(gVw.wl, WIDGET_LIST_LIST, (xitk_list_new()));
+   }
+-  
++
+   gVw.fullscreen_req     = WINDOWED_MODE;
+   gVw.fullscreen_mode    = WINDOWED_MODE;
+   gui->video_window      = None;
+   gVw.show               = 1;
+-  gVw.widget_key         = 
++  gVw.widget_key         =
+     gVw.old_widget_key   = 0;
+   gVw.gc		  = None;
+   gVw.borderless         = window_attribute->borderless;
+@@ -1553,12 +1553,12 @@ void video_window_init (window_attribute
+   gVw.colormap		  = gui->colormap;
+   /* Currently, there no plugin loaded so far, but that might change */
+   video_window_select_visual ();
+- 
++
+   if(gui->video_display != gui->display) {
+     video_window_find_visual (&gVw.visual, &gVw.depth);
+-    gVw.colormap = DefaultColormap(gui->video_display, gui->video_screen); 
++    gVw.colormap = DefaultColormap(gui->video_display, gui->video_screen);
+   }
+-  
++
+   gVw.xwin               = window_attribute->x;
+   gVw.ywin               = window_attribute->y;
+ 
+@@ -1571,9 +1571,9 @@ void video_window_init (window_attribute
+   gVw.fake_keys[1] = XKeysymToKeycode(gui->video_display, XK_Control_L);
+   gVw.fake_key_cur = 0;
+ #endif
+-  
++
+   strcpy(gVw.window_title, "xine");
+-  
++
+   gettimeofday(&gVw.click_time, 0);
+ 
+   gVw.using_xinerama     = 0;
+@@ -1585,13 +1585,13 @@ void video_window_init (window_attribute
+    * I want to figure out what fullscreen means for this setup
+    */
+ 
+-  if ((XineramaQueryExtension (gui->video_display, &dummy_a, &dummy_b)) 
++  if ((XineramaQueryExtension (gui->video_display, &dummy_a, &dummy_b))
+       && (screeninfo = XineramaQueryScreens(gui->video_display, &screens))) {
+     /* Xinerama Detected */
+ #ifdef DEBUG
+     printf ("videowin: display is using xinerama with %d screens\n", screens);
+     printf ("videowin: going to assume we are using the first screen.\n");
+-    printf ("videowin: size of the first screen is %dx%d.\n", 
++    printf ("videowin: size of the first screen is %dx%d.\n",
+ 	     screeninfo[0].width, screeninfo[0].height);
+ #endif
+     if (XineramaIsActive(gui->video_display)) {
+@@ -1601,7 +1601,7 @@ void video_window_init (window_attribute
+       gVw.xinerama = screeninfo;
+       gVw.xinerama_cnt = screens;
+ 
+-      screens_list = 
++      screens_list =
+ 	xine_config_register_string (__xineui_global_xine_instance, "gui.xinerama_use_screens",
+ 				     "0 1",
+ 				     _("Screens to use in order to do a very fullscreen in xinerama mode. (example 0 2 3)"),
+@@ -1620,30 +1620,30 @@ void video_window_init (window_attribute
+ 
+         i = dummy_a;
+         while(i < screens) {
+-	  
++
+           if(screen_is_in_xinerama_fullscreen_list(screens_list, i)) {
+             if(screeninfo[i].x_org < gVw.xinerama_fullscreen_x)
+ 	      gVw.xinerama_fullscreen_x = screeninfo[i].x_org;
+             if(screeninfo[i].y_org < gVw.xinerama_fullscreen_y)
+ 	      gVw.xinerama_fullscreen_y = screeninfo[i].y_org;
+           }
+-	  
++
+           i++;
+         }
+-	
++
+         i = dummy_a;
+         while(i < screens) {
+ 
+           if(screen_is_in_xinerama_fullscreen_list(screens_list, i)) {
+-            if((screeninfo[i].width + screeninfo[i].x_org) > 
++            if((screeninfo[i].width + screeninfo[i].x_org) >
+ 	       (gVw.xinerama_fullscreen_x + gVw.xinerama_fullscreen_width)) {
+-	      gVw.xinerama_fullscreen_width = 
++	      gVw.xinerama_fullscreen_width =
+ 		screeninfo[i].width + screeninfo[i].x_org - gVw.xinerama_fullscreen_x;
+ 	    }
+ 
+             if((screeninfo[i].height + screeninfo[i].y_org) >
+ 	       (gVw.xinerama_fullscreen_y + gVw.xinerama_fullscreen_height)) {
+-	      gVw.xinerama_fullscreen_height = 
++	      gVw.xinerama_fullscreen_height =
+ 		screeninfo[i].height + screeninfo[i].y_org - gVw.xinerama_fullscreen_y;
+ 	    }
+           }
+@@ -1677,7 +1677,7 @@ void video_window_init (window_attribute
+ 					 CONFIG_LEVEL_EXP,
+ 					 CONFIG_NO_CB,
+ 					 CONFIG_NO_DATA);
+-      if(dummy_a > -8192) 
++      if(dummy_a > -8192)
+ 	gVw.xinerama_fullscreen_y = dummy_a;
+ 
+       dummy_a = xine_config_register_num(__xineui_global_xine_instance,
+@@ -1688,9 +1688,9 @@ void video_window_init (window_attribute
+ 					 CONFIG_LEVEL_EXP,
+ 					 CONFIG_NO_CB,
+ 					 CONFIG_NO_DATA);
+-      if(dummy_a > -8192) 
++      if(dummy_a > -8192)
+ 	gVw.xinerama_fullscreen_width = dummy_a;
+-      
++
+       dummy_a = xine_config_register_num(__xineui_global_xine_instance,
+ 					 "gui.xinerama_fullscreen_height",
+ 					 -8192,
+@@ -1699,13 +1699,13 @@ void video_window_init (window_attribute
+ 					 CONFIG_LEVEL_EXP,
+ 					 CONFIG_NO_CB,
+ 					 CONFIG_NO_DATA);
+-      if(dummy_a > -8192) 
++      if(dummy_a > -8192)
+ 	gVw.xinerama_fullscreen_height = dummy_a;
+-      
++
+ #ifdef DEBUG
+       printf("videowin: Xinerama fullscreen parameters: X_origin=%d Y_origin=%d Width=%d Height=%d\n",gVw.xinerama_fullscreen_x,gVw.xinerama_fullscreen_y,gVw.xinerama_fullscreen_width,gVw.xinerama_fullscreen_height);
+ #endif
+-    } 
++    }
+     else {
+       gVw.fullscreen_width           = DisplayWidth  (gui->video_display, gui->video_screen);
+       gVw.fullscreen_height          = DisplayHeight (gui->video_display, gui->video_screen);
+@@ -1715,11 +1715,11 @@ void video_window_init (window_attribute
+       gVw.xinerama_fullscreen_height = gVw.fullscreen_height;
+     }
+ 
+-  } else 
++  } else
+ #endif
+   {
+     /* no Xinerama */
+-    if(__xineui_global_verbosity) 
++    if(__xineui_global_verbosity)
+       printf ("Display is not using Xinerama.\n");
+     gVw.fullscreen_width  = DisplayWidth (gui->video_display, gui->video_screen);
+     gVw.fullscreen_height = DisplayHeight (gui->video_display, gui->video_screen);
+@@ -1761,31 +1761,31 @@ void video_window_init (window_attribute
+   gVw.wm_hint->flags         = InputHint | StateHint | IconPixmapHint;
+ 
+   XUnlockDisplay (gui->video_display);
+-      
+-  gVw.stream_resize_window = 
+-    xine_config_register_bool(__xineui_global_xine_instance, 
+-			      "gui.stream_resize_window", 
++
++  gVw.stream_resize_window =
++    xine_config_register_bool(__xineui_global_xine_instance,
++			      "gui.stream_resize_window",
+ 			      1,
+ 			      _("New stream sizes resize output window"),
+ 			      CONFIG_NO_HELP,
+ 			      CONFIG_LEVEL_ADV,
+ 			      _video_window_resize_cb,
+ 			      CONFIG_NO_DATA);
+-  
+-  gVw.zoom_small_stream = 
++
++  gVw.zoom_small_stream =
+     xine_config_register_bool(__xineui_global_xine_instance,
+-			      "gui.zoom_small_stream", 
++			      "gui.zoom_small_stream",
+ 			      0,
+ 			      _("Double size for small streams (require stream_resize_window)"),
+ 			      CONFIG_NO_HELP,
+ 			      CONFIG_LEVEL_ADV,
+ 			      _video_window_zoom_small_cb,
+ 			      CONFIG_NO_DATA);
+-  
++
+   if((window_attribute->width > 0) && (window_attribute->height > 0)) {
+     gVw.video_width  = window_attribute->width;
+     gVw.video_height = window_attribute->height;
+-    /* 
++    /*
+      * Force to keep window size.
+      * I don't update the config file, i think this window geometry
+      * user defined can be temporary.
+@@ -1800,56 +1800,56 @@ void video_window_init (window_attribute
+   gVw.old_win_height = gVw.win_height = gVw.video_height;
+ 
+ #ifdef HAVE_XF86VIDMODE
+-  if(xine_config_register_bool(__xineui_global_xine_instance, "gui.use_xvidext", 
++  if(xine_config_register_bool(__xineui_global_xine_instance, "gui.use_xvidext",
+ 			       0,
+ 			       _("use XVidModeExtension when switching to fullscreen"),
+ 			       CONFIG_NO_HELP,
+ 			       CONFIG_LEVEL_EXP,
+ 			       CONFIG_NO_CB,
+ 			       CONFIG_NO_DATA)) {
+-    /* 
++    /*
+      * without the "stream resizes window" behavior, the XVidMode support
+      * won't work correctly, so we force it for each session the user wants
+      * to have XVideMode on...
+-     * 
++     *
+      * FIXME: maybe display a warning message or so?!
+      */
+     gVw.stream_resize_window = 1;
+-    
++
+     XLockDisplay (gui->video_display);
+-    
++
+     if(XF86VidModeQueryExtension(gui->video_display, &dummy_query_event, &dummy_query_error)) {
+       XF86VidModeModeInfo* XF86_modelines_swap;
+       int                  mode, major, minor, sort_x, sort_y;
+-      
++
+       XF86VidModeQueryVersion(gui->video_display, &major, &minor);
+       printf(_("XF86VidMode Extension (%d.%d) detected, trying to use it.\n"), major, minor);
+-      
+-      if(XF86VidModeGetAllModeLines(gui->video_display, 
++
++      if(XF86VidModeGetAllModeLines(gui->video_display,
+ 				    XDefaultScreen(gui->video_display),
+ 				    &(gVw.XF86_modelines_count), &(gVw.XF86_modelines))) {
+ 	printf(_("XF86VidMode Extension: %d modelines found.\n"), gVw.XF86_modelines_count);
+-	
++
+ 	/* first, kick off unsupported modes */
+ 	for(mode = 1; mode < gVw.XF86_modelines_count; mode++) {
+-	  
+-	  if(!XF86VidModeValidateModeLine(gui->video_display, gui->video_screen, 
++
++	  if(!XF86VidModeValidateModeLine(gui->video_display, gui->video_screen,
+ 					  gVw.XF86_modelines[mode])) {
+ 	    int wrong_mode;
+-	    
+-	    printf(_("XF86VidModeModeLine %dx%d isn't valid: discarded.\n"), 
++
++	    printf(_("XF86VidModeModeLine %dx%d isn't valid: discarded.\n"),
+ 		   gVw.XF86_modelines[mode]->hdisplay,
+ 		   gVw.XF86_modelines[mode]->vdisplay);
+-	    
++
+ 	    for(wrong_mode = mode; wrong_mode < gVw.XF86_modelines_count; wrong_mode++)
+ 	      gVw.XF86_modelines[wrong_mode] = gVw.XF86_modelines[wrong_mode + 1];
+-	    
++
+ 	    gVw.XF86_modelines[wrong_mode] = NULL;
+ 	    gVw.XF86_modelines_count--;
+ 	    mode--;
+ 	  }
+ 	}
+-	
++
+ 	/*
+ 	 * sorting modelines, skipping first entry because it is the current
+ 	 * modeline in use - this is important so we know to which modeline
+@@ -1877,7 +1877,7 @@ void video_window_init (window_attribute
+   }
+   else
+     gVw.XF86_modelines_count = 0;
+-  
++
+ #endif
+ 
+   /*
+@@ -1892,25 +1892,25 @@ void video_window_init (window_attribute
+    */
+   if(gui->video_window) {
+     Window tmp_win;
+-    
++
+     XLockDisplay (gui->video_display);
+     if((window_attribute->x > -8192) && (window_attribute->y > -8192)) {
+       gVw.xwin = gVw.old_xwin = window_attribute->x;
+       gVw.ywin = gVw.old_ywin = window_attribute->y;
+-      
+-      XMoveResizeWindow (gui->video_display, gui->video_window, 
++
++      XMoveResizeWindow (gui->video_display, gui->video_window,
+ 			 gVw.xwin, gVw.ywin, gVw.video_width, gVw.video_height);
+-  
+-    } 
++
++    }
+     else {
+-      
+-      XTranslateCoordinates(gui->video_display, gui->video_window, DefaultRootWindow(gui->video_display), 
++
++      XTranslateCoordinates(gui->video_display, gui->video_window, DefaultRootWindow(gui->video_display),
+ 			    0, 0, &gVw.xwin, &gVw.ywin, &tmp_win);
+     }
+     XUnlockDisplay (gui->video_display);
+ 
+   }
+-  
++
+   if( gui->video_display != gui->display ) {
+     gVw.second_display_running = 1;
+     pthread_create(&gVw.second_display_thread, NULL, second_display_loop, NULL);
+@@ -1941,7 +1941,7 @@ void video_window_exit (void) {
+       XExposeEvent expose;
+       XEvent event;
+     } event;
+-    
++
+     XLockDisplay(gui->video_display);
+     XClearWindow(gui->video_display, gui->video_window);
+     event.expose.type       = Expose;
+@@ -1955,7 +1955,7 @@ void video_window_exit (void) {
+     XSendEvent(gui->video_display, gui->video_window, False, Expose, &event.event);
+     XUnlockDisplay(gui->video_display);
+   }
+-    
++
+   if(gui->video_display == gui->display)
+     xitk_unregister_event_handler(&gVw.widget_key);
+   else
+@@ -1983,7 +1983,7 @@ static int video_window_translate_point(
+   rect.w = 0;
+   rect.h = 0;
+ 
+-  if (xine_port_send_gui_data(gui->vo_port, 
++  if (xine_port_send_gui_data(gui->vo_port,
+ 			      XINE_GUI_SEND_TRANSLATE_GUI_TO_VIDEO, (void*)&rect) != -1) {
+     /* driver implements gui->video coordinate space translation, use it */
+     *video_x = rect.x;
+@@ -1996,14 +1996,14 @@ static int video_window_translate_point(
+   pthread_mutex_lock(&gVw.mutex);
+ 
+   XLockDisplay(gui->video_display);
+-  if(XGetGeometry(gui->video_display, gui->video_window, &rootwin, 
++  if(XGetGeometry(gui->video_display, gui->video_window, &rootwin,
+ 		  &xwin, &ywin, &wwin, &hwin, &bwin, &dwin) == BadDrawable) {
+     XUnlockDisplay(gui->video_display);
+     pthread_mutex_unlock(&gVw.mutex);
+     return 0;
+   }
+   XUnlockDisplay(gui->video_display);
+-  
++
+   /* Scale co-ordinate to image dimensions. */
+   height_scale = (float)gVw.video_height / (float)hwin;
+   width_scale  = (float)gVw.video_width / (float)wwin;
+@@ -2051,7 +2051,7 @@ static int video_window_check_mag(void)
+  */
+     )
+     return 0;
+-  
++
+   /* Allow mag only if video win is visible, so don't do something we can't see. */
+   return (xitk_is_window_visible(gui->video_display, gui->video_window));
+ }
+@@ -2063,7 +2063,7 @@ static void video_window_calc_mag_win_si
+ }
+ 
+ int video_window_set_mag(float xmag, float ymag) {
+-  
++
+   pthread_mutex_lock(&gVw.mutex);
+ 
+   if (!video_window_check_mag()) {
+@@ -2079,11 +2079,11 @@ int video_window_set_mag(float xmag, flo
+ }
+ 
+ void video_window_get_mag (float *xmag, float *ymag) {
+-  
++
+   /* compute current mag */
+   pthread_mutex_lock(&gVw.mutex);
+-  *xmag = (float) gVw.output_width / (float) gVw.video_width; 
+-  *ymag = (float) gVw.output_height / (float) gVw.video_height; 
++  *xmag = (float) gVw.output_width / (float) gVw.video_width;
++  *ymag = (float) gVw.output_height / (float) gVw.video_height;
+   pthread_mutex_unlock(&gVw.mutex);
+ }
+ 
+@@ -2091,47 +2091,50 @@ void video_window_get_mag (float *xmag,
+  * Change displayed logo, if selected skin want to customize it.
+  */
+ void video_window_update_logo(void) {
++  char                *mrl_entry;
++  char                *mrl_default;
+   gGui_t *gui = gGui;
+   xine_cfg_entry_t     cfg_entry;
+   char                *skin_logo;
+   int                  cfg_err_result;
+-  
++
+   cfg_err_result = xine_config_lookup_entry(__xineui_global_xine_instance, "gui.logo_mrl", &cfg_entry);
+   skin_logo = xitk_skin_get_logo(gui->skin_config);
+-  
++
+   if(skin_logo) {
+-    
++
+     if((cfg_err_result) && cfg_entry.str_value) {
+       /* Old and new logo are same, don't reload */
+       if(!strcmp(cfg_entry.str_value, skin_logo))
+ 	goto __done;
+     }
+-    
+-    config_update_string("gui.logo_mrl", skin_logo);
++
++    config_update_string(mrl_entry, skin_logo);
+     goto __play_logo_now;
+-    
++
+   }
+   else { /* Skin don't use logo feature, set to xine's default */
+-    
+-    /* 
+-     * Back to default logo only on a skin 
++
++    /*
++     * Back to default logo only on a skin
+      * change, not at the first skin loading.
+      **/
+-    if(gVw.logo_synthetic && (cfg_err_result) && (strcmp(cfg_entry.str_value, XINE_LOGO_MRL))) {
+-      config_update_string("gui.logo_mrl", XINE_LOGO_MRL);
++    if(gVw.logo_synthetic && (cfg_err_result) &&
++       (strcmp(cfg_entry.str_value, mrl_default))) {
++      config_update_string(mrl_entry, mrl_default);
+ 
+     __play_logo_now:
+-      
++
+       sleep(1);
+-      
++
+       if(gui->logo_mode) {
+ 	if(xine_get_status(gui->stream) == XINE_STATUS_PLAY) {
+ 	  gui->ignore_next = 1;
+ 	  xine_stop(gui->stream);
+-	  gui->ignore_next = 0; 
++	  gui->ignore_next = 0;
+ 	}
+ 	if(gui->display_logo) {
+-	  if((!xine_open(gui->stream, gui->logo_mrl)) 
++	  if((!xine_open(gui->stream, gui->logo_mrl))
+ 	     || (!xine_play(gui->stream, 0, 0))) {
+ 	    gui_handle_xine_error(gui->stream, (char *)gui->logo_mrl);
+ 	    goto __done;
+@@ -2141,7 +2144,7 @@ void video_window_update_logo(void) {
+       }
+     }
+   }
+-  
++
+  __done:
+   gui->logo_has_changed--;
+ }
+@@ -2174,7 +2177,7 @@ static void video_window_handle_event (X
+     int x, y;
+ 
+     /* printf("Mouse event:mx=%d my=%d\n",mevent->x, mevent->y); */
+-    
++
+     if(!gui->cursor_visible) {
+       gui->cursor_visible = !gui->cursor_visible;
+       video_window_set_cursor_visibility(gui->cursor_visible);
+@@ -2215,21 +2218,21 @@ static void video_window_handle_event (X
+     else if (bevent->button == Button1) {
+       struct timeval  old_click_time, tm_diff;
+       long int        click_diff;
+-      
++
+       timercpy(&gVw.click_time, &old_click_time);
+       gettimeofday(&gVw.click_time, 0);
+ 
+       timercpy(&old_click_time, &event.tv);
+-      
++
+       timersub(&gVw.click_time, &old_click_time, &tm_diff);
+       click_diff = (tm_diff.tv_sec * 1000) + (tm_diff.tv_usec / 1000.0);
+-      
++
+       if(click_diff < (xitk_get_timer_dbl_click())) {
+ 	gui_execute_action_id(ACTID_TOGGLE_FULLSCREEN);
+ 	gVw.click_time.tv_sec -= (xitk_get_timer_dbl_click() / 1000.0);
+ 	gVw.click_time.tv_usec -= (xitk_get_timer_dbl_click() * 1000.0);
+       }
+-      
++
+     }
+ 
+     event.type            = XINE_EVENT_INPUT_MOUSE_BUTTON;
+@@ -2303,7 +2306,7 @@ static void video_window_handle_event (X
+       pthread_mutex_unlock(&gVw.mutex);
+     }
+     break;
+-    
++
+   }
+ 
+ 
+@@ -2343,9 +2346,9 @@ long int video_window_reset_ssaver(void)
+ 
+ #ifdef HAVE_XTESTEXTENSION
+     if(gVw.have_xtest == True) {
+-      
++
+       gVw.fake_key_cur++;
+-      
++
+       if(gVw.fake_key_cur >= 2)
+ 	gVw.fake_key_cur = 0;
+ 
+@@ -2355,7 +2358,7 @@ long int video_window_reset_ssaver(void)
+       XSync(gui->video_display, False);
+       XUnlockDisplay(gui->video_display);
+     }
+-    else 
++    else
+ #endif
+     {
+       /* Reset the gnome screensaver. Look up the command in PATH only once to save time, */
+@@ -2444,9 +2447,9 @@ void video_window_get_output_size(int *w
+ void video_window_set_mrl(char *mrl) {
+   gGui_t *gui = gGui;
+   if(mrl && strlen(mrl)) {
+-    
++
+     snprintf(gVw.window_title, sizeof(gVw.window_title), "%s: %s", "xine", mrl);
+-    
++
+     XLockDisplay(gui->video_display);
+     _set_window_title();
+     XUnlockDisplay(gui->video_display);
+@@ -2455,14 +2458,14 @@ void video_window_set_mrl(char *mrl) {
+ 
+ void video_window_toggle_border(void) {
+   gGui_t *gui = gGui;
+-  
++
+   if(!gui->use_root_window && (gVw.fullscreen_mode & WINDOWED_MODE)) {
+     Atom         prop;
+     MWMHints     mwmhints;
+     XClassHint  *xclasshint;
+-    
++
+     gVw.borderless = !gVw.borderless;
+-    
++
+     XLockDisplay(gui->video_display);
+ 
+     memset(&mwmhints, 0, sizeof(mwmhints));
+@@ -2470,16 +2473,16 @@ void video_window_toggle_border(void) {
+     mwmhints.flags       = MWM_HINTS_DECORATIONS;
+     mwmhints.decorations = gVw.borderless ? 0 : 1;
+     xclasshint           = gVw.borderless ? gVw.xclasshint_borderless : gVw.xclasshint;
+-    
++
+     XChangeProperty(gui->video_display, gui->video_window, prop, prop, 32,
+ 		    PropModeReplace, (unsigned char *) &mwmhints,
+ 		    PROP_MWM_HINTS_ELEMENTS);
+-    
++
+     if(xclasshint != NULL)
+       XSetClassHint(gui->video_display, gui->video_window, xclasshint);
+-    
++
+     XUnlockDisplay (gui->video_display);
+-    
++
+     xine_port_send_gui_data(gui->vo_port, XINE_GUI_SEND_DRAWABLE_CHANGED, (void *)gui->video_window);
+   }
+ }
+Index: src/xitk/actions.c
+===================================================================
+--- src/xitk/actions.c.orig	2018-01-23 15:10:06.827563191 +0200
++++ src/xitk/actions.c	2018-01-23 15:18:26.783585471 +0200
+@@ -1,18 +1,18 @@
+-/* 
++/*
+  * Copyright (C) 2000-2017 the xine project
+- * 
++ *
+  * This file is part of xine, a unix video player.
+- * 
++ *
+  * xine is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+  * the Free Software Foundation; either version 2 of the License, or
+  * (at your option) any later version.
+- * 
++ *
+  * xine is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  * GNU General Public License for more details.
+- * 
++ *
+  * You should have received a copy of the GNU General Public License
+  * along with this program; if not, write to the Free Software
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
+@@ -68,7 +68,7 @@ void reparent_all_windows(void) {
+     { help_is_visible,          help_reparent },
+     { NULL,                     NULL}
+   };
+-  
++
+   for(i = 0; _reparent[i].visible; i++) {
+     if(_reparent[i].visible())
+       _reparent[i].reparent();
+@@ -137,26 +137,26 @@ int gui_xine_get_pos_length(xine_stream_
+   gGui_t *gui = gGui;
+   int t = 0, ret = 0;
+   int lpos, ltime, llength;
+-  
++
+   if(pthread_mutex_trylock(&gui->xe_mutex))
+     return 0;
+-  
++
+   if(stream && (xine_get_status(stream) == XINE_STATUS_PLAY)) {
+     while(((ret = xine_get_pos_length(stream, &lpos, &ltime, &llength)) == 0) && (++t < 10) && (!gui->on_quit))
+       xine_usec_sleep(100000); /* wait before trying again */
+   }
+-  
++
+   if(ret == 0) {
+     lpos = ltime = llength = 0;
+   }
+-  
++
+   if(pos)
+     *pos    = lpos;
+   if(time)
+     *time   = ltime;
+   if(length)
+     *length = llength;
+-  
++
+   if((ret != 0) && (stream == gui->stream)) {
+     gui->stream_length.pos = lpos;
+     gui->stream_length.time = ltime;
+@@ -174,7 +174,7 @@ void try_to_set_input_focus(Window windo
+   gGui_t *gui = gGui;
+ 
+   wait_for_window_visible(gui->display, window);
+-  
++
+   if(xitk_is_window_visible(gui->display, window)) {
+     int    retry = 0;
+     Window focused_win;
+@@ -204,13 +204,13 @@ void gui_display_logo(void) {
+   gGui_t *gui = gGui;
+ 
+   pthread_mutex_lock(&gui->logo_mutex);
+-  
++
+   gui->logo_mode = 2;
+-  
++
+   if(xine_get_status(gui->stream) == XINE_STATUS_PLAY) {
+     gui->ignore_next = 1;
+     xine_stop(gui->stream);
+-    gui->ignore_next = 0; 
++    gui->ignore_next = 0;
+   }
+ 
+   if(gui->visual_anim.running)
+@@ -221,32 +221,35 @@ void gui_display_logo(void) {
+   panel_update_channel_display();
+ 
+   if(gui->display_logo)
+-    (void) gui_xine_open_and_play((char *)gui->logo_mrl, NULL, 0, 0, 0, 0, 1);
++    (void) gui_xine_open_and_play((char *) ((gGui->logo_select) ?
++		gGui->logo_crippled_mrl :
++		gGui->logo_mrl),
++	    NULL, 0, 0, 0, 0, 1);
+ 
+   gui->logo_mode = 1;
+-  
++
+   panel_reset_slider();
+   if(stream_infos_is_visible())
+     stream_infos_update_infos();
+-  
++
+   pthread_mutex_unlock(&gui->logo_mutex);
+ }
+ 
+-static int _gui_xine_play(xine_stream_t *stream, 
++static int _gui_xine_play(xine_stream_t *stream,
+ 			  int start_pos, int start_time_in_secs, int update_mmk) {
+   gGui_t *gui = gGui;
+   int      ret;
+   int      has_video;
+   int      already_playing = (gui->logo_mode == 0);
+-  
++
+   if(gui->visual_anim.post_changed && (xine_get_status(stream) == XINE_STATUS_STOP)) {
+     post_rewire_visual_anim();
+     gui->visual_anim.post_changed = 0;
+   }
+-  
++
+   if(start_time_in_secs)
+     start_time_in_secs *= 1000;
+-  
++
+   has_video = xine_get_stream_info(stream, XINE_STREAM_INFO_HAS_VIDEO);
+   if (has_video)
+     has_video = !xine_get_stream_info(stream, XINE_STREAM_INFO_IGNORE_VIDEO);
+@@ -256,7 +259,7 @@ static int _gui_xine_play(xine_stream_t
+     if(post_rewire_audio_port_to_stream(stream))
+       gui->visual_anim.running = 0;
+ 
+-  } else if (!has_video && (gui->visual_anim.enabled == 1) && 
++  } else if (!has_video && (gui->visual_anim.enabled == 1) &&
+ 	     (gui->visual_anim.running == 0) && gui->visual_anim.post_output_element.post) {
+ 
+     if(post_rewire_audio_post_to_stream(stream))
+@@ -273,19 +276,19 @@ static int _gui_xine_play(xine_stream_t
+     if(gui->logo_mode != 2)
+       gui->logo_mode = 0;
+     pthread_mutex_unlock(&gui->logo_mutex);
+-    
++
+     if(gui->logo_mode == 0) {
+-     
++
+       if(stream_infos_is_visible())
+ 	stream_infos_update_infos();
+-      
++
+       if(update_mmk && ((ident = stream_infos_get_ident_from_stream(stream)) != NULL)) {
+ 	free(gui->mmk.ident);
+ 	free(gui->playlist.mmk[gui->playlist.cur]->ident);
+-	
++
+ 	gui->mmk.ident = strdup(ident);
+ 	gui->playlist.mmk[gui->playlist.cur]->ident = strdup(ident);
+-	
++
+ 	video_window_set_mrl(gui->mmk.ident);
+ 	playlist_mrlident_toggle();
+ 	panel_update_mrl_display();
+@@ -293,38 +296,38 @@ static int _gui_xine_play(xine_stream_t
+       }
+ 
+       if(has_video) {
+-	
++
+ 	if((gui->visual_anim.enabled == 2) && gui->visual_anim.running)
+ 	  visual_anim_stop();
+-	
++
+ 	if(gui->auto_vo_visibility) {
+-	  
++
+ 	  if(!video_window_is_visible())
+ 	    video_window_set_visibility(1);
+-	  
++
+ 	}
+ 
+ 	if(gui->auto_panel_visibility && video_window_is_visible() &&
+ 	   panel_is_visible() )
+ 	  panel_toggle_visibility(NULL, NULL);
+-	
++
+       }
+       else {
+-	
++
+ 	if(gui->auto_vo_visibility) {
+-	  
++
+ 	  if(!panel_is_visible())
+ 	    panel_toggle_visibility(NULL, NULL);
+ 
+ 	  if(video_window_is_visible())
+ 	    video_window_set_visibility(0);
+-	    
++
+ 	}
+ 
+-	if(gui->auto_panel_visibility && video_window_is_visible() && 
++	if(gui->auto_panel_visibility && video_window_is_visible() &&
+ 	  !panel_is_visible() )
+ 	  panel_toggle_visibility(NULL, NULL);
+-	  
++
+ 	if(video_window_is_visible()) {
+ 	  if(!gui->visual_anim.running)
+ 	    visual_anim_play();
+@@ -332,13 +335,13 @@ static int _gui_xine_play(xine_stream_t
+ 	else
+ 	  gui->visual_anim.running = 2;
+       }
+-      
++
+       xine_usec_sleep(100);
+       if(!already_playing)
+ 	osd_update_status();
+     }
+   }
+-  
++
+   return ret;
+ }
+ 
+@@ -355,7 +358,7 @@ static void start_anyway_yesno(xitk_widg
+   play_data.running = 0;
+ 
+   if(button == XITK_WINDOW_ANSWER_YES)
+-    _gui_xine_play(play_data.stream, 
++    _gui_xine_play(play_data.stream,
+ 		   play_data.start_pos, play_data.start_time_in_secs, play_data.update_mmk);
+   else
+     gui_playlist_start_next();
+@@ -364,13 +367,13 @@ static void start_anyway_yesno(xitk_widg
+ 
+ static void set_mmk(mediamark_t *mmk) {
+   gGui_t *gui = gGui;
+-  
++
+   free(gui->mmk.mrl);
+   free(gui->mmk.ident);
+   free(gui->mmk.sub);
+   if(mediamark_have_alternates(&(gui->mmk)))
+     mediamark_free_alternates(&(gui->mmk));
+-  
++
+   if(mmk) {
+     gui->mmk.mrl           = strdup(mmk->mrl);
+     gui->mmk.ident         = strdup(((mmk->ident) ? mmk->ident : mmk->mrl));
+@@ -384,9 +387,9 @@ static void set_mmk(mediamark_t *mmk) {
+   }
+   else {
+     char buffer[1024];
+-    
++
+     snprintf(buffer, sizeof(buffer), "xine-ui version %s", VERSION);
+-    
++
+     /* TRANSLATORS: only ASCII characters (skin) */
+     gui->mmk.mrl           = strdup(pgettext("skin", "There is no MRL."));
+     gui->mmk.ident         = strdup(buffer);
+@@ -408,7 +411,7 @@ static void mmk_set_update(void) {
+   event_sender_update_menu_buttons();
+   panel_update_mrl_display();
+   playlist_update_focused_entry();
+-  
++
+   gui->playlist.ref_append = gui->playlist.cur;
+ }
+ 
+@@ -416,7 +419,7 @@ int gui_xine_play(xine_stream_t *stream,
+   gGui_t *gui = gGui;
+   int has_video, has_audio, v_unhandled = 0, a_unhandled = 0;
+   uint32_t video_handled, audio_handled;
+-  
++
+   if(play_data.running)
+     return 0;
+ 
+@@ -424,7 +427,7 @@ int gui_xine_play(xine_stream_t *stream,
+   video_handled = xine_get_stream_info(stream, XINE_STREAM_INFO_VIDEO_HANDLED);
+   has_audio     = xine_get_stream_info(stream, XINE_STREAM_INFO_HAS_AUDIO);
+   audio_handled = xine_get_stream_info(stream, XINE_STREAM_INFO_AUDIO_HANDLED);
+-  
++
+   if (has_video)
+     has_video = !xine_get_stream_info(stream, XINE_STREAM_INFO_IGNORE_VIDEO);
+   if (has_audio)
+@@ -436,7 +439,7 @@ int gui_xine_play(xine_stream_t *stream,
+     char *buffer = NULL;
+     char *v_info = NULL;
+     char *a_info = NULL;
+-    
++
+     if(v_unhandled && a_unhandled) {
+       asprintf(&buffer, _("The stream '%s' isn't supported by xine:\n\n"),
+ 	       (stream == gui->stream) ? gui->mmk.mrl : gui->visual_anim.mrls[gui->visual_anim.current]);
+@@ -445,7 +448,7 @@ int gui_xine_play(xine_stream_t *stream,
+       asprintf(&buffer, _("The stream '%s' uses an unsupported codec:\n\n"),
+ 	       (stream == gui->stream) ? gui->mmk.mrl : gui->visual_anim.mrls[gui->visual_anim.current]);
+     }
+-    
++
+     if(v_unhandled) {
+       const char *minfo;
+       uint32_t    vfcc;
+@@ -454,10 +457,10 @@ int gui_xine_play(xine_stream_t *stream,
+       minfo = xine_get_meta_info(stream, XINE_META_INFO_VIDEOCODEC);
+       vfcc = xine_get_stream_info(stream, XINE_STREAM_INFO_VIDEO_FOURCC);
+       asprintf(&v_info, _("Video Codec: %s (%s)\n"),
+-	      (minfo && strlen(minfo)) ? (char *) minfo : _("Unavailable"), 
++	      (minfo && strlen(minfo)) ? (char *) minfo : _("Unavailable"),
+                (get_fourcc_string(tmp, sizeof(tmp), vfcc)));
+     }
+-    
++
+     if(a_unhandled) {
+       const char *minfo;
+       uint32_t    afcc;
+@@ -466,10 +469,10 @@ int gui_xine_play(xine_stream_t *stream,
+       minfo = xine_get_meta_info(stream, XINE_META_INFO_AUDIOCODEC);
+       afcc = xine_get_stream_info(stream, XINE_STREAM_INFO_AUDIO_FOURCC);
+       asprintf(&a_info,  _("Audio Codec: %s (%s)\n"),
+-	      (minfo && strlen(minfo)) ? (char *) minfo : _("Unavailable"), 
++	      (minfo && strlen(minfo)) ? (char *) minfo : _("Unavailable"),
+                (get_fourcc_string(tmp, sizeof(tmp), afcc)));
+     }
+-    
++
+ 
+     if(v_unhandled && a_unhandled) {
+       xine_error("%s%s%s", buffer, v_info, a_info);
+@@ -485,9 +488,9 @@ int gui_xine_play(xine_stream_t *stream,
+       play_data.start_time_in_secs = start_time_in_secs;
+       play_data.update_mmk         = update_mmk;
+       play_data.running            = 1;
+-      
+-      xw = xitk_window_dialog_yesno_with_width(gui->imlib_data, _("Start Playback ?"), 
+-					       start_anyway_yesno, start_anyway_yesno, 
++
++      xw = xitk_window_dialog_yesno_with_width(gui->imlib_data, _("Start Playback ?"),
++					       start_anyway_yesno, start_anyway_yesno,
+ 					       NULL, 400, ALIGN_CENTER,
+ 					       "%s%s%s%s", buffer,
+ 					       v_info, a_info,
+@@ -499,12 +502,12 @@ int gui_xine_play(xine_stream_t *stream,
+       XUnlockDisplay(gui->display);
+       video_window_set_transient_for (xitk_window_get_window (xw));
+       layer_above_video(xitk_window_get_window(xw));
+-      
+-      /* Doesn't work so well yet 
++
++      /* Doesn't work so well yet
+ 	 use play_data.running hack for a while
+ 	 xitk_window_dialog_set_modal(xw);
+       */
+-      
++
+       return 1;
+     }
+ 
+@@ -514,16 +517,16 @@ int gui_xine_play(xine_stream_t *stream,
+   return _gui_xine_play(stream, start_pos, start_time_in_secs, update_mmk);
+ }
+ 
+-int gui_xine_open_and_play(char *_mrl, char *_sub, int start_pos, 
++int gui_xine_open_and_play(char *_mrl, char *_sub, int start_pos,
+ 			   int start_time, int av_offset, int spu_offset, int report_error) {
+   gGui_t *gui = gGui;
+   char *mrl = _mrl;
+   int ret;
+-  
++
+   if(__xineui_global_verbosity)
+     printf("%s():\n\tmrl: '%s',\n\tsub '%s',\n\tstart_pos %d, start_time %d, av_offset %d, spu_offset %d.\n",
+ 	   __func__, _mrl, (_sub) ? _sub : "NONE", start_pos, start_time, av_offset, spu_offset);
+-  
++
+   if(!strncasecmp(mrl, "cfg:/", 5)) {
+     config_mrl(mrl);
+     gui_playlist_start_next();
+@@ -532,42 +535,42 @@ int gui_xine_open_and_play(char *_mrl, c
+   else if((!strncasecmp(mrl, "ftp://", 6)) || (!strncasecmp(mrl, "dload:/", 7)))  {
+     char        *url = mrl;
+     download_t   download;
+-    
++
+     if(!strncasecmp(mrl, "dload:/", 7))
+       url = _mrl + 7;
+-    
++
+     download.buf    = NULL;
+     download.error  = NULL;
+     download.size   = 0;
+-    download.status = 0; 
+-    
++    download.status = 0;
++
+     if((network_download(url, &download))) {
+       char *filename;
+-      
++
+       filename = strrchr(url, '/');
+       if(filename && filename[1]) { /* we have a filename */
+ 	char  fullfilename[XITK_PATH_MAX + XITK_NAME_MAX + 2];
+ 	FILE *fd;
+-	
++
+ 	filename++;
+ 	snprintf(fullfilename, sizeof(fullfilename), "%s/%s", xine_get_homedir(), filename);
+-	
++
+ 	if((fd = fopen(fullfilename, "w+b")) != NULL) {
+ 	  char  *sub = NULL;
+ 	  int    start, end;
+-	  
++
+ 	  char *newmrl = strdup(fullfilename);
+ 	  char *ident = strdup(gui->playlist.mmk[gui->playlist.cur]->ident);
+ 	  if(gui->playlist.mmk[gui->playlist.cur]->sub)
+ 	    sub = strdup(gui->playlist.mmk[gui->playlist.cur]->sub);
+ 	  start = gui->playlist.mmk[gui->playlist.cur]->start;
+ 	  end = gui->playlist.mmk[gui->playlist.cur]->end;
+-	  
++
+ 	  fwrite(download.buf, download.size, 1, fd);
+ 	  fflush(fd);
+ 	  fclose(fd);
+ 
+-	  mediamark_replace_entry(&gui->playlist.mmk[gui->playlist.cur], 
++	  mediamark_replace_entry(&gui->playlist.mmk[gui->playlist.cur],
+ 				  newmrl, ident, sub, start, end, 0, 0);
+ 	  gui_set_current_mmk(mediamark_get_current_mmk());
+ 	  mrl = gui->mmk.mrl;
+@@ -608,27 +611,27 @@ int gui_xine_open_and_play(char *_mrl, c
+ 
+     if(!strcmp(mrl, gui->mmk.mrl))
+       gui->playlist.mmk[gui->playlist.cur]->played = 1;
+-    
++
+     if(report_error)
+       gui_handle_xine_error(gui->stream, mrl);
+     return 0;
+   }
+-  
++
+   if(_sub) {
+-    
++
+     gui->suppress_messages++;
+     ret = xine_open(gui->spu_stream, _sub);
+     gui->suppress_messages--;
+     if (ret)
+-      xine_stream_master_slave(gui->stream, 
++      xine_stream_master_slave(gui->stream,
+ 			       gui->spu_stream, XINE_MASTER_SLAVE_PLAY | XINE_MASTER_SLAVE_STOP);
+   }
+   else
+     xine_close (gui->spu_stream);
+-  
++
+   xine_set_param(gui->stream, XINE_PARAM_AV_OFFSET, av_offset);
+   xine_set_param(gui->stream, XINE_PARAM_SPU_OFFSET, spu_offset);
+-  
++
+   if(!gui_xine_play(gui->stream, start_pos, start_time, 1)) {
+     if(!strcmp(mrl, gui->mmk.mrl))
+       gui->playlist.mmk[gui->playlist.cur]->played = 1;
+@@ -639,7 +642,7 @@ int gui_xine_open_and_play(char *_mrl, c
+     gui->playlist.mmk[gui->playlist.cur]->played = 1;
+ 
+   gui_xine_get_pos_length(gui->stream, NULL, NULL, NULL);
+-  
++
+   if (gui->stdctl_enable)
+     stdctl_playing(mrl);
+ 
+@@ -649,10 +652,10 @@ int gui_xine_open_and_play(char *_mrl, c
+ int gui_open_and_play_alternates(mediamark_t *mmk, const char *sub) {
+   gGui_t *gui = gGui;
+   char *alt;
+-  
++
+   if(!(alt = mediamark_get_current_alternate_mrl(mmk)))
+     alt = mediamark_get_first_alternate_mrl(mmk);
+-  
++
+   do {
+ 
+     if(gui_xine_open_and_play(alt, gui->mmk.sub, 0, 0, 0, 0, 0))
+@@ -680,18 +683,18 @@ void gui_exit (xitk_widget_t *w, void *d
+ 
+       while(xine_get_status(gui->visual_anim.stream) == XINE_STATUS_PLAY)
+       	xine_usec_sleep(50000);
+-      
++
+       audio_source = xine_get_audio_source(gui->stream);
+       (void) xine_post_wire_audio_port(audio_source, gui->ao_port);
+     }
+-    
++
+     xine_stop (gui->stream);
+     while(xine_get_status(gui->stream) == XINE_STATUS_PLAY)
+       xine_usec_sleep(50000);
+ 
+     gui->ignore_next = 0;
+   }
+-  
++
+   gui->on_quit = 1;
+ 
+   /* shut down event queue threads */
+@@ -706,7 +709,7 @@ void gui_exit (xitk_widget_t *w, void *d
+   playlist_deinit();
+   mrl_browser_deinit();
+   control_deinit();
+-  
++
+   setup_end();
+   viewlog_end();
+   kbedit_end();
+@@ -719,7 +722,7 @@ void gui_exit (xitk_widget_t *w, void *d
+ #ifdef HAVE_TAR
+   download_skin_end();
+ #endif
+-  
++
+   if(load_stream)
+     filebrowser_end(load_stream);
+   if(load_sub)
+@@ -727,7 +730,7 @@ void gui_exit (xitk_widget_t *w, void *d
+ 
+   if(video_window_is_visible())
+     video_window_set_visibility(0);
+-  
++
+   tvout_deinit(gui->tvout);
+ 
+ #ifdef HAVE_XF86VIDMODE
+@@ -739,17 +742,17 @@ void gui_exit (xitk_widget_t *w, void *d
+     video_window_set_fullscreen_mode(WINDOWED_MODE);
+   //     gui_set_fullscreen_mode(NULL,NULL);
+ #endif
+-   
++
+   osd_deinit();
+ 
+   config_update_num("gui.amp_level", gui->mixer.amp_level);
+   xine_config_save(__xineui_global_xine_instance, __xineui_global_config_file);
+-  
++
+   xine_close(gui->stream);
+   xine_close(gui->visual_anim.stream);
+   xine_close (gui->spu_stream);
+ 
+-  /* we are going to dispose this stream, so make sure slider_loop 
++  /* we are going to dispose this stream, so make sure slider_loop
+    * won't use it anymore (otherwise -> segfault on exit).
+    */
+   gui->running = 0;
+@@ -785,8 +788,8 @@ void gui_exit (xitk_widget_t *w, void *d
+   if(__xineui_global_lirc_enable)
+     lirc_stop();
+ #endif
+-  
+-  if(gui->stdctl_enable) 
++
++  if(gui->stdctl_enable)
+     stdctl_stop();
+ 
+   /* this will prevent a race condition that may lead to a lock:
+@@ -799,13 +802,13 @@ void gui_exit (xitk_widget_t *w, void *d
+   if( gui->video_display != gui->display )
+     XLockDisplay(gui->display);
+   xitk_stop();
+-  /* 
++  /*
+    * This prevent xine waiting till the end of time for an
+    * XEvent when lirc (and futur other control ways) is used to quit .
+    */
+   if( gui->video_display == gui->display )
+     gui_send_expose_to_window(gui->video_window);
+- 
++
+   xitk_skin_unload_config(gui->skin_config);
+   XUnlockDisplay(gui->video_display);
+   if( gui->video_display != gui->display )
+@@ -819,29 +822,29 @@ void gui_play (xitk_widget_t *w, void *d
+     return;
+ 
+   video_window_reset_ssaver();
+-  
++
+   if(xine_get_status(gui->stream) == XINE_STATUS_PLAY) {
+     if(gui->logo_mode != 0) {
+       gui->ignore_next = 1;
+       xine_stop(gui->stream);
+-      gui->ignore_next = 0; 
++      gui->ignore_next = 0;
+     }
+   }
+ 
+   if(xine_get_status(gui->stream) != XINE_STATUS_PLAY) {
+-    
++
+     if (!strncmp(gui->mmk.ident, "xine-ui version", 15)) {
+       xine_error (_("No MRL (input stream) specified"));
+       return;
+     }
+-    
+-    if(!gui_xine_open_and_play(gui->mmk.mrl, gui->mmk.sub, 0, 
++
++    if(!gui_xine_open_and_play(gui->mmk.mrl, gui->mmk.sub, 0,
+ 			       gui->mmk.start, gui->mmk.av_offset, gui->mmk.spu_offset,
+ 			       !mediamark_have_alternates(&(gui->mmk)))) {
+ 
+       if(!mediamark_have_alternates(&(gui->mmk)) ||
+ 	 !gui_open_and_play_alternates(&(gui->mmk), gui->mmk.sub)) {
+-	
++
+ 	if(mediamark_all_played() && (gui->actions_on_start[0] == ACTID_QUIT)) {
+ 	  gui_exit(NULL, NULL);
+ 	  return;
+@@ -857,7 +860,7 @@ void gui_play (xitk_widget_t *w, void *d
+     if(oldspeed != XINE_SPEED_NORMAL)
+       osd_update_status();
+   }
+-  
++
+   panel_check_pause();
+ }
+ 
+@@ -872,7 +875,7 @@ void gui_stop (xitk_widget_t *w, void *d
+     gui->playlist.control &= ~PLAYLIST_CONTROL_STOP;
+ 
+   gui->stream_length.pos = gui->stream_length.time = gui->stream_length.length = 0;
+-  
++
+   mediamark_reset_played_state();
+   if(gui->visual_anim.running) {
+     xine_stop(gui->visual_anim.stream);
+@@ -954,7 +957,7 @@ void gui_pause (xitk_widget_t *w, void *
+     xine_set_param(gui->stream, XINE_PARAM_SPEED, last_playback_speed);
+     video_window_reset_ssaver();
+   }
+-  
++
+   panel_check_pause();
+   /* Give xine engine some time before updating OSD, otherwise the */
+   /* time disp may be empty when switching to XINE_SPEED_PAUSE.    */
+@@ -965,10 +968,10 @@ void gui_pause (xitk_widget_t *w, void *
+ void gui_eject(xitk_widget_t *w, void *data) {
+   gGui_t *gui = gGui;
+   int i;
+-  
++
+   if(xine_get_status(gui->stream) == XINE_STATUS_PLAY)
+     gui_stop(NULL, NULL);
+-  
++
+   if(xine_eject(gui->stream)) {
+ 
+     if(gui->playlist.num) {
+@@ -985,19 +988,19 @@ void gui_eject(xitk_widget_t *w, void *d
+ 	tok_len = (mrl - cur_mrl) + 2;
+ 
+       if(tok_len != 0) {
+-	/* 
++	/*
+ 	 * Store all of not maching entries
+ 	 */
+ 	for(i = 0; i < gui->playlist.num; i++) {
+ 	  if(strncasecmp(gui->playlist.mmk[i]->mrl, cur_mrl, tok_len)) {
+-	    
++
+ 	    mmk = (mediamark_t **) realloc(mmk, sizeof(mediamark_t *) * (new_num + 2));
+-	    
+-	    (void) mediamark_store_mmk(&mmk[new_num], 
++
++	    (void) mediamark_store_mmk(&mmk[new_num],
+ 				       gui->playlist.mmk[i]->mrl,
+ 				       gui->playlist.mmk[i]->ident,
+ 				       gui->playlist.mmk[i]->sub,
+-				       gui->playlist.mmk[i]->start, 
++				       gui->playlist.mmk[i]->start,
+ 				       gui->playlist.mmk[i]->end,
+ 				       gui->playlist.mmk[i]->av_offset,
+ 				       gui->playlist.mmk[i]->spu_offset);
+@@ -1011,7 +1014,7 @@ void gui_eject(xitk_widget_t *w, void *d
+ 	mediamark_free_mediamarks();
+ 	if(mmk)
+ 	  gui->playlist.mmk = mmk;
+-	
++
+ 	if(!(gui->playlist.num = new_num))
+ 	  gui->playlist.cur = -1;
+ 	else if(new_num)
+@@ -1023,14 +1026,14 @@ void gui_eject(xitk_widget_t *w, void *d
+ 	 * Remove only the current MRL
+ 	 */
+ 	mediamark_free_entry(gui->playlist.cur);
+-	
++
+ 	for(i = gui->playlist.cur; i < gui->playlist.num; i++)
+ 	  gui->playlist.mmk[i] = gui->playlist.mmk[i + 1];
+-	
++
+ 	gui->playlist.mmk = (mediamark_t **) realloc(gui->playlist.mmk, sizeof(mediamark_t *) * (gui->playlist.num + 2));
+ 
+ 	gui->playlist.mmk[gui->playlist.num] = NULL;
+-	
++
+ 	if(gui->playlist.cur)
+ 	  gui->playlist.cur--;
+       }
+@@ -1039,7 +1042,7 @@ void gui_eject(xitk_widget_t *w, void *d
+ 	enable_playback_controls(0);
+ 
+     }
+-    
++
+     gui_set_current_mmk(mediamark_get_current_mmk());
+     playlist_update_playlist();
+   }
+@@ -1077,7 +1080,7 @@ void gui_toggle_visibility(xitk_widget_t
+     /* (re)start/stop visual animation */
+     if(video_window_is_visible()) {
+       layer_above_video(gui->panel_window);
+-      
++
+       if(gui->visual_anim.enabled && (gui->visual_anim.running == 2))
+ 	visual_anim_play();
+     }
+@@ -1142,13 +1145,13 @@ static void set_fullscreen_mode(int full
+     if(help)
+       help_toggle_visibility(NULL, NULL);
+   }
+-  
++
+   video_window_set_fullscreen_mode(fullscreen_mode);
+-  
++
+   /* Drawable has changed, update cursor visiblity */
+   if(!gui->cursor_visible)
+     video_window_set_cursor_visibility(gui->cursor_visible);
+-  
++
+   if(panel)
+     panel_toggle_visibility(NULL, NULL);
+   else {
+@@ -1203,12 +1206,12 @@ void gui_toggle_aspect(int aspect) {
+ 
+   if(aspect == -1)
+     aspect = xine_get_param(gui->stream, XINE_PARAM_VO_ASPECT_RATIO) + 1;
+-  
++
+   xine_set_param(gui->stream, XINE_PARAM_VO_ASPECT_RATIO, aspect);
+-  
+-  osd_display_info(_("Aspect ratio: %s"), 
++
++  osd_display_info(_("Aspect ratio: %s"),
+ 		   ratios[xine_get_param(gui->stream, XINE_PARAM_VO_ASPECT_RATIO)]);
+-  
++
+   if (panel_is_visible())  {
+     XLockDisplay(gui->display);
+     XRaiseWindow(gui->display, gui->panel_window);
+@@ -1222,7 +1225,7 @@ void gui_toggle_interlaced(void) {
+   gui->deinterlace_enable = !gui->deinterlace_enable;
+   osd_display_info(_("Deinterlace: %s"), (gui->deinterlace_enable) ? _("enabled") : _("disabled"));
+   post_deinterlace();
+-  
++
+   if (panel_is_visible())  {
+     XLockDisplay(gui->display);
+     XRaiseWindow(gui->display, gui->panel_window);
+@@ -1242,14 +1245,14 @@ void gui_change_audio_channel(xitk_widge
+   gGui_t *gui = gGui;
+   int dir = (int)(intptr_t)data;
+   int channel;
+-  
++
+   channel = xine_get_param(gui->stream, XINE_PARAM_AUDIO_CHANNEL_LOGICAL);
+-  
++
+   if(dir == GUI_NEXT)
+     channel++;
+   else if(dir == GUI_PREV)
+     channel--;
+-  
++
+   gui_direct_change_audio_channel(w, data, channel);
+ }
+ 
+@@ -1265,14 +1268,14 @@ void gui_change_spu_channel(xitk_widget_
+   int dir = (int)(intptr_t)data;
+   int channel;
+   int maxchannel;
+-  
++
+   channel = xine_get_param(gui->stream, XINE_PARAM_SPU_CHANNEL);
+   maxchannel = xine_get_stream_info(gui->stream, XINE_STREAM_INFO_MAX_SPU_CHANNEL);
+ 
+   if (xine_get_status(gui->spu_stream) != XINE_STATUS_IDLE) /* if we have a slave SPU channel, take it into account */
+     maxchannel += xine_get_stream_info(gui->spu_stream, XINE_STREAM_INFO_MAX_SPU_CHANNEL);
+ 
+-  /* XINE_STREAM_INFO_MAX_SPU_CHANNEL actually returns the number of available spu channels, i.e. 
++  /* XINE_STREAM_INFO_MAX_SPU_CHANNEL actually returns the number of available spu channels, i.e.
+    * 0 means no SPUs, 1 means 1 SPU channel, etc. */
+   --maxchannel;
+ 
+@@ -1331,13 +1334,13 @@ static __attribute__((noreturn)) void *_
+   gGui_t *gui = gGui;
+   int  pos = (int)(intptr_t) data;
+   int  update_mmk = 0, ret;
+-  
++
+   pthread_detach(pthread_self());
+ 
+   if(pthread_mutex_trylock(&gui->xe_mutex)) {
+     pthread_exit(NULL);
+   }
+-  
++
+   if(gui->logo_mode && (mediamark_get_current_mrl())) {
+     gui->suppress_messages++;
+     ret = xine_open(gui->stream, (mediamark_get_current_mrl()));
+@@ -1349,12 +1352,12 @@ static __attribute__((noreturn)) void *_
+     }
+   }
+ 
+-  if(((xine_get_stream_info(gui->stream, XINE_STREAM_INFO_SEEKABLE)) == 0) || 
++  if(((xine_get_stream_info(gui->stream, XINE_STREAM_INFO_SEEKABLE)) == 0) ||
+      (gui->ignore_next == 1)) {
+     pthread_mutex_unlock(&gui->xe_mutex);
+     pthread_exit(NULL);
+   }
+-    
++
+   if(xine_get_status(gui->stream) != XINE_STATUS_PLAY) {
+     gui->suppress_messages++;
+     xine_open(gui->stream, gui->mmk.mrl);
+@@ -1365,51 +1368,51 @@ static __attribute__((noreturn)) void *_
+       ret = xine_open(gui->spu_stream, gui->mmk.sub);
+       gui->suppress_messages--;
+       if (ret)
+-	xine_stream_master_slave(gui->stream, 
++	xine_stream_master_slave(gui->stream,
+ 				 gui->spu_stream, XINE_MASTER_SLAVE_PLAY | XINE_MASTER_SLAVE_STOP);
+     }
+     else
+       xine_close (gui->spu_stream);
+   }
+-  
++
+   gui->ignore_next = 1;
+-  
++
+   if(gui->playlist.num && gui->playlist.cur >= 0 && gui->playlist.mmk &&
+      gui->playlist.mmk[gui->playlist.cur] &&
+      (!strcmp(gui->playlist.mmk[gui->playlist.cur]->mrl, gui->mmk.mrl)))
+     update_mmk = 1;
+-  
++
+   pthread_mutex_lock(&new_pos_mutex);
+   gui->new_pos = pos;
+   pthread_mutex_unlock(&new_pos_mutex);
+ 
+   do {
+     int opos;
+-    
++
+     pthread_mutex_lock(&new_pos_mutex);
+     opos = gui->new_pos;
+     pthread_mutex_unlock(&new_pos_mutex);
+-    
++
+     xitk_slider_set_pos(panel->playback_widgets.slider_play, pos);
+     osd_stream_position(pos);
+-    
++
+     (void) gui_xine_play(gui->stream, pos, 0, update_mmk);
+-    
++
+     xine_get_pos_length(gui->stream,
+ 			&(gui->stream_length.pos),
+-			&(gui->stream_length.time), 
++			&(gui->stream_length.time),
+ 			&(gui->stream_length.length));
+     panel_update_runtime_display();
+-    
++
+     pthread_mutex_lock(&new_pos_mutex);
+     if(opos == gui->new_pos)
+       gui->new_pos = -1;
+-    
++
+     pos = gui->new_pos;
+     pthread_mutex_unlock(&new_pos_mutex);
+-    
++
+   } while(pos != -1);
+-  
++
+   gui->ignore_next = 0;
+   osd_hide_status();
+   panel_check_pause();
+@@ -1422,9 +1425,9 @@ static __attribute__((noreturn)) void *_
+   gGui_t *gui = gGui;
+   int off_sec = (int)(intptr_t)data;
+   int sec, pos;
+-  
++
+   pthread_detach(pthread_self());
+-  
++
+   pthread_mutex_lock(&new_pos_mutex);
+   gui->new_pos = -1;
+   pthread_mutex_unlock(&new_pos_mutex);
+@@ -1432,24 +1435,24 @@ static __attribute__((noreturn)) void *_
+   if(!gui_xine_get_pos_length(gui->stream, NULL, &sec, NULL)) {
+     pthread_exit(NULL);
+   }
+-  
++
+   if(pthread_mutex_trylock(&gui->xe_mutex)) {
+     pthread_exit(NULL);
+   }
+ 
+-  if(((xine_get_stream_info(gui->stream, XINE_STREAM_INFO_SEEKABLE)) == 0) || 
++  if(((xine_get_stream_info(gui->stream, XINE_STREAM_INFO_SEEKABLE)) == 0) ||
+      (gui->ignore_next == 1)) {
+     pthread_mutex_unlock(&gui->xe_mutex);
+     pthread_exit(NULL);
+   }
+-  
++
+   if(xine_get_status(gui->stream) != XINE_STATUS_PLAY) {
+     pthread_mutex_unlock(&gui->xe_mutex);
+     pthread_exit(NULL);
+   }
+-  
++
+   gui->ignore_next = 1;
+-  
++
+   sec /= 1000;
+ 
+   if((sec + off_sec) < 0)
+@@ -1458,12 +1461,12 @@ static __attribute__((noreturn)) void *_
+     sec += off_sec;
+ 
+   (void) gui_xine_play(gui->stream, 0, sec, 1);
+-  
++
+   pthread_mutex_unlock(&gui->xe_mutex);
+ 
+   if(gui_xine_get_pos_length(gui->stream, &pos, NULL, NULL))
+     osd_stream_position(pos);
+-  
++
+   gui->ignore_next = 0;
+   osd_hide_status();
+   panel_check_pause();
+@@ -1493,7 +1496,7 @@ void gui_set_current_position (int pos)
+ void gui_seek_relative (int off_sec) {
+   int        err;
+   pthread_t  pth;
+-  
++
+   if((err = pthread_create(&pth, NULL, _gui_seek_relative, (void *)(intptr_t)off_sec)) != 0) {
+     printf(_("%s(): can't create new thread (%s)\n"), __XINE_FUNCTION__, strerror(err));
+     abort();
+@@ -1515,12 +1518,12 @@ void gui_dndcallback(char *filename) {
+ 
+     pthread_mutex_lock(&gui->mmk_mutex);
+ 
+-    if((strlen(mrl) > 6) && 
++    if((strlen(mrl) > 6) &&
+        (!strncmp(mrl, "file:", 5))) {
+-      
++
+       if((p = strstr(mrl, ":/")) != NULL) {
+ 	struct stat pstat;
+-	
++
+ 	p += 2;
+ 
+ 	if(*(p + 1) == '/')
+@@ -1531,8 +1534,8 @@ void gui_dndcallback(char *filename) {
+ 	if((stat(p, &pstat)) == 0) {
+ 	  if(is_a_dir(p)) {
+ 	    if(*(p + (strlen(p) - 1)) == '/')
+-	      *(p + (strlen(p) - 1)) = '\0'; 
+-	    
++	      *(p + (strlen(p) - 1)) = '\0';
++
+ 	    mediamark_collect_from_directory(p);
+ 	    more_than_one = gui->playlist.cur;
+ 	    goto __do_play;
+@@ -1542,16 +1545,16 @@ void gui_dndcallback(char *filename) {
+ 	}
+ 	else {
+ 	  snprintf(buffer2, sizeof(buffer2), "/%s", p);
+-	  
++
+ 	  /* file don't exist, add it anyway */
+ 	  if((stat(buffer2, &pstat)) == -1)
+ 	    strlcpy(buffer, mrl, sizeof(buffer));
+ 	  else {
+ 	    if(is_a_dir(buffer2)) {
+-	      
++
+ 	      if(buffer2[strlen(buffer2) - 1] == '/')
+-		buffer2[strlen(buffer2) - 1] = '\0'; 
+-	      
++		buffer2[strlen(buffer2) - 1] = '\0';
++
+ 	      mediamark_collect_from_directory(buffer2);
+ 	      more_than_one = gui->playlist.cur;
+ 	      goto __do_play;
+@@ -1559,7 +1562,7 @@ void gui_dndcallback(char *filename) {
+ 	    else
+ 	      snprintf(buffer, sizeof(buffer), "file:/%s", buffer2);
+ 	  }
+-	  
++
+ 	}
+       }
+       else {
+@@ -1569,11 +1572,11 @@ void gui_dndcallback(char *filename) {
+     }
+     else
+       strlcpy(buffer, mrl, sizeof(buffer));
+-    
++
+     if(is_a_dir(buffer)) {
+       if(buffer[strlen(buffer) - 1] == '/')
+-	buffer[strlen(buffer) - 1] = '\0'; 
+-      
++	buffer[strlen(buffer) - 1] = '\0';
++
+       mediamark_collect_from_directory(buffer);
+       more_than_one = gui->playlist.cur;
+     }
+@@ -1585,10 +1588,10 @@ void gui_dndcallback(char *filename) {
+ 	ident++;
+       else
+ 	ident = buffer;
+-      
++
+       if(mrl_look_like_playlist(buffer)) {
+ 	int cur = gui->playlist.cur;
+-	
++
+ 	more_than_one = (gui->playlist.cur - 1);
+ 	if(mediamark_concat_mediamarks(buffer))
+ 	  gui->playlist.cur = cur;
+@@ -1599,7 +1602,7 @@ void gui_dndcallback(char *filename) {
+ 	mediamark_append_entry(buffer, ident, NULL, 0, -1, 0, 0);
+ 
+     }
+-    
++
+   __do_play:
+ 
+     playlist_update_playlist();
+@@ -1619,7 +1622,7 @@ void gui_dndcallback(char *filename) {
+ 
+       }
+     }
+-    
++
+     if((!is_playback_widgets_enabled()) && gui->playlist.num)
+       enable_playback_controls(1);
+ 
+@@ -1636,7 +1639,7 @@ void gui_direct_nextprev(xitk_widget_t *
+ 
+   by_chapter = (gui->skip_by_chapter &&
+ 		(xine_get_stream_info(gui->stream, XINE_STREAM_INFO_HAS_CHAPTERS))) ? 1 : 0;
+-  
++
+   if(mmk && mediamark_got_alternate(mmk))
+     mediamark_unset_got_alternate(mmk);
+ 
+@@ -1653,7 +1656,7 @@ void gui_direct_nextprev(xitk_widget_t *
+     else {
+ 
+       switch(gui->playlist.loop) {
+-      
++
+       case PLAYLIST_LOOP_SHUFFLE:
+       case PLAYLIST_LOOP_SHUF_PLUS:
+ 	gui->ignore_next = 0;
+@@ -1668,7 +1671,7 @@ void gui_direct_nextprev(xitk_widget_t *
+ 	    gui->playlist.cur += (value - 1);
+ 	  else
+ 	    gui->playlist.cur += value;
+-	  
++
+ 	  gui->ignore_next = 0;
+ 	  gui_playlist_start_next();
+ 	}
+@@ -1677,11 +1680,11 @@ void gui_direct_nextprev(xitk_widget_t *
+       case PLAYLIST_LOOP_LOOP:
+ 	if((gui->playlist.cur + value) > gui->playlist.num) {
+ 	  int newcur = value - (gui->playlist.num - gui->playlist.cur);
+-	  
++
+ 	  gui->ignore_next = 1;
+ 	  gui->playlist.cur = newcur;
+ 	  gui_set_current_mmk(mediamark_get_current_mmk());
+-	  if(!gui_xine_open_and_play(gui->mmk.mrl, gui->mmk.sub, 0, 
++	  if(!gui_xine_open_and_play(gui->mmk.mrl, gui->mmk.sub, 0,
+ 				     gui->mmk.start, gui->mmk.av_offset, gui->mmk.spu_offset, 1))
+ 	    gui_display_logo();
+ 
+@@ -1699,7 +1702,7 @@ void gui_direct_nextprev(xitk_widget_t *
+   else if(((intptr_t)data) == GUI_PREV) {
+ 
+     osd_hide();
+-    
++
+     if(by_chapter) {
+ 
+       for(i = 0; i < value; i++)
+@@ -1718,20 +1721,20 @@ void gui_direct_nextprev(xitk_widget_t *
+       case PLAYLIST_LOOP_NO_LOOP:
+       case PLAYLIST_LOOP_REPEAT:
+ 	if((gui->playlist.cur - value) >= 0) {
+-	  
++
+ 	  gui->ignore_next = 1;
+ 	  gui->playlist.cur -= value;
+-	  
++
+ 	  if((gui->playlist.cur < gui->playlist.num)) {
+ 	    gui_set_current_mmk(mediamark_get_current_mmk());
+-	    if(!gui_xine_open_and_play(gui->mmk.mrl, gui->mmk.sub, 0, 
++	    if(!gui_xine_open_and_play(gui->mmk.mrl, gui->mmk.sub, 0,
+ 				       gui->mmk.start, gui->mmk.av_offset, gui->mmk.spu_offset, 1))
+ 	      gui_display_logo();
+ 
+ 	  }
+ 	  else
+ 	    gui->playlist.cur = 0;
+-	  
++
+ 	  gui->ignore_next = 0;
+ 	}
+ 	break;
+@@ -1742,23 +1745,23 @@ void gui_direct_nextprev(xitk_widget_t *
+ 	if((gui->playlist.cur - value) >= 0) {
+ 
+ 	  gui->playlist.cur -= value;
+-	  
++
+ 	  if((gui->playlist.cur < gui->playlist.num)) {
+ 	    gui_set_current_mmk(mediamark_get_current_mmk());
+-	    if(!gui_xine_open_and_play(gui->mmk.mrl, gui->mmk.sub, 0, 
++	    if(!gui_xine_open_and_play(gui->mmk.mrl, gui->mmk.sub, 0,
+ 				       gui->mmk.start, gui->mmk.av_offset, gui->mmk.spu_offset, 1))
+ 	      gui_display_logo();
+ 	  }
+ 	  else
+ 	    gui->playlist.cur = 0;
+-	  
++
+ 	}
+ 	else {
+ 	  int newcur = (gui->playlist.cur - value) + gui->playlist.num;
+-	  
++
+ 	  gui->playlist.cur = newcur;
+ 	  gui_set_current_mmk(mediamark_get_current_mmk());
+-	  if(!gui_xine_open_and_play(gui->mmk.mrl, gui->mmk.sub, 0, 
++	  if(!gui_xine_open_and_play(gui->mmk.mrl, gui->mmk.sub, 0,
+ 				     gui->mmk.start, gui->mmk.av_offset, gui->mmk.spu_offset, 1))
+ 	    gui_display_logo();
+ 	}
+@@ -1771,7 +1774,7 @@ void gui_direct_nextprev(xitk_widget_t *
+ 
+   panel_check_pause();
+ }
+-  
++
+ void gui_nextprev(xitk_widget_t *w, void *data) {
+   gui_direct_nextprev(w, data, 1);
+ }
+@@ -1873,7 +1876,7 @@ void gui_setup_show(xitk_widget_t *w, vo
+ 
+ void gui_event_sender_show(xitk_widget_t *w, void *data) {
+   gGui_t *gui = gGui;
+-  
++
+   if (event_sender_is_running() && !event_sender_is_visible())
+     event_sender_toggle_visibility(NULL, NULL);
+   else if(!event_sender_is_running())
+@@ -1888,7 +1891,7 @@ void gui_event_sender_show(xitk_widget_t
+ 
+ void gui_stream_infos_show(xitk_widget_t *w, void *data) {
+   gGui_t *gui = gGui;
+-  
++
+   if (stream_infos_is_running() && !stream_infos_is_visible())
+     stream_infos_toggle_visibility(NULL, NULL);
+   else if(!stream_infos_is_running())
+@@ -1903,7 +1906,7 @@ void gui_stream_infos_show(xitk_widget_t
+ 
+ void gui_tvset_show(xitk_widget_t *w, void *data) {
+   gGui_t *gui = gGui;
+-  
++
+   if (tvset_is_running() && !tvset_is_visible())
+     tvset_toggle_visibility(NULL, NULL);
+   else if(!tvset_is_running())
+@@ -1918,7 +1921,7 @@ void gui_tvset_show(xitk_widget_t *w, vo
+ 
+ void gui_vpp_show(xitk_widget_t *w, void *data) {
+   gGui_t *gui = gGui;
+-  
++
+   if (vpplugin_is_running() && !vpplugin_is_visible())
+     vpplugin_toggle_visibility(NULL, NULL);
+   else if(!vpplugin_is_running())
+@@ -1995,7 +1998,7 @@ void gui_help_show(xitk_widget_t *w, voi
+  */
+ int is_layer_above(void) {
+   gGui_t *gui = gGui;
+-  
++
+   return (gui->always_layer_above || gui->layer_above) ? 1 : 0;
+ }
+ /*
+@@ -2004,10 +2007,10 @@ int is_layer_above(void) {
+  */
+ void layer_above_video(Window w) {
+   int layer = 10;
+-  
++
+   if(!(is_layer_above()))
+     return;
+-  
++
+   if ((!(video_window_get_fullscreen_mode() & WINDOWED_MODE)) && video_window_is_visible()) {
+     layer = xitk_get_layer_level();
+   }
+@@ -2017,7 +2020,7 @@ void layer_above_video(Window w) {
+     else
+       layer = 4;
+   }
+-  
++
+   xitk_set_window_layer(w, layer);
+ }
+ 
+@@ -2073,7 +2076,7 @@ void gui_decrease_audio_volume(void) {
+ 
+ void gui_app_show(xitk_widget_t *w, void *data) {
+   gGui_t *gui = gGui;
+-  
++
+   if (applugin_is_running() && !applugin_is_visible())
+     applugin_toggle_visibility(NULL, NULL);
+   else if(!applugin_is_running())
+@@ -2107,7 +2110,7 @@ void gui_change_zoom(int zoom_dx, int zo
+ 		 xine_get_param(gui->stream, XINE_PARAM_VO_ZOOM_X) + zoom_dx);
+   xine_set_param(gui->stream, XINE_PARAM_VO_ZOOM_Y,
+ 		 xine_get_param(gui->stream, XINE_PARAM_VO_ZOOM_Y) + zoom_dy);
+-  
++
+   if (panel_is_visible())  {
+     XLockDisplay(gui->display);
+     XRaiseWindow(gui->display, gui->panel_window);
+@@ -2124,7 +2127,7 @@ void gui_reset_zoom(void) {
+ 
+   xine_set_param(gui->stream, XINE_PARAM_VO_ZOOM_X, 100);
+   xine_set_param(gui->stream, XINE_PARAM_VO_ZOOM_Y, 100);
+-  
++
+   if (panel_is_visible())  {
+     XLockDisplay(gui->display);
+     XRaiseWindow(gui->display, gui->panel_window);
+@@ -2133,7 +2136,7 @@ void gui_reset_zoom(void) {
+   }
+ }
+ 
+-/* 
++/*
+  * Toggle TV Modes on the dxr3
+  */
+ void gui_toggle_tvmode(void) {
+@@ -2161,26 +2164,26 @@ void gui_send_expose_to_window(Window wi
+   xev.xexpose.display    = gui->display;
+   xev.xexpose.window     = window;
+   xev.xexpose.count      = 0;
+-  
++
+   XLockDisplay(gui->display);
+   if(!XSendEvent(gui->display, window, False, ExposureMask, &xev)) {
+     fprintf(stderr, _("XSendEvent(display, 0x%x ...) failed.\n"), (unsigned int) window);
+   }
+   XSync(gui->display, False);
+   XUnlockDisplay(gui->display);
+-  
++
+ }
+ 
+ void gui_add_mediamark(void) {
+   gGui_t *gui = gGui;
+-  
++
+   if((gui->logo_mode == 0) && (xine_get_status(gui->stream) == XINE_STATUS_PLAY)) {
+     int secs;
+ 
+     if(gui_xine_get_pos_length(gui->stream, NULL, &secs, NULL)) {
+       secs /= 1000;
+-      
+-      mediamark_append_entry(gui->mmk.mrl, gui->mmk.ident, 
++
++      mediamark_append_entry(gui->mmk.mrl, gui->mmk.ident,
+ 			     gui->mmk.sub, secs, -1, gui->mmk.av_offset, gui->mmk.spu_offset);
+       playlist_update_playlist();
+     }
+@@ -2211,14 +2214,14 @@ static void fileselector_callback(filebr
+   gGui_t *gui = gGui;
+   char *file;
+   char *cur_dir = filebrowser_get_current_dir(fb);
+-  
++
+   /* Upate configuration with the selected directory path */
+   if(cur_dir && strlen(cur_dir)) {
+     strlcpy(gui->curdir, cur_dir, sizeof(gui->curdir));
+     config_update_string("media.files.origin_path", gui->curdir);
+   }
+   free(cur_dir);
+-  
++
+   /* Get the file path/name */
+   if(((file = filebrowser_get_full_filename(fb)) != NULL) && strlen(file)) {
+     int first  = gui->playlist.num;
+@@ -2266,13 +2269,13 @@ static void fileselector_all_callback(fi
+   gGui_t *gui = gGui;
+   char **files;
+   char  *path = filebrowser_get_current_dir(fb);
+-  
++
+   /* Update the configuration with the current path */
+   if(path && strlen(path)) {
+     strlcpy(gui->curdir, path, sizeof(gui->curdir));
+     config_update_string("media.files.origin_path", gui->curdir);
+   }
+-  
++
+   /* Get all of the file names in the current directory as an array of pointers to strings */
+   if((files = filebrowser_get_all_files(fb)) != NULL) {
+     int i = 0;
+@@ -2288,7 +2291,7 @@ static void fileselector_all_callback(fi
+         snprintf(pathname, sizeof(pathname), "%s/", path);
+       else
+ 	strlcpy(pathname, path, sizeof(pathname));
+-      
++
+       /* For each file, concatenate the path with the name and append it to the playlist */
+       while(files[i]) {
+         snprintf(fullfilename, sizeof(fullfilename), "%s%s", pathname, files[i]);
+@@ -2304,7 +2307,7 @@ static void fileselector_all_callback(fi
+ 
+         i++;
+       } /* End while */
+-      
++
+       playlist_update_playlist();
+ 
+       /* Enable playback controls on display */
+@@ -2325,7 +2328,7 @@ static void fileselector_all_callback(fi
+     i = 0;
+     while(files[i])
+       free(files[i++]);
+-    
++
+     free(files);
+   } /* If valid file list */
+ 
+@@ -2364,17 +2367,17 @@ static void subselector_callback(filebro
+   if((file = filebrowser_get_full_filename(fb)) != NULL) {
+     if(file) {
+       mediamark_t *mmk = mediamark_clone_mmk(mediamark_get_current_mmk());
+-      
++
+       if(mmk) {
+-	mediamark_replace_entry(&gui->playlist.mmk[gui->playlist.cur], mmk->mrl, mmk->ident, 
++	mediamark_replace_entry(&gui->playlist.mmk[gui->playlist.cur], mmk->mrl, mmk->ident,
+ 				file, mmk->start, mmk->end, mmk->av_offset, mmk->spu_offset);
+ 	mediamark_free_mmk(&mmk);
+ 
+ 	mmk = mediamark_get_current_mmk();
+ 	gui_set_current_mmk(mmk);
+-	
++
+ 	playlist_mrlident_toggle();
+-	
++
+ 	if(xine_get_status(gui->stream) == XINE_STATUS_PLAY) {
+ 	  int curpos;
+ 	  xine_close (gui->spu_stream);
+@@ -2383,9 +2386,9 @@ static void subselector_callback(filebro
+ 	  ret = xine_open(gui->spu_stream, mmk->sub);
+ 	  gui->suppress_messages--;
+ 	  if (ret)
+-	    xine_stream_master_slave(gui->stream, 
++	    xine_stream_master_slave(gui->stream,
+ 				     gui->spu_stream, XINE_MASTER_SLAVE_PLAY | XINE_MASTER_SLAVE_STOP);
+-	  
++
+ 	  if(gui_xine_get_pos_length(gui->stream, &curpos, NULL, NULL)) {
+ 	    xine_stop(gui->stream);
+ 	    gui_set_current_position(curpos);
+@@ -2401,42 +2404,42 @@ static void subselector_callback(filebro
+ 
+ void gui_select_sub(void) {
+   gGui_t *gui = gGui;
+-  
++
+   if(gui->playlist.num) {
+     if(load_sub)
+       filebrowser_raise_window(load_sub);
+     else {
+       filebrowser_callback_button_t  cbb[2];
+       mediamark_t *mmk;
+-      
++
+       mmk = mediamark_get_current_mmk();
+-      
++
+       if(mmk) {
+ 	char *path, *open_path;
+-	
++
+ 	cbb[0].label = _("Select");
+ 	cbb[0].callback = subselector_callback;
+ 	cbb[0].need_a_file = 1;
+ 	cbb[1].callback = fileselector_cancel_callback;
+ 	cbb[1].need_a_file = 0;
+-    	
++
+ 	path = mmk->sub ? mmk->sub : mmk->mrl;
+-	
++
+ 	if(mrl_look_like_file(path)) {
+ 	  char *p;
+-	  
++
+ 	  open_path = strdup(path);
+-	  
++
+ 	  if(!strncasecmp(path, "file:", 5))
+ 	    path += 5;
+-	  
++
+ 	  p = strrchr(open_path, '/');
+ 	  if (p && strlen(p))
+ 	    *p = '\0';
+ 	}
+ 	else
+ 	  open_path = strdup(gui->curdir);
+-	
++
+ 	load_sub = create_filebrowser(_("Pick a subtitle file"), open_path, hidden_file_cb, &cbb[0], NULL, &cbb[1]);
+ 	free(open_path);
+       }
+@@ -2452,10 +2455,10 @@ void visual_anim_init(void) {
+   char *buffer;
+ 
+   asprintf(&buffer, "%s/%s", XINE_VISDIR, "default.mpv");
+-  
++
+   gui->visual_anim.mrls = (char **) malloc(sizeof(char *) * 3);
+   gui->visual_anim.num_mrls = 0;
+-  
++
+   gui->visual_anim.mrls[gui->visual_anim.num_mrls++]   = buffer;
+   gui->visual_anim.mrls[gui->visual_anim.num_mrls]     = NULL;
+   gui->visual_anim.mrls[gui->visual_anim.num_mrls + 1] = NULL;
+@@ -2469,9 +2472,9 @@ void visual_anim_done(void) {
+ }
+ void visual_anim_add_animation(char *mrl) {
+   gGui_t *gui = gGui;
+-  gui->visual_anim.mrls = (char **) realloc(gui->visual_anim.mrls, sizeof(char *) * 
++  gui->visual_anim.mrls = (char **) realloc(gui->visual_anim.mrls, sizeof(char *) *
+ 					     ((gui->visual_anim.num_mrls + 1) + 2));
+-  
++
+   gui->visual_anim.mrls[gui->visual_anim.num_mrls++]   = strdup(mrl);
+   gui->visual_anim.mrls[gui->visual_anim.num_mrls]     = NULL;
+   gui->visual_anim.mrls[gui->visual_anim.num_mrls + 1] = NULL;
+@@ -2485,9 +2488,9 @@ static int visual_anim_open_and_play(xin
+ void visual_anim_play(void) {
+   gGui_t *gui = gGui;
+   if(gui->visual_anim.enabled == 2) {
+-    if(!visual_anim_open_and_play(gui->visual_anim.stream, 
++    if(!visual_anim_open_and_play(gui->visual_anim.stream,
+ 				  gui->visual_anim.mrls[gui->visual_anim.current]))
+-      gui_handle_xine_error(gui->visual_anim.stream, 
++      gui_handle_xine_error(gui->visual_anim.stream,
+ 			    gui->visual_anim.mrls[gui->visual_anim.current]);
+     gui->visual_anim.running = 1;
+   }

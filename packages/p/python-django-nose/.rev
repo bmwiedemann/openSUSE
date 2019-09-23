@@ -1,0 +1,129 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a22404cdc1fab4ab3a58096ee168fa3c</srcmd5>
+    <version>0.1.3</version>
+    <time>1322481371</time>
+    <user>coolo</user>
+    <comment>Dependency for OpenStack packages.</comment>
+    <requestid>93546</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a282db03f82d2dc884b3ea907ef0a5a9</srcmd5>
+    <version>0.1.3</version>
+    <time>1329391622</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103925</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>31b8ff7331c58bfde1af630ac0ec1086</srcmd5>
+    <version>1.0</version>
+    <time>1332317151</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>110134</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ce8fc5e18986c6e97a02e69378f6e1ab</srcmd5>
+    <version>1.0</version>
+    <time>1332616190</time>
+    <user>coolo</user>
+    <comment>- Use upstream tarball
+- Simplified macro usage
+- Run testsuite</comment>
+    <requestid>110798</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6da548f11b0e45d94a1ce7c440a3689c</srcmd5>
+    <version>1.1</version>
+    <time>1338476965</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122676</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>6da548f11b0e45d94a1ce7c440a3689c</srcmd5>
+    <version>1.1</version>
+    <time>1340184047</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>b3fac53bc0a0eb180edd403c1912e1aa</srcmd5>
+    <version>1.1</version>
+    <time>1340726028</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>126132</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>b3fac53bc0a0eb180edd403c1912e1aa</srcmd5>
+    <version>1.1</version>
+    <time>1359110020</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>06f7bad07b652c9ce7badd459a69b8ed</srcmd5>
+    <version>1.2</version>
+    <time>1376562540</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 1.2:
+  * Initial Python 3.x support (forwarded request 186920 from dirkmueller)</comment>
+    <requestid>186933</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>06f7bad07b652c9ce7badd459a69b8ed</srcmd5>
+    <version>1.2</version>
+    <time>1379664162</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>71a1971ea39ae28c3efb19c6e967623d</srcmd5>
+    <version>1.2</version>
+    <time>1382692432</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204545</requestid>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>71a1971ea39ae28c3efb19c6e967623d</srcmd5>
+    <version>1.2</version>
+    <time>1409302853</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ee6279f21332022e3157bd43f62fd6fe</srcmd5>
+    <version>1.4</version>
+    <time>1430983342</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305653</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>98dccd0c1f0e1eb2691a352e421f9dfe</srcmd5>
+    <version>1.4.4</version>
+    <time>1471009421</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418737</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>13c00e0590a19e5c8112a617ac21a3db</srcmd5>
+    <version>1.4.5</version>
+    <time>1508434326</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>531880</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>99beddc1e3f392c09e5615a98744dde8</srcmd5>
+    <version>1.4.6</version>
+    <time>1544726930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657254</requestid>
+  </revision>
+</revisionlist>

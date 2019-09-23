@@ -1,0 +1,356 @@
+-------------------------------------------------------------------
+Wed Feb  6 19:31:32 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to 1.6.35:
+  * Supported new models:
+    + ET-1100_Series
+    + ST-2000_Series
+
+-------------------------------------------------------------------
+Mon Dec 10 14:27:59 UTC 2018 - Nico Kruber <nico.kruber@gmail.com>
+
+- Update to 1.6.33:
+  * Supported new models:
+    + ET-4700_Series
+    + L1110_Series
+    + L5190_Series
+    + L7180_Series
+    + PX-S170T_Series
+    + PX-S170UT_Series
+
+-------------------------------------------------------------------
+Thu Sep 20 05:39:39 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to 1.6.29:
+  * Supported new models:
+    + EP-711A_Series
+    + EP-811A_Series
+    + ET-M1100_Series
+    + ET-M1120_Series
+    + L7160_Series
+    + M1100_Series
+    + M1200_Series
+
+-------------------------------------------------------------------
+Tue Sep  4 05:25:56 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to 1.6.25 (boo#1106416):
+  * Supported new models:
+    + ET-2700_Series
+    + ET-2710_Series
+    + ET-2750_Series
+    + EW-M571T_Series
+    + EW-M770T_Series
+    + L3100_Series
+    + L3110_Series
+    + L3150_Series
+    + L4150_Series
+    + L4160_Series
+    + XP-255_257_Series
+    + XP-352_355_Series
+    + XP-452_455_Series
+    + XP-7100_Series
+
+-------------------------------------------------------------------
+Tue Feb 13 14:29:35 UTC 2018 - nico.kruber@gmail.com
+
+- Upgraded to 1.6.18
+  * Supported new models
+
+-------------------------------------------------------------------
+Thu Dec 21 12:04:48 UTC 2017 - nico.kruber@gmail.com
+
+- Upgraded to 1.6.17; changes since 1.6.13:
+  * Supported new models
+
+-------------------------------------------------------------------
+Sun Jun 18 16:31:54 UTC 2017 - bwiedemann@suse.com
+
+- call gzip -n to make build fully reproducible
+
+-------------------------------------------------------------------
+Mon Jun 12 22:31:03 UTC 2017 - nico.kruber@gmail.com
+
+- add bug_x86_64.patch which should fix the segfault that some
+  users are experiencing
+
+-------------------------------------------------------------------
+Tue Apr 18 07:58:26 UTC 2017 - nico.kruber@gmail.com
+
+- Upgraded to 1.6.13
+  * Supported new models
+
+-------------------------------------------------------------------
+Fri Oct 14 22:44:29 UTC 2016 - nico.kruber@gmail.com
+
+- Upgraded to 1.6.9
+  * Supported new models
+  * Fixed a problem that Saturation value wasn't reflected 
+    when using the lpr command
+- Upgraded to 1.6.8
+  * Supported new models
+- Upgraded to 1.6.7
+  * Supported new models
+- Upgraded to 1.6.6
+  * Supported new models
+- Upgraded to 1.6.5
+  * Supported new models
+- Upgraded to 1.6.4
+  * Supported new models
+- Upgraded to 1.6.3
+  * Supported new models
+- Upgraded to 1.6.2
+  * For following models, we changed the ppd description,
+    "*DefaultMediaType" from PLAIN_DRAFT to PLAIN_NORMAL:
+    - WF-3620 Series
+    - WF-2740 Series
+    - WF-4630 Series
+    - WF-4640 Series
+    - WF-5110 Series
+    - WF-5190 Series
+    - WF-5620 Series
+    - WF-5690 Series
+    - WF-6090 Series
+    - WF-6530 Series
+    - WF-6590 Series
+    - WF-7110 Series
+    - WF-7610 Series
+    - WF-7620 Series
+    - WF-8010 Series
+    - WF-8090 Series
+    - WF-8510 Series
+    - WF-8590 Series
+    - WF-R4640 Series
+    - WF-R5190 Series
+    - WF-R5690 Series
+    - WF-R8590 Series
+    - XP-211 214 216 Series
+    - XP-212 213 Series
+    - XP-215 217 Series
+    - XP-310 Series
+    - XP-312 313 315 Series
+    - XP-410 Series
+    - XP-412 413 415 Series
+  * For following models, we added PLAIN_NORMAL and ENV_NORMAL
+    as media type:
+    - WF-M4011 Series
+    - WF-M4015 Series
+    - WF-M4095 Series
+    - WF-M4521 Series
+    - WF-M4525 Series
+    - WF-M4595 Series
+
+-------------------------------------------------------------------
+Fri Jul 29 15:58:36 UTC 2016 - jengelh@inai.de
+
+- Avoid invocation of sh for simple ldconfig calls
+
+-------------------------------------------------------------------
+Tue Jul 19 13:38:46 CEST 2016 - jsmeix@suse.de
+
+- Removed no longer valid URLs from the package description.
+
+-------------------------------------------------------------------
+Thu Nov  5 21:28:15 UTC 2015 - nico.kruber@gmail.com
+
+- Upgraded to 1.6.1
+  * Added ppd files of following models
+    - PM-400 Series
+    - L805 Series
+    - WF-6530 Series
+- Upgraded to 1.6.0
+  * Added ppd files of following models
+    - EP-10VA Series
+    - PX-M860F
+    - PX-S860
+    - WP-M4011 Series
+    - WP-M4015 Series
+    - WP-M4095 Series
+    - WP-M4521 Series
+    - WP-M4525 Series
+    - WP-M4595 Series
+  * Speeding up of multiple page printing
+- Upgraded to 1.5.2
+  * Added ppd files of following models
+    - EP-808A Series
+    - EP-978A3 Series
+    - PF-81 Series
+- Upgraded to 1.5.1
+  * Added ppd files of following models
+    - ET-2500 Series
+    - ET-2550 Series
+    - ET-4500 Series
+    - ET-4550 Series
+
+-------------------------------------------------------------------
+Wed Aug 19 21:01:17 UTC 2015 - nico.kruber@gmail.com
+
+- Upgraded to 1.5.0:
+ * Supported following options
+   - Brightness
+   - Contrast
+   - Saturation
+ * Updated ESC/P-R library to version 5.4.
+
+-------------------------------------------------------------------
+Tue Apr 14 22:22:15 UTC 2015 - nico.kruber@gmail.com
+
+- Upgraded to 1.4.5:
+ * Added ppd files of following models
+   * L565 Series
+   * L566 Series
+   * WF-M5690 Series
+   * WF-M5190 Series
+   * PX-M350F Series
+   * PX-S350 Series
+
+-------------------------------------------------------------------
+Fri Mar 20 11:01:33 CET 2015 - jsmeix@suse.de
+
+- For SLE12 build it with traditional CUPS 1.5.4 to ensure
+  it works on SLE12 both with CUPS 1.7.5 and CUPS 1.5.4.
+
+-------------------------------------------------------------------
+Mon Dec 15 08:11:19 UTC 2014 - nico.kruber@gmail.com
+
+- Upgraded to 1.4.4:
+  + Fixed a problem when using "Rear Feed Slot" as InputSlot.
+- Upgraded to 1.4.3:
+  + Added Postcard size
+    * WF-100 Series
+    * PX-S05 Series
+- Upgraded to 1.4.2:
+  + Added ppd files of following models
+    * PF-70 Series
+    * L-810 Series
+    * L-850 Series
+- Upgraded to 1.4.1:
+  + Added ppd files of following models
+    * E-850 Series
+    * EP-707A Series
+    * EP-777A Series
+    * EP-807A Series
+    * EP-907F Series
+    * EP-977A3 Series
+    * L455 Series
+    * PX-047A Series
+    * PX-437A Series
+    * PX-M650A
+    * PX-M650F
+    * PX-M840FX
+    * PX-M7050 Series
+    * PX-M7050FP
+    * PX-M7050FX
+    * PX-S05 Series
+    * PX-S840X
+    * PX-S7050 Series
+    * PX-S7050PS
+    * PX-S7050X
+    * Stylus_DX3800
+    * WF-100 Series
+    * WF-2630 Series
+    * WF-2650 Series
+    * WF-2660 Series
+    * WF-R4640 Series
+    * WF-R5190 Series
+    * WF-R5690 Series
+    * WF-R8590 Series
+    * XP-55 Series
+    * XP-225 Series
+    * XP-322_323_325 Series
+    * XP-422_423_425 Series
+    * XP-520 Series
+    * XP-620 Series
+    * XP-720 Series
+    * XP-760 Series
+    * XP-820 Series
+    * XP-860_Series
+  + Changed PPD key from Quality to MediaType
+
+-------------------------------------------------------------------
+Thu Jun 12 11:14:30 CEST 2014 - jsmeix@suse.de
+
+- fix_no-return-in-nonvoid-function.patch is obsolete
+  because the issue is fixed in the source.
+- Upgraded to version 1.4.0:
+  Several more supported PX series devices.
+  Several more supported WF series devices.
+  Supported PaperSource(InputSlot) option.
+  For details see the NEWS file.
+- Upgraded to version 1.3.1:
+  Two more supported devices.
+  Modified ppd files for several models.
+  Fixed a duplex printing bug which is reversed Long Edge
+  and Short Edge.
+  For details see the NEWS file.
+- Upgraded to version 1.3.0:
+  Several more supported devices.
+  Updated ESC/P-R library to version 5.3.
+  For details see the NEWS file.
+
+-------------------------------------------------------------------
+Thu Aug  1 11:34:39 CEST 2013 - jsmeix@suse.de
+
+- fix_no-return-in-nonvoid-function.patch avoids that build fails
+  with "E: ... no-return-in-nonvoid-function filter.c:133".
+- Upgraded to version 1.2.3
+  Several more supported XP series devices.
+  For details see the NEWS file.
+- Upgraded to version 1.2.2
+  Many more supported devices.
+  For details see the NEWS file.
+- Upgraded to version 1.2.1
+  Fixed issue where borderless printing except for A4 size failed.
+  A few more supported devices.
+  For details see the NEWS file.
+- Upgraded to version 1.2.0
+  A few more supported devices.
+  Supported duplex printing for many models.
+  For details see the NEWS file.
+- Upgraded to version 1.1.2:
+  Several more supported WP series devices.
+  For details see the NEWS file.
+
+-------------------------------------------------------------------
+Fri Feb 22 14:36:31 CET 2013 - jsmeix@suse.de
+
+- Added "BuildRequires: python-cups" to get special
+  RPM Provides tags for the printers supported by
+  this package (see SUSE Bugzilla bnc#735865).
+
+-------------------------------------------------------------------
+Wed Feb  8 12:39:53 CET 2012 - jsmeix@suse.de
+
+- Upgraded to version 1.1.1:
+  Provided '1284DeviceID' attributes in the PPD files.
+  Several more supported devices (WP 4010/4023/4520/4533 series).
+  A few bug fixes (in particular for PX-B700 and PX-B750F devices).
+  For details see the NEWS file.
+- Use traditional bash scriptlets for post/postun with
+  an explicite "exit 0" line at the end to be fail safe
+  and therefore also "PreReq: /sbin/ldconfig" explicitly.
+
+-------------------------------------------------------------------
+Tue Oct  4 09:55:34 CEST 2011 - jsmeix@suse.de
+
+- Using "-p /sbin/ldconfig" option in post/postun
+  see the "Shared_libraries" section in
+  http://en.opensuse.org/openSUSE:Packaging_scriptlet_snippets
+  Have the comment for the files section inside the files section
+  and not directly before it because then this comment actually
+  belongs for RPM to the section before the files section and
+  when this is "postun -p /sbin/ldconfig", the comment becomes
+  in some cases (e.g. in the build system for SLE11 and SLE11_SP1)
+  added as argument to the /sbin/ldconfig call which lets it fail
+  with an "/sbin/ldconfig: relative path ... used to build cache"
+  which lets package build fail during "removing all built rpms".
+  Therefore traditional bash scriptlets for post/postun
+  with an "exit 0" line at the end would be more fail safe
+  but using "-p /sbin/ldconfig" is requested to get the package
+  accepted for openSUSE:Factory (a.k.a. openSUSE 12.1).
+
+-------------------------------------------------------------------
+Tue Sep 27 11:32:17 CEST 2011 - jsmeix@suse.de
+
+- Initial version epson-inkjet-printer-escpr-1.1.0
+

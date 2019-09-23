@@ -1,0 +1,532 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b3acb6dca1153d98349830fb4cb79150</srcmd5>
+    <version>1.17</version>
+    <time>1271724281</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-DateTime-TimeZone based on submit request 37708 from user computersalat
+</comment>
+    <requestid>37708</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b3acb6dca1153d98349830fb4cb79150</srcmd5>
+    <version>1.17</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b3acb6dca1153d98349830fb4cb79150</srcmd5>
+    <version>1.17</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1df5f8d1513cd32f00cd06839518c3da</srcmd5>
+    <version>1.19</version>
+    <time>1279651323</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-DateTime-TimeZone based on submit request 43520 from user computersalat
+</comment>
+    <requestid>43520</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>044ec07432503c1783dd0a296f447e06</srcmd5>
+    <version>1.20</version>
+    <time>1281393078</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-DateTime-TimeZone based on submit request 44968 from user computersalat
+</comment>
+    <requestid>44968</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7b70b9d6bbc96c65af111e13b4178cf1</srcmd5>
+    <version>1.20</version>
+    <time>1292241116</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 55709 from user coolo
+</comment>
+    <requestid>55709</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>ddfae2af1ea5534fd278a0913f72c42f</srcmd5>
+    <version>1.20</version>
+    <time>1292241122</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 55709
+</comment>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>ddfae2af1ea5534fd278a0913f72c42f</srcmd5>
+    <version>1.20</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9dfeb6b2ca58b47bc9b08fddd0502de4</srcmd5>
+    <version>1.30</version>
+    <time>1300982436</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65101 from user licensedigger
+</comment>
+    <requestid>65101</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6ee216c1ccbde264d376c3709d8ea76b</srcmd5>
+    <version>1.30</version>
+    <time>1300982448</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65101
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>36ee572d951e97b5f332c65d49a8d3a7</srcmd5>
+    <version>1.31</version>
+    <time>1301914524</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65869 from user coolo
+</comment>
+    <requestid>65869</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a90d5c4b9d9b39d2b45cea03c42791de</srcmd5>
+    <version>1.31</version>
+    <time>1301914538</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65869
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8c525d6c19f854a74d535c3c4622920d</srcmd5>
+    <version>1.34</version>
+    <time>1306840790</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>72086</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>81689054db7dd02a79c998833a024e30</srcmd5>
+    <version>1.35</version>
+    <time>1314882058</time>
+    <user>saschpe</user>
+    <comment>update to 1.35, timezone updates for Russia</comment>
+    <requestid>80455</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d021cce16e6e63550f0d556070d9e4d2</srcmd5>
+    <version>1.40</version>
+    <time>1318428881</time>
+    <user>lrupp</user>
+    <comment>- update to 1.40:
+  This release is based on version 2011l of the Olson database. This release
+  includes contemporary changes for Palestine, Fiji, Russia, Belarus, Ukraine,
+  and several other post-Soviet states.</comment>
+    <requestid>87469</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>d021cce16e6e63550f0d556070d9e4d2</srcmd5>
+    <version>1.40</version>
+    <time>1319182259</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>712bb0570e3af9afe4322b0f6eb2f304</srcmd5>
+    <version>1.41</version>
+    <time>1321460415</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>91037</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e29df51efb6d0e93355bcbec97edc969</srcmd5>
+    <version>1.42</version>
+    <time>1321627595</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>92062</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>20a46e44efa2e9dfacdf88842a9f2782</srcmd5>
+    <version>1.42</version>
+    <time>1323193208</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>1844c6535c0afa09cd4e4563a2fb3e92</srcmd5>
+    <version>1.42</version>
+    <time>1331324725</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>108536</requestid>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>1844c6535c0afa09cd4e4563a2fb3e92</srcmd5>
+    <version>1.42</version>
+    <time>1340183828</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>1844c6535c0afa09cd4e4563a2fb3e92</srcmd5>
+    <version>1.42</version>
+    <time>1359109644</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a0b78079b41caacad6bb268b5c5ad7b5</srcmd5>
+    <version>1.59</version>
+    <time>1370592346</time>
+    <user>coolo</user>
+    <comment>- updated to 1.59
+ - This release is based on version 2013c of the Olson database. This release
+   includes contemporary changes for Palestine and Paraguay. It also includes a
+   number of historical changes. (forwarded request 177338 from coolo)</comment>
+    <requestid>177404</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a60aef2b4267b41d406bb98d9d2e98ff</srcmd5>
+    <version>1.60</version>
+    <time>1373986916</time>
+    <user>coolo</user>
+    <comment>- updated to 1.60
+ - This release is based on version 2013d of the Olson database. This release                                                                                                                                                                
+   includes contemporary changes for Morocco and Israel. It also includes                                                                                                                                                                    
+   historical changes for Jerusalem.</comment>
+    <requestid>183222</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>a60aef2b4267b41d406bb98d9d2e98ff</srcmd5>
+    <version>1.60</version>
+    <time>1379663637</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>fede9ad0c574268878cda5ea8bc2e141</srcmd5>
+    <version>1.62</version>
+    <time>1383565588</time>
+    <user>coolo</user>
+    <comment>- updated to 1.62
+ - This release is based on version 2013f of the Olson database. This release
+   includes contemporary changes for Tocantins, Jordan, and Palestine.
+ - This release is based on version 2013e of the Olson database. This release
+   includes contemporary changes for Fiji, Indonesia and San Luis,
+   Argentina. It also includes a number of historical changes. See
+   http://mm.icann.org/pipermail/tz-announce/2013-September/000013.html for
+   more details.
+- remove outdated old_test_more.patch</comment>
+    <requestid>205488</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>443fa380208f427d921300a856756174</srcmd5>
+    <version>1.63</version>
+    <time>1385723065</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208455</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>faace1e9bbcfd604f6343b19186d0781</srcmd5>
+    <version>1.64</version>
+    <time>1392023845</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 1.64
+ - Under taint mode, DateTime::TimeZone-&gt;new( name =&gt; 'local' ) could die
+   depending on the method used to find the local time zone name. The resulting
+   variable would often be tainted. We now untaint all names before attempting
+   to load them. Reported by Stevie-O. RT #92631.</comment>
+    <requestid>221512</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3704afba842c2f7b120ee0fe9ca57048</srcmd5>
+    <version>1.65</version>
+    <time>1395750328</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>227177</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>6443eb91de8f33e5e1013c2b2b07062f</srcmd5>
+    <version>1.69</version>
+    <time>1401644454</time>
+    <user>coolo</user>
+    <comment>update to version 1.69 (forwarded request 235746 from cyberiad)</comment>
+    <requestid>235747</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>6443eb91de8f33e5e1013c2b2b07062f</srcmd5>
+    <version>1.69</version>
+    <time>1409302251</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>5ee18632a6460a24381dfa04b14b66a6</srcmd5>
+    <version>1.74</version>
+    <time>1410967541</time>
+    <user>coolo</user>
+    <comment>- updated to 1.74
+ - This release is based on version 2014g of the Olson database. This release
+   includes contemporary changes for Turks &amp; Caicos.
+ 
+ - Fixed a bug when trying to get the local timezone by looking at
+   /etc/sysconfig/clock. Patch by Alexey Molchanov. GitHub PR #2.
+ 
+ 
+ 1.73    2014-08-06
+ 
+ - This release is based on version 2014f of the Olson database. This release
+   includes contemporary changes for Russia and Australia.
+ 
+ 
+ 1.72    2014-08-03
+ 
+ - Added support for getting the local time zone on Android. Patch from Brian
+   Fraser. RT #97711.
+ 
+ - The primary repo for this distro is now on GitHub.
+ 
+ 
+ 1.71    2014-06-21
+ 
+ - This release is based on version 2014e of the Olson database. This release
+   includes contemporary changes for Egypt and Morocco.
+ 
+ 
+ 1.70    2014-06-01</comment>
+    <requestid>249347</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c6f9511530360728edc45a78c5817ac6</srcmd5>
+    <version>1.85</version>
+    <time>1423397050</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.85
+ - This release is based on version 2015a of the Olson database. This release
+   includes contemporary changes for Quintana Roo and Chile.
+ 
+ 
+ 1.84    2015-01-17
+ 
+ - Removed the per-OS prereqs on DateTime::TimeZone::HPUX and
+   DateTime::TimeZone::Local::Win32. This gets rid of circular dependencies
+   between those distros and this one. RT #101588, 101589 and 68231.
+ 
+ 
+ 1.83    2014-12-24
+ 
+ - The last release did not include any of the generated zone files. Oops.
+ 
+ - Attempting to fix indexing of DateTime::TimeZone::Catalog on metacpan. No
+   real code or zone changes.
+ 
+ 
+ 1.82    2014-12-24
+ 
+ - Various changes to get tests passing and tools code working with blead. This
+   includes fixing some &quot;Redundant argument in sprintf&quot; warnings that could
+   occur in the DateTime test suite. Reported by Slaven Rezic. RT #10116.
+ 
+ 
+ 1.81    2014-11-21
+ 
+ - Removed tests for Win32 code.</comment>
+    <requestid>284722</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>58d532aebc160b0d723d39286783b09b</srcmd5>
+    <version>1.86</version>
+    <time>1429346362</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297221</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c273633e258f1035e0f9dbc6ac8351f6</srcmd5>
+    <version>1.87</version>
+    <time>1429658356</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298261</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>145ca927276073163c5e008f3efaf9a9</srcmd5>
+    <version>1.88</version>
+    <time>1429963771</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>303920</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>3a662b84443b9cc317ffef3fed3d1a06</srcmd5>
+    <version>1.92</version>
+    <time>1435171962</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313225</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>c2c21ab7510333ba84e8e3673eedc01b</srcmd5>
+    <version>1.93</version>
+    <time>1440658594</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325703</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>fce1a1bf045483dd4749c94636834c10</srcmd5>
+    <version>1.94</version>
+    <time>1445675371</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>340378</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>7b088f4512a65a5149fdde9b63a1bd2d</srcmd5>
+    <version>1.95</version>
+    <time>1456434109</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358292</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>40942f6e36f7886942601168cc79b9e6</srcmd5>
+    <version>1.96</version>
+    <time>1458228964</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update (forwarded request 373758 from coolo)</comment>
+    <requestid>373776</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>23a984cb07bd0480dafb2c63a1f66926</srcmd5>
+    <version>1.97</version>
+    <time>1459422178</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>381105</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>80cea0f798da3d165f2fc831f202cb5f</srcmd5>
+    <version>1.98</version>
+    <time>1464204578</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397865</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>74b71919fefe0321ba30c51fd8d6be99</srcmd5>
+    <version>2.00</version>
+    <time>1466326076</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401452</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>3cd3255aa9886fb35f816f1f8ce5bfa8</srcmd5>
+    <version>2.01</version>
+    <time>1468869923</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411687</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>a7d67651e9ae2abb267e1f8222e01ca8</srcmd5>
+    <version>2.13</version>
+    <time>1497016679</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502478</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>780c009873c4afe918db55e2925e75fe</srcmd5>
+    <version>2.14</version>
+    <time>1509530799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537509</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>f9fe293564225fc8640d6be6929ce7bc</srcmd5>
+    <version>2.15</version>
+    <time>1510505794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539954</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>3dad72ec60a44edd1f7f54273e5ead6c</srcmd5>
+    <version>2.17</version>
+    <time>1518281643</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573783</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>1736a49b9a3df6bf9324663ea3f41f2a</srcmd5>
+    <version>2.18</version>
+    <time>1522317155</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591109</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>fbc8d80a697de27f9d1ed2071605f720</srcmd5>
+    <version>2.19</version>
+    <time>1526462604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606952</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>c3541c5df303e50bed0b83ad0a9dc085</srcmd5>
+    <version>2.21</version>
+    <time>1541666446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645098</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>e6a8a086e22e39f374f2730773dc317e</srcmd5>
+    <version>2.23</version>
+    <time>1546695672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662620</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>658b9905d7273df93c1551ca8d76df92</srcmd5>
+    <version>2.34</version>
+    <time>1553809543</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689106</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>c6b4aeb0338236e4c3c0659d18a4fc14</srcmd5>
+    <version>2.35</version>
+    <time>1556023281</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696579</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>2d6318cc0527816903bbaed05e31b7a0</srcmd5>
+    <version>2.36</version>
+    <time>1564136617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715930</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>117cc4e0a4a745123ff4f2fc46395165</srcmd5>
+    <version>2.37</version>
+    <time>1569232826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>730312</requestid>
+  </revision>
+</revisionlist>

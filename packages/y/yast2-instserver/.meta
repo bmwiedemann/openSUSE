@@ -1,0 +1,7 @@
+<package name="yast2-instserver" project="openSUSE:Factory">
+  <title>YaST2 - Installation Server Configuration and Management</title>
+  <description>This package allows you to configure an installation server suitable
+for installaing SUSE Linux over the network. Currently FTP, HTTP and
+NFS sources are supported.</description>
+  <devel project="YaST:Head" package="yast2-instserver"/>
+</package>

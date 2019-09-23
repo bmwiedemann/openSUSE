@@ -1,0 +1,11 @@
+--- a/src/lib/lttng-ctl/lttng-ctl.pc.in
++++ b/src/lib/lttng-ctl/lttng-ctl.pc.in
+@@ -7,7 +7,7 @@ Name: LTTng control library
+ Description: The LTTng control and utility library is a library used to control the tracing sessions of a LTTng-session daemon
+ Version: @PACKAGE_VERSION@
+ Requires:
+-Requires.private:
++Requires.private: liburcu liburcu-cds
+ Libs: -L${libdir} -llttng-ctl
+ Cflags: -I${includedir}
+ 

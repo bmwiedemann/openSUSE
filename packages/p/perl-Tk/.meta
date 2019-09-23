@@ -1,0 +1,6 @@
+<package name="perl-Tk" project="openSUSE:Factory">
+  <title>Perl Tk</title>
+  <description>Perl Tk is an enhancement for Perl. It combines the well structured
+graphical library Tk with the powerful scripting language Perl.</description>
+  <devel project="devel:languages:perl" package="perl-Tk"/>
+</package>

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>967c039551046415719cf87fced3231c</srcmd5>
+    <version>2.0.9</version>
+    <time>1553635843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682888</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8c6c8618467a0d4ef9b9e59db796d112</srcmd5>
+    <version>2.0.9</version>
+    <time>1556622141</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix filelist. (forwarded request 697555 from hillwood)</comment>
+    <requestid>697659</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>689a8ffc757d1ead49757a1c01eed47a</srcmd5>
+    <version>2.0.11</version>
+    <time>1563701728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717232</requestid>
+  </revision>
+</revisionlist>

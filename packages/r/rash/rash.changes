@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Fri Apr  5 11:58:50 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Fix build due missed new racket-doc package
+
+-------------------------------------------------------------------
+Thu Apr  4 20:41:20 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use contemporary tar invocation syntax.
+- Avoid double tar when a simple cp works equally.
+- Use faster find -delete.
+
+-------------------------------------------------------------------
+Thu Mar 28 10:34:31 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Compile launcher with optflags 
+
+-------------------------------------------------------------------
+Wed Mar 27 12:48:51 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Initial package of rash, The Reckless rAcket SHell, version 0.2
+  a shell based on the scheme Racket interpreter
+

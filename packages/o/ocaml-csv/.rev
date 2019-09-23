@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e4822289f5505bb7cb0f1013e476d53f</srcmd5>
+    <version>1.5</version>
+    <time>1476874777</time>
+    <user>dimstar_suse</user>
+    <comment>fate#320836</comment>
+    <requestid>414555</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c4ee5995165c8ab65139f71d48bc749d</srcmd5>
+    <version>1.7</version>
+    <time>1503593588</time>
+    <user>dimstar_suse</user>
+    <comment>- Use Group: Development/Languages/OCaml
+
+- Update to 1.7
+  Option to automatically try to fix bad CSV files.
+  Option for force quoting on output.
+  Possibility to set one's own header after reading some rows of the file.
+  Defense against using \n and \r as separators.
+  csvtool can call bash functions (do not go through /bin/sh).
+
+- Wrap specfile conditionals to fix quilt setup
+
+- Remove autodeps for pre openSUSE 12.1 releases</comment>
+    <requestid>517014</requestid>
+  </revision>
+</revisionlist>

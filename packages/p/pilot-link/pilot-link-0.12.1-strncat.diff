@@ -1,0 +1,11 @@
+--- src/pilot-memos.c
++++ src/pilot-memos.c
+@@ -111,7 +111,7 @@
+ 	mkdir(dirname, 0700);
+ 
+ 	/* Create a directory for the category */
+-	strncat(pathbuffer, dirname, MAXDIRNAMELEN);
++	strncat(pathbuffer, dirname, MAXDIRNAMELEN-2);
+ 	strncat(pathbuffer, "/", 1);
+ 
+ 	/* Should make sure category doesn't have slashes in it */

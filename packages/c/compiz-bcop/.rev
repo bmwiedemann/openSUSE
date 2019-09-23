@@ -1,0 +1,184 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>12b174e15d77bc214a0bd48011f6153f</srcmd5>
+    <version>0.1.4</version>
+    <time>1186626466</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>d3dcf2d70aac80096b707652a8a94d97</srcmd5>
+    <version>0.1.4</version>
+    <time>1186676553</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8f39171de91c3d7e49651a2ba48f9428</srcmd5>
+    <version>0.5.2_git070824</version>
+    <time>1188230853</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>99c92214726049a0e5553dacf70d7aaf</srcmd5>
+    <version>0.7.2</version>
+    <time>1205172243</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>898642b195d1ac2389eb86e5171618a4</srcmd5>
+    <version>0.7.4</version>
+    <time>1208203249</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d53b8bd9a9a3b8ef60eb2895d73e6734</srcmd5>
+    <version>0.7.6</version>
+    <time>1214939941</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>51bde24d182afcfa2feb2445b935158c</srcmd5>
+    <version>0.7.8</version>
+    <time>1222702324</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>51bde24d182afcfa2feb2445b935158c</srcmd5>
+    <version>0.7.8</version>
+    <time>1222702324</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5f24c4674ef07896d5590004975d7b36</srcmd5>
+    <version>0.8.4</version>
+    <time>1259158117</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz-bcop based on submit request 24931 from user dimstar
+</comment>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f5cf62f8947a97192bfb630d26bebc5e</srcmd5>
+    <version>0.8.4</version>
+    <time>1268923226</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>f5cf62f8947a97192bfb630d26bebc5e</srcmd5>
+    <version>0.8.4</version>
+    <time>1278667340</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>f5cf62f8947a97192bfb630d26bebc5e</srcmd5>
+    <version>0.8.4</version>
+    <time>1278678568</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>f5cf62f8947a97192bfb630d26bebc5e</srcmd5>
+    <version>0.8.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>692225cbdcb22a03d09c4404ee394590</srcmd5>
+    <version>0.8.4</version>
+    <time>1316695624</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 83122 from jengelh)</comment>
+    <requestid>84454</requestid>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>692225cbdcb22a03d09c4404ee394590</srcmd5>
+    <version>0.8.4</version>
+    <time>1319181820</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ecf1329db9d8a730ac5c389be53b98e3</srcmd5>
+    <version>0.8.8</version>
+    <time>1329221094</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103880</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>09aa8bb50da8fa1b5c18e7d97bc7be65</srcmd5>
+    <version>0.8.8</version>
+    <time>1331324526</time>
+    <user>coolo</user>
+    <comment>- patch license to follow spdx.org standard</comment>
+    <requestid>108547</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>09aa8bb50da8fa1b5c18e7d97bc7be65</srcmd5>
+    <version>0.8.8</version>
+    <time>1340183246</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>09aa8bb50da8fa1b5c18e7d97bc7be65</srcmd5>
+    <version>0.8.8</version>
+    <time>1359108764</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>09aa8bb50da8fa1b5c18e7d97bc7be65</srcmd5>
+    <version>0.8.8</version>
+    <time>1379662141</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>09aa8bb50da8fa1b5c18e7d97bc7be65</srcmd5>
+    <version>0.8.8</version>
+    <time>1409300669</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1eb77905059436b1882f040a76f9685a</srcmd5>
+    <version>0.8.9</version>
+    <time>1447234283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>343258</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>e0fb379d580a4c35efec08a870f7eb7b</srcmd5>
+    <version>0.8.9</version>
+    <time>1450856984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>349447</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>49e723fb3b80a7dbaa1786138db3a90b</srcmd5>
+    <version>0.8.12</version>
+    <time>1456434187</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>360620</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>df46d09030609539de65f86055a18a24</srcmd5>
+    <version>0.8.14</version>
+    <time>1493020092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>489081</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>405bc2fb884745cc2c5b96266afb8879</srcmd5>
+    <version>0.8.16</version>
+    <time>1543223916</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.16.</comment>
+    <requestid>648270</requestid>
+  </revision>
+</revisionlist>

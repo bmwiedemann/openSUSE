@@ -1,0 +1,47 @@
+Comment explanatory parts
+
+diff -ur a/src/branding/default/show.qml b/src/branding/default/show.qml
+--- a/src/branding/default/show.qml
++++ b/src/branding/default/show.qml
+@@ -22,14 +22,14 @@
+ Presentation
+ {
+     id: presentation
+-
++/* Uncomment to enable multiple slides
+     Timer {
+         interval: 5000
+         running: false
+         repeat: true
+         onTriggered: presentation.goToNextSlide()
+     }
+-    
++ */   
+     Slide {
+ 
+         Image {
+@@ -39,6 +39,7 @@
+             fillMode: Image.PreserveAspectFit
+             anchors.centerIn: parent
+         }
++/* Uncomment to show some text
+         Text {
+             anchors.horizontalCenter: background.horizontalCenter
+             anchors.top: background.bottom
+@@ -51,8 +52,9 @@
+             width: root.width
+             horizontalAlignment: Text.Center
+         }
++ */
+     }
+-
++/* Uncomment to enable multiple slides
+     Slide {
+         centeredText: "This is a second Slide element."
+     }
+@@ -60,4 +62,5 @@
+     Slide {
+         centeredText: "This is a third Slide element."
+     }
++ */
+ }

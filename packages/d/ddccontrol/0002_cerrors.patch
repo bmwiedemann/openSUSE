@@ -1,0 +1,22 @@
+Description: Fix compilations errors caused by enabling hardening flags.
+Author: Barry deFreese <bdefreese@debian.org>
+Index: ddccontrol-0.4.2/src/lib/conf.c
+===================================================================
+--- ddccontrol-0.4.2.orig/src/lib/conf.c	2006-06-15 12:45:19.000000000 -0400
++++ ddccontrol-0.4.2/src/lib/conf.c	2013-07-01 17:37:02.000000000 -0400
+@@ -192,13 +192,13 @@
+ 		rc = xmlTextWriterStartElement(writer, BAD_CAST "monitor");
+ 		DDCCI_RETURN_IF_RUN(rc < 0, 0, "xmlTextWriterStartElement monitor\n", {xmlFreeTextWriter(writer);})
+ 
+-		rc = xmlTextWriterWriteFormatAttribute(writer, BAD_CAST "filename", current->filename);
++		rc = xmlTextWriterWriteFormatAttribute(writer, BAD_CAST "filename", "%s", current->filename);
+ 		DDCCI_RETURN_IF_RUN(rc < 0, 0, "xmlTextWriterWriteFormatAttribute filename\n", {xmlFreeTextWriter(writer);})
+ 
+ 		rc = xmlTextWriterWriteFormatAttribute(writer, BAD_CAST "supported", "%d", current->supported);
+ 		DDCCI_RETURN_IF_RUN(rc < 0, 0, "xmlTextWriterWriteFormatAttribute supported\n", {xmlFreeTextWriter(writer);})
+ 
+-		rc = xmlTextWriterWriteFormatAttribute(writer, BAD_CAST "name", current->name);
++		rc = xmlTextWriterWriteFormatAttribute(writer, BAD_CAST "name", "%s", current->name);
+ 		DDCCI_RETURN_IF_RUN(rc < 0, 0, "xmlTextWriterWriteFormatAttribute name\n", {xmlFreeTextWriter(writer);})
+ 
+ 		rc = xmlTextWriterWriteFormatAttribute(writer, BAD_CAST "digital", "%d", current->digital);

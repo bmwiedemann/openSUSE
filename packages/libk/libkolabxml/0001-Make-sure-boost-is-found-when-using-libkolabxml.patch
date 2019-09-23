@@ -1,0 +1,83 @@
+From 0e17f04ef1f00c14a5f33c898f7d848823b17a67 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Tue, 17 Sep 2019 18:19:59 +0200
+Subject: [PATCH] Make sure boost is found when using libkolabxml
+
+Boost is a public dependency, it must be found before using libkolabxml.
+
+In order to use find_dependency(), the minimum CMake version is raised to 3.0.
+Obsolete CMake checks were consequently removed.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b67f765..349aea6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,9 +1,6 @@
+-# The special language NONE is not available in cmake 2.6
+-if(${CMAKE_MAJOR_VERSION} EQUAL 2 AND ${CMAKE_MINOR_VERSION} GREATER 6)
+-    project(Libkolabxml NONE)
+-else()
+-    project(Libkolabxml C)
+-endif()
++cmake_minimum_required(VERSION 3.0)
++
++project(Libkolabxml NONE)
+ 
+ cmake_minimum_required(VERSION 2.6)
+ 
+@@ -21,17 +18,6 @@ option( QT5_BUILD "Build libkolabxml using the Qt5 framework" FALSE)
+ set(Libkolabxml_MODULE_DIR ${Libkolabxml_SOURCE_DIR}/cmake/modules)
+ set(CMAKE_MODULE_PATH ${Libkolabxml_MODULE_DIR})
+ 
+-# only available from cmake-2.8.0
+-if(${CMAKE_MAJOR_VERSION} EQUAL 2 AND ${CMAKE_MINOR_VERSION} GREATER 7)
+-    cmake_policy(SET CMP0012 NEW)
+-endif()
+-
+-# only available from cmake-2.8.4
+-if(${CMAKE_MAJOR_VERSION} EQUAL 2 AND ${CMAKE_MINOR_VERSION} GREATER 7 AND
+-    ${CMAKE_PATCH_VERSION} GREATER 3)
+-    cmake_policy(SET CMP0017 NEW)
+-endif()
+-
+ # Versioning
+ # x.y.z scheme
+ # Development versions are only x.y
+@@ -93,7 +79,7 @@ endforeach()
+ configure_file(libkolabxml-version.h.cmake "${CMAKE_BINARY_DIR}/libkolabxml-version.h" @ONLY)
+ 
+ set(Boost_USE_MULTITHREADED ON)
+-find_package(Boost REQUIRED COMPONENTS thread system)
++find_package(Boost MODULE REQUIRED COMPONENTS thread system)
+ if (Boost_FOUND)
+     message("Found boost in ${Boost_INCLUDE_DIRS}")
+ endif (Boost_FOUND)
+diff --git a/cmake/modules/LibkolabxmlConfig.cmake.in b/cmake/modules/LibkolabxmlConfig.cmake.in
+index 8f04f36..6806e06 100644
+--- a/cmake/modules/LibkolabxmlConfig.cmake.in
++++ b/cmake/modules/LibkolabxmlConfig.cmake.in
+@@ -1,5 +1,9 @@
+ get_filename_component(Libkolabxml_CMAKE_DIR ${CMAKE_CURRENT_LIST_FILE} PATH) #get the directory where this *Config.cmake file is installed 
+ 
++include(CMakeFindDependencyMacro)
++
++find_dependency(Boost "@Boost_MAJOR_VERSION@.@Boost_MINOR_VERSION@" MODULE COMPONENTS thread system)
++
+ # set the version
+ set(Libkolabxml_VERSION_MAJOR @Libkolabxml_VERSION_MAJOR@)
+ set(Libkolabxml_VERSION_MINOR @Libkolabxml_VERSION_MINOR@)
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 9abacdf..837f755 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -9,10 +9,6 @@ if(QT5_BUILD)
+ 
+   include_directories(${QT_INCLUDES}) # TODO: Port away from this.
+ 
+-  if(CMAKE_VERSION VERSION_LESS 2.8.9)
+-    message(FATAL_ERROR "Akonadi Qt 5 build requires at least CMake version 2.8.9")
+-  endif()
+-
+   if (Qt5_POSITION_INDEPENDENT_CODE)
+     set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+   endif()

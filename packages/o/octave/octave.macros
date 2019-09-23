@@ -1,0 +1,58 @@
+#
+# Macros for Octave
+#
+%octave \
+    %{_bindir}/octave --no-gui --no-window-system --norc --no-history --quiet
+
+# Octave API
+%octave_api \
+    %(octave-config -p API_VERSION || echo 0)
+
+# Octave directories
+%octpackages_dir %{_datadir}/octave/packages
+%octlib_dir %{_libdir}/octave/packages
+%octsysw_settings %{_datadir}/octave/site/m/startup/octaverc
+
+# Octave package source preparation
+%octave_pkg_src \
+    directory=`ls -d *` \
+    if [ "$directory" != "%{octpkg}-%{version}" ]; then \
+      mv $directory %{octpkg}-%{version} \
+    fi \
+    tar czf %{octpkg}-%{version}.tar.gz %{octpkg}-%{version}
+
+# Octave package build
+%octave_pkg_build \
+    %octave --eval "pkg build -nodeps -verbose . %{octpkg}-%{version}.tar.gz"
+
+# Octave package installation
+%octave_pkg_install \
+    mkdir -p %{buildroot}%{octpackages_dir} \
+    mkdir -p %{buildroot}%{octlib_dir} \
+    %octave --eval "pkg prefix %{buildroot}%{octpackages_dir} %{buildroot}%{octlib_dir}; pkg install -nodeps %{octpkg}-%{version}.tar.gz" \
+    rm -f %{buildroot}%{octpackages_dir}/%{octpkg}-%{version}/packinfo/.autoload
+
+# Octave package tests
+%octskiptests .*fetch.*|ga|csape|tbl(read|write)|princomp
+
+%octave_pkg_test \
+    for fpath in $(find %{octpkg}-%{version} -name '*.m') ; do \
+      filename="${fpath##*/}" ; \
+      basename="${filename%.m}" ; \
+      if grep -q '^%\! *test' $fpath ; then \
+        if echo $basename | grep -q -v -E '^(%{octskiptests})$' ; then \
+          %octave --eval "test $basename" | ( grep test || : ) > test.log ; \
+          if grep -s 'test *failed' test.log ; then \
+            echo "Failed tests for %{octpkg}-%{version}" ; \
+            cat test.log ; \
+            false ; \
+          else \
+            grep -i test test.log || true \
+           true ; \
+          fi ; \
+        fi ; \
+      fi ; \
+    done
+
+# Octave build parameters
+%octave_blas OCTAVE_BLAS_LIBRARY_NAME

@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Thu Aug 22 19:41:51 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.0.1
+  * This release rewrites the file writing code such that ownership
+    and permissions are never accidentally changed.
+
+-------------------------------------------------------------------
+Mon Jan  7 15:48:49 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.0.0
+  * Files can be opened at a specific position, by appending line
+    (and column) number(s). This allows jumping to positions
+    indicated by programs processing text files such as
+    compilers.
+  * Allow changing the default interface attributes from the
+    Interface Options dialog.
+  * Allow writing files if the directory they are in is not
+    writable for the current user. This is ever so slightly more
+    risky than creating a temporary file and moving it over the
+    existing one, which is the default behavior.
+  * Add menu items for the new Paste Selection (which pastes the
+    X11 primary selection) and for the new Delete Line actions.
+  * Make it possible to disable claiming the primary selection,
+    and to automatically disable this when running over SSH. When
+    running over SSH on high-latency connections and while
+    running a clipboard manager locally, the primary selection
+    claiming can make Tilde work slowly.
+  * Rewrite files in place if the owner of the file would be
+    changed by creating the file anew. This is a short-term
+    solution for fixing accidental ownership changes due to the
+    scheme used by Tilde to prevent file corruptions.
+  * Guard against off-of-line cursor positions in finding next
+    brace. This could cause infinite loops in some cases.
+  * A new dialog is available that shows the codepoints under the
+    cursor.
+  * Allow Private-Use Area characters in input and output without
+    substituion.
+
+-------------------------------------------------------------------
+Mon Aug  7 19:00:36 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 0.3.7
+  * Resolve crashes that happened on program exit
+  * Add a "toggle comment" functionality.
+  * Several problems with syntax highlighting were fixed.
+
+-------------------------------------------------------------------
+Thu Feb 19 19:20:25 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.3.4
+  * Re-release of version 0.3.4 to update the configure script.
+
+-------------------------------------------------------------------
+Mon Jul 21 19:13:05 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.3.3
+* This release correctly handle errors in conversion when loading
+  files. When the converter failed in unexpected ways, Tilde would
+  previously crash.
+* Added warnings about trying to overwrite a read-only file,
+  improved the warnings about encoding issues when saving and fixed
+  the setting of the comment-keyword style.
+
+-------------------------------------------------------------------
+Mon Jun 10 13:37:10 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 0.3.0) for build.opensuse.org

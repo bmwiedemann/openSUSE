@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2f350dea8064bfc98ef942b4b92ccdea</srcmd5>
+    <version>1.1.1</version>
+    <time>1550151153</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %license
+- Remove %bcond test
+- Remove unnecesssary python-devel
+- Ignore known failing test
+- Trim description as the project is not actively maintained
+  so fixes for Python 2.6 and lower are very unlikely to be
+  accepted.
+- Initial version v1.1.1
+</comment>
+    <requestid>674424</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7a85fd02326e6e37f9cf79a8d5312652</srcmd5>
+    <version>1.1.1</version>
+    <time>1551216036</time>
+    <user>dimstar_suse</user>
+    <comment>- Use noun phrase in summary.
+</comment>
+    <requestid>679047</requestid>
+  </revision>
+</revisionlist>

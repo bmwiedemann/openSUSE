@@ -1,0 +1,13 @@
+Index: gnome-screenshot-3.30.0+47/src/org.gnome.Screenshot.desktop.in
+===================================================================
+--- gnome-screenshot-3.30.0+47.orig/src/org.gnome.Screenshot.desktop.in	2019-03-03 11:42:31.000000000 +0100
++++ gnome-screenshot-3.30.0+47/src/org.gnome.Screenshot.desktop.in	2019-03-08 12:42:35.632898945 +0100
+@@ -10,7 +10,7 @@ Type=Application
+ Icon=org.gnome.Screenshot
+ StartupNotify=true
+ Categories=GTK;GNOME;Utility;X-GNOME-Utilities;
+-NotShowIn=KDE;
++OnlyShowIn=GNOME;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=gnome-utils
+ X-GNOME-Bugzilla-Component=screenshot

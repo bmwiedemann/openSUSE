@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Mon Mar  3 14:07:32 CET 2014 - tiwai@suse.de
+
+- Run spec-cleaner
+- Remove obsoleted autoreq/autoprov tags
+
+-------------------------------------------------------------------
+Wed Feb 26 11:02:48 CET 2014 - tiwai@suse.de
+
+- correct the licesne to GPL-2.0+
+
+-------------------------------------------------------------------
+Mon Dec 16 14:36:20 CET 2013 - tiwai@suse.de
+
+- Initial version 0.7.1: split from ladspa package
+- Patch carried from the original ladspa package:
+  tap-type-punning-fix.dif
+

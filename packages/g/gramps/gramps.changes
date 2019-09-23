@@ -1,0 +1,1269 @@
+-------------------------------------------------------------------
+Sun Sep 15 13:25:34 UTC 2019 - Sebastian Schubert <schubert.seb@gmail.com>
+
+- Update to version 5.1.1:
+  + Disable development warning message
+  + Add options to sandclock in tree document generator
+  + Using regex in the sidebar gives different result from previous
+    gramps release
+  + Fix odt output when db owner has XML unfriendly chars
+  + Update README
+  + Bump required Python version to 3.3
+  + Add optional fontconfig package
+  + Fix CLI crash when generating reports
+  + Fix Statusbar HandleError on merge families
+  + Fix missing tooltip translations in the Note editor toolbar
+  + Fix bugs in withinarea filter rule
+  + Avoid bad coordinates in the ref place
+  + Avoid alphabetic characters in filter rules
+  + Could not convert string to float by using withinarea filter
+    rule
+  + Difference between sidebar filter and filter rule
+  + Fix Graph outputs for multiple page PDF Postscript
+  + Fix to make Gtk 'action names' always valid
+  + Fix missing menus/buttons when operating in non-English
+    languages
+  + Fix cursor position error in lat and long fields
+  + Avoid all characters looking like a dash in 'Clean input data'
+    tool
+  + Mainz Style sheet weird looking
+  + Fix bugs in relationship view
+  + Set symbols for the active person
+  + Set good symbols for marriage, baptism, cremation and burial
+  + Reduce the size of the sexuality symbol
+  + Fix exception when editing Note with italics/bold etc. in non
+    English
+  + Restore keybindings for gramplet bars
+  + Fix bug in web connection menu launching incorrect web site
+  + Fix translation problem when creating event filter
+  + Error when checking option to add Quit to Taskbar
+  + Make the narratives notes placement an optional
+  + Updated translations.
+- Drop gramps-5.1.0-remove_false_nonrelease_warning.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Sun Aug 25 06:19:50 UTC 2019 - Sebastian Schubert <schubert.seb@gmail.com>
+
+- Add gramps-5.1.0-remove_false_nonrelease_warning.patch: Remove
+  false non-release warning that upstream forgot to remove in
+  5.1.0:
+  https://gramps-project.org/bugs/view.php?id=11274
+  Here, the simple fix of
+  https://github.com/gramps-project/gramps/pull/876#issuecomment-524582815
+  is applied. Likely not required in newer versions:
+  https://github.com/gramps-project/gramps/pull/872
+
+-------------------------------------------------------------------
+Thu Aug 22 07:30:23 UTC 2019 - Sebastian Schubert <schubert.seb@gmail.com>
+
+- Update to version 5.1.0, a maintenance release. Full changelog
+  available at
+  https://github.com/gramps-project/gramps/releases/tag/v5.1.0
+- Add comment about currently missing optional python3-fontconfig
+  dependency.
+
+-------------------------------------------------------------------
+Fri Jan 18 14:00:52 UTC 2019 - schubert.seb@gmail.com
+
+- Recommend python3-PyICU on all systems, not only Leap 42.3. It is
+  available and enhances gramps on all supported platforms.
+
+-------------------------------------------------------------------
+Sat Dec 22 10:27:20 UTC 2018 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 5.0.1, a maintenance release. Full changelog
+  available at
+  https://gramps-project.org/introduction-WP/2018/12/gramps-5-0-1-released/
+
+-------------------------------------------------------------------
+Mon Jul 30 08:30:39 UTC 2018 - schubert.seb@gmail.com
+
+- Add recommended packages for optional Gramps features:
+  + ghostscript: used by Graphviz reports
+  + python3-Pillow: crop images and image conversion
+- Add suggested packages for common third-party addon dependencies:
+  + typelib-1_0-GooCanvas-2_0: required by Graph View
+  + python3-networkx, python3-pygraphviz: required by Network Chart
+  + python3-numpy: used by PedigreeChart
+  
+-------------------------------------------------------------------
+Sat Jul 28 10:03:04 UTC 2018 - schubert.seb@gmail.com
+
+- Update to version 5.0.0:
+  + Various fixes and improvements.
+  + Updated translations.
+- Update gramps-no-translations-check.patch.
+- Drop webcal.py.diff: merged upstream.
+
+-------------------------------------------------------------------
+Mon Jun 11 19:46:07 UTC 2018 - bjorn.lie@gmail.com
+
+- Add typelib(GConf) to global requires exclude: Avoid pulling in
+  optional gconf typelib Requires.
+
+-------------------------------------------------------------------
+Wed Feb 28 19:23:14 UTC 2018 - dimstar@opensuse.org
+
+- Add python3-gobject-Gdk: missed dependency (boo#1082469).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:31:13 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat Feb 10 11:40:15 UTC 2018 - schubert.seb@gmail.com
+
+- Updated to version 4.2.8:
+  + Fix Geography views for bad 'dbstate.is_open()' test.
+- Changes from version 4.2.7:
+  + Fix Export View to CSV when Unicode characters are present.
+  + Fix several intl date displayers for missing parameter.
+  + DescendantTree report; fix crashes and Title spacing.
+  + Fix Book XML handler to deal with unusual characters in Book
+    name.
+  + Add support for new genealogy tree report category.
+  + Fix Media Preview Gramplet for closed db.
+  + Suport FTM 2017 Gedcom tags on import.
+  + Fix Person, Family Sidebar Filters to add custom Event types.
+  + Fix QuestionDialog display for html like characters in title.
+  + Fix FamilyRelationshpType _DATAMAP order to correspond with
+    values.
+  + Fix Gedcom import for illegal Gedcom Family Attributes.
+  + Fix Gedcom export for bad Hebrew Months.
+  + Change INSTALL to replace 'python' with 'python3 for script
+    invokes.
+  + Fix CSV importer for place event name using gramps_id.
+  + Fix Geography view 'Find' when db is closed.
+  + Fix interactive search for exception on click then down arrow.
+  + Create where_is utility to locate a binary in the standard
+    places.
+  + Fix relationship Graph so Unicode chars on Multiple pages
+    works.
+  + Update authors file.
+  + Fix Gedcom import for "1 MARR Y" issue.
+  + Fix Export Web Family Tree for errors on file write.
+  + Fix Citation Editor to Tab out of Confidence ComboBox.
+  + Reset the dependencies on the new meta-module.
+  + Use online modules.
+  + Consolidate Python2 and Python3 meta-modules.
+  + Use None as the foreground colour for untagged rows in list
+    views.
+  + Fix shading colour in relationship view for dark themes.
+  + Fix link colour for dark themes.
+  + Fix default foreground colour in list views for dark themes.
+  + Fix Undo; crashes due to race in Gtk.
+  + Gedcom import with OBJE/FORM URL on event.
+  + EOFError [Ran out of input] in Clipboard.
+  + Cannot drag & drop textual value via clipboard.
+  + Fix 'DbBsddbRead' object has no attribute
+    '_Callback__callback_map'.
+  + Reports - Narrated Web Site Failure.
+  + Fix link path in gramps-launcher compile instructions.
+  + Update translations.
+
+-------------------------------------------------------------------
+Tue Aug  1 12:53:35 UTC 2017 - schubert.seb@gmail.com
+
+- Recommend python3-PyICU with openSUSE Leap 42.3.
+
+-------------------------------------------------------------------
+Tue Aug  1 11:59:12 UTC 2017 - schubert.seb@gmail.com
+
+- Updated to version 4.2.6:
+  + The configparser is assuming the wrong enco.
+  + Fix HasCitation rule in citation filter sidebar.
+  + Fix use of regular expressions.
+  + Date Editor had 'Type' and 'Quality' labels swapped.
+  + Fix FamilyGroup Report.
+  + Fix names not displayed in relationship graph.
+  + Fix outdated Bugtracker link in reporting wizard.
+  + Fix replacements in Ancestor tree.
+  + Fix Default Browser Setting.
+  + Fix linking place on OpenStreetMap view.
+  + Fix Family Lines Report having unescaped characters.
+  + Fix non-local character in DB name (Windows OS).
+  + Fix checking for "event.string" in "treeview_keypress".
+  + Fix invalid February 29th date in Julian dual-dated.
+  + Fix Note on CIR when it is attached to a (preferred or
+    alternative) name through the names dialog.
+  + Improve time loading for person selector in census forms.
+  + Fix incorrect SoundEx result.
+  + Fix Error printing on ancestor tree graphical report.
+  + Fix custom filter creation with 'Events occurring on a
+    particular day of the week'.
+  + Bug in the Name Editor / Group As.
+  + Gramps CSV export of Places did not generate correct Title.
+  + Add custom Family Relations not shown in the filter siderbar.
+  + Fix non-textual value on Tag report.
+  + Fix 'interface.dont-ask' config key ignored on Note edition.
+  + Fix Reorder Relationships dialog.
+  + Shrink size of Break Lock (and other QuestionDialogs).
+  + Only selection of Active or Home person if commited.
+  + Fix quick search exception when nothing in searched list.
+  + Fix problem adding parents.
+  + Fix bookmarks keybinding on Mac OS.
+  + Fix failure to load default gramplets if GExiv2 is missing or
+    too old.
+  + Update API doc for place displayer.
+  + Add datestrings to Turkish translation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Dec 17 14:03:17 UTC 2016 - schubert.seb@gmail.com
+
+- Updated to version 4.2.5:
+  + The configparser is assuming the wrong encoding.
+  + Sorting in family tab of narrated web report.
+  + Silence remaining PyGIWarning.
+  + Sorting of relationships in family tab of narrated web report.
+  + Use latest valid date rather than today.
+  + Modify endonym handling in place displayer.
+  + Fix house number concatenation.
+  + Allow merging of families with one or more parents in common.
+  + Jump to Gramps ID functionality doesn't work.
+  + Ability to search alternate place names when selecting place.
+  + Fix clear map action on Geography.
+  + Database repair tool always edit all source objects.
+  + Database repair tool ignored some objects with tag.
+  + "Enclosing" gramplet includes places outside valid date
+    ranges.
+  + Fix icon and tooltip in LDS editor.
+  + CSV import fails.
+  + Fix duplicated Gramps IDs on Gedcom import.
+  + Unexpected error Preferences > Dates > Markup for invalid date
+    format.
+  + Fix Import Vcard, can create multiple surnames with all
+    selected as 'Primary'.
+  + Fix Gedcom import in some alternate languages; improper date
+    parsing.
+  + Export options 'Preview' buttons create hidden quickreport.
+  + Alignment radio buttons in the style editor do not work.
+  + Select Place search & Source/Citation hierarchy should NOT be
+    expanded.
+  + Tweak improvement on Tag editor.
+  + Support for Windows Python3 pythonw.exe.
+  + Wrong parsing Numeric date format for cs_CZ locale.
+  + Fix Icelandic and German translations.
+  + Fix Norwegian relationship calculator.
+  + Update translations.
+
+-------------------------------------------------------------------
+Mon Sep  5 20:46:05 UTC 2016 - schubert.seb@gmail.com
+
+- Updated to version 4.2.4 (boo#1011888):
+  + fixes for the PHON, FAX, EMAIL and WWW Gedcom tags to support
+    Gedcom v5.5.1.
+  + use more relative import.
+  + Support for FTM and others Custom Gedcom Event Tags on import.
+  + fix '_deeprelationshippath' filter rule.
+  + Narrativeweb: some dates are incorrect in tar archive.
+  + MacOS: Update graphviz to 2.38 and change to a binary launcher
+    in app bundles.
+  + Gramps crashes when closed while exporting.
+  + Some events are not shown in familymaps page.
+  + Remove old debug bloc on place selection.
+  + Add GUI and CLI config option to allow easy setting.
+  + Chinese characters are not rendered properly in pdf reports.
+  + Support v5.5.1 OBJE/FORM/MEDI tag on embedded OBJE.
+  + Sorting of Sources on gedcom.
+  + Change "class xxx(object)" to "class xxx".
+  + Use "with open" instead of "try: except:".
+  + Change "raise NotImplemented" to "raise NotImplementedError()".
+  + Add new argument to IsEnclosedByRule.
+  + Narrativeweb: place title must agree the references.place-auto
+    configuration.
+  + Improvements on CSV file format support.
+  + update Finnish holidays.
+  + Some strings in tools and report dialogs will not translate.
+  + Gedcom import improvements in media area to support v5.5.1 and
+    FTM
+  + Trailing whitespace.
+  + Gedcom import of FTM .ged file containing _LINK tags not
+    supported.
+  + Change pycairo-python3 to pycairo.
+  + pycairo for python2 is now py2cairo.
+  + Remove pango modules from bundle, pango no longer uses them.
+  + Gedcom import loses spaces in text fields from FTM.
+  + Gedcom import of FTM file containing _PHOTO tags.
+  + Missed self.photo initializer.
+  + Attempting to select an "Available item" for the Book Report
+    gives an error.
+  + Fix for either valid or invalid FTM Gedcom.
+  + Gedcom import of FTM file with OCCU record crashes import.
+  + crash - 'NoneType' object has no attribute.
+    'get_child_ref_list'
+  + Family Page maps are non-functional in Narrative Web report.
+  + Gedcom import loses spaces in text fields from FTM.
+  + String not translated in geoplaces.
+  + Descendant Report does not recognise auto. place title
+    generation.
+  + Translated text will not be printed in the program.
+  + Geography: Attempting to print crashes (add parent to dialog).
+  + GEDCOM doesn't accept CR as a line terminator.
+  + Wrong Numeric date format for cs_CZ locale.
+  + Narrativeweb: inconsistent & incomplete display of place
+    hierarchy labels.
+  + Narratedweb: surname listing errors for people with multiple
+    partners.
+  + In "Verify" people w/ death event w/o date are not thought
+    dead.
+  + While starting gramps, it fails to pop up "tips of the day".
+  + GEDCOM import in CLI mode with .ged file containing ANSEL
+    encoding tries to pop up gui.
+  + fix merge conflict.
+  + Use first matching name when generating place titles.
+  + GEDCOM import with media files that have no path fails.
+  + [Geography] Geoclose and mother handle.
+  + place names empty if Gedcom ADDR record contains no street.
+  + Tidy up place configuration options.
+  + Use CSS to fade background colour in ValidatableMaskedEntry.
+  + crash on GEDCOM import with empty _AKA lines.
+  + Add inclusive option to IsEnclosedBy rule.
+  + Saving/closing new person window with Alt-o does not find
+    gender.
+  + Fix to allow deferred translation of place type.
+  + Include all place types in place report.
+  + Allow place selection both individually and by filter on
+    textual report.
+  + Expand tree in selectors automatically.
+  + Fix Encloses gramplet to display correct place references.
+  + Update for appdata stuff.
+  + UnboundLocalError on ODF doc backend.
+  + Media Preview: wrong frame.
+  + fix signals.
+  + GEDCOM import PLAC:FORM in local mode doesn't work.
+  + fix empty Place Alternate Names on import.
+  + Merge unit test for PlaceCheck not working correctly.
+  + GEDCOM import some Place Names & Titles are blank.
+  + GEDCOM import PLAC or ADDR attached Notes etc. are lost.
+  + Gramps not appearing in Gnome Software.
+  + fix broken GEDCOM import PLAC:FORM handling.
+  + Place Alt Names gets duplicated entries.
+  + Multiple GEDCOM imports creates duplicate event IDs.
+  + The place page in webreport is complete mess.
+  + Gallery tab of Source view does not display .ods files.
+  + Narrated Web report - Individual sort order not correct on the
+    Surnames tab.
+  + Specify required GtkSpell and GExiv2 version.
+  + Narrated web report link to thumbnails is broken on certain
+    pages.
+  + Narrated Web report - Individual page sort order has changed.
+  + Gramps reports that it can't find dictionaries.
+  + Turns out it was really that enchant couldn't find its backend
+    because an environment variable wasn't set.
+  + Update translations.
+- Updated gramps.appdata.xml path.
+
+-------------------------------------------------------------------
+Mon Apr 11 09:11:43 UTC 2016 - schubert.seb@gmail.com
+
+- Updated to version 4.2.3:
+  + Creation of the "graphic calendar report" failed
+  + Fix "TypeError: 'tuple' object does not support item assignment
+  + Fix experienced an unexpected error
+  + Unable to build narrated web site
+  + [NarrativeWeb report] Places index and Media index are
+    incorrectly sorted
+  + Error when trying to create narrative report (residence event)
+  + Fix filter set by default on selector, 'Show all' button
+  + Detailed Ancestors Report has ? for locations when [private
+    data is excluded]
+  + Age in the event family view column is wrong.
+  + Crash when dragging multiple media items to clipboard
+  + vCal Export File format invalid
+  + Error occurs for Complete Individual Report -- complete
+    database
+  + Narrated Web Site Report: places page is no longer sorted
+    alphabetically
+  + Narrative web: html elements emitted in different order
+  + Narrative web: "errno: 1, operation is not permitted" when
+    creating archive.
+  + Narrative Web report further stops in error.
+  + Fix multiple lines for firstname on gramps XML file via import
+    or export
+  + fix scrolling in persons view after typing some letters
+  + Location on geography view could not convert string to float
+  + setup.py: make typeout more accurate
+  + Searching in people view when surnames are collapsed
+  + Fix error when changing database in new locations gramplets
+  + Error loading Participants add-on in French locale
+  + Restores setting the stdout encoding to
+    sys.getdefaultencoding() for Python3
+  + Fix comment about getting the right encoding for stdout.
+  + Date format does not match system.
+  + Make US English a special-case locale, where en_GB is the
+    default for english based locales
+  + Enhance the Locations gramplet
+  + New "Encloses" gramplet to the display places that the active
+    place encloses
+  + Individuals with incomplete names, not updated when name
+    completed
+  + Children gramplet in Family view does not get updated when a
+    birth/death events are added to a child
+  + Non-image media objects don't appear in the main window
+    gallery.
+  + Pressing tab stops at element in gui places
+  + Double-clicking on a source in the citation gramplet causes
+    exception
+  + "Find text in record" filter crash
+  + Fix vCard Export
+  + Notes used in the "To Do" gramplet are found by the Remove
+    Unused Objects tool
+  + Unable to select Unicode
+  + Cannot import gedcom generated by RootsMagic custom place
+    details ignoring PlaceName()
+  + Fix people sorted by surname view
+  + Complete Report about person (whole database) - PDF - crash
+  + Update for travis
+  + Only consider the values of LC_ALL, LANG, and LANGUAGE, in that
+    order, when choosing the default locale.
+  + New Icelandic date and relationships handlers
+  + Fix Finnish translation in keywords of desktop entry
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan  9 10:31:21 UTC 2016 - rbos@opensuse.org
+
+- Add webcal.py.diff: add webcal.py from master:
+  - Providing much nicer webcalendar navigation.
+  - Space cleanup, obsolete spaces at end of line removed.
+
+-------------------------------------------------------------------
+Sat Jan  9 08:05:29 UTC 2016 - rbos@opensuse.org
+
+- Updated to version 4.2.2:
+  + "Show all" checkbox of "Select Family" window not unchecked
+    when the filter is cleared.
+  + Name of user defined filter is not shown.
+  + ErrorDialog and GtkDialog mapped without a transient parent.
+  + 'Find' is broken when used in the Family selector.
+  + Fix default selection in selectors.
+  + Comment currently-unused bogus wiki URL pointers.
+  + Fix counter for filtered entries and indentation on
+    TreeBaseModel.
+  + Faulty headline in start up screen.
+  + Check that gramplet is in notebook before setting tab label.
+  + Fix creation of focus change events.
+  + Interactivesearch gives "TypeError: unorderable types: str()
+    < NoneType()".
+  + Put tag selection list in alphabetical order.
+  + Remove redundant code.
+  + Fix delete error in undoable entry widget.
+  + Fix deprecation warning.
+  + Re-enable selection in MultiTreeView on a grab_broken event.
+  + Add validation to gender field.
+  + Unhandled AttributeError when db.get_tag_from_handle returns
+    None.
+  + ReferencedBySelectionProxy can forget some referenced tags.
+  + Remove encoding on stdout and stderr.
+  + Handle citation objects in glocale.trans_objclass.
+  + Locality data in address was not imported.
+  + Can not download new or updated add-ons:
+    - Don't check SSL certs when fetching addons.
+    - Catch urlopen TypeError when context arg isn't supported.
+    - Fix undefined variable error.
+  + ValueError: underlying buffer has been detached.
+  + LaTeX backend crashes.
+  + Geography: performance issue due to bad initialization and.
+    performance issue when selecting the events or places views.
+  + Narrated Web Site Report: html elements emitted in different
+    order.
+  + Unused *_init.jpg are created in the narrated website.
+  + Some media files are not exported to the NAVWEB report.
+  + Narrative web report: add author to citations.
+  + TypeError: unorderable types: EventRef() < EventRef(),
+    events list and family list are differents between two reports.
+  + Permission denied: change mtime to origin instead of
+    destination.
+  + Thumbnails html file missing in the narrative web.
+  + Narrativeweb: Place title based on current date not that of
+    the event.
+  + Webcal: make the month name clickable in the year overview
+    page.
+  + 'Narrative' word not translatable.
+  + 'Unknown' spouse uses an harcoded string name on Simple
+    Descendants textual report.
+  + Father/mother's age attributes are not translated on reports.
+  + Improve Russian date handler and unittests.
+  + Mars month instead of Marzec on Polish locale (Date Editor).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 19 11:37:02 UTC 2015 - schubert.seb@gmail.com
+
+- Update to version 4.2.1:
+  + Support for Retina and HiDPI Display, added 24px icons
+  + Fix verification tool with "Estimate missing or inexact dates"
+  + Fix missing link in hourglass graph report
+  + Sort custom place types in editors
+  + Allow Easter calculation with python3
+  + Fix crash on Descendants-detailed report
+  + FanChartDescendants View should at least have 2 generations
+  + Allow hyphenated gramps-id in Graphviz reports
+  + Complete Individual Report fails to run
+  + Fix broken wiki help links
+  + Set TextOption widget to expand vertically
+  + Unused Object Dialog box too small
+  + Short cut keys does not work in 'Change Event Types' dialog
+  + Update some Tips of the day
+  + Error when extracting place names
+  + Custom filters for note text repaired
+  + Fix Pedigreeview crash when selecting Compact view
+  + Set "visable_window" in GtkEventBox to fix transparency
+  + Faster scrolling:
+    - cache database access for column values
+    - cache do_get_path lookups
+    - speed up load access on treeviews with no filters
+    - new LRU size of 1k (was 250)
+    - use cache in do_get_path from siblings
+  + Avoid using person-centric date matching for places
+  + Use place title as default name in GEDCOM import
+  + Ensure place names are not empty after upgrade
+  + Fix proxy to include all referenced place objects
+  + Fix bug that prevented any addons being loaded onto the Mac
+    version
+  + Remove copy button from family tree manager
+  + Consistency for name fields on Person Editor
+  + Geography:
+    - Place.set_name(name) requires a PlaceName()
+    - Fix and improvements on place selection
+  + Limit problems with existing selection in media reference editor
+  + Stability fixes on Mac port
+  + Mac port localization crash with non-standard locale (e.g.
+    en_IT)
+  + Fix color on history
+  + Fix countries selector for holidays
+  + Fix missing markups into textual reports
+  + All sidebars with Types now show custom types in combo list
+  + [New] Added Places to CSV import/export
+  + Some fixes on installer (setup.py)
+  + Various improvements on gen.plug.utils
+  + Fix graph reports [in Greek locale]
+  + New date handler for Hungarian locale
+  + Updated translations.
+- Update source URL path to github.
+
+-------------------------------------------------------------------
+Wed Aug 12 17:38:19 UTC 2015 - dimstar@opensuse.org
+
+- Add gramps-no-translations-check.patch: Disable gramps internal
+  test if localization files are available. As gramps is properly
+  packaged, we know where the translations are and don't want to
+  alert a user with annoying popups (boo#941490).
+
+-------------------------------------------------------------------
+Mon Aug  3 13:48:40 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 4.2.0:
+  + New date and language fields on place name.
+  + Review on GtkBuilder, fix some Gtk3 warnings and move from
+    deprecated methods.
+  + Change icons and buttons handling methods.
+  + Enhanced Place Editor and new Place Name editor.
+  + New widget: use own interactive-search.
+  + Ability to import kml data into Geography views.
+  + Enhancement for removing multiple selected items from Views
+    (action group).
+  + Add drag support on more Views, Selectors and Editors.
+  + Add right-click "Copy all" to ListModel and all QuickTables.
+  + Review Alternate Place handling and edition.
+  + New 'Place' configuration keys set by user (settings).
+  + New filter rule: is enclosed by.
+  + Consistency on Privacy option for reports.
+  + Consistency on "Name-format" options for reports.
+  + Add DeferredFilter class (a subclass of GenericFilter).
+  + New textual Report: Links on Notes.
+  + Fix alphabetic index and toc bug in books.
+  + Enhancements on Style Editor.
+  + Enhancements on End Notes into textual reports.
+  + Changes on Individuals complete textual report.
+  + Changes on Ancestors Tree draw report: Include Siblings.
+  + Add name-format option, and deferred translation on Records
+    report.
+  + Add deferred translation on Timeline draw report.
+  + Enable attributes gramplet on Source and Citation Views.
+  + New place locations gramplet.
+  + Optimizations around index, Flat and TreeView models.
+  + Enhanced samples files.
+  + All importers return now an ImportInfo object.
+  + Experimental gwplus (geneweb) import file format support.
+  + Remove experimental HTML renderer view.
+  + New test scripts.
+  + New Date handler for Japanese.
+  + Review on Slovenian and Czech Date Handlers.
+  + Updated translations.
+- Drop gramps-webkit3.0.patch: no longer applicable.
+- Add python3 BuildRequires: follow upstreams port to python3.
+- Drop python-webkitgtk, python-gtkspell and python-PyICU
+  recommends: no longer valid after the port to python3.
+- Add python3-bsddb3, python3-cairo  and python3-gobject
+  Requires: new dependencies.
+
+-------------------------------------------------------------------
+Sat May  2 01:44:03 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 4.1.3:
+  + Fix db upgrade failure
+  + GtkDialog mapped without a transient parent
+  + [Gedcom]:
+    - SUBN and SUBM record handling
+    - Import/export round trip causes lost information
+    - Entering a witness to an event such as marriage might be
+      ignored
+    - Gramps can't import estim. date period exported by itself
+    - 1/4 and 1/2 ANSEL characters not supported on importing
+      ANSEL
+    - Importing file containing multibyte UTF-8 characters fails
+    - Import fails for ANSI file under python 3
+    - Failure importing ANSEL encoded gedcom file
+    - Characters ignored on a Gedcom encoded ANSI (cp1252 West
+      Europe, USA)
+    - NameError in importer
+    - Event address is lost on import, i.e. disconnected from
+      event
+  + Crash on geneweb export with python3
+  + GuiColorOption missing avail-changed event handler
+  + Bad generation of [timeline report] ODT files since 4.0.0
+  + Fix bad handle in explanation note for unknown event
+  + Fix spurious generation of empty 'Alternative Name' in
+    place.merge()
+  + Support creating directories in various scenarios
+  + Attempting to add a bookmark causes an error
+  + Long series of "unhandled exception" popup boxes while doing a
+    check & repair
+  + Crash when trying to link existing place as an enclosing place
+    using P0001 number
+  + HTML view fails to load
+  + Relationship Graph crashes
+  + Python3 needs new_subpixbuf not subpixbuf
+  + Regression: running gramps from crontab fails
+  + tag_map is not initialized
+  + Some labels now fit better on citations sidebar filter
+  + Event columns in web narrative are too narrow
+  + Problem by start program (launcher)
+  + Translation string missing in Not Related tool for help and
+    close button
+  + Date format month/year is not well reported at editing time [in
+    Italian]
+  + Fix unknown gender relationships handler for the french locale
+  + Fix a handle type bug on sidebar filter
+  + Tidy up About dialog
+  + Cleanup on some man files
+  + Convert some remaining unicode literals
+  + Fix mac menubar setting
+  + Enable python3 to run po/update_po.py
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  9 11:16:50 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 4.1.2:
+  + Error converting python2 utf-8 strings to python3 str when
+    loading data from database.
+  + Removing a parent place from a place leaves a dangling
+    reference.
+  + Error during checking the database.
+  + Stubborn blank space in database won’t be removed, fix removing
+    rows in flat list views.
+  + Database upgrade fails if default media path is not set.
+  + Error converting database after upgrade to Gramps 4.1.1.
+  + Error in a single place within the places section.
+  + Entries from the add-or-choose selector of
+    Place/Source/Media/Note cannot be dragged.
+  + Enclosing places tab should work like other similar tabs, new
+    place reference editor.
+  + Association editor refuses dropped persons.
+  + Error on opening twice an object from clipboard.
+  + Incorrect spacing in export assistant file chooser.
+  + New Event types are saved as a disordered list.
+  + Always display main participants.
+  + Place titles can now be generated on-the-fly by a place
+    displayer, default is still to use the place title field.
+  + GEDCOM import of embedded notes attached to media does not
+    work.
+  + Crash on Ancestry.com .ged import; consistent.
+  + Errors handling owner/submitter information in GEDCOM files.
+    Only import researcher from GEDCOM or XML if the family tree
+    was originally empty.
+  + GEDCOM export does not export media attached to citations.
+  + The fanchart view crashes if max generation is set to 1 away.
+  + Sidebar Filters do not match placetypes in new placeview, two
+    new filter rules (HasTitle, HasData).
+  + Fix bug when family has no parents.
+  + Fix bad handle in explanation note for unknown event.
+  + Some labels now fit better on citations sidebar filter.
+  + Views in Geography should not always use the last option set by
+    the user.
+  + Request for keyboard-controlled zoom on Geography view.
+  + Error geography view – Displaying main menu.
+  + Configure screen needs a file selector to select directory for
+    “offline mode” files.
+  + Filter panel on geography view displays improperly.
+  + Detailed descendant report crashes, bibliography (citations).
+  + Can’t disable box shadow in SVG descendant tree.
+  + Descendant tree graphical report, syntax error in svg output.
+  + Regression: Complete Individual report has
+    partially-untranslated output.
+  + Events Page in Narrative Report not working.
+  + Gramps freeze after defining a report style with German cm
+    values.
+  + Various problems with docgen.TextDoc.add_media_object.
+  + Report event attribute name is not translated.
+  + Records Gramplet uses wrong text.
+  + Closing detached gramplet causes python to crash.
+  + Cannot reduce size of gramplets detached from a gramplet bar.
+  + Gramplets don’t fill window when detached from dashboard.
+  + ImageMetadata doesn’t show metadata.
+  + typo on GLib call, used by an addon only.
+  + Fix error setting gramplet tab label.
+  + Check for active person in session log gramplet.
+  + Spurious spaces in CLI List Family Trees, tab delimited output.
+  + Print statements changed to assemble the whole line before
+    output.
+  + Gtk3 warning and custom undoableentry widget, (bgo#644927).
+  + Warnings: deprecated Gtk properties and errors loading theme
+    icon.
+  + Fix: database manager dialog is inconsistent for older gtk+3
+    versions.
+  + Warnings: deprecated Gtk properties and errors loading theme
+    icon.
+  + Fix: Error loading theme icon ‘gtk-apply’.
+  + gramps fails to start with gtk+-3.13.3.
+  + Places in data.gramps are not in the new Place hierarchy.
+  + Upgrade the version of some dependencies for Mac OS and
+    Windows OS.
+  + Keywords entry in gramps.desktop does not work.
+  + ‘Available Gramps Updates for Addons’ window not on top.
+  + Some text not translatable in context menu fancharts.
+  + Fix for Unit test.
+  + Updated translations.
+- Drop gramps-4.1.1-Glib-typo.patch: fixed upstream.
+- Move .desktop file to Office;Database category: it certainly is
+  a stretch, but Education;Science is no longer valid and
+  Science;Humanities is not officially registered.
+
+-------------------------------------------------------------------
+Wed Feb  4 10:20:23 UTC 2015 - schubert.seb@gmail.com
+
+- Add gramps-4.1.1-Glib-typo.patch: fix typo, which removes wrong
+  automatic dependency; already applied upstream for 4.1.2.
+- Remove comment about osm-gps-map because it is already detected.
+
+-------------------------------------------------------------------
+Thu Jan 15 20:38:15 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 4.1.1
+  + Fix custom place types in the place editor.
+  + Allow place type combobox to receive focus.
+  + Store custom place types in the metadata table.
+  + Fix place type for places without a main location.
+  + Fix bug adding parent places to a new place.
+  + Prevent user creating a cycle in the place hierarchy.
+  + Avoid infinite loop when place cycle encountered.
+  + Prevent creation of a place cycle when merging.
+  + Fix error when no place is selected.
+  + Check that a place has been selected when saving.
+  + Use the standard place selection widget to be consistent..
+  + Add a new Top Level place through the Place Reference Editor.
+  + Fix backlinks code in place report.
+  + Backlinks for places can now also be places as well as events.
+  + Fix check and repair tool for empty placerefs.
+  + Update location utilities to work with proxies.
+  + Place report does not run.
+  + Update place details gramplet.
+  + Locations are now displayed in a new separate gramplet.
+  + Add check for empty handle in gramplets.
+  + Check DB lock on the recent opened trees list.
+  + Sidebarfilter gramplet does not fit well into People, Events or
+    Media views.
+  + Fix new event default type considering existing events with
+    *default + role.
+  + Rebuild secondary indexes after database upgrade.
+  + Importing gedcom files containing multibyte UTF-8 characters
+    fails.
+  + Ahnentafel Report did not use Christening Date if no Birth
+    Date.
+  + [Narweb:] Missing webpage for media under some circumstances.
+  + Fix narrated web report with gendex option enabled.
+  + Tweak to "default" CSS choice for the narrated web report.
+  + Invalid link for Merge citation Help button.
+  + Fix 'todo' gramplet.
+  + Fix path when using drag & drop to add media.
+  + Limit the number of generations displayed in the ancestor
+    gramplet.
+  + Export of a subset of the tree failed.
+  + Fix issues in python3, and bytes-string mismatch with ICU.
+  + Fix url/uri handling with non-ascii characters under linux and
+    mac.
+  + Fix name format on graphical reports.
+  + Fix name format on textual reports.
+  + Better GUI support for embeded custom attributes list on media
+    object.
+  + Better keys for search under linux shells (.desktop file).
+  + 'Unknown' person in detailed ancestor report can not be
+    translated.
+  + Translations don't show in many labels.
+  + Ensure python text domain gets the right encoding.
+  + Translate some punctuation marks.
+  + Various fixes around Geography and osmgpsmap.
+  + Allow gramplets to be displayed in the dashboard only.
+  + Update FSF address.
+  + Add Arabic-script, Islamic-date, Thai script, Married Name and
+    more dates examples.
+  + Fix on czech date handler for calculated and estimated dates.
+  + Enhance Serbian date handler to handle Cyrillic dates.
+  + Simplify Canadian Ash Wednesday holiday.
+  + Re-enable Esperanto support (for non-Windows OS only) after a
+    large review.
+  + Updated translations.
+- Remove python-gtk-devel Requires: no longer needed after the
+  project moved to python-gobject.
+- Add hicolor-icon-theme BuildRequires: do not own standard
+  hicolor directories.
+
+-------------------------------------------------------------------
+Mon Jul 28 08:00:38 UTC 2014 - dimstar@opensuse.org
+
+- Add gramps-webkit3.0.patch: specify in the code that we require
+  WebKit 3.0, not 'any' WebKit (bnc#887048).
+- No longer filter typelib(OsmGpsMap) from automatic dependency
+  scanner: we now have osm-gps-map 1.0.1 available.
+
+-------------------------------------------------------------------
+Tue Jul 22 23:05:04 UTC 2014 - dimstar@opensuse.org
+
+- Drop gnome-icon-theme (Build)Requires: no longer functional after
+  the merging of the themes into Adwaita theme, which in turn is a
+  dependency to GTK+ 3.0.
+
+------------------------------------------------------------------
+Sun Jun 08 11:41:11 UTC 2014 - rbrown@opensuse.org
+
+- Fix source URL in spec
+
+-------------------------------------------------------------------
+Thu May 29 11:23:17 UTC 2014 - ecsos@schirra.net
+
+- Update to version 4.0.4:
+  + Upgrade to db version 17 fails in Python 3 due to use 
+    of iteritems
+  + Database corrupted – TypeError: unhashable type: ‘list’
+  + Fix bug in abandon changes and quit
+  + Paths, unicode and bsddb module
+  + Consistency on create_id method
+  + Better handling for non-ASCII characters on database-path
+  + Better support for ANSEL characters
+  + ‘Display as’ field in Name Editor reverts to 
+    Preferences default
+  + Fix vcard date converter
+  + View does not communicate over proxy server with autorisation
+  + Enhanced Bookmark support
+  + Event gramplet filter does not have field for primary role
+  + New HasDayOfWeek filter rule
+  + Error when leaving a Gramps type field blank in an editor
+  + Fix creation of events with same Gramps-ID
+  + Crash when opening details of a person
+  + Fix spacing on dialogs for some recent linux distributions
+  + date editor and Date class allow e.g. Hebrew dates 
+    with newyear (Mar25)
+  + Fix crash in fan chart view when scrolling
+  + Poor contrast mouse on mouse over
+  + Drag and drop only one data into Editors tabs
+  + Unable to edit citations on association
+  + Enhancements and consitency on events gramplet, selector 
+    and view
+  + Sometimes says ‘no data exists for note’ when saving
+  + Enhanced Citation Editor
+  + Do not always raise errors when some plugins are hidden
+  + Remove hover selection from embedded lists
+  + Fix update of active object after merge
+  + Cleanup on warnings and messages around locale directory
+  + Media Editor error if Path value was changed to a non existing
+    file
+  + Register history objects at startup
+  + Avoid dumb encoding error when compiling gpr file
+  + Work around Py2Cairo
+  + Given Name Cloud Gramplet splits up given names into words
+  + Users should not be allowed to edit and delete ‘default’ style 
+    into Style Editor
+  + Filename Decoding Error in Graphical Reports
+  + Missing closing bracket in Web_Basic-Spruce.css
+  + Reorder tool: global name ‘gen’ is not defined
+  + Some fixes and enhancements
+  + Fix start in East Asian language, force UTF-8 locale on Mac
+  + Fix apple_collation on Mac
+  + Spelling messages at random cause hang for a few seconds.
+  + Media viewer list crashes during start if one try to select 
+    an entry where the media isn’t available
+  + ‘Available Gramps Updates for Addons’ window not on top 
+  + HTML View fails to load
+  + Paper names and Styles values are now translated
+  + Sort failure using glocale.sort_key
+  + Improve support for collation variants
+  + Translate some punctuation marks
+  + Fix unit tests and python3 issues
+  + Fix Relationships handler for Portuguese
+  + Updated translations: ar, cs, de, fi, fr, he, it, lt, nb, nl,
+    pl, pt_BR, ru, sv, uk
+
+-------------------------------------------------------------------
+Tue Jan 28 08:37:33 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 4.0.3:
+  + Fix copy via context menu on Views into Charts Category.
+  + Fix Tab sequence in Name Editor.
+  + Fix citations gramplet into media view.
+  + Fix unhandled exception when inspecting media.
+  + Fix Citation sidebar filter for python3.
+  + Fix add link to a "Html code" note.
+  + Fix message on backup dialog.
+  + Fix space for selection lists.
+  + Fix spell with myspell and LANG.
+  + Fix changes root cursor to hand.
+  + Recent file parser now gives the file location.
+  + Fix vertical overflows on check and repair-tool dialog.
+  + Fix custom key/value (data item) on Database difference report.
+  + Fix unhandled exception in media exif information under Windows
+    OS.
+  + Fix person selector in searchfilter under Windows OS.
+  + Starting Gramps without console is now possible under Windows
+    OS.
+  + Specific OS handling.
+  + Common fixes and changes with 3.4.7.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 26 13:01:15 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 4.0.2:
+  + Citation merge works better for all objects with citations.
+  + Fixed citations attached to family events.
+  + Fixed several crashes, hangs, and data corruption scenarios.
+  + Fixed bugs in determining whether a person is alive,
+    potentially resolving private data leak via export or report.
+  + Fixed bugs on proxies.
+  + VCF export/import now support gender information.
+  + Several bugs with filtering fixed, most filters now support
+    regular expressions.
+  + Fixed bug in Hebrew calendar date calculations.
+  + Fix some regressions on GEDCOM file format export and
+    enhancement on CONT/CONC handling.
+  + Multiple fixes and improvements on gramplets.
+  + Multiple fixes in the narrated website and web calendar
+    reports.
+  + Enhancements on date and calendar.
+  + Some fixes and improvements of the webapp.
+  + Fix on Database Differences module.
+  + Enhancements of the citation tree view (Sources category).
+  + Improvements on User classes.
+  + Polish and consistency on Gramps XML export.
+  + Bump XML schema to 1.5.1.
+  + Fixed several long-standing problems with report generation.
+  + Better support of RTL locales (Arabic, Hebrew, etc.) in GUI.
+  + Better support for selected lang on some reports.
+  + Better way for displaying missing dependencies.
+  + Better Spell support.
+  + Platform-specific fixes for Mac and Windows.
+  + Add printing functionality for all geography views.
+  + New date handlers for Arabic and Greek.
+  + Repaired and enhanced tests broken since 3.3.x, resulting in
+    overall reliability improvements.
+  + Add a support for AppData.
+  + Updated translations.
+- Drop gramps-4_0-gtk-3_8.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Sun Jun 30 17:22:19 UTC 2013 - dimstar@opensuse.org
+
+- Add gramps-4_0-gtk-3_8.patch: Fix execution with GTK+ 3.8.
+
+-------------------------------------------------------------------
+Sat Jun 29 08:59:34 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 4.0.1:
+  + Gtk3: fix menu on person editor and Geography views, convert
+    deprecated code for the indicator in entryfield.
+  + Gedcom: Fix crash on export when there are addresses, fix space
+    on ID.
+  + Disallow bookmarking a source in the Citation Tree View.
+  + Better RTL support on Pedigreeview and position for gramplets.
+  + Fix bad scaling in address editor.
+  + Fix crash on ancestor chart report.
+  + Fix navigation issues with selected line.
+  + Fix size of the 'Tip of the day' dialog.
+  + Fix right-click on tables in Quick Views.
+  + Fix cursor corruption on Pedigree view.
+  + Improvements when exporting via CLI.
+  + Reports: Various fixes on dialogs, output file formats and
+    cleanup on error messages.
+  + MacOS: Fix bad filename on Gramps URL, osm-gps-map revision,
+    image paths, resource-path file, maclocale.
+  + Move the HTML resources from gramps/plugins/webstuff to Data
+    and Images.
+  + Alternate Names in Person Details Gramplet.
+  + New holidays, date and relationship handlers for Ukrainian.
+  + Enhancements for testing localized Relationship handlers.
+  + More names and events on data.gramps sample.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jun 22 12:57:18 UTC 2013 - dimstar@opensuse.org
+
+- Add gobjet-introspection BuildRequires: needed in order for the
+  code to be inspected and typelib() Requires be added to the
+  package.
+- Filter out the following typelib() Requires:
+  + typelib(GtkosxApplication)is not needed on Linux.
+  + typelib(OsmGpsMap) is optional and currently not available in
+    openSUSE.
+  + typelib(Gtkspell) is an obsolete name which gramps can cope
+    with as an alternative to GtkSpell (different spelling).
+
+-------------------------------------------------------------------
+Thu May 23 10:55:43 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 4.0.0:
+  + Conversion to GTK 3 and use of gobject introspection, GEPS#029.
+  + Support for python 3, GEPS#031.
+  + Code reorganization, GEPS#008.
+  + Autotools is no longer used for building Gramps, distutils is
+    used, GEPS#026.
+  + Completely reworked localization handling.
+  + The Gramplet view has been renamed Dashboard. This to avoid an
+    overload of the word Gramplet, and to make it more clear to new
+    users what can be expected in this view
+  + GTK 3 uses new themes, so users not on Gnome must set a nice
+    GTK 3 theme to fully appreciate Gramps 4.0. Install a GTK 3
+    theme and set it. If Gramps looks ugly, you made an error in
+    this step.
+  + Different sidebar navigators can be installed
+  + New Ancestor Fan Chart View and Descendant Fan Chart View,
+    which offer a lot of insight in your family tree on a small
+    space. Direct printing is available from these views.
+  + All wizards are reworked, so the exporter dialog, help and bug
+    report dialog are different from version 3.4, but offer the
+    same functions.
+  + New To Do Gramplets listing all To Do Notes.
+  + More reports support output in a different language than the
+    interface language
+  + Narrative Web has been reworked to make it more stable.
+- Rewrite build and install sections to adapt to the switch to
+  pythonm distutils, away from autotools.
+- Add python-PyICU recommends: it's not strictly required to
+  operate, but strongly recommended.
+
+-------------------------------------------------------------------
+Wed May 15 17:17:45 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.4.4:
+  + Infinite recursion bug in narrative web generation.
+  + Protection on family trees when using version 3.4 and 4.0 on
+    the same PC (road to 4.0).
+  + Merging notes of media with citations now works.
+  + Crash during Calculate Preview of a filtered XML export.
+  + Fix annoying errors on navigation related to citations gramplet
+    and tag object.
+  + Listing the Family Trees can corrupt them.
+  + Various fix around handling Gedcom file format.
+  + Fix citations and sources import on ProGen format.
+  + Better date handling and better alternate translation support.
+    on some textual reports according to locale under windows.
+  + Avoid Errors when setting wrong value as markup for invalid
+    dates (Preferences).
+  + Fix paragraph layout on PDF format or print output.
+  + New: New-Zealand holidays.
+  + Polish and backport code on XML import (road to 4.0).
+  + Regular expression rules now use search rather than match, fix
+    design issues on regex filter rules.
+  + Disable/Enable indent spouse on descendants tree.
+  + Fix regular expressions on Place filter rule.
+  + Consistency on cli arguments (road to 4.0).
+  + Fix call of non-existant process on references proxy, enhanced
+    tests on proxy filter.
+  + Fix NarWeb creation via cli for some non-english locales.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 19 22:30:23 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.4.3:
+  + Sorting (both in the main display window, and particularly in
+    Narrative Web output) now uses PyICU.
+  + The automatic Addon checking and download now works once again.
+  + Import from Pro-Gen has been updated.
+  + Import and Export of address fields in GEDCOM has been
+    improved.
+  + GEDCOM Repositories not imported correctly from FTM.
+  + Fixes to a number of errors in filtering notes.
+  + Fix some errors in determining whether someone is alive.
+  + Make availability of GraphViz settings depend on output format.
+  + Improve the descriptions and tooltip for GraphViz aspect ratio
+    option.
+  + Fixed update problems with citation bottombar gramplet.
+  + Fixed Open Document Text output in Book report.
+  + A number of changes to Narrative Web.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 31 12:06:35 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.4.2:
+  + Some fixes on NarrativeWeb report.
+  + Some fixes on book report.
+  + Improvement on database path interface and user's preferences.
+  + Consistency on Name display and regex support.
+  + Some platform-specific fixes for Windows system environment.
+  + Better support for media links on Gedcom file format.
+  + Fix possible incorrect family relations on Gedcom file format.
+  + Various fixes on citation records.
+  + Fix and improve places handling on Geography views.
+  + Fix on command line arguments.
+  + Consistency on PDF file format.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 16 14:01:38 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.4.1:
+  + Fixed error in export to xml of family order.
+  + Fixed crash in windows after some use due to too much terminal
+    output.
+  + Some platform-specific fixes (Windows, OSX).
+  + Misc bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 23 18:54:45 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.4.0:
+  + Lots of changes and bug fixes to every part of Gramps,
+    including XML import/export, image handling, gedom handling,
+    Gramplets, date handling, citations, reports, more!
+  + Some platform-specific fixes (Windows, OSX, Linux).
+  + Updated translations.
+- Remove _version define as it stays equal to %version.
+
+-------------------------------------------------------------------
+Sat May 19 18:17:27 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.3.2:
+  + Expressive error when trying to load familytree with
+    downgraded Berkeley db.
+  + Fix in the image offset calculation (MediaRef Editor).
+  + Improved focus and bug fixes on Editors.
+  + Enhancements on ODT file format.
+  + Improved synchronization on gramplets.
+  + Export, filtering and database log improvements.
+  + Call of living proxy is more accurate when using NarrativeWeb
+    report.
+  + Fixes on Check and Repair, Sort Events and Clipboard tools.
+  + Fix automate version.
+  + Fixes on PedigreeView (database state and mouse events).
+  + Various fixes and improvements on merge code.
+  + Minor fixes on report interface and output.
+  + Various fixes on Narrative and Web Calendar reports.
+  + Minor issues on Gedcom handling.
+  + Add Japanese holidays (reports).
+  + Add a Relationship calculator for Catalan.
+  + More than 50 bug fixes and improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct  3 07:44:03 UTC 2011 - vuntz@opensuse.org
+
+- Add explicit shared-mime-info BuildRequires since we use the
+  %mime_database_* macros.
+
+-------------------------------------------------------------------
+Sun Oct  2 13:13:23 CEST 2011 - zaitor@opensuse.org
+
+- Update to version 3.3.1:
+  + Various bugs fixed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jun 15 10:01:44 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.3.0:
+  + New "person name" dialog and workflow with better (or new!)
+    support for nickname, complicated multiple surnames, patronymic
+    as surname, family nickname, and name format preferences
+  + Gramplet bottombar and sidebar per view, with new gramplets
+    such as details view and image metadata viewer/editor
+  + Ability to tag objects; this is the next version of what used
+    to be called "markers" in previous versions of Gramps
+  + Geography view now uses osm-gps-map
+  + New locality field in the place editor; hierarchy is now:
+    Country, State, County, City, Locality, Street
+  + Automatic check and upgrade of plugins on startup
+  + Improved merge support of objects
+  + Better descendant/ancestor tree reports
+  + Undo/redo on entry fields (CTRL+Z, CTRL+SHIFT+Z)
+  + Backup option in the exporter
+  + Exporter based on filters with preview
+  + Various under-the-hood improvements, including for performance.
+  + Updated translations.
+- Add python-gtkspell Recommends as we do have the package.
+- Update FIXME about missing Recommends: python-enchant is not used
+  anymore, but python-exiv2 and osm-gps-map are new optional
+  dependencies.
+- Stop using source service to download the tarball, as Factory
+  will move away from this.
+
+-------------------------------------------------------------------
+Mon May  2 18:58:57 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.6:
+  + fix memory leaks
+  + fix corrupted reports
+  + fix crash in cramplets
+  + fix gedcom import and export
+  + import speed improvements
+  + NarrativeWeb fixes
+  + prevent corrupting databases
+  + Updated translations.
+- Use set_version source service.
+
+-------------------------------------------------------------------
+Sat Feb 12 18:59:36 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+
+-------------------------------------------------------------------
+Tue Dec  7 16:32:44 CET 2010 - vuntz@opensuse.org
+
+- Update to version 3.2.5:
+  + Fix Gramps so it again runs with Python 2.5
+  + Write all notes and sources to gedcom files
+  + Cli fixes
+  + GeneWeb and LegacyGedcom fixes
+  + NarrativeWeb fixes
+  + Memory leak fixes
+  + Various other small fixes
+  + Updated translations
+- Add gnome-icon-theme BuildRequires for directory ownership.
+- Add gnome-icon-theme, python-gtk, xdg-utils Requires, as
+  documented by upstream.
+- Add graphviz, python-webkitgtk Recommends, as documented by
+  upstream.
+- Improve description.
+- Also remove the deprecated mime data files from
+  /usr/share/mime-info, not just /usr/share/application-registry
+- Call %mime_database_post and %mime_database_postun macros in
+  %post/%postun since we install a xml mime file.
+- Tag localized man pages with the right language. We should
+  eventually move them to the lang subpackage, but at the moment,
+  they would create a file conflict between bundles and the lang
+  subpackage.
+
+-------------------------------------------------------------------
+Thu Nov  4 19:19:43 UTC 2010 - dimstar@opensuse.org
+
+- Initial package, version 3.2.4
+

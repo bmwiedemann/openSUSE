@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">svn</param>
+		<param name="url">https://svn.prboom.org/repos/branches/prboom-plus-24/prboom2</param>
+		<param name="exclude">data/sounds/dsdg*</param>
+		<param name="exclude">data/sprites/dogs*</param>
+		<param name="versionformat">2.5.1.5+svn%r</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

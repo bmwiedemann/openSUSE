@@ -1,0 +1,5 @@
+<package name="python-lmiwbem" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="systemsmanagement:wbem" package="python-lmiwbem"/>
+</package>

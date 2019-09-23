@@ -1,0 +1,2006 @@
+-------------------------------------------------------------------
+Tue Sep 17 09:56:09 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.4-352-g2060e25d1c:
+  + rebase on top of upstream Nautilus v14.2.4 release, SHA1 75f4de193b3ea58512f204623e6c5a16e6c1e1ba
+    for details, see https://ceph.io/releases/v14-2-4-nautilus-released/
+
+-------------------------------------------------------------------
+Thu Sep  5 16:01:28 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.3-349-g7b1552ea82:
+  + rebase on top of upstream Nautilus v14.2.3 release, SHA1 0f776cf838a1ae3130b2b73dc26be9c95c6ccc39
+    for details, see https://ceph.io/releases/v14-2-3-nautilus-released/
+    * ceph-volume: prints errors to stdout with --format json (bsc#1132767)
+    * mgr/dashboard: Changing rgw-api-host does not get effective without
+      disable/enable dashboard mgr module (bsc#1137503)
+    * mgr/dashboard: Silence Alertmanager alerts (bsc#1141174)
+    * mgr/dashboard: Fix e2e failures caused by webdriver version (bsc#1145759) 
+  + librbd: always try to acquire exclusive lock when removing image (bsc#1149093)
+
+-------------------------------------------------------------------
+Thu Aug 29 14:17:55 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.2-354-g8878cf2360: 
+  + rgw: Move upload_info declaration out of conditional (bsc#1137189,
+    https://github.com/SUSE/ceph/pull/325)
+
+-------------------------------------------------------------------
+Wed Aug 14 14:54:26 UTC 2019 - Abhishek Lekshmanan <abhishek@suse.com>
+
+- Update to 14.2.2.349+g6716a1e448:
+  + rgw: fix for CVE-2019-10222/bsc#1145093 for the beast frontend
+    ("rgw: asio: check the remote endpoint before processing requests")
+
+-------------------------------------------------------------------
+Thu Jul 25 11:48:55 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.2-348-gf6da3d1d18:
+  + rebase on top of upstream Nautilus v14.2.2 release, SHA1 4f8fa0a0024755aae7d95567c63f11d6862d55be
+  + mgr/volumes: add CephFS subvolumes library (bsc#1135205)
+  + mgr/dashboard: Warn that tcmu-runner backstore is tech-preview (bsc#1137261)
+  + mgr/dashboard: Add, update and remove translations (bsc#1140737)
+  + osd/PG: fix cleanup of pgmeta-like objects on PG deletion
+
+-------------------------------------------------------------------
+Fri Jul 12 11:27:58 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.1-475-g83b977ffbd:
+  + packaging: remove SuSEfirewall2 support
+
+-------------------------------------------------------------------
+Thu Jul  4 12:10:32 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.1-469-g454d851f0a:
+  + lvmcache: refactor argument parsing and add -h flag
+  + qa/deepsea: expand testing of dashboard (branding and E2E tests)
+  + spec:
+    * package the Dashboard E2E tests
+    * drop explicit systemd BuildRequires in case of building for SUSE
+      (allow OBS to pick better candidates to shorten rebuild queues)
+
+-------------------------------------------------------------------
+Wed Jun  5 08:00:39 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.1-468-g994fd9e0cc: 
+  + spec:
+    * install grafana dashboards world readable (bsc#1136110)
+    * put "without python2" conditionals around python3-* provides/obsoletes
+      (align with upstream)
+
+-------------------------------------------------------------------
+Mon Jun  3 19:33:10 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.1-467-g9e10776aa2:
+  + mon/Monitor: allow probe if MMonProbe::mon_release == 0 (bsc#1132396)
+  + spec: make python3-rgw replace python-rgw on upgrade
+
+-------------------------------------------------------------------
+Fri May 31 10:22:35 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.1-463-g99339b576a:
+  + qa/deepsea: redirect journalctl output to a logfile
+  + spec: install/package ceph-volume lvmcache plugin
+  + common: make ms_bind_msgr2 default to "false" (bsc#1124957)
+
+-------------------------------------------------------------------
+Thu May 30 12:59:55 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.1-457-gb42e3171b3:
+  + qa/deepsea/salt:
+    * 1node5disks salt configuration
+    * grafana_service_check validation test
+    * Disk drive replacement test
+    * use "ceph_cm_ansible: false" instead of "ceph_cm: salt"
+  + spec: Disable LTO in spec when being used (bsc#1135030)
+
+-------------------------------------------------------------------
+Wed May 22 08:40:01 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- civetweb: fix file descriptor leak (bsc#1125080, CVE-2019-3821)
+  (fix has been in since February 2019)
+- rgw: sanitize customer encryption keys from log output in v4 auth
+  (bsc#1121567, CVE-2018-16889) (fix has been in since February 2019)
+
+-------------------------------------------------------------------
+Tue May 21 13:46:52 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.1-448-g1bd10a856f:
+  + monitoring: update Grafana dashboards
+  + mgr/dashboard: fix some performance data are not displayed
+  + monitoring: SNMP OID per every Prometheus alert rule
+  + mgr/dashboard: Validate if any client belongs to more than one group
+  + mgr/dashboard: Admin resource not honored
+  + mgr/dashboard: Unable to see tcmu-runner perf counters (bsc#1135388)
+  + mgr/dashboard: iSCSI form does not support IPv6
+
+-------------------------------------------------------------------
+Mon May 20 15:28:49 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.1-440-g0ac6920288:
+  + rebase on top of upstream nautilus branch, SHA1 1dc43a036fcc0121e3a0c1fe7ca6cd77cde1bf60
+  + client: fix vxattr nanosecond field padding (bsc#1135219, bsc#1135221)
+
+-------------------------------------------------------------------
+Tue May 14 12:18:43 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.1-431-gd032e5dd80:
+  + ReplicatedPG: add CHECKSUM->CMPEXT req translation (bsc#1123360)
+  + MDS + libcephfs snapshot btime support (jsc#SES-183)
+
+-------------------------------------------------------------------
+Mon May 13 14:14:44 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.1-423-g3df171fd28:
+  + rgw: cloud sync fixes (jsc#SES-97)
+
+-------------------------------------------------------------------
+Mon May 13 09:55:39 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.1-419-gb72ca927c1:
+  + rebase on top of upstream nautilus branch, SHA1 8e188313cf2f790f131e21a3a02094e32cf02087
+  + replaced ~25 downstream ceph-volume lvmcache commits with a single squashed commit
+  + rgw: object expirer fixes (bsc#1133139)
+  + rgw_lc: use a new bl while encoding RGW_ATTR_LC (jsc#SES-327)
+  + rgw: beast IPv6 (jsc#SES-454)
+
+-------------------------------------------------------------------
+Tue May  7 15:38:51 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.1-426-g7a12897012:
+  + nautilus: core: Give recovery for inactive PGs a higher priority (bsc#1133461)
+  + spec: new subpackage ceph-prometheus-alerts
+  + nautilus: librbd: re-add support for nautilus clients talking to jewel clusters
+  + systemd: ceph-mgr: set MemoryDenyWriteExecute to false
+
+-------------------------------------------------------------------
+Tue Apr 30 09:12:48 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.1-345-g040ffffe0e:
+  + Upstream v14.2.1 release
+    draft release notes: https://github.com/ceph/ceph/pull/27793
+  + rpm: have pybind RPMs provide/obsolete their python2 predecessors (bsc#1125899)
+  + ceph-volume: add lvmcache plugin (jsc#SES-267)
+
+-------------------------------------------------------------------
+Thu Apr 18 16:15:53 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.0-636-g19cfb53b0c:
+  + rebase on top of upstream nautilus branch, SHA1 d947e804dd316c89c28d25948947927fa290e227
+  + downstream branding no longer displays Ceph logo in error popup (bsc#1131984)
+  + mgr: make run-tox.sh scripts more robust (jsc#SES-478)
+
+-------------------------------------------------------------------
+Tue Apr  9 08:49:36 UTC 2019 - ncutler@suse.com
+
+- Update to 14.2.0-465-gdfed19b089:
+  + rebase on top of upstream nautilus branch, SHA1 c09e90d1847fc4ffdd7384c9adf7f60c13479095
+    * dashboard improvements:
+      # Add Polish language
+      # Add date range and log search functionality
+      # Add refresh interval to the dashboard landing page
+      # Add separate option to config SSL port 
+      # Filter iSCSI target images based on required features
+      # Fixed auth TTL expired error 
+      # Fixed error when trying to create NFS export without "NFSv3"
+      # Fixed error when trying to create NFS export without "UDP"
+
+-------------------------------------------------------------------
+Fri Mar 29 13:46:45 UTC 2019 - ncutler@suse.com
+
+- Update to 14.2.0-345-g183e6fe4f5: 
+  + rebase on top of upstream nautilus branch, upstream SHA1 d4290f8edcbadbfecb9396a43a586afe0d0afd00
+    * common/blkdev: get_device_id: behave if model is lvm and id_model_enc isn't there
+    * mon/Monitor.cc: print min_mon_release correctly
+    * mgr/dashboard: dashboard giving 401 unauthorized
+
+-------------------------------------------------------------------
+Wed Mar 27 16:07:12 UTC 2019 - ncutler@suse.com
+
+- _constraints: increase x86_64 ceph memory constraint to 10G
+  after seeing "memory exhausted" build failure on a machine with 9.8G
+  total memory (including swap) 
+
+-------------------------------------------------------------------
+Mon Mar 25 13:49:44 UTC 2019 - ncutler@suse.com
+
+- Update to 14.2.0-328-gf3638ba646:
+  + rebase on top of upstream nautilus branch, upstream SHA1 41b9e7f94f1f08e8607ef574befaaaf6998a89dd
+    * librbd: ignore -EOPNOTSUPP errors when retrieving image group membership
+    * crush: various fixes for weight-sets, the osd_crush_update_weight_set option, and tests
+    * osd/OSDMap: add 'zone' to default crush map
+    * common/blkdev: handle devices with ID_MODEL as "LVM PV ..." but valid ID_MODEL_ENC
+    * mgr/orchestrator: Add error handling to interface
+    * mon/OSDMonitor: allow 'osd pool set pgp_num_actual'
+    * rgw: ldap: fix early return in LDAPAuthEngine::init w/uri not empty()
+    * mon/MgrStatMonitor: ensure only one copy of initial service map
+  + drop downstream patch "rgw: dmclock: async scheduler: wrap yield_ctx around
+    ifdefs" (replaced by https://github.com/ceph/ceph/pull/26634)
+
+-------------------------------------------------------------------
+Mon Mar 25 09:52:01 UTC 2019 - ncutler@suse.com
+
+- _constraints: increase aarch64 ceph memory constraint to 10G
+  after seeing "memory exhausted" build failure on a machine with 9.8G
+  total memory (including swap) 
+
+-------------------------------------------------------------------
+Thu Mar 21 08:24:05 UTC 2019 - ncutler@suse.com
+
+- Update to 14.2.0-300-gacd2f2b9e1:
+  + spec/ceph-mgr: drop "Recommends: ceph-mgr-ssh"
+  + cmake: empty INSTALL_RPATH for libceph_crypto_openssl.so (boo#1129921)
+
+-------------------------------------------------------------------
+Tue Mar 19 10:05:12 UTC 2019 - ncutler@suse.com
+
+- Update to 14.2.0-296-g063d979413:
+  + rebase on top of upstream nautilus branch, SHA1 3a54b2b6d167d4a2a19e003a705696d4fe619afc
+    * upstream Nautilus 14.2.0 (stable) release
+      release notes: http://docs.ceph.com/docs/master/releases/nautilus/
+  + rpm: fix "rhel <= 7" conditional (bsc#1129595)
+  + rpm: refrain from building ceph-resource-agents on SLE (bsc#1129597)
+
+-------------------------------------------------------------------
+Fri Mar 15 12:20:13 UTC 2019 - ncutler@suse.com
+
+- Update to 14.1.1-457-g1411dbed54:
+  + rebase on top of upstream nautilus branch, SHA1 98653b3db92f69023cb62526791d4d9aa5d6ec23
+    * upstream Nautilus 14.1.1 (RC2) release
+    * mgr: Fix broken get_localized_module_option function (bsc#1127342)
+    * spec: ceph-osd gets new runtime dependency, libstoragemgmt
+  + dashboard: Update downstream branding (bsc#1129224)
+  + spec: build ceph-test package on x86_64 arch only (bsc#1129274)
+
+-------------------------------------------------------------------
+Mon Mar  4 11:49:18 UTC 2019 - ncutler@suse.com
+
+- Edge ceph package memory constraint upward to address "virtual memory
+  exhausted: Cannot allocate memory" build failure sseen in OBS
+
+-------------------------------------------------------------------
+Fri Mar  1 14:51:10 UTC 2019 - ncutler@suse.com
+
+- Update to 14.1.0-559-gf1a72cff25: 
+  + rebase on top of upstream master branch, SHA1 34f04be35bb9abcb5860b4c975b105adacc7a3aa
+    * fix GCC-9 build (bsc#1121395)
+  + SUSE branding for Ceph Dashboard (Sebastian Krah)
+  + spec:
+    * Drop use of $FIRST_ARG (Franck Bui)
+    * fix ceph-mgr-diskprediction-local runtime deps
+
+-------------------------------------------------------------------
+Sun Feb 24 10:39:14 UTC 2019 - ncutler@suse.com
+
+- Update to 14.1.0-402-ga396e8bf3b:
+  + rebase on top of upstream master branch, SHA1 1f909bc88be501e58cfbe1bab55efc20de10fa8d
+    * upstream v14.1.0 (Nautilus RC1) release
+      + see draft release notes: https://github.com/ceph/ceph/pull/26598
+    * rados: provide user with more meaningful error message (bsc#999643)
+    * librados3 is dead: long live librados2
+    * several MGR modules (notably the dashboard) have been split off from
+      ceph-mgr into dedicated subpackages
+    * upstream v14.1.0 introduces an optional dependency on rabbitmq-c
+      + disabled, for now, since openSUSE does not ship this package
+  + rgw: dmclock: async scheduler: wrap yield_ctx around ifdefs (bsc#1126554)
+  + arch tweaks (enable lttng build for ppc64le, drop ppc64 openSUSE, add
+    s390x openSUSE)
+
+-------------------------------------------------------------------
+Fri Feb 15 14:00:09 UTC 2019 - ncutler@suse.com
+
+- Update to 14.0.1-3975-g14d8f3cab5:
+  + rebase on top of upstream master branch, SHA1 24fcffb94ccda5cb11eeb74315c78e053fbb1c66
+    * Enabling and using the dashboard should be possible and strongly
+      encouraged - see http://docs.ceph.com/docs/master/mgr/dashboard/ for the
+      basics
+  + spec:
+    * enable s390x build for openSUSE
+    * disable lttng build on s390x, enable it on ppc64le
+    * new subpackages for the larger MGR plugins (notably, dashboard)
+    * drop RHEL-specific subman code blocks
+ 
+-------------------------------------------------------------------
+Wed Jan 30 17:29:43 UTC 2019 - ncutler@suse.com
+
+- Update to 14.0.1-3346-g0364ec8d2f:
+  + rgw: Fix for SignatureMismatchError in s3 commands 
+
+-------------------------------------------------------------------
+Wed Jan 30 13:38:11 UTC 2019 - ncutler@suse.com
+
+- Update to 14.0.1-3344-g0834db3c15:
+  + spec: drop arch-specific conditional around RGW crypto plugin libraries
+  + make-dist: prefer Python 3 
+
+-------------------------------------------------------------------
+Tue Jan 29 15:06:56 UTC 2019 - ncutler@suse.com
+
+- Update to 14.0.1-3341-gb471954ff4:
+  + rebase on top of upstream master branch, SHA1 602c875bd68a091be485bfba7e2d62b3f08ba7b3
+    * msgr V2
+
+-------------------------------------------------------------------
+Fri Jan 25 15:31:56 UTC 2019 - ncutler@suse.com
+
+- Update to 14.0.1-3176-ge8d910619e:
+  + rebase on top of upstream master branch, SHA1 cc26a67890b58c678d4bb26f6a408cf1742317b5
+    * spec: fix xmlsec1 build dependency for dashboard make check
+
+-------------------------------------------------------------------
+Mon Jan 14 13:16:35 UTC 2019 - ncutler@suse.com
+
+- Update to 14.0.1-2789-g6c941e4d76:
+  + rebase on top of upstream master branch, SHA1 c70a3d8e30be84ea8db41e7329ed1577aeee9ab9 
+    * MON now supports Kerberos authentication
+    * MGR now works with Cython >= 0.29
+    * spec: add xmlsec1 dependency for dashboard make check
+    * spec: change rbd-mirror and ceph-radosgw runtime dependency
+      from ceph-common to ceph-base to address http://tracker.ceph.com/issues/37620
+
+-------------------------------------------------------------------
+Tue Dec 11 14:34:39 UTC 2018 - ncutler@suse.com
+
+- Update to 14.0.1-1555-g42662f72f4:
+  + spec: fix libradospp-devel runtime dependency 
+  + spec: remove redundant "Provides: libxio" and "Obsoletes: libxio"
+  + spec: explicitly require python3-Cython < 0.29 (bsc#1118611)
+
+-------------------------------------------------------------------
+Mon Dec 10 11:33:38 UTC 2018 - ncutler@suse.com
+
+- _constraints: Increase aarch64 disk space constraint for ceph-test
+  to address build failure seen in openSUSE:Factory:ARM
+
+-------------------------------------------------------------------
+Wed Dec  5 13:42:34 UTC 2018 - ncutler@suse.com
+
+- Update to 14.0.1-1547-g08fca371b5: 
+  + spec file: make ceph-common remove provides for libradosstriper1
+  + use root:graphana for the dashboard directories on suse
+
+-------------------------------------------------------------------
+Wed Dec  5 10:28:08 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- _constraints: remove duplicated aarch64 ceph-test entry
+
+-------------------------------------------------------------------
+Mon Dec  3 16:24:29 UTC 2018 - ncutler@suse.com
+
+- Update to v14.0.1-1546-ge9be8525c8:
+  + mgr/volumes: Fix Python 3 import error
+    (fixes cluster deployment in py3 environment) 
+
+-------------------------------------------------------------------
+Fri Nov 30 19:09:43 UTC 2018 - ncutler@suse.com
+
+- Update to v14.0.1-1545-g01bead277f:
+  + based on upstream master 4d3cc9f9092d8a86d128192a811733ce23ad070a 
+  + plus two spec file fixes:
+    * make ceph-grafana-dashboards own its directories
+      http://tracker.ceph.com/issues/37485
+    * fix cython package version to less than 0.29
+      http://tracker.ceph.com/issues/37472
+
+-------------------------------------------------------------------
+Wed Nov 28 15:50:12 UTC 2018 - ncutler@suse.com
+
+- spec file: make ceph-common provide/obsolete libradosstriper1 
+  (in SES5 ceph-common requires libradosstriper1 with exact version match,
+  while in SES6 there is no libradosstriper1 at all)
+
+-------------------------------------------------------------------
+Tue Nov  6 21:46:19 UTC 2018 - ncutler@suse.com
+
+- Update to v14.0.1-154-g7588072b82:
+  + based on upstream nautilus 5f51cd286b747b1729006a5b98fb08b1b646237a
+    (v14.0.1 release)
+
+-------------------------------------------------------------------
+Mon Oct 29 14:02:13 UTC 2018 - ncutler@suse.com
+
+- Bump ceph aarch64 memory constraint from 8 to 9G to address
+  an EOM build failure seen in IBS
+
+-------------------------------------------------------------------
+Thu Oct 25 09:17:58 UTC 2018 - ncutler@suse.com
+
+- Update to v14.0.0-4389-g4c34d15e48:
+  + based on upstream nautilus a0b5445bc8400b9b1f398a414001164b2d8dd290
+  + First downstream nautilus build. Notable changes:
+    * The 'ceph-disk' OSD deployment/introspection/management tool is gone.
+      Use 'ceph-volume' instead.
+    * Builds with Python 3.7 (boo#1113946)
+    * The 'ceph osd rm' command has been deprecated. Users should use
+      'ceph osd destroy' or 'ceph osd purge' (but after first confirming it is
+      safe to do so via the 'ceph osd safe-to-destroy' command).
+    * The MDS now supports dropping its cache for the purposes of benchmarking:
+      "ceph tell mds.* cache drop <timeout>"
+    * The 'ceph pg <pgid> list_missing' command has been renamed to
+      'ceph pg <pgid> list_unfound' to better match its behaviour.
+    * The 'rbd-mirror' daemon can now retrieve remote peer cluster
+      configuration secrets from the monitor.  
+    * The is fully obsolete and references to it in the docs
+      have been removed or clarified.
+    * The libcephfs bindings added the ceph_select_filesystem function
+      for use with multiple filesystems.
+    * The cephfs python bindings now include mount_root and filesystem_name
+      options in the mount() function.
+    * erasure-code: add experimental *Coupled LAYer (CLAY)* erasure codes
+      support.
+    * The 'cache drop' OSD command has been added to drop an OSD's caches:
+      "ceph tell osd.x cache drop"
+    * The 'cache status' OSD command has been added to get the cache stats of an
+      OSD: "ceph tell osd.x cache status"
+
+-------------------------------------------------------------------
+Wed Oct 10 09:42:02 UTC 2018 - ncutler@suse.com
+
+- Update to 13.2.2-86-g62b49f06c4:
+  + rebase on upstream 13.2.2 release
+    https://ceph.com/releases/13-2-2-mimic-released/
+  + IMPORTANT NOTE: this release contains a regression in CephFS
+    which was not yet fixed at the time of this build. Do not use
+    this build on a production cluster! 
+    For details, see http://tracker.ceph.com/issues/36346
+
+-------------------------------------------------------------------
+Tue Sep 11 12:35:50 UTC 2018 - ncutler@suse.com
+
+- Update to 13.2.1-427-g6cd01d4dd2:
+  + cmake: no libradosstriper headers if WITH_LIBRADOSSTRIPER=OFF
+
+-------------------------------------------------------------------
+Mon Sep 10 13:06:53 UTC 2018 - ncutler@suse.com
+
+- Update to 13.2.1-426-gd2d4852e84:
+  + based on upstream mimic 510d48e10be716cf61b9ddd51e8bc847288ae15a
+  + bsc#1101262 - ceph's SPDK builds with march=native
+  + migrate DeepSea QA bash scripting from DeepSea repo
+
+-------------------------------------------------------------------
+Fri Aug 17 12:11:27 UTC 2018 - ncutler@suse.com
+
+- Update to 13.2.1-106-g9a1fcb1b6a:
+  + based on upstream mimic 0323ca11569b183509129c180dcec427aecf2a0a
+    * including upstream 13.2.1 release - for details, see
+      https://ceph.com/releases/13-2-1-mimic-released/
+  + ceph-disk: let extract_parted_partition_numbers return a list
+    (fixes a py3 issue)
+
+-------------------------------------------------------------------
+Tue Jul 10 10:37:41 UTC 2018 - ncutler@suse.com
+
+- Update to v13.2.0-210-g0e990e900d:
+  + based on upstream mimic 4ed78ecf2f27aae1e9eb27f83611285ec7445ebd
+    * bsc#1099162, CVE-2018-10861
+    * bsc#1096748, CVE-2018-1128, CVE-2018-1129 
+  + increase memory constraint for build workers after builds started
+    failing on workers with exactly 8G of RAM ("free -h" reports
+    7.8 GiB for these workers)
+
+-------------------------------------------------------------------
+Tue Jun  5 08:05:13 UTC 2018 - jan.fajerski@suse.com
+
+- Update to v13.2.0-39-geb7f429568:
+  + based on upstream mimic f38fff5d093da678f6736c7a008511873c8d0fda
+
+-------------------------------------------------------------------
+Thu May 31 16:34:53 UTC 2018 - ncutler@suse.com
+
+- Update to 13.1.1-173-g127c33d64e: 
+  + based on upstream mimic dda69eea663bcabc5ad99f5ca8370f43575f475d
+    * fix GCC8 builds (bsc#1084645)
+    * fix python3 module loading (bsc#1086613)
+    * ceph-brag no longer packaged upstream
+
+-------------------------------------------------------------------
+Thu Apr 26 21:27:17 UTC 2018 - ncutler@suse.com
+
+- Update to 13.0.2-1874-ge31585919b:
+  + based on upstream master 510762f51e346836492a0a8f83a056944ee6e046
+    * add liblz4 build- and runtime dependency
+    * move ceph-disk runtime dependencies from ceph-osd to ceph-base
+
+-------------------------------------------------------------------
+Fri Apr 20 12:18:30 UTC 2018 - ncutler@suse.com
+
+- Update to 13.0.2-992-g418baeac64:
+  + fix ceph-detect-init for recent SUSEs (bsc#1090072)
+
+-------------------------------------------------------------------
+Mon Apr 16 12:46:25 UTC 2018 - ncutler@suse.com
+
+- rewrite README-ceph-test.txt for clarity
+
+-------------------------------------------------------------------
+Thu Apr 12 19:06:20 UTC 2018 - ncutler@suse.com
+
+- Update to 13.0.2-984-g852d3f1411:
+  + based on upstream master aaac83abb516f824f1caef470686b1bffeffa8b4
+  + fixes s390x build failure (bsc#1089291)
+  + introduces liboath0 runtime dependency (bsc#1089302)
+  + fixes RGW SSL deployment
+
+-------------------------------------------------------------------
+Thu Apr 12 18:13:35 UTC 2018 - ncutler@suse.com
+
+- Update to 13.0.2-819-gf64b021d4c:
+  + based on upstream master 3ab655b55d2b363c0352dfbb90caed2ffcd42432
+
+-------------------------------------------------------------------
+Thu Apr 12 02:11:19 UTC 2018 - ncutler@suse.com
+
+- reduce ceph-test constraints for ppc64le and s390x
+
+-------------------------------------------------------------------
+Tue Mar 27 14:04:19 UTC 2018 - schwab@suse.de
+
+- Reduce ceph-test constraints on aarch64
+
+-------------------------------------------------------------------
+Tue Mar 21 06:03:25 UTC 2018 - ncutler@suse.com
+
+- Update to 13.0.1-3204-g17e0216271:
+  + osd: fix s390x build failure (bsc#1081526)
+  + cmake: add chrono to BOOST_COMPONENTS (bsc#1086017)
+
+-------------------------------------------------------------------
+Mon Mar 19 15:31:24 UTC 2018 - ncutler@suse.com
+
+- Update to 13.0.1-3202-g7a60121a01:
+  + latest master (dashboard_v2 MGR module renamed to dashboard)
+
+-------------------------------------------------------------------
+Mon Mar 19 12:49:00 UTC 2018 - ncutler@suse.com
+
+- checkin.sh: add interactive verification of Ceph version number sanity
+
+-------------------------------------------------------------------
+Fri Mar 16 20:52:48 UTC 2018 - ncutler@suse.com
+
+- Update to 13.0.1-3023-g71b0480e48:
+  + mimic-dev2 (including notably dashboard_v2 MGR module)
+
+-------------------------------------------------------------------
+Fri Feb 23 12:10:01 UTC 2018 - ncutler@suse.com
+
+- forward port DeepSea integration suite from ses5 
+
+-------------------------------------------------------------------
+Tue Feb 20 16:52:18 UTC 2018 - ncutler@suse.com
+
+- Update to version 13.0.1-2078-g85df538001:
+  + spec file:
+    * revert "enable --without-python2 bcond for all distros" (as of Code 15,
+      Python 2 bindings will not be built by default: projects wishing to build
+      them will need to provide --with-python2 explicitly) (bsc#1081836)
+
+-------------------------------------------------------------------
+Fri Feb 16 14:18:59 UTC 2018 - ncutler@suse.com
+
+- Update to version 13.0.1-1987-g4a523803f8:
+  + py3 MGR fixes (bsc#1080758)
+  + spec file:
+    * test/bench: remove smallio bench tools
+
+-------------------------------------------------------------------
+Fri Feb  2 11:17:07 UTC 2018 - ncutler@suse.com
+
+- Update to version 13.0.1-1567-gae149ea5f9:
+  + increment upstream version number to 13.0.1 (mimic dev release)
+  + spec file:
+    * enable --without-python2 bcond for all distros (the Build Service will
+      control py2/3 build via this option)
+
+-------------------------------------------------------------------
+Mon Jan 29 13:46:41 UTC 2018 - ncutler@suse.com
+
+- Update to version 13.0.0-5171-g4d4101fe78:
+  + spec file:
+    * change version number format
+    * define _defined_if_python2_absent if, and only if, building without
+      python2 bcond
+
+-------------------------------------------------------------------
+Fri Jan 26 19:03:21 UTC 2018 - ncutler@suse.com
+
+- Update to version 13.0.0-5169-g26918cdcc9:
+  + rebase to latest upstream master, including spec file changes:
+    * eliminate Python 2 dependencies (bsc#1076403)
+      N.B.: this has the consequence that we no longer build or ship
+      Python 2 versions of the Python bindings for librados, librbd,
+      libcephfs and librgw
+    * drop lowmem_builder bcond and rewrite associated code to be distro-agnostic
+    * move distro-conditional BuildRequires to appropriate section
+    * use more recent toolchain on RHEL 7
+    * ceph-base: put runtime dependencies in alphabetical order
+    * correct Group for python bindings subpackages
+    * move ceph-volume to ceph-osd and adjust systemd macros accordingly
+    * ceph-osd subpackage now requires lvm2 for ceph-volume
+    * ceph-test: peg version of ceph-common dependency
+    * drop deprecated scripts rcceph and ceph-crush-location
+    * fix permissions of rbd resource agent 
+
+-------------------------------------------------------------------
+Mon Nov 27 13:49:47 UTC 2017 - ncutler@suse.com
+
+- ceph-rpmlintrc: add lines to quash RPMLINT warnings
+  + ceph-base.x86_64: E: devel-file-in-non-devel-package (Badness: 50) /usr/lib64/ceph/crypto/libceph_crypto_isal.so
+  + librados2.x86_64: E: devel-file-in-non-devel-package (Badness: 50) /usr/lib64/ceph/libceph-common.so
+  + ceph-base.x86_64: E: devel-file-in-non-devel-package (Badness: 50) /usr/lib64/libos_tp.so
+  + ceph-base.x86_64: E: devel-file-in-non-devel-package (Badness: 50) /usr/lib64/libosd_tp.so
+
+-------------------------------------------------------------------
+Sat Nov 25 21:33:23 UTC 2017 - ncutler@suse.com
+
+- Replace references to /var/adm/fillup-templates with new %_fillupdir macro
+  (boo#1069468) 
+
+-------------------------------------------------------------------
+Sat Nov 25 14:31:00 UTC 2017 - ncutler@suse.com
+
+- Update to version 13.0.0-3531.g3692e00bab:
+  + rebase to latest upstream master
+  + Add "checkin.sh" script to automate the checkin process, along
+    with a "README-checkin.txt" file containing basic information.
+
+-------------------------------------------------------------------
+Fri Nov 24 17:23:51 UTC 2017 - ncutler@suse.com
+
+- Update to version 13.0.0-3512.gb018e431a6:
+  + rebase to upstream "Mimic" (13.0.0) development snapshot
+    https://github.com/SUSE/ceph/tree/ses6
+  + drop OBS source services in favor of generating the spec file
+    and tarball using the upstream "make-dist" script
+  + new version number format, replacing timestamp with git tag
+    offset
+  + reduce tarball size from 114 MB to 47 MB by omitting unused parts
+    of boost
+
+-------------------------------------------------------------------
+Tue Nov 21 16:29:28 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.2.1+git.1511279898.8aa892202e:
+  + bsc#1060904
+    * rgw: keystone: bump up logging when error is received
+  + bsc#1067705
+    * rgw: set sync_from_all as true when no value is seen
+  + bsc#1066182
+    * rgw: data sync: set num_shards when building full maps
+    * dencoder/rgw: expose rgw sync status types
+    * rgw: set num_shards on 'radosgw-admin data sync init'
+
+-------------------------------------------------------------------
+Thu Nov 09 12:00:20 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.2.1+git.1510221942.af9ea5e715:
+  + bsc#1066502
+    * mon/osd_metadata: sync osd_metadata table
+    * mon/OSDMonitor: tidy prefix definitions
+    * mon: implement MDSMonitor::get_store_prefixes
+    * mon/mgr: sync mgr_command_descs table and mgr_metadata table
+    * mon/MgrMonitor: populate on-disk cmd descs if empty on upgrade
+    * mon/MgrMonitor: read cmd descs if empty on update_from_paxos()
+  + bsc#1067088
+    * osd: make the PG's SORTBITWISE assert a more generous shutdown
+  + bsc#1066182
+    * rgw: ListBucketIndexesCR spawns entries_index after listing metadata
+    * rgw: fix error handling in ListBucketIndexesCR
+    * rgw: RGWDataSyncControlCR retries on all errors
+  + RGW fixes:
+    * test/rgw: add test_multipart_object_sync
+    * cls/rgw: increment header version to avoid overwriting bilog entries
+    * rgw: disable dynamic resharding in multisite environment
+
+-------------------------------------------------------------------
+Fri Oct 27 19:15:21 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.2.1+git.1509128342.9347aa6662:
+  + common/common_init: disable ms subsystem log gathering for clients
+  + spec file: add %{_sysctldir}/90-ceph-osd.conf to ceph-osd 
+    * ceph.spec.in,debian/rules: change aio-max-nr to 1048576
+    * sysctl.d: set kernel.pid_max=4194304 (bsc#1061461)
+
+-------------------------------------------------------------------
+Sun Oct 15 07:58:18 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.2.1+git.1507910930.aea79b8b7a:
+  + rgw: Remove assertions in IAM Policy (bsc#1063014, CVE-2017-16818)
+
+-------------------------------------------------------------------
+Thu Oct 12 17:08:14 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.2.1+git.1507819941.856710ff58:
+  + rgw: stop/join TokenCache revoke thread only if started (bsc#1059458)
+  + systemd: reinstate TasksMax=infinity
+
+-------------------------------------------------------------------
+Thu Oct 05 18:49:19 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.2.1+git.1507226092.b783a015b9:
+  + Revert "SIGPIPE suppression for platforms without SO_NOSIGPIPE or MSG_NOSIGNAL"
+  + msgr: add a mechanism for Solaris to avoid dying on SIGPIPE
+
+-------------------------------------------------------------------
+Wed Oct 04 10:17:16 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.2.1+git.1507108986.dc637a73e2:
+  + rgw: defer constructing keystone engine unless url is configured
+    (issue#21400, pr#17775)
+
+-------------------------------------------------------------------
+Sat Sep 30 22:41:42 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.2.1+git.1506764331.9e2e945bd0:
+  (upstream luminous 9d8acf6f3f85dd1410629cc680474e38f3be9838)
+  + upstream Luminous v12.2.1
+    https://ceph.com/releases/v12-2-1-luminous-released/
+
+-------------------------------------------------------------------
+Thu Sep 21 16:02:37 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.2.0+git.1506009682.0e5b4307f3
+  (upstream luminous a931cf68120d99661b785cc794e2b6965d621f06):
+  + ceph-disk: fix mountpoint check for systemctl enable --runtime
+    (bsc#1051598)
+  + spec file:
+    * ceph-fuse requires fuse; make that dependency explicit
+    * drop obsolete qemu symlink hack in librbd1 %post
+
+-------------------------------------------------------------------
+Mon Sep 11 14:39:08 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.2.0+git.1505141259.1264bae1a8:
+  + rgw_file: fix LRU lane lock in evict_block() - bsc#1054061
+  + os/bluestore: fix deferred write deadlock, aio short return handling -
+    bsc#1056125
+  + mon/OSDMonitor: don't create pgs if pool was deleted - bsc#1056967
+
+-------------------------------------------------------------------
+Wed Aug 30 18:46:08 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.2.0+git.1504118058.706f78da1a:
+  + fix ceph --version to say "stable" instead of "rc"
+  + spec file: add python-numpy-devel build dependency for SUSE
+  + bsc#1053836
+    * Revert "osd: adjust osd_min_pg_log_entries"
+    * osd/PGLog: write only changed dup entries
+
+-------------------------------------------------------------------
+Tue Aug 29 14:16:26 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.2.0+git.1504013812.01ea30bcc9:
+  + upstream Luminous v12.2.0 (first stable) release
+    * increment version number to 12.2.0
+  + spec file
+    * edge mem_per_process upward after seeing some OOM-esque build failures
+    * package ceph-volume man pages
+
+-------------------------------------------------------------------
+Thu Aug 17 07:21:22 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.1.4+git.1502953626.155adb5253:
+  + ceph.spec: provide libxio 1.7 and obsolete libxio <= 1.7
+
+-------------------------------------------------------------------
+Wed Aug 16 10:40:25 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.1.4+git.1502878199.4183317204:
+  + ceph.spec: obsolete libxio
+    (Note to reviewer: libxio was only ever used by Ceph (for an experimental
+    IB/RDMA feature), it was never submitted to Factory, and its functionality has
+    been integrated into Ceph in a different form. For all practical purposes,
+    libxio has been replaced by Ceph itself.)
+
+-------------------------------------------------------------------
+Wed Aug 16 08:50:51 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.1.4+git.1502871088.edf82a59df:
+  + latest upstream luminous (a5f84b37668fc8e03165aaf5cbb380c78e4deba4)
+    * increment upstream version number to 12.1.4
+
+-------------------------------------------------------------------
+Mon Aug 14 08:47:38 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.1.3+git.1502698163.45fc586a51:
+  + latest upstream luminous (6808af486d3bdce966232810004648502c967b13)
+    * increment upstream version number to 12.1.3
+
+-------------------------------------------------------------------
+Sat Aug 05 06:42:53 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.1.2+git.1501914637.59afe41c49:
+  + spec file
+    * ceph-volume added to ceph-base RPM, where it co-exists with ceph-disk
+
+-------------------------------------------------------------------
+Fri Aug  4 16:59:59 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.1.2+git.1501865907.88dc8cdc9d:
+  + latest upstream master (7350fa65d79b5f0ace427e609565f07be35cfe62)
+    * os/bluestore: allow multiple DeferredBatches in flight at once
+      (pr#16769, issue#20295, bsc#1043399)
+
+-------------------------------------------------------------------
+Thu Aug 03 20:06:55 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.1.2+git.1501790037.82d6a9c37a:
+  + osd: move CMPEXT response munging into completion function
+    (bsc#1047244)
+
+-------------------------------------------------------------------
+Wed Aug  2 14:41:41 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.1.2+git.1501684697.aa6b0153ef:
+  + upstream luminous v12.1.2 release candidate
+  + latest upstream master (e27a78c9ed3984b54a312ced3ad67fcc8f464fc0)
+    * mon: add mgr metdata commands, and overall 'versions' command for all
+      daemon versions (bsc#1050063, pr#16460)
+
+-------------------------------------------------------------------
+Wed Aug 02 10:50:22 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.1.1+git.1501669490.04d0738487:
+  + mon: extensible output format for health checks
+
+-------------------------------------------------------------------
+Mon Jul 31 14:34:36 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.1.1+git.1501501507.6dd9e8fd8c:
+  + update to latest upstream master (fa70335db25f2b661b329d5d8f37039b77f2d1ae)
+  + spec file:
+    * build/ops: rpm: Drop legacy libxio support (pr#16449)
+  + Other notable changes:
+    * osd: moved OpFinisher logic from OSDOp to OpContext (pr#16617)
+
+-------------------------------------------------------------------
+Fri Jul 28 14:34:34 UTC 2017 - tserong@suse.com
+
+- Update to version 12.1.1+git.1501231943.67577225bc
+  + Notable changes:
+    * rgw_file: properly & |'d flags (bsc#1047977)
+
+-------------------------------------------------------------------
+Wed Jul 19 08:11:53 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.1.1+git.1500447879.e5aac115d7:
+  + upstream 12.1.1 (release candidate)
+  + Other notable changes:
+    * build/ops: rpm: fix typo WTIH_BABELTRACE (pr#16366)
+    * build/ops: rpm: put mgr python build dependencies in make_check bcond
+      (pr#15940)
+    * ceph-disk: support osd new (pr#15432)
+    * ceph: allow '-' with -i and -o for stdin/stdout (pr#16359)
+    * cls/rbd: trash_list should be iterable (pr#16372)
+    * doc: update quick start to add a note for mgr create command for luminous+
+      builds (pr#16350)
+    * libradosstriper: fix format injection vulnerability (pr#15674)
+    * mgr/dashboard: add OSD list view (pr#16373)
+    * mon, osd: misc fixes (pr#16283)
+    * mon/MDSMonitor: fix segv when multiple MDSs raise same alert (pr#16302)
+    * mon/MgrMonitor: fix standby addition to mgrmap (pr#16397)
+    * mon/MgrMonitor: only induce mgr epoch shortly after mkfs (pr#16356)
+    * mon: Fix output text and doc (pr#16367)
+    * mon: add force-create-pg back (pr#16353)
+    * mon: skip crush smoke test when running under valgrind (pr#16346)
+    * os/bluestore: use reference to avoid string copy (pr#16364)
+    * osd: combine conditional statements (pr#16391)
+    * osd: restart boot process if waiting for luminous mons (pr#16341)
+    * rgw: S3 lifecycle now supports expiration date (pr#15807)
+    * rgw: acl grants num limit (pr#16291)
+    * rgw: delete object in error path (pr#16324)
+    * rgw: drop unused find_replacement() and some function docs (pr#16386)
+    * rgw: fix err when copy object in bucket with specified placement rule
+      (pr#15837)
+    * rgw: fix potential null pointer dereference in rgw_admin (pr#15667)
+    * rgw: raise debug level of RGWPostObj_ObjStore_S3::get_policy (pr#16203)
+    * rgw: req xml params size limitation error msg (pr#16310)
+    * rgw_file:  add service map registration (pr#16251)
+    * test,rgw: fix rgw placement rule pool config option (pr#16380)
+    * test/fio: print all perfcounters rather than objectstore itself (pr#16339)
+
+-------------------------------------------------------------------
+Mon Jul 17 13:11:35 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.1.0+git.1500295948.39d2e5f424:
+  + spec file:
+    * socat build dependency only for make check
+    * fix typo WTIH_BABELTRACE
+
+-------------------------------------------------------------------
+Mon Jul 17 10:42:27 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.1.0+git.1500284183.1ed97736ab:
+  + Spec file changes:
+    * bump epoch (not relevant for SUSE)
+    * add socat buildrequires
+    * libcephfs2 now obsoletes libcephfs1 (bsc#1047020)
+    * HAVE_BABELTRACE option renamed to WITH_BABELTRACE
+    * fix a regression in ceph-base %postun scriptlet
+  + Selected other changes:
+    * Revert "msg/async: increase worker reference with local listen table enabled backend"
+    * build: build erasure-code isa lib without versions
+    * ceph-disk/ceph_disk/main.py: Replace ST_ISBLK() test by is_diskdevice()
+    * ceph.in: filter out audit from ceph -w
+    * common,config: OPT_FLOAT and OPT_DOUBLE output format in config show
+    * common/Timer: do not add event if already shutdown
+    * compressor/zlib: remove g_ceph_context/g_conf from compressor plugin
+    * core: make the conversion from wire error to host OS work
+    * core:" Stringify needs access to << before reference" src/include/stringify.h
+    * crush/CrushWrapper: make get_immediate_parent[_id] ignore per-class shadow hierarchy
+    * doc/mgr/dashboard: update dashboard docs to reflect new defaults
+    * doc/rados.8: add offset option for put command
+    * doc: fix link for ceph-mgr cephx authorization
+    * doc: update intro, quick start docs
+    * isa-l: update isa-l to v2.18
+    * librbd: fail IO request when exclusive lock cannot be obtained
+    * mgr,librados: service map
+    * mgr,mon: debug init and mgrdigest subscriptions
+    * mgr,mon: enable/disable mgr modules via 'ceph mgr module ...' commands
+    * mgr/ClusterState: do not mangle PGMap outside of Incremental
+    * mgr/restful: bind to :: and update docs
+    * mgr: Zabbix monitoring module
+    * mon,crush: create crush rules using device classes for replicated and ec pools via cli
+    * mon/MgrStatMonitor: do not crash on luminous dev version upgrades
+    * mon/MonClient: respect the priority in SRV RR
+    * mon/Monitor: recreate mon session if features changed
+    * mon/OSDMonitor: do not allow crush device classes until luminous
+    * mon/OSDMonitor: guard 'osd crush set-device-class'
+    * mon/mgr: add detail error infomation
+    * mon: Fix status output warning for mon_warn_osd_usage_min_max_delta
+    * mon: add support public_bind_addr option
+    * mon: collect mon metdata as part of the election
+    * mon: debug session feature tracking
+    * mon: do crushtool test with fork and timeout, but w/o exec of crushtool
+    * mon: fix hang on deprecated/removed 'pg set_\*full_ratio' commands
+    * mon: include device class in tree view; hide shadow hierarchy
+    * mon: maintain the "cluster" PerfCounters when using ceph-mgr
+    * mon: revamp health check/warning system
+    * msg/async: increase worker reference with local listen table enabled backend
+    * msg/async: make recv_stamp more precise
+    * msg: QueueStrategy::wait() joins all threads
+    * msg: make listen backlog an option, increase from 128 to 512
+    * os/blueStore: Failure retry for opening file
+    * os/bluestore/BlueFS: clean up log_writer aios from compaction
+    * os/bluestore/BlueFS: clear current log entrys before dump all fnode
+    * os/bluestore/KernelDevice: batch aio submit
+    * os/bluestore: Make BitmapFreelistManager kv itereator short lived
+    * os/bluestore: cap rocksdb cache size
+    * os/bluestore: clear up redundant size assignment in KernelDevice
+    * os/bluestore: differ default cache size for hdd/ssd backends
+    * os/bluestore: fix deferred_aio deadlock
+    * os/bluestore: move object exist in assign nid
+    * os/bluestore: only submit deferred if there is any
+    * os/bluestore: reduce some overhead for _do_clone_range() and _do_remove()
+    * os/bluestore: use bufferlist functions whenever possible
+    * os/filestore/FileJournal: FileJournal::open() close journal file before return error
+    * os/filestore/HashIndex: randomize split threshold by a configurable amount
+    * os/filestore: call committed_thru when no journal entries are replayed
+    * os/filestore: do not free event if not added
+    * os/filestore: queue ondisk completion before apply work
+    * os/filestore: require experimental flag for btrfs
+    * osd/OSD: auto class on osd start up
+    * osd/PrimaryLogPG solve cache tier osd high memory consumption
+    * osd/ReplicatedBackend: reset thread heartbeat after every omap entry
+    * osd/filestore: Revert "os/filestore: move ondisk in front
+    * osd: Check for and automatically repair object info soid during scrub
+    * osd: Preserve OSDOp information for historic ops
+    * osd: check queue_transaction return value
+    * osd: clear_queued_recovery() in on_shutdown()
+    * osd: compact osd feature
+    * pybind/mgr/dashboard: bind to :: by default
+    * pybind/mgr/dashboard: fix get kernel_version error
+    * rbd-mirror: ignore permission errors on rbd_mirroring object
+    * rbd: do not attempt to load key if auth is disabled
+    * rgw: fix compilation with cryptopp
+    * rgw,test: fix rgw placement rule pool config option
+    * rgw/rgw_frontend.h: Return negative value for empty uid in RGWLoadGenFrontend::init()
+    * rgw/rgw_rados: Remove duplicate calls in RGWRados::finalize()
+    * rgw: /info claims we do support Swift's accounts ACLs
+    * rgw: Correcting the condition in ceph_assert while parsing an AWS Principal
+    * rgw: Do not fetch bucket stats by default upon bucket listing
+    * rgw: Fix a bug that multipart upload may exceed the quota
+    * rgw: Initialize pointer fields
+    * rgw: fix leaks with incomplete multiparts
+    * rgw: fix memory leak in copy_obj_to_remote_dest
+    * rgw: fix not initialized vars which cause rgw crash with ec data pool
+    * rgw: fix radosgw-admin data sync run crash
+    * rgw: fix s3 object uploads with chunked transfers and v4 signatures
+    * rgw: fix the subdir without slash of s3 website url
+    * rgw: fix zone did't update realm_id when added to zonegroup
+    * rgw: log_meta only for more than one zone
+    * rgw: rgw_file skip policy read for virtual components
+    * rgw: using RGW_OBJ_NS_MULTIPART in check_bad_index_multipart
+    * rgw: verify md5 in post obj
+    * rgw_file: add compression interop to RGW NFS
+    * rgw：fix s3 aws v2 signature priority between header['X-Amz-Date'] and header['Date']
+    * vstart.sh: bind restful, dashboard to ::, not 127.0.0.1
+    * vstart: add --rgw_compression to set rgw compression plugin
+    * vstart: allow to start multiple radosgw when RGW=x
+
+-------------------------------------------------------------------
+Mon Jul  3 19:41:29 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.1.0+git.1499090920.2c11b88d14:
+  + With this update, Ceph no longer autocreates a pool called "rbd" with id 0
+    Deployment tools must take this into account!
+  + systemd: Add explicit Before=ceph.target (bsc#1042973)
+
+-------------------------------------------------------------------
+Wed Jun 28 13:33:48 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.1.0+git.1498654198.20d6a47cc9:
+  + build/ops: rpm: put mgr python build dependencies in make_check bcond
+    N.B. this effectively eliminates the following build dependencies:
+    python-Babel python-beautifulsoup4 python-CherryPy python-coverage
+    python-flup python-Genshi python-html5lib python-logutils python-nose
+    python-Paste python-PasteDeploy python-PasteDeploy python-pecan 
+    python-pyquery python-singledispatch python-waitress python-WebOb
+    python-WebTest python-Werkzeug python-WSGIProxy2 pytyhon-python-openid 
+
+-------------------------------------------------------------------
+Mon Jun 26 13:52:31 UTC 2017 - ncutler@suse.com
+
+- spec file:
+  + removed BR libatomic_ops-devel as upstream replaced it with std:atomic
+  + removed defattr as they are no longer needed on sle12 and newer
+
+-------------------------------------------------------------------
+Mon Jun 26 12:25:57 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.1.0+git.1498478524.117b171715:
+  + include 12.1.0 tag to make "ceph --version" happy
+  + tests: drop hadoop-s3a tests
+
+-------------------------------------------------------------------
+Sat Jun 24 20:17:48 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.1.0+git.1498309403.f4fc02fff4:
+  + upstream 12.1.0 release; for details, see
+    http://ceph.com/releases/v12-1-0-luminous-rc-released/
+  + revert several pre-release commits that are no longer needed
+    because the issues have been fixed upstream in the meantime
+  + build/ops: rpm: sane packaging of %{_docdir}/ceph directory
+
+-------------------------------------------------------------------
+Fri Jun 23 08:11:22 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.3+git.1498202776.b806032985:
+  + Integration testing changes:
+    * add DeepSea integration suite test definitions for teuthology
+    * re-enable several RGW tests that upstream only runs on Ubuntu
+  + ceph_ver_hack.sh: use git describe --match
+  + ReplicatedPG: add CHECKSUM->CMPEXT req translation
+
+-------------------------------------------------------------------
+Wed Jun 14 08:00:43 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.3+git.1497426468.6984d41b5d:
+  + qa: add initial deepsea suite (task and test yaml)
+  + fix "ceph osd df" (regression in latest upstream master) (pr#15675, issue#20256)
+    * mon: move creating_pgs and reweight_by_utilization into new MonPGStatService
+    * mon: move most PGMapStatService into PGMap; rename PGMon's to PGMonStatService
+    * mon: mgr: move 'osd df' handling to manager
+    * mon: inherit PGMonStatService from the PGMapStatService
+    * move the OSDUtilizationDumper code into OSDMap
+    * mon: mgr: enable "osd df" on the manager
+    * qa: add a check_commands.sh script which looks for commands with no tests
+    * qa: test 'osd df' in cephtool/test.sh
+
+-------------------------------------------------------------------
+Thu Jun 08 08:36:57 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.3+git.1496909744.9f667dc335:
+  + build/ops: rpm: one License line to rule them all
+
+-------------------------------------------------------------------
+Thu Jun  8 07:23:16 UTC 2017 - ncutler@suse.com
+
+- up memory _constraint for ceph-test to address ppc64le OOM seen in IBS
+
+-------------------------------------------------------------------
+Thu Jun 08 06:31:53 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.3+git.1496902753.b18dc53186:
+  + build/ops: rpm, COPYING: drop GPL 2.0 with Autoconf Exception
+    (autoconf no longer used)
+
+-------------------------------------------------------------------
+Wed Jun  7 12:26:46 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.3+git.1496754880.35cb2861ce:
+  + merge upstream master (b1d06a6b54)
+
+-------------------------------------------------------------------
+Sat Jun  3 15:53:05 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.3+git.1496494491.ba3c561a92:
+  + merge upstream master (97d6e150e5)
+
+-------------------------------------------------------------------
+Thu Jun  1 08:51:20 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.3+git.1496306960.2db336d85e:
+  + merge upstream master (b19352eec3), fixes bsc#1041492
+
+-------------------------------------------------------------------
+Tue May 30 13:15:47 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.3+git.1496147556.f1d6115861:
+  + cmake: build boost::context and coroutine only with rgw Beast frontend
+  + build/ops: rpm: reverse s390 bcond conditional block
+  + build/ops: rpm: no rgw Beast frontend on s390x
+  + build/ops: deb: no rgw Beast frontend on s390x
+  + cmake: delete excidentail reintroduced line.
+  + cmake: link radosgw with boost libraries
+  (bsc#1040119)
+
+-------------------------------------------------------------------
+Sat May 27 08:19:59 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.3+git.1495849076.4457d36178:
+  + rgw: remove fastcgi from default rgw frontends
+  + RGW: Turn off fcgi as a frontend
+  + build/ops: drop libfcgi build dependency
+  + build/ops: rpm: apply epoch only if %epoch macro is defined
+
+-------------------------------------------------------------------
+Fri May 26 11:39:01 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.3+git.1495798013.23dd2b67dc:
+  + ceph.spec.in: re-drop %{epoch}: prefixes
+
+-------------------------------------------------------------------
+Fri May 26 08:57:00 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.3+git.1495787939.3f6446f64f:
+  + build/ops: rpm: adapt License line to Release 2.0 of SPDX spec
+    (issue#20091)
+
+-------------------------------------------------------------------
+Fri May 26 04:35:06 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.3+git.1495675338.07282a4057:
+  + upstream 12.0.3 release
+  + osd/PG: Add two new mClock implementations of the PG sharded operator queue
+    (pr#14997, bsc#1040103)
+  + build/ops: rpm: make librbd1 %post scriptlet depend on coreutils (boo#1040230)
+  + build/ops: rpm: move RDMA build dependency to distro-conditional section
+  + build/ops: rpm: move python-prettytable to distro-conditional section
+  + cmake: added empty RPATH to libcls_sdk.so
+  + rpm: drop %{epoch} from new rados-objclass-devel subpackage
+  + cmake: fix boost components for WITH_SYSTEM_BOOST
+  + cmake: build boost::context only if rgw Beast frontend is in use
+  + build/ops: rpm: reverse s390 bcond conditional block
+  + build/ops: rpm: no rgw Beast frontend on s390x (bsc#1040119)
+  + ceph.spec.in, debian/control: build/runtime dependency for cherrypy
+
+-------------------------------------------------------------------
+Wed May 10 09:00:11 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.2+git.1494343993.7527e4f0b8:
+  + ReplicatedPG: drop CACHE_PIN->WRITESAME req translation (bsc#1038063)
+
+-------------------------------------------------------------------
+Tue May  9 09:17:19 UTC 2017 - ncutler@suse.com
+
+- _constraints: up ceph.spec disk constraint to 28G after seeing a 
+  build failure in OBS
+
+-------------------------------------------------------------------
+Fri Apr 28 01:22:07 UTC 2017 - ddiss@suse.com
+
+- Update to version 12.0.2+git.1493341348.9148e53:
+  + ceph osd: add support for new op cmpext
+  + ceph_test_rados_api_misc: add cmpext tests
+  + librados: add cmpext API
+  + ceph_test_rados_api_aio: add cmpext tests
+  + test/librados/c_operations: add cmpext tests
+  This patchset is a straight cherry-pick of the upstream OSD/librados cmpext
+  changes (bsc#1035937).
+
+-------------------------------------------------------------------
+Thu Apr 27 11:39:24 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.2+git.1493291471.adb6a43:
+  + rocksdb: sync with upstream (bsc#1025891)
+  + build/ops: cmake: explicitly disable MSSE 4.2 if not supported
+
+-------------------------------------------------------------------
+Thu Apr 27 08:23:46 UTC 2017 - ncutler@suse.com
+
+- _constraints: set higher disk and memory constraints so s390x 
+  builds don't fail 
+
+-------------------------------------------------------------------
+Wed Apr 26 20:51:56 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.2+git.1493238434.71681fd:
+  + cmake: added empty RPATH to libceph_crypto_isal.so
+
+-------------------------------------------------------------------
+Wed Apr 26 18:10:40 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.2+git.1493227670.3396ca1:
+  + rgw: use a vector for options passed to civetweb
+
+-------------------------------------------------------------------
+Wed Apr 26 10:10:21 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.2+git.1493192333.3305a0c
+  + merge upstream master (0d368d2c8544247a4aed9c71c74e77b0c6bbfb22)
+    including 12.0.2 development release
+
+-------------------------------------------------------------------
+Tue Apr 25 12:39:36 UTC 2017 - ddiss@suse.com
+
+- revert commit a9a50f690085091bb4446095418237f9fef712c8 in preparation for
+  rebasing against the upstream implementation.  (bsc#1035937)
+
+-------------------------------------------------------------------
+Fri Apr  7 12:10:55 UTC 2017 - ncutler@suse.com
+
+- Add ibs_constraints.sh script to address s390 constraints
+  tweak needed in IBS 
+
+-------------------------------------------------------------------
+Fri Apr  7 09:41:22 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.1+git.1491557762.4e47e9f
+  + merge upstream master (2950ad91d25d0d6e2e3fb6842d5bbc36353ba2a5)
+    including fixes for:
+    * bsc#1030068 (s390 build)
+    * bsc#1031311 (ceph-mon.service not enabled via systemd preset)
+
+-------------------------------------------------------------------
+Tue Apr  4 13:42:40 UTC 2017 - ncutler@suse.com
+
+- Mention bugs fixed in jewel codestream that are also fixed in the current
+  codestream:
+  + msg/simple/Pipe: avoid returning 0 on poll timeout (bsc#1014338)
+  + build/ops: fix undefined crypto references with --with-xio (bsc#977940)
+  + ceph-create-keys: add missing argument comma (bsc#1008894)
+  + common: Improve linux dcache hash algorithm (bsc#1005179)
+
+-------------------------------------------------------------------
+Tue Mar 14 12:09:01 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.0+git.1489432599.165c23f:
+  + merge upstream master (0c2f5f7214d2410a7519f88e65ed5273d6480227)
+    including fix for upstream issue#18694 "ceph-disk activate for partition
+    failing"
+
+-------------------------------------------------------------------
+Fri Mar 10 15:55:53 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.0+git.1489159457.410e200:
+  + build/ops: fix Group strings for library packages
+
+-------------------------------------------------------------------
+Fri Mar  3 15:32:06 UTC 2017 - ncutler@suse.com
+
+- Update to version 12.0.0+git.1488553020.e902441:
+  + Recent upstream master (3c0af07629dc661aba84e2fef696339ac7171914)
+  + Builds with GCC7 (boo#1025891)
+
+-------------------------------------------------------------------
+Wed Feb 08 21:28:28 UTC 2017 - ncutler@suse.com
+
+- Update to version 11.1.0+git.1486588482.ba197ae:
+  + Update to latest upstream master (3d740bd)
+  + cmake: added empty RPATH to several executables
+  + rocksdb: sync with upstream
+
+-------------------------------------------------------------------
+Fri Jan 20 14:00:36 UTC 2017 - ncutler@suse.com
+
+- Update to version 11.1.0+git.1484919552.9216e9a:
+  + Revert "rpm: put distro conditionals around Source0 in spec file"
+  + Revert "ceph.spec.in: revert Source0 line to upstream version"
+
+-------------------------------------------------------------------
+Fri Jan 20 10:18:44 UTC 2017 - ncutler@suse.com
+
+- pre_checkin.sh: add logic to remove s390 architectures from ExclusiveArch
+  line in ceph-test.spec (rationale: ceph-test is not shipped for s390x)
+
+-------------------------------------------------------------------
+Fri Jan 20 10:06:54 UTC 2017 - ncutler@suse.com
+
+- Update to version 11.1.0+git.1484745543.7b08de5:
+  + Update to latest upstream master (36874c8) - significant changes:
+    * cmake: Turn libcommon into a shared library (PR#12840)
+    * cmake: fix rpath on shared libraries and executables (PR#12927)
+  + Fix build failure in ppc64le and s390x, caused by missing
+    "-momit-leaf-frame-pointer" gcc option in these architectures:
+    + rocksdb: build with ppc64 (PR#12908)
+
+-------------------------------------------------------------------
+Tue Jan 17 14:14:45 UTC 2017 - ncutler@suse.com
+
+- Update to version 11.1.0+git.1484659687.3472421:
+  + rpm: tell openSUSE to never clean the spec file
+  + Enable ppc64le and s390x builds in SLE
+  + rpm: lttng only on x86_64 and aarch64
+
+-------------------------------------------------------------------
+Thu Jan 05 10:43:34 UTC 2017 - jfajerski@suse.com
+
+- Update to version 11.1.0+git.1483528076.d86680e (latest master)
+  + Merge branch 'master' into ses5 (Merge: 185bcce798 a7b78620f0) with conflicts:
+      conflicts in qa/ where resolved with theirs
+      conflict in src/osd/PrimaryLogPG.cc was resolved with picking ours plus a method rename
+      int ReplicatedPG::do_extent_cmp -> int PrimaryLogPG::do_extent_cmp
+
+-------------------------------------------------------------------
+Tue Dec 13 21:21:41 UTC 2016 - ncutler@suse.com
+
+- Update to version 11.1.0+git.1481663255.bf42706:
+  + Update to upstream 11.1.0 release; for details see 
+    http://docs.ceph.com/docs/master/release-notes/#v11-1-0-release-candidate
+  + move ceph_ver_hack.sh script from build service package to git repo 
+    (bsc#1015419)
+
+-------------------------------------------------------------------
+Tue Nov 29 20:39:16 UTC 2016 - ncutler@suse.com
+
+- Update to version 11.0.2+git.1480437645.66595d3
+  + Update to latest upstream master (boost library is now included in the
+    tarball, so the tarball is much larger than before and the build takes
+    longer to complete)
+  + ceph_ver_hack_sh adaptation (upstream dropped src/make_version script)
+  + rocksdb: do not build with --march=native (bsc#1012553)
+
+-------------------------------------------------------------------
+Fri Nov 25 20:42:45 UTC 2016 - ncutler@suse.com
+
+- Update to version 11.0.2+git.1480105120.6b8e9e5:
+  + Revert commit 8aee8db140bcbd1ffd2a7b571dbbade10bec9de3 because it 
+    conflicted with upstream
+  + update to latest upstream kraken (11.0.2) - for details, see
+    http://ceph.com/releases/kraken-11-0-2-released/
+
+-------------------------------------------------------------------
+Mon Sep 12 12:48:33 UTC 2016 - ncutler@suse.com
+
+- Update to version 11.0.0+git.1473684054.73e4b4a:
+  + safe_io: Improve portability by replacing loff_t type usage with off_t.
+  +  mon: remove the redundant list swap in paxos commit_proposal
+  + msg/EventPoll.h: add override to virtual functions
+  + msg/EventKqueue.h: add override to virtual func
+  + msg/EventSelect.h: add override to virtual funct
+  + ceph-disk: Compatibility fixes for Python 3
+  + ceph-disk: Use true integer division in get_dev_size
+  + ceph-disk: Fix bug in FileLock
+  + ceph-disk: Allow ConfigObj to write in binary mode
+  + ceph-disk: Use context manager with FileLock
+  + ceph-disk: Use os.path.isabs instead of .startswith('/')
+  + ceph-disk: Set space_symlink to the path, not file object
+  + ceph-disk: PEP8ify
+  + rgw: rgw file fix bug of rgw_lookup can not exact match file name
+  + rgw: fix the wrong return value
+  + rgw/rgw_coroutine: move WaitContext to .cc file
+  + client: pass a mask parameter to path_walk
+  + mds/mdstypes: add btime to inode
+  + mds/Server: set btime=ctime on creation
+  + mds/MDCache: set btime on system inodes
+  + include/ceph_features: add FS_BTIME features
+  + mds: pass btime in InodeStat MClientReply, if feature is present
+  + client: keep btime in Inode and InodeStat
+  + ceph: break up ll_getattr into two functions
+  + client: move the device bitshift handling macros to Client.h
+  + libcephfs: add a ceph_ll_getattrx and ceph_statx
+  + libcephfs: add a test for "lazy" statx
+  + mds/client: add btime to CapSnap and MClientCaps
+  + mds/mdstypes: add change attribute to inode
+  + mds/Server: set change_attr to 0 on creation
+  + mds/MDCache: set change_attr to 0 on system_inodes
+  + include/ceph_features: add FS_CHANGE_ATTR feature
+  + mds: pass change_attr in InodeStat MClientReply, if feature is present
+  + mds/client: keep change_attr in Inode, CapSnap and MClientCaps
+  + mds: ensure that change_attr reflects metadata changes on clients that hold CAP_FILE_EXCL
+  + mds/client: bump the change_attr at the appropriate time for files
+  + libcephfs: return the change_attr in the statx.stx_version field
+  + tests: add a ChangeAttr test
+  + mds: make frag_info_t add_dirty() function take a pointer to touched_mtime
+  + mds: add change_attr to frag_info_t
+  + test: add test for change attribute of directories
+  + cephfs: rename ceph_mds_request_head and _args with a _legacy postfix
+  + MDS: allow the MDS to accept requests to set the btime
+  + client: add the ability to set the btime
+  + client: add a ceph_fstatx
+  + client: extend the Btime test to cover fstatx as well
+  + journal/JournalTrimmer: move C_RemoveSet struct
+  + rbd_mirror/ImageSynceThrottler: move struct to .cc
+  + libcephfs: add unmount function in cephfs.pyx
+  + rgw: fix typo of "minite" to "minute" in rgw_lc.cc
+  + rgw/rgw_lc.cc: fix sleep time according to the error message
+  + crush: don't normalize input of crush_ln iteratively
+  + crush: remove clutter
+  + mds: remove max_mds config option
+  + vstart.sh: add option to turn on multimds
+  + rgw: right parenthesis is missing in radosgw-admin help message on caps
+  + SQUASH: client: request AUTH caps on the directory during create if we'll need to check perms locally
+  + SQUASH: Revert "mds: ensure that change_attr reflects metadata changes on clients that hold CAP_FILE_EXCL"
+  + SQUASH: client: always take a change_attr update from the server if it's newer
+  + SQUASH: mds/client: don't get clever with ceph_mds_request_head_legacy encode/decode
+  + rgw/rgw_rados.h: remove unneeded class C_Tick
+  + SQUASH: client: querying for stx_version field requires getting all shared caps
+  + SQUASH: mds/client: add routines to copy to/from ceph_mds_request_head_legacy
+  + client: properly set inode number of created inode in replay request
+  + test/librbd/fsx: enable exclusive-lock feature in krbd mode
+  + os/bluestore/BlueFS: fix async compaction txn
+  + scripts/bdev_grep: parse bluefs style extents too
+  + SQUASH: client: request all shared caps if ctime was requested
+  + os/bluestore/BlueFS: factor unflushed log into runway calculation
+  + osd/ReplicatedBackend: move classes to cc file
+  + os/bluestore: honour allow-eio flag during read
+  + CmakeLists.txt: use LIB_RESOLV instead of resolv.
+  + osd/ReplicatedPG: move classes to .cc file
+  + librbd: potential double-unwatch of watch handle upon error
+  + cls/journal: add async client_update_state method
+  + journal: allow to trim journal for "laggy" clients
+  + librbd: optionally flag "laggy" journal clients disconnected
+  + rbd: new command to disconnect journal client
+  + rbd-mirror: decode_client_meta should return false on error
+  + rbd-mirror: resync was possible only when image replayer start had succeeded
+  + rbd-mirror: stop replay when client is disconnected
+  + rbd-mirror: option to automatically resync after journal client disconnect
+  + qa/workunits/cephtool/test.sh: fix omision of ceph-command
+  + os/bluestore: use global compressor if possible
+  + build/ops: fix /etc/os-release parsing in install-deps.sh
+  + osd/OSD.cc: remove repeated searching of map
+  + test/cephfs: add mount&&unmount test
+  + mds: s/used_ions/used_inos/
+  + Add dependencies from ceph_smalliobenchrbd on cls_rbd, cls_journal, and cls_lock.
+  + ceph_test_objectstore: add SyntheticMatrixSharding
+  + ceph_test_objectstore: occasional umount/fsck/mount
+  + ceph_test_objectstore: test shards for longer
+  + crush/CrushCompiler.cc:884 bug fix: index out of range
+  + Makfile: Fix rocksdb error when make dist
+  + src/CMakeLists.txt: exclude parts not buildable on FreeBSD
+  + src/pybind/CMakeLists.txt: conditionaly build cython tools
+  + src/tools/CMakeLists.txt: conditionaly build ceph-client-debug
+  + src/test/objectstore/CMakeLists.txt: conditionaly build tests
+  + mds: trim null dentries proactively
+  + cmake: include(SIMDExt) in src/CMakeLists.txt
+  + mds: log path with CDir damage messages
+  + hint in extent_alloc code
+  + remove wrap argument and handle in wrappers
+  + Hint argument in alloc_blocks + test case changes
+  + os/bluestore: shard extent map
+  + os/bluestore: make nid and blobid allocation less racy
+  + os/bluestore: optimize compress_extent_map
+  + os/bluestore: fix fsck used_block bitmap
+  + os/bluestore: use block_size for allocator unit
+  + os/bluestore: make blob_t unused helpers use logical length
+  + os/bluestore: instrument big/small writes
+  + os/bluestore: instrument transaction count
+  + os/bluestore: instrument onode reshard events
+  + os/bluestore: dump some stats after fsck
+  + os/bluestore: assert shared blob cache cleared on split
+  + remove autotools
+  + test/objectstore/CMakeLists.txt: fix libaio conditional
+  + buffer: clear append_buffer on clear()
+  + os/bluestore: tunable prealloc size for ExtentMap inline_bl
+  + os/bluestore: don't dirty onode if its size is already at desired offset
+  + os/bluestore: remove never reachable asserts
+  + os/bluestore: drop unnecessary separator between fields
+  + os/bluestore: fix key+name sort wonkiness
+  + os/bluestore: encode shard id in single byte
+  + os/bluestore: small put_ref cleanup
+  + os/bluestore: remove faulted debug hackery
+  + os/bluestore: bits for unit tests
+  + unittest_bluestore_types: resurrect blob and extent_map unit tests
+  + os/bluestore/BlueFS: do not start racing async compaction
+  + os/bluestore/BlueFS: fix Dir memory leak
+  + buffer: implement buffer::list::reserve(n)
+  + os/bluestore: do not waste memory on cached encoded blobs
+  + qa/workunits/objectstore: fix test_fuse.sh
+  + os/FuseStore: only flush if dirty
+  + build: drop dryrun of autogen.sh from run-cmake-check.sh script
+  + os/bluestore/BlueFS: For logs of rocksdb & bluefs only use directio.
+  + os/bluestore: remove some copy-pastes
+  + cmake: make py3 a nice-to-have
+  + os/bluestore/BlueFS: only extend extent on same bdev
+  + msg/AsyncConnection: add const to mem functions
+  + msg/AsyncMessenger: add const to function
+  + client/barrier: move C_Block_Sync class to .cc
+  + osd/OSD.cc: remove unneeded searching of map
+  + Set ARM_CRC_FLAGS from the CRC test rather than ARM_NEON_FLAGS
+  + rpm: Moved ceph-client-debug from ceph-base to ceph-test package
+  + rpm: Renamed bcond tests flag to make_check
+  + rbd-nbd: fix kernel deadlock during teuthology testing
+  + rbd-nbd: mask out-of-bounds IO errors caused by image shrink
+  + librbd: invalidate cache before trimming image
+  + librbd: ignore cache busy errors when shrinking an image
+  + librbd: potential seg fault when blacklisting an image client
+  + cmake: Use WITH_TESTS flag to guard the build of ceph-test scripts/binaries
+  + rpm: Added ceph_test_package bcond flag to control the build of ceph-test package
+  + deb: Moved ceph-client-debug from ceph-base to ceph-test package
+  + ceph-objectstore-tool: add a way to split filestore directories offline
+  + install-deps: exit non-zero when we cannot match distro
+  + librbd: possible deadlock if cluster connection closed after image
+  + osd/ReplicatedPG: remove class redeclaration
+  + librbd: ignore partial refresh error when acquiring exclusive lock
+  + osd/OSD.cc: remove unneeded returns
+
+-------------------------------------------------------------------
+Fri Sep 09 12:53:16 UTC 2016 - ncutler@suse.com
+
+- Update to version 11.0.0+git.1473424516.3b8b524:
+  + Revert "ceph_disk.main: s/get_dev_size/get_free_partition_size/"
+  + Revert "ceph_disk tests/test_prepare: s/get_dev_size/get_free_partition_size/"
+  + Revert "ceph_disk tests/test_get_free_partition_size: New unit tests"
+  + Revert "ceph_disk tox.ini: add tests/test_get_free_partition_size.py"
+  + rpm: put distro conditionals around Source0 in spec file
+
+-------------------------------------------------------------------
+Fri Sep 09 10:59:53 UTC 2016 - ncutler@suse.com
+
+- Update to version 11.0.0+git.1473418476.095f67c:
+  + ceph.spec.in: revert Source0 line to upstream version
+  + ceph.spec.in: conditionalize %prep command
+
+-------------------------------------------------------------------
+Fri Sep 09 08:16:40 UTC 2016 - ncutler@suse.com
+
+- ceph.spec.in: enable cephfs_java build unconditionally
+- new (merged) commits from upstream master branch:
+  + mailmap updates
+  + rgw: fix the handling of rgw_swift_url_prefix.
+  + rgw: ONLY improve code formatting around RGWRESTMgr.
+  + rgw: add support for the crossdomain.xml resource of Swift API.
+  + rgw: add support for the healthcheck feature of Swift API.
+  + swift /info implementation.
+  + rgw: settle /info implementation across other swift-at-root features.
+  + compressor: isa-l extension for zlib plugin Signed-off-by: Alyona Kiseleva <akiselyova@mirantis.com>
+  + mon: tear down standby replays on MDS rank stop
+  + mon/MDSMonitor: move C_Updated class to .cc file
+  + rgw_file: fix/update rgw_open flag arguments
+  + rgw_file: fix/update rgw_create flag arguments
+  + doc: remove btrfs contradiction
+  + msg: make async backend default
+  + msg/simple: wait dispatch_queue until all pipes closed
+  + rgw_file: implement stateless write completion timer
+  + rgw_file: add RGW_OPEN_FLAG_STATELESS as a synonym for V3
+  + rgw_file:  log on write completion events at level 10
+  + rgw file: allow RGWLibFS::write_completion_interval_s to be set in conf
+  + osdc/ObjectCacher: move C_ReadFinish, C_RetryRead
+  + osdc/Journaler: move C_DelayFlush class to .cc
+  + rgw: fix RGWAccessControlPolicy_SWIFT::create return value check error
+  + librgw: add API version defines for librgw and rgw_file
+  + make-dist/ceph.spec.in: Fix srpm build breakage.
+  + ceph_timer: prefer using directive to typedef
+  + rgw_file:  explain semantics of RGWFileHandle::commit
+  + compressor: Better arch ifdefs for isal code
+  + mds/MDSTable: add const to member functions
+  + os/bluestore: fix some #includes
+  + vstart.sh: -b for bluestore
+  + os/bluestore/bluestore_types: make blob_t get_chunk_size const
+  + os/bluestore: use Blob const and non-const accessors
+  + os/bluestore: avoid reencoding unchanged blobs
+  + os/bluestore: decode blobs on demand
+  + mds/SnapRealm.h: add const to member functions
+  + os/bluestore/bluefs: avoid check "locked" field for newly created file
+  + os/bluestore/bluefs: check against locked field during unlink
+  + os/bluestore/bluefs: assert refs of file don't underflow
+  + os/kstore: kill dead code
+  + rgw: remove duplicated calls to getattr
+  + debian: should dh_python3 python3-* not python-*
+  + pybind: silence -Wsign-compare warning
+  + test/ceph_test_msgr: fix -Wsign-compare warnings
+  + test/unittest_alloc: fix -Wsign-compare warnings
+  + librbd: API methods to directly acquire and release the exclusive lock
+  + doc: add graphic for cap bit field
+  + mds/MDCache.h: remove unneeded access specifier
+  + librbd: skeleton implementation of client-side image cache
+  + librbd: blocking parent IO completion no longer required
+  + librbd: remove use of owner_lock on IO path
+  + Revert "osdc: ObjectCacher flusher might needs additional locks"
+  + librbd: support bufferlist payload for AioImageWrite
+  + librbd: add internal support for scatter/gather IO
+  + librbd: initial integration of ImageWriteback to AioImageRequest
+  + librbd: consolidate IO clipping to reusable method
+  + librbd: differentiate between image and object cache
+  + librbd: C_ImageCacheRead bridge from Context to AioCompletion
+  + librbd: integrate image cache hooks into IO path
+  + common/Throttle.h: remove unneeded class
+  + cmake: fix the tracing header dependencies
+  + src/test/bench/CMakeLists.txt: RBD exclude
+  + src/CMakeLists.txt: RBD|KVS|FUSE exclude
+  + src/librbd/CMakeLists.txt: krbd and secret.c are LINUX dependant
+  + src/os/CMakeLists.txt: AIO|FUSE exclude
+  + src/test/CMakeLists.txt: RADOSGW|RBD exclude
+  + src/test/common/CMakeLists.txt: BLKID exclude
+  + install-deps.sh: initial distro detection based on /etc/os-release
+  + ceph_test_objectstore: fix ObjectStore/StoreTest.BluestoreStatFSTest/2 on ssd
+  + ceph_test_objectstore: disable statfs checks on available space
+  + messages/MOSDMap: mark as enlighten OSDMap encoder
+  + cmake: remove unused librados_api target
+  + cmake: replace Findlttng-ust.cmake with FindLTTngUST.cmake
+  + cmake: let librados_api_obj depend on librados-tp
+  + os/bluestore: yet another statfs test fix
+  + Revert "osd/ReplicatedPG: for sync-read it don't cacl l_osd_op_r_prepare_lat."
+  + doc/release-notes: v0.94.9
+  + os/bluestore/bluefs: use map to track dirty files
+  + os/bluestore/bluefs: update mtime of inode in unified path
+  + os/bluestore/bluefs: drop redundant eof check for read_random()
+  + os/CMakeLists.txt: undubble kv.cc usage.
+  + test,pybind: silence -Wsign-compare warnings
+  + test/perf_local: fix -Wmaybe-uninitialized warnings
+  + os/bluestore: get rid off "isa-l" type in ZLibCompressor ctor
+  + Allow compressor build without YASM
+  + script/bdev_grep: update to use hex
+  + os/bluestore: improve failed csum debug output
+  + librbd: improve image state machine debug log messages
+  + librbd: deadlock when replaying journal during image open
+  + os/bluestore: end scope of std::hex properly
+  + os/bluestore: don't over-gift if bluefs free is smaller than bluestore_bluefs_min
+  + os/bluestore: use _setattr for SETATTR
+  + os/bluestore: make object existence check robust
+  + ceph_test_objectstore: assert umount succeeds
+  + ceph_test_objectstore: clean up Rename test a bit
+  + ceph_test_objectstore: fix TryMoveRename test
+  + os/bluestore: add onode/buffer cache statistics
+  + os/bluestore: end scope of std::hex properly
+  + cmake: pass -DINTEL* to gf-complete cflags
+  + os/bluestore: conditional checking label of bluefs devices
+  + src/CMakeLists.txt: -Woverloaded-virtual is already included in -Wall on Clang
+  + os/bluestore: don't overwrite type if it does already exist and at desired type
+  + os/bluestore: trivial cleanups
+  + os/bluestore: replace store with logger in Cache
+  + os/bluestore: check iterator before using during fsck
+
+-------------------------------------------------------------------
+Mon Aug 29 07:24:44 UTC 2016 - ncutler@suse.com
+
+- pre_checkin.sh: add Source line for ceph-rpmlintrc
+- move Source line for ceph-rpmlintrc from ceph.spec to ceph-test.spec
+  (see https://github.com/SUSE/ceph/pull/60 for rationale)
+
+-------------------------------------------------------------------
+Mon Aug 29 07:20:00 UTC 2016 - ncutler@suse.com
+
+- Update to version 11.0.0+git.1472455009.a17726c:
+  + ceph.spec.in: drop ceph-rpmlintrc source line
+  + ceph.spec.in: drop epoch prefixes
+
+-------------------------------------------------------------------
+Sun Aug 28 11:48:42 UTC 2016 - ncutler@suse.com
+
+- Update to version 11.0.0+git.1472384770.c9f3af8:
+  + test/rgw: add --gateways-per-zone to test_multi.py
+  + rgw: RGWDataSyncCR fails on errors from RGWListBucketIndexesCR
+  + rgw: RGWCoroutinesManager::run returns status of last cr
+  + os/bluestore: fix whitespace in bitset apply helper
+  + cmake: do not link secret.c if not necessary
+  + cmake: do not link against keyutils if not necessary
+  + os/bluestore: fsck on mkfs (on by default)
+  + os/bluestore: ensure block device size is a multiple of the block size
+  + Revert "ceph.spec.in: don't try to package __pycache__ for SUSE"
+  + rpm: force creation of Python 3 __pycache__ on SUSE
+  + doc: add v0.94.7 changelog
+  + doc: add v0.94.8 changelog
+  + doc/releases: add v0.94.8 to timeline
+  + doc/release-notes: fix v10.2.2 changelog link
+  + unittest_bluefs: fix block device sizes
+  + doc: do not list all major versions in get-packages.rst
+  + doc: add missing PR to hammer 0.94.8 release notes
+  + doc: release-notes.rst: move misplaced line
+  + doc: fix two broken links in releases.rst
+  + doc: add 11.0.0 to releases table
+
+-------------------------------------------------------------------
+Sun Aug 28 10:55:04 UTC 2016 - ncutler@suse.com
+
+- pre_checkin.sh: forward-port insert_line_before() function from 
+  filesystems:ceph:jewel/ceph version
+- README-ceph-test.txt: new file
+- ceph-test.spec: add ceph_ver_hack.sh as a source file
+
+-------------------------------------------------------------------
+Fri Aug 26 09:06:41 UTC 2016 - ncutler@suse.com
+
+- Update to version 11.0.0+git.1472202104.8999301:
+  + rgw: add deadlock detection to RGWCoroutinesManager::run()
+  + src/common/lockdep.cc Reduce logging noise if lockdep is not tested
+  + osd: fix updating same_interval_since logic of project_pg_history()
+  + osd: drop duplicated sched_scrub during tick()
+  + osd: move methods which don't need osd_lock from tick into tick_without_osd_lock()
+  + mon/PGMonitor: mark dump_object_stat_sum() as static
+  + mon/PGMonitor: calc the %USED of pool using used/(used+avail)
+  + rpm: proper packaging of udev directories
+  + LTTng-UST disabled for openSUSE
+  + ceph-disk: do not activate device that is not ready
+  + osd: update reture type of get_pg_or_queue_for_pg() to PGRef
+  + common/WPQ: add sanity check to avoid potential access violation
+  + osd/osd_types: kill undefined_shard() method of pg_shard_t
+  + release-notes.rst: draft 0.94.8 release notes
+  + PG: introduce and maintain upset
+  + mon/MonClient: should update sub_sent with sub_new
+  + osd: set objecter.osdmap when starts
+  + rgw: fix for assertion in RGWMetaSyncCR
+  + PG: use upset rather than up for _update_calc_stats
+  + rgw: do not try to encode or decode time_t
+  + cls_rgw: fix the compiler warning
+  + msg/async: fix compiler warnings
+  + os/filestore: silence compiling warnings
+  + test/rbd: silence compiling warnings
+  + rgw: silence a compiling warning
+  + msg/async/kqueue: avoid remove nonexist kqueue event
+  + librbd: cache was not switching to writeback after first flush
+  + mon/OSDMonitor: fix potential division-by-zero error
+  + mon/OSDMonitor: get rid of snprintf when formatting output string
+  + mon/OSDMonitor: avoid duplicated calls when determining osdmap boundary
+  + osd/OSDMonitor: avoid duplicated assignment of oldest_map/newest_map
+  + osd/OSDMonitor: drop redundant check of exists()
+  + mon/PGMonitor: skip scrub checking if we can
+  + mon/PGMonitor: drop redundant loading of dumpcontents
+  + mon/PGMonitor: fix potential underflow
+  + debian: replace SysV rbdmap with systemd service
+  + os/bluestore: break down onode vs bnode_map size in log
+  + os/bluestore/BlueFS: do direct io by default (not buffered)
+  + os/bluestore/BlueFS: rename buffered_io option
+  + os/bluestore: add multiple finishers to bluestore
+  + os/bluestore: fix decoding hash of bnode
+  + cmake: fix unmatched endforeach
+  + debian: enable dh_python3 for python3 packages
+  + debian: exclude python3* packages in dh_shlibdeps
+  + debian: drop python-argparse dependency
+  + os/bluestore: fix race condition during get_fs_usage()
+  + os/bluestore: use bluefs_max_prefetch for log file prefetch
+  + os/bluestore: use hex if we are running out of space
+  + os/bluestore: fix assert
+  + osd: bail out if transaction size overflows
+  + os/filestore/FileJournal: bail out if transaction is too large
+  + os/FuseStore: remove unneeded header file
+  + os/Memstore.h: add override to virtual functions
+  + os/MemStore: move OmapIteratorImpl to cc file
+  + os/bluestore: include bluefs space in statfs result
+  + common/config_opts: fix comment(radio -> ratio)
+  + msg: kill unused macros
+  + mon/OSDMonitor: add output field name of average/overload_utilization
+  + test/librados: rados_connect() should succeed
+  + ceph-osd-prestart.sh: check existence of OSD data directory
+  + osd/ReplicatedPG:wipe off param op from generate_subop()
+  + ceph-post-file: migrate to RSA SSH keys
+  + ceph-post-file: Ignore keys offered by ssh-agent
+  + os/Memstore: move PageSetObject class to .cc file
+  + yasm-wrapper: dont echo the yasm command line
+  + arch/arm.c: remove unnecessary variable read for simplicity
+  + rpm: drop obsolete libs-compat metapackage
+  + ceph.spec.in: drop trouble-making divider comments
+  + rpm: do not unnecessarily spawn shells for scriptlets
+  + cls_lock: support updating the lock cookie without releasing the lock
+  + librbd: helper state machine to update lock cookie
+  + librbd: store exclusive lock cookie instead of recalculating
+  + librbd: exclusive lock now supports reacquiring a lost lock
+  + librbd: helper state machine for asynchronous watch recovery
+  + librbd: integrate asynchronous image rewatch state machine
+  + librbd: image state machine now has hooks for lock requests
+  + librbd: interlock image refresh and lock operations
+  + librbd: remove unused refresh request logic
+  + test/common/test_util.cc: FreeBSD does not have distro information
+  + README.md: replace package build instructions with tarball instructions
+  + doc: fix singleton example in Developer Guide
+  + rgw: delete region map after upgrade to zonegroup map
+  + rgw: fix period update --commit return error
+  + cmake: use PERF_LOCAL_FLAGS only if defined
+  + tests: populate /dev/disk/by-partuuid for scsi_debug
+  + ceph.spec.in: don't try to package __pycache__ for SUSE
+  + doc: fix wrong osdkeepalive name in mount.ceph manpage
+  + rados-striper.sh: Use expect_failure and conditional stringmatching
+  + Revert "ceph.spec.in: ppc64 build in Tumbleweed only"
+  + jerasure: include generic objects in neon jerasure lib (like sse3/4)
+
+-------------------------------------------------------------------
+Fri Aug 26 08:59:09 UTC 2016 - rdias@suse.com
+
+- pre_checkin.sh: fix package files path rewriting
+
+-------------------------------------------------------------------
+Tue Aug 23 18:18:38 UTC 2016 - ncutler@suse.com
+
+- _constraints: tweak values to pick up maximum number of OBS build workers 
+
+-------------------------------------------------------------------
+Tue Aug 23 16:36:21 UTC 2016 - rdias@suse.com
+
+- Update to version 11.0.0+git.1471969747.79ca12e:
+  + cmake: fix declaration position of WITH_TESTS option
+
+-------------------------------------------------------------------
+Tue Aug 23 13:47:12 UTC 2016 - rdias@suse.com
+
+- Update to version 11.0.0+git.1471959548.f013b97:
+  + rpm: Renamed bcond tests flag to make_check
+  + cmake: Use WITH_TESTS flag to guard the build of ceph-test scripts/binaries
+  + rpm: Added ceph_test_package bcond flag to control the build of ceph-test package
+
+-------------------------------------------------------------------
+Fri Aug 19 11:29:25 UTC 2016 - tserong@suse.com
+
+- Update to version 11.0.0+git.1471605408.9203335:
+  + ceph.spec.in: don't try to package __pycache__
+
+-------------------------------------------------------------------
+Fri Aug 19 10:27:52 UTC 2016 - tserong@suse.com
+
+- Update to version 11.0.0+git.1471601504.f312e7e:
+  + test/libcephfs: add  the necessary judgment
+  + test/librados: add ASSERT_EQ & ASSERT_NE judgment
+  + rgw: optimize the usage of string.find and some indents
+  + rgw: patch manifest to handle explicit objs copy issue
+  + rgw: adjust objs when copying obj with explicit_objs set
+  + rgw: adjust manifest head object
+  + rgw: fix the error return variable in log message
+  + rgw: fix trimming object expirer's hints.
+  + rgw: fix skipping some objects to delete by RadosGW's object expirer.
+  + rgw: ONLY improve code formatting in rgw_object_expirer_core.{cc,h}.
+  + os/bluestore: allow csum verification disable on read.
+  + os/bluestore: add csum on/off test case
+  + os/bluestore: add store statfs parameters to bluestore perf counters
+  + os/bluestore: add perf counters for compress/decompress performance measurement
+  + tools: fix the core dump when get the crushmap do not exist
+  + librbd: request exclusive lock if current owner cannot execute op
+  + src/global/pidfile.cc: Assign elements in structures individually
+  + rgw: fixes for period puller
+  + rgw: for the create_bucket api, if the input creation_time is zero, we should set it to 'now"
+  + pybind: Rework rbd/setup.py for PyPI
+  + pybind: Add BUILD_DOC env var to rbd/setup.py
+  + doc: fix rbd map format in rbd manpage
+  + ceph-disk: change ownership of init file to ceph:ceph
+  + cmake: Also build Python bindings for Python 3
+  + pybind: Make ceph_volume_client's syntax compatible with Python 3 (just so it passes the bytecompilation step)
+  + debian: Add packages for Python 3 bindings
+  + rpm: Add packages for Python 3 bindings
+  + os/bluestore/bluefs_types: fix extent operator<<
+  + os/bluestore/BlueFS: do not op_file_update deleted files
+  + os/bluestore: print bluefs_extents in hex
+  + os/bluestore: do not track bluefs_extents via freelist
+  + os/bluestore/BitMapAllocator: align to min_alloc_size on init_rm_free
+  + rgw/doc: fix typo and indent.
+  + mon/MonDBStore: fix assert which never fires
+  + osd/OSDMonitor: count pg primed more precisely
+  + doc: replace cluster name with cluster-name to avoid confusing
+  + doc: fix typo maximum -> minimal
+  + doc: fix command format
+  + batch is_allocated bit checks
+  + cmake: Move Python detection back outside of pybind
+  + doc: format 2 now is the default image format
+  + rgw: Rework of s3 v2 local authentication code.
+  + rbd: bench io-size should not be larger than image size
+  + doc/install: Use https:// for download.ceph.com
+  + librbd: fix possible inconsistent state when disabling mirroring
+  + os/bluestore/ExtentFreelistManager: move default create out of parent
+  + librbd: new journal policy to disable initializing the journal
+  + librbd: permit disabling journaling if in corrupt state
+  + qa/workunits: support filtering cls_rbd unit test cases
+  + os/bluestore/BlueFS: _should_compact_log
+  + os/bluestore/BlueFS: _replay(false) to dump log file
+  + mon/PGMonitor: move C_Stats struct to cc file
+  + client: don't use special faked-up inode for /..
+  + client: add a testcase for "/.." handling
+  + os/bluestore/BlueFS: add OP_JUMP
+  + os/bluestore/BlueFS: allow log position to when doing op_jump
+  + os/bluestore/BlueFS: move metadata dump (compaction) into a helper
+  + os/bluestore/BlueFS: interface to get bluefs space usage
+  + os/bluestore/BlueFS: init in header at decl
+  + os/bluestore/BlueFS: assert we never extend log at flush
+  + os/bluestore/BlueFS: use hex
+  + os/bluestore/BlueFS: Add sync and async compaction
+  + os/bluestore/BlueFS: Helper functions for the unit test framework
+  + os/bluestore/BlueFS: unit tests for log compaction
+  + os/bluestore/BlueFS: Cleanup unused interfaces
+  + unittest_bluefs: make flush_3 test device larger
+  + bluestore: initialize csum_order properly
+  + librbd: fix possible memory leak when image open fails
+  + script: improve ceph-release-notes regex
+  + rbdmap: specify bash shell interpreter
+  + doc: added rbdmap man page to RBD restructured index
+  + librbd: always respond to "release lock" request if lock owner
+  + rgw: fix radosgw daemon core when reopen logs
+  + qa/workunits/rbd: demote/promote image on same cluster
+  + rbd-mirror: include tag tid in bootstrap debug log messages
+  + librbd: separate journal::TagData predecessor data into new struct
+  + librbd: block RPC requests when demoting the image
+  + librbd: normalize journal promotion/demotion events
+  + rbd-mirror: demote/promote in same cluster results in split-brain
+  + rbd-mirror: prevent syncing to non-primary image after failover
+  + test: fixed unused function warnings in unittest_rbd_mirror
+  + doc: remove the description of deleted options
+  + msg/async/Stack: add abstract Stack
+  + msg/async: add PosixStack support
+  + msg/async/net_handler: let set_socket_options return value
+  + msg/async/AsyncConnection: support NetworkStack api instead of posix
+  + msg/async/Event: debug event address when dispatching and executing
+  + msg/async/Event: remove event wakeup flag
+  + msg/async/PosixStack: increase log level
+  + msg/async/Stack: disable smart thread spawn now
+  + common/ceph_context: add prefork/postfork wathcher support
+  + msg/async/Stack: register fork watcher
+  + msg/async: allow EventCenter::set_owner reentry
+  + msg/async: readd set_priority call
+  + msg/async/AsyncConnection: fix _conn_prefix racing when stopped
+  + test_async_networkstack: add networkstack tests
+  + msg/async/Event: remove global_centers assert
+  + test_msgr: ensure wait for ms_dispatch executed
+  + mon/OSDMonitor: add sanity check before setting use_gmt_hitset attribute
+  + osd/OSDMonitor: drop redundant null check of max_failed_since
+  + osd/OSDMonitor: drop redundant check of assert
+  + mon/LogMonitor: remove "host" and "fsid" from handle_conf_change()
+  + test: gcc 6.1.1 complains about missing include: <random>. 4.8.3 does not complain about it
+  + rgw: fix flush_read_list() error msg
+  + cmake: Fix mismatched librgw VERSION / SOVERSION
+  + cmake: Add -pie to CMAKE_EXE_LINKER_FLAGS
+  + rgw_file: restore local definition of RGWLibFS gc interval
+  + kv: delete store after pg destructor is called in OSD shutdown.
+  + kv: fix iterator invalidation in memdb.
+  + kv: fill 'm_key_value' after 'seek_to_first' or 'seek_to_last'
+  + kv: fix iterator bug in prev
+  + test/store_test: fix incorrect prompt given by stash callback
+  + test/store_test: drop redundant transaction of callbacks
+  + test/store_test: avoid dynamic allocation of trans
+  + cmake: recompile erasure src for different variants
+  + rgw ldap:  protect rgw::from_base64 from non-base64 input
+  + qa/workunits/rados/test_python.sh: Allow specifying Python executable (through an environment variable)
+  + ceph.spec.in: specify local sources
+  + ceph.spec.in: ppc64 build in Tumbleweed only
+  + ceph.spec.in: add lowmem_builder_override
+  + ceph.spec.in: add Prereq: permissions to radosgw package
+  + ceph.spec.in: remove vim hints line
+  + ceph.spec.in: remove all mentions of epoch
+  + ceph_disk.main: s/get_dev_size/get_free_partition_size/
+  + ceph_disk tests/test_prepare: s/get_dev_size/get_free_partition_size/
+  + ceph_disk tests/test_get_free_partition_size: New unit tests
+  + ceph_disk tox.ini: add tests/test_get_free_partition_size.py
+  + ceph.spec.in: replace pwdutils dependency with shadow
+  + Make systemd-tmpfiles create /var/run/ceph-radosgw at boot
+  + rpm: fix ownership of logfiles in %pre
+  + Revert "rbd: update default image features"
+  + osd: munge cache-pin ops with data into writesame
+  + ceph osd: add support for new op cmpext
+  + rpm: make lowmem_builder code much smarter
+  + rpm: add procps build dependency
+  + rpm: modify optflags to make debuginfos less huge
+  + Revert "ceph.spec.in: add lowmem_builder_override"
+  + rpm: lean_debug_symbols bcond
+  + rpm: use gcc manpage terminology for debug info bcond
+  + Revert "Drop any systemd imposed process/thread limits"
+  + Revert "systemd: Add systemd sandboxing to services."
+  + rpm: be careful about build parallelism
+  + rpm: divergent java, ocf conditional builds
+  + rpm: fix _with_ocf
+  + rpm: drop obsolete libs-compat metapackage
+  + rpm: drop obsolete python-ceph-compat metapackage
+  + ceph.spec.in: drop ceph-brag and ceph-post-file
+  + ceph.spec.in: move cephfs-* fsck tools to ceph-base
+  + ceph.spec.in: move ceph-dencoder to ceph-base
+  + rpm: Moved ceph-client-debug from ceph-base to ceph-test package
+  + rpm: add udev BuildRequires to provide /usr/lib/udev directory
+  + rpm: Remove trailing whitespace in usermod command (SUSE)
+
+-------------------------------------------------------------------
+Fri Aug 12 10:37:15 UTC 2016 - tserong@suse.com
+
+- Update to version 11.0.0+git.1470997027.9c9b8a5:
+  + doc/radosgw: remove reference of purge-temp.rst
+  + doc/radosgw: fix the table formatting
+  + doc: silence sphinx warnings
+  + global/signal_handler: use sig_str instead of sys_siglist
+  + librados: use bufferlist instead of buffer::list
+  + cmake: cleanup Findgperftools.cmake
+  + cmake: cleanup Findleveldb.cmake
+  + cmake: cleanup Findxio.cmake
+  + rgw file: remove busy-wait in RGWLibFS::gc()
+  + Lowered third example to keep PG count lower.
+  + run-make-check.sh: pass args to do_cmake.sh
+  + ceph.spec.in: specify local sources
+
+-------------------------------------------------------------------
+Fri Aug 05 08:27:31 UTC 2016 - ncutler@suse.com
+
+- Update to version 11.0.0+git.1470355272.6fed82a:
+  + initial fork of SES5

@@ -1,0 +1,973 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>63651c3fea36b06cfbf3b264bca92a70</srcmd5>
+    <version>2.8.2</version>
+    <time>1312447616</time>
+    <user>saschpe</user>
+    <comment>moved from Contrib, package renamed as requested, please accept ;)</comment>
+    <requestid>74799</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8f08472388ad3a8050adbfcd9496c12a</srcmd5>
+    <version>2.8.2</version>
+    <time>1312447627</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74799
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ad3bfec6e02aabeb7acc6e9bb02e5f6b</srcmd5>
+    <version>2.8.5</version>
+    <time>1317025125</time>
+    <user>saschpe</user>
+    <comment>upstream update to 2.8.5, only bugfix</comment>
+    <requestid>84665</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ad3bfec6e02aabeb7acc6e9bb02e5f6b</srcmd5>
+    <version>2.8.5</version>
+    <time>1319182413</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c51b73e8764a38312cdca0e4b41cb3f1</srcmd5>
+    <version>2.9.3</version>
+    <time>1328718013</time>
+    <user>coolo</user>
+    <comment>update to 2.9.3</comment>
+    <requestid>103262</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>875d8bcd9f138fcb74d7ec4ac57bc59a</srcmd5>
+    <version>2.9.5</version>
+    <time>1330521049</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>107364</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a8c2c0aaff17ff6f840943b606568162</srcmd5>
+    <version>2.9.7</version>
+    <time>1332763328</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 110985 from dimstar)</comment>
+    <requestid>111072</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6333323756a9033cbda0182c6f2f2d39</srcmd5>
+    <version>2.9.8</version>
+    <time>1337578250</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121288</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1af44ad6473e93910a1f9e1cbbc02973</srcmd5>
+    <version>2.9.9</version>
+    <time>1337667512</time>
+    <user>coolo</user>
+    <comment>- Upstream update to 2.9.9, bugfix release:
+  + Improved RSS reader performance
+  + Various UI fixes (forwarded request 121687 from Fisiu)</comment>
+    <requestid>121688</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>1af44ad6473e93910a1f9e1cbbc02973</srcmd5>
+    <version>2.9.9</version>
+    <time>1340184123</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8651894e9c543d58fcedf54a70551d9b</srcmd5>
+    <version>2.9.11</version>
+    <time>1342423744</time>
+    <user>coolo</user>
+    <comment>- Upstream update to 2.2.11, bugfix release:
+  + Bring window to front after restoring from systray
+  + Fix keyboard focus problems on main window
+  + Fix ThePirateBay search plugin (forwarded request 127946 from Fisiu)</comment>
+    <requestid>127947</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>24157923fe7aa90e8efb87926e9d6ee6</srcmd5>
+    <version>2.9.11</version>
+    <time>1343205832</time>
+    <user>coolo</user>
+    <comment>fix typo in .changes</comment>
+    <requestid>128894</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ae2ba31576196e09c4a00d888cf00656</srcmd5>
+    <version>3.0.6</version>
+    <time>1351866083</time>
+    <user>coolo</user>
+    <comment>- Set download_files service to mode=&quot;localonly&quot; and add tarball
+
+- Upstream update to 3.0.6:
+  + FEATURE: Add command line option to daemonize qbittorrent-nox
+  + FEATURE: Add &quot;Shutdown qBittorrent&quot; button to Web UI
+  + FEATURE: Add setting to copy .torrent files for finished downloads
+  + FEATURE: Add option to start qBittorrent on Windows startup
+  + BUGFIX: Add confirmation dialog for &quot;Force recheck&quot; action
+  + BUGFIX: Greatly improve RSS manager performance
+  + FEATURE: Brand new torrent addition dialog
+  + FEATURE: Add the ability to choose the save path when using magnet links
+  + FEATURE: Add support for adding multiple local torrents at once
+  + COSMETIC: Improve style of left panel
+  + BUGFIX: Lower panels no longer gets disabled
+  + BUGFIX: Major code refactoring and various optimizations.
+  + BUGFIX: No longer strip root folder from torrent files
+  + OTHER: Drop support for libtorrent v0.14.x
+  + OTHER: Drop support for Qt 4.5
+- Duplicate files warning was resolved.</comment>
+    <requestid>139840</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>81b0509c99f27173951c56130621fd4f</srcmd5>
+    <version>3.0.7</version>
+    <time>1358683531</time>
+    <user>coolo</user>
+    <comment>- Upstream update to 3.0.7:
+  + Search engine plugins cleanup.
+  + WebUI Mootools updated to v1.4.5
+  + Add m4v to the list of previewable file extensions.
+  + Fix &quot;Set as default save path&quot; setting.
+  + Use https links in search plugins when possible.
+- Add qbittorrent-3.0.7.-fix-for-libtorrent-rasterbar-0.15.x.patch (forwarded request 149250 from Fisiu)</comment>
+    <requestid>149251</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>81b0509c99f27173951c56130621fd4f</srcmd5>
+    <version>3.0.7</version>
+    <time>1359110255</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3ae5aed9d142b60713e0b4e5e0988b81</srcmd5>
+    <version>3.0.9</version>
+    <time>1370432175</time>
+    <user>coolo</user>
+    <comment>Upstream update to 3.0.9. (forwarded request 177186 from DarkSS)</comment>
+    <requestid>177265</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>697e98e882e48348ed7fc08c3340e318</srcmd5>
+    <version>3.0.10</version>
+    <time>1373655413</time>
+    <user>coolo</user>
+    <comment>- Upstream update to 3.0.10:
+  + BUGFIX: Fix LegitTorrents search plugin
+  + BUGFIX: Improve peer host name resolution (closes #360)
+  + BUGFIX: Context menu fix in the Web UI
+  + BUGFIX: Respect 'don't show' torrent dialog in Search (sledgehammer999)
+  + BUGFIX: Torrent creator can now use files/folders from disk root (Gelmir)
+  + BUGFIX: Update free disk space when changing drives in the add new torrent
+    dialog (sledgehammer999)
+  + BUGFIX: Various fixes relating to RSS drag and drop (Gelmir)
+  + BUGFIX: Properly rename torrent which changes position in filter model (Gelmir)
+  + BUGFIX: Actually show tray notifications when a torrent finishes
+    downloading (sledgehammer999)
+  + BUGFIX: Don't download RSS items based on rules still being edited (Gelmir)
+  + COSMETIC: Native look for the search boxes (Hyperz)
+  + IMPROVEMENT: Use natural sorting where possible (Gelmir and sledgehammer999)
+  + LINUX: Drop Boost.Thread dependency from configure script
+  + OTHER: Update translations.
+  + Impove drawing speed of tranferlist and peers list when there
+    are many torrents(&amp;gt;100) (sledgehammer999) (forwarded request 182774 from Fisiu)</comment>
+    <requestid>182776</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e0286209f2b15ddb015bf3806ad17e98</srcmd5>
+    <version>3.0.11</version>
+    <time>1375641669</time>
+    <user>coolo</user>
+    <comment>- Upstream update to 3.0.11:
+  + FEATURE: Allow more fine tuning of upload slots.
+  + FEATURE: Enable edit/rename via F2 or double click in various places.
+  + BUGFIX: Don't allow newlines in rename dialog.
+  + BUGFIX: Treat unfinished dates as the newest ones when sorting.
+  + BUGFIX: Respect UI lock when clicking on tray notification.
+  + BUGFIX: Fix kickass torrents search plugin.
+  + BUGFIX: Use system language as default language. Closes #780.
+  + BUGFIX: Move completed files to .unwanted folder when they are
+    unselected by the user.
+  + BUGFIX: Show delete action when multiple feeds are selected.
+  + BUGFIX: Use Unicode for libtorrent alert messages.  
+  + OTHER: Update translations. (forwarded request 185660 from Fisiu)</comment>
+    <requestid>185662</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>e0286209f2b15ddb015bf3806ad17e98</srcmd5>
+    <version>3.0.11</version>
+    <time>1379664405</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fbf04078635fc822f73f96804559910a</srcmd5>
+    <version>3.1.0</version>
+    <time>1382351574</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>204061</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>66e44ee6fdd1e747deffc583780f47a3</srcmd5>
+    <version>3.1.1</version>
+    <time>1383810247</time>
+    <user>coolo</user>
+    <comment>- Update to 3.1.1:
+  + FEATURE: Show external IP in the log.
+  + FEATURE: Enable gzip compression in the webui. It should be faster now.
+  + FEATURE: Torrents show more states (queued for checking, downloadin
+    metadata, allocating, checking resume).
+  + FEATURE: Reenable &quot;force reannounce&quot; to all trackers.
+  + FEATURE: Allow to clear the UI lock password.
+  + FEATURE: New translations: English(Australia) and English(United Kingdom)
+  + BUGFIX: Expose all available translation in the WebUI.
+  + BUGFIX: Copy IP copied wrong data.
+  + BUGFIX: &quot;Preview file...&quot; didn't work on single file torrents.
+  + BUGFIX: Fix and improve the scheduler.
+  + BUGFIX: RSS fixes.
+  + BUGFIX: Fix 'append label to save path' with magnet links.
+  + BUGFIX: Can download up to 10MB .torrent file when a link is provided.
+  + OTHER: Updated translations.
+  + LINUX: Fix missing conf.pri error. (forwarded request 205930 from Fisiu)</comment>
+    <requestid>205931</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3fa2b0b89e3885642e98554c8322642c</srcmd5>
+    <version>3.1.2</version>
+    <time>1384092526</time>
+    <user>coolo</user>
+    <comment>- Update to 3.1.2:
+  + BUGFIX: Fix WebUI gzip compression.
+  + BUGFIX: Fix compilation with qt &amp;lt; 4.8.0.
+  + OTHER: Updated translations. (forwarded request 206327 from Fisiu)</comment>
+    <requestid>206328</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7d035f45edbf71414b1f5fd568100598</srcmd5>
+    <version>3.1.3</version>
+    <time>1385296252</time>
+    <user>coolo</user>
+    <comment>- Update to 3.1.3:
+  + FEATURE: Add a key shortcut to &quot;Add link to torrent...&quot;.
+  + BUGFIX: Make all columns and headers use the same text alignment in the transferlist.
+  + BUGFIX: Fix build system for Unix/Linux.
+  + BUGFIX: Case insensitive sort in Peers list.
+  + BUGFIX: Small optimization of WebUI responses when there isn't a data payload.
+  + BUGFIX: Hide empty folders after filtering.
+  + BUGFIX: Expand folders when filtering files.
+  + BUGFIX: Updated search plugin's URL.
+  + BUGFIX: Strip some png to fix incorrect sRGB profiles.
+  + BUGFIX: Fixed font issues on OSX Mavericks.
+  + BUGFIX: Improve text in the About dialog.
+  + BUGFIX: Always show a peer IP address as a tool tip.
+  + BUGFIX: Fix inhibit system functionality.
+  + BUGFIX: WebUI: Don't gzip too small payloads.
+  + BUGFIX: Correctly detect if the browser supports gzip compression.
+  + BUGFIX: Fix WebUI link to 'Anonymous mode' explanation.
+  + BUGFIX: Correctly update tracker tier number in the trackers tab.
+  + BUGFIX: Speed improvements.
+  + OTHER: Updated translations. (forwarded request 207849 from Fisiu)</comment>
+    <requestid>207850</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c46c87f0584653ca3bcdf2c7928a3171</srcmd5>
+    <version>3.1.4</version>
+    <time>1388757215</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to 3.1.4:
+  + FEATURE: Statistics dialog.
+  + FEATURE: Tooltips explaining each peer's connection flags.
+  + BUGFIX: Better dialog message for torrent delete confirmation.
+  + BUGFIX: Fix resizing grip location. Closes #1146.
+  + BUGFIX: Lock toolbar in place. Closes #1144.
+  + BUGFIX: Second attempt at fixing saving settings on shutdown.
+  + BUGFIX: Sort labels in 'Add new torrent' dialog. Closes #1150, #411.
+  + BUGFIX: Make sleep and shutdown functions work on systemd's logind. (forwarded request 212654 from Fisiu)</comment>
+    <requestid>212677</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b0039919fbe67234a62da4a5c96185ea</srcmd5>
+    <version>3.1.5</version>
+    <time>1390200956</time>
+    <user>coolo</user>
+    <comment>- Update to 3.1.5:
+  + BUGFIX: Fix compilation with Qt 4.7. Closes #1215.
+  + BUGFIX: Third attempt at fixing saving settings on OS shutdown.
+  + BUGFIX: Preview now correctly uses the selected file. Closes #1222 #1182.
+  + BUGFIX: Allow to resize the columns in Add New Torrent dialog. Closes #1207, #676.
+  + BUGFIX: Ensure that at least one column in the tranferlist is always visible. Closes #1165.
+  + BUGFIX: Ensure that the options window will always be placed onscreen. Closes #1226.
+  + BUGFIX: Delete temporary files after they aren't needed. Closes #1188.
+  + BUGFIX: Correctly detect libtorrent version.
+  + BUGFIX: Various code cppcheck fixes.
+  + BUGFIX: Remove isohunt search engine and update thepiratebay url.
+  + BUGFIX: Fix rss settings corruption when checking regexp and going to other rule.
+  + BUGFIX: Don't count paused torrents for the autoshutdown. Closes #1280.
+  + LINUX: Fix notifications with xfce4-notifyd.
+  + OTHER: Sync translations from Transifex. (forwarded request 214256 from Fisiu)</comment>
+    <requestid>214257</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>efc3eccc75f9efa71b43577596e637d4</srcmd5>
+    <version>3.1.9</version>
+    <time>1395750441</time>
+    <user>coolo</user>
+    <comment>- Update to 3.1.9:
+  + BUGFIX: Fix nox build. Closes #1368.
+  + BUGFIX: Fix build with libtorrent 0.15.x.
+  + BUGFIX: Fix missing percentage signs. Closes #1392.
+  + BUGFIX: Fix queue sorting order.
+  + BUGFIX: Fix build using qt &amp;lt; 4.7 Closes #1385.
+  + FEATURE: Add button for links in toolbar.
+
+- Update to 3.1.8 (changes from 3.1.5):
+  + BUGFIX: Really fix build of v3.1.6, to keep it short: it's next bugfix
+    update after v 3.1.5.
+  + BUGFIX: Fix 'preview file' regression. Closes #1285.
+  + BUGFIX: Fix peers and seeds sorting in transfer list.
+  + BUGFIX: Fix btdigg search engine.
+  + BUGFIX: Save statistics every 15min and only if there was new traffic.
+    Fixes #1288 and partially #1272.
+  + BUGFIX: Fix share ratio text in the 'general' tab.
+  + BUGFIX: Output a more generic message when blocking IPs and don't use
+    italics in the log.
+  + BUGFIX: Allow 2 decimals when setting the share ratio. Closes #1303.
+  + BUGFIX: Fix extratorrents search plugin.
+  + BUGFIX: Use shorter names for amount columns in main UI.
+  + BUGFIX: Fix overstretched options dialog. Closes #1293.
+  + BUGFIX: Don't show a popup menu when no torrent is selected.
+  + BUGFIX: Launch external programs async and don't block. Closes #1252.
+  + BUGFIX: Don't re-announce to trackers when torrent is paused. Closes #1310.
+  + BUGFIX: Bring dialog boxes in the front when qbt doesn't have focus.
+  + BUGFIX: Correctly resize 'name' column of the content tab. Closes #1360.
+  + BUGFIX: Correctly restore 'name' column width when loading magnet links in
+    the 'Add new torrent dialog'. Closes #1334. (forwarded request 227244 from Fisiu)</comment>
+    <requestid>227245</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>efc3eccc75f9efa71b43577596e637d4</srcmd5>
+    <version>3.1.9</version>
+    <time>1409303126</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8db1bd00916ba81c25555ae9a8a41a1f</srcmd5>
+    <version>3.1.10</version>
+    <time>1411926842</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252541</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1f0ba8ba7f281a23cd15a2d29af0bd59</srcmd5>
+    <version>3.1.11</version>
+    <time>1414613385</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258433</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3243191f48f39de459dd38a8598c93b1</srcmd5>
+    <version>3.1.12</version>
+    <time>1424779383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>287490</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>112d2c5b62d2d11c6c1289c6f4ffc5c9</srcmd5>
+    <version>3.1.12</version>
+    <time>1430132706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>304033</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>675de727aea26bc741049c6b7e0d71f6</srcmd5>
+    <version>3.1.12</version>
+    <time>1430595689</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>304964</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>72c36f75b2e5546c46c1a97837f7a50c</srcmd5>
+    <version>3.2.0</version>
+    <time>1431365957</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>306248</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>9b645515a164e76f81684ceb87accab8</srcmd5>
+    <version>3.2.1</version>
+    <time>1436888712</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>316475</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a09f86836ab90781a2bc6088cc01a3ee</srcmd5>
+    <version>3.2.3</version>
+    <time>1438615325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>320045</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>13d85de3cf3eb47f34efb6115e54ab5e</srcmd5>
+    <version>3.2.3</version>
+    <time>1439274405</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321574</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>8fd76a732d3d1e6cc33349a2b8c6df5f</srcmd5>
+    <version>3.2.4</version>
+    <time>1444833888</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>337787</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>9c358e870795769c7eb229da517e7a44</srcmd5>
+    <version>3.2.5</version>
+    <time>1446647602</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>341835</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3a2bba34c3d6a57690442fa57834585b</srcmd5>
+    <version>3.3.0</version>
+    <time>1448957987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>346833</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>49baf09f944a366f0d69e69f31135a04</srcmd5>
+    <version>3.3.1</version>
+    <time>1449687254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>347936</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6003a216b753225ff85f8c1b7c2b8f66</srcmd5>
+    <version>3.3.2</version>
+    <time>1453508194</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>355095</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>997ba60639e9d1878fa6a145360d8275</srcmd5>
+    <version>3.3.3</version>
+    <time>1453998195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>355753</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>b9da147119024122ada1bf6c6fe2eb52</srcmd5>
+    <version>3.3.4</version>
+    <time>1459508572</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>382269</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>49279b65a01e535b333bb5facddeb797</srcmd5>
+    <version>3.3.4</version>
+    <time>1466333582</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>403101</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>e47a8aad27ba2a475099353b20d0a804</srcmd5>
+    <version>3.3.5</version>
+    <time>1466681781</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403744</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>dc8e98eddb97c192ddc2001986b01565</srcmd5>
+    <version>3.3.6</version>
+    <time>1469628758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>414666</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>908374bc9e7c5059453bb03167f1dc7f</srcmd5>
+    <version>3.3.7</version>
+    <time>1473679695</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>426934</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>2b974ff441fd61a8775d6bd3d3a647d8</srcmd5>
+    <version>3.3.10</version>
+    <time>1483554941</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>446843</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>8f4f9a86735c5a27ff16fd39be632579</srcmd5>
+    <version>3.3.10</version>
+    <time>1486218052</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454157</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>9ae603c7dbff6d9025392b1fc5df1693</srcmd5>
+    <version>3.3.10</version>
+    <time>1486465503</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454767</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>107361bfabde6bca6ee1455a464a31d3</srcmd5>
+    <version>3.3.11</version>
+    <time>1488641894</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>476891</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>6024cc2d7444df982301001389cc1f99</srcmd5>
+    <version>3.3.11</version>
+    <time>1489415586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>477373</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>8348d5dcfca6cf7f5f737ba8334e9396</srcmd5>
+    <version>3.3.12</version>
+    <time>1491896780</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486363</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>52c980e96a1cba0115f33899037e2d3c</srcmd5>
+    <version>3.3.13</version>
+    <time>1496392467</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500473</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>8275cc373e579573229d519c1224edd9</srcmd5>
+    <version>3.3.13</version>
+    <time>1496534524</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>500874</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>07c108af6cec78fb320e6f1d8cef4a11</srcmd5>
+    <version>3.3.14</version>
+    <time>1500804960</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>512026</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>b1389ec86f75783ac2f143c9521cdb9b</srcmd5>
+    <version>3.3.15</version>
+    <time>1502012055</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514521</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>e2f4484dcf2bb878581aeb505d0b2b67</srcmd5>
+    <version>3.3.16</version>
+    <time>1504981612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>522297</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>4180adc3f2da48b4d00c840c6e06bf4f</srcmd5>
+    <version>4.0.2</version>
+    <time>1512292381</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.2
+  * BUGFIX: Fix crash on some systems when creating address object
+    for 255.255.255.255. Closes #7735. (sledgehammer999)
+  * PERFORMANCE: Change MixedModeAlgorithm default to TCP. This
+    was the v3_3_x default and should sustain higher speeds. Closes
+    #7779. (Chocobo1)
+  * PERFORMANCE: Stop logging IP filter parsing errors after a
+    while, otherwise the GUI freezes or qBittorrent doesn't start.
+    (sledgehammer999)
+  * GUI: Implement stable sort. Rows in transfer list shouldn't
+    flicker anymore. (Chocobo1)
+  * WEBUI: Fix build when webui is disabled. (Heiko Becker)
+  * RSS: Fix build because of missing header. Closes #7805.
+    (thoradia)
+  * RSS: Fix RSS parser. (glassez)
+  * RSS: Implement Import/Export RSS rules in legacy(aka v3_3_x)
+    format. (glassez)
+  * RSS: Implement Import/Export RSS rules in JSON format.
+    (glassez)
+  * LINUX: Fix i386 build. (Evgeny Lensky)
+- A bit of cleanup
+- Update to version 4.0.1
+  * BUGFIX: Fix crash on opening torrent/magnet (uninitialized
+    pointer). Closes #7739 #7723. (sledgehammer999)
+  * BUGFIX: Enable preferences Apply button when ip banlist is
+    modified (Thomas Piccirello)
+  * BUGFIX: Allow drag-n-drop magnet links to mainwindow. Closes
+    #7742. (Chocobo1)
+  * BUGFIX: Fix crash when aborting a torrent creation process.
+    Closes #7783. (Chocobo1)
+  * BUGFIX: Correctly check if torrent passed during application
+    start already exists. (sledgehammer999)
+  * WEBUI: Add ip subnet whitelist for bypassing webui auth
+    (Thomas Piccirello)
+  * WEBUI: Fix logo missing in login page (Chocobo1)
+  * COSMETIC: Fix english typo. (sledgehammer999)
+  * OTHER: cmake: qtsingleapplication should always be built
+    statically (luigino)
+- Dropped static_qtsingleapplication.patch (merged upstream)
+- Addressed some rpmlint complaints
+ 
+- Remove the actually useless fix_systemd_detection.patch
+  and other systemd-related foolishness 
+- Update to version 4.0.0
+  * FEATURE: Change qbittorrent logo. Issue #6467. (HVS, Atif
+    Afzal, sledgehammer999)
+  * FEATURE: New icon theme with SVG source, so we can scale it
+    appropriately in the future. (Bert Verhelst)
+  * FEATURE: Drop Qt 4 support. Raise minimum Qt version to 5.5.1
+    (evsh)
+  * FEATURE: UI for managing locally banned IP list (dzmat)
+  * FEATURE: Support for specifying where to save/load config
+    files. Support for portable mode. (evsh)
+  * FEATURE: It is now possible to pass options via ENV variables
+    instead of cmd options. (evsh)
+  * FEATURE: Allow to strip subfolder in multifile torrents.
+    (glassez, sledgehammer999)
+  * FEATURE: Allow cmd args to specify options when adding
+    torrents. (Brian Kendall)
+  * FEATURE: Widget for showing filesystem paths while typing.
+    Used in the Add New Torrent and Options dialogs. (evsh)
+  * FEATURE: Trackerlist: Allow to toggle columns (thalieht)
+  * FEATURE: Add availability column to torrent content model and
+    torrent properties window (evsh)
+  * FEATURE: Implemented share limit by seeding time (naikel)
+  * FEATURE: Revamp Torrent creator (Chocobo1)
+  * FEATURE: Enable drag n drop to create torrent on mainwindow
+    (Chocobo1)
+  * FEATURE: Add show/hide statusbar option (takiz)
+  * FEATURE: Show number of pieces. Closes #6774. (Chocobo1)
+  * FEATURE: Allow to select &amp; delete multiple entries in &quot;Manage
+    Cookies&quot; dialog (Chocobo1)
+  * FEATURE: Fetch Favicons via google as a final fallback
+    (KingLucius)
+  * FEATURE: Add a Tags (multi-label) feature to the GUI. Closes
+    #13. (tgregerson)
+  * FEATURE: Use the system icons for each file type in the
+    Content tab (evsh)
+  * FEATURE: Use SVG files for monochrome tray icons. Closes
+    #6085. (evsh)
+  * FEATURE: Prefill torrent name when creating a new torrent.
+    Closes #7229. (Chocobo1)
+  * FEATURE: Expose more libtorrent options in advanced settings
+    (Chocobo1)
+  * FEATURE: Add comboBox for selecting BitTorrent protocol.
+    Closes #6316. (Chocobo1)
+  * FEATURE: Allow SMTP sender to be set. Closes #7575. (Chocobo1)
+  * FEATURE: Allow to specify if announcing to all tiers is
+    desired. (sledgehammer999)
+  * FEATURE: Configurable number of history of paths in Add New
+    Torrent dialog. (evsh)
+  * BUGFIX: Adjust icons names to better fit FDO scheme (evsh)
+  * BUGFIX: Optimized IP filter parsing, making blazingly fast
+    (sledgehammer999, evsh)
+  * BUGFIX: Fix dialogs didn't position on the correct screen
+    which qBittorrent window is on. Closes #1690, #2474, #3538.
+    (Chocobo1)
+  * BUGFIX: Refactor and improve StatusBar (glassez)
+  * BUGFIX: Set expiration date for newly added cookie to +2 years
+    from now, instead of +99 years. (Chocobo1)
+  * BUGFIX: Don't create subfolder inside temp folder (glassez)
+  * BUGFIX: Don't replace existing files when relocating torrent
+    (glassez)
+  * BUGFIX: Fix explicit Torrent Management Mode in Add New
+    Torrent dialog. Closes #5602. (sledgehammer999)
+  * BUGFIX: Fix calculation of 'Average time in queue' stat under
+    libtorrent 1.1.x (sledgehammer999)
+  * BUGFIX: Don't disable bandwidth scheduler when manually
+    switching speed limits. Closes #7306. (glassez)
+  * BUGFIX: Fix dereferencing freed pointer. Closes #7420.
+    (Chocobo1)
+  * BUGFIX: Change the default cache size to 64MiB. (Chocobo1)
+  * BUGFIX: The previous &quot;Disk write cache size&quot; is not accurate
+    since it is also being used for read cache, so rename it to
+    &quot;Disk cache&quot;. (Chocobo1)
+  * BUGFIX: Replace dialog ok-cancel buttons with
+    QDialogButtonBox, which follows the platform specific button
+    order. (Chocobo1)
+  * BUGFIX: Better reporting of success/failure of torrent and
+    file deletion. (sledgehammer999)
+  * BUGFIX: Fix last activity calculation. Closes #7461. (Chocobo1)
+  * BUGFIX: Save state of options windows on cancel too. (silverqx)
+  * BUGFIX: Persist size and treeview header state in preview
+    dialog. (silverqx)
+  * BUGFIX: Show torrent name in &quot;add new torrent&quot; dialog on
+    merging trackers (Chocobo1)
+  * BUGFIX: Properly pre-select the selected torrent's current
+    ratio limiting options in  UpDownRatioDlg dialogs. Fixes #7352
+    (thalieht)
+  * BUGFIX: Optimize code for SpeedWidget. (dzmat)
+  * BUGFIX: Disable processing events when adding
+    torrents(prevents crashes). Closes #7436. (Chocobo1)
+  * BUGFIX: Open links in browser. Closes #7651. (Chocobo1)
+  * BUGFIX: Change default settings for tracker/tier announces to
+    mimick μTorrent behavior. (sledgehammer999)
+  * BUGFIX: Explicitly set UPnP state on start-up. Closes #7338.
+    (Chocobo1)
+  * BUGFIX: Include/print caught signal in stackdump (Chocobo1)
+  * COSMETIC: Trackerlist: Set text alignment of columns with
+    numbers to the right (thalieht)
+  * COSMETIC: Enable alternatingRowColors for &quot;Manage Cookie&quot;
+    dialog (Chocobo1)
+  * COSMETIC: Remove indentation for category/tag filter widgets
+    in all platforms (thalieht)
+  * COSMETIC: Add space between widgets in left side panel. Closes
+    #7224. (Chocobo1, glassez)
+  * COSMETIC: Unify preference window borders across the tabs
+    (vit9696)
+  * COSMETIC: Center Options dialog when showed. (silverqx)
+  * COSMETIC: Show delete accelerator key in menu. closes #7508
+    (Nick Korotysh)
+  * COSMETIC: Set QTextOption::NoWrap property in &quot;Download from
+    URLs&quot; dialog (Chocobo1)
+  * COSMETIC: Use SVG icons for the country flags. Closes #6223.
+    (sledgehammer999)
+  * WEBUI: Allow to load/use ECDSA certificate in webUI. (Chocobo1)
+  * WEBUI: Add copy options to webui context menu (addresses
+    #6815) (#7036) (Tom Piccirello)
+  * WEBUI: Set torrent location from webui context menu (addresses
+    #6815) (#7062) (Tom Piccirello)
+  * WEBUI: Add option to rename torrent from WebUI (Thomas
+    Piccirello)
+  * WEBUI: Add auto torrent management to webui context menu
+    (addresses #6815) (Thomas Piccirello)
+  * WEBUI: Option for &quot;Create subfolder&quot; when adding new torrent.
+    (thalieht)
+  * WEBUI: Fix addPaused wrong default behavior. (Chocobo1)
+  * WEBUI: Reposition &quot;Priority&quot; menu option in WebUI to match
+    gui. Closes #7072. (Thomas Piccirello)
+  * WEBUI: Report TCPServer errorString() if webui fails to listen
+    to port. (Matthew Fioravante)
+  * WEBUI: Exit gracefully when failed to initialize web server
+    with qbt-nox (Chocobo1)
+  * WEBUI: Add file-to-piece-index mappings in
+    /query/propertiesFiles command (Chocobo1)
+  * WEBUI: Add optional parameters for /command/download &amp;
+    /command/upload (Chocobo1)
+  * WEBUI: Print error messages upon receiving invalid header
+    fields. (Chocobo1)
+  * WEBUI: Add WebUi\Address config option. (Matthew Fioravante)
+  * WEBUI: Reinitialize webUI server when &quot;IP address&quot; setting
+    changed. An app restart won't be necessary from now on.
+    (Chocobo1)
+  * WEBUI: Improve log and error messages (Chocobo1)
+  * SEARCH: Use explicit class for search plugin versions (evsh)
+  * SEARCH: Remove all search plugins from repo. There is another
+    repo named 'search-plugins'. (sledgehammer999)
+  * SEARCH: Update the backend when a new plugin favicon is
+    downloaded. (sledgehammer999)
+  * SEARCH: Allow search plugins sorting. Closes #7526. (Nick
+    Korotysh)
+  * RSS: Redesigned RSS subsystem (glassez)
+  * RSS: Do not use hardcoded colors in RSS feed view (evsh)
+  * RSS: Improve RSS events logging (glassez)
+  * LINUX: Allow custom tray icons when system icon theme is used.
+    Closes #7403. (evsh)
+  * OTHER: Use new classes/methods from libtorrent and stop using
+    deprecate ones. (glassez)
+  * OTHER: Various string fixes (Allan Nordhøy, sledgehammer999)
+  * OTHER: cmake: do not use Qt5Widgets when locating
+    QtSingleApplication. Closes #7551. (evsh)
+  * OTHER: Update BOOST m4 macros and simplify AX_BOOST_BASE usage
+    (Chocobo1)
+  * OTHER: Optimize file size of PNG and SVG files.
+    (sledgehammer999)
+  * OTHER: Add new translators in the About page.
+- Switched build to cmake
+- Dropped qbittorrent-libtorrent-1.1.1.patch (no target uses that
+  version anymore and in any case a newer one is required now)
+- Dropped bittorrent_missing_ppc64le_in_ax_boost_base.m4.patch
+  (not used by cmake)
+- Added fix_systemd_detection.patch
+- Added static_qtsingleapplication.patch
+</comment>
+    <requestid>547255</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>68d3811509396e644320f359ee2254fe</srcmd5>
+    <version>4.0.3</version>
+    <time>1515876279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557945</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>a6e53c80397242d2ea8df90f973658bc</srcmd5>
+    <version>4.0.4</version>
+    <time>1518813904</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577165</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>f0bb86f5091c3ca07fe52d2e5b65bb67</srcmd5>
+    <version>4.1.0</version>
+    <time>1525611746</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>604493</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>55d20aeff5de13cc24a1da44e9a0d6d6</srcmd5>
+    <version>4.1.1</version>
+    <time>1527583738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612619</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>1b9344d70b441e02b2fd601fa2e8453b</srcmd5>
+    <version>4.1.2</version>
+    <time>1535370494</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid bashisms in build script.
+- Update to version 4.1.2:
+  * FEATURE: New options for &quot;inhibit sleep&quot;.
+  * FEATURE: Add option for regexps in the transferlist search
+    filter's context menu.
+  * FEATURE: Add async io threads option to AdvancedSettings.
+  * FEATURE: Allow save resume interval to be disabled.
+  * FEATURE: Add checkbox for recursive download dialogue.
+  * FEATURE: Add a changelog link in the application updater.
+  * BUGFIX: Avoid allocating large memory when loading a .torrent
+    file.
+  * BUGFIX: Notify users on 1st time close/minimise to tray.
+  * BUGFIX: Fix I/O error after fetching magnet metadata.
+  * BUGFIX: Never save resume data for already paused torrents.
+  * BUGFIX: Put temporary files in qbt own temp folder.
+  * BUGFIX: Avoid potentially setting the wrong piece priorities.
+  * BUGFIX: Various code refactorings/improvements.
+  * BUGFIX: Add options &quot;Download in sequential order&quot; and
+    &quot;Download first and last pieces first&quot; in AddNewTorrentDialog.
+  * BUGFIX: Download favicon using appropriate protocol.
+  * BUGFIX: Apply proxy settings on DownloadManager creation.
+  * BUGFIX: Improve torrent initialisation.
+  * BUGFIX: Save resume data on torrent change events.
+  * BUGFIX: Increase default resume data save interval.
+  * BUGFIX: Work around crash when procesing recursive download.
+  * BUGFIX: Reduce queries to python version.
+  * BUGFIX: Disable certain mouse wheel events in Options dialogue.
+  * WEBUI: Send all rechecks in one request.
+  * WEBUI: Add WebUI Force Reannounce option.
+  * WEBUI: Create non-existing path in setLocationAction().
+  * WEBUI: Add WebUI support for Mac ⌘ (Command) key.
+  * WEBUI: Show current save path in the &quot;Set location&quot; window.
+  * WEBUI: Fix WebUI cache behavior for css files.
+  * WEBUI: Send Cache-Control header in WebUI responses.
+  * WEBUI: Add form-action to CSP.
+  * WEBUI: Add upgrade-insecure-requests to CSP when HTTPS is
+    enabled.
+  * WEBUI: Reset WebUI ban counter on login success.
+  * WEBUI: Add logging messages in WebUI login action.
+  * WEBUI: Add option to control CSRF protection.
+  * WEBUI: Add option to control WebUI clickjacking protection.
+  * RSS: Implement &quot;Sequential downloading&quot; feature.
+  * RSS: Don't use Atom/RSS feed URLs as base for file names.
+  * SEARCH: Add a name filter for search results.
+  * SEARCH: Fix python version detection.
+  * SEARCH: Clear python cache conditionally.
+  * SEARCH: Properly normalise version string before parsing it.
+  * OTHER: Fix CMake build with QtSingleApplication.
+</comment>
+    <requestid>629569</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>cfd33c41f07af1a87a876b0fb4be3693</srcmd5>
+    <version>4.1.2</version>
+    <time>1537187245</time>
+    <user>maxlin_factory</user>
+    <comment>- Hardcode building with the C++14 ABI (boo#1108567).</comment>
+    <requestid>635956</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>d6690804837ec79d056b38e9e9622a3b</srcmd5>
+    <version>4.1.3</version>
+    <time>1537436528</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636585</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>62aa84b0ec965673752a7e5db8d03316</srcmd5>
+    <version>4.1.4</version>
+    <time>1542666834</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1.4.</comment>
+    <requestid>650172</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>af7bcad264bb6e2cc9984acf166acc0d</srcmd5>
+    <version>4.1.5</version>
+    <time>1545996880</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661277</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>82fb376d4b9e76ddd8b7b21f6b0de972</srcmd5>
+    <version>4.1.6</version>
+    <time>1557142141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700995</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>aa40f35004c8bce4cd10ab9992cec3e5</srcmd5>
+    <version>4.1.6</version>
+    <time>1558427988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704243</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>c68db1ce285431c8bf1bd9222db21ca5</srcmd5>
+    <version>4.1.7</version>
+    <time>1564994544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720886</requestid>
+  </revision>
+</revisionlist>

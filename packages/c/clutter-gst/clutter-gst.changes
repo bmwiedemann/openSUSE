@@ -1,0 +1,580 @@
+-------------------------------------------------------------------
+Thu Feb  7 00:11:43 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.0.27:
+  + Explicitly link to gdk-pixbuf.
+- Add explicit pkgconfig(gdk-pixbuf-2.0) BuildRequires following
+  upstream changes.
+
+-------------------------------------------------------------------
+Sun Mar 11 10:17:05 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.0.26:
+  + Fix compilation error with -Werror=format-nonliteral.
+  + Rename plugin to avoid dash in the name.
+- Drop clutter-gst-video-sink-fix-compilation-error.patch: fixed
+  upstream.
+- Rename gstreamer-plugin-gstclutter-3_0 subpackage to
+  gstreamer-plugin-cluttergst3, following upstream. Since some
+  software might refer to the old name, there is no obsoletes
+  added, allowing users to keep the old package. As there is no
+  conflict, this is acceptable.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:24:18 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat Dec 23 12:40:01 UTC 2017 - zaitor@opensuse.org
+
+- Add clutter-gst-video-sink-fix-compilation-error.patch:
+  video-sink: Fix compilation error.
+- Clean up spec with spec-cleaner, use modern macros.
+
+-------------------------------------------------------------------
+Thu Mar 30 08:22:41 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.0.24:
+  + Enable inspection of gstreamer plugin without connecting to
+    display servers.
+  + Fix issue with RGBx/BGRx formats not showing.
+  + Fix memory leaks.
+- Drop clutter-gst-mem-leak-fixes.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sat Feb 11 14:05:22 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups
+
+-------------------------------------------------------------------
+Mon Jan  9 15:31:02 UTC 2017 - zaitor@opensuse.org
+
+- Add clutter-gst-mem-leak-fixes.patch: Fix various memory leaks in
+  video-sink, patches from upstream git.
+
+-------------------------------------------------------------------
+Tue Dec  6 10:11:55 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.0.22:
+  + A couple of video sink fixes (crashes & not up-to-date data).
+  + A bunch of content fixes.
+
+-------------------------------------------------------------------
+Thu Sep  8 13:09:01 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.0.20:
+  + Build cleanups and improvments.
+  + Fix BT.2020 YUV to RGB conversion.
+
+-------------------------------------------------------------------
+Thu Apr 14 10:22:55 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Mon Mar 21 08:43:03 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.0.18:
+  + More documentation fixes.
+  + Set example video player background to opaque black.
+
+-------------------------------------------------------------------
+Sat Mar 19 11:27:18 UTC 2016 - zaitor@opensuse.org
+
+- Update define debug_package_requires to libclutter-gst-3_0-0 in
+  order to match what we build now.
+
+-------------------------------------------------------------------
+Mon Feb 15 09:21:04 UTC 2016 - fcrozat@suse.com
+
+- Resync BuildRequires with configure.ac:
+  + pkgconfig(clutter-1.0) >= 1.20.0
+  + pkgconfig(gstreamer-1.0) >= 1.4.0
+
+-------------------------------------------------------------------
+Fri Feb 12 23:06:56 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.0.16:
+  + Make gudev an optional dependency.
+  + Bunch of documentation fixes.
+  + Auto video sink memory leak fixes.
+  + Auto video sink background now defaults to black.
+  + Video sink caps RGBx/BGRx naming fix.
+  + Video sink frame display fix on loaded systems.
+  + Video sink cleanups on stop().
+
+-------------------------------------------------------------------
+Sat Oct 10 18:17:29 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.0.14:
+  + Fix rendering issue with non power of 2 video frame sizes.
+  + Reduce color conversion shader's size.
+  + Fix crash with vaapi plugins when frame upload fails.
+
+-------------------------------------------------------------------
+Wed Sep 30 18:47:08 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.0.12:
+  + Fix leak with color balance.
+  + Enable DVD events forwarding upstream the pipeline.
+
+-------------------------------------------------------------------
+Fri Sep  4 18:03:22 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.0.10:
+  + Fix leak in error checking.
+  + Fix invalid premultiply for AYUV format.
+
+-------------------------------------------------------------------
+Sat Jul 18 19:37:34 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.0.8:
+  + Fix crash when video frame has not been uploaded yet, gets
+    disposed and Clutter try to paint with it.
+
+-------------------------------------------------------------------
+Sun May 24 19:26:12 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.0.6:
+  + Fix memory leaks in get/set_caps.
+  + Advertize the GstVideoOverlayComposition feature in caps.
+  + Clear buffer in flush.
+
+-------------------------------------------------------------------
+Tue Jan 27 08:48:23 UTC 2015 - dimstar@opensuse.org
+
+- Rename gstreamer-plugin-gstclutter subpackage to
+  gstreamer-plugin-gstclutter-3_0. This matches the loadable
+  plugins name and allows it to be parallel installed with
+  gstreamer-plugin-gstclutter originating from clutter-gst2.
+- Adjust -devel package requires accordingly.
+
+-------------------------------------------------------------------
+Sun Jan 25 16:57:54 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.0.4:
+  + Fix introspection problem on systems with no display.
+  + Fix introspection problems with clutter-gst 2.0 installed.
+  + Fix incorrect warnings about deprecated properties.
+  + Only advertise RGBA format for texture upload.
+
+-------------------------------------------------------------------
+Tue Jan 13 11:50:17 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.0.2:
+  + Fix dependency version of Gstreamer and Cogl.
+  + Fix crash with the autovideosink when you're running without a
+    display server.
+  + Fix linking problem with examples.
+
+-------------------------------------------------------------------
+Sat Dec 13 14:31:48 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.0.0:
+  + Add ability to set modified frames on content.
+  + Add RGBx/BGRx format support to video sink.
+  + A few small bug fixes.
+- Changes from version 2.99.4:
+  + Improve GStreamer debug topics.
+  + A few small bug fixes.
+- Changes from version 2.99.2:
+  + Add color correction support using GLSL shaders.
+  + Add overlay support using additional ClutterPaintNode.
+  + Video sink now derives from GstVideoSink.
+- Changes from version 2.99.0:
+  + Split the concept of player from the concept of video display
+    in the Clutter scenegraph (ie. you can now display the same or
+    part of the same video stream several times in a one or
+    multiple Clutter scenes).
+  + Introduce ClutterGstPlayer interface as a replacement for
+    ClutterMedia.
+  + Introduce ClutterGstCameraManager to discover/list available
+    camera on the system.
+  + Remove usage of Clutter and Cogl deprecated APIs.
+  + Add many example to help with usage of the new API, including
+    JavaScript examples (see examples/ directory).
+  + Rework a basic GStreamer plugin.
+- Replace pkgconfig(cogl-1.0) for pkgconfig(cogl-2.0-experimental)
+  BuildRequires, since this is really what configure looks for.
+- Add pkgconfig(gudev-1.0) BuildRequires: Build udev support.
+- Bump soname following upstream changes. Also bump baselibs, and
+  make needed changes to post/postun.
+
+-------------------------------------------------------------------
+Tue Jul  1 08:30:19 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.0.12:
+  + Depend on GStreamer 1.2.0.
+  + Fix build issues.
+
+-------------------------------------------------------------------
+Thu May  1 10:41:24 UTC 2014 - dimstar@opensuse.org
+
+- Rebuild against libcogl20.
+
+-------------------------------------------------------------------
+Fri Jan 10 18:44:50 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.0.10:
+  + Add NV12 support.
+  + Add GL upload meta API support.
+  + Add video crop meta API support.
+  + Add local shader cache to avoid leak.
+  + Fix memory leak in accept_caps() method.
+
+-------------------------------------------------------------------
+Mon Nov  4 21:10:55 UTC 2013 - dimstar@opensuse.org
+
+- Drop pkgconfig(gstreamer-basevideo-1.0) BuildRequires: this was
+  used for experimental hardware acceleration, but the library is
+  no longer present in GStreamer 1.2.
+
+-------------------------------------------------------------------
+Wed Sep 18 19:39:37 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.0.8:
+  + Fix a crash in ClutterGstPlayer when disposing instances too
+    fast.
+  + Fix a crash in ClutterGstVideoSink.
+  + Fix a crash in ClutterGstVideoSink when running on Wayland with
+    X11 backend compiled.
+
+-------------------------------------------------------------------
+Wed Jul 24 18:11:33 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 2.0.6:
+  + Fix a bug when subclassing ClutterGstPlayer class.
+  + Add support of X11 pixmap as video texture when decoding with
+    Gstreamer-vaapi.
+
+-------------------------------------------------------------------
+Fri May 24 18:05:29 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.0.4:
+  + Reenabled HW decoder support.
+- Add pkgconfig(gstreamer-basevideo-1.0) BuildRequires: dependency
+  for the HW decoder support.
+
+-------------------------------------------------------------------
+Tue Feb 26 18:57:39 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 2.0.2:
+  + Remove usage of ClutterStage/ClutterContainer deprecated APIs.
+  + Depend on Cogl 1.10 for shaders boilerplate.
+  + Improve video-player player example on enter/leave event
+    handling. 
+
+-------------------------------------------------------------------
+Thu Jan 24 21:21:40 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.0.0:
+  + Fix a bug a autocluttersink that would lead to playbin not
+    considering it as a sink any more when removing the actual sink
+    from the bin.
+  + Small build and deprecation fixes.
+
+-------------------------------------------------------------------
+Wed Sep 26 07:14:08 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.9.92:
+  + Updated Gstreamer 1.0 port to work with the released
+    GStreamer 1.0.0.
+  + Fix uploading of some videos with odd widths.
+  + Disable HW decoder support until it is stabilized in GStreamer
+    1.0.
+  + autocluttersink now exposes the ts-offset property of the
+    underlying sink.
+
+-------------------------------------------------------------------
+Wed Aug 22 14:44:54 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.9.90:
+  + Port to GStreamer 1.0
+  + Fix navigation support in the standalone plugin
+- Update pkgoconfig() BuildRequires for the GStreamer 1.0 port:
+  + Removed: gstreamer-0.10, gstreamer-basevideo-0.10,
+    gstreamer-plugins-base-0.10
+  + Added: gstreamer-1.0, gstreamer-plugins-base-1.0,
+    gstreamer-base-1.0, gstreamer-video-1.0, gstreamer-audio-1.0,
+    gstreamer-tag-1.0.
+- Rename subpackages, following upstreams ABI / API changes:
+  + Old: libclutter-gst-1_0-0, typelib-1_0-ClutterGst-1_0
+  + New: libclutter-gst-2_0-0, typelib-1_0-ClutterGst-2_0
+- Rename gstreamer-0_10-plugin-gstclutter subpackage to
+  gstreamer-plugin-gstclutter, following the gstreamer 1.0 package
+  naming convention.
+- Update baselibs.conf.
+
+-------------------------------------------------------------------
+Tue Jun 26 18:07:50 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.6.0:
+  + None. This stable release is the same as 1.5.6.
+
+-------------------------------------------------------------------
+Fri May 25 18:03:08 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.5.6:
+  + Fix play/pause of autocluttersink.
+  + Add a "in-seek" property to the player to be notified when the
+    pipeline is seeking.
+  + Various build and smaller fixes.
+- Add BuildRequires: pkgconfig(gstreamer-basevideo-0.10), support
+  for video/x-surface, (HW support).
+- Replace explicit BuildRequires with pkgconfig equivalents:
+   + gobject-introspection-devel -> gobject-introspection-1.0.
+   + gstreamer-0_10-devel > gstreamer-0.10.
+   + gstreamer-0_10-plugins-base-devel -> gstreamer-basevideo-0.10.
+- Drop xz buildrequires, as this comes for free now in the
+  buildsystem.
+
+-------------------------------------------------------------------
+Thu Feb 23 19:35:47 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.5.4:
+  + Fix compilation with cogl 1.9.x
+
+-------------------------------------------------------------------
+Sat Feb 11 13:07:29 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.5.2:
+  + Add a standalone gstreamer plugin. Clutter-gst gstreamer
+    elements are now available just like any other GStreamer
+    element, that includes working with gst-launch.
+  + Add support for video/x-surface ("hardware" surfaces) that can
+    be converted to opengl textures. (Requires -bad 0.10.22.1)
+  + Addition of a new element, autocluttersink, a bin that picks up
+    clutter-compatible sinks automatically. This allows an
+    eco-system of 3rd party decoders and (clutter) sinks to be
+    autoplugged.
+  + Various small fixes.
+- Split new subpackage gstreamer-0_10-plugin-gstclutter:
+  + it contains the new gstreamer plugin.
+  + add to it a Supplements for gstreamer-0_10 and
+    libclutter-gst-1_0-0, so users of both those packages will get
+    it installed automatically.
+  + add it as Requires to the devel subpackage.
+
+-------------------------------------------------------------------
+Wed Jan 18 17:37:43 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.4.6:
+  + Fix reffing/unreffing behaviour of ClutterGstVideoTexture
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Thu Dec  8 14:19:16 UTC 2011 - dimstar@opensuse.org
+
+- Split typefile file in typelib-1_0-ClutterGst-1_0 subpackage.
+- Add typelib-1_0-ClutterGst-1_0 Requires to devel subpackage.
+
+-------------------------------------------------------------------
+Fri Oct 28 08:00:44 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 1.4.4:
+  + Build fixes, including compiling with glib 2.31.
+
+-------------------------------------------------------------------
+Mon Oct  3 16:46:18 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.4.2:
+  + bgo#660732: Fix crashes when uploading RGB textures
+  + Don't try to free NULL GstTagLists
+- Move make check to %check section.
+
+-------------------------------------------------------------------
+Fri Sep 30 15:08:25 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.4.0:
+  + Refinement of the subtitles and audio tracks API. clutter-gst
+    now gives the full GstTagList to the application.
+  + Made the internal test player a bit more usable.
+  + A number of fixes around automatic loading of external
+    subtitles files.
+- Replace clutter-devel BuildRequires with pkgconfig(clutter-1.0)
+- Add pkgconfig(cogl-1.0) BuildRequires to have full capabilities.
+
+-------------------------------------------------------------------
+Sat Sep 17 23:10:15 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Thu Sep  1 09:56:02 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 1.3.14:
+  + Big split between the logic around playbin2 and the
+    clutter-specific part to be able to reuse the GStreamer logic
+    to implement new ClutterMedia objects.
+  + Add new API to get the list of audio and subtitles tracks
+  + Fix the leak of GstBus in VideoTexture
+  + Fix the key navigation events in the sink
+
+-------------------------------------------------------------------
+Wed Jul 27 16:28:51 CEST 2011 - vuntz@opensuse.org
+
+- Add baselibs.conf.
+
+-------------------------------------------------------------------
+Tue Jun  7 11:39:11 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.3.12:
+  + Fix the GstNavigation interface of the sink
+  + Some warning fixes with newer versions of Clutter.
+
+-------------------------------------------------------------------
+Mon May 16 22:23:55 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.3.10:
+  + Fix the GstNavigation interface of the sink.
+
+-------------------------------------------------------------------
+Wed Apr  6 08:13:42 UTC 2011 - fcrozat@novell.com
+
+- Update to version 1.3.8:
+  + Implementation of the GstNavigation interface in the sink.
+  + Initial support of download buffering (opt in).
+  + Series of cleanups in VideoTexture (subtitles reset when
+    changing URI, state management, seek behaviour, ...).
+  + The audio volume suffered from an hilariously bad bug that
+    multiplied the volume set by 10. Took the opportunity to use
+    GStreamer's StreamVolume to expose a cubic volume.
+- Changes from version 1.3.4:
+  + Make looping possible with set_playing(TRUE) in the the EOS
+    callback.
+  + set_uri(NULL) is now handled and defined to stop the pipeline
+    and set the video texture in "idle mode" (painted with the idle
+    material).
+- Changes from version 1.3.2:
+  + An API addition: set_seek_flags() on the VideoTexture for a
+    finer control on how you can seek (fast or accurate).
+  + Fix the notification of "progress" so it does not advertise 0
+    when seeking.
+  + Fix the AYUV to RGBA shader.
+
+-------------------------------------------------------------------
+Tue Sep 21 09:25:54 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 1.3.2:
+  + Respects the pixel-aspect-ratio property of the video frames
+    and have VideoTexture advertise the right preferred size.
+  + Reworked how ARB fp programs are set on the materials using a
+    clutter 1.4 feature to set a program on a material, fixing the
+    way materials were used along the way.
+  + Removed all raw GL code and only use Cogl.
+- Changes from version 1.2.0:
+  + Supports the ClutterMedia subtitle-related properties
+    introduced in 1.2.0.
+  + Added a "idle material" to VideoTexture, a material that will
+    be used to paint the texture when not playing any video.
+  + You can now set a user-agent when streaming videos.
+  + The usual bulk of small fixes, small memory leaks, build
+    (builds on GLES2 now), don't use deprecated symbols, ...
+- Move gir file to devel subpackage.
+- Remove explicit Requires of devel subpackage: they will be added
+  automatically, the pkgconfig() way.
+
+-------------------------------------------------------------------
+Fri Apr  2 05:20:14 CEST 2010 - vuntz@opensuse.org
+
+- Improve description of package.
+
+-------------------------------------------------------------------
+Sat Mar 13 20:59:58 UTC 2010 - dimstar@opensuse.org
+
+- Fix build: correct filelist.
+
+-------------------------------------------------------------------
+Thu Feb 11 01:06:13 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.0.0:
+  + Uses the playbin2 GStreamer element.
+  + Autoloads subtitle files when they have the same name than the
+    video being played and are in the same directory.
+  + GObject introspection support.
+  + Added a new clutter_gst_init_with_arg() symbol, changed
+    *get_playbin() to a more generic *get_pipeline()
+  + A lot of small bug fixes and code clean up.
+- Add gobject-introspection-devel BuildRequires. The introspection
+  data doesn't build yet, but it will once we have a newer
+  gobject-introspection.
+- Drop clutter-gst-fix-build.patch: fixed upstream.
+- Rename libclutter-gst-0_10-0 to libclutter-gst-1_0-0 after soname
+  change.
+
+-------------------------------------------------------------------
+Thu Jan 28 12:29:40 CET 2010 - vuntz@opensuse.org
+
+- Add clutter-gst-fix-build.patch to fix build with latest clutter.
+- Fix self-obsoletion of clutter-doc.
+
+-------------------------------------------------------------------
+Fri Jul 31 20:32:02 CEST 2009 - vuntz@novell.com
+
+- Remove Obsoletes for libclutter-gst-0_8-0.
+- Drop clutter-rpmlintrc as it's not needed anymore.
+- Remove libdrm-devel BuildRequires from there -- it should now
+  appear automatically with a Requires in the Mesa-devel package.
+
+-------------------------------------------------------------------
+Thu Jul 30 13:49:23 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.10.0:
+  + Requires stable Clutter 1.0.0
+- Rename libclutter-gst-0_8-0 to libclutter-gst-0_10-0 and make it
+  obsolete the old package.
+- Add clutter-gst-rpmlintrc.
+
+-------------------------------------------------------------------
+Sun Jul 26 03:34:47 CEST 2009 - captain.magnus@opensuse.org
+
+- Update to version 0.9.0:
+  + Requires clutter 0.9.6
+  + Added support for ARB fp 1.0 shaders when available
+  + Added support for YUV I420 to RBG colorspacing
+  + Removed the 'use-shaders' property on ClutterGstVideoSink. The
+    sink detects itself what the underlying GL implementation
+    supports and negotiates capabilities based on what it has found
+- Remove clutter-gst-warnings.patch. One part fixed upstream, other
+  part not relevant due to code change
+- Remove BuildRequires gtk2-devel, pango-devel, xmlto, gtk-doc
+- Add BuildRequires libdrm-devel
+- Merge -doc into -devel since it only contains gtk-doc
+- Remove gtk2-devel from -devel Requires
+- Remove %if statements for <= 11.0
+- Remove export SUSE_ASNEEDED=0
+- Don't use --enable-gtk-doc with configure
+- Replace DESTDIR=$RPM_BUILD_ROOT make install with %makeinstall
+
+-------------------------------------------------------------------
+Sun Jul 12 14:34:49 CEST 2009 - coolo@novell.com
+
+- fix build in disabling as-needed
+
+-------------------------------------------------------------------
+Wed Oct 22 10:32:41 CDT 2008 - maw@suse.de
+
+- Make debug packages require a specific %{version}-%{release}
+- Fix up the -devel subpackages requirements.
+
+-------------------------------------------------------------------
+Thu Aug 28 01:15:12 CEST 2008 - ro@suse.de
+
+- fix debug package requires 
+
+-------------------------------------------------------------------
+Wed Aug 20 00:03:32 CEST 2008 - maw@suse.de
+
+- Add clutter-gst-warnings.patch, which fixes a warning during
+  compilation
+- Own /usr/share/gtk-doc/html/clutter-gst.
+
+-------------------------------------------------------------------
+Mon Jul 28 22:45:21 EDT 2008 - hfiguuiere@suse.de
+
+- Initial release.
+

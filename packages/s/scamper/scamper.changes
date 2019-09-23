@@ -1,0 +1,235 @@
+-------------------------------------------------------------------
+Tue Aug 20 19:34:08 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- add SIOCGSTAMP.patch for recent changes in socket.h/socketios.h
+
+-------------------------------------------------------------------
+Sat Dec 22 22:04:19 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 20181219:
+ * scamper:
+  * json output format for tracelb (MDA traceroute)
+  * print an error message if an output file cannot be opened
+  * document (in warts.5) the offset variable in a warts traceroute record,
+    and scamper_trace_dtree_t
+  * use autoconf to check if X509_VERIFY_PARAM_set1_host is available,
+    rather than OpenSSL #defines that are not used consistently among
+    OpenSSL-like libraries.
+ * libscamperfile:
+  * don't crash on a zero length file, or other conditions where sf->type
+    is SCAMPER_FILE_NONE
+  sc_ally:
+  * fix example in manual page
+  * dump 3: when merging routers in a transitive closure, remove the
+    obsolete router from the dump list.
+  * if an address is repeated in the input file then complain
+ * sc_bdrmap:
+  * document -C csum in sc_bdrmap.1
+  * allow duplicate prefixes in the IXP file
+  * add initial support for UDP paris traceroute, as an alternative
+    to the ICMP paris traceroute bdrmap uses by default.
+  * document updates in sc_bdrmap.1
+ * sc_ttlexp:
+  * add -O noreserved
+  * bugfix reading from stdin, file handling
+  * document updates in sc_ttlexp.1
+ * sc_uptime:
+  * add an optional -I interval parameter which controls how frequently
+    we want an address to be probed.  add logic to exit early if we are
+    probing on with -I and there is a list of low-priority probing
+    that is not empty, so that sc_uptime can meet the probe interval.
+  * add the ability to expire addresses out of the database after they
+    have not been seen in traceroute for a while, and they do not
+    respond with an incrementing IPID value, with optional -E expiry
+    parameter.
+  * loading addresses into the state database is now a separate step (-a)
+  * add a -c option to create and initialise a database file
+  * add do-not-probe support
+  * replace import code that used a row for each sample with a blob that
+    stores multiple samples per blob.
+  * report some measure of progress on import
+  * build monotonic sequences which allow patterns in responses to be
+    more easily identified, so that reboots are not falsely inferred
+    in the cases of multiple counters, 16 bit counters, and routers
+    that start each sequence after a PTB with a new IPID.
+  * add an -O verbose to dump IPID sequences
+  * document updates in sc_uptime.1
+
+-------------------------------------------------------------------
+Sun May  6 08:20:47 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 20180504:
+ * scamper:
+  * increase the size of a buffer in scamper's traceroute json
+    creation to reduce chance of truncation.
+  * print the number of probes sent by traceroute in the json
+    output.
+  * enforce a minimum firsthop value of 1 when reading a warts
+    traceroute object.
+ * sc_bdrmap:
+  * choose a static ICMP checksum value when using Paris traceroute
+    to reduce churn in observed topology in bdrmap output.
+  * add ability to pass list of ASes to -d traces to see
+    traceroutes towards specific ASes, useful for understanding
+    bdrmap inferences.
+
+-------------------------------------------------------------------
+Thu Mar  8 19:36:27 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 20180309:
+ * sc_*:
+  * For the utilities (sc_*) that read input files, do not allocate
+    memory to hold the entire input file in memory before parsing
+    the file.  This improvement affects sc_ally, sc_attach,
+    sc_bdrmap, sc_filterpolicy, sc_radargun, sc_speedtrap,
+    sc_tbitblind, sc_tbitpmtud, sc_uptime, sc_warts2text.
+ * sc_tbitpmtud:
+  * add scamper driver from IMC2010 paper to collect data on webserver
+    responsiveness to ICMP packet too big messages, and perform
+    rudimentary analysis of collected data.
+ * sc_ttlexp:
+  * new utility to dump source addresses from ICMP TTL expired
+    messages in warts files.
+ * sc_wartsfix:
+  * add a manual page
+ * sc_warts2csv:
+  * add a manual page
+
+-------------------------------------------------------------------
+Mon Dec  4 08:40:18 UTC 2017 - sebix+novell.com@sebix.at
+
+- remove new-openssl.patch, included upstream
+- update to version 20171204:
+ - scamper:
+   * add a blind-fin tbit test, which tests receiver behavior to TCP FIN
+     packets which could have come from an off-path attacker.
+ - sc_radargun:
+   * add -d 2 option, which dumps interface IP-ID behavior classifications.
+
+-------------------------------------------------------------------
+Thu Nov 30 21:22:24 UTC 2017 - sebix+novell.com@sebix.at
+
+- add patch new-openssl.patch to compile with new openssl versions
+
+-------------------------------------------------------------------
+Thu Aug 24 06:58:41 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to version 20170822
+  scamper:
+  * replace recursive versions of some functions with iterative versions.
+  * add cycle-start and cycle-stop json record implementations.
+  * fix traceroute json record: the hop transmit time value it reported
+    was junk.
+  * add support for sending json over the control socket.  use
+    "attach format json" to get this mode; "attach" by itself still
+    returns uuencoded warts.  Initial patch supplied by Young Hyun.
+  * fix possible memory leaks detected with static analysis.
+  * quality assurance on research paper cites in manual pages.
+  * spelling errors noticed by Iain R. Learmonth.
+  
+  sc_ally:
+  * add feature to dump inferred aliases from the collected data.
+  
+  sc_speedtrap:
+  * add threaded implementation of pairwise comparison to form candidate
+    alias sets, if pthreads are detected at compilation time and
+    --disable-threads configure option is not supplied.
+  
+  sc_uptime:
+  * new scamper driver to infer IPv6 device reboot windows if the device
+    returns an incrementing identifier field in the IPv6 fragmentation
+    header.  the driver is not built by default, as it expects sqlite3.
+    use --with-sc_uptime configure option to build.
+    https://www.caida.org/~mjl/pubs/spf.pdf
+
+-------------------------------------------------------------------
+Thu Jun 22 20:47:31 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to 20161204a
+ * More fixes to libscamperfile caught with fuzz testing.  corrupt
+   warts files provided by Greg Ward of Dyn
+ * if targets or commands are specified in a file, and that file
+   ends after all probing of commands in that file has completed,
+   finish the source, allowing scamper to exit.  this scenario is
+   most likely when stdin is the input file.  Reported by Alex
+   Colvin of Dyn
+ * use select/poll/epoll/kqueue to look for read events on stdin files
+ * malloc enough memory for a prefix6_t in the prefixtree code.  reported
+   by Sebastian Wagner via gcc7.  only sc_bdrmap uses that code
+ * increase size of string buffers for some ping and trace fields for text
+   output to silence gcc7 warning.
+ * allow source IP address to be null when outputting a trace with json
+ * update sc_tbitblind.1 man page to show correct use of scamper's IPFW
+   firewall support, which changed in the 20161204 release
+ * fix unlikely unaligned access when computing checksums with IPv6
+   addresses
+
+-------------------------------------------------------------------
+Wed Jun 21 20:20:18 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to 20161204
+ * add remote control socket support to scamper.  scamper can be
+   configured to connect to a remote controller at run time to
+   allow remote systems to control a scamper instance.  the
+   remote controller is handled by the sc_remoted utility, and
+   is documented in the sc_remoted manual page (see below).
+ * fixes to libscamperfile caught with fuzz testing.  corrupt
+   warts data files provided by Greg Ward of Dyn.
+ * add a PATRICIA trie implementation based off Sedgewick's
+   Algorithms in C++ book.  this improves the performance
+   of scamper compared to holding addresses in splaytrees.
+ * improve speed of warts(5) code.
+ * improve speed of scamper_writebuf by allocating pagesize blocks
+   at a time.
+ * begin to document ping warts records in warts(5).
+ * fix debug printf implementation so that all features will
+   be built in as long as --without-debugfile is not used.
+   backported to 20141211g.
+ * silence compiler warnings from Microsoft Visual Studio.
+   backported to 20141211g.
+ * sc_prefixscan:
+  * add a utility, sc_prefixscan, that provides a convenient
+    interface to scamper's prefixscan alias resolution method.
+    https://www.caida.org/tools/measurement/scamper/man/sc_prefixscan.1.pdf
+ * sc_radargun:
+  * add a utility, sc_radargun, that provides a convenient
+    interface to scamper's radargun implementation.
+    https://www.caida.org/tools/measurement/scamper/man/sc_radargun.1.pdf
+ * sc_remoted:
+  * add a utility, sc_remoted, that provides an interface to a
+    collection of remote scamper instances.
+    https://www.caida.org/tools/measurement/scamper/man/sc_remoted.1.pdf
+ * sc_ally:
+  * use writebufs so sc_ally is event driven and will not block.
+  * add code to probe candidate sets in pairs, with transitive
+    closure to save probes.
+  * allow inter-probe gaps of less than 1 second.
+ * sc_attach:
+  * add support for remote control sockets.
+  * add an option to randomise the order tasks are run.
+ * sc_speedtrap:
+  * stricter default test for inferring if two IP addresses may
+    share a single shared counter.
+    backported to 20141211g.
+  * code cleanup.
+ * sc_warts2json
+  * add support for printing ICMP extensions included in traceroute
+    responses, prompted by Quirin Scheitle
+
+-------------------------------------------------------------------
+Sat Oct  8 19:30:55 UTC 2016 - mardnh@gmx.de
+
+- update to version 20141211e
+  - upstream does not provide a changelog
+
+-------------------------------------------------------------------
+Sun Aug 21 18:29:06 UTC 2016 - mardnh@gmx.de
+
+- moved man3/* from lib- to -devel subpackage
+- removed useless provides from libscamperfile0
+
+-------------------------------------------------------------------
+Wed Aug 17 17:49:53 UTC 2016 - mardnh@gmx.de
+
+- initial package, version 20141211e
+

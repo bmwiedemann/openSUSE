@@ -1,0 +1,123 @@
+-------------------------------------------------------------------
+Tue Jan 10 12:28:02 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.82
+  * now using fstat64-syscall on Linux32 
+  * avoid using "brk"-syscall due a conflict with Address Space
+    Layout Randomization (ASLR) in Linux: neeed if
+    /proc/sys/kernel/randomize_va_space is >= 2
+- Small packaging cleanup:
+  * Use url for source
+  * Use correct rpm group
+  * Enable building on all architectures
+
+-------------------------------------------------------------------
+Tue Jan 10 12:10:19 UTC 2017 - bg@suse.com
+
+- Enable s390x in list of architectures
+
+-------------------------------------------------------------------
+Sun Mar  3 17:10:10 UTC 2013 - schwab@suse.de
+
+- Remove reference to nonexisting e3c stuff
+- ExclusiveArch %ix86 x86_64
+
+-------------------------------------------------------------------
+Wed Feb 29 15:54:35 UTC 2012 - dvaleev@suse.com
+
+- Fix build for ppc, add ppc ppc64 to arch declerations 
+
+-------------------------------------------------------------------
+Fri Sep 30 11:30:36 UTC 2011 - awafaa@opensuse.org
+
+- Fix build issues on ARM, add %arm to arch declerations
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Aug  3 13:20:51 UTC 2010 - stephan.barth@novell.com
+
+- Update to version 2.8 which is mainly a major cleanup and contains several
+  encoding fixes
+- removed deprecated COMPRESS make environment variable
+- added make variable EXMODE=SED since this was the default and got removed
+  from the Makefile 
+
+-------------------------------------------------------------------
+Fri Dec  4 11:22:58 CET 2009 - stephan.barth@novell.com
+
+- Update to version 2.7.1 which contains a lot of bugfixes compared to the
+  previous version of the SUSE package
+- Fixed x86_64 build (bnc #341432)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:39 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan 22 00:21:09 CET 2006 - cthiel@suse.de
+
+- update to version 2.6.3
+
+-------------------------------------------------------------------
+Fri Apr 29 10:21:01 CEST 2005 - yxu@suse.de
+
+- fixed for GCC4
+
+-------------------------------------------------------------------
+Thu Apr 28 15:09:37 CEST 2005 - snbarth@suse.de
+
+- update to version 2.6.2
+
+-------------------------------------------------------------------
+Mon Jul 19 15:46:48 CEST 2004 - snbarth@suse.de
+
+- update to version 2.6.0 which now support UTF-8. Fixes bug #41084
+
+-------------------------------------------------------------------
+Sun Feb 29 00:20:04 CET 2004 - ro@suse.de
+
+- fix build for non-x86
+
+-------------------------------------------------------------------
+Fri Feb 27 14:00:09 CET 2004 - snbarth@suse.de
+
+- disabled the gzexe feature
+
+-------------------------------------------------------------------
+Sun Jan 11 12:12:36 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Wed Jul 23 11:24:26 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Fri Jul  5 10:34:38 CEST 2002 - kukuk@suse.de
+
+- Use %ix86 macro 
+
+-------------------------------------------------------------------
+Mon Dec 17 15:13:55 MET 2001 - snbarth@suse.de
+
+- update -> 1.9 
+
+-------------------------------------------------------------------
+Tue Jul 10 12:11:59 CEST 2001 - uli@suse.de
+
+- was building i386 binary on non-IA32 archs, fixed
+- update -> 1.7
+
+-------------------------------------------------------------------
+Tue Jul  3 18:11:32 MEST 2001 - snbarth@suse.de
+
+- initial version 
+

@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e7ae703cd34a265494a5778ce7832ac0</srcmd5>
+    <version>1.0.0</version>
+    <time>1502186321</time>
+    <user>maxlin_factory</user>
+    <comment>Add LICENSE and README.rst</comment>
+    <requestid>510140</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>73043163ecc084cd838699b06085b59d</srcmd5>
+    <version>1.1.3</version>
+    <time>1524400830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599476</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>08a893285d4a0f8d6572efafca8e867c</srcmd5>
+    <version>1.1.3</version>
+    <time>1524576747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599793</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c47d02f096140ecf6ead82e8115e319a</srcmd5>
+    <version>1.1.3</version>
+    <time>1524643364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600741</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>492386d86d892714a875f936dc9d80a5</srcmd5>
+    <version>1.1.4</version>
+    <time>1551455294</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.4:
+  * Fix error when encoding non-BMP characters on UCS-2 python builds (fixes issue #12).
+- Use same syntax for test multibuild like in other pkgs</comment>
+    <requestid>680066</requestid>
+  </revision>
+</revisionlist>

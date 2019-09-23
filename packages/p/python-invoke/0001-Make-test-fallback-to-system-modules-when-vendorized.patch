@@ -1,0 +1,92 @@
+From 4cd025415f0ef2c1d72bf4832051971c1e7eef8b Mon Sep 17 00:00:00 2001
+From: Athmane Madjoudj <athmane@fedoraproject.org>
+Date: Fri, 11 May 2018 19:47:18 +0100
+Subject: [PATCH] Make test fallback to system modules when vendorized one are
+ not available
+
+---
+ tests/_util.py       | 5 ++++-
+ tests/concurrency.py | 5 ++++-
+ tests/conftest.py    | 6 +++++-
+ tests/executor.py    | 5 ++++-
+ tests/runners.py     | 5 ++++-
+ tests/watchers.py    | 5 ++++-
+ 6 files changed, 25 insertions(+), 6 deletions(-)
+
+Index: invoke-1.1.1/tests/_util.py
+===================================================================
+--- invoke-1.1.1.orig/tests/_util.py
++++ invoke-1.1.1/tests/_util.py
+@@ -8,7 +8,10 @@ except ImportError:
+     termios = None
+ from contextlib import contextmanager
+ 
+-from invoke.vendor.six import BytesIO, b, wraps
++try:
++    from invoke.vendor.six import BytesIO, b, wraps
++except ImportError:
++    from six import BytesIO, b, wraps
+ 
+ from mock import patch, Mock
+ from pytest import skip
+Index: invoke-1.1.1/tests/concurrency.py
+===================================================================
+--- invoke-1.1.1.orig/tests/concurrency.py
++++ invoke-1.1.1/tests/concurrency.py
+@@ -1,4 +1,7 @@
+-from invoke.vendor.six.moves.queue import Queue
++try:
++    from invoke.vendor.six.moves.queue import Queue
++except ImportError:
++    from six.moves.queue import Queue
+ 
+ from invoke.util import ExceptionWrapper, ExceptionHandlingThread as EHThread
+ 
+Index: invoke-1.1.1/tests/conftest.py
+===================================================================
+--- invoke-1.1.1.orig/tests/conftest.py
++++ invoke-1.1.1/tests/conftest.py
+@@ -3,7 +3,11 @@ import os
+ import sys
+ import termios
+ 
+-from invoke.vendor.six import iteritems
++try:
++    from invoke.vendor.six import iteritems
++except ImportError:
++    from six import iteritems
++
+ import pytest
+ from mock import patch
+ 
+Index: invoke-1.1.1/tests/runners.py
+===================================================================
+--- invoke-1.1.1.orig/tests/runners.py
++++ invoke-1.1.1/tests/runners.py
+@@ -6,7 +6,10 @@ import types
+ from io import BytesIO
+ from itertools import chain, repeat
+ 
+-from invoke.vendor.six import StringIO, b, PY2, iteritems
++try:
++    from invoke.vendor.six import StringIO, b, PY2, iteritems
++except ImportError:
++    from six import StringIO, b, PY2, iteritems
+ 
+ from pytest import raises, skip
+ from pytest_relaxed import trap
+Index: invoke-1.1.1/tests/watchers.py
+===================================================================
+--- invoke-1.1.1.orig/tests/watchers.py
++++ invoke-1.1.1/tests/watchers.py
+@@ -1,6 +1,9 @@
+ from threading import Thread, Event
+ 
+-from invoke.vendor.six.moves.queue import Queue, Empty
++try:
++    from invoke.vendor.six.moves.queue import Queue, Empty
++except:
++    from six.moves.queue import Queue, Empty
+ 
+ from invoke import Responder, FailingResponder, ResponseNotAccepted
+ 

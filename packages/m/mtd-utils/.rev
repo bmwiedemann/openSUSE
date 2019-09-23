@@ -1,0 +1,80 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fe53af4e591d86cfd08751d46249ac33</srcmd5>
+    <version>1.5.2</version>
+    <time>1461855201</time>
+    <user>dimstar_suse</user>
+    <comment>New package, contains tools for jffs2 and ubifs (both are enablet in TW
+kernel)</comment>
+    <requestid>384135</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8e32480e1845917c66a68610b1ca2dbc</srcmd5>
+    <version>1.5.2</version>
+    <time>1472595013</time>
+    <user>dimstar_suse</user>
+    <comment>- Supplement jffs2 and ubifs filesystems</comment>
+    <requestid>423528</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0874aa2d40c5c2d6ab96b24a33437abe</srcmd5>
+    <version>2.0.0</version>
+    <time>1487768179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.0:</comment>
+    <requestid>459486</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bed32315a053d6a46626ea31c75a09cb</srcmd5>
+    <version>2.0.1</version>
+    <time>1503927202</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.1:
+  * nandbiterrs: Add Erased Pages Bit Flip Test
+  * mkfs.ubifs: Add support for symlinks in device table
+  * nanddump: Add --skip-bad-blocks-to-start option
+  * nandwrite: Add --skip-bad-blocks-to-start option
+  * several fixes and internal cleanups</comment>
+    <requestid>519097</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fad9f2a989e8d666d977596c3de7fa09</srcmd5>
+    <version>2.0.2</version>
+    <time>1531232150</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.2:</comment>
+    <requestid>621716</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1deec352831a3a0474693835263236dd</srcmd5>
+    <version>2.1.0</version>
+    <time>1560970932</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0:
+  * Features:
+    + mkfs.ubifs: Implement support for file system encryption
+    + mkfs.ubifs: Implement selinux labelling support
+    + ubinize: add support for skipping CRC check of a static volume when opening
+    + ubimkvol: add support for skipping CRC check of a static volume when opening
+    + Add lsmtd program
+  * Fixes:
+ - update various kernel headers
+    + Instead of doing preprocessor magic, just output off_t as long long
+    + fix verification percent display in flashcp
+    + mkfs.ubifs: fix double free
+    + mkfs.ubifs: Fix xattr nlink value
+    + ubinize: avoid to create two UBI_LAYOUT_VOLUME_ID volume
+    + common.h: fix prompt function
+    + libmtd: don't print an error message for devices without ecc support
+    + io_paral: Fix error handling of update_volume()
+    + ubimkvol: Initialize req to zero to make sure no flags are set by default
+    + libubi: add volume flags to ubi_mkvol_request
+    + mkfs.ubifs: add_xattr is not depending on host XATTR support
+    + Revert &quot;Return correct error number in ubi_get_vol_info1&quot; which introduced a regression.
+    + make sure pkg-config is installed in configure script
+    + ubiformat: process command line arguments before handling file arguments
+  * Cleanup:
+    + ubiformat: remove no-volume-table option</comment>
+    <requestid>706319</requestid>
+  </revision>
+</revisionlist>

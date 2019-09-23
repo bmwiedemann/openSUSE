@@ -1,0 +1,914 @@
+-------------------------------------------------------------------
+Sat Sep  7 20:36:35 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * autotests: split up kprocesstest to fix compilation with Qt 5.14
+  * Use QLatin1String here
+  * Q_UNUSED doesn't need a ; after it.
+  * [KProcessList] Split command line and process name
+
+-------------------------------------------------------------------
+Wed Aug  7 17:51:14 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Remove extra ';' 
+  * autotest: fix kformattest to ignore translations + QStringLiteral fix on Windows 
+  * Add function to suggest a unique filename 
+  * Fix build after 0b2fe3cf21 
+  * Remove unused includes
+
+-------------------------------------------------------------------
+Fri Jul 19 11:39:24 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+- Drop patch to support Qt 5.9:
+  * 0001-Do-not-use-functor-if-Qt-lt-5.10.patch
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * KPluginMetaData: use Q_DECLARE_METATYPE
+  * Install in new logging directory when we use kf5 5.59.0
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- Changes since 5.58.0:
+  * Fix compliation for python bindings (kde#407306)
+  * Avoid method name clash in windows KProcessList backend
+  * Add namespace to windows kprocesslist clas
+  * Fix windows KProcessList return type
+  * Add GetProcessList for retrieving the list of currently active processes
+
+-------------------------------------------------------------------
+Wed May 15 18:16:15 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- Changes since 5.57.0:
+  * Fix wrong "Unable to find service type" warnings
+  * New class KOSRelease - a parser for os-release files
+  * Fix bug about "** foo **"
+  * Not necessary to have %2 here as we use %1
+  * Skip running benchmarks when in debug mode.
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:42 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Fix "* foo *" we don't want to bold this string.
+  * Fix Bug 401996 - clicking contact web url => uncomplete url is selected (kde#401996)
+  * autotests: comment out verbose output from KDirWatch
+  * Print strerror when inotify fails (typical reason: "too many open files").
+  * Port to qregularexpression + simplify it. all autotest ok
+  * Add more autotest
+  * Fix bug when we have several space
+  * Fix compilation with Android API level >= 26
+  * Add Q_EMIT to emit signal call
+  * port to std::sort
+  * Use range-based for loop
+  * Make it compile without foreach
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:35 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * Fix compile kpimtextedit when we remove all deprecated method against
+  * Port deprecated methods
+  * Namespace find_file call
+  * Create tel: links for phone numbers
+
+-------------------------------------------------------------------
+Fri Feb 15 09:17:36 UTC 2019 - alarrosa@suse.com
+
+- Add 0001-Do-not-use-functor-if-Qt-lt-5.10.patch to revert the removal of
+  support for Qt 5.9
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:03 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * delete copy constructor and assignment operator of some public classes
+  * delete copy constructor and assignment operator of some internal classes
+  * Remove check for Qt version 5.10
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:43 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * Use for(...:...) + initialize variables
+  * cmake macros: Port away from deprecated ECM var in kcoreaddons_add_plugin (kde#401888)
+  * make units and prefixes of formatValue translatable
+  * make it build
+
+-------------------------------------------------------------------
+Sun Dec 09 19:53:38 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.1
+  * Hotfix release to fix a build problem
+- Changes since 5.53.0:
+  * make it build
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Use isEmpty()
+  * Make it possible to use KAboutData/License/Person from QML
+  * KPluginFactory: fix create() apidox
+  * Fix crash if XDG_CACHE_HOME directory is too small or out of space (kde#400610)
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:03 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * autotests: repair "detecting hardlink change" with stat/qfswatch
+  * Minor: Use nullptr
+  * Add to categories files. Use new syntax
+  * Use qEnvironmentVariableIntValue
+
+-------------------------------------------------------------------
+Tue Oct 16 08:01:57 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:51:47 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Remove misleading use of KDE_INSTALL_PYTHONBINDINGSDIR
+  * Use QString's multi-arg with multiple string args
+  * Fix minor EBN issues
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * Don't remove space between two url when line start with " (kmail bug)
+  * Add kmail bug. Need to understand why it eats space
+  * Add more autotest
+  * KPluginLoader: use '/' even on Windows, libraryPaths() returns paths with '/'
+  * autotests: add debug output for plugin dirs, to investigate Purpose CI on Windows
+  * KPluginMetaData: convert empty string to empty stringlist.
+
+-------------------------------------------------------------------
+Sun Aug 19 09:18:54 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Fix overflow in rounding code (kde#397008)
+  * API dox: remove not-to-be-there ":"s behind "@note"
+  * API dox: talk about nullptr, not 0
+  * KFormat: Replace unicode literal with unicode codepoint to fix MSVC build
+  * KFormat: Add unit tests for mili/micro SI prefixes
+  * KFormat: fix typo in SI prefix name enum
+  * KFormat: correct @since tag for new KFormat::formatValue
+  * KFormat: Allow usage of quantities beyond bytes and seconds
+  * Correct KFormat::formatBytes examples
+  * Honor BUILD_TESTING
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:37 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * Remove QT definitions duplicated from KDEFrameworkCompilerSettings
+  * Make sure that it compiles with strict compile flags
+  * Remove unused key X-KDE-DBus-ModuleName from test servicetype metadata
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:03 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * None
+
+-------------------------------------------------------------------
+Sun May 13 21:03:01 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * Use override
+  * [KUser] Check whether .face.icon is actually readable before returning it
+  * We need ";" for windows compiler (on last gcc it works without problem)
+  * Revert "Revert "Warning--""
+  * Fix pedantic warnings
+  * Revert "Warning--"
+  * Warning--
+  * KJob public signals
+  * Fix compiler warning under Clang
+  * [kcoreaddons] convert to new connect syntax
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:03 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Add missing override
+  * Return when url is empty
+  * Use ecm_setup_qtplugin_macro_names
+  * Remove not necessary QtCore and co
+  * Cleanup m_inotify_wd_to_entry before invalidating Entry pointers (kde#390214)
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:41 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * Cleanup m_inotify_wd_to_entry before invalidating Entry pointers (kde#390214)
+  * kcoreaddons_add_plugin: remove effectless OBJECT_DEPENDS on json file
+  * Help automoc to find metadata JSON files referenced in the code
+  * kcoreaddons_desktop_to_json: note the generated file in the build log
+  * Bump shared-mime-info to 1.3
+  * Use override keyword here
+  * Introduce K_PLUGIN_CLASS_WITH_JSON
+  * KUrlMimeData: port to QStringLiteral
+  * Increase timeout in the hope of fixing test failure on the CI
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:07 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * KUrlMimeData: fix handling of PreferLocalUrls
+  * Match also spdx keys LGPL-2.1 & LGPL-2.1+
+  * Use the much faster urls() method from QMimeData
+  * Next try to fix build on windows
+  * Make it compiles on windows
+  * Compile commenting remove_defintion(QT_NO_CAST_FROM_ASCII )
+  * Optimize inotify KDirWatch backend: map inotify wd to Entry
+  * Optimize: use QMetaObject::invokeMethod with functor
+  * Add benchmarks for KDirWatch
+  * Use QSignalSpy::wait instead of QTest::wait where possible
+  * Verify that the file was opened
+  * Verify that the path is valid and writable
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:15 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+  * Extend CMAKE_AUTOMOC_MACRO_NAMES also for own build
+  * Match license keys by spdx
+  * Remove cmake 3.10+ warning for users of K_PLUGIN_FACTORY and K_PLUGIN_FACTORY_WITH_JSON
+  * Improve apidox of KJobTrackerInterface
+  * Minor
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:48 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * Autotest: fix for HOME having a trailing slash
+  * Input validation of SubJobs
+  * Warn about errors when parsing json files
+  * Install mimetype definitions for kcfg/kcfgc/ui.rc/knotify & qrc files
+  * Add a new function to measure the length by text.
+  * Keep widgets optional, as it's a test
+  * Look for Qt5 rather than Qt5Widgets
+  * Remove unused code
+  * Fix KAutoSave bug on file with white space in it
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:13 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * KCompositeJob: port to new connect syntax. Improves performance.
+  * fix URL detection with double urls like "http://www.foo.bar<http://foo.bar/>"
+  * DesktopFileParser: improve error reporting, fix coding style
+  * Remove double ";"
+  * Use https for KDE urls
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:38 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * desktoptojson: Improve legacy service type detection heuristic. (kde#384037)
+  * modernise debugging.
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:16 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * DesktopFileParser: add fallback lookup in ":/kservicetypes5/*"
+  * Add support for uninstalled plugins in kcoreaddons_add_plugin
+  * Do not leak symbols of pimpl classes, protect with Q_DECL_HIDDEN
+  * desktopfileparser: Fix non-compliant key/value parsing. (kde#310674)
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:20 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * Remove unused init() declaration from K_PLUGIN_FACTORY_DECLARATION_WITH_BASEFACTORY_SKEL
+  * Restore the QCoreApplication library paths at the end of the tests that change it.
+  * API dox: add note about moc include need with K_PLUGIN_FACTORY(_WITH_JSON)
+  * add KAboutLicense::spdx and introduce orLater qualification
+  * API dox: for deprecated tell since and what to use instead
+  * disable compiler warning on testing deprecated function
+  * use an initializer list instead of calling insert a million times
+  * kdirwatch: Avoid potential crash if d-ptr destroyed before KDirWatch. (kde#381583)
+  * Fix display of formatDuration with rounding. (kde#360681,kde#382069)
+  * Use explicit flag value instead of nullptr
+  * API dox: use @p to refer to argument in running text, not @arg
+
+-------------------------------------------------------------------
+Wed Jul 12 07:13:59 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * Use FindInotify.cmake to decide wheter inotify is available.
+  * [FEATURE] Option to build & install QCH file with the public API dox
+  * Fix KDirWatch unit test to use set KDIRWATCH_METHOD again
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * Fixes to 26a262180155
+  * Ensure proper per thread seeding in KRandom.
+  * API dox: in example use KDBusService only after commandline is handled
+  * API dox: Use doxygen notation to have comments used
+  * API dox: add some minimal docs to more namespace
+  * API dox: note CamelCase includes by @class tag with more classes
+  * Remove qDebug from removeDir/removeFile as discussed in https://phabricator.kde.org/D5856
+  * Do not watch QRC's paths (kde#374075)
+
+-------------------------------------------------------------------
+Mon May 15 13:53:12 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * Fix the @see function names
+  * Add .arcconfig
+  * API dox: more info about KAboutData's orgDomain/desktopFileName properties
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:44 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * explicitly set NO_CMAKE_FIND_ROOT_PATH
+  * Upgrade KF5 version to 5.33.0.
+  * Mac OS (X) has a POSIX-compliant /bin/sh too
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:16 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Commit translations from l10n-kf5
+  * Fix compilation with Qt 5.6.
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Exclude (6)
+  * Move the isDir() outside of the loop, as spotted by Milian.
+  * KDirWatch: replace QList<Client *> by std::vector<Client> to save on new/delete.
+  * Upgrade KF5 version to 5.32.0.
+  * KDirWatch: fix memory leak on destruction.
+
+-------------------------------------------------------------------
+Thu Feb  9 09:22:42 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+- Drop parse-the-desktop-file-2-times.patch
+
+-------------------------------------------------------------------
+Wed Jan 11 22:27:56 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Add parse-the-desktop-file-2-times.patch: keeping backward
+  compatibility is backward
+
+-------------------------------------------------------------------
+Sun Jan  8 23:39:02 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 01:56:58 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * KTextToHtml: fix bug "[1] added at the end of a hyperlink"
+    (kde#343275)
+  * KUser: Only search for an avatar if loginName isn't empty
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 20:24:14 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * Display bad url
+  * Load user avatars from AccountsServicePath if it exists
+    (kde#370362)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  9 12:51:38 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * Register QPair<QString,QString> as metatype in KJobTrackerInterface
+  * Don't convert as url an url which has a double-quote character
+    (boo#1002977, CVE-2016-7966)
+  * Windows compile fix
+  * Fix very old bug when we remove space in url as "foo <<url> <url>>"
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+- Drop upstreamed
+  0001-Fix-very-old-bug-when-we-remove-space-in-url-as-foo-.patch
+  0002-Don-t-convert-as-url-an-url-which-has-a.patch
+
+-------------------------------------------------------------------
+Thu Oct  6 18:00:21 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added 0001-Fix-very-old-bug-when-we-remove-space-in-url-as-foo-.patch
+  0002-Don-t-convert-as-url-an-url-which-has-a.patch (CVE-2016-7966)
+
+-------------------------------------------------------------------
+Tue Sep  6 20:47:49 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:51:14 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * Install known licenses and find them at runtime (regression fix)
+    (kde#353939)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:02:34 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:24:05 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * Print the failing plugin when notifying a cast warning
+  * [kshareddatacache] Fix invalid use of & to avoid unaligned reads
+  * Kdelibs4ConfigMigrator: skip reparsing if nothing was migrated
+  * krandom: Add testcase to catch bug 362161 (failure to auto-seed)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:30:32 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * Provide a way to disable inotify use in KDirWatch
+  * Fix KAboutData::applicationData() to init from current
+    Q*Application metadata
+  * Make clear that KRandom is not recommended for cryptography purposes
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+- Drop upstreamed 0001-Missing-rand-qrand.patch
+
+-------------------------------------------------------------------
+Wed Apr 27 16:36:32 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added 0001-Missing-rand-qrand.patch (kde#362161)
+
+-------------------------------------------------------------------
+Mon Apr  4 14:19:27 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Fix kcoreaddons_desktop_to_json() on windows
+  * Fix linking to a Threads library
+  * Add stubs to allow compilation on Android
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 09:55:36 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * Fix Kdelibs4 config migration for Windows
+  * Add API to get Frameworks runtime version info
+  * KRandom: Don't use up 16K of /dev/urandom to seed rand()
+    (kde#359485)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+- Use %mime_database_post(un) macros
+
+-------------------------------------------------------------------
+Sat Feb  6 18:00:02 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:42:18 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * Add KAboutData::fromPluginMetaData(const KPluginMetaData &plugin)
+  * Add KPluginMetaData::copyrightText(), extraInformation() and
+    otherContributors()
+  * Add KPluginMetaData::translators() and KAboutPerson::fromJson()
+  * Fix use-after-free in desktop file parser
+  * Make KPluginMetaData constructible from a json path
+  * desktoptojson: make missing service type file an error for the binary
+  * Make calling kcoreaddons_add_plugin without SOURCES an error
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:03:49 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * KAboutData: Allow https:// and other URL schemas in homepage.
+    (kde#355508)
+  * Repair MimeType property when using kcoreaddons_desktop_to_json()
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 16:58:33 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * KAboutData: apidoc "is is" -> "is" addCredit(): ocsUserName -> ocsUsername
+  * KJob::kill(Quiet) should also exit the event loop
+  * Add support for desktop file name to KAboutData
+  * Use correct escaping character
+  * Reduce some allocations
+  * Make KAboutData::translators/setTranslators simple
+  * Fix setTranslator example code
+  * desktopparser: skip the Encoding= key
+  * desktopfileparser: Address review comments
+  * Allow setting service types in kcoreaddons_desktop_to_json()
+  * desktopparser: Fix parsing of double and bool values
+  * Add KPluginMetaData::fromDesktopFile()
+  * desktopparser: Allow passing relative paths to service type files
+  * desktopparser: Use more categorized logging
+  * QCommandLineParser uses -v for --version so just use --verbose
+  * Remove lots of duplicated code for desktop{tojson,fileparser}.cpp
+  * Parse ServiceType files when reading .desktop files
+  * Make SharedMimeInfo an optional requirement
+  * Remove call to QString::squeeze()
+  * desktopparser: avoid unnecessary utf8 decoding
+  * desktopparser: Don't add another entry if entry ends in a separator
+  * KPluginMetaData: Warn when a list entry is not a JSON list
+  * Add mimeTypes() to KPluginMetaData
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:37:06 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * KShell::splitArgs: only ASCII space is a separator, not unicode
+    space U+3000 (kde#345140)
+  * KDirWatch: fix crash when a global static destructor uses
+    KDirWatch::self() (kde#353080)
+  * Fix crash when KDirWatch is used in Q_GLOBAL_STATIC.
+  * KDirWatch: fix thread safety
+  * Clarify how to set KAboutData constructor arguments.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:12:50 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:17 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * Add Kdelibs4Migration::kdeHome() for cases not covered by resources
+  * Fix tr() warning
+  * Fix KCoreAddons build on Clang+ARM
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:44:52 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * KDirWatch: Only establish a connection to FAM if requested
+  * Allow filtering plugins and applications by formfactor
+  * Make it possible to use desktoptojson from different sources
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:15 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * New KPluginLoader::findPluginById() convenience API
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:46:05 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * New cmake macro kcoreaddons_add_plugin to create
+    KPluginLoader-based plugins more easily.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:43 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:44 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * KPluginMetadata: add support for Hidden key
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:15 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * KAboutData: Call addHelpOption and addVersionOption
+    automatically, for convenience and consistency
+  * KAboutData: Bring back "Please use http://bugs.kde.org
+    to report bugs." when no other email/url is set
+  * KAutoSaveFile: allStaleFiles() now works as expected
+    for local files, fixed staleFiles() too
+  * KRandomSequence now uses int's internally and exposes
+    int-api for 64-bit unambiguity
+  * Mimetype definitions: *.qmltypes and *.qmlproject files
+    also have the text/x-qml mime type
+  * KShell: make quoteArgs quote urls with QChar::isSpace(),
+    unusual space characters were not handled properly
+  * KSharedDataCache: fix creation of directory containing
+    the cache (porting bug)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:17 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * KDirWatch can now watch /dev/shm as well (kde#314982)
+  * KDELibs4Migration now always returns an absolute path
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:39 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * Add KTextToHTML class for plaintext->HTML conversion
+  * Add KPluginMetaData::metaDataFileName()
+  * Allow to read KPluginMetaData from .desktop files
+  * Kdelibs4Migration now gives priority to distro-provided
+    KDE4_DEFAULT_HOME
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+- Drop 0001-Let-Kdelibs4Migration-searches-in-.kde4-first-it-s-p.patch,
+  merged upstream
+
+-------------------------------------------------------------------
+Sun Nov 09 05:05:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post/postun scripts
+
+-------------------------------------------------------------------
+Sun Nov  2 17:47:13 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * Various build fixes (QNX, Ubuntu 14.04)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:34 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * Kdelibs4Migration: allow distributions to set
+    _KDE4_DEFAULT_HOME_POSTFIX so that the kde4 home
+    is found properly.
+  * Compilation fixes for MSVC and gcc 4.5
+  * Turn KFormat into a Q_GADGET so we can expose its
+    properties to QML indirectly
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+- Pass -DKDE4_DEFAULT_HOME=".kde4", used in kdelibs4migration class
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:24 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * KCoreAddons: Mark KAboutData::setProgramIconName() as deprecated,
+    it did not do anything.
+    Use QApplication::setWindowIcon(QIcon::fromTheme("...")) instead.
+  * KCoreAddons: new classes Kdelibs4ConfigMigrator and KPluginMetaData
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+
+-------------------------------------------------------------------
+Tue Aug 26 21:24:36 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added 0001-Let-Kdelibs4Migration-searches-in-.kde4-first-it-s-p.patch:
+  Let Kdelibs4Migration searches in .kde4 first, it's possible that
+  some users have ancient unused config in .kde, and openSUSE
+  has .kde4 as default
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:07 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+- Harden required Qt5 libs versions
+- Pass the location of lconvert executable
+- Don't own standard directories
+
+-------------------------------------------------------------------
+Tue Jul  1 21:35:50 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:20 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Added libqt5-linguist-devel BuildRequires
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Sun May  4 01:41:03 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:25 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+
+-------------------------------------------------------------------
+Tue Mar  4 16:38:45 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Wed Feb 19 23:32:50 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Create a separate (binary) kcoreaddons package, so library
+  package adheres to shlib policy
+
+-------------------------------------------------------------------
+Sat Feb  8 02:17:39 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init kcoreaddons package
+

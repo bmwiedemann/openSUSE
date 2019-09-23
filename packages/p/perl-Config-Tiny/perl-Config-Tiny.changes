@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Thu Aug  1 08:37:37 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- Update to 0.24
+  - Delete from caveats in documentation where it used to say:
+          'Config::Tiny will only recognize the first time an option is set in a config file.'
+          'Any further attempts to set the same option later in the config file are ignored.'
+          In reality the code uses the 2nd and subsequent values to overwrite earlier values.
+  - Make this topic a new FAQ.
+  - Add corresponding test t/06.repeat.key.t.
+  - Update POD to clarify trailing comment options.
+  - Add corresponding test t/07.trailing.comment.t.
+  - Romanize Gregory Kidrenko's name so Config::IniFiles does not get 'Wide char in print'.
+  - Move xt/pod.t to xt/author/pod.t.
+  - Adopt new repo structure. See
+          http://savage.net.au/Ron/html/My.Workflow.for.Building.Distros.html.
+  - Move require 5.008001 from Tiny.pm into Makefile.PL.
+
+-------------------------------------------------------------------
+Sun Oct  8 08:08:29 UTC 2017 - coolo@suse.com
+
+- updated to 2.23
+   see /usr/share/doc/packages/perl-Config-Tiny/Changelog.ini
+
+  [V 2.23]
+  Date=2015-10-14T09:11:00
+  Comments= <<EOT
+  - Add the utf8 BOM to this file. Let's hope the CPAN toolchain can cope. If it can't, another
+  version of the code will have to be released.
+  - Fix read() and write() so they work on files called '0' (zero). See RT#107754.
+  Many thanx to Григорий Кудренко for the report and patch.
+  - Add t/05.zero.t and t/0 to test the new code.
+  - Reformat the source slightly.
+  EOT
+
+-------------------------------------------------------------------
+Sat Mar 21 21:09:44 UTC 2015 - mpluskal@suse.com
+
+- Update to 2.22
+  * Fix licence info in Makefile.PL to say Perl.
+- Changes for 2.21
+  * Patch Makefile.PL to refer to the current repo, which is on 
+    github, and not the original one, which is on Adam's web site. 
+    See RT#102125.
+  * Remove Build.PL because Karen Etheridge tells me Module::Build 
+    is no longer in core. See RT#102126.
+  * Edit line lengths in this file to a max of 100 chars.
+  * Edit line lengths in the docs the same way.
+  * Expand the See Also section of the docs.
+
+-------------------------------------------------------------------
+Tue Nov 26 07:31:49 UTC 2013 - coolo@suse.com
+
+- updated to 2.20
+  - Relax pre-req version requirements
+
+-------------------------------------------------------------------
+Fri Oct  4 09:11:29 UTC 2013 - coolo@suse.com
+
+- updated to 2.19
+        - Change VERSION => $VERSION in Makefile.PL to VERSION_FROM => 'lib/Config/Tiny.pm'.
+                Reported by Jean-Louis Morel. See RT#88670.
+ 
+ 2.18  Sat Sep 14 10:03:00 2013
+        - Remove obsolete and wrong version # from Makefile.PL.
+                Reported by Jean-Louis Morel. See RT#88658.
+        - Implement Kevin Ryde's suggestion to test if read() will return undef.
+                If so, set an error message and (still) return undef.
+ 
+ 2.17  Fri Sep 13 12:41:00 2013
+        - Remove the file tests -efr during calls to read(). The open() tests for any error.
+                Also, the -f test was reporting /dev/null as a directory, not a file.
+                Thanx to Kevin Ryde for pushing me to implement this. See RT#36974.
+        - Clean up some error messages slightly.
+ 
+ 2.16  Fri Sep  6 11:54:00 2013
+        - Replace Path::Tiny with File::Spec, because the former's list of dependencies is soooo long :-(.
+                Changed files: t/02.main.t, t/04.utf8.t, Build.PL and Makefile.PL.
+                See: RT#88435 (for Tree::DAG_Node) for an explanation.
+ 
+ 2.15  Sun Aug  4 14:59:00 2013
+        - Clean up the shambolic dates in this file.
+        - Add a note under Caveats about setting options more that once. Only the first case is respected.
+                Thanx to Kimmel K. See RT#69795.
+        - Add a $encoding parameter to read_file() and write_file(). See docs for details.
+                Add t/04.utf8.t and t/04.utf8.txt.
+                Thanx to Mark Lawrence and Wolfgang Husmann. See RT#71029 and RT#85571.
+        - For BSD-based systems, when writing a file during tests, use:
+                my($temp_dir) = File::Temp -> newdir('temp.XXXX', CLEANUP => 1, EXLOCK => 0, TMPDIR => 1);
+        - Rename t/*.t files. I use '.' rather than '_' in file names because the latter is a shift char.
+        - Add MANIFEST.SKIP, Changelog.ini, Build.PL, META.json.
+        - Add an FAQ to the docs.
+        - Clean up the docs.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:10:12 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Thu Mar 24 08:38:30 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.14:
+  * fix RT#63080: module can write multiline values but not read them
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:00 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Nov 24 20:04:45 UTC 2010 - chris@computersalat.de
+
+- update to 2.13
+  - Resolved #60703: Display glitch in Config::Tiny 2.12 POD
+  - Resolved #40585: member 'set;' doesn't exist
+  - Resolved #30479: does not warn or die when writing data it
+- created by cpanspec 1.78
+- noarch pkg
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:25 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sat Jan 19 00:00:00 UTC 2008 - gerrit.beine@googlemail.com
+
+- moved to openSUSE Build Service
+
+-------------------------------------------------------------------
+Thu Dec  6 00:00:00 UTC 2007 - gerrit@beine-computer.de
+
+- first release 2.12
+
+

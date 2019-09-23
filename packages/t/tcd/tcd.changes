@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Sep 23 10:00:07 UTC 2014 - jengelh@inai.de
+
+- Drop gpg-offline build-time requirement; this is now handled by
+  the local source validator
+
+-------------------------------------------------------------------
+Sun Mar 17 16:07:52 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 2.2.0) for build.opensuse.org

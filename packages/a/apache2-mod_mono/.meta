@@ -1,0 +1,7 @@
+<package name="apache2-mod_mono" project="openSUSE:Factory">
+  <title>Run ASP.NET Pages on Unix with Apache and Mono</title>
+  <description>mod_mono is a module that interfaces Apache with Mono and allows
+running ASP.NET pages on Unix and Unix-like systems. To load the module
+into Apache, run the command &quot;a2enmod mono&quot; as root.</description>
+  <devel project="Mono:Factory" package="apache2-mod_mono"/>
+</package>

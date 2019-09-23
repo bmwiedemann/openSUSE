@@ -1,0 +1,2 @@
+addFilter("zero-length .*/usr/lib/python.*/site-packages/mypy/test/.*\.py")
+addFilter("zero-length .*/usr/lib/python.*/site-packages/mypy/typeshed/.*\.pyi")

@@ -1,0 +1,26 @@
+---
+ c/syscalls.c |    1 +
+ configure.ac |    2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+--- configure.ac
++++ configure.ac	2019-03-15 10:55:11.045531002 +0000
+@@ -54,7 +54,7 @@ AC_CHECK_FUNC(openpty, have_openpty=yes,
+   AC_CHECK_LIB(util, openpty, have_openpty=yes need_libutil=yes)])
+ if test "$have_openpty" = "yes"; then
+   AC_DEFINE(HAVE_OPENPTY, 1, [Define to 1 if you have the 'openpty' function])
+-  AC_CHECK_HEADERS(libutil.h util.h, break)
++  AC_CHECK_HEADERS(libutil.h pty.h util.h, break)
+   if test "$need_libutil" = "yes"; then
+     LIBS="${LIBS} -lutil"
+   fi
+--- c/syscalls.c
++++ c/syscalls.c	2019-03-15 10:56:35.827958828 +0000
+@@ -10,6 +10,7 @@
+ #include <sys/types.h>
+ #include <sys/times.h>
+ #include <sys/time.h>
++#include <time.h>
+ #include <fcntl.h>		/* for O_RDWR */
+ #include <sys/stat.h>
+ #include <sys/param.h> /* For gethostname() */

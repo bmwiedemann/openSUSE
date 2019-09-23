@@ -1,0 +1,225 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1293df4de7844f2eeeb42ad52aaeb050</srcmd5>
+    <version>0.0.9</version>
+    <time>1352822834</time>
+    <user>coolo</user>
+    <comment>Library used by libreoffice, currently bundled in.</comment>
+    <requestid>141074</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1293df4de7844f2eeeb42ad52aaeb050</srcmd5>
+    <version>0.0.9</version>
+    <time>1359109249</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a72db678a0f0642ef7f4ea0db66d199f</srcmd5>
+    <version>0.0.10</version>
+    <time>1359452839</time>
+    <user>coolo</user>
+    <comment>- Update to upstream version 0.0.10
+  * Fix wrong encoding of some text strings
+  * New dependency on libicu-devel
+- Upstream patch fixing large-angle computation (forwarded request 149939 from fstrba)</comment>
+    <requestid>149940</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b365cdc18cbb4b9999292edadccf3aba</srcmd5>
+    <version>0.0.11</version>
+    <time>1362730519</time>
+    <user>coolo</user>
+    <comment>- Update to upstream version 0.0.11
+  * Fix positions of circles and their transformations
+  * Fix issues with large angle when the angles are negative
+  * Implement reading of multi-paragraph text
+  * Fix tranformation of bitmaps
+  * Miscellaneous coverity fixes
+  * Miscellaneous fixes of the SVG generator
+- Upstream patch for text encoding overrides in styles (forwarded request 156988 from fstrba)</comment>
+    <requestid>156991</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>58d2b26c46bca76a2f79c80da0ccb091</srcmd5>
+    <version>0.0.12</version>
+    <time>1365484068</time>
+    <user>coolo</user>
+    <comment>- Update to upstream version 0.0.12
+  * rewrite of ellitical arc transforms, fixes a fdo#62538
+  * multiple fixes for text encondings
+  * added cdr2text and cmx2text tools in order to make string
+    encoding debugging easier
+- Removed upstreamed patch (forwarded request 163179 from fstrba)</comment>
+    <requestid>163183</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d2a23e45e2484cc5915ea10d527c97fc</srcmd5>
+    <version>0.0.13</version>
+    <time>1366709493</time>
+    <user>coolo</user>
+    <comment>- Update to upstream version 0.0.13
+  * Extend text support to CDR versions 5 and 6
+  * Fix text parser for CDR version 13+
+  * Parse text format strings in CDR version 16
+  * Text colour support for CDR versions 5 - 16
+  * Add dependency on boost for both json property string
+    parser and for extraction of colour information
+- Added build dependency on boost-devel (forwarded request 172857 from fstrba)</comment>
+    <requestid>172863</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>df35ff597c9bdab699482eb487bf75f7</srcmd5>
+    <version>0.0.14</version>
+    <time>1370426013</time>
+    <user>coolo</user>
+    <comment>- Update to upstream version 0.0.14
+  * Miscellaneous coverity fixes
+  * Be more gracious with broken documents
+  * Change source code layout in order to allow including
+    of headers from the tarball directly.
+  * Fix issues with angle units (forwarded request 176728 from fstrba)</comment>
+    <requestid>176729</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>efad197995cf5fa906034b51d363b165</srcmd5>
+    <version>0.0.14</version>
+    <time>1374932839</time>
+    <user>coolo</user>
+    <comment>- Performance regression fix
+  * Add patch to unconditionally use WPX_SEEK_END
+  * Depend on libwpd-devel &gt;= 0.9.5 that has WPX_SEEK_END (forwarded request 184377 from fstrba)</comment>
+    <requestid>184380</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>efad197995cf5fa906034b51d363b165</srcmd5>
+    <version>0.0.14</version>
+    <time>1379662914</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>939707042f45554dc9899501232951a6</srcmd5>
+    <version>0.0.14</version>
+    <time>1383732092</time>
+    <user>coolo</user>
+    <comment>- Remove conditionals for docs and use verbose build.</comment>
+    <requestid>205714</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>306638e52061b6aacce8e97b96c8c050</srcmd5>
+    <version>0.0.14</version>
+    <time>1390298989</time>
+    <user>coolo</user>
+    <comment>- build with -fvisibility-inlines-hidden, saving around 300 
+ entries in the exported symbol table.
+- build with --disable-werror, there are no warnings but werror
+  during deployment is undesirable. (forwarded request 214353 from elvigia)</comment>
+    <requestid>214371</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>cce0f48f16ff2c046d277d7e4286ddc3</srcmd5>
+    <version>0.0.14</version>
+    <time>1391077693</time>
+    <user>coolo</user>
+    <comment>- Format with spec-cleaner and noarch documentation.</comment>
+    <requestid>215157</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>caae995529bb4c3b357d6e7bf82fdb7c</srcmd5>
+    <version>0.0.15</version>
+    <time>1397216212</time>
+    <user>coolo</user>
+    <comment>- Fix mistake in licensing
+  * 0.0.x line is still tripple LGPL-2.0+ or GPL-2.0+ or MPL-1.1 (forwarded request 229603 from fstrba)</comment>
+    <requestid>229604</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c5b2832f82f61b28d4cfc3ac7dd861b0</srcmd5>
+    <version>0.0.16</version>
+    <time>1397500089</time>
+    <user>coolo</user>
+    <comment>- Update to upstream version 0.0.16
+  * Brownbag release
+  * Upstream relicensing to MPL-2.0 (forwarded request 229978 from fstrba)</comment>
+    <requestid>229979</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f280eb157f6f3e2c6e621a4846565017</srcmd5>
+    <version>0.1.0</version>
+    <time>1406479625</time>
+    <user>coolo</user>
+    <comment>- Added patch: libcdr-0.1.0-pkgconfig.patch
+  * Remove the Requires.private which breaks SLE11 builds
+
+- Upgrade to upstream version 0.1.0
+  * ABI change
+  * Remove dependency on libwpd-devel and libwpg-devel
+  * Add dependency on librevenge-devel</comment>
+    <requestid>242315</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>f280eb157f6f3e2c6e621a4846565017</srcmd5>
+    <version>0.1.0</version>
+    <time>1409301517</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f11f04551c126b197b2535463dce6efb</srcmd5>
+    <version>0.1.1</version>
+    <time>1417643384</time>
+    <user>dimstar_suse</user>
+    <comment>Upstream release 0.1.1</comment>
+    <requestid>263287</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>30b78bda3663ac6900e9c2f8d6df9e8b</srcmd5>
+    <version>0.1.1</version>
+    <time>1448400024</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>343809</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>00a668e9e31ae75be7dc7f95c9334248</srcmd5>
+    <version>0.1.2</version>
+    <time>1451895609</time>
+    <user>dimstar_suse</user>
+    <comment>0.1.2</comment>
+    <requestid>350885</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>babe85ac85ef4e8fae61b00a982044ee</srcmd5>
+    <version>0.1.3</version>
+    <time>1469742165</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release</comment>
+    <requestid>412512</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>bae72a89b24d28a3b2477fc130837467</srcmd5>
+    <version>0.1.3</version>
+    <time>1470413595</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable silent rules
+- Remove sle11 support code</comment>
+    <requestid>416346</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>89ae6641d85d7e41a736610c2d5bc28f</srcmd5>
+    <version>0.1.3</version>
+    <time>1487461290</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453855</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6f19f22fc802f9f9a22bb3403db90d95</srcmd5>
+    <version>0.1.4</version>
+    <time>1507391211</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530423</requestid>
+  </revision>
+</revisionlist>

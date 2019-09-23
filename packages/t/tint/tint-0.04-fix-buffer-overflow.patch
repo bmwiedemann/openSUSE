@@ -1,0 +1,21 @@
+diff -urN tint-0.04.orig/tint.c tint-0.04/tint.c
+--- tint-0.04.orig/tint.c	2010-07-21 19:25:49.000000000 +0200
++++ tint-0.04/tint.c	2010-07-21 19:30:03.000000000 +0200
+@@ -370,7 +370,7 @@
+    FILE *handle;
+    int i,j;
+    score_t scores[NUMSCORES];
+-   char header[strlen (SCORE_HEADER)];
++   char header[strlen (SCORE_HEADER) + 1];
+    if (score == 0) return;	/* No need saving this */
+    for (i = 1; i < NUMSCORES; i++)
+ 	 {
+@@ -423,7 +423,7 @@
+    FILE *handle;
+    int i,j,ch;
+    score_t scores[NUMSCORES];
+-   char header[strlen (SCORE_HEADER)];
++   char header[strlen (SCORE_HEADER) + 1];
+    time_t tmp = 0;
+    if ((handle = fopen (scorefile,"r")) == NULL)
+ 	 {

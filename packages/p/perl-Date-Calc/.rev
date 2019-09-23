@@ -1,0 +1,179 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>1c28f1756184041de326da04ec8b3e0c</srcmd5>
+    <version>5.4</version>
+    <time>1168903823</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="137">
+    <srcmd5>1c28f1756184041de326da04ec8b3e0c</srcmd5>
+    <version>5.4</version>
+    <time>1168903823</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="138">
+    <srcmd5>44e8a4e3263c5b9eaf8c9f40a01c329b</srcmd5>
+    <version>5.4</version>
+    <time>1224729772</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1a3db3dc85332b00071e7e6baaa26d5a</srcmd5>
+    <version>5.6</version>
+    <time>1249318232</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>1a3db3dc85332b00071e7e6baaa26d5a</srcmd5>
+    <version>5.6</version>
+    <time>1249318232</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>a1d3a790b88fbeb1cd956eddd05c2459</srcmd5>
+    <version>5.6</version>
+    <time>1263489224</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Date-Calc based on submit request 29436 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>abe8ceb246a305026088d7395e85c9ad</srcmd5>
+    <version>6.3</version>
+    <time>1267404413</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Date-Calc based on submit request 33575 from user anicka
+</comment>
+    <requestid>33575</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c89377900f7ce4fefb34fc881c9071e9</srcmd5>
+    <version>6.3</version>
+    <time>1268925422</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>c89377900f7ce4fefb34fc881c9071e9</srcmd5>
+    <version>6.3</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>c89377900f7ce4fefb34fc881c9071e9</srcmd5>
+    <version>6.3</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>259ce4e1356673982326272b7f998d8d</srcmd5>
+    <version>6.3</version>
+    <time>1291582025</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54510 from user coolo
+</comment>
+    <requestid>54510</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>7e2635854fc9e34c3c4a4df942db0bcd</srcmd5>
+    <version>6.3</version>
+    <time>1291582031</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54510
+</comment>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>7e2635854fc9e34c3c4a4df942db0bcd</srcmd5>
+    <version>6.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>7e2635854fc9e34c3c4a4df942db0bcd</srcmd5>
+    <version>6.3</version>
+    <time>1319182258</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>8ba8bff839a54b428ef8cdf2dab7b060</srcmd5>
+    <version>6.3</version>
+    <time>1321875482</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92257</requestid>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>ebb5e7cee7480d4a4b9e513c4fe054cb</srcmd5>
+    <version>6.3</version>
+    <time>1323193199</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="16">
+    <srcmd5>ebb5e7cee7480d4a4b9e513c4fe054cb</srcmd5>
+    <version>6.3</version>
+    <time>1340183826</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>ebb5e7cee7480d4a4b9e513c4fe054cb</srcmd5>
+    <version>6.3</version>
+    <time>1359109641</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>8b127df2672a3fdcec941aa26cb0cfa3</srcmd5>
+    <version>6.3</version>
+    <time>1362120072</time>
+    <user>coolo</user>
+    <comment>ciaran wants it with 'or' now</comment>
+    <requestid>156741</requestid>
+  </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>690d598a86fb57f63094bf4e97e7eb26</srcmd5>
+    <version>6.3</version>
+    <time>1366087905</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 164096 from namtrac)</comment>
+    <requestid>164101</requestid>
+  </revision>
+  <revision rev="21" vrev="22">
+    <srcmd5>690d598a86fb57f63094bf4e97e7eb26</srcmd5>
+    <version>6.3</version>
+    <time>1379663629</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="24">
+    <srcmd5>690d598a86fb57f63094bf4e97e7eb26</srcmd5>
+    <version>6.3</version>
+    <time>1409302245</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="25">
+    <srcmd5>145e9d311e9f0dc84aed7df78525be07</srcmd5>
+    <version>6.3</version>
+    <time>1420429467</time>
+    <user>dimstar_suse</user>
+    <comment>- Date::Calc's parse logic puts 3.1.64 into 2064 if it's closer to
+  $NOW than 1964, which is the case since 1.1.2015
+  updated Date-Calc-6.3.diff for 
+  https://rt.cpan.org/Public/Bug/Display.html?id=101232</comment>
+    <requestid>267163</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a28a0689e51aabec74de8e9a17b354ba</srcmd5>
+    <version>6.4</version>
+    <time>1429989387</time>
+    <user>coolo</user>
+    <comment>- updated to 6.4
+   see /usr/share/doc/packages/perl-Date-Calc/CHANGES.txt
+- remove upstream Date-Calc-6.3.diff</comment>
+    <requestid>297343</requestid>
+  </revision>
+</revisionlist>

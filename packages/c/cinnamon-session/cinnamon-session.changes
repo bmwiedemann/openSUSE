@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 13 17:20:37 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(pangox) with pkgconfig(pango) and
+  pkgconfig(pangoxft) BuildRequires: This is what meson checks for.
+
+-------------------------------------------------------------------
 Sun Jul 21 08:39:30 UTC 2019 - Marguerite Su <i@marguerite.su>
 
 - Update to version 4.2.1:

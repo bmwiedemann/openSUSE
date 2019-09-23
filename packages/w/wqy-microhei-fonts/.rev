@@ -1,0 +1,110 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50de9a5cda52c324dc8ba9493433d2d2</srcmd5>
+    <version>0.2.0</version>
+    <time>1334217383</time>
+    <user>coolo</user>
+    <comment>New font.</comment>
+    <requestid>112155</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>85063265f1349ce792deeb726e182e1f</srcmd5>
+    <version>0.2.0</version>
+    <time>1338017426</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122199</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>52de50dd87b310d406c47fd33412c9d5</srcmd5>
+    <version>0.2.0</version>
+    <time>1338903371</time>
+    <user>coolo</user>
+    <comment>set WenQuanYi Micro He as default Chinese font. (forwarded request 123272 from hillwood)</comment>
+    <requestid>123281</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>52de50dd87b310d406c47fd33412c9d5</srcmd5>
+    <version>0.2.0</version>
+    <time>1340184327</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>8ea171dc19e41c4c9a0e99f10d509d24</srcmd5>
+    <version>0.2.0</version>
+    <time>1347619336</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134000</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>697cb7ea2bbfb2c8f7810c0ef52fd390</srcmd5>
+    <version>0.2.0</version>
+    <time>1350364796</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>138215</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>9d584ec31fae95ca2987f6312e1ec1a5</srcmd5>
+    <version>0.2.0</version>
+    <time>1351055998</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>139084</requestid>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>9d584ec31fae95ca2987f6312e1ec1a5</srcmd5>
+    <version>0.2.0</version>
+    <time>1359110576</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>9d584ec31fae95ca2987f6312e1ec1a5</srcmd5>
+    <version>0.2.0</version>
+    <time>1379664969</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>9d584ec31fae95ca2987f6312e1ec1a5</srcmd5>
+    <version>0.2.0</version>
+    <time>1409303648</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ec033dd2d5d5d0928da9df256c81e9a3</srcmd5>
+    <version>0.2.0+snapshot20141019</version>
+    <time>1413782842</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257669</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>3959dc7f5d459980273477df5c98dec2</srcmd5>
+    <version>0.2.0+snapshot20141019</version>
+    <time>1424118126</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>286325</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>30670bfe95ce3656a3ca988d60efa247</srcmd5>
+    <version>0.2.0+snapshot20150915</version>
+    <time>1453019006</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353968</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>947491b85652ff0872e07764c43e9ff5</srcmd5>
+    <version>0.2.0+snapshot20150915</version>
+    <time>1493880661</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491447</requestid>
+  </revision>
+</revisionlist>

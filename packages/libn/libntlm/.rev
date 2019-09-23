@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e1a0fbb63f13733a5326ccde849177ca</srcmd5>
+    <version>1.3</version>
+    <time>1327674119</time>
+    <user>coolo</user>
+    <comment>Resubmit after bnc#740287 fixed</comment>
+    <requestid>101301</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e1a0fbb63f13733a5326ccde849177ca</srcmd5>
+    <version>1.3</version>
+    <time>1340183613</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>a05aea42a6a2901b88c5e436260c1dce</srcmd5>
+    <version>1.3</version>
+    <time>1347618541</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134064</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>a05aea42a6a2901b88c5e436260c1dce</srcmd5>
+    <version>1.3</version>
+    <time>1359109315</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1549ebbf9cd9c809ef12a3bbeada221b</srcmd5>
+    <version>1.4</version>
+    <time>1374161539</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.4</comment>
+    <requestid>183675</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>1549ebbf9cd9c809ef12a3bbeada221b</srcmd5>
+    <version>1.4</version>
+    <time>1379663024</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>1549ebbf9cd9c809ef12a3bbeada221b</srcmd5>
+    <version>1.4</version>
+    <time>1409301643</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>e3029ec30107f0043b32daa145f9fe6d</srcmd5>
+    <version>1.4</version>
+    <time>1446049858</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341206</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8d81955a7e0a0f7ece727b899781019a</srcmd5>
+    <version>1.5</version>
+    <time>1566893557</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.5</comment>
+    <requestid>725215</requestid>
+  </revision>
+</revisionlist>

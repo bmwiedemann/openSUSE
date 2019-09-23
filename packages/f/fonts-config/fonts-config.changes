@@ -1,0 +1,646 @@
+-------------------------------------------------------------------
+Sat Jan 19 13:43:32 UTC 2019 - Karl Cheng <qantas94heavy@gmail.com>
+
+- Update to 20190119
+  *  Allow non-ASCII letters in font names (boo#1049056, bnc#1101985).
+
+-------------------------------------------------------------------
+Tue Dec 11 13:49:51 UTC 2018 - sflees@suse.de
+
+- Update to 20181211
+  * Update subpixel rendering config
+  * Fix missspelling issue (boo#1111791). so
+    Drop fonts-config-fix-misspelling.patch
+  * Fix (boo#1092737).
+  * other minor tidyups
+
+-------------------------------------------------------------------
+Mon Nov  5 11:18:01 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrasing and user-independent wording.
+
+-------------------------------------------------------------------
+Mon Oct 15 08:25:11 UTC 2018 - qzhao@suse.com
+
+- Add fonts-config-fix-misspelling.patch: fix misspelling in
+  configuration file(boo#1111791).
+
+-------------------------------------------------------------------
+Mon Apr 30 03:40:53 UTC 2018 - i@marguerite.su
+
+- new upstream: https://github.com/openSUSE/fonts-config
+  development will continue there.
+- drop patch: fontconfig-infinality-generate-tt-groups.patch
+  * infinality project is dead, we use a static result in upstream
+    instead of generating it every time.
+- update 20180430
+  * support color emoji
+  * modern fonts for symbol
+  * add configurations for Noto Sans/Serif CJK
+
+-------------------------------------------------------------------
+Mon Mar 12 22:53:10 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Do not create fonts.{dir,scale} in encodings directory
+  (boo#1106850).
+
+-------------------------------------------------------------------
+Thu Nov 23 13:49:51 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Sep 21 13:35:53 UTC 2016 - ftake@geeko.jp
+
+- version 20160921
+  * add 59-family-prefer-lang-specific.conf to specify prefered
+    family for each language
+  * fix Noto Sans CJK is used for serif alias (boo#998301)
+  * assign monospace to default of Oxygen Mono
+
+-------------------------------------------------------------------
+Wed Sep 14 15:15:11 UTC 2016 - pgajdos@suse.com
+
+- version 20160914:
+  * comma and the rest of family string is ignored while translating
+    preference lists from sysconfig to fontconfig snippets
+    [bsc#998300]
+
+-------------------------------------------------------------------
+Mon Nov  9 08:04:29 UTC 2015 - pgajdos@suse.com
+
+- Roboto prefered for sans and serif and Source Sans Pro for
+  monospace [bsc#951898]
+
+-------------------------------------------------------------------
+Fri Aug 21 15:49:32 UTC 2015 - qzhao@suse.com
+
+- change fontconfig.SuSE.properties.template to fontconfig.SUSE.properties.template.
+  * To full fit FATE#316521 Get rid of files using the old SUSE spelling.(bnc#942314)
+
+-------------------------------------------------------------------
+Fri Aug 14 21:40:04 UTC 2015 - schwab@linux-m68k.org
+
+- fonts-config: fix use of $ENV vars
+
+-------------------------------------------------------------------
+Fri Apr 24 08:20:24 UTC 2015 - pgajdos@suse.com
+
+- updated to 20150424:
+  * introduce --remove-user-setting option
+
+-------------------------------------------------------------------
+Thu Apr 23 12:02:33 UTC 2015 - pgajdos@suse.com
+
+- updated to 20150423:
+  * hide local system family preference list when user's one is
+    in action
+
+-------------------------------------------------------------------
+Tue Apr 21 13:34:43 UTC 2015 - pgajdos@suse.com
+
+- updated to 20150421:
+  * use mkpath instead of make_path [bnc#927968]
+  * behave better when
+    /usr/share/fontconfig/conf.avail/30-metric-aliases.conf
+    not found
+
+-------------------------------------------------------------------
+Fri Apr 17 11:55:10 UTC 2015 - pgajdos@suse.com
+
+- updated to 20150417:
+  * added --user option
+
+-------------------------------------------------------------------
+Mon Jan 12 13:55:20 UTC 2015 - pgajdos@suse.com
+
+- added Command: metadata to relevant sysconfig variables
+  [bnc#912279]
+
+-------------------------------------------------------------------
+Sun Dec  7 21:42:17 UTC 2014 - pgajdos@suse.com
+
+- updated to 20141207
+  added --info option (will be required by yast fonts)
+
+-------------------------------------------------------------------
+Mon Sep 22 13:19:56 UTC 2014 - pgajdos@suse.com
+
+- fix version in fonts-config script
+
+-------------------------------------------------------------------
+Mon Jul 28 08:42:00 UTC 2014 - pgajdos@suse.com
+
+- fixed typos in comments and debug outputs (hinstyle -> hintstyle)
+
+-------------------------------------------------------------------
+Wed Jun 11 09:53:01 UTC 2014 - pgajdos@suse.com
+
+- 10-rendering-options.conf and 58-family-prefer-local.conf are
+  generated in every fonts-config call and as such should not
+  be under /usr/share/fonts-config/conf.avail but under
+  /etc/fonts/conf.d/ [bnc#882029]
+
+-------------------------------------------------------------------
+Wed Jun  4 06:22:54 UTC 2014 - pgajdos@suse.com
+
+- updated to 20140604:
+  * remove duplicate family from PREFER_SERIF_FAMILIES in CFF
+    example
+  * add Source Serif Pro to PREFER_SERIF_FAMILIES in CFF example
+  * introduce FORCE_FAMILY_PREFERENCE_LISTS sysconfig variable
+
+-------------------------------------------------------------------
+Thu May 22 10:45:16 UTC 2014 - pgajdos@suse.com
+
+- fallback to DejaVu Sans, Liberation Sans FPL order when
+  no force_bw defined [bnc#878292c#12]
+
+-------------------------------------------------------------------
+Thu May 15 14:13:16 UTC 2014 - pgajdos@suse.com
+
+- fix comment for SEARCH_METRIC_COMPATIBLE
+
+-------------------------------------------------------------------
+Wed May 14 16:40:42 CEST 2014 - tiwai@suse.de
+
+- Don't force antialias for bitmap fonts for avoiding the render
+  errors with Qt5 (bnc#866705)
+
+-------------------------------------------------------------------
+Fri Mar 21 09:33:50 UTC 2014 - pgajdos@suse.com
+
+- updated to 20140331:
+  * allow ampersand in string sysconfig variable
+  * xml-escape ampersand from <alias> family names
+  * added bitmap font example for PREFER_*_FAMILIES
+
+-------------------------------------------------------------------
+Thu Mar 20 15:45:20 UTC 2014 - pgajdos@suse.com
+
+- fix default values and use list of possibilities in sysconfig
+  file [bnc#869398] (internal)
+
+-------------------------------------------------------------------
+Fri Feb 28 07:34:57 UTC 2014 - pgajdos@suse.com
+
+- fix version in fonts-config script
+
+-------------------------------------------------------------------
+Wed Feb 26 11:44:23 UTC 2014 - pgajdos@suse.com
+
+- updated to 20140226:
+  * FORCE_{SANS,SERIF,MONO}_PREFERENCE replaced by
+    SEARCH_METRIC_COMPATIBLE
+
+-------------------------------------------------------------------
+Tue Feb 25 10:05:36 UTC 2014 - pgajdos@suse.com
+
+- updated to 20140225:
+  * introduced FORCE_{SANS,SERIF,MONO}_PREFERENCE
+
+-------------------------------------------------------------------
+Mon Feb 24 09:43:34 UTC 2014 - pgajdos@suse.com
+
+- updated to 20140224:
+  * add example of family preference: CFF fonts
+
+-------------------------------------------------------------------
+Fri Feb 21 14:36:24 UTC 2014 - pgajdos@suse.com
+
+- updated to 20140222:
+  * don't use autohinter for CFF files
+  * hinstlight for CFF files
+
+-------------------------------------------------------------------
+Fri Feb 21 10:15:23 UTC 2014 - pgajdos@suse.com
+
+- updated to 20140221
+  * added 31-metric-aliases-bw.conf
+
+-------------------------------------------------------------------
+Thu Feb 13 13:17:33 UTC 2014 - pgajdos@suse.com
+
+- updated to 20140219
+- revorked package, fontconfig configuration based on infinality
+  one
+
+- added patches:
+  * fontconfig-infinality-main.patch (remove parts of original
+    52-infinality.conf)
+
+-------------------------------------------------------------------
+Thu Jan 30 12:38:10 UTC 2014 - pgajdos@suse.com
+
+- fonts-config 20131102 [bnc#860097]:
+  * do not check for font module used -> fixes TTCap entries
+    generation
+  * drop generating ghostscript fontmap
+  * drop generating ooo xcu file
+  * --quiet means quiet now
+
+-------------------------------------------------------------------
+Tue Oct  1 11:17:00 UTC 2013 - pgajdos@suse.com
+
+- workaround to [bnc#840416] as described in comment 20
+
+-------------------------------------------------------------------
+Mon Sep 17 08:44:38 UTC 2012 - coolo@suse.com
+
+- the script requires checkproc and killproc, otherwise it will start
+  a xfs in buildroot (oops)
+
+-------------------------------------------------------------------
+Fri Sep 14 08:00:41 UTC 2012 - pgajdos@suse.com
+
+- cooperate with fontconfig 2.10.0 (removed /etc/fonts/conf.avail)
+
+-------------------------------------------------------------------
+Tue Aug 28 14:18:59 UTC 2012 - pgajdos@suse.com
+
+- remove SuSEconfig.fonts (openFATE#313536)
+
+-------------------------------------------------------------------
+Wed Aug  8 07:12:28 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Mon Aug  6 15:51:33 UTC 2012 - pgajdos@suse.com
+
+- prepare spec file for dropping SuSEconfig.fonts (openFATE#313536)
+
+-------------------------------------------------------------------
+Thu Jul 26 08:24:43 UTC 2012 - pgajdos@suse.com
+
+- add Requires(pre):  %suseconfig_fonts_prereq [bnc#772644]
+
+-------------------------------------------------------------------
+Wed Jul 25 08:26:30 CEST 2012 - tiwai@suse.de
+
+- Fill some contents in the initial suse-bitmap.conf and
+  suse-hinting-bc.conf (bnc#772664)
+
+-------------------------------------------------------------------
+Wed Jun 13 11:25:43 CEST 2012 - tiwai@suse.de
+
+- Add the support for IPAex fonts
+
+-------------------------------------------------------------------
+Tue Jun 12 12:45:17 CEST 2012 - tiwai@suse.de
+
+- Move hinting and bitmap config files to own config files
+  instead of changing the main suse-*.conf (bnc#766319)
+- Enable hinting_setup() again
+
+-------------------------------------------------------------------
+Mon Mar 26 12:36:46 UTC 2012 - pgajdos@suse.com
+
+- in generate_java_font_setup() was wrongly picked last installed
+  font from @sans_latin1_priority, instead of first
+
+-------------------------------------------------------------------
+Fri Mar 23 08:29:38 UTC 2012 - pgajdos@suse.com
+
+- turn off hinting_setup() and font_dirs_setup()
+
+-------------------------------------------------------------------
+Mon Feb 13 10:46:25 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Mon Dec  5 15:54:34 UTC 2011 - pgajdos@suse.com
+
+- generates also fonts for latin1 [bnc#732447]
+- dropped java 1.4 support
+
+-------------------------------------------------------------------
+Mon Nov  7 12:48:49 UTC 2011 - coolo@suse.com
+
+- require perl(English), which is not part of perl-base
+
+-------------------------------------------------------------------
+Wed Oct 12 10:31:50 UTC 2011 - ftake@geeko.jp
+
+- changed Japanese fonts setting for Java
+  * IPA Gothic for monospaced
+  * Propotional IPA fonts for others
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Mon Apr 26 17:40:34 CEST 2010 - pgajdos@suse.cz
+
+- fixed java's fontconfig.SuSE.properties location [bnc#591706]
+
+-------------------------------------------------------------------
+Wed Jan 28 17:17:26 CET 2009 - mfabian@suse.de
+
+- apply patch by Egbert Eich to make handling of verbosity levels
+  consistent.
+
+-------------------------------------------------------------------
+Tue Jun 03 15:12:56 CEST 2008 - mfabian@suse.de
+
+- bnc#396611: prefer "AR PL ShanHeiSun Uni" (uming.ttf) over
+  FZMingTiB (/usr/share/fonts/truetype/FZMingTiB.ttf) for
+  traditional Chinese in Java 1.5 because the former has embedded
+  bitmaps and the latter has not.
+
+-------------------------------------------------------------------
+Mon Jan 21 18:55:57 CET 2008 - mfabian@suse.de
+
+- fix recursive call of opendir() and closedir() to work with
+  Perl 5.10.
+
+-------------------------------------------------------------------
+Tue Dec 18 16:11:25 CET 2007 - mfabian@suse.de
+
+- add "Lucida Sans Typewriter", "Lucida Sans", and "Lucida Bright"
+  to the list of fonts which should always use the byte code
+  interpreter if anti-aliasing is off. Suggested by
+  Bernhard Walle <bwalle@suse.de>.
+
+-------------------------------------------------------------------
+Wed Oct 10 17:55:26 CEST 2007 - mfabian@suse.de
+
+- acroread directory moved again because of the update to 8.1.1.
+
+-------------------------------------------------------------------
+Tue Sep 25 17:28:18 CEST 2007 - mfabian@suse.de
+
+- Bugzilla #327035: Skip symlinks when searching for font file
+  names when generating the Java font setup.
+
+-------------------------------------------------------------------
+Thu Sep 06 13:51:39 CEST 2007 - mfabian@suse.de
+
+- Bugzilla #299432: add ‘Prereq: %fillup_prereq’.
+
+-------------------------------------------------------------------
+Fri Mar 23 18:46:17 CET 2007 - mfabian@suse.de
+
+- Bugzilla #118131 comment #93: set the autohinter default
+  matching on "font" instead of on "pattern".
+  If an autohint value is set in pattern, OpenOffice 2.1 will use
+  that even if there are fontconfig rules matching on "font" which
+  should override it again). This doesn't cause any problems for
+  Cairo/Gnome (see bug #104365) because Cairo/Gnome don't try to
+  change the autohint value anyway.
+
+-------------------------------------------------------------------
+Tue Jan 30 12:47:41 CET 2007 - mfabian@suse.de
+
+- Bugzilla #239692: acroread moved to /usr/lib, add a new
+  glob pattern to the font directory list.
+
+-------------------------------------------------------------------
+Wed Nov 22 13:19:44 CET 2006 - mfabian@suse.de
+
+- Bugzilla #222675: disable autohinter for PostScript fonts.
+
+-------------------------------------------------------------------
+Wed Nov 15 19:20:16 CET 2006 - mfabian@suse.de
+
+- Bugzilla #215602:  don't use the embedded bitmaps in the IPA
+  fonts because they are only available in 12, 14, and 16 pixels.
+- Bugzilla #215602: Don't use the autohinter for fonts where it
+  it distorts the metrics so badly that even the digits which
+  should be monospaced are not monospaced at all anymore.
+- Don't use the autohinter for good quality TrueType fonts.
+
+-------------------------------------------------------------------
+Wed Oct 25 15:59:53 CEST 2006 - mfabian@suse.de
+
+- Fate #300950: after the regular setup is done, source all scripts
+  in /usr/lib/fonts-config/conf.d which might do additional setup.
+
+-------------------------------------------------------------------
+Thu Sep 28 11:50:50 CEST 2006 - mfabian@suse.de
+
+- the OpenOffice font directory on x86_64 is
+  /usr/lib64/ooo-2.0/share/fonts/truetype/.
+
+-------------------------------------------------------------------
+Wed Sep 13 11:56:55 CEST 2006 - mfabian@suse.de
+
+- some fonts have more than one space in the family name, replace
+  them all with '_' where necessary in the Java setup.
+
+-------------------------------------------------------------------
+Tue Sep 12 17:48:05 CEST 2006 - mfabian@suse.de
+
+- improve Java 1.5 font setup for Chinese and Korean.
+
+-------------------------------------------------------------------
+Thu Aug 17 12:47:58 CEST 2006 - mfabian@suse.de
+
+- fix font paths in Java font setup for X11R7.
+
+-------------------------------------------------------------------
+Wed Aug 16 15:40:10 CEST 2006 - mfabian@suse.de
+
+- use "Recommends: ft2demos" only for SuSE Linux >= 10.1.
+
+-------------------------------------------------------------------
+Thu Aug 10 17:51:07 CEST 2006 - mfabian@suse.de
+
+- Bugzilla #195835: print a warning to stdout when the creation
+  of a Fontmap for Ghostscript has been requested but the 'ftdump'
+  binary is not available. Add "Recommends: ft2demos" to the .spec
+  file because the 'ft2demos' package contains 'ftdump'. Mention
+  'ftdump' in the comment above GENERATE_GHOSTSCRIPT_FONTMAPS
+  in /etc/sysconfig/fonts-config. Mention ftdump in the manual page
+  as well.
+
+-------------------------------------------------------------------
+Mon Jul 03 12:35:39 CEST 2006 - mfabian@suse.de
+
+- Add path names for X11R7
+  (patch by Stefan Dirsch <sndirsch@suse.de>).
+
+-------------------------------------------------------------------
+Fri Apr 28 19:17:21 CEST 2006 - mfabian@suse.de
+
+- Bugzilla #104365: match on "pattern" instead on "font" to edit
+  the default hinting settings to make it easier to override
+  the defaults with applications using FcPatternDel() and
+  FcPatternAdd...().
+
+-------------------------------------------------------------------
+Wed Apr 19 11:44:20 CEST 2006 - schwab@suse.de
+
+- Use /usr/bin/fc-cache-x86 when it exists.
+
+-------------------------------------------------------------------
+Tue Apr 11 15:13:45 CEST 2006 - mfabian@suse.de
+
+- Bugzilla #162978: also call /usr/bin/fc-cache64 if it exists
+  (for ppc64).
+- never use '--force' when calling /usr/bin/fc-cache32 and
+  /usr/bin/fc-cache64.
+
+-------------------------------------------------------------------
+Mon Apr 03 18:12:24 CEST 2006 - mfabian@suse.de
+
+- Bugzilla #157441 comment #30 ff: make hintstyle=hintfull the
+  default.
+- Bugzilla #160226: call /usr/bin/fc-cache32 if it exists.
+
+-------------------------------------------------------------------
+Fri Feb 10 11:47:35 CET 2006 - mfabian@suse.de
+
+- Bugzilla #148359: do not touch /usr/X11R6/lib/X11/fonts in
+  SuSEconfig.fonts to find out whether this is on a readonly
+  file system. Even if it is on a readonly file system, caches
+  for fontconfig can still be generated in /var/cache/fontconfig.
+  And it might still be possible to generate fonts.dir/fonts.scale
+  files in other directories, i.e. /usr/sbin/fonts-config should
+  be started always.
+
+-------------------------------------------------------------------
+Tue Feb 07 12:16:39 CET 2006 - mfabian@suse.de
+
+- Bugzilla #148361: generate /etc/fonts/suse-font-dirs.conf from
+  a template containing glob patterns to a full list of all
+  font directories to avoid that fontconfig calls stat () on all
+  files in all sub-directories.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:21 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 09 16:39:09 CET 2006 - mfabian@suse.de
+
+- Bugzilla #105626: Takashi IWAI <tiwai@suse.de> made patches for
+  freetype2 to improve the autohinting (mainly for CJK fonts).
+  Now we don't need to switch off the autohinter for CJK fonts
+  any more.
+
+-------------------------------------------------------------------
+Wed Jan 04 19:22:25 CET 2006 - mfabian@suse.de
+
+- update to 20060104:
+- make it work better together with fontconfig 2.3.93.20060103
+  and require fontconfig >= 2.3.93.20060103
+- remove old cruft which was used for Xft1 and older versions
+  of fontconfig
+- write autogenerated files in /etc/fonts only if their contents
+  have changed, touching these files causes fontconfig to believe
+  that the caches are out of date.
+- fix glob pattern for font.properties.ja (for java 1.4.2).
+
+-------------------------------------------------------------------
+Wed Jan 04 12:54:11 CET 2006 - mfabian@suse.de
+
+- Bugzilla #131714: always use byte code interpreter for some
+  composite CJK fonts which cannot be rendered correctly with the
+  autohinter. Currently the only fonts I know which need this
+  are the traditional Chinese fonts MingLiU and PMingLiU.
+
+-------------------------------------------------------------------
+Thu Oct 27 14:59:27 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #130350: add "Andale Sans", "Andy MT", "Bell MT", and
+  "Monotype Sorts" to the list of fonts which are rendered with
+  the byte code interpreter and without anti-aliasing up to the
+  pixellimit specified in /etc/sysconfig/fonts-config.
+  These fonts appear to have good byte code as well, the results
+  when rendered this way look OK.
+
+-------------------------------------------------------------------
+Thu Oct 27 12:23:42 CEST 2005 - mfabian@suse.de
+
+- revert last change because I downgraded to fontconfig
+  2.3.2.20050721 (the version from SUSE 10.0) in STABLE.
+  This fontconfig version is solid and works reliable. The
+  fontconfig 2.4 branch will be checked into BETA and come
+  back to STABLE as soon as the crash problems are solved.
+
+-------------------------------------------------------------------
+Wed Oct 26 18:29:40 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #128080: add option "--force" to the call of
+  fonts-config in SuSEconfig.fonts.
+  This is only a temporary workaround until the real problem
+  in fontconfig is fixed. With this workaround, SuSEconfig.fonts
+  needs a lot more time but at least it appears to work reliably.
+
+-------------------------------------------------------------------
+Thu Sep 29 02:55:15 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Thu Sep 08 12:04:03 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #114949:
+  + really add variable to enable the byte code
+    interpreter to /etc/sysconfig/fonts-config. The last change
+    contained only the code to use this variable if available but
+    not the variable itself.
+  + add variables in /etc/sysconfig/fonts-config
+    to choose whether embedded bitmaps should be used and for
+    which languages.
+
+-------------------------------------------------------------------
+Tue Sep 06 18:45:57 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #114949: add a variable in /etc/sysconfig/fonts-config
+  to choose whether black and white rendering using the byte code
+  interpreter should be used and up to which pixel size.
+
+-------------------------------------------------------------------
+Tue Sep 06 12:27:33 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #79259 again: I found a bug in the autogeneration of
+  the Java font setup: sometimes "fc-list font file"  may return
+  several results, for example if there are symlinks which point
+  to the same font and also if one of the CID-keyed fonts
+  created by the script /usr/sbin/acroread-cidfont-config happens
+  to have the same family name. These CID-keyed fonts and the
+  must be ignored, neither of them will work with Java.
+
+-------------------------------------------------------------------
+Mon Sep 05 17:55:14 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #79259: add autogeneration of Java font configuration
+  files.
+
+-------------------------------------------------------------------
+Fri Mar 04 15:35:15 CET 2005 - mfabian@suse.de
+
+- add missing %prep section to .spec file.
+
+-------------------------------------------------------------------
+Mon Dec 06 23:04:51 CET 2004 - mfabian@suse.de
+
+- Bugzilla #48603: don't try to write OpenOffice font-setup if
+  OpenOffice is not installed.
+
+-------------------------------------------------------------------
+Fri Oct 01 20:04:30 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #46299: improve OpenOffice font setup for Japanese
+  for better on screen display and printing.
+
+-------------------------------------------------------------------
+Tue Jul  6 15:39:51 CEST 2004 - mfabian@suse.de
+
+- make package "noarch".
+- make fonts which have spaces in the filename usable with
+  the X11 core font system by generating symbolic links.
+- checkproc was still used without absolute path in one place.
+
+-------------------------------------------------------------------
+Thu May  6 00:08:41 CEST 2004 - sndirsch@suse.de
+
+- created package

@@ -1,0 +1,12 @@
+diff -Pdpru playonlinux.orig/bash/manual_install playonlinux/bash/manual_install
+--- playonlinux.orig/bash/manual_install	2018-12-24 21:22:56.000000000 +0100
++++ playonlinux/bash/manual_install	2018-12-26 13:42:39.190173726 +0100
+@@ -222,7 +222,7 @@ if [ "$POL_OS" = "Linux" ] || [ "$POL_OS
+ 	# Ubuntu Quantal workaround
+ 	[ -d "/media/$USER" ] && MEDIA_DIR="/media/$USER"
+         # Fedora/Manjaro workaround
+-        [ -d "/run/media/$USER" ] && DEVICES="/run/media/$USER"
++        [ -d "/run/media/$USER" ] && MEDIA_DIR="/run/media/$USER"
+ fi
+ 
+ A_LIST=""

@@ -1,0 +1,13 @@
+Index: apache-ant-1.9.10/bootstrap.sh
+===================================================================
+--- apache-ant-1.9.10.orig/bootstrap.sh
++++ apache-ant-1.9.10/bootstrap.sh
+@@ -129,7 +129,7 @@ mkdir -p bin
+ 
+ echo ... Compiling Ant Classes
+ 
+-"${JAVAC}" $BOOTJAVAC_OPTS -d ${CLASSDIR} ${TOOLS}/bzip2/*.java ${TOOLS}/tar/*.java ${TOOLS}/zip/*.java \
++"${JAVAC}" $BOOTJAVAC_OPTS -d ${CLASSDIR} -sourcepath src/main ${TOOLS}/bzip2/*.java ${TOOLS}/tar/*.java ${TOOLS}/zip/*.java \
+            ${TOOLS}/ant/util/regexp/RegexpMatcher.java \
+            ${TOOLS}/ant/util/regexp/RegexpMatcherFactory.java \
+            ${TOOLS}/ant/property/*.java \

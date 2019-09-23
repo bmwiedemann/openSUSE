@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Wed Sep  3 14:47:11 CEST 2014 - dsterba@suse.cz
+
+- clean spec
+
+-------------------------------------------------------------------
+Tue Jun 15 21:17:32 UTC 2010 - pascal.bleser@opensuse.org
+
+- rework the autoconf/ncurses patch to avoid calling autoreconf,
+  which is breaking on SLE
+
+- add a patch ("ftop-fix_printf_format.patch") to fix the improper
+  use of %u for formatting size_t variables in printf (must use %zu
+  instead): http://code.google.com/p/ftop/issues/detail?id=2
+
+-------------------------------------------------------------------
+Tue Jun 15 19:26:30 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (1.0)
+
+- buffer overflow patch sent upstream:
+  http://code.google.com/p/ftop/issues/detail?id=1
+

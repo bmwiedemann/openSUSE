@@ -1,0 +1,19 @@
+commit 146e21d8aa24b176be6a4f6638dbfd37df85cffb
+Author: Robert Frohl <rfrohl@suse.com>
+Date:   Wed Aug 28 13:21:04 2019 +0200
+
+    Fixed undefined behavior in netmask generation #1717
+
+diff --git a/nbase/nbase_addrset.c b/nbase/nbase_addrset.c
+index 6f91bc1b2..19e3f1119 100644
+--- a/nbase/nbase_addrset.c
++++ b/nbase/nbase_addrset.c
+@@ -500,7 +500,7 @@ static int sockaddr_to_mask (const struct sockaddr *sa, int bits, u32 *mask)
+       mask[i] = 0;
+     }
+     else {
+-      mask[i] = ~((1 << (unmasked_bits - (32 * (4 - i)))) - 1);
++      mask[i] = ~(0xffffffff % (1 << unmasked_bits));
+     }
+   }
+   return 1;

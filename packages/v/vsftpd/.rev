@@ -1,0 +1,805 @@
+<revisionlist>
+  <revision rev="1" vrev="33">
+    <srcmd5>0ffcc68afa670847e814831850b73064</srcmd5>
+    <version>2.0.5</version>
+    <time>1168904443</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="37">
+    <srcmd5>9e9e334383d16bef83bf974c5ce5cc8f</srcmd5>
+    <version>2.0.5</version>
+    <time>1172779520</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="38">
+    <srcmd5>962a7654e6f80ff0ea9165c3481b4946</srcmd5>
+    <version>2.0.5</version>
+    <time>1172828502</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="41">
+    <srcmd5>96767c146b2b0fde698bc0f0141fb93c</srcmd5>
+    <version>2.0.5</version>
+    <time>1175041533</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7ddfb9e7e8e1ebdd7c4d429019290ed1</srcmd5>
+    <version>2.0.6</version>
+    <time>1205321273</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>62365406afd696ed7f83becf4c33f3d7</srcmd5>
+    <version>2.0.6</version>
+    <time>1207082665</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="15">
+    <srcmd5>ae701a1796661bb7c6c9b8fc81ca9d90</srcmd5>
+    <version>2.0.6</version>
+    <time>1209549701</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="18">
+    <srcmd5>0260b14c16122ab3668536b68717a460</srcmd5>
+    <version>2.0.6</version>
+    <time>1209942877</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="27">
+    <srcmd5>d654dd70afa0ed72971d2890f1ce0187</srcmd5>
+    <version>2.0.6</version>
+    <time>1214432600</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1cc847ee79bbd93b0b93f0471c648027</srcmd5>
+    <version>2.0.7</version>
+    <time>1221301616</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>6e619695503f364bc6b841d238fe71fe</srcmd5>
+    <version>2.0.7</version>
+    <time>1221486982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>6e619695503f364bc6b841d238fe71fe</srcmd5>
+    <version>2.0.7</version>
+    <time>1221486982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>11a84b56f226292814ff182645474998</srcmd5>
+    <version>2.0.7</version>
+    <time>1264434113</time>
+    <user>autobuild</user>
+    <comment>Copy from network/vsftpd based on submit request 30297 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>d2ca90f26a94c203847ae6f770dd4c69</srcmd5>
+    <version>2.0.7</version>
+    <time>1264784234</time>
+    <user>autobuild</user>
+    <comment>Copy from network/vsftpd based on submit request 30749 from user mseben
+</comment>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>758f0381f79978e7b64d11ae69d56590</srcmd5>
+    <version>2.0.7</version>
+    <time>1268926471</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>efad030dd590e403b23f0cedd2fbfdb5</srcmd5>
+    <version>2.2.2</version>
+    <time>1271407339</time>
+    <user>autobuild</user>
+    <comment>Copy from network/vsftpd based on submit request 38025 from user mseben
+</comment>
+    <requestid>38025</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>2ccb3f001a745eadcea3d5e6c12488a0</srcmd5>
+    <version>2.2.2</version>
+    <time>1275322859</time>
+    <user>autobuild</user>
+    <comment>Copy from network/vsftpd based on submit request 40900 from user mseben
+</comment>
+    <requestid>40900</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>2ccb3f001a745eadcea3d5e6c12488a0</srcmd5>
+    <version>2.2.2</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>2ccb3f001a745eadcea3d5e6c12488a0</srcmd5>
+    <version>2.2.2</version>
+    <time>1278678624</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>04b76b2a50d0b2662827a6ce777e5992</srcmd5>
+    <version>2.3.0</version>
+    <time>1281660010</time>
+    <user>autobuild</user>
+    <comment>Copy from network/vsftpd based on submit request 45399 from user msmeissn
+</comment>
+    <requestid>45399</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ba905a605b77d2c9a34d66559a01fd57</srcmd5>
+    <version>2.3.2</version>
+    <time>1285105358</time>
+    <user>autobuild</user>
+    <comment>Copy from network/vsftpd based on submit request 48701 from user elvigia
+</comment>
+    <requestid>48701</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>ba905a605b77d2c9a34d66559a01fd57</srcmd5>
+    <version>2.3.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>226b81b141f1b174aac1eef7944f9848</srcmd5>
+    <version>2.3.4</version>
+    <time>1298631434</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 62761 from user elvigia
+</comment>
+    <requestid>62761</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>c4c065fcbb39409ea051d9b8f7710223</srcmd5>
+    <version>2.3.4</version>
+    <time>1298631441</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 62761
+</comment>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>fc48e26848a8bdb136c7c1831dcb355a</srcmd5>
+    <version>2.3.4</version>
+    <time>1316695686</time>
+    <user>saschpe</user>
+    <comment>- fix bnc#713588 - bogus logrotate config for vsftpd
+  call /sbin/killproc -HUP /usr/sbin/vsftpd like init script
+- change the url and service file to the new location at
+  security.appspot.com/vsftpd</comment>
+    <requestid>84442</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>f9532aae74b395a2000a060f34447023</srcmd5>
+    <version>2.3.4</version>
+    <time>1316695692</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 84442
+</comment>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>f9532aae74b395a2000a060f34447023</srcmd5>
+    <version>2.3.4</version>
+    <time>1319182555</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>1d7669145a4d53eb638ae9c5157a4ae7</srcmd5>
+    <version>2.3.5</version>
+    <time>1329922542</time>
+    <user>coolo</user>
+    <comment>- follow Systemd Packaging guidelines
+  http://en.opensuse.org/openSUSE:Systemd_packaging_guidelines
+- add $local_fs and $remote_fs to init script
+
+- use the original tarball, because the bz2 repacking madness disables
+  gpg --verify
+- revert a part oc changes utf converting
+
+- update to upstream 2.3.5:
+  * Try and force glibc to cache zoneinfo files in an attempt to work around
+    glibc parsing vulnerability. Thanks to Kingcope.
+  * Only report CHMOD in SITE HELP if it's enabled. Thanks to Martin Schwenke
+    &lt;martin@meltin.net&gt;.
+  * Some simple fixes and cleanups from Thorsten Brehm &lt;tbrehm@dspace.de&gt;.
+  * Only advertise &quot;AUTH SSL&quot; if one of SSLv2, SSLv3 is enabled. Thanks to
+    steve willing &lt;eiji-gravion@hotmail.com&gt;.
+  * Handle connect() failures properly. Thanks to Takayuki Nagata
+    &lt;tnagata@redhat.com&gt;.
+  * Add stronger checks for the configuration error of running with a
+    writeable root directory inside a chroot(). This may bite people who
+    carelessly turned on chroot_local_user but such is life.
+- convert .changes file to unicode
+- refresh vsftpd-2.0.4-conf.diff to vsftpd-2.3.5-conf.patch
+- name patches explicitly without macro as per recommendations
+- remove INSTALL file from binary package
+- update license to GPL-2.0+
+- mark /etc/sysconfig/SuSEfirewall2/services/vsftpd as config file
+
+- fis copy/paste error in previous change</comment>
+    <requestid>106294</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5bbfbd3ce62d6ca00fa7bb6624e19d1f</srcmd5>
+    <version>3.0.0</version>
+    <time>1334217349</time>
+    <user>coolo</user>
+    <comment>- update to upstream 3.0.0:
+  * Make listen mode the default.
+  * Fix missing &quot;const&quot; in ssl.c
+  * Add seccompsandbox.c to support a seccomp filter sandbox; works against
+    Ubuntu 12.04 ABI.
+  * Rearrange ftppolicy.c a bit so the syscall list is easily comparable with
+    seccompsandbox.c
+  * Rename deprecated &quot;sandbox&quot; to &quot;ptrace_sandbox&quot;.
+  * Add a few more state checks to the privileged helper processes.
+  * Add tunable &quot;seccomp_sandbox&quot;, default on.
+  * Use hardened build flags.
+  * Retry creating a PASV socket upon port reuse race between bind() and
+    listen(), patch from Ralph Wuerthner &lt;ralph.wuerthner@de.ibm.com&gt;.
+  * Don't die() if recv() indicates a closed remote connection. Problem report
+    on a Windows client from Herbert van den Bergh,
+    &lt;herbert.van.den.bergh@oracle.com&gt;.
+  * Add new config setting &quot;allow_writeable_chroot&quot; to help people in a bit of
+    a spot with the v2.3.5 defensive change. Only applies to non-anonymous.
+  * Remove a couple of fixed things from BUGS.
+  * strlen() trunction fix -- no particular impact.
+  * Apply some tidyups from mmoufid@yorku.ca.
+  * Fix delete_failed_uploads if there is a timeout. Report from Alejandro
+    Hernández Hdez &lt;aalejandrohdez@gmail.com&gt;.
+  * Fix other data channel bugs such as failure to log failure upon timeout.
+  * Use exit codes a bit more consistently.
+  * Fix bad interaction between SSL and trans_chunk_size.
+  * Redo data timeout to fire properly for SSL sessions.
+  * Redo idle timeout to fire properly for SSL sessions.
+  * Make sure PROT_EXEC isn't allowed, thanks to Will Drewry for noticing.
+  * Use 10 minutes as a max linger time just in case an alarm gets lost.</comment>
+    <requestid>113215</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>6d0785599167b15f2cf77519259c0ff5</srcmd5>
+    <version>3.0.0</version>
+    <time>1336452545</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>116233</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>6d0785599167b15f2cf77519259c0ff5</srcmd5>
+    <version>3.0.0</version>
+    <time>1340184316</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>f02b94eba2bad9dddafdb04f0bc9febf</srcmd5>
+    <version>3.0.0</version>
+    <time>1346400162</time>
+    <user>coolo</user>
+    <comment>- make seccomp sandbox enabled by default
+  * dropped vsftpd-3.0.0-turn-seccomp-sandbox-off.patch</comment>
+    <requestid>131864</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>dd87551de08dd86d7f1bf18e0e5789e5</srcmd5>
+    <version>3.0.2</version>
+    <time>1351055975</time>
+    <user>coolo</user>
+    <comment>- update to 3.0.2 (bnc#786024) 
+  * Fix some seccomp related build errors on certain CentOS and Debian versions.
+  * Seccomp filter sandbox: missing munmap() -- oops. Did you know that qsort()
+  opens and maps /proc/meminfo but only for larger item counts?
+  * Seccomp filter sandbox: deny socket() gracefully for text_userdb_names.
+  * Fix various NULL crashes with nonsensical config settings. Noted by Tianyin
+  Xu &lt;tixu@cs.ucsd.edu&gt;.
+  * Force cast to unsigned char in is* char functions.
+  * Fix harmless integer issues in strlist.c.
+  * Started on a (possibly ill-advised?) crusade to compile cleanly with
+  Wconversion. Decided to suspend the effort half-way through.
+  * One more seccomp policy fix: mremap (denied).
+  * Support STOU with no filename, uses a STOU. prefix.</comment>
+    <requestid>138998</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>ab72d7d0e4891f9765dc05611f9c5808</srcmd5>
+    <version>3.0.2</version>
+    <time>1353439164</time>
+    <user>coolo</user>
+    <comment>- Fix useradd invocation: -o is useless without -u and newer
+  versions of pwdutils/shadowutils fail on this now.
+
+Error masked by7 || : (forwarded request 142025 from dimstar)</comment>
+    <requestid>142032</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>38337f8ca228a672f151bed1f18d993d</srcmd5>
+    <version>3.0.2</version>
+    <time>1355920951</time>
+    <user>coolo</user>
+    <comment>Verify GPG signature: Perform build-time offline GPG verification.
+Please verify that included keyring matches your needs.
+For manipulation with the offline keyring, please use gpg-offline tool from openSUSE:Factory, devel-tools-building or Base:System.
+See the man page and/or /usr/share/doc/packages/gpg-offline/PACKAGING.HOWTO.
+
+If you need to build your package for older products and don't want to mess spec file with ifs, please follow PACKAGING.HOWTO:
+you can link or aggregate gpg-offline from
+devel:tools:building or use following trick with &quot;osc meta prjconf&quot;:
+
+--- Cut here ----
+%if 0%{?suse_version} &lt;= 1220
+Substitute: gpg-offline
+%endif
+
+Macros:
+%gpg_verify(dnf) \
+%if 0%{?suse_version} &gt; 1220\
+echo &quot;WARNING: Using %%gpg_verify macro from prjconf, not from gpg-offline package.&quot;\
+gpg-offline --directory=&quot;%{-d:%{-d*}}%{!-d:%{_sourcedir}}&quot; --package=&quot;%{-n:%{-n*}}%{!-n:%{name}}&quot;&quot;%{-f: %{-f*}}&quot; --verify %{**}\
+%else\
+echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping %{**} GPG signature verification!&quot;\
+%endif\
+%nil
+-----------------
+ (forwarded request 143938 from sbrabec)</comment>
+    <requestid>145730</requestid>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>38337f8ca228a672f151bed1f18d993d</srcmd5>
+    <version>3.0.2</version>
+    <time>1359110552</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>2c8a9c7d5e4f821e455757df63121d2b</srcmd5>
+    <version>3.0.2</version>
+    <time>1362125162</time>
+    <user>coolo</user>
+    <comment>PLEASE COPY TO 12.3!
+- add vsftpd-allow-dev-log-socket.patch (bnc#786024)
+  * whitelist /dev/log related socket syscall</comment>
+    <requestid>156829</requestid>
+  </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>3c95fc62ce82348876a97fca698ced57</srcmd5>
+    <version>3.0.2</version>
+    <time>1362638130</time>
+    <user>coolo</user>
+    <comment>- add isolate_network and seccomp_sandbox options to template to make them
+  easier to find (bnc#786024) (forwarded request 157236 from lnussel)</comment>
+    <requestid>157548</requestid>
+  </revision>
+  <revision rev="39" vrev="8">
+    <srcmd5>3ed24d12e1827ea673331e213ab3d477</srcmd5>
+    <version>3.0.2</version>
+    <time>1365140601</time>
+    <user>coolo</user>
+    <comment>- add vsftpd-enable-dev-log-sendto.patch (bnc#812406#c1)
+  * this enabled a sendto on /dev/log socket when syslog is enabled
+- provide more verbose explanation about isolate_network and seccomp_sanbox in
+  config file template
+- don't install init file on openSUSE 13.1+
+- drop a build support for SL 10 and older
+
+- add vsftpd-drop-newpid-from-clone.patch (bnc#786024#c38)
+  * drop CLONE_NEWPID from clone to enable audit system
+- add vsftpd-enable-fcntl-f_setfl.patch (bnc#812406)
+  * unconditionally enable F_SETFL patch - might be safe to do (forwarded request 162590 from mvyskocil)</comment>
+    <requestid>162591</requestid>
+  </revision>
+  <revision rev="40" vrev="9">
+    <srcmd5>703860aae5c5b7651d5d74ba1c22da37</srcmd5>
+    <version>3.0.2</version>
+    <time>1374497809</time>
+    <user>coolo</user>
+    <comment>- build with OPENSSL_NO_SSL_INTERN this hides internal struct
+  members or functions that if changed in future openssl versions
+  will break the ABI of the calling applications. (forwarded request 183859 from elvigia)</comment>
+    <requestid>183971</requestid>
+  </revision>
+  <revision rev="41" vrev="11">
+    <srcmd5>703860aae5c5b7651d5d74ba1c22da37</srcmd5>
+    <version>3.0.2</version>
+    <time>1379664940</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="12">
+    <srcmd5>2dd53112ef164963d44f294546e8c376</srcmd5>
+    <version>3.0.2</version>
+    <time>1397216563</time>
+    <user>coolo</user>
+    <comment>- Move the enabling of timeofday and alarm one level deeper to
+  be sure it is whitelisted everytime.
+  Also should possibly fix bnc#872215.
+- Updated patch:
+  * vsftpd-enable-gettimeofday-sec.patch
+
+- Remove forking from service type as it hangs in endless loop.
+
+- Fix warning about dangling symlink on rcvsftpd from rpmlint and
+  remove also clean section while at it.
+
+- Add patch to allow gettimeofday and alarm calls with seccomp
+  enabled. bnc#870122
+- Added patch:
+  * vsftpd-enable-gettimeofday-sec.patch
+
+- Specify that the service type is forking
+
+- changed license to SUSE-GPL-2.0-with-openssl-exception
+  * suggested by legal team
+
+- add allow_root_squashed_chroot option to enable chroot on nsf
+  mounted with squash_root option (fate#311051)
+  * vsftpd-root-squashed-chroot.patch (forwarded request 229627 from scarabeus_iv)</comment>
+    <requestid>229628</requestid>
+  </revision>
+  <revision rev="43" vrev="13">
+    <srcmd5>76bd9ba69cf406554124d31ebe05afc0</srcmd5>
+    <version>3.0.2</version>
+    <time>1401184999</time>
+    <user>coolo</user>
+    <comment>- Cleanup with spec-cleaner
+- Remove conditions about init files as we do not build for &lt; 12.1
+  anyway.
+- Update the README.SUSE file to describe more the listen option.
+
+- Add socket service for vsftpd to avoid the need for xinetd here.
+
+- Add comment about listen variables for xinetd configuration.
+  Fixes bnc#872221.
+- Add default configuration as arg to xinetd started vsftpd.
+- Updated patch:
+  * vsftpd-2.0.4-xinetd.diff</comment>
+    <requestid>235383</requestid>
+  </revision>
+  <revision rev="44" vrev="15">
+    <srcmd5>76bd9ba69cf406554124d31ebe05afc0</srcmd5>
+    <version>3.0.2</version>
+    <time>1409303620</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="16">
+    <srcmd5>d544a4c35a508a87a4a744b477bb6182</srcmd5>
+    <version>3.0.2</version>
+    <time>1409761292</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247114</requestid>
+  </revision>
+  <revision rev="46" vrev="17">
+    <srcmd5>f192dd97f4283033393a8a43c26d33bc</srcmd5>
+    <version>3.0.2</version>
+    <time>1416823873</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261591</requestid>
+  </revision>
+  <revision rev="47" vrev="18">
+    <srcmd5>abd9045572877c90fed073077ab05708</srcmd5>
+    <version>3.0.2</version>
+    <time>1420755601</time>
+    <user>dimstar_suse</user>
+    <comment>- Try to fix deny_file parsing to do more what is expected. Taken
+  from fedora. bnc#900326
+  * vsftpd-2.1.0-filter.patch</comment>
+    <requestid>267273</requestid>
+  </revision>
+  <revision rev="48" vrev="19">
+    <srcmd5>f722113b80ceb524e4e30f0200b5a599</srcmd5>
+    <version>3.0.2</version>
+    <time>1425031426</time>
+    <user>dimstar_suse</user>
+    <comment>- Add service calls for other unit files too
+- Udate filter patch to work as expected:
+  * vsftpd-2.1.0-filter.patch
+
+  from fedora. bnc#900326 bnc#915522 CVE-2015-1419</comment>
+    <requestid>287539</requestid>
+  </revision>
+  <revision rev="49" vrev="20">
+    <srcmd5>0de9ab5865c95ea989891c0d41fe0520</srcmd5>
+    <version>3.0.2</version>
+    <time>1428391735</time>
+    <user>dimstar_suse</user>
+    <comment>- bnc#925963 stat is sometimes run on wrong path and results with
+  ENOENT, ensure we sent both dir+file to filter verification:
+  * vsftpd-path-normalize.patch
+
+- Update patch bit more for sanity checks. Done by rsassu@suse.de:
+  * vsftpd-path-normalize.patch
+
+- Add back patch attempting to fix bnc#900326 bnc#915522 and
+  bnc#922538:
+  * vsftpd-path-normalize.patch
+
+- Reset filter patch to match fedora, my work will be restarted
+  in one-off patch to make the changes stand out. Add rest of
+  RH filtering patches:
+  * vsftpd-2.2.0-wildchar.patch
+  * vsftpd-2.3.4-sqb.patch
+  * vsftpd-2.1.0-filter.patch
+
+- Work on the filter patch and split out the normalisation of the
+  path to separate str function, currently commented out so I
+  avoid huge diffing.
+  * vsftpd-2.1.0-filter.patch</comment>
+    <requestid>294583</requestid>
+  </revision>
+  <revision rev="50" vrev="21">
+    <srcmd5>c3e3d3b286532a94404efef36a441664</srcmd5>
+    <version>3.0.2</version>
+    <time>1429658020</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix hide_file option wrt bnc#927612:
+  * vsftpd-path-normalize.patch</comment>
+    <requestid>297784</requestid>
+  </revision>
+  <revision rev="51" vrev="22">
+    <srcmd5>ebcc35395d51d3355c939130f193045e</srcmd5>
+    <version>3.0.2</version>
+    <time>1435869927</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix logrotate script to not fail when vsftpd is not running,
+  bnc#935279</comment>
+    <requestid>313269</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>4cd7742f471fc9f7ff72a1f18d7def2a</srcmd5>
+    <version>3.0.3</version>
+    <time>1442638390</time>
+    <user>coolo</user>
+    <comment>- Version bump to 3.0.3:
+  * Increase VSFTP_AS_LIMIT to 200MB; various reports.
+  * Make the PWD response more RFC compliant; report from Barry Kelly
+    &lt;barry@modeltwozero.com&gt;.
+  * Remove the trailing period from EPSV response to work around BT Internet
+    issues; report from Tim Bishop &lt;tdb@mirrorservice.org&gt;.
+  * Fix syslog_enable issues vs. seccomp filtering. Report from Michal Vyskocil
+    &lt;mvyskocil@suse.cz&gt;. At least, syslogging seems to work on my Fedora now.
+  * Allow gettimeofday() in the seccomp sandbox. I can't repro failures, but I
+    probably have a different distro / libc / etc. and there are multiple reports.
+  * Some kernels support PR_SET_NO_NEW_PRIVS but not PR_SET_SECCOMP, so handle
+    this case gracefully. Report from Vasily Averin &lt;vvs@odin.com&gt;.
+  * List the TLS1.2 cipher AES128-GCM-SHA256 as first preference by default.
+  * Make some compile-time SSL defaults (such as correct client shutdown
+    handling) stricter.
+  * Disable Nagle algorithm during SSL data connection shutdown, to avoid 200ms
+    delays. From Tim Kosse &lt;tim.kosse@filezilla-project.org&gt;.
+  * Kill the FTP session if we see HTTP protocol commands, to avoid
+    cross-protocol attacks. A report from Jann Horn &lt;jann@thejh.net&gt;.
+  * Kill the FTP session if we see session re-use failure. A report from
+    Tim Kosse &lt;tim.kosse@filezilla-project.org&gt;.
+  * Enable ECDHE, Tim Kosse &lt;tim.kosse@filezilla-project.org&gt;.
+  * Default cipher list is now just ECDHE-RSA-AES256-GCM-SHA384.
+  * Minor SSL logging improvements.
+  * Un-default tunable_strict_ssl_write_shutdown again. We still have
+    tunable_strict_ssl_read_eof defaulted now, which is the important one to prove
+    upload integrity.
+- Drop patch vsftpd-allow-dev-log-socket.patch should be included
+  upstream, se above bullet with mvyskocil's email</comment>
+    <requestid>329655</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>8e59d930a0b75f131f605f9f807d184d</srcmd5>
+    <version>3.0.3</version>
+    <time>1444833484</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>334376</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>bf75e5c7447506f977a469e4396970f9</srcmd5>
+    <version>3.0.3</version>
+    <time>1458120394</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix memory leaks in ls.c bnc#968138
+  * Add patch vsftpd-ls-memleak.patch
+  * Update patch vsftpd-path-normalize.patch
+- Fix wildcard ? matching bnc#969411
+  * Update patch vsftpd-2.3.4-sqb.patch</comment>
+    <requestid>369732</requestid>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>08ba8ff1a93c9c170d4120735c8e420a</srcmd5>
+    <version>3.0.3</version>
+    <time>1459508516</time>
+    <user>dimstar_suse</user>
+    <comment>- Require shadow and do not output the error out of useradd
+
+- Fix user creation to not report error when user alredy exist
+  bnc#972169
+
+- Fix bnc#970982 hanging on pam_exec in pam.d
+  * Add patch vsftpd-3.0.2-wnohang.patch</comment>
+    <requestid>380727</requestid>
+  </revision>
+  <revision rev="56" vrev="5">
+    <srcmd5>21277a1f4edb3e841a29d0caf1a0b8fb</srcmd5>
+    <version>3.0.3</version>
+    <time>1471345338</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not bother with omc xml configs, useless nowdays</comment>
+    <requestid>417078</requestid>
+  </revision>
+  <revision rev="57" vrev="6">
+    <srcmd5>380c0f5e92ba7facdb4a83f46a73aec7</srcmd5>
+    <version>3.0.3</version>
+    <time>1473102744</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424078</requestid>
+  </revision>
+  <revision rev="58" vrev="7">
+    <srcmd5>09df353e8fa7e43e4012c7098df8f3e6</srcmd5>
+    <version>3.0.3</version>
+    <time>1474976469</time>
+    <user>dimstar_suse</user>
+    <comment>Add vsftpd-3.0.2-fix-chown-uploads.patch to fix a bug in vsftpd
+where files uploaded by an anonymous user could not be chown()ed
+to the desired UID as specified in the daemon's configuration
+file. [bnc#996370]</comment>
+    <requestid>428670</requestid>
+  </revision>
+  <revision rev="59" vrev="8">
+    <srcmd5>66624ea0446f0ad1e633184841afff18</srcmd5>
+    <version>3.0.3</version>
+    <time>1494441151</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492476</requestid>
+  </revision>
+  <revision rev="60" vrev="9">
+    <srcmd5>58c4c3bcee85454888bd52ab79001191</srcmd5>
+    <version>3.0.3</version>
+    <time>1496822031</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build failure in openSUSE:Factory:Staging:I.</comment>
+    <requestid>500193</requestid>
+  </revision>
+  <revision rev="61" vrev="10">
+    <srcmd5>0f748568efb77fb36ac0cf2e0aea937e</srcmd5>
+    <version>3.0.3</version>
+    <time>1497518321</time>
+    <user>dimstar_suse</user>
+    <comment>- Conditionally install xinetd service only on older releases
+  * On current distributions we support the same functionality
+    via systemd socket activation
+
+- Fix build against OpenSSL 1.1. Remove lock on 1.0.x libs
+  adds vsftpd-3.0.3-build-with-openssl-1.1.patch
+  (bsc#1042673)</comment>
+    <requestid>503674</requestid>
+  </revision>
+  <revision rev="62" vrev="11">
+    <srcmd5>4d08c9ba96f5a9e5c643ee42ea3bed53</srcmd5>
+    <version>3.0.3</version>
+    <time>1505416169</time>
+    <user>dimstar_suse</user>
+    <comment>- Add &quot;vsftpd-die-with-session.patch&quot; to fix a bug in vsftpd that
+  would cause SSL protocol errors, aborting the connection, whenever
+  system errors occurred that were supposed to be non-fatal.
+  [bsc#1044292]
+
+- Add &quot;vsftpd-mdtm-in-utc.patch&quot; to fix interoperability issue with
+  various ftp clients that arose when vsftpd is configured with
+  option &quot;use_localtime=YES&quot;. Basically, it's fine to use local time
+  stamps in directory listings, but responding to MDTM commands with
+  any time zone other than UTC directly violates RFC3659 and leads
+  FTP clients to misinterpret the file's time stamp. [bsc#1024961]
+
+- Add &quot;vsftpd-append-seek-pipe.patch&quot; to allow the FTP server to
+  append to a file system pipe. [bsc#1048427]
+
+- Add &quot;vsftpd-3.0.3-address_space_limit.patch&quot; to create the new
+  configuration option &quot;address_space_limit&quot;, which determines the
+  memory limit vsftpd configures for its own process (given in
+  bytes). The previously hard-coded limit (100 MB) may not be
+  sufficient for vsftpd servers running with certain PAM modules
+  enabled, and in such cases administrators may wish to raise the
+  limit to match their system's requirements. [bsc#1042137]
+
+- Don't rely on the vsf_findlibs.sh script to figure out the list
+  of libraries the build needs to link. The script is wildly
+  unreliable and it's hard to predict what results it will produce.
+  Also, the results it *does* produce are invisble in the build
+  log. We stumbled across this issue when vsftpd suddendly had
+  build failures on i586 platforms because the script decided to
+  try and link &quot;-lnsl&quot; even though the library was neither
+  installed nor required.  
+
+- Drop the explicit specification of the LDFLAGS and LINK variables
+  from the call to make. The value of LDFLAGS we passed is the
+  default anyway and giving LINK has no effect since it's not used</comment>
+    <requestid>523208</requestid>
+  </revision>
+  <revision rev="63" vrev="12">
+    <srcmd5>e1b7389426398e7da15c6014cdbdc9c7</srcmd5>
+    <version>3.0.3</version>
+    <time>1513453520</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure to also require group nobody and user ftp bsc#1070653</comment>
+    <requestid>556627</requestid>
+  </revision>
+  <revision rev="64" vrev="13">
+    <srcmd5>efc4e4030ad66f50184fcee3c5ac047d</srcmd5>
+    <version>3.0.3</version>
+    <time>1523029381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593273</requestid>
+  </revision>
+  <revision rev="65" vrev="14">
+    <srcmd5>45541f6ea1600b6dc4068b9d437068a5</srcmd5>
+    <version>3.0.3</version>
+    <time>1526462711</time>
+    <user>dimstar_suse</user>
+    <comment>Enable wait4(), sysinfo(), and shutdown() syscalls in seccomp sandbox. These are required for the daemon to work properly on SLE-15. [bsc#1089088]</comment>
+    <requestid>607030</requestid>
+  </revision>
+  <revision rev="66" vrev="15">
+    <srcmd5>e8efe046c7c40895ec6963f47b5b120e</srcmd5>
+    <version>3.0.3</version>
+    <time>1527084361</time>
+    <user>dimstar_suse</user>
+    <comment>Don't start/stop parameterized systemd units in pre/post actions. These units
+cannot be used without an explicit parameter and attempts to do so lead to a
+confusing &quot;failed to try-restart&quot; error message. [bsc#1093179, bsc#1010177]</comment>
+    <requestid>609848</requestid>
+  </revision>
+  <revision rev="67" vrev="16">
+    <srcmd5>d3158f3ad4e5a6f46df2b0c781d2ff5b</srcmd5>
+    <version>3.0.3</version>
+    <time>1529919254</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply &quot;vsftpd-support-dsa-only-setups.patch&quot; to disable the
+  problematic default setting for rsa_cert_file. Upstream
+  initializes that value to &quot;/usr/share/ssl/certs/vsftpd.pem&quot; and
+  vsftpd won't start up if that file does not exist (or if it does
+  not contain an RSA certificate). Therefore, users who copy a DSA
+  certificate into that location or properly configure a DSA
+  certificate via dsa_cert_file without explicitly disabling the
+  RSA certificate won't be able to start vsftpd. [bsc#975538]</comment>
+    <requestid>618293</requestid>
+  </revision>
+  <revision rev="68" vrev="17">
+    <srcmd5>80afbcd0c5423f95fa4660c660807040</srcmd5>
+    <version>3.0.3</version>
+    <time>1530741163</time>
+    <user>dimstar_suse</user>
+    <comment>Extend &quot;vsftpd-3.0.3-address_space_limit.patch&quot; to mention the new 'address_space_limit' option in the installed vsftpd.conf(5) man page. [bsc#1075060]</comment>
+    <requestid>619612</requestid>
+  </revision>
+  <revision rev="69" vrev="18">
+    <srcmd5>d6694011ecd6fdc4d4f8a3b284a37ee1</srcmd5>
+    <version>3.0.3</version>
+    <time>1541509431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644184</requestid>
+  </revision>
+  <revision rev="70" vrev="19">
+    <srcmd5>7d3f5cd3b42b1d87082b6ec1f9950b8f</srcmd5>
+    <version>3.0.3</version>
+    <time>1561557715</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply &quot;vsftpd-avoid-bogus-ssl-write.patch&quot; to fix a segmentation
+  fault that occurred while trying to write to an invalid TLS
+  context. [bsc#1125951]
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini</comment>
+    <requestid>710591</requestid>
+  </revision>
+</revisionlist>

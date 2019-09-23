@@ -1,0 +1,2181 @@
+From c1a88e900043adeaaec530053ca896d34823f8df Mon Sep 17 00:00:00 2001
+From: Chris Lambacher <chris@kateandchris.net>
+Date: Wed, 9 Dec 2015 00:02:16 -0500
+Subject: [PATCH] Remove 2to3 in favour using six
+
+---
+ docs/Validator.txt                           |  13 +--
+ docs/conf.py                                 |  14 +--
+ examples/WebwareExamples/index.py            |  11 +-
+ formencode/__init__.py                       |   1 +
+ formencode/api.py                            |  26 ++---
+ formencode/compound.py                       |   6 +-
+ formencode/context.py                        |   4 +-
+ formencode/declarative.py                    |  24 +++--
+ formencode/doctest_xml_compare.py            |  11 +-
+ formencode/fieldstorage.py                   |   1 +
+ formencode/foreach.py                        |   6 +-
+ formencode/htmlfill.py                       |  24 +++--
+ formencode/htmlfill_schemabuilder.py         |   1 +
+ formencode/htmlgen.py                        |  25 +++--
+ formencode/htmlrename.py                     |   1 +
+ formencode/national.py                       |  12 ++-
+ formencode/rewritingparser.py                |  19 ++--
+ formencode/schema.py                         |  32 +++---
+ formencode/tests/__init__.py                 |   1 +
+ formencode/tests/test_cc.py                  |   1 +
+ formencode/tests/test_compound.py            |   1 +
+ formencode/tests/test_context.py             |   1 +
+ formencode/tests/test_declarative.py         |   1 +
+ formencode/tests/test_doctest_xml_compare.py |   1 +
+ formencode/tests/test_doctests.py            |   4 +-
+ formencode/tests/test_email.py               |   9 +-
+ formencode/tests/test_htmlfill.py            |  32 +++---
+ formencode/tests/test_htmlfill_control.py    |   1 +
+ formencode/tests/test_htmlgen.py             |  15 +--
+ formencode/tests/test_htmlrename.py          |   1 +
+ formencode/tests/test_i18n.py                |  53 +++++-----
+ formencode/tests/test_schema.py              |  20 ++--
+ formencode/tests/test_subclassing.py         |   1 +
+ formencode/tests/test_subclassing_old.py     |   2 +
+ formencode/tests/test_validators.py          | 105 +++++++++---------
+ formencode/tests/test_variabledecode.py      |   1 +
+ formencode/validators.py                     | 106 ++++++++++---------
+ formencode/variabledecode.py                 |  11 +-
+ setup.py                                     |   3 +-
+ 39 files changed, 342 insertions(+), 259 deletions(-)
+
+Index: FormEncode-1.3.1/docs/Validator.txt
+===================================================================
+--- FormEncode-1.3.1.orig/docs/Validator.txt
++++ FormEncode-1.3.1/docs/Validator.txt
+@@ -61,11 +61,12 @@ sort of feedback.  Like:
+     >>> raw_input_input = []
+     >>> def raw_input(prompt):
+     ...     value = raw_input_input.pop(0)
+-    ...     print '%s%s' % (prompt, value)
++    ...     print ('%s%s' % (prompt, value))
+     ...     return value
+     >>> raw_input_input.extend(['ten', '10'])
+     >>> raw_input_input.extend(['bob', 'bob@nowhere.com'])
+-    >>> if unicode is str:  # Python 3
++    >>> import six
++    >>> if six.PY3:  # Python 3
+     ...    input = raw_input
+ 
+ ::
+@@ -75,8 +76,8 @@ sort of feedback.  Like:
+     ...         try:
+     ...             value = raw_input('Enter a number: ')
+     ...             return validator.to_python(value)
+-    ...         except formencode.Invalid, e:
+-    ...             print e
++    ...         except formencode.Invalid as e:
++    ...             print (e)
+     ...
+     >>> get_integer()
+     Enter a number: ten
+@@ -91,8 +92,8 @@ We can also generalize this kind of func
+     ...         try:
+     ...             value = raw_input(prompt)
+     ...             return validator.to_python(value)
+-    ...         except formencode.Invalid, e:
+-    ...             print e
++    ...         except formencode.Invalid as e:
++    ...             print (e)
+     >>> valid_input('Enter your email: ', validators.Email())
+     Enter your email: bob
+     An email address must contain a single @
+Index: FormEncode-1.3.1/formencode/__init__.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/__init__.py
++++ FormEncode-1.3.1/formencode/__init__.py
+@@ -1,3 +1,4 @@
++from __future__ import absolute_import
+ # formencode package
+ 
+ from formencode.api import (
+Index: FormEncode-1.3.1/formencode/api.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/api.py
++++ FormEncode-1.3.1/formencode/api.py
+@@ -1,6 +1,7 @@
+ """
+ Core classes for validation.
+ """
++from __future__ import absolute_import
+ 
+ from . import declarative
+ import gettext
+@@ -8,6 +9,7 @@ import os
+ import re
+ import textwrap
+ import warnings
++import six
+ 
+ try:
+     from pkg_resources import resource_filename
+@@ -150,15 +152,15 @@ class Invalid(Exception):
+         val = self.msg
+         return val
+ 
+-    if unicode is not str:  # Python 2
++    if six.text_type is not str:  # Python 2
+ 
+         def __unicode__(self):
+-            if isinstance(self.msg, unicode):
++            if isinstance(self.msg, six.text_type):
+                 return self.msg
+             elif isinstance(self.msg, str):
+                 return self.msg.decode('utf8')
+             else:
+-                return unicode(self.msg)
++                return six.text_type(self.msg)
+ 
+     def unpack_errors(self, encode_variables=False, dict_char='.',
+                       list_char='-'):
+@@ -177,15 +179,15 @@ class Invalid(Exception):
+                 for item in self.error_list]
+         if self.error_dict:
+             result = {}
+-            for name, item in self.error_dict.iteritems():
++            for name, item in six.iteritems(self.error_dict):
+                 result[name] = item if isinstance(
+-                    item, basestring) else item.unpack_errors()
++                    item, six.string_types) else item.unpack_errors()
+             if encode_variables:
+                 from . import variabledecode
+                 result = variabledecode.variable_encode(
+                     result, add_repetitions=False,
+                     dict_char=dict_char, list_char=list_char)
+-                for key in result.keys():
++                for key in list(result.keys()):
+                     if not result[key]:
+                         del result[key]
+             return result
+@@ -245,8 +247,8 @@ class Validator(declarative.Declarative)
+         except AttributeError:
+             try:
+                 if self.use_builtins_gettext:
+-                    import __builtin__
+-                    trans = __builtin__._
++                    import six.moves.builtins
++                    trans = six.moves.builtins._
+                 else:
+                     trans = _stdtrans
+             except AttributeError:
+@@ -311,7 +313,7 @@ class Validator(declarative.Declarative)
+         """
+         doc = cls.__doc__ or ''
+         doc = [textwrap.dedent(doc).rstrip()]
+-        messages = sorted(cls._messages.iteritems())
++        messages = sorted(six.iteritems(cls._messages))
+         doc.append('\n\n**Messages**\n\n')
+         for name, default in messages:
+             default = re.sub(r'(%\(.*?\)[rsifcx])', r'``\1``', default)
+@@ -456,7 +458,7 @@ class FancyValidator(Validator):
+ 
+     def to_python(self, value, state=None):
+         try:
+-            if self.strip and isinstance(value, basestring):
++            if self.strip and isinstance(value, six.string_types):
+                 value = value.strip()
+             elif hasattr(value, 'mixed'):
+                 # Support Paste's MultiDict
+@@ -484,7 +486,7 @@ class FancyValidator(Validator):
+ 
+     def from_python(self, value, state=None):
+         try:
+-            if self.strip and isinstance(value, basestring):
++            if self.strip and isinstance(value, six.string_types):
+                 value = value.strip()
+             if not self.accept_python:
+                 if self.is_empty(value):
+@@ -520,7 +522,7 @@ class FancyValidator(Validator):
+         return None
+ 
+     def assert_string(self, value, state):
+-        if not isinstance(value, basestring):
++        if not isinstance(value, six.string_types):
+             raise Invalid(self.message('badType', state,
+                                        type=type(value), value=value),
+                           value, state)
+Index: FormEncode-1.3.1/formencode/compound.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/compound.py
++++ FormEncode-1.3.1/formencode/compound.py
+@@ -1,9 +1,11 @@
+ """
+ Validators for applying validations in sequence.
+ """
++from __future__ import absolute_import
+ 
+ from .api import (FancyValidator, Identity, Invalid, NoDefault, Validator,
+     is_validator)
++import six
+ 
+ __all__ = ['CompoundValidator', 'Any', 'All', 'Pipe']
+ 
+@@ -39,7 +41,7 @@ class CompoundValidator(FancyValidator):
+     def __classinit__(cls, new_attrs):
+         FancyValidator.__classinit__(cls, new_attrs)
+         toAdd = []
+-        for name, value in new_attrs.iteritems():
++        for name, value in six.iteritems(new_attrs):
+             if is_validator(value) and value is not Identity:
+                 toAdd.append((name, value))
+                 # @@: Should we really delete too?
+@@ -200,7 +202,7 @@ class All(CompoundValidator):
+         filtering out None and trying to keep `All` validators from
+         being nested (which isn't needed).
+         """
+-        validators = filter(lambda v: v and v is not Identity, validators)
++        validators = [v for v in validators if v and v is not Identity]
+         if not validators:
+             return Identity
+         if len(validators) == 1:
+Index: FormEncode-1.3.1/formencode/context.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/context.py
++++ FormEncode-1.3.1/formencode/context.py
+@@ -51,10 +51,12 @@ When Python 2.5 comes out, this syntax w
+ 
+ And ``page`` will be set to ``'view'`` only inside that ``with`` block.
+ """
++from __future__ import absolute_import
+ 
+ import threading
+ 
+ from itertools import count
++from six.moves import range
+ 
+ __all__ = ['Context', 'ContextRestoreError']
+ 
+@@ -96,7 +98,7 @@ class Context(object):
+             "You can only write attribute on context object with the .set() method")
+ 
+     def set(self, **kw):
+-        state_id = _restore_ids.next()
++        state_id = next(_restore_ids)
+         try:
+             stack = self._local.stack
+         except AttributeError:
+Index: FormEncode-1.3.1/formencode/declarative.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/declarative.py
++++ FormEncode-1.3.1/formencode/declarative.py
+@@ -17,11 +17,15 @@ in a variable by that name.
+ Also, you can define a __classinit__(cls, new_attrs) method, which
+ will be called when the class is created (including subclasses).
+ """
++from __future__ import absolute_import
+ 
+ import copy
+ import types
+ 
+ from itertools import count
++import six
++from six.moves import map
++from six.moves import zip
+ 
+ 
+ class classinstancemethod(object):
+@@ -55,9 +59,9 @@ class _methodwrapper(object):
+     def __repr__(self):
+         if self.obj is None:
+             return ('<bound class method %s.%s>'
+-                    % (self.cls.__name__, self.func.func_name))
++                    % (self.cls.__name__, self.func.__name__))
+         return ('<bound method %s.%s of %r>'
+-                % (self.cls.__name__, self.func.func_name, self.obj))
++                % (self.cls.__name__, self.func.__name__, self.obj))
+ 
+ 
+ class DeclarativeMeta(type):
+@@ -66,11 +70,11 @@ class DeclarativeMeta(type):
+         cls = type.__new__(meta, class_name, bases, new_attrs)
+         for name in cls.__mutableattributes__:
+             setattr(cls, name, copy.copy(getattr(cls, name)))
+-        cls.declarative_count = cls.counter.next()
++        cls.declarative_count = next(cls.counter)
+         if ('__classinit__' in new_attrs and not isinstance(cls.__classinit__,
+                 (staticmethod, types.FunctionType))):
+             setattr(cls, '__classinit__',
+-                    staticmethod(cls.__classinit__.im_func))
++                    staticmethod(cls.__classinit__.__func__))
+         cls.__classinit__(cls, new_attrs)
+         names = getattr(cls, '__singletonmethods__', None)
+         if names:
+@@ -97,14 +101,12 @@ class singletonmethod(object):
+         return types.MethodType(self.func, obj)
+ 
+ 
+-class Declarative(object):
++class Declarative(six.with_metaclass(DeclarativeMeta, object)):
+ 
+     __unpackargs__ = ()
+ 
+     __mutableattributes__ = ()
+ 
+-    __metaclass__ = DeclarativeMeta
+-
+     __singletonmethods__ = ()
+ 
+     counter = count()
+@@ -143,10 +145,10 @@ class Declarative(object):
+         for name in self.__mutableattributes__:
+             if name not in kw:
+                 setattr(self, name, copy.copy(getattr(self, name)))
+-        for name, value in kw.iteritems():
++        for name, value in six.iteritems(kw):
+             setattr(self, name, value)
+         if 'declarative_count' not in kw:
+-            self.declarative_count = self.counter.next()
++            self.declarative_count = next(self.counter)
+         self.__initargs__(kw)
+ 
+     def __initargs__(self, new_attrs):
+@@ -179,7 +181,7 @@ class Declarative(object):
+                 and self.__unpackargs__[1] in vals):
+             v = vals[self.__unpackargs__[1]]
+             if isinstance(v, (list, int)):
+-                args.extend(map(source.makeRepr, v))
++                args.extend(list(map(source.makeRepr, v)))
+                 del v[self.__unpackargs__[1]]
+         for name in self.__unpackargs__:
+             if name in vals:
+@@ -188,7 +190,7 @@ class Declarative(object):
+             else:
+                 break
+         args.extend('%s=%s' % (name, source.makeRepr(value))
+-                     for (name, value) in vals.iteritems())
++                     for (name, value) in six.iteritems(vals))
+         return '%s(%s)' % (self.__class__.__name__,
+                            ', '.join(args))
+ 
+Index: FormEncode-1.3.1/formencode/doctest_xml_compare.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/doctest_xml_compare.py
++++ FormEncode-1.3.1/formencode/doctest_xml_compare.py
+@@ -1,6 +1,11 @@
++from __future__ import absolute_import
++from __future__ import print_function
+ 
+ import doctest
+ import xml.etree.ElementTree as ET
++import six
++from six.moves import map
++from six.moves import zip
+ try:
+     XMLParseError = ET.ParseError
+ except AttributeError:  # Python < 2.7
+@@ -11,7 +16,7 @@ RealOutputChecker = doctest.OutputChecke
+ 
+ def debug(*msg):
+     import sys
+-    print >> sys.stderr, ' '.join(map(str, msg))
++    print(' '.join(map(str, msg)), file=sys.stderr)
+ 
+ 
+ class HTMLOutputChecker(RealOutputChecker):
+@@ -69,7 +74,7 @@ def xml_compare(x1, x2, reporter=None):
+         if reporter:
+             reporter('Tags do not match: %s and %s' % (x1.tag, x2.tag))
+         return False
+-    for name, value in x1.attrib.iteritems():
++    for name, value in six.iteritems(x1.attrib):
+         if x2.attrib.get(name) != value:
+             if reporter:
+                 reporter('Attributes do not match: %s=%r, %s=%r'
+@@ -120,7 +125,7 @@ def make_xml(s):
+ 
+ 
+ def make_string(xml):
+-    if isinstance(xml, basestring):
++    if isinstance(xml, six.string_types):
+         xml = make_xml(xml)
+     s = ET.tostring(xml)
+     if s == '<xml />':
+Index: FormEncode-1.3.1/formencode/fieldstorage.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/fieldstorage.py
++++ FormEncode-1.3.1/formencode/fieldstorage.py
+@@ -3,6 +3,7 @@
+ """
+ Wrapper class for use with cgi.FieldStorage types for file uploads
+ """
++from __future__ import absolute_import
+ 
+ import cgi
+ 
+Index: FormEncode-1.3.1/formencode/foreach.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/foreach.py
++++ FormEncode-1.3.1/formencode/foreach.py
+@@ -1,9 +1,11 @@
+ """
+ Validator for repeating items.
+ """
++from __future__ import absolute_import
+ 
+ from .api import NoDefault, Invalid
+ from .compound import CompoundValidator, from_python
++import six
+ 
+ __all__ = ['ForEach']
+ 
+@@ -83,7 +85,7 @@ class ForEach(CompoundValidator):
+                     new_list = set(new_list)
+                 return new_list
+             else:
+-                raise Invalid('Errors:\n%s' % '\n'.join(unicode(e)
++                raise Invalid('Errors:\n%s' % '\n'.join(six.text_type(e)
+                     for e in errors if e), value, state, error_list=errors)
+         finally:
+             if state is not None:
+@@ -125,7 +127,7 @@ class ForEach(CompoundValidator):
+     del _IfMissing
+ 
+     def _convert_to_list(self, value):
+-        if isinstance(value, basestring):
++        if isinstance(value, six.string_types):
+             return [value]
+         elif value is None:
+             return []
+Index: FormEncode-1.3.1/formencode/htmlfill.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/htmlfill.py
++++ FormEncode-1.3.1/formencode/htmlfill.py
+@@ -1,10 +1,12 @@
+ """
+ Parser for HTML forms, that fills in defaults and errors.  See ``render``.
+ """
++from __future__ import absolute_import
+ 
+ import re
+ 
+ from formencode.rewritingparser import RewritingParser, html_quote
++import six
+ 
+ __all__ = ['render', 'htmlliteral', 'default_formatter',
+            'none_formatter', 'escape_formatter',
+@@ -189,7 +191,7 @@ class FillingParser(RewritingParser):
+         ... <input type="radio" name="living" value="no">
+         ... <input type="checkbox" name="nice_guy" checked="checked">''')
+         >>> parser.close()
+-        >>> print parser.text() # doctest: +NORMALIZE_WHITESPACE
++        >>> print (parser.text()) # doctest: +NORMALIZE_WHITESPACE
+         <input type="text" name="name" value="Bob Jones">
+         <select name="occupation">
+         <option value="">Default</option>
+@@ -226,7 +228,7 @@ class FillingParser(RewritingParser):
+         self.in_select = None
+         self.skip_next = False
+         self.errors = errors or {}
+-        if isinstance(self.errors, basestring):
++        if isinstance(self.errors, six.string_types):
+             self.errors = {None: self.errors}
+         self.in_error = None
+         self.skip_error = False
+@@ -253,14 +255,14 @@ class FillingParser(RewritingParser):
+         Compare the two objects as strings (coercing to strings if necessary).
+         Also uses encoding to compare the strings.
+         """
+-        if not isinstance(str1, basestring):
++        if not isinstance(str1, six.string_types):
+             if hasattr(str1, '__unicode__'):
+-                str1 = unicode(str1)
++                str1 = six.text_type(str1)
+             else:
+                 str1 = str(str1)
+         if type(str1) == type(str2):
+             return str1 == str2
+-        if isinstance(str1, unicode):
++        if isinstance(str1, six.text_type):
+             str1 = str1.encode(self.encoding or self.default_encoding)
+         else:
+             str2 = str2.encode(self.encoding or self.default_encoding)
+@@ -274,7 +276,7 @@ class FillingParser(RewritingParser):
+             if key in unused_errors:
+                 del unused_errors[key]
+         if self.auto_error_formatter:
+-            for key, value in unused_errors.iteritems():
++            for key, value in six.iteritems(unused_errors):
+                 error_message = self.auto_error_formatter(value)
+                 error_message = '<!-- for: %s -->\n%s' % (key, error_message)
+                 self.insert_at_marker(
+@@ -297,7 +299,7 @@ class FillingParser(RewritingParser):
+         if self.encoding is not None:
+             new_content = []
+             for item in self._content:
+-                if (unicode is not str  # Python 2
++                if (six.text_type is not str  # Python 2
+                         and isinstance(item, str)):
+                     item = item.decode(self.encoding)
+                 new_content.append(item)
+@@ -390,11 +392,11 @@ class FillingParser(RewritingParser):
+         if self.prefix_error:
+             self.write_marker(name)
+         value = self.defaults.get(name)
+-        if (unicode is not str  # Python 2
+-                and isinstance(name, unicode) and isinstance(value, str)):
++        if (six.text_type is not str  # Python 2
++                and isinstance(name, six.text_type) and isinstance(value, str)):
+             value = value.decode(self.encoding or self.default_encoding)
+         if name in self.add_attributes:
+-            for attr_name, attr_value in self.add_attributes[name].iteritems():
++            for attr_name, attr_value in six.iteritems(self.add_attributes[name]):
+                 if attr_name.startswith('+'):
+                     attr_name = attr_name[1:]
+                     self.set_attr(attrs, attr_name,
+@@ -540,7 +542,7 @@ class FillingParser(RewritingParser):
+         """
+         if obj is None:
+             return False
+-        if isinstance(obj, basestring):
++        if isinstance(obj, six.string_types):
+             return obj == value
+         if hasattr(obj, '__contains__'):
+             if value in obj:
+Index: FormEncode-1.3.1/formencode/htmlfill_schemabuilder.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/htmlfill_schemabuilder.py
++++ FormEncode-1.3.1/formencode/htmlfill_schemabuilder.py
+@@ -6,6 +6,7 @@ You can either pass ``SchemaBuilder`` to
+ ``listen`` argument), or call ``parse_schema`` to just parse out a
+ ``Schema`` object.
+ """
++from __future__ import absolute_import
+ 
+ from . import validators
+ from . import schema
+Index: FormEncode-1.3.1/formencode/htmlgen.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/htmlgen.py
++++ FormEncode-1.3.1/formencode/htmlgen.py
+@@ -55,8 +55,11 @@ Examples::
+     '<a href="#top">return to top</a>'
+ 
+ """
++from __future__ import absolute_import
+ 
+ import xml.etree.ElementTree as ET
++import six
++from six.moves import map
+ 
+ try:
+     from html import escape
+@@ -90,12 +93,12 @@ class _HTML:
+     def quote(self, arg):
+         if arg is None:
+             return ''
+-        if unicode is not str:  # Python 2
+-            arg = unicode(arg).encode(default_encoding)
++        if six.text_type is not str:  # Python 2
++            arg = six.text_type(arg).encode(default_encoding)
+         return escape(arg, True)
+ 
+     def str(self, arg, encoding=None):
+-        if isinstance(arg, basestring):
++        if isinstance(arg, six.string_types):
+             if not isinstance(arg, str):
+                 arg = arg.encode(default_encoding)
+             return arg
+@@ -106,7 +109,7 @@ class _HTML:
+         elif isinstance(arg, Element):
+             return str(arg)
+         else:
+-            arg = unicode(arg)
++            arg = six.text_type(arg)
+             if not isinstance(arg, str):  # Python 2
+                 arg = arg.encode(default_encoding)
+             return arg
+@@ -127,11 +130,11 @@ class Element(ET.Element
+             args = kw.pop('c')
+             if not isinstance(args, (list, tuple)):
+                 args = (args,)
+-        for name, value in kw.items():
++        for name, value in list(kw.items()):
+             if value is None:
+                 del kw[name]
+                 continue
+-            kw[name] = unicode(value)
++            kw[name] = six.text_type(value)
+             if name.endswith('_'):
+                 kw[name[:-1]] = value
+                 del kw[name]
+@@ -151,20 +154,20 @@ class Element(ET.Element
+             if not ET.iselement(arg):
+                 if last is None:
+                     if el.text is None:
+-                        el.text = unicode(arg)
++                        el.text = six.text_type(arg)
+                     else:
+-                        el.text += unicode(arg)
++                        el.text += six.text_type(arg)
+                 else:
+                     if last.tail is None:
+-                        last.tail = unicode(arg)
++                        last.tail = six.text_type(arg)
+                     else:
+-                        last.tail += unicode(arg)
++                        last.tail += six.text_type(arg)
+             else:
+                 last = arg
+                 el.append(last)
+         return el
+ 
+-    if unicode is str:  # Python 3
++    if six.text_type is str:  # Python 3
+ 
+         def __str__(self):
+             return ET.tostring(
+Index: FormEncode-1.3.1/formencode/htmlrename.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/htmlrename.py
++++ FormEncode-1.3.1/formencode/htmlrename.py
+@@ -1,6 +1,7 @@
+ """
+ Module to rename form fields
+ """
++from __future__ import absolute_import
+ 
+ from formencode.rewritingparser import RewritingParser
+ 
+Index: FormEncode-1.3.1/formencode/national.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/national.py
++++ FormEncode-1.3.1/formencode/national.py
+@@ -1,11 +1,13 @@
+ """
+ Country specific validators for use with FormEncode.
+ """
++from __future__ import absolute_import
+ import re
+ 
+ from .api import FancyValidator
+ from .compound import Any
+ from .validators import Regex, Invalid, _
++import six
+ 
+ try:
+     import pycountry
+@@ -53,7 +55,7 @@ if tgformat:
+         else:
+             d = dict(country_additions)
+             d.update(dict(c2))
+-        ret = d.items() + fuzzy_countrynames
++        ret = list(d.items()) + fuzzy_countrynames
+         return ret
+ 
+     def get_country(code):
+@@ -65,7 +67,7 @@ if tgformat:
+         if len(c1) > len(c2):
+             d = dict(c1)
+             d.update(dict(c2))
+-            return d.items()
++            return list(d.items())
+         else:
+             return c2
+ 
+@@ -154,7 +156,7 @@ class DelimitedDigitsPostalCode(Regex):
+ 
+     def __init__(self, partition_lengths, delimiter=None,
+                  *args, **kw):
+-        if isinstance(partition_lengths, (int, long)):
++        if isinstance(partition_lengths, six.integer_types):
+             partition_lengths = [partition_lengths]
+         if not delimiter:
+             delimiter = ''
+@@ -675,7 +677,7 @@ class InternationalPhoneNumber(FancyVali
+             value = value.encode('ascii', 'strict')
+         except UnicodeEncodeError:
+             raise Invalid(self.message('phoneFormat', state), value, state)
+-        if unicode is str:  # Python 3
++        if six.text_type is str:  # Python 3
+             value = value.decode('ascii')
+         value = self._mark_chars_re.sub('-', value)
+         for f, t in [('  ', ' '),
+@@ -765,7 +767,7 @@ class LanguageValidator(FancyValidator):
+ 
+ def validators():
+     """Return the names of all validators in this module."""
+-    return [name for name, value in globals().items()
++    return [name for name, value in list(globals().items())
+         if isinstance(value, type) and issubclass(value, FancyValidator)]
+ 
+ __all__ = ['Invalid'] + validators()
+Index: FormEncode-1.3.1/formencode/rewritingparser.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/rewritingparser.py
++++ FormEncode-1.3.1/formencode/rewritingparser.py
+@@ -1,13 +1,16 @@
++from __future__ import absolute_import
+ 
+-import HTMLParser
++import six.moves.html_parser
+ import re
++import six
++from six.moves import range
+ 
+ try:
+     from html import escape
+ except ImportError:  # Python < 3.2
+     from cgi import escape
+ 
+-from htmlentitydefs import name2codepoint
++from six.moves.html_entities import name2codepoint
+ 
+ 
+ def html_quote(v):
+@@ -15,23 +18,23 @@ def html_quote(v):
+         return ''
+     if hasattr(v, '__html__'):
+         return v.__html__()
+-    if isinstance(v, basestring):
++    if isinstance(v, six.string_types):
+         return escape(v, True)
+     if hasattr(v, '__unicode__'):
+-        v = unicode(v)
++        v = six.text_type(v)
+     else:
+         v = str(v)
+     return escape(v, True)
+ 
+ 
+-class RewritingParser(HTMLParser.HTMLParser):
++class RewritingParser(six.moves.html_parser.HTMLParser):
+ 
+     listener = None
+     skip_next = False
+ 
+     def __init__(self):
+         self._content = []
+-        HTMLParser.HTMLParser.__init__(self)
++        six.moves.html_parser.HTMLParser.__init__(self)
+ 
+     def feed(self, data):
+         self.data_is_str = isinstance(data, str)
+@@ -40,7 +43,7 @@ class RewritingParser(HTMLParser.HTMLPar
+         self.source_pos = 1, 0
+         if self.listener:
+             self.listener.reset()
+-        HTMLParser.HTMLParser.feed(self, data)
++        six.moves.html_parser.HTMLParser.feed(self, data)
+ 
+     _entityref_re = re.compile('&([a-zA-Z][-.a-zA-Z\d]*);')
+     _charref_re = re.compile('&#(\d+|[xX][a-fA-F\d]+);')
+Index: FormEncode-1.3.1/formencode/schema.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/schema.py
++++ FormEncode-1.3.1/formencode/schema.py
+@@ -1,8 +1,12 @@
++from __future__ import absolute_import
+ import warnings
+ 
+ from .api import _, is_validator, FancyValidator, Invalid, NoDefault
+ from . import declarative
+ from .exc import FERuntimeWarning
++import six
++from six.moves import map
++from six.moves import zip
+ 
+ __all__ = ['Schema']
+ 
+@@ -81,7 +85,7 @@ class Schema(FancyValidator):
+         # Scan through the class variables we've defined *just*
+         # for this subclass, looking for validators (both classes
+         # and instances):
+-        for key, value in new_attrs.iteritems():
++        for key, value in six.iteritems(new_attrs):
+             if key in ('pre_validators', 'chained_validators'):
+                 if is_validator(value):
+                     msg = "Any validator with the name %s will be ignored." % \
+@@ -96,12 +100,12 @@ class Schema(FancyValidator):
+             elif key in cls.fields:
+                 del cls.fields[key]
+ 
+-        for name, value in cls.fields.iteritems():
++        for name, value in six.iteritems(cls.fields):
+             cls.add_field(name, value)
+ 
+     def __initargs__(self, new_attrs):
+         self.fields = self.fields.copy()
+-        for key, value in new_attrs.iteritems():
++        for key, value in six.iteritems(new_attrs):
+             if key in ('pre_validators', 'chained_validators'):
+                 if is_validator(value):
+                     msg = "Any validator with the name %s will be ignored." % \
+@@ -139,13 +143,13 @@ class Schema(FancyValidator):
+ 
+         new = {}
+         errors = {}
+-        unused = self.fields.keys()
++        unused = list(self.fields.keys())
+         if state is not None:
+             previous_key = getattr(state, 'key', None)
+             previous_full_dict = getattr(state, 'full_dict', None)
+             state.full_dict = value_dict
+         try:
+-            for name, value in value_dict.items():
++            for name, value in list(value_dict.items()):
+                 try:
+                     unused.remove(name)
+                 except ValueError:
+@@ -239,14 +243,14 @@ class Schema(FancyValidator):
+         self.assert_dict(value_dict, state)
+         new = {}
+         errors = {}
+-        unused = self.fields.keys()
++        unused = list(self.fields.keys())
+         if state is not None:
+             previous_key = getattr(state, 'key', None)
+             previous_full_dict = getattr(state, 'full_dict', None)
+             state.full_dict = value_dict
+         try:
+             __traceback_info__ = None
+-            for name, value in value_dict.iteritems():
++            for name, value in six.iteritems(value_dict):
+                 __traceback_info__ = 'for_python in %s' % name
+                 try:
+                     unused.remove(name)
+@@ -327,7 +331,7 @@ class Schema(FancyValidator):
+         result = []
+         result.extend(self.pre_validators)
+         result.extend(self.chained_validators)
+-        result.extend(self.fields.itervalues())
++        result.extend(six.itervalues(self.fields))
+         return result
+ 
+     def is_empty(self, value):
+@@ -338,7 +342,7 @@ class Schema(FancyValidator):
+         return {}
+ 
+     def _value_is_iterator(self, value):
+-        if isinstance(value, basestring):
++        if isinstance(value, six.string_types):
+             return False
+         elif isinstance(value, (list, tuple)):
+             return True
+@@ -361,16 +365,16 @@ def format_compound_error(v, indent=0):
+             # version if possible, and unicode() if necessary, because
+             # testing for the presence of a __unicode__ method isn't
+             # enough
+-            return unicode(v)
++            return six.text_type(v)
+     elif isinstance(v, dict):
+         return ('%s\n' % (' ' * indent)).join(
+             '%s: %s' % (k, format_compound_error(value, indent=len(k) + 2))
+-            for k, value in sorted(v.iteritems()) if value is not None)
++            for k, value in sorted(six.iteritems(v)) if value is not None)
+     elif isinstance(v, list):
+         return ('%s\n' % (' ' * indent)).join(
+             '%s' % (format_compound_error(value, indent=indent))
+             for value in v if value is not None)
+-    elif isinstance(v, basestring):
++    elif isinstance(v, six.string_types):
+         return v
+     else:
+         assert False, "I didn't expect something like %s" % repr(v)
+@@ -383,7 +387,7 @@ def merge_dicts(d1, d2):
+ 
+ 
+ def merge_values(v1, v2):
+-    if isinstance(v1, basestring) and isinstance(v2, basestring):
++    if isinstance(v1, six.string_types) and isinstance(v2, six.string_types):
+         return v1 + '\n' + v2
+     elif isinstance(v1, (list, tuple)) and isinstance(v2, (list, tuple)):
+         return merge_lists(v1, v2)
+@@ -474,7 +478,7 @@ class SimpleFormValidator(FancyValidator
+         errors = self.func(value_dict, state, self)
+         if not errors:
+             return value_dict
+-        if isinstance(errors, basestring):
++        if isinstance(errors, six.string_types):
+             raise Invalid(errors, value_dict, state)
+         elif isinstance(errors, dict):
+             raise Invalid(
+Index: FormEncode-1.3.1/formencode/tests/__init__.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/tests/__init__.py
++++ FormEncode-1.3.1/formencode/tests/__init__.py
+@@ -1,3 +1,4 @@
++from __future__ import absolute_import
+ import sys
+ import os
+ 
+Index: FormEncode-1.3.1/formencode/tests/test_cc.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/tests/test_cc.py
++++ FormEncode-1.3.1/formencode/tests/test_cc.py
+@@ -1,3 +1,4 @@
++from __future__ import absolute_import
+ # -*- coding: utf-8 -*-
+ 
+ import unittest
+Index: FormEncode-1.3.1/formencode/tests/test_compound.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/tests/test_compound.py
++++ FormEncode-1.3.1/formencode/tests/test_compound.py
+@@ -1,3 +1,4 @@
++from __future__ import absolute_import
+ # -*- coding: utf-8 -*-
+ 
+ import unittest
+Index: FormEncode-1.3.1/formencode/tests/test_context.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/tests/test_context.py
++++ FormEncode-1.3.1/formencode/tests/test_context.py
+@@ -1,3 +1,4 @@
++from __future__ import absolute_import
+ from nose.tools import assert_raises
+ 
+ from formencode.context import Context, ContextRestoreError
+Index: FormEncode-1.3.1/formencode/tests/test_declarative.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/tests/test_declarative.py
++++ FormEncode-1.3.1/formencode/tests/test_declarative.py
+@@ -1,3 +1,4 @@
++from __future__ import absolute_import
+ # -*- coding: utf-8 -*-
+ 
+ import unittest
+Index: FormEncode-1.3.1/formencode/tests/test_doctest_xml_compare.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/tests/test_doctest_xml_compare.py
++++ FormEncode-1.3.1/formencode/tests/test_doctest_xml_compare.py
+@@ -1,3 +1,4 @@
++from __future__ import absolute_import
+ import sys
+ 
+ import formencode.doctest_xml_compare as dxml
+Index: FormEncode-1.3.1/formencode/tests/test_doctests.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/tests/test_doctests.py
++++ FormEncode-1.3.1/formencode/tests/test_doctests.py
+@@ -1,3 +1,4 @@
++from __future__ import absolute_import
+ import os
+ import sys
+ import doctest
+@@ -8,6 +9,7 @@ from formencode import htmlgen
+ from formencode import national
+ from formencode import schema
+ from formencode import validators
++import six
+ 
+ 
+ """Modules that will have their doctests tested."""
+@@ -27,7 +29,7 @@ base = os.path.dirname(os.path.dirname(o
+     os.path.abspath(__file__))))
+ 
+ 
+-if unicode is str:  # Python 3
++if six.text_type is str:  # Python 3
+ 
+     OutputChecker = doctest.OutputChecker
+ 
+Index: FormEncode-1.3.1/formencode/tests/test_email.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/tests/test_email.py
++++ FormEncode-1.3.1/formencode/tests/test_email.py
+@@ -1,9 +1,12 @@
+ # -*- coding: utf-8 -*-
++from __future__ import absolute_import
++from __future__ import unicode_literals
+ 
+ import unittest
+ 
+ from formencode import Invalid
+ from formencode.validators import Email
++import six
+ 
+ 
+ class TestEmail(unittest.TestCase):
+@@ -15,7 +18,7 @@ class TestEmail(unittest.TestCase):
+         try:
+             return self.validator.to_python(*args)
+         except Invalid as e:
+-            return unicode(e)
++            return six.text_type(e)
+ 
+     def message(self, message_name, username, domain):
+         email = '@'.join((username, domain))
+Index: FormEncode-1.3.1/formencode/tests/test_htmlfill.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/tests/test_htmlfill.py
++++ FormEncode-1.3.1/formencode/tests/test_htmlfill.py
+@@ -1,16 +1,20 @@
+ # -*- coding: utf-8 -*-
++from __future__ import absolute_import
++from __future__ import print_function
++from __future__ import unicode_literals
+ 
+ import os
+ import re
+ import sys
+ 
+ import xml.etree.ElementTree as ET
++import six
+ try:
+     XMLParseError = ET.ParseError
+ except AttributeError:  # Python < 2.7
+     from xml.parsers.expat import ExpatError as XMLParseError
+ 
+-from htmlentitydefs import name2codepoint
++from six.moves.html_entities import name2codepoint
+ 
+ base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
+     os.path.abspath(__file__)))))
+@@ -44,7 +48,7 @@ def run_filename(filename):
+         data_content = ''
+     namespace = {}
+     if data_content:
+-        exec data_content in namespace
++        exec(data_content, namespace)
+     data = namespace.copy()
+     data['defaults'] = data.get('defaults', {})
+     if 'check' in data:
+@@ -52,7 +56,7 @@ def run_filename(filename):
+     else:
+         def checker(p, s):
+             pass
+-    for name in data.keys():
++    for name in list(data.keys()):
+         if name.startswith('_') or hasattr('__builtin__', name):
+             del data[name]
+     listener = htmlfill_schemabuilder.SchemaBuilder()
+@@ -62,7 +66,7 @@ def run_filename(filename):
+     output = p.text()
+ 
+     def reporter(v):
+-        print v
++        print(v)
+ 
+     try:
+         output_xml = ET.XML(output)
+@@ -72,10 +76,10 @@ def run_filename(filename):
+     else:
+         comp = xml_compare(output_xml, expected_xml, reporter)
+     if not comp:
+-        print '---- Output:   ----'
+-        print output
+-        print '---- Expected: ----'
+-        print expected
++        print('---- Output:   ----')
++        print(output)
++        print('---- Expected: ----')
++        print(expected)
+         assert False
+     checker(p, listener.schema())
+     checker(p, htmlfill_schemabuilder.parse_schema(template))
+@@ -87,14 +91,14 @@ def test_no_trailing_newline():
+ 
+ 
+ def test_escape_defaults():
+-    rarr = unichr(name2codepoint['rarr'])
++    rarr = six.unichr(name2codepoint['rarr'])
+     assert (htmlfill.render('<input type="submit" value="next&gt;&rarr;">', {}, {})
+             == '<input type="submit" value="next&gt;%s">' % rarr)
+     assert (htmlfill.render('<input type="submit" value="1&amp;2">', {}, {})
+             == '<input type="submit" value="1&amp;2">')
+     assert (htmlfill.render('<input type="submit" value="Japan - &#x65E5;&#x672C; Nihon" />',
+                             {}, {}) ==
+-            u'<input type="submit" value="Japan - 日本 Nihon" />')
++            '<input type="submit" value="Japan - 日本 Nihon" />')
+ 
+ 
+ def test_xhtml():
+@@ -180,7 +184,7 @@ def test_checkbox():
+ 
+ 
+ def test_unicode():
+-    assert (htmlfill.render(u'<input type="checkbox" name="tags" value="2" />',
++    assert (htmlfill.render('<input type="checkbox" name="tags" value="2" />',
+                            dict(tags=[])) ==
+             '<input type="checkbox" name="tags" value="2" />')
+ 
+@@ -455,10 +459,10 @@ def test_error_class_textarea():
+ 
+ def test_mix_str_and_unicode():
+     html = '<input type="text" name="cheese">'
+-    uhtml = unicode(html)
++    uhtml = six.text_type(html)
+     cheese = dict(cheese='Käse')
+-    ucheese = dict(cheese=u'Käse')
+-    expected = u'<input type="text" name="cheese" value="Käse">'
++    ucheese = dict(cheese='Käse')
++    expected = '<input type="text" name="cheese" value="Käse">'
+     rendered = htmlfill.render(html, defaults=cheese, encoding='utf-8')
+     assert expected == rendered
+     rendered = htmlfill.render(html, defaults=ucheese, encoding='utf-8')
+Index: FormEncode-1.3.1/formencode/tests/test_htmlgen.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/tests/test_htmlgen.py
++++ FormEncode-1.3.1/formencode/tests/test_htmlgen.py
+@@ -1,11 +1,14 @@
++from __future__ import absolute_import
++from __future__ import print_function
+ 
+ import doctest
+ 
+ from formencode.htmlgen import html
++import six
+ 
+ # A test value that can't be encoded as ascii:
+-uni_value = u'\xff'
+-str_value = uni_value if str is unicode else uni_value.encode('utf-8')
++uni_value = six.u('\xff')
++str_value = uni_value if str is six.text_type else uni_value.encode('utf-8')
+ 
+ 
+ def test_basic():
+@@ -37,7 +40,7 @@ def test_unicode():
+         assert False, (
+             "We need something that can't be ASCII-encoded: %r (%r)"
+             % (uni_value, uni_value.encode('ascii')))
+-    assert unicode(html.b(uni_value)) == u'<b>%s</b>' % uni_value
++    assert six.text_type(html.b(uni_value)) == six.u('<b>%s</b>') % uni_value
+ 
+ 
+ def test_quote():
+@@ -76,10 +79,10 @@ def test_namespace():
+ 
+ if __name__ == '__main__':
+     # It's like a super-mini py.test...
+-    for name, value in globals().iteritems():
++    for name, value in six.iteritems(globals()):
+         if name.startswith('test'):
+-            print name
++            print(name)
+             value()
+     from formencode import htmlgen
+     doctest.testmod(htmlgen)
+-    print 'doctest'
++    print('doctest')
+Index: FormEncode-1.3.1/formencode/tests/test_htmlrename.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/tests/test_htmlrename.py
++++ FormEncode-1.3.1/formencode/tests/test_htmlrename.py
+@@ -1,3 +1,4 @@
++from __future__ import absolute_import
+ from formencode.htmlrename import rename, add_prefix
+ 
+ 
+Index: FormEncode-1.3.1/formencode/tests/test_i18n.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/tests/test_i18n.py
++++ FormEncode-1.3.1/formencode/tests/test_i18n.py
+@@ -1,6 +1,9 @@
+ # -*- coding: utf-8 -*-
++from __future__ import absolute_import
++from __future__ import unicode_literals
+ 
+ import formencode
++import six
+ 
+ ne = formencode.validators.NotEmpty()
+ 
+@@ -8,15 +11,15 @@ ne = formencode.validators.NotEmpty()
+ def _test_builtins(func):
+     def dummy(s):
+         return "builtins dummy"
+-    import __builtin__
+-    __builtin__._ = dummy
++    import six.moves.builtins
++    six.moves.builtins._ = dummy
+ 
+     try:
+         ne.to_python("")
+     except formencode.api.Invalid as e:
+         func(e)
+ 
+-    del __builtin__._
++    del six.moves.builtins._
+ 
+ 
+ def test_builtins():
+@@ -52,90 +55,90 @@ def _test_lang(language, notemptytext):
+     try:
+         ne.to_python("")
+     except formencode.api.Invalid as e:
+-        assert unicode(e) == notemptytext
++        assert six.text_type(e) == notemptytext
+ 
+     formencode.api.set_stdtranslation()  # set back to defaults
+ 
+ 
+ def test_de():
+-    _test_lang("de", u"Bitte einen Wert eingeben")
++    _test_lang("de", "Bitte einen Wert eingeben")
+ 
+ 
+ def test_es():
+-    _test_lang("es", u"Por favor introduzca un valor")
++    _test_lang("es", "Por favor introduzca un valor")
+ 
+ 
+ def test_pt_BR():
+-    _test_lang("pt_BR", u"Por favor digite um valor")
++    _test_lang("pt_BR", "Por favor digite um valor")
+ 
+ 
+ def test_zh_TW():
+-    _test_lang("zh_TW", u"請輸入值")
++    _test_lang("zh_TW", "請輸入值")
+ 
+ 
+ def test_sk():
+-    _test_lang("sk", u"Zadajte hodnotu, prosím")
++    _test_lang("sk", "Zadajte hodnotu, prosím")
+ 
+ 
+ def test_ru():
+-    _test_lang("ru", u"Необходимо ввести значение")
++    _test_lang("ru", "Необходимо ввести значение")
+ 
+ 
+ def test_sl():
+-    _test_lang("sl", u"Prosim, izpolnite polje")
++    _test_lang("sl", "Prosim, izpolnite polje")
+ 
+ 
+ def test_pt_PT():
+-    _test_lang("pt_PT", u"Por favor insira um valor")
++    _test_lang("pt_PT", "Por favor insira um valor")
+ 
+ 
+ def test_fr():
+-    _test_lang("fr", u"Saisissez une valeur")
++    _test_lang("fr", "Saisissez une valeur")
+ 
+ 
+ def test_nl():
+-    _test_lang("nl", u"Voer een waarde in")
++    _test_lang("nl", "Voer een waarde in")
+ 
+ 
+ def test_pl():
+-    _test_lang("pl", u"Proszę podać wartość")
++    _test_lang("pl", "Proszę podać wartość")
+ 
+ 
+ def test_el():
+-    _test_lang("el", u"Παρακαλούμε εισάγετε μια τιμή")
++    _test_lang("el", "Παρακαλούμε εισάγετε μια τιμή")
+ 
+ 
+ def test_zh_CN():
+-    _test_lang("zh_CN", u"请输入一个值")
++    _test_lang("zh_CN", "请输入一个值")
+ 
+ 
+ def test_cs():
+-    _test_lang("cs", u"Prosím zadejte hodnotu")
++    _test_lang("cs", "Prosím zadejte hodnotu")
+ 
+ 
+ def test_fi():
+-    _test_lang("fi", u"Anna arvo")
++    _test_lang("fi", "Anna arvo")
+ 
+ 
+ def test_nb_NO():
+-    _test_lang("nb_NO", u"Venligst fyll inn en verdi")
++    _test_lang("nb_NO", "Venligst fyll inn en verdi")
+ 
+ 
+ def test_it():
+-    _test_lang("it", u"Inserire un dato")
++    _test_lang("it", "Inserire un dato")
+ 
+ 
+ def test_et():
+-    _test_lang("et", u"Palun sisestada väärtus")
++    _test_lang("et", "Palun sisestada väärtus")
+ 
+ 
+ def test_lt():
+-    _test_lang("lt", u"Prašome įvesti reikšmę")
++    _test_lang("lt", "Prašome įvesti reikšmę")
+ 
+ 
+ def test_ja():
+-    _test_lang("ja", u"入力してください")
++    _test_lang("ja", "入力してください")
+ 
+ 
+ def test_tr():
+-    _test_lang("tr", u"Lütfen bir değer giriniz")
++    _test_lang("tr", "Lütfen bir değer giriniz")
+Index: FormEncode-1.3.1/formencode/tests/test_schema.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/tests/test_schema.py
++++ FormEncode-1.3.1/formencode/tests/test_schema.py
+@@ -1,6 +1,8 @@
++from __future__ import absolute_import
++from __future__ import print_function
+ import unittest
+ 
+-from urlparse import parse_qsl
++from six.moves.urllib.parse import parse_qsl
+ 
+ from formencode import Invalid, Validator, compound, foreach, validators
+ from formencode.schema import Schema, merge_dicts, SimpleFormValidator
+@@ -14,14 +16,14 @@ def _notranslation(s):
+ def setup_module(module):
+     """Disable i18n translation"""
+ 
+-    import __builtin__
+-    __builtin__._ = _notranslation
++    import six.moves.builtins
++    six.moves.builtins._ = _notranslation
+ 
+ 
+ def teardown_module(module):
+     """Remove translation function"""
+-    import __builtin__
+-    del __builtin__._
++    import six.moves.builtins
++    del six.moves.builtins._
+ 
+ 
+ def d(**kw):
+@@ -56,9 +58,9 @@ class DecodeCase(object):
+         all_cases.append(self)
+ 
+     def test(self):
+-        print 'input', repr(self.input)
++        print('input', repr(self.input))
+         actual = self.schema.to_python(self.input)
+-        print 'output', repr(actual)
++        print('output', repr(actual))
+         assert actual == self.output
+ 
+ 
+@@ -72,9 +74,9 @@ class BadCase(DecodeCase):
+             self.output = self.output['text']
+ 
+     def test(self):
+-        print repr(self.raw_input)
++        print(repr(self.raw_input))
+         try:
+-            print repr(self.schema.to_python(self.input))
++            print(repr(self.schema.to_python(self.input)))
+         except Invalid as e:
+             actual = e.unpack_errors()
+             assert actual == self.output
+Index: FormEncode-1.3.1/formencode/tests/test_subclassing.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/tests/test_subclassing.py
++++ FormEncode-1.3.1/formencode/tests/test_subclassing.py
+@@ -1,3 +1,4 @@
++from __future__ import absolute_import
+ # -*- coding: utf-8 -*-
+ 
+ import unittest
+Index: FormEncode-1.3.1/formencode/tests/test_subclassing_old.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/tests/test_subclassing_old.py
++++ FormEncode-1.3.1/formencode/tests/test_subclassing_old.py
+@@ -1,3 +1,4 @@
++from __future__ import absolute_import
+ # -*- coding: utf-8 -*-
+ 
+ import unittest
+@@ -6,6 +7,7 @@ import warnings
+ from formencode.api import is_validator, FancyValidator, Invalid
+ from formencode.compound import CompoundValidator, All
+ from formencode.validators import Int
++from six.moves import map
+ 
+ 
+ with warnings.catch_warnings(record=True) as custom_warnings:
+Index: FormEncode-1.3.1/formencode/tests/test_validators.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/tests/test_validators.py
++++ FormEncode-1.3.1/formencode/tests/test_validators.py
+@@ -1,4 +1,6 @@
+ # -*- coding: utf-8 -*-
++from __future__ import absolute_import
++from __future__ import unicode_literals
+ 
+ import datetime
+ import unittest
+@@ -10,6 +12,10 @@ from formencode.variabledecode import Ne
+ from formencode.schema import Schema
+ from formencode.foreach import ForEach
+ from formencode.api import NoDefault
++import six
++
++if six.PY3:
++    unicode = str
+ 
+ 
+ def validate(validator, value):
+@@ -49,7 +55,7 @@ class TestByteStringValidator(unittest.T
+         self.messages = self.validator.message
+ 
+     def test_alias(self):
+-        if str is not unicode:  # Python 2
++        if str is not six.text_type:  # Python 2
+             self.assertTrue(self.validator is validators.String)
+ 
+     def test_docstring(self):
+@@ -87,7 +93,7 @@ class TestUnicodeStringValidator(unittes
+         self.validator = validators.UnicodeString
+ 
+     def test_alias(self):
+-        if str is unicode:  # Python 3
++        if str is six.text_type:  # Python 3
+             self.assertTrue(self.validator is validators.String)
+ 
+     def test_docstring(self):
+@@ -96,47 +102,47 @@ class TestUnicodeStringValidator(unittes
+ 
+     def test_unicode(self):
+         un = self.validator()
+-        self.assertEqual(un.to_python(12), u'12')
+-        self.assertTrue(type(un.to_python(12)) is unicode)
+-        self.assertEqual(un.from_python(12), u'12'.encode('ascii'))
++        self.assertEqual(un.to_python(12), '12')
++        self.assertTrue(type(un.to_python(12)) is six.text_type)
++        self.assertEqual(un.from_python(12), '12'.encode('ascii'))
+         self.assertTrue(type(un.from_python(12)) is bytes)
+ 
+     def test_unicode_encoding(self):
+         uv = self.validator()
+-        us = u'käse'
++        us = 'käse'
+         u7s, u8s = us.encode('utf-7'), us.encode('utf-8')
+         self.assertEqual(uv.to_python(u8s), us)
+-        self.assertTrue(type(uv.to_python(u8s)) is unicode)
++        self.assertTrue(type(uv.to_python(u8s)) is six.text_type)
+         self.assertEqual(uv.from_python(us), u8s)
+         self.assertTrue(type(uv.from_python(us)) is bytes)
+         uv = self.validator(encoding='utf-7')
+         self.assertEqual(uv.to_python(u7s), us)
+-        self.assertTrue(type(uv.to_python(u7s)) is unicode)
++        self.assertTrue(type(uv.to_python(u7s)) is six.text_type)
+         self.assertEqual(uv.from_python(us), u7s)
+         self.assertTrue(type(uv.from_python(us)) is bytes)
+         uv = self.validator(inputEncoding='utf-7')
+         self.assertEqual(uv.to_python(u7s), us)
+-        self.assertTrue(type(uv.to_python(u7s)) is unicode)
++        self.assertTrue(type(uv.to_python(u7s)) is six.text_type)
+         uv = self.validator(outputEncoding='utf-7')
+         self.assertEqual(uv.from_python(us), u7s)
+         self.assertTrue(type(uv.from_python(us)) is bytes)
+         uv = self.validator(inputEncoding=None)
+         self.assertEqual(uv.to_python(us), us)
+-        self.assertTrue(type(uv.to_python(us)) is unicode)
++        self.assertTrue(type(uv.to_python(us)) is six.text_type)
+         self.assertEqual(uv.from_python(us), u8s)
+         self.assertTrue(type(uv.from_python(us)) is bytes)
+         uv = self.validator(outputEncoding=None)
+         self.assertEqual(uv.to_python(u8s), us)
+-        self.assertTrue(type(uv.to_python(u8s)) is unicode)
++        self.assertTrue(type(uv.to_python(u8s)) is six.text_type)
+         self.assertEqual(uv.from_python(us), us)
+-        self.assertTrue(type(uv.from_python(us)) is unicode)
++        self.assertTrue(type(uv.from_python(us)) is six.text_type)
+ 
+         def test_unicode_empty(self):
+             iv = self.validator()
+-            for value in [None, "", u""]:
++            for value in [None, b"", ""]:
+                 result = iv.to_python(value)
+-                self.assertEqual(result, u"")
+-                self.assertTrue(isinstance(result, unicode))
++                self.assertEqual(result, "")
++                self.assertTrue(isinstance(result, six.text_type))
+ 
+ 
+ class TestIntValidator(unittest.TestCase):
+@@ -207,14 +213,14 @@ class TestDateConverterValidator(unittes
+             dc.to_python('20/12/150')
+         except Invalid as e:
+             self.assertTrue(
+-                'Please enter a four-digit year after 1899' in str(e))
++                'Please enter a four-digit year after 1899' in unicode(e))
+         else:
+             self.fail('Date should be invalid')
+         try:
+             dc.to_python('oh/happy/day')
+         except Invalid as e:
+             self.assertTrue(
+-                'Please enter the date in the form DD/MM/YYYY' in str(e))
++                'Please enter the date in the form DD/MM/YYYY' in unicode(e))
+         else:
+             self.fail('Date should be invalid')
+ 
+@@ -234,14 +240,14 @@ class TestDateConverterValidator(unittes
+             dc = self.validator(month_style='Klingon')
+         except TypeError as e:
+             self.assertTrue(
+-                str(e) == "Bad month_style: 'klingon'")
++                unicode(e).replace("u'", "'") == "Bad month_style: 'klingon'")
+         else:
+             self.fail('month_style should be invalid')
+         try:
+             dc = self.validator(month_style='ydm')
+         except TypeError as e:
+             self.assertTrue(
+-                str(e) == "Bad month_style: 'ydm'")
++                unicode(e).replace("u'", "'") == "Bad month_style: 'ydm'")
+         else:
+             self.fail('month_style should be invalid')
+ 
+@@ -255,14 +261,14 @@ class TestDateConverterValidator(unittes
+         try:
+             self.assertEqual(dc.to_python('20/12/2007'), d)
+         except Invalid as e:
+-            self.assertTrue('Please enter a month from 1 to 12' in str(e))
++            self.assertTrue('Please enter a month from 1 to 12' in unicode(e))
+         else:
+             self.fail('Date should be invalid')
+         try:
+             self.assertEqual(dc.to_python('12/Dec/2007'), d)
+         except Invalid as e:
+             self.assertTrue(
+-                'Please enter the date in the form MM/DD/YYYY' in str(e))
++                'Please enter the date in the form MM/DD/YYYY' in unicode(e))
+         else:
+             self.fail('Date should be invalid')
+ 
+@@ -276,14 +282,14 @@ class TestDateConverterValidator(unittes
+         try:
+             self.assertEqual(dc.to_python('12/20/2007'), d)
+         except Invalid as e:
+-            self.assertTrue('Please enter a month from 1 to 12' in str(e))
++            self.assertTrue('Please enter a month from 1 to 12' in unicode(e))
+         else:
+             self.fail('Date should be invalid')
+         try:
+             self.assertEqual(dc.to_python('Dec/12/2007'), d)
+         except Invalid as e:
+             self.assertTrue(
+-                'Please enter the date in the form DD/MM/YYYY' in str(e))
++                'Please enter the date in the form DD/MM/YYYY' in unicode(e))
+         else:
+             self.fail('Date should be invalid')
+ 
+@@ -297,14 +303,14 @@ class TestDateConverterValidator(unittes
+         try:
+             self.assertEqual(dc.to_python('2013/30/06'), d)
+         except Invalid as e:
+-            self.assertTrue('Please enter a month from 1 to 12' in str(e))
++            self.assertTrue('Please enter a month from 1 to 12' in unicode(e))
+         else:
+             self.fail('Date should be invalid')
+         try:
+             self.assertEqual(dc.to_python('2013/06/Jun'), d)
+         except Invalid as e:
+             self.assertTrue(
+-                'Please enter the date in the form YYYY/MM/DD' in str(e))
++                'Please enter the date in the form YYYY/MM/DD' in unicode(e))
+         else:
+             self.fail('Date should be invalid')
+ 
+@@ -318,21 +324,21 @@ class TestDateConverterValidator(unittes
+         try:
+             self.assertEqual(dc.to_python('20/2007'), d)
+         except Invalid as e:
+-            self.assertTrue('Please enter a month from 1 to 12' in str(e))
++            self.assertTrue('Please enter a month from 1 to 12' in unicode(e))
+         else:
+             self.fail('Date should be invalid')
+         try:
+             self.assertEqual(dc.to_python('12/20/2007'), d)
+         except Invalid as e:
+             self.assertTrue(
+-                'Please enter the date in the form MM/YYYY' in str(e))
++                'Please enter the date in the form MM/YYYY' in unicode(e))
+         else:
+             self.fail('Date should be invalid')
+         try:
+             self.assertEqual(dc.to_python('2007/Dec'), d)
+         except Invalid as e:
+             self.assertTrue(
+-                'Please enter the date in the form MM/YYYY' in str(e))
++                'Please enter the date in the form MM/YYYY' in unicode(e))
+         else:
+             self.fail('Date should be invalid')
+ 
+@@ -383,29 +389,29 @@ class TestTimeConverterValidator(unittes
+             tc.to_python('25:30:15')
+         except Invalid as e:
+             self.assertTrue(
+-                'You must enter an hour in the range 0-23' in str(e))
++                'You must enter an hour in the range 0-23' in unicode(e))
+         else:
+             self.fail('Time should be invalid')
+         try:
+             tc.to_python('20:75:15')
+         except Invalid as e:
+             self.assertTrue(
+-                'You must enter a minute in the range 0-59' in str(e))
++                'You must enter a minute in the range 0-59' in unicode(e))
+         else:
+             self.fail('Time should be invalid')
+         try:
+             tc.to_python('20:30:75')
+         except Invalid as e:
+             self.assertTrue(
+-                'You must enter a second in the range 0-59' in str(e))
++                'You must enter a second in the range 0-59' in unicode(e))
+         else:
+             self.fail('Time should be invalid')
+         try:
+             tc.to_python('20:30:zx')
+         except Invalid as e:
+             self.assertTrue(
+-                'The second value you gave is not a number' in str(e))
+-            self.assertTrue('zx' in str(e))
++                'The second value you gave is not a number' in unicode(e))
++            self.assertTrue('zx' in unicode(e))
+         else:
+             self.fail('Time should be invalid')
+ 
+@@ -437,7 +443,7 @@ class TestForEachValidator(unittest.Test
+             values = validator.to_python(start_values, state)
+         except Invalid as e:
+             self.assertEqual(e.unpack_errors(),
+-                {'people': u'Please add a person'})
++                {'people': 'Please add a person'})
+         else:
+             raise Exception("Shouldn't be valid data", values, start_values)
+ 
+@@ -534,8 +540,8 @@ class TestINameValidator(unittest.TestCa
+ 
+     def test_non_english_inames(self):
+         """i-names with non-English characters are valid"""
+-        self.validator.to_python(u'=Gustavo.Narea.García')
+-        self.validator.to_python(u'@名前.例')
++        self.validator.to_python('=Gustavo.Narea.García')
++        self.validator.to_python('@名前.例')
+ 
+     def test_inames_plus_paths(self):
+         """i-names with paths are valid but not supported"""
+@@ -544,9 +550,9 @@ class TestINameValidator(unittest.TestCa
+ 
+     def test_communities(self):
+         """i-names may have so-called 'communities'"""
+-        self.validator.to_python(u'=María*Yolanda*Liliana*Gustavo')
+-        self.validator.to_python(u'=Gustavo*Andreina')
+-        self.validator.to_python(u'@IBM*Lenovo')
++        self.validator.to_python('=María*Yolanda*Liliana*Gustavo')
++        self.validator.to_python('=Gustavo*Andreina')
++        self.validator.to_python('@IBM*Lenovo')
+ 
+ 
+ class TestINumberValidator(unittest.TestCase):
+@@ -619,8 +625,8 @@ class TestOneOfValidator(unittest.TestCa
+             'Value must be one of: ``%(items)s`` (not ``%(value)r``)' in doc)
+ 
+     def test_unicode_list(self):
+-        o = validators.OneOf([u'ö', u'a'])
+-        self.assertRaises(Invalid, o.to_python, u"ä")
++        o = validators.OneOf(['ö', 'a'])
++        self.assertRaises(Invalid, o.to_python, "ä")
+ 
+     def test_ascii_list(self):
+         o = validators.OneOf(['a', 'b'])
+@@ -659,13 +665,13 @@ class TestIPAddressValidator(unittest.Te
+         try:
+             validate('1.2.3.037')
+         except Invalid as e:
+-            self.assertTrue('The octets must not have leading zeros' in str(e))
++            self.assertTrue('The octets must not have leading zeros' in unicode(e))
+         else:
+             self.fail('IP address octets with leading zeros should be invalid')
+         try:
+             validate('1.2.3.0377')
+         except Invalid as e:
+-            self.assertTrue('The octets must not have leading zeros' in str(e))
++            self.assertTrue('The octets must not have leading zeros' in unicode(e))
+         else:
+             self.fail('IP octets with leading zeros should be invalid')
+ 
+@@ -679,7 +685,7 @@ class TestIPAddressValidator(unittest.Te
+             validate('1.2.3.0377')
+         except Invalid as e:
+             self.assertTrue("The octets must be within the range of 0-255"
+-                " (not '377')" in str(e))
++                " (not '377')" in unicode(e).replace("u'", "'"))
+         else:
+             self.fail(
+                 'IP address octets should not be interpreted as octal numbers')
+@@ -718,7 +724,7 @@ class TestRequireIfMissingValidator(unit
+         v = self.validator('phone_type', missing='mail')
+         self.assertEqual(
+             validate(v, dict(phone_type='')),
+-            dict(phone_type=u'Please enter a value'))
++            dict(phone_type='Please enter a value'))
+         self.assertEqual(
+             validate(v, dict(phone_type='', mail='foo@bar.org')),
+             dict(phone_type='', mail='foo@bar.org'))
+@@ -727,7 +733,7 @@ class TestRequireIfMissingValidator(unit
+         v = self.validator('phone_type', present='phone')
+         self.assertEqual(
+             validate(v, dict(phone_type='', phone='510 420  4577')),
+-            dict(phone_type=u'Please enter a value'))
++            dict(phone_type='Please enter a value'))
+         self.assertEqual(
+             validate(v, dict(phone='')), dict(phone=''))
+ 
+@@ -735,7 +741,8 @@ class TestRequireIfMissingValidator(unit
+         v = self.validator('operator', present='operand')
+         self.assertEqual(
+             validate(v, dict(operator='', operand=0)),
+-            dict(operator=u'Please enter a value'))
++            dict(operator='Please enter a value'))
++
+ 
+ class TestRequireIfMatchingValidator(unittest.TestCase):
+ 
+@@ -753,14 +760,14 @@ class TestRequireIfMatchingValidator(uni
+         v = self.validator('phone_type', 'mobile', required_fields=['mobile'])
+         self.assertEqual(
+             validate(v, dict(phone_type='mobile')),
+-            dict(mobile=u'Please enter a value')
++            dict(mobile='Please enter a value')
+         )
+ 
+     def test_matching_multiple_required(self):
+         v = self.validator('phone_type', 'mobile', required_fields=['mobile', 'code'])
+         self.assertEqual(
+             validate(v, dict(phone_type='mobile')),
+-            dict(mobile=u'Please enter a value')
++            dict(mobile='Please enter a value')
+         )
+ 
+     def test_not_matching(self):
+Index: FormEncode-1.3.1/formencode/tests/test_variabledecode.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/tests/test_variabledecode.py
++++ FormEncode-1.3.1/formencode/tests/test_variabledecode.py
+@@ -1,3 +1,4 @@
++from __future__ import absolute_import
+ import unittest
+ 
+ from formencode.variabledecode import variable_decode, variable_encode
+Index: FormEncode-1.3.1/formencode/validators.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/validators.py
++++ FormEncode-1.3.1/formencode/validators.py
+@@ -4,12 +4,16 @@
+ """
+ Validator/Converters for use with FormEncode.
+ """
++from __future__ import absolute_import
+ 
+ import cgi
+ import locale
+ import re
+ import warnings
+ from encodings import idna
++import six
++from six.moves import map
++from six.moves import range
+ 
+ try:  # import dnspython
+     import dns.resolver
+@@ -513,13 +517,13 @@ class Regex(FancyValidator):
+ 
+     def __init__(self, *args, **kw):
+         FancyValidator.__init__(self, *args, **kw)
+-        if isinstance(self.regex, basestring):
++        if isinstance(self.regex, six.string_types):
+             ops = 0
+-            assert not isinstance(self.regexOps, basestring), (
++            assert not isinstance(self.regexOps, six.string_types), (
+                 "regexOps should be a list of options from the re module "
+                 "(names, or actual values)")
+             for op in self.regexOps:
+-                if isinstance(op, basestring):
++                if isinstance(op, six.string_types):
+                     ops |= getattr(re, op)
+                 else:
+                     ops |= op
+@@ -527,13 +531,13 @@ class Regex(FancyValidator):
+ 
+     def _validate_python(self, value, state):
+         self.assert_string(value, state)
+-        if self.strip and isinstance(value, basestring):
++        if self.strip and isinstance(value, six.string_types):
+             value = value.strip()
+         if not self.regex.search(value):
+             raise Invalid(self.message('invalid', state), value, state)
+ 
+     def _convert_to_python(self, value, state):
+-        if self.strip and isinstance(value, basestring):
++        if self.strip and isinstance(value, six.string_types):
+             return value.strip()
+         return value
+ 
+@@ -615,7 +619,7 @@ class OneOf(FancyValidator):
+                     try:
+                         items = '; '.join(map(str, self.list))
+                     except UnicodeError:
+-                        items = '; '.join(map(unicode, self.list))
++                        items = '; '.join(map(six.text_type, self.list))
+                     raise Invalid(
+                         self.message('notIn', state,
+                             items=items, value=value), value, state)
+@@ -690,13 +694,13 @@ class DictConverter(FancyValidator):
+                     state, items=items), value, state)
+ 
+     def _convert_from_python(self, value, state):
+-        for k, v in self.dict.iteritems():
++        for k, v in six.iteritems(self.dict):
+             if value == v:
+                 return k
+         if self.hideDict:
+             raise Invalid(self.message('valueNotFound', state), value, state)
+         else:
+-            items = '; '.join(map(repr, self.dict.itervalues()))
++            items = '; '.join(map(repr, six.itervalues(self.dict)))
+             raise Invalid(
+                 self.message('chooseValue', state,
+                     value=repr(value), items=items), value, state)
+@@ -812,8 +816,8 @@ class DateValidator(FancyValidator):
+ 
+     def _validate_python(self, value, state):
+         date_format = self.message('date_format', state)
+-        if (str is not unicode  # Python 2
+-                and isinstance(date_format, unicode)):
++        if (str is not six.text_type  # Python 2
++                and isinstance(date_format, six.text_type)):
+             # strftime uses the locale encoding, not Unicode
+             encoding = locale.getlocale(locale.LC_TIME)[1] or 'utf-8'
+             date_format = date_format.encode(encoding)
+@@ -1061,27 +1065,27 @@ class ByteString(FancyValidator):
+     def _convert_to_python(self, value, state):
+         if value is None:
+             value = ''
+-        elif not isinstance(value, basestring):
++        elif not isinstance(value, six.string_types):
+             try:
+                 value = bytes(value)
+             except UnicodeEncodeError:
+-                value = unicode(value)
+-        if self.encoding is not None and isinstance(value, unicode):
++                value = six.text_type(value)
++        if self.encoding is not None and isinstance(value, six.text_type):
+             value = value.encode(self.encoding)
+         return value
+ 
+     def _convert_from_python(self, value, state):
+         if value is None:
+             value = ''
+-        elif not isinstance(value, basestring):
++        elif not isinstance(value, six.string_types):
+             if isinstance(value, (list, tuple)):
+                 value = self.list_joiner.join(
+                     self._convert_from_python(v, state) for v in value)
+             try:
+                 value = str(value)
+             except UnicodeEncodeError:
+-                value = unicode(value)
+-        if self.encoding is not None and isinstance(value, unicode):
++                value = six.text_type(value)
++        if self.encoding is not None and isinstance(value, six.text_type):
+             value = value.encode(self.encoding)
+         if self.strip:
+             value = value.strip()
+@@ -1092,11 +1096,11 @@ class ByteString(FancyValidator):
+             return
+         if value is None:
+             value = ''
+-        elif not isinstance(value, basestring):
++        elif not isinstance(value, six.string_types):
+             try:
+                 value = str(value)
+             except UnicodeEncodeError:
+-                value = unicode(value)
++                value = six.text_type(value)
+         if self.max is not None and len(value) > self.max:
+             raise Invalid(
+                 self.message('tooLong', state, max=self.max), value, state)
+@@ -1148,19 +1152,19 @@ class UnicodeString(ByteString):
+ 
+     def _convert_to_python(self, value, state):
+         if not value:
+-            return u''
+-        if isinstance(value, unicode):
++            return six.u('')
++        if isinstance(value, six.text_type):
+             return value
+-        if not isinstance(value, unicode):
++        if not isinstance(value, six.text_type):
+             if hasattr(value, '__unicode__'):
+-                value = unicode(value)
++                value = six.text_type(value)
+                 return value
+-            if not (unicode is str  # Python 3
++            if not (six.text_type is str  # Python 3
+                     and isinstance(value, bytes) and self.inputEncoding):
+                 value = str(value)
+-        if self.inputEncoding and not isinstance(value, unicode):
++        if self.inputEncoding and not isinstance(value, six.text_type):
+             try:
+-                value = unicode(value, self.inputEncoding)
++                value = six.text_type(value, self.inputEncoding)
+             except UnicodeDecodeError:
+                 raise Invalid(self.message('badEncoding', state), value, state)
+             except TypeError:
+@@ -1170,22 +1174,22 @@ class UnicodeString(ByteString):
+         return value
+ 
+     def _convert_from_python(self, value, state):
+-        if not isinstance(value, unicode):
++        if not isinstance(value, six.text_type):
+             if hasattr(value, '__unicode__'):
+-                value = unicode(value)
++                value = six.text_type(value)
+             else:
+                 value = str(value)
+-        if self.outputEncoding and isinstance(value, unicode):
++        if self.outputEncoding and isinstance(value, six.text_type):
+             value = value.encode(self.outputEncoding)
+         return value
+ 
+     def empty_value(self, value):
+-        return u''
++        return six.u('')
+ 
+ 
+ # Provide proper alias for native strings
+ 
+-String = UnicodeString if str is unicode else ByteString
++String = UnicodeString if str is six.text_type else ByteString
+ 
+ 
+ class Set(FancyValidator):
+@@ -1339,7 +1343,7 @@ class Email(FancyValidator):
+                 value, state)
+         try:
+             idna_domain = [idna.ToASCII(p) for p in domain.split('.')]
+-            if unicode is str:  # Python 3
++            if six.text_type is str:  # Python 3
+                 idna_domain = [p.decode('ascii') for p in idna_domain]
+             idna_domain = '.'.join(idna_domain)
+         except UnicodeError:
+@@ -1496,7 +1500,7 @@ class URL(FancyValidator):
+     def _encode_idna(self, url):
+         global urlparse
+         if urlparse is None:
+-            import urlparse
++            from six.moves.urllib import parse as urlparse
+         try:
+             scheme, netloc, path, params, query, fragment = urlparse.urlparse(
+                 url)
+@@ -1504,7 +1508,7 @@ class URL(FancyValidator):
+             return url
+         try:
+             netloc = netloc.encode('idna')
+-            if unicode is str:  # Python 3
++            if six.text_type is str:  # Python 3
+                 netloc = netloc.decode('ascii')
+             return str(urlparse.urlunparse((scheme, netloc,
+                 path, params, query, fragment)))
+@@ -1514,17 +1518,17 @@ class URL(FancyValidator):
+     def _check_url_exists(self, url, state):
+         global httplib, urlparse, socket
+         if httplib is None:
+-            import httplib
++            import six.moves.http_client
+         if urlparse is None:
+-            import urlparse
++            from six.moves.urllib import parse as urlparse
+         if socket is None:
+             import socket
+         scheme, netloc, path, params, query, fragment = urlparse.urlparse(
+             url, 'http')
+         if scheme == 'https':
+-            ConnClass = httplib.HTTPSConnection
++            ConnClass = six.moves.http_client.HTTPSConnection
+         else:
+-            ConnClass = httplib.HTTPConnection
++            ConnClass = six.moves.httplib.HTTPConnection
+         try:
+             conn = ConnClass(netloc)
+             if params:
+@@ -1533,7 +1537,7 @@ class URL(FancyValidator):
+                 path += '?' + query
+             conn.request('HEAD', path)
+             res = conn.getresponse()
+-        except httplib.HTTPException as e:
++        except six.moves.http_client.HTTPException as e:
+             raise Invalid(
+                 self.message('httpError', state, error=e), state, url)
+         except socket.error as e:
+@@ -1658,7 +1662,7 @@ class XRI(FancyValidator):
+                 is not valid.
+ 
+         """
+-        if not isinstance(value, basestring):
++        if not isinstance(value, six.string_types):
+             raise Invalid(
+                 self.message('badType', state,
+                     type=str(type(value)), value=value), value, state)
+@@ -1838,7 +1842,7 @@ class FileUploadKeeper(FancyValidator):
+         if isinstance(upload, cgi.FieldStorage):
+             filename = upload.filename
+             content = upload.value
+-        elif isinstance(upload, basestring) and upload:
++        elif isinstance(upload, six.string_types) and upload:
+             filename = None
+             # @@: Should this encode upload if it is unicode?
+             content = upload
+@@ -2255,7 +2259,7 @@ class TimeConverter(FancyValidator):
+             return (hour, minute, second)
+ 
+     def _convert_from_python(self, value, state):
+-        if isinstance(value, basestring):
++        if isinstance(value, six.string_types):
+             return value
+         if hasattr(value, 'hour'):
+             hour, minute = value.hour, value.minute
+@@ -2353,7 +2357,7 @@ class StringBool(FancyValidator):  # ori
+         string=_('Value should be %(true)r or %(false)r'))
+ 
+     def _convert_to_python(self, value, state):
+-        if isinstance(value, basestring):
++        if isinstance(value, six.string_types):
+             value = value.strip().lower()
+             if value in self.true_values:
+                 return True
+@@ -2423,7 +2427,7 @@ class SignedString(FancyValidator):
+         if not random:
+             import random
+         return ''.join(chr(random.randrange(256))
+-            for _i in xrange(self.nonce_length))
++            for _i in range(self.nonce_length))
+ 
+ 
+ class IPAddress(FancyValidator):
+@@ -2781,7 +2785,7 @@ class FieldsMatch(FormValidator):
+                 else:
+                     errors[name] = self.message('invalidNoMatch', state)
+         if errors:
+-            error_list = sorted(errors.iteritems())
++            error_list = sorted(six.iteritems(errors))
+             error_message = '<br>\n'.join(
+                 '%s: %s' % (name, value) for name, value in error_list)
+             raise Invalid(error_message, field_dict, state, error_dict=errors)
+@@ -2840,7 +2844,7 @@ class CreditCardValidator(FormValidator)
+     def _validate_python(self, field_dict, state):
+         errors = self._validateReturn(field_dict, state)
+         if errors:
+-            error_list = sorted(errors.iteritems())
++            error_list = sorted(six.iteritems(errors))
+             raise Invalid(
+                 '<br>\n'.join('%s: %s' % (name, value)
+                     for name, value in error_list),
+@@ -2857,7 +2861,7 @@ class CreditCardValidator(FormValidator)
+         number = number.replace(' ', '')
+         number = number.replace('-', '')
+         try:
+-            long(number)
++            int(number)
+         except ValueError:
+             return {self.cc_number_field: self.message('notANumber', state)}
+         assert ccType in self._cardInfo, (
+@@ -2955,7 +2959,7 @@ class CreditCardExpires(FormValidator):
+     def _validate_python(self, field_dict, state):
+         errors = self._validateReturn(field_dict, state)
+         if errors:
+-            error_list = sorted(errors.iteritems())
++            error_list = sorted(six.iteritems(errors))
+             raise Invalid(
+                 '<br>\n'.join('%s: %s' % (name, value)
+                     for name, value in error_list),
+@@ -3029,7 +3033,7 @@ class CreditCardSecurityCode(FormValidat
+     def _validate_python(self, field_dict, state):
+         errors = self._validateReturn(field_dict, state)
+         if errors:
+-            error_list = sorted(errors.iteritems())
++            error_list = sorted(six.iteritems(errors))
+             raise Invalid(
+                 '<br>\n'.join('%s: %s' % (name, value)
+                     for name, value in error_list),
+@@ -3052,7 +3056,7 @@ class CreditCardSecurityCode(FormValidat
+ 
+ def validators():
+     """Return the names of all validators in this module."""
+-    return [name for name, value in globals().iteritems()
++    return [name for name, value in six.iteritems(globals())
+         if isinstance(value, type) and issubclass(value, Validator)]
+ 
+ __all__ = ['Invalid'] + validators()
+Index: FormEncode-1.3.1/formencode/variabledecode.py
+===================================================================
+--- FormEncode-1.3.1.orig/formencode/variabledecode.py
++++ FormEncode-1.3.1/formencode/variabledecode.py
+@@ -19,8 +19,11 @@ a dict or list, both variable_decode and
+ and list_char keyword args. For example, to have the GET/POST variables,
+ ``a_1=something`` as a list, you would use a ``list_char='_'``.
+ """
++from __future__ import absolute_import
+ 
+ from .api import FancyValidator
++import six
++from six.moves import range
+ 
+ __all__ = ['variable_decode', 'variable_encode', 'NestedVariables']
+ 
+@@ -32,7 +35,7 @@ def variable_decode(d, dict_char='.', li
+     result = {}
+     dicts_to_sort = set()
+     known_lengths = {}
+-    for key, value in d.iteritems():
++    for key, value in six.iteritems(d):
+         keys = key.split(dict_char)
+         new_keys = []
+         was_repetition_count = False
+@@ -94,10 +97,10 @@ def variable_decode(d, dict_char='.', li
+             to_sort = to_sort[sub_key]
+         if None in to_sort:
+             noneVals = [(0, x) for x in to_sort.pop(None)]
+-            noneVals.extend(to_sort.iteritems())
++            noneVals.extend(six.iteritems(to_sort))
+             to_sort = noneVals
+         else:
+-            to_sort = to_sort.iteritems()
++            to_sort = six.iteritems(to_sort)
+         to_sort = [x[1] for x in sorted(to_sort)]
+         if key in known_lengths:
+             if len(to_sort) < known_lengths[key]:
+@@ -115,7 +118,7 @@ def variable_encode(d, prepend='', resul
+     if result is None:
+         result = {}
+     if isinstance(d, dict):
+-        for key, value in d.iteritems():
++        for key, value in six.iteritems(d):
+             if key is None:
+                 name = prepend
+             elif not prepend:
+Index: FormEncode-1.3.1/setup.py
+===================================================================
+--- FormEncode-1.3.1.orig/setup.py
++++ FormEncode-1.3.1/setup.py
+@@ -5,6 +5,7 @@ and decoupled processes for filling and
+ 
+ The official repo is at GitHub: https://github.com/formencode/formencode
+ """
++from __future__ import absolute_import
+ 
+ import sys
+ from setuptools import setup, find_packages
+@@ -43,8 +44,8 @@ setup(name='FormEncode',
+       include_package_data=True,
+       package_data={'formencode': ['../docs/*.txt']},
+       test_suite='formencode.tests',
++      install_requires=['six'],
+       tests_require=tests_require,
+       extras_require={'testing': tests_require},
+-      use_2to3=True,
+       convert_2to3_doctests=doctests,
+     )

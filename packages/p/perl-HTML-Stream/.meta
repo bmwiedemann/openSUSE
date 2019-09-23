@@ -1,0 +1,5 @@
+<package name="perl-HTML-Stream" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-HTML-Stream"/>
+</package>

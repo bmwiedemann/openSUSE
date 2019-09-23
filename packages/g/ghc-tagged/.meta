@@ -1,0 +1,8 @@
+<package name="ghc-tagged" project="openSUSE:Factory">
+  <title>Provides newtype wrappers for phantom types to avoid unsafely passing dummy arguments</title>
+  <description>
+Provides newtype wrappers for phantom types to avoid unsafely passing dummy arguments
+  </description>
+  <devel project="devel:languages:haskell" package="ghc-tagged"/>
+  <url>http://hackage.haskell.org/package/tagged</url>
+</package>

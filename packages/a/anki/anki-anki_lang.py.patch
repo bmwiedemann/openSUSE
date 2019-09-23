@@ -1,0 +1,35 @@
+diff -ur anki-2.1.7.orig/anki/lang.py anki-2.1.7/anki/lang.py
+--- anki-2.1.7.orig/anki/lang.py	2018-11-27 23:55:20.000000000 +0100
++++ anki-2.1.7/anki/lang.py	2018-12-20 15:16:50.771591072 +0100
+@@ -79,17 +79,7 @@
+     return localTranslation().ngettext(single, plural, n)
+ 
+ def langDir():
+-    from anki.utils import isMac
+-    filedir = os.path.dirname(os.path.abspath(__file__))
+-    if isMac:
+-        dir = os.path.abspath(filedir + "/../../Resources/locale")
+-    else:
+-        dir = os.path.join(filedir, "locale")
+-    if not os.path.isdir(dir):
+-        dir = os.path.join(os.path.dirname(sys.argv[0]), "locale")
+-    if not os.path.isdir(dir):
+-        dir = os.path.abspath(os.path.join(filedir, "..", "locale"))
+-    return dir
++    return "/usr/share/locale"
+ 
+ def setLang(lang, local=True):
+     trans = gettext.translation(
+diff -ur anki-2.1.7.orig/Makefile anki-2.1.7/Makefile
+--- anki-2.1.7.orig/Makefile	2018-07-27 04:18:05.000000000 +0200
++++ anki-2.1.7/Makefile	2019-01-24 14:22:45.125333103 +0100
+@@ -9,7 +9,8 @@
+ 	rm -rf ${DESTDIR}${PREFIX}/share/anki
+ 	mkdir -p ${DESTDIR}${PREFIX}/share/anki
+ 	cp -av anki aqt web ${DESTDIR}${PREFIX}/share/anki/
+-	-cp -av locale ${DESTDIR}${PREFIX}/share/anki/
++	mkdir -p ${DESTDIR}${PREFIX}/share/locale
++	-cp -av locale/*/ ${DESTDIR}${PREFIX}/share/locale/
+ 	sed -e 's:@PREFIX@:${PREFIX}:' tools/runanki.system.in > tools/runanki.system
+ 	install -m 0755 -D tools/runanki.system ${DESTDIR}${PREFIX}/bin/anki
+ 	install -m 0644 -D -t ${DESTDIR}${PREFIX}/share/pixmaps anki.xpm anki.png

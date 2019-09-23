@@ -1,0 +1,5 @@
+<package name="kturtle" project="openSUSE:Factory">
+  <title>Logo Programming Environment</title>
+  <description>KTurtle is an educational Logo programming environment.</description>
+  <devel project="KDE:Applications" package="kturtle"/>
+</package>

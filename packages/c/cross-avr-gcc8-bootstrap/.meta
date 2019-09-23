@@ -1,0 +1,6 @@
+<package name="cross-avr-gcc8-bootstrap" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="gcc8"/>
+  <bcntsynctag>gcc8</bcntsynctag>
+</package>

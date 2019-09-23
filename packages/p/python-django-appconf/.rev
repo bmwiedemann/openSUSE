@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>62bca7bf099f70d8a34248bfe7cecfd9</srcmd5>
+    <version>0.5</version>
+    <time>1354109583</time>
+    <user>coolo</user>
+    <comment>Dependency of python-django_compressor</comment>
+    <requestid>142917</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>62bca7bf099f70d8a34248bfe7cecfd9</srcmd5>
+    <version>0.5</version>
+    <time>1359110013</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a81ee9498da215b0e99a05b63da80589</srcmd5>
+    <version>0.6</version>
+    <time>1359997245</time>
+    <user>coolo</user>
+    <comment>Update to 0.6 (forwarded request 150802 from appleonkel)</comment>
+    <requestid>150803</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9a60aa9387ae80e86d899086e802db72</srcmd5>
+    <version>0.6</version>
+    <time>1361892217</time>
+    <user>coolo</user>
+    <comment>Add python-six Requires (forwarded request 156419 from vuntz)</comment>
+    <requestid>156425</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>fbe793de19669035f20401fc506fde64</srcmd5>
+    <version>0.6</version>
+    <time>1366017340</time>
+    <user>coolo</user>
+    <comment>- Remove pre_checkin.sh since the two versions are not the same
+- Remove unneeded macros
+- Added python buildrequires and requires since the package does not
+  work properly without them on openSUSE &lt;= 12.2 (forwarded request 163958 from TheBlackCat)</comment>
+    <requestid>163959</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>8fbca92b06433d5639ab71aca48feee7</srcmd5>
+    <version>0.6</version>
+    <time>1371652130</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179781</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>8fbca92b06433d5639ab71aca48feee7</srcmd5>
+    <version>0.6</version>
+    <time>1379664155</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>e5790847090d36f5c5fd880af0731d74</srcmd5>
+    <version>0.6</version>
+    <time>1380297678</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200746</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>62f6a6f03328ccf63909e92fe9d8cd32</srcmd5>
+    <version>0.6</version>
+    <time>1382692397</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204541</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>62f6a6f03328ccf63909e92fe9d8cd32</srcmd5>
+    <version>0.6</version>
+    <time>1409302845</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4eb649fcba664fb0acd6769c95c78f41</srcmd5>
+    <version>1.0.1</version>
+    <time>1430780168</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 1.0.1 (forwarded request 305217 from benoit_monin)</comment>
+    <requestid>305260</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>99a0718b67a2100379b1834d8a0337b0</srcmd5>
+    <version>1.0.2</version>
+    <time>1481153380</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441347</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>88889c85e2b6111e94fe11c63ab32655</srcmd5>
+    <version>1.0.2</version>
+    <time>1504521076</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519786</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>89f0ec25e09bc2b701ee8db7bff0ce76</srcmd5>
+    <version>1.0.2</version>
+    <time>1544539715</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to github archives to get tests
+- Run the tests
+- Fix dependencies</comment>
+    <requestid>656872</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>190b2a0b651d6ada0850009b259dad7e</srcmd5>
+    <version>1.0.3</version>
+    <time>1552207174</time>
+    <user>coolo</user>
+    <comment>- Update to 1.0.3:
+  * use six directly
+  * metadata updates</comment>
+    <requestid>682741</requestid>
+  </revision>
+</revisionlist>

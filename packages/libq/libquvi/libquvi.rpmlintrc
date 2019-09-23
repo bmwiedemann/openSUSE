@@ -1,0 +1,6 @@
+# It is versioned, but in a very non-standard way.
+# See changes comment dated Wed Aug 14 09:08:35 UTC 2013.
+addFilter("shlib-unversioned-lib")
+# Upstream project has lib in its name and contains library.
+# False match, probably due to a non-standard library name.
+addFilter("shlib-policy-missing-lib")

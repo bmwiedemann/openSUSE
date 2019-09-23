@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6233c319c3fca6b735b30856b7ad917b</srcmd5>
+    <version>2.5.3</version>
+    <time>1494262928</time>
+    <user>dimstar_suse</user>
+    <comment>remove CC license from the engine</comment>
+    <requestid>459436</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c13ae16454e7e151adaaad02c02bec0b</srcmd5>
+    <version>2.8.1</version>
+    <time>1505334806</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523372</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3d2dd7058529c3ac0ec889731824b8fe</srcmd5>
+    <version>3.5.4</version>
+    <time>1555488569</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.5.4
+  * Added data type base class for unit types, upgrades and etc.
+  * Fixed issue which caused rally point map layers to be saved
+    incorrectly.
+  * Remove instances of \r from the config data strings
+  * Added snow and ice flags, made the map field flags into an enum
+  * Added comment to better explain the CPlayer::CanRecruitHero code
+  * Improved the check to see if a file is in the user's home directory
+  * Fixed issue which caused a crash when starting a second game
+  * Fixed issue with quest failure
+  * Improved worker automatic level-up upgrade choice
+  * Potential fix for mouse jumping issues
+  * Added support for certain spells being empowered in a particular plane
+  * Fixed issue which caused building i.e. a road near a rock tile to
+    recalculate the rock tile's transitions.
+- Add patch:
+  * wyrmgus-fix-build.patch
+- Run spec-cleaner
+- Use pkg-config style dependencies
+</comment>
+    <requestid>694752</requestid>
+  </revision>
+</revisionlist>

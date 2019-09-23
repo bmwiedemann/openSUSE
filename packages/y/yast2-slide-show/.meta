@@ -1,0 +1,5 @@
+<package name="yast2-slide-show" project="openSUSE:Factory">
+  <title>YaST2 - Slide Show</title>
+  <description>The slide show displayed during package installation with YaST2.</description>
+  <devel project="system:install:head" package="yast2-slide-show"/>
+</package>

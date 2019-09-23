@@ -1,0 +1,96 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3355779e5f67b92c65e560a14d5382f5</srcmd5>
+    <version>4.0.6</version>
+    <time>1443585085</time>
+    <user>coolo</user>
+    <comment>This is required by the latest version of IPython, which is already in openSUSE:Factory.</comment>
+    <requestid>333156</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>092de104cc093bb9a0f0cc5a8419f913</srcmd5>
+    <version>4.0.6</version>
+    <time>1444130721</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>335419</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8aca46b0f80cbbae5cefba2058316b06</srcmd5>
+    <version>4.0.6</version>
+    <time>1455790056</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359987</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a2acc89eeeb158dde886029db5fb2591</srcmd5>
+    <version>4.3.0</version>
+    <time>1495034046</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491437</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>24f03ed6dc06831516d37be0642a6834</srcmd5>
+    <version>4.3.0</version>
+    <time>1505990126</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527610</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>67e0e0e0980eb2968b5dc8fd6567489e</srcmd5>
+    <version>4.4.0</version>
+    <time>1513245417</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555888</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>faee1f3eba66c16b20da1fdc8cc9ef3b</srcmd5>
+    <version>4.4.0</version>
+    <time>1519218775</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>578532</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>745a06b42cf27168a15fc6efd8342173</srcmd5>
+    <version>4.4.0</version>
+    <time>1558515914</time>
+    <user>dimstar_suse</user>
+    <comment>- Split out jupyter components into subpackage.
+- Add rpm macros.
+- Rename doc package to match jupyter package.
+- Split out jupyter components into subpackage.
+- Add rpm macros.
+- Rename doc package to match jupyter package.
+</comment>
+    <requestid>698303</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>617118691c8064c5d5dbfb0d20b0fd04</srcmd5>
+    <version>4.4.0</version>
+    <time>1558784107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704842</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ee34e56a3e04510998539e1259ad6914</srcmd5>
+    <version>4.5.0</version>
+    <time>1561882587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711734</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>25e8b4b238f370666adb39dd5b5d481e</srcmd5>
+    <version>4.5.0</version>
+    <time>1566240485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724124</requestid>
+  </revision>
+</revisionlist>

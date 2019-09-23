@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>af5dff400894fb65182510f24c5b483a</srcmd5>
+    <version>0.03</version>
+    <time>1386333931</time>
+    <user>coolo</user>
+    <comment>needed for JSON-XS</comment>
+    <requestid>208532</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b7619a69110cd5e14dc74bc9875f66c6</srcmd5>
+    <version>1.0</version>
+    <time>1401644413</time>
+    <user>coolo</user>
+    <comment>- checked license
+- updated to 1.0
+  - clarify that the second arg of FEEZE/THAW is the data
+    model/data format name, not the serialsier.
+  - clarify that FREEZE must not modify the data structure
+    to be serialised. (forwarded request 235489 from smithfarm)</comment>
+    <requestid>235554</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b7619a69110cd5e14dc74bc9875f66c6</srcmd5>
+    <version>1.0</version>
+    <time>1409302554</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

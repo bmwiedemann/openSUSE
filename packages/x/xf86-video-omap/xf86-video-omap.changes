@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Thu Mar  7 10:02:46 UTC 2013 - guillaume@opensuse.org
+
+- Update to release 0.4.3:
+  * DRI2: Fix some potential leaks
+  * Fix modesetting issue on kernels prior to rotation support
+  * Remove unnecessary DRI1 check in configure.ac
+  * DRI2: Fix potential triple-buffer loop in SwapComplete
+
+
+-------------------------------------------------------------------
+Thu Oct 18 15:22:05 UTC 2012 - guillaume@opensuse.org
+
+- Generate 0.4.2 tarball with 'make dist'
+
+-------------------------------------------------------------------
+Thu Oct 18 11:20:20 UTC 2012 - guillaume@opensuse.org
+
+- release 0.4.2
+  * fix 'make dist' issue that would result in distribution tarballs
+  missing the header files
+
+-------------------------------------------------------------------
+Mon Oct  8 10:55:43 UTC 2012 - sndirsch@suse.com
+
+- release 0.4.1
+  * omap: add support for PlatformProbe
+  * dri2: fix multi-drawable flip confusion
+  * xrandr rotation
+  * add EnableDisableFBAccess to compat-api
+  * fix multi-display
+  * fix multi-display + rotation
+  * remove some unused headers
+  * remove miInitializeBackingStore() call
+  * fix ScreenInit -> CloseScreen -> ScreenInit
+
+-------------------------------------------------------------------
+Wed Jul  4 07:32:09 UTC 2012 - guillaume@opensuse.org
+
+- Use tar.bz2 archive instead of tar_scm service
+
+-------------------------------------------------------------------
+Mon Jul  2 12:18:48 UTC 2012 - guillaume@opensuse.org
+
+- Initial release 
+

@@ -1,0 +1,5 @@
+<package name="python-bson" project="openSUSE:Factory">
+  <title></title>
+  <description>BSON codec for Python</description>
+  <devel project="devel:languages:python" package="python-bson"/>
+</package>

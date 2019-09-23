@@ -1,0 +1,154 @@
+-------------------------------------------------------------------
+Wed Jun 12 15:07:02 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Thu Jul 12 07:59:04 UTC 2018 - fstrba@suse.com
+
+- Version bump to 2.4.1
+  * Require java 8 or higher
+- Changed patch:
+  * hsqldb-2.3.3-javadoc10.patch -> hsqldb-2.4.1-javadoc10.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
+Mon Dec 18 07:05:16 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * hsqldb-2.3.3-javadoc10.patch
+    + Fix build with jdk10's javadoc that ends in error when a
+      link cannot be downloaded
+
+-------------------------------------------------------------------
+Thu Nov 23 13:50:25 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Fri Sep 29 06:52:51 UTC 2017 - fstrba@suse.com
+
+- Mofified patch:
+  * hsqldb-apidocs.patch
+    + Don't force -Xdoclint:none, since we switched the default
+      doclint run off in all our java-devel providers and this
+      option does not work with java < 1.8
+
+-------------------------------------------------------------------
+Fri Sep  8 06:50:36 UTC 2017 - fstrba@suse.com
+
+- Specify java source and target version 1.7 in order to allow
+  build with jdk9
+
+-------------------------------------------------------------------
+Fri May 19 11:49:45 UTC 2017 - mpluskal@suse.com
+
+- Update dependencies 
+
+-------------------------------------------------------------------
+Wed Jul 29 11:17:12 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 2.3.3:
+  * Various serveral minor issues
+  * No obvious detailed changelog
+- Fix build with jdk8 by tweaking doclint:
+  * hsqldb-apidocs.patch
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:07 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Sun Jan 18 23:42:53 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.3.2
+  * fixed several minor issues
+  * fixed bug with incomplete rollback of MVCC transaction that
+    inserts and updates the same row
+  * fixed issue with parsing of long BIT strings in SQL
+  * fixed issue with SQL triggers when columns were added or dropped
+    from a table with SQL triggers
+  * fixed issue with an index added to a TEMP table with ON COMMIT
+    PRESERVE ROWS and containing data
+  * added URL property hsqldb.digest which can be used with alternative
+    secure hash algorithms for passwords
+  * changed the class used for offline backup and restore to 
+    org.hsqldb.lib.tar.DbBackupMain
+  * extended the scope of SET DATABASE SQL REFERENCES TRUE to catch
+    ambiguity with identical table aliases
+  * extended support for the DEFAULT keyword used in INSERT and UPDATE
+    to apply to columns with no default
+  * improved support for recursive queries
+  * improved ORA and MYS syntax compatibility modes
+ 
+-------------------------------------------------------------------
+Mon Sep  9 11:05:43 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Wed Sep  4 12:42:55 UTC 2013 - mvyskocil@suse.com
+
+- Update to 2.2.9
+  * new core fully multithreaded core supports 2PL (two-phased locking)
+    and MVCC (multiversion concurrency control), plus a hybrid 2PL+MVCC
+    transaction control mode
+  * Massive high performance LOB store for BLOBs and CLOBs up to multi-gigabyte
+    size, with total storage capacity of 64 terabytes.
+  * Increased default storage space of 16GB for ordinary data, with fast
+    startup and shutdown. Storage space can be extended to 2TB.
+  * Large result sets, views and subqueries can now be stored on disk (on the
+    server side) while being generated and accessed. The threshold to store
+    a result on disk, as well as the actual fetch size in client-server
+    configurations can be specified per connection.
+  * All query conditions, whether in a JOIN or WHERE clause, are now
+    allocated to an index if possible.
+  * HyperSQL supports schema-based stored procedures and functions written
+    entirely in SQL and JAVA.
+  * Support for BIT, BIT VARYING, CLOB, BLOB, INTERVAL according to the
+    SQL Standards
+  * and many more - see http://hsqldb.sourceforge.net/web/features200.html
+- Dropped patches
+  * hsqldb-1.8.0-scripts.patch
+  * hsqldb-1.8.0.10-suse-initscript.patch (systemd service is used)
+  * hsqldb-jdbc-4.1.patch
+  * hsqldb-tmp.patch (hsqldb-wrapper is used)
+- New patches
+  * hsqldb-apidocs.patch
+  * hsqldb-cmdline.patch
+- systemd integration and drop init script
+
+-------------------------------------------------------------------
+Mon May 21 12:19:01 UTC 2012 - mvyskocil@suse.cz
+
+- Update to 1.8.1.3
+  * adds support for fast closing of huge database files
+  * better query optimisation. 
+  * bugfixes
+- add maven pom
+- fix build with jdk7
+- run su with -s /bin/sh in initscript
+
+-------------------------------------------------------------------
+Mon Dec 19 13:22:15 CET 2011 - dmueller@suse.de
+
+- fix hsqldb_lic.txt packaged in hsqldb-manual and hsqldb
+
+-------------------------------------------------------------------
+Fri Jan 14 14:11:21 UTC 2011 - mvyskocil@suse.cz
+
+- fix bnc#664425 - error in init script of hsqldb
+    * init PATH on the begining
+    * use absolute names
+- change default shell from /bin/false to /bin/sh to make su command
+  (and server start) possible
+- change hsqldb jar location to /usr/share/java/hsqldb.jar
+
+-------------------------------------------------------------------
+Wed May 13 09:11:43 CEST 2009 - mvyskocil@suse.cz
+
+- Initial SUSE packaging od hsqldb 1.8.0.10 from jpackage.org 
+

@@ -1,0 +1,395 @@
+-------------------------------------------------------------------
+Tue May 29 06:04:37 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Add ucm-mcm-fix-backlog-parameter-for-socket.patch to fix
+  a "deadlock" that causes socket connection to timeout when
+  net.ipv4.tcp_syncookies=0. (bsc#1094657)
+
+-------------------------------------------------------------------
+Thu May 24 12:47:16 UTC 2018 - kasimir_@outlook.de
+
+- Add patch for arm platform support
+  * dapl-add-arm-platform-support.patch
+
+-------------------------------------------------------------------
+Thu Jul 20 08:25:04 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to 2.1.10
+  * dtest_suite: add option to pause the test.
+  * dtestcm: add client retry, give server time to queue up all listens
+  * dtest: Add new man pages. (dtestx dtestcm dtestsrq)
+  * cma: fix open_query mode, initialize attributes
+  * ucm: up level CM timer logging, increase drep time at scale
+  * dtest: fix return value check on do_rdma_write_with_msg
+  * dtestx: check device capabilities and do atomic tests only if supported by HW
+  * common: set atomic attributes based on provider/device capabilities
+  * build: dtest_suite.sh was moved to test/scripts
+  * mpxyd: let TX thread sleep if no open devices are referenced
+  * mcm: when mmap req from MIC return with fail stat print WARN.
+  * dtest_suite: remove duplicate dtest_suite.sh
+  * dtest: enable -D option (data check) to work with scif provider
+  * dtest_suite: fix typo in user_string var
+  * mcm: remove logs from post send speed path
+  * mcm proxy: push WR from MIC to host with scif mmap memory instead of scif_send.
+  * dtest: the default size in pingpong test is set to 1 byte regardless to user input.
+  * dtest: cleanup 4 printfs from the middle of performance test, may reduce performance.
+- Refresh patches against 2.1.10
+
+-------------------------------------------------------------------
+Mon Jun 12 09:28:22 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Merge .changes files with SLE12-SP3 (bsc#1041579)
+
+-------------------------------------------------------------------
+Tue May 30 08:50:05 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add conflicts between dapl and dapl-debug packages for devel
+  and utils
+- Rename dapl-utils tests to avoid conflicts with other packages (dateutils)
+  * dapltest => dapl-test
+  * dtest    => dapl-utest
+  * dtestcm  => dapl-testcm
+  * dtestsrq => dapl-testsrq
+  * dtestx   => dapl-testx
+- Remove librdmacm and libibverbs version dependencies
+
+-------------------------------------------------------------------
+Thu May 25 07:19:35 UTC 2017 - jengelh@inai.de
+
+- Restore description of libdapl. Fix some grammar errors.
+
+-------------------------------------------------------------------
+Wed May 17 08:20:55 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Disable dapl on armv7hl
+
+-------------------------------------------------------------------
+Wed Mar 29 07:53:21 CEST 2017 - pth@suse.de
+
+- Make dependencies on libs now coming from rdma-core versioned.
+- Remove unused patch dapl-rename_dtest.patch
+
+-------------------------------------------------------------------
+Thu Mar 10 15:19:58 CET 2016 - pth@suse.de
+
+- Update to 2.1.8 git version (bsc#970668).
+  List of changes is too long so please see the included ChangeLog.
+- Patches removed because the fixes are included upstream:
+  dapl-fix_type_punning.patch
+  dapl-autotools.patch
+  dapl-add-s390x-platform-support.patch
+  dapl-add-aarch64-platform-support.patch
+  dapl-add-s390x-platform-support.patch
+
+- Add dapl-s390.patch so that the defines are also valid for s390
+
+-------------------------------------------------------------------
+Thu Sep 10 08:04:16 UTC 2015 - dmueller@suse.com
+
+- add dapl-add-aarch64-platform-support.patch (fate#318444)
+- revert last change
+
+-------------------------------------------------------------------
+Tue Aug 25 12:26:58 CEST 2015 - pth@suse.de
+
+- Exclude aarch64 as there is currently no assembler code for this
+  architecture.
+
+-------------------------------------------------------------------
+Tue Aug 11 11:04:01 CEST 2015 - pth@suse.de
+
+- Replace dapl-s390_support.patch with 
+  dapl-add-s390x-platform-support.patch (bsc#934683).
+- Fix library name in baselibs.conf.
+- Tag baselibs.conf and dapl-rpmlintrc as source.
+- libdapl*.so work like plugins, hence they do not get a separate
+  subpackage. So shut up rpmlint complaining about the package
+  name.
+- Drop the dapl-doc sub package and move the man pages to the
+  packages containing the files/programs they describe.
+
+-------------------------------------------------------------------
+Wed Feb  4 14:33:06 UTC 2015 - dimstar@opensuse.org
+
+- Also have dapl-utils conflict with dapl-debug-utils.
+- Fix baselibs.conf to build libdat2-2-32bit.
+
+-------------------------------------------------------------------
+Mon Sep  8 07:46:08 UTC 2014 - coolo@suse.com
+
+- dapl-debug can't obsolete dapl or zypper will switch between the versions
+  all the time. They do conflict though
+
+-------------------------------------------------------------------
+Fri Aug  8 19:06:02 CEST 2014 - pth@suse.de
+
+- Add dapl-rename_dtest.patch to rename dtest to dpltest because
+  of name clash with dateutils.
+- Also rename the man  page for dtest.
+- Make dapl-devel and dapl-debug-devel obsolete each other.
+
+-------------------------------------------------------------------
+Thu Aug  7 11:55:32 CEST 2014 - pth@suse.de
+
+- Readd s390 support (bnc#856126).
+
+-------------------------------------------------------------------
+Mon Aug  4 11:28:47 CEST 2014 - pth@suse.de
+
+- Remove s390 support (bnc#856126).
+
+-------------------------------------------------------------------
+Fri Jun 27 14:11:27 CEST 2014 - pth@suse.de
+
+- Add baselibs.conf and dapl-rpmlintrc as source.
+- Fix dapl-fix_type_punning.patch.
+- Fix type punning in cm.c
+
+-------------------------------------------------------------------
+Wed Jun 25 11:20:11 CEST 2014 - pth@suse.de
+
+- Remove dapl-2.0.13-build_error.patch as it isn't needed anymore.
+
+-------------------------------------------------------------------
+Wed Jun 25 11:08:45 CEST 2014 - pth@suse.de
+
+- Provide full source URL
+
+-------------------------------------------------------------------
+Tue May 20 13:54:20 CEST 2014 - pth@suse.de
+
+- Fix typo in dapl_test.c.
+
+-------------------------------------------------------------------
+Thu May 15 11:43:25 CEST 2014 - pth@suse.de
+
+- Reenable the code for s390x also for s390.
+- Adapt dapl-fix_type_punning.patch to changed code.
+- Fix obsoletes entry.
+- Fix type punning with memcpy instead of unions.
+
+-------------------------------------------------------------------
+Tue May 13 22:52:17 CEST 2014 - pth@suse.de
+
+- Update tp 2.0.42 from OFED 3.12 RC2.
+  Changes since 2.0.40:
+  * dapltest: increase DTO evd size to prevent CQ overflow on
+              limit_rpost test.
+  * Creation of reserved SP moves EP state to DAT_EP_STATE_RESERVED
+    even in failure cases. Reserve EP after successfully binding the
+    listening port.
+  * dapl: fix string bug in dapls_dto_op_str
+          This led to indexing off the end of the array and gave
+          surprising results for OP_RECV_UD.
+  * dapltest: change server port, from 45278 to 62000, out of
+              registered IANA range.
+  * dat: lower log level on load errors of provider library
+  * dat: dat_ia_open should close provider after failure
+  * dapltest: set default limit max to 1000
+  * openib: add new provider specific attributes
+  * dapltest: update scripts for regression testing purposes
+  * cl.sh and srv.sh update to provide better examples and
+    a methods to quickly regression test any dapltest changes.
+  * dapltest: Add final send/recv "sync" for transaction tests.
+
+For the complete and unabbreviated Changes please see the file
+ChangeLog in the package documentation.
+
+-------------------------------------------------------------------
+Thu Feb 13 16:43:01 CET 2014 - pth@suse.de
+
+- Update to 2.0.40 (fate#315488):
+    dist: ib collective extension include files missing
+    dapltest: the quit command is missing changes for -n option.
+    Server-port was not being set properly during param init phase
+    on the client side.
+    dat.conf: remove v1, add Mellanox Connect-IB and Intel Xeon Phi
+    MIC.
+    NULL undefined on Fedora, incorrectly using kernel stddef.h
+
+-------------------------------------------------------------------
+Tue Jan 21 18:46:54 CET 2014 - pth@suse.de
+
+- Add dapl-autotools.patch to make autoreconf complain less.
+
+-------------------------------------------------------------------
+Fri Jan 17 12:13:40 CET 2014 - pth@suse.de
+
+- Update to 2.0.39 from 3.12 daily snapshot.
+- Include dapl-s390_support.patch from IBM for s390 support.
+- Remove now unneeded patches:
+  dapl-2.0.13-build_error.patch
+- Use script to generate spec and changes for dapl-debug from the
+  dapl files.
+
+-------------------------------------------------------------------
+Wed Jan 15 13:47:59 CET 2014 - pth@suse.de
+
+- Build for s390x
+
+-------------------------------------------------------------------
+Thu Sep 13 13:59:23 CEST 2012 - pth@suse.de
+
+- Add another filter to dapl-rpmlintrc as the packages for 
+  the runtime library are named differently but contain a library
+  that's named the same. 
+
+-------------------------------------------------------------------
+Wed Sep  5 18:12:59 CEST 2012 - pth@suse.de
+
+- Reinstate the arch exclusion of s390(x).
+- Recompress with bzip2.
+
+-------------------------------------------------------------------
+Wed Sep  5 14:38:57 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Remove unjustified s390* arch exclusion
+- Implement shared library policy
+
+-------------------------------------------------------------------
+Thu Aug 30 14:45:19 CEST 2012 - pth@suse.de
+
+- Update to OFED 1.5.4.1 (dapl unchanged).
+- Rename the package with tracing enabled dapl-tracing.
+- Adapt baselibs.conf to new packages and names.
+- Use one .spec and .changes file and create the -tracing
+  variants with pre_checkin.sh.
+- Update FSF address in LICENSE3.txt.
+
+-------------------------------------------------------------------
+Tue Jul  3 18:19:08 CEST 2012 - pth@suse.de
+
+- Put shared libs into a versioned package.
+- Fix man pages
+- Add a rpmlintrc to shut up warnings that can only be solved upstream.
+
+-------------------------------------------------------------------
+Thu Jun 28 18:55:46 CEST 2012 - pth@suse.de
+
+- Use unions for type punning (dapl-type_punning.patch).
+- Include stddef.h to get NULL defined.
+- Require automake, autoconf and libtool.
+- Provide obsoleted items.
+
+-------------------------------------------------------------------
+Wed May  9 13:48:37 CEST 2012 - pth@suse.de
+
+- Update to OFED 1.5.4
+- Don't recompress the tarball.
+- Remove unneeded patches and adapt the remaining ones.
+
+-------------------------------------------------------------------
+Mon Jun 20 16:41:37 CEST 2011 - pth@suse.de
+
+- Sed is also needed.
+
+-------------------------------------------------------------------
+Thu Jun  9 18:45:01 CEST 2011 - pth@suse.de
+
+- After last change dapl needs cat so add prereq (bnc#688511).
+
+-------------------------------------------------------------------
+Mon Mar  7 16:15:35 CET 2011 - pth@suse.de
+
+- Don't remove the configuration for this dapl version on update
+  (bnc#676731).
+- Use cat instead of multiple echos.
+- Include /etc/dat.conf as %conf %ghost.
+
+-------------------------------------------------------------------
+Fri Mar  4 13:16:19 CET 2011 - pth@suse.de
+
+- Fix tmp race in post/postun (bnc#676700).
+
+-------------------------------------------------------------------
+Wed Feb  1 16:59:22 CET 2011 - pth@suse.de
+
+- Incorporate fixes done for the update in SLE10:
+
+- Split off man pages into their own sub package that can be
+  required by compat-dapl.
+- Fix type-punning in test app so that we don't need
+  -fno-strict-aliasing allowing better code optimisation.
+- Also fix type punning in other files that the newer gcc in SLE11
+  detected.
+- realigned-disconnect.patch fixing bnc#656702
+- added cma-fix-debug-build-issue.patch fixing debug build.
+
+-------------------------------------------------------------------
+Tue Nov 23 18:46:55 CET 2010 - pth@suse.de
+
+- Let the caller detect EINTR (bnc#655518).
+
+-------------------------------------------------------------------
+Mon Oct 25 15:38:55 UTC 2010 - jjolly@novell.com
+
+- Update to v2.0.30 from OFED 1.5.2
+- Update to include more lines for dat.conf
+- Patch to remove extra rdma_destroy_id() (bnc#647915)
+
+-------------------------------------------------------------------
+Tue Dec  8 01:03:36 CET 2009 - ro@suse.de
+
+- fix build on ia64: help configure dectecting suse_version
+
+-------------------------------------------------------------------
+Thu Dec  3 08:34:10 CET 2009 - jjolly@suse.de
+
+- Update to v2.0.19 from OFED 1.4.2
+
+-------------------------------------------------------------------
+Thu Dec 11 03:37:05 CET 2008 - jjolly@suse.de
+
+- Updated to v2.0.15 from OFED 1.4 GA
+  - dapltest: transaction test moves to cleanup stage before
+    rdma_read processing is complete
+  - Change SR to include sysconfdir. 
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Nov  6 14:01:02 CET 2008 - ihno@suse.de
+
+- adding baselibs.conf
+
+-------------------------------------------------------------------
+Tue Nov  4 11:50:42 CET 2008 - ro@suse.de
+
+- fix build on ia64 (same as in compat-dapl) 
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Oct 27 20:13:18 CET 2008 - jjolly@suse.de
+
+- Updated to v2.0.14 from OFED 1.4 rc3
+
+-------------------------------------------------------------------
+Mon Oct 20 12:24:48 CEST 2008 - ihno@suse.de
+
+- Excludearch for s390 s390x
+
+-------------------------------------------------------------------
+Fri Sep 12 10:52:31 CEST 2008 - jjolly@suse.de
+
+- Updated to v2.0.13 from OFED 1.4 RC1 and changed from dapl2 to dapl
+
+-------------------------------------------------------------------
+Mon Apr 28 22:00:19 CEST 2008 - crrodriguez@suse.de
+
+- do not build unusable static libraries
+- fix -devel package requires 
+
+-------------------------------------------------------------------
+Mon Mar  3 07:10:58 CET 2008 - jjolly@suse.de
+
+- Initial submission of dapl v2.0.7 from OFED 1.3 GA release
+

@@ -1,0 +1,83 @@
+From 91da15eed08ede5d7486ccc3eec9b70ae493d627 Mon Sep 17 00:00:00 2001
+From: Paul Howarth <paul@city-fan.org>
+Date: Tue, 21 Aug 2018 16:47:12 +0100
+Subject: [PATCH] Cope with GLD output changes in version 0.103
+
+The output text format of Getopt::Long::Descriptive changed yet again
+at version 0.103 and broke some of the tests. This change fixes the
+tests without breaking compatibility with older versions of
+Getopt::Long::Descriptive.
+---
+ t/104_override_usage.t           |  6 ++++++
+ t/107_no_auto_help.t             |  2 +-
+ t/109_help_flag.t                |  2 +-
+ t/110_sort_usage_by_attr_order.t | 10 ++++++++++
+ 4 files changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/t/104_override_usage.t b/t/104_override_usage.t
+index bdee6c6..bc45029 100644
+--- a/t/104_override_usage.t
++++ b/t/104_override_usage.t
+@@ -55,9 +55,15 @@ use Test::Exception;
+ \t--foo INT            A foo
+ }
+         :
++         $Getopt::Long::Descriptive::VERSION < 0.103 ?
+          qq{usage: 104_override_usage.t [-?] [long options...]
+ \t-? --usage --help  Prints this usage information.
+ \t--foo INT          A foo
++}
++        :
++         qq{usage: 104_override_usage.t [-?] [long options...]
++\t-? --[no-]usage --[no-]help       Prints this usage information.
++\t--foo INT                         A foo
+ }
+ 
+      ];
+diff --git a/t/107_no_auto_help.t b/t/107_no_auto_help.t
+index 1091fd2..27f87f5 100644
+--- a/t/107_no_auto_help.t
++++ b/t/107_no_auto_help.t
+@@ -60,7 +60,7 @@ END {
+ warning_like {
+     throws_ok { Class->new_with_options }
+            #usage: 107_no_auto_help.t [-?] [long options...]
+-        qr/^usage: [\d\w]+\Q.t [-?] [long options...]\E.\s+\Q-? --usage --help\E\s+\QPrints this usage information.\E.\s+--configfile/ms,
++        qr/^usage: [\d\w]+\Q.t [-?] [long options...]\E.\s+\Q-? --\E(\[no-\])?usage --(\[no-\])?\Qhelp\E\s+\QPrints this usage information.\E.\s+--configfile/ms,
+         'usage information looks good';
+     }
+     qr/^Specified configfile \'this_value_unimportant\' does not exist, is empty, or is not readable$/,
+diff --git a/t/109_help_flag.t b/t/109_help_flag.t
+index adc6e0c..8c658e2 100644
+--- a/t/109_help_flag.t
++++ b/t/109_help_flag.t
+@@ -40,7 +40,7 @@ foreach my $args ( ['--help'], ['--usage'], ['--?'], ['-?'] )
+     local @ARGV = @$args;
+ 
+     throws_ok { MyClass->new_with_options() }
+-        qr/^usage: (?:[\d\w]+)\Q.t [-?] [long options...]\E.^\t\Q-? --usage --help\E\s+\QPrints this usage information.\E$/ms,
++        qr/^usage: (?:[\d\w]+)\Q.t [-?] [long options...]\E.^\t\Q-? --\E(\[no-\])?usage --(\[no-\])?help\s+\QPrints this usage information.\E$/ms,
+         'Help request detected; usage information properly printed';
+ }
+ 
+diff --git a/t/110_sort_usage_by_attr_order.t b/t/110_sort_usage_by_attr_order.t
+index 3eb4a49..e7dd177 100644
+--- a/t/110_sort_usage_by_attr_order.t
++++ b/t/110_sort_usage_by_attr_order.t
+@@ -54,6 +54,16 @@ usage: 110_sort_usage_by_attr_order.t [-?] [long options...]
+     --baz STR          Documentation for "baz"
+ USAGE
+ }
++if ( $Getopt::Long::Descriptive::VERSION >= 0.103 )
++{
++$expected = <<'USAGE';
++usage: 110_sort_usage_by_attr_order.t [-?] [long options...]
++    -? --[no-]usage --[no-]help       Prints this usage information.
++    --foo STR                         Documentation for "foo"
++    --bar STR                         Documentation for "bar"
++    --baz STR                         Documentation for "baz"
++USAGE
++}
+ $expected =~ s/^[ ]{4}/\t/xmsg;
+ is($obj->usage->text, $expected, 'Usage text has nicely sorted options');
+ 

@@ -1,0 +1,147 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6991804fde8327772e9a4989f94852a4</srcmd5>
+    <version>1.892</version>
+    <time>1292760670</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 55212 from user rjschwei
+</comment>
+    <requestid>55212</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>6991804fde8327772e9a4989f94852a4</srcmd5>
+    <version>1.892</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>6991804fde8327772e9a4989f94852a4</srcmd5>
+    <version>1.892</version>
+    <time>1319182262</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>12e62972c3f3dc565b5a7447070fdf08</srcmd5>
+    <version>1.892</version>
+    <time>1321273214</time>
+    <user>coolo</user>
+    <comment>- use original tar</comment>
+    <requestid>91109</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>f7736c4eb40c963b5125b72b18bf1eaf</srcmd5>
+    <version>1.892</version>
+    <time>1323193246</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>f7736c4eb40c963b5125b72b18bf1eaf</srcmd5>
+    <version>1.892</version>
+    <time>1340183834</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>f7736c4eb40c963b5125b72b18bf1eaf</srcmd5>
+    <version>1.892</version>
+    <time>1359109653</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0fe52a4c73e7983bfa8e96c53085a950</srcmd5>
+    <version>1.898</version>
+    <time>1370581164</time>
+    <user>coolo</user>
+    <comment>- updated to 1.898
+        remove dead link
+        skip mailboxes, rather than aborting the whole parse, when
+        encountering non-ASCII characters (thanks, Ruslan Zakirov!)
+        improve the behavior of escaping in phrases (thanks, Ruslan Zakirov!)
+        documentation improvements (thanks, Glenn Fowler!)
+        allow non-ASCII *only in phrase*
+        note that the use of the regex vars is not a great idea
+        reject any non-ascii content in strings (forwarded request 177374 from coolo)</comment>
+    <requestid>177418</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>55dbc6dabbe7a56c8681838b6424322e</srcmd5>
+    <version>1.899</version>
+    <time>1376381920</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>186503</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>55dbc6dabbe7a56c8681838b6424322e</srcmd5>
+    <version>1.899</version>
+    <time>1379663656</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2c9226f60709425663919c319dc63fc7</srcmd5>
+    <version>1.901</version>
+    <time>1392185095</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221862</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>2c9226f60709425663919c319dc63fc7</srcmd5>
+    <version>1.901</version>
+    <time>1409302267</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f8cda16f500d3f8c142e655c1eda3b85</srcmd5>
+    <version>1.905</version>
+    <time>1410981889</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>249953</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>73662e343a056ba1c98cb2ca90c1d7ef</srcmd5>
+    <version>1.907</version>
+    <time>1429107852</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296082</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>265736d2ebfe5842a468b79866a1fdd3</srcmd5>
+    <version>1.908</version>
+    <time>1443068099</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>332246</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>65a8a0550e8db7abd9ba00a259ed7768</srcmd5>
+    <version>1.909</version>
+    <time>1521193228</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>584218</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b9e7e5ba5cbe6a5916ac0984ece9bd10</srcmd5>
+    <version>1.912</version>
+    <time>1546695677</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662640</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4b09209fbde6fb3003596dc7f9a3f507</srcmd5>
+    <version>1.912</version>
+    <time>1560337212</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705968</requestid>
+  </revision>
+</revisionlist>

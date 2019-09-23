@@ -1,0 +1,296 @@
+Subject: libcpuset1, make it handle cpuset mounted as a cgroup controller
+From Mike Galbraith <mgalbraith@suse.de>
+Date: Tue Sep  3 15:45:02 CEST 2013
+References: bnc#625079, bnc#834223
+
+Signed-off-by: Mike Galbraith <mgalbraith@suse.de>
+---
+ libcpuset.c |  166 ++++++++++++++++++++++++++++++++++++++++++++----------------
+ 1 file changed, 124 insertions(+), 42 deletions(-)
+
+--- a/libcpuset.c
++++ b/libcpuset.c
+@@ -107,6 +107,69 @@ struct cpuset {
+ /* Discovered cpuset file system mount point */
+ static char cpusetmnt[PATH_MAX];
+ 
++/* Is cpuset mounted as a cgroup controller? */
++static int cpusetmnt_is_cgroup;
++
++enum {
++	IDX_TASKS = 0,
++	IDX_CPUS,
++	IDX_CPU_EXCLUSIVE,
++	IDX_MEMS,
++	IDX_MEM_EXCLUSIVE,
++	IDX_MEM_HARDWALL,
++	IDX_MEMORY_MIGRATE,
++	IDX_MEMORY_PRESSURE,
++	IDX_MEMORY_PRESSURE_ENABLED,
++	IDX_MEMORY_SPREAD_PAGE,
++	IDX_MEMORY_SPREAD_SLAB,
++	IDX_SCHED_LOAD_BALANCE,
++	IDX_SCHED_RELAX_DOMAIN_LEVEL,
++	IDX_NOTIFY_ON_RELEASE,
++	IDX_RELEASE_AGENT,
++	IDX_NR_CPUSET_FILES,
++};
++
++static const char *cpuset_filenames[] =
++{
++	[IDX_TASKS]			= "tasks",
++	[IDX_CPUS]			= "cpus",
++	[IDX_CPU_EXCLUSIVE]		= "cpu_exclusive",
++	[IDX_MEMS]			= "mems",
++	[IDX_MEM_EXCLUSIVE]		= "mem_exclusive",
++	[IDX_MEM_HARDWALL]		= "mem_hardwall",
++	[IDX_MEMORY_MIGRATE]		= "memory_migrate",
++	[IDX_MEMORY_PRESSURE]		= "memory_pressure",
++	[IDX_MEMORY_PRESSURE_ENABLED]	= "memory_pressure_enabled",
++	[IDX_MEMORY_SPREAD_PAGE]	= "memory_spread_page",
++	[IDX_MEMORY_SPREAD_SLAB]	= "memory_spread_slab",
++	[IDX_SCHED_LOAD_BALANCE]	= "sched_load_balance",
++	[IDX_SCHED_RELAX_DOMAIN_LEVEL]	= "sched_relax_domain_level",
++	[IDX_NOTIFY_ON_RELEASE]		= "notify_on_release",
++	[IDX_RELEASE_AGENT]		= "release_agent",
++};
++
++static const char *cgroup_filenames[] =
++{
++	[IDX_TASKS]			= "tasks",
++	[IDX_CPUS]			= "cpuset.cpus",
++	[IDX_CPU_EXCLUSIVE]		= "cpuset.cpu_exclusive",
++	[IDX_MEMS]			= "cpuset.mems",
++	[IDX_MEM_EXCLUSIVE]		= "cpuset.mem_exclusive",
++	[IDX_MEM_HARDWALL]		= "cpuset.mem_hardwall",
++	[IDX_MEMORY_MIGRATE]		= "cpuset.memory_migrate",
++	[IDX_MEMORY_PRESSURE]		= "cpuset.memory_pressure",
++	[IDX_MEMORY_PRESSURE_ENABLED]	= "cpuset.memory_pressure_enabled",
++	[IDX_MEMORY_SPREAD_PAGE]	= "cpuset.memory_spread_page",
++	[IDX_MEMORY_SPREAD_SLAB]	= "cpuset.memory_spread_slab",
++	[IDX_SCHED_LOAD_BALANCE]	= "cpuset.sched_load_balance",
++	[IDX_SCHED_RELAX_DOMAIN_LEVEL]	= "cpuset.sched_relax_domain_level",
++	[IDX_NOTIFY_ON_RELEASE]		= "notify_on_release",
++	[IDX_RELEASE_AGENT]		= "release_agent",
++};
++
++/* Pointer to cpuset/cgroup_filenames, depending on detected mount type */
++static const char **filenames = &cpuset_filenames[0];
++
+ /* Stashed copy of cpunodemap[], mapping each cpu to its node. */
+ static const char *mapfile = "/var/run/cpunodemap";
+ 
+@@ -234,6 +297,25 @@ static int check()
+ 			end = strstr(start, " ");
+ 			*end = '\0';
+ 			strcpy(cpusetmnt, start);
++			/*
++			 * Now check for a -t cgroup vs -t cpuset mount,
++			 * a cgroup mount prefixes files with "cpuset.".
++			 * If neither is found, something is whacky, skip
++			 * this mountpoint.
++			 */
++			strcpy(buf, cpusetmnt);
++			strcat(buf, "/cpuset.cpus");
++			if (stat(buf, &statbuf) == 0) {
++				cpusetmnt_is_cgroup = 1;
++				filenames = cgroup_filenames;
++			} else {
++				strcpy(buf, cpusetmnt);
++				strcat(buf, "/cpus");
++				if (stat(buf, &statbuf) != 0) {
++					*cpusetmnt = '\0';
++					continue;
++				}
++			}
+ 			found = 1;
+ 			break;
+ 		}
+@@ -1664,48 +1746,48 @@ int cpuset_cpu2node(int cpu)
+ static int apply_cpuset_settings(const char *path, const struct cpuset *cp)
+ {
+ 	if (cp->cpu_exclusive_valid &&
+-	    store_flag(path, "cpu_exclusive", cp->cpu_exclusive) < 0)
++	    store_flag(path, filenames[IDX_CPU_EXCLUSIVE], cp->cpu_exclusive) < 0)
+ 		goto err;
+ 	if (cp->mem_exclusive_valid &&
+-	    store_flag(path, "mem_exclusive", cp->mem_exclusive) < 0)
++	    store_flag(path, filenames[IDX_MEM_EXCLUSIVE], cp->mem_exclusive) < 0)
+ 		goto err;
+ 	if (cp->notify_on_release_valid &&
+-	    store_flag(path, "notify_on_release", cp->notify_on_release) < 0)
++	    store_flag(path, filenames[IDX_NOTIFY_ON_RELEASE], cp->notify_on_release) < 0)
+ 		goto err;
+ 	if (cp->memory_migrate_valid &&
+-	    exists_flag(path, "memory_migrate")) {
+-		if (store_flag(path, "memory_migrate", cp->memory_migrate) < 0)
++	    exists_flag(path, filenames[IDX_MEMORY_MIGRATE])) {
++		if (store_flag(path, filenames[IDX_MEMORY_MIGRATE], cp->memory_migrate) < 0)
+ 			goto err;
+ 	}
+ 	if (cp->mem_hardwall_valid &&
+-	    exists_flag(path, "mem_hardwall")) {
+-		if (store_flag(path, "mem_hardwall", cp->mem_hardwall) < 0)
++	    exists_flag(path, filenames[IDX_MEM_HARDWALL])) {
++		if (store_flag(path, filenames[IDX_MEM_HARDWALL], cp->mem_hardwall) < 0)
+ 			goto err;
+ 	}
+ 	if (cp->memory_pressure_enabled_valid &&
+-	    exists_flag(path, "memory_pressure_enabled")) {
+-		if (store_flag(path, "memory_pressure_enabled", cp->memory_pressure_enabled) < 0)
++	    exists_flag(path, filenames[IDX_MEMORY_PRESSURE_ENABLED])) {
++		if (store_flag(path, filenames[IDX_MEMORY_PRESSURE_ENABLED], cp->memory_pressure_enabled) < 0)
+ 			goto err;
+ 	}
+ 	if (cp->memory_spread_page_valid &&
+-	    exists_flag(path, "memory_spread_page")) {
+-		if (store_flag(path, "memory_spread_page", cp->memory_spread_page) < 0)
++	    exists_flag(path, filenames[IDX_MEMORY_SPREAD_PAGE])) {
++		if (store_flag(path, filenames[IDX_MEMORY_SPREAD_PAGE], cp->memory_spread_page) < 0)
+ 			goto err;
+ 	}
+ 	if (cp->memory_spread_slab_valid &&
+-	    exists_flag(path, "memory_spread_slab")) {
+-		if (store_flag(path, "memory_spread_slab", cp->memory_spread_slab) < 0)
++	    exists_flag(path, filenames[IDX_MEMORY_SPREAD_SLAB])) {
++		if (store_flag(path, filenames[IDX_MEMORY_SPREAD_SLAB], cp->memory_spread_slab) < 0)
+ 			goto err;
+ 	}
+ 	if (cp->sched_load_balance_valid &&
+-	    exists_flag(path, "sched_load_balance")) {
+-		if (store_flag(path, "sched_load_balance", cp->sched_load_balance) < 0)
++	    exists_flag(path, filenames[IDX_SCHED_LOAD_BALANCE])) {
++		if (store_flag(path, filenames[IDX_SCHED_LOAD_BALANCE], cp->sched_load_balance) < 0)
+ 			goto err;
+ 	}
+ 
+-	if (cp->cpus_valid && store_mask(path, "cpus", cp->cpus) < 0)
++	if (cp->cpus_valid && store_mask(path, filenames[IDX_CPUS], cp->cpus) < 0)
+ 		goto err;
+-	if (cp->mems_valid && store_mask(path, "mems", cp->mems) < 0)
++	if (cp->mems_valid && store_mask(path, filenames[IDX_MEMS], cp->mems) < 0)
+ 		goto err;
+ 	return 0;
+ err:
+@@ -1940,59 +2022,59 @@ int cpuset_query(struct cpuset *cp, cons
+ 
+ 	fullpath(buf, sizeof(buf), relpath);
+ 
+-	if (load_flag(buf, &cp->cpu_exclusive, "cpu_exclusive") < 0)
++	if (load_flag(buf, &cp->cpu_exclusive, filenames[IDX_CPU_EXCLUSIVE]) < 0)
+ 		goto err;
+ 	cp->cpu_exclusive_valid = 1;
+ 
+-	if (load_flag(buf, &cp->mem_exclusive, "mem_exclusive") < 0)
++	if (load_flag(buf, &cp->mem_exclusive, filenames[IDX_MEM_EXCLUSIVE]) < 0)
+ 		goto err;
+ 	cp->mem_exclusive_valid = 1;
+ 
+-	if (load_flag(buf, &cp->notify_on_release, "notify_on_release") < 0)
++	if (load_flag(buf, &cp->notify_on_release, filenames[IDX_NOTIFY_ON_RELEASE]) < 0)
+ 		goto err;
+ 	cp->notify_on_release_valid = 1;
+ 
+-	if (exists_flag(buf, "memory_migrate")) {
+-		if (load_flag(buf, &cp->memory_migrate, "memory_migrate") < 0)
++	if (exists_flag(buf, filenames[IDX_MEMORY_MIGRATE])) {
++		if (load_flag(buf, &cp->memory_migrate, filenames[IDX_MEMORY_MIGRATE]) < 0)
+ 			goto err;
+ 		cp->memory_migrate_valid = 1;
+ 	}
+ 
+-	if (exists_flag(buf, "mem_hardwall")) {
+-		if (load_flag(buf, &cp->mem_hardwall, "mem_hardwall") < 0)
++	if (exists_flag(buf, filenames[IDX_MEM_HARDWALL])) {
++		if (load_flag(buf, &cp->mem_hardwall, filenames[IDX_MEM_HARDWALL]) < 0)
+ 			goto err;
+ 		cp->mem_hardwall_valid = 1;
+ 	}
+ 
+-	if (exists_flag(buf, "memory_pressure_enabled")) {
+-		if (load_flag(buf, &cp->memory_pressure_enabled, "memory_pressure_enabled") < 0)
++	if (exists_flag(buf, filenames[IDX_MEMORY_PRESSURE_ENABLED])) {
++		if (load_flag(buf, &cp->memory_pressure_enabled, filenames[IDX_MEMORY_PRESSURE_ENABLED]) < 0)
+ 			goto err;
+ 		cp->memory_pressure_enabled_valid = 1;
+ 	}
+ 
+-	if (exists_flag(buf, "memory_spread_page")) {
+-		if (load_flag(buf, &cp->memory_spread_page, "memory_spread_page") < 0)
++	if (exists_flag(buf, filenames[IDX_MEMORY_SPREAD_PAGE])) {
++		if (load_flag(buf, &cp->memory_spread_page, filenames[IDX_MEMORY_SPREAD_PAGE]) < 0)
+ 			goto err;
+ 		cp->memory_spread_page_valid = 1;
+ 	}
+ 
+-	if (exists_flag(buf, "memory_spread_slab")) {
+-		if (load_flag(buf, &cp->memory_spread_slab, "memory_spread_slab") < 0)
++	if (exists_flag(buf, filenames[IDX_MEMORY_SPREAD_SLAB])) {
++		if (load_flag(buf, &cp->memory_spread_slab, filenames[IDX_MEMORY_SPREAD_SLAB]) < 0)
+ 			goto err;
+ 		cp->memory_spread_slab_valid = 1;
+ 	}
+ 
+-	if (exists_flag(buf, "sched_load_balance")) {
+-		if (load_flag(buf, &cp->sched_load_balance, "sched_load_balance") < 0)
++	if (exists_flag(buf, filenames[IDX_SCHED_LOAD_BALANCE])) {
++		if (load_flag(buf, &cp->sched_load_balance, filenames[IDX_SCHED_LOAD_BALANCE]) < 0)
+ 			goto err;
+ 		cp->sched_load_balance_valid = 1;
+ 	}
+ 
+-	if (load_mask(buf, &cp->cpus, cpuset_cpus_nbits(), "cpus") < 0)
++	if (load_mask(buf, &cp->cpus, cpuset_cpus_nbits(), filenames[IDX_CPUS]) < 0)
+ 		goto err;
+ 	cp->cpus_valid = 1;
+ 
+-	if (load_mask(buf, &cp->mems, cpuset_mems_nbits(), "mems") < 0)
++	if (load_mask(buf, &cp->mems, cpuset_mems_nbits(), filenames[IDX_MEMS]) < 0)
+ 		goto err;
+ 	cp->mems_valid = 1;
+ 
+@@ -2724,16 +2806,16 @@ int cpuset_migrate(pid_t pid, const char
+ 
+ 	fullpath(buf2, sizeof(buf2), relpath);
+ 
+-	if (load_flag(buf2, &memory_migrate_flag, "memory_migrate") < 0)
++	if (load_flag(buf2, &memory_migrate_flag, filenames[IDX_MEMORY_MIGRATE]) < 0)
+ 		return -1;
+-	if (store_flag(buf2, "memory_migrate", 1) < 0)
++	if (store_flag(buf2, filenames[IDX_MEMORY_MIGRATE], 1) < 0)
+ 		return -1;
+ 
+-	fullpath2(buf, sizeof(buf), relpath, "tasks");
++	fullpath2(buf, sizeof(buf), relpath, filenames[IDX_TASKS]);
+ 
+ 	r = __cpuset_move(pid, buf);
+ 
+-	store_flag(buf2, "memory_migrate", memory_migrate_flag);
++	store_flag(buf2, filenames[IDX_MEMORY_MIGRATE], memory_migrate_flag);
+ 	return r;
+ }
+ 
+@@ -2751,19 +2833,19 @@ int cpuset_migrate_all(struct cpuset_pid
+ 
+ 	fullpath(buf2, sizeof(buf2), relpath);
+ 
+-	if (load_flag(buf2, &memory_migrate_flag, "memory_migrate") < 0)
++	if (load_flag(buf2, &memory_migrate_flag, filenames[IDX_MEMORY_MIGRATE]) < 0)
+ 		return -1;
+-	if (store_flag(buf2, "memory_migrate", 1) < 0)
++	if (store_flag(buf2, filenames[IDX_MEMORY_MIGRATE], 1) < 0)
+ 		return -1;
+ 
+- 	fullpath2(buf, sizeof(buf), relpath, "tasks");
++ 	fullpath2(buf, sizeof(buf), relpath, filenames[IDX_TASKS]);
+ 
+ 	ret = 0;
+ 	for (i = 0; i < pl->npids; i++)
+ 		if (__cpuset_move(pl->pids[i], buf) < 0)
+ 			ret = -1;
+ 
+-	if (store_flag(buf2, "memory_migrate", memory_migrate_flag) < 0)
++	if (store_flag(buf2, filenames[IDX_MEMORY_MIGRATE], memory_migrate_flag) < 0)
+ 		ret = -1;
+ 	return ret;
+ }

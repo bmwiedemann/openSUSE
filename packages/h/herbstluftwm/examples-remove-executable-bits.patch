@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 7849896..ad9096d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -138,7 +138,7 @@ install-nodoc: all-nodoc
+ 	$(INSTALL) -m 644 share/herbstluftwm.desktop '$(DESTDIR)$(XSESSIONSDIR)/'
+ 	$(INSTALL) -m 755 share/dmenu_run_hlwm '$(DESTDIR)$(BINDIR)/'
+ 	$(INSTALL) -m 644 scripts/README '$(DESTDIR)$(EXAMPLESDIR)/'
+-	$(INSTALL) -m 755 scripts/*.sh '$(DESTDIR)$(EXAMPLESDIR)/'
++	$(INSTALL) -m 644 scripts/*.sh '$(DESTDIR)$(EXAMPLESDIR)/'
+ 
+ 
+ 

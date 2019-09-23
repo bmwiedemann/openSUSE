@@ -1,0 +1,3303 @@
+-------------------------------------------------------------------
+Tue Aug 20 15:05:47 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable prometheus exporter
+
+-------------------------------------------------------------------
+Tue Aug 20 14:05:47 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable verbose make output
+
+-------------------------------------------------------------------
+Tue Aug 20 14:01:33 UTC 2019 - mrueckert@suse.de
+
+- Update to version 2.0.5+git0.d905f49a:
+  * [RELEASE] Released version 2.0.5
+  * BUG/MEDIUM: mux_pt: Don't call unsubscribe if we did not subscribe.
+  * MINOR: fd: make sure to mark the thread as not stuck in fd_update_events()
+  * BUG/MINOR: stats: Wait the body before processing POST requests
+  * BUG/MEDIUM: lua: Fix test on the direction to set the channel exp timeout
+  * BUG/MEDIUM: mux_h1: Don't bother subscribing in recv if we're not connected.
+  * BUG/MINOR: Fix prometheus '# TYPE' and '# HELP' headers
+  * BUG/MINOR: lua: fix setting netfilter mark
+  * BUG/MEDIUM: proxy: Don't use cs_destroy() when freeing the conn_stream.
+  * BUG/MEDIUM: proxy: Don't forget the SF_HTX flag when upgrading TCP=>H1+HTX.
+  * BUG/MINOR: buffers/threads: always clear a buffer's head before releasing it
+  * MINOR: ssl: ssl_fc_has_early should work for BoringSSL
+  * BUG/MINOR: ssl: fix 0-RTT for BoringSSL
+  * BUG/MEDIUM: stick-table: Wrong stick-table backends parsing.
+  * [RELEASE] Released version 2.0.4
+  * BUG/MEDIUM: checks: make sure to close nicely when we're the last to speak
+  * BUG/MINOR: mux-h2: always reset rcvd_s when switching to a new frame
+  * BUG/MINOR: mux-h2: always send stream window update before connection's
+  * BUG/MEDIUM: mux-h2: do not recheck a frame type after a state transition
+  * BUG/MINOR: mux-h2: do not send REFUSED_STREAM on aborted uploads
+  * BUG/MINOR: mux-h2: use CANCEL, not STREAM_CLOSED in h2c_frt_handle_data()
+  * BUG/MINOR: mux-h2: don't refrain from sending an RST_STREAM after another one
+  * BUG/MEDIUM: fd: Always reset the polled_mask bits in fd_dodelete().
+  * BUG/MEDIUM: proxy: Make sure to destroy the stream on upgrade from TCP to H2
+  * BUG/MEDIUM: mux-h2: split the stream's and connection's window sizes
+  * BUG/MEDIUM: mux-h2: unbreak receipt of large DATA frames
+  * BUG/MINOR: stream-int: also update analysers timeouts on activity
+  * BUG/MAJOR: http/sample: use a static buffer for raw -> htx conversion
+  * BUG/MEDIUM: lb-chash: Ensure the tree integrity when server weight is increased
+  * MINOR: wdt: also consider that waiting in the thread dumper is normal
+  * BUG/MINOR: debug: fix a small race in the thread dumping code
+
+-------------------------------------------------------------------
+Tue Jul 30 13:16:56 UTC 2019 - kgronlund@suse.com
+
+- Update to version 2.0.3+git14.0ff395c1 (bsc#1142529) (CVE-2019-14241):
+  * BUG/MAJOR: queue/threads: avoid an AB/BA locking issue in process_srv_queue()
+  * BUG/MINOR: htx: Fix free space addresses calculation during a block expansion
+  * BUG/MINOR: hlua: Only execute functions of HTTP class if the txn is HTTP ready
+  * MINOR: hlua: Add a flag on the lua txn to know in which context it can be used
+  * MINOR: hlua: Don't set request analyzers on response channel for lua actions
+  * BUG/MEDIUM: hlua: Check the calling direction in lua functions of the HTTP class
+  * BUG/MINOR: hlua/htx: Reset channels analyzers when txn:done() is called
+  * DOC: improve the wording in CONTRIBUTING about how to document a bug fix
+  * BUG/MINOR: log: make sure writev() is not interrupted on a file output
+  * BUG/MEDIUM: streams: Don't switch the SI to SI_ST_DIS if we have data to send.
+  * BUG/MEDIUM: lb-chash: Fix the realloc() when the number of nodes is increased
+  * BUILD: threads: add the definition of PROTO_LOCK
+  * BUG/MINOR: proxy: always lock stop_proxy()
+  * BUG/MEDIUM: protocols: add a global lock for the init/deinit stuff
+  * [RELEASE] Released version 2.0.3
+  * BUG/CRITICAL: http_ana: Fix parsing of malformed cookies which start by a delimiter
+  * BUG/MINOR: http_htx: Support empty errorfiles
+  * BUG/MINOR: http_ana: Be sure to have an allocated buffer to generate an error
+  * BUG/MEDIUM: tcp-checks: do not dereference inexisting conn_stream
+  * BUG/MINOR: mux-h1: Close server connection if input data remains in h1_detach()
+  * BUG/MEDIUM: mux-h1: Trim excess server data at the end of a transaction
+  * BUG/MINOR: checks: do not exit tcp-checks from the middle of the loop
+  * BUG/MINOR: session: Send a default HTTP error if accept fails for a H1 socket
+  * BUG/MINOR: session: Emit an HTTP error if accept fails only for H1 connection
+  * BUG/MINOR: debug: Remove flags CO_FL_SOCK_WR_ENA/CO_FL_SOCK_RD_ENA
+  * DOC: htx: Update comments in HTX files
+  * BUG/MINOR: hlua: Make the function txn:done() HTX aware
+  * BUG/MINOR: cache/htx: Make maxage calculation HTX aware
+  * BUG/MINOR: http_htx: Initialize HTX error messages for TCP proxies
+  * BUG/MINOR: http_fetch: Fix http_auth/http_auth_group when called from TCP rules
+  * BUG/MINOR: backend: do not try to install a mux when the connection failed
+  * BUG/MEDIUM: http/htx: unbreak option http_proxy
+  * BUG/MEDIUM: checks: Don't attempt to receive data if we already subscribed.
+  * BUG/MINOR: dns: remove irrelevant dependency on a client connection
+  * [RELEASE] Released version 2.0.2
+  * BUG/MEDIUM: threads: cpu-map designating a single thread/process are ignored
+  * BUG/MEDIUM: tcp-check: unbreak multiple connect rules again
+  * BUG/MINOR: mux-pt: do not pretend there's more data after a read0
+  * BUG/MEDIUM: streams: Don't redispatch with L7 retries if redispatch isn't set.
+  * BUG/MEDIUM: streams: Don't give up if we couldn't send the request.
+  * BUG/MINOR: mux-h1: Correctly report Ti timer when HTX and keepalives are used
+  * BUG/MEDIUM: mux-h1: Don't release h1 connection if there is still data to send
+  * BUG/MAJOR: listener: fix thread safety in resume_listener()
+  * MINOR: task: introduce work lists
+  * BUG/MEDIUM: servers: Fix a race condition with idle connections.
+  * DOC: Fix typos and grammer in configuration.txt
+  * BUG/MEDIUM: da: cast the chunk to string.
+  * BUG/MEDIUM: checks: Don't attempt to read if we destroyed the connection.
+  * BUG/MINOR: server: Be really able to keep "pool-max-conn" idle connections
+  * BUG/MEDIUM: fd/threads: fix excessive CPU usage on multi-thread accept
+
+-------------------------------------------------------------------
+Tue Jul 09 11:48:41 UTC 2019 - kgronlund@suse.com
+
+- Update to version 2.0.1+git27.5db881ff:
+  * BUG/MINOR: ssl: revert empty handshake detection in OpenSSL <= 1.0.2
+  * BUG/MEDIUM: servers: Don't forget to set srv_cs to NULL if we can't reuse it.
+  * BUG/MEDIUM: stream-int: Don't rely on CF_WRITE_PARTIAL to unblock opposite si
+  * MINOR: stream-int: Factorize processing done after sending data in si_cs_send()
+  * BUG/MINOR: mux-h1: Don't process input or ouput if an error occurred
+  * BUG/MEDIUM: mux-h1: Handle TUNNEL state when outgoing messages are formatted
+  * BUG/MEDIUM: lb_fas: Don't test the server's lb_tree from outside the lock
+  * BUG/MEDIUM: http/applet: Finish request processing when a service is registered
+  * MINOR: action: Add the return code ACT_RET_DONE for actions
+  * BUG/MINOR: contrib/prometheus-exporter: Don't try to add empty data blocks
+  * MINOR: server: Add "no-tfo" option.
+  * BUG/MEDIUM: sessions: Don't keep an extra idle connection in sessions.
+  * BUG/MEDIUM: servers: Authorize tfo in default-server.
+  * BUG/MEDIUM: connections: Make sure we're unsubscribe before upgrading the mux.
+  * BUG/MINOR: contrib/prometheus-exporter: Respect the reserve when data are sent
+  * BUG/MINOR: hlua/htx: Respect the reserve when HTX data are sent
+  * BUG/MEDIUM: channel/htx: Use the total HTX size in channel_htx_recv_limit()
+  * BUG/MINOR: hlua: Don't use channel_htx_recv_max()
+  * BUG/MINOR: contrib/prometheus-exporter: Don't use channel_htx_recv_max()
+  * BUG/MEDIUM: checks: Make sure the tasklet won't run if the connection is closed.
+  * BUG/MEDIUM: connections: Always call shutdown, with no linger.
+  * BUG/MINOR: mux-h1: Don't return the empty chunk on HEAD responses
+  * BUG/MINOR: mux-h1: Skip trailers for non-chunked outgoing messages
+  * BUG/MEDIUM: checks: unblock signals in external checks
+  * BUG/MEDIUM: mux-h1: Always release H1C if a shutdown for writes was reported
+  * BUG/MEDIUM: ssl: Don't attempt to set alpn if we're not using SSL.
+  * BUG/MINOR: mworker/cli: don't output a \n before the response
+  * BUG/MINOR: mux-h1: Make format errors during output formatting fatal
+  * BUG/MEDIUM: mux-h1: Use buf_room_for_htx_data() to detect too large messages
+  * BUG/MEDIUM: proto_htx: Don't add EOM on 1xx informational messages
+  * BUG/MINOR: log: Detect missing sampling ranges in config
+  * BUG/MINOR: memory: Set objects size for pools in the per-thread cache
+  * BUG/MAJOR: mux-h1: Don't crush trash chunk area when outgoing message is formatted
+  * BUG/MINOR: htx: Save hdrs_bytes when the HTX start-line is replaced
+  * BUG/MEDIUM: ssl: Don't do anything in ssl_subscribe if we have no ctx.
+  * BUG/MEDIUM: connections: Always add the xprt handshake if needed.
+  * BUG/MEDIUM: stream_interface: Don't add SI_FL_ERR the state is < SI_ST_CON.
+  * BUG/MINOR: spoe: Fix memory leak if failing to allocate memory
+  * BUG/MEDIUM: mworker/cli: command pipelining doesn't work anymore
+  * BUG/MEDIUM: mworker: don't call the thread and fdtab deinit
+  * BUG/MINOR: mworker-prog: Fix segmentation fault during cfgparse
+  * BUG/MAJOR: sample: Wrong stick-table name parsing in "if/unless" ACL condition.
+  * BUG/MEDIUM: lb_fwlc: Don't test the server's lb_tree from outside the lock
+  * BUG/MEDIUM: mux-h2: Remove the padding length when a DATA frame size is checked
+  * BUG/MEDIUM: mux-h2: Reset padlen when several frames are demux
+
+-------------------------------------------------------------------
+Sun Jun 30 10:24:18 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Correct version line, which should be 2.0.0+git6.
+
+-------------------------------------------------------------------
+Tue Jun 18 12:09:15 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- allow the new master socket path in the apparmor profile
+
+-------------------------------------------------------------------
+Tue Jun 18 12:04:20 UTC 2019 - mrueckert@suse.de
+
+- Update to version 2.0.0~git6.41dc8432:
+  * BUG/MEDIUM: htx: Fully update HTX message when the block value is changed
+  * MINOR: htx: Add the function htx_change_blk_value_len()
+  * BUG/MEDIUM: compression: Set Vary: Accept-Encoding for compressed responses
+  * BUG/MINOR: mux-h1: Add the header connection in lower case in outgoing messages
+  * BUG/MINOR: lua/htx: Make txn.req_req_* and txn.res_rep_* HTX aware
+  * BUG/MEDIUM: h2/htx: Update data length of the HTX when the cookie list is built
+
+-------------------------------------------------------------------
+Mon Jun 17 12:33:47 UTC 2019 - kgronlund@suse.com
+
+- Update to version 2.0.0~git0.ba23630a:
+  - new internal native HTTP representation called HTX, was already in 1.9
+    and is now enabled by default in 2.0 ;
+
+  - end-to-end HTTP/2 support including trailers and continuation frames,
+    as needed for gRPC ; HTTP/2 may also be upgraded from HTTP/1.1 using
+    the H2 preface;
+
+  - server connection pooling and more advanced reuse, with ALPN protocol
+    negotiation (already in 1.9) ;
+
+  - layer 7 retries, allowing to use 0-RTT and TCP Fast Open to the servers
+    as well as on the frontend ;
+
+  - much more scalable multi-threading, which is even enabled by default on
+    platforms where it was successfully tested ; by default, as many threads
+    are started as the number of CPUs haproxy is allowed to run on. This
+    removes a lot of configuration burden in VMs and containers ;
+
+  - automatic maxconn setting for the process and the frontends, directly
+    based on the number of available FDs (easier configuration in containers
+    and with systemd) ;
+
+  - logging to stdout for use in containers and systemd (already in 1.9).
+    Logs can now provide micro-second resolution for some events ;
+
+  - peers now support SSL, declaration of multiple stick-tables directly in
+    the peers section, and synchronization of server names, not just IDs ;
+
+  - In master-worker mode, the master process now exposes its own CLI and
+    can communicate with all other processes (including the stopping ones),
+    even allowing to connect to their CLI and check their state. It is also
+    possible to start some sidecar programs and monitor them from the master,
+    and the master can automatically kill old processes that survived too
+    many reloads ;
+
+  - the incoming connections are load-balanced between all threads depending
+    on their load to minimize the processing time and maximize the capacity
+    (already in 1.9) ;
+
+  - the SPOE connection load-balancing was significantly improved in order
+    to reduce high percentiles of SPOA response time (already in 1.9) ;
+
+  - the "random" load balancing algorithm and a power-of-two-choices variant
+    were introduced ;
+
+  - statistics improvements with per-thread counters for certain things, and
+    a prometheus exporter for all our statistics;
+
+  - lots of debugging help, it's easier to produce a core dump, there are
+    new commands on the CLI to control various things, there is a watchdog
+    to fail cleanly when a thread deadlock or a spinning task are detected,
+    so overall it should provide a better experience in field and less
+    round trips between users and developers (hence less stress during an
+    incident).
+
+  - all 3 device detection engines are now compatible with multi-threading
+    and can be build-tested without any external dependencies ;
+
+  - "do-resolve" http-request action to perform a DNS resolution on any,
+    sample, and resolvers now support relying on /etc/resolv.conf to match
+    the local resolver ;
+
+  - log sampling and balancing : it's now possible to send 1 log every 10
+    to a server, or to spread the logging load over multiple log servers;
+
+  - a new SPOA agent (spoa_server) allows to interface haproxy with Python
+    and Lua programs ;
+
+  - support for Solaris' event ports (equivalent of kqueue or epoll) which
+    will significantly improve the performance there when dealing with
+    numerous connections ;
+
+  - some warnings are now reported for some deprecated options that will
+    be removed in 2.1. Since 2.0 is long term supported, there's no
+    emergency to convert them, however if you see these warnings, you
+    need to understand that you're among their extremely rare users and
+    just because of this you may be taking risks by keeping them ;
+
+  - A new SOCKS4 server-side layer was provided ; it allows outgoing
+    connections to be forwarded through a SOCKS4 proxy (such as ssh -D).
+
+  - priority- and latency- aware server queues : it is possible now to
+    assign priorities to certain requests and/or to give them a time
+    bonus or penalty to refine control of the traffic and be able to
+    engage on SLAs.
+
+  - internally the architecture was significantly redesigned to allow to
+    further improve performance and make it easier to implement protocols
+    that span over multiple layers (such as QUIC). This work started in
+    1.9 and will continue with 2.1.
+
+  - the I/O, applets and tasks now share the same multi-threaded scheduler,
+    giving a much better responsiveness and fairness between all tasks as
+    is visible with the CLI which always responds instantly even under
+    extreme loads (started in 1.9) ;
+
+  - the internal buffers were redesigned to ease zero-copy operations, so
+    that it is possible to sustain a high bandwidth even when forwarding
+    HTTP/1 to/from HTTP/2 (already in 1.9) ;
+
+-------------------------------------------------------------------
+Fri May 03 12:56:13 UTC 2019 - kgronlund@suse.com
+
+- Update to version 1.8.20~git0.6fb9fadc:
+  * [RELEASE] Released version 1.8.20
+  * BUG/MINOR: spoe: Don't systematically wakeup SPOE stream in the applet handler
+  * BUG/MINOR: da: Get the request channel to call CHECK_HTTP_MESSAGE_FIRST()
+  * BUG/MINOR: 51d: Get the request channel to call CHECK_HTTP_MESSAGE_FIRST()
+  * BUG/MEDIUM: thread/http: Add missing locks in set-map and add-acl HTTP rules
+  * BUG/MINOR: acl: properly detect pattern type SMP_T_ADDR
+  * BUG/MEDIUM: maps: only try to parse the default value when it's present
+  * BUG/MAJOR: http_fetch: Get the channel depending on the keyword used
+  * MINOR: skip get_gmtime where tm is unused
+  * BUILD/MINOR: listener: Silent a few signedness warnings.
+  * BUG/MEDIUM: listener: make sure the listener never accepts too many conns
+  * BUG/MEDIUM: listener: use a self-locked list for the dequeue lists
+  * MAJOR: listener: do not hold the listener lock in listener_accept()
+  * BUG/MEDIUM: list: fix incorrect pointer unlocking in LIST_DEL_LOCKED()
+  * BUG/MEDIUM: list: fix again LIST_ADDQ_LOCKED
+  * BUG/MEDIUM: list: correct fix for LIST_POP_LOCKED's removal of last element
+  * MINOR: list: make the delete and pop operations idempotent
+  * BUG/MEDIUM: list: add missing store barriers when updating elements and head
+  * BUG/MEDIUM: list: fix LIST_POP_LOCKED's removal of the last pointer
+  * BUG/MEDIUM: list: fix the rollback on addq in the locked liss
+  * BUG/MEDIUM: lists: Properly handle the case we're removing the first elt.
+  * MINOR: lists: Implement locked variations.
+  * BUG/MINOR: threads: fix the process range of thread masks
+  * BUG/MEDIUM: spoe: Return an error if nothing is encoded for fragmented messages
+  * BUG/MEDIUM: spoe: Queue message only if no SPOE applet is attached to the stream
+  * BUG/MEDIUM: pattern: assign pattern IDs after checking the config validity
+  * BUILD: connection: fix naming of ip_v field
+  * BUILD: use inttypes.h instead of stdint.h
+  * BUG/MEDIUM: peers: fix a case where peer session is not cleanly reset on release.
+  * MINOR: cli: start addresses by a prefix in 'show cli sockets'
+  * BUG/MINOR: cli: correctly handle abns in 'show cli sockets'
+  * BUILD: Makefile: disable shared cache on AIX 5.1
+  * BUILD: makefile: add _LINUX_SOURCE_COMPAT to build on AIX-51
+  * BUILD: makefile: fix build of IPv6 header on aix51
+  * MINOR: tools: make memvprintf() never pass a NULL target to vsnprintf()
+  * BUILD: makefile: work around an old bug in GNU make-3.80
+  * BUG/MAJOR: checks: segfault during tcpcheck_main
+  * DOC: The option httplog is no longer valid in a backend.
+  * BUG/MEDIUM: ssl: ability to set TLS 1.3 ciphers using ssl-default-server-ciphersuites
+  * BUG/MINOR: http/counters: fix missing increment of fe->srv_aborts
+  * BUG/MAJOR: stats: Fix how huge POST data are read from the channel
+  * BUG/MAJOR: spoe: Fix initialization of thread-dependent fields
+  * BUG/MEDIUM: threads/fd: do not forget to take into account epoll_fd/pipes
+  * MEDIUM: threads: Use __ATOMIC_SEQ_CST when using the newer atomic API.
+  * BUG/MINOR: ssl: fix warning about ssl-min/max-ver support
+  * BUG/MEDIUM: 51d: fix possible segfault on deinit_51degrees()
+  * BUG/MEDIUM: logs: Only attempt to free startup_logs once.
+  * BUG/MINOR: listener: keep accept rate counters accurate under saturation
+  * BUG/MAJOR: listener: Make sure the listener exist before using it.
+
+-------------------------------------------------------------------
+Mon Feb 11 15:16:38 UTC 2019 - kgronlund@suse.com
+
+- Update to version 1.8.19~git0.ebf033b4:
+  * [RELEASE] Released version 1.8.19
+  * BUG/MINOR: config: Reinforce validity check when a process number is parsed
+  * BUG/MAJOR: stream: avoid double free on unique_id
+  * BUG/MAJOR: spoe: Don't try to get agent config during SPOP healthcheck
+  * BUG/MEDIUM: server: initialize the idle conns list after parsing the config
+  * BUG/MEDIUM: spoe: initialization depending on nbthread must be done last
+  * BUG/MINOR: lua: initialize the correct idle conn lists for the SSL sockets
+  * BUG/MINOR: spoe: do not assume agent->rt is valid on exit
+  * DOC: ssl: Stop documenting ciphers example to use
+  * DOC: ssl: Clarify when pre TLSv1.3 cipher can be used
+  * [RELEASE] Released version 1.8.18
+  * BUG/MINOR: config: make sure to count the error on incorrect track-sc/stick rules
+  * BUG/MAJOR: spoe: verify that backends used by SPOE cover all their callers' processes
+  * BUG/MAJOR: config: verify that targets of track-sc and stick rules are present
+  * BUG/MINOR: config: fix bind line thread mask validation
+  * BUG/MEDIUM: stream: Don't forget to free s->unique_id in stream_free().
+  * BUG/MEDIUM: mux-h2: do not close the connection on aborted streams
+  * MINOR: connstream: have a new flag CS_FL_KILL_CONN to kill a connection
+  * MINOR: stream-int: add a new flag to mention that we want the connection to be killed
+  * MINOR: stream-int: expand the flags to 32-bit
+  * BUG/MEDIUM: mux-h2: wait for the mux buffer to be empty before closing the connection
+  * BUG/MEDIUM: mux-h2: make sure never to send GOAWAY on too old streams
+  * BUG/MEDIUM: mux-h2: fix two half-closed to closed transitions
+  * BUG/MEDIUM: mux-h2: wake up flow-controlled streams on initial window update
+  * MINOR: xref: Add missing barriers.
+  * BUG/MINOR: stream: don't close the front connection when facing a backend error
+  * SCRIPTS: add the issue tracker URL to the announce script
+  * SCRIPTS: add the slack channel URL to the announce script
+  * BUG/MINOR: deinit: tcp_rep.inspect_rules not deinit, add to deinit
+  * BUG/MINOR: spoe: corrected fragmentation string size
+  * DOC: nbthread is no longer experimental.
+  * BUG/MINOR: hpack: return a compression error on invalid table size updates
+  * BUG/MINOR: mux-h2: make it possible to set the error code on an already closed stream
+  * BUG/MINOR: mux-h2: headers-type frames in HREM are always a connection error
+  * BUG/MINOR: mux-h2: CONTINUATION in closed state must always return GOAWAY
+  * MINOR: h2: declare new sets of frame types
+  * MINOR: h2: add a bit-based frame type representation
+  * DOC: mention the effect of nf_conntrack_tcp_loose on src/dst
+  * BUG/MEDIUM: ssl: Fix handling of TLS 1.3 KeyUpdate messages
+  * BUG/MINOR: check: Wake the check task if the check is finished in wake_srv_chk()
+  * BUG/MINOR: server: don't always trust srv_check_health when loading a server state
+  * BUG/MINOR: stick_table: Prevent conn_cur from underflowing
+  * BUG/MINOR: backend: BE_LB_LKUP_CHTREE is a value, not a bit
+  * BUG/MINOR: backend: balance uri specific options were lost across defaults
+  * BUG/MINOR: backend: don't use url_param_name as a hint for BE_LB_ALGO_PH
+  * BUG/MEDIUM: ssl: missing allocation failure checks loading tls key file
+  * DOC: Be a bit more explicit about allow-0rtt security implications.
+  * BUG/MEDIUM: ssl: Disable anti-replay protection and set max data with 0RTT.
+  * BUG/MAJOR: cache: fix confusion between zero and uninitialized cache key
+  * DOC: http-request cache-use / http-response cache-store expects cache name
+
+-------------------------------------------------------------------
+Thu Jan 10 08:42:33 UTC 2019 - kgronlund@suse.com
+
+- Update to version 1.8.17~git0.e89d25b2 (bsc#1121283) (CVE-2018-20615):
+  * BUG/CRITICAL: mux-h2: re-check the frame length when PRIORITY is used
+  * BUG/MEDIUM: lua: dead lock when Lua tasks are trigerred
+  * BUG/MINOR: lua: bad args are returned for Lua actions
+  * BUG/MINOR: lua: Return an error if a legacy HTTP applet doesn't send anything
+  * BUG/MEDIUM: cli: make "show sess" really thread-safe
+  * MINOR: stream/cli: report more info about the HTTP messages on "show sess all"
+  * MINOR: stream/cli: fix the location of the waiting flag in "show sess all"
+  * MINOR: lb: allow redispatch when using consistent hash
+  * BUG/MEDIUM: server: Also copy "check-sni" for server templates.
+  * BUG/MEDIUM: mux-h2: mark that we have too many CS once we have more than the max
+  * MINOR: mux-h2: only increase the connection window with the first update
+  * BUG/MAJOR: stream-int: Update the stream expiration date in stream_int_notify()
+  * BUG/MEDIUM: dns: overflowed dns name start position causing invalid dns error
+  * BUG/MEDIUM: dns: Don't prevent reading the last byte of the payload in dns_validate_response()
+  * BUG/MINOR: logs: leave startup-logs global and not per-thread
+
+-------------------------------------------------------------------
+Mon Dec 17 09:42:18 UTC 2018 - kgronlund@suse.com
+
+- Update to version 1.8.15~git0.6b6a350a: (bsc#1119419) (CVE-2018-20103) (VUL-0) (bsc#1119368) (CVE-2018-20102)
+  * DOC: Update configuration doc about the maximum number of stick counters.
+  * BUG: dns: Fix off-by-one write in dns_validate_dns_response()
+  * BUG: dns: Fix out-of-bounds read via signedness error in dns_validate_dns_response()
+  * BUG: dns: Prevent out-of-bounds read in dns_validate_dns_response()
+  * BUG: dns: Prevent out-of-bounds read in dns_read_name()
+  * BUG: dns: Prevent stack-exhaustion via recursion loop in dns_read_name
+  * DOC: refer to check-sni in the documentation of sni
+  * DOC: clarify that check-sni needs an argument.
+  * MINOR: servers: Free [idle|safe|priv]_conns on exit.
+  * MINOR: stats: report the number of active jobs and listeners in "show info"
+  * BUG/MINOR: mux-h2: advertise a larger connection window size
+  * BUG/MINOR: mux-h2: refrain from muxing during the preface
+  * BUG/MINOR: hpack: fix off-by-one in header name encoding length calculation
+  * BUG/MEDIUM: sample: Don't treat SMP_T_METH as SMP_T_STR.
+  * BUG/MINOR: lb-map: fix unprotected update to server's score
+  * BUG/MINOR: cfgparse: Fix the call to post parser of the last sections parsed
+  * BUG/MINOR: cfgparse: Fix transition between 2 sections with the same name
+  * BUG/MINOR: ssl: ssl_sock_parse_clienthello ignores session id
+  * BUG/MEDIUM: hpack: fix encoding of "accept-ranges" field
+  * BUG/MINOR: config: Copy default error messages when parsing of a backend starts
+  * BUG/MEDIUM: Make sure stksess is properly aligned.
+  * BUG/MINOR: config: better detect the presence of the h2 pattern in npn/alpn
+  * BUG/MEDIUM: auth/threads: use of crypt() is not thread-safe
+  * BUG/MAJOR: http: http_txn_get_path() may deference an inexisting buffer
+  * BUG/MINOR: only auto-prefer last server if lb-alg is non-deterministic
+  * BUG/MINOR: only mark connections private if NTLM is detected
+  * DOC: cache: Missing information about "total-max-size"
+  * BUG/MINOR: ssl: Wrong usage of shctx_init().
+  * BUG/MINOR: cache: Wrong usage of shctx_init().
+  * BUG/MINOR: cache: Crashes with "total-max-size" > 2047(MB).
+  * BUG/MEDIUM: h2: Close connection if no stream is left an GOAWAY was sent.
+  * BUG/MEDIUM: pools: Fix the usage of mmap()) with DEBUG_UAF.
+  * DOC: fix reference to map files in MAINTAINERS
+  * MINOR: peers: use defines instead of enums to appease clang.
+  * MINOR: cfgparse: Write 130 as 128 as 0x82 and 0x80.
+  * MINOR: server: Use memcpy() instead of strncpy().
+  * CLEANUP: stick-tables: Remove unneeded double (()) around conditional clause
+  * MINOR: lua: all functions calling lua_yieldk() may return
+  * BUG/MEDIUM: threads: make sure threads_want_sync is marked volatile
+  * BUG/MEDIUM: threads: fix thread_release() at the end of the rendez-vous point
+  * BUG/MEDIUM: stream: don't crash on out-of-memory
+  * BUG/MEDIUM: mworker: segfault receiving SIGUSR1 followed by SIGTERM.
+  * BUG/MINOR: checks: queues null-deref
+  * BUG/MEDIUM: Cur/CumSslConns counters not threadsafe.
+  * MEDIUM: ssl: add support for ciphersuites option for TLSv1.3
+  * BUG/MEDIUM: buffers: Make sure we don't wrap in buffer_insert_line2/replace2.
+  * BUG/MINOR: backend: check that the mux installed properly
+  * BUG/MINOR: connection: avoid null pointer dereference in send-proxy-v2
+  * DOC: clarify force-private-cache is an option
+  * MINOR: threads: Make sure threads_sync_pipe is initialized before using it.
+
+-------------------------------------------------------------------
+Thu Sep 20 13:03:31 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- also fix the systemd case for the apparmor_reload change
+
+-------------------------------------------------------------------
+Thu Sep 20 12:50:35 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- only reload the apparmor profile on newer distros, seems older
+  distros do not have apparmor-rpm-macros yet
+
+-------------------------------------------------------------------
+Thu Sep 20 12:45:57 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- only use network namespaces on 12.x and newer, failed to build on
+  sle11
+
+-------------------------------------------------------------------
+Thu Sep 20 12:39:42 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- guard all parts referring to systemd to fix build on sle 11
+
+-------------------------------------------------------------------
+Thu Sep 20 12:34:47 UTC 2018 - mrueckert@suse.de
+
+- Update to version 1.8.14~git0.52e4d43b: (bsc#1108683) (CVE-2018-14645)
+  * [RELEASE] Released version 1.8.14
+  * BUG/CRITICAL: hpack: fix improper sign check on the header index value
+  * BUG/MINOR: cli: make sure the "getsock" command is only called on connections
+  * BUG/MINOR: tools: fix set_net_port() / set_host_port() on IPv4
+  * BUG/MEDIUM: patterns: fix possible double free when reloading a pattern list
+  * DOC: Fix typos in lua documentation
+  * BUG/MINOR: server: Crash when setting FQDN via CLI.
+  * BUG/MAJOR: kqueue: Don't reset the changes number by accident.
+  * BUG/MEDIUM: snapshot: take the proxy's lock while dumping errors
+  * BUG/MINOR: http/threads: atomically increment the error snapshot ID
+  * BUG/MINOR: dns: check and link servers' resolvers right after config parsing
+  * BUG/MEDIUM: h2: fix risk of memory leak on malformated wrapped frames
+  * BUG/MEDIUM: session: fix reporting of handshake processing time in the logs
+  * BUG/MINOR: stream: use atomic increments for the request counter
+  * MINOR: thread: implement HA_ATOMIC_XADD()
+  * BUG/MEDIUM: ECC cert should work with TLS < v1.2 and openssl >= 1.1.1
+  * BUG/MEDIUM: dns/server: fix incomatibility between SRV resolution and server state file
+  * BUG/MEDIUM: hlua: Don't call RESET_SAFE_LJMP if SET_SAFE_LJMP returns 0.
+  * BUG/MAJOR: thread: lua: Wrong SSL context initialization.
+  * BUG/MEDIUM: hlua: Make sure we drain the output buffer when done.
+  * BUG/MEDIUM: lua: reset lua transaction between http requests
+  * BUG/MEDIUM: mux_pt: dereference the connection with care in mux_pt_wake()
+  * BUG/MINOR: lua: Bad HTTP client request duration.
+  * BUG/MEDIUM: unix: provide a ->drain() function
+  * DOC: Fix spelling error in configuration doc
+  * BUG/MEDIUM: cli/threads: protect some server commands against concurrent operations
+  * BUG/MEDIUM: cli/threads: protect all "proxy" commands against concurrent updates
+  * BUG/MEDIUM: lua: socket timeouts are not applied
+  * DOC: ssl: Use consistent naming for TLS protocols
+  * DOC: dns: explain set server ... fqdn requires resolver
+  * BUG/MINOR: map: fix map_regm with backref
+  * BUG/MEDIUM: ssl: loading dh param from certifile causes unpredictable error.
+  * BUG/MEDIUM: ssl: fix missing error loading a keytype cert from a bundle.
+  * BUG/MINOR: ssl: empty connections reported as errors.
+  * BUG/MEDIUM: cli: make "show fd" thread-safe
+  * MEDIUM: hathreads: implement a more flexible rendez-vous point
+  * BUG/MEDIUM: threads: fix the no-thread case after the change to the sync point
+  * MINOR: threads: add more consistency between certain variables in no-thread case
+  * BUG/MEDIUM: threads: fix the double CAS implementation for ARMv7
+  * MINOR: threads: Introduce double-width CAS on x86_64 and arm.
+  * BUG/MEDIUM: lua: possible CLOSE-WAIT state with '\n' headers
+
+-------------------------------------------------------------------
+Fri Aug 17 11:41:35 UTC 2018 - kgronlund@suse.com
+
+- Require apparmor-abstractions to reduce dependencies (bsc#1100787)
+
+-------------------------------------------------------------------
+Thu Aug 16 07:08:12 UTC 2018 - kgronlund@suse.com
+
+- Update to version 1.8.13~git4.c1bfcd00:
+  * MINOR: dns: new DNS options to allow/prevent IP address duplication
+  * MINOR: dns: fix wrong score computation in dns_get_ip_from_response
+  * BUG/MEDIUM: queue: prevent a backup server from draining the proxy's connections
+  * BUG/MEDIUM: servers: check the queues once enabling a server
+  * MEDIUM: proxy_protocol: Convert IPs to v6 when protocols are mixed
+  * BUG/MEDIUM: threads: unbreak "bind" referencing an incorrect thread number
+  * MINOR: threads: move "nbthread" parsing to hathreads.c
+  * BUG/MEDIUM: threads: properly fix nbthreads == MAX_THREADS
+  * BUG/MINOR: threads: Handle nbthread == MAX_THREADS.
+  * BUG/MINOR: config: stick-table is not supported in defaults section
+  * BUG/MEDIUM: h2: prevent orphaned streams from blocking a connection forever
+  * BUG/MEDIUM: threads/sync: use sched_yield when available
+  * BUG/MINOR: servers: Don't make "server" in a frontend fatal.
+  * BUG/MEDIUM: stats: don't ask for more data as long as we're responding
+  * BUG/MEDIUM: stream-int: don't immediately enable reading when the buffer was reportedly full
+  * MINOR: h2: add the error code and the max/last stream IDs to "show fd"
+  * BUG/MEDIUM: threads: Fix the exit condition of the thread barrier
+  * MINOR: debug: Add checks for conn_stream flags
+  * MINOR: debug: Add check for CO_FL_WILL_UPDATE
+  * BUG/MINOR: http: Set brackets for the unlikely macro at the right place
+  * BUG/MEDIUM: h2: make sure the last stream closes the connection after a timeout
+  * BUG/MEDIUM: h2: never leave pending data in the output buffer on close
+  * BUG/MEDIUM: h2: don't accept new streams if conn_streams are still in excess
+  * MINOR: h2: add the mux and demux buffer lengths on "show fd"
+  * MINOR: h2: keep a count of the number of conn_streams attached to the mux
+  * BUG/MINOR: h2: remove accidental debug code introduced with show_fd function
+  * MINOR: h2: implement a basic "show_fd" function
+  * MINOR: mux: add a "show_fd" function to dump debugging information for "show fd"
+  * BUG/MINOR: ssl: properly ref-count the tls_keys entries
+  * MINOR: systemd: consider exit status 143 as successful
+
+-------------------------------------------------------------------
+Wed Jun 27 17:33:49 UTC 2018 - kgronlund@suse.com
+
+- Update to version 1.8.12~git0.8a200c71:
+  * MINOR: stick-tables: make stktable_release() do nothing on NULL
+  * BUG/MAJOR: stick_table: Complete incomplete SEGV fix
+
+-------------------------------------------------------------------
+Wed Jun 27 08:36:29 UTC 2018 - kgronlund@suse.com
+
+- Update to version 1.8.11~git0.1d6ef58d:
+  * BUG/BUILD: threads: unbreak build without threads
+  * BUG/MAJOR: Stick-tables crash with segfault when the key is not in the stick-table
+
+-------------------------------------------------------------------
+Mon Jun 25 05:16:57 UTC 2018 - kgronlund@suse.com
+
+- Update to version 1.8.10~git0.ec17d7a9:
+  * MINOR: threads: Be sure to remove threads from all_threads_mask on exit
+  * BUG/MEDIUM: threads: Use the sync point to check active jobs and exit
+  * BUG/MEDIUM: fd: Don't modify the update_mask in fd_dodelete().
+  * BUG/MAJOR: ssl: OpenSSL context is stored in non-reserved memory slot
+  * BUG/MAJOR: ssl: Random crash with cipherlist capture
+  * BUG/MINOR: lua: Segfaults with wrong usage of types.
+  * BUG/MAJOR: map: fix a segfault when using http-request set-map
+  * MINOR: lua: Increase debug information
+  * BUG/MINOR: signals: ha_sigmask macro for multithreading
+  * BUG/MINOR: don't ignore SIG{BUS,FPE,ILL,SEGV} during signal processing
+  * BUG/MEDIUM: threads: handle signal queue only in thread 0
+  * BUG/MINOR: unix: Make sure we can transfer abns sockets on seamless reload.
+  * BUG/MINOR: contrib/modsecurity: update pointer on the end of the frame
+  * BUG/MINOR: contrib/mod_defender: update pointer on the end of the frame
+  * BUG/MINOR: contrib/modsecurity: Don't reset the status code during disconnect
+  * BUG/MINOR: contrib/mod_defender: Don't reset the status code during disconnect
+  * BUG/MINOR: contrib/spoa_example: Don't reset the status code during disconnect
+  * MAJOR: spoe: upgrade the SPOP version to 2.0 and remove the support for 1.0
+  * BUG/MEDIUM: lua/socket: Buffer error, may segfault
+  * BUG/MEDIUM: lua/socket: Sheduling error on write: may dead-lock
+  * BUG/MEDIUM: lua/socket: Notification error
+  * BUG/MAJOR: lua: Dead lock with sockets
+  * BUG/MEDIUM: lua/socket: wrong scheduling for sockets
+  * MINOR: task/notification: Is notifications registered ?
+  * BUG/MEDIUM: spoe: Return an error when the wrong ACK is received in sync mode
+  * BUG/MEDIUM: stick-tables: Decrement ref_cnt in table_* converters
+  * BUG/MEDIUM: lua/socket: Length required read doesn't work
+  * BUG/MEDIUM: servers: Add srv_addr default placeholder to the state file
+  * BUG/MEDIUM: fd: Only check update_mask against all_threads_mask.
+
+-------------------------------------------------------------------
+Tue May 29 07:09:26 UTC 2018 - kgronlund@suse.com
+
+- Update to version 1.8.9~git9.6d82e611:
+  * BUG/MEDIUM: cache: don't cache when an Authorization header is present (VUL-1) (bsc#1094846) (CVE-2018-11469)
+  * BUG/MEDIUM: dns: Delay the attempt to run a DNS resolution on check failure.
+  * BUG/MINOR: ssl/lua: prevent lua from affecting automatic maxconn computation
+  * BUG/MEDIUM: contrib/modsecurity: Use network order to encode/decode flags
+  * BUG/MEDIUM: contrib/mod_defender: Use network order to encode/decode flags
+  * BUG/MEDIUM: spoe: Flags are not encoded in network order
+  * BUG/MINOR: lua: Socket.send threw runtime error: 'close' needs 1 arguments.
+  * BUG/MINOR: spoe: Mistake in error message about SPOE configuration
+  * BUG/MEDIUM: ssl: properly protect SSL cert generation
+  * BUG/MEDIUM: pollers: Use a global list for fd shared between threads.
+  * BUG/MEDIUM: http: don't always abort transfers on CF_SHUTR
+  * BUG/MINOR: lua: ensure large proxy IDs can be represented
+  * BUG/MINOR: lua: schedule socket task upon lua connect()
+  * BUG/MEDIUM: task: Don't free a task that is about to be run.
+  * BUG/MINOR: map: correctly track reference to the last ref_elt being dumped
+  * DOC/MINOR: clean up LUA documentation re: servers & array/table.
+  * BUG/MINOR: lua: Put tasks to sleep when waiting for data
+  * BUG/MEDIUM: threads: Fix the sync point for more than 32 threads
+  * BUG/MINOR: checks: Fix check->health computation for flapping servers
+  * BUG/MINOR: config: disable http-reuse on TCP proxies
+  * BUG/MINOR: lua/threads: Make lua's tasks sticky to the current thread
+  * BUG/MEDIUM: h2: implement missing support for chunked encoded uploads
+  * MINOR: h2: detect presence of CONNECT and/or content-length
+  * BUG/MEDIUM: lua: Fix segmentation fault if a Lua task exits
+  * BUG/MINOR: log: t_idle (%Ti) is not set for some requests
+  * BUG/MAJOR: channel: Fix crash when trying to read from a closed socket
+  * BUG/MINOR: pattern: Add a missing HA_SPIN_INIT() in pat_ref_newid()
+
+-------------------------------------------------------------------
+Mon May 07 12:57:54 UTC 2018 - kgronlund@suse.com
+
+- Update to version 1.8.8:
+  * BUG/CRITICAL: h2: fix incorrect frame length check (VUL-0) (bsc#1089837)
+  * MINOR: cli: Ensure the CLI always outputs an error when it should
+  * BUG/MINOR: cli: Guard against NULL messages when using CLI_ST_PRINT_FREE
+  * BUG/MEDIUM: kqueue: When adding new events, provide an output to get errors.
+  * BUG/MINOR: http: Return an error in proxy mode when url2sa fails
+  * BUG/MEDIUM: connection: Make sure we have a mux before calling detach().
+  * BUG/MEDIUM: threads: Fix the max/min calculation because of name clashes
+
+-------------------------------------------------------------------
+Sat Apr 07 00:15:13 UTC 2018 - mrueckert@suse.de
+
+- Update to version 1.8.7:
+  * [RELEASE] Released version 1.8.7
+  * MINOR: servers: Support alphanumeric characters for the server templates names
+  * BUG/MAJOR: cache: always initialize newly created objects
+  * [RELEASE] Released version 1.8.6
+  * BUG/MINOR: spoe: Don't release the context buffer in .check_timeouts callbaclk
+  * BUG/MINOR: spoe: Initialize variables used during conf parsing before any check
+  * BUG/MAJOR: cache: fix random crashes caused by incorrect delete() on non-first blocks
+  * BUG/MINOR: fd: Don't clear the update_mask in fd_insert.
+  * BUG/MINOR: cache: fix "show cache" output
+  * BUG/MINOR: email-alert: Set the mailer port during alert initialization
+  * BUG/MINOR: checks: check the conn_stream's readiness and not the connection
+  * BUG/MEDIUM: h2: always add a stream to the send or fctl list when blocked
+  * BUILD/MINOR: threads: always export thread_sync_io_handler()
+  * BUG/MEDIUM: h2: don't consider pending data on detach if connection is in error
+  * BUG/MEDIUM: h2/threads: never release the task outside of the task handler
+  * MINOR: h2: fuse h2s_detach() and h2s_free() into h2s_destroy()
+  * MINOR: h2: always call h2s_detach() in h2_detach()
+  * BUG/MAJOR: h2: remove orphaned streams from the send list before closing
+  * MINOR: h2: provide and use h2s_detach() and h2s_free()
+  * CLEANUP: h2: rename misleading h2c_stream_close() to h2s_close()
+  * BUG/MINOR: hpack: fix harmless use of uninitialized value in hpack_dht_insert
+  * BUILD/MINOR: cli: fix a build warning introduced by last commit
+  * MINOR: cli: make "show fd" report the mux and mux_ctx pointers when available
+  * MINOR: cli/threads: make "show fd" report thread_sync_io_handler instead of "unknown"
+  * BUILD/MINOR: fix build when USE_THREAD is not defined
+  * BUG/MINOR: lua funtion hlua_socket_settimeout don't check negative values
+  * BUG/MINOR: lua: the function returns anything
+
+-------------------------------------------------------------------
+Mon Mar 26 06:53:19 UTC 2018 - kgronlund@suse.com
+
+- Update to version 1.8.5:
+  * BUG/MINOR: listener: Don't decrease actconn twice when a new session is rejected
+  * BUG/MINOR: h2: ensure we can never send an RST_STREAM in response to an RST_STREAM
+  * BUG/MEDIUM: h2: properly account for DATA padding in flow control
+  * DOC: don't suggest using http-server-close
+  * DOC: log: more than 2 log servers are allowed
+  * BUILD/BUG: enable -fno-strict-overflow by default
+  * MINOR: log: stop emitting alerts when it's not possible to write on the socket
+  * BUG/MEDIUM: threads/queue: wake up other threads upon dequeue
+  * BUG/MINOR: tcp-check: use the server's service port as a fallback
+  * BUG/MEDIUM: tcp-check: single connect rule can't detect DOWN servers
+  * BUG/MINOR: lua: return bad error messages
+  * BUG/MINOR: spoa-example: unexpected behavior for more than 127 args
+  * BUG/MINOR: cli: Fix a crash when sending a command with too many arguments
+  * BUG/MINOR: seemless reload: Fix crash when an interface is specified.
+  * BUG/MINOR: dns: don't downgrade DNS accepted payload size automatically
+  * BUG/MAJOR: threads/queue: Fix thread-safety issues on the queues management
+  * BUG/MEDIUM: threads/unix: Fix a deadlock when a listener is temporarily disabled
+  * BUG/MEDIUM: spoe: Remove idle applets from idle list when HAProxy is stopping
+  * BUG/MINOR: force-persist and ignore-persist only apply to backends
+  * BUG/MEDIUM: fix a 100% cpu usage with cpu-map and nbthread/nbproc
+  * BUG/MINOR: cli: Fix a typo in the 'set rate-limit' usage
+  * BUG/MINOR: cli: Fix a crash when passing a negative or too large value to "show fd"
+  * BUG/MEDIUM: h2: also arm the h2 timeout when sending
+  * BUG/MINOR: unix: Don't mess up when removing the socket from the xfer_sock_list.
+  * BUG/MINOR: session: Fix tcp-request session failure if handshake.
+  * MINOR: systemd: Add SystemD's SystemCallFilter option to the unit file
+  * MINOR: systemd: Add SystemD's Protect*= options to the unit file
+  * MINOR: systemd: Add section for SystemD sandboxing to unit file
+  * BUG/MEDIUM: buffer: Fix the wrapping case in bi_putblk
+  * BUG/MEDIUM: buffer: Fix the wrapping case in bo_putblk
+  * BUG/MEDIUM: h2: always consume any trailing data after end of output buffers
+  * MINOR: stats: display the number of threads in the statistics.
+  * BUG/MINOR: h2: Set the target of dbuf_wait to h2c
+  * MINOR: debug/pools: make DEBUG_UAF also detect underflows
+  * BUG/MINOR: debug/pools: properly handle out-of-memory when building with DEBUG_UAF
+  * DOC: cfgparse: Warn on option (tcp|http)log in backend
+  * DOC: lua: new prototype for function "register_action()"
+  * BUG/MEDIUM: ssl/sample: ssl_bc_* fetch keywords are broken.
+  * BUG/MEDIUM: http: Switch the HTTP response in tunnel mode as earlier as possible
+  * BUG/MINOR: ssl/threads: Make management of the TLS ticket keys files thread-safe
+  * BUG/MINOR: init: Add missing brackets in the code parsing -sf/-st
+  * BUG/MEDIUM: ssl: Shutdown the connection for reading on SSL_ERROR_SYSCALL
+  * BUG/MEDIUM: ssl: Don't always treat SSL_ERROR_SYSCALL as unrecovarable.
+  * BUG/MINOR: threads: fix missing thread lock labels for 1.8
+
+-------------------------------------------------------------------
+Thu Mar  8 19:19:06 UTC 2018 - mrueckert@suse.de
+
+- if we lock down the permissions the home directory has to be
+  owned by haproxy (bsc#1077716)
+
+-------------------------------------------------------------------
+Sun Mar  4 08:36:21 UTC 2018 - jengelh@inai.de
+
+- Avoid %__-type macro indirections. Remove redundant %clean
+  section. Do not ignore errors from useradd.
+
+-------------------------------------------------------------------
+Fri Mar  2 16:37:25 UTC 2018 - kgronlund@suse.com
+
+- Ensure haproxy home directory is not world readable (bsc#1077716) 
+
+-------------------------------------------------------------------
+Thu Feb 08 13:15:17 UTC 2018 - kgronlund@suse.com
+
+- Update to version 1.8.4 (bsc#1080069):
+  * BUG/MINOR: config: don't emit a warning when global stats is incompletely configured
+  * DOC: Mention -Ws in the list of available options
+  * DOC: Describe routing impact of using interface keyword on bind lines
+  * MINOR: init: emit warning when -sf/-sd cannot parse argument
+  * BUG/MEDIUM: standard: Fix memory leak in str2ip2()
+  * BUG/MINOR: time/threads: ensure the adjusted time is always correct
+  * BUG/MEDIUM: spoe: Allow producer to read and to forward shutdown on request side
+  * BUG/MEDIUM: spoe: Always try to receive or send the frame to detect shutdowns
+  * BUG/MINOR: epoll/threads: only call epoll_ctl(DEL) on polled FDs
+  * BUG/MINOR: threads: Update labels array because of changes in lock_label enum
+  * BUG/MINOR: cli: use global.maxsock and not maxfd to list all FDs
+  * CLEANUP: Fix typo in ARGT_MSK6 comment
+  * BUG/MINOR: sample: Fix output type of c_ipv62ip
+  * CLEANUP: sample: Fix outdated comment about sample casts functions
+  * CLEANUP: sample: Fix comment encoding of sample.c
+  * BUILD: kqueue/threads: Add test on MAX_THREADS to avoid warnings when complied without threads
+  * BUILD: epoll/threads: Add test on MAX_THREADS to avoid warnings when complied without threads
+  * MINOR: threads: Use __decl_hathreads instead of #ifdef/#endif
+  * BUG/MINOR: kqueue/threads: Don't forget to close kqueue_fd[tid] on each thread
+  * BUG/MEDIUM: checks: Don't try to release undefined conn_stream when a check is freed
+  * BUG/MEDIUM: threads/server: Fix deadlock in srv_set_stopping/srv_set_admin_flag
+  * BUG/MINOR: threads: always set an owner to the thread_sync pipe
+  * MINOR: threads: Fix build when we're not compiling with threads.
+  * BUG/MINOR: mworker: only write to pidfile if it exists
+  * BUG/MEDIUM: threads/mworker: fix a race on startup
+  * BUG/MEDIUM: kqueue/threads: use one kqueue_fd per thread
+  * BUG/MEDIUM: epoll/threads: use one epoll_fd per thread
+  * MINOR: fd: add a bitmask to indicate that an FD is known by the poller
+  * BUG/MEDIUM: fd: maintain a per-thread update mask
+  * BUG/MEDIUM: threads/polling: Use fd_cache_mask instead of fd_cache_num
+  * MINOR: threads/fd: Use a bitfield to know if there are FDs for a thread in the FD cache
+  * MINOR: global: add some global activity counters to help debugging
+  * MINOR: threads: add a MAX_THREADS define instead of LONGBITS
+  * MINOR: global/threads: move cpu_map at the end of the global struct
+  * MINOR: servers: Don't report duplicate dyncookies for disabled servers.
+  * BUG/MEDIUM: peers: fix expire date wasn't updated if entry is modified remotely.
+  * BUG/MINOR: poll: too large size allocation for FD events
+  * CONTRIB: debug: fix a few flags definitions
+  * DOC: clarify the scope of ssl_fc_is_resumed
+  * BUG/MEDIUM: stream: properly handle client aborts during redispatch
+  * BUILD/MINOR: ancient gcc versions atomic fix
+  * BUG/MEDIUM: mworker: execvp failure depending on argv[0]
+  * MINOR: dns: Handle SRV record weight correctly.
+  * BUG/MINOR: lua: Fix return value of Socket.settimeout
+  * BUG/MEDIUM: lua: Fix IPv6 with separate port support for Socket.connect
+  * DOC: lua: Fix typos in comments of hlua_socket_receive
+  * BUG/MINOR: lua: Fix default value for pattern in Socket.receive
+  * BUG/MEDIUM: ssl: cache doesn't release shctx blocks
+  * BUG/MEDIUM: h2: properly handle the END_STREAM flag on empty DATA frames
+
+-------------------------------------------------------------------
+Thu Feb  8 07:21:58 UTC 2018 - kgronlund@suse.com
+
+- Add dependency on apparmor-profiles (bsc#1079985) 
+
+-------------------------------------------------------------------
+Sun Dec 31 02:26:13 UTC 2017 - mrueckert@suse.de
+
+- Update to version 1.8.3:
+  * [RELEASE] Released version 1.8.3
+  * MEDIUM: h2: prepare a graceful shutdown when the frontend is stopped
+  * BUG/MAJOR: hpack: don't return direct references to the dynamic headers table
+  * BUG/MEDIUM: http: don't automatically forward request close
+  * MINOR: don't close stdio anymore
+  * BUG/MEDIUM: mworker: don't close stdio several time
+  * BUG/MEDIUM: h2: ensure we always know the stream before sending a reset
+  * DOC/MINOR: configuration: typo, formatting fixes
+  * BUG/MEDIUM: h2: improve handling of frames received on closed streams
+  * BUG/MEDIUM: h2: properly handle and report some stream errors
+
+-------------------------------------------------------------------
+Sun Dec 24 23:30:31 UTC 2017 - mrueckert@suse.de
+
+- Update to version 1.8.2:
+  * [RELEASE] Released version 1.8.2
+  * BUG/MEDIUM: checks: properly set servers to stopping state on 404
+  * BUG/MAJOR: connection: refine the situations where we don't send shutw()
+  * BUG/MEDIUM: cache: don't cache the response on no-cache="set-cookie"
+  * BUG/MEDIUM: cache: respect the request cache-control header
+  * BUG/MEDIUM: cache: replace old object on store
+  * BUG/MEDIUM: cache: do not try to retrieve host-less requests from the cache
+  * MINOR: http: add a function to check request's cache-control header field
+  * BUG/MINOR: cache: do not force the TX_CACHEABLE flag before checking cacheability
+  * BUG/MINOR: http: properly detect max-age=0 and s-maxage=0 in responses
+  * BUG/MINOR: http: do not ignore cache-control: public
+  * MINOR: http: start to compute the transaction's cacheability from the request
+  * MINOR: http: update the list of cacheable status codes as per RFC7231
+  * MINOR: http: adjust the list of supposedly cacheable methods
+  * BUG/MEDIUM: lua: fix crash when using bogus mode in register_service()
+  * BUG/MEDIUM: checks: a server passed in maint state was not forced down.
+  * MEDIUM: netscaler: add support for standard NetScaler CIP protocol
+  * MEDIUM: netscaler: do not analyze original IP packet size
+  * MINOR: netscaler: check in one-shot if buffer is large enough for IP and TCP header
+  * BUG/MEDIUM: stream: don't consider abortonclose on muxes which close cleanly
+  * MINOR: stream-int: set flag SI_FL_CLEAN_ABRT when mux supports clean aborts
+  * MINOR: mux: add flags to describe a mux's capabilities
+  * BUG/MINOR: h2: properly report a stream error on RST_STREAM
+  * CONTRIB: halog: Fix compiler warnings in halog.c
+  * CONTRIB: iprange: Fix compiler warning in iprange.c
+  * BUG/MAJOR: netscaler: address truncated CIP header detection
+  * BUG/MEDIUM: netscaler: use the appropriate IPv6 header size
+  * MINOR: netscaler: rename cip_len to clarify its uage
+  * MINOR: netscaler: remove the use of cip_magic only used once
+  * MINOR: netscaler: respect syntax
+  * DOC/MINOR: intro: typo, wording, formatting fixes
+  * BUG/MEDIUM: mworker: Set FD_CLOEXEC flag on log fd
+  * BUILD/MINOR: Makefile : enabling USE_CPU_AFFINITY
+  * BUG: MINOR: http: don't check http-request capture id when len is provided
+  * BUG: MAJOR: lb_map: server map calculation broken
+  * BUG/MINOR: stream-int: don't try to receive again after receiving an EOS
+  * BUG/MEDIUM: h2: fix stream limit enforcement
+  * BUG/MEDIUM: http: don't disable lingering on requests with tunnelled responses
+  * BUG/MEDIUM: h2: don't close after the first DATA frame on tunnelled responses
+  * BUG/MEDIUM: h2: don't switch the state to HREM before end of DATA frame
+  * MINOR: h2: don't demand that a DATA frame is complete before processing it
+  * BUG/MEDIUM: h2: support uploading partial DATA frames
+  * MINOR: h2: store the demux padding length in the h2c struct
+  * BUG/MEDIUM: h2: debug incoming traffic in h2_wake()
+  * BUG/MEDIUM: h2: work around a connection API limitation
+  * BUG/MEDIUM: h2: enable recv polling whenever demuxing is possible
+  * BUG/MEDIUM: h2: automatically set CS_FL_RCV_MORE when the output buffer is full
+  * BUG/MEDIUM: stream-int: always set SI_FL_WAIT_ROOM on CS_FL_RCV_MORE
+  * MINOR: conn_stream: add new flag CS_FL_RCV_MORE to indicate pending data
+  * BUG/MEDIUM: lua/notification: memory leak
+  * DOC: notifications: add precisions about thread usage
+  * MINOR: systemd: remove comment about HAPROXY_STATS_SOCKET
+  * BUG/MEDIUM: threads/vars: Fix deadlock in register_name
+  * BUG/MEDIUM: email-alert: don't set server check status from a email-alert task
+  * CONTRIB: halog: Add help text for -s switch in halog program
+  * MINOR: mworker: Improve wording in `void mworker_wait()`
+  * MINOR: mworker: Update messages referencing exit-on-failure
+  * BUG/MEDIUM: h2: fix handling of end of stream again
+  * BUG/MEDIUM: peers: set NOLINGER on the outgoing stream interface
+  * BUG/MEDIUM: checks: a down server going to maint remains definitely stucked on down state.
+  * BUG/MEDIUM: ssl engines: Fix async engines fds were not considered to fix fd limit automatically.
+  * BUG/MEDIUM: mworker: also close peers sockets in the master
+  * BUG/MINOR: ssl: support tune.ssl.cachesize 0 again
+  * BUG/MAJOR: hpack: don't pretend large headers fit in empty table
+  * BUG/MINOR: action: Don't check http capture rules when no id is defined
+
+-------------------------------------------------------------------
+Mon Dec 04 10:33:40 UTC 2017 - kgronlund@suse.com
+
+- Update to version 1.8.1 (bsc#1069954):
+  * BUG/MAJOR: h2: correctly check the request length when building an H1 request
+  * BUG/MAJOR: thread: Be sure to request a sync between threads only once at a time
+  * BUG/MAJOR: thread/peers: fix deadlock on peers sync.
+  * BUG/MEDIUM: h2: do not accept upper case letters in request header names
+  * BUG/MEDIUM: h2: remove connection-specific headers from request
+  * BUG/MEDIUM: h2: enforce the per-connection stream limit
+  * BUG/MEDIUM: checks: Be sure we have a mux if we created a cs.
+  * BUG/MEDIUM: peers: fix some track counter rules dont register entries for sync.
+  * BUG/MEDIUM: h2: don't report an error after parsing a 100-continue response
+  * BUG/MEDIUM: threads/peers: decrement, not increment jobs on quitting
+  * BUG/MEDIUM: stream: fix session leak on applet-initiated connections
+  * BUG/MEDIUM: cache: bad computation of the remaining size
+  * BUG/MEDIUM: ssl: don't allocate shctx several time
+  * BUG/MEDIUM: tcp-check: Don't lock the server in tcpcheck_main
+  * BUG/MEDIUM: kqueue: Don't bother closing the kqueue after fork.
+  * BUG/MINOR: h2: use the H2_F_DATA_* macros for DATA frames
+  * BUG/MINOR: h2: reject response pseudo-headers from requests
+  * BUG/MINOR: h2: properly check PRIORITY frames
+  * BUG/MINOR: h2: reject incorrect stream dependencies on HEADERS frame
+  * BUG/MINOR: h2: do not accept SETTINGS_ENABLE_PUSH other than 0 or 1
+  * BUG/MINOR: h2: the TE header if present may only contain trailers
+  * BUG/MINOR: h2: fix a typo causing PING/ACK to be responded to
+  * BUG/MINOR: h2: ":path" must not be empty
+  * BUG/MINOR: h2: try to abort closed streams as soon as possible
+  * BUG/MINOR: h2: immediately close if receiving GOAWAY after the last stream
+  * BUG/MINOR: hpack: dynamic table size updates are only allowed before headers
+  * BUG/MINOR: hpack: reject invalid header index
+  * BUG/MINOR: hpack: must reject huffman literals padded with more than 7 bits
+  * BUG/MINOR: hpack: fix debugging output of pseudo header names
+  * BUG/MINOR: mworker: detach from tty when in daemon mode
+  * BUG/MINOR: mworker: fix validity check for the pipe FDs
+  * BUG/MINOR: ssl: CO_FL_EARLY_DATA removal is managed by stream
+
+-------------------------------------------------------------------
+Tue Nov 28 13:54:07 UTC 2017 - kgronlund@suse.com
+
+- License is now GPL-3.0+ and LGPL-2.1+ 
+
+-------------------------------------------------------------------
+Mon Nov 27 13:40:32 UTC 2017 - mrueckert@suse.de
+
+- [apparmor]: allow haproxy to restart itself. needed for seamless
+  restart. also reload the apparmor profile on update.
+
+-------------------------------------------------------------------
+Mon Nov 27 13:31:07 UTC 2017 - mrueckert@suse.de
+
+- enable network namespaces on 42.3
+- Enabled systemd notify mode: new BR: pkgconfig(libsystemd)
+  This fixes problems with starting 1.8 on 42.3.
+- apply build option changes as adviced by upstream
+
+-------------------------------------------------------------------
+Mon Nov 27 13:30:30 UTC 2017 - mrueckert@suse.de
+
+- Update to version 1.8.0 (bsc#1069954):
+  https://www.mail-archive.com/haproxy@formilux.org/msg28004.html
+
+-------------------------------------------------------------------
+Wed Aug 23 06:52:05 UTC 2017 - kgronlund@suse.com
+
+- Update to version 1.7.9:
+  * BUG/MINOR: peers: peer synchronization issue (with several peers sections).
+  * BUG/MINOR: lua: In error case, the safe mode is not removed
+  * BUG/MINOR: lua: executes the function destroying the Lua session in safe mode
+  * BUG/MAJOR: lua/socket: resources not detroyed when the socket is aborted
+  * BUG/MEDIUM: lua: bad memory access
+  * DOC: update the list of OpenSSL versions in the README
+  * DOC: Updated 51Degrees git URL to point to a stable version.
+  * BUG/MINOR: http: Set the response error state in http_sync_res_state
+  * MINOR: http: Reorder/rewrite checks in http_resync_states
+  * MINOR: http: Switch requests/responses in TUNNEL mode only by checking txn flags
+  * BUG/MEDIUM: http: Switch HTTP responses in TUNNEL mode when body length is undefined
+  * BUG/MAJOR: http: Fix possible infinity loop in http_sync_(req|res)_state
+  * BUG/MINOR: lua: Fix Server.get_addr() port values
+  * BUG/MINOR: lua: Correctly use INET6_ADDRSTRLEN in Server.get_addr()
+  * BUG/MINOR: lua: always detach the tcp/http tasks before freeing them
+  * BUG/MINOR: lua: Fix bitwise logic for hlua_server_check_* functions.
+
+-------------------------------------------------------------------
+Mon Jul 10 12:05:16 UTC 2017 - kgronlund@suse.com
+
+- Update to version 1.7.8:
+  * BUG/MINOR: stream: flag TASK_WOKEN_RES not set if task in runqueue
+  * BUG/MAJOR: cli: fix custom io_release was crushed by NULL.
+  * BUG/MAJOR: map: fix segfault during 'show map/acl' on cli.
+  * BUG/MAJOR: compression: Be sure to release the compression state in all cases
+  * DOC: fix references to the section about time format.
+  * BUG/MEDIUM: map/acl: fix unwanted flags inheritance.
+  * BUG/MINOR: stream: Don't forget to remove CF_WAKE_ONCE flag on response channel
+  * BUG/MINOR: http: Don't reset the transaction if there are still data to send
+  * BUG/MEDIUM: filters: Be sure to call flt_end_analyze for both channels
+  * BUG/MINOR: http: properly handle all 1xx informational responses
+
+-------------------------------------------------------------------
+Mon Jul 10 12:05:07 UTC 2017 - kgronlund@suse.com
+
+- Update to version 1.7.7:
+  * BUG/MINOR: Wrong peer task expiration handling during synchronization processing.
+  * BUG/MEDIUM: http: Drop the connection establishment when a redirect is performed
+  * BUG/MEDIUM: cfgparse: Check if tune.http.maxhdr is in the range 1..32767
+  * DOC: fix references to the section about the unix socket
+  * BUG/MINOR: log: pin the front connection when front ip/ports are logged
+
+-------------------------------------------------------------------
+Mon Jun 19 05:09:38 UTC 2017 - kgronlund@suse.com
+
+- Update to version 1.7.6:
+  * DOC: changed "block"(deprecated) examples to http-request deny
+  * DOC: add few comments to examples.
+  * DOC: update sample code for PROXY protocol
+  * DOC: mention lighttpd 1.4.46 implements PROXY
+  * DOC: stick-table is available in frontend sections
+  * BUG/MINOR: dns: Wrong address family used when creating IPv6 sockets.
+  * BUG/MINOR: config: missing goto out after parsing an incorrect ACL character
+  * BUG/MINOR: arg: don't try to add an argument on failed memory allocation
+  * BUG/MEDIUM: arg: ensure that we properly unlink unresolved arguments on error
+  * BUG/MEDIUM: acl: don't free unresolved args in prune_acl_expr()
+  * MINOR: lua: ensure the memory allocator is used all the time
+  * CLEANUP: logs: typo: simgle => single
+  * BUG/MEDIUM: acl: proprely release unused args in prune_acl_expr()
+  * BUG/MAJOR: Use -fwrapv.
+  * BUG/MINOR: server: don't use "proxy" when px is really meant.
+  * BUG/MINOR: server: missing default server 'resolvers' setting duplication.
+  * DOC: add layer 4 links/cross reference to "block" keyword.
+  * DOC: errloc/errorloc302/errorloc303 missing status codes.
+  * BUG/MEDIUM: lua: memory leak
+  * MEDIUM: config: don't check config validity when there are fatal errors
+  * BUG/MINOR: hash-balance-factor isn't effective in certain circumstances
+  * MINOR/DOC: lua: just precise one thing
+  * BUG/MINOR: http: Fix conditions to clean up a txn and to handle the next request
+  * DOC: update RFC references
+  * BUG/MINOR: checks: don't send proxy protocol with agent checks
+  * BUG/MEDIUM: lua: segfault if a converter or a sample doesn't return anything
+  * BUG/MAJOR: http: call manage_client_side_cookies() before erasing the buffer
+  * BUG/MINOR: buffers: Fix bi/bo_contig_space to handle full buffers
+  * BUG/MINOR: acls: Set the right refflag when patterns are loaded from a map
+  * BUG/MINOR: http/filters: Be sure to wait if a filter loops in HTTP_MSG_ENDING
+  * BUG/MEDIUM: peers: Peers CLOSE_WAIT issue.
+  * BUG/MAJOR: server: Segfault after parsing server state file.
+  * BUG/MEDIUM: unix: never unlink a unix socket from the file system
+
+-------------------------------------------------------------------
+Mon May 08 13:18:54 UTC 2017 - kgronlund@suse.com
+
+- Update to version 1.7.5:
+  * BUG/MEDIUM: peers: fix buffer overflow control in intdecode.
+  * BUG/MEDIUM: buffers: Fix how input/output data are injected into buffers
+  * BUG/MEDIUM: http: Fix blocked HTTP/1.0 responses when compression is enabled
+  * BUG/MINOR: filters: Don't force the stream's wakeup when we wait in flt_end_analyze
+  * MINOR: config parsing: add warning when log-format/tcplog/httplog is overriden in "defaults" sections
+
+-------------------------------------------------------------------
+Wed Mar 29 11:53:23 UTC 2017 - kgronlund@suse.com
+
+- Update to version 1.7.4:
+  * MINOR: config: warn when some HTTP rules are used in a TCP proxy
+  * BUG/MINOR: spoe: Fix soft stop handler using a specific id for spoe filters
+  * BUG/MINOR: spoe: Fix parsing of arguments in spoe-message section
+  * BUG/MEDIUM: ssl: Clear OpenSSL error stack after trying to parse OCSP file
+  * BUG/MEDIUM: cli: Prevent double free in CLI ACL lookup
+  * BUG/MINOR: Fix "get map <map> <value>" CLI command
+  * BUG/MAJOR: connection: update CO_FL_CONNECTED before calling the data layer
+  * BUG/MEDIUM: ssl: switchctx should not return SSL_TLSEXT_ERR_ALERT_WARNING
+  * BUG/MINOR: checks: attempt clean shutw for SSL check
+  * BUG/MEDIUM: listener: do not try to rebind another process' socket
+  * BUG/MEDIUM: filters: Fix channels synchronization in flt_end_analyze
+  * BUG/MAJOR: stream-int: do not depend on connection flags to detect connection
+  * BUG/MEDIUM: connection: ensure to always report the end of handshakes
+  * BUG: payload: fix payload not retrieving arbitrary lengths
+  * BUG/MAJOR: http: fix typo in http_apply_redirect_rule
+  * BUG/MEDIUM: stream: fix client-fin/server-fin handling
+  * MINOR: fd: add a new flag HAP_POLL_F_RDHUP to struct poller
+  * BUG/MINOR: raw_sock: always perfom the last recv if RDHUP is not available
+  * DOC/MINOR: Fix typos in proxy protocol doc
+  * DOC: Protocol doc: add checksum, TLV type ranges
+  * DOC: Protocol doc: add SSL TLVs, rename CHECKSUM
+  * DOC: Protocol doc: add noop TLV
+  * MEDIUM: global: add a 'hard-stop-after' option to cap the soft-stop time
+  * BUG/MINOR: cfgparse: loop in tracked servers lists not detected by check_config_validity().
+  * MINOR: server: irrelevant error message with 'default-server' config file keyword.
+  * MINOR: doc: fix use-server example (imap vs mail)
+  * BUG/MEDIUM: tcp: don't require privileges to bind to device
+
+-------------------------------------------------------------------
+Tue Feb 28 11:31:02 UTC 2017 - kgronlund@suse.com
+
+- Update to version 1.7.3:
+  * BUG/MINOR: stream: Fix how backend-specific analyzers are set on a stream
+  * BUG/MEDIUM: tcp: don't poll for write when connect() succeeds
+  * BUG/MINOR: unix: fix connect's polling in case no data are scheduled
+  * BUG/MINOR: lua: Map.end are not reliable because "end" is a reserved keyword
+  * MINOR: dns: give ability to dns_init_resolvers() to close a socket when requested
+  * BUG/MAJOR: dns: restart sockets after fork()
+  * MINOR: chunks: implement a simple dynamic allocator for trash buffers
+  * BUG/MEDIUM: http: prevent redirect from overwriting a buffer
+  * BUG/MEDIUM: filters: Do not truncate HTTP response when body length is undefined
+  * BUG/MEDIUM: http: Prevent replace-header from overwriting a buffer
+  * BUG/MINOR: http: Return an error when a replace-header rule failed on the response
+  * BUG/MINOR: sendmail: The return of vsnprintf is not cleanly tested
+  * BUG/MAJOR: lua segmentation fault when the request is like 'GET ?arg=val HTTP/1.1'
+  * BUG/MEDIUM: config: reject anything but "if" or "unless" after a use-backend rule
+  * MINOR: http: don't close when redirect location doesn't start with "/"
+
+-------------------------------------------------------------------
+Mon Jan 30 14:43:01 UTC 2017 - kgronlund@suse.com
+
+- Update to version 1.7.2 (bsc#1023141):
+  * BUG/MEDIUM: lua: In some case, the return of sample-fetches is ignored (2)
+  * BUG/MINOR: stream-int: automatically release SI_FL_WAIT_DATA on SHUTW_NOW
+  * DOC: lua: documentation about time parser functions
+  * DOC: lua: section declared twice
+  * BUG/MINOR: lua/cli: bad error message
+  * DOC: fix small typo in fe_id (backend instead of frontend)
+  * BUG/MINOR: Fix the sending function in Lua's cosocket
+  * BUG/MINOR: lua: memory leak executing tasks
+  * BUG/MINOR: lua: bad return code
+  * BUG/MEDIUM: ssl: properly reset the reused_sess during a forced handshake
+  * BUG/MEDIUM: ssl: avoid double free when releasing bind_confs
+  * BUG/MINOR: stats: fix be/sessions/current out in typed stats
+  * BUG/MINOR: backend: nbsrv() should return 0 if backend is disabled
+  * BUG/MEDIUM: ssl: for a handshake when server-side SNI changes
+  * BUG/MINOR: systemd: potential zombie processes
+  * DOC: Add timings events schemas
+  * BUG/MINOR: option prefer-last-server must be ignored in some case
+  * MINOR: stats: Support "select all" for backend actions
+  * BUG/MINOR: sample-fetches/stick-tables: bad type for the sample fetches sc*_get_gpt0
+  * BUG/MAJOR: channel: Fix the definition order of channel analyzers
+  * BUG/MINOR: http: report real parser state in error captures
+  * BUG/MAJOR: http: fix risk of getting invalid reports of bad requests
+  * MINOR: http: custom status reason.
+  * MINOR: connection: add sample fetch "fc_rcvd_proxy"
+  * BUG/MINOR: config: emit a warning if http-reuse is enabled with incompatible options
+  * BUG/MINOR: tools: fix off-by-one in port size check
+  * BUG/MEDIUM: server: consider AF_UNSPEC as a valid address family
+  * MEDIUM: server: split the address and the port into two different fields
+  * MINOR: tools: make str2sa_range() return the port in a separate argument
+  * MINOR: server: take the destination port from the port field, not the addr
+  * MEDIUM: server: disable protocol validations when the server doesn't resolve
+  * BUG/MEDIUM: tools: do not force an unresolved address to AF_INET:0.0.0.0
+  * BUG/MINOR: ssl: EVP_PKEY must be freed after X509_get_pubkey usage
+  * MINOR: proto_http.c 502 error txt typo.
+  * DOC: add deprecation notice to "block"
+  * BUG/MINOR: Reset errno variable before calling strtol(3)
+
+-------------------------------------------------------------------
+Sat Dec 24 02:36:10 UTC 2016 - mrueckert@suse.de
+
+- Update to version 1.7.1:
+  * BUG/MAJOR: stream: fix session abort on resource shortage
+  * BUG/MINOR: cli: allow the backslash to be escaped on the CLI
+  * BUG/MEDIUM: cli: fix "show stat resolvers" and "show tls-keys"
+  * DOC: Fix map table's format
+  * DOC: Added 51Degrees conv and fetch functions to documentation.
+  * BUG/MINOR: http: don't send an extra CRLF after a Set-Cookie in a redirect
+  * DOC: mention that req_tot is for both frontends and backends
+  * BUG/MEDIUM: variables: some variable name can hide another ones
+  * BUG/MINOR: stats: fix be/sessions/max output in html stats
+  * MINOR: proxy: Add fe_name/be_name fetchers next to existing fe_id/be_id
+  * DOC: lua: Documentation about some entry missing
+  * MINOR: Do not forward the header "Expect: 100-continue" when the option http-buffer-request is set
+  * DOC: Add undocumented argument of the trace filter
+  * DOC: Fix some typo in SPOE documentation
+  * BUG/MINOR: cli: be sure to always warn the cli applet when input buffer is full
+  * MINOR: applet: Count number of (active) applets
+  * MINOR: task: Rename run_queue and run_queue_cur counters
+  * BUG/MEDIUM: stream: Save unprocessed events for a stream
+  * BUG/MAJOR: Fix how the list of entities waiting for a buffer is handled
+  * BUILD/MEDIUM: Fixing the build using LibreSSL
+  * [RELEASE] Released version 1.7.1
+
+-------------------------------------------------------------------
+Fri Dec 02 07:31:16 UTC 2016 - kgronlund@suse.com
+
+- Update to version 1.7.0:
+  * BUG/MEDIUM: proxy: return "none" and "unknown" for unknown LB algos
+  * BUG/MINOR: stats: make field_str() return an empty string on NULL
+  * BUG/MEDIUM: http: Fix tunnel mode when the CONNECT method is used
+  * BUG/MINOR: http: Keep the same behavior between 1.6 and 1.7 for tunneled txn
+  * BUG/MINOR: filters: Protect args in macros HAS_DATA_FILTERS and IS_DATA_FILTER
+  * BUG/MINOR: filters: Invert evaluation order of HTTP_XFER_BODY and XFER_DATA analyzers
+  * BUG/MINOR: http: Call XFER_DATA analyzer when HTTP txn is switched in tunnel mode
+
+-------------------------------------------------------------------
+Fri Dec 02 07:30:49 UTC 2016 - kgronlund@suse.com
+
+- Update to version 1.6.10:
+  * BUG/MEDIUM: systemd-wrapper: return correct exit codes
+  * BUG/MEDIUM: srv-state: properly restore the DRAIN state
+  * BUG/MINOR: srv-state: allow to have both CMAINT and FDRAIN flags
+  * BUG/MEDIUM: servers: properly propagate the maintenance states during startup
+  * BUG: vars: Fix 'set-var' converter because of a typo
+  * BUG/MEDIUM: channel: bad unlikely macro
+  * CLEANUP: lua: move comment
+  * CLEANUP: lua: control executed twice
+  * CLEANUP: ssl: Fix bind keywords name in comments
+  * DOC: ssl: Use correct wording for ca-sign-pass
+  * BUG/MINOR: stick-table: handle out-of-memory condition gracefully
+  * BUG/MEDIUM: connection: check the control layer before stopping polling
+  * BUG/MEDIUM: stick-table: fix regression caused by recent fix for out-of-memory
+  * CONTRIB: initiate a debugging suite to make debugging easier
+  * BUG/MINOR: cli: properly decrement ref count on tables during failed dumps
+  * BUG/MEDIUM: lua: In some case, the return of sample-fetche is ignored
+
+-------------------------------------------------------------------
+Wed Nov 02 16:56:57 UTC 2016 - kgronlund@suse.com
+
+- Update to version 1.6.9+git.1477940904.ab45181 (fate#321723)
+  * BUILD: poll: remove unused hap_fd_isset() which causes a warning with clang
+  * MINOR: cfgparse: few memory leaks fixes.
+  * MINOR: build: Allow linking to device-atlas library file
+  * DOC: Fix typo in description of `-st` parameter in man page
+  * BUG/MEDIUM: peers: on shutdown, wake up the appctx, not the stream
+  * BUG/MEDIUM: peers: fix use after free in peer_session_create()
+  * BUG/MEDIUM: systemd: let the wrapper know that haproxy has completed or failed
+  * MINOR: systemd: report it when execve() fails
+  * BUG/MINOR: systemd: check return value of calloc()
+  * BUG/MINOR: systemd: always restore signals before execve()
+  * BUG/MINOR: systemd: make the wrapper return a non-null status code on error
+  * BUG/MINOR: ssl: prevent multiple entries for the same certificate
+  * BUG/MINOR: ssl: Check malloc return code
+  * BUG/MINOR: vars: smp_fetch_var() doesn't depend on HTTP but on the session
+  * BUG/MINOR: vars: make smp_fetch_var() more robust against misuses
+  * BUG/MINOR: vars: use sess and not s->sess in action_store()
+  * MEDIUM: make SO_REUSEPORT configurable
+  * MINOR: Add fe_req_rate sample fetch
+  * MINOR: show Running on zlib version
+  * MINOR: show Built with PCRE version
+  * BUG/MINOR: displayed PCRE version is running release
+
+-------------------------------------------------------------------
+Thu Sep  1 07:16:13 UTC 2016 - kgronlund@suse.com
+
+- Update to 1.6.9 (bsc#1003264)
+  - MINOR: cli: allow the semi-colon to be escaped on the CLI
+  - BUG/MINOR: payload: fix SSLv2 version parser
+  - BUG/MAJOR: stream: properly mark the server address as unset on connect retry
+  - DOC: Updated 51Degrees readme.
+  - BUG/MAJOR: stick-counters: possible crash when using sc_trackers with wrong table
+  - BUG/MINOR: peers: empty chunks after a resync.
+  - BUG/MINOR: peers: some updates are pushed twice after a resync.
+  - MINOR: sample: use smp_make_rw() in upper/lower converters
+  - BUG/MEDIUM: stick-table: properly convert binary samples to keys
+  - BUG/MEDIUM: stick-tables: do not fail on string keys with no allocated size
+  - BUG/MAJOR: server: the "sni" directive could randomly cause trouble
+  - MINOR: sample: provide smp_is_rw() and smp_make_rw()
+  - MINOR: sample: implement smp_is_safe() and smp_make_safe()
+  - BUG/MEDIUM: samples: make smp_dup() always duplicate the sample
+  - BUG/MAJOR: compression: initialize avail_in/next_in even during flush
+  - BUILD: make proto_tcp.c compatible with musl library
+  - DOC: minor typo fixes to improve HTML parsing by haproxy-dconv
+  - BUG/MEDIUM: stream-int: completely detach connection on connect error
+  - BUG/MEDIUM: lua: somme HTTP manipulation functions are called without valid requests
+  - DOC: lua: remove old functions
+  - BUG/MINOR: peers: Fix peers data decoding issue
+  - BUG/MEDIUM: lua: the function txn_done() from action wrapper can crash
+  - BUG/MEDIUM: lua: the function txn_done() from sample fetches can crash
+
+-------------------------------------------------------------------
+Tue Jul 19 01:50:28 UTC 2016 - mrueckert@suse.de
+
+- update to 1.6.7
+  - MINOR: new function my_realloc2 = realloc + free upon failure
+  - CLEANUP: fixed some usages of realloc leading to memory leak
+  - Revert "BUG/MINOR: ssl: fix potential memory leak in
+    ssl_sock_load_dh_params()"
+  - BUG/MEDIUM: dns: fix alignment issues in the DNS response
+    parser
+  - BUG/MINOR: Fix endiness issue in DNS header creation code
+- changes from 1.6.6
+  - BUG/MAJOR: fix listening IP address storage for frontends
+  - BUG/MINOR: fix listening IP address storage for frontends
+    (cont)
+  - DOC: Fix typo so fetch is properly parsed by Cyril's converter
+  - BUG/MAJOR: http: fix breakage of "reqdeny" causing random
+    crashes
+  - BUG/MEDIUM: stick-tables: fix breakage in table converters
+  - BUG/MEDIUM: dns: unbreak DNS resolver after header fix
+  - BUILD: fix build on Solaris 11
+  - CLEANUP: connection: fix double negation on memcmp()
+  - BUG/MEDIUM: stats: show servers state may show an servers from
+    another backend
+  - BUG/MEDIUM: fix risk of segfault with "show tls-keys"
+  - BUG/MEDIUM: sticktables: segfault in some configuration error
+    cases
+  - BUG/MEDIUM: lua: converters doesn't work
+  - BUG/MINOR: http: add-header: header name copied twice
+  - BUG/MEDIUM: http: add-header: buffer overwritten
+  - BUG/MINOR: ssl: fix potential memory leak in
+    ssl_sock_load_dh_params()
+  - BUG/MINOR: http: url32+src should use the big endian version of
+    url32
+  - BUG/MINOR: http: url32+src should check cli_conn before using
+    it
+  - DOC: http: add documentation for url32 and url32+src
+  - BUG/MINOR: fix http-response set-log-level parsing error
+  - MINOR: systemd: Use variable for config and pidfile paths
+  - MINOR: systemd: Perform sanity check on config before reload
+    (cherry picked from commit
+    68535bddf305fdd22f1449a039939b57245212e7)
+  - BUG/MINOR: init: always ensure that global.rlimit_nofile
+    matches actual limits
+  - BUG/MINOR: init: ensure that FD limit is raised to the max
+    allowed
+  - BUG/MEDIUM: external-checks: close all FDs right after the
+    fork()
+  - BUG/MAJOR: external-checks: use asynchronous signal delivery
+  - BUG/MINOR: external-checks: do not unblock undesired signals
+  - BUILD/MEDIUM: rebuild everything when an include file is
+    changed
+  - BUILD/MEDIUM: force a full rebuild if some build options change
+  - BUG/MINOR: srv-state: fix incorrect output of state file
+  - BUG/MINOR: ssl: close ssl key file on error
+  - BUG/MINOR: http: fix misleading error message for response
+    captures
+  - BUG/BUILD: don't automatically run "make" on "make install"
+  - DOC: add missing doc for
+    http-request deny [deny_status <status>]
+- drop patches which were pulled from git before
+  0001-BUG-MAJOR-fix-listening-IP-address-storage-for-front.patch
+  0002-BUG-MINOR-fix-listening-IP-address-storage-for-front.patch
+  0003-DOC-Fix-typo-so-fetch-is-properly-parsed-by-Cyril-s-.patch
+  0004-BUG-MAJOR-http-fix-breakage-of-reqdeny-causing-rando.patch
+  0005-BUG-MEDIUM-stick-tables-fix-breakage-in-table-conver.patch
+  0006-BUG-MEDIUM-dns-unbreak-DNS-resolver-after-header-fix.patch
+  0007-BUILD-fix-build-on-Solaris-11.patch
+  0008-CLEANUP-connection-fix-double-negation-on-memcmp.patch
+  0009-BUG-MEDIUM-stats-show-servers-state-may-show-an-serv.patch
+  0010-BUG-MEDIUM-fix-risk-of-segfault-with-show-tls-keys.patch
+  0011-BUG-MEDIUM-sticktables-segfault-in-some-configuratio.patch
+  0012-BUG-MEDIUM-lua-converters-doesn-t-work.patch
+  0013-BUG-MINOR-http-add-header-header-name-copied-twice.patch
+  0014-BUG-MEDIUM-http-add-header-buffer-overwritten.patch
+
+-------------------------------------------------------------------
+Thu Jun  9 12:48:27 UTC 2016 - mrueckert@suse.de
+
+- pull patches from git to fix some important issues (bsc#983972) (bsc#983974):
+  0001-BUG-MAJOR-fix-listening-IP-address-storage-for-front.patch
+  0002-BUG-MINOR-fix-listening-IP-address-storage-for-front.patch
+  0003-DOC-Fix-typo-so-fetch-is-properly-parsed-by-Cyril-s-.patch
+  0004-BUG-MAJOR-http-fix-breakage-of-reqdeny-causing-rando.patch
+  0005-BUG-MEDIUM-stick-tables-fix-breakage-in-table-conver.patch
+  0006-BUG-MEDIUM-dns-unbreak-DNS-resolver-after-header-fix.patch
+  0007-BUILD-fix-build-on-Solaris-11.patch
+  0008-CLEANUP-connection-fix-double-negation-on-memcmp.patch
+  0009-BUG-MEDIUM-stats-show-servers-state-may-show-an-serv.patch
+  0010-BUG-MEDIUM-fix-risk-of-segfault-with-show-tls-keys.patch
+  0011-BUG-MEDIUM-sticktables-segfault-in-some-configuratio.patch
+  0012-BUG-MEDIUM-lua-converters-doesn-t-work.patch
+  0013-BUG-MINOR-http-add-header-header-name-copied-twice.patch
+  0014-BUG-MEDIUM-http-add-header-buffer-overwritten.patch
+
+-------------------------------------------------------------------
+Tue May 10 14:24:24 UTC 2016 - mrueckert@suse.de
+
+- update to 1.6.5
+  - BUG/MINOR: log: Don't use strftime() which can clobber timezone
+    if chrooted
+  - BUILD: namespaces: fix a potential build warning in
+    namespaces.c
+  - DOC: add encoding to json converter example
+  - BUG/MINOR: conf: "listener id" expects integer, but its not
+    checked
+  - DOC: Clarify tunes.vars.xxx-max-size settings
+  - BUG/MEDIUM: peers: fix incorrect age in frequency counters
+  - BUG/MEDIUM: Fix RFC5077 resumption when more than
+    TLS_TICKETS_NO are present
+  - BUG/MAJOR: Fix crash in http_get_fhdr with exactly
+    MAX_HDR_HISTORY headers
+  - BUG/MINOR: lua: can't load external libraries
+  - DOC: "addr" parameter applies to both health and agent checks
+  - DOC: timeout client: pointers to timeout http-request
+  - DOC: typo on stick-store response
+  - DOC: stick-table: amend paragraph blaming the loss of table
+    upon reload
+  - DOC: typo: ACL subdir match
+  - DOC: typo: maxconn paragraph is wrong due to a wrong buffer
+    size
+  - DOC: regsub: parser limitation about the inability to use
+    closing square brackets
+  - DOC: typo: req.uri is now replaced by capture.req.uri
+  - DOC: name set-gpt0 mismatch with the expected keyword
+  - BUG/MEDIUM: stick-tables: some sample-fetch doesn't work in the
+    connection state.
+  - DOC: fix "needed" typo
+  - BUG/MINOR: dns: inapropriate way out after a resolution timeout
+  - BUG/MINOR: dns: trigger a DNS query type change on resolution
+    timeout
+  - BUG/MINOR : allow to log cookie for tarpit and denied request
+  - OPTIM/MINOR: session: abort if possible before connecting to
+    the backend
+  - BUG/MEDIUM: trace.c: rdtsc() is defined in two files
+  - BUG/MEDIUM: channel: fix miscalculation of available buffer
+    space (2nd try)
+  - BUG/MINOR: cfgparse: couple of small memory leaks.
+  - BUG/MEDIUM: sample: initialize the pointer before parse_binary
+    call.
+  - DOC: fix discrepancy in the example for http-request redirect
+  - DOC: Clarify IPv4 address / mask notation rules
+  - CLEANUP: fix inconsistency between fd->iocb, proto->accept and
+    accept()
+  - BUG/MEDIUM: fix maxaccept computation on per-process listeners
+  - BUG/MINOR: listener: stop unbound listeners on startup
+  - BUG/MINOR: fix maxaccept computation according to the frontend
+    process range
+  - MEDIUM: unblock signals on startup.
+  - BUG/MEDIUM: channel: don't allow to overwrite the reserve until
+    connected
+  - BUG/MEDIUM: channel: incorrect polling condition may delay
+    event delivery
+  - BUG/MEDIUM: channel: fix miscalculation of available buffer
+    space (3rd try)
+  - BUG/MEDIUM: log: fix risk of segfault when logging HTTP fields
+    in TCP mode
+  - BUG/MEDIUM: lua: protects the upper boundary of the argument
+    list for converters/fetches.
+  - BUG/MINOR: log: fix a typo that would cause %HP to log <BADREQ>
+  - MINOR: channel: add new function channel_congested()
+  - BUG/MEDIUM: http: fix risk of CPU spikes with pipelined
+    requests from dead client
+  - BUG/MAJOR: channel: fix miscalculation of available buffer
+    space (4th try)
+  - BUG/MEDIUM: stream: ensure the SI_FL_DONT_WAKE flag is properly
+    cleared
+  - BUG/MEDIUM: channel: fix inconsistent handling of 4GB-1
+    transfers
+  - BUG/MEDIUM: stats: show servers state may show an empty or
+    incomplete result
+  - BUG/MEDIUM: stats: show backend may show an empty or incomplete
+    result
+  - MINOR: stats: fix typo in help messages
+  - MINOR: stats: show stat resolvers missing in the help message
+  - BUG/MINOR: dns: fix DNS header definition
+  - BUG/MEDIUM: dns: fix alignment issue when building DNS queries
+  - CLEANUP/MINOR: stats: fix accidental addition of member "env"
+    in the applet ctx
+- refreshed patches to apply cleanly again
+  - haproxy-1.6.0-makefile_lib.patch
+  - haproxy-1.6.0-sec-options.patch
+
+-------------------------------------------------------------------
+Mon Mar 14 02:45:05 UTC 2016 - mrueckert@suse.de
+
+- update to 1.6.4 (fate#320607) (bsc#937202)
+  - BUG/MINOR: http: fix several off-by-one errors in the url_param
+    parser
+  - BUG/MINOR: http: Be sure to process all the data received from
+    a server
+  - BUG/MINOR: chunk: make chunk_dup() always check and set
+    dst->size
+  - MINOR: chunks: ensure that chunk_strcpy() adds a trailing zero
+  - MINOR: chunks: add chunk_strcat() and chunk_newstr()
+  - MINOR: chunk: make chunk_initstr() take a const string
+  - MINOR: lru: new function to delete <nb> least recently used
+    keys
+  - DOC: add Ben Shillito as the maintainer of 51d
+  - BUG/MINOR: 51d: Ensures a unique domain for each configuration
+  - BUG/MINOR: 51d: Aligns Pattern cache implementation with
+    HAProxy best practices.
+  - BUG/MINOR: 51d: Releases workset back to pool.
+  - BUG/MINOR: 51d: Aligned const pointers to changes in 51Degrees.
+  - CLEANUP: 51d: Aligned if statements with HAProxy best practices
+    and removed casts from malloc.
+  - DOC: fix a few spelling mistakes (cherry picked from commit
+    cc123c66c2075add8524a6a9925382927daa6ab0)
+  - DOC: fix "workaround" spelling
+  - BUG/MINOR: examples: Fixing haproxy.spec to remove references
+    to .cfg files
+  - MINOR: fix the return type for dns_response_get_query_id()
+    function
+  - MINOR: server state: missing LF (\n) on error message printed
+    when parsing server state file
+  - BUG/MEDIUM: dns: no DNS resolution happens if no ports provided
+    to the nameserver
+  - BUG/MAJOR: servers state: server port is erased when dns
+    resolution is enabled on a server
+  - BUG/MEDIUM: servers state: server port is used uninitialized
+  - BUG/MEDIUM: config: Adding validation to stick-table expire
+    value.
+  - BUG/MEDIUM: sample: http_date() doesn't provide the right day
+    of the week
+  - BUG/MEDIUM: channel: fix miscalculation of available buffer
+    space.
+  - MEDIUM: pools: add a new flag to avoid rounding pool size up
+  - BUG/MEDIUM: buffers: do not round up buffer size during
+    allocation
+  - BUG/MINOR: stream: don't force retries if the server is DOWN
+  - BUG/MINOR: counters: make the sc-inc-gpc0 and sc-set-gpt0 touch
+    the table
+  - MINOR: unix: don't mention free ports on EAGAIN
+  - BUG/CLEANUP: CLI: report the proper field states in "show sess"
+  - MINOR: stats: send content-length with the redirect to allow
+    keep-alive
+  - BUG: stream_interface: Reuse connection even if the output
+    channel is empty
+  - DOC: remove old tunnel mode assumptions
+  - BUG/MAJOR: http-reuse: fix risk of orphaned connections
+  - BUG/MEDIUM: http-reuse: do not share private connections across
+    backends
+  - BUG/MINOR: ssl: Be sure to use unique serial for regenerated
+    certificates
+  - BUG/MINOR: stats: fix missing comma in stats on agent drain
+  - BUG/MINOR: lua: unsafe initialization
+  - DOC: lua: fix somme errors
+  - DOC: add server name at rate-limit sessions example
+  - BUG/MEDIUM: ssl: fix off-by-one in ALPN list allocation
+  - BUG/MEDIUM: ssl: fix off-by-one in NPN list allocation
+  - DOC: LUA: fix some typos and syntax errors
+  - MINOR: cfgparse: warn for incorrect 'timeout retry' keyword
+    spelling in resolvers
+  - MINOR: mailers: increase default timeout to 10 seconds
+  - MINOR: mailers: use <CRLF> for all line endings
+  - BUG/MAJOR: lua: applets can't sleep.
+  - BUG/MINOR: server: some prototypes are renamed
+  - BUG/MINOR: lua: Useless copy
+  - BUG/MEDIUM: stats: stats bind-process doesn't propagate the
+    process mask correctly
+  - BUG/MINOR: server: fix the format of the warning on address
+    change
+  - BUG/MEDIUM: chunks: always reject negative-length chunks
+  - BUG/MINOR: systemd: ensure we don't miss signals
+  - BUG/MINOR: systemd: report the correct signal in debug message
+    output
+  - BUG/MINOR: systemd: propagate the correct signal to haproxy
+  - MINOR: systemd: ensure a reload doesn't mask a stop
+  - BUG/MEDIUM: cfgparse: wrong argument offset after parsing
+    server "sni" keyword
+  - CLEANUP: stats: Avoid computation with uninitialized bits.
+  - CLEANUP: pattern: Ignore unknown samples in pat_match_ip().
+  - CLEANUP: map: Avoid memory leak in out-of-memory condition.
+  - BUG/MINOR: tcpcheck: fix incorrect list usage resulting in
+    failure to load certain configs
+  - BUG/MAJOR: samples: check smp->strm before using it
+  - MINOR: sample: add a new helper to initialize the owner of a
+    sample
+  - MINOR: sample: always set a new sample's owner before
+    evaluating it
+  - BUG/MAJOR: vars: always retrieve the stream and session from
+    the sample
+  - CLEANUP: payload: remove useless and confusing nullity checks
+    for channel buffer
+  - BUG/MINOR: ssl: fix usage of the various sample fetch functions
+  - MINOR: cfgparse: warn when uid parameter is not a number
+  - MINOR: cfgparse: warn when gid parameter is not a number
+  - BUG/MINOR: standard: Avoid free of non-allocated pointer
+  - BUG/MINOR: pattern: Avoid memory leak on out-of-memory
+    condition
+  - CLEANUP: http: fix a build warning introduced by a recent fix
+  - BUG/MINOR: log: GMT offset not updated when entering/leaving
+    DST
+
+-------------------------------------------------------------------
+Mon Jan 11 14:22:44 UTC 2016 - e.istomin@edss.ee
+
+- update to 1.6.3 (fate#320607)
+    - BUG/MEDIUM: lua: clean output buffer
+    - BUG/MEDIUM: http: switch the request channel to no-delay once done.
+    - BUG/MEDIUM: http: don't enable auto-close on the response side
+    - BUG/MEDIUM: stream: fix half-closed timeout handling
+    - BUG/MEDIUM: cli: changing compression rate-limiting must require admin level
+    - BUG/MEDIUM: sample: urlp can't match an empty value
+    - BUG/MEDIUM: da: stop DeviceAtlas processing in the convertor if there is no input.
+    - BUG/MEDIUM: checks: email-alert not working when declared in defaults
+    - BUG/MEDIUM: http: fix http-reuse when frontend and backend differ
+    - BUG/MEDIUM: config: properly adjust maxconn with nbproc when memmax is forced
+    - BUG/MEDIUM: peers: table entries learned from a remote are pushed to others after a random delay.
+    - BUG/MEDIUM: peers: old stick table updates could be repushed
+    - BUG/MEDIUM: lua: Lua applets must not fetch samples using http_txn
+    - BUG/MEDIUM: lua: Forbid HTTP applets from being called from tcp rulesets
+    - BUG/MAJOR: lua: Do not force the HTTP analysers in use-services
+
+for all the details see /usr/share/doc/packages/haproxy/CHANGELOG
+or http://www.haproxy.org/download/1.6/src/CHANGELOG
+-------------------------------------------------------------------
+Sat Nov 21 01:36:11 UTC 2015 - mrueckert@suse.de
+
+- on sle11 we still need to own /etc/apparmor.d/local
+
+-------------------------------------------------------------------
+Sat Nov 21 01:15:07 UTC 2015 - mrueckert@suse.de
+
+- instead of owning the apparmor directories, BR apparmor-profiles.
+
+-------------------------------------------------------------------
+Tue Nov 10 14:50:26 UTC 2015 - mrueckert@suse.de
+
+- fix link to tarball
+
+-------------------------------------------------------------------
+Tue Nov  3 12:02:19 UTC 2015 - mrueckert@suse.de
+
+- update to 1.6.2
+  - BUILD: ssl: fix build error introduced in commit 7969a3 with
+    OpenSSL < 1.0.0
+  - DOC: fix a typo for a "deviceatlas" keyword
+  - FIX: small typo in an example using the "Referer" header
+  - BUG/MEDIUM: config: count memory limits on 64 bits, not 32
+  - BUG/MAJOR: dns: first DNS response packet not matching queried
+    hostname may lead to a loop
+  - BUG/MINOR: dns: unable to parse CNAMEs response
+  - BUG/MINOR: examples/haproxy.init: missing brace in
+    quiet_check()
+  - DOC: deviceatlas: more example use cases.
+  - BUG/BUILD: replace haproxy-systemd-wrapper with $(EXTRA) in
+    install-bin.
+  - BUG/MAJOR: http: don't requeue an idle connection that is
+    already queued
+  - DOC: typo on capture.res.hdr and capture.req.hdr
+  - BUG/MINOR: dns: check for duplicate nameserver id in a
+    resolvers section was missing
+  - CLEANUP: use direction names in place of numeric values
+  - BUG/MEDIUM: lua: sample fetches based on response doesn't work
+- drop haproxy-1.6.0-ssl-098.patch: included upstream
+
+-------------------------------------------------------------------
+Thu Oct 22 10:21:00 UTC 2015 - mrueckert@suse.de
+
+- update to 1.6.1
+  - DOC: specify that stats socket doc (section 9.2) is in
+    management
+  - BUILD: install only relevant and existing documentation
+  - CLEANUP: don't ignore debian/ directory if present
+  - BUG/MINOR: dns: parsing error of some DNS response
+  - BUG/MEDIUM: namespaces: don't fail if no namespace is used
+  - BUG/MAJOR: ssl: free the generated SSL_CTX if the LRU cache is
+    disabled
+  - MEDIUM: dns: Don't use the ANY query type
+- drop haproxy-1.6.0-ssl.crash.patch included in update
+
+-------------------------------------------------------------------
+Mon Oct 19 16:15:57 UTC 2015 - mrueckert@suse.de
+
+- add haproxy-1.6.0-ssl-098.patch:
+  fix building on openssl 0.9.8
+
+-------------------------------------------------------------------
+Fri Oct 16 17:16:40 UTC 2015 - mrueckert@suse.de
+
+- added haproxy-1.6.0-ssl.crash.patch: fix SNI related crash
+
+-------------------------------------------------------------------
+Thu Oct 15 23:19:33 UTC 2015 - mrueckert@suse.de
+
+- only use network namespace support on distros newer than 13.2
+
+-------------------------------------------------------------------
+Tue Oct 13 19:39:12 UTC 2015 - mrueckert@suse.de
+
+- update to 1.6.0
+  The most user-visible changes, we can cite the simpler handling
+  of multiple configuration files, the support for quotes and
+  environment variables in the configuration, a significant
+  reduction of the memory usage thanks to a new dynamic buffer
+  allocator, notifications over e-mail, server state keeping across
+  reloads, dynamic DNS-based server address resolution, new
+  scripting capabilities thanks to the embedded Lua interpreter,
+  use of variables in the configuration to manipulate samples,
+  request body buffering and analysis, support for two third-party
+  device identification products (DeviceAtlas and 51Degrees), a lot
+  of new sample converters including arithmetic operators and table
+  lookups, TLS ticket secret sharing between nodes, TLS SNI to the
+  server, full tables replication between peers, ability to
+  instruct the kernel to quickly kill dead connections, support for
+  Linux namespaces, and a number of other less visible goodies. The
+  performance has also been improved a lot with support for server
+  connection multiplexing, much faster and cheaper HTTP compression
+  via libslz, and the addition of a pattern cache to speed up
+  certain expensive ACLs. The great flexibility offered by this
+  version will allow many users to significantly simplify their
+  configurations. Some users will notice a huge performance boost
+  after they enable the features designed for them.
+
+  for all the details see /usr/share/doc/packages/haproxy/CHANGELOG
+- drop patches we pulled from upstream git:
+  0001-BUG-MINOR-log-missing-some-ARGC_-entries-in-fmt_dire.patch
+  0002-DOC-usesrc-root-privileges-requirements.patch
+  0003-BUILD-ssl-Allow-building-against-libssl-without-SSLv.patch
+  0004-DOC-MINOR-fix-OpenBSD-versions-where-haproxy-works.patch
+  0005-BUG-MINOR-http-sample-gmtime-localtime-can-fail.patch
+  0006-DOC-typo-in-redirect-302-code-meaning.patch
+  0007-DOC-mention-that-ms-is-left-padded-with-zeroes.patch
+  0008-CLEANUP-.gitignore-ignore-more-test-files.patch
+  0009-CLEANUP-.gitignore-finally-ignore-everything-but-wha.patch
+  0010-MEDIUM-config-emit-a-warning-on-a-frontend-without-l.patch
+  0011-BUG-MEDIUM-counters-ensure-that-src_-inc-clr-_gpc0-c.patch
+  0012-DOC-ssl-missing-LF.patch
+  0013-DOC-fix-example-of-http-request-using-ssl_fc_session.patch
+  0014-BUG-MINOR-http-remove-stupid-HTTP_METH_NONE-entry.patch
+  0015-BUG-MAJOR-http-don-t-call-http_send_name_header-afte.patch
+- refresh/redo patches to apply cleanly again:
+  old: haproxy-1.2.16_config_haproxy_user.patch
+  new: haproxy-1.6.0_config_haproxy_user.patch
+  old: haproxy-makefile_lib.patch
+  new: haproxy-1.6.0-makefile_lib.patch
+  old: sec-options.patch
+  new: haproxy-1.6.0-sec-options.patch
+- added new haproxy.cfg to have a minimal config we can actually
+  launch!
+- drop patch haproxy-1.5.8-fix-bashisms.patch: patched files no
+  longer exist
+- drop haproxy.vim: we will use the copy which ships with the
+  upstream tarball now.
+
+-------------------------------------------------------------------
+Wed Sep 23 19:26:54 UTC 2015 - dmueller@suse.com
+
+- fix haproxy status checks (bsc#947204)
+
+-------------------------------------------------------------------
+Tue Sep  8 09:10:02 UTC 2015 - kgronlund@suse.com
+
+- Backport patches from upstream:
+  - BUG/MINOR: http: remove stupid HTTP_METH_NONE entry
+  - BUG/MAJOR: http: don't call http_send_name_header() after an error
+- Add 0014-BUG-MINOR-http-remove-stupid-HTTP_METH_NONE-entry.patch
+- Add 0015-BUG-MAJOR-http-don-t-call-http_send_name_header-afte.patch
+
+-------------------------------------------------------------------
+Wed Aug 26 22:47:34 UTC 2015 - kgronlund@suse.com
+
+- Backport patches from upstream:
+  - BUG/MINOR: log: missing some ARGC_* entries in fmt_directives()
+  - DOC: usesrc root privileges requirements
+  - BUILD: ssl: Allow building against libssl without SSLv3.
+  - DOC/MINOR: fix OpenBSD versions where haproxy works
+  - BUG/MINOR: http/sample: gmtime/localtime can fail
+  - DOC: typo in 'redirect', 302 code meaning
+  - DOC: mention that %ms is left-padded with zeroes.
+  - CLEANUP: .gitignore: ignore more test files
+  - CLEANUP: .gitignore: finally ignore everything but what is known.
+  - MEDIUM: config: emit a warning on a frontend without listener
+  - BUG/MEDIUM: counters: ensure that src_{inc,clr}_gpc0 creates a missing entry
+  - DOC: ssl: missing LF
+  - DOC: fix example of http-request using ssl_fc_session_id
+
+- Add 0001-BUG-MINOR-log-missing-some-ARGC_-entries-in-fmt_dire.patch
+- Add 0002-DOC-usesrc-root-privileges-requirements.patch
+- Add 0003-BUILD-ssl-Allow-building-against-libssl-without-SSLv.patch
+- Add 0004-DOC-MINOR-fix-OpenBSD-versions-where-haproxy-works.patch
+- Add 0005-BUG-MINOR-http-sample-gmtime-localtime-can-fail.patch
+- Add 0006-DOC-typo-in-redirect-302-code-meaning.patch
+- Add 0007-DOC-mention-that-ms-is-left-padded-with-zeroes.patch
+- Add 0008-CLEANUP-.gitignore-ignore-more-test-files.patch
+- Add 0009-CLEANUP-.gitignore-finally-ignore-everything-but-wha.patch
+- Add 0010-MEDIUM-config-emit-a-warning-on-a-frontend-without-l.patch
+- Add 0011-BUG-MEDIUM-counters-ensure-that-src_-inc-clr-_gpc0-c.patch
+- Add 0012-DOC-ssl-missing-LF.patch
+- Add 0013-DOC-fix-example-of-http-request-using-ssl_fc_session.patch
+
+-------------------------------------------------------------------
+Fri Jul  3 16:37:55 UTC 2015 - kgronlund@suse.com
+
+- Update to 1.5.14 (CVE-2015-3281) (bsc#937042)
+  + BUILD/MINOR: tools: rename popcount to my_popcountl
+  + BUG/MAJOR: buffers: make the buffer_slow_realign() function respect output data
+
+-------------------------------------------------------------------
+Fri Jun 26 11:45:33 UTC 2015 - kgronlund@suse.com
+
+- Update to 1.5.13
+  - Dropped all patches backported from git, no further changes
+    than those patches provided.
+
+- Removed patches:
+  + Remove 0001-BUG-MEDIUM-stats-properly-initialize-the-scope-befor.patch
+  + Remove 0002-BUG-MEDIUM-http-don-t-forward-client-shutdown-withou.patch
+  + Remove 0003-BUG-MINOR-check-fix-tcpcheck-error-message.patch
+  + Remove 0004-CLEANUP-checks-fix-double-usage-of-cur-current_step-.patch
+  + Remove 0005-BUG-MEDIUM-checks-do-not-dereference-head-of-a-tcp-c.patch
+  + Remove 0006-CLEANUP-checks-simplify-the-loop-processing-of-tcp-c.patch
+  + Remove 0007-BUG-MAJOR-checks-always-check-for-end-of-list-before.patch
+  + Remove 0008-BUG-MEDIUM-checks-do-not-dereference-a-list-as-a-tcp.patch
+  + Remove 0009-BUG-MEDIUM-peers-apply-a-random-reconnection-timeout.patch
+  + Remove 0010-DOC-Update-doc-about-weight-act-and-bck-fields-in-th.patch
+  + Remove 0011-MINOR-ssl-add-a-destructor-to-free-allocated-SSL-res.patch
+  + Remove 0012-BUG-MEDIUM-ssl-fix-tune.ssl.default-dh-param-value-b.patch
+  + Remove 0013-BUG-MINOR-cfgparse-fix-typo-in-option-httplog-error-.patch
+  + Remove 0014-BUG-MEDIUM-cfgparse-segfault-when-userlist-is-misuse.patch
+  + Remove 0015-MEDIUM-ssl-replace-standards-DH-groups-with-custom-o.patch
+  + Remove 0016-BUG-MINOR-debug-display-null-in-place-of-meth.patch
+  + Remove 0017-CLEANUP-deinit-remove-codes-for-cleaning-p-block_rul.patch
+  + Remove 0018-BUG-MINOR-ssl-fix-smp_fetch_ssl_fc_session_id.patch
+  + Remove 0019-MEDIUM-init-don-t-stop-proxies-in-parent-process-whe.patch
+  + Remove 0020-MINOR-peers-store-the-pointer-to-the-signal-handler.patch
+  + Remove 0021-MEDIUM-peers-unregister-peers-that-were-never-starte.patch
+  + Remove 0022-MEDIUM-config-propagate-the-table-s-process-list-to-.patch
+  + Remove 0023-MEDIUM-init-stop-any-peers-section-not-bound-to-the-.patch
+  + Remove 0024-MEDIUM-config-validate-that-peers-sections-are-bound.patch
+  + Remove 0025-MAJOR-peers-allow-peers-section-to-be-used-with-nbpr.patch
+  + Remove 0026-DOC-relax-the-peers-restriction-to-single-process.patch
+  + Remove 0027-CLEANUP-config-fix-misleading-information-in-error-m.patch
+  + Remove 0028-MINOR-config-report-the-number-of-processes-using-a-.patch
+  + Remove 0029-BUG-MEDIUM-config-properly-compute-the-default-numbe.patch
+
+-------------------------------------------------------------------
+Thu Jun 25 15:01:34 UTC 2015 - kgronlund@suse.com
+
+- Backport upstream patches:
+  + DOC: Update doc about weight, act and bck fields in the statistics
+  + MINOR: ssl: add a destructor to free allocated SSL ressources
+  + BUG/MEDIUM: ssl: fix tune.ssl.default-dh-param value being overwritten
+  + BUG/MINOR: cfgparse: fix typo in 'option httplog' error message
+  + BUG/MEDIUM: cfgparse: segfault when userlist is misused
+  + MEDIUM: ssl: replace standards DH groups with custom ones
+  + BUG/MINOR: debug: display (null) in place of "meth"
+  + CLEANUP: deinit: remove codes for cleaning p->block_rules
+  + BUG/MINOR: ssl: fix smp_fetch_ssl_fc_session_id
+  + MEDIUM: init: don't stop proxies in parent process when exiting
+  + MINOR: peers: store the pointer to the signal handler
+  + MEDIUM: peers: unregister peers that were never started
+  + MEDIUM: config: propagate the table's process list to the peers sections
+  + MEDIUM: init: stop any peers section not bound to the correct process
+  + MEDIUM: config: validate that peers sections are bound to exactly one process
+  + MAJOR: peers: allow peers section to be used with nbproc > 1
+  + DOC: relax the peers restriction to single-process
+  + CLEANUP: config: fix misleading information in error message.
+  + MINOR: config: report the number of processes using a peers section in the error case
+  + BUG/MEDIUM: config: properly compute the default number of processes for a proxy
+
+- Added patches:
+  + Add 0010-DOC-Update-doc-about-weight-act-and-bck-fields-in-th.patch
+  + Add 0011-MINOR-ssl-add-a-destructor-to-free-allocated-SSL-res.patch
+  + Add 0012-BUG-MEDIUM-ssl-fix-tune.ssl.default-dh-param-value-b.patch
+  + Add 0013-BUG-MINOR-cfgparse-fix-typo-in-option-httplog-error-.patch
+  + Add 0014-BUG-MEDIUM-cfgparse-segfault-when-userlist-is-misuse.patch
+  + Add 0015-MEDIUM-ssl-replace-standards-DH-groups-with-custom-o.patch
+  + Add 0016-BUG-MINOR-debug-display-null-in-place-of-meth.patch
+  + Add 0017-CLEANUP-deinit-remove-codes-for-cleaning-p-block_rul.patch
+  + Add 0018-BUG-MINOR-ssl-fix-smp_fetch_ssl_fc_session_id.patch
+  + Add 0019-MEDIUM-init-don-t-stop-proxies-in-parent-process-whe.patch
+  + Add 0020-MINOR-peers-store-the-pointer-to-the-signal-handler.patch
+  + Add 0021-MEDIUM-peers-unregister-peers-that-were-never-starte.patch
+  + Add 0022-MEDIUM-config-propagate-the-table-s-process-list-to-.patch
+  + Add 0023-MEDIUM-init-stop-any-peers-section-not-bound-to-the-.patch
+  + Add 0024-MEDIUM-config-validate-that-peers-sections-are-bound.patch
+  + Add 0025-MAJOR-peers-allow-peers-section-to-be-used-with-nbpr.patch
+  + Add 0026-DOC-relax-the-peers-restriction-to-single-process.patch
+  + Add 0027-CLEANUP-config-fix-misleading-information-in-error-m.patch
+  + Add 0028-MINOR-config-report-the-number-of-processes-using-a-.patch
+  + Add 0029-BUG-MEDIUM-config-properly-compute-the-default-numbe.patch
+
+-------------------------------------------------------------------
+Mon May 25 09:34:58 UTC 2015 - kgronlund@suse.com
+
+- BUG/MINOR: check: fix tcpcheck error message
+- CLEANUP: checks: fix double usage of cur / current_step in tcp-checks
+- BUG/MEDIUM: checks: do not dereference head of a tcp-check at the end
+- CLEANUP: checks: simplify the loop processing of tcp-checks
+- BUG/MAJOR: checks: always check for end of list before proceeding
+- BUG/MEDIUM: checks: do not dereference a list as a tcpcheck struct
+- BUG/MEDIUM: peers: apply a random reconnection timeout
+- Add 0003-BUG-MINOR-check-fix-tcpcheck-error-message.patch
+- Add 0004-CLEANUP-checks-fix-double-usage-of-cur-current_step-.patch
+- Add 0005-BUG-MEDIUM-checks-do-not-dereference-head-of-a-tcp-c.patch
+- Add 0006-CLEANUP-checks-simplify-the-loop-processing-of-tcp-c.patch
+- Add 0007-BUG-MAJOR-checks-always-check-for-end-of-list-before.patch
+- Add 0008-BUG-MEDIUM-checks-do-not-dereference-a-list-as-a-tcp.patch
+- Add 0009-BUG-MEDIUM-peers-apply-a-random-reconnection-timeout.patch
+
+-------------------------------------------------------------------
+Mon May 11 19:27:33 UTC 2015 - mrueckert@suse.de
+
+- added 0002-BUG-MEDIUM-http-don-t-forward-client-shutdown-withou.patch
+  BUG/MEDIUM: http: don't forward client shutdown without NOLINGER
+  except for tunnels
+
+-------------------------------------------------------------------
+Mon May  4 22:02:30 UTC 2015 - mrueckert@suse.de
+
+- added first patch from the 1.5 branch after the update:
+  0001-BUG-MEDIUM-stats-properly-initialize-the-scope-befor.patch
+
+-------------------------------------------------------------------
+Sat May  2 22:17:57 UTC 2015 - mrueckert@suse.de
+
+- update to 1.5.12
+  - BUG/MINOR: ssl: Display correct filename in error message
+  - DOC: Fix L4TOUT typo in documentation
+  - BUG/MEDIUM: Do not consider an agent check as failed on L7
+    error
+  - BUG/MINOR: pattern: error message missing
+  - BUG/MEDIUM: pattern: some entries are not deleted with case
+    insensitive match
+  - BUG/MEDIUM: buffer: one byte miss in buffer free space check
+  - BUG/MAJOR: http: don't read past buffer's end in
+    http_replace_value
+  - BUG/MEDIUM: http: the function "(req|res)-replace-value"
+    doesn't respect the HTTP syntax
+  - BUG/MEDIUM: peers: correctly configure the client timeout
+  - BUG/MINOR: compression: consider the expansion factor in init
+  - BUG/MEDIUM: http: hdr_cnt would not count any header when
+    called without name
+  - BUG/MEDIUM: listener: don't report an error when resuming
+    unbound listeners
+  - BUG/MEDIUM: init: don't limit cpu-map to the first 32 processes
+    only
+  - BUG/MEDIUM: stream-int: always reset si->ops when si->end is
+    nullified
+  - BUG/MEDIUM: http: remove content-length from chunked messages
+  - DOC: http: update the comments about the rules for determining
+    transfer-length
+  - BUG/MEDIUM: http: do not restrict parsing of transfer-encoding
+    to HTTP/1.1
+  - BUG/MEDIUM: http: incorrect transfer-coding in the request is a
+    bad request
+  - BUG/MEDIUM: http: remove content-length form responses with bad
+    transfer-encoding
+  - MEDIUM: http: restrict the HTTP version token to 1 digit as per
+    RFC7230
+  - MEDIUM: http: add option-ignore-probes to get rid of the floods
+    of 408
+  - BUG/MINOR: config: clear proxy->table.peers.p for disabled
+    proxies
+  - MINOR: stick-table: don't attach to peers in stopped state
+  - MEDIUM: config: initialize stick-tables after peers, not before
+  - MEDIUM: peers: add the ability to disable a peers section
+  - DOC: document option http-ignore-probes
+  - DOC: fix the comments about the meaning of msg->sol in HTTP
+  - BUG/MEDIUM: http: wait for the exact amount of body bytes in
+    wait_for_request_body
+  - BUG/MAJOR: http: prevent risk of reading past end with balance
+    url_param
+  - DOC: update the doc on the proxy protocol
+- remove patches that we pulled from the 1.5 tree
+  0001-BUG-MINOR-pattern-error-message-missing.patch
+  0002-BUG-MEDIUM-pattern-some-entries-are-not-deleted-with.patch
+  0003-BUG-MEDIUM-Do-not-consider-an-agent-check-as-failed-.patch
+  0004-BUG-MEDIUM-peers-correctly-configure-the-client-time.patch
+  0005-BUG-MEDIUM-buffer-one-byte-miss-in-buffer-free-space.patch
+  0006-BUG-MAJOR-http-don-t-read-past-buffer-s-end-in-http_.patch
+  0007-BUG-MEDIUM-http-the-function-req-res-replace-value-d.patch
+  0008-BUG-MINOR-compression-consider-the-expansion-factor-.patch
+  0009-BUG-MEDIUM-http-hdr_cnt-would-not-count-any-header-w.patch
+  0010-BUG-MINOR-ssl-Display-correct-filename-in-error-mess.patch
+  0011-BUG-MEDIUM-listener-don-t-report-an-error-when-resum.patch
+  0012-BUG-MEDIUM-init-don-t-limit-cpu-map-to-the-first-32-.patch
+
+-------------------------------------------------------------------
+Mon Apr 20 10:52:12 UTC 2015 - mrueckert@suse.de
+
+- pull 3 patches from upstream:
+  0010-BUG-MINOR-ssl-Display-correct-filename-in-error-mess.patch
+  0011-BUG-MEDIUM-listener-don-t-report-an-error-when-resum.patch
+  0012-BUG-MEDIUM-init-don-t-limit-cpu-map-to-the-first-32-.patch
+
+-------------------------------------------------------------------
+Thu Apr  2 10:54:29 UTC 2015 - mrueckert@suse.de
+
+- pull 3 patches from upstream:
+  0007-BUG-MEDIUM-http-the-function-req-res-replace-value-d.patch
+  0008-BUG-MINOR-compression-consider-the-expansion-factor-.patch
+  0009-BUG-MEDIUM-http-hdr_cnt-would-not-count-any-header-w.patch
+
+-------------------------------------------------------------------
+Mon Mar 16 15:00:13 UTC 2015 - kgronlund@suse.com
+
+- pull 3 patches from upstream:
+  - BUG/MEDIUM: peers: correctly configure the client timeout
+  - BUG/MEDIUM: buffer: one byte miss in buffer free space check
+  - BUG/MAJOR: http: don't read past buffer's end in http_replace_value
+- Add 0004-BUG-MEDIUM-peers-correctly-configure-the-client-time.patch
+- Add 0005-BUG-MEDIUM-buffer-one-byte-miss-in-buffer-free-space.patch
+- Add 0006-BUG-MAJOR-http-don-t-read-past-buffer-s-end-in-http_.patch
+
+-------------------------------------------------------------------
+Thu Mar  5 22:10:56 UTC 2015 - mrueckert@suse.de
+
+- added another fix from upstream:
+  0003-BUG-MEDIUM-Do-not-consider-an-agent-check-as-failed-.patch
+
+-------------------------------------------------------------------
+Wed Feb 11 12:38:06 GMT 2015 - aspiers@suse.com
+
+- haproxy.init: fix reload and force-reload not to start a stopped
+  service
+
+-------------------------------------------------------------------
+Fri Feb  6 18:47:17 UTC 2015 - mrueckert@suse.de
+
+- pulled 2 patches from upstream:
+  0001-BUG-MINOR-pattern-error-message-missing.patch
+  0002-BUG-MEDIUM-pattern-some-entries-are-not-deleted-with.patch
+
+-------------------------------------------------------------------
+Sun Feb  1 08:27:43 UTC 2015 - mrueckert@suse.de
+
+- update to 1.5.11
+  - BUG/MEDIUM: backend: correctly detect the domain when
+    use_domain_only is used
+  - MINOR: ssl: load certificates in alphabetical order
+  - BUG/MINOR: checks: prevent http keep-alive with http-check
+    expect
+  - BUG/MEDIUM: Do not set agent health to zero if server is
+    disabled in config
+  - MEDIUM/BUG: Only explicitly report "DOWN (agent)" if the agent
+    health is zero
+  - BUG/MINOR: stats:Fix incorrect printf type.
+  - DOC: add missing entry for log-format and clarify the text
+  - BUG/MEDIUM: http: fix header removal when previous header ends
+    with pure LF
+  - BUG/MEDIUM: channel: fix possible integer overflow on reserved
+    size computation
+  - BUG/MINOR: channel: compare to_forward with buf->i, not
+    buf->size
+  - MINOR: channel: add channel_in_transit()
+  - MEDIUM: channel: make buffer_reserved() use
+    channel_in_transit()
+  - MEDIUM: channel: make bi_avail() use channel_in_transit()
+  - BUG/MEDIUM: channel: don't schedule data in transit for leaving
+    until connected
+  - BUG/MAJOR: log: don't try to emit a log if no logger is set
+  - BUG/MINOR: args: add missing entry for ARGT_MAP in
+    arg_type_names
+  - BUG/MEDIUM: http: make http-request set-header compute the
+    string before removal
+  - BUG/MINOR: http: fix incorrect header value offset in
+    replace-hdr/replace-value
+  - BUG/MINOR: http: abort request processing on filter failure
+- drop patch included in update:
+  0001-BUG-MEDIUM-backend-correctly-detect-the-domain-when-.patch
+
+-------------------------------------------------------------------
+Tue Jan  6 09:28:16 UTC 2015 - mrueckert@suse.de
+
+- pull fix from usptream:
+  0001-BUG-MEDIUM-backend-correctly-detect-the-domain-when-.patch
+  BUG/MEDIUM: backend: correctly detect the domain when
+  use_domain_only is used
+
+-------------------------------------------------------------------
+Wed Dec 31 22:17:18 UTC 2014 - mrueckert@suse.de
+
+- update to 1.5.10
+  - DOC: fix a few typos
+  - BUG/MINOR: http: fix typo: "401 Unauthorized" => "407
+    Unauthorized"
+  - BUG/MINOR: parse: refer curproxy instead of proxy
+  - DOC: httplog does not support 'no'
+  - MINOR: map/acl/dumpstats: remove the "Done." message
+  - BUG/MEDIUM: sample: fix random number upper-bound
+  - BUG/MEDIUM: patterns: previous fix was incomplete
+  - BUG/MEDIUM: payload: ensure that a request channel is available
+  - BUG/MINOR: tcp-check: don't condition data polling on check
+    type
+  - BUG/MEDIUM: tcp-check: don't rely on random memory contents
+  - BUG/MEDIUM: tcp-checks: disable quick-ack unless next rule is
+    an expect
+  - BUG/MINOR: config: fix typo in condition when propagating
+    process binding
+  - BUG/MEDIUM: config: do not propagate processes between stopped
+    processes
+  - BUG/MAJOR: stream-int: properly check the memory allocation
+    return
+  - BUG/MEDIUM: memory: fix freeing logic in pool_gc2()
+  - BUG/MEDIUM: compression: correctly report zlib_mem
+- drop patches that we pulled from git before:
+  0001-BUG-MEDIUM-patterns-previous-fix-was-incomplete.patch
+  0002-BUG-MEDIUM-payload-ensure-that-a-request-channel-is-.patch
+  0003-BUG-MINOR-tcp-check-don-t-condition-data-polling-on-.patch
+  0004-BUG-MEDIUM-tcp-check-don-t-rely-on-random-memory-con.patch
+  0005-BUG-MEDIUM-tcp-checks-disable-quick-ack-unless-next-.patch
+  0006-DOC-fix-a-few-typos.patch
+  0007-BUG-MEDIUM-sample-fix-random-number-upper-bound.patch
+  0008-DOC-httplog-does-not-support-no.patch
+  0009-BUG-MINOR-http-fix-typo-401-Unauthorized-407-Unautho.patch
+  0010-BUG-MINOR-parse-refer-curproxy-instead-of-proxy.patch
+  0011-BUG-MINOR-config-fix-typo-in-condition-when-propagat.patch
+  0012-BUG-MEDIUM-config-do-not-propagate-processes-between.patch
+
+-------------------------------------------------------------------
+Sat Dec 20 01:20:07 UTC 2014 - mrueckert@suse.de
+
+- pulled some more fixes from git:
+  0003-BUG-MINOR-tcp-check-don-t-condition-data-polling-on-.patch
+  0004-BUG-MEDIUM-tcp-check-don-t-rely-on-random-memory-con.patch
+  0005-BUG-MEDIUM-tcp-checks-disable-quick-ack-unless-next-.patch
+  0006-DOC-fix-a-few-typos.patch
+  0007-BUG-MEDIUM-sample-fix-random-number-upper-bound.patch
+  0008-DOC-httplog-does-not-support-no.patch
+  0009-BUG-MINOR-http-fix-typo-401-Unauthorized-407-Unautho.patch
+  0010-BUG-MINOR-parse-refer-curproxy-instead-of-proxy.patch
+  0011-BUG-MINOR-config-fix-typo-in-condition-when-propagat.patch
+  0012-BUG-MEDIUM-config-do-not-propagate-processes-between.patch
+
+  see patch headers for details.
+
+-------------------------------------------------------------------
+Fri Nov 28 18:21:43 UTC 2014 - mrueckert@suse.de
+
+- pulled 2 fixes from git:
+  - 0001-BUG-MEDIUM-patterns-previous-fix-was-incomplete.patch
+    Dmitry Sivachenko <trtrmitya@gmail.com> reported that commit
+    315ec42 ("BUG/MEDIUM: pattern: don't load more than once a
+    pattern list.") relies on an uninitialised variable in the
+    stack. While it used to work fine during the tests, if the
+    uninitialized variable is non-null, some patterns may be
+    aggregated if loaded multiple times, resulting in slower
+    processing, which was the original issue it tried to address.
+  - 0002-BUG-MEDIUM-payload-ensure-that-a-request-channel-is-.patch
+    Denys Fedoryshchenko reported a segfault when using certain
+    sample fetch functions in the "tcp-request connection" rulesets
+    despite the warnings. This is because some tests for the
+    existence of the channel were missing.
+
+-------------------------------------------------------------------
+Wed Nov 26 12:29:42 UTC 2014 - ledest@gmail.com
+
+- fix bashisms in example scripts
+- add patches:
+  * haproxy-1.5.8-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Wed Nov 26 11:50:42 UTC 2014 - mrueckert@suse.de
+
+- update to 1.5.9
+  - BUILD: fix "make install" to support spaces in the install dirs
+  - BUG/MEDIUM: checks: fix conflicts between agent checks and ssl
+    healthchecks
+  - BUG/MEDIUM: ssl: fix bad ssl context init can cause segfault in
+    case of OOM.
+  - BUG/MINOR: samples: fix unnecessary memcopy converting binary
+    to string.
+  - BUG/MEDIUM: connection: sanitize PPv2 header length before
+    parsing address information
+  - BUG/MEDIUM: pattern: don't load more than once a pattern list.
+  - BUG/MEDIUM: ssl: force a full GC in case of memory shortage
+  - BUG/MINOR: config: don't inherit the default balance algorithm
+    in frontends
+  - BUG/MAJOR: frontend: initialize capture pointers earlier
+  - BUG/MINOR: stats: correctly set the request/response analysers
+  - DOC: fix typo in the body parser documentation for msg.sov
+  - BUG/MINOR: peers: the buffer size is global.tune.bufsize, not
+    trash.size
+  - MINOR: sample: add a few basic internal fetches (nbproc, proc,
+    stopping)
+  - BUG/MAJOR: sessions: unlink session from list on out of memory
+- Drop patches pulled from git
+  - 0001-BUILD-fix-make-install-to-support-spaces-in-the-inst.patch
+  - 0002-BUG-MEDIUM-ssl-fix-bad-ssl-context-init-can-cause-se.patch
+  - 0003-BUG-MEDIUM-ssl-force-a-full-GC-in-case-of-memory-sho.patch
+  - 0004-BUG-MEDIUM-checks-fix-conflicts-between-agent-checks.patch
+  - 0005-BUG-MINOR-config-don-t-inherit-the-default-balance-a.patch
+  - 0006-BUG-MAJOR-frontend-initialize-capture-pointers-earli.patch 
+
+-------------------------------------------------------------------
+Thu Nov 20 06:56:23 UTC 2014 - kgronlund@suse.com
+
+- BUILD: fix "make install" to support spaces in the install dirs
+- BUG/MEDIUM: ssl: fix bad ssl context init can cause segfault in case of OOM.
+- BUG/MEDIUM: ssl: force a full GC in case of memory shortage
+- BUG/MEDIUM: checks: fix conflicts between agent checks and ssl healthchecks
+- BUG/MINOR: config: don't inherit the default balance algorithm in frontends
+- BUG/MAJOR: frontend: initialize capture pointers earlier
+
+- Add patches:
+  - 0001-BUILD-fix-make-install-to-support-spaces-in-the-inst.patch
+  - 0002-BUG-MEDIUM-ssl-fix-bad-ssl-context-init-can-cause-se.patch
+  - 0003-BUG-MEDIUM-ssl-force-a-full-GC-in-case-of-memory-sho.patch
+  - 0004-BUG-MEDIUM-checks-fix-conflicts-between-agent-checks.patch
+  - 0005-BUG-MINOR-config-don-t-inherit-the-default-balance-a.patch
+  - 0006-BUG-MAJOR-frontend-initialize-capture-pointers-earli.patch 
+
+-------------------------------------------------------------------
+Sun Nov 09 21:52:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in pre script
+
+-------------------------------------------------------------------
+Fri Oct 31 22:24:27 UTC 2014 - mrueckert@suse.de
+
+- update to 1.5.8
+  - BUG/MAJOR: buffer: check the space left is enough or not when
+    input data in a buffer is wrapped
+  - BUG/BUILD: revert accidental change in the makefile from latest
+    SSL fix
+- changes in 1.5.7
+  - BUG/MEDIUM: regex: fix pcre_study error handling
+  - BUG/MINOR: log: fix request flags when keep-alive is enabled
+  - MINOR: ssl: add fetchs 'ssl_c_der' and 'ssl_f_der' to return
+    DER formatted certs
+  - MINOR: ssl: add statement to force some ssl options in global.
+  - BUG/MINOR: ssl: correctly initialize ssl ctx for invalid
+    certificates
+  - BUG/MEDIUM: http: don't dump debug headers on MSG_ERROR
+  - BUG/MAJOR: cli: explicitly call cli_release_handler() upon
+    error
+  - BUG/MEDIUM: tcp: fix outgoing polling based on proxy protocol
+  - BUG/MEDIUM: tcp: don't use SO_ORIGINAL_DST on non-AF_INET
+    sockets
+- Dropped patches:
+  - 0001-BUG-MEDIUM-http-don-t-dump-debug-headers-on-MSG_ERRO.patch
+  - 0002-BUG-MAJOR-cli-explicitly-call-cli_release_handler-up.patch
+  - 0003-BUG-MINOR-log-fix-request-flags-when-keep-alive-is-e.patch
+  - 0004-BUG-MEDIUM-tcp-fix-outgoing-polling-based-on-proxy-p.patch
+
+-------------------------------------------------------------------
+Wed Oct 29 08:07:07 UTC 2014 - kgronlund@suse.com
+
+- BUG/MEDIUM: http: don't dump debug headers on MSG_ERROR
+- BUG/MAJOR: cli: explicitly call cli_release_handler() upon error
+- BUG/MINOR: log: fix request flags when keep-alive is enabled
+- BUG/MEDIUM: tcp: fix outgoing polling based on proxy protocol
+
+- Added patches:
+  - 0001-BUG-MEDIUM-http-don-t-dump-debug-headers-on-MSG_ERRO.patch
+  - 0002-BUG-MAJOR-cli-explicitly-call-cli_release_handler-up.patch
+  - 0003-BUG-MINOR-log-fix-request-flags-when-keep-alive-is-e.patch
+  - 0004-BUG-MEDIUM-tcp-fix-outgoing-polling-based-on-proxy-p.patch
+
+-------------------------------------------------------------------
+Sat Oct 18 18:23:29 UTC 2014 - mrueckert@suse.de
+
+- update to 1.5.6
+  - BUG/MEDIUM: systemd: set KillMode to 'mixed'
+  - MINOR: systemd: Check configuration before start
+  - BUG/MEDIUM: config: avoid skipping disabled proxies
+  - BUG/MINOR: config: do not accept more track-sc than configured
+  - BUG/MEDIUM: backend: fix URI hash when a query string is present
+- dropped patches that were pulled from upstream
+  0001-BUG-MEDIUM-config-avoid-skipping-disabled-proxies.patch
+  0001-BUG-MEDIUM-systemd-set-KillMode-to-mixed.patch
+  0004-BUG-MINOR-config-do-not-accept-more-track-sc-than-co.patch
+  0005-BUG-MEDIUM-backend-fix-URI-hash-when-a-query-string-.patch
+- dropped patch we sent upstream
+  haproxy-1.5_check_config_before_start.patch
+
+-------------------------------------------------------------------
+Fri Oct 17 16:03:39 UTC 2014 - kgronlund@suse.com
+
+- BUG/MINOR: config: do not accept more track-sc than configured
+- BUG/MEDIUM: backend: fix URI hash when a query string is present
+- Add patch: 0004-BUG-MINOR-config-do-not-accept-more-track-sc-than-co.patch
+- Add patch: 0005-BUG-MEDIUM-backend-fix-URI-hash-when-a-query-string-.patch
+
+-------------------------------------------------------------------
+Fri Oct 10 20:01:33 UTC 2014 - kgronlund@suse.com
+
+- BUG/MEDIUM: config: avoid skipping disabled proxies
+- Add patch: 0001-BUG-MEDIUM-config-avoid-skipping-disabled-proxies.patch
+
+-------------------------------------------------------------------
+Thu Oct  9 14:24:45 UTC 2014 - kgronlund@suse.com
+
+- Fix check config before start patch to apply after previous patch
+- Update patch: haproxy-1.5_check_config_before_start.patch
+
+-------------------------------------------------------------------
+Thu Oct  9 14:14:35 UTC 2014 - kgronlund@suse.com
+
+- BUG/MEDIUM: systemd: set KillMode to 'mixed'
+- Add patch:
+  - 0001-BUG-MEDIUM-systemd-set-KillMode-to-mixed.patch 
+
+-------------------------------------------------------------------
+Wed Oct  8 12:53:41 UTC 2014 - kgronlund@suse.com
+
+- update to 1.5.5
+  - DOC: indicate that weight zero is reported as DRAIN
+  - DOC: Address issue where documentation is excluded due to a gitignore rule
+  - This update includes all previous patches since 1.5.4
+
+- Removed patches:
+  - 0001-DOC-clearly-state-that-the-show-sess-output-format-i.patch
+  - 0002-MINOR-stats-fix-minor-typo-fix-in-stats_dump_errors_.patch
+  - 0003-MEDIUM-Improve-signal-handling-in-systemd-wrapper.patch
+  - 0004-MINOR-Also-accept-SIGHUP-SIGTERM-in-systemd-wrapper.patch
+  - 0005-DOC-indicate-in-the-doc-that-track-sc-can-wait-if-da.patch
+  - 0006-MEDIUM-http-enable-header-manipulation-for-101-respo.patch
+  - 0007-BUG-MEDIUM-config-propagate-frontend-to-backend-proc.patch
+  - 0008-MEDIUM-config-properly-propagate-process-binding-bet.patch
+  - 0009-MEDIUM-config-make-the-frontends-automatically-bind-.patch
+  - 0010-MEDIUM-config-compute-the-exact-bind-process-before-.patch
+  - 0011-MEDIUM-config-only-warn-if-stats-are-attached-to-mul.patch
+  - 0012-MEDIUM-config-report-it-when-tcp-request-rules-are-m.patch
+  - 0013-MINOR-config-detect-the-case-where-a-tcp-request-con.patch
+  - 0014-MEDIUM-systemd-wrapper-support-multiple-executable-v.patch
+  - 0015-BUG-MEDIUM-remove-debugging-code-from-systemd-wrappe.patch
+  - 0016-BUG-MEDIUM-http-adjust-close-mode-when-switching-to-.patch
+  - 0017-BUG-MINOR-config-don-t-propagate-process-binding-on-.patch
+  - 0018-BUG-MEDIUM-check-rule-less-tcp-check-must-detect-con.patch
+  - 0019-BUG-MINOR-tcp-check-report-the-correct-failed-step-i.patch
+  - 0020-BUG-MINOR-config-don-t-propagate-process-binding-for.patch
+
+-------------------------------------------------------------------
+Mon Oct  6 09:09:58 UTC 2014 - kgronlund@suse.com
+
+- Backported fixes:
+  - BUG/MEDIUM: http: adjust close mode when switching to backend
+  - BUG/MINOR: config: don't propagate process binding on fatal errors.
+  - BUG/MEDIUM: check: rule-less tcp-check must detect connect failures
+  - BUG/MINOR: tcp-check: report the correct failed step in the status
+  - BUG/MINOR: config: don't propagate process binding for dynamic use_backend
+
+- Added patches:
+  - 0016-BUG-MEDIUM-http-adjust-close-mode-when-switching-to-.patch
+  - 0017-BUG-MINOR-config-don-t-propagate-process-binding-on-.patch
+  - 0018-BUG-MEDIUM-check-rule-less-tcp-check-must-detect-con.patch
+  - 0019-BUG-MINOR-tcp-check-report-the-correct-failed-step-i.patch
+  - 0020-BUG-MINOR-config-don-t-propagate-process-binding-for.patch
+ 
+-------------------------------------------------------------------
+Thu Sep 25 16:10:08 UTC 2014 - kgronlund@suse.com
+
+- Backported fixes (bnc#898498):
+  - DOC: clearly state that the "show sess" output format is not fixed
+  - MINOR: stats: fix minor typo fix in stats_dump_errors_to_buffer()
+  - MEDIUM: Improve signal handling in systemd wrapper.
+  - MINOR: Also accept SIGHUP/SIGTERM in systemd-wrapper
+  - DOC: indicate in the doc that track-sc* can wait if data are missing
+  - MEDIUM: http: enable header manipulation for 101 responses
+  - BUG/MEDIUM: config: propagate frontend to backend process binding again.
+  - MEDIUM: config: properly propagate process binding between proxies
+  - MEDIUM: config: make the frontends automatically bind to the listeners' processes
+  - MEDIUM: config: compute the exact bind-process before listener's maxaccept
+  - MEDIUM: config: only warn if stats are attached to multi-process bind directives
+  - MEDIUM: config: report it when tcp-request rules are misplaced
+  - MINOR: config: detect the case where a tcp-request content rule has no inspect-delay
+  - MEDIUM: systemd-wrapper: support multiple executable versions and names
+  - BUG/MEDIUM: remove debugging code from systemd-wrapper
+
+- Added patches:
+  - 0001-DOC-clearly-state-that-the-show-sess-output-format-i.patch
+  - 0002-MINOR-stats-fix-minor-typo-fix-in-stats_dump_errors_.patch
+  - 0003-MEDIUM-Improve-signal-handling-in-systemd-wrapper.patch
+  - 0004-MINOR-Also-accept-SIGHUP-SIGTERM-in-systemd-wrapper.patch
+  - 0005-DOC-indicate-in-the-doc-that-track-sc-can-wait-if-da.patch
+  - 0006-MEDIUM-http-enable-header-manipulation-for-101-respo.patch
+  - 0007-BUG-MEDIUM-config-propagate-frontend-to-backend-proc.patch
+  - 0008-MEDIUM-config-properly-propagate-process-binding-bet.patch
+  - 0009-MEDIUM-config-make-the-frontends-automatically-bind-.patch
+  - 0010-MEDIUM-config-compute-the-exact-bind-process-before-.patch
+  - 0011-MEDIUM-config-only-warn-if-stats-are-attached-to-mul.patch
+  - 0012-MEDIUM-config-report-it-when-tcp-request-rules-are-m.patch
+  - 0013-MINOR-config-detect-the-case-where-a-tcp-request-con.patch
+  - 0014-MEDIUM-systemd-wrapper-support-multiple-executable-v.patch
+  - 0015-BUG-MEDIUM-remove-debugging-code-from-systemd-wrappe.patch
+
+-------------------------------------------------------------------
+Wed Sep  3 07:35:14 UTC 2014 - kgronlund@suse.com
+
+- update to 1.5.4 (bnc#895849 CVE-2014-6269)
+  - BUG: config: error in http-response replace-header number of arguments
+  - BUG/MINOR: Fix search for -p argument in systemd wrapper.
+  - BUG/MEDIUM: auth: fix segfault with http-auth and a configuration with an unknown encryption algorithm
+  - BUG/MEDIUM: config: userlists should ensure that encrypted passwords are supported
+  - MEDIUM: connection: add new bit in Proxy Protocol V2
+  - BUG/MINOR: server: move the directive #endif to the end of file
+  - BUG/MEDIUM: http: tarpit timeout is reset
+  - BUG/MAJOR: tcp: fix a possible busy spinning loop in content track-sc*
+  - BUG/MEDIUM: http: fix inverted condition in pat_match_meth()
+  - BUG/MEDIUM: http: fix improper parsing of HTTP methods for use with ACLs
+  - BUG/MINOR: pattern: remove useless allocation of unused trash in pat_parse_reg()
+  - BUG/MEDIUM: acl: correctly compute the output type when a converter is used
+  - CLEANUP: acl: cleanup some of the redundancy and spaghetti after last fix
+  - BUG/CRITICAL: http: don't update msg->sov once data start to leave the buffer
+
+- Dropped patches:
+  - 0001-BUG-MINOR-server-move-the-directive-endif-to-the-end.patch
+  - 0002-BUG-MINOR-Fix-search-for-p-argument-in-systemd-wrapp.patch
+  - 0003-BUG-MAJOR-tcp-fix-a-possible-busy-spinning-loop-in-c.patch
+  - 0004-BUG-config-error-in-http-response-replace-header-num.patch
+  - 0005-BUG-MEDIUM-http-tarpit-timeout-is-reset.patch
+
+-------------------------------------------------------------------
+Fri Aug 22 14:38:59 UTC 2014 - mrueckert@suse.de
+
+- pull 2 more fixes from git:
+  - 0004-BUG-config-error-in-http-response-replace-header-num.patch
+    A couple of typo fixed in 'http-response replace-header':
+    - an error when counting the number of arguments
+    - a typo in the alert message
+  - 0005-BUG-MEDIUM-http-tarpit-timeout-is-reset.patch
+    Before the commit bbba2a8ecc35daf99317aaff7015c1931779c33b
+    (1.5-dev24-8), the tarpit section set timeout and return, after
+    this commit, the tarpit section set the timeout, and go to the
+    "done" label which reset the timeout.
+
+-------------------------------------------------------------------
+Wed Jul 30 09:47:38 UTC 2014 - mrueckert@suse.de
+
+- pull important fixes from git:
+  0001-BUG-MINOR-server-move-the-directive-endif-to-the-end.patch
+  0002-BUG-MINOR-Fix-search-for-p-argument-in-systemd-wrapp.patch
+  0003-BUG-MAJOR-tcp-fix-a-possible-busy-spinning-loop-in-c.patch
+  Especially the last patch is important:
+  As a consequence of various recent changes on the sample
+  conversion, a corner case has emerged where it is possible to
+  wait forever for a sample in track-sc*.
+
+-------------------------------------------------------------------
+Mon Jul 28 11:33:14 UTC 2014 - kgronlund@suse.com
+
+- update to 1.5.3
+  - DOC: fix typo in Unix Socket commands
+  - BUG/MEDIUM: connection: fix memory corruption when building a proxy v2 header
+  - BUG/MEDIUM: ssl: Fix a memory leak in DHE key exchange
+  - DOC: mention that Squid correctly responds 400 to PPv2 header
+  - BUG/MINOR: http: base32+src should use the big endian version of base32
+  - BUG/MEDIUM: connection: fix proxy v2 header again!
+- Removed backported patches:
+  - 0001-DOC-mention-that-Squid-correctly-responds-400-to-PPv.patch
+  - 0002-DOC-fix-typo-in-Unix-Socket-commands.patch
+  - 0003-BUG-MEDIUM-ssl-Fix-a-memory-leak-in-DHE-key-exchange.patch
+  - 0004-BUG-MINOR-http-base32-src-should-use-the-big-endian-.patch
+  - 0005-BUG-MEDIUM-connection-fix-memory-corruption-when-bui.patch
+  - 0006-BUG-MEDIUM-connection-fix-proxy-v2-header-again.patch
+
+-------------------------------------------------------------------
+Mon Jul 21 13:45:40 UTC 2014 - mrueckert@suse.de
+
+- added 0006-BUG-MEDIUM-connection-fix-proxy-v2-header-again.patch:
+  Last commit 77d1f01 ("BUG/MEDIUM: connection: fix memory
+  corruption when building a proxy v2 header") was wrong, using
+  &cn_trash instead of cn_trash resulting in a warning and the
+  client's SSL cert CN not being stored at the proper location.
+
+-------------------------------------------------------------------
+Fri Jul 18 15:01:53 UTC 2014 - mrueckert@suse.de
+
+- added
+  0005-BUG-MEDIUM-connection-fix-memory-corruption-when-bui.patch:
+  BUG/MEDIUM: connection: fix memory corruption when building a
+  proxy v2 header
+
+-------------------------------------------------------------------
+Thu Jul 17 10:45:28 UTC 2014 - mrueckert@suse.de
+
+- pulled a few fixes from the 1.5 branch: most notable the DHE
+  memleak fix. Adds the following patches:
+  0001-DOC-mention-that-Squid-correctly-responds-400-to-PPv.patch
+  0002-DOC-fix-typo-in-Unix-Socket-commands.patch
+  0003-BUG-MEDIUM-ssl-Fix-a-memory-leak-in-DHE-key-exchange.patch
+  0004-BUG-MINOR-http-base32-src-should-use-the-big-endian-.patch
+
+-------------------------------------------------------------------
+Sat Jul 12 16:56:27 UTC 2014 - mrueckert@suse.de
+
+- update to 1.5.2
+  - BUG/MEDIUM: backend: Update hash to use unsigned int throughout
+  - BUG/MINOR: ssl: Fix external function in order not to return a
+    pointer on an internal trash buffer.
+  - DOC: expand the docs for the provided stats.
+  - BUG/MEDIUM: unix: do not unlink() abstract namespace sockets
+    upon failure.
+  - MINOR: stats: fix minor typo in HTML page
+  - BUG/MEDIUM: http: fetch "base" is not compatible with
+    set-header
+  - BUG/MINOR: counters: do not untrack counters before logging
+  - BUG/MAJOR: sample: correctly reinitialize sample fetch context
+    before calling sample_process()
+  - MINOR: stick-table: make stktable_fetch_key() indicate why it
+    failed
+  - BUG/MEDIUM: counters: fix track-sc* to wait on unstable
+    contents
+  - BUILD: remove TODO from the spec file and add README
+  - MINOR: log: make MAX_SYSLOG_LEN overridable at build time
+  - MEDIUM: log: support a user-configurable max log line length
+  - DOC: provide an example of how to use ssl_c_sha1
+  - BUILD: http: fix isdigit & isspace warnings on Solaris
+  - BUG/MINOR: listener: set the listener's fd to -1 after deletion
+  - BUG/MEDIUM: unix: failed abstract socket binding is retryable
+  - MEDIUM: listener: implement a per-protocol pause() function
+  - MEDIUM: listener: support rebinding during resume()
+  - BUG/MEDIUM: unix: completely unbind abstract sockets during a
+    pause()
+  - DOC: explicitly mention the limits of abstract namespace
+    sockets
+  - DOC: minor fix on {sc,src}_kbytes_{in,out}
+  - DOC: fix alphabetical sort of converters
+  - BUG/MAJOR: http: correctly rewind the request body after start
+    of forwarding
+  - DOC: remove references to CPU=native in the README
+  - DOC: mention that "compression offload" is ignored in defaults
+    section
+- drop patches including in version upgrade.
+  - 0001-BUG-MEDIUM-http-fetch-base-is-not-compatible-with-se.patch
+  - 0002-BUG-MINOR-ssl-Fix-external-function-in-order-not-to-.patch
+  - 0003-BUG-MINOR-counters-do-not-untrack-counters-before-lo.patch
+  - 0004-BUG-MAJOR-sample-correctly-reinitialize-sample-fetch.patch
+  - 0005-MINOR-stick-table-make-stktable_fetch_key-indicate-w.patch
+  - 0006-BUG-MEDIUM-counters-fix-track-sc-to-wait-on-unstable.patch
+- use www.haproxy.org now instead of the old domain which is just
+  redirecting to haproxy.org now.
+
+-------------------------------------------------------------------
+Tue Jul  1 12:13:33 UTC 2014 - kgronlund@suse.com
+
+- BUG/MEDIUM: counters: fix track-sc* to wait on unstable contents
+- MINOR: stick-table: make stktable_fetch_key() indicate why it failed
+- BUG/MAJOR: sample: correctly reinitialize sample fetch context before calling sample_process()
+- BUG/MINOR: counters: do not untrack counters before logging
+- BUG/MINOR: ssl: Fix external function in order not to return a pointer on an internal trash buffer.
+- BUG/MEDIUM: http: fetch "base" is not compatible with set-header
+
+- Add patches:
+  - 0001-BUG-MEDIUM-http-fetch-base-is-not-compatible-with-se.patch
+  - 0002-BUG-MINOR-ssl-Fix-external-function-in-order-not-to-.patch
+  - 0003-BUG-MINOR-counters-do-not-untrack-counters-before-lo.patch
+  - 0004-BUG-MAJOR-sample-correctly-reinitialize-sample-fetch.patch
+  - 0005-MINOR-stick-table-make-stktable_fetch_key-indicate-w.patch
+  - 0006-BUG-MEDIUM-counters-fix-track-sc-to-wait-on-unstable.patch
+
+-------------------------------------------------------------------
+Tue Jun 24 15:55:48 UTC 2014 - mrueckert@suse.de
+
+- install the vim file into the versioned directory and dont cover
+  the current symlink with a directory
+
+-------------------------------------------------------------------
+Tue Jun 24 13:00:39 UTC 2014 - mrueckert@suse.de
+
+- add Requires to vim to make the ownership of the vim directory
+  clear and not break any symlink handling the vim package might
+  use.
+
+-------------------------------------------------------------------
+Tue Jun 24 12:23:55 UTC 2014 - mrueckert@suse.de
+
+- update to 1.5.1
+  - BUG/MINOR: config: http-request replace-header arg typo
+  - BUG/MINOR: ssl: rejects OCSP response without nextupdate.
+  - BUG/MEDIUM: ssl: Fix to not serve expired OCSP responses.
+  - BUG/MINOR: ssl: Fix OCSP resp update fails with the same
+    certificate configured twice.     (cherry picked from commit
+    1d3865b096b43b9a6d6a564ffb424ffa6f1ef79f)
+  - BUG/MEDIUM: Consistently use 'check' in process_chk
+  - BUG/MAJOR: session: revert all the crappy client-side timeout
+    changes
+  - BUG/MINOR: logs: properly initialize and count log sockets
+- drop haproxy-1.5.0_consistently_use_check.patch:
+  included upstream
+
+-------------------------------------------------------------------
+Tue Jun 24 09:51:25 UTC 2014 - kgronlund@suse.com
+
+- Install vim file to a more appropriate location 
+
+-------------------------------------------------------------------
+Mon Jun 23 09:19:04 UTC 2014 - kgronlund@suse.com
+
+- added pre macro for systemd service file 
+
+-------------------------------------------------------------------
+Mon Jun 23 08:28:06 UTC 2014 - kgronlund@suse.com
+
+- Use better systemd detection consistently
+
+-------------------------------------------------------------------
+Sun Jun 22 19:48:11 UTC 2014 - mrueckert@suse.de
+
+- pull commit 9ac7cabaf9945fb92c96cb92f5ea85235f54f7d6:
+  Consistently use 'check' in process_chk
+  I am not entirely sure that this is a bug, but it seems
+  to me that it may cause a problem if there agent-check is
+  configured and there is some kind of error making a connection
+  for it.
+  adds patch haproxy-1.5.0_consistently_use_check.patch
+
+-------------------------------------------------------------------
+Fri Jun 20 14:37:21 UTC 2014 - mrueckert@suse.de
+
+- update to 1.5.0
+  For people who don't follow the development versions, 1.5 expands
+  1.4 with many new features and performance improvements,
+  including native SSL support on both sides with SNI/NPN/ALPN and
+  OCSP stapling, IPv6 and UNIX sockets are supported everywhere,
+  full HTTP keep-alive for better support of NTLM and improved
+  efficiency in static farms, HTTP/1.1 compression (deflate, gzip)
+  to save bandwidth, PROXY protocol versions 1 and 2 on both sides,
+  data sampling on everything in request or response, including
+  payload, ACLs can use any matching method with any input sample
+  maps and dynamic ACLs updatable from the CLI stick-tables support
+  counters to track activity on any input sample custom format for
+  logs, unique-id, header rewriting, and redirects, improved health
+  checks (SSL, scripted TCP, check agent, ...), much more scalable
+  configuration supports hundreds of thousands of backends and
+  certificates without sweating.
+
+  For all the details see /usr/share/doc/packages/haproxy/CHANGELOG
+
+- enable tcp fast open if the kernel is recent enough
+- enable PCRE JIT if PCRE is recent enough
+- enable openssl support!
+  - haproxy can finally terminate ssl itself and also talk SSL to
+    the backend servers.
+  - including SNI/NPN/ALPN support.
+  new buildrequires openssl and pkgconfig
+- enable deflate support
+  new buildrequires zlib-devel
+- enable transparent proxy support
+- enable usage of accept4. reduces the syscall amount.
+- enable building and installing of halog
+- install vim file into the correct place
+- dropped patches:
+  0001-MEDIUM-add-systemd-service.patch
+  0002-MEDIUM-add-haproxy-systemd-wrapper.patch
+  0003-MEDIUM-New-cli-option-Ds-for-systemd-compatibility.patch
+  0004-BUG-MEDIUM-systemd-wrapper-don-t-leak-zombie-process.patch
+  0005-BUILD-stdbool-is-not-portable-again.patch
+  0006-MEDIUM-haproxy-systemd-wrapper-Use-haproxy-in-same-d.patch
+  0007-MEDIUM-systemd-wrapper-Kill-child-processes-when-int.patch
+  0008-LOW-systemd-wrapper-Write-debug-information-to-stdou.patch
+  0009-openSUSE-Configure-haproxy-user.patch
+  0010-openSUSE-Fix-path-to-PCRE-library.patch
+  0011-BUILD-MINOR-systemd-fix-compiler-warning-about-unuse.patch
+  0012-BUG-MEDIUM-systemd-wrapper-fix-locating-of-haproxy-b.patch
+  0013-MINOR-systemd-wrapper-re-execute-on-SIGUSR2.patch
+  0014-MINOR-systemd-wrapper-improve-logging.patch
+  0015-MINOR-systemd-wrapper-propagate-exit-status.patch
+- added haproxy-1.2.16_config_haproxy_user.patch:
+  (replaces 0009-openSUSE-Configure-haproxy-user.patch)
+- added haproxy-1.5_check_config_before_start.patch:
+  systemd allows us to run other things before we start the final
+  daemon. use this to check the configuration before launching.
+- added haproxy-makefile_lib.patch
+  (replaces 0010-openSUSE-Fix-path-to-PCRE-library.patch)
+- added sec-options.patch:
+  allow it more easily to build haproxy with PIE, stackprotector
+  and relro. all those options are enabled on our build.
+- added apparmor profile
+  usr.sbin.haproxy.apparmor
+  local.usr.sbin.haproxy.apparmor
+- change the conditionals for systemd to use bcond_with to make it
+  more obvious what we are guarding.
+
+-------------------------------------------------------------------
+Wed May 21 10:50:21 UTC 2014 - jsegitz@novell.com
+
+- added necessary macros for systemd files
+
+-------------------------------------------------------------------
+Tue May  6 06:12:08 UTC 2014 - kgronlund@suse.com
+
+- update to 1.4.25 (bnc#876438)
+   - DOC: typo: nosepoll self reference in config guide
+   - BUG/MINOR: deinit: free fdinfo while doing cleanup
+   - BUG/MEDIUM: server: set the macro for server's max weight SRV_UWGHT_MAX to SRV_UWGHT_RANGE
+   - BUG/MINOR: use the same check condition for server as other algorithms
+   - BUG/MINOR: stream-int: also consider ENOTCONN in addition to EAGAIN for recv()
+   - BUG/MINOR: fix forcing fastinter in "on-error"
+   - BUG/MEDIUM: http/auth: Sometimes the authentication credentials can be mix between two requests
+   - BUG/MAJOR: http: don't emit the send-name-header when no server is available
+   - BUG/MEDIUM: http: "option checkcache" fails with the no-cache header
+   - MEDIUM: session: disable lingering on the server when the client aborts
+   - MINOR: config: warn when a server with no specific port uses rdp-cookie
+   - MEDIUM: increase chunk-size limit to 2GB-1
+   - DOC: add a mention about the limited chunk size
+   - MEDIUM: http: add "redirect scheme" to ease HTTP to HTTPS redirection
+   - BUILD: proto_tcp: remove a harmless warning
+   - BUG/MINOR: acl: remove patterns from the tree before freeing them
+   - BUG/MEDIUM: checks: fix slow start regression after fix attempt
+   - BUG/MAJOR: server: weight calculation fails for map-based algorithms
+   - BUG/MINOR: backend: fix target address retrieval in transparent mode
+   - BUG/MEDIUM: stick: completely remove the unused flag from the store entries
+   - BUG/MEDIUM: stick-tables: complete the latest fix about store-responses
+   - BUG/MEDIUM: checks: tracking servers must not inherit the MAINT flag
+   - BUG/MINOR: stats: report correct throttling percentage for servers in slowstart
+   - BUG/MINOR: stats: correctly report throttle rate of low weight servers
+   - BUG/MINOR: checks: successful check completion must not re-enable MAINT servers
+   - BUG/MEDIUM: stats: the web interface must check the tracked servers before enabling
+   - BUG/MINOR: channel: initialize xfer_small/xfer_large on new buffers
+   - BUG/MINOR: stream-int: also consider ENOTCONN in addition to EAGAIN
+   - BUG/MEDIUM: http: don't start to forward request data before the connect
+   - DOC: fix misleading information about SIGQUIT
+   - BUILD: simplify the date and version retrieval in the makefile
+   - BUILD: prepare the makefile to skip format lines in SUBVERS and VERDATE
+   - BUILD: use format tags in VERDATE and SUBVERS files
+
+- Reorganized patches and backported fixes for systemd wrapper:
+   - Renamed 0006-haproxy-1.2.16_config_haproxy_user.patch to 0009-openSUSE-Configure-haproxy-user.patch
+   - Renamed 0007-haproxy-makefile_lib.patch to 0010-openSUSE-Fix-path-to-PCRE-library.patch
+   - Removed 0008-MEDIUM-haproxy-systemd-wrapper-Revised-implementatio.patch
+   - Added 0006-MEDIUM-haproxy-systemd-wrapper-Use-haproxy-in-same-d.patch
+   - Added 0007-MEDIUM-systemd-wrapper-Kill-child-processes-when-int.patch
+   - Added 0008-LOW-systemd-wrapper-Write-debug-information-to-stdou.patch
+   - Added 0011-BUILD-MINOR-systemd-fix-compiler-warning-about-unuse.patch
+   - Added 0012-BUG-MEDIUM-systemd-wrapper-fix-locating-of-haproxy-b.patch
+   - Added 0013-MINOR-systemd-wrapper-re-execute-on-SIGUSR2.patch
+   - Added 0014-MINOR-systemd-wrapper-improve-logging.patch
+   - Added 0015-MINOR-systemd-wrapper-propagate-exit-status.patch
+
+-------------------------------------------------------------------
+Fri Nov 22 09:54:48 UTC 2013 - kgronlund@suse.com
+
+- Backport haproxy-systemd-wrapper from upstream
+- Patch haproxy-systemd-wrapper to work on openSUSE
+
+-------------------------------------------------------------------
+Thu Oct 31 12:46:04 UTC 2013 - kgronlund@suse.com
+
+- Remove duplicate Requires: from .spec file.
+
+-------------------------------------------------------------------
+Thu Oct 31 12:41:12 UTC 2013 - kgronlund@suse.com
+
+- Re-enable sysvinit support for older versions
+  (server:http still builds for older versions)
+
+-------------------------------------------------------------------
+Mon Oct 28 14:32:00 UTC 2013 - p.drouand@gmail.com
+
+- Add systemd support
+  Target distributions all support systemd; keep alive sysvinit support
+  is useless
+
+-------------------------------------------------------------------
+Thu Oct 10 15:16:32 UTC 2013 - cdenicolo@suse.com
+
+- license update:  GPL-2.0+ and  LGPL-2.1+
+  only header files are LGPL, the rest is still GPL
+
+-------------------------------------------------------------------
+Tue Jun 18 09:14:13 UTC 2013 - mrueckert@suse.de
+
+- update to 1.4.24 (bnc#825412)
+  - BUG/MAJOR: backend: consistent hash can loop forever in certain
+    circumstances
+  - BUG/MEDIUM: checks: disable TCP quickack when pure TCP checks
+    are used
+  - MEDIUM: protocol: implement a "drain" function in protocol
+    layers
+  - BUG/CRITICAL: fix a possible crash when using negative header
+    occurrences CVE-2013-2175
+
+-------------------------------------------------------------------
+Wed Apr  3 14:47:43 UTC 2013 - mrueckert@suse.de
+
+- update to 1.4.23 CVE-2013-1912
+  - CONTRIB: halog: sort URLs by avg bytes_read or total bytes_read
+  - BUG: fix garbage data when http-send-name-header replaces an
+    existing header
+  - BUG/MEDIUM: remove supplementary groups when changing gid
+  - BUG/MINOR: Correct logic in cut_crlf()
+  - BUG/MINOR: config: use a copy of the file name in proxy
+    configurations
+  - BUG/MINOR: epoll: correctly disable FD polling in fd_rem()
+  - MINOR: halog: sort output by cookie code
+  - BUG/MINOR: halog: -ad/-ac report the correct number of output
+    lines
+  - BUG/MINOR: halog: fix help message for -ut/-uto
+  - BUG/MEDIUM: http: set DONTWAIT on data when switching to tunnel
+    mode
+  - BUG/MEDIUM: command-line option -D must have precedence over
+    "debug"
+  - OPTIM: halog: keep a fast path for the lines-count only
+  - MINOR: halog: add a parameter to limit output line count
+  - BUG: halog: fix broken output limitation
+  - MEDIUM: checks: avoid accumulating TIME_WAITs during checks
+  - MEDIUM: checks: prevent TIME_WAITs from appearing also on
+    timeouts
+  - BUG/MAJOR: cli: show sess <id> may randomly corrupt the
+    back-ref list
+  - BUG/MINOR: http: don't report client aborts as server errors
+  - BUG/MINOR: http: don't log a 503 on client errors while waiting
+    for requests
+  - BUG/MEDIUM: tcp: process could theorically crash on lack of
+    source ports
+  - BUG/MINOR: http: don't abort client connection on premature
+    responses
+  - BUILD: no need to clean up when making git-tar
+  - MINOR: http: always report PR-- flags for redirect rules
+  - BUG/MINOR: time: frequency counters are not totally accurate
+  - BUG/MINOR: http: don't process abortonclose when request was
+    sent
+  - BUG/MINOR: epoll: use a fix maxevents argument in epoll_wait()
+  - BUG/MINOR: config: fix improper check for failed memory alloc
+    in ACL parser
+  - BUG/MEDIUM: checks: ensure the health_status is always within
+    bounds
+  - CLEANUP: http: remove a useless null check
+  - BUG/MEDIUM: signal: signal handler does not properly check for
+    signal bounds
+  - BUG/MEDIUM: uri_auth: missing NULL check and memory leak on
+    memory shortage
+  - CLEANUP: config: slowstart is never negative
+  - BUILD: improve the makefile's support for libpcre
+  - BUG/MINOR: checks: fix an warning introduced by commit 2f61455a
+  - MEDIUM: halog: add support for counting per source address
+    (-ic)
+  - DOC: mention the new HTTP 307 and 308 redirect statues
+    (cherry picked from commit
+    b67fdc4cd8bde202f2805d98683ddab929469a05)
+  - MEDIUM: poll: do not use FD_* macros anymore
+  - BUG/MAJOR: ev_select: disable the select() poller if maxsock >
+    FD_SETSIZE
+  - BUILD: enable poll() by default in the makefile
+  - BUILD: add explicit support for Mac OS/X
+  - BUG/CRITICAL: using HTTP information in tcp-request content may
+    crash the process CVE-2013-1912
+  - MEDIUM: http: implement redirect 307 and 308
+  - MINOR: http: status 301 should not be marked non-cacheable
+- adapt haproxy-makefile_lib.patch to the rewritten Makefile
+
+-------------------------------------------------------------------
+Mon Nov 12 14:10:33 UTC 2012 - mrueckert@suse.de
+
+- switch license tag to spdx format.
+
+-------------------------------------------------------------------
+Mon Nov 12 13:50:46 UTC 2012 - mrueckert@suse.de
+
+- update to 1.4.22
+  - BUG/MEDIUM: option forwardfor if-none doesn't work with some
+    configurations
+  - MINOR: balance uri: added 'whole' parameter to include query
+    string in hash calculation
+  - DOC: specify the default value for maxconn in the context of a
+    proxy
+  - BUG/MINOR: checks: expire on timeout.check if smaller than
+    timeout.connect
+  - REORG/MINOR: use dedicated proxy flags for the cookie handling
+  - BUG/MINOR: config: do not report twice the incompatibility
+    between cookie and non-http
+  - MINOR: http: add support for "httponly" and "secure" cookie
+    attributes
+  - MEDIUM: stats: add support for soft stop/soft start in the
+    admin interface
+  - BUILD: add support for linux kernels >= 2.6.28
+  - MINOR: contrib/iprange: add a network IP range to mask
+    converter
+  - BUILD: add an AIX 5.2 (and later) target.
+  - MINOR: halog: use the more recent dual-mode fgets2
+    implementation
+  - BUG/MEDIUM: ebtree: ebmb_insert() must not call cmp_bits on
+    full-length matches
+  - CLEANUP: halog: make clean should also remove .o files
+    (cherry picked from commit
+    8ad4193100aafa19f04929670371bf823dbe11d0)
+  - OPTIM: halog: make use of memchr() on platforms which provide a
+    fast one
+  - OPTIM: halog: improve cold-cache behaviour when loading a file
+  - [MINOR] config: make it possible to specify a cookie even
+    without a server
+  - MINOR: config: tolerate server "cookie" setting in non-HTTP
+    mode
+  - BUG/MINOR: tarpit: fix condition to return the HTTP 500 message
+
+-------------------------------------------------------------------
+Tue Oct 30 16:02:03 UTC 2012 - mrueckert@suse.de
+
+- fix description in the init script
+
+-------------------------------------------------------------------
+Tue May 22 16:47:45 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 1.4.21 (bnc#763833) CVE-2012-2391
+  - MINOR: patch for minor typo (ressources/resources)
+  - CLEANUP: fix typo in findserver() log message
+  - DOC: cleanup indentation, alignment, columns and chapters
+  - DOC: fix some keywords arguments documentation
+  - MINOR: stats admin: allow unordered parameters in POST requests
+  - MINOR: stats admin: use the backend id instead of its name in
+    the form
+  - BUG/MAJOR: trash must always be the size of a buffer
+  - DOC: fix minor regex example issue and improve doc on stats
+  - BUG/MAJOR: possible crash when using capture headers on TCP
+    frontends
+  - MINOR: config: disable header captures in TCP mode and complain
+  - BUG/MEDIUM: balance source did not properly hash IPv6 addresses
+  - CLEANUP: http: message parser must ignore HTTP_MSG_ERROR
+  - CLEANUP: remove a few warning about unchecked return values in
+    debug code
+  - CLEANUP: http: remove unused http_msg->col
+  - BUG/MINOR: http: error snapshots are wrong if buffer wraps
+  - BUG/MAJOR: checks: don't call set_server_status_* when no LB
+    algo is set
+  - MINOR: proxy: make findproxy() return proxies from numeric IDs
+    too
+  - BUILD: http: stop gcc-4.1.2 from complaining about possibly
+    uninitialized values
+  - BUG/MINOR: stop connect timeout when connect succeeds
+
+-------------------------------------------------------------------
+Sun Mar 11 19:16:20 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 1.4.20:
+  - BUG/MINOR: fix typo in processing of http-send-name-header
+  - BUG/MEDIUM: correctly disable servers tracking another disabled servers.
+  - BUG/MEDIUM: zero-weight servers must not dequeue requests from the backend
+  - MINOR: halog: add some help on the command line     (cherry picked from
+    commit 615674cdec067066a42f53f5d55628ab7b207e6c)
+  - BUG: queue: fix dequeueing sequence on HTTP keep-alive sessions
+  - BUG: http: disable TCP delayed ACKs when forwarding content-length data
+  - BUG: checks: fix server maintenance exit sequence
+  - BUG/MINOR: stream_sock: don't remove BF_EXPECT_MORE and BF_SEND_DONTWAIT on
+    partial writes
+  - DOC: enumerate valid status codes for "observe layer7"
+
+-------------------------------------------------------------------
+Wed Feb  8 15:30:58 UTC 2012 - mrueckert@suse.de
+
+- update to 1.4.19
+  - MEDIUM: http: add support for sending the server's name in the
+    outgoing request
+  - BUG/MINOR: fix options forwardfor if-none when an alternative
+    header name is specified
+  - MINOR: task: new function task_schedule() to schedule a wake up
+  - BUG/MEDIUM: checks: fix slowstart behaviour when server
+    tracking is in use
+  - BUG: tcp: option nolinger does not work on backends
+  - BUG: ebtree: ebst_lookup() could return the wrong entry
+  - BUG: http: re-enable TCP quick-ack upon incomplete HTTP
+    requests
+  - CLEANUP: ebtree: remove a few annoying signedness warnings
+  - CLEANUP: ebtree: remove 4-year old harmless typo in duplicates
+    insertion code
+  - CLEANUP: ebtree: remove another typo, a wrong initialization in
+    insertion code
+  - BUG: proto_tcp: set AF_INET on tproxy for use with recent
+    kernels
+  - MINOR: halog: add support for matching queued requests
+  - BUG: http: tighten the list of allowed characters in a URI
+
+-------------------------------------------------------------------
+Wed Nov  9 12:09:33 UTC 2011 - mrueckert@suse.de
+
+- update to 1.4.18
+  - [MINOR] http: *_dom matching header functions now also split on
+    ":"
+  - [MINOR] halog: support backslash-escaped quotes
+  - BUILD/MINOR: fix the source URL in the spec file
+  - DOC: acl is http_first_req, not http_req_first
+  - BUG/MEDIUM: don't trim last spaces from headers consisting only
+    of spaces
+  - MINOR: acl: add new matches for header/path/url length
+  - [MINOR] halog: do not consider byte 0x8A as end of line
+  - [OPTIM] halog: make fgets parse more bytes by blocks
+  - [OPTIM] halog: add assembly version of the field lookup code
+  - [CLEANUP] startup: report only the basename in the usage
+    message
+  - [DOC] update the README file to reflect new naming rules for
+    patches
+
+-------------------------------------------------------------------
+Mon Sep 05 22:26:59 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.4.17:
+  - [MINOR] halog: add support for termination code matching (-tcn/-TCN)
+  - [MINOR] halog: make SKIP_CHAR stop on field delimiters
+  - [MINOR] halog: add support for HTTP log matching (-H)
+  - [MINOR] halog: gain back performance before SKIP_CHAR fix
+  - [OPTIM] halog: cache some common fields positions
+  - [OPTIM] halog: check once for correct line format and reuse the pointer
+  - [OPTIM] halog: remove many 'if' by using a function pointer for the filters
+  - [OPTIM] halog: remove support for tab delimiters in input data
+  - [MINOR] halog: add -hs/-HS to filter by HTTP status code range
+  - [CLEANUP] update the year in the copyright banner
+  - [BUG] check: http-check expect + regex would crash in defaults section
+  - [MEDIUM] http: make x-forwarded-for addition conditional
+  - [DOC] fixed a few "sensible" -> "sensitive" errors
+  - [MINOR] stats: display "<NONE>" instead of the frontend name when unknown
+  - [BUG] http: trailing white spaces must also be trimmed after headers
+  - [MINOR] http: take a capture of too large requests and responses
+  - [MINOR] http: take a capture of truncated responses
+  - [MINOR] http: take a capture of bad content-lengths.
+
+-------------------------------------------------------------------
+Sat Aug 13 22:49:36 UTC 2011 - mrueckert@suse.de
+
+- update to version 1.4.16
+  - [BUG] checks: fix support of Mysqld >= 5.5 for mysql-check
+  - [DOC] Minor spelling fixes and grammatical enhancements
+  - [CLEANUP] Remove assigned but unused variables
+  - [BUG] checks: http-check expect could fail a check on
+    multi-packet responses
+  - [DOC] fix minor typo in the "dispatch" doc
+  - [MINOR] http: make the "HTTP 200" status code configurable.
+  - [MINOR] http: partially revert the chunking optimization for
+    now
+  - [MINOR] stream_sock: always clear BF_EXPECT_MORE upon complete
+    transfer
+  - [CLEANUP] stream_sock: remove unneeded FL_TCP and factor out
+    test
+  - [MEDIUM] http: add support for "http-no-delay"
+  - [OPTIM] http: optimize chunking again in non-interactive mode
+  - [OPTIM] stream_sock: avoid fast-forwarding of partial data
+  - [OPTIM] stream_sock: don't use splice on too small payloads
+  - [BUG] stats: support url-encoded forms
+  - [BUG] halog: correctly handle truncated last line
+  - [DOC] fix typos, "#" is a sharp, not a dash
+
+-------------------------------------------------------------------
+Fri Apr 15 22:14:24 UTC 2011 - pascal.bleser@opensuse.org
+
+- revert splitting out the documentation
+
+-------------------------------------------------------------------
+Thu Apr 14 19:18:45 UTC 2011 - pascal.bleser@opensuse.org
+
+- split out documentation and examples into haproxy-doc
+- add rpmlintrc to suppress false positive warnings about
+  script examples in documentation files (without exec flag)
+- fix license
+
+-------------------------------------------------------------------
+Tue Apr 12 15:31:38 UTC 2011 - mrueckert@suse.de
+
+- update to version 1.4.15
+  - [CRITICAL] fix risk of crash when dealing with space in
+    response cookies
+- additional changes from 1.4.14
+  - [MINOR] config: fix endianness of server check port
+  - [BUG] http: fix possible incorrect forwarded wrapping chunk
+    size (take 2)
+  - [MINOR] tools: add two macros MID_RANGE and MAX_RANGE
+  - [BUG] http: fix content-length handling on 32-bit platforms
+  - [OPTIM] buffers: uninline buffer_forward()
+
+-------------------------------------------------------------------
+Wed Mar  9 12:00:23 UTC 2011 - mrueckert@suse.de
+
+- update to 1.4.13
+  - config: don't crash on empty pattern files.
+- additional changes from 1.4.12
+  - stats: add support for several packets in stats admin
+  - stats: admin commands must check the proxy state
+  - stats: admin web interface must check the proxy state
+  - http: update the header list's tail when removing the last
+    header
+  - fix typos (http-request instead of http-check)     (cherry
+    picked from commit 8f2a1e72bebea700f37add40997b716fdfd86b9c)
+  - http: use correct ACL pointer when evaluating authentication
+  - cfgparse: correctly count one socket per port in ranges
+  - startup: set the rlimits before binding ports, not after.
+  - acl: srv_id must return no match when the server is NULL
+  - acl: fd leak when reading patterns from file
+  - fix minor typo in "usesrc"
+  - http: fix possible incorrect forwarded wrapping chunk size
+  - http: fix computation of message body length after forwarding
+    has started
+  - http: balance url_param did not work with first parameters on
+    POST
+  - update the url_param regression test to test check_post too
+
+-------------------------------------------------------------------
+>>>>>>> ./haproxy.changes.r40
+Tue Feb 15 14:30:53 UTC 2011 - mrueckert@suse.de
+
+- update to 1.4.11
+  - cfgparse: Check whether the path given for the stats socket
+    actually fits into the sockaddr_un structure to avoid
+    truncation.
+  - fix a minor typo
+  - fix ignore-persist documentation
+  - http: fix http-pretend-keepalive and httpclose/tunnel mode
+  - add warnings on features not compatible with multi-process mode
+  - acl: add be_id/srv_id to match backend's and server's id
+  - log: add support for passing the forwarded hostname
+  - log: ability to override the syslog tag
+  - fix minor typos in the doc
+  - fix another typo in the doc
+  - http chunking: don't report a parsing error on connection
+    errors
+  - stream_interface: truncate buffers when sending error messages
+  - http: fix incorrect error reporting during data transfers
+  - session: correctly leave turn-around and queue states on abort
+  - session: release slot before processing pending connections
+  - stats: report HTTP message state and buffer flags in error
+    dumps
+  - http: support wrapping messages in error captures
+  - http: capture incorrectly chunked message bodies
+  - stats: add global event ID and count
+  - http: don't send each chunk in a separate packet
+  - acl: fix handling of empty lines in pattern files
+  - ebtree: fix ebmb_lookup() with len smaller than the tree's keys
+  - ebtree: ebmb_lookup: reduce stack usage by moving the return
+    code out of the loop
+
+-------------------------------------------------------------------
+Mon Nov 29 13:57:37 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.4.10:
+  * a possible crash when using Cookie-based persistence with
+    appsessions was fixed
+  * header processing could become wrong after a single reqidel
+    rule removed exactly two headers
+  * some out-of-memory conditions were not correctly handled in
+    appsession or cookie captures
+  * users of appsessions are strongly encouraged to upgrade
+
+-------------------------------------------------------------------
+Tue Nov  2 13:11:15 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.4.9:
+  * the Web interface now allows you to enable or disable servers
+  * the ECV and LDAPv3 checks were merged
+  * the MySQL check was improved to support a real login sequence
+  * persistence cookies can now be timestamped to support a maximum
+    idle time and a maximum life time, and can be removed by the
+    server if needed (e.g. logout)
+  * the SNMP plugin was improved to report socket stats
+  * some Cacti templates were merged
+  * the halog tool can now instantly report per-URL response times
+
+-------------------------------------------------------------------
+Tue Aug 17 15:46:13 UTC 2010 - mrueckert@suse.de
+
+- implement graceful restart in the init script
+
+-------------------------------------------------------------------
+Tue Jun 22 14:49:12 UTC 2010 - mrueckert@suse.de
+
+- update to 1.4.8:
+  * mention 'option http-server-close' effect in Tq section
+  * summarize and highlight persistent connections behaviour
+  * add configuration samples
+  * stick_table: the fix for the memory leak caused a regression
+  * client: don't add a new session to the list too early
+
+-------------------------------------------------------------------
+Thu Jun 10 09:03:34 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.4.7:
+  * fixes problems where consistent hashing was broken when no
+    server ID was specified in the configuration
+  * some errors were incorrectly reported as failed instead of
+    denied in the statistics
+  * the dispatch and http_proxy modes were fixed
+  * a few termination flags in the logs used for troubleshooting
+    were corrected
+  * a few other minor issues were fixed
+  * upgrading is recommended
+
+-------------------------------------------------------------------
+Mon May 17 20:29:02 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.4.6:
+  * a minor precision about RDP cookies was added to the
+    documentation
+  * a new ACL keyword was added
+  * those who had no problem building and running 1.4.5 don't need
+    to upgrade
+
+- drop haproxy-fix_dprintf.patch, merged upstream
+
+-------------------------------------------------------------------
+Fri May 14 07:18:03 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.4.5:
+  * Haproxy can now read huge ACL pattern lists from files and
+    match inputs against them without any noticeable performance
+    impact, making geolocation possible
+  * adds a new "ignore-persist" directive, allowing it to ignore
+    the persistence cookie if an ACL-based condition is matched
+    (which is useful for static objects in stateful farms)
+  * a few other minor improvements
+  * a nice performance boost of the log analyzer, which can now
+    process more than 1 GB of logs per second and report request
+    counts by status codes
+
+-------------------------------------------------------------------
+Thu Apr  8 09:41:51 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.4.4:
+  * brings a new option to work around optimization issues with
+    Tomcat and Jetty in server close mode, and for a bug in Jetty's
+    handling of Expect: 100-continue
+  * a very old appsession unexpected match of shorter cookie names
+    was also fixed
+  * a new feature to make it possible to connect to a server from
+    an IP found in a header was merged: it allows you to run
+    stunnel+haproxy in transparent mode together
+
+-------------------------------------------------------------------
+Fri Apr  2 23:42:44 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.4.3:
+  * fxes a regression introduced in 1.4.2 which could cause a
+    connection to still be attempted on the server side in case of
+    an error on the client side; this issue could even lead to a
+    crash if a Layer7 hash algorithm was used, so this code was
+    strengthened
+  * the configuration parser now detects many more inappropriate
+    options in TCP mode and emits related warnings
+  * it is now possible to indicate in the configuration that a
+    server will start in the "disabled" state
+  * other very minor issues were fixed
+
+-------------------------------------------------------------------
+Thu Mar 18 12:00:49 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.4.2:
+  * fixes a very rare case of stuck client sessions when using
+    keep-alive
+  * fixes a url_param hash bug which could result in a dead server
+    in very rare situations
+  * fixes status codes 501 and 505 which could cause a server to be
+    marked down if on-error was used
+  * fixes a risk of getting truncated HTTP responses when
+    chunk-encoding was used
+  * fixes an issue with anonymous ACLs
+  * improvements on health checks
+
+-------------------------------------------------------------------
+Fri Mar  5 00:45:12 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.4.1:
+  * some errors were incorrectly reported as 502 with the flags
+   "SL" in the logs; this is now fixed
+  * other minor issues were fixed
+  * documentation was updated
+
+-------------------------------------------------------------------
+Fri Feb 26 20:44:34 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.4.0:
+  * new features:
+    + keep-alive
+    + IP-based stickiness
+    + consistent hashing
+    + support for the RDP protocol
+    + a much nicer stats interface
+    + a much-improved performance level
+  * add -fno-strict-aliasing
+
+- changes from 1.4rc1:
+  * new features:
+    + server maintenance mode
+    + HTTP authentication (server and proxy)
+    + secure passwords
+    + conditional request/response header rewriting using ACLs
+    + anonymous ACLs that can be declared inline
+    + support for HTTP/1.1 101+Upgrade status code to support non-
+      HTTP protocols such as WebSocket
+
+-------------------------------------------------------------------
+Thu Feb 11 15:20:01 UTC 2010 - mrueckert@suse.de
+
+- update to 1.3.23
+
+-------------------------------------------------------------------
+Tue Sep 15 14:09:34 CEST 2009 - mrueckert@suse.de
+
+- update to 1.3.20
+
+-------------------------------------------------------------------
+Fri Apr  3 13:54:40 CEST 2009 - mrueckert@suse.de
+
+- update to 1.3.17
+
+-------------------------------------------------------------------
+Mon Mar  9 16:40:38 CET 2009 - mrueckert@suse.de
+
+- update to 1.3.15.8
+
+-------------------------------------------------------------------
+Wed Feb  4 15:13:15 CET 2009 - mrueckert@suse.de
+
+- update to 1.3.15.7
+
+-------------------------------------------------------------------
+Mon Sep 15 15:52:45 CEST 2008 - mrueckert@suse.de
+
+- update to 1.3.15.4
+
+-------------------------------------------------------------------
+Sun Nov  4 21:21:35 CET 2007 - mrueckert@suse.de
+
+- update to 1.3.13.1:
+  too many changes see changelog file
+
+-------------------------------------------------------------------
+Mon Apr  2 00:53:38 CEST 2007 - mrueckert@suse.de
+
+- prepared spec for easy split out of -snapshot packages.
+- added vim syntax file
+
+-------------------------------------------------------------------
+Mon Mar 19 17:50:33 CET 2007 - mrueckert@suse.de
+
+- update to 1.2.17:
+  - replaced the linked-list with a faster rbtree in the scheduler
+  - add user/group support (Marcus Rueckert)
+  - add the "except" keyword to the "forwardfor" option (Bryan
+    Germann)
+  - re-implemented support for multi-line headers (was
+    incidently reverted)
+  - fixed possible crash when no cookie was set on a server
+  - fixed various length checks in appsession
+  - fixed unlikely memory leak in appsession in case of memory
+    shortage
+  - updates to the architecture guide
+- remove haproxy-1.2.16_username_groupname_support.patch:
+  patch included upstream
+
+-------------------------------------------------------------------
+Mon Jan  8 00:27:17 CET 2007 - mrueckert@suse.de
+
+- initial package of 1.2.16
+- added 2 patches:
+  haproxy-1.2.16_config_haproxy_user.patch
+  haproxy-1.2.16_username_groupname_support.patch
+  the patches allow to specify username and groupname instead of
+  uid/gid. The patches are needed as we do not have a static
+  uid/gid for the haproxy user/group.
+

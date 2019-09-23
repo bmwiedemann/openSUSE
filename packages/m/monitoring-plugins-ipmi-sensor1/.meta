@@ -1,0 +1,20 @@
+<package name="monitoring-plugins-ipmi-sensor1" project="openSUSE:Factory">
+  <title>IPMI Sensor Monitoring Plugin for Nagios/Icinga</title>
+  <description>This plugin checks all IPMI sensors of a server remotely or locally. It works
+with any IPMI-compatible server, so you can use it also in heterogeneous
+environments with different server vendors.
+
+Version 2.x of the plugin is based on ipmimonitoring (FreeIPMI). It monitors
+both IPMI sensor classes (threshold and discrete). The older version 1.x (which
+is still maintained) is based on ipmitool and can only monitor threshold based
+sensors.
+
+
+Authors:
+--------
+    Lars Vogdt
+
+</description>
+  <devel project="server:monitoring" package="monitoring-plugins-ipmi-sensor1"/>
+  <url>http://www.thomas-krenn.com/en/oss/ipmi-plugin/</url>
+</package>

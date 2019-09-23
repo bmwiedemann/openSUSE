@@ -1,0 +1,20 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">git://github.com/ClusterLabs/hawk.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="filename">hawk2</param>
+    <param name="versionformat">2.1.0+git.%ct.%h</param>
+    <param name="revision">stable</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">hawk2*.tar</param>
+    <param name="compression">bz2</param>
+  </service>
+
+  <service name="set_version" mode="disabled">
+    <param name="basename">hawk2</param>
+  </service>
+</services>

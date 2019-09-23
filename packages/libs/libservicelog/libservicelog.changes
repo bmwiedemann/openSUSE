@@ -1,0 +1,165 @@
+-------------------------------------------------------------------
+Mon Aug 28 08:53:47 UTC 2017 - jloeser@suse.com
+
+- version update to 1.1.18 (fate#322223, fate#326427)
+  - Sqlite bind call validation
+  - Added libservicelog test cases
+  - Print machine serial number
+  - Fixed few regression issues
+
+- removed patches:
+  * libservicelog-1.1.17-Fixes-fdopen-failure-issue-properly.patch
+  * libservicelog-1.1.17-Print-machine-serial-number-in-v29-path.patch
+
+-------------------------------------------------------------------
+Thu Aug 10 12:47:12 UTC 2017 - msuchanek@suse.com
+
+- Machine serial number is not reported to Lpar for a SRC event
+  (bsc#1053227)
+  * libservicelog-1.1.17-Fixes-fdopen-failure-issue-properly.patch
+  * libservicelog-1.1.17-Print-machine-serial-number-in-v29-path.patch
+
+-------------------------------------------------------------------
+Mon Mar 27 10:51:36 UTC 2017 - jloeser@suse.com
+
+- version update to 1.1.17 (fate#321443)
+  - NULL check before calling strdup
+  - Fixed various bugs
+
+-------------------------------------------------------------------
+Tue Mar 22 16:15:16 UTC 2016 - jloeser@suse.com
+
+- version update to 1.1.16 (FATE#319556)
+  - see libservicelog-1.1.16/ChangeLog for changes
+
+- removed patches:
+  * libservicelog-printf_types.patch
+
+-------------------------------------------------------------------
+Thu Sep  4 13:26:49 UTC 2014 - jengelh@inai.de
+
+- baselibs.conf did not match with the shared library package
+- Remove libservicelog-lib_version.patch, there is no reason
+  provided to have it in the first place.
+- Remove libservicelog-pkgconfig.patch; there is nothing wrong
+  with -L${libdir} in .pc files.
+- Remove dlopen hacks; the packages ppc64-diag and servicelog which
+  OBS lists as dependants use no visible call to dlopen but do
+  a compile-time link.
+- As the public header servicelog.h #includes <sqlite3.h>,
+  Reqiures: sqlite3-devel is needed for libservicelog-devel.
+
+-------------------------------------------------------------------
+Thu Sep  4 12:56:42 UTC 2014 - jloeser@suse.com
+
+- version update to 1.1.15 (BNC#894856)
+  - Cleanup build tools (configure.ac and Makefile.am) 
+
+- modified patches:
+  * libservicelog-lib_version.patch
+  * libservicelog-pkgconfig.patch
+-------------------------------------------------------------------
+Fri Jan 17 10:31:57 UTC 2014 - jloeser@suse.com
+
+- version update to 1.1.14 (FATE#315456) 
+  include servicelog.db and bootstrap.sh file into compression file 
+  list
+- Prereq: groupadd for %post
+
+-------------------------------------------------------------------
+Tue Dec 10 19:07:21 UTC 2013 - dvaleev@suse.com
+
+- enable ppc64le 
+
+-------------------------------------------------------------------
+Thu Mar 28 12:26:33 UTC 2013 - dvaleev@suse.com
+
+- update to 1.1.23
+- Legalize SQL insert command input string
+- Minor typo fix
+- repair_action : fix output format issue
+- drop libservicelog.install.patch
+- refresh libservicelog-printf_types.patch
+
+-------------------------------------------------------------------
+Wed Dec  5 18:09:10 UTC 2012 - dvaleev@suse.com
+
+- update to 1.1.12
+  Upstream changelog:
+   Minor changes 
+- more printf types fixes (libservicelog-printf_types.patch)
+
+-------------------------------------------------------------------
+Thu Jun 28 16:28:34 CEST 2012 - pth@suse.de
+
+- Using both -version-info and -release options for libtool is bogus,
+  therefore use version-info only and name shared library package
+  accordingly.
+- Adapt requires of -devel package.
+
+-------------------------------------------------------------------
+Tue Jan 31 16:01:42 CET 2012 - meissner@suse.de
+
+- buildreq autoconf and libtool so autoreconf -ivf works again.
+
+-------------------------------------------------------------------
+Tue Jan 31 10:41:31 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Parallel building using %_smp_mflags
+
+-------------------------------------------------------------------
+Wed Nov  2 12:31:42 UTC 2011 - dvaleev@suse.com
+
+- update to 1.1.11
+  - new build requires librtas-devel pkg-config
+  - reworked patches
+  - Drop libservicelog.warnings.patch,
+	libservicelog.sqlite-include.patch
+	libservicelog-sqlite_fixes.patch 
+  - Fix package description typo
+  - ppc,ppc64 exclusive package as it is requires librtas
+
+-------------------------------------------------------------------
+Tue Apr 20 20:41:19 UTC 2010 - dimstar@opensuse.org
+
+- Fix build: use %__rm instead of %rm.
+
+-------------------------------------------------------------------
+Mon Apr 19 10:50:30 UTC 2010 - pth@novell.com
+
+- Fix .changes
+
+-------------------------------------------------------------------
+Wed Apr 14 18:23:27 UTC 2010 - pth@novell.com
+
+- Fix .pc file (bnc#588706)
+- Only pass -L${libdir} if libdir isn't searched by default.
+- Rename sqlite-fixes to libservicelog-sqlite_fixes.patch.
+
+-------------------------------------------------------------------
+Mon Feb  1 11:53:00 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Thu Dec 10 15:50:32 CET 2009 - duwe@suse.de
+
+- Fix sqlite free()s and one insert statement (bnc#482351)
+
+-------------------------------------------------------------------
+Mon Jan 26 18:28:45 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files 
+
+-------------------------------------------------------------------
+Wed Sep 10 11:52:07 CEST 2008 - olh@suse.de
+
+- link against sqlite3
+
+-------------------------------------------------------------------
+Fri Aug 29 11:10:42 CEST 2008 - olh@suse.de
+
+- new libservicelog-1.0.1, libservicelog-1_0-1 and libservicelog-devel
+  packages (bnc#417533)
+

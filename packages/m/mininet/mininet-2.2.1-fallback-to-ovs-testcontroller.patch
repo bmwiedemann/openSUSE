@@ -1,0 +1,29 @@
+From 610e6d957f8c0fb8f245402868cbf9b0e2e89b08 Mon Sep 17 00:00:00 2001
+From: Markos Chandras <mchandras@suse.de>
+Date: Thu, 24 Mar 2016 18:03:12 +0000
+Subject: [PATCH] mininet: node: Fallback to ovs-testcontroller
+
+Commit db3bffa971a8("Check for ovs-testcontroller in OVSController")
+only added partial support for the renamed ovs controller. We also need
+to use it as the default controller if 'ovs-controller' and
+'test-controller' do not exist.
+---
+ mininet/node.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/mininet/node.py b/mininet/node.py
+index ea7851b..3cf0ef8 100644
+--- a/mininet/node.py
++++ b/mininet/node.py
+@@ -1426,6 +1426,8 @@ class OVSController( Controller ):
+     def __init__( self, name, command='ovs-controller', **kwargs ):
+         if quietRun( 'which test-controller' ):
+             command = 'test-controller'
++        if quietRun( 'which ovs-testcontroller' ):
++            command = 'ovs-testcontroller'
+         Controller.__init__( self, name, command=command, **kwargs )
+ 
+     @classmethod
+-- 
+2.7.3
+

@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Wed Sep 20 18:38:10 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- renamed package as this versioned gem
+
+-------------------------------------------------------------------
+Sun Sep 17 17:51:50 UTC 2017 - coolo@suse.com
+
+- updated to version 2.3.0
+ see installed CHANGELOG.md
+
+  ### 2.2.1 / 2017-09-13
+  
+  #### Enhancements
+  
+  * Verify checksums of files at extraction time (in addition to at download time). (#56)
+  * Clarify error message if a `tar` command can't be found. (#81)
+
+-------------------------------------------------------------------
+Tue Jun  6 05:37:45 UTC 2017 - coolo@suse.com
+
+- updated to version 2.2.0
+ see installed CHANGELOG.md
+
+  ### 2.2.0 / 2017-06-04
+  
+  #### Enhancements
+  
+  * Remove MD5 hashing of configure options, not avialbale in FIPS mode. (#78)
+  * Add experimental support for cmake-based projects.
+  * Retry on HTTP failures during downloads. [#63] (Thanks, @jtarchie and @jvshahid!)
+  * Support Ruby 2.4 frozen string literals.
+  * Support applying patches for users with misconfigured git worktree. [#69]
+  * Support gpg signature verification of download resources.
+
+-------------------------------------------------------------------
+Thu Jan 21 05:39:40 UTC 2016 - coolo@suse.com
+
+- updated to version 2.1.0
+ see installed CHANGELOG.md
+
+  ### 2.1.0 / 2016-01-06
+  
+  #### Enhancements
+  
+  * Add support for `file:` protocol for tarballs
+  
+  
+  #### Bugfixes
+  
+  * Raise exception on unsupported URI protocols
+  * Ignore git whitespace config when patching (Thanks, @e2!) (#67)
+
+-------------------------------------------------------------------
+Fri Dec  4 05:30:37 UTC 2015 - coolo@suse.com
+
+- updated to version 2.0.0
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Fri Dec  4 00:35:00 UTC 2015 - mrueckert@suse.de
+
+- downgrade to rc2 again. for rpm 2.0.0.rc2 > 2.0.0. for rubygems
+  it is the other way around.
+
+-------------------------------------------------------------------
+Wed Dec  2 11:25:01 UTC 2015 - mrueckert@suse.de
+
+- initial package
+

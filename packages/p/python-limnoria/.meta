@@ -1,0 +1,8 @@
+<package name="python-limnoria" project="openSUSE:Factory">
+  <title>A modified version of Supybot (an IRC bot and framework)</title>
+  <description>Limnoria is a robust, full-featured Python IRC bot with a clean and flexible plugin API. It is equipped with a complete ACL system for specifying user permissions with as much as per-command granularity. Batteries are included in the form of numerous plugins already written.
+
+</description>
+  <devel project="devel:languages:python" package="python-limnoria"/>
+  <url>https://github.com/ProgVal/Limnoria</url>
+</package>

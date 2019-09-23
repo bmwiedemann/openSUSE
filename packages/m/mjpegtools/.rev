@@ -1,0 +1,402 @@
+<revisionlist>
+  <revision rev="1" vrev="35">
+    <srcmd5>fa55f4f93fd544d490c8524be422f57a</srcmd5>
+    <version>1.9.0rc2</version>
+    <time>1186758747</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="36">
+    <srcmd5>11d53a9cf3eade403118b42fd19478d4</srcmd5>
+    <version>1.9.0rc2</version>
+    <time>1186914429</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="67">
+    <srcmd5>300a5f3c3bd11c4fe9f7cee7cb2de900</srcmd5>
+    <version>1.9.0rc2</version>
+    <time>1199705581</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="75">
+    <srcmd5>3e886996b9c400b3f5ced03deb37e42f</srcmd5>
+    <version>1.9.0rc2</version>
+    <time>1201625818</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="112">
+    <srcmd5>72705cec3373d8a6662107e678e00ef6</srcmd5>
+    <version>1.9.0rc2</version>
+    <time>1210675458</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f4d5a5a412d9b2e1967b9f14e7d31dc1</srcmd5>
+    <version>1.9.0rc3</version>
+    <time>1214590178</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f3c0fb453abb9b557d53a9eaf0d48f4c</srcmd5>
+    <version>1.9.0</version>
+    <time>1232410419</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>69e1e4269449446860f9d44f95815252</srcmd5>
+    <version>1.9.0</version>
+    <time>1244237752</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>69e1e4269449446860f9d44f95815252</srcmd5>
+    <version>1.9.0</version>
+    <time>1244237752</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>61193657f72aaa69966a7bd6bad4fc67</srcmd5>
+    <version>1.9.0</version>
+    <time>1258984303</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/mjpegtools based on submit request 24845 from user tiwai
+</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>d523f0ddcd919b13f1996540caa2f525</srcmd5>
+    <version>1.9.0</version>
+    <time>1267463462</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/mjpegtools based on submit request 33700 from user puzel
+</comment>
+    <requestid>33700</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>f33bbf56e280af853cc7a88c2cb9e0d4</srcmd5>
+    <version>1.9.0</version>
+    <time>1268924947</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>f33bbf56e280af853cc7a88c2cb9e0d4</srcmd5>
+    <version>1.9.0</version>
+    <time>1278667367</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>f33bbf56e280af853cc7a88c2cb9e0d4</srcmd5>
+    <version>1.9.0</version>
+    <time>1278678597</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>c4094e383dba992c71e83c48a987000a</srcmd5>
+    <version>unknown</version>
+    <time>1283789015</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/mjpegtools based on submit request 47207 from user tiwai
+</comment>
+    <requestid>47207</requestid>
+  </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>10042675cfe2f935925fbad15fa907a0</srcmd5>
+    <version>1.99.99</version>
+    <time>1296694011</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59846 from user plater
+</comment>
+    <requestid>59846</requestid>
+  </revision>
+  <revision rev="17" vrev="13">
+    <srcmd5>832b5ae2d10510a0214022b8a2249ae6</srcmd5>
+    <version>1.99.99</version>
+    <time>1296694030</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59846
+</comment>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>e169abf4b14c7f411b4da28127ca444f</srcmd5>
+    <version>1.9.0</version>
+    <time>1297077143</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60135 from user plater
+</comment>
+    <requestid>60135</requestid>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>dd5a6072034004c18ff2e46070399b8c</srcmd5>
+    <version>1.9.0</version>
+    <time>1297077152</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60135
+</comment>
+  </revision>
+  <revision rev="20" vrev="15">
+    <srcmd5>dd5a6072034004c18ff2e46070399b8c</srcmd5>
+    <version>1.9.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="21" vrev="16">
+    <srcmd5>a5e16144d4f11d53dcb9403ce46b6c84</srcmd5>
+    <version>1.9.0</version>
+    <time>1301914652</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65886 from user licensedigger
+</comment>
+    <requestid>65886</requestid>
+  </revision>
+  <revision rev="22" vrev="17">
+    <srcmd5>c914ca49695c8d1747f5a382586d4949</srcmd5>
+    <version>1.9.0</version>
+    <time>1301914662</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65886
+</comment>
+  </revision>
+  <revision rev="23" vrev="18">
+    <srcmd5>4c6e2106470959c221edda571fd0f061</srcmd5>
+    <version>1.9.0</version>
+    <time>1303112906</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67608 from user coolo
+</comment>
+    <requestid>67608</requestid>
+  </revision>
+  <revision rev="24" vrev="19">
+    <srcmd5>5d95e60ed6594a72210b5cd97047d74b</srcmd5>
+    <version>1.9.0</version>
+    <time>1303112914</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67608
+</comment>
+  </revision>
+  <revision rev="25" vrev="20">
+    <srcmd5>5b87f9d35887fa634f1d31383b463c31</srcmd5>
+    <version>1.9.0</version>
+    <time>1310471750</time>
+    <user>saschpe</user>
+    <comment>- Add mjpegtools-v4l-2.6.38.patch: use the new v4l interface (forwarded request 75631 from namtrac)</comment>
+    <requestid>76085</requestid>
+  </revision>
+  <revision rev="26" vrev="21">
+    <srcmd5>9055eb262d54c429594192b5cff4b860</srcmd5>
+    <version>1.9.0</version>
+    <time>1310471768</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76085
+</comment>
+  </revision>
+  <revision rev="27" vrev="22">
+    <srcmd5>87c26345b6ec095e3d9f574307eca6ae</srcmd5>
+    <version>1.9.0</version>
+    <time>1312808776</time>
+    <user>saschpe</user>
+    <comment>fix BUILD_ORIG (forwarded request 78225 from computersalat)</comment>
+    <requestid>78246</requestid>
+  </revision>
+  <revision rev="28" vrev="23">
+    <srcmd5>250f9c0c116c194244199e49bbce3c65</srcmd5>
+    <version>1.9.0</version>
+    <time>1312808785</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78246
+</comment>
+  </revision>
+  <revision rev="29" vrev="25">
+    <srcmd5>250f9c0c116c194244199e49bbce3c65</srcmd5>
+    <version>1.9.0</version>
+    <time>1319182179</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b129f30ccb8526a0390c01fc8714d661</srcmd5>
+    <version>2.0.0</version>
+    <time>1321627552</time>
+    <user>coolo</user>
+    <comment>- Update to 2.0.0
+- Remove obsoleted patches
+- Rename to follow SLPP
+- Use pkgconfig()-type BuildRequires
+- Spec-clean (forwarded request 91423 from RedDwarf)</comment>
+    <requestid>91971</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>953d6789c8dcbdec3beca43095754db4</srcmd5>
+    <version>2.0.0</version>
+    <time>1323341482</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency</comment>
+    <requestid>95285</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>3f488cb36a88a99be32d7152af0aade8</srcmd5>
+    <version>2.0.0</version>
+    <time>1332241894</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 109588 from dimstar)</comment>
+    <requestid>109634</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>84135aeb045383a845a70ac77ec7d387</srcmd5>
+    <version>2.0.0</version>
+    <time>1337580528</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121287</requestid>
+  </revision>
+  <revision rev="34" vrev="6">
+    <srcmd5>84135aeb045383a845a70ac77ec7d387</srcmd5>
+    <version>2.0.0</version>
+    <time>1340183701</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="35" vrev="7">
+    <srcmd5>d16a3c7d5915bbce435a83b0964e814e</srcmd5>
+    <version>2.0.0</version>
+    <time>1341820257</time>
+    <user>coolo</user>
+    <comment>- disable simd-accel on ppc as it does not build with the
+  reduced tarball (forwarded request 127045 from msmeissn)</comment>
+    <requestid>127173</requestid>
+  </revision>
+  <revision rev="36" vrev="9">
+    <srcmd5>d16a3c7d5915bbce435a83b0964e814e</srcmd5>
+    <version>2.0.0</version>
+    <time>1359109447</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="10">
+    <srcmd5>35a9d375efb8d32ccc1722ba1f2a5c23</srcmd5>
+    <version>2.0.0</version>
+    <time>1362991885</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 156974 from coolo)</comment>
+    <requestid>157031</requestid>
+  </revision>
+  <revision rev="38" vrev="12">
+    <srcmd5>35a9d375efb8d32ccc1722ba1f2a5c23</srcmd5>
+    <version>2.0.0</version>
+    <time>1379663292</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="13">
+    <srcmd5>a041e1069d5cfdaffc4a0ea440f683c7</srcmd5>
+    <version>2.0.0</version>
+    <time>1380112381</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0
+ÃƒPresence of many GPL-2.0 licensed files in mplex/ y4mdenoise (forwarded request 163439 from babelworx)</comment>
+    <requestid>163531</requestid>
+  </revision>
+  <revision rev="40" vrev="15">
+    <srcmd5>a041e1069d5cfdaffc4a0ea440f683c7</srcmd5>
+    <version>2.0.0</version>
+    <time>1409301901</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="16">
+    <srcmd5>9e9bfbcb7f78a49357b8d960f437d4a4</srcmd5>
+    <version>2.0.0</version>
+    <time>1417870042</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263798</requestid>
+  </revision>
+  <revision rev="42" vrev="17">
+    <srcmd5>775792b0be548666767f985c275105d3</srcmd5>
+    <version>2.0.0</version>
+    <time>1420927612</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280423</requestid>
+  </revision>
+  <revision rev="43" vrev="18">
+    <srcmd5>cbb2445c839d5242685980a2bc560f7c</srcmd5>
+    <version>2.0.0</version>
+    <time>1487767444</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459291</requestid>
+  </revision>
+  <revision rev="44" vrev="19">
+    <srcmd5>9d819120b42360f96d6c657b58a96669</srcmd5>
+    <version>2.0.0</version>
+    <time>1489415400</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477965</requestid>
+  </revision>
+  <revision rev="45" vrev="20">
+    <srcmd5>303831fdc0e6be66e638c5f42a3bdf72</srcmd5>
+    <version>2.0.0</version>
+    <time>1492417279</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>484811</requestid>
+  </revision>
+  <revision rev="46" vrev="21">
+    <srcmd5>6b3b2993b9064bdb47a3f7752d91ea13</srcmd5>
+    <version>2.0.0</version>
+    <time>1510406190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539451</requestid>
+  </revision>
+  <revision rev="47" vrev="22">
+    <srcmd5>7a43d74bbad685dffefb88560158f5a4</srcmd5>
+    <version>2.0.0</version>
+    <time>1516091879</time>
+    <user>dimstar_suse</user>
+    <comment>- Add conditional post(un) handling for libmpeg2encpp-2_0-0.
+</comment>
+    <requestid>563887</requestid>
+  </revision>
+  <revision rev="48" vrev="23">
+    <srcmd5>25f22f52a4ecb785f9468394e306366f</srcmd5>
+    <version>2.0.0</version>
+    <time>1519218567</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578439</requestid>
+  </revision>
+  <revision rev="49" vrev="24">
+    <srcmd5>f50dcd7a914589b5c80663f6c29121f6</srcmd5>
+    <version>2.0.0</version>
+    <time>1519554870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579043</requestid>
+  </revision>
+  <revision rev="50" vrev="25">
+    <srcmd5>3a5ae53d9bebe453ba90b13306d444e6</srcmd5>
+    <version>2.0.0</version>
+    <time>1519902243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580789</requestid>
+  </revision>
+  <revision rev="51" vrev="26">
+    <srcmd5>3f120b384dd584ac809efe5370c1af80</srcmd5>
+    <version>2.0.0</version>
+    <time>1520502986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583749</requestid>
+  </revision>
+  <revision rev="52" vrev="27">
+    <srcmd5>5d0e86b59519ed16f4ee6dd76938fce3</srcmd5>
+    <version>2.0.0</version>
+    <time>1535370449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630891</requestid>
+  </revision>
+</revisionlist>

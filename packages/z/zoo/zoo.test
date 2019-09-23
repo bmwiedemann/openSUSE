@@ -1,0 +1,12 @@
+			Testform für ZOO
+			================
+
+21.08.1996: Version 2.10
+Maintainer: rj
+
+1  man zoo und man fiz aufrufen
+	(man zoo beschwert sich am Ende - funktioniert aber)
+
+2  zoo -add <archivname>.zoo <datei> aufrufen
+
+3  fiz <archivname>.zoo aufrufen

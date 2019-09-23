@@ -1,0 +1,10 @@
+<package name="gnuhealth-thalamus" project="openSUSE:Factory">
+  <title>The GNU Health Federation Message and Authentication Server</title>
+  <description>The Thalamus project provides a RESTful API hub to all the GNU Health Federation nodes. The main functions are:
+
+* Message server: A concentrator and message relay from and to the participating nodes in the GNU Health Federation and the GNU Health Information System (MongoDB). Some of the participating nodes include the GNU Health HMIS, MyGNUHealth mobile PHR application, laboratories, research institutions and civil offices.
+* Authentication Server: Thalamus also serves as an authentication and authorization server to interact with the GNUHealth Information System
+
+Thalamus is part of the GNU Health project, but it is a self contained, independent server that can be used in different health related scenarios.</description>
+  <devel project="Application:ERP:GNUHealth:Factory" package="gnuhealth-thalamus"/>
+</package>

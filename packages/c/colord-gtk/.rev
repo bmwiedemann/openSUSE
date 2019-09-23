@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fa53dfcbce3e2a136d22d05257e52d5b</srcmd5>
+    <version>0.1.23</version>
+    <time>1351193133</time>
+    <user>coolo</user>
+    <comment>New package. colord-gtk was split out from colord (so not really new) in order to avoid build loops.</comment>
+    <requestid>139113</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7fd52f77423c8147801da5c44869d321</srcmd5>
+    <version>0.1.24</version>
+    <time>1356642603</time>
+    <user>namtrac</user>
+    <comment>Update to 0.1.24 (forwarded request 145880 from dimstar)</comment>
+    <requestid>146278</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7fd52f77423c8147801da5c44869d321</srcmd5>
+    <version>0.1.24</version>
+    <time>1359108760</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0c8a30a9c6a0e35ac8ab4609d7c4a7a2</srcmd5>
+    <version>0.1.25</version>
+    <time>1365024814</time>
+    <user>coolo</user>
+    <comment>Update to 0.1.25</comment>
+    <requestid>162137</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>0c8a30a9c6a0e35ac8ab4609d7c4a7a2</srcmd5>
+    <version>0.1.25</version>
+    <time>1379662133</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>0c8a30a9c6a0e35ac8ab4609d7c4a7a2</srcmd5>
+    <version>0.1.25</version>
+    <time>1409300663</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f75018b6ffe28d4feb230f085da3d983</srcmd5>
+    <version>0.1.26</version>
+    <time>1418840390</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265398</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>abf92391d32ea6d3e94bffe411d78e1a</srcmd5>
+    <version>0.1.26</version>
+    <time>1464964103</time>
+    <user>dimstar_suse</user>
+    <comment>Sync package with SLE12SP2 - just for easier tracking (forwarded request 399166 from dimstar)</comment>
+    <requestid>399389</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>85f85a175bf7e9c27b320590e593b250</srcmd5>
+    <version>0.1.26</version>
+    <time>1521051776</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583525 from dimstar)</comment>
+    <requestid>584691</requestid>
+  </revision>
+</revisionlist>

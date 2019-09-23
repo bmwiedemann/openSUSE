@@ -1,0 +1,5 @@
+<package name="python-django-rest-knox" project="openSUSE:Factory">
+  <title></title>
+  <description>Authentication for Django REST framework</description>
+  <devel project="devel:languages:python:django" package="python-django-rest-knox"/>
+</package>

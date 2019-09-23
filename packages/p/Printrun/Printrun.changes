@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Tue Oct 30 09:03:21 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- fix dependency to python3 modules (esp. wxWidgets)
+
+-------------------------------------------------------------------
+Tue Jul 17 23:01:00 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Spec file fixes/cleanup:
+  * Use python3, python2 is no longer supported by Printrun
+  * Add missing setuptools dependency
+  * Remove %defattr
+  * Tag COPYING with %license, and only package it in common subpackage
+- Drop obsolete Printrun-pyglet12.patch
+
+-------------------------------------------------------------------
+Tue Apr 10 12:21:09 UTC 2018 - adrian@suse.de
+
+- update to 2.0.0rc5
+
+-------------------------------------------------------------------
+Wed Jun 21 19:42:57 UTC 2017 - adrian@suse.de
+
+- use upstream version scheme
+
+-------------------------------------------------------------------
+Fri Jun  2 14:00:52 UTC 2017 - adrian@suse.de
+
+- update to current code
+- hack around to get it building
+
+-------------------------------------------------------------------
+Tue Aug  6 13:23:06 UTC 2013 - jw@suse.com
+
+- fixed desktop Categories
+  according to http://en.opensuse.org/openSUSE:Packaging_desktop_menu_categories#Graphics
+
+- fixed specfile:
+  * chosen a valid group, instead of an invalid one
+  * added the default defattr() line, (which is still needed explicitly even after so many years)
+  * fixed license syntax.

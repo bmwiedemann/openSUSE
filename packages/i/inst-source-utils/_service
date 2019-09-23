@@ -1,0 +1,17 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/openSUSE/inst-source-utils.git</param>
+    <param name="scm">git</param>
+    <param name="version">2018.12.10</param>
+    <param name="revision">2018.12.10</param>
+    <param name="extract">inst-source-utils.changes</param>
+    <param name="extract">inst-source-utils.spec</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

@@ -1,0 +1,5 @@
+<package name="python-apache-libcloud" project="openSUSE:Factory">
+  <title>python-apache-libcloud</title>
+  <description>Python Apache Libcloud is a standard Python library that abstracts away differences among multiple cloud provider APIs</description>
+  <devel project="devel:languages:python" package="python-apache-libcloud"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="virglrenderer" project="openSUSE:Factory">
+  <title>VirGL virtual OpenGL renderer</title>
+  <description></description>
+  <devel project="Virtualization" package="virglrenderer"/>
+</package>

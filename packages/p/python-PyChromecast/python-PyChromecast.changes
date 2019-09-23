@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Tue Jun 18 11:28:34 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.2.2
+  * Improve matching of spotify device to handle audio groups
+  * Fix broken attempt to update status during tear down
+  * Add google home mini as audio device
+  * Add support for queue_next / queue_prev
+  * Take expiration from login and pass to controller
+  * Add multizone controller and multizone manager
+  * Remove the filters feature from get_chromecasts
+
+-------------------------------------------------------------------
+Tue Mar  5 20:03:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.5.2:
+  * YouTube controller version update (#258) @ur1katz
+  * Add support for connecting to named service (#267) @emontnemery
+  * Exponential backoff of mdns service resolution retries (#268) @emontnemery
+  * Improve exponential backoff of mdns service resolution retries (#269) @emontnemery
+
+-------------------------------------------------------------------
+Wed Jan  2 12:09:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.3.0:
+  * Updated spotify controller description (#232) @Nobyx
+  * Allow users to pass the force_launch flag when launching an app (#237) @marcosdiez
+  * Better YouTube controller (#236) @ur1katz
+  * Simple event listener example (#241) @hjmsw
+
+-------------------------------------------------------------------
+Wed Dec 26 22:39:21 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Fix build failure: %{py_ver} doesn't work, %{py3_ver}
+  does.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:18 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri May 11 21:52:30 UTC 2018 - toddrme2178@gmail.com
+
+- Don't forget python_module workaround.
+
+-------------------------------------------------------------------
+Thu May  3 15:38:15 UTC 2018 - alarrosa@suse.com
+
+- Run spec_cleaner
+
+-------------------------------------------------------------------
+Thu May  3 08:30:37 UTC 2018 - alarrosa@suse.com
+
+- Update to version 2.2.0
+  * Spotify controller creation
+  * Fixed misplaced parenthesis
+
+- Update to version 2.1.0
+  * Fix not waiting with no tries set
+  * Add adjusted_current_time() function
+
+- Update to version 2.0.0
+  * Drop Python 2 support
+  * Fixes for discovery, FreeBSD Socket creation
+  * Fix Channel Close
+  * Add return for "uri" value, fix SSL issues on Windows
+  * Don't sleep when there are no tries remaining
+
+- Drop 0001-Dont-sleep-when-there-are-no-tries-remaining.patch
+
+-------------------------------------------------------------------
+Fri Jan  5 09:22:56 UTC 2018 - alarrosa@suse.com
+
+- Add 0001-Dont-sleep-when-there-are-no-tries-remaining.patch from
+  upstream
+
+- Update to version 1.0.3
+  * Catch OSError as well as socket.error
+  * Fix CAST_TYPES mapping
+  * Revert 184 socket client changes
+
+- Update to version 1.0.2
+  * Remove excess return value from get_device_status
+
+- Update to version 1.0.1
+  * Properly remove api_version now
+
+- Update to version 1.0.0
+  * Cast web pages with DashCast
+  * Fix get_device_status for newer cast firmwares
+  * Remove api_version from DeviceStatus
+ 
+-------------------------------------------------------------------
+Tue Sep  5 17:13:17 UTC 2017 - alarrosa@suse.com
+
+- Update to version 0.8.2
+  * Fix race in SocketClient.send_message
+  * Fix send message deadlock
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jun 12 09:59:27 UTC 2017 - alarrosa@suse.com
+
+- Initial release of python-PyChromecast 0.8.1
+

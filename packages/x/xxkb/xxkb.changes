@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Sun Nov 23 15:59:00 UTC 2014 - tampakrap@opensuse.org
+
+- Version bump 1.11.1, properly fixes the version mismatch and repacked tarball mess
+
+-------------------------------------------------------------------
+Wed Nov 19 13:17:53 UTC 2014 - tampakrap@opensuse.org
+
+- Downgrade, because upstream fixed a version mismatch between the CHANGES file
+  and the tarball name by silently repacking the tarball. More info at
+  https://sourceforge.net/p/xxkb/bugs/23/
+- Fixes linking issue with libXext, https://sourceforge.net/p/xxkb/bugs/16/
+- Fixes PIXMAPDIR typo in Imakefile, https://sourceforge.net/p/xxkb/patches/8/
+
+-------------------------------------------------------------------
+Fri Nov  7 15:13:56 UTC 2014 - tampakrap@opensuse.org
+
+- Change Group
+- Use pkgconfig in buildrequires
+
+-------------------------------------------------------------------
+Wed Nov  5 19:36:48 UTC 2014 - tampakrap@opensuse.org
+
+- Version bump: New LICENSE, Artistic 2.0
+
+-------------------------------------------------------------------
+Sun Jul 20 11:08:16 UTC 2014 - tampakrap@opensuse.org
+
+- Initial commit
+

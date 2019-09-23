@@ -1,0 +1,307 @@
+-------------------------------------------------------------------
+Tue Apr  8 19:41:27 UTC 2014 - asterios.dramis@gmail.com
+
+- Removed ivtv-ctl and v4l2-ctl utilities which are now provided by v4l-utils
+  package (avoid conflicts during installation) and added a dependency to
+  v4l-utils package for them.
+
+-------------------------------------------------------------------
+Wed Feb  6 18:18:37 CET 2013 - ro@suse.de
+
+- drop off ivtv-firmware to separate package (bnc#757539)
+- package pm-config file for ivtv (bnc#781377) 
+
+-------------------------------------------------------------------
+Wed Sep 12 10:07:10 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0
+  SPDX format
+
+-------------------------------------------------------------------
+Mon May 17 18:03:00 CEST 2010 - ro@suse.de
+
+- added modalias supplements for firmware package (bnc#534216) 
+
+-------------------------------------------------------------------
+Mon May 17 17:46:02 CEST 2010 - ro@suse.de
+
+- update to 1.4.0
+  - Updated for kernel 2.6.29.
+  - Fix and enhance ivtv private packet decoding.
+  - Update to latest v4l2-ctl.
+  - Removed v4l2-dbg: use the version from the official v4l-dvb
+    repository instead.
+
+-------------------------------------------------------------------
+Fri Dec  4 19:16:54 CET 2009 - seife@opensuse.org
+
+- de-fuzz the Makefile patch
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Fri Jun 19 10:35:46 CEST 2009 - coolo@novell.com
+
+- disable as-needed for this package as it fails to build with it
+
+-------------------------------------------------------------------
+Fri Feb 27 15:05:34 CET 2009 - ro@suse.de
+
+- update to svn to fix build 
+
+-------------------------------------------------------------------
+Fri Jan  9 08:41:58 CET 2009 - olh@suse.de
+
+- use ExclusiveArch as in /SRC/arch/
+
+-------------------------------------------------------------------
+Tue Sep 30 00:54:25 CEST 2008 - ro@suse.de
+
+- update to 1.3.0 (upstream name is now ivtv-utils)
+  * ivtvctl has been renamed to ivtv-ctl. This makes it consistent
+  with the naming of other v4l2 utilities.
+- kmp packages (drivers) are now gone, all in upstream kernel 
+
+-------------------------------------------------------------------
+Wed Oct 17 11:40:04 CEST 2007 - ro@suse.de
+
+- update to 1.0.3, the main driver is now upstream and built
+  in the kernel source
+- here are the ivtvfb and saa717x drivers
+
+-------------------------------------------------------------------
+Mon Jun 11 01:28:19 CEST 2007 - ro@suse.de
+
+- avoid comparison with string literal 
+
+-------------------------------------------------------------------
+Tue Jun  5 18:26:57 CEST 2007 - ro@suse.de
+
+- update to 0.10.3 
+- make it compile with current kernel 
+
+-------------------------------------------------------------------
+Thu Apr  5 17:50:14 CEST 2007 - ro@suse.de
+
+- make it compile with current kernel 
+
+-------------------------------------------------------------------
+Wed Apr  4 01:20:43 CEST 2007 - ro@suse.de
+
+- added licence files to firmware 
+
+-------------------------------------------------------------------
+Thu Mar 29 01:49:15 CEST 2007 - ro@suse.de
+
+- update to 0.10.1
+  - Fix bug where the 'App not reading fast enough' message was repeated
+    continuously. It should only show it once, until the application is
+    reading again.
+  - Allow hex input for setting controls (-c option) in v4l2-ctl.
+  - Show the actual amount of bytes read from /dev/videoX in the
+    LOG_STATUS text.
+  - Due to a bad copy-and-paste the i2c subsystem used I2C_HW_B_BT848
+    instead of I2C_HW_B_CX2341X.
+  - Still allow 256 KB encoder firmwares for compatibility with
+    blackbird cards.
+  - Fix PIO support.
+  - Pass correct values for ENC_MISC(3, ...)
+  - Fix ivtvfbctl option handling on ppc.
+
+-------------------------------------------------------------------
+Sun Mar 18 23:57:44 CET 2007 - ro@suse.de
+
+- removed /lib/firmware directory from filelist (in filesystem) 
+
+-------------------------------------------------------------------
+Wed Jan 17 02:41:46 CET 2007 - ro@suse.de
+
+- hack to build on 2.6.20pre 
+
+-------------------------------------------------------------------
+Sun Jan 14 00:11:51 CET 2007 - ro@suse.de
+
+- update to 0.9.1
+- 0.9.1 stable release
+	- Fix busy wait loop
+	- Remove 2.6.18 workaround: no longer needed in 2.6.19.
+
+- 0.9.0 stable release
+	- minor updates for 2.6.19: fix compile warnings and update VIDIOC_G_SLICED_VBI_CAP
+	  ioctl to the changed v4l2_sliced_vbi_cap struct.
+	- Improve the output of VIDIOC_LOG_STATUS.
+	- Fix handling of corrupt tveeprom.
+
+- 0.8.2 stable release
+	- Fix handling of corrupt tveeprom.
+	- Fix busy wait loop
+
+- 0.8.1 stable release
+	- vbi test tool accepts -d1 as a shortcut for /dev/video1
+	- added videodev2.h in utils since distros often are sloppy
+	  in updating this file in a new kernel release.
+	- some usability improvements to v4l2-ctl. Please note! Some
+	  options have new names.
+	- workaround VIDIOC_INT_S_REGISTER kernel bug (wrong ioctl value
+	  in the v4l2-common.h header, this is fixed in 2.6.19).
+	- saa717x fixes for Japanese cards.
+	- reported pix format was V4L2_PIX_FMT_UYVY instead of V4L2_PIX_FMT_HM12.
+	- added missing VIDIOC_ENUM_FMT ioctl.
+	- added new IVTV_IOC_STOP ioctl (thanks to Martin Dauskardt <md001@gmx.de>)
+	- added new IVTV_IOC_PAUSE_BLACK ioctl (thanks to Martin Dauskardt <md001@gmx.de>)
+	  Similar to IVTV_IOC_PAUSE, but it turns the output black when paused.
+	- Fix encoder pause/resume: these two were swapped.
+	- Firmware loading has been made more robust
+	  Thanks to Robert Hardy <rhardy@webcon.ca>.
+	- Firmware loading once again supports ppc.
+	- Fix nasty bug when loading the init mpeg file
+	  Thanks to Robert Hardy <rhardy@webcon.ca>.
+	- Enabling of newi2c support now depends on the presence of an IR-blaster.
+	- No longer turn the digitizer off and on when changing channels, this
+	  caused the tinny audio!
+	- Fix VIDIOC_STREAMOFF support.
+	- Detection of Hauppauge cards is now fully based on the tveeprom,
+	  PCI IDs are ignored. Other cards still use the PCI ID for detection.
+	- The detection of the first or second unit of a PVR500 is now done based
+	  on the PCI 'slot' used on the PVR500 card. The first unit has slot 8,
+	  the second has slot 9.
+	- Added IR-blaster detection, with thanks to Hauppauge's Steven Toth for
+	  providing this information.
+	- Fix initial PAL/SECAM/NTSC tuner defaults.
+	- Fix driver cleanup in case an error occurs.
+	- Fix VIDIOC_INT_S_AUDIO_ROUTING ioctl.
+	- Ripped out dynamic buffer allocation: it never worked right and gave
+	  some people a lot of grief.
+	- Make i2c errors (missing i2c devices) more readable. 
+
+-------------------------------------------------------------------
+Tue Nov 14 23:43:31 CET 2006 - ro@suse.de
+
+- move firmware to /lib/firmware 
+
+-------------------------------------------------------------------
+Tue Nov 14 02:06:42 CET 2006 - ro@suse.de
+
+- update to 0.8.0 (for 2.6.18 kernel release)
+  - Many API changes as part of the work to merge the driver
+    into the kernel
+  - Detect and workaround DMA offsets that can be introduced
+    by a DMA error.
+  - Sliced VBI always uses PIO, never DMA.
+  - Removed test/fwapi, utils/ivtv-detect.
+  - Added utils/v4l2-ctl.
+
+-------------------------------------------------------------------
+Sat Sep 23 18:15:03 CEST 2006 - aj@suse.de
+
+- Fix build with glibc 2.5.
+
+-------------------------------------------------------------------
+Mon Aug 21 18:33:22 CEST 2006 - ro@suse.de
+
+- update to current svn to fix build with 2.6.18 
+
+-------------------------------------------------------------------
+Mon Apr  3 01:09:03 CEST 2006 - ro@suse.de
+
+- change MODULE_PARM to module_param 
+
+-------------------------------------------------------------------
+Fri Mar  3 02:30:28 CET 2006 - ro@suse.de
+
+- update to current CVS (0.7.0) to run on current kernel (#153549)
+
+-------------------------------------------------------------------
+Fri Feb  3 12:00:39 CET 2006 - agruen@suse.de
+
+- ivtv.spec: Replace %arch with %_target_cpu.
+
+-------------------------------------------------------------------
+Fri Feb  3 11:13:30 CET 2006 - ro@suse.de
+
+- skip "um" not "uml" 
+
+-------------------------------------------------------------------
+Tue Jan 31 15:04:56 CET 2006 - ro@suse.de
+
+- build kernel-modules locally (KMP) 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:44:17 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 15:58:55 CET 2006 - ro@suse.de
+
+- update to current 0.4.2 (hopefully build with current kernel) 
+
+-------------------------------------------------------------------
+Mon Nov 28 16:51:09 CET 2005 - ro@suse.de
+
+- added utils/ivtvfwextract.pl to doc files list (#135611)
+
+-------------------------------------------------------------------
+Fri Nov  4 11:47:05 CET 2005 - ro@suse.de
+
+- try to fix km build by moving videodev2.h to driver subdirectory 
+
+-------------------------------------------------------------------
+Thu Oct 27 00:39:55 CEST 2005 - ro@suse.de
+
+- update to 0.4.0 
+
+-------------------------------------------------------------------
+Sun Aug 14 10:31:12 CEST 2005 - ro@suse.de
+
+- fix problem in kernel modules Makefile 
+
+-------------------------------------------------------------------
+Sun Aug 14 01:01:17 CEST 2005 - ro@suse.de
+
+- update to 0.3.7c 
+
+-------------------------------------------------------------------
+Fri Aug 12 17:04:32 CEST 2005 - ro@suse.de
+
+- update to 0.3.3k 
+
+-------------------------------------------------------------------
+Tue Feb 15 08:52:17 CET 2005 - agruen@suse.de
+
+- Don't install the user-space header in the kernel rpm.
+
+-------------------------------------------------------------------
+Tue Feb 15 00:08:59 CET 2005 - agruen@suse.de
+
+- Fix km_ package makefile.
+
+-------------------------------------------------------------------
+Wed Feb  2 00:47:14 CET 2005 - ro@suse.de
+
+- update to 0.3.2c 
+
+-------------------------------------------------------------------
+Thu Jan 20 14:58:16 CET 2005 - ro@suse.de
+
+- drop the request_module parts from mod_rename patch 
+
+-------------------------------------------------------------------
+Wed Jan 19 01:31:59 CET 2005 - ro@suse.de
+
+- keep only Makefile2.6 as Makefile in km_ivtv 
+
+-------------------------------------------------------------------
+Thu Jan 13 18:58:43 CET 2005 - ro@suse.de
+
+- rename modules msp3400, tuner, tveeprom to ivtv-xxx
+  to avoid clash 
+
+-------------------------------------------------------------------
+Thu Jan 13 18:57:53 CET 2005 - ro@suse.de
+
+- created package (based on work by kraxel) 
+

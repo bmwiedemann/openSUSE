@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ae086201ed7c1c63b1b71035d69ec49e</srcmd5>
+    <version>1.5.3</version>
+    <time>1537787471</time>
+    <user>dimstar_suse</user>
+    <comment>- enable tests
+- filelist cleanup
+- Initial Package
+</comment>
+    <requestid>635002</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9638552898dafffc0710177f1d86184b</srcmd5>
+    <version>2.0</version>
+    <time>1551687692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>679746</requestid>
+  </revision>
+</revisionlist>

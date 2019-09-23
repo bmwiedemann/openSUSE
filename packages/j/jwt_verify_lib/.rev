@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9b76b1ad01dfc07b37300450b73d3a09</srcmd5>
+    <version>20181125</version>
+    <time>1550220930</time>
+    <user>dimstar_suse</user>
+    <comment>- Add soname field to shared library object.
+- Disable --strip option in Bazel and let OBS take care of
+  stripping.
+- Initial version 20181125
+- Add patch to not bundle dependencies as Bazel http_archives, but
+  rather link them dynamically.
+  * bazel-unbundle-dependencies.patch
+</comment>
+    <requestid>669041</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>88f7a0138ab552c3a84c75db0f713e5d</srcmd5>
+    <version>20181125</version>
+    <time>1551455325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680192</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4f5a01f8ad4a9975c9fd0485fec2d44e</srcmd5>
+    <version>20181125</version>
+    <time>1563914541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717921</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eb1063df25e1a7302950bed9d06af759</srcmd5>
+    <version>20190708</version>
+    <time>1565105238</time>
+    <user>dimstar_suse</user>
+    <comment>- Use OpenSSL instead of BoringSSL.
+- Update to version 20190708:
+  * Implement RS384/RS512 token verification
+  * Add tests for RS384 and RS512 tokens
+  * Harden JwkRSA verification code
+  * Reduce fuzz truncate case
+  * Fix verify_time_test
+  * one more uint64
+  * one more uint64_t
+  * change to unsigned
+  * clean struct_utils
+  * clean protobuf binding
+  * remove rapidjson
+  * fix jwks
+  * 3rd draft
+  * second draft
+  * first draft
+  * Clear SSL errors for failed verification
+- Remove patch:
+  * bazel-unbundle-dependencies.patch</comment>
+    <requestid>721261</requestid>
+  </revision>
+</revisionlist>

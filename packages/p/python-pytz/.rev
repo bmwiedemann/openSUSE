@@ -1,0 +1,290 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1e76877cd47079950dda81e614c48c4c</srcmd5>
+    <version>2012b</version>
+    <time>1332616216</time>
+    <user>coolo</user>
+    <comment>useful timezone lib</comment>
+    <requestid>110486</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1e76877cd47079950dda81e614c48c4c</srcmd5>
+    <version>2012b</version>
+    <time>1340184086</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f9ece2641c837934d733c021b466f676</srcmd5>
+    <version>2012j</version>
+    <time>1358666209</time>
+    <user>coolo</user>
+    <comment>Update and python3 support (forwarded request 148492 from posophe)</comment>
+    <requestid>148577</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f9ece2641c837934d733c021b466f676</srcmd5>
+    <version>2012j</version>
+    <time>1359110107</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>139c1e362c470fe41e93941a0dd7d398</srcmd5>
+    <version>2013b</version>
+    <time>1367487875</time>
+    <user>coolo</user>
+    <comment>- remove conflicts with timezone, breaks the build (forwarded request 173956 from dirkmueller)</comment>
+    <requestid>173957</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5d6d217eb9b57a50c40473a8aa1b8c1e</srcmd5>
+    <version>2013b</version>
+    <time>1371649921</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179983</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4b16793ca90089b513366b14a2de4c1e</srcmd5>
+    <version>2013d</version>
+    <time>1379422970</time>
+    <user>coolo</user>
+    <comment>- update to 2013d:
+  * sync with timezone 2013d release (forwarded request 199365 from dirkmueller)</comment>
+    <requestid>199371</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>4b16793ca90089b513366b14a2de4c1e</srcmd5>
+    <version>2013d</version>
+    <time>1379664269</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b123a35e06304c14dba5145f1988e455</srcmd5>
+    <version>2013.7</version>
+    <time>1382693436</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204662</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e117c2d8a7ce3ed469287fe6da591b0a</srcmd5>
+    <version>2013.8</version>
+    <time>1384112221</time>
+    <user>coolo</user>
+    <comment>New upstream release 2013.8 (forwarded request 206300 from aeneas_jaissle)</comment>
+    <requestid>206360</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3e46eef3e6834ebed1e7115b84635c37</srcmd5>
+    <version>2013.9</version>
+    <time>1389881556</time>
+    <user>coolo</user>
+    <comment>- update to 2013.9:
+  - Olson database 2013i (forwarded request 213706 from dirkmueller)</comment>
+    <requestid>213772</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a83930cccda9e9e6a1a935cd2bd3ff3f</srcmd5>
+    <version>2014.2</version>
+    <time>1397387844</time>
+    <user>coolo</user>
+    <comment>Update to 2014.2 (2014b) (forwarded request 229849 from aeneas_jaissle)</comment>
+    <requestid>229860</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>84c3128452c276ae83bb7df8ba33eee9</srcmd5>
+    <version>2014.4</version>
+    <time>1406177932</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242071</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>ba5f3f8aa38e486796528fcbfd70d41e</srcmd5>
+    <version>2014.4</version>
+    <time>1407942499</time>
+    <user>lnussel</user>
+    <comment>- Run test suite during build (required disabling of one test as 
+  it is known to be broken)
+- Disable broken test (fix-tests.patch)</comment>
+    <requestid>244353</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>ba5f3f8aa38e486796528fcbfd70d41e</srcmd5>
+    <version>2014.4</version>
+    <time>1409302973</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>711ff04cec61d224982fef375689c20c</srcmd5>
+    <version>2014.9</version>
+    <time>1416048058</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261670</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>74368b5a90e2b455c921ee682bb4239d</srcmd5>
+    <version>2014.10</version>
+    <time>1420927604</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280314</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>53afa3bd9fdc03a48f803fa4e8d0869e</srcmd5>
+    <version>2014.10</version>
+    <time>1421777473</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281079</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>70bbc3899194e2ea5cbefcca9818e0e9</srcmd5>
+    <version>2015.2</version>
+    <time>1429658239</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298175</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f6edf14d503e117093866a798d81165a</srcmd5>
+    <version>2015.6</version>
+    <time>1445511432</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>336550</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7325bd0ed7b91b36a3bb105e90cf618b</srcmd5>
+    <version>2015.7</version>
+    <time>1455611215</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357103</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a0a18541296a7fe8f98910ccd6d871d0</srcmd5>
+    <version>2016.4</version>
+    <time>1462865191</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2016.4
+  * including fixes for Venezuela (America/Caracas) boo#975875</comment>
+    <requestid>393989</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>58e6541540cb9ccb88914d36c825ea39</srcmd5>
+    <version>2016.10</version>
+    <time>1490132605</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1027705</comment>
+    <requestid>481643</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7d2497d7803706cba2c6630d482fa7e6</srcmd5>
+    <version>2017.2</version>
+    <time>1492618066</time>
+    <user>dimstar_suse</user>
+    <comment>- create correct backwards-compatible Obsoletes/Provides
+- revert to semantic PyPI URLs
+
+- update to 2017.2:
+  * include IANA 2017b, tests assume &gt;= 2017a is used
+  * drop pytz-2016.10-fix-tests-with-2017a.patch, upstream</comment>
+    <requestid>485856</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>d352075d1413d761a86a074c5c9d55b8</srcmd5>
+    <version>2017.2</version>
+    <time>1499509643</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>508441</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a7fdc8a09f86b2fcf6b950f422c4cdf2</srcmd5>
+    <version>2017.3</version>
+    <time>1510231512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538429</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b1182f49a61fbfb9d976313cb00f3d29</srcmd5>
+    <version>2018.3</version>
+    <time>1519218592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578203</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ea05dbfc86315f8f4e2de24bb54eb8d6</srcmd5>
+    <version>2018.5</version>
+    <time>1530566927</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620008</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>6b0e34bf18971643386ea2bfdaff1f6c</srcmd5>
+    <version>2018.5</version>
+    <time>1545866884</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659625</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>7acc9c89599c056d4d97705496849d64</srcmd5>
+    <version>2018.5</version>
+    <time>1548537561</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace nose test runner with pytest (py2k stdlib unittest
+  runner is not sufficient to run the test suite here).
+- Refresh patches fix-tests.patch, system_zoneinfo.patch,
+  0001-Fix-tests-for-older-timezone-versions.patch
+</comment>
+    <requestid>668134</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7c31b323dc205c2bebd8f5670b809315</srcmd5>
+    <version>2018.9</version>
+    <time>1551037573</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677152</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>75bf7c7395ddaedf66ee89a847aa6a1e</srcmd5>
+    <version>2019.1</version>
+    <time>1555691847</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2019.1
+ * Raise UnknownTimeZoneError if provided timezone name is None
+ * Use early python2 compatible str formatting
+ * timezone constructor arg is case-insensitive
+ * Add _all_timezones_lower_to_standard to gen_tzinfo</comment>
+    <requestid>694743</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>9c1596dcb1839e4a5fe8cee4fcb70dd1</srcmd5>
+    <version>2019.2</version>
+    <time>1565876583</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2019.2
+ *	IANA 2019b
+ * 	Defer generating case-insensitive lookups</comment>
+    <requestid>722005</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>92d159b27552b9da95551b897420ffe0</srcmd5>
+    <version>2019.2</version>
+    <time>1569232952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729337</requestid>
+  </revision>
+</revisionlist>

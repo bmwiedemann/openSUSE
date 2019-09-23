@@ -1,0 +1,6 @@
+<package name="libyui-qt-doc" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="libyui-qt"/>
+  <bcntsynctag>libyui-qt</bcntsynctag>
+</package>

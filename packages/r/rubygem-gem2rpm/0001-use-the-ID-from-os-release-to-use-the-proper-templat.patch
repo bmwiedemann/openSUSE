@@ -1,0 +1,33 @@
+From 91bc63e3fbba24a5f90c4fce4f74b371c4694657 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <mrueckert@suse.de>
+Date: Thu, 24 Jul 2014 16:46:19 +0200
+Subject: [PATCH 01/32] - use the ID from os-release to use the proper template
+
+---
+ bin/gem2rpm | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/bin/gem2rpm b/bin/gem2rpm
+index 736a645..fa7ce6b 100755
+--- a/bin/gem2rpm
++++ b/bin/gem2rpm
+@@ -67,6 +67,16 @@ opts.separator("")
+ rest = opts.permute(ARGV)
+ 
+ template = nil
++if template_file.nil?
++  f = open("/etc/os-release", "r") if File.exists?("/etc/os-release")
++  if f
++    f.read.split('\n').each do |line|
++      line.match(%r{^ID=(.*)$}) { |m| template_file=m[1] }
++    end
++    f.close
++    f = nil
++  end
++end
+ if template_file.nil?
+   template = Gem2Rpm::TEMPLATE
+ else
+-- 
+2.20.1
+

@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50caa023a689783a21d13f234f162089</srcmd5>
+    <version>1.1</version>
+    <time>1359555183</time>
+    <user>coolo</user>
+    <comment>qpress, for use with xtrabackup (--compress)</comment>
+    <requestid>150257</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>50caa023a689783a21d13f234f162089</srcmd5>
+    <version>1.1</version>
+    <time>1379664413</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>50caa023a689783a21d13f234f162089</srcmd5>
+    <version>1.1</version>
+    <time>1409303139</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>5aecb37a7b13f3979e36968571c46d79</srcmd5>
+    <version>1.1</version>
+    <time>1426485646</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290671</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>2c319cbe71f0e6c3400347c23dfbbff1</srcmd5>
+    <version>1.1</version>
+    <time>1454353012</time>
+    <user>dimstar_suse</user>
+    <comment>- Use optflags for building</comment>
+    <requestid>356916</requestid>
+  </revision>
+</revisionlist>

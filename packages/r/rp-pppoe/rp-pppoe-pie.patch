@@ -1,0 +1,15 @@
+--- gui/Makefile.in.orig
++++ gui/Makefile.in
+@@ -37,10 +37,10 @@ all: pppoe-wrapper
+ 	@echo "Type 'make install' as root to install the software."
+ 
+ pppoe-wrapper: wrapper.o
+-	@CC@ -o pppoe-wrapper wrapper.o
++	@CC@ -pie  -Wl,-z,relro,-z,now -fwhole-program -o pppoe-wrapper wrapper.o
+ 
+ wrapper.o: wrapper.c
+-	@CC@ $(CFLAGS) -c -o wrapper.o wrapper.c
++	@CC@  -Wl,-z,relro,-z,now -fpie -fPIE -fwhole-program $(CFLAGS) -c -o wrapper.o wrapper.c
+ 
+ install: all
+ 	-mkdir -p $(DESTDIR)$(sbindir)

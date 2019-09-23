@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a1d1bc41b907fff1fcb38b59d6e9e74c</srcmd5>
+    <version>1.0</version>
+    <time>1453416264</time>
+    <user>dimstar_suse</user>
+    <comment>We will be needing this for GNOME 3.20, so subbing it now early will allow us time to pass legal review and be ready when the time comes for subbing the next stack of GNOME.</comment>
+    <requestid>354838</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4318e31226e1296d94bb72f72f5f911a</srcmd5>
+    <version>1.0</version>
+    <time>1455032974</time>
+    <user>dimstar_suse</user>
+    <comment>- Add key files</comment>
+    <requestid>358346</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1cb560befde6349703b17d54ba883a62</srcmd5>
+    <version>1.1</version>
+    <time>1456127892</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360520</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a3313c710273ad04508c1502cee2dd1c</srcmd5>
+    <version>1.2</version>
+    <time>1457685500</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>368472</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2fd6acf191ae924463ebbfe5d25214ae</srcmd5>
+    <version>1.3</version>
+    <time>1458560725</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>375699</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1692d6b3d60992445fda2249e378b48b</srcmd5>
+    <version>1.4</version>
+    <time>1464299606</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release</comment>
+    <requestid>397596</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0ccdb0d92db781ccc4417fe539db009f</srcmd5>
+    <version>1.5</version>
+    <time>1470508632</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>415794</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0df42f9618bed716642ae1fb05e28ae6</srcmd5>
+    <version>1.6</version>
+    <time>1472245993</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>420733</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a6e399c15b7818249a348b2246be9b88</srcmd5>
+    <version>1.7</version>
+    <time>1473547892</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>424551</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>de08e7c21faddfc28bd2466ff53b8a76</srcmd5>
+    <version>1.9</version>
+    <time>1500669367</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510167</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1332965df787750f78949b91db99f92f</srcmd5>
+    <version>1.10</version>
+    <time>1503591933</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518094</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>7a4a7b31f3f4c2865456e36825e67cbf</srcmd5>
+    <version>1.10</version>
+    <time>1505237863</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522823</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d320e3d976c2757a1974fbc4712460aa</srcmd5>
+    <version>1.11</version>
+    <time>1510665490</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.11:
+  * This version includes a new unstable version of the xdg-foreign
+    protocol. The new version fixes C++ incompatibility issues
+    while making the interface request naming a bit more
+    descriptive.
+  * Use sysroot prefix for pkgdatadir variable.
+- Drop wayland-protocols-sysroot-prefix-fix.patch: Fixed upstream.
+- Cleanup with spec-cleaner.
+</comment>
+    <requestid>540466</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b2b35ab1c7d064efa6ac3b7a7b338f2f</srcmd5>
+    <version>1.12</version>
+    <time>1514907217</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560821</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a1aaf5dd1bd0ff51691bb97e148b8c58</srcmd5>
+    <version>1.13</version>
+    <time>1519041256</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577728</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ddaebf55b6e9e004b78a58f4467b7526</srcmd5>
+    <version>1.14</version>
+    <time>1528021823</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613063</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ed568adf108b5f746f474323e2dc1b73</srcmd5>
+    <version>1.15</version>
+    <time>1531379734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621486</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8a3e64b1714d1ee907d34684617431f5</srcmd5>
+    <version>1.16</version>
+    <time>1533412299</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627361</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c890c8ee3754a9a72743ed3971196811</srcmd5>
+    <version>1.17</version>
+    <time>1543399816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651630</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2bfdb34942f6bd2b354aff228329a0ad</srcmd5>
+    <version>1.18</version>
+    <time>1565178887</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720106</requestid>
+  </revision>
+</revisionlist>

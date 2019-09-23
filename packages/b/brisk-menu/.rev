@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ed9effda635f876b058cb3735abce581</srcmd5>
+    <version>0.3.0</version>
+    <time>1490318498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>481335</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1419a86fd30262eb7ea1436fe0bb31a1</srcmd5>
+    <version>0.3.5</version>
+    <time>1491896125</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>483428</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d1b50ab7ee510d428c43566b97ed25cb</srcmd5>
+    <version>0.4.5</version>
+    <time>1503592498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>508351</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d18c2e71c4372a58cb05eaee3fb4929e</srcmd5>
+    <version>0.5.0</version>
+    <time>1510232678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538579</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>bc2b7f04b76b8ce35fc814b80c3d3847</srcmd5>
+    <version>0.5.0</version>
+    <time>1558036976</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mate-menus 1.22 support.</comment>
+    <requestid>682544</requestid>
+  </revision>
+</revisionlist>

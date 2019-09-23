@@ -1,0 +1,5 @@
+<package name="tzdb" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:Factory" package="tzdb"/>
+</package>

@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>952e03d68fe6eabffa0bd158f1900c02</srcmd5>
+    <version>2.1.4</version>
+    <time>1353072794</time>
+    <user>coolo</user>
+    <comment>ruby gem used for editing shadow password files from within ruby language - requirement of Puppet automation framework, license issue resolved with author to BSD-3-Clause</comment>
+    <requestid>141401</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>952e03d68fe6eabffa0bd158f1900c02</srcmd5>
+    <version>2.1.4</version>
+    <time>1359110344</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1cbaa9a49d93d65e849f9b7b492dea65</srcmd5>
+    <version>2.1.4</version>
+    <time>1367935361</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174645</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9a2ae5cc8f5745e2a5efbf35f2cd76ce</srcmd5>
+    <version>2.2.0</version>
+    <time>1369744874</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176537</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9a2ae5cc8f5745e2a5efbf35f2cd76ce</srcmd5>
+    <version>2.2.0</version>
+    <time>1379664570</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cfc032cc4ee79c675ef9a4c09623b2c7</srcmd5>
+    <version>2.3.1</version>
+    <time>1385313203</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208101</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7b7243d5092eb98f3959b76c408c5c4e</srcmd5>
+    <version>2.3.2</version>
+    <time>1387833646</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>212015</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>06adce8a9838fc5bf334de524c8672de</srcmd5>
+    <version>2.3.2</version>
+    <time>1392325385</time>
+    <user>coolo</user>
+    <comment>- use new macros</comment>
+    <requestid>222138</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>593b63cdf0f6170cb488d49291d830bd</srcmd5>
+    <version>2.3.3</version>
+    <time>1393937970</time>
+    <user>coolo</user>
+    <comment>- bugfix regarding shadow implementation:
+  When the implementations were split into shadow and pwd, the code
+  initialzing the structure used in the shadow implementation was replaced
+  by older code not including the added field, always nil in that
+  implemenation, for pw_change.
+  The intent currently is that the passwdEntry structure should contain
+  all the fields available across implementations. (forwarded request 224479 from bmanojlovic)</comment>
+    <requestid>224480</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>343e011f9066fd783020b10ef1e118a5</srcmd5>
+    <version>2.3.4</version>
+    <time>1400682619</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>234959</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>343e011f9066fd783020b10ef1e118a5</srcmd5>
+    <version>2.3.4</version>
+    <time>1409303279</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>8abdc56ab45485a6e7850b574ddc6d8b</srcmd5>
+    <version>2.3.4</version>
+    <time>1414219670</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258289</requestid>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>aab90e9e8bd71095b717c6a05acb8c01</srcmd5>
+    <version>2.3.4</version>
+    <time>1415118575</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259444</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b9637a3bc562982ee8d3f8d486733b46</srcmd5>
+    <version>2.4.1</version>
+    <time>1423669552</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285533</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>24f4934860eee9aba48789e8a98aec99</srcmd5>
+    <version>2.5.0</version>
+    <time>1444285573</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>336982</requestid>
+  </revision>
+</revisionlist>

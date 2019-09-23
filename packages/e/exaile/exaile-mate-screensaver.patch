@@ -1,0 +1,16 @@
+--- a/plugins/screensaverpause/__init__.py
++++ b/plugins/screensaverpause/__init__.py
+@@ -30,7 +30,12 @@ import dbus
+ from xl import event, player, settings
+ 
+ SERVICES = [
+-    dict(  # GNOME
++    dict(  # MATE
++        bus_name='org.mate.ScreenSaver',
++        path='/org/mate/ScreenSaver',
++        dbus_interface='org.mate.ScreenSaver',
++    ),
++    dict(  # light-locker, GNOME
+         bus_name='org.gnome.ScreenSaver',
+         path='/org/gnome/ScreenSaver',
+         dbus_interface='org.gnome.ScreenSaver',

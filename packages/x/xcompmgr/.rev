@@ -1,0 +1,55 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e3d587ff15202eebf33f382952024b14</srcmd5>
+    <version>1.1.6</version>
+    <time>1336471241</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115402</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e3d587ff15202eebf33f382952024b14</srcmd5>
+    <version>1.1.6</version>
+    <time>1340184338</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>e3d587ff15202eebf33f382952024b14</srcmd5>
+    <version>1.1.6</version>
+    <time>1359110597</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>e3d587ff15202eebf33f382952024b14</srcmd5>
+    <version>1.1.6</version>
+    <time>1379665002</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>e3d587ff15202eebf33f382952024b14</srcmd5>
+    <version>1.1.6</version>
+    <time>1409303685</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>21d7b0fbdecb0c26c8f662efd2871b9a</srcmd5>
+    <version>1.1.7</version>
+    <time>1429948438</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1.7:
+  * This is a minor bugfix and janitorial cleanup release.</comment>
+    <requestid>303660</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ab1c3599558f0a60a1416157e371e219</srcmd5>
+    <version>1.1.8</version>
+    <time>1559375362</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705954</requestid>
+  </revision>
+</revisionlist>

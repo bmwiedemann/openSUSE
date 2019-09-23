@@ -1,0 +1,44 @@
+Index: libteam-1.16/teamd/teamd_lw_psr.c
+===================================================================
+--- libteam-1.16.orig/teamd/teamd_lw_psr.c
++++ libteam-1.16/teamd/teamd_lw_psr.c
+@@ -39,6 +39,9 @@ static int lw_psr_callback_periodic(stru
+ 	bool link_up = common_ppriv->link_up;
+ 	int err;
+ 
++	if (!psr_ppriv->ops)
++		return -EINVAL;
++
+ 	if (psr_ppriv->reply_received) {
+ 		link_up = true;
+ 		psr_ppriv->missed = 0;
+@@ -65,6 +68,9 @@ static int lw_psr_callback_socket(struct
+ {
+ 	struct lw_psr_port_priv *psr_ppriv = priv;
+ 
++	if (!psr_ppriv->ops)
++		return -EINVAL;
++
+ 	return psr_ppriv->ops->receive(psr_ppriv);
+ }
+ 
+@@ -120,6 +126,9 @@ int lw_psr_port_added(struct teamd_conte
+ 	struct lw_psr_port_priv *psr_ppriv = priv;
+ 	int err;
+ 
++	if (!psr_ppriv->ops)
++		return -EINVAL;
++
+ 	err = lw_psr_load_options(ctx, tdport, psr_ppriv);
+ 	if (err) {
+ 		teamd_log_err("Failed to load options.");
+@@ -182,6 +191,9 @@ void lw_psr_port_removed(struct teamd_co
+ {
+ 	struct lw_psr_port_priv *psr_ppriv = priv;
+ 
++	if (!psr_ppriv->ops)
++		return;
++
+ 	teamd_loop_callback_del(ctx, LW_PERIODIC_CB_NAME, psr_ppriv);
+ 	teamd_loop_callback_del(ctx, LW_SOCKET_CB_NAME, psr_ppriv);
+ 	psr_ppriv->ops->sock_close(psr_ppriv);

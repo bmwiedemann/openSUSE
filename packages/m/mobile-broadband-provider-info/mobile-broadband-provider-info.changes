@@ -1,0 +1,171 @@
+-------------------------------------------------------------------
+Tue Jun 18 18:50:26 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 20190618:
+  + release: bump version to 20190618
+  + build:
+    - Remove unused automake flags
+    - Switch dist to xz
+    - Update bug report URL
+    - Fix make distcheck
+  + Added configuration for WinSIM (German provider)
+  + apn-conf: generate Android-compatible APN list
+  + all: remove SVN vestiges
+  + es: new SUOP operator
+  + Move mcc="232" mnc="05" from Orange to Drei
+  + jp:
+    - Add b-mobile visitor sim entry
+    - Add primary markers for NTT DoCoMo and bmobile
+  + fi: Add Moi Mobiili
+  + cz: add T-Mobile balance check and top-up
+- Add xsltproc BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Wed Jan 16 17:41:38 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 20190116:
+  + it: Add Iliad prepaid.
+  + Set <mailing-list> in DOAP file.
+  + Replace Bugzilla by Gitlab URL in DOAP file.
+  + Remove libdir and includedir from .pc.
+  + si: added Telemach provider, prepaid plan.
+  + fi: Add Telia Open Gate.
+  + fi: Rename Sonera to Telia.
+  + fi: Update data.dna.fi description, move to last.
+  + fi: Add julkinen.dna.fi apn for DNA.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:37:13 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Mar 10 19:56:34 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 20170310:
+  + no: add Phonero APN.
+  + mt: add APN for Melita Mobile (bgo#762162).
+  + cz: add O2 balance check and top-up.
+  + build: Run configure from the builddir.
+  + bd: add data for Bangladesh providers.
+  + fi: update Finland provider DNA.
+  + nl: t-mobile update.
+  + nl: KPN update.
+  + nl: ben update.
+  + cl: add extra mnc to Movistar Chile Network.
+  + dtd: add initial attach apn type.
+  + italy: add Vodafone Internet Key.
+  + ko: update for Korean operators.
+  + cz: add Czech "MOBIL.CZ" provider (MVNO on T-Mobile).
+  + bm: add provider Bermuda Cell One.
+  + release: bump version to 20170310.
+
+-------------------------------------------------------------------
+Fri Apr 15 21:41:35 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Mon Dec 14 13:59:51 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 20151214:
+  + cl: add APNs for Virgin Mobile, VTR Movil and Nextel
+    (bgo#677596).
+  + sv: fix wrong MNC for El Salvador Claro 706:01
+  + no: new default APN for Telenor Norway
+  + gb:
+    - move "Asda Mobile" after "Vodafone"
+    - move "giffgaff" after "O2"
+  + ca: add Canadian provider SaskTel Mobility's GSM network
+  + ad: add Andorra Telecom provider
+  + mm: add Ooredoo and Telenor for Myanmar (bgo#694073).
+  + at: add Austria "HoT" provider (MVNO on T-Mobile) (bgo#757626).
+
+-------------------------------------------------------------------
+Mon Mar 23 13:11:59 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 20150323:
+  + in: add balance check code for Reliance in India
+
+-------------------------------------------------------------------
+Wed Feb 04 10:50:33 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 20150114:
+  + nl: add Vodafone Machine-to-Machine (M2N) APN
+  + kg: add balance check ussds for MegaCom and O! operators
+  + es: add APN for Lebara (unknown MCC/MNC)
+  + ch: add USSD codes to get balance for Orange CH
+  + fr: add USSD code to change balance for Orange FR
+  + it: add Tiscali MVNO for Italy (bgo#735967)
+  + de: remove orphaned vistream/Telogic MVNOs
+  + bd: add Teletalk and update Airtel name for Bangladesh (bgo#738743)
+  + es: remove 'Airtel' from the Vodafone operator name (bgo#742836)
+  + es: add new operator Lowi (bgo#742839)
+
+-------------------------------------------------------------------
+Sun Oct 12 14:02:29 UTC 2014 - dimstar@opensuse.org
+
+- Update to git snapshot 20141012.b71dc (use disabled _services):
+  + Many provider details have been updated.
+- Add mobile-broadband-provider-info-tmobile-reorder.patch: Move
+  internet.t-d1.de APN for Deutsche Telekom to the bottom
+  (boo#899028).
+- Add libtool BuildRequires and call to autogen.sh: as we are
+  building a git snapshot, we need to bootstrap.
+
+-------------------------------------------------------------------
+Thu Jul 31 12:44:02 UTC 2014 - dimstar@opensuse.org
+
+- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+
+-------------------------------------------------------------------
+Mon Jun 18 17:03:52 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 20120614:
+  + Many updates to the list of service providers.
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:47 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Wed May 18 17:58:06 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 20110511:
+  + Many updates to the list of service providers.
+
+-------------------------------------------------------------------
+Tue May  3 10:45:20 CEST 2011 - vuntz@opensuse.org
+
+- Fix license tag to be "CC Public Domain Dedication" instead of
+  "Other uncritical OpenSource License" (which got rejected by
+  legal review).
+- Ship COPYING and README.
+
+-------------------------------------------------------------------
+Fri Apr 29 14:34:06 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 20110218:
+  + Many updates to the list of service providers.
+- Drop mobile-broadband-provider-info-git20101208.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Wed Dec  8 10:20:48 CET 2010 - vuntz@opensuse.org
+
+- Update to version 20100510:
+  + Many updates to the list of service providers.
+- Drop taiwan-providers.patch: fixed upstream.
+- Add mobile-broadband-provider-info-git20101208.patch with the
+  latest data from git, as there have been various updates since
+  last May already.
+- Add pkg-config BuildRequires to create the pkgconfig() Provides.
+
+-------------------------------------------------------------------
+Tue Jul 21 10:59:11 EEST 2009 - tambet@novell.com
+
+- Split up Taiwanese providers 'TW Mobile' and 'TransAsia', they
+  have different MNCs.
+

@@ -1,0 +1,43 @@
+diff -Naur gnome-vfs-2.22.0/schemas/desktop_gnome_url_handlers.schemas.in gnome-vfs-2.22.0-patched/schemas/desktop_gnome_url_handlers.schemas.in
+--- gnome-vfs-2.22.0/schemas/desktop_gnome_url_handlers.schemas.in	2008-05-01 10:54:14.842513000 +0200
++++ gnome-vfs-2.22.0-patched/schemas/desktop_gnome_url_handlers.schemas.in	2008-05-01 10:54:01.787578000 +0200
+@@ -408,5 +408,39 @@
+         <long>True if the command used to handle this type of URL should be run in a terminal.</long>
+       </locale>
+     </schema>
++
++    <schema>
++      <key>/schemas/desktop/gnome/url-handlers/irc/enabled</key>
++      <applyto>/desktop/gnome/url-handlers/irc/enabled</applyto>
++      <owner>gnome</owner>
++      <type>bool</type>
++      <default>false</default>
++      <locale name="C">
++        <short>Whether the specified command should handle "irc" URLs</short>
++        <long>True if the command specified in the "command" key should handle "irc" URLs.</long>
++      </locale>
++    </schema>
++    <schema>
++      <key>/schemas/desktop/gnome/url-handlers/irc/command</key>
++      <applyto>/desktop/gnome/url-handlers/irc/command</applyto>
++      <owner>gnome</owner>
++      <type>string</type>
++      <default></default>
++      <locale name="C">
++        <short>The handler for "irc" URLs</short>
++        <long>The command used to handle "irc" URLs, if enabled.</long>
++      </locale>
++    </schema>
++    <schema>
++      <key>/schemas/desktop/gnome/url-handlers/irc/needs_terminal</key>
++      <applyto>/desktop/gnome/url-handlers/irc/needs_terminal</applyto>
++      <owner>gnome</owner>
++      <type>bool</type>
++      <default>false</default>
++      <locale name="C">
++        <short>Run the command in a terminal</short>
++        <long>True if the command used to handle this type of URL should be run in a terminal.</long>
++      </locale>
++    </schema>
+   </schemalist>
+ </gconfschemafile>

@@ -1,0 +1,7 @@
+<package name="rubygem-rack-cache-1_2" project="openSUSE:Factory">
+  <title>rubygem-rack-cache-1_1</title>
+  <description>
+    HTTP Caching for Rack
+  </description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-rack-cache-1_2"/>
+</package>

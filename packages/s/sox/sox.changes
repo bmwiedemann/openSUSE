@@ -1,0 +1,787 @@
+-------------------------------------------------------------------
+Wed Feb 14 14:38:36 UTC 2018 - kbabioch@suse.com
+
+- Added patches:
+  * CVE-2017-11332.patch: Fixed the startread function in wav.c, which allowed
+    remote attackers to cause a DoS (divide-by-zero) via a crafted wav file.
+    (CVE-2017-11332 bsc#1081140)
+
+  * CVE-2017-11358.patch: Fixed the read_samples function in hcom.c, which
+    allowed remote attackers to cause a DoS (invalid memory read) via a crafted
+    hcom file. (CVE-2017-11358 bsc#1081141)
+
+  * CVE-2017-11359.patch: Fixed the wavwritehdr function in wav.c, which
+    allowed remote attackers to cause a DoS (divide-by-zero) when converting a
+    a crafted snd file to a wav file. (CVE-2017-11359 bsc#1081142)
+
+  * CVE-2017-15370.patch: Fixed a heap-based buffer overflow in the ImaExpandS
+    function of ima_rw.c, which allowed remote attackers to cause a DoS during
+    conversion of a crafted audio file. (CVE-2017-15370 bsc#1063439)
+
+  * CVE-2017-15371.patch: Fixed an assertion abort in the function
+    sox_append_comment() in formats.c, which allowed remote attackers to cause
+    a DoS during conversion of a crafted audio file. (CVE-2017-15371
+    bsc#1063450)
+
+  * CVE-2017-15372.patch: Fixed a stack-based buffer overflow in the
+    lsx_ms_adpcm_block_expand_i function of adpcm.c, which allowed remote
+    attackers to cause a DoS during conversion of a crafted audio file.
+    (CVE-2017-15372 bsc#1063456)
+
+  * CVE-2017-15642.patch: Fixed an Use-After-Free vulnerability in
+    lsx_aiffstartread in aiff.c, which could be triggered by an attacker by
+    providing a malformed AIFF file. (CVE-2017-15642 bsc#1064576)
+
+  * CVE-2017-18189.patch: Fixed a NULL pointer dereference triggered by a
+    corrupt header specifying zero channels in the startread function in
+    xa.c, which allowed remote attackers to cause a DoS (CVE-2017-18189
+    bsc#1081146).
+
+- Removed sox-doublefree.patch
+
+-------------------------------------------------------------------
+Tue Dec 19 07:12:58 UTC 2017 - meissner@suse.com
+
+- sox-doublefree.patch: initialize comment, it might
+  get returned back with OK. (bsc#1064576 CVE-2017-15642)
+
+-------------------------------------------------------------------
+Fri Aug 25 06:10:58 UTC 2017 - olaf@aepfle.de
+
+- Enable lame/mad/twolame unconditionally
+- Remove ffmpeg/opus conditional because it is always present
+
+-------------------------------------------------------------------
+Mon Mar  6 13:02:33 UTC 2017 - zaitor@opensuse.org
+
+- Replace libopus-devel with pkgconfig(opusfile) BuildRequires:
+  this is what configure looks for, and will actually build the
+  optional opus support as intended.
+
+-------------------------------------------------------------------
+Wed Sep 22 15:57:49 UTC 2015 - mpluskal@suse.com
+
+- Update to 14.4.2
+  o Add optional support for reading Ogg Opus files.
+  o Fix for max size text chunks in aiff files.
+  o Add reading support for RF64 WAV files.
+  o Work around for libsndfile created RF64 files with invalid
+    sizes. 
+  o Detect MS ADPCM WAV files with invalid blocks.
+  o Detect Sphere files with invalid header sizes.
+  o 'Deemph' can now also be used at 48kHz sample rate.
+  o 'Rate' now much faster in many cases. 
+  o Allow sending spectrograms to stdout.
+  o Allow use of Dolph window with spectrograms. 
+  o Allow mixing time and sample-count arguments for the delay
+    effect, and for spectrogram -S and -d.
+  o Support multi-channel LADSPA plugins.
+  o Support infinite repetition with repeat.
+  o Improved pink noise frequency response in synth. 
+  o Extended syntax for specifying audio positions to several
+    effects. 
+  o Fix integer overflow in mcompand. [3590093] 
+  o Add optional latency compenstation for LADSPA plugins.
+  o New -p option for soxi to display sample precision.
+  o New libsox example6: give explicit output attributes.
+  o Speed optimization for effects that operate on channels
+    independently.
+  o Fix memory leaks.
+  o Most internal symbols (lsx_*) are no longer exported.
+- Drop sox-14.4.0-ocloexec.patch as it brings little enhancement 
+  and there has been no activity at upstreaming it
+- Enable ffmpeg and opus by default
+
+-------------------------------------------------------------------
+Wed Sep 11 16:28:12 UTC 2013 - reddwarf@opensuse.org
+
+- Update to version 14.4.1
+  o Fix pipe file-type detection regression
+  o MAUD write fixes
+  o Fix crash when seeking within a FLAC file
+  o Fix Ogg Vorbis files with certain numbers of channels being
+    truncated
+  o Fix reading 64-bit float WAVs
+  o Fix potential buffer overrun when writing FLAC files directly via
+    sox_write()
+  o Check whether pulseaudio is available before choosing it as
+    default
+  o Restore 8 seconds default for spectrogram, if the input length is
+    not known
+  o Set output length for splice to unknown instead of 0
+  o Increase maximum width for spectrograms
+  o Fix memory leaks in LADSPA effect
+  o Fix hang in several effects (rate, tempo, and those based on
+    dft_filter) when processing long files
+  o Prevent (m)compand from tampering with their arguments
+  o Fix input length calculation for combine methods other than
+    concatenate
+  o Fix to configure.ac to work with Autoconf 2.69
+- Rebase sox-14.4.0-ocloexec.patch
+
+-------------------------------------------------------------------
+Thu Feb  7 18:53:29 UTC 2013 - crrodriguez@opensuse.org
+
+- sox-14.4.0-ocloexec.patch: edited, config.h must be included 
+  _everywhere_ and GNU_SOURCE defined so O_CLOEXEC is available
+  for all targets.
+
+-------------------------------------------------------------------
+Sat Nov 17 15:52:31 UTC 2012 - crrodriguez@opensuse.org
+
+- Disable OSS support, alsa and pulse are enough for us now. 
+
+-------------------------------------------------------------------
+Sat Apr 14 12:59:20 UTC 2012 - reddwarf@opensuse.org
+
+- Update to version 14.4.0
+  o Add floating point encodings in AIFF-C files.
+  o Pad WAV data chunks to an even number of bytes.
+  o Made Pulse Audio driver the default driver.
+  o Lots of improvements to man pages.
+  o New upsample, hilbert, and downsample effects.
+  o Fix fading bugs.
+  o Enable --plot on biquad and fir effects.
+  o Now effects chain can be unlimitted length.
+  o Fix newfile/restart effects when merging or mixing files.
+  o Fix crash in compand and mcompand effect.
+  o Improved audio length calculations when using effects.
+  o New trim effect with enhanced capabilities.
+  o Improved large file support.
+  o MP2 write support.
+- Split librarires to follow SLPP
+- Optionally enable twolame support
+- Use pkgconfig() style BuildRequires
+- Update ocloexec patch to apply to the new version
+- Remove audioio.h/sunaudio support
+- Remove unneeded ncurses BuildRequire
+- Remove patches not needed anymore (sox-14.3.2-new_ffmpeg.patch,
+  sox-14.3.1-undefined.patch and sox-14.3.1-aliasing.patch)
+
+-------------------------------------------------------------------
+Sun Nov 27 20:49:18 UTC 2011 - pascal.bleser@opensuse.org
+
+- fix build on < 12.1 by not applying the O_CLOEXEC patch there as it is not in
+  the glibc
+- fix build on >= 12.1 by adding ncurses-devel to the BuildRequires
+
+-------------------------------------------------------------------
+Fri Nov 18 20:38:56 UTC 2011 - crrodriguez@opensuse.org
+
+- libsox: Use O_CLOEXEC where needed, this is specially important
+  in library code and even more here as threading is used.
+
+-------------------------------------------------------------------
+Mon Jun 27 08:14:11 UTC 2011 - coolo@novell.com
+
+- remove _service file, way too fragile (see sr#74395)
+
+-------------------------------------------------------------------
+Wed Jun 22 23:24:09 UTC 2011 - reddwarf@opensuse.org
+
+- make it support new ffmpeg versions
+- remove buildstamp without modifying the output
+- use opencore-amr for AMR support
+
+-------------------------------------------------------------------
+Tue Mar  1 14:13:15 UTC 2011 - reddwarf@opensuse.org
+
+- Update to version 14.3.2
+  o Seek support for MP3 files.
+  o Fix WavPack header bugs.
+  o Fix length error in 24-bit RIFF files.
+  o Add default channel mapping to 24-bit RIFF files.
+  o Fix ffmpeg crashes on some CPU's.
+  o Read wider range of WAV files with chunks embedded.
+  o Fix incorrect MP3 length determination with some VBR files with initial silence.
+  o Enable LADSPA support by default on all platforms if libltdl exists.
+  o Allow now legend on spectrogram.
+  o Fix -w option on stat effect.
+  o Support specifying absolute end position instead of offset from beginning of trim operation.
+
+-------------------------------------------------------------------
+Tue Sep 21 03:23:26 UTC 2010 - reddwarf@opensuse.org
+
+- Add libmagic support
+- Added sox-14.3.1-undefined.patch and sox-14.3.1-aliasing.patch
+- Run spec-cleaner and general cleanup
+- Fix MP3 support linking directly against needed libraries
+- Fix License tag
+
+-------------------------------------------------------------------
+Tue Apr 13 06:45:08 UTC 2010 - davejplater@gmail.com
+
+- Update to version 14.3.1, remove sox-14.2.0-vorbis.patch due to
+  vorbis1.h no longer existing. Fix sox-no_buildstamp.patch.
+- LibSoX interface changes:
+  o Added new variants of sox_open to allow read/write from/to memory
+    buffers (in POSIX 2008 environment); see example5.c.  (robs)
+- File formats:
+  o New Grandstream ring-tone (gsrt) format.  (robs)
+  o CVSD encode/decode speed-ups.  (Kimberly Rockwell, P. Chaintreuil)
+  o Fix failed writing 24-bit PAF files (and possibly other libsndfile
+    based formats).  (cbagwell)
+  o Allow libsndfile to be dlopen()'ed at runtime if --enable-dl-sndfile
+    is used. (Doug Cook)
+  o Allow amr-nb/amr-wb to be dlopen()'ed at runtime if
+    --enable-dl-amrwb or --enable-dl-amrnb is used. (Doug Cook)
+  o amrnb and amrwb formats can optionally use opencore-amr libraries.
+    (cbagwell)
+- Audio device drivers:
+  o Add 32-bit support to ALSA driver.  (Pavel Hofman)
+- Effects:
+  o Fix [2254919] silence doesn't trim digital silence correctly.  (robs)
+  o Fix [2859842] stats effect crashes on 64-bit arch.  (Ulrich Klauer)
+- Other new features:
+  o Added libSoX example #4: concatenating audio files.  (robs)
+  o Show soxi version & usage information when no args given.  (robs)
+- Other bug fixes:
+  o Fix build so that grouped files (e.g. play -r 6k "*.vox" plays all
+    at 6k) works.  (robs)
+  o Fix build to support auto file type detection with pipes on FreeBSD
+    and elsewhere.  (Dan Nelson)
+  o Fix simultaneous play & rec not working.  (robs)
+  o Fix missing documentation for -R (repeatable), and pulseaudio driver.
+  o Fix memory leak of format private data.  (Slawomir Testowy)
+- Internal improvements:
+  o Move bit-rot detection support files to sub-directory (could
+    previously cause build problems).  (robs)
+  o Added utilities to help any format handler dlopen() external
+    libraries at run time instead of link time. (Doug Cook)
+
+-------------------------------------------------------------------
+Sun Dec 13 09:05:41 UTC 2009 - cmorve69@yahoo.es
+
+- Remove buildstamp to help build-compare
+
+-------------------------------------------------------------------
+Thu Jun 25 20:17:53 CEST 2009 - cmorve69@yahoo.es
+
+- made ffmpeg, mad, lame, amrwb and amrnb support build conditional
+- enable PulseAudio support
+
+-------------------------------------------------------------------
+Mon Jun 22 14:08:10 CEST 2009 - prusnak@suse.cz
+
+- updated to 14.3.0
+  * LibSoX interface changes:
+    o sox_format_init() has been supeseded by sox_init().
+    o Removed obsolete error codes (SOX_E...); new sox_strerror()
+      function to convert error codes to text.
+    o Use of sox_effect_options() is now mandatory when initialising an
+      effect (see example0.c for an example of this).
+    o sox_flow_effects() has a new (3rd) parameter: a void pointer
+      `client_data' that is passed as a new (2nd) parameter to the flow
+      callback function.  client_data may be NULL.
+  * File formats:
+    o Slight improvement to A-law/u-law conversion accuracy: round LSB
+      instead of truncating.  (robs)
+    o Fix length in wav header with multi-channel output to pipe.  (robs)
+    o Fix [2028181] w64 float format incompatibility.  (Tim Munro)
+    o Fix reading AIFF files with pad bytes in COMT chunks. (Joe Holt)
+    o Fix AIFF file length bug to stop reading trash data on files that
+      have extra chunks at end of file. (Joe Holt)
+    o Fix file length being 4 bytes short for AIFF sowt CD tracks. (Joe Holt)
+    o Fix [2404566] segfault when converting from MS ADPCM wav file.  (robs)
+    o Fix slight FLAC seek inaccuracy e.g. when using `trim' effect.  (robs)
+    o Fix mp3 decode sometimes being up to a block short.  (robs)
+    o Fix not outputing GSM-in-wav when input is GSM-in-wav.  (robs)
+  * Audio device drivers:
+    o New native OpenBSD audio handler for play/recording.  (Alexandre Ratchov)
+    o 24-bit support for ALSA handler.  (robs)
+    o Warn if ALSA under/overrun.  (robs)
+  * Effects:
+    o New `stats' effect; multichannel audio statistics.  (robs)
+    o New `sinc' FFT filter effect; replacement for `filter'.  (robs)
+    o New `fir' filter effect using external coefficients/file.  (robs)
+    o New `biquad' filter effect using external coefficients.  (robs)
+    o New `overdrive' effect.  (robs)
+    o New `vad' Voice Activity Detector effect.  (robs)
+    o `synth' enhancements: can now set common parameters for multiple
+      channels, new `pluck' and `tpdf' types, `scientific' note
+      notation, [2778142] just intonation.  (robs)
+    o New multi-channel support and revised sizing options for `spectrogram'.
+      N.B. revised options are not directly backwards compatible -- see the
+      man page for details of the new syntax.  (robs)
+    o Richer gain/normalise options.  (robs)
+    o [2704442] Slight change to `riaa' gain: now norm'd to 0dB @ 1k
+      (previously 19.9dB @ DC).  (Glenn Davis)
+    o Fix [2487589] `dither' clipping detection & handling.  (robs)
+    o Fix `repeat' sometimes stopping repeating too soon.  (robs)
+    o Fix `repeat' sometimes repeating wrong audio segments.  (robs)
+    o Fix [2332343] 'silence' segfault with certain lengths. (cbagwell)
+    o Fix `silence' empty output file with A-law input.  (robs)
+    o Fix temporary file problems in Windows (cygwin) with normalise and
+      other effects.  (robs)
+    o Fix [2779041] spectrogram PNG file is invalid on Windows.  (robs)
+    o Fix [2787587] `trim x 0' should produce zero length audio.  (robs)
+    o Parallel effects channel processing on some hyper-threading/mult-core
+      architectures.  New `--single-threaded' option to disable this.  (robs)
+  * Other new features:
+    o Added ability to create shared DLL's on cygwin (cbagwell)
+    o New `--guard' & `--norm' options; use temporary files to guard against
+      clipping for many, but not currently all, effects.  (robs)
+    o New `--ignore-length' option to ignore length in input file header (for
+      simple encodings & for mp3); instead, read to end of file.  (robs)
+    o New `--temp DIRECTORY' option.  (robs)
+    o New `--play-rate-arg ARG' option.  (robs)
+    o New SOX_OPTS environment variable; can be used to provide default
+      values for above and other options.  (robs)
+    o Grouped files, e.g. play -r 6k "*.vox" plays all at 6k.  (robs)
+    o Automatically `dither'; new `--no-dither' option to disable this.  (robs)
+    o Can now use `v' & `V' keys to adjust volume whilst playing audio (on some
+      systems).  (robs)
+    o New bitrate, time in seconds, & total options for soxi; bitrate
+      and file-size display for sox.  (robs)
+    o `Magic' (libmagic) file type detection now selected using `--magic'
+      option (where supported).
+    o [2003121] In many cases, no longer need to specify -t when inputing
+      audio from a `pipe'.  (robs)
+    o Support more Shoutcast URL variants.  (robs)
+    o Added libSoX example #3: playing audio.  (robs)
+  * Other bug fixes:
+    o Fix [2262177] SoX build could fail with parse /etc/issue error.  (robs)
+    o Fix "no handler for detected file type `application/octet-stream;
+      charset=binary'" with raw files when using libmagic.  (robs)
+  * Internal improvements:
+    o Rationalise use of and make repeatable across different platforms
+      pseudo random number generators.  (robs)
+    o Rationalise effects' options interface (getopt compatible).  (robs)
+    o Added stub headers to allow test compilation of all sources on
+      linux.  (robs)
+
+-------------------------------------------------------------------
+Fri Jan 16 16:37:43 CET 2009 - prusnak@suse.cz
+
+- updated to 14.2.0
+  * Processing chain:
+    o now supports any number of input files
+    o now allows multiple effects chains, multiple input pipes and,
+      in some cases, multiple output files
+    o initial support for Mac OSX audio IO
+    o better support for large (2G/4G) files.
+  * New effects:
+    o (ISO 226) loudness control
+    o RIAA vinyl EQ
+    o pitch bending
+  * Enhanced effects:
+    o rate: minimum/intermediate/linear phase, custom bandwidth
+    o dither: noise shaping
+    o mcompand: now with Linkwitz-Riley crossover.
+  * Various other small fixes/improvements.
+
+-------------------------------------------------------------------
+Thu Oct 23 18:25:03 CEST 2008 - ro@suse.de
+
+- fix build with updated libtool
+
+-------------------------------------------------------------------
+Mon Sep  1 14:46:27 CEST 2008 - prusnak@suse.cz
+
+- updated to 14.1.0
+  * New WavPack format.
+  * New htk format.
+  * New .f4 & .f8 raw file extensions.
+  * New `splice' effect; splice together audio sections.
+  * New `remix' effect; mixes any number of channels.
+  * New `norm' (normalise) effect.
+  * New `delay' effect; delay one or more channels.
+  * New `contrast' enhancement effect.
+  * New `rate' high quality resampling effect.
+  * New `spectrogram' effect; creates a PNG (if built with PNG lib).
+  * New `gain' alias for the vol effect.
+  * New option --help-format shows info about supported format(s).
+  * New --combine=mix-power option to mix combine using 1/sqrt(n) scaling instead of 1/n.
+  * New --input-buffer option to specify (only) input buffer size.
+  * New `soxi' utility to extract/display file header fields.
+  * New VU meter.
+  * Can now write .amb (.wav variant) files.
+  * Can now read 2,3(2.6),4 bit ADPCM .voc files.
+  * Can now read some MP3 ID3 tags.
+  * Fix rec shortcut should apply bit depth (8-bit, 16-bit, etc.) to input handler.
+  * Fix endian selection (-B, -L, -x) in some circumstances.
+  * Various other small fixes/improvements.
+
+-------------------------------------------------------------------
+Fri Jun 27 17:11:51 CEST 2008 - schwab@suse.de
+
+- Use autoreconf.
+
+-------------------------------------------------------------------
+Tue Mar 25 15:00:28 CET 2008 - prusnak@suse.cz
+
+- build file format modules with LDFLAGS -module -avoid-version
+  (module-avoid-version.patch)
+
+-------------------------------------------------------------------
+Wed Mar 19 16:32:58 CET 2008 - prusnak@suse.cz
+
+- updated to 14.0.1
+
+  File formats:
+
+  o Added support for non-standard, non-WAVE_FORMAT_EXTENSIBLE
+    (esp. 24-bit) PCM wav (see wavpcm in soxformat.7 for details).  (robs)
+
+  Effects:
+
+  o Reimplemented reverb to be similar to freeverb.  (robs)
+
+  Bug fixes:
+
+  o Fix Sndtool read error causing noise at start.  (Reynir Stefánsson)
+  o Fix mixer with >4 numbers, and mixer -3 behaving as mixer -4.  (robs)
+  o Fix [1748909] sox does not report remaining playtime of mp3s.  (robs)
+  o Fix failure to read AIFF files with empty MARK chunk.  (robs)
+  o Fix spurious 'Premature EOF' message in some circumstances.  (robs)
+  o Switched to 16-bit for libao driver since not all its plugins
+    support it (such as oss, nas, and pulse audio) (Morita Sho)
+  o Stop crash when "rec" is run with no arguments (Morita Sho).
+  o Fix -V (without argument) on non-gnu systems.  (robs)
+  o Fix reported (with -V) output audio length in some cases.  (robs)
+  o Fix actual FLAC output file audio length in some cases.  (robs)
+  o Fix poor 24-bit FLAC compression & support newer versions of
+    libFLAC (1.2.x).  (robs)
+  o Fix loss of 1 decoded FLAC block when using "trim 0 ...".  (robs)
+  o Fix trim when first effect with IMA-ADPCM input wav file.  (robs)
+
+  Internal improvements:
+
+  o Let "make distcheck" run some automated test scripts.
+  o Distribute missing cmake files.
+  o Fix ogg vorbis compile error on some platforms.
+  o Remove unused libltdl that could cause header mismatch with
+    installed libltdl.
+  o Fix AMR detection with --disable-shared.  (robs)
+  o Updated configure to support linking to static libraries
+    on mingw for flac, ogg, and libsamplerate libraries.
+
+-------------------------------------------------------------------
+Mon Nov 19 13:49:46 CET 2007 - prusnak@suse.cz
+
+- moved %{_libdir}/sox/*.so from -devel to main package
+  (these are plugins not development files)
+- added rpmlintrc to supress warnings about .so files in non-devel
+  package
+
+-------------------------------------------------------------------
+Tue Sep 25 11:59:55 CEST 2007 - prusnak@suse.cz
+
+- updated to 14.0.0
+
+  File formats:
+
+  o Added ffmpeg support.  (Reuben Thomas)
+  o FLAC: added seekable decoding; added seek-table generation.  (robs)
+  o Added M3U & PLS playlist formats [FR# 1667341] (Note: SHOUTcast PLS
+    is only partially supported).  (robs)
+  o Made format readers and writers into individual modules for easier
+    distribution of differently-licensed code.  (Reuben Thomas)
+  o Added libao support.  (Reuben Thomas)
+  o Added support for ADPCM-encoded PRC files, based on Danny Smith's
+    rec2wav and sndcmp.  (Reuben Thomas)
+  o Added AMR-NB [FR# 728875] & AMR-WB formats (with external libs).  (robs)
+  o Added LPC-10 support.  (Reuben Thomas)
+
+  Effects:
+
+  o Use LADSPA effects (one input, one output).  (Reuben Thomas)
+  o --octave option changed to --plot; can now also use gnuplot to
+    plot effect transfer function.  (robs)
+  o Added soft-knee companding.  (robs)
+  o Show (with --plot) compand transfer function.  (robs)
+  o Allow e.g. "vol 6dB" (as well as "vol 6 dB").  (robs)
+  o Changed deemph filter from 1st order to 2nd order for
+    better accuracy.  (robs)
+  o Add option to silence effect to leave periods of silence
+    in and only strip out extra silence.   (Mark Schreiber)
+  o synth can now generate any number of channels.  (robs)
+  o mixer can now mixdown to mono any number of channels.  (robs)
+  o Added oops effect (mixer special case).  (robs)
+  o All effects that could only work on mono or stereo audio, now
+    work with any number of channels.  (robs)
+  o Added WSOLA-based key and tempo effects.  (robs)
+
+  Other new features:
+
+  o Show (with -S) if clipping is occurring.  (robs)
+  o Added internet input file support (needs wget).  (robs)
+  o Made it possible to build without sound drivers.  (Reuben Thomas)
+
+  Bug fixes:
+
+  o Fix (m)compand transfer function non-linearities; fix compand
+    drain volume.  (robs)
+  o Fix crash with pan effect.  (robs)
+  o Add missing RM define to Makefiles so installs work.
+   (Bug# 1666599) (cbagwell)
+  o Fix I/O performance regression in 13.0.0.  (Reuben Thomas)
+  o Fix .lu, .la read regression in 13.0.0 [Bug# 1715076].  (robs)
+  o Fix uncompressed NIST/Sphere read regression in v13 [Bug #1736016].
+  o Fix displayed times when playing a file and using trim.  (robs)
+  o Fix CDDA sector duration display for non-CDDA sample rates.  (robs)
+  o synth fixes: brown noise; inverted square wave; offset < 0.  (robs)
+  o Fix crash when encoding Vorbis or FLAC: with no comment.  (robs)
+  o Fix effect drain problems: chorus, echo(s), phaser.  (robs)
+  o Fix rabbit responsiveness and memory problems.  (Peter Samuelson)
+  o Fix broken stereo audio when recording using ALSA.  (robs)
+  o Fix OSS driver on big endian machines that was introduced in
+    last release.
+
+  Internal improvements:
+
+  o Renamed libst to libsox for name recongition and to avoid
+    duplications with other existing libst libraries.  (Reuben Thomas)
+  o Moved effects to libsfx.  (Reuben Thomas)
+  o Got rid of several hundred compiler warnings.  (robs, Reuben Thomas)
+  o Added basic performance testing of I/O.  (Reuben Thomas)
+  o Effects chain processing now available in libSoX.  (robs)
+  o Added effects-chain buffering for effects that use a window [FR#
+    1621695].  (robs)
+  o Added cmake build files for Win32.  (robs)
+
+- dropped obsolete patches:
+  * retval.patch (included in update)
+
+-------------------------------------------------------------------
+Fri Apr 20 12:46:32 CEST 2007 - tiwai@suse.de
+
+- removed unnecessary requires.
+
+-------------------------------------------------------------------
+Thu Feb 22 18:09:04 CET 2007 - prusnak@suse.cz
+
+- updated to 13.0.0
+  * added ability to merge e.g. 2 mono files to 1 stereo file
+  * removed the restrictions whereby multiple input files had to have
+    the same data encoding & size and same # of channels
+  * added large file support
+  * more fixes to MP3 tag reading
+  * fix to stop, avoiding a crash, when starting of effects fails
+  * fixed a bug introduced in 12.18.2 that stopped the draining
+    of effects from occuring.  This had stopped the reverse effect,
+    among others, from working.
+  * fix rounding error when reading command-line time parameters
+  o fixed deemph & earwax effects to work with MP3, vorbis & FLAC
+  * fix wav file handler discarding the last PCM sample in certain
+    circumstances
+  * improved the accuracy of integer and floating point PCM
+    conversions
+  * full changelog here:
+    http://sf.net/project/shownotes.php?group_id=10706&release_id=485784
+- fixed random return value (retval.patch)
+- dropped obsoleted patches:
+  * sox-12.18.1-external_gsm.patch (included in update)
+  * sox-12.18.1-makefile.patch (included in update)
+  * sox-12.18.1-pitch.patch (included in update)
+
+-------------------------------------------------------------------
+Wed Feb 14 15:12:11 CET 2007 - schwab@suse.de
+
+- Fix building as non-root.
+
+-------------------------------------------------------------------
+Thu Nov  9 16:55:28 CET 2006 - prusnak@suse.cz
+
+- backported some of the changes from 12.8.2 fixing a bug which
+  caused crashes while pitch changing (pitch.patch) [#200088]
+
+-------------------------------------------------------------------
+Thu Aug 10 11:54:55 CEST 2006 - nadvornik@suse.cz
+
+- updated to 12.18.1
+  * fixes infinite loops at certain conditions [#197498]
+  * other bugfixes
+- use external libgsm
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:44 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 16:32:03 CET 2006 - nadvornik@suse.cz
+
+- compile with -fstack-protector
+
+-------------------------------------------------------------------
+Wed Dec 21 15:55:09 CET 2005 - nadvornik@suse.cz
+
+- updated to 12.17.9:
+  * improved alsa support
+  * optional status line
+- enabled gsm codec [#137747]
+
+-------------------------------------------------------------------
+Wed Dec 21 11:21:13 CET 2005 - mmj@suse.de
+
+- assign return value of realloc to the pointer being realloc'ed
+
+-------------------------------------------------------------------
+Fri Apr 22 10:58:48 CEST 2005 - meissner@suse.de
+
+- 1 byte buffer overflow in smp.c fixed.
+
+-------------------------------------------------------------------
+Tue Mar 15 17:15:44 CET 2005 - hvogel@suse.de
+
+- remove mad from nfb
+
+-------------------------------------------------------------------
+Fri Jan 28 17:51:15 CET 2005 - nadvornik@suse.cz
+
+- updated to 12.17.7
+
+-------------------------------------------------------------------
+Thu Nov 18 02:02:02 CET 2004 - ro@suse.de
+
+- fixed file list
+
+-------------------------------------------------------------------
+Mon Aug 16 15:28:46 CEST 2004 - nadvornik@suse.cz
+
+- updated to 12.17.5
+
+-------------------------------------------------------------------
+Mon Jul 19 15:36:56 CEST 2004 - nadvornik@suse.cz
+
+- fixed buffer overflow [#43116]
+
+-------------------------------------------------------------------
+Mon Apr 19 18:08:50 CEST 2004 - nadvornik@suse.cz
+
+- fixed dangerous compiler warnings
+
+-------------------------------------------------------------------
+Tue Jul 29 14:28:34 CEST 2003 - nadvornik@suse.cz
+
+- updated to 12.17.4
+- compiled with libmad - support for reading mp3
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides
+
+-------------------------------------------------------------------
+Fri Aug 09 15:00:21 CEST 2002 - nadvornik@suse.cz
+
+- fixed problems with converting to .ogg format [bug #17530]
+
+-------------------------------------------------------------------
+Wed Feb 27 10:20:59 CET 2002 - nadvornik@suse.cz
+
+- removed gsm library due to possible patent problems
+
+-------------------------------------------------------------------
+Wed Feb 13 12:07:44 CET 2002 - nadvornik@suse.cz
+
+- used macro %{_libdir}
+
+-------------------------------------------------------------------
+Tue Jan  8 14:45:20 CET 2002 - nadvornik@suse.cz
+
+- updated to 12.17.3
+    - support for swapping "bit" order for raw u-law and A-law data
+    - many bugfixes
+
+-------------------------------------------------------------------
+Wed Dec  5 09:50:07 CET 2001 - nadvornik@suse.cz
+
+- disabled alsa support
+
+-------------------------------------------------------------------
+Tue Oct 23 16:07:14 CEST 2001 - nadvornik@suse.cz
+
+- updated to 12.17.2
+  - new effects: earwax, fade in/out, silence, dcshift, synth
+  - updated play/rec/soxeffect scripts to handle all effect
+- compiled with alsa support
+- compiled with Ogg Vorbis support
+
+-------------------------------------------------------------------
+Tue Sep 11 16:12:21 CEST 2001 - nadvornik@suse.cz
+
+- fixed output file handling [bug #10449]
+
+-------------------------------------------------------------------
+Mon May 21 11:16:25 CEST 2001 - nadvornik@suse.cz
+
+- fixed cast warnings and include files for ia64
+
+-------------------------------------------------------------------
+Tue Jan 23 14:12:23 CET 2001 - nadvornik@suse.cz
+
+- fixed to compile on axp
+
+-------------------------------------------------------------------
+Fri Nov 24 12:43:05 CET 2000 - tiwai@suse.de
+
+- Fixed OSS playback on big-endian machine.
+
+-------------------------------------------------------------------
+Mon Oct  9 09:54:48 CEST 2000 - nadvornik@suse.cz
+
+- fixed Copyright
+- used bzip2
+
+-------------------------------------------------------------------
+Fri Sep 15 11:17:33 CEST 2000 - nadvornik@suse.cz
+
+- update to 12.17
+- used suse_update_config
+
+-------------------------------------------------------------------
+Fri May 19 23:33:08 CEST 2000 - bk@suse.de
+
+- enabled sunaudio (dev/audio) file format support(see man page for use)
+
+-------------------------------------------------------------------
+Fri May 19 19:19:58 CEST 2000 - bk@suse.de
+
+- added man pages for play and rec
+
+-------------------------------------------------------------------
+Thu May 18 15:44:41 CEST 2000 - nadvornik@suse.cz
+
+- changed Group tag
+
+-------------------------------------------------------------------
+Mon Apr 10 14:10:53 CEST 2000 - nadvornik@suse.cz
+
+- now compiles with the oss driver
+
+-------------------------------------------------------------------
+Thu Apr  6 15:21:43 CEST 2000 - nadvornik@suse.cz
+
+- added BuildRoot
+- added URL
+
+-------------------------------------------------------------------
+Tue Jan 25 18:40:11 CET 2000 - ro@suse.de
+
+- update to 12.16, man to /usr/share using macro
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Dec  2 23:46:31 MET 1998 - ro@suse.de
+
+- update to 12.15
+
+-------------------------------------------------------------------
+Tue Aug 11 11:09:59 MEST 1998 - ro@suse.de
+
+- back to original names play/rec (wavplay changed the names)
+- added patches from kevin bradley for polyphase sample rate conversion
+
+-------------------------------------------------------------------
+Tue May 12 15:06:12 MEST 1998 - ro@suse.de
+
+- initial package version 12.14
+  changed play and rec to soxplay and soxrec
+  to avoid collision with wavplay
+

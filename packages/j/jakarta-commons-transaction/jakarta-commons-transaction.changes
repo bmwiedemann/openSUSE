@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon Sep 18 12:29:27 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9: specify java source and target 1.6
+
+-------------------------------------------------------------------
+Fri May 19 16:09:55 UTC 2017 - tchvatal@suse.com
+
+- Remove the maven conditional
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:48 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Fri May 15 08:13:50 CEST 2009 - mvyskocil@suse.cz
+
+- 'Initial SUSE packaging'
+

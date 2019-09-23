@@ -1,0 +1,6 @@
+<package name="bcunit" project="openSUSE:Factory">
+  <title>Provide C programmers basic testing functionality</title>
+  <description>BCUnit is a unit testing framework for C.
+This package installs the BCUnit static library, headers, and documentation files.</description>
+  <devel project="devel:libraries:c_c++" package="bcunit"/>
+</package>

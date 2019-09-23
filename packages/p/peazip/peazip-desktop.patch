@@ -1,0 +1,114 @@
+--- FreeDesktop_integration/peazip.desktop.orig	2008-09-01 10:54:36.000000000 +0200
++++ FreeDesktop_integration/peazip.desktop	2014-09-10 19:50:22.760595306 +0200
+@@ -1,13 +1,16 @@
+ [Desktop Entry]
+-Version=1.0
+-Encoding=UTF-8
+ Name=PeaZip
+-MimeType=application/x-gzip;application/x-lha;application/x-tar;application/x-tgz;application/x-tbz;application/x-tbz2;application/x-zip;application/zip;application/x-bzip;application/x-rar;application/x-tarz;application/x-archive;application/x-bzip2;application/x-jar;application/x-deb;application/x-ace;application/x-7z;application/x-arc;application/x-arj;application/x-compress;application/x-cpio;
+-GenericName=Archiving Tool
+-Exec=peazip %F
+-Icon=peazip.png
+-Type=Application
++Exec=peazip
++Icon=peazip
+ Terminal=false
++Type=Application
++GenericName=Free Zip files utility
++GenericName[de]=Freies Zip-Dateien Utility
++Comment=Free Zip files utility, supports 150+ formats: 7Z, ISO, RAR, ZIP, ZIPX
++Comment[de]=Freies Zip-Dateien Utility, unterstützt 150+ Formate: 7Z, ISO, RAR, ZIP, ZIPX
++Comment[it]=Programma per file Zip gratuito, supporta 150+ formati: 7Z, ISO, RAR, ZIP, ZIPX
++MimeType=application/x-gzip;application/x-lha;application/x-tar;application/x-tgz;application/x-tbz;application/x-tbz2;application/x-zip;application/zip;application/x-bzip;application/x-rar;application/x-tarz;application/x-archive;application/x-bzip2;application/x-jar;application/x-deb;application/x-ace;application/x-7z;application/x-arc;application/x-arj;application/x-compress;application/x-cpio;
+ X-KDE-HasTempFileOption=true
+-Categories=GTK;KDE;Utility;System;Archiving;
+-Name[en_US]=peazip.desktop
++Categories=Qt;KDE;Utility;System;Archiving;
++X-KDE-StartupNotify=true
++X-SuSE-translate=true
+--- FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipadd.desktop.orig	2010-04-29 00:11:38.000000000 +0200
++++ FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipadd.desktop	2014-09-10 19:52:43.367685012 +0200
+@@ -2,6 +2,8 @@
+ Exec=peazip -add2archive %F
+ Icon=peazip
+ Name=Archive with PeaZip
++Name[de]=Archivieren mit PeaZip
++Name[it]=Archivia con PeaZip
+ 
+ [Desktop Entry]
+ Type=Service
+@@ -11,3 +13,4 @@
+ Name[en_US]=peazipadd
+ Icon=peazip
+ ServiceTypes=KonqPopupMenu/Plugin,all/all
++X-SuSE-translate=true
+--- FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipext.desktop.orig	2010-04-29 00:11:38.000000000 +0200
++++ FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipext.desktop	2014-09-10 19:52:43.367685012 +0200
+@@ -1,7 +1,9 @@
+ [Desktop Action peazipext]
+ Exec=peazip -ext2full %F
+ Icon=peazip
+-Name=Extract (PeaZip)
++Name=Extract with PeaZip
++Name[de]=Extrahieren mit PeaZip
++Name[it]=Estrai con PeaZip
+ 
+ [Desktop Entry]
+ Type=Service
+@@ -11,3 +13,4 @@
+ Name=peazipext
+ Name[en_US]=peazipext
+ ServiceTypes=KonqPopupMenu/Plugin,all/all
++X-SuSE-translate=true
+--- FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipextfolder.desktop.orig	2010-04-29 00:11:38.000000000 +0200
++++ FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipextfolder.desktop	2014-09-10 19:52:43.368685011 +0200
+@@ -1,7 +1,9 @@
+ [Desktop Action peazipextfolder]
+ Exec=peazip -ext2folder %F
+ Icon=peazip
+-Name=Extract here to new folder (PeaZip)
++Name=Extract here to new folder with PeaZip
++Name[de]=Hier mit PeaZip in neues Verzeichnis extrahieren
++Name[it]=Estrai qui con PeaZip in una nuova cartella
+ 
+ [Desktop Entry]
+ Type=Service
+@@ -11,3 +13,4 @@
+ Name=peazipextfolder
+ Name[en_US]=peazipextfolder
+ ServiceTypes=KonqPopupMenu/Plugin,all/all
++X-SuSE-translate=true
+--- FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipexthere.desktop.orig	2010-04-29 00:11:38.000000000 +0200
++++ FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipexthere.desktop	2014-09-10 19:52:43.368685011 +0200
+@@ -1,7 +1,9 @@
+ [Desktop Action peazipexthere]
+ Exec=peazip -ext2here %F
+ Icon=peazip
+-Name=Extract here (PeaZip)
++Name=Extract here with PeaZip
++Name[de]=Hier mit PeaZip extrahieren
++Name[it]=Estrai qui con PeaZip
+ 
+ [Desktop Entry]
+ Type=Service
+@@ -11,3 +13,4 @@
+ Name=peazipexthere
+ Name[en_US]=peazipexthere
+ ServiceTypes=KonqPopupMenu/Plugin,all/all
++X-SuSE-translate=true
+--- FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipopen.desktop.orig	2010-04-29 00:11:38.000000000 +0200
++++ FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipopen.desktop	2014-09-10 19:52:43.368685011 +0200
+@@ -2,6 +2,8 @@
+ Exec=peazip -ext2browse %F
+ Icon=peazip
+ Name=Open with PeaZip
++Name[de]=Öffnen mit PeaZip
++Name[it]=Apri con PeaZip
+ 
+ [Desktop Entry]
+ Type=Service
+@@ -11,3 +13,4 @@
+ Name=peazipopen
+ Name[en_US]=peazipopen
+ ServiceTypes=KonqPopupMenu/Plugin,all/all
++X-SuSE-translate=true

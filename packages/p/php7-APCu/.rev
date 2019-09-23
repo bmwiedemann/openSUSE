@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>964699e179438cb74c329cc9f04f1424</srcmd5>
+    <version>5.1.8</version>
+    <time>1492714224</time>
+    <user>dimstar_suse</user>
+    <comment>Removed unneccesary -devel package</comment>
+    <requestid>486447</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>04a4d02b28e9779be14e7bb53d065d48</srcmd5>
+    <version>5.1.9</version>
+    <time>1518187903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574336</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b6c27afda276684a0a612f8c2d429f29</srcmd5>
+    <version>5.1.11</version>
+    <time>1524238342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599234</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b7b512c6d40c92ed81282a0e8efb1089</srcmd5>
+    <version>5.1.12</version>
+    <time>1534543429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629478</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0fec1f40791a7b71580e8e62ac411f87</srcmd5>
+    <version>5.1.15</version>
+    <time>1545141499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658763</requestid>
+  </revision>
+</revisionlist>

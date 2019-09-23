@@ -1,0 +1,853 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1dbd9be3c4988d7d2e83e5689db702cc</srcmd5>
+    <version>7.5.0</version>
+    <time>1558515869</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.5.0
+  * IPython 7.5.0 consist mostly of bug-fixes, and documentation updates,
+    with one minor new feature. The Audio display element can now be
+    assigned an element id when displayed in browser.
+  * The major outstanding bug fix correct a change of behavior that was
+    introduce in 7.4.0 where some cell magics would not be able to access
+    or modify global scope when using the @needs_local_scope decorator.
+    This was typically encountered with the %%time and %%timeit magics.
+- Rename package to follow python package guidelines.
+- update to version 7.4.0:
+  * Previously, we provided completion for a unicode name with its
+    relative symbol.With this, now IPython provides complete
+    suggestions to unicode name symbols.
+  * Make audio normalization optional
+  * Miscelanious
+    + Fix improper acceptation of &quot;return&quot; outside of
+      functions. :ghpull:`11641`.
+    + Fixed PyQt 5.11 backwards incompatibility causing sip import
+      failure.  :ghpull:`11613`.
+    + Fix Bug where &quot;type?&quot; woudl crash IPython. :ghpull:`1608`.
+    + Allow to apply &quot;@needs_local_scope&quot; to cell magics for
+      convenience.  :ghpull:`11542`.
+- specfile:
+  * update copyright year
+- update to version 7.3.0:
+  * The biggest change to this release is the implementation of the
+    &quot;%conda&quot; and &quot;%pip&quot; magics, that will attempt to install packages
+    in the **current environment**. You may still need to restart your
+    interpreter or kernel for the change to be taken into account, but
+    it should simplify installation of packages into remote
+    environment. Installing using pip/conda from the command line is
+    still the prefer method.
+  * The &quot;%pip&quot; magic was already present, but was only printing a
+    warning; now it will actually forward commands to pip.
+  * Misc bug fixes and improvements:
+    + Compatibility with Python 3.8.
+    + Do not expand shell variable in execution magics, and added the
+      &quot;no_var_expand&quot; decorator for magic requiring a similar
+      functionality :ghpull:`11516`
+    + Add &quot;%pip&quot; and &quot;%conda&quot; magic :ghpull:`11524`
+    + Re-initialize posix aliases after a &quot;%reset&quot; :ghpull:`11528`
+    + Allow the IPython command line to run &quot;*.ipynb&quot; files
+      :ghpull:`11529`
+- Update to version 7.2.0
+  * Fix a bug preventing PySide2 GUI integration from working :ghpull:`11464`
+  * Run CI on Mac OS ! :ghpull:`11471`
+  * Fix IPython &quot;Demo&quot; mode. :ghpull:`11498`
+  * Fix ``%run`` magic  with path in name :ghpull:`11499`
+  * Fix: add CWD to sys.path *after* stdlib :ghpull:`11502`
+  * Better rendering of signatures, especially long ones. :ghpull:`11505`
+  * Re-enable jedi by default if it's installed :ghpull:`11506`
+  * Add New ``minimal`` exception reporting mode (useful for educational purpose). See :ghpull:`11509`
+- Update to version 7.1.0
+  + Notable Changes
+    * Major update of &quot;latex to unicode&quot; tab completion map (see below)
+  + Notable New Features:
+    * Restore functionality and documentation of the **sphinx directive**, which
+      is now stricter (fail on error by daefault), has new configuration options,
+      has a brand new documentation page :ref:`ipython_directive` (which needs
+      some cleanup). It is also now *tested* so we hope to have less regressions.
+     :ghpull:`11402`
+    * ``IPython.display.Video`` now supports ``width`` and ``height`` arguments,
+      allowing a custom width and height to be set instead of using the video's
+      width and height. :ghpull:`11353`
+    * Warn when using ``HTML('&lt;iframe&gt;')`` instead of ``IFrame`` :ghpull:`11350`
+    * Allow Dynamic switching of editing mode between vi/emacs and show
+      normal/input mode in prompt when using vi. :ghpull:`11390`. Use ``%config
+      TerminalInteractiveShell.editing_mode = 'vi'`` or ``%config
+      TerminalInteractiveShell.editing_mode = 'emacs'`` to dynamically switch
+      between modes.
+  + Notable Fixes:
+    * Fix entering of **multi-line blocks in terminal** IPython, and various
+      crashes in the new input transformation machinery :ghpull:`11354`,
+      :ghpull:`11356`, :ghpull:`11358`. These also fix a **Compatibility bug
+      with Python 3.7.1**.
+    * Fix moving through generator stack in ipdb :ghpull:`11266`
+    * %Magic command arguments now support quoting. :ghpull:`11330`
+    * Re-add ``rprint`` and ``rprinte`` aliases. :ghpull:`11331`
+    * Remove implicit dependency on ``ipython_genutils`` :ghpull:`11317`
+    * Make ``nonlocal`` raise ``SyntaxError`` instead of silently failing in async
+      mode. :ghpull:`11382`
+    * Fix mishandling of magics and ``= !`` assignment just after a dedent in
+      nested code blocks :ghpull:`11418`
+    * Fix instructions for custom shortcuts :ghpull:`11426`
+  + Notable Internals improvements:
+    * Use of ``os.scandir`` (Python 3 only) to speed up some file system operations.
+      :ghpull:`11365`
+    * use ``perf_counter`` instead of ``clock`` for more precise
+      timing results with ``%time`` :ghpull:`11376`
+- Remove upstream-included fix_test_history.patch
+- Update to version 7.0.1
+  Highlights
+  * IPython 7.0+ now uses prompt_toolkit 2.0
+  * IPython can automatically await code at top level, you should
+    not need to access an event loop or runner yourself.
+  * The magic %autoreload 2 now captures new methods added to
+    classes. Earlier, only methods existing as of the initial
+    import were being tracked and updated.
+  * The autoindent feature that was deprecated in 5.x was
+    re-enabled and un-deprecated.
+  * Make %run -n -i ... work correctly. Earlier, if %run was
+    passed both arguments, -n would be silently ignored.
+  * The %%script (as well as %%bash, %%ruby, ... ) cell magics
+    now raise by default if the return code of the given code is
+    non-zero (thus halting execution of further cells in a
+    notebook). The behavior can be disable by passing the 
+    --no-raise-error flag.
+- Add fix_test_history.patch
+  Fixes failure in test_history.py for sqlite &gt;= 3.25
+  Should be fixed in next release
+  see https://github.com/ipython/ipython/issues/11372
+- Update to version 6.5.0
+  * Autocompletion fix for modules with out __init__.py :ghpull:`11227`
+  * update the %pastebin magic to use dpaste.com instead og GitHub Gist which now requires authentication :ghpull:`11182`
+  * Fix crash with multiprocessing :ghpull:`11185`
+- Switch to using upstream documentation builds
+- Update to version 6.4.0
+  * Fix display object not emitting metadata :ghpull:`11106`
+  * Comments failing Jedi test :ghpull:`11110` 
+- Remove upstream-included disable_jedi_in_tests.patch
+- Add disable_jedi_in_tests.patch
+  Upstream bug: https://github.com/ipython/ipython/issues/11103
+  From: https://github.com/ipython/ipython/pull/11113
+  Should be in next release
+- specfile:
+  * add python-backcall dependency
+  * fix 'provides' syntax
+- update to version 6.3.1:
+  * This is a bugfix release to switch the default completions back to
+    IPython's own completion machinery. We discovered some problems
+    with the completions from Jedi, including completing column names
+    on pandas data frames.
+- changes from version 6.3:
+  * A new display class :class:`IPython.display.Code` can be used to
+    display syntax highlighted code in a notebook (:ghpull:`10978`).
+  * The :cellmagic:`html` magic now takes a &quot;--isolated&quot; option to put
+    the content in an iframe (:ghpull:`10962`).
+  * The code to find completions using the Jedi library has had
+    various adjustments. This is still a work in progress, but we hope
+    this version has fewer annoyances (:ghpull:`10956`,
+    :ghpull:`10969`, :ghpull:`10999`, :ghpull:`11035`,
+    :ghpull:`11063`, :ghpull:`11065`).
+  * The *post* event callbacks are now always called, even when the
+    execution failed (for example because of a &quot;SyntaxError&quot;).
+  * The execution info and result objects are now made available in
+    the corresponding *pre* or *post* &quot;*_run_cell&quot; :doc:`event
+    callbacks &lt;/config/callbacks&gt;` in a backward compatible manner
+    (:ghissue:`10774` and :ghpull:`10795`).
+  * Performance with very long code cells (hundreds of lines) is
+    greatly improved (:ghpull:`10898`). Further improvements are
+    planned for IPython 7.
+- Update url
+- update to version 6.2.1:
+  * IPython 6.2.1 ships with two minor fixes leading to no completions
+    when using Jedi 0.11+ :ghpull:`10829`, and crash on some linux
+    system with virtualenv :ghpull:`10829`
+- Fix conflict with old python3-jupyter_ipython-doc
+- Update to version 6.2.0
+  * Function signature in completions
+  * Assignments return values
+  * Recursive Call of ipdb
+  * System Wide config
+  * ProgressBar
+  * Fix ``IPython.core.display:Pretty._repr_pretty_`` had the wrong signature.
+  * :magic:`timeit` now give a correct ``SyntaxError`` if naked ``return`` used.
+  * Prepare the ``:ipython:`` directive to be compatible with Sphinx 1.7.
+  * Make IPython work with OpenSSL in FIPS mode; change hash algorithm of input
+    from md5 to sha1.
+  * Clear breakpoints before running any script with debugger.
+  * Document that :magic:`profile` is deprecated, not to be confused with :magic:`prun`.
+  * Limit default number of returned completions to 500.
+- Implement single-spec version
+- Update to version 6.1.0
+  * Quotes in a filename are always escaped during tab-completion on non-Windows.
+    :ghpull:`10069`
+  * Variables now shadow magics in autocompletion. See :ghissue:`4877` and :ghpull:`10542`.
+  * Added the ability to add parameters to alias_magic.
+  * To suppress log state messages, you can now either use ``%logstart -q``, pass
+    ``--LoggingMagics.quiet=True`` on the command line, or set
+    ``c.LoggingMagics.quiet=True`` in your configuration file.
+  * An additional flag ``--TerminalInteractiveShell.term_title_format`` is
+    introduced to allow the user to control the format of the terminal title.  It
+    is specified as a python format string, and currently the only variable it
+    will format is ``{cwd}``.
+  * ``??``/``%pinfo2`` will now show object docstrings if the source can't be retrieved. :ghpull:`10532`
+  * ``IPython.display`` has gained a ``%markdown`` cell magic. :ghpull:`10563`
+  * ``%config`` options can now be tab completed. :ghpull:`10555`
+  * ``%config`` with no arguments are now unique and sorted. :ghpull:`10548`
+  * Completion on keyword arguments does not duplicate ``=`` sign if already present. :ghpull:`10547`
+  * ``%run -m &lt;module&gt;`` now ``&lt;module&gt;`` passes extra arguments to ``&lt;module&gt;``. :ghpull:`10546`
+  * completer now understand &quot;snake case auto complete&quot;: if ``foo_bar_kittens`` is
+    a valid completion, I can type ``f_b&lt;tab&gt;`` will complete to it. :ghpull:`10537`
+  * tracebacks are better standardized and will compress `/path/to/home` to `~`. :ghpull:`10515`
+  * ``TerminalInteractiveShell`` is configurable and can be configured to
+    (re)-use the readline interface.
+  * objects can now define a ``_repr_mimebundle_``
+  * Execution heuristics improve for single line statements
+  * ``display()`` can now return a display id to update display areas.
+- Update to version 6.0.0
+  * A major improvement in the completion machinery which is now capable of
+    completing non-executed code. 
+  * stop compatibility with Python 2, which is still supported on the bugfix
+    only 5.x branch. 
+  * Configurable TerminalInteractiveShell, readline interface
+  * The :cellmagic:`capture` magic can now capture the result of a cell (from
+    an expression on the last line), as well as printed and displayed output.
+  * Pressing Ctrl-Z in the terminal debugger now suspends IPython, as it
+    already does in the main terminal prompt.
+  * Autoreload can now reload ``Enum``.
+  * IPython.display has gained a :any:`GeoJSON &lt;IPython.display.GeoJSON&gt;`
+    object.
+    
+- Update to version 5.4.1
+  * Released a few hours after 5.4, fix a crash when
+    ``backports.shutil-get-terminal-size`` is not installed. :ghissue:`10629`
+- Update to version 5.4
+  * Configurable TerminalInteractiveShell
+  * Define ``_repr_mimebundle_``
+  * Execution Heuristics
+  * Implement Display IDs
+  * Display function
+  * ``_mp_main_`` is not reloaded which fixes issues with multiprocessing.
+    :ghpull:`10523`
+  * Use user colorscheme in Pdb as well :ghpull:`10479`
+  * Faster shutdown. :ghpull:`10408` 
+  * Fix a crash in reverse search. :ghpull:`10371`
+  * added ``Completer.backslash_combining_completions`` boolean option to
+    deactivate backslash-tab completion that may conflict with windows path. 
+- Fix building on platforms without icoutils
+- Fix shebang rpmint errors.
+- Add note about LTS status and the end of Python 2 support.
+- Add python2- provides.
+- Neither HTML nor PDF documentation will ever work again,
+  so drop it.
+- Update to IPython 5.3
+  * Fix a bug in ``set_next_input`` leading to a crash of terminal IPython.
+    :ghpull:`10231`, :ghissue:`10296`, :ghissue:`10229`
+  * Always wait for editor inputhook for terminal IPython :ghpull:`10239`,
+    :ghpull:`10240`
+  * Disable ``_ipython_display_`` in terminal :ghpull:`10249`, :ghpull:`10274`
+  * Update terminal colors to be more visible by default on windows
+    :ghpull:`10260`, :ghpull:`10238`, :ghissue:`10281`
+  * Add Ctrl-Z shortcut (suspend) in terminal debugger :ghpull:`10254`,
+    :ghissue:`10273`
+  * Indent on new line by looking at the text before the cursor :ghpull:`10264`,
+    :ghpull:`10275`, :ghissue:`9283`
+  * Update QtEventloop integration to fix some matplotlib integration issues
+    :ghpull:`10201`, :ghpull:`10311`, :ghissue:`10201`
+  * Respect completions display style in terminal debugger :ghpull:`10305`,
+    :ghpull:`10313`
+  * Add a config option ``TerminalInteractiveShell.extra_open_editor_shortcuts``
+    to enable extra shortcuts to open the input in an editor. These are :kbd:`v`
+    in vi mode, and :kbd:`C-X C-E` in emacs mode (:ghpull:`10330`).
+    The :kbd:`F2` shortcut is always enabled.
+- Update to IPython 5.2.2
+  * Fix error when starting with ``IPCompleter.limit_to__all__`` configured.
+- Update to IPython 5.2.1
+  * Fix tab completion in the debugger. :ghpull:`10223`
+- Update to IPython 5.2
+  * restore IPython's debugger to raise on quit. :ghpull:`10009`
+  * The configuration value ``c.TerminalInteractiveShell.highlighting_style`` can
+    now directly take a class argument for custom color style. :ghpull:`9848`
+  * Correctly handle matplotlib figures dpi :ghpull:`9868`
+  * Deprecate ``-e`` flag for the ``%notebook`` magic that had no effects.
+    :ghpull:`9872`
+  * You can now press F2 while typing at a terminal prompt to edit the contents
+    in your favourite terminal editor. Set the :envvar:`EDITOR` environment
+    variable to pick which editor is used. :ghpull:`9929`
+  * sdists will now only be ``.tar.gz`` as per upstream PyPI requirements.
+    :ghpull:`9925`
+  * :any:`IPython.core.debugger` have gained a ``set_trace()`` method for
+    convenience. :ghpull:`9947`
+  * The 'smart command mode' added to the debugger in 5.0 was removed, as more
+    people preferred the previous behaviour. Therefore, debugger commands such as
+    ``c`` will act as debugger commands even when ``c`` is defined as a variable.
+    :ghpull:`10050`
+  * Fixes OS X event loop issues at startup, :ghpull:`10150`
+  * Deprecate the ``%autoindent`` magic. :ghpull:`10176`
+  * Emit a :any:`DeprecationWarning` when setting the deprecated
+    ``limit_to_all`` option of the completer. :ghpull:`10198`
+  * The :cellmagic:`capture` magic can now capture the result of a cell (from an
+    expression on the last line), as well as printed and displayed output.
+    :ghpull:`9851`.
+- Update to IPython 5.1
+  * Broken ``%timeit`` on Python2 due to the use of ``__qualname__``. :ghpull:`9804`
+  * Restore ``%gui qt`` to create and return a ``QApplication`` if necessary. :ghpull:`9789`
+  * Don't set terminal title by default. :ghpull:`9801`
+  * Preserve indentation when inserting newlines with ``Ctrl-O``. :ghpull:`9770`
+  * Restore completion in debugger. :ghpull:`9785`
+  * Deprecate ``IPython.core.debugger.Tracer()`` in favor of simpler, newer, APIs. :ghpull:`9731`
+  * Restore ``NoOpContext`` context manager removed by mistake, and add `DeprecationWarning`. :ghpull:`9765`
+  * Add option allowing ``Prompt_toolkit`` to use 24bits colors. :ghpull:`9736`
+  * Fix for closing interactive matplotlib windows on OS X. :ghpull:`9854`
+  * An embedded interactive shell instance can be used more than once. :ghpull:`9843`
+  * More robust check for whether IPython is in a terminal. :ghpull:`9833`
+  * Better pretty-printing of dicts on PyPy. :ghpull:`9827`
+  * Some coloured output now looks better on dark background command prompts in Windows.
+    :ghpull:`9838`
+  * Improved tab completion of paths on Windows . :ghpull:`9826`
+  * Fix tkinter event loop integration on Python 2 with ``future`` installed. :ghpull:`9824`
+  * Restore ``Ctrl-\`` as a shortcut to quit IPython.
+  * Make ``get_ipython()`` accessible when modules are imported by startup files. :ghpull:`9818`
+  * Add support for running directories containing a ``__main__.py`` file with the
+    ``ipython`` command. :ghpull:`9813`
+- Update to IPython 5.0
+  + IPython 5 features a major upgrade to the terminal interface, bringing live
+    syntax highlighting as you type, proper multiline editing and multiline paste,
+    and tab completions that don't clutter up your history.
+  + Backwards incompatible changes
+    * The ``%install_ext`` magic function, deprecated since 4.0, has now been deleted.
+      You can distribute and install extensions as packages on PyPI.
+    * Callbacks registered while an event is being handled will now only be called
+      for subsequent events; previously they could be called for the current event.
+      Similarly, callbacks removed while handling an event *will* always get that
+      event. See :ghissue:`9447` and :ghpull:`9453`.
+    * Integration with pydb has been removed since pydb development has been stopped
+      since 2012, and pydb is not installable from PyPI.
+    * The ``autoedit_syntax`` option has apparently been broken for many years.
+      It has been removed.
+    * The overhaul of the terminal interface will probably cause a range of minor
+      issues for existing users.
+    * IPython no longer uses readline configuration (``~/.inputrc``). We hope that
+      the functionality you want (e.g. vi input mode) will be available by configuring
+      IPython directly (see :doc:`/config/options/terminal`).
+    * The ``PromptManager`` class has been removed, and the prompt machinery simplified.
+    * There are new options to configure the colours used in syntax highlighting.
+      We have tried to integrate them with our classic  ``--colors`` option and
+     ``%colors`` magic, but there's a mismatch in possibilities, so some configurations
+     may produce unexpected results. See :ref:`termcolour` for more information.
+    * The new interface is not compatible with Emacs 'inferior-shell' feature. To
+      continue using this, add the ``--simple-prompt`` flag to the command Emacs
+      runs. This flag disables most IPython features, relying on Emacs to provide
+      things like tab completion.
+  + Provisional Changes
+    * When running via the Jupyter notebook interfaces, or other compatible client,
+      you can enable rich documentation experimental functionality:
+      When the ``docrepr`` package is installed setting the boolean flag
+      ``InteractiveShell.sphinxify_docstring`` to ``True``, will process the various
+      object through sphinx before displaying them (see the ``docrepr`` package
+      documentation for more information.
+  + Deprecated Features
+    * ``hooks.fix_error_editor`` seems unused and is pending deprecation.
+    * `IPython/core/excolors.py:ExceptionColors` is  deprecated.
+    * `IPython.core.InteractiveShell:write()` is deprecated; use `sys.stdout` instead.
+    * `IPython.core.InteractiveShell:write_err()` is deprecated; use `sys.stderr` instead.
+    * The `formatter` keyword argument to `Inspector.info` in `IPython.core.oinspec` has no effect.
+    * The `global_ns` keyword argument of IPython Embed was deprecated, and has no effect. Use `module` keyword argument instead.
+- Update to IPython 4.2
+  * Fix ``ipython -i`` on errors, which was broken in 4.1.
+  * The delay meant to highlight deprecated commands that have moved to jupyter has been removed.
+  * Improve compatibility with future versions of traitlets and matplotlib.
+  * Use stdlib :func:`python:shutil.get_terminal_size` to measure terminal width when displaying tracebacks
+    (provided by ``backports.shutil_get_terminal_size`` on Python 2).
+- Update to IPython 4.1.2
+  * fixes installation issues with some versions of setuptools.
+- specfile:
+  * update copyright year
+  * Simplify tests for determining whether to build pdf documentation
+- update to version 4.1.1:
+  * Backport #9209: Don't import IPython to check version number in
+    setup
+- Update to 4.1.0
+  * Release February, 2016. IPython 4.1 contain mostly bug fixes.
+    It though contain a few improvement.
+  * IPython debugger (IPdb) now supports the number of context
+    lines for the where (and w) commands. The context keyword is
+    also available in various APIs. See PR :ghpull:`9097`
+  * YouTube video will now show thumbnail when exported to a media
+    that do not support video. (:ghpull:`9086`)
+  * Add warning when running ipython &lt;subcommand&gt; when subcommand
+    is deprecated. jupyter should now be used.
+  * Code in %pinfo (also known as ??) are now highlighter
+    (:ghpull:`8947`)
+  * %aimport now support module completion. (:ghpull:`8884`)
+  * ipdb output is now colored ! (:ghpull:`8842`)
+  * Add ability to transpose columns for completion:
+    (:ghpull:`8748`)
+  * Many many docs improvements and bug fixes
+- update to version 4.0.3:
+  * Python 3.5 bug in that could crash during shutdown, triggered by
+    deprecations in traitlets 4.1.
+  * Typo in deprecation message for nbconvert
+- update to version 4.0.2:
+  * Fix backward-compatiblity shim for &quot;IPython.Config&quot;, which
+    should have been deprecated instead of removed. This will be
+    removed in 5.0.
+- update to version 4.0.1:
+  * Installation on some systems
+  * Compatibility with CPython 3.4.4
+  * Compatibility with Qt5
+- Build documentation
+  This is in a separate spec file to avoid dependency loops
+- Obsolete IPython
+- Split the iptest executable into its own subpackage
+  This has a bunch of testing dependencies that are not otherwise
+  necessary.
+- Update to 7.5.0
+  * IPython 7.5.0 consist mostly of bug-fixes, and documentation updates,
+    with one minor new feature. The Audio display element can now be
+    assigned an element id when displayed in browser.
+  * The major outstanding bug fix correct a change of behavior that was
+    introduce in 7.4.0 where some cell magics would not be able to access
+    or modify global scope when using the @needs_local_scope decorator.
+    This was typically encountered with the %%time and %%timeit magics.
+- Rename package to follow python package guidelines.
+- update to version 7.4.0:
+  * Previously, we provided completion for a unicode name with its
+    relative symbol.With this, now IPython provides complete
+    suggestions to unicode name symbols.
+  * Make audio normalization optional
+  * Miscelanious
+    + Fix improper acceptation of &quot;return&quot; outside of
+      functions. :ghpull:`11641`.
+    + Fixed PyQt 5.11 backwards incompatibility causing sip import
+      failure.  :ghpull:`11613`.
+    + Fix Bug where &quot;type?&quot; woudl crash IPython. :ghpull:`1608`.
+    + Allow to apply &quot;@needs_local_scope&quot; to cell magics for
+      convenience.  :ghpull:`11542`.
+- specfile:
+  * update copyright year
+- update to version 7.3.0:
+  * The biggest change to this release is the implementation of the
+    &quot;%conda&quot; and &quot;%pip&quot; magics, that will attempt to install packages
+    in the **current environment**. You may still need to restart your
+    interpreter or kernel for the change to be taken into account, but
+    it should simplify installation of packages into remote
+    environment. Installing using pip/conda from the command line is
+    still the prefer method.
+  * The &quot;%pip&quot; magic was already present, but was only printing a
+    warning; now it will actually forward commands to pip.
+  * Misc bug fixes and improvements:
+    + Compatibility with Python 3.8.
+    + Do not expand shell variable in execution magics, and added the
+      &quot;no_var_expand&quot; decorator for magic requiring a similar
+      functionality :ghpull:`11516`
+    + Add &quot;%pip&quot; and &quot;%conda&quot; magic :ghpull:`11524`
+    + Re-initialize posix aliases after a &quot;%reset&quot; :ghpull:`11528`
+    + Allow the IPython command line to run &quot;*.ipynb&quot; files
+      :ghpull:`11529`
+- Update to version 7.2.0
+  * Fix a bug preventing PySide2 GUI integration from working :ghpull:`11464`
+  * Run CI on Mac OS ! :ghpull:`11471`
+  * Fix IPython &quot;Demo&quot; mode. :ghpull:`11498`
+  * Fix ``%run`` magic  with path in name :ghpull:`11499`
+  * Fix: add CWD to sys.path *after* stdlib :ghpull:`11502`
+  * Better rendering of signatures, especially long ones. :ghpull:`11505`
+  * Re-enable jedi by default if it's installed :ghpull:`11506`
+  * Add New ``minimal`` exception reporting mode (useful for educational purpose). See :ghpull:`11509`
+- Update to version 7.1.0
+  + Notable Changes
+    * Major update of &quot;latex to unicode&quot; tab completion map (see below)
+  + Notable New Features:
+    * Restore functionality and documentation of the **sphinx directive**, which
+      is now stricter (fail on error by daefault), has new configuration options,
+      has a brand new documentation page :ref:`ipython_directive` (which needs
+      some cleanup). It is also now *tested* so we hope to have less regressions.
+     :ghpull:`11402`
+    * ``IPython.display.Video`` now supports ``width`` and ``height`` arguments,
+      allowing a custom width and height to be set instead of using the video's
+      width and height. :ghpull:`11353`
+    * Warn when using ``HTML('&lt;iframe&gt;')`` instead of ``IFrame`` :ghpull:`11350`
+    * Allow Dynamic switching of editing mode between vi/emacs and show
+      normal/input mode in prompt when using vi. :ghpull:`11390`. Use ``%config
+      TerminalInteractiveShell.editing_mode = 'vi'`` or ``%config
+      TerminalInteractiveShell.editing_mode = 'emacs'`` to dynamically switch
+      between modes.
+  + Notable Fixes:
+    * Fix entering of **multi-line blocks in terminal** IPython, and various
+      crashes in the new input transformation machinery :ghpull:`11354`,
+      :ghpull:`11356`, :ghpull:`11358`. These also fix a **Compatibility bug
+      with Python 3.7.1**.
+    * Fix moving through generator stack in ipdb :ghpull:`11266`
+    * %Magic command arguments now support quoting. :ghpull:`11330`
+    * Re-add ``rprint`` and ``rprinte`` aliases. :ghpull:`11331`
+    * Remove implicit dependency on ``ipython_genutils`` :ghpull:`11317`
+    * Make ``nonlocal`` raise ``SyntaxError`` instead of silently failing in async
+      mode. :ghpull:`11382`
+    * Fix mishandling of magics and ``= !`` assignment just after a dedent in
+      nested code blocks :ghpull:`11418`
+    * Fix instructions for custom shortcuts :ghpull:`11426`
+  + Notable Internals improvements:
+    * Use of ``os.scandir`` (Python 3 only) to speed up some file system operations.
+      :ghpull:`11365`
+    * use ``perf_counter`` instead of ``clock`` for more precise
+      timing results with ``%time`` :ghpull:`11376`
+- Remove upstream-included fix_test_history.patch
+- Update to version 7.0.1
+  Highlights
+  * IPython 7.0+ now uses prompt_toolkit 2.0
+  * IPython can automatically await code at top level, you should
+    not need to access an event loop or runner yourself.
+  * The magic %autoreload 2 now captures new methods added to
+    classes. Earlier, only methods existing as of the initial
+    import were being tracked and updated.
+  * The autoindent feature that was deprecated in 5.x was
+    re-enabled and un-deprecated.
+  * Make %run -n -i ... work correctly. Earlier, if %run was
+    passed both arguments, -n would be silently ignored.
+  * The %%script (as well as %%bash, %%ruby, ... ) cell magics
+    now raise by default if the return code of the given code is
+    non-zero (thus halting execution of further cells in a
+    notebook). The behavior can be disable by passing the 
+    --no-raise-error flag.
+- Add fix_test_history.patch
+  Fixes failure in test_history.py for sqlite &gt;= 3.25
+  Should be fixed in next release
+  see https://github.com/ipython/ipython/issues/11372
+- Fix prompt_toolkit dependency.
+- Update to version 6.5.0
+  * Autocompletion fix for modules with out __init__.py :ghpull:`11227`
+  * update the %pastebin magic to use dpaste.com instead og GitHub Gist which now requires authentication :ghpull:`11182`
+  * Fix crash with multiprocessing :ghpull:`11185`
+- Switch to using upstream documentation builds
+- Not compatible with prompt_toolkit 2.x
+- Update to version 6.4.0
+  * Fix display object not emitting metadata :ghpull:`11106`
+  * Comments failing Jedi test :ghpull:`11110` 
+- Remove upstream-included disable_jedi_in_tests.patch
+- Add disable_jedi_in_tests.patch
+  Upstream bug: https://github.com/ipython/ipython/issues/11103
+  From: https://github.com/ipython/ipython/pull/11113
+  Should be in next release
+- Add backcall dependency
+- update to version 6.3.1:
+  * This is a bugfix release to switch the default completions back to
+    IPython's own completion machinery. We discovered some problems
+    with the completions from Jedi, including completing column names
+    on pandas data frames.
+- changes from version 6.3:
+  * A new display class :class:`IPython.display.Code` can be used to
+    display syntax highlighted code in a notebook (:ghpull:`10978`).
+  * The :cellmagic:`html` magic now takes a &quot;--isolated&quot; option to put
+    the content in an iframe (:ghpull:`10962`).
+  * The code to find completions using the Jedi library has had
+    various adjustments. This is still a work in progress, but we hope
+    this version has fewer annoyances (:ghpull:`10956`,
+    :ghpull:`10969`, :ghpull:`10999`, :ghpull:`11035`,
+    :ghpull:`11063`, :ghpull:`11065`).
+  * The *post* event callbacks are now always called, even when the
+    execution failed (for example because of a &quot;SyntaxError&quot;).
+  * The execution info and result objects are now made available in
+    the corresponding *pre* or *post* &quot;*_run_cell&quot; :doc:`event
+    callbacks &lt;/config/callbacks&gt;` in a backward compatible manner
+    (:ghissue:`10774` and :ghpull:`10795`).
+  * Performance with very long code cells (hundreds of lines) is
+    greatly improved (:ghpull:`10898`). Further improvements are
+    planned for IPython 7.
+- Update url
+- update to version 6.2.1:
+  * IPython 6.2.1 ships with two minor fixes leading to no completions
+    when using Jedi 0.11+ :ghpull:`10829`, and crash on some linux
+    system with virtualenv :ghpull:`10829`
+- Update to version 6.2.0
+  * Function signature in completions
+  * Assignments return values
+  * Recursive Call of ipdb
+  * System Wide config
+  * ProgressBar
+  * Fix ``IPython.core.display:Pretty._repr_pretty_`` had the wrong signature.
+  * :magic:`timeit` now give a correct ``SyntaxError`` if naked ``return`` used.
+  * Prepare the ``:ipython:`` directive to be compatible with Sphinx 1.7.
+  * Make IPython work with OpenSSL in FIPS mode; change hash algorithm of input
+    from md5 to sha1.
+  * Clear breakpoints before running any script with debugger.
+  * Document that :magic:`profile` is deprecated, not to be confused with :magic:`prun`.
+  * Limit default number of returned completions to 500.
+- Implement single-spec version
+- Update to version 6.1.0
+  * Quotes in a filename are always escaped during tab-completion on non-Windows.
+    :ghpull:`10069`
+  * Variables now shadow magics in autocompletion. See :ghissue:`4877` and :ghpull:`10542`.
+  * Added the ability to add parameters to alias_magic.
+  * To suppress log state messages, you can now either use ``%logstart -q``, pass
+    ``--LoggingMagics.quiet=True`` on the command line, or set
+    ``c.LoggingMagics.quiet=True`` in your configuration file.
+  * An additional flag ``--TerminalInteractiveShell.term_title_format`` is
+    introduced to allow the user to control the format of the terminal title.  It
+    is specified as a python format string, and currently the only variable it
+    will format is ``{cwd}``.
+  * ``??``/``%pinfo2`` will now show object docstrings if the source can't be retrieved. :ghpull:`10532`
+  * ``IPython.display`` has gained a ``%markdown`` cell magic. :ghpull:`10563`
+  * ``%config`` options can now be tab completed. :ghpull:`10555`
+  * ``%config`` with no arguments are now unique and sorted. :ghpull:`10548`
+  * Completion on keyword arguments does not duplicate ``=`` sign if already present. :ghpull:`10547`
+  * ``%run -m &lt;module&gt;`` now ``&lt;module&gt;`` passes extra arguments to ``&lt;module&gt;``. :ghpull:`10546`
+  * completer now understand &quot;snake case auto complete&quot;: if ``foo_bar_kittens`` is
+    a valid completion, I can type ``f_b&lt;tab&gt;`` will complete to it. :ghpull:`10537`
+  * tracebacks are better standardized and will compress `/path/to/home` to `~`. :ghpull:`10515`
+  * ``TerminalInteractiveShell`` is configurable and can be configured to
+    (re)-use the readline interface.
+  * objects can now define a ``_repr_mimebundle_``
+  * Execution heuristics improve for single line statements
+  * ``display()`` can now return a display id to update display areas.
+- Update to version 6.0.0
+  * A major improvement in the completion machinery which is now capable of
+    completing non-executed code. 
+  * stop compatibility with Python 2, which is still supported on the bugfix
+    only 5.x branch. 
+  * Configurable TerminalInteractiveShell, readline interface
+  * The :cellmagic:`capture` magic can now capture the result of a cell (from
+    an expression on the last line), as well as printed and displayed output.
+  * Pressing Ctrl-Z in the terminal debugger now suspends IPython, as it
+    already does in the main terminal prompt.
+  * Autoreload can now reload ``Enum``.
+  * IPython.display has gained a :any:`GeoJSON &lt;IPython.display.GeoJSON&gt;`
+    object.
+- Update to version 5.4.1
+  * Released a few hours after 5.4, fix a crash when
+    ``backports.shutil-get-terminal-size`` is not installed. :ghissue:`10629`
+- Update to version 5.4
+  * Configurable TerminalInteractiveShell
+  * Define ``_repr_mimebundle_``
+  * Execution Heuristics
+  * Implement Display IDs
+  * Display function
+  * ``_mp_main_`` is not reloaded which fixes issues with multiprocessing.
+    :ghpull:`10523`
+  * Use user colorscheme in Pdb as well :ghpull:`10479`
+  * Faster shutdown. :ghpull:`10408` 
+  * Fix a crash in reverse search. :ghpull:`10371`
+  * added ``Completer.backslash_combining_completions`` boolean option to
+    deactivate backslash-tab completion that may conflict with windows path. 
+- Fix building on platforms without icoutils
+- Fix shebang rpmint errors.
+- Add note about LTS status and the end of Python 2 support.
+- Add python2- provides.
+- Neither HTML nor PDF documentation will ever work again,
+  so drop it.
+- Install icons.
+- Install .desktop file.
+- Update to IPython 5.3
+  * Fix a bug in ``set_next_input`` leading to a crash of terminal IPython.
+    :ghpull:`10231`, :ghissue:`10296`, :ghissue:`10229`
+  * Always wait for editor inputhook for terminal IPython :ghpull:`10239`,
+    :ghpull:`10240`
+  * Disable ``_ipython_display_`` in terminal :ghpull:`10249`, :ghpull:`10274`
+  * Update terminal colors to be more visible by default on windows
+    :ghpull:`10260`, :ghpull:`10238`, :ghissue:`10281`
+  * Add Ctrl-Z shortcut (suspend) in terminal debugger :ghpull:`10254`,
+    :ghissue:`10273`
+  * Indent on new line by looking at the text before the cursor :ghpull:`10264`,
+    :ghpull:`10275`, :ghissue:`9283`
+  * Update QtEventloop integration to fix some matplotlib integration issues
+    :ghpull:`10201`, :ghpull:`10311`, :ghissue:`10201`
+  * Respect completions display style in terminal debugger :ghpull:`10305`,
+    :ghpull:`10313`
+  * Add a config option ``TerminalInteractiveShell.extra_open_editor_shortcuts``
+    to enable extra shortcuts to open the input in an editor. These are :kbd:`v`
+    in vi mode, and :kbd:`C-X C-E` in emacs mode (:ghpull:`10330`).
+    The :kbd:`F2` shortcut is always enabled.
+- Update to IPython 5.2.2
+  * Fix error when starting with ``IPCompleter.limit_to__all__`` configured.
+- Update to IPython 5.2.1
+  * Fix tab completion in the debugger. :ghpull:`10223`
+- Update to IPython 5.2
+  * restore IPython's debugger to raise on quit. :ghpull:`10009`
+  * The configuration value ``c.TerminalInteractiveShell.highlighting_style`` can
+    now directly take a class argument for custom color style. :ghpull:`9848`
+  * Correctly handle matplotlib figures dpi :ghpull:`9868`
+  * Deprecate ``-e`` flag for the ``%notebook`` magic that had no effects.
+    :ghpull:`9872`
+  * You can now press F2 while typing at a terminal prompt to edit the contents
+    in your favourite terminal editor. Set the :envvar:`EDITOR` environment
+    variable to pick which editor is used. :ghpull:`9929`
+  * sdists will now only be ``.tar.gz`` as per upstream PyPI requirements.
+    :ghpull:`9925`
+  * :any:`IPython.core.debugger` have gained a ``set_trace()`` method for
+    convenience. :ghpull:`9947`
+  * The 'smart command mode' added to the debugger in 5.0 was removed, as more
+    people preferred the previous behaviour. Therefore, debugger commands such as
+    ``c`` will act as debugger commands even when ``c`` is defined as a variable.
+    :ghpull:`10050`
+  * Fixes OS X event loop issues at startup, :ghpull:`10150`
+  * Deprecate the ``%autoindent`` magic. :ghpull:`10176`
+  * Emit a :any:`DeprecationWarning` when setting the deprecated
+    ``limit_to_all`` option of the completer. :ghpull:`10198`
+  * The :cellmagic:`capture` magic can now capture the result of a cell (from an
+    expression on the last line), as well as printed and displayed output.
+    :ghpull:`9851`.
+- Update to IPython 5.1
+  * Broken ``%timeit`` on Python2 due to the use of ``__qualname__``. :ghpull:`9804`
+  * Restore ``%gui qt`` to create and return a ``QApplication`` if necessary. :ghpull:`9789`
+  * Don't set terminal title by default. :ghpull:`9801`
+  * Preserve indentation when inserting newlines with ``Ctrl-O``. :ghpull:`9770`
+  * Restore completion in debugger. :ghpull:`9785`
+  * Deprecate ``IPython.core.debugger.Tracer()`` in favor of simpler, newer, APIs. :ghpull:`9731`
+  * Restore ``NoOpContext`` context manager removed by mistake, and add `DeprecationWarning`. :ghpull:`9765`
+  * Add option allowing ``Prompt_toolkit`` to use 24bits colors. :ghpull:`9736`
+  * Fix for closing interactive matplotlib windows on OS X. :ghpull:`9854`
+  * An embedded interactive shell instance can be used more than once. :ghpull:`9843`
+  * More robust check for whether IPython is in a terminal. :ghpull:`9833`
+  * Better pretty-printing of dicts on PyPy. :ghpull:`9827`
+  * Some coloured output now looks better on dark background command prompts in Windows.
+    :ghpull:`9838`
+  * Improved tab completion of paths on Windows . :ghpull:`9826`
+  * Fix tkinter event loop integration on Python 2 with ``future`` installed. :ghpull:`9824`
+  * Restore ``Ctrl-\`` as a shortcut to quit IPython.
+  * Make ``get_ipython()`` accessible when modules are imported by startup files. :ghpull:`9818`
+  * Add support for running directories containing a ``__main__.py`` file with the
+    ``ipython`` command. :ghpull:`9813`
+- Update to IPython 5.0
+  + IPython 5 features a major upgrade to the terminal interface, bringing live
+    syntax highlighting as you type, proper multiline editing and multiline paste,
+    and tab completions that don't clutter up your history.
+  + Backwards incompatible changes
+    * The ``%install_ext`` magic function, deprecated since 4.0, has now been deleted.
+      You can distribute and install extensions as packages on PyPI.
+    * Callbacks registered while an event is being handled will now only be called
+      for subsequent events; previously they could be called for the current event.
+      Similarly, callbacks removed while handling an event *will* always get that
+      event. See :ghissue:`9447` and :ghpull:`9453`.
+    * Integration with pydb has been removed since pydb development has been stopped
+      since 2012, and pydb is not installable from PyPI.
+    * The ``autoedit_syntax`` option has apparently been broken for many years.
+      It has been removed.
+    * The overhaul of the terminal interface will probably cause a range of minor
+      issues for existing users.
+    * IPython no longer uses readline configuration (``~/.inputrc``). We hope that
+      the functionality you want (e.g. vi input mode) will be available by configuring
+      IPython directly (see :doc:`/config/options/terminal`).
+    * The ``PromptManager`` class has been removed, and the prompt machinery simplified.
+    * There are new options to configure the colours used in syntax highlighting.
+      We have tried to integrate them with our classic  ``--colors`` option and
+     ``%colors`` magic, but there's a mismatch in possibilities, so some configurations
+     may produce unexpected results. See :ref:`termcolour` for more information.
+    * The new interface is not compatible with Emacs 'inferior-shell' feature. To
+      continue using this, add the ``--simple-prompt`` flag to the command Emacs
+      runs. This flag disables most IPython features, relying on Emacs to provide
+      things like tab completion.
+  + Provisional Changes
+    * When running via the Jupyter notebook interfaces, or other compatible client,
+      you can enable rich documentation experimental functionality:
+      When the ``docrepr`` package is installed setting the boolean flag
+      ``InteractiveShell.sphinxify_docstring`` to ``True``, will process the various
+      object through sphinx before displaying them (see the ``docrepr`` package
+      documentation for more information.
+  + Deprecated Features
+    * ``hooks.fix_error_editor`` seems unused and is pending deprecation.
+    * `IPython/core/excolors.py:ExceptionColors` is  deprecated.
+    * `IPython.core.InteractiveShell:write()` is deprecated; use `sys.stdout` instead.
+    * `IPython.core.InteractiveShell:write_err()` is deprecated; use `sys.stderr` instead.
+    * The `formatter` keyword argument to `Inspector.info` in `IPython.core.oinspec` has no effect.
+    * The `global_ns` keyword argument of IPython Embed was deprecated, and has no effect. Use `module` keyword argument instead.
+- Update to IPython 4.2
+  * Fix ``ipython -i`` on errors, which was broken in 4.1.
+  * The delay meant to highlight deprecated commands that have moved to jupyter has been removed.
+  * Improve compatibility with future versions of traitlets and matplotlib.
+  * Use stdlib :func:`python:shutil.get_terminal_size` to measure terminal width when displaying tracebacks
+    (provided by ``backports.shutil_get_terminal_size`` on Python 2).
+- Update to IPython 4.1.2
+  * fixes installation issues with some versions of setuptools.
+- do not Recommend jupyter_nbconvert (which pulls in texlive)
+- specfile:
+  * update copyright year
+  * Simplify tests for determining whether to build pdf documentation
+- update to version 4.1.1:
+  * Backport #9209: Don't import IPython to check version number in
+    setup
+- Update to 4.1.0
+  * Release February, 2016. IPython 4.1 contain mostly bug fixes.
+    It though contain a few improvement.
+  * IPython debugger (IPdb) now supports the number of context
+    lines for the where (and w) commands. The context keyword is
+    also available in various APIs. See PR :ghpull:`9097`
+  * YouTube video will now show thumbnail when exported to a media
+    that do not support video. (:ghpull:`9086`)
+  * Add warning when running ipython &lt;subcommand&gt; when subcommand
+    is deprecated. jupyter should now be used.
+  * Code in %pinfo (also known as ??) are now highlighter
+    (:ghpull:`8947`)
+  * %aimport now support module completion. (:ghpull:`8884`)
+  * ipdb output is now colored ! (:ghpull:`8842`)
+  * Add ability to transpose columns for completion:
+    (:ghpull:`8748`)
+  * Many many docs improvements and bug fixes
+- update to version 4.0.3:
+  * Python 3.5 bug in that could crash during shutdown, triggered by
+    deprecations in traitlets 4.1.
+  * Typo in deprecation message for nbconvert
+- update to version 4.0.2:
+  * Fix backward-compatiblity shim for &quot;IPython.Config&quot;, which
+    should have been deprecated instead of removed. This will be
+    removed in 5.0.
+- update to version 4.0.1:
+  * Installation on some systems
+  * Compatibility with CPython 3.4.4
+  * Compatibility with Qt5
+- Build documentation
+  This is in a separate spec file to avoid dependency loops
+- Obsolete IPython
+- Split the iptest executable into its own subpackage
+  This has a bunch of testing dependencies that are not otherwise
+  necessary.
+- Add conflict with older versions of IPython
+- Initial version
+</comment>
+    <requestid>698301</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c1e8bef3899e44cab3129e0e41480518</srcmd5>
+    <version>7.6.0</version>
+    <time>1562590875</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.6.0
+  IPython 7.6.0 contains a couple of bug fixes and number of small features
+  additions as well as some compatibility with the current development version of
+  Python 3.8.
+  * Add a ``-l`` option to :magic:`psearch` to list the available search
+    types.
+  * Support ``PathLike`` for ``DisplayObject`` and ``Image``.
+  * Configurability of timeout in the test suite for slow platforms.
+  * Accept any casing for matplotlib backend.
+  * Properly skip test that requires numpy to be installed
+  * More support for Python 3.8 and positional only arguments (pep570)
+  * Unicode names for the completion are loaded lazily on first use which
+    should decrease startup time.
+  * Autoreload now update the types of reloaded objects; this for example allow
+    pickling of reloaded objects.
+  * Fix a big where ``%%time`` magic would suppress cell output.
+- Update to 7.6.0
+  IPython 7.6.0 contains a couple of bug fixes and number of small features
+  additions as well as some compatibility with the current development version of
+  Python 3.8.
+  * Add a ``-l`` option to :magic:`psearch` to list the available search
+    types.
+  * Support ``PathLike`` for ``DisplayObject`` and ``Image``.
+  * Configurability of timeout in the test suite for slow platforms.
+  * Accept any casing for matplotlib backend.
+  * Properly skip test that requires numpy to be installed
+  * More support for Python 3.8 and positional only arguments (pep570)
+  * Unicode names for the completion are loaded lazily on first use which
+    should decrease startup time.
+  * Autoreload now update the types of reloaded objects; this for example allow
+    pickling of reloaded objects.
+  * Fix a big where ``%%time`` magic would suppress cell output.
+</comment>
+    <requestid>713120</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>89d17a85323a415a7df9a9ce441fcb66</srcmd5>
+    <version>7.7.0</version>
+    <time>1564483061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719016</requestid>
+  </revision>
+</revisionlist>

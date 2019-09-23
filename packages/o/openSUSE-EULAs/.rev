@@ -1,0 +1,216 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1359740d96d5fe4cb035d3aea43cc4d0</srcmd5>
+    <version>12.1</version>
+    <time>1319823553</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>89611</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7650294126af915280b87dbf9a387260</srcmd5>
+    <version>12.1</version>
+    <time>1324831047</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>97506</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>7650294126af915280b87dbf9a387260</srcmd5>
+    <version>12.1</version>
+    <time>1340183750</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>7650294126af915280b87dbf9a387260</srcmd5>
+    <version>12.1</version>
+    <time>1359109533</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>7650294126af915280b87dbf9a387260</srcmd5>
+    <version>12.1</version>
+    <time>1379663413</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e068cab9be1d19a89bb62a0b14704381</srcmd5>
+    <version>13.2</version>
+    <time>1405573070</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240207</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>e068cab9be1d19a89bb62a0b14704381</srcmd5>
+    <version>13.2</version>
+    <time>1409302025</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>541cdb85586282be397e3013b24d58bb</srcmd5>
+    <version>13.2</version>
+    <time>1424436648</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286406</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bf1f19504aad961c0aba2c9098abd867</srcmd5>
+    <version>84.87.20161027.1389026</version>
+    <time>1477644184</time>
+    <user>dimstar_suse</user>
+    <comment>- Move sources to git
+- Update licenses from packages
+- Reword Nouveau warning a bit
+- Add gstreamer-fluendo-mp3.en
+
+- Add Mesa-dri-nouveau 'license' text: warn users when installing
+  this driver of potential lockups (boo#1005323).</comment>
+    <requestid>437522</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f32546515e3b880c79c1921280eddce3</srcmd5>
+    <version>84.87.20161031.287d9d4</version>
+    <time>1478167807</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20161031.287d9d4:
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Persian)
+  * Use --template when using po2txt (boo#1007788)
+
+- don't build translations in staging to avoid pulling in translate-toolkit.
+- Update to version 84.87.20161028.5cd48e2:
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Greek)
+  * Use LICENSES for installation
+
+- Update to version 84.87.20161028.21cf4b2:
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Greek)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Persian)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Ukrainian)</comment>
+    <requestid>438066</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9d50852971a9b15c40d5692feb4141dd</srcmd5>
+    <version>84.87.20161106.e41d147</version>
+    <time>1478780112</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20161106.e41d147:
+  * Translated using Weblate (Arabic)</comment>
+    <requestid>439241</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6257627265a461ef47a50c933e8283d4</srcmd5>
+    <version>84.87.20170321.17c4011</version>
+    <time>1497943989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20170321.17c4011:
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Chinese (China))</comment>
+    <requestid>501782</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e53bde40c1d20ba254fa148463e046c2</srcmd5>
+    <version>84.87.20170615.dcb55c2</version>
+    <time>1500274987</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510433</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5429b7762302398fbfbaa922d457c125</srcmd5>
+    <version>84.87.20170717.0223e19</version>
+    <time>1501406705</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20170717.0223e19:
+  * Added translation using Weblate (Norwegian Nynorsk)
+  * Translated using Weblate (German)</comment>
+    <requestid>510981</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>44981f3b0bfdfe811a0df3320b0b53e7</srcmd5>
+    <version>84.87.20180313.50c706a</version>
+    <time>1523127226</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20180313.50c706a:
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Norwegian Nynorsk)</comment>
+    <requestid>593942</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0cf835ea83e192a1cfca627af056758a</srcmd5>
+    <version>84.87.20180407.22def0a</version>
+    <time>1524400372</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20180407.22def0a:
+  * Translated using Weblate (Hindi)
+  * Added translation using Weblate (Hindi)</comment>
+    <requestid>596993</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4fc0816f30bc9e289f1bfc6457a160e2</srcmd5>
+    <version>84.87.20180424.73f53b3</version>
+    <time>1524741828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600660</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0e83e84eae311a714b02ff7ecddc6097</srcmd5>
+    <version>84.87.20180504.b9673e2</version>
+    <time>1526022820</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20180504.b9673e2:
+  * add license for steamcmd
+  * remove fluendo licenses
+  * Translated using Weblate (Greek)</comment>
+    <requestid>605431</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fe0da247e8d60f4ead7694a74f81f870</srcmd5>
+    <version>84.87.20180512.b26930f</version>
+    <time>1526462669</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20180512.b26930f:
+  * Translated using Weblate (Chinese (China))
+  * Added translation using Weblate (French)
+  * Translated using Weblate (French)
+</comment>
+    <requestid>606976</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f7c4958a41d105a4adbab4336991f28b</srcmd5>
+    <version>84.87.20180711.9c1911c</version>
+    <time>1550149958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673565</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>78a69d312c92815d3d62002771134969</srcmd5>
+    <version>84.87.20190314.743685c</version>
+    <time>1553699659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688304</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a27b9a490b5b119530502c87d776595e</srcmd5>
+    <version>84.87.20190503.6ae4bbd</version>
+    <time>1557263560</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701048</requestid>
+  </revision>
+</revisionlist>

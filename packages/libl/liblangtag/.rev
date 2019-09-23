@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>46d1be1059d6ea22f709684896c306a2</srcmd5>
+    <version>0.4.0</version>
+    <time>1352968967</time>
+    <user>coolo</user>
+    <comment>Package required by libreoffice, run no.3 :-)</comment>
+    <requestid>141316</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>46d1be1059d6ea22f709684896c306a2</srcmd5>
+    <version>0.4.0</version>
+    <time>1359109297</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>128c6dc029aa91f8dd0da217f65efdbf</srcmd5>
+    <version>0.5.1</version>
+    <time>1368450467</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174813</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>128c6dc029aa91f8dd0da217f65efdbf</srcmd5>
+    <version>0.5.1</version>
+    <time>1379662993</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1c8f24ac3ecef98457cf8121f27d86d0</srcmd5>
+    <version>0.5.2</version>
+    <time>1380172122</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.5.2
+  * Various autootool fixes
+  * coverity fixes
+  * For more read up NEWS file</comment>
+    <requestid>200207</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>09f26cd696615df3add8a0e91dd70a54</srcmd5>
+    <version>0.5.3</version>
+    <time>1400006753</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.5.3:
+  * Various small fixes detailed in NEWS file</comment>
+    <requestid>233591</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ecdb0cc4eae2d4fba6311ebfb1d93244</srcmd5>
+    <version>0.5.3</version>
+    <time>1401685207</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>235561</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2337ca4ea82d450172468ac6d99d87fc</srcmd5>
+    <version>0.5.4</version>
+    <time>1406479610</time>
+    <user>coolo</user>
+    <comment>Lo 4.3.0.3 submission</comment>
+    <requestid>242304</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>2337ca4ea82d450172468ac6d99d87fc</srcmd5>
+    <version>0.5.4</version>
+    <time>1409301608</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3ab1ee527ec64d460421c319ec8e089f</srcmd5>
+    <version>0.5.7</version>
+    <time>1437059834</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>316602</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d2ec965e368d406fa65e2f050de9306a</srcmd5>
+    <version>0.5.8</version>
+    <time>1450860963</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.5.8:
+  * Fix the build requirement in pkgconfig file
+  * Make some header files public (fixes: issue#14)
+  * Fix test fail on SunOS
+  * Fix unknown node issue</comment>
+    <requestid>350177</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b17853c6091ce31a4ea05ee54bf3f01f</srcmd5>
+    <version>0.6.1</version>
+    <time>1475358665</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.6.1:
+  * Initialize databases just once.
+  * Support BCP47-like locale representation
+  * Use deprecation macros
+  * Add a lookup table to catch up a script/language from language/script
+  * Update to add more files into .gitignore
+  * Fix the behavior on lt_tag_transform() according to tr#35
+  * Fix a segfault if no territory or script is given to lt_tag_convert_from_locale_string()
+  * Add missing header file
+  * Add lt_db_set_val() to change the place of database
+  * Fix memory leaks
+  * missing gobject function for lt_relation_db thing
+  * Support the language alias for the canonicalization
+  * Fix lt_trie_keys() not working
+  * Fix OOM handling
+  * Improve the bootup time
+  * Add docs
+  * Update the library versioning</comment>
+    <requestid>430395</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>554e007429d53cd38cc6d817cfeec809</srcmd5>
+    <version>0.6.2</version>
+    <time>1528021764</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.6.2:
+  * use standard function
+  * fix leak in test</comment>
+    <requestid>613023</requestid>
+  </revision>
+</revisionlist>

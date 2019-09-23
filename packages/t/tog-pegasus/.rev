@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d0831df374bfeb546b1d6ec027ae343c</srcmd5>
+    <version>2.13.0</version>
+    <time>1427313917</time>
+    <user>dimstar_suse</user>
+    <comment>Adresses concerns raised in https://build.opensuse.org/request/show/292470</comment>
+    <requestid>292670</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9dd1c2ea06ec475c74712b40743b0585</srcmd5>
+    <version>2.14.1</version>
+    <time>1432159079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>308092</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ac98115f8704a303318ded2316c4d165</srcmd5>
+    <version>2.14.1</version>
+    <time>1434003766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>311420</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>de844ba94139a8954664c152f487d85d</srcmd5>
+    <version>2.14.1</version>
+    <time>1435652185</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>313786</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>d4a880b3c466efae940d057a00164977</srcmd5>
+    <version>2.14.1</version>
+    <time>1486635295</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452444</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>313da87ef880dad59a67fb0c35fe19eb</srcmd5>
+    <version>2.14.1</version>
+    <time>1490965690</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482342</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>f332f38ce5377965ae9d5df7dd005732</srcmd5>
+    <version>2.14.1</version>
+    <time>1512547118</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548091</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>ef0a1b3a14f5f1d1a995dc6c2f4dbb86</srcmd5>
+    <version>2.14.1</version>
+    <time>1536575531</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634671</requestid>
+  </revision>
+</revisionlist>

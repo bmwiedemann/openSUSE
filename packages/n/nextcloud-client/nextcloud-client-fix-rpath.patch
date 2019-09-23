@@ -1,0 +1,68 @@
+--- a/src/cmd/CMakeLists.txt
++++ b/src/cmd/CMakeLists.txt
+@@ -23,8 +23,13 @@ if(NOT BUILD_LIBRARIES_ONLY)
+    add_executable(${cmd_NAME}  ${cmd_SRC})
+ 	set_target_properties(${cmd_NAME} PROPERTIES
+ 	        RUNTIME_OUTPUT_DIRECTORY  ${BIN_OUTPUT_DIRECTORY} )
+-        set_target_properties(${cmd_NAME} PROPERTIES
+-		INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}/${APPLICATION_EXECUTABLE};${CMAKE_INSTALL_RPATH}" )
++	if(LIB_INSTALL_DIR MATCHES "^/")
++		set_target_properties(${cmd_NAME} PROPERTIES
++			INSTALL_RPATH "${LIB_INSTALL_DIR}/${APPLICATION_EXECUTABLE};${CMAKE_INSTALL_RPATH}" )
++	else()
++		set_target_properties(${cmd_NAME} PROPERTIES
++			INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}/${APPLICATION_EXECUTABLE};${CMAKE_INSTALL_RPATH}" )
++	endif()
+ 
+     target_link_libraries(${cmd_NAME} ocsync ${synclib_NAME} Qt5::Core Qt5::Network)
+ 
+--- a/src/crashreporter/CMakeLists.txt
++++ b/src/crashreporter/CMakeLists.txt
+@@ -29,7 +29,11 @@ if(NOT BUILD_LIBRARIES_ONLY)
+     target_include_directories(${CRASHREPORTER_EXECUTABLE} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+     set_target_properties(${CRASHREPORTER_EXECUTABLE} PROPERTIES AUTOMOC ON)
+     set_target_properties(${CRASHREPORTER_EXECUTABLE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY  ${BIN_OUTPUT_DIRECTORY} )
+-    set_target_properties(${CRASHREPORTER_EXECUTABLE} PROPERTIES INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}/${APPLICATION_EXECUTABLE}" )
++    if(LIB_INSTALL_DIR MATCHES "^/")
++        set_target_properties(${CRASHREPORTER_EXECUTABLE} PROPERTIES INSTALL_RPATH "${LIB_INSTALL_DIR}/${APPLICATION_EXECUTABLE}" )
++    else()
++        set_target_properties(${CRASHREPORTER_EXECUTABLE} PROPERTIES INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}/${APPLICATION_EXECUTABLE}" )
++    endif()
+     target_link_libraries(${CRASHREPORTER_EXECUTABLE}
+         crashreporter-gui
+         Qt5::Core Qt5::Widgets
+--- a/src/gui/CMakeLists.txt
++++ b/src/gui/CMakeLists.txt
+@@ -302,8 +302,13 @@ set_target_properties( ${APPLICATION_EXE
+         RUNTIME_OUTPUT_DIRECTORY  ${BIN_OUTPUT_DIRECTORY}
+ )
+ # Only relevant for Linux? On OS X it by default properly checks in the bundle directory next to the exe
+-set_target_properties( ${APPLICATION_EXECUTABLE} PROPERTIES
++if(LIB_INSTALL_DIR MATCHES "^/")
++    set_target_properties( ${APPLICATION_EXECUTABLE} PROPERTIES
++        INSTALL_RPATH "${LIB_INSTALL_DIR}/${APPLICATION_EXECUTABLE};${CMAKE_INSTALL_RPATH}" )
++else()
++    set_target_properties( ${APPLICATION_EXECUTABLE} PROPERTIES
+         INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}/${APPLICATION_EXECUTABLE};${CMAKE_INSTALL_RPATH}" )
++endif()
+ 
+ target_link_libraries( ${APPLICATION_EXECUTABLE} Qt5::Widgets Qt5::Network Qt5::Xml)
+ target_link_libraries( ${APPLICATION_EXECUTABLE} ${synclib_NAME} )
+--- a/src/libsync/CMakeLists.txt
++++ b/src/libsync/CMakeLists.txt
+@@ -128,8 +128,13 @@ set_target_properties( ${synclib_NAME}
+ 	SOVERSION ${MIRALL_SOVERSION}
+ 	RUNTIME_OUTPUT_DIRECTORY ${BIN_OUTPUT_DIRECTORY}
+ )
+-set_target_properties( ${synclib_NAME} PROPERTIES
+-	INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}/${APPLICATION_EXECUTABLE};${CMAKE_INSTALL_RPATH}" )
++if(LIB_INSTALL_DIR MATCHES "^/")
++    set_target_properties( ${synclib_NAME} PROPERTIES
++        INSTALL_RPATH "${LIB_INSTALL_DIR}/${APPLICATION_EXECUTABLE};${CMAKE_INSTALL_RPATH}" )
++else()
++    set_target_properties( ${synclib_NAME} PROPERTIES
++        INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}/${APPLICATION_EXECUTABLE};${CMAKE_INSTALL_RPATH}" )
++endif()
+ 
+ if(NOT BUILD_OWNCLOUD_OSX_BUNDLE)
+     install(TARGETS ${synclib_NAME}

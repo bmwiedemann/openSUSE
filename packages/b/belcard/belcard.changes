@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Fri Jul 21 12:20:04 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.2:
+  * Minor enhancements and bugfixes.
+- Remove belcard-1.0.1-fix-includedir.patch: fixed upstream.
+- Rebase belcard-fix-pkgconfig.patch.
+
+-------------------------------------------------------------------
+Sun Jul  2 14:21:11 UTC 2017 - sor.alexei@meowr.ru
+
+- Add belcard-1.0.1-fix-includedir.patch: Fix includedir
+  (from commit a515fda).
+- Improve belcard-fix-pkgconfig.patch and remove extra dependencies
+  from belcard-devel.
+
+-------------------------------------------------------------------
+Sun May 28 08:19:15 UTC 2017 - jengelh@inai.de
+
+- Rectify RPM groups, fix incomplete descriptions.
+
+-------------------------------------------------------------------
+Wed May 17 15:00:49 UTC 2017 - sor.alexei@meowr.ru
+
+- Initial package.

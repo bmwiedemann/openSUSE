@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Tue Jul  9 11:34:41 UTC 2019 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to version 0.4.7
+  * Added option to send gyroscope data to Citra and Cemu (Cemuhook support)
+  * Fixes in 0.4.7:
+  * Not minimizing to tray on start
+  * Issues when using stick simultaneously with lpad
+  * Crash in controller registration dialog if udev device has special symbols in name (thanks @Verequies)
+  * Trackball friction resets when set to zero
+
+-------------------------------------------------------------------
+Fri Dec 28 13:54:52 UTC 2018 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to version 0.4.6.1
+  * Backups created while converting profiles were not ignored by GUI nor when converting profiles, creating more and more backups every time application started.
+  * New in 0.4.6:
+  * Added support for Retroarch RemotePad protocol, which allows using mobile phone as additional controller. See this wiki page for more info.
+  * Added option to use shell command as condition in modeshift (#427)
+  * Fixes in 0.4.6:
+  * Proton (Steam Play) crashing scc-daemon (#435)
+
+-------------------------------------------------------------------
+Tue Nov 20 21:03:24 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix dependencies by means of introspection (boo#1116778):
+  + Add gobject-introspection BuildRequires: since the code is
+    written with gobject-introspection in mind, having the BR adds
+    a set of rpm provides/requires based on code inspection
+  + Drop typelib-1-0-Rsvg-2_0 requires: with g-i above in place,
+    this dependency is autodetected.
+  + Replace python-gobject requires with python-gobject-Gdk: since
+    this is a GUI tool, we need the Gdk/Gtk-part of pygobject in
+    plus.
+
+-------------------------------------------------------------------
+Sun Nov  4 17:59:24 UTC 2018 - seil0@mosad.xyz
+- Update to version 0.4.5
+  * On-screen keyboard can be now used with DS4 gamepad
+  * Improved editing profile using controller
+  * Allowed SVG custom menu icons
+  * Allowed displaying multiple OSD messages, with different font size and display time
+  * Fixes:
+  * Status icon displaying wrong application name and/or no image
+  * Status icon looks bad on hidpi screens
+  * With two displays, where one is rotated and other one is offseted horizontally (and Compiz is used on 3rd Friday in month while gray cat is in house), OSD menu with too many items is drawn partially off-screen
+  * Bumpers swapped with bluetooth driver
+  * More NixOS fixes
+  
+- dropped desktop-file.patch, fixed upstream
+
+-------------------------------------------------------------------
+Wed Jan 25 08:27:14 UTC 2017 - jengelh@inai.de
+
+- Fixes to descriptions
+
+-------------------------------------------------------------------
+Sun Jan 22 11:50:17 UTC 2017 - mailaender@opensuse.org
+
+- initial packaging of version 0.3.6.2
+

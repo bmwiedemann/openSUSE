@@ -1,0 +1,12 @@
+%% How to print, maybe with lp instead lpr, the priner
+%% name <foo> has to be replaced by a real printer name
+%% maybe the printer name found in $PRINTER
+%%
+%o | lpr -P<foo>
+%o | lp -P<foo>
+
+%% If your default is A4 uncomment the line with A4
+%% otherwise you may choose Letter as your default.
+%%
+%t A4
+%t Letter

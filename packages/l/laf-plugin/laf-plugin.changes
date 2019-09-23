@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Tue Sep 19 09:58:12 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9: specify java source and target level 1.6
+
+-------------------------------------------------------------------
+Mon Jul 21 10:43:55 UTC 2014 - tchvatal@suse.com
+
+- We do not need update-alternatives here.
+
+-------------------------------------------------------------------
+Tue Jul  8 10:12:53 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner and make it build properly with sle11
+
+-------------------------------------------------------------------
+Fri Apr 18 07:12:01 UTC 2014 - badshah400@gmail.com
+
+- Cleanup spec file
+  + Add copyright header
+  + Remove obsolete suse_version checks
+- Update License tag according to spdx.org guidelines. 
+
+-------------------------------------------------------------------
+Tue Dec 30 21:43:54 CET 2008 - lars@linux-schulserver.de
+
+- build for openSUSE-Education
+
+-------------------------------------------------------------------
+Fri Nov 14 00:00:00 CET 2008 - Toni Graffy <toni@links2linux.de> - 1.0-0.pm.1
+
+- update to 1.0 (Vile Weed)
+
+-------------------------------------------------------------------
+Sun Apr 20 00:00:00 CET 2008 - Toni Graffy <toni@links2linux.de> - 0.2-0.pm.3
+
+- build SuSE-11.0, corrected BuildRequires
+
+-------------------------------------------------------------------
+Wed Dec 27 00:00:00 CET 2007 - Toni Graffy <toni@links2linux.de> - 0.2-0.pm.2
+
+- build SuSE-10.2, corrected BuildRequires
+
+-------------------------------------------------------------------
+Sat Sep 16 00:00:00 CET 2006 - Toni Graffy <toni@links2linux.de> - 0.2-0.pm.1
+
+- build for packman
+
+-------------------------------------------------------------------
+Sat Mar 18 00:00:00 CET 2006 - oc2pus <oc2pus@arcor.de> - 0.2-0.oc2pus.1
+
+- update to 0.2
+- added enum-patch
+
+-------------------------------------------------------------------
+Fri Jan 13 00:00:00 CET 2006 - oc2pus <oc2pus@arcor.de> - 20060104-0.oc2pus.1
+
+- First packaged release
+

@@ -1,0 +1,56 @@
+From c8877881e4439325137b5209037e76835a09444d Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Thu, 5 Sep 2019 12:16:58 +0200
+Subject: [PATCH] Make sure information displayed on the about window are
+ available
+
+The AUTHORS,COPYING,LINKS,TRANSLATION files are parsed to populate the
+help/about window.
+
+We must ensure these files are always available (including on live CD).
+---
+ scribus/ui/about.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/scribus/ui/about.cpp b/scribus/ui/about.cpp
+index b70d1eb..d1a4f1b 100644
+--- a/scribus/ui/about.cpp
++++ b/scribus/ui/about.cpp
+@@ -179,7 +179,7 @@ About::About( QWidget* parent, AboutMode diaMode ) : QDialog( parent )
+ 	tabLayout->setSpacing( 6 );
+ 	tabLayout->setMargin( 10 );
+ 	authorView = new QTextBrowser( tab_2 );
+-	authorView->setHtml(About::parseAuthorFile(ScPaths::instance().docDir() + "AUTHORS"));
++	authorView->setHtml(About::parseAuthorFile(ScPaths::instance().shareDir() + "/aboutData/AUTHORS"));
+ 	tabLayout->addWidget( authorView );
+ 	tabWidget2->addTab( tab_2, tr("A&uthors"));
+ 
+@@ -189,14 +189,14 @@ About::About( QWidget* parent, AboutMode diaMode ) : QDialog( parent )
+ 	tabLayout_2->setSpacing( 6 );
+ 	tabLayout_2->setMargin( 10 );
+ 	transView = new QTextBrowser( tab_3);
+-	transView->setHtml(About::parseTranslationFile(ScPaths::instance().docDir() + "TRANSLATION"));
++	transView->setHtml(About::parseTranslationFile(ScPaths::instance().shareDir() + "/aboutData/TRANSLATION"));
+ 	tabLayout_2->addWidget( transView );
+ 	tabWidget2->addTab( tab_3, tr( "&Translations" ) );
+ 
+ 	/*! ONLINE tab (03/04/2004 petr vanek) */
+ 	tab_4 = new QWidget( tabWidget2 );
+ 	onlineView = new QTextBrowser( tab_4 );
+-	onlineView->setHtml(About::parseLinksFile(ScPaths::instance().docDir() + "LINKS"));
++	onlineView->setHtml(About::parseLinksFile(ScPaths::instance().shareDir() + "/aboutData/LINKS"));
+ 	onlineView->setOpenExternalLinks(true);
+ 	tabLayout_4 = new QHBoxLayout( tab_4 );
+ 	tabLayout_4->setSpacing( 6 );
+@@ -225,7 +225,7 @@ About::About( QWidget* parent, AboutMode diaMode ) : QDialog( parent )
+ 	textViewLicence = new QTextBrowser( tab_Licence);
+ 	licenceLayout->addWidget( textViewLicence );
+ 	
+-	QFile licenceFile(ScPaths::instance().docDir() + "/COPYING");
++	QFile licenceFile(ScPaths::instance().shareDir() + "/aboutData/COPYING");
+ 	if (!licenceFile.open(QIODevice::ReadOnly | QIODevice::Text))
+ 		textViewLicence->setPlainText(tr("Unable to open licence file. Please check your install directory or the Scribus website for licencing information.") );
+ 	else
+-- 
+2.23.0
+

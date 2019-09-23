@@ -1,0 +1,1470 @@
+-------------------------------------------------------------------
+Tue Jun 18 19:25:24 UTC 2019 - mgorse@suse.com
+
+- Update to version 1.16.0: 
+  + Highlights
+    - GStreamer WebRTC stack gained support for data channels for
+      peer-to-peer communication based on SCTP, BUNDLE support, as
+      well as support for multiple TURN servers.
+    - AV1 video codec support for Matroska and QuickTime/MP4
+      containers and more configuration options and supported
+      input formats for the AOMedia AV1 encoder
+    - Support for Closed Captions and other Ancillary Data in video
+    - Support for planar (non-interleaved) raw audio
+    - GstVideoAggregator, compositor and OpenGL mixer elements are
+      now in -base
+    - New alternate fields interlace mode where each buffer carries
+      a single field
+    - WebM and Matroska ContentEncryption support in the Matroska
+      demuxer
+    - new WebKit WPE-based web browser source element
+    - Video4Linux: HEVC encoding and decoding, JPEG encoding, and
+      improved dmabuf import/export
+    - Hardware-accelerated Nvidia video decoder gained support for
+      VP8/VP9 decoding, whilst the encoder gained support for
+      H.265/HEVC encoding.  
+    - Many improvements to the Intel Media SDK based
+      hardware-accelerated video decoder and encoder plugin (msdk):
+      dmabuf import/export for zero-copy integration with other
+      components; VP9 decoding; 10-bit HEVC encoding; video
+      post-processing (vpp) support including deinterlacing; and
+      the video decoder now handles dynamic resolution changes.
+    - The ASS/SSA subtitle overlay renderer can now handle multiple
+      subtitles that overlap in time and will show them on screen
+      simultaneously
+    - The Meson build is now feature-complete (*) and it is now the
+      recommended build system on all platforms. The Autotools
+      build is scheduled to be removed in the next cycle.
+    - The GStreamer Rust bindings and Rust plugins module are now
+      officially part of upstream GStreamer.
+    - The GStreamer Editing Services gained a gesdemux element that
+      allows directly playing back serialized edit list with
+      playbin or (uri)decodebin
+    - Many performance improvements
+- Add meson support, but disable because plugin documentation
+  currently isn't built.
+
+-------------------------------------------------------------------
+Fri May 31 22:12:11 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.5:
+  + sid: Fix cross-compilation by using AC_TRY_LINK instead of
+    AC_TRY_RUN.
+  + x264: Only enable dynamic loading code for x264 before v253.
+
+-------------------------------------------------------------------
+Wed Oct  3 15:47:34 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.4:
+  + Bugfix release, please see .changes in gstreamer main package.
+
+-------------------------------------------------------------------
+Wed Sep 26 20:26:18 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.3:
+  + Bugfix release, please see .changes in gstreamer main package. 
+
+-------------------------------------------------------------------
+Mon Jul 23 13:37:38 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.2:
+  + Update docs.
+  + asfdemux: Remove 0.10 code.
+  + asfdemux: Only send flush event on seeking flushes.
+
+-------------------------------------------------------------------
+Sun May 20 09:31:31 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.1:
+  + GstPad: Fix race condition causing the same probe to be called
+    multiple times
+  + Fix occasional deadlocks on windows when outputting debug
+    logging
+  + Fix debug levels being applied in the wrong order
+  + GIR annotation fixes for bindings
+  + audiomixer, audioaggregator: fix some negotiation issues
+  + gst-play-1.0: fix leaving stdin in non-blocking mode after exit
+  + flvmux: wait for caps on all input pads before writing header
+    even if source is live
+  + flvmux: don't wake up the muxer unless there is data, fixes
+    busy looping if there's no input data
+  + flvmux: fix major leak of input buffers
+  + rtspsrc, rtsp-server: revert to RTSP RFC handling of
+    sendonly/recvonly attributes
+  + rtpvrawpay: fix payloading with very large mtu sizes where
+    everything fits into a single RTP packet
+  + v4l2: Fix hard-coded enabled v4l2 probe on Linux/ARM
+  + v4l2: Disable DMABuf for emulated formats when using libv4l2
+  + v4l2: Always set colorimetry in S_FMT
+  + asfdemux: Set stream-format field for H264 streams and handle
+    H.264 in bytestream format
+  + x265enc: Fix tagging of keyframes on output buffers
+  + ladspa: Fix critical during plugin load on Windows
+  + decklink: Fix COM initialisation on Windows
+  + h264parse: fix re-use across pipeline stop/restart
+  + mpegtsmux: fix force-keyframe event handling and PCR/PMT
+    changes that would confuse some players with generated HLS
+    streams
+  + adaptivedemux: Support period change in live playlist
+  + rfbsrc: Fix support for applevncserver and support NULL pool in
+    decide_allocation
+  + jpegparse: Fix APP1 marker segment parsing
+  + h265parse: Make caps writable before modifying them, fixes
+    criticals
+  + fakevideosink: request an extra buffer if enable-last-sample is
+    enabled
+  + wasapisrc: Don't provide a clock based on WASAPI's clock
+  + wasapi: Only use audioclient3 when low-latency, as it might
+    otherwise glitch with slow CPUs or VMs
+  + wasapi: Don't derive device period from latency time, should
+    make it more robust against glitches
+  + audiolatency: Fix wave detection in buffers and avoid bogus pts
+    values while starting
+  + msdk: fix plugin load on implementations with only HW support
+  + msdk: dec: set framerate to the driver only if provided, not in
+    0/1 case
+  + msdk: Don't set extended coding options for JPEG encode
+  + rtponviftimestamp: fix state change function init/reset causing
+    races/crashes on shutdown
+  + decklink: fix initialization failure in windows binary
+  + ladspa: Fix critical warnings during plugin load on Windows and
+    fix dependencies in meson build
+  + gl: fix cross-compilation error with viv-fb
+  + qmlglsink: make work with eglfs_kms
+  + rtspclientsink: Don't deadlock in preroll on early close
+  + rtspclientsink: Fix client ports for the RTCP backchannel
+  + rtsp-server: Fix session timeout when streaming data to client
+    over TCP
+  + vaapiencode: h264: find best profile in those available, fixing
+    negotiation errors
+  + vaapi: remove custom GstGL context handling, use GstGL instead.
+    Fixes GL Context sharing with WebkitGtk on wayland
+  + gst-editing-services: various fixes
+  + gst-python: bump pygobject req to 3.8;
+    fix GstPad.set_query_function(); dist autogen.sh and
+    configure.ac in tarball
+  + g-i: pick up GstVideo-1.0.gir from local build directory in
+    GstGL build
+  + g-i: update constant values for bindings
+  + avoid duplicate symbols in plugins across modules in static
+    builds
+  + ... and many, many more!
+
+-------------------------------------------------------------------
+Mon Apr 16 21:05:38 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.0:
+  + Highlights:
+    - WebRTC support: real-time audio/video streaming to and from
+      web browsers;
+    - Experimental support for the next-gen royalty-free AV1 video
+      codec
+    - Video4Linux: encoding support, stable element names and
+      faster device probing;
+    - Support for the Secure Reliable Transport (SRT) video
+      streaming protocol;
+    - RTP Forward Error Correction (FEC) support (ULPFEC);
+    - RTSP 2.0 support in rtspsrc and gst-rtsp-server;
+    - ONVIF audio backchannel support in gst-rtsp-server and
+      rtspsrc;
+    - playbin3 gapless playback and pre-buffering support;
+    - Tee, our stream splitter/duplication element, now does
+      allocation query aggregation which is important for efficient
+      data handling and zero-copy;
+    - QuickTime muxer has a new prefill recording mode that allows
+      file import in Adobe Premiere and FinalCut Pro while the file
+      is still being written;
+    - rtpjitterbuffer fast-start mode and timestamp offset
+      adjustment smoothing;
+    - souphttpsrc connection sharing, which allows for connection
+      reuse, cookie sharing, etc;
+    - nvdec: new plugin for hardware-accelerated video decoding
+      using the NVIDIA NVDEC API;
+    - Adaptive DASH trick play support;
+    - ipcpipeline: new plugin that allows splitting a pipeline
+      across multiple processes;
+    - Major gobject-introspection annotation improvements for large
+      parts of the library API;
+    - GStreamer C# bindings have been revived and seen many updates
+      and fixes;
+    - The externally maintained GStreamer Rust bindings had many
+      usability improvements and cover most of the API now.
+      Coinciding with the 1.14 release, a new release with the 1.14
+      API additions is happening.
+  + Updated translations.
+- Drop libmp3lame-devel, pkgconfig(libmpg123) and
+  pkgconfig(twolame) BuildRequires, moved to gst-plugins-good, so
+  no longer needed nor used here.
+
+-------------------------------------------------------------------
+Thu Mar 29 12:22:25 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.12.5:
+  + Bugs fixed: bgo#792111.
+- Drop gst-ugly-amrnwbdec-fixes.patch and
+  gst-x264enc-fix-build-x264-multiple-bit-depths.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Mon Mar 26 23:18:19 UTC 2018 - bjorn.lie@gmail.com
+
+- Add gst-x264enc-fix-build-x264-multiple-bit-depths.patch:
+  x264enc: fix build with newer x264 with support for multiple bit
+  depths (bgo#792111).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:31:49 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb 21 10:52:12 UTC 2018 - tchvatal@suse.com
+
+- Run over with spec-cleaner
+- Remove conditions around package definition, this makes
+  source_validator happy as orig-addons are not built in openSUSE
+  yet they are mentioned in baselibs.conf
+
+-------------------------------------------------------------------
+Tue Feb 20 09:19:36 UTC 2018 - bjorn.lie@gmail.com
+
+- Move pkgconfig(libmpeg2) BuildRequires and resulting plugin out
+  of conditional build, since it is now available in openSUSE.
+
+-------------------------------------------------------------------
+Tue Jan 23 18:49:26 UTC 2018 - bjorn.lie@gmail.com
+
+- Add gst-ugly-amrnwbdec-fixes.patch: Fixes for amr plugins, only
+  built on third party.
+
+-------------------------------------------------------------------
+Thu Dec 14 21:32:36 UTC 2017 - zaitor@opensuse.org
+
+- Drop obsolete
+  gst-plugins-ugly:%%{_libdir}/gstreamer-%%{gst_branch}/libgstmad.so
+  Provides from orig-addon sub-package, no longer true nor needed.
+
+-------------------------------------------------------------------
+Mon Dec 11 12:44:42 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.4:
+  + Bugs fixed: bgo#791301, bgo#788119, bgo#787817, bgo#787056,
+    bgo#787014.
+
+-------------------------------------------------------------------
+Thu Nov 30 10:15:11 UTC 2017 - zaitor@opensuse.org
+
+- Add python3-xml BuildRequires as it is needed for xml support.
+
+-------------------------------------------------------------------
+Wed Nov 29 14:36:46 UTC 2017 - dimstar@opensuse.org
+
+- Switch to python3:
+  + Replace python-base BuildRequires with python3-base.
+  + Export PYTHON=/usr/bin/python3 before calling configure.
+
+-------------------------------------------------------------------
+Mon Sep 18 21:23:05 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.3:
+  + Bugs fixed: bgo#784982, bgo#785388, bgo#787398.
+- Drop gst-ugly-fix-caps-and-memory-leaks.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Fri Aug 25 19:04:04 UTC 2017 - zaitor@opensuse.org
+
+- Add gst-ugly-fix-caps-and-memory-leaks.patch:
+  + x264enc: fix caps leak (bgo#784982).
+  + mpg123audiodec: fix caps leak (bgo#784982).
+  + dvdreadsrc: Fix string memory leak (bgo#785388).
+- Run spec-cleaner, modernize spec, add pkgconfig BuildRequires,
+  update make and makeinstall macros.
+- Replace glib2-devel, gstreamer-devel and
+  gstreamer-plugins-base-devel with pkgconfig(glib-2.0),
+  pkgconfig(gmodule-no-export-2.0), pkgconfig(gstreamer-1.0) and
+  pkgconfig(gstreamer-plugins-base-1.0) BuildRequires, align with
+  what configure looks for.
+- Drop conditional valgrind-devel BuildRequires, this type of
+  debugging is probably not done by users of binary packages.
+
+-------------------------------------------------------------------
+Thu Aug 24 19:31:39 UTC 2017 - zaitor@opensuse.org
+
+- Move libmp3lame-devel and pkgconfig(twolame) BuildRequires from
+  conditional BUILD_ORIG section to normal build, these
+  dependencies are now available in openSUSE.
+
+-------------------------------------------------------------------
+Thu Jul 20 10:18:07 UTC 2017 - zaitor@opensuse.org
+
+- Drop conditional ENABLE_MPG123 and ENABLE_A52DEC defines and
+  hence pkgconfig(libmpg123) and liba52-devel BuildRequires from
+  BUILDORIG/orig-addon. libmpg123 and a52dec are now available in
+  all supported versions of openSUSE.
+- Drop obsolete automake BuildRequires, we do not carry any
+  patches.
+
+-------------------------------------------------------------------
+Sat Jul 15 21:53:05 UTC 2017 - zaitor@opensuse.org
+
+- Drop conditional patch
+  gstreamer-plugins-ugly-1.0.1-patched_liba52.patch, no longer
+  needed due to changes in a52dec.
+
+-------------------------------------------------------------------
+Fri Jul 14 11:48:25 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.2:
+  + asfdemux: Don't assume index is present at end of file.
+
+-------------------------------------------------------------------
+Wed Jun 28 13:07:20 UTC 2017 - tchvatal@suse.com
+
+- Kill the sidplay option so we could remove libsidplay1
+  * This is the only depending application and the libsidplay1
+    development and web itself died in 2006
+
+-------------------------------------------------------------------
+Wed Jun 21 08:42:12 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.1:
+  + Bugs fixed: bgo#783100.
+
+-------------------------------------------------------------------
+Thu May 25 12:50:12 UTC 2017 - zaitor@opensuse.org
+
+- Simplyfy the conditionals in our configure call.
+
+-------------------------------------------------------------------
+Tue May  9 09:55:27 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.0:
+  + Updated translations.
+- Changes from version 1.11.91:
+  + Bugs fixed: bgo#779249.
+- Changes from version 1.11.90:
+  + Bugs fixed: bgo#779329.
+
+-------------------------------------------------------------------
+Tue Apr 18 14:31:16 UTC 2017 - dimstar@opensuse.org
+
+- Conditionallize a52dec module building: in Tumbleweed, a52dec
+  is available and the module can thus be built directly now:
+  + Introduce variable ENABLE_A52DEC.
+  + Apply gstreamer-plugins-ugly-1.0.1-patched_liba52.patch when
+    BUILD_ORIG OR ENABLE_A52DEC is set.
+  + Unconditionally add
+    gstreamer-plugins-ugly-1.0.1-patched_liba52.patch to src.rpm.
+
+-------------------------------------------------------------------
+Tue Apr 18 13:45:14 UTC 2017 - dimstar@opensuse.org
+
+- Switch ENABLE_MPG123 to 1 for suse_version > 1320 (currently only
+  Tumbleweed): mpg123 is now available to the distro.
+
+-------------------------------------------------------------------
+Fri Feb 24 23:53:43 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.11.2:
+  + Bugs fixed: bgo#777903.
+- Replace libmpeg2-devel, libopencore-amr-devel, libtwolame-devel
+  and libx264-devel with pkgconfig(libmpeg2),
+  pkgconfig(opencore-amrwb), pkgconfig(twolame) and pkgconfig(x264)
+  BuildRequires: Align with what configure checks for.
+
+-------------------------------------------------------------------
+Thu Feb 23 18:59:17 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.11.1:
+  + Bugs fixed: bgo#751560, bgo#763297, bgo#775228, bgo#775411,
+    bgo#776140.
+- Move AUTHORS, NEWS, README, RELEASE, and REQUIREMENTS to doc sub
+  package.
+- Gstreamer-plugins-ugly now allows for disabling of internal
+  dependency free plugins, hence we now pass --disable-asfdemux
+  to configure, as that is the last internal plugin we disable.
+- Following the above drop pre_checkin.sh,
+  gstreamer-plugins-ugly-patch-source.sh and
+  gst-plugins-ugly-#version#-patched.tar.xz, we no longer need to
+  generate a patched tarball.
+- Stop rm'ing no longer present .so files during build.
+- Drop libmad-devel BuildRequires: The plugin have been removed by
+  upstream (libgstmpg123 is the replacement).
+- Drop gstreamer-revert-bogus-automake-version.patch: We no longer
+  use the patched tarball.
+- Following the above, drop automake and libtool BuildRequires and
+  stop passing autogen.sh to configure.
+- Add define ENABLE_MPG123  and conditional pkgconfig(mpg123)
+  BuildRequires, currently set to disabled (0). Build mp3 support
+  now that patents are expired. Using define so we can quickly
+  enable it, should the dependency be available in TW.
+- Apply gstreamer-plugins-ugly-CVE-2017-5847.patch always, as we
+  now use a different mode of disabling asfmuxer.
+
+-------------------------------------------------------------------
+Thu Feb 23 18:59:16 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.10.4 (CVE-2017-5847):
+  + Bugs fixed: bgo#777955.
+- Drop gstreamer-plugins-ugly-CVE-2017-5847.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sat Feb  4 20:21:14 UTC 2017 - zaitor@opensuse.org
+
+- Fix CVE-2017-5847 (boo#1023259):
+  + Add gstreamer-plugins-ugly-CVE-2017-5847.patch: asfdemux: Check
+    that we have enough data available before parsing
+    bool/uint extended content descriptors (bgo#777955).
+  + Only apply when using BUILD_ORIG, as we already remove this
+    part of the code (we build the patched tarball).
+
+-------------------------------------------------------------------
+Mon Jan 30 15:27:22 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.10.3 (CVE-2017-5838, boo#1023259):
+  + Bugs fixed: bgo#775515, bgo#777937.
+- Drop translation-update-upstream BuildRequires and stop passing
+  the macro: It's been disabled for a while due to beeing broken,
+  and SLE does not ship gstreamer-plugins-ugly anymore.
+
+-------------------------------------------------------------------
+Sat Dec  3 18:54:16 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.2:
+  + Bugs fixed: bgo#774846, bgo#775070.
+
+-------------------------------------------------------------------
+Sun Nov 27 17:37:24 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.1:
+  + Meson update.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov  2 23:44:23 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.0:
+  + Bugs fixed: bgo#773114, bgo#772159, bgo#770158, bgo#769610,
+    bgo#769418, bgo#765807, bgo#769116, bgo#763082.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 22 19:30:44 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.3 (boo#996937):
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 14 19:01:03 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.2:
+  + bgo#749066: asfdemux: can't seek back after reaching EOS in
+    push mode.
+  + bgo#766565: rdtmanager: fix clock leak.
+
+-------------------------------------------------------------------
+Tue May  3 17:40:30 UTC 2016 - zaitor@opensuse.org
+
+- Set define _experimental to 0, there are currently no
+  experimental plugins built, nor should we expose our users to
+  experimental plugins in the future.
+- Stop passing V=1 to make, we do debugging locally.
+- Drop obsolete clean section.
+
+-------------------------------------------------------------------
+Wed Apr 20 23:07:10 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.1:
+  + Updated translations.
+- Remove an obsolete source repack comment, we do it via
+  pre_checkin.sh now. Also properly escape a commented
+  translations-update call.
+
+-------------------------------------------------------------------
+Mon Apr 18 09:17:13 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Added installed (but unpackaged) file libgstmpg123.so on PMBS to
+  subpackage gstreamer-plugins-ugly-orig-addon.
+
+-------------------------------------------------------------------
+Sat Mar 26 20:08:33 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.0:
+  + Hardware-accelerated zero-copy video decoding on Android
+  + New video capture source for Android using the
+    android.hardware.Camera API.
+  + Windows Media reverse playback support (ASF/WMV/WMA).
+  + New tracing system provides support for more sophisticated
+    debugging tools.
+  + New high-level GstPlayer playback convenience API.
+  + Initial support for the new Vulkan API, see Matthew Waters'
+    blog post for more details.
+  + Improved Opus audio codec support: Support for more than two
+    channels; MPEG-TS demuxer/muxer can now handle Opus;
+    sample-accurate encoding/decoding/transmuxing with Ogg,
+    Matroska, ISOBMFF (Quicktime/MP4), and MPEG-TS as container;
+    new codec utility functions for Opus header and caps handling
+    in pbutils library. The Opus encoder/decoder elements were
+    also moved to gst-plugins-base (from -bad), and the opus RTP
+    depayloader/payloader to -good.
+  + GStreamer VAAPI module now released and maintained as part of
+    the GStreamer project.
+  + Asset proxy support in the GStreamer Editing Services.
+- Add pkgconfig(libmpg123) BuildRequires.
+
+-------------------------------------------------------------------
+Thu Jan 21 22:09:42 UTC 2016 - badshah400@gmail.com
+
+- Update to version 1.6.3:
+  + Fix regression in GL library that made glimagesink unsable on
+    Android.
+  + Integer arithmetic overflow in queue2 element that could break
+    buffering or cause crashes due to NULL pointer dereference.
+  + Fix crash in AAC/ADTS typefinder caused by reading more memory
+    than is available.
+  + Stop ignoring encoder errors in the VP8/VP9 encoders.
+  + Deprecate GstVideoEncoder GST_VIDEO_ENCODER_FLOW_DROPPED. It's
+    redudant and was never actually implemented.
+  + Ensure to store the correct video info in GstVideoBufferPool.
+  + Fix caps in rtspsrc when doing SRTP over interleaved TCP.
+  + Fix crash in pcap parser on 0-sized packets.
+  + Clear EOS flag in appsrc to allow reuse after EOS and
+    flushing.
+  + Ignore flushing streams in streamsynchronizer during stream
+    switches to fix problems caused by this in
+    gst-editing-services.
+  + Ignore tags and other metadata in WAV files after the "data"
+    chunk in PUSH mode to prevent them from being interpreted as
+    audio.
+  + Correctly use colorimetry in v4l2 only for YUV color formats.
+  + Set reserved bits in MPEG TS muxer to 1s.
+  + Fix calculation of SBC frame lengths.
+  + Fix output of the RTP JPEG2000 depayloader to have one frame
+    per buffer and crash in the OpenJPEG decoder on incomplete
+    frames.
+  + Update ffmpeg snapshot in gst-libav to 2.8.5.
+  + Memory leak fixes in scaletempo, the raw video RTP
+    depayloader, and in playsink related to audio/video filters.
+  + Fixes for error handling in the OSX audio plugin.
+  + Various gobject-introspection annotation fixes and additions.
+  + Compiler warning fixes for latest clang compiler.
+
+-------------------------------------------------------------------
+Wed Jan  6 15:26:15 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.6.2:
+  + Crashes in gst-libav with sinks that did not provide a buffer
+    pool but supported video metadata were fixed. This affected
+    d3dvideosink and some 3rd party sinks. Also related fixes for
+    crashes when a downstream buffer pool failed allocation.
+  + Big GL performance improvement on iOS by a factor of 2 by using
+    Apple's sync extension.
+  + Deadlocks in the DirectSound elements on Windows, and the
+    behaviour of its mute property were fixed.
+  + The Direct3D video sink does not crash anymore when minimizing
+    the window.
+  + The library soname generation on Android >= 6.0 was fixed,
+    which previously caused GStreamer to fail to load there.
+  + File related elements have large-file (>2GB) support on Android
+    now.
+  + gst-libav was updated to ffmpeg 2.8.3.
+  + Deserialization of custom events in the GDP depayloader was
+    fixed.
+  + Missing OpenGL context initialization in the Qt/QML video sink
+    was fixed in certain situations.
+  + Interoperability with some broken RTSP servers using HTTP
+    tunnel was improved.
+  + Various compilation fixes for Windows.
+  + Various smaller memory leak and other fixes in different
+    places.
+  + Bugs fixed: bgo#734098, bgo#738292, bgo#741608, bgo#753823,
+    bgo#755106, bgo#755222, bgo#755614, bgo#756028, bgo#756951,
+    bgo#757155, bgo#757264, bgo#757453, bgo#757454, bgo#757732,
+    bgo#757854, bgo#757873, bgo#757895, bgo#757924, bgo#757929,
+    bgo#757935, bgo#758029, bgo#758151, bgo#758204, bgo#758205,
+    bgo#758276, bgo#758285, bgo#758286, bgo#758337, bgo#758344,
+    bgo#758512, bgo#758620, bgo#758861, bgo#758912, bgo#758913,
+    bgo#758921, bgo#759019, bgo#759380.
+
+-------------------------------------------------------------------
+Wed Nov 25 18:06:50 UTC 2015 - malcolmlewis@opensuse.org
+
+- Add conditional for patch1, touching configure.ac with this patch
+  breaks BUILD_ORIG building.
+
+-------------------------------------------------------------------
+Sat Nov 21 13:57:38 UTC 2015 - olaf@aepfle.de
+
+- Refresh patches to apply.
+
+-------------------------------------------------------------------
+Sat Oct 31 03:45:28 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.6.1:
+  + Updated translations.
+- Add gstreamer-revert-bogus-automake-version.patch: Upstream
+  needed feature in automake 1.12, so for good measure they bumped
+  to 1.14 - revert that commit as we have at least 1.13.4.
+
+-------------------------------------------------------------------
+Fri Oct  2 09:14:15 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.6.0:
+  + For changelog, see mainpackage changes, everything is condensed
+    there.
+
+-------------------------------------------------------------------
+Fri Dec 26 11:43:10 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.5:
+  + asfdemux: Send duration query upstream first.
+  + Updated translations.
+- Fix Source: to point to patched source again.
+- Following above change, add autoconf and libtool BuildRequires
+  and pass NOCONFIGURE=1 before configure.
+
+-------------------------------------------------------------------
+Fri Nov 14 11:28:26 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.4:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 25 09:07:27 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.4.3:
+  + Bugs fixed: bgo#736060.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 28 20:10:32 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.1:
+  + x264: Fix colour inversion with YV12 format. It's the same as
+    I420 but with the U/V planes swapped.
+
+-------------------------------------------------------------------
+Mon Jul 21 17:15:08 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.4.0:
+  + Various API additions.
+  + New plugins and elements:
+    - v4l2videodec element for accessing hardware codecs on
+      platforms that make them accessible via V4L2.
+    - New downloadbuffer element that replaces the download
+      buffering feature of queue2.
+    - rtpstreampay and rtpstreamdepay elements for transmitting RTP
+      packets over a stream API (e.g. TCP) according to RFC 4571.
+    - rtprtx elements for standard compliant implementation of
+      retransmissions, integrated into the rtpmanager plugin.
+    - audiomixer element that mixes multiple audio streams together
+      into a single one while keeping synchronization.
+    - OpenNI2 plugin for 3D cameras like the Kinect camera.
+    - OpenEXR plugin for decoding high-dynamic-range EXR images.
+    - curlsshsink and curlsftpsink to write files via SSH/SFTP.
+    - videosignal, ivfparse and sndfile plugins ported from 0.10.
+    - avfvideosrc, vtdec and other elements were ported from 0.10
+      and are available on OS X and iOS now.
+  + Other changes:
+    - gst-libav now uses libav 10.1, and gained support for
+      H265/HEVC.
+    - Support for hardware codecs and special memory types has been
+      improved with bugfixes and feature additions in various
+      plugins and base classes.
+    - Various bugfixes and improvements to buffering in queue2 and
+      multiqueue elements.
+    - dvbsrc supports more delivery mechanisms and other features
+      now, including DVB S2 and T2 support.
+    - The MPEGTS library has support for many more descriptors.
+    - Major improvements to tsdemux and tsparse, especially time
+      and seeking related.
+    - souphttpsrc now has support for keep-alive connections,
+      compression, configurable number of retries and configuration
+      for SSL certificate validation.
+    - hlsdemux has undergone major refactoring and works more
+      reliable now and supports more HLS features like trick modes.
+    - dashdemux and mssdemux are now also pushing fragments
+      downstream while they're downloaded instead of waiting for
+      each fragment to finish.
+    - videoflip can automatically flip based on the orientation
+      tag.
+    - openjpeg supports the OpenJPEG2 API.
+    - waylandsink was refactored and should be more useful now.
+    - gst-rtsp-server supports SRTP and MIKEY now.
+    - gst-libav encoders are now negotiating any profile/level
+      settings with downstream via caps.
+    - Lots of fixes for coverity warnings all over the place.
+    - Negotiation related performance improvements.
+    - 800+ fixed bug reports.
+  + Things to look out for:
+    - The eglglessink element was removed and replaced by the
+      glimagesink element.
+    - The mfcdec element was removed and replaced by v4l2videodec.
+    - osxvideosink is only available in OS X 10.6 or newer.
+    - On Android the namespace of the automatically generated Java
+      class for initialization of GStreamer has changed from
+      com.gstreamer to org.freedesktop.gstreamer to prevent
+      namespace pollution.
+    - On iOS you have to update your gst_ios_init.h and
+      gst_ios_init.m in your projects from the one included in the
+      binaries if you used the GnuTLS GIO module before.
+- Package baselibs.conf.
+
+-------------------------------------------------------------------
+Fri Apr 25 12:22:19 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.2.4:
+  + mpeg2dec: do not reset the whole video info when setting size.
+  + Build fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb  9 21:00:07 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.2.3:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 31 18:12:53 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.2.2:
+  + Bugs fixed: bgo#710615.
+
+-------------------------------------------------------------------
+Mon Nov 11 14:13:52 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.2.1:
+  + Bugs fixed: bgo#684942, bgo#708940, bgo#710609.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 22 21:00:00 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.2.0:
+  + A bunch of API changes (new stable branch 1.2).
+  + New tool: gst-play-1.0 in gst-plugins-base for basic playback
+    testing on the command line.
+  + New plugins:
+    - mssdemux for Microsoft Smooth Streaming.
+    - dashdemux for DASH adaptive streaming protocol.
+    - bluez for interaction with Bluetooth devices.
+    - openjpeg for JPEG2000 decoding and encoding.
+    - daala for experimental Daala decoding and encoding.
+    - vpx plugin has experimental VP9 decoding and encoding
+      support.
+    - webp plugin for WebP decoding (encoding to be added later).
+    - Various others: yadif, srtp, sbc, fluidsynth, midiparse,
+      mfc, ivtv, accuraterip and audiofxbad.
+  + Moved plugins: dtmf, vp8rtp, scaletempo and rtpmux plugins are
+    now in gstreamer-plugins-good.
+  + Audio and Video related fixes.
+  + Other changes:
+    - gst-libav now uses libav 9.
+    - Static linking of plugins is supported now.
+    - rtspsrc: add support for NetClientClock.
+    - RTP retransmission / NACK support and big RTP jitterbuffer
+      improvements.
+    - SRTP and DTLS support.
+    - Changes to many elements and core to use the correct sticky
+      event order and also not lose any important sticky events
+      during flushing.
+    - >1000 fixed bug reports, and many other bug fixes and other
+      improvements everywhere that had no bug report.
+  + Notes:
+    - Single header includes for all libraries,
+      e.g. #include <gst/video/video.h>
+    - Stricter (correct) caps subset checking in some cases.
+    - x264enc now outputs data in byte-stream by default if
+      downstream has ANY caps.
+    - The MPEG TS demuxer posts messages contain the PMT, PAT,
+      etc, in a different format now.
+    - The GstContext API has changed between 1.1.4 and 1.1.90.
+
+-------------------------------------------------------------------
+Sat Aug 31 10:59:37 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.10:
+  + build: fix x264 version check in corner case.
+  + x264enc: consider subset relations of profiles when negotiating
+    output caps.
+  + Bugs fixed: bgo#705425.
+
+-------------------------------------------------------------------
+Sat Aug 17 13:50:23 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.9:
+  + mpeg2dec: fix crash on resolution changes (bgo#690701).
+
+-------------------------------------------------------------------
+Wed Aug 14 21:29:57 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.8:
+  + lamemp3enc: fix timestamping of outgoing buffers if the encoder
+    resamples internally, which fixes transcoding pipelines
+    deadlocking after a while.
+  + dvdreadsrc: correctly determine last chapter's duration.
+  + mpeg2dec: make the aspect ratio calculation more accurate.
+
+-------------------------------------------------------------------
+Sat Apr 27 09:36:27 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.0.7:
+  + x264enc plugin has a divide by zero error when framerate is
+    " 0/1 " (bgo#695728).
+
+-------------------------------------------------------------------
+Sat Mar 23 11:59:25 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.6:
+  + build: allow calling autogen.sh from out-of-tree.
+  + Bugs fixed: bgo#692857.
+
+-------------------------------------------------------------------
+Wed Jan  9 09:49:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.0.5:
+  + Fix build with automake 1.13.
+  + mpeg2dec: debug logging printf format fixes.
+
+-------------------------------------------------------------------
+Wed Dec 19 08:58:10 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.4:
+  + siddec: initialize debug category.
+
+-------------------------------------------------------------------
+Thu Nov 22 08:06:06 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.3:
+  + cdio: try to handle CD-TEXT in non-UTF8 encodings
+  + xingmux, siddec, dvdlpcmdec and dvdsubdec fixes
+  + Bugs fixed: bgo#686931, bgo#687192, bgo#687927.
+
+-------------------------------------------------------------------
+Fri Oct 26 13:13:13 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.2:
+  + dvdreadsrc: correctly set next cell when seeking to sector
+  + dvdreadsrc: update dvd event to enhanced approach as used in
+    mpegpsdemux
+  + dvdsubparse: send src caps when receiving sink caps
+  + Bugs fixed: bgo#686748.
+  
+-------------------------------------------------------------------
+Wed Oct 10 22:47:30 UTC 2012 - reddwarf@opensuse.org
+
+- Add gstreamer-plugins-ugly-1.0.1-patched_liba52.patch
+
+-------------------------------------------------------------------
+Tue Oct  9 19:33:23 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.1:
+  + x264enc: encoder latency fixes
+  + mpeg2dec: ignore transient decoding errors
+  + Bug fixed: bgo#685107.
+
+-------------------------------------------------------------------
+Fri Sep 28 20:26:23 UTC 2012 - dimstar@opensuse.org
+
+- Fix installation of BUILD_ORIG variant: remove no longer
+  available plugins (iec958, mpegaudioparse and mpegstream) from
+  the files section.
+
+-------------------------------------------------------------------
+Mon Sep 24 14:52:05 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.0:
+  + Minor bugfixes.
+
+-------------------------------------------------------------------
+Tue Sep 18 08:00:03 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.99:
+  + Updated documentation.
+
+-------------------------------------------------------------------
+Fri Sep 14 14:52:58 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.94:
+  + Bugs fixed: bgo#356882, bgo#675762, bgo#675769, bgo#677619,
+    bgo#678543, bgo#679443, bgo#679472, bgo#679838, bgo#680194,
+    bgo#680279, bgo#680536, bgo#681291.
+
+-------------------------------------------------------------------
+Mon Sep  3 08:31:48 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.93:
+  + Bug fixes
+  + Sync with GStreamer changes.
+
+-------------------------------------------------------------------
+Sat Jul 28 13:11:49 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.92:
+  + Parallel installability with 0.10.x series.
+  + API cleanup and minor API improvements.
+  + Lots of bugfixes, cleanup and other improvement.
+
+-------------------------------------------------------------------
+Mon May 14 07:44:25 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.11.91:
+  + Lots of bugfixes and other improvements
+- Update gstreamer-plugins-ugly-patch-source.sh (and
+  pre_checkin.sh) to deal with xz tarballs.
+
+-------------------------------------------------------------------
+Fri Apr 20 13:01:39 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.11.90:
+  + Lots of bugfixes, cleanup and other improvements
+
+-------------------------------------------------------------------
+Fri Mar 23 09:33:52 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.11.2:
+  + Many cleanups
+  + Ported to new 0.11 core API changes
+  + synaesthesia: port to 0.11
+  + x264enc: handle PTS and DTS
+  + xingmux: port to 0.11
+  + Bugs fixed: bgo#662617, bgo#669863.
+- Add explicit glib2-devel BuildRequires so it can be versioned.
+- Remove Provides/Obsoletes/Conflicts for gstreamer010-* packages
+  in doc and orig-addon subpackages.
+- Add valgrind-devel BuildRequires to build with valgrind support.
+- Change orc-devel BuildRequires to orc, which is the real package
+  name.
+- Change python-devel BuildRequires to python-base as only python
+  is needed, not the development files.
+- Remove BuildRequires for plugins gone upstream: libdvdnav-devel.
+- Remove libid3tag-devel: dependency is gone upstream.
+- Remove unneeded BuildRequires: libtool, python-xml.
+
+-------------------------------------------------------------------
+Sat Feb 18 20:16:46 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.1:
+  + Parallel installability with 0.10.x series
+  + Many cleanups
+  + Ported to new 0.11 core API changes
+- Rename package to gstreamer-plugins-ugly.
+- Adopt same code patching script as in -plugins-bad (only one
+  kind of script to maintain makes it easier)
+- Drop gstreamer010-plugins-ugly-patched.patch: the new source
+  prepare script no longer relies on patching the sources.
+
+-------------------------------------------------------------------
+Sat Oct 15 04:47:06 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Wed May 11 14:27:01 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.10.18:
+  + amrwbdec: avoid stalling on invalid frame
+  + asfpacket: don't rely on data from duration extension
+  + dvdsubdec:
+    - Implement clipping if the video size is smaller than the
+      subpicture size
+    - Output only a single buffer per subpicture and set the
+      correct duration
+  + lamemp3enc: implement sinkpad get_caps() function to proxy rate
+    and channels restrictions from downstream
+  + mad: build the mad plugin even if libid3tag is not available
+  + mpeg2dec:
+    - do not fail fatally when downstream is unlinked
+    - don't deadlock when setting an index
+  + mpegstream: increase allowable gap between streams
+  + x264enc:
+    - allow changing the bitrate and quantitizers dynamically
+    - don't register flags with a value of 0
+    - implement getcaps function to proxy downstream caps
+      restrictions upstream
+    - make tag event writable before modifying tag list in place
+    - set max bitrate in quality mode
+  + Bugs fixed: bgo#539708, bgo#607698, bgo#619136, bgo#621663,
+    bgo#639291, bgo#639715, bgo#640272, bgo#641151, bgo#642360,
+    bgo#644704, bgo#647709.
+
+-------------------------------------------------------------------
+Sun Apr 24 12:59:34 UTC 2011 - toddrme2178@gmail.com
+ 
+- Add 32bit compatibility libraries
+- Removed test for obsolete openSUSE version
+ 
+-------------------------------------------------------------------
+Tue Feb  1 15:53:41 UTC 2011 - davejplater@gmail.com
+
+- Update to version 0.10.16 see NEWS in documentation directory for
+  All news since 0.10.16
+- Upstream fixes and improvements :
+  *asfdemux: Handle new type of DRM'd asf files
+  *dvdreadsrc: fix handling of multi-angle streams
+  *dvdreadsrc: improve error messages on read errors
+  *mad: if gst_pad_alloc_buffer() returns a buffer with the wrong
+   size allocate a new one
+  *mad: support reverse playback
+  *mpeg2dec: convert the position to stream time before answering
+   to a position query
+  *mpeg2dec: fix position query by trusting upstream
+  *mpeg2dec: refactor cropping code to use libgstvideo functions
+  *mpeg2dec: use gst_pad_alloc_buffer() when cropping buffers
+  *mpegparse: re-fix flow return handling
+  *rmdemux: set GST_BUFFER_FLAG_DELTA_UNIT properly
+  *x264enc: add a note to the docs about encoder latency and queues
+  *x264enc: also accept YV12 input
+  *x264enc: Handle codec/encoder tags
+  *x264enc: Work around a rate control issue in libx264
+  *x264: use pkg-config to locate libx264
+  *x264: vbv-buf-capacity should have a minimum of 0
+  *xingmux: Don't ignore WRONG_STATE and NOT_LINKED when pushing
+   data downstream
+  *539254 : [dvdreadsrc] DVDs with multiple angles switch angles
+   during read
+  *571146 : mpeg2dec: possibly uses wrong strides for 4:2:2 and
+   4:4:4 YUV with unusual display width or height
+  *599515 : Fix dvb for DVB API 3.3
+  *621465 : [x264enc] Video codec information copied incorrectly to
+   output
+  *632549 : [mpeg2dec] answers to position queries are wrong for DVDs
+  *632861 : [x264enc] really bad quality with tune=zerolatency
+  *634840 : x264: use pkg-config to locate dependencies for plugin
+  *635291 : x264enc: " vbv-buf-capacity " property should have
+   minimum value of 0
+  *635461 : Crash in mad decoder when changing number of audio
+   output channels in Totem while media is running
+  *636107 : x264enc: docs should indicate specifics of using with
+   queues
+  *637093 : rmdemux: set GST_BUFFER_FLAG_DELTA_UNIT properly
+  *637932 : realmedia: do not use the pad buffer allocation
+   functions in demuxers
+  *639226 : [asfdemux] Doesn't handle new PlayReady DRM files
+
+-------------------------------------------------------------------
+Sun Jan 16 14:36:17 UTC 2011 - aj@suse.de
+
+- Remove buildrequire on pyxml and add instead one on python-xml,
+  changelog of package with date 2008-03-21 contains:
+  "Don't depend on PyXML and use only XML modules that are shipped
+   with python."
+
+-------------------------------------------------------------------
+Thu Sep  3 10:02:17 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.10.16:
+  + liboil is no longer required, but orc is now required
+  + asfdemux:
+    - fix playback of files or streams that are shorter than the
+      advertised preroll value
+    - fix sending eos event for chained asfs in pull mode (exotic)
+    - fix playback of files or streams that advertise miniscule
+      preroll values
+  + lamemp3enc: implement latency query
+  + rmdemux: fix playback of sipro audio streams
+  + x264enc:
+    - refactor code in preparation for presets/tunings
+    - add "profile" property (and default to MAIN profile)
+    - improve defaults: medium speed/quality preset; auto mode for
+      threads
+    - add "speed-preset", "tune" and "psy-tune" properties
+    - add "option-string" property to specify advanced parameters
+    - set time base if needed, fixes visual artifacts
+    - add "sliced-threads", "sync-lookahead", "intra-refresh",
+      "mb-tree", and "rc-lookahead" properties
+    - fix compilation against ancient x264 versions
+      (X264_BUILD <= 75)
+    - speed up first pass of multi-pass encoding (has no impact on
+      quality)
+    - fix flushing of delayed frames with new default settings
+  + Bugs fixed: bgo#599718, bgo#600412, bgo#607798, bgo#618896,
+    bgo#620007, bgo#620344, bgo#622407, bgo#624786, bgo#625557,
+    bgo#626577, bgo#627946
+- Remove liboil-devel BuildRequires and add orc-devel instead.
+- Rebase gstreamer010-plugins-ugly-patched.patch.
+
+-------------------------------------------------------------------
+Tue Aug 31 12:55:08 UTC 2010 - aj@suse.de
+
+- Recommend instead of require lang package since it's not mandatory.
+
+-------------------------------------------------------------------
+Wed Aug 25 09:43:46 CEST 2010 - vuntz@opensuse.org
+
+- Cleanup latest changes.
+- Change gstreamer010 Enhances to gstreamer-0_10.
+
+-------------------------------------------------------------------
+Fri Aug 20 21:22:07 UTC 2010 - reddwarf@opensuse.org
+
+- Remove Valgrind BuildRequires since we are not running the
+  checks.
+- Remove unneeded BuildRequires: sgml-skel, xorg-x11-devel.
+- For BUILD_ORIG, add Buildrequires: libtwolame-devel.
+- For BUILD_ORIG, rename Buildrequires: a52dec-devel to
+  liba52-devel, amrnb-devel to libopencore-amr-devel, lame to
+  libmp3lame-devel, x264-devel to libx264-devel, mad-devel to
+  libmad-devel.
+- Fix BUILD_ORIG.
+- Make build verbose to help post-build checks.
+- Run spec-cleaner.
+- Pass --disable-static to configure.
+- Take ideas from Packman: use --with-package-name and
+  --with-package-origin in configure, make it easy to disable
+  experimental plugins.
+
+-------------------------------------------------------------------
+Thu Aug 12 15:57:41 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.10.15:
+  + amrnbenc: give element a rank (SECONDARY) so it's autoplugged
+  + rmdemux: descramble sipro audio before pushing out
+  + x264enc:
+    - fix up codec_data / avcC header construction some more
+    - Put pixel-aspect-ratio from input into the src pad caps
+  + bgo#612995: x264enc: pixel-aspect-ratio does not appear in src
+    pad caps
+  + bgo#613815: A call in gst/realmedia/rmutils.c discards
+    qualifiers from pointer target type
+  + bgo#615410: x264 orders NALs differently than x264enc expects
+  + bgo#617078: Wrong include paths in amr elements
+  + bgo#619776: [x264enc] is unable to do Baseline with recent
+    x264
+  + bgo#618098: [rmdemux] Add descrambling for Sipro codec
+- Rebase gstreamer010-plugins-ugly-patched.patch.
+
+-------------------------------------------------------------------
+Mon Mar  8 16:21:38 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 0.10.14:
+  + Features of this release:
+    - amrwbdec: give decoder a rank so decodebin/playbin will use
+      it
+    - asfdemux: fix flow aggregation
+    - asfdemux: try harder to put sane timestamps and durations on
+      buffers
+    - asfdemux: accept fragments in a continued packet where the
+      subsequent fragments declare a size of 0
+    - asfdemux: improve seek behaviour for audio-only files without
+      an index
+    - asfdemux: careful to avoid crash on bogus data; avoid
+      strlen() on NULL pointers
+    - asfdemux: add support for chained asfs (push mode)
+    - asfdemux: map WM/TrackNumber to GST_TAG_TRACK_NUMBER and
+      prefer over WM/Track
+    - asfdemux: post bitrate tags
+    - mp3parse: seeking fixes: fix non-flushing seek, conserve stop
+      time for non-accurate seek
+    - rtspreal: memory leak fixes; make config header construction
+      valgrind clean
+    - rmdemux: fix AC-3 in RealAudio playback; post bitrate tags
+    - x264enc: fix up avcC header construction and playback by
+      flash players
+    - x264enc: Make upstream GstForceKeyUnit thread-safe
+    - x264enc: make use of Access Unit delimiters configurable
+    - x264enc: adapt to slightly modified x264 API
+    - xingmux: fix unaligned memory access, makes things work
+      better on ARM/SPARC
+  + Bugs fixed: bgo#606662, bgo#563276, bgo#586464, bgo#598761,
+    bgo#599095, bgo#599297, bgo#599299, bgo#599333, bgo#599676,
+    bgo#600037, bgo#601419, bgo#602280, bgo#602556, bgo#603695,
+    bgo#608564, bgo#610432, bgo#611473, bgo#608533, bgo#610089
+
+-------------------------------------------------------------------
+Thu Mar  4 13:24:22 UTC 2010 - dimstar@opensuse.org
+
+- Update to 0.10.13:
+  + Improve A52 decoder
+  + Add AMR-WB decoder and AMR-NB decoder/encoder based on OpenCore
+    codecs
+  + ASF playback improvements
+  + Improve mp3 parser and seeking
+  + Bugs fixed:
+    - bgo#519721: [asfdemux] wma tags are not copied when
+      converting to another format
+    - bgo#584890: AMR plugins based on Opencore codecs
+    - bgo#585956: [mp3parse] indexing improvements
+    - bgo#590432: It's only possible to build the mad plugin when
+      building id3tag as well
+    - bgo#591348: AMR plugins should check for opencore-amr .pc
+      files
+    - bgo#592787: a52dec: Allow liba52 to use djbfft based IMDCT
+      transform
+    - bgo#596517: x264 element no longer compiles against changed
+      upstream API
+    - bgo#598272: a52dec leaks input buffers
+    - bgo#598370: Properly detect pre-releases
+
+
+-------------------------------------------------------------------
+Mon Oct 26 17:22:56 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Wed Aug 12 13:56:12 CEST 2009 - sbrabec@suse.cz
+
+- Update to version 0.10.11:
+  * Real and WMS RTSP improvements
+  * Other cleanups and bug fixes
+  * Improve ASF file handling
+  * Large MPEG video file support
+  * Interlacing support for MPEG video
+  * New 'lamemp3dec' mp3 encoder element
+  * x264enc moved from -bad
+  * Remove id3mux in favour of the new id3tag element in -bad
+  * Bugs fixed: bgo#401173, bgo#494528, bgo#574461, bgo#576305,
+    bgo#579058, bgo#580803, bgo#580869, bgo#581341, bgo#581756,
+    bgo#582056, bgo#582375, bgo#583112, bgo#573720, bgo#581464,
+    bgo#578524.
+
+-------------------------------------------------------------------
+Thu Apr 30 15:48:12 CEST 2009 - sbrabec@suse.cz
+
+- Don't call autogen in older products and modify patch to work.
+
+-------------------------------------------------------------------
+Mon Mar 23 14:07:08 CET 2009 - vuntz@novell.com
+
+- Update to version 0.10.11:
+  + Migrate twolame element from -bad
+  + mp3parse improvements
+  + Support scaling in the synaesthsia visualisation
+  + Improve realmedia streaming, supporting RDT and pnm://
+  + Improved ASF demuxing, including streaming-mode seeking
+  + Support for 4:4:4 MPEG-2 video
+  + Bugs fixed: bgo#571146, bgo#574461, bgo#454228, bgo#522699,
+    bgo#527112, bgo#556714, bgo#560348, bgo#562065, bgo#562086,
+    bgo#564885, bgo#568836, bgo#569317, bgo#575068, bgo#335067,
+    bgo#571358
+- Drop gstreamer010-plugins-ugly-enable-incomplete.patch: we
+  stopped applying it since resindvd from -bad should be better.
+- Drop gstreamer010-plugins-ugly-dvdnav.patch since we don't build
+  dvdnav.
+- Use makeinstall.
+- Respin gstreamer010-plugins-ugly-patched.patch.
+
+-------------------------------------------------------------------
+Fri Jan  2 10:57:20 EST 2009 - mboman@suse.de
+
+- Update to version 0.10.10:
+  + Bugs fixed: bgo#546859, bgo#536274, bgo#554142, bgo#554150, bgo#556184,
+    bgo#556277, bgo#558277, bgo#559569, bgo#559682, bgo#561161, bgo#424070,
+    bgo#536226, bgo#558896
+  + asfdemux and rmdemux fixes
+  + RDT support
+  + AMR-NB parser improvements
+  + Fix a52dec channel output negotiation
+  + Compilation fixes for mad, mpeg2dec
+
+-------------------------------------------------------------------
+Thu Nov  6 15:55:10 CET 2008 - sbrabec@suse.cz
+
+- Fixed valgrid BuildRequires.
+- Disabled incomplete dvdnav, resindvd from -bad should be better.
+
+-------------------------------------------------------------------
+Tue Sep 16 21:44:49 EDT 2008 - jpr@novell.com
+
+- Update to version 0.10.9:
+  * Bug fixes in Xing header muxer
+  * Real streaming and demuxing improvements
+  * Bugs fixed: bgo#476149, bgo#490372, bgo#498004, bgo#542646,
+    bgo#548194, bgo#527572, bgo#518676, bgo#518933, bgo#521459,
+    bgo#524346, bgo#529488, bgo#532807,bgo#533832
+- Build cdio plugin
+- Update gstreamer010-plugins-ugly-patched.patch for new configure
+  check
+
+-------------------------------------------------------------------
+Wed Jul 30 23:59:42 CEST 2008 - ro@suse.de
+
+- fix build (wrong include path for dvdnav header) 
+
+-------------------------------------------------------------------
+Tue Apr  8 14:06:36 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 0.10.7:
+  * Many bug fixes and improvements
+  * Accurate seeking support in mp3
+  * xingmux moved from -bad
+  * RealMedia and WMS RTSP support
+  * LAME mp3 encoder fixes
+  * Support non-square pixels in ASF
+  * rmdemux fixes
+  * amrnb fixes
+  * dvdreadsrc seeking fix
+  * Initial MPEG-2 reverse playback support
+  * New element: dvdsubdec
+  * Bugs fixed: bgo#358891, bgo#337681, bgo#414988, bgo#427309,
+    bgo#439390, bgo#450879, bgo#452025, bgo#454311, bgo#466442,
+    bgo#495885, bgo#500467, bgo#500808, bgo#507821, bgo#511497,
+    bgo#514297, bgo#515575, bgo#515708, bgo#515725, bgo#516278,
+    bgo#516811, bgo#516989, bgo#308312, bgo#508595, bgo#140136,
+    bgo#448782, bgo#491305, bgo#504671.
+- Fixed Obsoletes (bnc#357153).
+
+-------------------------------------------------------------------
+Tue Jan 22 16:52:47 CET 2008 - sbrabec@suse.cz
+
+- Rename package according to shared library packaging policy
+  (#223286).
+- Created lang package.
+
+-------------------------------------------------------------------
+Tue Oct 16 13:48:55 CEST 2007 - sbrabec@suse.cz
+
+- Fixed backslash expansion in previous change.
+
+-------------------------------------------------------------------
+Mon Oct 15 15:45:25 CEST 2007 - sbrabec@suse.cz
+
+- Worked around OBS spec file corruption bug (#332132).
+
+-------------------------------------------------------------------
+Fri Oct  5 13:14:13 CEST 2007 - sbrabec@suse.cz
+
+- Use less restrictive Requires based on the sources.
+
+-------------------------------------------------------------------
+Mon Sep 17 16:29:57 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 0.10.6:
+  * fixes in handling of MPEG streams, Real streams and MP3
+  * AMR-NB fixes
+  * many other bug-fixes and improvements
+- Patch utility without untarring the archive.
+
+-------------------------------------------------------------------
+Thu Aug  2 19:25:59 CEST 2007 - sbrabec@suse.cz
+
+- Use Enhances: gstreamer010 instead of Supplements (#294358).
+
+-------------------------------------------------------------------
+Wed May 16 15:28:16 CEST 2007 - sbrabec@suse.cz
+
+- Use Supplements instead of not yet supported Enhances.
+- Repack utility without untarring the archive.
+
+-------------------------------------------------------------------
+Thu Apr 19 13:06:39 CEST 2007 - schwab@suse.de
+
+- Fix quoting in autoconf macros.
+
+-------------------------------------------------------------------
+Wed Apr 18 15:11:51 CEST 2007 - sbrabec@suse.cz
+
+- Provide source code patching utility and removed NoSource.
+
+-------------------------------------------------------------------
+Tue Apr 17 18:36:24 CEST 2007 - sbrabec@suse.cz
+
+- Distribute DVD LPCM decoder.
+
+-------------------------------------------------------------------
+Tue Mar 27 17:33:56 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 0.10.5:
+  * Improved asf playback
+  * Fixes to MPEG demuxer
+  * Improved Real playback
+  * Fix crasher bugs in the MPEG video decoder
+  * DVD-read-src improvements
+  * mp3 parser fixes
+  * Many bugs fixed
+- Moved dvdnav and dvdsub to distributable part.
+- Support for feature complete build.
+- Support for BUILD_ORIG and BUILD_ORIG_ADDON defines (#237351).
+
+-------------------------------------------------------------------
+Mon Dec 18 16:35:24 CET 2006 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Tue Nov  7 23:22:21 CET 2006 - abockover@suse.de
+
+- Updated to version 0.10.4
+  * Lots of bug fixes
+
+-------------------------------------------------------------------
+Thu Sep 14 15:49:21 CEST 2006 - sbrabec@suse.cz
+
+- Disabled AMR-NB by default (#204767).
+
+-------------------------------------------------------------------
+Fri Jun 30 13:07:52 CEST 2006 - sbrabec@suse.cz
+
+- Fixed BuildRequires.
+
+-------------------------------------------------------------------
+Mon Jun 26 12:11:12 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 0.10.3:
+  * dvdsubdec ported
+  * fixes in mpeg2dec, asfdemux, mpegdemux, dvddemux, rmdemux,
+    mpegparse, amrnb, mad, lame, a52dec
+  * bug fixes
+
+-------------------------------------------------------------------
+Fri Feb 24 00:18:04 CET 2006 - jpr@suse.de
+
+- Update to 0.10.2
+- This is GStreamer Ugly Plug-ins 0.10.2, "Season to Taste".
+
+Features since 0.10.1:
+
+      * Parallel installability with 0.8.x series
+      * Threadsafe design and API
+      * DVD Title source (dvdreadsrc) ported (DVD Menus in a future release)
+      * ASF demuxer ported
+      * Fixes for MPEG demuxing
+      * Fixes for the MAD MP3 decoder
+      * Fixes for the LAME MP3 encoder
+      * ID3 tag reading has moved to id3demux in gst-plugins-good
+      * Fixes for the Real Media demuxer
+      * Various other fixes
+
+Bugs fixed since 0.10.1:
+
+      * 171528 : SIGFPE in gstasf with http://joule.via.ecp.fr/~lool/debia...
+      * 317872 : Cannot demux ASF/WMV files with auxillary (non-audio/vide...
+      * 319782 : Lame encoding is broken with vbr=vbr-new and vbr-quality=9
+      * 326711 : [mpegdemux] does not negotiate source pads
+      * 326734 : [mad] Add 24-bit output support
+      * 329575 : misc bugfixes for mad from 0.8
+      * 331035 : [asfdemux] port to 0.10
+      * 331301 : [mpeg2dec] strides issues when cropping
+      * 330844 : mpeg2dec crashes with " cropped " MPEG videos
+      * 331579 : Set asfdemux rank to secondary
+      * 313838 : totem hangs after playing an amazon sample
+
+
+-------------------------------------------------------------------
+Tue Feb 14 16:52:33 CET 2006 - sbrabec@suse.cz
+
+- Fixed Requires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:05 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 24 02:21:57 CET 2006 - ro@suse.de
+
+- avoid gstreamer installation (-gstreamer in nfb)
+
+-------------------------------------------------------------------
+Wed Jan 18 19:44:25 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 0.10.1.
+
+-------------------------------------------------------------------
+Fri Jan  6 15:45:07 CET 2006 - sbrabec@suse.cz
+
+- New SuSE package, version 0.10.0.
+- Worked around -export-symbols-regex libtool problems.
+

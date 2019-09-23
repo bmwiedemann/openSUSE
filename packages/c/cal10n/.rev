@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>20ab5141523e4d93019fdca524ec9953</srcmd5>
+    <version>0.7.4</version>
+    <time>1336472762</time>
+    <user>coolo</user>
+    <comment>add cal10n to Factory, docs issue has been resolved</comment>
+    <requestid>116439</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>20ab5141523e4d93019fdca524ec9953</srcmd5>
+    <version>0.7.4</version>
+    <time>1340183225</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>20ab5141523e4d93019fdca524ec9953</srcmd5>
+    <version>0.7.4</version>
+    <time>1359108729</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>91ad358b11c329d3f99228944e530476</srcmd5>
+    <version>0.7.4</version>
+    <time>1378899553</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198264</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>91ad358b11c329d3f99228944e530476</srcmd5>
+    <version>0.7.4</version>
+    <time>1379662081</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>675774a15b6f1ba171ddb6bf76bc4270</srcmd5>
+    <version>0.7.4</version>
+    <time>1405522176</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240336</requestid>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>675774a15b6f1ba171ddb6bf76bc4270</srcmd5>
+    <version>0.7.4</version>
+    <time>1409300610</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9e527e99be11a446380085478a177d0c</srcmd5>
+    <version>0.7.7</version>
+    <time>1419809514</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266370</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2a5833abb1ee8f7265b773a4c87793e6</srcmd5>
+    <version>0.7.7</version>
+    <time>1505333971</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>522115</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>d8a71a114161b0d109e39a0bb579a629</srcmd5>
+    <version>0.7.7</version>
+    <time>1532446305</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620779</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>92fa6556be4804f01b9d04d72efa05a1</srcmd5>
+    <version>0.7.7</version>
+    <time>1541509967</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>644575</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,300 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8015b1216fe4d3b3b2099bb8838c34c0</srcmd5>
+    <version>0.98.39</version>
+    <time>1168903587</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="35">
+    <srcmd5>9174165e7f6fea303e269121b9afead5</srcmd5>
+    <version>0.98.39</version>
+    <time>1169829899</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bfd21e0425dbcddec49e64bf89fe3938</srcmd5>
+    <version>2.01rc2</version>
+    <time>1200103387</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6d290d93641e875c757543628384e53f</srcmd5>
+    <version>2.01</version>
+    <time>1201126670</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2dcac5897c2270ff0fa6c90978ac3359</srcmd5>
+    <version>2.02</version>
+    <time>1207694069</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>69473afacf57931f11dc99f9d33b092a</srcmd5>
+    <version>2.02</version>
+    <time>1208249402</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>90b0f188e66581b281f30caae756fabf</srcmd5>
+    <version>2.03</version>
+    <time>1214422456</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8b2dfdf59ac42b8077e3a0d67392ab54</srcmd5>
+    <version>2.03.90</version>
+    <time>1221278192</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bc9cbd3f9fc0ee85a6c6283b225d47da</srcmd5>
+    <version>2.06rc2</version>
+    <time>1231976510</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>bc9cbd3f9fc0ee85a6c6283b225d47da</srcmd5>
+    <version>2.06rc2</version>
+    <time>1231976510</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>ba1633edb97404fe041905c241d789d4</srcmd5>
+    <version>2.06rc2</version>
+    <time>1266507781</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:compiler/nasm based on submit request 32745 from user coolo
+</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>26c2be99ad3682e51242f8c17152a2b9</srcmd5>
+    <version>2.07</version>
+    <time>1267455466</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:compiler/nasm based on submit request 33688 from user oertel
+</comment>
+    <requestid>33688</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>a051824de48de5dadd0cdabc4de507f5</srcmd5>
+    <version>2.07</version>
+    <time>1268925049</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>a051824de48de5dadd0cdabc4de507f5</srcmd5>
+    <version>2.07</version>
+    <time>1278667370</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>a051824de48de5dadd0cdabc4de507f5</srcmd5>
+    <version>2.07</version>
+    <time>1278678599</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>c87f5995bf6942e6194f8f09d27f3409</srcmd5>
+    <version>unknown</version>
+    <time>1284123611</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:compiler/nasm based on submit request 47570 from user coolo
+</comment>
+    <requestid>47570</requestid>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>0297e9585359b627e7db6e0b39ec2d6d</srcmd5>
+    <version>2.07</version>
+    <time>1294662310</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57628 from user coolo
+</comment>
+    <requestid>57628</requestid>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>bcfe6b4160fffa58cf0242d5aa2f46a6</srcmd5>
+    <version>2.07</version>
+    <time>1294662320</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57628
+</comment>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>bcfe6b4160fffa58cf0242d5aa2f46a6</srcmd5>
+    <version>2.07</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>84d89b05b47bc2610aa2d98a8f2d495e</srcmd5>
+    <version>2.09.08</version>
+    <time>1308554762</time>
+    <user>saschpe</user>
+    <comment> (forwarded request 74098 from pjessen)</comment>
+    <requestid>74099</requestid>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>0ccd6c15a25610e21fef262ea62243c6</srcmd5>
+    <version>2.09.08</version>
+    <time>1308554772</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74099
+</comment>
+  </revision>
+  <revision rev="22" vrev="11">
+    <srcmd5>0ccd6c15a25610e21fef262ea62243c6</srcmd5>
+    <version>2.09.08</version>
+    <time>1319182194</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="12">
+    <srcmd5>446968edc8483945926c12849e464e25</srcmd5>
+    <version>2.09.08</version>
+    <time>1323192659</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="14">
+    <srcmd5>446968edc8483945926c12849e464e25</srcmd5>
+    <version>2.09.08</version>
+    <time>1340183722</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="15">
+    <srcmd5>ccb0d4d3eae8707f3fa48098954243c4</srcmd5>
+    <version>2.09.08</version>
+    <time>1347347610</time>
+    <user>coolo</user>
+    <comment>- Add explicit build dependency on makeinfo</comment>
+    <requestid>133356</requestid>
+  </revision>
+  <revision rev="26" vrev="17">
+    <srcmd5>ccb0d4d3eae8707f3fa48098954243c4</srcmd5>
+    <version>2.09.08</version>
+    <time>1359109488</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="18">
+    <srcmd5>2c2d8cca54111400a1edad3fc90f20f5</srcmd5>
+    <version>2.09.08</version>
+    <time>1366233061</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 170852 from namtrac)</comment>
+    <requestid>171047</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>313c816f1dc9865cb42eca9f75d0ff93</srcmd5>
+    <version>2.10.09</version>
+    <time>1374932958</time>
+    <user>coolo</user>
+    <comment>- version 2.10.09 
+* Add support for the Intel AVX2 instruction set.
+* Add support for Bit Manipulation Instructions 1 and 2.
+* Add support for Intel Transactional Synchronization Extensions (TSX).
+* Add support for x32 ELF
+* Add the ifunc macro package with integer functions, 
+  currently only integer logarithms.
+* Add support for RDSEED
+* Support of AMD SVM instructions in 32 bit mode
+* Add a bunch of AMD TBM instructions.
+* 2 years of bugfixes (forwarded request 184378 from elvigia)</comment>
+    <requestid>184400</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>313c816f1dc9865cb42eca9f75d0ff93</srcmd5>
+    <version>2.10.09</version>
+    <time>1379663342</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>313c816f1dc9865cb42eca9f75d0ff93</srcmd5>
+    <version>2.10.09</version>
+    <time>1409301954</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>95953210273f1ff096bec33607bf6222</srcmd5>
+    <version>2.11.08</version>
+    <time>1425031420</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287482</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>0a387bf53dcc2f1795b01eef0bfb889c</srcmd5>
+    <version>2.12</version>
+    <time>1457353554</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>364175</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c16b002cda9c3ea4d3e81b2e58a60fc6</srcmd5>
+    <version>2.12.02</version>
+    <time>1468699851</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>408686</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c9627c49dd043b48521f88b8e6c1e646</srcmd5>
+    <version>2.13.01</version>
+    <time>1496392176</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>497744</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>157def70d3653b85ebec8ac1c855ad9d</srcmd5>
+    <version>2.13.01</version>
+    <time>1501227653</time>
+    <user>dimstar_suse</user>
+    <comment>Updated with a different upstream patch.
+
+- memory_fixes.patch: Fix usage-after-free and buffer overflow
+  bugs (bsc#1047925, bsc#1047936, CVE-2017-11111, CVE-2017-10686)
+- Restrict %fdupes to manpage directory
+- Enable unit tests in %check target</comment>
+    <requestid>512649</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ae32734e3cf96b6ab0901c08d1f608cb</srcmd5>
+    <version>2.13.02</version>
+    <time>1516971522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569354</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e9e0afb869ae7ec34c9ea5a4f0cc12e8</srcmd5>
+    <version>2.13.03</version>
+    <time>1521192845</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file with spec-cleaner
+
+- New upstream version 2.13.03:
+  * Add flags:
+    AES, VAES, VPCLMULQDQ
+  * Add VPCLMULQDQ instruction
+  * elf: Add missing dwarf loc section
+  * documentation updates
+- 9f45a77f4.patch: fixes compilation with gcc8 (bsc#1084631)</comment>
+    <requestid>587452</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>65578413318cd86220050d746c3f65b5</srcmd5>
+    <version>2.14.02</version>
+    <time>1552464334</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.14.02:</comment>
+    <requestid>681814</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Tue May  7 13:27:27 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Remove TTF files because better OTF files have been installed
+
+-------------------------------------------------------------------
+Wed Jun 28 13:48:55 UTC 2017 - robert.munteanu@gmail.com
+
+- Update to version 2.030 ( roman fonts ) / 1.050 ( italic fonts )
+  * Redesigns box drawing shades (issue #57).
+  * Correctly maps forms for phi (U+03C6 and U+03D5) (issue #120)
+  * Zeros widths of fraction characters in frac feature (
+    issue #121).
+  * Adds TrueType hints to box drawing characters (issue #122).
+  * Adds alternates for l (lowercase L) and 1. (issue #126)
+  * Corrects OpenType feature rules relating to capital figures. 
+    (issue #127)
+  * Fixes final names for fi and fl ligatures to f_i and f_l. 
+    (issue #128)
+  * Updates TT hinting for Block- and Quadrant glyphs 
+    (U+2080 – U+209F).
+  * Adds manual TT hints to specific Box Drawing Characters for 
+    improved horizontal connection.
+  * Updates the design of 1s in all styles for better character 
+    recognition.
+  * Removes colored artwork from default forms of glyphs.
+  * Adds IVSes for emoji representation for pictorial glyphs.
+  * Removes NULL (U+0000) and CR (U+000D) glyphs from TrueType 
+    fonts.
+  * Gzips SVG table documents. 
+
+-------------------------------------------------------------------
+Fri Jul 24 14:16:23 UTC 2015 - robert.munteanu@gmail.com
+
+- Update to version 2.010 ( roman fonts ) / 1.030 ( italic fonts )
+  * Adds italic styles to family. (GitHub issue #6)
+  * Adds Powerline symbols. (GitHub issue #43)
+  * Adds mathematical operators specifically requested to date.
+    (GitHub issue #49)
+  * Adds geometric shapes specifically requested to date. (GitHub
+    issue #51)
+  * Changes vendor ID from ADBE to ADBO. (GitHub issue #80)
+  * Updates name table to remove full license text. (GitHub
+    issue #83)
+  * Increases length of em dash. (GitHub issue #85)
+  * Adds character variants features (ccXX).
+  * Adds support for some extended Latin (IPA).
+  * Adds characters to fully support WGL4 standard.
+  * Adds characters that were missing for Arabic and Hebrew
+    transliteration schemes.
+  * Adds a few emoji characters.
+  * Adds SVG colored versions of some characters
+  * Nudges the dot accent up to prevent from collapsing in CFF
+    fonts.
+  * Adjusts design and positioning of cedillas.
+  * Updates the design of the following glyphs in intermediate
+    weights, thanks to intermediate master: B, M, N, W, e, g,
+    m, w, Bstroke, Hbar, Oslash, Tbar, Eth, ae, bstroke, dcroat,
+    eogonek, hbar, oslash, oe, eth, zero.0, zero.0o, zero.0c,
+    e.sups
+  * Updates design of ringhalfleftmod, ringhalfrightmod.
+  * [roman fonts only] Adds support for Greek and Cyrillic.
+    (GitHub issues #48 & #85)
+  * [roman fonts only] Adds alternate lowercase i with foot
+    serifs (ss04 – stylistic set 4).
+ 
+
+-------------------------------------------------------------------
+Mon Apr 13 18:10:28 UTC 2015 - dimstar@opensuse.org
+
+- Add a metainfo.xml file for presence in AppStream metadata.
+
+-------------------------------------------------------------------
+Mon Jun 10 08:46:26 UTC 2013 - fa0sck@gmail.com
+
+- Install fonts without x-bit
+
+-------------------------------------------------------------------
+Thu Jan 17 06:22:25 UTC 2013 - toms@opensuse.org
+
+- Updated to version 1.017
+  (No version update between 1.013 and 1.017)
+  * Updates the design of the asterisk glyphs, bar, and broken bar.
+  * Updates the hinting to the default asterisk in all styles.
+  * Adds an new Medium weight to the font project.
+  * Updates design of the following glyphs to center them within glyph height/width:
+    . lighttrpldashhorzbxd
+    . heavytrpldashhorzbxd
+    . lighttrpldashvertbxd
+    . heavytrpldashvertbxd
+    . lightquaddashhorzbxd
+    . heavyquaddashhorzbxd
+    . lightquaddashvertbxd
+    . heavyquaddashvertbxd
+    . lightdbldashhorzbxd
+    . heavydbldashhorzbxd
+    . lightdbldashvertbxd
+    . heavydbldashvertbxd
+
+
+-------------------------------------------------------------------
+Fri Dec  7 08:35:21 UTC 2012 - robert.munteanu@gmail.com
+
+- Updated to upstream version 1.013
+ - Updates design of asterisk and hyphen to accommodate coders' preferences.
+ - Realigns math and punctuation glyphs.
+ - Adds a stylistic set (ss01) for typographic alternates.
+ - Adds a stylistic set (ss04) for alternate dollar sign.
+ - Adds a small number of IPA characters.
+ - Adds box drawing characters and block elements.
+
+-------------------------------------------------------------------
+Tue Oct  2 08:27:22 UTC 2012 - robert.munteanu@gmail.com
+
+- Specfile cleanup
+ - removed out-of-date comments
+ - removed FIXME
+
+-------------------------------------------------------------------
+Tue Oct  2 06:36:44 UTC 2012 - robert.munteanu@gmail.com
+
+- Updated to upstream version 1.010
+ - Fixed TrueType hinting problem in Bold ampersand. 
+
+-------------------------------------------------------------------
+Fri Sep 28 12:22:29 UTC 2012 - toms@opensuse.org
+
+- Added Obsoletes and Provides
+
+-------------------------------------------------------------------
+Fri Sep 28 11:19:59 UTC 2012 - toms@opensuse.org
+
+- Renamed from SourceCodePro package, fixed .changes and .spec file
+
+-------------------------------------------------------------------
+Tue Sep 25 20:41:28 UTC 2012 - robert.munteanu@gmail.com
+
+- Fixed copyright header 
+
+-------------------------------------------------------------------
+Tue Sep 25 10:49:01 UTC 2012 - toms@opensuse.org
+
+- Spec: Use %{_ttfontsdir} macro instead of %{_datadir}
+- Fixed URL
+
+-------------------------------------------------------------------
+Tue Sep 25 09:23:43 UTC 2012 - robert.munteanu@gmail.com
+
+- Initial release based on version 1.009 
+

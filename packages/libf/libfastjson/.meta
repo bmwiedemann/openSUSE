@@ -1,0 +1,9 @@
+<package name="libfastjson" project="openSUSE:Factory">
+  <title>Fast JSON parsing library, a fork of json-c</title>
+  <description>A fast JSON parsing library, a fork of json-c, developed by the rsyslog team
+and used for rsyslog and liblognorm.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="libfastjson"/>
+  <url>https://github.com/rsyslog/libfastjson</url>
+</package>

@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>55e8a71b7b097bfb2c28bc560811b718</srcmd5>
+    <version>2.7.2</version>
+    <time>1291804698</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 54274 from user coolo
+</comment>
+    <requestid>54274</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cc397df8ef1786d5f29ec46b4bcaeafd</srcmd5>
+    <version>2.7.2</version>
+    <time>1291804702</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 54274
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>cc397df8ef1786d5f29ec46b4bcaeafd</srcmd5>
+    <version>2.7.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>cc397df8ef1786d5f29ec46b4bcaeafd</srcmd5>
+    <version>2.7.2</version>
+    <time>1319181991</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4d74a52fe3d044b7df1e4b1949ace835</srcmd5>
+    <version>2.8.2</version>
+    <time>1332999765</time>
+    <user>coolo</user>
+    <comment>license update: BSD-3-Clause
+SPDX format (forwarded request 110715 from babelworx)</comment>
+    <requestid>110809</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>4d74a52fe3d044b7df1e4b1949ace835</srcmd5>
+    <version>2.8.2</version>
+    <time>1340183465</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>22ccdc020a1b146f19ed5f49ab47bffc</srcmd5>
+    <version>2.8.5</version>
+    <time>1347619458</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134125</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>22ccdc020a1b146f19ed5f49ab47bffc</srcmd5>
+    <version>2.8.5</version>
+    <time>1359109086</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>154af00c0b4174fc86df0ffba1673ad0</srcmd5>
+    <version>2.8.8</version>
+    <time>1362744619</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157919</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>154af00c0b4174fc86df0ffba1673ad0</srcmd5>
+    <version>2.8.8</version>
+    <time>1379662677</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6c000047b2867973cf972ebb6ca6a08c</srcmd5>
+    <version>2.9.2</version>
+    <time>1382446329</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>204254</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>6c000047b2867973cf972ebb6ca6a08c</srcmd5>
+    <version>2.9.2</version>
+    <time>1409301240</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>0b548572e9ab86f8dc60951d37b9e4b8</srcmd5>
+    <version>2.9.2</version>
+    <time>1420021346</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266846</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>033ee522c0a2ccfe1a412b6862547c76</srcmd5>
+    <version>2.9.5</version>
+    <time>1423258662</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282394</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>549dd0d4979ca52e89921f9361a751ea</srcmd5>
+    <version>2.9.6</version>
+    <time>1433577280</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>310594</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>96f0958a9360eb70e1e73c8deafbd915</srcmd5>
+    <version>3.0.7</version>
+    <time>1512734484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555052</requestid>
+  </revision>
+</revisionlist>

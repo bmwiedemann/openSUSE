@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Fri May 31 05:38:13 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix Summary tag.
+- Add Requires tag for perl(XML::Simple)
+- Fix env-script-interpreter badness
+
+-------------------------------------------------------------------
+Tue Apr 14 20:03:03 UTC 2015 - coolo@suse.com
+
+- updated to 0.006
+   see /usr/share/doc/packages/perl-XML-LibXML-PrettyPrint/Changes
+
+  Maintainer:   Toby Inkster <tobyink@cpan.org>
+
+-------------------------------------------------------------------
+Thu Nov 03 23:40:48 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.002)
+

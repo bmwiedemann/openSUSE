@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Mon Sep 11 15:23:00 UTC 2017 - archie.cobbs@gmail.com
+
+- Change RPM dependency "php5" -> "php" (bsc#1058103)
+
+-------------------------------------------------------------------
+Tue Sep  2 13:30:51 UTC 2014 - archie@dellroad.org
+
+- Fix logger(1) dependency on openSUSE > 13.1
+
+-------------------------------------------------------------------
+Sat Sep 21 17:55:17 UTC 2013 - archie@dellroad.org
+
+- Change dependency from "xsltproc" to "libxslt-tools" 
+
+-------------------------------------------------------------------
+Sat Sep 21 17:51:22 UTC 2013 - archie@dellroad.org
+
+- Update to release 1.0.5
+  * Fix bug in 1.0.4 not using updated REST URL
+
+-------------------------------------------------------------------
+Wed Sep 18 22:52:38 UTC 2013 - archie@dellroad.org
+
+- Update to release 1.0.4
+  * Added `-C', `-m' and `-t' flags to twimsg(1)
+
+-------------------------------------------------------------------
+Tue May 28 15:34:09 UTC 2013 - archie@dellroad.org
+
+- Update to release 1.0.3
+  * Rename sendsms(1) -> twimsg(1) to avoid conflict with gnokii-smsd
+  * Fixes bug in twimsg `-e' flag not transcoding correctly
+
+-------------------------------------------------------------------
+Wed May 22 19:39:27 UTC 2013 - archie@dellroad.org
+
+- Update to release 1.0.1
+ * Fix incorrect detection of missed notifications
+ * Add `-i' and `-m' flags to include SID, message date
+
+-------------------------------------------------------------------
+Tue May 21 23:20:42 UTC 2013 - archie@dellroad.org
+
+- Spec file clean-ups suggested by Greg Freemyer 
+
+-------------------------------------------------------------------
+Fri May 17 21:11:19 UTC 2013 - archie@dellroad.org
+
+- Initial release version 1.0.0
+

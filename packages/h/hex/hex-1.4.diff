@@ -1,0 +1,33 @@
+--- Makefile
++++ Makefile
+@@ -4,7 +4,7 @@
+ VERS=1.4
+ 
+ hex: hex.c
+-	$(CC) -DRELEASE=\"$(VERS)\" -O hex.c -o hex
++	$(CC) -DRELEASE=\"$(VERS)\" $(CFLAGS) hex.c -o hex
+ 
+ SOURCES = READ.ME Makefile hex.c hex.xml hex.spec
+ 
+@@ -18,8 +18,8 @@
+ 	xmlto man hex.xml
+ 
+ install: hex.1 uninstall
+-	cp hex /usr/bin
+-	cp hex.1 /usr/share/man/man1/hex.1
++	install -m 0755 hex $(DESTDIR)/usr/bin/
++	install -m 0644 hex.1 $(DESTDIR)$(MANDIR)/man1/
+ 
+ uninstall:
+ 	rm -f /usr/bin/hex /usr/share/man/man1/hex.
+--- hex.1
++++ hex.1
+@@ -55,7 +55,7 @@
+ dump file section
+ 
+ .TP
+---V
++-V
+ print version number and exit
+ 
+ .PP

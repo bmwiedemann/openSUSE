@@ -1,0 +1,23 @@
+diff --git a/contrib/collection.cgi b/contrib/collection.cgi
+index 5ff259f..e0848e0 100755
+--- a/contrib/collection.cgi
++++ b/contrib/collection.cgi
+@@ -32,7 +32,7 @@ use URI::Escape ('uri_escape');
+ use RRDs ();
+ use Data::Dumper ();
+ 
+-our $Config = "/etc/collection.conf";
++our $Config = "/etc/collectd/collection.conf";
+ our @DataDirs = ();
+ our @DontShowTypes = ();
+ our $LibDir;
+diff --git a/contrib/collection.conf b/contrib/collection.conf
+index e8444f5..063141f 100644
+--- a/contrib/collection.conf
++++ b/contrib/collection.conf
+@@ -1,3 +1,2 @@
+-datadir: "/opt/collectd/var/lib/collectd/rrd/"
+-libdir: "/opt/collectd/lib/collectd/"
+-
++datadir: "/var/lib/collectd/"
++libdir: "@@LIBDIR@@/collectd/"

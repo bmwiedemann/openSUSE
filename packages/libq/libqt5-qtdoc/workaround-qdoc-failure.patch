@@ -1,0 +1,32 @@
+From: Michal Srb <msrb@suse.com>
+Subject: Assertion failure in libclang on i586 (when building qtdoc)
+References: boo#1092425
+
+I have found that the issue is caused by `qfloat::operator float()` in qtbase/src/corelib/global/qfloat16.h.
+
+For some reason the declaration is omitted when building the documentation using `#ifndef Q_QDOC`, but its definition is there unconditionally. Omitting the definition prevents the qdoc failure. See the attached patch.
+
+I don't know yet why it behaves differently on x86 and x86_64, perhaps it has something to do with the body of the method, which is different depending on the architecture.
+
+Also, even with broken code, it should not crash with assertion failure. So there must be something broken in either libclang or qdoc, but I did not yet find what. Perhaps we could use this patch for the time being.
+
+Index: qt-everywhere-src-5.12.1/qtbase/src/corelib/global/qfloat16.h
+===================================================================
+--- qt-everywhere-src-5.12.1.orig/qtbase/src/corelib/global/qfloat16.h
++++ qt-everywhere-src-5.12.1/qtbase/src/corelib/global/qfloat16.h
+@@ -145,6 +145,7 @@ inline qfloat16::qfloat16(float f) Q_DEC
+ }
+ QT_WARNING_POP
+ 
++#ifndef Q_QDOC
+ inline qfloat16::operator float() const Q_DECL_NOTHROW
+ {
+ #if defined(QT_COMPILER_SUPPORTS_F16C) && defined(__F16C__)
+@@ -171,6 +172,7 @@ inline qfloat16 operator-(qfloat16 a) Q_
+     f.b16 = a.b16 ^ quint16(0x8000);
+     return f;
+ }
++#endif
+ 
+ inline qfloat16 operator+(qfloat16 a, qfloat16 b) Q_DECL_NOTHROW { return qfloat16(static_cast<float>(a) + static_cast<float>(b)); }
+ inline qfloat16 operator-(qfloat16 a, qfloat16 b) Q_DECL_NOTHROW { return qfloat16(static_cast<float>(a) - static_cast<float>(b)); }

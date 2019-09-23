@@ -1,0 +1,549 @@
+-------------------------------------------------------------------
+Wed Apr 24 09:16:27 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133108).
+
+-------------------------------------------------------------------
+Thu Mar 21 11:30:20 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize old $RPM_* shell variables and tar options.
+- Avoid bash-specific pathname expansion syntax in %install.
+
+-------------------------------------------------------------------
+Mon Dec 11 15:46:05 UTC 2017 - crrodriguez@opensuse.org
+
+- replace xorg-x11-devel by the needed individual libraries.
+
+-------------------------------------------------------------------
+Tue Mar 14 15:44:45 UTC 2017 - guoyunhebrave@gmail.com
+
+- Update to version 1.9.2 and update patches
+  * Added CMYKOGB and CMYKRGB 7 channel ink preset, and made targen
+    more flexible in matching pre-conditioning profiles to targen ink
+    selection.
+  * Fix oeminst for OS X save location.
+  * Fix oeminst for OS X Spyder 4 CD calibration file location. 
+  * Improved robustness of ChromeCast discovery, and added some minimal
+    diagnostics.
+  * Improved robustness of targen ofps patch generation when using less
+    well behaved pre-conditioning profiles.
+  * Fixed oeminst so that it locates cdrom's in Linuxes latest mount
+    point of /run/media/$USER/.
+  * Fixed bug in i1pro2 driver, in which strip calibration would fail
+    if instrument had been first calibrated with ARGYLL_DISABLE_I1PRO2_DRIVER
+    set, and then calibrated with ARGYLL_DISABLE_I1PRO2_DRIVER unset.
+  * Added option to icclib to write Output profiles using 'chad' tag if
+    the ARGYLL_CREATE_DISPLAY_PROFILE_WITH_CHAD environment variable is
+    set. This is not recommended for normal use, but may assist
+    compatibility with other systems.
+  * Added JETI spectraval support, including Bluetooth access.
+  * Added support for the Klein K10 connecting via a serial port.
+  * Fixed bug in Colormunki Smile driver that causes crash on Ubuntu
+    16.04.1 LTS.
+  * Modified "lp" intent to greatly reduce eliminate Helmholtz-Kohlrausch
+    appearance modelling.
+  * Fixed problem with targen -g, in that the corresponding XYZ values
+    had double the power applied, rather than none. This was causing
+    problems with printtarg spacer colors.
+  * Extensive re-write of colorimetric nearest clipping code in rspl/rev.c
+    to restore precision that was lost in the speedups made in V1.0.0. The
+    nnrev setup now takes a lot longer with   high resolution CMYK profiles
+    though. This corrects a "green becoming too yellow" problem for mapping
+    from ProPhoto space with some RGB devices.
+  * Change dispwin to properly set X11 DirectColor and take account of
+    TrueColor Colormap.  This fixes problem with NVidia linux driver 364.12
+    exposing a VideoLUT depth that is different from the frame buffer depth.
+  * Change icclib to automatically repair icmTextDescription strings that
+    have an allocation that is longer than their size.
+  * Added i1Pro Lamp Drift test and fix functions to spotread (-Y l|L options).
+  * Change colprof so that -s -S will accept general compression percentage
+    as an alternative to a source colorspace/image gamut.
+  * Added optional conversion from native Gretag-MacBeth & X-Rite reflective
+    calibration standards to/from XRGA.
+  * Changed OS X GUI support code so as not to switch to "interact with the
+    Dock" mode until actual GUI element is to be displayed. This prevents
+    batch commands with optional GUI elements from blocking normal GUI
+    interactions.
+  * Re-jigged OS X UI code to use the main thread to avoid window
+    creation timing issues and a warning backtrace on OS X 10.11.
+  * Added CMP_Digital_Target-7.cht
+  * Fix spec2cie to cope with .ti3 files that are missing device values,
+    so that it can process a wider range of input CIE reference files.
+  * Changed implementation of ARGYLL_NOT_INTERACTIVE on MSWin to make
+    it more reliable when operated progromatically.
+  * Fixed chartread so that if you are reading patch by patch, the
+    location strings can be arbitrary (i.e. they don't have to conform
+    to an alpha/num strip/patch pattern.)
+  * Added support for Sencore ColorPro V, IV & III colorimeters
+    (based on Sequel Chroma colorimeter.).
+- Drop argyllcms-udev151.patch
+- Drop argyllcms-1.4.0-warnings.patch
+
+
+-------------------------------------------------------------------
+Wed Apr 13 09:40:00 UTC 2016 - lnussel@suse.de
+
+- BuildRequire systemd-rpm-macros which defines _udevrulesdir for us
+
+-------------------------------------------------------------------
+Tue Nov 24 20:16:44 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.8.3
+  * Added SpyderCheckr24 scaning .cht and .cie files.
+  * Fixed USB problem with i1pro (Rev B & D ?), where communications 
+    would occasionally break down on fast systems.
+  * Added another fixed display intergration time to i1pro non-adaptive
+    emission mode to cope with higher brightness displays.
+  * Added workaround for i1d3 Rev. B status code 0x83 on very low 
+    light measurement
+  * Fixed minor bug in i1d3.c that truncated serial number string.
+  * Fixed bug in Klein K10 driver - adaptive measurement wasn't properly 
+    using all the extra measurements.
+  * Improved Klein K10 driver to be more robust when lights off command 
+    returns bogus error codes, or causes a cascade of bogus measurement 
+    errors.
+  * Added workaround for OS X 10.9+ "App Nap" problem.
+  * Added maximum sensor frequency check for Spyder & i1d3 drivers, 
+    so that erronious readings due to excessive brightness can't be missed.
+  * Changed chartread so that it doesn't warn of a possible wrong strip
+    being read, nor allows bi-directional strip reading, if "printtarg -r" 
+    was used. A warning will be issued if "printtarg -r" was used, and 
+    "chartread -B" wasn't used.
+  * Fixed collink for eeColor Full range RGB to use output curve 
+    ("second" 1D curves) to compensate for cLUT being wired for 1.0 
+    output from 1.0 input.
+  * Added "lp" gamut mapping intent :- Luminance Preserving Perceptual, 
+    for Photographers concerned with maintaining tonal variations.
+  * Fixed bugs in image specific gamut mapping that were degrading 
+    the accuracy of the result.
+  * Re-wrote gamut smoothing code, and re-tuned it to behave similarly 
+    to the V1.8.2 release.
+  * Changed default viewing condition glare to 5%, to smooth out shadow tone curve.
+  * Reduced the level of Helmholtz-Kohlrausch effect in CIECAM02 
+    implementation in the light of visual experiments.
+- Changes from version 1.8.2
+  * Fixed endless loop bug in alternate calibration selectors code.
+- Changes from version 1.8.1
+  * Fixed bug in "spec2cie -n" wrong field indexes were being used.
+  * Fixed colorimeter calibration selectors to add in alternate 
+    selectors if the letters are free.
+- Changes from version 1.8.0
+  * Added support for the Image Engineering EX1 spectroradiometer.
+  * Added support for the SwatchMate Cube reflective colorimeter, 
+    with improved accuracy.
+  * Added Added Television Lighting Consistency Index (EBU TLCI-2012 Qa) 
+    to spotread and specplot output.
+  * Added R9 value to CRI value in spotread and specplot output.
+  * Added workaround for JETI specbos having been calibrated by
+    a 3rd party, and its calibrated range being out of sync with 
+    its claimed range.
+  * Added support for "EMISINPUT" type .ti3 file.
+  * Build using OpenSSL rather than axTLS if it is built on Linux.
+  * Fixed stack space problem in OS X UI programs by expanding main 
+    thread proxy to have 8MB instead of the default 512K.
+  * Updated built in libtiff to V4.0.4beta.
+  * Changed CGATS format to not emit unknown keyword declaration ("KEYWORD")
+    by default.
+  * Added inst_calc_cond_mask to inst.h to allow for flags in calibration 
+    conditions. A consequence of this is that calc needs to be masked with 
+    this when comparing against a specific condition, and the inst_calc_optional_flag
+    should be cleared if it is set, before callint inst->calibrate() if the 
+    user wants to proceed with a particular calibration.
+  * Fixed bug with dispcal -e N
+  * Fixed bug in xicclu -fg and -kp
+  * Added dispcal -x x option to allow reading a chart and manually entering
+    the XYZ values.
+  * Fix spyder4 & 5 bug where some display types were set as refresh 
+    when they shouldn't be.
+  * Fix collink "Warning :- RGB black hack trigger more than once!" 
+    when -b is used with input video encoding (-e).
+  * Changed colprof so that the default ICC description is the base 
+    filename rather than the whole file path.
+  * Fix technology type and display type selector "uniqueification"
+    bug  that shows up in "ccxxmake -??".
+  * Add OEM field to ccmx and ccss files to mark files that have
+    been installed from OEM disk, so that custom ccmx & ccss files 
+    can be given suggested selector letter priority (+ ref/CRT.ccss).
+  * Tweak CGATS write format to avoid scientific notation until the 
+    numbers are bigger and smaller (i.e until e6 and e-6 are needed).
+- Changes from version 1.7.0
+  * Improved gamut mapping to reduce unnecessary changes to less 
+    saturated colors  such as skin tones.
+  * Add support for DataColor Spyder 5.
+  * Add support for ColorHug2 colorimeter.
+  * Add support for Klein K10-A colorimeter.
+  * Added Google ChromeCast as a test patch generator for Video displays.
+  * Added ls2ti3 tool to convert LightSpace .bcs files to .ti3.
+  * Added IRIDAS .cube 3DLut format support to collink.
+  * Add X3D and X3DOM support as an alternative to VRML, and make X3DOM 
+    the default.
+  * Add better cross compatibility with non-Argyll ICC profiles using 
+    ArgyllCMS 'arts' tag to mark 'wtpt' Absolute Colorimetric chromaticity
+    transform, as well as implement proper absolute colorimetric intent 
+    for Display profiles use the 'chad' tag. Note that the standard 
+    ICC profiles provided by ArgyllCMS in the ref directory (such as sRGB etc.)
+    now include an 'arts' tag.
+  * Ignore any patches that have zero values for creating Display profiles,
+    unless they are for device zero.
+  * Fix various instrument communications problems for JETI specbos, 
+    DTP20, DTP92 & DTP94.
+  * Fix gestaltSystemVersion warning on OS X 10.10.
+  * Fix very major bug in illumread. It wasn't actually working at all
+    since V1.4.0.
+  * Added collink -I[gG][:p.p]:x.x options that allows an output offset 
+    gamma curve be targetted instead of BT1886.
+  * Added dispcal and collink -b black point hack. This forces the input 
+    zero to map to the output zero for well behaved displays, reducing 
+    dependence on the instrument accuracy for a very dark black point.
+  * Added preset list of display techologies to select from in ccxxmake.
+  * Added a -P prune option to profcheck, that creates a .ti3 file pruned
+    of any patches that have a delta E fit error greater than a threshold.
+    This may be of use in eliminating bad reading values from a measurement set.
+  * Added histogram plot option -h to both profcheck and verify.
+  * Added a dispread & fakeread -Z option to set the number of bits to
+    quantize the test values to.
+  * Fixed bug in targen - the -V dark emphasis wasn't being applied to OFPS 
+    generated points.
+  * Make sure that if an instrument display reading is interrupted by a
+    forced calibration, that the user is asked to place it back on the 
+    display before resuming the measurements.
+- Remove obsolete patches 
+  * argyllcms-udev-builtin.patch
+  * argyllcms-udev-hwdb.patch
+- Some specfile cleanups and improvements
+- Update argyllcms-udev151.patch 
+
+-------------------------------------------------------------------
+Tue Feb 24 15:00:24 UTC 2015 - rguenther@suse.com
+
+- Use -std=gnu89 for building to not run into broken __declspec
+  uses with the GCC 5 default of -std=gnu99.
+
+-------------------------------------------------------------------
+Mon Feb 23 13:55:20 UTC 2015 - meissner@suse.com
+
+- allow building with udev-mini by using pkgconfig(udev)
+
+-------------------------------------------------------------------
+Mon Feb 23 13:48:38 UTC 2015 - meissner@suse.com
+
+- do not rpm -q udev
+
+-------------------------------------------------------------------
+Wed Feb  4 10:23:32 UTC 2015 - fcrozat@suse.com
+
+- Add argyllcms.changes to Source, used to compute timestamp
+- Use a stable timestamp for generated files (boo#916158), ensuring
+  build is reproducible.
+
+-------------------------------------------------------------------
+Mon Jan 26 09:46:09 UTC 2015 - fcrozat@suse.com
+
+- Move reference files to /usr/share/argyll/ref, expected path from
+  gnome-color-manager (bsc#914679).
+
+-------------------------------------------------------------------
+Fri Jan 31 14:35:20 UTC 2014 - fcrozat@suse.com
+
+- Release 1.6.3:
+  + Added ProPhoto.icm and ProPhotoLin.icm to ref profiles.
+  + Fix bug in xicclu -py conversion.
+  + Added code to minimize ICC rounding error on matrix profile
+    white point accuracy. Re-generated all reference profiles with
+    this change.
+  + Changed i1d3 driver to completely ignore any EEPROM checksum
+    errors for non "A-01" rev. instruments.
+  + Made transplot handle RGB->RGB device link.
+  + Removed colprof -y option. Use "profcheck -v2" instead, as it
+    is more developed.
+  + Fixed bug in dispcal - it was not using the final measurement
+    pass to update the calibration curves.
+  + Fixed bug in spotread, dispcal & dispread for CCSS capable
+    instruments where refresh display types was being ignored if a
+    custom observer was used, and/or the custom observer as being
+    ignored, and/or a  CCMX was being ignored.
+  + Renamed verify to colverify to avoid clash with MSWin program
+    of the same name. Made it print the patch location for -v2 if
+    it is present in the file.
+  + Changed targen to ensure that -V and -p options effects are
+    reflected in the resulting expected CIE values of the .ti1
+    file.
+  + Changed targen so that -V parameter also affects single
+    channel, grey wedge, grid & body centered grid point
+    distribution.
+  + Changed colprof to deal with variable grid distribution in a
+    more neuanced way, to reduce overshoot artifacts when the -V
+    parameter is used.
+  + Changed colprof to used a power_like function for the grid
+    distribution shape from the -V parameter, so as to avoid issues
+    with a power curve infinte slope near zero.
+  + Changed colprof to used a scaled down value of the targen -V
+    parameter as the default for its -V parameter.
+  + Added a special case to collink for RGB video input encoding to
+    (attempt) to fine tune the black point to compensate for it
+    (probably) not falling on a cLUT grid point. & out encoding.
+  + Tweaked dispcal to try and improve accuracy of black point
+    calibration.
+  + Switch dispread to use NoClamp readings, so that average black
+    point value is not biased.
+  + Fixed bug introduced into 1.6.2 oeminst that prevents .ccss
+    files being installed.
+
+-------------------------------------------------------------------
+Fri Dec 20 13:46:14 UTC 2013 - fcrozat@suse.com
+
+- Release 1.6.2:
+ + Added "dark region emphasis" -V parameter to targen and colprof.
+ + Fixed bug and tweaked dispcal black point optimization to err on
+   the black side. Added -v3 for even more debugging information.
+ + Changed i1d3 driver to be more forgiving of EEProm checksum
+   calculation (support for ""A-02"" release).
+ + Fixed problem with TV encoded output and dispread -E -k/-K.
+ + Fixed minor bug in DE94 in icclib.
+ + Fixed major bug in illumread - result was being corrupted.
+ + Fixed "edges don't match" bug in printarg when -iCM -h -s/-S
+   used.
+ + Fix bug in -H flag in ccxxmake, chartread, dispcal, dispread,
+   illumread & spotread so that it works once again.
+
+- Bugfix update from 1.6.1:
+ + Fix bug in "average -m"
+ + Fix oeminst to work with a wider range of i1d3 install files.
+ + Fix ColorMunki reflective measurement accuracy, particularly for
+   reflective readings.
+- Remove argyllcms-stringcompare.patch, argyllcms-void.patch:
+  merged upstream.
+
+-------------------------------------------------------------------
+Tue Aug 20 18:53:03 CEST 2013 - sbrabec@suse.cz
+
+- Release 1.6.0:
+  + Added support for JETI specbos 1211 and 1201.
+  + Added Video profiling & 3dLut creation support for eeColor and
+    MadVR.
+  + Linux profile installation will use colord.
+  + Fix ColorHug driver.
+  + Changed instlib API ambient XYZ and spectral units to Lux.
+  + For those instruments that support it, made ambient readings
+    honor refresh mode measurements.
+  + Changed spotread -ew mode to be Bradford chromatic transform
+    rather than XYZ scaling.
+  + Added support to xicclu to lookup colors though CAL files.
+  + Added -Y R:rate option to spotread, dispcal, dispread &
+    ccxxmake.
+  + By default printtarg will create PS and EPS files with a CUPS
+    job ticket to disable color management.
+  + Added display update delay calibration support to i1pro and
+    ColorMunki.
+  + Changed dispcal & dispread so that they wait up to 0.5 seconds
+    when reading dark patches after light ones to allow for display
+    fall time.
+  + Changed dispwin daemon loader mode option from -E to -X.
+  + Changed dispcal verify option from -E to -z.
+  + Added -E option to to dispread to encode test patch colors in
+    Video 16-235 range.
+  + Changed CIECAM02 Flare model to distinguish between Flare from
+    the image itself, and Glare from ambient light.
+  + Improved i1pro hi-res mode to improve accuracy.
+  + Added Body Centered Cubic grid option to targen.
+  + Added -Yn flag to dispcal and dispread.
+  + Improve robustness of i1d3 display update measurement code.
+  + Added support for applying calibration curves in collink.
+  + Changed spotread so that it won't fall back to emissive spot
+    mode if an ambient reading is requested.
+  + Turned off B2A table clip map smoothing.
+  + Fixed crash in ucmm/ucmm.c when loading certain profiles using
+    dispwin.
+  + Fixed gamut mapping intent "rl" to really use relative L*a*b*
+  + Fix bug in cicam02 in V1.5.0 that causes some mapping problems
+    in the red for collink -ir or -ila. 
+  + Changed cctiff so that it does lossless JPEG copy when there is
+    no color transformation
+  + Fix xicclu so that it works with device links.
+  + Fixed bug in shaper/matrix profile curves that caused random
+    bumpy black behaviour.
+  + Don't add colorant tag to .tiff files in cctiff unless it is a
+    non-standard space, as Photoshop will barf on such files.
+  + Fix bug with Spyder not being able to break out of dispcal
+    adjustment loop.
+  + Fix bug in xicc/xicclu, -K flag not being recognised.
+  + Fix bug in xicc/xmatrix.c introduced that prevents matrix only
+    profiles from being created.
+  + libusb 1.0 is now deprecated in favor of native USB drivers.
+
+-------------------------------------------------------------------
+Wed Jul 31 17:13:06 UTC 2013 - fcrozat@suse.com
+
+- Release 1.5.1:
+  + Many bug fixes
+  + add support for i1pro Rev E (i1pro2)
+  + improved support for ColorMunki and i1pro
+  + spotread can interactively query refresh rate
+  + spyd2en, spyd4en and i1d3ccss was been merged in one tool named
+    oeminst.
+  + No longer uses libusb, talk directly to USB device through
+    kernel devices.
+  + Add support for ColorCheckerPassport in scanin.
+  + -V (adaptative mode) is deprecated in dispcal, dispread and
+    ccxxmake, since it is the default. Use -ZA flag to disable.
+  + ColorHug support is enabled by default.
+  + Added automatic adjustement of patch reading for i1d3.
+- Drop argyllcms-fixbuild.patch (merged)
+- Rename argyllcms-1.3.0-udev151.patch to argyllcms-udev151.patch.
+- Add argyllcms-udev-builtin.patch for udev usb-db builtin
+  (openSUSE 12.2/12.3) and argyllcms-udev-hwdb.patch (openSUSE 13.1
+  and later) for udev hwdb.
+- Update argyllcms-1.4.0-warnings.patch (partially merged)
+- Drop SG_header.txt, merged upstream.
+
+-------------------------------------------------------------------
+Thu Oct 18 08:36:09 UTC 2012 - fcrozat@suse.com
+
+- Fix build with new udev rules directory location.
+
+-------------------------------------------------------------------
+Fri Oct 12 07:40:47 UTC 2012 - coolo@suse.com
+
+- replace jam with ./jam
+
+-------------------------------------------------------------------
+Tue Jun 26 14:53:48 CEST 2012 - fcrozat@suse.com
+
+- Add new upstream version of SG_header.txt, to prevent any legal
+  misunderstanding (bnc#768826).
+
+-------------------------------------------------------------------
+Mon Jun 25 13:21:04 CEST 2012 - fcrozat@suse.com
+
+- Release 1.4.0:
+  + various bug fixes
+  + add support for ICC profiles in embedded JPEG
+  + fix CVE-2012-1616 (bnc#768322)
+- drop autotools patches, switch back to original Jam based build
+- add ajam (argyll patched version of Jam, BSD-license) to source
+  package (needed only for build)
+- drop shared libraries and corresponding subpackages, not used by
+  anything.
+- drop cologhug patch, merged upstream.
+- Add argyllcms-fixbuild.patch: fix build with system tiff/jpeg
+  libraries
+- Add ajam-include.patch: add missing headers
+- Add argyllcms-1.4.0-warnings.patch: fix gcc warnings
+- Add bison as BuildRequires (needed to build ajam)
+- Compile with -f-no-strict-aliasing to prevent potential issues
+  with gcc 4.7
+
+-------------------------------------------------------------------
+Fri Jan 27 08:21:17 UTC 2012 - mcihar@suse.cz
+
+- Fix ColorHug support with new firmware
+
+-------------------------------------------------------------------
+Mon Jan 23 10:50:19 UTC 2012 - kkaempf@suse.com
+
+- ColorHug-sensor-driver.patch: Fix function declaration to improve
+  detection of 'perfect black' (via colorhug-users@googlegroups.com)
+
+-------------------------------------------------------------------
+Thu Jan 19 15:24:23 UTC 2012 - fcrozat@suse.com
+
+- remove unused copies of libusb0 and libusbw
+- remove unused code from libusb1 directory (windows / macos)
+- call autoreconf in %build
+
+-------------------------------------------------------------------
+Mon Jan 16 16:21:17 UTC 2012 - fcrozat@suse.com
+
+- Add copyright header to specfile
+- Clean specfile with spec-cleaner
+- Argyllcms is now mostly using AGPLv3, update License tag and use
+  SPDX syntax.
+- Drop patch which was renaming scanner in documentation (not
+  applied anyway).
+
+-------------------------------------------------------------------
+Thu Jan 12 10:36:56 UTC 2012 - kkaempf@suse.com
+
+- Fix Factory build: explicitly BuildRequire autoconf, automake
+  and libtool
+
+-------------------------------------------------------------------
+Wed Jan 11 20:00:46 UTC 2012 - kkaempf@suse.com
+
+- Update to 1.3.5
+- add Argyll_V1.3.5_autotools.patch covering new files to compile
+- add 0001-Add-an-experimental-ColorHug-sensor-driver.patch to
+  support 'colorhug' from http://hughski.com (experimental)
+
+-------------------------------------------------------------------
+Mon Nov  8 10:33:27 UTC 2010 - fcrozat@novell.com
+
+- Release 1.3.2 (bug fixes)
+- remove argyllcms-1.3.0-include.patch (merged upstream)
+
+-------------------------------------------------------------------
+Thu Sep 23 12:03:40 UTC 2010 - fcrozat@novell.com
+
+- argyllcms-1.3.0-udev151.patch: remove all ACL management from 
+  udev rules, it is handled by udev package itself (Mandriva)
+- argyllcms-1.3.0-include.patch : fix missing includes
+
+-------------------------------------------------------------------
+Sun Sep 12 18:17:03 UTC 2010 - fcrozat@novell.com
+
+- Release 1.3.0
+- remove patches argyllcms-1.1.0-bufferoverflow.patch,
+  argyllcms-1.1.0-void.patch, argyllcms-1.1.0-strfmt.patch (merged
+  upstream)
+
+-------------------------------------------------------------------
+Mon Aug  9 16:30:57 UTC 2010 - fcrozat@novell.com
+
+- Update patch1 with new version from Roland, merging patch10 in it
+
+-------------------------------------------------------------------
+Mon Aug  9 15:58:06 UTC 2010 - fcrozat@novell.com
+
+- Update to 1.2.1
+- move back icclib to argyllcms, upstream release are not so frequent as Argyllcms one
+- Patch10: allow to use (or not) system icclib
+- update patches 8 and 9 with new fixes
+
+-------------------------------------------------------------------
+Thu Aug  5 16:21:44 UTC 2010 - fcrozat@novell.com
+
+- Update to latest release and move icclib to a separate package
+------------------------------------------------------------------
+
+Mon Apr 20 08:34:10 CET 2009 - Vladimir Nadvornik <nadvornik@novell.com>
+- ported to openSUSE
+
+-------------------------------------------------------------------
+Mon Mar 23 08:34:10 CET 2009 - Ron Ciesla <limb@jcomserv.net>
+- Patch for ICC library CVE-2009-{0583, 0584} by Tim Waugh.
+
+-------------------------------------------------------------------
+Mon Feb 23 00:12:29 CET 2009 - Fedora Release Engineering <rel-eng@lists.fedoraproject.org>
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+* Wed Sep 3 2008 Nicolas Mailhot <nicolas.mailhot at laposte.net>
+- 1.0.3-1
+* Mon Sep 1 2008 Nicolas Mailhot <nicolas.mailhot at laposte.net>
+- 1.0.2-1
+* Sun Jul 27 2008 Nicolas Mailhot <nicolas.mailhot at laposte.net>
+- 1.0.1-1
+* Wed Mar 26 2008 Tom "spot" Callaway <tcallawa@redhat.com>
+- patch applied for legal reasons
+* Thu Feb 8 2008 Nicolas Mailhot <nicolas.mailhot at laposte.net>
+- 0.70-0.8.Beta9
+- 0.70-0.8.Beta8
+* Thu Feb 7 2008 Nicolas Mailhot <nicolas.mailhot at laposte.net>
+- 0.70-0.7.Beta8
+* Thu Dec 14 2007 Nicolas Mailhot <nicolas.mailhot at laposte.net>
+- 0.70-0.6.Beta7
+- 0.70-0.5.Beta7
+* Thu Dec 13 2007 Nicolas Mailhot <nicolas.mailhot at laposte.net>
+- 0.70-0.4.Beta7
+* Wed Dec 12 2007 Nicolas Mailhot <nicolas.mailhot at laposte.net>
+- 0.70-0.3.Beta7
+- 0.70-0.2.Beta7
+- 0.70-0.1.Beta7

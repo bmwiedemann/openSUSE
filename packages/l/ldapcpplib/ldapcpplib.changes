@@ -1,0 +1,327 @@
+-------------------------------------------------------------------
+Tue Jun 18 10:25:24 UTC 2013 - jengelh@inai.de
+
+- Explicitly specify required cyrus-sasl-devel dependency
+
+-------------------------------------------------------------------
+Thu Jan 31 13:50:52 UTC 2013 - rhafer@suse.com
+
+- Update to 0.3.1:
+  * obsoletes ldapcpplib-gcc47.patch (has been included upstream)
+  * Added some checks for existence of certificate files and
+    directories when setting TLS options (bnc#801065)
+
+-------------------------------------------------------------------
+Wed Apr 18 11:38:45 UTC 2012 - cfarrell@suse.com
+
+- license update: OLDAP-2.8
+  Use SPDX syntax (http://www.spdx.org/licenses)
+
+-------------------------------------------------------------------
+Thu Mar 15 22:06:38 UTC 2012 - dimstar@opensuse.org
+
+- Add ldapcpplib-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Sun Nov 13 09:12:27 UTC 2011 - coolo@suse.com
+
+- add libtool as explicit buildrequire to avoid implicit dependency from prjconf
+
+-------------------------------------------------------------------
+Wed Jun 22 13:46:00 UTC 2011 - rhafer@suse.de
+
+- Update to 0.3.0
+  * Added interface for accessing LDAPAttribute inside
+    LDAPModification
+  * includes fix to build with GCC 4.6
+
+-------------------------------------------------------------------
+Sat Apr 30 15:30:36 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix build with GCC 4.6 
+
+-------------------------------------------------------------------
+Thu Apr 14 14:04:54 UTC 2011 - rhafer@suse.de
+
+- Version 0.2.3
+  * Imported fix for LDAPCtrl constructor (bnc#563955)
+
+-------------------------------------------------------------------
+Fri Apr  1 09:06:51 UTC 2011 - rhafer@suse.de
+
+- Version 0.2.2
+  * Fixed some issue with the renewal of the underlying libldap
+    SSL/TLS context (bnc#683826, bnc#683809)
+
+-------------------------------------------------------------------
+Mon Mar 15 14:30:39 UTC 2010 - rhafer@novell.com
+
+- synced with latest CVS:
+  * Make TlsOptions available in LDAPConnection
+  * be more verbose on StartTLS errors
+
+-------------------------------------------------------------------
+Fri Feb 19 13:24:08 UTC 2010 - rhafer@novell.com
+
+- synced with latest CVS, adds methods for easier modification 
+  of TLS options
+
+-------------------------------------------------------------------
+Fri Sep 25 11:56:19 UTC 2009 - rhafer@novell.com
+
+- Added missing errorhandling, when trying to read a Entry when 
+  the current record in not an entry (bnc#541819)
+
+-------------------------------------------------------------------
+Sat Feb 28 00:37:20 CET 2009 - crrodriguez@suse.de
+
+- fix build with GCC 44
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Wed Aug 27 20:25:43 CEST 2008 - rhafer@suse.de
+
+- synced with latest CVS, allows to create LDAP Controls without
+  any value (bnc#420016)
+
+-------------------------------------------------------------------
+Fri Aug  8 11:35:55 CEST 2008 - rhafer@suse.de
+
+- synced with latest CVS, allows to pass flags to Schema Parser
+
+-------------------------------------------------------------------
+Mon Jun 23 20:20:39 CEST 2008 - rhafer@suse.de
+
+- migrated to library packaging policy
+- synced with latest CVS:
+  * support for parsing and generating LDIF
+  * enhanced methods for querying Schema related info
+  * LDAPI support (LDAP over IPC)
+
+-------------------------------------------------------------------
+Tue Feb 26 13:28:27 CET 2008 - rhafer@suse.de
+
+- synced with latest CVS, fixes a possible double free (bnc#364528)
+
+-------------------------------------------------------------------
+Tue Jan 22 15:54:19 CET 2008 - rhafer@suse.de
+
+- synced with latest CVS, adds SASL support and some methods to 
+  ease the manipulation of Entries
+
+-------------------------------------------------------------------
+Wed Nov 21 11:51:10 CET 2007 - rhafer@suse.de
+
+- Make LDAPUrl::getURLString() const, to allow easier usage with
+  LDAPUrlList::const_iterator. (Bug #341255)
+
+-------------------------------------------------------------------
+Wed Nov  7 10:51:30 CET 2007 - rhafer@suse.de
+
+- Updated to 0.0.5 (fixes gcc 4.3 issues)
+- Cleaned up BuildRequires
+- silenced some RPMLINT warnings
+
+-------------------------------------------------------------------
+Wed Jan 24 12:36:03 CET 2007 - rhafer@suse.de
+
+- correctly initialize usage- and single-Attribute of LDAPAttrType 
+  (Bug #237305) 
+
+-------------------------------------------------------------------
+Thu Jan 11 11:01:23 CET 2007 - rhafer@suse.de
+
+- added methods to get the usage definition of an AttributeType. 
+  (Needed for feature #301179)
+
+-------------------------------------------------------------------
+Tue Nov  7 01:10:34 CET 2006 - ro@suse.de
+
+- fix docu permissions 
+
+-------------------------------------------------------------------
+Tue Oct 31 16:56:08 CET 2006 - meissner@suse.de
+
+- use RPM_OPT_FLAGS for CXXFLAGS
+
+-------------------------------------------------------------------
+Tue Jun 27 20:29:07 CEST 2006 - lrupp@suse.de
+
+- fix %files for valid debuginfo package 
+
+-------------------------------------------------------------------
+Fri Mar 31 14:25:54 CEST 2006 - rhafer@suse.de
+
+- throw Exception if initialization failed (Bug #159741) 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:20 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct  5 17:30:07 CEST 2005 - rhafer@suse.de
+
+- synced with current CVS (doesn't need LDAP_DEPRECATED anymore)
+
+-------------------------------------------------------------------
+Mon Sep 26 01:53:00 CEST 2005 - ro@suse.de
+
+- set CPPFLAGS as well 
+
+-------------------------------------------------------------------
+Mon Sep 26 01:43:44 CEST 2005 - ro@suse.de
+
+- added LDAP_DEPRECATED to CFLAGS 
+
+-------------------------------------------------------------------
+Thu Aug 11 16:09:03 CEST 2005 - rhafer@suse.de
+
+- Don't initalize error string with NULL in LDAPException. 
+  (Bugzilla #99712)
+
+-------------------------------------------------------------------
+Wed Apr 20 13:07:21 CEST 2005 - rhafer@suse.de
+
+- synced with current CVS 
+
+-------------------------------------------------------------------
+Thu Nov 18 15:41:19 CET 2004 - ro@suse.de
+
+- use kerberos-devel-packages 
+
+-------------------------------------------------------------------
+Thu Aug 12 12:24:36 CEST 2004 - ro@suse.de
+
+- added libpng to neededforbuild (for doxygen)
+
+-------------------------------------------------------------------
+Mon Aug  9 16:08:37 CEST 2004 - rhafer@suse.de
+
+- Removed duplicate files from -devel filelist.
+
+-------------------------------------------------------------------
+Thu Aug  5 13:26:29 CEST 2004 - rhafer@suse.de
+
+- Fixed typo in the "Requires" of the -devel package 
+
+-------------------------------------------------------------------
+Wed Aug  4 11:26:56 CEST 2004 - rhafer@suse.de
+
+- Splitted into runtime and -devel package (Bugzilla #42845)
+
+-------------------------------------------------------------------
+Fri Apr 16 16:25:05 CEST 2004 - rhafer@suse.de
+
+- Bugzilla ID #38668: read additional server messsage in case of
+  errors.
+
+-------------------------------------------------------------------
+Mon Mar 22 15:50:25 CET 2004 - rhafer@suse.de
+
+- correctly ignore capitalisation of Objectclasses and 
+  Attributetypes in LDAPSchema.cpp 
+
+-------------------------------------------------------------------
+Tue Feb  3 17:09:08 CET 2004 - rhafer@suse.de
+
+- updated to latest version
+- run auto*-tools before build
+- filelist cleanup
+
+-------------------------------------------------------------------
+Thu Jan 22 16:23:59 CET 2004 - rhafer@suse.de
+
+- updated to latest version from CVS 
+
+-------------------------------------------------------------------
+Sat Jan 10 13:56:26 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Tue Jul 15 07:37:43 CEST 2003 - rhafer@suse.de
+
+- added Schema parsing Classes, needed by YaST
+
+-------------------------------------------------------------------
+Mon May 12 12:26:39 CEST 2003 - rhafer@suse.de
+
+- removed caching code (no_cache.dif) as libldap doesn't support
+  it anymore
+
+-------------------------------------------------------------------
+Wed Jan 15 15:48:27 CET 2003 - ro@suse.de
+
+- use sasl2 
+
+-------------------------------------------------------------------
+Thu Aug  8 13:09:58 CEST 2002 - rhafer@suse.de
+
+- removed SASL related stuff (did not work correctly) 
+
+-------------------------------------------------------------------
+Sat Jul 27 16:26:40 CEST 2002 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Thu Jul  4 17:47:50 CEST 2002 - ro@suse.de
+
+- added heimdal-devel to neededforbuild to make libtool happy 
+
+-------------------------------------------------------------------
+Mon Apr 29 12:03:29 CEST 2002 - rhafer@suse.de
+
+- added %{_libdir} to compile package on lib64-archs
+
+-------------------------------------------------------------------
+Mon Apr  8 12:12:56 CEST 2002 - rhafer@suse.de
+
+- using bzip2 compression now
+- included newest version to be able to build with gcc 3.1 now
+
+-------------------------------------------------------------------
+Fri Nov 16 12:51:10 CET 2001 - rhafer@suse.de
+
+- Makes use of namespaces now
+- Include bugfixes for some memory allocation/freeing issues
+
+-------------------------------------------------------------------
+Tue Jun 12 13:03:36 CEST 2001 - rhafer@suse.de
+
+- added openssl-devel to needforbuild
+- some changes in configure.in to make it work with new autoconf
+- added libtoolize, aclocal calls to SPEC file
+
+-------------------------------------------------------------------
+Thu Mar 15 01:08:35 CET 2001 - ro@suse.de
+
+- fixed neededforbuild for openldap
+
+-------------------------------------------------------------------
+Wed Feb 28 09:30:22 CET 2001 - rhafer@suse.de
+
+- disabled generation of RTF docs  
+
+-------------------------------------------------------------------
+Tue Feb 27 11:20:53 CET 2001 - ro@suse.de
+
+- changed neededforbuild <cyrus-sasl> to <cyrus-sasl cyrus-sasl-devel>
+
+-------------------------------------------------------------------
+Mon Feb 26 13:35:06 CET 2001 - rhafer@suse.de
+
+- Included the lastest bugfixes and the diff of schwab@suse.de
+  in the source tgz 
+
+-------------------------------------------------------------------
+Mon Jan 22 15:52:02 CET 2001 - schwab@suse.de
+
+- Fix visibility violations.
+
+-------------------------------------------------------------------
+Fri Jan  5 14:31:12 CET 2001 - rhafer@suse.de
+
+- first version of the ldapcpplib package 
+

@@ -1,0 +1,5 @@
+<package name="python-docopt" project="openSUSE:Factory">
+  <title>Command-line interface description language</title>
+  <description>docopt is based on conventions that are used for decades in help messages and man pages for program interface description. Interface description in docopt is such a help message, but formalized.</description>
+  <devel project="devel:languages:python" package="python-docopt"/>
+</package>

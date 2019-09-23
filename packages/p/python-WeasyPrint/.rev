@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8abd9c008cec18733bb2a682c8bfdfe4</srcmd5>
+    <version>0.42.3</version>
+    <time>1529066213</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616814</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>64af507859d48cba7a6c97e67d301105</srcmd5>
+    <version>0.42.3</version>
+    <time>1545223966</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659378</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e0591b3ce8d1bc8ed3a92e640e7b24c7</srcmd5>
+    <version>45</version>
+    <time>1551216073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>679183</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cf49155726f1b937c41d4bdda09c9b26</srcmd5>
+    <version>46</version>
+    <time>1553263839</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v46:
+  * #771: Handle box-decoration-break
+  * #115: Handle margin-break
+  * #821: Continuous integration includes tests on Windows</comment>
+    <requestid>687396</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c2f212ba799b235aaaae61932fbbb90a</srcmd5>
+    <version>48</version>
+    <time>1564414348</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719611</requestid>
+  </revision>
+</revisionlist>

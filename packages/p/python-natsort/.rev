@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a7f3c91d1bc33e5ad1004eb7f2836eb5</srcmd5>
+    <version>5.3.0</version>
+    <time>1526371969</time>
+    <user>dimstar_suse</user>
+    <comment>naturally sorting in python</comment>
+    <requestid>606004</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8ef92306d83a39b9be0858ad6004903c</srcmd5>
+    <version>5.3.1</version>
+    <time>1526463651</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.3.1:
+  * No bugfixes or features, just infrastructure and installation
+    updates.
+  * Move to defining dependencies with Pipfile.
+  * Development layout is now src/natsort/ instead of natsort/.
+  * Add bumpversion infrastructure.
+  * Extras can be installed by &quot;[]&quot; notation.
+</comment>
+    <requestid>607414</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bd7724a7d202737ca970df2703954236</srcmd5>
+    <version>5.3.2</version>
+    <time>1527583258</time>
+    <user>dimstar_suse</user>
+    <comment>- Version set the requires based on setup.py
+
+- specfile:
+  * added setuptools as a requirements
+
+- update to version 5.3.2:
+  * Fix bug that prevented install on old versions of setuptools.
+  * Revert layout from src/natsort/ back to natsort/ to make user
+    testing simpler.</comment>
+    <requestid>611489</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>208101e59e2d2211fa6cfae8e96d1efa</srcmd5>
+    <version>5.3.3</version>
+    <time>1531947168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621668</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>084bf1b6337190abb5782575c7516603</srcmd5>
+    <version>5.3.3</version>
+    <time>1535705191</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure tests pass in python 3.7</comment>
+    <requestid>632154</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>127f64283975bbf16aaf30d03e68e496</srcmd5>
+    <version>5.4.0</version>
+    <time>1536679100</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634497</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>deba97bbf49204e17339734310bcbf8c</srcmd5>
+    <version>5.4.1</version>
+    <time>1537263831</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636118</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2a950588aa479cefb7d5f13331d6c6d9</srcmd5>
+    <version>5.5.0</version>
+    <time>1543224585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651335</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6dd6a9054f0409a6e1024cf29b0573f3</srcmd5>
+    <version>6.0.0</version>
+    <time>1551113462</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>673242</requestid>
+  </revision>
+</revisionlist>

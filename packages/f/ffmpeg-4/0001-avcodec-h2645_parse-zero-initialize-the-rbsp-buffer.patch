@@ -1,0 +1,49 @@
+From af70bfbeadc0c9b9215cf045ff2a6a31e8ac3a71 Mon Sep 17 00:00:00 2001
+From: James Almer <jamrial@gmail.com>
+Date: Mon, 26 Aug 2019 00:54:20 -0300
+Subject: [PATCH] avcodec/h2645_parse: zero initialize the rbsp buffer
+
+Fixes ticket #8093
+
+Reviewed-by: Andreas Rheinhardt <andreas.rheinhardt@gmail.com>
+Signed-off-by: James Almer <jamrial@gmail.com>
+---
+ libavcodec/h2645_parse.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/libavcodec/h2645_parse.c b/libavcodec/h2645_parse.c
+index 24658b3dfa..307e8643e6 100644
+--- a/libavcodec/h2645_parse.c
++++ b/libavcodec/h2645_parse.c
+@@ -345,13 +345,18 @@ static int find_next_start_code(const uint8_t *buf, const uint8_t *next_avc)
+ 
+ static void alloc_rbsp_buffer(H2645RBSP *rbsp, unsigned int size, int use_ref)
+ {
++    int min_size = size;
++
+     if (size > INT_MAX - AV_INPUT_BUFFER_PADDING_SIZE)
+         goto fail;
+     size += AV_INPUT_BUFFER_PADDING_SIZE;
+ 
+     if (rbsp->rbsp_buffer_alloc_size >= size &&
+-        (!rbsp->rbsp_buffer_ref || av_buffer_is_writable(rbsp->rbsp_buffer_ref)))
++        (!rbsp->rbsp_buffer_ref || av_buffer_is_writable(rbsp->rbsp_buffer_ref))) {
++        av_assert0(rbsp->rbsp_buffer);
++        memset(rbsp->rbsp_buffer + min_size, 0, AV_INPUT_BUFFER_PADDING_SIZE);
+         return;
++    }
+ 
+     size = FFMIN(size + size / 16 + 32, INT_MAX);
+ 
+@@ -360,7 +365,7 @@ static void alloc_rbsp_buffer(H2645RBSP *rbsp, unsigned int size, int use_ref)
+     else
+         av_free(rbsp->rbsp_buffer);
+ 
+-    rbsp->rbsp_buffer = av_malloc(size);
++    rbsp->rbsp_buffer = av_mallocz(size);
+     if (!rbsp->rbsp_buffer)
+         goto fail;
+     rbsp->rbsp_buffer_alloc_size = size;
+-- 
+2.23.0
+

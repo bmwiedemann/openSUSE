@@ -1,0 +1,35 @@
+Description: fix  spellings in final binary.
+Author: Joao Eriberto Mota Filho <eriberto@debian.org>
+Last-Update: 2016-04-14
+Index: netdiscover-0.3-pre-beta7/src/screen.c
+===================================================================
+--- netdiscover-0.3-pre-beta7.orig/src/screen.c
++++ netdiscover-0.3-pre-beta7/src/screen.c
+@@ -326,7 +326,7 @@ void fill_screen()
+              "\t |     q: exit this screen or end               | \n"
+              "\t |                                              | \n"
+              "\t |    \33[1mScreen views\33[0m                              | \n"
+-             "\t |     a: show arp replys list                  | \n"
++             "\t |     a: show arp replies list                 | \n"
+              "\t |     r: show arp requests list                | \n"
+              "\t |     u: show unique hosts detected            | \n"
+              "\t |                                              | \n"
+Index: netdiscover-0.3-pre-beta7/src/main.c
+===================================================================
+--- netdiscover-0.3-pre-beta7.orig/src/main.c
++++ netdiscover-0.3-pre-beta7/src/main.c
+@@ -528,12 +528,12 @@ void usage(char *comando)
+       "  -p passive mode: do not send anything, only sniff\n"
+       "  -m file: scan the list of known MACs and host names\n"
+       "  -F filter: Customize pcap filter expression (default: \"arp\")\n"
+-      "  -s time: time to sleep between each arp request (miliseconds)\n"
++      "  -s time: time to sleep between each arp request (milliseconds)\n"
+       "  -n node: last ip octet used for scanning (from 2 to 253)\n"
+       "  -c count: number of times to send each arp reques (for nets with packet loss)\n"
+       "  -f enable fastmode scan, saves a lot of time, recommended for auto\n"
+       "  -d ignore home config files for autoscan and fast mode\n"
+-      "  -S enable sleep time supression betwen each request (hardcore mode)\n"
++      "  -S enable sleep time supression between each request (hardcore mode)\n"
+       "  -P print results in a format suitable for parsing by another program\n"
+       "  -N Do not print header. Only valid when -P is enabled.\n"
+       "  -L in parsable output mode (-P), continue listening after the active scan is completed\n\n"

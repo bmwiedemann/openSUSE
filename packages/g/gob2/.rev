@@ -1,0 +1,174 @@
+<revisionlist>
+  <revision rev="1" vrev="7">
+    <srcmd5>a9fe701a6a1ae9afe7a811cf2d583bb4</srcmd5>
+    <version>2.0.14</version>
+    <time>1168902921</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="49">
+    <srcmd5>9bac740a75a4e45f04e171ba34fb98bc</srcmd5>
+    <version>2.0.14</version>
+    <time>1175213282</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bb18e3c6008b025ca3c32670bd2a3a60</srcmd5>
+    <version>2.0.15</version>
+    <time>1201900171</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="56">
+    <srcmd5>bb18e3c6008b025ca3c32670bd2a3a60</srcmd5>
+    <version>2.0.15</version>
+    <time>1201900171</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="57">
+    <srcmd5>9f7d380ecac633f9462d62898b2e0b92</srcmd5>
+    <version>2.0.15</version>
+    <time>1245363781</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0ea9b6a3e93953afd15027641a95b0a6</srcmd5>
+    <version>2.0.16</version>
+    <time>1249062557</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>0ea9b6a3e93953afd15027641a95b0a6</srcmd5>
+    <version>2.0.16</version>
+    <time>1249062557</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>e3db2d6050d44719943f09f1b8f7ee3a</srcmd5>
+    <version>2.0.16</version>
+    <time>1268923842</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cee215fca167ac6342eeb8ff9aaf2250</srcmd5>
+    <version>2.0.17</version>
+    <time>1270585296</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gob2 based on submit request 37080 from user vuntz
+</comment>
+    <requestid>37080</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>cee215fca167ac6342eeb8ff9aaf2250</srcmd5>
+    <version>2.0.17</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>cee215fca167ac6342eeb8ff9aaf2250</srcmd5>
+    <version>2.0.17</version>
+    <time>1278678579</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>55dda6c576bae76bb9bf9f19b14a82ea</srcmd5>
+    <version>2.0.18</version>
+    <time>1294655788</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57537 from user vuntz
+</comment>
+    <requestid>57537</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>825f7b1ef4306775f05d1ecb2ba04ef6</srcmd5>
+    <version>2.0.18</version>
+    <time>1294655813</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57537
+</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>825f7b1ef4306775f05d1ecb2ba04ef6</srcmd5>
+    <version>2.0.18</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>825f7b1ef4306775f05d1ecb2ba04ef6</srcmd5>
+    <version>2.0.18</version>
+    <time>1319181935</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>d144a6045648cb0bc5014abfbeb5d1ed</srcmd5>
+    <version>2.0.18</version>
+    <time>1323191720</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>3a79d2b817b6693ddd5841f3bb12881f</srcmd5>
+    <version>2.0.18</version>
+    <time>1325787143</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>99053</requestid>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>3a79d2b817b6693ddd5841f3bb12881f</srcmd5>
+    <version>2.0.18</version>
+    <time>1340183401</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a99f67370c29de96d87b1195988265a6</srcmd5>
+    <version>2.0.19</version>
+    <time>1356703214</time>
+    <user>namtrac</user>
+    <comment>Update to 2.0.19 (forwarded request 145878 from dimstar)</comment>
+    <requestid>146496</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>a99f67370c29de96d87b1195988265a6</srcmd5>
+    <version>2.0.19</version>
+    <time>1359108984</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>a99f67370c29de96d87b1195988265a6</srcmd5>
+    <version>2.0.19</version>
+    <time>1379662530</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e92c6924432722a8c7002689c7aa4c5e</srcmd5>
+    <version>2.0.20</version>
+    <time>1387207239</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.0.20:
+  + Require glib 2.4, and change use of the _take_ownership
+    functions to _take_ functions.
+  + Support for GTK3.
+  + Names on properties and signals. (forwarded request 210898 from Zaitor)</comment>
+    <requestid>210933</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>e92c6924432722a8c7002689c7aa4c5e</srcmd5>
+    <version>2.0.20</version>
+    <time>1409301071</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>ae1def078e13dda8fac175d795ca964e</srcmd5>
+    <version>2.0.20</version>
+    <time>1521052729</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure neutrality of description. (forwarded request 585144 from jengelh)</comment>
+    <requestid>585836</requestid>
+  </revision>
+</revisionlist>

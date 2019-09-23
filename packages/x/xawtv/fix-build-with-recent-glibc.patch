@@ -1,0 +1,12 @@
+diff --git a/common/get_media_devices.c b/common/get_media_devices.c
+index a2d6354..9a1f75f 100644
+--- a/common/get_media_devices.c
++++ b/common/get_media_devices.c
+@@ -23,6 +23,7 @@
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <string.h>
+ #include <stdlib.h>
+ #include <malloc.h>

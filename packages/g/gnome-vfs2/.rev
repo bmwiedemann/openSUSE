@@ -1,0 +1,491 @@
+<revisionlist>
+  <revision rev="1" vrev="33">
+    <srcmd5>7ddd34f1d885bc511fdd1bf4b0b8e6ca</srcmd5>
+    <version>2.16.1</version>
+    <time>1168186940</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="36">
+    <srcmd5>414d1176340a6f8b7b6e83c5fe376134</srcmd5>
+    <version>2.16.1</version>
+    <time>1170418041</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="40">
+    <srcmd5>e79f272d3f2f9b120493dc428fcbc038</srcmd5>
+    <version>2.16.1</version>
+    <time>1171559867</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7ac706751e5ad122548fe038e10cc510</srcmd5>
+    <version>2.17.91</version>
+    <time>1171917316</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>fa5e06a667cf30618b12446224647897</srcmd5>
+    <version>2.17.91</version>
+    <time>1172442299</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>588d44d10b6758d7842f4f3d9536c34f</srcmd5>
+    <version>2.17.91</version>
+    <time>1172782380</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>544ef08b7db2de1127d7bd7d5450d46d</srcmd5>
+    <version>2.18.0.1</version>
+    <time>1174592751</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>72b58cae62a12409557ae82c4de14d0e</srcmd5>
+    <version>2.18.0.1</version>
+    <time>1174816016</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>a38c59d960bf64a1a0b08aa3ed762848</srcmd5>
+    <version>2.18.0.1</version>
+    <time>1175121622</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>efa386381fdd728cf56babafe7e2d49b</srcmd5>
+    <version>2.18.0.1</version>
+    <time>1175628368</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>9b2f438661e7170a90ef60c080a69ffa</srcmd5>
+    <version>2.18.0.1</version>
+    <time>1177011026</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="25">
+    <srcmd5>3513a9fb573ab6343dec71089222e94d</srcmd5>
+    <version>2.18.0.1</version>
+    <time>1179763645</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2892f59c8c82bf40b40b0655630fd11c</srcmd5>
+    <version>2.19.2</version>
+    <time>1184084103</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8984c3d480b15d62bfc36a39fda00b84</srcmd5>
+    <version>2.19.3</version>
+    <time>1186071232</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>a300b38bf7136a165b9c29a3628fe134</srcmd5>
+    <version>2.19.3</version>
+    <time>1186673465</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>426bba81b4331cf368cf6296b0c58697</srcmd5>
+    <version>2.19.91</version>
+    <time>1188568162</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>07f941d0e32a5e824733593ad0b75c3c</srcmd5>
+    <version>2.19.91</version>
+    <time>1189109745</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>23ad27d9bc38df623d895257742b3421</srcmd5>
+    <version>2.20.0</version>
+    <time>1190221453</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>be2627ddc548041fbd88241668e06b76</srcmd5>
+    <version>2.20.0</version>
+    <time>1192127694</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="43">
+    <srcmd5>5d639f4fb6dd275695844d9c38dfb781</srcmd5>
+    <version>2.20.0</version>
+    <time>1200607256</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6540f68c6b207f5710f0fafd0b3ab942</srcmd5>
+    <version>2.20.1</version>
+    <time>1201566989</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e1485bc8cd7cc5d14cb84d5ecbd45fad</srcmd5>
+    <version>2.21.90</version>
+    <time>1201826574</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="21">
+    <srcmd5>facb12f2043efb2dbe17b11a407795cf</srcmd5>
+    <version>2.21.90</version>
+    <time>1205431320</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e1037928b97322c32d66173061dbd8b7</srcmd5>
+    <version>2.22.0</version>
+    <time>1205512892</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>a51b1d6adb67ce65c3c8b286ebc63374</srcmd5>
+    <version>2.22.0</version>
+    <time>1207173662</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="12">
+    <srcmd5>3c2fd6c2cdc28e84d3469dc5fa19fa36</srcmd5>
+    <version>2.22.0</version>
+    <time>1207829858</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="21">
+    <srcmd5>703c425bfee270507294f8638d92faba</srcmd5>
+    <version>2.22.0</version>
+    <time>1209644320</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="29">
+    <srcmd5>da0fb8fdce1bd880ecdc30a3e2fe03da</srcmd5>
+    <version>2.22.0</version>
+    <time>1211407192</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="42">
+    <srcmd5>b9a71a0872e63b7c062ead768bf89c78</srcmd5>
+    <version>2.22.0</version>
+    <time>1216417796</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>29816f2f83654b4352a2862aa291328f</srcmd5>
+    <version>2.23.0</version>
+    <time>1218669944</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8aa4c96de30c55221982fd5e515cc481</srcmd5>
+    <version>2.24.0</version>
+    <time>1223738605</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>ee337e2b237be96c374ec61fbf541473</srcmd5>
+    <version>2.24.0</version>
+    <time>1226937515</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>856a5523003272ec7439f81dd33b516c</srcmd5>
+    <version>2.24.0</version>
+    <time>1227881052</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>58f19ce24f1885afda79f51969a6273f</srcmd5>
+    <version>2.24.0</version>
+    <time>1229340843</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>3c6ce720747c30d30c20083eae972e73</srcmd5>
+    <version>2.24.0</version>
+    <time>1232626199</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>cb4169e1ed02055f18a87d5cb07d3eff</srcmd5>
+    <version>2.24.0</version>
+    <time>1233966380</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>67cbc167d4441d817ee1a9a6a56d8759</srcmd5>
+    <version>2.24.1</version>
+    <time>1238086843</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>430c4f67a93f71a04583479126e505e1</srcmd5>
+    <version>2.24.1</version>
+    <time>1243466106</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>430c4f67a93f71a04583479126e505e1</srcmd5>
+    <version>2.24.1</version>
+    <time>1243466106</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>375a50e798352b45adf6577bd095cd71</srcmd5>
+    <version>2.24.2</version>
+    <time>1260268252</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-vfs2 based on submit request 25837 from user vuntz
+</comment>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>2a929a0c0b2d504084c84225fdb1c8c1</srcmd5>
+    <version>2.24.2</version>
+    <time>1262129620</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-vfs2 based on submit request 27837 from user vuntz
+</comment>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>8f1306e58fdb2832262fdf8bd86ad2b5</srcmd5>
+    <version>2.24.2</version>
+    <time>1267751590</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-vfs2 based on submit request 33767 from user dimstar
+</comment>
+    <requestid>33767</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>b6492a24cb32e6fab842c1b18e1eedbf</srcmd5>
+    <version>2.24.2</version>
+    <time>1268923822</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>95b69aa9e933678db3cf0922d932e9ca</srcmd5>
+    <version>2.24.3</version>
+    <time>1270084151</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-vfs2 based on submit request 36340 from user vuntz
+</comment>
+    <requestid>36340</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>4ab8b57dd7978810e2ee48df82a2d29c</srcmd5>
+    <version>2.24.3</version>
+    <time>1274786371</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-vfs2 based on submit request 40528 from user vuntz
+</comment>
+    <requestid>40528</requestid>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>4ab8b57dd7978810e2ee48df82a2d29c</srcmd5>
+    <version>2.24.3</version>
+    <time>1278667347</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="47" vrev="4">
+    <srcmd5>4ab8b57dd7978810e2ee48df82a2d29c</srcmd5>
+    <version>2.24.3</version>
+    <time>1278678579</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>470938f4076ca7aabd2f42557062fd04</srcmd5>
+    <version>2.24.4</version>
+    <time>1287143320</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-vfs2 based on submit request 50719 from user vuntz
+</comment>
+    <requestid>50719</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>470938f4076ca7aabd2f42557062fd04</srcmd5>
+    <version>2.24.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>b8b645bf75e2c31ddd53316b64f6236f</srcmd5>
+    <version>2.24.4</version>
+    <time>1315560111</time>
+    <user>saschpe</user>
+    <comment>Pushing most of G:F</comment>
+    <requestid>81499</requestid>
+  </revision>
+  <revision rev="51" vrev="6">
+    <srcmd5>007f56bbdbfbe94a2e9537aa2b8caa7e</srcmd5>
+    <version>2.24.4</version>
+    <time>1315560119</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81499
+</comment>
+  </revision>
+  <revision rev="52" vrev="8">
+    <srcmd5>007f56bbdbfbe94a2e9537aa2b8caa7e</srcmd5>
+    <version>2.24.4</version>
+    <time>1319181928</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="53" vrev="9">
+    <srcmd5>1e68127940972ce45c4fbdff1c0df468</srcmd5>
+    <version>2.24.4</version>
+    <time>1323191693</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="54" vrev="11">
+    <srcmd5>1e68127940972ce45c4fbdff1c0df468</srcmd5>
+    <version>2.24.4</version>
+    <time>1340183391</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="55" vrev="12">
+    <srcmd5>e5c478961ea234f7aac71448049b3904</srcmd5>
+    <version>2.24.4</version>
+    <time>1344875215</time>
+    <user>namtrac</user>
+    <comment>Integrate Christian's security patching</comment>
+    <requestid>130006</requestid>
+  </revision>
+  <revision rev="56" vrev="13">
+    <srcmd5>f1d2d88c88cf73c47c305301eecd658e</srcmd5>
+    <version>2.24.4</version>
+    <time>1358680620</time>
+    <user>coolo</user>
+    <comment>- Fix patch order to fix translatability of strings in patches. (forwarded request 149137 from dimstar)</comment>
+    <requestid>149151</requestid>
+  </revision>
+  <revision rev="57" vrev="15">
+    <srcmd5>f1d2d88c88cf73c47c305301eecd658e</srcmd5>
+    <version>2.24.4</version>
+    <time>1359108969</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="58" vrev="16">
+    <srcmd5>7d0a4cea02c7735f621f06a18788969f</srcmd5>
+    <version>2.24.4</version>
+    <time>1359827524</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 150708 from coolo)</comment>
+    <requestid>150732</requestid>
+  </revision>
+  <revision rev="59" vrev="17">
+    <srcmd5>ea778bbdd4f47a6043dd910b2e7d1d4e</srcmd5>
+    <version>2.24.4</version>
+    <time>1364896057</time>
+    <user>coolo</user>
+    <comment>Build with new glib</comment>
+    <requestid>162038</requestid>
+  </revision>
+  <revision rev="60" vrev="18">
+    <srcmd5>6c51e259644ced0d386cf1cce4935bdf</srcmd5>
+    <version>2.24.4</version>
+    <time>1372568327</time>
+    <user>coolo</user>
+    <comment>- Replace $(srcdir) for TESTS in Makefile.am with .. (breaks out
+  of tree builds, but we don't care that much).
+- Cleanup other obsolete version checks:
+  + Make -doc package unconditionally noarch (was &gt; 11.2)
+  + No longer mess with incomplete languages (was &lt;= 11.2)
+  + Drop hal-devel BuildRequires (was &lt; 11.3)</comment>
+    <requestid>181429</requestid>
+  </revision>
+  <revision rev="61" vrev="20">
+    <srcmd5>6c51e259644ced0d386cf1cce4935bdf</srcmd5>
+    <version>2.24.4</version>
+    <time>1379662510</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="62" vrev="21">
+    <srcmd5>3289553481fea5a278087d69e5fb6359</srcmd5>
+    <version>2.24.4</version>
+    <time>1387206712</time>
+    <user>coolo</user>
+    <comment>- Drop gnome-vfs2-net-usershare.diff: patch has been disabled since
+  at least openSUSE 11.1. (forwarded request 210739 from Zaitor)</comment>
+    <requestid>210938</requestid>
+  </revision>
+  <revision rev="63" vrev="22">
+    <srcmd5>edb14cbcc7427c48b2f7911659b304ad</srcmd5>
+    <version>2.24.4</version>
+    <time>1389284664</time>
+    <user>coolo</user>
+    <comment>- BuildRequire gamin-devel instead of unmaintained fam(-devel).</comment>
+    <requestid>213230</requestid>
+  </revision>
+  <revision rev="64" vrev="23">
+    <srcmd5>7e19be55d4c5f31c132b1b29e5fa6960</srcmd5>
+    <version>2.24.4</version>
+    <time>1389810933</time>
+    <user>coolo</user>
+    <comment>- Add gnome-vfs2-g_memmove-no-more.patch: Use memmove in place of
+  obsolete g_memmove. (forwarded request 213231 from RBrownCCB)</comment>
+    <requestid>213826</requestid>
+  </revision>
+  <revision rev="65" vrev="24">
+    <srcmd5>a1b47333952e67618b72039fca691084</srcmd5>
+    <version>2.24.4</version>
+    <time>1391019574</time>
+    <user>coolo</user>
+    <comment>Tue Jan  28 21:10:49 UTC 2014 - claudiozumbo@gmail.com
+- Pass --with-samba-includes=%{_includedir}/samba-4.0 to configure
+  in order to find libsmbclient.h in /usr/include/samba-4.0/
+  instead of /usr/include and build with SMB support (bnc#860649).</comment>
+    <requestid>215438</requestid>
+  </revision>
+  <revision rev="66" vrev="26">
+    <srcmd5>a1b47333952e67618b72039fca691084</srcmd5>
+    <version>2.24.4</version>
+    <time>1409301047</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="67" vrev="27">
+    <srcmd5>67379e95b78c9fc0d1855b9b79120c1b</srcmd5>
+    <version>2.24.4</version>
+    <time>1459254860</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches:
+  + gnome-vfs2-2.12.2-smb-method-fixes.patch
+  + gnome-vfs2-bug338168-cannot-access-from-location-input.patch
+  Porting some missing patches from SLE to openSUSE (bnc#832381). (forwarded request 376611 from dimstar)</comment>
+    <requestid>376812</requestid>
+  </revision>
+  <revision rev="68" vrev="28">
+    <srcmd5>de67f1cb9b53eff40b8929863582970a</srcmd5>
+    <version>2.24.4</version>
+    <time>1498641297</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501748</requestid>
+  </revision>
+  <revision rev="69" vrev="29">
+    <srcmd5>97603fe1c06aafa0bab29c06e68fadde</srcmd5>
+    <version>2.24.4</version>
+    <time>1508609827</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-vfs2-openssl11.patch: Fixed the openssl build by
+  replacing the private-&gt;ctx usage with a one working for all
+  openssl (bsc#1042650).</comment>
+    <requestid>535499</requestid>
+  </revision>
+  <revision rev="70" vrev="30">
+    <srcmd5>a6bcfd3fd50c8fc5261c0ad70a1f0937</srcmd5>
+    <version>2.24.4</version>
+    <time>1520502277</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581115 from dimstar)</comment>
+    <requestid>582751</requestid>
+  </revision>
+</revisionlist>

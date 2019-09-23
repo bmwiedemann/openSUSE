@@ -1,0 +1,113 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>28e8fe9ef6e60a05dad1c712618fe52d</srcmd5>
+    <version>1.3.5</version>
+    <time>1336471412</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115444</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b9dd64be74d75a48c1ed7d7fabb9e3d2</srcmd5>
+    <version>1.3.5</version>
+    <time>1338017446</time>
+    <user>coolo</user>
+    <comment>- Use proper Supplements so the driver is picked up by
+  the package manager when the user has the required hardware.</comment>
+    <requestid>121909</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7c641a0c6361c03cca9b343ef6d44e09</srcmd5>
+    <version>1.3.5</version>
+    <time>1338569707</time>
+    <user>coolo</user>
+    <comment>- make the supplements conditional on xorg-x11-server being installed (forwarded request 122994 from coolo)</comment>
+    <requestid>123052</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>7c641a0c6361c03cca9b343ef6d44e09</srcmd5>
+    <version>1.3.5</version>
+    <time>1340184350</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0a91422846d8827fb8d914b3d2f8798d</srcmd5>
+    <version>1.3.6</version>
+    <time>1347969717</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.3.6:
+  + Add support for building without XAA.
+  + Convert to new compat API.</comment>
+    <requestid>134625</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>0a91422846d8827fb8d914b3d2f8798d</srcmd5>
+    <version>1.3.6</version>
+    <time>1359110617</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>00ebbd92bd90380c1bbf41cc96f88c21</srcmd5>
+    <version>1.3.6</version>
+    <time>1363953990</time>
+    <user>coolo</user>
+    <comment>- Add mibstore.patch, fixes build with xorg-server 1.14 
+- Fix loading the driver without XAA</comment>
+    <requestid>160485</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>f3bead59b6d8a861b50573d2d559b10c</srcmd5>
+    <version>1.3.6</version>
+    <time>1377248999</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195921</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>f3bead59b6d8a861b50573d2d559b10c</srcmd5>
+    <version>1.3.6</version>
+    <time>1379665033</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>f3bead59b6d8a861b50573d2d559b10c</srcmd5>
+    <version>1.3.6</version>
+    <time>1409303716</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e49789b3887b7b1b9f5e4f0f529ef6c0</srcmd5>
+    <version>1.3.7</version>
+    <time>1427983404</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.7
+  * eventually a release which includes all changes required for
+    building with current Xserver sources since the previous
+    release in 2012
+- removed upstreamed patches now in 1.3.7:
+  * U_Fix-loading-the-driver-without-XAA.patch
+  * U_Remove-mibstore.h.patch</comment>
+    <requestid>293785</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e81ddafa3c71c295b034b66ca8898784</srcmd5>
+    <version>1.3.7</version>
+    <time>1480693390</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch
+  * Adapt Block/WakeupHandler signature for ABI 23</comment>
+    <requestid>442929</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4a21725526942bd74d49695a3a0a4063</srcmd5>
+    <version>1.3.8</version>
+    <time>1485598043</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>452719</requestid>
+  </revision>
+</revisionlist>

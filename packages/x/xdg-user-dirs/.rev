@@ -1,0 +1,206 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b1c3a8f2ec5d0a429542049b62c09130</srcmd5>
+    <version>0.8</version>
+    <time>1184986022</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7a3cadd3ca41474a4e7a50a21d194d15</srcmd5>
+    <version>0.9</version>
+    <time>1193068724</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e8696bf37d371e164fb15d1627c6a89a</srcmd5>
+    <version>0.10</version>
+    <time>1204160648</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="41">
+    <srcmd5>e8696bf37d371e164fb15d1627c6a89a</srcmd5>
+    <version>0.10</version>
+    <time>1204160648</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="42">
+    <srcmd5>7f325b7e816168a9bcf507aaea6aa44e</srcmd5>
+    <version>0.10</version>
+    <time>1233704842</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="44">
+    <srcmd5>7f325b7e816168a9bcf507aaea6aa44e</srcmd5>
+    <version>0.10</version>
+    <time>1233704842</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f3217e71f6444db100c58971bf049d7d</srcmd5>
+    <version>0.12</version>
+    <time>1258381376</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/xdg-user-dirs based on submit request 24254 from user vuntz
+</comment>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>71d482f8465ec3df87441eacf0eaf0f4</srcmd5>
+    <version>0.12</version>
+    <time>1268926547</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>71d482f8465ec3df87441eacf0eaf0f4</srcmd5>
+    <version>0.12</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>71d482f8465ec3df87441eacf0eaf0f4</srcmd5>
+    <version>0.12</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>eda540d7b34050bbcaf9de556824a0e4</srcmd5>
+    <version>unknown</version>
+    <time>1284461903</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/xdg-user-dirs based on submit request 48091 from user vuntz
+</comment>
+    <requestid>48091</requestid>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>eda540d7b34050bbcaf9de556824a0e4</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>56ae7956d868946087b2e6a4fab54229</srcmd5>
+    <version>0.13</version>
+    <time>1298030060</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61555 from user vuntz
+</comment>
+    <requestid>61555</requestid>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>74c9d6e85ee082577b10b230bd6076f4</srcmd5>
+    <version>0.13</version>
+    <time>1298030073</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61555
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>105aa26889ed57eb7bbd8443cc011a68</srcmd5>
+    <version>0.14</version>
+    <time>1304598077</time>
+    <user>saschpe</user>
+    <comment>Update to 0.14</comment>
+    <requestid>69596</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>51cfbc543ce26eb63125ca4f496de8de</srcmd5>
+    <version>0.14</version>
+    <time>1311577030</time>
+    <user>saschpe</user>
+    <comment>Fixed typo in description of xdg-user-dirs.spec</comment>
+    <requestid>76862</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>4b44b9d23e13283d046024770c8a69ec</srcmd5>
+    <version>0.14</version>
+    <time>1311577042</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76862
+</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>4b44b9d23e13283d046024770c8a69ec</srcmd5>
+    <version>0.14</version>
+    <time>1319182581</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>fbd80007d32adfc08047c44790b70b48</srcmd5>
+    <version>0.14</version>
+    <time>1323195256</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>fbd80007d32adfc08047c44790b70b48</srcmd5>
+    <version>0.14</version>
+    <time>1340184340</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>0d125be1ab5c9ec1ba86e65589f56bae</srcmd5>
+    <version>0.14</version>
+    <time>1344146723</time>
+    <user>coolo</user>
+    <comment>Split out lang -packae (bnc#645077) (forwarded request 128595 from dimstar)</comment>
+    <requestid>129958</requestid>
+  </revision>
+  <revision rev="22" vrev="11">
+    <srcmd5>0d125be1ab5c9ec1ba86e65589f56bae</srcmd5>
+    <version>0.14</version>
+    <time>1359110600</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="12">
+    <srcmd5>0efd95cb096b3e0f13911e72ece9fb5b</srcmd5>
+    <version>0.14</version>
+    <time>1365337720</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162733 from namtrac)</comment>
+    <requestid>162940</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b504852a8d09af665eaeec2c50f3bfae</srcmd5>
+    <version>0.15</version>
+    <time>1378997040</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to ver 0.15, just new translations and manpages, should be safe to take even this late in the game.
+
+Take it or reject it, it's not of vital importance to have it updated. (forwarded request 197857 from Zaitor)</comment>
+    <requestid>198615</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>b504852a8d09af665eaeec2c50f3bfae</srcmd5>
+    <version>0.15</version>
+    <time>1379665006</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>b504852a8d09af665eaeec2c50f3bfae</srcmd5>
+    <version>0.15</version>
+    <time>1409303689</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9b0a34a9456a318e1a2e6372d0c345a2</srcmd5>
+    <version>0.16</version>
+    <time>1508946281</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536235</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f2b35411b3e7b87f31aee7eb099ce763</srcmd5>
+    <version>0.17</version>
+    <time>1541509535</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644236</requestid>
+  </revision>
+</revisionlist>

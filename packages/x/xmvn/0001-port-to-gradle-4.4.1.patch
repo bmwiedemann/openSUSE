@@ -1,0 +1,115 @@
+From 69525c9fff3a3a6b9af6bb542d345d8bc32430e4 Mon Sep 17 00:00:00 2001
+From: Yky <arrarexcaravels@gmail.com>
+Date: Thu, 4 Oct 2018 20:46:13 +0200
+Subject: [PATCH] port to gradle 4.4.1
+
+---
+ .../xmvn/connector/gradle/GradleResolver.java      | 21 +++++++++++------
+ xmvn-parent/pom.xml                                | 27 +++++++++++-----------
+ 2 files changed, 28 insertions(+), 20 deletions(-)
+
+diff --git a/xmvn-connector-gradle/src/main/java/org/fedoraproject/xmvn/connector/gradle/GradleResolver.java b/xmvn-connector-gradle/src/main/java/org/fedoraproject/xmvn/connector/gradle/GradleResolver.java
+index 9e1a247a..9a40aa8c 100644
+--- a/xmvn-connector-gradle/src/main/java/org/fedoraproject/xmvn/connector/gradle/GradleResolver.java
++++ b/xmvn-connector-gradle/src/main/java/org/fedoraproject/xmvn/connector/gradle/GradleResolver.java
+@@ -40,13 +40,13 @@ import org.gradle.internal.component.external.model.DefaultMutableMavenModuleRes
+ import org.gradle.internal.component.external.model.FixedComponentArtifacts;
+ import org.gradle.internal.component.external.model.ModuleComponentArtifactMetadata;
+ import org.gradle.internal.component.external.model.ModuleComponentResolveMetadata;
++import org.gradle.internal.component.external.model.ModuleDependencyMetadata;
+ import org.gradle.internal.component.external.model.MutableMavenModuleResolveMetadata;
+ import org.gradle.internal.component.external.model.MutableModuleComponentResolveMetadata;
+ import org.gradle.internal.component.model.ComponentArtifactMetadata;
+ import org.gradle.internal.component.model.ComponentOverrideMetadata;
+ import org.gradle.internal.component.model.ComponentResolveMetadata;
+ import org.gradle.internal.component.model.DefaultIvyArtifactName;
+-import org.gradle.internal.component.model.DependencyMetadata;
+ import org.gradle.internal.component.model.IvyArtifactName;
+ import org.gradle.internal.component.model.ModuleSource;
+ import org.gradle.internal.resolve.ArtifactResolveException;
+@@ -155,12 +155,6 @@ public class GradleResolver
+         return true;
+     }
+ 
+-    @Override
+-    public void listModuleVersions( DependencyMetadata arg0, BuildableModuleVersionListingResolveResult arg1 )
+-    {
+-        logger.debug( "listModuleVersions() called, but it is NOT IMPLEMENTED" );
+-    }
+-
+     @Override
+     public void resolveArtifact( ComponentArtifactMetadata artifact, ModuleSource module,
+                                  BuildableArtifactResolveResult result )
+@@ -306,4 +300,17 @@ public class GradleResolver
+     {
+         return MetadataFetchingCost.CHEAP;
+     }
++
++    @Override
++    public LocallyAvailableExternalResource getMetaDataArtifact( ModuleDependencyMetadata arg0, ArtifactType arg1 )
++    {
++        throw new UnsupportedOperationException();
++    }
++
++    @Override
++    public void listModuleVersions( ModuleDependencyMetadata arg0, BuildableModuleVersionListingResolveResult arg1 )
++    {
++        logger.debug( "listModuleVersions() called, but it is NOT IMPLEMENTED" );
++
++    }
+ }
+diff --git a/xmvn-parent/pom.xml b/xmvn-parent/pom.xml
+index f6465d90..d4f9dda7 100644
+--- a/xmvn-parent/pom.xml
++++ b/xmvn-parent/pom.xml
+@@ -84,7 +84,7 @@
+     <atinjectVersion>1</atinjectVersion>
+     <ivyVersion>2.4.0</ivyVersion>
+     <jcommanderVersion>1.64</jcommanderVersion>
+-    <gradleVersion>4.3.1</gradleVersion>
++    <gradleVersion>4.4.1</gradleVersion>
+     <groovyVersion>2.4.10</groovyVersion>
+     <mavenInvokerVersion>2.2</mavenInvokerVersion>
+     <mavenResolverVersion>1.0.3</mavenResolverVersion>
+@@ -474,6 +474,18 @@
+             </execution>
+           </executions>
+         </plugin>
++        <plugin>
++        <groupId>org.apache.rat</groupId>
++        <artifactId>apache-rat-plugin</artifactId>
++        <executions>
++          <execution>
++            <id>rat-check</id>
++            <goals>
++              <goal>check</goal>
++            </goals>
++          </execution>
++        </executions>
++      </plugin>
+       </plugins>
+     </pluginManagement>
+     <plugins>
+@@ -501,18 +513,7 @@
+           </execution>
+         </executions>
+       </plugin>
+-      <plugin>
+-        <groupId>org.apache.rat</groupId>
+-        <artifactId>apache-rat-plugin</artifactId>
+-        <executions>
+-          <execution>
+-            <id>rat-check</id>
+-            <goals>
+-              <goal>check</goal>
+-            </goals>
+-          </execution>
+-        </executions>
+-      </plugin>
++      
+       <plugin>
+         <artifactId>maven-site-plugin</artifactId>
+         <configuration>
+-- 
+2.14.2
+

@@ -1,0 +1,5 @@
+<package name="ktp-contact-runner" project="openSUSE:Factory">
+  <title>a Krunner plugin to find your Telepathy contacts</title>
+  <description></description>
+  <devel project="KDE:Applications" package="ktp-contact-runner"/>
+</package>

@@ -1,0 +1,53 @@
+From d3af5d2fd6962f8f6779c4187792dc2dc21d1afe Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ralf=20Cors=C3=A9pius?= <corsepiu@fedoraproject.org>
+Date: Fri, 17 Feb 2017 15:01:48 +0100
+Subject: Add jigdo-0.7.3-gcc7.patch (Fix F26FTBFS).
+
+rename SIZE_WIDTH into size_width to avoid preprocessor symbol clash with c++14/gcc7
+
+---
+ jigdo-0.7.3-gcc7.patch | 39 +++++++++++++++++++++++++++++++++++++++
+ jigdo.spec             | 10 +++++++++-
+ 2 files changed, 48 insertions(+), 1 deletion(-)
+ create mode 100644 jigdo-0.7.3-gcc7.patch
+
+Index: jigdo-0.7.3/src/mkimage.cc
+===================================================================
+--- jigdo-0.7.3.orig/src/mkimage.cc
++++ jigdo-0.7.3/src/mkimage.cc
+@@ -285,27 +285,27 @@ bostream& JigdoDescVec::put(bostream& fi
+ //______________________________________________________________________
+ 
+ namespace {
+-  const int SIZE_WIDTH = 12;
++  const int size_width = 12;
+ }
+ 
+ ostream& JigdoDesc::ImageInfo::put(ostream& s) const {
+-  s << "image-info  " << setw(SIZE_WIDTH) << size() << "              "
++  s << "image-info  " << setw(size_width) << size() << "              "
+     << md5() << ' ' << blockLength() << '\n';
+   return s;
+ }
+ ostream& JigdoDesc::UnmatchedData::put(ostream& s) const {
+-  s << "in-template " << setw(SIZE_WIDTH) << offset() << ' '
+-    << setw(SIZE_WIDTH) << size() << '\n';
++  s << "in-template " << setw(size_width) << offset() << ' '
++    << setw(size_width) << size() << '\n';
+   return s;
+ }
+ ostream& JigdoDesc::MatchedFile::put(ostream& s) const {
+-  s << "need-file   " << setw(SIZE_WIDTH) << offset() << ' '
+-    << setw(SIZE_WIDTH) << size() << ' ' << md5() << ' ' << rsync() << '\n';
++  s << "need-file   " << setw(size_width) << offset() << ' '
++    << setw(size_width) << size() << ' ' << md5() << ' ' << rsync() << '\n';
+   return s;
+ }
+ ostream& JigdoDesc::WrittenFile::put(ostream& s) const {
+-  s << "have-file   " << setw(SIZE_WIDTH) << offset() << ' '
+-    << setw(SIZE_WIDTH) << size() << ' ' << md5() << ' ' << rsync() << '\n';
++  s << "have-file   " << setw(size_width) << offset() << ' '
++    << setw(size_width) << size() << ' ' << md5() << ' ' << rsync() << '\n';
+   return s;
+ }
+ 

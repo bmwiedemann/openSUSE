@@ -1,0 +1,36 @@
+diff --git a/source/puddlestuff/puddleobjects.py b/source/puddlestuff/puddleobjects.py
+index fdd04b1..ebc32db 100644
+--- a/source/puddlestuff/puddleobjects.py
++++ b/source/puddlestuff/puddleobjects.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python
+ # -*- coding: utf-8 -*-
+ 
+ """
+diff --git a/source/puddlestuff/puddlesettings.py b/source/puddlestuff/puddlesettings.py
+index 1146249..7fd7f36 100644
+--- a/source/puddlestuff/puddlesettings.py
++++ b/source/puddlestuff/puddlesettings.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python
+ # -*- coding: utf-8 -*-
+ 
+ import sys, resource, os
+diff --git a/source/puddlestuff/puddletag.py b/source/puddlestuff/puddletag.py
+index ab7a9ed..cb59fa2 100644
+--- a/source/puddlestuff/puddletag.py
++++ b/source/puddlestuff/puddletag.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python
+ # -*- coding: utf-8 -*-
+ import sys, os
+ from puddlestuff.puddleobjects import (PuddleConfig, PuddleDock, winsettings,
+diff --git a/source/puddlestuff/webdb.py b/source/puddlestuff/webdb.py
+index bc17854..c6cb76e 100644
+--- a/source/puddlestuff/webdb.py
++++ b/source/puddlestuff/webdb.py
+@@ -1,4 +1,3 @@
+-#! /usr/bin/env python
+ # -*- coding: utf-8 -*-
+ import glob, os, pdb, sys, traceback
+ 

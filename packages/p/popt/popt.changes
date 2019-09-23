@@ -1,0 +1,172 @@
+-------------------------------------------------------------------
+Sat Jan 26 13:22:41 UTC 2019 - meissner@suse.com
+
+- build a 32bit library generically, for use by 32bit fuzzing
+
+-------------------------------------------------------------------
+Thu Feb 22 15:10:44 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Tue Aug  8 19:29:17 UTC 2017 - jengelh@inai.de
+
+- Remove --with-pic which is only for static libs.
+- Fix RPM groups.
+
+-------------------------------------------------------------------
+Mon Oct  7 14:25:32 UTC 2013 - schwab@suse.de
+
+- popt-alignment-checks.patch: fix alignment checks
+
+-------------------------------------------------------------------
+Sun Jul  7 16:34:40 UTC 2013 - jengelh@inai.de
+
+- Fix typo in popt-libc-updates.patch that prevented it to work
+  with glibc before 2.17.
+- More robust make install call; remove redundant %clean section
+
+-------------------------------------------------------------------
+Fri Jun 14 15:15:49 UTC 2013 - coolo@suse.com
+
+- fix popt-libc-updates.patch to work also with automake 1.13
+
+-------------------------------------------------------------------
+Mon Apr 15 09:58:18 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Wed Feb 13 19:53:36 UTC 2013 - crrodriguez@opensuse.org
+
+- Remove patches:
+  - config-guess-sub-update.patch
+  - popt-secure-getenv.patch
+  run autoreconf instead .
+- popt-libc-updates.patch replaces popt-secure-getenv.patch
+  * test for secure_getenv instead of __secure_getenv
+  * update configure.ac so it can be regenerated with modern
+    autotools.
+  * Internal symbols are already hidden with a linker script, 
+   improve that by hidding symbols with the compiler too.
+  * use strerror_r instead of strerror in the library.
+
+
+-------------------------------------------------------------------
+Mon Feb 11 19:31:36 UTC 2013 - crrodriguez@opensuse.org
+
+- popt wants __secure_getenv at configure time, but This
+ function is no longer available as of glibc 2.17.
+ test for secure_getenv() instead (popt-secure-getenv.patch)
+
+-------------------------------------------------------------------
+Mon Feb  4 16:09:56 UTC 2013 - dmueller@suse.com
+
+- Add config-guess-sub-update.patch:
+  * Update config.guess/sub for AArch64
+
+-------------------------------------------------------------------
+Fri Jan 25 09:25:40 UTC 2013 - cfarrell@suse.com
+
+- license update: X11
+  New spdx.org license list now contains an official entry for X11
+
+-------------------------------------------------------------------
+Wed Aug 22 12:55:33 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-XFree86-1.0
+  This is not the MIT license but rather the old version of the XFree86
+  license (which is not upstream at spdx.org/Ãlicenses - hence the SUSE
+  proprietary prefix)
+
+-------------------------------------------------------------------
+Sun Feb 12 21:38:30 UTC 2012 - crrodriguez@opensuse.org
+
+- Libraries back into %{_libdir}, /usr merge project. 
+
+-------------------------------------------------------------------
+Sun Oct  9 11:09:27 UTC 2011 - jengelh@medozas.de
+
+- Add pkgconfig to BuildRequires to get automatic pkgconfig(popt)
+  provides
+
+-------------------------------------------------------------------
+Wed Feb  2 08:35:00 UTC 2011 - andreas.hanke@gmx-topmail.de
+
+- don't build libpopt.a
+- don't list popt.mo files twice
+
+-------------------------------------------------------------------
+Sun Jan 16 14:25:52 UTC 2011 - coolo@novell.com
+
+- use %find_lang
+
+-------------------------------------------------------------------
+Sun Sep 19 15:05:30 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.16:
+  + Include xcode prject files in distributed tar ball
+  + Build system fixes
+  + Provide popt.pc
+  + Extended test suite
+  + Various fixes
+- Changes from version 1.15:
+  + Build system fixes
+  + avoid displaying --[no]nofoo with POPT_ARGFLAG_TOGGLE.
+  + reserve a bit for --[no]opt prefix toggling.
+  + trim out escaped newline(s) from file content, other fixes.
+  + check/print argv[0] in --help for NULL.
+  + misc fixes
+- Changes from version 1.14:
+  + Build system fixes
+  + permit "#define POPT_fprintf fprintf" to lose the malloc'ing
+    fprintf
+  + Many fixes.
+  + Updated translations
+- Drop popt-1.13-popt_fprintf.diff: Should all be fixed upstream.
+  In case POPT_fprintf really still does not suffice, we can just
+  use "#define POPT_fprintf frptinf" and be set. The code is 
+  prepared for this override.
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Wed Apr  7 17:06:09 CEST 2010 - mls@suse.de
+
+- make libpopt0-32bit obsolete popt-32bit [bnc#544964]
+
+-------------------------------------------------------------------
+Mon Feb  1 12:26:16 UTC 2010 - jengelh@medozas.de
+
+- remove sparcv9-specific baselib exceptions (not needed)
+
+-------------------------------------------------------------------
+Sat Dec 12 18:40:03 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+- add baselibs.conf as a source
+- add baselibs for SPARC
+
+-------------------------------------------------------------------
+Fri Aug 28 15:42:48 CEST 2009 - mrueckert@suse.de
+
+- add back baselibs.conf. bootstrap done
+
+-------------------------------------------------------------------
+Fri Aug 28 15:38:46 CEST 2009 - mrueckert@suse.de
+
+- disable baselibs.conf for the moment
+
+-------------------------------------------------------------------
+Wed Aug 26 16:08:58 CEST 2009 - mls@suse.de
+
+- add baselibs.conf
+
+-------------------------------------------------------------------
+Fri Aug 21 19:30:12 CEST 2009 - mls@suse.de
+
+- initial release
+

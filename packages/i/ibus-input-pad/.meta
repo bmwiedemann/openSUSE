@@ -1,0 +1,5 @@
+<package name="ibus-input-pad" project="openSUSE:Factory">
+  <title>Input Pad for IBus</title>
+  <description>The input pad engine for IBus platform.</description>
+  <devel project="M17N" package="ibus-input-pad"/>
+</package>

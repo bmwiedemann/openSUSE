@@ -1,0 +1,5 @@
+<package name="python-grpc-google-iam-v1" project="openSUSE:Factory">
+  <title></title>
+  <description>GRPC library for the google-iam-v1 service</description>
+  <devel project="devel:languages:python" package="python-grpc-google-iam-v1"/>
+</package>

@@ -1,0 +1,8 @@
+<package name="python-LEPL" project="openSUSE:Factory">
+  <title>Recursive descent, full backtracking parser library</title>
+  <description>LEPL is a recursive descent parser, written in Python.
+
+Multiple parses can be found for ambiguous grammars and it can also
+handle left-recursive grammars.</description>
+  <devel project="devel:languages:python" package="python-LEPL"/>
+</package>

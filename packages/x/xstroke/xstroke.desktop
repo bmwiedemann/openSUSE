@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=xstroke
+Exec=xstroke
+Icon=xstroke
+GenericName=Fullscreen Gesture Recognition
+Comment=Fullscreen gesture recognition for X
+X-KDE-StartupNotify=false
+Categories=Utility;Accessibility;

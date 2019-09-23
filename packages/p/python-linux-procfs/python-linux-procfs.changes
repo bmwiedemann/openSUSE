@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Tue Dec 11 09:21:25 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to full singlespec for others to use with all python
+  variants as the targets are defined in distro setup (ie py3 only
+  on SLE15)
+
+-------------------------------------------------------------------
+Mon Dec 10 17:10:01 UTC 2018 - trenn@suse.de
+
+- Package needed for latest tuned (bsc#1071436)
+- correct version in first changelog entry
+- only xz, removed gz tarball
+- called test executable in %check section
+- Removed never/unused patch
+- Use python3_install and python3_build, this package is only
+  needed for python3 intentionally
+- Remove %{python_files} from %files section again, this package
+  is for python3 intended only
+- Run spec_cleaner
+- Use pycache_only
+
+-------------------------------------------------------------------
+Fri Dec  7 16:41:39 UTC 2018 - trenn@suse.de
+
+- Inital version 0.6 submission
+

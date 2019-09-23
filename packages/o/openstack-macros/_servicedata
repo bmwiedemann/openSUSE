@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+            <param name="url">git@github.com:openstack/rpm-packaging.git</param>
+          <param name="changesrevision">d2406bf5fe8b01ecd9f02df7847bec235ef27c6c</param></service></servicedata>

@@ -1,0 +1,6 @@
+<package name="sbl" project="openSUSE:Factory">
+  <title>SuSE blinux</title>
+  <description>SuSE blinux is a screen reader for the Linux console. It supports
+braille displays.</description>
+  <devel project="hardware" package="sbl"/>
+</package>

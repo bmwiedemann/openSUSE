@@ -1,0 +1,5 @@
+<package name="xorg-x11-libX11-ccache" project="openSUSE:Factory">
+  <title>X.Org compose cache</title>
+  <description>Cache for X.Org compose files.</description>
+  <devel project="X11:XOrg" package="xorg-x11-libX11-ccache"/>
+</package>

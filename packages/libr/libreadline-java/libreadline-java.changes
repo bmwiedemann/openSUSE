@@ -1,0 +1,182 @@
+-------------------------------------------------------------------
+Fri Aug  3 07:26:14 UTC 2018 - tchvatal@suse.com
+
+- Version bump to 0.8.2:
+  * bugfix: using tab completion would crash the virtual machine
+  * getVar()/setVar() (Bernhard)
+  * unicode support (Andrew)
+  * added bats test case and running on travis ci (Andrew)
+  * various build fixes (Andrew)
+- Update URL/Source to point to current location
+- Refresh patches:
+  * libreadline-java-0.8.0-jdk10.patch
+  * libreadline-java-0.8.0-sourcetarget.patch
+  * libreadline-java-ncurses.patch
+- Remove upstream merged:
+  * libreadline-java-0.8.0-missing-return-type.patch
+
+-------------------------------------------------------------------
+Mon Dec 18 10:57:33 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * libreadline-java-0.8.0-jdk10.patch
+    - Allow building with jdk10 that does not have javah
+  * libreadline-java-0.8.0-sourcetarget.patch
+    - Build with source and target level 1.6
+- Run fdupes on documentation
+
+-------------------------------------------------------------------
+Mon Sep 18 12:42:17 UTC 2017 - fstrba@suse.com
+
+- Removed patch:
+  * libreadline-java-0.8.0-doclint.patch
+    - Not needed since we disabled globally doclint by default
+
+-------------------------------------------------------------------
+Fri Sep  8 12:09:01 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * libreadline-java-0.8.0-doclint.patch
+    - Fix build with jdk9 whose javadoc is more picky
+
+-------------------------------------------------------------------
+Fri Jun  9 11:06:12 UTC 2017 - tchvatal@suse.com
+
+- Require java 1.6.0 or newer to build as gcj won't compile us
+
+-------------------------------------------------------------------
+Tue Jul  8 10:14:12 UTC 2014 - tchvatal@suse.com
+
+- Cleanup bit more.
+
+-------------------------------------------------------------------
+Fri Jun 27 13:39:34 UTC 2014 - tchvatal@suse.com
+
+- Fix build on sle11
+
+-------------------------------------------------------------------
+Fri Jun 27 12:06:27 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Sep 13 09:12:04 UTC 2013 - mvyskocil@suse.com
+
+- add javapackages-tools to buildrequires
+
+-------------------------------------------------------------------
+Wed Jun 20 13:29:19 UTC 2012 - mvyskocil@suse.cz
+
+- do not build with gcc java
+- use libedit instead of gnu readline (licensing issues)
+
+-------------------------------------------------------------------
+Thu Jan 12 19:48:34 UTC 2012 - andreas.stieger@gmx.de
+
+- remove libreadline-java-java14compat.patch
+  ( -C -ftarget=1.4 not supported by current javac )
+
+-------------------------------------------------------------------
+Mon Feb  1 11:49:09 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Thu Jul 31 14:19:28 CEST 2008 - anosek@suse.cz
+
+- added %{_javadocdir} to the %files section
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Jan 23 14:34:34 CET 2008 - mvyskocil@suse.cz
+
+- fixed beta build
+
+-------------------------------------------------------------------
+Tue May 29 18:40:54 CEST 2007 - dbornkessel@suse.de
+
+- added gjdoc and fastjar to BuildRequires 
+
+-------------------------------------------------------------------
+Wed May  2 11:53:44 CEST 2007 - dbornkessel@suse.de
+
+- added unzip to BuildRequires
+
+-------------------------------------------------------------------
+Wed Feb 14 19:25:27 CET 2007 - dbornkessel@suse.de
+
+- added missing return type where missing (Bug #237944) 
+
+-------------------------------------------------------------------
+Thu Dec 14 18:16:24 CET 2006 - jsmeix@suse.de
+
+- Removed xml-commons-apis from BuildRequires because xerces-j2
+  already provides xml-commons-apis but xerces-j2 would be
+  deinstalled when rpm installs xml-commons-apis after xerces-j2
+  (which is rpm standard behaviour in this case) but without
+  xerces-j2 the RPM capabilities jaxp_parser_impl and
+  xml-commons-resolver are no longer provided in the
+  installed system.
+
+-------------------------------------------------------------------
+Tue Sep 26 14:29:17 CEST 2006 - skh@suse.de
+
+- don't use icecream
+- use -source 1.4 and -target 1.4 for build with java 1.5
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:42 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Nov 25 13:59:11 CET 2005 - jsmeix@suse.de
+
+- Replaced {_jnidir} by {_jnidir}-ext
+
+-------------------------------------------------------------------
+Wed Aug 17 14:15:06 CEST 2005 - uli@suse.de
+
+- fixed to build on lib64 archs
+
+-------------------------------------------------------------------
+Thu Jul 28 16:45:50 CEST 2005 - jsmeix@suse.de
+
+- Adjustments in the spec file.
+
+-------------------------------------------------------------------
+Mon Jul 18 16:50:15 CEST 2005 - jsmeix@suse.de
+
+- Current version 0.8.0 from JPackage.org
+
+-------------------------------------------------------------------
+Wed Jul 13 14:44:07 CEST 2005 - uli@suse.de
+
+- lib64tified (fixes s390x) 
+
+-------------------------------------------------------------------
+Thu Nov 18 01:58:20 CET 2004 - ro@suse.de
+
+- fixed file list
+
+-------------------------------------------------------------------
+Wed Sep 15 16:02:52 CEST 2004 - skh@suse.de
+
+- Fix Requires (remove fixed dependency on readline 4.3 and enable rpm
+  dependency check)
+
+-------------------------------------------------------------------
+Wed Sep  8 09:27:56 CEST 2004 - skh@suse.de
+
+- Fix PreRequire
+
+-------------------------------------------------------------------
+Thu Sep  2 17:24:55 CEST 2004 - skh@suse.de
+
+- Initial package created with version 0.8.0 (JPackage 1.5)
+

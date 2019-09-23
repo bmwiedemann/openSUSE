@@ -1,0 +1,215 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ab8fc7b37cf8ddbf9777bac8c42118c</srcmd5>
+    <version>4.3.0</version>
+    <time>1357819837</time>
+    <user>coolo</user>
+    <comment>Update libpfm in order to use it in both oprofile and papi</comment>
+    <requestid>147732</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6ab8fc7b37cf8ddbf9777bac8c42118c</srcmd5>
+    <version>4.3.0</version>
+    <time>1359109327</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>2a1ed3d57aaccc546979897259817839</srcmd5>
+    <version>4.3.0</version>
+    <time>1359465369</time>
+    <user>coolo</user>
+    <comment>- Add baselibs.conf: provide libpfm4 as -32bit (makes papi-32bit
+  installable). (forwarded request 150175 from dimstar)</comment>
+    <requestid>150176</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>2a1ed3d57aaccc546979897259817839</srcmd5>
+    <version>4.3.0</version>
+    <time>1379663046</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e6fa936d54c70e8c8f121dab89977ed4</srcmd5>
+    <version>4.4.0</version>
+    <time>1386224256</time>
+    <user>coolo</user>
+    <comment> (forwarded request 209461 from jones_tony)</comment>
+    <requestid>209462</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>e6fa936d54c70e8c8f121dab89977ed4</srcmd5>
+    <version>4.4.0</version>
+    <time>1409301665</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>233ad6133eba404cfa7bf04452a5ab9d</srcmd5>
+    <version>4.5.0</version>
+    <time>1424117689</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>286335</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9083b584d6a632cd3cf6d6d603d73076</srcmd5>
+    <version>4.6.0</version>
+    <time>1426495346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>290775</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>913139792ba0e0c2191e8226803ea91a</srcmd5>
+    <version>4.6.0</version>
+    <time>1433145352</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>309391</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>6f449958a7e515b9f082553553710721</srcmd5>
+    <version>4.6.0</version>
+    <time>1453416276</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354861</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c13ca33df0a1e4e0848bc3445ea1d0fa</srcmd5>
+    <version>4.7.0</version>
+    <time>1466326219</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 4.7.0:
+  * Intel Skylake core PMU
+  * Intel Haswell-EP uncore PMUs
+  * Intel Broadwell-DE
+  * Major update on Intel event tables
+  * bug fixes and many other improvements
+- Respect cflags, disable werror bnc#985166</comment>
+    <requestid>402869</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a7d26c1f40d135f251aba52119f3d6d7</srcmd5>
+    <version>4.8.0</version>
+    <time>1483048319</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447891</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>83466c442e1505760c7ec473c73bf50e</srcmd5>
+    <version>4.8.0</version>
+    <time>1485167743</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450353</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>e9c43c9d76f52365ca6f306a724692ad</srcmd5>
+    <version>4.8.0</version>
+    <time>1503592045</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517255</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f5358dc3fa8a05ae723f2523ea91e5a0</srcmd5>
+    <version>4.9.0</version>
+    <time>1516443582</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build and work with python3:
+  * libpfm-python3.patch
+- Build the python parts using singlespec macros to allow switching
+  as needed
+
+- Update to 4.9.0:
+  * Intel Broadwell EP uncore PMUs support (all PMU boxes)
+  * AMD Fam17h (Zen) core PMU support
+  * IBM Power9 core PMU support
+  * AMD Fam16h (Jaguar) support
+  * various event table updates
+  * various bug fixes
+- Drop upstream merged patches:
+  * libpfm_add-power9-entries-to-validate_power-c.patch
+  * libpfm_enable-ibm-power9-core-pmu-support-beta.patch
+  * libpfm_fix-power9-event-file-header.patch
+  * libpfm_power9-event-list-update-for-perfmon2.patch</comment>
+    <requestid>567404</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>643c8439762b34771b48e29f08848368</srcmd5>
+    <version>4.9.0</version>
+    <time>1516803880</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove useless byte-compiling for py2 that breaks py3 only build
+- Update libpfm-python3.patch to fix one stray identation issue (forwarded request 568493 from scarabeus_iv)</comment>
+    <requestid>568494</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>84dff98818188e3129c2f2ab3d4c0a6d</srcmd5>
+    <version>4.9.0</version>
+    <time>1529667336</time>
+    <user>maxlin_factory</user>
+    <comment>  in devel package. Backport from Factory. (bnc#1017407)</comment>
+    <requestid>618287</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d327fa31009803c80e910add94dfddaf</srcmd5>
+    <version>4.10.1</version>
+    <time>1533887086</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 4.10.1 fate#326340:
+  * Fix build issues on Cavium Tunder X2 from v4.10
+  * Update to Intel Skylake event table
+  * Intel Skylake X uncore PMUs support (all PMU boxes)
+  * Intel Knight Mill (KNM) core PMU support
+  * Cavium Thunder X2 core PMU support
+  * various event table updates
+  * various bug fixes
+- Drop patch merged upstream:
+  * libpfm-python3.patch</comment>
+    <requestid>628121</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>dd06f7f8ddf4643375d9a1c8a91e398d</srcmd5>
+    <version>4.10.1</version>
+    <time>1541509174</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 4.10.1 fate#326340 fate#326387:</comment>
+    <requestid>643937</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>2e14ff0a6539167c86d32d4ca40810f5</srcmd5>
+    <version>4.10.1</version>
+    <time>1562591401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713342</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>2c1ef5d4608515a816d7add3147fdb08</srcmd5>
+    <version>4.10.1</version>
+    <time>1565962373</time>
+    <user>dimstar_suse</user>
+    <comment>- Add provides/obsoletes wrt bsc#1145710 to avoid file conflict
+
+- Add more patches for s390 fate#327911 bsc#1145464:
+  * 0001-s390-cpumf-add-IBM-z14-ZR1-support.patch
+  * 0001-s390-cpumf-add-support-for-counter-second-version-nu.patch
+  * 0001-s390-cpumf-add-support-for-machine-type-8561.patch</comment>
+    <requestid>723469</requestid>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>0f08f135ee11f82f9ebc02535e0a6b89</srcmd5>
+    <version>4.10.1</version>
+    <time>1566248554</time>
+    <user>dimstar_suse</user>
+    <comment>- Add more patches for s390 fate#327911 bsc#1145464
+  These add support for ZR1 and add support for counter second version
+  number 6:</comment>
+    <requestid>724596</requestid>
+  </revision>
+</revisionlist>

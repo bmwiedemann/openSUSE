@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Fri Jun 10 17:54:19 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 4.4.1
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Sep 16 12:26:17 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 4.3.2
+  * ready for gcc/g++ v5
+  * bug fixes
+- Drop obsolete tsa-openmp.patch
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 4.2.9
+- Fix build with openmp
+  * tsa-openmp.patch
+

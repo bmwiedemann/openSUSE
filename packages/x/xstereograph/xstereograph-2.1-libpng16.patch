@@ -1,0 +1,12 @@
+Index: stereograph-0.28a/gfxio.c
+===================================================================
+--- stereograph-0.28a/gfxio.c
++++ stereograph-0.28a/gfxio.c
+@@ -20,6 +20,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <png.h>
+ #include <math.h>
+ #include <time.h>

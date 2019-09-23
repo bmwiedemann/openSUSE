@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Tue Jan 29 07:40:09 UTC 2019 - suse+build@de-korte.org
+
+- Remove (Build)Requires php7-pear-Archive_Tar
+- Only require php7-macros if needed
+
+-------------------------------------------------------------------
+Sat Aug 26 06:29:41 UTC 2017 - jweberhofer@weberhofer.at
+
+- Improve package, use php packaging macros
+
+-------------------------------------------------------------------
+Sat Aug 26 05:32:05 UTC 2017 - jweberhofer@weberhofer.at
+
+- Require php7-macros
+
+-------------------------------------------------------------------
+Sat Aug  5 12:26:25 UTC 2017 - jweberhofer@weberhofer.at
+
+- Splitted off PHP7 package
+
+- version 1.1.0
+  * Request #21033: PHP warning depreciated
+
+-------------------------------------------------------------------
+Sat Aug  5 12:13:59 UTC 2017 - jweberhofer@weberhofer.at
+
+- Simplified spec
+- Updated to simplifying splitting off a php7 package
+
+-------------------------------------------------------------------
+Fri Feb  1 14:16:40 UTC 2013 - aj@ajaissle.de
+
+- Improved spec to serve more build targets.
+
+-------------------------------------------------------------------
+Tue Nov 27 07:49:36 UTC 2012 - Ralf Lang <lang@b1-systems.de>
+
+- need to explicitly include php53-devel to supersede php-macros for SLE11 builds
+- SLES 11SP2 compatibility
+
+-------------------------------------------------------------------
+Mon Nov 26 15:45:59 UTC 2012 - Ralf Lang <lang@b1-systems.de>
+
+- version 1.0.6
+  Bug #18856: Authentication warnings because of wrong Auth_SASL::factory argument [kguest]
+  Added basic support for any mechanism of the SCRAM family; with thanks to Jehan Pagès. [kguest]
+  crammd5 and digestmd5 mechanisms name deprecated in favour of IANA registered names 'cram-md5' and 'digest-md5'; with thanks to Jehan Pagès. [kguest]
+-------------------------------------------------------------------
+Thu Jan 12 11:30:49 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Mon Jan 31 09:16:48 UTC 2011 - lang@b1-systems.de
+
+- BSD license as of pear package statement
+
+-------------------------------------------------------------------
+Thu Jan 20 15:19:21 UTC 2011 - chris@computersalat.de
+
+- change to php_pear_gen_filelist macro
+
+-------------------------------------------------------------------
+Wed Jan 19 15:01:06 UTC 2011 - chris@computersalat.de
+
+- pkg rename php5-pear-Auth_SASL
+- merge with php-pear-auth_sasl, php5-pear-auth_sasl
+- changelog to changes file
+- added php-macros
+
+-------------------------------------------------------------------
+Tue Dec 21 09:20:50 UTC 2010 - lang@b1-systems.de
+ 
+- updated to 1.0.4
+  * Fix bug #16624: open_basedir restriction warning in
+    DigestMD5.php [till]
+- dropped php4 support in package
+- cleaned up some warnings
+
+-------------------------------------------------------------------
+Tue Nov 10 12:57:44 UTC 2009 - chris@computersalat.de
+
+- new version 1.0.3
+  * Move SVN to proper directory structure [cweiske]
+  * Fix Bug #8775: Error in package.xml
+  * Fix Bug #14671: Security issue due to seeding random number
+    generator [cweiske]
+
+-------------------------------------------------------------------
+Sat May 30 18:12:19 CEST 2009 - chris@computersalat.de
+
+- fixed post script
+
+-------------------------------------------------------------------
+Thu May 21 15:01:14 CEST 2009 - chris@computersalat.de
+
+- added stuff to automatically create correct filelist
+  o tested against Factory (1120)
+  o opensuse >= 1100 complains about
+    "directory not owned by package"
+- some rpmlint fixes
+
+-------------------------------------------------------------------
+Tue May 19 21:06:33 CEST 2009 - chris@computersalat.de
+
+- beautify spec
+  o new spec header
+  o package rename due to package convention
+  o removed php4 stuff, deps
+  o added Provides and Obsoletes for old package names.
+    This should not break deps
+- removed 1.0.1 source
+ 
+-------------------------------------------------------------------
+Tue Jun 13 08:05:30 UTC 2006 - suse-tux@gmx.de
+
+- updated to version 1.0.2
+- added rpmmacros (changed "mv" to "%__mv" etc.)
+- removed #usedforbuild, added %clean-macro
+- made spec file portable for older/newer suse_versions
+
+-------------------------------------------------------------------
+Wed Jan 25 14:47:04 UTC 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 19 23:15:58 UTC 2006 - mmarek@suse.de
+
+- fix filelist, remove temporary files created by pear installer
+- unify php5-pear-*.spec files
+- increase php's memory_limit during installation (parsing
+  xml needs more than default 8M sometimes)
+
+-------------------------------------------------------------------
+Mon Jan 16 23:43:58 UTC 2006 - mmarek@suse.cz
+
+- created package to satisfy horde dependencies
+

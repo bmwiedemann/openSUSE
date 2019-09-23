@@ -1,0 +1,11 @@
+--- src/xtermset.h
++++ src/xtermset.h
+@@ -87,7 +87,7 @@
+ 
+ #define CHECK if(switches[0])
+ 
+-#define CHECKFORCOMMAND if ((i + 1 < argc) && (strncmp(argv[i+1],"-",1)!=0)) { \
++#define CHECKFORCOMMAND if (i + 1 < argc) { \
+    strcpy(argptr->param,argv[++i]); \
+ }
+ 

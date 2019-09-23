@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>89b1dbf1eeb6e5e2038136278dd59ede</srcmd5>
+    <version>0.089</version>
+    <time>1302514816</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66726 from user coolo
+</comment>
+    <requestid>66726</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1b70c89f668a0d82b6d13eb62a503938</srcmd5>
+    <version>0.089</version>
+    <time>1302514828</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66726
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1b70c89f668a0d82b6d13eb62a503938</srcmd5>
+    <version>0.089</version>
+    <time>1319182270</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>53dcbc73754d47cd1d749cd2c4785f50</srcmd5>
+    <version>0.090</version>
+    <time>1321282502</time>
+    <user>coolo</user>
+    <comment>- updated to 0.090
+  bump prereq on Params::Validate to deal with recent buggy versions
+
+- remove %attr for docu</comment>
+    <requestid>91111</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e74354f249cc9017fbbda6d67023d454</srcmd5>
+    <version>0.090</version>
+    <time>1323193323</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>84f9112e69e1219fe3cb7c9a4be7252c</srcmd5>
+    <version>0.091</version>
+    <time>1330081595</time>
+    <user>coolo</user>
+    <comment>- updated to 0.091
+      don't die quite so violently when a Params::Validate constraint fails
+      (initial patch by harleypig@github; final blame to RJBS)</comment>
+    <requestid>106602</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>84f9112e69e1219fe3cb7c9a4be7252c</srcmd5>
+    <version>0.091</version>
+    <time>1340183846</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>84f9112e69e1219fe3cb7c9a4be7252c</srcmd5>
+    <version>0.091</version>
+    <time>1359109679</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c999e74e5bb82ac82c3527b318cde0d1</srcmd5>
+    <version>0.093</version>
+    <time>1370517329</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 177638 from coolo)</comment>
+    <requestid>177672</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>c999e74e5bb82ac82c3527b318cde0d1</srcmd5>
+    <version>0.093</version>
+    <time>1379663687</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5cc64bf8022e42b7b5cb2c881460e9d6</srcmd5>
+    <version>0.095</version>
+    <time>1381080987</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202427</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>254ce4ae62666848de9a701df79f48b2</srcmd5>
+    <version>0.096</version>
+    <time>1381223050</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 0.096
+      - update version of Test::Warnings required
+         (thanks, Alexandr Ciornii!)</comment>
+    <requestid>202578</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a6182b44fdfab385022358daec2e5fc4</srcmd5>
+    <version>0.097</version>
+    <time>1394386676</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>224987</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>a6182b44fdfab385022358daec2e5fc4</srcmd5>
+    <version>0.097</version>
+    <time>1409302308</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3276a70fe57973476b37d75388db9717</srcmd5>
+    <version>0.099</version>
+    <time>1429107848</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296071</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>63dd36cc26ae3030225c4047551018f2</srcmd5>
+    <version>0.100</version>
+    <time>1468999147</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411402</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>86c1b25c6e5740b0f7f52e043ab36102</srcmd5>
+    <version>0.101</version>
+    <time>1518187654</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573987</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2829abd4e2a1bb40cdc8579ad6184d45</srcmd5>
+    <version>0.102</version>
+    <time>1519747065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579753</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e1905c0fcd5bc27f73c197c236f7d719</srcmd5>
+    <version>0.103</version>
+    <time>1535704973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631319</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0e962f8096a26cf1e55843b20d5d7955</srcmd5>
+    <version>0.104</version>
+    <time>1557142050</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700735</requestid>
+  </revision>
+</revisionlist>

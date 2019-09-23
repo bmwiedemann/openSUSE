@@ -1,0 +1,140 @@
+From: Alexander Graf <agraf@suse.de>
+Date: Fri, 30 Sep 2011 19:40:36 +0200
+Subject: linux-user: add binfmt wrapper for argv[0] handling
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When using qemu's linux-user binaries through binfmt, argv[0] gets lost
+along the execution because qemu only gets passed in the full file name
+to the executable while argv[0] can be something completely different.
+
+This breaks in some subtile situations, such as the grep and make test
+suites.
+
+This patch adds a wrapper binary called qemu-$TARGET-binfmt that can be
+used with binfmt's P flag which passes the full path _and_ argv[0] to
+the binfmt handler.
+
+The binary would be smart enough to be versatile and only exist in the
+system once, creating the qemu binary path names from its own argv[0].
+However, this seemed like it didn't fit the make system too well, so
+we're currently creating a new binary for each target archictecture.
+
+CC: Reinhard Max <max@suse.de>
+Signed-off-by: Alexander Graf <agraf@suse.de>
+[AF: Rebased onto new Makefile infrastructure, twice]
+[AF: Updated for aarch64 for v2.0.0-rc1]
+[AF: Rebased onto Makefile changes for v2.1.0-rc0]
+[AF: Rebased onto script rewrite for v2.7.0-rc2 - to be fixed]
+Signed-off-by: Andreas Färber <afaerber@suse.de>
+---
+ Makefile.target          | 13 +++++++++++++
+ linux-user/Makefile.objs |  2 ++
+ linux-user/binfmt.c      | 42 ++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 57 insertions(+)
+
+diff --git a/Makefile.target b/Makefile.target
+index ae02495951..53fd5aa01e 100644
+--- a/Makefile.target
++++ b/Makefile.target
+@@ -42,6 +42,10 @@ STPFILES=
+ # Makefile Tests
+ include $(SRC_PATH)/tests/tcg/Makefile.include
+ 
++ifdef CONFIG_LINUX_USER
++PROGS+=$(QEMU_PROG)-binfmt
++endif
++
+ config-target.h: config-target.h-timestamp
+ config-target.h-timestamp: config-target.mak
+ 
+@@ -130,6 +134,8 @@ QEMU_CFLAGS+=-I$(SRC_PATH)/linux-user/$(TARGET_ABI_DIR) \
+ obj-y += linux-user/
+ obj-y += gdbstub.o thunk.o
+ 
++obj-binfmt-y += linux-user/
++
+ endif #CONFIG_LINUX_USER
+ 
+ #########################################################
+@@ -170,7 +176,11 @@ GENERATED_FILES += hmp-commands.h hmp-commands-info.h
+ 
+ endif # CONFIG_SOFTMMU
+ 
++ifdef CONFIG_LINUX_USER
++dummy := $(call unnest-vars,,obj-y obj-binfmt-y)
++else
+ dummy := $(call unnest-vars,,obj-y)
++endif
+ all-obj-y := $(obj-y)
+ 
+ include $(SRC_PATH)/Makefile.objs
+@@ -207,6 +217,9 @@ ifdef CONFIG_DARWIN
+ 	$(call quiet-command,SetFile -a C $@,"SETFILE","$(TARGET_DIR)$@")
+ endif
+ 
++$(QEMU_PROG)-binfmt: $(obj-binfmt-y)
++	$(call LINK,$^)
++
+ gdbstub-xml.c: $(TARGET_XML_FILES) $(SRC_PATH)/scripts/feature_to_c.sh
+ 	$(call quiet-command,rm -f $@ && $(SHELL) $(SRC_PATH)/scripts/feature_to_c.sh $@ $(TARGET_XML_FILES),"GEN","$(TARGET_DIR)$@")
+ 
+diff --git a/linux-user/Makefile.objs b/linux-user/Makefile.objs
+index 769b8d8336..d48837313d 100644
+--- a/linux-user/Makefile.objs
++++ b/linux-user/Makefile.objs
+@@ -7,3 +7,5 @@ obj-$(TARGET_HAS_BFLT) += flatload.o
+ obj-$(TARGET_I386) += vm86.o
+ obj-$(TARGET_ARM) += arm/nwfpe/
+ obj-$(TARGET_M68K) += m68k-sim.o
++
++obj-binfmt-y = binfmt.o
+diff --git a/linux-user/binfmt.c b/linux-user/binfmt.c
+new file mode 100644
+index 0000000000..cd1f513b33
+--- /dev/null
++++ b/linux-user/binfmt.c
+@@ -0,0 +1,42 @@
++#include <stdio.h>
++#include <stdarg.h>
++#include <unistd.h>
++#include <libgen.h>
++#include <string.h>
++#include <stdlib.h>
++
++
++int main(int argc, char **argv, char **envp)
++{
++    char *binfmt;
++    char **new_argv;
++
++    /*
++     * Check if our file name ends with -binfmt
++     */
++    binfmt = argv[0] + strlen(argv[0]) - strlen("-binfmt");
++    if (strcmp(binfmt, "-binfmt")) {
++        fprintf(stderr, "%s: Invalid executable name\n", argv[0]);
++        exit(1);
++    }
++    if (argc < 3) {
++        fprintf(stderr, "%s: Please use me through binfmt with P flag\n",
++                argv[0]);
++        exit(1);
++    }
++
++    binfmt[0] = '\0';
++    /* Now argv[0] is the real qemu binary name */
++
++    new_argv = (char **)malloc((argc + 2) * sizeof(*new_argv));
++    if (argc > 3) {
++        memcpy(&new_argv[4], &argv[3], (argc - 3) * sizeof(*new_argv));
++    }
++    new_argv[0] = argv[0];
++    new_argv[1] = (char *)"-0";
++    new_argv[2] = argv[2];
++    new_argv[3] = argv[1];
++    new_argv[argc + 1] = NULL;
++
++    return execve(new_argv[0], new_argv, envp);
++}

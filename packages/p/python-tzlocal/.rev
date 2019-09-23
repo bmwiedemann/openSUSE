@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40e599f49e99d5ac2af7fa5395341101</srcmd5>
+    <version>1.1.3</version>
+    <time>1438615302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>319787</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d4b8947a059a7a6f04f8c1c1aeab01f3</srcmd5>
+    <version>1.1.3</version>
+    <time>1443684536</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>331686</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1ee215d3df06440f76589cb0585e9ace</srcmd5>
+    <version>1.1.3</version>
+    <time>1500670109</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>511254</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5fc3cebcd253d5becce86f7adffc9a12</srcmd5>
+    <version>1.4</version>
+    <time>1507570871</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530456</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>908364770ef977616a939aafba57e46f</srcmd5>
+    <version>1.4</version>
+    <time>1536876066</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635361</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>f85b000c6b53d52b16c3aaff33f1c962</srcmd5>
+    <version>1.4</version>
+    <time>1545648330</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659730</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fcf6400125b55edca444a24acbf397cb</srcmd5>
+    <version>1.5.1</version>
+    <time>1551784907</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to github archive as per upstream recommendation:
+  * the pypi archive fails tests due to wrong file-&gt;symlink conversions
+- Update to 1.5.1:
+  * increased test coverage.
+  * No longer treats macOS as special, but as a unix.
+  * get_windows_info.py is renamed to update_windows_mappings.py
+  * Windows mappings now also contain mappings from deprecated zoneinfo names.
+    (Preston-Landers, regebro)</comment>
+    <requestid>681301</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>32cd2a68f60c33323c15fe3880571fbb</srcmd5>
+    <version>1.5.1</version>
+    <time>1552985949</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685941</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>81c491ffae9a9f326810bdc69acc474b</srcmd5>
+    <version>2.0.0</version>
+    <time>1565178836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720064</requestid>
+  </revision>
+</revisionlist>

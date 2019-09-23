@@ -1,0 +1,13 @@
+Index: libgoogle-data-mono-1.4.0.2/Makefile
+===================================================================
+--- libgoogle-data-mono-1.4.0.2.orig/Makefile
++++ libgoogle-data-mono-1.4.0.2/Makefile
+@@ -1,7 +1,7 @@
+ CSC1=mcs
+ CSC=gmcs
+ 
+-DEFINES=/d:TRACE
++DEFINES=/d:TRACE -sdk:4.5
+ 
+ VERSION=$(shell egrep AssemblyVersion version/AssemblyVersion.cs | egrep -o \([[:digit:]]\.\)+[[:digit:]]+)
+ PREFIX=/usr/local

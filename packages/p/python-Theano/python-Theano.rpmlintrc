@@ -1,0 +1,6 @@
+addFilter("devel-dependency")
+
+# The devel files identified by rpmlint are mandatory for
+# Theano, it does not make sens to put them in a separate
+# devel package
+addFilter("devel-file-in-non-devel-package")

@@ -1,0 +1,32 @@
+--- -	2006-01-13 17:16:54.740414000 +0000
++++ src/mailfold.c	2006-01-13 17:15:39.000000000 +0000
+@@ -120,13 +120,19 @@
+       }
+ writefin:
+      i=type!=ft_PIPE&&fsync(s)&&errno!=EINVAL;	  /* EINVAL => wasn't a file */
++     if ((i&&!len?-1:len)&&lasttell>=0)
++      { int serrno=errno;
++	if(ftruncate(s,lasttell)) lasttell= -1;
++	SETerrno(serrno);
++      }
++  /* else: Do _not_ reset lasttell to -1 because the value is used for biff */
+      if(ft_lock(type))
+       { int serrno=errno;		       /* save any error information */
+ 	if(fdunlock())
+ 	   nlog("Kernel-unlock failed\n");
+ 	SETerrno(serrno);
+       }
+-     i=rclose(s)||i;
++     i=rclose(s)||i; /* if this fails, we should truncate, but it's too late */
+    }			   /* return an error even if nothing was to be sent */
+   return i&&!len?-1:len;
+ }
+@@ -237,7 +243,7 @@
+ #endif
+ 	      default:writeerr(buf);
+ 	    }
+-	   if(lasttell>=0&&!truncate(boxname,lasttell)&&(logopened||verbose))
++	   if(lasttell>=0&&(logopened||verbose))
+ 	      nlog("Truncated file to former size\n");	    /* undo garbage */
+ ret0:	   return 0;
+ 	 }

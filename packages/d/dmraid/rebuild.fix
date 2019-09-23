@@ -1,0 +1,27 @@
+Only imsm arrays can be rebuild by dmraid
+
+Others cause a segfault.
+
+Fix that so they print a more helpful error messages.
+
+From: Leonardo Chiquitto <lchiquitto@suse.com>
+Reviewed-by: NeilBrown <neilb@suse.de>
+References: bnc#716904
+---
+ lib/metadata/reconfig.c |    5 +++++
+ 1 file changed, 5 insertions(+)
+
+--- 1.0.0.rc16.orig/lib/metadata/reconfig.c
++++ 1.0.0.rc16/lib/metadata/reconfig.c
+@@ -552,6 +552,11 @@ _rebuild_raidset(struct lib_context *lc,
+ 	int driveRebuild = 1;
+ 
+ 	rs = find_group(lc, sub_rs);
++	if (!rs) {
++		log_print(lc, "Rebuild: array \"%s\" cannot be rebuilt by dmraid.\n",
++			  set_name);
++		return 1;
++	}
+ 
+ 	/* raid 0 cannot be rebuild - exit */
+ 	if (T_RAID0(sub_rs) && (!SETS(sub_rs))) {

@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>abd8f3d772269db0de0fccfe14f67f6b</srcmd5>
+    <version>1.003014</version>
+    <time>1325767762</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>98010</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>abd8f3d772269db0de0fccfe14f67f6b</srcmd5>
+    <version>1.003014</version>
+    <time>1340183902</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>abd8f3d772269db0de0fccfe14f67f6b</srcmd5>
+    <version>1.003014</version>
+    <time>1359109776</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>62c668822748307f049d4777749d38ab</srcmd5>
+    <version>1.003015</version>
+    <time>1371140426</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 178280 from coolo)</comment>
+    <requestid>178295</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>62c668822748307f049d4777749d38ab</srcmd5>
+    <version>1.003015</version>
+    <time>1379663811</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c7108716b9c83029ef4a1ae9bf0ec3e7</srcmd5>
+    <version>1.003016</version>
+    <time>1392185712</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221902</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c7108716b9c83029ef4a1ae9bf0ec3e7</srcmd5>
+    <version>1.003016</version>
+    <time>1409302447</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a5bdc0d2191231b6565d90a722a43046</srcmd5>
+    <version>1.003017</version>
+    <time>1466326092</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401464</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>353d18f2b6243b064ba1aa7ea85d8330</srcmd5>
+    <version>1.003019</version>
+    <time>1492714371</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487661</requestid>
+  </revision>
+</revisionlist>

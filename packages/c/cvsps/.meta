@@ -1,0 +1,11 @@
+<package name="cvsps" project="openSUSE:Factory">
+  <title>A Program for Generating Patch Set Information from a CVS Repository</title>
+  <description>CVSps is a program for generating 'patchset' information from a CVS
+repository. In this case, a patchset is defined as a set of changes
+made to a collection of files, all committed at the same time (using a
+single 'cvs commit' command). This information is valuable for seeing
+the big picture of the evolution of a CVS project. While CVS tracks
+revision information, it is often difficult to see what changes were
+'atomically' committed to the repository.</description>
+  <devel project="devel:tools:scm" package="cvsps"/>
+</package>

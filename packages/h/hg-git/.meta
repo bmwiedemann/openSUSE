@@ -1,0 +1,6 @@
+<package name="hg-git" project="openSUSE:Factory">
+  <title>the Hg-Git mercurial plugin</title>
+  <description>This is the Hg-Git plugin for Mercurial, adding the ability to push to and pull from a Git server repository from Mercurial. This means you can collaborate on Git based projects from Mercurial, or use a Git server as a collaboration point for a team with developers using both Git and Mercurial.</description>
+  <devel project="devel:tools:scm" package="hg-git"/>
+  <url>http://pypi.python.org/pypi/hg-git/</url>
+</package>

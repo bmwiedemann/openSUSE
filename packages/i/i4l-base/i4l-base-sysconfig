@@ -1,0 +1,11 @@
+
+## Path:       System/SuSEconfig
+## Type:       yesno
+## Default:    yes
+## Config:     isdn
+#
+# May SuSEconfig.isdn modify your /etc/ppp/pap-secret or
+# /etc/ppp/chap-secrets ? (yes/no)
+#
+MODIFY_SECRETS="yes"
+

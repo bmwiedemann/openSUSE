@@ -1,0 +1,259 @@
+-------------------------------------------------------------------
+Mon Dec  3 19:14:11 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.42.0:
+  + Attribute: Add several create_attr_*() methods.
+  + FontDescription: Add set/get_variations().
+- Changes from version 2.40.2:
+  + Build: Replace the Visual Studio project files with MSVC NMake
+    project files.
+
+-------------------------------------------------------------------
+Wed Feb 28 22:03:37 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Dec  5 14:01:23 UTC 2016 - jengelh@inai.de
+
+- Rectify RPM groups and replace old macros.
+
+-------------------------------------------------------------------
+Fri Dec  2 13:49:52 UTC 2016 - dimstar@opensuse.org
+
+- Rename to pangomm1_4 (1.4 referecing the ABI/API version). Legacy
+  package to stay around, while pangomm gets a new ABI/API.
+
+-------------------------------------------------------------------
+Fri Aug 19 21:39:28 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.40.1:
+  + C++11: Make all operator bool()s explicit.
+  + Build: Fix silent builds (bgo#768797).
+
+-------------------------------------------------------------------
+Fri Apr 15 18:42:47 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Tue Mar 29 14:26:35 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.40.0:
+  + No major changes compared to 2.39.1.
+
+-------------------------------------------------------------------
+Mon Nov 30 12:07:00 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.39.1:
+  + Renderer: Added get/set_alpha().
+  + Attribute: Added create_attr_background_alpha() and
+    create_attr_foreground_alpha().
+  + Reduce the cairomm dependency back to 1.2.2 (bgo#755460).
+
+-------------------------------------------------------------------
+Wed Sep 30 11:52:31 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.38.1:
+  + Regenerate with the latest glibmm.
+- Changes from version 2.38.0:
+  + MSVC build fixes.
+
+-------------------------------------------------------------------
+Fri Sep  4 19:23:25 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.37.2:
+  + Rebuilt with latest glibmm, whose gmmproc generates C++ move
+    operations.
+  + C++11: Mark all _CLASS_OPAQUE_REFCOUNTED classes as final.
+
+-------------------------------------------------------------------
+Sat Jul 18 10:35:26 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.37.1:
+  + Use (and require) C++11.
+  + Attribute: fix operator!= (bgo#751531).
+
+-------------------------------------------------------------------
+Tue Mar 24 19:14:32 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.36.0:
+  + No changes compared to 2.35.1.
+
+-------------------------------------------------------------------
+Wed Feb  4 13:51:38 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.35.1:
+  + Context: Add get_serial().
+  + FontMap: Add get_serial().
+  + Layout: Add get_character_count() and get_serial().
+  + Documentatoin: Update appearance to match recent glibmm and
+    gtkmm.
+  + Win32 MSVC 2008/2010 Build: Many updates and corrections.
+
+-------------------------------------------------------------------
+Mon Apr 29 11:22:04 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.34.0:
+  + Remove the use of g_type_init() because it has been deprecated.
+
+-------------------------------------------------------------------
+Fri Feb  1 18:54:18 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Mon Feb 13 10:51:36 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Tue Nov 15 10:06:57 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.28.4:
+  + Add #includes needed with the latest glibmm.
+
+-------------------------------------------------------------------
+Tue Sep 27 12:29:25 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.28.3:
+  + Build
+    - Ship convert_pangomm.m4 in tarballs (bgo#657817).
+    - Don't use obsolete macros.
+
+-------------------------------------------------------------------
+Fri Jul  8 01:31:25 CEST 2011 - vuntz@opensuse.org
+
+- Stop using source service to download the tarball, as Factory
+  will move away from this.
+
+-------------------------------------------------------------------
+Fri Apr 29 23:04:16 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 2.28.2:
+  + bgo#645669: Install the m4 files even without
+    --enable-maintainer-mode, as with other modules.
+- Use source services: download_url and set_version.
+
+-------------------------------------------------------------------
+Mon Mar 28 13:32:47 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.28.1:
+  + Avoid a tarball dependency on mm-common.
+- Changes from version 2.28.0:
+  + regenerated tarball due to changes in an m4 macro in mm-common.
+
+-------------------------------------------------------------------
+Wed Feb 23 13:04:08 UTC 2011 - adam@mizerski.pl
+
+- Update to version 2.27.1:
+  + LayoutIter: This now has a copy constructor.
+  + Layout::get_iter(): There is now a version of this method that
+    returns a LayoutIter. The version with the output parameter is
+    now deprecated.
+- Remove libsigc++2-devel and update-desktop-files BuildRequires.
+- Change BuildRequires to pkgconfig() ones:
+  + old ones: cairomm-devel, glibmm2-devel, pango-devel.
+  + pkgconfig() ones: cairomm-1.0, glibmm-2.4, pangocairo.
+- Remove explicit Requires for glibmm2-devel, cairomm-devel,
+  atk-devel and pango-devel in devel subpackage: they will
+  automatically be added the pkgconfig() way.
+- Remove Requires for devel subpackage in doc subpackage: it's not
+  really needed.
+- Pass --disable-static to configure.
+
+-------------------------------------------------------------------
+Fri Dec 10 00:09:52 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.26.3:
+  + Build/Installer: Added support for MSVC 2010 and 64 bit.
+
+-------------------------------------------------------------------
+Thu Jun 10 08:59:37 UTC 2010 - wittemar@googlemail.com
+
+- build 32bit-package
+
+-------------------------------------------------------------------
+Thu May  6 23:58:40 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.26.2:
+  + Documentation: Added main page text at index.html.
+- Changes from version +2.26.1:
+  + Minor documentation improvements.
+
+-------------------------------------------------------------------
+Mon Sep 28 18:02:49 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.26.0:
+  + Minor documentation build fixes.
+
+-------------------------------------------------------------------
+Fri Aug 28 23:16:15 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.25.1.3:
+  + Change public documentation location to library.gnome.org in
+    the pkg-config files as well.
+- Changes from version 2.25.1.2:
+  + Change public documentation location to library.gnome.org.
+- Changes from version 2.25.1.1:
+  + Reenable the per-class hierarchy graphs in the reference
+    documentation.
+  + Drop the custom HTML header and footer, and use the shared
+    doxygen.css file from mm-common.
+
+-------------------------------------------------------------------
+Wed Aug 26 16:46:46 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.25.1:
+  + Reworked the build system, using mm-common.
+
+-------------------------------------------------------------------
+Thu Mar 26 17:05:36 CET 2009 - vuntz@novell.com
+
+- Remove BuildRequires on devhelp: it's only needed for directory
+  ownership, and we can own the directories anyway.
+
+-------------------------------------------------------------------
+Tue Mar 10 21:16:24 CET 2009 - vuntz@novell.com
+
+- Update to version 2.24.0:
+  + Layout: Added show_in_cairo_context(). bgo#560232.
+  + Build: Allow pangomm to build outside the source tree.
+    bgo#570322
+  + License Header consistency.
+
+-------------------------------------------------------------------
+Mon Dec  8 12:10:49 EST 2008 - mboman@suse.de
+
+- Update to version 2.14.1:
+  + Windows build: Use the new DLL naming convention, like boost.
+  + Corrected the index page for DevHelp (bgo#559896)
+
+-------------------------------------------------------------------
+Wed Oct 22 12:32:33 CDT 2008 - maw@suse.de
+
+- Make debug packages require a specific %{version}-%{release}.
+
+-------------------------------------------------------------------
+Fri Oct  3 15:39:10 WST 2008 - mboman@suse.de
+
+- Update to version 2.14.0:
+  + Language: Added get_scripts().
+  + README and COPYING fixes.
+  + Fixed the Windows build with Visual Studio Express
+
+-------------------------------------------------------------------
+Thu Sep 18 17:37:34 CEST 2008 - maw@suse.de
+
+- Update to version 2.13.8:
+  + Context: Added set_font_map() because the C function is now 
+    public (non backend-only) API
+  + LayoutRun/GlyphItem: Added split() and letter()
+  + Renderer: Added draw_glyph_item()
+  + CairoFontMap:: Added set_default().
+
+-------------------------------------------------------------------
+Thu Sep 18 16:45:42 CEST 2008 - maw@suse.de
+
+- Initial import of version 2.13.7.
+

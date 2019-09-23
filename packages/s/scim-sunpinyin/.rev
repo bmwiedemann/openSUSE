@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>34299bb5419c857fdd828e33a1842298</srcmd5>
+    <version>2.0.3</version>
+    <time>1347894012</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>134426</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>72b12aed6fdcda04405f89b627f56b30</srcmd5>
+    <version>2.0.3</version>
+    <time>1351688708</time>
+    <user>coolo</user>
+    <comment>bnc#787545 scim-setup window won't appear. remove some deprecated functions (forwarded request 139824 from hillwood)</comment>
+    <requestid>139831</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>72b12aed6fdcda04405f89b627f56b30</srcmd5>
+    <version>2.0.3</version>
+    <time>1359110385</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>097cbe5d26e7014212c9dd782cba348c</srcmd5>
+    <version>2.0.3</version>
+    <time>1374679777</time>
+    <user>coolo</user>
+    <comment>fix factory build (forwarded request 184187 from MargueriteSu)</comment>
+    <requestid>184188</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>097cbe5d26e7014212c9dd782cba348c</srcmd5>
+    <version>2.0.3</version>
+    <time>1379664630</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>097cbe5d26e7014212c9dd782cba348c</srcmd5>
+    <version>2.0.3</version>
+    <time>1409303334</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>d0b88e3f999ff719f93b72fdcb468e1c</srcmd5>
+    <version>2.0.3</version>
+    <time>1511517457</time>
+    <user>dimstar_suse</user>
+    <comment>- Add scim-sunpinyin-scons-on-py3.patch: Fix build with scons using
+  python3 as interpreter. (forwarded request 544934 from dimstar)</comment>
+    <requestid>545057</requestid>
+  </revision>
+</revisionlist>

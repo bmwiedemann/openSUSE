@@ -1,0 +1,5 @@
+<package name="python-preggy" project="openSUSE:Factory">
+  <title></title>
+  <description>Assertion library for Python</description>
+  <devel project="devel:languages:python" package="python-preggy"/>
+</package>

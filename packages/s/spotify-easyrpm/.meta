@@ -1,0 +1,15 @@
+<package name="spotify-easyrpm" project="openSUSE:Factory">
+  <title>Spotify-EasyRPM</title>
+  <description>Spotify-EasyRPM is a bash script designed to download the latest debian package from the Spotify repository and convert it into an RPM
+
+ Features
+ 
+ * Set up a build enviornment on your PC and install rpm-build 
+ * Auto download the latest version of Spotify
+ * Convert the debian package to RPM format
+ * Install the Spotify RPM
+ * Set up a automated cron job
+ * Create a local filesystem repo so Spotify can be updated alongside regular updates
+ * Fully unattended mode</description>
+  <devel project="multimedia:apps" package="spotify-easyrpm"/>
+</package>

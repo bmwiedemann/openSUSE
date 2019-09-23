@@ -1,0 +1,22 @@
+Index: stereograph-0.28a/gfxio.c
+===================================================================
+--- stereograph-0.28a/gfxio.c
++++ stereograph-0.28a/gfxio.c
+@@ -315,7 +315,7 @@ int Read_PNG (FILE *ifile, unsigned char
+ 		}
+ 		
+ 		/* libpng error handling */
+-		if (setjmp(png_ptr->jmpbuf)) {
++		if (setjmp(png_jmpbuf(png_ptr))) {
+ 			png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
+         		if(verbose) printf("FAILED;\n"); else fprintf(stderr, "reading gfx data...FAILED\n");
+ 	        	fprintf(stderr, "libpng reported an error!\n");
+@@ -415,7 +415,7 @@ int Write_PNG (FILE *ofile, struct GFX_D
+ 	}
+ 		
+ 	/* libpng error handling */
+-	if (setjmp(png_ptr->jmpbuf)) {
++	if (setjmp(png_jmpbuf(png_ptr))) {
+ 		png_destroy_write_struct(&png_ptr, &info_ptr);
+        		if(verbose) printf("FAILED;\n"); else fprintf(stderr, "writing gfx data...FAILED\n");
+         	fprintf(stderr, "libpng reported an error!\n");

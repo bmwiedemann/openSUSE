@@ -1,0 +1,134 @@
+-------------------------------------------------------------------
+Wed Feb 11 21:02:21 UTC 2015 - bkbin005@rinku.zaq.ne.jp
+
+- suse-start.el: removed (load "egg-canna.el") to fix boo#917480.
+
+-------------------------------------------------------------------
+Tue Feb  3 22:33:28 UTC 2015 - bkbin005@rinku.zaq.ne.jp
+
+- Change upstream Debian -> Tamago-tsunagi.
+  Tamago's upstream died with m17n.org.
+  So many distros imported Egg(= tamago) from Debian,
+  and Each applied patches to them independently.
+  It is nonefficiency, so I made new upstream project.
+  Tamago-tsunagi-5.0.7.1 imported patches
+  from FreeBSD's tamago-emacs24-4.0.6.0.20041122.19_12.
+  https://www.freebsd.org/cgi/ports.cgi?query=tamago&stype=all .
+  Because FreeBSD's tamago advances most.
+  Now, Tamago-tsunagi goes along with FreeBSD's tamago maintainer.
+- Fix (boo#915293) by Tamago-tsunagi.
+- Change BuildRequires emacs-X -> emacs-nox >= 23.
+  When building, tamago does not need X,
+  tamago-tsunagi needs Emacs-nox >= 23.
+- Change Requires emacs -> emacs >= 23.
+  tamago-tsunagi needs Emacs >= 23
+- Change URL m17n.org -> sourceforge.jp (tamago-tsunagi).
+- Delete Patch1 Patch2 Source6, tamago-tsunagi does not need them.
+  Patch1: egg_4.0.6+0.20041122cvs-19.diff.gz
+  Patch2: tamago-fix-access-to-fwnn.patch
+  Source6: egg_4.0.6+0.20041122cvs-19.dsc
+- Modify description: tamago depends Emacs >= 23, now.
+- Delete Authors from description.
+  Because they do not maintain Tamago-tsunagi.
+- Comment out BuildRoot:.
+- Add NEWS in doc.
+- Delete config from suse-start-tamago.el.
+  Because rpmlint warned it.
+- Add .nosearch in files.
+  Because rpmlint warns them, but they are necessary.
+  I did not write rpmlintrc.
+  Because I do not like to delete warn messages.
+- Modify Copyright year 2014 -> 2015.
+
+-------------------------------------------------------------------
+Sun Oct 19 02:48:23 UTC 2014 - crrodriguez@opensuse.org
+
+- Remove xorg-x11-devel from BuildRequires, noarch package 
+ does not need X libraries around.
+
+-------------------------------------------------------------------
+Sun Jun  1 10:00:05 UTC 2014 - jengelh@inai.de
+
+- Drop unused build-time requirements on libpng, libtiff, libgif
+
+-------------------------------------------------------------------
+Sun Sep  8 17:07:40 UTC 2013 - bkbin005@rinku.zaq.ne.jp
+
+- Fix tamago.changes:
+  Fixed comment style .
+- Fix tamago.spec:
+  * fix commented-out macros: were changed to "_" .
+    Because rpmlint tells them warning messages .
+  * Source[234]'s URLs were dead, so I deleted URL .
+  * Changed egg_4.0.6+0.20041122cvs-19.diff.gz
+    to patch from source .
+  * I deleted Japanese EUC-JP encoding comments .
+  * I added a comment why am I import sources from Debian .
+    Because upstream http://www.m17n.org/tamago was dead .
+- Fix tamago-fix-access-to-fwnn.patch .
+  I forgot to change comm-accept-timeout from nil to 1000
+  in egg-com.el .
+  So insert it in tamago-fix-access-to-fwnn.patch .
+- Fix Version: tag in tamago.spec .
+  I changed version string to Debian format .
+  But its string was wrong, then fixed to openSUSE format .
+- Fix that tamago can not access to FreeWnn's jserver
+  (bnc#836138) .
+  * Update to egg_4.0.6_20041122cvs.orig.tar.gz:
+  * Imported source from http://packages.debian.org/wheezy/egg .
+    http://ftp.de.debian.org/debian/pool/main/e/egg/egg_4.0.6+0.20041122cvs-19.dsc
+    http://ftp.de.debian.org/debian/pool/main/e/egg/egg_4.0.6+0.20041122cvs.orig.tar.gz
+    http://ftp.de.debian.org/debian/pool/main/e/egg/egg_4.0.6+0.20041122cvs-19.diff.gz
+    Because upstream http://www.m17n.org/tamago wad dead,
+    and egg_4.0.6+0.20041122cvs-19.diff.gz was fixed bnc#836138 .
+  * Deleted source
+    http://cgi18.plala.or.jp/nyy/canna/egg-canna.el.bz2 .
+    Because this program can not run on Emacs-24.3-4.3 .
+  * Added tamago-fix-access-to-fwnn.patch .
+    Deleted (make-local-hook) function .
+    And defvaralias 'last-command-char 'last-command-event .
+    Because their function and variable are deleted
+    from Emacs-24.3 .
+
+-------------------------------------------------------------------
+Wed Jan 25 21:48:15 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Feb  6 14:15:56 CET 2004 - hmacht@suse.de
+
+- building as non-root
+
+-------------------------------------------------------------------
+Wed May 21 01:05:39 CEST 2003 - ro@suse.de
+
+- remove CVS subdirs 
+
+-------------------------------------------------------------------
+Wed Nov 13 16:09:44 CET 2002 - ro@suse.de
+
+- use x-devel-packages 
+
+-------------------------------------------------------------------
+Fri Feb  1 01:28:57 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Thu Nov 15 18:33:53 CET 2001 - mfabian@suse.de
+
+- small fix to suse-start-tamago.el to make it work with Emacs 21
+  again
+
+-------------------------------------------------------------------
+Fri Nov  9 11:34:20 CET 2001 - mfabian@suse.de
+
+- add libjpeg libpng libtiff libungif to '# neededforbuild'
+
+-------------------------------------------------------------------
+Fri Oct 19 01:52:21 CEST 2001 - mfabian@suse.de
+
+- new package: tamago-4.0.6_20011017cvs
+
+

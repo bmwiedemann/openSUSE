@@ -1,0 +1,22 @@
+Index: dante-1.4.1/lib/Rcompat.c
+===================================================================
+--- dante-1.4.1.orig/lib/Rcompat.c
++++ dante-1.4.1/lib/Rcompat.c
+@@ -44,6 +44,8 @@
+ 
+ #include "common.h"
+ 
++#include<stdio.h>
++
+ static const char rcsid[] =
+ "$Id: Rcompat.c,v 1.89.4.2 2014/08/15 18:16:40 karls Exp $";
+ 
+@@ -509,7 +511,7 @@ Rgets(buf)
+    slog(LOG_DEBUG, "%s: fd %d", function, d);
+ 
+    if (!gssapi_isencrypted(d))
+-      return gets(buf);
++      return fgets(buf, INT_MAX, stdin);
+ 
+    i = 0;
+    while (Rread(d, buf + i, 1) == 1 && buf[i] != '\n')

@@ -1,0 +1,55 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ba309ecb4d121b94818aa7f4452b2b12</srcmd5>
+    <version>0.0.12</version>
+    <time>1358198816</time>
+    <user>coolo</user>
+    <comment>Configuration tool for Tux Paint</comment>
+    <requestid>148230</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ba309ecb4d121b94818aa7f4452b2b12</srcmd5>
+    <version>0.0.12</version>
+    <time>1359110509</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>ba309ecb4d121b94818aa7f4452b2b12</srcmd5>
+    <version>0.0.12</version>
+    <time>1379664852</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>ba309ecb4d121b94818aa7f4452b2b12</srcmd5>
+    <version>0.0.12</version>
+    <time>1409303538</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ce7656cbee6ada4f2925be9ae3ad9851</srcmd5>
+    <version>0.0.13</version>
+    <time>1420318883</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>267132</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>436bcc2019e836eb27787a22e62fb6c2</srcmd5>
+    <version>0.0.13</version>
+    <time>1521579347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586091</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>343e0c66db0e65cb7f8d52a01700f8e1</srcmd5>
+    <version>0.0.13</version>
+    <time>1531813395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623158</requestid>
+  </revision>
+</revisionlist>

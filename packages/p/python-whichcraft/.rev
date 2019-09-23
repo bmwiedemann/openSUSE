@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7db2e1c7210cab06003f3e2ff0235d5b</srcmd5>
+    <version>0.4.1</version>
+    <time>1520329537</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial version
+</comment>
+    <requestid>580914</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>90b5409e68f672922fcd6b72fbf48e2e</srcmd5>
+    <version>0.4.1</version>
+    <time>1525426205</time>
+    <user>dimstar_suse</user>
+    <comment>- Compact description.
+</comment>
+    <requestid>603213</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9789a8cd7b7ad74e87a423f0400570c1</srcmd5>
+    <version>0.4.1</version>
+    <time>1545648370</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659756</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b785f2d1eb19f3bacc1d20018e945721</srcmd5>
+    <version>0.5.2</version>
+    <time>1554115068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689862</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5990ff0511adb7007c8351d932241dff</srcmd5>
+    <version>0.6.0</version>
+    <time>1563808762</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  * no upstream changelog</comment>
+    <requestid>717555</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d5b37a4d2021f1b13c4278b461995b20</srcmd5>
+    <version>0.6.1</version>
+    <time>1568190762</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1:
+  * fix versioning issue</comment>
+    <requestid>729508</requestid>
+  </revision>
+</revisionlist>

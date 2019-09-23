@@ -1,0 +1,52 @@
+--- gnuserv-3.12.6/Makefile.in
++++ gnuserv-3.12.6/Makefile.in
+@@ -192,12 +192,12 @@
+ 	done
+ 
+ install-man: force
+-	@new=$(man1prefix)gnuserv$(man1suffix).$(man1ext); \
++	@new=gnuserv$(man1suffix).$(man1ext); \
+ 	echo $(INSTALL_DATA) $(srcdir)/gnuserv.1 $(man1dir)/$$new; \
+ 	$(INSTALL_DATA) $(srcdir)/gnuserv.1 $(man1dir)/$$new; \
+ 	cd $(man1dir) || exit 1; \
+ 	for l in gnuclient gnuattach gnudoit ; do \
+-	  l=$(man1dir)/$(man1prefix)$$l$(man1suffix).$(man1ext); \
++	  l=$$l$(man1suffix).$(man1ext); \
+ 	  echo $(LN) $(man1dir)/$$new $$l; \
+ 	  $(RM) $$l; $(LN) $$new $$l; \
+ 	done
+@@ -205,6 +205,8 @@
+ install-elisp: gnuserv.el gnuserv.elc
+ 	$(INSTALL_DATA) $(srcdir)/gnuserv.el $(elispdir)/gnuserv.el
+ 	$(INSTALL_DATA) gnuserv.elc $(elispdir)/gnuserv.elc
++	$(INSTALL_DATA) $(srcdir)/gnuserv-compat.el  $(elispdir)/gnuserv-compat.el
++	$(INSTALL_DATA) $(srcdir)/devices.el $(elispdir)/devices.el
+ 
+ uninstall: force
+ 	-cd $(bindir) && $(RM) $(PROGS)
+--- gnuserv-3.12.6/configure.in
++++ gnuserv-3.12.6/configure.in
+@@ -32,7 +32,7 @@
+ AC_MSG_RESULT(int)
+ AC_DEFINE(socklen_t,int)])])
+ 
+-AC_CHECK_SIZEOF(long, 32)
++AC_CHECK_SIZEOF(long, 4)
+ 
+ AC_HAVE_XAUTH
+ if test "$have_x" = "yes"; then
+--- gnuserv-3.12.6/syssignal.h
++++ gnuserv-3.12.6/syssignal.h
+@@ -262,10 +262,10 @@
+ # endif
+ #endif
+ 
+-/* SYS_SIGLIST_DECLARED is determined by configure.  On Linux, it seems,
++/* HAVE_DECL_SYS_SIGLIST is determined by configure.  On Linux, it seems,
+    configure incorrectly fails to find it, so s/linux.h defines
+    HAVE_SYS_SIGLIST. */
+-#if !defined (SYS_SIGLIST_DECLARED) && !defined (HAVE_SYS_SIGLIST)
++#if !defined (HAVE_DECL_SYS_SIGLIST) && !defined (HAVE_SYS_SIGLIST)
+ extern const char *sys_siglist[];
+ #endif
+ 

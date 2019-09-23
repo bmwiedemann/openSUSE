@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0f81fe426fae8d4ad56b69a4190f3193</srcmd5>
+    <version>0.10.2</version>
+    <time>1526371820</time>
+    <user>dimstar_suse</user>
+    <comment>Python sound file I/O that supports numpy</comment>
+    <requestid>605509</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3ab55f23ae6ef144a9e26c4ef2bf557c</srcmd5>
+    <version>0.10.2</version>
+    <time>1526737438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610559</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>51f06969a9e5c96f1946b4d180ae53b6</srcmd5>
+    <version>0.10.2</version>
+    <time>1534543556</time>
+    <user>dimstar_suse</user>
+    <comment>- Sort out the header a bit
+- Remove test conditional, always run tests
+- Mark the package as noarch (as it is)
+  * one test is failing on i586, but it is bug in libsndfile, disabled for now
+    ret [ 32767, -32768, -32767, -1, -1, 0, 0, 0, 1, 1, 32766, 32767, 32767]
+    exp (-32768, -32768, -32767, -1, -1, 0, 0, 0, 1, 1, 32766, 32767, 32767)
+    https://github.com/bastibe/SoundFile/issues/185</comment>
+    <requestid>629749</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b150c92f405b789df105ca47d94e1b10</srcmd5>
+    <version>0.10.2</version>
+    <time>1565695002</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722036</requestid>
+  </revision>
+</revisionlist>

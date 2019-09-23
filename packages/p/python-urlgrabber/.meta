@@ -1,0 +1,7 @@
+<package name="python-urlgrabber" project="openSUSE:Factory">
+  <title>A high-level cross-protocol url-grabber</title>
+  <description>A high-level cross-protocol url-grabber for python supporting HTTP, FTP
+and file locations.  Features include keepalive, byte ranges,
+throttling, authentication, proxies and more.</description>
+  <devel project="devel:languages:python" package="python-urlgrabber"/>
+</package>

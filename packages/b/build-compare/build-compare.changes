@@ -1,0 +1,935 @@
+-------------------------------------------------------------------
+Wed Aug 14 13:27:38 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- pkg-diff.sh: Ignore R build timestamp & temp paths
+  https://github.com/openSUSE/build-compare/pull/34
+
+-------------------------------------------------------------------
+Tue Feb 19 09:30:20 UTC 2019 - olaf@aepfle.de
+
+- javadoc: filter dc.created
+- Support filenames with spaces
+- jar: always list files without date+size
+- Fix differing jars reported as identical
+
+-------------------------------------------------------------------
+Tue Aug 28 20:14:53 UTC 2018 - ol@infoserver.lv
+
+- Ignore value of Release header when comparing spec files
+
+-------------------------------------------------------------------
+Fri Jul  6 14:01:17 UTC 2018 - olaf@aepfle.de
+
+- pkg-diff: fix diff returning 0
+
+-------------------------------------------------------------------
+Wed Jul  4 05:58:13 UTC 2018 - olaf@aepfle.de
+
+- Match also ELF pie executable (bsc#1097339)
+
+-------------------------------------------------------------------
+Wed Jul  4 05:42:05 UTC 2018 - olaf@aepfle.de
+
+- Remove trailing space from two match patterns
+
+-------------------------------------------------------------------
+Tue Jun 26 06:45:38 UTC 2018 - olaf@aepfle.de
+
+- Recognize "setuid ELF nn-bit xSB shared object" ELF binaries
+
+-------------------------------------------------------------------
+Mon May 28 13:26:44 UTC 2018 - olaf@aepfle.de
+
+- Avoid large temporary files from hexdump output and avoid
+  diff(1) runing OOM by using a fifo (issue#24)
+
+-------------------------------------------------------------------
+Fri Apr 13 07:10:30 UTC 2018 - olaf@aepfle.de
+
+- check rpm capabilities for recommends/suggests
+
+-------------------------------------------------------------------
+Fri Dec  8 16:57:00 UTC 2017 - ol@infoserver.lv
+
+- Ignore /usr/lib/.build-id differences in package filelist
+
+-------------------------------------------------------------------
+Mon Dec  4 10:21:44 UTC 2017 - olaf@aepfle.de
+
+- Treat .egg files as zip
+
+-------------------------------------------------------------------
+Wed Nov  8 06:04:42 UTC 2017 - olaf@aepfle.de
+
+- srpm check requires cpio
+
+-------------------------------------------------------------------
+Mon Nov  6 15:15:04 UTC 2017 - olaf@aepfle.de
+
+- Fix usage of cmp_spec and unrpm in srpm-check.sh
+
+-------------------------------------------------------------------
+Fri Nov  3 14:03:04 UTC 2017 - olaf@aepfle.de
+
+- Catch empty rpm -qp --qf output for tags not understood by rpm
+
+-------------------------------------------------------------------
+Fri Oct 20 06:53:18 UTC 2017 - olaf@aepfle.de
+
+- Remove newly introduced files-duplicate check from rpmlint
+  In case files are hardlinked, the source and destination is
+  scrambled in rpm output: the pkg will be republished.
+  In case files are not hardlinked, the source and destination
+  is scrambled in rpmlint output: the pkg will be republished
+
+-------------------------------------------------------------------
+Thu Jul 27 12:05:25 UTC 2017 - olaf@aepfle.de
+
+- Compare also supplements and recomments (issue#18)
+
+-------------------------------------------------------------------
+Fri Mar 31 13:44:11 UTC 2017 - olaf@aepfle.de
+
+- Handle timestamp and checksum in xen.efi
+
+-------------------------------------------------------------------
+Wed Mar 22 19:05:36 UTC 2017 - olaf@aepfle.de
+
+- Handle _kf5_htmldir, it HAD to be different...
+
+-------------------------------------------------------------------
+Tue Mar 21 11:17:26 UTC 2017 - olaf@aepfle.de
+
+- Handle /usr/share/vdr/locale/
+
+-------------------------------------------------------------------
+Sun Feb 12 08:41:01 UTC 2017 - olaf@aepfle.de
+
+- Remove warning file-contains-date-and-time from rpmlint.log
+
+-------------------------------------------------------------------
+Thu Jan  5 11:01:53 UTC 2017 - olaf@aepfle.de
+
+- Fix name-version-release regex for release without dots
+
+-------------------------------------------------------------------
+Wed Dec 14 08:44:11 UTC 2016 - olaf@aepfle.de
+
+- Remove warning about python mtime mismatch, a republish will not help
+- Handle yet another variant of numbered anchor in html file
+
+-------------------------------------------------------------------
+Wed Nov  9 06:48:22 UTC 2016 - olaf@aepfle.de
+
+- Ignore /etc/ld.so.cache
+- Ignore /etc/machine-id
+
+-------------------------------------------------------------------
+Tue Nov  8 08:06:30 UTC 2016 - olaf@aepfle.de
+
+- Ignore /etc/hosts
+- Handle every path matching /share/man/ as man page
+
+-------------------------------------------------------------------
+Mon Nov  7 03:54:00 UTC 2016 - ol@infoserver.lv
+
+- Ignore .gnu_debugdata section when comparing ELF files.
+
+-------------------------------------------------------------------
+Wed Oct 12 16:40:24 CEST 2016 - ro@suse.de
+
+- pkg-diff.sh: use option --speed-large-files for diffing
+  disassembler output (bsc#1003528)
+
+-------------------------------------------------------------------
+Wed Sep 21 07:18:37 UTC 2016 - olaf@aepfle.de
+
+- Handle broken symlinks
+
+-------------------------------------------------------------------
+Thu Aug 25 14:27:34 UTC 2016 - olaf@aepfle.de
+
+- Update strip_numbered_anchors to catch more random identifiers
+
+-------------------------------------------------------------------
+Wed Aug 24 13:22:12 UTC 2016 - liezhi.yang@windriver.com
+
+- functions.sh: improve deb and ipk checking
+- Add support for deb and ipk packaging
+- pkg-diff.sh: check for fifo (named fifo)
+- pkg-diff.sh: remove space in the end for ftype
+- pkg-diff.sh: check_single_file(): return at once when same
+- functions.sh: run rpm once to make it faster
+
+-------------------------------------------------------------------
+Fri Aug  5 13:44:51 UTC 2016 - olaf@aepfle.de
+
+- Handle unknown ELF files as different.
+
+-------------------------------------------------------------------
+Wed Apr  6 07:06:58 UTC 2016 - olaf@aepfle.de
+
+- add used utilities to Requires
+
+-------------------------------------------------------------------
+Tue Mar  8 18:00:40 UTC 2016 - olaf@aepfle.de
+
+- Remove hacks from /var/adm/update-scripts|messages case
+
+-------------------------------------------------------------------
+Tue Mar  8 16:48:48 UTC 2016 - olaf@aepfle.de
+
+- Handle /var/adm/update-messages in scripts and filelist
+
+-------------------------------------------------------------------
+Mon Mar  7 11:56:28 UTC 2016 - olaf@aepfle.de
+
+- Whitespace in javadoc case
+- Whitespace changes in html case
+- Move case kde/gtk html up in the case list
+- Move case rdoc html up in the case list
+- Add option -a to same-build-result.sh and loop through all rpms
+- Rework sorting of rpm files in same-build-result.sh
+- Better diagnostic if number of subpackages changes
+- Create tmpfiles earlier in same-build-result.sh
+- Handle all javadoc html files
+
+-------------------------------------------------------------------
+Fri Mar  4 18:50:32 UTC 2016 - olaf@aepfle.de
+
+- Handle yet another variant of elc timestamps
+
+-------------------------------------------------------------------
+Thu Mar  3 12:44:04 UTC 2016 - olaf@aepfle.de
+
+- Handle timestamp in dvi files
+- Handle Last-modified HTML META tag
+- Handle yet another variant of javadoc timestamps
+
+-------------------------------------------------------------------
+Fri Jan  1 10:11:14 UTC 2016 - schwab@suse.de
+
+- Fix quoting in find expression
+
+-------------------------------------------------------------------
+Thu Oct 22 06:29:44 UTC 2015 - olaf@aepfle.de
+
+- Remove filename-too-long-for-joliet from rpmlint.log
+
+-------------------------------------------------------------------
+Mon Oct 12 13:59:31 UTC 2015 - olaf@aepfle.de
+
+- Filter out durations from rpmlint progress report 
+
+-------------------------------------------------------------------
+Fri Oct  2 09:00:52 UTC 2015 - olaf@aepfle.de
+
+- Handle texi2html 5.0 timestamps
+
+-------------------------------------------------------------------
+Fri Aug 21 12:57:57 UTC 2015 - seife+obs@b1-systems.com
+
+- avoid -kmp packages with "filename-too-long-for-joliet"
+  triggering constant republishing
+
+-------------------------------------------------------------------
+Wed Jul 15 09:50:58 UTC 2015 - olaf@aepfle.de
+
+- 2015.07.15
+- Handle more texi2html generated files and patterns
+
+-------------------------------------------------------------------
+Wed Jun 17 14:25:06 UTC 2015 - olaf@aepfle.de
+
+- 2015.06.17
+- Fix regex to handle /lib/(modules|firmware)/version-release-any properly
+
+-------------------------------------------------------------------
+Tue Apr 28 11:52:12 UTC 2015 - olaf@aepfle.de
+
+- 2015.04.28
+- Filter InitrdID in /linuxrc.config
+- Hexdump old and new file in parallel
+- Sort cpio file list with files to compare
+- Extract old and new files in parallel
+- Ignore block device nodes
+- Ignore character device nodes
+- Always clean tmpdir on exit in pkg-diff.sh
+- Handle squashfs files
+
+-------------------------------------------------------------------
+Mon Apr 13 08:55:39 UTC 2015 - olaf@aepfle.de
+
+- 2015.04.13
+- Show hint if pkg-diff.sh returns non-zero
+- Adjust intending in same-build-result.sh
+- Handle /usr/src/packages/OTHER
+- Handle "setuid directory"
+
+-------------------------------------------------------------------
+Fri Mar 20 18:58:22 UTC 2015 - olaf@aepfle.de
+
+- 2015.03.20
+- Convert correct png file before comparison
+- Avoid name clashes when comparing png files
+- Handle filename changes gracefully when comparing unknown filetypes
+- Use generic helper to compare png files
+
+-------------------------------------------------------------------
+Thu Feb 12 10:41:45 UTC 2015 - olaf@aepfle.de
+
+- Handle also .o files as ELF relocatable objects
+
+-------------------------------------------------------------------
+Thu Feb 12 08:22:09 UTC 2015 - randy.e.witt@linux.intel.com
+
+- Rename rpm-check.sh to pkg-diff.sh
+
+-------------------------------------------------------------------
+Tue Feb 10 15:35:25 UTC 2015 - olaf@aepfle.de
+
+- 2015.02.10
+- Trim objdump output properly
+- Trim .TH also in localized man pages (bnc#915941)
+- Remove also DVIPSSource from .ps files
+
+-------------------------------------------------------------------
+Tue Feb 10 15:33:32 UTC 2015 - randy.e.witt@linux.intel.com
+
+- Print section differences even if assembly has differences.
+- Add support for nested rpms.
+- Make rpm-check work for "packages" other than rpm.
+- Tell which section was different when doing ELF comparisons.
+- Error when one of the rpms is not found
+
+-------------------------------------------------------------------
+Fri Feb  6 10:35:56 UTC 2015 - olaf@aepfle.de
+
+- 2015.02.06
+- Remove more javadoc references (bnc#916161)
+- Handle *.war files like *.jar files
+- Trim name-version-release string in update-scripts
+
+-------------------------------------------------------------------
+Wed Feb  4 15:53:05 UTC 2015 - olaf@aepfle.de
+
+- 2015.02.04
+- Handle ruby gem files, they are tar archives (bnc#916047)
+- Remove Creator: and CreationDate: tags from .ps files (bnc#915952)
+- Correct regex for hostname in libtool (bnc#916268)
+
+-------------------------------------------------------------------
+Tue Feb  3 11:34:39 UTC 2015 - olaf@aepfle.de
+
+- 2015.02.03
+- Trim .TH also in perl man pages (bnc#915941)
+- Trim first line of man page to catch overly verbose tools
+- Use correct offset for patching mtime out of .pyc files
+- Add BuildIgnore to allow bootstrap in sle11
+
+-------------------------------------------------------------------
+Mon Feb  2 10:05:40 UTC 2015 - olaf@aepfle.de
+
+- 2015.02.02
+- Trim VERSION-RELEASE also in rpmlint log
+- Adjust regex for spec comparing in src.rpm
+- handle also stick and setuid directory from file(1) output
+
+-------------------------------------------------------------------
+Wed Jan 21 08:34:32 UTC 2015 - olaf@aepfle.de
+
+- 2015.01.21
+- Remove leading spaces from file(1) output
+- Force removal of tmpdir to handle files marked as read-only
+
+-------------------------------------------------------------------
+Fri Jan  9 09:37:34 UTC 2015 - olaf@aepfle.de
+
+- 2015.01.14
+- Trim VERSION-RELEASE instead of RELEASE because the release number
+  will match other substrings.
+- Use regex instead  in sed /regex/ to match dots properly
+- Handle plain cpio archives from gfxboot
+- Add patterns for .TH header in man pages to handle all cases
+
+-------------------------------------------------------------------
+Wed Nov 26 08:58:45 UTC 2014 - ohering@suse.de
+
+- 2014.11.25
+- correctly handle cmp_spec return code if file checksum differs
+- handle also bz2 and xz compressed files with odd name
+
+-------------------------------------------------------------------
+Tue Nov 18 11:58:51 UTC 2014 - ohering@suse.de
+
+- 2014.11.15
+- show sorted differences of rpmlint log (bnc#904092)
+- handle kernel and kmp packages, but support for kernel* is disabled
+- minor style fixes
+- handle cpio archives
+- handle absolute symlinks correctly
+- handle all ELF sections, not only the ones starting with dot
+
+-------------------------------------------------------------------
+Wed Nov 12 09:29:24 UTC 2014 - schwab@suse.de
+
+- Use $(...) instead of `...` to avoid losing backslash quoting
+
+-------------------------------------------------------------------
+Fri Nov  7 11:12:10 UTC 2014 - ohering@suse.de
+
+- Update check-all option to really keep going and check all files
+- Add check to recursively look into gzip files with odd suffix
+  to properly handle /usr/share/vlc/skins2/default.vlt
+
+-------------------------------------------------------------------
+Sat Aug  2 19:37:18 UTC 2014 - johannesobermayr@gmx.de
+
+- Fix quoting .
+
+-------------------------------------------------------------------
+Tue Jul 29 15:07:04 UTC 2014 - johannesobermayr@gmx.de
+
+- Remove numbered anchors from all Docbook / HTML files (bnc#889629).
+
+-------------------------------------------------------------------
+Tue Jul 22 06:45:25 UTC 2014 - meissner@suse.com
+
+- if all ELF sections except build-id and .gnu_debuglink compare equal,
+  this is the same binary.
+
+-------------------------------------------------------------------
+Thu Jul 17 06:46:47 UTC 2014 - meissner@suse.com
+
+- Allow file list changes where the release number is encoded
+  in the filename.
+- compare post-update message and scripts (fixes fetchmsttfonts
+  constant republish) as they have the release number hardcoded.
+
+-------------------------------------------------------------------
+Tue Jul 15 11:42:09 CEST 2014 - ohering@suse.de
+
+- Fix shell syntax error in rpm-check.sh
+- 2014.07.15
+
+-------------------------------------------------------------------
+Mon Jul  7 08:28:45 UTC 2014 - aj@suse.com
+
+- Fix last patch to not use non-existant file (bnc#877078).
+
+-------------------------------------------------------------------
+Fri May  9 18:30:26 UTC 2014 - johannesobermayr@gmx.de
+
+- Don't compare .note.gnu.build-id and .gnu_debuglink sections in ELF
+  binaries (bnc#877078).
+- Don't compare debuginfo packages.
+
+-------------------------------------------------------------------
+Thu Oct 17 12:44:19 UTC 2013 - schwab@suse.de
+
+- Also look into MSB shared objects
+
+-------------------------------------------------------------------
+Thu May 24 10:17:15 UTC 2012 - aj@suse.de
+
+- Only handle files, not directories when searching for packages.
+  Patch by Matthieu Tanguay-Carel <mtanguay@thoughtworks.com>.
+
+-------------------------------------------------------------------
+Tue May  8 12:35:21 UTC 2012 - aj@suse.de
+
+- Further handling of pdf files (bnc#760867), patch by
+  David Haller <david@dhaller.de>.
+
+-------------------------------------------------------------------
+Mon May  7 14:50:43 UTC 2012 - aj@suse.de
+
+- Further handling of pdf files (bnc#760867).
+
+-------------------------------------------------------------------
+Mon May  7 11:30:28 UTC 2012 - aj@suse.de
+
+- Handle /ID in pdf files (bnc#760867).
+
+-------------------------------------------------------------------
+Wed Apr  4 18:25:48 UTC 2012 - reddwarf@opensuse.org
+
+- Handle gtk-doc documentation
+
+-------------------------------------------------------------------
+Thu Mar  8 21:44:36 UTC 2012 - reddwarf@opensuse.org
+
+- Improve kde index.cache handling
+
+-------------------------------------------------------------------
+Wed Feb 22 11:12:13 UTC 2012 - aj@suse.de
+
+- Remove release from pre/post scripts.
+
+-------------------------------------------------------------------
+Wed Feb 22 11:07:53 UTC 2012 - coolo@suse.com
+
+- I changed my mind, appdata.xml is too hard to get right. So 
+  we need to support variable binary names for the appdata
+
+-------------------------------------------------------------------
+Sat Feb 18 18:27:40 UTC 2012 - aj@suse.de
+
+- Quote dot in release to not have false matches.
+
+-------------------------------------------------------------------
+Thu Feb 16 21:00:31 UTC 2012 - coolo@suse.com
+
+- fix missing test in shell script
+
+-------------------------------------------------------------------
+Thu Feb 16 13:39:21 UTC 2012 - coolo@suse.com
+
+- !unchanged if rpmlint.log was new created
+- !unchanged if appdata.xml was new or updated
+
+-------------------------------------------------------------------
+Mon Feb  6 11:53:57 UTC 2012 - aj@suse.de
+
+- Fix off-by-one error in rpmlint processing that hit packages with 
+  just one binary package.
+
+-------------------------------------------------------------------
+Sun Feb  5 12:16:49 UTC 2012 - aj@suse.de
+
+- Improve rpmlint check.
+
+-------------------------------------------------------------------
+Sun Feb  5 12:11:35 UTC 2012 - aj@suse.de
+
+- Take care of date format change of unzip.
+
+-------------------------------------------------------------------
+Sun Feb  5 10:43:49 UTC 2012 - aj@suse.de
+
+- Replace all occurences of release in rpmlint, take care of 
+  temporary files in rpmlint
+
+-------------------------------------------------------------------
+Sun Feb  5 09:23:56 UTC 2012 - aj@suse.de
+
+- Use separate invocation lines for .TH lines to catch
+  some better.
+
+-------------------------------------------------------------------
+Thu Jan 26 10:01:55 UTC 2012 - aj@suse.de
+
+- Remove release from rpmlint.log before comparing.
+
+-------------------------------------------------------------------
+Fri Jan 20 08:49:39 UTC 2012 - aj@suse.de
+
+- Sort rpmlint.log files first since the order is non-deterministic.
+
+-------------------------------------------------------------------
+Thu Jan 12 12:59:31 UTC 2012 - aj@suse.de
+
+- Fix syntax in same-build-result.sh.
+
+-------------------------------------------------------------------
+Mon Jan  9 13:15:33 UTC 2012 - aj@suse.de
+
+- Compare rpmlint.log if it exists.
+
+-------------------------------------------------------------------
+Sat Sep 17 21:08:18 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Wed Aug 31 14:11:39 UTC 2011 - coolo@suse.com
+
+- comparing fileclass was no good idea after all
+
+-------------------------------------------------------------------
+Mon Jul 11 13:58:52 CEST 2011 - dmueller@suse.de
+
+- also compare fileclass
+
+-------------------------------------------------------------------
+Fri May 20 18:29:57 UTC 2011 - aj@suse.de
+
+- Remove debug echo output.
+
+-------------------------------------------------------------------
+Tue Apr 19 11:47:57 UTC 2011 - aj@suse.de
+
+- Handle libreoffice-bootstrap.
+
+-------------------------------------------------------------------
+Tue Mar 15 08:36:26 UTC 2011 - aj@suse.de
+
+- Use perl -e instead of -E (bnc#679562).
+
+-------------------------------------------------------------------
+Mon Feb 28 14:00:35 UTC 2011 - aj@suse.de
+
+- Increase version.
+
+-------------------------------------------------------------------
+Mon Feb 28 13:51:29 UTC 2011 - mls@suse.de
+
+- Check also the first part of the release to e.g. handle rebuild of complete
+  distribution (bnc#674991).
+
+-------------------------------------------------------------------
+Thu Oct 28 09:49:14 UTC 2010 - aj@suse.de
+
+- If source file is different, do not compare binaries with check-all.
+
+-------------------------------------------------------------------
+Wed Oct 27 11:59:15 UTC 2010 - aj@suse.de
+
+- Handle /usr/lib/texmf/doc/man as well
+
+-------------------------------------------------------------------
+Tue Oct 26 19:43:39 UTC 2010 - aj@suse.de
+
+- Ignore metafont formats.
+
+-------------------------------------------------------------------
+Tue Oct 26 08:37:35 UTC 2010 - aj@suse.de
+
+- Enable check-all to check for all differences in all packages.
+
+-------------------------------------------------------------------
+Fri Oct 22 18:27:48 UTC 2010 - aj@suse.de
+
+- Handle new zip date.
+- Handle heartbeat man page.
+
+-------------------------------------------------------------------
+Sun Sep 26 10:03:25 UTC 2010 - aj@suse.de
+
+- Fix man regex.
+
+-------------------------------------------------------------------
+Wed Sep 22 13:24:19 UTC 2010 - coolo@novell.com
+
+- ignore texlive's fmt files as discussed with werner
+
+-------------------------------------------------------------------
+Mon Sep 20 19:24:10 UTC 2010 - aj@suse.de
+
+- Handle man pages generated from docbook.
+- Handle rubygem documentation.
+
+-------------------------------------------------------------------
+Mon Sep 20 18:45:01 UTC 2010 - aj@suse.de
+
+- Create common file functions.sh and cleanup code.
+
+-------------------------------------------------------------------
+Mon Sep 20 15:21:55 UTC 2010 - lnussel@suse.de
+
+- exclude delta rpms
+
+-------------------------------------------------------------------
+Mon Sep 20 07:58:59 UTC 2010 - aj@suse.de
+
+- Create script for just checking source rpms.
+
+
+-------------------------------------------------------------------
+Thu Sep  9 20:02:33 UTC 2010 - aj@suse.de
+
+- Handle another date format for man pages found in coreutils.
+- Handle more html files, e.g. kdelibs4 and libvdpau.
+
+-------------------------------------------------------------------
+Thu Sep  9 07:58:35 UTC 2010 - aj@suse.de
+
+- Handle weekday in man page.
+
+-------------------------------------------------------------------
+Tue Aug 31 11:57:26 UTC 2010 - aj@suse.de
+
+- Refine texi2html rule (found in zsh)
+
+-------------------------------------------------------------------
+Fri Aug 27 08:59:22 UTC 2010 - aj@suse.de
+
+- Handle png files with timestamp if convert is installed.
+
+-------------------------------------------------------------------
+Fri Aug 27 06:50:13 UTC 2010 - aj@suse.de
+
+- Handle one more doxygen variation.
+
+-------------------------------------------------------------------
+Sun May 23 12:19:56 UTC 2010 - aj@suse.de
+
+- Release is at end of line, avoid wrong matches.
+
+-------------------------------------------------------------------
+Fri May 21 21:46:47 UTC 2010 - cmorve69@yahoo.es
+
+- Improved ELF executable detection (bnc#604049).
+
+-------------------------------------------------------------------
+Thu May 20 08:23:52 UTC 2010 - aj@suse.de
+
+- Don't skip cross-x86_64-gcc-icecream-backend binary rpms: tighten
+  the checks for -32bit packages.
+
+-------------------------------------------------------------------
+Sun May 16 12:55:43 UTC 2010 - aj@suse.de
+
+- Further man pages tweek.
+
+-------------------------------------------------------------------
+Sun May 16 11:28:14 UTC 2010 - aj@suse.de
+
+- further kde meinproc tuning.
+
+-------------------------------------------------------------------
+Thu May 13 07:25:46 UTC 2010 - aj@suse.de
+
+- Further fixes for kde meinproc (bnc#604049).
+
+-------------------------------------------------------------------
+Wed May 12 13:54:59 UTC 2010 - aj@suse.de
+
+- Fix doxygen docu handling.
+
+-------------------------------------------------------------------
+Wed May 12 12:33:02 UTC 2010 - aj@suse.de
+
+- Handle one more GNU Classpath version.
+- Further improve man page regexp.
+
+-------------------------------------------------------------------
+Tue May 11 20:12:59 UTC 2010 - aj@suse.de
+
+- Improve man page regexp.
+
+-------------------------------------------------------------------
+Tue May 11 12:51:51 UTC 2010 - aj@suse.de
+
+- Improve kde index.cache handling as suggested by Cristian Morales
+  Vega in bnc#604049.
+
+-------------------------------------------------------------------
+Tue May 11 07:12:09 UTC 2010 - aj@suse.de
+
+- Handle deprecated-list.html generated by javadoc.
+- Handle doxygen docu.
+- Handle /etc/sendmail.cf as well.
+- Improve texi2html regexp to handle qemu.
+
+-------------------------------------------------------------------
+Mon May 10 12:27:16 UTC 2010 - aj@suse.de
+
+- Handle kde index.cache files (bnc#604049).
+- Fix for handling of man pages and javadoc files.
+
+-------------------------------------------------------------------
+Mon May 10 09:13:38 UTC 2010 - aj@suse.de
+
+- Handle kdelibs4
+
+-------------------------------------------------------------------
+Sat May  8 19:41:30 UTC 2010 - aj@suse.de
+
+- Fix typo in last change - thanks Dirk Müller.
+
+-------------------------------------------------------------------
+Fri May  7 13:05:57 UTC 2010 - aj@suse.de
+
+- Handle sendmail .cf files.
+
+-------------------------------------------------------------------
+Tue Mar 23 13:37:47 UTC 2010 - aj@suse.de
+
+- Handle mono files.
+- Mount /proc if it's not mounted already to work around bug in
+  build script.
+
+-------------------------------------------------------------------
+Sun Mar 14 09:22:39 UTC 2010 - aj@suse.de
+
+- Improve last regexp to fix virt-utils.
+
+-------------------------------------------------------------------
+Sat Mar  6 04:01:36 UTC 2010 - aj@suse.de
+
+- Improve regexp for last change.
+
+-------------------------------------------------------------------
+Fri Mar  5 09:46:01 UTC 2010 - aj@suse.de
+
+- Handle more man files.
+
+-------------------------------------------------------------------
+Sun Dec 13 12:59:16 UTC 2009 - aj@suse.de
+
+- Handle libtool writing the hostname
+
+-------------------------------------------------------------------
+Wed Nov 18 06:48:27 UTC 2009 - aj@suse.de
+
+- Some more gjdoc dates (found in ant-antlr).
+
+-------------------------------------------------------------------
+Thu Oct 22 09:03:46 UTC 2009 - coolo@novell.com
+
+- take out debugging code
+
+-------------------------------------------------------------------
+Wed Oct 14 07:14:37 UTC 2009 - aj@suse.de
+
+- Replace external /usr/bin/unrpm by small function to get 
+  rid of dependency of build.rpm.
+
+-------------------------------------------------------------------
+Thu Sep 24 06:47:22 UTC 2009 - aj@suse.de
+
+- Add comments.
+
+-------------------------------------------------------------------
+Wed Sep 23 15:17:49 UTC 2009 - aj@suse.de
+
+- Handle noarch subpackage in sort correctly.
+
+-------------------------------------------------------------------
+Tue Aug 25 10:28:17 CEST 2009 - mls@suse.de
+
+- the COPYRIGHT tag does not exist, map it back to LICENSE to
+  be backward compatible
+
+-------------------------------------------------------------------
+Mon Aug 17 22:24:50 CEST 2009 - aj@suse.de
+
+- Handle texi2html output.
+
+-------------------------------------------------------------------
+Thu Aug  6 09:23:17 CEST 2009 - aj@suse.de
+
+- adjust gjdoc sed to match "August 1" and similar one-digit days.
+
+-------------------------------------------------------------------
+Tue Aug  4 08:05:22 CEST 2009 - aj@suse.de
+
+- Compare mono files with cmp, just in case (handles rfc).
+
+-------------------------------------------------------------------
+Sun Aug  2 07:15:45 CEST 2009 - aj@suse.de
+                                          
+- Sort jar filelists before compare.      
+
+-------------------------------------------------------------------
+Mon Jul 27 10:36:49 CEST 2009 - aj@suse.de
+
+- Fail rpm-check if unrpm does not exist (noticed with package 
+  build).
+
+-------------------------------------------------------------------
+Sun Jul 26 21:06:06 CEST 2009 - aj@suse.de
+
+- Fix problem found with building gettext-tools: tar packages 
+  directories.
+
+-------------------------------------------------------------------
+Thu Jul 23 15:30:30 CEST 2009 - aj@suse.de
+
+- Update version number.
+
+-------------------------------------------------------------------
+Tue Jul 21 16:41:39 CEST 2009 - aj@suse.de
+
+- Handle emacs bytecompiled files.
+- Handle /usr/share/man/man3/*3pm perl man pages.
+- Handle /var/adm/perl-modules/*.
+- Handle fonts.dir, fonts.scale and encoding.dir.
+
+-------------------------------------------------------------------
+Tue Jul 21 13:02:36 CEST 2009 - aj@suse.de
+
+- Add return value for .a case so that it can succeed.
+
+-------------------------------------------------------------------
+Mon Jul 20 15:50:46 CEST 2009 - aj@suse.de
+
+- Fix typo in same-build-results.sh
+- Ignore javadoc build stamp in javadoc html files.
+- Use jar,fastjar or unzip to extract jar files.
+
+-------------------------------------------------------------------
+Wed Jul 15 13:31:30 CEST 2009 - coolo@novell.com
+
+- overwrite duplicated files in zip files
+
+-------------------------------------------------------------------
+Tue Jul 14 11:46:04 CEST 2009 - coolo@novell.com
+
+- support .jar and .zip files
+- fix support of gzipped files
+
+-------------------------------------------------------------------
+Mon May  4 15:19:04 CEST 2009 - coolo@suse.de
+
+- compare content of *.tar too
+
+-------------------------------------------------------------------
+Mon May  4 14:17:07 CEST 2009 - coolo@suse.de
+
+- if objdump fails, fall back to hexdump (bnc#489965)
+
+-------------------------------------------------------------------
+Mon May  4 14:10:24 CEST 2009 - coolo@suse.de
+
+- ignore dates in mo files (bnc#489198)
+
+-------------------------------------------------------------------
+Tue Apr 28 13:47:36 CEST 2009 - mmarek@suse.cz
+
+- rpm-check.sh: add option --check-all to check all packaged files
+  (useful for debugging)
+
+-------------------------------------------------------------------
+Sun Feb  8 21:48:27 CET 2009 - coolo@suse.de
+
+- fix handling of hardlinks to compressed files
+
+-------------------------------------------------------------------
+Sat Feb  7 21:05:30 CET 2009 - coolo@suse.de
+
+- fix handling of -32bit and -64bit
+
+-------------------------------------------------------------------
+Sat Feb  7 14:58:48 CET 2009 - coolo@suse.de
+
+- fix command line order
+
+-------------------------------------------------------------------
+Fri Feb  6 19:25:20 CET 2009 - coolo@suse.de
+
+- use --no-show-raw-insn for objdump -d
+
+-------------------------------------------------------------------
+Fri Feb  6 18:18:15 CET 2009 - coolo@suse.de
+
+- hopefully fixed shell quoting for rpm command line
+
+-------------------------------------------------------------------
+Thu Feb  5 17:34:29 CET 2009 - coolo@suse.de
+
+- fix 2 bugs
+- don't ignore source rpms - changed sources should output 
+  changed source rpms, no matter if they create the same binaries
+  (think of changed copyright header in spec files)
+
+-------------------------------------------------------------------
+Tue Jan 27 14:27:19 CET 2009 - adrian@suse.de
+
+- Create initial package based on the work of Matz and Coolo
+  This package provides script for the main build script to be able
+  to check if a new build has the same result than the former one.
+  The Build Service is able to skip the new build than.
+- changes in source rpms are currently ignored, is that okay ?
+

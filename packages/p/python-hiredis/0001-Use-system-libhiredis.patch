@@ -1,0 +1,28 @@
+From ae18fb4390098eefc90442f9a7944f136758bbc4 Mon Sep 17 00:00:00 2001
+From: Apollon Oikonomopoulos <apoikos@debian.org>
+Date: Wed, 2 Jul 2014 10:51:27 +0300
+Subject: Use system libhiredis
+
+Patch setup.py to not build hiredis in vendor/
+
+Forwarded: no
+Last-Updated: 2014-07-02
+Patch-Name: 0001-Use-system-libhiredis.patch
+---
+ setup.py | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+Index: hiredis-py-1.0.0/setup.py
+===================================================================
+--- hiredis-py-1.0.0.orig/setup.py
++++ hiredis-py-1.0.0/setup.py
+@@ -13,7 +13,8 @@ def version():
+ ext = Extension("hiredis.hiredis",
+   sources=sorted(glob.glob("src/*.c") +
+                  ["vendor/hiredis/%s.c" % src for src in ("read", "sds")]),
+-  include_dirs=["vendor"])
++  include_dirs=["vendor"],
++  extra_link_args=["-lhiredis"])
+ 
+ setup(
+   name="hiredis",

@@ -1,0 +1,530 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c9469e70123af2741df27a95f6346f0e</srcmd5>
+    <version>2012.1+git.1342772303.71a0cae</version>
+    <time>1354978377</time>
+    <user>namtrac</user>
+    <comment>New package: part of the client tools for openstack</comment>
+    <requestid>144480</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d58f245fd18f9fcc804cf8f30fc6ab57</srcmd5>
+    <version>0.6.0.14.gc057fe4+git.1355912586.c057fe4</version>
+    <time>1358413134</time>
+    <user>coolo</user>
+    <comment>Pushing OpenStack Folsom to Factory, see http://lists.opensuse.org/opensuse-factory/2013-01/msg00150.html</comment>
+    <requestid>148319</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d58f245fd18f9fcc804cf8f30fc6ab57</srcmd5>
+    <version>0.6.0.14.gc057fe4+git.1355912586.c057fe4</version>
+    <time>1359110035</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>86e3ffa2ae831084eb4b90b75fd1cf91</srcmd5>
+    <version>0.8.0</version>
+    <time>1367237821</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>172711</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3c64ba5f1ef3ad2d8a1de13deac641a5</srcmd5>
+    <version>0.9.0</version>
+    <time>1371152478</time>
+    <user>coolo</user>
+    <comment>Update to latest Grizzly</comment>
+    <requestid>178483</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>20d549e141ac872dc41002a443cab633</srcmd5>
+    <version>0.9.0.48</version>
+    <time>1374491725</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.9.0.48:
+  + Flake8 should ignore build folder
+  + Rename invalid domain name to be RFC compliant.
+
+- Update to version 0.9.0.45:
+  + Enable client V2 to update/delete tags for a given image.
+- Update to version 0.9.0.44:
+  + Start using Pyflakes and Hacking
+- Only depend on python-discover on SLE, it's a Python-2.6 feature
+  backport
+- fix requires of test package 
+- tools/pip-requires changed to requirements.txt (pip's de-facto
+  standard)
+
+- remove setBadness call from rpmlintrc
+- python-pbr/d2to1 requires</comment>
+    <requestid>182641</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ed8c3e5814096927d3491ff011d3631a</srcmd5>
+    <version>0.10.0.7</version>
+    <time>1376858341</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>186356</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a798ebd76c5a2c6b6def34224f8865d4</srcmd5>
+    <version>0.10.0.17</version>
+    <time>1379328319</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.10.0.17:
+  + Enable query image by tag
+
+- Update to version 0.10.0.16:
+  + Fix glanceclient usage inconsistences for options
+
+- Update to version 0.10.0.15:
+  + Add 0.11.0 doc notes
+
+- Update to version 0.10.0.14:
+  + Allow single-wildcard SSL common name matching
+  + Don't use posixpath for URLs
+
+- Update to version 0.10.0.10:
+  + removed deprecated parameter --public
+  + Revert &quot;removed deprecated parameter --public&quot;</comment>
+    <requestid>197422</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>a798ebd76c5a2c6b6def34224f8865d4</srcmd5>
+    <version>0.10.0.17</version>
+    <time>1379664185</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9650cc5c75ea4ecd4a86db732c82f041</srcmd5>
+    <version>0.10.0.19</version>
+    <time>1380112650</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.10.0.19:
+  + Use openstack-images-v2.1-json-patch for update method
+
+- fix requires</comment>
+    <requestid>200458</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c7eac10d1274706075c961d53d026dc0</srcmd5>
+    <version>0.10.0.21</version>
+    <time>1380713566</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.10.0.21:
+  + Support glance client can get ipv6 image url correctly</comment>
+    <requestid>201604</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>82ded058ee66fd3c7c3a274b7b18d30e</srcmd5>
+    <version>0.11.0</version>
+    <time>1382088880</time>
+    <user>scarabeus_factory</user>
+    <comment>- Downgrade to version 0.11.0:
+  * go with a released version for openSUSE 13.1</comment>
+    <requestid>203660</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d33f609c63837ca48856d84dc4ae7b28</srcmd5>
+    <version>0.11.0</version>
+    <time>1390200900</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>214223</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>72e86b403e5ecdc9b926cb5527507af0</srcmd5>
+    <version>0.11.0</version>
+    <time>1394387227</time>
+    <user>coolo</user>
+    <comment>- Replace git_tarballs source service with download_files and set_version
+  + Use upstream URL as source (enables verification)
+- Only require argparse on SLE
+
+- remove dependency on d2to1 
+
+- Add refresh_patches source service</comment>
+    <requestid>225073</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b41d2e86fb5459f614805e47410dab12</srcmd5>
+    <version>0.12.0</version>
+    <time>1396009064</time>
+    <user>coolo</user>
+    <comment>- go back to released version (0.12.0) 
+
+- Update to version python-glanceclient-0.12.0.78.g59c1103:
+  * Improve help strings
+
+- Update to version python-glanceclient-0.12.0.76.g8ecc8ae:
+  * Sync with Oslo
+
+- Update to version python-glanceclient-0.12.0.74.g2929cc1:
+  * Python 3: do not use __builtin__
+  * Updated from global requirements
+  * Python3: do not use the 'file' type
+
+- Update to version python-glanceclient-0.12.0.69.ga9dee79:
+  * Python 3: do not use the unicode() function
+  * test_shell: remove a deprecated keyword argument
+  * Replace file with open, which is Python 3 compatible
+
+- Update to version python-glanceclient-0.12.0.63.g46bf452:
+  * Only show progress bar for local image files
+
+- Update to version python-glanceclient-0.12.0.61.g8b76817:
+  * Python3: define a __next__() method for VerboseIteratorWrapper
+  * Python 3: Fix JsonPatch-related issues
+  * Pass bytes to tempfile.NamedTemporaryFile().write()
+
+- Update to version python-glanceclient-0.12.0.56.gb8a850c:
+  * Remove tox locale overrides
+  * Fix misspellings in python-glanceclient
+  * Update my mailmap</comment>
+    <requestid>227772</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>b41d2e86fb5459f614805e47410dab12</srcmd5>
+    <version>0.12.0</version>
+    <time>1409302877</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d8f9fe35bc93f59fac8d7f0e49d355cd</srcmd5>
+    <version>0.14.1</version>
+    <time>1414943185</time>
+    <user>coolo</user>
+    <comment>- add rpmlintrc to sources 
+- update to 0.14.1:
+  * Update how tokens are redacted
+  * Handle UnicodeDecodeError in log_http_response
+  * Print traceback to stderr if --debug is set
+  * Updated from global requirements
+  * Fix v2 requests to non-bleeding edge servers
+  * Work toward Python 3.4 support and testing
+
+- update to 0.14.0:
+  * Support for Metadata Definitions Catalog API
+  * Catch new urllib3 exception: ProtocolError
+  * Fix error when logging http response with python 3
+  * Ensure server's SSL cert is validated
+  * Enable osprofiler interface in glanceclient shell
+  * Hide stderr noise in test output
+  * Remove deprecated commands from shell
+  * Normalize glanceclient requested service url
+  * Fix glance-client to work with IPv6 controllers
+  * Add support for Keystone v3
+  * Update theme for docs
+  * Add a tox job for generating docs
+  * Don't stream non-binary requests
+  * Use a correctly formatted example location in help
+  * Replace old httpclient with requests
+  * Enable F841
+  * Resolving the performance issue for image listing of v2 API
+  * Add profiling support to glanceclinet
+  * Use immutable arg rather mutable arg
+  * Add CONTRIBUTING.rst</comment>
+    <requestid>259136</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1288fe674254ee33c7e397f3b7f9d4bc</srcmd5>
+    <version>0.17.1</version>
+    <time>1440658477</time>
+    <user>coolo</user>
+    <comment>- Use %{version} in source
+- Switch to version 0.17.1
+
+- Add missing Requires for python-oslo.i18n
+
+- Update to version python-glanceclient-0.18.0.post1:
+  * Update README to work with release tools
+  0.18.0
+
+- Update to version python-glanceclient-0.17.0.post32:
+  * Correct help messages for image-update command
+
+- Update to version python-glanceclient-0.17.0.post30:
+  * Uncap library requirements for liberty
+
+- Update to version python-glanceclient-0.17.0.post29:
+  * Fix https stack trace on python 3.4 client
+  * Fix client when using no ssl compression
+  * Omit 'locations' as image-create parameter
+
+- Update to version python-glanceclient-0.17.0.post23:
+  * Add unit tests for log_curl_request
+
+- Update to version python-glanceclient-0.17.0.post21:
+  * Add SSL cert verification regression tests
+
+- Update to version python-glanceclient-0.17.0.post19:
+  * Test unit for checking update active images
+
+- Update to version python-glanceclient-0.17.0.post17:</comment>
+    <requestid>318404</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0e60a48aed1f4e41647c87e734124e52</srcmd5>
+    <version>1.0.0</version>
+    <time>1441727098</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0:
+  * 1.0.0 release notes
+  * Remove custom SSL compression handling
+  * Add more information show in v2
+  * Require disk and container format on image-create
+  * Ship the default image schema in the client
+  * Use API v2 as default
+  * V2: Do not validate image schema when listing
+  * Updated from global requirements
+  * Add unicode support for properties values in v2 shell
+  * Fix failure to create glance https connection pool
+  * Enable flake8 checks
+  * Extend unittests coverage for v2 tasks module
+  * Support for Metadata Definition Catalog for Tags
+  * Fix exception message in Http.py
+  * Fix an issue with broken test on ci
+  * Remove usage of assert_called_once on Mock objects
+  * Add .eggs/* to .gitignore
+  * Account for dictionary order in test_shell.py
+  * Do not fall back to namespaced oslo.i18n
+  * Add v2 support for the marker attribute
+  * Import only modules and update tox.ini
+  * Close iterables at the end of iteration
+  * Make glanceclient accept a session object
+  * cleanup openstack-common.conf and sync updated files
+  * Add release notes for 0.19.0
+  * Include owner and status option in v2 image list
+  * Fix Metadef Object update issue with python-glanceclient
+  * Fix functional tests in gate
+  * Do not crash on homedir mkdir</comment>
+    <requestid>329497</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6b1f9f4135735e0e9020a4b959c49830</srcmd5>
+    <version>1.1.0</version>
+    <time>1446208964</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * Change next version in docs
+  * 1.0.1 Release notes
+  * Fixes CLI client called without subcommands
+  * Print the reverting back to v1 to stderr
+  * Updates default --sort behaviour
+  * Invalid output running the command 'glance image-show &lt;image_id&gt;'
+  * Don't make `help` require auth parameters
+  * check for None value in utils.safe_header
+  * Updated from global requirements
+  * Consider `--os-token` when using v2
+  * Check if v2 is available and fallback
+  * Update path to subunit2html in post_test_hook
+  * Fix the remove property logic in V2
+  * Password should be prompted once
+- adjust Requires according to requirements.txt</comment>
+    <requestid>337166</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3b0c738d7f1d8016a0804e5bc350326d</srcmd5>
+    <version>2.0.0</version>
+    <time>1462342751</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0:
+  * Handle 403 forbidden on download
+  * Test: use assert_has_calls() instead
+  * Updated from global requirements
+  * Auto-generated squash commit
+  * Add reno to glanceclient
+  * Updated from global requirements
+  * v2 - &quot;readOnly&quot; key should be used in schemas
+  * Fix client initialization in shell tests
+  * Remove code needed for python2.5
+  * Fix warnings in glanceclient README
+  * Updated from global requirements
+  * Remove argparse from requirements
+  * Change metavar for location commands in V2
+  * Updated from global requirements
+  * Updated from global requirements
+  * Enhance description of instance-uuid option for image-create
+  * Updated from global requirements
+  * Remove monkey-patching for getsockopt
+  * Fixed TestHTTPSVerifyCert failure messages
+  * Remove location check from V2 client
+  * Use session when not specified token or endpoint
+  * Updated from global requirements
+  * Skip schema validation on GET /v2/images/%s
+  * Trival: Remove 'MANIFEST.in'
+  * Remove openstack-common.conf
+  * Updated from global requirements
+  * Drop py33 support
+  * Change assertTrue(isinstance()) by optimal assert
+  * Add help the ability to sort images with multiple keys</comment>
+    <requestid>384357</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5d988b2a89fd83ba99ebf99d648cb696</srcmd5>
+    <version>2.5.0</version>
+    <time>1475242209</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 2.5.0
+  * Don't update tags every time
+  * Remove unused openstack/common/apiclient/client
+  * Revert &quot;Don't update tags every time&quot;
+  * Update doc URL
+  * Fix warlock model creation
+  * Updated from global requirements
+
+update to version 2.3.0
+  * Remove discover from test-requirements
+  * Log request-id before exceptions raised
+  * Properly build releasenotes
+  * Fix string interpolation to delayed to be handled by the logging code
+  * Add comment about workaround for py3
+  * py3: Fix encoding and use sys.stdin.buffer
+  * Replace OpenStack LLC with OpenStack Foundation
+  * Updated from global requirements
+
+- update to 2.2.0:
+  * Update docs URL
+  * Add Python 3.5 classifier and venv
+  * Updated from global requirements
+  * image-download: tests to catch stray output
+  * Use correct order of arguments to assertEqual
+  * Update outdated image shema
+  * Replace tempest_lib with tempest.lib
+  * Log request-id for each api call
+
+- update to 2.1.0:
+  * Updated from global requirements</comment>
+    <requestid>425290</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2293ed15081877ecbc1b3d37df9619a1</srcmd5>
+    <version>2.8.0</version>
+    <time>1503927173</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.8.0
+  - help text for container_format, disk_format
+  - Removed the --no-ssl-compression parameter which is deprecated
+  - add explicit dependency on pyopenssl
+  - Remove team:diverse-affiliation from tags
+  - Validate input args before trying image download
+  - Fix 'UnicodeEncodeError' for unicode values in url
+  - Add image import features to client
+  - Update glanceclient version ref
+  - Make --profile load from environment variables
+  - use openstackdocstheme html context
+  - Replace six.iteritems() with .items()
+  - Update and optimize documentation links
+  - Add missing docstring
+  - Replace assertTrue(isinstance()) with assertIsInstance()
+  - move existing content into the new standard structure
+  - Fix man page build
+  - turn on warning-is-error in sphinx build
+  - doc: Remove cruft from conf.py
+  - Add release note for Pike
+  - gitignore: Ignore auto-generated docs
+  - update the doc URLs in the readme
+  - Remove log translations
+  - move old release notes into the releasenotes doc tree
+  - Updated from global requirements
+  - import content from cli-reference in openstack-manuals
+  - Enable code coverage report in console output
+  - switch to openstackdocstheme
+  - Add documentation for image import commands
+  - allow unhandled exceptions to cause test errors</comment>
+    <requestid>518807</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c71f4c1d12785ba7230541d7d9170f92</srcmd5>
+    <version>2.9.0</version>
+    <time>1516804279</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.9.0
+  - Update Image service property keys doc
+  - Revise functional testing README file
+  - Update reno for stable/pike
+  - Remove Babel as a runtime requirement
+  - image-create-via-import fails with ValueError
+  - Restore functional testing under ssl
+  - stage call fails with TypeError
+  - Add domain info to functional test clients
+  - Migrate dsvm functional test jobs to project repo
+  - Compare against 'RequestIdProxy.wrapped'
+  - Update Image service property keys docs
+  - Updated from global requirements
+  - Fix image-import call</comment>
+    <requestid>568547</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d9ffd840494244fc28a583b4d875a2b0</srcmd5>
+    <version>2.9.1</version>
+    <time>1518601904</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.9.1 (bsc#1078607)
+  - Updated from global requirements
+  - Avoid tox_install.sh for constraints support</comment>
+    <requestid>576304</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>05814091b86356f592005fb11595ae2b</srcmd5>
+    <version>2.9.1</version>
+    <time>1521498875</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583298</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>6541305ad478fb0785c13357587a2d0a</srcmd5>
+    <version>2.12.1</version>
+    <time>1536327432</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633068</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>bf1f1c3f10cc039d1fdb557793950266</srcmd5>
+    <version>2.13.1</version>
+    <time>1549916693</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.13.1
+  - Refactor periodic &quot;tips&quot; jobs
+  - import zuul job settings from project-config
+  - Use &quot;multihash&quot; for data download validation
+  - Don't quote colon in HTTP headers</comment>
+    <requestid>672978</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>af2e207adb1b5821e3e234a113894c5f</srcmd5>
+    <version>2.16.0</version>
+    <time>1556916027</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.16.0
+  - Update irrelevant-files for dsvm-functional tests
+  - Refactor periodic &quot;tips&quot; jobs
+  - Cleanup .zuul.yaml
+  - Add Python 3.6 classifier to setup.cfg
+  - Show the backend store info
+  - add lib-forward-testing-python3 test job
+  - Change openstack-dev to openstack-discuss
+  - Use &quot;multihash&quot; for data download validation
+  - Update min tox version to 2.0
+  - Update reno for stable/rocky
+  - Skip quote '=' for token header
+  - Remove redundant information from error message
+  - switch documentation job to new PTI
+  - Add image-list filter for multihash
+  - Release notes for 2.16.0
+  - add python 3.6 unit test job
+  - Embed validation data when adding location
+  - Don't quote colon in HTTP headers
+  - add python 3.7 unit test job
+  - import zuul job settings from project-config
+  - Remove team diversity tags note in README</comment>
+    <requestid>692825</requestid>
+  </revision>
+</revisionlist>

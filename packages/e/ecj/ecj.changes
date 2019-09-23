@@ -1,0 +1,123 @@
+-------------------------------------------------------------------
+Thu Nov 22 21:49:42 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Add one more maven artifact alias:
+  * org.eclipse.tycho:org.eclipse.jdt.compiler.apt
+
+-------------------------------------------------------------------
+Mon Oct 29 09:01:25 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Add two more maven artifact aliases:
+  * org.eclipse.jdt.core.compiler:ecj
+  * org.eclipse.jdt:ecj
+
+-------------------------------------------------------------------
+Mon Sep 18 23:02:42 UTC 2017 - fstrba@suse.com
+
+- Don't build against the java-bootstrap package; it is gone
+
+-------------------------------------------------------------------
+Fri May 19 12:04:39 UTC 2017 - tchvatal@suse.com
+
+- Fix build with javapackages-tools
+
+-------------------------------------------------------------------
+Thu Sep 10 10:06:40 UTC 2015 - tchvatal@suse.com
+
+- Fix cycles on Leap which is 1315 same as SLE.
+- Sort deps with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Sep 19 07:36:41 UTC 2014 - dmacvicar@suse.de
+
+- avoid cycles in Factory with Java 8
+
+-------------------------------------------------------------------
+Thu Sep 18 08:29:22 UTC 2014 - dmacvicar@suse.de
+
+- Remove upstream git URL for MANIFEST.MF as it is not
+  versioned. File will change and Factory bots will
+  complain.
+
+-------------------------------------------------------------------
+Thu Sep 18 06:01:18 UTC 2014 - dmacvicar@suse.de
+
+- restore bootstrap dependencies
+- Restored patches and GCJ Main, as they are used
+  to bootstrap other packages.
+  * eclipse-gcj-compat4.2.1.patch
+  * eclipse-gcj-nodummysymbol.patch
+- Removed obsolete ecj-native, as old SUSE package did
+  not had it and no package provides it
+
+-------------------------------------------------------------------
+Wed Sep 17 09:47:20 UTC 2014 - dmacvicar@suse.de
+
+- clean spec file
+
+-------------------------------------------------------------------
+Mon Sep 15 14:09:09 UTC 2014 - dmacvicar@suse.de
+
+- export NO_BRP_CHECK_BYTECODE_VERSION
+
+-------------------------------------------------------------------
+Mon Sep 15 12:33:11 UTC 2014 - dmacvicar@suse.de
+
+- Update to ecj 4.2.1 (expected by tomcat 7.0.55+)
+- Sync with Fedora ecj-4.4
+- Drop gcj patches
+  * eclipse-gcj-nodummysymbol.patch
+- Drop obsolete patches
+  * ecj-generatedebuginfo.patch : now done in spec
+  * eclipse-gcj-compat4.2.1.patch
+  * ecj-defaultto1.5.patch : we can use 1.6
+
+-------------------------------------------------------------------
+Wed Sep  3 14:38:14 UTC 2014 - tchvatal@suse.com
+
+- Spec-cleaner
+- BuildIgnore java-devel pkgs to avoid conflicts
+
+-------------------------------------------------------------------
+Wed Sep  3 05:42:52 UTC 2014 - coolo@suse.com
+
+- on 13.2 and Factory build against bootstrap java
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:39 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Fri May 31 16:44:10 UTC 2013 - varkoly@suse.com
+
+- Fix the spec to avoid fileconflicts with ecj-bootstrap 
+
+-------------------------------------------------------------------
+Mon Jan 21 13:43:25 UTC 2013 - mvyskocil@suse.com
+
+- Update to ecj 4.2.1 (expected by tomcat 7.0.34+)
+  (no changelog provided, but it's normal for eclipse)
+- sync with fedora 4.2.1-3
+  * ecj-defaultto1.5.patch - change the default -source to 1.5 to
+    match gcc-java capabilities
+  * ecj-generatedebuginfo.patch - generate debug info for java sources
+  * ecj-include-props.patch - package .props files too
+  * ecj-rpmdebuginfo.patch - hack, force debuginfo to be created when
+    RPM_BUILD_ROOT variable is defined
+  * eclipse-gcj-compat4.2.1.patch - disable all expected warning
+  * eclipse-gcj-nodummysymbol.patch - don't generate dummy entry in jars
+  * eclipse-jpackage-changelog.txt
+
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Thu Nov 22 10:52:43 CET 2007 - anosek@suse.cz
+
+- new package, initial version 3.3
+

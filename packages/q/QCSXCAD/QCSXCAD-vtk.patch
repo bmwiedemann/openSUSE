@@ -1,0 +1,15 @@
+--- a/CMakeLists.txt	2018-12-14 23:45:50.112002905 +0100
++++ b/CMakeLists.txt	2018-12-15 00:01:35.322874327 +0100
+@@ -98,8 +98,11 @@
+ if (WIN32)
+     find_package(VTK 6.1 REQUIRED)
+ else()
++   find_package(VTK COMPONENTS vtkGUISupportQt vtkRenderingLOD vtkIOGeometry vtkIOXML vtkIOPLY vtkIOImage vtkInteractionWidgets NO_MODULE)
+     # prefer >=6.1, fallback to >=5.4
+-    find_package(VTK 6.1 COMPONENTS vtkGUISupportQt vtkRenderingLOD vtkRenderingOpenGL vtkIOXML vtkIOPLY vtkIOImage vtkInteractionWidgets NO_MODULE)
++    IF (NOT ${VTK_FOUND})
++       find_package(VTK 6.1 COMPONENTS vtkGUISupportQt vtkRenderingLOD vtkRenderingOpenGL vtkIOXML vtkIOPLY vtkIOImage vtkInteractionWidgets NO_MODULE)
++    endif()
+     IF (NOT ${VTK_FOUND})
+         find_package(VTK REQUIRED)
+     endif()

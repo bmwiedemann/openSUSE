@@ -1,0 +1,5 @@
+<package name="guvcview" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:apps" package="guvcview"/>
+</package>

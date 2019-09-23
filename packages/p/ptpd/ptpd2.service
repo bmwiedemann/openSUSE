@@ -1,0 +1,10 @@
+[Unit]
+Description=ptpd time precision daemon
+
+[Service]
+Type=forking
+EnvironmentFile=-/etc/sysconfig/ptpd2
+ExecStart=/usr/sbin/ptpd2 -c $PTPD_CONFIG_FILE $PTPD_EXTRA_OPTIONS
+
+[Install]
+WantedBy=multi-user.target

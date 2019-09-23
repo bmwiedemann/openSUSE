@@ -1,0 +1,7 @@
+<package name="grep" project="openSUSE:Factory">
+  <title>Print lines matching a pattern</title>
+  <description>The grep command searches one or more input files
+for lines containing a match to a specified pattern.
+By default, grep prints the matching lines.</description>
+  <devel project="Base:System" package="grep"/>
+</package>

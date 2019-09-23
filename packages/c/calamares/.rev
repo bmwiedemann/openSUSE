@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bce6e2241edaa5ae88131648aab4c360</srcmd5>
+    <version>3.1.5</version>
+    <time>1507897194</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove -devel subpackage from spec entirely (not only commenting filelist)</comment>
+    <requestid>533725</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9cddeaf7f1890dd13b2ec447637f43df</srcmd5>
+    <version>3.1.6</version>
+    <time>1508770408</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535909</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d3ffed1f56f281553d4fb26989867fd7</srcmd5>
+    <version>3.1.8</version>
+    <time>1511517383</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Calamares 3.1.8:
+  - Fix Netinstall crash if the returned netinstall-groups 
+    data was empty.
+  - Fix regression were GeoIP data had been read twice.
+  - Use more support code from KPMCore, instead of doing it 
+    ourselves.
+- Update to Calamares 3.1.7 fixes two regressions introduced 
+  earlier in the 3.1 series (3.1.5 or before):
+  - Netinstall was no longer compatible with the packages module, 
+    which prevented any users of netinstall from installing 
+    packages from online repositories.
+  - The bootloader installation for EFI systems used the wrong 
+    name for the bootx64.efi (or bootia32.efi) files.
+</comment>
+    <requestid>544956</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fb90709f588564211aae2628d028e42f</srcmd5>
+    <version>3.1.10</version>
+    <time>1515876293</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558199</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e5048b4d78e5552d599b65d1902e7b28</srcmd5>
+    <version>3.1.11</version>
+    <time>1531813306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622927</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>557282c6f65dbde9e91ae899b265d117</srcmd5>
+    <version>3.1.11</version>
+    <time>1549624278</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672107</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>4581ab3613ca5ae8ea75d03393edfcaf</srcmd5>
+    <version>3.1.11</version>
+    <time>1549916864</time>
+    <user>dimstar_suse</user>
+    <comment>- use suse_version macro instead of sle_version to makes effects on openSUSE Tumbleweed.
+</comment>
+    <requestid>673147</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,177 @@
+-------------------------------------------------------------------
+Tue Aug 20 12:49:44 UTC 2019 - Mel Gorman <mgorman@suse.com>
+
+- Clean spec file using spec-cleaner 
+
+-------------------------------------------------------------------
+Thu Aug  8 09:34:29 UTC 2019 - Mel Gorman <mgorman@suse.com>
+
+- Add makefile-bash.patch
+  - Installs bash completes as per openSUSE packaging guidelines
+
+- Delete revert-trace-cmd-if-event-fork-exists-use-it-instead-of-ptrace.patch
+  - Patch merged upstream
+
+- Delete trace-cmd-asciidoc-fix.patch
+  - Patch merged upstream
+
+-------------------------------------------------------------------
+Wed Aug  7 12:48:37 UTC 2019 - Mel Gorman <mgorman@suse.com>
+
+- Remove building of kernelshark package
+  - Upstream has separate versioning now for trace-cmd and kernelshark
+  - Version tags no longer correspond to the same source
+
+- Upgrade to version 2.8.3
+  - Install headers dependencies to correct locations
+  - SET SONAME on shared libraries
+  - Python3 support
+
+- Upgrade to version 2.8.2
+  - Fix a potential issue with buffer run due to non-terminating string
+    returned by readlink()
+
+- Upgrade to version 2.8.1
+  - Split out kernelshark in preparation for major rewrite.
+  - Code refactoring related to the kernelshark split
+  - Split out event handling into a separate library
+  - Fix memory handling errors, NULL handling, use-after-free, leaks
+
+- Upgrade to version 2.7
+  - Memory leak fixes
+  - Multiple bug fixes on how splice() is handled to avoid data loss
+  - Fix various build warnings
+  - Documentation updates for missing options, clarifications on usage
+  - Update bash competion handlers for sub-commands
+
+- Upgrade to version 2.6.2
+  - Fix memory handling errors, NULL handling, use-after-free
+  - Fix filter syntax for make_pid_filter
+  - Documentation updates
+  - Add bash competion handlers for sub-commands
+
+-------------------------------------------------------------------
+Wed Feb 28 12:59:49 CET 2018 - tiwai@suse.de
+
+- Fix documentation build with asciidoc (bsc#1075764):
+  trace-cmd-asciidoc-fix.patch
+
+-------------------------------------------------------------------
+Wed Nov  1 16:17:19 UTC 2017 - mgorman@suse.com
+
+- Add audit-devel as a build dependency to remove a build warning
+- Revert event-fork support as children are not properly traced (bsc#1064552)
+  Adds revert-trace-cmd-if-event-fork-exists-use-it-instead-of-ptrace.patch
+- Bump release number
+
+-------------------------------------------------------------------
+Mon Aug 28 12:35:58 UTC 2017 - mgorman@suse.com
+
+- Upgrade to version 2.6.1
+
+  - Improved robust handling of malloc failures and corrupted input
+  - Improved graphing support
+  - Fix bug due to double frees
+  - Fix output format oddities
+  - Add filtering of specific pids
+  - Add bash-completion handler
+  - New option: --max-graph-depth to limit graph depth
+  - New option: -I remove interrupts from trace
+  - New option: -S remove softirqs from trace
+  - New option: --ts2secs to convert cycles into seconds 
+  - Updated makefile-lib64.patch to match upstream Makefile changes
+
+-------------------------------------------------------------------
+Wed Oct  5 14:48:18 UTC 2016 - mel.gorman@microfocus.com
+
+- Upgrade to version 2.6
+
+  - New option: -g for trace-cmd profile on custom events
+  - New option: -G to make irqs global events in trace-cmd profile
+  - New option: -B and -t options to trace-cmd extract to handle instances
+  - New option: -a for all instances in trace-cmd extract
+  - New option: -a for all instances for trace-cmd stop, reset, and restart
+  - New option: --debug to trace-cmd report that shows markup of the trace.dat file.
+  - New option: --by-comm to group tasks together by their names in trace-cmd profile.
+  - New plugin: Added plugin for tlb_flush event
+  - output: Show actual event paths instead of glob when starting
+  - output: Simplify status output at end of trace
+  - output: Sort events in trace-cmd profile
+  - output: Show instance names in trace-cmd stat
+  - Plugins are now allowed to have options
+  - Have trace-cmd hist work with instances
+
+- Upgrade to version 2.5.2
+  - Added support for tracefs filesystem.
+  - profile: Show timestamps of max and mins
+  - profile: Add -H for user specified event hooking
+  - Have -H in record be saved for report --profile to use
+
+-------------------------------------------------------------------
+Wed Jan 28 11:00:46 UTC 2015 - mgorman@suse.com
+
+- Upgrade to version 2.5.1
+  - New command stream: stream to console without files
+  - New command profile: live statistic gathering
+  - New command stat: show what can be enabled
+  - New command hist: histogram of recorded events
+  - New command mem: filter a trace for kernel slab allocator calls
+  - New option: record --profile will enable the same defaults as used
+                with trace-cmd profile
+  - New option: report --event filter recorded events based on a regex
+  - New option: report --profile produces identical output as trace-cmd profile
+                except on recorded data instead of live data.
+  - Resets all modifications to existing tracing options on completion
+  - Trace multiple PIDs (-P x,y,z)
+
+-------------------------------------------------------------------
+Tue Mar 12 16:20:26 UTC 2013 - mgorman@suse.com
+
+- Upgrade to version 2.0.4
+  - Have read splice check for EINTR or EAGAIN
+  - Do not block during ring buffer extract
+  - Do not block on reads when record is finished
+  The read splice check is expected to be necessary for trace-cmd to
+  work with Linux kernel versions 3.10 and later.
+
+-------------------------------------------------------------------
+Thu Dec 20 21:17:20 UTC 2012 - tonyj@suse.com
+
+- Upgrade to version v2.0.2
+  Changelog:
+  - Update README for plugins directory
+  - trace-cmd: Move trace-cmd python modules to lib/
+  - python: Fix further issues of struct record rename
+- Fix libraries to install in /usr/lib64 on relevant archs. This adds
+  an openSUSE-specific patch called "makefile-lib64.patch" that will
+  not be pushed upstream.
+
+-------------------------------------------------------------------
+Mon Oct  8 19:18:13 UTC 2012 - mgorman@suse.com
+
+- Move to upstream stable version v2.0.1. Previously backported patches
+  and openSUSE-specific path patches have been merged upstream in this
+  version.
+- Allow filtering by function names instead of pointers
+- Numberous formatting fixes
+- Many small stability fixes in the event parser, libtraceevent and trace-cmd.
+  Off-by-one errors, potential memory leaks etc.
+- Reduced memory and CPU usage. Closes file descriptors that pin kernel memory,
+  avoids loading of python if python plugins are not in use.
+
+-------------------------------------------------------------------
+Fri Sep 28 15:12:32 UTC 2012 - mgorman@suse.com
+
+- Backport patches necessary for the "wakeup" plugin to collect
+  actual data and report it without segmentation faults.
+
+-------------------------------------------------------------------
+Wed Sep 19 10:29:43 UTC 2012 - mgorman@suse.com
+
+- Depend on libxslt instead of xsltproc on older releases.
+
+-------------------------------------------------------------------
+Mon Sep 17 16:11:52 UTC 2012 - mgorman@suse.com
+
+- Initial package
+

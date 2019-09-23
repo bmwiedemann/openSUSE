@@ -1,0 +1,151 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>85db86f1a7bbcb418ab82b834ce68439</srcmd5>
+    <version>3.2.2</version>
+    <time>1297120313</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60132 from user phfaist
+</comment>
+    <requestid>60132</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c5c9524a5565672fbbbfb3c3e95248ed</srcmd5>
+    <version>3.2.2</version>
+    <time>1297120320</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60132
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>c5c9524a5565672fbbbfb3c3e95248ed</srcmd5>
+    <version>3.2.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3b2e91e1a893964e5d8cc1ac01ea38e1</srcmd5>
+    <version>3.2.3</version>
+    <time>1303381258</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67970 from user licensedigger
+</comment>
+    <requestid>67970</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d80184a028b82cfacc9883e19d6eb963</srcmd5>
+    <version>3.2.3</version>
+    <time>1303381271</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67970
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4f4539a3ad0fa051d7b34e67e111bf34</srcmd5>
+    <version>3.2.4</version>
+    <time>1317132453</time>
+    <user>saschpe</user>
+    <comment>- Update to version 3.2.4
+* removed unnecessary explicit -m32/-m64 build flags (should fix broken compilation on some platforms)
+* minor enhancements
+- Link to libX11 as well, fixes build with no-add-needed (forwarded request 84939 from elvigia)</comment>
+    <requestid>84952</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>4f4539a3ad0fa051d7b34e67e111bf34</srcmd5>
+    <version>3.2.4</version>
+    <time>1319182050</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>edf2781295c0eed9ff5dd98427856700</srcmd5>
+    <version>3.2.4</version>
+    <time>1323192110</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a619b55589cbd996ed824aab96446a1a</srcmd5>
+    <version>3.2.6</version>
+    <time>1339352244</time>
+    <user>coolo</user>
+    <comment>Update to version 3.2.6; fixes build failures on Factory (forwarded request 123955 from badshah400)</comment>
+    <requestid>123973</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a619b55589cbd996ed824aab96446a1a</srcmd5>
+    <version>3.2.6</version>
+    <time>1340183530</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>a619b55589cbd996ed824aab96446a1a</srcmd5>
+    <version>3.2.6</version>
+    <time>1359109192</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5b8359f835383992a281de2d5339903a</srcmd5>
+    <version>3.2.7</version>
+    <time>1376125449</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to bug-fix release 3.2.7; Pass option  -DCMAKE_SKIP_RPATH=ON to cmake to fix Factory build issues (forwarded request 186361 from badshah400)</comment>
+    <requestid>186466</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>5b8359f835383992a281de2d5339903a</srcmd5>
+    <version>3.2.7</version>
+    <time>1379662814</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e1416677d713913edc954cf45e6a2ae6</srcmd5>
+    <version>3.2.8</version>
+    <time>1391323841</time>
+    <user>coolo</user>
+    <comment>Update to 3.2.8 (forwarded request 220514 from badshah400)</comment>
+    <requestid>220580</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>e1416677d713913edc954cf45e6a2ae6</srcmd5>
+    <version>3.2.8</version>
+    <time>1409301397</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>bd4661c797157affd411ca7d8de66926</srcmd5>
+    <version>3.2.8</version>
+    <time>1461335137</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390521</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>eb8425f49a20668d01a15a0739e5a86a</srcmd5>
+    <version>3.2.8</version>
+    <time>1480693408</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442994</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>936625c68d01488be01fdda9d8da198b</srcmd5>
+    <version>4.0.0</version>
+    <time>1503592824</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511434</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>bad3559b3207c91016a076a0c2b28b94</srcmd5>
+    <version>4.0.0</version>
+    <time>1539013751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640546</requestid>
+  </revision>
+</revisionlist>

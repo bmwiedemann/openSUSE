@@ -1,0 +1,45 @@
+Index: gnome-initial-setup-3.20.1/gnome-initial-setup/gnome-initial-setup.c
+===================================================================
+--- gnome-initial-setup-3.20.1.orig/gnome-initial-setup/gnome-initial-setup.c
++++ gnome-initial-setup-3.20.1/gnome-initial-setup/gnome-initial-setup.c
+@@ -184,6 +184,30 @@ get_mode (void)
+     return GIS_DRIVER_MODE_NEW_USER;
+ }
+ 
++static gboolean
++language_is_CJK()
++{
++    gchar **env = g_get_environ ();
++    const gchar *value = g_environ_getenv (env, "LANG");
++
++    if (g_ascii_strcasecmp(value, "zh_CN.UTF-8") &&
++        g_ascii_strcasecmp(value, "zh_HK.UTF-8") &&
++        g_ascii_strcasecmp(value, "zh_MO.UTF-8") &&
++        g_ascii_strcasecmp(value, "zh_TW.UTF-8") &&
++        g_ascii_strcasecmp(value, "zh_SG.UTF-8") &&
++        g_ascii_strcasecmp(value, "zh_MO.UTF-8") &&
++        g_ascii_strcasecmp(value, "zh_MO.UTF-8") &&
++        g_ascii_strcasecmp(value, "ja_JP.UTF-8") &&
++        g_ascii_strcasecmp(value, "ko_KR.UTF-8")) {
++      g_strfreev(env);
++      return FALSE;
++    }
++    else {
++      g_strfreev(env);
++      return TRUE;
++    }
++}
++
+ int
+ main (int argc, char *argv[])
+ {
+@@ -192,6 +216,9 @@ main (int argc, char *argv[])
+   GOptionContext *context;
+   GisDriverMode mode;
+ 
++  if (!language_is_CJK())
++    return status;
++
+   GOptionEntry entries[] = {
+     { "existing-user", 0, 0, G_OPTION_ARG_NONE, &force_existing_user_mode,
+       _("Force existing user mode"), NULL },

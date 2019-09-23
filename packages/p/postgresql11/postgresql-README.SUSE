@@ -1,0 +1,80 @@
+Unix-Domain Socket Directory
+============================
+
+
+
+Upgrading PostgreSQL on openSUSE and SUSE Linux Enterprise Server
+=================================================================
+
+Current versions of PostgreSQL come with the pg_upgrade tool that
+simplifies and speeds up the migration of a PostgreSQL installation to
+a new version. Before version 9.1 dump and restore was needed which
+was much slower.
+
+pg_upgrade needs to have the server binaries of both versions
+available. To allow this, we had to change the way PostgreSQL is
+packaged as well as the naming of the packages, so that two or more
+versions of PostgreSQL can be installed in parallel.  The package
+names for PostgreSQL contain numbers indicating the major version.
+
+In PostgreSQL terms for versions up to 9.6 the major version consisted
+of the first two components of the three-component version number,
+i.e. 8.3, 8.4, 9.0, or 9.1. So, the packages for Postgresql 9.1 are
+named postgresql91, postgresql91-server, etc. Inside the packages the
+files were moved from their standard locations to a versioned location
+such as /usr/lib/postgresql83/bin or /usr/lib/postgresql91/bin to
+avoid file conflicts if packages are installed in parallel.
+
+Starting with version 10 the PostgreSQL project changed their
+versioning scheme from from three components to two, which means one
+component for the major version and one for the minor.  So, the
+sequence of major version across the versioning scheme change will be:
+9.4, 9.5, 9.6, 10, 11, 12. For versions that use the new versioning
+scheme SUSE only puts the single component major version into the
+package name, so the postgresql96 package (containg version 9.6
+according to the old versioning scheme) will be followed by
+postgresql10, then postgresql11, and so on.
+
+The update-alternatives mechanism creates and maintains symbolic links
+that cause one version (by default the highest installed version) to
+re-appear in the standard locations. By default, database data are
+stored under /var/lib/pgsql/data on SUSE Linux.
+
+The following preconditions have to be fulfilled before data migration
+can be started:
+
+ 1. If not already done, the packages of the old PostgreSQL version
+ must be upgraded to the new packaging scheme through a maintenance
+ update.
+
+ 2. The packages of the new PostgreSQL major version need to be
+ installed. As pg_upgrade is contained in postgresql91-contrib, that
+ one has to be installed as well, at least until the migration is
+ done.
+
+ 3. Unless pg_upgrade is used in link mode, the server must have
+ enough free disk space to temporarily hold a copy of the database
+ files. If the database instance was installed in the default
+ location, the needed space in megabytes can be determined by running
+ the follwing command as root: "du -hs /var/lib/pgsql/data". If space
+ is tight, it might help to run the "VACUUM FULL" SQL command on each
+ database in the instance to be migrated, but be aware that it might
+ take very long.
+
+The latest upstream documentation for pg_upgrade including step by
+step instructions for performing a database migration can be found
+online under https://www.postgresql.org/docs/current/pgupgrade.html ,
+or locally under
+file:///usr/share/doc/packages/postgresqlXX/html/pgupgrade.html , if
+the postgresqlXX-docs package is installed. XX is a place holder for
+the respective major version here.
+
+NOTE: The online documentation starts with explaining how you can
+install PostgreSQL from the upstream sources (which is not necessary
+when you install the SUSE RPMs) and also uses other directory names
+(/usr/local instead of the update-alternatives based path as described
+above).
+
+For background information about the inner workings of pg_upgrade and
+a performance comparison with the old dump and restore method, see
+http://momjian.us/main/writings/pgsql/pg_upgrade.pdf .

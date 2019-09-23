@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Sat Oct 20 11:31:58 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:39 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update safe to version 0.3.17.
+  * Improve the display of errors, less internal callstack
+  * Add a few missing Partial constraints
+  * #22, add Safe index
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Sun Jun 25 18:41:42 UTC 2017 - psimons@suse.com
+
+- Update to version 0.3.15.
+
+-------------------------------------------------------------------
+Mon Feb 20 08:44:27 UTC 2017 - psimons@suse.com
+
+- Update to version 0.3.14 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Feb 12 14:20:41 UTC 2017 - psimons@suse.com
+
+- Update to version 0.3.13 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu Jan 26 16:21:49 UTC 2017 - psimons@suse.com
+
+- Update to version 0.3.11 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Nov 14 09:29:56 UTC 2016 - psimons@suse.com
+
+- Update to version 0.3.10 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:26:32 UTC 2016 - psimons@suse.com
+
+- Update to version 0.3.9 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Fri Oct 23 07:33:19 UTC 2015 - mimi.vx@gmail.com
+
+- initial commit

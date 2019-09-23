@@ -1,0 +1,4411 @@
+-------------------------------------------------------------------
+Thu Oct 11 05:50:23 UTC 2018 - containers-bugowner@suse.de
+
+- Commit a17a674 by Michal Jura mjura@suse.com
+ [CPI] OpenStack Cloud Provider config file doesn't exist (bsc#1111361)
+
+
+-------------------------------------------------------------------
+Wed Oct 10 07:16:02 UTC 2018 - containers-bugowner@suse.de
+
+- Commit a271085 by James Mason jmason@suse.com
+ Remove code climate badges from README
+
+
+-------------------------------------------------------------------
+Tue Oct  9 08:11:14 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 422f207 by Kiall Mac Innes kiall@macinnes.ie
+ Remove Code Climate config
+
+
+-------------------------------------------------------------------
+Mon Oct  8 12:34:55 UTC 2018 - containers-bugowner@suse.de
+
+- Commit a42b3d3 by Danny Sauer dsauer@suse.com
+ Fix broken LDAP connector test case syntax
+ 
+ Reduce duplication in expected json method More refactoring, extended testing
+ * Move all JSON assembly logic into `expected_dex_json` definition
+ * This simplfied the examples so they were identical, so wrap them in a loop
+ * Using the loop allowed testing all four combinations of anon/not and
+ starttls/ssl
+ * Test names look like `with Dex LDAP connectors with starttls has dex LDAP
+ connectors for anon_admin`
+
+
+-------------------------------------------------------------------
+Wed Oct  3 11:15:05 UTC 2018 - containers-bugowner@suse.de
+
+- Commit f05863b by Daniel Orf dorf@suse.com
+ [bsc#1109025] LDAP connector can't be saved if anonymous authentication is
+ selected
+
+
+-------------------------------------------------------------------
+Thu Sep 27 09:13:27 UTC 2018 - containers-bugowner@suse.de
+
+- Commit c16eda7 by Maximilian Meister mmeister@suse.de
+ dont allow updating admin again when cluster update failed
+ 
+ bsc#1108740
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Wed Sep 26 20:20:59 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 4a672de by Daniel Orf dorf@suse.com
+ [bsc#1109320] Fix external auth group mapping for group attr name
+
+
+-------------------------------------------------------------------
+Tue Sep 25 09:10:30 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 31687a3 by Vicente Zepeda Mas vzepedamas@suse.com
+ FIX bsc#1099985 removes unassigned nodes and add a reject node link
+
+
+-------------------------------------------------------------------
+Tue Sep 18 11:49:00 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 0c6f37f by Maximilian Meister mmeister@suse.de
+ rebase patch to alter default time column value:
+   0_set_default_salt_events_alter_time_column_value.rpm.patch
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Mon Sep 17 07:05:02 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 23bb090 by Maximilian Meister mmeister@suse.de
+ use online status during update for update status
+ 
+ we can make use of the online status to have a more accurate status during
+ the update
+ 
+ if a node is offline during the update, it likely means that it's rebooting
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Fri Sep 14 16:13:37 UTC 2018 - containers-bugowner@suse.de
+
+- Commit ce14443 by James Mason jmason@suse.com
+ [BSC#1107545] Migrate subnet pillar name v2.1 -> v3
+
+
+-------------------------------------------------------------------
+Tue Sep 11 23:01:19 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 88c5ba3 by Vítor Avelino vavelino@suse.com
+ ldap (specs): minor improvements using capybara convetions
+ 
+ Signed-off-by: Vítor Avelino <vavelino@suse.com>
+
+
+-------------------------------------------------------------------
+Mon Sep 10 21:34:01 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 967df9b by David Helkowski dhelkowski@suse.com
+ Prevent changed external ldap values from skipping checks
+ 
+ Alter external ldap auth form to redisable save and rerequire 'check
+ connection' when values are changed.
+ (fate#324601)
+
+
+-------------------------------------------------------------------
+Fri Sep  7 17:05:06 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 98b8e10 by David Helkowski dhelkowski@suse.com
+ Fix test connection button for ldap external auth
+ 
+ Corrected fetching of password for ldap external auth
+ 
+ Corrected grabbing of certificate content for validating ldap external auth
+
+
+-------------------------------------------------------------------
+Fri Sep  7 06:36:57 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 3d00130 by Maximilian Meister mmeister@suse.de
+ update README
+ 
+ fixes #643
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Thu Sep  6 09:01:17 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 68f23f5 by Rafael Fernández López ereslibre@ereslibre.es
+ Allow to configure Kubernetes log level globally.
+ 
+ Also, include PSP and DNS addons. While they won't probably be modified, they
+ could be used for certain use cases.
+ 
+ Fixes: bsc#1106193
+
+
+-------------------------------------------------------------------
+Tue Sep  4 13:53:09 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 1c3873f by Vítor Avelino contact@vitoravelino.me
+ specs: fixed TempFile usage for file fixtures
+ 
+ In some randomized seeds a temp file was being removed and no content was
+ being uploaded, since the file didn't exist, and the file content wasn't
+ being displayed on the screen as expected.
+ 
+ Since there's no way of controlling when GC is going to remove the temp
+ files, the only way is trying to keep the reference on hold to be usable. The
+ solution for this was to simply return the TempFile instance from
+ `to_file_fixture` instead of the path or base name.
+ 
+ Signed-off-by: Vítor Avelino <contact@vitoravelino.me>
+
+
+-------------------------------------------------------------------
+Wed Aug 29 11:42:04 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 34c7b11 by Maximilian Meister mmeister@suse.de
+ when rebooting admin, set tx_update_reboot_needed to false
+ 
+ otherwise we have a window after the restart, where the reboot admin button
+ is still shown, as the event proccessor still needs time to update the grains
+ 
+ bsc#1099015
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Wed Aug 29 09:16:51 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 43d8e3d by James Mason jmason@suse.com
+ Update bootstrap-slider
+ 
+ bootstrap-slider >=10.1.0 includes
+ https://github.com/seiyria/bootstrap-slider/pull/836 which was included as a
+ patch on release-2.1.
+ 
+ fix bsc#1107495
+
+-------------------------------------------------------------------
+Wed Aug 29 09:14:54 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 65fc2e0 by Rafael Fernández López ereslibre@ereslibre.es
+ Update the minion hostname in a regular basis, based on the grain
+ information.
+ 
+ Fixes: bsc#1103307
+
+
+-------------------------------------------------------------------
+Wed Aug 29 08:58:27 UTC 2018 - containers-bugowner@suse.de
+
+- Commit af6595b by Joachim Gleissner jgleissner@suse.com
+ Re-record cassettes required for cloud_cluster_spec
+ 
+ Required due to change in salt API calls in app/models/cloud_cluster.rb.
+ 
+ Commit fa09369 by Joachim Gleissner jgleissner@suse.com
+ Add explanatory comment for sleep(1) work-around
+ 
+ Add comment in app/models/cloud_cluster.rb that explains why there is
+ currently a work-around in the form of sleep(1) required.
+ 
+ Commit d2bb545 by Joachim Gleissner jgleissner@suse.com
+ Sleep after calling saltutil.refresh_pillar
+ 
+ Added sleep(1) after calling saltutil.refresh_pillar on the admin node when
+ creating a cluster in the public cloud. Otherwise, the salt-cloud call that
+ follows directly afterwards may still use old pillar data.
+ 
+ Commit ae28c04 by Joachim Gleissner jgleissner@suse.com
+ Call saltutil.sync_pillar runner before bootstrapping cloud cluster
+ 
+ Added call_runner function to salt interface and added sync_pillar call to
+ cloud_cluster.rb. This is required to activate the external pillar, which is
+ normally done at orchestration time, but for creating cluster nodes in the
+ cloud, the pillar is needed before that. See also
+ https://github.com/kubic-project/velum/issues/399 for detailts.
+
+ fixes bsc#1107082
+
+
+-------------------------------------------------------------------
+Wed Aug 29 04:59:12 UTC 2018 - containers-bugowner@suse.de
+
+- Commit b445cac by Marek Counts marek.counts@outlook.com
+ Updated tool tips and removed default data
+ 
+ - Added a database migration that removed default data from the database
+ - Added smart documentation on each LDAP field in place of the default data.
+ 
+ updates to the rspec tests too account for missing feilds due to the lack of
+ defaults
+ 
+ removed not required element ids
+ 
+ removed not required element ids and corrected accidental removal of
+ @certificate_holder.port
+ 
+ Removal of not needed fill_ins
+ 
+ Under a previous assumption of the workings of the save button I had filled
+ in stuff that is not needed for the test.
+ 
+ Updated slim html to use Certificate
+ 
+ Also updated unit tests to pass.
+ 
+ Removal of extra line
+ 
+ Corrected spelling and fixed spacing
+ 
+ Corrected spelling and updated spacing to be consistent in the examples.
+ 
+ update to tests to fix a bug
+ 
+ There are some issues with these test causing random failures, Currently the
+ best fix to this is locking down the run order.
+ 
+ fixed rubocop complaints
+ 
+ updated to fix rubocop complaints.
+
+
+-------------------------------------------------------------------
+Tue Aug 28 03:22:15 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 0d201e7 by Marek Counts mcounts@suse.com
+ Updates to prevent auto complete from filling out LDAP fields
+ 
+ A extra text field was added to break up the form flow to keep firefox from
+ auto filling in the user name and password. this extra field was then hidden
+ by css. if hidden in the HTML firefox would know and still auto fill.
+
+
+-------------------------------------------------------------------
+Mon Aug 27 14:39:50 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 68e42c9 by Maximilian Meister mmeister@suse.de
+ require uglifier only during packaging
+ 
+ the constant `Uglifier` is not accessible when opening a rails console or
+ running a rake command
+ 
+ fix#uglifier
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Thu Aug 23 07:21:00 UTC 2018 - containers-bugowner@suse.de
+
+- Commit c4a814d by Maximilian Meister mmeister@suse.de
+ prevent accessing discovery after bootstrap
+ 
+ PR #627 introduced a weird behaviour of skip_before_action when 'only' and
+ 'if' is used at the same time
+ 
+ see: https://github.com/rails/rails/issues/9703
+ 
+ we can just omit the 'if setup_done?' check because that's already implicitly
+ happening through the application_controller
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Mon Aug 20 11:07:58 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 377e4fe by James Mason jmason@suse.com
+ PublicCloud#remove: Not yet implemented
+ 
+ Removing nodes is not implemented in public clouds (Azure, EC2, GCE) at this
+ time, so the interfaces for doing so should be disabled until the feature is
+ implemented.
+
+ fixes bsc#1107081
+
+
+-------------------------------------------------------------------
+Mon Aug 20 09:47:31 UTC 2018 - containers-bugowner@suse.de
+
+- Commit e3fa613 by Maximilian Meister mmeister@suse.de
+ fix uglifier instantiation
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Aug 14 07:39:26 UTC 2018 - containers-bugowner@suse.de
+
+- Commit d4648f9 by James Mason jmason@suse.com
+ bsc#1098085 Add nodes in public clouds
+ 
+ Requires #595 Requires #610
+ 
+ Adapt public cloud bootstrap views & controller actions to enable adding
+ nodes after boostrap.
+
+
+-------------------------------------------------------------------
+Fri Aug 10 17:38:54 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 3f08d4e by Daniel Orf dorf@suse.com
+ Added LDAP Connector validation button and logic Added new controller
+ "ldap_test_controller". Updated _form.html.slim to add test button and
+ message. Added ldap-conn-test.js to javascripts/settings. ldap-conn-test.js
+ adds jquery logic to test button in place and modify message. Updated
+ routes.rb for new controller. Added RSpec tests.
+ 
+ Fixed Code Climate warnings. Added logic in ldap_test_controller_spec.rb to
+ turn on/off based on LDAP server presence. Addressed comments from David
+ Helkowski. Addressed comments from Vítor Avelino (x2). Updated "Save" button
+ ID in dex_connector_ldap_feature_spec.rb. Added ldap_mock.rb, ldap_mock.yml,
+ updated settings.scss
+
+ (fate#324601)
+
+-------------------------------------------------------------------
+Fri Aug 10 08:45:04 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 0b93b79 by Flavio Castelli fcastelli@suse.com
+ Fix smally typo
+ 
+ This fixes issue #612
+ 
+ github-issue#612
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+
+
+-------------------------------------------------------------------
+Thu Aug  9 13:01:40 UTC 2018 - containers-bugowner@suse.de
+
+- Commit b38fb1f by Florian Bergmann fbergmann@suse.de
+ Make dex connector for LDAP use the file-based certificate upload.
+(fate#324601)
+ 
+ Commit 0847881 by Florian Bergmann fbergmann@suse.de
+ Ensure that certificates are always associated with the new holder.
+ 
+ Otherwise a reused certificate will not be associated with a new service.
+ 
+ Commit 0ab1f88 by Florian Bergmann fbergmann@suse.de
+ Fix bsc1097753: Allow the user to upload a certificate via file.
+ 
+ Commit 09c5822 by Florian Bergmann fbergmann@suse.de
+ Setup RSpec fixture path.
+
+
+-------------------------------------------------------------------
+Wed Aug  8 07:45:55 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 830e027 by Vítor Avelino vavelino@suse.com
+ ui: added openstack fields info and required validation
+ 
+ The OpenStack API fields didn't have any additional information about them
+ and no indicator of which fields were required or not for a valid
+ configuration.
+ 
+ Fixes bsc#1097817
+ 
+ Signed-off-by: Vítor Avelino <vavelino@suse.com>
+
+
+-------------------------------------------------------------------
+Tue Aug  7 12:44:16 UTC 2018 - containers-bugowner@suse.de
+
+- Commit cd5cc07 by Maximilian Meister mmeister@suse.de
+ keep information about adding nodes to the cluster
+ 
+ after the bootstrap all the useful hints regarding autoyast were not
+ accessible anymore
+ 
+ bsc#1098085
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Aug  7 10:33:17 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 388521f by Michal Jura mjura@suse.com
+ [CPI] Split logic for Project and Domain ID, bsc#1103873
+
+
+-------------------------------------------------------------------
+Mon Aug  6 12:55:04 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 4c32ca3 by Michal Jura mjura@suse.com
+ Change CPI OpenStack Cinder text field to boolean button
+
+
+-------------------------------------------------------------------
+Mon Aug  6 08:40:49 UTC 2018 - containers-bugowner@suse.de
+
+- Commit e87f9ba by Jordi Massaguer Pla jmassaguerpla@suse.de
+ fix tests that were broken because PR#595 wasn't rebased before merging it.
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+-------------------------------------------------------------------
+Mon Jul 30 06:38:41 UTC 2018 - containers-bugowner@suse.de
+
+- Commit f8d65aa by James Mason jmason@suse.com
+ Add support for bootstrapping in Google Compute
+
+ fixes bsc#1107080
+
+
+-------------------------------------------------------------------
+Tue Jul 24 23:05:23 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 971c792 by Ty Daines tdaines@suse.com
+ Add ability to add, modify, delete and list LDAP connections in the ui
+ (fate#324601)
+
+
+-------------------------------------------------------------------
+Thu Jul 19 09:16:44 UTC 2018 - containers-bugowner@suse.de
+
+- Commit d88991f by Michal Jura mjura@suse.com
+ [CPI] Add option to ignore OpenStack Cinder availability zone, bsc#1095572
+ 
+ Ignore OpenStack Cinder avability zone when attaching volumes. When Nova and
+ Cinder have different availability zones, this should be set to true. Default
+ is false.
+
+
+-------------------------------------------------------------------
+Fri Jul  6 17:05:41 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 52e869d by Maximilian Meister mmeister@suse.de
+ rename migration file
+ 
+ it needs to match the schema revision
+ 
+ feature#external-ldap (fate#324601)
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+ 
+ Commit 9a9393c by David Helkowski dhelkowski@suse.com
+ Add dex connector ldap table, models, and pillar output (fate#324601)
+ 
+ Added a new table "dex_connectors_ldap" and migration file to the db schema
+ and migrate files. Altered pillar controller to output this new data. Added a
+ basic/empty app model for the new table so that the data can be fetched
+ through it. Updated pillar rspec to test newly output connectors as well as
+ to allow the empty connectors in the other pillar tests.
+
+
+-------------------------------------------------------------------
+Thu Jul  5 10:03:35 UTC 2018 - containers-bugowner@suse.de
+
+- Commit cd431fe by Florian Bergmann fbergmann@suse.de
+ Fix bsc#1097754: Verify the a certificate is a valid X509 certificate.
+ 
+ Commit 0ef31b8 by Florian Bergmann fbergmann@suse.de
+ Backport Rails 5 file_fixture method to access a fixture in a test.
+
+
+-------------------------------------------------------------------
+Thu Jul  5 07:49:01 UTC 2018 - containers-bugowner@suse.de
+
+- Commit b18c46e by Vítor Avelino vavelino@suse.com
+ ui: renamed new nodes -> unassigned nodes
+ 
+ On the cluster status summary we decided to rename "new" by "unassigned" to
+ avoid mixing terms that may confuse the user.
+ 
+ bsc#1100113
+ 
+ Signed-off-by: Vítor Avelino <vavelino@suse.com>
+
+
+-------------------------------------------------------------------
+Mon Jul  2 09:16:19 UTC 2018 - containers-bugowner@suse.de
+
+- Commit f95f065 by Maximilian Meister mmeister@suse.de
+ migrate once more after db creation
+ 
+ this should enable CI to create newly added db tables/changes during a devenv
+ deployment
+ 
+ bsc#1098436
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+ 
+ Commit b3434c3 by Maximilian Meister mmeister@suse.de
+ save online status through reconciler (bsc#1098436)
+ 
+ when a minion is down, it should be shown as down in the UI
+ 
+ separate columns in the UI for applied and online status
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Thu Jun 28 11:46:49 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 1e98beb by Vítor Avelino vavelino@suse.com
+ ui: removed fixed width for main header logo
+ 
+ Logo can be both CaaSP or Kubic now and the fixed width was causing a small
+ misalignment with Kubic logo. Turns out that this fixed width is not
+ necessary at all.
+ 
+ fix#kubic-logo
+ 
+ Signed-off-by: Vítor Avelino <vavelino@suse.com>
+
+
+-------------------------------------------------------------------
+Thu Jun 28 11:08:55 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 713539d by Maximilian Meister mmeister@suse.de
+ add branding images before precompilation
+ 
+ a simple mount through the manifests is not enough
+ 
+ images need to be precompiled
+ 
+ velum#branding
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Fri Jun 22 14:08:14 UTC 2018 - containers-bugowner@suse.de
+
+- Commit f94cdfd by Jordi Massaguer Pla jmassaguerpla@suse.de
+ update sprockets to fix cve-2018-3760 cve#2018-3760
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+-------------------------------------------------------------------
+Thu Jun 21 06:56:15 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 4303f26 by Florian Bergmann fbergmann@suse.de
+ Load variables used to render autoyast in separate class.
+ 
+ Commit 875ac30 by Florian Bergmann fbergmann@suse.de
+ Fix bsc#1072242: Use keyboard layout from admin installation.
+ 
+ The keyboard layout the user was using during the installation will be used
+ in the autoyast generated to bootstrap additional nodes.
+ 
+ Signed-off-by: Florian Bergmann <fbergmann@suse.de>
+
+
+-------------------------------------------------------------------
+Wed Jun 20 11:41:59 UTC 2018 - containers-bugowner@suse.de
+
+- Commit e943e07 by Vítor Avelino vavelino@suse.com
+ ui: don't show failed alert for repeated orchestration
+ 
+ A failed alert is shown whenever one of the nodes fails to bootstrap. This is
+ an optimization to only show this alert once for a specific orchestration
+ run. If the user closes the alert, it won't come back unless a new
+ orchestration happens.
+ 
+ bsc#1097752
+ 
+ Signed-off-by: Vítor Avelino <vavelino@suse.com>
+
+
+-------------------------------------------------------------------
+Thu Jun 14 12:56:49 UTC 2018 - containers-builds@suse.de
+
+- Commit 62237be by Flavio Castelli fcastelli@suse.com
+ Expose pillars managing kubernetes extra args
+ 
+ The salt backend already has pillars that can be used to provide extra
+ arguments to the different kubernetes components (api-server,
+ controller-manager, scheduler, kubelet and proxy).
+ 
+ This commit allows to provide values for these settings. This is something we
+ should **not** expose into the UI. It can be handy with certain customers who
+ are looking for a way to pass not-yet-handled flags to kubernetes.
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+ 
+ feature#hidden-kubernetes-pillars
+
+
+-------------------------------------------------------------------
+Thu Jun 14 11:48:24 UTC 2018 - containers-builds@suse.de
+
+- Commit 0690ea7 by James Mason jmason@suse.com
+ Add a feature spec for building cluster in Azure
+ 
+ Most of the content is covered in the cloud_cluster model, but there are a
+ few differentiators that should be checked.
+
+
+-------------------------------------------------------------------
+Wed Jun 13 05:31:06 UTC 2018 - containers-builds@suse.de
+
+- Commit 554d1f2 by Maximilian Meister mmeister@suse.de
+ make 503 page more generic
+ 
+ bsc#1080636
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Jun 12 11:14:44 UTC 2018 - containers-builds@suse.de
+
+- Commit 0f081da by Jordi Massaguer Pla jmassaguerpla@suse.de
+ fix favicon path
+ 
+ Commit 4f4d1e9 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ fix message in 503
+ 
+ Commit f267cec by Jordi Massaguer Pla jmassaguerpla@suse.de
+ move branding images to branding dir
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+ 
+ Commit f290a30 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ move branding to public/branding
+ 
+ Commit 1706def by Jordi Massaguer Pla jmassaguerpla@suse.de
+ Make 503 error message "branding agnostic"
+ 
+ This way this error message can be used both in kubic and in caasp
+ 
+ This is needed because we need to revert a change in the velum-branding
+ package and the caasp-container-manifests that was mounting the public
+ directory from the host.
+ 
+ Mounting the public directory from the host, was "hidding" the assets files
+ present in the public directory and so our images were broken.
+ 
+ This was only happening in the iso and not in our dev environments because in
+ production we have the assets precompiled and we don't compile them on the
+ fly, since we don't have a js engine installed.
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+-------------------------------------------------------------------
+Mon Jun 11 11:58:22 UTC 2018 - containers-builds@suse.de
+
+- Commit 4d19ba2 by Rafael Fernández López ereslibre@ereslibre.es
+ Serve the flannel backend on the Pillar API
+ 
+ If we don't serve the flannel backend on the Pillar API, the upgrade will use
+ the default in the `sls` files, that is: `vxlan`.
+ 
+ The intent was always to keep `udp` for upgraded systems until we migrate
+ them to the `vxlan` backend, so make the Pillar controller serve the current
+ `flannel:backend` pillar value that is present on the database (it will be
+ `vxlan` for new installations, and `udp` for systems coming from the 2.0
+ release).
+ 
+ Fixes: bsc#1096710
+
+
+-------------------------------------------------------------------
+Tue Jun  5 13:19:35 UTC 2018 - containers-builds@suse.de
+
+- Commit 1116260 by James Mason jmason@suse.com
+ Change cloud cluster view based on cluster size
+ 
+ * If existing nodes are in progress/built; say so.
+ * If we've already met the 3-node-minimum, no need for the tip
+ 
+ Commit 0f48c32 by James Mason jmason@suse.com
+ Implement a decorator for cluster size slider
+ 
+ Slider range is dynamically adjusted by decorated class
+ 
+ Commit 18f4184 by James Mason jmason@suse.com
+ Make CloudCluster model aware of cluster size limits
+ 
+ Commit 8c1eeed by James Mason jmason@suse.com
+ Update assets for bootstrap-slider
+ 
+ Including https://github.com/seiyria/bootstrap-slider/pull/836
+
+ fixes: bsc#1093565
+
+-------------------------------------------------------------------
+Thu May 31 13:56:55 UTC 2018 - containers-bugowner@suse.de
+
+- Commit f50fb8a by Vítor Avelino vavelino@suse.com
+ ui: fix forced node removal modal paragraphs
+ 
+ bsc#1095252
+ 
+ Signed-off-by: Vítor Avelino <vavelino@suse.com>
+
+
+-------------------------------------------------------------------
+Thu May 31 13:54:53 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 7e70efd by Vítor Avelino vavelino@suse.com
+ ui: show proper update failed message and reboot button
+ 
+ Changed update failed error message stating a generic state instead of saying
+ that the update failed itself.
+ 
+ Update admin node link only showing if `tx_update_reboot_needed` flag is
+ truthy. Otherwise keeps it hidden.
+ 
+ bsc#1082786
+ 
+ Signed-off-by: Vítor Avelino <vavelino@suse.com>
+
+
+-------------------------------------------------------------------
+Wed May 30 14:24:25 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 8fcb730 by Miquel Sabaté Solà msabate@suse.com
+ reservations: don't save if a value is not valid
+ 
+ Before this commit, the transaction on the `create` method from the
+ KubeletComputeResourcesReservationsController was useless because it updated
+ the attributes before the transaction itself. This commit corrects that and
+ simplifies it, so an error on any of the parameters will issue a rollback
+ (hence, the DB will be left untouched).
+ 
+ Signed-off-by: Miquel Sabaté Solà <msabate@suse.com>
+ 
+ Commit be1c78a by Miquel Sabaté Solà msabate@suse.com
+ pillar: added a validator for hard eviction
+ 
+ The kubelet component does not accept any kind of value: it expects a
+ specific syntax. This commit adds a validator for the pillar that applies
+ only if its `pillar` value is set to `kubelet:eviction-hard`.
+ 
+ bsc#1093894
+ 
+ Signed-off-by: Miquel Sabaté Solà <msabate@suse.com>
+
+
+-------------------------------------------------------------------
+Wed May 30 13:35:05 UTC 2018 - containers-bugowner@suse.de
+
+- Commit f3a38e6 by Maximilian Meister mmeister@suse.de
+ read distribution from a file
+ 
+ this enables branding for kubic and caasp
+ 
+ feature#branding
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Tue May 29 10:25:45 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 96437a9 by Flavio Castelli fcastelli@suse.com
+ Revert "Allow users to choose flannel's backend"
+ 
+ This reverts commit 99550aacb6b7c5bfa48545005039c743aa2ee853.
+ 
+ It turns out it's possible to use the VXLAN backend to create clusters over
+ segmented networks.
+ 
+ feature#revert-UDP-selection-UI
+
+
+-------------------------------------------------------------------
+Tue May 29 10:19:01 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 5334257 by Florian Bergmann fbergmann@suse.de
+ Fix bsc#1062186: update tooltip to explain possible dashboard values.
+
+
+-------------------------------------------------------------------
+Mon May 28 10:56:23 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 5463971 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ update velum requirements on mariadb for sle15
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+-------------------------------------------------------------------
+Fri May 25 11:48:35 UTC 2018 - containers-bugowner@suse.de
+
+- Commit a93be89 by David Cassany dcassany@suse.com
+ Make use of %license macro
+
+
+-------------------------------------------------------------------
+Fri May 25 10:36:42 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 7e6fdf1 by Vítor Avelino vavelino@suse.com
+ ux: toggle domain/project id/name inputs
+ 
+ Whenever the user wants to configure openstack domain/project id/name, they
+ cannot fill both cases. To prevent that we are disabling the respective
+ opposite fields when one of the fields is filled.
+ 
+ bsc#1091809 ui improvement
+ 
+ Signed-off-by: Vítor Avelino <vavelino@suse.com>
+
+
+-------------------------------------------------------------------
+Thu May 24 18:16:04 UTC 2018 - containers-bugowner@suse.de
+
+- Commit b04fc47 by David Cassany dcassany@suse.com
+ Spec cleaning
+ 
+ - Removing systemd dependency
+ - Removing duplicated Provides
+
+
+-------------------------------------------------------------------
+Thu May 24 15:08:28 UTC 2018 - containers-bugowner@suse.de
+
+- Commit f7d227d by Maximilian Meister mmeister@suse.de
+ show apply button after each setting creation
+ 
+ it makes sense to offer the apply button directly after a user has created a
+ new setting
+ 
+ otherwise you have to navigate back to the setting index which is not a good
+ UX because it's hidden
+ 
+ in many cases a user just wants to create one setting and then immediately
+ apply
+ 
+ settings#apply-on-create
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Wed May 23 23:54:20 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 456c04d by tdaines42 tdaines@suse.com
+ made changes so project id and domain id can be used for openstack
+
+
+-------------------------------------------------------------------
+Wed May 23 17:48:51 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 7ef3502 by Vítor Avelino vavelino@suse.com
+ ui: fixed unwanted acceptance failure alert
+ 
+ Also replaced deprecated ajax callback method.
+ 
+ bsc#1093869 follow-up
+ 
+ Signed-off-by: Vítor Avelino <vavelino@suse.com>
+
+
+-------------------------------------------------------------------
+Tue May 22 11:46:56 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 59f3741 by Florian Bergmann fbergmann@suse.de                          
+ Fix bsc#1090067 (5/5): Extract more logic into the base controller.            
+                                                                                
+ The base controller for certificates now also handles the `new`, `edit`,       
+ `update` and `destroy` actions.                                                
+                                                                                
+ Only the registry_mirror keeps handling its own `create` as it accesses the    
+ `registry` object as well.                                                     
+                                                                                
+ (cherry picked from commit 16ee911dfa89e84e5366886ebc00a8afffb82c86)           
+                                                                                
+ Commit 01ed07e by Florian Bergmann fbergmann@suse.de                           
+ Fix bsc#1090067 (4/5): Move the migration to the end of list.                  
+                                                                                
+ The tables for system_certificates were not part of the                        
+ /var/lib/velum/schema.rb file and were not migrated.                           
+                                                                                
+ (cherry picked from commit 471f9eda08ad99f56d0d03cf002a308674fb27fa)           
+                                                                                
+ Commit 25dc6c9 by Florian Bergmann fbergmann@suse.de                           
+ Fix bsc#1090067 (3/5): UI for self-signed certificates on welcome page.        
+                                                                                
+ Rendering of the system form in the welcome page uses a partial.               
+                                                                                
+ (cherry picked from commit 61b72b5f4b4cebd62e9f31e299d07e068f7c0270)           
+                                                                                
+ Commit 22af67c by Florian Bergmann fbergmann@suse.de                           
+ Fix bsc#1090067 (2/5): Extract certificate handling logic.                     
+                                                                                
+ (cherry picked from commit 5e85427dfaa3db1795d1cca92440d334e6dcd182)           
+                                                                                
+ Commit ad18b17 by Florian Bergmann fbergmann@suse.de                           
+ Fix bsc#1090067 (1/5): implementation of a system wide certificates.           
+                                                                                
+ The implementation follows the registry & registry mirror style and adds a     
+ simple (name, certificate) model. 
+
+-------------------------------------------------------------------
+Tue May 22 07:46:07 UTC 2018 - containers-bugowner@suse.de
+
+- Commit a660c5b by Vítor Avelino vavelino@suse.com
+ js: removal of pending acceptance state
+ 
+ We are storing the minion id in session storage while it goes under pending
+ acceptance state. However we were not handling its removal if the acceptance
+ succeeded or if an error happened after the request.
+ 
+ This patch fixes those scenarios avoiding unwanted user experiences.
+ 
+ bsc#1093869
+ 
+ Signed-off-by: Vítor Avelino <vavelino@suse.com>
+
+
+-------------------------------------------------------------------
+Mon May 21 10:20:44 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 5312422 by Vítor Avelino vavelino@suse.com
+ ui: show kubectl config download link on auth page
+ 
+ Some people that are not the admin user need the kubectl config file. This
+ link is only accessible in the dashboard page.
+ 
+ This patch shows s a link on for anonymous users on the authentication page.
+ 
+ bsc#1093528
+ 
+ Signed-off-by: Vítor Avelino <vavelino@suse.com>
+
+
+-------------------------------------------------------------------
+Mon May 21 10:18:32 UTC 2018 - containers-bugowner@suse.de
+
+- Commit dc2884b by Flavio Castelli fcastelli@suse.com
+ Allow override of CNI related pillars
+ 
+ Make Velum aware of some pillars related with CNI/cilium. That makes possible
+ to switch to cilium.
+ 
+ No UI is needed for that right now.
+ 
+ feature#cilium-selected-preview-on-v3
+
+
+-------------------------------------------------------------------
+Sat May 19 13:24:37 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 7af7b29 by Flavio Castelli fcastelli@suse.com
+ Provide UI to manage kubernetes auditing
+ 
+ feature#auditing fate#325337
+
+
+-------------------------------------------------------------------
+Fri May 18 18:08:45 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 9c31386 by Florian Bergmann fbergmann@suse.de
+ Redirect to registry page instead of mirror when editing a registry.
+
+
+-------------------------------------------------------------------
+Thu May 17 13:45:32 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 4e4eaff by Maximilian Meister mmeister@suse.de
+ drop some css that overwrites bootstrap button defaults
+ 
+ ui#css-enhancements
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+ 
+ Commit b3251e6 by Maximilian Meister mmeister@suse.de
+ emphasize settings apply workflow
+ 
+ the warning that any changes are not immediately applied should be more
+ visible
+ 
+ a blue flash message background with a blue button is not visible enough
+ 
+ settings-ui#apply
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Thu May 17 07:52:15 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 99550aa by Flavio Castelli fcastelli@suse.com
+ Allow users to choose flannel's backend
+ 
+ Starting with v3 we changed the default flannel backend from UDP to VXLAN.
+ 
+ The VXLAN backend does not work when users have segmented networks, while the
+ UDP one does.
+ 
+ The salt states are already capable of switching between the two backends, we
+ just needed to expose the right pillars from Velum.
+ 
+ This commit changes the setup UI to allow users to choose the backend of and
+ the port used by flannel.
+ 
+ feature#flannel-backend
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+
+
+-------------------------------------------------------------------
+Wed May 16 12:55:09 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 95ecd9e by Rafael Fernández López ereslibre@ereslibre.es
+ Mark admin as updated when we are going to reboot it
+ 
+ This ensures that when the admin is back, the status of the minion on the
+ database will match the grains from the very beginning, without having to
+ rely on the background task updating all minions (including the admin) update
+ status.
+ 
+ Fixes: bsc#1092910
+
+
+-------------------------------------------------------------------
+Tue May 15 13:11:28 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 546b96a by Maximilian Meister mmeister@suse.de
+ validate pillars
+ 
+ dont allow whitespaces at the beginning and at the end
+ 
+ bsc#1087447
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+ 
+ Commit 878dde3 by Maximilian Meister mmeister@suse.de
+ dont thrown away errors when applying pillars
+ 
+ bsc#1087447
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Tue May 15 12:52:02 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 3678b52 by Flavio Castelli fcastelli@suse.com
+ Handle kubelet resource reservations
+ 
+ Allow users to specify the compute resource reservations for the `kube` and
+ the `system` components.
+ 
+ This is going to be done by using a new page available under the `settings`
+ section.
+ 
+ This is required to address bsc#1086185
+
+
+-------------------------------------------------------------------
+Tue May 15 09:33:52 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 4ec7dba by Maximilian Meister mmeister@suse.de
+ rebase patch
+ 
+ it got wrongly rebased in #502
+ 
+ fix#patch
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Tue May 15 00:53:34 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 8b75d9f by Kiall Mac Innes kiall@macinnes.ie
+ Add Housekeeping Job
+
+
+-------------------------------------------------------------------
+Fri May 11 13:00:18 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 9d97b1d by James Mason jmason@suse.com
+ Prevent double-clicking setup#bootstrap submit in public cloud
+ 
+ Since that actually triggered construction of nodes, we need just a little
+ something to keep the impatient from clicking over & over.
+
+
+-------------------------------------------------------------------
+Wed May  9 18:02:44 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 9d97b1d by James Mason jmason@suse.com
+ Prevent double-clicking setup#bootstrap submit in public cloud
+ 
+ Since that actually triggered construction of nodes, we need just a little
+ something to keep the impatient from clicking over & over.
+
+
+-------------------------------------------------------------------
+Wed May  9 17:44:25 UTC 2018 - containers-bugowner@suse.de
+
+- Commit f24a3f1 by James Mason jmason@suse.com
+ Include counts on cloud bootstrap jobs in discovery UI
+ 
+ Commit f50a986 by James Mason jmason@suse.com
+ Return cloud bootstrapping job progress in discovery
+ 
+ BONUS: render discovery.html faster by not evaluating unused hash conditions.
+ 
+ Commit 1c00b7b by James Mason jmason@suse.com
+ Move cloud cluster building into model; capture job ids...
+ 
+ ... clear failures on (re)start
+ 
+ Commit 8fcedc8 by James Mason jmason@suse.com
+ Add an event handler for completing cloud bootstrap
+ 
+ Commit d50aad9 by James Mason jmason@suse.com
+ Define a model for persisting salt job progress.
+
+
+-------------------------------------------------------------------
+Wed May  9 12:19:39 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 1f3adaa by Rafael Fernández López ereslibre@ereslibre.es
+ Make the `bin/init` process only do initialization operations
+ 
+ Do not make this script run the puma server. This way, this command can be
+ run as an init container, leaving the server execution to the pod definition.
+ 
+ Fixes: bsc#1091843
+
+
+-------------------------------------------------------------------
+Wed May  9 07:05:38 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 45bee11 by Rafael Fernández López ereslibre@ereslibre.es
+ Use `update_columns` to update minion attributes with the minion reconciler
+ 
+ This will avoid strange issues when Rails caches the attributes of the
+ `minions` table (we also avoid the need to `reload` explicitly for this
+ corner cases).
+ 
+ Fixes: bsc#1091843
+
+
+-------------------------------------------------------------------
+Tue May  8 15:16:17 UTC 2018 - containers-bugowner@suse.de
+
+- Commit add62fa by Vítor Avelino vavelino@suse.com
+ Fixed misleading text about nodes selection
+ 
+ Small fix of a misleading text that referred to an old behavior of the nodes
+ discovery page.
+ 
+ bsc#1059787
+ 
+ Signed-off-by: Vítor Avelino <vavelino@suse.com>
+
+
+-------------------------------------------------------------------
+Tue May  8 10:42:32 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 8ef0c57 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ update version to 4.0.0+dev
+
+
+-------------------------------------------------------------------
+Fri Apr 27 12:05:14 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 162c0d0 by Liam Proven lproven@suse.com
+ Reword force-removal warning as per IRC #docker discussion
+
+
+-------------------------------------------------------------------
+Fri Apr 27 09:08:40 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 01fe462 by MalloZup dmaiocchi@suse.com
+ change link to actual one
+
+
+-------------------------------------------------------------------
+Thu Apr 26 10:02:52 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 310d614 by Vítor Avelino vavelino@suse.com
+ node removal: improved way of showing removal links
+ 
+ 'Remove' and 'Force remove' links were being shown at the same time so far.
+ But 'Force remove' only makes sense to be shown when a previous removal has
+ failed.
+ 
+ With this we are showing only one link at a time. When the highstate of a
+ minion is fine, we show 'Remove'. Whenever it comes 'removal_failed', we show
+ 'Force remove'.
+ 
+ enhancemente#node-removal
+ 
+ Signed-off-by: Vítor Avelino <vavelino@suse.com>
+
+
+-------------------------------------------------------------------
+Fri Apr 20 11:32:20 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 310d614 by Vítor Avelino vavelino@suse.com
+ node removal: improved way of showing removal links
+ 
+ 'Remove' and 'Force remove' links were being shown at the same time so far.
+ But 'Force remove' only makes sense to be shown when a previous removal has
+ failed.
+ 
+ With this we are showing only one link at a time. When the highstate of a
+ minion is fine, we show 'Remove'. Whenever it comes 'removal_failed', we show
+ 'Force remove'.
+ 
+ enhancemente#node-removal
+ 
+ Signed-off-by: Vítor Avelino <vavelino@suse.com>
+
+
+-------------------------------------------------------------------
+Fri Apr 20 10:33:06 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 514916c by Flavio Castelli fcastelli@suse.com
+ Rename pillar used to choose the CRI
+ 
+ The pillar name has been changed by latest commits to the salt repository.
+ 
+ feature#crio
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+ 
+ Commit 3864cce by Flavio Castelli fcastelli@suse.com
+ Bootstrap settings: cri-o support
+ 
+ Allow the user to choose between different container runtimes.
+ 
+ This enables users to create clusters backed by cri-o instead of docker.
+ 
+ feature#crio
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com> Co-authored-by: Vítor
+ Avelino <contact@vitoravelino.me>
+
+
+-------------------------------------------------------------------
+Thu Apr 19 14:05:47 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 3ce16bd by Rafael Fernández López ereslibre@ereslibre.es
+ Fix rubocop offenses
+ 
+ Feature#clean-code
+
+
+-------------------------------------------------------------------
+Thu Apr 19 13:48:38 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 569db72 by Flavio Castelli fcastelli@suse.com
+ Support the kubernetes feature gates pillar
+ 
+ Allow users to override the kubernetes:feature_gates pillar via our external
+ pillar source.
+ 
+ feature#feature-gates
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+
+
+-------------------------------------------------------------------
+Thu Apr 19 09:20:14 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 7325d5f by Vítor Avelino vavelino@suse.com
+ Introduce force removal feature
+ 
+ * Do not poll for grains from the UI
+ 
+ Remove all polling to the salt-api triggered from the UI, this will make the
+ UI responsive when some minion is down. We'll update the relevant grains for
+ us in the background.
+ 
+ * Add the admin node as part of the list of minions in the database
+ 
+ It allows us to keep track of the update flags of the admin node
+ 
+ * Include a new scope `cluster_role` for minions that will return the minions
+ that are part of the Kubernetes cluster (not admin nodes)
+ 
+ Fixes: bsc#1085291
+ 
+ feature#force-node-removal
+
+
+-------------------------------------------------------------------
+Mon Apr 16 11:15:14 UTC 2018 - containers-bugowner@suse.de
+
+- Commit e46dca7 by Michal Jura mjura@suse.com
+ Skip worker_bootstrap when cloud_framework is openstack, bsc#1089652
+ 
+ We don't provide openstack-types.json file for OpenStack cloud framework. We
+ have to skip worker_bootstrap function from SetupController class.
+
+
+-------------------------------------------------------------------
+Thu Apr 12 16:45:06 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 3364855 by Kiall Mac Innes kiall@macinnes.ie
+ Add and run a import_pillar_seeds rake task
+ 
+ This is a generic rake task that will import seed pillar values from all
+ files in /etc/caasp/pillar-seeds/.
+ 
+ The format of files in this folder should match:
+ 
+ # cat /etc/caasp/pillar-seeds/test.yaml
+ - pillar: cloud:framework
+ value: openstack
+ 
+ feature#hide-openstack-cpi
+
+
+-------------------------------------------------------------------
+Thu Apr 12 10:50:26 UTC 2018 - containers-bugowner@suse.de
+
+- Commit bd18f91 by Rafael Fernández López ereslibre@ereslibre.es
+ Avoid the event processor from crashing if it cannot interpret the event
+ arguments
+ 
+ If we executed: `salt-run state.orchestrate 2` we get an error that crashes
+ the event processor:
+ 
+ `TypeError: no implicit conversion of String into Integer`
+ 
+ This happens because of `fun_args.first["mods"]` being `2["mods"]`, what
+ makes it crash with the previous exception. `2.respond_to?(:[])` is `true`,
+ so I think the best thing we can do here is to swallow the exception, and
+ ignore the event if we cannot even process its arguments.
+ 
+ Fixes: bsc#1088597
+
+
+-------------------------------------------------------------------
+Mon Apr  9 18:30:36 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 349e38b by James Mason jmason@suse.com
+ Add cursor: pointer to .instance-type-box
+ 
+ re: https://github.com/kubic-project/velum/pull/488#issuecomment-378876002
+ re:
+ https://github.com/kubic-project/velum/pull/449#pullrequestreview-101140932
+ 
+ Commit 47044f0 by James Mason jmason@suse.com
+ PubCloud#Azure Add a help link for authentication inputs
+ 
+ Commit 5b175f3 by James Mason jmason@suse.com
+ PubCloud#UI Resize input fields on public cloud bootstrap
+ 
+ ... based on actual browser testing
+ 
+ Commit c1e842c by James Mason jmason@suse.com
+ PubCloud#Azure Add an input when bootrapping on Azure
+ 
+ The storage_account attribute was discovered to be required, not optional.
+
+
+-------------------------------------------------------------------
+Mon Apr  9 11:58:32 UTC 2018 - containers-bugowner@suse.de
+
+- Commit ee7e6f1 by Vítor Avelino contact@vitoravelino.me
+ Fixed # of masters warning when adding a new master
+ 
+ This patch fixes the warning that was being shown when the user selected a
+ new master node to be added and it wasn't breaking the odd number constraint.
+ Before this, the current assigned masters were not being considered to
+ show/not show the warning.
+ 
+ Now the warning will only be shown if the number of masters to be added
+ breaks the constraint as it's expected to be.
+ 
+ bsc#1087267
+ 
+ Signed-off-by: Vítor Avelino <contact@vitoravelino.me>
+
+
+-------------------------------------------------------------------
+Fri Apr  6 08:49:08 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 6171165 by Vítor Avelino contact@vitoravelino.me
+ Fixed # of masters warning when removing worker
+ 
+ This patch fixes the warning modal that was being shown when the cluster was
+ in an unsupported configuration (even # masters) and user was trying to
+ remove a normal worker node. This scenario should trigger that warning modal.
+ 
+ bsc#1087123
+ 
+ Signed-off-by: Vítor Avelino <contact@vitoravelino.me>
+
+
+-------------------------------------------------------------------
+Fri Apr  6 08:45:44 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 03c5c49 by Vítor Avelino contact@vitoravelino.me
+ Hide CPI panel when no cloud framework
+ 
+ When no cloud:framework pillar is set, it means that CaaSP is not running in
+ a cloud environment. So it doesn't make sense to show that option in that
+ scenario.
+ 
+ feature#cpi
+ 
+ Signed-off-by: Vítor Avelino <contact@vitoravelino.me>
+
+
+-------------------------------------------------------------------
+Thu Apr  5 08:06:35 UTC 2018 - containers-bugowner@suse.de
+
+- Commit ff412c6 by James Mason jmason@suse.com
+ Correct rubocop target ruby version
+ 
+ Rubcop only considers major.minor:
+ https://github.com/bbatsov/rubocop/issues/2663
+ 
+ Commit 81f7409 by James Mason jmason@suse.com
+ Update preferred ruby dev version to match SLE12 release
+ 
+ 2.1.2 -> 2.1.9
+
+
+-------------------------------------------------------------------
+Wed Apr  4 09:33:04 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 3320a77 by Rafael Fernández López ereslibre@ereslibre.es
+ Properly create and update orchestrations that have been executed out of
+ Velum
+ 
+ It's more correct for the removal orchestration to read the parameters that
+ were passed to the orchestration rather than to rely on the current status of
+ the minions on the database.
+
+
+-------------------------------------------------------------------
+Tue Apr  3 10:35:05 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 2fd6eee by Maximilian Meister mmeister@suse.de
+ update rails-html-sanitizer (bsc#1086598)
+ 
+ CVE-2018-3741
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Mon Apr  2 13:25:30 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 27645e8 by Vítor Avelino contact@vitoravelino.me
+ Added alert in overview page when unsupported config
+ 
+ Whenever the cluster goes to an unsupported configuration state, an alert is
+ shown with the reason to keep the user aware of that.
+ 
+ enhancement#unsupported_config_msg
+ 
+ Signed-off-by: Vítor Avelino <contact@vitoravelino.me>
+
+
+-------------------------------------------------------------------
+Mon Apr  2 13:21:38 UTC 2018 - containers-bugowner@suse.de
+
+- Commit f1277f2 by Vítor Avelino contact@vitoravelino.me
+ Added minimum of three nodes to warning
+ 
+ This is a follow up from the previous node removal feature patch that shows
+ the requirement of minimum of three nodes when user removes a node.
+ 
+ enhancement#follow_up_node_removal
+ 
+ Signed-off-by: Vítor Avelino <contact@vitoravelino.me>
+
+
+-------------------------------------------------------------------
+Mon Mar 26 10:49:25 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 8a35b90 by Rafael Fernández López ereslibre@ereslibre.es
+ Migrate LDAP passwords
+ 
+ Fixes: bsc#1071023
+
+
+-------------------------------------------------------------------
+Mon Mar 26 09:31:15 UTC 2018 - containers-bugowner@suse.de
+
+- Commit ec69c13 by James Mason jmason@suse.com
+ Extend salt-api timeout as long as possible.
+ 
+ Allow enough time for the salt timeout, and a minion timeout before cutting
+ off the API call.
+ 
+ Should resolve https://github.com/kubic-project/velum/issues/456 introduced
+ in 6189bcad .
+
+
+-------------------------------------------------------------------
+Fri Mar 23 15:34:53 UTC 2018 - containers-bugowner@suse.de
+
+- Commit ccfc31c by Vítor Avelino vavelino@suse.com
+ Add ability to remove nodes.
+ 
+ This PR adds a `Remove` link to the interface, which will execute the
+ `orch.removal` orchestration in salt with the `minion_id` of the selected
+ node to be removed.
+ 
+ Master nodes are not removable yet.
+ 
+ feature#node_removal
+ 
+ Signed-off-by: Vítor Avelino <vavelino@suse.com> Co-authored-by: Rafael
+ Fernández López <rfernandezlopez@suse.de>
+
+
+-------------------------------------------------------------------
+Fri Mar 23 12:46:37 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 184e46f by Michal Jura mjura@suse.com
+ Run rake task and import Cloud Provider config file
+ 
+ Commit 86ae24f by Michal Jura mjura@suse.com
+ Add rake task to import CPI config
+
+
+-------------------------------------------------------------------
+Thu Mar 22 16:45:53 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 1d2b129 by Vítor Avelino vavelino@suse.com
+ Improved CPI behavior with cloud frameworks
+ 
+ If a cloud framework is previously set, CPI value, if enabled, would be based
+ on what was set.
+ 
+ For example, if cloud:framework pillar value is "ec2", we would set "ec2" as
+ the CPI value if enabled. The same be applied for GCE and Azure.
+ 
+ Otherwise, "openstack" would be the default value for CPI if enabled.
+ 
+ feature#cpi
+ 
+ Signed-off-by: Vítor Avelino <vavelino@suse.com>
+
+
+-------------------------------------------------------------------
+Thu Mar 22 13:49:00 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 8f752e8 by Vítor Avelino contact@vitoravelino.me
+ ui: allowed master node to be added to the cluster
+ 
+ So far we only allowed workers to be added to the cluster through the
+ unassigned nodes page.
+ 
+ With this patch, we are now allowing the users to select the roles of the
+ nodes they want to add to the cluster. Very similar to what is available from
+ the discovery bootstrap page.
+ 
+ This feature keep forcing the user to respect the contrainst of having an odd
+ number of master nodes so we have a stable topology.
+ 
+ feature#add_master_node
+ 
+ Signed-off-by: Vítor Avelino <contact@vitoravelino.me>
+
+
+-------------------------------------------------------------------
+Thu Mar 22 11:09:21 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 7a13616 by Vítor Avelino contact@vitoravelino.me
+ js: improved hostnames validation and workflow
+ 
+ This is a follow-up of 8017753. After QA, this fixes an issue and improves
+ the workflow of accepting pending nodes.
+ 
+ Signed-off-by: Vítor Avelino <contact@vitoravelino.me>
+
+
+-------------------------------------------------------------------
+Wed Mar 21 14:53:21 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 5aa9cf5 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ update loofah to fix xss vulnerability
+ 
+ cve#2018-8048 bsc#1085967
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+-------------------------------------------------------------------
+Wed Mar 21 10:18:43 UTC 2018 - containers-bugowner@suse.de
+
+- Commit e8d455d by Michal Jura mjura@suse.com
+ Add cloud:provider to cloud_provider_contents for Salt API call
+
+
+-------------------------------------------------------------------
+Wed Mar 21 09:17:30 UTC 2018 - containers-bugowner@suse.de
+
+- Commit af4f939 by Maximilian Meister mmeister@suse.de
+ typo
+ 
+ fix#typo
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Thu Mar 15 15:11:09 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 55ceb81 by Maximilian Meister mmeister@suse.de
+ enable applying registry settings
+ 
+ feature#registry
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de> Co-Authored-by: Vítor
+ Avelino <contact@vitoravelino.me>
+
+
+-------------------------------------------------------------------
+Wed Mar 14 13:56:37 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 943655d by Vítor Avelino vavelino@suse.com
+ Added CPI configuration
+ 
+ During the boostrap configuration it's now possible to enable cloud provider
+ integration.
+ 
+ Co-authored-by: Maximilian Meister <mmeister@suse.de> Signed-off-by: Vítor
+ Avelino <vavelino@suse.com>
+
+
+-------------------------------------------------------------------
+Mon Mar 12 12:44:12 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 52980f3 by Kiall Mac Innes kiall@macinnes.ie
+ Fix db/seeds creation of SUSE registry URL record
+ 
+ This currently fails, as the method does not exist:
+ 
+ NoMethodError: undefined method `find_or_initialize' for
+ #<ActiveRecord::Relation []>
+
+
+-------------------------------------------------------------------
+Mon Mar 12 09:49:36 UTC 2018 - containers-bugowner@suse.de
+
+- Commit c6c9184 by Maximilian Meister mmeister@suse.de
+ prevent multiple orchestrations at the same time
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Fri Mar  9 07:48:51 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 9e1dbe6 by Vítor Avelino contact@vitoravelino.me
+ Add settings page to configure registries
+ 
+ feature#settings-page
+ 
+ Signed-off-by: Vítor Avelino <vavelino@suse.com> Co-Authored-By: Maximilian
+ Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Wed Mar  7 10:13:09 UTC 2018 - containers-bugowner@suse.de
+
+- Commit a9a139d by James Mason jmason@suse.com
+ PubCloud#Azure Add support for Microsoft Azure framework
+ 
+ Commit 3172f83 by James Mason jmason@suse.com
+ Fix up a misnamed spec
+
+
+-------------------------------------------------------------------
+Tue Mar  6 12:03:04 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 1003acb by Rafael Fernández López ereslibre@ereslibre.es
+ Rename "Retry cluster upgrade" to "Retry cluster update".
+ 
+ I didn't refactor down the line because ultimately we cannot have an enum
+ with a :update status (rails will complain, so at least the enum on the
+ Orchestration model would need to be called :upgrade).
+ 
+ For that reason, keep everything as it is (call internally `upgrade`, but
+ just show "Retry cluster update" on the button label).
+
+
+-------------------------------------------------------------------
+Thu Mar  1 08:40:08 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 1003acb by Rafael Fernández López ereslibre@ereslibre.es
+ Rename "Retry cluster upgrade" to "Retry cluster update".
+ 
+ I didn't refactor down the line because ultimately we cannot have an enum
+ with a :update status (rails will complain, so at least the enum on the
+ Orchestration model would need to be called :upgrade).
+ 
+ For that reason, keep everything as it is (call internally `upgrade`, but
+ just show "Retry cluster update" on the button label).
+
+
+-------------------------------------------------------------------
+Tue Feb 27 09:06:35 UTC 2018 - containers-bugowner@suse.de
+
+- Commit b74718c by Maximilian Meister mmeister@suse.de
+ disable codeclimate check that rubocop already does
+ 
+ this is one example of overlapping checks that are performed by rubocop and
+ therefore can be disabled, otherwise it shows up on the github status always
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Mon Feb 26 14:28:55 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 2115e91 by Maximilian Meister mmeister@suse.de
+ rebase patch
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Mon Feb 26 12:44:01 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 50aa226 by Maximilian Meister mmeister@suse.de
+ add mirrors model
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+ 
+ Commit d621057 by Maximilian Meister mmeister@suse.de
+ drop docker prefix for registries
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Mon Feb 26 10:52:42 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 6f880cf by Maximilian Meister mmeister@suse.de
+ update a few gems
+ 
+ we needed to have a new version of net-ldap because of CVE-2017-17718
+ 
+ this needed an update for devise_ldap_authenticatable
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Thu Feb 22 09:58:32 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 4eb2d26 by James Mason jmason@suse.com
+ Add user interface for public cloud bootstrapping
+ 
+ new file:   app/assets/stylesheets/pages/instance_type.scss
+
+
+-------------------------------------------------------------------
+Thu Feb 15 15:53:55 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 6189bca by Kiall Mac Innes kiall@macinnes.ie
+ Reduce salt-api timeout from 60 sec, to 30 sec
+ 
+ HAProxy has a 50 sec timeout, meaning HAProxy will kill the connection before
+ Velum times out waiting for salt-api when there are issues.
+
+
+-------------------------------------------------------------------
+Thu Feb  8 12:28:28 UTC 2018 - containers-bugowner@suse.de
+
+- Commit b12fdf4 by Kiall Mac Innes kiall@macinnes.ie
+ Add manual kubeconfig setup instructions
+ 
+ Add instructions for manually adding a cluster to a pre-existing kubeconfig
+ file.
+
+
+-------------------------------------------------------------------
+Wed Feb  7 17:25:39 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 2db24eb by Kiall Mac Innes kiall@macinnes.ie
+ Use separate Dex clients for each actual client
+ 
+ Previously Velum, CaaSP CLI, and Kubernetes all shared a single Dex client.
+ From a security perspective, this was far from ideal.
+ 
+ Update Velum to:
+ 
+ * Generate a unique secret for the Velum and Kubernetes client during setup
+ * Add a migration to generate secrets during upgrade
+ * Use the Velum client to auth with Dex
+ * Request a token from Dex which is valid for the kubernetes client
+
+
+-------------------------------------------------------------------
+Tue Feb  6 17:55:27 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 48188f1 by Chris Olstrom chris@olstrom.com
+ Add fallback link to fetch kubeconfig if redirect fails
+
+
+-------------------------------------------------------------------
+Tue Feb  6 17:03:32 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 01453e3 by James Mason jmason@suse.com
+ Update login feature spec
+ 
+ I had issues with a failing test that used inconsitent access to the 'Log in'
+ button, so I've updated it to match the rest of the spec.
+ 
+ Additionally, the descriptions didn't make sense in documentation format so I
+ reworded them.
+
+
+-------------------------------------------------------------------
+Fri Feb  2 11:59:45 UTC 2018 - containers-bugowner@suse.de
+
+- Commit b58ccc8 by Maximilian Meister mmeister@suse.de
+ relax gems
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+ 
+ Commit a02e6b9 by Maximilian Meister mmeister@suse.de
+ use bundler dependency script from darix
+ 
+ also hardcode the native dependencies in the spec template as they likely
+ won't change that often
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+- patch modifications:
+  + 1_nodev.gem.patch
+
+-------------------------------------------------------------------
+Thu Feb  1 15:53:58 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 8017753 by Vítor Avelino contact@vitoravelino.me
+ js: added unique hostnames validation
+ 
+ Velum now validates if selected nodes to bootstrap and be added to the
+ cluster have unique hostnames. The error message appears in an error alert.
+
+
+-------------------------------------------------------------------
+Thu Feb  1 10:31:59 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 5a64a71 by Maximilian Meister mmeister@suse.de
+ bump uglifier
+ 
+ it got updated in factory
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Jan 30 13:35:40 UTC 2018 - containers-bugowner@suse.de
+
+- Commit ab33601 by Rafael Fernández López ereslibre@ereslibre.es
+ Install `bundler` after `bundle clean`.
+ 
+ `bundle clean` also removes stale executables under `bin`. It is fine that
+ bundler thinks that `bundler` executable is stale, but it's not, we are just
+ installing it as a separate gem, so do that at the end of the spec, after we
+ have executed `bundle clean`.
+
+
+-------------------------------------------------------------------
+Mon Jan 29 20:13:38 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 461cbf8 by Rafael Fernández López ereslibre@ereslibre.es
+ Add `assets` group that will only be loaded when we are compiling the assets
+
+
+-------------------------------------------------------------------
+Mon Jan 29 09:00:01 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 3501c8b by Maximilian Meister mmeister@suse.de
+ skip bundler during spec file creation
+ 
+ a bundler BuildRequire is already hardcoded
+ 
+ other than that it prevents a false strict dependency on bundler, e.g. if i
+ run make_spec.sh on openSUSE 42.1 it will render bundler 1.10.6 whatever is
+ installed on the system. this happened in our concourse build container that
+ uses 42.1 as a base system
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Sat Jan 27 23:47:18 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 46f651b by Rafael Fernández López ereslibre@ereslibre.es
+ Adapt documentation
+ 
+ Commit b4314de by Rafael Fernández López ereslibre@ereslibre.es
+ Fix specs
+ 
+ Commit d91b79f by Rafael Fernández López ereslibre@ereslibre.es
+ Update velum spec and remove assets group
+ 
+ Commit 534605e by Rafael Fernández López ereslibre@ereslibre.es
+ Only require the relevant gem groups
+ 
+ Commit 8dd2061 by Rafael Fernández López ereslibre@ereslibre.es
+ Remove `kubeconfig`. It's an unused dependency.
+ 
+ Commit 103447f by Rafael Fernández López ereslibre@ereslibre.es
+ Add assets as another group
+ 
+ Commit da7e999 by Rafael Fernández López ereslibre@ereslibre.es
+ Remove PACKAGING envvar
+ 
+ Commit a723afc by Maximilian Meister mmeister@suse.de
+ use bundler to extract build requires
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+ 
+ Commit 89c90f3 by Rafael Fernández López ereslibre@ereslibre.es
+ Fix packaging by forcing the subset of gems to be installed.
+ 
+ Our `Gemfile` and `Gemfile.lock` should be the same under all environments,
+ development, test and production. Using an envvar on the Gemfile to decide
+ the dependency tree might cause deep problems and differences on the
+ dependency tree between development, test and production. We want to have the
+ same gem dependency tree on all possible environments, so we don't hit bugs
+ in production caused by a different dependency tree than the one used in
+ development and test, as this bugs could only be hit in production and never
+ reproduced in development and test environments.
+
+
+-------------------------------------------------------------------
+Tue Jan 23 11:46:33 UTC 2018 - containers-bugowner@suse.de
+
+- Commit b6920e1 by Maximilian Meister mmeister@suse.de
+ drop workaround for old bundler versions
+ 
+ in caasp we are using the new bundler as well now
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Mon Jan 22 15:29:05 UTC 2018 - containers-bugowner@suse.de
+
+- Commit d4b52de by Maximilian Meister mmeister@suse.de
+ enhance specfile
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Mon Jan 22 09:25:22 UTC 2018 - containers-bugowner@suse.de
+
+- Commit e13d260 by Rafael Fernández López ereslibre@ereslibre.es
+ Do not require `retcode` to be 0 to detect success.
+ 
+ When detecting highstate success as well as orchestration success we are
+ checking the result success status and also checking that the global
+ `retcode` is 0. This latest check is not strictly necessary and under certain
+ conditions it is not desirable.
+
+
+-------------------------------------------------------------------
+Fri Jan 19 14:22:28 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 5bcf8be by Maximilian Meister mmeister@suse.de
+ adapt devel libraries to tumbleweed
+ 
+ in tumbleweed it's named mariadb, in sle it's mysql
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Fri Jan 19 13:38:43 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 14d4c91 by Maximilian Meister mmeister@suse.de
+ re-add the patch to relax a gem requirement
+ 
+ rubygem-kubeclient upstream meanwhile updated their requirements as well
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Fri Jan 19 09:15:26 UTC 2018 - containers-bugowner@suse.de
+
+- Commit d6f9c74 by Rafael Fernández López ereslibre@ereslibre.es
+ Add migration to change the pillar value column to text
+
+
+-------------------------------------------------------------------
+Thu Jan 18 15:38:08 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 4994345 by James Mason jmason@suse.com
+ Consistent representation of public cloud instance types
+ 
+ In order to present a reasonable set of choices for instance_type, a
+ collection of instance types was hand-picked for each supported public cloud
+ framework.
+
+
+-------------------------------------------------------------------
+Thu Jan 18 15:01:08 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 8bab191 by Maximilian Meister mmeister@suse.de
+ bump gems for rails 4.2.10
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Thu Jan 18 10:39:29 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 3a01616 by Maximilian Meister mmeister@suse.de
+ Update rails to 4.2.10
+
+
+-------------------------------------------------------------------
+Wed Jan 17 10:24:20 UTC 2018 - containers-bugowner@suse.de
+
+- Commit a3d0e50 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ fix test for 2.5 in travis by updating the rubygems
+ 
+ see https://github.com/travis-ci/travis-ci/issues/8978
+
+
+-------------------------------------------------------------------
+Tue Jan 16 16:32:01 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 2aba80f by Rafael Fernández López ereslibre@ereslibre.es
+ Allow to retry the upgrade orchestration
+
+
+-------------------------------------------------------------------
+Tue Jan 16 10:24:16 UTC 2018 - containers-bugowner@suse.de
+
+- Commit f4f6c24 by Rafael Fernández López ereslibre@ereslibre.es
+ Serve registry mirrors as salt expects it
+
+
+-------------------------------------------------------------------
+Mon Jan 15 14:45:51 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 14f8ad8 by Vítor Avelino contact@vitoravelino.me
+ Added SUSE registry mirror settings to bootstrap page
+ 
+ With this patch we allow our users to configure mirrors poiting to to the
+ SUSE registry.
+ 
+ It can handle insecure and secure mirrors with optional certificate.
+
+
+-------------------------------------------------------------------
+Mon Jan 15 09:03:54 UTC 2018 - containers-bugowner@suse.de
+
+- Commit efa6d18 by Rafael Fernández López ereslibre@ereslibre.es
+ Fix version for development
+ 
+ Fixes: bsc#1071475
+
+
+-------------------------------------------------------------------
+Fri Jan 12 14:03:01 UTC 2018 - containers-bugowner@suse.de
+
+- Commit cc9b32a by Maximilian Meister mmeister@suse.de
+ packaging: enhancements
+ 
+ * drop removal of .orig files
+ we should keep patches rebased instead
+ * rebase patches
+ * drop empty scriptlets
+ this was feedback from factory submission
+ * reduce verbosity
+ this massively reduces the build log
+
+
+-------------------------------------------------------------------
+Thu Jan 11 09:05:56 UTC 2018 - containers-bugowner@suse.de
+
+- Commit f491b2f by Rafael Fernández López ereslibre@ereslibre.es
+ Add `CertificateService` proxy model that will tie `Certificate` to any
+ service
+
+
+-------------------------------------------------------------------
+Wed Jan 10 12:07:23 UTC 2018 - containers-bugowner@suse.de
+
+- Commit f39b7a2 by Rafael Fernández López ereslibre@ereslibre.es
+ Set default flannel backend to UDP for old installations.
+ 
+ This migration will only be executed on old installations, while on new ones
+ (where we will use the default salt pillar value) this migration won't be
+ run, so there won't be a pillar override.
+
+
+-------------------------------------------------------------------
+Wed Jan 10 09:03:17 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 20fedda by Flavio Castelli fcastelli@suse.com
+ AutoYaST: disable creation of swap [bsc#1043813]
+ 
+ Disables the creation of the swap partition on the nodes provisioned by
+ AutoYaST.
+ 
+ This fixes bsc#1075001
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+
+
+-------------------------------------------------------------------
+Fri Dec 22 17:25:34 UTC 2017 - containers-bugowner@suse.de
+
+- Commit b43e58d by James Mason jmason@suse.com
+ Add a rake task for inserting a pillar
+ 
+ Due to redundancy, argument validation of velum:create_user was abstracted
+ out to a separate function.
+ 
+ Commit 8781733 by James Mason jmason@suse.com
+ Add csp pillar
+
+
+-------------------------------------------------------------------
+Wed Dec 20 09:42:14 UTC 2017 - containers-bugowner@suse.de
+
+- Commit c2aabd4 by Rafael Fernández López ereslibre@ereslibre.es
+ Reject `nil` values on the Velum pillar.
+ 
+ This gives a chance for default salt pillars to be used.
+
+
+-------------------------------------------------------------------
+Tue Dec 19 11:38:01 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 488e08c by Kiall Mac Innes kiall@macinnes.ie
+ Remove dev vs prod kubeconfig download difference
+ 
+ This was needed to workaround capybara + poltergeist being unable to download
+ files, this workarond is now down in the velum-interactions tooling, rather
+ than in a shiped part of the codebase.
+
+
+-------------------------------------------------------------------
+Tue Dec  5 20:21:30 UTC 2017 - containers-bugowner@suse.de
+
+- Commit cea27bc by Maximilian Meister mmeister@suse.de
+ rebase patch
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Fri Dec  1 11:31:21 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 81cf5c1 by Maximilian Meister mmeister@suse.de
+ rebase patch again since rake changed again
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Fri Dec  1 08:07:31 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 4a14086 by Maximilian Meister mmeister@suse.de
+ rebase patch
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Wed Nov 29 10:14:49 UTC 2017 - containers-bugowner@suse.de
+
+- Commit fa1d18c by Rafael Fernández López ereslibre@ereslibre.es
+ Remove unused factory
+
+
+-------------------------------------------------------------------
+Tue Nov 28 14:10:07 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 9aca2ce by Rafael Fernández López ereslibre@ereslibre.es
+ Allow to restart orchestrations
+ 
+ This commit includes a few changes:
+ 
+ * `Orchestration` model has been introduced
+ * We have a history of all the orchestrations that happened,
+ what type of orchestration it was, how long it took to be
+ completed and the result of the orchestration.
+ 
+ * `Retryable?` concept has been included in `Orchestration`
+ * Right now, only the bootstrap retryable concept has been
+ included in the UI, but the backend supports the update orchestration
+ too.
+ 
+ * `SaltOrchestration` proxy class has been included, so it can retrieve
+ some information from salt-api directly (accessed through the
+ Orchestration model).
+ 
+ * Highstates now don't mark minions as successful. Highstates now can
+ only mark minions as failed if the highstate failed.
+ 
+ * Only the orchestrations will now mark success when it finishes. All
+ pending minions will be marked as succeeded when this happens.
+ 
+ * External orchestrations are detected (we can trigger them completely
+ outside Velum and it will detect there is an orchestration running).
+ This is because of the introduced salt handler.
+ 
+ * `MinionOrchestration` handler has been renamed to `OrchestrationResult`.
+ 
+ * Helper methods have been introduced to `Velum::Salt`, so it's easier to
+ retrieve the list of jobs as well as the detail of one job, given its
+ `jid`.
+ 
+ * `salt-api` http calls has now always the same options as in `development`
+ and `production` when executed in a `test` environment. Slowness problems
+ were because of flaky tests with Capybara waiting too much on things
+ we weren't expecting.
+ 
+ * Some VCR cassettes and tests have been added.
+ 
+ Fixes: bsc#1069154
+
+
+-------------------------------------------------------------------
+Tue Nov 28 11:52:22 UTC 2017 - containers-bugowner@suse.de
+
+- Commit a6a3159 by Rafael Fernández López ereslibre@ereslibre.es
+ Remove unneeded unprotected pillars
+ 
+ There's no possible use case for these pillars in which they were filled with
+ information and then the customer will clear them (as they are required).
+ 
+ Keep things as simple as possible until we refactor this part.
+ 
+ Without this change, a specially crafted HTTP request could be made to remove
+ the content of those pillar values, when this is not ideal.
+
+
+-------------------------------------------------------------------
+Tue Nov 28 10:57:30 UTC 2017 - containers-bugowner@suse.de
+
+- Commit f280bc6 by Dario Maiocchi dmaiocchi@suse.com
+ Omit the default :each argument for RSpec hooks.
+
+
+-------------------------------------------------------------------
+Tue Nov 28 10:48:32 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 4a17aa7 by Vítor Avelino contact@vitoravelino.me
+ js: fixed alert color being overridden
+ 
+ The alert notifying the user that the bootstrap has failed was overriding the
+ type of any previous alert that were on the page. This was causing some
+ confusing to some users.
+ 
+ Now it creates an alert everytime we check if there's a failed bootstrapped
+ node without interfering other alerts.
+ 
+ Also removed unnecessary stuff from the notification partial.
+ 
+ Fixes bsc#1069258
+
+
+-------------------------------------------------------------------
+Mon Nov 27 14:19:00 UTC 2017 - containers-bugowner@suse.de
+
+- Commit c5637d2 by Rafael Fernández López ereslibre@ereslibre.es
+ Do not expose puma directly
+
+
+-------------------------------------------------------------------
+Thu Nov 23 16:48:55 UTC 2017 - containers-bugowner@suse.de
+
+- Commit c753ed6 by Maximilian Meister mmeister@suse.de
+ update puma to 3.10.0
+ 
+ this includes a fix for lockup off ssl connections
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Nov 21 09:27:05 UTC 2017 - containers-bugowner@suse.de
+
+- Commit fdb9fcb by Rafael Fernández López ereslibre@ereslibre.es
+ Implement Pillar endpoint and introduce internal-api
+ 
+ Fixes: bsc#1069145
+
+
+-------------------------------------------------------------------
+Tue Nov  7 08:21:22 UTC 2017 - containers-bugowner@suse.de
+
+- Commit a3b3784 by Rafael Fernández López ereslibre@ereslibre.es
+ When we are back in Velum from Dex, allow for assets to be loaded
+ 
+ If we forced the location directly, javascript assets were never loaded as
+ their loading are interrupted by the browser because of the `href` change.
+ 
+ This ensures we first load all the assets (so delete, put, patch links work
+ through jquery as usual), and then we force the redirection to happen.
+ 
+ Fixes: bsc#1066611
+
+
+-------------------------------------------------------------------
+Mon Nov  6 13:44:26 UTC 2017 - containers-bugowner@suse.de
+
+- Commit c54fbc9 by Rafael Fernández López ereslibre@ereslibre.es
+ Only allow `development` environment to override the database with
+ `VELUM_DB_ENV`.
+ 
+ Test and production database names are fixed.
+
+
+-------------------------------------------------------------------
+Mon Nov  6 09:21:35 UTC 2017 - containers-bugowner@suse.de
+
+- Commit b07fde3 by Vítor Avelino contact@vitoravelino.me
+ ux: changed color of pending status icon
+ 
+ Changed from green to gray. The reason behind this is that green is usually
+ associated with a success operation and gray is a more neutral color that
+ doesn't add much meaning.
+
+
+-------------------------------------------------------------------
+Mon Nov  6 09:11:42 UTC 2017 - containers-bugowner@suse.de
+
+- Commit dc92f64 by Vítor Avelino contact@vitoravelino.me
+ js: fixed undesired minimum nodes alert blink
+ 
+ Moved the calls of `toggleMinimumNodesAlert` and
+ `handleBootstrapErrors` to be done after the checkbox changes to `true`
+ instead of by any change (false/true).
+ 
+ With this change there will be no middle state that cause the alert when
+ `toggleMinimumNodesAlert` is called.
+ 
+ Fixes bsc#1066371
+
+
+-------------------------------------------------------------------
+Fri Nov  3 12:48:03 UTC 2017 - containers-bugowner@suse.de
+
+- Commit e7d877f by Maximilian Meister mmeister@suse.de
+ handle invalid sessions more user friendly
+ 
+ if the session is not valid anymore, show this information to the user, and
+ redirect him to the login instead of failing badly
+ 
+ we dont need to raise in the stored_nonce method, as a failed deletion from
+ the session hash will result in a nil value, meaning a non matching nonce
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Oct 31 09:57:37 UTC 2017 - containers-bugowner@suse.de
+
+- Commit dbbaff5 by Rafael Fernández López ereslibre@ereslibre.es
+ Add `velum:migrate_users` task that will migrate database-backed users into
+ LDAP-backed users.
+ 
+ In 1.0 user login information was stored in the database whereas in 2.0 this
+ information resides in LDAP.
+ 
+ Fixes: bsc#1065450
+
+
+-------------------------------------------------------------------
+Tue Oct 31 08:44:55 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 15d26a7 by Vítor Avelino contact@vitoravelino.me
+ Fixed role column broken up on two lines
+ 
+ Fixes bsc#1064807
+
+
+-------------------------------------------------------------------
+Mon Oct 30 12:54:36 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 3ee3aa4 by Rafael Fernández López ereslibre@ereslibre.es
+ Add kubeconfig tips on the download page.
+ 
+ Also, add a link to the `root_path` on the icon of CaaS Platform.
+ 
+ Fixes: bsc#1062728
+
+
+-------------------------------------------------------------------
+Mon Oct 30 10:49:00 UTC 2017 - containers-bugowner@suse.de
+
+- Commit adc2cb4 by Maximilian Meister mmeister@suse.de
+ enable remembering users
+ 
+ fixes bsc#1062184
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Mon Oct 30 10:26:39 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 73c5544 by Rafael Fernández López ereslibre@ereslibre.es
+ Make Dex first redirect to Velum, and download the kubeconfig file from there
+ 
+ Fixes: bsc#1062728
+
+
+-------------------------------------------------------------------
+Fri Oct 27 07:53:06 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 758d9f5 by Vítor Avelino contact@vitoravelino.me
+ Improved failure alert message
+ 
+ This is an attempt to make the experience better. We thought that the
+ previous message was too aggressive. Since this message will always be shown
+ for 2.0 at least, we want to tranquilize the user that it's an expected
+ behavior.
+
+
+-------------------------------------------------------------------
+Fri Oct 27 05:36:49 UTC 2017 - containers-bugowner@suse.de
+
+- Commit a30a9df by Vítor Avelino contact@vitoravelino.me
+ typo: interally -> internally
+ 
+ Small typo on "Overlay network settings" settings.
+ 
+ Fixes bsc#1065265
+
+
+-------------------------------------------------------------------
+Thu Oct 26 12:27:29 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 3151ad8 by Maximilian Meister mmeister@suse.de
+ alert the user when bootstrap failed
+ 
+ otherwise the user is left without any clue what to do
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Oct 24 06:45:28 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 574b502 by Rafael Fernández López ereslibre@ereslibre.es
+ When roles are set, set `not_applied` if it's a local assignment.
+ 
+ If we are setting the role locally only (on the database), set the minion
+ status to `not_applied`. If we are also setting the remote role
+ (set on salt too), set the minion status to `pending`.
+ 
+ Since there's no Orchestration model yet, there's no entity to control this
+ assignments, and Minion model will set one or the other depending on the
+ `remote` attribute of `assign_role`.
+ 
+ Fixes: bsc#1063977
+
+
+-------------------------------------------------------------------
+Tue Oct 24 06:39:24 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 2cba6d1 by Vítor Avelino contact@vitoravelino.me
+ Notify user when not able to fetch data from Velum API
+ 
+ We are regenerating Velum's certificate by adding the external dashboard
+ fqdn/ip to the Velum certificate. For this certificate to be reloaded we are
+ currently doing a `docker restart` on Velum while the orchestration is being
+ executed.
+ 
+ This has a bad effect on the user session as he/she is waiting for the
+ polling to finish. Without them noticing, the polling will start failing as
+ the certificate changed under them, and they need to accept it, but ajax
+ requests will just fail because of this.
+ 
+ With this patch we are notifying the user that the browser cannot connect
+ with Velum API and suggests he/she to try to reload the session.
+ 
+ Fixes bsc#1064641
+
+
+-------------------------------------------------------------------
+Mon Oct 23 14:06:59 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 450e6bc by Rafael Fernández López ereslibre@ereslibre.es
+ Reuse filter logic for known hosts.
+ 
+ Also, do not repeat the allowed hosts if they match.
+
+
+-------------------------------------------------------------------
+Fri Oct 20 08:14:04 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 5255b9a by Maximilian Meister mmeister@suse.de
+ spec: make coverage folder public
+ 
+ this has the big advantage that you can check the results directly in velum
+ under http(s)://$velum/coverage/index.html
+ 
+ since we switched the official devenv to containers within VM's the folder is
+ not accessible that easy anymore
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Thu Oct 19 16:17:27 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 87be131 by Rafael Fernández López ereslibre@ereslibre.es
+ When an orchestration result is received, update failed nodes too.
+ 
+ Consider all pending and failed minions when we receive a kubernetes
+ orchestration result. If later orchestrations succeed they should also mark
+ failed nodes as succeeded.
+ 
+ Fixes: bsc#1064281
+
+
+-------------------------------------------------------------------
+Thu Oct 19 10:15:13 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 5401e86 by Maximilian Meister mmeister@suse.de
+ make sure request comes from a registered host
+ 
+ warn when user accesses from unknown fqdn, and log out when the kubectl
+ download is requested via unknown fqdn
+ 
+ bsc#1062728
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Thu Oct 19 10:14:17 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 835aa11 by Maximilian Meister mmeister@suse.de
+ better explain internal dashboard fqdn
+ 
+ bsc#1063233
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Oct 17 13:34:24 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 76a71f4 by Kiall Mac Innes kiall@macinnes.ie
+ Revert "Set etcd2 backend for old installations"
+ 
+ This reverts commit 25a0658f22db1f818403f01cc8bc97a36c772fad.
+
+
+-------------------------------------------------------------------
+Tue Oct 17 07:20:39 UTC 2017 - containers-bugowner@suse.de
+
+- Commit a77184d by Maximilian Meister mmeister@suse.de
+ Correctly display the logo
+ 
+ SVG had wrong width, 300 instead of 314. For some reason the text appeared
+ cropped only in Firefox.
+ 
+ After saving the SVG with the correct width, logo now is displayed properly.
+ 
+ bsc#1062832
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+ 
+ converted svg font object to path
+
+
+-------------------------------------------------------------------
+Fri Oct 13 12:18:21 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 73e86cb by Maximilian Meister mmeister@suse.de
+ fix rubocop offense
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+ 
+ Commit ed411fd by Maximilian Meister mmeister@suse.de
+ fill in some values and wait for button to appear
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Thu Oct 12 14:14:08 UTC 2017 - containers-bugowner@suse.de
+
+- Commit d871bac by Maximilian Meister mmeister@suse.de
+ also compile svg
+ 
+ the logo has recently changed to svg and needs to be compiled too otherwise
+ it wont be shown
+ 
+ bsc#1062878
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Wed Oct 11 13:35:27 UTC 2017 - containers-bugowner@suse.de
+
+- Commit c03cd33 by Kiall Mac Innes kiall@macinnes.ie
+ Collect the dashboard hosts external FQDN
+ 
+ This should be used by Dex to redirect back to Velum, allowing for scenarios
+ where the admin node's private IP is not accessible to the outside world -
+ e.g. as is the case on OpenStack and possibly other cloud environments.
+ 
+ Part of bsc#1062291
+
+
+-------------------------------------------------------------------
+Tue Oct 10 15:51:53 UTC 2017 - containers-bugowner@suse.de
+
+- Commit c1f1f1e by Rafael Fernández López ereslibre@ereslibre.es
+ Wait for orchestration result for marking success on minions
+ 
+ We are marking success depending on highstates, what makes a bit misleading
+ for the overall orchestration process. At this moment, orchestration will
+ wait for some tasks to have been completed (like some `kubectl apply`
+ commands, which apply immediately). We aren't waiting for the global
+ orchestration result, and this means that all minions might be marked as
+ successful when we haven't really waited for the overall orchestration to
+ have finished.
+ 
+ This can have important implications, like not waiting for Dex to be
+ completely ready while the orchestration is waiting for it.
+ 
+ We just mark failed highstates as an early failure, but wait for the
+ orchestration result to finish and be succesful in order to mark pending
+ nodes as successful.
+ 
+ This will also align with the current restritions in the UI to enable the
+ `kubectl config` button, since it will wait for the kubernetes master to be
+ ready in order to be enabled.
+ 
+ Fixes: bsc#1062542
+
+
+-------------------------------------------------------------------
+Tue Oct 10 12:21:33 UTC 2017 - containers-bugowner@suse.de
+
+- Commit b2ed55d by Maximilian Meister mmeister@suse.de
+ add new svg logo
+ 
+ with the full name SUSE® CaaS Platform
+ 
+ bsc#1062247
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Sat Oct  7 08:49:16 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 5c0a6c7 by Kiall Mac Innes kiall@macinnes.ie
+ Update VERSION file to 2.0.0+dev
+
+
+-------------------------------------------------------------------
+Fri Oct  6 18:05:19 UTC 2017 - containers-bugowner@suse.de
+
+- Commit c77b369 by Rafael Fernández López ereslibre@ereslibre.es
+ Allow to serve the kubeconfig file in a raw fashion if the environment is not
+ production
+ 
+ Commit b6ba0d3 by Robert Roland robert.roland@suse.com
+ Allowing a user to download a full kubeconfig
+ 
+ Works by having the user perform an OIDC handshake against the running
+ cluster, then generating a kubeconfig based on that handshake
+ 
+ bsc#1058568
+
+
+-------------------------------------------------------------------
+Thu Oct  5 09:01:44 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 1df8e6e by Vítor Avelino contact@vitoravelino.me
+ ux: improved messages for 'Next' button on nodes selection
+ 
+ The title message for the 'Next' button on the nodes selection page were out
+ of date and weren't helping the user understand what was wrong.
+ 
+ For each rule we use to validate the 'Next' button we are adding a dedicated
+ message to show to the user. This way the user will know exactly what's wrong
+ with the cluster configuration.
+ 
+ I also fixed the "minimum of three nodes" alert to only be displayed if the
+ user didn't select 3 nodes (dones't matter if master was not selected). The
+ previous behavior was making it display if the configuration wasn't supported
+ even having 4 nodes selected. This info now goes on the 'Next' button title
+ message.
+ 
+ See bsc#1058915
+
+
+-------------------------------------------------------------------
+Wed Oct  4 09:17:59 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 52abdd5 by Rafael Fernández López ereslibre@ereslibre.es
+ * Fix syntax error
+ * Move helm tiller option to the first page of the setup
+ * Recover the set value if the page is reloaded
+
+
+-------------------------------------------------------------------
+Tue Sep 19 14:08:09 UTC 2017 - containers-bugowner@suse.de
+
+- Commit bd44274 by Rafael Fernández López ereslibre@ereslibre.es
+ Do not add an override that will have the same value as the overriden one
+ 
+ This will only be effective on new installations, where the default pillar
+ value matches this value. Let's keep things simple and only override what is
+ in the UI or what will/can be different between versions.
+
+
+-------------------------------------------------------------------
+Mon Sep 18 15:02:31 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 0cf2d39 by Rafael Fernández López ereslibre@ereslibre.es
+ Allow to provision cluster nodes with autoyast in an air-gapped environment
+ 
+ Fixes: bsc#1058999
+
+-------------------------------------------------------------------
+Mon Sep 18 15:00:31 UTC 2017 - containers-bugowner@suse.de
+
+- Commit e6d76c by Rafael Fernández López ereslibre@ereslibre.es
+ Revert "Serve the autoyast content even when a SCC/SMT connection err…
+…or happens"
+
+ This reverts commit 1bd1de5
+
+-------------------------------------------------------------------
+Mon Sep 15 15:00:31 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 7625b36 by Rafael Fernández López ereslibre@ereslibre.es
+ Consistent naming of the product
+ - SUSE CaaSP
+ - SUSE Container as a Service Platform
+
+ both should be SUSE CaaS Platform.
+
+Fixes: bsc#1058720
+
+-------------------------------------------------------------------
+Fri Sep 15 12:51:18 UTC 2017 - containers-bugowner@suse.de
+
+- Commit d2aa99d by Kiall Mac Innes kiall@macinnes.ie
+ Revert "Adding option to install Tiller"
+ 
+ This reverts commit f329dd7969f1ad7635b9e297b838e447fff3faa8.
+
+
+-------------------------------------------------------------------
+Wed Sep 13 08:53:04 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 0e9d610 by Robert Roland robert.roland@suse.com
+ LDAP - remove hardcoded bind password
+ 
+ Passes the LDAP parameters into the pillar so Dex can be bootstrapped
+ properly
+
+
+-------------------------------------------------------------------
+Tue Sep 12 15:37:52 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 1bd1de5 by Rafael Fernández López ereslibre@ereslibre.es
+ Serve the autoyast content even when a SCC/SMT connection error happens
+ 
+ The service unavailable http error code (503) will only be returned now until
+ the first page of the setup is completed (so we have the dashboard address to
+ serve the autoyast profile).
+ 
+ When one of the following exceptions happens:
+ - Missing registration code
+ - Missing credentials for SCC/SMT
+ - Any HTTP error while connecting to SCC/SMT
+ 
+ We will still serve the autoyast content with a comment explaining why the
+ system cannot be registered. The returned http error code will be success
+ (200), but we will show a dialog stating the problem that was detected and
+ why it won't be registered.
+ 
+ Fixes: bsc#1049948
+
+
+-------------------------------------------------------------------
+Tue Sep 12 14:56:14 UTC 2017 - containers-bugowner@suse.de
+
+- Commit ed94e9a by Vítor Avelino contact@vitoravelino.me
+ Fixed proxy settings when revisiting the page
+ 
+ After the first step of setting up the proxy settings, when the user goes
+ back to that initial page, the proxy settings were lost. This can not only
+ confuse the user but also introduce undesired changes.
+ 
+ With this fix it doesn't happen anymore.
+ 
+ Fixes #300
+
+
+-------------------------------------------------------------------
+Tue Sep 12 14:54:02 UTC 2017 - containers-bugowner@suse.de
+
+- Commit c084ca4 by Rafael Fernández López ereslibre@ereslibre.es
+ Only override blank pillars on the page they are shown
+ 
+ Before this change the last step of the setup would remove the pillar
+ information for the first step proxy values (since they were not protected
+ pillars).
+ 
+ Instead, explicitly say what unprotected pillars there are in each step and
+ allow the controller to override them with blank if they were provided blank
+ after having some other value.
+
+
+-------------------------------------------------------------------
+Tue Sep 12 13:24:44 UTC 2017 - containers-bugowner@suse.de
+
+- Commit c73cd4e by Rafael Fernández López ereslibre@ereslibre.es
+ Add networking settings to the setup UI
+ 
+ * Add to the pillar the old settings. This migration will only be executed
+ on existing installations (as the `schema.rb` defines the up to date version
+ and
+ this last migration will be excluded)
+
+
+-------------------------------------------------------------------
+Tue Sep 12 11:16:58 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 8c73bdd by Rafael Fernández López ereslibre@ereslibre.es
+ Remove explicit set for `pidfile` and `statefile`
+
+
+-------------------------------------------------------------------
+Tue Sep 12 09:03:19 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 25a0658 by Rafael Fernández López ereslibre@ereslibre.es
+ Set etcd2 backend for old installations
+
+
+-------------------------------------------------------------------
+Fri Sep  8 14:39:13 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 0f8ef1f by Vítor Avelino contact@vitoravelino.me
+ Fixed 'Accept All Nodes' button ajax request
+ 
+ The 'Accept All Nodes' button had the class '.accept-minion' that is used to
+ accept individually a node. When clicking on it the wrong event listener
+ callback was being called instead of the correct one.
+ 
+ Now it calls the expected event listener callback and makes the request
+ passing the expected arguments for all the nodes to be accepted.
+
+
+-------------------------------------------------------------------
+Fri Sep  8 12:42:43 UTC 2017 - containers-bugowner@suse.de
+
+- Commit f329dd7 by Sam Leavens rbwsam@gmail.com
+ Adding option to install Tiller
+
+
+-------------------------------------------------------------------
+Wed Sep  6 08:22:41 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 89165f5 by Robert Roland rob.roland@gmail.com
+ RBAC: Adding LDAP support to Velum (#286)
+ 
+ * Adding LDAP support to Velum
+ * Will create the requisite org units in LDAP if they are missing
+ * Will create users in LDAP if they are created via Velum registration
+
+
+-------------------------------------------------------------------
+Tue Sep  5 13:50:53 UTC 2017 - containers-bugowner@suse.de
+
+- Commit b1c911f by Rafael Fernández López ereslibre@ereslibre.es
+ Clean old jobs on our own, since salt won't do it automatically
+ 
+ Given our current configuration in which we are no longer using the mysql
+ `job_cache`, salt won't clean old jobs on its own, so we should do it so the
+ database won't keep growing without control.
+ 
+ We are executing raw SQL commands to avoid creating `Jid` and `SaltReturn`
+ models just for the purpose of cleaning, as we know that we want to move away
+ from a mysql backed salt master.
+ 
+ This is a follow up of: https://github.com/kubic-project/salt/pull/199
+ 
+ Fixes: bsc#1054256
+
+
+-------------------------------------------------------------------
+Tue Sep  5 11:14:20 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 5e20ff5 by Maximilian Meister mmeister@suse.de
+ fix travis for mysql-devel
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Sep  5 10:30:49 UTC 2017 - containers-bugowner@suse.de
+
+- Commit ef0160f by Maximilian Meister mmeister@suse.de
+ packaging: mention velum-rpmlintrc in the sources
+ 
+ openSUSE Factory review bot is declining requests because of that
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Sep  5 09:29:14 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 2de7e3a by Kiall Mac Innes kiall@macinnes.ie
+ Add a 200MB EFI partition to AutoYaST XML
+ 
+ Fixes bsc#1055795
+
+
+-------------------------------------------------------------------
+Mon Sep  4 09:40:50 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 6ce1dda by Rafael Fernández López ereslibre@ereslibre.es
+ Add rake task velum:create_user
+ 
+ This rake task takes two parameters: an email and a password, and will create
+ a user entry in the Velum database so it's possible to login and work with
+ it.
+
+
+-------------------------------------------------------------------
+Mon Aug 28 15:25:02 UTC 2017 - containers-bugowner@suse.de
+
+- Commit dc79e32 by Rafael Fernández López ereslibre@ereslibre.es
+ Modify Velum workflow for Kubernetes external FQDN name
+ 
+ Velum will now have a new setup step after the roles have been chosen, with
+ the selected master as the kubernetes external FQDN name that will contain
+ its FQDN by default, allowing the customer to modify it to fit their needs.
+ 
+ Fixes: bsc#1047284
+
+
+-------------------------------------------------------------------
+Thu Aug 17 10:49:04 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 77c6d77 by Vítor Avelino contact@vitoravelino.me
+ removed es6 syntax; fixed tests; added new tests
+ 
+ Commit 5295c14 by Vítor Avelino contact@vitoravelino.me
+ replaced checkboxes by button group
+ 
+ Commit 2151cd1 by Kiall Mac Innes kiall@macinnes.ie
+ Allow multiple master selection
+ 
+ Allow the user to choose multiple masters during the initial bootstrap.
+ 
+ We don't currently allow for adding a master post bootstrap.
+
+
+-------------------------------------------------------------------
+Wed Aug  9 13:48:01 UTC 2017 - containers-bugowner@suse.de
+
+- Commit caef239 by Flavio Castelli fcastelli@suse.com
+ Set database name via environment variable
+ 
+ Allow to specify a custom database name using the `VELUM_DB_NAME` environment
+ variable.
+ 
+ The code falls back to the old value when the environment variable is not
+ set.
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+
+
+-------------------------------------------------------------------
+Fri Aug  4 16:09:13 UTC 2017 - containers-bugowner@suse.de
+
+- Commit b193e5e by Robert Roland robert.roland@suse.com
+ Small grammar update
+ 
+ I know it's nitpicky, but my OCD requires me to finally change this text.
+
+
+-------------------------------------------------------------------
+Thu Aug  3 10:25:11 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 4d07cc5 by Maximilian Meister mmeister@suse.de
+ allow kubeconfig download when master is ready (bsc#1048483)
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Aug  1 09:52:11 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 0d08127 by Maximilian Meister mmeister@suse.de
+ reduce 503 gap (bsc#1049931)
+ 
+ there is a gap between the database setup and the start of the rails server
+ which can be reduced
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Mon Jul 31 15:54:58 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 2386314 by Maximilian Meister mmeister@suse.de
+ set secure flag in cookie (bsc#1050484)
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Jul 25 10:47:00 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 3f44180 by Christoph Wickert cwickert@suse.de
+ Fix loopback IP for proxy exception during initial configuration
+ (127.0.01 -> 127.0.0.1)
+
+
+-------------------------------------------------------------------
+Fri Jul 21 12:51:49 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 7a49514 by Vítor Avelino contact@vitoravelino.me
+ bsc#1049165 : avoid orchestration action from ui while updating/adding node
+ 
+ - When an admin node update is available, do not allow users to press "update
+ all nodes". The admin node should be updated first.
+ - Never allow both a workers update and an admin update to be started at the
+ same time.
+ - Velum should not allow add node while a bootstrap/upgrade/etc is in
+ progress
+
+
+-------------------------------------------------------------------
+Fri Jul 21 12:50:53 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 9862097 by Vítor Avelino contact@vitoravelino.me
+ bsc#1045734: fix show/hide update link based on update/highstate
+ 
+ `Update all nodes` link should be shown if all nodes are in applied state and
+ there's an update available/retryable. If for some reason a node goes to a
+ different state than "applied" or there's no update, link becomes
+ unavailable.
+
+
+-------------------------------------------------------------------
+Tue Jul 18 10:05:35 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 9308c52 by Maximilian Meister mmeister@suse.de
+ increase workers (bsc#1048533)
+ 
+ this allows for more concurrent api requests
+ 
+ a worker spawns a copy of the velum process
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Mon Jul 17 16:28:22 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 9448526 by Kiall Mac Innes kiall@macinnes.ie
+ Handle failues of the update orchestration
+ 
+ Handle the failure of an update orchestration in the same way we handle a
+ failure for a bootstrap orchestration.
+ 
+ bsc#1047895
+
+
+-------------------------------------------------------------------
+Fri Jul 14 13:49:38 UTC 2017 - containers-bugowner@suse.de
+
+- Commit a285f00 by Maximilian Meister mmeister@suse.de
+ make branch safe by transforming slashes to dashes
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+ (cherry picked from commit 49ab27251e452026bee834eb56709180c781a783)
+ 
+ Commit 7e861b6 by Maximilian Meister mmeister@suse.de
+ packaging: make branch configurable
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+ (cherry picked from commit b0d65b5acc4beea1052e748120fbbf42a8715fc4)
+
+
+-------------------------------------------------------------------
+Fri Jul 14 13:48:04 UTC 2017 - containers-bugowner@suse.de
+
+- Commit aed8918 by Rafael Fernández López ereslibre@ereslibre.es
+ Detect orchestration results when `mods` has been provided as argument
+ 
+ We usually run the orchestrations manually as:
+ `salt-run state.orchestrate orch.kubernetes`
+ 
+ And this case was detected properly. This change adds support for also
+ detecting the orchestration result when the orchestration is called using the
+ `salt-api` on Velum (the general case):
+ `salt-run state.orchestrate mods=orch.kubernetes`
+ 
+ With this change we support both return results.
+ 
+ Fixes: bsc#1046706
+
+
+-------------------------------------------------------------------
+Thu Jul 13 12:50:35 UTC 2017 - containers-bugowner@suse.de
+
+- Commit aed8918 by Rafael Fernández López ereslibre@ereslibre.es
+ Detect orchestration results when `mods` has been provided as argument
+ 
+ We usually run the orchestrations manually as:
+ `salt-run state.orchestrate orch.kubernetes`
+ 
+ And this case was detected properly. This change adds support for also
+ detecting the orchestration result when the orchestration is called using the
+ `salt-api` on Velum (the general case):
+ `salt-run state.orchestrate mods=orch.kubernetes`
+ 
+ With this change we support both return results.
+ 
+ Fixes: bsc#1046706
+
+
+-------------------------------------------------------------------
+Wed Jul 12 12:17:27 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 4ae4648 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ [packaging] rebase schema patch because of the changes introduced in 7e2e454
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+
+-------------------------------------------------------------------
+Wed Jul 12 09:54:29 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 79cccb5 by Rafael Fernández López ereslibre@ereslibre.es
+
+ `force_ssl` is documented to be executed from the class context
+
+ Not all redirections to `https` were properly handled. By making this
+ change we manually redirect to `https` as a `before_action` as before,
+ but handling a `redirect_to` in the chain (effectively stopping the
+ chain and in the expected order).
+
+ The reason behind this is that `force_ssl` called from our own filter:
+ https://github.com/rails/rails/blob/03925dc26a747075ff37660d1f0a060a8178bf66/actionpack/lib/action_controller/metal/force_ssl.rb#L62-L68
+ installs a `before_action`, but it's already too late for that very
+ request (we are already in the `before_actions` for that request).
+
+ Also, with the current implementation the filter gets installed after
+ our other `before_action` filters, what implies that the redirection
+ to `https` is not the very first filter in the chain, as it should
+ be.
+
+ By calling to the method itself:
+ https://github.com/rails/rails/blob/03925dc26a747075ff37660d1f0a060a8178bf66/actionpack/lib/action_controller/metal/force_ssl.rb#L76-L96
+ from our filter, we ensure all requests are redirected to TLS.
+
+ Fixes: bsc#1048134
+
+
+
+-------------------------------------------------------------------
+Wed Jul 12 08:54:29 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 55895e9 by Rafael Fernández López ereslibre@ereslibre.es
+ Add missing indexes for `salt_events` table
+ 
+ Fix some slow queries that we were having due to missing indexes.
+ 
+ Increase batch job size.
+ 
+ Fixes: bsc#1046862
+
+
+-------------------------------------------------------------------
+Tue Jul 11 10:44:40 UTC 2017 - containers-bugowner@suse.de
+
+- Commit a40ed8a by Kiall Mac Innes kiall@macinnes.ie
+ Add Jenkinsfile
+ 
+ The Jenkinsfile in each repo, if we adopt Jenkins in the end, will be very
+ thin, including just a single library load, and a single method call. This
+ prevents us from needing to keep each projects Jenkinsfile in sync as CI
+ changes are made.
+
+
+-------------------------------------------------------------------
+Fri Jul  7 14:13:48 UTC 2017 - containers-bugowner@suse.de
+
+- Commit c28c294 by Flavio Castelli fcastelli@suse.com
+ db not ready page: return http 503
+ 
+ The "db is not ready" page now returns a http 503 status instead of a 200.
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+
+
+-------------------------------------------------------------------
+Fri Jul  7 11:48:14 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 054e21c by Rafael Fernández López ereslibre@ereslibre.es
+ Take orchestration result into consideration when bootstrapping
+ 
+ When bootstrapping, if the orchestration fails, depending in what stage it
+ failed, we might never retrieve individual highstate returns from minions, so
+ they will be in `pending` status forever.
+ 
+ With this change, we also listen for the overall bootstrap orchestration
+ result (`orch.kubernetes` for now), so we will mark all pending nodes as
+ failed.
+ 
+ Fixes: bsc#1046706
+
+
+-------------------------------------------------------------------
+Fri Jul  7 10:59:34 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 53f71da by Rafael Fernández López ereslibre@ereslibre.es
+ Before checking all nodes, make sure we are waiting for them
+ 
+ When using the `check-all` box, make sure that all expected nodes are present
+ on the page, so we select all the nodes that we intend to, instead of only a
+ subset of them.
+ 
+ This should help remove flaky tests.
+ 
+ Commit bab4226 by Miquel Sabaté Solà msabate@suse.com
+ Improved the reliability of some tests
+ 
+ There's a flaky test that has been marked as `pending` since:
+ 
+ 1. It's already tested as an end-to-end test. 2. We've wasted too much time
+ on it already and we have more pressing
+ issues.
+ 
+ Besides that, we've applied best practices and tests should run faster
+ overall.
+ 
+ This commit has been done with the help of @vitoravelino and @ereslibre.
+ 
+ Signed-off-by: Miquel Sabaté Solà <msabate@suse.com>
+
+
+-------------------------------------------------------------------
+Fri Jul  7 10:04:51 UTC 2017 - containers-bugowner@suse.de
+
+- Commit f34180e by Flavio Castelli fcastelli@suse.com
+ Serve "db is not ready" page over https [bsc#1047203]
+ 
+ Ensure the "db is not yet ready" is served over https too. This fixes
+ bsc#1047203.
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+
+
+-------------------------------------------------------------------
+Fri Jul  7 09:29:08 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 7f8256d by Maximilian Meister mmeister@suse.de
+ change dark to light font color in the dark background
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+ 
+ Commit 68927b8 by Maximilian Meister mmeister@suse.de
+ public: style the other static pages as well
+ 
+ follow up of #237
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Thu Jul  6 15:48:18 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 67308fb by Flavio Castelli fcastelli@suse.com
+ Improve the style of "db is initializing" page [bsc#1047305]
+ 
+ Try to use the same style as the main velum web application.
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+
+
+-------------------------------------------------------------------
+Thu Jul  6 12:58:45 UTC 2017 - containers-bugowner@suse.de
+
+- Commit b898f75 by Rafael Fernández López ereslibre@ereslibre.es
+ Download the kubectl client certificate and key from the new location
+ 
+ Fixes: bsc#1046963
+
+
+-------------------------------------------------------------------
+Thu Jul  6 08:03:23 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 2211633 by PI-Victor palade.ionut@gmail.com
+ views: remove lore ipsum dead code from worker_bootstrap.html.slim
+
+
+-------------------------------------------------------------------
+Wed Jul  5 18:26:10 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 125fb16 by Rafael Fernández López ereslibre@ereslibre.es
+ Make travis load the required phantomjs version
+ 
+ Also improve caching for faster builds.
+
+
+-------------------------------------------------------------------
+Wed Jul  5 16:15:23 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 20c9e03 by Rafael Fernández López ereslibre@ereslibre.es
+ Fix versioning syntax for ruby patchset version
+
+
+-------------------------------------------------------------------
+Wed Jul  5 15:43:57 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 74b395e by Rafael Fernández López ereslibre@ereslibre.es
+ Add two runs for each ruby version, one with fail fast, the other a regular
+ one
+ 
+ When we find a flaky test, the fail fast version will contain relevant
+ information on the tail of the `test.log` fail, while the regular run will
+ continue to show any other errors.
+ 
+ Also, use the ruby version used in CaaSP only for now.
+
+
+-------------------------------------------------------------------
+Wed Jul  5 15:00:06 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 557c490 by Rafael Fernández López ereslibre@ereslibre.es
+ Print `log/test.log` upon failure in Travis
+ 
+ This file might have valuable content to identify a flaky test or any other
+ problem.
+
+
+-------------------------------------------------------------------
+Wed Jul  5 14:22:40 UTC 2017 - containers-bugowner@suse.de
+
+- Commit d310c48 by Rafael Fernández López ereslibre@ereslibre.es
+ Remove `restart.txt` puma functionality
+ 
+ Puma allows you to restart the server based on the `mtime` of a file
+ `tmp/restart.txt`. We won't be using this functionality as the server runs in
+ a container and we have other means for restarting it.
+
+
+-------------------------------------------------------------------
+Mon Jul  3 09:03:23 UTC 2017 - containers-bugowner@suse.de
+
+- Commit a187b77 by Vítor Avelino contact@vitoravelino.me
+ ux/ui: added title to bootstrap button
+
+
+-------------------------------------------------------------------
+Fri Jun 30 14:43:26 UTC 2017 - containers-bugowner@suse.de
+
+- Commit bd67db1 by Flavio Castelli fcastelli@suse.com
+ Proxy support: code cleanup
+ 
+ Apply the changes requested during the code review process.
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+ 
+ Commit 5bc7fd9 by Flavio Castelli fcastelli@suse.com
+ AutoYaST: handle proxy settings [bsc#1043538]
+ 
+ Handle the proxy settings inside of the AutoYaST file when the user enabled
+ them at the node level.
+ 
+ This is fixes bsc#1043538
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+ 
+ Commit d28c5ad by Flavio Castelli fcastelli@suse.com
+ Setup page: improve proxy settings
+ 
+ This commit changes the proxy settings area of the setup page in the
+ following ways:
+ 
+ * Introduce toggle switch that enables/disables proxy settings
+ * When the proxy settings are disabled hide the panel showing all
+ their input fields.
+ * When the proxy settings are enabled show the panel showing all
+ their input fields.
+ * Introduce toggle switch to enable/disable proxy settings at the node
+ level. This is required to handle the `proxy:systemwide` pillar
+ introduced by [this](https://github.com/kubic-project/salt/pull/107) PR.
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+ 
+ Commit e437f14 by Flavio Castelli fcastelli@suse.com
+ Handle removal of empty pillars
+ 
+ Certain pillars (like the proxy related ones) can be blank. When that happens
+ they must be removed from the `pillars` table of the database.
+ 
+ This commit allows a user to effectively disable proxy related configurations
+ by simply providing an empty value. The previous code would have ignored this
+ change and left the old values instead.
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+ 
+ Commit a9b5441 by Flavio Castelli fcastelli@suse.com
+ Add support of proxy:systemwide pillar
+ 
+ This pillar was introduced by
+ [this](https://github.com/kubic-project/salt/pull/107) pull request but was
+ never supported by Velum.
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+
+
+-------------------------------------------------------------------
+Fri Jun 30 09:21:57 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 652b0da by Vítor Avelino contact@vitoravelino.me
+ ui: polishing and minor enhancements
+ 
+ Most of changes were done based on wireframes:
+ 
+ - General
+ - Added missing Roboto Medium (used on panel titles for example)
+ - Slightly larger line-height on `.panel-heading` to fit `.btn-sm`
+ - Buttons on `.panel-heading` moved from `.btn-xs` to `.btn-sm`
+ - Configuration
+ - Added missing `.panel-title` (except for proxy settings to avoid conflict)
+ - Overview page
+ - Centered status icon to column name
+ - Status text in the same column as icon
+ - Aligned table data text in the middle
+ - Wrong use of th instead of td on nodes table
+ - Master checkbox aligned before role text
+ - Changed update all nodes from button to link
+ - Overview and Discovery
+ - Added text when Pending Nodes panel is empty
+
+
+-------------------------------------------------------------------
+Fri Jun 30 09:08:49 UTC 2017 - containers-bugowner@suse.de
+
+- Commit b34d4ce by Maximilian Meister mmeister@suse.de
+ hide minimum nodes alert (bsc#1046626)
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Fri Jun 30 06:47:58 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 07795f3 by Rafael Fernández López ereslibre@ereslibre.es
+ Only restrict routes on production
+
+
+-------------------------------------------------------------------
+Thu Jun 29 17:11:14 UTC 2017 - containers-bugowner@suse.de
+
+- Commit ee0ee4e by Rafael Fernández López ereslibre@ereslibre.es
+ Add support for running Puma with SSL
+ 
+ Puma will be executed using SSL. If the port provided is 80 (we will be
+ serving autoyast with no safe transport in 1.0), then we only create the
+ autoyast route, since we should not let the customers handle Velum through an
+ insecure connection.
+ 
+ Connect to the salt-api using TLS.
+ 
+ Remove certificate details from the UI and related code.
+ 
+ Fixes: bsc#1043570
+
+
+-------------------------------------------------------------------
+Thu Jun 29 09:02:18 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 6054c65 by Miquel Sabaté Solà msabate@suse.com
+ Clarification on the discovery page
+ 
+ Signed-off-by: Miquel Sabaté Solà <msabate@suse.com>
+
+
+-------------------------------------------------------------------
+Wed Jun 28 11:48:46 UTC 2017 - containers-bugowner@suse.de
+
+- Commit ae40fb3 by Vítor Avelino contact@vitoravelino.me
+ Added 'cluster is too small' warning
+ 
+ The etcd configuration used in CaaSP 1.0 requires three total nodes to be
+ present in the cluster
+ (can be 1 master and two minions) - without this, etcd does not elect a
+ leader, and bootstrap will fail.
+ 
+ Warns the user if he tries to setup a cluster with only two nodes.
+ 
+ See bsc#1040477
+
+
+-------------------------------------------------------------------
+Tue Jun 27 17:17:39 UTC 2017 - containers-bugowner@suse.de
+
+- Commit afb1d63 by Vítor Avelino contact@vitoravelino.me
+ Fixed 'Reboot to update' after click behavior
+ 
+ After clicking "Reboot to update", fixed wrong button text and locked modal
+ until admin node is rebooted.
+ 
+ bsc#1045380, bsc#1045730
+
+
+-------------------------------------------------------------------
+Tue Jun 27 11:28:55 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 4efd537 by Vítor Avelino contact@vitoravelino.me
+ ui: discovery page layout enhancement
+
+
+-------------------------------------------------------------------
+Tue Jun 27 09:05:52 UTC 2017 - containers-bugowner@suse.de
+
+- Commit ebb8faa by Michal Jura mjura@suse.com
+ Fix minions update status, bsc#1045734
+ 
+ We have to add and check update_status from minions equal to 3,
+ which means that a highstate failed to apply to the node, which
+ is a retryable upgrade failure, so we should allow users to
+ re-trigger an upgrade, which we do by enabling the
+ "Update all Nodes" button
+
+-------------------------------------------------------------------
+Fri Jun 23 14:59:34 UTC 2017 - containers-bugowner@suse.de
+
+- Commit a8ed511 by Graham Hayes graham.hayes@suse.com
+ bsc#1043592 Add support for accepting nodes
+ 
+ Turning off `auto_accept` for salt means we need to have a mechanism to
+ accept nodes on a node by node basis into the cluster.
+ 
+ This adds a pending nodes table that will show all nodes that have not had
+ their key accepted in salt yet.
+
+
+-------------------------------------------------------------------
+Fri Jun 23 07:58:02 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 70049ca by Vítor Avelino contact@vitoravelino.me
+ Missing improvements from #201 (add unassigned nodes)
+
+
+-------------------------------------------------------------------
+Thu Jun 22 09:49:50 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 71840dd by Graham Hayes graham.hayes@suse.com
+ Add 'grains_refresh_every' config minions
+
+
+-------------------------------------------------------------------
+Wed Jun 21 08:56:12 UTC 2017 - containers-bugowner@suse.de
+
+- Commit bcdecc9 by Vítor Avelino contact@vitoravelino.me
+ Add unassigned nodes after cluster bootstrap
+ 
+ After the initial selection of the cluster (discovery page), new nodes can
+ eventually come up and user might want to add them. This PR makes that
+ available with a dedicated page similar to the discovery one.
+ 
+ https://trello.com/c/yzU3t5EC/229-5-ui-create-the-add-unassigned-nodes-to-the-cluster
+
+
+-------------------------------------------------------------------
+Wed Jun 21 08:47:09 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 33506ea by Maximilian Meister mmeister@suse.de
+ Gemfile.lock: downgrade a few gems
+ 
+ the recent capybara/poltergeist update can live with lower versions of their
+ deps as well
+ 
+ partial revert of: 2a2125e8fc4ad66c7901ba6f0db7462c65056e41
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Jun 20 16:43:04 UTC 2017 - containers-bugowner@suse.de
+
+- Commit b1d0cd6 by Rafael Fernández López ereslibre@ereslibre.es
+ Remove phantomjs gem
+ 
+ Add phantomjs to travis configuration
+
+
+-------------------------------------------------------------------
+Tue Jun 20 15:02:22 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 1052024 by Vítor Avelino contact@vitoravelino.me
+ Allows selection of nodes to bootstrap cluster
+ 
+ Previously, all the nodes found were used to be part of the cluster. Now,
+ user needs to select which ones they want to be used for it.
+
+
+-------------------------------------------------------------------
+Tue Jun 20 14:32:53 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 2a2125e by Miquel Sabaté Solà msabate@suse.com
+ Fixed flaky tests
+ 
+ - Some versions have been upgraded.
+ - I've taken the `spec/support/wait_for_events.rb` from Portus and used
+ some of its methods here and there.
+ - I've also tweaked some tests.
+ 
+ Thanks a lot to @vitoravelino and @ereslibre for all the help for fixing
+ this.
+ 
+ Signed-off-by: Miquel Sabaté Solà <msabate@suse.com>
+
+
+-------------------------------------------------------------------
+Tue Jun 20 13:23:44 UTC 2017 - containers-bugowner@suse.de
+
+- Commit f86b8d6 by Rafael Fernández López ereslibre@ereslibre.es
+ When setting the highstate resolution, consider all highstates
+ 
+ With the current logic, it could happen that during the same orchestration
+ run the first highstate succeeds (setting the minion status to :applied as
+ succeeded), while the second highstate fails
+ (and the :applied status as succeeded will be kept).
+ 
+ With this change we consider the latest highstate run is the most recent, and
+ whatever it reports is what the final status of the minion will be.
+
+
+-------------------------------------------------------------------
+Fri Jun 16 10:24:32 UTC 2017 - containers-bugowner@suse.de
+
+- Commit aecdaa5 by Vítor Avelino contact@vitoravelino.me
+ Fixed regression introduced when changed dashboard layout
+ 
+ For 1.0 we changed the layout of overview page. During that process, I
+ accidentally changed this piece of code without reminding that the discovery
+ page also depended on this.
+ 
+ Now it separates different behavior depending on the page.
+
+
+-------------------------------------------------------------------
+Wed Jun 14 18:58:37 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 886e7ae by Graham Hayes graham.hayes@suse.com
+ Add "update" button to velum.
+ 
+ * Adds a button that will trigger the update orchestration
+ run, when there is nodes that can be updated.
+ * Updates the status column to show status of updates.
+ * Updated the Salt Event listener to update status of minions
+ marked as "failed" if another highstate succeeds
+
+
+-------------------------------------------------------------------
+Wed Jun 14 13:26:37 UTC 2017 - containers-bugowner@suse.de
+
+- Commit e1aaf8b by Miquel Sabaté Solà msabate@suse.com
+ Don't be so strict on some pillar fields
+ 
+ Signed-off-by: Miquel Sabaté Solà <msabate@suse.com>
+
+
+-------------------------------------------------------------------
+Wed Jun 14 13:25:42 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 9d23ad4 by Valentin Rothberg vrothberg@suse.com
+ registration: allow only one admin user
+ 
+ The administration dashboard allows to create as many admin users as desired,
+ which is a potential security threat as Velum does not have any user
+ management. Besides, an admin cannot see how many other users exist.
+ 
+ Avoid creating more than one admin user by not showing the
+ `Create an account` button when a user already exists. `users/sign_up` will
+ further redirect to the `root_path` and print an alert.
+ 
+ Notice that this is only an intermediate solution until multiuser support and
+ RBAC is implemented. Until then, a password reset must be done by connecting
+ to the machine (manually or via a script).
+ 
+ See bsc#1040831
+ 
+ Signed-off-by: Valentin Rothberg <vrothberg@suse.com>
+
+
+-------------------------------------------------------------------
+Wed Jun 14 13:20:38 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 1212762 by Rafael Fernández López ereslibre@ereslibre.es
+ Check that result isn't `nil` before checking result contents
+ 
+ We are checking that the referenced file exists by performing a rudimentary
+ check. However, the result might be completely empty under certain
+ circumstances, making our check fail (`include?` called on `nil` will fail).
+ 
+ This fixes the 500 error, but we still need to find out why the salt side of
+ things is failing at all to retrieve the contents of the file.
+ 
+ Fixes: bsc#1043843
+
+
+-------------------------------------------------------------------
+Tue Jun 13 11:28:37 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 476b5d5 by Vítor Avelino contact@vitoravelino.me
+ dashboard: updated layout based on wireframes
+
+
+-------------------------------------------------------------------
+Mon Jun 12 15:13:20 UTC 2017 - containers-bugowner@suse.de
+
+- Commit de90154 by Miquel Sabaté Solà msabate@suse.com
+ Added support for detection & reboot on the admin node
+ 
+ Signed-off-by: Miquel Sabaté Solà <msabate@suse.com>
+
+
+-------------------------------------------------------------------
+Fri Jun  9 13:48:43 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 44bc253 by Rafael Fernández López ereslibre@ereslibre.es
+ Remove the development environment and move it to its own repo
+ 
+ The development environment can be used to hack both on Salt and Velum. Clean
+ up references to the development environment and move all that to its
+ dedicated repository.
+
+
+-------------------------------------------------------------------
+Thu Jun  8 15:33:51 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 039ff47 by Flavio Castelli fcastelli@suse.com
+ Improve initial cluster config page [bsc#1040367]
+ 
+ This is not the definitive design of the initial cluster configuration page,
+ it's just an attempt to quickly improve it.
+ 
+ The different forms have been grouped together based on the area they are
+ related to.
+ 
+ Also hover help tips have been added to the forms that might be harder to
+ understand.
+ 
+ This helps to mitigate issue bsc#1040367
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+
+
+-------------------------------------------------------------------
+Wed Jun  7 12:22:59 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 92f5a04 by Vítor Avelino contact@vitoravelino.me
+ signup: added proper email validation
+ 
+ I had to add checkValidity() to force a manual check (the same as when form
+ is submitted) to avoid the weird default suggestions and enforce the custom
+ message.
+ 
+ See bsc#1041940
+
+
+-------------------------------------------------------------------
+Tue Jun  6 11:41:30 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 84e0ea1 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ fix version in package to be a sequence
+ 
+ Let's use the git revision number in the version so that zypper will see each
+ new revision as an update. Otherwise, if we only use the commit number,
+ zypper gets confused
+
+- Commit 1f38f52 by Rafael Fernández López ereslibre@ereslibre.es
+  Fix `minion` -> `worker` terminology
+
+  Internally we refer to `minion` as a salt minion generically, but
+  when it comes to assign roles (that will be shown to the user), fix
+  terminology and use `worker` instead of `minion`.
+
+  This fixes bsc#1032917
+
+- Commit 2594fe9 by Miquel Sabaté Solà msabate@suse.com
+  Added Docker HTTP proxy settings
+
+  See kubic-project/salt#66
+  See bsc#1036627
+
+  Signed-off-by: Miquel Sabaté Solà <msabate@suse.com>
+
+- Commit e9673d5 by Miquel Sabaté Solà msabate@suse.com
+  Don't allow users to download the kubeconfig when bootstrapping
+
+  Unless all the nodes are up and ready, don't allow users to download the
+  kubeconfig file.
+
+  See bsc#1041806
+
+  Signed-off-by: Miquel Sabaté Solà <msabate@suse.com>
+
+-------------------------------------------------------------------
+Fri Jun  2 13:39:31 UTC 2017 - containers-bugowner@suse.de
+
+- Commit cb0d67b by Kiall Mac Innes kiall@macinnes.ie
+ Fix compatibility with salt 2016.11.4
+
+
+-------------------------------------------------------------------
+Fri Jun  2 10:44:34 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 4c0e315 by Flavio Castelli fcastelli@suse.com
+ UI: show salt ID instead of rails' internal ID [bsc#1041789]
+ 
+ Change the UI to show the salt ID (which now is set to be equal to the
+ machine-id) instead of showing Rails' internal ID.
+ 
+ This is required to fix bsc#1041789
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+
+
+-------------------------------------------------------------------
+Wed May 31 11:53:10 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 028069e by Miquel Sabaté Solà msabate@suse.com
+ signup: added proper validation message for the password fields
+ 
+ See bsc#1041905
+ 
+ Signed-off-by: Miquel Sabaté Solà <msabate@suse.com>
+
+
+-------------------------------------------------------------------
+Tue May 30 07:22:13 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 9d7b06e by Vítor Avelino contact@vitoravelino.me
+ Fixed footer overlapping elements
+ 
+ If a page didn't fit users screen height, the footer overlaps any element
+ since its position is absolute to .container element.
+ 
+ An example of that was the "Next" button on initial configuration form.
+ 
+ See bsc#1041440
+
+
+-------------------------------------------------------------------
+Mon May 29 15:26:26 UTC 2017 - containers-bugowner@suse.de
+
+- Commit a97129d by Miquel Sabaté Solà msabate@suse.com
+- setup: Block non-alphabetical characters
+- 
+- I've also fixed a redirect.
+- 
+- See bsc#1031475
+- 
+- Signed-off-by: Miquel Sabaté Solà <msabate@suse.com>
+
+
+-------------------------------------------------------------------
+Thu May 25 12:00:23 UTC 2017 - containers-bugowner@suse.de
+
+- Commit f5f660b by Rafael Fernández López ereslibre@ereslibre.es
+- Remove Dockerfile that was for development purposes
+- 
+- We already have the caasp-devenv and don't really need this Dockerfile,
+- however it would be good to reintroduce it based on opensuse in the future.
+
+
+-------------------------------------------------------------------
+Thu May 25 10:49:18 UTC 2017 - containers-bugowner@suse.de
+
+- Commit ac24623 by Miquel Sabaté Solà msabate@suse.com
+- autoyast: added docker
+- 
+- See bsc#1040579
+- 
+- Signed-off-by: Miquel Sabaté Solà <msabate@suse.com>
+
+
+-------------------------------------------------------------------
+Fri May 19 11:44:50 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 1a388b6 by Rafael Fernández López ereslibre@ereslibre.es
+- Ask for system activations and retrieve the regcode from this service
+- 
+- We will identify an active registration code by the identifier and not the
+- name of the product.
+- 
+- Fixes: bsc#1038074
+
+
+-------------------------------------------------------------------
+Thu May 18 17:24:19 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 98effdd by Rafael Fernández López ereslibre@ereslibre.es
+- Fix unit tests
+
+
+-------------------------------------------------------------------
+Thu May 18 15:47:58 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 22ab346 by Rafael Fernández López ereslibre@ereslibre.es
+- Add setting for the main apiserver hostname
+- 
+- Fixes bsc#1039437
+
+
+-------------------------------------------------------------------
+Wed May 17 09:24:51 UTC 2017 - containers-bugowner@suse.de
+
+- Fix patterns on autoyast (Fixes: bsc#1039432)
+
+
+-------------------------------------------------------------------
+Tue May 16 11:54:50 UTC 2017 - containers-bugowner@suse.de
+
+- Use colons as nesting instead of dots
+
+
+-------------------------------------------------------------------
+Tue May 16 10:16:09 UTC 2017 - containers-bugowner@suse.de
+
+- Add support for libvirt in Vagrantfile
+
+
+-------------------------------------------------------------------
+Fri May 12 11:22:29 UTC 2017 - containers-bugowner@suse.de
+
+- Disable rubocop inline rescue warning
+
+
+-------------------------------------------------------------------
+Fri May 12 11:13:21 UTC 2017 - containers-bugowner@suse.de
+
+- Fix documentation typos
+
+
+-------------------------------------------------------------------
+Fri May 12 10:47:00 UTC 2017 - containers-bugowner@suse.de
+
+- autoyast: create /var/lib/docker partition (bsc#1034942)
+
+
+-------------------------------------------------------------------
+Fri May 12 10:46:00 UTC 2017 - containers-bugowner@suse.de
+
+- Propagate ssh public key from dashboard to workers, bsc#1030876
+
+
+-------------------------------------------------------------------
+Fri May 12 10:02:17 UTC 2017 - containers-bugowner@suse.de
+
+- Remove GPLv3+ license from specific files defaulting to project's license
+
+
+-------------------------------------------------------------------
+Fri May 12 08:33:48 UTC 2017 - containers-bugowner@suse.de
+
+- Add debugging
+- Add salt-api container configuration
+- Use the production schema to create the database at the beginning
+- Make the development environment as close as possible to production
+
+
+-------------------------------------------------------------------
+Tue May  9 13:58:36 UTC 2017 - containers-bugowner@suse.de
+
+- fix bsc#1036724
+
+
+-------------------------------------------------------------------
+Mon May  8 20:00:00 UTC 2017 - containers-bugowner@suse.de
+
+- Revert "Do not bundle install in velum's source code location"
+- Revert "Fix path typo"
+- Revert "Set .bundle/config location by stripping the buildroot automatically"
+
+
+-------------------------------------------------------------------
+Mon May  8 14:22:55 UTC 2017 - containers-bugowner@suse.de
+
+- packaging: use /usr/share instead of /usr/local
+
+
+-------------------------------------------------------------------
+Mon May  8 11:00:24 UTC 2017 - containers-bugowner@suse.de
+
+- Set .bundle/config location by stripping the buildroot automatically added when installing with --path
+
+
+-------------------------------------------------------------------
+Mon May  8 07:41:55 UTC 2017 - containers-bugowner@suse.de
+
+- Gemfile: fix ENV
+
+
+-------------------------------------------------------------------
+Thu May  4 16:27:30 UTC 2017 - containers-bugowner@suse.de
+
+- Fix path typo
+
+
+-------------------------------------------------------------------
+Thu May  4 10:38:04 UTC 2017 - containers-bugowner@suse.de
+
+- Do not bundle install in velum's source code location
+
+
+-------------------------------------------------------------------
+Wed May  3 09:31:06 UTC 2017 - containers-bugowner@suse.de
+
+- discovery: don't cache AJAX requests (fix bsc#1031742)
+
+
+-------------------------------------------------------------------
+Thu Apr 27 13:53:11 UTC 2017 - containers-bugowner@suse.de
+
+- docs: added internal research on salt job callbacks
+
+
+-------------------------------------------------------------------
+Thu Apr 27 10:31:40 UTC 2017 - containers-bugowner@suse.de
+
+- Fixed the node count on the discovery page (bsc#1036040)
+
+
+-------------------------------------------------------------------
+Tue Apr 25 14:38:05 UTC 2017 - containers-bugowner@suse.de
+
+- Prevent exception in console during initial bootstrap
+
+
+-------------------------------------------------------------------
+Tue Apr 25 11:01:55 UTC 2017 - containers-bugowner@suse.de
+
+- Update velum-secrets host path on development
+
+
+-------------------------------------------------------------------
+Tue Apr 25 08:32:35 UTC 2017 - containers-bugowner@suse.de
+
+- Add seeding depending on environment
+
+
+-------------------------------------------------------------------
+Tue Apr 25 08:05:17 UTC 2017 - containers-bugowner@suse.de
+
+- Remove dashboard pillar seed
+
+
+-------------------------------------------------------------------
+Mon Apr 24 13:27:33 UTC 2017 - containers-bugowner@suse.de
+
+- Explicitly ask for the dashboard location (bsc#1032461 and bsc#1031605)
+
+
+-------------------------------------------------------------------
+Mon Apr 24 12:56:19 UTC 2017 - containers-bugowner@suse.de
+
+- we always need to specify a VELUM_SECRETS_DIR
+
+
+-------------------------------------------------------------------
+Mon Apr 24 11:34:15 UTC 2017 - containers-bugowner@suse.de
+
+- enhance secrets method and use /var/lib/misc to store the secrets
+- Make rubocop happy
+- Store and retrieve secret_key_base from disk file
+
+
+-------------------------------------------------------------------
+Fri Apr 21 06:40:15 UTC 2017 - containers-bugowner@suse.de
+
+- Cleaning folders that can be problematic
+
+
+-------------------------------------------------------------------
+Wed Apr 19 17:04:01 UTC 2017 - containers-bugowner@suse.de
+
+- Added NTP configuration for nodes in autoyast.xml
+
+
+-------------------------------------------------------------------
+Wed Apr 19 13:17:31 UTC 2017 - containers-bugowner@suse.de
+
+- clanup: also don't persist the server.pid file
+- init: define VELUM_PORT earlier
+
+
+-------------------------------------------------------------------
+Wed Apr 19 12:58:13 UTC 2017 - containers-bugowner@suse.de
+
+- manifest-templates: always use the latest images
+
+
+-------------------------------------------------------------------
+Wed Apr 19 12:02:17 UTC 2017 - containers-bugowner@suse.de
+
+- packaging: rebase patch
+
+
+-------------------------------------------------------------------
+Wed Apr 19 10:56:04 UTC 2017 - containers-bugowner@suse.de
+
+- Do not assume minion_id is hostname/fqdn
+
+
+-------------------------------------------------------------------
+Tue Apr 18 07:37:50 UTC 2017 - containers-bugowner@suse.de
+
+- Forcing a user to specify a SALT_DIR
+
+
+-------------------------------------------------------------------
+Thu Apr 13 06:52:48 UTC 2017 - containers-bugowner@suse.de
+
+- Use the same init script for development env as we do in production
+
+
+-------------------------------------------------------------------
+Thu Apr 13 05:54:17 UTC 2017 - containers-bugowner@suse.de
+
+- Improve bootstrap documentation (bsc#1031685)
+
+
+-------------------------------------------------------------------
+Thu Apr 13 05:52:08 UTC 2017 - containers-bugowner@suse.de
+
+- fix bsc#1031682
+
+
+-------------------------------------------------------------------
+Thu Apr 13 05:51:10 UTC 2017 - containers-bugowner@suse.de
+
+- Update manifests.
+- Bug 1031352 - Do not expose mariadb to the world
+
+
+-------------------------------------------------------------------
+Tue Apr 11 10:55:26 UTC 2017 - containers-bugowner@suse.de
+
+- Fix kubelet arguments for version >= 1.6.1
+
+
+-------------------------------------------------------------------
+Fri Mar 31 14:17:11 UTC 2017 - containers-bugowner@suse.de
+
+- Request the ca certificate directly to the CA machine (container)
+  (bsc#1031478)
+
+
+-------------------------------------------------------------------
+Tue Mar 28 06:31:43 UTC 2017 - containers-bugowner@suse.de
+
+- bootstrap: don't allow empty bootstrap in the back-end
+
+
+-------------------------------------------------------------------
+Mon Mar 27 18:22:16 UTC 2017 - containers-bugowner@suse.de
+
+- setup: enable select field for the country codes
+
+
+-------------------------------------------------------------------
+Mon Mar 27 17:47:17 UTC 2017 - containers-bugowner@suse.de
+
+- discovery: don't allow empty bootstrap
+
+
+-------------------------------------------------------------------
+Mon Mar 27 12:06:54 UTC 2017 - containers-bugowner@suse.de
+
+- Set "dashboard" Pillar to the request.host value
+
+
+-------------------------------------------------------------------
+Mon Mar 27 11:51:56 UTC 2017 - containers-bugowner@suse.de
+
+- Fix spacings
+
+
+-------------------------------------------------------------------
+Mon Mar 27 11:41:38 UTC 2017 - containers-bugowner@suse.de
+
+- Add netsetup=dhcp documentation
+
+
+-------------------------------------------------------------------
+Mon Mar 27 11:30:33 UTC 2017 - containers-bugowner@suse.de
+
+- packaging: rename patch
+
+
+-------------------------------------------------------------------
+Fri Mar 24 13:36:45 UTC 2017 - containers-bugowner@suse.de
+
+- Set salt master configuration on the minion on a script
+
+
+-------------------------------------------------------------------
+Fri Mar 24 09:57:08 UTC 2017 - containers-bugowner@suse.de
+
+- Remove SECRET_KEY_BASE
+
+
+-------------------------------------------------------------------
+Fri Mar 24 08:43:31 UTC 2017 - containers-bugowner@suse.de
+
+- setup: validate fields in the front end
+
+
+-------------------------------------------------------------------
+Thu Mar 23 18:34:04 UTC 2017 - containers-bugowner@suse.de
+
+- setup: don't allow empty initial configuration
+
+
+-------------------------------------------------------------------
+Thu Mar 23 18:13:52 UTC 2017 - containers-bugowner@suse.de
+
+- Fix rubocop warning
+
+
+-------------------------------------------------------------------
+Thu Mar 23 17:34:13 UTC 2017 - containers-bugowner@suse.de
+
+- add init for containers
+
+
+-------------------------------------------------------------------
+Thu Mar 23 16:35:22 UTC 2017 - containers-bugowner@suse.de
+
+- Remove `SKIP_MIGRATION` envvar
+
+
+-------------------------------------------------------------------
+Thu Mar 23 13:41:46 UTC 2017 - containers-bugowner@suse.de
+
+- Remove port from puma configuration
+
+
+-------------------------------------------------------------------
+Thu Mar 23 11:54:47 UTC 2017 - containers-bugowner@suse.de
+
+- Fixed the production environment
+
+
+-------------------------------------------------------------------
+Thu Mar 23 11:50:40 UTC 2017 - containers-bugowner@suse.de
+
+- Typo fixes
+
+
+-------------------------------------------------------------------
+Thu Mar 23 11:31:29 UTC 2017 - containers-bugowner@suse.de
+
+- Retrieve host from request
+
+
+-------------------------------------------------------------------
+Thu Mar 23 09:52:00 UTC 2017 - containers-bugowner@suse.de
+
+- Update coverage and codeclimate table in README.md
+
+
+-------------------------------------------------------------------
+Thu Mar 23 09:46:53 UTC 2017 - containers-bugowner@suse.de
+
+- Add AutoYaST profile serving
+
+
+-------------------------------------------------------------------
+Fri Mar 17 17:30:30 UTC 2017 - containers-bugowner@suse.de
+
+- Provide kubectl configuration
+
+
+-------------------------------------------------------------------
+Fri Mar 17 12:29:15 UTC 2017 - containers-bugowner@suse.de
+
+- provide hints about the initial configuration
+
+
+-------------------------------------------------------------------
+Wed Mar 15 15:49:33 UTC 2017 - containers-bugowner@suse.de
+
+- Change "minions" to "workers"
+
+
+-------------------------------------------------------------------
+Wed Mar 15 14:51:48 UTC 2017 - containers-bugowner@suse.de
+
+- Add bootstrap javascript to make close buttons on alerts work
+- ui: styling enhancements
+
+
+-------------------------------------------------------------------
+Wed Mar 15 12:33:01 UTC 2017 - containers-bugowner@suse.de
+
+- Show message about unassigned minions in monitoring page
+
+
+-------------------------------------------------------------------
+Mon Mar 13 15:04:39 UTC 2017 - mmeister@suse.com
+
+- Implementing a setup controller to guide the user throught the
+  setup
+- Overhaul of the UI
+- Drop turbolink dependencies. They have been removed with commit:
+  6758b5ac35db111393339a5f4916ae28f4d794c3
+
+-------------------------------------------------------------------
+Thu Mar  9 09:25:41 UTC 2017 - jmassaguerpla@suse.com
+
+- Disable the service so we don't get accidentally rebuilds on our
+  final repos 
+
+- add 0_change_versions.gem.patch: This relaxes the requirement on
+  recursive-open-struct to ~>1.0.0 instead of =1.0.0 so that we can
+  use version 1.0.2 which is the latest version upstream and so the
+  one that we are packaging. This change has been made also upstream
+  in the master branch of kubeclient, so that this is a backport
+  which should be removed when we update kubeclient
+
+-------------------------------------------------------------------
+Fri Feb 10 10:51:14 UTC 2017 - mmeister@suse.com
+
+- Initial packaging of velum
+

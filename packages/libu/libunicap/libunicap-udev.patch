@@ -1,0 +1,32 @@
+--- libunicap-0.9.12.orig/data/50-euvccam.rules
++++ libunicap-0.9.12/data/50-euvccam.rules
+@@ -1,8 +1,13 @@
+-SYSFS{idVendor}=="199e", SYSFS{idProduct}=="8201", GROUP="video", MODE="0660"
+-SYSFS{idVendor}=="199e", SYSFS{idProduct}=="8202", GROUP="video", MODE="0660"
+-SYSFS{idVendor}=="199e", SYSFS{idProduct}=="8203", GROUP="video", MODE="0660"
+-SYSFS{idVendor}=="199e", SYSFS{idProduct}=="8204", GROUP="video", MODE="0660"
+-SYSFS{idVendor}=="199e", SYSFS{idProduct}=="8205", GROUP="video", MODE="0660"
+-SYSFS{idVendor}=="199e", SYSFS{idProduct}=="8206", GROUP="video", MODE="0660"
+-SYSFS{idVendor}=="199e", SYSFS{idProduct}=="8207", GROUP="video", MODE="0660"
++ACTION!="add", GOTO="euvccam_rules_end"
++SUBSYSTEM!="usb", GOTO="euvccam_rules_end"
++ENV{DEVTYPE}!="usb_device", GOTO="euvccam_rules_end"
+ 
++ATTRS{idVendor}=="199e", ATTRS{idProduct}=="8201", GROUP="video", MODE="0660"
++ATTRS{idVendor}=="199e", ATTRS{idProduct}=="8202", GROUP="video", MODE="0660"
++ATTRS{idVendor}=="199e", ATTRS{idProduct}=="8203", GROUP="video", MODE="0660"
++ATTRS{idVendor}=="199e", ATTRS{idProduct}=="8204", GROUP="video", MODE="0660"
++ATTRS{idVendor}=="199e", ATTRS{idProduct}=="8205", GROUP="video", MODE="0660"
++ATTRS{idVendor}=="199e", ATTRS{idProduct}=="8206", GROUP="video", MODE="0660"
++ATTRS{idVendor}=="199e", ATTRS{idProduct}=="8207", GROUP="video", MODE="0660"
++
++LABEL="euvccam_rules_end"
+--- libunicap-0.9.12.orig/data/Makefile.am
++++ libunicap-0.9.12/data/Makefile.am
+@@ -1,4 +1,4 @@
+-euvccamrulesdir=/etc/udev/rules.d
++euvccamrulesdir=$(shell pkg-config --variable=udevdir udev)/rules.d
+ euvccamrules_DATA=50-euvccam.rules
+ 
+ EXTRA_DIST=50-euvccam.rules
+\ No newline at end of file

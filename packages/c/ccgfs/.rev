@@ -1,0 +1,119 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f49d4773e0f8c61ff524452951689fd1</srcmd5>
+    <version>0.79</version>
+    <time>1313070785</time>
+    <user>saschpe</user>
+    <comment>Network filesystem that is independent of direction of connection establishment and thus allows a DMZ to actually mount a filesystem from an internal server without compromising the security model.</comment>
+    <requestid>78480</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dd3240b3c9db4d8209d9931f8363f4ca</srcmd5>
+    <version>0.79</version>
+    <time>1313070795</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78480
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>dd3240b3c9db4d8209d9931f8363f4ca</srcmd5>
+    <version>0.79</version>
+    <time>1319181805</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4e5d46914f10ea3c31dd453409ca84c5</srcmd5>
+    <version>0.80</version>
+    <time>1323773305</time>
+    <user>coolo</user>
+    <comment>This is supposed to compile, but filesystem:/ is only on snapshot</comment>
+    <requestid>96242</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d12de7529ecb08c4bb234eba0a257add</srcmd5>
+    <version>0.81</version>
+    <time>1336579738</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>116924</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d12de7529ecb08c4bb234eba0a257add</srcmd5>
+    <version>0.81</version>
+    <time>1340183229</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>3c0b7723ff952cdf6d7c83af25d6d33d</srcmd5>
+    <version>0.81</version>
+    <time>1350640103</time>
+    <user>coolo</user>
+    <comment>- Explicitly specify unit directory for building
+  (this is to support %_unitdir changing to /usr/lib/systemd/...)</comment>
+    <requestid>138495</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>eb5572557768d636c2373c12e35054bc</srcmd5>
+    <version>0.81</version>
+    <time>1355463298</time>
+    <user>coolo</user>
+    <comment>- Verify GPG signature</comment>
+    <requestid>144881</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>eb5572557768d636c2373c12e35054bc</srcmd5>
+    <version>0.81</version>
+    <time>1359108735</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>eb5572557768d636c2373c12e35054bc</srcmd5>
+    <version>0.81</version>
+    <time>1379662091</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>038dd8d8c9733a739427557caf809e7e</srcmd5>
+    <version>0.81</version>
+    <time>1383034837</time>
+    <user>coolo</user>
+    <comment>- Don't provide sysvinit and systemd support on the same system
+  Provides support for either one or the other</comment>
+    <requestid>204867</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>038dd8d8c9733a739427557caf809e7e</srcmd5>
+    <version>0.81</version>
+    <time>1409300621</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>65b91056b735c959647af29e09887ae9</srcmd5>
+    <version>0.81</version>
+    <time>1411721516</time>
+    <user>coolo</user>
+    <comment>- Drop gpg-offline build-time requirement</comment>
+    <requestid>251749</requestid>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>9d63e9555bac177bebaa3be7043e5d44</srcmd5>
+    <version>0.81</version>
+    <time>1512433817</time>
+    <user>dimstar_suse</user>
+    <comment>- Add replace-sha0.diff
+fix openssl build error</comment>
+    <requestid>548027</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>31a9eff833a5c8a7980579cabacf0f9b</srcmd5>
+    <version>0.81.g3</version>
+    <time>1540448462</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 0.81.g3</comment>
+    <requestid>643177</requestid>
+  </revision>
+</revisionlist>

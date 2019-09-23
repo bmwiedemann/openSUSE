@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Sat Apr 29 18:32:13 UTC 2017 - bwiedemann@suse.com
+
+- call gzip -n to make build more reproducible
+
+-------------------------------------------------------------------
+Tue Apr  8 12:13:09 CEST 2014 - jsmeix@suse.de
+
+- Fixed Fuji_Xerox-DocuPrint_CM305_df-Postscript.ppd
+  see https://bugs.linuxfoundation.org/show_bug.cgi?id=1195
+- Fixed HOWTO: Mention the Version X.Y.Z -> X.Y.Z.S change, see
+  the entry dated "Thu Apr  3 14:39:15 CEST 2014" below.
+- Added remove_PPDs_with_non_free_license_text_snippets.sh
+  and inserted a matching description step in the HOWTO
+  see https://bugs.linuxfoundation.org/show_bug.cgi?id=1196
+- Fixed and enhanced makePPDtest for newer CUPS versions.
+- Provide makePPDtest in the OpenPrintingPPDs main package
+  as /usr/share/doc/packages/OpenPrintingPPDs/makePPDtest
+  so that one can more easily do the last step of the HOWTO
+  "... install them and then run makePPDtest ..." by only
+  installing the OpenPrintingPPDs RPMs without sources.
+
+-------------------------------------------------------------------
+Thu Apr  3 14:39:15 CEST 2014 - jsmeix@suse.de
+
+- Version upgrade to 4.0.0.1
+  The package version is the PPD-O-MATIC version mentioned in the
+  PPD files which is currently "PPD-O-MATIC (4.0.0 or newer)"
+  plus an additional trailing version number by openSUSE
+  (currently ".1") so that openSUSE package upgrades get
+  a strictly increasing sequence of versions.
+- Define foomatic_rip_version 4.0.0 as the required minimal
+  foomatic-rip version by the PPD files.
+- In determine_drivers_to_be_considered.sh exclude all PPDs
+  for all foo2* drivers to avoid any possible issues with
+  ZjStream printers and the related JBIG patent issues.
+  If such printers are supported, they would have to be supported
+  by an appropriate driver RPM that contains matching PPDs
+  and not by plain PPDs without driver from OpenPrinting.
+
+-------------------------------------------------------------------
+Sat Mar 29 11:03:39 UTC 2014 - joerg.lorenzen@ki.tng.de
+
+- update complete PPD database, current version is still 4.0.0
+- fix script move_downloaded_PPDs_to_their_actual_type_of_driver.sh
+  to move all PPDs to the right directory (there are little changes
+  in 'FoomaticRIPCommandLine')
+
+-------------------------------------------------------------------
+Fri Feb 22 15:28:25 CET 2013 - jsmeix@suse.de
+
+- Added "BuildRequires: python-cups" to get special
+  RPM Provides tags for the printers supported by
+  this package (see SUSE Bugzilla bnc#735865).
+
+-------------------------------------------------------------------
+Mon Feb  4 09:06:51 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Tue May  8 12:11:53 CEST 2012 - jsmeix@suse.de
+
+- Do not provide PPDs for the Ghostscript driver "lx5000" because
+  the driver is removed from the default build in Ghostscript,
+  see the "Built-in drivers for old Lexmark printers" mail thread
+  on gs-devel@ghostscript.com dated June 2011 (bnc#760684).
+
+-------------------------------------------------------------------
+Sat Sep 17 10:01:52 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile.
+- Pick stronger compression.
+
+-------------------------------------------------------------------
+Wed Jan 12 16:35:10 CET 2011 - jsmeix@suse.de
+
+- Enhanced the sources by verbatim documentation and references
+  and install the GPLv2 as plain text file.
+
+-------------------------------------------------------------------
+Tue Dec 28 11:34:12 CET 2010 - jsmeix@suse.de
+
+- Do not install the "Generic GDI Printer" PPD because
+  there is no such thing as a "Generic GDI Printer",
+  (see http://www.cups.org/str.php?L3759).
+
+-------------------------------------------------------------------
+Wed Oct 20 16:42:40 CEST 2010 - jsmeix@suse.de
+
+- Skip fixing bugs in PPD files from printer manufacturers when
+  the manufacturer's redistribution license in the PPD file allows
+  redistribution only when the content of the file is not altered
+  (see http://bugs.linux-foundation.org/show_bug.cgi?id=535).
+
+-------------------------------------------------------------------
+Wed Oct 13 17:28:09 CEST 2010 - jsmeix@suse.de
+
+- Updated NEC-P2X.necp2xX.upp.ppd for OpenPrintingPPDs-ghostscript
+  (see http://bugs.linux-foundation.org/show_bug.cgi?id=533)
+  so that now all PPDs in the OpenPrintingPPDs packages
+  pass the very basic test with the makePPDtest script
+  which is added to the OpenPrintingPPDs source tarball.
+
+-------------------------------------------------------------------
+Fri Oct  1 15:44:17 CEST 2010 - jsmeix@suse.de
+
+- Initial version.
+

@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>88554d9156c52aa8646bbb489912ab0d</srcmd5>
+    <version>0.9.6</version>
+    <time>1349372535</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>136962</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>88554d9156c52aa8646bbb489912ab0d</srcmd5>
+    <version>0.9.6</version>
+    <time>1359109096</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>88554d9156c52aa8646bbb489912ab0d</srcmd5>
+    <version>0.9.6</version>
+    <time>1379662690</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d7c5f0a1622379f7f7a50fe116bf5ebf</srcmd5>
+    <version>0.9.7</version>
+    <time>1392447921</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.9.7
+  * no changelog available
+  * removed obsolete iverilog-0.9.6-fix-licensing-issues.patch (forwarded request 222246 from Dmitry_R)</comment>
+    <requestid>222248</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d7c5f0a1622379f7f7a50fe116bf5ebf</srcmd5>
+    <version>0.9.7</version>
+    <time>1409301256</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>921a85a1fa3253c98e901d929cc6f15f</srcmd5>
+    <version>10.1</version>
+    <time>1459002346</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>377019</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4f53b4340303414589f52b582db28ebd</srcmd5>
+    <version>10.2</version>
+    <time>1564302183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719298</requestid>
+  </revision>
+</revisionlist>

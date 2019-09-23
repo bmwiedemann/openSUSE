@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Tue Jan  2 09:50:00 UTC 2018 - tchvatal@suse.com
+
+- Conflict with python3-Cheetah3 to be sure not to collide on binaries
+
+-------------------------------------------------------------------
+Wed Apr 19 22:13:57 UTC 2017 - toddrme2178@gmail.com
+
+- Source url must be https.
+
+-------------------------------------------------------------------
+Wed Apr 19 16:06:31 UTC 2017 - toddrme2178@gmail.com
+
+- Add python2-Cheetah provides to support singlespec macros.
+
+-------------------------------------------------------------------
+Sat Mar 16 08:02:50 UTC 2013 - rbos@opensuse.org
+
+- Use a patch file instead of the sed command to remove the
+  shebang line from tests; add  shebang.patch 
+
+-------------------------------------------------------------------
+Fri Jan 20 14:27:16 UTC 2012 - bwiedemann@suse.com
+
+- Fix obsoletes
+
+-------------------------------------------------------------------
+Thu Jan 12 11:28:42 UTC 2012 - saschpe@suse.de
+
+- Fix macro usage
+
+-------------------------------------------------------------------
+Tue Dec 20 13:42:34 UTC 2011 - idonmez@suse.com
+
+- Regenerate with py2pack 
+
+-------------------------------------------------------------------
+Wed Dec  7 12:02:13 UTC 2011 - saschpe@suse.de
+
+- Initial version
+

@@ -1,0 +1,16 @@
+diff --git a/src/start_kdeinit/CMakeLists.txt b/src/start_kdeinit/CMakeLists.txt
+index 46d6cb3..31434df 100644
+--- a/src/start_kdeinit/CMakeLists.txt
++++ b/src/start_kdeinit/CMakeLists.txt
+@@ -3,6 +3,11 @@ add_executable(start_kdeinit start_kdeinit.c)
+ if (Libcap_FOUND)
+    target_link_libraries(start_kdeinit ${Libcap_LIBRARIES})
+ endif()
++
++set_property(TARGET start_kdeinit APPEND_STRING PROPERTY COMPILE_FLAGS " -fPIE")
++
++set_property(TARGET start_kdeinit APPEND_STRING PROPERTY LINK_FLAGS " -pie")
++
+ add_executable(start_kdeinit_wrapper start_kdeinit_wrapper.c)
+ ecm_mark_nongui_executable(start_kdeinit_wrapper)
+ 

@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Tue Sep 10 10:22:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.15.0:
+  * New option --skip for the shodan download command to skip results
+
+-------------------------------------------------------------------
+Sun Jul 21 12:32:25 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.14.0:
+ - New command **shodan version** (#104).
+ - Only change api_key file permissions if needed (#103)
+
+-------------------------------------------------------------------
+Fri May  3 18:23:49 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.13.0:
+ * New command **shodan domain** to lookup a domain in Shodan's DNS database
+ * Override environment configured settings if explicit proxy settings are supplied (@cudeso)
+
+-------------------------------------------------------------------
+Wed Apr 24 13:17:29 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.12.1
+  * Fix Excel file conversion that resulted in empty .xlsx files
+
+-------------------------------------------------------------------
+Sun Apr  7 11:28:37 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.12.0:
+ * Add new methods to ignore/ unignore trigger notifications
+
+-------------------------------------------------------------------
+Sat Mar 16 14:57:46 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.11.1:
+ * Allow a single network alert to monitor multiple IP ranges (#93)
+- update to version 1.11.0:
+ * New command **shodan scan list** to list recently launched scans
+ * New command **shodan alert triggers** to list the available notification triggers
+ * New command **shodan alert enable** to enable a notification trigger
+ * New command **shodan alert disable** to disable a notification trigger
+ * New command **shodan alert info** to show details of a specific alert
+ * Include timestamp, vulns and tags in CSV converter (#85)
+ * Fixed bug that caused an exception when parsing uncompressed data files in Python3
+ * Code quality improvements
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:14 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Oct 14 13:29:33 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.10.4:
+ * Fix a bug when showing old banner records that don't have the "transport" property
+
+-------------------------------------------------------------------
+Sat Sep 22 09:21:35 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.10.3:
+ * Change bare 'except:' statements to 'except Exception:' or more specific ones
+ * remove unused imports
+ * Convert line endings of `shodan/client.py` and `tests/test_shodan.py` to unix
+ * List file types in **shodan convert** (#80)
+
+-------------------------------------------------------------------
+Mon Sep 17 19:38:02 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.10.2
+ * Fix **shodan stats** formatting exception when faceting on **port**
+- update to version 1.10.1:
+ * Support PUT requests in the API request helper method
+
+-------------------------------------------------------------------
+Sun Sep  2 07:08:13 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.10.0:
+ * New command **shodan org**: manage enterprise access to Shodan for your team
+ * Improved unicode handling (#78)
+ * Remove deprecated API wrapper for shodanhq.com/api
+
+-------------------------------------------------------------------
+Sun Aug 26 13:07:53 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 1.9.1:
+ * The CHANGELOG is now part of the packages.
+ * Improved unicode handling in Python2 (#78)
+ * Add `tsv` output format for **shodan host** (#65)
+ * Show user-friendly error messages when running **shodan radar** without permission or in a window that's too small (#74)
+ * Improved exception handling to improve debugging **shodan init** (#77)
+
+-------------------------------------------------------------------
+Wed Aug  1 08:24:12 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 1.9.0:
+ * New optional parameter proxies for all interfaces to specify a proxy array for the requests library (#72)
+- update to version 1.8.1:
+ * Fixed bug that prevented shodan scan submit from finishing (#70)
+
+-------------------------------------------------------------------
+Thu May 31 21:23:06 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 1.8.0:
+ * Shodan CLI now installs properly on Windows (#66)
+ * Improved output of "shodan host" (#64, #67)
+ * Fixed bug that prevented an open port from being shown in "shodan host" (#63)
+ * No longer show an empty page if "shodan search" didn't return results (#62)
+ * Updated docs to make them Python3 compatible
+
+-------------------------------------------------------------------
+Sun Dec 10 17:03:19 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to version 1.7.7
+ * Added "shodan data download" command to help download bulk data files
+
+-------------------------------------------------------------------
+Tue Dec  5 08:33:09 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to version 1.7.6:
+ * addes "shodan radar" command
+
+-------------------------------------------------------------------
+Mon Sep  4 19:24:34 UTC 2017 - sebix+novell.com@sebix.at
+
+- upgrade to version 1.7.5
+
+-------------------------------------------------------------------
+Thu Aug  3 08:15:34 UTC 2017 - sebix+novell.com@sebix.at
+
+- fix build for leap
+
+-------------------------------------------------------------------
+Wed Jul 19 19:08:48 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial version

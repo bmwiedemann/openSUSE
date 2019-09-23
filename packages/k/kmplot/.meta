@@ -1,0 +1,5 @@
+<package name="kmplot" project="openSUSE:Factory">
+  <title>Mathematical Function Plotter</title>
+  <description>Mathematical function plotter for KDE</description>
+  <devel project="KDE:Applications" package="kmplot"/>
+</package>

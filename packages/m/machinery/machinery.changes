@@ -1,0 +1,734 @@
+-------------------------------------------------------------------
+Wed Jul 03 15:27:23 CEST 2019 - thardeck@suse.de
+
+- update to version 1.24.1
+  * Fix HTML man page
+
+-------------------------------------------------------------------
+Tue Jul 02 15:22:38 CEST 2019 - thardeck@suse.de
+
+- update to version 1.24.0
+  * Switch image building support from legacy Kiwi to Kiwi Next Generation
+  * Allow newer json-schema releases than 2.2.5. Newer versions slow down parsing
+    of manifests but newer Ruby versions have issues with old json schema releases.
+    The performance issue is known upstream: (gh#ruby-json-schema/json-schema#261)
+  * Fix machinery helper go version parsing (bsc#1125785)
+  * Improve parsing of SSH exceptions (gh#SUSE/machinery#2257)
+  * Allow inspection of old 32-bit systems even when their architecture is
+    reported as i586 or i386
+
+-------------------------------------------------------------------
+Fri Nov 24 17:33:39 CET 2017 - thardeck@suse.de
+
+- update to version 1.23.1
+  * Allow inspection of old 32-bit systems which have no
+    SSE instructions (gh#SUSE/machinery#2243)
+
+-------------------------------------------------------------------
+Mon Aug 28 14:59:52 CEST 2017 - thardeck@suse.de
+
+- update to version 1.23.0
+  * Support inspection of ppc64 systems (bnc#1052877)
+- tracking bug (bnc#1055250)
+
+-------------------------------------------------------------------
+Tue Jun 20 10:56:18 CEST 2017 - thardeck@suse.de
+
+- update to version 1.22.3
+  * Gracefully handle incorrect filter pathes in the experimental filtering function
+  * Error handling for disrupted ssh connection while inspecting
+  * Fix resetting of scroll bar after clicking on button "inspection details"
+- add support for HAML gems >= 5.0 (bnc#1043785)
+- add support for Sinatra gems >= 2.0
+
+-------------------------------------------------------------------
+Wed Nov 16 16:44:00 CET 2016 - thardeck@suse.de
+
+- update to version 1.22.2
+  * Prevent machinery-helper from crashing when files are inaccessible during
+    inspection (bnc#1009774)
+  * Fix analyze of changed-config-files when NFS or SMB repositories are
+    used (gh#SUSE/machinery#2132)
+  * Do not add repositories which require registration to built images (bnc#1004697)
+  * Fix package inspection on older Debian systems
+  * Fix extraction of information for Debian packages containing a dash in their name
+- tracking bug (bnc#1035727)
+
+-------------------------------------------------------------------
+Fri Oct 14 16:13:50 CEST 2016 - thardeck@suse.de
+
+- update to version 1.22.1
+  * Only use sudo for reading files when necessary (gh#SUSE/machinery#2077)
+  * Gracefully handle RequireTTY enabled sudo configs (gh#SUSE/machinery#2135)
+  * Add rsync requirement check for remote system (gh#SUSE/machinery#2165)
+
+-------------------------------------------------------------------
+Thu Oct 06 17:03:33 CEST 2016 - thardeck@suse.de
+
+- update to version 1.22.0
+  * Add remaining systemd service states in Kiwi export (gh#SUSE/machinery#2122)
+  * Add export of system descriptions as HTML page. This provides an offline
+    view of descrptions (gh#SUSE/machinery#2119)
+  * Fix changed files inspections on dpkg systems in case of diversions
+- tracking bug (bnc#1002805)
+
+-------------------------------------------------------------------
+Tue Jun 21 16:28:31 CEST 2016 - thardeck@suse.de
+
+- update to version 1.21.0
+  * Add attribute in patterns scope to identify the patterns manager
+  * Improve navigation in HTML view to connect "list", "show" and "compare"
+    functionality
+  * Fix service inspector on systemd to include instanciated services
+  * Introduce format version 10 to allow distinction between files and directories
+    for meta data of unmanaged files.
+    This distinction is only available for newly inspected descriptions.
+    Additionally, an attribute in the patterns scope was added to identify the patterns manager.
+    https://github.com/SUSE/machinery/blob/master/docs/System-Description-Format.md#version-10
+
+-------------------------------------------------------------------
+Fri Apr 22 16:39:04 CEST 2016 - thardeck@suse.de
+
+- update to version 1.20.0
+  * Added explanation for 'N/A' fields for each scope (gh#SUSE/machinery#1904)
+  * Added support of the ARM architectures "armv6l", "armv7l" and "aarch64" to
+    our machinery-helper (This requires at least Go version 1.5)
+  * Introduce format version 9 which fixes a migration issue (gh#SUSE/machinery#2041)
+    https://github.com/SUSE/machinery/blob/master/docs/System-Description-Format.md#version-9
+
+-------------------------------------------------------------------
+Mon Apr 04 17:06:37 CEST 2016 - thardeck@suse.de
+
+- update to version 1.19.0
+  * Rename config-files inspector to changed-config-files inspector to be more
+    intuitive
+  * Following the previous change the analyze operation was also renamed to
+    changed-config-files-diffs
+  * Add explanation for patterns-tasks relationship for Debian based
+    systems (gh#SUSE/machinery#1820)
+  * Public serve task now prints hostname for sharing (gh#SUSE/machinery#1699)
+  * Fix export of description with no repositories scope to Autoyast (gh#SUSE/machinery#2024)
+  * Only use required packages for bootstrap in Kiwi export
+  * Fix regression which prevented changed-config-file diffs from being shown
+    in the HTML output
+  * Hint now mentions remote-user option (gh#SUSE/machinery#1813)
+  * Hint is printed when `machinery` is called without options (gh#SUSE/machinery#1286)
+  * Rename --exclude-scope option to --ignore-scope (gh#SUSE/machinery#897)
+
+-------------------------------------------------------------------
+Tue Mar 01 13:51:39 CET 2016 - thardeck@suse.de
+
+- update to version 1.18.0
+  * Make the machinery-helper exclusive to improve inspection performance significantly
+    on all supported architectures.
+    Following this change Go is required for installing the gem for now.
+  * Fix treatment of the rpm `(replaced)` flag (gh#SUSE/machinery#1897)
+  * Fix repository recognition on older Debian systems
+  * Inspection of unmanaged-files is now also using the faster machinery-helper
+    when a remote user is used
+  * Show all available information for unmanaged files in HTML view (gh#SUSE/machinery#1905)
+  * Move the machinery documentation from man page to HTML format
+  * Implement "--extract-metadata" option for the unmanaged-files inspection to
+    retrieve the file meta (e.g. owner, group, size) data without extracting the
+    files.
+  * Fixed counting of files in unmanaged directories (empty directories now report zero files
+    as one would expect)
+- remove dependency on Nokogiri gem
+- tracking bug (bnc#968380)
+
+-------------------------------------------------------------------
+Mon Jan 25 16:49:58 CET 2016 - thardeck@suse.de
+
+- update to version 1.17.0
+  * Fix reset button in HTML view (gh#SUSE/machinery#1899)
+  * Align config-files scope in HTML view (gh#SUSE/machinery#1814)
+  * Allow closing file dialog (in WebUI) by pressing ESC
+  * Support inspection of Ubuntu 14.04 systems
+  * New `--ssh-identity-file` option to specify a SSH private key when inspecting
+    a remote system
+  * New `--ssh-port` option to specify an SSH port when inspecting a remote system
+
+-------------------------------------------------------------------
+Thu Jan 14 18:35:47 CET 2016 - thardeck@suse.de
+
+- update to version 1.16.4
+  * The unmanaged-files scope filter will not include "/boot" by default anymore.
+    In order to have the same behavior as before run:
+  * Fix crash during image build on SLES12 SP1 (gh#SUSE/machinery#1828)
+- reduce version restrictions for gems to the major version (bnc#961176)
+
+-------------------------------------------------------------------
+Thu Jan 07 17:57:27 CET 2016 - thardeck@suse.de
+
+- update to version 1.16.3
+  * Remove concept of "supported systems" in favor of letting Machinery run
+    everywhere. Whether a system can be built, exported, etc will be validated
+    from its related task by checking if the propper tooling is installed
+  * Remove hint for `show`, when `inspect-container` is run with `--show` option
+  * Rephrase the startup messages and warn messages when starting the HTTP
+    server for compare, show, or serve system descriptions
+  * Change `serve` command to always list all system descriptions
+- increase nokogiri requirement to >= 1.6.1
+- tracking bug (bnc#961011)
+
+-------------------------------------------------------------------
+Tue Nov 24 13:17:18 CET 2015 - thardeck@suse.de
+
+- update to version 1.16.2
+  * Fix crash when the user does not have enough permissions to create the image
+    directory for the `build` command (gh#SUSE/machinery#1667)
+  * Fix wrong hint for docker containers while running `analyze` command
+  * Add a new hint when using the `--public` option for the `serve` command that it
+    makes all descriptions publicly available
+  * Fix Machinery failing to inspect changed config files in case of restrictive
+    permissions (gh#SUSE/machinery#1609)
+  * Remove hint for `show`, when `inspect` is run with `--show` option
+  * Fix repository inspection on hosts that have a LANGUAGE variable set
+  * Empty scopes now display a message in HTML & CLI views (gh#SUSE/machinery#1615)
+  * Fix SLES 11 SP4 os inspector output to be similar to SLES 11 SP3
+  * Fix Autoyast export on openSUSE Leap and Tumbleweed (gh#SUSE/machinery#1627)
+  * Allow building of openSUSE Leap and Tumbleweed on openSUSE Leap and Tumbleweed
+  * Allow building of SLES11 and SLES12 on openSUSE Leap
+  * Add HTML landing page, which lists all system descriptions on your system
+
+-------------------------------------------------------------------
+Mon Nov 09 17:55:15 CET 2015 - thardeck@suse.de
+
+- update to version 1.16.1
+  * Fix type recognition in case of empty files for config- and changed-managed-files
+    inspectors (gh#SUSE/machinery#1612)
+
+-------------------------------------------------------------------
+Fri Nov 06 14:20:47 CET 2015 - thardeck@suse.de
+
+- update to version 1.16.0
+  * The error message "There is already a server with the same port running" has
+    been cleaned up and is no longer misleading (gh#SUSE/machinery#1541)
+  * Add OpenSUSE Leap as supported system
+  * HTML comparison is now available without the experimental feature flag
+  * Add error message to recommend using `--name` when a container with a slash is
+    inspected (gh#SUSE/machinery#1490)
+  * Fixed crash during inspection of a folder which contains special characters
+    in its name (gh#SUSE/machinery#1580)
+  * Speed up inspection of config and changed managed files
+  * Fix docker inspection when specifying a docker image with tag
+  * GConf XML files are no longer treated as binary files in HTML view
+  * Add current outgoing ip and export directory to Autoyast README.md during
+    export (gh#SUSE/machinery#1543)
+  * Handle invalid utf-8 characters in /etc/passwd
+  * Fix: "changed" link in compare view is visible while scope is collapsed but
+    doesn't do anything (gh#SUSE/machinery#1555)
+- tracking bug (bnc#953981)
+
+-------------------------------------------------------------------
+Mon Oct 26 17:42:25 CET 2015 - thardeck@suse.de
+
+- update to version 1.15.0
+  * No information is cut off in the HTML view
+  * Files containing special characters can now be downloaded
+  * Links to common elements work in HTML when all scopes are collapsed
+  * Show if description was result of a container inspection
+  * Disable nav bar buttons when scope has been excluded (gh#SUSE/machinery#1199)
+  * Show details of elements with changed attributes for all scopes in
+    comparison view
+  * Show progress indicator while loading file content in HTML view
+
+-------------------------------------------------------------------
+Wed Oct 14 18:00:51 CEST 2015 - thardeck@suse.de
+
+- update to version 1.14.2
+  * Fix typo in HTML package view  (gh#SUSE/machinery#1493)
+- tracking bug (bnc#950362)
+
+-------------------------------------------------------------------
+Fri Oct 09 18:30:13 CEST 2015 - thardeck@suse.de
+
+- update to version 1.14.1
+  * Fix: Clean up binding the server for HTML view to IP addresses
+  * Fix: Make links to sections with common elements clearer in HTML comparison
+    view (gh#SUSE/machinery#1222)
+  * Fix: XML files are no longer treated as binary files in HTML view
+  * Fix: Scrolling issue of file view (gh#SUSE/machinery#1155)
+
+-------------------------------------------------------------------
+Tue Oct 06 21:26:12 CEST 2015 - thardeck@suse.de
+
+- update to version 1.14.0
+  * The machinery-helper is now built during gem-installation on x86_64
+    machines if Go is available. The RPM package is still shipped with
+    a precompiled version.
+  * Allow limiting the `list` command output to certain system descriptions
+    by passing them along as argument (gh#SUSE/machinery#1398)
+  * Add `move` command to rename system descriptions (gh#SUSE/machinery#1397)
+  * Add inspection of RPM based Docker containers
+- machinery-helper is now built during gem installation and thus part of the
+  gem file structure
+
+-------------------------------------------------------------------
+Tue Sep 15 18:06:00 CEST 2015 - thardeck@suse.de
+
+- update to version 1.13.0
+  * Fix: Show `Files extracted` status in `compare --html` when both
+    status are the same (gh#SUSE/machinery#1218)
+  * Fix: Validate port option in the `show`, `compare`,  and `serve`
+    commands (gh#SUSE/machinery#1316)
+  * Align output of `machinery config`
+  * Add rpc_pipefs to filtered filesystems (gh#SUSE/machinery#1250)
+  * Handle socket errors for `-i` option
+  * Add `containerize` command to the experimental features
+  * Export of autoyast files is now possible with system descriptions,
+    which have empty repository scopes (gh#SUSE/machinery#1268)
+  * Inspection of unmanaged-files is now also using the faster machinery-helper
+    when the files are extracted
+  * Introduce format version 5 which adds the "environment" scope (see
+    https://github.com/SUSE/machinery/blob/master/docs/System-Description-Format.md#version-5).
+    This scope is a hidden scope which is used internally by Machinery.
+  * Only print binary path if it's not first in PATH (gh#SUSE/machinery#1284)
+  * Do not exclude files with broken UTF-8 filenames anymore
+- disable gem bundling for openSUSE Tumbleweed
+
+-------------------------------------------------------------------
+Fri Sep 04 16:51:10 CEST 2015 - cschum@suse.de
+
+- update to version 1.12.0
+  * The x86_64 machinery-helper is now shipped with machinery. It speeds up
+    inspection of unmanaged-files when the files are not extracted
+  * Fix for unmanaged-file inspector to not mark directories as unmanaged if they
+    only consist managed sub directories
+- bundle x86_64 machinery-helper
+
+-------------------------------------------------------------------
+Thu Jul 30 14:42:44 CEST 2015 - thardeck@suse.de
+
+- update to version 1.11.2
+  * Fix issue with showing HTML view when not all file scopes are inspected
+  * Fix `--all` option of `remove` command (gh#SUSE/machinery#1128)
+
+-------------------------------------------------------------------
+Tue Jul 21 09:44:16 CEST 2015 - thardeck@suse.de
+
+- update to version 1.11.1
+  * Fix unmanaged-files diff in HTML view (gh#SUSE/machinery#1143)
+
+-------------------------------------------------------------------
+Mon Jul 20 13:51:09 CEST 2015 - thardeck@suse.de
+
+- update to version 1.11.0
+  * Fix comparison output for scopes that were excluded (gh#SUSE/machinery#1029)
+  * Fix connection errors caused by reading from stdin (gh#SUSE/machinery#1050)
+  * Differences between unmanaged files can be viewed in the HTML comparison
+- tracking bug (bnc#938733)
+
+-------------------------------------------------------------------
+Thu Jul 09 16:26:35 CEST 2015 - thardeck@suse.de
+
+- update to version 1.10.0
+  * Data which hasn't changed is not shown in the comparison HTML view by default
+  * Improve display of package differences in compare command
+  * Add `man` command to show the Machinery man page
+  * Content of extracted files can be displayed in HTML view
+
+-------------------------------------------------------------------
+Tue Jun 23 16:57:35 CEST 2015 - thardeck@suse.de
+
+- update to version 1.9.1
+  * `machinery config` takes arguments of the form 'key=value' as well
+
+-------------------------------------------------------------------
+Wed Jun 17 09:57:07 CEST 2015 - thardeck@suse.de
+
+- update to version 1.9.0
+  * Support links in changed managed files scope
+  * Support links in config files scope
+  * Introduce system description format version 4 (see https://github.com/SUSE/machinery/wiki/System-Description-Format#version-4)
+  * Show progress during inspection of scopes
+  * Show message when compared scopes are identical (gh#SUSE/machinery#631)
+  * Check number of parameters in all commands (gh#SUSE/machinery#898)
+  * Do not abort when Machinery is run on unsupported platforms, but just show a warning
+  * Apply all filters on file extraction (gh#SUSE/machinery#887)
+  * Consistent output of filters with --verbose option (gh#SUSE/machinery#797)
+  * Fix export of changed managed files with quotes in file name (gh#SUSE/machinery#913)
+
+-------------------------------------------------------------------
+Wed May 27 16:56:44 CEST 2015 - thardeck@suse.de
+
+- update to version 1.8.2
+  * Fixed repository inspection using a non-root user
+- tracking bug (bnc#931701)
+
+-------------------------------------------------------------------
+Wed May 20 17:15:34 CEST 2015 - mamorales@suse.de
+
+- update to version 1.8.1
+  * Improve error message when user lacks sudo privileges
+- tracking bug (bnc#931701)
+
+-------------------------------------------------------------------
+Tue May 19 12:33:27 CEST 2015 - mamorales@suse.de
+
+- update to version 1.8.0
+  * Improve error handling when user lacks sudo privileges
+- remove absolute build path from bundler setup.rb (openSUSE Tumbleweed)
+- remove ruby version suffix from machinery executable (openSUSE Tumbleweed and 13.1)
+- tracking bug (bnc#931277)
+
+-------------------------------------------------------------------
+Mon May 04 15:36:50 CEST 2015 - aduffeck@suse.de
+
+- update to version 1.7.0
+  * Add experimental option to show comparison of two system descriptions as
+    HTML view
+  * Support inspection of Red Hat Enterprise Linux 5 systems
+  * Enable inspection of openSUSE Tumbleweed systems
+  * Scopes have a well-defined order
+  * Make HTML export more robust (bnc#925732)
+  * Implement inspection of remote systems without root login using sudo
+  * Inspection shows used filters only with `--verbose`
+
+-------------------------------------------------------------------
+Wed Apr 01 15:43:17 CEST 2015 - thardeck@suse.de
+
+- update to version 1.6.0
+  * Add experimental `--exclude` option to exclude elements from inspection.
+    Run `machinery config experimental-features on` to enable the option
+  * Support global `--exclude` option for `show` command.
+    This feature is available when the experimental-features option is on.
+  * Add `--verbose` option to `inspect` command to display the filters which
+    were used during inspection
+  * Add `--verbose` option to `show` command to display the filters which were
+    applied before showing the system description
+  * Show progress on upgrading the system description format
+  * Improve help for users when upgrading system descriptions
+  * Fix piping output of Machinery to less (gh#SUSE/machinery#521)
+  * Better help for users when upgrading format of system descriptions
+  * Add option to show command to display filters used during inspection
+  * Support negated filter expressions in --exclude option
+  * Show filters used during inspection in HTML view
+
+-------------------------------------------------------------------
+Fri Mar 13 13:03:47 CET 2015 - thardeck@suse.de
+
+- update to version 1.5.0
+  * Fix issue with changes of managed files on RHEL (gh#SUSE/machinery#636)
+  * Add `--short` option to list command for showing a short list of all descriptions
+  * Improve error output for system descriptions which have outdated formats
+  * Add `--skip-files` option to `inspect` command for unmanaged files
+- tracking bug (bnc#914712)
+
+-------------------------------------------------------------------
+Wed Feb 18 16:51:43 CET 2015 - thardeck@suse.de
+
+- update to version 1.4.0
+  * Support inspection of Red Hat Enterprise Linux 6 systems
+  * Introduce system description format version 3 (see https://github.com/SUSE/machinery/wiki/System-Description-Format#version-3)
+  * Usability improvements of the HTML view (gh#SUSE/machinery#359)
+  * Speed up `machinery list` command
+
+-------------------------------------------------------------------
+Mon Jan 26 16:00:08 CET 2015 - chuller@novell.com
+
+- update to version 1.3.0
+  * Added support for inspecting System z systems
+  * Added support for inspecting POWER LE systems
+  * Added support to run Machinery on System z
+  * Added support to run Machinery on POWER LE
+  * Handle system description errors as warnings
+  * Added `machinery upgrade-format --force` command
+- tracking bug (#bnc914712)
+
+-------------------------------------------------------------------
+Mon Dec 22 15:06:20 CET 2014 - aduffeck@suse.de
+
+- update to version 1.2.0
+  * Added AutoYaST export for system descriptions
+  * Handle zypper locks gracefully (gh#SUSE/machinery#415)
+  * Prevent scopes from being inspected multiple times (gh#SUSE/machinery#303)
+  * Keep already extracted results after canceling an inspection (gh#SUSE/machinery#364)
+  * Don't fail on file validation errors, but report them as warnings (gh#SUSE/machinery#391)
+  * List scopes more natural with a space after comma (gh#SUSE/machinery#356)
+  * Use UTF-8 for displaying HTML report (gh#SUSE/machinery#429)
+  * Do not ignore Btrfs subvolumes during unmanaged-files inspection (gh#SUSE/machinery#427)
+  * Store KIWI and AutoYaST exports in subdirectories
+- tracking bug (bnc#910271)
+
+-------------------------------------------------------------------
+Tue Dec 02 13:24:38 CET 2014 - thardeck@suse.de
+
+- update to version 1.1.1
+  * Skip Gnome Virtual File System mounts on inspection (issue #393)
+  * Skip special file systems like proc, devtmpfs and so on (issue #384)
+  * Show names of packages where changed config files come from (issue #392)
+
+-------------------------------------------------------------------
+Mon Nov 17 16:30:44 CET 2014 - thardeck@suse.de
+
+- update to version 1.1.0
+  * File extraction status is now shown in the comparison output
+  * Fixed image building issue when the repository alias consisted spaces
+  * Fixed compare output for unmanaged-files
+  * Added hint for analyze how to show the diffs
+  * Added hint to recommend ssh-copy-id if passwordless logins are not possible
+
+-------------------------------------------------------------------
+Thu Nov 06 16:35:43 CET 2014 - thardeck@suse.de
+
+- update to version 1.0.4
+
+-------------------------------------------------------------------
+Thu Nov 06 15:51:07 CET 2014 - thardeck@suse.de
+
+- update to version 1.0.3
+- remove nokogiri build log files during package creation
+
+-------------------------------------------------------------------
+Mon Nov 03 11:22:41 CET 2014 - aduffeck@suse.de
+
+- update to version 1.0.2
+
+-------------------------------------------------------------------
+Tue Oct 28 16:24:16 CET 2014 - thardeck@suse.de
+
+- update to version 1.0.1
+  * Added autofs to the remote file system filter
+
+-------------------------------------------------------------------
+Tue Oct 14 12:41:35 CEST 2014 - thardeck@suse.de
+
+- update to version 1.0.0
+  * SLES12 release version
+
+-------------------------------------------------------------------
+Tue Oct 14 12:07:33 CEST 2014 - thardeck@suse.de
+
+- update to version 0.21.0
+  * Added HTML view of system descriptions
+  * Add format version to `machinery --version` output
+  * Added work flow hints to make machinery easier approchable
+  * Improve validation to also check the existence of extracted files
+  * Added filtering of remote mount points during unmanaged-files inspection
+  * Increased format version to 2
+- remove Recommends for kiwi and python-glanceclient
+- add requirement for the ruby gems haml, kramdown and tilt
+
+-------------------------------------------------------------------
+Tue Sep 09 14:43:15 CEST 2014 - thardeck@suse.de
+
+- update to version 0.20.0
+  * Processed descriptions are validated against a set of JSON schemas
+  * File structure of processed descriptions is validated
+  * System descriptions can also be validated manually with the command `validate`
+  * Enhanced package inspector to also inspect package architecture, checksum and revision
+- remove now unused gem json-pointer
+
+-------------------------------------------------------------------
+Tue Aug 19 18:03:39 CEST 2014 - thardeck@suse.de
+
+- update to version 0.19.1
+- replace requirement for ruby gem string-scrub by internal implementation.
+
+-------------------------------------------------------------------
+Mon Aug 18 17:55:51 CEST 2014 - thardeck@suse.de
+
+- update to version 0.19.0
+  * Introduced system description versioning. This change prevents usage of old system descriptions.
+  * Fixed issue #59 by filtering invalid UTF-8 characters during inspection
+  * Added support for building openSUSE 13.1 images
+  * Formatted list output to be more readable
+- add requirement for ruby gem string-scrub
+
+-------------------------------------------------------------------
+Wed Aug 06 18:37:26 CEST 2014 - thardeck@suse.de
+
+- update to version 0.18.0
+  * Fixed bnc#888786 - fix analyzing of config files with restricted repositories
+  * Fixed bnc#879990 - check if building is supported on the current platform
+  * Added distinction between expected and unexpected errors
+  * Prevented truncated error messages
+  * Renamed `clone` command to `copy`
+- add gem2rpm as build requirement to follow common gem packaging style
+- use new ruby packging style for SLES12 only (Factory is not yet adapted)
+
+-------------------------------------------------------------------
+Wed Jul 23 16:29:52 CEST 2014 - thardeck@suse.de
+
+- update to version 0.17.3
+- switch to new ruby packaging style for SLES12
+
+-------------------------------------------------------------------
+Thu Jul 17 11:32:43 CEST 2014 - thardeck@suse.de
+
+- update to version 0.17.2
+  * Removed incomplete bash completion support
+
+-------------------------------------------------------------------
+Tue Jul 15 13:29:15 CEST 2014 - thardeck@suse.de
+
+- update to version 0.17.1
+  * Fixed bnc#883028 - check for Kiwi dependencies
+  * Fixed inspection of systems without repositories
+  * Fixed misleading help descriptions
+- switch from Thor to Git-Like Interface Command Line Parser
+
+-------------------------------------------------------------------
+Tue Jul 01 13:16:10 CEST 2014 - thardeck@suse.de
+
+- update to version 0.17.0
+  * Added bash completion support
+  * Kiwi export now includes a how-to
+  * Added the option "--exclude-scope" to allow omission of scopes
+- add {rb_default_ruby_abi} macro to SLES12 build requirements
+- do not include the json gem in SLES12 (it is part of Ruby 2.1)
+
+-------------------------------------------------------------------
+Mon Jun 16 15:08:24 CEST 2014 - thardeck@suse.de
+
+- update to version 0.16.0
+  * Adapted the diff format according to user feedback
+  * Added `clone` command to copy system descriptions
+
+-------------------------------------------------------------------
+Mon Jun 02 14:20:58 CEST 2014 - thardeck@suse.de
+
+- update to version 0.15.0
+  * Added `analyze` command with the option "--operation=config-file-diffs" to generate the diff of changed config files by downloading the packages. The diff can be shown by running `show` with the option "--show-diffs"
+  * Added `compare` command to see the differences between two systems descriptions
+
+-------------------------------------------------------------------
+Mon May 19 18:18:48 CEST 2014 - thardeck@suse.de
+
+- update to version 0.14.0
+  * Added support for building SLES 12 images
+  * Optimized extraction of unmanaged files from SLES 12 systems
+  * The scope command line option now accepts abbreviated scope names
+
+-------------------------------------------------------------------
+Tue May 06 13:49:51 CEST 2014 - thardeck@suse.de
+
+- update to version 0.13.0
+  * Added inspection for systemd services
+  * Added deployment of build images to OpenStack cloud
+
+-------------------------------------------------------------------
+Tue Apr 29 10:40:00 CEST 2014 - thardeck@suse.de
+
+- update to version 0.12.1
+
+-------------------------------------------------------------------
+Tue Apr 29 10:21:41 CEST 2014 - thardeck@suse.de
+
+- update to version 0.12.0
+  * Added inspection of users
+  * Added inspection of groups
+- renamed package to machinery
+- require ruby >= 2.0
+- recommend Kiwi instead of requiring it
+- bundle the required gems with the rpm
+
+-------------------------------------------------------------------
+Tue Apr 22 13:00:43 CEST 2014 - thardeck@suse.de
+
+- update to version 0.11.0
+  * Inspector for repository credentials implemented
+  * Added command to export SLE11 system descriptions as Kiwi image descriptions
+
+-------------------------------------------------------------------
+Tue Apr 08 12:50:32 CEST 2014 - thardeck@suse.de
+
+- update to version 0.10.3
+  * Added SLES 12 support for the inspector services
+
+-------------------------------------------------------------------
+Mon Apr 07 13:15:59 CEST 2014 - thardeck@suse.de
+
+- update to version 0.10.2
+- make the files COPYING and NEWS available in the doc directory
+
+-------------------------------------------------------------------
+Mon Apr 07 12:46:21 CEST 2014 - thardeck@suse.de
+
+- update to version 0.10.1
+  * Added SLES 12 support for the inspector patterns
+
+-------------------------------------------------------------------
+Mon Apr 07 09:00:21 CEST 2014 - thardeck@suse.de
+
+- update to version 0.10.0
+  * Made Machinery run on SLES12
+  * Added SLES 12 support for the inspectors packages, repositories, os, config-files, changed-managed-files and unmanaged-files
+
+-------------------------------------------------------------------
+Thu Mar 27 13:44:14 CET 2014 - thardeck@suse.de
+
+- update to version 0.9.2
+- revert Nokogiri requirement because of a scheduled fix for the 13.1 ruby package
+- adapt rubygem-json requirement to allow the openSUSE 13.1 version
+
+-------------------------------------------------------------------
+Tue Mar 25 12:57:07 CET 2014 - thardeck@suse.de
+
+- update to version 0.9.1
+
+-------------------------------------------------------------------
+Mon Mar 24 17:56:13 CET 2014 - thardeck@suse.de
+
+- update to version 0.9.0
+  * Inspector for changed managed files implemented
+  * Extraction of unmanaged-files meta data implemented
+  * Graceful handling of inspection errors
+- add requirement for version 1.5.9 of Nokogiri
+
+-------------------------------------------------------------------
+Tue Mar 11 12:11:46 CET 2014 - thardeck@suse.de
+
+- update to version 0.8.0
+  * Added logging
+  * Inspector for unmanaged-files implemented
+  * Extraction of unmanaged-files implemented
+- add db45-utils, db48-utils, and grub as a requirement for cross distribution building
+
+-------------------------------------------------------------------
+Mon Feb 24 16:21:51 CET 2014 - thardeck@suse.de
+
+- update to version 0.7.0
+  * Inspector for the operating system and version implemented
+  * Inspector for installed services implemented
+  * Timestamps are now shown with each scope
+
+-------------------------------------------------------------------
+Mon Feb 10 17:20:04 CET 2014 - thardeck@suse.de
+
+- update to version 0.6.0
+  * Inspected config-files can now be included in the build image
+  * Improved documentation of the scopes
+  * Added merging of system description scopes for each system
+  * Added summary output for inspection results
+  * Added show command to output the system description data
+  * Added list command to list system descriptions
+  * Added clean command to remove system descriptions
+- license under GPLv3
+
+-------------------------------------------------------------------
+Mon Jan 27 14:53:29 CET 2014 - thardeck@suse.de
+
+- update to version 0.5.0
+  * Added command to build SLES11SP3 qcow2 images based on inspected repositories and packages
+- add kiwi and kiwi-desc-vmxboot as requirement
+
+-------------------------------------------------------------------
+Mon Jan 13 18:14:40 CET 2014 - thardeck@suse.de
+
+- update to version 0.4.0
+  * Inspector for changed configuration files implemented
+  * Inspector for patterns implemented
+
+-------------------------------------------------------------------
+Fri Jan 10 14:42:53 CET 2014 - thardeck@suse.de
+
+- update to version 0.3.1
+
+-------------------------------------------------------------------
+Tue Dec 17 14:06:59 CET 2013 - aduffeck@suse.de
+
+- update to version 0.1.0
+  * Package and repository inspection of SLES 11 systems
+- install man page system wide

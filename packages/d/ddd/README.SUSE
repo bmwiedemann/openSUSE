@@ -1,0 +1,18 @@
+README.SUSE for ddd
+===================
+
+ddd has problems when presenting UTF-8 strings with non-ascii characters.
+Unfortunately, locales in SUSE are set to use UFT-8 encoding by default.
+
+We use a wrapper script to workaround this issue. If you run ddd, the UTF-8
+locales will be switched off. To bypass the wrapper use:
+ddd -x [parameters for ddd]
+
+If you think that warning is annoying, you can turn it off by executing
+
+    $ touch ~/.ddd/suse_no_utf8_warning
+
+in a shell.
+
+Further information can be found at:
+bugzilla.novell.com, bug #254472

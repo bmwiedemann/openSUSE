@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>97c941ee0af255bfa01a3b8c49de7fc0</srcmd5>
+    <version>2.0.5</version>
+    <time>1287757976</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51177 from user tserong
+</comment>
+    <requestid>51177</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>deb5d0663a0b6a47a3b3558da9bdc63e</srcmd5>
+    <version>2.0.5</version>
+    <time>1287757982</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51177
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>deb5d0663a0b6a47a3b3558da9bdc63e</srcmd5>
+    <version>2.0.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>deb5d0663a0b6a47a3b3558da9bdc63e</srcmd5>
+    <version>2.0.5</version>
+    <time>1319182437</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>3ac324ba6e03fae0ec6880f64601a0fc</srcmd5>
+    <version>2.0.5</version>
+    <time>1332831536</time>
+    <user>coolo</user>
+    <comment>license update: Ruby
+SPDX (forwarded request 111148 from babelworx)</comment>
+    <requestid>111153</requestid>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>3ac324ba6e03fae0ec6880f64601a0fc</srcmd5>
+    <version>2.0.5</version>
+    <time>1340184166</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>39cbfe787e9d0a97ca8c12521a3cd1bf</srcmd5>
+    <version>2.0.8</version>
+    <time>1348413015</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134056</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>39cbfe787e9d0a97ca8c12521a3cd1bf</srcmd5>
+    <version>2.0.8</version>
+    <time>1359110325</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>39cbfe787e9d0a97ca8c12521a3cd1bf</srcmd5>
+    <version>2.0.8</version>
+    <time>1379664539</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c8210544f253f29934b1f3c92e54b1bd</srcmd5>
+    <version>2.0.9</version>
+    <time>1382353142</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200770</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2ef02a5d52ca9e5ca0d298774460f55f</srcmd5>
+    <version>2.1.0</version>
+    <time>1387452974</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>211321</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>2ef02a5d52ca9e5ca0d298774460f55f</srcmd5>
+    <version>2.1.0</version>
+    <time>1409303245</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>0d01cf0c6e81c34b4fd8ca0e7df695fb</srcmd5>
+    <version>2.1.0</version>
+    <time>1413263473</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255302</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>b78e1db95df4639297c84911c777e301</srcmd5>
+    <version>2.1.0</version>
+    <time>1431365979</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306315</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0e0f0c4f69868261c94b4d1079d215ad</srcmd5>
+    <version>2.1.1</version>
+    <time>1431795680</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307417</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>265002bd88c3d406c1b50a93143ae08f</srcmd5>
+    <version>2.1.2</version>
+    <time>1443068066</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>332059</requestid>
+  </revision>
+</revisionlist>

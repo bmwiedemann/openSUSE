@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>80b106df4d8a4886c551d8360f62e392</srcmd5>
+    <version>0.1.0</version>
+    <time>1343134757</time>
+    <user>coolo</user>
+    <comment>fcitx japanese support</comment>
+    <requestid>128599</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2de8dfcfcfe8cca2f70fde4d99ab820a</srcmd5>
+    <version>0.1.1</version>
+    <time>1348145928</time>
+    <user>coolo</user>
+    <comment>update 0.1.1 (forwarded request 134458 from MargueriteSu)</comment>
+    <requestid>134474</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2de8dfcfcfe8cca2f70fde4d99ab820a</srcmd5>
+    <version>0.1.1</version>
+    <time>1359108868</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9e598adc15a792b1722a3c786ba9afc7</srcmd5>
+    <version>0.2.0</version>
+    <time>1373283255</time>
+    <user>coolo</user>
+    <comment>update version 0.2.0 (forwarded request 181663 from MargueriteSu)</comment>
+    <requestid>181664</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9e598adc15a792b1722a3c786ba9afc7</srcmd5>
+    <version>0.2.0</version>
+    <time>1379662326</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eba866d8c4a285c521ba7b6e812cf288</srcmd5>
+    <version>0.2.1</version>
+    <time>1402403933</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236649</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>eba866d8c4a285c521ba7b6e812cf288</srcmd5>
+    <version>0.2.1</version>
+    <time>1409300859</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>68c6e9ace66169b5c38d9d0ea8530ecd</srcmd5>
+    <version>0.2.2</version>
+    <time>1433145151</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309278</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>498ce55ff45fbdafd282930926d18f25</srcmd5>
+    <version>0.2.3</version>
+    <time>1513677044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547517</requestid>
+  </revision>
+</revisionlist>

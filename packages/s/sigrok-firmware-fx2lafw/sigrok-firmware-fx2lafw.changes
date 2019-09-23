@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Sun Jan 28 18:28:32 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Update to version 0.1.6, upstream changes:
+ * Fix an issue with FX2 based logic analyzers that could cause non-working
+   and/or prematurely aborted acquisitions (bug #655).
+ * FX2 based logic analyzers will now toggle pin PA1 during acquisition,
+   and keep it high while idle. On fx2grok-tiny and fx2grok-flat devices
+   there's a LED connected to PA1. Thus, those devices will visually indicate
+   whether a firmware has been uploaded (LED will light up and stay like that
+   while the device is idle). During any acquisition the LED will blink.
+ * Refactor the oscilloscope code to avoid duplication (bug #984).
+ * Fix a 'make distclean' error.
+ * Fix a compiler warning with recent sdcc versions (e.g. v3.6.9).
+
+-------------------------------------------------------------------
+Wed Jun 14 09:06:18 UTC 2017 - davejplater@gmail.com
+
+- Update to version 0.1.5
+- Upstream changes since 0.1.2:
+ * Add FX2 firmware for the Hantek 6022BL USB scope/LA.
+ * HACKING: Update URL to Linux kernel coding style.
+ * Remove FSF postal address from boiler plate license text.
+ * Add FX2 firmware for the Hantek 6022BE and SainSmart DDS120 USB scopes.
+   These firmware files use the official sigrok USB VID/PID of 1D50:608E.
+   The USB VID/PID pairs are allocated for fx2lafw via the OpenMoko project:
+   http://wiki.openmoko.org/wiki/USB_Product_IDs
+ * Add analog channel support for the USBee AX (and potentially other devices).
+   Only one analog channel is supported. Switching channels (in case there
+   are multiple analog channels) is not yet implemented.
+ * Add support for the USBee ZX (bug #764).
+ * Use per-device USB product string descriptors.
+ * Bump the firmware version (major.minor) to 1.2. This version is
+   backwards-compatible and doesn't require host-side (libsigrok) changes.
+ * README: Update prebuilt firmware download location, other cleanups.
+ * HACKING: Prefer git pull requests over mailing list patches.
+ * README: Drop references to obsolete sigrok-commits mailing list.
+ * Build system:
+    Use non-recursive Make setup.
+    Simplify and/or improve various parts of the build system.
+    configure: Check the sdcc version (bug #696).
+ * Add firmware files for FX2 devices with official sigrok VID/PID:
+    1D50:608C: fx2lafw-sigrok-fx2-8ch.fw
+    1D50:608D: fx2lafw-sigrok-fx2-16ch.fw
+   The USB VID/PID pairs are allocated for fx2lafw via the OpenMoko project:
+   http://wiki.openmoko.org/wiki/USB_Product_IDs
+
+-------------------------------------------------------------------
+Mon Jun  2 19:00:22 UTC 2014 - bugs@vdm-design.de
+
+- sync .spec with the one from rmax 
+
+-------------------------------------------------------------------
+Fri May 30 10:49:18 UTC 2014 - bugs@vdm-design.de
+
+- Update to version 0.1.2
+  * Fix an issue which lead to the data pins not being tri-stated after an
+    aquisition (when the GPIF is idle) but rather being driven.
+  * Bump the firmware version (major.minor) to 1.1. This version is
+    backwards-compatible and doesn't require host-side (libsigrok) changes. 
+
+-------------------------------------------------------------------
+Tue Mar  5 11:37:55 UTC 2013 - max@suse.com
+
+- Package now requires autotools.
+
+-------------------------------------------------------------------
+Wed Jan 16 16:12:25 UTC 2013 - max@suse.com
+
+- Initial packaging from git snapshot.
+

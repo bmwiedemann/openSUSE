@@ -1,0 +1,1859 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2458b0b61b8139dba1b7f6820fda7fa8</srcmd5>
+    <version>1.97.2</version>
+    <time>1266502248</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:openSUSE:Factory/grub2 based on submit request 32673 from user a_jaeger
+</comment>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>66cc00e0cea9e50942091c19235e908c</srcmd5>
+    <version>1.98</version>
+    <time>1268610300</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:openSUSE:Factory/grub2 based on submit request 34740 from user a_jaeger
+</comment>
+    <requestid>34740</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3e326769d8a482037cdcec6862b958a5</srcmd5>
+    <version>1.98</version>
+    <time>1268923876</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3e326769d8a482037cdcec6862b958a5</srcmd5>
+    <version>1.98</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>3e326769d8a482037cdcec6862b958a5</srcmd5>
+    <version>1.98</version>
+    <time>1278678580</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>e316a95bbc487a4570bd52e06476fe8c</srcmd5>
+    <version>unknown</version>
+    <time>1284396645</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:openSUSE:Factory/grub2 based on submit request 47974 from user a_jaeger
+</comment>
+    <requestid>47974</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>5d6c25330cfdbcf6f54705fcc774ff53</srcmd5>
+    <version>1.98</version>
+    <time>1287010451</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:openSUSE:Factory/grub2 based on submit request 50469 from user a_jaeger
+</comment>
+    <requestid>50469</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>cc010a4be9ad3ef48ed1d63cd48577cd</srcmd5>
+    <version>1.98</version>
+    <time>1288023583</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51344 from user a_jaeger
+</comment>
+    <requestid>51344</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>40f0b93ec22827fe71f1b3df0bda4737</srcmd5>
+    <version>1.98</version>
+    <time>1288023588</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51344
+</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>fa4da13fb326b5cc4eb95d966a877211</srcmd5>
+    <version>1.98</version>
+    <time>1288271788</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51521 from user a_jaeger
+</comment>
+    <requestid>51521</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>397fd1aa4b1739c8003cc1aba7429cdd</srcmd5>
+    <version>1.98</version>
+    <time>1288271800</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51521
+</comment>
+  </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>397fd1aa4b1739c8003cc1aba7429cdd</srcmd5>
+    <version>1.98</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>5cfd5a4730a07270fde1276f224caba7</srcmd5>
+    <version>1.98.99.rc2</version>
+    <time>1304930917</time>
+    <user>saschpe</user>
+    <comment>update to 1.99-rc2 and support gcc46 builds. Cleanup specfile. (forwarded request 69842 from jirislaby)</comment>
+    <requestid>69887</requestid>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>33330c68a303f86b80859b315025c237</srcmd5>
+    <version>1.98.99.rc2</version>
+    <time>1304930929</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69887
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a96a0a5c5dfc09174c4bf546569ee7c0</srcmd5>
+    <version>1.99</version>
+    <time>1306924753</time>
+    <user>saschpe</user>
+    <comment>update to 1.99 final</comment>
+    <requestid>72393</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>e882a428b6e4dcc3f8806c1aaf1e4284</srcmd5>
+    <version>1.99</version>
+    <time>1310565527</time>
+    <user>saschpe</user>
+    <comment>Only run preun when deinstalling package (forwarded request 76120 from a_jaeger)</comment>
+    <requestid>76157</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>8a66ea0aafa1c84cf41a17475d1ee0c6</srcmd5>
+    <version>1.99</version>
+    <time>1310565536</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76157
+</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>e628e111e01d12002fbaf32c339777ba</srcmd5>
+    <version>1.99</version>
+    <time>1312296310</time>
+    <user>saschpe</user>
+    <comment>Enable ppc build (forwarded request 77673 from k0da)</comment>
+    <requestid>77679</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>6eb4bc1f2f30beadb2fe9c0e0fc2df13</srcmd5>
+    <version>1.99</version>
+    <time>1312296321</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77679
+</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>b2a9aee6440fb8f80368d896729a34e4</srcmd5>
+    <version>1.99</version>
+    <time>1314345702</time>
+    <user>saschpe</user>
+    <comment>Build an efi subpackage [bnc#713595].</comment>
+    <requestid>79800</requestid>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>40d26bf987c392116d09e0d7cec72c62</srcmd5>
+    <version>1.99</version>
+    <time>1314345711</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79800
+</comment>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>40d26bf987c392116d09e0d7cec72c62</srcmd5>
+    <version>1.99</version>
+    <time>1319181944</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>76ed120cafafd0e9331517a819613300</srcmd5>
+    <version>1.99</version>
+    <time>1319551245</time>
+    <user>coolo</user>
+    <comment>Add requires from efi subpackage to main package (bnc#72596) (forwarded request 89241 from a_jaeger)</comment>
+    <requestid>89242</requestid>
+  </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>074ab58a73e783971b9ca6d7e5135b1e</srcmd5>
+    <version>1.99</version>
+    <time>1319716144</time>
+    <user>coolo</user>
+    <comment>efibootmgr is not available on all architectures. (forwarded request 89478 from a_jaeger)</comment>
+    <requestid>89479</requestid>
+  </revision>
+  <revision rev="25" vrev="12">
+    <srcmd5>c1ee2ec92f134dc6771def63f29dc3fd</srcmd5>
+    <version>1.99</version>
+    <time>1322481205</time>
+    <user>coolo</user>
+    <comment>some efi package cleanup</comment>
+    <requestid>93969</requestid>
+  </revision>
+  <revision rev="26" vrev="13">
+    <srcmd5>38adfa542eff54f201e988d198983d1f</srcmd5>
+    <version>1.99</version>
+    <time>1324830870</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>97504</requestid>
+  </revision>
+  <revision rev="27" vrev="14">
+    <srcmd5>c09ec0c999a07b63541eb4c341e25059</srcmd5>
+    <version>1.99</version>
+    <time>1325231141</time>
+    <user>coolo</user>
+    <comment>1. set --target=%{_target_plaform) explicitly to %configure in case it wouldn't do that for us implicitly
+2. when making x86_64-efi image not use i386 target build and keep use of x86_64. otherwise it would have error &quot;invalid ELF header&quot; (forwarded request 98397 from michael-chang)</comment>
+    <requestid>98401</requestid>
+  </revision>
+  <revision rev="28" vrev="15">
+    <srcmd5>f38fb60a96a828f7c4acde06cebe286e</srcmd5>
+    <version>1.99</version>
+    <time>1325658236</time>
+    <user>coolo</user>
+    <comment>platforms without efi should not specify exclusion of it (forwarded request 98511 from michael-chang)</comment>
+    <requestid>98514</requestid>
+  </revision>
+  <revision rev="29" vrev="16">
+    <srcmd5>26770e688becbe12fcd61e7add696d8b</srcmd5>
+    <version>1.99</version>
+    <time>1330007560</time>
+    <user>coolo</user>
+    <comment>Please help to review the source. Thanks.</comment>
+    <requestid>106584</requestid>
+  </revision>
+  <revision rev="30" vrev="17">
+    <srcmd5>9d7eaaf2eea2c173fb7341acf7c183dc</srcmd5>
+    <version>1.99</version>
+    <time>1332415954</time>
+    <user>coolo</user>
+    <comment>- Fix build with gcc 4.7 (needs -fno-strict-aliasing for zfs code).
+- Fix error in installation to extended partition (bnc#750897)
+- Added BuildRequires for gnu-unifont</comment>
+    <requestid>110168</requestid>
+  </revision>
+  <revision rev="31" vrev="18">
+    <srcmd5>4c9741994cae477903c0545c2e0dadba</srcmd5>
+    <version>1.99</version>
+    <time>1333022270</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>111818</requestid>
+  </revision>
+  <revision rev="32" vrev="19">
+    <srcmd5>eab4064e2e4757e35835e1cf36c7cdcf</srcmd5>
+    <version>1.99</version>
+    <time>1333358611</time>
+    <user>coolo</user>
+    <comment>Fix os-prober fails when OSX partition is present (bnc#747919) (forwarded request 112068 from simontol)</comment>
+    <requestid>112069</requestid>
+  </revision>
+  <revision rev="33" vrev="20">
+    <srcmd5>bdfda3c7dd3bc34c14e484ded70adf33</srcmd5>
+    <version>1.99</version>
+    <time>1336468479</time>
+    <user>coolo</user>
+    <comment>- grub2-automake-1-11-2.patch : fix grub2 build error on newer
+  autotools (automake &gt;= 1.11.2)
+- call ./autogen.sh
+- grub2-probe-disk-mountby.patch : fix grub2-probe fails on
+  probing mount-by devices under /dev/disk/by-(id|uuid|path).
+  (bnc#757746)</comment>
+    <requestid>116247</requestid>
+  </revision>
+  <revision rev="34" vrev="21">
+    <srcmd5>af9638d70ea568ef572e483bfa54d39d</srcmd5>
+    <version>1.99</version>
+    <time>1337577896</time>
+    <user>coolo</user>
+    <comment>Please help to review the patch, thanks. (forwarded request 121161 from michael-chang)</comment>
+    <requestid>121227</requestid>
+  </revision>
+  <revision rev="35" vrev="23">
+    <srcmd5>af9638d70ea568ef572e483bfa54d39d</srcmd5>
+    <version>1.99</version>
+    <time>1340183412</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="36" vrev="24">
+    <srcmd5>701a489931f5507a9c0f0f52c77ce883</srcmd5>
+    <version>1.99</version>
+    <time>1340628052</time>
+    <user>coolo</user>
+    <comment>Please help to review the patch. Thanks a lot. (forwarded request 125772 from michael-chang)</comment>
+    <requestid>125780</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7d5219425a1d9316ef76d359e681e237</srcmd5>
+    <version>2.00</version>
+    <time>1340945982</time>
+    <user>coolo</user>
+    <comment>update to 2.00 final</comment>
+    <requestid>126465</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>b3cd8b7d0443dc7eab34d5f8a40f7d47</srcmd5>
+    <version>2.00</version>
+    <time>1340972342</time>
+    <user>coolo</user>
+    <comment>- Add configuration support for serial terminal consoles. This will
+  set the maximum screen size so that text is not overwritten. 
+
+- don't enable grub-emu-usb on ppc ppc641 (forwarded request 126572 from k0da)</comment>
+    <requestid>126597</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>d05f863f22dfd0a9fe5ccf942b7987ec</srcmd5>
+    <version>2.00</version>
+    <time>1341432778</time>
+    <user>coolo</user>
+    <comment>fix efi sub-package. It should be working now.</comment>
+    <requestid>127110</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>c3401e0f5ec23451c03caa9b77fa0d99</srcmd5>
+    <version>2.00</version>
+    <time>1341813529</time>
+    <user>coolo</user>
+    <comment>Please help to review the patch, thanks. (forwarded request 127259 from michael-chang)</comment>
+    <requestid>127311</requestid>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>212bbd2bdfa17d3522868ec138490de2</srcmd5>
+    <version>2.00</version>
+    <time>1343030452</time>
+    <user>coolo</user>
+    <comment>Hi,
+Please help to review the patches. Thanks. (forwarded request 128468 from michael-chang)</comment>
+    <requestid>128513</requestid>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>b9697c99131d4033d2c0ff8200aeea2a</srcmd5>
+    <version>2.00</version>
+    <time>1343672852</time>
+    <user>coolo</user>
+    <comment>Fix build with missing gets declaration (glibc 2.16) (forwarded request 129225 from a_jaeger)</comment>
+    <requestid>129226</requestid>
+  </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>a6be788028d31782a4e0f3b067486481</srcmd5>
+    <version>2.00</version>
+    <time>1346398094</time>
+    <user>coolo</user>
+    <comment>Please help to review the patches. Thanks. (forwarded request 132041 from michael-chang)</comment>
+    <requestid>132054</requestid>
+  </revision>
+  <revision rev="44" vrev="8">
+    <srcmd5>7599fce0d5a9ed0a88447defc54112f2</srcmd5>
+    <version>2.00</version>
+    <time>1348427055</time>
+    <user>coolo</user>
+    <comment>- add 20_memtest86+ (bnc#780622) (forwarded request 135094 from arvidjaar)</comment>
+    <requestid>135095</requestid>
+  </revision>
+  <revision rev="45" vrev="9">
+    <srcmd5>3304a9debc031ee0886f301423f07fb6</srcmd5>
+    <version>2.00</version>
+    <time>1348559198</time>
+    <user>coolo</user>
+    <comment>Hi,
+
+Please help to review the patch, it fixed error message of missing *.mo.gz file if the translation of that language not available (bnc#771393). (forwarded request 135586 from michael-chang)</comment>
+    <requestid>135588</requestid>
+  </revision>
+  <revision rev="46" vrev="10">
+    <srcmd5>d226e9fe1a749abbb774df5471368d8d</srcmd5>
+    <version>2.00</version>
+    <time>1349629203</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137371</requestid>
+  </revision>
+  <revision rev="47" vrev="11">
+    <srcmd5>3127a83e4573c87bbc2280c3bf95d7b0</srcmd5>
+    <version>2.00</version>
+    <time>1351263969</time>
+    <user>coolo</user>
+    <comment>build grub2-efi with grub2 transform and migrate configuration into /boot/grub2 (bnc#782891) (forwarded request 139330 from arvidjaar)</comment>
+    <requestid>139364</requestid>
+  </revision>
+  <revision rev="48" vrev="12">
+    <srcmd5>f39b3531166b2064b212ac25fb9475dc</srcmd5>
+    <version>2.00</version>
+    <time>1351663111</time>
+    <user>coolo</user>
+    <comment>- grub2-efi now depends on exact grub2 version (forwarded request 139589 from arvidjaar)</comment>
+    <requestid>139598</requestid>
+  </revision>
+  <revision rev="49" vrev="13">
+    <srcmd5>71698027fae7e389bdd473e21c36f4c9</srcmd5>
+    <version>2.00</version>
+    <time>1352796805</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>140933</requestid>
+  </revision>
+  <revision rev="50" vrev="14">
+    <srcmd5>2666d9743788d64b8acdb0036409802a</srcmd5>
+    <version>2.00</version>
+    <time>1353413262</time>
+    <user>coolo</user>
+    <comment>- quote localized &quot;Loading ...&quot; messages in grub.cfg (bnc#790195) (forwarded request 141967 from arvidjaar)</comment>
+    <requestid>141984</requestid>
+  </revision>
+  <revision rev="51" vrev="15">
+    <srcmd5>d575abb3a8d54f7c42a1e9e4e81f599e</srcmd5>
+    <version>2.00</version>
+    <time>1353513213</time>
+    <user>coolo</user>
+    <comment>Replace grub2-quote-messages-in-grub.cfg.patch with upstream commit. It makes it easier to sync with upstream sources in the future. (forwarded request 142232 from arvidjaar)</comment>
+    <requestid>142244</requestid>
+  </revision>
+  <revision rev="52" vrev="16">
+    <srcmd5>592cca21ee336ce07f1dc7f24b7b78d3</srcmd5>
+    <version>2.00</version>
+    <time>1354095243</time>
+    <user>coolo</user>
+    <comment>- ship a Secure Boot UEFI compatible bootloader (fate#314485)
+- added secureboot patches which introduces new linuxefi module
+  that is able to perform verifying signed images via exported
+  protocol from shim. The insmod command will not function if
+  secure boot enabled (as all modules should built in grub.efi
+  and signed).
+  - grub2-secureboot-add-linuxefi.patch
+  - grub2-secureboot-use-linuxefi-on-uefi.patch
+  - grub2-secureboot-no-insmod-on-sb.patch
+  - grub2-secureboot-provide-linuxefi-config.patch
+- Makefile.core.am : support building linuxefi module
+- Make grub.efi image that is with all relevant modules incorporated
+  and signed, it will be the second stage to the shim loader which
+  will verified it when secureboot enabled.
+- Make grub.efi's path to align with shim loader's default loader
+  lookup path.
+- The changes has been verified not affecting any factory instalation,
+  but will allow us to run &amp; test secure boot setup manually with shim. (forwarded request 143007 from michael-chang)</comment>
+    <requestid>143018</requestid>
+  </revision>
+  <revision rev="53" vrev="17">
+    <srcmd5>1bea2ec7950d67d424064585727c283f</srcmd5>
+    <version>2.00</version>
+    <time>1357568240</time>
+    <user>coolo</user>
+    <comment>- add support for chainloading another UEFI bootloader to
+  30_os-prober (bnc#775610) (forwarded request 147192 from arvidjaar)</comment>
+    <requestid>147213</requestid>
+  </revision>
+  <revision rev="54" vrev="18">
+    <srcmd5>3c19469607f870281d1845084e444bec</srcmd5>
+    <version>2.00</version>
+    <time>1357649052</time>
+    <user>coolo</user>
+    <comment>couple of fixes</comment>
+    <requestid>147515</requestid>
+  </revision>
+  <revision rev="55" vrev="20">
+    <srcmd5>3c19469607f870281d1845084e444bec</srcmd5>
+    <version>2.00</version>
+    <time>1359109006</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="56" vrev="21">
+    <srcmd5>993235cdfad418444ea315eea244c6e0</srcmd5>
+    <version>2.00</version>
+    <time>1359640088</time>
+    <user>coolo</user>
+    <comment>a couple of secureboot changes and some improvement.</comment>
+    <requestid>150545</requestid>
+  </revision>
+  <revision rev="57" vrev="22">
+    <srcmd5>40f51d0ada414094892dd55747453091</srcmd5>
+    <version>2.00</version>
+    <time>1360242979</time>
+    <user>coolo</user>
+    <comment>- grub.efi signing on build server. (forwarded request 151568 from michael-chang)</comment>
+    <requestid>151569</requestid>
+  </revision>
+  <revision rev="58" vrev="23">
+    <srcmd5>552bfd8bfb382e7765a449be5bd0c7ed</srcmd5>
+    <version>2.00</version>
+    <time>1361457136</time>
+    <user>coolo</user>
+    <comment>
+- merge internal+external BS changes into superset spec file, 
+  remove obsolete dependencies
+- merge SLES+openSUSE patches, restrict &quot;grub-efi&quot; to 12.2+12.3
+- add efidisk-ahci-workaround (bnc#794674)
+- fix unquoted-string-in-class.patch (bnc#788322)
+
+- switch to out of source / subdir build</comment>
+    <requestid>155911</requestid>
+  </revision>
+  <revision rev="59" vrev="24">
+    <srcmd5>2024291d579cd6dd63680ccefaca3081</srcmd5>
+    <version>2.00</version>
+    <time>1362497473</time>
+    <user>coolo</user>
+    <comment> (forwarded request 157376 from arvidjaar)</comment>
+    <requestid>157383</requestid>
+  </revision>
+  <revision rev="60" vrev="25">
+    <srcmd5>ac2bbe13d84e0fe1f150c4ccb7086f30</srcmd5>
+    <version>2.00</version>
+    <time>1362730366</time>
+    <user>coolo</user>
+    <comment>- add lvm to grub.efi (bnc#807989)
+- add loadenv to grub.efi (bnc#807992) (forwarded request 157614 from michael-chang)</comment>
+    <requestid>157616</requestid>
+  </revision>
+  <revision rev="61" vrev="26">
+    <srcmd5>2cb053bddd9547318d5b515773ef0040</srcmd5>
+    <version>2.00</version>
+    <time>1363096946</time>
+    <user>coolo</user>
+    <comment>- add grub2-fix-tftp-endianness.patch from upstream (bnc#808582)
+- add efinet and tftp to grub.efi (bnc#808582) (forwarded request 158250 from michael-chang)</comment>
+    <requestid>158519</requestid>
+  </revision>
+  <revision rev="62" vrev="27">
+    <srcmd5>d8c8928b6b30e4b2f61263b91423a905</srcmd5>
+    <version>2.00</version>
+    <time>1363947492</time>
+    <user>coolo</user>
+    <comment>Please review this v2. version. Thanks.
+
+v2. Renaming of grub2-efi unconditionally.
+  
+- remove all compatible links in grub2-efi as now all concerned 
+  utilities are fixed
+- superseding grub2-efi by grub2-x86_64-efi and grub2-i386-efi on
+  x86_64 and ix86 respectively
+- make grub2-x86_64-efi and grub2-i386-efi providing grub2-efi
+  capability to not break package dependency
+- handle upgrade from 12.2 by preseving grubenv and custom.cfg to
+  new directory /boot/grub2, rename /boot/grub2-efi to
+  /boot/grub2-efi.rpmsave to avoid confusion. (forwarded request 160165 from michael-chang)</comment>
+    <requestid>160299</requestid>
+  </revision>
+  <revision rev="63" vrev="28">
+    <srcmd5>89b977447f0c2a3e4f69c0a64035a461</srcmd5>
+    <version>2.00</version>
+    <time>1364309722</time>
+    <user>coolo</user>
+    <comment>- extraconfigure macro is not defined on ppc (forwarded request 161028 from k0da)</comment>
+    <requestid>161114</requestid>
+  </revision>
+  <revision rev="64" vrev="29">
+    <srcmd5>7b5ac9e2bf0a735135f6b0125a23ffed</srcmd5>
+    <version>2.00</version>
+    <time>1364896178</time>
+    <user>coolo</user>
+    <comment>- package Secure Boot CA file as /usr/lib64/efi/grub.der which
+  could be used to verify signed image from build server
+- add openSUSE-UEFI-CA-Certificate.crt, openSUSE Secure Boot CA
+- add SLES-UEFI-CA-Certificate.crt, SUSE Linux Enterprise Secure
+  Boot CA (forwarded request 161508 from michael-chang)</comment>
+    <requestid>161581</requestid>
+  </revision>
+  <revision rev="65" vrev="30">
+    <srcmd5>a3fcce531b517a3afdbc10015bc1b299</srcmd5>
+    <version>2.00</version>
+    <time>1365140651</time>
+    <user>coolo</user>
+    <comment>- refresh grub2-secureboot-chainloader.patch: Fix wrongly aligned
+  buffer address (bnc#811608) (forwarded request 162360 from michael-chang)</comment>
+    <requestid>162361</requestid>
+  </revision>
+  <revision rev="66" vrev="31">
+    <srcmd5>c90f5678fd7fd79dff4fd7578a456744</srcmd5>
+    <version>2.00</version>
+    <time>1365337345</time>
+    <user>coolo</user>
+    <comment>- add grub2-secureboot-use-linuxefi-on-uefi-in-os-prober.patch (bnc#810912)
+  * use linuxefi in 30_os-prober if secure boot is enabled (forwarded request 162967 from arvidjaar)</comment>
+    <requestid>162973</requestid>
+  </revision>
+  <revision rev="67" vrev="32">
+    <srcmd5>ca6fc49cc32c3ae519badc28cd4b2da2</srcmd5>
+    <version>2.00</version>
+    <time>1366472546</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>172609</requestid>
+  </revision>
+  <revision rev="68" vrev="33">
+    <srcmd5>1ebb98dd3376b53b0a34613419b4955b</srcmd5>
+    <version>2.00</version>
+    <time>1372270740</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>180827</requestid>
+  </revision>
+  <revision rev="69" vrev="34">
+    <srcmd5>773f1f79bc519e6e83f76b2cf629990e</srcmd5>
+    <version>2.00</version>
+    <time>1372925440</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>181929</requestid>
+  </revision>
+  <revision rev="70" vrev="35">
+    <srcmd5>936d5657de83eaac343b2d8dd01bcae6</srcmd5>
+    <version>2.00</version>
+    <time>1373542120</time>
+    <user>coolo</user>
+    <comment>- refresh grub2-fix-menu-in-xen-host-server.patch: In domU we
+  have to add xen kernel to config. (bnc#825528) (forwarded request 182694 from michael-chang)</comment>
+    <requestid>182721</requestid>
+  </revision>
+  <revision rev="71" vrev="36">
+    <srcmd5>8bc2b78832f3f7f8512a6c67bf86db2f</srcmd5>
+    <version>2.00</version>
+    <time>1375112501</time>
+    <user>coolo</user>
+    <comment>- add grub2-fix-parsing-of-short-LVM-PV-names.patch - fix PV detection in
+  grub-probe when PV name is less than 10 charaters
+- add grub2-fix-descriptor-leak-in-grub_util_is_imsm.patch - fix decriptor
+  leak which later caused LVM warnings during grub-probe invocation
+
+Both problem were introduced in current trunk, version in 12.3 did not
+call external lvm tools.
+
+- remove --enable-grub-emu-usb - it is not needed on physical platform (forwarded request 184477 from arvidjaar)</comment>
+    <requestid>184482</requestid>
+  </revision>
+  <revision rev="72" vrev="37">
+    <srcmd5>7643629a481ab5915cdae0d0adba1970</srcmd5>
+    <version>2.00</version>
+    <time>1378893578</time>
+    <user>coolo</user>
+    <comment>- replace openSUSE UEFI certificate with new 2048 bit certificate. (forwarded request 197984 from lnussel)</comment>
+    <requestid>198163</requestid>
+  </revision>
+  <revision rev="73" vrev="38">
+    <srcmd5>3744554b53b8f959bc523b00d6db37dd</srcmd5>
+    <version>2.00</version>
+    <time>1379076226</time>
+    <user>scarabeus_factory</user>
+    <comment>- use new update-bootloader option --reinit to install and update
+  bootloader config
+- refresh grub2-secureboot-no-insmod-on-sb.patch to fobid module
+  loading completely. (forwarded request 198441 from michael-chang)</comment>
+    <requestid>198724</requestid>
+  </revision>
+  <revision rev="74" vrev="40">
+    <srcmd5>3744554b53b8f959bc523b00d6db37dd</srcmd5>
+    <version>2.00</version>
+    <time>1379662559</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="75" vrev="41">
+    <srcmd5>1fbb81f21f9a21fc5f1caa3eb8622c29</srcmd5>
+    <version>2.00</version>
+    <time>1385138380</time>
+    <user>coolo</user>
+    <comment>- add grub2-fix-x86_64-efi-startup-stack-alignment.patch and
+  grub2-fix-x86_64-efi-callwrap-stack-alignment.patch: fix the
+  stack alignment of x86_64 efi. (bnc#841426) (forwarded request 207910 from gary_lin)</comment>
+    <requestid>207913</requestid>
+  </revision>
+  <revision rev="76" vrev="42">
+    <srcmd5>4779005a9b8bd9f3c5349cd84b0ad728</srcmd5>
+    <version>2.00</version>
+    <time>1385993270</time>
+    <user>coolo</user>
+    <comment>reset executable bits on *module, *.exec and *.image files. They are not
+executable and get installed with 0755 permissions due to the way grub2
+build system works. This avoids multiple warnings from find-debufinfo.sh
+and generation of useless *.debug files. (forwarded request 209046 from arvidjaar)</comment>
+    <requestid>209121</requestid>
+  </revision>
+  <revision rev="77" vrev="43">
+    <srcmd5>46ed96dfa9205fb8d10bacf09686bf92</srcmd5>
+    <version>2.00</version>
+    <time>1386772807</time>
+    <user>coolo</user>
+    <comment>- add patch 0001-Fix-build-with-FreeType-2.5.1.patch - fix build with
+  freetype2 &gt;= 2.5.1 (backport from fd0df6d098b1e6a4f60275c48a3ec88d15ba1fbb) (forwarded request 210446 from arvidjaar)</comment>
+    <requestid>210467</requestid>
+  </revision>
+  <revision rev="78" vrev="44">
+    <srcmd5>5e3365493a860dd904d5070b49cba89c</srcmd5>
+    <version>2.00</version>
+    <time>1387451456</time>
+    <user>coolo</user>
+    <comment>- add new patches for booting btrfs snapshot (fate#316522) (fate#316232)
+  * 0001-btrfs-rename-skip_default-to-follow_default.patch
+  * 0002-btrfs-add-ability-to-boot-from-subvolumes.patch
+  * 0003-cmdline-add-envvar-loader_cmdline_append.patch
+  * 0004-btrfs-export-subvolume-envvars.patch (forwarded request 211329 from michael-chang)</comment>
+    <requestid>211336</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>7f52f8828af91f2774fe742a9d2f7c76</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1389385161</time>
+    <user>coolo</user>
+    <comment>I think it is good time to update to 2.02 so it can get more testing.
+Although internal changes are pretty extensive, externally it should be
+pretty much the same. The main user visible changes are
+
+ - autogen is not used anymore, so we can finally simplify patches
+   and recreate files during RPM build. So generated files need not be
+   patched and shipped any more.
+
+ - GRUB_HIDDEN_TIMEOUT is deprecated, we should use GRUB_TIMEOUT_STYLE
+   instead. This will need perl-Bootloader and YaST changes. Old config
+   is still accpepted so nothing should be broken.
+
+ - native pvgrub2 support for Xen PV guests.
+
+ - ARM support (32 and 64 bit), although it has rough edges. (forwarded request 212604 from arvidjaar)</comment>
+    <requestid>212884</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>bfb913bb37dfbc88b70a1d5563f12f62</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1389953030</time>
+    <user>coolo</user>
+    <comment>- package autoiso.cfg and osdetect.cfg as documentation
+- add 0001-look-for-DejaVu-also-in-usr-share-fonts-truetype.patch -
+  fix configure test for DejaVu font
+- add dejavu-fonts to BR (needed to build starfield theme)
+- package starfield theme as grub2-branding-upstream
+- add grub2-use-DejaVuSansMono-for-starfield-theme.patch - use fixed width
+  font for starfield theme
+- clarify that grub2 subpackage contains only user space tools (forwarded request 214019 from arvidjaar)</comment>
+    <requestid>214067</requestid>
+  </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>9e4b20d6b37f6c128eb2f12938eabde0</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1390246938</time>
+    <user>coolo</user>
+    <comment>- refresh 0001-script-provide-overridable-root-by-subvol.patch
+* Introduce $boot_prefix for setting prefix on seeking other /boot
+  directory.
+- refresh 0002-script-create-menus-for-btrfs-snapshot.patch
+* Support existing snapshots by creating their missing slave configs.
+* Temporarily default to disable this feature until receiving more
+  tests from QA.
+* Introduce GRUB_ENABLE_CUSTOM_SNAPSHOT_SUBMENU to allow custom
+  submenu for listing snapshots rather than the default one. (forwarded request 214140 from michael-chang)</comment>
+    <requestid>214182</requestid>
+  </revision>
+  <revision rev="82" vrev="4">
+    <srcmd5>03f42184df92ee9d764de2061b4503c5</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1391077434</time>
+    <user>coolo</user>
+    <comment>- Add changes to allow build for s390x arch: added
+  grub2-s390x-01-Changes-made-and-files-added-in-order-to-allow-s390x.patch
+
+- refresh 0002-script-create-menus-for-btrfs-snapshot.patch
+* Fix bootable snapshots not found while root is on Btrfs subvolume
+  (bnc#859587)
+* Create missing slave config in /.snapshots/&lt;num&gt;/
+* Prefix with SUSE_ for related options (forwarded request 215036 from oertel)</comment>
+    <requestid>215222</requestid>
+  </revision>
+  <revision rev="83" vrev="5">
+    <srcmd5>34b970fe888751196b7121e47410ef8b</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1391674626</time>
+    <user>coolo</user>
+    <comment>- Enable grub2 for PowerPC LE (ppc64le)
+- Add ppc64le to exclusive arches
+- Don't require gcc-32bit (PowerLE don't have 32bit toolchain)
+- added patches:
+  * grub2-powerpc-libgcc.patch
+     Provide 32bit libgcc functions for PowerLE
+  * grub2-ppc64le-core-bigendian.patch
+     Build grub kernel and images as BE on ppc64le (BL is BE there)
+  * grub2-ppc64le-platform.patch
+     Enable ppc64le platform (forwarded request 220504 from k0da)</comment>
+    <requestid>220920</requestid>
+  </revision>
+  <revision rev="84" vrev="6">
+    <srcmd5>6ef1cc3a29492f73b12f7bb2eac4e8a6</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1392112519</time>
+    <user>coolo</user>
+    <comment>- add grub2-snapper-plugin.sh (fate#316232)
+  * grub2's snapper plugin for advanced btrfs snapshot menu management
+  * package as grub2-snapper-plugin.noarch
+- refresh 0002-script-create-menus-for-btrfs-snapshot.patch
+  * when booting btrfs snapshots disabled, deleting snapshot master config
+    if it's not customized (forwarded request 221073 from michael-chang)</comment>
+    <requestid>221392</requestid>
+  </revision>
+  <revision rev="85" vrev="7">
+    <srcmd5>344e8cf850688bb78d106c69bd14d497</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1392450818</time>
+    <user>coolo</user>
+    <comment>- add Supplements: packageand(snapper:grub2) in grub2-snapper-plugin
+  to install it while both snapper and grub2 are installed (forwarded request 221738 from michael-chang)</comment>
+    <requestid>222058</requestid>
+  </revision>
+  <revision rev="86" vrev="8">
+    <srcmd5>34755db74217bfeffa69bc6cec64dd5f</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1393098255</time>
+    <user>coolo</user>
+    <comment>- updating grub2-once
+  - added --list switch.
+  - improved --help and error handling. (forwarded request 223241 from jnweiger)</comment>
+    <requestid>223322</requestid>
+  </revision>
+  <revision rev="87" vrev="9">
+    <srcmd5>153e2dbac570a51ebeb2aae5e2c4cc14</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1393935250</time>
+    <user>coolo</user>
+    <comment>- grub2-snapper-plugin: fix important snapshots are not marked as such
+  in grub2 menu, also display the snapshot entries in the format
+  &quot;important distribution version (kernel_version, timestamp, pre/post)&quot;
+  (bnc#864842)
+
+- refresh grub2-fix-menu-in-xen-host-server.patch (bnc#859361)
+  * prevent 10_linux from booting xen kernel without pv_opt support
+    on systems other than xen PV domU guest   
+  * prevent 20_linux_xen.in from setting up nested virt running from
+    Xen domU
+- refresh grub2-fix-Grub2-with-SUSE-Xen-package-install.patch
+  * adjust accordingly (forwarded request 224032 from michael-chang)</comment>
+    <requestid>224389</requestid>
+  </revision>
+  <revision rev="88" vrev="10">
+    <srcmd5>35536832a068b371fbf234eaa170996f</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1397041262</time>
+    <user>coolo</user>
+    <comment>- rename grub2.chrp back into grub.chrp, otherwise it is not found by
+  grub tools
+- replace grub2-use-DejaVuSansMono-for-starfield-theme.patch with
+  grub2-use-Unifont-for-starfield-theme-terminal.patch - use Unifont
+  font for terminal window (forwarded request 229108 from arvidjaar)</comment>
+    <requestid>229227</requestid>
+  </revision>
+  <revision rev="89" vrev="11">
+    <srcmd5>3341c21fbb5ead469c6b3cd24f23b7c8</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1397330933</time>
+    <user>coolo</user>
+    <comment>- Build GRUB2 for ppc64le as LittleEndian and 64bit
+- Fix timeout issue on ppc64le (bnc#869166)
+- Add powerpc-utils requires to grub2-powerpc-ieee1275
+- added patches:
+  * grub2-ppc64-build-ppc64-32bit.patch
+  * grub2-ppc64-qemu.patch
+  * grub2-ppc64le-01-Add-Little-Endian-support-for-Power64-to-the-build.patch
+  * grub2-ppc64le-02-Build-grub-as-O1-until-we-add-savegpr-and-restgpr-ro.patch
+  * grub2-ppc64le-03-disable-creation-of-vsx-and-altivec-instructions.patch
+  * grub2-ppc64le-04-powerpc64-LE-s-linker-knows-how-to-handle-the-undefi.patch
+  * grub2-ppc64le-05-grub-install-can-now-recognize-and-install-a-LE-grub.patch
+  * grub2-ppc64le-06-set-the-ABI-version-to-0x02-in-the-e_flag-of-the-PPC.patch
+  * grub2-ppc64le-07-Add-IEEE1275_ADDR-helper.patch
+  * grub2-ppc64le-08-Fix-some-more-warnings-when-casting.patch
+  * grub2-ppc64le-09-Add-powerpc64-types.patch
+  * grub2-ppc64le-10-powerpc64-is-not-necessarily-BigEndian-anymore.patch
+  * grub2-ppc64le-11-Fix-warnings-when-building-powerpc-linux-loader-64bi.patch
+  * grub2-ppc64le-12-GRUB_ELF_R_PPC_-processing-is-applicable-only-for-32.patch
+  * grub2-ppc64le-13-Fix-powerpc-setjmp-longjmp-64bit-issues.patch
+  * grub2-ppc64le-14-Add-powerpc64-ieee1275-trampoline.patch
+  * grub2-ppc64le-15-Add-64bit-support-to-powerpc-startup-code.patch
+  * grub2-ppc64le-16-Add-grub_dl_find_section_addr.patch
+  * grub2-ppc64le-17-Add-ppc64-relocations.patch
+  * grub2-ppc64le-18-ppc64-doesn-t-need-libgcc-routines.patch
+  * grub2-ppc64le-19-Use-FUNC_START-FUNC_END-for-powerpc-function-definit.patch
+  * grub2-ppc64le-20-.TOC.-symbol-is-special-in-ppc64le-.-It-maps-to-the-.patch
+  * grub2-ppc64le-21-the-.toc-section-in-powerpc64le-modules-are-sometime.patch
+  * grub2-ppc64le-22-all-parameter-to-firmware-calls-should-to-be-BigEndi.patch
+  * grub2-ppc64le-23-grub-segfaults-if-initrd-is-specified-before-specify.patch
+  * grub2-ppc64le-timeout.patch (forwarded request 229655 from k0da)</comment>
+    <requestid>229673</requestid>
+  </revision>
+  <revision rev="90" vrev="12">
+    <srcmd5>7955f0a41872a595150715bad45b778b</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1398505496</time>
+    <user>coolo</user>
+    <comment>- Fix sorting of RC kernels to be older than first regular of the
+  series. Fixes bnc#827531.
+- added patches:
+  * grub2-use-rpmsort-for-version-sorting.patch (forwarded request 230152 from scarabeus_iv)</comment>
+    <requestid>230153</requestid>
+  </revision>
+  <revision rev="91" vrev="13">
+    <srcmd5>f27d3e459167478e466ad529e990a872</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1403615746</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238220</requestid>
+  </revision>
+  <revision rev="92" vrev="14">
+    <srcmd5>0e519f5a62703c28c618da7d70ffb67c</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1403762280</time>
+    <user>coolo</user>
+    <comment>Support for XFS V5 superblock (forwarded request 238591 from jankara)</comment>
+    <requestid>238594</requestid>
+  </revision>
+  <revision rev="93" vrev="15">
+    <srcmd5>b891f5915f5282de3298561e1bd0dacf</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1405178061</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>239436</requestid>
+  </revision>
+  <revision rev="94" vrev="16">
+    <srcmd5>6bf9426da57921cee3c3b08c254c07a8</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1405685001</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240953</requestid>
+  </revision>
+  <revision rev="95" vrev="17">
+    <srcmd5>cd5d95d463b87ae5894d98d0f5508fd8</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1406785282</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242831</requestid>
+  </revision>
+  <revision rev="96" vrev="18">
+    <srcmd5>52a46e9f4bb1e7c1ae45739481a7adfb</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1407942477</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244497</requestid>
+  </revision>
+  <revision rev="97" vrev="19">
+    <srcmd5>b02f0b5e5958a0f89e102880ea2c1ce5</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1408089331</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244659</requestid>
+  </revision>
+  <revision rev="98" vrev="21">
+    <srcmd5>b02f0b5e5958a0f89e102880ea2c1ce5</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1409301105</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="99" vrev="22">
+    <srcmd5>ac46643a6badbcf1baf3e287a2f32238</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1409407430</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246612</requestid>
+  </revision>
+  <revision rev="100" vrev="23">
+    <srcmd5>38b169419f2515da81c3215ff28a1da4</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1410968519</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249867</requestid>
+  </revision>
+  <revision rev="101" vrev="24">
+    <srcmd5>9c925071305c02893f1cc3aa4502bea5</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1411926990</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>251498</requestid>
+  </revision>
+  <revision rev="102" vrev="25">
+    <srcmd5>bb023f05e2afd301265148c5d5212fa7</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1412533640</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253483</requestid>
+  </revision>
+  <revision rev="103" vrev="26">
+    <srcmd5>7b3ac7d42fb8d195683323aa0eb315dc</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1415748051</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>259156</requestid>
+  </revision>
+  <revision rev="104" vrev="27">
+    <srcmd5>05ad97e92de3b8d793717e2fa345f362</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1416824073</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261982</requestid>
+  </revision>
+  <revision rev="105" vrev="28">
+    <srcmd5>361f59500cc47327cdb811ea024310f2</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1417809824</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264095</requestid>
+  </revision>
+  <revision rev="106" vrev="29">
+    <srcmd5>02473d9e8a1a6bda363c6d327098368b</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1418840288</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265415</requestid>
+  </revision>
+  <revision rev="107" vrev="30">
+    <srcmd5>bd5f236801c3b13d3fd219c01b74fa82</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1419546104</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266358</requestid>
+  </revision>
+  <revision rev="108" vrev="31">
+    <srcmd5>bac959a9457f14b14f3ad75f89cad1a4</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1420531593</time>
+    <user>dimstar_suse</user>
+    <comment>- grub2-snapper-plugin.sh: cleanup grub-snapshot.cfg not referring
+  to any snapshot (boo#909359) (forwarded request 267244 from michael-chang)</comment>
+    <requestid>267272</requestid>
+  </revision>
+  <revision rev="109" vrev="32">
+    <srcmd5>1e951086c470a232898ec748a8936878</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1423216566</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284169</requestid>
+  </revision>
+  <revision rev="110" vrev="33">
+    <srcmd5>eeb39c5591f3c6853d02d405799a3140</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1424436650</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286432</requestid>
+  </revision>
+  <revision rev="111" vrev="34">
+    <srcmd5>35aed1185645cd036dd984198a004287</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1426485401</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289953</requestid>
+  </revision>
+  <revision rev="112" vrev="35">
+    <srcmd5>fa8cb987121c37c6f6a6e9981340efb2</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1426793381</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290955</requestid>
+  </revision>
+  <revision rev="113" vrev="36">
+    <srcmd5>07ad0096d26737e476a4edfc5e9b6675</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1429606251</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296732</requestid>
+  </revision>
+  <revision rev="114" vrev="37">
+    <srcmd5>a071b9f9f19116ccfc577f062b401b92</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1431247954</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>305598</requestid>
+  </revision>
+  <revision rev="115" vrev="38">
+    <srcmd5>c84ac39bcfcd7516b15dbb3e0e1d6ab0</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1431676471</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306325</requestid>
+  </revision>
+  <revision rev="116" vrev="39">
+    <srcmd5>6aa103b60b0c06ae5b6ff4acc54309f7</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1432380298</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308438</requestid>
+  </revision>
+  <revision rev="117" vrev="40">
+    <srcmd5>92b53b7e1893eccf52f23fe4d7e23470</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1433486733</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>310191</requestid>
+  </revision>
+  <revision rev="118" vrev="41">
+    <srcmd5>574148727e277280ae42539189470b79</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1433845472</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311124</requestid>
+  </revision>
+  <revision rev="119" vrev="42">
+    <srcmd5>4d6e5a765f09cec855c4d1930b6585b3</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1434602212</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>312085</requestid>
+  </revision>
+  <revision rev="120" vrev="43">
+    <srcmd5>de3385de459861d71902b360986c15c8</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1436111463</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>312597</requestid>
+  </revision>
+  <revision rev="121" vrev="44">
+    <srcmd5>946c412c1311f37a0494d630222c2c94</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1437477936</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317568</requestid>
+  </revision>
+  <revision rev="122" vrev="45">
+    <srcmd5>e2ff6a9c8c111930143a875bc28293b1</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1438750152</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>319863</requestid>
+  </revision>
+  <revision rev="123" vrev="46">
+    <srcmd5>8468fad4250113c15971b45710da8a62</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1440743156</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>326748</requestid>
+  </revision>
+  <revision rev="124" vrev="47">
+    <srcmd5>cc08d06b7065c433190a04581b0ef536</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1443770575</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0001-efinet-Check-for-immediate-completition.patch,
+  0001-efinet-enable-hardware-filters-when-opening-interfac.patch,
+  grub2-arm64-efinet-handle-get_status-on-buggy-firmware-properly.patch
+  (bsc#947203)
+
+- Set default GRUB_DISTRIBUTOR from /etc/os-release if it is empty 
+  or not set by user (bsc#942519)
+  * added grub2-default-distributor.patch 
+  * modified grub.default</comment>
+    <requestid>333225</requestid>
+  </revision>
+  <revision rev="125" vrev="48">
+    <srcmd5>b18a6e16238cc6ce78e0f0122947f843</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1445511498</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340040</requestid>
+  </revision>
+  <revision rev="126" vrev="49">
+    <srcmd5>f485fb46c777c2bcba3a12a0f418a4f7</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1446647499</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342218</requestid>
+  </revision>
+  <revision rev="127" vrev="50">
+    <srcmd5>0fd0135f871bb64a158d8f675845b26b</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1448400632</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345139</requestid>
+  </revision>
+  <revision rev="128" vrev="51">
+    <srcmd5>d0c68d4e765c42085ac6799f42701afa</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1450364021</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349298</requestid>
+  </revision>
+  <revision rev="129" vrev="52">
+    <srcmd5>f6e8587d5005758e6dfa38df8a2e92c0</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1450605096</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349625</requestid>
+  </revision>
+  <revision rev="130" vrev="53">
+    <srcmd5>914f8114b516ef4b0525b8129552056f</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1452850729</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352957</requestid>
+  </revision>
+  <revision rev="131" vrev="54">
+    <srcmd5>02e47e8506c570736119f357d6f9b267</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1453997920</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355410</requestid>
+  </revision>
+  <revision rev="132" vrev="55">
+    <srcmd5>7bb1d1fdc73719f54a0029a521675483</srcmd5>
+    <version>2.02~beta2</version>
+    <time>1455021061</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357598</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>0939435441186e2ea24411c43ab5cbb6</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1457353578</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>365733</requestid>
+  </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>7e85a8a50fecce7866eef3e2fd51ef04</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1459002066</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>377166</requestid>
+  </revision>
+  <revision rev="135" vrev="3">
+    <srcmd5>1952bb64e2ae3112623357edf319401a</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1462428737</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393338</requestid>
+  </revision>
+  <revision rev="136" vrev="4">
+    <srcmd5>036092959c06b6561b826bb4a528b22c</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1464014232</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396902</requestid>
+  </revision>
+  <revision rev="137" vrev="5">
+    <srcmd5>349123702951147ddb51d490b2222473</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1464204120</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397532</requestid>
+  </revision>
+  <revision rev="138" vrev="6">
+    <srcmd5>dfd68fa6a9b0efcf3fd2af6fa07f587e</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1465847484</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400198</requestid>
+  </revision>
+  <revision rev="139" vrev="7">
+    <srcmd5>f88a804d9aae258dbe11b58eece8daa8</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1467359639</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405111</requestid>
+  </revision>
+  <revision rev="140" vrev="8">
+    <srcmd5>af6445c31d81c62a335701d3ff43af3e</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1470934385</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417037</requestid>
+  </revision>
+  <revision rev="141" vrev="9">
+    <srcmd5>da70b02efb9b0de0ce2f01a24d0f5b80</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1471508394</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419329</requestid>
+  </revision>
+  <revision rev="142" vrev="10">
+    <srcmd5>ca1a78cef3d4c638c92e3b5020c6612e</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1472246113</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>421892</requestid>
+  </revision>
+  <revision rev="143" vrev="11">
+    <srcmd5>e3aa4f653f477c8164898d780a91e6aa</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1472731281</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424108</requestid>
+  </revision>
+  <revision rev="144" vrev="12">
+    <srcmd5>318353c759cd8866e843ae316ae1c41c</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1476113586</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>431528</requestid>
+  </revision>
+  <revision rev="145" vrev="13">
+    <srcmd5>1cce184a37fa220ea9aa0d08c3f9d2aa</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1476779851</time>
+    <user>dimstar_suse</user>
+    <comment>- add support for netboot on arm64-efi platforms (bsc#998097)
+  * grub2-arm64-mknetdir-add-suport-for-arm64-efi.patch</comment>
+    <requestid>434734</requestid>
+  </revision>
+  <revision rev="146" vrev="14">
+    <srcmd5>f4ad5d9dd055918e821a7755782a45ff</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1477481242</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>437192</requestid>
+  </revision>
+  <revision rev="147" vrev="15">
+    <srcmd5>825a95d2107208daf3658297c8919ab6</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1478167933</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>437618</requestid>
+  </revision>
+  <revision rev="148" vrev="16">
+    <srcmd5>06ad57b2b30b3505ffe99f550bdc3d2d</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1483959160</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449082</requestid>
+  </revision>
+  <revision rev="149" vrev="17">
+    <srcmd5>81ac725a333ea100c1e8d19972051277</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1484818697</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450660</requestid>
+  </revision>
+  <revision rev="150" vrev="18">
+    <srcmd5>3d630ee163415777599c0863822159b9</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1485938994</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452460</requestid>
+  </revision>
+  <revision rev="151" vrev="19">
+    <srcmd5>daff1676bebbdf9936c08eeb2e13e720</srcmd5>
+    <version>2.02~beta3</version>
+    <time>1486465079</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454876</requestid>
+  </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>fcfbb2cfd8eaac3f4815191921a90c47</srcmd5>
+    <version>2.02~rc1</version>
+    <time>1487029129</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456566</requestid>
+  </revision>
+  <revision rev="153" vrev="2">
+    <srcmd5>ea01c2fcbba450765af55d7cb49f0cd0</srcmd5>
+    <version>2.02~rc1</version>
+    <time>1487597296</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458616</requestid>
+  </revision>
+  <revision rev="154" vrev="3">
+    <srcmd5>fcfbb2cfd8eaac3f4815191921a90c47</srcmd5>
+    <version>2.02~rc1</version>
+    <time>1487768329</time>
+    <user>dimstar_suse</user>
+    <comment>Revert - attempt to fix uefi_usb boot</comment>
+    <requestid>459690</requestid>
+  </revision>
+  <revision rev="155" vrev="4">
+    <srcmd5>11f06f2559638891a640418489be152c</srcmd5>
+    <version>2.02~rc1</version>
+    <time>1487900595</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460052</requestid>
+  </revision>
+  <revision rev="156" vrev="5">
+    <srcmd5>45a3dcd1d4ec062e8bbb6dcfa6a3a60f</srcmd5>
+    <version>2.02~rc1</version>
+    <time>1488733126</time>
+    <user>dimstar_suse</user>
+    <comment>Redo merge (forwarded request 461950 from michals)</comment>
+    <requestid>462013</requestid>
+  </revision>
+  <revision rev="157" vrev="6">
+    <srcmd5>6b537b00f42f84929c59d73438305cdd</srcmd5>
+    <version>2.02~rc1</version>
+    <time>1489241928</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477883</requestid>
+  </revision>
+  <revision rev="158" vrev="7">
+    <srcmd5>744d91e05b67f4b8f4ee025a2a617223</srcmd5>
+    <version>2.02~rc1</version>
+    <time>1489481675</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:grub2 revision:156, using expand</comment>
+  </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>cfb566adbcd654a1630fbea54d5cc718</srcmd5>
+    <version>2.02~rc2</version>
+    <time>1490132804</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>481722</requestid>
+  </revision>
+  <revision rev="160" vrev="2">
+    <srcmd5>5ff1a14965501b454e012c84d7be39d2</srcmd5>
+    <version>2.02~rc2</version>
+    <time>1493019966</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>485744</requestid>
+  </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>ae02bb053f7b774225cd00a979482e68</srcmd5>
+    <version>2.02</version>
+    <time>1494096323</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492386</requestid>
+  </revision>
+  <revision rev="162" vrev="2">
+    <srcmd5>cdc4ac87c7d5c6e8ad823ff9d82f906e</srcmd5>
+    <version>2.02</version>
+    <time>1495283339</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494786</requestid>
+  </revision>
+  <revision rev="163" vrev="3">
+    <srcmd5>046499ee3f23c130112bb26071e48fcd</srcmd5>
+    <version>2.02</version>
+    <time>1496681393</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500886</requestid>
+  </revision>
+  <revision rev="164" vrev="4">
+    <srcmd5>ca80d3f21682fe5416f24ee257ab658f</srcmd5>
+    <version>2.02</version>
+    <time>1499880622</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508680</requestid>
+  </revision>
+  <revision rev="165" vrev="5">
+    <srcmd5>1e0f9b16409d20859d39afd818258c5b</srcmd5>
+    <version>2.02</version>
+    <time>1502186283</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512434</requestid>
+  </revision>
+  <revision rev="166" vrev="6">
+    <srcmd5>60eabc313d77be4fd45fbe43296c32b6</srcmd5>
+    <version>2.02</version>
+    <time>1503999257</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518462</requestid>
+  </revision>
+  <revision rev="167" vrev="7">
+    <srcmd5>fe86749bde5c494104804207f81969f1</srcmd5>
+    <version>2.02</version>
+    <time>1504815042</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520583</requestid>
+  </revision>
+  <revision rev="168" vrev="8">
+    <srcmd5>deaa39488cf6700e30bc40829249821c</srcmd5>
+    <version>2.02</version>
+    <time>1505502142</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523219</requestid>
+  </revision>
+  <revision rev="169" vrev="9">
+    <srcmd5>0437f4b0097d4e20d9d0c048fa696b3f</srcmd5>
+    <version>2.02</version>
+    <time>1505989761</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527631</requestid>
+  </revision>
+  <revision rev="170" vrev="10">
+    <srcmd5>6541652ac09fcb78279e50ac849fe5c9</srcmd5>
+    <version>2.02</version>
+    <time>1507391165</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530250</requestid>
+  </revision>
+  <revision rev="171" vrev="11">
+    <srcmd5>2dd79163ffb48bd620d5767b4c436318</srcmd5>
+    <version>2.02</version>
+    <time>1510321355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540121</requestid>
+  </revision>
+  <revision rev="172" vrev="12">
+    <srcmd5>1a22aeb02fe79e5aa72ce7a7eb10a846</srcmd5>
+    <version>2.02</version>
+    <time>1511085927</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541952</requestid>
+  </revision>
+  <revision rev="173" vrev="13">
+    <srcmd5>8f0d858eec0df509de89009d1dce19fa</srcmd5>
+    <version>2.02</version>
+    <time>1512546784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547741</requestid>
+  </revision>
+  <revision rev="174" vrev="14">
+    <srcmd5>15f6878658038bbf845d682ad59d767f</srcmd5>
+    <version>2.02</version>
+    <time>1513162558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555805</requestid>
+  </revision>
+  <revision rev="175" vrev="15">
+    <srcmd5>6d4387e0f9d72a755038b7815af378f1</srcmd5>
+    <version>2.02</version>
+    <time>1517606398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571597</requestid>
+  </revision>
+  <revision rev="176" vrev="16">
+    <srcmd5>0f10c1a11ff58ae778b98b64a4b68ec4</srcmd5>
+    <version>2.02</version>
+    <time>1518187530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574507</requestid>
+  </revision>
+  <revision rev="177" vrev="17">
+    <srcmd5>2bf80a66f4b6e94307994e4ce504d80b</srcmd5>
+    <version>2.02</version>
+    <time>1518515086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576013</requestid>
+  </revision>
+  <revision rev="178" vrev="18">
+    <srcmd5>33437542e74dd97c0d89ece1d5411d94</srcmd5>
+    <version>2.02</version>
+    <time>1521498633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587448</requestid>
+  </revision>
+  <revision rev="179" vrev="19">
+    <srcmd5>2057a1ddbf65a6a5a5ff0fb6a398fc28</srcmd5>
+    <version>2.02</version>
+    <time>1522404060</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591814</requestid>
+  </revision>
+  <revision rev="180" vrev="20">
+    <srcmd5>a8451e51898a1f3e275f3c3638fd95cf</srcmd5>
+    <version>2.02</version>
+    <time>1522934833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593091</requestid>
+  </revision>
+  <revision rev="181" vrev="21">
+    <srcmd5>ee76d7c3db86855faace3f6ee231462c</srcmd5>
+    <version>2.02</version>
+    <time>1523956171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597264</requestid>
+  </revision>
+  <revision rev="182" vrev="22">
+    <srcmd5>5a00d3113071766364ca41cee897b683</srcmd5>
+    <version>2.02</version>
+    <time>1524400447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598028</requestid>
+  </revision>
+  <revision rev="183" vrev="23">
+    <srcmd5>ea07237a671b20d8ba3e5a46c380020b</srcmd5>
+    <version>2.02</version>
+    <time>1526219601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605634</requestid>
+  </revision>
+  <revision rev="184" vrev="24">
+    <srcmd5>4a48c279bf3ff0d914e523324a80eecf</srcmd5>
+    <version>2.02</version>
+    <time>1527084378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>609945</requestid>
+  </revision>
+  <revision rev="185" vrev="25">
+    <srcmd5>843fe8e8daedb19a7c6e9e1fb471a495</srcmd5>
+    <version>2.02</version>
+    <time>1527605155</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612189</requestid>
+  </revision>
+  <revision rev="186" vrev="26">
+    <srcmd5>b4a2a4b68b611ee3d0b782072603352d</srcmd5>
+    <version>2.02</version>
+    <time>1529919216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618170</requestid>
+  </revision>
+  <revision rev="187" vrev="27">
+    <srcmd5>c7176873f0f15c2ce891a1da2c708e8f</srcmd5>
+    <version>2.02</version>
+    <time>1530566894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619524</requestid>
+  </revision>
+  <revision rev="188" vrev="28">
+    <srcmd5>d8d6f3b737af31c6903b0bcfad73bdc7</srcmd5>
+    <version>2.02</version>
+    <time>1531379831</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620665</requestid>
+  </revision>
+  <revision rev="189" vrev="29">
+    <srcmd5>2d61c4b36ebe403789f0cb581a73e03c</srcmd5>
+    <version>2.02</version>
+    <time>1531730494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623078</requestid>
+  </revision>
+  <revision rev="190" vrev="30">
+    <srcmd5>ba0c0c6240bf4cc70f9716e9fec79770</srcmd5>
+    <version>2.02</version>
+    <time>1533214140</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625372</requestid>
+  </revision>
+  <revision rev="191" vrev="31">
+    <srcmd5>f1f168c68a83608208d24ee44733a158</srcmd5>
+    <version>2.02</version>
+    <time>1534146843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628303</requestid>
+  </revision>
+  <revision rev="192" vrev="32">
+    <srcmd5>ed6d36220d7eacf21a7d422ea557d5d3</srcmd5>
+    <version>2.02</version>
+    <time>1535963575</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631916</requestid>
+  </revision>
+  <revision rev="193" vrev="33">
+    <srcmd5>a2123ad54a63aaffc60963c0768afc96</srcmd5>
+    <version>2.02</version>
+    <time>1537115421</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635552</requestid>
+  </revision>
+  <revision rev="194" vrev="34">
+    <srcmd5>459681ef85fdf54506f63f47a8895893</srcmd5>
+    <version>2.02</version>
+    <time>1538501965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638658</requestid>
+  </revision>
+  <revision rev="195" vrev="35">
+    <srcmd5>768628c4e349600bd1c769d73f294c80</srcmd5>
+    <version>2.02</version>
+    <time>1539093160</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639871</requestid>
+  </revision>
+  <revision rev="196" vrev="36">
+    <srcmd5>451cff4734a2088be2f16c413c2c0ad2</srcmd5>
+    <version>2.02</version>
+    <time>1543399833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651971</requestid>
+  </revision>
+  <revision rev="197" vrev="37">
+    <srcmd5>4f8f30ccaef35d7e48fd29630c355d56</srcmd5>
+    <version>2.02</version>
+    <time>1545866513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660471</requestid>
+  </revision>
+  <revision rev="198" vrev="38">
+    <srcmd5>4c0ada80197195c83b93cda43109a8fe</srcmd5>
+    <version>2.02</version>
+    <time>1549464274</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>669452</requestid>
+  </revision>
+  <revision rev="199" vrev="39">
+    <srcmd5>de378ea800c73bcf1e93de8c7ff976bb</srcmd5>
+    <version>2.02</version>
+    <time>1550149965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673568</requestid>
+  </revision>
+  <revision rev="200" vrev="40">
+    <srcmd5>db92b87a2ab5ef2bd3f84b2014713ed6</srcmd5>
+    <version>2.02</version>
+    <time>1550402320</time>
+    <user>coolo</user>
+    <comment>- Create compatibility sym-link of grub.xen in the old location to which
+  old VM definition is pointing (bsc#1123942)</comment>
+    <requestid>676194</requestid>
+  </revision>
+  <revision rev="201" vrev="41">
+    <srcmd5>02273e26abfdfae61df644e22a460732</srcmd5>
+    <version>2.02</version>
+    <time>1552380586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683534</requestid>
+  </revision>
+  <revision rev="202" vrev="42">
+    <srcmd5>7bf5aa99020636be31c85fed46a9d260</srcmd5>
+    <version>2.02</version>
+    <time>1553435749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686300</requestid>
+  </revision>
+  <revision rev="203" vrev="43">
+    <srcmd5>f474b891ac42758721be77c03ea14d3b</srcmd5>
+    <version>2.02</version>
+    <time>1557388865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700269</requestid>
+  </revision>
+  <revision rev="204" vrev="44">
+    <srcmd5>35c92e91de1e7432f2e2adf4318c6619</srcmd5>
+    <version>2.02</version>
+    <time>1558515229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704131</requestid>
+  </revision>
+  <revision rev="205" vrev="45">
+    <srcmd5>ac3332dd1d11db728c9a29ee3e96813b</srcmd5>
+    <version>2.02</version>
+    <time>1560862410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709900</requestid>
+  </revision>
+  <revision rev="206" vrev="46">
+    <srcmd5>70652df5ce35c0aaf0bc949a6fba0293</srcmd5>
+    <version>2.02</version>
+    <time>1562590882</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713148</requestid>
+  </revision>
+  <revision rev="207" vrev="47">
+    <srcmd5>5fba75bd981c95c9ebfb19a990664b00</srcmd5>
+    <version>2.02</version>
+    <time>1563259060</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714608</requestid>
+  </revision>
+  <revision rev="208" vrev="48">
+    <srcmd5>e15591ab0b8ccb05918171405e298e9a</srcmd5>
+    <version>2.02</version>
+    <time>1563913941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>716998</requestid>
+  </revision>
+  <revision rev="209" vrev="49">
+    <srcmd5>6e6788b127b10883a32811c7b8a6b41d</srcmd5>
+    <version>2.02</version>
+    <time>1569232821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>730301</requestid>
+  </revision>
+</revisionlist>

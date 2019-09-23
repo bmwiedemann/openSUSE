@@ -1,0 +1,24 @@
+--- geoip.c.orig
++++ geoip.c
+@@ -60,10 +60,20 @@ function_entry geoip_functions[] = {
+ };
+ /* }}} */
+ 
++/* {{{ apc dependencies */
++#if ZEND_MODULE_API_NO >= 20050922
++static const zend_module_dep geoip_module_deps[] = {
++	ZEND_MOD_REQUIRED("standard")
++	{NULL, NULL, NULL}
++};
++#endif
+ /* {{{ geoip_module_entry
+  */
+ zend_module_entry geoip_module_entry = {
+-#if ZEND_MODULE_API_NO >= 20010901
++#if ZEND_MODULE_API_NO >= 20050922
++	STANDARD_MODULE_HEADER_EX, NULL,
++	geoip_module_deps,
++#elif ZEND_MODULE_API_NO >= 20010901
+ 	STANDARD_MODULE_HEADER,
+ #endif
+ 	"geoip",

@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Mon Jul 11 05:17:05 UTC 2016 - coolo@suse.com
+
+- fix build by adding -fPIC 
+- clean up the spec file now that 13.1 is EOL
+- add libattr as buildrequire
+
+-------------------------------------------------------------------
+Tue Apr  7 16:52:22 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.0
+  * renamed binary to unionfs-fuse
+  * add uniofs-fuse-ctl utility to control unionfs-fuse over ioctl
+  * better apple support
+  * dropped stats
+  * better test suite
+- Update project and download Urls
+- Use %cmake macro with openSUSE >= 13.1
+- Remove xz require; not needed anymore
+
+-------------------------------------------------------------------
+Mon Feb 11 08:35:24 UTC 2013 - coolo@suse.com
+
+- update to 0.26
+ - use BUILD_PATH instead of snprintf, which will 
+   return -ENAMETOOLONG if the path is too long instead of simply 
+   using a wrong path
+ - new options "-o relaxed_permissions" and "-o hide_meta_dir"
+ - included the debian directory
+ - Properly check on rmdir() if sub-branches are also empty
+ - Always compile with debug code, but only enable debugging on request
+ - New option -o debug_file
+ - Lots of bugs fixed in BUILD_PATH()
+ - Improved search of white-out files
+ - Properly fix Debian Bug#509516.
+ - More debug output.
+ - Add syslog support without the risk of possible dead locks
+ - Use fuse big-writes (and reads) if available
+
+-------------------------------------------------------------------
+Sat May 26 08:50:06 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+
+-------------------------------------------------------------------
+Wed Feb 29 18:15:51 UTC 2012 - tabraham@novell.com
+
+- update to 0.25
+  * Alternate way to specify branches
+  * Minor fixes
+
+- update to 0.24
+  * Support for liveCDs / live USB sticks (-o chroot)
+  * Build-in support to change the maximum number of open files
+  * Added recursive directory COW.
+
+-------------------------------------------------------------------
+Tue Mar 24 15:20:11 CET 2009 - coolo@suse.de
+
+- updated to official 0.23 snapshot
+
+-------------------------------------------------------------------
+Mon Mar  2 12:38:16 CET 2009 - coolo@suse.de
+
+- initial package
+

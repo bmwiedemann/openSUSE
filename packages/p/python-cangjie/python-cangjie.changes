@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Wed Mar  1 08:07:30 UTC 2017 - wnereiz@eienteiland.org
+
+- fix_core.pxd_not_found.patch to fix Cython path problem 
+- Migrated to the "singlespec" format
+- Some other spec cleaning
+
+-------------------------------------------------------------------
+Fri Feb 24 03:36:58 UTC 2017 - wnereiz@eienteiland.org
+
+- Initialize package 

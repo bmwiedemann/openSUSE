@@ -1,0 +1,315 @@
+-------------------------------------------------------------------
+Wed Nov 28 08:58:00 UTC 2018 - schwab@suse.de
+
+- Update to dejagnu 1.6.2
+  * runtest will abort if $DEJAGNU is defined but the file is not
+    found.
+- close-wait-program.patch: Removed
+
+-------------------------------------------------------------------
+Tue Jul 31 09:55:04 UTC 2018 - schwab@suse.de
+
+- Adjust license
+
+-------------------------------------------------------------------
+Tue Jul 17 13:13:19 UTC 2018 - schwab@suse.de
+
+- close-wait-program.patch: Use separate kill command for each pid
+  (bsc#1100206)
+- Use %license.
+
+-------------------------------------------------------------------
+Tue Oct 17 07:25:25 UTC 2017 - schwab@suse.de
+
+- Update to 1.6.1
+  * Minor bug fixes, no major changes
+
+-------------------------------------------------------------------
+Sat Apr 16 17:06:08 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.6
+  * Proper support for target communication via SSH has been added.
+  * A large number of very old config and baseboard files have been 
+    removed.  If you need to resurrect these, you can get them from 
+    version 1.5.3.  If you can show that a board is still in use, 
+    it can be put back in the distribution.
+  * The --status command line option is now the default. This means 
+    that any error in the testsuite Tcl scripts will cause runtest 
+    to abort with exit status code 2.  The --status option has been 
+    removed from the documentation, but will continue to be 
+    accepted for backward compatibility.
+  * runtest now exits with exit code 0 if the testsuite "passed", 
+    1 if something unexpected happened (eg, FAIL, XPASS or 
+    UNRESOLVED), and 2 if an exception is raised by the Tcl 
+    interpreter.
+  * runtest now exits with the standard exit codes of programs that 
+    are terminated by the SIGINT, SIGTERM and SIGQUIT signals.
+  * The user-visible utility procedures `absolute', `psource' and 
+    `slay' have been removed.  If a testsuite uses any of these 
+    procedures, a copy of the procedure should be made and placed 
+    in the lib directory of the testsuite.
+  * Support was added for testing the D compiler.
+  * ~/.dejagnurc is now loaded last, not first. This allows the 
+    user to have the ability to override anything in their 
+    environment (even the site.exp file specified by $DEJAGNU).
+  * The user-visible utility procedure `unsetenv' is deprecated 
+    and will be removed in the next release.  If a testsuite uses 
+    any of these procedures, a copy of the procedure should be made 
+    and placed in the lib directory of the testsuite.
+- Run tests during build
+- Small spec-file polishing
+
+-------------------------------------------------------------------
+Wed Apr  1 10:41:56 UTC 2015 - schwab@suse.de
+
+- Update to dejagnu 1.5.3
+  * More bugfixes
+
+-------------------------------------------------------------------
+Sat Mar 14 14:16:30 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+- Add dependencies for macros dealing with info files
+- Use fdupes to avoid duplicate files
+- Small spec file cleanup by spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb  9 09:08:12 UTC 2015 - schwab@suse.de
+
+- Update to dejagnu 1.5.2
+  * New boards and bugfixes
+
+-------------------------------------------------------------------
+Tue Apr  8 09:50:28 UTC 2014 - schwab@suse.de
+
+- Update to dejagnu 1.5.1
+  1. The runtest.1 man page has been brought up to date.
+  2. The Docbook/SGML documentation files were removed in favour of the
+     Docbook/XML documentation.  The Texinfo source for the Info pages is
+     now automatically generated from the Docbook source.
+  3. The Makefile structure has been substantially simplified.  There
+     is now a single top-level Makefile.am.  The use of recursive make
+     has been eliminated.
+  4. lib/mondfe.exp and lib/xsh.exp have been removed.  Users requiring
+     these communication modes can still use the DejaGnu 1.4 branch or
+     can contact dejagnu@gnu.org to discuss reinstating these files.
+  5. The configure script now ensures that Expect is installed and that
+     it is linked against Tcl 8.3 or greater.
+  6. The runtest program now gracefully handles the possibility of the
+     expect binary vanishing after DejaGnu has been installed (for
+     example, by the user altering their PATH).
+  7. The user-visible utility procedures `absolute', `prune', `psource'
+     and `slay' are deprecated and will be removed in the next release.
+     If a testsuite uses any of these procedures, a copy of the
+     procedure should be made and placed in the lib directory of the
+     testsuite.
+- dejagnu-ignore-libwarning.patch: Removed
+- dejagnu-make_doc.patch: Removed
+- Build as noarch
+
+-------------------------------------------------------------------
+Fri Mar 22 12:17:45 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Fri Jan 11 12:38:40 UTC 2013 - coolo@suse.com
+
+- remove suse_update_config macro
+
+-------------------------------------------------------------------
+Thu Dec  1 16:05:04 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Mon Dec  7 12:34:27 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Wed May 16 11:44:52 CEST 2007 - rguenther@suse.de
+
+- Remove files from correct place.
+
+-------------------------------------------------------------------
+Sun Feb 11 16:51:28 CET 2007 - aj@suse.de
+
+- Fix install of manpage.
+
+-------------------------------------------------------------------
+Wed Jun 14 15:00:44 CEST 2006 - mmarek@suse.cz
+
+- remove more backup files (autoreconf leftovers)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:06 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jul 26 13:02:33 CEST 2004 - schwab@suse.de
+
+- Rerun autoreconf in example directories.
+
+-------------------------------------------------------------------
+Mon May 31 11:23:54 CEST 2004 - mcihar@suse.cz
+
+- update to 1.4.4
+
+-------------------------------------------------------------------
+Thu Mar 18 18:00:39 CET 2004 - mcihar@suse.cz
+
+- remove backup files
+
+-------------------------------------------------------------------
+Wed Oct  1 22:28:26 CEST 2003 - kukuk@suse.de
+
+- Don't regenerate documentation
+
+-------------------------------------------------------------------
+Thu Aug 14 15:11:10 CEST 2003 - mcihar@suse.cz
+
+- included examples (bug #28172)
+
+-------------------------------------------------------------------
+Mon Jun  9 11:10:40 CEST 2003 - aj@suse.de
+
+-  Ignore linker warning when searching 64bit libraries in /lib.
+
+-------------------------------------------------------------------
+Tue May 20 11:11:27 CEST 2003 - aj@suse.de
+
+- Fix wrong break statement so that correct runtest.exp is taken.
+
+-------------------------------------------------------------------
+Mon May 19 11:49:20 CEST 2003 - aj@suse.de
+
+- Fix handling of [getdirs -all $rootdir].
+
+-------------------------------------------------------------------
+Tue May 13 08:16:32 CEST 2003 - aj@suse.de
+
+- Handle _exit correctly.
+
+-------------------------------------------------------------------
+Mon Nov 11 11:26:13 CET 2002 - ro@suse.de
+
+- changed neededforbuild <jade_dsl> to <openjade>
+- changed neededforbuild <sp> to <opensp>
+
+-------------------------------------------------------------------
+Fri Nov 08 14:59:06 CET 2002 - mcihar@suse.cz
+
+- included /usr/include/dejagnu.h in rpm
+
+-------------------------------------------------------------------
+Wed Sep 25 16:33:06 CEST 2002 - mcihar@suse.cz
+
+- new upstream version 1.4.3, major changes:
+	1. New XML output option, so test results can be loaded into a
+	database.
+	2. Support for the KFAIL/KPASS (known failures). This is
+	mostly oriented towards GDB testing.
+	3. New "Hello World" example.
+	4. New tutorial chapter.
+- removed uneeded patches
+- config site.exp is now physically located in /etc/dejagnu, in
+  /usr/share/dejagnu is just symlink
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Mon Sep  2 08:54:13 CEST 2002 - kukuk@suse.de
+
+- Remove sh-utils from neededforbuild
+
+-------------------------------------------------------------------
+Fri Jul 12 08:18:34 CEST 2002 - aj@suse.de
+
+- Fix remote.exp.
+- Add support for mmixware simulator.
+
+-------------------------------------------------------------------
+Wed Jun 26 10:18:42 CEST 2002 - schwab@suse.de
+
+- Fix argument parsing.
+
+-------------------------------------------------------------------
+Tue Jun 25 14:39:26 CEST 2002 - schwab@suse.de
+
+- Restore working site.exp.
+
+-------------------------------------------------------------------
+Fri Jun 14 16:39:12 CEST 2002 - mcihar@suse.cz
+
+- updated to 1.4.2: 
+    * Various patches for bugs reported from net users.
+    * There is new support for a simple unit testing API, that is
+	  also useful for embedded testing.
+- html and pdf documantaion is included
+
+-------------------------------------------------------------------
+Tue May  8 23:17:38 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Wed Apr 18 11:56:04 CEST 2001 - nadvornik@suse.cz
+
+- installed info pages [bug #6990]
+
+-------------------------------------------------------------------
+Thu Mar 15 10:28:57 CET 2001 - nadvornik@suse.cz
+
+- update to 1.4.0
+
+-------------------------------------------------------------------
+Wed Apr 19 11:10:26 CEST 2000 - nadvornik@suse.cz
+
+- added BuildRoot
+- added URL
+- fixed Group tag
+
+-------------------------------------------------------------------
+Mon Mar  6 07:59:30 CET 2000 - ro@suse.de
+
+- use macro for mandir 
+
+-------------------------------------------------------------------
+Tue Nov 30 12:35:59 MET 1999 - kukuk@suse.de
+
+- Fix SIGPWR/SIGLOST for SPARC
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Jun 30 13:08:29 MEST 1999 - ro@suse.de
+
+- update to snapshot 19990614
+
+----------------------------------------------------------------------
+Mon Oct 20 15:01:01 MEST 1997  -  hf@suse.de
+
+ ready for autobuild
+
+----------------------------------------------------------------------
+Mon Apr 28 13:31:24 GMT 1997  -  hf@suse.de
+
+ New version of dejagnu works with tcl7.6 and expect 5.22,
+ and have more procs.
+ 

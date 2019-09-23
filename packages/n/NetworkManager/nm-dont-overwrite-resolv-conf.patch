@@ -1,0 +1,13 @@
+Index: NetworkManager-1.16.0/src/dns/nm-dns-manager.c
+===================================================================
+--- NetworkManager-1.16.0.orig/src/dns/nm-dns-manager.c
++++ NetworkManager-1.16.0/src/dns/nm-dns-manager.c
+@@ -565,7 +565,7 @@ again:
+ 	nm_close (fd);
+ 
+ 	/* Wait until the process exits */
+-	if (!nm_utils_kill_child_sync (pid, 0, LOGD_DNS, "netconfig", &status, 1000, 0)) {
++	if (!nm_utils_kill_child_sync (pid, 0, LOGD_DNS, "netconfig", &status, 0, 0)) {
+ 		errsv = errno;
+ 		g_set_error (error, NM_MANAGER_ERROR, NM_MANAGER_ERROR_FAILED,
+ 		             "Error waiting for netconfig to exit: %s",

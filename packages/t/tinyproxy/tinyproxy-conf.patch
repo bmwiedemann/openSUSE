@@ -1,0 +1,57 @@
+From: Christian Wittmer <chris@computersalat.de>
+Date: 2012-02-23 00:17:13 +0000
+
+---
+ etc/tinyproxy.conf.in |   14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+Index: tinyproxy-1.8.3/etc/tinyproxy.conf.in
+===================================================================
+--- tinyproxy-1.8.3.orig/etc/tinyproxy.conf.in
++++ tinyproxy-1.8.3/etc/tinyproxy.conf.in
+@@ -12,8 +12,8 @@
+ # as the root user. Either the user or group name or the UID or GID
+ # number may be used.
+ #
+-User nobody
+-Group nobody
++User tinyproxy
++Group tinyproxy
+ 
+ #
+ # Port: Specify the port which tinyproxy will listen on.  Please note
+@@ -116,7 +116,7 @@ StatFile "@pkgdatadir@/stats.html"
+ # LogLevel was set to Warning, then all log messages from Warning to
+ # Critical would be output, but Notice and below would be suppressed.
+ #
+-LogLevel Info
++LogLevel Connect
+ 
+ #
+ # PidFile: Write the PID of the main tinyproxy thread to this file so it
+@@ -173,7 +173,7 @@ LogLevel Info
+ # be created. In other words, only MaxClients number of clients can be
+ # connected at the same time.
+ #
+-MaxClients 100
++MaxClients 20
+ 
+ #
+ # MinSpareServers/MaxSpareServers: These settings set the upper and
+@@ -183,13 +183,13 @@ MaxClients 100
+ # server processes will be spawned.  If the number of servers exceeds
+ # MaxSpareServers then the extras will be killed off.
+ #
+-MinSpareServers 5
+-MaxSpareServers 20
++MinSpareServers 2
++MaxSpareServers 5
+ 
+ #
+ # StartServers: The number of servers to start initially.
+ #
+-StartServers 10
++StartServers 5
+ 
+ #
+ # MaxRequestsPerChild: The number of connections a thread will handle

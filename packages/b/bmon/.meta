@@ -1,0 +1,13 @@
+<package name="bmon" project="openSUSE:Factory">
+  <title>Bandwidth Monitor and Rate Estimator</title>
+  <description>bmon is a portable bandwidth monitor and rate estimator. It supports various
+input methods for different architectures. Various output modes exist,
+including an interactive curses interface, lightweight HTML output, and simple
+ASCII output. Statistics may be distributed over a network using multicast or
+unicast and collected at some point to generate a summary of statistics for a
+set of nodes.
+
+</description>
+  <devel project="network:utilities" package="bmon"/>
+  <url>http://www.infradead.org/~tgr/bmon/</url>
+</package>

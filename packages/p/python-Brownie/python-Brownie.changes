@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Sat Apr 22 20:16:54 UTC 2017 - aloisio@gmx.com
+
+- Added python2-Brownie provides for single-spec packages
+
+-------------------------------------------------------------------
+Thu Oct 24 10:59:25 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Jan 31 12:32:32 UTC 2012 - saschpe@suse.de
+
+- Initial version
+

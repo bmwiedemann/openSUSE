@@ -1,0 +1,7 @@
+<package name="libunique1" project="openSUSE:Factory">
+  <title>A library for writing single instance application</title>
+  <description>Unique is a library for writing single instance application. If you
+launch a single instance application twice, the second instance will
+either just quit or will send a message to the running instance.</description>
+  <devel project="GNOME:Factory" package="libunique1"/>
+</package>

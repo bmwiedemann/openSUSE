@@ -1,0 +1,11 @@
+diff -Nur deepin-movie-reborn-3.2.17/src/common/dmr_settings.cpp deepin-movie-reborn-3.2.17-new/src/common/dmr_settings.cpp
+--- deepin-movie-reborn-3.2.17/src/common/dmr_settings.cpp	2018-12-13 13:52:56.000000000 +0800
++++ deepin-movie-reborn-3.2.17-new/src/common/dmr_settings.cpp	2018-12-20 23:59:26.438699300 +0800
+@@ -89,6 +89,7 @@
+         case Settings::Flag::HWAccel: return "hwaccel";
+     }
+ 
++    return "";
+ }
+ 
+ bool Settings::isSet(Flag f) const

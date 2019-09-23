@@ -1,0 +1,199 @@
+From 150afc7a1ea6318a0bb411d47944bbd62f13c6cb Mon Sep 17 00:00:00 2001
+From: Ludwig Nussel <ludwig.nussel@suse.de>
+Date: Wed, 21 Apr 2010 11:41:25 +0200
+Subject: [PATCH 2/2] drop baudboy.h
+
+whether or not a helper is needed to lock devices needs to be
+defined by the distribution at build time. It's transparent to
+applications that use the ttylock interface.
+---
+ configure.ac       |   15 +++++++++++++++
+ src/Makefile.am    |    2 +-
+ src/baudboy.h      |   42 ------------------------------------------
+ src/baudboy_test.c |    1 -
+ src/lockdev.c      |   25 ++++++++-----------------
+ 5 files changed, 24 insertions(+), 61 deletions(-)
+ delete mode 100644 src/baudboy.h
+
+diff --git a/configure.ac b/configure.ac
+index 533e228..b0f0608 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -40,6 +40,21 @@ AC_HEADER_STDC
+ 
+ LT_INIT([disable-static])
+ 
++AC_MSG_CHECKING([whether the library needs to call a helper])
++AC_ARG_ENABLE(helper,AS_HELP_STRING([--enable-helper],[use helper binary for locking]),,enable_helper=auto)
++if test x$enable_helper = xauto; then
++	varlockperms=`stat -c %a /var/lock`
++	if test x"$varlockperms" != x777; then
++		enable_helper=yes
++	fi
++fi
++if test x$enable_helper = xyes; then
++	AC_MSG_RESULT([yes])
++	AC_DEFINE_UNQUOTED([TTYLOCK_USE_HELPER], 1, [set to 1 to enable use of helper binary])
++else
++	AC_MSG_RESULT([no])
++fi
++
+ dnl check if user wants debug
+ AC_MSG_CHECKING([whether to enable debug output])
+ AC_ARG_ENABLE(debug,AS_HELP_STRING([--enable-debug],[turn on debugging code]),,enable_debug=no)
+diff --git a/src/Makefile.am b/src/Makefile.am
+index a5b31e3..85aa3a7 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,7 +1,7 @@
+ sbin_PROGRAMS = lockdev
+ noinst_PROGRAMS = baudboy
+ 
+-include_HEADERS = lockdev.h baudboy.h ttylock.h
++include_HEADERS = lockdev.h ttylock.h
+ 
+ AM_CPPFLAGS = -include $(top_builddir)/config.h -DSBINDIR=\"$(sbindir)\"
+ 
+diff --git a/src/baudboy.h b/src/baudboy.h
+deleted file mode 100644
+index 6e41afd..0000000
+--- a/src/baudboy.h
++++ /dev/null
+@@ -1,42 +0,0 @@
+-/* Copyright (C) 2001 Red Hat, Inc.
+-
+-   This library is free software; you can redistribute it and/or
+-   modify it under the terms of the GNU Lesser General Public License
+-   as published by the Free Software Foundation; either version 2 of
+-   the License, or (at your option) any later version.
+-
+-   It is distributed in the hope that it will be useful, but WITHOUT
+-   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+-   or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General
+-   Public License for more details.
+-
+-   You should have received a copy of the GNU Lesser General Public
+-   License along with this software; if not, write to the Free
+-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+-   02111-1307 USA.  */
+-
+-
+-#ifndef _BAUDBOY_H_
+-#define _BAUDBOY_H_
+-
+-#ifdef	__cplusplus
+-extern "C" {
+-#endif
+-
+-int ttylock_helper (const char * devname);
+-int ttywait_helper (const char * devname);
+-int ttyunlock_helper (const char * devname);
+-int ttylocked_helper (const char * devname);
+-
+-#ifndef _LIBLOCKDEV_NO_BAUDBOY_DEFINES
+-#define ttylock(devname) ttylock_helper(devname)
+-#define ttywait(devname) ttywait_helper(devname)
+-#define ttyunlock(devname) ttyunlock_helper(devname)
+-#define ttylocked(devname) ttylocked_helper(devname)
+-#endif
+-
+-#ifdef	__cplusplus
+-};
+-#endif
+-
+-#endif /* _BAUDBOY_H_ */
+diff --git a/src/baudboy_test.c b/src/baudboy_test.c
+index 768e260..e481270 100644
+--- a/src/baudboy_test.c
++++ b/src/baudboy_test.c
+@@ -8,7 +8,6 @@
+ #include <unistd.h>
+ #include <errno.h>
+ #include <string.h>
+-#include "baudboy.h"
+ 
+ void
+ usage (void)
+diff --git a/src/lockdev.c b/src/lockdev.c
+index 8bcf8c6..88305e9 100644
+--- a/src/lockdev.c
++++ b/src/lockdev.c
+@@ -120,8 +120,6 @@
+ #include <sys/wait.h>
+ #include "lockdev.h"
+ #include "ttylock.h"
+-#define _LIBLOCKDEV_NO_BAUDBOY_DEFINES
+-#include "baudboy.h"
+ 
+ #define	LOCKDEV_PATH	SBINDIR "/lockdev"
+ 
+@@ -906,6 +904,7 @@ dev_unlock (const char *devname,
+ }
+ 
+ 
++#ifndef TTYLOCK_USE_HELPER
+ int
+ ttylock(const char *devname)
+ {
+@@ -925,16 +924,7 @@ ttylocked(const char *devname)
+ 	return dev_testlock( devname) == 0 ? 0 : -1;
+ }
+ 
+-int
+-ttywait (const char *devname)
+-{
+-
+-	int rc;
+-	while((rc = ttylocked(devname)) == 0)
+-		sleep(1);
+-	return rc;
+-}
+-
++#else
+ static int _spawn_helper(const char * argv[])
+ {
+     pid_t child;
+@@ -1003,7 +993,7 @@ static int _spawn_helper(const char * argv[])
+ }
+ 
+ int
+-ttylock_helper(const char * devname)
++ttylock(const char * devname)
+ {
+     const char * argv[] = { LOCKDEV_PATH, "-l", NULL, NULL};
+     argv[2] = devname;
+@@ -1011,7 +1001,7 @@ ttylock_helper(const char * devname)
+ }
+ 
+ int
+-ttyunlock_helper(const char * devname)
++ttyunlock(const char * devname)
+ {
+     const char * argv[] = { LOCKDEV_PATH, "-u", NULL, NULL};
+     argv[2] = devname;
+@@ -1019,18 +1009,19 @@ ttyunlock_helper(const char * devname)
+ }
+ 
+ int
+-ttylocked_helper(const char * devname)
++ttylocked(const char * devname)
+ {
+     const char * argv[] = { LOCKDEV_PATH, NULL, NULL};
+     argv[1] = devname;
+     return _spawn_helper(argv);
+ }
++#endif
+ 
+ int
+-ttywait_helper(const char * devname)
++ttywait(const char * devname)
+ {
+     int rc;
+-    while((rc = ttylocked_helper(devname)) == 0)
++    while((rc = ttylocked(devname)) == 0)
+ 	sleep(1);
+     return rc;
+ }
+-- 
+1.6.4.2
+

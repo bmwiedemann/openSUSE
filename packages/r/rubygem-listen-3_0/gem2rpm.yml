@@ -1,0 +1,12 @@
+# ---
+# ## used by gem2rpm
+# :summary: this is a custom summary
+# ## used by gem2rpm
+# :description: |-
+#   this is a custom description
+#
+#   it can be multiline
+# ## used by gem2rpm
+# :license: MIT or Ruby
+# ## used by gem2rpm and gem_packages
+:version_suffix: '-3_0'

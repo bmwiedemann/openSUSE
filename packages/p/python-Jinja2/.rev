@@ -1,0 +1,352 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>20619a08cea739cfb15f4cf1c012cbec</srcmd5>
+    <version>2.5.5</version>
+    <time>1311247102</time>
+    <user>darix</user>
+    <comment>Replaces python-jinja2, adds some fixes</comment>
+    <requestid>76558</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1cfca643c0e4b18428e8061175007048</srcmd5>
+    <version>2.5.5</version>
+    <time>1311247120</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 76558
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>30b2da1a949b46580afa97437decec39</srcmd5>
+    <version>2.6</version>
+    <time>1316618290</time>
+    <user>saschpe</user>
+    <comment>- Update to version 2.6:
+  * internal attributes now raise an internal attribute error now instead
+    of returning an undefined.  This fixes problems when passing undefined
+    objects to Python semantics expecting APIs.
+  * traceback support now works properly for PyPy.  (Tested with 1.4)
+  * implemented operator intercepting for sandboxed environments.  This
+    allows application developers to disable builtin operators for better
+    security.  (For instance limit the mathematical operators to actual
+    integers instead of longs)
+  * groupby filter now supports dotted notation for grouping by attributes
+    of attributes.
+  * scoped blocks not properly treat toplevel assignments and imports.
+    Previously an import suddenly &quot;disappeared&quot; in a scoped block.
+  * automatically detect newer Python interpreter versions before loading code
+    from bytecode caches to prevent segfaults on invalid opcodes.  The segfault
+    in earlier Jinja2 versions here was not a Jinja2 bug but a limitation in
+    the underlying Python interpreter.  If you notice Jinja2 segfaulting in
+    earlier versions after an upgrade of the Python interpreter you don't have
+    to upgrade, it's enough to flush the bytecode cache.  This just no longer
+    makes this necessary, Jinja2 will automatically detect these cases now.
+  * the sum filter can now sum up values by attribute.  This is a backwards
+    incompatible change.  The argument to the filter previously was the
+    optional starting index which defaultes to zero.  This now became the
+    second argument to the function because it's rarely used.
+  * like sum, sort now also makes it possible to order items by attribute.
+  * like sum and sort, join now also is able to join attributes of objects
+    as string.
+  * the internal eval context now has a reference to the environment.
+  * added a mapping test to see if an object is a dict or an object with
+    a similar interface.</comment>
+    <requestid>83867</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3459cdc6a77ffa3bf3daa60537bc96c1</srcmd5>
+    <version>2.6</version>
+    <time>1317024715</time>
+    <user>saschpe</user>
+    <comment>- Split of 'vim' and 'emacs' sub-packages that contain syntax highlighting
+  support for both editors
+
+- Set license to BSD-3-Clause (SPDX style)
+- Require python-distribute instead of python-setuptools</comment>
+    <requestid>84461</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>3459cdc6a77ffa3bf3daa60537bc96c1</srcmd5>
+    <version>2.6</version>
+    <time>1319182379</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>bff9d2fd956f34efbc02a31915b46874</srcmd5>
+    <version>2.6</version>
+    <time>1323194173</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>883efb51697013863c1490684cc0d09c</srcmd5>
+    <version>2.6</version>
+    <time>1330062807</time>
+    <user>coolo</user>
+    <comment>- Simplified macro usage</comment>
+    <requestid>106666</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>4591f8b998f1e5682a14733147bf1043</srcmd5>
+    <version>2.6</version>
+    <time>1336423787</time>
+    <user>coolo</user>
+    <comment>Fix building python 3 package on openSUSE 11.4 x86_64 (forwarded request 116054 from TheBlackCat) (forwarded request 116055 from TheBlackCat)</comment>
+    <requestid>116056</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>4591f8b998f1e5682a14733147bf1043</srcmd5>
+    <version>2.6</version>
+    <time>1340184029</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>ce7cb18313e9fa6e2549986f7fd16c94</srcmd5>
+    <version>2.6</version>
+    <time>1353955952</time>
+    <user>coolo</user>
+    <comment>Remove openSUSE 11.4 spec file workarounds (forwarded request 142402 from TheBlackCat) (forwarded request 142403 from TheBlackCat)</comment>
+    <requestid>142404</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>b2e219ebe8b409384aca75a803b9301e</srcmd5>
+    <version>2.6</version>
+    <time>1354530053</time>
+    <user>coolo</user>
+    <comment>Fix building on openSUSE 12.1 and 12.2 (forwarded request 143680 from TheBlackCat)</comment>
+    <requestid>143681</requestid>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>b2e219ebe8b409384aca75a803b9301e</srcmd5>
+    <version>2.6</version>
+    <time>1359109977</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="14">
+    <srcmd5>e6f6a1f240daf328b4637abc946847ba</srcmd5>
+    <version>2.6</version>
+    <time>1371651701</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179684</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d83cfe9600ede88b54e35178a367f9ca</srcmd5>
+    <version>2.7</version>
+    <time>1373564226</time>
+    <user>coolo</user>
+    <comment>- update to 2.7:
+  - Choice and prefix loaders now dispatch source and template lookup
+    separately in order to work in combination with module loaders as
+    advertised.
+  - Fixed filesizeformat.
+  - Added a non-silent option for babel extraction.
+  - Added `urlencode` filter that automatically quotes values for
+    URL safe usage with utf-8 as only supported encoding.  If applications
+    want to change this encoding they can override the filter.
+  - Added `keep-trailing-newline` configuration to environments and
+    templates to optionally preserve the final trailing newline.
+  - Accessing `last` on the loop context no longer causes the iterator
+    to be consumed into a list.
+  - Python requirement changed: 2.6, 2.7 or &gt;= 3.3 are required now,
+    supported by same source code, using the &quot;six&quot; compatibility library.
+  - Allow `contextfunction` and other decorators to be applied to `__call__`.
+  - Added support for changing from newline to different signs in the `wordwrap`
+    filter.
+  - Added support for ignoring memcache errors silently.
+  - Added support for keeping the trailing newline in templates.
+  - Added finer grained support for stripping whitespace on the left side
+    of blocks.
+  - Added `map`, `select`, `reject`, `selectattr` and `rejectattr`
+    filters.
+  - Added support for `loop.depth` to figure out how deep inside a recursive
+    loop the code is.
+  - Disabled py_compile for pypy and python 3. (forwarded request 182834 from dirkmueller)</comment>
+    <requestid>182845</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ffca52eeb09638fee2950625feee7d27</srcmd5>
+    <version>2.7.1</version>
+    <time>1376562547</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 2.7.1:
+ - Fixed a bug with ``call_filter`` not working properly on environment
+   and context filters.
+ - Fixed lack of Python 3 support for bytecode caches.
+ - Reverted support for defining blocks in included templates as this
+   broke existing templates for users.
+ - Fixed some warnings with hashing of undefineds and nodes if Python
+   is run with warnings for Python 3.
+ - Added support for properly hashing undefined objects.
+ - Fixed a bug with the title filter not working on already uppercase
+   strings. (forwarded request 186916 from dirkmueller)</comment>
+    <requestid>186936</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>929a972d935a1188741568398c78b88b</srcmd5>
+    <version>2.7.1</version>
+    <time>1378238601</time>
+    <user>coolo</user>
+    <comment>- Avoid &quot;Recommends:&quot; on old rpm distros</comment>
+    <requestid>197127</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>929a972d935a1188741568398c78b88b</srcmd5>
+    <version>2.7.1</version>
+    <time>1379664104</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>7de227890fb189b051eca175e195939e</srcmd5>
+    <version>2.7.1</version>
+    <time>1382692793</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204582</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8158d0f4b57bf2a8d825385c4e53eff3</srcmd5>
+    <version>2.7.2</version>
+    <time>1389883091</time>
+    <user>coolo</user>
+    <comment>- update to 2.7.2:
+  - Prefix loader was not forwarding the locals properly to
+    inner loaders.  This is now fixed.
+  - Security issue: Changed the default folder for the filesystem cache to be
+    user specific and read and write protected on UNIX systems.  See `Debian bug
+    734747`_ for more information. (forwarded request 213701 from dirkmueller)</comment>
+    <requestid>213770</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>2be1d414f2733b6e748feba7b175ff83</srcmd5>
+    <version>2.7.2</version>
+    <time>1399051318</time>
+    <user>coolo</user>
+    <comment>- avoid rebuildcycle with vim (forwarded request 231546 from dirkmueller)</comment>
+    <requestid>231785</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>d5de5caa14c1216c3d6cd3282887331f</srcmd5>
+    <version>2.7.2</version>
+    <time>1399755419</time>
+    <user>coolo</user>
+    <comment>- fix package build (file selection missing) (forwarded request 233206 from frispete)</comment>
+    <requestid>233228</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0e87be0c6da46e6763b1ff62186ef2ae</srcmd5>
+    <version>2.7.3</version>
+    <time>1405521431</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241046</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>1f4412d2011ab758f1b5ab27c9fd34cc</srcmd5>
+    <version>2.7.3</version>
+    <time>1408549961</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244834</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>1f4412d2011ab758f1b5ab27c9fd34cc</srcmd5>
+    <version>2.7.3</version>
+    <time>1409302790</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>51b864e78551a43664a9d84924530338</srcmd5>
+    <version>2.7.3</version>
+    <time>1431673377</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306661</requestid>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>8255e54525003ddb3796de8b4c252fa6</srcmd5>
+    <version>2.7.3</version>
+    <time>1437724661</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317965</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>57dd2e3a2dd2b5965cdab6707417c34e</srcmd5>
+    <version>2.8</version>
+    <time>1449145545</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>345260</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>adba6fd29d8257f318ff7a8cadec8fd4</srcmd5>
+    <version>2.9.6</version>
+    <time>1492618050</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>485735</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>27e222d08f18dbb265c6b94fc131a86e</srcmd5>
+    <version>2.10</version>
+    <time>1510506010</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540464</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>13d39413593641542de86ccb30f9dad4</srcmd5>
+    <version>2.10</version>
+    <time>1520253284</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580801</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>472d2b5ebb68f48dd4afdaceab8d196a</srcmd5>
+    <version>2.10</version>
+    <time>1520588072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583700</requestid>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>2c36febd599032aeae5b4f882f5fc122</srcmd5>
+    <version>2.10</version>
+    <time>1544816894</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call
+
+- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>656829</requestid>
+  </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>ad25323dd0202357c4e7fd050160cc97</srcmd5>
+    <version>2.10</version>
+    <time>1551037604</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677238</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>13468f27eefff455cb8505e3f1781a9a</srcmd5>
+    <version>2.10.1</version>
+    <time>1555691816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694206</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>145e3168a45bbe90364718a2b910ba56</srcmd5>
+    <version>2.10.1</version>
+    <time>1557083967</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.10.1 (bsc#1132323, CVE-2019-10906, bsc#1125815, CVE-2019-8341):
+- Update to 2.9.5 (bsc#1132174, CVE-2016-10745)</comment>
+    <requestid>699516</requestid>
+  </revision>
+</revisionlist>

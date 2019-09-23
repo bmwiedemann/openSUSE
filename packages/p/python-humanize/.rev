@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7cf8c77cf4fb6612ae6482864283bd68</srcmd5>
+    <version>0.5.1</version>
+    <time>1499754303</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>507977</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4f8a14afbdd779ba101b29ce9bbc912b</srcmd5>
+    <version>0.5.1</version>
+    <time>1546535181</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call
+- Fix Source url
+
+- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>656826</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c321169f1e37cf237872b563a1f6141a</srcmd5>
+    <version>0.5.1</version>
+    <time>1559837829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707796</requestid>
+  </revision>
+</revisionlist>

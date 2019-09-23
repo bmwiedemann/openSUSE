@@ -1,0 +1,5 @@
+<package name="kcm5-fcitx" project="openSUSE:Factory">
+  <title></title>
+  <description>A KCM module to config FCITX.</description>
+  <devel project="M17N" package="kcm5-fcitx"/>
+</package>

@@ -1,0 +1,399 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>e5b7107d25c39425f15a65862c2e6f42</srcmd5>
+    <version>0.0.18</version>
+    <time>1222093036</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e674be7f5035e7f857ec43271c345aa0</srcmd5>
+    <version>0.0.18</version>
+    <time>1222706113</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>fa0d8be2768af553b00498dcd584f464</srcmd5>
+    <version>0.0.18</version>
+    <time>1223308053</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1335a5888f6e88790405467848719526</srcmd5>
+    <version>0.0.20</version>
+    <time>1225717725</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>191f7f74f444bdff6c3a972263c10a1e</srcmd5>
+    <version>0.0.22</version>
+    <time>1233959990</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>dea646df9126fe1239824339153a2f67</srcmd5>
+    <version>0.0.22</version>
+    <time>1244823290</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4fedecd73bed25d1e62cc074f5044447</srcmd5>
+    <version>0.1.0</version>
+    <time>1251292154</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/gegl based on submit request 18840 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>4fedecd73bed25d1e62cc074f5044447</srcmd5>
+    <version>0.1.0</version>
+    <time>1251292154</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/gegl based on submit request 18840 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>7d51c7111393f5eb3ff81a8741e277a1</srcmd5>
+    <version>0.1.0</version>
+    <time>1264778719</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/gegl based on submit request 30747 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bb37ae9ead1caad25646584b396db01b</srcmd5>
+    <version>0.1.2</version>
+    <time>1266055648</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/gegl based on submit request 32471 from user coolo
+</comment>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>19f839111b26100c23e56ff72d98e9b4</srcmd5>
+    <version>0.1.2</version>
+    <time>1266884285</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/gegl based on submit request 33134 from user msmeissn
+</comment>
+    <requestid>33134</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>a503e1607bb600baca55f6c1877f7c50</srcmd5>
+    <version>0.1.2</version>
+    <time>1268923695</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>a503e1607bb600baca55f6c1877f7c50</srcmd5>
+    <version>0.1.2</version>
+    <time>1278667346</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>a503e1607bb600baca55f6c1877f7c50</srcmd5>
+    <version>0.1.2</version>
+    <time>1278678577</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>a503e1607bb600baca55f6c1877f7c50</srcmd5>
+    <version>0.1.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>67ead39e4a84d3cd474a4b9152974350</srcmd5>
+    <version>0.1.2</version>
+    <time>1304667876</time>
+    <user>saschpe</user>
+    <comment>Fix build of gegl on Factory - Solution is only semy correct. Correct would be to require graphviz-devel and fixup graphviz-devel to Require all it's subpackages. (forwarded request 69707 from dimstar)</comment>
+    <requestid>69708</requestid>
+  </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>34cd867bd98c4eb05a9b68fa226c22d7</srcmd5>
+    <version>0.1.2</version>
+    <time>1304667890</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69708
+</comment>
+  </revision>
+  <revision rev="18" vrev="13">
+    <srcmd5>34cd867bd98c4eb05a9b68fa226c22d7</srcmd5>
+    <version>0.1.2</version>
+    <time>1319181900</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="10">
+    <srcmd5>cbfa5090fef0c018b17da60cbe7108de</srcmd5>
+    <version>0.1.6</version>
+    <time>1321886712</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>92809</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>524e15312e4c3281c0ffb423a8b8b9a0</srcmd5>
+    <version>0.1.8</version>
+    <time>1326378634</time>
+    <user>coolo</user>
+    <comment>Fix build (forwarded request 99733 from vuntz)</comment>
+    <requestid>99750</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7a152d81cd5f4d430234c417c11260cd</srcmd5>
+    <version>0.2.0</version>
+    <time>1334692704</time>
+    <user>coolo</user>
+    <comment>Update to 0.2.0 (forwarded request 112353 from vuntz)</comment>
+    <requestid>112357</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>abcc5bdb84a88dd1c5f563dec5558aea</srcmd5>
+    <version>0.2.0</version>
+    <time>1337580313</time>
+    <user>coolo</user>
+    <comment>Fix build on Factory with ruby 1.9 (forwarded request 121387 from dimstar)</comment>
+    <requestid>121388</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>abcc5bdb84a88dd1c5f563dec5558aea</srcmd5>
+    <version>0.2.0</version>
+    <time>1340183359</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>abcc5bdb84a88dd1c5f563dec5558aea</srcmd5>
+    <version>0.2.0</version>
+    <time>1359108919</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>8c0873b0c021d9c5321d4ac53e70fc66</srcmd5>
+    <version>0.2.0</version>
+    <time>1360008634</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 151121 from coolo)</comment>
+    <requestid>151136</requestid>
+  </revision>
+  <revision rev="26" vrev="9">
+    <srcmd5>8c0873b0c021d9c5321d4ac53e70fc66</srcmd5>
+    <version>0.2.0</version>
+    <time>1379662412</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="11">
+    <srcmd5>8c0873b0c021d9c5321d4ac53e70fc66</srcmd5>
+    <version>0.2.0</version>
+    <time>1409300943</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="12">
+    <srcmd5>6c758531b2a3f43a907fe2ba1cb242aa</srcmd5>
+    <version>0.2.0</version>
+    <time>1414613351</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258463</requestid>
+  </revision>
+  <revision rev="29" vrev="13">
+    <srcmd5>bd5b30f8d42d777d2b1cf136007ae531</srcmd5>
+    <version>0.2.0</version>
+    <time>1454150066</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356069</requestid>
+  </revision>
+  <revision rev="30" vrev="14">
+    <srcmd5>f3537cbae085f63b225e467fc466ef5b</srcmd5>
+    <version>0.2.0</version>
+    <time>1461334658</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390503</requestid>
+  </revision>
+  <revision rev="31" vrev="15">
+    <srcmd5>6cd188defa04b97d0d05db32fb8d1fea</srcmd5>
+    <version>0.2.0</version>
+    <time>1486551955</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454841</requestid>
+  </revision>
+  <revision rev="32" vrev="16">
+    <srcmd5>71101321a9c97492b09726a53391874d</srcmd5>
+    <version>0.2.0</version>
+    <time>1489174999</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix CVE-2012-4433 (bsc#789835):</comment>
+    <requestid>476790</requestid>
+  </revision>
+  <revision rev="33" vrev="17">
+    <srcmd5>c64cfb4d0dae6445c75eccab36453738</srcmd5>
+    <version>0.2.0</version>
+    <time>1516443744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566437</requestid>
+  </revision>
+  <revision rev="34" vrev="18">
+    <srcmd5>c47dc19a01479a9af2b54d8f8f4889d9</srcmd5>
+    <version>0.2.0</version>
+    <time>1516971462</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568911</requestid>
+  </revision>
+  <revision rev="35" vrev="19">
+    <srcmd5>4128b137d5012740c0b675ef35e8a0da</srcmd5>
+    <version>0.2.0</version>
+    <time>1520588106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584481</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ac1e08fef35f1600f28c90f41a275c5d</srcmd5>
+    <version>0.3.28</version>
+    <time>1521904123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589853</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>35f878aa0c70da5da0c6418b93b3b87c</srcmd5>
+    <version>0.3.30</version>
+    <time>1522702057</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592193</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>b5d15584c1c8f311cae21d3a49ed33e7</srcmd5>
+    <version>0.3.30</version>
+    <time>1523029289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593214</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5cb5f0c47c892f6cf52b2ab55b91ac45</srcmd5>
+    <version>0.3.34</version>
+    <time>1524400453</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598051</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>f1e01852b02d22388eecf65724fcb0ae</srcmd5>
+    <version>0.3.34</version>
+    <time>1524643073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599880</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>83b237030b820994d8966d2806f0aedb</srcmd5>
+    <version>0.4.0</version>
+    <time>1525343507</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.0:
+  + GEGL 0.4.x is a stable release series of GEGL to have a stable
+    API and ABI to go with GIMP-2.10. When the need arises to break
+    API or ABI compatibility the 0.4.x series will get its own
+    branch and unstable API experiments and development, 0.5.x will
+    happen in master. For now though master will track the 0.4.x
+    series.
+  + Core: Change GeglParamSpecSeed from int to uint to match the
+    value range of GeglRandom's seed.
+  + Operations:
+    - Ripple fixed remaining issues needed to remove legacy GIMP
+      plug-in in GIMP.
+    - Spherize, requrise transform and color-overlay moved out of
+      workshop.
+    - Ppm-load ported to GIO.
+- Rename subpackages following upstreams soname bump.
+- Do not buildrequires lensfun-devel, it would be only used when
+  building workshop, if Makefile was really compiling relevant
+  code.
+</comment>
+    <requestid>602149</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>8dacc44f9c5f98b167f82290ae437882</srcmd5>
+    <version>0.4.0</version>
+    <time>1526219818</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606287</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>8b39667b271326cbbe370a7ed42612f4</srcmd5>
+    <version>0.4.2</version>
+    <time>1527276951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610015</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>e97d5d872ecb1c183fcc5f47fb5043d2</srcmd5>
+    <version>0.4.4</version>
+    <time>1531469712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621145</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>6bee76cabb3b3d1e89020b4640e6693e</srcmd5>
+    <version>0.4.8</version>
+    <time>1536575338</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>631255</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>cab2e437a114f22596761b6e16da4326</srcmd5>
+    <version>0.4.12</version>
+    <time>1542012510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646177</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>6b73c1dc6fefce7349b3bcf371c8644a</srcmd5>
+    <version>0.4.14</version>
+    <time>1558036870</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.4.14</comment>
+    <requestid>702665</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>9c6e51a66317b4d3d400e9596a2a1053</srcmd5>
+    <version>0.4.16</version>
+    <time>1559642918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706747</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>74ef4532956601d5a10da869eeb8f9ce</srcmd5>
+    <version>0.4.16</version>
+    <time>1565864831</time>
+    <user>dimstar_suse</user>
+    <comment>Various tweaks or package</comment>
+    <requestid>723296</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>21402278ac04573027c016bf05338f0d</srcmd5>
+    <version>0.4.16</version>
+    <time>1568983009</time>
+    <user>maxlin_factory</user>
+    <comment>Drop jasper support.</comment>
+    <requestid>729376</requestid>
+  </revision>
+</revisionlist>

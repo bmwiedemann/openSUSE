@@ -1,0 +1,167 @@
+<revisionlist>
+  <revision rev="1" vrev="7">
+    <srcmd5>f50996ee73ba977eee4fad5f13f51730</srcmd5>
+    <version>0.41</version>
+    <time>1168902923</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="34">
+    <srcmd5>b2f511513e929269e1046482f64896f3</srcmd5>
+    <version>0.41</version>
+    <time>1177273960</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="71">
+    <srcmd5>b04abf2a2db535d44d59791e5e0f8953</srcmd5>
+    <version>0.41</version>
+    <time>1186703556</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="99">
+    <srcmd5>05cb0f701c247e153048ba72e3b90acf</srcmd5>
+    <version>0.41</version>
+    <time>1192761107</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="220">
+    <srcmd5>05cb0f701c247e153048ba72e3b90acf</srcmd5>
+    <version>0.41</version>
+    <time>1192761107</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="221">
+    <srcmd5>7813d7e0544a9b58b7c6a3f842e5a7f5</srcmd5>
+    <version>0.41</version>
+    <time>1245363803</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="222">
+    <srcmd5>09c44ba9e320bde615603be02833fc81</srcmd5>
+    <version>0.41</version>
+    <time>1249310841</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="224">
+    <srcmd5>09c44ba9e320bde615603be02833fc81</srcmd5>
+    <version>0.41</version>
+    <time>1249310841</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1d455384979bee9cceee35035c7b7c63</srcmd5>
+    <version>0.48</version>
+    <time>1262892131</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/gocr based on submit request 28249 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>de4a55b3d24027c26c6cd1070a1d7c44</srcmd5>
+    <version>0.48</version>
+    <time>1268923846</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>de4a55b3d24027c26c6cd1070a1d7c44</srcmd5>
+    <version>0.48</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>de4a55b3d24027c26c6cd1070a1d7c44</srcmd5>
+    <version>0.48</version>
+    <time>1278678579</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>de4a55b3d24027c26c6cd1070a1d7c44</srcmd5>
+    <version>0.48</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9eb1ce5d178de68b6be2de482875a30b</srcmd5>
+    <version>0.49</version>
+    <time>1298245913</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62135 from user adrianSuSE
+</comment>
+    <requestid>62135</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c5fe884e9be9f367918753e3c2042b18</srcmd5>
+    <version>0.49</version>
+    <time>1298245923</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 62135
+</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>c5fe884e9be9f367918753e3c2042b18</srcmd5>
+    <version>0.49</version>
+    <time>1319181936</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>4d6d93e7a68986394fb2c2516d7aeb0c</srcmd5>
+    <version>0.49</version>
+    <time>1323191723</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>4d6d93e7a68986394fb2c2516d7aeb0c</srcmd5>
+    <version>0.49</version>
+    <time>1340183402</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>68a4ff6677c8c739075a218dc2725fdb</srcmd5>
+    <version>0.49</version>
+    <time>1349372346</time>
+    <user>coolo</user>
+    <comment>Fix compilation with netpbm support in Factory, Removed 'make doc' (doesn't do anything), Use desktop-file-install to install the desktop file in openSUSE &gt; 12.1, Spec file cleanup, Fix rpmlint warning 'file-contains-current-date' inside the spec file (removed no-build-date.patch), Update gocr.desktop to be xdg compatible, Use original source package (removed gocr-0.49.tar.bz2) (forwarded request 136968 from adra)</comment>
+    <requestid>136973</requestid>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>68a4ff6677c8c739075a218dc2725fdb</srcmd5>
+    <version>0.49</version>
+    <time>1359108985</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>560caaba1e6e13149df1fad3b13eb2bb</srcmd5>
+    <version>0.50</version>
+    <time>1364896101</time>
+    <user>coolo</user>
+    <comment>Update to version 0.50 (forwarded request 161936 from adra)</comment>
+    <requestid>162056</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>560caaba1e6e13149df1fad3b13eb2bb</srcmd5>
+    <version>0.50</version>
+    <time>1379662531</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>560caaba1e6e13149df1fad3b13eb2bb</srcmd5>
+    <version>0.50</version>
+    <time>1409301072</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>2e0d85b268de07a269d9be5481ea0544</srcmd5>
+    <version>0.50</version>
+    <time>1438615313</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320009</requestid>
+  </revision>
+</revisionlist>

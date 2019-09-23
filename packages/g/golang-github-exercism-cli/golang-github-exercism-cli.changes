@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Fri Mar 31 10:57:23 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Update to version 2.4.0+git20170324.41427fc:
+  * Add silent argument/option to the configure command to obfuscate output
+  * iteration_test: change variable names to camelCase
+  * api_test: fix assertion order
+  * README.md: add comment about setting up local dev site
+  * Replace Client with Interface
+  * Display WhatNextInstructions from API when provided
+  * Fix minor formatting issue in RELEASE doc
+  * Bump version to v2.4.0
+
+-------------------------------------------------------------------
+Wed Dec 07 16:26:12 UTC 2016 - tboerger@suse.com
+
+- Update to version 2.3.0+git20160807.ca8a22e:
+  * update codegangsta/urfave url
+  * Update url for package cli from codegangsta/cli to urfave/cli
+  * Update all reference of codegangsta/cli to urfave/cli
+  * Add '--all' flag to 'fetch' command
+  * Move FetchAll to method on *api.Client
+  * Add test for client.FetchAll
+  * Don't run command if API key is missing.
+  * Update changelog
+  * Bump version to v2.3.0
+  * Update the CHANGELOG profile entries
+
+-------------------------------------------------------------------
+Wed Dec  7 16:21:24 UTC 2016 - tboerger@suse.com
+
+- Refactoring based on new packaging proposal
+
+-------------------------------------------------------------------
+Mon Aug 22 11:28:22 UTC 2016 - mamorales@suse.com
+
+- update to version 2.3.0
+
+-------------------------------------------------------------------
+Wed Jun 29 11:02:49 UTC 2016 - mamorales@suse.com
+
+- add golang-github-exercism-cli-rpmlintrc as a source
+
+-------------------------------------------------------------------
+Mon Jun 27 12:16:14 UTC 2016 - mamorales@suse.com
+
+- initial package
+

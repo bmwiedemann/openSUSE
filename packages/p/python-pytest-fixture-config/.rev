@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6af5e02a3d172582c2305f1ded801a4a</srcmd5>
+    <version>1.4.0</version>
+    <time>1551215697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>677658</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b013a141cb7f2e8001cb994003b86d9f</srcmd5>
+    <version>1.7.0</version>
+    <time>1560861933</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0:
+  * Support pytest 4</comment>
+    <requestid>707100</requestid>
+  </revision>
+</revisionlist>

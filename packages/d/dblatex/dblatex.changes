@@ -1,0 +1,256 @@
+-------------------------------------------------------------------
+Tue Sep 25 07:34:47 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- More packaging cleanup
+- Further reduce duplicities
+- Use modern python macros
+- Replace shebang in executable
+
+-------------------------------------------------------------------
+Sun Sep  9 01:57:25 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Package cleanup:
+  - Fix she-bang in dblatex script
+  - Drop python-devel BuildRequires, not generating any bindings.
+  - Drop font-collection BuildRequires, use individual requires.
+  - Drop BuildRequires for some bundled styles and add some which
+    were implicitly required.
+  - Drop font-collection Requires, use individual Requires.
+  - Downgrade dependencies which are only used with some engines,
+    styles or locales from Requires to Recommends.
+- Split documentation subpackage from main package
+
+-------------------------------------------------------------------
+Sun Nov  5 00:33:00 UTC 2017 - aavindraa@gmail.com
+
+- Update to version 0.3.10
+  + Add the ability to set images for front and back covers
+  + Add the ability to pass several configuration files (-c option)
+  + drop dependency on the latex package 'multirow'
+  + wrong character entities in el.xml
+  + put the paragraph title on a separate line
+- dropped dblatex-xmultirow.patch (upstreamed)
+- includes changes from 0.3.8 and 0.3.9. See:
+  https://sourceforge.net/p/dblatex/dblatex/ci/default/tree/docs/changes/changes.txt
+
+-------------------------------------------------------------------
+Thu Aug  3 20:54:27 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file with spec cleaner
+- Simplify conditionals
+- Drop dblatex-rpmlintrc
+
+-------------------------------------------------------------------
+Thu Aug  3 16:50:25 CEST 2017 - sbrabec@suse.com
+
+- Fix texlive-multirow incompatibility (boo#1052102, debian#840189,
+  dblatex-xmultirow.patch).
+
+-------------------------------------------------------------------
+Sat Apr  2 07:29:55 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 0.3.7
+  * Bugfix release
+
+-------------------------------------------------------------------
+Sun Jan  4 16:05:18 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.3.5
+  + Fix an HTML table bug when no colgroup or col is specified.
+  + Fix an HTML table bug when cellpadding is expressed in percentage.
+  + Include the package ’ucs’ and configure listings to work with pdftex
+    and UTF-8 characters.
+  + Improve setup.py to detect the installed texlive version only on
+    manual install.
+  + Adapt URL to work with texlive >= 2009.
+  + Debian bugs fixed: #720624, #684393, #684391, #683166, #682936, and #682901.
+  + SF bugs fixed: #108, #107, #106, #104, #103, #98, and some fixes to
+    be able work with Saxon.
+
+-------------------------------------------------------------------
+Sun Aug 11 16:38:03 UTC 2013 - toganm@opensuse.org
+
+- Update to version 0.3.4
+
+  * Fix a bug in the missing characters display.
+  * Fix the global template to actually insert a backmatter tag
+    before backmatter  elements.
+  * Fix bug #3520152 by changing a template xpath (looks like a
+    libxslt limitation).
+  * Improve the verbatim block display to be able to scale the
+    block width to the page width.
+  * Allow latex instructions within verbatim blocks through
+    Processing Instructions.
+  * Improve the setup script to be close to the debian install
+    rules.
+  * Improve the hyphenation of the inlined literal elements.
+  * Add the parameter example.float.type to give the possibility to
+    have <example> not floating. The attribute 'floatstyle' is also
+    taken into account.
+  * Add the parameter hyphenation.format to specify the inlined
+    format types that must be hyphenated. It replaces the more
+    limited  monoseq.hyphenation parameter. 
+
+- Packaging
+  * added dblatex-0.3.4-disable-debian.patch
+
+-------------------------------------------------------------------
+Tue Jul 10 09:33:32 UTC 2012 - werner@suse.de
+
+- Make it build with latest TeXLive 2012 with new package layout 
+
+-------------------------------------------------------------------
+Thu Apr 26 10:04:21 UTC 2012 - toganm@opensuse.org
+
+- Update to version 0.3.3
+  * Fix incomplete image path conversion when subfigures are used.
+  * Fix unicode listings limitation to handle characters greater than
+    255.
+  * Fix <abstract> environment to prevent from page counter reset.
+  * Fix the <literallayout> limitations by using the same
+    implementation than <screen>.
+  * Fix a texlive 9 french babel and enumitem incompatibility.
+  * Fix to be robust to URL encoded image paths, and to non-latin1
+    paths.
+  * Fix missing cross-reference to <sidebar> and <qandaset>.
+  * Fix the <sidebar> box width to the actual context witdh.
+  * Fix a french babel bug (unexpected active chars) when used with
+    XeTeX.
+  * Fix Debian bug #627501 to tell the priority policy of --xsl-user
+    option.
+  * Fix Debian bug #632967 to return a non-null code when the
+    compilation fails.
+  * Fix Debian bug #629514 to have draft watermark with XeTeX
+    backend.
+  * Fix Debian bug #634563 to have safe pdftitle content (no images).
+  * Fix setup.py in order to work under Windows.
+  * Fix the HTML table support to correctly render the cells
+    elements.
+  * Fix the HTML table support to correctly nested tables.
+  * Fix the Olink support to allow database user-specific renderings
+    like italics for <i> tags. Reuse of the DocBook Project implementation.
+  * Fix a setup failure that made the listings UTF-8 support failed
+    (extendedchars to set to "true").
+  * Fix --xslt-opts to be able to pass several arguments by using
+    quotes
+  * Set the TexLive version to 2009 by default.
+  * Update to new Debian Error Handler API.
+
+Improvements sponsored by Freexian (http://www.freexian.com) :
+
+  * Remove hard-coded paper size and add some parameters for page
+    layout setup:
+    + Parameters to define page sizes and margins.
+    + Parameters to have crop marks for pre-press PDF output.
+  * Add the parameters literal.environment and literal.extensions to
+    allow the user define its own listing environment.
+  * Add the parameter latex.engine.options to be able to pass options
+    to the TeX engine backend.
+  * Print out warnings about the characters not handled by the
+    selected fonts.
+  * Image display improvements/fixes:
+    + Avoid unexpected paragraph indentation when displaying images.
+    + Strip spurious spaces between subfigures when
+    + @role='flow.inline'
+    + Prevents from empty tex subcaptions when no subfigure
+      <caption> is defined.
+  * Add the ability to format <ulink> as a block when @type='block'.
+  * Pass @role to the latex sidebar environment.
+  * Add the literal.class parameter used when <literallayout> class  
+    attribute is not set. Default is 'monospaced'.
+  * Add some @role to format literal elements, and literal.role
+    parameter for default role:
+    + Wrap: wrap lines when longer than text width (default)
+    + Overflow: do not wrap lines ; long lines overflow to the left
+    + Scale: automatically scale a listing to have its lines fit the
+      page width. The special feature can be disabled with
+      literal.extensions=0 
+
+-------------------------------------------------------------------
+Wed Mar 28 10:53:00 UTC 2012 - toganm@opensuse.org
+
+- Update to version 0.3.2:
+  * Add feature request #2052157 to have HTML table support
+  * Full support of the --quiet option
+  * Improve setup.py to make package building easier in a
+    development environment
+  * Improve the document title formatting, to render <superscript>
+    for example.
+  * Fix debian bug #629110 to work around an appendix package
+    limitation with xetex
+  * Fix bug #3094120 to work in paranoid mode (required for
+    TexLive 2010)
+  * Fix debian bug #623590 to format elements like <emphasis>
+    contained in <filename>.
+  * Fix a bug that prevented from putting and index at the highest
+    level when preceded by a <part>.  
+- Removed dblatex-setup.patch and used sed instead to change doc
+  directory
+
+-------------------------------------------------------------------
+Tue Jan 10 07:56:06 UTC 2012 - coolo@suse.com
+
+- GPL seems to be 2.0 only
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Fri Aug 12 12:59:37 UTC 2011 - toms@suse.de
+
+- Merged spec file with Publishing
+- Added sed call to remove shebang lines in *.py files 
+
+-------------------------------------------------------------------
+Sat Jun  5 08:41:10 UTC 2010 - bernhard@bwalle.de
+
+Updated to version 0.3:
+  * Upgrade to recent Debian scripts (error handlers).
+  * Improve the table rendering by adding a table-width Processing
+    Instruction.
+  * Add the parameters:
+    - default.table.width.
+    - biblioentry.numbered.
+  * A number of bug fixes.
+
+-------------------------------------------------------------------
+Sun Aug  9 12:32:17 CEST 2009 - coolo@novell.com
+
+- use new python macros
+
+-------------------------------------------------------------------
+Wed Sep 24 14:16:18 CEST 2008 - ro@suse.de
+
+- drop noarch (not for a python package) 
+
+-------------------------------------------------------------------
+Wed Jan 23 20:32:00 CEST 2008 - toms@suse.de
+
+- Updated to version 0.2.7
+  * The XRef implementation is competely refactored to work with
+  the common DocBook Project stylesheets version 1.72. The goal is
+  to support the DocBook Project xreftyle and olink capabilities.
+  In normal use, the changes should be transparent.
+  * Dblatex accepts input data from standard input. Therefore, the
+  result of some pre-processing (like profiling) can be piped to
+  dblatex.
+  * Several user stylesheets (option -p) can be passed. Note that
+  each stylesheet is imported (not included) which have significant
+  impact on precedence or overriding behaviour.
+  * Other minor improvements and a number of bug fixes.
+
+- Updated to version 0.2.6
+  * It is possible to number and/or put the preface, dedication,
+  and colophon sections in the TOC and bookmarks.</para>
+  * Add a draft watermark when the document is in draft mode.
+  Moreover, the draft mode can be deduced from the document status
+  attribute.
+  * Some other minor improvements and bug fixes.
+
+-------------------------------------------------------------------
+Sat Sep 01 16:22:00 CEST 2007 - toms@suse.de
+
+- First initial release 0.2.5

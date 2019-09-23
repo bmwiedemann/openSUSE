@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>025e09391bd8438f7cd33394c852d14b</srcmd5>
+    <version>2.0.10</version>
+    <time>1511426577</time>
+    <user>dimstar_suse</user>
+    <comment>- Added conflict with opencl-headers-1_2. The C++ headers were
+  separated from the C headers starting only with version 2.0.
+- Created package based on version 2.0.10.
+</comment>
+    <requestid>542951</requestid>
+  </revision>
+</revisionlist>

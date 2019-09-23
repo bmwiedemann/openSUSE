@@ -1,0 +1,279 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42b11913fee24b91a29afff241407861</srcmd5>
+    <version>1.21.0</version>
+    <time>1524576678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589027</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>965ccfcd8e3f1fc4b2db86f45bf3cbac</srcmd5>
+    <version>1.21.6</version>
+    <time>1525426148</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.21.6:
+  * Fix numeric environment variable configuration (GH#1885) Joseph
+    Atkins-Kurkish
+  * support bytearrays in older lz4 library (GH#1886) Matthew Rocklin
+  * Remove started timeout in nanny (GH#1852) Matthew Rocklin
+  * Don’t log errors in sync (GH#1894) Matthew Rocklin
+  * downgrade stale lock warning to info logging level (GH#1890)
+    Matthew Rocklin
+  * Fix UnboundLocalError for key (GH#1900) John Kirkham
+  * Resolve deployment issues in Python 2 (GH#1905) Matthew Rocklin
+  * Support retries and priority in Client.get method (GH#1902)
+    Matthew Rocklin
+  * Add additional attributes to task page if applicable (GH#1901)
+    Matthew Rocklin
+  * Add count method to as_completed (GH#1897) Matthew Rocklin
+  * Extend default timeout to 10s (GH#1904) Matthew Rocklin
+- changes from version 1.21.5:
+  * Increase default allowable tick time to 3s (GH#1854) Matthew
+    Rocklin
+  * Handle errant workers when another worker has data (GH#1853)
+    Matthew Rocklin
+  * Close multiprocessing queue in Nanny to reduce open file
+    descriptors (GH#1862) Matthew Rocklin
+  * Extend nanny started timeout to 30s, make configurable (GH#1865)
+    Matthew Rocklin
+  * Comment out the default config file (GH#1871) Matthew Rocklin
+  * Update to fix bokeh 0.12.15 update errors (GH#1872) Matthew
+    Rocklin
+  * Downgrade Event Loop unresponsive warning to INFO level (GH#1870)
+    Matthew Rocklin
+  * Add fifo timeout to control priority generation (GH#1828) Matthew
+    Rocklin
+  * Add retire_workers API to Client (GH#1876) Matthew Rocklin
+  * Catch NoSuchProcess error in Nanny.memory_monitor (GH#1877)
+    Matthew Rocklin
+  * Add uid to nanny queue communitcations (GH#1880) Matthew Rocklin
+- changes from version 1.21.4:
+  * Avoid passing bytearrays to snappy decompression (GH#1831) Matthew
+    Rocklin
+  * Specify IOLoop in Adaptive (GH#1841) Matthew Rocklin
+  * Use connect-timeout config value throughout client (GH#1839)
+    Matthew Rocklin
+  * Support direct= keyword argument in Client.get (GH#1845) Matthew
+    Rocklin
+- changes from version 1.21.3:
+  * Add cluster superclass and improve adaptivity (GH#1813) Matthew
+    Rocklin
+  * Fixup tests and support Python 2 for Tornado 5.0 (GH#1818) Matthew
+    Rocklin
+  * Fix bug in recreate_error when dependencies are dropped (GH#1815)
+    Matthew Rocklin
+  * Add worker time to live in Scheduler (GH#1811) Matthew Rocklin
+  * Scale adaptive based on total_occupancy (GH#1807) Matthew Rocklin
+  * Support calling compute within worker_client (GH#1814) Matthew
+    Rocklin
+  * Add percentage to profile plot (GH#1817) Brett Naul
+  * Overwrite option for remote python in dask-ssh (GH#1812) Sven
+    Kreiss
+- changes from version 1.21.2:
+  * Fix bug where we didn’t check idle/saturated when stealing
+    (GH#1801) Matthew Rocklin
+  * Fix bug where client was noisy when scheduler closed unexpectedly
+    (GH#1806) Matthew Rocklin
+  * Use string-based timedeltas (like '500 ms') everywhere (GH#1804)
+    Matthew Rocklin
+  * Keep logs in scheduler and worker even if silenced (GH#1803)
+    Matthew Rocklin
+  * Support minimum, maximum, wait_count keywords in Adaptive
+    (GH#1797) Jacob Tomlinson and Matthew Rocklin
+  * Support async protocols for LocalCluster, replace start= with
+    asynchronous= (GH#1798) Matthew Rocklin
+  * Avoid restarting workers when nanny waits on scheduler (GH#1793)
+    Matthew Rocklin
+  * Use IOStream.read_into() when available (GH#1477) Antoine Pitrou
+  * Reduce LocalCluster logging threshold from CRITICAL to WARN
+    (GH#1785) Andy Jones
+  * Add futures_of to API docs (GH#1783) John Kirkham
+  * Make diagnostics link in client configurable (GH#1810) Matthew
+    Rocklin
+- changes from version 1.21.1:
+  * Fixed an uncaught exception in distributed.joblib with a
+    LocalCluster using only threads (GH#1775) Tom Augspurger
+  * Format bytes in info worker page (GH#1752) Matthew Rocklin
+  * Add pass-through arguments for scheduler/worker –preload
+    modules. (GH#1634) Alexander Ford
+  * Use new LZ4 API (GH#1757) Thrasibule
+  * Replace dask.optimize with dask.optimization (GH#1754) Matthew
+    Rocklin
+  * Add graph layout engine and bokeh plot (GH#1756) Matthew Rocklin
+  * Only expand name with –nprocs if name exists (GH#1776) Matthew
+    Rocklin
+  * specify IOLoop for stealing PeriodicCallback (GH#1777) Matthew
+    Rocklin
+  * Fixed distributed.joblib with no processes Tom Augspurger
+  * Use set.discard to avoid KeyErrors in stealing (GH#1766) Matthew
+    Rocklin
+  * Avoid KeyError when task has been released during steal (GH#1765)
+    Matthew Rocklin
+  * Add versions routes to avoid the use of run in Client.get_versions
+    (GH#1773) Matthew Rocklin
+  * Add write_scheduler_file to Client (GH#1778) Joe Hamman
+  * Default host to tls:// if tls information provided (GH#1780)
+    Matthew Rocklin
+- Update descriptions.
+</comment>
+    <requestid>603175</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6e698579235ee4aaac53a110b3a0597b</srcmd5>
+    <version>1.21.8</version>
+    <time>1525779530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605125</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f188d04d1f75f65cc3fa7ea0d827ac66</srcmd5>
+    <version>1.22.0</version>
+    <time>1530567227</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the PyYAML dependency
+
+- specfile:
+  * updated dask requirement, added pyyaml
+
+- update to version 1.22.0:
+  * Overhaul configuration (GH#1948) Matthew Rocklin
+  * Replace get= keyword with scheduler= (GH#1959) Matthew Rocklin
+  * Use tuples in msgpack (GH#2000) Matthew Rocklin and Marius van
+    Niekerk
+  * Unify handling of high-volume connections (GH#1970) Matthew
+    Rocklin
+  * Automatically scatter large arguments in joblib connector
+    (GH#2020) (GH#2030) Olivier Grisel
+  * Turn click Python 3 locales failure into a warning (GH#2001)
+    Matthew Rocklin
+  * Rely on dask implementation of sizeof (GH#2042) Matthew Rocklin
+  * Replace deprecated workers.iloc with workers.values() (GH#2013)
+    Grant Jenks
+  * Introduce serialization families (GH#1912) Matthew Rocklin
+  * Add PubSub (GH#1999) Matthew Rocklin
+  * Add Dask stylesheet to documentation Matthew Rocklin
+  * Avoid recomputation on partially-complete results (GH#1840)
+    Matthew Rocklin
+  * Use sys.prefix in popen for testing (GH#1954) Matthew Rocklin
+  * Include yaml files in manifest Matthew Rocklin
+  * Use self.sync so Client.processing works in asynchronous context
+    (GH#1962) Henry Doupe
+  * Fix bug with bad repr on closed client (GH#1965) Matthew Rocklin
+  * Parse –death-timeout keyword in dask-worker (GH#1967) Matthew</comment>
+    <requestid>620192</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0b3d12fdbffe71eb2e78c0c46157fc84</srcmd5>
+    <version>1.23.0</version>
+    <time>1536094582</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632810</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bf90d16545b1bddfdf3ce595623743aa</srcmd5>
+    <version>1.23.1</version>
+    <time>1536679057</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634439</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6d43327186f65adff41d346743015517</srcmd5>
+    <version>1.23.2</version>
+    <time>1537264149</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636249</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5b02682d1b7a42eac7f8ec09bb24759b</srcmd5>
+    <version>1.23.3</version>
+    <time>1539093206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640657</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b8781dcee09d708907e5877e3f2ee15a</srcmd5>
+    <version>1.24.0</version>
+    <time>1540988135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645467</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>387c6f63495fbedae2bd179afb05b90c</srcmd5>
+    <version>1.24.1</version>
+    <time>1542012349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648369</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d111cdfc8bf8bb11cdb3076a7efd7326</srcmd5>
+    <version>1.24.2</version>
+    <time>1543224570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651330</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4845730773114964971a255f2cad2917</srcmd5>
+    <version>1.25.0</version>
+    <time>1543828326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653422</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c34d8050df5e902eef26ccca2f45fd59</srcmd5>
+    <version>1.25.1</version>
+    <time>1546245990</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660732</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8c3dba408ba20da377e666d63d12a878</srcmd5>
+    <version>1.25.2</version>
+    <time>1546946946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663294</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6d895395619ee65e6ed8a2651f113293</srcmd5>
+    <version>1.25.3</version>
+    <time>1551113430</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670743</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2882a5b647e2f07154a508791b445973</srcmd5>
+    <version>2.2.0</version>
+    <time>1565695015</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722044</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b56745a8836a6b01daad79f03950dc0e</srcmd5>
+    <version>2.3.2</version>
+    <time>1567423589</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727557</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fad2e7a21741ec085dcc226833851df1</srcmd5>
+    <version>2.4.0</version>
+    <time>1568805034</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731159</requestid>
+  </revision>
+</revisionlist>

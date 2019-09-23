@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Sun Jul 14 16:22:16 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.13
+  * [AOG] Allow to warp to level beyond the 10th one.
+  * Critical error if switch connected to non-activable object.
+
+-------------------------------------------------------------------
+Sun Jun 23 19:21:30 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.1.12

@@ -1,0 +1,1323 @@
+-------------------------------------------------------------------
+Sun Nov 25 15:37:18 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.30.1 (changes since 3.28.0):
+  * Fix build warnings.
+  * Remove Solaris Xinerama support.
+  * Improve focus tracking.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun Mar 11 21:17:38 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.28.0:
+  * Require GTK+ 3.22.
+  * Fix build warnings.
+  * Fix missing shadows from some windows (bgo#789251).
+  * Update translations.
+- Add metacity-lower-autotools.patch: Lower the requirements on
+  autotools.
+- Add metacity-gtk-3.20.patch: Restore GTK+ 3.20 support.
+
+-------------------------------------------------------------------
+Sat Oct 21 19:05:10 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.26.0:
+  * Manage override-redirect windows.
+  * Add an option to change scale in metacity-theme-viewer.
+  * Fix the appmenu button size in metacity-theme-viewer
+  * Add an appmenu to the button layout in metacity-theme-viewer.
+  * Handle legacy fullscreen requests (bgo#781946).
+  * Fix a memory leak when changing theme (bgo#788078).
+  * Fix a crash when struts change during grab operation
+    (bgo#603632).
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun Mar 19 15:05:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.24.1:
+  * Fix drawing with _NET_WM_WINDOW_OPACITY.
+  * Change repaint priority.
+  * Update translations.
+- Update description to make more MATE-centric.
+- Make RPM groups GNOME-agnostic.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Sun Mar 19 15:05:47 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Improve handling of tracking the old focused window during
+    restart (bgo#766243).
+  + Send synthetic ConfigureNotify events (bgo#582580).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 16 23:14:11 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov  7 21:32:44 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.1:
+  + Fix tooltip style (bgo#772984).
+  + Fix crash in meta_group_new (lp#1638153).
+  + Fix window stacking order in compositor (lp#1614050).
+  + Ignore deprecation warnings 
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 23 21:46:48 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Use shadow from GTK+ theme.
+  + Fix pressed state of menu button (bgo#394787).
+  + Fix small memory leak in compositor.
+  + Improved HiDPI support.
+  + Fix crash when removing secondary monitor (bgo#766156).
+  + Fix window resizing using titlebar (lp#1596574).
+  + Updated translations.
+- Bump soname following upstream changes.
+
+-------------------------------------------------------------------
+Sat Aug 13 15:10:07 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.3:
+  + Fix titlebar repaint (bgo#69049).
+  + Fix regression in image scaling.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jul 17 11:31:37 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + Fix window resizing using titlebar (bgo#1596574).
+  + Small HiDPI support improvements.
+  + Fix crash when removing secondary monitor (bgo#766156).
+
+-------------------------------------------------------------------
+Sat Jun 25 10:35:31 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1.1:
+  + Update NEWS file.
+
+-------------------------------------------------------------------
+Sat Jun 25 10:20:08 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Don't paint windows that is not viewable (lp#1592953).
+  + Fix meta_window_get_titlebar_rect (lp#1509031).
+  + Remove clip to screen optimization (bgo#538438).
+
+-------------------------------------------------------------------
+Tue Jun 21 23:27:12 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.0:
+  + Allow minimizing windows which don't advertise support for it.
+  + Metacity follows Mutter and by default will use GTK+ theme. It
+    is still possible to use Metacity themes by adjusting settings.
+  + Previously shipped Metacity themes has been removed.
+  + Metacity theme settings now is under new GSettings schema:
+    org.gnome.metacity.theme.
+  + Metacity now has new library - libmetacity.
+  + New Metacity theme viewer - can be used to preview both
+    Metacity and GTK+ themes.
+  + Updated translations.
+- Add explicit pkgconfig(pango) BuildRequires following upstream
+  changes.
+- Replace pkgconfig(gio-2.0) for pkgconfig(glib-2.0)
+  BuildRequires.
+- Rename subpackge libmetacity-private3 to libmetacity0 and update
+  post(un) handling following upstream changes. Also add
+  libmetacity0 to devel package.
+- Drop metacity-bnc385553-buggy-intel-xinerama.diff: No longer
+  needed due to changes to intel driver, nor did it ever land
+  upstream.
+
+-------------------------------------------------------------------
+Sat May 14 18:10:23 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.18.4:
+  + Try to use root window background instead of grey color.
+  + Fix performance regression.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 30 18:26:52 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.18.3:
+  + Add Icon=preferences-system-windows in metacity.destkop.
+  + Scale window decorations on HiDPI displays, based on mutter.
+  + Partially revert "build everything as library".
+
+-------------------------------------------------------------------
+Tue Feb 16 18:54:23 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.18.2:
+  + Fix a segfault in metacity-theme-viewer.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 12 19:36:42 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 30 15:08:15 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.0:
+  + Fix adwaita theme fallback colors.
+  + Fix crash when using Alt-Tab to switch windows with
+    alt-tab-thumbnails enabled.
+  + Fix visual artifacts after unmaximizing Google Chrome/
+    Chromium window.
+  + Ported away from gnome-common.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jun  7 12:32:57 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.2:
+  + Don't grab keybinding if devirtualization failed.
+  + Use button layout from Gtk/DecorationLayout.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 30 10:59:53 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.1:
+  + tore keybindings dynamically.
+  + Add toggle-tile-left/right keybindings.
+  + Fix missing background color in metacity themes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 16 06:12:35 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + Don't grab keybindings wihtout modifiers.
+  + Fix unfullscreening.
+  + Fix missing border in GTK+ theme for windows that are not
+    resizable.
+
+-------------------------------------------------------------------
+Tue Apr  7 21:07:29 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.0:
+  + Added Adwaita and HightContrast metacity themes as they were
+    removed from gnome-themes-standard.
+  + Metacity now use theme setting key from org.gnome.metacity
+    schema not org.gnome.desktop.wm.preferences.
+  + Added support for GTK+ theme. Set theme to empty string to
+    enable GTK+ theme. Almost everything here was adapted from
+    mutter.
+  + Added support for invisible borders. Again most work are based
+    on mutter.
+  + Added invisible_border to metacity theme. Default is 10px extra
+    space for resize cursor area.
+  + Added back window thumbnails in alt-tab window as optional
+    option. Can be enabled setting alt-tab-thumbnails to true under
+    org.gnome.metacity.
+  + Better support for _GTK_FRAME_EXTENTS.
+  + Updated translations.
+- Rename libmetacity-private2 subpackage to libmetacity-private3,
+  following upstreams soname bump.
+
+-------------------------------------------------------------------
+Thu Jan 29 11:39:06 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.2:
+  + Fix deprecated warnings.
+
+-------------------------------------------------------------------
+Thu Jan 29 09:52:14 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.14.3:
+  + Use correct icon name [image-missing] for missing icon.
+  + Updated translations.
+- Changes from version 3.14.2:
+  + Fix two bugs with Chromium: does not get focus and does not
+    appear in alt-tab switcher.
+  + Fix errors in manpages.
+
+-------------------------------------------------------------------
+Wed Oct 15 07:03:58 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + Fix random bug when windows opens in fullscreen mode.
+  + Fix identification of CSD windows when checking whether to
+    force fullscreen.
+  + Fix uninitialized variables.
+  + Updated translations.
+- Drop metacity-uninitialized-variables.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Oct  9 18:31:51 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Theme format version updated to 3.5.
+  + Optionally attach modal dialogs.
+  + Updated *.doap file.
+  + Added support for _GTK_FRAME_EXTENTS.
+  + Added support for _GTK_THEME_VARIANT.
+  + Shadows won't be added to maximized windows.
+  + Fixed some deprecated warnings.
+  + Ignore adding a window if it's already present.
+  + Some other fixes/changes adapted from mutter.
+  + Updated translations.
+- Rebase metacity-bnc385553-buggy-intel-xinerama.diff.
+- Rename libmetacity-private1 subpackage to libmetacity-private2,
+  following upstreams soname bump.
+
+-------------------------------------------------------------------
+Mon Jun 30 20:36:56 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Port GTK+ 2 to GTK+ 3.
+  + Fix title bar button background.
+  + Side-by-side window tiling.
+  + Fix Window placement.
+  + Add UXD shadows and borders.
+  + Add error handling to glibtop_get_proc_uid.
+  + Cut with fading the Bar title when it's longer than the
+    decoration bar.
+  + Don't show the ws switcher if we only have one.
+  + Update meta_show_dialog for gtk's removal of --screen.
+  + Add drag and drop support when using alt + tab.
+  + Fix new window focus (bgo#534752).
+  + Compositing manager is enabled by default now.
+  + Fix screen flickering on session start (bgo#658036).
+  + Updated translations.
+- Replace BuildRequires for gtk2 => gtk3 port:
+  + gtk2-devel with pkgconfig(gtk+-3.0).
+  + libcanberra-devel with pkgconfig(libcanberra-gtk3).
+- Drop metacity-dnd-keynav.patch: fixed upstream.
+- Rename libmetacity-private0 subpackage to libmetacity-private1,
+  following upstreams soname bump.
+
+-------------------------------------------------------------------
+Mon Oct 15 19:46:54 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.34.13:
+  + Fix minimization problem of iconified windows.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  3 09:18:19 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.34.8:
+  + Port themes documentation to yelp-tools
+  + Updated translations.
+- Replace gnome-doc-utils-devel BuildRequires with yelp-tools,
+  following upstreams port.
+
+-------------------------------------------------------------------
+Mon Aug  6 18:46:01 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.34.5:
+  + Fix memory leak
+  + Add disable-mouse-button-modifiers message
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 20:10:19 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.34.3:
+  + Use the correct translation domain in keybinding definitions.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 20 13:46:42 UTC 2012 - vuntz@opensuse.org
+
+- Add explicit libSM-devel, libX11-devel, libXext-devel,
+  libXinerama-devel, libXrandr-devel, pkgconfig(xcomposite),
+  pkgconfig(xcursor), pkgconfig(xdamage), pkgconfig(xfixes),
+  pkgconfig(xrender) BuildRequires: we need all of those, and some
+  are not implicitly brought in after the big xorg-x11 packaging
+  change.
+
+-------------------------------------------------------------------
+Wed Feb  8 13:47:17 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.34.2:
+  + Port preferences to GSettings
+  + Remove deprecated GTK+ symbols and use accessor functions
+  + Include the default window icon
+  + Various small build system changes
+  + Updated translations.
+- Add pkgconfig(gsettings-desktop-schemas) BuildRequires: new
+  dependency.
+- Add explicit pkgconfig(gio-2.0) BuildRequires: it was missing
+  before.
+- Drop gconf2-devel BuildRequires: migration to GSettings completed.
+- Drop metacity-key-list-binding.patch: not needed after GSettings
+  migration.
+- Split non-essential tools to a metacity-tools subpackage.
+- Split library to libmetacity-private0, move /sbin/ldconfig calls
+  from main %post/%postun to libmetacity-private0 scriptlets, and
+  change metacity Requires in devel package to libmetacity-private0.
+- Replace gconf schema packaging machinery with
+  %glib2_gsettings_schema_* macros.
+- Remove explicit gtk2-devel Requires from devel subpackage: it
+  will automatically be added the pkgconfig() way.
+- Stop passing --disable-schemas-install to configure: there is no
+  gconf schema anymore.
+- Stop changing libexecdir in configure: there is no need for that.
+- Stop checking for non-supported versions of openSUSE (<= 11.2).
+
+-------------------------------------------------------------------
+Sat Sep 24 12:39:40 UTC 2011 - kirill.kirillov@gmail.com
+
+- Add metacity-dnd-keynav.patch: this adds support of alt-tab
+  during drag and drop operation. Fix bnc#720212.
+
+-------------------------------------------------------------------
+Thu Jun 23 09:23:03 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 2.34.1:
+  + Fix crash in meta_display_get_above_tab_keycode
+  + Disable keybindings message should ungrab keys
+  + Remove --with-gtk configure flag as metacity only builds
+    against gtk2
+  + Build fix for FreeBSD: Include sys/wait.h as described in POSIX
+    specs
+  + Build system change: remove -Werror
+  + Updated translations.
+- Update License tag from GPLv2+ to GPL-2.0+.
+
+-------------------------------------------------------------------
+Thu Apr 21 17:45:09 CEST 2011 - vuntz@opensuse.org
+
+- Drop now unneeded call to autoreconf.
+
+-------------------------------------------------------------------
+Tue Apr  5 16:21:51 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.34.0:
+  + Update keybindings when XKB keyboard layout changes.
+  + Unify keymap-reloading code branches
+  + Fix drawing of <arc> elements
+  + Add an "Above_Tab" pseudo-keysym.
+  + Fix default workspace names.
+  + Log error if writing fail when handling SIGTERM.
+  + Rework keybinding configuration files
+  + Honour _NET_RESTACK_WINDOW and sibling-relative stacking.
+  + Allow applications to raise windows when raise_on_click is off.
+  + Allow explicit raises from same client, not just same app.
+  + Set RestartStyleHint to RestartIfRunning when replaced.
+  + Fix background functions for non-default layouts.
+  + Use GNOME 3 theme defaults
+  + Do not use an icon menu on the titlebar.
+  + Disable 'Show desktop' keybinding by default.
+  + Make color constants work without warnings.
+  + Small bug fixes
+  + Make it possible to build without libcanberra
+  + Updated translations.
+- Drop metacity-gdm-popup-error.patch,
+  metacity-support-above-tab.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Feb 13 12:52:34 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+- Remove 2.x references in summaries and descriptions.
+
+-------------------------------------------------------------------
+Fri Jan 14 16:43:49 CET 2011 - vuntz@opensuse.org
+
+- Add metacity-support-above-tab.patch: this adds an "Above_Tab"
+  pseudo-keysym, which is a feature that gnome-shell uses. Taken
+  from git.
+- Add call to autoreconf needed by the patch.
+
+-------------------------------------------------------------------
+Wed Sep 29 20:28:36 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.3:
+  + Fix theme breakage
+  + Use -Werror only when --enable-maintainer-mode is used
+
+-------------------------------------------------------------------
+Thu Sep 16 09:55:35 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.2:
+  + Replace GDK drawing API with cairo
+  + Removes usage of gdk_display
+  + Stop confusing GDK's grab tracking
+  + Allow building with Gtk+-3.0
+  + Replace deprecated GDK symbols
+  + Fixes for compiling with GSeal
+  + Fix crash with --sync option
+  + Fix very unlikely crasher
+  + Remove deprecated Encoding key from desktop files
+  + Fix memory leak in theme optimisation
+  + Use correct timestamp for focus stealing prevention
+  + Don't warn about a missing session file
+  + Updated translations.
+- Update metacity-key-list-binding.patch with patch attached to
+  bgo#609101, that got applied to mutter.
+
+-------------------------------------------------------------------
+Wed Aug 25 14:57:03 CEST 2010 - vuntz@opensuse.org
+
+- Add metacity-gdm-popup-error.patch: this fixes an issue where
+  there's an error dialog in gdm when logging in. This fixes
+  bnc#632726, and is taken from Fedora and bgo#588119.
+- Thanks to psankar@novell.com for investigating the issue.
+
+-------------------------------------------------------------------
+Mon May 24 16:50:01 CEST 2010 - vuntz@opensuse.org
+
+- Add metacity-uninitialized-variables.patch to fix build after a
+  gcc update.
+
+-------------------------------------------------------------------
+Tue Apr  6 13:29:02 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.1:
+  + Fix crash when right-clicking on window frame
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 31 22:52:59 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Fix typo when checking the result of getpwuid
+  + Revert new default cycle_group keybinding to Alt-grave
+  + Fix build with gcc 4.5
+  + Updated translationUpdated translations.
+- Drop metacity-gcc45.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Feb 22 13:46:53 UTC 2010 - dimstar@opensuse.org
+
+- Add metacity-gcc45.patch to fix build with gcc 4.5. 
+
+-------------------------------------------------------------------
+Fri Feb  5 16:45:22 CET 2010 - sbrabec@suse.cz
+
+-  Fixed crash for key bindings using key lists (bnc#576977,
+   bgo#609101).
+
+-------------------------------------------------------------------
+Thu Jan 28 12:12:28 CET 2010 - vuntz@opensuse.org
+
+- Remove en@shaw translation on openSUSE 11.2 and earlier.
+
+-------------------------------------------------------------------
+Wed Jan 27 13:45:31 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.28.1:
+  + Default cycle-group binding is alt-grave
+  + XFCE terminal is a terminal
+  + Signal handling fixes
+  + Fix bell timeout
+  + Self-drawn tooltips are tooltips
+  + Fix session handling close
+  + Replace deprecated symbols
+  + Split MetaSide from MetaDirection
+  + Updated translations
+- Drop metacity-ping-timeout.patch: fixed upstream.
+- Drop metacity-race-autologin.patch: fixed upstream.
+- Drop metacity-race-autologin-cleanup.patch: fixed upstream
+  another way.
+
+-------------------------------------------------------------------
+Wed Dec 16 16:13:31 CET 2009 - sbrabec@suse.cz
+
+- Fix a race condition that causes that gdm autologin sometimes
+  never completes (bnc#555027, bgo#600864).
+
+-------------------------------------------------------------------
+Wed Dec  2 12:03:27 CET 2009 - vuntz@opensuse.org
+
+- Update the way we remove the ha, la, ig locales for old versions
+  of openSUSE.
+
+-------------------------------------------------------------------
+Tue Sep 22 19:44:22 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  9 04:45:13 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.27.1:
+  + Unset _NET_SUPPORTING_WM_CHECK when shutting down (bgo#564561)
+  + Add a switch to disable autofullscreen'ing maximized windows
+    without decorations (bgo#586600)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri May  1 19:32:59 CEST 2009 - vuntz@novell.com
+
+- Do not depend on libgnome just for a directory ownership -- this
+  will help for the build.
+- Remove gconf2-devel, orbit2-devel, startup-notification-devel
+  Requires from devel package.
+- Add rationales.txt to doc files since it's possibly interesting
+  to people.
+- Do not exclude ha and ig locale files on factory anymore.
+
+-------------------------------------------------------------------
+Wed Apr 29 16:46:34 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.0:
+  + Remove deprecated GTK symbols (bgo#572332)
+  + fix window properties bug which showed up as ignoring struts
+    (bgo#572573)
+  + include "as <username>" in window title (bgo#549389)
+  + Use zenity for dialogues (bgo#521914)
+  + Use libcanberra for sound effects (bgo#557921)
+  + Don't define meta_spew_event unless verbose mode is on
+    (bgo#571126)
+  + Fix README to give correct switch names (bgo#571210)
+  + Windows which couldn't appear in alt-tab don't get there by
+    being urgent
+  + Skip the first window in alt-tab only if it's actually current
+    (bgo#535887)
+  + Optimise line coordinate storage
+  + Queue resize on window undecorate
+  + Fix description of "show desktop" (bgo#569649)
+  + Wrap g_error calls in braces
+  + Updated translations
+- Add libcanberra-devel, libgtop-devel BuildRequires.
+- Remove unneeded libglade2-devel BuildRequires.
+- Add zenity Requires.
+- Drop metacity-buggy-struts.patch: fixed upstream.
+- Do not package .la files.
+- Do not package /usr/lib/metacity anymore since the small binary
+  there has been removed and zenity is now used instead.
+
+-------------------------------------------------------------------
+Mon Mar 23 23:53:32 CET 2009 - vuntz@novell.com
+
+- Add metacity-buggy-struts.patch to fix metacity not reading
+  struts correctly (ie, windows being put behind the panels).
+
+-------------------------------------------------------------------
+Mon Mar 16 22:14:28 CET 2009 - mboman@suse.de
+
+- Update to version 2.26.0:
+  + queue frame resize on window undecorate
+  + fix description of desktop background (bgo#569649)
+  + wrap g_error calls in braces
+  + Translation updates
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Mon Feb  2 11:02:29 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.144:
+  + Optimise window property lookup (bgo#549886)
+  + Fix slip in the above
+  + Several memory leaks fixed (bgo#552303, bgo#552973,
+    bgo#552307)
+  + Fix longstanding crasher about colourmaps (bgo#568365)
+  + Alt+middle/right buttons can be switched (bgo#437910)
+  + Support _NET_WM_MOVERESIZE_CANCEL
+  + minor fix paving the way for a theme editor
+  + Translation updates
+
+-------------------------------------------------------------------
+Mon Jan 26 13:19:52 CET 2009 - vuntz@novell.com
+
+- On openSUSE <= 11.1, exclude locales unknown to the system.
+
+-------------------------------------------------------------------
+Fri Jan 23 02:34:23 CET 2009 - vuntz@novell.com
+
+- Minor cleanup, and call %suse_update_desktop_file on a
+  translatable desktop file.
+
+-------------------------------------------------------------------
+Mon Dec 29 09:55:12 EST 2008 - mboman@suse.de
+
+- Update to version 2.25.89:
+  + The maximisation key is a toggle (bgo#343824)
+  + "Unmaximise" is now called "restore" (bgo#343824)
+  + New thread handling call for gconf (bgo#565517)
+  + Add screenshot commands back which had been removed (bgo#565343)
+  + move_to_corner_se keybinding fixed
+  + Windows on other workspaces which attempt to present themselves
+    are marked as needing attention (bgo#482354)
+  + End the grab op when the user clicks the titlebar (bgo#401028)
+  + Translation updates
+
+-------------------------------------------------------------------
+Thu Dec 25 11:49:26 EST 2008 - mboman@suse.de
+
+- Update to version 2.25.55:
+  + Bugs fixed: bgo#564123, bgo#562939, bgo#549952, bgo#549479, bgo#564123,
+    bgo#562939, bgo#562106, bgo#562033, bgo#560990, bgo#561962, bgo#528337,
+    bgo#560445, bgo#560449, bgo#445447, bgo#558309, bgo#557943, bgo#558058,
+    lp#258054, lp#266929, bgo#557536, bgo#557357, bgo#557337, bgo#553980,
+    bgo#528927, bgo#557335, bgo#557201, bgo#469361, bgo#554428, bgo#549479,
+    bgo#469361, bgo#549479, bgo#549952, bgo#468075, bgo#549979, bgo#549886,
+    bgo#468075, bgo#504692, bgo#524343, bgo#524343.
+  + Translation updates
+
+-------------------------------------------------------------------
+Thu Oct 30 07:46:18 CST 2008 - maw@novell.com
+
+- Provide windowmanager (bnc#440195).
+
+-------------------------------------------------------------------
+Tue Sep 23 08:51:22 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.0:
+  + Small memory leak fixed (bgo#549952)
+  + Translation updates
+
+-------------------------------------------------------------------
+Wed Sep 17 02:41:48 CEST 2008 - ro@suse.de
+
+- buildfix: added directory to filelist 
+
+-------------------------------------------------------------------
+Wed Sep 10 16:54:14 CDT 2008 - maw@suse.de
+
+- Update to version 2.23.610:
+  + .desktop file fixes (bgo#549479)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 04 02:39:21 CEST 2008 - mboman@novell.com
+
+- Update to version 2.23.233:
+  + Move desktop file according to policy change (bgo#549479)
+  + Update default icon to a Tango style pixmap (bgo#548377)
+
+-------------------------------------------------------------------
+Fri Aug 29 02:39:21 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.144:
+  + Display theme name in title bar of theme viewer (bgo#430198)
+  + Allow toggling of non-compositor effects (bgo#92867)
+  + Add some extra null checks (bgo#422242)
+  + Check for double-freeing at the time of workspace freeing
+    (bgo#361804)
+  + Only generate log messages when actually logging
+  + Don't consider two windows which don't belong to any
+    application as belonging to the same app
+  + Fix a memory allocation in struts (probably bgo#468075)
+  + Ensure windows which start maximised know where to jump back
+    to, so they don't warp to other screens (bgo#504692)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 20 19:14:12 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.34:
+  + The preview widget can draw shaped windows properly!
+  + Refactoring of gconf preferences
+  + Bugs fixed: bgo#448183, bgo#106249, bgo#328210, bgo#436257,
+    bgo#515019, bgo#515152, bgo#358674, bgo#509165, bgo#530870,
+    bgo#517442, bgo#517524, bgo#534569, bgo#528787, bgo#511826,
+    bgo#530485, bgo#529925, bgo#526016, bgo#525051, bln#199402,
+    bgo#491090, bgo#518596, bgo#499301, bgo#453678, bgo#522166,
+    bgo#522599, bgo#505333, bgo#519188, and bgo#474195
+  + Updated translations
+- Drop an obsolete patche:
+  metacity-bnc384159-bgo519188-window-overlaps-itself.diff.
+
+-------------------------------------------------------------------
+Mon May 26 23:11:37 CEST 2008 - federico@novell.com
+
+- Updated metacity-bnc385553-buggy-intel-xinerama.diff for
+  https://bugzilla.novell.com/show_bug.cgi?id=385553 - Deal with buggy
+  Intel graphics drivers.  Fix an array bounds overrun in the last
+  version of the patch.
+
+-------------------------------------------------------------------
+Mon May 26 14:51:39 CEST 2008 - jpr@suse.de
+
+- Revert last patch, it caused major problems (bnc #385553)
+
+-------------------------------------------------------------------
+Wed May 21 19:26:20 CEST 2008 - federico@novell.com
+
+- Added metacity-bnc385553-buggy-intel-xinerama.diff to fix
+  https://bugzilla.novell.com/show_bug.cgi?id=385553 - If there are
+  just two overlapping monitors, make Metacity think that there is a
+  single big monitor.  This should fix maximized windows on laptops
+  with buggy X drivers for Intel graphics chipsets. (bnc#385553)
+
+-------------------------------------------------------------------
+Tue May 13 09:48:40 CEST 2008 - vuntz@suse.de
+
+- Drop metacity-windows-key-binding.patch: change the way we
+  activate the main menu with the flag keys. Instead of relying on
+  this patch that breaks in some cases (see bnc#372423), we use
+  Super_L and Super_R in
+  /apps/metacity/global_keybindings/panel_main_menu_list in
+  gconf2-branding-$distro.
+  This will only work for the people who don't play with the
+  meaning of the flag keys, which is a good compromise, IMHO.
+  Fix bnc#372423.
+- Drop gnome-patch-translation support since it was only required
+  for the dropped patch.
+
+-------------------------------------------------------------------
+Sat May 10 03:38:58 CEST 2008 - federico@novell.com
+
+- Added metacity-bnc384159-bgo519188-window-overlaps-itself.diff to
+  fix https://bugzilla.novell.com/show_bug.cgi?id=384159 - Fix the
+  logic for focus stealing and overlapping windows.
+
+-------------------------------------------------------------------
+Tue Apr  1 14:22:50 CEST 2008 - vuntz@suse.de
+
+- Don't disable compositor in the build.
+- Stop using deprecated %run_ldconfig
+
+-------------------------------------------------------------------
+Fri Mar 14 14:15:57 CET 2008 - sbrabec@suse.cz
+
+- Set enable_windows_keys to false by default (should be set to
+  true in SLED branding).
+- Custom look'n'feel gconf keys moved to gconf2-branding-openSUSE.
+
+-------------------------------------------------------------------
+Fri Mar 14 05:48:05 CET 2008 - maw@suse.de
+
+- Update to version 2.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  4 23:26:06 CET 2008 - maw@suse.de
+
+- Update to version 2.21.21:
+  + Allow shaped windows in the preview widget
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 20 01:41:59 CET 2008 - maw@suse.de
+
+- Update to version 2.21.13:
+  + Windows on other workspaces which need attention appear in the
+    alt-tab list too (bgo#333548)
+  + Remove deprecated function call (bgo#512561)
+  + New release script
+  + Made a start at improving the general number of comments
+  + Updated copyright year to 2008, and some other tiny fixes
+  + Don't do anything unusual when the compositor frees a window
+  + Mapping windows doesn't mark them as damaged
+  + Compositor uses the overlay window and not the root window
+  + Fixed several list leaks
+  + Fixed warnings about printf formats
+  + Move source files into subdirectories of the src directory
+  + Only use compositor version if we have a compositor
+    (bgo#514453)
+  + Remove workaround for a problem in an ancient GTK version
+    (bgo#513737)
+  + Compositor efficiency fixes
+  + Various tools added 
+  + Updated translations
+- Respin several patches due to changes metacity's source
+  directory layout.
+
+-------------------------------------------------------------------
+Wed Dec 19 16:12:22 CST 2007 - maw@suse.de
+
+- Update to version 2.21.5:
+  + Add --sync option, like all other gtk+ apps
+  + Bugs (bugzilla.gnome.org) fixed: #461927, #469682, #486445,
+    #488468 (partial), #480026, #496947, #461927, #501365, #474889,
+    #496054, #112560, #501362, #498033, and #499081
+  + As of 2.21.5, metacity has a new compositor; it is enabled
+    in this build (via metacity-2.21.5-use-compositing-manager.patch)
+  + Updated translations
+- Oh the humanity!  Rename metacity-preconf.dif to
+  metacity-preconf.patch.
+
+-------------------------------------------------------------------
+Mon Sep 17 14:55:54 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.20.0:
+  * prevent a crash on logout with metacity subsequently not being
+    restored in future sessions
+  * translations update
+
+-------------------------------------------------------------------
+Thu Sep 13 20:08:58 CEST 2007 - maw@suse.de
+
+- Add metacity-disable-window-keys.patch, which disables the
+  default binding of the "windows key" on openSUSE (#217044); note
+  that future releases of SLES will be unimpacted by this change.
+
+-------------------------------------------------------------------
+Thu Aug 30 02:43:50 CEST 2007 - jpr@suse.de
+
+- Update to 2.19.55
+ - Noninteger auto-raise delay is not assumed to be zero (BGO #377491)
+ - Fix mangled window title in "Force Quit" (BGO #462734)
+ - "Close" can appear at any point in the window menu, and now 
+   appears at the bottom (BGO #104026)
+ - Windows which are always on top have "stick" insensitive
+   (BGO #460997)
+ - All bitfields in window structure are together for 
+   optimisation (BGO #450271)
+ - Use the correct directory when installing keybindings 
+   (BGO #454055)
+ - Translations
+- Keyboard shortcut "Start terminal" missing (#244493)
+- Remove unnecessary autoreconf call
+- Remove configure arg FIXME
+
+-------------------------------------------------------------------
+Wed Aug  8 18:57:51 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage.
+
+-------------------------------------------------------------------
+Wed Aug  1 21:32:58 CEST 2007 - mauro@suse.de
+
+- Update to version 2.19.34
+- Bugfixes for: #459027, #449427, #92212, #450271.
+
+-------------------------------------------------------------------
+Sun Jul 15 13:53:25 CEST 2007 - aj@suse.de
+
+- Avoid build cycle with control-center2.
+
+-------------------------------------------------------------------
+Fri Jul  6 18:53:50 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.21
+- Numerous bugfixes and translation updates.
+
+-------------------------------------------------------------------
+Wed Apr 11 12:10:03 CDT 2007 - maw@suse.de
+
+- Update to version 2.18.2
+- Fixes a bug with missing pixels in themes with rounded corners
+- Updated translations for the gl and nb locales.
+
+-------------------------------------------------------------------
+Fri Mar 23 11:09:20 CST 2007 - maw@suse.de
+
+- Update to version 2.18.0
+- b.g.o #408902, #408899, #395560, #382962, and #358715.
+
+-------------------------------------------------------------------
+Mon Feb 19 10:43:08 CST 2007 - maw@suse.de
+
+- Update to version 2.17.5.
+
+-------------------------------------------------------------------
+Wed Feb  7 12:27:30 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552).
+
+-------------------------------------------------------------------
+Mon Dec 18 14:11:54 CET 2006 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+- Splitted devel subpackage.
+
+-------------------------------------------------------------------
+Sun Oct 15 22:42:53 CEST 2006 - danw@suse.de
+
+- Remove dead patches
+- Remove pre-compiz patches for using metacity with xcompmgr under xgl
+- Update and re-enable metacity-windows-key-binding.patch (203080)
+
+-------------------------------------------------------------------
+Tue Oct  3 17:34:25 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.16.3
+- fix longstanding focus bug with mouse focus (not sloppy focus) and
+    popup override redirect windows, such as mozilla's/firefox's
+    location bar autocompletion, causing nasty flickering and lost
+    keystrokes
+- prevent a crash when closing apps run remotely over ssh
+- ignore edge resistance for size-increment windows when resizing
+    with the keyboard
+- automatic detection of stable/unstable in configure script
+- make windows be stacked correctly before showing them
+- use guint32 for timestamps
+- fix stuck grab, letting focus be transferred between windows
+- windows returning from fullscreen are constrained to be onscreen
+- Clear the transient_for flag of a window after emitting a warning
+- Replace copy_of_gdk_x11_window_set_user_time() with the real thing
+- translation updates 
+
+-------------------------------------------------------------------
+Mon Sep 18 20:19:41 CEST 2006 - danw@suse.de
+
+- remove metacity-2.12.0-border-effects.patch, which is a useless
+  deviation from upstream to add a gconf option that probably no one
+  even knows exists any more. #203087
+
+-------------------------------------------------------------------
+Thu Sep 14 00:53:29 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.16.0
+- updated translations
+- Fix the build with c89/gcc 2.95 
+
+-------------------------------------------------------------------
+Mon Sep 11 23:58:22 CEST 2006 - jhargadon@suse.de
+
+- added a patch to fix a function that would return random data in
+  ui.c 
+
+-------------------------------------------------------------------
+Wed Aug 30 18:51:52 CEST 2006 - jhargadon@suse.de
+
+- disabled metacity-windows-key-binding.patch and 
+  metacity-2.12.0-border-effects-2.patch because of bug #201997
+- update to version 2.15.34
+- allow moving maximized windows between xineramas again
+- fix an uninitialized-usage bug with net_wm_user_time that breaks
+  focus with new windows
+- re-fix accessibility events for the alt-tab popup
+- update the close pixmap to fit better with the other pixmaps of the
+   menu
+- fix several fullscreen handling bugs I introduced, causing
+   fullscreen windows to not actually be shown fullscreen
+- fix keybindings with hex-values, coming from special extended
+   keyboard keys
+- fix metacity-dialog handling of arguments
+
+-------------------------------------------------------------------
+Wed Aug 16 16:56:32 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.15.21
+- Add a constrain_titlebar_visible constraint
+- remove the infinite edge resistance
+- make it so maximized windows do not have rounded corners
+- fix the heuristic for determining if windows can be made
+   fullscreen
+- make sure window features get recalculated when the screen is
+   resized
+- react to _NET_STARTUP_ID changes
+- return the window to maximized state if the window was "shaken
+   loose" from maximized state during a resize but the resize is later
+   aborted
+- fix button lighting with dragged clicks
+- don't minimize in response to double clicks on the titlebar when
+   minimiziation should not be allowed
+- fix some titlebar-not-on-screen constraint issues
+- fix a logic bug so that the whole titlebar becomes sensitive to
+   mouse clicks
+- make mouse cursor when moving windows become a hand
+- Fix a crash on exit/logout from assuming a compositor would always
+   exist
+- prevent long titles from "sticking" in the tasklist
+- handle sync counter notifications in the compositor
+- prevent a crash when changing resolution
+- Add a tabbing function, bound to alt-f6 by default, to cycle
+   through the windows of the current application 
+
+-------------------------------------------------------------------
+Thu Jun 15 23:37:13 CEST 2006 - jimmyk@suse.de
+
+- Added a keybinding for opening the main-menu when the windows key is pressed,
+  BNC #155437.
+
+-------------------------------------------------------------------
+Thu Jun  8 15:09:56 CEST 2006 - danw@suse.de
+
+- Remove xsession desktop file, since metacity alone is useless
+  as an xsession. #181814 
+
+-------------------------------------------------------------------
+Wed May 17 19:35:01 CEST 2006 - joeshaw@suse.de
+
+- Add patch to turn audible bell off by default.  (bnc #176424)
+
+-------------------------------------------------------------------
+Sun Mar  5 22:57:41 CET 2006 - dobey@suse.de
+
+- Default to new Gilouche theme
+
+-------------------------------------------------------------------
+Sun Feb 19 17:34:44 CET 2006 - aj@suse.de
+
+- Reduce BuildRequires.
+
+-------------------------------------------------------------------
+Wed Feb 15 22:44:09 CET 2006 - gekker@suse.de
+
+- Fix dual-head bug (b.g.o#319423)
+
+-------------------------------------------------------------------
+Wed Feb  1 17:19:38 CET 2006 - sbrabec@suse.cz
+
+- Use translation compendium gnome-patch-translation.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:28 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 23:46:48 CET 2006 - dobey@suse.de
+
+- Use Chlorophyll as the default theme now
+
+-------------------------------------------------------------------
+Thu Dec  1 00:09:09 CET 2005 - gekker@suse.de
+
+- Update to version 2.12.2
+
+-------------------------------------------------------------------
+Thu Oct 13 22:21:57 CEST 2005 - gekker@suse.de
+
+- Update to version 2.12.1
+
+-------------------------------------------------------------------
+Thu Sep 29 21:59:35 CEST 2005 - gekker@suse.de
+
+- Add patches to metacity to support better support Xgl
+
+-------------------------------------------------------------------
+Thu Sep 22 20:12:20 CEST 2005 - clahey@suse.de
+
+- Switch from 4 desktops to 1.
+
+-------------------------------------------------------------------
+Tue Sep  6 02:18:36 CEST 2005 - gekker@suse.de
+
+- Update to version 2.12.0 (GNOME 2.12) 
+
+-------------------------------------------------------------------
+Tue Aug 23 18:28:16 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.3 
+
+-------------------------------------------------------------------
+Thu Aug 11 22:08:31 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.2 
+
+-------------------------------------------------------------------
+Tue Aug  2 22:19:30 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.1 
+
+-------------------------------------------------------------------
+Fri Jul 22 23:27:10 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.0
+- Remove *.*a files from package 
+
+-------------------------------------------------------------------
+Thu Jul 21 22:15:00 CEST 2005 - federico@novell.com
+
+- Added metacity-6626-raise-on-click.diff; this adds a boolean GConf
+key called /apps/metacity/general/raise_on_click that controls whether
+windows get raised to the front when a button is pressed on them.  Fixes
+bug #6626.
+
+-------------------------------------------------------------------
+Wed Jun 22 02:49:37 CEST 2005 - gekker@suse.de
+
+- Update to version 2.10.1 
+
+-------------------------------------------------------------------
+Thu Mar 17 11:24:15 CET 2005 - sbrabec@suse.cz
+
+- Disabled metacity's compositing manager (#61691).
+
+-------------------------------------------------------------------
+Thu Mar 10 00:58:11 CET 2005 - gekker@suse.de
+
+- Update to version 2.10.0 (GNOME 2.10). 
+
+-------------------------------------------------------------------
+Fri Mar  4 00:48:19 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.34 
+
+-------------------------------------------------------------------
+Fri Feb 11 15:58:26 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.13 
+
+-------------------------------------------------------------------
+Thu Feb 10 14:53:59 CET 2005 - adrian@suse.de
+
+- install session desktop file
+
+-------------------------------------------------------------------
+Sun Feb  6 05:29:56 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.8 
+
+-------------------------------------------------------------------
+Wed Jan 19 01:08:40 CET 2005 - clahey@suse.de
+
+- Updated to version 2.9.3.
+
+-------------------------------------------------------------------
+Tue Jan  4 17:24:41 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.2 
+
+-------------------------------------------------------------------
+Wed Dec 22 19:07:56 CET 2004 - gekker@suse.de
+
+- Update to version 2.9.0
+- Remove titlebar-font-setup.patch, included in update. 
+
+-------------------------------------------------------------------
+Tue Nov 23 11:13:34 CET 2004 - ro@suse.de
+
+- fix build on 9.2 (missing so links for libXfixes)
+
+-------------------------------------------------------------------
+Tue Nov  2 19:58:55 CET 2004 - mmj@suse.de
+
+- Locale rename: no -> nb
+
+-------------------------------------------------------------------
+Tue Oct 12 14:27:19 CEST 2004 - sbrabec@suse.cz
+
+- Fixed libexecdir for bi-arch (#47050).
+
+-------------------------------------------------------------------
+Thu Apr 29 15:26:17 CEST 2004 - hhetter@suse.de
+
+- updated 2.8.0 [GNOME2.6] 
+
+-------------------------------------------------------------------
+Fri Mar 12 12:19:47 CET 2004 - hhetter@suse.de
+
+- default theme to Industrial 
+
+-------------------------------------------------------------------
+Wed Mar 10 10:53:26 CET 2004 - sbrabec@suse.cz
+
+- Fixed gconf schemas installation (#33114).
+
+-------------------------------------------------------------------
+Mon Mar 01 15:18:52 CET 2004 - sbrabec@suse.cz
+
+- Allow setting of titlebar font in gnome-font-properties (workaround
+  for bug #31388, http://bugzilla.gnome.org/show_bug.cgi?id=104177).
+- Disable schemas installation during %install.
+
+-------------------------------------------------------------------
+Wed Feb 25 11:03:24 CET 2004 - hhetter@suse.de
+
+- apply metacity-ping-timeout.patch, increase the time 
+  metacity detects crashed programs 
+
+-------------------------------------------------------------------
+Thu Feb 12 14:22:38 CET 2004 - hhetter@suse.de
+
+- gconf schema (de-)installation in %post and %postun 
+
+-------------------------------------------------------------------
+Mon Feb  9 15:28:49 CET 2004 - hhetter@suse.de
+
+- updated to version 2.6.3 [GNOME2.4.2] 
+
+-------------------------------------------------------------------
+Sat Jan 10 16:15:41 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Thu Oct 09 16:40:44 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.6.2 (GNOME 2.4).
+
+-------------------------------------------------------------------
+Mon Jul 14 14:40:09 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Tue Jun 24 17:32:43 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.4.55.
+- Updated neededforbuild.
+- Prefix clash fix (wm-properties).
+- Fixed directory owhership.
+
+-------------------------------------------------------------------
+Thu Mar 13 18:35:27 CET 2003 - sbrabec@suse.cz
+
+- Fixed desktop hang for certain transient loops (k3b-setup, bug 24069).
+- Allow startup-notification.
+
+-------------------------------------------------------------------
+Thu Feb  6 10:10:11 CET 2003 - hhetter@suse.de
+
+- updated to version 2.4.34 [GNOME 2.2.0]
+
+-------------------------------------------------------------------
+Fri Jan 31 15:58:30 CET 2003 - sf@suse.de
+
+- fixed library path for lib64
+
+-------------------------------------------------------------------
+Tue Jan 14 13:24:50 CET 2003 - hhetter@suse.de
+
+- updated to verion 2.4.13 
+
+-------------------------------------------------------------------
+Mon Jan 06 12:13:39 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 2.4.8.
+- Updated %files.
+
+-------------------------------------------------------------------
+Wed Oct 23 08:28:33 CEST 2002 - hhetter@suse.de
+
+- fix kde datadir
+- fix wrong docdir
+- updated to version 2.4.2 
+- FHS fix
+
+-------------------------------------------------------------------
+Fri Sep 27 14:34:29 CEST 2002 - ro@suse.de
+
+- Added alsa alsa-devel to neededforbuild (esound)
+
+-------------------------------------------------------------------
+Tue Aug 20 11:26:21 CEST 2002 - hhetter@suse.de
+
+- added PreReq: filesystem
+
+-------------------------------------------------------------------
+Mon Aug 12 08:44:09 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.4.0
+- fix filelist for new theme conventions 
+
+-------------------------------------------------------------------
+Sat Jul 27 15:41:57 CEST 2002 - adrian@suse.de
+
+- fix neededforbuild
+
+-------------------------------------------------------------------
+Fri Jun 14 15:05:24 CEST 2002 - hhetter@suse.de
+
+- provide schemas 
+
+-------------------------------------------------------------------
+Mon Jun 10 15:26:33 CEST 2002 - hhetter@suse.de
+
+- initial SuSE Package 

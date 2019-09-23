@@ -1,0 +1,26 @@
+---
+ sh.hist.c |    6 ++++++
+ 1 file changed, 6 insertions(+)
+
+--- sh.hist.c
++++ sh.hist.c	2017-07-19 10:01:20.795354927 +0000
+@@ -1278,6 +1278,11 @@ rechist(Char *fname, int ref)
+ 	}
+ 
+ 	if (merge) {
++#if 0 /* We are using fcntl's F_SETLKW patch for locking
++       * therefore avoid dot file locking without holding
++       * a file descriptor as otherwise we migth not be
++       * able to open the history file after a crash or
++       * if a killall had been used during reboot. */
+ 	    if (lock) {
+ #ifndef WINNT_NATIVE
+ 		char *lockpath = strsave(short2str(fname));
+@@ -1287,6 +1292,7 @@ rechist(Char *fname, int ref)
+ 		    cleanup_push(lockpath, dotlock_cleanup);
+ #endif
+ 	    }
++#endif
+ 	    /* Read .history file, leave it's fd open for writing. */
+ 	    fd = loadhist(fname, HIST_MERGE|HIST_FILE_WRLCK|HIST_FILE_OPEN|HIST_FILE_LOCK);
+ 	    if (fd > 0) {

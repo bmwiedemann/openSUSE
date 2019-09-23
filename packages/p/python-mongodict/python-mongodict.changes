@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Thu May  7 16:47:28 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.3.1:
+  This version BREAKS DATA COMPATIBILITY with 0.3.0:
+  * Option to specify index type: key-only or key-and-value. If you
+    specify "key and value" you can't have documents (key + value)
+    greater than 16MB. Default option moved to key-only (fixes
+    issue #14)
+  * Replace value with v as the key inside Mongo document to save
+    space. Note that you will need to migrate your data! A little
+    script is provided
+- add python-pymongo as a build dependency to ensure its
+  availability
+- add CHANGELOG.rst and migrate_data.py to the documentation
+
+-------------------------------------------------------------------
+Wed Oct 16 09:00:45 UTC 2013 - speilicke@suse.com
+
+- Initial version
+

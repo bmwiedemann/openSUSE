@@ -1,0 +1,173 @@
+-------------------------------------------------------------------
+Thu Feb  1 10:11:13 UTC 2018 - kbabioch@suse.com
+
+- Update to version 2.8.5:
+  * Summary Various fixes and support systemd gnupg sockets
+  * Some shells don't support local builtin
+  * Support systemd managed gnupg sockets
+  * Fix some lintian warnings in the man page
+  * Fix issues loading pem keys
+
+- Changes from 2.8.4:
+  * Support of GPG2
+  * Support busybox ps
+  * Various optimizations
+
+- Changed Source spec file, since upstream has migrated to GitHub
+
+-------------------------------------------------------------------
+Mon Oct 24 13:50:44 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.8.3:
+  * Fix gpg key addition.
+
+-------------------------------------------------------------------
+Wed Dec  2 14:07:13 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.8.2 (boo#991003):
+  * Summary: Support new ssh features, bug fix release.
+  * Support for new hash algorithms
+  * Remove bashisms
+  * Various optimizations
+  * --timeout option now gets passed to agent, doc fixes
+  * RPM, Makefile fixes
+- Changes from version 2.8.1
+  * Summary: POSIX compatibility and bug fix release.
+  * Only set PATH to a standard value if PATH is not set. Otherwise,
+    do not modify.
+  * Makefile Cygwin and RPM spec fixes
+  * Confhost fixes. Deprecate in_path. Use command -v instead.
+  * Find_pids: Modify "ps" call to work with non-GNU ps.
+  * Re-introduce POSIX compatibility (remove shopt.)
+- Changes from version 2.8.0
+  * Support for OpenSSH 6.8 fingerprints.
+  * Support for GnuPG 2.1.0.
+  * Handle private keys that are symlinks, even if the associated 
+    public key is in the target directory rather than alongside the
+    symlink.
+  * Allow private keys to have extensions, such as foo.priv. 
+    When looking for matching public keys, look for foo.priv.pub,
+    but also strip extension and look for foo.pub if foo.priv.pub 
+    doesn't exist.
+  * Initial support for --list/-l option to list SSH keys.
+  * Updated docs for fish shell usage.
+- Changes from version 2.7.2beta1
+  * Various changes and updates:
+  * Fixes for fish.
+  * Keychain will default to start only ssh-agent unless GPG is 
+    explicitly updated using --agents. 
+  * Write ~/.gpg-agent-info when launching gpg-agent.
+  * Add support for injecting agents into systemd
+  * Add support for --query option
+  * Add --absolute flag, allowing user to set a full path without
+    getting a .keychain suffix automatically appended.
+  * Add --confhost option to scan ~/.ssh/config file to 
+    locate private key path specified there.
+- Update project and download Urls
+- Remove 0001-Update-inheritagents-for-GnuPG-v.2.1.patch; fixed
+  on upstream release
+- Perform a spec-cleaner
+- Remove useless dependencies
+  * perl
+  * make
+  * sed
+  * openssh
+
+-------------------------------------------------------------------
+Fri Feb 13 14:08:07 UTC 2015 - mrueckert@suse.de
+
+- added 0001-Update-inheritagents-for-GnuPG-v.2.1.patch:
+  Backport the GPG 2.1 support from git head
+
+-------------------------------------------------------------------
+Sun May 23 22:23:20 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.7.1:
+  * a GPG fix for pinentry issues (Gentoo bug 203871)
+
+- removed keychain-extract_version_with_perl.patch as upstream came
+  up with a more predictable way of determining the version
+- removed use of and dependency on the licenses packages as it is
+  now considered a bad practice after all
+
+-------------------------------------------------------------------
+Fri Jan 29 18:35:18 UTC 2010 - lars@linux-schulserver.de
+
+- require openssh as ssh is dead
+- remove conditions for unsupported openSUSE versions
+
+-------------------------------------------------------------------
+Sun Oct 25 11:35:35 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 2.7.0:
+  * improved color scheme, output formatting, and the --quiet
+    option
+  * the lockfile() implementation was simplified for smaller code
+
+-------------------------------------------------------------------
+Fri Aug  7 14:02:08 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 2.6.9:
+  + potential issues with GNU grep were fixed
+  + the README file was changed to README.rst (reStructuredText)
+  + the maintainership information was updated
+  + the default output was simplified, so --version or --help are
+    now required to show version, copyright, and license
+    information
+- simplification of the spec file
+- add check section
+
+-------------------------------------------------------------------
+Tue Jun 19 10:11:10 CEST 2007 - lrupp@suse.de
+
+- update to 2.6.8:
+  + Support fish: http://roo.no-ip.org/fish/ 
+    (thanks to Ilkka Poutanen)
+  + Add validinherit function: warning messages aren't emitted 
+    unnecessarily
+  + Break out of loop when empty lockfile can't be removed 
+  + Make --lockwait -1 mean forever.
+  + Add more locking regression tests
+  + Prevent gpg_listmissing from accidentally loading keys
+  + Save LC_ALL for gpg invocation so that pinentry-curses works.
+- gzip the manpage
+- don't remove %{buildroot} in %install - let rpm do this
+- fix requires
+- don't package the pod-file (same as manpage)
+
+-------------------------------------------------------------------
+Tue Aug 15 11:37:29 CEST 2006 - pth@suse.de
+
+- Update to 2.6.2
+  Changes since 2.4.2.1:
+  * Add inheritance support via --inherit.  Add parameters to --stop for
+    more control.
+  * Add gpg keys to the agent.
+  * Add the --env option and automatic reading of .keychain/env.
+  * Add --confirm option and corresponding regression tests.
+  
+-------------------------------------------------------------------
+Wed Jan 25 21:46:50 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov 16 10:58:19 CET 2004 - pth@suse.de
+
+- Update to 2.4.2.1
+
+-------------------------------------------------------------------
+Mon Aug 16 13:26:10 CEST 2004 - pth@suse.de
+
+- Update to 2.3.4
+
+-------------------------------------------------------------------
+Thu Feb  5 11:19:23 CET 2004 - hmacht@suse.de
+
+- added option # norootforbuild in specfile
+
+-------------------------------------------------------------------
+Mon Jul 21 14:00:12 CEST 2003 - pthomas@suse.de
+
+- Initial package.
+- Add a manpage.

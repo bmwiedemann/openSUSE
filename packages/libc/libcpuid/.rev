@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf8fb9d96d0e48c858a031f87ec6e089</srcmd5>
+    <version>0.4.0</version>
+    <time>1485040672</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>442683</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f4f9a2156d9a82031c3e85fd14c8c3dd</srcmd5>
+    <version>0.4.0</version>
+    <time>1497016645</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable internal tests</comment>
+    <requestid>502377</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b64fbc2e6d5fe238a82a3e0a4c8b94a4</srcmd5>
+    <version>0.4.1</version>
+    <time>1551284905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>676929</requestid>
+  </revision>
+</revisionlist>

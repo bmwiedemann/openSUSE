@@ -1,0 +1,19 @@
+Index: vhostmd-1.1/docs/man/vm-dump-metrics.1
+===================================================================
+--- vhostmd-1.1.orig/docs/man/vm-dump-metrics.1
++++ vhostmd-1.1/docs/man/vm-dump-metrics.1
+@@ -10,8 +10,12 @@ vm-dump-metrics \- Dump VM metrics.
+ .BR vm-dump-metrics
+ reads virtualization hosts provided metrics decription and dumps output
+ .SH OPTIONS
+-.B \-f, --dest <file>
+-Specify a dump file to be used instead of <stdout>
++.TP 4
++.B -v\fR, \fB--verbose\fR
++Verbose output
++.TP
++.B -d\fR, \fB--dest\fR
++Destination file for metrics, default stdout
+ 
+ .SH XML Format of Content
+ 

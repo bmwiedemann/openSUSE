@@ -1,0 +1,10 @@
+<package name="autotrace" project="openSUSE:Factory">
+  <title>Program for Converting Bitmaps to Vector Graphics</title>
+  <description>AutoTrace is a program for converting bitmaps to vector graphics. The
+aim of the AutoTrace project is the development of a freely-available
+application similar to CorelTrace or Adobe Streamline. In some aspects,
+it is already better. Originally created as a plug-in for the GIMP,
+AutoTrace is now a stand-alone program and can be compiled on any UNIX
+platform using GCC.</description>
+  <devel project="graphics" package="autotrace"/>
+</package>

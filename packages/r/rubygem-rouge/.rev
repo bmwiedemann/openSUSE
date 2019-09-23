@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f687b7214e1ec3c291948c62740b9742</srcmd5>
+    <version>2.0.5</version>
+    <time>1478687954</time>
+    <user>dimstar_suse</user>
+    <comment>next try to get this in - next to rouge-1, which we need for jekyll</comment>
+    <requestid>412553</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1016171d08d4e30d396f9fb927e3c76d</srcmd5>
+    <version>2.0.6</version>
+    <time>1479150828</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>439868</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>48e20d03589f8000900529190a87d652</srcmd5>
+    <version>2.0.7</version>
+    <time>1481459266</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444857</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ae6507a98079c733f3bf367a28fd3dd8</srcmd5>
+    <version>2.1.0</version>
+    <time>1497944369</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504001</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8d6f4456a039ebba819fad63d798ec3b</srcmd5>
+    <version>2.1.1</version>
+    <time>1503308217</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515059</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>be907756e7c499abedc6e0f5d0c47bc2</srcmd5>
+    <version>2.2.1</version>
+    <time>1505334870</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523494</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b2ede360a87258afa8632c99f1817fea</srcmd5>
+    <version>3.0.0</version>
+    <time>1512651057</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 533302 from coolo)</comment>
+    <requestid>533347</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ab14a9f9f8bb3be70eded5c55ab6527b</srcmd5>
+    <version>3.1.1</version>
+    <time>1518597222</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>574946</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cc2979fb2507610cd74862b0fad7359b</srcmd5>
+    <version>3.2.1</version>
+    <time>1537787558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636987</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>70090a0f0b2dbcb64cc661018d585e71</srcmd5>
+    <version>3.3.0</version>
+    <time>1543953431</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653710</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8d7f80e5f938a2c3ac064881a319d06e</srcmd5>
+    <version>3.6.0</version>
+    <time>1565097034</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>717320</requestid>
+  </revision>
+</revisionlist>

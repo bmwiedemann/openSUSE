@@ -1,0 +1,13 @@
+Index: 1.0.0.rc16/lib/locking/locking.c
+===================================================================
+--- 1.0.0.rc16.orig/lib/locking/locking.c
++++ 1.0.0.rc16/lib/locking/locking.c
+@@ -12,7 +12,7 @@
+ #include "internal.h"
+ 
+ /* File locking private data. */
+-static const char *lock_file = "/var/lock/dmraid/.lock";
++static const char *lock_file = "/run/lock/dmraid/.lock";
+ static int lf = -1;
+ 
+ /* flock file. */

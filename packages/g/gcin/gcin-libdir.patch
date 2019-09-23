@@ -1,0 +1,19 @@
+Index: gcin-2.7.9/configure
+===================================================================
+--- gcin-2.7.9.orig/configure
++++ gcin-2.7.9/configure
+@@ -175,10 +175,10 @@ fi
+ 
+ 
+ LIB='lib'
+-if [ -d /usr/lib64 -a -d /lib64 -a ! -d /lib/x86_64-linux-gnu ]; then
+-LIB='lib64'
+-# for fedora 64bit
+-GTK_QUERY_IM_64='-64'
++if pkg-config --libs qt-mt | grep lib64 >/dev/null ; then
++	LIB='lib64'
++	# for fedora 64bit
++	GTK_QUERY_IM_64='-64'
+ fi
+ 
+ QT_IM='N'

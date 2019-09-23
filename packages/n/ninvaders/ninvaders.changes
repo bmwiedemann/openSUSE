@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Sun Jan 13 11:15:02 UTC 2019 - mardnh@gmx.de
+
+- Rename binary from nInvaders to ninvaders
+- Add patch:
+  * ninvaders-obey-cflags.patch
+- Convert inline changelog to ninvaders.changes
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Mon Dec  3 00:00:00 UTC 2018 - cwh@suse.de
+
+- Patch buffer owerflow that leads to an build error in Leap 15+
+
+-------------------------------------------------------------------
+Wed Jun 23 00:00:00 UTC 2004 - cwh@suse.de
+
+- initial release
+

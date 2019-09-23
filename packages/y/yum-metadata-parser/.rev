@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="107">
+    <srcmd5>604b9a43087d973212a7b06cfce8fd2e</srcmd5>
+    <version>1.1.2</version>
+    <time>1222271634</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="109">
+    <srcmd5>604b9a43087d973212a7b06cfce8fd2e</srcmd5>
+    <version>1.1.2</version>
+    <time>1222271634</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="110">
+    <srcmd5>a1747534f0580f9c7d5503e30f86d105</srcmd5>
+    <version>1.1.2</version>
+    <time>1268926815</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="112">
+    <srcmd5>a1747534f0580f9c7d5503e30f86d105</srcmd5>
+    <version>1.1.2</version>
+    <time>1278667399</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="113">
+    <srcmd5>a1747534f0580f9c7d5503e30f86d105</srcmd5>
+    <version>1.1.2</version>
+    <time>1278678634</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="116">
+    <srcmd5>a1747534f0580f9c7d5503e30f86d105</srcmd5>
+    <version>1.1.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="118">
+    <srcmd5>a1747534f0580f9c7d5503e30f86d105</srcmd5>
+    <version>1.1.2</version>
+    <time>1319182645</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="119">
+    <srcmd5>c90f68736eb1732477361142afad6f52</srcmd5>
+    <version>1.1.2</version>
+    <time>1323195669</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="121">
+    <srcmd5>c90f68736eb1732477361142afad6f52</srcmd5>
+    <version>1.1.2</version>
+    <time>1340184418</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="123">
+    <srcmd5>c90f68736eb1732477361142afad6f52</srcmd5>
+    <version>1.1.2</version>
+    <time>1359110775</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="124">
+    <srcmd5>06346acaf39094969e60b6a6a43477f4</srcmd5>
+    <version>1.1.2</version>
+    <time>1362733390</time>
+    <user>coolo</user>
+    <comment>- support &gt;2G rpms in the XML to sqlite conversion (upstream patch)
+  (bnc#802576, rh#612409)</comment>
+    <requestid>157233</requestid>
+  </revision>
+  <revision rev="12" vrev="125">
+    <srcmd5>1ad9aff1d225f84b91c46de32b0c9089</srcmd5>
+    <version>1.1.2</version>
+    <time>1363900584</time>
+    <user>coolo</user>
+    <comment>- Fixed release-version, otherwise it causes a downgrade to the previous version. (forwarded request 160214 from BenniBrunner)</comment>
+    <requestid>160229</requestid>
+  </revision>
+  <revision rev="13" vrev="127">
+    <srcmd5>1ad9aff1d225f84b91c46de32b0c9089</srcmd5>
+    <version>1.1.2</version>
+    <time>1379665188</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="128">
+    <srcmd5>dcdf390aed32cc7a91ffbb2be2b27b07</srcmd5>
+    <version>1.1.2</version>
+    <time>1393600926</time>
+    <user>scarabeus_factory</user>
+    <comment>- add support for weak dependencies, needed for newer createrepo</comment>
+    <requestid>223749</requestid>
+  </revision>
+  <revision rev="15" vrev="130">
+    <srcmd5>dcdf390aed32cc7a91ffbb2be2b27b07</srcmd5>
+    <version>1.1.2</version>
+    <time>1409303872</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

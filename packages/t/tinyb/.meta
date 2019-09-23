@@ -1,0 +1,7 @@
+<package name="tinyb" project="openSUSE:Factory">
+  <title>Tiny Bluetooth LE Library</title>
+  <description>TinyB aims to create clean, modern and easy to use Bluetooth LE API. TinyB exposes the BLE GATT API for C++, Java and other languages, using BlueZ over DBus.
+
+</description>
+  <devel project="hardware" package="tinyb"/>
+</package>

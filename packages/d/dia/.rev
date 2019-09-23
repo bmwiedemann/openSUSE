@@ -1,0 +1,348 @@
+<revisionlist>
+  <revision rev="1" vrev="23">
+    <srcmd5>9a5aecc771667759d9adfe414ed15d02</srcmd5>
+    <version>0.95</version>
+    <time>1168902551</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="38">
+    <srcmd5>21b50017c1ed9467c760d8c73e55ff92</srcmd5>
+    <version>0.95</version>
+    <time>1169511238</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="83">
+    <srcmd5>64bf02af8b2d252aebacc1c0182d5dd7</srcmd5>
+    <version>0.95</version>
+    <time>1185631784</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="90">
+    <srcmd5>ecca35959794d2dca8d2e952295d4d8f</srcmd5>
+    <version>0.95</version>
+    <time>1186700785</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>138c2812272938bfd0d881643d76c12a</srcmd5>
+    <version>0.96.1</version>
+    <time>1187369209</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="41">
+    <srcmd5>6ee90af2f5dee97032824be31b73e8df</srcmd5>
+    <version>0.96.1</version>
+    <time>1193962176</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="84">
+    <srcmd5>3db89d5c72c895ae621b55b08ec9550d</srcmd5>
+    <version>0.96.1</version>
+    <time>1204321165</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="89">
+    <srcmd5>47cb33031e3c1eee402d1ba55b86680b</srcmd5>
+    <version>0.96.1</version>
+    <time>1204919780</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="164">
+    <srcmd5>47cb33031e3c1eee402d1ba55b86680b</srcmd5>
+    <version>0.96.1</version>
+    <time>1204919780</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="165">
+    <srcmd5>909290599fa8f1f6095a6db73dc30e16</srcmd5>
+    <version>0.96.1</version>
+    <time>1233954608</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="166">
+    <srcmd5>1a5f9589320c7e8b63ea412a641263e4</srcmd5>
+    <version>0.96.1</version>
+    <time>1236810909</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="167">
+    <srcmd5>f3b4867fe572dc2ba0d1bfa9e24190c2</srcmd5>
+    <version>0.96.1</version>
+    <time>1238616185</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="168">
+    <srcmd5>61ae6d0cf2d09454cac008ab2ea2ff04</srcmd5>
+    <version>0.96.1</version>
+    <time>1239101218</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1b296c23d07fa061bc7566f48cc71068</srcmd5>
+    <version>0.97</version>
+    <time>1242853858</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>f81bcb2516849aade65e3857afd8193d</srcmd5>
+    <version>0.97</version>
+    <time>1243477919</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>f81bcb2516849aade65e3857afd8193d</srcmd5>
+    <version>0.97</version>
+    <time>1243477919</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f99a9e314b5b478f1307bdf284916c59</srcmd5>
+    <version>0.97.1</version>
+    <time>1265918558</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/dia based on submit request 32204 from user vuntz
+</comment>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>8d543109d91f410ac06d7dcfabca4744</srcmd5>
+    <version>0.97.1</version>
+    <time>1268923332</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>8d543109d91f410ac06d7dcfabca4744</srcmd5>
+    <version>0.97.1</version>
+    <time>1278667342</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>8d543109d91f410ac06d7dcfabca4744</srcmd5>
+    <version>0.97.1</version>
+    <time>1278678571</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>34e016fdac14d9c3246beeadc011ab6f</srcmd5>
+    <version>0.97.1</version>
+    <time>1297642366</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60916 from user vuntz
+</comment>
+    <requestid>60916</requestid>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>3b14746240372040a5d9cff03bc08956</srcmd5>
+    <version>0.97.1</version>
+    <time>1297642372</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60916
+</comment>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>3b14746240372040a5d9cff03bc08956</srcmd5>
+    <version>0.97.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>dc57c4c686a3ba7d0fb5299b19bd69d4</srcmd5>
+    <version>0.97.1</version>
+    <time>1306417233</time>
+    <user>saschpe</user>
+    <comment>Support swig 2.x (forwarded request 71402 from namtrac)</comment>
+    <requestid>71403</requestid>
+  </revision>
+  <revision rev="25" vrev="12">
+    <srcmd5>707b088a6a36ff534f9133a86404377c</srcmd5>
+    <version>0.97.1</version>
+    <time>1306417243</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71403
+</comment>
+  </revision>
+  <revision rev="26" vrev="13">
+    <srcmd5>efe08ac6eff50d85018a5d790bd89dfe</srcmd5>
+    <version>0.97.1</version>
+    <time>1317542226</time>
+    <user>lrupp</user>
+    <comment>Pushing G:A</comment>
+    <requestid>85547</requestid>
+  </revision>
+  <revision rev="27" vrev="14">
+    <srcmd5>c12ab72ad682c22218753c6147d39872</srcmd5>
+    <version>0.97.1</version>
+    <time>1317744535</time>
+    <user>oertel</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 85985 from coolo)</comment>
+    <requestid>86320</requestid>
+  </revision>
+  <revision rev="28" vrev="16">
+    <srcmd5>c12ab72ad682c22218753c6147d39872</srcmd5>
+    <version>0.97.1</version>
+    <time>1319181847</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a9bb0b07a174210f60c99fc0953ec0d2</srcmd5>
+    <version>0.97.2</version>
+    <time>1325787030</time>
+    <user>coolo</user>
+    <comment>Pushing G:A</comment>
+    <requestid>98898</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>a9bb0b07a174210f60c99fc0953ec0d2</srcmd5>
+    <version>0.97.2</version>
+    <time>1340183278</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>379d481c3337fee91711d51792e050cb</srcmd5>
+    <version>0.97.2</version>
+    <time>1345730575</time>
+    <user>namtrac</user>
+    <comment>Fix build in Factory (forwarded request 130848 from darix)</comment>
+    <requestid>130957</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>c13380acebdccf04d7d1efa5acd5d4de</srcmd5>
+    <version>0.97.2</version>
+    <time>1349252651</time>
+    <user>coolo</user>
+    <comment>tweaked (forwarded request 136808 from dimstar)</comment>
+    <requestid>136809</requestid>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>eb7e355d7520ea2260eab6dd643d9317</srcmd5>
+    <version>0.97.2</version>
+    <time>1358680311</time>
+    <user>coolo</user>
+    <comment>Don't do fdupes -s for the lang package stuff.. it breaks weirdly the bundle-extras package (forwarded request 149246 from Zaitor)</comment>
+    <requestid>149252</requestid>
+  </revision>
+  <revision rev="34" vrev="8">
+    <srcmd5>eb7e355d7520ea2260eab6dd643d9317</srcmd5>
+    <version>0.97.2</version>
+    <time>1359108811</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="9">
+    <srcmd5>24cf757b766c4023926760ff77985e47</srcmd5>
+    <version>0.97.2</version>
+    <time>1377628832</time>
+    <user>coolo</user>
+    <comment>- Add dia-glib-2.35.patch: GLib drop support for adding interfaces
+  after class_init. (forwarded request 196198 from Zaitor)</comment>
+    <requestid>196199</requestid>
+  </revision>
+  <revision rev="36" vrev="11">
+    <srcmd5>24cf757b766c4023926760ff77985e47</srcmd5>
+    <version>0.97.2</version>
+    <time>1379662224</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="12">
+    <srcmd5>8c58cb3438c26d774b00dd288a1926cb</srcmd5>
+    <version>0.97.2</version>
+    <time>1387270859</time>
+    <user>coolo</user>
+    <comment>- Added dia-use-recommended-freetype-include.patch: Freetype
+  upstream recommends using their macros together with ft2build
+  include. Positive sideeffect is that this patch makes it build
+  with both freetype2 2.5.1, and older versions (bgo#720573).</comment>
+    <requestid>211123</requestid>
+  </revision>
+  <revision rev="38" vrev="13">
+    <srcmd5>140e4e32aa985b11ae323783010807b5</srcmd5>
+    <version>0.97.2</version>
+    <time>1393656453</time>
+    <user>coolo</user>
+    <comment>- Remove libgnomeui support. Libgnomeui is deprecated, and session
+  management does not appear to be working well anyhow with GNOME 3.
+- Remove help files from GNOME directories
+- Add dia-enable-html-doc.patch -- always build html docs, as they
+  are needed for online help. Ie, don't require --with-hardbooks.
+
+(made this patch primarily for SLED, since we're trying to drop
+libgnomeui there. Fedora is also building with --disable-gnome -
+https://bugzilla.redhat.com/996759) (forwarded request 224089 from mgorse)</comment>
+    <requestid>224157</requestid>
+  </revision>
+  <revision rev="39" vrev="15">
+    <srcmd5>140e4e32aa985b11ae323783010807b5</srcmd5>
+    <version>0.97.2</version>
+    <time>1409300762</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>8f97da5705b42374b12db402f449b43a</srcmd5>
+    <version>0.97.3</version>
+    <time>1411472783</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250049</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>dab3ea9104c86554ccd5457075d3e8f2</srcmd5>
+    <version>0.97.3</version>
+    <time>1413987812</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257726</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>2f0c2688f8503c8bb304d4fc3695019a</srcmd5>
+    <version>0.97.3</version>
+    <time>1428790155</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295184</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>feadb5684f79b956e2a61b7b7268af84</srcmd5>
+    <version>0.97.3</version>
+    <time>1432157886</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>307911</requestid>
+  </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>7c2bd4a1e210abf91a151c3da517cf40</srcmd5>
+    <version>0.97.3</version>
+    <time>1485510217</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451995</requestid>
+  </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>98a7ef9aac55ce986c31093ab24b799e</srcmd5>
+    <version>0.97.3</version>
+    <time>1486547468</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454650</requestid>
+  </revision>
+  <revision rev="46" vrev="7">
+    <srcmd5>a0e3da5e005ee3bc7f99b4478880df96</srcmd5>
+    <version>0.97.3</version>
+    <time>1488559181</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with rpm 4.13</comment>
+    <requestid>460524</requestid>
+  </revision>
+  <revision rev="47" vrev="8">
+    <srcmd5>694fc44b2b7bd3236ac996d23b1e8e44</srcmd5>
+    <version>0.97.3</version>
+    <time>1522935021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592382</requestid>
+  </revision>
+</revisionlist>

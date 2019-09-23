@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>512a1c7b24adc5aa4df5bc2603715901</srcmd5>
+    <version>0.3.6</version>
+    <time>1331900686</time>
+    <user>coolo</user>
+    <comment>Dependency for ruby-debug</comment>
+    <requestid>108630</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>512a1c7b24adc5aa4df5bc2603715901</srcmd5>
+    <version>0.3.6</version>
+    <time>1340184158</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>512a1c7b24adc5aa4df5bc2603715901</srcmd5>
+    <version>0.3.6</version>
+    <time>1359110309</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>512a1c7b24adc5aa4df5bc2603715901</srcmd5>
+    <version>0.3.6</version>
+    <time>1379664512</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1862b2c51c7cf3034544c75916c84b2d</srcmd5>
+    <version>0.8.9</version>
+    <time>1400734621</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>234895</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>1862b2c51c7cf3034544c75916c84b2d</srcmd5>
+    <version>0.8.9</version>
+    <time>1409303223</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>475a0de142e5ced822817bf85b66d204</srcmd5>
+    <version>0.8.9</version>
+    <time>1413263463</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255292</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9478d622e30f396a40db814586811338</srcmd5>
+    <version>0.9.0</version>
+    <time>1424117500</time>
+    <user>coolo</user>
+    <comment>- updated to version 0.9.0, no changelog</comment>
+    <requestid>285036</requestid>
+  </revision>
+</revisionlist>

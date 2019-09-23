@@ -1,0 +1,5 @@
+<package name="spyder3" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python:numeric" package="spyder3"/>
+</package>

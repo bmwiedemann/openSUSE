@@ -1,0 +1,200 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>30f26341322485922036d5b9c316d2ee</srcmd5>
+    <version>0.9.10</version>
+    <time>1478780290</time>
+    <user>dimstar_suse</user>
+    <comment>Change to MIT</comment>
+    <requestid>434336</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>57dbe360b3ce401809346a64f6114ae0</srcmd5>
+    <version>0.9.11</version>
+    <time>1478871339</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>439553</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8c00d031248506e2d5ca84e36ffd8c0f</srcmd5>
+    <version>0.9.12</version>
+    <time>1484818998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>449873</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>44968a39e20398fb988b12d0b9dc8bf9</srcmd5>
+    <version>0.9.12</version>
+    <time>1503061377</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>516008</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>694c65aa221c3adc2278857df701780b</srcmd5>
+    <version>0.9.12</version>
+    <time>1505139777</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523014</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>a722f21aab9fba1d1a03da250d3816a2</srcmd5>
+    <version>0.9.12</version>
+    <time>1505507499</time>
+    <user>dimstar_suse</user>
+    <comment>- Update prosody-upstream-0.9-branch-fixes-since-0.12-tag.patch:
+  * mod_c2s: Iterate over child tags instead of child nodes in
+    stream error (fixes traceback from #987)
+  * mod_component, mod_s2s: Iterate over child tags instead of
+     child nodes (can include text) in stream error
+	 (same as 176b7f4e4ac9)</comment>
+    <requestid>526286</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>762b1b5106cc4eb361a7d87a9c1d974d</srcmd5>
+    <version>0.10.0</version>
+    <time>1507065629</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0:
+  See https://blog.prosody.im/prosody-0-10-0-released/ for details
+- Remove because contained in new upstream:
+  * prosody-upstream-0.9-branch-fixes-since-0.12-tag.patch
+  * prosody-backport-555.patch
+  * prosody-local-socket.patch
+- Update:
+  * prosody-configure.patch
+  * prosody-makefile.patch
+  * prosody-cfg.patch
+</comment>
+    <requestid>530942</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b7d0717aebd757d3424597b84035d078</srcmd5>
+    <version>0.10.0</version>
+    <time>1513015031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555832</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>355dfa22231c49b2b1b2fb373f0e134a</srcmd5>
+    <version>0.10.0</version>
+    <time>1513677422</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pid file location to default config
+  Seems this got lost with the update to 0.10.0
+- enable mod_posix</comment>
+    <requestid>557495</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f4fd598544eef5970ae66bbdd63650df</srcmd5>
+    <version>0.10.1</version>
+    <time>1526488975</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.1:
+  Security:
+  * SQL: Ensure user archives are purged when a user account is deleted (fixes #1009[1])
+  Fixes and improvements:
+  * Core: More robust signal handling (fixes #1047[2], #1029[3])
+  * MUC: Ensure that elements which match our from are stripped (fixes #1055[4])
+  * MUC: More robust handling of storage failures (fixes #1091[5], #1091[5])
+  * mod_mam: Ensure a user's archiving preferences apply even when they are offline (fixes #1024[6])
+  * Compatibility improvements with LuaSec 0.7, improving curve support
+  * mod_stanza_debug: New module that logs full stanzas sent and received for debugging purposes
+  * mod_mam: Implement option to enable MAM implicitly when client support is detected (#867[7])
+  * mod_mam: Add an option for whether to include 'total' counts by default in queries (for performance)
+  * MUC: send muc#stanza_id feature as per XEP-0045 v1.31 (fixes #1097[8])
+  Minor changes:
+  * SQL: Suppress error log if a transaction failed but was retried ok
+  * core.stanza_router: Verify that xmlns exists for firing stanza/iq/xmlns/name events (fixes #1022[9]) (thanks SamWhited)
+  * mod_carbons: Synthesize a 'to' attribute for carbons of stanzas to &quot;self&quot; (fixes #956[10])
+  * Core: Re-enable timestamps by default when logging to files (fixes #1004[11])
+  * HTTP: Report HTML Content-Type on error pages (fixes #1030[12])
+  * mod_c2s: Set a default value for c2s_timeout (fixes #1036[13])
+  * prosodyctl: Fix traceback with lfs &lt; 1.6.2 and show warning
+  * Fix incorrect '::' compression of a single 0-group which broke some IPv6 address matching
+  * mod_dialback: Copy function from mod_s2s instead of depending on it, which made it harder to disable s2s (fixes #1050[14])
+  * mod_storage_sql: Add an index to SQL archive stores to improve performance of some queries
+  * MUC: Don't attempt to reply to errors with more errors (fixes #1122[15])
+  * Module API: Fix parameter order to http client callbacks
+  * mod_blocklist: Allow mod_presence to handle subscription stanzas before bouncing outgoing presence (fixes #575[16])
+  * mod_http_files: Fix directory listing cache entries not expiring (fixes #1130[17])</comment>
+    <requestid>609037</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c325e06dc938d244e8102b60c2b63bce</srcmd5>
+    <version>0.10.2</version>
+    <time>1527934544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613633</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6f8d27bef416a6707c6c18bdefbee759</srcmd5>
+    <version>0.11.0</version>
+    <time>1543224492</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.0:
+  * Rewritten more extensible MUC module
+    + Store inactive rooms to disk
+    + Store rooms to disk on shutdown
+    + Voice requests
+    + Tombstones in place of destroyed rooms
+  * PubSub features
+    + Persistence
+    + Affiliations
+    + Access models
+    + &quot;publish-options&quot;
+  * PEP now uses our pubsub code and now shares the above features
+  * Asynchronous operations
+  * Busted for tests
+  * mod\_muc\_mam (XEP-0313 in groupchats)
+  * mod\_vcard\_legacy (XEP-0398)
+  * mod\_vcard4 (XEP-0292)
+  * mod\_csi, mod\_csi\_simple (XEP-0352)
+  * New experimental network backend &quot;epoll&quot;
+- For more details see:
+  * https://blog.prosody.im/prosody-0-11-0-released/
+  * https://prosody.im/doc/release/0.11.0#upgrade_notes
+- Remove prosody-makefile.patch: configure supports --libdir now
+- Update prosody-configure.patch: no libdir manipulation required
+- Update prosody-cfg.patch: refresh and remove posix part.
+  It's enabled by default.</comment>
+    <requestid>651085</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>880fd9ece649e2da50a355e81032caaa</srcmd5>
+    <version>0.11.1</version>
+    <time>1543591936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652595</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>eff83a44555b0024312d64238ee07092</srcmd5>
+    <version>0.11.2</version>
+    <time>1547211901</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664303</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>f7833ca39197269fb0e07537ceaae060</srcmd5>
+    <version>0.11.2</version>
+    <time>1556312119</time>
+    <user>maxlin_factory</user>
+    <comment>- bsc#1130588: Require shadow instead of old pwdutils</comment>
+    <requestid>698169</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>d9a59088c966d13feeb621f0a8433796</srcmd5>
+    <version>0.11.2</version>
+    <time>1563362428</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1141599: Add upstream fixes on 0.11 branch since 0.11.2
+* Add prosody-0.11-upstream-fixes.patch: Up to 9712:7a36b7ac309b</comment>
+    <requestid>715619</requestid>
+  </revision>
+</revisionlist>

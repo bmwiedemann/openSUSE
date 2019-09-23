@@ -1,0 +1,853 @@
+-------------------------------------------------------------------
+Mon Sep  2 20:32:41 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add deja-dup-duplicity-Mark-GPGError-extern.patch: Mark GPGError
+  as extern and prevent GPG symbols to be public API. Also fixes
+  building with new vala.
+
+-------------------------------------------------------------------
+Fri Jul  5 09:48:53 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.1:
+  + Fix versioning to be correct.
+- Changes from version 40.0:
+  + Fix tests when run under glib 2.60
+  + Updated translations.
+- Changes from version 39.1:
+  + Fix a bug that could have caused backups to be encrypted with
+    two different passwords in some cases. This would result in
+    difficulty backing up or restoring by not accepting the
+    password you expected it to.
+  + Fix a bug that caused duplicate save or exclude folders to
+    appear in the preferences.
+  + Delete a canary file that duplicity's pydrive puts in your
+    Drive.
+  + If you don't ask for your password to be saved, we now clear
+    out any older saved password.
+  + Finally delete the ancient Ubuntu One backend code.
+- Changes from version 39.0:
+  + Switch away from GNOME Online Accounts to our own cloud keys:
+    - It was brought to our attention that we shouldn't be using
+      GNOME's keys, as they are intended for GNOME only.
+    - Google accounts will have to be re-authenticated with our
+      keys.
+    - Nextcloud accounts will now appear as webdav network server
+      accounts.
+    - Adds new pydrive_pkgs option to list the package names needed
+      for the pydrive duplicity backend (for now, the system
+      package that provides the pydrive python2 package should
+      suffice).
+    - Adds new google_client_id option if you want to override our
+      default account key and use your own. You likely won't want
+      to do this.
+    - Adds new dependencies on libjson-glib and libsoup.
+    - Drops libgoa-backend dependency. The libgoa dependency will
+      stay during a transition period from the old keys to the new
+      keys.
+  + Unmount a remote backup location when we are done with it, if
+    we originally mounted it.
+- Add pkgconfig(json-glib-1.0) and pkgconfig(libsoup-2.4)
+  BuildRequires: New dependencies.
+- Drop pkgconfig(goa-backend-1.0) BuildRequires: No longer needed,
+  nor used.
+- Reenable meson_tests, upstream fixed the issues.
+
+-------------------------------------------------------------------
+Tue Feb 26 16:17:54 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 38.4:
+  + Update app icon.
+  + Don't run monitor when automatic backups are disabled.
+  + Drop libpeas dependency.
+  + Fix compilation with valac 0.43.
+  + Be more forgiving if packagekit is unresponsive.
+  + Updated translations.
+- Drop deja-dup-fix-build-vala043.patch: Fixed upstream.
+- Drop pkgconfig(libpeas-1.0) BuildRequires: No longer needed.
+
+-------------------------------------------------------------------
+Sun Feb 10 13:39:18 UTC 2019 - bjorn.lie@gmail.com
+
+- Add deja-dup-fix-build-vala043.patch: Fix build with new vala
+  0.43.x.
+- Disable meson_test, currently fails.
+
+-------------------------------------------------------------------
+Thu Jan 17 17:23:57 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 38.3:
+  + Allow restoring from paths with symlinks in more situations
+    (including a fix for a backup error when ~/.cache is a
+    symlink).
+  + Treat operation dialogs more like real dialogs (modal to
+    preference window, with correct styling on default buttons).
+  + Try harder to stop running duplicity commands when we are
+    terminated.
+  + Don't hide an error message when also running our bimonthly
+    backup verification.
+  + If there isn't enough space in the backup location, tell the
+    user how much is needed.
+  + Exclude flatpak cache directories by default.
+
+-------------------------------------------------------------------
+Mon Jan  7 15:55:22 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 38.2:
+  + Fix not being able to find the backup files when restoring on
+    a fresh install.
+- Changes from version 38.1:
+  + Use a primary menu instead of an AppMenu, per current GNOME
+    recommendations.
+  + Drop support for the legacy desktop status icon.
+  + Updated translations.
+- Drop meson version fix via sed in spec, no longer needed.
+- Stop exporting optflags and rpath before configure, no longer
+  needed.
+- Renable meson test, tests are now ok.
+
+-------------------------------------------------------------------
+Fri Apr 13 01:38:05 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 38.0:
+  + Drop ulimit for monitor process, it was causing crashes.
+  + Fix autoscrolling in progress window.
+  + Exclude snap cache directories by default.
+  + Updated translations.
+- Add gio-2.0, gio-unix-2.0 and goa-backend-1.0 pkgconfig modules
+  and glib2-tools package BuildRequires to avoid implicit
+  dependencies.
+- Replace pkgconfig(appstream-builder), dbus-1-x11, update-desktop\
+  -files and perl-gettext BuildRequires with appstream-glib, dbus-\
+  1, desktop-file-utils and gettext-runtime respectively, what
+  meson really looks for.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:24:40 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jan 17 01:56:58 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 37.1:
+  + Add new Google Drive backend and make it the new default
+    backend.
+  + Updated translations.
+- Update Url to https://wiki.gnome.org/Apps/DejaDup: current Deja
+  Dup's GNOME web page.
+- Point fdupes to the data directory instead of the build root,
+  which is a practice that must be avoided.
+- Drop %glib2_gsettings_schema_requires macro: it's no longer
+  needed since RPM File Triggers.
+
+-------------------------------------------------------------------
+Sun Nov  5 13:25:43 UTC 2017 - badshah400@gmail.com
+
+- Update to version 36.3:
+  + Fix the restore dialog sometimes being blank.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct 20 14:28:13 UTC 2017 - badshah400@gmail.com
+
+- Update to version 36.2:
+  + Fix crash when trying to restore missing files.
+  + Fix the UI from freezing for a second when mounting the
+    backend location.
+  + Updated translations.
+
+------------------------------------------------------------------
+Sat Sep 30 00:14:29 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 36.1:
+  + Fix backing up to external drives.
+  + Updated translations.
+- Drop deja-dup-fix-setting-drive-volume.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Fri Sep 15 20:17:15 UTC 2017 - zaitor@opensuse.org
+
+- Add deja-dup-fix-setting-drive-volume.patch: BackendDrive: Fix
+  setting a drive volume (lp#1717230).
+
+-------------------------------------------------------------------
+Wed Sep 13 13:23:41 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 36.0:
+  + data: Don't depend on bash.
+  + BackendRemote:
+    - Guard against returning a null GFile if we can't find mount.
+    - Handle the user specifying a non-utf8 folder.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  7 22:47:54 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 35.6:
+  + Fix a potential memory leak in the monitor daemon and few other
+    bugs.
+- Changes from version 35.5:
+  + Improve on-the-fly dependency installation and fixes a few
+    other interaction bugs.
+- Changes from version 35.4:
+  + Add support for GNOME Online Accounts and cleans up the
+    interface a bit.
+- Changes from version 35.3:
+  + Fix some bugs around unicode filenames and network access.
+- Changes from version 35.2:
+  + Fix a crash we cause in nautilus with our extension.
+- Changes from version 35.1:
+  + Fix a header-color bug introduced in the previous release and
+    also try to fix a long-standing bug around backup/restore
+    buttons being disabled too often.
+- Changes from version 35.0:
+  + Modernize the code base in a few ways that make the experience
+    better in GNOME 3.
+- Add meson BuildRequires and switch cmake macros cmake, make and
+  cmake_install to meson, meson_build and meson_install following
+  upstream switch to Meson build system.
+- Drop intltool BuildRequires: No longer needed.
+- Add libgpg-error-devel, pkgconfig(appstream-builder) and
+  pkgconfig(goa-1.0) BuildRequires: New dependencies.
+- Drop deja-dup-vala-0.36.patch: Fixed upstream.
+- Drop deja-dup-help2man_stderr.patch: No longer needed after the
+  port to meson.
+- Drop handling of localized man pages in install section, no
+  longer needed.
+- Drop suse_update_desktop files macros, no longer needed.
+- Drop obsolete post(un) handling of following macros:
+  glib2_gsettings_schema_post(un), desktop_database_post(un) and
+  icon_theme_cache_post(un).
+
+-------------------------------------------------------------------
+Thu Jun 29 08:52:33 UTC 2017 - tchvatal@suse.com
+
+- Fix obvious typo } instead of )
+
+-------------------------------------------------------------------
+Sat Jun 17 14:22:30 UTC 2017 - dimstar@opensuse.org
+
+- Add deja-dup-vala-0.36.patch: Fix build with vala 0.36. Patch is
+  only applied when vala version 0.36 or newer is found (since
+  upstream is not yet clear if they just want to require a new vala
+  version or possibly support older ones too).
+
+-------------------------------------------------------------------
+Thu Jan 26 09:33:55 UTC 2017 - firebird209@gmail.com
+
+- Update to version 34.3:
+  + Fix a bug that allowed an incorrect password when making a
+    new full backup.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct 13 13:49:47 UTC 2016 - dimstar@opensuse.org
+
+- Fix deja-dup-help2man_stderr.patch: the introduction of
+  --no-discard-stderr actually only hid the underlying issue:
+  deja-dup is being started from the 'build' directory and its
+  libraries are not yet installed. As a consequence, the ld loader
+  can't find them, resulting in broken man pages. Change the patch
+  to no longer pass --no-discard-stderr (same as upstream) but
+  inject LD_LIBRARY_PATH in order to find the two libs
+  (boo#992499).
+
+-------------------------------------------------------------------
+Sun Apr 24 10:56:00 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 34.2:
+  + This version fixes a bug that prevented restoring some files
+    with unicode characters (boo#990937).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Dec 31 01:52:20 UTC 2015 - badshah400@gmail.com
+
+- Update to version 34.1:
+  + Add experimental support for Google Cloud Storage, please test
+    and file bugs.
+  + Add experimental support for OpenStack Swift, please test and
+    file bugs.
+  + Fix a bug where the error dialog wasn't visible after a failed
+    backup in GNOME.
+  + Fix a bug where background backups were using smaller 'nice'
+    values than they should have.
+  + Drop support for building the GNOME Control Center plugin;
+    upstream hasn't supported that for a while, and Ubuntu finally
+    dropped their patch allowing it.
+  + Install duplicity on demand if needed.
+  + Support reproducible builds by using $SOURCE_DATE_EPOCH to set
+    the man page timestamps, if present.
+  + Updated translations.
+- Add BuildRequires: pkgconfig(packagekit-glib2), needed for the
+  install duplicity on demand feature.
+- Due to above change, change duplicity Requires to Recommends.
+
+-------------------------------------------------------------------
+Sat Apr 11 18:48:00 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 34.0:
+  + Support duplicity 0.6.25 and up.
+  + Support latest versions of appstream-util.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 26 07:22:41 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 32.0:
+  + Features: Drop support for Ubuntu One cloud storage, since it
+    has shut down.
+  + Packaging: Fix some compile issues and warnings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug  9 19:26:09 UTC 2014 - sfalken@opensuse.org
+
+- Update to version 30.0:
+  + Packaging: Fix build with CMake 2.8.12.
+- Changes from version 29.5:
+  + Bug Fixes: Re-enable libunity support after it was
+    accidentally dropped in 29.1.
+  + Packaging: Require duplicity 0.6.23.
+- Changes from version 29.4:
+  + Bug Fixes: Add missing icon in help documentation.
+  + Packaging:
+    - Add ENABLE_UNITY_CCPANEL argument for unity-control-center
+      support.
+    - Fix some compile problems with valac, parallel building, and
+      rpath support.
+- Changes from version 29.1:
+  + Bug Fixes: Detect encryption on existing backups by paying
+    attention to what Duplicity tells us, rather than trying to
+    figure it out by scanning ourselves. This removes a possible
+    source of error.
+  + Polish:
+    - Rename to Backups (instead of Backup).
+    - Update look and feel of preferences a bit.
+    - Add screenshots to appdata file.
+  + Packaging:
+    - Require GTK+ 3.6 and GLib 2.34.
+    - Convert from autotools to cmake: --with-ccpanel is now
+      -DENABLE_CCPANEL, --with-nautilus is now -DENABLE_NAUTILUS,
+      --with-unity is now -DENABLE_UNITY. Otherwise, normal cmake
+      conventions apply.
+    - Add some autopilot tests, runnable by 'autopilot' and
+      'autopilot-system' targets (which test against the local
+      built executables or the installed system ones respectively).
+  + Updated translations.
+- Add deja-dup-help2man_stderr.patch: Corrects help2man failure in
+  build.
+- Drop deja-dup-vala-0.22.patch: Incorporated upstream.
+- Updated .spec file for new CMake build process: add cmake
+  BuildRequires.
+- Add -Wl,rpath to CFLAGS and CXXFLAGS to ensure we do not lose
+  the path to the private library.
+
+-------------------------------------------------------------------
+Tue Dec 24 21:06:08 UTC 2013 - dimstar@opensuse.org
+
+- Add deja-dup-vala-0.22.patch: Support building against vala
+  0.22; taken from deja-dup 30 branch.
+
+-------------------------------------------------------------------
+Sat Sep 28 08:18:47 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 28.0:
+  + Updated translations.
+  + Add an appdata file for GNOME Software.
+- Changes from version 27.3:
+  + Fix optional System Settings panel to work with GNOME 3.8 and
+    above.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 30 17:48:28 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 26.0:
+  + Fix another instance of using /tmp directly.
+  + Spread around the default backup time.
+  + Lower its CPU priority when running.
+- Changes from version 25.5:
+  + Fix problems with small /tmp folders.
+  + Allow $USER variables in the local backup location path.
+  + Appear in GNOME 3's notification settings.
+  + Exclude /run by default.
+  + Requires duplicity 0.6.21.
+- Changes from version 25.3:
+  + Fixes Ubuntu One support with the latest duplicity.
+  + Ignore ~/Steam by default.
+  + Support using $USER in gsettings default paths.
+- Changes from version 25.1.1:
+  + Fix a build error and bug keeping some notifications from being
+    translated.
+- Changes from version 25.1:
+  + Switch from libgnome-keyring to libsecret.
+- Replace pkgconfig(gnome-keyring-1 BuildRequires with
+  pkgconfig(libsecret-1), following upstreams port.
+
+-------------------------------------------------------------------
+Thu Oct 11 13:35:33 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 21 23:39:21 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 23.92:
+  + Only allow one deja-dup-monitor process at a time
+- Changes from version 23.90:
+  + Add extra checks at the end of a backup to verify we can
+    successfully restore it later
+- Changes from version 23.4:
+  + Always makes a fresh backup every three months now, regardless
+    of how often automatic backups happen
+  + Don't prompt for root password when restoring from Ubuntu One,
+    as it won't work anyway (U1 needs to talk to your session bus,
+    which root can't do)
+  + Use pkexec instead of gksu
+- Changes from version 23.2:
+  + Build system adjustments
+  + Updated translations.
+- Add pkgconfig(libpea-1.0) BuildRequires: new dependency.
+- Recommend python-cloudfiles, as is available for since openSUSE
+  12.2
+- Removed scripts to find localized files: %find_lang handles this
+  ok now.
+- Drop xz BuildRequires as it now comes for free in the build
+  system.
+- Drop gnome-doc-utils-devel BuildRequires: it's not needed, as the
+  help system had been migrated to yelp-tools earlier.
+- Remove checks for outdated openSUSE versions (<= 11.3).
+
+-------------------------------------------------------------------
+Wed Apr 18 21:49:45 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 22.1:
+  + Allow resuming an encrypted but incomplete backup (lp#902985).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 22 19:02:20 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 22.0:
+  + Bug Fixes:
+    - When restoring files outside of $HOME from a non-cloud remote
+      server, don't run under sudo since it will fail anyway
+    - Tell user when a file could not be restored due to permission
+      problems
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 26 14:08:02 UTC 2012 - vuntz@opensuse.org
+
+- Change itstool BuildRequires to yelp-tools: this is really what
+  is needed for build.
+
+-------------------------------------------------------------------
+Fri Feb 24 07:34:43 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 21.90:
+  + Polish:
+    - Won't try to backup if online but target server is not
+      available
+  + Bug Fixes:
+    - Work around bug in GTK+ that caused text to be white-on-white
+  + Packaging:
+    - Support building with valac-0.16 (in addition to valac-0.14)
+  + Updated translations.
+- Drop deja-dup-vala-0.16.patch: fixed upstream.
+- Disable 'make check' in %check, as it's failing for a weird
+  reason when run on OBS, see lp#940110.
+
+-------------------------------------------------------------------
+Mon Jan 16 13:34:57 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 21.4:
+  + Polish:
+    - Warn user if we couldn't back up a file because we couldn't
+      read it
+  + Packaging:
+    - Fix -j2 build
+    - Add auto tests that are run during 'make check', suitable for
+      build servers
+  + Updated translations.
+- Re-enable parallel build.
+- Add deja-dup-vala-0.16.patch: fix build with vala 0.15/0.16.
+- Add %check section with new 'make check'.
+- Add dbus-1-x11 BuildRequires, so 'make check' can work:
+  dbus-launch is needed.
+
+-------------------------------------------------------------------
+Tue Nov 22 15:02:09 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 21.2:
+  + Bug Fixes:
+    - Use smarter test for detecting whether existing backups are
+      encrypted, which will work even if duplicity uses
+      translations
+    - Fix a bug that in some situations could lead to a full backup
+      being created more frequently than once a month
+  + Polish:
+    - Drop "After a week" from "Keep backups" option, since
+      internally, we always wait a month anyway
+    - Treat any AssertionError by duplicity as an internal
+      duplicity error by wiping the cache and trying again; this
+      will let us be more pro-active about fixing some odd
+      duplicity situations
+  + Packaging:
+    - Start of a unit test for our internal library; compile and
+      run it with 'make check'
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 15 22:39:58 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 21.1:
+  + Polish:
+    - Switch to notebook tabs for preferences instead of side list
+  + Bug Fixes:
+    - Allow passwords that contain only whitespaces (while
+      continuing to strip whitespace from normal passwords)
+  + Packaging:
+    - Use valac 0.14 instead of 0.12
+    - Tarballs now only include the vala code, so you'll need valac
+      to compile
+    - No longer require libdbusmenu-gtk3 for Unity support
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Disable parallel build as it breaks the build with this release.
+
+-------------------------------------------------------------------
+Fri Oct 28 14:12:35 UTC 2011 - badshah400@gmail.com
+
+- Replace category SystemSetup by X-SuSE-Backup to suppress rpmlint
+  warnings
+
+-------------------------------------------------------------------
+Wed Oct 26 20:38:36 UTC 2011 - badshah400@gmail.com
+
+- Modified categories in .desktop file so that it is grouped with
+  "System" applications in the desktop menus (bnc#714333) 
+
+-------------------------------------------------------------------
+Tue Oct 18 06:41:29 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 20.1:
+  + Bug Fixes:
+    - Correctly backup or exclude folders with [, ], ?, and * in
+      their names
+    - Fix translation of some strings when used in control center
+      panel mode
+    - Fix a nautilus crash if the gsettings schema isn't installed
+      correctly
+    - Allow LUKS encrypted volumes to appear in backup location
+      list
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 26 09:31:13 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 20.0:
+  + Polish:
+    - Backed out ubuntuone-installer support; it wasn't perfect and
+      Ubuntu 11.10 won't use it after all
+    - In Unity, go back to using minimized automatic backup windows
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 21 18:19:57 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 19.92:
+  + Polish:
+    - If Ubuntu One support is not available but the
+      ubuntuone-installer is, use that
+    - Never clean up files in the backup location during a restore
+    - Fix spacing and layout with latest versions of GTK+
+  + Bug Fixes:
+    - In Unity, work around bug with minimized windows and the
+      launcher by just not minimizing windows but instead showing
+      them without stealing focus
+    - If a user manually enters a volume (e.g. USB drive) path as a
+      local folder, correct that internally on the first backup
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Fri Sep  9 12:28:59 UTC 2011 - vuntz@opensuse.org
+
+- Move translations of the help documents to the lang subpackage,
+  now that filesystem owns /usr/share/help.
+
+-------------------------------------------------------------------
+Mon Sep  5 12:34:05 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 19.91:
+  + Polish:
+    - When newer versions of duplicity warn that a file has been
+      corrupted upon upload, Déjà Dup will intelligently retry the
+      backup
+  + Several bug fixes.
+  + Updated translations.
+- Changes from version 19.90:
+  + Polish:
+    - Allow showing the progress dialog in GNOME Shell
+  + Updated translations.
+- Changes from version 19.5:
+  + Polish:
+    - Lots of UI and label tweaks
+    - Don't show optical media in backup location dropdown
+    - Update backup location dropdown as external drives come and
+      go
+    - Allow drag and drop of folders into include/exclude lists
+    - Make it clear that the default home folder include is only
+      your user's home folder
+    - Don't keep notifying about delayed backups between setting up
+      your preferences and your first backup
+  + Several bug fixes.
+  + Updated translations.
+- Changes from version 19.4:
+  + Polish:
+    - Drop encryption preference and either ask during first backup
+      or detect from existing backup
+    - More layout fixups to work better with latest GTK+
+    - Where the Autostart-Delay key is supported, delay monitor
+      start by two minutes
+  + Several bug fixes.
+  + Updated translations.
+- Changes from version 19.3:
+  + Polish:
+    - Fix some layout issues with latest GTK+
+    - Don't show location preferences when restoring single files,
+      just on full restore
+    - Show launcher icon in Unity during automatic backup again
+  + Several bug fixes.
+  + Updated translations.
+- Changes from version 19.2.2:
+  + Build fix.
+- Changes from version 19.2.1:
+  + Build fix.
+- Changes from version 19.2:
+  + Features:
+    - Turn on Ubuntu One support when using a newer duplicity
+    - Added monthly notification about backing up if user never
+      used deja-dup
+  + Polish:
+    - Better support for GNOME Shell and its notification system
+    - Run Déjà Dup itself under ionice and nice instead of just
+      duplicity
+    - Make volume chunk sizes larger, to reduce the number of files
+      created
+  + Several bug fixes.
+  + Updated translations.
+- Changes from version 19.1:
+  + Features:
+    - Reworked interface to be a control center plugin
+    - Added overview page where last and next backup dates can be
+      seen
+  + Polish:
+    - Fleshed out and updated help documenation
+    - When restoring from a location that isn't your normal backup
+      location, your location isn't changed
+    - When encryption password is bad, ask for it again
+    - Only show nautilus context menu item if file is in backup
+  + Updated translations.
+- Remove handling of the favor_gtk2 macro: deja-dup cannot be built
+  for GNOME 2 anymore.
+- Add itstool BuildRequires: new dependency.
+- Remove now unneeded pkgconfig(unique-3.0) BuildRequires.
+- Add python-boto Recommends: this is an optional dependency for
+  Amazon Web Services integration.
+- Correctly mark translated documentation with %lang() tags; this
+  should ideally be done by %find_lang, but we first need to check
+  if the new location is accepted as a standard one.
+
+-------------------------------------------------------------------
+Mon May 16 16:28:53 UTC 2011 - dimstar@opensuse.org
+
+- Add glib2 gsettings schema handling macros to post and postun.
+
+-------------------------------------------------------------------
+Wed Apr 27 09:48:23 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 18.1.1:
+  + Actually work with NetworkManager 0.9
+  + Updated translations.
+- Changes from version 18.1:
+  + Work with NetworkManager 0.9
+- Changes from version 18.0:
+  + If using an older duplicity and it gives a certain bogus "time
+    not moving forward" error, handle it instead of passing the
+    error along
+  + Create backup location folder if it doesn't exist
+  + Don't show duplicate external hard drives.
+- Changes from version 17.92:
+  - Re-enabled support for resuming a backup, if using the
+    unreleased duplicity 0.6.13
+  - New icon
+  + Updated translations.
+- Changes from version 17.91:
+  + Rename Quit to Close
+  + Bug Fixes:
+    - Fix a couple issues with Unity integration (like not showing
+      in launcher)
+    - Fix some broken label mnemonics in the preferences
+  + Updated translations.
+- Changes from version 17.90:
+  + When entering an encryption password for the first time, it now
+    needs to be confirmed to avoid typo mistakes
+  + First pass at optional Unity integration (instead of a status
+    icon)
+  + Bug Fixes:
+    - Fixed bug with remote locations that made it impossible to
+      set a remote folder
+    - Fix a couple rare crashers
+  + Updated translations.
+- Changes from version 17.6:
+  + Exclude Adobe flash cache directory by default
+  + Add documentation for how to get your data back even if Déjà
+    Dup isn't working
+  + Bug Fixes:
+    - Don't show error if both Déjà Dup and nautilus are trying to
+      mount a volume at the same time
+    - Allow removing multiple folders from the preferences at the
+      same time
+    - Handle more odd symlink-in-include-path situations
+    - Fix odd behavior (possibly a crash) when cancelling a backup
+      or restore
+- Changes from version 17.5:
+  + Add support for the Rackspace Cloud Files service
+  + Use hostname in default Amazon S3 folder name
+  + Add Downloads folder to default exclude list
+  + Bug Fixes:
+    - Fix crash when changing backup location on first startup 
+    - When browsing for a local folder, start the dialog in the
+      current folder setting
+  + Updated translations.
+- Changes from version 17.4:
+  + Reorganize the backup location preferences to be more intuitive
+  + Updated translations.
+- Changes from version 17.3:
+  + Bug fixes:
+    - Fix crash when changing backup location
+    - Fix date formats when restoring to be more consistent
+  + Updated translations.
+- Changes from version 17.2:
+  + Add a "Restore Missing Files" interface, accessed via nautilus
+  + Support GNOME Shell persistent notifications
+  + Only calculate progress bar if a fresh backup is being made
+  + Bug Fixes:
+    - If Duplicity looks like it's hitting a common ad-metadata
+      bug, clear cache and try again
+- Changes from version 17.1:
+  + Bug Fixes:
+    - If backup destination does not report free size, just
+      continue anyway
+    - Fix bug preventing sudo and encryption getting along
+    - Don't ask for root password when restoring into the user's
+      home folder
+- Changes from version 17.0:
+  + Use GSettings instead of gconf
+  + Updated translations.
+- For a complete list of changes between 16.1.1 and 18.0 see NEWS.
+- Drop deja-dup-monitor_check_for_gtk.patch: fixed upstream. Also
+  remove related gnome-common BuildRequires and gnome-autogen.sh
+  call.
+- Add intltool and perl-gettext BuildRequires.
+- Drop pkgconfig(gconf-2.0) BuildRequires.
+- Switch between gtk2/gtk3 based on favor_gtk2 macro:
+  + Pass --without-gtk3/--with-gtk3 to configure.
+  + Use appropriate pkgconfig() BuildRequires: gtk+-2.0 and
+    unique-1.0, or gtk+-3.0 and unique-3.0.
+- Replace GConf2 schemas handling with GSettings schemas handling,
+  with %glib2_gsettings_schema_* macros, and remove
+  --disable-schemas-install from configure call.
+
+-------------------------------------------------------------------
+Sat Feb 12 17:09:17 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Tue Dec 14 16:17:23 CET 2010 - vuntz@opensuse.org
+
+- Own directories of localized man pages to fix build. Also move
+  those files to the main package: they should eventually live in
+  the lang subpackage, but at the moment, they would create a file
+  conflict between bundles and the lang subpackage.
+- Own %{_libdir}/deja-dup.
+
+-------------------------------------------------------------------
+Sat Nov 20 20:22:58 CET 2010 - badshah400@gmail.com
+
+- Update to version 16.1.1:
+  + Bug fixes: Fix help documentation translations
+- Changes in version 16.1:
+  + Bug fixes:
+    - If backup destination does not report free size,
+      just continue anyway
+    - Fix bug preventing sudo and encryption getting along
+    - Don't ask for root password when restoring into the user's
+      home folder
+
+-------------------------------------------------------------------
+Tue Sep 28 13:32:06 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 12 11:35:17 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 15.92:
+  + Support ConnMan
+  + Disable explicit resume support until bugs with it are fixed
+  + Fix a bug where symlink excludes were actually included.
+- Rebase deja-dup-monitor_check_for_gtk.patch.
+- Handle new deja-dup-preferences.desktop.
+
+-------------------------------------------------------------------
+Thu Aug 12 12:29:24 CEST 2010 - vuntz@opensuse.org
+
+- Remove desktop-file-utils BuildRequires and change vala-devel
+  BuildRequires to vala.
+- Split a nautilus-deja-dup subpackage for the nautilus extension.
+- Pass --without-gtk3 to configure to explicitly disable GTK+ 3 at
+  the moment.
+- Put localized man pages in the lang package.
+
+-------------------------------------------------------------------
+Wed Aug 11 14:25:56 UTC 2010 - dimstar@opensuse.org
+
+- Minor spec cleanups like trailing spaces and the like.
+- Add gnome-common BuildRequires and use gnome-autogen.sh for the
+  patch to re-bootstrap.
+- Convert generic BuildRequires to pkgconfig() ones:
+  + gconf2-devel => gconf-2.0
+  + nautilus-devel => nautilus-extension
+  + unique-devel => unique-1.0
+  + libnotify-devel => libnotify
+  + gnome-keyring-devel => gnome-keyring-1
+- Drop un-needed BuildRequires: gettext, pango-devel, intltool,
+  glib2-devel, cairo-devel, libtool.
+- Use %{?_smp_mflags} for parallel build.
+
+-------------------------------------------------------------------
+Wed Aug 11 15:03:10 CEST 2010 - lmedinas@opensuse.org
+
+- Initial import.

@@ -1,0 +1,155 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>fb7e12c14120bf5c634e97a3339a4b07</srcmd5>
+    <version>0.99.1</version>
+    <time>1207709542</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>d25154211bd580b558252844b35baacf</srcmd5>
+    <version>0.99.1</version>
+    <time>1208030082</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="70">
+    <srcmd5>d25154211bd580b558252844b35baacf</srcmd5>
+    <version>0.99.1</version>
+    <time>1208030082</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="71">
+    <srcmd5>5f3307579f2d00dce3659a365f2fb2db</srcmd5>
+    <version>0.99.1</version>
+    <time>1245339532</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="73">
+    <srcmd5>5f3307579f2d00dce3659a365f2fb2db</srcmd5>
+    <version>0.99.1</version>
+    <time>1245339532</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="74">
+    <srcmd5>d2b1effc11268f84175e9c3ef298abc1</srcmd5>
+    <version>0.99.1</version>
+    <time>1268925956</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="76">
+    <srcmd5>d2b1effc11268f84175e9c3ef298abc1</srcmd5>
+    <version>0.99.1</version>
+    <time>1278667387</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="77">
+    <srcmd5>d2b1effc11268f84175e9c3ef298abc1</srcmd5>
+    <version>0.99.1</version>
+    <time>1278678615</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="78">
+    <srcmd5>3622d35143581ddcf0054628bcba2b30</srcmd5>
+    <version>unknown</version>
+    <time>1284378388</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/raw-thumbnailer based on submit request 47913 from user vuntz
+</comment>
+    <requestid>47913</requestid>
+  </revision>
+  <revision rev="10" vrev="79">
+    <srcmd5>6e30456d249b27b042d63491369dc4b1</srcmd5>
+    <version>0.99.1</version>
+    <time>1297643834</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60989 from user vuntz
+</comment>
+    <requestid>60989</requestid>
+  </revision>
+  <revision rev="11" vrev="80">
+    <srcmd5>14423945bb499d95ca30deaa58cb456d</srcmd5>
+    <version>0.99.1</version>
+    <time>1297643853</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60989
+</comment>
+  </revision>
+  <revision rev="12" vrev="83">
+    <srcmd5>14423945bb499d95ca30deaa58cb456d</srcmd5>
+    <version>0.99.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="85">
+    <srcmd5>14423945bb499d95ca30deaa58cb456d</srcmd5>
+    <version>0.99.1</version>
+    <time>1319182422</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="86">
+    <srcmd5>e18d8a85b4391d9fe0f02dc454bbdbb3</srcmd5>
+    <version>0.99.1</version>
+    <time>1323194362</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d08f5f0ab950d436fef1f255057b647c</srcmd5>
+    <version>3.0.0</version>
+    <time>1325787333</time>
+    <user>coolo</user>
+    <comment>Pushing G:A</comment>
+    <requestid>98946</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>d08f5f0ab950d436fef1f255057b647c</srcmd5>
+    <version>3.0.0</version>
+    <time>1340184138</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>d08f5f0ab950d436fef1f255057b647c</srcmd5>
+    <version>3.0.0</version>
+    <time>1359110276</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>a62e84c87a34d0d68110652504672e87</srcmd5>
+    <version>3.0.0</version>
+    <time>1365932480</time>
+    <user>coolo</user>
+    <comment>Push from G:A</comment>
+    <requestid>163909</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>a62e84c87a34d0d68110652504672e87</srcmd5>
+    <version>3.0.0</version>
+    <time>1379664435</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>a62e84c87a34d0d68110652504672e87</srcmd5>
+    <version>3.0.0</version>
+    <time>1409303168</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>5abb1592dc14d1c68d28144a5cf53dfe</srcmd5>
+    <version>3.0.0</version>
+    <time>1561049679</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace pkgconfig(libopenraw-gnome-1.0) BuildRequires with
+  libopenraw-devel: the .pc file changed name between 0.0.x and
+  0.1.x. Requiring the generic -devel name is easier than following
+  upstreams namechanges.
+- In case we build against libopenraw-gnome-0.1, update the build
+  system to look for the right pc file using sed. (forwarded request 707787 from dimstar)</comment>
+    <requestid>707813</requestid>
+  </revision>
+</revisionlist>

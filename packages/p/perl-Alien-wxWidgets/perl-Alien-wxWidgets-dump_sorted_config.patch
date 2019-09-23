@@ -1,0 +1,22 @@
+--- lib/Alien/wxWidgets.pm.orig	2016-11-23 16:54:35.940061462 +0100
++++ lib/Alien/wxWidgets.pm	2016-11-23 16:55:14.383929523 +0100
+@@ -132,6 +132,8 @@
+     my @configs = $class->get_configurations( @_ );
+ 
+     require Data::Dumper;
++    # sort output, to have same output as from My::Build::Base
++    $Data::Dumper::Sortkeys = 1;
+     print Data::Dumper->Dump( \@configs );
+ }
+ 
+--- inc/My/Build/Base.pm.orig	2016-11-24 14:43:52.306654279 +0100
++++ inc/My/Build/Base.pm	2016-11-24 14:44:09.806598987 +0100
+@@ -218,6 +218,8 @@
+     my %config = $self->_init_config;
+     my $base = $self->awx_key;
+ 
++    # sort output for reproducible builds
++    $Data::Dumper::Sortkeys = 1;
+     my $body = Data::Dumper->Dump( [ \%config ] );
+     $body =~ s/rEpLaCe/$base/g;
+ 

@@ -1,0 +1,79 @@
+From fac9200a881a83bef038ebed628ebd409786a1a6 Mon Sep 17 00:00:00 2001
+From: Vitezslav Cizek <vcizek@suse.com>
+Date: Tue, 4 Jun 2019 13:24:59 +0200
+Subject: [PATCH] build_SYS_str_reasons: Fix a crash caused by overlong locales
+
+The 4 kB SPACE_SYS_STR_REASONS in crypto/err/err.c isn't enough for some locales.
+The Russian locales consume 6856 bytes, Ukrainian even 7000.
+
+build_SYS_str_reasons() contains an overflow check:
+
+if (cnt > sizeof(strerror_pool))
+    cnt = sizeof(strerror_pool);
+
+But since commit 9f15e5b911ba6053e09578f190354568e01c07d7 it no longer
+works as cnt is incremented once more after the condition.
+
+cnt greater than sizeof(strerror_pool) results in an unbounded
+OPENSSL_strlcpy() in openssl_strerror_r(), eventually causing a crash.
+
+When the first received error string was empty or contained only
+spaces, cur would move in front of the start of the strerror_pool.
+
+Also don't call openssl_strerror_r when the pool is full.
+
+Reviewed-by: Bernd Edlinger <bernd.edlinger@hotmail.de>
+Reviewed-by: Richard Levitte <levitte@openssl.org>
+Reviewed-by: Tomas Mraz <tmraz@fedoraproject.org>
+(Merged from https://github.com/openssl/openssl/pull/8966)
+---
+ crypto/err/err.c | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/crypto/err/err.c b/crypto/err/err.c
+index 57399f82ad..cf3ae4d3b3 100644
+--- a/crypto/err/err.c
++++ b/crypto/err/err.c
+@@ -188,8 +188,8 @@ static ERR_STRING_DATA *int_err_get_item(const ERR_STRING_DATA *d)
+ }
+ 
+ #ifndef OPENSSL_NO_ERR
+-/* A measurement on Linux 2018-11-21 showed about 3.5kib */
+-# define SPACE_SYS_STR_REASONS 4 * 1024
++/* 2019-05-21: Russian and Ukrainian locales on Linux require more than 6,5 kB */
++# define SPACE_SYS_STR_REASONS 8 * 1024
+ # define NUM_SYS_STR_REASONS 127
+ 
+ static ERR_STRING_DATA SYS_str_reasons[NUM_SYS_STR_REASONS + 1];
+@@ -223,21 +223,23 @@ static void build_SYS_str_reasons(void)
+         ERR_STRING_DATA *str = &SYS_str_reasons[i - 1];
+ 
+         str->error = ERR_PACK(ERR_LIB_SYS, 0, i);
+-        if (str->string == NULL) {
++        /*
++         * If we have used up all the space in strerror_pool,
++         * there's no point in calling openssl_strerror_r()
++         */
++        if (str->string == NULL && cnt < sizeof(strerror_pool)) {
+             if (openssl_strerror_r(i, cur, sizeof(strerror_pool) - cnt)) {
+                 size_t l = strlen(cur);
+ 
+                 str->string = cur;
+                 cnt += l;
+-                if (cnt > sizeof(strerror_pool))
+-                    cnt = sizeof(strerror_pool);
+                 cur += l;
+ 
+                 /*
+                  * VMS has an unusual quirk of adding spaces at the end of
+-                 * some (most? all?) messages.  Lets trim them off.
++                 * some (most? all?) messages. Lets trim them off.
+                  */
+-                while (ossl_isspace(cur[-1])) {
++                while (cur > strerror_pool && ossl_isspace(cur[-1])) {
+                     cur--;
+                     cnt--;
+                 }
+-- 
+2.21.0
+

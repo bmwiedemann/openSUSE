@@ -1,0 +1,39 @@
+#!/bin/sh  
+
+SHARE=/usr/share/engdic
+findword () {
+if [ "$WORD" = "" ]; then 
+        echo; echo '** 영한, 한영 사전을 마칩니다.'
+        exit 1
+else
+    DIC=`echo $WORD | cut -b 1 | tr \[:upper:\] \[:lower:\]`
+    if [ "$DIC" = "a" -o "$DIC" = "b" -o "$DIC" = "c" -o "$DIC" = "d" \
+    -o "$DIC" = "e" -o "$DIC" = "f" -o "$DIC" = "g" -o "$DIC" = "h" \
+    -o "$DIC" = "i" -o "$DIC" = "j" -o "$DIC" = "k" -o "$DIC" = "l" \
+    -o "$DIC" = "m" -o "$DIC" = "n" -o "$DIC" = "o" -o "$DIC" = "p" \
+    -o "$DIC" = "q" -o "$DIC" = "r" -o "$DIC" = "s" -o "$DIC" = "t" \
+    -o "$DIC" = "u" -o "$DIC" = "v" -o "$DIC" = "w" -o "$DIC" = "x" \
+    -o "$DIC" = "y" -o "$DIC" = "z" ] ; then
+
+        zgrep -ihw ^"$WORD " $SHARE/$DIC.dic| awk -F':' '\
+        {print "[06;33m[ "$1"][0m"}{print $2}'| fmt -w 74| more
+        echo
+    else
+        zgrep -hw $WORD $SHARE/*| awk -F':' '\
+        {print "[06;33m[ "$1"][0m"}{print $2}'| fmt -w 74| more
+        echo
+    fi
+fi
+}
+
+while [ -f /bin/sh ]; do
+    if [ "$1" = "" ]; then
+        echo -n "찾는 단어: "
+        read WORD
+        findword
+    else 
+        WORD=$1
+        findword
+        exit 0
+    fi
+done

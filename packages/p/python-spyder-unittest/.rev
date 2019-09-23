@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>993ab326391e539cf08fc4388e99ca86</srcmd5>
+    <version>0.3.0</version>
+    <time>1526371517</time>
+    <user>dimstar_suse</user>
+    <comment>Unittest plugin for spyder and spyder3
+</comment>
+    <requestid>603490</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>68b76b0cd40bb6dfe586b593d9827f53</srcmd5>
+    <version>0.3.1</version>
+    <time>1534543401</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.1
+  + Issues Closed
+    * Rename &quot;py.test&quot; to &quot;pytest&quot; throughout
+    * NameError in test file causes internal error
+    * Plugin confused by tests writing to `sys.__stdout__`
+  + Pull Requests Merged
+    * PR: Update readme to remove funding appeal, harmonize with other readmes and minor fixes
+    * Remove unused variables when initializing localization
+    * Replace 'py.test' by 'pytest'
+    * Use str() to convert pytest's longrepr to a string
+    * Use ZMQ sockets to communicate results of pytest run
+</comment>
+    <requestid>629428</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f34bda5b931a99675f3513ab6846368e</srcmd5>
+    <version>0.3.1</version>
+    <time>1537436523</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636337</requestid>
+  </revision>
+</revisionlist>

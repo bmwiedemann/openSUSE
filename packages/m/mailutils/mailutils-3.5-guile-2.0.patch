@@ -1,0 +1,23 @@
+---
+ configure.ac |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+--- configure.ac
++++ configure.ac	2018-11-21 10:04:03.759560432 +0000
+@@ -1148,7 +1148,7 @@ AC_SUBST([GUILE_BINDIR])
+ AC_SUBST([LIBMU_SCM])
+ AC_SUBST([LIBMU_SCM_DEPS])
+ AC_SUBST([MU_GUILE_SIEVE_MOD_DIR])
+-GINT_INIT([gint],[2.2.0 with-guile],
++GINT_INIT([gint],[2.0.0 with-guile],
+ 	  [useguile=yes
+  	   AC_DEFINE([WITH_GUILE],1,[Enable Guile support])
+            GUILE_BINDIR=`guile-config info bindir`
+@@ -1345,7 +1345,6 @@ MU_CONFIG_TESTSUITE(mh)
+ MU_CONFIG_TESTSUITE(comsat)
+ MU_CONFIG_TESTSUITE(imap4d)
+ MU_CONFIG_TESTSUITE(mimeview)
+-MU_CONFIG_TESTSUITE(libmu_scm)
+ 
+ AM_MISSING_PROG([AUTOM4TE], [autom4te])
+ 

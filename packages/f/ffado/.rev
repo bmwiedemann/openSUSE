@@ -1,0 +1,339 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8b27efbac1c57c3aba83d3432d7d3a4e</srcmd5>
+    <version>2.0.1</version>
+    <time>1286806263</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/ffado based on submit request 50027 from user plater
+</comment>
+    <requestid>50027</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4216c8f449a56bdfb0828841130f0db3</srcmd5>
+    <version>2.0.1</version>
+    <time>1288711285</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51965 from user coolo
+</comment>
+    <requestid>51965</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>810527feb716d5706154e3e91ff6ddb0</srcmd5>
+    <version>2.0.1</version>
+    <time>1288711298</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51965
+</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>8ee71e05b01a8021e0db1132c896b4f4</srcmd5>
+    <version>2.0.1</version>
+    <time>1288778268</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52037 from user coolo
+</comment>
+    <requestid>52037</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d6063e6712e7f01d17ff796f91bb3189</srcmd5>
+    <version>2.0.1</version>
+    <time>1288778277</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52037
+</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>d6063e6712e7f01d17ff796f91bb3189</srcmd5>
+    <version>2.0.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>0976e1c1091940c4d8b7438a738468dd</srcmd5>
+    <version>2.0.1</version>
+    <time>1319025466</time>
+    <user>coolo</user>
+    <comment>- adding -fPIC on arm (fixes build) (forwarded request 88085 from -miska-)</comment>
+    <requestid>88462</requestid>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>0976e1c1091940c4d8b7438a738468dd</srcmd5>
+    <version>2.0.1</version>
+    <time>1319181875</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>0df592babd32d5cbfa17d7a6292360db</srcmd5>
+    <version>2.0.1</version>
+    <time>1323191360</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>a70d098f70d25fc8f7dd410761a976e0</srcmd5>
+    <version>2.0.1</version>
+    <time>1323191361</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>e627965cf0039386d7430675e75c2e92</srcmd5>
+    <version>2.0.1.2040</version>
+    <time>1332500723</time>
+    <user>coolo</user>
+    <comment>Update to svn revision 2040 to fix bnc#747391 amd bnc#736115
+Jack to follow when ffado has built in factory.</comment>
+    <requestid>110169</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>ad99c1016dd756f65754b6e5e85c26f5</srcmd5>
+    <version>2.0.1.2040</version>
+    <time>1332752464</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 110896 from dimstar)</comment>
+    <requestid>110902</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>ad99c1016dd756f65754b6e5e85c26f5</srcmd5>
+    <version>2.0.1.2040</version>
+    <time>1340183325</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>5e9e8a42f3db9eaf0e738ea2211386ec</srcmd5>
+    <version>2.0.1.2040</version>
+    <time>1340890003</time>
+    <user>coolo</user>
+    <comment>- fix ppc64 build
+
+- fix ppc64 build (forwarded request 126333 from plater)</comment>
+    <requestid>126412</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0dd190f599c2689e32c94cc7449ddf64</srcmd5>
+    <version>2.1.0</version>
+    <time>1356703187</time>
+    <user>namtrac</user>
+    <comment>Updated to release 2.1.0 and removed unwanted file &quot;Changelog&quot;</comment>
+    <requestid>146492</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>0dd190f599c2689e32c94cc7449ddf64</srcmd5>
+    <version>2.1.0</version>
+    <time>1359108874</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>57482c58215d5bd8ce34da45ba0b204a</srcmd5>
+    <version>2.1.0</version>
+    <time>1366996870</time>
+    <user>coolo</user>
+    <comment>- Move udev rules to /usr/lib/udev for openSUSE 12.3 or later. (forwarded request 173454 from plater)</comment>
+    <requestid>173460</requestid>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>57482c58215d5bd8ce34da45ba0b204a</srcmd5>
+    <version>2.1.0</version>
+    <time>1379662335</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>bbf76be4d0e0305c9626eeee8579ecb0</srcmd5>
+    <version>2.1.0</version>
+    <time>1394526231</time>
+    <user>coolo</user>
+    <comment>- own /usr/lib/udev directory to avoid buildrequiring udev (forwarded request 224564 from coolo)</comment>
+    <requestid>224585</requestid>
+  </revision>
+  <revision rev="20" vrev="9">
+    <srcmd5>bbf76be4d0e0305c9626eeee8579ecb0</srcmd5>
+    <version>2.1.0</version>
+    <time>1409300871</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>0b3855b9216046b11eed829343e8d025</srcmd5>
+    <version>2.1.0</version>
+    <time>1411221039</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250198</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>20134a5fe497367bc1aee9474bd2829b</srcmd5>
+    <version>2.2.1</version>
+    <time>1411461735</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250482</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>6076e8d8020c1ef69a580d40e6f90de3</srcmd5>
+    <version>2.2.1</version>
+    <time>1425891827</time>
+    <user>dimstar_suse</user>
+    <comment>Fix udev rules directory - see bnc#911303</comment>
+    <requestid>289319</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>be756c3f540daafa49d7910c9112cf0a</srcmd5>
+    <version>2.2.1</version>
+    <time>1426485511</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290340</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>37cd7b1e22202c624a199dccd986bb92</srcmd5>
+    <version>2.2.1</version>
+    <time>1437059618</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315099</requestid>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>30c5d32b50bb735dc169427a2060df03</srcmd5>
+    <version>2.2.1</version>
+    <time>1455790013</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>359626</requestid>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>db9e8b4529ab0766715019470040c5a5</srcmd5>
+    <version>2.2.1</version>
+    <time>1459254593</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>365069</requestid>
+  </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>9378624ccf4a48532627577d954051e9</srcmd5>
+    <version>2.2.1</version>
+    <time>1470508528</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416731</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>380dd8550d092c83e331bb7c01c1da0a</srcmd5>
+    <version>2.3.0</version>
+    <time>1493019992</time>
+    <user>dimstar_suse</user>
+    <comment>fix scons statements</comment>
+    <requestid>487547</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>e27f4410ff0b3aeeeec17d63080310c4</srcmd5>
+    <version>2.3.0</version>
+    <time>1502365529</time>
+    <user>maxlin_factory</user>
+    <comment>sigev.patch: add missing header to define SIGEV_THREAD</comment>
+    <requestid>513594</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>b9ca8ee294731098e8bddd7ccd81d718</srcmd5>
+    <version>2.3.0</version>
+    <time>1511949043</time>
+    <user>dimstar_suse</user>
+    <comment>Added conditional for libffado-SConstruct-py3.patch to only apply if scons built with python 3.
+- Fix building with python3 scons, add libffado-SConstruct-py3.patch
+- Added conditional for libffado-SConstruct-py3.patch to only apply
+  if scons built with python 3.
+- Fix building with python3 scons, add libffado-SConstruct-py3.patch
+</comment>
+    <requestid>545247</requestid>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>d810dc2046ffe02c87d56d459f0be0b1</srcmd5>
+    <version>2.3.0</version>
+    <time>1512547066</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548111</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>35cd751ac7cbd5d6f4f2269882d10ec5</srcmd5>
+    <version>2.4.0</version>
+    <time>1518596348</time>
+    <user>dimstar_suse</user>
+    <comment>Update to release 2.4.0 and fix build against glibc-2.27 see boo#1079938.
+- Removed patches fixed upstream:
+  ffado_SConstruct_powerpc_update.patch and sigev.patch.
+- Rebased libffado-SConstruct-py3.patch partially fixed upstream.
+- Added ffado-nosys.patch for missing import sys in SConstruct.
+- Rebased ffado-gcc6.patch, partially fixed upstream.
+- Upstream changes:
+  *Numerous build system and code improvements to support
+   architectures such as MIPS, x32 and various PowerPC flavours.
+  *A large number of fixes for newer versions of gcc
+  (particularly versions 6 and 7).
+  *Initial support for the optional TCO module of the
+   RME Fireface-800.
+  *Expanded ffado-mixer support for the Phase88 device.
+  *Initial work to make ffado-mixer compatible with
+   python3/pyqt5.
+  *Start work towards compatibility with scons3.
+- Update to release 2.4.0 and fix build against glibc-2.27
+  see boo#1079938.
+- Removed patches fixed upstream:
+  ffado_SConstruct_powerpc_update.patch and sigev.patch.
+- Rebased libffado-SConstruct-py3.patch partially fixed upstream.
+- Added ffado-nosys.patch for missing import sys in SConstruct.
+- Rebased ffado-gcc6.patch, partially fixed upstream.
+- Upstream changes:
+  *Numerous build system and code improvements to support
+   architectures such as MIPS, x32 and various PowerPC flavours.
+  *A large number of fixes for newer versions of gcc
+  (particularly versions 6 and 7).
+  *Initial support for the optional TCO module of the
+   RME Fireface-800.
+  *Expanded ffado-mixer support for the Phase88 device.
+  *Initial work to make ffado-mixer compatible with
+   python3/pyqt5.
+  *Start work towards compatibility with scons3.
+</comment>
+    <requestid>574334</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>e1ea145f5dad196b3aa963683daccd23</srcmd5>
+    <version>2.4.0</version>
+    <time>1536147833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630043</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>66e2c5cfef6564b6d8bc3ceb48a58523</srcmd5>
+    <version>2.4.0</version>
+    <time>1541508574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643563</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>dc15825db16298b24f7978e1417745bf</srcmd5>
+    <version>2.4.1</version>
+    <time>1547211608</time>
+    <user>dimstar_suse</user>
+    <comment>Needs scons-3.0.2 sr#662758 to build
+Update to release 2.4.1 Fix build with ffado-mixer-fixbuild.patch. Removed uneeded and incorporated patches:
+  libffado-SConstruct-py3.patch, ffado-gcc6.patch and byteswap.patch</comment>
+    <requestid>662770</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>b2870682a51fd4e4e144525e9a6adff0</srcmd5>
+    <version>2.4.1</version>
+    <time>1549629968</time>
+    <user>coolo</user>
+    <comment>- Change Buildrequires: pkgconfig(dbus-python-3.6) back to the plain
+  python3-dbus-python-devel package, pkgconfig is no longer provided.
+</comment>
+    <requestid>671302</requestid>
+  </revision>
+</revisionlist>

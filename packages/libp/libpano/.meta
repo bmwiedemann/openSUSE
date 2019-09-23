@@ -1,0 +1,5 @@
+<package name="libpano" project="openSUSE:Factory">
+  <title>Panorama Tools Back-End Library</title>
+  <description>Library and utilities for working with panoramas.</description>
+  <devel project="graphics" package="libpano"/>
+</package>

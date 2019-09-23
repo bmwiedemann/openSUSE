@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4716b526e86edcb13630ff938a7c4718</srcmd5>
+    <version>17.07</version>
+    <time>1503592392</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>507567</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8f9a6cbb6643db2d3b4558d512f79efe</srcmd5>
+    <version>17.08</version>
+    <time>1503926100</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 17.08
+</comment>
+    <requestid>518580</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>632c0cb860b1f28078d11b906cf57889</srcmd5>
+    <version>17.09</version>
+    <time>1504521249</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed locale path
+- Update to version 17.09
+  * Export MediaInfo to text file (#119)
+  * USe correct mousewheel direction (#118)
+  * Premangle the temporary image filename (#120)
+  * Don't reset the play speed when pressing play (#117)
+  * Honor --size argument (#89)
+  * Add palette editor (some shades are drawn by the system on
+    Windows)
+  * Custom icons and basic themeing (#65)
+  * Integration of argon's stats.lua (#104)
+  * Populate audio device lists with mpv 0.26.0 (mentioned in #116)
+  * Add right-click menu (#113)
+  * Simplified resizing code (#114)
+</comment>
+    <requestid>520116</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4b262fc9ce99621dc489b0adf0168111</srcmd5>
+    <version>17.10</version>
+    <time>1507486546</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532564</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>628b7d42574c5cf8afdd0a2f21071b12</srcmd5>
+    <version>17.11</version>
+    <time>1509722719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538076</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3b921eb8a0b3af644e124f6abb78fd73</srcmd5>
+    <version>18.03</version>
+    <time>1520853135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585429</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9c99cc75d085c6c58ba27d5e4040ff16</srcmd5>
+    <version>18.03</version>
+    <time>1529402117</time>
+    <user>maxlin_factory</user>
+    <comment>- Added mpc-qt-Qt511.patch to fix build with Qt 5.11
+</comment>
+    <requestid>616012</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ca8b02db0e03747a54f9e397893fb4be</srcmd5>
+    <version>18.08</version>
+    <time>1533412529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627457</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a3f45f6c2e6262db413bfe3c9cd042d1</srcmd5>
+    <version>18.08+git20190618</version>
+    <time>1561405930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711461</requestid>
+  </revision>
+</revisionlist>

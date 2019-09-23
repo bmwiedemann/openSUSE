@@ -1,0 +1,47 @@
+==============================================
+jfbterm (0.4.7-2) unstable; urgency=high
+  * fix screen lock problem on d-i 2nd stage
+    reported by Kenshi Muto <kmuto@debian.org>
+==============================================
+
+--- jfbterm-0.4.7.orig/ChangeLog
++++ jfbterm-0.4.7/ChangeLog
+@@ -1,8 +1,14 @@
+-2005-02-24  ukai  <ukai@debian.or.jp>
++2005-03-12  Fumitoshi UKAI  <ukai@debian.or.jp>
++
++	* fix some lockup problem, reported by Kenshi Muto
++	* main.c (tapp_init): SIGCHLD to wait for gunzip processes.
++	* term.h (sigchld): used in main.c:tapp_init
++
++2005-02-24  Fumitoshi UKAI  <ukai@debian.or.jp>
+ 
+ 	* version 0.4.7 released
+ 
+-2005-02-24  ukai  <ukai@debian.or.jp>
++2005-02-24  Fumitoshi UKAI  <ukai@debian.or.jp>
+ 
+ 	* font.c (font_open): dont use popen(3) to fix local exploit.
+ 
+--- jfbterm-0.4.7.orig/main.c
++++ jfbterm-0.4.7/main.c
+@@ -184,7 +184,7 @@
+ 	p->gExecShellArgv = NULL;
+ 	p->gConfFile = FILE_JFBTERM_CONF;
+ 	p->gConfEncoding = NULL;
+-
++	signal(SIGCHLD, sigchld);
+ 	atexit(tapp_final_at_exit);
+ }
+ 
+--- jfbterm-0.4.7.orig/term.h
++++ jfbterm-0.4.7/term.h
+@@ -44,7 +44,7 @@
+ } TTerm;
+ 
+ void tterm_start(TTerm* p, const char* tn, const char* en);
+-
++void sigchld(int sig);
+ extern TTerm gTerm;
+ 
+ #endif /* INCLUDE_TERM_H */

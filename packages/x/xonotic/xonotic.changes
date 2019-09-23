@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Tue Jun 27 23:51:05 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Add appdata xml to enable visibility in software installers
+
+-------------------------------------------------------------------
+Mon May  8 13:25:10 UTC 2017 - rpm@fthiessen.de
+
+- Dropped upstream merged xonotic-makefile-multiarch.patch
+- Cleanup of spec file, use bcond, removed parts for deprecated
+  openSUSE versions.
+
+-------------------------------------------------------------------
+Thu May  4 02:13:05 UTC 2017 - maxmitschke@fastmail.com
+
+- Updated Xonotic to 0.8.2
+  * see http://xonotic.org/posts/2017/xonotic-0-8-2-release/ 
+
+-------------------------------------------------------------------
+Fri Aug  5 12:10:00 UTC 2016 - jengelh@inai.de
+
+- Use shared link for d0_blind_id
+- Add missing shadow requirement for useradd/groupadd.
+  Use systemd-rpm-macros and adjust requires properly for
+  xonotic(-server).
+
+-------------------------------------------------------------------
+Wed Feb 09 10:57:35 UTC 2016 - mpluskal@suse.com
+
+- Enable parallel build
+- Do not include build data
+
+-------------------------------------------------------------------
+Thu Sep  3 11:13:14 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.8.1
+  * see http://xonotic.org/posts/2015/xonotic-0-8-1-release
+
+-------------------------------------------------------------------
+Sat Jan 17 07:01:49 UTC 2015 - mpluskal@suse.com
+
+- New release 0.8.0
+  * Three new games for "Capture the Flag" game mode
+  * Catharsis, new map with a central, violent focal point
+  * Plus, it has crystals! Implosion, by MintOX, is a space floater
+    with fantastic jump pads for a lot of midair fun
+  * Vorix, by packer, is an open-air indoor arena with beautifully 
+    designed corridors
+  * New sounds for game, including X-Force track
+  * Updated to using SDL 2.0
+- Only recommend libd0_blind_id0
+- Cleanup spec file
+- Remove _service
+
+-------------------------------------------------------------------
+Wed Dec 31 00:07:10 UTC 2014 - mpluskal@suse.com
+
+- Require libd0_blind_id0 (bnc#911379)
+
+-------------------------------------------------------------------
+Tue Dec 30 22:59:17 UTC 2014 - mpluskal@suse.com
+
+- Actually add user xonotic (bnc#911292)
+
+-------------------------------------------------------------------
+Wed May 28 07:15:35 UTC 2014 - mcaj@suse.com
+
+- Added xonotic.init and xonotic.service - to be able run 
+  xonotic-dedicated  as regular service
+
+- Splited file xonotic-dedicated and xonotic.init/or xonotic.service 
+  into xonotic-server package. To run the service not under root 
+  there is   the user xonotic. 
+
+- Fixed build for SLE-11-SP3
+
+- Fixed packages group: Amusements/Games/3D/Shoot for xonotic* packages
+
+-------------------------------------------------------------------
+Mon Mar 31 11:23:01 UTC 2014 - jmatejka@suse.com
+
+- Added xonotic-dedicated binary to be installed
+
+-------------------------------------------------------------------
+Mon Jul  1 09:43:18 UTC 2013 - joop.boonen@opensuse.org
+
+- Added xonotic-makefile-multiarch.patch so it also builds for non
+  x86 archs
+
+-------------------------------------------------------------------
+Mon Jun 10 21:41:40 UTC 2013 - ryanbach@adelphia.net
+
+- updated to the 0.7.0 version
+
+  *Massive updates to game modes
+  *Animation blending
+  *More competitive features
+  *Mapping updates
+  *Better handling of in-game messages
+  *All new compiler
+
+Full details here: http://www.xonotic.org/2013/06/xonotic-0-7-release/
+
+-------------------------------------------------------------------
+Thu Aug  9 11:09:11 UTC 2012 - ablu.erikschilling@googlemail.com
+
+- Hopefully fixed opensuse builds
+
+-------------------------------------------------------------------
+Wed Aug  8 20:31:50 UTC 2012 - ablu.erikschilling@googlemail.com
+
+- Added category to the desktop file
+
+-------------------------------------------------------------------
+Wed Aug  8 18:59:19 UTC 2012 - ablu.erikschilling@googlemail.com
+
+- Fixed Fedora builds
+
+-------------------------------------------------------------------
+Sun Mar 18 10:51:48 UTC 2012 - mhrusecky@suse.cz
+
+- updated to the 0.6.0 version
+- fixed build
+- compiling everything by ourselves
+- inspired by Gentoo ebuild
+
+-------------------------------------------------------------------
+Mon Feb 20 03:18:10 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Sat Sep 10 00:00:00 UTC 2011 - ryanbach@adelphia.net
+
+- Initial package

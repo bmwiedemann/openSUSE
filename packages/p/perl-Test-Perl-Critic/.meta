@@ -1,0 +1,12 @@
+<package name="perl-Test-Perl-Critic" project="openSUSE:Factory">
+  <title>Use Perl::Critic in test programs</title>
+  <description>Test::Perl::Critic wraps the Perl::Critic engine in a convenient subroutine
+suitable for test programs written using the Test::More  framework. This makes
+it easy to integrate coding-standards enforcement into the build process. For
+ultimate convenience (at the expense of some flexibility), see the criticism
+pragma.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Test-Perl-Critic"/>
+  <url>http://search.cpan.org/dist/Test-Perl-Critic/</url>
+</package>

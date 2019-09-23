@@ -1,0 +1,11 @@
+<package name="giada" project="openSUSE:Factory">
+  <title>Sampler Audio Tool</title>
+  <description>Giada is a minimal, hardcore audio tool for DJs and live performers. Load or
+record up to 32 samples, choose to play them in single mode (drum machine) or
+loop mode (sequencer), and start the show with your computer keyboard as a
+controller.
+
+</description>
+  <devel project="multimedia:apps" package="giada"/>
+  <url>https://www.giadamusic.com</url>
+</package>

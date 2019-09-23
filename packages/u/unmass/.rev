@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>089ec957182029690683ba20f6985927</srcmd5>
+    <version>0.92</version>
+    <time>1428949846</time>
+    <user>dimstar_suse</user>
+    <comment>New package, somehow usefull tool</comment>
+    <requestid>295490</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0d039c9ab10f79290b94fac421add769</srcmd5>
+    <version>0.92</version>
+    <time>1494938628</time>
+    <user>dimstar_suse</user>
+    <comment>- Spec file cleanup with spec-cleaner</comment>
+    <requestid>494548</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,171 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>be6da7e1f767120b87536c823a74a709</srcmd5>
+    <version>0.1</version>
+    <time>1413263416</time>
+    <user>coolo</user>
+    <comment>New package, announced a few days agon on the factory list
+http://lists.opensuse.org/opensuse-factory/2014-10/msg00153.html</comment>
+    <requestid>254867</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f46e54858bed44167b8485afce4dd90c</srcmd5>
+    <version>0.1</version>
+    <time>1415289036</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>259886</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6e65ac4f430ddd3d282f949f504bdcbe</srcmd5>
+    <version>0.1</version>
+    <time>1416505404</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262335</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fe10f8e45b2dd0e3c7a678faf50e1fac</srcmd5>
+    <version>0.1.1</version>
+    <time>1436888703</time>
+    <user>coolo</user>
+    <comment>- version 0.1.1 (forwarded request 316439 from dsterba)</comment>
+    <requestid>316440</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ab4a9b2aad3530e56db40bb1cd35238c</srcmd5>
+    <version>0.1.2</version>
+    <time>1445092746</time>
+    <user>coolo</user>
+    <comment>- version 0.1.2 (forwarded request 339007 from dsterba)</comment>
+    <requestid>339008</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>204bf7adb116c10da9de3b54be6e9dab</srcmd5>
+    <version>0.2</version>
+    <time>1458121122</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>373323</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4dbca2853004252e0596838529335c70</srcmd5>
+    <version>0.3.1</version>
+    <time>1491896805</time>
+    <user>maxlin_factory</user>
+    <comment>- version 0.3.1 (forwarded request 486439 from dsterba)</comment>
+    <requestid>486446</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>720fa6f58e60a1c2637b9d7890e66a8b</srcmd5>
+    <version>0.3.1</version>
+    <time>1499415407</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508324</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>240f509f7bd94d7873276ffa76155479</srcmd5>
+    <version>0.3.1</version>
+    <time>1510150323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539865</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>c43f710ff4b194883cf657bc19a93389</srcmd5>
+    <version>0.3.1</version>
+    <time>1510578579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541222</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>7c522ff53d31daa8f48c9c5b5ee54405</srcmd5>
+    <version>0.3.1</version>
+    <time>1511517351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544913</requestid>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>be1924cac55db005154aa86eb920280c</srcmd5>
+    <version>0.3.1</version>
+    <time>1513245617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556503</requestid>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>9401d7b6d7197fcd1f6b675f46ffd21e</srcmd5>
+    <version>0.3.1</version>
+    <time>1513941658</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559129</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>498c45a5b628cfa60767f6066b9faf11</srcmd5>
+    <version>0.4</version>
+    <time>1516444092</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.4 (forwarded request 567778 from dsterba)</comment>
+    <requestid>567779</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a79ce0a51212c223cf2c99ed032372c0</srcmd5>
+    <version>0.4</version>
+    <time>1519747210</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>580565</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>708dcc99d2fb034f2a8b598b8a8fd05b</srcmd5>
+    <version>0.4</version>
+    <time>1520933077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586017</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ba5c72e00d9be936bff4fae4f242f7d8</srcmd5>
+    <version>0.4.1</version>
+    <time>1521193486</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.4.1 (forwarded request 587597 from dsterba)</comment>
+    <requestid>587598</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4ed127301c4df24a214033602e1f14fd</srcmd5>
+    <version>0.4.1</version>
+    <time>1526463750</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607656</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2ba72c2af6b7bfd641a3997dc497e606</srcmd5>
+    <version>0.4.2</version>
+    <time>1537964609</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.4.2 (forwarded request 638211 from dsterba)</comment>
+    <requestid>638213</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>e400dc60e9cfcaed97398fa36ae42a71</srcmd5>
+    <version>0.4.2</version>
+    <time>1553084252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686180</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>799017e8b43912d39690b8b4f18a91f2</srcmd5>
+    <version>0.4.2</version>
+    <time>1561405760</time>
+    <user>dimstar_suse</user>
+    <comment>- spec: fix typo in macro name (forwarded request 709215 from dsterba)</comment>
+    <requestid>709216</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,66 @@
+From 5264df9284461edb4ae2309ad72acf7c3d8161e9 Mon Sep 17 00:00:00 2001
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: Wed, 8 May 2019 19:00:47 +0200
+Subject: [PATCH] DOC: Move to DocBook 5 when using asciidoctor
+
+DocBook 5 has been released about a decade ago. Newer versions of
+asciidoctor (since version 2.x) no longer support DocBook 4.5, it
+is thus time for us to move to newer support as well.
+---
+ Documentation/Makefile   | 4 ++--
+ contrib/subtree/Makefile | 5 +++--
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/Documentation/Makefile b/Documentation/Makefile
+index 6d738f831e..dcb8f60b37 100644
+--- a/Documentation/Makefile
++++ b/Documentation/Makefile
+@@ -124,7 +124,7 @@ TXT_TO_HTML = $(ASCIIDOC_COMMON) -b $(ASCIIDOC_HTML)
+ TXT_TO_XML = $(ASCIIDOC_COMMON) -b $(ASCIIDOC_DOCBOOK)
+ MANPAGE_XSL = manpage-normal.xsl
+ XMLTO = xmlto
+-XMLTO_EXTRA =
++XMLTO_EXTRA = --skip-validation
+ INSTALL ?= install
+ RM ?= rm -f
+ MAN_REPO = ../../git-manpages
+@@ -193,7 +193,7 @@ ifdef USE_ASCIIDOCTOR
+ ASCIIDOC = asciidoctor
+ ASCIIDOC_CONF =
+ ASCIIDOC_HTML = xhtml5
+-ASCIIDOC_DOCBOOK = docbook45
++ASCIIDOC_DOCBOOK = docbook5
+ ASCIIDOC_EXTRA += -acompat-mode -atabsize=8
+ ASCIIDOC_EXTRA += -I. -rasciidoctor-extensions
+ ASCIIDOC_EXTRA += -alitdd='&\#x2d;&\#x2d;'
+diff --git a/contrib/subtree/Makefile b/contrib/subtree/Makefile
+index 6906aae441..09e53b9480 100644
+--- a/contrib/subtree/Makefile
++++ b/contrib/subtree/Makefile
+@@ -25,12 +25,13 @@ ASCIIDOC_HTML    = xhtml11
+ ASCIIDOC_DOCBOOK = docbook
+ ASCIIDOC_EXTRA   =
+ XMLTO            = xmlto
++XMLTO_EXTRA      = --skip-validation
+ 
+ ifdef USE_ASCIIDOCTOR
+ ASCIIDOC         = asciidoctor
+ ASCIIDOC_CONF    =
+ ASCIIDOC_HTML    = xhtml5
+-ASCIIDOC_DOCBOOK = docbook45
++ASCIIDOC_DOCBOOK = docbook5
+ ASCIIDOC_EXTRA  += -I../../Documentation -rasciidoctor-extensions
+ ASCIIDOC_EXTRA  += -alitdd='&\#x2d;&\#x2d;'
+ endif
+@@ -78,7 +79,7 @@ install-html: $(GIT_SUBTREE_HTML)
+ 	$(INSTALL) -m 644 $^ $(DESTDIR)$(htmldir)
+ 
+ $(GIT_SUBTREE_DOC): $(GIT_SUBTREE_XML)
+-	$(XMLTO) -m $(MANPAGE_XSL) man $^
++	$(XMLTO) -m $(MANPAGE_XSL) $(XMLTO_EXTRA) man $^
+ 
+ $(GIT_SUBTREE_XML): $(GIT_SUBTREE_TXT)
+ 	$(ASCIIDOC) -b $(ASCIIDOC_DOCBOOK) -d manpage $(ASCIIDOC_CONF) \
+-- 
+2.21.0
+

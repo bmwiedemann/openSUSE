@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8dc56ba92d1f92263949301f326c7c2e</srcmd5>
+    <version>0.7.0+</version>
+    <time>1513162710</time>
+    <user>dimstar_suse</user>
+    <comment>New package for printing UTF-8 text files as PostScript[tm] or PDF</comment>
+    <requestid>554797</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3e34aea27d7b45bb9b6e1231a8987f76</srcmd5>
+    <version>0.7.0+</version>
+    <time>1557751973</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch paps-glib.patch to amke it build again ... seems to be
+  a problem with the actuial linker as it ignores dependencies of
+  the already specified libraries.</comment>
+    <requestid>702583</requestid>
+  </revision>
+</revisionlist>

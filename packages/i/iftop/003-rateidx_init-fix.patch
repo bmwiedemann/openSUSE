@@ -1,0 +1,26 @@
+http://lists.beasts.org/pipermail/iftop-users/2014-March/000414.html
+
+From: Hans Fugal <hans@fugal.net>
+Date: Fri, 7 Mar 2014 13:23:14 -0800
+Subject: [PATCH 3/3] rateidx_init fix
+
+When calculating the first rateidx, we were overshooting to the next
+scale. Fix that.
+---
+ ui.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/ui.c b/ui.c
+index d1500ad..15624bf 100644
+--- a/ui.c
++++ b/ui.c
+@@ -116,7 +116,8 @@ static int get_bar_length(const double rate) {
+     if (rate > scale[rateidx].max) {
+       wantbiggerrate = 1;
+       if(! rateidx_init) {
+-	while(rate > scale[rateidx_init++].max) {
++	while(rate > scale[rateidx_init].max) {
++          rateidx_init++;
+ 	}
+ 	rateidx = rateidx_init;
+       }

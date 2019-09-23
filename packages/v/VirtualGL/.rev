@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>99414260bacc2febb830dc25dd06aa0a</srcmd5>
+    <version>2.3.3</version>
+    <time>1405053936</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>239080</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ed34a4b2ec6260495dc1a04ce091d358</srcmd5>
+    <version>2.3.3</version>
+    <time>1408957420</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245625</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ed34a4b2ec6260495dc1a04ce091d358</srcmd5>
+    <version>2.3.3</version>
+    <time>1409300452</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3f6cf6fb5b6fa4da43a4f6b9a31a33e7</srcmd5>
+    <version>2.3.90</version>
+    <time>1409761333</time>
+    <user>coolo</user>
+    <comment>- Version bump to beta1 of 2.4 (2.3.90)
+- Fix building with -Wl,-z,now and no-undefined
+  * VirtualGL-link-libs.patch</comment>
+    <requestid>246796</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a0fa12e6d56b3f59ae9de5cf920d9396</srcmd5>
+    <version>2.4.1</version>
+    <time>1442474321</time>
+    <user>dimstar_suse</user>
+    <comment>- Add proper wxwidgets license string
+
+- Update to 2.4.1:
+  * Various bugfixes not mentioned on changes
+  * Refresh VirtualGL-link-libs.patch</comment>
+    <requestid>328276</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>159fd6fb3adca3682637ee49a6649e21</srcmd5>
+    <version>2.5</version>
+    <time>1466327304</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 2.5 release
+  * See upstream changelog for details
+  * Mostly removal of compat for pre-VirtualGL namespace
+- Refresh patch VirtualGL-link-libs.patch
+
+- new gcc6_literal_suffixes.patch</comment>
+    <requestid>402767</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5a98a54103d7e4a3da01278accae8b67</srcmd5>
+    <version>2.5</version>
+    <time>1472477680</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix bnc#993645 as-needed eating symbols needed by this lib
+  * virtualgl-nodl.patch
+- Use system xcb headers
+- Rename glxinfo2 to vglxinfo, sounds bit better and more descriptive</comment>
+    <requestid>421737</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e3da51c5df03fb95f0800d8156c6ebbd</srcmd5>
+    <version>2.5.2</version>
+    <time>1514027984</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable ssl feature as we can tunnel via ssh and the openssl-1.1
+  is not compatible at all currently
+
+- Version update 2.5.2:
+  * Various compat fixes all around
+- Remove merged gcc6_literal_suffixes.patch
+- Refresh VirtualGL-link-libs.patch and virtualgl-nodl.patch</comment>
+    <requestid>548081</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>8d112635a59aa523cabc477f772a6918</srcmd5>
+    <version>2.5.2</version>
+    <time>1529501501</time>
+    <user>maxlin_factory</user>
+    <comment>- Do not provide the env files which change the preload order
+  bsc#1097210</comment>
+    <requestid>617686</requestid>
+  </revision>
+</revisionlist>

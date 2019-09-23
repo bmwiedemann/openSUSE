@@ -1,0 +1,8 @@
+<package name="osgi-compendium" project="openSUSE:Factory">
+  <title>Interfaces and Classes for use in compiling OSGi bundles</title>
+  <description>OSGi Compendium, Interfaces and Classes for use in compiling bundles.
+
+</description>
+  <devel project="Java:packages" package="osgi-compendium"/>
+  <url>http://www.osgi.org</url>
+</package>

@@ -1,0 +1,236 @@
+-------------------------------------------------------------------
+Fri Sep 21 12:23:11 UTC 2018 - astieger@suse.com
+
+- libconfig 1.7.2:
+  * fix a slow memory leak
+- includes changes from 1.7.1:
+  * Fixed a bug that caused incorrect processing of strings with
+    escape sequences.
+  * Added a new 'fsync' configuration option.
+- switch to upstream bootstrapped tarball
+
+-------------------------------------------------------------------
+Mon Mar 26 17:06:46 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Wed Feb  7 20:06:08 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description, and strip other OS mentions.
+
+-------------------------------------------------------------------
+Sat Nov 11 15:08:53 UTC 2017 - aavindraa@gmail.com
+
+- Update to 1.7:
+  * Redesigned the directory-include feature to avoid using
+    platform-specific directory scanning code, and to fix a bug in
+    the handling of nested includes. The application can now do its
+    own directory scanning and/or wildcard expansion by registering
+    an include function.
+  * Added new CONFIG_OPTION_ALLOW_SCIENTIFIC_NOTATION to allow
+    either %f or %g-style formatting for floating point values.
+  * Improved the options APIs in both the C and C++ libraries.
+  * Improved the automatic conversion between int and int64 values.
+  * Fixed build errors caused by out-of-sync generated lexer and
+    parser source files.
+  * Added an API to clear an existing configuration.
+  * Fixed a problem where a group or list could be added to an array.
+  * Changed default float precision from 2 to 6.
+  * Modified grammar to allow trailing commas in lists and arrays.
+  * Removed logic that clipped negative values to 0 in (unsigned int)
+    cast operator.
+  * Updated manual and added a new chapter on other libconfig
+    implementations and bindings.
+  * Various internal code cleanup.
+  * Fixed failing unit tests.
+  * Upgraded VS2015 solution/project files to VS2017.
+- Use new project URL
+- sonum updated from 8 to 11
+
+-------------------------------------------------------------------
+Thu Jul 13 09:42:53 UTC 2017 - tchvatal@suse.com
+
+- Update to 1.6.0:
+  * Added include_dir feature (support for Debian-style conf.d/
+    includes) (pull request #36)
+  * Added octal_ints feature (support for integer expressed in octal,
+    useful for permissions and masks in UNIX-like systems (pull req #42)
+  * Fixed "Removing a setting removes all siblings" (issue #41)
+    Props random85
+  * Allow specifying the number of decimals wanted when outputting
+    Based upon a suggestion by zhaopingsun (issue #31)
+  * Make libconfig usable from CMake (pull request/issue #28)
+    Props thfi
+  * Documentation fixes
+    - Copyright and examples
+    - Included TeX patch from Debian (fixes FTBS with TeXlive)
+  * Resync Debian packaging
+    includes updated packages for GCC5 transition
+
+-------------------------------------------------------------------
+Sun Jun  7 06:04:07 UTC 2015 - i@marguerite.su
+
+- update version 1.5.0
+  * lib/libconfig.c - Don't fclose() a null pointer.
+  * lib/libconfig.c, lib/wincompat.h - check if file being 
+    opened is a directory
+  * lib/libconfig.c, lib/libconfig.h, lib/libconfig.h++,
+    doc/libconfig.texi - added config_set_options(),
+    config_get_options(), setOptions(), getOptions().
+  * lib/libconfig.c++, lib/libconfig.h++ - added patches 
+    from Matt Renaud (added iterators, removed throws() 
+    specifications); added Setting.lookup(); code cleanup;
+    added patch from Yuri Dyachenko (made exception 
+    constructors public)
+  * lib/libconfig.c, lib/libconfig.h - renamed
+    config_setting_lookup_from() to config_setting_lookup()
+    and documented it; patch from Alexander Klauer (floating
+    point precision loss)
+  * doc/libconfig.texi - documented new APIs, bumped version
+  * lib/scanner.c, lib/scanner.h, lib/scanner.l, libconfig.c -
+    scanner code cleanup; and regenerated with flex 2.5.39
+  * lib/grammar.c, lib/grammar.h, lib/grammar.y - parser code
+    cleanup; and regenerated with bison 3.0.2
+  * lib/libconfig.c - bugfix; capture root filename
+  * tests/Makefile.am - fix for out-of-source builds
+  * ac_config.h.in, aclocal.m4 - updated to newer autotools
+
+-------------------------------------------------------------------
+Sun Oct  5 22:19:54 UTC 2014 - jengelh@inai.de
+
+- Make doc subpackage noarch; improve on RPM group classification
+
+-------------------------------------------------------------------
+Sat Dec 29 15:50:18 UTC 2012 - p.drouand@gmail.com
+
+- Update to 1.4.9 version:
+  * lib/libconfigcpp.c++ - Fixed compiler warnings in constructor
+    initializers
+  * tinytest/tiytest.c, tinytest/tinytest.h - added tt_file_exists();
+    added alternate implementations of some test macros since MSVC does
+    not support C99 fully; added comparators for text files (ignoring
+    line endings)
+  * tests/tests.c - use tt_file_exists() rather than access(); alias
+    snprintf to _snprintf for MSVC; compare files as text files rather
+    than as binary files
+  * lib/scanner.l - fixed parsing issue when backslash in string is
+    followed by invalid escape character; reported by Jimmy Scott
+  * lib/scanner.c - regenerated
+  * lib/libconfig.h, lib/libconfig.h++, lib/Makefile.am,
+    doc/libconfig.texi, configure.ac - bump version numbers
+  * aclocal.m4, ac_config.h - regenerated
+  * m4/*, aux-build/*, libtool - updated to newer
+
+-------------------------------------------------------------------
+Sat May 19 11:25:58 UTC 2012 - davejplater@gmail.com
+
+- Added baselibs.conf for 32 bit ffado
+- Disabled pdf and html docs, moved info to devel package
+
+-------------------------------------------------------------------
+Wed Mar 14 14:30:46 UTC 2012 - saschpe@suse.de
+ 
+- Fix typo, it's %{_smp_mflags}
+- Remove unwanted description paragraphs
+ 
+-------------------------------------------------------------------
+Mon Mar 12 08:39:37 UTC 2012 - saschpe@suse.de
+
+- Fixed changes file markup
+
+-------------------------------------------------------------------
+Mon Feb 27 13:44:20 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Use original tarball
+  * Move COPYING, README into lib packages (legal requirement)
+  * Move CHANGELOG and TODO into devel packages (not needed by users)
+  * Move examples into doc package, and recommend it for both devel packages
+  * Ran spec cleaner and removed unneeded rpmlintrc
+
+-------------------------------------------------------------------
+Sat Feb 25 07:03:32 UTC 2012 - davejplater@gmail.com
+
+- Renamed package to libconfig and updated to 1.4.8
+- Upstream changes:
+  * tests/Makefile.am - marked 'libconfig_tests' as non-installable
+  * lib/scanner.l, lib/grammar.y - grammar changes to make trailing
+    semicolons optional (and to allow commas as an alternative)
+  * lib/libconfig.c - bugfixes for lack of auto-conversion handling in
+    the config_lookup*() functions (reported by Feng Yu), and some
+    fixes for compiler warnings
+  * lib/Makefile.am - bump .so version
+  * configure.ac - bump version, add '-Wno-unused-parameter' compiler
+    switch to disable "unused parameter" warnings
+  * doc/libconfig.texi - documentation updates; added a chapter that
+    calls attention to the bundled example programs
+  * lib/libconfig.h, lib/libconfig.h++ - bump versions
+  * doc/libconfig.texi - fixed typo; updated docs
+  * TODO - updated list
+  * lib/libconfig.c, lib/libconfig.h, lib/libconfigcpp.c++,
+    lib/libconfig.h++ - added config{get,set}_default_format(),
+    Config::{get,set}DefaultFormat()
+  * lib/libconfig.c - fixed memory leak when encountering a parse error
+    in an @include'd file
+  * lib/libconfig.h, lib/libconfig.h++, lib/Makefile.am, configure.ac,
+    doc/libconfig.texi - bump versions
+  * doc/libconfig.texi - documentation updates
+  * lib/libconfig.c, lib/libconfigcpp.c++, lib/libconfig.h,
+    lib/libconfig.h++, lib/wincompat.h, lib/scanctx.c - added support
+    for specifying an include directory
+  * m4/* - added local m4 directory
+  * contrib/* - added user-contributed files
+- See /usr/share/doc/packages/libconfig/ChangeLog for more.
+
+-------------------------------------------------------------------
+Fri Oct  1 21:10:11 UTC 2010 - davejplater@gmail.com
+
+- Created libconfig++ from the pacman source rpm and adapted the spec
+  file to openSUSE also transfered the changes to a changes file
+
+-------------------------------------------------------------------
+Wed May 05 00:00:00 UTC 2010 - toni@links2linux.de
+
+- update to 1.4.5
+- This release includes a bugfix and some code cleanup to eliminate compiler warnings.
+
+-------------------------------------------------------------------
+Tue Apr 13 00:00:00 UTC 2010 - toni@links2linux.de
+
+- update to 1.4.4
+- new SO-name ==> libconfig9 and libconfig++9
+- This release fixes several build issues.
+
+-------------------------------------------------------------------
+Tue Feb 15 00:00:00 UTC 2010 - toni@links2linux.de
+
+- update to 1.4.3
+- This release fixes a problem with parsing indented '@include' directives.
+
+-------------------------------------------------------------------
+Fri Jan 29 00:00:00 UTC 2010 - toni@links2linux.de
+
+- update to 1.4.2
+- new SO-name ==> libconfig8 and libconfig++8 (!!!)
+- removed static libs
+- This release fixes some problems with the ParseException class.
+
+-------------------------------------------------------------------
+Fri Jan 01 00:00:00 UTC 2010 - toni@links2linux.de
+
+- update to 1.4.1
+- This release fixes a crash when reading a configuration from a string,
+  and includes a few minor build improvements.
+
+-------------------------------------------------------------------
+Fri Nov 13 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 1.4
+- new SO-name ==> libconfig9 and libconfig++9
+- This release includes some minor bugfixes
+
+-------------------------------------------------------------------
+Sat Feb 21 00:00:00 UTC 2009 - toni@links2linux.de
+
+ - Initial release 1.3.2

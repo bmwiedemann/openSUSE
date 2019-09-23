@@ -1,0 +1,114 @@
+-------------------------------------------------------------------
+Tue Sep 25 16:05:05 UTC 2018 - pmonrealgonzalez@suse.com
+
+- update to 0.03
+  Revision: 0.03 $ $Date: 2015/06/05 03:57:30 $
+  ! Makefile.PL
+    fix RT#67531 & RT#104967
+    https://rt.cpan.org/Ticket/Display.html?id=67531
+    https://rt.cpan.org/Ticket/Display.html?id=104967
+  ! lib/Encode/JIS2K/2022JP3.pm
+    fix RT#73401
+    https://rt.cpan.org/Ticket/Display.html?id=73401
+
+- Dropped patch fixed upstream
+  * reproducible.patch
+
+- Cleaned with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jul  3 10:58:01 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort hash keys to fix build-compare
+
+-------------------------------------------------------------------
+Sun Nov 09 21:20:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in postun script
+
+-------------------------------------------------------------------
+Fri Nov 18 08:45:26 UTC 2011 - coolo@suse.com
+
+- use original tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:12 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:52 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:34 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:39 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 28 22:12:20 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Tue Aug 02 14:42:55 CEST 2005 - mfabian@suse.de
+
+- update to 0.02.
+
+-------------------------------------------------------------------
+Sat Sep 13 18:13:17 CEST 2003 - mfabian@suse.de
+
+- add "Prereq: /usr/bin/enc2xs".
+
+-------------------------------------------------------------------
+Fri Aug 29 12:25:40 CEST 2003 - mfabian@suse.de
+
+- redirect stdout and stderr of "enc2xs -C" to /dev/null.
+
+-------------------------------------------------------------------
+Fri Aug 22 14:39:51 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Wed Jul 16 13:12:53 CEST 2003 - mfabian@suse.de
+
+- simplify file list.
+
+-------------------------------------------------------------------
+Wed Jul 16 12:47:31 CEST 2003 - mfabian@suse.de
+
+- use vendorarch instead of sitearch.
+
+-------------------------------------------------------------------
+Sun Jun 15 12:57:50 CEST 2003 - mfabian@suse.de
+
+- fix "directory not owned by any package".
+
+-------------------------------------------------------------------
+Fri May 16 18:33:23 CEST 2003 - mfabian@suse.de
+
+- remove perllocal.pod from file list.
+
+-------------------------------------------------------------------
+Mon May 12 16:30:59 CEST 2003 - mfabian@suse.de
+
+- use "enc2xs -C" in %post and %postun to register/unregister
+  the new encodings in the on demand-loading list.
+
+-------------------------------------------------------------------
+Fri May  9 19:01:48 CEST 2003 - mfabian@suse.de
+
+- new package: perl-Encode-JIS2K-0.01
+- fix installation of man-page

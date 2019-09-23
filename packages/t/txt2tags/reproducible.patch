@@ -1,0 +1,13 @@
+Index: txt2tags-2.6/txt2tags
+===================================================================
+--- txt2tags-2.6.orig/txt2tags
++++ txt2tags-2.6/txt2tags
+@@ -4110,7 +4110,7 @@ class MacroMaster:
+ 		self.config   = config or CONF
+ 		self.infile   = self.config['sourcefile']
+ 		self.outfile  = self.config['outfile']
+-		self.currdate = time.localtime(time.time())
++		self.currdate = time.gmtime(int(os.environ.get('SOURCE_DATE_EPOCH', time.time())))
+ 		self.rgx      = regex.get('macros') or getRegexes()['macros']
+ 		self.fileinfo = { 'infile': None, 'outfile': None }
+ 		self.dft_fmt  = MACROS

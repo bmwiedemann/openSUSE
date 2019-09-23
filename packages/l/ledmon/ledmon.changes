@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Wed Apr 17 03:36:17 UTC 2019 - gqjiang@suse.com
+
+- Update to version 0.92 per https://jira.suse.de/browse/SLE-6784
+- Drop 0001-Recognize-RAID-volume-under-reshape-as-DEVICE_TYPE_V.patch
+
+-------------------------------------------------------------------
+Tue Oct 23 02:18:22 UTC 2018 - gqjiang@suse.com
+
+- Add a patch to fix bsc#1112539
+  + 0001-Recognize-RAID-volume-under-reshape-as-DEVICE_TYPE_V.patch
+
+-------------------------------------------------------------------
+Thu Mar  8 04:50:53 UTC 2018 - zlliu@suse.com
+
+- Update to version 0.90:
+  * No upstream changelog available
+  * spec: deprecated ledctl.conf.5.gz and rename ledmon.conf.5.gz
+  * add compile parameter -std=c99
+
+- Drop 0001-fix-compilation-warnings-on-newer-gcc.patch
+- bsc#1081125 and fate#322625
+
+-------------------------------------------------------------------
+Wed Dec 20 07:54:36 UTC 2017 - coolo@suse.com
+
+- disable parallel build, it fails more often than not
+
+-------------------------------------------------------------------
+Mon Nov 27 06:46:41 UTC 2017 - zlliu@suse.com
+
+- Update to version 0.81:
+  * No upstream changelog available
+  * add: 0001-fix-compilation-warnings-on-newer-gcc.patch
+  * modify spec file on demand, add libudev dependency.
+  * Intel has moved ledmon from Souceforge to Github.
+- Drop no longer needed Makefile-error-dependency.patch
+- Drop 0001-Don-t-rely-on-searching-for-block-in-sysfs-path-for-.patch
+- bsc#1067452 and fate#322625
+
+-------------------------------------------------------------------
+Fri May 12 08:33:13 UTC 2017 - zlliu@suse.com
+
+- 0001-Don-t-rely-on-searching-for-block-in-sysfs-path-for-.patch
+  Fixed bsc#1038655.
+  upstream link of this patch:
+  https://sourceforge.net/p/ledmon/code/ci/868a01
+
+-------------------------------------------------------------------
+Wed Mar 15 09:06:04 UTC 2017 - zlliu@suse.com
+
+- according to requirement by bsc#1029261 and fate#321489,
+  Frederic suggested that it would better to add changlog
+  here.
+
+-------------------------------------------------------------------
+Thu Dec 29 13:36:18 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.80:
+  * No upstream changelog available
+  * refresh Makefile-error-dependency.patch
+- Drop no longer needed 0001-Recognize_bool_values_in_sysfs.patch
+
+-------------------------------------------------------------------
+Thu Jul 14 03:39:05 UTC 2016 - zlliu@suse.com
+
+- Fix bug bsc#986779, 0001-Recognize_bool_values_in_sysfs.patch.
+  The type of libahci parameter ahci_em_messages was changed from
+  int to bool in kernel v3.13, which caused AHCI HBAs to not be
+  detected properly.
+
+-------------------------------------------------------------------
+Tue Jun  7 15:54:17 UTC 2016 - normand@linux.vnet.ibm.com
+
+- update Makefile-error-dependency.patch to avoid transient error
+
+-------------------------------------------------------------------
+Tue Jul 14 07:36:02 UTC 2015 - werner@suse.de
+
+- Let it build 
+
+-------------------------------------------------------------------
+Mon Apr 20 16:56:01 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Cleanupt spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Mar  2 10:49:00 UTC 2015 - dimstar@opensuse.org
+
+- Do not BuildRequire libsgutils2-2: pulling in the library is
+  responsibility of the respective -devel packages.
+
+-------------------------------------------------------------------
+Wed Sep  3 01:48:48 CEST 2014 - ro@suse.de
+
+- sanitize release line in specfile
+
+-------------------------------------------------------------------
+Thu Dec  5 10:45:57 UTC 2013 - lzhong@suse.com
+
+- update to version 0.79
+  *remove not-send-command-if-status-not-changed.patch
+  *remove fix-gcc-error.patch
+  *add Makefile-error-dependency.patch
+
+-------------------------------------------------------------------
+Tue Mar  5 10:09:43 CST 2013 - lzhong@suse.com
+- Add not-send-command-if-status-not-changed.patch(bnc#794489)
+
+-------------------------------------------------------------------
+Mon Feb  4 21:54:38 CST 2013 - lzhong@suse.com
+- Update version from 0.75 to latest version 0.76(fate#313626) for sles-11-sp3
+
+-------------------------------------------------------------------
+Mon Jan 14 15:06:35 CST 2013 - lzhong@suse.com
+- Update version from 0.74 to latest version 0.75(fate#313626) for sles-11-sp3
+
+-------------------------------------------------------------------
+Fri Nov 16 10:15:59 CST 2012 - lzhong@suse.com
+  
+- Initial check in (fate#313626) for sles-11-sp3
+-------------------------------------------------------------------
+Tue Jun 21 05:08:53 UTC 2011 - xwhu@novell.com
+
+- Initial check in (fate#311809) 
+

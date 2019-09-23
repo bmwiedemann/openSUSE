@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9070ba36f86192de6609af7ac45f1006</srcmd5>
+    <version>1.2.0git20110529</version>
+    <time>1362031828</time>
+    <user>coolo</user>
+    <comment>Reintroduce gtkglext.. some 'legact' 3rd party 'crap-ware' seems to rely on this being available... seen several similar issues. Please also add to 12.3 - We made it build with gnome 3.6 (pangox drop) - Resubmit post legal review: changed the license of the SRC.rpm to GPL-2.0+ and LGPL-2.1+ (both parrts exist), and all the others to LGPL-2.1+ (we do not install the examples anywhere)</comment>
+    <requestid>156468</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>9070ba36f86192de6609af7ac45f1006</srcmd5>
+    <version>1.2.0git20110529</version>
+    <time>1379662583</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>9070ba36f86192de6609af7ac45f1006</srcmd5>
+    <version>1.2.0git20110529</version>
+    <time>1409301130</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>d05c6fd14d4d5c5e767c24ece3b5f4d9</srcmd5>
+    <version>1.2.0git20110529</version>
+    <time>1499152065</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507597</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>122357071e3b668b12f0ddec53c24454</srcmd5>
+    <version>1.2.0git20110529</version>
+    <time>1520502311</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581170 from dimstar)</comment>
+    <requestid>582769</requestid>
+  </revision>
+</revisionlist>

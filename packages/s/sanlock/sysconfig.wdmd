@@ -1,0 +1,9 @@
+## Path: System/Virtualization/wdmd
+
+## Type: string
+## Default: "-G sanlock"
+# Options passed to wdmd daemon, see man wdmd(8).
+#
+# E.g. to enable use of test scripts
+#WDMDOPTS="-G sanlock -S 1"
+WDMDOPTS="-G sanlock"

@@ -1,0 +1,32 @@
+README for bi-architecture 64 bit platforms users
+=================================================
+
+Current version of GTK+ has a problem running 32 and 64 version on
+single machine. See http://bugzilla.gnome.org/show_bug.cgi?id=129540 and
+http://bugzilla.gnome.org/show_bug.cgi?id=153848 for more information.
+
+To work around this problem, 64 bit version for SUSE Linux uses special
+names for following files:
+
+/usr/bin/gtk-query-immodules-2.0:    /usr/bin/gtk-query-immodules-2.0-64
+/etc/gtk-2.0/gtk.immodules:          /usr/gtk-2.0/gtk.immodules64
+
+And following variable:
+
+$GTK_PATH:                                 $GTK_PATH64
+
+This can cause problems during self-compilation of packages.
+
+To work-around these problems (introduced by this work-around), you
+should:
+
+Either:
+
+- Make a patch of package (please do not send it to package
+developers, it's temporary solution).
+
+Or:
+
+- Install 32 bit version of GTK+.
+
+These problems should be correctly solved in GTK+ sometimes in future.

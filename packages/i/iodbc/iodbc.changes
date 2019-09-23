@@ -1,0 +1,124 @@
+-------------------------------------------------------------------
+Thu Jan 26 11:05:59 UTC 2017 - adam.majer@suse.de
+
+- Update to version 0.52.12:
+  * Added 64bit version of the iODBC Administrator to configure
+    and test DSNs on drivers that are only available in 64bit
+    format
+  * Documentation fixes
+
+- Changes in version 0.52.11:
+  * Added support for x86_64 to iODBC Demo
+  * Fix crash ODBCdemo - error message overwrite stack data
+  * Fix iODBCdemo issue with UID/PWD values
+  * Fixed crash in iODBC DM on push of "Test" button when 64bit
+    ODBC driver is used.
+  * Fixed crash when create_dsnsetup fails to load the window.
+  * Fixed crash when passing an empty connect string with no
+    window handle
+  * Fixed crash when passing an empty connect string with no
+    window handle.
+  * Fixed issue in SQLGetInfo
+  * Fixed crash when create_dsnsetup fails to load the window
+
+- fix-nonvoid-return.diff: submitted upstream
+
+-------------------------------------------------------------------
+Fri Mar 13 13:25:55 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 0.52.10:
+  * Fixed issue with ~/Library/ODBC/odbc[inst].ini on Mac OS X
+  * Added build support for Mac OS X 10.10
+  * Updated iODBC Administrator
+  * Updated iODBC Demo
+  * Fixed string truncation in Unicode <-> Ansi conversion on some API calls
+
+-------------------------------------------------------------------
+Wed Jan 21 23:43:48 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.52.9
+  * Added support for building on recent versions of Mac OS X
+  * Fixed warnings from autoconf/automake
+  * Fixed infinite loop in connection pool
+  * Fixed compiler warnings
+  * Fixed build dependency for make -jX
+  * Fixed check for Unicode driver
+  * Fixed issue calling SQLCancel from other thread
+  * Fixed SQLInstallDriverEx when driver is readonly
+- Use download Url as source
+
+-------------------------------------------------------------------
+Sat Jun 22 05:28:45 UTC 2013 - jengelh@inai.de
+
+- Set proper extension for tar archive
+
+-------------------------------------------------------------------
+Tue Nov 20 22:06:43 UTC 2012 - cgiboudeaux@gmx.com
+
+- Update to 3.52.8
+    * Fixed issue with using buffer after free
+    * Fixed use ssize_t where appropriate
+    * Fixed issue with strlen if param can be NULL
+    * Fixed use ssize_t for length of string
+    * Fixed tracing SQLGetData using multiple chunks
+    * Fixed problem tracing on big-endian machines
+    * Fixed wrong type label
+    * Fixed compiler warnings
+
+-------------------------------------------------------------------
+Wed Sep  5 14:47:10 UTC 2012 - cfarrell@suse.com
+
+- license update: LGPL-2.0 or BSD-3-Clause
+  See COPYING file. Note that the only valid version of the LGPL for iodbc
+  is the original ^library gpl^ - not version 2.1
+
+-------------------------------------------------------------------
+Tue Jun 26 20:28:11 UTC 2012 - scorot@free.fr
+
+- fix requirement of the devel package for SLE 11 
+
+-------------------------------------------------------------------
+Mon Jun 25 21:15:03 UTC 2012 - scorot@free.fr
+
+- fix build on SLE 11 
+
+-------------------------------------------------------------------
+Mon Jun 27 14:39:41 UTC 2011 - toddrme2178@gmail.com
+
+- Split doc package (fix for RPMLINT warning)
+- Cleaned up spec file formatting
+
+-------------------------------------------------------------------
+Mon Jun 27 14:39:41 UTC 2011 - toddrme2178@gmail.com
+
+- Various RPMLINT fixes
+- Clarified summaries and descriptions
+
+-------------------------------------------------------------------
+Sat Feb 26 14:21:15 UTC 2011 - toddrme2178@gmail.com
+
+ - Update to 3.52.7
+  * Added iODBC CFM Bridge
+  * Added resizable windows and dialogs for GTK+
+  * Added option in tracefile for sequence number ($S)
+  * Added additional translations between ANSI and Unicode
+  * Fixed if tracefile gets too big, continue in new tracefile
+  * Fixed unload bug due to wrong pointer deref
+  * Fixed Connection Pooling UI
+  * Fixed checking odbc_ver on connect handle
+  * Fixed packaging of runtime only libraries
+  * Fixed porting issues
+  * Fixed documentation
+
+
+-------------------------------------------------------------------
+Thu May 28 20:37:22 CEST 2009 - llunak@suse.cz
+
+- fix build with gcc4.4
+
+-------------------------------------------------------------------
+Thu May  7 14:18:37 CEST 2009 - llunak@suse.cz
+
+- Initial version
+
+

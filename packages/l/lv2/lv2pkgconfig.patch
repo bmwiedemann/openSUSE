@@ -1,0 +1,20 @@
+Index: lv2/lv2plug.in/ns/lv2core/lv2core.pc.in
+===================================================================
+--- lv2/lv2plug.in/ns/lv2core/lv2core.pc.in.orig	2014-12-04 00:07:38.000000000 +0200
++++ lv2/lv2plug.in/ns/lv2core/lv2core.pc.in	2017-03-12 13:33:58.384142906 +0200
+@@ -7,4 +7,4 @@ Name: lv2core
+ Version: @LV2CORE_VERSION@
+ Description: An audio plugin interface specification.
+ Libs:
+-Cflags: -I${includedir}
++Cflags: -I${includedir}/
+Index: lv2.pc.in
+===================================================================
+--- lv2.pc.in.orig	2014-12-04 00:07:38.000000000 +0200
++++ lv2.pc.in	2017-03-12 13:35:21.026937142 +0200
+@@ -4,4 +4,4 @@ includedir=@INCLUDEDIR@
+ Name: LV2
+ Version: @VERSION@
+ Description: An extensible audio plugin interface.
+-Cflags: -I${includedir}
++Cflags: -I${includedir}/

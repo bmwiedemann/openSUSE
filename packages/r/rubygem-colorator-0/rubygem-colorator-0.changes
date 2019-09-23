@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Fri Nov 21 21:46:36 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- deleted if-else for rdoc 
+
+-------------------------------------------------------------------
+Fri Nov 21 20:36:13 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- adapted to new packaging scheme 
+
+-------------------------------------------------------------------
+Wed Nov 12 11:21:54 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- added if-else to avoid havechoice for rdoc 
+
+-------------------------------------------------------------------
+Sat May 25 09:34:08 UTC 2013 - coolo@suse.com
+
+- initial package
+

@@ -1,0 +1,189 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>35b98102997db79e77b17ba244bf850a</srcmd5>
+    <version>0.5</version>
+    <time>1174448560</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="46">
+    <srcmd5>dd0d5e394bb0ec4fb91938b92ca73db7</srcmd5>
+    <version>0.5</version>
+    <time>1199137179</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="53">
+    <srcmd5>d771a1389aa458b0ed29f00b7d01c3c7</srcmd5>
+    <version>0.5</version>
+    <time>1201605460</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="98">
+    <srcmd5>d771a1389aa458b0ed29f00b7d01c3c7</srcmd5>
+    <version>0.5</version>
+    <time>1201605460</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="99">
+    <srcmd5>11e2dd304364d220d6b3188b5fad2c76</srcmd5>
+    <version>0.5</version>
+    <time>1245363511</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="100">
+    <srcmd5>a844b48cc73a54cfed958b0df4ee11d8</srcmd5>
+    <version>0.5</version>
+    <time>1251294565</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/unshield based on submit request 18830 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="7" vrev="102">
+    <srcmd5>a844b48cc73a54cfed958b0df4ee11d8</srcmd5>
+    <version>0.5</version>
+    <time>1251294565</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/unshield based on submit request 18830 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="8" vrev="103">
+    <srcmd5>9f5d8417c71c7b9b013c5b6ff993819a</srcmd5>
+    <version>0.5</version>
+    <time>1268926430</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="105">
+    <srcmd5>9f5d8417c71c7b9b013c5b6ff993819a</srcmd5>
+    <version>0.5</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="106">
+    <srcmd5>9f5d8417c71c7b9b013c5b6ff993819a</srcmd5>
+    <version>0.5</version>
+    <time>1278678623</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3a4e14682b8178e0973051af1e921d74</srcmd5>
+    <version>0.6</version>
+    <time>1295311310</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58289 from user coolo
+</comment>
+    <requestid>58289</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c031df83fb98430bce53c1b695a5bc89</srcmd5>
+    <version>0.6</version>
+    <time>1295311317</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58289
+</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>c031df83fb98430bce53c1b695a5bc89</srcmd5>
+    <version>0.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>dc6a330003959657b8180b0de93178a6</srcmd5>
+    <version>0.6</version>
+    <time>1312460697</time>
+    <user>saschpe</user>
+    <comment>Allow unpacking of files lie HTCs RUUs</comment>
+    <requestid>77979</requestid>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>b14140fbccedb9bdc07762724f232663</srcmd5>
+    <version>0.6</version>
+    <time>1312460709</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77979
+</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>b14140fbccedb9bdc07762724f232663</srcmd5>
+    <version>0.6</version>
+    <time>1319182541</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>43e14718a79fd5f7cd91b8bae54edf8c</srcmd5>
+    <version>0.6</version>
+    <time>1322134662</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93236 from coolo)</comment>
+    <requestid>93324</requestid>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>e461ae1a914d0391381bed02b5fcfcff</srcmd5>
+    <version>0.6</version>
+    <time>1323195038</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="13">
+    <srcmd5>e461ae1a914d0391381bed02b5fcfcff</srcmd5>
+    <version>0.6</version>
+    <time>1340184299</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="15">
+    <srcmd5>e461ae1a914d0391381bed02b5fcfcff</srcmd5>
+    <version>0.6</version>
+    <time>1359110527</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="17">
+    <srcmd5>e461ae1a914d0391381bed02b5fcfcff</srcmd5>
+    <version>0.6</version>
+    <time>1379664889</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="19">
+    <srcmd5>e461ae1a914d0391381bed02b5fcfcff</srcmd5>
+    <version>0.6</version>
+    <time>1409303575</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="20">
+    <srcmd5>66249c11dfe1d48010d4d3c1b5bca23b</srcmd5>
+    <version>0.6</version>
+    <time>1426485641</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290638</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>41e627ae5ac249149c32ab5a1fba2b34</srcmd5>
+    <version>1.3</version>
+    <time>1436331585</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315215</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>b207cf970e8fb440340cd28dcf9b4aa0</srcmd5>
+    <version>1.3</version>
+    <time>1465481639</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400463</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7bae5940f6ed7e02ce54953914ad2069</srcmd5>
+    <version>1.4.2</version>
+    <time>1494938624</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.2:</comment>
+    <requestid>494538</requestid>
+  </revision>
+</revisionlist>

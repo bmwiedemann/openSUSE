@@ -1,0 +1,267 @@
+<revisionlist>
+  <revision rev="1" vrev="479">
+    <srcmd5>2fe4d4a7b012289b187c2631d9fc995b</srcmd5>
+    <version>3.2.06</version>
+    <time>1168903082</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="508">
+    <srcmd5>2198d4cdc8075c360053328f182b9d4d</srcmd5>
+    <version>3.2.06</version>
+    <time>1175185168</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="519">
+    <srcmd5>49ea126f5578eff482f2797af760a839</srcmd5>
+    <version>3.2.06</version>
+    <time>1180637716</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9f32ba4c1a5c5e37bb298186c0478a35</srcmd5>
+    <version>3.3.02</version>
+    <time>1180898729</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="84">
+    <srcmd5>9f32ba4c1a5c5e37bb298186c0478a35</srcmd5>
+    <version>3.3.02</version>
+    <time>1180898729</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="85">
+    <srcmd5>b9a4f0e089ae99a6ae0a2aba1be94639</srcmd5>
+    <version>3.3.02</version>
+    <time>1244454773</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="86">
+    <srcmd5>d49c3cd5508574398fe466c193a28754</srcmd5>
+    <version>3.3.02</version>
+    <time>1251909507</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/ispell based on submit request 19318 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="88">
+    <srcmd5>d49c3cd5508574398fe466c193a28754</srcmd5>
+    <version>3.3.02</version>
+    <time>1251909507</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/ispell based on submit request 19318 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="89">
+    <srcmd5>a8a279c539406854ec43a8d7795efe98</srcmd5>
+    <version>3.3.02</version>
+    <time>1268924053</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="91">
+    <srcmd5>a8a279c539406854ec43a8d7795efe98</srcmd5>
+    <version>3.3.02</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="92">
+    <srcmd5>a8a279c539406854ec43a8d7795efe98</srcmd5>
+    <version>3.3.02</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="93">
+    <srcmd5>3d5578cb61f60868c20cee2ac0b0432a</srcmd5>
+    <version>3.3.02</version>
+    <time>1282665762</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/ispell based on submit request 45917 from user WernerFink
+</comment>
+    <requestid>45917</requestid>
+  </revision>
+  <revision rev="13" vrev="96">
+    <srcmd5>3d5578cb61f60868c20cee2ac0b0432a</srcmd5>
+    <version>3.3.02</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="98">
+    <srcmd5>3d5578cb61f60868c20cee2ac0b0432a</srcmd5>
+    <version>3.3.02</version>
+    <time>1319181996</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="99">
+    <srcmd5>e109b4f67da0068e8ad6de8a7f5617ed</srcmd5>
+    <version>3.3.02</version>
+    <time>1323191989</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="100">
+    <srcmd5>423ba31a7648f01e46c68ce4157c083d</srcmd5>
+    <version>3.3.02</version>
+    <time>1329318929</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103970</requestid>
+  </revision>
+  <revision rev="17" vrev="102">
+    <srcmd5>423ba31a7648f01e46c68ce4157c083d</srcmd5>
+    <version>3.3.02</version>
+    <time>1340183471</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="103">
+    <srcmd5>fc0a75a4e81968b443e9b40109f39341</srcmd5>
+    <version>3.3.02</version>
+    <time>1340719378</time>
+    <user>coolo</user>
+    <comment>- Rename and relocate SuSEconfig.ispell</comment>
+    <requestid>125332</requestid>
+  </revision>
+  <revision rev="19" vrev="105">
+    <srcmd5>fc0a75a4e81968b443e9b40109f39341</srcmd5>
+    <version>3.3.02</version>
+    <time>1359109093</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="107">
+    <srcmd5>fc0a75a4e81968b443e9b40109f39341</srcmd5>
+    <version>3.3.02</version>
+    <time>1379662687</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="108">
+    <srcmd5>0a4818d919a9a8efbb09ef79b435cbeb</srcmd5>
+    <version>3.3.02</version>
+    <time>1386757712</time>
+    <user>coolo</user>
+    <comment>- Remove mixed patch leftover 
+
+- Hint from Björn Jacke that old style sort is broken, therefore
+  enforce usage of modern sort options</comment>
+    <requestid>209951</requestid>
+  </revision>
+  <revision rev="22" vrev="110">
+    <srcmd5>0a4818d919a9a8efbb09ef79b435cbeb</srcmd5>
+    <version>3.3.02</version>
+    <time>1409301252</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="111">
+    <srcmd5>e9faee4c3e7b9b3033c4524b996095bb</srcmd5>
+    <version>3.3.02</version>
+    <time>1418840113</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265147</requestid>
+  </revision>
+  <revision rev="24" vrev="112">
+    <srcmd5>54e416d77c7a94bc3deb0654a32996bc</srcmd5>
+    <version>3.3.02</version>
+    <time>1423130370</time>
+    <user>dimstar_suse</user>
+    <comment>- Use real POSIX shell syntax 
+- Fix ispell update script thas is do not try to source old SUSE
+  config files (boo#916001)</comment>
+    <requestid>283988</requestid>
+  </revision>
+  <revision rev="25" vrev="113">
+    <srcmd5>0529d205430fbab7eed1dbff3f13ebeb</srcmd5>
+    <version>3.3.02</version>
+    <time>1424118093</time>
+    <user>coolo</user>
+    <comment>- Xemacs knows about define-coding-system-alia therefore use it (boo#896947)</comment>
+    <requestid>285142</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e2c729cffe584a4733eb5cce36d8587a</srcmd5>
+    <version>3.4.00</version>
+    <time>1456242812</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to ispell 3.4.00
+  * The english.5 manual page has been dropped
+  * Ispell now supports systems (BSD) that foolish discarded backwards
+    compatibility and insist on using termios.
+  * An error has been corrected in the English affix files that caused
+    certain words ending in &quot;th&quot; to be pluralized incorrectly.  The
+    dictionaries have been updated to ensure that no incorrect plurals
+    have crept in.
+  * The personal dictionary is now written in a stable order when there
+    are multiple variant capitalizations of a word.
+  * A bug in TeX deformatting has been corrected.  Previously, two
+    adjacent math-mode environments introduced with dollar signs, such
+    as $a=b$$c=d$, would cause ispell to lose track of whether it was
+    in math mode.
+  * he American and British Makefiles have been simplified to ensure
+    that dictionaries are always built with the lastest information.
+- Modify patches
+   ispell-3.3.02-config.patch
+   ispell-3.3.02-languages.patch
+   ispell-3.3.02-sq.patch
+   ispell-3.3.02-strip.patch
+   ispell-3.3.02-terminal.patch
+   ispell-3.3.02-types.patch
+   ispell-3.3.02.dif
+- Remove patch ispell-3.3.02-getline.patch now upstream
+- Add patch boo966124.dif that is correct typo in english.3 word
+  list (boo#966124)</comment>
+    <requestid>358990</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>d82454b8c30183e87f87743cb2c825ca</srcmd5>
+    <version>3.4.00</version>
+    <time>1464964555</time>
+    <user>dimstar_suse</user>
+    <comment>- Extend patch boo966124.dif for bug boo#981024</comment>
+    <requestid>398950</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>5bdf9b2d6a35ea663be0c7e906b05261</srcmd5>
+    <version>3.4.00</version>
+    <time>1480693070</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>442674</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>567f21ab4622342cbe2252b3b0e13584</srcmd5>
+    <version>3.4.00</version>
+    <time>1487462261</time>
+    <user>dimstar_suse</user>
+    <comment>- Make ispell-dictionary-alist reload caused by menu setup, for this
+  use the hook ispell-initialize-spellchecker-hook</comment>
+    <requestid>457098</requestid>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>9a12559d26f3851ace7d1e5c1efc480a</srcmd5>
+    <version>3.4.00</version>
+    <time>1489178680</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>477532</requestid>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>f4869cb397699eb642062c42894cd097</srcmd5>
+    <version>3.4.00</version>
+    <time>1512041977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545039</requestid>
+  </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>110584a587fd094d888a772a6a41c280</srcmd5>
+    <version>3.4.00</version>
+    <time>1516092151</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid `set -e' in munchlist (boo#1075882)</comment>
+    <requestid>564193</requestid>
+  </revision>
+</revisionlist>

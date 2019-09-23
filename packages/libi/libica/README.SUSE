@@ -1,0 +1,331 @@
+The following information was provided to us courtesy of the IBM
+testing team, who tested the functionality of apache with mod_ssl
+on SUSE LINUX Enterprise Server 9 for S/390 and zSeries.
+
+It thus refers to testing only from a certain point, and the
+z90crypt part is of course specific to S/390 and zSeries.
+
+-------------------------------------------------------------------
+Installation and Configuration of S/390 HW Crypto
+on SUSE Linux Enterprise Server 9 for S/390 and zSeries:
+
+1) Installation of the driver packages openCryptoki and libica
+
+   The driver packages are installed during base install in the
+   default selection.  If you installed only minimal system or
+   deinstalled the packages, install them now. If the installation
+   source is accessible, you can do it with a single command:
+
+      31bit:
+	yast sw_single openCryptoki openCryptoki-32bit
+
+      64bit:            
+        yast sw_single openCryptoki openCryptoki-32bit openCryptoki-64bit
+      
+   This will automatically install the necessary libica packages as
+   well if they are not installed yet.
+
+
+2) Loading the z90crypt driver:
+
+      systemctl start z90crypt to load z90crypt
+
+      systemctl stop z90crypt to unload z90crypt
+
+   this command will be available only after installation of the
+   crypto driver packages.
+
+   To load the driver automatically at every system boot, integrate it
+   with the other boot scripts issuing
+
+      systemctl enable z90crypt
+
+
+3) Checking if the z90crypt hardware driver can be accessed
+
+   Run this command:
+
+      openssl speed rsa1024 -engine ibmca -elapsed
+
+         If you get 'can't use that engine', as the first line
+         of output of the command look for the successive line
+         and check:
+	 - if running "rcz90crypt restart" gives no error message
+         - the output of command "dmesg" for error messages from the driver
+         - the hardware is indeed available to this instance
+
+4) Installation and Setup of mod_ssl and apache
+
+      a) ensure that mod_ssl and apache are installed during base
+	 install.  If the installation source is accessible,
+	 the command
+
+            yast sw_single mod_ssl
+
+         will install apache and mod_ssl if they are not installed yet.
+
+      b) to activate the apache ssl support do the following:
+
+            if you did not use yast to install the packages, you have
+            to run manually:  SuSEconfig --module apache
+
+            edit /etc/sysconfig/apache:
+		 change HTTPD_START_TIMEOUT=2 to 20
+
+		 change HTTPD_SEC_MOD_SSL=no   to yes
+
+            edit httpd.conf in /etc/httpd:
+
+	    in section 2: check that the ServerName and ServerMail in
+	    the ServerAdmin section is ok.
+
+	    in section 3: set inside <VirtualHost_default_: 443> the
+	    ServerName to host name
+
+	    add on section <IfModule mod_ssl.c>: SSLCryptoDevice ibmca
+
+            run:  SuSEconfig --module apache
+
+5) Crypto configuration of apache/mod_ssl:
+
+      a) create a certificate (Snake Oil) for the TEST --- THIS
+	 CERTIFICATE IS NOT SECURE FOR PRODUCTION USE!  IT IS FOR
+	 TESTING PURPOSES ONLY!  GET A PROPER CERTIFICATE FROM A
+	 CERTIFICATION AUTHORITY FOR PRODUCTION USE.
+
+            go to:      cd /usr/share/doc/packages/mod_ssl
+
+            run:  ./certificate.sh
+
+            see following questions will come up. Give shown answers
+	    and use the pass phrase:
+
+            der3gbe:/usr/share/doc/packages/mod_ssl # ./certificate.sh
+            SSL Certificate Generation Utility (mkcert.sh)
+            Copyright (c) 1998 Ralf S. Engelschall, All Rights Reserved.
+
+            Generating test certificate signed by Snake Oil CA [TEST]
+            WARNING: Do not use this for real-life/production systems
+
+            STEP 0: Decide the signature algorithm used for certificate
+            The generated X.509 CA certificate can contain either
+            RSA or DSA based ingredients. Select the one you want to use.
+            Signature Algorithm ((R)SA or (D)SA) [R]:R
+
+
+            STEP 1: Generating RSA private key (1024 bit) [server.key]
+            123006 semi-random bytes loaded
+            Generating RSA private key, 1024 bit long modulus
+            ..++++++
+            .................++++++
+            e is 65537 (0x10001)
+
+            STEP 2: Generating X.509 certificate signing request
+            [server.csr]
+            Using configuration from .mkcert.cfg
+            You are about to be asked to enter information that will be
+            incorporated
+            into your certificate request.
+            What you are about to enter is what is called a Distinguished
+            Name or a DN.
+            There are quite a few fields but you can leave some blank
+            For some fields there will be a default value,
+            If you enter '.', the field will be left blank.
+            -----
+            1. Country Name             (2 letter code) [XY]:DE
+            2. State or Province Name   (full name)     [Snake Desert]:
+            <enter>
+            3. Locality Name            (eg, city)      [Snake Town]:
+            <enter>
+            4. Organization Name        (eg, company)   [Snake Oil, Ltd]:
+            <enter>
+            5. Organizational Unit Name (eg, section)   [Webserver Team]:
+            <enter>
+            6. Common Name              (eg, FQDN)      [www.snakeoil.dom]:
+            <enter>
+            7. Email Address            (eg, name@FQDN) [www@snakeoil.dom]:
+            <enter>
+
+            STEP 3: Generating X.509 certificate signed by Snake Oil CA
+            [server.crt]
+            Certificate Version (1 or 3) [3]:3
+            Signature ok
+            subject=/C=DE/ST=Snake Desert/L=Snake Town/O=Snake Oil,
+            Ltd/OU=Webserver
+            Team/CN=www.snakeoil.dom/Email=www@snakeoil.dom
+            Getting CA Private Key
+            Verify: matching certificate & key modulus
+            read RSA key
+            Verify: matching certificate signature
+            /etc/httpd/ssl.crt/server.crt: /C=XY/ST=Snake Desert/L=Snake
+            Town/O=Snake Oil, Ltd/OU=Certificate Authority/CN=Snake Oil
+            CA/Email=ca@snakeoil.dom
+            error 10 at 1 depth lookup:certificate has expired
+            OK
+
+            STEP 4: Enrypting RSA private key with a pass phrase for
+            security [server.key]
+            The contents of the server.key file (the generated private key)
+            has to be
+            kept secret. So we strongly recommend you to encrypt the
+            server.key file
+            with a Triple-DES cipher and a Pass Phrase.
+            Encrypt the private key now? [Y/n]: Y
+            read RSA key
+            writing RSA key
+            Enter PEM pass phrase:                          <=== crypto
+            Verifying password - Enter PEM pass phrase:     <=== crypto
+            Fine, you're using an encrypted RSA private key.
+
+            RESULT: Server Certification Files
+
+            o  conf/ssl.key/server.key
+
+               The PEM-encoded RSA private key file which you
+               configure with the 'SSLCertificateKeyFile' directive
+               (automatically done when you install via APACI). KEEP
+               THIS FILE PRIVATE!
+
+            o  conf/ssl.crt/server.crt
+
+               The PEM-encoded X.509 certificate file which you configure
+               with the 'SSLCertificateFile' directive (automatically done
+               when you install via APACI).
+
+            o  conf/ssl.csr/server.csr
+
+               The PEM-encoded X.509 certificate signing request file
+               which you can send to an official Certificate Authority
+               (CA) in order to request a real server certificate
+               (signed by this CA instead of our demonstration-only
+               Snake Oil CA) which later can replace the
+               conf/ssl.crt/server.crt file.
+
+            WARNING: Do not use this for real-life/production systems
+
+            der3gbe:/usr/share/doc/packages/mod_ssl #
+
+6) Start Apache with SSL
+
+    a) start with pass phrase (Changes done to apache modul
+       described in item c)).
+
+	  run:  rcapache start
+
+	dev3fe01:~ # rcapache start
+
+	Starting httpd [ PERL PHP4 Python SSL ]Apache/1.3.26
+	mod_ssl/2.8.10 (Pass Phrase Dialog)
+	Some of your private key files are encrypted for security
+	reasons.
+	In order to read them you have to provide us with the pass
+	phrases.
+
+	Server dev3fe01.boeblingen.de.ibm.com:443 (RSA)
+	Enter pass phrase:   crypto
+
+	Ok: Pass Phrase Dialog successful.
+	done
+
+    b) start without pass phrase when using apache without
+       ssl-support
+
+	  remark: You need to change the apache modul (see
+	  item c)). Set the HTTPD_SEC_MOD_SSL=no.
+
+	  run:  rcapache start
+
+
+7) Check that ibmca is used and apache is working with http and https:
+
+    a) On a browser enter http://<server-host>  or
+       https://<server-host>
+    b) with netstat or netstat -a on the apache server machine you
+       can see if https is used.
+    c) in the log /var/log/httpd/ssl_engine_log you can see if the
+       ibmca engine is started or not.
+    d) during siege test you can see with cat /proc/driver/z90crypt
+       if and what crypto HW is used
+    e) you can check a http connection with telnet <server-host>
+       http. Then enter
+	 get / http/1.0
+       and you should get back some stuff after pressing enter
+       twice.
+
+    f) You can check if openssl works with the ibmca engine
+
+            a) Therefore you must create certificates:
+                  cd /usr/share/ssl/misc
+                  run:  ./CA.sh -newcert
+
+               dev3fe01:/usr/share/ssl/misc # ./CA.sh -newcert
+               Using configuration from /etc/ssl/openssl.cnf
+               Generating a 1024 bit RSA private key
+               ......................++++++
+               .++++++
+               writing new private key to 'newreq.pem'
+               Enter PEM pass phrase:                       <== geheim
+               Verifying password - Enter PEM pass phrase:  <== geheim
+               Verify failure
+               Enter PEM pass phrase:
+               Verifying password - Enter PEM pass phrase:
+               phrase is too short, needs to be at least 4 chars
+               Enter PEM pass phrase:
+               Verifying password - Enter PEM pass phrase:
+               -----
+               You are about to be asked to enter information that will be
+               incorporated
+               into your certificate request.
+               What you are about to enter is what is called a
+               Distinguished Name or a DN.
+               There are quite a few fields but you can leave some blank
+               For some fields there will be a default value,
+               If you enter '.', the field will be left blank.
+               -----
+               Country Name (2 letter code) [AU]:
+               <== press enter
+               State or Province Name (full name) [Some-State]:
+               <== press enter
+               Locality Name (eg, city) []:
+               <== press enter
+               Organization Name (eg, company) [Internet Widgits Pty Ltd]:
+               <== press enter
+               Organizational Unit Name (eg, section) []:
+               <== press enter
+               Common Name (eg, YOUR name) []:              <== press enter
+               Email Address []:                                  <== press
+               enter
+               Certificate (and private key) is in newreq.pem
+
+                  run:  ./CA.sh -newca
+
+               dev3fe02:/usr/share/ssl/misc # ./CA.sh -newca
+               CA certificate filename (or enter to create)
+               newreq.pem
+               dev3fe02:
+
+
+            b) Use openssl as a Web-browser and use https connection:
+                  openssl s_client \
+		    -connect <ip-addr of webserver>:443 -state -debug
+
+                  The machine were you start the client is working as
+		  your 'browser' connecting to the webserver. You can
+		  start commands from the client like get / http/1.0 .
+
+            c) Use openssl as a Web-server and use https connection:
+		 openssl s_server \
+		   -accept 443 -www -engine ibmca -cert newreq.pem
+
+	       The machine is working like a small webserver with full
+	       openssl functionality.  You can start your browser to
+	       this machine and a lot of info will be sent.
+
+               dev3fe01:/usr/share/ssl/misc # openssl s_server -accept 443
+               -www -cert newreq.pem -engine ibmca
+                    engine "ibmca" set.
+                    Using default temp DH parameters
+                    Enter PEM pass phrase:      <== geheim
+                    ACCEPT
+
+-------------------------------------------------------------------

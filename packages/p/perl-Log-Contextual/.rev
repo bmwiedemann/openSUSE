@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e98bb91697869e2f82866c51c903cb19</srcmd5>
+    <version>0.004001</version>
+    <time>1327490351</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>99406</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e98bb91697869e2f82866c51c903cb19</srcmd5>
+    <version>0.004001</version>
+    <time>1340183869</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>e98bb91697869e2f82866c51c903cb19</srcmd5>
+    <version>0.004001</version>
+    <time>1359109725</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4c5b69f07abf1c25dab98698f42631bd</srcmd5>
+    <version>0.005003</version>
+    <time>1374933170</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184395</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4c5b69f07abf1c25dab98698f42631bd</srcmd5>
+    <version>0.005003</version>
+    <time>1379663733</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8bf4e06e629148f468bc7127f015e09e</srcmd5>
+    <version>0.006000</version>
+    <time>1381127500</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202443</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3c489ed9c5e55537a1411463dfbe4b93</srcmd5>
+    <version>0.006003</version>
+    <time>1393610808</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223906</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>3c489ed9c5e55537a1411463dfbe4b93</srcmd5>
+    <version>0.006003</version>
+    <time>1409302359</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1092732ce36dcc20a021288abd1d9ff6</srcmd5>
+    <version>0.006005</version>
+    <time>1429107961</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296657</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f85fcccc7bd7be4ab121ae192cd1c747</srcmd5>
+    <version>0.007000</version>
+    <time>1461335066</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>389454</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>24e517c8f6e65a07af51736489448a44</srcmd5>
+    <version>0.007001</version>
+    <time>1495693944</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.0070001
+  - Stop testing exact bytes produced by Data::Dumper::Concise
+    (Thanks for reporting Errietta Kostal)
+    (Fixes GH#11)
+  - Add some documentation about exceptions
+    (Thanks Kent Fredric!)</comment>
+    <requestid>498228</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d31491d77ad5175bf5096851693a5ecf</srcmd5>
+    <version>0.008000</version>
+    <time>1512734366</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554816</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>09bcaf2cc037333e5629436d49700f35</srcmd5>
+    <version>0.008001</version>
+    <time>1516804178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568393</requestid>
+  </revision>
+</revisionlist>

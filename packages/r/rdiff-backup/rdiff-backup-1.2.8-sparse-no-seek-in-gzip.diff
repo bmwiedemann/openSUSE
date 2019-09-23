@@ -1,0 +1,34 @@
+Date: 2016-06-29
+Author: Stefan Seyfried <seife+obs@b1-systems.com>
+Subject: do not try to seek in GzipFile; it does not help and the
+         later seek(-1, os.SEEK_CUR) fails
+
+I suddenly got a strange error from gzip.py "Negative seek in write mode"
+which I avoid by not using sparse code in compressed case. No idea why this
+only turned up now, maybe a strange combination of files to back up?
+
+Index: b/rdiff_backup/rpath.py
+===================================================================
+--- a/rdiff_backup/rpath.py
++++ b/rdiff_backup/rpath.py
+@@ -61,6 +61,11 @@ def copyfileobj(inputfp, outputfp):
+ 
+ 	sparse = False
+ 	buf = None
++	"""Negative seeks are not supported by GzipFile"""
++	compressed = False
++	if isinstance(outputfp, GzipFile):
++		compressed = True
++
+ 	while 1:
+ 		inbuf = inputfp.read(blocksize)
+ 		if not inbuf: break
+@@ -75,7 +80,7 @@ def copyfileobj(inputfp, outputfp):
+ 			continue
+ 
+ 		buflen = len(buf)
+-		if buf == "\x00" * buflen:
++		if not compressed and buf == "\x00" * buflen:
+ 			outputfp.seek(buflen, os.SEEK_CUR)
+ 			buf = None
+ 			# flag sparse=True, that we seek()ed, but have not written yet

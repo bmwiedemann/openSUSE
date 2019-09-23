@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Tue Jul 26 16:46:59 UTC 2016 - sor.alexei@meowr.ru
+
+- Add bsdiff-fix-makefile.patch: patch Makefile instead of working
+  around it in the spec file.
+- Add bsdiff-fix-heap-vul.patch: fix heap vulnerability in bspatch
+  (bsc#990660, CVE-2014-9862), taken from
+  https://security.freebsd.org/patches/SA-16:25/bspatch.patch
+
+-------------------------------------------------------------------
+Mon Dec  7 11:46:55 UTC 2015 - mpluskal@suse.com
+
+- Tiny spec file cleanup
+
+-------------------------------------------------------------------
+Fri Apr 22 16:36:13 UTC 2014 - sor.alexei@meowr.ru
+
+- Initial package.

@@ -1,0 +1,5 @@
+<package name="bssl_wrapper" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:kubic" package="bssl_wrapper"/>
+</package>

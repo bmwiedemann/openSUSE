@@ -1,0 +1,11 @@
+<package name="mono-basic" project="openSUSE:Factory">
+  <title>Mono's VB Runtime</title>
+  <description>The Mono Project is an open development initiative that is working to
+develop an open source, Unix version of the .NET development platform.
+Its objective is to enable Unix developers to build and deploy
+cross-platform .NET applications. The project will implement various
+technologies that have been submitted to the ECMA for standardization.
+
+Mono's VB runtime.</description>
+  <devel project="Mono:Factory" package="mono-basic"/>
+</package>

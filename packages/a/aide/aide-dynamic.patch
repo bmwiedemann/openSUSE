@@ -1,0 +1,20 @@
+Index: aide-0.15.1/src/util.c
+===================================================================
+--- aide-0.15.1.orig/src/util.c
++++ aide-0.15.1/src/util.c
+@@ -497,6 +497,7 @@ int syslog_facility_lookup(char *s)
+ /* We need these dummy stubs to fool the linker into believing that
+    we do not need them at link time */
+ 
++#if 0
+ void* dlopen(char*filename,int flag)
+ {
+   return NULL;
+@@ -516,6 +517,7 @@ const char* dlerror(void)
+ {
+   return NULL;
+ }
++#endif
+ 
+ const char* aide_key_2=CONFHMACKEY_02;
+ const char* db_key_2=DBHMACKEY_02;

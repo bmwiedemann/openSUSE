@@ -1,0 +1,50 @@
+--- grub-0.97/lib/device.c.orig	2010-05-11 13:09:13.000000000 +0200
++++ grub-0.97/lib/device.c	2010-05-11 13:13:58.000000000 +0200
+@@ -26,6 +26,8 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <stdint.h>
++#include <sys/mount.h>
+ #include <ctype.h>
+ #include <assert.h>
+ #include <unistd.h>
+@@ -153,12 +154,37 @@ get_drive_geometry (struct geometry *geo
+   {
+     struct hd_geometry hdg;
+     unsigned long nr;
++    uint64_t size64;
+     
+     if (ioctl (fd, HDIO_GETGEO, &hdg))
+       goto fail;
+ 
++    /* Provide some sanity for obsolete legacy code. This shouldn't
++     * be really necessary, but better safe than sorry.
++     */
++    if (hdg.heads == 0)
++      hdg.heads = 240;
++
++    if (hdg.sectors == 0)
++      hdg.sectors = 63;
++
++#ifdef BLKGETSIZE64
++    if (ioctl(fd, BLKGETSIZE64, &size64) == 0)
++      {
++        /* BLKGETSIZE64 returns the size of the device in octets. */
++        size64 >>= 9;
++	nr = (size64 < ~0UL)? size64 : ~0UL;
++      }
++    else
++#endif
+     if (ioctl (fd, BLKGETSIZE, &nr))
+-      goto fail;
++      {
++	/* If the device is big, then use all we can from it. */
++	if (errno == EFBIG)
++	  nr = ~0UL;
++	else
++	  goto fail;
++      }
+     
+     /* Got the geometry, so save it. */
+     geom->cylinders = hdg.cylinders;

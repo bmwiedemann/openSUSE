@@ -1,0 +1,52 @@
+###############################################################################
+#
+# TkDiff -- A graphical front-end to diff for Unix and NT.
+# Copyright (C) 1994-1998 by John M. Klassa.
+# Copyright (C) 1999-2001 by AccuRev Inc.
+# Copyright (C) 2002-2005 by John M. Klassa.
+#
+# TkDiff Home Page: http://tkdiff.sourceforge.net/
+# Mailing list, mail archive, etc.
+#
+# Usage:
+#	  To interactively pick files:
+#	      tkdiff
+#
+#	  Plain files:
+#	      tkdiff <file1> <file2>
+#
+#	  Plain file with conflict markers:
+#	      tkdiff -conflict <file>
+#
+#	  Source control AccuRev/CVS/RCS/Perforce/PVCS/SCCS:
+#	      tkdiff <file> (same as -r)
+#	      tkdiff -r <file>
+#	      tkdiff -r<rev> <file>
+#	      tkdiff -r<rev> -r <file>
+#	      tkdiff -r<rev1> -r<rev2> <file>
+#
+#	  Options:
+#	      -a <ancestor_file>
+#	      -o <merge output file>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+#
+# THINGS TO DO:
+#
+# the code that parses the command line ought to be separated from the
+# code that reads in the files. That way we can parse the command line
+# right up front and display potential problems on stdout instead of
+# waiting until the window display.
+###############################################################################

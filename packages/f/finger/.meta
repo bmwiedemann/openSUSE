@@ -1,0 +1,7 @@
+<package name="finger" project="openSUSE:Factory">
+  <title>Show User Information (Client)</title>
+  <description>Finger is a utility that allows users to see information about system
+users (login name, home directory, name, and more) on local and remote
+systems.</description>
+  <devel project="network:utilities" package="finger"/>
+</package>

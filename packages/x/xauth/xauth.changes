@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Fri Jul 12 10:41:09 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1
+  * This release fixes a race condition where an existing
+    authority file would be unlinked (possibly causing other
+    clients to fail to connect), and fixes sorting and merging
+    of authority file entries.
+
+-------------------------------------------------------------------
+Wed Feb  1 13:27:01 UTC 2017 - sndirsch@suse.com
+
+- Update to version 1.0.10
+  * include POSIX-standard limits.h for PATH_MAX instead of sys/syslimits.h
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Clarified RELEASING in README
+  * Fix for xauth failing on ENOSPC (= disk full)
+  * autogen.sh: use quoted string variables
+  * Update DISPLAY parsing to work with new launchd paths in Yosemite
+  * Fix !HAVE_STRLCPY case
+  * Build xauth before running tests.
+  * autogen: add default patch prefix
+  * autogen.sh: stop using maintainer mode
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * usage(): Print summary for the -n option
+
+-------------------------------------------------------------------
+Wed May  7 10:01:28 UTC 2014 - sndirsch@suse.com
+
+- Update to version 1.0.9
+  * Add AC_USE_SYSTEM_EXTENSIONS to expose non-standard extensions
+  * Do not install test_xauth during "make install" as it is
+  * Fix warning about warn_unused_result triggered by WRITES.
+  * Fixed missing EXTRA_DIST in tests. Extended README for releasing.
+
+-------------------------------------------------------------------
+Fri Oct 25 14:48:02 UTC 2013 - sndirsch@suse.com
+
+- Update to version 1.0.8
+  * Fix a long standing problem that for ssh tunneled connections a
+    display variable of the form: localhost:<N>.<M> leads to correct
+    authorization when an X client is started but "xauth list $DISPLAY"
+    returns nothing.
+  * Fix for: If using GDM with XDMCP, then ssh is not able to start X11
+    clients on the remote side. You get a "No xauth data; using fake
+    authentication data for X11 forwarding." from SSH.
+- obsoletes xauth-1.0.2.diff, 
+  u_xauth_Look-for-FamilyLocal-if-inet-or-inet6-addr.patch
+- adjusted xauth-tolerant-hostname-changes.diff
+- added new test_xauth tool to %files section
+
+-------------------------------------------------------------------
+Sat Apr 14 21:47:40 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.7:
+  + Remove alarm handler in get_hostname
+  + Add const attributes to fix gcc -Wwrite-strings warnings
+  + convert strlen/malloc/strcpy combo to strdup
+- Changes from version 1.0.6:
+  + auth_finalize: Attempt to rename() if link() fails
+  + Error out and avoid a call to malloc(0) if given a bad hex
+    string
+  + Build system fixes.
+- Rebase xauth-tolerant-hostname-changes.diff.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xauth from xorg-x11. Initial version: 1.0.5.
+

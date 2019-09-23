@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Tue Mar 13 06:42:48 UTC 2018 - coolo@suse.com
+
+- updated to 0.100005
+   see /usr/share/doc/packages/perl-Pod-Coverage-TrustPod/Changes
+
+  0.100005  2018-03-12 08:34:52-04:00 America/New_York
+          - remove an accidentally introduced // operator!
+
+-------------------------------------------------------------------
+Mon Mar  5 06:49:43 UTC 2018 - coolo@suse.com
+
+- updated to 0.100004
+   see /usr/share/doc/packages/perl-Pod-Coverage-TrustPod/Changes
+
+  0.100004  2018-03-04 22:46:25-05:00 America/New_York
+          - report more usefully when a regex can't be compiled
+
+-------------------------------------------------------------------
+Tue Mar 18 13:01:50 UTC 2014 - coolo@suse.com
+
+- updated to 0.100003
+          anchor the regex at both ends when matching symbols: /\A...\z/
+
+          simplify tests to avoid causing bizarre catastrophic failures on
+          5.13.11
+
+-------------------------------------------------------------------
+Fri Jan 21 20:24:48 UTC 2011 - coolo@novell.com
+
+- initial package 0.092832
+  * created by cpanspec 1.78.03
+

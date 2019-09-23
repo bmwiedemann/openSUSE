@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d2072c0918ec94838bca47f873838c07</srcmd5>
+    <version>0.8.7</version>
+    <time>1358679852</time>
+    <user>coolo</user>
+    <comment>
+PackageKit-Qt addition (the lib was split off PackageKit 0.8)
+Comment: something is rotten with the license. I don't believe it's
+         GPL-3.0</comment>
+    <requestid>149201</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>280fca65782d0696418a496e727b9de4</srcmd5>
+    <version>0.8.7</version>
+    <time>1358873114</time>
+    <user>coolo</user>
+    <comment>Fix COPYING file and license tag.... it is LGPL-2.1 as per upstream.</comment>
+    <requestid>149532</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>280fca65782d0696418a496e727b9de4</srcmd5>
+    <version>0.8.7</version>
+    <time>1359108624</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>ad0b697f0710f1e3f5fc9c7218054d8b</srcmd5>
+    <version>0.8.7</version>
+    <time>1363340591</time>
+    <user>coolo</user>
+    <comment>- add rename provides for old devel package (forwarded request 158243 from dimstar)</comment>
+    <requestid>159252</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>abdc3c3bd4cc4517b44f329994c56f92</srcmd5>
+    <version>0.8.8</version>
+    <time>1368450650</time>
+    <user>coolo</user>
+    <comment>- Update to 0.8.8
+  + New Features:
+    - Adding Provides property to Daemon.
+    - Adding some Meta information.
+    - Adds the transactionFlags to the Transaction class.
+    - Add TransactionFlags registration.
+    - Implement connectNotify and disconnectNotify.
+  + Bugfixes:
+    - Add missing declare enums.
+    - Fix searchGroups() be iterating over the flaged values.
+    - Ignore Interface isValid() check.
+    - Improve error handling and make it easier for QML use it.
+    - Make sure we set an error if we fail to contact PackageKit.
+    - Use the correct version of the LGPL library.
+- Drop 0001-upstream-license-correction.patch: fixed upstream.
+- Rename libpackagekit-qt2-5 subpackage to libpackagekit-qt2-6,
+  following upstreams soname change.</comment>
+    <requestid>175191</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>abdc3c3bd4cc4517b44f329994c56f92</srcmd5>
+    <version>0.8.8</version>
+    <time>1379661920</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>5259fc59ae250882257bec289f2ace24</srcmd5>
+    <version>0.8.8</version>
+    <time>1380122315</time>
+    <user>coolo</user>
+    <comment>- Add PackageKit-Qt-libdir-references.patch: Fix the installed
+  packagekit-qt2-config.cmake file to have the correct link to the
+  library by keeping CMAKE_INSTALL_LIBDIR as a relative path and
+  the .pc file to have a valid path to $libdir.</comment>
+    <requestid>200471</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>5259fc59ae250882257bec289f2ace24</srcmd5>
+    <version>0.8.8</version>
+    <time>1409300440</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a8a54f83d85faea56a4a9a7ad1b08057</srcmd5>
+    <version>0.9.2</version>
+    <time>1411485410</time>
+    <user>coolo</user>
+    <comment>Patched package, needed if we are to get apper to build -- Put in Staging E please</comment>
+    <requestid>250305</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f1e8404c23848f2d77529124b269655c</srcmd5>
+    <version>0.9.2</version>
+    <time>1412625875</time>
+    <user>coolo</user>
+    <comment>Enable Qt5 variants. -- Please take care of the linking of the new package.</comment>
+    <requestid>253901</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6a3ed6d69854860e8c3186dfaa5eda3d</srcmd5>
+    <version>0.9.5</version>
+    <time>1417160759</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262593</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fb84b35f53fb9b69df50f79106e5dfba</srcmd5>
+    <version>0.9.6</version>
+    <time>1487149371</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit - typo fixed</comment>
+    <requestid>456425</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>8a69eab7fc6f13d191158b62633fa2fc</srcmd5>
+    <version>0.9.6</version>
+    <time>1520502669</time>
+    <user>dimstar_suse</user>
+    <comment>- Use SPDX3.0 license tags and package COPYING as %license. (forwarded request 582671 from dimstar)</comment>
+    <requestid>582927</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0ac23465fba7084ceaa803f4276ced3a</srcmd5>
+    <version>1.0.1</version>
+    <time>1541666719</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fixes until current master (9e048b7):
+  * 0001-Fix-pkg-config-include-path.patch
+  * 0002-Fix-some-documentation-typos.patch
+  * 0003-Make-sure-the-build-is-done-as-c-11.patch
+- Update to version 1.0.1:
+  * Fix build against PackageKit::Offline
+- Update to version 1.0.0:
+  * Add an Offline class to interface with PackageKit's Offline interface
+  * Fix parsing package data and incomplete package-ids
+  * Fix logic of the new string parsing
+  * Add missing PackageKit 1.0.2 enums
+  * Also optimize PackageName &amp;amp; friends on Transaction class
+  * Fix recursion by explicity setting types
+  * Optimize packageName &amp;amp; friends
+  * A few more updates and fixes for 1.0.0
+  * Modernize to C++11 and remove deprecated methods
+  * Bump to 1.0.0 version
+- Update to version 0.10.0:
+  * Delete the transactions when they are done
+  * Merge pull request #22 from aleixpol/master
+  * Next version includes new API, so we need a minor version bump
+  * Avoid deadlock on disconnecting signals
+  * Add missing enums from upstream
+  * Implement offlineTrigger
+  * Make Transaction deletion match better what is really happening
+  * Reintroduce upgradeSystem()
+  * Merge pull request #16 from pvuorela/master
+  * Fix pkg-config file
+  * Drop qt4 pkg-config file
+  * Update cmake minimum version (forwarded request 644175 from Vogtinator)</comment>
+    <requestid>645203</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>f6a26990db62cbe8dd214e19d2ea2aa3</srcmd5>
+    <version>1.0.1</version>
+    <time>1553611061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687768</requestid>
+  </revision>
+</revisionlist>

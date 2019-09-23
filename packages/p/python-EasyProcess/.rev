@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4795563d8be4ed924dee43b3e021ac06</srcmd5>
+    <version>0.1.4</version>
+    <time>1332831461</time>
+    <user>coolo</user>
+    <comment>SST requirement</comment>
+    <requestid>111116</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4795563d8be4ed924dee43b3e021ac06</srcmd5>
+    <version>0.1.4</version>
+    <time>1340184028</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c481378f2b5440667bbefda569c3a4c0</srcmd5>
+    <version>0.1.4</version>
+    <time>1357973783</time>
+    <user>coolo</user>
+    <comment>add python3 support (forwarded request 147956 from posophe)</comment>
+    <requestid>148058</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>c481378f2b5440667bbefda569c3a4c0</srcmd5>
+    <version>0.1.4</version>
+    <time>1359109975</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8215a9065e42b766c823f2408d1d3273</srcmd5>
+    <version>0.1.5</version>
+    <time>1361117550</time>
+    <user>coolo</user>
+    <comment>Update (forwarded request 155602 from posophe)</comment>
+    <requestid>155603</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b269de6e0f0d049427f6f580c7d8b0f1</srcmd5>
+    <version>0.1.6</version>
+    <time>1362745606</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157708</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>27a7a7691c8f8de46b77e15c463b17f1</srcmd5>
+    <version>0.1.6</version>
+    <time>1371651688</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179677</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>27a7a7691c8f8de46b77e15c463b17f1</srcmd5>
+    <version>0.1.6</version>
+    <time>1379664100</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>af8dabb7e1203736b5508c290496ef20</srcmd5>
+    <version>0.1.6</version>
+    <time>1382692488</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204553</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>af8dabb7e1203736b5508c290496ef20</srcmd5>
+    <version>0.1.6</version>
+    <time>1409302787</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f9c740fe31f290b881e9c33ec961f068</srcmd5>
+    <version>0.1.9</version>
+    <time>1430983351</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305657</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f8a62eb8b2b37f0c7f4f39fa527b6724</srcmd5>
+    <version>0.2.3</version>
+    <time>1504000025</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.2.3:
+  * no changelog available
+- Implement single-spec version
+- Fix source URL
+</comment>
+    <requestid>519240</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>98fcd15253296706cc927cc46589c51a</srcmd5>
+    <version>0.2.3</version>
+    <time>1544726851</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655545</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bfbeb0ee49779d92576ad7094aa8383c</srcmd5>
+    <version>0.2.5</version>
+    <time>1551455414</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.5:
+  * Fixes for python 3.7
+  * Many utf8 fixes
+- Switch to github tarball for tests</comment>
+    <requestid>680488</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>1b541335376275a2093022199082f02c</srcmd5>
+    <version>0.2.5</version>
+    <time>1554712744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691984</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>294d05d47462b380fb57d234346c6885</srcmd5>
+    <version>0.2.7</version>
+    <time>1561195396</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.7:
+  * Small fixes only</comment>
+    <requestid>710347</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>53ce6a4fc2a0f6fd38ae0ef9752fe30c</srcmd5>
+    <version>0.2.7</version>
+    <time>1569233839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731157</requestid>
+  </revision>
+</revisionlist>

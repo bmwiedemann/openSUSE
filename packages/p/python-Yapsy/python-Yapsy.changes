@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Mon Jul 29 14:17:06 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.12.2
+  * no upstream change log
+
+-------------------------------------------------------------------
+Thu Jul 25 13:31:48 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.12.0
+  * no upstream change log
+- deleted patches
+  - fix-error-plugin-test.patch (unneeded)
+  - fix-file-location-test.patch (unneeded)
+
+-------------------------------------------------------------------
+Tue Dec  4 12:56:20 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Jul 22 18:38:21 UTC 2017 - sebix+novell.com@sebix.at
+
+- convert to singlespec
+- run tests during build
+ * add fix-file-location-test.patch to fix a hardcoded path in the tests
+ * add fix-error-plugin-test.patch to fix test on 3.6
+- add documentation in subpackage python-Yapsy-doc
+
+-------------------------------------------------------------------
+Fri Jan  6 21:09:16 UTC 2017 - boris@steki.net
+
+- updated to version 1.11.223
+- code: Make _extractCorePluginInfo accept Unicode filenames
+  (bug https://sourceforge.net/p/yapsy/bugs/30/)
+- code: fix default change trigger for ConfigurablePluginManager
+  (see https://sourceforge.net/p/yapsy/support-requests/9/)
+- code: merge python3 and default branch (contrib delijati)
+- code: fix exception catching to support flask use case
+  (contrib delijati: https://github.com/tibonihoo/yapsy/pull/4)
+- code: fix error reporting (contrib frmdstryr:
+  https://github.com/tibonihoo/yapsy/pull/5)
+- code: allow plugins to run in separate processes
+  (contrib pylanglois: https://github.com/tibonihoo/yapsy/pull/6)
+- code: fix dangerous usage of mutable objects as default arguments
+- doc: added an example of fetching yapsy's development version with pip
+- code: Speed optimisation for the regexp compiled in __init__.py
+  (see https://sourceforge.net/p/yapsy/patches/4/)
+- code: fix bug "Plugin detection doesn't follow symlinks"
+  (see https://sourceforge.net/p/yapsy/bugs/19/)
+- doc: add links to coveralls.io for code coverage
+- code: fix PluginInfo properties
+  (see https://sourceforge.net/p/yapsy/bugs/13/)
+- code: fix ConfigurablePluginManager.loadplugin ignore callback
+  bug reported at https://sourceforge.net/p/yapsy/bugs/17/
+- code: small improvement to the parse error handling
+  (related to https://sourceforge.net/p/yapsy/bugs/12/)
+- packaging: version name change to comply with PEP440 and resolve pip install problems.
+- code: fix compatibility with python2.5
+- code: fix compatibility with python2.5
+- doc: add links to travis-ci and readthedocs.org
+- code: fix AutoInstall test failures [contrib. Agustin Henze]
+- code: replace deprecated methods usage (for Python3)
+- code: switch from exec to imp.load_module for plugin loading
+  which also solves https://sourceforge.net/p/yapsy/bugs/9/
+- doc: add explanation about plugin class detection caveat
+  https://sourceforge.net/p/yapsy/bugs/8/
+- code: fix unicode bug on python2 version,
+  see https://sourceforge.net/p/yapsy/bugs/10/
+- code: [contrib. Mathieu Havel] "plugin locators" allow to change the
+  strategy to describe and locate plugins
+- code: [contrib. Mathieu Clabaut] multiple categories per plugin 
+  (cf https://bitbucket.org/matclab/yapsy-mcl)
+- code: [contrib.  Mark Fickett] improve logging
+- code: Gather detailed information on plugin load error via a callback
+- code: Extra info to plug-in (eg add extra section or embed the ConfigParser
+  output to the plugin_info), see also https://github.com/tintinweb/yapsy
+- code: proper config of the default "plugin locator" can stop plugin 
+  detection from scanning a directory recursively
+- code: Enforce a same tab convention everywhere
+- doc: update list of project using yapsy
+- doc: highlight the existence of tutorial and link to these ones:
+- doc: be more helpful to users with an advice/troubleshooting page
+- doc: add a CHANGELOG.txt file
+ 
+-------------------------------------------------------------------
+Thu Oct 24 11:17:39 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Apr  2 11:28:50 UTC 2013 - boris@steki.net
+
+- initial packaging of version 1.9.2
+ 
+

@@ -1,0 +1,184 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b200394d4493eaaca3bf90a6324abd2b</srcmd5>
+    <version>0.11</version>
+    <time>1436112150</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>314778</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a567dbed011845c0735066d553d6de31</srcmd5>
+    <version>0.12</version>
+    <time>1446049839</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341078</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>34a15584d476b6c6cdf4dbb386d6e396</srcmd5>
+    <version>0.13</version>
+    <time>1460101175</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13
+  * kernel compiler support for LLVM/Clang 3.8
+  * initial (partial) OpenCL 2.0 support
+  * CMake build system almost on parity with autotools
+  * Improved HSA support
+  * Other optimizations and bug fixes (forwarded request 384336 from pluskalm)</comment>
+    <requestid>384540</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b70d399c732b8e78c4ac9eb6ed595174</srcmd5>
+    <version>0.13</version>
+    <time>1468579919</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>407813</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d83f9c197b0150fad9f4168d74eccb02</srcmd5>
+    <version>0.13</version>
+    <time>1476109505</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434006</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>30d08bb86a7a4835550e64eb748f5836</srcmd5>
+    <version>0.13</version>
+    <time>1485250616</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451568</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c180f66c53302ef7733598e7ec204a8c</srcmd5>
+    <version>0.14</version>
+    <time>1498638950</time>
+    <user>dimstar_suse</user>
+    <comment>- Update library name for uthash -&gt; libut2 
+
+- Update to 0.14
+  - Support for LLVM/Clang versions 3.9 and 4.0. Version 3.9 was the first
+    release to include all frontend features for OpenCL 2.0.
+  - Ability to build pocl in a mode where online compilation is not
+    supported to run in hosts without LLVM and binaries compiled offline
+    e.g. using poclcc.
+  - pocl's binary format now can contain all the necessary bits to
+    execute the programs on a host without online compiler support.
+  - Initial support for out-of-order execution execution of command queues.
+  - It's now possible to cross-compile pocl when building an offline
+    compiler build.
+  - New driver api extension to support out-of-order and asynchronous
+    devices/drivers.
+  - Pthread and HSA drivers are now fully asynchronous.
+  - CMake now the only supported build system, autotools removed.
+  - LTTng tracing support
+- Add patches:
+  - pocl-disable-tests.diff
+    - compilation errors on some tests disable tests for now
+- Remove patches:
+  - 0001-Fixes-357-broken-build-with-GCC-6.1.patch
+    - fixed upstream
+
+- use individual libboost-*-devel packages instead of boost-devel</comment>
+    <requestid>496512</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a150ae8f2554029e4ef2f8409494804d</srcmd5>
+    <version>0.14</version>
+    <time>1499162306</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508003</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>5e495a411144d9d87906e3df11d99326</srcmd5>
+    <version>0.14</version>
+    <time>1500275342</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509806</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>1cff833850e9b7f56bd8adcf3144392f</srcmd5>
+    <version>0.14</version>
+    <time>1508610125</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535645</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>34f18248b33c946168141a716855d0b7</srcmd5>
+    <version>0.14</version>
+    <time>1509105681</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536905</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2fac0f1c4830a50ce9b266d62d94d783</srcmd5>
+    <version>1.0</version>
+    <time>1516222549</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558754</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>f50456f8d3ebd7144c5c228deb7b88a3</srcmd5>
+    <version>1.0</version>
+    <time>1517516973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571526</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>390a12e5ad883e2f7176b24e5e998594</srcmd5>
+    <version>1.1</version>
+    <time>1526463802</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>609064</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>536eabb162b16769b61d731b116c9f98</srcmd5>
+    <version>1.1</version>
+    <time>1533292748</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627128</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>55e6b9c6c8e5febc9459f7cb01071ac9</srcmd5>
+    <version>1.2</version>
+    <time>1537883085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638018</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>6fde9f939ad74c1f2caf8aaa30e7933c</srcmd5>
+    <version>1.2</version>
+    <time>1541666903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646209</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>349390ece9f37676ad42db097930f951</srcmd5>
+    <version>1.3</version>
+    <time>1554712705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691907</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>6c59b08460048eacac89da42fb5cb02a</srcmd5>
+    <version>1.3</version>
+    <time>1564994175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720127</requestid>
+  </revision>
+</revisionlist>

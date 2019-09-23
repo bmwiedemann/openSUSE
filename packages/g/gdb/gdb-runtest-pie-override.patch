@@ -1,0 +1,49 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-runtest-pie-override.patch
+
+;; Hack for proper PIE run of the testsuite.
+;;=fedoratest
+
+make check//unix/-fPIE/-pie RUNTESTFLAGS=solib-display.exp
+
+gcc -fpic -c  -fPIE -pie -o x.o x.c
+/usr/lib/gcc/x86_64-redhat-linux/4.6.1/../../../../lib64/Scrt1.o: In function `_start':
+(.text+0x20): undefined reference to `main'
+
+=> Change the order for overrides.
+
+One has to also use -fPIC rather than -fPIE, -fPIC is stronger.
+
+The correct way would be:
+make check//unix RUNTESTFLAGS='CC_FOR_TARGET=gcc\ -fPIC\ -pie CXX_FOR_TARGET=g++\ -fPIC\ -pie solib-display.exp'
+
+But there is a problem with testsuite.unix non-unique subdir name and also
+a problem with make -j parallelization of the testsuite.
+
+diff --git a/gdb/testsuite/lib/future.exp b/gdb/testsuite/lib/future.exp
+--- a/gdb/testsuite/lib/future.exp
++++ b/gdb/testsuite/lib/future.exp
+@@ -185,6 +185,10 @@ proc gdb_default_target_compile {source destfile type options} {
+     set ldflags ""
+     set dest [target_info name]
+ 
++    if {[board_info $dest exists multilib_flags]} {
++	append add_flags " [board_info $dest multilib_flags]"
++    }
++
+     if {[info exists CFLAGS_FOR_TARGET]} {
+ 	append add_flags " $CFLAGS_FOR_TARGET"
+     }
+@@ -519,10 +523,6 @@ proc gdb_default_target_compile {source destfile type options} {
+ 	}
+     }
+ 
+-    if {[board_info $dest exists multilib_flags]} {
+-	append add_flags " [board_info $dest multilib_flags]"
+-    }
+-
+     verbose "doing compile"
+ 
+     set sources ""

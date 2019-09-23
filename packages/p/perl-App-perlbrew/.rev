@@ -1,0 +1,226 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42be38ae26b2f95c0e18208d24a9c85f</srcmd5>
+    <version>0.35</version>
+    <time>1326104174</time>
+    <user>coolo</user>
+    <comment>needed for Task-CLI</comment>
+    <requestid>97216</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f7447665c6f2a53a4d79fda9a7483c99</srcmd5>
+    <version>0.39</version>
+    <time>1328712047</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>103118</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a76a7dd7a61887d33f9733352ecf8551</srcmd5>
+    <version>0.41</version>
+    <time>1331124240</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>107111</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>aefccccb52c0d0f4779518010064f467</srcmd5>
+    <version>0.42</version>
+    <time>1337955456</time>
+    <user>coolo</user>
+    <comment>- updated to 0.42
+  - Improvement: die when running perlbrew (use|switch) with unknown installation name.
+  - clean 'build.log' on install. ref: RT #69168.</comment>
+    <requestid>122210</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>aefccccb52c0d0f4779518010064f467</srcmd5>
+    <version>0.42</version>
+    <time>1340183792</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>954dcdf308218fc0526cc10f9abfd32b</srcmd5>
+    <version>0.42</version>
+    <time>1351316663</time>
+    <user>coolo</user>
+    <comment>- explict buildrequire groff for the test suite (forwarded request 139465 from coolo)</comment>
+    <requestid>139471</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>954dcdf308218fc0526cc10f9abfd32b</srcmd5>
+    <version>0.42</version>
+    <time>1359109597</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c6074cb858543a4ac608b844d921ca89</srcmd5>
+    <version>0.64</version>
+    <time>1371806683</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>178565</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>c6074cb858543a4ac608b844d921ca89</srcmd5>
+    <version>0.64</version>
+    <time>1379663552</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f6dd8143c9e9e817e17731ac9188bfb6</srcmd5>
+    <version>0.67</version>
+    <time>1395148554</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>226443</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>f6dd8143c9e9e817e17731ac9188bfb6</srcmd5>
+    <version>0.67</version>
+    <time>1409302161</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3e8907f37bed9b08802ff79cdedac1df</srcmd5>
+    <version>0.71</version>
+    <time>1412142032</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>249985</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ceae51ad6d75c6972e54da66d46912e8</srcmd5>
+    <version>0.73</version>
+    <time>1429606298</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.73
+   see /usr/share/doc/packages/perl-App-perlbrew/Changes
+  0.73: # 2015-02-01T09:59:45+0100
+  - fixes and improvements from Manuel Streuhofer, Aristotle Pagaltzis, Sebastian Willert, David Hand, Eric Enns,
+    Peter Roberts, Thomas Sibley, Ivan Baidakou, thanks!
+  - fix 'perlbrew user' for fish users https://github.com/gugod/App-perlbrew/pull/429
+  - fix sub-shell for bash users https://github.com/gugod/App-perlbrew/pull/435
+  - clarify the 'perlbrew use' output: https://github.com/gugod/App-perlbrew/issues/439
+  
+  
+  0.72: # 2014-10-27T21:38:19+0100
+  - Fix 0.71 breakage on MacOSX when the shell is bash or zsh
+  - Fix spelling mistake. by @gregoa++</comment>
+    <requestid>297613</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fb8a5b480520760a6b152e0ffa670253</srcmd5>
+    <version>0.74</version>
+    <time>1449145859</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.74
+   see /usr/share/doc/packages/perl-App-perlbrew/Changes
+  0.74: # 2015-11-24T20:55:02+0100
+  - A big thanks for our contributers: Aristotle Pagaltzis, Dave Jacoby, Dylan Cali, John Krull, Kevin Johnson, Nathan Day, Paul Cochrane, Tudor Constantin, Yanick Champoux, tm604
+  - support PERLBREW_LIB_PREFIX. https://github.com/gugod/App-perlbrew/commit/c29813cd4633683bd049964178a9ac96647986bc
+  - prefer https and remove insecure download cli flags. https://github.com/gugod/App-perlbrew/commit/f49a908c1702942006de4654107edf77a48ead52
+  - perlbrew now dies when switching to/use a lib that does not exist. https://github.com/gugod/App-perlbrew/issues/432
+  - RHEL vendorlib fix https://github.com/gugod/App-perlbrew/issues/409
+  - improvements with fish integration.
+  - unbreak when running with perl 5.14 or earlier: &quot;list&quot; command now correctly display lib names.
+  - retaining flags in upgrade-perl. https://github.com/gugod/App-perlbrew/commit/b8d466670bbfc8e214a9d3ff2e889a4860060d84
+  - variour document clean up and improvements.</comment>
+    <requestid>346616</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>551946d56175272b43a5a33f56ebcd8b</srcmd5>
+    <version>0.75</version>
+    <time>1460482383</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>384939</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0d5d7ac3e0ced652383e1a817264407e</srcmd5>
+    <version>0.76</version>
+    <time>1466814244</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404385</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>adcfc04be86bdb0b591ce550012249b4</srcmd5>
+    <version>0.77</version>
+    <time>1479503004</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440752</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b3f6c77932b1261abe9f978c0c9c0ef5</srcmd5>
+    <version>0.78</version>
+    <time>1479837535</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441207</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>50c6056a14890bbded6f828a15d305f3</srcmd5>
+    <version>0.82</version>
+    <time>1520329527</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.82
+   see /usr/share/doc/packages/perl-App-perlbrew/Changes
+  - Thanks to our contributors: Alceu Rodrigues de Freitas Junior, Paul Cochrane
+  - Fix regression of 'perlbrew install blead'
+  
+  0.81: # 2017-12-09T15:12:04+0900
+  - Thanks to our contributors: Luca Ferrari, Zac Bentley, perlancar, Nicolas R, gregor herrmann, Paul Cochrane
+  - New command: clone-modules
+  - Recognize tarball in .tar.xz extension
+  - The output of &quot;availables&quot; is now sorted by versions
+  - Unbreak the integration with cperl releases
+  - Make `perlbrew install` runs correctly on AIX
+  - support the current perl blead (5.28)
+  
+  0.80: # 2017-06-30T07:40:45+0200
+  - Fix version in META.yml in CPAN distribution. See: https://rt.cpan.org/Public/Bug/Display.html?id=122279
+  
+  0.79: # 2017-06-25T23:40:45+0200
+  - deal with perl-5.26 change about @INC in Makefile.PL
+  - &quot;available&quot; command now also shows the URLs</comment>
+    <requestid>578613</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>40c9c694771cc4987d67ebcbf61a7ac9</srcmd5>
+    <version>0.83</version>
+    <time>1528492363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613267</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>197baef917cd8a13a26ea52545947c5a</srcmd5>
+    <version>0.84</version>
+    <time>1533045414</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624680</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c82315754072da1ec2df23cf8d3695a5</srcmd5>
+    <version>0.85</version>
+    <time>1545376889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658961</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a3942115cb596be2b15f0b1fa296fb48</srcmd5>
+    <version>0.86</version>
+    <time>1548064875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667182</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Mon Dec 11 17:29:23 UTC 2017 - mpost@suse.com
+
+- Upgraded to openssl-ibmpkcs11 1.0.1 (Fate#323768)
+  * Make the project compatible with OpenSSL-1.1.
+  * Fix compilation warnings.
+  * Add missing flag to SHA structure.
+  * Fix race condition in digest computation.
+
+-------------------------------------------------------------------
+Fri Sep 22 02:23:42 UTC 2017 - mpost@suse.com
+
+- Modified the spec file to query the libcrypto package
+  for which directory to install the engine into. Needed
+  now that it is versioned.
+
+-------------------------------------------------------------------
+Fri Oct  7 13:04:14 UTC 2016 - jjolly@suse.com
+
+- Fix engine install location (bsc#997043)
+
+-------------------------------------------------------------------
+Wed Sep  3 01:41:37 CEST 2014 - ro@suse.de
+
+- sanitize release line in specfile
+
+-------------------------------------------------------------------
+Thu Mar  6 11:08:31 CET 2014 - ro@suse.de
+
+- changed license entry to OpenSSL as requested 
+
+-------------------------------------------------------------------
+Wed Mar  5 19:01:36 CET 2014 - ro@suse.de
+
+- fix build on SLE 12 
+
+-------------------------------------------------------------------
+Fri Aug 12 09:37:38 UTC 2011 - uli@suse.de
+
+- fixed and packaged sample openssl.cnf (bnc#710902)
+
+-------------------------------------------------------------------
+Tue Jun 28 15:32:30 CEST 2011 - uli@suse.de
+
+- new package (fate#311657)
+

@@ -1,0 +1,338 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>70c35bc520040e5f2aa20d3b51a78ce3</srcmd5>
+    <version>1.7</version>
+    <time>1168902960</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dfd593f25e0307713d477c3e94232612</srcmd5>
+    <version>1.8</version>
+    <time>1174561791</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fa09d5c6385f77aa5839c9f7a535ede1</srcmd5>
+    <version>1.9</version>
+    <time>1197998285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b76025527a64b7af0b344d2e4a8c946f</srcmd5>
+    <version>1.10</version>
+    <time>1207682846</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="45">
+    <srcmd5>b76025527a64b7af0b344d2e4a8c946f</srcmd5>
+    <version>1.10</version>
+    <time>1207682846</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0407452a40cd5cc5b4e60247a9beb18a</srcmd5>
+    <version>1.11</version>
+    <time>1233941668</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>0407452a40cd5cc5b4e60247a9beb18a</srcmd5>
+    <version>1.11</version>
+    <time>1233941668</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ff5ca217021659163310523416d290da</srcmd5>
+    <version>1.13</version>
+    <time>1262109726</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk-doc based on submit request 27839 from user vuntz
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4bdb6dd23972e93dae80b9b500ae5c8c</srcmd5>
+    <version>1.13</version>
+    <time>1268923889</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4f79b32d9dcc965f1fa753296ad5cde4</srcmd5>
+    <version>1.14</version>
+    <time>1270084005</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk-doc based on submit request 36343 from user vuntz
+</comment>
+    <requestid>36343</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4f79b32d9dcc965f1fa753296ad5cde4</srcmd5>
+    <version>1.14</version>
+    <time>1278667349</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>4f79b32d9dcc965f1fa753296ad5cde4</srcmd5>
+    <version>1.14</version>
+    <time>1278678580</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d9d07f9849f10f8856b11f5bc03a7e05</srcmd5>
+    <version>1.15</version>
+    <time>1281364493</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk-doc based on submit request 45093 from user vuntz
+</comment>
+    <requestid>45093</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>d9d07f9849f10f8856b11f5bc03a7e05</srcmd5>
+    <version>1.15</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>362d77ea939f05ac85e3a8819446b54e</srcmd5>
+    <version>1.17</version>
+    <time>1304331256</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F (including GNOME3)</comment>
+    <requestid>69089</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>50be6ccee786fa8d834431c4b7cbdcc5</srcmd5>
+    <version>1.18</version>
+    <time>1317543061</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85680</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>50be6ccee786fa8d834431c4b7cbdcc5</srcmd5>
+    <version>1.18</version>
+    <time>1319181948</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>be48de90fbc211a52b1be5bf4b694e57</srcmd5>
+    <version>1.18</version>
+    <time>1323191823</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>7d14af22dcd4f954bdf4433589d5ebe2</srcmd5>
+    <version>1.18</version>
+    <time>1325846684</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>99060</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>e9962aa6c4e9115e86c8e78b573d50b1</srcmd5>
+    <version>1.18</version>
+    <time>1330434790</time>
+    <user>coolo</user>
+    <comment>Update after libxml2-tools split</comment>
+    <requestid>106997</requestid>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>e9962aa6c4e9115e86c8e78b573d50b1</srcmd5>
+    <version>1.18</version>
+    <time>1340183417</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>e9962aa6c4e9115e86c8e78b573d50b1</srcmd5>
+    <version>1.18</version>
+    <time>1359109015</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a38891d3a93efd0f53e86d61ecfd4b14</srcmd5>
+    <version>1.19</version>
+    <time>1372527731</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.3, as announced</comment>
+    <requestid>181293</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>a38891d3a93efd0f53e86d61ecfd4b14</srcmd5>
+    <version>1.19</version>
+    <time>1379662572</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d191e3bf8a582b0a24bc8c5a8f5258c1</srcmd5>
+    <version>1.20</version>
+    <time>1393008750</time>
+    <user>coolo</user>
+    <comment>Update to 1.20
+Staging suggested. I know of at least one package that failed with this update (gstreamer-plugins-good, already fixed)</comment>
+    <requestid>223159</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>d66b8fd8b5f970d2f947bb5461dde773</srcmd5>
+    <version>1.20</version>
+    <time>1403070627</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236558</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5647a1b103f8d44a624590ec8c971099</srcmd5>
+    <version>1.21</version>
+    <time>1405971567</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241392</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>5647a1b103f8d44a624590ec8c971099</srcmd5>
+    <version>1.21</version>
+    <time>1409301120</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>384d1488ce7bf137c7823a3cf374d9b3</srcmd5>
+    <version>1.21</version>
+    <time>1423215896</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gtk-doc-reproducible-html.patch from the debian
+  reproducible builds project to make output reproducible.</comment>
+    <requestid>283984</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1ab29dc923a82fd48e53615003f6eeca</srcmd5>
+    <version>1.23</version>
+    <time>1432378134</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308348</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>04744f95e7c41c594aa43c70d0db2b68</srcmd5>
+    <version>1.24</version>
+    <time>1433231928</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309383</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>02bdbce2ec4a2b00b20027a213b31995</srcmd5>
+    <version>1.25</version>
+    <time>1459255413</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.20.0 (forwarded request 377343 from dimstar)</comment>
+    <requestid>377433</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>ce118b39477835e49a888b81982b94a6</srcmd5>
+    <version>1.25</version>
+    <time>1464964237</time>
+    <user>dimstar_suse</user>
+    <comment>Sync package with SLE12SP2 - just for easier tracking (forwarded request 399205 from dimstar)</comment>
+    <requestid>399412</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>fff80ebbcc43830643f29dd18271b929</srcmd5>
+    <version>1.25</version>
+    <time>1467359850</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from libxslt to xsltproc (Requires and BuildRequires).</comment>
+    <requestid>401982</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>c4c514368077072acb84b3fa37c43250</srcmd5>
+    <version>1.25</version>
+    <time>1499509575</time>
+    <user>dimstar_suse</user>
+    <comment>Reproducible builds fix.</comment>
+    <requestid>508201</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>27632c000af934a7799ff4fb8f1afbeb</srcmd5>
+    <version>1.26</version>
+    <time>1505331713</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520796</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>dc924c16398647019c10d73852581b61</srcmd5>
+    <version>1.26</version>
+    <time>1509614645</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to python3: add PYTHON=%{_bindir}/python3 to configure.
+- Add: gtk-doc-open-docs-as-utf8.patch: Always open files using
+  utf-8. In python3, strings are differently represented
+  internally.
+
+- Do not build as noarch:
+  /usr/share/gtk-doc/python/gtkdoc/config.py contains a full path
+  reference to $arch-pkg-config.
+
+- Add gtk-doc-Generate-main-sgml.patch: Generate main sgml file by
+  waiting on mkdb. Fix first time parallel builds (bgo#786174).
+- Following the above, add libtool BuildRequires and pass
+  autoreconf as the above patch touches the buildsystem.
+- No longer pass --disable-scrollkeeper to configure, no longer
+  needed, nor recognized by configure.</comment>
+    <requestid>537591</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>9dba877b11cc6a1c1ebf500947b4c9a4</srcmd5>
+    <version>1.26</version>
+    <time>1512433706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547579</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>afda703fa1aad1255d6762b9bb3698b2</srcmd5>
+    <version>1.27</version>
+    <time>1513014942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555594</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>0f15d10b135fdacafe9c413f41b3a7b3</srcmd5>
+    <version>1.27</version>
+    <time>1520502306</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581169 from dimstar)</comment>
+    <requestid>582768</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>a8b33dcac3aea867241e9d8cede5cc08</srcmd5>
+    <version>1.28</version>
+    <time>1522403817</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 591581 from dimstar)</comment>
+    <requestid>592266</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f6a552d0b772219ef2004e713ee406c7</srcmd5>
+    <version>1.29</version>
+    <time>1539756969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638521</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>9ad4bb51631fa81ea188d6aba0a4186c</srcmd5>
+    <version>1.29</version>
+    <time>1567848667</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727978</requestid>
+  </revision>
+</revisionlist>

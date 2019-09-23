@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Sat Apr  8 05:28:40 UTC 2017 - coolo@suse.com
+
+- updated to 0.07
+   see /usr/share/doc/packages/perl-DateTime-Format-W3CDTF/Changes
+
+  0.07  2017-04-07
+  
+  - Added explicit "use lib '.'" for use with perl 5.26.0 (RT #120822, PR #1 from
+    James E Keenan).
+
+-------------------------------------------------------------------
+Wed Feb  9 08:26:07 UTC 2011 - vcizek@novell.com
+
+- update to 0.06
+
+- Fixed parsing of datetimes with sub-second precision (RT #14179, patch from
+  Andrew Turner).
+
+-------------------------------------------------------------------
+Tue Jan 11 13:22:50 UTC 2011 - vcizek@novell.com
+
+- update to 0.05
+  - Fixed a long-standing bug where a time zone other than UTC that had an
+    offset of 0 caused the format_datetime method to return the string "0". RT
+    #22802.
+- bzipped tarbal
+
+-------------------------------------------------------------------
+Mon Dec 20 12:22:43 UTC 2010 - vcizek@novell.com
+
+- separated perl_requires and the rest required 
+
+-------------------------------------------------------------------
+Thu Dec 16 13:37:10 UTC 2010 - vcizek@novell.com
+
+- switch to  %perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:43 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Mon Nov 29 18:00:13 UTC 2010 - coolo@novell.com
+
+- called spec2changelog
+
+-------------------------------------------------------------------
+Sun Jun  8 00:00:00 UTC 2008 - gerrit.beine@gmx.de
+
+- first release 0.04
+
+

@@ -1,0 +1,199 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e7d8bc7b161006410d48597df0ace0e</srcmd5>
+    <version>0.1</version>
+    <time>1367501459</time>
+    <user>coolo</user>
+    <comment>A XMPP library for Gajim 0.15.3+</comment>
+    <requestid>174038</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>135844f603bada6d97df067a7e6095aa</srcmd5>
+    <version>0.1</version>
+    <time>1369641506</time>
+    <user>coolo</user>
+    <comment>python3-nbxmpp:
+Updated to 0.1+r37 — significant for python3-version.
+python-nbxmpp:
+Some linking from Factory magic. (forwarded request 176094 from DarkSS)</comment>
+    <requestid>176095</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ca65eed41d1b88f5b76b380d76f31a67</srcmd5>
+    <version>0.1</version>
+    <time>1371652810</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179899</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f9c45946bbca05e559b83952f828c3ef</srcmd5>
+    <version>0.1</version>
+    <time>1377248725</time>
+    <user>scarabeus_factory</user>
+    <comment>Heads up: Python2 / Python3 parallel installation.
+%fdupes will not work if files are installed via %doc.
+
+Let somebody more skillfull review it. (forwarded request 195612 from DarkSS)</comment>
+    <requestid>196018</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>f9c45946bbca05e559b83952f828c3ef</srcmd5>
+    <version>0.1</version>
+    <time>1379664222</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7f4f10e7f0f39c922703e929bfb88173</srcmd5>
+    <version>0.2</version>
+    <time>1386604886</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.2
+  + Add some namespace
+  + do TLS handshake without blocking
+  + store all SSL errors instead of only last one
+- Set correct Group : Devel/Languages/Python
+- Use download Url as source
+- Remove unwanted comments in specfile
+- Package the two directories in /doc to avoid providing epydoc build
+  configuration file (forwarded request 209819 from posophe)</comment>
+    <requestid>209820</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>7f4f10e7f0f39c922703e929bfb88173</srcmd5>
+    <version>0.2</version>
+    <time>1409302922</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>16d1702d32c1135ae6fcd81fad415c4a</srcmd5>
+    <version>0.5.1</version>
+    <time>1413285900</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255158</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>02dc23a54ba9daebc40eaf21bbf09942</srcmd5>
+    <version>0.5.1</version>
+    <time>1413616185</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257412</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>23dbbbf5b1fa6e2b63e04cea96cc6742</srcmd5>
+    <version>0.5.2</version>
+    <time>1421052586</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280715</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c309432aa30c7c80374dbf11754ac621</srcmd5>
+    <version>0.5.3</version>
+    <time>1438421710</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>317736</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e3df64688dbbb595c47298a3009954b8</srcmd5>
+    <version>0.5.3</version>
+    <time>1441726750</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328775</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b9f06498086298e165018aefad246023</srcmd5>
+    <version>0.5.4</version>
+    <time>1476997703</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435510</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b679b22196854dc845b105a428d6730a</srcmd5>
+    <version>0.5.5</version>
+    <time>1497274137</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501306</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>accd37da74287beb7541966f98e1c054</srcmd5>
+    <version>0.6.0</version>
+    <time>1510232862</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540013</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>df51e7513e71f841cbc5a76725d5d1e1</srcmd5>
+    <version>0.6.1</version>
+    <time>1513245730</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556618</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>189e0242369aa79f1ec03f57412c9c48</srcmd5>
+    <version>0.6.4</version>
+    <time>1521579633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588742</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fcddede4c06fa70ff313bbebf0f56fc4</srcmd5>
+    <version>0.6.5</version>
+    <time>1526371431</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.5 (30 April 2018)
+ * Fix BOSH usage (don't set ALPN)
+ * Better handling of certificate files
+ * needed for newest gajim version 1.0.2, as it broke with 0.6.4
+</comment>
+    <requestid>606628</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b8f435b2e284ded77f3319c51df30322</srcmd5>
+    <version>0.6.6</version>
+    <time>1527605355</time>
+    <user>dimstar_suse</user>
+    <comment>- Use setuptools not devel to reduce dependency requirements
+
+- Update to 0.6.6:
+  * Record all SSL errors instead of only the first
+  * Pass arguments to plugin/plugout methods
+  * Allow the Roster to be initalized without requesting it from the server</comment>
+    <requestid>611169</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3f13f19627f1d9acf93145272c7f1033</srcmd5>
+    <version>0.6.8</version>
+    <time>1542666851</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650203</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>393ef38fc155043402287a5c6530540c</srcmd5>
+    <version>0.6.9</version>
+    <time>1549018053</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670270</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>89536d3e93a58776bbe8c0fc623749af</srcmd5>
+    <version>0.6.10</version>
+    <time>1558690326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704963</requestid>
+  </revision>
+</revisionlist>

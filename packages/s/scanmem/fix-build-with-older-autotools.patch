@@ -1,0 +1,22 @@
+From: Sebastian Parschauer <sparschauer@suse.de>
+Date: Tue, 9 Jan 2018 08:50:37 +0100
+Subject: configure: Fix build with older autotools
+References: https://github.com/scanmem/scanmem/issues/289
+Patch-mainline: not yet
+
+The new test framework requires the configure.ac macro AM_PROG_CC_C_O
+to be set with older autotools.
+---
+ configure.ac |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -9,6 +9,7 @@ AC_HEADER_STDBOOL
+ LT_INIT
+ 
+ IT_PROG_INTLTOOL
++AM_PROG_CC_C_O
+ 
+ AC_CHECK_FUNCS(memset strcasecmp strchr strdup strerror strtoul getline)
+ 

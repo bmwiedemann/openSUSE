@@ -1,0 +1,13 @@
+Index: dia-0.96.1/app/app_procs.c
+===================================================================
+--- dia-0.96.1.orig/app/app_procs.c
++++ dia-0.96.1/app/app_procs.c
+@@ -845,7 +845,7 @@ app_init (int argc, char **argv)
+   g_free(export_format_string);
+   
+   if (version) {
+-#if (defined __TIME__) && (defined __DATE__)
++#if 0
+     /* TRANSLATOR: 2nd and 3rd %s are time and date respectively. */
+     printf(g_locale_from_utf8(_("Dia version %s, compiled %s %s\n"), -1, NULL, NULL, NULL), VERSION, __TIME__, __DATE__);
+ #else

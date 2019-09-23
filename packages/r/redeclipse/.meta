@@ -1,0 +1,5 @@
+<package name="redeclipse" project="openSUSE:Factory">
+  <title>Red Eclipse</title>
+  <description>The game is a single-player and multi-player first-person ego-shooter, built as a total conversion of Cube Engine 2, which lends itself toward a balanced gameplay, completely at the control of map makers, while maintaining a general theme of agility in a variety of environments.</description>
+  <devel project="games" package="redeclipse"/>
+</package>

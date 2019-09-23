@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1993bf44bc9c3721fefc3c90deef6a06</srcmd5>
+    <version>1.8.2</version>
+    <time>1313052842</time>
+    <user>saschpe</user>
+    <comment>Small-footprint proxy without large caching.</comment>
+    <requestid>76619</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e02fc3dea715a420ebdc854bef89e926</srcmd5>
+    <version>1.8.2</version>
+    <time>1313052854</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76619
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e02fc3dea715a420ebdc854bef89e926</srcmd5>
+    <version>1.8.2</version>
+    <time>1319182522</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d77f1d1c2da015c8ea89083b125f6500</srcmd5>
+    <version>1.8.3</version>
+    <time>1330007692</time>
+    <user>coolo</user>
+    <comment>add missing rc_link, fix pre/post, init, logrotate, nearly all</comment>
+    <requestid>106570</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d77f1d1c2da015c8ea89083b125f6500</srcmd5>
+    <version>1.8.3</version>
+    <time>1340184276</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>d77f1d1c2da015c8ea89083b125f6500</srcmd5>
+    <version>1.8.3</version>
+    <time>1359110492</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>70bb56e94b3caf3188775b564e913dc9</srcmd5>
+    <version>1.8.3</version>
+    <time>1372954025</time>
+    <user>coolo</user>
+    <comment>- Add 110-seeding.diff, 110-headerlimit.diff to address
+  CVE-2012-3505 (bnc#776506)</comment>
+    <requestid>182162</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>70bb56e94b3caf3188775b564e913dc9</srcmd5>
+    <version>1.8.3</version>
+    <time>1379664825</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>2da3625667fe4b28d2d5bb01e9e0b8bd</srcmd5>
+    <version>1.8.3</version>
+    <time>1395407203</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>226964</requestid>
+  </revision>
+  <revision rev="10" vrev="11">
+    <srcmd5>2da3625667fe4b28d2d5bb01e9e0b8bd</srcmd5>
+    <version>1.8.3</version>
+    <time>1409303503</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2f71a26d840a5a5e0aa1a0babd0dd9c7</srcmd5>
+    <version>1.8.4</version>
+    <time>1420619944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.8.4</comment>
+    <requestid>280042</requestid>
+  </revision>
+</revisionlist>

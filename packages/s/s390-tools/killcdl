@@ -1,0 +1,217 @@
+#!/bin/sh
+
+#
+# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Released under the GNU General Public License version 2.
+#
+
+let FORCE=0
+DEVPARM=""
+
+usage(){
+  echo "Usage: ${0} [ -f ] devno|busid"
+  echo "	-f	Force unformatting for DASD volumes in the CMS device range of 19x."
+  echo "	devno	The \"plain\" device number of the volume, e.g. 3184."
+  echo "	busid	The full specification of the volume, e.g., 0.0.3184."
+}
+
+ARCH="$(/bin/uname -m)"
+if [ "${ARCH}" != "s390x" ] && [ "${ARCH}" != "s390" ]; then
+  echo "This script is only useful on IBM mainframes."
+  exit 1
+fi
+
+############################################################
+# Parse the parameters from the command line
+#
+ARGS=$(getopt -a --options f -n "killcdl" -- "$@")
+if [ $? -ne 0 ]; then
+  usage
+  exit 3
+fi
+
+eval set -- "${ARGS}"
+for ARG; do
+	case "${ARG}" in
+		-f) FORCE=1
+		    shift 1
+		    ;;
+		--) shift 1
+		    ;;
+		[0-9a-fA-F]*) if [ ! -z "${DEVPARM}" ]; then
+				echo "More than one parameter specified."
+				usage
+				exit 4
+			      fi
+			      DEVPARM=${1}
+			      shift 1
+			      ;;
+		*) echo "That looks invalid"
+		   usage
+		   exit 5
+		   ;;
+        esac
+done
+
+if [ -z "${DEVPARM}" ]; then
+  echo "You must specify the device number of the DASD volume to be unformatted."
+  usage
+  exit 6
+fi
+
+DEVNO=$(echo "${DEVPARM}" | tr A-Z a-z)
+
+# Validate the device number or busid provided
+set -- $(IFS='.'; echo ${DEVNO})
+let NUMPARMS=${#}
+if [ ${NUMPARMS} -ne 1 ] && [ ${NUMPARMS} -ne 3 ]; then
+  echo "You have not specified the device number in a recognizable format."
+  echo "It must either be the plain device number, e.g., 0123, or in"
+  echo "so-called busid format, e.g., 0.0.0123"
+  exit 7
+fi
+
+# Just a device number, SIMPLE=1. A busid, SIMPLE=0
+SIMPLE=0
+if [ ${NUMPARMS} -eq 1 ]; then
+  let SIMPLE=1
+  let FIRST=0
+  let FIRSTLEN=1
+  let SECOND=0
+  let SECONDLEN=1
+  DEVNO="${1}"
+  let DEVNOLEN=${#1}
+else FIRST="${1}"
+     let FIRSTLEN=${#FIRST}
+     SECOND="${2}"
+     let SECONDLEN=${#SECOND}
+     DEVNO="${3}"
+     let DEVNOLEN=${#3}
+fi
+
+if [ ${FIRSTLEN} -ne 1 ] || [ ${SECONDLEN} -ne 1 ]; then
+  echo "The first and second fields of the busid may only be one digit long."
+  exit 8
+fi
+
+if [ ${DEVNOLEN} -gt 4 ]; then
+  echo "The device number may only be 4 digits long."
+  exit 9
+fi
+
+if [ ${DEVNOLEN} -lt 4 ]; then
+  DEVNO=$(echo "0000${DEVNO}" | rev | cut -c1-4 | rev)
+fi
+
+BUSID="${FIRST}.${SECOND}.${DEVNO}"
+
+if [ ! -h /sys/bus/ccw/devices/${BUSID} ]; then
+  echo "Busid ${BUSID} was not found."
+  /sbin/cio_ignore -i ${BUSID} > /dev/null
+  if [ $? -eq 0 ]; then
+    echo "That device is in the cio_ignore list."
+    echo "Please remove it with \"cio_ignore -r ${BUSID}\" before trying again."
+  fi
+  exit 10
+fi
+
+case ${DEVNO:0:3} in
+	019)	if grep -q "version = FF" /proc/cpuinfo 2>/dev/null; then
+		  echo "That looks like a CMS disk."
+		  if [ ${FORCE} -eq 0 ]; then
+		    echo "Specify the -f option to force the operation."
+		    exit 11
+		  fi
+		  echo "But you specified -f so we'll kill it anyway."
+		fi
+		;;
+esac
+
+read ORIG_ONLINE_STATUS < /sys/bus/ccw/devices/${BUSID}/online
+
+DISCIPLINE="none"
+if [ -r /sys/bus/ccw/devices/${BUSID}/discipline ]; then
+  # We have to bring the device online before the kernel will fill in
+  # the value for discipline.
+  if [ ${ORIG_ONLINE_STATUS} -eq 0 ]; then
+    /sbin/chccwdev -e ${BUSID}
+    /sbin/udevadm settle
+  fi
+
+  read STATUS < /sys/bus/ccw/devices/${BUSID}/status
+  if [ "${STATUS}" == "unformatted" ]; then
+    echo "DASD device ${BUSID} is already in an unformatted state."
+    if [ ${ORIG_ONLINE_STATUS} -eq 0 ]; then
+      /sbin/chccwdev -d -s ${BUSID}
+      /sbin/udevadm settle
+    fi
+    exit 0
+  fi
+
+  read DISCIPLINE < /sys/bus/ccw/devices/${BUSID}/discipline 
+else read CU_TYPE < /sys/bus/ccw/devices/${BUSID}/cutype
+     read DEV_TYPE < /sys/bus/ccw/devices/${BUSID}/devtype
+     case "${CU_TYPE}" in
+	3990/*|2105/*|2107/*|1750/*|9343/*)
+		DISCIPLINE=ECKD
+		;;
+	3880/*)
+		case "${DEV_TYPE}" in
+			3390/*)
+				DISCIPLINE=ECKD
+				;;
+		esac
+		;;
+     esac
+fi
+
+if [ "${DISCIPLINE}" != "ECKD" ]; then
+  echo "This script only works on ECKD DASD."
+  if [ ${ORIG_ONLINE_STATUS} -eq 0 ]; then
+    /sbin/chccwdev -d -s ${BUSID}
+  fi
+  exit 12
+fi
+
+read STATUS < /sys/bus/ccw/devices/${BUSID}/online
+if [ ${STATUS} -eq 1 ]; then
+  if [ ! -h /dev/disk/by-path/ccw-${BUSID} ]; then
+    echo "The udev-generated symbolic link in /dev/disk/by-path was not found."
+    exit 13
+  fi
+
+  /sbin/chccwdev -d -s ${BUSID}
+  /sbin/udevadm settle
+
+  read STATUS < /sys/bus/ccw/devices/${BUSID}/online
+  if [ ${STATUS} -ne 0 ]; then
+    echo "Device number ${DEVNO} didn't go offline. Unable to continue."
+    exit 14
+  fi
+fi
+
+/sbin/chccwdev -a raw_track_access=1 -e ${BUSID}
+/sbin/udevadm settle
+
+read STATUS < /sys/bus/ccw/devices/${BUSID}/online
+if [ ${STATUS} -ne 1 ]; then
+  echo "Unable to bring ${DEVNO} online. Unable to continue."
+  exit 15
+fi
+
+# After this point, we will kill the formatting on the device
+perl -e 'for ($h=0;$h<2;$h++){printf "\0\0\0%c\0\0\0\x8%s",$h,(("\0"x8).("\xff"x8).("\0"x65512))}' | dd bs=65536 count=2 oflag=direct of=/dev/disk/by-path/ccw-${BUSID} >/dev/null 2>&1
+
+if [ "$?" -ne 0 ]; then
+  echo "The writing of the null record 0 failed."
+  exit 16
+fi
+
+echo "Setting ${BUSID} back offline with raw track access disabled."
+/sbin/chccwdev -d -s -a raw_track_access=0 ${BUSID}
+/sbin/udevadm settle
+
+if [ ${ORIG_ONLINE_STATUS} -eq 1 ]; then
+  /sbin/chccwdev -e ${BUSID}
+  /sbin/udevadm settle
+fi

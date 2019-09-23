@@ -1,0 +1,4067 @@
+-------------------------------------------------------------------
+Mon Sep  9 23:41:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(evince-document-3.0) and
+  pkgconfig(evince-view-3.0) BuildRequires: Not needed, nor used
+  since version 3.31.90.
+
+-------------------------------------------------------------------
+Sat Sep  7 16:56:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.5:
+  + Fix certain page loads not entering history since WebKitGTK
+    2.24.1.
+  + Fix overview page snapshots sometimes not being updated since
+    WebKitGTK 2.24.1.
+  + Fix floating status bar sometimes displaying wrong loading URL
+    since WebKitGTK 2.24.1.
+  + Fix memory corruption and broken web process extension
+    connection when using WebKit trunk.
+  + Fix failure to load web process extension when using bundled
+    libdazzle.
+  + Fix web app icon fallback.
+
+-------------------------------------------------------------------
+Tue Jul 30 21:36:27 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.4:
+  + Hide certain context menu entries from nondownloadable videos.
+  + Fix crash when entering application manager.
+  + Fix JS type error when loading forms without action attribute.
+  + Fix miscellaneous programming errors.
+- Drop epiphany-web-app-utils_Fix-crash.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jun 19 20:04:45 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add epiphany-web-app-utils_Fix-crash.patch: Fix crash when web
+  app profile lacks .app file and broken web apps should crash in a
+  nicer way.
+
+-------------------------------------------------------------------
+Tue Jun 11 23:11:12 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.3:
+  + Fix preferences language button sensitivity.
+  + Fix crash opening preferences dialog in weird locales.
+  + Fix manage additional URLs web apps preference.
+  + Fix blob and data URIs in web apps.
+  + Fix migration permanently corrupting web apps if migrated
+    before main profile.
+  + Fix crashes when safe browsing database is recreated.
+  + Fix crash in downloads code.
+  + Fix critical when starting web apps.
+
+-------------------------------------------------------------------
+Fri May  3 17:38:08 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.2:
+  + Fix remembering printer settings.
+  + Fix fuzzy incognito mode icon in hidpi.
+  + Add search button and allow type to search on history dialog.
+  + Fix critical deleting URLs from history dialog.
+  + Fix crash changing reader mode preferences.
+  + Fix many actions being disabled by mistake in incognito mode.
+  + Fix password manager asking to remember passwords when
+    disabled.
+  + Close history dialog on Escape.
+  + Fix crash during Safe Browsing update.
+  + Unfullscreen automatically when web process crashes.
+  + Fix markup appearing in search provider results.
+  + Fix a search provider crash.
+  + Fix password manager crash on certain websites.
+  + Fix password manager autofill when form has no username.
+  + Fix tab bar context menu reopen closed tab action crash and
+    sensitivity.
+  + Fix websites opening file choosers under flatpak.
+  + Fix searching for bookmarks in top bar.
+
+-------------------------------------------------------------------
+Fri Mar 22 05:53:10 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1.2:
+  + Recreate Safe Browsing database when it might be corrupted.
+  + Update libdazzle subproject to improve compatibility with new
+    meson versions.
+
+-------------------------------------------------------------------
+Thu Mar 21 00:14:08 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1.1:
+  + Really bring back libdazzle subproject, for 3.32 branch only.
+
+-------------------------------------------------------------------
+Wed Mar 20 18:29:13 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Switch to WebKit's two-finger back/forward swipe gesture.
+  + Fix search highlight disappearing when repeating search.
+  + Fix pages without title always appearing first in address bar
+    dropdown.
+  + Bring back libdazzle subproject for 3.32 branch only.
+  + Fix new web apps being saved in wrong place under certain
+    circumstances.
+  + Fix web process settings being saved in the wrong place.
+
+-------------------------------------------------------------------
+Mon Mar 11 15:49:48 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Fix preferences dialog crash.
+  + Fix password manager crash on 32-bit systems.
+  + Bump to libhandy 0.0.9.
+
+-------------------------------------------------------------------
+Tue Mar  5 05:48:11 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Add animation when download completes.
+  + New tab popover should close tabs on middle-click.
+  + Fix context menu in history dialog.
+  + Add separators to tab bar context menu.
+  + Fix crash in mouse gesture controller.
+  + Disable safe browsing test by default.
+  + Improve reliability of password form detection.
+  + Fix encoding dialog.
+  + Restore unsafe process model and process count settings for
+    3.32 branch only.
+  + Change -Dunit_tests meson option to feature rather than bool
+    type.
+  + Require system libdazzle and recent GTK 3.24.
+  + Build libhandy as static lib.
+  + Bundle newer libhandy to fix i18n.
+  + Fix licence in appstream metadata to GPLv3+.
+
+
+-------------------------------------------------------------------
+Tue Feb 19 00:45:22 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + Fix test failure when not installed.
+  + libhandy and libdazzle now use git submodules.
+  + Improve tab bar style in incognito mode.
+
+-------------------------------------------------------------------
+Fri Feb  8 03:31:06 UTC 2019 - bjorn.lie@gmail.com>
+
+- Update to version 3.31.90:
+  + Hide new tab button in app mode.
+  + Move all stored data to appropriate locations.
+  + Middle-click on new tab button now loads URL from clipboard.
+  + Animate to web app in GNOME shell overview after installing.
+  + Fix next/previous accelerators in right-to-left locales.
+  + Rename "New tab page" homepage option to "Most visited pages".
+  + Animate downloads button instead of intrusively opening
+    popover.
+  + New three-finger swipe gesture for back/forward navigation.
+  + Don't close menu when changing zoom.
+  + Fix zoom in internal pages.
+  + Fix some tests.
+  + Fix crash setting web app title without hostname.
+  + "Search the Web" -> "Search the web".
+  + Tab menu is now a featureful popover.
+  + Remove PDF support for now, not stable yet.
+  + New shortcuts for reload bypassing cache and reader mode.
+  + Fix crashes caused by password manager rework.
+  + Fix crash when $XDG_CURRENT_DESKTOP is undefined.
+  + Make find toolbar adaptive.
+  + Make bookmarks import dialog adaptive.
+  + Add tab menu for narrow mode.
+  + Many CSS style improvements.
+  + Fix too-tall switch in search engines dialog.
+  + Remove process model and process count settings.
+  + New design for security popover, appropriate for small screens.
+  + Remove all deprecated settings and associated migrators.
+  + Add setting to configure hardware acceleration policy.
+  + Fix modified form submission warning.
+  + Fix opening downloads under flatpak.
+- Drop epiphany-bookmark-ensure-tags-sequence-is-created.patch:
+  Fixed upstream.
+
+-------------------------------------------------------------------
+Fri Feb  8 03:31:05 UTC 2019 - bjorn.lie@gmail.com
+
+- Add epiphany-bookmark-ensure-tags-sequence-is-created.patch:
+  bookmark: ensure tags sequence is always created. Somehow we are
+  getting EphyBookmarks objects deserialized without initializing
+  the tags property.
+
+-------------------------------------------------------------------
+Fri Feb  8 03:31:04 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.4:
+  + Add default zoom level option to preferences dialog.
+  + Double click on reader mode icon should not maximize window.
+  + Move new tab button to start of the header bar, always.
+  + Hide Help and About when running in Pantheon.
+  + Reenable address bar DNS prefetch.
+  + Add hidden setting to keep window open on Ctrl+W.
+  + Fix file extension when saving a View Source page.
+  + Add reload all tabs to tab context menu.
+  + Remember last upload/download directory.
+  + Highlight matching text in address bar dropdown.
+  + History dialog should respect desktop 12/24 hour clock setting.
+  + Add reload tab and reopen closed tab to tab context menu.
+  + Convert all hostnames to lowercase.
+  + Add support for viewing PDFs using libevince.
+  + Add application manager to window menu.
+  + Fix passwords dialog expanding after deleting password.
+  + Hide various menu items from app mode.
+  + Remove MIME type restrictions.
+  + Remove broken bookmarks command line options.
+  + Reenable some tests that were broken.
+  + Open in new tab when middle clicking homepage button.
+  + Monitor for changes to user CSS file.
+  + Fix Ctrl+Shift+Page[Up,Down].
+  + Remove obsolete shortcuts documentation.
+  + 127.0.0.1 and ::1 are now always considered secure.
+  + Floating status bar no longer blocks clicks.
+  + Add experimental support for mouse gestures.
+  + Allow search the web context menu item in text fields.
+  + Improve documentation of command line options.
+  + Allow more zoom levels.
+  + Adopt standard behavior for clicks with modifier keys pressed.
+  + Add preference to disable smooth scrolling.
+  + Use /etc/os-release to set distributor name.
+  + Fix remote inspector.
+  + Alt-number tab switching can no longer be intercepted.
+  + Fix crash after bookmark sync.
+  + Add --automation-mode, for control by WebKitWebDriver.
+  + Use libhandy for improved narrow mode.
+  + Make history and encoding dialogs responsive.
+  + Don't show new fullscreen header bar for fullscreen videos.
+  + Move copy/search items to the top of the context menu.
+- Add pkgconfig(libhandy-0.0) BuildRequires: New optional
+  dependency.
+- Add pkgconfig(evince-document-3.0), pkgconfig(evince-view-3.0)
+  and pkgconfig(gsettings-desktop-schemas) BuildRequires: New
+  dependencies.
+
+-------------------------------------------------------------------
+Fri Feb  8 03:31:03 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.3:
+  + Improve padding in bookmarks view.
+  + Do not show progress bar on empty new tabs.
+  + Fix crash storing password on paypal.com.
+  + Add column spacing to encoding dialog grid.
+  + Fix suggestion entry not closing after Paste & Go.
+  + Fix suggestion entry reopening after closed with Escape.
+  + Tags with empty labels are no longer allowed in bookmarks.
+  + Fix freeze when closing window or tabs when secondary process
+    is hung.
+  + Fix crash when web view has not loaded anything yet.
+  + Temporarily disable hardware accelerated page rendering.
+  + Stop lowercasing spellcheck and Accept-Langs locales.
+  + Locales on language selection dialog are now displayed
+    translated.
+  + Locales on language selection dialog are no longer limited.
+  + Several miscellaneous code improvements.
+- Changes from version 3.31.2:
+  + Add preview widgets to file choosers.
+  + Fix window height being saved incorrectly.
+  + Fix crash when right clicking on tab bar.
+  + Add Close Other Tabs tab bar context menu item.
+  + Replace Move Tab Left/Right with Close Tabs to Left/Right.
+  + Fix new tab improperly opened on Ctrl+L.
+  + Fix URL entry accidently loading the wrong page.
+- Changes from version 3.31.1:
+  + Add keyboard shortcut for reader mode.
+  + Fix too many button being available for small windows in app
+    mode.
+  + Move password management from the web process to the UI
+    process.
+  + Fix Google Search in Russian localization and switch to
+    google.ru.
+  + Add preferences for reader mode and improve styling.
+  + New, redesigned Epiphany icon.
+  + New fancier address bar dropdown based on libdazzle.
+  + Removed GNOME application menu.
+- Drop patches fixed upstream:
+  + epiphany-window-Set-correct-current-height.patch: window: set
+    correct current height.
+  + epiphany-encoding-dialog-add-some-column-spacing.patch:
+    encoding-dialog: add some column spacing to grid.
+  + epiphany-web-view-Handle-NULL-URIs.patch: web-view: Handle NULL
+    URIs in ephy_web_view_set_address().
+  + epiphany-Tags-with-empty-labels.patch: Tags with empty labels
+    are no longer allowed in bookmarks.
+  + epiphany-Fix-saving-web-app-icons.patch: Fix saving web app
+    icons when changed.
+  + epiphany-Fix-remote-inspector-support.patch: Fix remote
+    inspector support.
+
+-------------------------------------------------------------------
+Thu Feb  7 17:26:36 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.30.3:
+  + Fix height of new windows.
+  + Add missing space to encoding dialog.
+  + Disallow bookmarks tags with empty names.
+  + Fix crash loading unexpected URLs.
+  + Fix remote inspector.
+  + Fix crash syncing bookmarks with Firefox Sync.
+  + Fix saving changes to web app icons.
+- Drop upstream fixed patches:
+  + epiphany-bookmark-ensure-tags-sequence-is-created.patch.
+  + epiphany-Fix-saving-web-app-icons.patch.
+  + epiphany-window-Set-correct-current-height.patch.
+  + epiphany-encoding-dialog-add-some-column-spacing.patch.
+  + epiphany-Tags-with-empty-labels.patch.
+  + epiphany-Fix-remote-inspector-support.patch.
+  + epiphany-web-view-Handle-NULL-URIs.patch.
+
+-------------------------------------------------------------------
+Fri Jan 25 18:59:27 UTC 2019 - bjorn.lie@gmail.com
+
+- Add epiphany-bookmark-ensure-tags-sequence-is-created.patch:
+  bookmark: ensure tags sequence is always created. Somehow we are
+  getting EphyBookmarks objects deserialized without initializing
+  the tags property.
+
+-------------------------------------------------------------------
+Thu Dec 27 23:22:15 UTC 2018 - bjorn.lie@gmail.com
+
+- Add upstream bug fix patches from stable branch:
+  + epiphany-window-Set-correct-current-height.patch: window: set
+    correct current height.
+  + epiphany-encoding-dialog-add-some-column-spacing.patch:
+    encoding-dialog: add some column spacing to grid.
+  + epiphany-web-view-Handle-NULL-URIs.patch: web-view: Handle NULL
+    URIs in ephy_web_view_set_address().
+  + epiphany-Tags-with-empty-labels.patch: Tags with empty labels
+    are no longer allowed in bookmarks.
+  + epiphany-Fix-saving-web-app-icons.patch: Fix saving web app
+    icons when changed.
+  + epiphany-Fix-remote-inspector-support.patch: Fix remote
+    inspector support.
+
+-------------------------------------------------------------------
+Tue Oct 23 11:38:39 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.2:
+  + Fix application mode toolbar in small windows.
+  + Fix Google Search in Russian localization.
+  + Fix some critical warnings caused by a mistake in the reader
+    mode code.
+
+-------------------------------------------------------------------
+Wed Sep 26 19:47:01 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + Enable media source extensions.
+  + Don't show reader mode icon on internal pages (e.g.
+    about:incognito).
+  + Add reader mode styling for <mark> elements.
+  + Fix searches using a colon in the first word.
+  + Fix frequent crashes, and also fix address bar with multiple
+    windows open.
+  + Fix crash on homedepot.com.
+  + Hide homepage button in app mode.
+  + Ensure Firefox Sync preferences web view uses Epiphany data
+    directories.
+
+-------------------------------------------------------------------
+Fri Sep  7 12:31:05 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  7 03:29:07 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.92:
+  + Ensure the correct address is displayed in security popover
+    during loads.
+  + Improve bookmark tag theming for non-Adwaita themes.
+  + Enable smooth scrolling by default.
+  + Fix location entry URI normalization on cut and copy.
+  + Fix features that rely on web extension message handlers.
+  + Fix location entry dropdown bookmark icon.
+  + Improve location entry icon style.
+  + Improve reader mode icon.
+
+-------------------------------------------------------------------
+Fri Sep  7 03:29:06 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.91:
+  + Fix security indicator appearing improperly in reader mode.
+
+-------------------------------------------------------------------
+Fri Sep  7 03:29:05 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.90:
+  + Address bar now uses GtkEntry's progress support.
+
+-------------------------------------------------------------------
+Fri Sep  7 03:29:04 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.4:
+  + Add responsive action bar used at small window sizes.
+  + Add web application section to preferences dialog.
+  + Move progress bar into address bar.
+  + Added continuous integration configuration.
+
+-------------------------------------------------------------------
+Fri Sep  7 03:29:03 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.3:
+  + View source now displays in Epiphany instead of text editor
+    (bgo#738475).
+  + Add experimental reader mode (bgo#772831).
+  + Web apps now again open only in new tabs (bgo#796204).
+  + Fix crash when page does not have a URI (bgo#795740,
+    CVE-2018-11396/CVE-2018-12016).
+  + Change color of bookmarks star to orange
+    (glgo#GNOME/epiphany#27).
+  + Run internal JavaScript in isolated world to block access to
+    websites.
+  + Fix overview thumbnails not appearing after Ctrl+T.
+  + Fix broken themeing in web app mode.
+  + NPAPI plugins are now disabled by default.
+  + Remove enable plugins checkbox from preferences dialog.
+  + Remove about:plugins.
+
+-------------------------------------------------------------------
+Fri Sep  7 03:29:02 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.2:
+  + New unstable release, no changes from upstream available.
+- Add pkgconfig(libdazzle-1.0) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Fri Sep  7 03:29:01 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.1:
+  + Speculatively fix crash related to changing search engines
+    (bgo#783756).
+  + Clarify that blocking web trackers also blocks social media
+    buttons (bgo#790189).
+  + Never automatically open downloads, since it can't be done
+    safely (bgo#794681).
+
+-------------------------------------------------------------------
+Thu Sep  6 09:06:08 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.4:
+  + Improve performance of adblocker.
+  + Ensure correct address is displayed in security popover when
+    starting loads.
+  + Fix crash on homedepot.com.
+  + Improve use of Safe Browsing threat lists.
+  + Fix miscellaneous memory leaks.
+- Drop upstream fixed patches:
+  + epiphany-uri-tester-fixes.patch.
+  + epip-revert-gsb-storage-dont-hardcode-Linux-threat-lists.patch.
+  + epiphany-leak-fixes.patch.
+
+-------------------------------------------------------------------
+Mon Jun 25 09:33:27 UTC 2018 - bjorn.lie@gmail.com
+
+- Add epiphany-leak-fixes.patch: Fix multiple leaks.
+
+-------------------------------------------------------------------
+Wed Jun 13 23:25:20 UTC 2018 - bjorn.lie@gmail.com
+
+- Add epiphany-uri-tester-fixes.patch: Fix urlcache memory leak and
+  fix cache lookups when URI is not matched
+  (glgo#GNOME/epiphany#37).
+- Add
+  epip-revert-gsb-storage-dont-hardcode-Linux-threat-lists.patch:
+  Revert gsb-storage: Don't hardcode Linux threat lists.
+
+-------------------------------------------------------------------
+Fri Jun  8 16:55:05 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.3.1:
+  + Fix missing symbol in 3.28.3 (glgo#GNOME/epiphany#33).
+- Changes from version 3.28.3:
+  + Fix CVE-2018-11396/CVE-2018-12016 (bgo#795740).
+  + Allow Ctrl+T in app mode again due to unintended consequences
+    (bgo#796204).
+  + Don't remember passwords when the setting is disabled
+    (bgo#796219).
+  + Fix password manager crash on chase.com
+    (glgo#GNOME/epiphany#11).
+- Drop epiphany-fix-crash-CVE-2018-11396.patch: Fixed upstream.
+- Drop epiphany-bring-back-tabs-webapp.patch: Upstream reverted the
+  change too, so patch no longer needed.
+
+-------------------------------------------------------------------
+Tue May 22 16:22:16 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.2.1:
+  + Again disallow Ctrl+T in app mode (bgo#795007).
+  + Remove problematic adblock filters (bgo#796245).
+  + Fix crashes when signing out of Firefox Sync.
+- Add epiphany-bring-back-tabs-webapp.patch: Revert the revert for
+  tabs in webapps (bgo#795007, bgo#796204).
+- Add epiphany-fix-crash-CVE-2018-11396.patch: session: Fix crash
+  when JS opens an invalid URI (CVE-2018-11396, bgo#795740,
+  boo#1094464).
+
+-------------------------------------------------------------------
+Thu Apr 19 17:12:22 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.1.1:
+  + Fix two crashes (bgo#783756 and bgo#794784/bgo#795370).
+
+-------------------------------------------------------------------
+Tue Apr 10 20:34:56 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.1:
+  + Fix bookmarks migration from Epiphany 3.24 not working
+    (bgo#794645).
+  + Do not auto-open adblock filters in text editor after download
+    (bgo#794646).
+  + Fix crash when destroying sync service (bgo#794728).
+  + Remove the experimental HTTPS Everywhere support (bgo#794803).
+  + Fix width of bookmarks popover in certain locales (bgo#794861).
+  + Don't activate search bar when pressing ' or / (bgo#795083).
+  + Take snapshots only of most-visited web pages.
+- Drop already disabled pkgconfig(httpseverywhere-0.8)
+  BuildRequires and stop passing https_everywhere=false to meson,
+  no longer supported nor needed.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:37:33 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Sun Mar 11 10:10:00 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0.1:
+  + No changes, new release because 3.28.0 was mistagged.
+- Changes from versoin 3.28.0:
+  + Fix buffer overflow in profile migrator test.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 19:27:10 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Add middle click close support to tab bar.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:25:03 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb 14 03:27:50 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.90:
+  + Improve handling of zoom (bgo#621067, bgo#792949).
+  + Bookmark properties button is now always visible (bgo#772268).
+  + Drop gnome-desktop dependency, copying needed thumbnailer code
+    (bgo#778578):
+  + Save snapshot thumbnails under ~/.cache/epiphany instead of
+    global directory.
+  + Delete snapshot thumbnails when clearing history.
+  + Fix profile migrator deleting bookmarks if run multiple times
+    (bgo#792683).
+  + Add touch support for address bar icons (bgo#792876).
+  + Save Safe Browsing data only once, not once per web app
+    (bgo#792929).
+  + Fix crash caused by unexpected Safe Browsing data (bgo#792930).
+  + Fix placement of select element with multiple monitors
+    (bgo#792940).
+  + Long press in address bar now selects the text (bgo#793267).
+  + Hopefully fix the search provider.
+  + Fix password prompt after bgo#742573.
+- Drop pkgconfig(gnome-desktop-3.0) BuildRequires: no longer
+  needed.
+- Drop epiphany-bump-httpseverywhere_dep.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Feb 14 03:27:04 UTC 2018 - bjorn.lie@gmail.com
+
+- Disable pkgconfig(httpseverywhere-0.8) BuildRequires: Upstream
+  regards it as too unstable for use (bgo#793389).
+
+-------------------------------------------------------------------
+Wed Feb 14 03:27:04 UTC 2018 - bjorn.lie@gmail.com
+
+- Add epiphany-bump-httpseverywhere_dep.patch: Bump libhttpsevery
+  dependency to current upstream release, following this, replace
+  pkgconfig(httpseverywhere-0.6) with
+  pkgconfig(httpseverywhere-0.8) BuildRequires.
+
+-------------------------------------------------------------------
+Wed Feb 14 03:27:04 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.4:
+  + Show desktop notification when download finishes (bgo#722142).
+  + Expand tag view in bookmarks popover (bgo#778843).
+  + Add protection against IDN homograph attacks (bgo#791168).
+  + Improved logic to avoid corrupting session state
+  + Fixes:
+    - Downloading blob URLs (bgo#788576).
+    - Launching WhatsApp web app (bgo#790781).
+    - Error in sync migration when migrating from 3.26.2 or
+      earlier.
+- Update Url to https://wiki.gnome.org/Apps/Web: current Epiphany's
+  web page.
+
+-------------------------------------------------------------------
+Wed Feb 14 03:27:03 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.3:
+  + Several miscellaneous fixes for Firefox Sync and Google Safe
+    Browsing.
+  + Flatpak - Support added for custom stylesheets, downloading
+    files and a view source page.
+  + Bug fixes: bgo#776682, bgo#778843, bgo#790286, bgo#790693,
+    bgo#790732, bgo#790905, bgo#790094, webkit#180365.
+- Drop pkgconfig(libdazzle-1.0) BuildRequires following upstream's
+  changes.
+- Add pkgconfig(gio-2.0) BuildRequires. Note that it was being
+  pulled with the other pkgconfig modules that comes from
+  glib2-devel, e.g. glib-2.0, and used already.
+- Uncomment pkgconfig(httpseverywhere-0.?) BuildRequires. It can
+  already be tested under GNOME Next once upstream is planning to
+  make its use unconditional rather than optional.
+
+-------------------------------------------------------------------
+Wed Feb 14 03:27:02 UTC 2018 - fezhang@suse.com
+
+- Update to version 3.27.2:
+  + Hide Copy from context menu when appropriate (bgo#772106).
+  + Hide home page button when appropriate (bgo#783299).
+  + Fix multiple issues with the bookmark popover (bgo#788584).
+  + Major change: web apps are now more like silos, rather than
+    prisons (bgo#788845).
+  + Various fixes for safe browsing implementation (bgo#788899).
+  + Fix Firefox Sync crash on 32-bit systems (bgo#789656).
+  + Move Firefox Sync settings to the right GSettings path.
+    (bgo#789786).
+  + Fix middle click on back/forward navigation buttons
+    (bgo#790017).
+  + Various fixes for Firefox Sync implementation.
+  + Restore search engine support.
+  + Fix incognito mode theme.
+
+-------------------------------------------------------------------
+Wed Feb 14 03:27:01 UTC 2018 - badshah400@gmail.com
+
+- Update to version 3.27.1:
+  + Fix search engine dialog, which has been borked since 3.24.3
+    (bgo#787458).
+  - Allow overriding autofilled username in password forms
+    (bgo#787498).
+  - Fix non-HTML/MHTML files being saved as MHTML (bgo#788111).
+  - Don't disable navigation actions when history is cleared
+    (bgo#788329).
+  - Various improvements to Flatpak support.
+  - Fix bookmarks import crash when there's no Firefox profile.
+  - Allow access to web inspector in application mode.
+  - Add new address bar dropdown using libdazzle.
+  - Add Google Safe Browsing support.
+- Add pkgconfig(libdazzle-1.0) BuildRequires: new upstream
+  dependency.
+
+-------------------------------------------------------------------
+Tue Feb 13 16:50:50 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.6:
+  + Fix download of blob URIs (bgo#788576).
+  + Fix WhatsApp web app (bgo#790781).
+  + Fix profile migrator deleting bookmarks if run multiple times
+    (bgo#792683).
+  + Add touch support for address bar icons (bgo#792876).
+  + Fix placement of select element with multiple monitors
+    (bgo#792940).
+  + Hopefully fix the search provider.
+- Drop epiphany-application-mode-fix-desktopfile.patch,
+  epiphany-fix-download-of-blob-URIs.patch and
+  epiphany-search-provider-fix.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sat Jan 13 19:11:07 UTC 2018 - zaitor@opensuse.org
+
+- Add epiphany-search-provider-fix.patch: Fix typos in
+  serviceprovider, make it actually work (bgo#792502).
+- Add epiphany-fix-download-of-blob-URIs.patch: Fix download of
+  blob URIs. Epiphany doesn't recognize blob as a web scheme,
+  causing it to try opening it in an external URI handler in it's
+  policy decision callback (bgo#788576).
+- Pass explicit developer_mode=false, https_everywhere=false and
+  unit_tests=false options to meson, ensure we build the features
+  we want.
+
+-------------------------------------------------------------------
+Mon Jan  1 20:08:44 UTC 2018 - zaitor@opensuse.org
+
+- Add epiphany-application-mode-fix-desktopfile.patch: application
+  mode: use strstr() to get base name of the desktop file
+  (bgo#790781).
+
+-------------------------------------------------------------------
+Sat Dec 23 12:03:00 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.5.1:
+  + Correct logic to avoid corrupting session state.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Dec 18 16:28:08 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.5:
+  + Fix error in sync migration when migrating from 3.26.2 or
+    earlier.
+  + Improved logic to avoid corrupting session state.
+- Drop epiphany-session-rework-the-safety-check.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Thu Dec 14 17:15:32 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.4:
+  + Fix sync failure warnings appearing multiple times
+    (bgo#790094).
+  + Fix tab sync and device name on accounts.firefox.com
+    (bgo#790370).
+  + Make default sync device name translatable (bgo#790905).
+  + Several additional misc. improvements to sync support
+    (including bgo#790819).
+  + Flatpak: custom stylesheets are now supported.
+  + Flatpak: view page source is now supported.
+- Add epiphany-session-rework-the-safety-check.patch: session:
+  Rework the safety check.
+
+-------------------------------------------------------------------
+Sun Nov 26 15:58:32 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.3:
+  + Don't require gvfsd-http for downloading adblock filters
+    (bgo#776682).
+  + Several improvements to Sync support (bgo#789656, bgo#789786,
+    bgo#790286).
+  + Make downloads work when running in flatpak (bgo#785655).
+  + Do not add bookmarks to unrelated tag view popovers
+    (bgo#788584).
+  + Fix middle click on forward/back buttons (bgo#790017).
+  + "Search the Web for ..." context menu option now switches to
+    new tab (bgo#790693).
+- Drop update-desktop-files BuildRequires and no longer use
+  suse_update_desktop_file macro, no longer needed.
+
+-------------------------------------------------------------------
+Wed Nov  1 10:57:34 UTC 2017 - badshah400@gmail.com
+
+- Update to version 3.26.2:
+  + Do not show home button if home page is set to blank page
+    (bgo#783299).
+  + Add support for remote inspector (an advanced developer tool).
+  + Various flatpak-related improvements.
+  + Add flatpak manifest.
+
+-------------------------------------------------------------------
+Fri Sep 29 23:19:56 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.1:
+  + Fix search engine dialog, which has been borked since 3.24.3
+    (bgo#787458).
+  + Allow overriding autofilled username in password forms
+    (bgo#787498).
+  + Fix non-HTML/MHTML files being saved as MHTML (bgo#788111).
+  + Don't disable navigation actions when history is cleared
+    (bgo#788329).
+  + Fix bookmarks import crash when there's no Firefox profile.
+
+-------------------------------------------------------------------
+Sat Sep  9 16:00:12 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.26.0:
+  + Disable Firefox Sync except in browser mode (bgo#787412).
+  + Disable emoji chooser in location entry.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  5 19:45:50 UTC 2017 - jengelh@inai.de
+
+- Remove ldconfig calls. All shared libraries are outside standard
+  paths and there is no ld.so.conf entry.
+
+-------------------------------------------------------------------
+Sun Sep  3 16:45:17 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.92:
+  + Rename the meson build options.
+  + Switch to nontransitional IDN2008.
+  + Many improvements to password form detection (bgo#666326).
+  + Fix crash of bookmarks popover (bgo#780549).
+  + Don't create Mobile bookmarks tag when syncing unless needed
+    (bgo#786590).
+  + Handle invalid input from gnome-keyring (bgo#786811).
+  + Password manager should operate on security origins
+    (bgo#786818).
+  + Adblocker must not block main resource during redirects
+    (bgo#787011).
+  + Updated translations.
+- Drop obsolete post(un) handling that file-triggers now takes care
+  of, following macros are dropped:
+  glib2_gsettings_schema_requires, desktop_database_post(un),
+  icon_theme_cache_post(un) and glib2_gsettings_schema_post(un).
+- Run spec-cleaner, modernize spec.
+- Add epiphany-rpmlintrc as source, filter out warning about
+  suse-branding not requiring a exact version, we do this on
+  purose.
+
+-------------------------------------------------------------------
+Tue Aug 22 08:31:17 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.91:
+  + Miscellaneous improvements to Firefox Sync support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug  9 08:45:07 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.90:
+  + Fix crash when download fails (bgo#778653).
+  + Fix homepage radio button glitch (bgo#783290).
+  + Use default system font on about pages (bgo#783489).
+  + Improve font color in the address bar dropdown (bgo#784431).
+  + Fix crash if search engine settings get desynced.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 18 03:25:04 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.4:
+  + Fix crash when download fails (bgo#778653).
+  + Fix homepage radio button glitch (bgo#783290).
+  + Use default system font on about pages (bgo#783489).
+  + Improve font color in the address bar dropdown (bgo#784431).
+  + Fix crash if search engine settings get desynced.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 18 03:25:03 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.3:
+  + Fix formatting of year in the date column of the history
+    dialog.
+  + Hide tags without bookmarks in popover.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 18 03:25:02 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.2:
+  + Floating URL bar should disappear when hovered to not block
+    page (bgo#668493).
+  + Add [Shift+]Ctrl+Tab shortcuts for switching tabs (bgo#762631).
+  + Address bar search now again considers bookmark tags
+    (bgo#781746).
+  + Fix notification permissions in web app mode (bgo#782386).
+  + Do not use a popover for the tab selection menu, to allow
+    scrolling it.
+  + Fix incorrect choice of context menu when Ctrl key is held.
+  + Add hidden setting for disabling quirks mode.
+  + Improve wording of insecure password form warning.
+  + Remove libgd subproject and dependency on libgd.
+  + Fix race introduced during meson port that could cause build
+    failures.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 18 03:25:01 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.1:
+  + Port to meson build system and removed Autotools build.
+  + Add explicit New Window action to desktop file (bgo#670929).
+  + Add Alt+Home and F10 shortcuts to keyboard shortcuts dialog
+    (bgo#779916, bgo#779916).
+  + Fix regression allowing Ctrl+T to work in application mode
+    (bgo#781440).
+  + Updated translations.
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream changes.
+- Stop passing --disable-maintainer-mode and
+  --with-distributor-name="SUSE" to no longer existing configure,
+  pass -Ddistributor_name=openSUSE to meson macro.
+
+-------------------------------------------------------------------
+Mon Jul 17 18:29:53 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.3:
+  + Fix floating status bar blocking clicks (bgo#668493).
+  + Add [Shift+]Ctrl+Tab shortcuts for switching tabs (bgo#762631).
+  + Fix crash when download fails (bgo#778653).
+  + Restore address bar search for bookmarks tags (bgo#781746).
+  + Fix notifications permissions being forgotten for web apps
+    (bgo#782386).
+  + Fix tags with no bookmarks appearing in bookmarks popover.
+  + Fix crash if search engine settings get desynced.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May  9 13:25:27 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.2:
+  + Decode last component of URIs to determine file names for
+    saving (bgo#780086).
+  + Disable Ctrl+T in application mode (bgo#781440).
+  + Do not use a popover for the tab selection menu, to allow
+    scrolling it.
+  + Add hidden setting for disabling quirks mode.
+  + Updated translations.
+- Drop base version define, no longer in use, nor needed.
+
+-------------------------------------------------------------------
+Thu Apr 20 10:13:08 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.1:
+  + Fix issues with add bookmark popover (bgo#780443, bgo#780851).
+  + Fix issues with bookmark importing (bgo#780564).
+  + Use native file choosers for Flatpak compatibility
+    (bgo#780468).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 21 16:17:49 UTC 2017 - dimstar@opensuse.org
+
+- Disable pkgconfig(httpseverywhere-0.2) BuildRequires for now: the
+  feature is still considered experimental and is by default
+  disabled by upstream.
+
+-------------------------------------------------------------------
+Mon Mar 20 09:02:12 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 13 12:44:28 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.93:
+  + Fix Alt+Home keyboard shortcut (bgo#779901).
+  + Use native file choosers for Flatpak support (bgo#779922).
+  + Fix info bars not being removed when expected.
+
+-------------------------------------------------------------------
+Sat Mar 11 18:42:52 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.92:
+  + Use different GtkApplication ID for web apps (bgo#778985).
+  + Fix history service crash if database is locked (bgo#779180).
+  + Fix multiple memory safety issues in code that handles info
+    bars.
+  + Add x-suse-ymp to safe MIME types.
+  + Remove obsolete bookmarks documentation.
+  + Updated translations.
+- Drop epiphany-safe-one-click-install.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Feb 28 00:54:58 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.91.1:
+  + Add missing file to tarball.
+- Drop NetworkManager Requires: This has not been at runtime since
+  version 3.2.1.
+- Drop adwaita-icon-theme and gnome-icon-theme BuildRequires, and
+  stop copying the hicolor icons, no longer needed.
+
+-------------------------------------------------------------------
+Tue Feb 28 00:02:46 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.91:
+  + Add new search engine dialog and support for search engine
+    bangs (bgo#776738).
+  + Restore keybinding Ctrl+Shift+N for opening incognito windows
+    (bgo#778606).
+  + Fix major data loss and safety bugs in history service
+    (bgo#778649).
+  + Use heart icon for favorite bookmarks (bgo#778849).
+  + Fix various issues affecting the new clear personal data dialog
+    (bgo#779100).
+  + Fix many bugs affecting the bookmark list popover.
+  + Disable forget actions in history dialog when in incognito
+    mode.
+  + Do not show add bookmarks popover star in incognito mode.
+  + Fix old overview snapshots not being properly replaced.
+  + Delete old bookmarks files during profile migration.
+  + Remove the default encoding preference again due to bugs.
+  + Fix some critical warnings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 15 11:52:47 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.90:
+  + Remove the integrated view source mode, not ready for stable
+    release (bgo#775145).
+  + Fix the search provider (bgo#775902).
+  + Rearrange bookmarks app menu items (bgo#778280).
+  + Multiple fixes to the new insecure password form focused
+    warning (bgo#778369).
+  + Fix condition where the new tab menu could get desynced from
+    the current tabs.
+  + Many settings are now stored separately for each web
+    application.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb  3 20:22:54 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.5:
+  + Add option to subscribe to EasyPrivacy filters and enable by
+    default (bgo#739631).
+  + Introduce new, more powerful clear personal data dialog
+    (bgo#741447).
+  + Fix serious password extraction sweep attack on password
+    manager (bgo#752738).
+  + Adblock filters are now configured in GSettings (bgo#755193).
+  + Restore support for having multiple adblock filters at once
+    (bgo#755193).
+  + Fix many bugs affecting the bookmarks popover (bgo#772131,
+    bgo#777615).
+  + Remember fallback window size in GSettings (bgo#777055).
+  + Prefer common_name to name when reading ISO 3166 data
+    (bgo#774466).
+  + Fix the Stop button (bgo#777585).
+  + Fix adblocker blocking too much stuff, breaking Twitter
+    (bgo#777714).
+  + Avoid writing anything to disk in incognito mode (bgo#777736).
+  + Change keyboard shortcut for export bookmarks to Ctrl+Shift+X
+    (bgo#777872).
+  + Fix F6 keyboard shortcut for focusing address bar (bgo#777873).
+  + Properly set initial notification permissions (bgo#777835).
+  + Add empty state to bookmarks popover, so it looks better with
+    no bookmarks.
+  + Automatically delete unused adblock filters when the adblocker
+    is enabled.
+  + Renamed Privacy preferences tab to Stored Data.
+  + Moved do not track preference to General preferences tab.
+  + Improve warning text when closing tab with modified form.
+  + Allow saving session even if a tab has a blank URL.
+  + Display full security origins rather than just hostnames when
+    appropriate.
+  + Fix recently-introduced critical warnings when focusing
+    password forms.
+  + Do not ever use session in web app or incognito mode.
+  + Fix off-by-one in profile migrator -d option.
+  + Avoid crash if profile migrator is passed invalid -d.
+  + Restore preference to set default encoding.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb  3 20:22:53 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.4:
+  + Add Copy Image context menu item (bgo#169747).
+  + Add support for displaying IDN (punycode) URLs (bgo#747376).
+  + Do not offer to remember empty passwords (bgo#771073).
+  + Fix Alt+Left/Right keyboard shortcuts (bgo#772437).
+  + Added new tab menu to improve management of large numbers of
+    tabs.
+  + New Tab button now moves to tab bar when tab bar is visible.
+  + Fix build failure with Firefox Sync support disabled.
+  + "Press key to exit fullscreen" message is now legible.
+  + Add Alt+D keyboard shortcut to focus the address bar.
+  + Store permissions for hosts displayed in info bar, not the
+    current page.
+  + Animate appearance of add bookmark and security indicator
+    popovers.
+  + Fix various minor memory leaks.
+  + Internationalize the "Favorites" bookmarks category.
+  + Updated translations.
+- Add pkgconfig(icu-uc) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Fri Feb  3 20:22:52 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.3:
+  + Experimental HTTPS Everywhere support is now disabled by
+    default.
+  + Experimental Firefox Sync support is now disabled by default.
+  + Restore ability to import/export bookmarks (bgo#772423).
+  + Fixes to key event handling (bgo#772437).
+  + Fix crash in certain locales when right-clicking address bar
+    (bgo#772994).
+  + Detect new password forms after page is loaded (bgo#773327).
+  + Fix focusing the address bar when opening new tabs
+    (bgo#774599).
+  + Fix redirect loop caused by HTTPS Everywhere (bgo#774925).
+  + Improve Firefox Sync error handling (bgo#774940).
+  + Again handle adblock and HTTPS Everywhere in the web process
+    (bgo#775067).
+  + Warn users about insecure password forms (bgo#775167).
+  + Distribute missing icon (bgo#775209).
+  + Fix displaying new overview item when one is removed
+    (bgo#775604).
+  + Expose homepage setting and show a home button when enabled
+    (bgo#775641).
+  + Remove the progress bar (bgo#775710).
+  + Hide new bookmarks button in application mode (bgo#775760).
+  + Hide lock icon when visiting about:blank.
+  + Handle focus stealing prevention properly when opening
+    downloads.
+  + Do not run Epiphany web extension in Firefox Sync login view.
+  + Search provider D-Bus service name now matches
+    GtkApplication ID.
+  + Remove the homepage-loads-in-new-tabs setting added in 3.23.2.
+  + Fix tags not being created when migrating bookmarks from 3.22.
+  + Fix various memory safety issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb  3 20:22:51 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.2.1:
+  + Fix bookmarks migration from 3.22 (bgo#774785).
+  + Fix crash starting browser with do not track mode disabled.
+  + Fix miscellaneous critical warnings and memory safety issues.
+  + Fix miscellaneous memory leaks.
+- Changes from version 3.23.2:
+  + Add hidden homepage settings (bgo#702435).
+  + New Window action now opens non-incognito window in incognito
+    mode (bgo#723185).
+  + Web apps now share adblock filters with the default profile
+    (bgo#755379).
+  + Restored smart bookmarks functionality removed in 3.23.1
+    (bgo#772407).
+  + Form detection no longer requires named password field
+    (bgo#773327).
+  + Improve permissions request handling and support webcam/mic
+    requests (bgo#773447).
+  + Fix infinite loop in form detection introduced in 3.23.1
+    (bgo#773830).
+  + Consistently use proper Unicode characters in UI (bgo#774217).
+  + Restored all the plugin functionality that had been removed in
+    3.23.1.
+  + Fix "search the web" menu item name when search contains an
+    underscore.
+  + Fix "search the web" truncating search results (broken in
+    3.23.1).
+  + Actually delete history database from disk when clearing all
+    history.
+  + Revert questionable attempt to sanitize passwords from
+    displayed URIs.
+  + Hide bookmark page star on about pages.
+  + Fix overview thumbnails sometimes appearing twice.
+- Changes from version 3.23.1.2:
+  + Restore enable-plugins setting, hidden and off by default.
+  + Fix compatibility issue with form autofill (bgo#772530).
+- Changes from version 3.23.1.1:
+  + Fix critical warnings when blocking ads.
+  + Enable automatic updates of HTTPS Everywhere rulesets.
+  + Really remove settings with no effect.
+- Changes from version 3.23.1:
+  + Epiphany has been relicensed from GPLv2+ to GPLv3+.
+  + Address bar is once again visible at all times, except in web
+    app mode.
+  + Redesigned user interface for bookmarks management.
+    - Support for zeroconf bookmarks has been removed (Help welcome
+      to restore).
+    - Support for smart bookmarks has been temporarily removed. It
+      will return.
+  + HTTPS Everywhere support added and enabled unconditionally.
+  + Support for bookmarks sync between Epiphany browsers via
+    Firefox Sync.
+    - Epiphany uses the Firefox Sync service, which can store
+      arbitrary data.
+    - Epiphany cannot sync with Firefox (It would be possible).
+    - Epiphany is not Firefox.
+    - Epiphany is not produced or endorsed by Mozilla.
+    - Priv. Policy: https://wiki.gnome.org/Apps/Web/PrivacyPolicy
+  + Integrated source code view returns, utilizing Prism JavaScript
+    library.
+  + Overview now shows three rows of three previews each.
+  + Remember password info bar now has a "never remember" option.
+  + Web apps now have a basic app menu.
+  + Web apps are once again confined to their original domain.
+  + Disable history lockdown setting now actually disables access
+    to history.
+  + Removed enable-plugins option. NPAPI browser plugins are no
+    longer supported.
+  + Removed hidden enable-javascript option. (Help welcome to
+    support NoScript.)
+  + Removed several old settings that no longer had any effect.
+  + Removed --netbank-mode command line option.
+    Use --incognito-mode instead.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb  3 20:22:50 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.22.6:
+  + Fix minor memory leak (bgo#682723).
+  + Fix serious password extraction sweep attack on password
+    manager (bgo#752738).
+  + Fix adblocker blocking too much stuff, breaking Twitter
+    (bgo#777714).
+
+-------------------------------------------------------------------
+Tue Jan 17 10:15:49 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.22.5:
+  + Do not offer to remember empty passwords (bgo#771073).
+  + Fix tenth webpage missing in overview (regression from 3.22.4).
+  + "Press key to exit fullscreen" message is now legible.
+  + Fix memory leak when tab is closed before permission request
+    info bar.
+  + Store permissions for hosts displayed in info bar, not the
+    current page.
+
+-------------------------------------------------------------------
+Wed Dec 28 13:16:14 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.4:
+  + Fix Alt-Left/Right keyboard shortcuts (bgo#772437).
+  + Fix crash right-clicking address bar in certain locales
+    (bgo#772994).
+  + Fix new overview item on deletion of previous item (bgo#775604,
+    bgo#775612).
+  + Fix adblocker sometimes not blocking ads in new tabs
+    (bgo#775736).
+  + Do not show the lock icon in the address bar for about:blank
+    pages.
+
+-------------------------------------------------------------------
+Tue Nov 22 10:31:06 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.3:
+  + Rework key event handling to fix events received twice
+    (bgo#764653).
+  + Add missing F1 keyboard shortcut to open help.
+
+-------------------------------------------------------------------
+Mon Nov  7 22:16:29 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.2:
+  + Improvements to password form autofill handling (bgo#772530).
+  + Fix adblocker sometimes blocking the main resource.
+  + Fully delete history database when clearing history.
+  + Again restrict web apps to their initial domain.
+  + Enable Accept-Language and spellchecking for current locale by
+    default.
+  + Fix overview thumbnails sometimes being duplicated.
+  + Added session safety check to avoid saving corrupted sessions.
+  + Ensure error page buttons expand to fit translations.
+  + Miscellaneous code safety, crasher, critical warning fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 10 16:30:25 UTC 2016 - zaitor@opensuse.org
+
+- Updated to version 3.22.1:
+  + Remember decision to allow or deny notifications (bgo#748339).
+  + Do not copy cookies when creating web app (bgo#771540).
+  + Fix dock to right button in web inspector.
+  + Improve overview layout in small windows.
+  + Escape URL for markup in new web app dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 07:57:38 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+- Bump base version to 3.22, we are now on the stable branch.
+
+-------------------------------------------------------------------
+Mon Sep 12 06:42:45 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Add support for opening FTP URIs in an external application
+    (bgo#136501).
+  + Fix crash in non-English locales (bgo#765374).
+  + Don't crash if loading a local web app that uses an absolute
+    path (bgo#767101).
+  + Fix several features that were broken when multiple tabs share
+    a web process (bgo#769627).
+  + Remove keyboard shortcut for Duplicate Tab since it clashes
+    with GtkInspector.
+  + Remove assertion that was breaking error pages on certain
+    network errors.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 16 09:56:52 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Fix memory leaks (bgo#769228).
+  + Limit geolocation/notification permission request info bars
+    (bgo#764593).
+  + Fix mistake in tracking the remember password info bar.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul 28 18:26:48 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.4:
+  + Check for NULL SoupURI when trying to load invalid url
+    (bgo#768250).
+  + Fix misleading ChangeLog generation code (bgo#768218).
+  + Limit side of ChangeLog file (bgo#768218).
+  + Add keyboard shortcuts dialog (bgo#757830).
+  + Update POTFILES.in (bgo#757830).
+  + Generate ChangeLog in builddir (bgo#768218).
+  + Updated translations.
+- Add conditional for translation-update-upstream BuildRequires and
+  it's macro: Only apply for non-openSUSE.
+- Drop epiphany-embed-Check-for-NULL-SoupURI.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Jul 28 18:26:38 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.3:
+  + Require WebKitGTK+ 2.13.1.
+  + Allow toggling web inspector with keyboard shortcuts
+    (bgo#676870).
+  + Activate downloads popover only for active window (bgo#764303).
+  + Allow running system web apps outside GNOME (bgo#767101).
+  + Indicate when running in web app mode in user agent
+    (bgo#767123).
+  + Find web app names using OpenGraph site_name in name attribute
+    (bgo#767184).
+  + Support large standard HTML icons and SVG for web app icons
+    (bgo#767257).
+  + Increase default webapp icon size to 192 (bgo#767407).
+  + Middle-clicking the title bar doesn't send Epiphany to the
+    background (bgo#767585).
+  + Updated translations.
+- No longer package ChangeLog, it's now a empty file.
+
+-------------------------------------------------------------------
+Thu Jul 28 18:26:28 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.2:
+  + Removed NSS and libwnck dependencies.
+  + Cleanups in downloads code (bgo#610586).
+  + Improved reliability of displaying overview snapshots
+    (bgo#763184, bgo#765863).
+  + Incognito mode theme fixes.
+  + Updated translations.
+- Drop pkgconfig(nss) and pkgconfig(libwnck-3.0) BuildRequires:
+  Following upstream changes.
+- Stop passing V=1 to make, debugging is local.
+- Drop epiphany-extensions, epiphany-extensions-lang and
+  epiphany-devel Obsoletes, it was removed for the 3.8.0 release,
+  and we do not support upgrades from releases that old.
+
+-------------------------------------------------------------------
+Thu Jul 28 18:26:18 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.1:
+  + Add Paste and Go context menu item to address bar (bgo#319506).
+  + Redesigned error pages (bgo#744063).
+  + Add Duplicate Tab context menu item to tabs (bgo#763221).
+  + Switch to sane default bookmarks (bgo#763307).
+  + Add hidden settings to control tab expand and location
+    (bgo#764368).
+
+-------------------------------------------------------------------
+Thu Jul 28 18:26:08 UTC 2016 - zaitor@opensuse.org
+
+- Add epiphany-embed-Check-for-NULL-SoupURI.patch: Fixes crashes
+  when accessing soup_uri memory (bgo#768250).
+
+-------------------------------------------------------------------
+Mon Jun 20 19:20:21 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.3:
+  + Activate downloads popover only for active window (bgo#764303).
+  + Middle-clicking the title bar doesn't send Epiphany to the
+    background (bgo#767585).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May  9 21:05:05 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + Fix snapshots sometimes not appearing in overview (bgo#763184).
+  + Add gnome.org and webkit.org default bookmarks.
+  + Incognito mode theme updates and fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr  8 18:57:27 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Always store passwords in web app mode (bgo#672573).
+  + Allow opening WebP files with open dialog (bgo#739934).
+  + Activate downloads popover when download is started or
+    completed (bgo#763141).
+  + Avoid stale overview snapshots (bgo#763184).
+  + Fix security popover opening above the window in Wayland
+    (bgo#763921).
+  + Fix session saving of multiple windows (bgo#764101).
+  + Allow closing history dialog with Escape key (bgo#764408).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 21 15:16:12 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+- Bump baseversion.
+
+-------------------------------------------------------------------
+Tue Mar 15 10:41:36 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + Downloads popover should browse to file when it cannot be
+    opened (bgo#610586).
+  + Fix occasional failure to display snapshots in overview
+    (bgo#758470).
+  + Add workaround to avoid taking new white snapshots for the
+    overview (bgo#761065).
+  + Avoid placeholder images in downloads popover (bgo#762825).
+  + Fix the restore session preference (bgo#762906).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 29 23:56:09 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.91
+  + Always do case-insensitive find (bgo#722019).
+  + Maybe fix security popover being clickable when not visible
+    (bgo#744307).
+  + Fix session state being deleted if UI process crashes very
+    early (bgo#747860).
+  + Improved labels for reload buttons on error pages (bgo#747973).
+  + Fix remove button on cookies dialog (bgo#757230).
+  + Do not assume pages loading when Epiphany was last closed had
+    crashed (bgo#761735).
+  + Improved visual layout of the downloads popover (bgo#761857).
+  + F1 now launches user help (bgo#762041).
+  + Switch to new tab when opening a page from history
+    (bgo#762381).
+  + Fix crash downloading files if gnome-session is broken or
+    missing (bgo#762651).
+  + Improved welcome message on first run (bgo#762812).
+  + Allow translating error page access keys properly (bgo#762818).
+  + Fix fill color of the downloads progress icon.
+  + Update the label on tabs with the URL when the page has no
+    title.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 10:51:31 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.90:
+  + Session saving should save window/tab history and re-instate it
+    on session restore (bgo#119432).
+  + overview: Display a placeholder image on empty overview
+    (bgo#683582).
+  + Make new tabs inherit history of parent (bgo#706731).
+  + prefs-dialog: Expose restore-session-policy (bgo#724583).
+  + Remove encoding preference from preferences dialog
+    (bgo#734381).
+  + Use GdTwoLinesRenderer to display the location entry completion
+    (bgo#736364).
+  + Activate downloads popover when a download is started
+    (bgo#757753).
+  + overview: Do not show local files on the overview (bgo#758469).
+  + web-overview: Do not drop thumbnail update requests
+    (bgo#758470).
+  + Improvements to the encodings dialog (bgo#759164).
+  + Fixups for help files (bgo#759279).
+  + Revert "EphyUriTester: Drop keys/signatures logic" (bgo#759501).
+  + downloads: Value returned by ephy_download_get_content_type()
+    should not be freed (bgo#759200).
+  + ephy-profile-migrator: Call setlocale and gettext functions in
+    main function (bgo#760417).
+  + ephy-session: restore session state when restoring recently
+    closed tabs (bgo#760782).
+  + Switch web extensions to using private D-Bus connections
+    (bgo#761009).
+  + web-view: Add mnemonics for error page buttons (bgo#761069).
+  + location-entry: Encode URI before copy/paste (bgo#761660).
+  + embed: Ignore beforeunload events.
+  + Allow opening downloaded .tar.xz files.
+  + Take safetypes patch from Debian.
+  + downloads-popover: Disappear more smoothly.
+  + web-view: Fix security level of error pages.
+  + Various fixes for compatibility with GTK+ 3.20.
+  + Various code cleanups.
+  + Various improvements to the appdata file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 03:19:01 UTC 2016 - damjanovic.ivo@gmail.com
+
+- Updated to version 3.19.1:
+  + Enable WebGL and WebAudio by default.
+  + Add a new downloads manager.
+  + Properly propagate key-bindings to pages (bgo#113449).
+  + Only warn about unsubmitted changes if form has text
+    (bgo#668260).
+  + Use x-scheme-handler to get default browser (bgo#750275).
+  + Add search to cookies dialog (bgo#720978).
+  + Add categories to web apps (bgo#672574).
+  + Many cleanups to the application dialogs.
+  + Several fixes to the ad blocker (bgo#754954).
+  + Add support for system-wide installed web applications.
+  + Hide floating bar on mouseover (bgo#742590).
+  + Allow notification requests in web applications (bgo#759176).
+  + Fixes to the about:applications page.
+  + Display insecure content warning on all insecure pages
+    (bgo#744064).
+  + Fix builds, code fixes, etc.
+  + Updated translations.
+- Update _base_version to 3.19.
+
+-------------------------------------------------------------------
+Mon Feb 15 19:19:01 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.18.4:
+  + overview: Do not show local files on the overview (bgo#758469).
+  + web-overview: Do not drop thumbnail update requests
+    (bgo#758470).
+  + location-entry: Encode URI before copy/paste (bgo#761660).
+  + Other code fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan  8 19:28:31 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.18.3:
+  + Fixes to the adblocker (bgo#759501).
+  + Other code fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Dec 10 11:44:05 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.2:
+  + Allow notification requests in web applications (bgo#759176).
+  + Minor fixes to the about:applications page.
+  + Fix a crasher (bgo#759235).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 20 17:59:43 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Fixes to the adblocker (bgo#754954).
+  + Properly propagate keybindings to webpages (bgo#113449).
+  + Do not warn about unsubmitted changes if the forms are empty
+    (bgo#668260).
+  + Build fixes (bgo#755814).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 08:19:40 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Allow opening links in a new incognito window.
+  + Add option to search selected text in user-preferred search
+    engine.
+  + Display page titles in tabs tooltips.
+  + Enable Do Not Track and the ad blocker by default.
+  + Improvements to the form filler and password saving.
+  + Many other UI improvements, bug fixes, and memory improvements.
+  + Updated translations.
+- Update _base_version to 3.18.
+
+-------------------------------------------------------------------
+Thu Sep 10 09:42:08 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.91:
+  + Remember passwords for French tax office (bgo#750024).
+  + Inhibit logout and suspend while downloading files
+    (bgo#339809).
+  + Display decoded URIs in the UI (bgo#710004).
+  + Enable Do Not Track and the ad blocker by default (bgo#754273).
+  + Several code fixes, memory leaks plugged, UI and code
+    improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug 23 04:02:46 UTC 2015 - badshah400@gmail.com
+
+- Add BuildRequires on gnome-icon-theme (which really
+  provides the web-browser.png icon); copy relevant icons from
+  the gnome-icon-theme dir into the hicolor-icon-theme dir and
+  package these files to fix builds for openSUSE:42.
+
+-------------------------------------------------------------------
+Thu Jul 23 07:55:35 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.2:
+  + Navigation improvements to web applications.
+  + Do not leak data in private instances (bgo#751307).
+  + Fix a critical crasher (bgo#747422).
+  + Theming fixes for latest Adwaita (bgo#736363).
+  + Display page titles in tabs tooltips (bgo#752606).
+  + Code fixes, build system improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul  9 13:59:17 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.1:
+  + Allow opening links in a new incognito window (bgo#749454).
+  + Add option to search selected text in user-preferred search
+    engine (bgo#663545).
+  + Theme fixes and improvements (bgo#728874, bgo#746778).
+  + Fix regressions in the form filler (bgo#750842).
+  + Fixes to internationalization in search provider (bgo#737085).
+  + Other code fixes and minor improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul  9 13:58:30 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.3:
+  + Web applications fixes.
+  + Fix translations in the search provider.
+  + Crashers fixed (bgo#747422, bgo#751858).
+
+-------------------------------------------------------------------
+Sat Jun 27 13:02:39 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Fix regressions in the form filler (bgo#750842).
+  + Other code fixes and minor improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 12 18:22:27 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.1:
+  + Improvements to the HiDPI support (bgo#744796).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 24 10:29:00 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Multiple fixes to improve incognito mode's privacy and
+    discoverability.
+  + Show a speaker icon in tabs playing audio.
+  + New support for HTML5 Web notifications.
+  + Make the URL bar visible in application mode.
+  + Show network error page on TLS errors.
+  + Many UI improvements, code fixes, memory leaks plugged.
+  + Help updated.
+  + Updated translations.
+- Update _base_version to 3.16.
+
+-------------------------------------------------------------------
+Wed Mar 18 08:52:32 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Make F6 focus the address entry (bgo#729060).
+  + Toggle the search bar with Ctrl+F (bgo#734316).
+  + Fix DOM-binding related crashers with some websites
+    (bgo#745306).
+  + Other crashers fixed (bgo#744896).
+  + Build fixes (bgo#745247).
+  + Updated translations.
+- Add pkgconfig(webkit2gtk-web-extension-4.0) BuildRequires: new
+  verified dependency.
+
+-------------------------------------------------------------------
+Wed Feb 25 10:17:27 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Make sure that locale changes do not lose search engine.
+  + Add a new Incognito Window desktop action.
+  + Allow access to the URL bar in application mode.
+  + Show a speaker icon in tabs playing audio.
+  + Show a network error page on TLS errors.
+  + Remove unused cache size preference.
+  + Handle notification permissions.
+  + Fix cookies policy values.
+  + Fix memory leaks, segfaults, code improvements, ui fixes.
+  + Updated translations.
+- Drop epiphany-search-provider.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Feb 23 12:56:32 UTC 2015 - dimstar@opensuse.org
+
+- Add epiphany-search-provider.patch: Fix epiphany search provider
+  crashes.
+
+-------------------------------------------------------------------
+Wed Dec 17 21:45:57 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.1:
+  + Open web pages source in default text editor (bgo#738475).
+  + String improvements.
+  + Bump WebKitGTK+ requirement to 2.7.2.
+  + Use script messages instead of dbus.
+  + Use custom local storage location to prevent leaking local
+    storage in incognito mode (bgo#738720).
+  + Fixes to the file utils.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 11 22:02:02 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.2:
+  + Open web pages source in default text editor (bgo#738475).
+
+-------------------------------------------------------------------
+Tue Oct 14 16:47:13 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + Fix download failure when overwriting file (bgo#737329).
+  + Style fixes with GTK+ 3.14 (bgo#737688).
+  + Add mhtml to supported mimetypes (bgo#737738).
+  + Do not keep visited pages in incognito history.
+  + Remove unused contextual-menu options from application mode
+    (bgo#699584).
+  + Use single-process model in application mode.
+  + Make sure that external links in application mode open in the
+    default browser (bgo#658395, bgo#712402).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 24 10:27:06 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Block pages with invalid SSL certificates and warn users about
+    mixed content, for improved security.
+  + Important improvements to the security lock icon and
+    certificates dialog.
+  + Improvements to the history dialog.
+  + Performance improvements to the AdBlocker.
+  + Better integration with the GNOME Shell dock.
+  + UI improvements all over the place, many bugs fixed,
+    and polishing all around.
+  + Updated translations and docs translations.
+- Change base_version to 3.14, following upstreams versioning.
+
+-------------------------------------------------------------------
+Wed Sep 17 16:01:20 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.91:
+  + Fixes to the title box (bgo#732713, bgo#734952).
+  + Fix multiple external uri loads (bgo#735577).
+  + Incognito mode message text improvements (bgo#736065).
+  + Do not accidentally empty the adblocker filters (bgo#697329).
+  + Fix integration with GNOME Shell dock (bgo#736332).
+  + Open search provider results in default browser (bgo#720245).
+  + UI cleanups, code fixes, etc.
+
+-------------------------------------------------------------------
+Fri Aug 29 14:06:51 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.90:
+  + AddBlocker: performance improvements (bgo#730129).
+  + Documentation updated and improved (bgo#730503).
+  + Allow sorting history by title and URL (bgo#699519).
+  + Clean the certificates dialog (bgo#699519).
+  + Improvements to the security lock icon (bgo#666808).
+  + Many other UI polishing and code fixes.
+  + Updated translations.
+- Replace pkgconfig(webkit2gtk-3.0) for pkgconfig(webkit2gtk-4.0)
+  BuildRequires.
+- Drop pkgconfig(gmodule-2.0), no longer needed.
+
+-------------------------------------------------------------------
+Tue Aug 26 16:52:14 UTC 2014 - zaitor@opensuse.org
+
+- Add adwaita-icon-theme BuildRequires: on an installed system,
+  libgtk-3-0 requires it. On build though, it is exlucded to avoid
+  a cycle.
+
+-------------------------------------------------------------------
+Sun Jul 13 12:54:48 UTC 2014 - dimstar@opensuse.org
+
+- Drop gnome-icon-theme-devel BuildRequires and gnome-icon-theme
+  Requires: no longer required after the merging of the themes into
+  Awaita theme, which in turn is a dependency to GTK+ 3.0.
+
+-------------------------------------------------------------------
+Sat May 17 07:28:48 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Fix a crasher with password forms (bgo#723909).
+  + Fix Ctrl+L when completion menu is shown (bgo#611435).
+  + Fix leak in Downlodas button.
+  + Do not clear typed address on first page load (bgo#728143).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 25 12:24:01 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + New title and location bar.
+  + Revamped 'Most visited' homepage.
+  + One process per tab model for improved stability and
+    performance.
+  + A new and simple history dialog.
+  + Most dialogs brought up to GNOME 3.12 style.
+  + Improved style of Incognito mode.
+  + Improved style of the Downloads bar.
+  + Run the gnome-shell search provider as its own, separate
+    process.
+  + Added preference setting to change the search engine.
+  + Use HTTPS with the search engines by default.
+  + Style cleanups to the about: pages.
+  + Many, many, many bug fixes, and code improvements.
+  + Updated user help manual to reflect new UI.
+  + Updated translations.
+- Bump _base_version to 3.12.
+
+-------------------------------------------------------------------
+Wed Mar 19 10:16:36 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + A few more fixes to the HTML overview (bgo#724652, bgo#725190).
+  + Fix download on Shift+click (bgo#725818).
+  + Several code-cleanups.
+  + Fix a crash when opening new windows from the application menu
+    (bgo#725953).
+  + Fixes to the snapshot service (bgo#725815).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  3 17:14:32 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.91:
+  + Further improvements to the new html overview (bgo#723950,
+    bgo#724697).
+  + Performance optimizations to about: pages (bgo#724862).
+  + Other optimizations to tab creation.
+  + Some fixes to the DoNotTrack mode (bgo#724724).
+  + Other minor code fixes.
+  + User help updated for 3.12.
+  + Updated help translations.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 19 20:22:07 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + New and revamped title/location bar (bgo#711408).
+  + New and improved HTML-based overview page (bgo#723950).
+  + Fix popup windows in multiprocess mode (bgo#724052).
+  + Make the find-toolbar work again (bgo#724230).
+  + Do not spawn the profile migrator unnecessarily.
+  + Move the new tab button to the left of the toolbar (bgo#724664).
+  + Bump WebKitGTK+ requirements to 2.3.90.
+  + Many other code cleanups and fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb  7 18:56:09 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + New history window (bgo#721415).
+  + Add one-process-per-tab multiprocess suport (bgo#723302).
+  + Make sure popup windows respect window properties (bgo#723238).
+  + Use header bars in dialogs (bgo#723803).
+  + Do not open an additional empty window when started with
+    arguments in private mode (bgo#723022).
+  + Other many code fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 13 22:56:39 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Add preference option to change the search engine (bgo#709459).
+  + Clean up the style of about: pages (bgo#721288).
+  + Use a custom style for the incognito mode (bgo#696078).
+  + Reset the language setting when all languages are removed from
+    the UI (bgo#720896).
+  + Don't open downloads automatically (bgo#675854).
+  + Improved looks of the location entry (bgo#721285).
+  + Improved looks of the downloads bar (bgo#720941).
+  + Use HTTPS for DDG and Google searches by default (bgo#707694).
+  + Improve filename suggestion for downloads (bgo#674291).
+  + Remove analytics from browsed urls when using 'Do Not Track'
+    (bgo#720520).
+  + Many other code fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Dec 20 19:59:48 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.11.2:
+  + Center and expand tabs (bgo#709444).
+  + Show a different Search bar in each tab (bgo#710542).
+  + Port the toolbar to GtkHeaderBar (bgo#711668).
+  + Do not lock when resizing history window columns (bgo#696653).
+  + Fix critical warnings and other adblocker fixes (bgo#719405,
+    bgo#719399).
+  + Change default charset to iso-8859-1 for greater web
+    compatibility (bgo#720247).
+  + Improve phrasing of the save password infobar (bgo#615742).
+  + Cookies dialog revamp (bgo#720113, bgo#703492).
+  + New passwords dialog (bgo#720239).
+  + Several dialogs cleaned up (bgo#720098, bgo#720113, bgo#703825,
+    bgo#681552, bgo#671424).
+  + Close automatically tabs created only for downloads
+    (bgo#607233).
+  + Move the GNOME Shell search provider to a separate binary
+    (bgo#711409).
+  + Drag 'n Drop fixes in the URL bar (bgo#171180).
+  + Use suggested filename for images (bgo#572819).
+  + Oops screen improvements (bgo#692336).
+  + Remember mailman passwords (bgo#671424).
+  + Fix glow of Download buttons (bgo#720531).
+  + Remove all WK1 dependent code.
+  + Many help fixes and updates (bgo#711176).
+  + Wayland fixes (bgo#708955).
+  + Many other code fixes.
+  + Updated translations.
+- Create a gnome-shell-search-provider-nautilus subpackage, for
+  the GNOME Shell search provider D-Bus service.
+
+-------------------------------------------------------------------
+Sun Dec 15 17:35:56 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.1:
+  + Some code fixes.
+  + Bugs fixed: bgo#708550.
+- Bump _base_version to 3.11.
+
+-------------------------------------------------------------------
+Sun Dec 15 13:44:13 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.10.3:
+  + Do not lock when resizing columns in history window
+    (bgo#696653).
+  + Fix critical warnings (bgo#719405).
+  + Fix text encoding dialog (bgo#703825).
+  + Change default charset to iso-8859-1 for greater web
+    compatibility (bgo#720247).
+  + A few performance fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 15 09:02:53 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.2 (bnc#849913):
+  + Expand the list of languages in preferences dialog
+    (bgo#710664).
+  + Update EasyList filter rules URL for ad blocker (bgoo#710661).
+  + Set default size and allow to reduced the entry (bgo#708994).
+  + Detect .xz as compressed too to avoid filenames like
+    "filename.tar(1).xz" (bgo#711750).
+  + Restore undo/redo in editable content (bgo#698703).
+  + Documentation updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 15 14:29:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Bugs fixed: bgo#708550, bgo#708461.
+  + Updated translations.
+- Drop epiphany-fix-nonvoid.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Sep 24 16:21:38 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+- Change _base_version to 3.10, following the release number.
+
+-------------------------------------------------------------------
+Fri Sep 20 13:32:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.91:
+  + Do not open a new window when resuming a session (bgo#707451).
+  + RTL UI fixes.
+  + Minor code fixes and UI polishing.
+  + Bump WK dependency to 2.1.4.
+- Add epiphany-fix-nonvoid.patch: Fix non-void function not
+  returning a value.
+
+-------------------------------------------------------------------
+Tue Sep  3 06:38:21 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Switch to DuckDuckGo for search results.
+  + Add a search provider for the GNOME Shell (bgo#694943).
+  + Renewed toolbar style using GtkHeaderBar (bgo#706050).
+  + Renewed search bar style using GtkSearchBar (bgo#707086).
+  + Display favicons in the overview thumbnails.
+  + Display a popup with available usernames in login forms
+    (bgo#675060).
+  + Warn upon closing when there are pages with modified forms
+    (bgo#695642).
+  + Code cleanups, removal of deprecated GTK+ API usage, and other
+    code improvements.
+
+-------------------------------------------------------------------
+Thu Aug 15 06:47:09 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.3:
+  + New user manual.
+  + Avoid poking at remote websites on external load (bg#703772).
+  + Many fixes to application mode.
+  + Pre-fill password fields with username field updates
+    (bgo#699606).
+  + Avoid new windows popping up in the wrong workspace
+    (bgo#705811).
+  + Many other minor fixes and code clean-ups.
+- Add yelp-tools BuildRequires: new dependency for the user manual.
+
+-------------------------------------------------------------------
+Thu May 30 12:06:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.2:
+  + Remove WebKit1 support, epiphany is now WebKit2 only.
+  + Fix the encoding dialog, it was broken.
+  + Compile template pages as GResources (bgo#696792).
+  + Allow running a standalone instance with a custom profile
+    (bgo#699602).
+  + Make ephy startup with Wayland.
+  + Lots of minor fixes.
+- Replace pkgconfig(webkitgtk-3.0) with pkgconfig(webkit2gtk-3.0),
+  to be equal to what configure checks for. currently, that does
+  not make a difference, as both .pc files are in the same -devel
+  package and webkit2gtk-3.0 was favored over webkitgtk-3.0 by
+  configure already. The change is in line with removal of WebKit1
+  support.
+- Bump _base_version to 3.9.
+
+-------------------------------------------------------------------
+Tue Apr 16 20:13:41 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Restore zoom on load started (bgo#693951).
+  + Fix memory leaks and other small bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 25 21:27:25 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Fix encoding menu and dialog (bgo#696548).
+  + Sync reload/stop button with load state (bgo#696301).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 20 19:08:40 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + We now use WebKit2 by default.
+  + Fix all the remaining WebKit2 feature regressions that were on
+    track for 3.8 (bgo#678610)
+  + Other bugfixes and cleanups
+
+-------------------------------------------------------------------
+Tue Mar 19 22:47:58 UTC 2013 - dimstar@opensuse.org
+
+- Also obsolete epiphany-extensions-lang.
+
+-------------------------------------------------------------------
+Sat Mar  9 11:58:29 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.91:
+  + Add a setting to control delayed tab loading on startup
+    (bgo#694470).
+  + Port Web to libsecret for password storage (bgo#679918).
+  + New startup page for Incognito mode (bgo#694200).
+  + More missing features and bug fixes in the WebKit2 backend.
+  + Other bugfixes and cleanups.
+- Replace pkgconfig(gnome-keyring-1) BuildRequires with
+  pkgconfig(libsecret-1), following upstreams port to libsecret.
+
+-------------------------------------------------------------------
+Fri Feb 22 10:10:18 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.90:
+  + Add "undo closed tab" functionality (bgo#128184)
+  + Remove installed headers, API doc and pc files, since we don't
+    have extensions anymore.
+  + Only load pages when their tab is switched to on session
+    restore (bgo#675302)
+  + Support notification filtering (bgo#690996)
+  + Add a New Tab button in the toolbar (bgo#684616)
+  + More bugfixes and missing functionality for the WebKit2
+    backend.
+  + Other bugfixes and cleanups.
+- Drop -devel subpackage: as there are no headers and API docs
+  installed, this package is useless.
+- Obsolete epiphany-devel from the main-package.
+
+-------------------------------------------------------------------
+Fri Feb  8 13:42:06 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + Remove ability to open URIs in the clipboard through middle
+    click. This option was disabled by default since a long time
+    ago, and broken in WK2.
+  + Load and save the session asynchronously.
+  + Remove spaces in Accept-Language header for compatiblity
+    (bgo#671652).
+  + Smarter copy email address action (bgo#688166).
+  + A bunch of WebKit2 improvements. The WebKit2 version is now
+    really close to feature-complete.
+  + Other bug fixes and cleanups.
+
+-------------------------------------------------------------------
+Tue Jan  8 18:02:05 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.3:
+  + Vastly improve the icon generation for Web Applications
+    (bgo#657755)
+  + Allow to zoom images, since this is actually supported by
+    WebKit now
+  + New design for the find bar (bgo#689929)
+  + Add an 'Incognito window' mode in the UI (bgo#676914)
+  + Support back/forward mouse buttons (bgo#337852)
+  + Improve heuristics to decide whether to open new windows or
+    where to append new tabs when Web is invoked from other
+    applications (bgo#685976)
+  + Add zoom controls to the gear menu (bgo#683625)
+  + Use GtkSearchEntry all over the place instead of our own
+    version (bgo#687744)
+  + Tidy up the application menu to be more in sync with other core
+    apps (bgo#678962)
+  + Add support for favicons in WebKit2.
+  + Tons of cleanups and other bugfixes.
+- Replace pkgconfig(libsoup-gnome-2.4) BuildRequires with
+  pkgconfig(libsoup-2.4), following upstreams changes.
+- Add pkgconfig(libwnck-3.0) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Wed Oct 24 22:08:10 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.7.1:
+  + This release removes support for traditional extensions
+    (bgo#685630)
+  + Adblock is now imported into the core browser, disabled by
+    default. See Preferences->Privacy to enable it (bgo#681657)
+  + Remove JavaScript preference from the UI. Pretty much every
+    single page the average user visits needs JavaScript, so this
+    is a "Please break my web" preference in disguise. For those
+    concerned about security and/or privacy the GSetting remains
+    available. (bgo#685393)
+  + Merge the application menu in the gear menu when not running
+    under the Shell. (bgo#673054)
+  + Do not automatically load resources we cannot handle unless
+    they are the main resource in the page. (bgo#683635)
+  + Many other bugfixes.
+- Drop pkgconfig(gobject-introspection-1.0) BuildRequires: there
+  is no more gobject-introspection support with webkit2.
+- Stop passing --enable-introspection to configure.
+- Remove the extension-dir creation hack in install: there are no
+  extensions supported anymore.
+- Obsolete epiphany-extensions: as there is no extension support
+  anymore it's cleanest to obsolete the old -extensions packages.
+
+-------------------------------------------------------------------
+Tue Oct 16 13:33:58 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Do not replace envirornment when spawning ephy-profile-migrator
+    (bgo#683538)
+  + Merge the app menu into the gear menu when the system does not
+    support global application menus (bgo#673054)
+  + Add F10 as accel for the gear menu (bgo#673878)
+  + Make sure windows are properly closed when using the 'Quit'
+    option in the app menu (bgo#679844)
+  + Do not automatically download embedded objects (bgo#683635)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 25 08:45:37 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 19:11:45 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.5.92:
+  + Respect 'new-windows-in-tabs' when opening links (bgo#641949)
+  + Present windows when opening new links in tabs (bgo#641949)
+  + Use symbolic icon for downloads box close button (bgo#683966)
+  + Add a close button to the find toolbar (bgo#683967)
+  + Make the overview work when building with WK2.
+  + Many code cleanups, minor bug fixes, leak fixes, new tests.
+
+-------------------------------------------------------------------
+Wed Sep  5 12:44:14 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.91.1:
+  + Fix the epiphany-extensions build
+- Changes from version 3.5.91:
+  + New overview with most visited pages as starting page
+    (bgo#455173)
+  + Avoid using 'Blank page' as title for pages without title
+    (bgo#682354)
+  + Do not restore tool windows on startup (bgo#682966)
+  + Port preferred language preferences to WK2 (bgo#679685)
+  + Add code coverage reports (--enable-code-coverage) (bgo#683297)
+  + Several fixes and updates to the test suite.
+  + Many fixes and improvements in the profile migrator.
+  + Many other code fixes and cleanups.
+- Add pkgconfig(gnome-desktop-3.0) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Thu Aug 23 21:20:40 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Improved url entry autosearch (bgo#681022)
+  + Show information about TLS certificates and SSL errors when
+    clicking the lock icon (bgo#681506)
+  + Store http disk cache with temporary profiles for improved privacy
+    (bgo#681147)
+  + Do not add error pages to back forward list.
+  + Do not add error pages to history (bgo#655619)
+  + WebKit2: Show information about web and plugins processes in
+    about:memory (bgo#679764)
+  + Port saving to WebKit2 (bgo#679368)
+  + Update to recent WebKit2 API changes.
+  + Dependencies cleanup.
+  + Many code cleanups and bug fixes.
+- Drop ca-certificates BuildRequires: the build system no longer
+  knows --with-ca-file and as such no longer needs it.
+- Completely rework BuildRequires:
+  + Removed: gnome-doc-utils-devel, gobject-introspection-devel,
+    iso-codes-devel, libavahi-gobject-devel,
+    libgnome-keyring-devel, libnotify-devel, libsoup-devel,
+    libtool, libwebkitgtk3-devel, libxslt-devel, mozilla-nss-devel,
+    pkgconfig(ice), pkgconfig(sm)
+  + Added: pkgconfig()-style: avahi-client, avahi-gobject, gcr-3,
+    gio-unix-2.0, glib-2.0, gmodule-2.0, gnome-keyring-1,
+    gobject-introspection-1.0, gsettings-desktop-schemas,
+    gthread-2.0, gtk+-unix-print-3.0, iso-codes, libnotify,
+    libsoup-gnome-2.4, libxml-2.0, libxslt, nss, webkitgtk-3.0.
+- No longer pass --disable-scrollkeeper, --enable-zeroconf and
+  --enable-network-manager to configure: the parameters are no
+  longer known by the build system.
+
+-------------------------------------------------------------------
+Sun Aug 12 09:27:16 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.5:
+  + Rewrite EphyEncoding(s) so that it does not use EphyNode
+    anymore. (bgo#680735)
+  + Remove Seed support for extensions
+  + Make the browser recover from broken session state files
+    (bgo#680590)
+  + Stop setting 'persist-key' in our filechooser (bgo#655508)
+  + Do not copy history from parent tab when doing Ctrl+T
+    (bgo#651918)
+  + Suggest the right name in 'Save As' more often, using the
+    information available in the Content-Disposition headers.
+    (bgo#674291)
+  + Add a 'enable-webaudio' setting, false by default
+  + Port disk cache, inspector and spell-checking to WebKit2
+  + Many other bugfixes and cleanups.
+- Drop libseed-gtk3-devel BuildRequires and stop passing
+  --enable-seed to configure, following upstream dropping seed.
+
+-------------------------------------------------------------------
+Sat Aug 11 18:29:10 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + Make the security level indicator work in WebKit2.
+  + Make site-specific quirks work in WebKit2.
+  + Make cookies work in WebKit2.
+  + Fix the page title not being updated properly in WebKit2.
+  + Make the fullscreen popup work in WebKit2.
+  + Make find work in WebKit2.
+  + Make downloads work in WebKit2.
+  + Make resource tracking work in WebKit2.
+  + Code cleanups and refactorings (ie, moving EphyFileMonitor out
+    of EphyWebView).
+
+-------------------------------------------------------------------
+Fri Aug 10 17:42:35 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.3:
+  + Initial WebKit2 support
+  + Improve fullscreen UI, and add support for HTML5 fullscreen
+    (bgo#676905)
+  + Add support for 'Do Not Track', http://donottrack.us/
+  + Migrate profile directory to the XDG config directory
+    (~/.gnome2/epiphany -> ~/.config/epiphany) (bgo#522810)
+  + Add new unit tests for EphyShell, EphySession,
+    EphyProfileMigrator, EphyWebAppUtils, ...
+  + Lots and lots of cleanups and other minor fixes.
+- Drop epiphany-fix-memory-leaks.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Aug  9 23:16:35 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.1:
+  + Use the linked style class for the download bar (bgo#672712)
+  + Use glib resources for the UI and CSS files
+  + Default to always restoring the last session on startup,
+    regardless of how epiphany was closed (bgo#673453, bgo#673122)
+  + Use intltool 0.50 (bgo#672932)
+  + Improvements in the url entry layout (bgo#672927)
+  + Fix stop/reload button misalignment when using custom font size
+    (bgo#668135)
+  + New org.gnome.Epiphany.ui.tabs-visibility-policy setting. It's
+    now possible to always hide tabs.
+  + Consider email-type entries when doing login/password
+    autocomplete (bgo#666326)
+  + Prioritize smart bookmarks URIs over normal URIs when exporting
+    bookmarks (bgo#534565)
+  + Restore right-click/long press menus in back/forward buttons
+    (bgo#671609)
+  + Remove completely outdated help (bgo#674047)
+
+-------------------------------------------------------------------
+Wed Aug  8 12:26:37 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.4.3:
+  + Require WebKitGTK 1.8.2.
+  + Do not cancel downloads that have not been started yet
+    (bgo#681010).
+  + Prevent double calls to quit in history service (bgo#680529).
+
+-------------------------------------------------------------------
+Sun Jul 22 23:13:41 UTC 2012 - zaitor@opensuse.org
+
+- Start using new upstream name Web, having a different name for
+  launcher and name in application might confuse users.
+  (bnc#772554)
+
+-------------------------------------------------------------------
+Mon Jul 16 06:28:41 UTC 2012 - badshah400@gmail.com
+
+- Add epiphany-fix-memory-leaks.patch to fix several memory leaks
+  (bgo#677720, bgo#676484, bnc#771568); patches taken from
+  upstream git commits and rebased for current version.
+
+-------------------------------------------------------------------
+Sat May 19 18:05:24 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.4.2:
+  + Fix stop/reload button mis-alignment when using custom fonts
+    (bgo#668135).
+  + Correctly set the 'system' language in the language settings.
+  + Consider email inputs when looking for login/password
+    combinations (bgo#666326).
+  + Do not hit the sqlite length limit on querys (bgo#674848).
+  + Fix the 'Add Language' dialog layout (bgo#676043).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 18 21:46:16 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.4.1:
+  + Listen to the org.gnome.Eiphany.ui.show-toolbars setting
+  + Do not always show bookmarks without any topic set in the
+    completion (bgo#673301)
+  + Use the right StartupNotify key name for Web Apps (bgo#673865)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 28 06:39:13 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0.1:
+  + Listen to favicon changes in the history window (bgo#672525)
+  + Remove ephy-history.h from epiphany.h
+  + Updated translations.
+- Drop epiphany-fix-header.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Mar 26 23:24:46 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Avoid infinite loops in the profile migrator for existing but
+    empty history files (bgo#672547)
+  + Updated translations.
+- Add epiphany-fix-header.patch: fix epiphany.h to be usable, taken
+  from git.
+
+-------------------------------------------------------------------
+Wed Mar 21 10:08:23 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.92:
+  + Fail in application mode if we get a nonexistent profile
+    (bgo#669700)
+  + Add unit tests for EphyWebView (bgo#669548)
+  + Open pages in a new tab on middle click for the history editor
+    (bgo#671635)
+  + Set a max width to the statusbar label (bgo#671520)
+  + Automatically add file:// when existing absolute paths are
+    typed in the URL entry (bgo#671792)
+  + Fix bookmarklet's titles when they are created (bgo#672194)
+  + Replace the EphyFaviconCache with WebKit's favicon cache
+    (bgo#648653)
+  + Other bugfixes and cleanups.
+
+-------------------------------------------------------------------
+Sun Mar 11 18:40:33 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.91:
+  + The big change is that the history backend has been completely
+    rewritten. It now uses SQLite as the storage medium, and can
+    keep your browsing history indefinitely (so gone is the 10-day
+    limit).
+  + Validate web applications before listing them in
+    about:applications (bgo#669836)
+  + Fix loading of <IP>:<port> URIs (bgo#669461)
+  + Fix loading of <domain>:<port> URIs (bgo#670674)
+  + Add back the extensions menu (bgo#669951)
+  + Many other small fixes and improvements.
+- Add pkgconfig(sqlite3) BuildRequires for the new history backend.
+
+-------------------------------------------------------------------
+Mon Mar  5 14:08:45 UTC 2012 - vdziewiecki@suse.com
+
+- add Provides: browser(npapi) FATE#313084
+
+-------------------------------------------------------------------
+Wed Feb 22 07:07:12 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.90:
+  + Enable accelerators in the supermenu (bgo#668325)
+  + Use the symbolic icon for the clear action in the search entry
+    (bgo#669131)
+  + Convert web application names to the proper encoding before
+    saving them (bgo#658028)
+  + Make the global menu work in private mode too (bgo#669740)
+  + Several fixes for the web inspector (bgo#669835)
+  + Other bugfixes and cleanups
+
+-------------------------------------------------------------------
+Sun Feb 19 17:06:11 UTC 2012 - dimstar@opensuse.org
+
+- Add pkgconfig(ice), pkgconfig(sm) and pkgconfig(x11)
+  BuildRequires: they used to be pulled in by something else, but
+  the relayout of xorg-x11 packages changed that.
+
+-------------------------------------------------------------------
+Tue Feb  7 13:42:05 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.5:
+  + Make about window modal again (bgo#668113)
+  + Remove statusbar hits for menu actions (bgo#668191)
+  + Support external protocols (apt://, magnet://, etc) properly
+    (bgo#551857)
+  + Disable most menu actions in about:blank (bgo#668105)
+  + Make the name 'Web' visible in more places (bgo#666587)
+  + Stop shipping the bookmarks editor .desktop file
+  + Run all unit tests on 'make check'
+  + Restore <alt>+<number> accels for tabs (bgo#668702)
+  + Add toggle to enable WebGL support, off by default
+  + *Lots* of cleanups and refactorings.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+- Drop epiphany-hide-bookmark-editor.patch: not needed since
+  bme.desktop doesn't exist anymore.
+
+-------------------------------------------------------------------
+Wed Jan 18 22:43:54 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.4.1:
+  + Remove Find Next/Previous from the super menu.
+  + Remove Print Preview and Print Setup from the super menu.
+  + Remove "Send link by mail..." from the super menu, move it to
+    the document context menu.
+  + Hide EphyWindow's titlebar when maximized.
+  + Fix crash when updating the EphyEmbed statusbar after dispose
+    (bgo#668171)
+
+-------------------------------------------------------------------
+Tue Jan 17 10:47:39 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.4:
+  + Merge the stop/reload button with the location entry
+    (bgo#667176)
+  + Merge the back and forward buttons in a single button group
+    (bgo#666604)
+  + Use the Shell globalmenu for application actions when available
+  + Drop the menubar in favor of a supermenu a-la Chrome
+    (bgo#665479)
+  + Make sure to hide all chrome in application mode (bgo#667634)
+  + Add mnemonics for password and recovery infobars (bgo#667238)
+  + Enable latest HTML5 fullscreen support (bgo#665341)
+  + Make g_setenv calls early during startup to avoid threading
+    race conditions (bgo#659145)
+  + Stop using gtk_button_{press,release} to fake middle clicks in
+    the toolbar buttons (bgo#628364)
+  + Try to be smarter about the content type of downloads
+    (bgo#662059)
+  + Lots of other small fixes and cleanups
+- Add explicit pkgconfig(gtk+-3.0) BuildRequires: it was missing
+  before.
+
+-------------------------------------------------------------------
+Tue Dec 20 10:11:06 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.3.3:
+  + Combine the stop/reload buttons (bgo#657655)
+  + Drop bookmarks/topics bar
+  + Properly save about: URIs in session (bgo#664483)
+  + Use a vanilla GtkToolbar instead of an EggEditableToolbar
+    (bgo#664483)
+  + Use an overlay progressbar for the load progress (bgo#665470)
+  + Use GtkOverlay for the statusbar (bgo#653996)
+  + Kill right/left padding in the toolbar so that icons are
+    accessible from the edge of the screen (bgo#665518)
+  + Use new-windows-in-tabs by default (bgo#656091)
+  + Remove "Go" and "Tabs" menu
+  + Remove user visible concept of "homepage" (bgo#665469)
+  + Remove the toolbar editor (bgo#664260)
+  + Use uniform style for about: pages (bgo#665136)
+  + Use GTK+ 3.0 icon names (bgo#665170)
+  + Make sure WebApps are always shown in the shell (bgo#664751)
+  + Use SoupSession:ssl-use-system-ca-file property instead of
+    copying the detection code (bgo#633109)
+  + Never show tabs in application mode (bgo#663668)
+  + Layout fixes for the properties dialog (bgo#662252)
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Remove --with-ca-file/--without-ca-file configure option: removed
+  upstream.
+
+-------------------------------------------------------------------
+Tue Nov 22 09:38:46 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.3.2:
+  + Use GNetworkMonitor to monitor network changes (bgo#664096)
+  + Remove use of deprecated GTK+ APIs (bgo#664120)
+  + Fix icon in PDM's "Clear All" button (bgo#663159)
+  + Show the WebKit version in the about dialog
+  + Other minor fixes
+
+-------------------------------------------------------------------
+Thu Oct 27 21:07:33 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.3.1:
+  + Integrate fixes from 3.2.1.
+  + Port from GtkTable to GtkGrid (bgo#661347)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 18 14:51:13 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.1:
+  + Fix markup of dialog button (bgo#660749)
+  + Fix crash when NetworkManager is not present (bgo#659103)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:59 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Tue Sep 27 14:39:28 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 22 11:09:08 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.92:
+  + Disable irrelevant actions in web app mode (bgo#657624)
+  + Disable session resume in web app mode (bgo#658739)
+  + Normalize web app profile directory and desktop file names
+    (bgo#658010)
+  + Remove G_DIRECTORY_SEPARATOR from web app names (bgo#658028)
+  + Other fixes and cleanups.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Sep  7 02:50:41 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.91.1:
+  + Fix mistake in error pages.
+
+-------------------------------------------------------------------
+Tue Sep  6 18:59:04 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.91:
+  + Implement about:applications to manage Web Applications. This
+    should go away in 3.4 in favor of a GNOME-wide solution.
+  + Fix warnings when coming back from fullscreen (bgo#657936)
+  + Hide irrelevant context menu actions when in app mode
+    (bgo#657624)
+  + Remove unneeded markup in glade files (bgo#102382)
+  + Recursively delete temporary profile dirs (bgo#658201)
+  + Improve messages in error pages (bgo#637903)
+  + Fix error pages for RTL locales (bgo#314205)
+  + Ask for confirmation before overwriting web applications
+    (bgo#658060)
+
+-------------------------------------------------------------------
+Wed Aug 31 12:55:50 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.90:
+  + Add support for saving web pages as standalone "Web
+    Applications".
+
+-------------------------------------------------------------------
+Tue Aug 16 17:34:52 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.5:
+  + Use new symbolic icons for security status (bgo#650789)
+  + Fix gir scanner invocation (bgo#653031)
+  + Unescape tooltips in download widget (bgo#653690)
+  + Fix "Browse to" in downloads (bgo#651699)
+  + Clear finished downloads when closing downloads bar
+    (bgo#653918)
+  + Use a CSS file for styling (bgo#644805)
+  + Many other fixes and cleanups.
+
+-------------------------------------------------------------------
+Thu Jul  7 10:46:47 CEST 2011 - vuntz@opensuse.org
+
+- Remove unneeded gnome-themes BuildRequires: it was probably added
+  at some point, when epiphany was installing icons for
+  accessibility themes.
+- Document the branding.conf file that can be used to set the
+  default user agent.
+
+-------------------------------------------------------------------
+Wed Jul  6 16:31:22 CEST 2011 - vuntz@opensuse.org
+
+- Change branding-upstream subpackage:
+  + Add Requires for epiphany since the branding package is useless
+    without it.
+  + Update summary and description.
+  + Make noarch.
+- Update summaries in other subpackages.
+- Change branding Requires in main subpackage to be "= %{version}"
+  since it has to be versioned.
+
+-------------------------------------------------------------------
+Tue Jul  5 15:04:55 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.3:
+  + Port to GtkApplication
+  + Do not use GNOME font settings as our default, just rely on
+    more generic system config ("sans", "serif")
+  + Port to GDBus
+  + Assume NetworkManager is present. This is not a hard dependency
+    since we only require it at runtime, as we use it through dbus.
+  + Fix "Use picture as background" (bgo#647604)
+  + Implement a basic about:memory page with memory usage data
+  + Respect gtk-keynav-wrap-around in our page-change handler
+  + Fix removal of items by DnD in toolbar editor (bgo#647265)
+  + Many other cleanup and fixes
+- Remove NetworkManager-devel BuildRequires: it is not needed at
+  build time anymore.
+- Remove startup-notification-devel BuildRequires: the explicit
+  build dependency has been removed upstream.
+- Add NetworkManager Requires as epiphany now won't work without
+  it.
+
+-------------------------------------------------------------------
+Tue Jun 14 09:12:54 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.2:
+  + Add an option in the chrome context menu to hide the menubar.
+  + Open new tabs to the right of the current one also for
+    Ctr+Enter [bgo#647976]
+  + Use WebKit's internal source viewer by default [bgo#597156]
+  + Drop yellow background in secure location entry and use
+    symbolic icons.
+  + Add spell checking, enabled by default.
+  + Warn again about unsubmitted forms on close [bgo#604986]
+  + Add about:plugins support [bgo#575498]
+  + Many other bugfixes.
+
+-------------------------------------------------------------------
+Wed May 18 19:04:45 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.0.3:
+  + Call g_type_init in the migrator explictly.
+
+-------------------------------------------------------------------
+Wed May  4 13:11:44 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.0.2:
+  + Fix overly zealous tab grouping.
+  + Fix compiler warnings.
+
+-------------------------------------------------------------------
+Wed Apr 27 14:06:29 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.1:
+  + Auto-shrink images by default.
+  + Rely on WebKit 1.4.0 to not load GTK+2.x plugins instead of
+    maintaining our own plugins blacklist.
+  + bgo#612155: better handle popup window sizes.
+  + bgo#580951: do not save window state for popup windows.
+  + bgo#646724: fix garbage filename in "Save link as...".
+  + bgo#647976: group tabs for links opened with Ctrl+Enter.
+  + bgo#643909: make the floating statusbar escape the mouse
+    pointer.
+  + bgo#642403: make the URL selectable in secure sites again.
+
+-------------------------------------------------------------------
+Tue Apr  5 16:59:27 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Use the system 'web-browser' high-res icon instead of our own
+    low-res version. (bgo#645713)
+  + Use /org/gnome as starting path for schemas.
+  + Respect our documented special key values for the download dir
+    (bgo#644641)
+- Copy icons from gnome theme to hicolor to make package check
+  happy.
+- Remove post/postun macros for a11y icons, they have been removed.
+
+-------------------------------------------------------------------
+Tue Mar 22 16:47:36 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.92:
+  + Fix pages opening in the wrong tab when a session has been
+    resumed. (bgo#625116)
+  + Cleanups in autotools setup. (bgo#609498)
+  + Other bugfixes.
+- Changes from version 2.91.91.1:
+  + bgo#644261: Fix theming issues in the primary toolbar.
+  + bgo#644247: Remove minimum font size setting from the UI.
+  + bgo#644521: Use GNOME document font for the default font,
+    instead of the UI font.
+  + bgo#644523: Use Serif as default family instead of Sans Serif,
+    like Every Other Modern Browser Does(tm).
+- Changes from version 2.91.91:
+  + The downloads UI has been totally revamped. It is very similar
+    to how Chrome works, and should fit much better in the overall
+    GNOME 3.0 design (bgo#618443).
+  + Add a border and some padding around the floating statusbar.
+  + Do a DNS prefetch on the completion items when the cursor is
+    set over them more than a 1/4th of a second. Should speed-up
+    page loading. (bgo#606087)
+  + Other minor bugfixes.
+
+-------------------------------------------------------------------
+Thu Feb 24 10:50:09 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.90:
+  + Port statusbar to GeditOverlay; fixes a bunch of bugs and
+    should be more efficient.
+  + Group new tabs by default when opened from another page; this
+    obsoletes the tab-group extension.
+- Changes from version 2.91.6:
+  + Use libsoup's cache implementation instead of WebKit's, which
+    has been removed now.
+- Changes from version 2.91.5:
+  + Compilation fixes for GTK+ 2.99.0
+  + Fix potential dataloss in topic selection dialog (bgo#518727)
+  + Fix color setting in location bar (bgo#636501)
+- Changes from version 2.91.4.1:
+  + Various compilation fixes
+- Changes from version 2.91.4:
+  + Blacklist Flash plugin, since it will just crash in our
+    GTK+ 3.x process.
+  + Use custom (and nicer) error pages (bgo#592667)
+  + Fix minimum font size setting, add custom setting for font
+    sizes (bgo#636761)
+  + Separate migration code into another binary, makes the main
+    ephy binary not link with NSS (bgo#636685)
+  + Fix errors properly, particularly do not clobber the global
+    error state for errors not happening in the main frame
+    (bgo#623012)
+- Changes from version 2.91.3:
+  + Fix WebKitSoupCache size setup (bgo#635066)
+  + Fix some leaks in the GObject DOM using code.
+  + Other small changes.
+- Changes from version 2.91.2:
+  + Get rid of the spinner in the toolbar, port tab spinners to
+    GtkSpinner (bgo#524809, bgo#598442)
+  + Enable web inspector unconditionally.
+  + Use full content zooming by default (bgo#615362).
+  + Various cleanups and bugfixes.
+- Changes from version 2.91.1:
+  + Port to GSettings (bgo#624485)
+  + Updated to use GTK+ 3.x (unconditionally) and
+    gobject-introspection 0.9.5.
+  + Use the geolocation support in WebKit (bgo#626687)
+  + A ton of bugfixes.
+- Changes from version 2.31.5:
+  + Show All files in Save dialogs, not only "supported" ones (eg,
+    HTML).
+  + Fix epiphany .pc files to have the correct dependencies.
+- Changes from version 2.31.4:
+  + Port to GTK+ 3.x. GTK+ 3.x is now required to build,
+    2.x support is dropped.
+- Changes from version 2.31.3:
+  + Remove encoding breaking translations of '...' strings
+    (bgo#613119)
+  + Fix URL entry eating up your manually entered URLs in some
+    cases (bgo#620129)
+- Changes from version 2.31.2:
+  + Use an infobar to inform of session restoration instead of a
+    modal dialog.
+  + Show a dialog when F7 is pressed to enable caret browsing
+    (bgo#501666)
+  + Use a Chrome-like embedded statusbar and get rid of the
+    traditional one (bgo#609713)
+  + Highlight matches when doing "Find again" in search bar
+    (bgo#611499)
+  + Refactor load status management in EphyWebView (bgo#593743)
+  + Open URIs on a new tab when doing middle click in history
+    items (bgo#611400)
+  + Re-enable favicons in entry completion (bgo#616345)
+  + Change sensitiviness of back/forward buttons when clearing
+    history (bgo#539716)
+  + Make sure we clear webkit's internal history when clearing the
+    history in Epiphany (bgo#539716)
+  + Send 'Referer' on headers sent for context menu HTTP
+    downloads. (bgo#136292)
+  + Fix leave-fullscreen button visibility (bgo#611445)
+- Drop epiphany-fix-introspection-build.patch and
+  epiphany-mime-scheme-handler.patch: fixed upstream.
+- Remove gconf2-devel BuildRequires and %gconf_schemas_prereq.
+- Use %glib2_gsettings_schema_* macros.
+- Remove explicit gtk2-devel, libwebkitgtk-devel, libxml2-devel
+  Requires of devel package: the right ones will be automatically
+  be added the pkgconfig() way.
+- Change BuildRequires:
+  + libseed-devel to libseed-gtk3-devel.
+  + libwebkitgtk-devel to libwebkitgtk3-devel.
+- Add pkgconfig(gsettings-desktop-schemas) BuildRequires.
+
+-------------------------------------------------------------------
+Sun Feb 13 12:18:31 CET 2011 - vuntz@opensuse.org
+
+- Call missing relevant macros in %post/%postun:
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Tue Dec 14 15:13:06 CET 2010 - vuntz@opensuse.org
+
+- Own /usr/share/gnome and /usr/share/gnome/help to fix build.
+
+-------------------------------------------------------------------
+Fri Dec 10 16:23:06 CET 2010 - vuntz@opensuse.org
+
+- Add epiphany-mime-scheme-handler.patch to register the http and
+  https scheme MIME types. This is needed because of a change in
+  how gio works.
+- Call %desktop_database_post/%desktop_database_postun in
+  %post/%postun.
+
+-------------------------------------------------------------------
+Fri Oct  1 18:40:02 CEST 2010 - vuntz@opensuse.org
+
+- Add epiphany-fix-introspection-build.patch to fix build with
+  recent version of gobject-introspection.
+
+-------------------------------------------------------------------
+Sun Sep 19 00:40:55 CEST 2010 - vuntz@opensuse.org
+
+- Move gir files to devel subpackage.
+
+-------------------------------------------------------------------
+Thu Sep 16 09:44:09 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.6:
+  + Do not use deprecated gdk_display
+  + Do not enable maintainer mode for tarballs
+
+-------------------------------------------------------------------
+Tue Sep 14 10:11:17 CEST 2010 - vuntz@opensuse.org
+
+- Pass --with-distributor-name="SUSE" to configure, and remove
+  lsb-release BuildRequires: it was only needed for this.
+
+-------------------------------------------------------------------
+Sat Sep  4 13:35:35 CEST 2010 - vuntz@opensuse.org
+
+- Add ca-certificates Recommends.
+
+-------------------------------------------------------------------
+Wed Sep  1 14:30:17 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.5:
+  + Don't depend on GTK 2.21.x.
+
+-------------------------------------------------------------------
+Tue Aug 31 01:42:39 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.4:
+  + Prevent a crasher in the download dialog
+  + Highlight matches on "Find again"
+  + Install introspection files in our own prefix, not g-i's
+  + Fix feeds URL for relative URIs
+  + Don't let ephy-favicon-cache store invalid files
+  + Update libegg to latest master
+  + Remove deprecated functions to work with GTK+ 2.22 / master
+
+-------------------------------------------------------------------
+Tue Aug 24 15:49:35 CEST 2010 - vuntz@opensuse.org
+
+- Do not call autoreconf: this is not needed anymore.
+- Remove gcc-c++, gnome-common, gtk-doc BuildRequires.
+- Remove gir-repository BuildRequires: not needed anymore.
+- Merge doc subpackage with devel subpackage, since this is
+  developer documentation.
+
+-------------------------------------------------------------------
+Tue Aug 17 15:35:08 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.3:
+  + bgo#624421: Adapt to GtkNotebook signal signature changes
+  + Fix crash when trying to load URIs with no path
+  + bgo#611400: Open URIs on new tab when middle-clicking on an
+    history item
+  + bgo#539716: Connect to the 'cleared' signal and change the
+    sensitivity flags
+  + bgo#539716: Split EphyNavigationAction in one abstract class
+    and two subclasses
+  + bgo#539716: Make sure WebKitWebHistory is cleared when cleared
+    EphyHistory
+  + bgo#136292: Send 'Referer' on headers sent for context menu
+    HTTP downloads
+  + bgo#611445: ephy-toolbar: fix leave-fullscreen item visibility
+  + Updated translations.
+- Pass --disable-maintainer-mode to configure to support building
+  with gtk 2.21.6, which deprecated some more symbols.
+
+-------------------------------------------------------------------
+Sat Aug  7 12:18:27 CEST 2010 - vuntz@opensuse.org
+
+- Change libwebkit-devel BuildRequires (and Requires of devel
+  package) to libwebkitgtk-devel, since this package got renamed.
+
+-------------------------------------------------------------------
+Mon Jun 14 11:43:54 CEST 2010 - vuntz@opensuse.org
+
+- Add epiphany-hide-bookmark-editor.patch to hide bme.desktop in
+  the menus.
+- Do not add a System category to bme.desktop.
+
+-------------------------------------------------------------------
+Thu Jun  3 19:00:25 CEST 2010 - vuntz@opensuse.org
+
+- Add ca-certificates BuildRequires and use --with-ca-file for
+  configure on 11.3 and later, now that we have a bundle for all
+  certificates.
+
+-------------------------------------------------------------------
+Fri Apr  9 16:58:15 CEST 2010 - vuntz@opensuse.org
+
+- When creating the extensions directory, create it with the value
+  that is in epiphany's pkg-config file. This ensures we'll have
+  the right directory.
+- Get ready to use the certificate bundle file: we will pass
+  --with-ca-file=%{_sysconfdir}/ssl/ca-bundle.pem to configure
+  instead of --without-ca-file on 11.3 and later. This is commented
+  out for now since we need a ca-certificates package that is not
+  in Factory yet.
+
+-------------------------------------------------------------------
+Thu Apr  8 19:45:18 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.2:
+  + Correct extensions dir definition in lib/ too.
+- Changes from version 2.30.1:
+  + Improve page print implementation (bgo#609756)
+  + Ignore case of URL schemes (bgo#605089)
+  + Check if URL is NULL before setting its history title
+    (bgo#582629)
+  + Fix crasher when pressing Up arrow twice (bgo#599156)
+  + Look for extensions in the correct directory, using our API
+    version as versioning number.
+
+-------------------------------------------------------------------
+Wed Mar 31 01:51:49 CEST 2010 - vuntz@opensuse.org
+
+- Create the 2.30 extension directory, instead of 2.29. This is
+  needed to fix the build of epiphany-extensions.
+
+-------------------------------------------------------------------
+Mon Mar 29 22:12:59 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Fix form-based login detection in many sites (bgo#608740)
+  + Make sure we show notifications in all cases for downloads
+    (bgo#611635)
+  + Various fixes to the migration code (bgo#608687)
+
+-------------------------------------------------------------------
+Mon Mar  8 22:43:27 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.92:
+  + bgo#610844: Fix shift+click being broken in input areas
+  + bgo#610721: Always use i18n'd Desktop and Downloads dir names
+
+-------------------------------------------------------------------
+Fri Mar  5 07:41:55 UTC 2010 - dimstar@opensuse.org
+
+- Do not provide pixmaps/web-browser.svg; it's no longer provided
+  by gnome-icon-theme.
+
+-------------------------------------------------------------------
+Thu Mar  4 12:58:11 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.91:
+  + bgo#604991: Fix window moving and resizing through DOM methods,
+    a.k.a. 'Fix Browser Pong'
+  + bgo#405505: Show favicons instead of radiobuttons in the tabs
+    menu
+  + Replace 'Enable Java' preference (which wasn't working) with a
+    'Enable Plugins' preference (which works).
+  + bgo#600663: Report broken SSL certs through the usual 'broken
+    padlock' icon in the URL entry
+  + bgo#604950: Make Ctrl+Shift+Click open links in a new window
+    again
+  + Lots of bugfixes and code cleanups.
+- Pass --without-ca-file to configure, as we do not yet have a
+  global CA store.
+
+-------------------------------------------------------------------
+Thu Feb 11 15:20:26 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.90.1:
+  + Fix crasher when storing passwords.
+- Changes from version 2.29.90:
+  + Remove support for XML legacy format in extensions (bgo#607881)
+  + Implement EphyEmbedPersist using WebKitDownload (bgo#600987)
+  + Reimplement support for cookie acceptance policies (bgo#607484)
+  + Change default toolbar layout to have just one toolbar
+    (bgo#412385)
+  + Reimplement print preview (bgo#609021)
+  + A bunch of other small bugfixes.
+
+-------------------------------------------------------------------
+Mon Jan 25 23:17:46 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 2.29.6:
+  + Enable the webkit page cache by default; this should give a
+    noticeable to the back/forward page transition
+  + Make text search more responsive by introducing a small delay
+    between a key stroke and the actual search. (bgo#598322)
+  + A bunch of other small bugfixes
+
+-------------------------------------------------------------------
+Wed Jan 13 02:36:56 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 2.29.5:
+  + Reimplement EphyEmbedSingle::handle-content signal, useful for
+    external download managers
+  + Add a gconf key (/apps/epiphany/general/url_search) to set the
+    default search engine. (bgo#604087)
+  + Reimplement favicon support (bgo#601859)
+  + Do not override page specific context menus with our own
+    (bgo#603326)
+  + Store all form auth data in GNOME Keyring, and ask the user to
+    remember and prefill new logins/passwords with an infobar.
+    (bgo#582267)
+  + Reimplement EphyWebView::ge-feed-link, emitted when a feed link
+    is found in the view.
+  + Reimplement support for the 'Accept-Language' HTTP header
+    (bgo#528893)
+  + Reimplement custom User Agent support, see commit e896b194fbff
+    for details (bgo#580903)
+  + Reimplement support for window.close (bgo#599009)
+  + Reimplement support for mime type safety check during
+    downloads (bgo#605026)
+  + Reimplement EphyWebView::new-window signal, emitted when the
+    view opens a new window (like a JS window)
+  + Lots of bugfixes
+- Remove epiphany-user-agent.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Wed Dec 23 11:02:43 CET 2009 - vuntz@opensuse.org
+
+- Change gnome-keyring-devel BuildRequires to
+  libgnome-keyring-devel, following the module split upstream.
+
+-------------------------------------------------------------------
+Sat Dec  5 01:51:59 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.3:
+  + Don't assume all seed extensions return an object as a value
+    (bgo#599714)
+  + Fix refcounting of seed extensions (bgo#599838)
+  + Provide the Inspect Element menu item in context menus again
+    (bgo#599473)
+  + Many fixes to our gobject-introspection support (bgo#599757)
+  + Disconnect dbus callbacks when disposing of the network monitor
+    (bgo#572326)
+  + Only use the main frame to fetch the document type for pages
+    (bgo#602400)
+  + Restore 'Close' and 'Help' buttons in dialogs (bgo#590387)
+  + Fix auto-google search when using Ctrl-Enter (bgo#603324)
+- Changes from version 2.29.1:
+  + Reimplement middle-click-to-open-clipboard-contents.
+  + Reimplement traditional epiphany context menu(s). (bgo#562617)
+  + Reimplement Up arrow behavior (bgo#595653)
+  + Make most of epiphany compile with sealed GTK+ structs
+    (bgo#595791)
+  + Prevent PDM from getting keyring passwords in private mode
+    (bgo#591395)
+  + Take into account WEBKIT_LOAD_FAILED status for is_loading API.
+  + Depend on libtool 2.2 and dump dolt.
+  + Replace .glade files with .ui files natively instead of
+    generating .ui files at compile time from the .glade files.
+    (bgo#590387)
+  + Several fixes in the automatic search of url entry contents on
+    enter feature (bgo#596717, bgo#595690)
+  + Use new syntax for Seed imports (bgo#598562)
+  + Add back support for javascript: and mailto: URIs
+  + Fix for Seed extensions preventing epiphany from shutting down
+    (bgo#573551)
+  + Allow popups when the user asks for them (bgo#528799)
+  + Refactor EphyShell lifetime tracking (bgo#599348)
+  + Don't crash when detaching multiple Seed extensions
+    (bgo#599422)
+  + Reimplement type checking on downloads and "Open" dialog option
+    (bgo#598167)
+- Rebase epiphany-user-agent.patch.
+
+-------------------------------------------------------------------
+Tue Sep 22 18:14:30 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  - bgo#594435 - Fix bookmark properties rendering of multiple
+    topics
+  - bgo#577797 - Fix to properly get the suggested name for
+    downloads in some cases
+  - Strip whitespace from URIs during password migration
+  - bgo#594717 - Fix crasher in profile migration
+  - bgo#585499 - Append '(n)' (where n = number of duplicates) to
+    duplicated downloads
+  - bgo#594346 - Fix URL entry going out of sync with what is shown
+    in the web view in some situations
+  - bgo#594694 - Ask the user for the master password of his/her
+    Gecko passwords if there was one set
+  - Run mozilla-plugin-config (from nspluginwrapper) if it's
+    available.
+  - bgo#562611 - Implement 'Save As' for pages using
+    WebKitWebDataSource
+
+-------------------------------------------------------------------
+Mon Sep 14 00:31:37 CEST 2009 - dimstar@opensuse.org
+
+- On openSUSE 11.1 and older the package lsb_release did not exist
+  and it's content was integrated inside lsb.
+- Carry the ig locale in the files list for openSUSE <= 11.1.
+
+-------------------------------------------------------------------
+Wed Sep  9 17:40:33 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.27.92:
+  + Import passwords from the gecko profile on first run. This adds
+    a dependency on NSS, which can be disabled with --disable-nss
+    (but then, of course, passwords won't be imported).
+  + Enable undo/redo on forms (bgo#591072)
+  + Save session data more often to avoid data loss when crashing
+    (bgo#593149)
+  + Reimplement direct search on the location bar (bgo#583795)
+  + Do not save failed loads in history or show a valid security
+    status for them (bgo#593200)
+  + Reimplement search by just pressing '/' (bgo#587864)
+  + Fix .desktop file (bgo#588979)
+  + Fix warning when loading NULL URIs (bgo#593701)
+  + Reimplement view source functionality (bgo#503968)
+  + Show initial request before the server responds to avoid empty
+    location entry (bgo#591294)
+  + Reset font size with ctrl+0 from num block (bgo#573624)
+  + Do not auto-shrink images, since ephy/gecko used to do that.
+  + Reimplement adblock support (bgo#562762)
+- Add mozilla-nss-devel BuildRequires.
+- Remove sr@Latn workaround.
+
+-------------------------------------------------------------------
+Tue Aug 25 17:21:11 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.91:
+  + Use new keyring support in libsoup instead of the old webkit
+    session feature.
+  + Performance and functionality improvements for the find
+    toolbar.
+  + Always show images in the bookmarks menu items. Makes them
+    re-appear after recent changes that set icons off by default in
+    menus for 2.28 (bgo#588563)
+  + Update URL in entry when clicking on #anchors (bgo#584506)
+  + Re-implement about:recover lookalike (bgo#583953)
+- Use spec-cleaner to reorder lines in preamble.
+
+-------------------------------------------------------------------
+Mon Aug 10 21:32:57 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.90:
+  + Port PDM's password viewer to gnome-keyring so that it works
+    again. (bgo#579217)
+  + Fix address normalization when opening URLs from the command
+    line.
+  + Fix spurious whitespace when hiding downloader status
+    icons. (bgo#591189)
+  + Re-add the spinner so that we have some kind of progress
+    notification before we receive any response from the
+    server. (bgo#585035)
+  + Workaround bug in WebKitGTK+ that made us never stop the
+    progress notification while loading in some pages. (bgo#590170)
+  + Move default bookmarks to a separate RDF file instead of
+    hardcoding them. (bgo#300190)
+  + Do not show about:recover URLs for now, since the service is
+    not implemented. (bgo#583953)
+- Add gnome-keyring-devel BuildRequires.
+- Drop epiphany-bgo300190-default-bookmarks.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Aug  3 22:56:06 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.5:
+  + Use the font families set in the GNOME preferences when
+    possible.
+  + Fix opening multiple pages in a row from command line
+    (bgo#588143)
+  + Add several new mime types to the safe mime types list
+    (bgo#582905, bgo#565346)
+  + Fix middle click on back/forward buttons (bgo#583440)
+  + Recognize favicons with mime type image/vnd.microsoft.icon.
+    Keep in mind that favicons in general still do not work in
+    epiphany/webkit. (bgo#578575)
+- Add gir-repository, gobject-introspection-devel and libseed-devel
+  BuildRequires.
+- Pass --enable-introspection and --enable-seed to configure.
+- Add lsb-release BuildRequires.
+- Add epiphany-user-agent.patch so we can brand the user agent.
+- Remove AutoReqProv from devel package: it's default now.
+- Remove python-gtk, python-gnome Requires.
+- Add libwebkit-devel and epiphany Requires to the devel package.
+
+-------------------------------------------------------------------
+Mon Jul 20 19:37:38 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 2.27.4:
+  + Too many changes to list.
+  + Epiphany now uses webkit.
+- Remove now unneeded enchant-devel, gnome-desktop-devel,
+  libglade2-devel, libgnomeui-devel and mozilla-xulrunner from
+  BuildRequires
+- Add gconf2-devel, libnotify-devel, startup-notification-devel and
+  libwebkit-devel to BuildRequires.
+- Remove AutoReqProv: it's default now.
+- Remove obsolete --with-gecko and --enable-spell-checker from
+  configure.
+- Do not set categories in desktop files when they are already
+  there.
+- Remove part of the branding package that was specific to the
+  gecko backend. This was used to set the user agent. Webkit
+  doesn't support this for now, but this should be added back in
+  the future.
+- Update epiphany-bgo300190-default-bookmarks.patch: part of it was
+  accepted upstream.
+- Drop epiphany-browser-plugins.patch: WebKit does the right thing.
+- Drop epiphany-libtool.patch
+- Change sr@Latin to sr@latin
+
+-------------------------------------------------------------------
+Sun Mar 15 19:17:17 CET 2009 - vuntz@novell.com
+
+- Update to version 2.26.0:
+  + Another NULL check for bgo#572810.
+  + Try again to fix gecko 1.9.1 build. bgo#565669
+  + Updated translations.
+- Remove -fno-strict-aliasing from CFLAGS.
+- Pass --enable-spell-checker to configure.
+- Do not package omf files twice (they are in the lang package
+  too).
+
+-------------------------------------------------------------------
+Tue Feb 17 04:21:26 CET 2009 - vuntz@novell.com
+
+- Update to version 2.25.91:
+  + Do not use 'gtk-action' object data to get the associated
+    GtkAction for a widget.
+  + Update EggEditableToolbar from trunk.
+  + Fix build with gecko 1.9.1.
+  + Add backward compat engine definition in pkg-config file.
+  + Updates translations.
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Wed Feb  4 15:46:49 CET 2009 - vuntz@novell.com
+
+- Reduce BuildRequires: we don't need libgnomeprintui, eg. Add
+  libgnomeui-devel, though.
+
+-------------------------------------------------------------------
+Sat Jan 31 09:08:23 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.5:
+  + Avoid adding problematic search terms with spaces
+  + Handle end of line correctly on location bar search
+  + Implement multiple keyword-based AND-search for the location bar
+  + Include a bookmark indication in the woohoo bar
+  + Turn the location bar into the woohoo bar
+  + Fix bookmark import of ff3 files
+  + Translation updates
+
+-------------------------------------------------------------------
+Mon Dec 29 12:46:07 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.2.1:
+  + Fix multi-dnd with gtk 2.14
+  + Fix bgo#549361
+  + Translation updates
+
+-------------------------------------------------------------------
+Sat Dec 13 02:34:26 CET 2008 - vuntz@novell.com
+
+- Add epiphany-safe-one-click-install.patch to make one-click
+  install work. Fix bnc#330070.
+
+-------------------------------------------------------------------
+Tue Oct 21 21:43:57 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.1:
+  + Bugs fixed: bgo#525357, bgo#535127, bgo#543335, bgo#549892, bgo#554110
+    bgo#554110, bgo#555170
+  + Set nsNavHistory prefs, esp. the idle update frequency to 0.
+  + Use the correct return type for ephy_embed_get_link_message and
+    ephy_embed_get_title
+  + Translation updates
+
+-------------------------------------------------------------------
+Mon Oct  6 15:56:40 CEST 2008 - sbrabec@suse.cz
+
+- Conflict with other branding providers (FATE#304881).
+
+-------------------------------------------------------------------
+Wed Oct  1 07:56:35 WST 2008 - mboman@suse.de
+
+- Update to version 2.24.0.1:
+  + Fix for GTK+ adjustment policy enforcement
+  + Bugs fixed: bgo#552436, bgo#552555, bgo#550883, bgo#448613,
+    bgo#426349
+  + Translation updates
+
+-------------------------------------------------------------------
+Thu Sep 18 14:50:47 CDT 2008 - maw@suse.de
+
+- Build against mozilla-xulrunner190.
+
+-------------------------------------------------------------------
+Thu Sep 11 17:24:33 CEST 2008 - vuntz@novell.com
+
+- Don't put the branding files in the epiphany package too.
+- .spec cleaning:
+  + Correctly use packageand().
+  + Remove checks from old openSUSE versions.
+  + Make the spec file UTF-8.
+
+-------------------------------------------------------------------
+Wed Sep 03 10:10:12 CDT 2008 - mboman@novell.com
+
+- Update to version 2.23.91:
+  + Remove deprecated Encoding line.
+  + Remove leading dots in suggested filename. Fixes bgo#430965
+  + Misc. identation fixes.
+
+-------------------------------------------------------------------
+Tue Aug 26 10:10:12 CDT 2008 - mboman@novell.com
+
+- Update to version 2.23.5:
+  + Allow remembering the selected user cert.
+  + Bug fixes: bgo#547936, bgo#151932, bgo#343906, bgo#328162,
+    bgo#534218, bgo#517960
+
+-------------------------------------------------------------------
+Fri Aug  8 10:10:12 CDT 2008 - maw@suse.de
+
+- Update to version 2.23.5:
+  + Initial release for GNOME 2.24
+  + Bugs fixed (since 2.23.2): bgo#529634 and bgo#541168.
+
+-------------------------------------------------------------------
+Wed Jul 30 03:29:27 CEST 2008 - vuntz@novell.com
+
+- Add epiphany-bgo300190-default-bookmarks.patch to specify
+  default bookmarks via a RDF file. (bgo#300190)
+- Remove epiphany-default-bookmarks.patch: this will go in a
+  separate branding package.
+- Add epiphany-branding-upstream package.
+
+-------------------------------------------------------------------
+Fri Jul 18 13:34:47 CEST 2008 - rodrigo@suse.de
+
+- Fixed tagging of patches
+
+-------------------------------------------------------------------
+Wed Jun 18 21:40:50 CEST 2008 - maw@suse.de
+
+- Update to version 2.22.2:
+  + Various bugxies
+- Drop obsolete patches: epiphany-po-update.patch and
+  ephy-no-cookies-selected.patch.
+
+-------------------------------------------------------------------
+Wed May 21 19:38:39 CEST 2008 - maw@suse.de
+
+- Use >=, not =, to require xulrunner versions (bnc#371145).
+
+-------------------------------------------------------------------
+Sat May 17 01:34:59 CEST 2008 - maw@suse.de
+
+- Add ephy-no-cookies-selected.patch (bgo#504136, bnc#391683).
+
+-------------------------------------------------------------------
+Wed May  7 17:23:42 CEST 2008 - schwab@suse.de
+
+- Create libtool before use.
+
+-------------------------------------------------------------------
+Fri May  2 15:07:50 CEST 2008 - sbrabec@suse.cz
+
+- Translation fix from SVN.
+
+-------------------------------------------------------------------
+Thu Apr 10 16:41:28 CEST 2008 - maw@suse.de
+
+- Update to version 2.22.1.1:
+  + Revert the bookmark/history item no-dupes patch; it was slowing
+    down ephy
+  + Remove the unnecessary setting of the preferred action in the
+    cases that action was going to be the default one anyway; don't
+    open twice, just let gecko handle opening in the preferred
+    application
+  + Make the extra column pack-end so that when we hide it when
+    it's empty, the other column expands; this makes bookmarks
+    take up all the space instead of being truncated at the half
+  + Bugs fixed:
+    * Use ephy_password_info_new to allocate EphyPasswordInfo, not
+      g_new; fixes a crash in the PDM passwords tab
+    * Fix multiple crashers in the zeroconf bookmarks (bgo#516008)
+    * Use g_slice for EphyCookie allocation (bgo#520560)
+    * Use g_slice for EphyPasswordInfo, EphyPermissionInfo,
+      PixbufCacheEntry (bgo#521017)
+  + Updated translations
+- Drop epiphany-avahi-bookmarks.patch.
+
+-------------------------------------------------------------------
+Wed Mar 26 10:42:39 CET 2008 - sbrabec@suse.cz
+
+- Fixed crashes in avahi bookmarks processing (bgo#516008).
+
+-------------------------------------------------------------------
+Fri Mar 21 02:31:56 CET 2008 - jpr@suse.de
+
+- Remove obsolete -devel requires
+- Remove obsolete version checks
+- Remove patch that was purposely disabled
+- Don't create the extensions dir manually, there is a defaul plugin
+  that does it for us
+- Remove epiphany-desktop.patch, the GenericName is correct and there
+  is no reason to hide the desktop file
+- Remove 59950.diff, its obsolete by a fix in a different spot see
+  bgo #165445
+- Remove 59949.diff, its obsolete by a fix in a differenct spot, see
+  bgo #142184
+- Remove epiphany-no-root.patch, --disable-scrollkeeper works fine
+  now
+
+-------------------------------------------------------------------
+Fri Mar 14 04:19:24 CET 2008 - maw@suse.de
+
+- Update to version 2.22.0:
+  + Bug fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 13 16:58:01 CET 2008 - sbrabec@suse.cz
+
+- Custom look'n'feel gconf keys moved to gconf2-branding-openSUSE.
+
+-------------------------------------------------------------------
+Tue Mar  4 20:32:17 CET 2008 - maw@suse.de
+
+- Update to version 2.21.92:
+  + Bug fixes
+- No longer build with the cert manager
+- Remove epiphany-gcc4.3-fixes.patch.
+
+-------------------------------------------------------------------
+Tue Feb 12 15:26:43 CET 2008 - jpr@suse.de
+
+- Fix missing directory ownership
+- Update to use -p /sbin/ldconfig
+
+-------------------------------------------------------------------
+Fri Feb  1 20:52:39 CET 2008 - maw@suse.de
+
+- Update to version 2.21.90:
+  + Drop gnome-vfs in lieu of gio
+  + Many bug fixes.
+
+-------------------------------------------------------------------
+Wed Nov  7 18:26:36 CET 2007 - maw@suse.de
+
+- Update to version 2.20.1 (another cosmetic version bump)
+- Add epiphany-gcc4.3-fixes.patch.
+
+-------------------------------------------------------------------
+Thu Oct 11 17:05:49 CEST 2007 - sbrabec@suse.cz
+
+- Removed bogus dependency on mDNSResponder.
+
+-------------------------------------------------------------------
+Mon Sep 17 23:20:35 CEST 2007 - mauro@suse.de
+
+- Bump version and API version to 2.20.
+
+-------------------------------------------------------------------
+Fri Aug 31 16:59:02 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.91:
+  + Compilation fixes for ancient compilers
+  + Some typo changes
+  + Icon reorg
+  + Minor bug fixes.
+
+-------------------------------------------------------------------
+Thu Aug 23 00:19:06 CEST 2007 - maw@suse.de
+
+- Add default-bookmarks.patch, which adds http://news.opensuse.org
+  as a default bookmark (#293690).
+
+-------------------------------------------------------------------
+Fri Aug 10 15:18:20 CEST 2007 - coolo@suse.de
+
+- put Version before the use of %version
+
+-------------------------------------------------------------------
+Wed Aug  8 17:38:30 CEST 2007 - maw@suse.de
+
+- Split off a -lang subpackage
+- s#%run_ldconfig#/sbin/ldconfig/ in %post and %postun.
+
+-------------------------------------------------------------------
+Thu Aug  2 23:36:39 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.6:
+  + Experimental WebKit backend [not enabled in this build]
+  + New (copied) lock icons
+  + Sync with latest libegg
+  + New checkbox for smooth scrolling
+  + Use g_get_user_special_dir to determine Desktop and Downloads
+    directory locations
+  + Use new gtk function to persist and load print settings and
+    page setup
+  + All tooltips now created using the new GTK tooltip API
+  + Minor string changes
+  + Bugs (bugzilla.gnome.org) fixed: 452769, 450590, 450146,
+- Use %fdupes.
+
+-------------------------------------------------------------------
+Sat Jul 14 18:28:02 CEST 2007 - aj@suse.de
+
+- It's really libwnck-devel.
+
+-------------------------------------------------------------------
+Mon Jul  9 22:51:11 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.2
+- Fixes for bugzilla.gnome.org #348350, #452769, #450590, #450146,
+  #346243, #351100,  #433796 , #441419, #336739, #422114, #437798,
+  #162489, and #162489
+- Buildrequire libwnck-1-22-devel instead of libwnck-devel.
+
+-------------------------------------------------------------------
+Mon May 28 13:12:16 CEST 2007 - sbrabec@suse.cz
+
+- Update to version 2.18.1:
+  * Fixed printing of frames.
+  * Fixed Epiphany not finding some Gecko plugins.
+- Removed Flash crash work-around (upstream part of ephy-main.c).
+
+-------------------------------------------------------------------
+Tue Apr  3 22:04:27 CEST 2007 - maw@suse.de
+
+- Remove all references to
+  epiphany-dbus-connection-close-fix-thoenig-01.patch (#260495).
+
+-------------------------------------------------------------------
+Mon Apr  2 14:51:30 CDT 2007 - maw@suse.de
+
+- Update to version 2.18.0
+- b.g.o 416994, 348331, 404514
+- Fix several .desktop files to remove invalid Category entries.
+
+-------------------------------------------------------------------
+Mon Mar 12 18:03:30 CET 2007 - jhargadon@suse.de
+
+- added gtk-doc to the BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 10 16:10:11 CET 2007 - sbrabec@suse.cz
+
+- Enabled NetworkManager support.
+
+-------------------------------------------------------------------
+Wed Jan  3 14:53:07 CET 2007 - sbrabec@suse.cz
+
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Fri Dec 29 11:45:11 CST 2006 - maw@suse.de
+
+- Move to /usr.
+
+-------------------------------------------------------------------
+Fri Dec 29 11:45:58 GMT 2006 - james@usr-local-bin.org
+
+- Fix %post.
+
+-------------------------------------------------------------------
+Thu Dec 28 23:12:30 CET 2006 - jhargadon@suse.de
+
+- removed unneeded libtool file (#223685)
+
+-------------------------------------------------------------------
+Thu Nov 30 17:19:39 CET 2006 - sbrabec@suse.cz
+
+- Fixed xulrunner dependencies for older products.
+
+-------------------------------------------------------------------
+Tue Nov 21 17:36:48 CET 2006 - jhargadon@suse.de
+
+- re-enabled patch epiphany-browser-plugins.patch (#222861)
+
+-------------------------------------------------------------------
+Fri Nov 17 14:20:32 CET 2006 - thoenig@suse.de
+
+- Add patch epiphany-dbus-connection-close-fix-thoenig-01.patch: Do
+  not call dbus_connection_close on shared connection (b.n.c
+  #221827)
+
+-------------------------------------------------------------------
+Tue Nov  7 19:19:27 CET 2006 - sbrabec@suse.cz
+
+- Use exact xulrunner version 181 (#216100).
+
+-------------------------------------------------------------------
+Tue Nov  7 12:59:58 CET 2006 - meissner@suse.de
+
+- use RPM_OPT_FLAGS for C++ too.
+
+-------------------------------------------------------------------
+Fri Oct 13 04:44:26 CEST 2006 - danw@suse.de
+
+- Remove dead patches, update and reenable epiphany-desktop.patch
+  and epiphany-flash-crash.patch
+- Update for gnome-doc-utils-devel
+
+-------------------------------------------------------------------
+Mon Oct  2 23:01:53 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.16.1
+- Add a window group for the history window.
+- Fix compile warnings
+- Add smb: to recognised web schemes
+- Fix spinner with new g-i-t
+- Fix a crash when failing to load some icon data
+
+-------------------------------------------------------------------
+Thu Sep 14 01:42:49 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.16.0
+- Update API version for 2.16
+- Add some more mime types. Fixes bug #352482
+
+-------------------------------------------------------------------
+Sat Sep  2 05:19:38 CEST 2006 - gekker@suse.de
+
+- Install dbus service file in correct location
+
+-------------------------------------------------------------------
+Thu Aug 24 23:57:49 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.15.92
+- translation updates
+- Spell check support using the gecko 'spellchecker' extension
+- Add page security info dialogue from Certificates extension
+- Drop libgnomeprint[ui] and use gtk printing
+- Add methods to EphyNode to set typed properties
+- Add a way to turn off password remembering
+- Don't crash when adding zeroconf bookmarks while bookmarks are locked
+  down
+- Fix middle-click and ctrl-enter in the location entry autocompletion
+  drop-down
+- Make the crash recovery dialog appear on the taskbar
+- copy history over when opening link in new tab/win using
+  context menu
+- Don't crash on error from zeroconf bookmarks
+- Don't set cookies from favicon downloads
+- Allow cookie list to be sorted
+- Fix crash when moving zoom widget on toolbar
+- Display the find bar for "Find Next" and "Find Previous"
+  if it wasn't visible already
+- Remove Shift+Ctrl+T accelerator, it was pressed accidentally
+  too often and people would lose their toolbars
+
+-------------------------------------------------------------------
+Wed Aug 16 23:37:11 CEST 2006 - ro@suse.de
+
+- added python-gnome-devel to BuildRequires
+
+-------------------------------------------------------------------
+Wed Aug 16 14:35:21 CEST 2006 - cthiel@suse.de
+
+- require python-gtk-devel instead of python-gobject2-devel
+
+-------------------------------------------------------------------
+Wed Aug 16 02:01:04 CEST 2006 - ro@suse.de
+
+- added python-gobject2-devel to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jun 29 12:10:44 CEST 2006 - lrupp@suse.de
+
+- Requires: mozilla-xulrunner180 for suse_version > 1010
+
+-------------------------------------------------------------------
+Mon Mar  6 20:33:35 CET 2006 - sbrabec@suse.cz
+
+- Search plugins in browser-plugins directory (#154443).
+
+-------------------------------------------------------------------
+Wed Mar  1 16:48:28 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 1.8.5 (fixes 150372#4).
+
+-------------------------------------------------------------------
+Mon Feb 27 23:55:04 CET 2006 - ro@suse.de
+
+- added kdelibs3-devel-doc to BuildRequires
+
+-------------------------------------------------------------------
+Mon Feb 20 13:40:29 CET 2006 - sbrabec@suse.cz
+
+- Enabled password manager (#150372).
+
+-------------------------------------------------------------------
+Thu Feb 16 18:34:23 CET 2006 - sbrabec@suse.cz
+
+- Worked around flash plugin crash (#149062).
+
+-------------------------------------------------------------------
+Thu Feb 16 14:21:22 CET 2006 - stbinner@suse.de
+
+- fix Name in .desktop file
+
+-------------------------------------------------------------------
+Sun Feb  5 21:17:24 CET 2006 - mls@suse.de
+
+- added mozilla-xulrunner to BuildRequires
+
+-------------------------------------------------------------------
+Thu Feb  2 12:46:39 CET 2006 - sbrabec@suse.cz
+
+- Explicitly require iso-codes (#147467).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:23 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov 30 22:47:15 CET 2005 - gekker@suse.de
+
+- Update to version 1.8.3
+- Remove upstreamed xulrunner patch
+
+-------------------------------------------------------------------
+Wed Nov 16 17:42:23 CET 2005 - sbrabec@suse.cz
+
+- Fixed mozilla/xulrunner dependencies.
+
+-------------------------------------------------------------------
+Tue Nov 15 14:58:19 CET 2005 - sbrabec@suse.cz
+
+- Removed unneeded packages for build to break build cycle.
+- Enable Zeroconf support.
+
+-------------------------------------------------------------------
+Tue Nov  8 15:03:15 CET 2005 - sbrabec@suse.cz
+
+- Create xulrunner default prefs.
+
+-------------------------------------------------------------------
+Mon Oct 24 14:15:36 CEST 2005 - sbrabec@suse.cz
+
+- Fixed extension directories.
+
+-------------------------------------------------------------------
+Mon Oct 17 13:33:29 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 1.8.2.
+- Added xulrunner patch.
+
+-------------------------------------------------------------------
+Mon Sep  5 12:38:02 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 1.8.0.
+
+-------------------------------------------------------------------
+Wed Aug 24 19:11:09 CEST 2005 - gekker@suse.de
+
+- Updated to version 1.7.5
+
+-------------------------------------------------------------------
+Fri Aug 12 14:35:01 CEST 2005 - sbrabec@suse.cz
+
+- Fixed requirement to not require symbols provided only by
+  mozilla-nss and mozilla-nspr packages (#98002).
+
+-------------------------------------------------------------------
+Fri Aug  5 11:21:13 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 1.7.3.
+
+-------------------------------------------------------------------
+Wed Aug  3 16:51:28 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 1.6.4.
+- Turned on D-BUS support.
+
+-------------------------------------------------------------------
+Sat Mar 19 12:35:20 CET 2005 - clahey@suse.de
+
+- Remove Bookmarks desktop entry.
+
+-------------------------------------------------------------------
+Wed Mar  9 16:58:32 CET 2005 - gekker@suse.de
+
+- Updated to version 1.6.0 (GNOME 2.10)
+
+-------------------------------------------------------------------
+Fri Mar  4 16:52:59 CET 2005 - gekker@suse.de
+
+- Updated to version 1.5.8
+
+-------------------------------------------------------------------
+Wed Feb  9 14:17:36 CET 2005 - hhetter@suse.de
+
+- updated to version 1.5.6
+
+-------------------------------------------------------------------
+Mon Feb  7 16:39:17 CET 2005 - gekker@suse.de
+
+- Update to 1.5.5
+
+-------------------------------------------------------------------
+Sat Feb  5 11:05:56 CET 2005 - meissner@suse.de
+
+- 2 falses should be NULL
+
+-------------------------------------------------------------------
+Tue Feb  1 14:28:12 CET 2005 - ro@suse.de
+
+- fix compile warning
+
+-------------------------------------------------------------------
+Fri Jan 14 13:06:21 CET 2005 - clahey@suse.de
+
+- Updated to 1.5.4.
+
+-------------------------------------------------------------------
+Fri Jan 14 01:35:20 CET 2005 - ro@suse.de
+
+- update to 1.4.7 to accept mozilla 1.7.5
+
+-------------------------------------------------------------------
+Wed Dec 15 13:25:04 CET 2004 - hvogel@suse.de
+
+- fix desktop file
+
+-------------------------------------------------------------------
+Fri Nov 19 12:33:43 CET 2004 - ro@suse.de
+
+- removed extra aclocal include directive
+
+-------------------------------------------------------------------
+Mon Nov  8 00:29:03 CET 2004 - ro@suse.de
+
+- fix build with current intltool
+
+-------------------------------------------------------------------
+Wed Oct 27 11:34:56 CEST 2004 - mmj@suse.de
+
+- Locale rename no to nb
+
+-------------------------------------------------------------------
+Thu Sep 23 16:00:22 CEST 2004 - sbrabec@suse.cz
+
+- Fixed bad LD_LIBRARY_PATH in wrapper script (#45909).
+
+-------------------------------------------------------------------
+Fri Sep 10 13:28:27 CEST 2004 - sbrabec@suse.cz
+
+- Minimal patch to compile with actual version of mozilla.
+
+-------------------------------------------------------------------
+Sat Sep  4 23:14:27 CEST 2004 - ro@suse.de
+
+- remove epiphany.desktop in install-section, not in postinstall
+
+-------------------------------------------------------------------
+Fri Sep  3 08:43:37 CEST 2004 - sagarwal@suse.de
+
+- Modified the spec file to delete epiphany.desktop, web-browser.desktop
+is used for epiphany browser, and epiphany.desktop creates redundant
+menu entry.
+
+-------------------------------------------------------------------
+Tue Aug 24 01:29:49 CEST 2004 - ro@suse.de
+
+- backport some hunks from 1.2.7 to build with mozilla-1.7.2
+
+-------------------------------------------------------------------
+Tue Jul 20 05:39:34 CEST 2004 - rganesan@suse.de
+
+- Modified patch for 59950(59950.diff)
+
+-------------------------------------------------------------------
+Fri Jul 16 06:10:50 CEST 2004 - rganesan@suse.de
+
+-Patch for ximian bug 59949
+
+-------------------------------------------------------------------
+Fri Jul 16 06:05:53 CEST 2004 - rganesan@suse.de
+
+-Patch for bug 59950
+
+-------------------------------------------------------------------
+Wed Jul 14 11:23:46 CEST 2004 - rganesan@suse.de
+
+- patch for ximian bug 58913
+
+-------------------------------------------------------------------
+Thu Jul  1 14:19:46 CEST 2004 - hhetter@suse.de
+
+- set default startup page
+
+-------------------------------------------------------------------
+Wed May 26 16:31:37 CEST 2004 - ro@suse.de
+
+- update to 1.2.5 to build with mozilla-1.7
+
+-------------------------------------------------------------------
+Tue May 11 19:10:01 CEST 2004 - sbrabec@suse.cz
+
+- Added empty directories /opt/gnome/%_lib/epiphany and
+  /opt/gnome/%_lib/epiphany/extensions to filelist.
+
+-------------------------------------------------------------------
+Fri Apr 30 09:22:00 CEST 2004 - hhetter@suse.de
+
+- updated to version 1.2.2 [GNOME2.6]
+- seperate gtk-doc documentation package
+
+-------------------------------------------------------------------
+Wed Mar 10 10:33:32 CET 2004 - sbrabec@suse.cz
+
+- Fixed gconf schemas installation (#33114).
+
+-------------------------------------------------------------------
+Fri Mar  5 12:52:57 CET 2004 - hhetter@suse.de
+
+- suse homepage as startpage
+
+-------------------------------------------------------------------
+Fri Feb 20 15:48:47 CET 2004 - sbrabec@suse.cz
+
+- Fixed names of GNOME2 packages.
+
+-------------------------------------------------------------------
+Tue Feb 17 15:22:41 CET 2004 - adrian@suse.de
+
+- use Network Category, instead of Internet
+
+-------------------------------------------------------------------
+Thu Feb 12 09:32:40 CET 2004 - hhetter@suse.de
+
+- gconf schema (de-)installation in %post and %postun
+
+-------------------------------------------------------------------
+Thu Jan 29 00:11:13 CET 2004 - ro@suse.de
+
+- update to 1.0.7 to fix build with mozilla 1.6
+
+-------------------------------------------------------------------
+Sat Jan 10 18:49:44 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Nov 10 14:59:02 CET 2003 - hhetter@suse.de
+
+- updated to version 1.0.6
+
+-------------------------------------------------------------------
+Thu Nov  6 11:29:18 CET 2003 - hhetter@suse.de
+
+- updated to version 1.0.5
+
+-------------------------------------------------------------------
+Mon Oct 27 13:43:07 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 1.0.4.
+
+-------------------------------------------------------------------
+Fri Oct 17 15:59:28 CEST 2003 - hhetter@suse.de
+
+- updated to version 1.0.3
+
+-------------------------------------------------------------------
+Wed Oct 15 11:23:24 CEST 2003 - hhetter@suse.de
+
+- updated to version 1.0.2
+- use aclocal
+
+-------------------------------------------------------------------
+Tue Sep  9 09:42:07 CEST 2003 - hhetter@suse.de
+
+- updated to version 1.0 (minor bugfixes and translations)
+
+-------------------------------------------------------------------
+Tue Sep  2 09:20:30 CEST 2003 - hhetter@suse.de
+
+- updated to version 0.9.3 (translations only)
+
+-------------------------------------------------------------------
+Mon Aug 25 18:51:44 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 0.9.2.
+
+-------------------------------------------------------------------
+Tue Aug 19 15:25:17 CEST 2003 - sbrabec@suse.cz
+
+- Updated neededforbuild (rename of librsvg2, eel2).
+
+-------------------------------------------------------------------
+Tue Aug 12 14:23:01 CEST 2003 - adrian@suse.de
+
+- add Categories
+
+-------------------------------------------------------------------
+Mon Aug 11 09:46:25 CEST 2003 - hhetter@suse.de
+
+- updated to bugfix release 0.8.4
+
+-------------------------------------------------------------------
+Mon Aug  4 08:14:50 CEST 2003 - hhetter@suse.de
+
+- updated to bugfix release 0.8.2
+
+-------------------------------------------------------------------
+Mon Jul 28 09:58:58 CEST 2003 - hhetter@suse.de
+
+- initial SuSE package
+

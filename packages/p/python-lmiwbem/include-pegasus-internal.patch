@@ -1,0 +1,11 @@
+diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-python-lmiwbem-0.7.0/src/makefile.am ./src/makefile.am
+--- ../orig-python-lmiwbem-0.7.0/src/makefile.am	2015-02-23 10:50:02.000000000 +0100
++++ ./src/makefile.am	2015-02-24 08:51:15.898609271 +0100
+@@ -128,6 +128,7 @@
+ 
+ lmiwbem_core_la_CPPFLAGS     =                \
+ 	-Wall -pedantic                       \
++        -I/usr/include/Pegasus-internal       \
+ 	-D@PEGASUS_PLATFORM@                  \
+ 	@PYTHON_CPPFLAGS@
+ 

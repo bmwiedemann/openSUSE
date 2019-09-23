@@ -1,0 +1,6 @@
+<package name="php7-redis" project="openSUSE:Factory">
+  <title>Interface for communicating with the Redis key-value store</title>
+  <description>The phpredis extension provides an API for communicating with the Redis key-value store.</description>
+  <devel project="server:php:extensions:php7" package="php7-redis"/>
+  <url>https://github.com/phpredis/phpredis</url>
+</package>

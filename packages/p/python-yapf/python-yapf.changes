@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Mon Jul 22 11:28:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.28.0:
+  * Bugfix release, see CHANGELOG
+
+-------------------------------------------------------------------
+Tue Apr  9 11:51:52 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.27.0
+  * mostly bugfix release, see CHANGELOG for details
+
+-------------------------------------------------------------------
+Thu Feb 14 04:13:37 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove optional dependency from BuildRequires as no tests fail
+  or are skipped when it is missing.
+- Remove tests from package
+- Update to v0.26.0
+  * Many changes to behaviour; see CHANGELOG for details
+- from v0.25.0
+  * Added `INDENT_BLANK_LINES` knob
+  * Support additional file exclude patterns in .yapfignore file
+  * Correctly determine if a scope is the last in line
+
+-------------------------------------------------------------------
+Wed Oct 24 13:23:45 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Version update to 0.24.0:
+  * Support for python 3.7
+
+-------------------------------------------------------------------
+Wed Aug 29 11:37:58 UTC 2018 - tchvatal@suse.com
+
+- Version update to 0.23.0:
+  * Many changes to behaviour based on CHANGELOG
+  * Add various documents/license to distributed tarball
+ 
+-------------------------------------------------------------------
+Sun Mar  4 11:06:23 UTC 2018 - jengelh@inai.de
+
+- Trim description and focus on the package, not the process.
+
+-------------------------------------------------------------------
+Fri Oct 20 16:19:54 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

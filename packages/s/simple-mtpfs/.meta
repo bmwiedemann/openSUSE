@@ -1,0 +1,5 @@
+<package name="simple-mtpfs" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="filesystems" package="simple-mtpfs"/>
+</package>

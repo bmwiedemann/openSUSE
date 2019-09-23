@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Apr  2 09:06:05 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of maven-surefire 2.22.0
+- Generate and customize ant build files
+- Build the maven plugins as bootstrap packages
+- Added patch:
+  * maven-surefire-bootstrap-resources.patch
+    + Add to the build of the plugins generated files that
+      we cannot generate when building outside maven

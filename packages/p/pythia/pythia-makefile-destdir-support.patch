@@ -1,0 +1,25 @@
+Index: pythia8240/Makefile
+===================================================================
+--- pythia8240.orig/Makefile
++++ pythia8240/Makefile
+@@ -149,13 +149,13 @@ $(LOCAL_LIB)/_pythia8.so: $(LOCAL_INCLUD
+ 
+ # Install (rsync is used for finer control).
+ install: all
+-	mkdir -p $(PREFIX_BIN) $(PREFIX_INCLUDE) $(PREFIX_LIB) $(PREFIX_SHARE)
+-	rm -f $(PREFIX_LIB)/libpythia8$(LIB_SUFFIX)
+-	rsync -a $(LOCAL_BIN)/* $(PREFIX_BIN) --exclude .svn
+-	rsync -a $(LOCAL_INCLUDE)/* $(PREFIX_INCLUDE) --exclude .svn
+-	rsync -a $(LOCAL_LIB)/* $(PREFIX_LIB) --exclude .svn
+-	rsync -a $(LOCAL_SHARE)/* $(PREFIX_SHARE) --exclude .svn
+-	rsync -a $(LOCAL_EXAMPLE) $(PREFIX_SHARE) --exclude .svn
++	mkdir -p $(DESTDIR)/$(PREFIX_BIN) $(DESTDIR)/$(PREFIX_INCLUDE) $(DESTDIR)/$(PREFIX_LIB) $(DESTDIR)/$(PREFIX_SHARE)
++	rm -f $(DESTDIR)/$(PREFIX_LIB)/libpythia8$(LIB_SUFFIX)
++	rsync -a $(LOCAL_BIN)/* $(DESTDIR)/$(PREFIX_BIN) --exclude .svn
++	rsync -a $(LOCAL_INCLUDE)/* $(DESTDIR)/$(PREFIX_INCLUDE) --exclude .svn
++	rsync -a $(LOCAL_LIB)/* $(DESTDIR)/$(PREFIX_LIB) --exclude .svn
++	rsync -a $(LOCAL_SHARE)/* $(DESTDIR)/$(PREFIX_SHARE) --exclude .svn
++	rsync -a $(LOCAL_EXAMPLE) $(DESTDIR)/$(PREFIX_SHARE) --exclude .svn
+ 
+ # Clean.
+ clean:

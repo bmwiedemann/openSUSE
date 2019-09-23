@@ -1,0 +1,306 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>575b6e8210b78c88dfa27d0dea082d90</srcmd5>
+    <version>3.10.0</version>
+    <time>1305633430</time>
+    <user>saschpe</user>
+    <comment>New package: gtk3 version of glade; note: we want to keep both glade3 (gtk2) and glade (gtk3). The names are kind of confusing, but that's really the decision about names that was made by upstream</comment>
+    <requestid>69644</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a885ac16bd43adb3e0b0d054748eaa25</srcmd5>
+    <version>3.10.0</version>
+    <time>1317664800</time>
+    <user>lrupp</user>
+    <comment>Port to pygobject 3 (forwarded request 85766 from vuntz)</comment>
+    <requestid>86151</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>471e571e18fe7e4cb0fa4e3f836707f0</srcmd5>
+    <version>3.10.2</version>
+    <time>1318501258</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>87633</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>471e571e18fe7e4cb0fa4e3f836707f0</srcmd5>
+    <version>3.10.2</version>
+    <time>1319181908</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>46cbfbdd680d7724e22439b661bd0cae</srcmd5>
+    <version>3.10.2</version>
+    <time>1323191585</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>6d934fe5ee9668a04c9a77b416c67aeb</srcmd5>
+    <version>3.10.2</version>
+    <time>1326107068</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>99018</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>57d64eace0a32788adc7d57f545d7fb4</srcmd5>
+    <version>3.11.0</version>
+    <time>1330453332</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>107257</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2ddd32026b84a77f28cbece6a8a15eb3</srcmd5>
+    <version>3.11.0</version>
+    <time>1332147348</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>109407</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>63540379634d8da5541d33c72712395e</srcmd5>
+    <version>3.12.0</version>
+    <time>1333021884</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111700</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ff12e33e2e3da3b6c5fc273d9698e59b</srcmd5>
+    <version>3.12.1</version>
+    <time>1337674148</time>
+    <user>coolo</user>
+    <comment>push G:F</comment>
+    <requestid>121424</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>ff12e33e2e3da3b6c5fc273d9698e59b</srcmd5>
+    <version>3.12.1</version>
+    <time>1340183368</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7c0555af7a6215cc54fecc7e0e19e4ac</srcmd5>
+    <version>3.14.0</version>
+    <time>1349252766</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136673</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f5349673282cf27504f7ece5c8bed1a5</srcmd5>
+    <version>3.14.1</version>
+    <time>1350632669</time>
+    <user>coolo</user>
+    <comment>update to 3.14.1 (forwarded request 138225 from dimstar)</comment>
+    <requestid>138631</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1d225120f1c7e347a4c7db9e3b857488</srcmd5>
+    <version>3.14.2</version>
+    <time>1354885732</time>
+    <user>namtrac</user>
+    <comment>Push G:F for M2</comment>
+    <requestid>144501</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>1d225120f1c7e347a4c7db9e3b857488</srcmd5>
+    <version>3.14.2</version>
+    <time>1359108939</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3bee3638947f979adfb718db690893a8</srcmd5>
+    <version>3.15.0</version>
+    <time>1364895856</time>
+    <user>coolo</user>
+    <comment>Update </comment>
+    <requestid>161796</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3f9aa9ef1bc5faf316c2ab4342f8ec18</srcmd5>
+    <version>3.15.2</version>
+    <time>1372527586</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.3, as announced</comment>
+    <requestid>181270</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8562fcd62a8c0cb937c270dbfed3effb</srcmd5>
+    <version>3.15.3</version>
+    <time>1378713217</time>
+    <user>coolo</user>
+    <comment>Update to 3.15.3 (forwarded request 197242 from Zaitor)</comment>
+    <requestid>197824</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>8562fcd62a8c0cb937c270dbfed3effb</srcmd5>
+    <version>3.15.3</version>
+    <time>1379662456</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b0ed01b379cecf7417989a07aadcd9a4</srcmd5>
+    <version>3.15.4</version>
+    <time>1380112258</time>
+    <user>coolo</user>
+    <comment>resubmit HEAD</comment>
+    <requestid>200421</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>35da12c0ea1c5fd94239ef911a585416</srcmd5>
+    <version>3.16.0</version>
+    <time>1380294733</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.10.0</comment>
+    <requestid>200907</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b3b1626c3ef213570fa47c6257ca1ce2</srcmd5>
+    <version>3.16.1</version>
+    <time>1387823616</time>
+    <user>coolo</user>
+    <comment> Update to ver 3.16.1 (forwarded request 212003 from Zaitor) (forwarded request 212061 from Zaitor)</comment>
+    <requestid>212080</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>29801de8c482d6f270b60e7f053c4df2</srcmd5>
+    <version>3.18.2</version>
+    <time>1399317286</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231697</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>df23b484c125a966998b762d7f1fab16</srcmd5>
+    <version>3.18.3</version>
+    <time>1404679955</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239211</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>df23b484c125a966998b762d7f1fab16</srcmd5>
+    <version>3.18.3</version>
+    <time>1409300993</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>851084e300ac81ccf7343a09d2386342</srcmd5>
+    <version>3.19.0</version>
+    <time>1444140646</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>330242</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c56718580e35a5fcea1454e4d6153311</srcmd5>
+    <version>3.20.0</version>
+    <time>1459255636</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.20.0 (forwarded request 378444 from dimstar)</comment>
+    <requestid>378666</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>987178a81ae34d78a13ba90dfdfda69d</srcmd5>
+    <version>3.20.0</version>
+    <time>1464964154</time>
+    <user>dimstar_suse</user>
+    <comment>Sync package with SLE12SP2 - just for easier tracking (forwarded request 399179 from dimstar)</comment>
+    <requestid>399397</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>54f59998d10983034540ac6aafd42b77</srcmd5>
+    <version>3.20.0</version>
+    <time>1505332059</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove redundant %clean section, and the no-op --with-pic.
+- Ensure neutrality of descriptions. Trim/update descriptions. (forwarded request 522937 from jengelh)</comment>
+    <requestid>523027</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a2e8a03d3594382084dabebfa6d948d7</srcmd5>
+    <version>3.20.1</version>
+    <time>1507280464</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 531555 from dimstar)</comment>
+    <requestid>531692</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d4913f5afebac93d91770fe83b8a8198</srcmd5>
+    <version>3.20.2</version>
+    <time>1513109882</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.20.2:
+  + Install appstream metadata to non-deprecated location.
+  + Fix bugs:
+    - Glade interface designer eating ram &amp;amp; cpu (bgo#763624).
+    - Glade saves invalid GtkBuilder XML (bgo#790452).
+    - GtkLabel xalign and halign appeared in GTK+ 3.16 and are not
+      deprecated (bgo#782645).
+    - Add background class to GladeDesignLayout children
+      (bgo#773669).
+  + Updated translations.
+- Add gmodule-export-2.0 and gobject-2.0 pkgconfig BuildRequires:
+  they were being pulled and used since the package already had
+  another declared module dependencies upon glib2-devel, the same
+  provider. Note that gobject-2.0 is not mentioned in configure.ac
+  but it is checked by configure and the same goes for glib-2.0
+  module.
+- Drop docbook-xsl-stylesheets BuildRequires and add gtk-doc:
+  that's what upstream uses and we don't want deviations to avoid
+  unexpected bugs.
+- Pass enable-man-pages enable-gtk-doc and to ensure that manuals
+  and documentation will be built.
+- Remove gnome-common BuildRequires and autogen.sh call, as we no
+  longer carry any patches.
+- Adopt %make_build macro and drop raw commands following the best
+  practices. (forwarded request 554635 from dimstar)</comment>
+    <requestid>554713</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f76d35fb501286c712dd494290bb86cf</srcmd5>
+    <version>3.20.3</version>
+    <time>1520253196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582062</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>dc543f86cf0f57fdb21c2039b4897ea1</srcmd5>
+    <version>3.20.4</version>
+    <time>1520502137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.20.4:
+  + Fix bgo#772485: File Name property of GtkImage is copied to all
+    other GtkImage.
+  + Fix bgo#793652: Crash when deleting a list.
+  + Fix bgo#793757: Gtk-CRITICAL **: _gtk_window_add_popover:
+    assertion '_gtk_widget_get_parent (popover) == NULL' failed.
+  + Add GDK_SUPER_MASK accelerator handling. (forwarded request 582377 from iznogood)</comment>
+    <requestid>582659</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>4b064e2131830e433650299baf7ba750</srcmd5>
+    <version>3.22.0</version>
+    <time>1521052189</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.28.0 (forwarded request 586070 from dimstar)</comment>
+    <requestid>586230</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>eace0cac96195de1080f8888f268f0ee</srcmd5>
+    <version>3.22.1</version>
+    <time>1524144107</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 593712 from dimstar)</comment>
+    <requestid>596119</requestid>
+  </revision>
+</revisionlist>

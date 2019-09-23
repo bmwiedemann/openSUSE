@@ -1,0 +1,18 @@
+<package name="trello-full-backup" project="openSUSE:Factory">
+  <title>Backup everything from Trello</title>
+  <description>Backup everything from Trello:
+
+ * boards, open and closed, as json files
+ * lists, open and archived, as json files
+ * cards, open and archived, as json files
+ * attachments, downloaded as raw files
+
+The script also creates a folder tree structure corresponding to
+the way data is organized. This is to make it more convenient to
+navigate locally between folders, as it mimics the flow you have
+when using the web and mobile apps.
+
+</description>
+  <devel project="Archiving:Backup" package="trello-full-backup"/>
+  <url>https://github.com/jtpio/trello-full-backup</url>
+</package>

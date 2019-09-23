@@ -1,0 +1,38 @@
+diff --git a/tests/Makefile b/tests/Makefile
+index e2e1156..4daa5d1 100644
+--- a/tests/Makefile
++++ b/tests/Makefile
+@@ -39,6 +39,11 @@ LDLIBS = $(STATIC_LDLIBS) -ldl -lhugetlbfs_privutils
+ LDFLAGS32 = -L../obj32
+ LDFLAGS64 = -L../obj64
+ INSTALL = install
++ifeq ($(ARCH),s390x)
++ARCH_SUFFIX = .s390x
++else
++ARCH_SUFFIX =
++endif
+ 
+ TESTS = $(LIB_TESTS) $(NOLIB_TESTS) $(STRESS_TESTS) dummy.ldscript
+ ifdef ELF32
+@@ -181,7 +186,7 @@ $(LDSCRIPT_TESTS:%=obj32/%): obj32/%: %.ld obj32/%.o obj32/testutils.o
+ 	@$(VECHO) LD32 "(preload test)" $@
+ 	$(CC32) $(LDFLAGS) $(LDFLAGS32) -o $@ -Lobj32 $^ $(LDLIBS) || cp $(BADTOOLCHAIN) $@
+ 
+-$(LDSCRIPT_TESTS:%=obj64/%): obj64/%: %.ld obj64/%.o obj64/testutils.o
++$(LDSCRIPT_TESTS:%=obj64/%): obj64/%: %$(ARCH_SUFFIX).ld obj64/%.o obj64/testutils.o
+ 	@$(VECHO) LD64 "(preload test)" $@
+ 	$(CC64) $(LDFLAGS) $(LDFLAGS64) -o $@ -Lobj64 $^ $(LDLIBS) || cp $(BADTOOLCHAIN) $@
+ 
+diff --git a/tests/zero_filesize_segment.s390x.ld b/tests/zero_filesize_segment.s390x.ld
+new file mode 100644
+index 0000000..813a92f
+--- /dev/null
++++ b/tests/zero_filesize_segment.s390x.ld
+@@ -0,0 +1,7 @@
++SECTIONS
++{
++	.empty (0x90000000) : {
++		__empty_segment = .;
++		. = . + 4;
++	}
++}

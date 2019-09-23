@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6b6d2ad0ad639e95858f31df29675aa2</srcmd5>
+    <version>0.6.3</version>
+    <time>1387382090</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>207440</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3bb9dfa837a11a099982807514c5acd2</srcmd5>
+    <version>0.6.7</version>
+    <time>1390200835</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.6.7:
+  + Upstream provides no changelog
+- Don't install testsuite globally</comment>
+    <requestid>214251</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3bb9dfa837a11a099982807514c5acd2</srcmd5>
+    <version>0.6.7</version>
+    <time>1409302816</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dfe092bff7d623a77911f627b9dc5114</srcmd5>
+    <version>0.8.7</version>
+    <time>1429606434</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298189</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>715939229dd309e4168ea2a635b49a31</srcmd5>
+    <version>1.0.0</version>
+    <time>1451674098</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351194</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>6cf77d428b7765adb9b6c28cb0e4cd8b</srcmd5>
+    <version>1.0.0</version>
+    <time>1479150874</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440003</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ffceb902aeac560e8d7cc3f9b46f318f</srcmd5>
+    <version>1.8.2</version>
+    <time>1500670243</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511764</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cee2f7877d4777632b0f07d074827381</srcmd5>
+    <version>1.9.2</version>
+    <time>1507197769</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>531242</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>93fdb37063988c1be1c548cf73c0504c</srcmd5>
+    <version>1.9.2</version>
+    <time>1544631900</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653915</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a5aea258bbae655ed449e5bcfa3d5ee8</srcmd5>
+    <version>1.9.4</version>
+    <time>1551113846</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678738</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ee9daa3b26e79be7759ca01aaeac3d15</srcmd5>
+    <version>1.9.5</version>
+    <time>1554749577</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.5:
+  * check_module: Don’t crash, exit with error instead (#261)
+  * Register completion for multiple commands (#246)</comment>
+    <requestid>691783</requestid>
+  </revision>
+</revisionlist>

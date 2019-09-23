@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9c90f45c6d24168e09ec4548e8b4323c</srcmd5>
+    <version>0.8.2</version>
+    <time>1468482207</time>
+    <user>dimstar_suse</user>
+    <comment>Python simpleeval - required package - preparation for submission of GNU Health to Factory</comment>
+    <requestid>405350</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ef3539263cb22828fd44721891cce255</srcmd5>
+    <version>0.8.2</version>
+    <time>1494938765</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494940</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5cf2c612166081b3e1a41aefaa35183a</srcmd5>
+    <version>0.9.8</version>
+    <time>1556622229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697758</requestid>
+  </revision>
+</revisionlist>

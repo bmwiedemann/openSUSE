@@ -1,0 +1,255 @@
+<revisionlist>
+  <revision rev="1" vrev="16">
+    <srcmd5>0f5ad7898c89e8f842217bcc52c20562</srcmd5>
+    <version>2.1</version>
+    <time>1168902415</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="138">
+    <srcmd5>0f5ad7898c89e8f842217bcc52c20562</srcmd5>
+    <version>2.1</version>
+    <time>1168902415</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a80e0eab65679b6890a9b3fe37fdba5d</srcmd5>
+    <version>2.2</version>
+    <time>1223311528</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>286454dce3789782825cf15eee8f89f9</srcmd5>
+    <version>2.3</version>
+    <time>1251292498</time>
+    <user>autobuild</user>
+    <comment>Copy from system:install:head/checkmedia based on submit request 18628 from user snwint
+</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>286454dce3789782825cf15eee8f89f9</srcmd5>
+    <version>2.3</version>
+    <time>1251292498</time>
+    <user>autobuild</user>
+    <comment>Copy from system:install:head/checkmedia based on submit request 18628 from user snwint
+</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>571aec959d466581075a14ffa3b2a197</srcmd5>
+    <version>2.3</version>
+    <time>1268923170</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>571aec959d466581075a14ffa3b2a197</srcmd5>
+    <version>2.3</version>
+    <time>1278667339</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>571aec959d466581075a14ffa3b2a197</srcmd5>
+    <version>2.3</version>
+    <time>1278678567</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>560e9d20107dcef4242379edeee150fe</srcmd5>
+    <version>2.4</version>
+    <time>1287009985</time>
+    <user>autobuild</user>
+    <comment>Copy from system:install:head/checkmedia based on submit request 50333 from user snwint
+</comment>
+    <requestid>50333</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>560e9d20107dcef4242379edeee150fe</srcmd5>
+    <version>2.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1f4ad6df75df166eaec5bdce65769036</srcmd5>
+    <version>2.5</version>
+    <time>1310566072</time>
+    <user>saschpe</user>
+    <comment>- change isohybrid md5 calculation to report 'real' md5 sum (bnc #678739)</comment>
+    <requestid>76177</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>64bbf94db0a93e3d5349bddfc400da93</srcmd5>
+    <version>2.5</version>
+    <time>1310566083</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76177
+</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>9ec2c2888b2b05cfdeb794b9fb54c4d0</srcmd5>
+    <version>2.5</version>
+    <time>1316459178</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 83084 from jengelh)</comment>
+    <requestid>83608</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>9ec2c2888b2b05cfdeb794b9fb54c4d0</srcmd5>
+    <version>2.5</version>
+    <time>1319181809</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>d46a1c0d3e0c01a941f83778c0f141ee</srcmd5>
+    <version>2.5</version>
+    <time>1323190973</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>abac1959d2d4c23a93a554a357d8b34a</srcmd5>
+    <version>3.0</version>
+    <time>1327673820</time>
+    <user>coolo</user>
+    <comment>- support more digests: md5, sha1, sha224, sha256, sha384, sha512
+- changed license to gpl3
+- new major version</comment>
+    <requestid>101660</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>abac1959d2d4c23a93a554a357d8b34a</srcmd5>
+    <version>3.0</version>
+    <time>1340183234</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>abac1959d2d4c23a93a554a357d8b34a</srcmd5>
+    <version>3.0</version>
+    <time>1359108743</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>abac1959d2d4c23a93a554a357d8b34a</srcmd5>
+    <version>3.0</version>
+    <time>1379662105</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e5abd27ac3a835f00ba6cb11966dd842</srcmd5>
+    <version>3.1</version>
+    <time>1387453159</time>
+    <user>coolo</user>
+    <comment>- added github url to spec
+
+- make sure WORDS_BIGENDIAN is defined correctly where needed</comment>
+    <requestid>211642</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>73c7f2a62f72fdefe70d2fdc090ce917</srcmd5>
+    <version>3.2</version>
+    <time>1399056734</time>
+    <user>coolo</user>
+    <comment>- ignore padding area when calculating checksum (bnc #804160)
+- 3.2</comment>
+    <requestid>232145</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>73c7f2a62f72fdefe70d2fdc090ce917</srcmd5>
+    <version>3.2</version>
+    <time>1409300636</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4146e9e91351684ea285251a7de3932b</srcmd5>
+    <version>3.3</version>
+    <time>1413384070</time>
+    <user>coolo</user>
+    <comment>submitted by snwint_jenkins</comment>
+    <requestid>256302</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d1f3893784b89b9f53c365daa0bdb8d7</srcmd5>
+    <version>3.4</version>
+    <time>1422594202</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>282932</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0284149f999628e9ac643935f7f57ae4</srcmd5>
+    <version>3.5</version>
+    <time>1444636803</time>
+    <user>coolo</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>335462</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>2b89ad80df3cd62ef5651cb2d593a294</srcmd5>
+    <version>3.5</version>
+    <time>1494441323</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>493046</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>da50eff4f99f0e12e90164d14d81ad13</srcmd5>
+    <version>3.6</version>
+    <time>1505331434</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>523711</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>545276c90c0076a1dd206b9fcfc57c9f</srcmd5>
+    <version>3.7</version>
+    <time>1512546851</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>547085</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>00bf4f14a8c01d6d2c8ff7f973b57b5e</srcmd5>
+    <version>3.8</version>
+    <time>1525121536</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>601622</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>979e3fb994a426cf1e30efedc7d4e264</srcmd5>
+    <version>4.0</version>
+    <time>1530566972</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>619766</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>219b4452e2e759a817bf67eca16e7a65</srcmd5>
+    <version>4.1</version>
+    <time>1543828160</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>652463</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ee3f4cb427cd13d5657c89bb072ab633</srcmd5>
+    <version>5.2</version>
+    <time>1564136652</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>716036</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e0549064c4643ea272eebbc598226a75</srcmd5>
+    <version>5.3</version>
+    <time>1565096884</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>719576</requestid>
+  </revision>
+</revisionlist>

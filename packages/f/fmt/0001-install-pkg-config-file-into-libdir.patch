@@ -1,0 +1,30 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Mon, 25 Mar 2019 17:10:40 +0100
+Subject: install pkg-config file into libdir
+
+Most pkgconfig files contain a Libs: variable, which is either /usr/lib
+or /usr/lib64. If a 32bit and a 64bit variant of fmt libraries is
+installed, the last one wins. As a result compiling for the other
+bitsize will fail.
+
+Instead of sharedir use libdir as install target.
+
+Fixes commit 9d0c9c4bb145a286f725cd38c90331eee7addc7f
+Fixes commit 287342dab10a5a96479b3e21cd11ce671ed8125c
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -205,7 +205,7 @@ if (FMT_INSTALL)
+   set(FMT_INC_DIR ${CMAKE_INSTALL_INCLUDEDIR}/fmt CACHE STRING
+       "Installation directory for include files, relative to ${CMAKE_INSTALL_PREFIX}.")
+ 
+-  set(FMT_PKGCONFIG_DIR "${CMAKE_INSTALL_PREFIX}/share/pkgconfig" CACHE PATH
++  set(FMT_PKGCONFIG_DIR ${CMAKE_INSTALL_LIBDIR}/pkgconfig CACHE PATH
+     "Installation directory for pkgconfig (.pc) files, relative to ${CMAKE_INSTALL_PREFIX}.")
+ 
+   # Generate the version, config and target files into the build directory.

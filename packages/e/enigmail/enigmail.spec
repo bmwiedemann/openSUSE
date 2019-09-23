@@ -20,7 +20,7 @@
 Name:           enigmail
 Version:        2.1.2
 Release:        0
-Summary:        OpenPGP addon for Thunderbird and SeaMonkey
+Summary:        OpenPGP addon for Mozilla Thunderbird
 License:        MPL-2.0
 Group:          Productivity/Networking/Email/Clients
 URL:            https://www.enigmail.net/
@@ -37,7 +37,7 @@ Requires:       gpg2 >= 2.0.7
 Requires:       pinentry-gui
 
 %description
-This package contains the Enigmail OpenPGP Addon for Thunderbird and SeaMonkey.
+This package contains the Enigmail OpenPGP Addon for Mozilla Thunderbird.
 
 %prep
 %setup -q -n enigmail
@@ -55,10 +55,6 @@ _enig_dir=%{buildroot}%{_libdir}/mozilla/extensions/\{3550f703-e582-4d05-9a08-45
 mkdir -p $_enig_dir
 (cd $_enig_dir; unzip $RPM_BUILD_DIR/enigmail/build/enigmail-*.xpi)
 #rm $_enig_dir/*.xpi
-# SeaMonkey location
-mkdir -p %{buildroot}%{_libdir}/mozilla/extensions/\{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a\}
-(cd %{buildroot}%{_libdir}/mozilla/extensions/\{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a\}; \
-  ln -s ../\{3550f703-e582-4d05-9a08-453d09bdfdc6\}/\{847b3a00-7ab1-11d4-8f02-006008948af5\} )
 
 mkdir -p %{buildroot}%{_datadir}/appdata/
 install -m644 public/thunderbird-enigmail.metainfo.xml %{buildroot}%{_datadir}/appdata/enigmail.appdata.xml

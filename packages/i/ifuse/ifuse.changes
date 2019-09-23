@@ -1,0 +1,134 @@
+-------------------------------------------------------------------
+Tue Jun 17 07:26:48 UTC 2014 - i@marguerite.su
+
+- update version 1.1.3
+  * Updated to compile with latest libimobiledevice
+  * New command line options --documents and --container (obsoletes --appid)
+  * Handle error condition caused by pending iOS7+ trust dialog
+  * Minor fixes and changes
+- drop patch: ifuse-libimobiledevice-1.1.5.patch
+  * upstreamed
+
+-------------------------------------------------------------------
+Tue Jul 30 14:27:12 CEST 2013 - opensuse@sukimashita.com
+
+- Add support for libimobiledevice 1.1.5 backported from upstream
+  git HEAD fixing build for openSUSE:Factory
+- Add ifuse-libimobiledevice-1.1.5.patch
+
+-------------------------------------------------------------------
+Sat May 26 14:37:42 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Mon Apr 08 23:53:53 CEST 2012 - opensuse@sukimashita.com
+
+- Update to 1.1.2:
+  * Add direct linking with libplist to fix build issues
+  * Add basic manpage
+  * Use UDID instead of UUID as it is the correct term for it
+  * Remove obsolete glib and gthread dependencies
+- Remove ifuse-fixasneeded.patch
+
+-------------------------------------------------------------------
+Mon Feb 13 10:47:48 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Wed Jan 12 18:06:31 CEST 2011 - opensuse@sukimashita.com
+
+- Update to 1.1.1:
+  * Add "house_arrest" support when compiled with
+    libimobiledevice >= 1.1.0
+  * Add "--appid" option for document/filesharing using
+    "house_arrest" service
+  * FreeBSD doesn't have ENODATA, so fake it as EIO
+  * Make COPYING contain correct license
+  * Add NEWS file and update README
+  * Minor bugfixes
+
+-------------------------------------------------------------------
+Mon May  3 23:38:00 CEST 2010 - meissner@suse.de
+
+- fixed asneeded problem correctly
+
+-------------------------------------------------------------------
+Tue Mar 23 20:29:29 CEST 2010 - opensuse@sukimashita.com
+
+- Update to 1.0.0:
+  * Return correct exit status on failure
+  * Fix renamed define due to changes in libimobiledevice
+
+-------------------------------------------------------------------
+Tue Feb 02 19:15:32 CEST 2010 - opensuse@sukimashita.com
+
+- Update to 0.9.7:
+  * Port to libimobiledevice project name change
+
+-------------------------------------------------------------------
+Sat Jan 23 23:50:45 CEST 2010 - opensuse@sukimashita.com
+
+- Update to 0.9.6:
+  * Port to libiphone 0.9.6 API
+  * Improve error message on failed root filesystem access
+  * Notify user if startup fails due to the device having a
+    password set
+  * Fix handling of uuid command line argument
+  * Remove hardcoded allow_other fuse argument
+
+-------------------------------------------------------------------
+Tue Nov 24 22:39:48 CEST 2009 - opensuse@sukimashita.com
+
+- Update to 0.9.5:
+  * support file modification times on OS 3.1 and later
+
+-------------------------------------------------------------------
+Thu Oct 29 11:09:28 CEST 2009 - opensuse@sukimashita.com
+
+- Update to 0.9.4:
+  * Renamed and moved binary to /usr/bin/ifuse
+  * Rewrite option handling and connect to a specific device
+  * Remove HAL automounting hack
+  * Update to latest libiphone API
+  * Userspace mounting is now preferred
+
+-------------------------------------------------------------------
+Thu Aug 06 23:06:51 CEST 2009 - opensuse@sukimashita.com
+
+- Update to 0.9.3:
+  * Moved some libiphone logic into iFuse and adopted to new API
+  * Add hard/symlink/locking support
+  * Add iPhone 3GS support
+  * Improved error code handling
+
+-------------------------------------------------------------------
+Wed May 13 10:30:22 CEST 2009 - opensuse@sukimashita.com
+
+- Update to 0.9.1:
+  * Autotools fixes
+
+-------------------------------------------------------------------
+Sun May 10 20:49:48 CEST 2009 - opensuse@sukimashita.com
+
+- Update to 0.9.0:
+  * Handle file modes correctly
+  * Improve error handling
+  * Remove references of obsolete libiphone-initconf
+  * Bugfixes
+
+-------------------------------------------------------------------
+Sat Apr 11 14:30:51 CET 2009 - opensuse@sukimashita.com
+
+- Update to latest git HEAD
+
+-------------------------------------------------------------------
+Sat Apr 04 11:08:16 CET 2009 - opensuse@sukimashita.com
+
+- Make BuildRequires use libiphone-devel without so version
+
+-------------------------------------------------------------------
+Sat Jan 31 12:00:00 CET 2009 - opensuse@sukimashita.com
+
+- Initial package created

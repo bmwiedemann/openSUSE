@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Fri Jul 26 07:07:23 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 0.7.3:
+  * Allow specifying a `ttl` when redeeming an authorization code.
+
+-------------------------------------------------------------------
+Mon Jun  3 18:34:02 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 0.7.2:
+  * Several cleans for Python3 compatibility.
+  * Fix a bug which could accidentally introduce multiple slashes
+    into the result of oauth.Client.get_redirect_url.
+
+-------------------------------------------------------------------
+Tue Mar 26 12:47:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.1:
+  * Fix test bustage due to session verification.
+  * Add support for TOTP.
+- Add missing deps
+- Enable tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:13 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Aug 13 13:15:39 UTC 2018 - mcepl@suse.com
+
+- Remove dependency on unittest2
+
+-------------------------------------------------------------------
+Sun May 13 10:04:02 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.6.0:
+  * Add support for PKCE challenge and response in the OAuth flow.
+  * Add ability to supply `keys_jwk` when starting an OAuth flow.
+  * Improve scope-matching logic based on new FxA testcases,
+    including handling of URL-format scopes.
+
+-------------------------------------------------------------------
+Fri Jan 12 06:33:53 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.5.0:
+  * Add ability to login with unblock codes.
+  * Tell testrunners to ignore some test helper utilities.
+
+-------------------------------------------------------------------
+Sat Dec  2 10:33:45 UTC 2017 - antoine.belvire@opensuse.org
+
+- Initial package: python-PyFxA 0.4.0.
+

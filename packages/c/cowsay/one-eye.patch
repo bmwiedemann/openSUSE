@@ -1,0 +1,12 @@
+Index: cowsay-3.03/cowsay
+===================================================================
+--- cowsay-3.03.orig/cowsay
++++ cowsay-3.03/cowsay
+@@ -66,6 +66,7 @@ $Text::Wrap::columns = $opts{'W'};
+ 	    split("\n", fill("", "", @message)));
+ &construct_balloon;
+ &construct_face;
++$eye = substr($eyes,0,1);
+ &get_cow;
+ print @balloon_lines;
+ print $the_cow;

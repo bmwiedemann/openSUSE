@@ -1,0 +1,29 @@
+--- configure.in
++++ configure.in
+@@ -429,7 +429,7 @@
+ panic=0
+ if test $xmle = 1; then
+   resmsg='expat (new)'
+-elif $xmlp = 1; then
++elif test $xmlp = 1; then
+   resmsg='expat (old)'
+ else
+   resmsg='not found (panic)'
+@@ -443,11 +443,13 @@
+ 
+ dnl Expat headers location (according Linux distribution etc.)
+ dnl different headers for different library version required
++has_expat_headers=0
+ if test $xmle = 1; then
+-  AC_CHECK_HEADERS( expat.h, has_expat_headers=1, has_expat_headers=0 )
+-else
+-  AC_CHECK_HEADERS( xmlparse.h xmltok/xmlparse.h, has_expat_headers=1, 
+-                    has_expat_headers=0 )
++  AC_CHECK_HEADERS( expat.h, has_expat_headers=1 )
++fi
++
++if test $has_expat_headers = 0; then
++  AC_CHECK_HEADERS( xmlparse.h xmltok/xmlparse.h, [has_expat_headers=1; break] )
+ fi
+ 
+ if test $has_expat_headers = 0; then

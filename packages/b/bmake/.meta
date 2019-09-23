@@ -1,0 +1,7 @@
+<package name="bmake" project="openSUSE:Factory">
+  <title></title>
+  <description>bmake, the NetBSD make(1) tool, is a program designed to simplify the maintenance of other programs.  The input of bmake is a list of specifications indicating the files upon which the targets (programs and other files) depend. bmake then detects which targets are out of date based on their dependencies and triggers the necessary commands to bring them up to date when that happens.
+
+bmake is similar to GNU make, even though the syntax for the advanced features supported in Makefiles is very different.</description>
+  <devel project="devel:tools:building" package="bmake"/>
+</package>

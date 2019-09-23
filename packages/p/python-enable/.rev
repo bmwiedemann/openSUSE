@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>086d41f79d392021d2336c514320d33c</srcmd5>
+    <version>4.7.1</version>
+    <time>1527605236</time>
+    <user>dimstar_suse</user>
+    <comment>High-level GUI package for python</comment>
+    <requestid>605790</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1ff646751bf294742a528e4bed62c9d7</srcmd5>
+    <version>4.7.2</version>
+    <time>1543224098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649117</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>44310c0700982868c13e571d52750d8d</srcmd5>
+    <version>4.7.2</version>
+    <time>1551455187</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to github tarball, as upstream does not ship cython sources
+  otherwise
+- Make sure we will build with python 3.7</comment>
+    <requestid>670291</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>d8d2d03b17747bfba5b414ad7b5e5ee6</srcmd5>
+    <version>4.7.2</version>
+    <time>1556621946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697377</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a60b7d62c498135ab37af4620ce9dee5</srcmd5>
+    <version>4.8.0</version>
+    <time>1564155217</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718602</requestid>
+  </revision>
+</revisionlist>

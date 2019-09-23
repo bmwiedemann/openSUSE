@@ -1,0 +1,5 @@
+<package name="python-inifile" project="openSUSE:Factory">
+  <title>A small INI library for Python</title>
+  <description>A small INI library for Python</description>
+  <devel project="devel:languages:python" package="python-inifile"/>
+</package>

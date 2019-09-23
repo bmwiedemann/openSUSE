@@ -1,0 +1,216 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>8a67d541e8f37782c5da7cf5779c3b8e</srcmd5>
+    <version>2.2.0</version>
+    <time>1209610281</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f53a186c74773f77b55a687d35d057f1</srcmd5>
+    <version>2.3.0</version>
+    <time>1220674118</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>98b1d363316c2a5e99b559404963f61d</srcmd5>
+    <version>2.4.0</version>
+    <time>1223573766</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>78654d0f6bcc839573e037ae1bcb94b2</srcmd5>
+    <version>2.5.0</version>
+    <time>1236793980</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>48e468d3e8c70b6f4265eafa1ad57e0b</srcmd5>
+    <version>2.6.0</version>
+    <time>1238109079</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>80a14b7772e0cf648f00cb59d3b3a15c</srcmd5>
+    <version>2.8.0</version>
+    <time>1254525350</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-gtksourceview based on submit request 21291 from user vuntz
+</comment>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>80a14b7772e0cf648f00cb59d3b3a15c</srcmd5>
+    <version>2.8.0</version>
+    <time>1254525350</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-gtksourceview based on submit request 21291 from user vuntz
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ea5fef8956452061cd9a3a8298229d9c</srcmd5>
+    <version>2.9.1</version>
+    <time>1260197144</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-gtksourceview based on submit request 25614 from user vuntz
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ffe657d256f19ed6df7fed8bbf0c4f02</srcmd5>
+    <version>2.9.2</version>
+    <time>1266974737</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-gtksourceview based on submit request 33221 from user vuntz
+</comment>
+    <requestid>33221</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d5ca38cb99dbb9a85ca3b7b18893835d</srcmd5>
+    <version>2.9.2</version>
+    <time>1268925855</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9601731633044c5b6c8ea519e0ea2969</srcmd5>
+    <version>2.10.0</version>
+    <time>1270057481</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-gtksourceview based on submit request 36216 from user vuntz
+</comment>
+    <requestid>36216</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9601731633044c5b6c8ea519e0ea2969</srcmd5>
+    <version>2.10.0</version>
+    <time>1278667384</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>9601731633044c5b6c8ea519e0ea2969</srcmd5>
+    <version>2.10.0</version>
+    <time>1278678614</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b75fc3313dbc8e36ed4a8cc6de0b8244</srcmd5>
+    <version>2.10.1</version>
+    <time>1281312909</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-gtksourceview based on submit request 44784 from user vuntz
+</comment>
+    <requestid>44784</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>131e32110157b9e2e8552eacef3e9624</srcmd5>
+    <version>2.10.1</version>
+    <time>1297642293</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60684 from user vuntz
+</comment>
+    <requestid>60684</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>4accdc72582bbee99a90a94b49917493</srcmd5>
+    <version>2.10.1</version>
+    <time>1297642301</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60684
+</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>4accdc72582bbee99a90a94b49917493</srcmd5>
+    <version>2.10.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>a64bd21d6b15f30880f730bb95bd6ba7</srcmd5>
+    <version>2.10.1</version>
+    <time>1304335302</time>
+    <user>saschpe</user>
+    <comment>Pushing from d:l:p (needed for GNOME 3)</comment>
+    <requestid>69012</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>528f87da9a9ec28dbb4570b8d81f2f34</srcmd5>
+    <version>2.10.1</version>
+    <time>1304335316</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69012
+</comment>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>528f87da9a9ec28dbb4570b8d81f2f34</srcmd5>
+    <version>2.10.1</version>
+    <time>1319182393</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>9adea6eda62c763c5a2b263b6d2ffb15</srcmd5>
+    <version>2.10.1</version>
+    <time>1323194156</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="13">
+    <srcmd5>9adea6eda62c763c5a2b263b6d2ffb15</srcmd5>
+    <version>2.10.1</version>
+    <time>1340184059</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="15">
+    <srcmd5>9adea6eda62c763c5a2b263b6d2ffb15</srcmd5>
+    <version>2.10.1</version>
+    <time>1359110047</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="16">
+    <srcmd5>03fde2a48752d4822dfa6fdcd02dd57b</srcmd5>
+    <version>2.10.1</version>
+    <time>1363340860</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>159264</requestid>
+  </revision>
+  <revision rev="25" vrev="18">
+    <srcmd5>03fde2a48752d4822dfa6fdcd02dd57b</srcmd5>
+    <version>2.10.1</version>
+    <time>1379664190</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="20">
+    <srcmd5>03fde2a48752d4822dfa6fdcd02dd57b</srcmd5>
+    <version>2.10.1</version>
+    <time>1409302882</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="21">
+    <srcmd5>9d31a7c48d5a625dc76c691d0c1fc4c5</srcmd5>
+    <version>2.10.1</version>
+    <time>1471009365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>417993</requestid>
+  </revision>
+  <revision rev="28" vrev="22">
+    <srcmd5>36c386d4f51338a20687f82e4e418723</srcmd5>
+    <version>2.10.1</version>
+    <time>1520778295</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583640 from dimstar)</comment>
+    <requestid>584814</requestid>
+  </revision>
+  <revision rev="29" vrev="23">
+    <srcmd5>5f2deae7794f2893264c9ceb371bcea9</srcmd5>
+    <version>2.10.1</version>
+    <time>1524144556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597158</requestid>
+  </revision>
+</revisionlist>

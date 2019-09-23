@@ -1,0 +1,174 @@
+From 73476af1eecb8e29f2a461e003a2d8a735d22306 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micka=C3=ABl=20Schoentgen?= <contact@tiger-222.fr>
+Date: Sun, 9 Dec 2018 17:31:24 +0100
+Subject: Fix several ResourceWarnings: unclosed file
+
+---
+ xdg/IniFile.py     | 61 +++++++++++++++++++++++++++---------------------------
+ xdg/Mime.py        |  9 +++++---
+ xdg/RecentFiles.py | 43 +++++++++++++++++++-------------------
+ 3 files changed, 57 insertions(+), 56 deletions(-)
+
+diff --git a/xdg/IniFile.py b/xdg/IniFile.py
+index 718589f..84be614 100644
+--- a/xdg/IniFile.py
++++ b/xdg/IniFile.py
+@@ -56,38 +56,37 @@ class IniFile:
+                 return
+ 
+         # parse file
+-        for line in fd:
+-            line = line.strip()
+-            # empty line
+-            if not line:
+-                continue
+-            # comment
+-            elif line[0] == '#':
+-                continue
+-            # new group
+-            elif line[0] == '[':
+-                currentGroup = line.lstrip("[").rstrip("]")
+-                if debug and self.hasGroup(currentGroup):
+-                    raise DuplicateGroupError(currentGroup, filename)
+-                else:
+-                    content[currentGroup] = {}
+-            # key
+-            else:
+-                try:
+-                    key, value = line.split("=", 1)
+-                except ValueError:
+-                    raise ParsingError("Invalid line: " + line, filename)
+-                
+-                key = key.strip() # Spaces before/after '=' should be ignored
+-                try:
+-                    if debug and self.hasKey(key, currentGroup):
+-                        raise DuplicateKeyError(key, currentGroup, filename)
++        with fd:
++            for line in fd:
++                line = line.strip()
++                # empty line
++                if not line:
++                    continue
++                # comment
++                elif line[0] == '#':
++                    continue
++                # new group
++                elif line[0] == '[':
++                    currentGroup = line.lstrip("[").rstrip("]")
++                    if debug and self.hasGroup(currentGroup):
++                        raise DuplicateGroupError(currentGroup, filename)
+                     else:
+-                        content[currentGroup][key] = value.strip()
+-                except (IndexError, UnboundLocalError):
+-                    raise ParsingError("Parsing error on key, group missing", filename)
+-
+-        fd.close()
++                        content[currentGroup] = {}
++                # key
++                else:
++                    try:
++                        key, value = line.split("=", 1)
++                    except ValueError:
++                        raise ParsingError("Invalid line: " + line, filename)
++
++                    key = key.strip() # Spaces before/after '=' should be ignored
++                    try:
++                        if debug and self.hasKey(key, currentGroup):
++                            raise DuplicateKeyError(key, currentGroup, filename)
++                        else:
++                            content[currentGroup][key] = value.strip()
++                    except (IndexError, UnboundLocalError):
++                        raise ParsingError("Parsing error on key, group missing", filename)
+ 
+         self.filename = filename
+         self.tainted = False
+diff --git a/xdg/Mime.py b/xdg/Mime.py
+index 3bff8b2..886cb42 100644
+--- a/xdg/Mime.py
++++ b/xdg/Mime.py
+@@ -749,14 +749,16 @@ def install_mime_info(application, package_file):
+     file with the same name (if the contents are different)"""
+     application += '.xml'
+ 
+-    new_data = open(package_file).read()
++    with open(package_file) as f:
++        new_data = f.read()
+ 
+     # See if the file is already installed
+     package_dir = os.path.join('mime', 'packages')
+     resource = os.path.join(package_dir, application)
+     for x in BaseDirectory.load_data_paths(resource):
+         try:
+-            old_data = open(x).read()
++            with open(x) as f:
++                old_data = f.read()
+         except:
+             continue
+         if old_data == new_data:
+@@ -770,7 +772,8 @@ def install_mime_info(application, package_file):
+     new_file = os.path.join(BaseDirectory.save_data_path(package_dir), application)
+ 
+     # Write the file...
+-    open(new_file, 'w').write(new_data)
++    with open(new_file, 'w') as f:
++        f.write(new_data)
+ 
+     # Update the database...
+     command = 'update-mime-database'
+diff --git a/xdg/RecentFiles.py b/xdg/RecentFiles.py
+index 3038b57..7ee7ee5 100644
+--- a/xdg/RecentFiles.py
++++ b/xdg/RecentFiles.py
+@@ -71,28 +71,27 @@ class RecentFiles:
+         elif not filename:
+             filename = self.filename
+ 
+-        f = open(filename, "w")
+-        fcntl.lockf(f, fcntl.LOCK_EX)
+-        f.write('<?xml version="1.0"?>\n')
+-        f.write("<RecentFiles>\n")
+-
+-        for r in self.RecentFiles:
+-            f.write("  <RecentItem>\n")
+-            f.write("    <URI>%s</URI>\n" % xml.sax.saxutils.escape(r.URI))
+-            f.write("    <Mime-Type>%s</Mime-Type>\n" % r.MimeType)
+-            f.write("    <Timestamp>%s</Timestamp>\n" % r.Timestamp)
+-            if r.Private == True:
+-                f.write("    <Private/>\n")
+-            if len(r.Groups) > 0:
+-                f.write("    <Groups>\n")
+-                for group in r.Groups:
+-                    f.write("      <Group>%s</Group>\n" % group)
+-                f.write("    </Groups>\n")
+-            f.write("  </RecentItem>\n")
+-
+-        f.write("</RecentFiles>\n")
+-        fcntl.lockf(f, fcntl.LOCK_UN)
+-        f.close()
++        with open(filename, "w") as f:
++            fcntl.lockf(f, fcntl.LOCK_EX)
++            f.write('<?xml version="1.0"?>\n')
++            f.write("<RecentFiles>\n")
++
++            for r in self.RecentFiles:
++                f.write("  <RecentItem>\n")
++                f.write("    <URI>%s</URI>\n" % xml.sax.saxutils.escape(r.URI))
++                f.write("    <Mime-Type>%s</Mime-Type>\n" % r.MimeType)
++                f.write("    <Timestamp>%s</Timestamp>\n" % r.Timestamp)
++                if r.Private == True:
++                    f.write("    <Private/>\n")
++                if len(r.Groups) > 0:
++                    f.write("    <Groups>\n")
++                    for group in r.Groups:
++                        f.write("      <Group>%s</Group>\n" % group)
++                    f.write("    </Groups>\n")
++                f.write("  </RecentItem>\n")
++
++            f.write("</RecentFiles>\n")
++            fcntl.lockf(f, fcntl.LOCK_UN)
+ 
+     def getFiles(self, mimetypes=None, groups=None, limit=0):
+         """Get a list of recently used files.
+-- 
+cgit v1.1
+

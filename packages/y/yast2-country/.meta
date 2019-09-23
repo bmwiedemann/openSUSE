@@ -1,0 +1,6 @@
+<package name="yast2-country" project="openSUSE:Factory">
+  <title>YaST2 - Country Settings (Language, Keyboard, and Timezone)</title>
+  <description>Country specific data and configuration modules (language, keyboard,
+timezone) for yast2.</description>
+  <devel project="YaST:Head" package="yast2-country"/>
+</package>

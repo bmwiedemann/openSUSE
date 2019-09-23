@@ -1,0 +1,15 @@
+# /etc/raw
+# 
+# sample configuration to bind raw devices
+# to block devices
+#
+# The format of this file is:
+# raw<N>:<blockdev>
+#
+# example:
+# ---------
+# raw1:sdb1
+#
+# this means: bind /dev/raw/raw1 to /dev/sdb1
+#
+# ...

@@ -1,0 +1,22 @@
+From 3258ff5a1a6306f06fae6ecab9807c36ff288433 Mon Sep 17 00:00:00 2001
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: Thu, 21 Feb 2019 19:41:55 +0100
+Subject: [PATCH] Increase libprojectM SOVERSION to 3.1.0
+
+---
+ src/libprojectM/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: projectm-3.1.0/src/libprojectM/Makefile.am
+===================================================================
+--- projectm-3.1.0.orig/src/libprojectM/Makefile.am
++++ projectm-3.1.0/src/libprojectM/Makefile.am
+@@ -14,7 +14,7 @@ AM_CPPFLAGS = \
+ lib_LTLIBRARIES = libprojectM.la  # public, possibly-shared library
+ 
+ # link flags
+-libprojectM_la_LDFLAGS = $(CG_LDFLAGS) -no-undefined -version-info 2:0:0
++libprojectM_la_LDFLAGS = $(CG_LDFLAGS) -no-undefined -version-info 4:0:1
+ 
+ # link libRenderer, MilkdropPresetFactory, NativePresetFactory, and libprojectM sources
+ libprojectM_la_LIBADD = \

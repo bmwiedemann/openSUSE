@@ -1,0 +1,313 @@
+-------------------------------------------------------------------
+Wed Jan 23 23:50:30 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Correct pfstools-fix-libpfs-linkage.patch
+  * Fix broken octave binary modules - mkoctfile does not specify
+    -Wl,--no-undefined, and modules fail at runtime:
+    ".../pfsget.oct: undefined symbol: _ZN3pfs5DOMIOD1Ev"
+  * Fix random parallel build failures due to missing make dependency
+
+-------------------------------------------------------------------
+Tue Oct 16 11:50:44 UTC 2018 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.1.0:
+  * Added support for .yuv files encoded as PQ2020 or HLG2020
+  * Use Qt5 instead of Qt4
+- Update the URL
+- Refresh patches, use %autosetup -p1
+- Drop pfstools-Qt5.patch. Fixed upstream.
+- Run spec-cleaner
+- Refresh pfstools-1.8.1-fix-return-in-nonvoid.patch to handle more
+  cases.
+
+-------------------------------------------------------------------
+Wed Sep  6 08:42:24 UTC 2017 - aloisio@gmx.com
+
+- Update to version 2.0.6
+  * Fixed: --frame frame range spec can now handle negative frame
+    order, e.g. 30:-1:0
+  * Added: Added photon-noise weighting in pfshdrcalibrate - very
+    small improvement for some images
+  * Fixed: pfsview does not change zoom settings when flipping
+    between next/previous images
+  * Fixed: Fixed bug in pfsin/outimgmagics - missing call to
+    InitializeMagick causing assertion fault
+  * Fixed: Fixed bug in pfsouthdrhtml - missing call to
+    InitializeMagick causing assertion fault
+  * Added: Matlab MEX files can now be compiled on Windows from
+    Cygwin using VisualStudio compiler
+  version 2.0.5:
+  * fixed: pfsinppm now can read multiple frames using --frames
+    but also from a ppm file
+  * fixed: a few typos in the documentation and code (thanks to
+    Andreas)
+  * fixed: fixed octave interface to work with Octave 3.8.1 (and
+    hopefully later versions)
+  * fixed: octave-config used to automatically determine were to
+    install Octave files
+  * fixed: compilation issues with c++-11
+  * fixed: bug in the assert statement made some matlab mex
+    functions to crash (in debug mode)
+  * fixed: version number string is now correctly reported
+  * fixed: reverts mistakenly introduced fix from 2.0.0: pfsinpfm
+    and pfsoutpfm do not flip images (top-bottom)
+  * fixed: pfs handles now very long tags (by truncating them)
+
+- Refreshed pfstools-octinstall.patch
+
+- Dropped pfstools-maptype.patch (no longer necessary)
+
+- Added pfstools-Qt5.patch to build against Qt5 libs.
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Fri Apr  7 11:00:02 UTC 2017 - jengelh@inai.de
+
+- Grammatical corrections to descriptions.
+- Replace %__-type indirect macros.
+
+-------------------------------------------------------------------
+Tue Mar 28 13:26:05 UTC 2017 - pgajdos@suse.com
+
+- build also with ImageMagick-7
+  + pfstools-ImageMagick7.patch
+
+-------------------------------------------------------------------
+Mon Mar 14 02:54:35 UTC 2016 - plinnell@opensuse.org
+
+- Disable pfscalign subpackage to fix build. It depends on non-free
+  opencv
+
+-------------------------------------------------------------------
+Sun Mar 13 14:47:42 UTC 2016 - idonmez@suse.com
+
+- Disable opencv support because it depends on non-free part. 
+
+-------------------------------------------------------------------
+Thu Dec 17 21:49:15 UTC 2015 - p.drouand@gmail.com
+
+- Fix octave dependency
+
+-------------------------------------------------------------------
+Thu Sep 17 15:09:12 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.0.4
+  * fixed: added installation of octave-based scripts: pfsoctavelum 
+    pfsoctavergb pfsstat
+  * fixed: libraries installed in lib64 if needed  
+  * fixed: added "so" version to the pfs.so library 
+  * fixed: Replaced depreciated OctaveMap for compatibility with octave 4.0.0
+- Changes from version 2.0.0
+  * added: Starting from pfstools 2.0.0, pfstmo and pfscalibration 
+    are included in the pfstools source package 
+  * changed: support for automake dropped in favour of cmake 
+  * fixed: pfsinpfm and pfsoutpfm now handle both big and little endian 
+    files correctly 
+  * fixed: pfsinpfm and pfsoutpfm do not flip images (top-bottom) 
+  * added: new tone-mapping operator: pfstmo_mai11 
+  * changed: Thoroughly updated README files 
+  * fixed: several issues with octave scripts (compatibility with newer
+    Octave releases), in particular pfs_write_rgb 
+- Add dependencies following upstream changes
+  * cmake
+  * doxygen
+  * gsl-devel
+  * hdf5-devel
+  * opencv-devel
+  * fftw3-threads-devel instead of fftw3-devel
+  * opencv-devel
+  * pkgconfig(libexif)
+- Re-enable building against octave
+- Split out some tools into their own packages
+  * libpfs-2
+  * pfscalign
+  * pfscalibration
+  * pfstmo
+  * pfsview
+  * pfsglview
+  * pfstools-exr
+  * pfstools-imgmagick
+  * pfstools-octave
+- Remove obsolete patches
+  * pfstools-octave.patch
+  * pfstools-stringcompare.patch
+  * pfstools-no-debug-mangling.patch
+- Added patches
+  * pfstools-maptype.patch
+  * pfstools-octinstall.patch
+  * pfstools-fix-libpfs-linkage.patch
+  
+-------------------------------------------------------------------
+Mon Apr 22 19:47:49 UTC 2013 - dimstar@opensuse.org
+
+- Add pfstools-no-debug-mangling.patch: don't drop occurences of
+  "-g" from CFLAGS. It destroys -grecord-gcc-flags.
+
+-------------------------------------------------------------------
+Tue Sep 18 19:15:30 UTC 2012 - idonmez@suse.com
+
+- Add explicit build dependency on glu
+
+-------------------------------------------------------------------
+Sat May 12 21:07:55 UTC 2012 - anixx@opensuse.org
+
+- fix build by correcting the build dependency on libMagick++-devel
+
+-------------------------------------------------------------------
+Tue Mar  6 15:48:35 UTC 2012 - tabraham@novell.com
+
+- refreshed pfstools-octave.patch
+
+- Update to version 1.8.4
+  * fixed: SegFault from pfsview when switching channels
+  * fixed: quoted arguments in pfsin/pfsout/pfsv/pfsindcraw/
+    pfsinmulti (fixes bug 3279342)
+
+- Changes from version 1.8.3
+  * fixed: pfsdisplayfunction properly interpolates display LUT
+  * fixed: bug #3080304 - configure uses non-portable test(1) syntax
+  * fixed: bug #1766263 - pfsinhdrgen fails silently on pfsin
+    failure. - partially
+  * fixed: pfsview the entire code converted from qt3 to qt4 (fixes
+    bug #3127946)
+  * fixed: "Fit window to content" works again in pfsview
+  * added: window icon in pfsview
+  * added: improved image file saving in pfsview
+
+- Changes from version 1.8.2
+  * fixed: compiler incompatibility issue in pfspanoramic.cpp
+  * fixed: bug #2953028 "gcc 4.4.1 const cast error"
+  * fixed: spaces were improperly escaped in pfsin / pfsout (thanks 
+    to Timo)
+  * added: new improved hdrhtml template from hdrlabs.com (thanks 
+    to Christian)  
+
+-------------------------------------------------------------------
+Sun Nov 20 06:47:37 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Mar  2 14:27:00 UTC 2010 - puzel@novell.com
+
+- add pfstools-1.8.1-fix-return-in-nonvoid.patch 
+
+-------------------------------------------------------------------
+Thu Aug  6 17:59:00 CEST 2009 - postadal@suse.cz
+
+- updated to version 1.8.1
+  * pfsouthdrhtml for generating web pages with an HDR viewer
+  * pfsview shows in the status bar current exposure for the dynamic 
+    range window (relative to Y=1)
+- updated pfstools-gcc.patch (bnc#445426)
+
+-------------------------------------------------------------------
+Fri Jan  9 13:01:08 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Mon Sep  8 01:39:42 CEST 2008 - postadal@suse.cz
+
+- updated to version 1.6.5
+  * mostly improvements in the matlab interface (thanks to Neil
+    Alldrin). Also two patches ported from Debian (dcraw and octave3.0)
+
+-------------------------------------------------------------------
+Mon Apr 14 02:03:49 CEST 2008 - postadal@suse.cz
+
+- updated to version 1.6.4
+  * fixed: pfsinopenexr can now read files that has data window < display window
+  * fixed: pfs library can handle channel names up to 32 characters (was 8)
+  * updated: pfs specification - max string lengths and format of custom channel names
+  * security fix: fscanf in rgbeio.cpp (thanks to Stefan and Ludwig)
+  * bugfix: pfsview - segfault when switching channels
+  * fixed: pfsview - color readout in the status line refreshed when new channel 
+    or frame loaded
+  * added: matlab/pfs_write_luminance.m
+  * bugfix: rgbeio - header read properly when the first byte is 0x20
+  * bugfix: rgbeio - fix misinterpreted rle-compresses lines
+  * fixed: buffer overflow vulnerability in rgbeio.cpp
+  * fixed: compilation issues with gcc-4.3 - missing includes
+- removed obsoleted patch secfix_298770.patch 
+
+-------------------------------------------------------------------
+Wed Dec  5 13:45:59 CET 2007 - nadvornik@suse.cz
+
+- fixed includes for gcc 4.3 (stdlib.patch)
+
+-------------------------------------------------------------------
+Tue Aug 14 15:32:03 CEST 2007 - postadal@suse.cz
+
+- fixed vulnerability when reading Radiance RGBE (*.hdr) files 
+  [#298770] (secfix_298770.patch)
+
+-------------------------------------------------------------------
+Fri Aug 10 01:11:49 CEST 2007 - ro@suse.de
+
+- added libnetpbm-devel to buildreq
+
+-------------------------------------------------------------------
+Mon Aug  6 09:45:38 CEST 2007 - postadal@suse.cz
+
+- updated to version 1.6.1
+  * bug-fix release, with a major fix for the sRGB color transform
+- temporary removed octave support (changed octave API)
+
+-------------------------------------------------------------------
+Mon Jun 11 23:43:41 CEST 2007 - ro@suse.de
+
+- avoid stringcompare with char literal 
+
+-------------------------------------------------------------------
+Wed Jun  6 01:13:34 CEST 2007 - ro@suse.de
+
+- added octave-devel to buildreq 
+
+-------------------------------------------------------------------
+Mon May  7 13:04:08 CEST 2007 - postadal@suse.cz
+
+- updated to version 1.6.1
+  * improved image readers/writes can load LDR images with the alpha channel
+  * pfsglview - new OpenGL HDR viewer
+  * pfsindcraw - dcraw integration
+- added dcraw to requires
+- run ldconfig
+
+-------------------------------------------------------------------
+Thu Feb  8 01:13:02 CET 2007 - ro@suse.de
+
+- added defattr to devel package 
+
+-------------------------------------------------------------------
+Tue Feb  6 00:47:02 CET 2007 - ro@suse.de
+
+- run full autoreconf to fix build on x86_64 
+
+-------------------------------------------------------------------
+Fri Dec 22 00:59:21 CET 2006 - ro@suse.de
+
+- fix configure arguments and such prevent rpath for //usr/lib 
+
+-------------------------------------------------------------------
+Sat Oct 28 01:32:08 CEST 2006 - postadal@suse.cz
+
+- added ImageMagick*-devel to BuildRequires (for pfs[in/out]imgmagick)
+
+-------------------------------------------------------------------
+Mon Oct 23 22:53:48 CEST 2006 - postadal@suse.cz
+
+- fixed invalid pure specifier (gcc.patch)
+
+-------------------------------------------------------------------
+Wed Oct 11 11:15:51 CEST 2006 - postadal@suse.cz
+
+- packed pfs_format_spec.pdf and faq.txt to -devel
+
+-------------------------------------------------------------------
+Sat Oct  7 16:05:36 CEST 2006 - postadal@suse.cz
+
+- initial version 1.5
+- fixed linking octave (octave.patch)
+- fixed gcc issues (gcc.patch)

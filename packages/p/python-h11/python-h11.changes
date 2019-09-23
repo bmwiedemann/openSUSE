@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Thu Aug 22 14:15:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.0:
+  * no changelog
+- Restrict pytest5 for now
+
+-------------------------------------------------------------------
+Wed Jun  5 08:36:51 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
+
+- test package in %check
+
+-------------------------------------------------------------------
+Tue Dec  4 21:14:53 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.8.1
+  Bug fixes:
+  * Always return headers as ``bytes`` objects (`#60
+    <https://github.com/python-hyper/h11/issues/60>`__)
+  Other changes:
+  * Added proper license notices to the Javascript used in our
+    documentation (`#61
+    <https://github.com/python-hyper/h11/issues/60>`__)
+  version 0.8.0
+  Backwards **in**\compatible changes:
+  * h11 now performs stricter validation on outgoing header
+    names and header values: illegal characters are now rejected
+    (example: you can't put a newline into an HTTP header), and
+    header values with leading/trailing whitespace are also
+    rejected (previously h11 would silently discard the
+    whitespace). All these checks were already performed on
+    incoming headers; this just extends that to outgoing
+    headers.
+  New features:
+  * New method :meth:`Connection.send_failed`, to notify a
+    :class:`Connection` object when data returned from
+    :meth:`Connection.send` was *not* sent.
+  Bug fixes:
+  * Make sure that when computing the framing headers for HEAD
+    responses, we produce the same results as we would for the
+    corresponding GET.
+  * Error out if a request has multiple Host: headers.
+  * Send the Host: header first, as recommended by RFC 7230.
+  * The Expect: header `is case-insensitive
+    <https://tools.ietf.org/html/rfc7231#section-5.1.1>`__, so
+    use case-insensitive matching when looking for 100-continue.
+  Other changes:
+  * Better error messages in several cases.
+  * Provide correct ``error_status_hint`` in exception raised
+    when encountering an invalid ``Transfer-Encoding`` header.
+  * For better compatibility with broken servers, h11 now
+    tolerates responses where the reason phrase is missing (not
+    just empty).
+  * Various optimizations and documentation improvements.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:49:06 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Feb 25 16:26:48 UTC 2018 - aloisio@gmx.com
+
+- Initial package (version 0.7.0)

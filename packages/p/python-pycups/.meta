@@ -1,0 +1,5 @@
+<package name="python-pycups" project="openSUSE:Factory">
+  <title>python-cups</title>
+  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
+  <devel project="devel:languages:python" package="python-pycups"/>
+</package>

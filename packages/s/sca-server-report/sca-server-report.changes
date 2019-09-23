@@ -1,0 +1,205 @@
+-------------------------------------------------------------------
+Mon Jan 22 21:58:14 UTC 2018 - jason.record@suse.com
+
+- Fixed pattern runtime error divide by zero (bsc#1077110)
+
+-------------------------------------------------------------------
+Fri Jan  5 19:03:08 UTC 2018 - jason.record@suse.com
+
+- Added SLE15 detection (bsc#1073573)
+
+-------------------------------------------------------------------
+Tue Jan  2 19:34:22 UTC 2018 - jason.record@suse.com
+
+- Removed unnecessary %clean from spec
+
+-------------------------------------------------------------------
+Mon Dec 18 18:20:09 UTC 2017 - jason.record@suse.com
+
+- Updated spec file with spec-cleaner suggestions
+- Removed COPYING.GPLv2 and referenced sca-patterns-base
+- Fixed new config file path
+
+-------------------------------------------------------------------
+Wed Apr 19 21:29:51 UTC 2017 - jason.record@suse.com
+
+- Updated scatool.py version
+- Added a -p option to show the pattern summary (bsc#1035047)
+- Updated scatool.8 man page with -p
+
+-------------------------------------------------------------------
+Fri Mar  4 19:35:03 UTC 2016 - jrecord@suse.com
+
+- Updated scatool.8 man page
+- Added _report.html to SCA Report files (bsc#969672)
+
+-------------------------------------------------------------------
+Thu Mar  3 20:04:55 UTC 2016 - jrecord@suse.com
+
+- Clarified base element error message
+
+-------------------------------------------------------------------
+Wed Dec  9 17:31:12 UTC 2015 - jrecord@suse.com
+
+- Fixed index out of range error (bsc#958422)
+- Added total available patterns
+
+-------------------------------------------------------------------
+Thu Jan 15 16:01:35 UTC 2015 - jrecord@suse.com
+
+- Added additional product header entries
+
+-------------------------------------------------------------------
+Fri Nov 14 23:07:09 UTC 2014 - jrecord@suse.com
+
+- Fixed scatool man page for email list
+- Added SUMA pattern definition
+
+-------------------------------------------------------------------
+Wed Jun 11 17:13:52 UTC 2014 - jrecord@suse.com
+
+- Changed relative paths to full path
+- Added email functionality in OPTION_EMAIL_LIST and -e (bnc#880815)
+- Fixed invalid pattern source links (bnc#881187)
+- Fixed the HAE preprocessor (bnc#881403)
+
+-------------------------------------------------------------------
+Wed May 28 19:01:28 UTC 2014 - jrecord@suse.com
+
+- Changed waiting prompt on remote connections
+
+-------------------------------------------------------------------
+Tue May 20 19:55:58 UTC 2014 - jrecord@suse.com
+
+- Cleaned up error message on failed supportconfig copy
+- Adjusted supportconfig progress bar
+
+-------------------------------------------------------------------
+Sat May  3 23:38:41 UTC 2014 - jrecord@suse.com
+
+- Improved error handling
+
+-------------------------------------------------------------------
+Fri May  2 21:54:45 UTC 2014 - jrecord@suse.com
+
+- Added remote supportconfig progress bar
+- Added -s supportconfig progress bar
+- Fixed -c for console mode (bnc#876045)
+- Fixed invalid supportconfig run date (bnc#876040)
+
+-------------------------------------------------------------------
+Mon Apr 21 18:18:19 UTC 2014 - jrecord@suse.com
+
+- Added summary to report footer
+- Added severity section total in report
+- Cell padding in header table
+- Added severityTag to expandable report title
+
+-------------------------------------------------------------------
+Thu Apr 17 00:23:45 UTC 2014 - jrecord@suse.com
+
+- Fixed incomplete overall info strings (bnc#873989)
+- Fixed invalid pattern info link (bnc#874022)
+- Fixed arg with unknown option (bnc#874036)
+- Added HTML report footer (bnc#874029)
+- Change to lowercase pattern directories
+- Fixed GroupWise preprocessor detection (bnc#873991)
+
+-------------------------------------------------------------------
+Tue Apr 15 18:45:04 UTC 2014 - jrecord@suse.com
+
+- Fixed location of extracting archive
+- Updated email David Hamner (ke7oxh@gmail.com)
+- Updated output strings for consistency
+
+-------------------------------------------------------------------
+Mon Apr 14 23:00:20 UTC 2014 - jrecord@suse.com
+
+- Fixed error processing
+- Fixed remote server supportconfig filenames
+- Added /etc/sca/scatool.conf
+- Added scatool.conf(5)
+
+-------------------------------------------------------------------
+Sun Apr 13 03:00:16 UTC 2014 - jrecord@suse.com
+
+- Fixed treating relative path as remote connection (bnc#873075)
+- Progress bar in normal mode
+- Each pattern listed in verbose mode
+- Uses standard SCA_LIBRARY_PATH
+
+-------------------------------------------------------------------
+Fri Apr 11 19:56:53 UTC 2014 - jrecord@suse.com
+
+- Fixed remote server failure processing (bnc#873289)
+
+-------------------------------------------------------------------
+Fri Apr 11 17:30:05 UTC 2014 - jrecord@suse.com
+
+- Output formatting updated
+- Updated man page with correct startup options
+- Fixed invalid IP addr handling (bnc#873181)
+- Fixed errors on zero byte files (bnc#873076)
+
+-------------------------------------------------------------------
+Fri Apr 11 04:25:20 UTC 2014 - jrecord@suse.com
+
+- Fixed rpm file not found pything dump (bnc#872368)
+- Fixed verbose display with -v
+- Added Supportconfig Run Date to report header
+- Fixed invalid html report file for directories
+- Fixed archive file in report header
+- Fixed static html title to include archive server name
+- Report date matches SCA Appliance
+- Fixed duplicate SLED in OES Distribution header
+- Fixed command line option handling using getopt
+- Separated -s from -a, -s is a local server analysis
+- Added a title
+
+-------------------------------------------------------------------
+Thu Mar 27 20:11:47 UTC 2014 - jrecord@suse.com
+
+- Fixed bash library path so bash patterns execute
+- Removed unused Samba filter
+
+-------------------------------------------------------------------
+Fri Mar 21 19:34:17 UTC 2014 - jrecord@suse.com
+
+- Clarified man page options
+- Removed scatool.py hash pling
+- Updated man page header
+- Moved scatool.py to library
+- Fixed FSF address in files
+- Change to System/Monitoring spec Group
+
+-------------------------------------------------------------------
+Thu Feb 13 16:51:59 UTC 2014 - jrecord@suse.com
+
+- Fixed analyze() and runPats(extractedSupportconfig) error
+
+-------------------------------------------------------------------
+Tue Feb 11 20:51:15 UTC 2014 - jrecord@suse.com
+
+- Updated the man page
+- Removed console as a default
+
+-------------------------------------------------------------------
+Thu Jan 31 23:51:43 UTC 2014 - ke7oxh@gmail.com
+
+- Added .changes
+
+-------------------------------------------------------------------
+Thu Jan 16 23:51:43 UTC 2014 jrecord@suse.com
+
+- updated paths to match FHS change
+
+-------------------------------------------------------------------
+Fri Nov 15 23:51:43 UTC 2013 ke7oxh@gmail.com
+
+- Fixed HTML ouput
+- Analyze run from console will auto start w3m
+
+-------------------------------------------------------------------
+Fri Nov 08 23:51:43 UTC 2013 jrecord@suse.com
+
+- initial package

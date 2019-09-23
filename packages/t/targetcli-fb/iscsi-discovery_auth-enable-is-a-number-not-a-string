@@ -1,0 +1,78 @@
+From: Lee Duncan <lduncan@suse.com>
+Date: Thu, 15 Aug 2019 08:38:35 -0700
+Subject: iscsi discovery_auth enable is a number not a string
+Git-commit: dc8d9d83cef8489f3b6aec1609299cdba70eda34
+
+The discovery_auth attribute group in the /iscsi node
+has several attributes, and all area treated like strings,
+even though "enable" is a number in sysfs, accepting either
+zero or one. It would break backwards compatability to
+convert this attribute to be a boolean, so at least
+treat it like a proper number instead of a string.
+
+This avoids stack dumps like the following when trying
+to set this attribute to 'true' or 'false':
+
+> /iscsi> set discovery_auth enable=false
+> Traceback (most recent call last):
+>   File "/usr/bin/targetcli", line 122, in <module>
+>     main()
+>   File "/usr/bin/targetcli", line 112, in main
+>     shell.run_interactive()
+>   File "/usr/lib/python3.6/site-packages/configshell_fb/shell.py", line 905, in run_interactive
+>     self._cli_loop()
+>   File "/usr/lib/python3.6/site-packages/configshell_fb/shell.py", line 734, in _cli_loop
+>     self.run_cmdline(cmdline)
+>   File "/usr/lib/python3.6/site-packages/configshell_fb/shell.py", line 848, in run_cmdline
+>     self._execute_command(path, command, pparams, kparams)
+>   File "/usr/lib/python3.6/site-packages/configshell_fb/shell.py", line 823, in _execute_command
+>     result = target.execute_command(command, pparams, kparams)
+>   File "/usr/lib/python3.6/site-packages/configshell_fb/node.py", line 1406, in execute_command
+>     return method(*pparams, **kparams)
+>   File "/usr/lib/python3.6/site-packages/configshell_fb/node.py", line 522, in ui_command_set
+>     group_setter(param, value)
+>   File "/usr/lib/python3.6/site-packages/targetcli/ui_target.py", line 134, in ui_setgroup_discovery_auth
+>     self.rtsnode.discovery_enable_auth = value
+>   File "/usr/lib/python3.6/site-packages/rtslib_fb/fabric.py", line 243, in _set_discovery_enable_auth
+>     if int(enable):
+> ValueError: invalid literal for int() with base 10: 'false'
+
+Now the output will be:
+
+> Not setting enable! Syntax error, 'false' is not a NUMBER.
+
+Acked-by: Lee Duncan <lduncan@suse.com>
+---
+ targetcli/ui_target.py | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/targetcli/ui_target.py b/targetcli/ui_target.py
+index 0c3fe1b708db..16ccae715688 100644
+--- a/targetcli/ui_target.py
++++ b/targetcli/ui_target.py
+@@ -34,7 +34,8 @@ from .ui_backstore import complete_path
+ from .ui_node import UINode, UIRTSLibNode
+ 
+ auth_params = ('userid', 'password', 'mutual_userid', 'mutual_password')
+-discovery_params = auth_params + ("enable",)
++int_params = ('enable',)
++discovery_params = auth_params + int_params
+ 
+ class UIFabricModule(UIRTSLibNode):
+     '''
+@@ -47,8 +48,12 @@ class UIFabricModule(UIRTSLibNode):
+         self.refresh()
+         if self.rtsnode.has_feature('discovery_auth'):
+             for param in discovery_params:
+-                self.define_config_group_param('discovery_auth',
+-                                               param, 'string')
++                if param in int_params:
++                    self.define_config_group_param('discovery_auth',
++                                                   param, 'number')
++                else:
++                    self.define_config_group_param('discovery_auth',
++                                                   param, 'string')
+         self.refresh()
+ 
+     # Support late params
+

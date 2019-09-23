@@ -1,0 +1,23 @@
+<package name="gifsicle" project="openSUSE:Factory">
+  <title>Creating and editing, GIF images and animations</title>
+  <description>Gifsicle twaddles GIF image files in a variety of ways. It is better
+than many of the freely available GIF twaddlers on the market -- for
+one thing, it has more options.
+
+It supports merging several GIFs into a GIF animation; exploding an
+animation into its component frames; changing individual frames in an
+animation; turning interlacing on and off; adding transparency; adding
+delays, disposals, and looping to animations; adding or removing
+comments; flipping and rotation; optimizing animations for space; and
+changing images' colormaps, among other things. Extensive command-line
+options control which, if any, of these occur.
+
+Gifview, a companion program requiring X11, displays GIF images and
+animations on an X display. It can display multi-frame GIFs either as
+slideshows, displaying one frame at a time, or as real-time animations.
+
+Gifdiff, another companion program, checks two GIF files for identical
+visual appearance. This is probably most useful for testing
+GIF-manipulating software.</description>
+  <devel project="graphics" package="gifsicle"/>
+</package>

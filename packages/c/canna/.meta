@@ -1,0 +1,9 @@
+<package name="canna" project="openSUSE:Factory">
+  <title>Kana and Kanji Conversion System</title>
+  <description>Canna converts Kana to Kanji based on a client/server model. An
+application program communicates with a Kana to Kanji conversion server
+to achieve Japanese input. Canna can be used in Emacs, X Window System
+environments, and on TTYs. Canna provides more than ten tools to
+maintain Kana to Kanji conversion dictionaries.</description>
+  <devel project="M17N" package="canna"/>
+</package>

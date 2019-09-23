@@ -1,0 +1,15 @@
+<package name="swing-layout" project="openSUSE:Factory">
+  <title>Natural layout for Swing panels</title>
+  <description>Swing Layout Extensions goal is to make it easy to create
+   professional cross platform layouts with Swing. This project has
+   an eye towards the needs of GUI builders, such as NetBeans. This
+   project consists of the following pieces: * Ability to get the
+   baseline for components.
+
+* Ability to get the preferred gap between components.
+
+A new LayoutManager that utilizes both of these concepts and is tuned
+toward a free-form drag and drop layout model as can be provided by GUI
+builders.</description>
+  <devel project="Java:packages" package="swing-layout"/>
+</package>

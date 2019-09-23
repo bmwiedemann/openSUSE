@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>313992605b8af02c5360691e5061a535</srcmd5>
+    <version>1.000031</version>
+    <time>1314890063</time>
+    <user>saschpe</user>
+    <comment>useful perl module</comment>
+    <requestid>80492</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>228e620835f89a58b6de057df210457a</srcmd5>
+    <version>1.000031</version>
+    <time>1314890075</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80492
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>228e620835f89a58b6de057df210457a</srcmd5>
+    <version>1.000031</version>
+    <time>1319182316</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>593356a74f302615096d23af5badcaae</srcmd5>
+    <version>1.000031</version>
+    <time>1321876137</time>
+    <user>coolo</user>
+    <comment>- remove superfluous build deps. They come in via
+  inc/Module/Install/Metadata.pm but are optional. (forwarded request 92725 from lnussel)</comment>
+    <requestid>92766</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>4b177fc2d90dd6875f6b3574dfc43a0a</srcmd5>
+    <version>1.000031</version>
+    <time>1323705523</time>
+    <user>coolo</user>
+    <comment>fix license to be in spdx.org (forwarded request 96044 from coolo)</comment>
+    <requestid>96261</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>4b177fc2d90dd6875f6b3574dfc43a0a</srcmd5>
+    <version>1.000031</version>
+    <time>1340183940</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>4b177fc2d90dd6875f6b3574dfc43a0a</srcmd5>
+    <version>1.000031</version>
+    <time>1359109828</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>4b177fc2d90dd6875f6b3574dfc43a0a</srcmd5>
+    <version>1.000031</version>
+    <time>1379663893</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>4b177fc2d90dd6875f6b3574dfc43a0a</srcmd5>
+    <version>1.000031</version>
+    <time>1409302539</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>34a59f04a200c8b163eab60990cb05c5</srcmd5>
+    <version>1.000031</version>
+    <time>1432723737</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>308449</requestid>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>9bc96b5a7f224154d0a253cf641d4794</srcmd5>
+    <version>1.000031</version>
+    <time>1507065514</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530650</requestid>
+  </revision>
+</revisionlist>

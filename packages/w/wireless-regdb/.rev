@@ -1,0 +1,337 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>ce36a90eb0a7ca24299d082263a82723</srcmd5>
+    <version>2009.01.30</version>
+    <time>1234324767</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>73156663996980885337d489cdf0187c</srcmd5>
+    <version>2009.01.30</version>
+    <time>1245363673</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bcfae012957d8c22fab256c9ae1e4f3e</srcmd5>
+    <version>2009.04.17</version>
+    <time>1248966278</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eedd41fd25838dd2af0682dd17826eed</srcmd5>
+    <version>2009.09.08</version>
+    <time>1252580590</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/wireless-regdb based on submit request 20265 from user vbotka
+</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>eedd41fd25838dd2af0682dd17826eed</srcmd5>
+    <version>2009.09.08</version>
+    <time>1252580590</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/wireless-regdb based on submit request 20265 from user vbotka
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d0e9e6d3a4518524a6c0fca3fe98b27f</srcmd5>
+    <version>2009.11.25</version>
+    <time>1268069225</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/wireless-regdb based on submit request 34311 from user coolo
+</comment>
+    <requestid>34311</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8b46bf982626f3f793e0010556b73e38</srcmd5>
+    <version>2009.11.25</version>
+    <time>1268926496</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>8b46bf982626f3f793e0010556b73e38</srcmd5>
+    <version>2009.11.25</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>8b46bf982626f3f793e0010556b73e38</srcmd5>
+    <version>2009.11.25</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>8b46bf982626f3f793e0010556b73e38</srcmd5>
+    <version>2009.11.25</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>8b46bf982626f3f793e0010556b73e38</srcmd5>
+    <version>2009.11.25</version>
+    <time>1319182569</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>4f941d8f70bf20db466507f73ac12ea1</srcmd5>
+    <version>2009.11.25</version>
+    <time>1323195189</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>4f941d8f70bf20db466507f73ac12ea1</srcmd5>
+    <version>2009.11.25</version>
+    <time>1340184324</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>78041e00336f64175264d28897333f7f</srcmd5>
+    <version>2009.11.25</version>
+    <time>1341832247</time>
+    <user>coolo</user>
+    <comment>license update: MIT
+Look at the COPYING file (forwarded request 127295 from babelworx)</comment>
+    <requestid>127308</requestid>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>1f2694d7341f146e52df37d2e459c8af</srcmd5>
+    <version>2009.11.25</version>
+    <time>1342100341</time>
+    <user>namtrac</user>
+    <comment>license update: ISC
+The license in the LICENSE file is ISC, not MIT (http://www.spdx.org/licenses/ISC) (forwarded request 127569 from babelworx)</comment>
+    <requestid>127728</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>efaa485ffd24901d46a75ad879db5bce</srcmd5>
+    <version>2012.06.08</version>
+    <time>1357217364</time>
+    <user>namtrac</user>
+    <comment>- Update database to the most recent 2012.06.08 (forwarded request 146716 from elvigia)</comment>
+    <requestid>146885</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>efaa485ffd24901d46a75ad879db5bce</srcmd5>
+    <version>2012.06.08</version>
+    <time>1359110570</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2990c302e42928399656ec0b49bf51fa</srcmd5>
+    <version>2013.02.13</version>
+    <time>1365426250</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls
+- Cleanup spec file
+- Update database to the most recent 2013.02.13 (forwarded request 162873 from namtrac)</comment>
+    <requestid>162874</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>2990c302e42928399656ec0b49bf51fa</srcmd5>
+    <version>2013.02.13</version>
+    <time>1379664962</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1979db994bb7431814766990d87a2a22</srcmd5>
+    <version>2013.11.27</version>
+    <time>1386083634</time>
+    <user>coolo</user>
+    <comment>- version 2013.10.11 upstream tarballs were incorrectly generated
+  and contained an invalid regulatory database, update to version
+  2013.11.27 in which the problem has been corrected.
+
+- update to 2013.10.11 
+- remove bogus Requires (forwarded request 208736 from elvigia)</comment>
+    <requestid>209241</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>1979db994bb7431814766990d87a2a22</srcmd5>
+    <version>2013.11.27</version>
+    <time>1409303641</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2d12d3e6d1d1a919e55cae716ba6aecc</srcmd5>
+    <version>2014.06.13</version>
+    <time>1410326876</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247966</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f9957d9ccb1a6a49bbfc14400fed5c1e</srcmd5>
+    <version>2014.10.07</version>
+    <time>1416994354</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262821</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>fae6cfe0668d934ba4545c665673fa7c</srcmd5>
+    <version>2015.01.30</version>
+    <time>1428064327</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293698</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>40bd6293a032a6c0b7e599207e46246f</srcmd5>
+    <version>2015.07.20</version>
+    <time>1441954910</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329357</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6f130ef7011e42ec02ace235626fdd2d</srcmd5>
+    <version>2015.09.25</version>
+    <time>1444833461</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>334354</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>be4d4722b5a8fb3fa20329b7342265fd</srcmd5>
+    <version>2015.10.13</version>
+    <time>1445675058</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>339476</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e7d258ec08d60b6d3ad554002b13d4ad</srcmd5>
+    <version>2015.10.22</version>
+    <time>1447766475</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344110</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>801bd794918353fb424f54da2c019e92</srcmd5>
+    <version>2015.12.14</version>
+    <time>1451983166</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350354</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>56e7b686eae7e3a81f8cc26dbf12c58b</srcmd5>
+    <version>2016.02.08</version>
+    <time>1455701510</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359224</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>03ecf7d7c3c9b1677fca49edf619ef6a</srcmd5>
+    <version>2016.05.02</version>
+    <time>1463124106</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394201</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>680625e0c0fa8a3e269d4f53a7605c21</srcmd5>
+    <version>2016.06.10</version>
+    <time>1467359448</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401581</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>26d1fd552eaaf971698ce990a1ae6356</srcmd5>
+    <version>2017.03.07</version>
+    <time>1490316753</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2017.03.07 (boo#1030085):
+- Update changelog with more details</comment>
+    <requestid>481311</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>045523d7dc9e97e4bd66ea961e80ceb7</srcmd5>
+    <version>2017.12.23</version>
+    <time>1516091082</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2017.12.23 (boo#1074838):
+  * update regulatory database based on preceding changes
+  * Document regulatory.db in the manual page
+  * Install regulatory.db and regulatory.db.p7s to /lib/firmware
+  * Better support for generating public certificates
+  * Add sforshee's x509 certificate
+  * Restore generation of old format database files
+  * regdb: write firmware file format (version code 20)</comment>
+    <requestid>561971</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>4ec2c2f8b2a16cfa04a401e788ddffec</srcmd5>
+    <version>2018.05.09</version>
+    <time>1528195754</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2018.05.09 (boo#1095397):
+  * Updated regulatory database for France and Panama
+  * Fixes in python3 scripts
+</comment>
+    <requestid>613331</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>1c88a2cee62470d92004a9ad4ddcd076</srcmd5>
+    <version>2018.05.31</version>
+    <time>1536094054</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2018.05.31 (boo#1106528):
+  * Fix power limit in 5725-5785 GHz rule for France</comment>
+    <requestid>632250</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c29119ed8090062c297a1e81f8085341</srcmd5>
+    <version>2018.10.24</version>
+    <time>1547540042</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2018.10.24 (boo#1121466):
+  * remove dependency to python attr
+  * Sync DE with ETSI EN 301 893 V2.1.1
+  * Sync FR with ETSI EN 301 893 V2.1.1
+- Changes for version 2018-09-07:
+  * update source of info for CU and ES
+  * update regulatory rules for Switzerland (CH), and Liechtenstein
+  * Update regulatory rules for Finland (FI) on 5GHz (SRD devices)
+  * update rules for Hungary (HU) on 2.4/5/60G, 5725-5875MHz</comment>
+    <requestid>664400</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>923f83eee264ed12598d581a7e8cb9fb</srcmd5>
+    <version>2019.03.01</version>
+    <time>1557472462</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2019.03.01 (boo#1134213):
+  * Sync IN with G.S.R. 1048(E)
+  * Update regulatory rules for Sweden (SE) on 2.4/5/60 GHz
+  * update 60ghz band rules for us
+  * Add 5725-5875 MHz rule for Portugal (PT)
+  * add URLs in README
+  * delete outdated comment for DE</comment>
+    <requestid>701117</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>74c0511675725e0f43a1f539e88bf5cd</srcmd5>
+    <version>2019.06.03</version>
+    <time>1560760361</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2019.06.03 (boo#1138177):
+  * Expand 60 GHz band for Japan to 57-66 GHz
+  * update source of information for CU
+  * Update regulatory rules for South Korea
+  * Update regulatory rules for Japan (JP) on 5GHz
+  * update source of information for ES</comment>
+    <requestid>709753</requestid>
+  </revision>
+</revisionlist>

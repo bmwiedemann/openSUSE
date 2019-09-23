@@ -1,0 +1,27 @@
+From db3bffa971a8540a24c5951bfa76a61bb2550530 Mon Sep 17 00:00:00 2001
+From: Roan Huang <pichuang@cs.nctu.edu.tw>
+Date: Tue, 7 Jul 2015 00:11:57 +0800
+Subject: [PATCH] Check for ovs-testcontroller in OVSController
+
+The programe name changed from test-controller to ovs-testcontroller
+
+Reference:
+openvswitch/ovs 0bc1b46a38cca06023fdfa5d500c738ccdfa94e7
+---
+ mininet/node.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/mininet/node.py b/mininet/node.py
+index b347837..f7a53ef 100644
+--- a/mininet/node.py
++++ b/mininet/node.py
+@@ -1426,7 +1426,8 @@ def __init__( self, name, command='ovs-controller', **kwargs ):
+     @classmethod
+     def isAvailable( cls ):
+         return ( quietRun( 'which ovs-controller' ) or
+-                 quietRun( 'which test-controller' ) )
++                 quietRun( 'which test-controller' ) or
++                 quietRun( 'which ovs-testcontroller' ) )
+ 
+ class NOX( Controller ):
+     "Controller to run a NOX application."

@@ -1,0 +1,133 @@
+-------------------------------------------------------------------
+Mon Jan  1 07:36:08 UTC 2018 - avindra@opensuse.org
+
+- use new upstream urls
+- cleanup with spec-cleaner
+- link against gtk 3 (instead of 2)
+
+-------------------------------------------------------------------
+Fri Oct 16 21:22:35 UTC 2015 - trcs@gmx.com
+
+- new upstream version 2.1.4
+  * adding a fresh "tx pull" of translations
+  * adding an appdata file
+  * in ui.c::set_all_dispctrl_buttons_property check for 
+    table_children != NULL (fixes sf.net bug #107)
+  * *.c: all dynamic memory allocation and free'ing is done via 
+    glib now.
+  * Changed default background color for the display to white. 
+  * In callbacks.c and general_functions.c, team up every 
+    gtk_check_menu_item_set_active with a gtk_check_menu_item_toggled.
+    See also 2014-01-08 and sf.net bug #99. (fixes sf.net bug #105)
+  * translations are now served through transifex
+  * set_basic_object_data/set_scientific_object_data make structs
+    static (fixes sf.net bug #104)
+- updated description
+
+-------------------------------------------------------------------
+Sun Jun 28 11:23:02 UTC 2015 - p.drouand@gmail.com
+
+- Provide and obsolete mate-calc; galculator has replaced
+  mate-calc in Mate 1.10
+
+-------------------------------------------------------------------
+Sat Mar 14 09:19:33 UTC 2014 - andrea@opensuse.org
+
+- new upstream verson 2.1.3
+* Added Spanish tranlsation
+* Fixed segfault introduced in r134
+* Updated Turkish translations
+* Fixing result string corruption when toggling sign
+* Emitting signal in apply_preferences so that menu gets
+  hidden after a restart again
+* added Hungarian translation
+* rpn_stack_list when pasting
+
+-------------------------------------------------------------------
+Thu Mar  6 12:01:20 UTC 2014 - trcs@gmx.com
+
+- Added Spanish translation.
+
+-------------------------------------------------------------------
+Mon Apr 29 09:19:33 UTC 2013 - andrea@opensuse.org
+
+- new upstream version 2.1.2
+  * This release fixes a handful of bugs:
+    a minor flaw in the build process and
+    migrates some deprecated GUI elements to recent GTK3
+  * Added Lithuanian Translation.
+  
+-------------------------------------------------------------------
+Sat Mar  2 10:03:57 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 2.1.
+  * Adds support for quad-precision floating point and up to
+    112-bit binary arithmetic on systems with libquadmath.
+  * Several bugs have been fixed in the expression parsing engine
+    and the GUI.
+  * Fallback to default separator if a separator equals the decimal
+    point.
+  * Changed default background color.
+  * Add Turkish translation.
+- Correct License tag: GPL-2.0 -> GPL-2.0+.
+- Use full URL as a source.
+- Correct build dependencies (remove doxygen, fdupes, gcc, gcc-c++,
+  libglade2-devel, make; gtk2-devel -> pkgconfig(gtk+-2.0).
+- Split off language subpackage.
+- Use %make_install macro.
+- Remove check for unsupported openSUSE versions.
+- Remove %clean section.
+- Install docs.
+- Clean up spec.
+
+-------------------------------------------------------------------
+Wed Nov 19 09:19:33 UTC 2012 - andrea@opensuse.org
+
+- new upstream version 2.0.1
+  * added missing GUI element in preferences dialog (migrated
+    GtkOptionMenu to GtkComboBox in Numbers tab)
+  * fixed integer parsing rule in flex parser (thanks to John Williams,
+    fixes sf.net #74)
+  * working around bug with window resizing, I assume this was GTK's
+    fault (general_functions.c, set_window_size_minimal)
+  * removed deprecated calls to set color on color buttons
+  * fixed decimal separator on keypad (thanks to cyberpatrol and
+    qwertypoke, fixes sf.net #86)
+  * config file stored according to XDG spec (thanks to Eric Heintzmann,
+    fixes sf.net #88)
+  * applied patch to update spec file for RPM (thanks to Dwigth Engen)
+
+-------------------------------------------------------------------
+Tue Oct 16 17:07:33 UTC 2012 - andrea@opensuse.org
+
+- new upstream version 2.0 (added gtk3 support)
+- added flex to build requires
+- removed gcalculator-ld_fix.diff 
+
+-------------------------------------------------------------------
+Sat Oct  1 05:39:09 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sat Sep 17 16:28:24 UTC 2011 - suse-tux@gmx.de
+
+- added Patch0 (gcalculator-ld_fix.diff) to fix the build for factory
+  (this patch requires a autoreconf call)
+
+-------------------------------------------------------------------
+Sun Jul 31 18:07:03 UTC 2011 - andrea@opensuse.org
+
+- fixed URL
+- use more macros where possible 
+
+-------------------------------------------------------------------
+Mon Mar 14 14:14:08 UTC 2011 - gber@opensuse.org
+
+- call %desktop_database_post/un
+
+-------------------------------------------------------------------
+Sun Nov 29 13:01:21 UTC 2009 - andrea@opensuse.org
+
+- New package 
+

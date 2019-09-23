@@ -1,0 +1,133 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3289c8915612342f1abfe4af31758bf4</srcmd5>
+    <version>0.036</version>
+    <time>1382361228</time>
+    <user>scarabeus_factory</user>
+    <comment>needed for other perl modules</comment>
+    <requestid>202356</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>86e1028ecc8fac21b8f7cb6a22920ac3</srcmd5>
+    <version>0.038</version>
+    <time>1385490333</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208432</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6944a6ba8d7e65d6b363d764da99bd3e</srcmd5>
+    <version>0.039</version>
+    <time>1385965581</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>209035</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7f5559c38539ba77403c07eeccb97382</srcmd5>
+    <version>0.043</version>
+    <time>1394386727</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>224992</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>7f5559c38539ba77403c07eeccb97382</srcmd5>
+    <version>0.043</version>
+    <time>1409302328</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dc26f294e459ef3e6b7e178bb9f06d97</srcmd5>
+    <version>0.049</version>
+    <time>1410967538</time>
+    <user>coolo</user>
+    <comment>- updated to 0.049
+     [FIXED]
+ 
+     - 'keep_alive' is now fork-safe and thread-safe
+ 
+ 0.048     2014-08-21 13:19:51-04:00 America/New_York
+ 
+     [FIXED]
+ 
+     - Protected proxy tests from ALL_PROXY in the environment
+ 
+ 0.047     2014-07-29 14:09:05-04:00 America/New_York
+ 
+     [CHANGED]
+ 
+     - Updated Mozilla::CA module recommendation version to 20130114
+ 
+     [FIXED]
+ 
+     - Fixed t/00-report-prereqs.t when CPAN::Meta is not installed
+ 
+ 0.046     2014-07-21 10:32:32-04:00 America/New_York
+ 
+     [FIXED]
+ 
+     - Empty header fields are now allowed; headers with the 'undef' value
+       will be rendered as an empty header.
+ 
+     [DOCUMENTED]</comment>
+    <requestid>249344</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d113e50d26b4cc9d5833cbe8f6066dd9</srcmd5>
+    <version>0.054</version>
+    <time>1429107942</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296642</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>173861e992e4b3dbaafe17d2c77ffd83</srcmd5>
+    <version>0.056</version>
+    <time>1432281157</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308164</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>62ab55fcb4e71a3d847a307f42a638e4</srcmd5>
+    <version>0.058</version>
+    <time>1463038402</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394602</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7669c455eec3438b6b286df4b2c4e09a</srcmd5>
+    <version>0.064</version>
+    <time>1471688828</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419873</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7bfc3fcca57ef463223783db96b8b6b5</srcmd5>
+    <version>0.068</version>
+    <time>1475359704</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>431500</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6569ff8c9c70e23eea41a3609093419d</srcmd5>
+    <version>0.070</version>
+    <time>1476351147</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434403</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>69d2489916f422bec9e494141ca2d22c</srcmd5>
+    <version>0.076</version>
+    <time>1535705052</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631782</requestid>
+  </revision>
+</revisionlist>

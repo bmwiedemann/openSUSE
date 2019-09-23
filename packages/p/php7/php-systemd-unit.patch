@@ -1,0 +1,21 @@
+Index: php-7.1.1/sapi/fpm/php-fpm.service.in
+===================================================================
+--- php-7.1.1.orig/sapi/fpm/php-fpm.service.in	2017-02-13 16:20:23.157202901 +0100
++++ php-7.1.1/sapi/fpm/php-fpm.service.in	2017-02-13 16:22:31.527501287 +0100
+@@ -5,13 +5,15 @@
+ [Unit]
+ Description=The PHP FastCGI Process Manager
+ After=network.target
++Before=apache2.service nginx.service lighttpd.service
+ 
+ [Service]
+ Type=@php_fpm_systemd@
+-PIDFile=@EXPANDED_LOCALSTATEDIR@/run/php-fpm.pid
+ ExecStart=@EXPANDED_SBINDIR@/php-fpm --nodaemonize --fpm-config @EXPANDED_SYSCONFDIR@/php-fpm.conf
+ ExecReload=/bin/kill -USR2 $MAINPID
++ExecStop=/bin/kill -QUIT $MAINPID
+ PrivateTmp=true
++KillMode=mixed
+ 
+ [Install]
+ WantedBy=multi-user.target

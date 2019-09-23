@@ -1,0 +1,13 @@
+Index: system-config-printer-1.5.7/ui/ConnectDialog.ui
+===================================================================
+--- system-config-printer-1.5.7.orig/ui/ConnectDialog.ui
++++ system-config-printer-1.5.7/ui/ConnectDialog.ui
+@@ -79,7 +79,7 @@
+                 <signal name="changed" handler="on_connect_servername_changed" swapped="no"/>
+                 <child internal-child="entry">
+                   <object class="GtkEntry" id="comboboxtext-entry1">
+-                    <property name="can_focus">False</property>
++                    <property name="can_focus">True</property>
+                   </object>
+                 </child>
+                 <accessibility>

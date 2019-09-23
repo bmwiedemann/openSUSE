@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Tue Oct  3 03:19:46 UTC 2017 - coolo@suse.com
+
+- patch makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Fri May  8 08:11:25 UTC 2015 - coolo@suse.com
+
+- updated to 0.08
+   see /usr/share/doc/packages/perl-Class-Accessor-Lite/Changes
+
+  0.08
+  	- unbundle MYMETA.* (thanks to dolmen)
+  	- build the archive using GNU tar
+
+-------------------------------------------------------------------
+Tue Apr 28 06:07:01 UTC 2015 - coolo@suse.com
+
+- updated to 0.07
+   see /usr/share/doc/packages/perl-Class-Accessor-Lite/Changes
+
+  0.07
+  	- lazy Carp loading (thanks to qsimpleq)
+
+-------------------------------------------------------------------
+Fri Mar  7 06:55:21 UTC 2014 - coolo@suse.com
+
+- updated to 0.06
+ - fix documentation issues (thanks to magnolia-k)
+
+-------------------------------------------------------------------
+Tue Jun 18 08:13:41 UTC 2013 - coolo@suse.com
+
+- updated to 0.05
+
+-------------------------------------------------------------------
+Thu Apr 21 04:50:26 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.05
+    * created by cpanspec 1.78.04
+

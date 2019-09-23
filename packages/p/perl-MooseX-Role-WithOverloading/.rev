@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a98095586b8d9fbb1a88d2f29bc745e</srcmd5>
+    <version>0.16</version>
+    <time>1430165318</time>
+    <user>coolo</user>
+    <comment>required for perl-MooseX-Role-Parameterized</comment>
+    <requestid>303939</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f66dc09c3cfc7fdd27096737ef53fe30</srcmd5>
+    <version>0.17</version>
+    <time>1445287764</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>337597</requestid>
+  </revision>
+</revisionlist>

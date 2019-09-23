@@ -1,0 +1,13 @@
+--- rcconfig.c
++++ rcconfig.c
+@@ -250,8 +250,8 @@
+ 							exec_hotkey = 0;
+ 						}
+ 					} else if (strcmp(direc_buf, "auto_take_up") == 0) {
+-						if (strcasecmp(expr_buf, "no") == 0) {
+-							auto_take_up = 0;
++						if (strcasecmp(expr_buf, "yes") == 0) {
++							auto_take_up = 1;
+ 						}
+ 					} else
+ 						error = 1;

@@ -1,0 +1,31 @@
+References: fate#326960, bsc#1123942
+
+Index: virt-manager-2.2.0/virtinst/install/installer.py
+===================================================================
+--- virt-manager-2.2.0.orig/virtinst/install/installer.py
++++ virt-manager-2.2.0/virtinst/install/installer.py
+@@ -445,7 +445,10 @@ class Installer(object):
+                 guest.bootloader = "pygrub"
+             else:
+                 guest.bootloader = None
+-                self._install_kernel = "/usr/lib/grub2/x86_64-xen/grub.xen"
++                if os.path.exists("/usr/share/grub2/x86_64-xen/grub.xen"):
++                    self._install_kernel = "/usr/share/grub2/x86_64-xen/grub.xen"
++                else:
++                    self._install_kernel = "/usr/lib/grub2/x86_64-xen/grub.xen"
+                 self._install_initrd = None
+                 self.extraargs = None
+                 log.debug("Using grub.xen to boot guest")
+Index: virt-manager-2.2.0/virtManager/delete.py
+===================================================================
+--- virt-manager-2.2.0.orig/virtManager/delete.py
++++ virt-manager-2.2.0/virtManager/delete.py
+@@ -246,7 +246,7 @@ def populate_storage_list(storage_list,
+     diskdata.append(("dtb", vm.get_xmlobj().os.dtb, True, False, True))
+ 
+     for target, path, ro, shared, is_media in diskdata:
+-        if not path or path == "/usr/lib/grub2/x86_64-xen/grub.xen":
++        if not path or "grub.xen" in path:
+             continue
+ 
+         # There are a few pieces here

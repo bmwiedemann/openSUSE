@@ -1,0 +1,79 @@
+Index: sddm-0.18.0/services/sddm-autologin.pam
+===================================================================
+--- sddm-0.18.0.orig/services/sddm-autologin.pam
++++ sddm-0.18.0/services/sddm-autologin.pam
+@@ -1,13 +1,7 @@
+ #%PAM-1.0
+-auth        required    pam_env.so
+-auth        required    pam_tally.so file=/var/log/faillog onerr=succeed
+-auth        required    pam_shells.so
+-auth        required    pam_nologin.so
+-auth        required    pam_permit.so
+--auth       optional    pam_gnome_keyring.so
+--auth       optional    pam_kwallet5.so
+-account     include     system-local-login
+-password    include     system-local-login
+-session     include     system-local-login
+--session    optional    pam_gnome_keyring.so auto_start
+--session    optional    pam_kwallet5.so auto_start
++auth     required       pam_permit.so
++account  include        common-account
++password include        common-password
++session  required       pam_loginuid.so
++session  include        common-session
++session  optional       pam_keyinit.so revoke force
+Index: sddm-0.18.0/services/sddm.pam
+===================================================================
+--- sddm-0.18.0.orig/services/sddm.pam
++++ sddm-0.18.0/services/sddm.pam
+@@ -1,15 +1,7 @@
+ #%PAM-1.0
+-
+-auth		include		system-login
+--auth		optional	pam_gnome_keyring.so
+--auth   optional  pam_kwallet5.so
+-
+-account		include		system-login
+-
+-password	include		system-login
+--password	optional	pam_gnome_keyring.so use_authtok
+-
+-session		optional	pam_keyinit.so force revoke
+-session		include		system-login
+--session		optional	pam_gnome_keyring.so auto_start
+--session  optional  pam_kwallet5.so auto_start
++auth     include        common-auth
++account  include        common-account
++password include        common-password
++session  required       pam_loginuid.so
++session  include        common-session
++session  optional       pam_keyinit.so revoke force
+Index: sddm-0.18.0/services/sddm-greeter.pam.in
+===================================================================
+--- sddm-0.18.0.orig/services/sddm-greeter.pam.in
++++ sddm-0.18.0/services/sddm-greeter.pam.in
+@@ -1,17 +1,8 @@
+ #%PAM-1.0
+-
+-# Load environment from /etc/environment and ~/.pam_environment
+-auth		required pam_env.so
+-
+-# Always let the greeter start without authentication
+-auth		required pam_permit.so
+-
+-# No action required for account management
+-account		required pam_permit.so
+-
+-# Can't change password
+-password	required pam_deny.so
+-
+-# Setup session
+-session		required pam_unix.so
+-session		optional @LOGIND_PAM_MODULE@
++# PAM configuration used only for the greeter session
++auth     required       pam_permit.so
++account  required       pam_permit.so
++password include        common-password
++session  required       pam_loginuid.so
++session  include        common-session
++session  optional       pam_keyinit.so revoke

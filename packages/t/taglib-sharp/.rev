@@ -1,0 +1,181 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8d862bfaef6eb73d977b1439c43e0da7</srcmd5>
+    <version>2.0.3.0</version>
+    <time>1203393267</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="70">
+    <srcmd5>8d862bfaef6eb73d977b1439c43e0da7</srcmd5>
+    <version>2.0.3.0</version>
+    <time>1203393267</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="71">
+    <srcmd5>4a488baa3e6e62271f0983a92e272e1e</srcmd5>
+    <version>2.0.3.0</version>
+    <time>1226069436</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="72">
+    <srcmd5>35aadb89adf39b9c41ad6bfd335813c3</srcmd5>
+    <version>2.0.3.0</version>
+    <time>1231758525</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6f92e8cb4541abef24267cba19fa5f9e</srcmd5>
+    <version>2.0.3.1</version>
+    <time>1232502005</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>6f92e8cb4541abef24267cba19fa5f9e</srcmd5>
+    <version>2.0.3.1</version>
+    <time>1232502005</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>52b69d57edf1649c30ed2072aa0f6ea0</srcmd5>
+    <version>2.0.3.3</version>
+    <time>1256083174</time>
+    <user>autobuild</user>
+    <comment>Copy from Banshee/taglib-sharp based on submit request 22406 from user aaronbockover
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a5b5b63ca27ec995378e00750ebf42b6</srcmd5>
+    <version>2.0.3.6</version>
+    <time>1268069126</time>
+    <user>autobuild</user>
+    <comment>Copy from Banshee/taglib-sharp based on submit request 34314 from user coolo
+</comment>
+    <requestid>34314</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f22ac864b93a090f549c7b7a0c6c2e76</srcmd5>
+    <version>2.0.3.6</version>
+    <time>1268926290</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6d6d76d643794339de46d9951405a4c2</srcmd5>
+    <version>2.0.3.7</version>
+    <time>1270135112</time>
+    <user>autobuild</user>
+    <comment>Copy from Banshee/taglib-sharp based on submit request 36632 from user gabrielburt
+</comment>
+    <requestid>36632</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6d6d76d643794339de46d9951405a4c2</srcmd5>
+    <version>2.0.3.7</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>6d6d76d643794339de46d9951405a4c2</srcmd5>
+    <version>2.0.3.7</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>720b022280d8746e4f659aab9a1ea830</srcmd5>
+    <version>2.0.3.7</version>
+    <time>1287834908</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51287 from user coolo
+</comment>
+    <requestid>51287</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>7f771ba0612ff7f69e365e74d744c513</srcmd5>
+    <version>2.0.3.7</version>
+    <time>1287834916</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51287
+</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>7f771ba0612ff7f69e365e74d744c513</srcmd5>
+    <version>2.0.3.7</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>32df038a2a2a7ae8cabf7ca010c0a4cb</srcmd5>
+    <version>2.0.4.0</version>
+    <time>1306743059</time>
+    <user>saschpe</user>
+    <comment>version update and some spec fixes</comment>
+    <requestid>71905</requestid>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>e52ad47b54c475edfc1b5ddb065fecf9</srcmd5>
+    <version>2.0.4.0</version>
+    <time>1306743070</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71905
+</comment>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>e52ad47b54c475edfc1b5ddb065fecf9</srcmd5>
+    <version>2.0.4.0</version>
+    <time>1319182505</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>3781c7eda708ccf5a80c179c3888133c</srcmd5>
+    <version>2.0.4.0</version>
+    <time>1323194834</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>3781c7eda708ccf5a80c179c3888133c</srcmd5>
+    <version>2.0.4.0</version>
+    <time>1340184256</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a26d451aa3bb5fa8f9e46fc829fcf88e</srcmd5>
+    <version>2.0.5.0</version>
+    <time>1341823030</time>
+    <user>coolo</user>
+    <comment>Update to 2.0.5.0, enabled support for gnome-sharp2 and unit tests</comment>
+    <requestid>126994</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>df71a6eb43ede1f5b5508d7b1c05c722</srcmd5>
+    <version>2.1.0.0</version>
+    <time>1350454169</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>138083</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>df71a6eb43ede1f5b5508d7b1c05c722</srcmd5>
+    <version>2.1.0.0</version>
+    <time>1359110461</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>df71a6eb43ede1f5b5508d7b1c05c722</srcmd5>
+    <version>2.1.0.0</version>
+    <time>1379664764</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>df71a6eb43ede1f5b5508d7b1c05c722</srcmd5>
+    <version>2.1.0.0</version>
+    <time>1409303448</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

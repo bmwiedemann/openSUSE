@@ -1,0 +1,767 @@
+-------------------------------------------------------------------
+Wed Aug 28 06:27:01 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.1:
+  * regression tests: remove unnecessary error leading to
+    opt_rate.t instability.
+  * --rate mode: return a non-zero exit code on event queue
+    overflow.
+  * --rate mode: fix a bogus error about eventgen thread
+    termination
+
+-------------------------------------------------------------------
+Tue Apr  9 06:51:29 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add the missing build dependency for Tumbleweed.
+
+-------------------------------------------------------------------
+Fri Dec 28 04:46:21 UTC 2018 - sean@suspend.net
+
+- Update to version 1.0.16:
+  * SQL API: fix GH-282 (MySQL fetch_row() is broken)
+  * --rate mode: fix latency stats skew on low rates
+  * Lua: Add /usr/share/lua/5.1 to LUA_ATH and /usr/lib/lua/5.1 
+  * build/CI/packaging?: add -Wvla to default compiler flags
+  * build/CI/packaging: fix buildpack.sh to not push multiple file types
+
+-------------------------------------------------------------------
+Tue Oct 23 12:46:30 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Use bundled versions of luajit and ck for SLE
+
+-------------------------------------------------------------------
+Thu Jul 19 14:47:13 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.0.15:
+  * fileio: fix GH-229 (--file-fsync-freq=0 seems to prevent
+    fsync() at the end of the test)
+  * command line: improve parsing of boolean command line options
+  * tests: fix GH-220 (Testsuite api_sql_mysql.t failed ...)
+  * tests: fix GH-223 (test failure on ppc64)
+  * tests: fix opt_help.t to pass when the binary is not configured
+    with MySQL support
+  * MySQL driver: use it by default in DB benchmarks
+
+-------------------------------------------------------------------
+Mon May 21 07:53:35 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.0.14:
+  * reports: fix JSON stats reporter to produce valid JSON
+  * Lua SQL API: don't crash when query_row() is called with a
+    SELECT returning empty result set
+  * Lua SQL API: don't crash when bulk insert API calls are used
+    out of order
+  * regression tests: make PostgreSQL tests compatible with the new
+    dump format introduced in 10.3
+  * regression tests: minor stability and coverage improvements
+  * minor cleanups in build scripts
+  * improve report formatting for long latency values
+  * fileio: --file-extra-flags now accepts a list of flags rather
+    than just a single value
+  * OLTP: re-prepare prepared statements after reconnects, i.e. in
+    cases when a server connection is lost and sysbench is
+    configured to ignore such errors
+  * improve --rate mode precision for high argument values
+  * fix compile-time architecture detection for some Broadwell CPUs
+    which were incorrectly identified as Core 2.
+  * remove build dependency on xxd (and vim-minimal package)
+  * fix Lua API to correctly stop the benchmark when event()
+    returns a value other than nil or false
+  * fix the fileio benchmark when the specified file size is not a
+    multiple of block size
+  * fix the fileio benchmark to throw a descriptive error when the
+    specified file size does not match the size of files created by
+    'prepare'
+  * minor improvements in tests and documentation.
+- Update build dependencies
+
+-------------------------------------------------------------------
+Wed Dec 13 17:17:13 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.0.11:
+  * make statistic counters usable from Lua scripts
+  * fix the PostgreSQL driver to be compatible with CockroachDB
+    (GH-180)
+  * fix oltp_insert.lua to work correctly when both --tables and
+    --threads are greater than 1 (GH-178)
+  * minor documentation updates
+- Fix tests execution in absence of python2
+
+-------------------------------------------------------------------
+Wed Nov  8 13:57:06 UTC 2017 - kstreitova@suse.com
+
+- Update to version 1.0.10:
+  * fixed PK conflicts in oltp_insert.lua by creating empty tables
+  on 'prepare'
+  * made sysbench.opt available to init()/done() by exporting it
+  to the global Lua state
+  * added Fedora 26 (both x86_64 and AArch64) to the list of
+  supported and tested distributions
+  * fixed GH-172: sysbench 1.0.9 doesn't build with mariadb 10.2.8
+  * add the /usr/local LuaRocks root directory to default LUA_PATH
+  and LUA_CPATH
+  * removed Fedora 24, Ubuntu Precise, Yakkety from default build
+  matrices
+  * added Ubuntu Artful to default build matrices
+
+-------------------------------------------------------------------
+Tue Sep 12 08:57:53 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.0.9:
+  * fixed oltp_delete.lua to not use INSERT statements for
+    consistency with other oltp_* benchmarks (GH-168)
+  * added a workaround for MySQL bug #87337 "8.0.2 reintroduces
+    my_bool to client API"
+  * fixed building on on Debian GNU/kFreeBSD (GH-161)
+  * fixed building against MariaDB 10.2 (thanks to Xavier Bachelot
+    for the patch, GH-160)
+
+-------------------------------------------------------------------
+Thu Aug 17 12:15:49 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.0.8:
+  * fixed api_report test for slow machines (thanks to @jcfp)
+  * fileio: suggest to run prepare step on missing files (thanks to
+    Heinrich Schuchardt)
+  * JSON reports: removed an erroneous trailing comma (GH-139)
+  * added events per second to the CPU benchmark report (GH-140)
+  * fixed db_connect() in legacy SQL API to use the default value
+    for --db-driver (GH-146)
+  * removed busy-wait in the bounded event generation mode (--rate)
+    to avoid CPU hogging
+
+-------------------------------------------------------------------
+Tue May 30 08:43:58 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.0.7:
+  * Ubuntu Zesty added to package build matrix
+  * fixed GH-130: Mutex Benchmark Documentation
+  * fixed latency reports in the --rate mode
+  * fixed compiler warnings when building against MySQL 8.0 client
+    libraries
+- Drop examples as they are no longer compliant with current syntax
+
+-------------------------------------------------------------------
+Mon May  8 12:47:41 UTC 2017 - mpluskal@suse.com
+
+- Use shared concurrency kit
+
+-------------------------------------------------------------------
+Tue Apr 25 14:50:09 UTC 2017 - mpluskal@suse.com
+
+- Update to stable release 1.0.6
+- Use system luajit
+- Disable tests by default
+
+-------------------------------------------------------------------
+Tue Mar  7 20:07:06 UTC 2017 - olaf@aepfle.de
+
+- Remove usage of AX_GCC_ARCHFLAG.
+  It forces the use of -march=hostcpu and leads to SIGILL at runtime.
+
+-------------------------------------------------------------------
+Tue Feb 28 15:02:09 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.0.0~git.20170228:
+  * Use `mysql_config --libs_r` instead of `mysql_config --libs | sed`.
+  * Update GPLv2 text in COPYING with the current version from https://gnu.org/licenses/gpl-2.0.txt.
+  * Update copyrights and FSF address.
+  * Initial LuaJIT support: build with system libluajit.
+  * Check if pkg-config is available and throw an error if it's not in autogen.sh
+  * Take 'set -e' into account when checking for pkg-config.
+  * Squashed 'third_party/luajit/luajit/' content from commit 6cb38f7
+  * Support building with bundled LuaJIT.
+  * README -> README.md in Makefile.am.
+  * Autoconf cleanups.
+  * Don't build bundled LuaJIT when --with-system-luajit was passed to configure.
+  * Don't remake aclocal.m4 and configure after autogen.sh && configure.
+  * Add -ldl to LUAJIT_LDFLAGS when building with bundled LuaJIT on Linux.
+  * Squashed 'third_party/luajit/luajit/' changes from 6cb38f7..be25592
+  * Print a status summary at the end of ./configure output.
+  * Change project info reported by ./configure.
+  * Add two new controls:    oltp-range-selects  controls whether to include range selects or not.       (Typical practice is to list all range select statements with zero counts.  This allows a simple oltp-range-selects=off)    oltp-delete-inserts  controls the number of delete/insert pairs to be executed       (example:  oltp-delete-inserts=0 disables the delete/insert pair )
+  * Added oltp-write-only control
+  * Converted PostgreSQL "FIXME" to apply only to PostgreSQL
+  * Fix tests for the luajit branch.
+  * Don't use caches, as they may cause issues on PostgreSQL updates.
+  * Fix luajit branch to pass 'make distcheck' and Travis CI builds.
+  * Adjust drv_mysql.t, drv_pgsql.t to not fail on slower machines.
+  * Merge AArch64 port from https://github.com/cbaylis/luajit-aarch64/tree/aarch64-v2.1-new
+  * Remove the deprecated luaopen_math() call.
+  * Merge from LuaJIT upstream.
+  * Initial Concurrency Kit import.
+  * Merge from Concurrency Kit upstream.
+  * Report Git commit SHA in configure and "sysbench --version" output.
+  * Use an atomic fetch-and-add instead of a global mutex in sb_lua_get_request().
+  * Adjust tests.
+  * Replace percentile mutex with CK atomics + rwlock.
+  * Include stdint.h sb_percentile.h.
+  * Fix check for sb_globals.percentile_rank in sb_percentile_calculate().
+  * Decrease percentile granularity and value range to reduce memory consumption.
+  * Fixes #54: Reduce overhead from percentile stats
+  * Merge from ConcurrencyKit upstream up to commit 566bb28.
+  * Fix script_oltp_* tests to take new version format into account.
+  * Addendum to commit b450bf0.
+  * Various test-related fixes.
+  * Split cmd_version.t into cmd_version.t and opt_version.t.
+  * Merge from https://github.com/akopytov/ck
+  * Add LuaJIT build/install directories to .gitignore.
+  * Fix AC_SUBST() usage for USE_MYSQL.
+  * Add concurrency_kit build directories to .gitignore.
+  * Pass global CC, CFLAGS and LDFLAGS to ConcurrencyKit build system.
+  * Lua implementation of the main event loop.
+  * Fix tests, remove thread_id arg from Lua API functions.
+  * Replace mutex in db_thread_stat_t with CK atomics.
+  * Set per-connection thread id.
+  * Adjust test_fileio.t to pass on slow machines.
+  * Autodetect the most optimal -march GCC flag for the target architecture.
+  * Replace custom check for Sun compiler with AX_COMPILER_VENDOR.
+  * Pass CPPFLAGS to ConcurrencyKit build flags.
+  * Assume 128-byte cache line on AArch64 and PowerPC.
+  * Implement --histogram option.
+  * Better formatting for help/usage text.
+  * Pad sb_timer_t to cache line size.
+  * Align global_histogram to cache line size.
+  * Replace sb_histogram_t::interm_nslots with a constant.
+  * Timers overhaul.
+  * Also reset last_reconnects in db_reset_stats().
+  * Fix timestamps in interval reports.
+  * Move all pseudo-random numbers related code to sb_rand.c
+  * Unify timer API naming.
+  * Rename sb_rand() to sb_rand_default().
+  * Fixes #27: Provide portable reentrant PRNG
+  * Convert PRNG API to 64 bit.
+  * Use sb_rand_uniform_double() + FP arithmetic to generate bounded random values.
+  * Fix Homebrew + PostgreSQL woes again.
+  * Correct help text for --rand-seed.
+  * Fix cmd_help.t.
+  * Changed bounded PRNG functions to uint32_t for easier FFI integration.
+  * Convert Lua interface to random numbers to FFI.
+  * Add -rdynamic to linker flags on Linux for bundled LuaJIT.
+  * Add -ldl and -rdynamic to LDFLAGS when building with system Luajit as well.
+  * -ldl belongs to LDADD, not LDFLAGS.
+  * Fix PRNG seeding in sb_rand_thread_init().
+  * Enforce a C99 compiler.
+  * Fix legacy API tests.
+  * Check for pkg-config availability in configure.ac.
+  * Fix AC_MSG_ERROR() usage.
+  * Fix xoroshiro128plus.h to use C99 inline.
+  * Add extern inline declarations for xoroshiro* functions.
+  * Fixes #96: sb_rand_uniq(1, oltp_table_size) generate duplicate value
+  * Merge ax_gcc_archflag.m4 from upstream.
+  * Rename global_histogram to sb_latency_histogram.
+  * Merged LuaJIT upstream up to 8e5d7be.
+  * SQL API refactoring, cut #1.
+  * Export prepared statements API to Lua.
+  * Move oltp_point_select.lua from sysbench/tests/db/ to sysbench/lua/.
+  * Fix legacy OLTP regression tests.
+  * Exclude GCC/OSX from Travis CI build matrix.
+  * Replace ugly Lua context code with a thread-local variable.
+  * Make tls_lua_context actually a thread-local variable.
+  * Fix typo.
+  * Align timer arrays to cache line boundary.
+  * Add missing sb_util.c.
+  * Fixes #101: Obscure ./configure error when pkg-config is not installed
+  * Add AddressSanitizer support. Enable it by default in Travis CI builds.
+  * Fix ASAN support in configure.ac.
+  * Check if ASAN is supported by the compiler.
+  * Add MemorySanitizer support to configure.ac. Use it in Travis CI when supported.
+  * Fix an incorrect free() in list option handling.
+  * Re-write select_random*.lua benchmarks to the new SQL API.
+  * Remove stubs for old Lua scripts.
+  * Add select_random*.lua scripts to Makefile.am.
+  * Fix Travis/Coveralls links in the 'master' branch.
+  * Suppress urllib3 warnings for coveralls to work in Travis CI.
+  * Presumably better way to suppress SSL errors with coveralls in Travis.
+  * Exclude third-party libraries from coverage report.
+  * Rewrite bulk_insert.lua to the new SQL API + regression tests.
+  * Rewrite OLTP benchmarks with the new SQL API + cleanups.
+  * Fix oltp_insert.lua, add a regression test.
+  * Use local counter variables in oltp_common.lua.
+  * Test multiple connections per thread.
+  * Cache-line align important data structures in sb_lua.c.
+  * Revert unrelated changes from the previous commit.
+  * Improve script_bulk_insert_*.t tests stability.
+  * Fixes #13: Export db_fetch_row
+  * Fix 'make distcheck'.
+  * Fix test_run.sh to work with named tests.
+  * Disable api_sql_pgsql.t for now. Prepared statements need more work for PostgreSQL.
+  * Use pgsql_common.sh in  PostgreSQL-specific regression tests.
+  * Add a comment to oltp_common.lua.
+  * Fixes #103: fail with an error when oltp_common.lua is called directly.
+  * Fix check for event() function in the previous commit.
+  * Move sysbench.rand.* functions to sysbench.rand.lua.
+  * s/SysBench/sysbench/g
+  * Fix 'make distcheck'.
+  * Fix a comment typo.
+  * Free connection's result set when closing it.
+  * In sysbench.sql.lua, report the caller on error, not the check_type() itself.
+  * Move the unused --myisam-max-rows option from drv_mysql.c to legacy API.
+  * Implement error propagation.
+  * Pass SQL state to Lua in case of errors.
+  * Implement customer error hooks.
+  * Fix api_sql_mysql.t to work with older MySQL versions.
+  * Convert main loop functions to FFI.
+  * Optimizations and cleanups around sb_next_event().
+  * Change max_requests and max_time_ns in sb_globals_t to uint64_t.
+  * Move tx_rate check from thread_run() to sb_event_stop().
+  * Convert OLTP scripts to prepared statements.
+  * Re-enable api_sql_pgsql.t.
+  * Travis CI portability fixes for api_sql_pgsql.t.
+  * Export sysbench.version and sysbench.version_string to Lua.
+  * Replace lua_pushstring() with lua_pushliteral() where possible.
+  * Do not crash if db_prepare fails with an error.
+  * Simplify ugly require/dofile constructs in OLTP scripts.
+  * Set LUA_PATH in test_run.sh to point to Lua scripts directory.
+  * Fix prepared statements for PostgreSQL driver.
+  * Add more Linux distributions to the build matrix.
+  * Fix api_sql_mysql.t.
+  * Exclude excessive OS combinations from Travis build matrix.
+  * Revert .travis.yml changes.
+  * Change the command line syntax: remove the --test option.
+  * Use cache-aligned allocation for thread_stats.
+  * Adjust cmdline.t to pass on slower machines.
+  * Grammar fixes.
+  * Fix help_drv_*.t tests broken by the command line syntax change.
+  * Fix typo in a help string.
+  * Command line options refactoring:
+  * Allow Lua scripts to declare supported options.
+  * Remove TODO.
+  * Add option declarations to OLTP tests.
+  * Move legacy API to sysbench.compat.lua.
+  * Rename the 'sysbench' subdirectory to 'src'.
+  * Silence spurious error messages on 'make install'.
+  * FIx sporadic cmdline.t failures.
+  * Make bundled OLTP Lua scripts executable, add hashbangs.
+  * Remove unnecessary 'local' declarations in oltp_common.lua.
+  * Fix a typo.
+  * Simplify condition in sysbench.lua:thread_run().
+  * Fix syntax error in sysbench.lua.
+  * Remove unused function checks from configure.ac.
+  * Signal an error on unknown error codes in drv_pgsql.c.
+  * When joining worker threads, decrement sb_globals.num_running atomically.
+  * Implement custom commands + parallel custom commands.
+  * Fixes #78: better error hints for missing help command
+  * Parallel 'prepare' and 'prewarm' (MySQL-only) commands for OLTP benchmarks.
+  * Silence spurious uninitialized value warnings.
+  * Move counters code from db_driver.c to sb_counter.c.
+  * Get rid of report_interval_mutex.
+  * Refactor stats reporting to make custom reports possible.
+  * Fix format specifier for stat->events.
+  * Initialize PRNG for background threads.
+  * Small formatting fixes.
+  * Implement custom report hooks. Add CSV and JSON reporters as examples.
+  * Update .travis.yml to Ubuntu Trusty.
+  * Require sudo in .travis.yml.
+  * Use more recent clang and gcc versions.
+  * Revert GCC-related changes from the previous commit.
+  * Fix a Lua state leak on script termination.
+  * Deallocate TLS context when closing the Lua state.
+  * Cleanup per-thread Lua contexts on exit.
+  * Do not create duplicate connections in sb_lua_db_connect().
+  * Fix memory leaks in drv_pgsql.c.
+  * Properly close/deallocate connections on 'prepare'.
+  * Close prepared statements in OLTP scripts.
+  * Also close BEGIN/COMMIT statements in oltp_common.lua.
+  * Call PQclear() for non-SELECT queries explicitly in drv_pgsql.c.
+  * Add a missing PQclear() call in pgsql_drv_bind_param().
+  * Handle more cases where drv_pgsql.c may leak memory.
+  * Close connection explicitly in bulk_insert.lua.
+  * Fix a comment typo.
+  * Close connections explicitly in OLTP scripts.
+  * Use a proper method to disconnect a connection.
+  * Reimplement tx_rate with lockless bounded FIFO provided by ConcurrencyKit.
+  * Silence compiler warnings.
+  * Temporarily disable clang 3.6.
+  * Temporarily disable LeakSanitizer builds in Travis.
+  * Export command line arguments + command name to sysbench.cmdline.
+  * Make sysbench.cmdline.argv available from the master thread.
+  * Check for command in OLTP scripts.
+  * Fix typo in sysbench.compat.lua.
+  * Fix api_basic.t.
+  * Really fix api_basic.t.
+  * Export histogram API to Lua.
+  * Support the deprecated --test option for compatibility with legacy scripts.
+  * if the test name on the command line is "-", read Lua script from the standard input.
+  * Remove --test from documentation.
+  * Rename --tx-rate to --rate, keep --tx-rate as a deprecated alias.
+  * Rename --max-requests to --events, --max-time to --time.
+  * Rename --num-threads to --threads.
+  * Make the default intermediate reports format a little more terse.
+  * Throw a more descriptive error when multiple DB drivers are available.
+  * Fix opt_report_interval.t.
+  * Rename sysbench.option_defs to sysbench.cmdline.options.
+  * Move to semantic versioning scheme, set version to 1.0.0.
+  * Export mysql_drv_reconnect() to Lua SQL API.
+  * Exclude queries executed by background threads from statistic reports.
+  * Properly set the allocated array to 0 in sb_alloc_per_thread_array().
+  * Add a new line to an error message.
+  * Update ChangeLog for the 1.0.0 release.
+  * Fixes #105: 1.0.0 clock_gettime runtime failure built with macOS 10.11 and Xcode 8.x
+  * Run OLTP RW regression tests with a single thread for more deterministic results.
+  * Update ChangeLog for 1.0.1.
+  * Bump version number to 1.0.1.
+  * Add snap packaging
+  * Convert snapcraft.yaml to snapcraft.yaml.in to update version automatically.
+  * Grammar fixes in a comment.
+  * Correct a diagnostic message on index creation.
+  * Fix OLTP regression tests.
+  * Add snapcraft.yaml to .gitignore.
+  * Do not require Autoconf 2.64, as CentOS 6 provides 2.63.
+  * Get rid of timers_mutex, improve --report-checkpoints scalability.
+  * Fix documented defaults for --events and --time.
+  * Release 1.0.2.
+  * Merge from LuaJIT upstream up to commit 5aa0201.
+  * Merge from akopytov/LuaJIT up to commit fc9893e.
+  * Optimize random string generation in OLTP_RW.
+  * Build on Illumos
+  * Release 1.0.3.
+  * README.md cleanup.
+  * Add a release badge to README.md.
+  * Pull ax_gcc_archgflag.m4 from upstream.
+  * Update bundled ConcurrencyKit to 0.6.0.
+  * Fix grammar in help text for --skip-trx.
+
+-------------------------------------------------------------------
+Tue Feb 28 14:09:21 UTC 2017 - olaf@aepfle.de
+
+- Make dependency on libxslt, cram and tests optional to get rid
+  of python3 dependency
+
+-------------------------------------------------------------------
+Fri Jan 06 15:02:27 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.0.0~git.20170106:
+  * pgsql mode now works with Redshift server. Its working, but need to eventually split this to another Redshift section (because obviously this doesn't work with PGSQL any more)
+  * MySQL/SSL changes: - added MYSQL_OPT_SSL_MODE option that's required now to enable/disable SSL - added mysql-ssl-cipher option to specify ssl-cipher
+  * Minor fixes to contributed SSL-related changes in drv_mysql.c.
+  * Fix help_drv_mysql.t after adding --mysql-ssl-cipher.
+  * Attempt to fix MacOS builds in Travis CI.
+  * Attempt #2 to fix MacOS builds in Travis CI.
+  * Attempt #3 to fix MacOS builds in Travis CI.
+  * Suppress "zero-length gnu_printf format string" warnings from GCC.
+  * Release memory allocated by command line options on exit.
+  * Fix obscure error with intermediate reports in tests that don't support them.
+  * Attempt #4 to fix MacOS builds in Travis CI.
+  * Missing braces around an OR. The test (select_random_points) now works for pgsql
+  * Missing braces around an OR. The test (select_random_range) now works for pgsql
+  * Revert "pgsql mode now works with Redshift server. Its working, but need to eventually split this to another Redshift section (because obviously this doesn't work with PGSQL any more)"
+  * Bulk Insert works for postgres. Unlike MySQL, PostgreSQL doesn't take UNSIGNED integers. We could move this to BIGINT as well, but since this is a performance benchmark and since not many would reach the 2Billion mark, think we should be okay with INTEGER for now
+  * select_random_xx should honour oltp_secondary_create, just like other tests
+  * Adding --pgsql-variant=redshift argument targets a Redshift DB
+  * Minor change to ensure all existing tests pass after previous commit
+  * Rafactor select_random_* benchmarks,
+  * Add PostgreSQL tests for select_random_*.lua
+  * sb_logger: Correct variable type
+  * Fix Homebrew + PostgreSQL woes again.
+  * Lua API regression tests.
+  * Specify DB driver explicitly in API tests.
+  * Use  MySQL connection arguments in API tests.
+  * Fix portability by masking table options in api_sql.t.
+  * Fix Homebrew + PostgreSQL woes again.
+  * More Homebrew + PostgreSQL fixes for Travis.
+
+-------------------------------------------------------------------
+Fri Oct 21 15:07:39 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.0.0~git.20161019:
+  * Bump version for the 1.0 branch and fix email address to report bugs.
+  * Fixes #18: lrand48() is not thread-safe and LP#1412488: lrand48() doesn't scale well on highly concurrent platforms
+  * Add a missing '\'.
+  * Add a missing #include.
+  * Properly initialize thread-local RNG state.
+  * Allow --mysql-port to be a list.
+  * Fix --mysql-host broken by the previous commit.
+  * Fix error message when a TCP connection fails.
+  * Fix compatibility with Autoconf 2.63 broken by adding ax_tls.m4.
+  * Fix pthread_self return type
+  * Rand for Windows - Secure rand_s function - Microsoft TLS implementation for sb_rng_state
+  * Fix CMakeLists
+  * Initial Travis CI integration.
+  * Actually build code with Travis CI builds.
+  * Add build status to README.md.
+  * Add --with-pgsql to Travis CI builds.
+  * Fix PostgreSQL driver.
+  * Don't install PostgreSQL in Travis, as it seems to be installed by default.
+  * Re-create files after removing them when starting a --file-test-mode=seqwr benchmark.
+  * sb_print_value_size: use Ki, Mi, Gi, Ti
+  * sb_fileio.c: use correct units
+  * sb_memory.c: use correct units
+  * configure.ac: bump version number to 1.0
+  * Improve results formatting in the fileio test.
+  * Add __attribute__((format...)) to printf-like function declarations.
+  * FileIO fix
+  * %zd for size_t printf ops
+  * Use srandom()/random() to initialize per-thread RNGs.
+  * VS2015 fix
+  * Don't remake aclocal.m4 and configure after autogen.sh && configure.
+  * Fix --with-mysql-libs for MySQL 5.7.
+  * Calculate ranges on the client + some oltp.lua cleanups.
+  * Add missing parentheses.
+  * Fixes #55: Make percentile stats optional
+  * Fix debug messages to be more specific.
+  * Initial Debian packaging based on https://github.com/percona/sysbench-packaging
+  * Workaround for a TravisCI/Homebrew bug preventing OSX builds.
+  * Fix write issue with NFS direct I/O
+  * Invoke regression tests from Travis CI.
+  * Add coveralls.io integration.
+  * Fix test_fileio.t to pass with 1.0.
+  * Add sb_global.h to sysbench_SOURCES.
+  * Adjust test_fileio.t changes to 1.0.
+  * Remove dummy comment from sb_list.h.
+  * Adjust DB drivers tests to 1.0 output.
+  * Adjust tests to 1.0.
+  * Fix NULL handling in PostgreSQL driver.
+  * Adjust script_oltp_* tests to 1.0.
+  * Some typo fixes in the docs.
+  * simple build instructions to include oracle client, Also minor change to look at correct folder structure of 12.1 oracle client.
+  * Move Oracle build steps into a separate file.
+  * Do not overflow buffer in strncat
+  * Add README-Oracle.md to EXTRA_DIST.
+  * Don't use caches, as they may cause issues on PostgreSQL updates.
+  * Add Emacs and Vi modelines in .travis.yml.
+  * Fix Sun Studio + Solaris/Sparc builds.
+  * Fixes #74: PATH_MAX / DATA_PATH undefined
+- Drop no longer needed sysbench_buffer_overflow.patch
+
+-------------------------------------------------------------------
+Thu Sep 29 08:33:22 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.5.0+git.20160922:
+  * Adjust test_mutex.t to pass on slow machines.
+  * Fix LOCK TABLES statements for multi-table MySQL/MyISAM benchmarks.
+  * Basic tests for oltp.lua against MySQL and PostgreSQL.
+  * Prevent script_oltp_*.t failures on slower machines.
+  * {common,bulkinsert}.lua missing from Makefile
+  * Load script from pkgdatadir if not local
+  * Change lua scripts to 'require common' if a testdir wasn't passed
+  * add libaio-dev to travis
+  * Some typo fixes in the docs.
+- Add sysbench_buffer_overflow.patch
+- Enable internal testsuite
+
+-------------------------------------------------------------------
+Sat Aug 27 08:35:10 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.5.0+git.20160824:
+  * adjust event generation for a high volume
+  * Fixes #44: seqwr deleting test files
+  * Duplicate line
+  * added locking to get_request in lua scripting
+  * Don't lock thread mutex unnecessarily in script_lua.c and sb_cpu.c.
+  * Fix crash introduced by commit 9244fcf.
+  * Adding volatile modifier to tmp variable in memory test
+  * Fixes #57: Race condition in sb_timer_value()
+  * Fix --with-mysql-libs for MySQL 5.7.
+  * Create indexes after data load in parallel_prepare
+
+-------------------------------------------------------------------
+Fri Jul 22 07:05:46 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.5.0+git.20160721:
+  * Fixes #57: Race condition in sb_timer_value()
+
+-------------------------------------------------------------------
+Sun Jun 12 09:31:03 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.5.0+git.20160610:
+  * Fixes #44: seqwr deleting test files
+  * Duplicate line
+  * added locking to get_request in lua scripting
+  * Don't lock thread mutex unnecessarily in script_lua.c and sb_cpu.c.
+  * Fix crash introduced by commit 9244fcf.
+  * Adding volatile modifier to tmp variable in memory test
+
+-------------------------------------------------------------------
+Sat Apr 16 16:18:45 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.5.0+git.20160414:
+  * Fix the issue when threads running < num_threads
+  * Fixes #22: Timers and reporting thread should wait for worker 
+    thread to be initialized
+  * Fix barrier error reporting.
+  * Fixes #25: Include database-related command line options in 
+    help
+  * Fixes #29: FATAL: Failed to read file! file: 24 pos: 14516224 
+    errno = 0 (Success)
+  * Fix prepare parallel for new thread initialization
+  * Revert "Fix the issue when threads running < num_threads"
+  * adjust event generation for a high volume
+
+-------------------------------------------------------------------
+Mon Mar 21 19:47:52 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.5.0~git.20160318:
+  + Some minor improvements to bulk_insert.lua
+  + Minor cleanups in bulk_insert.lua.
+  + Print the number of actually running threads instead of the 
+    configured --num-threads value for intermediate reports. This 
+    can make a big difference with network benchmarks to diagnose 
+    TCP-related issues like SYN flood protection, throttling, 
+    backlog issues, etc.
+  + Fix mutex_get_request() signature.
+  + Update GPLv2 text in COPYING with the current version from 
+    https://gnu.org/licenses/gpl-2.0.txt.
+  + Update copyrights and FSF address.
+  + Fixes #17: Lua script without DB access crashes sysbench.
+  + Fixes #22: Timers and reporting thread should wait for worker 
+    thread to be initialized
+  + Fix barrier error reporting.
+  + Fixes #25: Include database-related command line options in 
+    help
+- Generate manpage
+
+-------------------------------------------------------------------
+Tue Mar  1 11:55:17 UTC 2016 - mpluskal@suse.com
+
+- Update to 0.5.0~git.20160223
+- Add _service
+- Some spec file cleanups
+
+-------------------------------------------------------------------
+Mon Mar 30 11:38:27 UTC 2015 - mpluskal@suse.com
+
+- Remove ctcs2 remains
+- Update project url
+- Enable postgresql support
+
+-------------------------------------------------------------------
+Mon Sep  1 14:51:32 CEST 2014 - dsterba@suse.cz
+
+- update from launchpad, revision 122:
+  - Bug #1354419: Sysbench configure mishandles "--with-pgsql-includes"
+
+-------------------------------------------------------------------
+Tue Jul 22 14:35:38 CEST 2014 - dsterba@suse.cz
+
+- update from launchpad, revision 121:
+  * Fixed ‘make dist’ by removing oltp_complex_ro.lua and
+    oltp_complex_rw.lua and adding oltp.lua, parallel_prepare.lua,
+    select_random_points.lua and select_random_ranges.lua
+- clean spec
+
+-------------------------------------------------------------------
+Tue Jan 21 09:08:47 UTC 2014 - dsterba@suse.com
+
+- update from launchpad, revision 120:
+  * Merged lp:~ignacio-nin/sysbench/0.5-bug1262178 and ixed the _WIN32
+    codepath to correctly handle FlushViewOfFile return value.
+  * Bug #1208530: Allow sysbench to round-robin on multiple sockets
+- clean up spec file
+
+- removed patches:
+  * automake-1.12.patch
+
+-------------------------------------------------------------------
+Wed Aug 28 18:52:46 UTC 2013 - monex@liquid-co.de
+
+- correct requires 
+
+-------------------------------------------------------------------
+Thu Jun 27 19:15:32 UTC 2013 - monex@liquid-co.de
+
+- update to revision 117
+
+-------------------------------------------------------------------
+Tue Jul 31 20:04:37 UTC 2012 - monex@liquid-co.de
+
+- added patch for build with automake 1.12
+
+-------------------------------------------------------------------
+Tue Jul 31 20:02:18 UTC 2012 - monex@liquid-co.de
+
+- fix patch 
+
+-------------------------------------------------------------------
+Tue Jul 31 19:51:57 UTC 2012 - monex@liquid-co.de
+
+- added patch for build with automake 1.12
+
+-------------------------------------------------------------------
+Wed Jun  6 18:40:40 UTC 2012 - monex@liquid-co.de
+
+- added libtool to requires 
+
+-------------------------------------------------------------------
+Wed Jun  6 18:31:21 UTC 2012 - monex@liquid-co.de
+
+- added automake and gcc-c++ to requires
+
+-------------------------------------------------------------------
+Thu May 17 19:00:45 UTC 2012 - monex@liquid-co.de
+
+- update to version 0.5.0 revision 105 from 
+  https://code.launchpad.net/~sysbench-developers/sysbench/0.5
+
+-------------------------------------------------------------------
+Tue Jul 28 17:46:00 CST 2009 - fhe@novell.com
+
+- add sysbench-wrong-option-mysql_table.diff (BNC#439747)
+- fix the script sysbench-example-test  when run test=oltp with the wrong option
+
+-------------------------------------------------------------------
+Tue Mar 31 16:24:37 CEST 2009 - vmarsik@suse.cz
+
+- added benchmark TCF + scripts
+- fixed relative paths in the start scripts, removed separate patch
+
+-------------------------------------------------------------------
+Thu Jul 31 12:11:27 CEST 2008 - yxu@suse.de
+
+- modified the sysbench-run file so that
+  all test_file* are removed automatically after test finished 
+
+-------------------------------------------------------------------
+Thu Jun 26 15:35:57 CEST 2008 - pkirsch@suse.de
+
+- added sub package ctcstools for ctcs2 integration
+- included several definied testcase and workload
+
+-------------------------------------------------------------------
+Mon Oct 29 14:13:15 CET 2007 - pkirsch@suse.de
+
+- fixed thread-concurency in sb_fileio.c, so that --validate=on
+ works without throwing FATAL messages
+
+-------------------------------------------------------------------
+Thu Oct 11 11:14:18 CEST 2007 - pkirsch@suse.de
+
+- added sysbench-example-all-tests, which should make use of
+  sysbench's available variations
+
+-------------------------------------------------------------------
+Fri Oct  5 10:25:47 CEST 2007 - pkirsch@suse.de
+
+- update to version 0.4.8 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:58 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue May 17 12:01:48 CEST 2005 - trenn@suse.de
+
+- fixed gcc 4.0 warnings -> posix_memalign return value needs to
+  be checked
+
+-------------------------------------------------------------------
+Mon Apr 11 11:58:19 CEST 2005 - trenn@suse.de
+
+- fixed gcc 4.0 warnings -> struct not initialised
+
+-------------------------------------------------------------------
+Mon Mar  7 00:28:23 CET 2005 - ro@suse.de
+
+- fix example-tests tarball 
+
+-------------------------------------------------------------------
+Wed Mar  2 16:05:18 CET 2005 - trenn@suse.de
+
+- corrected the sysbench-example-tests script
+
+-------------------------------------------------------------------
+Tue Feb 22 21:07:23 CET 2005 - trenn@suse.de
+
+- initiale checkin
+

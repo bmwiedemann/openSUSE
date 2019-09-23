@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Thu Sep 12 10:14:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.4.0:
+  * Require 200 response for initial resumable upload request. (#95)
+  * Use response as variable for object returned from http_request. (#98)
+  * Further DRY request dependency pins. (#96)
+  * Finish download on seeing 416 response with zero byte range. (#86)
+  * Always use raw response data. (#87)
+
+-------------------------------------------------------------------
+Fri Mar 15 12:10:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.3.2:
+  * Using str instead of repr for multipart boundary.
+  * Making requests a strict dependency for the requests subpackage.
+- Really run tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:48:41 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Sep 12 19:36:01 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- Initial packaging (version 0.3.1)

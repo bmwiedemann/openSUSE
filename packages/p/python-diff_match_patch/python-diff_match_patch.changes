@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Wed Apr  3 12:56:19 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update setuptools minimal version based on the upstream
+  Requirements
+
+-------------------------------------------------------------------
+Mon Mar 18 11:01:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the fdupes call
+- Run the tests
+
+-------------------------------------------------------------------
+Fri Mar 15 18:33:15 UTC 2019 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
+
+- updated to version 20181111
+	(unofficial, no changelog available)
+- update URLs, change source from zip to tar.gz and make it singlespec
+
+-------------------------------------------------------------------
+Wed May 11 15:13:44 UTC 2016 - jmatejek@suse.com
+
+- added setup.py from the unofficial package on PyPI, in order to
+  generate egg-info for packages that require it
+
+-------------------------------------------------------------------
+Mon Feb 25 20:08:51 UTC 2013 - elchevive@opensuse.org
+
+- updated to version 20121119
+	*Removing long/shorttext scoping or dereferencing in all languages
+	*Modifying Lua's module structure to work consistently
+	*Update Dart port to latest Dart language verison
+	*Fix typos in demo_patch.html
+
+-------------------------------------------------------------------
+Thu Jan  3 17:07:45 UTC 2013 - toddrme2178@gmail.com
+
+- Fix building on SLES 11
+
+-------------------------------------------------------------------
+Sat May  5 00:13:29 UTC 2012 - elchevive@opensuse.org
+
+- fix python2.4 hardcoded - use '/usr/bin/env python2' instead
+
+-------------------------------------------------------------------
+Tue Mar 20 22:28:33 UTC 2012 - elchevive@opensuse.org
+
+- update to version 20120106 and spec cleanning
+
+-------------------------------------------------------------------
+Wed Aug 12 00:00:00 UTC 2009 - nix@opensuse.org
+
+- first build 

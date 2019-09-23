@@ -1,0 +1,12 @@
+<package name="docbook-utils" project="openSUSE:Factory">
+  <title>Small Wrapper Scripts for Processing DocBook Files</title>
+  <description>The docbook-utils package is a set of a few small programs intended to
+ease everyday use of technical documentation software based on the
+DocBook DTD, either written in SGML or XML.
+
+Tasks they currently accomplish are: * jw: convert SGML files to
+   other formats (HTML, RTF, PostScript, PDF)
+
+* sgmldiff: detect the differences in markup between two SGML files</description>
+  <devel project="Publishing" package="docbook-utils"/>
+</package>

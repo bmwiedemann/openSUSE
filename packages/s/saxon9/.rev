@@ -1,0 +1,145 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ba246a6b5bf4978c23c4069ba461c87e</srcmd5>
+    <version>9.4.0.4</version>
+    <time>1352718312</time>
+    <user>coolo</user>
+    <comment>add saxon9 to factory (replaces saxon package)</comment>
+    <requestid>139841</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>18caeea0a784eb0a063edb80102aff04</srcmd5>
+    <version>9.4.0.4</version>
+    <time>1354274846</time>
+    <user>coolo</user>
+    <comment>fix bnc#780666</comment>
+    <requestid>143638</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ab343d3ae49b176f496e0f93f7ef0203</srcmd5>
+    <version>9.4.0.4</version>
+    <time>1357217284</time>
+    <user>namtrac</user>
+    <comment>- Replace unmaintained options in man pages with links to website
+- Fix command line flag syntax -foo bar -&gt; -foo:bar
+- Don't use CatalogResolver unless CatalogManager.properties exists (forwarded request 146262 from archie172)</comment>
+    <requestid>146832</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>ab343d3ae49b176f496e0f93f7ef0203</srcmd5>
+    <version>9.4.0.4</version>
+    <time>1359110369</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4b0922d8b8471d09a087ea8dbb7e1658</srcmd5>
+    <version>9.4.0.7</version>
+    <time>1363124306</time>
+    <user>coolo</user>
+    <comment>Update to version 9.4.0.7 (forwarded request 156863 from archie172)</comment>
+    <requestid>158692</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5f714c4908485281a3f29287dfe03c4f</srcmd5>
+    <version>9.4.0.7</version>
+    <time>1365933967</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162819 from namtrac)</comment>
+    <requestid>163144</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>f4376ce94d3b65e7510d39b88088ace9</srcmd5>
+    <version>9.4.0.7</version>
+    <time>1373986964</time>
+    <user>coolo</user>
+    <comment>-  Added Recommends for saxon9-scripts and xml-commons-resolver
+   Usually Saxon9 is used by invocation from a Shell, thus it
+   is more convenient to have the corresponding script installed
+   already.
+   Additionally, XML tools like Saxon needs also XML catalog support
+   for mapping URIs to local paths (especially useful for DocBook users) (forwarded request 182930 from thomas-schraitle)</comment>
+    <requestid>182931</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>5bc0faecdaba22f5e65dadf74c95b53e</srcmd5>
+    <version>9.4.0.7</version>
+    <time>1378899473</time>
+    <user>coolo</user>
+    <comment>- use add_maven_depmap from javapackages-tools
+
+- Move from jpackage-utils to javapackage-tools</comment>
+    <requestid>198421</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>5bc0faecdaba22f5e65dadf74c95b53e</srcmd5>
+    <version>9.4.0.7</version>
+    <time>1379664615</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>72ef535cbceb7c1f0c97f945b98c8faa</srcmd5>
+    <version>9.4.0.7</version>
+    <time>1404161414</time>
+    <user>coolo</user>
+    <comment>FWD Java:packages fixes</comment>
+    <requestid>238910</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>3137ef87fb7f52eb53c909160b5bf305</srcmd5>
+    <version>9.4.0.7</version>
+    <time>1406914020</time>
+    <user>coolo</user>
+    <comment>- Fix update-alternatives code here.</comment>
+    <requestid>242666</requestid>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>3137ef87fb7f52eb53c909160b5bf305</srcmd5>
+    <version>9.4.0.7</version>
+    <time>1409303316</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>21ff284cf008eb4e7a914bfec9d74956</srcmd5>
+    <version>9.4.0.7</version>
+    <time>1427983121</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292639</requestid>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>0735f734dd7af9b72343b9d985d15d79</srcmd5>
+    <version>9.4.0.7</version>
+    <time>1496230192</time>
+    <user>dimstar_suse</user>
+    <comment>- New build dependency: javapackages-local</comment>
+    <requestid>496738</requestid>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>9ae315e746eabd1b929e3e265c38cc38</srcmd5>
+    <version>9.4.0.7</version>
+    <time>1505334133</time>
+    <user>dimstar_suse</user>
+    <comment>Fix building with jdk9</comment>
+    <requestid>522886</requestid>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>c12e16b6552decaf76a380f12bc5af50</srcmd5>
+    <version>9.4.0.7</version>
+    <time>1505830828</time>
+    <user>dimstar_suse</user>
+    <comment>doclint is disabled by default</comment>
+    <requestid>527100</requestid>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>bfb3c7558067dd81e824394ea3ae44e7</srcmd5>
+    <version>9.4.0.7</version>
+    <time>1549464456</time>
+    <user>coolo</user>
+    <comment>BuildRequires xml-commons-resolver to fix build
+</comment>
+    <requestid>671940</requestid>
+  </revision>
+</revisionlist>

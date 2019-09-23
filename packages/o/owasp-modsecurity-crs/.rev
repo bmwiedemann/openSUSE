@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1e9d3c5cdfde88f94681bfc88e716be8</srcmd5>
+    <version>2.2.6</version>
+    <time>1348746205</time>
+    <user>coolo</user>
+    <comment>New package with mostly used rules for ModSecurity (package apache2-mod_security2). These rules help people to make a first setup of a web application firewall in front of their web application.
+
+Changes since SR#132949 :
+
+Wed Sep 19 14:45:05 UTC 2012 - Thomas.Worm@DATEV.de
+
+- Raised version to 2.2.6.
+  * Resolves bnc#779076
+  * Resolves CORERULES-87
+</comment>
+    <requestid>135031</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1e9d3c5cdfde88f94681bfc88e716be8</srcmd5>
+    <version>2.2.6</version>
+    <time>1359109560</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>1e9d3c5cdfde88f94681bfc88e716be8</srcmd5>
+    <version>2.2.6</version>
+    <time>1379663461</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>1e9d3c5cdfde88f94681bfc88e716be8</srcmd5>
+    <version>2.2.6</version>
+    <time>1409302087</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6e8db626967a3200f0b365d52e7ab4f4</srcmd5>
+    <version>2.2.9</version>
+    <time>1426064262</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289920</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>47aac22e37cb9b7ec7a24468ae40d9c5</srcmd5>
+    <version>2.2.9</version>
+    <time>1500975662</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512302</requestid>
+  </revision>
+</revisionlist>

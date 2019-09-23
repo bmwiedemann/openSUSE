@@ -1,0 +1,229 @@
+-------------------------------------------------------------------
+Mon Jul  2 11:27:49 UTC 2018 - kkaempf@suse.com
+
+- Update to 3.12.0 LTS
+  See https://github.com/cfengine/core/blob/3.12.0/ChangeLog
+  for full ChangeLog
+
+-------------------------------------------------------------------
+Fri Aug 11 17:53:08 UTC 2017 - kkaempf@suse.com
+
+- Update to 3.11.0
+  See https://github.com/cfengine/core/blob/3.11.0/ChangeLog
+  for full ChangeLog
+
+-------------------------------------------------------------------
+Fri Mar 31 07:43:32 UTC 2017 - kkaempf@suse.com
+
+- Update to 3.10.1
+  See https://github.com/cfengine/core/blob/3.10.1/ChangeLog
+  for full ChangeLog
+
+-------------------------------------------------------------------
+Wed Nov 16 09:15:54 UTC 2016 - kkaempf@suse.com
+
+- Update to 3.10.0 (beta1) - LTS until Dec 2019
+  See https://github.com/cfengine/core/blob/3.10.0b1/ChangeLog
+  for full ChangeLog
+
+-------------------------------------------------------------------
+Fri Aug  5 11:50:00 UTC 2016 - kkaempf@suse.com
+
+- Update to 3.9.1
+  See cfengine package for changelog
+
+-------------------------------------------------------------------
+Thu Jul 28 12:57:45 UTC 2016 - mpluskal@suse.com
+
+- Use url for source
+- Simplify some variables in spec file
+- Use macro for configure
+
+-------------------------------------------------------------------
+Wed Jun 15 15:45:11 UTC 2016 - kkaempf@suse.com
+
+- Update to 3.9.0
+  See cfengine package for changelog
+
+-------------------------------------------------------------------
+Mon Dec  7 13:11:41 UTC 2015 - kkaempf@suse.com
+
+- Update to 3.8.0
+  See cfengine package for changelog
+
+-------------------------------------------------------------------
+Wed Sep  9 13:57:34 UTC 2015 - kkaempf@suse.com
+
+- Update to 3.7.1 (LTS release)
+  * Augmenting inputs from the augments_file (Redmine #7420)
+
+-------------------------------------------------------------------
+Thu Jul 30 10:14:12 UTC 2015 - kkaempf@suse.com
+
+- Update to 3.7.0
+  Added
+  * Support for user specified overring of framework defaults without
+    modifying policy supplied by the framework itself (see example_def.json)
+  * Support for def.json class augmentation in update policy
+  * Run vacuum operation on postgresql every night as a part of maintenance.
+  * Add measure_promise_time action body to lib (3.5, 3.6, 3.7, 3.8)
+  * New negative class guard cfengine_internal_disable_agent_email so that
+    agent email can be easily disabled by augmenting def.json
+
+  Changed
+  * Relocate def.cf to controls/VER/
+  * Relocate update_def to controls/VER
+  * Relocate all controls to controls/VER
+  * Only load cf_hub and reports.cf on CFEngine Enterprise installs
+  * Relocate acls related to report collection from bundle server
+    access_rules to controls/VER/reports.cf into bundle server
+    report_access_rules
+  * Re-organize cfe_internal splitting core from enterprise specific
+    policies and loading the appropriate inputs only when necessary
+  * Moved update directory into cfe_internal as it is not generally
+    intended to be modified
+  * services/autorun.cf moved to lib/VER/ as it is not generally intended
+    to be modified
+  * To improve predictibility autorun bundles are activated in
+    lexicographical order
+  * Relocate services/file_change.cf to cfe_internal/enterprise. This
+    policy is most useful for a good OOTB experience with CFEngine
+    Enterprise Mission Portal.
+  * Relocate service_catalogue from promsies.cf to services/main.cf. It is
+    intended to be a user entry. This name change correlates with the main
+    bundle being activated by default if there is no bundlesequence
+    specified.
+  * Reduce benchmarks sample history to 1 day.
+  * Update policy no longer generates a keypair if one is not found.
+    (Redmine: #7167)
+  * Relocate cfe_internal_postgresql_maintenance bundle to lib/VER/
+  * Set postgresql_monitoring_maintenance only for versions 3.6.0 and 3.6.1
+  * Move hub specific bundles from lib/VER/cfe_internal.cf into
+    lib/VER/cfe_internal_hub.cf and load them only if policy_server policy
+    if set.
+  * Re-organize lib/VER/stdlib.cf from lists into classic array for use
+    with getvalues
+  * inform_mode classes changed to DEBUG|DEBUG_$(this.bundle):: (Redmine:
+    #7191)
+  * Enabled limit_robot_agents in order to work around multiple cf-execd
+    processes after upgrade. (Redmine #7185)
+
+  Removed
+
+  * Diff reporting on /etc/shadow (Enterprise)
+  * Update policy from promise.cf inputs. There is no reason to include
+    the update policy into promsies.cf, update.cf is the entry for the
+    update policy
+  * _not_repaired outcome from classes_generic and scoped_classes generic
+    (Redmine: # 7022)
+
+  Fixed
+
+  * standard_services now restarts the service if it was not already
+    running when using service_policy => restart with chkconfig (Redmine
+    #7258)
+  * Fix process_result logic to match the purpose of body process_select
+    days_older_than (Redmine #3009)
+
+- drop patch, upstream
+  build-without-core.patch
+
+-------------------------------------------------------------------
+Thu Jun 18 15:38:04 UTC 2015 - kkaempf@suse.com
+
+- fix Fedora/RHEL builds - add perl-Exporter to BuildRequires
+
+-------------------------------------------------------------------
+Fri Mar 13 07:57:20 UTC 2015 - kkaempf@suse.com
+
+- Update to 3.6.5
+  RHEL7 support, systemd support, bugfixes.
+
+-------------------------------------------------------------------
+Wed Jan 28 07:45:47 UTC 2015 - kkaempf@suse.com
+
+- Update to 3.6.4
+  Bugfix release
+
+-------------------------------------------------------------------
+Thu Oct  9 07:21:46 UTC 2014 - kkaempf@suse.com
+
+- Update to 3.6.2
+  Bugfix release
+
+-------------------------------------------------------------------
+Tue Sep 16 12:16:41 UTC 2014 - kkaempf@suse.com
+
+- Update to 3.6.2-build5 pre-release
+
+-------------------------------------------------------------------
+Thu Aug  7 18:02:29 UTC 2014 - kkaempf@suse.com
+
+- fix build for SLE 11
+  add cfengine-masterfiles-rpmlintrc
+
+-------------------------------------------------------------------
+Wed Jul 30 14:49:50 UTC 2014 - kkaempf@suse.com
+
+- Update to 3.6.1
+  * Bugfix release
+  * Fix systemctl path for service promises
+
+- add build-without-core.patch, no 'core' source available
+
+- drop masterfiles-3.6.0.patch, upstream
+
+-------------------------------------------------------------------
+Tue Jul  1 09:50:29 UTC 2014 - kkaempf@suse.com
+
+- make masterfiles accessible to non-root users.
+  add masterfiles-3.6.0.patch
+
+-------------------------------------------------------------------
+Wed Jun 18 13:40:29 UTC 2014 - kkaempf@suse.com
+
+- Update to 3.6.0 final
+  Bugfixes
+
+-------------------------------------------------------------------
+Fri May 30 07:13:41 UTC 2014 - kkaempf@suse.com
+
+- Update to 3.6.0-rc2
+  Bugfix release
+
+- drop 0001-Fix-SUSE-suse-spelling.patch,
+  and 0002-More-SuSE-suse-renames.patch, (included upstream)
+  drop 0001-Use-systemctl-to-start-stop-cfengine-processes-if-sy.patch
+  (reverted)
+
+-------------------------------------------------------------------
+Fri May  2 14:29:02 UTC 2014 - kkaempf@suse.com
+
+- start/stop cf-* processes via systemctl
+  Add 0001-Use-systemctl-to-start-stop-cfengine-processes-if-sy.patch
+
+-------------------------------------------------------------------
+Fri Apr 11 09:17:27 UTC 2014 - kkaempf@suse.com
+
+- change license from 'MIT' to 'MIT and LGPL-3.0+'
+- add two patches to fix 'SuSE' spelling
+  0001-Fix-SUSE-suse-spelling.patch
+  0002-More-SuSE-suse-renames.patch
+
+-------------------------------------------------------------------
+Fri Apr 11 07:35:04 UTC 2014 - kkaempf@suse.com
+
+- Update to 3.6rc
+  Bugfix release
+
+-------------------------------------------------------------------
+Thu Apr 10 13:19:33 UTC 2014 - kkaempf@suse.com
+
+- add inventory/linux.cf to parse /etc/os-release
+
+- check /proc/1/cmdline and set 'systemd' if this is the init process.
+
+-------------------------------------------------------------------
+Tue Mar 18 09:42:03 UTC 2014 - kkaempf@suse.com
+
+- New package, version 3.6.0b2

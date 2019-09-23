@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>222181b13d7a2cd060d164ef921ace00</srcmd5>
+    <version>6.0.0</version>
+    <time>1516444063</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain yate-bts in Factory</comment>
+    <requestid>567586</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>450b01495a91a9022690f3b3e29e7f68</srcmd5>
+    <version>6.1.0</version>
+    <time>1539251687</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.1.0
+  * No changelog upstream</comment>
+    <requestid>640801</requestid>
+  </revision>
+</revisionlist>

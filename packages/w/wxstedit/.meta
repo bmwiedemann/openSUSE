@@ -1,0 +1,5 @@
+<package name="wxstedit" project="openSUSE:Factory">
+  <title>wxStEdit</title>
+  <description>wxStEdit is a library and sample program for the wxWidgets's wxStyledTextCtrl wrapper around the Scintilla text editor widget.</description>
+  <devel project="X11:wxWidgets" package="wxstedit"/>
+</package>

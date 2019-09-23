@@ -1,0 +1,14 @@
+<package name="openmarkup" project="openSUSE:Factory">
+  <title>Open Markup Interface for object realizers and XML object realization</title>
+  <description>The Open Markup project defines an open API called Open Markup
+Interface for object realizers and XML object realization.
+
+Object realization is a process by which software objects are created,
+configured, and processed according to machine-readable descriptions of
+those objects. It includes post-instantiation tasks, such as
+configuring objects with additional attributes or properties,
+connecting them with other objects to create complex object
+compositions, or otherwise manipulating them according to control
+information embedded in the object descriptions.</description>
+  <devel project="Java:packages" package="openmarkup"/>
+</package>

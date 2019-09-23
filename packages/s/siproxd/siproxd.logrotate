@@ -1,0 +1,25 @@
+#
+# Please note, that changing of log file permissions in this
+# file is not sufficient if syslog-ng is used as log daemon.
+#
+# It is required to specify the permissions in the syslog-ng
+# configuration file /etc/syslog-ng/syslog-ng.conf as well.
+#
+
+# the firewall,acpid,NetworkManager log files
+# are used by syslog-ng and rsyslog only, the
+# other by all syslog daemons.
+/var/log/siproxd.log {
+    compress
+    dateext
+    maxage 365
+    rotate 99
+    missingok
+    notifempty
+    size +4096k
+    create 640 root root
+    sharedscripts
+    postrotate
+        /etc/init.d/siproxd restart
+    endscript
+}

@@ -1,0 +1,36 @@
+Index: rpmlint-rpmlint-1.11/PostCheck.py
+===================================================================
+--- rpmlint-rpmlint-1.11.orig/PostCheck.py
++++ rpmlint-rpmlint-1.11/PostCheck.py
+@@ -108,20 +108,6 @@ class PostCheck(AbstractCheck.AbstractCh
+                         pkg, files, prog[idx],
+                         pkg.header[tag[0]][idx], tag[2], prereq)
+ 
+-        ghost_files = pkg.ghostFiles()
+-        if ghost_files:
+-            postin = pkg[rpm.RPMTAG_POSTIN]
+-            prein = pkg[rpm.RPMTAG_PREIN]
+-            for f in ghost_files:
+-                if f in pkg.missingOkFiles():
+-                    continue
+-                if not postin and not prein:
+-                    printWarning(pkg, 'ghost-files-without-postin')
+-                if (not postin or f not in postin) and \
+-                        (not prein or f not in prein):
+-                    printWarning(pkg,
+-                                 'postin-without-ghost-file-creation', f)
+-
+     def check_aux(self, pkg, files, prog, script, tag, prereq):
+         if script:
+             script_str = Pkg.b2s(script)
+@@ -193,10 +179,6 @@ class PostCheck(AbstractCheck.AbstractCh
+ check = PostCheck()
+ 
+ # Add information about checks
+-addDetails(
+-'postin-without-ghost-file-creation',
+-'''A file tagged as ghost is not created during %prein nor during %postin.''',
+-)
+ for scriptlet in map(lambda x: '%' + x, Pkg.RPM_SCRIPTLETS):
+     addDetails(
+ 'one-line-command-in-%s' % scriptlet,

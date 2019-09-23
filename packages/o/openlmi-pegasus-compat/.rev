@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d5942999477c6dfba564d23843ea7b4a</srcmd5>
+    <version>0.1</version>
+    <time>1425892117</time>
+    <user>dimstar_suse</user>
+    <comment>This is required by openlmi(-*) when used with sblim-sfcb (like on SUSE)</comment>
+    <requestid>288663</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>27fb560f0d94006b0eadeaf9a4a025a9</srcmd5>
+    <version>0.1</version>
+    <time>1427109443</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>291703</requestid>
+  </revision>
+</revisionlist>

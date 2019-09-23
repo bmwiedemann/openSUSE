@@ -1,0 +1,268 @@
+-------------------------------------------------------------------
+Wed Sep 11 11:50:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable test_large_stdout_stream as it randomly fails
+
+-------------------------------------------------------------------
+Fri Jul 19 10:15:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add missing builddep on setuptools
+
+-------------------------------------------------------------------
+Sat May 25 09:06:04 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.7.0:
+  * The :meth:`.pxssh.login` method now no longer requires a username if an ssh config is provided and will raise an error if neither are provided. (:ghpull:`562`).
+  * The :meth:`.pxssh.login` method now supports providing your own ssh command via the cmd parameter. (:ghpull:`528`) (:ghpull:`563`).
+  * :class:`.pxssh` now supports the use_poll parameter which is passed into :meth:`.pexpect.spawn` (:ghpull:`542`).
+  * Minor bug fix with ssh_config. (:ghpull:`498`).
+  * :meth:`.replwrap.run_command` now has async support via an async_ parameter. (:ghpull:`501`).
+  * :meth:`.pexpect.spawn` will now read additional bytes if able up to a buffer limit. (:ghpull:`304`).
+- Drop merged patch fix-test.patch
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:27 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Sep  4 13:35:41 UTC 2018 - bwiedemann@suse.com
+
+- Add fix-test.patch to make tests pass with SLE-12-SP4's openssl (bsc#1107105)
+
+-------------------------------------------------------------------
+Sun Jun 24 15:49:37 UTC 2018 - arun@gmx.de
+
+- update to version 4.6.0:
+  * The pxssh.login() method now supports an ssh_config parameter,
+    which can be used to specify a file path to an SSH config file (PR
+    #490).
+  * Improved compatability for the crlf parameter of PopenSpawn (PR
+    #493)
+  * Fixed an issue in read timeout handling when using spawn and
+    fdspawn with the use_poll parameter (PR #492).
+
+-------------------------------------------------------------------
+Thu Apr 19 11:58:18 UTC 2018 - tchvatal@suse.com
+
+- Fix typo and make sure the tests will pass
+
+-------------------------------------------------------------------
+Sat Apr 14 17:14:36 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * enable tests
+
+- update to version 4.5.0:
+  * spawn and fdspawn now have a use_poll parameter. If this is True,
+    they will use select.poll() instead of select.select(). poll()
+    allows file descriptors above 1024, but it must be explicitly
+    enabled due to compatibility concerns (PR #474).
+  * The pxssh.login() method has several new and changed options:
+    + The option password_regex allows changing the password prompt
+      regex, for servers that include password: in a banner before
+      reaching a prompt (PR #468).
+    + login() now allows for setting up SSH tunnels to be requested
+      once logged in to the remote server. This option is ssh_tunnels
+      (PR #473). The structure should be like this:
+        {
+          'local': ['2424:localhost:22'],   # Local SSH tunnels
+          'remote': ['2525:localhost:22'],  # Remote SSH tunnels
+          'dynamic': [8888],                # Dynamic/SOCKS tunnels
+        }
+
+    + The option spawn_local_ssh=False allows subsequent logins from
+      the remote session and treats the session as if it was local (PR
+      #472).
+    + Setting sync_original_prompt=False will prevent changing the
+      prompt to something unique, in case the remote server is
+      sensitive to new lines at login (PR #468).
+    + If ssh_key=True is passed, the SSH client forces forwarding the
+      authentication agent to the remote server instead of providing a
+      key (PR #473).
+
+-------------------------------------------------------------------
+Sat Feb 10 17:29:45 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 4.4.0:
+  * PopenSpawn now has a preexec_fn parameter, like spawn and
+    subprocess.Popen, for a function to be called in the child process
+    before executing the new command. Like in Popen, this works only
+    in POSIX, and can cause issues if your application also uses
+    threads (PR #460).
+  * Significant performance improvements when processing large amounts
+    of data (PR #464).
+  * Ensure that spawn.closed gets set by close(), and improve an
+    example for passing SIGWINCH through to a child process (PR #466).
+
+-------------------------------------------------------------------
+Sat Dec 16 23:13:25 UTC 2017 - arun@gmx.de
+
+- update to version 4.3.1:
+  * When launching bash for pexpect.replwrap, load the system bashrc
+    from a couple of different common locations (PR #457), and then
+    unset the PROMPT_COMMAND environment variable, which can interfere
+    with the prompt we’re expecting (PR #459).
+
+-------------------------------------------------------------------
+Fri Nov 10 22:59:10 UTC 2017 - arun@gmx.de
+
+- update to version 4.3.0:
+  * The async= parameter to integrate with asyncio has become async_=
+    (PR #431), as async is becoming a Python keyword from Python
+    3.6. Pexpect will still recognise async as an alternative
+    spelling.
+  * Similarly, the module pexpect.async became pexpect._async (PR
+    #450). This module is not part of the public API.
+  * Fix problems with asyncio objects closing file descriptors during
+    garbage collection (#347, PR #376).
+  * Set the .pid attribute of a PopenSpawn object (PR #417).
+  * Fix passing Windows paths to PopenSpawn (PR #446).
+  * PopenSpawn on Windows can pass string commands through to Popen
+    without splitting them into a list (PR #447).
+  * Stop shlex trying to read from stdin when PopenSpawn is passed
+    cmd=None (#433, PR #434).
+  * Ensure that an error closing a Pexpect spawn object raises a
+    Pexpect error, rather than a Ptyprocess error (#383, PR #386).
+  * Cleaned up invalid backslash escape sequences in strings (PR #430,
+    PR #445).
+  * The pattern for a password prompt in pexpect.pxssh changed from
+    password to password: (PR #452).
+  * Correct docstring for using unicode with spawn (PR #395).
+  * Various other improvements to documentation.
+
+-------------------------------------------------------------------
+Mon Jul 10 18:42:12 UTC 2017 - toddrme2178@gmail.com
+
+- Fix wrong-script-interpreter rpmlint error.
+
+-------------------------------------------------------------------
+Wed Apr 19 17:57:01 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Thu Sep 15 22:52:06 UTC 2016 - toddrme2178@gmail.com
+
+- update to version 4.2.1:
+  * Fix to allow running ``env`` in replwrap-ed bash.
+  * Raise more informative exception from pxssh if it fails to connect.
+  * Change ``passmass`` example to not log passwords entered.
+- update to version 4.2.0:
+  * Change: When an "env" parameter is specified to the
+    :class:`~.spawn` or :class:`~.run` family of calls containing a
+    value for "PATH", its value is used to discover the target
+    executable from a relative path, rather than the current process's
+    environment "PATH".  This mirrors the behavior of
+    :func:`subprocess.Popen` in the standard library (:ghissue:`348`).
+  * Regression: Re-introduce capability for :meth:`read_nonblocking`
+    in class :class:`fdspawn` as previously supported in version 3.3
+    (:ghissue:`359`).
+- update to version 4.1.0:
+  * No upstream changelog
+- update to version 4.0.1:
+  * Integration with :mod:`asyncio`: passing "async=True" to :meth:`~.spawn.expect`,
+    :meth:`~.spawn.expect_exact` or :meth:`~.spawn.expect_list` will make them return a
+    coroutine. You can get the result using "yield from", or wrap it in an
+    :class:`asyncio.Task`. This allows the event loop to do other things while
+    waiting for output that matches a pattern.
+  * Experimental support for Windows (with some caveats)—see :ref:`windows`.
+  * Enhancement: allow method as callbacks of argument "events" for
+    :func:`pexpect.run` (:ghissue:`176`).
+  * It is now possible to call :meth:`~.spawn.wait` multiple times, or after a process
+    is already determined to be terminated without raising an exception
+    (:ghpull:`211`).
+  * New :class:`pexpect.spawn` keyword argument, "dimensions=(rows, columns)"
+    allows setting terminal screen dimensions before launching a program
+    (:ghissue:`122`).
+  * Fix regression that prevented executable, but unreadable files from
+    being found when not specified by absolute path -- such as
+    /usr/bin/sudo (:ghissue:`104`).
+  * Fixed regression when executing pexpect with some prior releases of
+    the multiprocessing module where stdin has been closed (:ghissue:`86`).
+  * Deprecated "pexpect.screen" and "pexpect.ANSI". Please use other packages
+    such as `pyte <https://pypi.python.org/pypi/pyte>`__ to emulate a terminal.
+  * Removed the independent top-level modules ("pxssh fdpexpect FSM screen ANSI")
+    which were installed alongside Pexpect. These were moved into the Pexpect
+    package in 3.0, but the old names were left as aliases.
+  * Child processes created by Pexpect no longer ignore SIGHUP by default: the
+    "ignore_sighup" parameter of :class:`pexpect.spawn` defaults to False. To
+    get the old behaviour, pass "ignore_sighup=True".
+
+-------------------------------------------------------------------
+Mon Apr 27 14:24:59 UTC 2015 - tbechtold@suse.com
+
+- update to 3.3:
+  * Added a mechanism to wrap REPLs, or shells, in an object which can
+    conveniently be used to send commands and wait for the output
+    (:mod:`pexpect.replwrap`).
+  * Fixed issue where pexpect would attempt to execute a directory because
+    it has the 'execute' bit set (:ghissue:`37`).
+  * Removed the ``pexpect.psh`` module. This was never documented, and we found
+    no evidence that people use it. The new :mod:`pexpect.replwrap` module
+    provides a more flexible alternative.
+  * Fixed ``TypeError: got <type 'str'> ('\r\n') as pattern`` in
+    :meth:`spawnu.readline`
+    method (:ghissue:`67`).
+  * Fixed issue where EOF was not correctly detected in :meth:`~.interact`,
+    causing a repeating loop of output on Linux, and blocking before EOF
+    on BSD and Solaris (:ghissue:`49`).
+  * Several Solaris (SmartOS) bugfixes, preventing :exc:`IOError` exceptions,
+    especially when used with cron(1) (:ghissue:`44`).
+  * Added new keyword argument ``echo=True`` for :class:`spawn`.  On SVR4-like
+    systems, the method :meth:`~.isatty` will always return *False*: the child
+    pty does not appear as a terminal.  Therefore, :meth:`~.setecho`,
+    :meth:`~.getwinsize
+  * Fix exception handling from :func:`select.select` on Python 2 (:ghpull:`38`)
+    This was accidentally broken in the previous release when it was fixed for
+    Python 3.
+  * Removed a workaround for ``TIOCSWINSZ`` on very old systems, which was
+    causing issues on some BSD systems (:ghpull:`40`).
+  * Fixed an issue with exception handling in :mod:`~pexpect.pxssh`
+    (:ghpull:`43`)
+
+
+-------------------------------------------------------------------
+Fri Apr 11 08:37:18 UTC 2014 - dmueller@suse.com
+
+- fix license (ISC) 
+
+-------------------------------------------------------------------
+Thu Apr  3 12:28:20 UTC 2014 - dmueller@suse.com
+
+- update to 3.1:
+  * Fix an issue that prevented importing pexpect on Python 3 when ``sys.stdout``
+    was reassigned
+  * Improve prompt synchronisation in :mod:`~pexpect.pxssh`
+  * Fix pickling exception instances
+  * Fix handling exceptions from :func:`select.select` on Python 3
+  * A new :ref:`unicode API <unicode>` was introduced.
+  * Python 3 is now supported, using a single codebase.
+  * Pexpect now requires at least Python 2.6 or 3.2.
+  * The modules other than pexpect, such as :mod:`pexpect.fdpexpect` and
+  * Ignoring ``SIGHUP`` is now optional
+
+-------------------------------------------------------------------
+Thu Oct 24 12:42:54 UTC 2013 - speilicke@suse.com
+
+- Update to version 2.4:
+  + No changelog
+
+-------------------------------------------------------------------
+Fri Sep 19 23:35:40 CEST 2008 - dmueller@suse.de
+
+- fix requires
+
+-------------------------------------------------------------------
+Fri Aug 01 15:09:21 CEST 2008 - bwalle@suse.de
+
+- update to 2.3 (no upstream changelog available)
+
+-------------------------------------------------------------------
+Wed Jan 24 23:44:33 CET 2007 - timlee@suse.de
+
+- initial submission to autobuild, version 2.1
+

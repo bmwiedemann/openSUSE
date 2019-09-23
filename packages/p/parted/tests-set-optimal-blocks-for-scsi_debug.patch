@@ -1,0 +1,30 @@
+From: "Brian C. Lane" <bcl@redhat.com>
+Date: Tue, 23 Aug 2016 08:55:18 -0700
+Subject: tests: Set optimal blocks to 64 for scsi_debug devices
+For: upstream code
+Patch-mainline: v3.3
+Git-commit: da36186cb4c2c0470a6490aed424a8d51a2b1085
+
+The Linux kernel 4.5 changed the optimal blocks count from 64 to 1024
+This causes tests using scsi_debug devices to fail because of alignment
+issues. Set the opt_blks to 64 so that we have consistent behavior
+across kernels.
+
+Acked-by: Sebastian Parschauer <sparschauer@suse.de>
+---
+ tests/t-local.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/t-local.sh b/tests/t-local.sh
+index b40a5a0..5655e0f 100644
+--- a/tests/t-local.sh
++++ b/tests/t-local.sh
+@@ -97,7 +97,7 @@ scsi_debug_setup_()
+   # It is not trivial to determine the name of the device we're creating.
+   # Record the names of all /sys/block/sd* devices *before* probing:
+   touch stamp
+-  modprobe scsi_debug "$@" || { rm -f stamp; return 1; }
++  modprobe scsi_debug opt_blks=64 "$@" || { rm -f stamp; return 1; }
+   scsi_debug_modprobe_succeeded_=1
+   test "$VERBOSE" = yes \
+     && echo $ME_ modprobe scsi_debug succeeded 1>&2

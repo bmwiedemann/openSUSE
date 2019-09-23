@@ -1,0 +1,218 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f51578c45e5e4f7c3a337cb866175a6b</srcmd5>
+    <version>0.52</version>
+    <time>1168903915</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f101c0c9abd36fefbae35618f256b8b4</srcmd5>
+    <version>0.54</version>
+    <time>1186471680</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="73">
+    <srcmd5>f101c0c9abd36fefbae35618f256b8b4</srcmd5>
+    <version>0.54</version>
+    <time>1186471680</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="74">
+    <srcmd5>7d7db9e50af3fbcec04e69589f8a4e71</srcmd5>
+    <version>0.54</version>
+    <time>1245337974</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1b09a7f9a870dfb9d310cefcc15356cf</srcmd5>
+    <version>0.58</version>
+    <time>1248726363</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>1b09a7f9a870dfb9d310cefcc15356cf</srcmd5>
+    <version>0.58</version>
+    <time>1248726363</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>577e871cd6196f627640f7eb38856800</srcmd5>
+    <version>0.59</version>
+    <time>1263297877</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Test-Base based on submit request 28956 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1758b65b9d22d2b09179052b237bde50</srcmd5>
+    <version>0.59</version>
+    <time>1268068793</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Test-Base based on submit request 34331 from user coolo
+</comment>
+    <requestid>34331</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>17bfb8836b60c002a1e34371f9f3699b</srcmd5>
+    <version>0.59</version>
+    <time>1268925618</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>17bfb8836b60c002a1e34371f9f3699b</srcmd5>
+    <version>0.59</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>17bfb8836b60c002a1e34371f9f3699b</srcmd5>
+    <version>0.59</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>754a8da7e36cd7983b4a74d0b93a0d9f</srcmd5>
+    <version>0.59</version>
+    <time>1291584001</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54656 from user coolo
+</comment>
+    <requestid>54656</requestid>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>511956368ee4ec90a955c44bd4e6d5a8</srcmd5>
+    <version>0.59</version>
+    <time>1291584010</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54656
+</comment>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>511956368ee4ec90a955c44bd4e6d5a8</srcmd5>
+    <version>0.59</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>299cd35da9e5930d7c6c8c00e7e5eacd</srcmd5>
+    <version>0.59</version>
+    <time>1300355519</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64338 from user computersalat
+</comment>
+    <requestid>64338</requestid>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>1f618fec0596cb2ef90e7bca13ab5847</srcmd5>
+    <version>0.59</version>
+    <time>1300355527</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64338
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7b4ff6543d064667d33d567c9a09814d</srcmd5>
+    <version>0.60</version>
+    <time>1302094580</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66236 from user coolo
+</comment>
+    <requestid>66236</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>e8a5e0b077b0e518bd38d6e51589781b</srcmd5>
+    <version>0.60</version>
+    <time>1302094591</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66236
+</comment>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>e8a5e0b077b0e518bd38d6e51589781b</srcmd5>
+    <version>0.60</version>
+    <time>1319182309</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>29bf2606145f0157fd496ab38258bb9d</srcmd5>
+    <version>0.60</version>
+    <time>1323193675</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>29bf2606145f0157fd496ab38258bb9d</srcmd5>
+    <version>0.60</version>
+    <time>1340183927</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>29bf2606145f0157fd496ab38258bb9d</srcmd5>
+    <version>0.60</version>
+    <time>1359109810</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="11">
+    <srcmd5>29bf2606145f0157fd496ab38258bb9d</srcmd5>
+    <version>0.60</version>
+    <time>1379663861</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="13">
+    <srcmd5>29bf2606145f0157fd496ab38258bb9d</srcmd5>
+    <version>0.60</version>
+    <time>1409302507</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e877d4feb8684379d5a1573d56ffb38d</srcmd5>
+    <version>0.88</version>
+    <time>1429989287</time>
+    <user>coolo</user>
+    <comment>- updated to 0.88
+  - Remove a debugging line.
+ 
+ 0.87 Tue Aug 19 16:35:34 PDT 2014
+  - Replace tabs with spaces
+ 
+ 0.86 Mon Aug 18 08:29:20 PDT 2014
+  - Fix for issue/15
+ 
+ 0.85 Mon Aug 18 08:07:52 PDT 2014
+  - Pull Module::Install::TestBase out of Test::Base
+  - It will be released in separate dist
+  - Was causing Test::Base to fail tests
+ 
+ 0.84 Sat Aug 16 15:08:32 PDT 2014
+  - Remove .gitignore
+  - Fix Meta error. s/zild/=zild/
+ 
+ 0.83 Sat Aug 16 12:31:00 PDT 2014
+  - Meta 0.0.2
+ 
+ 0.82 Sat Aug 16 04:14:25 PDT 2014
+  - Eliminate spurious trailing whitespace
+ 
+ 0.81 Sat Aug 16 02:52:12 PDT 2014
+  - Eliminate File::Basename from test/
+ 
+ 0.80 Fri Aug 15 20:49:55 PDT 2014
+  - Add t/000-require-modules.t</comment>
+    <requestid>296034</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>cb8e837bde18ad645307e48fb57c4e16</srcmd5>
+    <version>0.89</version>
+    <time>1524742449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599319</requestid>
+  </revision>
+</revisionlist>

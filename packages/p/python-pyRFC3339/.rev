@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>463c234ef6f5d8eccf89dc6cf73485a5</srcmd5>
+    <version>1.0</version>
+    <time>1452535878</time>
+    <user>dimstar_suse</user>
+    <comment>As this package will be required by letsencrypt, it would be great to have it in factory...</comment>
+    <requestid>351313</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5a17d68602c57f717e846b0788749176</srcmd5>
+    <version>1.0</version>
+    <time>1506108849</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527503</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ecbe5ce6dc743235f92df2e0b857dcec</srcmd5>
+    <version>1.1</version>
+    <time>1535538401</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.1:
+  * packaging cleanup mostly
+  * Add :meth:`.utils.FixedOffset.__deepcopy__()` method, to prevent crash on deepcopy (:issue:`8`)</comment>
+    <requestid>631980</requestid>
+  </revision>
+</revisionlist>

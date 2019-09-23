@@ -1,0 +1,33 @@
+diff -ur pbuilder-0.199+nmu1.orig/Makefile pbuilder-0.199+nmu1/Makefile
+--- pbuilder-0.199+nmu1.orig/Makefile	2010-01-31 04:52:57.000000000 +0100
++++ pbuilder-0.199+nmu1/Makefile	2011-01-26 16:58:28.000000000 +0100
+@@ -178,7 +178,7 @@
+ 
+ all:
+ 	$(MAKE) -C pbuildd $@
+-	$(MAKE) -C Documentation $@
++#	$(MAKE) -C Documentation $@
+ 
+ check: export PBUILDER_CHECKOUT := $(CURDIR)
+ check:
+@@ -214,5 +214,5 @@
+ 	# install -aptitude flavour as the default satisfydepends
+ 	ln -sf pbuilder-satisfydepends-aptitude $(PKGLIBDIR)/pbuilder-satisfydepends
+ 	$(MAKE) -C pbuildd $@
+-	$(MAKE) -C Documentation $@
++#	$(MAKE) -C Documentation $@
+ 
+Nur in pbuilder-0.199+nmu1: Makefile.patch.
+diff -ur pbuilder-0.199+nmu1.orig/pbuildd/Makefile pbuilder-0.199+nmu1/pbuildd/Makefile
+--- pbuilder-0.199+nmu1.orig/pbuildd/Makefile	2010-01-31 04:52:57.000000000 +0100
++++ pbuilder-0.199+nmu1/pbuildd/Makefile	2011-01-26 16:52:43.000000000 +0100
+@@ -9,6 +9,6 @@
+ 	install -d $(DESTDIR)$(PBUILDDDIR)
+ 	install -d $(DESTDIR)$(PBUILDDDIR)/hookdir
+ 	install -d $(DESTDIR)/var/cache/pbuilder/pbuildd
+-	install -m 755 -o root -g root buildd.sh $(DESTDIR)$(PBUILDDDIR)
+-	install -m 644 -o root -g root buildd-config.sh $(DESTDIR)/etc/pbuilder/
+-	install -m 755 -o root -g root hookdir/A10dpkg-l.sh $(DESTDIR)$(PBUILDDDIR)/hookdir
++	install -m 755 buildd.sh $(DESTDIR)$(PBUILDDDIR)
++	install -m 644 buildd-config.sh $(DESTDIR)/etc/pbuilder/
++	install -m 755 hookdir/A10dpkg-l.sh $(DESTDIR)$(PBUILDDDIR)/hookdir

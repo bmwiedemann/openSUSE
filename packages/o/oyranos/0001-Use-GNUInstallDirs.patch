@@ -1,0 +1,778 @@
+From f2c7336075b687a041ec3b1962a54aeba807552d Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 1 Jan 2017 00:08:35 +0100
+Subject: [PATCH 1/6] Use GNUInstallDirs
+
+Use standardised directories and at the same time give distributions
+leverage to override for e.g. multiarch libdir or docdir.
+---
+ CMakeLists.txt                                   |  6 ++++--
+ cmake/CMakeLists.txt                             | 10 +++-------
+ cmake/OyranosConfig.cmake.in                     |  8 ++++----
+ doc/CMakeLists.txt                               |  6 +++---
+ extras/CMakeLists.txt                            | 20 ++++++++++----------
+ extras/oyranos-config.in                         | 13 ++++++-------
+ extras/oyranos.pc.in                             |  6 +++---
+ src/CMakeLists.txt                               |  4 ++--
+ src/examples/CMakeLists.txt                      | 22 +++++++++++-----------
+ src/examples/oforms/CMakeLists.txt               |  6 +++---
+ src/include/oyranos_version.h.in                 |  6 +++---
+ src/include_private/CMakeLists.txt               |  2 +-
+ src/include_private/config.log.h.in              |  4 ++--
+ src/liboyranos/CMakeLists.txt                    | 12 ++++++------
+ src/liboyranos_config/CMakeLists.txt             |  8 ++++----
+ src/liboyranos_core/CMakeLists.txt               |  8 ++++----
+ src/liboyranos_modules/CMakeLists.txt            |  8 ++++----
+ src/liboyranos_object/CMakeLists.txt             |  8 ++++----
+ src/modules/color/modules/CMakeLists.txt         | 22 +++++++++++-----------
+ src/modules/color/modules/devices/CMakeLists.txt | 20 ++++++++++----------
+ src/modules/oyranos-meta/CMakeLists.txt          |  2 +-
+ src/tools/CMakeLists.txt                         | 16 ++++++++--------
+ src/tools/qcmsevents/CMakeLists.txt              |  6 +++---
+ src/tools/qcmsevents/qt4/CMakeLists.txt          |  6 +++---
+ 24 files changed, 113 insertions(+), 116 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8c1084c..247eb7f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED (VERSION 2.6.2)
++CMAKE_MINIMUM_REQUIRED (VERSION 2.8.5)
+ 
+ PROJECT (Oyranos)
+ 
+@@ -14,7 +14,7 @@ SET (PACKAGE_DESCRIPTION "Oyranos is a Color Management System (CMS) on operatin
+ 
+ SET( OY_CMMSUBPATH     "color/modules" )
+ SET( OY_METASUBPATH    "${PACKAGE_NAME}-meta" )
+-SET( OY_ICC_DIR        "${CMAKE_INSTALL_PREFIX}/share/color/icc" )
++SET( OY_ICC_DIR        "${CMAKE_INSTALL_FULL_DATAROOTDIR}/color/icc" )
+ 
+ #additional cmake modules for loading libraries
+ SET (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
+@@ -31,6 +31,8 @@ SET( REVERSE_DOMAIN org.oyranos )
+ SET( OYRANOS_VERSION "${OYRANOS_VERSION_MAJOR}.${OYRANOS_VERSION_MINOR}.${OYRANOS_VERSION_MICRO}" )
+ SET( OYRANOS_VERSION_MAJORMINOR "${OYRANOS_VERSION_MAJOR}.${OYRANOS_VERSION_MINOR}" )
+ 
++include(GNUInstallDirs)
++
+ IF( ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+   SET(PLATFORM "OSX")
+ ELSEIF( ${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+diff --git a/cmake/CMakeLists.txt b/cmake/CMakeLists.txt
+index 5c40180..1e935e6 100644
+--- a/cmake/CMakeLists.txt
++++ b/cmake/CMakeLists.txt
+@@ -16,13 +16,13 @@ SET (TARGET_CMAKE_FOLDER
+ 
+ SET (TARGET_PLUGIN_FOLDER "oyranos"
+ 		CACHE STRING
+-		"Optional folder below system library folder where to install oyranos plugins. LIB_SUFFIX is honored."
++		"Optional folder below system library folder where to install oyranos plugins."
+     )
+ 
+ SET (TARGET_PKGCONFIG_FOLDER
+ 		"pkgconfig"
+ 		CACHE STRING
+-		"The folder below system library folder where to install pkgconfig files. LIB_SUFFIX is honored."
++		"The folder below system library folder where to install pkgconfig files."
+     )
+ 
+ SET (TARGET_DOCUMENTATION_FOLDER
+@@ -36,10 +36,6 @@ SET (TARGET_DOCUMENTATION_FOLDER
+ # Misc.
+ #
+ 
+-SET (LIB_SUFFIX ""
+-		CACHE STRING
+-		"Optional suffix to use on lib folders (e.g. 64 for lib64)"
+-    )
+ #cmake settings for use by find_package
+ CONFIGURE_FILE (
+ 		"${CMAKE_CURRENT_SOURCE_DIR}/OyranosConfig.cmake.in"
+@@ -49,6 +45,6 @@ CONFIGURE_FILE (
+ 
+ INSTALL ( FILES
+ 		"${CMAKE_CURRENT_BINARY_DIR}/OyranosConfig.cmake"
+-		DESTINATION lib${LIB_SUFFIX}/cmake/oyranos COMPONENT dev
++		DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/oyranos COMPONENT dev
+ 	)
+ 
+diff --git a/cmake/OyranosConfig.cmake.in b/cmake/OyranosConfig.cmake.in
+index 3837825..bd9eaee 100644
+--- a/cmake/OyranosConfig.cmake.in
++++ b/cmake/OyranosConfig.cmake.in
+@@ -76,7 +76,7 @@ IF(APPLE)
+ ELSE(APPLE)
+   FIND_PATH(OYRANOS_INCLUDE_DIR
+ 	NAMES oyranos.h
+-	PATHS @CMAKE_INSTALL_PREFIX@/include/@TARGET_INCLUDE_FOLDER@
++	PATHS @CMAKE_INSTALL_FULL_INCLUDEDIR@/@TARGET_INCLUDE_FOLDER@
+ 	NO_DEFAULT_PATH
+   )
+ ENDIF(APPLE)
+@@ -131,10 +131,10 @@ if (OYRANOS_FOUND)
+         SET( OYRANOS_VERSION       @OYRANOS_VERSION@ )
+         SET( OYRANOS_CMM_SUBDIR    @OY_CMMSUBPATH@ )
+         SET( OYRANOS_META_SUBDIR   @OY_METASUBPATH@ )
+-        SET( OYRANOS_CMM_DIR       @CMAKE_INSTALL_PREFIX@/lib@LIB_SUFFIX@/@OY_CMMSUBPATH@ )
+-        SET( OYRANOS_META_DIR      @CMAKE_INSTALL_PREFIX@/lib@LIB_SUFFIX@/@OY_METASUBPATH@ )
++        SET( OYRANOS_CMM_DIR       @CMAKE_INSTALL_FULL_LIBDIR@/@OY_CMMSUBPATH@ )
++        SET( OYRANOS_META_DIR      @CMAKE_INSTALL_FULL_LIBDIR@/@OY_METASUBPATH@ )
+         SET( OYRANOS_ICC_DIR       @OY_ICC_DIR@ )
+-        SET( OYRANOS_SETTINGS_DIR  @CMAKE_INSTALL_PREFIX@/share/color/settings )
++        SET( OYRANOS_SETTINGS_DIR  @CMAKE_INSTALL_FULL_DATAROOTDIR@/color/settings )
+         SET( OYRANOS_FRAMEWORK_LOCALE_DIR locale )
+         SET( OYRANOS_FRAMEWORK_LOCALE     OyranosCore.framework )
+         SET( OYRANOS_FRAMEWORK_ICC        Oyranos.framework )
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index 64bcd3d..d7cefd5 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -42,8 +42,8 @@ SET( MAN3_PAGES
+      man/oyranos-config.3
+    )
+ 
+-INSTALL( FILES ${MAN1_PAGES} DESTINATION share/man/man1 )
+-INSTALL( FILES ${MAN3_PAGES} DESTINATION share/man/man3 )
++INSTALL( FILES ${MAN1_PAGES} DESTINATION ${CMAKE_INSTALL_MANDIR}/man1 )
++INSTALL( FILES ${MAN3_PAGES} DESTINATION ${CMAKE_INSTALL_MANDIR}/man3 )
+ 
+ FIND_PACKAGE( Doxygen )
+ IF( DOXYGEN_FOUND )
+@@ -55,5 +55,5 @@ IF( DOXYGEN_FOUND )
+   ADD_CUSTOM_TARGET( docu ALL
+                      DEPENDS html )
+ 
+-  INSTALL( DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html DESTINATION share/doc/${PACKAGE_NAME}-${OYRANOS_VERSION} )
++  INSTALL( DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html DESTINATION ${CMAKE_INSTALL_DOCDIR} )
+ ENDIF()
+diff --git a/extras/CMakeLists.txt b/extras/CMakeLists.txt
+index ad9cec0..7f13301 100644
+--- a/extras/CMakeLists.txt
++++ b/extras/CMakeLists.txt
+@@ -4,14 +4,14 @@ CONFIGURE_FILE(
+ 		@ONLY
+        )
+ 
+-INSTALL( PROGRAMS "${CMAKE_BINARY_DIR}/oyranos-config" DESTINATION bin )
+-INSTALL( PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/oyranos-profile-install" DESTINATION bin )
+-INSTALL( PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/oyranos-monitor-daemon" DESTINATION bin )
+-INSTALL( FILES oyranos-profile-install.desktop DESTINATION share/applications)
+-INSTALL( FILES icons/oyranos_logo.png DESTINATION share/pixmaps )
++INSTALL( PROGRAMS "${CMAKE_BINARY_DIR}/oyranos-config" DESTINATION ${CMAKE_INSTALL_BINDIR} )
++INSTALL( PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/oyranos-profile-install" DESTINATION ${CMAKE_INSTALL_BINDIR} )
++INSTALL( PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/oyranos-monitor-daemon" DESTINATION ${CMAKE_INSTALL_BINDIR} )
++INSTALL( FILES oyranos-profile-install.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
++INSTALL( FILES icons/oyranos_logo.png DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pixmaps )
+ # KDE has problems rendering SVG blur
+-#INSTALL( FILES icons/oyranos_logo.svg DESTINATION share/icons/hicolor/scalable/apps )
+-INSTALL( FILES icons/lcms_logo2.png DESTINATION share/pixmaps )
++#INSTALL( FILES icons/oyranos_logo.svg DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/scalable/apps )
++INSTALL( FILES icons/lcms_logo2.png DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pixmaps )
+ 
+ # needs to go to the autostart directory - hack hack hack
+ MESSAGE( "XDG_CONFIG_DIR: ${XDG_CONFIG_DIR}" )
+@@ -19,8 +19,8 @@ IF( XDG_CONFIG_DIR )
+   MESSAGE( "Will install oyranos-monitor-setup.desktop into ${XDG_CONFIG_DIR}/autostart" )
+   INSTALL( FILES oyranos-monitor-setup.desktop OPTIONAL DESTINATION ${XDG_CONFIG_DIR}/autostart )
+ ELSE()
+-  MESSAGE( "Will install oyranos-monitor-setup.desktop into /etc/xdg/autostart. Change with -DXDG_CONFIG_DIR=<path> ." )
+-  INSTALL( FILES oyranos-monitor-setup.desktop OPTIONAL DESTINATION /etc/xdg/autostart )
++  MESSAGE( "Will install oyranos-monitor-setup.desktop into ${CMAKE_INSTALL_FULL_SYSCONFDIR}/xdg/autostart. Change with -DXDG_CONFIG_DIR=<path> ." )
++  INSTALL( FILES oyranos-monitor-setup.desktop OPTIONAL DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/xdg/autostart )
+ ENDIF()
+ 
+ #pkg-config files
+@@ -38,6 +38,6 @@ CONFIGURE_FILE(
+ 
+ INSTALL( FILES
+ 		"${CMAKE_CURRENT_BINARY_DIR}/oyranos.pc"
+-		DESTINATION lib${LIB_SUFFIX}/${TARGET_PKGCONFIG_FOLDER}
++		DESTINATION ${CMAKE_INSTALL_LIBDIR}/${TARGET_PKGCONFIG_FOLDER}
+        )
+ 
+diff --git a/extras/oyranos-config.in b/extras/oyranos-config.in
+index 3dbafa7..ff00ccd 100755
+--- a/extras/oyranos-config.in
++++ b/extras/oyranos-config.in
+@@ -11,17 +11,16 @@ VERSION_A=@OYRANOS_VERSION_MAJOR@
+ VERSION_B=@OYRANOS_VERSION_MINOR@
+ VERSION_C=@OYRANOS_VERSION_MICRO@
+ 
+-prefix="@CMAKE_INSTALL_PREFIX@"
+-exec_prefix="$prefix"
+-bindir="@CMAKE_INSTALL_PREFIX@/bin"
+-libdir="@CMAKE_INSTALL_PREFIX@/lib@LIB_SUFFIX@"
++exec_prefix="@CMAKE_INSTALL_PREFIX@"
++bindir="@CMAKE_INSTALL_FULL_BINDIR@"
++libdir="@CMAKE_INSTALL_FULL_LIBDIR@"
+ framedir="@CMAKE_INSTALL_PREFIX@/@FRAMEWORK_DIR@"
+ cmmsubpath=@OY_CMMSUBPATH@
+ metasubpath=@OY_METASUBPATH@
+ cmmdir="$libdir/$cmmsubpath"
+-includedir="$prefix/include/oyranos"
+-datadir="$prefix/share"
+-mandir="$datadir/man"
++includedir="@CMAKE_INSTALL_FULL_INCLUDEDIR@/oyranos"
++datadir="@CMAKE_INSTALL_FULL_DATAROOTDIR@"
++mandir="@CMAKE_INSTALL_FULL_MANDIR@"
+ syscolordir="$datadir/color"
+ usercolordir=~/.config/color
+ usercolordata=~/.local/share/color
+diff --git a/extras/oyranos.pc.in b/extras/oyranos.pc.in
+index 6554bfd..2aad4b9 100644
+--- a/extras/oyranos.pc.in
++++ b/extras/oyranos.pc.in
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+-exec_prefix=${prefix}/bin
+-libdir=${prefix}/@LIB_DIR@
+-includedir=${prefix}/include/@TARGET_INCLUDE_FOLDER@
++exec_prefix=${prefix}/@CMAKE_INSTALL_BINDIR@
++libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@/@TARGET_INCLUDE_FOLDER@
+ 
+ Name: @PACKAGE_NAME@
+ Description: @PACKAGE_DESCRIPTION@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index ec52c0e..395f941 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -278,10 +278,10 @@ IF(APPLE)
+   # which would not be consistent with other platforms
+   SET( OYRANOS_INCLUDE_FLAGS "-I${CMAKE_INSTALL_PREFIX}/${FRAMEWORK_DIR}/Oyranos.framework/Headers -I${CMAKE_INSTALL_PREFIX}/${FRAMEWORK_DIR}/OyranosConfig.framework/Headers -I${CMAKE_INSTALL_PREFIX}/${FRAMEWORK_DIR}/OyranosModules.framework/Headers -I${CMAKE_INSTALL_PREFIX}/${FRAMEWORK_DIR}/OyranosObject.framework/Headers -I${CMAKE_INSTALL_PREFIX}/${FRAMEWORK_DIR}/OyranosCore.framework/Headers" PARENT_SCOPE )
+ ELSE(APPLE)
+-  SET( LIB_DIR "lib${LIB_SUFFIX}" )
++  SET( LIB_DIR "${CMAKE_INSTALL_LIBDIR}" )
+   SET( GCC_LINK_PATH_FLAG "-L" PARENT_SCOPE )
+   SET( GCC_LINK_LIB_FLAG "-l" PARENT_SCOPE )
+-  SET( OYRANOS_INCLUDE_FLAGS "-I${CMAKE_INSTALL_PREFIX}/include/${PACKAGE_NAME}" PARENT_SCOPE )
++  SET( OYRANOS_INCLUDE_FLAGS "-I${CMAKE_INSTALL_FULL_INCLUDEDIR}/${PACKAGE_NAME}" PARENT_SCOPE )
+ ENDIF(APPLE)
+ SET( LIB_DIR ${LIB_DIR} PARENT_SCOPE )
+ 
+diff --git a/src/examples/CMakeLists.txt b/src/examples/CMakeLists.txt
+index 9d4139e..14598e3 100644
+--- a/src/examples/CMakeLists.txt
++++ b/src/examples/CMakeLists.txt
+@@ -4,7 +4,7 @@ SET( OY_MODULE_LIB ${PACKAGE_NAME}_${OY_MODULE}${OY_MODULE_NAME} )
+ ADD_LIBRARY( ${OY_MODULE_LIB}
+              SHARED ${PACKAGE_NAME}_cmm_${OY_MODULE}.c )
+ TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} )
+-#INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_CMMSUBPATH})
++#INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_CMMSUBPATH})
+ 
+ # example device module
+ SET( OY_MODULE dDev )
+@@ -12,7 +12,7 @@ SET( OY_MODULE_LIB ${PACKAGE_NAME}_${OY_MODULE}${OY_MODULE_NAME} )
+ ADD_LIBRARY( ${OY_MODULE_LIB}
+              SHARED ${PACKAGE_NAME}_cmm_${OY_MODULE}.c )
+ TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} )
+-#INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_CMMSUBPATH})
++#INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_CMMSUBPATH})
+ 
+ # ICC profile hash calculation
+ ADD_EXECUTABLE( oymd5icc oymd5icc.c )
+@@ -21,12 +21,12 @@ TARGET_LINK_LIBRARIES( oymd5icc ${PROJECT_NAME} ${EXTRA_LIBS} )
+ # CamerRaw file handling
+ ADD_EXECUTABLE( oyranos-file "${CMAKE_CURRENT_SOURCE_DIR}/libraw/oyranos_file.cpp" )
+ TARGET_LINK_LIBRARIES( oyranos-file ${PROJECT_NAME} ${EXTRA_LIBS} )
+-#INSTALL (TARGETS oyranos-file DESTINATION bin)
++#INSTALL (TARGETS oyranos-file DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+ # Taxi DB tool for central hosted ICC profile distribution
+ ADD_EXECUTABLE( taxi taxi.c )
+ TARGET_LINK_LIBRARIES( taxi ${PROJECT_NAME} ${EXTRA_LIBS} )
+-#INSTALL (TARGETS taxi DESTINATION bin)
++#INSTALL (TARGETS taxi DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+ # primitive picture montage with ICC support
+ IF( CAIRO_FOUND )
+@@ -59,9 +59,9 @@ IF( FLTK_FOUND )
+   SET_PROPERTY(TARGET oyranos-image-display PROPERTY OSX_ARCHITECTURES_DEBUG x86_64)
+   TARGET_LINK_LIBRARIES ( oyranos-image-display ${PROJECT_NAME} ${EXTRA_LIBS}
+                  ${FLTK_LIBRARIES} ${XRANDR_LIBRARIES} )
+-  INSTALL (TARGETS oyranos-image-display DESTINATION bin)
+-  INSTALL( FILES ${CMAKE_CURRENT_SOURCE_DIR}/image_display/oyranos-image-display.desktop DESTINATION share/applications )
+-  INSTALL( FILES ${CMAKE_CURRENT_SOURCE_DIR}/image_display/oyranos-image-display.1 DESTINATION share/man/man1 )
++  INSTALL (TARGETS oyranos-image-display DESTINATION ${CMAKE_INSTALL_BINDIR})
++  INSTALL( FILES ${CMAKE_CURRENT_SOURCE_DIR}/image_display/oyranos-image-display.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
++  INSTALL( FILES ${CMAKE_CURRENT_SOURCE_DIR}/image_display/oyranos-image-display.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1 )
+ 
+   ADD_EXECUTABLE( oyranos-config-fltk
+                   oyranos_config_fltk.cxx
+@@ -71,7 +71,7 @@ IF( FLTK_FOUND )
+   SET_PROPERTY(TARGET oyranos-config-fltk PROPERTY OSX_ARCHITECTURES_DEBUG x86_64)
+   TARGET_LINK_LIBRARIES ( oyranos-config-fltk ${PROJECT_NAME} ${EXTRA_LIBS}
+                  ${FLTK_LIBRARIES} ${XRANDR_LIBRARIES} )
+-  INSTALL (TARGETS oyranos-config-fltk DESTINATION bin)
++  INSTALL (TARGETS oyranos-config-fltk DESTINATION ${CMAKE_INSTALL_BINDIR})
+ ENDIF()
+ 
+ 
+@@ -81,7 +81,7 @@ ADD_SUBDIRECTORY( oforms )
+ ADD_EXECUTABLE( oyranos-xforms oforms/oyranos_xforms.c )
+ TARGET_LINK_LIBRARIES( oyranos-xforms
+                   ${OY_OFORMS_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} )
+-INSTALL (TARGETS oyranos-xforms DESTINATION bin)
++INSTALL (TARGETS oyranos-xforms DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+ # oFORMS for a Oyranos FLTK renderer and parser
+ IF( FLTK_FOUND )
+@@ -92,14 +92,14 @@ IF( FLTK_FOUND )
+                 )
+   TARGET_LINK_LIBRARIES ( oyranos-xforms-fltk ${PROJECT_NAME} ${EXTRA_LIBS}
+                   ${OY_OFORMS_LIB} ${FLTK_LIBRARIES} ${XRANDR_LIBRARIES} )
+-  INSTALL (TARGETS oyranos-xforms-fltk DESTINATION bin)
++  INSTALL (TARGETS oyranos-xforms-fltk DESTINATION ${CMAKE_INSTALL_BINDIR})
+ ENDIF()
+ 
+ # oFORMS for a Oyranos module generation
+ ADD_EXECUTABLE( oyranos-xforms-modules oforms/oyranos_xforms_modules.c )
+ TARGET_LINK_LIBRARIES( oyranos-xforms-modules
+              ${PROJECT_NAME} ${OY_OFORMS_LIB} ${EXTRA_LIBS} )
+-INSTALL (TARGETS oyranos-xforms-modules DESTINATION bin)
++INSTALL (TARGETS oyranos-xforms-modules DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+ # Tutorial 1
+ ADD_EXECUTABLE( tutorial1 tutorial1.c )
+diff --git a/src/examples/oforms/CMakeLists.txt b/src/examples/oforms/CMakeLists.txt
+index 2cfbdc5..7fe6111 100644
+--- a/src/examples/oforms/CMakeLists.txt
++++ b/src/examples/oforms/CMakeLists.txt
+@@ -7,10 +7,10 @@ TARGET_LINK_LIBRARIES ( ${OY_OFORMS_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} )
+ 
+ MESSAGE( "-- OY_OFORMS_LIB: ${OY_OFORMS_LIB}" )
+ 
+-INSTALL (FILES ./oyranos-xforms.1 DESTINATION share/man/man1 )
+-INSTALL (FILES ./oyranos-xforms-modules.1 DESTINATION share/man/man1 )
++INSTALL (FILES ./oyranos-xforms.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1 )
++INSTALL (FILES ./oyranos-xforms-modules.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1 )
+ IF( FLTK_FOUND )
+-  INSTALL (FILES ./oyranos-xforms-fltk.1 DESTINATION share/man/man1 )
++  INSTALL (FILES ./oyranos-xforms-fltk.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1 )
+ ENDIF()
+ 
+ 
+diff --git a/src/include/oyranos_version.h.in b/src/include/oyranos_version.h.in
+index 164bc76..35c4ad1 100644
+--- a/src/include/oyranos_version.h.in
++++ b/src/include/oyranos_version.h.in
+@@ -19,9 +19,9 @@
+ #define OYEXPORT
+ 
+ #define OY_PREFIX         "@CMAKE_INSTALL_PREFIX@"	/**< install variable */
+-#define OY_BINDIR         "@CMAKE_INSTALL_PREFIX@/bin"	/**< install variable */
+-#define OY_DATADIR        "@CMAKE_INSTALL_PREFIX@/share"	/**< install variable */
+-#define OY_LIBDIR         "@CMAKE_INSTALL_PREFIX@/lib@LIB_SUFFIX@"	/**< install variable */
++#define OY_BINDIR         "@CMAKE_INSTALL_FULL_BINDIR@"	/**< install variable */
++#define OY_DATADIR        "@CMAKE_INSTALL_FULL_DATAROOTDIR@"	/**< install variable */
++#define OY_LIBDIR         "@CMAKE_INSTALL_FULL_LIBDIR@"	/**< install variable */
+ #define OY_CMMSUBPATH     "@OY_CMMSUBPATH@"	/**< install variable */
+ #define OY_METASUBPATH    "@OY_METASUBPATH@"	/**< install variable */
+ #define OY_CMMDIR         OY_LIBDIR "/" OY_CMMSUBPATH	/**< install variable */
+diff --git a/src/include_private/CMakeLists.txt b/src/include_private/CMakeLists.txt
+index b0fde6d..7763e0b 100644
+--- a/src/include_private/CMakeLists.txt
++++ b/src/include_private/CMakeLists.txt
+@@ -28,4 +28,4 @@ CONFIGURE_FILE (
+ 
+ INSTALL( FILES
+ 	oyranos_alpha.h
+-	DESTINATION include/${PACKAGE_NAME}/alpha)
++	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PACKAGE_NAME}/alpha)
+diff --git a/src/include_private/config.log.h.in b/src/include_private/config.log.h.in
+index 00bc72b..adc2842 100644
+--- a/src/include_private/config.log.h.in
++++ b/src/include_private/config.log.h.in
+@@ -4,8 +4,8 @@ CMAKE_BUILD_DIR = @CMAKE_BUILD_DIR@ \n\
+ OYRANOS_VERSION_NAME = @OYRANOS_VERSION_A@.@OYRANOS_VERSION_B@.@OYRANOS_VERSION_C@ņ\n\
+  \n\
+ OY_PREFIX = @CMAKE_INSTALL_PREFIX@ \n\
+-OY_LIBDIR = @CMAKE_INSTALL_PREFIX@/lib@LIB_SUFFIX@ \n\
+-OY_CMMDIR = @CMAKE_INSTALL_PREFIX@/lib@LIB_SUFFIX@/color/modules \n\
++OY_LIBDIR = @CMAKE_INSTALL_FULL_LIBDIR@ \n\
++OY_CMMDIR = @CMAKE_INSTALL_FULL_LIBDIR@/color/modules \n\
+ OY_LOCALEDIR = OY_DATADIR/locale \n\
+  \n\
+  \n\
+diff --git a/src/liboyranos/CMakeLists.txt b/src/liboyranos/CMakeLists.txt
+index 92bc078..ba550e6 100644
+--- a/src/liboyranos/CMakeLists.txt
++++ b/src/liboyranos/CMakeLists.txt
+@@ -96,16 +96,16 @@ SET_TARGET_PROPERTIES( ${PROJECT_NAME} PROPERTIES
+ )
+ 
+ INSTALL( TARGETS       ${PROJECT_NAME} oyranos-static
+-         RUNTIME       DESTINATION bin
++         RUNTIME       DESTINATION ${CMAKE_INSTALL_BINDIR}
+          FRAMEWORK     DESTINATION ${FRAMEWORK_DIR}
+-         LIBRARY       DESTINATION ${LIB_DIR}
+-         ARCHIVE       DESTINATION lib${LIB_SUFFIX}
+-         PUBLIC_HEADER DESTINATION include/${PACKAGE_NAME}
+-         RESOURCE      DESTINATION share/color/settings
++         LIBRARY       DESTINATION ${CMAKE_INSTALL_LIBDIR}
++         ARCHIVE       DESTINATION ${CMAKE_INSTALL_LIBDIR}
++         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PACKAGE_NAME}
++         RESOURCE      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/color/settings
+        )
+ 
+ # install for all but app bundles
+ INSTALL( FILES       ${SETTINGS_PUBLIC}
+-         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/color/settings
++         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/color/settings
+        )
+ 
+diff --git a/src/liboyranos_config/CMakeLists.txt b/src/liboyranos_config/CMakeLists.txt
+index d83f083..0e223c2 100644
+--- a/src/liboyranos_config/CMakeLists.txt
++++ b/src/liboyranos_config/CMakeLists.txt
+@@ -97,10 +97,10 @@ SET_TARGET_PROPERTIES( ${PROJECT_NAME}Config PROPERTIES
+ )
+ 
+ INSTALL( TARGETS ${PROJECT_NAME}Config oyranos_config-static
+-         RUNTIME DESTINATION bin
++         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+          FRAMEWORK DESTINATION ${FRAMEWORK_DIR}
+-         LIBRARY DESTINATION ${LIB_DIR}
+-         ARCHIVE DESTINATION lib${LIB_SUFFIX}
+-         PUBLIC_HEADER DESTINATION include/${PACKAGE_NAME}
++         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PACKAGE_NAME}
+        )
+ 
+diff --git a/src/liboyranos_core/CMakeLists.txt b/src/liboyranos_core/CMakeLists.txt
+index 5aff28e..078a4ce 100644
+--- a/src/liboyranos_core/CMakeLists.txt
++++ b/src/liboyranos_core/CMakeLists.txt
+@@ -53,11 +53,11 @@ SET_TARGET_PROPERTIES( ${PROJECT_NAME}Core PROPERTIES
+ )
+ 
+ INSTALL( TARGETS ${PROJECT_NAME}Core oyranos_core-static
+-         RUNTIME DESTINATION bin
++         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+          FRAMEWORK DESTINATION ${FRAMEWORK_DIR}
+-         LIBRARY DESTINATION ${LIB_DIR}
+-         ARCHIVE DESTINATION lib${LIB_SUFFIX}
+-         PUBLIC_HEADER DESTINATION include/${PACKAGE_NAME}
++         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PACKAGE_NAME}
+          RESOURCE DESTINATION ${FRAMEWORK_DIR}
+        )
+ 
+diff --git a/src/liboyranos_modules/CMakeLists.txt b/src/liboyranos_modules/CMakeLists.txt
+index 38018f7..ded32e7 100644
+--- a/src/liboyranos_modules/CMakeLists.txt
++++ b/src/liboyranos_modules/CMakeLists.txt
+@@ -135,9 +135,9 @@ SET_TARGET_PROPERTIES( ${PROJECT_NAME}Modules PROPERTIES
+ )
+ 
+ INSTALL( TARGETS ${PROJECT_NAME}Modules oyranos_modules-static
+-         RUNTIME DESTINATION bin
++         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+          FRAMEWORK DESTINATION ${FRAMEWORK_DIR}
+-         LIBRARY DESTINATION ${LIB_DIR}
+-         ARCHIVE DESTINATION lib${LIB_SUFFIX}
+-         PUBLIC_HEADER DESTINATION include/${PACKAGE_NAME}
++         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PACKAGE_NAME}
+        )
+diff --git a/src/liboyranos_object/CMakeLists.txt b/src/liboyranos_object/CMakeLists.txt
+index 984aa3c..0e0e7c9 100644
+--- a/src/liboyranos_object/CMakeLists.txt
++++ b/src/liboyranos_object/CMakeLists.txt
+@@ -104,9 +104,9 @@ SET_TARGET_PROPERTIES( ${PROJECT_NAME}Object PROPERTIES
+ )
+ 
+ INSTALL( TARGETS ${PROJECT_NAME}Object oyranos_object-static
+-         RUNTIME DESTINATION bin
++         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+          FRAMEWORK DESTINATION ${FRAMEWORK_DIR}
+-         LIBRARY DESTINATION ${LIB_DIR}
+-         ARCHIVE DESTINATION lib${LIB_SUFFIX}
+-         PUBLIC_HEADER DESTINATION include/${PACKAGE_NAME}
++         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PACKAGE_NAME}
+        )
+diff --git a/src/modules/color/modules/CMakeLists.txt b/src/modules/color/modules/CMakeLists.txt
+index 3bd3e61..c20d108 100644
+--- a/src/modules/color/modules/CMakeLists.txt
++++ b/src/modules/color/modules/CMakeLists.txt
+@@ -10,7 +10,7 @@ IF( LCMS_FOUND )
+                SHARED ${PACKAGE_NAME}_cmm_${OY_MODULE}.c )
+   TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} )
+ # ${LCMS_LIBRARIES}
+-  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_CMMSUBPATH})
++  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_CMMSUBPATH})
+   SET( OY_MODULE_LIBRARIES ${OY_MODULE_LIBRARIES} ${LCMS_LIBRARIES} )
+ ENDIF()
+ 
+@@ -21,7 +21,7 @@ IF( LCMS2_FOUND )
+                SHARED ${PACKAGE_NAME}_cmm_${OY_MODULE}.c )
+   TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} )
+ # ${LCMS2_LIBRARIES}
+-  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_CMMSUBPATH})
++  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_CMMSUBPATH})
+   SET( OY_MODULE_LIBRARIES ${OY_MODULE_LIBRARIES} ${LCMS2_LIBRARIES} )
+ ENDIF()
+ 
+@@ -32,7 +32,7 @@ IF( HAVE_LIBRAW_PLUGIN )
+   ADD_LIBRARY( ${OY_MODULE_LIB}
+                SHARED ${PACKAGE_NAME}_cmm_${OY_MODULE}.cpp )
+   TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} ${LIBRAW_LIBRARIES} ${EXIF_LIBRARIES} )
+-  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_CMMSUBPATH})
++  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_CMMSUBPATH})
+   SET( OY_MODULE_LIBRARIES ${OY_MODULE_LIBRARIES} ${LIBRAW_LIBRARIES} ${EXIF_LIBRARIES} )
+ ENDIF()
+ 
+@@ -42,7 +42,7 @@ SET( OY_MODULE_LIB ${PACKAGE_NAME}_${OY_MODULE}${OY_MODULE_NAME} )
+ ADD_LIBRARY( ${OY_MODULE_LIB}
+              SHARED ${PACKAGE_NAME}_cmm_${OY_MODULE}.c )
+ TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} )
+-INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_CMMSUBPATH})
++INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_CMMSUBPATH})
+ 
+ 
+ IF( LIBPNG_FOUND )
+@@ -55,7 +55,7 @@ IF( LIBPNG_FOUND )
+   ADD_LIBRARY( ${OY_MODULE_LIB}
+                SHARED ${PACKAGE_NAME}_cmm_${OY_MODULE}.c )
+   TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} ${LIBPNG_LIBRARIES} ${ZLIB_LIBRARIES} )
+-  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_CMMSUBPATH})
++  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_CMMSUBPATH})
+   SET( OY_MODULE_LIBRARIES ${OY_MODULE_LIBRARIES} ${LIBPNG_LIBRARIES} ${ZLIB_LIBRARIES} )
+ ENDIF()
+ 
+@@ -65,7 +65,7 @@ IF( JPEG_FOUND )
+   ADD_LIBRARY( ${OY_MODULE_LIB}
+                SHARED ${PACKAGE_NAME}_cmm_${OY_MODULE}.c jpegmarkers.c )
+   TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} ${JPEG_LIBRARY} )
+-  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_CMMSUBPATH})
++  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_CMMSUBPATH})
+   SET( OY_MODULE_LIBRARIES ${OY_MODULE_LIBRARIES} ${JPEG_LIBRARY} )
+ ENDIF()
+ 
+@@ -75,7 +75,7 @@ SET( OY_MODULE_LIB ${PACKAGE_NAME}_${OY_MODULE}${OY_MODULE_NAME} )
+ ADD_LIBRARY( ${OY_MODULE_LIB}
+              SHARED ${PACKAGE_NAME}_cmm_${OY_MODULE}.c )
+ TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} ${XCM_LIBRARIES} ${XFIXES_LIBRARIES} )
+-INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_CMMSUBPATH})
++INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_CMMSUBPATH})
+ SET( OY_MODULE_LIBRARIES ${OY_MODULE_LIBRARIES} ${XCM_LIBRARIES} ${XFIXES_LIBRARIES} )
+ 
+ SET( OY_MODULE oyra )
+@@ -90,7 +90,7 @@ ADD_LIBRARY( ${OY_MODULE_LIB}
+              ${PACKAGE_NAME}_cmm_${OY_MODULE}_image_ppm.c
+            )
+ TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} ${XCM_LIBRARIES} ${XFIXES_LIBRARIES} )
+-INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_CMMSUBPATH})
++INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_CMMSUBPATH})
+ 
+ # threads handler
+ IF( PTHREADS_FOUND )
+@@ -99,7 +99,7 @@ IF( PTHREADS_FOUND )
+   ADD_LIBRARY( ${OY_MODULE_LIB}
+                SHARED ${PACKAGE_NAME}_cmm_${OY_MODULE}.c )
+   TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} ${THREAD_LIBRARY} )
+-  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_CMMSUBPATH})
++  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_CMMSUBPATH})
+   SET( OY_MODULE_LIBRARIES ${OY_MODULE_LIBRARIES} ${THREAD_LIBRARY} )
+ ENDIF( PTHREADS_FOUND )
+ 
+@@ -110,7 +110,7 @@ IF( HAVE_OPENICC )
+   ADD_LIBRARY( ${OY_MODULE_LIB}
+                SHARED ${PACKAGE_NAME}_cmm_${OY_MODULE}.c )
+   TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} ${OPENICC_LIBRARY} )
+-  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_CMMSUBPATH})
++  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_CMMSUBPATH})
+   SET( OY_MODULE_LIBRARIES ${OY_MODULE_LIBRARIES} ${OPENICC_LIBRARY} )
+ ENDIF( HAVE_OPENICC )
+ 
+@@ -125,7 +125,7 @@ IF( HAVE_ELEKTRA )
+   ELSE()
+     TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} ${ELEKTRA_LDFLAGS} )
+   ENDIF()
+-  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_CMMSUBPATH})
++  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_CMMSUBPATH})
+   SET( OY_MODULE_LIBRARIES ${OY_MODULE_LIBRARIES} ${ELEKTRA_LDFLAGS} )
+ ENDIF( HAVE_ELEKTRA )
+ 
+diff --git a/src/modules/color/modules/devices/CMakeLists.txt b/src/modules/color/modules/devices/CMakeLists.txt
+index c9fc5a3..e96173a 100644
+--- a/src/modules/color/modules/devices/CMakeLists.txt
++++ b/src/modules/color/modules/devices/CMakeLists.txt
+@@ -39,9 +39,9 @@ IF( X11_FOUND )
+   TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS}
+                ${XINERAMA_LIBRARIES} ${XRANDR_LIBRARIES} ${XCM_LIBRARIES}
+                ${XFIXES_LIBRARIES} ${XXF86VM_LIBRARIES} ${X11_LIBRARIES} )
+-  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_CMMSUBPATH})
++  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_CMMSUBPATH})
+   INSTALL( FILES       ${CMAKE_SOURCE_DIR}/color/rank-map/config.icc_profile.monitor.oyX1.qarz.json
+-           DESTINATION ${CMAKE_INSTALL_PREFIX}/share/color/rank-map/
++           DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/color/rank-map/
+          )
+ ENDIF()
+ 
+@@ -61,9 +61,9 @@ IF( ${PLATFORM} STREQUAL "OSX" )
+   TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS_CS}
+                ${XINERAMA_LIBRARIES} ${XRANDR_LIBRARIES} ${XCM_LIBRARIES}
+                ${XFIXES_LIBRARIES} ${X11_LIBRARIES} )
+-  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_CMMSUBPATH})
++  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_CMMSUBPATH})
+   INSTALL( FILES       ${CMAKE_SOURCE_DIR}/color/rank-map/config.icc_profile.monitor.oyX1.qarz.json
+-           DESTINATION ${CMAKE_INSTALL_PREFIX}/share/color/rank-map/
++           DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/color/rank-map/
+          )
+ ENDIF()
+ 
+@@ -73,10 +73,10 @@ IF( HAVE_LIBRAW_PLUGIN )
+   ADD_LIBRARY( ${OY_MODULE_LIB}
+                SHARED ${PACKAGE_NAME}_cmm_${OY_MODULE}.cpp )
+   TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} ${LIBRAW_LIBRARIES} ${EXIV2_LIBRARIES} )
+-  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_CMMSUBPATH})
++  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_CMMSUBPATH})
+   SET( OY_MODULE_LIBRARIES ${OY_MODULE_LIBRARIES} ${EXIV2_LIBRARIES} )
+   INSTALL( FILES       ${CMAKE_SOURCE_DIR}/color/rank-map/config.icc_profile.raw-image.${OY_MODULE}.json
+-           DESTINATION ${CMAKE_INSTALL_PREFIX}/share/color/rank-map/
++           DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/color/rank-map/
+          )
+ ENDIF()
+ 
+@@ -86,9 +86,9 @@ IF( CUPS_FOUND )
+   ADD_LIBRARY( ${OY_MODULE_LIB}
+                SHARED ${PACKAGE_NAME}_cmm_${OY_MODULE}.c )
+   TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} ${CUPS_LIBRARIES})
+-  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_CMMSUBPATH})
++  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_CMMSUBPATH})
+   INSTALL( FILES       ${CMAKE_SOURCE_DIR}/color/rank-map/config.icc_profile.printer.${OY_MODULE}.json
+-           DESTINATION ${CMAKE_INSTALL_PREFIX}/share/color/rank-map/
++           DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/color/rank-map/
+          )
+ ENDIF()
+ 
+@@ -99,9 +99,9 @@ IF(SANE_FOUND)
+   ADD_LIBRARY( ${OY_MODULE_LIB}
+                SHARED ${PACKAGE_NAME}_cmm_${OY_MODULE}.c )
+   TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} ${SANE_LIBRARY})
+-  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_CMMSUBPATH})
++  INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_CMMSUBPATH})
+   INSTALL( FILES       ${CMAKE_SOURCE_DIR}/color/rank-map/config.icc_profile.scanner.${OY_MODULE}.json
+-           DESTINATION ${CMAKE_INSTALL_PREFIX}/share/color/rank-map/
++           DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/color/rank-map/
+          )
+ ENDIF(SANE_FOUND)
+ 
+diff --git a/src/modules/oyranos-meta/CMakeLists.txt b/src/modules/oyranos-meta/CMakeLists.txt
+index ceb8bba..91ee502 100644
+--- a/src/modules/oyranos-meta/CMakeLists.txt
++++ b/src/modules/oyranos-meta/CMakeLists.txt
+@@ -14,5 +14,5 @@ ADD_LIBRARY( ${OY_MODULE_LIB}
+              ${PACKAGE_NAME}_cmm_${OY_MODULE}_profile.c)
+ #SET( EXTRA_LIBS ${EXTRA_LIBS} ${YAJL_LIBRARIES} )
+ TARGET_LINK_LIBRARIES ( ${OY_MODULE_LIB} ${PROJECT_NAME} ${EXTRA_LIBS} )
+-INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION lib${LIB_SUFFIX}/${OY_METASUBPATH})
++INSTALL (TARGETS ${OY_MODULE_LIB} DESTINATION ${CMAKE_INSTALL_LIBDIR}/${OY_METASUBPATH})
+ 
+diff --git a/src/tools/CMakeLists.txt b/src/tools/CMakeLists.txt
+index c0a10c4..237b508 100644
+--- a/src/tools/CMakeLists.txt
++++ b/src/tools/CMakeLists.txt
+@@ -1,49 +1,49 @@
+ # ICC profiles listing
+ ADD_EXECUTABLE( oyranos-profiles "${CMAKE_CURRENT_SOURCE_DIR}/oyranos_profiles.c" )
+ TARGET_LINK_LIBRARIES( oyranos-profiles ${PROJECT_NAME} ${EXTRA_LIBS} )
+-INSTALL (TARGETS oyranos-profiles DESTINATION bin)
++INSTALL (TARGETS oyranos-profiles DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+ # ICC profile information and manipulations
+ ADD_EXECUTABLE( oyranos-profile "${CMAKE_CURRENT_SOURCE_DIR}/oyranos_profile_tool.c" )
+ TARGET_LINK_LIBRARIES( oyranos-profile ${PROJECT_NAME} ${EXTRA_LIBS} )
+-INSTALL (TARGETS oyranos-profile DESTINATION bin)
++INSTALL (TARGETS oyranos-profile DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+ # Oyranos policy / grouping for easy switching, export, import of default settings
+ ADD_EXECUTABLE( oyranos-policy "${CMAKE_CURRENT_SOURCE_DIR}/oyranos_policy.c" )
+ TARGET_LINK_LIBRARIES( oyranos-policy ${PROJECT_NAME} ${EXTRA_LIBS} )
+-INSTALL (TARGETS oyranos-policy DESTINATION bin)
++INSTALL (TARGETS oyranos-policy DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+ # automatic monitor profile selection, information, Taxi DB, EDID fallback
+ ADD_EXECUTABLE( oyranos-monitor "${CMAKE_CURRENT_SOURCE_DIR}/oyranos_gamma.c" )
+ TARGET_LINK_LIBRARIES ( oyranos-monitor ${PROJECT_NAME} ${EXTRA_LIBS}
+                ${XINERAMA_LIBRARIES} ${XRANDR_LIBRARIES} ${XCM_LIBRARIES}
+                ${XFIXES_LIBRARIES} ${X11_LIBRARIES} )
+-INSTALL (TARGETS oyranos-monitor DESTINATION bin)
++INSTALL (TARGETS oyranos-monitor DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+ # Device listing
+ ADD_EXECUTABLE( oyranos-device "${CMAKE_CURRENT_SOURCE_DIR}/oyranos-device.c" )
+ TARGET_LINK_LIBRARIES( oyranos-device ${PROJECT_NAME} ${EXTRA_LIBS} )
+ # still beta quality; needs more testing and man page
+-#INSTALL (TARGETS oyranos-device DESTINATION bin)
++#INSTALL (TARGETS oyranos-device DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+ # 2D grapher for ICC profiles
+ IF( CAIRO_FOUND )
+   ADD_EXECUTABLE( oyranos-profile-graph "${CMAKE_CURRENT_SOURCE_DIR}/oyranos_profile_graph.c" )
+   TARGET_LINK_LIBRARIES ( oyranos-profile-graph ${PROJECT_NAME} ${EXTRA_LIBS}
+                  ${CAIRO_LIBRARIES} )
+-  INSTALL (TARGETS oyranos-profile-graph DESTINATION bin)
++  INSTALL (TARGETS oyranos-profile-graph DESTINATION ${CMAKE_INSTALL_BINDIR})
+ ENDIF()
+ 
+ # color conversion
+ ADD_EXECUTABLE( oyranos-icc "${CMAKE_CURRENT_SOURCE_DIR}/oyranos_convert.c" )
+ TARGET_LINK_LIBRARIES( oyranos-icc ${PROJECT_NAME} ${EXTRA_LIBS} oyranos_forms_cmd_line-static )
+-INSTALL (TARGETS oyranos-icc DESTINATION bin)
++INSTALL (TARGETS oyranos-icc DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+ # compatibility tools
+ IF( ${PLATFORM} MATCHES Linux )
+   ADD_EXECUTABLE( oyranos-compat-gnome "${CMAKE_CURRENT_SOURCE_DIR}/oyranos-compat-gnome.c" )
+   TARGET_LINK_LIBRARIES( oyranos-compat-gnome dl )
+-  INSTALL (TARGETS oyranos-compat-gnome DESTINATION bin)
++  INSTALL (TARGETS oyranos-compat-gnome DESTINATION ${CMAKE_INSTALL_BINDIR})
+ ENDIF()
+ 
+ ADD_SUBDIRECTORY (qcmsevents)
+diff --git a/src/tools/qcmsevents/CMakeLists.txt b/src/tools/qcmsevents/CMakeLists.txt
+index e13cc0b..f8a87f6 100644
+--- a/src/tools/qcmsevents/CMakeLists.txt
++++ b/src/tools/qcmsevents/CMakeLists.txt
+@@ -28,7 +28,7 @@ IF( HAVE_QT AND UNIX AND NOT APPLE AND Qt5Widgets_FOUND)
+                  ${XCM_LIBRARIES}
+                  ${X11_LIBRARIES} )
+   INSTALL( TARGETS qcmsevents
+-           RUNTIME DESTINATION bin )
+-  INSTALL( FILES qcmsevents-applet.desktop DESTINATION share/applications )
+-  INSTALL( FILES qcmsevents.svg DESTINATION share/pixmaps )
++           RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} )
++  INSTALL( FILES qcmsevents-applet.desktop DESTINATION ${CMAKE_INSTALL_FULL_DATAROOTDIR}/applications )
++  INSTALL( FILES qcmsevents.svg DESTINATION ${CMAKE_INSTALL_FULL_DATAROOTDIR}/pixmaps )
+ ENDIF()
+diff --git a/src/tools/qcmsevents/qt4/CMakeLists.txt b/src/tools/qcmsevents/qt4/CMakeLists.txt
+index c17e466..138cb1b 100644
+--- a/src/tools/qcmsevents/qt4/CMakeLists.txt
++++ b/src/tools/qcmsevents/qt4/CMakeLists.txt
+@@ -23,9 +23,9 @@ IF( HAVE_QT AND UNIX AND NOT APPLE )
+     TARGET_LINK_LIBRARIES ( qcmsevents-qt4 Oyranos ${EXTRA_LIBS}
+                     ${QT_LIBRARIES} ${XCM_LIBRARIES} )
+     INSTALL( TARGETS qcmsevents-qt4
+-             RUNTIME DESTINATION bin )
+-    INSTALL( FILES ../qcmsevents-qt4-applet.desktop DESTINATION share/applications )
+-    INSTALL( FILES ../qcmsevents-qt4.svg DESTINATION share/pixmaps )
++             RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} )
++    INSTALL( FILES ../qcmsevents-qt4-applet.desktop DESTINATION ${CMAKE_INSTALL_FULL_DATAROOTDIR}/applications )
++    INSTALL( FILES ../qcmsevents-qt4.svg DESTINATION ${CMAKE_INSTALL_FULL_DATAROOTDIR}/pixmaps )
+   ENDIF()
+ ENDIF()
+ 
+-- 
+2.10.2
+

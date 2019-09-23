@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4117d8c2264cc6d7612a79734e623875</srcmd5>
+    <version>1.16.4</version>
+    <time>1566240513</time>
+    <user>dimstar_suse</user>
+    <comment>The latest python-numpy drops python2 support.</comment>
+    <requestid>724140</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>95d7a35014bba48fac9fc057ab1c27eb</srcmd5>
+    <version>1.16.5</version>
+    <time>1567420865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726873</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f4169d56836ec0999f678f5b23d9c6ec</srcmd5>
+    <version>1.16.5</version>
+    <time>1569232965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729466</requestid>
+  </revision>
+</revisionlist>

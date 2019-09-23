@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2cd6c44f17ac5c205bfb4f303cb938a5</srcmd5>
+    <version>1.4.1</version>
+    <time>1526371611</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-ggplot</comment>
+    <requestid>603721</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cdeaeb918e929b90b9bd66b6dc368c63</srcmd5>
+    <version>1.4.1</version>
+    <time>1528897075</time>
+    <user>maxlin_factory</user>
+    <comment>- Use noun phrase in summary, and passive in description. (forwarded request 615075 from jengelh)</comment>
+    <requestid>615174</requestid>
+  </revision>
+</revisionlist>

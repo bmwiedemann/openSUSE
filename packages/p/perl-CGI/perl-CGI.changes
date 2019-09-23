@@ -1,0 +1,707 @@
+-------------------------------------------------------------------
+Tue Jun  4 05:02:28 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 4.44
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.44 2019-06-03
+  
+      [ ENHANCEMENT ]
+      - Replace only use of "base" with "parent" (GH #235)
+
+-------------------------------------------------------------------
+Thu May  2 05:03:14 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 4.43
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.43 2019-05-01
+  
+      [ FIX / TESTING ]
+      - support unquoted multipart/form-data name values (GH #234)
+
+-------------------------------------------------------------------
+Wed Mar 27 06:04:25 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 4.42
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.42 2019-03-26
+  
+      [ DOCUMENTATION ]
+      - clarify licence also in Makefile.PL (GH #232)
+  
+  4.41 2019-03-26
+  
+      [ DOCUMENTATION ]
+      - clarify licence (GH #232)
+
+-------------------------------------------------------------------
+Sat Aug 18 05:05:04 UTC 2018 - coolo@suse.com
+
+- updated to 4.40
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.40 2018-08-15
+  
+      [ FIX / TESTING ]
+      - support perls < 5.10.1 in Makefile.PL by being more dynamic
+        (GH #229, GH #230, thanks to Aristotle)
+
+-------------------------------------------------------------------
+Tue Aug 14 05:05:39 UTC 2018 - coolo@suse.com
+
+- updated to 4.39
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.39 2018-08-13
+  
+      [ FIX / TESTING ]
+      - specify CONFIGURE_REQUIRES in Makefile.PL so can use TEST_REQUIRES
+        to build with older perls (GH #228)
+
+-------------------------------------------------------------------
+Sat Dec  2 06:07:26 UTC 2017 - coolo@suse.com
+
+- updated to 4.38
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.38 2017-12-01
+  
+      [ TESTING ]
+      - command_line.t: Avoid -I for libs (GH #224, thanks to cpansprout)
+
+-------------------------------------------------------------------
+Thu Nov  2 06:06:51 UTC 2017 - coolo@suse.com
+
+- updated to 4.37
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.37 2017-11-01
+  
+      [ FIX ]
+      - Fix incorrect quoting of ? in ->url (GH #112, GH #222, with
+        thanks to Reuben Thomas)
+
+-------------------------------------------------------------------
+Fri Apr  7 05:08:35 UTC 2017 - coolo@suse.com
+
+- updated to 4.36
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.36 2017-03-29
+  
+      [ ENHANCEMENT ]
+      - Support PATCH HTTP method (thanks to GovtGeek for the... patch)
+      - pass through max_age and samesite to CGI::Cookie->new in the call
+        in CGI->cookie (GH #220)
+  
+      [ FIX ]
+      - skip t/command_line.t on windows as it doesn't work
+
+-------------------------------------------------------------------
+Fri Oct 14 05:06:01 UTC 2016 - coolo@suse.com
+
+- updated to 4.35
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.35 2016-10-13
+  
+      [ FIX ]
+      - revert changes from 4.34 as they broke stuff
+  
+  
+  4.34 2016-10-13
+  
+      [ ENHANCEMENT ]
+      - If running from the command line, url_param now picks up
+        parameters given on then command line or on stdin (GH #210)
+  
+      [ DOCUMENTATION ]
+      - documentation for above addition
+
+-------------------------------------------------------------------
+Sat Sep 17 05:07:26 UTC 2016 - coolo@suse.com
+
+- updated to 4.33
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.33 2016-09-16
+  
+      [ DOCUMENTATION ]
+      - clarify that ->param will return the first value if there are
+        multiple values (when not called in list context)
+
+-------------------------------------------------------------------
+Wed Jul 20 05:04:29 UTC 2016 - coolo@suse.com
+
+- updated to 4.32
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.32 2016-07-19
+  
+      [ DOCUMENTATION ]
+      - make perldoc CGI object consistent (GH #205)
+      - clarify reason for absolute URLs (GH #206)
+  
+      [ INTERNALS ]
+      - tweak dependency defs in Makefile.PL (GH #207, GH #208)
+      - (thanks to karenetheridge and kentfredric)
+
+-------------------------------------------------------------------
+Thu Jun 23 05:55:54 UTC 2016 - coolo@suse.com
+
+- updated to 4.31
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+-------------------------------------------------------------------
+Sun Jun 12 12:26:04 UTC 2016 - coolo@suse.com
+
+- updated to 4.30
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.30 2016-06-08
+  
+      [ FEATURES ]
+      - Add SameSite support to Cookie handling (thanks to pangyre)
+  
+      [ INTERNALS ]
+      - The MultipartBuffer package has been renamed to CGI::MultipartBuffer.
+        This has been done in a way to ensure any $MultipartBuffer package
+        variables are still set correctly in CGI::MultipartBuffer. if you are
+        explicitly using MultipartBuffer in a form such as:
+  
+          MultipartBuffer->new
+  
+        your code will break. you should be calling:
+  
+          CGI->new->new_MultipartBuffer( $boundary,$length );
+  
+        to ensure the correctly package is called. if you are extending the
+        MultipartBuffer package though use of ISA or base (or parent) then you
+        will need to update your code to use CGI::MultipartBuffer
+  
+      - fake using strict and warnings to appease CPANTS Kwalitee
+  
+  4.28 2016-03-14
+  
+      [ RELEASE NOTES ]
+      - please see v4.21 Changes for any potentially impacting changes
+  
+      [ SPEC / BUG FIXES ]
+      - undef %QUERY_PARAM in initialize_globals to clean mod_perl env
+  
+      [ TESTING ]
+      - improve test coverage on request types (GH #199, GH #200)
+      - improve test coverage on CGI::Carp
+  
+  4.27 2016-03-02
+  
+      [ RELEASE NOTES ]
+      - please see v4.21 Changes for any potentially impacting changes
+  
+      [ INTERNALS ]
+      - fix a couple of warnings in test harness
+      - add taint flag to example file_upload
+      - fix a warnings in STORE subroutine
+  
+  4.26 2016-02-04
+  
+      [ RELEASE NOTES ]
+      - please see v4.21 Changes for any potentially impacting changes
+  
+      [ SPEC / BUG FIXES ]
+      - sort HTML attributes by default (GH #106, GH #196)
+  
+      [ DOCUMENTATION ]
+      - clarifications about HTML function non removal
+  
+  4.25 2015-12-17
+  
+      [ RELEASE NOTES ]
+      - please see v4.21 Changes for any potentially impacting changes
+  
+      [ DOCUMENTATION ]
+      - fix link to CONTRIBUTING file (thanks to Manwar for the fix)
+      - clarify that "soft" deprecation means that the HTML functions
+        are deprecated but will not raise any deprecation warnings
+  
+      [ SPEC / BUG FIXES ]
+      - make the list context warning only happen once per process (or
+        thread) to prevent excessive log noise in long running or in
+        persistent processes (thanks to @dadamail for the suggestion)
+  
+  4.23 2015-12-17
+  
+      [ RELEASE NOTES ]
+      - Documentation fixes only - please see v4.21 Changes for any potentially
+        impacting changes
+  
+      [ DOCUMENTATION ]
+      - add LICENSE file and LICENSE info to Makefile.PL
+  
+  4.22 2015-10-16
+  
+      [ RELEASE NOTES ]
+      - Documentation fixes only - please see v4.21 Changes for any potentially
+        impacting changes
+  
+      [ DOCUMENTATION ]
+      - fix typos in CONTRIBUTING file
+      - links to docs, stackoverflow and perlmonks
+      - clarify deprecation policy on HTML functions (GH #188)
+      - mention HTML::Tiny in CGI::HTML::Functions (thanks to osfameron for
+        the suggestion)
+
+-------------------------------------------------------------------
+Wed Aug 26 08:05:02 UTC 2015 - lnussel@suse.de
+
+- updated to 4.21
+  http://cpansearch.perl.org/src/LEEJO/CGI-4.21/Changes
+
+-------------------------------------------------------------------
+Mon Jun 15 10:12:19 UTC 2015 - jweberhofer@weberhofer.at
+
+- Removed some old stuff needed to build on older distributions
+
+-------------------------------------------------------------------
+Tue May 26 15:00:18 UTC 2015 - jweberhofer@weberhofer.at
+
+- fixed build-dependencies
+
+- updated to 4.14
+
+    [ RELEASE NOTES ]
+    - This release removes the AUTOLOAD and compile optimisations from CGI.pm
+      that were introduced into CGI.pm twenty (20) years ago as a response to
+      its large size, which meant there was a significant compile time penalty.
+
+    - This optimisation is no longer relevant and makes the code difficult to
+      deal with as well as making test coverage metrics incorrect. Benchmarks
+      show that advantages of AUTOLOAD / lazy loading / deferred compile are
+      less than 0.05s, which will be dwarfed by just about any meaningful code
+      in a cgi script. If this is an issue for you then you should look at
+      running CGI.pm in a persistent environment (FCGI, etc)
+
+    - To offset some of the time added by removing the AUTOLOAD functionality
+      the dependencies have been made runtime rather than compile time. The
+      POD has also been split into its own file. CGI.pm now contains around
+      4000 lines of code, which compared to some modules on CPAN isn't really
+      that much
+
+    - This essentially deprecates the -compile pragma and ->compile method. The
+      -compile pragma will no longer do anything, whereas the ->compile method
+      will raise a deprecation warning. More importantly this also REMOVES the
+      -any pragma because as per the documentation this pragma needed to be
+      "used with care or not at all" and allowing arbitrary HTML tags is almost
+      certainly a bad idea. If you are using the -any pragma and using arbitrary
+      tags (or have typo's in your code) your code will *BREAK*
+
+    - Although this release should be back compatible (with the exception of any
+      code using the -any pragma) you are encouraged to test it throughly as if
+      you are doing anything out of the ordinary with CGI.pm (i.e. have bugs
+      that may have been masked by the AUTOLOAD feature) you may see some issues.
+
+    - References: GH #162, GH #137, GH #164
+
+- updated to 4.13
+
+[ RELEASE NOTES ]
+    - CGI::Pretty is now DEPRECATED and will be removed in a future release.
+      Please see GH #162 (https://github.com/leejo/CGI.pm/issues/162) for more
+      information and discussion (also GH #140 for HTML function deprecation
+      discussion: https://github.com/leejo/CGI.pm/issues/140)
+
+[ TESTING ]
+    - fix t\rt-84767.t for failures on Win32 platforms related to file paths
+
+- version 4.12 has not been released
+
+-------------------------------------------------------------------
+Thu Dec  4 15:58:45 UTC 2014 - ncutler@suse.com
+
+- updated to 4.11
+
+4.11 2014-12-02
+ 
+    [ SPEC / BUG FIXES ]
+    - more hash key ordering bugs fixed in HTML attribute output (GH #158,
+      thanks to Marcus Meissner for the patch and test case)
+ 
+    [ REFACTORING ]
+    - escapeHTML (and unescapeHTML) have been refactored to use the functions
+      exported by the HTML::Entities module (GH #157)
+    - change BUILD_REQUIRES to TEST_REQUIRES in Makefile.PL as these are test
+      dependencies not build dependencies (GH #159)
+ 
+    [ DOCUMENTATION ]
+    - replace any remaining uses of indirect object notation (new Object) with
+      the safer Object->new syntax (GH #156)
+ 
+4.10 2014-11-27
+ 
+    [ SPEC / BUG FIXES ]
+    - favour -content-type arg in header if -type and -charset options are also
+      passed in (GH #155, thanks to kaoru for the test case). this change also
+      sorts the hash keys in the rearrange method in CGI::Util meaning the order
+      of the arrangement will always be the same for params that have multiple
+      aliases. really you shouldn't be passing in multiple aliases, but this will
+      make it consistent should you do that
+ 
+    [ DOCUMENTATION ]
+    - fix some typos
+ 
+4.09 2014-10-21
+ 
+    [ RELEASE NOTES ]
+    - with this release the large backlog of issues against CGI.pm has been
+      cleared. All fixes have been made in the versions 4.00 and above so if
+      you are upgrading from 3.* you should thoroughly test your code against
+      recent versions of CGI.pm
+    - an effort has been made to retain back compatibility against previous
+      versions of CGI.pm for any fixes made, however some changes related to
+      the handling of temporary files may have consequences for your code
+    - please refer to the RELEASE NOTES for version 4.00 and above for all
+      recent changes and file an issue on github if there has been a regression.
+    - please do *NOT* file issues regarding HTML generating functions, these
+      are no longer being maintained (see perldoc for rationale)
+ 
+    [ SPEC / BUG FIXES ]
+    - tweak url to DTRT when the web server is IIS (RT #89827 / GH #152)
+    - fix temporary file handling when dealing with multiple files in MIME uploads
+      (GH #154, thanks to GeJ for the test case)
+ 
+4.08 2014-10-18
+ 
+    [ DOCUMENTATION ]
+    - note that calling headers without a -charset may lead to a nonsensical
+      charset being added to certain content types due to the default and the
+      workaround
+    - remove documentation stating that calls to escapeHTML with a changed
+      charset force numeric encoding of all characters, because that does not
+      happen
+    - documentation tweaks for calling param() in list context and the addition
+      of multi_param()
+ 
+    [ SPEC / BUG FIXES ]
+    - don't sub out PATH_INFO in url if PATH_INFO is the same as SCRIPT_NAME
+      (RT #89827)
+    - add multi_param() method to allow calling of param() in list context
+      without having to disable the $LIST_CONTEXT_WARN flag (see RELEASE NOTES
+      for version 4.05 on why calling param() in list context could be a bad
+      thing)
+ 
+4.07 2014-10-12
+ 
+    [ RELEASE NOTES ]
+    - please see changes for v4.05
+ 
+    [ TESTING ]
+    - typo and POD fixes, add test to check POD and compiles
+ 
+4.06 2014-10-10
+ 
+    [ RELEASE NOTES ]
+    - please see changes for v4.05
+ 
+    [ DOCUMENTATION ]
+    - make warning on list context call of ->param more lenient and don't
+      warn if called with no arguments
+ 
+4.05 2014-10-08
+ 
+    [ RELEASE NOTES ]
+    - this release includes *significant* refactoring of temporary file
+      handling in CGI.pm. See "Changes in temporary file handling" in perldoc
+ 
+    - this release adds a warning for when the param method is called
+      in list context, see the Warning in the perldoc for the section
+      "Fetching the value or values of a single named parameter" for why
+      this has been added and how to disable this warning
+ 
+    [ DOCUMENTATION ]
+    - change AUTHOR INFORMATION to LICENSE to please Kwalitee
+ 
+    [ TESTING ]
+    - t/arbitrary_handles.t to check need for patch in RT #54055, it
+      turns out there is no need - the first argument to CGI->new can
+      be an arbitrary handle
+    - add test case for incorrect unescaping of redirect headers
+      (RT #61120)
+    - add tests for the handle method (RT #85074, thanks to TONYC@cpan.org)
+ 
+    [ SPEC / BUG FIXES ]
+    - don't set binmode on STDOUT/STDERR/STDIN if a none standard layer
+      is already set on them on none UNIX platforms (RT #57524)
+    - make XForms:Model data accesible through POSTDATA/PUTDATA param
+      (RT #75628)
+    - prevent corruption of POSTDATA/PUTDATA when -utf8 flag is used and use
+      tempfiles to handle this data (RT #79102, thanks anonymous)
+    - unescape request URI *after* having removed the query string to prevent
+      removal of ? chars that are part of the original URI (and were encoded)
+      (RT #83265)
+    - fix q( to qq( in CGI::Carp so $@ is correct interpolated (RT #83360)
+    - don't call ->query_string in url unless -query is passed (RT #87790)
+      (optimisation and fits the current documented behaviour)
+ 
+4.04 2014-09-04
+ 
+    [ RELEASE NOTES ]
+    - this release removes some long deprecated modules/functions and
+      includes refactoring to the temporary file handling in CGI.pm. if
+      you are doing anything out of the ordinary with regards to temp
+      files you should test your code before deploying this update as
+      temp files may no longer be stored in previously used locations
+ 
+    [ REMOVED / DEPRECATIONS ]
+    - startform and endform methods removed (previously deprecated, you
+      should be using the start_form and end_form methods)
+    - both CGI::Apache and CGI::Switch have been removed as these modules
+      1) have been deprecated for *years*, and 2) do nothing whatsoever
+ 
+    [ SPEC / BUG FIXES ]
+    - handle multiple values in X-Forwarded-Host header, we follow the
+      logic in most other frameworks and take the last value from the list
+      (RT #54487)
+    - reverse the order of TEMP dir placement for WINDOWS: TEMP > TMP > WINDIR
+      (RT #71799, thanks to jeff@math.tntech.edu), this returns the behaviour
+      to pre e24d04e9bc5fda7722444b02fec135d8cc2ff488 but with the undefined
+      fix still in place
+    - refactor CGITempFile::find_tempdir to use File::Spec->tmpdir
+      (related: RT #71799)
+    - fix warnings when QUERY_STRING has empty key=value pairs (RT #54511)
+    - pad custom 500 status response messages to > 512 for MSIE (RT #81946)
+    - make Vars tied hash delete method return the value deleted from the hash
+      making it act like perl's delete (RT #51020)
+ 
+    [ TESTING ]
+    - add .travis.yml (https://travis-ci.org)
+    - test case for RT #53966 - disallow filenames with ~ char
+    - test case for RT #55166 - calling Vars to get the filename does not return
+      a filehandle, so this cannot be used in the call to uploadinfo, also
+      update documentation for the uploadInfo to show that ->Vars should not be
+      used to get the filename for this method
+    - fix t/url.t to pass on Win32 platforms that have the SCRIPT_NAME env
+      variable set (RT #89992)
+    - add procedural call tests for upload and uploadInfo to confirm these work
+      as should (RT #91136)
+ 
+    [ DOCUMENTATION ]
+    - tweak perldoc for -utf8 option (RT #54341, thanks to Helmut Richter)
+    - explain the HTML generation functions should no longer be used and that
+      they may be deprecated in a future release
+ 
+4.03 2014-07-02
+ 
+    [ REMOVED / DEPRECATIONS ]
+    - the -multiple option to popup_menu is now IGNORED as this did not
+      function correctly. If you require a menu with multiple selections
+      use the scrolling_list method. (RT #30057)
+ 
+    [ SPEC / BUG FIXES ]
+    - support redirects in mod_perl2, or fall back to using env variable
+      for up to 5 redirects, when getting the query string (RT #36312)
+    - CGI::Cookie now correctly supports the -max-age argument, previously
+      if this was passed the value of the -expires argument would be used
+      meaning there was no way to supply *only* this argument (RT #50576)
+    - make :all actually import all methods, except for :cgi-lib, and add
+      :ssl to the :standard import (RT #70337)
+ 
+    [ DOCUMENTATION ]
+    - clarify documentation regarding query_string method (RT #48370)
+    - links fixed in some perldoc (Thanks to Michiel Beijen)
+ 
+    [ TESTING ]
+    - add t/changes.t for testing this Changes file
+    - test case for RT #31107 confirming multipart parsing is to spec
+    - improve t/rt-52469.t by adding a timeout check
+ 
+4.02 2014-06-09
+ 
+    [ NEW FEATURES ]
+    - CGI::Carp learns noTimestamp / $CGI::Carp::NO_TIMESTAMP to prevent
+      timestamp in messages (RT #82364, EDAVIS@cpan.org)
+    - multipart_init and multipart_start learn -charset option (RT #22737)
+ 
+    [ SPEC / BUG FIXES ]
+    - Support multiple cookies when passing an ARRAY ref with -set-cookie
+      (RT #15065, JWILLIAMS@cpan.org)
+ 
+    [ DOCUMENTATION ]
+    - Made licencing information consistent and remove duplicate comments
+      about licence details, corrected location to report bugs (RT #38285)
+ 
+4.01 2014-05-27
+ 
+    [ DOCUMENTATION ]
+    - CGI.pm hasn't been removed from core *just* yet, but will be soon:
+      http://perl5.git.perl.org/perl.git/commitdiff/e9fa5a80
+ 
+4.00 2014-05-22
+ 
+    [ INTERNALS ]
+    - CGI::Fast split out into its own distribution, related files and tests removed
+    - developer test added for building with perlbrew
+ 
+    [ DOCUMENTATION ]
+    - Update perldoc to explain that CGI.pm has been removed from perl core
+    - Make =head2 perldoc less shouty (RT #91140)
+    - Tickets migrated from RT to github issues (both CGI and CGI.pm distributions)
+    - Repointing bugtracker at newly forked github repo and note that Lee Johnson
+      is the current maintainer.
+    - Bump version to 4.00 for clear boundary of above changes
+ 
+Version 3.65 Feb 11, 2014
+ 
+    [INTERNALS]
+    - Update Makefile to refine where CGI.pm gets installed
+      (Thanks to bingo, rjbs: https://github.com/markstos/CGI.pm/pull/30)
+ 
+Version 3.64 Nov 23, 2013
+ 
+    [BUG FIXES]
+    - Avoid warning about "undefined variable in user_agent in some cases (RT#72882)
+ 
+    [INTERNALS]
+    - Avoiding warning about "unitialized value" in when calling user_agent() in some cases. (RT#72882, perl@max-maurer.de)
+    - Update minimum required version in Makefile.PL to 5.8.1. It had already been
+      updated to 5.8.1 in the CGI.pm module in 3.53.
+    - Fix POD errors reported by newer pod2man (Thanks to jmdh)
+    - Typo fixes, (dsteinbrunner).
+    - use deprecate.pm on perls 5.19.0 and later. (rjbs).
+ 
+    [DOCUMENTATION]   
+    - Update CGI::Cookie docs to reflect that HttpOnly is widely supported now.
+ 
+
+-------------------------------------------------------------------
+Thu Oct 10 18:26:10 UTC 2013 - darin@darins.net
+
+- update to 3.63
+  * CR escaping for Set-Cookie and P3P headers was improved. There was potential
+    for newline injection in these headers. 
+
+- changes from 3.62: 
+  - Changed how the  deprecated endform function was defined for compatibilty
+    with the development version of Perl. 
+   Fix failures in t/tmpdir.t when run as root
+    https://github.com/markstos/CGI.pm/issues/22, RT#80659)
+
+   Made it possible to force a sorted order for things like hash
+    attributes so that tests are not dependent on a particular hash
+    ordering. This will be required in modern perls which will
+    change the ordering per process. (Yves, RT#80659)
+
+    For complete changelog see:
+        http://cpansearch.perl.org/src/MARKSTOS/CGI.pm-3.63/Changes
+
+-------------------------------------------------------------------
+Sat Nov 12 09:46:11 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 3.58: documentation improvements:
+  * clarify that using query_string() only has defined behavior when using the
+    GET method (RT#60813)
+
+-------------------------------------------------------------------
+Thu Nov 10 11:51:13 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 3.57:
+  * Test::More requirement has been bumped to 0.98
+
+- changes from 3.56:
+  * SECURITY: use public and documented FCGI.pm API in CGI::Fast: CGI::Fast was
+    using an FCGI API that was deprecated and removed from documentation more
+    than ten years ago; usage of this deprecated API with FCGI >= 0.70 or FCGI
+    <= 0.73 introduces a security issue CVE-2011-2766
+
+-------------------------------------------------------------------
+Wed Aug 24 21:33:47 UTC 2011 - chris@computersalat.de
+
+- fix deps
+  * Test::More >= 0.88 (done_testing)
+- fix build for
+  * openSUSE > 1140 (shebang), SLE_10, SLE_11, RHEL, CentOS
+- remove Author from desc
+
+-------------------------------------------------------------------
+Tue Aug 23 15:03:43 UTC 2011 - lars@linux-schulserver.de
+
+- update to 3.55:
+  + [THINGS THAT MAY BREAK YOUR CODE]
+    url() was fixed to return "PATH_INFO" when it is explicitly requested
+    with either the path=>1 or path_info=>1 flag.
+    If your code is running under mod_rewrite (or compatible) and you are 
+    calling self_url() or you are calling url() and passing path_info=>1, 
+    These methods will actually be returning PATH_INFO now, as you have 
+    explicitly requested, or has self_url() has requested on your behalf.
+  
+    The PATH_INFO has been omitted in such URLs since the issue was 
+    introduced in the 3.12 release in December, 2005. 
+     
+    This bug is so old your application may have come to depend on it or
+    workaround it. Check for application before upgrading to this release.
+  + The DELETE HTTP verb is now supported (RT#52614)
+  + [NEW FEATURES]
+    - A new option to set $CGI::Carp::TO_BROWSER = 0, allows you to 
+      explicitly exclude a particular scope from triggering printing to 
+      the browser when fatatlsToBrowser is set. (RT#62783)
+    - The <script> tag now supports the "charset" attribute.
+      (RT#62907)
+    - In CGI::Cookie, "Max-Age" is now supported for better 
+      spec compliance.
+  + Further improvements have been made to guard against newline
+    injections in headers
+
+-------------------------------------------------------------------
+Fri Dec 24 21:15:30 UTC 2010 - lars@linux-schulserver.de
+
+- update to 3.50:
+  * Fixed two security issues: 
+  ** The MIME boundary in multipart_init is now random.
+  ** Further improvements to handling of newlines embedded in header 
+     values. An exception is thrown if header values contain 
+     invalid newlines.
+  * Correcting/clarifying documentation for param_fetch().
+  * Fixing https test in http.t.
+  * Tests were added for multipart_init().
+
+-------------------------------------------------------------------
+Wed Dec  1 13:30:54 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Sep 14 22:41:24 UTC 2010 - chris@computersalat.de
+
+- update to 3.49
+  *  [BUG FIXES]
+     1. Fix a regression since 3.44 involving a case when the header
+        includes "Content-Length: 0". 
+        Thanks to Alex Vandiver (RT#51109)
+     2. Suppress uninitialized warnings under -w. Thanks to burak.
+        (RT#50301)
+     3. url() now uses virtual_port() instead of server_port().
+        Thanks to MKANAT and Yanick Champoux. (RT#51562)
+  *  [SECURITY]
+     1. embedded newlines are now filtered out of header values in header(). 
+        Thanks to Mark Stosberg and Yanick Champoux.
+  *  [DOCUMENTATION]
+     1. README was updated to reflect that CGI.pm was moved under ./lib. 
+        Thanks to Alex Vandiver.
+  *  [INTERNALS]
+     1. More tests were added for autoescape, thanks to Bob Kuo. (RT#25485)
+     2. Attempt to avoid test failures with t/fast, thanks to Steve Hay. (RT#49599)
+- recreated by cpanspec 1.78
+- noarch pkg
+
+-------------------------------------------------------------------
+Wed Dec  9 13:15:06 UTC 2009 - bitshuffler #suse@irc.freenode.org
+
+- Updated to 3.48
+
+-------------------------------------------------------------------
+Sun Nov 30 03:46:42 CET 2008 - lars@linux-schulserver.de
+
+- initial changelog seems to be lost
+- update from 3.38 to 3.42 
+

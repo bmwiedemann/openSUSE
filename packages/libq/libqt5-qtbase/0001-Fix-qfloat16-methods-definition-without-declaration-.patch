@@ -1,0 +1,41 @@
+From edc15323b4ef13a2a58ba4bebd46a78449b628ee Mon Sep 17 00:00:00 2001
+From: Antonio Larrosa <alarrosa@suse.com>
+Date: Fri, 21 Dec 2018 12:33:39 +0100
+Subject: [PATCH] Fix qfloat16 methods definition without declaration when
+ using Q_QDOC
+
+This fixes qtdoc failing to build on i586 because of an assertion in
+libclang since Q_QDOC is defined and thus the declaration of the
+qfloat16(float) constructor and operator float() are removed, thus
+their definitions should be removed too, which is what this patch
+does.
+
+This patch was done together with Michal Srb <msrb@suse.com>.
+
+Fixes: QTBUG-72725
+
+Change-Id: I6424873425d46345e09f411f9ce88f2520825da4
+---
+ src/corelib/global/qfloat16.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: qtbase-everywhere-src-5.12.1/src/corelib/global/qfloat16.h
+===================================================================
+--- qtbase-everywhere-src-5.12.1.orig/src/corelib/global/qfloat16.h
++++ qtbase-everywhere-src-5.12.1/src/corelib/global/qfloat16.h
+@@ -207,6 +207,7 @@ QF16_MAKE_ARITH_OP_INT(*)
+ QF16_MAKE_ARITH_OP_INT(/)
+ #undef QF16_MAKE_ARITH_OP_INT
+ 
++#ifndef Q_QDOC
+ QT_WARNING_PUSH
+ QT_WARNING_DISABLE_CLANG("-Wfloat-equal")
+ QT_WARNING_DISABLE_GCC("-Wfloat-equal")
+@@ -254,6 +255,7 @@ Q_REQUIRED_RESULT inline bool qFuzzyIsNu
+ {
+     return qAbs(static_cast<float>(f)) <= 0.001f;
+ }
++#endif
+ 
+ QT_END_NAMESPACE
+ 

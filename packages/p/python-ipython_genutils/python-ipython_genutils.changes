@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:53:28 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec
+- Update to 0.2.0
+  * treat strings under ironpthon 2.7 as unicode, like 3.x
+  * Omit missing directories from MANIFEST
+
+-------------------------------------------------------------------
+Fri Aug 21 11:19:50 UTC 2015 - toddrme2178@gmail.com
+
+- Add python 2.7 requirement
+
+-------------------------------------------------------------------
+Tue Jul 21 11:25:05 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+

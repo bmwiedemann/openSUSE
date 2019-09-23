@@ -1,0 +1,5 @@
+<package name="ocserv" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:vpn" package="ocserv"/>
+</package>

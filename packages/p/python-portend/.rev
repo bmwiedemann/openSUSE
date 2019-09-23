@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>55a5771ee356d76d421110fe359da69d</srcmd5>
+    <version>1.8</version>
+    <time>1493369154</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by latest version of python-CherryPy, which is already in openSUSE:Factory.</comment>
+    <requestid>489836</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4daaee72d61b1334ce02d432e1e20767</srcmd5>
+    <version>2.3</version>
+    <time>1552039241</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3:
+  * Fix README rendering.
+  * Merge with skeleton, including embedded license file.
+  * #1: Removed portend._getaddrinfo and its usage in Checker.assert_free.
+  * #5: Restored use of portend.client_host during assert_free check on Windows, fixing check when the bind address is *ADDR_ANY.</comment>
+    <requestid>681737</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5a5b7a81e9d442c9f31282e1ede2c968</srcmd5>
+    <version>2.4</version>
+    <time>1554833793</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4:
+  * find_available_local_port now relies on socket.getaddrinfo to
+    find a suitable address family.</comment>
+    <requestid>691695</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>827c33304ebf56a57b813a0307f0267f</srcmd5>
+    <version>2.5</version>
+    <time>1561405527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710575</requestid>
+  </revision>
+</revisionlist>

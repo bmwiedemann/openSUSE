@@ -1,0 +1,11 @@
+<package name="cannadic" project="openSUSE:Factory">
+  <title>Extension Dictionary for Canna</title>
+  <description>This dictionary has been compiled as a supplement to the dictionaries
+distributed with Canna3.5b2. It is based on Kana-Kanji conversion
+dictionaries distributed under the GPL and Kana-Kanji conversion
+distributed without restrictions. While using this dictionary, many
+missing words have been successively added. Currently the main
+dictionary and the suffix and prefix dictionary together contain about
+130,000 words.</description>
+  <devel project="M17N" package="cannadic"/>
+</package>

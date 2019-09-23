@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Wed Jun 17 08:13:36 UTC 2015 - kgronlund@suse.com
+
+- Update to 1.4.1 (fate#318281)
+
+  * Support Arrays in pre/postambles (#193, jbwiv)
+  * Better encoding support
+
+-------------------------------------------------------------------
+Mon Oct 13 14:09:44 UTC 2014 - coolo@suse.com
+
+- adapted to new gem packaging
+
+-------------------------------------------------------------------
+Sat Feb 22 06:52:20 UTC 2014 - coolo@suse.com
+
+- split 1.4 branch
+

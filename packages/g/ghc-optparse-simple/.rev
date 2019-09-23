@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>677a5fae1f8e069bc10799b456f4e1da</srcmd5>
+    <version>0.0.3</version>
+    <time>1448553769</time>
+    <user>dimstar_suse</user>
+    <comment>optparse-simple: Simple interface to optparse-applicative</comment>
+    <requestid>345711</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ebd669c4aef81be04b88a9099414f13d</srcmd5>
+    <version>0.0.3</version>
+    <time>1468999721</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411941</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>94547d8f2955cf61c3aa58033b685cee</srcmd5>
+    <version>0.0.3</version>
+    <time>1505505761</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525115</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eb4435a9fb3a6d0cf3a752adb6d3c9b2</srcmd5>
+    <version>0.1.0</version>
+    <time>1527675073</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-optparse-simple to the latest version.</comment>
+    <requestid>607850</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7dd7e3cb1e9b9187573771ebdee06c18</srcmd5>
+    <version>0.1.0</version>
+    <time>1532161306</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623823</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,11 @@
+<package name="jacktrip" project="openSUSE:Factory">
+  <title>Multi-machine network music performance over the Internet</title>
+  <description>JackTrip is a system used for multi-machine network performance over the
+Internet. It supports any number of channels (as many as the
+computer/network can handle) of bidirectional, high quality, uncompressed
+audio signal streaming.
+
+</description>
+  <devel project="multimedia:apps" package="jacktrip"/>
+  <url>https://github.com/jcacerec/jacktrip</url>
+</package>

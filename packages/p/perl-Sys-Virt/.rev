@@ -1,0 +1,694 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>61e27d1f4abd4caac97dcfad9bfb58b3</srcmd5>
+    <version>0.9.4</version>
+    <time>1312811557</time>
+    <user>saschpe</user>
+    <comment>New package for Factory: perl-Sys-Virt
+
+Perl bindings for libvirt.  Needed by libguestfs package,
+which I hope to provide shortly.  But a useful perl module
+to include nonetheless.</comment>
+    <requestid>78148</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3dc0868b03b2c47619e37ade2063ccf4</srcmd5>
+    <version>0.9.4</version>
+    <time>1312811567</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78148
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3dc0868b03b2c47619e37ade2063ccf4</srcmd5>
+    <version>0.9.4</version>
+    <time>1319182308</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8daffa49c3e984181bbc52c6eace3d33</srcmd5>
+    <version>0.9.8</version>
+    <time>1328718008</time>
+    <user>coolo</user>
+    <comment>- Fix license to be GPL-1.0+ 
+
+- Update to 0.9.8
+ - Add all new APIs in libvirt 0.9.8
+ - Requires libvirt &gt;= 0.9.8
+
+- Update to 0.9.5
+ - Add all new APIs in libvirt 0.9.5
+ - Requires libvirt &gt;= 0.9.5</comment>
+    <requestid>103276</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ecdc60acbb54e852806222d23130b9c1</srcmd5>
+    <version>0.9.10</version>
+    <time>1329476891</time>
+    <user>coolo</user>
+    <comment>- Update to 0.9.10
+  - Add all new APIs in libvirt 0.9.10
+  - Add some constants missing from previous releases
+  - Clarify docs for shutdown/destroy APIs</comment>
+    <requestid>105603</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9bc0a244c2ff183fa3767be9eddc10e2</srcmd5>
+    <version>0.9.11</version>
+    <time>1338903251</time>
+    <user>coolo</user>
+    <comment>- Update to 0.9.11
+  - Add all new APIs in libvirt 0.9.11
+  - Add test case to validate API coverage
+  - Fix misc POD docs bugs
+  - Fix reference handling in block stats
+  - Add handling of VIR_TYPED_PARAM_STRING</comment>
+    <requestid>123581</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>9bc0a244c2ff183fa3767be9eddc10e2</srcmd5>
+    <version>0.9.11</version>
+    <time>1340183923</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7eeafbb368f823f3c82cf75a3ef0ced5</srcmd5>
+    <version>0.9.13</version>
+    <time>1348562769</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>135546</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>36bf9f00f77f2982ba965d7e4395d481</srcmd5>
+    <version>0.10.2</version>
+    <time>1350680175</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>138840</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>abc019bf76946af571123ebdd7ca086f</srcmd5>
+    <version>1.0.0</version>
+    <time>1355145928</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>144441</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>abc019bf76946af571123ebdd7ca086f</srcmd5>
+    <version>1.0.0</version>
+    <time>1359109803</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5dbe28db2c49172826f577177448dced</srcmd5>
+    <version>1.0.3</version>
+    <time>1363269613</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>159213</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a2d9095e4d365f8282a673c6de517ab8</srcmd5>
+    <version>1.0.5</version>
+    <time>1369735693</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176473</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3e355d3b41e16ef9914ac36280a10f29</srcmd5>
+    <version>1.1.1</version>
+    <time>1375628719</time>
+    <user>coolo</user>
+    <comment>New package perl-Sys-Virt for Factory as announced on opensuse-factory ml
+
+http://lists.opensuse.org/opensuse-factory/2013-07/msg00369.html
+
+Also needed for virt-v2v FATE: https://features.opensuse.org/316132
+
+- Update to 1.1.1
+  - Add all new APIs and constants in libvirt 1.1.1
+
+- Update to 1.1.0
+  - Add support for v3 of migration APIs
+  - Add all new constants in libvirt 1.1.0
+  - Fix handling of sparse typed parameters
+  - Fix misc typos in docs</comment>
+    <requestid>185688</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>3e355d3b41e16ef9914ac36280a10f29</srcmd5>
+    <version>1.1.1</version>
+    <time>1379663853</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7a0fb4ce0fa9d1623722df9b436be8b3</srcmd5>
+    <version>1.1.2</version>
+    <time>1381482291</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202922</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>41d3625cd25ffc2f6d2c231f6d163e34</srcmd5>
+    <version>1.2.0</version>
+    <time>1389708512</time>
+    <user>coolo</user>
+    <comment>Added patch name to changelog as requested in SR#211957,
+which is superseded by this request.
+
+- Use correct free() in get_cpu_model_names
+  Sys-Virt-1.2.0.patch
+
+- Update to 1.2.0
+  - Add all new APIs and constants in libvirt 1.2.0
+
+- Update to 1.1.4
+  - Add all new APIs and constants in libvirt 1.1.4</comment>
+    <requestid>213522</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>49a9e4152d616fdb0ad20d616fa965f5</srcmd5>
+    <version>1.2.1</version>
+    <time>1391030522</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>215553</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>25e3a8281e3257c7863626de341920d9</srcmd5>
+    <version>1.2.2</version>
+    <time>1393937928</time>
+    <user>coolo</user>
+    <comment>Updated libvirt perl bindings to go along with libvirt 1.2.2 release.
+
+- Update to 1.2.2
+  - Add all new APIs and constants in libvirt 1.2.2</comment>
+    <requestid>224536</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>459402b2d3688884df9a24a0f6d0d77f</srcmd5>
+    <version>1.2.3</version>
+    <time>1397986500</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>230067</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1131c5ffd53038bd89461cfa50aeda6c</srcmd5>
+    <version>1.2.4</version>
+    <time>1400006817</time>
+    <user>coolo</user>
+    <comment>libvirt perl bindings to go along with libvirt 1.2.4 release.
+
+- Update to 1.2.4
+  - Add all new APIs and constants in libvirt 1.2.4</comment>
+    <requestid>233613</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9c872fc836c12caffba19ae41842836f</srcmd5>
+    <version>1.2.5</version>
+    <time>1402403956</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>236682</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9c629448ebbad3646cb8125f525aa630</srcmd5>
+    <version>1.2.6</version>
+    <time>1404973100</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>240129</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>9c629448ebbad3646cb8125f525aa630</srcmd5>
+    <version>1.2.6</version>
+    <time>1409302496</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6eb6f8e0d9e825e3f760e6afc78c00cd</srcmd5>
+    <version>1.2.8</version>
+    <time>1411020053</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>250024</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ad004edc923ecbf721cfed420412b0de</srcmd5>
+    <version>1.2.9</version>
+    <time>1413048383</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>254875</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7b1b85348d8eb067a6ce5b8b3f036f55</srcmd5>
+    <version>1.2.11</version>
+    <time>1419331849</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>266181</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3f2bd8f58890b75754c17f57c0ba8fb7</srcmd5>
+    <version>1.2.12</version>
+    <time>1423130428</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>283974</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8ed8ad4b6f20b65e4435ba114f1fbee3</srcmd5>
+    <version>1.2.13</version>
+    <time>1426485650</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>290704</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1de3ab39d37e74750bc84819b48d4f1b</srcmd5>
+    <version>1.2.14</version>
+    <time>1429658337</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>298250</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e9a5dd20d6ee4f282ae2c7f13312a746</srcmd5>
+    <version>1.2.15</version>
+    <time>1432889191</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>309100</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>7aab1267f4d35dff4b38744b849251bc</srcmd5>
+    <version>1.2.16</version>
+    <time>1434133823</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>311203</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>3cb22909bd46548c6f2140ae53d4b34c</srcmd5>
+    <version>1.2.17</version>
+    <time>1437803075</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>318476</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>568c13361252c23c83bedf96b32079cb</srcmd5>
+    <version>1.2.18</version>
+    <time>1439385171</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.18
+  - Add all new APIs and constants in libvirt 1.2.18</comment>
+    <requestid>321768</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>7838592240156fc16ba4732d632db553</srcmd5>
+    <version>1.2.19</version>
+    <time>1442130328</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>330571</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>6c1b5589abf082501560cb2f285e51c2</srcmd5>
+    <version>1.2.21</version>
+    <time>1449687259</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>347939</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7c933302f96aac68ee0b5bfa7863393f</srcmd5>
+    <version>1.3.0</version>
+    <time>1451674090</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>351138</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>1553235fc131ee346f21936bf9227741</srcmd5>
+    <version>1.3.1</version>
+    <time>1454833375</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>357819</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>6b7e3981d6886d0077184320a9d47635</srcmd5>
+    <version>1.3.2</version>
+    <time>1457426345</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 1.3.2.
+
+- Update to 1.3.2
+  - Add all new APIs and constants in libvirt 1.3.2</comment>
+    <requestid>365724</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>8d3b291db7066890777f3b2d6ac37a81</srcmd5>
+    <version>1.3.3</version>
+    <time>1461855303</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>390742</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>779bdbaf39b9f576f2819663a4915a6f</srcmd5>
+    <version>1.3.4</version>
+    <time>1463393034</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>394948</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>3246f3f6f65ac0fe51509309b3c57a67</srcmd5>
+    <version>1.3.5</version>
+    <time>1465938437</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 1.3.5.
+
+- Update to 1.3.5
+  - Add all new APIs and constants in libvirt 1.3.5</comment>
+    <requestid>400904</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>f14c8dae4218092bc2b33ef493b8ec41</srcmd5>
+    <version>1.3.5</version>
+    <time>1467205834</time>
+    <user>dimstar_suse</user>
+    <comment>We have the migration constraint parameters in the Factory
+libvirt package, so the perl bindings should have them too.
+
+- Add migration constraint parameters
+  suse-set-migration-constraints.patch
+  FATE#316614, bsc#859868</comment>
+    <requestid>404563</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>48a3284e487a569d0f5306f94a760581</srcmd5>
+    <version>2.0.0</version>
+    <time>1468482212</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings to go along with libvirt 2.0.0.
+
+- Update to 2.0.0
+  - Add all new APIs and constants in libvirt 2.0.0</comment>
+    <requestid>405984</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>17e2f693177b522e3d3c6d2e739c9ea2</srcmd5>
+    <version>2.1.0</version>
+    <time>1472594994</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 2.1.0.
+
+- Update to 2.1.0
+  - Add all new APIs and constants in libvirt 2.1.0</comment>
+    <requestid>420739</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b26901b9c7d1f4ca08981e2caa007574</srcmd5>
+    <version>2.3.0</version>
+    <time>1476997793</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>436454</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>25ba5e8adaf087d3772a01259875d098</srcmd5>
+    <version>2.4.0</version>
+    <time>1478871295</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>439436</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>f07f78498bb62a1a5ded7ae84d9feef2</srcmd5>
+    <version>2.5.0</version>
+    <time>1483554643</time>
+    <user>lnussel_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>445666</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>38b62e9693334c70c7076414ff7794ac</srcmd5>
+    <version>3.0.0</version>
+    <time>1485939136</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>452794</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>c833611c96c9791bb9b2755da5c68d5f</srcmd5>
+    <version>3.0.0</version>
+    <time>1486218108</time>
+    <user>dimstar_suse</user>
+    <comment>Last bit of SLE12 bug and fate merge with Factory changelog.
+
+- SLE12 SP2 FATEs merged via version updates of the Factory
+  perl-Sys-Virt package:
+  FATE#316228, FATE#316628, FATE#319531, FATE#319810, FATE#320490
+- SLE12 SP1 FATEs merged via version updates of the Factory
+  perl-Sys-Virt package:
+  FATE#314466, FATE#314497, FATE#315157, FATE#318383</comment>
+    <requestid>454336</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>62e83b8a7742ea8b0848dd99660ed94f</srcmd5>
+    <version>3.1.0</version>
+    <time>1489482387</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>479131</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>5c1f2768c023ff42dbf1a8340df13324</srcmd5>
+    <version>3.2.0</version>
+    <time>1491896474</time>
+    <user>maxlin_factory</user>
+    <comment>Updated perl bindings for libvirt 3.2.0.
+
+- Update to 3.2.0
+  - Add all new APIs and constants in libvirt 3.2.0
+  - FATE#319684, FATE#321335, FATE#321349</comment>
+    <requestid>484993</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>98ba12a08c7ab927abf3c36fd744178f</srcmd5>
+    <version>3.3.0</version>
+    <time>1494346194</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 3.3.0.
+
+- Update to 3.3.0
+  - Add all new APIs and constants in libvirt 3.3.0
+  - FATE#319684, FATE#321335, FATE#321349</comment>
+    <requestid>493582</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>30b517c59ec3fc1a4bc431bcab31632e</srcmd5>
+    <version>3.4.0</version>
+    <time>1498046025</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>503234</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>cedcc73b16712b788a51e10bad704474</srcmd5>
+    <version>3.5.0</version>
+    <time>1500275479</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>510160</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>16a63bbbdc76904d8749377cb588432d</srcmd5>
+    <version>3.7.0</version>
+    <time>1505920019</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 3.7.0.
+
+- Update to 3.7.0
+  - Add all new APIs and constants in libvirt 3.7.0</comment>
+    <requestid>526421</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>1b22df50b3c2552b2376f8ae4aa5ab84</srcmd5>
+    <version>3.8.0</version>
+    <time>1507755696</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 3.8.0.
+
+- Update to 3.8.0
+  - Add all new APIs and constants in libvirt 3.8.0</comment>
+    <requestid>532219</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>acccd9ef638e75d6b16510c1dfce4047</srcmd5>
+    <version>3.9.0</version>
+    <time>1510506134</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 3.9.0.
+
+- Update to 3.9.0
+  - Add all new APIs and constants in libvirt 3.9.0</comment>
+    <requestid>539358</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>bc21a2903f9500ad5a51ccecb73141ac</srcmd5>
+    <version>3.9.1</version>
+    <time>1513677579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558215</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>3332774963e9f2b235f18af43fd0145a</srcmd5>
+    <version>4.1.0</version>
+    <time>1520588624</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 4.1.0.
+
+- Update to 4.1.0
+  - Add all new APIs and constants in libvirt 4.1.0
+  - Dropped patches: c069787e-virstream-fix.patch</comment>
+    <requestid>583118</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>39f22883d750b8873313ac08423d1f5e</srcmd5>
+    <version>4.4.0</version>
+    <time>1530866604</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620922</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>15d3ae91282a19b09def18748460cefb</srcmd5>
+    <version>4.5.0</version>
+    <time>1532774737</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 4.5.0.
+
+- Update to 4.5.0
+  - Add all new APIs and constants in libvirt 4.5.0</comment>
+    <requestid>625843</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>8807dbabb35670b606963bdb5de03ca2</srcmd5>
+    <version>4.6.0</version>
+    <time>1535123501</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631164</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>5e848150fe4c7ae7c497810f8186d851</srcmd5>
+    <version>4.7.0</version>
+    <time>1538502362</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>638863</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>0965e5fbbb7bdf2d9a9911ef752bad30</srcmd5>
+    <version>4.8.0</version>
+    <time>1539589382</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>641737</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>0ffc9378a8aea3aa88b2090fb5648b9e</srcmd5>
+    <version>4.10.0</version>
+    <time>1544539619</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 4.10.0.
+
+- Update to 4.10.0
+  - Add all new APIs and constants in libvirt 4.10.0
+  - FATE#320928, FATE#325817, FATE#326380, FATE#326698</comment>
+    <requestid>653734</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>ee54459567d9226b888516cb19207dd4</srcmd5>
+    <version>5.0.0</version>
+    <time>1549361910</time>
+    <user>coolo</user>
+    <comment>Updated perl bindings for libvirt 5.0.0.
+
+- Update to 5.0.0
+  - Add all new APIs and constants in libvirt 5.0.0
+  - FATE#320928, FATE#325817, FATE#326380, FATE#326698</comment>
+    <requestid>667894</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>0538a1dfcb145878cc95eb9abb79d0a0</srcmd5>
+    <version>5.1.0</version>
+    <time>1552464707</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 5.1.0.
+
+- Update to 5.1.0
+  - Add all new APIs and constants in libvirt 5.1.0
+  - jsc#SLE-3887, jsc#SLE-4480, jsc#SLE-4577</comment>
+    <requestid>681983</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>c2997e3ba49e7eb6b6c515aeac9f3d1f</srcmd5>
+    <version>5.2.0</version>
+    <time>1555488451</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 5.2.0.
+
+- Update to 5.2.0
+  - Add all new APIs and constants in libvirt 5.2.0</comment>
+    <requestid>693790</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>4f18a7c2bd1455e7652a25e614d0a4e3</srcmd5>
+    <version>5.5.0</version>
+    <time>1564667332</time>
+    <user>maxlin_factory</user>
+    <comment>Updated perl bindings for libvirt 5.5.0.
+
+- Update to 5.5.0
+  - Add all new APIs and constants in libvirt 5.5.0</comment>
+    <requestid>718357</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>b9ed591aa9131e236d577a86f431a3a8</srcmd5>
+    <version>5.6.0</version>
+    <time>1566242877</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 5.6.0.
+
+- Update to 5.6.0
+  - Add all new APIs and constants in libvirt 5.6.0</comment>
+    <requestid>722938</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>6661e0efa51e4b1efca15e7f0b6a6477</srcmd5>
+    <version>5.7.0</version>
+    <time>1568379446</time>
+    <user>lnussel_factory</user>
+    <comment>Updated perl bindings for libvirt 5.7.0.
+
+- Update to 5.7.0
+  - Add all new APIs and constants in libvirt 5.7.0</comment>
+    <requestid>728578</requestid>
+  </revision>
+</revisionlist>

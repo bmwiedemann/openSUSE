@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b2e58f9c3c2a24e413cfd8cddf6a0665</srcmd5>
+    <version>0.8.3</version>
+    <time>1506453249</time>
+    <user>dimstar_suse</user>
+    <comment>python-fake-factory has been renamed to python-Faker upstream.</comment>
+    <requestid>521749</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>13723ed6b4ad8bbce751d9fb53d4f7e2</srcmd5>
+    <version>0.8.3</version>
+    <time>1507896887</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533132</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1b526220a786ccead0aa1eaf94f4f913</srcmd5>
+    <version>0.8.6</version>
+    <time>1510150190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>536025</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9ff09732545e84739fa52c57d3361c0c</srcmd5>
+    <version>0.8.7</version>
+    <time>1510837336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542037</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d9cf972ba53d423802501d631b31e7cd</srcmd5>
+    <version>0.8.8</version>
+    <time>1515623546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559161</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dd82d944e52ef549c516c85831f1e477</srcmd5>
+    <version>0.8.10</version>
+    <time>1516358835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566561</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9fd4ca2fba35128ed5a6e8ee7e019624</srcmd5>
+    <version>0.8.10</version>
+    <time>1544726652</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654047</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9ca500399cdf3cf3fb7677f62ebd3cd0</srcmd5>
+    <version>1.0.2</version>
+    <time>1551024880</time>
+    <user>coolo</user>
+    <comment>- Update to 1.0.10:
+  * Many changes to list see CHANGELOG.rst
+- Run tests</comment>
+    <requestid>676158</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8f48650df576e00674f92d556e2e6183</srcmd5>
+    <version>1.0.4</version>
+    <time>1553888153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685834</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bc4f6c8c77d12c75cd7c7ace6cff0a32</srcmd5>
+    <version>1.0.5</version>
+    <time>1556915713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698092</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9a2bac569b4f42d7413f4f0784c6b53d</srcmd5>
+    <version>1.0.7</version>
+    <time>1558938957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704961</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1dc09b135f56f4ab43760fa0a6ec1d42</srcmd5>
+    <version>2.0.0</version>
+    <time>1564996688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718191</requestid>
+  </revision>
+</revisionlist>

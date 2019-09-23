@@ -1,0 +1,40 @@
+From: Egbert Eich <eich@suse.com>
+Date: Tue Nov 20 10:07:35 2018 +0100
+Subject: slurmsmwd uses xdaemon_* for systemd
+Patch-mainline: Not yet
+Git-commit: 110d76a0c56b35c8c3c9b24e136476a67a6eb413
+References: bsc#1084125
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ slurm-18.08.3/contribs/cray/slurmsmwd/main.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+diff --git a/slurm-18.08.3/contribs/cray/slurmsmwd/main.c b/slurm-18.08.3/contribs/cray/slurmsmwd/main.c
+index a5247bf..1efb1f8 100644
+--- a/contribs/cray/slurmsmwd/main.c
++++ b/contribs/cray/slurmsmwd/main.c
+@@ -538,6 +538,7 @@ int main(int argc, char **argv)
+ {
+ 	pthread_t processing_thread, signal_handler_thread;
+ 	pthread_attr_t thread_attr;
++	int pipefd;
+ 
+ 	_parse_commandline(argc, argv);
+ 
+@@ -546,11 +547,15 @@ int main(int argc, char **argv)
+ 	slurmsmwd_print_config();
+ 
+ 	if (!foreground) {
+-		if (xdaemon())
++		pipefd = xdaemon_init();
++		if (pipefd == -1)
+ 			error("daemon(): %m");
+ 	}
+ 	if (create_pidfile("/var/run/slurmsmwd.pid", 0) < 0)
+ 		fatal("Unable to create pidfile /var/run/slurmswmd.pid");
++	if (!foreground) {
++		xdaemon_finish(pipefd);
++	}
+ 
+ 	slurm_mutex_init(&down_node_lock);
+ 

@@ -1,0 +1,10 @@
+<package name="perl-Net-SNMP" project="openSUSE:Factory">
+  <title>Object oriented interface to SNMP</title>
+  <description>The Net::SNMP module abstracts the intricate details of the Simple
+Network Management Protocol by providing a high level programming
+interface to the protocol. Each Net::SNMP object provides a one-to-one
+mapping between a Perl object and a remote SNMP agent or manager. Once an
+object is created, it can be used to perform the basic protocol exchange
+actions defined by SNMP.</description>
+  <devel project="devel:languages:perl" package="perl-Net-SNMP"/>
+</package>

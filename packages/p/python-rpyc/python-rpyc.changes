@@ -1,0 +1,200 @@
+-------------------------------------------------------------------
+Tue Sep 10 10:36:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.1.1:
+  * Fixed netref.class_factory id_pack usage per #339 and added test cases
+  * Name pack casted in _unbox to fix IronPython bug. Fixed #337
+  * Increased chunk size to improve multi-client response time and throughput of large data #329
+  * Added warning to _remote_tb when the major version of local and remote mismatch (#332)
+  * OneShotServer termination was fixed by WilliamBruneau (#343)
+  * Known issue with 3.8 for CodeType parameters (may drop Python2 support first)
+
+-------------------------------------------------------------------
+Wed Jun 12 11:30:01 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 4.1.0
+  * Added connection back-off and attempts for congested workloads
+  * Cross-connection instance check for cached netref classes
+
+-------------------------------------------------------------------
+Wed Jun  5 07:25:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix test execution to make sure we run it under all interpreters
+
+-------------------------------------------------------------------
+Fri May 24 10:59:46 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 4.0.2
+  * fix default hostname for ipv6 in rpyc_classic.py
+  * fix ThreadPoolServer not working
+  4.0.1
+  * fix ValueError during install due to absolute PATH in SOURCES.txt 
+  4.0.0 (see upstream Release Change Log for more)
+  * classic.teleport_function now executes the function in the 
+    connection’s namespace by default
+  * Changed signature of Service.on_connect and on_disconnect, 
+    adding the connection as argument.
+  * Changed signature of Service.__init__, removing the connection 
+    argument
+  * no longer store connection as self._conn.
+  * SlaveService is now split into two asymetric classes: 
+    SlaveService and MasterService. If you want old SlaveService
+    behaviour, use ClassicService
+  * Removed modules rpyc.experimental.splitbrain and rpyc.experimental.retunnel.
+  * bin/rpyc_classic.py will bind to 127.0.0.1 instead of 0.0.0.0 by default
+  * Exposed attributes no longer hide plain attributes if one 
+    otherwise has the required permissions to access the plain attribute. 
+  * teleported functions will now be defined by default in the 
+    globals dict
+  * fix deadlock with connections talking to each other multithreadedly
+  * handle timeouts cumulatively
+  * fix __hash__ for netrefs
+  * add gevent Server. For now, this requires using gevent.monkey.patch_all() 
+    before importing for rpyc. Client connections can already be made
+    without further changes to rpyc, just using gevent’s monkey patching.
+  * fix problem with MongoDB, or more generally any remote objects 
+    that have a catch-all __getattr__
+  * service can now easily override protocol handlers, by updating 
+    conn._HANDLERS in _connect or on_connect.
+- implement multibuild to fix some tests, skip some other failing tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:57 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed May 16 15:28:23 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 3.4.4
+  * Fix refcount leakage when unboxing from cache (`#196`_)
+  * Fix TypeError when dispatching exceptions on py2 (unicode)
+  * Respect ``rpyc_protocol_config`` for default Service getattr
+  * Support unix domain sockets
+  * Use first accessible server in ``connect_by_service``
+  * Fix deadlock problem with logging
+  * Fix timeout problem for long commands
+- Update to 3.4.3
+  * Add missing endpoints config in ThreadPoolServer
+  * Fix jython support
+  * Improve documentation
+- Update to 3.4.2
+  * Fix ``export_function`` on python 3.6
+- Update to 3.4.1
+  * Fix issue high-cpu polling
+  * Fix filename argument in logging
+  * Improved log messages
+  * Drop support for python 3.2 and py 2.5
+- Update to 3.4.0
+  * Add keepalive interface
+  * Various fixes
+- Update to 3.3.0
+  * RPyC integrates with `plumbum <http://pypi.python.org/pypi/plumbum>`_; plumbum is required
+    for some features, like ``rpyc_classic.py`` and   *zero deploy  *, but the core of the library
+    doesn't require it. It is, of course, advised to have it installed.
+  * ``SshContext``, ``SshTunnel`` classes killed in favor of plumbum's SSH tunneling. The interface
+    doesn't change much, except that ``ssh_connect`` now accept a ``plumbum.SshMachine`` instance
+    instead of ``SshContext``.
+  * Zero deploy: deploy RPyC to a remote machine over an SSH connection and form an SSH tunnel
+    connected to it, in just one line of code. All you need is SSH access and a Python interpreter
+    installed on the remote machine.
+  * Dropping Python 2.4 support. RPyC now requires Python 2.5 - 3.3.
+  * rpycd - a well-behaved daemon for ``rpyc_classic.py``, based on
+    `python-daemon <http://pypi.python.org/pypi/python-daemon/>`_
+  * The ``OneShotServer`` is now exposed by ``rpyc_classic -m oneshot``
+  * ``scripts`` directory renamed ``bin``
+  * Introducing ``Splitbrain Python`` - running code on remote machines transparently. Although tested,
+    it is still considered experimental.
+  * Removing the ``BgServerThread`` and all polling/timeout hacks in favor of a "global background
+    reactor thread" that handles all incoming transport from all connections. This should solve
+    all threading issues once and for all.
+  * Added ``MockClassicConnection`` - a mock RPyC "connection" that allows you to write code that runs
+    either locally or remotely without modification
+  * Added ``teleport_function``
+
+- spec file cleanups
+- Use update-alternatives
+- Update summary and conclusions
+
+-------------------------------------------------------------------
+Sun Mar 18 20:58:38 UTC 2018 - afaerber@suse.de
+
+- Convert to singlespec
+  * Drop pre_checkin.sh
+
+-------------------------------------------------------------------
+Mon Jan 21 19:27:15 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Mon Jan 21 19:23:07 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 3.2.3:
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Mar 13 19:35:02 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 3.2.1:
+  * Adding missing import (#52)
+  * Fixing site documentation issue (#54)
+  * Fixing Python 3 incompatibilities (#58, #59, #60, #61, #66)
+  * Fixing slice issue (#62)
+  * Added the endpoints parameter to the config dict of connection (only on
+    the server side)
+
+-------------------------------------------------------------------
+Thu Dec  8 00:12:43 UTC 2011 - jfunk@funktronics.ca
+
+- Update to 3.2.0
+  - Added support for IPv6 (#28)
+  - Added SSH tunneling support (ssh_connect)
+  - Added restricted object wrapping
+  - Several fixes to AsyncResult and weak references
+  - Added the ThreadPoolServer
+  - Fixed some minor (harmless) races that caused tracebacks occasionally when
+    server-threads terminated
+  - Fixes issues #8, #41, #42, #43, #46, and #49.
+  - Converted all CRLF to LF (#40)
+  - Dropped TLSlite integration (#45). We’ve been dragging this corpse for too
+    long
+  - New documentation (both the website and docstrings) written in Sphinx
+  - Python 3.0-3.2 support
+- 3.1.0
+  - Supports CPython 2.4-2.7, IronPython, and Jython
+  - tlslite has been ported to python 2.5-2.7 (the original library targeted
+    2.3 and 2.4)
+  - Initial python 3 support – not finished!
+  - Moves to a more conventional directory structure
+  - Moves to more standard facilities (logging, nosetests)
+  - Solves a major performance issue with the BgServingThread (#32), by
+    removing the contention between the two threads that share the connection
+  - Fixes lots of issues concerning the ForkingServer (#3, #7, and #15)
+  - Many small bug fixes (#16, #13, #4, etc.)
+  - Integrates with the built-in ssl module for SSL support
+  - rpyc_classic.py now takes several --ssl-xxx switches (see --help for more
+    info)
+  - Fixes typos, running pylint, etc.
+  - Breakage from 3.0.7:
+    - Removing egg builds (we’re pure python, and eggs just messed up the
+      build)
+    - Package layout changed drastically, and some files were renamed
+    - The servers/ directory was renamed scripts/
+    - classic_server.py was renamed rpyc_classic.py
+    - They scripts now install to your python scripts directory (no longer
+      part of the package), e.g. C:\python27\Scripts
+    - rpyc_classic.py now takes --register in order to register, instead of
+      --dont-register, which was a silly choice
+    - classic.tls_connect, factory.tls_connect were renamed tlslite_connect,
+      to distinguish it from the new ssl_connect
+
+-------------------------------------------------------------------
+Thu Feb 18 14:50:42 UTC 2010 - jfunk@funktronics.ca
+
+- Update to 3.0.7
+
+-------------------------------------------------------------------
+Tue Jul 17 00:00:00 AST 2007 - James Oakley <jfunk@funktronics.ca> - 2.60-1
+
+- Initial release

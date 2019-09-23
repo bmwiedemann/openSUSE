@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Thu May 19 15:15:57 CEST 2011 - ke@suse.de
+
+- Add yast2-trans-nds and yast2-trans-nn.
+- Set version number to 2.21.0
+
+-------------------------------------------------------------------
+Fri Mar 19 13:46:23 CET 2010 - ke@suse.de
+
+- Add yast2-trans-kn.
+
+-------------------------------------------------------------------
+Mon Jan 11 14:23:35 CET 2010 - ke@suse.de
+
+- Add yast2-trans-ast.
+- Set version number to 2.19.9.
+
+-------------------------------------------------------------------
+Thu Sep  3 13:12:56 CEST 2009 - ke@suse.de
+
+- Add yast2-trans-tg.
+- Set version number to 2.18.1.
+
+-------------------------------------------------------------------
+Mon Mar  2 10:12:09 CET 2009 - ke@suse.de
+
+- list-trans-packs.sh: Check available packages on /mounts/dist/...
+- Update Requires:
+
+-------------------------------------------------------------------
+Wed May 21 14:26:56 CEST 2008 - ke@suse.de
+
+- list-trans-packs.sh: Fix typo.
+- Add yast2-trans-th; reported by Steffen Winterfeld.
+
+-------------------------------------------------------------------
+Mon Sep 17 12:51:04 CEST 2007 - ke@suse.de
+
+- list-trans-packs.sh: Remove conflicting trans packages, but comment
+  this feature.
+- Rebuild the Requires list to remove yast2-trans-he; see bug 168603.
+
+-------------------------------------------------------------------
+Thu Jul  5 17:48:17 CEST 2007 - ke@suse.de
+
+- Add yast2-trans-si.
+
+-------------------------------------------------------------------
+Tue Mar 27 08:48:02 CEST 2007 - ke@suse.de
+
+- Add package check to list-trans-packs.sh.
+
+-------------------------------------------------------------------
+Mon Mar 26 15:12:22 CEST 2007 - ke@suse.de
+
+- Version 2.15.0
+- Call ./list-trans-packs.sh to update the Requires: listing.
+
+-------------------------------------------------------------------
+Mon Feb  5 16:51:47 CET 2007 - ke@suse.de
+
+- Add  yast2-trans-gl.
+
+-------------------------------------------------------------------
+Thu Jan 25 13:41:10 CET 2007 - ke@suse.de
+
+- Require only packages with status:production.
+
+-------------------------------------------------------------------
+Thu Jan 25 10:18:52 CET 2007 - ro@suse.de
+
+- remove yast2-trans-ka for now 
+
+-------------------------------------------------------------------
+Wed Jan 24 19:59:36 CET 2007 - ro@suse.de
+
+- added empty build and install sections to specfile 
+
+-------------------------------------------------------------------
+Wed Jan 24 15:38:20 CET 2007 - ke@suse.de
+
+- New package.  Use pdb-commandline to retrieve the names of all
+  yast2-trans-{??,??_??} packages.
+
+

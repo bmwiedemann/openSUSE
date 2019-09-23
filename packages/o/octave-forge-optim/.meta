@@ -1,0 +1,6 @@
+<package name="octave-forge-optim" project="openSUSE:Factory">
+  <title></title>
+  <description>Non-linear optimization toolkit.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-optim"/>
+</package>

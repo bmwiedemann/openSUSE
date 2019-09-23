@@ -1,0 +1,35 @@
+Date: 2014-10-10 08:41:40.775804353 +0200
+From: Jan Engelhardt <jengelh@inai.de>
+
+gcc-4.8 emits this warning:
+
+	openfile_r.c: In function 'OpenFileForReading_':
+	openfile_r.c:123:13: warning: array subscript is below array bounds [-Warray-bounds]
+	   path_nameA[n] = '\0';
+	             ^
+
+Not exactly sure why it does that; maybe it considers the hypothetical
+case where strlen()'s result is sufficiently large to be truncated when
+converted to int (during assignment to @n).
+
+So, check if that happened by looking at negative numbers.
+
+This crap code should have used (s)size_t, but I don't want to
+fix it and carry around a huge patch.
+---
+ openfile_r.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: garlic-1.6/openfile_r.c
+===================================================================
+--- garlic-1.6.orig/openfile_r.c
++++ garlic-1.6/openfile_r.c
+@@ -115,7 +115,7 @@ else if (*file_nameP == '~')
+ 
+ 		/* Copy this string, but reverted: */
+ 		n = strlen  (env_valueP);
+-		if (n == 0) return NULL;
++		if (n <= 0) return NULL;
+ 		for (i = 0; i < n; i++)
+ 			{
+ 			path_nameA[i] = *(env_valueP + n - 1 - i);

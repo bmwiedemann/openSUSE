@@ -1,0 +1,6 @@
+<package name="obexd" project="openSUSE:Factory">
+  <title>D-Bus service for Obex Client access</title>
+  <description>obexd is an implementation of the Obex Push protocol, common on mobile phones and
+other Bluetooth-equipped devices.</description>
+  <devel project="Base:System" package="obexd"/>
+</package>

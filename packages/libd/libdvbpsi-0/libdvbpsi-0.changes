@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Wed Apr 24 19:23:48 CEST 2013 - sbrabec@suse.cz
+
+- Rename to libdvbpsi-0. The new version uses new API.
+
+-------------------------------------------------------------------
+Thu Nov 03 23:33:42 UTC 2011 - pascal.bleser@opensuse.org
+
+- use proper filenames in files section, to make the build fail if the
+  SONAME changes
+
+- update to 0.2.2:
+  * revert regression introduced by "ignore initial discontinuity" commit
+
+- changes from 0.2.1:
+  * ignore initial discontinuity
+
+-------------------------------------------------------------------
+Fri May  6 20:27:50 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.2.0:
+  + License change of libdvbpsi from GPLv2 to LGPLv2.1
+  + new CUE Identifier descriptor support (0x8a)
+  + new Splice Information Section table support (0xFC) (SCTE 35
+    2004)
+  + new BAT table (decoder and generator)
+  + new descriptor 0x44
+  + depreceated all API's in preparation for 1.0.0 release with
+    reworked API
+- Adjust License Tags from GPLv2+ to LPGLv2.1+
+- Remove Provides/Obsoletes libdvbpsi: openSUSE 10.3 is long gone.
+
+-------------------------------------------------------------------
+Sun May  1 17:35:27 UTC 2011 - toddrme2178@gmail.com
+ 
+- Added 32bit compatibility libraries
+- Removed self-obsoletes (fix for RPMLINT warning)
+ 
+-------------------------------------------------------------------
+Fri Sep 10 09:08:21 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 0.1.7:
+  + new VBI data descriptor support (0x45)
+  + NIT support
+  + TOT/TDT support
+  + new DVB Satellite Delivery systems descriptor support (0x43)
+  + new DVB Local time offset descriptor support (0x58)
+  + new Terrestrial Delivery systems descriptor support (0x5a)
+- Remove autoreconf call: there is no need for it.
+- Add pkg-config BuildRequires.
+
+-------------------------------------------------------------------
+Tue Jan 15 15:59:50 CET 2008 - sbrabec@suse.cz
+
+- Updated to version 0.1.6:
+  * fixed a parsing bug due to outdated spec in ISO 639 language
+    descriptor
+  * fixed the use of uninitialized data when
+    section_syntax_indicator=0
+  * fixed a parsing bug in the EBU teletext descriptor decoder
+  * fixed the declaration of dvbpsi_DecodeTeletextDr
+  * new example tool for checking an MPEG-2 TS file
+  * fixed EIT discontinuities
+  * new cat support
+  * new PDC support descriptor 0x69
+
+-------------------------------------------------------------------
+Tue Aug 21 01:57:58 CEST 2007 - crrodriguez@suse.de
+
+- fix wrong .so file in non-devel package.
+- remove static libraries and pointless libtool archive with empty 
+  dependency_libs.  
+
+-------------------------------------------------------------------
+Wed Jun 28 19:16:16 CEST 2006 - sbrabec@suse.cz
+
+- New SuSE package, version 0.1.5.
+

@@ -1,0 +1,7 @@
+<package name="SDL_mixer" project="openSUSE:Factory">
+  <title>Sample Mixer Library for SDL</title>
+  <description>A multichannel audio mixer. It supports four channels of 16-bit stereo
+audio, plus a single channel of music, mixed by the popular MikMod MOD,
+Timidity MIDI, and SMPEG MP3 libraries.</description>
+  <devel project="games" package="SDL_mixer"/>
+</package>

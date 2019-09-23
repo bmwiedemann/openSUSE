@@ -1,0 +1,206 @@
+-------------------------------------------------------------------
+Wed Aug 22 14:49:57 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Fix compatibility for SLE12*
+- Sync changelog with SLES12SP3
+
+-------------------------------------------------------------------
+Wed Mar 28 09:29:59 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Add a bcond to force build against openmpi3 on SLE
+
+-------------------------------------------------------------------
+Mon Feb 12 12:03:45 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Disable openmpi3 flavors in SLE
+
+-------------------------------------------------------------------
+Mon Jan 29 14:45:46 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update OSU micro benchmark to 3.4
+  * New Features & Enhancements
+    - Introduce new OpenSHMEM Non-blocking Benchmarks
+        * osu_oshm_get_mr_nb
+        * osu_oshm_get_nb
+        * osu_oshm_put_mr_nb
+        * osu_oshm_put_nb
+        * osu_oshm_put_overlap
+    - Automatically build OpenSHMEM 1.3 benchmarks when library support
+      is detected
+    - Add ability to specify min and max message size for point-to-point
+      and one-sided benchmarks
+    - Enhanced error handling for MPI benchmarks
+    - Code clean-ups and unification of utility functions across benchmarks
+    - Enhanced help messages and runtime parameters
+  * Bug Fixes
+    - Fix compile-time warnings
+    - Fix peer calculation formula in UPC/UPC++ benchmarks
+    - Fix correct number of warmup iterations in osu_barrier benchmark
+
+
+-------------------------------------------------------------------
+Fri Jan 26 10:32:23 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Prepare for submission to Factory (bsc#1076593)
+- Only run validation if mpitests_check bcond is not set
+- Add missing copyright file for OSU
+- Update IMB to IMB 2018.1 and switch source to github
+- Remove obsolete norootforbuild
+
+-------------------------------------------------------------------
+Thu Jan  4 09:55:06 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Disable mvapich2 tests on arm as they fail at the moment
+
+-------------------------------------------------------------------
+Fri Dec  8 08:57:36 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add --oversubscribe option for OpenMPI3 to fix fails on single
+  CPU systems
+
+-------------------------------------------------------------------
+Thu Dec  7 10:21:46 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Move hpc_mpi_home macro locally
+
+-------------------------------------------------------------------
+Mon Oct 30 10:51:35 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Use new macro for mpi_home
+- Remove the need for mpi-validate
+
+-------------------------------------------------------------------
+Mon Oct 30 08:52:52 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add multibuild mpich
+
+-------------------------------------------------------------------
+Mon Oct 23 15:18:02 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add gnu-hpc flavours
+
+-------------------------------------------------------------------
+Mon Sep 25 11:53:50 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add gen_multibuild.sh to autogenerate the _multibuild file
+  from OBS project list
+
+-------------------------------------------------------------------
+Mon Sep 25 08:23:32 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Support any install path for mpi implementation
+- Remove forced psm2 btl for openmpi
+
+-------------------------------------------------------------------
+Wed Sep 13 12:38:40 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Openmpi2 is not available on ppc64 anymore
+
+-------------------------------------------------------------------
+Mon Sep 11 12:09:01 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Disable mvapich2-psm2 test when no PSM hardware is available
+
+-------------------------------------------------------------------
+Fri Sep  8 16:12:14 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Dump all log files on error to ease debuggability
+
+-------------------------------------------------------------------
+Mon Jul 17 14:23:08 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add mpitests-run.sh as a wrapper to run the testsuite for
+  all installed mpitests flavors
+
+-------------------------------------------------------------------
+Wed Jul 12 07:55:44 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Remove legacy mpitests tarball (unmaintained by OFED)
+- Drop associated patches:
+  - mpitests-link_to_libm.patch
+  - mpitests-order_of_evaluation.patch
+  - mpitests-codecleanup.patch
+  - mpitests-rpm_opt_flags.patch
+- Update used test suites:
+  * OSU micro benchmark 5.3.2
+  * IMB 2017 Update 2
+
+-------------------------------------------------------------------
+Mon Jul 10 13:16:23 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add mpitests-runtests.sh top run and check results of all
+ installed tests
+
+-------------------------------------------------------------------
+Tue Jun 27 10:36:04 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add _multibuild to build the various flavours
+- Add a build for mvapich2-psm2, mpich and mpich-ofi
+- Add mpitests-IMB-all-tests.patch to build IMB tests for MPI-2
+  features
+- Add dependency to the associated mpi package
+
+-------------------------------------------------------------------
+Fri Jun 23 15:55:29 UTC 2017 - nmoreychaisemartin@suse.com
+
+- PSM2 is only available on x86_64
+
+-------------------------------------------------------------------
+Wed Apr 26 10:06:16 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Build against openmpi-1.10. bsc#1035326
+
+-------------------------------------------------------------------
+Wed Jul  9 18:27:07 CEST 2014 - pth@suse.de
+
+- Remove the bogus copy of mpitests-mvapich2.dif.
+
+-------------------------------------------------------------------
+Tue Jun  3 11:24:34 CEST 2014 - pth@suse.de
+
+- Update to OFED 3.12 final.
+
+-------------------------------------------------------------------
+Fri Mar 28 14:14:44 CET 2014 - pth@suse.de
+
+- Rename mpitests-mvapich2.dif to mpitests-order_of_evaluation.patch.
+- Package the license files for the Intel benchmarks.
+- Add mpitests-rpm_opt_flags.patch to pass RPM_OPT_FLAGS to compiler.
+- Add mpitests-link_to_libm.patch to link to libm.
+- Convert all text files to unix format.
+- Remove the files refering to mvapich.
+- Add mpitests-codecleanup.patch to fix a cased of uninitialised
+  var being used.
+
+-------------------------------------------------------------------
+Fri Jan 24 19:05:58 CET 2014 - pth@suse.de
+
+- Update to OFED 3.12 daily.
+
+-------------------------------------------------------------------
+Mon Jan 13 18:47:55 CET 2014 - pth@suse.de
+
+- New package from SLE
+
+-------------------------------------------------------------------
+Fri Sep  6 12:39:08 CEST 2013 - pth@suse.de
+
+- Enable build on s390(x).
+
+-------------------------------------------------------------------
+Thu Oct 28 18:17:56 UTC 2010 - jjolly@novell.com
+
+- Update to v3.2 from OFED 1.5.2
+
+-------------------------------------------------------------------
+Tue Oct 28 08:10:50 CET 2008 - jjolly@suse.de
+
+- Updated to verion 3.1 from OFED 1.4 rc3
+- Split off mpitests-mvapich and mpitests-mvapich2 to avoid build
+  conflict
+
+-------------------------------------------------------------------
+Wed Jul 11 17:47:29 CEST 2007 - hvogel@suse.de
+
+- Initial Package, Version 2.0
+

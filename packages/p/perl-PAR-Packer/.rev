@@ -1,0 +1,157 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec8932e02bd3845ff056eda6a3335ac0</srcmd5>
+    <version>1.010</version>
+    <time>1338368335</time>
+    <user>coolo</user>
+    <comment>for tex</comment>
+    <requestid>121947</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ec8932e02bd3845ff056eda6a3335ac0</srcmd5>
+    <version>1.010</version>
+    <time>1340183896</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0bce266a7014b46cb53011a8724be53f</srcmd5>
+    <version>1.014</version>
+    <time>1357853653</time>
+    <user>coolo</user>
+    <comment>(update to fix junked parl.1 manpage causing hang on s390)
+- update to 1.014
+  * tkpp 1.3 : --addfile option in GUI updated : 
+  * Bug fixes, etc. 
+- update to 1.013
+  * New version of Tkpp (Version 1.2) (cf. RT #69517)
+  * Bug fixes, etc.
+- update to 1.012
+  * Bug fixes, etc.
+- update to 1.011
+  * Bug fixes, etc. (forwarded request 147890 from oertel)</comment>
+    <requestid>147927</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0bce266a7014b46cb53011a8724be53f</srcmd5>
+    <version>1.014</version>
+    <time>1359109770</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>8b767bf1cedd6c18c90907d950ba9195</srcmd5>
+    <version>1.014</version>
+    <time>1378549945</time>
+    <user>scarabeus_factory</user>
+    <comment>-&gt;</comment>
+    <requestid>197529</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>8b767bf1cedd6c18c90907d950ba9195</srcmd5>
+    <version>1.014</version>
+    <time>1379663801</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>681d1d4726a09d36fedd416a2a7888e7</srcmd5>
+    <version>1.015</version>
+    <time>1384414987</time>
+    <user>coolo</user>
+    <comment>Update to the latest version</comment>
+    <requestid>206772</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1b2c382030662127fea05f9de75e3315</srcmd5>
+    <version>1.017</version>
+    <time>1400355837</time>
+    <user>coolo</user>
+    <comment>- Update to 1.017:
+  RT #84588: OSX: incorrect detection of gcc (unsupported option '-static-libgcc')
+  merged with:
+  - RT #90198: PAR::Packer fails to compile in Mac OS X 10.9 Mavericks
+  - RT #91086: PAR-Packer-1.016 fails to install on OSX)
+  clang on OSX pretends to be gcc, but doesn't implement gcc's option &quot;-static-libgcc&quot; 
+  - use this option only on Windows (when using the MingW toolchain).
+  Drop a test that was using Inline::C just to wrap native execvp().
+  - It caused failures on CPAN Testers (if accidentally Inline was
+    installed) that were unrelated to PAR::Packer.
+- Update to 1.016:
+    RT #90870: Segmentation fault (core dumped) (MooX::Options)
+    - any &quot;die&quot; in a packed executable causes the executable to segfault
+      (at least on Linux and Perl 5.18.1)
+    - remove a line from XS code that sets an internal perl variable
+
+- Create a separate spec for running the tests. (forwarded request 233817 from netsroth)</comment>
+    <requestid>234302</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>1b2c382030662127fea05f9de75e3315</srcmd5>
+    <version>1.017</version>
+    <time>1409302438</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>37657e11114a08566f7a21372a714819</srcmd5>
+    <version>1.033</version>
+    <time>1466814126</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403811</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>32aaa832ddb5de677be38f8cc1990702</srcmd5>
+    <version>1.036</version>
+    <time>1487149640</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456587</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f18263a543fb3f4157d1f289e881fcbe</srcmd5>
+    <version>1.039</version>
+    <time>1532774472</time>
+    <user>dimstar_suse</user>
+    <comment>- remove -test subspec (which ignored errors in make check anyway)
+- add 50ff73f26855151910e039b8480473024ae08b8a.patch to fix tests
+  with latest perl
+
+- updated to 1.039
+   see /usr/share/doc/packages/perl-PAR-Packer/Changes
+  1.039  2017-09-28
+  
+  - Brown paper bag: add missing t/utils.pl
+  
+  1.038  2017-09-27
+  
+  - Fix &quot;RT#122949: PAR-Packer-1.37 executables split arguments containing whitespace&quot;
+    - on Windows, quote elements of argv array passed to spawnvp();
+      algorithm stolen from Win32::ShellQuote.
+  
+  - introduce helper t/utils.pl to streamline tests 
+  
+  - require IPC::Run3 for test
+  
+  - make test work with &quot;dot-less&quot; perl and PERL_USE_UNSAFE_INC=0
+  
+  1.037  2017-05-28
+  
+  - Fix RT#121268 for PAR-Packer: error installing PAR-Packer on windows10 ( 64Bit )
+    - on Windows, make dl_findfile() search first in the directory containing
+      the perl executable (to avoid erroneous hits in other members of PATH)
+  
+  - Fix RT#120038: [PATCH] Fix build for VS2015 (VC++ 14)
+    and merge pull request from Steve Hay (shay@cpan.org)</comment>
+    <requestid>624420</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>af00bcfcfdddd3ee6b05bb572185456a</srcmd5>
+    <version>1.049</version>
+    <time>1567168897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727047</requestid>
+  </revision>
+</revisionlist>

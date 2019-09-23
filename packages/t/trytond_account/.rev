@@ -1,0 +1,177 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c89c237dc753d82e1d4a95644ab284f7</srcmd5>
+    <version>3.8.3</version>
+    <time>1474623114</time>
+    <user>dimstar_suse</user>
+    <comment>part of GNU Health</comment>
+    <requestid>425113</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>23adf91216d0ef879c29ea431be12f34</srcmd5>
+    <version>3.8.4</version>
+    <time>1475750891</time>
+    <user>dimstar_suse</user>
+    <comment>new version</comment>
+    <requestid>433479</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1b8eed5b64760f4550da698df6918166</srcmd5>
+    <version>3.8.5</version>
+    <time>1484041412</time>
+    <user>dimstar_suse</user>
+    <comment>bnc101681</comment>
+    <requestid>447347</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>19ca5c96e3f8ec3a4aa6506ed9d68542</srcmd5>
+    <version>4.2.1</version>
+    <time>1499291740</time>
+    <user>dimstar_suse</user>
+    <comment>Release 3.2 of GNU Health</comment>
+    <requestid>505306</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d8fb69d41e74d4387a65751fa04c4f05</srcmd5>
+    <version>4.2.2</version>
+    <time>1503061452</time>
+    <user>dimstar_suse</user>
+    <comment>Bugfix update for Tryton &amp; GNUHealth</comment>
+    <requestid>517034</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2beddcf8a62821b491430c2f45f895e1</srcmd5>
+    <version>4.2.3</version>
+    <time>1507280619</time>
+    <user>dimstar_suse</user>
+    <comment>Bugfix update for Tryton &amp; GNUHealth</comment>
+    <requestid>531465</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bea190f8688c26a0a08b32573ff4df7a</srcmd5>
+    <version>4.2.4</version>
+    <time>1510837402</time>
+    <user>dimstar_suse</user>
+    <comment>bnc1065671</comment>
+    <requestid>542140</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f42094ab301c6f4568e7b2711f005b48</srcmd5>
+    <version>4.2.5</version>
+    <time>1520778276</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>584729</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fa664debd6f99d53f0a75c7e0887035b</srcmd5>
+    <version>4.2.8</version>
+    <time>1526372040</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.2.8 - Bugfix Release
+- Version 4.2.7 - Bugfix Release
+- Version 4.2.6 - Bugfix Release
+- Version 4.2.5 - Bugfix Release
+- Version 4.2.4 - Bugfix Release
+- Version 4.2.3 - Bugfix Release
+- Version 4.2.2
+- Version 4.2.1
+ 
+- Tryton Release 4.2 
+ 
+- Tryton Release 4.0 
+ 
+- Tryton Release 3.8 
+ 
+- Tryton Release 3.6 
+%changelog
+* 
+- initial build on OBS</comment>
+    <requestid>606650</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d10a19d0ed41df99a8c45fd7ce17b5dc</srcmd5>
+    <version>4.2.9</version>
+    <time>1538502465</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>639345</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e695b13e83eb40961a76e509e2f8ddbc</srcmd5>
+    <version>4.2.10</version>
+    <time>1544264481</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653621</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0a0cd8dbadc8dc66a93cc2a5d3435f47</srcmd5>
+    <version>4.6.8</version>
+    <time>1548064145</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.6.8 - Bugfix Release
+- Version 4.6.7 - Bugfix Release
+- Version 4.2.10 - Bugfix Release
+- Version 4.2.9 - Bugfix Release
+- Version 4.2.8 - Bugfix Release
+- Version 4.2.7 - Bugfix Release
+- Version 4.2.6 - Bugfix Release
+- Version 4.2.5 - Bugfix Release
+- Version 4.2.4 - Bugfix Release
+- Version 4.2.3 - Bugfix Release
+- Version 4.2.2
+- Version 4.2.1
+ 
+- Tryton Release 4.2 
+ 
+- Tryton Release 4.0 
+ 
+- Tryton Release 3.8 
+ 
+- Tryton Release 3.6 
+%changelog
+* 
+- initial build on OBS</comment>
+    <requestid>664360</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e405a641d9aac9f843a5d6b3ecb0f03d</srcmd5>
+    <version>4.6.9</version>
+    <time>1551025090</time>
+    <user>coolo</user>
+    <comment>- Version 4.6.9 - Bugfix Release
+- Version 4.6.8 - Bugfix Release
+- Version 4.6.7 - Bugfix Release
+- Version 4.2.10 - Bugfix Release
+- Version 4.2.9 - Bugfix Release
+- Version 4.2.8 - Bugfix Release
+- Version 4.2.7 - Bugfix Release
+- Version 4.2.6 - Bugfix Release
+- Version 4.2.5 - Bugfix Release
+- Version 4.2.4 - Bugfix Release
+- Version 4.2.3 - Bugfix Release
+- Version 4.2.2
+- Version 4.2.1
+ 
+- Tryton Release 4.2 
+ 
+- Tryton Release 4.0 
+ 
+- Tryton Release 3.8 
+ 
+- Tryton Release 3.6 
+%changelog
+* 
+- initial build on OBS</comment>
+    <requestid>677897</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>009be2860a4a4d50685bfb06c254ca17</srcmd5>
+    <version>4.6.10</version>
+    <time>1563362090</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1141369</comment>
+    <requestid>714988</requestid>
+  </revision>
+</revisionlist>

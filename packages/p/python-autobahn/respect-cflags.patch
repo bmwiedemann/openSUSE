@@ -1,0 +1,24 @@
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Date: 2019-04-08
+
+This bug was found while working on reproducible builds for openSUSE.
+
+Without this patch, binaries would use SSE4.1 instructions if the build
+machine's CPU had it available.
+This could cause 'invalid instruction' faults on older user machines.
+
+https://bugzilla.opensuse.org/show_bug.cgi?id=1100677
+
+Index: autobahn-19.3.3/autobahn/nvx/_utf8validator.py
+===================================================================
+--- autobahn-19.3.3.orig/autobahn/nvx/_utf8validator.py
++++ autobahn-19.3.3/autobahn/nvx/_utf8validator.py
+@@ -52,7 +52,7 @@ with open(os.path.join(os.path.dirname(_
+         "_nvx_utf8validator",
+         c_source,
+         libraries=[],
+-        extra_compile_args=['-std=c99', '-Wall', '-Wno-strict-prototypes', '-O3', '-march=native']
++        extra_compile_args=['-std=c99', '-Wall', '-Wno-strict-prototypes']
+     )
+ 
+ 

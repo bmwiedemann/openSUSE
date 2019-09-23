@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Tue Mar 12 13:17:03 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-2.0
+  no indication of aggregation. Fedora also denote this as GPL-2.0
+
+-------------------------------------------------------------------
+Mon Mar 11 19:58:27 UTC 2013 - aj@suse.com
+
+- Since version 0.18 texinfo is not needed any more, remove
+  build require on it.
+
+-------------------------------------------------------------------
+Tue Mar  5 05:56:20 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Tue Jun 29 00:57:19 UTC 2010 - bphilips@novell.com
+
+ - Upgrade to bug fix release v0.22
+  + Include the existing -x flag in the help message (Mark Hills)
+  + Detect a trailing -f or -o with no following argument
+  + Display message-ID in search -x mode
+  + Skip symlinks when using mbox (R A Lichtensteiger)
+  + Improve error message if home directory cannot be determined
+  + Honour HOME environment variable (Andreas Amann)
+  + MIME types are allowed to have "+" characters in them. (Jonathan Kamens)
+  + Fix deficiencies in the parsing of mbox From lines (Jonathan Kamens)
+  + Fix documentation nits (Tom Doherty)
+  + Remove spurious message when the mtime of a message file has changed
+  + Initialize the date header with a known value. (Samuel Tardieu)
+  + Merge two conflicting solutions for bad MIME encoding
+  + fix for MIME-related crash (Paramjit Oberoi)
+  + Add support claws-mail (Anand Kumria)
+  + Add MH sub-type support for ezmlm-archives (Claus Alboege)
+  + Allow lines starting "From" to occur part-way through the header.o
+  + Handle mbox from separators where email address is in angle brackets
+  + Fix a bug in rfc822.c: Some headers weren't correctly parsed. (Jaime Velasco Juan) 
+
+-------------------------------------------------------------------
+Wed Jan 14 17:32:48 CET 2009 - bphilips@suse.de
+
+- created package 
+

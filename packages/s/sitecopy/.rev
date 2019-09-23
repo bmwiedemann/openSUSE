@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>339b5168e59f3371e44c475cf089f137</srcmd5>
+    <version>0.16.3</version>
+    <time>1168904230</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="56">
+    <srcmd5>0144ef8fc2472992c7c2048d0f8dc138</srcmd5>
+    <version>0.16.3</version>
+    <time>1186687358</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="79">
+    <srcmd5>1ff77fbf2a5b717c6fb5c3b0eeedff4e</srcmd5>
+    <version>0.16.3</version>
+    <time>1199671363</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a6832d9f8963d9dca19773c36ba32412</srcmd5>
+    <version>0.16.6</version>
+    <time>1217980617</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="19">
+    <srcmd5>2b16e0338a2ec0f3f518353e72af3a4c</srcmd5>
+    <version>0.16.6</version>
+    <time>1245340646</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="21">
+    <srcmd5>2b16e0338a2ec0f3f518353e72af3a4c</srcmd5>
+    <version>0.16.6</version>
+    <time>1245340646</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="22">
+    <srcmd5>dcf096e2385fea09b43b09d9d09d4b99</srcmd5>
+    <version>0.16.6</version>
+    <time>1268926174</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="24">
+    <srcmd5>dcf096e2385fea09b43b09d9d09d4b99</srcmd5>
+    <version>0.16.6</version>
+    <time>1278667390</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="25">
+    <srcmd5>dcf096e2385fea09b43b09d9d09d4b99</srcmd5>
+    <version>0.16.6</version>
+    <time>1278678620</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="26">
+    <srcmd5>b815464ac6919857dc5871026bfa7c98</srcmd5>
+    <version>unknown</version>
+    <time>1283778540</time>
+    <user>autobuild</user>
+    <comment>Copy from network/sitecopy based on submit request 47250 from user prusnak
+</comment>
+    <requestid>47250</requestid>
+  </revision>
+  <revision rev="11" vrev="29">
+    <srcmd5>b815464ac6919857dc5871026bfa7c98</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="31">
+    <srcmd5>b815464ac6919857dc5871026bfa7c98</srcmd5>
+    <version>unknown</version>
+    <time>1319182472</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="32">
+    <srcmd5>1c960fbb741d386eec1eef86a6ed2435</srcmd5>
+    <version>0.16.6</version>
+    <time>1323194661</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="34">
+    <srcmd5>1c960fbb741d386eec1eef86a6ed2435</srcmd5>
+    <version>0.16.6</version>
+    <time>1340184218</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="36">
+    <srcmd5>1c960fbb741d386eec1eef86a6ed2435</srcmd5>
+    <version>0.16.6</version>
+    <time>1359110409</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="38">
+    <srcmd5>1c960fbb741d386eec1eef86a6ed2435</srcmd5>
+    <version>0.16.6</version>
+    <time>1379664685</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="39">
+    <srcmd5>95715ea8b625dc08b24d029a18ed537b</srcmd5>
+    <version>0.16.6</version>
+    <time>1399032201</time>
+    <user>coolo</user>
+    <comment>- fix build with no SSLv2, caused by package using 
+  bundled neon library, update supporting patch 
+  (sitecopy-support-neon-0.29.diff) (forwarded request 231580 from elvigia)</comment>
+    <requestid>231813</requestid>
+  </revision>
+  <revision rev="18" vrev="41">
+    <srcmd5>95715ea8b625dc08b24d029a18ed537b</srcmd5>
+    <version>0.16.6</version>
+    <time>1409303371</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

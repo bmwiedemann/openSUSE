@@ -1,0 +1,370 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>50ffa17d20880b05ea1e114e83ffa205</srcmd5>
+    <version>0.1.2</version>
+    <time>1207708947</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>bee60cfeeda8a11fecd44d67d911485d</srcmd5>
+    <version>0.1.2</version>
+    <time>1217629768</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>0266cc9f7e3f40bbc4b7ccc9e03f5e93</srcmd5>
+    <version>0.1.2</version>
+    <time>1224718038</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>0266cc9f7e3f40bbc4b7ccc9e03f5e93</srcmd5>
+    <version>0.1.2</version>
+    <time>1224718038</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>c8cf11a55c7054688162bdc2b0bcba28</srcmd5>
+    <version>0.1.2</version>
+    <time>1268924768</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>c8cf11a55c7054688162bdc2b0bcba28</srcmd5>
+    <version>0.1.2</version>
+    <time>1278667364</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>c8cf11a55c7054688162bdc2b0bcba28</srcmd5>
+    <version>0.1.2</version>
+    <time>1278678593</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8d86af41e2f4ced805758cb50e6f6fc8</srcmd5>
+    <version>0.2.0</version>
+    <time>1291994830</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55264 from user coolo
+</comment>
+    <requestid>55264</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9e461d2411dee1be34507449ef4d67e7</srcmd5>
+    <version>0.2.0</version>
+    <time>1291994843</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55264
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>9e461d2411dee1be34507449ef4d67e7</srcmd5>
+    <version>0.2.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>54849368355243d0385eb8247d30961a</srcmd5>
+    <version>0.2.0</version>
+    <time>1300981581</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65070 from user licensedigger
+</comment>
+    <requestid>65070</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>6c2883a08175d17b69fd49f8fb497068</srcmd5>
+    <version>0.2.0</version>
+    <time>1300981590</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65070
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>118dabc0a059fc0c0224a42238a77506</srcmd5>
+    <version>0.2.2</version>
+    <time>1304581024</time>
+    <user>saschpe</user>
+    <comment>- upgrade to 0.2.2
+  - Fix memory leaks and jumps based on uninitialized variable
+  - Some feature conversions
+  - Silence some warnings</comment>
+    <requestid>69559</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>85720b9c1071d6e8a70057f6e402c738</srcmd5>
+    <version>0.2.2</version>
+    <time>1304581036</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69559
+</comment>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>d0a2e0e008fedcff7fd1c5857ee86729</srcmd5>
+    <version>0.2.2</version>
+    <time>1305790123</time>
+    <user>saschpe</user>
+    <comment>- Add libwps-0.2.0-gcc46.patch: fix compilation with gcc 4.6.x (forwarded request 70537 from fstrba)</comment>
+    <requestid>70588</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>12510c3afb0301a10cbb885052773652</srcmd5>
+    <version>0.2.2</version>
+    <time>1305790140</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70588
+</comment>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>327b23b7b6ab910255f3138de0271f5d</srcmd5>
+    <version>0.2.3</version>
+    <time>1317293559</time>
+    <user>saschpe</user>
+    <comment>Upgrade to version 0.2.3 (forwarded request 85305 from fstrba)</comment>
+    <requestid>85306</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>327b23b7b6ab910255f3138de0271f5d</srcmd5>
+    <version>0.2.3</version>
+    <time>1319182146</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b69557f138526df18b44dfceb17163cc</srcmd5>
+    <version>0.2.4</version>
+    <time>1323175943</time>
+    <user>coolo</user>
+    <comment>- upgrade to 0.2.4
+  - fix generation of invalid xml due to control characters in 
+    text stream. (forwarded request 94236 from fstrba)</comment>
+    <requestid>94238</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>a1299eea0f973c576f021c5a6aec3172</srcmd5>
+    <version>0.2.4</version>
+    <time>1329383165</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104400 from coolo)</comment>
+    <requestid>104646</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>a1299eea0f973c576f021c5a6aec3172</srcmd5>
+    <version>0.2.4</version>
+    <time>1340183654</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a75ebffb8d1cb90aa63d05e42f3fbb99</srcmd5>
+    <version>0.2.6</version>
+    <time>1347618574</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134066</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>a75ebffb8d1cb90aa63d05e42f3fbb99</srcmd5>
+    <version>0.2.6</version>
+    <time>1359109376</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7361beaa07120a00dae6aafd9e7e7779</srcmd5>
+    <version>0.2.8</version>
+    <time>1366379119</time>
+    <user>coolo</user>
+    <comment>- update to 0.2.8
+  - Add MPL 2.0+ as license
+  - Miscellaneous coverity fixes
+  - Add support of text frames and pictures
+  - Improvements in table code
+  - Read the page orientation (forwarded request 172448 from fstrba)</comment>
+    <requestid>172449</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>13da09236f3256cddeeeb0fd158bbbab</srcmd5>
+    <version>0.2.8</version>
+    <time>1367222067</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>173579</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>420a50fe47d894ec253c28521a60f087</srcmd5>
+    <version>0.2.9</version>
+    <time>1370426094</time>
+    <user>coolo</user>
+    <comment>- update to 0.2.9
+ - Various coverity and style fixes
+ - Add provides line to make rpmlint happy</comment>
+    <requestid>176645</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>420a50fe47d894ec253c28521a60f087</srcmd5>
+    <version>0.2.9</version>
+    <time>1379663133</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>365323d79da380ceb5fd392205a4c29d</srcmd5>
+    <version>0.2.9</version>
+    <time>1390214559</time>
+    <user>coolo</user>
+    <comment>- build with -fvisibility-inlines-hidden
+- Enable verbose build. (forwarded request 214342 from elvigia)</comment>
+    <requestid>214345</requestid>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>25d17a003db4a53c64ff3061f345dd22</srcmd5>
+    <version>0.2.9</version>
+    <time>1391077900</time>
+    <user>coolo</user>
+    <comment>- Cleanup with spec-cleaner</comment>
+    <requestid>215141</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>26e86556ef76c315ac81f94c6fc497cc</srcmd5>
+    <version>0.3.0</version>
+    <time>1406479622</time>
+    <user>coolo</user>
+    <comment>Lo 4.3.0.3 submission</comment>
+    <requestid>242312</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>26e86556ef76c315ac81f94c6fc497cc</srcmd5>
+    <version>0.3.0</version>
+    <time>1409301762</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>db6c12b8ea6f6e2947b838e8158c1f77</srcmd5>
+    <version>0.3.1</version>
+    <time>1420429369</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.3.1:
+  - Fix parsing of floating-point numbers in specific cases.
+  - Fix several minor issues reported by Coverity and Clang.
+  - Check arguments of public functions. Passing NULL no longer causes
+    a crash.
+  - Use symbol visibility on Linux. The library only exports the public
+    functions now.
+  - Import @TERM and @CTERM functions (fdo#86241).
+  - Handle LICS character encoding in spreadsheets (fdo#87222).
+  - Fix a crash when reading a broken file, found with the help of
+    american-fuzzy-lop.</comment>
+    <requestid>267029</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ec2432ab972e18c5544bafd8421e21cc</srcmd5>
+    <version>0.4.0</version>
+    <time>1438615236</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312032</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>351c2ba4a0f1af84809f9dac4ef641cc</srcmd5>
+    <version>0.4.1</version>
+    <time>1440871350</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.4.1:
+  - QuattroPro: correct a mistake when reading negative cell's position.
+  - Fix some Windows build problems.
+  - Fix more than 10 hangs when reading damaged files, found with the help
+    of american-fuzzy-lop.
+  - Performance: improve the sheet's output generation.</comment>
+    <requestid>327648</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>80b247e6a78f4e1b4d80fbf56e53449e</srcmd5>
+    <version>0.4.2</version>
+    <time>1444833803</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.4.2:
+  * Add support for microsoft write files</comment>
+    <requestid>336915</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>dcac5234fc26b02c50242291d425ed78</srcmd5>
+    <version>0.4.3</version>
+    <time>1463652203</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.4.3:
+  * Few small fixes, see upstream news for detailed info</comment>
+    <requestid>395065</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>1cbcf6827d3912492c0297db66616636</srcmd5>
+    <version>0.4.4</version>
+    <time>1476997526</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.4.4:
+  * Few lotus fixes</comment>
+    <requestid>435890</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>c83db5ec7ea6bfe578f554d01f446bcb</srcmd5>
+    <version>0.4.4</version>
+    <time>1477903939</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>436892</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ed76d9bc2d3471cfdd6f40036cf78e09</srcmd5>
+    <version>0.4.5</version>
+    <time>1487461374</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453965</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d4093d9405ccc1c592086a2dfb0cb9fa</srcmd5>
+    <version>0.4.6</version>
+    <time>1495267771</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.4.6:
+  * Small bugfixes</comment>
+    <requestid>494943</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>bc36203bd62e58338dc6a929786fb03b</srcmd5>
+    <version>0.4.7</version>
+    <time>1512292181</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.4.7:
+  * Many fixes found by fuzzing</comment>
+    <requestid>546410</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>50a2f89e0b41b3c15910bb1fc0652137</srcmd5>
+    <version>0.4.9</version>
+    <time>1528021777</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.4.9:
+  * QuattroPro: add parser to .wb3 files
+  * Multiplan: add parser to DOS v1-v3 files
+  * charts: try to retrieve charts in .wk*, .wq* files
+  * QuattroPro: add parser to .wb[12] files
+  * switch to c++11
+  * fuzzing: correct many problems</comment>
+    <requestid>613031</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>0a0fa40c3f2f824eb40be503670861eb</srcmd5>
+    <version>0.4.10</version>
+    <time>1543223826</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.4.10:
+  * QuattroPro: add parser of .qwp files
+  * all: support complex encoding</comment>
+    <requestid>649285</requestid>
+  </revision>
+</revisionlist>

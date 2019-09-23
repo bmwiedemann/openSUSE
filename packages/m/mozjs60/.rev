@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f33db2cd2e82b4bc38fb447b863df674</srcmd5>
+    <version>60.1.0</version>
+    <time>1536094419</time>
+    <user>dimstar_suse</user>
+    <comment>new version of mozjs -&gt; 60
+- soon to be required by Gnome
+- once consumers are updated we need to check if we can retire other version in TW (38 and 52)</comment>
+    <requestid>632376</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>437700ce7fb12c45580022f2e585539f</srcmd5>
+    <version>60.1.0</version>
+    <time>1536876119</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635502</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>26cfbb7f815f44843f1791397af34d7b</srcmd5>
+    <version>60.2.2</version>
+    <time>1541509732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644364</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b94a01fc3d18d386417ad6588f7d8bf6</srcmd5>
+    <version>60.4.0</version>
+    <time>1549629924</time>
+    <user>coolo</user>
+    <comment>- update to ESR codebase (60.4.0)
+- rebased riscv-support.patch
+
+- mozjs60-mozilla-s390-bigendian.patch: rediff and apply on more big
+  endian archs
+- mozjs60-xulrunner-24.0-s390-inlines.patch: remove
+- Replace icudt58b.dat.xz by icudt60b.dat.xz
+- riscv-support.patch: add basic support for riscv64</comment>
+    <requestid>670912</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c77d947f141180fd7248b079016dfaae</srcmd5>
+    <version>60.4.0</version>
+    <time>1551023961</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>673395</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>0482807bb658b9c5f4d8477aec1930cc</srcmd5>
+    <version>60.4.0</version>
+    <time>1560337406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706263</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>8f9b3a438881f46a24ec6c8c025636cc</srcmd5>
+    <version>60.4.0</version>
+    <time>1561194233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711048</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Wed Apr 17 12:00:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use %pytest macro
+
+-------------------------------------------------------------------
+Tue Mar 12 01:49:22 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Move fdupes from %check to %install
+- Update to v0.3.0
+  * Remove support for Python 3.3.
+  * New formatting option "--indent_after_first"
+  * New formatting option "--indent_columns"
+  * Add UPSERT keyword
+  * Strip multiple whitespace within parentheses
+  * Support double slash (//) comments
+  * Support for Calcite temporal keywords
+  * Fix occasional IndexError
+  * Fix incorrect splitting of strings containing new lines
+  * Fix reindent issue for parenthesis
+  * Fix from( parsing issue
+  * Fix for get_real_name() to return correct name
+  * Wrap function params when wrap_after is set
+  * Fix parsing of "WHEN name" clauses
+  * Add missing EXPLAIN keyword
+  * Fix issue with strip_comments causing a syntax error
+  * Fix formatting on INSERT which caused staircase effect on values
+  * Avoid formatting of psql commands
+  * Unify handling of GROUP BY/ORDER BY
+  * Remove unnecessary compat shim for bytes
+
+-------------------------------------------------------------------
+Thu Aug 23 06:31:42 UTC 2018 - alarrosa@suse.com
+
+- Update to 0.2.4:
+  * Add more keywords for MySQL table options (pr328, pr333, by phdru).
+  * Add more PL/pgSQL keywords (pr357, by Demetrio92).
+  * Improve parsing of floats (pr330, by atronah).
+  * Fix parsing of MySQL table names starting with digits (issue337).
+  * Fix detection of identifiers using comparisons (issue327).
+  * Fix parsing of UNION ALL after WHERE (issue349).
+  * Fix handling of semicolon in assignments (issue359, issue358).
+- Use fdupes and %license
+- Remove shebangs from non-executable python files
+
+-------------------------------------------------------------------
+Wed Jul 12 05:40:09 UTC 2017 - tbechtold@suse.com
+
+- update to 0.2.3:
+  * New command line option "--encoding" (by twang2218, pr317).
+  * Support CONCURRENTLY keyword (issue322, by rowanseymour).
+  * Fix some edge-cases when parsing invalid SQL statements.
+  * Fix indentation of LIMIT (by romainr, issue320).
+  * Fix parsing of INTO keyword (issue324).
+  * Several improvements regarding encodings.
+  * Add comma_first option: When splitting list "comma first" notation
+  is used (issue141).
+  * Fix parsing of incomplete AS (issue284, by vmuriart).
+  * Fix parsing of Oracle names containing dollars (issue291).
+  * Fix parsing of UNION ALL (issue294).
+  * Fix grouping of identifiers containing typecasts (issue297).
+  * Add Changelog to sdist again (issue302).
+  * `is_whitespace` and `is_group` changed into properties
+- convert to singlespec
+
+-------------------------------------------------------------------
+Tue Nov 15 10:13:47 UTC 2016 - dmueller@suse.com
+
+- update to 0.2.1
+
+-------------------------------------------------------------------
+Wed May 13 16:39:54 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.1.15:
+  * Fix a regression for identifiers with square brackets notation
+    (issue153, by darikg).
+  * Add missing SQL types (issue154, issue155, issue156, by
+    jukebox).
+  * Fix parsing of multi-line comments (issue172, by JacekPliszka).
+  * Fix parsing of escaped backslashes (issue174, by caseyching).
+  * Fix parsing of identifiers starting with underscore (issue175).
+  * Fix misinterpretation of IN keyword (issue183).
+  * Improve formatting of HAVING statements.
+  * Improve parsing of inline comments (issue163).
+  * Group comments to parent object (issue128, issue160).
+  * Add double precision builtin (issue169, by darikg).
+  * Add support for square bracket array indexing (issue170,
+    issue176, issue177 by darikg).
+  * Improve grouping of aliased elements (issue167, by darikg).
+  * Support comments starting with '#' character (issue178).
+- additional changes from version 0.1.14:
+  * Floats in UPDATE statements are now handled correctly
+    (issue145).
+  * Properly handle string literals in comparisons (issue148,
+    change proposed by aadis).
+  * Fix indentation when using tabs (issue146).
+  * Improved formatting in list when newlines precede commas
+    (issue140).
+- additional changes from version 0.1.13:
+  * Fix a regression in handling of NULL keywords introduced in
+    0.1.12.
+- additional changes from version 0.1.12:
+  * Fix handling of NULL keywords in aliased identifiers.
+  * Fix SerializerUnicode to split unquoted newlines (issue131, by
+    Michael Schuller).
+  * Fix handling of modulo operators without spaces (by gavinwahl).
+  * Improve parsing of identifier lists containing placeholders.
+  * Speed up query parsing of unquoted lines (by Michael Schuller).
+- additional changes from version 0.1.11:
+  * Fix incorrect parsing of string literals containing line breaks
+    (issue118).
+  * Fix typo in keywords, add MERGE, COLLECT keywords
+    (issue122/124, by Cristian Orellana).
+  * Improve parsing of string literals in columns.
+  * Fix parsing and formatting of statements containing EXCEPT
+    keyword.
+  * Fix Function.get_parameters() (issue126/127, by spigwitmer).
+  * Classify DML keywords (issue116, by Victor Hahn).
+  * Add missing FOREACH keyword.
+  * Grouping of BEGIN/END blocks.
+  * Python 2.5 isn't automatically tested anymore, neither Travis
+    nor Tox still support it out of the box.
+
+-------------------------------------------------------------------
+Sat Nov 08 20:20:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in pre script
+
+-------------------------------------------------------------------
+Fri Nov 15 12:18:02 UTC 2013 - speilicke@suse.com
+
+- Only ghost /etc/alternatives on 12.3 or newer
+
+-------------------------------------------------------------------
+Fri Nov  8 07:52:44 UTC 2013 - speilicke@suse.com
+
+- Initial version
+

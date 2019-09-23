@@ -1,0 +1,201 @@
+-------------------------------------------------------------------
+Fri Aug 02 20:00:50 UTC 2019 - marix@marix.org
+
+- Update to version 0.10:
+  * Switched back to "normal" version numbering
+  * Added APIVersion field to the DBus API
+  * Added Devices:
+    + Logitech MX Vertical
+  * G700s is now handled as G700. This may have side effects and
+    will be addressed in future versions.
+- Dropped no longer required patch no-git.diff.
+- Updated shebang-env.diff.
+- Updated install-daemon-into-sbindir.patch.
+- Dropped fix-broken-log-invocation.patch which is now fixed
+  upstream.
+
+-------------------------------------------------------------------
+Wed Jul 31 20:01:30 UTC 2019 - marix@marix.org
+
+- Update to version 0.9.906:
+  * Added Devices:
+    + Logitech G403 Wireless
+    + Logitech G403 Hero
+    + Logitech G703 Hero
+    + Logitech G903 Hero
+    + Logitech Marathon M705
+    + Logitech MX Anyhwere 2S Bluetooth
+    + Logitech MX Ergo
+    + Logitech MX518
+  * Improved Devices:
+    + Logitech G Pro
+    + Logitech G602
+    + Logitech G603
+    + Logitech G900
+    + Logitech MX Anyhwere 2
+  * Renamed Devices
+    + Logitech G900 Wireless to Logitech Lightspeed
+  * Add battery voltage reporting for newer mice
+  * Install the device files in the top-level datadir
+- Added fix-broken-log-invocation.patch.
+
+-------------------------------------------------------------------
+Sun Mar 31 10:42:03 UTC 2019 - Matthias Bach <marix@marix.org>
+
+- Dropped the no longer required build requirement python3-lxml.
+
+-------------------------------------------------------------------
+Fri Mar 29 20:02:53 UTC 2019 - Matthias Bach <marix@marix.org>
+
+- Update to version 0.9.905:
+  * Added Devices:
+    + Logitech G603
+  * Breaking changes in DBus API to move it towards a 1.0 release.
+  * SVG handling has been dropped.
+  * Ratbagctl interface changed:
+    * Device IDs or Device name matching is now used instead of
+      event nodes. Use `ratbagctl list` to see device IDs and
+      names.
+    * Device is now taken as the first argument.
+    * Ratbagctl is now case sensitive.
+
+-------------------------------------------------------------------
+Wed Jan 30 08:45:35 UTC 2019 - marix@marix.org
+
+- Update to version 0.9.904:
+  * Added Devices:
+    + Logitech G PowerPlay
+    + Logitech G Pro
+    + Logitech G402
+    + Logitech G502 HERO
+    + Logitech MX Anywhere 2
+    + Logitech MX Anywhere 2S
+    + Logitech MX Master 2S
+    + Steelseries Rival 600
+  * Improved Devices:
+    + All supported Roccat Devices
+    + Logitech G102/203
+    + Logitech G502
+    + Logitech G600
+    + Logitech G603
+    + Logitech G903
+    + Logitech MX Master
+  * Improved error messages provided by the command line tools.
+
+-------------------------------------------------------------------
+Tue Oct 16 21:09:51 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.9.903:
+  * Adds GetSvgFd() function on D-BUS required by Piper
+  * Add a --version commandline argument ratbagd
+  * Added support for the Steelseries Sensei Raw
+  * Added support for the Logitech G600
+  * Added support for the Logitech G302
+
+-------------------------------------------------------------------
+Tue Jul 31 20:14:08 UTC 2018 - marix@marix.org
+
+- Drop rpmlint configuration as the D-Bus service of the package
+  has been whitelisted via bsc#1076467.
+
+-------------------------------------------------------------------
+Sat Jul 28 11:00:34 UTC 2018 - marix@marix.org
+
+- Ensure that group games is present.
+
+-------------------------------------------------------------------
+Fri Jul 27 20:56:37 UTC 2018 - marix@marix.org
+
+- Add install-daemon-into-sbindir-patch.patch: Installs ratbagd
+  into /usr/sbin as can only be run by root.
+
+-------------------------------------------------------------------
+Tue Jul 10 20:18:26 UTC 2018 - marix@marix.org
+
+- Move the daemon into a separate subpackage as applications like
+  piper can use it without having the command line tools installed.
+
+-------------------------------------------------------------------
+Thu Jul  5 09:04:13 UTC 2018 - marix@marix.org
+
+- Run tests as part of package build.
+- Fix disabling of documentation build.
+
+-------------------------------------------------------------------
+Thu Jul  5 08:47:49 UTC 2018 - marix@marix.org
+
+- Suppress the suse-dbus-unauthorized-service lintian error for
+  easier testing.
+
+-------------------------------------------------------------------
+Wed Jul  4 12:03:02 UTC 2018 - marix@marix.org
+
+- Update to new upstream release 0.9.902:
+  * Add Steelserices Sensei 310
+- Remove 0001-meson-dbus-support-build-time-option-to-restrict-D-B.patch
+  as it was merged upstream.
+
+-------------------------------------------------------------------
+Wed Jul 04 11:30:49 UTC 2018 - marix@marix.org
+
+- Recovered the deleted package from the hardware project.
+- Switch to source retrieved via obs_scm.
+
+-------------------------------------------------------------------
+Mon Jan 29 15:22:53 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 0.9.901
+  * Fixed a stack buffer overflow that was triggerable
+    with dbus-send
+  * multiple D-Bus calls caused a 3-byte stack overwrite and
+    resulted in a segfault
+  * ratbagd_button_set_key() D-Bus callback allowed
+    another stack buffer overflow
+- Remove 0001-meson-fix-default-value-in-meson_options.txt.patch
+- Add 0001-meson-dbus-support-build-time-option-to-restrict-D-B.patch
+
+-------------------------------------------------------------------
+Sat Nov 11 13:29:19 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 0.9.900
+  * libratbag is not a library anymore. Instead, the ratbagd
+    project was merged into libratbag and the main way to
+    interact with libratbag is now via its DBus interface. This
+    is because anything using libratbag needs to run as root to
+    have the required permissions. At that point, an abstraction
+    daemon is needed anyway to use it from a GUI app.
+- Add 0001-meson-fix-default-value-in-meson_options.txt.patch
+  to fix an error during configure step.
+- Add shebang-env.diff, no-git.diff .
+
+-------------------------------------------------------------------
+Thu Jun  8 08:54:34 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 0.9
+  * 2 new drivers (G300 and G-Skill)
+  * a brand new LED API
+  * a new commit API for sending profiles at once, which should
+    reduce the communications between the host and the device
+  * some shiny new SVGs
+  * convert some Logitech devices to the commit API
+  * manpage added for lur-command
+
+-------------------------------------------------------------------
+Sat Oct 22 16:04:50 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 0.5
+* No changelog was provided
+
+-------------------------------------------------------------------
+Fri Jul  1 08:37:57 UTC 2016 - jengelh@inai.de
+
+- Update to new git snapshot 0.4.g39
+* add support for Logitech G700, and G700 over wireless
+* enable metadata parsing on G500
+* add profile parsing on G9, button definitions and mappings for G9
+* add G502 and G700 svg data
+
+-------------------------------------------------------------------
+Thu Nov 12 18:22:37 UTC 2015 - jengelh@inai.de
+
+- Initial package (version 0~git620) for build.opensuse.org

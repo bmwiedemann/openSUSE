@@ -1,0 +1,6 @@
+<package name="python-json-rpc" project="openSUSE:Factory">
+  <title>python-json-rpc</title>
+  <description>JSON-RPC is lightweight remote procedure call protocol similar to XML-RPC. It's designed to be simple! </description>
+  <devel project="devel:languages:python" package="python-json-rpc"/>
+  <url>http://json-rpc.org</url>
+</package>

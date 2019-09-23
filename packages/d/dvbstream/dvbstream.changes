@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Tue Jul  4 12:53:40 UTC 2017 - mpluskal@suse.com
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jul  4 12:17:27 UTC 2017 - jdelvare@suse.de
+
+- Removed BuildRequires dvb, builds just fine without it.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:13 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Sun Feb 11 11:59:38 CET 2007 - ro@suse.de
+
+- added defattr 
+
+-------------------------------------------------------------------
+Mon May 22 20:49:29 CEST 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:37 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Nov 14 16:17:10 CET 2005 - duwe@suse.de
+
+- update to current CVS, version 0.6
+
+-------------------------------------------------------------------
+Thu Sep 22 12:28:20 CEST 2005 - yxu@suse.de
+
+- add needed prototypes 
+
+-------------------------------------------------------------------
+Fri May 16 07:54:22 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Mon Jan 13 01:28:06 CET 2003 - ro@suse.de
+
+- update to cvs version to compile with current driver
+
+-------------------------------------------------------------------
+Wed May 29 12:39:00 CEST 2002 - uli@suse.de
+
+- initial package
+
+

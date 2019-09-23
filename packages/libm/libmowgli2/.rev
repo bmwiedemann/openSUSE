@@ -1,0 +1,96 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>13355629a130c5106cad85b9565ef9ca</srcmd5>
+    <version>2.0.0</version>
+    <time>1339477742</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>124451</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>13355629a130c5106cad85b9565ef9ca</srcmd5>
+    <version>2.0.0</version>
+    <time>1340183606</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>13355629a130c5106cad85b9565ef9ca</srcmd5>
+    <version>2.0.0</version>
+    <time>1359109306</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>3a07b42497ea0473eb0912527c5b0a51</srcmd5>
+    <version>2.0.0</version>
+    <time>1362993210</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>158240</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>3a07b42497ea0473eb0912527c5b0a51</srcmd5>
+    <version>2.0.0</version>
+    <time>1379663010</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>56465c40b76e33465c40de7f08a936d9</srcmd5>
+    <version>2.0.0</version>
+    <time>1393937099</time>
+    <user>coolo</user>
+    <comment>- Update project URL</comment>
+    <requestid>224548</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>de27bbc61422b8aba0fb4fd2093cdc57</srcmd5>
+    <version>2.0.0.g185</version>
+    <time>1405971603</time>
+    <user>coolo</user>
+    <comment>- Update to snapshot 2.0.0.g185 required by atheme-services-7.1.0</comment>
+    <requestid>241666</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6078739f2616451caa9d3a6c18ca9cba</srcmd5>
+    <version>2.0.0.g185</version>
+    <time>1406645312</time>
+    <user>coolo</user>
+    <comment>- Enable openssl support
+- Set symbol versions on the library because the API did change
+  upwards-compatibly</comment>
+    <requestid>242782</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>6078739f2616451caa9d3a6c18ca9cba</srcmd5>
+    <version>2.0.0.g185</version>
+    <time>1409301626</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>63a5aa6f304f7cce67625371ff648f79</srcmd5>
+    <version>2.1.0</version>
+    <time>1463392962</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>394838</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9755f98b4959d99e72ed9e19b68af374</srcmd5>
+    <version>2.1.1</version>
+    <time>1505331271</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.1.1</comment>
+    <requestid>523402</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5b15f1d437da25ac2df9e872ca55a175</srcmd5>
+    <version>2.1.3</version>
+    <time>1566464087</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.1.3</comment>
+    <requestid>725082</requestid>
+  </revision>
+</revisionlist>

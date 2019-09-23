@@ -1,0 +1,333 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1ff2c2abcc502cbc2cf00d1dee04c44d</srcmd5>
+    <version>2.2</version>
+    <time>1168903515</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="22">
+    <srcmd5>11f33509aa661ffbc251d78e7d711eab</srcmd5>
+    <version>2.2</version>
+    <time>1175212190</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ea89d5bfb497c58aa24689358c48fdea</srcmd5>
+    <version>2.3</version>
+    <time>1206721024</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="14">
+    <srcmd5>f3583a312b19086a18c56f574fa7196b</srcmd5>
+    <version>2.3</version>
+    <time>1214256015</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="16">
+    <srcmd5>a1f27e2f15afe696d0a9e928ea44f2b2</srcmd5>
+    <version>2.3</version>
+    <time>1216946232</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="27">
+    <srcmd5>28541800134747b03e40f48957b241de</srcmd5>
+    <version>2.3</version>
+    <time>1219963962</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="29">
+    <srcmd5>28541800134747b03e40f48957b241de</srcmd5>
+    <version>2.3</version>
+    <time>1219963962</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="34">
+    <srcmd5>d91253b3f709600544174dcfd110bddb</srcmd5>
+    <version>2.3</version>
+    <time>1263305409</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/minicom based on submit request 29056 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="35">
+    <srcmd5>7e55b6a56ac910fd356f3c08b16889a4</srcmd5>
+    <version>2.3</version>
+    <time>1268924944</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="36">
+    <srcmd5>86791b9011a074ba132b30da5352fc43</srcmd5>
+    <version>2.3</version>
+    <time>1273791951</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/minicom based on submit request 39726 from user lnussel
+</comment>
+    <requestid>39726</requestid>
+  </revision>
+  <revision rev="11" vrev="38">
+    <srcmd5>86791b9011a074ba132b30da5352fc43</srcmd5>
+    <version>2.3</version>
+    <time>1278667367</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="39">
+    <srcmd5>86791b9011a074ba132b30da5352fc43</srcmd5>
+    <version>2.3</version>
+    <time>1278678597</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="40">
+    <srcmd5>c55531777f54d5c875e4b7a8a108520d</srcmd5>
+    <version>2.3</version>
+    <time>1279918035</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/minicom based on submit request 43699 from user coolo
+</comment>
+    <requestid>43699</requestid>
+  </revision>
+  <revision rev="14" vrev="41">
+    <srcmd5>cfc2667f2624da35e9ea6820304be3b6</srcmd5>
+    <version>2.3</version>
+    <time>1283164784</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/minicom based on submit request 46605 from user elvigia
+</comment>
+    <requestid>46605</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>500e2ae1cdc2da30774ffa3451d93b47</srcmd5>
+    <version>2.4</version>
+    <time>1283528424</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/minicom based on submit request 47058 from user anicka
+</comment>
+    <requestid>47058</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>d35f2fc4827f62ad01d9f0f4800a5b4e</srcmd5>
+    <version>2.4</version>
+    <time>1295050305</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58178 from user coolo
+</comment>
+    <requestid>58178</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>4fc42487bec4ad6fe598581cbdf6302c</srcmd5>
+    <version>2.4</version>
+    <time>1295050314</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58178
+</comment>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>0fd0b2f9f9aca4fd70e0785710597cce</srcmd5>
+    <version>2.5</version>
+    <time>1296608787</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59476 from user vitezslav_cizek
+</comment>
+    <requestid>59476</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>803244f9e9bdc4a36a0f34adcf19a364</srcmd5>
+    <version>2.5</version>
+    <time>1296608800</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59476
+</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>803244f9e9bdc4a36a0f34adcf19a364</srcmd5>
+    <version>2.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>5f61d94485263a5f7f1e5a5bf8367f29</srcmd5>
+    <version>2.5</version>
+    <time>1311761956</time>
+    <user>saschpe</user>
+    <comment>- increased size of parameter buffers (bnc#707860) (forwarded request 77083 from vitezslav_cizek)</comment>
+    <requestid>77147</requestid>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>84bdeb92ad5aa4979302bcff4a695992</srcmd5>
+    <version>2.5</version>
+    <time>1311761963</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77147
+</comment>
+  </revision>
+  <revision rev="23" vrev="9">
+    <srcmd5>27eaa60baf1838110bf2cd70e6e9779c</srcmd5>
+    <version>2.5</version>
+    <time>1314193886</time>
+    <user>saschpe</user>
+    <comment>- fix lockdev suppport (bnc#713330)</comment>
+    <requestid>79644</requestid>
+  </revision>
+  <revision rev="24" vrev="10">
+    <srcmd5>788b905e65f40678d231c26ec9716e1e</srcmd5>
+    <version>2.5</version>
+    <time>1314193895</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79644
+</comment>
+  </revision>
+  <revision rev="25" vrev="11">
+    <srcmd5>83520c66f33b3e95ae140932d352aacd</srcmd5>
+    <version>2.5</version>
+    <time>1319044105</time>
+    <user>coolo</user>
+    <comment>- a complete fix for (bnc#707860)
+- increased length of serial device (bnc#707860)</comment>
+    <requestid>88746</requestid>
+  </revision>
+  <revision rev="26" vrev="13">
+    <srcmd5>83520c66f33b3e95ae140932d352aacd</srcmd5>
+    <version>2.5</version>
+    <time>1319182179</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="27" vrev="14">
+    <srcmd5>89787829f2f951d87504b952122ec42a</srcmd5>
+    <version>2.5</version>
+    <time>1324830999</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>97495</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0a8df72f5e5509ea6bb2b0ad6f0646db</srcmd5>
+    <version>2.6</version>
+    <time>1325658312</time>
+    <user>coolo</user>
+    <comment>- update to 2.6
+  * Add possibility to add delay after every character transmission.
+  * Fix build issues on Mac OS X.
+  * Stop providing default modem init and reset strings (still available when
+    editing).
+  * Added possibility for timestamps in output, added by minicom
+  * Added lockdev support.
+  * Added new dialdir format that is supposed to be interoperable between 32
+    and 64 bits archs.</comment>
+    <requestid>98541</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>6bb113e5df753145e87b47b01b70e6a0</srcmd5>
+    <version>2.6</version>
+    <time>1338476829</time>
+    <user>coolo</user>
+    <comment>- fix build with automake-1.12
+  - add: automake-1.12.patch (forwarded request 122736 from puzel)</comment>
+    <requestid>122806</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>6bb113e5df753145e87b47b01b70e6a0</srcmd5>
+    <version>2.6</version>
+    <time>1340183700</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>76893ccadadc7c548c2d89f34fdf29be</srcmd5>
+    <version>2.6.1</version>
+    <time>1347722944</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133903</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>c90014847c21fba6fd8d786f38d12bd5</srcmd5>
+    <version>2.6.1</version>
+    <time>1357217165</time>
+    <user>namtrac</user>
+    <comment>- configure wants &quot;ckermit&quot; present during build and at runtime.
+- Prefer ncurses6w. (forwarded request 146535 from elvigia)</comment>
+    <requestid>146887</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>c90014847c21fba6fd8d786f38d12bd5</srcmd5>
+    <version>2.6.1</version>
+    <time>1359109445</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="6">
+    <srcmd5>c90014847c21fba6fd8d786f38d12bd5</srcmd5>
+    <version>2.6.1</version>
+    <time>1379663290</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2f8c39bd496c1eb3954115dc5a8f462b</srcmd5>
+    <version>2.6.2</version>
+    <time>1387737392</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 2.6.2
+ * Alternative hex output (to be improved)
+ * Print creation date of serial device file (if &lt; 20 hrs), useful for
+   identifying just plugged in USB-Serial adapters 
+ * Support ':' (colon) in device path names. Note, that this changes old
+   behaviour which used ':' as a device path delimiter.
+ * Several language updates.
+- refreshed/rebased patches
+  * minicom-2.3-no-build-date.patch
+  * minicom-2.4-norootsetup.diff
+  * minicom-2.5-serial_device_path_length.patch (forwarded request 211337 from mvyskocil)</comment>
+    <requestid>211363</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>cdb90f398f7b722a77f4088fc4bd8f5b</srcmd5>
+    <version>2.7</version>
+    <time>1389881526</time>
+    <user>coolo</user>
+    <comment>- fix Source url 
+
+- update to 2.7
+  * Configurable status line via -F option, see manpage for a listing
+    of format specifier.
+  * Improve display of device name in status line.
+  * Script: Binary transmission feature via &quot;!&lt;&quot;
+  * Fixes.</comment>
+    <requestid>213837</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>cdb90f398f7b722a77f4088fc4bd8f5b</srcmd5>
+    <version>2.7</version>
+    <time>1409301899</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>383629075108893b7a3c3c2f3176fd0a</srcmd5>
+    <version>2.7</version>
+    <time>1426680238</time>
+    <user>dimstar_suse</user>
+    <comment>- Split language to subpackage
+- Remove check phase, it is empty just saying there is nothing to be done
+- Use name and version macros in Source path</comment>
+    <requestid>290623</requestid>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>5314aeee20359e4526fc63fd1bd61993</srcmd5>
+    <version>2.7</version>
+    <time>1489345293</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477093</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>cc3ffe870ace5eb6df52a3ec899914a7</srcmd5>
+    <version>2.7.1</version>
+    <time>1492618294</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489267</requestid>
+  </revision>
+</revisionlist>

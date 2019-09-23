@@ -1,0 +1,37 @@
+--- wmtimer/wmtimer.c
++++ wmtimer/wmtimer.c
+@@ -568,20 +568,20 @@
+  ******************************************************************************/
+ void callback(GtkWidget * widget, gpointer data)
+ {
+-  if ((char *) data == "alarm_button")
++  if (!strcmp((char *) data, "alarm_button"))
+     tmpMode = ALARM;
+-  else if ((char *) data == "timer_button")
++  else if (!strcmp((char *) data, "timer_button"))
+     tmpMode = TIMER;
+-  else if ((char *) data == "chrono_button")
++  else if (!strcmp((char *) data, "chrono_button"))
+     tmpMode = CHRONO;
+-  else if ((char *) data == "bell_button")
++  else if (!strcmp((char *) data, "bell_button"))
+   {
+     if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget)))
+       tmpAction.bell = 1;
+     else
+       tmpAction.bell = 0;
+   }
+-  else if ((char *) data == "command_button")
++  else if (!strcmp((char *) data, "command_button"))
+   {
+     if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget))) 
+     {
+@@ -596,7 +596,7 @@
+       gtk_entry_set_editable(GTK_ENTRY (entry), FALSE);
+     }
+   }
+-  else if ((char *) data == "ok")
++  else if (!strcmp((char *) data, "ok"))
+   {
+     if (tmpAction.command)
+       strcpy(command, gtk_entry_get_text(GTK_ENTRY (entry)));

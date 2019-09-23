@@ -1,0 +1,26 @@
+From 1ef4a68bb09555d223633d97178a31c97c877b7a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Matthias=20Mail=C3=A4nder?=
+ <Mailaender@users.noreply.github.com>
+Date: Mon, 6 Feb 2017 19:30:12 +0100
+Subject: [PATCH] Adhere to the FreeDesktop specifications
+
+---
+ share/openlierox-openlierox.desktop | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/share/openlierox-openlierox.desktop b/share/openlierox-openlierox.desktop
+index c93d764..d50b566 100644
+--- a/share/openlierox-openlierox.desktop
++++ b/share/openlierox-openlierox.desktop
+@@ -1,9 +1,10 @@
+ [Desktop Entry]
+ Version=1.0
+ Name=OpenLieroX
++GenericName=real-time 2D shooter
+ Type=Application
+ Comment=A real-time excessive Worms-clone
+ Exec=openlierox
+ TryExec=openlierox
+ Icon=OpenLieroX.svg
+-Categories=Game;
++Categories=Game;ActionGame;

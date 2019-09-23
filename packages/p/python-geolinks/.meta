@@ -1,0 +1,5 @@
+<package name="python-geolinks" project="openSUSE:Factory">
+  <title>GeoLinks</title>
+  <description>Utilities to deal with geospatial links</description>
+  <devel project="Application:Geo" package="python-geolinks"/>
+</package>

@@ -1,0 +1,59 @@
+#! /bin/sh
+set -e
+
+# grub-mkconfig helper script.
+# Copyright (C) 2011  Michal Ambroz <rebus@seznam.cz>
+# Adapted for openSUSE by Andrey Borzenkov <arvidjaar@gmail.com>
+#
+# you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with the script.  If not, see <http://www.gnu.org/licenses/>.
+
+. /usr/share/grub2/grub-mkconfig_lib
+
+export TEXTDOMAIN=grub2
+export TEXTDOMAINDIR=/usr/share/locale
+
+# memset86+ requires the x86 real mode
+# which is not available with UEFI booting.
+if [ -d /sys/firmware/efi ]; then
+  exit 0
+fi
+
+CLASS="--class memtest86 --class gnu --class tools"
+
+if [ "x${GRUB_DISTRIBUTOR}" = "x" ] ; then
+  OS=Memtest
+else
+  OS="${GRUB_DISTRIBUTOR} Memtest"
+  CLASS="--class $(echo ${GRUB_DISTRIBUTOR} | tr 'A-Z' 'a-z' | cut -d' ' -f1) ${CLASS}"
+fi
+
+memtest=/boot/memtest.bin
+
+if grub_file_is_not_garbage "$memtest" ; then
+  gettext_printf "Found memtest image: %s\n" "$memtest" >&2
+  basename=`basename $memtest`
+  dirname=`dirname $memtest`
+  rel_dirname=`make_system_path_relative_to_its_root $dirname`
+  boot_device_id="$(grub_get_device_id "${GRUB_DEVICE_BOOT}")"
+
+  printf "menuentry '%s' %s \$menuentry_id_option '%s' {\n" "${OS}" "${CLASS}" "memtest-$boot_device_id"
+  prepare_boot_cache="$(prepare_grub_to_access_device ${GRUB_DEVICE_BOOT} | sed -e "s/^/\t/")"
+  printf '%s\n' "${prepare_boot_cache}"
+  message="$(gettext_printf "Loading memtest ...\n" | grub_quote)"
+  cat << EOF
+	echo	'$message'
+	linux16	${rel_dirname}/${basename}
+}
+EOF
+fi

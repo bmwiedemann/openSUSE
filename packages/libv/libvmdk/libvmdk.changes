@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Tue Apr 16 21:53:38 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- Update to 20181227
+        * Extended pyvmdk with disk and extent types
+        * Fixed issue in fallback inflate implementation
+        * Worked on mount tool
+
+-------------------------------------------------------------------
+Wed Oct  4 21:27:57 UTC 2017 - Greg.Freemyer@gmail.com
+
+- rename python-libvmdk to python2-libvmdk as expected by singlespec
+- remove Provides pyvmdk as it is not versioned
+
+-------------------------------------------------------------------
+Mon Oct  2 21:44:34 UTC 2017 - Greg.Freemyer@gmail.com
+
+- Update to 20170226
+	* worked on python bindings
+	* code clean up
+	* worked on internal tests
+- disabled tests - they no longer compile
+- use internal version of libcnotify
+- Change Group: field for the python bindings to devel/languages/python
+
+-------------------------------------------------------------------
+Fri Jul  1 16:27:00 UTC 2016 - toddrme2178@gmail.com
+
+- Enable tests
+- Build against external versions of all libraries.
+  They work now.
+- rename doc file to eliminate () due to new security chec
+
+-------------------------------------------------------------------
+Thu Jun 30 19:23:31 UTC 2016 - toddrme2178@gmail.com
+
+- Update to 20160124
+        * 2016 update
+        * changes for deployment
+        * Changes to Python bindings
+        * fixed bug handling extent without filename
+        * fixed bug in basename handling on non UTF-8 system string systems
+        * fixed memory leak
+        * fixes for rpmbuild
+        * updated dependencies
+        * worked on fallback inflate implementation
+        * worked on Python 3 support
+        * worked on Python bindings
+        * worked on tests
+- Build with fuse.  If not, mounting doesn't work.
+- Build python 3 bindings.
+- Update summaries and descriptions based on upstream spec file.
+
+-------------------------------------------------------------------
+Mon Jan  5 22:02:48 UTC 2015 - Greg.Freemyer@gmail.com
+
+- update to v0~20150105
+	* worked on Python 3 support
+	* worked on tests
+	* worked on test scripts
+	* code clean up
+	* small fixes for stand-alone usage of libfvalue
+	* worked on multi-threading support
+	* added tests/pyvmdk_test_open_close.py to make dist
+	* bug fix in Python-bindings
+- update URL field to point to the new github site
+- update Source: field to be a fully defined URL
+- deleted the DL-URL comment
+- update the BuildRequires based on what works from OBS
+- remove %if for opensuse version, not needed with libyal consolidated in decurity:forensics
+
+-------------------------------------------------------------------
+Mon Aug 25 15:35:37 UTC 2014 - Greg.Freemyer@gmail.com
+
+- remove reference to GFDL-1.1+.  Supplemental docs were GFDL-1.3+ only.
+
+-------------------------------------------------------------------
+Sat Aug 23 17:23:19 UTC 2014 - Greg.Freemyer@gmail.com
+
+- initial package in OBS (0v20140803)
+

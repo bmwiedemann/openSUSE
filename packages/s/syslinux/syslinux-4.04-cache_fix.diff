@@ -1,0 +1,36 @@
+commit 0a0e0e41cad93cd16c323cf16f40264a21eedd6c
+Author: H. Peter Anvin <hpa@zytor.com>
+Date:   Thu Jul 19 07:29:55 2012 -0700
+
+    Correct initialization of the cache doubly-linked list
+    
+    The initialization of the cache doubly-linked list had
+    head->next->prev instead of head->prev->next; this entry is supposed
+    to initialize the ->next entry of the last entry in the list (which
+    points back to the head node.)
+    
+    For clarity, consistently use "head" to refer to the head node; the
+    mixing of "head" and "dev->cache_head" needlessly obfuscated the code.
+    
+    The wild pointer reference caused crashes on some systems.
+    
+    Reported-by: Jan Safrata <jsafrata@centrum.cz>
+    Signed-off-by: H. Peter Anvin <hpa@zytor.com>
+
+diff --git a/core/fs/cache.c b/core/fs/cache.c
+index 0d7891b..3b21fc2 100644
+--- a/core/fs/cache.c
++++ b/core/fs/cache.c
+@@ -37,10 +37,10 @@ void cache_init(struct device *dev, int block_size_shift)
+ 
+     dev->cache_head = head = (struct cache *)
+ 	(data + (dev->cache_entries << block_size_shift));
+-    cache = dev->cache_head + 1; /* First cache descriptor */
++    cache = head + 1;		/* First cache descriptor */
+ 
+     head->prev  = &cache[dev->cache_entries-1];
+-    head->next->prev = dev->cache_head;
++    head->prev->next = head;
+     head->block = -1;
+     head->data  = NULL;
+ 

@@ -1,0 +1,5 @@
+<package name="xplayer-plparser" project="openSUSE:Factory">
+  <title>Simple GObject-based library to parse playlist formats</title>
+  <description>xplayer-plparser is a simple GObject-based library to parse a host of playlist formats, to save them too.</description>
+  <devel project="X11:Cinnamon:Factory" package="xplayer-plparser"/>
+</package>

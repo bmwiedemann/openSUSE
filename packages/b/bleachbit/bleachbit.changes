@@ -1,0 +1,743 @@
+-------------------------------------------------------------------
+Thu Mar 21 20:37:29 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.2:
+ * To shred paths from the clipboard, open your operating system's file browser, and copy some files to the clipboard. In BleachBit, click File - Shred Paths from Clipboard. Unlike drag-and-drop, this still works on Windows when running as administrator.
+ * Major cleaning improvements for Google Chrome, Chromium, and Firefox.
+ * Clean modern versions of Opera based on Chromium.
+ * Wipe free space from the command line with the new command --wipe-free-space (idea from Thomas).
+ * Improve startup time of application. On some systems, it can be significant.
+ * Increase resolution of application icon (thanks to totalCaesar659).
+ * Add cleaner for Waterfox (thanks to danielk43).
+ * Clean more of aMule (thanks to Pere Orga).
+ * Fix: deep scan crashed when encountering paths with special characters (reported by thecsw).
+ * Specific to Linux
+  * Improve AppData registration (thanks to Harald H).
+  * Clean more localizations (thanks to Tristan Stenner).
+  * Fix: notifications on Gnome (thanks to Djaler).
+  * Fix: percent symbol was not allowed in whitelist path (reported by bbusr).
+  * Fix: memory could not be cleaned when swap was larger than 16 GiB (reported by apd_1985).
+  * Fix: run BleachBit without X display, such as in cron (reported by isleno).
+- update to version 2.1:
+ * Click Help - System Information, and there should be a line that starts Git revision.
+ * Open your operating system's file browser, and copy some files (that you don't need) to the clipboard. In BleachBit, click File - Shred Paths from Clipboard.
+ * Test the following cleaners that had major changes: Adobe Flash, Google Chrome, Chromium, Opera, Firefox, Waterfox.
+ * Clean non-default profiles in Firefox
+ * Use the command line option --wipe-free-space.
+ * Run a deep scan. (Preview is sufficient.) Verify there are no errors.
+ * Clean memory on a system with a swap partition greater than 16 GiB.
+ * Run BleachBit without X, such as in cron.
+- Change URL to HTTPS.
+
+-------------------------------------------------------------------
+Thu Aug 16 09:20:42 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Wed Aug  8 17:11:10 UTC 2018 - astieger@suse.com
+
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
+Tue Aug  7 18:42:33 UTC 2018 - sebix+novell.com@sebix.at
+
+- Add missing dependency python-xml (boo#1104093).
+
+-------------------------------------------------------------------
+Fri Mar  2 21:28:26 UTC 2018 - sebix+novell.com@sebix.at
+
+- Update to version 2.0:
+ * Add drag-and-drop support (thanks to contractor Pavel). Try dropping files onto the main application window.
+ * Fix preservation of thumbnails on Google Chrome and Chromium .
+ * Fix error Favicons is version 36 or 38 when cleaning Google Chrome and Chromium.
+ * Fix DatabaseError: no such table: moz_favicons for some Firefox profiles.
+ * Use HTTPS encryption when automatically checking for software updates.
+ * Add software categories to bleachbit.desktop (thanks to Hugo Lefeuvre).
+ * Whitelist Bluetooth daemon (reported by Timo Ollech).
+ * Fix purging of GTK recently used resources list.
+ * Improve Liferea cleaner (reported by Theatre-X).
+
+-------------------------------------------------------------------
+Wed Sep 20 00:48:41 UTC 2017 - aavindraa@gmail.com
+
+- Update to 1.17
+  * There is a fix for handling special characters in usernames (LP#1347644).
+  * Files can be dragged dropped onto the BleachBit window for shredding.
+  * Enable "overwrite contents" and clean SQLite databases.
+  * Clean HexChat (X-Chat).
+  * 19 cleaners now use the XDG directory specification.
+  * AppData information in the GNOME and KDE Software centers.
+  * Clean journald.
+  * Clean apt - autoremove.
+  * Whitelisting should protect both the link source and target (LP#1455959).
+- Drop appdata.patch, accepted upstream
+
+-------------------------------------------------------------------
+Tue Jul 11 16:55:57 UTC 2017 - jmatejek@suse.com
+
+- drop obsolete requirements on python-gnome and python-gobject2
+
+-------------------------------------------------------------------
+Sat Sep 10 15:18:11 UTC 2016 - mailaender@opensuse.org
+
+- Add appdata.patch for https://en.opensuse.org/openSUSE:AppStore
+
+-------------------------------------------------------------------
+Sun Jul  3 21:38:54 UTC 2016 - mailaender@opensuse.org
+
+- Update to 1.12
+  * Fix error Favicons is version 32 with Google Chrome 51 (reported by Holger)
+  * Fix cleaning of Thumbnails in new Chromium and Google Chrome (reported by ineuw, patrick)
+  * Fix crash with corrupt BleachBit.ini (reported by BitBleacher)
+  * Fix error UNIQUE constraint failed error cleaning Firefox (reported by danjackson1 and gravy45)
+  * Update EasyTAG cleaner (thanks to devmapper0)
+  * Update Epiphany cleaner (thanks to devmapper0)
+  * Update Evolution cleaner (thanks to skquinn)
+  * Update GNOME cleaner (thanks to devmapper0)
+  * Update KDE cleaner for KDE 4 on openSUSE (thanks to Mailaender)
+  * Remove bleachbit-kde-patch.patch
+  * Update Rhythmbox cleaner (thanks to devmapper0)
+  * Update Thumbnails cleaner (thanks to devmapper0)
+  * Update Transmission cleaner (thanks to devmapper0)
+  * Update X11 cleaner (thanks to devmapper0)
+  * Switch from GnomeVFS, which is deprecated, to GIO (reported by MM)
+  * Do not repeat Google Chrome cache in preview (reported by Daniel Che)
+  * Fix retention of translations for Chinese
+  * Whitelist iBus Pinyin (reported by Josiah Hunter)
+
+-------------------------------------------------------------------
+Sun Mar 20 16:02:48 UTC 2016 - mailaender@opensuse.org
+
+- Update to 1.10
+  * Speed up identification of files using regular expressions by 5% to 50%
+  * Allow relative paths with --shred command line argument (reported by Eva Putnam).
+  * Add descriptions for cleaners (thanks to theatre-x).
+  * Fix resizing of preference dialog (thanks to Anton Bobov).
+  * Warn when deleting passwords on Firefox (reported by Theatre-X).
+  * Accept abbreviations T and F in bleachbit.ini configuration (reported by Ken Wallace).
+  * Show a user-friendly error message when checking for updates fails because of a network error (reported by Gary).
+  * Improve logging of errors. Some errors are more informative, and on Windows, errors are unlikely to cause a popup message about bleachbit.exe.log.
+  * Add an option to show file sizes as IEC units (1 KiB = 1024 bytes) instead of SI units (1 kB = 1000 bytes; thanks to Tristan Stenner).
+  * Clean passwords on Firefox version 32+.
+  * Clean Google Chrome cookies for non-default profiles.
+  * Clean more autofill on Google Chrome (reported by pcdoctor01). If you are logged in to Google Chrome, it may automatically restore some of these values from your online Google account unless you disable the option Show addresses and credit cards from Google Payments in the autofill page of Google Chrome settings.
+  * Add size column to side tree control (thanks to Ivor Hewitt).
+  * Clean more localizations (thanks to Tristan Stenner).
+  * Add localization codes (thanks to Tristan Stenner).
+  * Fix memory cleaning on Ubuntu 15.10 and other distributions (reported by Richard Pearse).
+  * Fix harmless error that localizations.xml is unusable (thanks to Tristan Stenner).
+  * Do not show localizations at the base level (reported by BBUser).
+  * Do not show Windows Explorer cleaner on Linux (reported by Tomás F. L.).
+  * Fulfill Fedora license file location change.
+  * Do not delete xauth under KDE (reported by mike).
+  * Remove deprecated key encoding in bleachbit.desktop.
+  * Drop support for Mandriva, which is dead.
+  * Do not show cleaner is unusable message in the console (except when debug mode is enabled or in non-final releases).
+
+-------------------------------------------------------------------
+Sun Nov  1 12:41:54 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.8
+  * In Preferences, there is a new option "Confirm before delete"
+    that disables the confirmation.
+  * When BleachBit starts, the window is centered.
+  * The tool "Shred Settings and Quit" in the File menu is fixed.
+  * Added cleaning for Opera passwords.
+  * Shrink storage size of BleachBit icon.
+  * Add descriptions to many cleaners).
+  * Add a new command line option --debug-log that logs debug messages
+    to a file.
+  * Replace hard-coded localizations cleaning system with CleanerML entries.
+  * Whitelist /tmp/fsa for FSArchiver.
+  * Suppress GTK+ warning in console.
+  * Add packages for Debian 8, Fedora 21, and Ubuntu 15.04.
+  * Remove packages for Fedora 19 and Ubuntu 13.10.
+  * In CleanerML, a cleaner description can have a translation hint.
+  * Set up Travis CI for better testing.
+  * Improve unit tests.
+
+-------------------------------------------------------------------
+Tue Dec  2 11:37:41 UTC 2014 - ecsos@opensuse.org
+
+- Update to 1.6
+  * Google Chrome: fix error "Favicons is version 29"
+  * Google Chrome: clean application cache directory.
+  * Google Chrome and Chromium: in the Preferences (JSON) file
+    clean a list of HTTP servers that used SPDY, which can be used
+    to track servers to which the browser was connected
+  * Firefox: clean more session restore files
+  * Firefox: clean bookmark backups using a new option called
+    Backup.
+  * The auto-hide option, which was removed in version 1.0,
+    is available again.
+  * Specific to Linux
+  	- Google Chrome: delete Sync Data Backup
+  	- Chromium: delete application cache directory
+  	- Print a message when root account is being cleaned to avoid
+      confusion
+  	- Whitelist more KDE IPC files under /tmp/ to fix problem
+      launching BleachBit as root
+
+-------------------------------------------------------------------
+Wed Sep 10 17:33:08 UTC 2014 - ecsos@opensuse.org
+
+- Update to 1.4
+  * Firefox: Fix DatabaseError: no such table: moz_hosts
+  * Firefox: Purge the table moz_hosts in places.sqlite for the
+    option url_history
+  * Firefox: Delete Necko Predictive Network Actions
+  * Firefox: Delete more session restore files
+  * Google Chrome: fix error cleaning autofill_dates
+  * Adobe Reader: use wildcards instead of specific versions
+   (thanks to theatre-x)
+  * Clean netMRL history in VLC media player (thanks to tiemay)
+  * Clean GIMP version 2.8 (thanks to tiemay)
+  * Improve support for Liferea (thanks to Lars Windolf)
+  * Specific to Linux
+    - Pass control of the ~/.cache/mozilla directory from the
+      System - Cache cleaner to the Firefox - Cache cleaner
+      (LP#1295826)
+    - Clean additional locale directories (thanks to tstenner)
+    - Clean .mask files in Easytag (thanks to tiemay)
+    - Clean more history in the Links web browser (thanks to tiemay)
+    - Add packages for CentOS 7 and RHEL 7
+
+-------------------------------------------------------------------
+Tue Jun 17 11:55:15 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 1.2 with various small fixes.
+
+-------------------------------------------------------------------
+Thu May 15 17:46:02 UTC 2014 - saigkill@opensuse.org
+
+- Added patch to change KDE's Cleaning Path from .kde to .kde4
+  * bleachbit-kde-patch.patch
+
+-------------------------------------------------------------------
+Sun Nov 24 15:34:48 UTC 2013 - saigkill@opensuse.org
+
+- updated to 1.0
+- Changes:
+  o The command line option --shred now shreds arbitrary files.
+  o Add Octave cleaner
+  o Add Warzone 2100 cleaner
+  o Clean recently played in VLC (thanks to nolme/Vincent DUVERNET - Nolmë
+    Informatique)
+  o Google Chrome: Fix errors "Favicons is version 26" and "DatabaseError:
+    no such column: full_path"
+  o Google Chrome: delete more cache
+  o Remove auto-hide option. (Before, it was a default.)
+  o Specific to Linux
+    * Coming soon: .deb package for Ubuntu 13.10 (Saucy Salamander).
+    * Coming soon: .rpm package for openSUSE 11.4.
+    * Add SQLite3 cleaner
+    * Adobe Flash: clean NativeCache
+
+-------------------------------------------------------------------
+Fri Jul 12 17:01:22 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.9.6.
+  * Improve wiping of free disk space.
+  * Google Chrome: Fix error message no such table: keywords_backup:
+    /home/foobar/.config/google-chrome/Default/Web Data.
+  * Google Chrome: Fix error message Favicons is version 25.
+  * Google Chrome: Delete more cache.
+  * Clean Apache OpenOffice.org 3.4.1.
+  * Clean LibreOffice 4.
+  * OpenOffice.org: if history file has not changed, do not save
+    it.
+  * Adobe Acrobat: use wildcards to generically support more
+    versions.
+  * Do not clean VLC while it is running.
+  * Thunderbird: clean indexes on Fedora.
+  * Firefox: clean minidumps (crash information).
+  * Clean more IcedTea (Java) cache.
+  * Update Basque, Brazilian Portuguese, Croatian, English (United
+    Kingdom), Esperanto, Estonian, French, German, Indonesian,
+    Kirghiz, Lietuvių, Polish, Russian, Slovak translations.
+- Use full URL as a source.
+
+-------------------------------------------------------------------
+Mon Jan 14 20:28:18 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.9.5.
+  * Google Chrome, Chromium: separate cleaning of passwords out of
+    history into its own option.
+  * Google Chrome: delete Flash cookies in Pepper Flash.
+  * Google Chrome: delete more history.
+  * Thunderbird: delete folder index files (.msf).
+  * Clean out obsolete data (hashpath) in bleachbit.ini to reduce
+    file size and improve privacy.
+  * Improve compatibility of memory wiping with 64-bit systems.
+  * Improve ability to run headless.
+  * Support newer Linux kernels in memory cleaner by using new
+    out-of-memory score adjustment /proc/pid/oom_score_adj.
+
+-------------------------------------------------------------------
+Thu Dec  6 22:31:59 UTC 2012 - lazy.kent@opensuse.org
+
+- Update to 0.9.4.
+  * Add feature for user-defined custom cleaners. In the
+    preferences, easily choose files and folders you regularly want
+    to clean, and then select them from cleaning under System -
+    Custom.
+  * Google Chrome and Chromium: Fix error "Favicons is version 23"
+    with Google Chrome 23.
+  * Google Chrome and Chromium: Delete many more history files.
+  * Google Chrome and Chromium: If bookmark files does not exist,
+    do not throw an error.
+  * Clean FAT32 partitions with more than 4GB free space.
+  * Do not delete /usr/share/kde4/apps/ksgmltools2/customization
+    required by kdelibs.
+- Add cleaner example to docs.
+
+-------------------------------------------------------------------
+Sat Aug 18 18:06:03 UTC 2012 - lazy.kent@opensuse.org
+
+- Fix runtime dependencies: really needs python-gnomevfs only.
+
+-------------------------------------------------------------------
+Sat Aug  4 08:08:01 UTC 2012 - lazy.kent@opensuse.org
+
+- Update to 0.9.3.
+  * The new application icon looks better — especially on a black
+    background.
+  * Google Chrome and Chromium: clean some more SQLite database
+    journals.
+  * Google Chrome and Chromium: clean Favicons on new browser
+    release (instead of giving an error about the database
+    version).
+  * Google Chrome, Chromium: find more bookmarks to avoid affecting
+    history and favicons related to bookmarks, and avoid the error
+    "KeyError: 'url'".
+  * Be quiet about "Unsupported special file type" error message
+    (lp#1012930).
+  * Do not try to launch GUI if X is not available (lp#1004923).
+  * Be quiet about "[Errno 39] Directory not empty" error message
+    (lp#1012930).
+- Build requires python-distribute instead of python-devel.
+- Remove bleachbit.desktop from additional source: have it in
+  tarball.
+- Recommends language package.
+- Clean up spec.
+
+-------------------------------------------------------------------
+Sat Mar 17 19:02:59 UTC 2012 - Sascha.Manns@open-slx.de
+
+- updated to version 0.9.2
+- These are the changes since version 0.9.1
+These are the changes since version 0.9.1:
+   * Clean Firefox crash reports.
+   * Clean more Google Chrome and Chromium history: omnibox shortcuts,
+     Network Action Predictor, and keywords_backup.
+   * Clean LibreOffice.
+
+-------------------------------------------------------------------
+Tue Nov 15 18:03:37 UTC 2011 - Sascha.Manns@open-slx.de
+
+- updated to version 0.9.1
+- These are the changes since version 0.9.0:
+  + Clean segments and segment_usage in Google Chrome History
+  + Clean favicons on Chromium, Google Chrome
+  + Clean "History Provider Cache" on Chromium and Google Chrome
+  + Clean download history in Chromium, Google Chrome
+  + Fix rare "ZeroDivisionError: float division" bug while cleaning free disk space.
+
+-------------------------------------------------------------------
+Sat Sep 17 19:53:45 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Aug 31 10:46:37 UTC 2011 - Sascha.Manns@open-slx.de
+
+- updated to Version 0.9.0
+- These are the changes since version 0.8.8:
+  + Clean DNS prefetch entries for Chromium
+  + Use word 'Clean' instead of 'Delete' (LP#819392)
+  + Avoid freeze when there are many system processes running
+  + Fix for Thunderbird 5 on Linux and Windows
+  + Do not reset network prediction setting in Google Chrome (LP#824307)
+  + Do not prevent application startup in case of corrupt configuration (LP#799130)
+  + Specific to Linux
+    o Delete recently used files on GNOME 3 (thanks to badhat,LP#828474)
+    o Do not erase wallpaper on GNOME 3 (Fedora 15, etc; LP#828474)
+    o Support Linux 3 (thanks to Sascha Manns from openSUSE project)
+
+-------------------------------------------------------------------
+Sun Aug 28 09:53:37 UTC 2011 - Sascha.Manns@open-slx.de
+
+- finished bug bnc#712471
+  + make fit for using with Kernel >= 3.x
+
+-------------------------------------------------------------------
+Sat Aug 27 10:28:22 UTC 2011 - Sascha.Manns@open-slx.de
+
+- rewritten Patch bleachbit-bnc712471.patch
+
+-------------------------------------------------------------------
+Thu Aug 25 16:26:08 UTC 2011 - Sascha.Manns@open-slx.de
+
+- Updated Patch with using Larry Fingers proposals in bnc#712471
+
+-------------------------------------------------------------------
+Wed Aug 24 10:30:30 UTC 2011 - Sascha.Manns@open-slx.de
+
+- fixed Bug bnc#712471 (fix for using Linux Kernel > 3) thanks to
+  Larry Finger for helping out
+
+-------------------------------------------------------------------
+Wed Aug 17 21:30:34 UTC 2011 - Sascha.Manns@open-slx.de
+
+- removed the *.py[co] remover
+
+-------------------------------------------------------------------
+Wed Jun 15 19:43:11 UTC 2011 - saigkill@opensuse.org
+
+- updated to version 0.8.8
+- These are the changes since version 0.8.7:
+  o In Firefox, delete more session restore
+  o In Firefox, delete site-specific preferences
+  o In Firefox, delete input history.
+  o In Firefox, delete more URL history.
+  o In Google Chrome and Chromium, properly delete HTML5 cookies without
+    deleting preferences for extensions (LP#732567)
+  o In Google Chrome and Chromium, delete the Databases.db files
+  o In Google Chrome and Chromium, delete favicons (except those that have
+    bookmarks)
+  o In Google Chrome delete more history: the DNS prefetching host
+    referral list
+  o In Opera, delete session backup
+  o Specific to Linux
+    - Fix crash starting as administrator on Ubuntu 11.04.
+    - Support Seamonkey 2.0 (pointed out by Ed Hurst and Gogeden)
+    - Do not delete /var/tmp/kdecache to avoid crashing KDE (KDE#271889)
+    - Fix crash when changing options when Linux packager has disabled
+      online updates (LP#715286)
+    - Require PyGTK version 2.14 or later
+
+-------------------------------------------------------------------
+Fri Apr  1 21:26:26 UTC 2011 - saigkill@opensuse.org
+
+- removed bleachbit-rpmlintrc
+
+-------------------------------------------------------------------
+Sun Jan 23 17:23:20 UTC 2011 - saigkill@opensuse.org
+
+- update to version 0.8.7
+- BleachBit 0.8.7 improves command line support, imports winapp2.ini-style files allowing immediately for 440 additional cleaners on Windows, adds an Estonian translation, and more.
+  o Be a fan of BleachBit on the new Facebook page.
+  o Add command line option --preset which selects all the cleaners previously selected in the GUI.
+  o When showing a warning, show which option generated the warning.
+  o Specific to Linux
+     - Support Thunderbird on openSUSE 11.3 thanks to Manfred Schwarb (LP#668231)
+     - Fix wrong button label when adding folders for overwrite disk space and for whitelist (pointed out by jtarin)
+     - When cleaning localizations, show warning to point user to configuration
+     - Packagers: BleachBit will try to use the built-in json module on Python 2.6+ instead of simplejson, which is still required on Python 2.5.
+
+-------------------------------------------------------------------
+Wed Jan  5 12:29:51 UTC 2011 - saigkill@opensuse.org
+
+- update to version 0.8.6
+- BleachBit 0.8.6 fixes an issue in 0.8.5 for Google Chrome and Chromium:
+  o Now all the search engine changes are moved out of "History" to a separate option called "Search engines."
+  o Default search engines (Google, Yahoo, Bing) will not be removed. If you cannot search Google using the Omnibox, see the instructions in the 0.8.5 release notes .
+  o Now the usage statistics for the default search engines will be reset to zero (instead of deleting them).
+  o Non-default search engines will be removed because the browser automatically, quietly adds them for many sites (such as CNN, Youtube, and many others) while you browse, so it creates a usage history. (Before you ever clean them, follow the instructions Manage Search Engines to see how many are listed.)
+
+-------------------------------------------------------------------
+Mon Jan  3 19:38:29 UTC 2011 - saigkill@opensuse.org
+
+- update to version 0.8.5
+- Changes since BleachBit 0.8.4:
+  o Google Chrome/Chromium: delete the StartupDNSPrefetchList (hostnames used for DNS cache).
+  o Google Chrome/Chromium: delete the HostReferralList (contains URLs which the browser cannot clean itself).
+  o Google Chrome/Chromium: delete keywords table. Whenever you visit a web site a certain kind of site search (you may be surprised how many there are), the browser quietly remembers the URL for searching the site.
+  o Google Chrome/Chromium: clean autofill (form) history
+  o Google Chrome/Chromium: fully support secure shredding (overwrite) for all options--even those that do not remove the whole file.
+  o Google Chrome: move some of history to DOM Storage option.
+  o Google Chrome: delete top sites in history
+  o Google Chrome: vacuum more
+  o Chromium: delete many more files (now similar to Google Chrome)
+  o Chromium: detect running process
+  o Opera: delete HTML5 local storage (HTML5 cookies)
+  o Firefox: improve cleaning orphan favicon and history_visits entries in places database
+  o Firefox: remove Places option. Despite the warning, people seemed confused or afraid of this option. You can still clean Firefox history without it.
+  o Add JSON to CleanerML
+  o Shred file when modifying .ini. Right now only VLC uses a .ini cleaner, though the .ini cleaner is available in CleanerML for custom cleaners too.
+  o Update checker now (optionally) finds beta versions too
+  o Avoid potential divide by zero error in free disk space wipe
+  o Specific to Linux
+    + Add support for cleaning swap files (in addition to swap devices; LP#599133)
+    + Packagers: BleachBit now requires simplejson.
+- Known Issues visible under: http://bleachbit.sourceforge.net/news/bleachbit-085
+
+-------------------------------------------------------------------
+Sat Dec 25 21:17:55 UTC 2010 - saigkill@opensuse.org
+
+- prettyfied the spec file
+
+-------------------------------------------------------------------
+Sat Dec 18 12:46:27 UTC 2010 - saigkill@opensuse.org
+
+- update to version 0.8.4
+- Changes since BleachBit 0.8.3:
+  * When deep scan was enabled, BleachBit 0.8.3 would freeze with the progress bar displaying the name of the last cleaner (so it could be any one of 90 different names). Sorry!
+  * In addition to fixing this bug (of course), new automatic tests will prevent this from happening in the future. From the beginning, BleachBit has extensively used automatic tests to ensure quality.
+If you do not use deep scan, check back in a few weeks for 0.8.5. You can subscribe to updates through RSS, ATOM, or Twitter using the icons on the blue panel on the right.
+
+-------------------------------------------------------------------
+Mon Dec 13 17:56:59 UTC 2010 - saigkill@opensuse.org
+
+- updated to version 0.8.3
+  * Wiping free disk space is now significantly faster. (The actual time will depend mainly on how much free disk space you have and how fast your disk is.)
+  * When wiping free disk space, show progress bar and estimated time to completion.
+    o Screenshot progress bar on Windows 7
+      * To improve efficiency and maximize privacy, operations are now executed in this order: general cleaning, deep scan, RAM and swap cleaning, and free disk space wiping.
+      * Add menu option to wipe free disk space anywhere on the computer. One way this is useful is for wiping free disk space on removable media such as USB disks, or use it to avoid enabling the free disk space option checkbox (which most people should not use often).
+      * Add menu option to securely shred any folder (including all folders and files contained within) anywhere on your computer.
+      * Add context menu to options, so you can preview or execute individual options without changing any checkboxes. Just right click on an option (not a group of options) to see the new menu.
+    o screenshot of new context menu on Fedora 13
+      * Delete more icons found in Opera.
+      * Delete more URL history in Opera.
+      * Delete search history in Opera.
+      * Do not delete extension preferences in Google Chrome (which store configuration as HTML5 cookies).
+      * Fixed bug '[error 21] "is a directory" when shredding directories. (This bug existed only in version 0.8.2.)
+      * CleanerML (Cleaner Markup Language) now supports glob for walk.all and walk.files.
+      * Specific to Linux
+          o Add RPM packages for openSUSE 11.3.
+          o Add ..deb package Ubuntu 10.10 final
+
+-------------------------------------------------------------------
+Tue Nov 16 13:08:12 UTC 2010 - saigkill@opensuse.org
+
+- Updated to version 0.8.2
+- The following changes have been made since 0.8.1:
+
+    * Securely wipe filenames when deleting individual files and directories
+    * More securely wipe filenames when wiping free disk space
+    * Expand and fix vacuuming Google Chrome 7
+    * Specific to Linux bonus pack (separate download)
+          o Fix bonus pack not installing on Ubuntu 10.10
+          o Clean Xfce xfrun4 command history (thanks to nodiscc)
+          o Clean Battle for Wesnoth (thanks to Thibault Févry)
+    * Specific to Windows
+          o Fix bug starting on Windows XP with language set to non-English
+          o Delete form history in Internet Explorer 7 and 8
+          o Delete user assist history: it is included in Windows Explorer - Most Recently Used.
+          o Clean WinZip (thanks to Jack Williams)
+          o Clean TortoiseSVN (thanks to Jack Williams )
+    * Specific to web
+          o New documentation: Shred files and wipe disks
+
+-------------------------------------------------------------------
+Tue Oct  5 17:01:46 UTC 2010 - saigkill@opensuse.org
+
+- Updated to Version 0.8.1
+- The following changes have been made:
+    * Delete DOM Storage in Firefox 3, Google Chrome, and Opera.
+    * Completely remove evercookie tracking, a system that "produces extremely persistent cookies in a browser." Clean evercookies in Firefox, Internet Explorer, Google Chrome, Opera, and Safari. Test it yoursel:create an evercookie on Samy Kamkar's evercookie site, clean it, and check on the same site it is gone.
+    * Clean VLC (VideoLAN Client)'s .ini configuration file.
+    * Add generic capability to clean most .ini configuration files through CleanerML. Because .ini is not standardized, additional work is needed to some kinds of .ini files.
+    * Specific to Linux
+          o Add .deb package for Ubuntu 10.10 Maverick Meerkat.
+          o When running as root, refuse to open web browser (such as for help contents) with root privileges.
+          o Delete about 16MB more localizations as tested on Ubuntu 10.10.
+          o Fix missing menu shortcut on Ubuntu 10 (LP#592051).
+    * Specific to Windows
+          o Delete DOM Storage in Internet Explorer and Safari.
+          o Delete last session in Internet Explorer and Safari.
+          o Delete Silverlight cookies.
+          o Vacuum Safari.
+          o Clean memory dumps.
+          o Define %localappdata% environment variable on Windows XP, and use it for many existing cleaners. This may provide more reliable detection of files on certain Vista and Windows 7 systems.
+    * Specific to web
+          o Now you can follow BleachBit on Twitter.
+
+-------------------------------------------------------------------
+Thu Jun 17 23:34:17 UTC 2010 - saigkill@opensuse.org
+
+- Updated to Version 0.8.0
+- Changes
+- The following changes have been made since 0.7.4:
+  * Add whitelisting feature, so certain files and folders are not modified. Setup your whitelist in the preferences dialog. The whitelist feature supports all the standard operations including delete, shred, truncate, and vacuum, but it doesn't affect files deleted by third-party software (yum and apt). Files that are whitelisted are clearly marked in the BleachBit log.
+  * Specific to Linux
+    o Delete recent documents in GNOME 2.28 - 2.30 (e.g., Ubuntu Karmic Kaola, Lucid Lynx, Fedora 13).
+    o Use GTK+ Recent Manager to purge recent documents list.
+    o Support Thunderbird 3 as found on Ubuntu Lucid Lynx 10.04.
+    o Introduce .rpm package for Fedora 13 (Goddard).
+- Known issues
+  o Wiping memory and swap is currently experimental. It should always wipe 100% of the swap, but it may not wipe 100% of the physical memory. Before using this option, close all other running applications because they may be automatically killed by Linux.
+
+-------------------------------------------------------------------
+Fri Apr 16 15:38:43 UTC 2010 - saigkill@opensuse.org
+
+- The following changes have been made since 0.7.3:
+
+    * Add new privacy feature: click File - Shred Files and Quit. This removes all BleachBit settings as if you never ran BleachBit, so other people can't tell you have.
+    * Use EIC binary prefixes (e.g., 1KiB=1000 bytes) instead of SI binary prefixes (e.g., 1kB=1024B) because EIC is the proper standard for disk space. For more information see see Wikipedia's Binary Prefix article and Ubuntu's unit policy.
+    * Fix bug removing paths in preferences dialog.
+    * Add translation contexts for more accurate translations.
+    * Fix deleting files with non-ASCII names.
+    * Specific to Linux
+          o Add package for Ubuntu Lucid Lynx (10.04).
+          o Fix GTK+ depreciation warnings.
+          o Fix crash on Ubuntu (only seen on BleachBit as packaged in the Ubuntu repository).
+          o Remove translations from RHEL 5.0 and CentOS 5.0 because their ancient gettext version 0.14 does not support translation contexts.
+
+-------------------------------------------------------------------
+Sun Feb 21 10:40:31 UTC 2010 - saigkill@opensuse.org
+
+- updated to Version 0.7.3
+- The following changes have been made since 0.7.2:
+    * Cleans Mozilla Thunderbird versions 2 and 3.
+    * Specific to Linux
+          o Clean Screenlets (thanks to MixCool).
+
+-------------------------------------------------------------------
+Tue Dec  1 11:05:42 UTC 2009 - saigkill@opensuse.org
+
+- updated to Version 0.7.2
+- Fix deleting Firefox version 3 passwords.
+- Add new menu option to show system information useful for reporting bugs. Click Help - System Information.
+- Specific to Linux
+    * Clean Konqueror cache, history, and cookies.
+    * Fix bug launching BleachBit as Administrator on Ubuntu and Debian.
+    * Improve the completion notification: do not show if the BleachBit application window is in focus, and if it is not, automatically remove the notification after 10 seconds.
+
+-------------------------------------------------------------------
+Mon Nov  9 20:33:38 UTC 2009 - saigkill@opensuse.org
+
+- The following changes have been made since 0.7.0:
+    * When clicking File - Shred, default to the home directory instead of a system directory.
+    * Improve the usability of the security warning dialog (typically only seen in portable mode).
+    * Improve the appearance of the preferences dialog on some non-English languages.
+    * Do not include the tests as part of the standard installation to save disk space.
+    * Specific to Linux
+      o After taking longer than 10 seconds to finish, show a non-intrusive notification.
+      o Fix handling of filenames with invalid encoding that could have caused an application freeze.
+      o Add warning for Nautilus.
+      o Delete Apache logs (thanks to Roman Horník)
+      o Clean more of Emesene 1.0 cache (thanks to Danilo Piazzalunga)
+      o Bonus pack
+        + Fix system logs cleaner
+        + Clean XBMC Media Center (thanks to Roman Horník)
+
+-------------------------------------------------------------------
+Fri Oct 16 18:17:59 UTC 2009 - saigkill@opensuse.org
+
+- Reworked Spec (Provides/Obsoletes)
+
+-------------------------------------------------------------------
+Wed Sep 30 18:46:46 UTC 2009 - saigkill@opensuse.org
+
+- updated to version 0.6.5
+- Since 0.6.4:
+  * Vacuum Google Chrome
+  * Delete Google Chrome 3's history
+  * Clean Emesene cache
+  * Clean Adanaxis, Gnome Art Manager, Notify OSD, PDFedit, Phatch, PlayOnLinux, system logs, Virt-manager, and X-Moto (all part of the new bonus cleaners package)
+  * Add a portable package for Windows
+  * Update 18 translations
+  * Fix bugs
+  * Expand the unit tests significantly
+-------------------------------------------------------------------
+Mon Sep 21 10:57:58 UTC 2009 - saigkill@opensuse.org
+
+- updaded to version 0.6.4
+- The following changes are included since 0.6.3:
+    * Add command line interface. Often requested as a new feature, the command line interface lets you invoke BleachBit from scripts, cron, batch files, or the Windows Task Scheduler. For example, BleachBit can automatically vacuum Firefox each night or each time you login.
+    * At the end of the log, show how many files were deleted, how many special operations were performed, and how many errors occurred, if any. Before only the size was shown.
+    * When you close BleachBit while it is wiping free disk space, BleachBit will now quickly stop wiping free disk space.
+    * When manually shredding files (by clicking File - Shred Files), BleachBit now ignores the related preference regarding overwriting files.
+    * Make BleachBit easier to port to other POSIX systems such as NetBSD. (BleachBit is already available in NetBSD.)
+    * Fix two spelling typos.
+    * Fix small bugs.
+    * Improve unit tests.
+    * Specific to Linux
+      o Honour GNOME appearance settings for toolbars (text below icon, icon only, etc).
+      o Fix Yum error checking for non-English languages.
+
+-------------------------------------------------------------------
+Fri Aug 28 19:18:55 UTC 2009 - saigkill@opensuse.org
+
+- updated to version 0.6.3
+- The following changes are included since 0.6.1:
+    * More thoroughly wipe free disk space. BleachBit now tries to wipe inodes on Linux and the NTFS MFT (Master File Table) on Windows to hide metadata of deleted files. The metadata includes details such as the filename, file size, and modification date. Initial testing shows this is effective on ext3 (the most common Linux filesystem), ext4, and Microsoft's NTFS.
+    * In case of certain errors deleting a file or directory, BleachBit will no longer skip other files that can be deleted.
+    * Specific to Windows
+      o Delete Windows system log files.
+      o Delete Microsoft Office 2007 diagnostic log files.
+      o Don't stop deleting when a directory cannot be removed because it is not empty.
+      o Include better links in Control Panel's Add/Remove Programs.
+-------------------------------------------------------------------
+Mon Aug 17 19:02:39 UTC 2009 - saigkill@opensuse.org
+
+- updated to Version 0.6.1
+- The following changes are included since 0.6.0:
+    * Overwrite free disk space. Files are deleted "insecurely" in four typical situations: in BleachBit with shredding disabled, with certain BleachBit operations that don't support shredding, with filesystems that don't support shredding, and most deletions outside of BleachBit. These files can often be undeleted. Even if you use the Linux ext3 filesystem, for example, which doesn't support undelete, the file contents can sometimes still be recovered with only moderate technical skill. The new BleachBit option overwrites all the free space to prevent recovery.
+      Besides privacy, a popular use for wiping free space is dramatically increasing compression ratios for archiving whole disk images ("ghost" backups) and virtual machines.
+      Before using the option, check its settings in the preferences menu. This option is slow: each gigabyte of free takes 15 seconds on my machine.
+    * When shredding files manually (from the file menu), show a preview and a list of those that were actually deleted.
+    * When confirming delete, treat closing the confirmation dialog the same as cancelling.
+    * Cleanup code.
+    * Specific to Linux
+      o Vacuum the gPodder SQLite database and delete the cache thanks to shane.fox.
+      o Erase Nautilus usage history thanks to MixCool. Specifically, this cleaner deletes the saved session files and "metafiles." Besides taking a fair amount of space, these XML files record usage activity as a side effect of tracking Nautilus window positions and emblems. You may be surprised what this cleaner uncovers.
+      o Work around a bug in GNOME 2.26, so the recent documents list can be deleted.
+      o Vacuum the Yum SQLite databases (for Fedora, Red Hat, CentOS).
+      o When running yum clean all enable all repositories.
+      o Require package python-xml on OpenSUSE 11.1 (reported by rvpittman).
+
+-------------------------------------------------------------------
+Mon Aug  3 09:05:23 CEST 2009 - saigkill@opensuse.org
+
+- updated to Version 0.6.0
+
+-------------------------------------------------------------------
+Fri Jul 31 22:55:42 CEST 2009 - saigkill@opensuse.org
+
+- added make clean
+
+-------------------------------------------------------------------
+Thu Jul 16 21:20:59 CEST 2009 - saigkill@opensuse.org
+
+- updated to Version 0.5.4
+
+-------------------------------------------------------------------
+Wed Jul  1 17:53:13 CEST 2009 - saigkill@opensuse.org
+
+- updated to Version 0.5.3
+
+-------------------------------------------------------------------
+Mon Jun 22 17:47:20 CEST 2009 - saigkill@opensuse.org
+
+- updated to Version 0.5.2
+
+-------------------------------------------------------------------
+Thu Jun 11 18:55:36 CEST 2009 - saigkill@opensuse.org
+
+- updated to Version 0.5.1
+
+-------------------------------------------------------------------
+Sun May 31 22:09:33 CEST 2009 - saigkill@opensuse.org
+
+- fixed options for Factory
+
+-------------------------------------------------------------------
+Sat May 30 23:36:47 CEST 2009 - saigkill@opensuse.org
+
+- updated to Version 0.5.0
+
+-------------------------------------------------------------------
+Mon May 11 14:55:33 CEST 2009 - saigkill@opensuse.org
+
+- updated to version 0.4.2
+
+------------------------------------------------------------------
+Sat Apr 18 11:20:10 CEST 2009 - saigkill@opensuse.org
+
+- Initial Version of bleachbit
+- branched for Contrib

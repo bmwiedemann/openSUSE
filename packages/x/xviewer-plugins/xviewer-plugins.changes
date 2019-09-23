@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Tue Nov  8 13:01:41 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.2.0:
+  * Remove the hide-titlebar plugin.
+  * Remove the fullscreenbg plugin.
+- Drop xviewer-plugin-hide-titlebar and xviewer-plugin-fullscreenbg.
+
+-------------------------------------------------------------------
+Mon Jun 27 20:21:34 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.0.5:
+  * Fix EXIF plugin preferences not loading.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Apr 27 16:43:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.0.2.
+
+-------------------------------------------------------------------
+Thu Mar 24 11:35:36 UTC 2016 - sor.alexei@meowr.ru
+
+- Be less explicit about what files from __pycache__/ to include.
+
+-------------------------------------------------------------------
+Sun Feb  7 08:54:23 UTC 2016 - sor.alexei@meowr.ru
+
+- Initial package, based on eog-plugins's package.

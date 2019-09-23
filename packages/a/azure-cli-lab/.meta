@@ -1,0 +1,11 @@
+<package name="azure-cli-lab" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'DevTestLabs' Command Module</title>
+  <description>Microsoft Azure CLI 'DevTestLabs' Command Module
+
+This package is for the 'lab' module.
+i.e. 'az lab'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-lab"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

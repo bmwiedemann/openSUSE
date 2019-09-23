@@ -1,0 +1,12 @@
+diff -Naur drbdmanage-0.99.5.orig/setup.py drbdmanage-0.99.5/setup.py
+--- drbdmanage-0.99.5.orig/setup.py	2017-07-13 11:57:28.417829615 +0800
++++ drbdmanage-0.99.5/setup.py	2017-07-13 11:58:08.333971068 +0800
+@@ -151,7 +151,7 @@
+             if os.path.isfile(outfile):
+                 continue
+             sys.stdout.write("Generating %s ...\n" % (outfile))
+-            mangen = ["help2man", "-n", toplevel, '-s', mansection,
++            mangen = ["help2man", "-n", toplevel, '-s', mansection, "--no-discard-stderr",
+                       '--version-string=%s' % (get_version()), "-N",
+                       '"./drbdmanage_client.py %s"' % (toplevel)]
+ 

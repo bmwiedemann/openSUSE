@@ -1,0 +1,34 @@
+Index: mopac7-1.15/fortran/fdate.c
+===================================================================
+--- mopac7-1.15.orig/fortran/fdate.c
++++ mopac7-1.15/fortran/fdate.c
+@@ -17,6 +17,7 @@ LAST MODIFIACTION
+ */
+ 
+ #include "mopac7f2c.h"
++#include "s_copy.h"
+ 
+ #include <time.h>
+ #include <string.h>
+Index: mopac7-1.15/fortran/s_copy.c
+===================================================================
+--- mopac7-1.15.orig/fortran/s_copy.c
++++ mopac7-1.15/fortran/s_copy.c
+@@ -5,6 +5,7 @@
+  */
+ 
+ #include "mopac7f2c.h"
++#include "s_copy.h"
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+Index: mopac7-1.15/fortran/s_copy.h
+===================================================================
+--- /dev/null
++++ mopac7-1.15/fortran/s_copy.h
+@@ -0,0 +1,5 @@
++#ifndef _S_COPY_H
++
++# define _S_COPY_H       1
++void s_copy(register char *, register char *, ftnlen, ftnlen);
++#endif

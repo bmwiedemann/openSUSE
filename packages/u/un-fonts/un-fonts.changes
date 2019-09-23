@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:33 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jan 30 14:31:02 UTC 2012 - pgajdos@suse.com
+
+- renamed to un-fonts
+
+-------------------------------------------------------------------
+Thu Apr  8 18:29:00 CEST 2010 - tiwai@suse.de
+
+- remove unnecessary buildrequires for too old distros
+
+-------------------------------------------------------------------
+Tue Dec  8 14:43:53 CET 2009 - pgajdos@suse.cz
+
+- updated to 1.0.2-080608
+
+-------------------------------------------------------------------
+Tue Aug 08 14:46:36 CEST 2006 - mfabian@suse.de
+
+- move fonts to /usr/share/fonts because of the move to Xorg X11R7.
+
+-------------------------------------------------------------------
+Wed Mar 01 15:58:44 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(ko)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:48:51 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec 03 20:32:57 CET 2004 - mfabian@suse.de
+
+- use new macro "%run_suseconfig_fonts -c"
+
+-------------------------------------------------------------------
+Mon Sep 13 18:11:03 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #45156: add "Provides: scalable-font-ko".
+
+-------------------------------------------------------------------
+Fri Aug 13 15:58:52 CEST 2004 - mfabian@suse.de
+
+- update to 1.0.20040813
+  (un-fonts-core 1.0 and un-fonts-extra 1.0.1).
+- Bugzilla #39451: run SuSEconfig.fonts only if it exists.
+
+-------------------------------------------------------------------
+Wed Mar  3 17:17:53 CET 2004 - mfabian@suse.de
+
+- use %suseconfig_fonts_prereq
+
+-------------------------------------------------------------------
+Mon Mar  1 19:37:39 CET 2004 - mfabian@suse.de
+
+- new package: version 0.20040301.

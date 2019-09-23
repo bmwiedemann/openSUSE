@@ -1,0 +1,159 @@
+# directories
+%_fontsdir               %{_usr}/share/fonts
+%_ttfontsdir             %{_fontsdir}/truetype
+%_miscfontsdir           %{_fontsdir}/misc
+%_fontsconfdir           %{_sysconfdir}/fonts
+%_fontsconfddir          %{_fontsconfdir}/conf.d
+%_fontsconfavaildir      %{_datadir}/%{name}/conf.avail
+# private
+%__fontsconfigrunflag     %{_rundir}/fontpackages/reconfigure-fonts
+
+# macro: link_avail_to_system_fontsconf name
+# (takes exactly one argument, name of configuration file)
+# creates symlink pointing from /etc/fonts/conf.d/name to
+# ../../../usr/share/%{name}/conf.avail/name
+%link_avail_to_system_fontsconf() \
+  if [ "x%1" == "x%%1" ]; then \
+    echo "Missing argument in call to %%link_avail_to_system_fontsconf: name of configuration file." \
+    false \
+  fi \
+  echo "Linking available configuration in %{_fontsconfavaildir}/%1 to %{_fontsconfddir}/%1" \
+  mkdir -p "%{buildroot}%{_fontsconfddir}" \
+  ln -s "../../..%{_fontsconfavaildir}/%1" "%{buildroot}%{_fontsconfddir}" \
+  %nil
+
+# macro: install_fontsconf
+# takes exactly one argument; for given file (path/to/01-font.conf), it
+#    1. creates %{_fontsconfavaildir}
+#    2. copies path/to/01-font.conf to %{_fontsconfavaildir}
+#  uses %link_avail_to_system_fontsconf to
+#    3. create %{_fontsconfddir}
+#    4. link %{_fontsavaildir}/01-fonts.conf %{_fontsconfddir}
+
+%install_fontsconf() \
+  if [ "x%1" == "x%%1" ]; then \
+    echo "Missing argument in call to %%install_fontsconf: path and name of configuration file." \
+    false \
+  fi \
+  mkdir -p "%{buildroot}%{_fontsconfavaildir}" \
+  install -m 644 -p "%1" "%{buildroot}%{_fontsconfavaildir}" \
+  conffile=`basename %1` \
+  %link_avail_to_system_fontsconf $conffile \
+  %nil
+
+# macro: files_fontsconf_availdir
+# packages /usr/share/%{name}/conf.avail directory,
+# which is intended for fontconfig files shipped by the
+# (font) package
+
+%files_fontsconf_availdir() \
+%dir %{_datadir}/%{name} \
+%dir %{_fontsconfavaildir} \
+%nil
+
+# macro: files_fontsconf_file
+# takes exactly one argument; for given fontconfig file
+# (01-fontconfig.conf) macro expands in correct %%files entry
+#
+# -l  option also packages %%{_fontsconfddir}/01-fontconfig.conf link
+
+%files_fontsconf_file(l) \
+%{_fontsconfavaildir}/%1 \
+%{-l: \
+%config %{_fontsconfddir}/%1 \
+} \
+%nil
+
+# macro: reconfigure_fonts_prereq
+# adds requires for fonts-config
+%reconfigure_fonts_prereq   \
+Requires(pre):		perl aaa_base \
+Requires(post): 	coreutils \
+Requires(postun): 	coreutils \
+Requires(posttrans): 	coreutils \
+%nil
+
+
+# macro: reconfigure_fonts
+# font setup for suse
+%reconfigure_fonts \
+  if test -x /usr/sbin/fonts-config ; then \
+    LC_ALL=POSIX \
+   /usr/sbin/fonts-config --quiet \
+  fi \
+  %nil
+
+
+# macro: reconfigure_fonts
+# cjk font setup for suse
+%reconfigure_fonts_cjk \
+  if test -x /usr/sbin/acroread-cidfont-config ; then \
+     /usr/sbin/acroread-cidfont-config \
+  fi \
+  if test -x /usr/sbin/ghostscript-cjk-config ; then \
+      /usr/sbin/ghostscript-cjk-config \
+  fi \
+  %nil
+
+
+# macro: reconfigure_fonts_post
+# now alias to reconfigure_fonts, this can change in the future
+# options:
+#         -c  (the fonts are CJK fonts, also do setup which is only needed
+#              for CJK)
+%reconfigure_fonts_post(c) \
+  mkdir -p `dirname %{__fontsconfigrunflag}` \
+  touch %{__fontsconfigrunflag} \
+  %{-c: \
+     touch %{__fontsconfigrunflag}-cjk \
+   } \
+  %nil
+
+# macro: reconfigure_fonts_postun
+# now alias to reconfigure_fonts, this can change in the future
+# options:
+#         -c  (the fonts are CJK fonts, also do setup which is only needed
+#              for CJK)
+%reconfigure_fonts_postun(c) \
+  if [ $1 -eq 0 ]; then \
+    %reconfigure_fonts \
+    %{-c: \
+       %reconfigure_fonts_cjk \
+     } \
+  fi \
+  %nil
+
+# macro: reconfigure_fonts_post
+# do nothing for now, this can change in the future
+# options:
+#         -c  (the fonts are CJK fonts, also do setup which is only needed
+#              for CJK)
+%reconfigure_fonts_posttrans \
+  if [ -e %{__fontsconfigrunflag} ]; then \
+    %reconfigure_fonts \
+    rm %{__fontsconfigrunflag} \
+  fi \
+  if [ -e %{__fontsconfigrunflag}-cjk ]; then \
+    %reconfigure_fonts_cjk \
+    rm %{__fontsconfigrunflag}-cjk \
+  fi \
+  %nil
+
+# macro: reconfigure_fonts_scriptles
+# groups %post, %postun and %posttrans of font packages
+# options:
+#         -c  (the fonts are CJK fonts, also do setup which is only needed
+#              for CJK)
+#         -n <name> (name of subpackage; when ommited, also no -n parameter
+#                    is passed to %post, %postun and %posttrans)
+%reconfigure_fonts_scriptlets(c,n:) \
+%post %{-n:-n %{-n*}} \
+%reconfigure_fonts_post c \
+\
+%postun %{-n:-n %{-n*}} \
+%reconfigure_fonts_postun c \
+\
+%posttrans %{-n:-n %{-n*}} \
+%reconfigure_fonts_posttrans \
+\
+%nil

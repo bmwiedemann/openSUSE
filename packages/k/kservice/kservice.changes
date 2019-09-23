@@ -1,0 +1,823 @@
+-------------------------------------------------------------------
+Sat Sep  7 20:37:06 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * autotests: check that mimetypes defined by kcoreaddons are available
+  * Remove unused includes
+- Replace foo-devel with cmake(KF5Foo) in build requirements
+
+-------------------------------------------------------------------
+Wed Aug  7 17:51:45 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Clean up all core related to opening a dummy sycoca, unused. 
+  * Fix asserts when the sycoca DB is unreadable by user (e.g. root owned) 
+  * Expose X-KDE-Wayland-Interfaces 
+  * Fix KService build on Android 
+  * KService: remove broken concept of global sycoca database 
+  * Fix infinite recursion when using a dummy DB because ksycoca is inaccessible 
+  * CMakeLists: add "CONFIG" for better error messages if anything isn't found 
+  * Deprecate KDBusServiceStarter. All usage in kdepim is now gone, DBus activation is a better solution. 
+  * Remove very dangerous deletion code with kbuildsycoca5 --global. 
+  * Allow KAutostart to be constructed using an absolute path
+
+-------------------------------------------------------------------
+Fri Jul 19 11:44:47 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:39 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * Add X-Flatpak-RenamedFrom as recognized key
+  * Install in new logging directory when we use kf5 5.59.0
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:13 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- Changes since 5.58.0:
+  * Fix another assert when the file disappears under us: ASSERT: "ctime != 0"
+  * Fix assert (hash != 0) sometimes when a file is deleted by another process
+
+-------------------------------------------------------------------
+Wed May 15 18:16:18 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- No code changes since 5.57.0
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:44 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Add X-GNOME-UsesNotifications as recognized key
+  * Add bison minimum version of 2.4.1 due to %code
+  * [kservice] Make it compile without foreach
+  * [kservice] compile without deprecated method
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * kbuildsycoca5: no need to repeat work of KAboutData::setupCommandLine()
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:16 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * Build without D-Bus on Android
+  * delete copy constructor and assignment operator of some internal classes
+  * Suggest people to use K_PLUGIN_CLASS_WITH_JSON
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:51 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * applications.menu: remove unused category X-KDE-Edu-Teaching
+  * applications.menu: remove <KDELegacyDirs/>
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Use new syntax
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:07 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Use more explicit constructors with internal classes
+  * Use Q_OBJECT with all QObject subclasses (helps debugging introspection)
+  * Do not use const reference for enum type argument in internal API
+  * Use const ref for non-trivial copy types in internal API
+  * Use QLatin1String method overload instead of creating a temporary QString
+  * Use QStringLiteral, not QLatin1String, if a final QString is wanted
+  * Use QLatin1String, not QString::fromLatin1, in string calculations
+  * Use qEnvironmentVariableIntValue
+
+-------------------------------------------------------------------
+Tue Oct 16 08:02:36 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:50:38 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Port deprecated method
+  * Make compile with strict flags
+  * Fix minor EBN issues
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:46 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * autotests: debug output for CI failure, or for general debugging
+  * autotests: rename header and function to match new purpose
+  * autotests: also copy applications.menu and set XDG_CONFIG_DIRS so it's found
+  * KBuildSycoca: always process application desktop files.
+  * autotests: factorize XDG_DATA_DIRS setup in new header, use from 3rd test
+  * autotests: don't wait for signal if we already received it (e.g. Windows CI)
+  * autotests: fix failure on Windows, QStringLiteral isn't fromUtf8 there...
+  * autotests: use data/kservicetypes5 instead of share, so it works on Windows too
+  * autotests: use local servicetype desktop files in kservicetest as well
+  * autotests: use local copies of kplugininfo.desktop and application.desktop
+
+-------------------------------------------------------------------
+Sun Aug 19 09:19:23 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Use more nullptr
+  * API dox: talk about nullptr, not 0
+  * Require out-of-source build
+  * Add subseq operator to match sub-sequences
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * Remove unused key X-KDE-DBus-ModuleName from test service metadata
+  * Add missing override
+  * Use override
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:07 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Use override
+
+-------------------------------------------------------------------
+Sun May 13 21:03:06 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * warning--
+  * Warning--
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:06 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * We depend against 5.8.0
+  * API dox: consistently use X-KDE-ServiceTypes instead of ServiceTypes
+  * Remove not necessary QtCore and co
+  * [API dox] Remove deprecated Encoding=UTF-8 from example for desktop file
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:42 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:09 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:20 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+  * Install categories file + use debug categories when necessary
+  * Fix cmake warning
+  * autogenerate debug file
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:49 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * Fix compile with QT_NO_CAST_FROM_ASCII
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:15 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * Initialize values
+  * Initialize some pointer
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:43 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:18 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * autotests: fix running tests in parallel
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:37 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * API dox: small improvements to example code
+  * API dox: fix method used in example code
+  * autotests: make it work with CMAKE_RUNTIME_OUTPUT_DIRECTORY being set
+  * API dox: use official name "D-Bus" consistently
+
+-------------------------------------------------------------------
+Wed Jul 12 07:14:02 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * Fix MSVC warning
+  * [FEATURE] Option to build & install QCH file with the public API dox
+  * tests: kautostarttest: fix also expected value
+  * tests: use cmd.exe as TryExec on Windows
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:43 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * API dox: Use doxygen notation to have comments used
+  * API dox: note CamelCase includes by @class tag with more classes
+
+-------------------------------------------------------------------
+Mon May 15 13:53:11 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * None
+- Use %find_lang --with-man --all-name
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:55 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * Fix 'Not found: ""' terminal messages
+  * Upgrade KF5 version to 5.33.0.
+  * [autotest] Fix the workaround for inotify-on-overlay-fs so it actually works
+  * [autotest] test s-m-i requirement
+  * [autotests] add tests for the KService constructors
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:53 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Commit translations from l10n-kf5
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * further investigation of the kservicetest unittest failure in CI
+  * Upgrade KF5 version to 5.32.0.
+  * Port some left-over debug output to categorized logging
+
+-------------------------------------------------------------------
+Thu Feb  9 09:32:55 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:43:33 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 02:04:06 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 22:10:48 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 12:59:30 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:53:21 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:56:22 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * applications.menu: remove references to unused categories
+  * Always update the Trader parser from yacc/lex sources
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:06:07 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:27:22 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * Fix associated applications for mimetypes with
+    uppercase characters (boo#980046)
+  * Lowercase the lookup key for mimetypes,
+    to make it case insensitive
+  * Fix ksycoca notifications when the DB doesn't exist yet
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:33:43 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * Remove too-strict maximum string length in KSycoca database
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:22:23 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Fix new kbuildsycoca warning, when a mimetype inherits
+    from an alias
+  * Fix handling of x-scheme-handler/* in mimeapps.list
+  * Fix handling of x-scheme-handler/* in mimeapps.list parsing
+    (kde#358159)
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 10:01:28 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * Simplify code, reduce pointer dereferences,
+    container-related improvements
+  * Add kmimeassociations_dumper test program,
+    inspired by bug 359850
+  * Fix chromium/wine apps not loading on some distributions
+    (kde#213972)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sun Feb 28 12:39:31 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Drop totally wrong list-local-mimeapps-last.patch
+
+-------------------------------------------------------------------
+Sat Feb  6 18:06:21 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+- Added list-local-mimeapps-last.patch list local mimeapps.list
+  last to QListIterator, so it's   respected before global ones
+  (boo#966739)
+
+-------------------------------------------------------------------
+Sat Jan  2 17:45:15 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:09:10 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 17:03:37 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * KBuildSycoca: always save, even if no change in .desktop file
+    was noticed. (kde#353203)
+  * Make doctools optional
+  * kbuildsycoca: parse all the mimeapps.list files mentioned in
+    the new spec.
+  * Use largest timestamp in subdirectory as resource
+    directory timestamp.
+  * Keep MIME types separate when converting KPluginInfo to
+    KPluginMetaData
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Fri Oct 23 18:37:58 UTC 2015 - wbauer@tmo.at
+
+- Add dont-show-yast-modules-in-the-applications-menu.patch: hide
+  the YaST modules from the application menu (boo#951888)
+
+-------------------------------------------------------------------
+Mon Oct  5 17:37:34 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * Use largest timestamp in subdirectory as resource
+    directory timestamp.
+  * KSycoca: store mtime for every source dir, to detect changes.
+    (kde#353036)
+  * KServiceTypeProfile: remove unnecessary factory creation.
+    (kde#353360)
+  * Simplify and speed up KServiceTest::initTestCase.
+  * make install name of applications.menu file a cached
+    cmake variable
+  * KSycoca: ensureCacheValid() should create the db if
+    it doesn't exist
+  * KSycoca: make global database work after the recent
+    timestamp check code
+  * KSycoca: change DB filename to include language and
+    sha1 of the dirs it's built from.
+  * KSycoca: make ensureCacheValid() part of the public API.
+  * KSycoca: add a q pointer to remove more singleton usage
+  * KSycoca: remove all self() methods for factories, store
+    them in KSycoca instead.
+  * KBuildSycoca: remove writing of the ksycoca5stamp file.
+  * KBuildSycoca: use qCWarning rather than fprintf(stderr, ...)
+    or qWarning
+  * KSycoca: rebuild ksycoca in process rather than
+    executing kbuildsycoca5
+  * KSycoca: move all of the kbuildsycoca code into the lib,
+    except for main().
+  * KSycoca optimization: only watch the file if the app
+    connects to databaseChanged()
+  * Fix memory leaks in the KBuildSycoca class
+  * KSycoca: replace DBus notification with file watching
+    using KDirWatch.
+  * kbuildsycoca: deprecate option --nosignal.
+  * KBuildSycoca: replace dbus-based locking with a lock file.
+  * Do not crash when encountering invalid plugin info.
+  * Rename headers to _p.h in preparation for move to
+    kservice library.
+  * Move checkGlobalHeader() within KBuildSycoca::recreate().
+  * Remove code for --checkstamps and --nocheckfiles.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+- Drop menu.patch, no longer needed.
+  Pass -DAPPLICATIONS_MENU_NAME="kf5-applications.menu" to cmake instead
+
+-------------------------------------------------------------------
+Sat Sep 19 13:10:42 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.3
+  * Fix timestamp truncation due to unwanted quint64 -> quint32 conversions.
+    (kde#352854)
+- Bring back Source URL
+
+-------------------------------------------------------------------
+Wed Sep 16 21:04:08 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.1
+  * Revert ksycoca format change for now, for better compatibility
+    (kde#352756)
+- Temporary comment out Source URL
+
+-------------------------------------------------------------------
+Tue Sep  8 17:13:30 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * KSycoca: check timestamps and run kbuildsycoca if needed.
+    No kded dependency anymore.
+  * Don't close ksycoca right after opening it.
+  * KPluginInfo now correctly handles FormFactor metadata
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Sat Aug 15 16:43:25 UTC 2015 - wbauer@tmo.at
+
+- Add kservice-desktop-translations.patch: read translations for
+  .desktop files from desktop-translations if they are not in the
+  file itself (boo#904524, boo#932158)
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:43 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * Fix kbuildsycoca --global
+  * KToolInvocation::invokeMailer: fix attachment when we have
+    multi attachement
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:45:23 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:54 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * When running as root preserve file ownership on existing
+    cache files (kde#342438)
+  * Guard against being unable to open stream (kde#342438)
+  * Fix check for invalid permissions writing file (kde#342438)
+  * Fix querying ksycoca for x-scheme-handler/* pseudo-mimetypes.
+    (kde#347353)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:43:42 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * Fix wrong splitting of entry path (kde#344614)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sun Apr 19 15:54:46 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Recommend kded package, it is a runtime requirement, but can't
+  be marked as Required as it would create a buildcycle
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:36 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+- Drop no longer needed Requires of the devel subpackage:
+  kdbusaddons-devel and ki18n-devel
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:37 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * KPluginInfo: support stringlists as properties
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:07 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * Include unknown properties when converting
+    KPluginInfo from KService
+  * KPluginInfo: fixed properties not being
+    copied from KService::Ptr
+  * OS X: performance fix for kbuildsycoca4 (skip app bundles)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:10 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * Fix build on MSVC.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:33 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * Fix KPluginTrader::query() for old JSON
+  * Deprecate kservice_desktop_to_json for
+    kcoreaddons_desktop_to_json
+  * Implement KPluginTrader::query() using
+    KPluginLoader::findPlugins()
+  * Fix KPluginInfo::entryPath() being empty
+    when not loaded from .desktop
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:46:44 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+- Drop 0001-Don-t-call-enableTestMode-when-QStandardPaths-isTest.patch,
+  merged upstream
+
+-------------------------------------------------------------------
+Thu Oct  9 21:31:30 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add 0001-Don-t-call-enableTestMode-when-QStandardPaths-isTest.patch
+  from upstream: fixes bug where kded would be called in test mode,
+  which made it use ~/.qttest as home dir
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:14 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * Many many fixes to KPluginInfo
+  * Add functions to convert between lists KPluginMetaData
+    and KPluginInfo
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:17 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:01 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+
+-------------------------------------------------------------------
+Fri Jul 11 09:48:50 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Define kf5_version within package
+
+-------------------------------------------------------------------
+Tue Jul  1 21:35:37 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:06 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Sun May  4 01:41:23 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:51 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+
+-------------------------------------------------------------------
+Tue Mar  4 16:37:59 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Sat Feb  8 02:19:45 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init kservice package
+

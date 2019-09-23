@@ -1,0 +1,21 @@
+<package name="perl-Test-CheckChanges" project="openSUSE:Factory">
+  <title>Check that the Changes file matches the distribution.</title>
+  <description>This module checks that you _Changes_ file has an entry for the current
+version of the *Module* being tested.
+
+The version information for the distribution being tested is taken out of
+the Build data, or if that is not found, out of the Makefile.
+
+It then attempts to open, in order, a file with the name _Changes_ or
+_CHANGES_.
+
+The _Changes_ file is then parsed for version numbers. If one and only one
+of the version numbers matches the test passes. Otherwise the test fails.
+
+A message with the current version is printed if the test passes, otherwise
+dialog messages are printed to help explain the failure.
+
+The _examples_ directory contains examples of the different formats of
+_Changes_ files that are recognized.</description>
+  <devel project="devel:languages:perl" package="perl-Test-CheckChanges"/>
+</package>

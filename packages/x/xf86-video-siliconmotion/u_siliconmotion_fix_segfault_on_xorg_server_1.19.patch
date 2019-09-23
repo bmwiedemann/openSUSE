@@ -1,0 +1,27 @@
+Author: Steven Chamberlain <steven@pyro.eu.org>
+Description: Don't crash on ScreenInit with xserver 1.19
+
+diff --git a/src/smi_driver.c b/src/smi_driver.c
+index 8949cae..5023e63 100644
+--- a/src/smi_driver.c
++++ b/src/smi_driver.c
+@@ -1787,6 +1787,9 @@ SMI_ScreenInit(SCREEN_INIT_ARGS_DECL)
+ 		       "Hardware cursor initialization failed\n");
+     }
+ 
++    if(!xf86CrtcScreenInit(pScreen))
++	LEAVE(FALSE);
++
+     /* Initialise default colormap */
+     if (!miCreateDefColormap(pScreen))
+ 	LEAVE(FALSE);
+@@ -1810,9 +1813,6 @@ SMI_ScreenInit(SCREEN_INIT_ARGS_DECL)
+ 
+     SMI_InitVideo(pScreen);
+ 
+-    if(!xf86CrtcScreenInit(pScreen))
+-	LEAVE(FALSE);
+-
+     /* Report any unused options (only for the first generation) */
+     if (serverGeneration == 1) {
+ 	xf86ShowUnusedOptions(pScrn->scrnIndex, pScrn->options);

@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Thu Jul 13 19:28:04 UTC 2017 - tchvatal@suse.com
+
+- Fix building with namespaced lua, adapt patches:
+  * tolua-5.2.0-optflags.patch
+  * tolua-5.2.0-shared.patch
+
+-------------------------------------------------------------------
+Sun Nov 22 15:10:55 UTC 2015 - rpm@fthiessen.de
+
+- Update to 5.2.4
+  * Modified tolua-5.2.0-shared.patch (version number of shared lib)
+
+-------------------------------------------------------------------
+Wed Jul 22 02:20:33 UTC 2015 - i@marguerite.su
+
+- add patch: tolua-5.2.0-optflags.patch
+  * build with optflags
+- add patch: tolua-5.2.0-shared.patch
+  * build shared library
+
+-------------------------------------------------------------------
+Sun Jul 29 06:27:47 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 5.2.0
+
+-------------------------------------------------------------------
+Wed Sep 28 22:15:06 UTC 2011 - pascal.bleser@opensuse.org
+
+- copy to devel:languages:lua
+
+-------------------------------------------------------------------
+Sat Feb 26 13:35:31 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 5.1.4
+
+-------------------------------------------------------------------
+Sun Nov  4 00:00:00 UTC 2007 - toni@links2linux.de
+
+- update to 5.1b
+- splitted of sub-package libtolua-devel
+
+-------------------------------------------------------------------
+Sat Dec 30 00:00:00 UTC 2006 - toni@links2linux.de
+
+- build SuSE-10.2, corrected BuildRequires
+
+-------------------------------------------------------------------
+Sun Sep 17 00:00:00 UTC 2006 - toni@links2linux.de
+
+- build for packman
+
+-------------------------------------------------------------------
+Sat Jan 28 00:00:00 UTC 2006 - oc2pus@arcor.de 5.0-0.oc2pus.1
+
+- initial release tolua-5.0
+- repacked as tar.bz2
+

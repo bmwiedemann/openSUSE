@@ -1,0 +1,91 @@
+diff --git a/src/ipsec/_ipsec.in b/src/ipsec/_ipsec.in
+index ea399b8..ea8ed8a 100644
+--- a/src/ipsec/_ipsec.in
++++ b/src/ipsec/_ipsec.in
+@@ -46,6 +46,26 @@ IPSEC_DISTRO="Institute for Internet Technologies and Applications\nUniversity o
+ 
+ command_dir="$IPSEC_DIR"
+ 
++fipscheck()
++{
++	# when fips operation mode is not enabled, just report OK
++	read 2>/dev/null fips_enabled < /proc/sys/crypto/fips_enabled
++	test "X$fips_enabled" = "X1"    || return 0
++
++	# complain when _fipscheck is missed
++	test -x "$IPSEC_DIR/_fipscheck" || {
++		echo "ipsec: please install strongswan-hmac package required in fips mode" >&2
++		return 4
++	}
++
++	# now execute it
++	$IPSEC_DIR/_fipscheck || {
++		rc=$?
++		echo "ipsec: strongSwan fips file integrity check failed" >&2
++		return $rc
++	}
++}
++
+ case "$1" in
+ '')
+ 	echo "$IPSEC_SCRIPT command [arguments]"
+@@ -153,6 +173,7 @@ rereadall|purgeocsp|listcounters|resetcounters)
+ 	shift
+ 	if [ -e $IPSEC_CHARON_PID ]
+ 	then
++		fipscheck || exit $?
+ 		$IPSEC_STROKE "$op" "$@"
+ 		rc="$?"
+ 	fi
+@@ -162,6 +183,7 @@ purgeike|purgecrls|purgecerts)
+ 	rc=7
+ 	if [ -e $IPSEC_CHARON_PID ]
+ 	then
++		fipscheck || exit $?
+ 		$IPSEC_STROKE "$1"
+ 		rc="$?"
+ 	fi
+@@ -195,6 +217,7 @@ route|unroute)
+ 	fi
+ 	if [ -e $IPSEC_CHARON_PID ]
+ 	then
++		fipscheck || exit $?
+ 		$IPSEC_STROKE "$op" "$1"
+ 		rc="$?"
+ 	fi
+@@ -204,6 +227,7 @@ secrets)
+ 	rc=7
+ 	if [ -e $IPSEC_CHARON_PID ]
+ 	then
++		fipscheck || exit $?
+ 		$IPSEC_STROKE rereadsecrets
+ 		rc="$?"
+ 	fi
+@@ -211,6 +235,7 @@ secrets)
+ 	;;
+ start)
+ 	shift
++	fipscheck || exit $?
+ 	if [ -d /var/lock/subsys ]; then
+ 		touch /var/lock/subsys/ipsec
+ 	fi
+@@ -289,6 +314,7 @@ up)
+ 	rc=7
+ 	if [ -e $IPSEC_CHARON_PID ]
+ 	then
++		fipscheck || exit $?
+ 		$IPSEC_STROKE up "$1"
+ 		rc="$?"
+ 	fi
+@@ -338,6 +364,11 @@ esac
+ cmd="$1"
+ shift
+ 
++case $cmd in
++_fipscheck|_copyright|pki) ;;
++*) fipscheck || exit $?	;;
++esac
++
+ path="$command_dir/$cmd"
+ 
+ if [ ! -x "$path" ]

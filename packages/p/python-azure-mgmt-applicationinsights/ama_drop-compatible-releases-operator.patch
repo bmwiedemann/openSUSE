@@ -1,0 +1,12 @@
+diff -Nru azure-mgmt-applicationinsights-0.1.0.orig/setup.py azure-mgmt-applicationinsights-0.1.0/setup.py
+--- azure-mgmt-applicationinsights-0.1.0.orig/setup.py	2018-01-17 22:32:06.000000000 +0100
++++ azure-mgmt-applicationinsights-0.1.0/setup.py	2018-01-25 13:18:20.287356692 +0100
+@@ -78,7 +78,7 @@
+     packages=find_packages(exclude=["tests"]),
+     install_requires=[
+         'msrestazure>=0.4.20,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     cmdclass=cmdclass
+ )

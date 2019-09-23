@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0ddc980f6c48a2f07c0dfab42cdc0513</srcmd5>
+    <version>0.4.12</version>
+    <time>1461335024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>381393</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5b2dc8b96426c6fecaebbbc9f0e4b489</srcmd5>
+    <version>0.4.12</version>
+    <time>1463652903</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396197</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b2347656de66712e84ef15f4b55d229a</srcmd5>
+    <version>0.4.14</version>
+    <time>1494345751</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 0.4.14
+  * get_running_builds failed when server has a path
+  * Move other-requirements.txt to bindep.txt
+  * Add optional kerberos support
+  * Allow to wait for jenkins to enter normal operation
+  * Remove discover from test-requirements
+  * Fixed a minor typo in example of Python-jenkins
+  * Fix relative import in kerberos support for python3
+  * Changes get_job_info to get_build_info
+  * url-proof scripts passed to run_script
+  * Do not force DeprecationWarning to be displayed
+  * Add support for handling promotions
+  * Use standard cover setup
+  * Adds possibility to retrieve all jobs from the view specified
+  * Setup required packages with bindep
+  * Make the kerberos support python3 ready
+  * remove cap on pbr
+  * Fetch all builds from a job
+  * Remove redundant 'the'
+  * add get_whoami()
+- Use pypi.io as Source url</comment>
+    <requestid>491800</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2b71e47eebc8c2a21debbf38d3dc4bfb</srcmd5>
+    <version>0.4.14</version>
+    <time>1506453353</time>
+    <user>dimstar_suse</user>
+    <comment>- convert to singlespec</comment>
+    <requestid>528632</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>605cd50ea3ca2d4cbb28e175fe7fde2e</srcmd5>
+    <version>0.4.14</version>
+    <time>1531947429</time>
+    <user>dimstar_suse</user>
+    <comment>- Depend on python-rpm-macros</comment>
+    <requestid>623629</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b00345d672b69346fa89da42b78809f0</srcmd5>
+    <version>1.2.1</version>
+    <time>1536327585</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1:
+  * Revert &quot;detect and respect http redirects&quot;
+  * Revert &quot;Avoid empty body failure on HEAD requests&quot;
+  * Avoid empty body failure on HEAD requests
+  * Fix item being ignored in get\_info
+  * detect and respect http redirects
+  * Fix run\_script method
+  * Adopt use of pre-commit hooks
+  * Adds support for executing Groovy scripts on jenkins nodes
+  * Allow use of unicode job names
+  * Added pypy-dev to bindep.txt
+  * Fix run\_scripts() API
+  * fix tox python3 overrides
+  * Selectively mock requests\_kerberos import
+  * Ensure timeout exceptions are re-raised during auth attempts
+  * Revert &quot;Do not require requests-kerberos for tests&quot;
+  * Freeze cmd2 library on python2
+  * Update URLS that require depth or tree filters
+  * README: mention #openstack-jjb channel
+  * Do not require requests-kerberos for tests
+  * Fix: send proxy as empty dict
+  * Add functions to retrieve more data from Jenkins
+  * Update to \_response\_handler
+  * Trivial: Update pypi url to new url
+  * add get\_queue\_item() method
+  * build\_job: return queue item identifier
+  * add jenkins\_request() method
+  * Use proper code highlight in docs
+  * Fix docstrings params
+  * Adds support for wiping out a job's workspace</comment>
+    <requestid>633218</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cf4ac9938f1c38364c548e5b4a7fc57d</srcmd5>
+    <version>1.4.0</version>
+    <time>1544632166</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.0:
+  * Update min tox version to 2.0
+  * Request multiple folder levels at once in get\_all\_jobs
+  * Replace build\_jobs\_list\_responses with actual Jenkins responses
+  * Clean up job/folder path handling
+  * Test requested URLs in test\_getall
+  * Make jjb-tox-cross-jenkins-job-builder voting
+  * Allow adding extra HTTP headers to Jenkins requests</comment>
+    <requestid>657235</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>80075261f504e78912a3ab5f5c902c7e</srcmd5>
+    <version>1.4.0</version>
+    <time>1558520383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702948</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f786a95be3ba08da552b14b922dc19a9</srcmd5>
+    <version>1.5.0</version>
+    <time>1564994247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720220</requestid>
+  </revision>
+</revisionlist>

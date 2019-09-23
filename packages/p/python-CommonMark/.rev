@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4be3aa85b9d117a85304ab878caa2367</srcmd5>
+    <version>0.7.3</version>
+    <time>1493363561</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by recent versions of the jupyter suite.
+
+This version fixes the conflict with the &quot;cmark&quot; package.</comment>
+    <requestid>489842</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>232d172485ea6a3755d2e9c75c3f013a</srcmd5>
+    <version>0.7.3</version>
+    <time>1494088273</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493129</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>af65e03e340e6408b8a1ee163562bfed</srcmd5>
+    <version>0.7.3</version>
+    <time>1498286086</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505951</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dd17017a8f4803f4fb818ed60d98261b</srcmd5>
+    <version>0.7.4</version>
+    <time>1509461025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537519</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>59446f18796d431224a25b19767ec9fb</srcmd5>
+    <version>0.7.5</version>
+    <time>1523447819</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594620</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>36894c696092ae199e080ca748b27844</srcmd5>
+    <version>0.7.5</version>
+    <time>1544726498</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653983</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>657205182f85decf17aaae31044279ed</srcmd5>
+    <version>0.8.1</version>
+    <time>1551952173</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.1:
+  * Added the Node.normalize() method. (from @lez)
+  * Renamed package name to commonmark for PEP8 compliance. You can now do import commonmark as well as import CommonMark. Closes #60
+  * Added testing on Python 3.7.
+  * Removed CommonMark symlink. So, as of this version, you need to replace all instances of CommonMark with commonmark in your code.
+- Remove the not-needed subpackages
+- Run the tests</comment>
+    <requestid>681781</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2bf67722bb773830576b447185c34e20</srcmd5>
+    <version>0.9.0</version>
+    <time>1558938951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704960</requestid>
+  </revision>
+</revisionlist>

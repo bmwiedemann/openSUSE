@@ -1,0 +1,48 @@
+--- mytop-1.6/mytop.orig	2007-02-17 05:57:46.000000000 +0100
++++ mytop-1.6/mytop	2012-07-09 16:05:42.000000000 +0200
+@@ -153,9 +153,9 @@
+     "idle|i"              => \$config{idle},
+     "resolve|r"           => \$config{resolve},
+     "prompt!"             => \$config{prompt},
+-    "long|!"              => \$config{long_nums},
++    "long|l!"             => \$config{long_nums},
+     "mode|m=s"            => \$config{mode},
+-    "sort=s"              => \$config{sort},
++    "sort=s"              => \$config{sort}
+ );
+ 
+ ## User may have put the port with the host.
+@@ -1766,6 +1766,33 @@
+ 
+ Default: noresolve
+ 
++=item B<-l> or B<-long> or B<-nolong>
++
++Show numbers in full length instead of compress them like 1,000 -> 1.0k
++
++Default: nolong
++
++=item B<-m> or B<-mode> mode
++
++Choose display mode. Can be one of
++
++B<top>    top-style display mode
++
++B<qps>    (Queries Per Second) will write out one integer per second. The
++       number written reflects the number of queries executed by the server
++       in the previous one second interval.
++
++B<cmd>    show statistics about the commands that are currently being
++       executed.
++
++B<innodb> InnoDB Status mode. The output of "SHOW INNODB STATUS" will
++       be displayed every cycle. In a future version, this may actually
++       summarize that data rather than producing raw output.
++
++B<status> Show status variables
++
++Default: top
++
+ =back
+ 
+ Command-line arguments will always take precedence over config file

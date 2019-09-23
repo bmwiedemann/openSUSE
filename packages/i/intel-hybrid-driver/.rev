@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>981247e23da4245eca2f59693fb4a0c7</srcmd5>
+    <version>1.0.2</version>
+    <time>1506195231</time>
+    <user>dimstar_suse</user>
+    <comment>Initial packaging for openSUSE, version 1.0.2, vaapi driver for latest Intel GPUs</comment>
+    <requestid>528053</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ca2fa83f52957125d4e41460cbbedda2</srcmd5>
+    <version>1.0.2</version>
+    <time>1548704938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668911</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>574479861193705ef172d8ef0ba4905f</srcmd5>
+    <version>1.0.2</version>
+    <time>1551024959</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677710</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,2 @@
+d /var/lib/gdm/.pulse 0755 - - -
+C /var/lib/gdm/.pulse/default.pa 0644 - - - /usr/share/factory/var/lib/gdm/.pulse/default.pa

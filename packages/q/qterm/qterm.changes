@@ -1,0 +1,144 @@
+-------------------------------------------------------------------
+Sat Jan  5 12:53:22 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- fix tumbleweed build
+- add qterm-qt5qcollectiongenerator.patch
+  * qcollectiongenerator-qt5 has been merged into qhelpgenerator-qt5 in Qt 5.12.0 
+  * http://code.qt.io/cgit/qt/qttools.git/commit/?h=5.12&id=30a75f7f
+
+-------------------------------------------------------------------
+Sun Oct 14 15:07:02 UTC 2018 - sean@suspend.net
+
+- update to 0.7.3
+- drop patches:
+    qterm-fix-build-error.patch
+
+-------------------------------------------------------------------
+Tue Jun 19 08:26:31 UTC 2018 - binli@opensuse.org
+
+- Add patch: qterm-fix-build-error.patch
+  * Fix build error.
+
+-------------------------------------------------------------------
+Mon Dec  4 22:07:00 UTC 2017 - mimi.vx@gmail.com
+
+- update to 0.7.2
+- move to QT5 libraries
+- drop patches: 
+    qterm-0.5.12-cmake-2.6.patch
+    qterm-0.5.12-gcc-4.7.patch
+    qterm-0.5.12-gcc6.patch
+
+-------------------------------------------------------------------
+Wed Nov 29 15:23:15 UTC 2017 - dimstar@opensuse.org
+
+- Replace openssl-devel BuildRequires with pkgconfig(openssl):
+  Allow OBS to pick the right openSSL version based on the other
+  pulled in dependencies.
+
+-------------------------------------------------------------------
+Fri Jun 24 07:58:26 UTC 2016 - i@marguerite.su
+
+- add patch: qterm-0.5.12-gcc6.patch
+  * fix boo#985074
+  * fix gcc6 narrowing conversion from char to unsigned char
+    inside {}
+
+-------------------------------------------------------------------
+Fri Sep  4 08:23:17 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Use cmake macros
+- Use macros for updating desktop file and icon cache
+- Use fdupes to replace duplicate files with symlinks
+- Clenaup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Dec 14 03:44:17 UTC 2012 - bili@suse.com
+
+- Add qterm-0.5.12-cmake-2.6.patch to build with cmake 2.6.x.
+
+-------------------------------------------------------------------
+Thu Mar 22 12:18:58 UTC 2012 - aj@suse.de
+
+- Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Fri Sep 16 06:30:54 UTC 2011 - bili@suse.com
+
+- Upgrade to 0.5.12.
+  - Finish the two new panel to make ANSI editing easier.
+  - The new xml addressbook format is finally landed. 
+  - Improved the rendering result.
+  - Implement the tranlucent background.
+  - Some bugfixes as usual.
+
+-------------------------------------------------------------------
+Mon Aug 31 10:46:25 CEST 2009 - coolo@novell.com
+
+- do not hardcode buildroot values
+
+-------------------------------------------------------------------
+Fri Jun 19 10:35:46 CEST 2009 - coolo@novell.com
+
+- disable as-needed for this package as it fails to build with it
+
+-------------------------------------------------------------------
+Thu Mar 26 01:24:33 CST 2009 - xwhu@suse.de
+
+- Fix compiler warning on nonPOD type (bnc#483172)
+
+-------------------------------------------------------------------
+Tue Mar 25 08:45:49 CET 2008 - xwhu@suse.de
+
+- Initial import of qterm 0.5 serial 
+  - completely switch to cmake
+  - port to qt4
+  - upstream changelog no longer available
+
+-------------------------------------------------------------------
+Thu Jun 21 17:28:28 CEST 2007 - adrian@suse.de
+
+- fix changelog entry order
+
+-------------------------------------------------------------------
+Thu Jun  7 15:53:45 CEST 2007 - sbrabec@suse.cz
+
+- Fixed deskop file translation.
+- Removed invalid desktop Category "Application" (#254654).
+
+-------------------------------------------------------------------
+Mon Mar 12 14:02:14 CET 2007 - xwhu@novell.com
+
+- Explicitly cast QCString to const char* in qtermtelnet.cpp
+
+-------------------------------------------------------------------
+Thu Jun 22 18:17:12 CEST 2006 - ro@suse.de
+
+- remove selfprovides 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:02 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 16 00:08:38 CET 2006 - ro@suse.de
+
+- change sequence in specfile 
+
+-------------------------------------------------------------------
+Fri Jan 15 12:00:00 CET 2006 - xwhu@novell.com
+
+- Minor fixes to meet the requirement of abuild system
+
+-------------------------------------------------------------------
+Sat Jan 14 12:36:17 CET 2006 - ro@suse.de
+
+- fixed changelog again 
+
+-------------------------------------------------------------------
+Wed Jan 11 12:00:00 CET 2006 - xwhu@novell.com
+
+- Initial build of 0.4.0pre3
+

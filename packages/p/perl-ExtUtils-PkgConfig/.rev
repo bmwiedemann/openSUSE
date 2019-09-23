@@ -1,0 +1,222 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f34e31b1b41a55dbb3fb34d1cc1d5bb3</srcmd5>
+    <version>1.07</version>
+    <time>1168903833</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>31723be91c5601dd570abccd44a11002</srcmd5>
+    <version>1.08</version>
+    <time>1193963783</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e3e3ae71ff6af61d6cd1a74e718a8444</srcmd5>
+    <version>1.09</version>
+    <time>1201127288</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b032649eb9a74e5c531cd8d05f0dc93b</srcmd5>
+    <version>1.11</version>
+    <time>1205928424</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="40">
+    <srcmd5>b032649eb9a74e5c531cd8d05f0dc93b</srcmd5>
+    <version>1.11</version>
+    <time>1205928424</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0607d0c5e825f1c0cb1e2709737d952d</srcmd5>
+    <version>1.12</version>
+    <time>1232626423</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>0607d0c5e825f1c0cb1e2709737d952d</srcmd5>
+    <version>1.12</version>
+    <time>1232626423</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>0b43d0f00500e51d7562a0d15f21c283</srcmd5>
+    <version>1.12</version>
+    <time>1263293617</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-ExtUtils-PkgConfig based on submit request 29299 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>501a784ca95420f09b0775aa3c07d65e</srcmd5>
+    <version>1.12</version>
+    <time>1268925457</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>501a784ca95420f09b0775aa3c07d65e</srcmd5>
+    <version>1.12</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>501a784ca95420f09b0775aa3c07d65e</srcmd5>
+    <version>1.12</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>e5c1e6ff4a5585098bf8cf38530c27ea</srcmd5>
+    <version>1.12</version>
+    <time>1287485714</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50985 from user coolo
+</comment>
+    <requestid>50985</requestid>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>755be2a322244a740123c1c6b7ea2f57</srcmd5>
+    <version>1.12</version>
+    <time>1287485719</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 50985
+</comment>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>e5b1fe4c3b0bc53573b8d23b3a02d7fe</srcmd5>
+    <version>1.12</version>
+    <time>1290788551</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53914 from user computersalat
+</comment>
+    <requestid>53914</requestid>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>1d5e7fa896a0a462c93ece9442e0ff7c</srcmd5>
+    <version>1.12</version>
+    <time>1290788565</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53914
+</comment>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>f002e48c8b021ab7f89239f2ec244bab</srcmd5>
+    <version>1.12</version>
+    <time>1296607052</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59480 from user vitezslav_cizek
+</comment>
+    <requestid>59480</requestid>
+  </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>a9c491e7d91b0f39c6d1ab19966506c1</srcmd5>
+    <version>1.12</version>
+    <time>1296607059</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59480
+</comment>
+  </revision>
+  <revision rev="18" vrev="17">
+    <srcmd5>a9c491e7d91b0f39c6d1ab19966506c1</srcmd5>
+    <version>1.12</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>a9c491e7d91b0f39c6d1ab19966506c1</srcmd5>
+    <version>1.12</version>
+    <time>1319182265</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>57ea4cdaf7b3a0a50c8675d74d4eaef0</srcmd5>
+    <version>1.12</version>
+    <time>1321630770</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92086</requestid>
+  </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>2a78734b008b0c8c1adbf00b922e202b</srcmd5>
+    <version>1.12</version>
+    <time>1323193271</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="23">
+    <srcmd5>2a78734b008b0c8c1adbf00b922e202b</srcmd5>
+    <version>1.12</version>
+    <time>1340183838</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="25">
+    <srcmd5>2a78734b008b0c8c1adbf00b922e202b</srcmd5>
+    <version>1.12</version>
+    <time>1359109660</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>97e4ff018eb4939089c50c29db47a40e</srcmd5>
+    <version>1.14</version>
+    <time>1370523928</time>
+    <user>coolo</user>
+    <comment>- updated to 1.14
+     - Skip tests for pkg-config binary with the '--max-version' switch on
+       OpenBSD 5.2, due to a bug in OpenBSD's implemenation of 'pkg-config'
+     - Updated Makefile.PL to use a META_MERGE block with WriteMakefile(); this
+       block is what MetaCPAN reads when generating page output
+ 
+     - Correctly handle major-only versions, like '2' (RT #68246).
+     - Updated FSF address and copyrights (forwarded request 177389 from coolo)</comment>
+    <requestid>177427</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>97e4ff018eb4939089c50c29db47a40e</srcmd5>
+    <version>1.14</version>
+    <time>1379663669</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f2869c21ee3d38c9c1e872730f38aca9</srcmd5>
+    <version>1.15</version>
+    <time>1381077466</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>202210</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>f2869c21ee3d38c9c1e872730f38aca9</srcmd5>
+    <version>1.15</version>
+    <time>1409302282</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>dfc8ddb50a291a122119f6ae0254b33c</srcmd5>
+    <version>1.150000</version>
+    <time>1430132663</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>303895</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0cfb3665f0397567bb56a2dcc4d28db3</srcmd5>
+    <version>1.160000</version>
+    <time>1493456026</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.16
+   see /usr/share/doc/packages/perl-ExtUtils-PkgConfig/Changes
+  1.16  Thu Apr 20 18:51:36 PDT 2017
+      - Add exists() method, and update README (RT#77880)
+      - Handle removal of '.' from @INC for Perl 5.24 (RT#120819)</comment>
+    <requestid>491832</requestid>
+  </revision>
+</revisionlist>

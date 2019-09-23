@@ -1,0 +1,18 @@
+--- a/tests/test_parse.py
++++ b/tests/test_parse.py
+@@ -22,14 +22,7 @@ from datetime import datetime, time
+ import re
+ 
+ # -- EXTENSION:
+-import os
+-PARSE_MODULE = os.environ.get("PARSE_TYPE_PARSE_MODULE", "parse_type.parse")
+-if PARSE_MODULE.startswith("parse_type"):
+-    # -- USE VENDOR MODULE: parse_type.parse (probably older that original)
+-    from parse_type import parse
+-else:
+-    # -- USE ORIGINAL MODULE: parse
+-    import parse
++import parse
+ # -- EXTENSION-END
+ 
+ 

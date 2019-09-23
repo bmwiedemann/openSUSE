@@ -1,0 +1,186 @@
+-------------------------------------------------------------------
+Mon Sep 16 10:48:31 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.1.0:
+  * Add a rewind method to reset a cassette (thanks @khamidou)
+  * New error message with more details on why the cassette failed to play a request (thanks @arthurHamon2, @neozenith)
+  * Handle connect tunnel URI (thanks @jeking3)
+  * Drop support to python 3.4
+  * Add deprecation warning on python 2.7, next major release will drop python 2.7 support
+- Drop merged patch python-vcrpy-fix-tunnel-uri-generation.patch
+
+-------------------------------------------------------------------
+Wed Apr 17 14:09:32 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Test suite just doesn't work. gh#kevin1024/vcrpy#427
+
+-------------------------------------------------------------------
+Sat Dec 29 15:56:43 UTC 2018 - mardnh@gmx.de
+
+- Add patch:
+  * python-vcrpy-fix-tunnel-uri-generation.patch
+    Needed for python-pyvmomi
+
+-------------------------------------------------------------------
+Wed Oct 24 15:24:59 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary and adjust descriptions.
+
+-------------------------------------------------------------------
+Wed Oct 24 13:31:40 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Version update to 2.0.1:
+  * Support python 3.7 (fix httplib2 and urllib2, thanks @felixonmars)
+
+-------------------------------------------------------------------
+Thu Jul 13 22:09:12 UTC 2017 - sean.marlow@suse.com
+
+- Move vcrpy to single spec.
+
+-------------------------------------------------------------------
+Thu Jun  8 19:05:41 UTC 2017 - sean.marlow@suse.com
+
+- Changes from version 1.11.1:
+  * Bugfixes
+  * Add support for latest requests and urllib3 releases
+
+- Changes from version 1.11.0:
+  * Allow injection of persistence methods
+  * Bugfixes
+  * Support python 3.6 + CI tests
+  * Support pytest-asyncio coroutines
+
+- Changes from version 1.10.5:
+  * Added a fix to httplib2
+  * Fix an issue with aiohttp
+  * Add missing requirement yarl
+  * Remove duplicate mock triple
+
+- Changes from version 1.10.3:
+  * Aiohttp bugfix
+  * Empty cassette body bugfix
+
+-------------------------------------------------------------------
+Sun Sep 18 12:23:44 UTC 2016 - mardnh@gmx.de
+
+- Fix Source-URL
+- Update to version 1.10.2:
+  * only version bump - no code changes
+
+- Changes from version 1.10.1
+  * Move vcr.stubs.aiohttp_stub to a package
+  * Merge pull request #271 from lamenezes/fix-py2-setup
+  * Exclude aiohttp from python < 3 setup
+
+- Changes from version 1.10.0:
+  * remove py26-flakes test
+  * fix flake8: ignore yield from syntax errors
+  * fix tox's flakes tests
+  * fix test_aiohttp
+  * fix tests
+  * remove async/await from aiohttp_stubs to support python 3.4
+  * add aiohttp to tests config
+  * add integration tests for aiohttp
+  * fix aiohttp_stubs.vcr_request error message
+  * fix aiohttp response closing
+  * remove CIMultiDictProxy from aiohttp_stubs.vcr_request
+  * add support for aiohttp
+  * Merge pull request #265 from adamchainz/readthedocs.io
+  * fix flaky test
+  * Convert readthedocs links for their .org -> .io migration for hosted projects
+
+- Changes from version 1.9.0:
+  * unzip bodies before comparing.  Fixes #261
+  * Merge pull request #247 from dedsm/boto3_support
+  * Running boto3 tests in travis
+  * Fixing pep8 errors in boto tests
+  * boto3 integration tests
+  * Adding support for boto3
+  * fix tests in stubs, requests ssl verification and httpbin+flask
+  * Removed requests usage from test
+  * Renamed inside2 to inside
+  * Fix flake8 issue
+  * Updated comments
+  * Added a note on the deepcopy
+  * Added regression test
+  * Move deepcopy higher to not mutate original headers
+
+- Changes from version 1.8.0:
+  * missed a httpbin call
+  * Merge pull request #253 from jayvdb/no-pytest-localserver
+  * Remove pytest-localserver from test dependencies
+  * pep8
+  * Fix for Serialization errors with JSON adapter
+  * Use pytest-httpbin
+  * Add Python 3.5 and PyPy 3 to Travis
+  * Fix/ignore some flake errors
+  * Add test to make sure we can post chunked binary data
+  * Avoid concatenating bytes with strings
+  * Fix travis check for flakes
+  * allow filtering by response
+  * Exclude __pycache__ dirs & compiled files in sdist
+  * Fix Tornado support behavior for Tornado 3.
+  * Use tox-travis
+  * support python 3.4
+  * tests / docs for decode_compressed_response
+  * add decode_compressed_response option and filter
+  * Fix pyflakes and pep8 errors
+  * Use tox for Travis-CI
+  * Fix typo
+  * Add documentation for new features of filter_headers, filter_query_parameters and filter_post_data_parameters
+  * Update VCR params to use new filters.
+  * Add replace_post_data_parameters()
+  * Add replace_query_parameters()
+  * Add replace_headers()
+  * Add note and link for vcrpy-unittest.
+  * Blindly add modules to be documented
+  * Add PyPI badge.
+  * Rename waffle badge from 'ready' to 'waffle' which seems clearer.
+  * Split README.rst into appropriate docs sections
+  * Use sphinx_rtd_theme building docs locally
+  * Switch to default RtD theme
+  * Lint cleanup
+  * Fallback to importing from urllib3
+
+-------------------------------------------------------------------
+Tue Jan 26 19:37:11 UTC 2016 - bear454@opensuse.org
+
+- Update to version 1.7.4:
+
+1.7.4 [#217] Make use_cassette decorated functions actually return a value (thanks @bcen). [#199] Fix path transfromation defaults. Better headers dictionary management.
+1.7.3 [#188] additional_matchers kwarg on use_cassette. [#191] Actually support passing multiple before_record_request functions (thanks @agriffis).
+1.7.2 [#186] Get effective_url in tornado (thanks @mvschaik), [#187] Set request_time on Response object in tornado (thanks @abhinav).
+1.7.1 [#183] Patch fetch_impl instead of the entire HTTPClient class for Tornado (thanks @abhinav).
+1.7.0 [#177] Properly support coroutine/generator decoration. [#178] Support distribute (thanks @graingert). [#163] Make compatibility between python2 and python3 recorded cassettes more robust (thanks @gward).
+1.6.1 [#169] Support conditional requirements in old versions of pip, Fix RST parse errors generated by pandoc, [Tornado] Fix unsupported features exception not being raised, [#166] content-aware body matcher.
+1.6.0 [#120] Tornado support (thanks @abhinav), [#147] packaging fixes (thanks @graingert), [#158] allow filtering post params in requests (thanks @MrJohz), [#140] add xmlrpclib support (thanks @Diaoul).
+1.5.2 Fix crash when cassette path contains cassette library directory (thanks @gazpachoking).
+1.5.0 Automatic cassette naming and ‘application/json’ post data filtering (thanks @marco-santamaria).
+1.4.2 Fix a bug caused by requests 2.7 and chunked transfer encoding
+1.4.1 Include README, tests, LICENSE in package. Thanks @ralphbean.
+1.4.0 Filter post data parameters (thanks @eadmundo), support for posting files through requests, inject_cassette kwarg to access cassette from use_cassette decorated function, with_current_defaults actually works (thanks @samstav).
+1.3.0 Fix/add support for urllib3 (thanks @aisch), fix default port for https (thanks @abhinav). 
+
+-------------------------------------------------------------------
+Wed Feb  4 09:22:15 UTC 2015 - hpj@urpla.net
+
+- Update to version 1.2.0:
+  * Add custom_patches argument to VCR/Cassette objects to allow
+    users to stub custom classes when cassettes become active.
+- Changes from version 2.1.4:
+  * Add force reset around calls to actual connection from stubs, 
+    to ensure compatibility with the version of httplib/urlib2 in 
+    python 2.7.9.
+- Changes from version 1.1.3:
+  * Fix python3 headers field 
+  * Fix boto test
+  * Fix new_episodes record mode
+  * Fix Windows connectionpool
+  * Stub bug 
+  * Add support for requests 2.5
+
+-------------------------------------------------------------------
+Tue Nov  4 16:52:20 UTC 2014 - hpj@urpla.net
+
+- version 1.1.2: initial build
+

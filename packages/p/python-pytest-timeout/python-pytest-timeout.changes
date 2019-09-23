@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Tue Feb 12 15:43:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build with pytest4 from upstream:
+  * pytest4.patch
+
+-------------------------------------------------------------------
+Wed Nov 21 14:20:15 UTC 2018 - Enno Gotthold <egotthold@suse.com>
+
+- Version update to 1.3.3
+ * Fix support for pytest >= 3.10.
+
+-------------------------------------------------------------------
+Wed Sep 19 09:59:42 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- version update to 1.3.2
+ * Fix deprecation warning on Python 3.6. 
+ * Fix pytest 3.7.3 compatibility.
+
+-------------------------------------------------------------------
+Tue Jul 17 12:55:33 UTC 2018 - scarabeus@opensuse.org
+
+- Version update to 1.3.0:
+  * Fixes for python3.7
+  * Various small fixes
+
+-------------------------------------------------------------------
+Sun Dec  3 19:13:13 UTC 2017 - arun@gmx.de
+
+- update to version 1.2.1:
+  * Fix for pytest 3.3, thanks Bruno Oliveira.
+  * Update supported python versions:
+    + Add CPython 3.6.
+    + Drop CPyhon 2.6 (as did pytest 3.3)
+    + Drop CPyhon 3.3
+    + Drop CPyhon 3.4
+
+-------------------------------------------------------------------
+Wed Sep  6 18:09:04 UTC 2017 - toddrme2178@gmail.com
+
+- Fix building
+
+-------------------------------------------------------------------
+Mon Aug 28 21:52:12 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

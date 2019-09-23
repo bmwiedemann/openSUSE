@@ -1,0 +1,49 @@
+--- build.xml	2017-09-18 16:34:04.709182154 +0200
++++ build.xml	2017-09-18 16:39:09.690366238 +0200
+@@ -186,10 +186,10 @@
+         <copy todir="${main.output.dir}">
+             <fileset dir="${main.resource1.dir}"/>
+         </copy>
+-        <javac srcdir="${main.src}" destdir="${main.output.dir}" debug="on">
++        <javac srcdir="${main.src}" destdir="${main.output.dir}" debug="on" encoding="ISO-8859-1">
+             <classpath refid="main.classpath"/>
+         </javac>
+-        <javac srcdir="${main.src.test}" destdir="${main.output.test.dir}" debug="on">
++        <javac srcdir="${main.src.test}" destdir="${main.output.test.dir}" debug="on" encoding="ISO-8859-1">
+             <classpath>
+                 <path refid="main.classpath"/>
+                 <pathelement location="${main.output.dir}"/>
+@@ -199,10 +199,10 @@
+     </target>
+ 
+     <target name="compile-scratchpad" depends="init">
+-        <javac srcdir="${scratchpad.src}" destdir="${scratchpad.output.dir}" debug="on">
++        <javac srcdir="${scratchpad.src}" destdir="${scratchpad.output.dir}" debug="on" encoding="ISO-8859-1">
+             <classpath refid="scratchpad.classpath"/>
+         </javac>
+-        <javac srcdir="${scratchpad.src.test}" destdir="${scratchpad.output.test.dir}" debug="on">
++        <javac srcdir="${scratchpad.src.test}" destdir="${scratchpad.output.test.dir}" debug="on" encoding="ISO-8859-1">
+             <classpath>
+                 <path refid="scratchpad.classpath"/>
+                 <pathelement location="${scratchpad.output.dir}"/>
+@@ -212,10 +212,10 @@
+     </target>
+ 
+     <target name="compile-contrib" depends="init">
+-        <javac srcdir="${contrib.src}" destdir="${contrib.output.dir}" debug="on">
++        <javac srcdir="${contrib.src}" destdir="${contrib.output.dir}" debug="on" encoding="ISO-8859-1">
+             <classpath refid="contrib.classpath"/>
+         </javac>
+-        <javac srcdir="${contrib.src.test}" destdir="${contrib.output.test.dir}" debug="on">
++        <javac srcdir="${contrib.src.test}" destdir="${contrib.output.test.dir}" debug="on" encoding="ISO-8859-1">
+             <classpath>
+                 <path refid="contrib.classpath"/>
+                 <pathelement location="${contrib.output.dir}"/>
+@@ -481,6 +481,7 @@
+         <javadoc
+             destdir="${apidocs.report.dir}"
+             author="true"
++            encoding="ISO-8859-1"
+             version="true"
+             use="true"
+             verbose="false"

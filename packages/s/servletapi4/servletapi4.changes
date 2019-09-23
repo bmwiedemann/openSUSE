@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Mon Sep 18 12:47:42 UTC 2017 - fstrba@suse.com
+
+- Modified patch:
+  * java160_build.patch
+    + Don't switch off doclint; it is switched off by default
+
+-------------------------------------------------------------------
+Sun Sep 10 13:00:57 UTC 2017 - fstrba@suse.com
+
+- Removed patch:
+  * java150_build.patch
+- Added patch:
+  * java160_build.patch
+    + Specify java source and target level 1.6 in order to allow
+      building with jdk9
+    + Disable doclint, since errors of javadoc in jdk9 are fatal
+
+-------------------------------------------------------------------
+Tue Sep 29 20:07:26 UTC 2015 - dmueller@suse.com
+
+- build against java-1_8_0-openjdk or newer if available 
+
+-------------------------------------------------------------------
+Mon Jul 21 10:32:00 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Fix update-alternatives
+
+-------------------------------------------------------------------
+Fri Feb  7 08:46:53 UTC 2014 - fcrozat@suse.com
+
+- Fix license tag, should be Apache-1.1
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:21 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Mon Sep 25 16:34:45 CEST 2006 - dbornkessel@suse.de
+
+- fixes necessary to compile with Java 1.5.0
+        - set source="1.4" and target="1.4" for ant "javac" tasks
+        - set source="1.4" for ant "javadoc" tasks
+
+-------------------------------------------------------------------
+Wed Jan 25 21:47:49 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 29 02:44:41 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Thu Sep 16 20:07:19 CEST 2004 - skh@suse.de
+
+- Fix prerequires
+
+-------------------------------------------------------------------
+Thu Sep  2 17:05:19 CEST 2004 - skh@suse.de
+
+- Initial package created with version 4.0.4 (JPackage 1.5)
+

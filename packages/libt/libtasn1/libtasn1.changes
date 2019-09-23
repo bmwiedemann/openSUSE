@@ -1,0 +1,468 @@
+-------------------------------------------------------------------
+Wed Jul 31 20:15:25 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libtasn1 4.14:
+  * New #defines for version checking
+  * other developer visible changes
+- drop libtasn1-object-id-recursion.patch, incorporating the
+  upstream fix for boo#1105435 CVE-2018-1000654
+
+-------------------------------------------------------------------
+Mon Apr 29 16:13:16 UTC 2019 - mgorse@suse.com
+
+- Add libtasn1-object-id-recursion.patch: limit recursion in
+  _asn1_expand_object_id (boo#1105435 CVE-2018-1000654
+  (https://gitlab.com/gnutls/libtasn1/merge_requests/8)
+
+-------------------------------------------------------------------
+Thu Feb 22 15:10:38 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Fri Jan 19 16:03:20 UTC 2018 - kbabioch@suse.com
+
+- update to 4.13
+  * On indefinite string decoding, set a maximum level of allowed
+    recursions (3) to protect the BER decoder from a stack exhaustion.
+    (CVE-2018-6003 boo#1076832)
+
+-------------------------------------------------------------------
+Sun Jun  4 19:41:21 UTC 2017 - astieger@suse.com
+
+- libtasn1 4.12:
+  * Corrected so-name version
+- includes changes in 4.11:
+  * Introduce the ASN1_TIME_ENCODING_ERROR error code to indicate
+    an invalid encoding in the DER time fields.
+  * Introduced flag ASN1_DECODE_FLAG_ALLOW_INCORRECT_TIME. This flag
+    allows decoding errors in time fields even when in strict DER mode.
+    That is introduced in order to allow toleration of invalid times in
+    X.509 certificates (which are common) even though strict DER adherence
+    is enforced in other fields.
+  * Added safety check in asn1_find_node(). That prevents a crash
+    when a very long variable name is provided by the developer.
+    Note that this to be exploited requires controlling the ASN.1
+    definitions used by the developer, i.e., the 'name' parameter of
+    asn1_write_value() or asn1_read_value(). The library is
+    not designed to protect against malicious manipulation of the
+    developer assigned variable names
+- includes changes from 4.10:
+  * Updated gnulib
+  * Removed -Werror from default compiler flags
+    (drop patch 0001-configure-don-t-add-Werror-to-build-flags.patch)
+  * Fixed undefined behavior when negating integers in _asn1_ltostr().
+  * Pass the correct length to _asn1_get_indefinite_length_string in
+    asn1_get_length_ber. This addresses reading 1-byte past the end
+    of data.
+
+-------------------------------------------------------------------
+Wed Aug 10 18:57:51 UTC 2016 - astieger@suse.com
+
+- update to 4.9:
+  * Fix OID encoding of OIDs which have elements which exceed 2^32
+- Do not treat i586 warning as error, adding upstream
+  0001-configure-don-t-add-Werror-to-build-flags.patch
+- fate#322523
+
+-------------------------------------------------------------------
+Mon Apr 11 14:56:31 UTC 2016 - mpluskal@suse.com
+
+- Update to 4.8
+  * Fixes to avoid reliance on C undefined behavior.
+  * Fixes to avoid an infinite recursion when decoding without the 
+    ASN1_DECODE_FLAG_STRICT_DER flag. Reported by Pascal Cuoq.
+    (CVE-2016-4008 / bsc#982779)
+  * Combined all the BER octet string decoding functions to a 
+    single one based on asn1_decode_simple_ber().
+
+-------------------------------------------------------------------
+Wed Sep 16 23:49:25 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 4.7:
+  * Fixed regression introduced in the decoding of multi-byte tags
+    fix.
+
+-------------------------------------------------------------------
+Mon Sep  7 20:10:23 UTC 2015 - astieger@suse.com
+
+- libtasn1 4.6:
+  * Allow decoding OCTET STRINGs with multi-byte tags.
+  * Add asn1_get_object_id_der
+
+-------------------------------------------------------------------
+Fri May  1 19:33:32 UTC 2015 - astieger@suse.com
+
+- update libtasn1 4.5:
+  * Corrected an invalid memory access in octet string decoding.
+    CVE-2015-3622 [boo#929414]
+
+-------------------------------------------------------------------
+Sun Mar 29 17:27:11 UTC 2015 - astieger@suse.com
+
+- update to libtasn1 4.4 [bsc#924828]:
+  * Corrected a two-byte stack overflow in asn1_der_decoding.
+    CVE-2015-2806    
+
+-------------------------------------------------------------------
+Sun Mar 22 10:41:46 UTC 2015 - mpluskal@suse.com
+
+- Update project url
+- Cleanup spec-file with spec-cleaner
+- Add info preun and post dependencies
+- Update to 4.3
+  * Added asn1_decode_simple_ber()
+  * Only assign a value if the previous node has one (bsc#961491).
+
+-------------------------------------------------------------------
+Sat Feb 14 08:12:10 UTC 2015 - jengelh@inai.de
+
+- Put C API documentation into -devel package.
+  Use modern %make_install. Description fix.
+
+-------------------------------------------------------------------
+Wed Oct  8 18:23:43 UTC 2014 - tabraham@suse.com
+
+- updated to libtasn1 4.2:
+  * Noteworthy changes in release 4.2 (released 2014-09-15) [stable]
+  - Added sanity checks in the decoding of time when
+    ASN1_DECODE_FLAG_STRICT_DER is used.
+  - Fixes in the decoding of OCTET STRING when close to the end
+    of the structure.
+
+  * Noteworthy changes in release 4.1 (released 2014-08-23) [stable]
+  - Corrected indefinite tag check in ANY constructions. That allows
+    the decoding of BER-encoded structures that contain indefinite
+    encoding within an ANY element.
+  - Added DER decoding flag ASN1_DECODE_FLAG_STRICT_DER. Over the
+    years BER functionality was added to the decoder and this flag
+    provides the way to disable it.
+  - API and ABI changes since last version:
+    ASN1_DECODE_FLAG_STRICT_DER: New definition
+
+  * Noteworthy changes in release 4.0 (released 2014-06-26) [stable]
+  - Optimized asn1_der_decoding_startEnd(). It no longer requires the
+    additional decoding step.
+  - asn1_read_value() understands the ?CURRENT keyword, which can be used
+    to indicate the current element of a sequence, when the provided node
+    is a sequence element.
+  - Several optimizations in DER decoding of structures with sequences
+    containing many elements.
+  - asn1_der_decoding2() is introduced and allows flags to be passed on
+    the decoding process. Currently only ASN1_DECODE_FLAG_ALLOW_PADDING is
+    defined and that allows decoding DER structures that contain arbitrary
+    data past their end. Contributed by Karel Slany.
+  - API and ABI changes since last version:
+    ASN1_DECODE_FLAG_ALLOW_PADDING: New definition
+    asn1_dup_node: New function
+    asn1_der_decoding2: New function
+    asn1_der_decoding_element: It is now an alias to asn1_der_decoding
+
+-------------------------------------------------------------------
+Fri Jul 25 16:28:02 UTC 2014 - mgorse@suse.com
+
+- updated to libtasn1 3.7: 
+  * Noteworthy changes in release 3.7 (released 2014-06-26) [stable]
+  - Fixes in length calculation in _asn1_extract_der_octet().
+  - Fixes in DER decoding.
+  - Fixes: CVE-2014-3468 CVE-2014-3467 CVE-2014-3469 bnc#880738
+    bnc#880737 bnc#880735
+
+-------------------------------------------------------------------
+Tue Jun  3 09:20:18 UTC 2014 - meissner@suse.com
+
+- libtasn1.keyring: added Nikos Mavrogiannopoulos <nmav@gnutls.org> 
+  key, who did this release (and shares responsibility with Simon).
+- updated to libtasn1 3.6
+  * Noteworthy changes in release 3.6 (released 2014-05-25) [stable]
+  - Corrected an off-by-one error in ASN.1 DER tag decoding. (CVE-2014-3468/bnc#880735)
+  - Several improvements and new safety checks on DER decoding;
+    issues found using Codenomicon TLS test suite. (CVE-2014-3469/bnc#880738,
+    CVE-2014-3467/bnc#880737)
+  - Marked asn1_der_decoding_element() as deprecated. Use
+    asn1_der_decoding() instead.
+
+  * Noteworthy changes in release 3.5 (released 2014-05-01) [stable]
+  - Correctly handle decoding of recursive CHOICE options.
+  - Allow deleting elements of SET OF. Patch by Jean-Louis Thekekara.
+  - Several small bug fixes found by coverity.
+  - Code improvements contributed by Kurt Roeckx.
+
+  * Noteworthy changes in release 3.4 (released 2013-11-25) [stable]
+  - Added asn1_delete_structure2() which allows zeroizing the contents
+    of all values in the structure prior to deinitialization.
+  - The parser accepts negative numbers in an INTEGER range (but
+    still does no enforce them).
+
+-------------------------------------------------------------------
+Tue Jun 25 12:01:36 UTC 2013 - coolo@suse.com
+
+- remove gpg source checking again to avoid this cycle:
+  libtasn1 -> libssh2_org -> openssh -> krb5 -> python-Jinja2 -> vim -> libtasn1
+
+-------------------------------------------------------------------
+Thu Jun 20 12:36:22 UTC 2013 - meissner@suse.com
+
+- updated to libtasn1 3.3
+  * Noteworthy changes in release 3.3 (released 2013-03-23) [stable]
+  - More precise overflow checks using gnulib's intprops module.
+  - Updates to compile in Android systems.
+
+  * Noteworthy changes in release 3.2 (released 2012-11-30) [stable]
+  - Corrected buffer overflow in the error reporting of the parser (reported
+    by Andreas Metzler).
+
+  * Noteworthy changes in release 3.1 (released 2012-11-24) [stable]
+  - Completed rename of types:
+    ASN1_ARRAY_TYPE -> asn1_static_node (was asn1_static_node_t)
+  - Added new types: VisibleString, NumericString, IA5String, TeletexString,
+    PrintableString, UniversalString, BMPString, UTF8String. When re-defined
+    a warning is being print instead of failing.
+  - Parser outputs more detailed syntax error messages.
+  - Added asn1_decode_simple_der() and asn1_encode_simple_der().
+  - Added asn1_read_value_type() to return value and type.
+  - Introduced ASN1_ETYPE_UTC_TIME and ASN1_ETYPE_GENERALIZED_TIME
+- added gpg source checking
+
+-------------------------------------------------------------------
+Sat Nov 17 22:17:09 UTC 2012 - andreas.stieger@gmx.de
+
+- update to libtasn1 3.0, SONAME libtasn1.so.6
+  - Added tool in tests/ to benchmark X.509 structure decoding.
+  - Added asn1_read_node_value() to obtain a node's value.
+  - Optimizations in internal tree allocation.
+  - Optimizations in tree search.
+  - libtasn1.h no longer exports internal structures.
+  - Types were renamed for consistency:
+    ASN1_DATA_NODE -> asn1_data_node_st
+    ASN1_ARRAY_TYPE -> asn1_static_node
+    ASN1_TYPE -> asn1_node
+    ASN1_TYPE_EMPTY -> NULL
+    static_struct_asn -> asn1_static_node_st
+    node_asn_struct -> asn1_node_st
+    node_asn -> asn1_node_st
+    (the old types are still available as definitions)
+- fix W: devel-package-with-non-devel-group
+
+-------------------------------------------------------------------
+Fri Sep 28 09:23:57 UTC 2012 - meissner@suse.com
+
+- updated to version 2.14
+  This release adds asn1_read_node_value() to obtain a node's value. This
+  is to deprecate the export of the node_asn internal structure for the
+  upcoming 3.x release. The ASN1_DATA_NODE type and the ASN1_ETYPE_*
+  constants were added to support the new function.
+- removed upstreamed libtasn1-stdio.h patch
+- make check
+
+-------------------------------------------------------------------
+Sun Jul 22 06:25:15 UTC 2012 - aj@suse.de
+
+- Fix build with missing gets declaration (glibc 2.16)
+
+-------------------------------------------------------------------
+Fri Jun 29 14:45:07 UTC 2012 - cfarrell@suse.com
+
+- license update: LGPL-2.1+ and GPL-3.0
+  Tools are GPL-3.0
+
+-------------------------------------------------------------------
+Sat Apr 14 17:24:30 UTC 2012 - tabraham@novell.com
+
+- update to version 2.12
+  + Cleanup license headers.
+  + build: Update gnulib files.
+  + Corrected DER decoding issue (reported by Matthew Hall).
+    Added self check to detect the problem, see tests/Test_overflow.c.
+    This problem can lead to at least remotely triggered crashes, see
+    further analysis on the libtasn1 mailing list.
+
+-------------------------------------------------------------------
+Sun Jan  8 16:37:35 UTC 2012 - tabraham@novell.com
+
+- update to version 2.11
+  + qa: now builds without compiler warnings with Solaris CC
+  + qa: added clang analysis. fixed cyclomatic complexity output
+  + tests: added self-test of bit string functions
+  + build: added windows/libtasn14win.mk rules to produce Windows
+    binaries
+  + build: don't hard code path to perl in doc/gdoc
+  + various minor fixes
+
+- changes in version 2.10
+  + lib: small optimization, possibly working around gcc/valgrind issue
+  + build: update gnulib files
+  + asn1Coding: actually implement the -c parameter
+  + asn1Decoding: the -c parameter serves no purpose. remove it.
+  + doc: add examples to asn1Coding and ans1Decoding description
+
+- changes in version 2.9
+  + tests: link to gnulib to avoid build error related to 'rpl_ftello'
+    on Solaris. Reported by Dagobert Michelsen
+  + doc: fix bug reporting address to point at help-libtasn1@gnu.org
+  + doc: fix returns: documentation in Texinfo. Reported by Jeffery
+    Walton
+  + build : update gnulib files
+
+- changes in version 2.8
+  + update gnulib files
+  + use libtool 2.2.10 to ease MinGW64 builds
+
+- changes in version 2.7
+  + Doc: build PDF manual using GTK-DOC
+  + Doc: fix of asn1_check_version, documentation was missing from
+    last release
+  + Build: avoid warnings about ignored visibility attributes on
+    Windows
+
+- changes in version 2.6
+  + Fix build failure on platforms without support for GNU_LD
+    version scripts
+  + libtasn1: simplified implementation of asn1_check_version
+  + tests: improved self-checks
+  + update gnulib files, fix many syntax-check nits, indent code,
+    fix license templates
+
+- changes in version 2.5
+  + doc: improve GTK-DOC comments
+  + misc: updated gnulib files
+
+- changes in version 2.4
+  + Doc fixes
+  + updated gnulib files
+  + clean up copyright notices
+
+- changes in version 2.3
+  + libtasn1 is now an official GNU project
+  + solve build problem on Tru64 related to TRUE/FALSE
+  + More careful decoding of OIDs
+  + Fixed warning in ANS1.y
+  + Use "Software libraries" info dircategory
+  + Drop GPL/LGPL copies from the manual (not needed there)
+  + New configure parameters to set packagin specific information
+    The parameters are --with-packager, --with-packager-version,
+    and --with-packager-bug-reports. See
+    <http://article.gmane.org/gmane.comp.lib.gnulib.bugs/17791> for 
+    more details.
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Sat Apr 24 11:38:22 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Thu Dec 17 22:48:05 CET 2009 - jengelh@medozas.de
+
+- Add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Thu May 21 16:03:24 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.2:
+  + Change how the ASN1_API decorator is used in libtasn1.h, for
+    GTK-DOC.
+  + Changed license of libtasn1.pc from GPLv3+ to LGPLv2.1+.
+  + Building with many warning flags now requires
+    --enable-gcc-warnings.
+  + Some warnings fixed.
+- Fix license of library packages: it's LGPL not GPL.
+
+-------------------------------------------------------------------
+Wed May  6 02:11:26 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.1:
+  + Fix compilation failure on platforms that can't generate empty
+    archives, e.g., Mac OS X.
+- Changes from version 2.0:
+  + Optimized tree generation.
+  + ASN1 parser code re-generated using Bison 2.4.1.
+  + Build with more warning flags.  Many compiler warnings fixed.
+  + Compiled with -fvisibility=hidden by default if supported.
+    See http://gcc.gnu.org/wiki/Visibility
+  + The libtasn1-config tool has been removed. For application
+    developers, please stop using libtasn1-config for finding
+    libtasn1, use proper autoconf checks or pkg-config instead.
+- Remove AutoReqProv: it's default now.
+- Pass --disable-static to configure.
+
+-------------------------------------------------------------------
+Wed Feb 11 20:46:06 CET 2009 - ro@suse.de
+
+- added baselibs.conf (needed by gnome-keyring-32bit) 
+
+-------------------------------------------------------------------
+Sun Feb  1 18:05:12 EST 2009 - mboman@suse.de
+
+- Update to version 1.8:
+  + Fix crlf self-test under Mingw+Wine.
+  + Fix build problems on platforms that lack stdint.h.
+
+-------------------------------------------------------------------
+Sat Dec 20 11:34:23 EST 2008 - mboman@suse.de
+
+- Update to version 1.7:
+  + Add libtasn1-config for compatibility.
+    Please stop use it as it will disappear in v2.0!
+    Use standard AC_CHECK_FUNCS autoconf tests or pkg-config instead.
+  + Read PKCS#12 blob as binary file, fixes self-tests under Mingw.
+  + Fix use of __attribute__ ((deprecated)) to work on non-GCC
+  + Fixed namespace violation for MAX_NAME_SIZE and MAX_ERROR_DESCRIPTION_SIZE.
+    The new names are ASN1_MAX_NAME_SIZE and ASN1_MAX_ERROR_DESCRIPTION_SIZE.
+  + Fixed namespace violation for libtasn1_perror and libtasn1_strerror.
+    The new names are asn1_perror and asn1_strerror.
+  + Fix namespace violation for LIBASN1_VERSION.
+    The new name is ASN1_VERSION.
+  + Decoder can now decode BER encoded octet strings.
+  + doc: Change license on the manual to GFDLv1.3+.
+  + doc: Sync gdoc script with GnuTLS, changes license on man-pages to GAP.
+  + doc: Improve gtk-doc manual.
+  + Assumes system has strdup and string.h.
+  + Remove libtasn1-config and libtasn1.m4,
+    use standard AC_CHECK_FUNCS autoconf tests or pkg-config instead.
+  + Change detection of when to use a linker version script,
+    use --enable-ld-version-script or --disable-ld-version-script to
+    override auto-detection logic.
+  + API and ABI changes since last version:
+    asn1_get_length_ber: New function.
+    ASN1_VERSION: New symbol, replaces LIBTASN1_VERSION.
+    asn1_strerror: New function, replaces libtasn1_strerror.
+    asn1_perror: New function, replaces libtasn1_perror.
+    libtasn1_strerror: Marked as deprecated.
+    libtasn1_perror: Marked as deprecated.
+    LIBTASN1_VERSION: Deprecated.
+
+-------------------------------------------------------------------
+Fri Sep 12 07:30:10 CDT 2008 - maw@suse.de
+
+- Update to version 1.5:
+  + Update gnulib files
+  + Handle 'INTEGER { ... } (a..b)' regression
+    Revert parts of earlier fix.  asn1Parser can now again parse
+    src/pkix.asn1.
+    The ASN1.c file was generated using Bison 2.3.
+  + Move examples from src/ to new directory examples/.
+  + Duplicate copy of divergated pkix.asn removed.
+  + Merge unnecessary lib/defines.h into lib/int.h.
+  + Misc. fixes.
+
+-------------------------------------------------------------------
+Wed Jan  2 20:37:16 CET 2008 - maw@suse.de
+
+- Add a %clean section.
+
+-------------------------------------------------------------------
+Thu Dec 20 13:21:18 CST 2007 - maw@suse.de
+
+- Properly package info files
+- Package several documentation files.
+
+-------------------------------------------------------------------
+Thu Dec 20 12:42:17 CST 2007 - maw@suse.de
+
+- New package, version 1.2.
+

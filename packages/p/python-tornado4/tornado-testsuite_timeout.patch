@@ -1,0 +1,49 @@
+--- tornado-4.5.3/tornado/test/simple_httpclient_test.py	2018/03/16 13:18:41	1.1
++++ tornado-4.5.3/tornado/test/simple_httpclient_test.py	2018/03/16 13:41:14
+@@ -239,7 +239,7 @@
+     @skipOnTravis
+     def test_connect_timeout(self):
+         timeout = 0.1
+-        timeout_min, timeout_max = 0.099, 1.0
++        timeout_min, timeout_max = 0.099, 3.0
+ 
+         class TimeoutResolver(Resolver):
+             def resolve(self, *args, **kwargs):
+@@ -257,7 +257,7 @@
+     @skipOnTravis
+     def test_request_timeout(self):
+         timeout = 0.1
+-        timeout_min, timeout_max = 0.099, 0.15
++        timeout_min, timeout_max = 0.099, 0.25
+         if os.name == 'nt':
+             timeout = 0.5
+             timeout_min, timeout_max = 0.4, 0.6
+@@ -360,7 +360,7 @@
+             response = self.wait()
+ 
+             self.assertEqual(response.code, 599)
+-            self.assertTrue(response.request_time < 1, response.request_time)
++            self.assertTrue(response.request_time < 2.5, response.request_time)
+             self.assertEqual(str(response.error), "HTTP 599: Timeout in request queue")
+             self.triggers.popleft()()
+             self.wait()
+--- tornado-4.5.3/tornado/test/testing_test.py	2018/03/16 13:18:44	1.1
++++ tornado-4.5.3/tornado/test/testing_test.py	2018/03/16 13:18:56
+@@ -61,7 +61,7 @@
+         self.io_loop.add_timeout(self.io_loop.time() + 0.00, self.stop)
+         self.wait(timeout=0.02)
+         self.io_loop.add_timeout(self.io_loop.time() + 0.03, self.stop)
+-        self.wait(timeout=0.15)
++        self.wait(timeout=0.25)
+ 
+     def test_multiple_errors(self):
+         def fail(message):
+@@ -206,7 +206,7 @@
+         self.finished = True
+ 
+     def test_timeout_environment_variable(self):
+-        @gen_test(timeout=0.5)
++        @gen_test(timeout=0.9)
+         def test_long_timeout(self):
+             time = self.io_loop.time
+             yield gen.Task(self.io_loop.add_timeout, time() + 0.25)

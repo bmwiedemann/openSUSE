@@ -1,0 +1,10 @@
+<package name="tuned" project="openSUSE:Factory">
+  <title>A dynamic adaptive system tuning daemon</title>
+  <description>The tuned package contains a daemon that tunes system settings dynamically.
+It does so by monitoring the usage of several system components periodically.
+Based on that information components will then be put into lower or higher
+power saving modes to adapt to the current usage. Currently only ethernet
+network and ATA harddisk devices are implemented.
+</description>
+  <devel project="Base:System" package="tuned"/>
+</package>

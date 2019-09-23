@@ -1,0 +1,13 @@
+calc includes a robust set of help files in /usr/share/calc/help
+
+These can be accessed via the command line via "calc help" or by entering "help" from the calc interactive prompt.
+
+Important examples include:
+
+calc help               - a list of topics
+calc help bugs          - known bugs and mis-features
+calc help changes       - recent changes to calc
+calc help copyright     - calc copyright and the GNU LGPL
+calc help copying       - details on the Calc GNU Lesser General Public License
+calc help copying-lgpl  - calc GNU Lesser General Public License text
+

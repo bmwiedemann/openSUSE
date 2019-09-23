@@ -1,0 +1,12 @@
+<package name="pyenv" project="openSUSE:Factory">
+  <title>Simple Python version management</title>
+  <description>pyenv lets you easily switch between multiple versions of Python.
+It is simple, unobtrusive, and follows the UNIX tradition of single-purpose
+tools that do one thing well.
+
+This project was forked from rbenv and ruby-build, and modified for Python.
+
+</description>
+  <devel project="devel:languages:python" package="pyenv"/>
+  <url>https://github.com/yyuu/pyenv</url>
+</package>

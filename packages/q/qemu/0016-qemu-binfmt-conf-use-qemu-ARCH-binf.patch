@@ -1,0 +1,38 @@
+From: Andreas Schwab <schwab@suse.de>
+Date: Fri, 12 Aug 2016 18:20:49 +0200
+Subject: qemu-binfmt-conf: use qemu-ARCH-binfmt
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Andreas Schwab <schwab@suse.de>
+Signed-off-by: Andreas Färber <afaerber@suse.de>
+---
+ scripts/qemu-binfmt-conf.sh | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/scripts/qemu-binfmt-conf.sh b/scripts/qemu-binfmt-conf.sh
+index 4f1358e2fd..13add7775e 100755
+--- a/scripts/qemu-binfmt-conf.sh
++++ b/scripts/qemu-binfmt-conf.sh
+@@ -262,7 +262,7 @@ qemu_generate_register() {
+         flags="${flags}F"
+     fi
+ 
+-    echo ":qemu-$cpu:M::$magic:$mask:$qemu:$flags"
++    echo ":qemu-$cpu:M::$magic:$mask:$qemu:P$flags"
+ }
+ 
+ qemu_register_interpreter() {
+@@ -301,9 +301,9 @@ qemu_set_binfmts() {
+             continue
+         fi
+ 
+-        qemu="$QEMU_PATH/qemu-$cpu"
++        qemu="$QEMU_PATH/qemu-$cpu-binfmt"
+         if [ "$cpu" = "i486" ] ; then
+-            qemu="$QEMU_PATH/qemu-i386"
++            qemu="$QEMU_PATH/qemu-i386-binfmt"
+         fi
+ 
+         qemu="$qemu$QEMU_SUFFIX"

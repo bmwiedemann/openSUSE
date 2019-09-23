@@ -1,0 +1,34 @@
+From: Stefan Dirsch <sndirsch@suse.de>
+
+Modify driver fallback list for automatic configuration
+such that the proprietary ATI, NVIDIA and VIA drivers are 
+considered first.
+
+Index: hw/xfree86/common/xf86pciBus.c
+===================================================================
+--- hw/xfree86/common/xf86pciBus.c.orig
++++ hw/xfree86/common/xf86pciBus.c
+@@ -1185,6 +1185,13 @@ xf86VideoPtrToDriverList(struct pci_devi
+         driverList[0] = "neomagic";
+         break;
+     case 0x10de:
++	driverList[0] = "nvidia";
++	driverList[1] = "nouveau";
++	/* GeForce 6150SE support broken (bnc #465190/544674) */
++	if (dev->device_id != 0x03D0) {
++		driverList[2] = "nv";
++	}
++	break;
+     case 0x12d2:
+     {
+         int idx = 0;
+@@ -1196,7 +1203,8 @@ xf86VideoPtrToDriverList(struct pci_devi
+         break;
+     }
+     case 0x1106:
+-        driverList[0] = "openchrome";
++        driverList[0] = "via";
++        driverList[1] = "openchrome";
+         break;
+     case 0x1b36:
+         driverList[0] = "qxl";

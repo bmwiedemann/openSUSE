@@ -1,0 +1,4510 @@
+-------------------------------------------------------------------
+Thu Aug 31 09:52:45 UTC 2017 - sndirsch@suse.com
+
+- no longer require vesa X driver on sle >= 15; package has been
+  dropped with sle15
+
+-------------------------------------------------------------------
+Mon May 29 15:10:51 UTC 2017 - sndirsch@suse.com
+
+- get rid of old and no longer supported drivers
+  xorg-x11-driver-video-{radeonhd,unichrome} (bnc#873443, bsc#1041398)
+
+-------------------------------------------------------------------
+Thu Feb  6 13:48:13 UTC 2014 - sndirsch@suse.com
+
+- don't try to build this package on s390x 
+
+-------------------------------------------------------------------
+Wed Mar 20 15:04:44 UTC 2013 - sndirsch@suse.com
+
+- removed requires to xf86-video-ast, xf86-video-chips, 
+  xf86-video-glint, xf86-video-i128, xf86-video-mach64,
+  xf86-video-nv, xf86-video-r128, xf86-video-siliconmotion, 
+  xf86-video-tdfx, xf86-video-tga, xf86-video-voodoo, 
+  xf86-video-geode, xf86-video-qxl
+- removed requires to xf86-video-dummy, xf86-video-v4l
+- cleanup specfile
+
+-------------------------------------------------------------------
+Wed Mar 20 11:48:11 UTC 2013 - sndirsch@suse.com
+
+- moved 'Recommends: intel-gpu-tools' to xf86-video-intel package
+- removed requires to xf86-video-ati, xf86-video-cirrus,
+  xf86-video-vmware; this is now done via hw supplements
+  conditional to xorg-x11-server package (bnc#810333)
+
+-------------------------------------------------------------------
+Thu Oct 25 10:38:28 UTC 2012 - dmueller@suse.com
+
+- only require vmware driver on those archs where it exists
+- remove buildarch: noarch as it is now arch specific
+
+-------------------------------------------------------------------
+Tue Sep 18 21:12:27 UTC 2012 - sndirsch@suse.com
+
+- removed xf86-video-newport requires (no longer supported
+  upstream)
+
+-------------------------------------------------------------------
+Wed May 30 08:39:25 UTC 2012 - sndirsch@suse.com
+
+- change Requires for intel-gpu-tools to a Recommends, since it
+  makes only sense on x86/x64 platforms
+
+-------------------------------------------------------------------
+Wed May 23 17:57:55 UTC 2012 - crrodriguez@opensuse.org
+
+- Remove Requires of drivers that now have "supplements"
+  in place, later we can add more of them to the remaining
+  packages and obsolete/avoid this metapackage.
+
+-------------------------------------------------------------------
+Wed May  9 12:30:21 UTC 2012 - vuntz@opensuse.org
+
+- Change xf86-video-geode Requires to Recommends: xf86-video-geode
+  only works on x86, so a plain Requires on x86_64 (for instance)
+  is wrong. Since we can't use %ifarch (because our build
+  architecture is noarch), we can't really use a Requires. Using a
+  Recommends is enough for what we need.
+
+-------------------------------------------------------------------
+Tue Apr 24 18:58:31 UTC 2012 - vuntz@opensuse.org
+
+- Change xf86-video-qxl Requires to Recommends, as recent versions
+  of xf86-video-qxl don't build on openSUSE <= 12.1 due to the
+  requirement on spice. For all our practical needs, the Recommends
+  matches what we need anyway.
+- This makes xorg-x11-driver-video installable on openSUSE <= 12.1
+  again.
+
+-------------------------------------------------------------------
+Thu Apr 19 15:57:15 UTC 2012 - vuntz@opensuse.org
+
+- Add compatibility Requires on xf86-video-chips, as it's back at
+  Egbert Eich's request.
+
+-------------------------------------------------------------------
+Wed Apr 18 21:18:35 UTC 2012 - vuntz@opensuse.org
+
+- Split drivers in their own source packages: xf86-video-ark
+  xf86-video-ast xf86-video-ati xf86-video-cirrus xf86-video-dummy
+  xf86-video-fbdev xf86-video-geode xf86-video-glint
+  xf86-video-i128 xf86-video-intel xf86-video-mach64 xf86-video-mga
+  xf86-video-neomagic xf86-video-newport xf86-video-nv
+  xf86-video-qxl xf86-video-r128 xf86-video-savage
+  xf86-video-siliconmotion xf86-video-sis xf86-video-tdfx
+  xf86-video-tga xf86-video-trident xf86-video-v4l xf86-video-vesa
+  xf86-video-vmware xf86-video-voodoo
+- Split intel-gpu-tools in its own source package.
+- Drop drivers that are unmaintained upstream: xf86-video-apm
+  xf86-video-chips xf86-video-i740 xf86-video-rendition
+  xf86-video-s3 xf86-video-s3virge xf86-video-sisusb
+  xf86-video-tseng xf86-video-xgi xf86-video-xgixp
+- Bump version to 7.6_1 since the split packages have a Conflicts
+  with xorg-x11-driver-video <= 7.6.
+- Add a README.meta file to explain the goal of this compatibility
+  metapackage.
+
+-------------------------------------------------------------------
+Sun Mar 25 01:57:35 UTC 2012 - jengelh@medozas.de
+
+- Parallel build with %_smp_mflags; strip redundant spec sections
+
+-------------------------------------------------------------------
+Wed Mar 14 16:00:50 UTC 2012 - sndirsch@suse.com
+
+- back to UXA for intel for stability reasons (bnc #750309); 
+  rather likely upstream will change to glamor anyway
+
+-------------------------------------------------------------------
+Mon Feb 27 16:31:56 CET 2012 - meissner@suse.de
+
+- disable building the Intel driver on non-intel x86* platforms.
+
+-------------------------------------------------------------------
+Sat Feb 25 13:56:15 UTC 2012 - sndirsch@suse.com
+
+- build intel driver with SandyBridge's New Acceleration (SNA)
+
+-------------------------------------------------------------------
+Fri Feb 24 17:02:31 UTC 2012 - vljn@ovi.com
+
+- Update xf86-video-intel from 2.16 to 2.18
+  * U_uxa-Fix-clip-processing-for-uxa_fill_spans.patch upstreamed
+
+-------------------------------------------------------------------
+Thu Feb  9 21:44:32 UTC 2012 - sndirsch@suse.com
+
+- fixed buildreqs due to splitted xorg-x11-libs 
+
+-------------------------------------------------------------------
+Tue Jan 10 10:56:57 UTC 2012 - eich@suse.com
+
+- As requested by Michael Meeks - pulled patch
+  429a36f7481b9bfd5ed137642d2916d69a713557 from
+  upstream to fix an issue seen in LibreOffice
+  (bnc #740520).
+
+-------------------------------------------------------------------
+Sun Nov 20 06:48:11 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Nov  3 16:49:05 UTC 2011 - sndirsch@suse.com
+
+- xf86-video-ati 6.14.3
+  * Support for more cards, in particular Llano APUs. 
+  * KMS page flipping fixes. 
+  * vdpau/XvMC support (currently only available for >= R3xx via
+    Gallium3D). 
+  * Tiling fixes, enable it on more cards by default. 
+
+-------------------------------------------------------------------
+Mon Oct 31 10:40:20 UTC 2011 - eich@suse.com
+
+- U_API-compat-fix-for-DRAWABLE_BUFFER.patch:
+  Fix for API change in Xserver: Removed DRAWABLE_BUFFER which is 
+  no longer in the Xserver fixes an big endian issue in the xgixp 
+  driver (for ppc).
+
+-------------------------------------------------------------------
+Tue Oct  4 10:41:38 UTC 2011 - sndirsch@suse.com
+
+- Don't build the xgi{,xp} drivers on ARM to fix the build on
+  this platform
+
+-------------------------------------------------------------------
+Sun Sep 11 00:44:15 UTC 2011 - sndirsch@suse.com
+
+- change VIDEO_ABI_VERSION to 10
+
+-------------------------------------------------------------------
+Thu Sep  8 10:40:37 UTC 2011 - sndirsch@suse.com
+
+- update to latest available video drivers
+  * xf86-video-ast 0.93.9
+  * xf86-video-geode 2.11.12
+  * xf86-video-glint 1.2.6
+  * xf86-video-intel 2.16.0
+- obsoletes U_geode-Stop-including-linux-videodev.h-in-z4l.c.patch
+- get rid of obsolete sax2/hwinfo meta files; sax2 is dead since
+  openSUSE 11.3
+
+-------------------------------------------------------------------
+Thu Sep  8 10:17:26 UTC 2011 - sndirsch@suse.com
+
+- updated drivers to fix the build against xorg-server 1.10
+  * xf86-video-chips 1.2.4
+  * xf86-video-mach64 6.8.2
+  * xf86-video-siliconmotion 1.7.5
+
+-------------------------------------------------------------------
+Sun Jul 10 19:55:35 UTC 2011 - eich@suse.de
+
+- added U_xgi-Fix-build-on-bigendian.patch:
+   Fixed a big endian issue in xgi, extracted from xgi GIT (found by
+   Marcus Meissner). 
+
+------------------------------------------------------------------
+Sun Jul 10 19:54:53 UTC 2011 - eich@suse.de
+
+- renamed xf86-video-geode-Stop-including-linux-videodev.h-in-z4l.c.patch
+  to U_geode-Stop-including-linux-videodev.h-in-z4l.c.patch. 
+
+-------------------------------------------------------------------
+Sat Jul  2 18:42:53 UTC 2011 - sndirsch@novell.com
+
+- xf86-video-geode-Stop-including-linux-videodev.h-in-z4l.c.patch 
+  * Stop including "linux/videodev.h" in z4l.c V4L1 support was
+    dropped as of Linux kernel 2.6.38
+
+-------------------------------------------------------------------
+Fri Jul  1 10:51:57 UTC 2011 - sndirsch@novell.com
+
+- commented out xorg.conf.d snippets by default, since
+  "use-last-screen.patch" of xorg-x11-server package hasn't been
+  accepted upstream and we want to get rid of it; documented the
+  issues in the conf.d files themselves, when make use of these
+  sections (fdo #32430)
+
+-------------------------------------------------------------------
+Tue Jun 21 10:15:14 UTC 2011 - sndirsch@novell.com
+
+- xf86-video-ati 6.14.2
+  * support for new GPUs
+  * a bunch of fusion/cayman fixes
+
+-------------------------------------------------------------------
+Tue May 31 11:49:11 UTC 2011 - eich@suse.de
+
+- remove support for HALlib for Matrox driver.
+
+-------------------------------------------------------------------
+Wed May 25 12:31:57 UTC 2011 - eich@suse.de
+
+- remove xf86-video-intel-buildfix.diff:
+  The function type has been adjusted already.
+
+-------------------------------------------------------------------
+Wed May 25 12:22:21 UTC 2011 - eich@suse.de
+
+- remove xf86-video-fbdev.diff:
+  Noone uses this code path any more today.
+
+-------------------------------------------------------------------
+Wed May 25 09:14:01 UTC 2011 - eich@suse.de
+
+- remove xf86-video-vmware-10.15.2.diff:
+  According to https://bugs.freedesktop.org/show_bug.cgi?id=14208
+  this bug has been fixed in the vmware driver in version 10.16.9.
+
+-------------------------------------------------------------------
+Wed May 25 08:48:25 UTC 2011 - eich@suse.de
+
+- remove xf86-video-rendition.diff:
+  Doesn't seem to be required for build any more.
+  Let's see where it breaks in the build system.
+
+-------------------------------------------------------------------
+Wed May 25 07:54:53 UTC 2011 - eich@suse.de
+
+- Minor cleanup in spec file.
+
+-------------------------------------------------------------------
+Mon May  2 10:52:42 UTC 2011 - sndirsch@novell.com
+
+- xf86-video-ati 6.14.1
+  * add cayman support (shadowfb, kms-only, requires kernel 2.6.39)
+  * fix build against xserver 1.10
+  * big endian support for r6xx+ (kms)
+  * bug fixes
+- obsoletes xf86-video-ati-kms-don-t-rotate-if-acceleration-is-not-enabled.patch 
+-------------------------------------------------------------------
+Fri Apr 15 19:51:42 UTC 2011 - sndirsch@novell.com
+
+- disabled xf86-video-intel-copyfb.diff for now (bnc #687802) 
+
+-------------------------------------------------------------------
+Thu Apr 14 13:09:56 UTC 2011 - sndirsch@novell.com
+
+- xf86-video-intel 2.15.0
+- obsoletes xf86-video-intel-uxa-Undo-damage-translation-before-appending.patch
+- adjusted xf86-video-intel-dell_backlight.diff, 
+  xf86-video-intel-copyfb.diff
+
+-------------------------------------------------------------------
+Thu Mar 17 17:51:37 UTC 2011 - sndirsch@novell.com
+
+- xf86-video-ati-kms-don-t-rotate-if-acceleration-is-not-enabled.patch
+  * kms: don't rotate if acceleration is not enabled (bnc #675453)
+
+-------------------------------------------------------------------
+Wed Mar 16 17:33:56 UTC 2011 - sndirsch@novell.com
+
+- xf86-video-intel-uxa-Undo-damage-translation-before-appending.patch 
+  * uxa: Undo damage translation before appending (bnc #666704)
+
+-------------------------------------------------------------------
+Tue Feb 22 15:34:19 UTC 2011 - sndirsch@novell.com
+
+- added qxl driver to support QXL virtual GPU used by spice, which
+  is now also supported by qemu beginning with release 0.14
+
+-------------------------------------------------------------------
+Tue Feb 15 17:14:41 UTC 2011 - eich@suse.de
+
+- Move initialization of canDoBGNonRoot to be set up before used.
+
+-------------------------------------------------------------------
+Tue Feb 15 14:25:25 UTC 2011 - eich@suse.de
+
+- fix and readd xf86-video-intel-copy-fb.diff for intel.
+
+-------------------------------------------------------------------
+Mon Feb 14 16:55:25 UTC 2011 - sndirsch@novell.com
+
+- removed TV-in support for All in Wonder 128 again (bnc #671623)  
+
+-------------------------------------------------------------------
+Mon Feb 14 01:42:21 UTC 2011 - stefan.bruens@rwth-aachen.de
+
+- support dell backlight via /sys/class/backlight/dell_backlight
+
+-------------------------------------------------------------------
+Sat Feb 12 13:13:37 UTC 2011 - sndirsch@novell.com
+
+- remove no longer applied patch 'xf86-video-intel-copy-fb.diff' 
+
+-------------------------------------------------------------------
+Fri Feb  4 04:15:09 UTC 2011 - sndirsch@novell.com
+
+- xf86-video-ati-6.14.0
+  * KMS EXA/Xv support for evergreen asics (requires kernel 2.6.36
+    or newer)
+  * KMS EXA/Xv support for ontario fusion asics (requires kernel
+    2.6.38 or newer)
+  * KMS EXA/Xv support for northern islands asics (requires kernel
+    2.6.38 or newer)
+  * UMS support for ontario fusion asics
+  * KMS pageflipping support for all radeons (requires kernel
+    2.6.38 or newer)
+  * Major man page cleanup
+  * Lots of bug fixes
+
+-------------------------------------------------------------------
+Fri Jan 28 11:33:07 UTC 2011 - sndirsch@novell.com
+
+- xf86-video-xgi-symbols.diff, xf86-video-xgixp-symbols.diff
+  * (xf86)LoaderReqSymLists no longer supported/required; fixes
+    "X -configure" run (bnc #667877)
+
+-------------------------------------------------------------------
+Sat Jan 22 10:40:42 UTC 2011 - sndirsch@novell.com
+
+- xf86-video-ati (2011-01-21, fadee04)
+  * latest git version of radeon driver, which includes Evergreen
+    support
+
+-------------------------------------------------------------------
+Sat Jan  8 21:17:25 UTC 2011 - sndirsch@novell.com
+
+- xf86-video-intel 2.14.0 
+- removed obsolete
+  xf86-video-intel-i965-Fix-off-by-one-in-assert.patch
+
+-------------------------------------------------------------------
+Wed Jan  5 01:38:15 UTC 2011 - sndirsch@novell.com
+
+- xf86-video-intel 2.13.903
+  * configure: updated m4 macro check in configure.ac
+  * Remove the deprecated function 'XNFprintf'
+  * i830: amalgamate consecutive composites into a single primitive
+  * dri: Differentiate identical "get vblank failed" messages with line no
+  * Don't replace the scanout bo through PutImage
+  * dri: Protect against using dri with an non-gem pixmap
+  * dri: Fix the use of the uninitialised bo for flink
+  * dri: Don't wait upon a NULL current mode
+  * dri: Only issue a warning for an "impossible" flip return 5 times
+  * xv: Fix interlace computation
+  * dri2: Fix interlace computation
+  * If the crtc is not enabled, then it can't be on
+  * configure: suggest upstream to find macros in case they're missing.
+  * NEWS: Add entry for 2.13.903
+  * configure: version bump for 2.13.903 snapshot
+- xf86-video-intel-i965-Fix-off-by-one-in-assert.patch
+  * i965: Fix off-by-one in assert
+
+-------------------------------------------------------------------
+Tue Dec 21 02:39:19 UTC 2010 - sndirsch@novell.com
+
+- bumped version number to 7.6 
+
+-------------------------------------------------------------------
+Mon Dec 20 13:48:31 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel 2.13.902-20101220-1ac2e04
+  * Fix reporting of pageflip completion events on multi-head.
+  * Check consistency of pageflip completion vblank count.
+  * G35 is gen4 and not gen3
+  * Undo: Disable BLT for i830 and 845G
+- obsoletes xf86-video-intel-G35.diff
+
+-------------------------------------------------------------------
+Mon Dec 20 10:02:18 UTC 2010 - mmarek@novell.com
+
+- xf86-video-intel-G35.diff
+  * G35 is gen4 and not gen3 (bfo# 32478, bnc# 658802).
+
+-------------------------------------------------------------------
+Sun Dec 12 18:27:06 UTC 2010 - sndirsch@novell.com
+
+- intel-gpu-tools 1.0.2-20101210-292ae45
+
+-------------------------------------------------------------------
+Sat Dec 11 21:07:21 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel 2.13.902
+  * configure: Bump required libdrm to 2.4.23
+  * NEWS: Add entry for the 2.13.902 snapshot
+
+-------------------------------------------------------------------
+Tue Dec  7 22:24:43 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel 2.13.901-20101207-9b96780
+  * uxa: Emit the damage after the render for the workaround in
+    uxa_solid_rects
+  * Always flush the batch before blocking for new X requests
+  * i965: Invalidate pixmap binding location on reuse.
+  * i965: The RenderCache flush after every glyph is required for
+    compiz
+  * i965: Mark sure we mark reused render targets as dirty
+  * Revert "i965: The RenderCache flush after every glyph is
+    required for compiz"
+
+-------------------------------------------------------------------
+Tue Dec  7 09:18:44 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel 2.13.901-20101206-00c204a
+  * snb: Restore drawrect, we need the implicit flush
+  * snb: Only emit CC and DepthStencil bos once per batch 
+
+-------------------------------------------------------------------
+Mon Dec  6 15:45:44 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel 2.13.901-20101206-f3a47d7
+  * Don't use hardware acceleration on Sandybridge rev 07 hardware
+    or earlier.
+  * uxa: Prevent reading past the last byte on upload/download
+  * snb: Emit more invariants only once
+  * snb: Cache state between composite ops
+  * snb: Cache pixmap binding locations
+- xf86-video-savage-2.3.2.tar.bz2
+  * This fixes a bug since the privates changes in the upstream
+    server, along with the usual build cleanups.
+
+-------------------------------------------------------------------
+Sun Dec  5 11:37:32 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel 2.13.901-20101205-8abade8
+  * i965: Check for potential vertex array overflow every time
+  * i965: Also flush the vertex buffer when restarting the array.
+  * display: Flush any pending batches before changing modes.
+
+-------------------------------------------------------------------
+Sat Dec  4 05:39:06 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel 2.13.901-20101203-55c5f18
+  * i965: Use reciprocal scale factors to avoid the divide
+    per-vertex-element
+  * i965: Upload an entire vbo in a single pwrite, rather than
+    per-rectangle
+  * i965: Amalgamate surface binding tables
+  * Wait on the current buffer to complete when running
+    synchronously.
+- obsoletes xf86-video-intel-Disable-BLT-for-i830-and-845G.patch
+
+-------------------------------------------------------------------
+Wed Nov 24 13:35:15 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel 2.13.901-20101117-33c0888
+  * uxa: Fix crash after allocation failure
+  * i915: Disable maximum state addresses
+  * uxa: Relax fencing some more for gen3
+  * Mark outputs as DPMSModeOn and restore backlight at mode set
+- xf86-video-intel-Disable-BLT-for-i830-and-845G.patch
+  * Disable BLT for i830 and 845G
+
+-------------------------------------------------------------------
+Fri Nov 12 17:39:14 UTC 2010 - sndirsch@novell.com
+
+- readded and reenabled build of -xgi/-xgixp drivers
+- xf86-video-xgi-buildfix.diff
+  * buildfix for -xgi driver
+
+-------------------------------------------------------------------
+Tue Nov  9 15:15:03 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-vmware 11.0.3
+  * This is a bugfix release that addresses a number of bugs as
+    well as build failures on Servers 1.0 through 1.9
+
+-------------------------------------------------------------------
+Tue Nov  9 10:11:22 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-geode 2.11.10
+  * fix the DCON verification loop for LX output
+  * Add get_crtc output function
+  * Don't power down DCON when it is frozen
+  * Replace xalloc/xrealloc/xfree/xcalloc with malloc/realloc/free/
+    calloc
+  * Mode Validation support on modeline in xorg.conf
+  * Fix a typo on resolution parameter
+  * Add resolution 1024x600 support for PANEL
+  * Revise the entry for 1024x600
+  * Simplify the mode_valid function
+  * Modify rotation pitch & reallocate pixmap for bo
+  * Allocate video memory with exaOffscreenAlloc
+  * Revert "Simplify the mode_valid function"
+  * lx_display: fix typo
+
+-------------------------------------------------------------------
+Sat Nov  6 00:10:07 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel 2.13.901
+  * This is an intermediate snapshot of ongoing driver development.
+    The primary purpose of this snapshot is to capture some recent
+    improvements, (particularly in Sandybridge support), for
+    further testing.
+
+-------------------------------------------------------------------
+Tue Nov  2 13:56:26 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel 2.13.0-20101102-540c574
+  * latest intel driver from git master
+
+-------------------------------------------------------------------
+Fri Oct 22 11:04:23 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel 2.13.0-20101018-a1c54f6
+  * latest intel driver from git master, which fixes Sig11 when
+    doing any modesetting (bnc #647568)
+- obsoletes the following patches
+  * xf86-video-intel-5472359.diff
+  * xf86-video-intel-a1c54f6.diff
+  * xf86-video-intel-fix-8784c4f.diff
+
+-------------------------------------------------------------------
+Wed Oct 20 23:25:13 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel-a1c54f6.diff 
+  * Fix violation of gen6 requirements for depthbuffer tiling.
+
+-------------------------------------------------------------------
+Fri Oct  8 15:38:08 UTC 2010 - sndirsch@novell.com
+
+- remove obsolete patch
+  0001-Re-add-XVideo-option-as-XVideo-on-SandyBridge-freez.patch
+- xf86-video-intel-5472359.diff
+  * dri: Check for pixmap privates before dereferencing them
+    (bfo #30707)
+
+-------------------------------------------------------------------
+Wed Oct  6 13:34:56 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel 2.13.0-20101006-1444ea3
+  * Revert "Clear pixmap->devPrivate.ptr [regression in 7c7294e]"
+  * uxa: Re-enable acceleration.
+  * uxa: Skip a pixmap lookup if there is no driver finish access
+   function
+  * dri: Reattach the fake pixmap for the shadow scanout to the
+    drawable.
+  * dri+shadow: Only tweak the acceleration of CopyRegion if using shadow.
+- removed xf86-video-intel-d1925de.diff ("Clear 
+  pixmap->devPrivate.ptr [regression from 7c7294e]")
+
+-------------------------------------------------------------------
+Wed Oct  6 01:10:48 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel-d1925de.diff
+  * Clear pixmap->devPrivate.ptr [regression from 7c7294e] 
+- xf86-video-intel-fix-8784c4f.diff
+  * fix commit #8784c4f; IS_965G(..) is already part of IS_9XX(..)
+
+-------------------------------------------------------------------
+Tue Oct  5 19:31:49 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel 2.13.0-20101005-4bf2182
+  * current git master commit with latest Sandybridge patches
+- obsoletes intel_check_kms_on_probe.diff (commit 
+  455f2939a661764ebb8d1747d44e16a0a8937808: "Do not claim the PCI
+  device if !KMS. By returning FALSE whilst probing if we can't
+  find a KMS driver, we allow X to fallback to trying the VESA
+  driver -- rather than failing.")
+- obsoletes xf86-video-intel-345c963.diff
+
+-------------------------------------------------------------------
+Mon Oct  4 03:56:40 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-ati 6.13.2 (bugfix release)
+  * Evergreen UMS modesetting fixes
+  * Performance improvements with EXA
+  * r6xx/r7xx tiling support
+  * lots of bug fixes
+
+-------------------------------------------------------------------
+Fri Oct  1 01:36:49 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel 2.13.0 
+  * requires libdrm 2.4.22
+  * Attempt to fix infinite MI_WAIT_FOR_EVENT while watching video
+    https://bugs.freedesktop.org/show_bug.cgi?id=28964
+    ( Various new checks have been added to the video code here,
+      but the bug fix hasn't yet been verified by the original
+      reporter. )
+ * Fix buffer-object leak
+   https://bugs.freedesktop.org/show_bug.cgi?id=26946
+ * Fix memory leak on server reset
+ * Fix crash due to unchecked pixmap allocation
+   https://bugs.freedesktop.org/show_bug.cgi?id=29187
+ * Fix for video artifacts when using dualscreen
+   https://bugs.freedesktop.org/show_bug.cgi?id=29213
+ * Fix for incorrect characters in gnome-terminal when using compiz
+   https://bugs.freedesktop.org/show_bug.cgi?id=28438
+ * Fix for hanging, full-screen applications, (flash, compiz, etc.)
+   https://bugs.freedesktop.org/show_bug.cgi?id=29584
+ * Fix selection of backlight device on multi-GPU systems
+   https://bugs.freedesktop.org/show_bug.cgi?id=29273
+ * Fix to avoid crash with extremely large glyphs
+   https://bugs.freedesktop.org/show_bug.cgi?id=29430
+ * Fix for eDP panels incorrectly being given only a single, valid mode
+   https://bugs.freedesktop.org/show_bug.cgi?id=30069
+ * Fix GPU hang involving clipped SRC copies
+   https://bugs.freedesktop.org/show_bug.cgi?id=30120
+ * Fix to compile for 1.6 series X server.
+ * Fix to retry framebuffer allocation after an initial failure.
+ * Fix to disable dri2 after fallbacks are forced on.
+
+-------------------------------------------------------------------
+Thu Sep 30 12:38:15 UTC 2010 - sndirsch@novell.com
+
+- fixed previous patch 
+
+-------------------------------------------------------------------
+Thu Sep 30 10:54:46 UTC 2010 - sndirsch@novell.com
+
+- 0001-Re-add-XVideo-option-as-XVideo-on-SandyBridge-freez.patch
+  * Re-add XVideo option, as XVideo on SandyBridge freezes the chip
+
+-------------------------------------------------------------------
+Thu Sep 30 09:58:04 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel-345c963.diff
+  *  Always use tiling on Sandybridge 
+
+-------------------------------------------------------------------
+Wed Sep 29 12:20:08 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel 2.12.902 (2.13 RC2)
+  * 2nd prerelease of intel's 2.13 driver
+- obsoletes xf86-video-intel-55b5fe8.diff, 
+  xf86-video-intel-f63c7df.diff
+
+-------------------------------------------------------------------
+Fri Sep 17 12:53:08 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel-55b5fe8.diff
+  * Add alternate pci-id for B43
+- xf86-video-intel-f63c7df.diff
+  * Disable swap buffer wait on Sandybridge 
+
+-------------------------------------------------------------------
+Wed Sep 15 12:52:03 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel-2.12.0-20100912-08c2cac 
+  * latest intel git master driver (2010-09-12)
+
+-------------------------------------------------------------------
+Wed Sep 15 04:30:06 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-intel-2.12.0-20100910-ae160d7
+  * latest intel git master driver (2010-09-10)
+
+-------------------------------------------------------------------
+Sun Sep 12 03:10:51 UTC 2010 - sndirsch@novell.com
+
+- xf86-video-glint 1.2.5 
+  * Some minor changes, license updates, and autotools
+    improvements.
+
+-------------------------------------------------------------------
+Sat Sep 11 22:06:46 CEST 2010 - sndirsch@suse.de
+
+- xf86-video-ati-6.7.197-r128-xvideo.patch/
+  xf86-video-ati-theatre.patch
+  * readded TV-in support for All in Wonder 128 (bfo #8811)
+- xf86-video-ati-theatre-pciaccess.patch
+  * fixes build with libpciaccess
+
+-------------------------------------------------------------------
+Thu Sep  2 02:28:19 CEST 2010 - sndirsch@suse.de
+
+- xf86-video-ati-6.13.99 20100901-2b98ec1 
+  * latest radeon git master driver ( 2010-09-01)
+
+-------------------------------------------------------------------
+Tue Aug 31 11:56:35 CEST 2010 - sndirsch@suse.de
+
+- xf86-video-intel 2.12.0-20100825-b7a8087
+  * latest intel git master driver (2010-08-25)
+- obsolete patches
+  * xf86-video-intel-commit-c57840b.diff
+  * xf86-video-intel-mbp_backlight.diff
+- adjusted patches
+  * intel_check_kms_on_probe.diff
+- removed xf86-video-intel-sandybridge_m2.diff since it doesn't
+  work anyway
+
+-------------------------------------------------------------------
+Sun Aug 29 15:33:06 UTC 2010 - sndirsch@novell.com
+
+- intel-gpu-tools 1.0.2-20100825-c935c60
+- xf86-video-ark 0.7.3
+  * This minor maintenance release of the driver for Ark Logic
+    graphics devices mainly features various configuration & build
+    improvements.
+- xf86-video-ast 0.91.10
+  * The major feature of this release is support for the AST2300
+    chip, though you wouldn't know it from looking at the changelog.
+    ASPEED are gently reminded to use slightly more descriptive
+    changelog entries.
+- xf86-video-fbdev 0.4.2
+  * One bug fix, and a number of build system and other janitorial
+    updates.
+- xf86-video-i128 1.3.4
+- xf86-video-mga 1.4.13
+- xf86-video-nv 2.1.18
+  * It's been a while since the last nv driver release, so there
+    have been quite a number of accumulated changes.  This update
+    adds a pile of new product names, fixes a couple of bugs, and
+    cleans up a lot of old code (thanks to Gaetan).  It now also
+    refuses to load if a kernel module is bound to the device,
+    which will prevent it from interfering with the nouveau
+    module's framebuffer driver.
+- xf86-video-siliconmotion 1.7.4
+  * This minor release fixes compatibility with xorg-server-1.8.x
+    releases, as well as including other bug fixes & janitorial
+    cleanups.
+- xf86-video-vmware 11.0.2
+- obsolete patches
+  * xf86-video-nv-commit-250a3a7.diff
+  * xf86-video-nv-commit-347625b.diff
+  * xf86-video-nv-commit-e6b0463.diff
+  * xf86-video-siliconmotion-1.7.3.dif
+
+-------------------------------------------------------------------
+Tue Aug 24 11:43:05 CEST 2010 - sndirsch@suse.de
+
+- disable xf86-video-intel-copy-fb.diff for now to avoid assertion
+  during Xserver start on intel; assertion was:
+  "X: pixmap.c:118: AllocatePixmap: Assertion
+   `pScreen->totalPixmapSize > 0' failed."
+
+-------------------------------------------------------------------
+Mon Aug 23 22:06:39 CEST 2010 - sndirsch@suse.de
+
+- xf86-video-geode 2.11.9 
+  * geode video driver 2.11.9 for server 1.9
+
+-------------------------------------------------------------------
+Mon Aug 23 20:31:56 CEST 2010 - sndirsch@suse.de
+
+- xf86-video-apm 1.2.3
+  * This update to the mostly unmaintained Alliance Promotion
+    driver provides Xorg server 1.9 compatibility as well as a
+    number of build/configuration fixes, and removes several
+    bits of dead code that are no longer usable with current
+    Xorg releases.
+- xf86-video-chips 1.2.3
+  * This driver update for Chips and Technologies devices
+    provides compatibility with Xorg 1.9 as well as many
+    assorted build/configuration improvements.
+- xf86-video-dummy 0.3.4
+  * Release of the dummy driver for the new X server API.
+- xf86-video-neomagic 1.2.5
+  * neomagic 1.2.5 release for server 1.9
+  * obsoletes xf86-video-neomagic-commit-4e2afb8.diff
+- xf86-video-rendition 4.2.4
+  * rendition video driver 4.2.4 for server 1.9
+- xf86-video-sis 0.10.3
+  * sis video driver 0.10.3 for server 1.9
+  * obsoletes xf86-video-sis-19070.diff, 
+    xf86-video-sis-website.diff
+- xf86-video-sisusb 0.9.4
+  * sisusb video driver 0.9.4 for server 1.9
+- xf86-video-trident 1.3.4
+  * trident video driver 1.3.4 for server 1.9
+- xf86-video-tseng 1.2.4
+  * tseng video driver 1.2.4 for server 1.9
+- xf86-video-vesa 2.3.0
+  * vesa video driver 2.3.0 for server 1.9
+- xf86-video-voodoo 1.2.4
+  * voodoo video driver 1.2.4 for server 1.9
+
+-------------------------------------------------------------------
+Fri Aug 20 17:27:07 CEST 2010 - sndirsch@suse.de
+
+- xf86-video-intel-sandybridge_m2.diff
+  * added support for new Sandybridge mobile GPU
+
+-------------------------------------------------------------------
+Wed Aug  4 10:01:41 CEST 2010 - sndirsch@suse.de
+
+- xf86-video-intel-commit-c57840b.diff
+  uxa: Check for failed pixmap allocation; fixes crash in intel_drv
+  (bnc #596473, bfo #29187)
+
+-------------------------------------------------------------------
+Wed Jul  7 16:57:27 CEST 2010 - sndirsch@suse.de
+
+- xf86-video-ati 6.13.1
+  * server 1.9 support
+  * evergreen accel disabled explicitly
+  * kms uevent + sync support
+  * rn50 fixes
+  * enable color tiling on kms on r300->r500
+  * xv cleanup and large vertex number fixes
+
+-------------------------------------------------------------------
+Wed Jun 30 23:49:20 CEST 2010 - sndirsch@suse.de
+
+- xf86-video-sis-website.diff
+  * fixed URL for driver website (bnc #618924) 
+
+-------------------------------------------------------------------
+Wed Jun 30 03:41:33 CEST 2010 - sndirsch@suse.de
+
+- require libdrm >= 2.4.21 (reported by Andreas Jaeger) 
+
+-------------------------------------------------------------------
+Fri Jun 25 08:57:48 CEST 2010 - sndirsch@suse.de
+
+- xf86-video-intel 2.12.0
+  * Many performance improvements targeting i915/i945/G33/Pineview 
+    graphics chipset.
+  * Improved Xvmc and overlay, adding GEM support.
+  * Fixes for page-flipping and other DRI2-handling bugs.
+- adjusted xf86-video-intel-copy-fb.diff
+  * intel_batch_submit(pScrn) --> intel_batch_submit(pScrn, TRUE)
+- obsoletes xf86-video-intel-commit-e2615cd.diff,
+  xf86-video-intel-commit-f227240.diff
+
+-------------------------------------------------------------------
+Mon Jun  7 19:25:13 CEST 2010 - sndirsch@suse.de
+
+- xf86-video-intel-commit-e2615cd.diff
+  * dri: Only flip if the front and back pixmaps match (bnc #610323)
+- xf86-video-intel-commit-f227240.diff
+  * DRI2: fix new buffer exchange check (bnc #610323)
+
+-------------------------------------------------------------------
+Fri Apr 30 02:55:40 CEST 2010 - sndirsch@suse.de
+
+- xf86-video-neomagic-commit-4e2afb8.diff
+  * s/xf86UDelay/usleep/g (bnc #601119)
+
+-------------------------------------------------------------------
+Thu Apr 22 17:52:53 CEST 2010 - sndirsch@suse.de
+
+- added xorg.conf.d snippets so you can easily override defaults
+  if your monitor has not been detected via DDC (bnc #598125)
+
+-------------------------------------------------------------------
+Tue Apr 13 17:44:07 CEST 2010 - sndirsch@suse.de
+
+- disabled broken KMS blacklist (bnc #595653)
+
+-------------------------------------------------------------------
+Mon Apr 12 20:17:43 CEST 2010 - sndirsch@suse.de
+
+- added /etc/X11/kms-blacklist.i915 and install rule for i915
+  module to /etc/modprobe.d/99-kms.conf
+
+-------------------------------------------------------------------
+Mon Apr 12 17:36:31 UTC 2010 - mhopf@novell.com
+
+- intel_check_kms_on_probe.diff:
+  Check for KMS on probe - that way fallback to fbdev or vesa will
+  still be possible if drm module is not available.
+
+-------------------------------------------------------------------
+Mon Apr 12 18:17:30 CEST 2010 - sndirsch@suse.de
+
+- /etc/X11/kms-blacklist.radeon
+  * blacklisted M24(1002:3150) (bnc #595653)
+
+-------------------------------------------------------------------
+Mon Apr 12 14:01:00 CEST 2010 - sndirsch@suse.de
+
+- /sbin/kms_loader.sh (kms-blacklist.tar.bz2)
+  * fixed PATH for grep/cut commands
+  * added kernel message via logger to inform the user that KMS
+    has been disabled via this script and /etc/X11/kms-blacklist.*
+
+-------------------------------------------------------------------
+Sat Apr 10 15:39:23 CEST 2010 - sndirsch@suse.de
+
+- kms-blacklist.tar.bz2
+  * framework for KMS blacklist; use 
+    /etc/X11/kms-blacklist.<kms_module> for distribution wide
+    blacklisting of PCI IDs and /etc/X11/kms-blacklist.local for
+    local usage on the system
+
+-------------------------------------------------------------------
+Sat Apr 10 11:07:33 CEST 2010 - sndirsch@suse.de
+
+- major cleanup
+  * removed obsolete/broken drivers: xf86-video-impact, 
+    xf86-video-nsc, xf86-video-vga, xf86-video-xgi,
+    xf86-video-xgixp (+ patches)
+  * removed special and never working RANDR 1.2 mga driver
+     1.9.100 + patches; xf86-video-mga 1.4.11 remains of course
+  * removed no longer appliable r128/radeon patches:
+    xf86-video-ati-6.7.197-r128-xvideo.patch, 
+    xf86-video-ati-es1000.diff
+  * renamed copy-fb.patch to xf86-video-intel-copy-fb.diff
+  * specfile cleanup
+
+-------------------------------------------------------------------
+Thu Apr  8 20:03:34 UTC 2010 - eich@suse.de
+
+- Another build fix for copy-fb.patch.
+
+-------------------------------------------------------------------
+Thu Apr  8 16:41:52 UTC 2010 - eich@suse.de
+
+- Updated patches to apply cleanly.
+
+-------------------------------------------------------------------
+Thu Apr  8 14:16:01 UTC 2010 - eich@suse.de
+
+- Add adapted copyfb patch from Moblin project and enable by default.
+
+-------------------------------------------------------------------
+Tue Apr  6 12:00:41 CEST 2010 - sndirsch@suse.de
+
+- removed obsolete and wrong patch
+  'xf86-video-ati-bug589022-atombios.diff' (bnc #589022)
+
+-------------------------------------------------------------------
+Tue Apr  6 02:16:35 CEST 2010 - sndirsch@suse.de
+
+- xf86-video-ati 6.13.0 (final)
+  * kms: fix ums naming compat for DisplayPort
+  * XAA: disable render accel
+  * r6xx EXA/Xv: track src/dst domains
+  * r6xx+ EXA: always use the accel_state state in DoPrepareCopy
+  * r6xx+ EXA: always use a temp surface for overlapping copies
+  * r6xx+ EXA/Xv: add a R600SetAccelState function
+  * radeon: fix name string for eDP
+  * radeon: add support eDP connectors with and LCD device tag
+  * r6xx+ EXA: fix swapped domains in kms UTS
+  * radeon: fix possible gpio i2c table overrun (bnc #589022)
+  * radeon: avoid using DRI1 init path on DRI2 driver.
+  * r600: reduce function call overhead.
+  * r600: cleanup wasteful variables.
+  * r600/exa: further cleanup, use the object struct in the accel
+    state.
+  * Add support for MacModel autodetection on OpenBSD.
+
+-------------------------------------------------------------------
+Thu Apr  1 15:19:59 UTC 2010 - mhopf@novell.com
+
+- xf86-video-ati-bug589022-atombios.diff
+  * Fix server crash for "interesting" AtomBIOS tables (bnc #589022)
+
+-------------------------------------------------------------------
+Thu Apr  1 05:01:19 CEST 2010 - sndirsch@suse.de
+
+- xf86-video-intel-mbp_backlight.diff
+  * added backlight control for MacBooks (bnc #581474, bfo #25901)
+
+-------------------------------------------------------------------
+Tue Mar 30 01:55:50 CEST 2010 - sndirsch@suse.de
+
+- xf86-video-intel 2.11.0
+  * The most significant new feature of this release is support for
+    new DRI2 APIs, allowing page flipping to occur for swaps that
+    are full-screen and not rotated.
+  * Dramatically improved performance of large pixmaps on
+    memory-constrained hardware, (such as 945), by using tiling.
+    Note that this fix is new since the most recent release
+    candidate for this release (2.10.903).
+    (https://bugs.freedesktop.org/show_bug.cgi?id=25375)
+  * Elimination of software fallback with alpha-only pixmap (a fix
+    which eliminated a full second from the Moblin boot time)
+    (https://bugs.freedesktop.org/show_bug.cgi?id=26189)
+  * Fix for undesired black borders on some images, (caused several
+    problems with firefox):
+    (http://bugs.freedesktop.org/show_bug.cgi?id=17933)
+  * And other fixes to provide more conformance with existing
+    software-rendering, (as measures by the cairo test suite), 
+    such as the sampling location for nearest-neighbor sampling.
+  * Eric Anholt and Daniel Vetter both removed large piles of old
+    and useless code now that the driver requires kernel modesetting
+    (KMS). This continues to reduce the mainteance burden of the
+    driver, making it easier to isolate and fix bugs.
+- removed obsolete patch 'moblin-dump-tools.patch'; bios_reader/
+  reg_dumper moved to intel-gpu-tools
+- update intel-gpu-tools to current git master (2010-03-24, commit
+  #7682c42)
+
+-------------------------------------------------------------------
+Thu Mar 25 01:35:56 CET 2010 - sndirsch@suse.de
+
+- disabled build of xgi driver due to the driver apparently no
+  longer providing a xgiModuleData data object - which is required
+  for being loaded
+- xf86-video-newport-commit-48f48e5.diff
+  * newport: stop using obsolete loader functions. The loader
+    symbol list functions have been removed from the server in 1.7.
+
+-------------------------------------------------------------------
+Thu Mar 18 12:43:37 CET 2010 - ro@suse.de
+
+- fix xf86-video-siliconmotion-1.7.3 to build with xserver-1.8
+  (struct ClockRanges was removed) 
+- change VIDEO_ABI_VERSION to 7
+
+-------------------------------------------------------------------
+Wed Mar 17 08:08:55 CET 2010 - sndirsch@suse.de
+
+- xf86-video-ati 6.12.191 (6.13.0rc2)
+  * Mostly bug fixes.  The r6xx/r7xx domain fix improves KMS EXA
+    DFS (and hence GetImage) performance significantly.
+- xf86-video-nv 2.1.17
+  * support for RandR 1.2's new-style gamma control, which also
+    fixes a problem on xserver 1.7 where the screen may be black
+    or strange colors.
+  * support for MCP7x-based motherboard GPUs.
+- obsoletes xf86-video-nv-commit-7b01fc8.diff,
+  xf86-video-nv-commit-49349f6.diff, 
+  xf86-video-nv-commit-9378ecd.diff
+- xf86-video-nv-commit-e6b0463.diff
+  * Don't crash if LVDS initialization fails (bfo #24787)
+- xf86-video-nv-commit-347625b.diff
+  * Add support for GeForce 7025 and 7050 (bfo #19817)
+- xf86-video-nv-commit-250a3a7.diff
+  * Update MCP6x supported products. Use the official names for
+    10DE:053B and 10DE:053E.  Add some additional product IDs
+    and update the documentation.
+
+-------------------------------------------------------------------
+Sat Mar  6 14:58:50 CET 2010 - sndirsch@suse.de
+
+- xf86-video-nv-commit-9378ecd.diff
+  * Add support for MCP7x-based integrated GPUs (bfo #19545) 
+
+-------------------------------------------------------------------
+Wed Mar  3 04:53:50 CET 2010 - sndirsch@suse.de
+
+- xf86-video-ati 6.12.191
+  * pre-release for the upcoming 6.13 release
+  * KMS/DRI2 support for all families r100->r700 for KMS driver
+    in Linux 2.6.33.
+  * Initial evergreen KMS support for planned 2.6.34 driver.
+  * Userspace modesetting support for r600/r700 families
+  * experimental userspace modesetting support for evergreen
+    families
+  * r600/r700 acceleration support.
+  * Userspace modesetting basic power management controls
+  * textured Xv controls (brightness, contrast, etc.)
+  * Displayport support.
+  * Improved Zaphod support - per-screen output assignment.
+  * CustomEDID option - force the driver to use EDID from a file
+  * lots of quirks and fixes and optimisations.
+- adjusted xf86-video-ati-bug519261-increase-virtual.diff
+- obsoletes xf86-video-ati-bug-561880-keep_crtc_enabled.diff 
+
+-------------------------------------------------------------------
+Tue Mar  2 22:34:15 CET 2010 - sndirsch@suse.de
+
+- xf86-video-nv-commit-49349f6.diff
+  * G80: Log unrecognized outputs
+
+-------------------------------------------------------------------
+Tue Mar  2 17:37:08 CET 2010 - sndirsch@suse.de
+
+- xf86-video-nv-commit-7b01fc8.diff:
+  Separate LUTs per output. Wire up the RandR 1.2 gamma_set hook.
+  Call it from G80SetPalette like the Intel driver does.
+  (bfo #26612, likely bnc #577140)
+
+-------------------------------------------------------------------
+Thu Feb 25 01:11:59 CET 2010 - ro@suse.de
+
+- fix nonvoid return warning in trident:blade_accel_exa.c 
+
+-------------------------------------------------------------------
+Sun Jan 31 13:06:31 CET 2010 - meissner@suse.de
+
+- disable xgi card driver for ppc/ppc64 (not endianess safe)
+
+-------------------------------------------------------------------
+Wed Jan 27 02:07:35 CET 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Sat Jan 16 18:07:58 CET 2010 - sndirsch@suse.de
+
+- updated video drivers
+  * xf86-video-ark-0.7.2
+  * xf86-video-cirrus-1.3.2
+  * xf86-video-newport-0.2.3
+  * xf86-video-nv-2.1.16
+  * xf86-video-rendition-4.2.3
+  * xf86-video-tga-1.2.1
+  * xf86-video-tseng-1.2.3
+  * xf86-video-vmware-10.16.9
+  * xf86-video-geode-2.11.6
+- obsoletes patches xf86-video-nv-commit-b30ec38.diff,
+  xf86-video-nv-commit-f050096.diff
+- disabled build of nsc driver 
+- driver package now requires VIDEO_ABI_VERSION = 6
+
+-------------------------------------------------------------------
+Tue Jan  5 00:01:40 CET 2010 - sndirsch@suse.de
+
+- xf86-video-intel 2.10.0
+  * minor change to the configure script, and some small updates
+    to the documentation since 2.9.99.902
+
+-------------------------------------------------------------------
+Tue Dec 15 13:26:22 UTC 2009 - mhopf@novell.com
+
+- xf86-video-ati-bug-561880-keep_crtc_enabled.diff:
+  200M crashes if CRTCs are disabled.
+
+-------------------------------------------------------------------
+Fri Dec 11 03:39:41 CET 2009 - sndirsch@suse.de
+
+- xf86-video-intel 2.9.99.902 (2.10.0 RC2) 
+- obsoletes moblin-2009Q2-rc2-incremental.patch
+
+-------------------------------------------------------------------
+Tue Dec  1 16:14:53 CET 2009 - sndirsch@suse.de
+
+- baselibs.conf: removed video drivers from xxbit packages
+
+-------------------------------------------------------------------
+Tue Dec  1 09:02:04 CET 2009 - sndirsch@suse.de
+
+- xf86-video-intel 2.9.99.901 (2.10.0 RC1)
+  * support for new chipsets, among these is Ironlake
+  * removes UMS support (KMS only now)
+  * obsoletes xf86-video-intel-G33-1mb.diff,
+    xf86-video-intel-NoFBC-945GME.diff,
+    xf86-video-intel-bfo17988.diff,
+    moblin-uxa-Fix-segfault-on-source-only-picture-usage.patch
+  * adjusted moblin-dump-tools.patch, 
+    xf86-video-intel-buildfix.diff
+
+-------------------------------------------------------------------
+Sun Nov 29 22:09:06 CET 2009 - sndirsch@suse.de
+
+- xf86-video-nv-commit-f050096.diff/
+  xf86-video-nv-commit-b30ec38.diff
+  * support for new G80 boards
+
+-------------------------------------------------------------------
+Mon Nov 23 13:17:45 MSK 2009 - matwey.kornilov@gmail.com
+
+- xf86-video-sis-19070.diff
+  * fixex BIOS read on 650 and 760. (bfo #19070, bnc #551677)
+
+-------------------------------------------------------------------
+Tue Nov 10 22:51:14 CET 2009 - sndirsch@suse.de
+
+- sax2/hwinfo-data:
+  * added device IDs for XGI Volari Z9s (FATE #307893)
+  * fixed suffix (missing "0x") of device ID for several entries
+
+-------------------------------------------------------------------
+Tue Nov 10 18:21:51 CET 2009 - sndirsch@suse.de
+
+- updated xf86-video-xgi to release 1.5.1 and reenabled build;
+  adjusted xf86-video-xgi.diff (FATE #307893)
+
+-------------------------------------------------------------------
+Mon Oct 26 14:05:11 CET 2009 - sndirsch@suse.de
+
+- xf86-video-intel 2.9.1
+  * a few, hand-picked bug fixes since that 2.9.0 release
+- obsoletes xf86-video-intel-commit-02fe9be6.diff,
+  xf86-video-intel-bnc545499-commit_57fc09c.diff
+
+-------------------------------------------------------------------
+Wed Oct 14 04:24:35 CEST 2009 - sndirsch@suse.de
+
+- adjusted 'copy-fb.patch' to current driver sources to fix build
+  on Moblin
+
+-------------------------------------------------------------------
+Mon Oct 12 15:45:33 UTC 2009 - mhopf@novell.com
+
+- xf86-video-intel-Regression-bnc545499-commit_57fc09c-avoid_fallbacks_for_a1_srcmask.diff:
+  * Remove new functionality that introduced regression.
+
+-------------------------------------------------------------------
+Sat Oct 10 19:04:00 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-intel-commit-02fe9be6.diff
+  * reverts git commit 02fe9be6, which resulted in a regression
+    (bnc #544185)
+
+-------------------------------------------------------------------
+Tue Sep 29 20:01:21 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-intel 2.9.0
+  * this release is identical to the 2.8.99.902 release candidate
+    other than the version number
+
+-------------------------------------------------------------------
+Wed Sep 23 12:40:45 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-intel 2.8.99.902
+  * Support for the B43 chipset. 
+  * Multiple fixes to make the driver stable for 8xx chipsets,
+    (855GM, 865G, etc.). The 2.8 driver series was extremely
+    unstable with many of these chipsets. (bfo #22904/22947)
+  * Add support for BACKLIGHT property when using kernel
+    modesetting (KMS). This allows backlight adjustment with
+    programs such as "xbacklight -set <percentage>" or 
+    "xrandr --set BACKLIGHT <value>". (bfo #20963)
+  * Fix so that "xrandr --scale" works when using KMS. (bfo #22893)
+  * Fix segfaults of X server when logging out. (bfo #20516)
+  * Avoid falling back to software for 1-bit alpha-only masks.
+   (bfo #23184)
+  * Fix pixel sampling position for 8xx chipsets, (fixes some
+    cairo-test suite failures).
+- obsoletes several patches
+  * moblin-reset-pos-for-rotate-fb.patch
+  * xf86-video-intel-Add-BACKLIGHT-property-support-in-KMS-case.patch
+  * xf86-video-intel-Add-new-backlight-driver-samsung.patch
+  * xf86-video-intel-brightness-addon.patch
+
+-------------------------------------------------------------------
+Wed Sep 23 11:52:58 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-ati 6.12.4
+  * numerous fixes backported from master over the last few months
+  * supports PCI IDs for some new hardware
+
+-------------------------------------------------------------------
+Mon Sep 14 16:32:27 CEST 2009 - mhopf@novell.com
+
+- bug519261-increase-virtual.diff for radeon and nv:
+  * Increase virtual on startup if enough Gfx RAM is available.
+
+-------------------------------------------------------------------
+Thu Sep  3 16:44:15 CEST 2009 - mhopf@novell.com
+
+- Update xf86-video-intel-brightness-addon.patch to match upstream changes:
+  * Remove "Also write to bl_power when setting brightness."
+  * Add "Don't set backlight level if going on->on."
+  Fixes issues with backlight level saving and DPMS.
+
+-------------------------------------------------------------------
+Wed Aug 26 03:13:46 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-intel 2.8.1 
+  * Align the height of untiled pixmaps to 2 lines as well.
+  * Replace existing EDID property blob with new one
+  * Only align DRI2 tiled pixmaps to the DRI2 tiled pixmap
+    alignment requirement (fixes bfo #21387).
+  * Calculate the DVO relative offset in LVDS data entry to get the
+    DVO timing (fixes bfo #22787 and Debian bug #538148).
+  * Fix sampler indexes on i965 planar video, (fixes bfo #22895
+    and bfo #19856).
+
+-------------------------------------------------------------------
+Thu Aug 20 06:07:05 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-chips 1.2.2
+  * Remove useless loader symbol lists.
+  * Remove xorgconfig & xorgcfg from See Also list in man page
+  * chips: update for resources/RAC API removal
+  * chips: change to using ABI version check
+  * Fix PCI card probe and chipset detection.
+
+-------------------------------------------------------------------
+Tue Aug 18 19:00:39 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-intel-brightness-addon.patch
+  * This is an addon patch for previous backlight patches to fix 
+    some minor issues (get_properties was not implemented, 
+    BACKLIGHT property doesn't fit name standardization, some
+    quirks possible with DPMS, backlight not necessarily powered
+    off). Note that this is pretty much untested, so it isn't 
+    applied for the Moblin yet.
+
+-------------------------------------------------------------------
+Mon Aug 17 21:45:32 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-intel-Add-BACKLIGHT-property-support-in-KMS-case.patch/
+  xf86-video-intel-Add-new-backlight-driver-samsung.patch
+  * new kernel based backlight patches for Samsung N130 (bnc #527533)
+- obsoletes xf86-video-intel-2.8.0-backlight.diff
+
+-------------------------------------------------------------------
+Fri Aug 14 19:15:25 CEST 2009 - mhopf@novell.com
+
+- xf86-video-intel-2.8.0-backlight.diff
+  Add legacy + kernel based backlight control to intel driver
+  in KMS case (BACKLIGHT RandR property) (bnc #527533).
+  To be superseeded by kernel based fix.
+
+-------------------------------------------------------------------
+Fri Aug 14 00:13:55 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-intel 2.8.0.901
+  * Allow DRM mode setting to include transformations (also requires
+    a fix in the X server - available in xserver 1.6.3)
+  * Align tiled pixmap height so we don't address beyond the end of
+    our buffers.
+- obsoletes xf86-video-intel-bnc524304.diff
+
+-------------------------------------------------------------------
+Wed Aug  5 03:47:14 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-trident 1.3.3
+- xf86-video-siliconmotion 1.7.3 
+
+-------------------------------------------------------------------
+Tue Aug  4 23:01:11 CEST 2009 - sndirsch@suse.de
+
+- removed obsolete xf86-video-voodoo-1.2.2.tar.bz2 
+
+-------------------------------------------------------------------
+Tue Aug  4 10:43:30 CEST 2009 - eich@suse.de
+
+- Resynced with patches from Intel's Moblin project.
+- Updated patches to apply cleanly again.
+- Resynced with patches from Moblin:Base
+
+-------------------------------------------------------------------
+Thu Jul 30 16:41:04 CEST 2009 - sndirsch@suse.de
+
+- fixed build on %ix86 
+
+-------------------------------------------------------------------
+Thu Jul 30 11:28:28 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-apm 1.2.2
+- xf86-video-ast 0.89.9
+- xf86-video-cirrus 1.3.2
+- xf86-video-fbdev 0.4.1
+- xf86-video-glint 1.2.4
+- xf86-video-i128 1.3.3
+- xf86-video-i740 1.3.2
+- xf86-video-mach64 6.8.2
+- xf86-video-mga 1.4.11
+- xf86-video-neomagic 1.2.4
+- xf86-video-r128 6.8.1
+- xf86-video-s3 0.6.3
+- xf86-video-s3virge 1.10.4
+- xf86-video-savage 2.3.1
+- xf86-video-sis 0.10.2
+- xf86-video-sisusb 0.9.3
+- xf86-video-tdfx 1.4.3
+- xf86-video-vesa 2.2.1
+- xf86-video-voodoo 1.2.3
+
+-------------------------------------------------------------------
+Thu Jul 30 09:07:37 CEST 2009 - sndirsch@suse.de
+
+- removed patches, which are no longer in use, from source package:
+  * Free-front-buffer-bo-when-X-exit.patch
+  * eeetop_sdvo_lvds.patch 
+
+-------------------------------------------------------------------
+Wed Jul 29 23:42:09 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-vmware 10.16.7
+  * Fix black screen after resume from hibernate.
+  * An imperfect fix for Xinerama state changes without a mode
+    change 
+
+-------------------------------------------------------------------
+Mon Jul 27 11:49:53 EDT 2009 - davidr@novell.com
+
+- Fix RANDR transfomations. (bnc#524304)
+
+-------------------------------------------------------------------
+Tue Jul 21 20:28:02 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-intel 2.8.0
+  * We are pleased to present this major release of the
+    xf86-video-intel driver. This release is very similar
+    to the 2.7.99.902 release candidate but includes a
+    couple of additional bug fixes, (for bugs #22760 and
+    @22483).
+- obsoletes xf86-video-intel-commit-e386e7b.diff
+
+-------------------------------------------------------------------
+Sat Jul 18 11:49:28 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-intel 2.7.99.902
+  * This is the second release candidate in preparation for the
+    upcoming 2.8.0 release. Most major and critical bugs should
+    be fixed, but some minor bugs may still be present. We will
+    appreciate any feedback we can get from testing of this
+    snapshot to improve the 2.8.0 release.
+- obsoletes Free-front-buffer-bo-when-X-exit.patch, 
+  eeetop_sdvo_lvds.patch
+- xf86-video-intel-buildfix.diff
+  * trivial buildfix
+- xf86-video-intel-commit-e386e7b.diff
+  * Reset framebuffer offset when rebinding aperture
+
+-------------------------------------------------------------------
+Sat Jul  4 22:41:42 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-dummy 0.3.2
+- xf86-video-glint 1.2.3
+- xf86-video-i128 1.3.2
+- xf86-video-i740 1.3.1
+- xf86-video-neomagic 1.2.3
+- xf86-video-rendition 4.2.2
+- xf86-video-s3 0.6.2
+- xf86-video-s3virge 1.10.3
+- xf86-video-savage 2.3.0
+- xf86-video-siliconmotion 1.7.2
+- xf86-video-sisusb 0.9.2
+- xf86-video-tdfx 1.4.2
+- xf86-video-trident 1.3.2
+- xf86-video-tseng 1.2.2
+- xf86-video-voodoo 1.2.2
+- xf86-video-nv 2.1.14
+  * obsoletes xf86-video-nv-2.1.13_68c2914.diff,
+    xf86-video-nv-68c2914_05d2b85.diff
+
+-------------------------------------------------------------------
+Sat Jun 27 12:05:19 CEST 2009 - sndirsch@suse.de
+
+- finally get rid of 'nvidia' dummy module; obsoleted by automatic
+  driver selection in Xserver now (nvidia --> nouveau --> nv)
+
+-------------------------------------------------------------------
+Sat Jun 27 10:59:00 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-nv-68c2914_05d2b85.diff 
+  * More new chips
+
+-------------------------------------------------------------------
+Fri Jun 19 20:00:21 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-geode 2.11.3 
+- xf86-video-nv-2.1.13_68c2914.diff
+  * Remove useless loader symbol lists.
+  * New chip support.
+  * Fix modesets on certain GPUs that were broken by the previous
+    commit.
+- obsoletes xf86-video-nv-2.1.13_c8d6f7a.diff
+
+-------------------------------------------------------------------
+Thu Jun 11 03:42:30 CEST 2009 - sndirsch@suse.de
+
+- use copy-fb.patch only for Moblin, since it requires 
+  xserver-1.5.0-bg-none-root.patch in xorg-x11-server, which is
+  also only applied on Moblin
+
+-------------------------------------------------------------------
+Tue Jun  2 14:46:19 CEST 2009 - eich@suse.de
+
+- Integrated Intel driver fixes from the Moblin Project
+  * Support for 'rootless' X: option -nb.
+  * BIOS and register dumper for Intel.
+  * Support for fixed LVDS modes.
+  * Free frontbuffer when X exits.
+  * Copy initial framebuffer contents when starting with -br.
+
+-------------------------------------------------------------------
+Tue Jun  2 10:07:08 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-vmware 10.16.6
+  * various fixes 
+
+-------------------------------------------------------------------
+Wed May 20 04:21:53 CEST 2009 - sndirsch@suse.de
+
+- intel-gpu-tools 1.0.1
+  * This release was inspired by going to roll a debian package for
+    intel-gpu-tools and realizing I had no manpages. Whoops. And
+    since I was in the directory, I decided to clean up some things
+    that were bothering me about intel_gpu_dump output.
+
+-------------------------------------------------------------------
+Sat May 16 02:13:12 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-nv-2.1.13_c8d6f7a.diff
+  * More chip names. Add support for the following previously
+    unsupported chips:
+    - 0x0658 - Quadro FX 380
+    - 0x0659 - Quadro FX 580
+    - 0x065C - Quadro FX 770M
+- sax2/hwinfo-data:
+  * added new chip names
+  * GeForce 9800 GTK+ --> GeForce 9800 GTX+
+
+-------------------------------------------------------------------
+Fri May 15 18:57:39 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-newport 0.2.2 
+  * Use "no" bus, not ISA
+  * Bug#11761: Fix xaa initialization
+- obsoletes xf86-video-newport.diff
+
+-------------------------------------------------------------------
+Thu May 14 15:31:19 CEST 2009 - sndirsch@suse.de
+
+- back to xf86-video-cirrus 1.2.1 (bnc #503846) 
+
+-------------------------------------------------------------------
+Wed May 13 04:22:22 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-intel 2.7.1
+  * This is a maintenance release on the 2.7 branch. Compared to
+    2.7.0 it consists only of a few carefully hand-picked fixes
+    for bugs, (including GPU crashers). We encourage all users of
+    2.7.0 to upgrade to 2.7.1.
+
+-------------------------------------------------------------------
+Tue May 12 09:19:35 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-geode 2.11.2
+  * fix various EXA issues
+
+-------------------------------------------------------------------
+Thu May  7 16:25:11 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-cirrus 1.3.0
+  * This release adds support for building against Xorg 1.6, but
+    drops support for building against Xorg 1.3 and older.
+
+-------------------------------------------------------------------
+Thu May  7 09:14:01 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-nv-2.1.3_29acf7c.diff
+  * Fix a dumb typo in the chip name entry for the GeForce 9800 GTX+
+  * G80: Fix incorrect I2C port access for ports above 3
+
+-------------------------------------------------------------------
+Wed May  6 12:57:56 CEST 2009 - sndirsch@suse.de
+
+- no longer require xorg-x11-driver-video-radeonhd
+
+-------------------------------------------------------------------
+Wed May  6 12:53:15 CEST 2009 - sndirsch@suse.de
+
+- added 'Supplements: xorg-x11-server' 
+
+-------------------------------------------------------------------
+Thu Apr 30 15:08:16 CEST 2009 - sndirsch@suse.de
+
+- instead of providing do require VIDEO_ABI_VERSION to fix
+  dependancy loop
+
+-------------------------------------------------------------------
+Thu Apr 30 12:26:32 CEST 2009 - sndirsch@suse.de
+
+- provide VIDEO_ABI_VERSION = 5 (required by xorg-x11-server)
+
+-------------------------------------------------------------------
+Thu Apr 30 10:16:38 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-mach64 6.8.1
+  * Make sure the screen is a mach64 screen before doing anything
+    in ATIMach64XVInitialiseAdaptor.
+  * Don't print the resource list on failure.
+  * Add README with pointers to mailing list, bugzilla & git repos
+  * Convert to XORG_CWARNFLAGS & XORG_CHANGELOG
+  * Remove xf86{Disable,Enable}Interrupts
+
+-------------------------------------------------------------------
+Wed Apr 29 05:44:58 CEST 2009 - sndirsch@suse.de
+
+- fixed build on %ix86 
+
+-------------------------------------------------------------------
+Wed Apr 29 01:36:49 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-siliconmotion 1.7.1
+  * various driver fixes 
+
+-------------------------------------------------------------------
+Tue Apr 28 03:41:21 CEST 2009 - sndirsch@suse.de
+
+- intel-gpu-tools 1.0
+  * This little package is an amalgamation of a few things:
+    - miscellaneous userland tools that don't really fit into the
+      2D driver tree
+    - standalone regression tests for the DRM (make check)
+    - microbenchmarks of the DRM for kernel performance regression
+      testing
+
+-------------------------------------------------------------------
+Mon Apr 27 21:28:02 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-mga 1.4.10 
+- obsoletes xf86-video-mga-01e60b3.diff, 
+  xf86-video-mga-ba37697.diff
+
+-------------------------------------------------------------------
+Thu Apr 16 04:37:00 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-intel 2.7.0
+  * We encourage users to use kernel modesetting and UXA
+    acceleration with this release, which should give the best
+    performance and robustness. When KMS is available, UXA is the
+    default acceleration used by the driver, (EXA is the default
+    otherwise).
+
+-------------------------------------------------------------------
+Sat Apr 11 09:36:14 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-intel 2.6.99.903
+  Third release candidate in preparation for the upcoming 2.7.0
+  release. Main improvements since the 2.6-series driver include:
+  * SDVO-TV support, available on ADD2 card (bug#9992) and
+    D945GCLF2 board (bug#17776).
+  * Basic SDVO-LVDS support
+  * Tearing-free xv (bug#19635)
+  * For for panel startup failure on some specific laptop models
+    (bug#17292) and various fixes for UXA/DRI2 and Kernel
+    Modesetting.
+
+-------------------------------------------------------------------
+Wed Apr  8 19:30:46 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-ati 6.12.2
+  * lots of bug fixes
+  * r2xx/r3xx textured video improvements from Roland
+
+-------------------------------------------------------------------
+Tue Apr  7 22:27:22 CEST 2009 - sndirsch@suse.de
+
+- xf86-video-nv 2.1.13 
+  * Remove README.NV1. There's no nv1 support here, so.
+- obsoletes xf86-video-nv.diff
+
+-------------------------------------------------------------------
+Fri Mar 20 22:17:45 CET 2009 - sndirsch@suse.de
+
+- xf86-video-nv.diff
+  * Remove xorgconfig & xorgcfg from See Also list in man page 
+  * Add README with pointers to mailing list, bugzilla & git repos
+  * Add NV_/RIVA_ prefixes to fix build warnings.
+  * Build fix: set EXA_DRIVER_KNOWN_MAJOR=3
+  * Revert "Build fix: set EXA_DRIVER_KNOWN_MAJOR=3"
+  * Add missing pci id for GeForce 7100 GS
+- sax2/hwinfo-data:
+  * added GeForce 7100 GS as supported by nv driver
+
+-------------------------------------------------------------------
+Fri Mar 20 03:24:25 CET 2009 - sndirsch@suse.de
+
+- xf86-video-i740 1.3.0 
+  * Uncomment DDC2 code, move it before mode validation so DDC has
+    some effect.
+
+-------------------------------------------------------------------
+Thu Mar 19 03:25:21 CET 2009 - sndirsch@suse.de
+
+- xf86-video-ati 6.12.1
+  * Fix some fall out from the r6xx/r7xx merge and fix load
+    detection on avivo chips.
+
+-------------------------------------------------------------------
+Sat Mar 14 03:52:49 CET 2009 - sndirsch@suse.de
+
+- xf86-video-ati 6.12.0
+  * Big changes here are EXA and Xv support for R6xx/R7xx chips.
+    Requires an updated drm.  Other than that, mostly bug fixes.
+
+-------------------------------------------------------------------
+Wed Mar 11 06:44:13 CET 2009 - sndirsch@suse.de
+
+- removed obsolete patch 'xf86-video-intel-commit-73aa23d.diff' 
+
+-------------------------------------------------------------------
+Tue Mar 10 18:42:30 CET 2009 - sndirsch@suse.de
+
+- switched from xf86-video-intel 2.6.99.1 (master branch) to 
+  xf86-video-intel 2.6.99.901 (2.7 branch)
+
+-------------------------------------------------------------------
+Tue Mar 10 03:23:19 CET 2009 - sndirsch@suse.de
+
+- xf86-video-intel 2.6.99.1 (prerelease)
+- obsoletes xf86-video-intel-bug18462.diff
+
+-------------------------------------------------------------------
+Mon Mar  9 14:36:32 CET 2009 - sndirsch@suse.de
+
+- removed xf86-video-intel-sdvo_detect.diff due to a severe
+  regression in G45 startup (bnc #480374)
+
+-------------------------------------------------------------------
+Sun Mar  8 05:05:17 CET 2009 - sndirsch@suse.de
+
+- disable xf86-video-intel-commit-73aa23d.diff due to a Sig11 
+  during Xserver start for now
+
+-------------------------------------------------------------------
+Sat Mar  7 04:34:50 CET 2009 - sndirsch@suse.de
+
+- xf86-video-intel-commit-73aa23d.diff 
+  * DRI1: Update sarea (and other information) when CRTC
+    configuration changes (bfo #14423, bfo #18100)
+
+
+-------------------------------------------------------------------
+Wed Mar  4 18:00:30 CET 2009 - sndirsch@suse.de
+
+- no longer require xorg-x11-driver-video-unichrome; use Supplements
+  in xorg-x11-driver-video-unichrome instead (bnc #481569)
+
+-------------------------------------------------------------------
+Tue Mar  3 15:16:26 CET 2009 - sndirsch@suse.de
+
+- xf86-video-ast 0.88.8
+- xf86-video-intel 2.6.3
+
+-------------------------------------------------------------------
+Fri Feb 27 20:37:31 CET 2009 - sndirsch@suse.de
+
+- xf86-video-sisusb 0.9.1 
+- disabled build of mga-1.9.100, vga, xgi
+- xf86-video-nsc-noasm.diff
+  * disabled asm optimization on %ix86 (apparently assyntax.h has 
+    been removed from xorg-server 1.6 sources)
+- xf86-video-newport.diff/xf86-video-fbdev.diff
+  * build fixes
+
+-------------------------------------------------------------------
+Thu Feb 26 15:55:30 CET 2009 - sndirsch@suse.de
+
+- xf86-video-apm 1.2.1
+- xf86-video-ark 0.7.1
+- xf86-video-ast 0.87.0
+- xf86-video-ati 6.11.0
+  * disabled xf86-video-ati-es1000.diff for now; already obsolete?
+- xf86-video-chips 1.2.1
+- xf86-video-dummy 0.3.1
+- xf86-video-geode 2.11.1
+- xf86-video-glint 1.2.2
+- xf86-video-neomagic 1.2.2
+- xf86-video-rendition 4.2.1
+- xf86-video-s3 0.6.1
+- xf86-video-s3virge 1.10.2
+  * obsoletes xf86-video-s3virge.diff
+- xf86-video-siliconmotion 1.7.0
+- xf86-video-sis 0.10.1
+- xf86-video-tdfx 1.4.1
+- xf86-video-trident 1.3.1
+- xf86-video-tseng 1.2.1
+- xf86-video-vesa 2.2.0
+  * obsoletes xf86-video-vesa_verbose.diff
+- xf86-video-voodoo 1.2.1
+
+-------------------------------------------------------------------
+Wed Feb 25 16:20:36 CET 2009 - sndirsch@suse.de
+
+- xf86-video-intel 2.6.2
+  * Here comes a pretty significant bugfix release for the 2.6 2D
+    series.  The goal of this release is to get out the major fixes
+    for GEM and KMS that we think we've pounded on enough to be stable
+    -- certainly more stable than previously.  Notable fixes include a
+    significant BO memory usage reduction (which many have suffered
+    from with compositing), textured XV suppor twith KMS, and rotation
+    support with KMS.  Some infrequent failure to render/xv with GEM
+    on 965 (dmesg warnings about being unable to bind objects) should
+    also be fixed.
+    But perhaps the exciting thing for most people will be the dynamic
+    front buffer allocation.  We nearly slipped this into 2.6.0, but
+    decided that it was just a little too new.  Well, turns out it was
+    actually in good shape, and it's time to get it out there.  You'll
+    need UXA to do this.
+- obsoletes xf86-video-intel-nottm.diff, xf86-video-intel-SDVO_LVDS.diff,
+  xf86-video-intel-commit-1e974ff.diff
+- adjusted xf86-video-intel-bug18462.diff
+
+-------------------------------------------------------------------
+Wed Feb 25 14:31:30 CET 2009 - sndirsch@suse.de
+
+- xf86-video-ati-ia64_screen_blank.diff
+  * fixes console screen blanking on IA64 (bnc #155646)
+
+-------------------------------------------------------------------
+Tue Feb 24 12:23:41 CET 2009 - sndirsch@suse.de
+
+- xf86-video-ati-bug474071-fix2.diff
+  * fixes driver issue of bnc #474071
+
+-------------------------------------------------------------------
+Mon Feb 23 12:02:29 CET 2009 - sndirsch@suse.de
+
+- xf86-video-intel-bfo17988.diff
+  * disables update_dsparb function for 945GM (bfo #17988)
+
+-------------------------------------------------------------------
+Thu Feb  5 15:17:02 CET 2009 - sndirsch@suse.de
+
+- xf86-video-intel-sdvo_detect.diff
+  * supposed to fix external output detection on Macbooks; only
+    applied on openSUSE > 11.1 for now (bnc #425252)
+
+-------------------------------------------------------------------
+Mon Feb  2 22:15:45 CET 2009 - sndirsch@suse.de
+
+- xf86-video-intel-commit-1e974ff.diff 
+  * Try to always probe SDVOC on 965G/965GM. Detect bit of SDVOC
+    is reserved on 965G/965GM, instead of ignore SDVOC this trys
+    to always probe it on these chipsets. (bfo #19770)
+
+-------------------------------------------------------------------
+Fri Jan 23 15:11:34 CET 2009 - sndirsch@suse.de
+
+- added intel-i810-xorg-x11, xorg-x11-driver-video-intel to
+  Provides/Obsoletes, i.e. get rid of SLE10 packages (bnc #468796)
+
+-------------------------------------------------------------------
+Wed Jan 14 19:17:18 CET 2009 - mhopf@suse.de
+
+- xf86-video-ati-disable-dri-bug437651-ia64only.diff
+  Disable DRI by default on IA64 (bnc #437651)
+
+-------------------------------------------------------------------
+Wed Jan 14 11:52:59 CET 2009 - sndirsch@suse.de
+
+- xf86-video-vesa_DefaultRefresh.diff
+  * vesa: Use DefaultRefresh by default due to VBE 3.0 often
+    wrongly implemented.
+
+-------------------------------------------------------------------
+Mon Jan 12 18:01:41 CET 2009 - sndirsch@suse.de
+
+- sax2/hwinfo-data:
+  * added Intel G41 as supported by intel driver
+  * use "EXANoComposite" option for Intel G4X/GM45; fixes various
+    Xserver crashes and shouldn't harm desktop performance
+
+-------------------------------------------------------------------
+Mon Jan 12 08:25:46 CET 2009 - sndirsch@suse.de
+
+- xf86-video-intel-SDVO_LVDS.diff
+  * Add support for SDVO LVDS (bfo #18495) 
+
+-------------------------------------------------------------------
+Mon Jan  5 17:01:20 CET 2009 - sndirsch@suse.de
+
+- xf86-video-intel-NoFBC-945GME.diff 
+  * After some hours VGA external display stops working on
+    945GME with FBC enabled. Thus disable it. For more details see:
+    http://bugs.freedesktop.org/show_bug.cgi?id=18821 (bnc #457623)
+
+-------------------------------------------------------------------
+Mon Jan  5 15:42:52 CET 2009 - sndirsch@suse.de
+
+- add excludearch s390 s390x
+
+-------------------------------------------------------------------
+Tue Dec 23 11:16:19 CET 2008 - sndirsch@suse.de
+
+- xf86-video-ati-es1000.diff
+  * version11: "Probably, I should apply the patch for 7000ve too, 
+    just a little change. For IBM issue, driver will take care of
+    all modes validation, including monitor modes and graphics
+    modes and so on. Although it's xorg.conf responsibility. 
+
+-------------------------------------------------------------------
+Sun Dec 21 16:55:25 CET 2008 - sndirsch@suse.de
+
+- updated geode driver to release 2.11.0 (bnc #457182) 
+
+-------------------------------------------------------------------
+Fri Dec 19 11:15:22 CET 2008 - sndirsch@suse.de
+
+- xf86-video-ati-es1000.diff
+  * version10: Fix potential bug, if VGA is not connected DVI
+    maybe black; fix memory leak.
+
+-------------------------------------------------------------------
+Thu Dec 18 22:15:37 CET 2008 - sndirsch@suse.de
+
+- xf86-video-ati-es1000.diff
+  * version8: includes new patch for black screen; root cause is
+    that for some monitors, xserver can't pick a CRTC for VGA
+    output, because of hw's limitation, now just cheat xserver.
+    Tested on SLES11 with IBM machine, DELL machine, and new
+    Xserver.
+
+-------------------------------------------------------------------
+Mon Dec 15 15:32:51 CET 2008 - sndirsch@suse.de
+
+- sax2/hwinfo-data:
+  * renamed "G200 WB" to "G200 eW" (request by Matrox)
+
+-------------------------------------------------------------------
+Mon Dec 15 08:58:34 CET 2008 - sndirsch@suse.de
+
+- xf86-video-intel-bug18462.diff (bfo #18462)
+  * Remove Cappuccino SlimPRO SP625F 855GM LVDS quirk. It breaks
+    bug #18462 on IBM 855GM with same subdevice ids.
+  * Try to add LVDS detect support.
+    This one trys to use lid status for LVDS detect,
+    which works when internal panel is not used as primary
+    display alone, or there's no internal panel at all.
+    ACPI button driver's lid state interface is preferred,
+    and SWF state is also checked if ACPI method failed.
+  * Let lid status be unknown if no acpi lid object found.
+
+-------------------------------------------------------------------
+Mon Nov 24 09:14:24 CET 2008 - sndirsch@suse.de
+
+- xf86-video-ati-es1000.diff
+  * version7: treat 7000ve as RN50 (bnc #429901, Cooper Yuan, AMD)
+  * fixes serious regression for non RN50/7000VE Radeon cards
+    (bnc #448075)
+
+-------------------------------------------------------------------
+Fri Nov 21 05:45:20 CET 2008 - sndirsch@suse.de
+
+- xf86-video-mga-ba37697.diff
+  * Fixed PLL m,n,p selection for G200eW to respect byte
+    granularity.
+  * Renamed G200 eW Winbond ID string to Nuvoton.
+  * Added EV suffix to G200 Maxim.
+  * Blocked double scan mode for G200 eW.
+  * Fixed memory bandwidth limitation for G200eW to 318.77 Mhz.
+  * Added a workaround (blit 1x1 with rop=xor) to fix the black
+    screen problem for G200eW.
+- xf86-video-mga-01e60b3.diff
+  * fixed winbond/nuvoton min pll clock to correct value (18.75Mhz)
+
+-------------------------------------------------------------------
+Thu Nov 20 14:50:22 CET 2008 - sndirsch@suse.de
+
+- xf86-video-ati-es1000.diff
+  * version6: should also cover 7000VE 
+    (bnc #429901, Cooper Yuan, AMD)
+
+-------------------------------------------------------------------
+Tue Nov 18 14:38:05 CET 2008 - sndirsch@suse.de
+
+- xf86-video-ati-es1000.diff
+  * version5: now again with verbose output
+    (bnc #429901, Cooper Yuan, AMD) 
+
+-------------------------------------------------------------------
+Tue Nov 18 03:53:38 CET 2008 - sndirsch@suse.de
+
+- sax2/hwinfo-data:
+  * added missing GeForce 8600 GT, GeForce 8400 GS,
+    GeForce 8800 GS/GT devices (bnc #445549)
+
+-------------------------------------------------------------------
+Fri Nov 14 17:14:57 CET 2008 - schwab@suse.de
+
+- xf86-video-ati: Fix unaligned function pointers.
+
+-------------------------------------------------------------------
+Thu Nov 13 12:32:54 CET 2008 - sndirsch@suse.de
+
+- xf86-video-ati-es1000.diff
+  * version4: verbose output removed 
+    (bnc #429901, Cooper Yuan, AMD)
+
+-------------------------------------------------------------------
+Wed Nov 12 10:37:53 CET 2008 - sndirsch@suse.de
+
+- xf86-video-ati-es1000.diff
+  * version3: verbose output to help validating
+    (bnc #429901, Cooper Yuan, AMD)
+
+-------------------------------------------------------------------
+Tue Nov 11 11:06:20 CET 2008 - sndirsch@suse.de
+
+- xf86-video-ati-es1000.diff
+  * version2: supposed to address remaining issues on ES1000
+    (bnc #429901, Cooper Yuan, AMD)
+
+-------------------------------------------------------------------
+Mon Nov 10 14:06:54 CET 2008 - sndirsch@suse.de
+
+- xf86-video-ati-es1000.diff
+  * supposed to fix blank screen + dead Linux console on ES1000
+    (bnc #429901, Cooper Yuan, AMD)
+
+-------------------------------------------------------------------
+Fri Nov  7 14:38:48 CET 2008 - sndirsch@suse.de
+
+- kernel patch obsoletes xf86-video-intel-commit-4dd0068.diff,
+  xf86-video-intel-commit-7ddea04.diff (bnc #437618)
+
+-------------------------------------------------------------------
+Mon Nov  3 21:25:14 CET 2008 - sndirsch@suse.de
+
+- xf86-video-nv.diff
+  * Adjust the nv34 panel tweak for Toshiba Tecra M2.
+  * Do E-EDID if built against a server that supports it. 
+
+-------------------------------------------------------------------
+Thu Oct 30 16:44:14 CET 2008 - sndirsch@suse.de
+
+- xf86-video-intel-G33-1mb.diff
+  * fix 1MB issue on Intel Onboard Graphics G33 (bnc #391261)
+
+-------------------------------------------------------------------
+Wed Oct 29 16:10:28 CET 2008 - sndirsch@suse.de
+
+- xf86-video-intel-commit-7ddea04.diff
+  * revert commit 7ddea04, which broke Xserver start at least on
+    Intel G4X/i386 (bnc #439865)
+- xf86-video-intel-commit-4dd0068.diff
+  * revert commit 4dd0068, which broke Xserver start at least on
+    Intel G4X/i386 (bnc #439865)
+
+-------------------------------------------------------------------
+Tue Oct 28 22:57:14 CET 2008 - sndirsch@suse.de
+
+- removed xf86-video-intel-memleak.diff, which resulted in a
+  Xserver crash (bnc #439642)
+
+-------------------------------------------------------------------
+Sun Oct 26 05:39:57 CET 2008 - sndirsch@suse.de
+
+- specfile cleanup 
+
+-------------------------------------------------------------------
+Fri Oct 24 17:22:52 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel-memleak.diff
+  * fixes memory leak (bnc #432595, comment #22)
+- package provides/obsoletes 855resolution/915resolution now
+  (bnc #438753)
+
+-------------------------------------------------------------------
+Tue Oct 21 05:42:26 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel 2.5.0
+  * Enable Option "Legacy3D" for 965 as well, and clarify both the
+    docs and code.
+  * Merge branch 'master' into xf86-video-intel-2.5-branch
+  * Check for DRI module before initializing GEM mm
+  * Remove accidental 'return;' left at the top of
+    I830DRIInitBuffers
+  * No need to check for drmCommandWriteRead; we link against
+    libdrm
+  * Reduce incidence of MI_FLUSH usage.
+  * Use pipes, not planes for sarea geometry data
+
+-------------------------------------------------------------------
+Sun Oct 19 05:34:47 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel 2.4.98
+  * smoke test for 2.5.0 release planned for Mon Oct 20
+- obsoletes xf86-video-intel-vbe_noinit.diff
+- obsoletes xf86-video-intel-crt-mode-fix.diff
+
+-------------------------------------------------------------------
+Sat Oct 18 07:02:40 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-nv.diff
+  * Only match PCI display devices in our display driver.
+    Apparently the server needs the driver to tell it that no, we
+    really don't want screen sections on our NIC, USB hubs, bridge
+    devices, etc. Stop whining about PROBE_DETECT in G80 PreInit
+    and just bail out instead. bfo #18099: Xorg -configure tries
+    to create a screen for every nvidia device
+
+-------------------------------------------------------------------
+Fri Oct 17 05:52:52 CEST 2008 - sndirsch@suse.de
+
+- specfile cleanup: only extract tarballs with 'xf86-video-' prefix
+
+-------------------------------------------------------------------
+Thu Oct  9 09:37:36 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel 2.4.97.0_2.5-branch_ffcbbb0
+  * Intel-2008-Q3-RC3 release
+
+-------------------------------------------------------------------
+Tue Oct  7 21:53:59 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-mga-hal.diff
+  * renamed "mga_hal" module to "mgahal" to fix "X -configure"
+    (bnc #428189) 
+
+-------------------------------------------------------------------
+Tue Oct  7 12:34:44 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel 2.4.97.0_2.5-branch_979bb10
+  * latest git commit of 2.5-branch
+- obsoletes xf86-video-intel-commit-fa2586a.diff
+
+-------------------------------------------------------------------
+Tue Oct  7 10:48:52 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel-crt-mode-fix.diff
+  * Fix memory corruption in intel driver (bnc #432595,
+    Takashi Iwai)
+
+-------------------------------------------------------------------
+Sun Oct  5 21:55:14 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel-commit-fa2586a.diff
+  * Use VBT LFP info pointers by default. On some machines it
+    appears that the LFP info pointers give us more accurate panel
+    info than if we index into the LFP data table using the panel
+    type index.  Early reports indicate that using the pointers
+    doesn't cause regressions, so switch to them by default to help
+    8xx machines. Fixes bug 17310 (and hopefully 17658 too).
+    (bnc #432422)
+
+-------------------------------------------------------------------
+Thu Oct  2 11:38:49 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-mga-g200se-swcursor.diff
+  * Disable HWCursor on G200SE to make the cursor visible on
+    remote video redirection (bnc #431311)
+
+-------------------------------------------------------------------
+Fri Sep 26 11:47:29 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel-vbe_noinit.diff
+  * Remove VBE initialization from Intel driver. It's no longer
+    necessary to initialize VBE as this driver no longer calls
+    into VBE. (Egbert Eich)
+
+-------------------------------------------------------------------
+Fri Sep 26 09:29:25 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel 2.4.97.0_2.5-branch_8408995
+  * Intel-2008-Q3-RC2 release
+
+-------------------------------------------------------------------
+Wed Sep 24 13:18:49 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel 2.4.97.0_2.5-branch_043b6e7
+  * Intel-2008-Q3-RC1 release
+- obsoletes xf86-video-intel-fca7a4e.diff
+
+-------------------------------------------------------------------
+Mon Sep 22 04:53:50 CEST 2008 - sndirsch@suse.de
+
+- updated vga driver to git commit 97e2d12 (2008-08-17)
+  * Add libpciaccess and remove xf1bpp and xf4bpp support. 
+  (bnc #428189)
+- xf86-video-nsc.diff
+  * Convert nsc driver for libpciaccess.
+  (bnc #428189)
+
+-------------------------------------------------------------------
+Fri Sep 19 09:47:23 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-vesa_verbose.diff
+  * VESASetMode: be verbose about the mode that's being set. 
+
+-------------------------------------------------------------------
+Thu Sep 11 14:20:14 CEST 2008 - sndirsch@suse.de
+
+- bumped release number to 7.4 
+
+-------------------------------------------------------------------
+Thu Sep  4 21:39:39 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-i128 1.3.1
+  * Don't store pScrn->monitor->DDC manually, let 
+    xf86SetDDCproperties do it.
+  * Compile warning fixes.
+  * Replace calls to xf86usleep with calls to usleep and include
+    unistd.h.
+
+-------------------------------------------------------------------
+Thu Sep  4 03:43:51 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-vmware 10.16.5
+  * Video Overlay: Handle clipping correctly with AutoPaint colorkey.
+  * Add RegionEqual function for older XFree86 versions
+
+-------------------------------------------------------------------
+Thu Sep  4 01:49:51 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-tga 1.2.0
+  * pciaccess conversion
+- reenabled build of xf86-video-tga driver 
+
+-------------------------------------------------------------------
+Wed Sep  3 15:37:29 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel-fca7a4e.diff
+  * Pipe A force quirk for Toshiba Satellite A30 (bnc #417587)
+
+-------------------------------------------------------------------
+Thu Aug 28 21:33:56 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-nv 2.1.12
+  * G80: Fix a CPUToScreenColorExpandFill bug introduced by commit
+    2e0416c. 
+
+-------------------------------------------------------------------
+Wed Aug 27 10:53:11 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-nv 2.1.11
+  * One more missing GPU name ("GeForce 9500 GT")
+- obsoletes xf86-video-nv.diff
+
+-------------------------------------------------------------------
+Tue Aug 26 11:43:59 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-nv.diff
+  * More chips names.
+  * Bug #15309: Set the pixel clock even if the hardware doesn't
+    think it needs it. Fixes a problem where switching from DVI to
+    VGA hangs.
+  * Fix warnings.
+  * G80: Log the i2c port number for LVDS, when there is one.
+- sax2/hwinfo-data:
+  * new NVIDIA chips
+
+-------------------------------------------------------------------
+Tue Aug 26 11:27:32 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel 2.4.97.0
+  "[...] first 2.5.0 test release.  Should be about as stable
+   as the 2.4.1 and upcoming 2.4.2 releases, but also includes GEM
+   and kernel mode setting code.  We haven't pushed the video
+   tearing fixes yet, hopefully that'll be upstream for the next
+   test release.  Carl has made good progress on improving EXA
+   performance, but I think the scrolling case may still be
+   sub-par, but we're interested in getting feedback there. [...]"
+
+-------------------------------------------------------------------
+Fri Aug 22 22:57:16 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-nv.diff
+  * Print error message when pci_device_map_range fails
+  * Fix pciaccess READ_LONG to work with Sun compilers. Sun
+    compilers don't allow nesting {} inside () apparently
+
+-------------------------------------------------------------------
+Sun Aug 17 16:18:24 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel-nottm.diff
+  * fixed build for libdrm 2.4.0 prerelease 
+
+-------------------------------------------------------------------
+Fri Aug 15 15:28:28 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-geode 2.10.1
+  * lx: Fix rotate issue
+  * Geode: Add DDC support for the CS5535
+
+-------------------------------------------------------------------
+Fri Aug 15 08:35:44 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel 2.4.1
+  * mostly bug and regression fixings for 2.4.0
+
+-------------------------------------------------------------------
+Tue Aug  5 10:04:47 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-nv.diff
+  * G80: Fix some ROP bugs. 
+
+-------------------------------------------------------------------
+Mon Aug  4 16:42:30 CEST 2008 - sndirsch@suse.de
+
+- sax2/hwinfo-data:
+  * use 'Virtual' profile for intel 965 series (bnc #414156)
+
+-------------------------------------------------------------------
+Fri Jul 25 15:46:53 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-nv.diff
+  * Move hardware cursor initialization to after AcquireDisplay.
+    The original order works fine when the server starts, but on
+    the second server generation the server tries to call
+    G80CrtcHideCursor before the display engine has been
+    initialized, causing a hang.
+
+-------------------------------------------------------------------
+Wed Jul 23 17:49:42 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel 2.4.0
+  * New Intel 4 series chipset support
+  * Improved 965 exa render performance
+  * Integrated HDMI support
+  * SDVO-HDMI support (e.g ASUS P5E-VM board)
+  * cleanups and bugfixes
+-  sax2/hwinfo-data:
+   * renamed "IGD" to "Mobile Intel® GM45 Express Chipset" (0x2a42)
+   * added "Intel Integrated Graphics Device" (0x2e02)
+   * added "G45/G43" (0x2e22)
+   * added "Q45/Q43" (0x2e12)
+
+-------------------------------------------------------------------
+Sat Jul 19 15:29:58 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-vmware 10.16.3
+  * minor release, which includes a couple of Xv fixes
+
+-------------------------------------------------------------------
+Mon Jul 14 12:14:53 CEST 2008 - sndirsch@suse.de
+
+- no longer use XAA as default for intel driver; Intel upstream
+  developers no longer support it
+
+-------------------------------------------------------------------
+Thu Jul  3 13:12:25 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-mga 1.4.9
+  * adds support for G200EV, G200WB
+  * bugfixes 
+- xf86-video-vesa 2.0.0
+- xf86-video-xgixp 1.7.99.3 (disabled at the moment due to missing
+  drm bits)
+- xf86-video-intel-2.3.2.diff
+  * fixed build against libdrm 2.3.1
+- due to missing libpciaccess support disabled build of
+  * xf86-video-ati 6.6.3
+  * xf86-video-cyrix
+  * xf86-video-i810
+  * xf86-video-imstt
+  * xf86-video-tga
+  * xf86-video-via
+
+-------------------------------------------------------------------
+Tue Jul  1 05:14:43 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-nv 2.1.10
+  * Fix build by using CARD32 instead of uint32_t, like we do
+    everywhere else. 
+  * More G8x chips.
+- obsoletes xf86-video-nv.diff
+
+-------------------------------------------------------------------
+Mon Jun 30 21:56:57 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-glint 1.2.1
+  * Fix regression from pciaccess conversion (bfo #16060) 
+
+-------------------------------------------------------------------
+Mon Jun 30 20:58:54 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-nv.diff
+  * G80: Handle extended I2C ports and LVDS panels with DDC-based
+    EDIDs.
+
+-------------------------------------------------------------------
+Fri Jun 27 18:07:11 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-radeon 6.9.0
+  * Version 6.9.0 of the radeon driver. Lots of stuff since 6.8.0
+    In addition to lots of bug fixes there are several major new 
+    features:
+    - Improved EXA render support for r1xx/r2xx cards
+    - EXA render support for r3xx/r4xx/r5xx cards
+    - Textured video support for Xv (r1xx-r5xx)
+
+-------------------------------------------------------------------
+Wed Jun 25 04:34:21 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-radeon 6.8.192
+  * ati 6.9.0rc2 release
+- use vesa driver for GeForce 6100 Micro-Star (10de:0242:1462:7207)
+  (bnc #393412)
+
+-------------------------------------------------------------------
+Mon Jun 23 11:27:55 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-nv.diff
+  * obsoletes xf86-video-nv-gf9-mobile.diff
+  * obsoletes xf86-video-nv-commit-745a1d2.diff 
+  * Replace copyright notices with stock MIT X11 boilerplate.
+  * Add new chips to the man page and fix capitalization of
+    "Quadro".
+  * Add a note that MODE_PANEL really means "larger than
+    BIOS-programmed panel size".
+
+-------------------------------------------------------------------
+Wed Jun 18 09:05:22 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel 2.3.2
+  * includes misc bug fixes and the last 2.3 branch release 
+
+-------------------------------------------------------------------
+Wed Jun 18 03:33:43 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-geode 2.10.0
+  * Unmap the PCI memory when we close the screen
+  * Bring over the DCON detection code from the OLPC tree
+  * Fix build for git-master (missing device pointers).
+
+-------------------------------------------------------------------
+Tue Jun 17 04:19:50 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-nv-commit-745a1d2.diff 
+  * GeForce GTX 280 and 260 chips
+
+-------------------------------------------------------------------
+Fri Jun 13 16:04:03 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-vmware 10.16.2
+  * More xorg and xfree86 backwards compatibility
+  * Fix VMWARE_CTRL and Xinerama Initialization
+
+-------------------------------------------------------------------
+Thu Jun 12 21:40:17 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-radeon 6.8.191
+  * ati 6.9.0rc1 release. Lots of changes since the last release.
+    Main things are EXA composite support for r3xx/r4xx/r5xx chips
+    and textured video support on all radeons.
+- xf86-video-r128 6.8.0
+- xf86-video-mach64 6.8.0 
+
+-------------------------------------------------------------------
+Thu Jun 12 16:21:33 CEST 2008 - sndirsch@suse.de
+
+- make the RANDR 1.2 compatible radeon driver (6.8.0) our default
+  "radeon" driver 
+- renamed previous default "radeon" driver (6.6.3) to "radeonold"
+
+-------------------------------------------------------------------
+Thu Jun 12 06:19:45 CEST 2008 - sndirsch@suse.de
+
+- specfile cleanup
+- removed dead sources/patches 
+
+-------------------------------------------------------------------
+Mon Jun  9 16:52:50 CEST 2008 - sndirsch@suse.de
+
+- back to xf86-video-glint 1.1.0 to fix Xserver crash (bnc #398350)
+
+-------------------------------------------------------------------
+Fri Jun  6 12:08:56 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-nv-gf9-mobile.diff
+  * GeForce 9 mobile chips. 
+- sax2/hwinfo-data:
+  * added GeForce 9 mobile chips. 
+
+-------------------------------------------------------------------
+Thu Jun  5 17:02:18 CEST 2008 - sndirsch@suse.de
+
+- sax2/hwinfo-data:
+  * use vesa driver for GeForce 7300 LE (bnc #397500)
+
+-------------------------------------------------------------------
+Thu May 29 18:40:44 CEST 2008 - sndirsch@suse.de
+
+- sax2/hwinfo-data:
+  * added GeForce 9500 used by new "ALDI PC Medion MD8835 akoya"
+
+-------------------------------------------------------------------
+Wed May 28 10:15:23 CEST 2008 - sndirsch@suse.de
+
+-  sax2/hwinfo data:
+  * fixed detectection of Geforce 9600 GT (bnc #394512)
+
+-------------------------------------------------------------------
+Thu May 22 03:25:13 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-cirrus 1.2.1
+  * Bug #10715: Fix depth configuration for alpine chips.
+- xf86-video-neomagic 1.2.1
+  * fbpseudocolor no longer exists, don't try to use it.
+  * Compile warning fix.
+  * Don't include fbpseudocolor.h, as it is no longer available.
+- xf86-video-s3virge 1.10.1
+  * Bug #14298: Fix mode validation to be less ridiculous.
+  * Nuke the useless UseFB option.
+  * Bug #13243: Re-enable 24+32 framebuffer.
+  * Fix typo in S3VValidMode.
+- xf86-video-savage 2.2.1 
+  * Don't try to call vbeModeInit(), it doesn't exist and never
+    will.
+  * Fake sync ranges for panels with no EDID.
+  * EXA upload to screen must honor pitch of the source data
+  * savage: fix typos in error message
+  * savage/pciaccess: don't try to map aperture larger than region
+    window
+
+-------------------------------------------------------------------
+Wed May 21 09:14:31 CEST 2008 - sndirsch@suse.de
+
+- sax2/hwinfo data:
+  * use ati driver again for '3D Rage IIC 215IIC' (bnc #391933)
+
+-------------------------------------------------------------------
+Fri May 16 15:00:44 CEST 2008 - sndirsch@suse.de
+
+- build mga driver with HAL support; autoreconf was not running 
+  due to version number changed from 1.4.6.1 to 1.4.8 (bnc #391311)
+
+-------------------------------------------------------------------
+Mon May 12 10:48:29 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel 2.3.1
+  "Noteable fixes since 2.3.0 are Eric's block handler patch fixes
+  invalid ring flush in VT switch, and Jesse's cursor save/restore
+  patch which greatly improves my 855GM's VT switch behavior. And
+  with Mike's LVDS fixed mode patch, new option "LVDSFixedMode" can
+  be used if your LVDS isn't normal connected, mostly for embed
+  people. Please see man page for details."
+
+-------------------------------------------------------------------
+Sat May 10 08:40:31 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-nv 2.1.9
+  * Add an option to allow validation of dual-link DVI modes.
+  * Yet more G80s.
+  * obsoletes xf86-video-nv-commit-8db2d4e.diff
+- sax2/hwinfo data:
+  * added new G80 devices
+
+-------------------------------------------------------------------
+Wed May  7 23:09:50 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-geode 2.9.0
+  * Add "native" DDC parsing to the Geode driver
+  * Making libDDC support the 2.9.0 release.
+
+-------------------------------------------------------------------
+Wed May  7 15:18:03 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-ati-renderaccel-fix.diff
+  * radeon: fix openoffice/render bug on r100 chips (bnc #361606)
+
+-------------------------------------------------------------------
+Wed May  7 10:44:17 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-ati-mergedfb-disable.diff:
+  * disable MergedFB by default also for radeon 6.6.3 driver
+    (bnc #387574)
+
+-------------------------------------------------------------------
+Wed Apr 30 10:54:22 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel-default2xaa.diff
+  * make XAA the default for intel driver (bnc #384141/#384022)
+
+-------------------------------------------------------------------
+Tue Apr 29 21:48:27 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-nv-commit-8db2d4e.diff
+  * More G80s.
+  * Fix a few startup bugs.
+  * Sort the IsSupported table.
+  * "I win at C."
+  * Makefile.am: nuke RCS Id
+  * Bug #14885: Add missing static keywords.
+- sax2/hwinfo data:
+  * added new G80 devices
+
+-------------------------------------------------------------------
+Fri Apr 25 17:15:28 CEST 2008 - sndirsch@suse.de
+
+- sax2/hwinfo data:
+  * Intel IGD supports 3D
+
+-------------------------------------------------------------------
+Wed Apr 23 08:30:22 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel 2.3.0
+  * new Intel mobile graphics chipset support 
+  * first step XvMC support for 915/945 chipset
+  * improved stability 
+  * many bug fixes
+  * changes since 2.2.99.903
+    - fix possible segfault in I830FreeScreen
+    - Add a kludge-around to fix cd/wt bits in fb ptes on linux.
+    - Change default panel fitting mode to origin
+    - Set EXA pitch limit for pre-965 chipset
+    - Revert "Set EXA pitch limit for pre-965 chipset"
+    - Check pitch for EXA operation
+    - Fix warning with i830_exa_pixmap_is_offscreen() for exa
+      minor >=2
+
+-------------------------------------------------------------------
+Tue Apr 22 22:33:23 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-ati.randr12.diff
+  * load "radeon" DRM kernel module / Mesa DRI client lib instead of
+    trying to load non-existing "radeonrandr12" (bnc #382283)
+
+-------------------------------------------------------------------
+Sun Apr 20 06:05:40 CEST 2008 - sndirsch@suse.de
+
+- sax2/hwinfo data:
+  * GeForce 6800 GS / GeForce 6100 need SWCursor (bnc #328877,
+    #365761) 
+
+-------------------------------------------------------------------
+Sat Apr 19 07:36:12 CEST 2008 - sndirsch@suse.de
+
+- %post/%postun: ldconfig needs to be in a seperate line 
+  (bnc #381606)
+
+-------------------------------------------------------------------
+Fri Apr 18 17:05:41 CEST 2008 - sndirsch@suse.de
+
+- added NVIDIA Quadro NVS 440 Device ID to sax2/hwinfo data
+
+-------------------------------------------------------------------
+Tue Apr 15 15:34:47 CEST 2008 - sndirsch@suse.de
+
+- added sax2/hwinfo data for 
+  * NVIDIA Quadro FX 3700
+  * NVIDIA GeForce 9600 GT
+  * Intel IGD
+
+-------------------------------------------------------------------
+Mon Apr 14 10:09:09 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel 2.2.99.903
+  "I believe this is the last rc cycle before 2.3 final, that will
+   hit Xorg-7.4 release."
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Apr  2 10:45:02 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-geode 2.8.0
+  * First stage of the rename process - get rid of all amd_ 
+    prefixes -
+  * Massive coding style fixup - move to X coding style,
+  * amd: fix up the versioning and naming of the new driver
+  * amd: fix compile and warning issues from the merge
+  * amd: Missed a merge artifact - kick me in the head for
+    breaking tinderbox
+  * geode: Bump to new version and replace two instances of the
+    old amd name
+
+-------------------------------------------------------------------
+Mon Mar 31 09:39:57 CEST 2008 - sndirsch@suse.de
+
+- xf86-video-intel 2.2.99.902
+  * Revert "Use mprotect on unbound AGP memory to attempt to catch
+    use while unbound."
+  * Fix 965+ rendering issues with DRI disabled.
+  * Add a "total" field to intel_idle output (set when any unit is
+    busy).
+  * Initial panel fitting changes
+  * Fixup backlight control and panel fitting property names
+  * Use combo backlight control rather than pure legacy
+  * Fix DRI config for NetBSD
+  * Don't try to build XvMC if DRI is disabled
+  * Transformed coord computed using floats. Don't move bilinear
+    composite dst.
+  * Disable cursors while switching modes
+  * Fix obviously stray '(' in non-I830_USE_EXA case.
+  * Fix obviously wrong verification of DRI_SUPPORTS_CLIP_NOTIFY.
+  * Fix crash triggered by dpms low power mode with hardware
+    overlay running
+  * More compile warning fixes.
+  * xvmc: fix distcheck
+  * Disable overlay on new mobile chipset
+  * Disable DRI earlier if fb width > 2048
+  * Use xfree() for bios memory
+
+-------------------------------------------------------------------
+Sun Mar 23 13:25:47 CET 2008 - sndirsch@suse.de
+
+- xf86-video-amd 2.7.7.7
+  * Implement support for wide and non-standard screen resolutions.
+  * amd: initial pciaccess conversion
+  * oops I did it again.. forgot the damn include
+  * pciaccess: forgot some commas
+  * pciaccess: fix name of struct
+  * amd: move to new devprivates
+  * old privates v2
+  * fix devprivates properly
+  * amd: fixup pciaccess compile
+  * amd: fix distcheck
+  * amd: Add the 'geode' name in preparation for the renaming
+  * amd: Fix a compile error in < 1.5 builds
+  * amd: fix panel and DDC interation with GX
+  * amd: release version 2.7.7.7
+  * Added trivial fix for Gamma initialization.
+  * Erm... That would be pScrni, of course.
+  * amd: Add libpciaccess probe function
+
+-------------------------------------------------------------------
+Fri Mar 21 09:25:30 CET 2008 - sndirsch@suse.de
+
+- xf86-video-intel 2.2.99.901 
+  "Here's the first rc for xf86-video-intel 2.3 release. The most 
+   noteable thing is xvmc branch got merged, and it currently
+   supports XvMC MC hardware decode on 915/945/G33 chipsets(i965
+   hardware decode is still under work, and would be in next release
+   though). And we have also fixed several Xv relate issues, and
+   with bunch of bug fixes as usual."
+
+-------------------------------------------------------------------
+Wed Mar 19 22:08:48 CET 2008 - sndirsch@suse.de
+
+- xf86-video-apm 1.2.0
+  xf86-video-ark 0.7.0
+  xf86-video-ast 0.85.0
+  xf86-video-chips 1.2.0
+  xf86-video-cirrus 1.2.0
+  xf86-video-fbdev 0.4.0
+  xf86-video-glint 1.2.0
+  xf86-video-i128 1.3.0
+  xf86-video-i740 1.2.0
+  xf86-video-neomagic 1.2.0
+  xf86-video-rendition 4.2.0
+  xf86-video-s3 0.6.0
+  xf86-video-s3virge 1.10.0
+  xf86-video-savage 2.2.0
+  xf86-video-siliconmotion 1.6.0
+  xf86-video-sis 0.10.0
+  xf86-video-sisusb 0.9.0
+  xf86-video-tdfx 1.4.0
+  xf86-video-trident 1.3.0
+  xf86-video-tseng 1.2.0
+  xf86-video-v4l 0.2.0
+  xf86-video-vmware 10.16.0
+  xf86-video-voodoo 1.2.0
+  xf86-video-dummy 0.3.0
+  * adds pciaccess support
+  * obsoletes xf86-video-glint.diff, xf86-video-savage-xvideofix.diff,
+    xf86-video-sisusb.diff
+
+-------------------------------------------------------------------
+Tue Mar 18 00:12:31 CET 2008 - sndirsch@suse.de
+
+- xf86-video-savage-xvideofix.diff
+  * cherry picked 6 upstream commits on top of the driver release
+    2.1.3 to fix Xvideo freeze (bnc #370018, Luc Verhaegen) 
+
+-------------------------------------------------------------------
+Wed Mar 12 20:55:20 CET 2008 - sndirsch@suse.de
+
+- require xorg-x11-driver-video-radeonhd
+
+-------------------------------------------------------------------
+Fri Mar  7 20:56:45 CET 2008 - sndirsch@suse.de
+
+- xf86-video-nv 2.1.8
+  * obsoletes xf86-video-nv.diff
+
+-------------------------------------------------------------------
+Sun Mar  2 18:49:47 CET 2008 - sndirsch@suse.de
+
+- xf86-video-intel-git.diff
+  * Fix SDVO I2C access on Mac Mini in EFI mode. The GMBUS was
+    being left in SDVO pin access mode, which blocked our
+    bit-banging access to those pins. Thanks to Peter Jones for
+    quick debugging turnaround in getting this fixed. (bnc #366356)
+  * obsoletes xf86-video-intel-bfo14591.diff
+
+-------------------------------------------------------------------
+Thu Feb 28 11:39:22 CET 2008 - sndirsch@suse.de
+
+- xf86-video-intel-bfo14591.diff
+  * fixes machine freeze on G35 (bfo #14591)
+
+-------------------------------------------------------------------
+Tue Feb 26 21:47:27 CET 2008 - sndirsch@suse.de
+
+- xf86-video-nv.diff
+  * GeForce 9600 GT. Note that the 9600 GT should already work in
+    2.1.7. This change just adds its name to the list.
+
+-------------------------------------------------------------------
+Mon Feb 25 11:39:43 CET 2008 - sndirsch@suse.de
+
+- xf86-video-intel 2.2.1
+  * fixes at least a few dozen bugs between 2.2.0 and 2.2.1
+  * obsoletes xf86-video-intel-bfo14552.diff
+
+-------------------------------------------------------------------
+Wed Feb 20 11:18:04 CET 2008 - sndirsch@suse.de
+
+- xf86-video-intel-bfo14552.diff:
+  * prevent infinite loop on G35 (bfo #14552)
+
+-------------------------------------------------------------------
+Wed Feb 20 01:53:39 CET 2008 - sndirsch@suse.de
+
+- xf86-video-nv.diff:
+  * G80: Fix connector mapping and TMDS initialization on certain
+    GPUs.
+
+-------------------------------------------------------------------
+Tue Feb 19 12:14:51 CET 2008 - sndirsch@suse.de
+
+- xf86-video-ati 6.8.0
+  * mach64, r128, radeon ported to libpciaccess
+  * massive restructuring of ati wrapper
+  * radeon support for r5xx, rs6xx, and r6xx chips using ATOMBIOS
+  * return of zaphod mode support
+  * radeon support for centered modes using scalers (selectable via
+    output attributes)
+  * PAL tv-out fixed on supported chips
+  * initial support for render accel on r3xx/r4xx chips (rotation)
+  * fix TV option handling
+  * Xv RGB fixes
+  * XPRESS Xv fixes
+  * improve bios/driver interaction on radeon
+  * revert back to previous AGP mode behavior
+  * lots of bug fixes
+
+-------------------------------------------------------------------
+Fri Feb 15 12:19:09 CET 2008 - sndirsch@suse.de
+
+- xf86-video-nv.diff
+  * fixed EDID information exported through randr on G80
+    (bfo #14484)
+
+-------------------------------------------------------------------
+Wed Feb  6 04:57:38 CET 2008 - sndirsch@suse.de
+
+- xf86-video-intel 2.2.0.90 (2.2.1 prerelease)
+  "Here's the first of what I hope will be very few 2.2.1
+   pre-releases. We've fixed lots of bugs since 2.2.0, including
+   some nasty regressions.  Please give it a try, especially if you
+   have open bugs, since several are in need of re-verification
+   with the latest bits.
+   We still have a few blockers open, but several have fixes
+   included in this release, so we should be able to close them
+   soon. I'd also like to fix the remaining backlight problems in
+   this release (13709, 14243), I'll look at doing that tomorrow.
+   Note that EXA is still expected to be slow in this release; the
+   batchbuffer branch isn't quite ready yet. Hopefully that'll be
+   fixed in 2.3; we'll post plans for that release soon."
+- removed unofficial xvmc patches for intel
+
+-------------------------------------------------------------------
+Sat Jan 26 11:26:15 CET 2008 - sndirsch@suse.de
+
+- xf86-video-amd 2.7.7.6
+  * Remove a few (harmless) warnings
+  * Constify a few huge tables to reduce data section size.
+  * [GX/LX] Bump the default pixel depth up to 16-bit.
+- xf86-video-nv 2.1.7
+  * Fix warning.
+  * obsoletes xf86-video-nv.diff
+
+-------------------------------------------------------------------
+Fri Jan 25 16:52:09 CET 2008 - sndirsch@suse.de
+
+- updated xf86-video-nv.diff 
+  * New chips.
+  * Fix more load detection false positives.
+  * Update know card list date and add G92 to the manpage.
+
+-------------------------------------------------------------------
+Sat Jan 19 21:07:15 CET 2008 - sndirsch@suse.de
+
+- fixed build of sisusb and xgi driver 
+
+-------------------------------------------------------------------
+Sat Jan 19 18:58:31 CET 2008 - sndirsch@suse.de
+
+- xf86-video-vmware-10.15.2.diff:
+  * disabled broken RENDER support in vmware driver (Bug #353489)
+
+-------------------------------------------------------------------
+Fri Jan 18 20:15:12 CET 2008 - sndirsch@suse.de
+
+- xf86-video-mga 1.4.8
+  * X.Org Bug #13926: Unbreak Xinerama (which finally fixes Novell
+    Bug #331550)
+
+-------------------------------------------------------------------
+Mon Jan 14 22:40:51 CET 2008 - sndirsch@suse.de
+
+- xf86-video-amd 2.7.7.5
+  * Trivial patch to fix the ZTV module
+  * Basic OLPC support from Bernardo Innocenti and Jordan Crouse.
+
+-------------------------------------------------------------------
+Thu Jan 10 21:28:07 CET 2008 - sndirsch@suse.de
+
+- xf86-video-amd 2.7.7.4
+  * [LX] Re-arrange PreInit to avoid segfaults in Xorg -configure
+  * [GX] Fix the autoconfigure segfault for GX too
+  * [GX][LX] Push PreInit fixes to avoid segfauls on X -configure.
+
+-------------------------------------------------------------------
+Tue Jan  1 23:48:34 CET 2008 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-* error 
+
+-------------------------------------------------------------------
+Fri Dec 21 16:19:22 CET 2007 - sndirsch@suse.de
+
+- xf86-video-ati 6.7.197
+  * Another RC release. Lots of stuff fixed and new features.
+    See the changelog for more. Highlights:
+    - improved pll handling
+    - better lid support on Linux via acpi
+    - EXA transforms are fixed so rotation is fast with EXA on 
+      r1xx/r2xx
+    - improved Mac support for more cards
+    - cursor rotation problem are fixed
+    - better rn50 mode handling
+    - lots of bug fixes
+
+-------------------------------------------------------------------
+Tue Dec 18 12:17:52 CET 2007 - sndirsch@suse.de
+
+- require xorg-x11-driver-video-unichrome
+
+-------------------------------------------------------------------
+Sun Dec  2 12:23:24 CET 2007 - sndirsch@suse.de
+
+- xf86-video-nv.diff:
+  * G80Create{Dac,Sor} return pointers, not Bools. 
+
+-------------------------------------------------------------------
+Sat Dec  1 18:23:12 CET 2007 - sndirsch@suse.de
+
+- xf86-video-nv.diff:
+  * X.Org Bug #7309: Delay after disabling cursor to avoid wedging
+    the cursor hardware on GeForce 6150.
+
+-------------------------------------------------------------------
+Fri Nov 30 12:44:44 CET 2007 - sndirsch@suse.de
+
+- no longer blacklist video kernel module (Bug #345033) 
+
+-------------------------------------------------------------------
+Tue Nov 27 19:31:00 CET 2007 - sndirsch@suse.de
+
+- xf86-video-nv.diff
+  * Build fix for recent removal of (DE)ALLOCATE_LOCAL
+  * xcalloc needs 2 args, Xcalloc takes one
+
+-------------------------------------------------------------------
+Fri Nov 16 17:21:25 CET 2007 - sndirsch@suse.de
+
+- xf86-video-sis 0.9.4
+  * This release fixes DRI with xorg-server 1.3 and above, which
+    weren't detected properly.  
+
+-------------------------------------------------------------------
+Thu Nov 15 22:21:40 CET 2007 - sndirsch@suse.de
+
+- xf86-video-intel 2.2.0
+  * Since the 2.1.0 release, over 160 bugs have been resolved. That
+    still leaves 96 open bugs (yay for breaking the 100 barrier),
+    but at this rate the next release should be bug free! :)
+    Moreover, I think many of the open bugs are duplicates of bugs
+    fixed in this release, or just need to be tested with this
+    release before being closed out, so things are looking good on
+    the bug front.
+  * Again, this driver should be run with the latest released
+    versions of the various components:
+    - X server 1.4.x
+    - Mesa 7.0.x
+    - DRM modules from your respective kernel
+  * Running with more recent versions should be possible, but
+    you'll likely hit bugs in the upstream trees due to active
+    development going on there.
+
+-------------------------------------------------------------------
+Thu Nov 15 09:19:41 CET 2007 - sndirsch@suse.de
+
+- xf86-video-intel
+  * updated to git commit e56c166, which also includes some more
+    backlight fixes
+- xf86-video-nv.diff
+  * G80: Reduce load detection false positives.
+
+-------------------------------------------------------------------
+Mon Nov 12 21:43:01 CET 2007 - sndirsch@suse.de
+
+- xf86-video-intel
+  * updated to git commit 43fbc54, which fixes backlight support
+    for several platforms
+
+-------------------------------------------------------------------
+Mon Nov 12 19:00:52 CET 2007 - sndirsch@suse.de
+
+- xf86-video-intel
+  * updated to git commit 10988c5, which fixes Bug #327064
+
+-------------------------------------------------------------------
+Mon Nov 12 12:03:09 CET 2007 - sndirsch@suse.de
+
+- xf86-video-ati 6.7.196
+  * cursor related hangs
+  * LVDS fixes
+  * support for new DDC type
+  * bios/dock/lvds hw state fixes
+
+-------------------------------------------------------------------
+Fri Nov  9 04:55:30 CET 2007 - sndirsch@suse.de
+
+- xf86-video-intel 2.1.99 
+  * prerequirements: X server 1.4(.x), Mesa 7.0.x, latest released
+    version of DRM (i.e. latest released Linux kernel for Linux 
+    users).
+  * Additional suspend/resume fixes are available in development
+    versions of the DRM (in the Mesa DRM tree and recent -mm kernels
+    I believe).
+  * there are still several open issues with this release, but
+    bugs are being squashed fairly quickly, so it may shape up into
+    something decent by release time.
+  * main highlights of this release versus 2.1.0 are:
+    - EXA by default (cheers & jeers all around please)
+    - Tiled front buffer (should improve performance)
+    - Framebuffer compression (a power saving feature)
+    - Many, many bug fixes (yay!)
+  * the final 2.2 release should have some additional features, 
+    including improved backlight support and additional TV output
+    properties, along with many more bug fixes.
+
+-------------------------------------------------------------------
+Sun Nov  4 19:06:19 CET 2007 - sndirsch@suse.de
+
+- added xgixp driver (X.Org Bug #5921) 
+
+-------------------------------------------------------------------
+Sat Nov  3 11:04:21 CET 2007 - sndirsch@suse.de
+
+- xf86-video-nv.diff 
+  * support for GeForce 8800 GT
+
+-------------------------------------------------------------------
+Wed Oct 31 16:37:54 CET 2007 - sndirsch@suse.de
+
+- xf86-video-intel 
+  * updated to git commit ecd995d
+
+-------------------------------------------------------------------
+Wed Oct 24 04:30:14 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-nv 2.1.6
+  * Remove unused headers.
+  * G80 bug #12637: Unwedge the hardware if the BIOS left it stuck.
+  * G80 bug #12397: Fix LVDS detection on certain laptops.
+- obsoletes xf86-video-nv.diff
+
+-------------------------------------------------------------------
+Thu Oct 18 19:30:24 CEST 2007 - sndirsch@suse.de
+
+- back to xf86-video-mga 1.4.6.1 to fix traditional Xinerama setups
+  (Bug #331550)
+
+-------------------------------------------------------------------
+Thu Oct 18 09:44:24 CEST 2007 - sndirsch@suse.de
+
+- unichrome driver moved to seperate xorg-x11-driver-video-unichrome
+  package
+
+-------------------------------------------------------------------
+Mon Oct 15 20:39:15 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-nv.diff
+  * G80 bug #12397: Fix LVDS detection on certain laptops.
+  * G80 bug #12637: Unwedge the hardware if the BIOS left it stuck.
+  * Remove unused headers. 
+
+-------------------------------------------------------------------
+Mon Oct 15 20:19:51 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-amd 2.7.7.3
+  * Remove the upload function for LX
+  * Fix video downscaling
+
+-------------------------------------------------------------------
+Fri Oct 12 12:12:47 CEST 2007 - sndirsch@suse.de
+
+- no longer build ATI 6.6.193 driver; replaced by ATI 6.6.3 driver
+
+-------------------------------------------------------------------
+Wed Oct 10 22:43:17 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-ati-6.6.3-compile-cfb.patch
+  xf86-video-ati-6.6.3-if0.patch
+  xf86-video-ati-6.6.3-r128-xvideo.patch
+  * TV-in support for All in Wonder 128 (Bug #302196, X.Org #8811)
+
+-------------------------------------------------------------------
+Sat Oct  6 04:54:04 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-ati 6.7.194
+  Another RC release. Once all the of the sub drivers are ported to
+  pci-rework, we'll do a 6.8. Changes of note:
+  * single crtc cards should work again
+  * LVDS/RMX finally sorted out
+  * pci-rework for ati_msic/radeon
+
+-------------------------------------------------------------------
+Wed Oct  3 11:56:35 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-mga 1.9.100
+  * This is the second test release of the MGA driver that features
+    RandR 1.2 support. Since the last release, a few bugs have been
+    fixed that affected dual head mode.
+    - Fixed initialization of the second head of the G550.
+    - Made DAC2 return to clone mode on restore.
+    - Set SYNC_CTL to 0xcc when CRTC2 is active.
+    - Bug #12575: Evaluate the x and y arguments to crtc_mode_set().
+    - Don't crash in DownloadFromScreen.
+    - Set maxPitchPixels if available.
+    - Removed DGA support.
+    - Removed MGAFBLayout structure.
+    - Don't check texture dimensions in mgaCheckSourceTexture().
+    - Bug #12598: Only write palette data when available.
+
+-------------------------------------------------------------------
+Sat Sep 29 14:14:24 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-nv 2.1.5
+  * preliminary pci-rework support 
+
+-------------------------------------------------------------------
+Sat Sep 29 12:22:13 CEST 2007 - sndirsch@suse.de
+
+- bumped version to 7.3 
+
+-------------------------------------------------------------------
+Sat Sep 29 11:02:15 CEST 2007 - sndirsch@suse.de
+
+- xf86-input-vmware 10.15.2
+  * adds an embedded version string in a .modinfo segment (when
+    compiled with gcc) that can be read by the linux kernel
+    'modinfo' tool. 
+  * fixes a global symbol collision with the mouse driver
+- xf86-video-mga 1.9.99
+  * "This is the first test release of the MGA driver that features
+    support for RandR 1.2. We now also finally support DVI outputs
+    found on some G450 and G550 cards. Support for Matrox'
+    proprietary HAL module has been removed. Please give it a try
+    and report any problems. I'm especially interested in test
+    results from users that still use pre G-series cards (ie
+    MGA2064W, MGA1064SG, MGA2164W). I don't have any and so I
+    don't have any idea why they still work with this new code."
+- xf86-video-amd 2.7.7.2
+  * minor release 
+- xf86-video-ati 6.7.194 
+  * "MacModel" option should set up the connectors right on Apple
+    laptops
+  * added MacModel support for the mini
+  * fixed Xv crasher
+  * lots of LVDS fixes
+  * external tmds should work again (assuming the external chip is
+    bios inited)
+  * lots of bug fixes
+
+-------------------------------------------------------------------
+Mon Sep 24 12:47:43 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-ati-disable_rmx_dell_rn50.diff 
+  * disable RMX for all Dell Servers with RN50 chips (Bug #327682)
+- make sure to apply the radeon driver patches for ATI 6.6.193
+
+-------------------------------------------------------------------
+Tue Sep 18 10:39:21 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-nv-new_products.diff:
+  * Fix uninitialized variable warning
+  * New G80 products
+
+-------------------------------------------------------------------
+Thu Sep 13 11:35:20 CEST 2007 - sndirsch@suse.de
+
+- added "stable" 6.6.3 ATI driver; available as "radeonold"
+
+-------------------------------------------------------------------
+Wed Sep 12 17:37:09 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-nv-g80_lvds_detect.diff:
+  * G80: Fix LVDS detection on some laptops
+
+-------------------------------------------------------------------
+Tue Sep 11 12:32:54 CEST 2007 - sndirsch@suse.de
+
+- removed superfluous sun video drivers (Bug #309417)
+
+-------------------------------------------------------------------
+Fri Sep  7 17:44:11 CEST 2007 - sndirsch@suse.de
+
+- 'Requires: 915resolution' no longer reuqired (Bug #299829)
+
+-------------------------------------------------------------------
+Fri Sep  7 16:48:26 CEST 2007 - sndirsch@suse.de
+
+- radeonrandr12 driver:
+  * load the correct kernel module (radeonrandr12 --> radeon)
+
+-------------------------------------------------------------------
+Thu Sep  6 23:29:29 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-nsc 2.8.3
+  * This release is an untested build fix for the 7.3 release. 
+- xf86-video-mga 1.4.7
+- adjusted mga-g200se_pci-fix.diff
+
+-------------------------------------------------------------------
+Wed Sep  5 10:39:49 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-ati-opma.diff:
+  * get monitor DDC from VGA_DDC line first (Bug #307074)
+
+-------------------------------------------------------------------
+Sun Sep  2 16:18:26 CEST 2007 - sndirsch@suse.de
+
+- added amd driver (release 2.7.7.0)
+  * X graphics driver for the AMD Geode GX and LX processors. 
+    The GX driver features XAA and EXA support for graphics 
+    acceleration, and the LX driver supports EXA (including
+    compositing). Both drivers suppport dynamic rotation with
+    XRandR, and Xv overlay support.
+
+-------------------------------------------------------------------
+Tue Aug 28 04:18:56 CEST 2007 - sndirsch@suse.de
+
+- added xgi driver (release 1.5.0)
+  "This is the initial release (despite the 1.5.0 version number)
+   of the driver for XGI V3XT / V3XE / V5 / V8 and Z7 / Z9 based
+   video cards. This driver is based on source code and
+   documentation released by XGI. Much of the original code was
+   written by Thomas Winischhofer.
+
+-------------------------------------------------------------------
+Mon Aug 27 22:49:04 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-unichrome-20070511.tar.bz2/xf86-video-unichrome.diff
+  * via driver from Unichrome Project (renamed to 'unichrome')
+
+-------------------------------------------------------------------
+Mon Aug 27 03:00:22 CEST 2007 - sndirsch@suse.de
+
+- radeonrandr12:
+  * updated to latest RANDR 1.2 capable ATI driver 6.7.192
+  * fix vga output on IGP chips
+  * fix Xv clipping issues
+  * rotation works (EXA composite is busted for rotation though,
+    use XAA or disable render accel for now)
+  * fix LVDS detection on ATOM bios
+  * fix depth 16
+
+-------------------------------------------------------------------
+Fri Aug 24 12:47:28 CEST 2007 - sndirsch@suse.de
+
+- radeonrandr12: 
+  * updated to latest RANDR 1.2 capable ATI driver 6.7.191
+  * "In addition to randr support there are quite a few other 
+     goodies: zero copy tfp, improved connector table parsing, 
+     TV-out support, and much more."
+
+-------------------------------------------------------------------
+Mon Aug 20 09:56:35 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-ati-bug296856.diff:
+  * set default virtualX and virtualY to max resolution that
+    display supports (Bug #296856)
+
+-------------------------------------------------------------------
+Fri Aug 17 11:16:37 CEST 2007 - sndirsch@suse.de
+
+- savage 2.1.3
+  * Strip ^M's out of savage_driver.h
+  * clean up some leftover cruft.
+  * small exa fix ups, remove an errant comment
+  * Get Solid() working again
+  * final odds and ends for exa
+  * fix console corruption due to invalid shadow status
+  * fix segfault in SavageDoAdjustFrame() on server 1.3
+  * Add panel native mode automatically.
+  * Unmap mem before freeing driverPrivate
+  * Define SAVAGE_VERSION* using PACKAGE_VERSION*
+  * disable randr when savage rotation is enabled
+  * fix savage respawn crash
+  * Fixed a markup error.
+  * Add "DRI" option to enable/disable DRI support
+- only require 915resolution on %ix86/x86_64 (Bug #301304)
+
+-------------------------------------------------------------------
+Thu Aug 16 04:53:13 CEST 2007 - sndirsch@suse.de
+
+- updated mga/ati randr12 drivers to current git (2007-08-16)
+
+-------------------------------------------------------------------
+Thu Aug 16 04:28:35 CEST 2007 - sndirsch@suse.de
+
+- updated nv driver to release 2.1.2
+  * Bug #4686: Fix a minor GeForceFX + flatpanel + video overlay
+    corruption issue.
+  * G80: Add an LVDS flat panel scaling property.
+  * G80: Allow DVI scaling.
+- obsoletes xf86-video-nv.diff
+
+-------------------------------------------------------------------
+Tue Aug 14 08:26:45 CEST 2007 - sndirsch@suse.de
+
+- updated to intel bugfix driver release 2.1.1
+  * Fix typo in intel.man
+  * Allow 965 composite acceleration to A8 destinations.
+  * i965: fix memcpy of the sf_kernel when a mask is needed
+  * i965: increase composite vertex buffer size and alignment to be
+    safe
+  * Fix some physical address handling for >4GB addresses.
+  * Quirk away the nonexistent TV connector on the Panasonic CF-Y4.
+  * Add the file mode for bios_dumper output so it doesn't have 000
+    permissions.
+  * Bug #11593: Remove dead struct vch_bdb_20 which was angering
+    the sun compiler.
+  * Legacy backlight changes: - add support for 965GM - make sure
+    legacy enabled systems don't reduce the range of backlight
+    values we can present to the user
+  * Eliminate bogus (and harmful) blanking adjustment for load
+    detect.
+  * Ensure pipe/output active before doing load detection.
+  * Remove hard-coded CRT blanking frobbing for load detection.
+  * Clean up tv mode name allocation and copy.
+  * Add quirk support
+  * Add another Lenovo TV output quirk
+  * Fix device id info for 945GME, 965GME
+  * Update Lenovo TV quirk info
+- obsoletes xf86-video-intel-commit-6f18300.diff
+
+-------------------------------------------------------------------
+Mon Aug 13 17:33:37 CEST 2007 - sndirsch@suse.de
+
+- added 'Requires: 915resolution' (i810 driver)
+
+-------------------------------------------------------------------
+Sat Aug 11 13:31:36 CEST 2007 - sndirsch@suse.de
+
+- prevent (acpi) video kernel module from loading (Bug #260675) 
+- cleanup
+
+-------------------------------------------------------------------
+Fri Aug 10 12:23:56 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-intel-xvmc_i915_i945-1.diff:
+  * disable subpicture initial. until we really implement it, OSD
+    can't work for now. (related to Bug #296982)
+
+-------------------------------------------------------------------
+Wed Aug  8 22:46:14 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-ati-AGPFastWrite-risk-reduction.diff:
+  * Verbosely warn about the detrimental effects of the 
+    AGPFastWrite option. (Bug #298465)
+
+-------------------------------------------------------------------
+Wed Aug  8 16:46:27 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-intel-xvmc_i915_i945.diff:
+  * basic XvMC support for i915/945 hardware (Bug #296982)
+
+-------------------------------------------------------------------
+Mon Aug  6 15:22:56 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-intel-commit-6f18300.diff:
+  * fixes 1680x1050 mode on TMDS-1 output again
+  (commit 6f18300aed1340348c6d395f326061b5315be643
+   Author: Keith Packard <keithp@neko.keithp.com>
+   Date:   Mon Jul 9 21:29:55 2007 -0700
+   Eliminate bogus (and harmful) blanking adjustment for load detect.
+   Instead of always adding blanking to mode lines, use the FORCE_BORDER
+   option on i9xx hardware where it works, and dynamically add a bit of
+   border if necessary on i8xx hardware to make load detection work.
+   This may cause flashing when a usable crtc is not otherwise idle when
+   load detection is requested.
+- obsoletes xf86-video-intel-commit-1e2e301.diff
+
+-------------------------------------------------------------------
+Sat Aug  4 11:12:57 CEST 2007 - sndirsch@suse.de
+
+- update ati driver to release 6.6.193:
+  * This is another ati driver RC aimed at server 1.3. Still not
+    randr-1.2. It contains a bunch of fixes for the upcoming (I
+    swear) 6.7 release. Main features: fix a serious crasher in
+    DPMS code, addition of EXA hook for zero-copy TFP and RS480
+    support. Along with numerous other cleanups. There is a blocker
+    bug 11749 for the 6.7 release in bugs.freedesktop.org
+- obsoletes xf86-video-ati-rs482-singledac.diff
+- obsoletes radeon-Clean-up-PortInfo-to-CRTC-mapping.diff
+- obsoletes radeon-Fix-the-last-instance-of-RadeonUnblank.diff
+- adjusted radeon-Fix-CRT-on-RS400.diff
+- updated mga/ati randr12 drivers to current git (2007-08-04)
+
+-------------------------------------------------------------------
+Wed Jul 25 13:26:32 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-nv.diff:
+  * G80: Allow DVI scaling. Revamp how the scaling code works. When
+    a mode is set on a DVI output, determine the current preferred
+    mode and scale to that. Add a new scaling option, "off", which
+    disables scaling and scans out the actual timings in the mode
+    to be set.
+  * Nuke old RCS tags. Fix the ends of files. Update the known
+    cards date.
+
+-------------------------------------------------------------------
+Fri Jul 20 11:05:59 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-intel-commit-1e2e301.diff
+  * revert this one since it broke 1680x1050 mode on TMDS-1 output
+    (monitor gets 1680x1053 instead)
+  (commit 1e2e301348b4168aeed38b3fdc6b0e43d5678a86
+   Author: Keith Packard <keithp@dulcimer.keithp.com>
+   Date:   Sat Jun 30 12:45:24 2007 -0700
+   Fix load detection to use border region instead of blanking.
+   Make sure there is some border area to use by changing how the
+   pipe is configured, then pick a scanline in the middle of the
+   border for load detection. This lets the load detect code use
+   an active pipe instead of requiring an idle one.)
+
+-------------------------------------------------------------------
+Wed Jul 18 16:13:50 CEST 2007 - sndirsch@suse.de
+
+- radeon-Fix-the-last-instance-of-RadeonUnblank.diff:
+  * Server crashed with missing symbol RadeonUnblank, this was
+    changed to RadeonBlank(pScrn, FALSE) and now it's dandy.
+    Reason why this wasn't spotted right away is that this widely
+    used and oft hacked on driver doesn't even enable all warnings
+    (-Wall) on gcc. (Bug #264720)
+
+-------------------------------------------------------------------
+Tue Jul 17 16:11:14 CEST 2007 - sndirsch@suse.de
+
+- radeon-Clean-up-PortInfo-to-CRTC-mapping.diff:
+  * Clean up PortInfo to CRTC mapping. Also sanitise blanking and
+    DPMS functions (Bug #264720)
+
+-------------------------------------------------------------------
+Mon Jul 16 15:30:10 CEST 2007 - sndirsch@suse.de
+
+- radeon-Fix-CRT-on-RS400.diff:
+  * fixes black screen on external VGA output of ATI XPress 200.
+    Cause: bad entry in the BIOS connector table (Bug #276475)
+
+-------------------------------------------------------------------
+Mon Jul 16 02:31:43 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-nv.diff:
+  * G80: Add an LVDS flat panel scaling property. This property
+    controls how non-native resolutions are scaled to the native
+    resolution.  Valid values are:
+    - center: 1:1 pixel ratio with black borders to center the 
+      image.
+    - fill: Scale image to the native resolution.
+    - aspect: Scale image to fit the screen, adding black bars to 
+      preserve square pixels.
+    Defaults to "aspect". Change with 
+    "xrandr --output LVDS --set scale <foo>". 
+
+-------------------------------------------------------------------
+Tue Jul 10 21:38:36 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-nv.diff:
+  * Bug #4686: Fix a minor GeForceFX + flatpanel + video overlay
+    corruption issue. This change was originally in XFree86 CVS, 
+    nv_dac.c version 1.36 but got reverted accidentally.
+
+-------------------------------------------------------------------
+Tue Jul 10 20:51:36 CEST 2007 - sndirsch@suse.de
+
+- updated nv driver to release 2.1.2
+  * This release fixes the LVDS display on certain MacBooks and
+    laptops with certain native flat panel modes (typically
+    1440x900). It also adds a "dither" RandR 1.2 output property
+    and a corresponding "FPDither" xorg.conf option for 6-bit flat
+    panels.
+- obsoletes xf86-video-nv.diff
+
+-------------------------------------------------------------------
+Mon Jul  9 21:31:35 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-nv.diff
+ * support for GeForce 8600M GT
+ * Work around more MacBook wackiness. Turn off more corrupt the
+   framebuffer mode.  Don't mess with the pixel clock for LVDS as
+   long as we're trusting the VBIOS-programmed timings.
+
+-------------------------------------------------------------------
+Wed Jul  4 22:42:30 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-nv.diff:
+  * Put the GPU into don't corrupt the framebuffer mode to work
+    around MacBook wackiness. 
+
+-------------------------------------------------------------------
+Tue Jul  3 11:50:19 CEST 2007 - sndirsch@suse.de
+
+- updated to intel driver release 2.1.0
+
+-------------------------------------------------------------------
+Tue Jul  3 05:50:02 CEST 2007 - sndirsch@suse.de
+
+- updated nv driver to release 2.1.1
+- obsoletes xf86-video-nv.diff 
+
+-------------------------------------------------------------------
+Mon Jul  2 22:15:07 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-nv.diff:
+  * support for GeForce 8400M G
+  * Support configs with BAR1 < total RAM < 256 MB
+
+-------------------------------------------------------------------
+Tue Jun 19 05:54:53 CEST 2007 - sndirsch@suse.de
+
+- updated nv driver to release 2.1.0
+  * Fix some random colormap corruption on DFPs with certain 
+    pre-G80 GPUs. 
+  * Fix build. Including xf86DDC.h before we include xf86.h doesn't
+    fly (Benjamin Herrenschmidt)
+- obsoletes xf86-video-nv-g80.diff
+
+-------------------------------------------------------------------
+Sat Jun  9 13:24:58 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-nv-g80.diff:
+  G80: Mode validation. Disable LVDS modes larger than the native
+  resolution. Disable dual-link TMDS modes for now since they don't
+  work reliably.
+
+-------------------------------------------------------------------
+Thu Jun  7 22:42:11 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-nv-g80.diff:
+  * G80: Rearrange HW video timing computations
+  * G80: LVDS support
+
+-------------------------------------------------------------------
+Thu Jun  7 14:49:05 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-ati-mergedfb-disable.diff:
+  * disable MergedFB by default (Bug #279961) 
+- radeon-xrandr-dotclock.diff enabled again (Bugs #280362/#135749)
+
+-------------------------------------------------------------------
+Tue Jun  5 23:26:04 CEST 2007 - sndirsch@suse.de
+
+- updated intel driver to current git (2007-06-05)
+  * support for 945GME
+  * support for 965GME/GLE
+  * support for G33, Q35, Q33
+  * bugfixes
+
+-------------------------------------------------------------------
+Mon Jun  4 12:48:16 CEST 2007 - sndirsch@suse.de
+
+- do not overwrite i810 manual page with link to intel manual page
+
+-------------------------------------------------------------------
+Sun Jun  3 10:57:26 CEST 2007 - sndirsch@suse.de
+
+- updated intel driver to current git (2007-06-03)
+  * lot of bugfixes
+- updated radeonrandr12 driver to current git (2007-06-03) 
+  * bugfixes
+
+-------------------------------------------------------------------
+Tue May 29 16:55:35 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-ati-rs482-singledac.diff:
+  * rs480: only has single dac (Bug #276475) 
+
+-------------------------------------------------------------------
+Wed May 23 23:02:50 CEST 2007 - sndirsch@suse.de
+
+- fixed rpmlint library-without-ldconfig-postin errors
+
+-------------------------------------------------------------------
+Tue May 22 11:15:03 CEST 2007 - sndirsch@suse.de
+
+- updated ATI RANDR1.2 driver (git 20070522)
+  * Fix for infinite loop in RADEONGetLVDSInfo
+  * cleanup
+  * turn off all outputs in screeninit(). We'll turn on the ones we
+    want later
+  * Change default LVDS i2c line for powerpc
+  * if connector is VGA set TMDS to none
+  * several updates
+  * fix crtc1 (un)blanking code after last commit
+  * only add valid connectors
+
+-------------------------------------------------------------------
+Mon May 21 10:43:39 CEST 2007 - sndirsch@suse.de
+
+- update ati driver to release 6.6.191:
+  * Fix regular/"xinerama"/zaphod dualhead mode
+  * radeon: fix up crtc debug dereference problem
+  * radeon: add support for enabling direct rendering on RS480
+  * radeon: fix build since patches for IBM don't actually build
+  * radeon: fix build on older server
+  * radeon: add support for DDC on some laptop chipsets
+  * radeon: another attempt at fixing the mergedfb refresh rate
+  * 9337: EDID modes do not participate in validation for CRT monitor
+  * 10205: Radeon driver's own mode validation code does not work properly
+  * Fixed typo in mode list generation.
+  * Fix crash if MergedFB and secondary head not found
+  * Fix inconsistent use of Mode lists.
+  * Set sync polarity restriction flags even for non-"digital separate"
+    monitors.
+  * Disable RMX for IBM Lewis server.
+  * radeon: Fix typo.
+  * radeon: Guard some MergedFB specific code with info->MergedFB tests.
+  * radeon: Don't shrink virtual size based on secondary modes.
+  * radeon: Always sort modes when adding to list.
+  * radeon: Link nearest modes by default for clone mode.
+- obsoletes bug-263199_radeon-mergedfb-crash.diff, 
+  xf86-video-ati-6.6.191.diff
+
+-------------------------------------------------------------------
+Thu May 17 22:36:11 CEST 2007 - sndirsch@suse.de
+
+- updated ATI RANDR1.2 driver (git 20070517)
+
+-------------------------------------------------------------------
+Thu May 17 13:51:00 CEST 2007 - sndirsch@suse.de
+
+- updated nv driver to release 2.0.96
+  * This release adds simple VBE-based dualhead support for pre-G80
+    graphics cards. This mode has a few restrictions:
+    1. Both heads must be connected when the system is booted.
+    2. The same mode is used on both heads.
+    3. The heads are always placed side-by-side.
+    4. Only VBE modes are available.
+    5. No Xinerama information is provided.
+    Use ' Option "Dualhead" "on" ' for configuration.
+
+-------------------------------------------------------------------
+Mon May 14 22:08:10 CEST 2007 - sndirsch@suse.de
+
+- disabled generation of kernel framebuffer blacklist (Bug #239194,
+  comments #27, #28, #31)
+
+-------------------------------------------------------------------
+Fri May 11 11:37:38 CEST 2007 - sndirsch@suse.de
+
+- updated ATI RANDR1.2 driver (git 20070511)
+
+-------------------------------------------------------------------
+Fri May  4 00:12:35 CEST 2007 - sndirsch@suse.de
+
+- updated nv driver to release 2.0.95
+  * This release adds experimental RandR-1.2 and EXA support for
+    GeForce 8 series GPUs. The driver now depends on server version
+    1.2 or higher because of the RandR 1.1 compatibility layer.
+
+-------------------------------------------------------------------
+Wed May  2 23:05:48 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-nv-8800ultra.diff:
+  * support for GeForce 8800 Ultra 
+
+-------------------------------------------------------------------
+Fri Apr 27 03:50:06 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-nv-20070425.tar.bz2
+  * Merge branch 'randr-1.2'
+  * G80: EXA infrastructure.
+  * EXA: Add solid, copy, and UTS hooks.
+  * Get EXA resizing working and document it.
+  * Remove some old stuff from README.G80.
+- obsoletes xf86-video-nv-G84_G86.diff
+- obsoletes xf86-video-nv.randr12-20070421.tar.bz2
+- obsoletes xf86-video-nv.randr12.diff
+
+-------------------------------------------------------------------
+Sat Apr 21 11:13:45 CEST 2007 - sndirsch@suse.de
+
+- xf86-video-nv-G84_G86.diff:
+  * GeForce 8300 GS and GeForce 8400 GS.
+  * Add new chips to the manpage.
+- updated "nvrandr12" driver to current git:
+  * Depend on server 1.2 or higher. Remove support for building
+    with the libc wrapper or without the Drawable XV argument.
+  * G80: Remove AdjustFrame printout.
+  * Steal RandR1.2 compat code from the Intel driver. Spruce it up
+    a bit so that --with-xserver-source works even if there's a
+    local compat copy.
+  * Remove unused g80_ddc.h.
+  * Always support G80.
+
+-------------------------------------------------------------------
+Fri Apr 20 07:18:51 CEST 2007 - sndirsch@suse.de
+
+- intel driver release 2.0.0
+  * Check for the PENDING message when reading the attached
+  * Update read_response to include the try on PENDING status
+  * Fix return status
+  * Bug #10515: Fix module version number with more than one digit
+    per field.
+  * It's 2007 now.  Didn't I get the memo?
+  * Avoid a magic number and correct a (currently harmless) ifdef
+    in ResetState().
+  * Turn off ALWAYS_SYNC in EXA.
+  * Don't use extended regexps in sed when not necessary.
+  * Bug #10520: i810 manpage not installed despite users expecting
+    it to be there.
+  * Add license headers to 965 programs.
+  * Bug #10438: Fix 965 XV when sourcing from less than the full image.
+  * Add all the possible ivch slave addresses (still commented out).
+  * Fix i852 EXA Composite acceleration setup.
+  * Don't try to init the XAA linear region unless we allocated
+    memory for it.
+  * Use I2C delay function instead of usleep.
+  * Fix mismatching braces when XF86DRI_MM is not defined.
+  * Clean up 1.2 xserver build support.
+  * Eliminate LinearAlloc option and code.
+  * Update version to 2.0.0
+  * Fix build against xserver 1.2.
+  * Fix crash on G965 XAA with LinearAlloc option
+  * Update intel.man with 965GM chipset support
+  * EXA: i830 render misc fix and cleanups
+  * EXA: Add i830 supported pict format XRGB8888, XBGR8888
+  * EXA: fix 830/845G pict format
+  * EXA: fix i830 render
+  * Fix mem list order and remove extra unbind call when free memory
+
+-------------------------------------------------------------------
+Wed Apr 18 00:18:37 CEST 2007 - sndirsch@suse.de
+
+- updated nv driver to release 2.0.2:
+  * This release adds product names for the GeForce 8600 GTS and GT,
+    and the GeForce 8500 GT. It also contains a fix for bug 10360.
+- obsoletes xf86-video-nv-1.diff, xf86-video-nv-2.diff
+
+-------------------------------------------------------------------
+Tue Apr 17 05:11:52 CEST 2007 - sndirsch@suse.de
+
+- updated "mgarandr12" driver to current git
+  * Added memcpy-based DownloadFromScreen implementation.
+  * On G550, do A8 adds in hardware.
+  * Make DRI initialization work when using EXA. Still need to
+    implement InitBuffers and MoveBuffers for EXA.
+  * Removed the debug messages for solid and copy ops.
+  * Sync after UploadToScreen.
+  * Default mode on G200SE of 1024x768 @ 16bpp. The poor thing has
+    so little VRAM that you can't do any bigger than 640x480 at 
+    32bpp, so in the interest of having a reasonable screen size...
+  * Disable MTRR support for PCIE G200SE cards, as it tickles 
+    hardware bugs.
+  * Fix various timing bugs on the G200SE.
+  * Shut up the compiler.
+
+-------------------------------------------------------------------
+Mon Apr 16 13:59:23 CEST 2007 - sndirsch@suse.de
+
+- updated "nvrandr12" driver to current git:
+  * G80: Get rid of debug printouts.
+  * G80: Get DPMS working with RandR 1.2.
+  * G80: Use the right mode struct when setting up an SOR.
+
+-------------------------------------------------------------------
+Fri Apr 13 20:55:38 CEST 2007 - sndirsch@suse.de
+
+- bug-263199_radeon-autocrt.diff:
+  * When a monitor in MonitorLayout is specified as "AUTOCRT", it
+    is set to CRT if no monitor is found at all and the connector
+    type allows for VGA monitors (that is: only on VGA, DVI-I, 
+    DVI-A). (Bug #263199)
+
+-------------------------------------------------------------------
+Thu Apr 12 20:43:12 CEST 2007 - sndirsch@suse.de
+
+- bug-263199_radeon-mergedfb-crash.diff:
+  * fixed MergedFB related Xserver crash (Bug #263199)
+
+-------------------------------------------------------------------
+Tue Apr  3 17:38:46 CEST 2007 - sndirsch@suse.de
+
+- updated "nvrandr12" driver to current git:
+  * G80: Get HW cursor working with RandR 1.2
+- added two nv driver patches (xf86-video-nv-{1,2}.diff)
+  * X.Org Bug #10360: Need to inject a mode corresponding panel
+    width/height for validation
+  * Remove extraneous DisplayModeRec allocation (Thanks to Luc 
+    Verhaegen for pointing this out)
+
+-------------------------------------------------------------------
+Tue Apr  3 11:09:51 CEST 2007 - sndirsch@suse.de
+
+- intel driver release 1.9.94 (2.0 RC4)
+  * In hopefully our last RC before release, here's 
+    xf86-video-intel 2.0 RC4. The big news in this one is the
+    addition of 965GM support.  Also present are some EXA fixes, 
+    documentation updates, and moving the debug output under
+    Option "ModeDebug" "YES".
+
+-------------------------------------------------------------------
+Wed Mar 28 23:42:30 CEST 2007 - sndirsch@suse.de
+
+- updated "nvrandr12" driver to current git: 
+  * G80: Use xf86CrtcScreenInit and xf86SetDesiredModes.
+  * G80: Improve output detection.
+  * Detect output status for paired outputs together and cache
+    status until the BlockHandler to avoid redundantly probing for
+    EDIDs or performing load detection.
+
+-------------------------------------------------------------------
+Wed Mar 28 07:17:59 CEST 2007 - sndirsch@suse.de
+
+- updated nv driver to release 2.0.1:
+  * NVSync hangs in EnterVT, so don't call it there.
+  * Fix broken prototype.
+  * Fix warnings and bump to 2.0.1.
+  * REALLY bump to 2.0.1.
+- obsoletes xf86-video-nv-NVSync.diff
+- updated "nvrandr12" driver to current git:
+  * G80: Create output partners.
+  * Each pair of outputs shares an I2C rec.  This will be used in
+    a future change for the detect and get_modes routines.
+  * Fix warnings.
+
+-------------------------------------------------------------------
+Tue Mar 27 21:56:13 CEST 2007 - sndirsch@suse.de
+
+- update ati driver to release 6.6.191:
+  * This is pre-release of the ATI driver aimed at 7.3. It doesn't
+    contain randr1.2 support it does however contain a major
+    re-write of the output mappings from what was known as Alex's
+    superpatch. Please logs all regressions into bugzilla so we can
+    fix them before the 6.7 release.
+- obsoletes rn50_pixel_clock_limit.patch
+- disabled radeon-xrandr-dotclock.diff for now (Bug #135749)
+- disabled radeon_dell.diff (obsolete?) (Bug #138458)
+- disabled "radeonrandr12" driver for now
+
+-------------------------------------------------------------------
+Tue Mar 27 16:28:08 CEST 2007 - sndirsch@suse.de
+
+- intel driver release 1.9.93 (2.0 RC3)
+  * Significant differences over the previous RC include fixes for
+    larger 915-generation LVDS panels, fixes for rotation on the
+    965, improved TV format selection, some SDVO output enabling
+    fixes, I2C timing fixes to improve the chances of DDC, and
+    cursor behavior fixes with RandR.
+- obsoletes xf86-video-intel-[1-5].diff
+
+-----------------------------------------------------------
+Wed Mar 21 12:00:08 CET 2007 - sndirsch@suse.de
+
+- added a bunch of intel driver patches (xf86-video-intel-[1-5].diff)
+  from git (master branch):
+  * Move vendor ID check in the utils to after pci_device_probe.
+  * Make i830_sdvo_write_sdvox write everything twice.
+  * Add debug output for ADPA.
+  * Print the mode actually being set per pipe.
+  * Attempt to fix single/dual-channel issues on i9xx LVDS panels.
+
+-------------------------------------------------------------------
+Tue Mar 20 11:06:21 CET 2007 - sndirsch@suse.de
+
+- xf86-video-nv-NVSync.diff:
+  * NVSync hangs in EnterVT, so don't call it there.
+
+-------------------------------------------------------------------
+Mon Mar 19 21:35:36 CET 2007 - sndirsch@suse.de
+
+- updated nv driver to release 2.0.0
+  * This release adds support for the NVIDIA GeForce 8800 GTX, 
+    GeForce 8800 GTS, Quadro FX 4600, and Quadro FX 5600 GPUs.
+    It also fixes a few bugs for earlier graphics cards.
+- obsoletes patches: 
+  * xf86-video-nv-DAC.diff
+  * xf86-video-nv-corruption-cursor.diff
+  * xf86-video-nv-switchmode-freeze.diff
+  * xf86-video-nv-vesafb-vga.diff
+
+-------------------------------------------------------------------
+Sun Mar 18 11:42:48 CET 2007 - sndirsch@suse.de
+
+- updated optional RANDR 1.2 drivers radeon/nv/mga (2007-03-18):
+  * "First stab at RandR 1.2. This will only work on G450/G550 
+     cards."
+
+-------------------------------------------------------------------
+Sat Mar 17 11:07:48 CET 2007 - sndirsch@suse.de
+
+- xf86-video-nv-switchmode-freeze.diff:
+  * Avoid hanging when switching modes on some nv4x cards 
+    (Bug #235171)
+
+-------------------------------------------------------------------
+Fri Mar 16 08:28:10 CET 2007 - sndirsch@suse.de
+
+- xf86-video-nv-corruption-cursor.diff:
+  * fix GXxor corruption on nv4x (Bug #246421)
+  * Hide the cursor in CloseScreen. Otherwise, if we're restoring a
+    graphical framebuffer mode the cursor will still be visible.
+
+-------------------------------------------------------------------
+Thu Mar 15 22:49:38 CET 2007 - sndirsch@suse.de
+
+- xf86-video-nv-vesafb-vga.diff:
+  * Fix VGA output with vesafb on nv4x and G7x GPUs (Bug #160812)
+
+-------------------------------------------------------------------
+Wed Mar 14 22:14:42 CET 2007 - sndirsch@suse.de
+
+-  intel driver release 1.9.92 (2.0 RC2):
+   * Major changes in this release include moving more code to the
+     X Server, fixing 3D performance regressions, fixing Mac Mini
+     DPMS, potential fixes for some LVDS issues on 855 and 915,
+     fixes for many segfaults, and the off-by-default pageflipping
+     support.
+
+-------------------------------------------------------------------
+Wed Mar 14 08:38:36 CET 2007 - sndirsch@suse.de
+
+- updated intel driver to current git master branch (2007-03-14)
+
+-------------------------------------------------------------------
+Tue Mar 13 08:53:17 CET 2007 - sndirsch@suse.de
+
+- updated siliconmotion driver to release 1.5.1
+  * clean up source formatting
+  * Add EXA support (Solid and Copy)
+  * actually program the vclk
+  * fix hangs at startup due to engine not being active
+  * fix clk calculation on older lynx chips
+
+-------------------------------------------------------------------
+Mon Mar 12 17:34:35 CET 2007 - sndirsch@suse.de
+
+- added optional drivers with experimental RANDR 1.2 support
+  ("radeonrandr12", "nvrandr12")
+
+-------------------------------------------------------------------
+Sat Mar 10 16:17:57 CET 2007 - sndirsch@suse.de
+
+- xf86-video-nv-DAC.diff:
+  * Use DAC load detection to decide which OR to use instead of
+    trusting the EDID.
+
+-------------------------------------------------------------------
+Fri Mar  9 04:25:21 CET 2007 - sndirsch@suse.de
+
+- updated nv driver to release 1.99.1:
+  * This release adds support for the NVIDIA GeForce 8800 GTX,
+    GeForce 8800 GTS, Quadro FX 4600, and Quadro FX 5600 GPUs. It
+    should be considered beta quality.
+
+-------------------------------------------------------------------
+Tue Mar  6 11:35:41 CET 2007 - sndirsch@suse.de
+
+- do not overwrite "i810" driver with symlink to "intel" driver; we
+  still need two different Intel drivers ("i810" + "intel")
+
+-------------------------------------------------------------------
+Mon Mar  5 14:34:56 CET 2007 - sndirsch@suse.de
+
+- updated to "intel" (modesetting) driver release 1.9.91; obsoletes
+  additional "i810beta"/"i810sdvo" drivers
+- specfile cleanup
+ 
+-------------------------------------------------------------------
+Thu Mar  1 19:00:06 CET 2007 - sndirsch@suse.de
+
+- xf86-video-ati-mergedfb-dpi.diff:
+  * fixes DPI values for mergedfb configs (Bug #239033)
+
+-------------------------------------------------------------------
+Thu Feb 22 23:15:19 CET 2007 - sndirsch@suse.de
+
+- added blacklist for kernel fb modules (Bug #239194)
+
+-------------------------------------------------------------------
+Tue Feb 13 04:35:47 CET 2007 - sndirsch@suse.de
+
+- updated vmware driver to release 10.15.0
+  * Provide truely usable resizing support with the ability to
+    resize larger than the initial size and no wasted framebuffer
+    space. As a bonus, a variety of useful resolutions are built
+    in to the driver and always available.
+
+-------------------------------------------------------------------
+Mon Feb  5 19:01:05 CET 2007 - sndirsch@suse.de
+
+- removed "-nostdlib/-lgcc" to fix loading of mga_hal module 
+  (Bug #242127)
+
+-------------------------------------------------------------------
+Tue Jan 30 07:43:09 CET 2007 - sndirsch@suse.de
+
+- rn50_pixel_clock_limit.patch:
+  * resolves video corruption problem on ES1000 (X.Org Bug #5766)
+
+-------------------------------------------------------------------
+Tue Jan  9 18:28:36 CET 2007 - sndirsch@suse.de
+
+- updated i810 driver to release 1.7.4
+  * Fix bug #8536, i915 BIOS fails when restarting Xserver.
+
+-------------------------------------------------------------------
+Fri Dec 29 15:07:22 CET 2006 - sndirsch@suse.de
+
+- updated fbdev driver to release 0.3.1
+  * Fix shadow framebuffer, and by extension rotation. (Bug #7961)
+  * obsoletes xf86-video-fbdev-disable-shadowfb.diff, 
+    xf86-video-fbdev.diff
+
+-------------------------------------------------------------------
+Wed Dec 27 15:50:15 CET 2006 - sndirsch@suse.de
+
+- updated mga driver to release 1.4.6.1
+  * No changes, just a respin against a newer util-macros.
+- updated nv driver to release 1.2.2.1
+  * No changes, just a respin against a newer util-macros. 
+
+-------------------------------------------------------------------
+Sun Dec 17 11:59:46 CET 2006 - sndirsch@suse.de
+
+- updated mga driver to release 1.4.6 
+  * Makefile.am: fix ChangeLog hook
+  * Use the XORG_RELEASE_VERSION autoconf macro.
+  * More janitoring work.
+  * Removed a duplicated register definition.
+- updated nv driver to release 1.2.2
+  * Remove redundant XORG_RELEASE_VERSION
+  * Makefile.am: make ChangeLog hook safer
+- updated rendition driver to release 4.1.3
+  * Makefile.am: make ChangeLog hook safer
+
+-------------------------------------------------------------------
+Sat Dec  9 11:02:32 CET 2006 - sndirsch@suse.de
+
+- added optional "i810sdvo" driver for SDVO support
+  ("modesetting-sdvo-stuffing" branch)
+
+-------------------------------------------------------------------
+Fri Dec  8 18:24:35 CET 2006 - sndirsch@suse.de
+
+- intel modesetting driver: back to GIT 2006-11-21 due to undefined
+  xf86DDCGetModes symbol (requires newer xserver)
+
+-------------------------------------------------------------------
+Fri Dec  8 06:45:45 CET 2006 - sndirsch@suse.de
+
+- updated vmware driver to release 10.14.1
+  * Fix use of uninitialised buffer in static xinerama topology
+    parsing
+
+-------------------------------------------------------------------
+Thu Dec  7 12:42:35 CET 2006 - sndirsch@suse.de
+
+- updated i810 driver to release 1.7.3
+  * Make VIDEO_DEBUG into a configure option
+  * Fix manpage to report 8160 instead of 6144 for LinearAlloc.
+  * Add some MergedFB checks for accelerator limitations
+  * Disable some debug message
+  * update port attributes immediately when overlay is on.
+  * Be a little more verbose when rejecting modes.
+  * Don't crash if SetCursorPosition is called with pScrn->currentMode == NULL.
+  * Add support for the new DRM memory manager.
+  * Bug 8594: Fix Xv hang with G965
+  * obsoletes patches
+    - xf86-video-i810-965g-xv-hang.diff
+    - xf86-video-i810-disable-debug.diff
+    - xf86-video-i810-linearalloc.diff
+    - xf86-video-i810-mergedfb-checks.diff
+    - xf86-video-i810-modelines-verbose.diff
+    - xf86-video-i810-newdrm.diff
+    - xf86-video-i810-setcursorposition.diff
+    - xf86-video-i810-update-port-attributes.diff
+    - xf86-video-i810-video-debug.diff
+
+-------------------------------------------------------------------
+Tue Dec  5 10:42:08 CET 2006 - sndirsch@suse.de
+
+- updated nv driver to release 1.2.1
+  * Save and restore DAC0 register 608 when probing for connected 
+    CRTs. Adapted from a patch by Egbert Eich for Novell bug 
+    #220197 (obsoletes xf86-video-nv-bug220197.diff).
+  * Use XORG_RELEASE_VERSION.
+  * Handle more than 1 digit in the version numbers. Based on a
+    change by George Sapountzis <gsap7@yahoo.gr>.
+  * Replace panel message + MODE_BAD with MODE_PANEL.
+
+-------------------------------------------------------------------
+Sun Dec  3 21:57:43 CET 2006 - sndirsch@suse.de
+
+- updated s3 driver to release 0.5.0
+  * Evgeny M. Zubok: Make the driver work with modular X (bug 7112)
+- updated mga driver to release 1.4.5
+  * Minor typofix that was causing configure to exit with a syntax
+    error
+  * Enabled the Exa composite hooks on G550.
+  * Bug #2168: Fix graphics corruptions with Mystique rev 2.
+  * Removed some duplicated register definitions.
+  * Removed some unused defines from mga_reg.h.
+  * Register name tweak.
+  * Use register names in MGASaveScreenMerged() rather than magic numbers.
+  * Replaced more magic values with register names.
+  * Removed a duplicated register definition.
+  * Made some XAA function static.
+- updated sis driver to release 0.9.3
+  * include stdlib.h for strtod
+- updated vesa driver to release 1.3.0
+  * Fix shadow support yet again.
+- updated i128 driver to release 1.2.1
+  * Revision-number-only change for sequentiality.
+- updated tdfx driver to release 1.3.0
+- updated intel modesetting driver (git_2006-12-04)
+- xf86-video-i810-newdrm.diff:
+  * Add support for the new DRM memory manager
+
+-------------------------------------------------------------------
+Sat Dec  2 22:58:44 CET 2006 - sndirsch@suse.de
+
+- newdrm.diff obsolete with libdrm 2.3.0
+
+-------------------------------------------------------------------
+Fri Dec  1 06:36:22 CET 2006 - sndirsch@suse.de
+
+- bug220197.diff:
+  Save and restore DAC0 register 608 when probing for connected
+  CRTs (Bug #220197)
+
+-------------------------------------------------------------------
+Fri Nov 24 12:25:51 CET 2006 - sndirsch@suse.de
+
+- xf86-video-fbdev-disable-shadowfb.diff:
+  * fbdev: disable use of shadowfb by default (Bug #220171) 
+
+-------------------------------------------------------------------
+Wed Nov 22 19:41:09 CET 2006 - sndirsch@suse.de
+
+- xf86-video-i810-update-port-attributes.diff:
+  * update port attributes immediately when overlay is on.
+- xf86-video-i810-modelines-verbose.diff
+  * Be a little more verbose when rejecting modes.
+
+-------------------------------------------------------------------
+Tue Nov 21 18:04:04 CET 2006 - sndirsch@suse.de
+
+- updated (optional) intel modesetting driver (git_2006-11-21) 
+  * Enable second SDVO channel. Rework SDVO support so that it
+    can deal with two channels correctly, also save/restore all
+    connected output timings.
+  * Set configured values for screen virtual size and initial
+    frame. Computation for virtual size and initial frame origin
+    is quite broken in xf86 common code.
+
+-------------------------------------------------------------------
+Sun Nov 19 17:35:40 CET 2006 - sndirsch@suse.de
+
+- xf86-video-i810-disable-debug.diff:
+  * disable some debug message (Alan Hourihane)
+
+-------------------------------------------------------------------
+Sun Nov 19 13:03:36 CET 2006 - sndirsch@suse.de
+
+- updated (optional) intel modesetting driver (git_2006-11-19) 
+  * Fix TV color key. Subcarrier defines were incorrect in header
+    file leaving one of the DDA phases disabled.
+  * Preliminary 945 TV output. Color key is broken. Fixed mode. TV
+    output is generating video with this patch, but the color burst
+    signal is incorrect somehow.
+  * Disable some debug message
+  * Bug 8594: Fix Xv hang with G965
+  * Add support for the new DRM memory manager.
+    Some code are duplicated with the new libdrm.
+    Once this code has been released with xserver,
+    it can be removed. See the man page for new options and
+    backwards 3D driver compatibility.
+  * Add some MergedFB checks for accelerator limitations
+  * Fix manpage to report 8160 instead of 6144 for LinearAlloc.
+  * Don't crash if SetCursorPosition is called with 
+    pScrn->currentMode == NULL. This allows the driver to work with
+    servers that don't have the fix for this that was only recently
+    pushed to git.
+  * Make VIDEO_DEBUG into a configure option
+  * Bump to 1.7.2
+  * Ugh. Turn off debugging.
+  * Fix bug #8553 & #8542 - suspend/resume regression from 1.5
+    driver
+  * Fix some warnings
+  * Fix server regeneration problem mapping the aperture
+  * Fix bug #5795, VT switching fails because of a bad test on some
+    platforms.
+  * Enable XV_PORT attribute even when not in Clone mode. As Clone
+    mode is now something that can change after server startup, 
+    always enable the XV_PORT attribute as we cannot change the list
+    of reported attributes.
+  * silence warning
+  * Missing gamma bit
+  * Fix issues with Xv locking up the engine. bug #7915.
+  * Always call I830UpdateXineramaScreenInfo() unconditionally, and
+    document why.
+  * Store viewport limits of both pipes in SAREA. This allows DRI
+    clients to determine which pipe they should synchronize buffer
+    swaps of each window to.
+  * If the DRM can handle it, enable vertical blank interrupts for
+    both pipes.
+  * Only enable the IRQ after DRIFinishScreenInit. This makes sure
+    we've been assigned a context ID, so the interrupt context won't
+    mess things up if it grabs the HW lock.
+  * Fix bug #7943 where video flickers when changing
+    attributes. This code was a leftover from testing lockups
+    and shouldn't be needed anymore.
+  * Typo fix in man page (Debian bug #364559).
+  * bump max Xvideo height to 1088 to cope with some players.
+- newdrm.diff (reverse applied):
+  * disables new drm (2.2) stuff in intel modesetting driver
+
+-------------------------------------------------------------------
+Fri Nov 17 08:29:48 CET 2006 - sndirsch@suse.de
+
+- updated (optional) intel modesetting driver (git_2006-11-17)
+
+-------------------------------------------------------------------
+Mon Nov  6 16:39:25 CET 2006 - sndirsch@suse.de
+
+- updated rendition driver to release 1.2.3 
+  * Build fix for systems with <elf_abi.h> instead of <elf.h> 
+    (X.Org Bug #7707)
+- updated intel modesetting driver (git_2006-11-06)
+
+-------------------------------------------------------------------
+Fri Nov  3 20:54:32 CET 2006 - sndirsch@suse.de
+
+- updated trident dirver to release 1.2.3
+  * Remove spurious line that stops blit's from working (on XP4/XP5) 
+
+-------------------------------------------------------------------
+Fri Nov  3 16:49:45 CET 2006 - sndirsch@suse.de
+
+- updated intel modesetting driver (git_2006-11-03)
+
+-------------------------------------------------------------------
+Thu Nov  2 14:24:49 CET 2006 - sndirsch@suse.de
+
+- updated vmware driver to release 10.14.0
+  * Add Xinerama support.
+- updated intel modesetting driver (git_2006-11-02)
+
+-------------------------------------------------------------------
+Mon Oct 30 13:10:43 CET 2006 - sndirsch@suse.de
+
+- added intel modesetting driver "i810beta" (optional)
+
+-------------------------------------------------------------------
+Mon Oct 30 10:07:07 CET 2006 - sndirsch@suse.de
+
+- xf86-video-i810-video-debug.diff:
+  * Make VIDEO_DEBUG into a configure option
+- xf86-video-i810-linearalloc.diff:
+  * Fix manpage to report 8160 instead of 6144 for LinearAlloc.
+- xf86-video-i810-setcursorposition.diff:
+  * Don't crash if SetCursorPosition is called with 
+    pScrn->currentMode == NULL. This allows the driver to work
+    with servers that don't have the fix for this that was only
+     recently pushed to git. 
+- xf86-video-i810-mergedfb-checks.diff:
+  * Add some MergedFB checks for accelerator limitations
+- xf86-video-i810-965g-xv-hang.diff:
+  * X.Org Bug 8594: Fix Xv hang with G965
+
+-------------------------------------------------------------------
+Sat Oct 28 13:56:25 CEST 2006 - sndirsch@suse.de
+
+- updated mga driver to release 1.4.4:
+  * Fix initialization issues that led to DRI lock-ups on some G400
+    configurations. Minor code refactoring.
+
+-------------------------------------------------------------------
+Wed Oct 25 14:30:55 CEST 2006 - sndirsch@suse.de
+
+- reverted latest change; i82875p_edac should be blacklisted in
+  global blacklist instead (Bug #213840)
+
+-------------------------------------------------------------------
+Tue Oct 24 14:40:47 CEST 2006 - sndirsch@suse.de
+
+- make sure that intel-agp is loaded before i82875p_edac kernel
+  module (Bug #213840)
+
+-------------------------------------------------------------------
+Sat Oct 14 05:58:55 CEST 2006 - sndirsch@suse.de
+
+- X.Org 7.2RC1 package update:
+  * xf86-video-i128-1.1.0.6
+  * xf86-video-voodoo-1.1.1
+  * xf86-video-nsc-2.8.2
+  * xf86-video-tseng-1.1.1
+  * xf86-video-sis-0.9.2
+  * xf86-video-vesa-1.2.2
+  * xf86-video-newport-0.2.1
+  * xf86-video-via-0.2.2
+  * xf86-video-tdfx-1.2.2
+  * xf86-video-mga-1.4.3
+  * xf86-video-trident-1.2.2
+  * xf86-video-rendition-4.1.1
+  * xf86-video-siliconmotion-1.4.2
+
+-------------------------------------------------------------------
+Fri Oct 13 15:14:06 CEST 2006 - sndirsch@suse.de
+
+- update i810 driver to release 1.7.2 
+  * Turn off debugging.
+
+-------------------------------------------------------------------
+Fri Oct 13 14:21:15 CEST 2006 - sndirsch@suse.de
+
+- update i810 driver to release 1.7.1
+  * Fix bug #8553 & #8542 - suspend/resume regression from ...
+  * Fix some warnings
+  * Fix server regeneration problem mapping the aperture
+  * Fix bug #5795, VT switching fails because of a bad ...
+  * silence warning xf86-video-intel-1.7.0 / xf86-video-i810-1.7.0
+  * Enable XV_PORT attribute even when not in Clone mode.
+
+-------------------------------------------------------------------
+Wed Oct 11 18:13:50 CEST 2006 - sndirsch@suse.de
+
+- fixed build of via driver (build enabled again, Bug #207118)
+
+-------------------------------------------------------------------
+Mon Oct  9 16:22:59 CEST 2006 - sndirsch@suse.de
+
+- update savage driver to release 2.1.2
+  * EXA support (copy and solid only)
+  * PCI BAR refactoring (preparation for PCI-rework)
+  * fix DRI locking
+  * bug fixes
+- update i810 driver to release 1.7.0
+  * Typo fix in man page (Debian bug #364559).
+  * Fix bug #5150. Disable LVDS usage on i915G, i945G and i965G.
+  * Disable device check when mergedfb in operation.
+  * Fix bug #7930, i810 doesn't compile without DRI
+  * remove GL* usage
+  * fix typo
+  * Fix SetVBlank to operate all the time
+  * Fix bug with probing info of DFP2 and LFP2 connected
+  * When in MergedFB mode, fix offscreen memory allocation.
+  * Fix bug #7943 where video flickers when changing
+  * bump max Xvideo height to 1088 to cope with some players.
+  * Fix issues with Xv locking up the engine. bug #7915.
+  * Missing gamma bit
+  * bump to 1.7.0
+  * silence warning
+  * Bug #7905: Mark DRI state as dirty in 965 textured video, 
+    fixing hangs with 3d.
+  * Add a check for intel-gen4asm, and rules to compile
+    {wm,sf}_prog.h using it.
+  * Fix a compile failure from the last commit.
+  * Only enable the IRQ after DRIFinishScreenInit.
+  * If the DRM can handle it, enable vertical blank interrupts for
+    both pipes.
+  * Store viewport limits of both pipes in SAREA.
+  * Always call I830UpdateXineramaScreenInfo() unconditionally, and
+    document why.
+  * Fix undefined alloc type for agp memory
+- update ati driver to release 6.6.3
+  * The main fix is for rn50/M6/M7 stability problems since memmap
+  * obsoletes radeon_rn50_memmap.diff
+
+-------------------------------------------------------------------
+Wed Sep 20 21:23:42 CEST 2006 - sndirsch@suse.de
+
+- disabled build of via driver for now (Bug #207118) 
+
+-------------------------------------------------------------------
+Tue Sep 19 14:43:07 CEST 2006 - sndirsch@suse.de
+
+- update to mga driver to release 1.4.2
+  * Fix locking issues that prevented DRI from working. Some
+    compile warnings were also removed and some code refactored.
+  * obsoletes xf86-video-mga.diff
+
+-------------------------------------------------------------------
+Mon Sep 18 15:26:33 CEST 2006 - sndirsch@suse.de
+
+- radeon_rn50_memmap.diff/radeon_rn50_memmap-sle10.diff:
+  * This should fixup the rn50/m6/m7 memory map problem that has
+    been reported since BenH's memory mapping changes (Bug #204882)
+
+-------------------------------------------------------------------
+Wed Sep 13 05:03:02 CEST 2006 - sndirsch@suse.de
+
+- radeon-vbios-ppc.diff:
+  * let RADEONGetBIOSInfo fail on ppc as before since content in 
+    VBIOS on ppc seem to be bogus anyway (Bug #197847)
+  * obsoletes radeon-min_dotclock.diff
+
+-------------------------------------------------------------------
+Fri Sep  1 08:38:22 CEST 2006 - sndirsch@suse.de
+
+- removed Requires: xorg-x11-server, since xorg-x11-input-video is
+  already required by xorg-x11-server, which resulted in a fatal 
+  dependancy cycle
+
+-------------------------------------------------------------------
+Mon Aug 28 22:41:30 CEST 2006 - sndirsch@suse.de
+
+- radeon-min_dotclock.diff:
+  * check for bogus minclock in VBIOS and set a reasonable value
+    instead (Bug #197847)
+
+-------------------------------------------------------------------
+Fri Aug 25 06:31:56 CEST 2006 - sndirsch@suse.de
+
+- updated ati/r128/radeon driver combo to release 6.6.2 -
+  "Lots of fixes, mostly the best ones are stability for r300."
+- obsoletes p_bug148696.diff, radeon_bios.diff,
+  rn50_disable-render-accel.diff
+
+-------------------------------------------------------------------
+Fri Aug 11 17:01:22 CEST 2006 - sndirsch@suse.de
+
+- updated i810/intel driver to release 1.6.5
+  * Fixes DRI compatibility with pre-1.6.4 releases, and improves 
+    i915 textured video.
+
+-------------------------------------------------------------------
+Thu Aug 10 04:52:12 CEST 2006 - sndirsch@suse.de
+
+- updated i810/intel driver to release 1.6.4
+  * New release providing i965 support
+
+-------------------------------------------------------------------
+Tue Aug  8 18:07:08 CEST 2006 - sndirsch@suse.de
+
+- updated i810/intel driver to release 1.6.3 
+  * Add mergedfb support to the intel driver
+  * Update Xvideo to deal with MergedFB modes.
+  * When detecting new monitors in mergedfb renew the modepool.
+  * Calculate allowable refresh rates on the private
+  * Fix pipe reversal for Xv
+  * Fix DGA with MergedFB
+  * Ensure palette is updated in mergedfb & clone modes
+  * Disable detecting of new monitors on VT switch.
+  * Re-enable monitor detect after a few fixups.
+  * check for xineramaproto
+- disabled p_i810-refresh.diff due to radical driver changes for
+  now
+
+-------------------------------------------------------------------
+Sun Aug  6 16:12:10 CEST 2006 - sndirsch@suse.de
+
+- p_i810-refresh.diff:
+  * refresh rates fixes (Bug #102345)
+
+-------------------------------------------------------------------
+Tue Aug  1 11:35:08 CEST 2006 - sndirsch@suse.de
+
+- fixed build of nsc driver by adding -DXFree86Server to CFLAGS
+
+-------------------------------------------------------------------
+Sat Jul 29 10:27:36 CEST 2006 - sndirsch@suse.de
+
+- fixed fatal compiler warnings 
+
+-------------------------------------------------------------------
+Fri Jul 28 14:43:56 CEST 2006 - sndirsch@suse.de
+
+- use "-fno-strict-aliasing" 
+
+-------------------------------------------------------------------
+Thu Jul 27 16:41:53 CEST 2006 - sndirsch@suse.de
+
+- build Matrox HAL library (required for MergedFB and other
+  features)
+
+-------------------------------------------------------------------
+Thu Jul 27 11:36:31 CEST 2006 - sndirsch@suse.de
+
+- use $RPM_OPT_FLAGS 
+
+-------------------------------------------------------------------
+Thu Jul 27 04:55:34 CEST 2006 - sndirsch@suse.de
+
+- updated i810 driver to release 1.6.1 
+
+-------------------------------------------------------------------
+Mon Jul 24 23:05:51 CEST 2006 - sndirsch@suse.de
+
+- fixed fatal compiler warnings
+
+-------------------------------------------------------------------
+Tue Jun 27 15:03:43 CEST 2006 - sndirsch@suse.de
+
+- created package 
+

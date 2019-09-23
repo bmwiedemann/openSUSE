@@ -1,0 +1,9 @@
+<package name="kirigami-gallery" project="openSUSE:Factory">
+  <title>Gallery application built using Kirigami</title>
+  <description>Example application which uses all features from kirigami,
+including links to the sourcecode, tips on how to use the
+components and links to the corresponding HIG pages and
+code examples on cgit</description>
+  <devel project="KDE:Applications" package="kirigami-gallery"/>
+  <url>http://www.kde.org</url>
+</package>

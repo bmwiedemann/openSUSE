@@ -1,0 +1,5 @@
+<package name="rubygem-yast-rake" project="openSUSE:Factory">
+  <title>Rake tasks for yast modules</title>
+  <description>Rake tasks for yast modules</description>
+  <devel project="YaST:Head" package="rubygem-yast-rake"/>
+</package>

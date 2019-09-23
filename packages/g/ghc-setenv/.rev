@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c4d8d94b8c7c888c4e09bbfd495a45ad</srcmd5>
+    <version>0.1.1.3</version>
+    <time>1462260948</time>
+    <user>dimstar_suse</user>
+    <comment>Add ghc-setenv to Factory, which is required by git-annex. See https://lists.opensuse.org/opensuse-factory/2016-03/msg00346.html for more details.</comment>
+    <requestid>381651</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>af0ac620aca9cb4231cc36aa9b370985</srcmd5>
+    <version>0.1.1.3</version>
+    <time>1469628641</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411989</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8f20c72d077eb76bf97db494e83d630f</srcmd5>
+    <version>0.1.1.3</version>
+    <time>1505506334</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525369</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>481e8b39c2e0f3eeed83b9fddd2d788e</srcmd5>
+    <version>0.1.1.3</version>
+    <time>1527675634</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609817</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>44a5fc9803c6e57fd516789a45dc69ab</srcmd5>
+    <version>0.1.1.3</version>
+    <time>1532445831</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623909</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>9b1e6b87009d3788a253ad2da50794eb</srcmd5>
+    <version>0.1.1.3</version>
+    <time>1540451057</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643456</requestid>
+  </revision>
+</revisionlist>

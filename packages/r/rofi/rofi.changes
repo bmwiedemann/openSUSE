@@ -1,0 +1,291 @@
+-------------------------------------------------------------------
+Mon Jul  1 11:12:09 UTC 2019 - mvetter@suse.com
+
+- Update to version 1.5.4:
+  * Fix crash in SSH dialog
+
+-------------------------------------------------------------------
+Mon Jun 24 06:00:15 UTC 2019 - mvetter@suse.com
+
+- Update to version 1.5.3:
+  * Sidebar renamed to mode-switcher
+  * Icons in dmenu
+  * Ellipsizing listview entries
+  * Update manpage with missing entry. (#937)
+  * Rename sidebar widget to mode-switcher and allow configuration from theme.
+  * Timing: Moving timing output to glib debug system.
+  * SSH: Fix unitialized variable issue.
+  * SSH: resolve ':' conflict in history entries.
+  * SSH: be case-insensitive when parsing keywords.
+  * RASI Lexer: Fix nested () in variable default field.
+  * USABILITY: When mode not found, show in gui not just on commandline.
+  * ICON: Allow aligning image in icon widget.
+  * Meson build system: cleanups and improvements.
+  * Meson build system: add documentation (#943)
+  * Window: Fix default formatting and remove (invalid) deprecation warning.
+  * DMenu: Add support for showing icons infront of displayed list.
+  * Overlay: Fix overlay widget to correctly integrate in new theme format.
+  * Update libnkutils, libgwater.
+  * DMENU: Add format option to strip pango markup from return value.
+  * ListView: allow user to change ellipsizing displayed value at run-time.
+- Update xdg-terminal.patch
+
+-------------------------------------------------------------------
+Sun Dec 30 16:53:18 UTC 2018 - mvetter@suse.com
+
+- Update to version 1.5.2:
+  * Clearify Check dependency. (#879)
+  * Add option to change negate character. (#877)
+  * Fix assert and update test. (#875)
+  * Add missing example Script (#869)
+  * Add drun-display-format option. (#858)
+  * Fixing typos (#867,#837,#831,#804)
+  * Fix loading icons that are in cache (#860)
+  * Improve ssh known_host parser. (#820)
+  * Add terminals to rofi-sensible-terminal (#808)
+  * Lexer Fix several ambiguity and handling of empty input.
+  * IconFetcher preload the user set icon theme.
+  * IconFetcher use generic threadpool.
+  * Lexer support environment variables.
+  * Cleanup syntax for sorting. (#816)
+  * Documents update.
+  * Fix how borders are drawn. (#792, #783)
+
+-------------------------------------------------------------------
+Sun Mar 18 18:30:39 UTC 2018 - avindra@opensuse.org
+
+- Update to version 1.5.1
+  * [SSH] Reload when ssh entry is deleted.
+  * Add support for randr 1.5 monitors.
+  * Fix border layout structure.
+  * Fix make test in libnkutils.
+  * Fix typos in theme manpage.
+  * Fix README config file location.
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Feb  1 22:35:57 UTC 2018 - avindra@opensuse.org
+
+- Update to version 1.5.0:
+  * New features
+    + Specify matching field
+    + Pass extra properties in script mode
+    + Negated matching
+  * Backwards incompatible changes:
+    + All Mouse buttons and scroll bindings Prompt colon have more
+      semantic names
+  * Changes
+    + Prompt colon is now removed by default
+    + In themes the '#' prefix before the element name is now
+      optional
+  * For full details, see:
+    https://github.com/DaveDavenport/rofi/releases/tag/1.5.0
+- switch to xz tarball
+- rebase xdg-terminal.patch
+- add fix-shebangs.patch
+- spec file tidiness:
+  - use valid group for devel package
+  - remove unnecessary build dependencies
+  - remove explicit prefix for "devel" packages
+
+-------------------------------------------------------------------
+Sun Oct 15 11:36:06 UTC 2017 - mvetter@suse.com
+
+- Update to version 1.4.2:
+  * Add sort to manpage. (#682[1])
+  * Add tranaparent to theme manpage. (#688[2])
+  * Re-add theme headers. (#679[3])
+  * Fix super key. (#684[4])
+  * Unknown option libnkutils:uuid. (#677[5])
+  * Mode window is not found. (#686[6])
+  * Fix meson build in dist file.
+
+-------------------------------------------------------------------
+Wed Sep 27 08:25:18 UTC 2017 - mvetter@suse.com
+
+- Update to version 1.4.1:
+  * Improved error messages
+  * Customizable highlight, allowing underline, strikethrough,
+    italic, bold, small caps and the color to be set.
+  * Give up when keyboard is not grabbed in first 5 seconds.
+  * Improve manpage
+  * Super-{1..10} hotkeys for selecting the first 10 rows.
+  * Allow x-align/y-align on textbox.
+  * Support matching bangs on multiple characters in combi mode. (#542)
+  * Set WM_CLASS (#549)
+  * Async pre-read 25 rows for improving user experience. (#550)
+  * Improve handling in floating window manager by always setting window size.
+  * DRun speedups.
+  * Make lazy-grab default.
+  * Remove extra layer in textbox. (#553)
+  * Ignore fonts that result in a family name or size 0. (#554)
+  * [Combi] Allow bang to match multiple modes. (#552)
+  * Add detection of window manager and work around quirks.
+  * Support dynamic plugins.
+  * DMENU tty detection.
+  * Support for icons in drun, combi and window mode.
+  * Startup notification of launched application support.
+  * Meson support.
+  * Fuzzy matching with fzf based sorting algorithm.
+  * Auto-detect DPI.
+  * Set cursor at the end of the input field. (#662)
+  * Meson support (thx to SardemFF7).
+  * [Script] parse the command as if it was commandline. (#650)
+  * Don't enable asan by meson. (#642)
+  * Allow text widgets to be added in theme and string to be set.
+  * [Dmenu] Support the -w flag.
+  * Allow window (via window id) to be location for rofi window.
+  * [Dmenu] Allow multi-select mode in -no-custom mode.
+  * Flex/Bison based parser for new theme format.
+  * Meson build support.
+  * Initial plugin support, exporting of pkg-config file for rofi.
+  * Improved positioning support for placing window on monitor.
+  * Allow rofi to be placed above window based on window id.
+  * Support different font per textbox.
+- Update xdg-terminal.patch
+- Still use automake due to
+  https://github.com/DaveDavenport/rofi/issues/677
+- Don't use 'check' yet because 0.11 is not yet in TW
+
+-------------------------------------------------------------------
+Thu Feb  2 00:38:38 UTC 2017 - jengelh@inai.de
+
+- Trim description
+
+-------------------------------------------------------------------
+Wed Jan 11 18:57:19 UTC 2017 - mvetter@suse.com
+
+- Update to version 1.3.1:
+  New Features
+    * [DRun] Search categories. (#449)
+  Improvements
+    * Fix exit when failed to grab keyboard. (#524)
+    * Introduce lazy keyboard grab mode for people who want rofi to show on key-down in i3.
+    * Add copyrights to theme (needed for debian packaging).
+    * DMENU: Correctly detect end-of-file (#518)
+    * Directly queue redraw on overlay change.
+    * Remove pango markup from workspace names in I3. (#507)
+
+-------------------------------------------------------------------
+Wed Sep  7 07:34:48 UTC 2016 - mvetter@suse.com
+
+- Update to version 1.2.0:
+  New Features
+    * Highlight matched part of the string.
+    * Make window switcher string customizable.
+  Improvements
+    * Improved selection mode in dmenu with selection counter. 
+    * Improved selection mode with 'dot' indicator.
+    * Fix Current Desktop window switcher.
+    * Fix  launching in terminal.
+    * Supports include in config.
+    * Add Control+k remove till eol keybinding.
+    * Change clear line to Control+w and make Control+u remove till sol (matching readline)
+    * Track origin of option value e.g. who set the option.
+    * Comment default values in dump-xresources.
+    * Fix displaying on 30bit 10bpc X setup.
+  Removals:
+    * Remove xlib dependency (xcb-xrm)
+    * Remove fuzzy option
+    * Remove i3 workaround as it no longer needed since I3 v4.9. (Feb. 2015)
+- Remove BuildRequire xorg-x11-devel in favour of xcb-util-xrm-devel
+
+-------------------------------------------------------------------
+Thu Jun 16 12:18:30 UTC 2016 - mvetter@suse.com
+
+- Fix typo in xdg-terminal.patch
+
+-------------------------------------------------------------------
+Thu Jun 16 11:57:08 UTC 2016 - mvetter@suse.com
+
+- Update to version 1.1.0:
+  New Features
+    * Keys mode, showing keybindings.
+	* Stop cycling option (#407) (Thx to Yaroslav)
+    * Kill window on delete entry (#316)
+  Improvements
+    * Add Control+Backspace as remove word back keybinding.
+    * Allow user to use X11 background for fake transparency (#390)
+    * Allow user to specify background image.
+    * Improved keybinding handling, allowing on-release and modifier only (#384).
+    * Use display name for prompt (#409)
+    * Parse subdirectories in drun parser (#416)
+    * Switch to stop cycling (#407)
+  Bug fixes
+	* Grab mouse pointer with keyboard
+- Update xdg-terminal.patch to match
+
+-------------------------------------------------------------------
+Thu May 12 09:55:37 UTC 2016 - mvetter@suse.com
+
+- Update to version 1.0.1
+  * Fix typo in manpage.
+  * Return old behaviour for rofi placement (#395, #389)
+  * Switch desktop when switching window (#393)
+  * Remove unneeded use of bash (#391)
+  * Make history parser more robust against corrupted files. (#388)
+  * Fix desktop number (#386)
+
+-------------------------------------------------------------------
+Tue Apr 19 09:56:02 UTC 2016 - mvetter@suse.com
+
+- Update to version 1.0.0
+- Uses xcb instead of xlib now
+    New Features:
+  * Blinking cursor
+  * Separate configuration file
+  * History in drun mode (#343)
+  * Context menu mode, show rofi at the mouse pointer
+    Improvement:
+  * auto select and single item on dmenu mode (#281)
+  * Unlimited window title length.
+  * Correctly follow the active desktop, instead of active window.
+  * If requesting modi that is not enabled, show it anyway.
+  * DMenu password mode. (#315)
+  * Levenshtein sort is now UTF-8 aware.
+  * Use xcb instead of large xlib library.
+  * Use GLib mainloop for cleaner code and easier external event based handling in future.
+  * Run dialog: Try to convert between locale, fs encoding and utf8. Fixing problems with non-utf8 filesystem encodings.
+  * Try to display non-utf8 strings as good as possible.
+  * Autocomplete bang hint in combi mode (#380)
+  * Remove magic line length limits by switching to getline from fgets.
+  * Print git version for git builds in version string.
+	Bug fixes:
+  * Fix subpixel rendering. (#303)
+  * Fix basic tests on OpenBSD (#272)
+  * Fix wrong use of memcpy (thx to Jasperia).
+  * Work around for sigwaitinfo on OpenBSD.
+  * Ignore invalid entries (non-utf8) in dmenu mode.
+  * Glib signal handling.
+  * Fix connecting to i3 on bsd.
+  * Be able to distinguish between empty and cancel in dmenu mode. (#323)
+  * Fix memcpy on single memory region. (#312)
+  * Fix opening file with mode a+ and using fseek to overwrite on bsd.
+	Regressions
+  * Removal of old themeing method. Given it was incomplete.
+  * Removal of daemon mode, given this duplicates Window Manager functionality.
+
+-------------------------------------------------------------------
+Mon Mar  7 09:53:19 UTC 2016 - mvetter@suse.com
+
+- Update to version 0.15.12
+  * keyboard layout bugfixes
+  * speedups for dmenu reading
+  * multi core
+  * better themes support
+  * a lot more
+
+- Remove 0001-Replace-x-terminal-emulator-with-xdg-terminal.patch:
+  and add xdg-terminal.patch: using xdg-terminal
+
+-------------------------------------------------------------------
+Tue Aug  4 10:48:35 UTC 2015 - mvetter@suse.com
+
+- Add patch 0001-Replace-x-terminal-emulator-with-xdg-terminal.patch
+  to use xdg-terminal instead of x-terminal-emulator.
+
+-------------------------------------------------------------------
+Tue Jul 28 16:05:59 UTC 2015 - mvetter@suse.com
+
+- Initial package for version 0.15.7.
+

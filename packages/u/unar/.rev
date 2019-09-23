@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>93f346b3f4fb7f9f92b1cc733821a7b4</srcmd5>
+    <version>1.10.1</version>
+    <time>1485250762</time>
+    <user>dimstar_suse</user>
+    <comment>Added flag but also a couple of patches.</comment>
+    <requestid>451859</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>094131f76f4e20c8139b8dcd0310de04</srcmd5>
+    <version>1.10.1</version>
+    <time>1485383634</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452144</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>496c9c611477d88e5df79ece3439d1a1</srcmd5>
+    <version>1.10.1</version>
+    <time>1519486739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579544</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>234ab6a9fbd4c2ed2a03b4339820c58f</srcmd5>
+    <version>1.10.1</version>
+    <time>1521579682</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589201</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>da7985ab7548a5e5b86a7cccea173eb8</srcmd5>
+    <version>1.10.1</version>
+    <time>1551024832</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672799</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0a2821d820b3681729b02df83fd0ede8</srcmd5>
+    <version>1.10.5</version>
+    <time>1556107034</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697185</requestid>
+  </revision>
+</revisionlist>

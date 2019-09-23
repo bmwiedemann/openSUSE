@@ -1,0 +1,236 @@
+Index: gnump3d-3.0/lib/gnump3d/plugins/copying.pm
+===================================================================
+--- gnump3d-3.0.orig/lib/gnump3d/plugins/copying.pm	2007-10-18 19:34:02.000000000 +0200
++++ gnump3d-3.0/lib/gnump3d/plugins/copying.pm	2010-04-06 15:33:02.000000000 +0200
+@@ -68,11 +68,11 @@ sub getAuthor
+ sub getVersion
+ {
+     my $REVISION      = '$Id: copying.pm,v 1.6 2005/12/03 17:56:36 skx Exp $';
+-    $VERSION = join (' ', (split (' ', $REVISION))[1..2]);
+-    $VERSION =~ s/,v\b//;
+-    $VERSION =~ s/(\S+)$/($1)/;
++    my $MVERSION = join (' ', (split (' ', $REVISION))[1..2]);
++    $MVERSION =~ s/,v\b//;
++    $MVERSION =~ s/(\S+)$/($1)/;
+ 
+-    return( $VERSION );
++    return( $MVERSION );
+ }
+ 
+ 
+Index: gnump3d-3.0/lib/gnump3d/plugins/info.pm
+===================================================================
+--- gnump3d-3.0.orig/lib/gnump3d/plugins/info.pm	2007-10-18 19:34:02.000000000 +0200
++++ gnump3d-3.0/lib/gnump3d/plugins/info.pm	2010-04-06 15:34:12.000000000 +0200
+@@ -74,12 +74,12 @@ sub getAuthor
+ sub getVersion
+ {
+     my $REVISION      = '$Id: info.pm,v 1.15 2007/10/16 19:10:22 skx Exp $';
+-    my $VERSION       = "";
+-    $VERSION = join (' ', (split (' ', $REVISION))[1..2]);
+-    $VERSION =~ s/,v\b//;
+-    $VERSION =~ s/(\S+)$/($1)/;
++    my $MVERSION       = "";
++    $MVERSION = join (' ', (split (' ', $REVISION))[1..2]);
++    $MVERSION =~ s/,v\b//;
++    $MVERSION =~ s/(\S+)$/($1)/;
+ 
+-    return( $VERSION );
++    return( $MVERSION );
+ }
+ 
+ 
+Index: gnump3d-3.0/lib/gnump3d/plugins/now.pm
+===================================================================
+--- gnump3d-3.0.orig/lib/gnump3d/plugins/now.pm	2007-10-18 19:34:02.000000000 +0200
++++ gnump3d-3.0/lib/gnump3d/plugins/now.pm	2010-04-06 15:33:37.000000000 +0200
+@@ -72,12 +72,12 @@ sub getAuthor
+ sub getVersion
+ {
+     my $REVISION      = '$Id: now.pm,v 1.11 2007/10/16 19:10:22 skx Exp $';
+-    my $VERSION       = "";
+-    $VERSION = join (' ', (split (' ', $REVISION))[1..2]);
+-    $VERSION =~ s/,v\b//;
+-    $VERSION =~ s/(\S+)$/($1)/;
++    my $MVERSION       = "";
++    $MVERSION = join (' ', (split (' ', $REVISION))[1..2]);
++    $MVERSION =~ s/,v\b//;
++    $MVERSION =~ s/(\S+)$/($1)/;
+ 
+-    return( $VERSION );
++    return( $MVERSION );
+ }
+ 
+ 
+Index: gnump3d-3.0/lib/gnump3d/plugins/playlist.pm
+===================================================================
+--- gnump3d-3.0.orig/lib/gnump3d/plugins/playlist.pm	2007-10-18 19:34:02.000000000 +0200
++++ gnump3d-3.0/lib/gnump3d/plugins/playlist.pm	2010-04-06 15:32:35.000000000 +0200
+@@ -92,12 +92,12 @@ sub getAuthor
+ sub getVersion
+ {
+     my $REVISION      = '$Id: playlist.pm,v 1.16 2007/10/16 19:17:04 skx Exp $';
+-    my $VERSION       = "";
+-    $VERSION = join (' ', (split (' ', $REVISION))[1..2]);
+-    $VERSION =~ s/,v\b//;
+-    $VERSION =~ s/(\S+)$/($1)/;
++    my $MVERSION       = "";
++    $MVERSION = join (' ', (split (' ', $REVISION))[1..2]);
++    $MVERSION =~ s/,v\b//;
++    $MVERSION =~ s/(\S+)$/($1)/;
+ 
+-    return( $VERSION );
++    return( $MVERSION );
+ }
+ 
+ 
+Index: gnump3d-3.0/lib/gnump3d/plugins/prefs.pm
+===================================================================
+--- gnump3d-3.0.orig/lib/gnump3d/plugins/prefs.pm	2007-10-18 19:34:02.000000000 +0200
++++ gnump3d-3.0/lib/gnump3d/plugins/prefs.pm	2010-04-06 15:34:36.000000000 +0200
+@@ -73,12 +73,12 @@ sub getAuthor
+ sub getVersion
+ {
+     my $REVISION      = '$Id: prefs.pm,v 1.14 2005/12/05 23:30:06 skx Exp $';
+-    my $VERSION       = "";
+-    $VERSION = join (' ', (split (' ', $REVISION))[1..2]);
+-    $VERSION =~ s/,v\b//;
+-    $VERSION =~ s/(\S+)$/($1)/;
++    my $MVERSION       = "";
++    $MVERSION = join (' ', (split (' ', $REVISION))[1..2]);
++    $MVERSION =~ s/,v\b//;
++    $MVERSION =~ s/(\S+)$/($1)/;
+ 
+-    return( $VERSION );
++    return( $MVERSION );
+ }
+ 
+ 
+Index: gnump3d-3.0/lib/gnump3d/plugins/random.pm
+===================================================================
+--- gnump3d-3.0.orig/lib/gnump3d/plugins/random.pm	2007-10-18 19:34:02.000000000 +0200
++++ gnump3d-3.0/lib/gnump3d/plugins/random.pm	2010-04-06 15:33:14.000000000 +0200
+@@ -68,12 +68,12 @@ sub getAuthor
+ sub getVersion
+ {
+     my $REVISION      = '$Id: random.pm,v 1.24 2006/08/12 22:04:10 skx Exp $';
+-    my $VERSION       = "";
+-    $VERSION = join (' ', (split (' ', $REVISION))[1..2]);
+-    $VERSION =~ s/,v\b//;
+-    $VERSION =~ s/(\S+)$/($1)/;
++    my $MVERSION       = "";
++    $MVERSION = join (' ', (split (' ', $REVISION))[1..2]);
++    $MVERSION =~ s/,v\b//;
++    $MVERSION =~ s/(\S+)$/($1)/;
+ 
+-    return( $VERSION );
++    return( $MVERSION );
+ }
+ 
+ 
+Index: gnump3d-3.0/lib/gnump3d/plugins/recent.pm
+===================================================================
+--- gnump3d-3.0.orig/lib/gnump3d/plugins/recent.pm	2007-10-18 19:34:02.000000000 +0200
++++ gnump3d-3.0/lib/gnump3d/plugins/recent.pm	2010-04-06 15:32:50.000000000 +0200
+@@ -70,11 +70,11 @@ sub getAuthor
+ sub getVersion
+ {
+     my $REVISION      = '$Id: recent.pm,v 1.9 2005/12/03 18:17:44 skx Exp $';
+-    $VERSION = join (' ', (split (' ', $REVISION))[1..2]);
+-    $VERSION =~ s/,v\b//;
+-    $VERSION =~ s/(\S+)$/($1)/;
++    my $MVERSION = join (' ', (split (' ', $REVISION))[1..2]);
++    $MVERSION =~ s/,v\b//;
++    $MVERSION =~ s/(\S+)$/($1)/;
+ 
+-    return( $VERSION );
++    return( $MVERSION );
+ }
+ 
+ 
+Index: gnump3d-3.0/lib/gnump3d/plugins/search.pm
+===================================================================
+--- gnump3d-3.0.orig/lib/gnump3d/plugins/search.pm	2007-10-18 19:34:02.000000000 +0200
++++ gnump3d-3.0/lib/gnump3d/plugins/search.pm	2010-04-06 15:33:49.000000000 +0200
+@@ -78,12 +78,12 @@ sub getAuthor
+ sub getVersion
+ {
+     my $REVISION      = '$Id: search.pm,v 1.16 2006/04/25 17:31:44 skx Exp $';
+-    my $VERSION       = "";
+-    $VERSION = join (' ', (split (' ', $REVISION))[1..2]);
+-    $VERSION =~ s/,v\b//;
+-    $VERSION =~ s/(\S+)$/($1)/;
++    my $MVERSION       = "";
++    $MVERSION = join (' ', (split (' ', $REVISION))[1..2]);
++    $MVERSION =~ s/,v\b//;
++    $MVERSION =~ s/(\S+)$/($1)/;
+ 
+-    return( $VERSION );
++    return( $MVERSION );
+ }
+ 
+ 
+Index: gnump3d-3.0/lib/gnump3d/plugins/size.pm
+===================================================================
+--- gnump3d-3.0.orig/lib/gnump3d/plugins/size.pm	2007-10-18 19:34:02.000000000 +0200
++++ gnump3d-3.0/lib/gnump3d/plugins/size.pm	2010-04-06 15:33:27.000000000 +0200
+@@ -70,12 +70,12 @@ sub getAuthor
+ sub getVersion
+ {
+     my $REVISION      = '$Id: size.pm,v 1.9 2005/12/03 18:15:35 skx Exp $';
+-    my $VERSION       = "";
+-    $VERSION = join (' ', (split (' ', $REVISION))[1..2]);
+-    $VERSION =~ s/,v\b//;
+-    $VERSION =~ s/(\S+)$/($1)/;
++    my $MVERSION       = "";
++    $MVERSION = join (' ', (split (' ', $REVISION))[1..2]);
++    $MVERSION =~ s/,v\b//;
++    $MVERSION =~ s/(\S+)$/($1)/;
+ 
+-    return( $VERSION );
++    return( $MVERSION );
+ }
+ 
+ 
+Index: gnump3d-3.0/lib/gnump3d/plugins/stats.pm
+===================================================================
+--- gnump3d-3.0.orig/lib/gnump3d/plugins/stats.pm	2007-10-18 19:34:02.000000000 +0200
++++ gnump3d-3.0/lib/gnump3d/plugins/stats.pm	2010-04-06 15:32:22.000000000 +0200
+@@ -69,12 +69,12 @@ sub getAuthor
+ sub getVersion
+ {
+     my $REVISION      = '$Id: stats.pm,v 1.7 2005/12/03 18:15:35 skx Exp $';
+-    my $VERSION       = "";
+-    $VERSION = join (' ', (split (' ', $REVISION))[1..2]);
+-    $VERSION =~ s/,v\b//;
+-    $VERSION =~ s/(\S+)$/($1)/;
++    my $MVERSION       = "";
++    $MVERSION = join (' ', (split (' ', $REVISION))[1..2]);
++    $MVERSION =~ s/,v\b//;
++    $MVERSION =~ s/(\S+)$/($1)/;
+ 
+-    return( $VERSION );
++    return( $MVERSION );
+ }
+ 
+ 
+Index: gnump3d-3.0/lib/gnump3d/plugins/tagbrowse.pm
+===================================================================
+--- gnump3d-3.0.orig/lib/gnump3d/plugins/tagbrowse.pm	2007-10-18 19:34:02.000000000 +0200
++++ gnump3d-3.0/lib/gnump3d/plugins/tagbrowse.pm	2010-04-06 15:33:59.000000000 +0200
+@@ -45,11 +45,11 @@ sub getAuthor
+ sub getVersion
+ {
+     my $REVISION      = '$Id: tagbrowse.pm,v 1.6 2005/12/05 23:23:31 skx Exp $';
+-    $VERSION = join (' ', (split (' ', $REVISION))[1..2]);
+-    $VERSION =~ s/,v\b//;
+-    $VERSION =~ s/(\S+)$/($1)/;
++    my $MVERSION = join (' ', (split (' ', $REVISION))[1..2]);
++    $MVERSION =~ s/,v\b//;
++    $MVERSION =~ s/(\S+)$/($1)/;
+ 
+-    return( $VERSION );
++    return( $MVERSION );
+ }
+ 
+ 

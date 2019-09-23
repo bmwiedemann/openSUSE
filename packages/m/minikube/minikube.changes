@@ -1,0 +1,374 @@
+-------------------------------------------------------------------
+Mon Jun 24 14:33:12 UTC 2019 - Dany Marcoux <dmarcoux@suse.com>
+
+- Add libvirt to recommended packages
+
+-------------------------------------------------------------------
+Thu May  2 09:16:54 UTC 2019 - Panagiotis Georgiadis <pgeorgiadis@suse.com>
+
+- Update to 1.0.1
+  * Update default Kubernetes version to 1.14.1
+  * Add --download-only option to start command
+  * Assert that docker has started rather than explicitly restarting it
+  * Download ISO image before Docker images, as it's required first
+  * update-context is confusing with profiles
+  * BugFix: ExecRunner.Copy now parses permissions strings as octal
+  * Add user-friendly error messages for VBOX_THIRD_PARTY & HYPERV_NO_VSWITCH
+  * Don't enable kubelet at boot, for consistency with other components
+  * fix tunnel integration tests for driver None
+  * Reroute logs printed directly to stdout
+  * Systemd returns error on inactive, so allow that
+  * Add known issue: VirtualBox won't boot a 64bits VM when Hyper-V is activated
+  * Upgrade Docker, from 18.06.2-ce to 18.06.3-ce
+  * Use Reference, allow caching images with both Tag and Digest
+  * Added REGISTRY_STORAGE_DELETE_ENABLED environment variable for Registry addon
+  * Escape ‘%’ in console.OutStyle arguments
+  * Add port name to service struct used in minikube service
+  * Update Hyper-V daemons
+  * Avoid surfacing "error: no objects passed to apply" non-error from addon-manager
+  * Don't cache images when --vmdriver=none
+  * Enable CONFIG_NF_CONNTRACK_ZONES
+  * Fixed status checking with non-default apiserver-port.
+  * Escape systemd special chars in docker-env
+  * Add conformance test script
+  * #compdef must be the first line
+
+-------------------------------------------------------------------
+Tue Apr  2 09:59:07 UTC 2019 - Martin Kravec <mkravec@suse.com>
+
+- Update to 1.0.0
+  * Update default Kubernetes version to v1.14.0
+    * NOTE: To avoid interaction issues, we also recommend updating kubectl to a recent release (v1.13+)
+  * Upgrade addon-manager to v9.0 for compatibility with Kubernetes v1.14
+  * Add --image-repository flag so that users can select an alternative repository mirror
+  * Rename MINIKUBE_IN_COLOR to MINIKUBE_IN_STYLE
+  * mount: Allow names to be passed in for gid/uid 
+  * mount: unmount on sigint/sigterm, add --options and --mode, improve UI
+  * --extra-config now work for kubeadm as well
+  * start: Set the default value of --cache to true
+  * Remove the swap partition from minikube.iso
+  * Add solution catalog to help users who run into known problems
+  * Automatically propagate proxy environment variables to docker env
+  * More reliable unmount w/ SIGINT, particularly on kvm2
+  * Remove arch suffixes in image names
+  * Issue #3253, improve kubernetes-version error string
+  * Update kubeadm bootstrap logic so it does not wait for addon-manager
+  * Add explicit kvm2 flag for hidden KVM signature
+  * Remove the rkt container runtime
+  * Store the toolbox on the disk instead of rootfs
+  * fix CHANGE_MINIKUBE_NONE_USER regression from recent changes
+  * Do not wait for k8s-app pods when starting with CNI
+  * Replace server name in updateKubeConfig if --apiserver-name exists #3878
+  * feature-gates via minikube config set
+  * Upgrade crio to v1.13.1, skip install.tools target as it isn't necessary
+  * Update Ingress-NGINX to 0.23 Release
+  * Add addon-manager, dashboard, and storage-provisioner to minikube logs
+  * logs: Add kube-proxy, dmesg, uptime, uname + newlines between log sources
+  * Skip "pull" command if using Kubernetes 1.10, which does not support it.
+  * Allow building minikube for any architecture
+  * Windows installer using installation path for x64 applications
+  * caching: Fix containerd, improve console messages, add integration tests
+  * Fix `minikube addons open heapster`
+
+-------------------------------------------------------------------
+Fri Mar  8 11:23:04 UTC 2019 - Markos Chandras <mchandras@suse.de>
+
+- Update to 0.35.0
+  * Update default Kubernetes version to v1.13.4 (latest stable) (gh#kubernetes/minikube#3807)
+  * Update docker/machine to fix the AMD bug (gh#kubernetes/minikube#3809)
+  * Enable tap and vhost-net in minikube iso (gh#kubernetes/minikube#3758)
+  * Enable kernel modules necessary for IPVS (gh#kubernetes/minikube#3783)
+  * Add Netfilter xt_socket module to complete support for Transparent Proxying (TPROXY) (gh#kubernetes/minikube#3712)
+  * Change DefaultMountVersion to 9p2000.L (gh#kubernetes/minikube#3796)
+  * fix incorrect style name mount (gh#kubernetes/minikube#3789)
+  * When missing a hypervisor, omit the bug report prompt (gh#kubernetes/minikube#3787)
+  * Fix minikube logs for other container runtimes (gh#kubernetes/minikube#3780)
+  * Improve reliability of kube-proxy configmap updates (retry, block until pods are up) (gh#kubernetes/minikube#3774)
+  * update libvirtd (gh#kubernetes/minikube#3711)
+  * Add flag for disabling the VirtualBox VTX check (gh#kubernetes/minikube#3734)
+  * Add make target for building a rpm file (gh#kubernetes/minikube#3742)
+  * Improve building of deb package (versioning and permissions) (gh#kubernetes/minikube#3745)
+  * chown command should be against user $HOME, not roots home directory. (gh#kubernetes/minikube#3719)
+
+-------------------------------------------------------------------
+Wed Feb 27 20:17:14 UTC 2019 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- Update to 0.34.1 
+    * Initial implementation of 'console' package for stylized &
+      localized console output 😂
+    * Podman 1.0.0
+    * fix netstat -f error on linux distros
+    * Upgrade Docker, from 18.06.1-ce to 18.06.2-ce
+    * Upgrade opencontainers/runc to 0a012df
+    * Add DeleteCluster to bootstrapper
+    * and many more, see CHANGELOG.md
+-------------------------------------------------------------------
+Tue Jan 22 10:06:38 UTC 2019 - Nico Kruber <nico.kruber@gmail.com>
+
+- Update to 0.33.1
+  * Install upstream runc into /usr/bin/docker-runc
+  * Set default Kubernetes version to v1.13.2 (latest stable)
+  * Update to opencontainers/runc HEAD as of 2019-01-15
+  * Update to crio-bin v1.13.0
+  * Write /etc/crictl.yaml when starting
+  * Improve failure output when kubeadm init fails
+  * Add new VMware unified driver to supported list
+  * Fix Windows cache path issues with directory hierarchies and
+    lower-case drive letters
+  * Avoid out directory, when listing test files
+  * Do not include the default CNI config by default
+  * Adding more utils tests
+  * Add a storage-provisioner-gluster addon
+  * Improve the default crio-bin configuration
+  * Allow to specify api server port through CLI fix
+  * add brew install instructions for hyperkit
+  * Added defaultDiskSize setup to hyperkit driver
+  * Enable ipvlan kernel module
+  * issue# 3499: minikube status missing newline at end of output
+  * apiserver health: try up to 5 minutes, add newline
+  * Pass network-plugin value to kubelet
+  * Fix missing a line break for minikube status
+  * Documentation - Updating golang requirement to 1.11
+  * Updating e2e tests instructions
+  * Defer dashboard deployment until "minikube dashboard" is
+    executed
+  * Change minikube-hostpath storage class addon from Reconcile
+    to EnsureExists
+  * Tell user given driver has been ignored if exising VM is
+    different
+
+-------------------------------------------------------------------
+Sat Dec 22 22:33:41 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to 0.32.0
+  * Make Kubernetes v1.12.4 the default
+  * Update kubeadm restart commands to support v1.13.x
+  * Make "stop" retry on failure.
+  * VirtualBox time cleanup: sync on boot, don't run timesyncd
+  * Stream cmd output to tests when -v is enabled, and stream SSH output to logs
+  * Document None driver docker compatibility
+  * Enable host DNS resolution in virtualbox driver by default
+  * Fix CRI socket in Kubernetes >= 1.12.0 kubeadmin config
+  * Bump dashboard version to v1.10.1
+  * Hide KVM signature when using GPU passthrough to support more GPU models
+  * Allow ServiceCIDR to be configured via 'service-cluster-ip-range' flag.
+  * Save old cluster config in memory before overwriting
+  * Change restart policy on gvisor pod 
+
+-------------------------------------------------------------------
+Tue Dec 11 13:06:23 UTC 2018 - Panagiotis Georgiadis <pgeorgiadis@suse.com>
+
+- Update to 0.31.0
+* Enable gvisor addon in minikube
+* LoadBalancer emulation with minikube tunnel
+* Add NET_PRIO cgroup to iso
+* Implement a check to see if an ISO URL is valid
+* Update Ingress-NGINX to 0.21 Release
+* Add schedutils to the guest VM for the ionice command (used by k8s 1.12)
+* Remove both the CoreDNS and KubeDNS addons. Let Kubeadm install the correct DNS addon
+* Upgrade Docker, from 17.12.1-ce to 18.06.1-ce
+* Include ISO URL and reduce stutter in download error message
+* Add apiserver check to "status", and block "start" until it's healthy
+* Containerd improvements
+  *  Only restart docker service if container runtime is docker
+  * Restart containerd after stopping alternate runtimes
+* CRI-O improvements
+  * Stop docker daemon, when running cri-o
+  *  Upgrade to crio v1.11.8
+  * Add config parameter for the cri socket path
+
+-------------------------------------------------------------------
+Wed Oct 17 10:43:59 UTC 2018 - Michał Rostecki <mrostecki@suse.de>
+
+- Update to 0.30.0 (bsc#1111347)
+  * CVE-2018-1002103
+    Dashboard vulnerable to DNS rebinding attack
+  * Initial support for Kubernetes 1.12+
+  * Use "kubectl proxy" instead of a NodePort to expose the
+    dashboard
+  * Enhance the Ingress Addon
+  * Upgrade cni and cni-plugins to release version
+  * ensure that /dev has settled before operating
+  * Upgrade gluster client in ISO to 4.1.5
+  * update nginx ingress controller version to 0.19.0
+  * Install crictl from binary instead of from source
+  * Switch the source of libmachine to machine-drivers
+  * Add psmisc package, for pstree command
+
+-------------------------------------------------------------------
+Mon Oct  1 08:24:00 UTC 2018 - Michał Rostecki <mrostecki@suse.de>
+
+- Change summary and description of docker-machine-driver-kvm2
+  * Correct the information about relation between docker-machine
+    and KVM (this is KVM driver for docker-machine, not
+    docker-machine driver for KVM)
+  * Remove authorship info
+
+-------------------------------------------------------------------
+Fri Sep 28 13:14:31 UTC 2018 - Panagiotis Georgiadis <pgeorgiadis@suse.com>
+
+- Update to 0.29.0
+ * Update dashboard version to v1.10.0
+ * Change default docker storage driver to overlay2
+ * support containerd
+ * Make CoreDNS default addon
+ * Update CoreDNS deployment
+ * Upgrade kpod 0.1 to podman 0.4.1
+ * Change dependency management to dep
+ * fix: --format outputs any string, --https only subsitute http URL scheme
+ * Add env variable for default ES_JAVA_OPTS
+ * fix(cli): minikube start --mount --mountsting without write permission
+ * Allow certificates to be optionally embedded in .kube/config
+ * Fix the --cache-images flag
+ * Fix vmwarefusion driver
+ * Revert "Remove untainting logic."
+ * Linux install: Set owner to root
+ * Rm localkube
+ * Update to go 1.10.1 everywhere
+ * Allow to override build date with SOURCE_DATE_EPOC
+
+-------------------------------------------------------------------
+Tue Jul 31 12:48:40 UTC 2018 - mrostecki@suse.de
+
+- Update to 0.28.2
+  * Nvidia driver installation fixed
+
+-------------------------------------------------------------------
+Wed Jul 11 18:59:01 UTC 2018 - mrostecki@suse.com
+
+- Include minikube-rpmlintrc as a source
+
+-------------------------------------------------------------------
+Fri Jun 29 08:05:51 UTC 2018 - dmacvicar@suse.de
+
+- Build docker-machine-driver-kvm2 and create a
+  sub-package for it (except for i586, due to build failure)
+
+-------------------------------------------------------------------
+Thu Jun 28 13:41:31 UTC 2018 - pgeorgiadis@suse.com
+
+- Update to Version 0.28.0
+  * Minikube status command fixes
+  * Boot changes to support virsh console
+  * ISO changes to update to Linux 4.16
+  * ISO changes to support openvswitch/vxlan
+  * Docker API version bumped to 1.35
+  * Added hyperkit options for enterprise VPN support
+  * Caching correct images for k8s version
+  * Cache images feature made synchronous, off by default
+  * CoreDNS updated to 1.1.3
+  * Heapster updated to 1.5.3
+  * Fix for clock skew in certificate creation
+- Remove makefile-go-bindata.patch - it was accepted upstream
+- Remove makefile-goarch.patch - it was accepted upstream
+
+-------------------------------------------------------------------
+Wed Jun  6 11:42:54 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description. Use noun phrase for summary.
+
+-------------------------------------------------------------------
+Thu May 24 15:32:55 UTC 2018 - mrostecki@suse.com
+
+- Update to 0.27.0
+  * Start the default network for the kvm2 driver
+  * Fix 1.9.x versions of Kubernetes with the kubeadm bootstrapper
+  * Switch the ingress addon from an RC to a Deployment
+  * Update nginx ingress controller to 0.14.0
+  * Disable dnsmasq on network for kvm driver
+
+-------------------------------------------------------------------
+Mon Apr 23 14:02:18 UTC 2018 - mrostecki@suse.com
+
+- Update to 0.26.1
+  * Mark hyperkit, kvm2 and none drivers as supported
+  * Bug fix for hyper-v driver
+  * Add back CRI preflight ignore
+  * Fix preflight checks on clusters <1.9
+
+-------------------------------------------------------------------
+Wed Jan  3 15:09:15 UTC 2018 - gunreben@t-online.de
+
+- Fix Makefile to build for architectures different than AMD64
+
+-------------------------------------------------------------------
+Tue Oct 17 23:44:58 UTC 2017 - dmacvicar@suse.de
+
+- Update to 0.22.3
+  * Update dnsmasq to 1.14.5
+  * Windows cache path fix
+  * Windows path fix
+  * Components (apiserver, controller-manager, scheduler, kubelet)
+    can now be configured in the kubeadm bootstrapper with the
+    --extra-config flag
+  * Kubeadm bootstrapper updated to work with Kubernetes v1.8.0
+  * OpenAPI registration fix cherry-picked for compatibility with
+    kubectl v1.8.0
+  * [MINIKUBE ISO] Added cri-o runtime
+
+-------------------------------------------------------------------
+Thu Jun  1 22:14:08 UTC 2017 - fcastelli@suse.com
+
+- Update to 0.19.1
+  * Fixed issue where using TPRs could cause localkube to crash
+  * Added mount daemon that can be started using minikube start
+    --mount --mount-string="/path/to/mount". Cleanup of mount
+    handled by minikube delete
+  * Added minikube "none" driver which does not require a VM but
+    instead launches k8s components on the host
+  * Update kube-dns to 1.14.2
+  * Update kubernetes to 1.6.4
+  * Added minikube ssh-key command which retrieves the ssh key
+    information for the minikubeVM
+  * Fixed vbox interface issue with minikube mount
+
+-------------------------------------------------------------------
+Mon Apr  3 10:27:22 UTC 2017 - fcastelli@suse.com
+
+- Update to 0.17.1
+  * Removed vendored KVM driver so minikube doesn't have a
+    dependency on libvirt-bin
+  * [Minikube ISO] Added ethtool
+  * [Minikube ISO] Added bootlocal.sh script for custom startup
+    options
+  * [Minikube ISO] Added version info in /etc/VERSION
+  * [Minikube ISO] Bumped rkt to v1.24.0
+  * [Minikube ISO] Enabled user namespaces in kernel
+  * [Minikube ISO] /tmp/hostpath_pv and /tmp/hostpath-provisioner
+    are now persisted
+
+-------------------------------------------------------------------
+Sat Feb 11 09:47:42 UTC 2017 - dmacvicar@suse.de
+
+- Update to 0.16.0
+  * Updated minikube ISO to v1.0.6
+  * Updated Registry Creds addon to v1.5
+  * Added check for minimum disk size
+  * Updated kubernetes to v1.5.2
+  * [Minikube ISO] Added back in curl, git, and rsync
+  * [Minikube ISO] Enabled CONFIG_TUN in kernel
+  * [Minikube ISO] Added NFS packages
+  * [Minikube ISO] Enabled swapon on start/stop
+  * [Minikube ISO] Updated CNI to v0.4.0
+  * [Minikube ISO] Fix permissions for /data directory
+  * [Minikube ISO] Updated RKT to v1.23.0
+  * [Minikube ISO] Added in CoreOS toolbox binary
+  * [Minikube ISO] Fixed vboxFS permission error
+
+-------------------------------------------------------------------
+Mon Oct 31 16:12:19 UTC 2016 - fcastelli@suse.com
+
+- Add update-suse-docker-machine-provisioner.patch patch: required
+  to use latest SUSE/openSUSE provisioner of docker-machine
+
+-------------------------------------------------------------------
+Tue Oct 25 13:18:07 UTC 2016 - fcastelli@suse.com
+
+- Split the localkube into a dedicated sub-package
+
+-------------------------------------------------------------------
+Sun Oct 16 09:59:02 UTC 2016 - dmacvicar@suse.de
+
+- initial package for 0.11.0
+
+

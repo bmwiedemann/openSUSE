@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Tue Sep 17 19:32:16 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix icon theme for battery level
+  + Added 0001-data-fix-icon-theme-for-battery-level.patch
+- Fix battery status notifaction parsing
+  + Added 0005-notifications-fix-battery-status-notification-parsin.patch
+
+-------------------------------------------------------------------
+Thu Aug 22 15:39:02 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add a conflict with solaar-cli to solar-udev
+
+-------------------------------------------------------------------
+Thu Aug  1 09:55:42 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix reading and storing DPI settings
+  + Added 0001-Fix-reading-and-storing-DPI-in-config-settings.patch
+
+-------------------------------------------------------------------
+Sat Jul 27 19:01:11 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.0.1:
+  * Updated the repo url.
+  * Fixed typo which was crashing the application.
+  * Improved the HID write routine which was causing issues on some devices.
+  * Fix non-unifying receivers in Linux 5.2.
+  * Add new Lightspeed receiver (used in the G305)
+
+- Updates from version 1.0.0:
+  * First major release after 6 years
+  * Support for a lot of new mice and keyboards
+
+-------------------------------------------------------------------
+Tue Jun 10 10:12:58 UTC 2014 - dmitry_r@opensuse.org
+
+- Disable autostart options in setup script
+
+-------------------------------------------------------------------
+Wed May  7 15:34:00 UTC 2014 - dmitry_r@opensuse.org
+
+- Split CLI to separate package
+- Add runtime requirements
+- Use original udev rules
+
+-------------------------------------------------------------------
+Tue Aug  6 16:30:22 UTC 2013 - malcolmlewis@opensuse.org
+
+- Updated to version 0.9.2:
+  + Added support for hand detection on the K800.
+  + Added support for V550 and V450 Nano.
+  + Fixed side-scrolling wit the M705 Marathon.
+  + Fixed identification of the T650 Touchpad.
+  + Added internationalization support and romanian translation.
+  + Polish translation courtesy of Adrian Piotrowicz.
+- Updates from version 0.9.1:
+  + When devices report a battery alert, only show the alert once.
+  + Make sure devices in the window tree are sorted by registration
+    index.
+  + Added an autostart .desktop file.
+  + Replaced single-instance code with GtkApplication.
+  + Fixed indentification of the M505 mouse.
+  + Fixed an occasional windowing layout bug with the C52F Nano
+    Receiver.
+- Updates from version 0.9.0:
+  + New single-window UI.
+  + Performance MX leds show the current battery charge.
+  + Support the VX Nano mouse.
+  + Faster and more accurate detection of devices.
+  + If upower is accessible through DBus, handle suspend/resume.
+  + Replaced Solaar icons with SVGs.
+  + Running solaar-cli in parallel with solaar is now less likely
+    to cause issues.
+  + Bugfixes to saving and applying device settings.
+  + Properly handle ^C when running in console.
+
+-------------------------------------------------------------------
+Thu Jun 27 19:22:01 UTC 2013 - malcolmlewis@opensuse.org
+
+- Initial build.
+- Add 99-logitech-unifying-receiver.rules: openSUSE specific udev
+  rule.
+- Add solaar-fix-desktop-categories.patch: Fix desktop categories
+  as per openSUSE desktop file specification.
+

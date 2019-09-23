@@ -1,0 +1,82 @@
+--- db/db/db.c.orig	2010-04-12 20:25:22.000000000 +0000
++++ db/db/db.c	2011-05-12 11:38:59.000000000 +0000
+@@ -646,6 +646,8 @@ __env_mpool(dbp, fname, flags)
+ 			MAKE_INMEM(dbp);
+ 		return (ret);
+ 	}
++	if (LF_ISSET(DB_NOFSYNC) && mpf->mfp)
++	    F_SET(mpf->mfp, MP_NOFSYNC);
+ 
+ 	/*
+ 	 * Set the open flag.  We use it to mean that the dbp has gone
+--- db/db/db_iface.c.orig	2010-04-12 20:25:22.000000000 +0000
++++ db/db/db_iface.c	2011-05-12 11:21:32.000000000 +0000
+@@ -1230,6 +1230,7 @@ __db_open_arg(dbp, txn, fname, dname, ty
+ #define	OKFLAGS								\
+ 	(DB_AUTO_COMMIT | DB_CREATE | DB_EXCL | DB_FCNTL_LOCKING |	\
+ 	DB_MULTIVERSION | DB_NOMMAP | DB_NO_AUTO_COMMIT | DB_RDONLY |	\
++	DB_NOFSYNC |							\
+ 	DB_RDWRMASTER | DB_READ_UNCOMMITTED | DB_THREAD | DB_TRUNCATE)
+ 	if ((ret = __db_fchk(env, "DB->open", flags, OKFLAGS)) != 0)
+ 		return (ret);
+--- db/dbinc/mp.h.orig	2010-04-12 20:25:22.000000000 +0000
++++ db/dbinc/mp.h	2011-05-12 12:01:32.000000000 +0000
+@@ -467,6 +467,7 @@ struct __mpoolfile {
+ #define	MP_FAKE_UOC		0x080	/* Unlink_on_close field: fake flag. */
+ #define	MP_NOT_DURABLE		0x100	/* File is not durable. */
+ #define	MP_TEMP			0x200	/* Backing file is a temporary. */
++#define	MP_NOFSYNC		0x400	/* Don't fsync */
+ 	u_int32_t  flags;
+ };
+ 
+--- db/dbinc_auto/api_flags.in.orig	2011-05-12 11:40:57.000000000 +0000
++++ db/dbinc_auto/api_flags.in	2011-05-12 11:55:10.000000000 +0000
+@@ -83,6 +83,7 @@
+ #define	DB_NOORDERCHK				0x00000002
+ #define	DB_NOPANIC				0x00000800
+ #define	DB_NO_AUTO_COMMIT			0x00001000
++#define	DB_NOFSYNC				0x00040000
+ #define	DB_ODDFILESIZE				0x00000080
+ #define	DB_ORDERCHKONLY				0x00000004
+ #define	DB_OVERWRITE				0x00001000
+--- db/dist/s_config.orig	2010-04-12 20:25:23.000000000 +0000
++++ db/dist/s_config	2011-05-12 12:00:34.000000000 +0000
+@@ -8,7 +8,8 @@ trap 'rm -f aclocal.m4 ; exit 0' 0 1 2 3
+ . ./RELEASE
+ 
+ echo "autoconf: building aclocal.m4..."
+-cat aclocal/*.m4 aclocal_java/*.m4 > aclocal.m4
++cat aclocal/*.m4 aclocal_java/*.m4 > acinclude.m4
++aclocal
+ 
+ echo "autoconf: running autoheader to build config.hin..."
+ rm -f config.hin
+--- db/mp/mp_sync.c.orig	2010-04-12 20:25:34.000000000 +0000
++++ db/mp/mp_sync.c	2011-05-12 11:36:58.000000000 +0000
+@@ -578,7 +578,7 @@ done:	/*
+ 	if (ret == 0 && required_write) {
+ 		if (dbmfp == NULL)
+ 			ret = __memp_sync_files(env);
+-		else
++		else if (!F_ISSET(dbmfp->mfp, MP_NOFSYNC))
+ 			ret = __os_fsync(env, dbmfp->fhp);
+ 	}
+ 
+@@ -665,7 +665,7 @@ __memp_sync_file(env, mfp, argp, countp,
+ 			    "%s: unable to flush", (char *)
+ 			    R_ADDR(dbmp->reginfo, mfp->path_off));
+ 		}
+-	} else
++	} else if (!F_ISSET(dbmfp->mfp, MP_NOFSYNC))
+ 		ret = __os_fsync(env, dbmfp->fhp);
+ 
+ 	/*
+@@ -801,6 +801,8 @@ __memp_mf_sync(dbmp, mfp, locked)
+ 	COMPQUIET(hp, NULL);
+ 	env = dbmp->env;
+ 
++	if (F_ISSET(mfp, MP_NOFSYNC))
++	    return 0;
+ 	/*
+ 	 * We need to be holding the hash lock: we're using the path name
+ 	 * and __memp_nameop might try and rename the file.

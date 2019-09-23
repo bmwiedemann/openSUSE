@@ -1,0 +1,8 @@
+<package name="nfs4-acl-tools" project="openSUSE:Factory">
+  <title>Command line tools for managing ACLs over NFSv4</title>
+  <description>Command line tools for viewing and setting ACLs (Access Control Lists)
+when using NFSv4 to access a remote filesystem. The remote filesystem
+must also support ACLs.</description>
+  <devel project="Base:System" package="nfs4-acl-tools"/>
+  <url>http://www.citi.umich.edu/projects/nfsv4/linux/</url>
+</package>

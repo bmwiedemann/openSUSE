@@ -1,0 +1,8 @@
+<package name="nload" project="openSUSE:Factory">
+  <title>nload</title>
+  <description>
+Console application which monitors network traffic and bandwidth usage in real time.
+  </description>
+  <devel project="network:utilities" package="nload"/>
+  <url>http://www.roland-riegel.de/nload/</url>
+</package>

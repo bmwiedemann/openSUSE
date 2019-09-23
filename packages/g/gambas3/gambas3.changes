@@ -1,0 +1,1015 @@
+-------------------------------------------------------------------
+Thu Apr 11 16:36:23 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.13.0:
+  * [GP.MAP] BUG: Small bug fixes.
+  * Fix Url$() escaping characters.
+  * Code editor: The method popup font is sized according to the
+    number of methods to display.
+  * Some unary operator syntax rewrite in source code.
+  * Fix the JIT compiler: '_init' method, Lock instruction,
+    Object datatype, and DO / REPEAT loops at the beginning of a
+    function now work correctly.
+  * Update es.po
+  * Compile with GStreamer < 1.16.
+  * Speed is a new property that allows to define the media
+    playing speed. A negative speed moves backward.
+  * Support for playing speed rate and step-by-step forward.
+  * Update readme files.
+  * Option dialog: Fix spacing of some options in 'Project' tab.
+  * Changes in testing code.
+  * TerminalView: the minimal screen height is now 2 lines.
+  * NEW: Run Gambas tests last.
+  * Fix case typo in source code.
+  * Correctly normalize SQLite session file names.
+  * Fix typo in a source file that is not yet used.
+  * Cosmetic changes in debugger code.
+  * Fix Array.Shuffle() on String, Long and Object arrays.
+  * Array.Shuffle() is a new method that randomly shuffles an
+    array using Fisher–Yates algorithm.
+  * ASSERT ... PRINT or ERROR allows to use PRINT or ERROR to
+    print a message when the assertion fails.
+
+-------------------------------------------------------------------
+Tue Apr  9 06:33:04 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add the missing dependencies for Tumbleweed.
+
+-------------------------------------------------------------------
+Tue Mar  5 13:31:32 UTC 2019 - olaf@aepfle.de
+
+- Version 3.12 has a hard buildrequirement for pkgconfig(ncurses)
+  This requirement is only available in 13.2 and later.
+  Disable the ncurses subpkg and swallow pkgs from previous versions
+- Switch to autosetup, do not touch sources in prep
+- Package metainfo directory to fix build
+
+-------------------------------------------------------------------
+Sun Feb 10 16:26:37 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim future goals.
+
+-------------------------------------------------------------------
+Mon Feb  4 18:41:40 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.12.2:
+  * Fix UdpSocket class declaration.
+  * UdpSocket: Host is a new property that allows to define the
+    IP address the UDP socket will be bounded to.
+  * Make the "./" path equivalent to "." as before, and not a
+    prefix for a component with a null name.
+  * Take care of components that modifiy the 'environ' variable.
+    Using 'gb.httpd' does not crash anymore.
+  * Fix Debug instruction and support for the new Assert
+    instruction.
+  * Really fix the loop optimization.
+  * Fix loop optimization that didn't work on loops calling
+    themselves recursively.
+  * Fix badly committed files.
+  * Font[] now assumes a default size of 10 points, so that you
+    don't have to specify the font size when creating the Font object.
+  * TerminalView: Implement "ESC <N> b" sequence.
+  * Support for 'tcc' compiler.
+  * Do not propagate mouse wheel events of ComboBox, TextArea,
+    Slider and ScrollBar, as in Qt components.
+  * Project property dialog: Use custom icons for component tab
+    check boxes, because some style cannot draw them correctly.
+  * Introduce RssDate for date+timezone handling
+  * RssGuid: do not set IsPermaLink by default when parsing
+  * Depend on gb.util for RFC822 date conversions
+  * Switch version to 3.12.1.
+  * Merge branch 'stable' of gitlab.com:gambas/gambas into stable
+  * Merge branch 'master' into stable
+  * Update some test forms and version numbers.
+- Update gambas3-3.10.0-llvm.patch > gambas3-3.12.2-llvm.patch
+
+-------------------------------------------------------------------
+Wed Oct  3 12:14:01 UTC 2018 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 3.11.4:
+  This release includes the backports of fixes made in the development
+  version since 3.11.3.
+  The main fixes are:
+  * The thousand separators management has been fixed.
+  * The CHMOD instruction has been fixed.
+  * The sqlite session management has been fixed in the gb.web component.
+  * gb.mime is now compatible with the 3.0 version of the libgmime library.
+  See the ChangeLog for the other ones.
+- removed gambas3-3.11.3-pkgconfig-sdl2.patch
+
+-------------------------------------------------------------------
+Wed Aug 22 01:34:58 UTC 2018 - avvissu@yandex.by
+
+- Fix packaging with qt4
+
+-------------------------------------------------------------------
+Fri Aug  3 00:07:25 UTC 2018 - avvissu@yandex.by
+
+- Switch to gitlab
+
+-------------------------------------------------------------------
+Thu Aug  2 19:41:00 UTC 2018 - avvissu@yandex.by
+
+- Update tp 3.11.3:
+  * The compilation of gb.pdf with different versions of the
+    randomly changing poppler library.
+  * Some bugs in the gb.xml and gb.xml.html components.
+  * A few other bugs.
+- Change in 3.11.2:
+  * This release disables link time optimization by default, and
+    allows Gambas to compile with older versions of Qt and GTK+
+- Change in 3.11.1:
+  * This release fixes the compilation with older version of gcc
+    that do not support link time optimization
+- Change in 3.11.0:
+  * Besides tons of bug fixes, here is the main enhancements since
+    the last version
+  * More info: http://gambaswiki.org/wiki/doc/release/3.11.3?nh
+- Add gambas3-3.11.3-pkgconfig-sdl2.patch
+- Drop gambas3-adapt-to-poppler-058.patch (fixed)
+- Drop gambas3-3.10.0-disable-qt4.patch (fixed)
+- Add the control directory to runtime
+
+-------------------------------------------------------------------
+Wed Apr 18 12:07:52 UTC 2018 - mpluskal@suse.com
+
+-  Drop sqlite2 support as it is being obsoleted
+
+-------------------------------------------------------------------
+Tue Mar  6 19:08:50 UTC 2018 - lars@linux-schulserver.de
+
+- use %license macro
+- use spdx 3.0 license string
+
+-------------------------------------------------------------------
+Mon Dec 11 05:47:38 UTC 2017 - avvissu@yandex.by
+
+- Fix build on Factory (add pkgconfig({ice,sm}))
+
+-------------------------------------------------------------------
+Sun Dec 10 21:37:36 UTC 2017 - avvissu@yandex.by
+
+- Rebase bconds
+- Add gb-openal package
+- [Fixed] E: summary-not-capitalized
+- Update description for: gb-args, gb-option, gb-xml-rpc
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Dec  9 11:37:26 UTC 2017 - avvissu@yandex.by
+
+- Build with the --disable-qt4 option on Factory
+- Add gambas3-3.10.0-disable-qt4.patch (bnc#1072031)
+- Drop gambas3-gb-chart (only qt4 version)
+- Add pkgconfig(poppler-qt{4,5})
+
+-------------------------------------------------------------------
+Thu Dec  7 11:08:09 UTC 2017 - dimstar@opensuse.org
+
+- Escape the usage of %{VERSION} when calling out to rpm.
+  RPM 4.14 has %{VERSION} defined as 'the main packages version'.
+
+-------------------------------------------------------------------
+Tue Sep 19 21:27:26 UTC 2017 - zaitor@opensuse.org
+
+- Add gambas3-adapt-to-poppler-058.patch: Adapt to poppler 0.58 api
+  changes.
+- Drop obsolete and unused pkgconfig(webkit-1.0) BuildRequires.
+
+-------------------------------------------------------------------
+Mon Aug 28 12:33:11 UTC 2017 - zaitor@opensuse.org
+
+- Pull in tarball from upstream again to please Factory source
+  checker bots, as a new tarball with same version was uploaded
+
+-------------------------------------------------------------------
+Wed Jul 19 03:54:23 UTC 2017 - avvissu@yandex.by
+
+- Update to 3.10.0:
+  * see: http://gambaswiki.org/wiki/doc/release/3.10.0
+- Add component gambas3-gb-term
+- Drop gambas3-3.9.2-gcc7.patch
+- Rename and rebase gambas3-3.9.2-llvm.patch to
+  gambas3-3.10.0-llvm.patch
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sun Jun  4 23:33:57 UTC 2017 - avvissu@yandex.by
+
+- Build with gcc7 (gambas3-3.9.2-gcc7.patch)
+
+-------------------------------------------------------------------
+Wed Feb  8 18:56:00 UTC 2017 - avvissu@yandex.by
+
+- Fix conflict with shared-mime-info
+
+-------------------------------------------------------------------
+Wed Feb  8 10:08:35 UTC 2017 - avvissu@yandex.by
+
+- Add gambas3-rpmlintrc in spec file
+
+-------------------------------------------------------------------
+Tue Feb  7 22:51:38 UTC 2017 - jengelh@inai.de
+
+- Update descriptions
+- Fix a wrong {with qt4} to be {with qt5}
+
+-------------------------------------------------------------------
+Sun Feb  5 09:14:34 UTC 2017 - avvissu@yandex.by
+
+- Update to 3.9.2:
+  * Release includes various bugfixes
+  * See more info: http://gambaswiki.org/wiki/doc/release/3.9.2?nh
+- Update patch:
+  * gambas3-3.8.3-llvm.patch -> gambas3-3.9.2-llvm.patch
+
+-------------------------------------------------------------------
+Fri Sep 16 06:34:25 UTC 2016 - avvissu@yandex.by
+
+- Update to 3.9.1:
+  * Release includes various bugfixes
+  * See more info: http://gambaswiki.org/wiki/doc/release/3.9.1?nh
+- Change in 3.9.0:
+  * A new component gb.web.form and gb.form.terminal
+  * A new IDE output console based on the previous component
+  * A new and better project argument list interface
+  * Project creation is now based on project templates
+  * The Expression class is now inheritable and allows to customize
+    the interpreter evaluator.
+  * FileView and DirView controls automatically refresh themselves
+    if your project uses the gb.inotify component
+  * TextEditor now can display thin vertical lines to emphasize
+    indentation
+  * Menu can have a proxy, i.e. pop up the children of another menu
+  * Paint.StretchImage() is a new method that scales an image to
+    fit a rectangle, keeping the image proportions
+  * gb.net.smtp component support PLAIN and CRAM-MD5 authentication
+  * See more info: http://gambaswiki.org/wiki/doc/release/3.9.0?nh
+- Use default Qt5 on openSUSE > 13.2
+
+-------------------------------------------------------------------
+Tue May 31 16:11:58 UTC 2016 - avvissu@yandex.by
+
+- Recheck the required dependencies
+
+-------------------------------------------------------------------
+Sat May 21 12:10:23 UTC 2016 - aloisio@gmx.com
+
+- Fixed Tumbleweed build
+
+-------------------------------------------------------------------
+Mon Mar  7 16:22:46 UTC 2016 - avvissu@yandex.ru
+
+- Add Requires:	gb-{markdown,util}
+
+-------------------------------------------------------------------
+Sun Mar  6 12:46:25 UTC 2016 - avvissu@yandex.ru
+
+- Fix: Installation of Gambas [bnc#969744]
+
+-------------------------------------------------------------------
+Fri Dec 25 15:10:12 UTC 2015 - avvissu@yandex.ru
+
+- Update to 3.8.4:
+  * Release includes various bugfixes
+  * No crash anymore when running the IDE through a terminal server.
+  * Support for time-only values on recent PostgreSQL databases.
+  * Support for PLAIN and CRAM-MD5 authentications in gb.net.smtp.
+  * See more info: http://gambaswiki.org/wiki/doc/release/3.8.4?nh
+
+-------------------------------------------------------------------
+Wed Nov 11 02:37:22 UTC 2015 - avvissu@yandex.ru
+
+- Update to 3.8.3:
+  * Source files can now be dragged & dropped in the IDE project
+    tree.
+  * Project directories are now movable.
+  * Support for line cap style, line join style and fill rule in
+    the IDE image editor.
+  * Array accessors are faster.
+  * See more info: http://gambaswiki.org/wiki/doc/release/3.8.3?nh
+- Build with llvm on openSUSE <= 13.2 (gambas3-3.8.3-llvm.patch)
+- Clean up functions for configuration gambas3
+- Add a new package for openSUSE <= 13.2: gb-jit
+- Remove files: gambas3-Fedora_16.spec, gambas3.png
+
+-------------------------------------------------------------------
+Sat Oct 31 09:45:43 UTC 2015 - avvissu@yandex.ru
+
+- Add a new package: gb-libxml
+- Don't use fdupes: symbolic links can be empty
+
+-------------------------------------------------------------------
+Tue Oct 27 22:19:48 UTC 2015 - avvissu@yandex.ru
+
+- Update to 3.8.2:
+  * Support for dark themes.
+  * New logo, project, mime types and control icons based on the
+    breeze theme look.
+  * Project creation is now based on customizable project templates.
+  * Logical set operations on selections in the image editor.
+  * Relative paths now can refer to files located in the main
+    project, in the current component, or in components crossed by
+    stacked function calls.
+  * The ODBC component is usable now.
+  * Includes all bugs fixes since the release of 3.8.1
+  * See more info: http://gambaswiki.org/wiki/doc/release/3.8.2?nh
+- Change in 3.8.1:
+  * This release includes all bugs fixes and little changes made
+    since the release of Gambas 3.8.0.
+  * See more info: http://gambaswiki.org/wiki/doc/release/3.8.1?nh
+- Change in 3.8.0:
+  * The text editor has been entirely rewritten in Gambas. It is
+    located in a new component named gb.form.editor.
+  * Support for QT5. The new gb.qt5, gb.qt5.opengl and gb.qt5.webkit
+    components have the same interface as the QT4 components.
+  * Automatic support for KDE & Unity tray icon DBus protocols.
+  * Important fixed in UTF-8 string handling.
+  * Searching inside native arrays is faster.
+  * The SQLite3 driver has been rewritten and is faster now.
+  * And of course tons of bug fixes...
+  * See more info: http://gambaswiki.org/wiki/doc/release/3.8.0?nh
+- Use pkgconfig(foo) style
+- Use %{version} macro: its use is highly recommended
+- Update Requires in gb-image-imlib and gb-sdl
+- Fix build with v4l support
+- Do not compile in DATE and TIME
+- Build with Qt5 on openSUSE > 13.2
+- Del old functions for configuration gambas3
+- Add a svg icon instead of png: use %icon_theme_cache_post(un)
+- Use %mime_database_post(un) and %desktop_database_post(un)
+- Add a new packages: gb-gmp, gb-form-editor, gb-media
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Wed May 20 19:06:17 UTC 2015 - lars@linux-schulserver.de
+
+- update to 3.7.1:
+  [General]
+  * A new software repository made with Gambas for Gambas. It allows to
+    publish and install Gambas softwares.
+    All Gambas examples will be stored there now.
+  [Development environment]
+  * Projects can be published to a "farm server", and installed from there.
+  * The database editor now automatically store the description of the
+    database into a template file that can be used at runtime to
+    initialize a new database.
+  * The text editor now can handle Unix, Windows and Mac end-of-lines
+    characters.
+  [Interpreter & compiler]
+  * Array accessors are now faster.
+  * Two new functions for encoding URLs: Url$ and FromUrl$.
+  * The child process interface has been fixed and optimized.
+  * The USE instruction of Gambas scripts is now part of the language.
+  [Components]
+  * gb.db got new methods to create databases from templates generated by the IDE.
+  * gb.db.mysql is now faster, as metadata requests are now cached.
+  * gb.db.sqlite3 now supports common table expressions introduced in SQLite 3.8.3.
+  * ListEditor is a new control that allows to edit and reorder the contents
+    of a ListBox.
+  * Completion is a new class that helps implementing automatic completion.
+  * FileCompletion is a new class that implements file automatic completion.
+  * DocumentView is a new control that allows to implement a viewer of any document.
+  * ColorPalette is a new control that allows to select a color among a
+    predefined list of colors.
+  * MessageView is a new control that implements an embedded notification panel
+    that is automatically hidden and shown if there is a message to display.
+  * Keyboard management and input method nightmare have been fixed in gb.gtk and gb.gtk3.
+  * The Border class is now creatable and allows to paint complex css-like
+    border where you want.
+  * HttpForm is a new class to help submit forms to HTTP servers.
+  * /wiki/comp/gb.report2 is a new and better implementation of the
+    reporting component.
+  * gb.scanner is a new component based on SANE to help dealing with scanners.
+  * The same Settings can now be shared by several running applications.
+  * gb.util is a new component written in Gambas that provides utility
+    functions to the interpreter.
+  * gb.util.web is a new component written in Gambas that provides utility
+    functions to web applications.
+- spec file cleanup
+- removed example sub-package
+
+-------------------------------------------------------------------
+Sat Dec 27 16:42:52 UTC 2014 - lars@linux-schulserver.de
+
+- update to 3.6.2:
+  [DEVELOPMENT ENVIRONMENT]
+  * BUG: Control properties containing a database table name can be modified
+    again.
+  [GB.DATA]
+  * BUG: Don't use forward typedefs as some compilers don't seem to
+    understand them.
+  * BUG: Silence false positive compiler warnings.
+  [GB.DB.MYSQL]
+  * BUG: Try to reconnect to a lost database server when listing existing
+    databases and the fields of a table.
+  [GB.FORM]
+  * NEW: The SliderBox is now in the same change group as Slider.
+  [GB.GTK]
+  * BUG: Fix an uninitialized variable.
+  * BUG: Fix warning with Slider or SpinBox when setting a minimum value
+    equal to the maximum value, or the contrary.
+  [GB.GTK3]
+  * BUG: Fix an uninitialized variable.
+  * BUG: Fix warning with Slider or SpinBox when setting a minimum value
+    equal to the maximum value, or the contrary.
+  * BUG: Paint.Reset() now works as expected on non-cached DrawingArea.
+  [GB.GUI.AREA]
+  * BUG: TreeView renaming works now if the renamed item is not visible.
+  [GB.MEDIA.FORM]
+  * BUG: MediaView: The Control property has been renamed as ShowControl.
+  [GB.QT4]
+  * BUG: The Menu.Checked property now returns the correct value for
+    non-radio menu items.
+  * BUG: TextBox: Workaround a Qt4 weird behaviour that sometimes lose the
+    selection. Same workaround for editable ComboBox.
+  * BUG: Fix a compilation warning.
+
+-------------------------------------------------------------------
+Fri Dec 19 14:27:44 UTC 2014 - lars@linux-schulserver.de
+
+- update to 3.6.1:
+  This new release fixes more than 459 bugs, adds 465 new features
+  and 22 optimizations. Some of the main changes are:
+  * A new open project dialog in the IDE.
+  * Support for session management.
+  * Offline help automatically downloaded from the wiki.
+  * Single-file mode for the IDE.
+  * Support for transparent windows.
+  * Shadowed text drawing routines.
+  * New controls: Spinner, SwitchButton, DirBox, FontBox.
+  * gb.gtk3 is a new GUI component based on GTK+ 3.
+  * gb.inotify is a new component to monitor filesystem events
+    with Linux inotify interface.
+  * gb.markdown is a new component that implements the Gambas
+    Markdown syntax.
+  * The gb.net.smtp component has been entirely rewritten in
+    Gambas and fixed.
+- added sub-packages:
+  + gb-inotify
+  + gb-gtk3
+  + gb-markdown
+- adapted file list for latest changes and fixes
+
+-------------------------------------------------------------------
+Mon Jul  7 14:06:55 UTC 2014 - lars@linux-schulserver.de
+
+- update to 3.5.4:
+  [CONFIGURATION]
+  * NEW: The GB_FIND macro now searches files one directory deeper.
+  * NEW: Add a new autoconf macro that can compare version numbers.
+  [DEVELOPMENT ENVIRONMENT]
+  * BUG: Form editor: Setting the "Invert" property of a container now does
+    not crash anymore.
+  * BUG: Automatically solve conflicts on project configuration files by
+    taking the ones from the repository.
+  * BUG: Fix the custom browser support.
+  * NEW: Add Chromimum to the list of browsers.
+  * BUG: Creating a new SDL project correctly checks all needed components.
+  * NEW: Use the new wiki for the documentation.
+  * BUG: Write project configuration before making an executable or a source
+    archive, so that their contents is up to date.
+  * BUG: Don't freeze when loading an older version of a component project
+    that misses some classes implemented in the newer versions of the
+    component.
+  * BUG: Fix the analyze of exported classes that override a class from a
+    component.
+  * BUG: Help on function argument is correct now.
+  [EXAMPLES]
+  * BUG: NeHeTutorial: Fix compilation error.
+  [INTERPRETER]
+  * BUG: Add a small reserved area in the stack for the Eval() function, so
+    that the debugger can return the contents of a variable after a stack
+    overflow without raising a new stack overflow error and then crashing.
+  * BUG: System.TimeZone now returns the accurate value, i.e. the number of
+    seconds that must be *added* to go to UTC.
+  * BUG: Correctly close the standard error output of an ending process if
+    its standard output has already been closed.
+  * BUG: Fix a possible file descriptor leak when using LOCK.
+  * BUG: Fix memory leak with Lower$() and Upper$() on some null strings.
+  [COMPILER]
+  * BUG: Correctly raise a syntax error now when there is anything between
+    the left part of an assignment and the assignment operator.
+  * BUG: Prevent NEW and READ from being used without an affectation.
+  * BUG: Raise an error if a function has too many arguments or too many
+    local variables.
+  [GB.COMPLEX]
+  * BUG: Conversion from complex to number now returns the real part if the
+    imaginary part is null, and raises an error otherwise. It does not return
+    the complex modulus anymore. Use Abs() for that.
+  [GB.DB.POSTGRESQL]
+  * BUG: Make gb.db.postgresql compile with new postgresql headers location.
+  [GB.DEBUG]
+  * BUG: Fix a possible crash if the debugged process is stopped during the
+    Debug Read event.
+  [GB.FORM]
+  * BUG: ValueBox.ReadOnly works as expected now.
+  * BUG: TableView.Clear now hides the current edited cell.
+  * BUG: Balloon: Fix position on desktop having top and/or left panels.
+  * BUG: Balloon: Fix arrow drawing.
+  [GB.GTK]
+  * BUG: TextArea.Text property can be set to a null string correctly now.
+  * BUG: Fix the behaviour of auto-resize labels.
+  * BUG: Setting Application.Font now updates the font of all controls.
+  * BUG: The TextArea.Text property does not waste memory anymore.
+  * BUG: TrayIcon: Handle DblClick and MouseWheel events correctly.
+  * BUG: Controls inside TabStrip now are detected correctly and are not
+    insensitive anymore.
+  * BUG: The MouseDrag event can be canceled now, like with gb.qt4.
+  * BUG: Fix the default size of message boxes.
+  * BUG: Fix Align.IsBottom() and Align.IsMiddle().
+  [GB.GSL]
+  * BUG: Conversion from complex to number now returns the real part if the
+    imaginary part is null, and raises an error otherwise. It does not return
+    the complex modulus anymore. Use Abs() for that.
+  [GB.GUI.BASE]
+  * BUG: Draw.Line() correctly takes into account the LineStyle property in
+    all cases now.
+  * BUG: Fix the dash patterns used for implementing the Draw.LineStyle
+    property.
+  * BUG: GridView: Dnd now works as expected even in multiple selection mode.
+  * BUG: Draw.End() now resets anti-aliasing to TRUE.
+  * BUG: If the Layout property of HSplit or VSplit controls does not receive
+    one size for each child control, then child controls without size are
+    hidden (i.e. their size is assumed to be zero).
+  [GB.IMAGE]
+  * BUG: Rewrite the ImageStat class source code because the PHP licence is
+    not compatible with the GPL.
+  [GB.JIT]
+  * BUG: Explicitely search for the 'llvm-c/Core.h' include file.
+  * BUG: Fix LLVM version comparison.
+  [GB.MEDIA]
+  * BUG: When a MediaPipeline is freed, the pipeline is first stopped before
+    being put to the null state. Otherwise GStreamer freezes.
+  * BUG: Fix inputs and outputs enumeration.
+  [GB.NCURSES]
+  * BUG: Add GB_END_DECLARE to the Input class to not crash anymore (on
+    cygwin only?). Reported by Nigel Gerrard.
+  [GB.NET.CURL]
+  * BUG: The VerifyPeer and VerifyHost properties are really taken into
+    account now.
+  [GB.NET.POP3]
+  * BUG: Pop3Client: Raise an error if the Open() method fails, and correctly
+    abort the connection.
+  [GB.OPENSSL]
+  * BUG: Cipher[] and Digest[] now read their method argument correctly.
+  * BUG: Fix bad use of string API in the Cipher class. Consequently
+    Cipher[].Encrypt() does not crash anymore.
+  [GB.SETTINGS]
+  * BUG: Enumerating `Settings.Keys[Slot]` (the keys of a specific slot) does
+    not break anymore the enumeration of `Settings.Key` (the slot names).
+  [GB.QT4]
+  * BUG: Fix the behaviour of auto-resize labels.
+  [GB.XML.HTML]
+  * BUG: Fix the implementation of HTMLDocument.GetElementById().
+  [GB.NET.SMTP]
+  * NEW: Recipients now support the "Chuck Norris <chuck@norris.com>" syntax.
+  * NEW: The "Chuck Norris <chuck@norris.com>" is now supported in the "From"
+    property.
+  [GB.OPENGL]
+  * BUG: Fix the missing "gl" prefix on two OpenGL calls.
+  [GB.QT4]
+  * BUG: TextLabel: Automatic size is correctly computed now. Apparently
+    there are internal changes in the Qt library that made it false.
+  * BUG: Text can be drop on TextBox and TextArea controls again, unless
+    their Drop property is set. In that case, the dnd behavior is entirely
+    controlled by Gambas.
+  * BUG: Correctly free the internal clipboard formats list when the
+    clipboard contents changes. This avoids possible crashes.
+  * BUG: Correctly handle UTF-8 when displaying the error message.
+  * BUG: Fix Align.IsBottom() and Align.IsMiddle().
+  * BUG: Key.Normal now works correctly with numeric pad keys.
+  [GB.SDL]
+  * BUG: Don't create a default TTF font for each draw event!
+
+-------------------------------------------------------------------
+Sat Feb 15 00:19:39 UTC 2014 - lars@linux-schulserver.de
+
+- update to 3.5.2:
+  This release fixes more than sixty bugs - please have a look at
+  /usr/share/doc/packages/gambas3/ChangeLog for details
+
+-------------------------------------------------------------------
+Thu Dec 12 17:17:43 UTC 2013 - dap.darkness@gmail.com
+
+- 3.5.1 fixes:
+  * added subpackages:
+    + gb-clipper,
+    + gb-geom,
+    + gb-logging,
+    + opengl-sge,
+    + openssl;
+  * obsoleted subpackage:
+    - gb-media;
+  * fixed up subpackages:
+    x gb-complex,
+    x gb-sdl.
+
+-------------------------------------------------------------------
+Mon Nov 18 21:01:18 UTC 2013 - lars@linux-schulserver.de
+
+- update to 3.5.1:
+  [DEVELOPMENT ENVIRONMENT]
+  * BUG: Fix project browser cursor management when the focus is on the
+    filter field.
+  * BUG: Fix form editor control highlighting when the hovered control is a
+    ScrollView.
+  * BUG: Packager now use the current Gambas major & minor version as minimum
+    version for component dependencies.
+  * BUG: Follow Ubuntu package naming convention.
+  * BUG: Some fixes in GUI metapackage creation for Debian/Ubuntu.
+  * BUG: Automatic completion of identifiers now correctly shows the known
+    classes.
+  * BUG: Correctly display optional values in signatures.
+  * NEW: The system information dialog now displays the Gambas version.
+  * NEW: The 'gb.desktop.gnome' component is now visible and explicitely
+    checkable.
+  * NEW: If a project uses gb.gui, then the packager will create two extra
+    packages: one for Qt4 support, the other for GTK+ support.
+  * NEW: Support for package version number.
+  * NEW: Update Gambas font.
+  * NEW: Display help for third-party components.
+  * NEW: Add Afrikaans to the language list.
+  [INTERPRETER]
+  * BUG: Don't detach a process that returns an error otherwise the Kill
+    event is lost.
+  * BUG: Correctly check that there is a current enumeration if the Enum
+    class methods and properties.
+  * BUG: The [] operator is now correctly overridden in classes inheriting an
+    array class or Collection.
+  * BUG: VarPtr() correctly works on method arguments.
+  * BUG: Fix the CLOSE instruction when dealing with a string stream.
+  * BUG: Prevent crashes at exit by releasing array classes first.
+  * NEW: Support for the GB_PATH environment variable, that gives the Gambas
+    interpreter path if set.
+  * NEW: Enum.Stopped is a new property that returns if the current
+    enumeration  has been stopped.
+  * NEW: OPEN STRING is a new instruction that allows to use a string as a
+    stream. Writing to it appends the written data to the end of the string
+    at the moment.
+  * NEW: Closing a string stream returns the data written to the stream as a
+    new string.
+  * NEW: Make WRITE behave the same way as READ on a memory stream. I.e. it
+    writes a null-terminated "C" string, as READ was reading a null-terminated
+    "C" string.
+  [COMPILER]
+  * NEW: New OPEN STRING instruction.
+  * NEW: OPEN MEMORY and OPEN PIPE are synonymous of the MEMORY and PIPE
+    instructions alone.
+  [GB.DESKTOP.GNOME]
+  * NEW: Make this component visible to the IDE.
+  [GB.EVAL]
+  * NEW: Highlight the new OPEN STRING instruction correctly.
+  [GB.FORM]
+  * BUG: DirChooser.ShowPreview used FDirChooser.GetPreview which does not
+    exist. The correct symbol is FDirChooser.GetShowPreview.
+  * NEW: FileChooser now has support for uncompressing 'zip' files, provided
+    that the 'zip' utility is installed on the system.
+  [GB.GUI]
+  * NEW: If one GUI component fails to load, try the other one.
+  * NEW: Abort if no GUI component is found.
+  * NEW: Define the GB_GUI environment variable with the GUI component
+    actually loaded.
+  [GB.GUI.OPENGL]
+  * NEW: Always load the OpenGL support component associated with what lies
+    in the GB_GUI environment variable.
+  [GB.SDL]
+  * NEW: Rename the default SDL font file as "_default.ttf" to prevent
+    packaging conflicts.
+  * NEW: Use the Gambas monospace font as SDL default font now.
+  [GB.WEB]
+  * BUG: JSON.Encode() correctly encodes ASCII control characters.
+  * NEW: JSON.Decode() now takes an extra optional argument indicating that
+    keys having a null value are taken into account inside objects.
+  * NEW: JSONCollection is a new class that represents a JSON object whose
+    some keys are associated with a 'null' value.
+
+- just recommend libogg and libvorbis for the sdl subpackage on
+  openSUSE
+
+-------------------------------------------------------------------
+Mon Mar 25 07:49:58 UTC 2013 - lars@linux-schulserver.de
+
+- update to 3.4.1:
+  [CONFIGURATION]
+  * BUG: Uninstall should honor XDG_UTILS variable during 'make uninstall'.
+  [DEVELOPMENT ENVIRONMENT]
+  * NEW: The subversion dialog is not closed automatically anymore when
+    hitting ENTER.
+  [EXAMPLES]
+  * BUG: Fix PdfPresentation example.
+  * BUG: Lighttable: Correct renaming of files if ScrollView is expanded
+  * OPT: Lighttable: Allow double-click on DirChooser
+  * NEW: Update Czech translations.
+  [INTERPRETER]
+  * BUG: When the parent of an observer is detected invalid while raising an
+    event, detach the observer and not the observed object!
+  * BUG: When the default date format associated with the current locale is
+    not a numeric one, use the american format. It was done for 'en_PH'
+    locale.
+  * BUG: Don't flush the process output at process end if the process stream
+    has already been closed.
+  [GB.DB.SQLITE3]
+  * BUG: Handle SQLITE_BUSY error for all requests, even SELECT queries. Busy
+    requests are retried during 2 minutes max.
+  [GB.DESKTOP]
+  * NEW: Try to use gnome keyring on XFCE.
+  [GB.DRAW]
+  * BUG: Fix a stupid typo. Now PointF works correctly!
+  [GB.FORM]
+  * BUG: Regular expressions of a file filter are split by the ";"
+    character only now. Not the comma anymore.
+  * NEW: FileView: The IconView grid size takes the icon size into account
+    automatically now.
+  [GB.GTK]
+  * BUG: Scrollbar and Slider correctly raise their Change event when their
+    Value property is set manually.
+  * BUG: The Window.Controls property does not return invalid controls
+    anymore.
+  * BUG: Fix the naming of controls. The rule is the following: by default, a
+    control takes the name of its event handler prefix. If it has no such
+    prefix, it takes a unique name made from an incremental integer. But the
+    automatic instance of Form is named from its class name.
+  [GB.GUI.BASE]
+  * BUG: The default ColumnView sorting now correctly takes the column into
+    account.
+  * OPT: IconView items refresh is delayed if the IconView is locked.
+  * BUG: Draw.FillStyle has been implemented.
+  [GB.NET.CURL]
+  * BUG: HttpClient: Allows null data when using the Post() or Put() method.
+  * BUG: Don't crash if FtpClient.Exec() gets a void array or an array with
+    empty strings as commands array.
+  [GB.QT4]
+  * BUG: The Window.Controls property does not return invalid controls
+    anymore.
+  * BUG: Paint.Image() works correctly with temporary images now.
+  * BUG: Fix the naming of controls. The rule is the following: by default, a
+    control takes the name of its event handler prefix. If it has no such
+    prefix, it takes a unique name made from an incremental integer. But the
+    automatic instance of Form is named from its class name.
+  [GB.QT4.WEBKIT]
+  * BUG: Creating a WebElement should not crash anymore.
+  [GB.WEB]
+  * BUG: The Session timeout is correctly computed now.
+  [GB.XML.HTML]
+  * BUG: The XmlElement.GetChildById() method is now correctly implemented.
+
+-------------------------------------------------------------------
+Sun Feb 10 20:43:16 UTC 2013 - lars@linux-schulserver.de
+
+- update to 3.4.0:
+  + This new release fixes about 240 bugs and adds about 270 new
+    features
+  + The main changes are:
+  ++ A custom terminal font is now provided with the IDE.
+  ++ Better subversion support in the IDE.
+  ++ Patch support in the IDE.
+  ++ A new gb.args component that replaces gb.option.
+  ++ A new gb.maps component for displaying Google Maps,
+     OpenStreetMap... inside your application.
+  ++ Support for the freedesktop shared MIME database.
+  ++ The old drawing API has been deprecated.
+     Now everything is based on Cairo for GTK+.
+  ++ Many controls are now implemented in Gambas and shared between
+     GUI components.
+  ++ A new fast blur method in the Image class.
+  ++ The webkit component now has full support for DOM parsing
+     and editing.
+
+-------------------------------------------------------------------
+Sun Feb  3 14:37:27 UTC 2013 - lars@linux-schulserver.de
+
+- remove gcc and gcc-c++ as requirement for the runtime package
+  and add those to the devel package instead (fixes bnc #801802
+  thanks to  Dmitriy Perlow)
+
+-------------------------------------------------------------------
+Sat Dec 15 19:19:59 UTC 2012 - lars@linux-schulserver.de
+
+- update to 3.3.4:
+  [DEVELOPMENT ENVIRONMENT]
+  * NEW: Use a SidePanel to display the stack backtrace.
+  * BUG: The name of GridView controls is now always visible in the
+         form editor.
+  * BUG: Events of class written in Gambas are correctly detected now.
+  * BUG: Automatic local variable declaration now correctly analyze
+         expressions like "A.B" in all cases.
+  * BUG: Fix scrolling of code editor procedure list.
+  * BUG: Automatic local variable declaration now works correctly
+         when a method named "Get" is called inside the analyzed
+         expression.
+  * BUG: Fix an infinite loop when choosing a fixed font for the
+         search list after the default font has been changed from
+         the option dialog.
+  [INTERPRETER]
+  * BUG: Implicit array conversion now correctly preserves dimensions.
+  * BUG: Fix profiling of WAIT instruction.
+  * BUG: Using Enum.Index outside of an enumeration now raises an
+         error instead of crashing.
+  * BUG: Fix a crash in String.Comp() when one of the two string is null.
+  * BUG: NULL can be converted to a pointer now.
+  [GB.DB]
+  * BUG: DB.Quote(..., True) now does a table name quoting in all cases.
+  [GB.DB.FORM]
+  * BUG: The database controls now can handle table names that are
+         reserved SQL keywords.
+  * BUG: Correctly handle null values when sorting a DataSource.
+  * BUG: DataSource.Table contents is automatically trimmed before
+         being sent to the database driver.
+  [GB.DESKTOP]
+  * BUG: Desktop.ActiveWindow really works now.
+  [GB.FORM]
+  * BUG: MaskBox and ButtonBox controls with no mask now should act
+         like a normal TextBox for popup menu and focus events.
+  * BUG: GridView does not crash anymore if all rows are hidden
+         (i.e. if their height is zero).
+  * BUG: GridView is correctly updated now when the Border
+         property is set.
+  * BUG: Removing GridView rows correctly resets the row heights.
+  [GB.GTK]
+  * BUG: Fix event handling when a window has only invisible
+         top-level menus.
+  * BUG: Fix a possible crash in TrayIcon mouse wheel event handling.
+  * BUG: Fix string to Font conversion for fonts whose name starts with
+         "nan" or other special numeric strings.
+  * BUG: Reparenting a container correctly keeps the visibility
+         state of its children.
+  * BUG: Foreground color is now correctly preserved when reparenting.
+  * BUG: Fix crash in menu deletion.
+  * BUG: Label, TextLabel, PictureBox and MovieBox now draw their
+         plain border with the foreground color, like gb.qt4 does.
+  * BUG: Scrollbar width is correctly respected.
+  * BUG: Setting the background color of a Panel should not have
+         spurious effects anymore (they were due to the
+         internal reparenting).
+  * BUG: Fix reparenting when there is a TabStrip in the process.
+  * BUG: The mouse cursor is correctly inherited from the parent
+         control if the Mouse property is set to Mouse.Default.
+  * BUG: Fix management of multiple modal dialogs and popups.
+  [GB.IMAGE]
+  * BUG: Image.RotateRight() now really rotates to the right.
+  * BUG: Fix Image.RotateRight() algorithm.
+  [GB.IMAGE.EFFECT]
+  * BUG: Image.Histogram() now correctly handle ABGR images.
+  * BUG: Remove a debugging message.
+  [GB.QT4]
+  * BUG: Paint.DrawRichText() now takes the color opacity
+         into account.
+  * BUG: Compilation with new gcc should be fixed.
+  * BUG: The menubar height is now correctly updated after a
+         font change.
+
+-------------------------------------------------------------------
+Sun Nov 18 11:13:24 UTC 2012 - lars@linux-schulserver.de
+
+- update to 3.3.3:
+  [INTERPRETER]
+  * BUG: Fix symbol table search that could sometimes fail with non ASCII
+    characters.
+  [COMPILER]
+  * BUG: Error messages are correctly printed when warnings are disabled.
+  [DEVELOPMENT ENVIRONMENT]
+  * BUG: Clicking on the "Fixed font" check box in the Text property editor
+    does not crash anymore.
+  * BUG: Fix conversion of multiple array declarations on the same line in
+    Gambas 2 projects.
+  [GB.DESKTOP]
+  * BUG: Writing the Desktop.ActivateWindow property works now.
+  [GB.REPORT]
+  * BUG: Set the default Height and Width of the report controls back to 0
+    cm, because it was not backward-compatible.
+  [GB.QT4.WEBKIT]
+  * BUG: Fix WebHitTest.Editable property declaration.
+
+-------------------------------------------------------------------
+Wed Oct  3 15:44:30 UTC 2012 - lars@linux-schulserver.de
+
+- update to 3.3.2:
+  [DEVELOPMENT ENVIRONMENT]
+  * BUG: Fix a possible crash during automatic completion.
+  * NEW: Update czech translation.
+  [EXAMPLES]
+  * NEW: Update czech translation for: GNUBoxWorld, WebBrowser, MoviePlayer,
+    Gravity, Painting.
+  [WIKI CGI SCRIPT]
+  * NEW: Update czech translation.
+  [WEB SITE MAKER]
+  * NEW: Update czech translation.
+  [GB.GTK]
+  * BUG: Fix the Control.Grab() method.
+  [GB.FORM]
+  * NEW: Update czech translation.
+  [GB.FORM.DIALOG]
+  * NEW: Update czech translation.
+  [GB.FORM.MDI]
+  * NEW: Update czech translation.
+  [GB.NET.POP3]
+  * NEW: Update czech translation.
+  [GB.REPORT]
+  * BUG: Reactivate the OnePiece property because some report stopped
+    working correctly.
+  * NEW: Update czech translation.
+  [GB.WEB]
+  * NEW: Session.CookiePath is a new property that allows to define the URL
+    path of the session cookie.
+
+-------------------------------------------------------------------
+Fri Aug 24 10:49:46 UTC 2012 - lars@linux-schulserver.de
+
+- update to 3.2.1:
+  [CONFIGURATION]
+  * BUG: When a top-level source directory actually several components,
+    compile the sub-components *after* the main components. This is
+    especially important with gb.xml and gb.xml.rpc.
+  [INTERPRETER]
+  * BUG: Do not leak memory if the _unknown method raised an error.
+  * BUG: Make the interpreter compile when FFI has been disabled.
+  [COMPILER]
+  * BUG: Like can be used in a Case expression just after the Case keyword
+    only.
+  [GB.CRYPT]
+  * BUG: Fix bad casting of strcmp() return value to boolean. The same
+    security flaw has been found in MySQL recently. See
+    http://seclists.org/oss-sec/2012/q2/493
+  [GB.DESKTOP]
+  * NEW: Support for the Mate desktop in Desktop.Open, Desktop.OpenTerminal
+    and Desktop.Passwords.
+  [GB.GTK]
+  * BUG: Fix bad casting of strcmp() return value to boolean in the Font
+    management.
+  * BUG: Panel with an explicit background color now have their own X11
+    window so that they can cover any over controls.
+  * BUG: The child search method now takes clientX and clientY into account.
+    Consequently, clicking on TabStrip tab buttons work correctly again.
+  [GB.OPTION]
+  * BUG: The component is now compatible with the new way of arguments
+    handling, and does not crash anymore.
+  [GB.QT4]
+  * BUG: ScrollView internal visible flag is correctly set, and so the
+    Hovered property returns the right value.
+  [GB.SIGNAL]
+  * BUG: Remove an apparently useless type definition, and fix compilation on
+    recent Linux kernels.
+- added new subpackage gambas3-gb-gtk-opengl
+- use pangox-devel instead of gtkglext-devel for openSUSE > 12.2
+
+-------------------------------------------------------------------
+Sun Jul  8 17:37:59 UTC 2012 - lars@linux-schulserver.de
+
+- update to 3.2.0:
+  + This new release fixes more than 100 bugs and adds
+    more than 100 new features
+  + The main new feature of Gambas 3.2 is the new Just-In-Time
+    compiler made by Emil Lenngren, that can make a function or an
+    entire class up to 100 times faster!
+  + Otherwise the other main changes are:
+  ++ gb.gtk.opengl is a new component that allows to use OpenGL
+     in GTK+ applications.
+  ++ gb.media is a new component based on GStreamer.
+  ++ gb.ncurses is a new component based on the ncurses library
+     made by Tobias Boege.
+  ++ gb.xml has been entirely rewritten from scratch by
+     Adrien Prokopowicz.
+  ++ gb.xml.html is a new HTML generator component based on gb.xml
+  ++ The IDE now has an integrated profiler.
+  ++ New ON GOTO and ON GOSUB instructions.
+  ++ New Base64() and UnBase64() conversion functions.
+  => See the Release Notes for the details.
+
+-------------------------------------------------------------------
+Tue Feb 14 18:12:16 UTC 2012 - lars@linux-schulserver.de
+
+- update to final version 3.0.0:
+  + There were many many last minute changes since the last release
+    candidate, but I like being near the danger.
+  A few noticeable points:
+  + The special mathematical functions of glibc are correctly
+    detected and used now.
+  + Floating point numbers should be printed in a better way.
+  + French, Czech and Catalan translations were updated.
+  And two security holes were closed:
+  + String hashing algorithm has been randomized.
+    See that document for the details.
+  + In the IDE, you cannot get the project version by running a
+    program (what a stupid idea!). Now you get it from a text file
+    located in a parent directory of the project.
+- adapted rpmlintrc to new version
+- following http://gambasdoc.org/help/howto/package#t1
+  => Gambas 3 packaging HowTo
+
+-------------------------------------------------------------------
+Sun Nov 13 22:11:14 UTC 2011 - lars@linux-schulserver.de
+
+- update to 2.99.6 (Sixth Release Candidate):
+  + Thirty-one bugs were fixed, with some important ones inside the
+    interpreter, and the gb.report component was updated.
+
+-------------------------------------------------------------------
+Sat Sep 10 17:50:05 UTC 2011 - lars@linux-schulserver.de
+
+- new package gambas3 based on gambas2 - version 2.99.3:
+  + third release candidate of Gambas 3
+  + please refer to the Changelog in
+    /usr/share/doc/packages/gambas3/Changes for details
+- adapt all pathnames to the new version, so gambas2 and gambas3
+  can be installed in parallel

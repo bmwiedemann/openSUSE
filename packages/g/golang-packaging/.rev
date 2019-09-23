@@ -1,0 +1,212 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f5aa5cd473511e6ed563e611788f9261</srcmd5>
+    <version>4</version>
+    <time>1437059936</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>316082</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d59be4d8af76f743a39bacee909d1073</srcmd5>
+    <version>6</version>
+    <time>1437803072</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>318292</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>900d76f8de438b7998749eb4b2bf6e03</srcmd5>
+    <version>8</version>
+    <time>1438548394</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320023</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d0a1bc80a0861fc0ae3783b8f0da265c</srcmd5>
+    <version>9</version>
+    <time>1441146954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>327786</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>923e46ce7adec047be5de97d28e601b8</srcmd5>
+    <version>10</version>
+    <time>1441726972</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329165</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>60a20264eaf7dbe4ec6ad6c8f0fb1b43</srcmd5>
+    <version>13</version>
+    <time>1452122675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>351931</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>399189f6488d7eb12e8c135a2f6578fe</srcmd5>
+    <version>14.2</version>
+    <time>1452611609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>353060</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3c9d5706c96550d9247b89c99f9571dc</srcmd5>
+    <version>14.3</version>
+    <time>1453280107</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354751</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>eeeb51ddd861efa0a8912dfbf3d51c74</srcmd5>
+    <version>14.5</version>
+    <time>1453799700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>355423</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cc2f24faa913367faa755cb5e2231b87</srcmd5>
+    <version>14.6</version>
+    <time>1455610732</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359094</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f9064ab281eef0e325a1b46511ad58f0</srcmd5>
+    <version>14.7</version>
+    <time>1456434611</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361264</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9526040ab9926ad9e7c198bd9cd93432</srcmd5>
+    <version>14.8.1</version>
+    <time>1459936366</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>384312</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a6c67548f83ec0510df49917eb2291a7</srcmd5>
+    <version>14.9.0</version>
+    <time>1461335136</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390515</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f80254ebfc86f137e98643802de9a8e5</srcmd5>
+    <version>14.9.1</version>
+    <time>1465750484</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400651</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ea4b301d87a765a246c343e88453e563</srcmd5>
+    <version>14.9.2</version>
+    <time>1466681808</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403821</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>1abdac0ba47e32d8efd8f2dd4b447ea2</srcmd5>
+    <version>14.9.2</version>
+    <time>1468579798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>407319</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e71b1244f46418b11b44c6e7363c92e0</srcmd5>
+    <version>15.0.1</version>
+    <time>1490132909</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479245</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3ce113b8d9858e7855c669732c3de0c9</srcmd5>
+    <version>15.0.3</version>
+    <time>1490965801</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483409</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bf01ffe7859364360b5ff93722abe692</srcmd5>
+    <version>15.0.4</version>
+    <time>1497016542</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501677</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>59d3a9e4f5117206047a5d0a8d159483</srcmd5>
+    <version>15.0.5</version>
+    <time>1501406638</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510328</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>13de3697de720bad905e5c2bc8805b84</srcmd5>
+    <version>15.0.7</version>
+    <time>1506955705</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.0.7:
+  * *: always use -buildmode=pie
+  * fix changelog
+  * golang.sh: Fix arch for aarch64</comment>
+    <requestid>529891</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e8d503c21384b7b62be7a04c2c740e29</srcmd5>
+    <version>15.0.8</version>
+    <time>1518697341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576767</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bb7a022c694652b0c4dd24827763483b</srcmd5>
+    <version>15.0.10</version>
+    <time>1527933392</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.0.10:
+  * update changelog to v15.0.10
+  * This flag does not exist for go 1.10 because this is an extra flag that openSUSE was adding into the go packages in order to fix
+  * Revert &quot;only add the s flag if go is less than 1.10&quot;
+  * only add the s flag if go is less than 1.10
+  * Revert &quot;Pass linker flag via ldflags&quot;
+  * update changelog: add 15.0.9 version
+  * Pass linker flag via ldflags
+  * Bump version 15.0.8
+  * Fix the handling of quoted extra args
+  * bump version to v15.0.7
+- Add Requires rpmdev-tools as this is used to compare versions in the
+  golang.sh script
+
+- Update to version 15.0.9:
+  * Pass linker flag via ldflags</comment>
+    <requestid>613321</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>269483919eeda4f37dce951a612944d0</srcmd5>
+    <version>15.0.11</version>
+    <time>1529666133</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616520</requestid>
+  </revision>
+</revisionlist>

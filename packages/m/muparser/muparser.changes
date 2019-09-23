@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Sat Aug 24 16:24:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Specfile modernization.
+
+-------------------------------------------------------------------
+Sat Jul  6 10:37:33 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from descriptions.
+
+-------------------------------------------------------------------
+Mon Oct 22 13:11:56 UTC 2018 - badshah400@gmail.com
+
+- Update to version 2.2.6.1:
+  * build system based on cmake
+  * source code fixes for modern compilers
+- Update soversion in muparser-abiversion.diff and baselibs.conf.
+
+-------------------------------------------------------------------
+Sun Nov 27 16:04:34 UTC 2016 - aloisio@gmx.com
+
+- Added baselibs.conf
+
+-------------------------------------------------------------------
+Sun Mar 13 12:01:14 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.2.5
+* example2 extended to work with UNICODE character set
+* muChar_t in muParserDLL.h was not set properly when UNICODE
+  was used
+
+-------------------------------------------------------------------
+Mon Feb  2 23:06:30 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.2.4
+* String constants did not work properly. Using more than a single
+  one was impossible.
+* return type of ParserError::GetPos changed to int
+* Bulkmode did not evaluate properly if "=" and "," operator was
+  used in the expression
+- Add muparser-abiversion.diff
+
+-------------------------------------------------------------------
+Fri Jan 25 04:15:00 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 2.2.3
+* fixed issue 3509860: Callbacks of functions with string
+  parameters were called twice
+- Remove muparser-fix-ac.diff, muparser-fix-undef.diff
+  (merged upstream)
+
+-------------------------------------------------------------------
+Thu Nov 29 19:03:48 UTC 2012 - jengelh@inai.de
+
+- Updated homepage URL
+
+-------------------------------------------------------------------
+Thu Apr  5 11:24:30 UTC 2012 - jengelh@medozas.de
+
+- update to new upstream release 2.2.2
+* Retrieving all results of expressions made up of comma separate
+  subexpressions is now possible with a new Eval overload.
+* Callback functions with fixed number of arguments can now have up
+  to 10 parameters
+* ternary if-then-else operator added (C-like; "x?y:z")
+* new intrinsic binary operators: "&&", "||" (logical and, or)
+* A new bulkmode allows submitting large arrays as variables to
+  compute large numbers of expressions with a single call.- enable
+  parallel build
+
+-------------------------------------------------------------------
+Wed Nov 10 19:00:00 CET 2010 - aeszter@gwdg.de
+
+- update to 1.34
+
+-------------------------------------------------------------------
+Tue Nov 17 19:00:00 CET 2009 - aeszter@gwdg.de
+
+- fix parallel build
+
+-------------------------------------------------------------------
+Sun Aug 30 21:12:08 CEST 2009 - lars@linux-schulserver.de
+
+- build for openSUSE-Education
+
+-------------------------------------------------------------------
+Fri Apr 3 00:00:00 CEST 2009 - uli@suse.de
+
+- initial package
+

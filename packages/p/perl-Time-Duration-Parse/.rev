@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>55ef2ff4f5e7c1eb051a57f2e75fa7cd</srcmd5>
+    <version>0.06</version>
+    <time>1311086000</time>
+    <user>saschpe</user>
+    <comment>new dep of perl-CHI</comment>
+    <requestid>76233</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1b55c1e7d03f839b9b89e28633fb8523</srcmd5>
+    <version>0.06</version>
+    <time>1311086012</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76233
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1b55c1e7d03f839b9b89e28633fb8523</srcmd5>
+    <version>0.06</version>
+    <time>1319182318</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>6451fd67b2b3899e861ed8056ca6b21b</srcmd5>
+    <version>0.06</version>
+    <time>1323193753</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>6451fd67b2b3899e861ed8056ca6b21b</srcmd5>
+    <version>0.06</version>
+    <time>1340183944</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>6451fd67b2b3899e861ed8056ca6b21b</srcmd5>
+    <version>0.06</version>
+    <time>1359109833</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>6451fd67b2b3899e861ed8056ca6b21b</srcmd5>
+    <version>0.06</version>
+    <time>1379663902</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>6451fd67b2b3899e861ed8056ca6b21b</srcmd5>
+    <version>0.06</version>
+    <time>1409302548</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>900024ed04075758ee1f6a7bf80bf4c6</srcmd5>
+    <version>0.11</version>
+    <time>1411377079</time>
+    <user>coolo</user>
+    <comment>- updated to 0.11
+     - Min perl version now set to 5.6.0
+     - Added description of DateTime::Format::Duration to SEE ALSO
+ 
+ 0.10 2014-03-24
+     - Switched to Dist::Zilla. The Module::Install Makefile.PL was resulting
+       in dependency problems and CPAN Testers fails, and I'm not familiar with
+       it. Easier to switch. Thanks to ZEFRAM for pointing out the problem.
+ 
+ 0.09 2014-03-23
+     - Test::More and Time::Duration were listed as build_requires;
+       changed them to test_requires, with versions. Wonder if this was
+       the cause of the small number of CPAN Testers fails?
+     - Added more more modules to the SEE ALSO section in the pod.
+ 
+ 0.08 2014-03-23
+     - Can now have a leading '+', as in '+2h'.
+       Suggested by MSCHWERN in RT#66572
+     - Added github repo to metadata (thanks dsteinbrunner)
+     - Added github repo to pod
+     - Added Time::Duration::Parse::More to SEE ALSO
+ 
+ 0.07 2014-03-21
+     - Added 'use warnings'
+     - Specified min perl version as 5.6.0 in Makefile.PL
+     - Fixed pod error reported in RT#86904
+     - Added license type 'perl' to metadata via Makefile.PL
+     - Reformatted this file as per CPAN::Changes::Spec</comment>
+    <requestid>250232</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6ff32cc1666db2ce60580c2cee3484f9</srcmd5>
+    <version>0.12</version>
+    <time>1436331571</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315153</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>415d103adf7d3583fa7c68d29d6cdbfa</srcmd5>
+    <version>0.13</version>
+    <time>1446049861</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341217</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6eac0fee72fec362be5098fe429f4860</srcmd5>
+    <version>0.14</version>
+    <time>1532774391</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623049</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>add5e6efd1ce9e345ff061bc247274d9</srcmd5>
+    <version>0.15</version>
+    <time>1558340910</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703879</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,38 @@
+From: William Cohen <wcohen@redhat.com>
+Date: Fri Aug 3 10:10:12 2018 -0400
+Subject: Handle empty event name spec gracefully for PPC
+Git-commit 457d33de89939ffaa523c2a6377ed7d1506ce255
+References: none
+Signed-off-by: Tony Jones <tonyj@suse.de>
+
+    Handle empty event name spec gracefully for PPC
+    
+    During testing Michael Petlan found that the giving an empty event
+    name in the event spec to operf on PPC machines would cause operf
+    crash.  Running the following following command would demonstrate
+    this problem:
+    
+      operf -e : /bin/ls
+    
+    The problem was traced to event_name in _handle_powerpc_event_spec
+    function having a length of 0.  The strncmp using event_name in
+    _handle_powerpc_event_spec would indicate a match and cause strncpy to
+    be called to copy zero bytes. The zero length strncpy would crash
+    operf.  Added a check to make ensure that the string is non-zero
+    length.
+    
+    Signed-off-by: William Cohen <wcohen@redhat.com>
+
+diff --git a/libpe_utils/op_pe_utils.cpp b/libpe_utils/op_pe_utils.cpp
+index f9638c77..2cae7840 100644
+--- a/libpe_utils/op_pe_utils.cpp
++++ b/libpe_utils/op_pe_utils.cpp
+@@ -588,7 +588,7 @@ static string _handle_powerpc_event_spec(string event_spec)
+ 		}
+ 		if (line[0] == ' ' || line[0] == '\t')
+ 			continue;
+-		if (!strncmp(line, event_name, evt_name_len)) {
++		if (evt_name_len && !strncmp(line, event_name, evt_name_len)) {
+ 			// Found a potential match.  Check if it's a perfect match.
+ 			string save_event_name = event_name;
+ 			size_t full_evt_len = index(line, ':') - line;

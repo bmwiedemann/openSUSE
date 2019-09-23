@@ -1,0 +1,32 @@
+From ff8ea140b0799643ad3097b89e8ed6e7b27cbc04 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Mon, 13 May 2019 12:32:01 +0200
+Subject: [PATCH] Fix the qmake executable name
+
+---
+ qtinfo.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/qtinfo.py b/qtinfo.py
+index 49b03b4..1500c7e 100644
+--- a/qtinfo.py
++++ b/qtinfo.py
+@@ -7,7 +7,7 @@ class QtInfo(object):
+         if qmake_command:
+             self._qmake_command = qmake_command
+         else:
+-            self._qmake_command = [find_executable("qmake"),]
++            self._qmake_command = [find_executable("qmake-qt5"),]
+         self._dict = {}
+         # bind all variables early at __init__ time.
+         for thing in self.__class__.__dict__:
+@@ -79,4 +79,4 @@ class QtInfo(object):
+     translations_dir = property(getTranslationsPath)
+     headers_dir = property(getHeadersPath)
+     docs_dir = property(getDocsPath)
+-    qml_dir = property(getQmlPath)
+\ No newline at end of file
++    qml_dir = property(getQmlPath)
+-- 
+2.21.0
+

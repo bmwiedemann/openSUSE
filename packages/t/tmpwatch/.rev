@@ -1,0 +1,213 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>de3c03ed712c4c73b166815179c32bde</srcmd5>
+    <version>2.9.13</version>
+    <time>1207796589</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="63">
+    <srcmd5>de3c03ed712c4c73b166815179c32bde</srcmd5>
+    <version>2.9.13</version>
+    <time>1207796589</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="64">
+    <srcmd5>f5d97c46f95ec087c8ffadf4fc9b6938</srcmd5>
+    <version>2.9.13</version>
+    <time>1245341354</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="66">
+    <srcmd5>f5d97c46f95ec087c8ffadf4fc9b6938</srcmd5>
+    <version>2.9.13</version>
+    <time>1245341354</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="67">
+    <srcmd5>91341f2585fc4f126b2b9e80f9b5fe46</srcmd5>
+    <version>2.9.13</version>
+    <time>1268926351</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="69">
+    <srcmd5>91341f2585fc4f126b2b9e80f9b5fe46</srcmd5>
+    <version>2.9.13</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="70">
+    <srcmd5>91341f2585fc4f126b2b9e80f9b5fe46</srcmd5>
+    <version>2.9.13</version>
+    <time>1278678622</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f9c32b2447d1017df5ce558c300815e8</srcmd5>
+    <version>2.10.1</version>
+    <time>1280741009</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/tmpwatch based on submit request 44239 from user coolo
+</comment>
+    <requestid>44239</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>31fb35d68c675ba5f7cdbbbbd6d38a92</srcmd5>
+    <version>2.10.1</version>
+    <time>1287834933</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51275 from user elvigia
+</comment>
+    <requestid>51275</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>cd8d65086ef91a454874ff9b6db82362</srcmd5>
+    <version>2.10.1</version>
+    <time>1287834940</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51275
+</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>9d020cb0d996b0e951c1221c7a731e64</srcmd5>
+    <version>2.10.1</version>
+    <time>1288023451</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51350 from user coolo
+</comment>
+    <requestid>51350</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>38d90a963f530f280283c8625c4a5858</srcmd5>
+    <version>2.10.1</version>
+    <time>1288023456</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51350
+</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>8b0c6663e0cea5742761c42375058e3f</srcmd5>
+    <version>2.10.1</version>
+    <time>1289533687</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>38d90a963f530f280283c8625c4a5858</srcmd5>
+    <version>2.10.1</version>
+    <time>1289569352</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>38d90a963f530f280283c8625c4a5858</srcmd5>
+    <version>2.10.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>a2d01e6839f36953afe0e9bbe6244f68</srcmd5>
+    <version>2.10.1</version>
+    <time>1300872256</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64820 from user licensedigger
+</comment>
+    <requestid>64820</requestid>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>daa8050ad7ed91bfa88fe6fd10840033</srcmd5>
+    <version>2.10.1</version>
+    <time>1300872278</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64820
+</comment>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>5145b9bf664e9f42b8a001e83580d338</srcmd5>
+    <version>2.10.3</version>
+    <time>1316465856</time>
+    <user>lrupp</user>
+    <comment>- update to 2.10.3
+  * Don't report EACCES errors, they can be routinely returned by FUSE mounts.
+  * Minor bug fixes in bind mount handling.
+  * Don't follow (non-trivial) bind mounts.
+  * Minor bug and documentation fixes.
+
+- fixed typos in tmpwatch.spec</comment>
+    <requestid>82423</requestid>
+  </revision>
+  <revision rev="19" vrev="13">
+    <srcmd5>5145b9bf664e9f42b8a001e83580d338</srcmd5>
+    <version>2.10.3</version>
+    <time>1319182525</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="14">
+    <srcmd5>80d776e32d26cd489f136e747c4a65da</srcmd5>
+    <version>2.10.3</version>
+    <time>1323194939</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="16">
+    <srcmd5>80d776e32d26cd489f136e747c4a65da</srcmd5>
+    <version>2.10.3</version>
+    <time>1340184280</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="18">
+    <srcmd5>80d776e32d26cd489f136e747c4a65da</srcmd5>
+    <version>2.10.3</version>
+    <time>1359110496</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="20">
+    <srcmd5>80d776e32d26cd489f136e747c4a65da</srcmd5>
+    <version>2.10.3</version>
+    <time>1379664830</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>533c97893f6d4f43aba4d9b53a06bb6b</srcmd5>
+    <version>2.11</version>
+    <time>1391442118</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0
+See e.g. tmpwatch.c - tell upstream about this (forwarded request 220605 from babelworx)</comment>
+    <requestid>220677</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>533c97893f6d4f43aba4d9b53a06bb6b</srcmd5>
+    <version>2.11</version>
+    <time>1409303510</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>db84b472e4e70d65c76afb2380ae79e7</srcmd5>
+    <version>2.11</version>
+    <time>1419159889</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>265804</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>95a77a6bd5f581f9b18413d4e70d5b6c</srcmd5>
+    <version>2.11</version>
+    <time>1553263881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687540</requestid>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>0f8373aecd73139b193d24a8c817dc9e</srcmd5>
+    <version>2.11</version>
+    <time>1566463933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724808</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,10 @@
+Index: trousers-0.3.14/src/tddl/Makefile.am
+===================================================================
+--- trousers-0.3.14.orig/src/tddl/Makefile.am
++++ trousers-0.3.14/src/tddl/Makefile.am
+@@ -1,4 +1,4 @@
+ lib_LIBRARIES=libtddl.a
+ 
+ libtddl_a_SOURCES=tddl.c
+-libtddl_a_CFLAGS=-DAPPID=\"TCSD\ TDDL\" -I${top_srcdir}/src/include -fPIE -DPIE
++libtddl_a_CFLAGS=-ffat-lto-objects -DAPPID=\"TCSD\ TDDL\" -I${top_srcdir}/src/include -fPIE -DPIE

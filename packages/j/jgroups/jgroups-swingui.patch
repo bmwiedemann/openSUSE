@@ -1,0 +1,15 @@
+Index: JGroups-2.6.10.merge.src/tests/junit-functional/org/jgroups/tests/XmlConfigurationTest.java
+===================================================================
+--- JGroups-2.6.10.merge.src.orig/tests/junit-functional/org/jgroups/tests/XmlConfigurationTest.java
++++ JGroups-2.6.10.merge.src/tests/junit-functional/org/jgroups/tests/XmlConfigurationTest.java
+@@ -34,8 +34,10 @@ public class XmlConfigurationTest extend
+ 
+     
+     public static void main(String[] args) {
++        /* junit.swingui does not exists in junit 4
+         String[] testCaseName={XmlConfigurationTest.class.getName()};
+         junit.swingui.TestRunner.main(testCaseName);
++        */
+     }
+ 
+ }

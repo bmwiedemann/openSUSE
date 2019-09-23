@@ -1,0 +1,30 @@
+--- memtest86+-5.01/Makefile.old	2013-08-10 04:01:58.000000000 +0200
++++ memtest86+-5.01/Makefile	2013-11-07 11:48:01.000000000 +0100
+@@ -8,6 +8,7 @@
+ # Path for the floppy disk device
+ #
+ FDISK=/dev/fd0
++TARGETDIR=/boot
+ 
+ AS=as -32
+ CC=gcc
+@@ -21,7 +22,6 @@ OBJS= head.o reloc.o main.o test.o init.
+       
+ 
+ all: clean memtest.bin memtest 
+-		 scp memtest.bin root@192.168.0.12:/srv/tftp/mt86plus
+ 
+ # Link it statically once so I know I don't have undefined
+ # symbols and then link it dynamically so I have full
+@@ -71,7 +71,10 @@ iso:
+ 	make all
+ 	./makeiso.sh
+ 
+-install: all
++install:
++	install -o root -g root memtest.bin $(DESTDIR)$(TARGETDIR)/
++
++install-floppy: all
+ 	dd <memtest.bin >$(FDISK) bs=8192
+ 
+ install-precomp:

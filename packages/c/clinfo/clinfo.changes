@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Mon Apr 30 20:18:28 UTC 2018 - badshah400@gmail.com
+
+- Update to version 2.2.18.04.06:
+  * No upstream documentation of changes.
+- Use %%license macro to package LICENSE file.
+
+-------------------------------------------------------------------
+Wed Oct 25 20:11:32 UTC 2017 - mardnh@gmx.de
+
+- Update to version 2.2.17.10.25
+  * Warnings as errors
+  * Correctly-rounded div and sqrt is only a flag for fp32
+  * Fix CL_DEVICE_IMAGE_PITCH_ALIGNMENT unit to pixels.
+  * fix manpage target
+- Remove patch:
+  * 0001-fix-manpage-target.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Sun Oct  1 14:45:03 UTC 2017 - mardnh@gmx.de
+
+- Update to version 2.2.17.08.25
+  * Version 2.2.17.08.25
+  * Switch to annotated tags
+  * Provide a `make install` target
+  * Check for extra bits in some bitfields
+  * Preliminary support for cl_khr_terminate_context
+  * Declare support for OpenCL 2.x experimental
+  * Actually add support for cl_khr_subgroup_named_barrier property
+  * Add tentative missing defines for cl_khr_terminate_context
+  * Defines for cl_khr_subgroup_named_barrier
+- Add patch:
+  * 0001-fix-manpage-target.patch
+
+-------------------------------------------------------------------
+Sat Jul 22 13:36:37 UTC 2017 - mardnh@gmx.de
+
+- Update to version 2.2.17.06.14
+  * Version 2.2.17.06.14
+  * OpenCL 2.2 support
+  * Add "size" to "cache line" info
+  * Add NMAKE makefile
+  * Update Windows support
+  * Avoid possible narrowing warnings
+  * Use PRIuS to print size_t
+  * Make UNUSED macro function-style
+  * Also check default devices in clCreateContextFromType
+
+-------------------------------------------------------------------
+Fri Feb 17 20:41:04 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.1.17.02.09:
+  * no upstream changelog provided
+
+-------------------------------------------------------------------
+Tue Jan 26 08:44:01 UTC 2016 - mpluskal@suse.com
+
+- Update to 2.1.16.01.12
+  * no upstream changelog provided
+
+-------------------------------------------------------------------
+Wed Jan  6 20:29:59 UTC 2016 - mardnh@gmx.de
+
+- Update to version 2.1.16.01.06
+  - Upstream does not provide a changelog
+
+-------------------------------------------------------------------
+Sat Nov 21 08:21:09 UTC 2015 - mpluskal@suse.com
+
+- Use optflags when building
+- Tiny spec file cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Jun 27 11:43:34 UTC 2015 - mardnh@gmx.de
+
+- Update to version 2.0.15.03.24
+
+-------------------------------------------------------------------
+Thu Jan 15 09:21:38 UTC 2015 - mardnh@gmx.de
+
+- initial packacke
+

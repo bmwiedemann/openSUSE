@@ -1,0 +1,11 @@
+--- Makefile.am
++++ Makefile.am
+@@ -5,7 +5,7 @@
+ ## Process this with automake to produce Makefile.in
+ 
+ 
+-
++AUTOMAKE_OPTIONS=foreign
+ bin_PROGRAMS = idep
+ 
+ idep_SOURCES = \

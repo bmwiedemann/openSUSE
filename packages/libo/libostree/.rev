@@ -1,0 +1,223 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>54fb04e64f3b80bd191a76c449f45763</srcmd5>
+    <version>2017.3</version>
+    <time>1490220184</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME:Factory</comment>
+    <requestid>479366</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0739027f2a001ead765dd0b30752dabc</srcmd5>
+    <version>2017.8</version>
+    <time>1502365426</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>511901</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>14beb92f29382c79d3a1e7f635d85561</srcmd5>
+    <version>2017.9</version>
+    <time>1503061193</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release (forwarded request 516728 from Zaitor)</comment>
+    <requestid>516875</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c66fe585cb9a0b3d957eeedbfb99b485</srcmd5>
+    <version>2017.10</version>
+    <time>1503591890</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518079</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>57e723d308513d22a4f744e61f10157d</srcmd5>
+    <version>2017.12</version>
+    <time>1510505839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539817</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2498c155fae2ab99571266c73b10d79d</srcmd5>
+    <version>2017.15</version>
+    <time>1514677376</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release</comment>
+    <requestid>559495</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>542f73a399b087960bcfdbec86243c38</srcmd5>
+    <version>2018.1</version>
+    <time>1518426614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2018.1:
+  + Support for booting without initramfs.
+  + bash/ostree: add missing --add-metadata option.
+  + bin/commit: add --keep-metadata option.
+  + bin/commit: move parent checking code higher up.
+  + bin: Fix cookie builtin build with curl but no soup.
+  + build-sys: Allow building with curl, but without libsoup.
+  + build-sys: Link with -ldl for rust build.
+  + deploy: add --karg-none argument.
+  + find-remotes: Add --finders option.
+  + grub2: Exit gracefully if there's no system ostree repository.
+  + lib/checkout: Validate pathnames during checkout.
+  + lib/fetcher: Add version to USER_AGENT string.
+  + lib/pull: allways include ostree-repo-pull-private.h.
+  + lib: Validate metadata structure more consistently during pull.
+  + ostree-prepare-root: enabler for simpler kernel arg.
+  + rofiles: Add --copyup option.
+  + rofiles: Fix --copyup when creating a new file. (forwarded request 573734 from fcrozat)</comment>
+    <requestid>574227</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>22a99ba352ad1cbf4758109279012b6e</srcmd5>
+    <version>2018.1</version>
+    <time>1520502503</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581265 from dimstar)</comment>
+    <requestid>582837</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>be020e1b0b1ae498643b975de3e99d98</srcmd5>
+    <version>2018.1</version>
+    <time>1523127256</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593962</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e343da4d86178bcad2048cf52adaac61</srcmd5>
+    <version>2018.4</version>
+    <time>1525697437</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2018.4:
+  + A quick turnaround after 2018.3 to include one main PR:
+    gh#ostreedev/ostree#1508.
+  + &quot;switchroot: Ensure /run/ostree-booted is created even without
+    initramfs&quot;.
+  + This fixes ostree when booting without an initramfs. Thanks to
+    @akiernan for the bug report and helping review the fix! I'm
+    working on enhancing the test suite, which will help in adding
+    some coverage here.
+- Changes from version 2018.3:
+  + Keeping up with our ~monthly cadence. A variety of contributors
+    here again, it's great to see! There's two notable features,
+    and a variety of non-critical bugfixes.
+  + On the features side we have:
+    - sysroot: Add concept of deployment &quot;pinning&quot;.
+    - ostree: introduce PAYLOAD_LINK object type.
+    - lib/fetcher: Allow clients to append to User-Agent.
+  + By default libostree prunes older deployments; the pinning
+    feature allows you to explicitly retain them until unpinned.
+    This is useful for major version updates.
+  + The PAYLOAD_LINK functionality allows libostree to do
+    content-based deduplication. Previously, if e.g. a file changes
+    in metadata (mode, owner, xattrs such as SELinux labels), we
+    can't make a plain Unix hardlink, and hence by default end up
+    with a new copy on disk. However, the Linux kernel has
+    standardized &quot;reflinks&quot; and some filesystems support them,
+    including modern versions of XFS. When reflinks are available,
+    this functionality causes libostree to compute a content-only
+    payload, and when importing an object, if it matches in content
+    with an existing object, to use reflinks to deduplicate, while
+    using different inodes.
+  + Finally, the HTTP User-Agent API is intended for higher level
+    tools linking to libostree where one wants to expose the app
+    version as well.
+  + Beyond that, as mentioned above we have a variety of
+    non-critical fixes such as memory leaks, test suite
+    improvements, correctly printing the &quot;would be pruned&quot; size
+    when using prune --no-prune, etc.
+- Changes from version 2018.2:
+  + We're keeping up with the approximately-monthly release cycle.
+    There's mostly a collection of smaller fixes here, with some
+    enhancements. I'm biased but my personal favorite is
+    gh#ostreedev/ostree#1438 since it makes the output of findmnt
+    rather significantly nicer on this workstation where I have
+    container tooling creating sub-mounts in /var that are no
+    longer replicated in /sysroot.
+  + For the embedded space, gh#ostreedev/ostree#1411 for devicetree
+    support is likely interesting, and is related to a discussion
+    on the mailing list:
+    https://mail.gnome.org/archives/ostree-list/2018-February/msg00001.html
+  + Jonathan's PR gh#ostreedev/ostree#1441 to add callback
+    filtering to checkout was necessary for us to re-implement some
+    hairy logic from librpm around &quot;file coloring&quot;; see
+    projectatomic/rpm-ostree#1227 We're getting quite far along now
+    in having rpm-ostree be a truly hybrid system, supporting the
+    existing RPM ecosystem.
+  + Marcus definitely wins the &quot;lines changed&quot; count this cycle by
+    adding SPDX-License-Identifier to all of the C source files
+    (gh#ostreedev/ostree#1439). This happened because we relicensed
+    the documentation to dual CC BY-SA and GFDL in
+    gh#ostreedev/ostree#1432 to enable a Wikipedia page which I
+    just noticed exists now! (forwarded request 602906 from iznogood)</comment>
+    <requestid>603000</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>707e4f09caa83d05a83b6726b6ef004b</srcmd5>
+    <version>2018.6</version>
+    <time>1530993367</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2018.6 (forwarded request 619852 from luc14n0)</comment>
+    <requestid>620177</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>acae48980401346366bb22f93e16ad15</srcmd5>
+    <version>2018.8</version>
+    <time>1536678719</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 2018.8:
+  + This release is pretty much all minor bugfixes: memory leaks,
+    fixing error messages and docs, handling a race condition on
+    pull with summary updates. There's one new feature (noted
+    below), and we also gained a new contributing tutorial:
+    https://mail.gnome.org/archives/ostree-list/2018-August/msg00005.html
+  + The one bugfix I want to call out explicitly is:
+    ostree-remount.service: RemainAfterExit=yes
+    (gh#ostreedev/ostree#1697). It's surprising it took us so long
+    to find and fix this; I've seen occasional boot failures that I
+    believe trace down to this problem. The behavior of systemd
+    units of Type=simple without RemainAfterExit=yes set is rather
+    nonsensical; I may try to push to have a warning emitted
+    upstream if such a unit is a dependency of another.
+  + And the one new feature is the auto-update-summary config
+    option for repositories. For more information, see the docs and
+    gh#ostreedev/ostree#1681.
+- Rebase ostree-grub2-location.patch with quilt.
+- Drop libostree-fix-wformat-warnings-on-i586.patch: Fixed
+  upstream.
+ 
+- Update to version 2018.7:
+  + There's no one major feature in this release, but we have a
+    variety of improvements and bugfixes. (forwarded request 631731 from iznogood)</comment>
+    <requestid>631772</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5f76da29c9cc42fdff7d83afc0a7996e</srcmd5>
+    <version>2018.9</version>
+    <time>1542579971</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 649030 from dimstar)</comment>
+    <requestid>649254</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9ba4985f09da74c8ea6645b7fd12d1a2</srcmd5>
+    <version>2019.1</version>
+    <time>1550049398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669855</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b52cfb381aa6ff39fc677e58c1770597</srcmd5>
+    <version>2019.1</version>
+    <time>1556914762</time>
+    <user>dimstar_suse</user>
+    <comment>Disable LTO (boo#1133120). (forwarded request 697425 from marxin)</comment>
+    <requestid>699589</requestid>
+  </revision>
+</revisionlist>

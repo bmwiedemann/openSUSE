@@ -1,0 +1,601 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9cb17439e080e1f6d9dae186068823bd</srcmd5>
+    <version>4.96.0</version>
+    <time>1393600882</time>
+    <user>scarabeus_factory</user>
+    <comment>Init Solid package</comment>
+    <requestid>223081</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6f9768ddf5ffb419021e0bb79461bc88</srcmd5>
+    <version>4.97.0</version>
+    <time>1394450255</time>
+    <user>coolo</user>
+    <comment>Update to 4.97.0</comment>
+    <requestid>224782</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>851be1af34dead76a74a39d5841aab3c</srcmd5>
+    <version>4.98.0</version>
+    <time>1396452153</time>
+    <user>coolo</user>
+    <comment>Update to 4.98.0</comment>
+    <requestid>228504</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>753394feaecbb364c6ca0c84d676f227</srcmd5>
+    <version>4.99.0</version>
+    <time>1400092049</time>
+    <user>coolo</user>
+    <comment>Update to 4.99.0</comment>
+    <requestid>233193</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d9c4e48ae317f5e6bcf9269af5281624</srcmd5>
+    <version>4.99.0</version>
+    <time>1401208381</time>
+    <user>coolo</user>
+    <comment>Build with pkgconfig(libudev), not pkgconfig(udev)</comment>
+    <requestid>235522</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a164ec8315310bb20709e583cf10414d</srcmd5>
+    <version>4.100.0</version>
+    <time>1402403844</time>
+    <user>coolo</user>
+    <comment>Update to 4.100.0</comment>
+    <requestid>236542</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2ed2336c0bef277055880bb1f9d5ccd6</srcmd5>
+    <version>5.0.0</version>
+    <time>1404996951</time>
+    <user>coolo</user>
+    <comment>Update to 5.0.0</comment>
+    <requestid>240060</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>02e877550c734605a98f5d7005f304c7</srcmd5>
+    <version>5.1.0</version>
+    <time>1408196529</time>
+    <user>lnussel</user>
+    <comment>Update to 5.1.0</comment>
+    <requestid>244428</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>02e877550c734605a98f5d7005f304c7</srcmd5>
+    <version>5.1.0</version>
+    <time>1409303389</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3cbae29f48fa2783641b8f4a746fc7fd</srcmd5>
+    <version>5.2.0</version>
+    <time>1410534220</time>
+    <user>coolo</user>
+    <comment>Update to 5.2.0</comment>
+    <requestid>248914</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>65b0ac9f58e00db3be839034821ee90b</srcmd5>
+    <version>5.3.0</version>
+    <time>1412690387</time>
+    <user>coolo</user>
+    <comment>Update to 5.3.0</comment>
+    <requestid>254435</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f1e4a42c4887bd3596c9b32b5df79630</srcmd5>
+    <version>5.4.0</version>
+    <time>1415664593</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.4.0</comment>
+    <requestid>259967</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6a77096e3fda7de96bd23d0881053d5f</srcmd5>
+    <version>5.5.0</version>
+    <time>1419159540</time>
+    <user>coolo</user>
+    <comment>Update to 5.5.0, please merge with Qt 5.4 submit, thanks.</comment>
+    <requestid>264920</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ef1bff3ad72b6135f85404796f9e1785</srcmd5>
+    <version>5.6.0</version>
+    <time>1422532370</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.6.0.</comment>
+    <requestid>280398</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9ece709afc4e423fe613f5240616acf3</srcmd5>
+    <version>5.7.0</version>
+    <time>1424095592</time>
+    <user>coolo</user>
+    <comment>Update to 5.7.0.</comment>
+    <requestid>286093</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>036b5766a9034d7327f80e159b37404c</srcmd5>
+    <version>5.8.0</version>
+    <time>1426494831</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.8.0.</comment>
+    <requestid>290586</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>34b931918ca89f87d90c69e8bd764135</srcmd5>
+    <version>5.9.0</version>
+    <time>1428949611</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.9.0.</comment>
+    <requestid>295534</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a37724564d794fdf50cdd05469f86fac</srcmd5>
+    <version>5.10.0</version>
+    <time>1431365814</time>
+    <user>coolo</user>
+    <comment>Update to 5.10.0.</comment>
+    <requestid>306021</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>100ac11f0d368cbf464719e70d461bb2</srcmd5>
+    <version>5.11.0</version>
+    <time>1435054386</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.11</comment>
+    <requestid>311912</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0bfdcf574dd67d95ec073474b383159b</srcmd5>
+    <version>5.12.0</version>
+    <time>1436887812</time>
+    <user>coolo</user>
+    <comment>Update to 5.12.0</comment>
+    <requestid>315972</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>55eb11d82b4592755cb6b9bb57ccff0b</srcmd5>
+    <version>5.13.0</version>
+    <time>1441172963</time>
+    <user>coolo</user>
+    <comment>Update to 5.13.0</comment>
+    <requestid>322219</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4bbe72ce61546f830e9fe33a0f31d656</srcmd5>
+    <version>5.14.0</version>
+    <time>1443071694</time>
+    <user>coolo</user>
+    <comment>Update to 5.14.0</comment>
+    <requestid>330704</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0c4a0f1241ae70a479510c09b28490c4</srcmd5>
+    <version>5.15.0</version>
+    <time>1445286567</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.15.0</comment>
+    <requestid>337680</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ab9898dc094996f1414d7e209aefef53</srcmd5>
+    <version>5.16.0</version>
+    <time>1448400351</time>
+    <user>coolo</user>
+    <comment>Update to 5.16.0</comment>
+    <requestid>344557</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0feb93e9074022104d53d9fd391e12f0</srcmd5>
+    <version>5.17.0</version>
+    <time>1451390127</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.17.0</comment>
+    <requestid>348597</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2fa6745d1dbe368e3df6f0f724d661c8</srcmd5>
+    <version>5.18.0</version>
+    <time>1453279762</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.18.0</comment>
+    <requestid>352903</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>6aa03d3b622f15eb04b1ad48258c8772</srcmd5>
+    <version>5.19.0</version>
+    <time>1456336678</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.19.0</comment>
+    <requestid>361000</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>51707e345858ac6b9e5833d2c75bbe77</srcmd5>
+    <version>5.20.0</version>
+    <time>1458120762</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.20.0</comment>
+    <requestid>371154</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>088997ea8ec8295c6764e8908e0e8812</srcmd5>
+    <version>5.21.0</version>
+    <time>1460482211</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.21.0</comment>
+    <requestid>387096</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>30a7540c04de172253b52192014d42c5</srcmd5>
+    <version>5.22.0</version>
+    <time>1463652639</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.22.0</comment>
+    <requestid>395687</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>98bf2ea5c4cb5bafb7eab5badc38df08</srcmd5>
+    <version>5.22.0</version>
+    <time>1464017472</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397057</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>0535fba2eb282093f021ad4ad05fd0b7</srcmd5>
+    <version>5.23.0</version>
+    <time>1467541582</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.23.0</comment>
+    <requestid>402644</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>7e38c83d65b105f13fe3d502bc733756</srcmd5>
+    <version>5.24.0</version>
+    <time>1468579317</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.24.0</comment>
+    <requestid>407535</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>6d6d484f8193c62a2a1526b5aca44db1</srcmd5>
+    <version>5.25.0</version>
+    <time>1472476458</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.25.0</comment>
+    <requestid>420919</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>7572a834d2161c22af6c0b136e0a99b4</srcmd5>
+    <version>5.26.0</version>
+    <time>1473888631</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.26.0</comment>
+    <requestid>426605</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>07056f5eeacdc1e2b71fe886068b9f51</srcmd5>
+    <version>5.27.0</version>
+    <time>1477650333</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.27.0</comment>
+    <requestid>436866</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>793a26adf5130ebe9a2b06d978d80d2b</srcmd5>
+    <version>5.28.0</version>
+    <time>1479382774</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.28.0</comment>
+    <requestid>440523</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>7f34065d71a5594aa7788e441fa15063</srcmd5>
+    <version>5.29.0</version>
+    <time>1481969750</time>
+    <user>dimstar_suse</user>
+    <comment>5.29.0</comment>
+    <requestid>446314</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>6e017b8e215c11981b659b4efc7563e4</srcmd5>
+    <version>5.30.0</version>
+    <time>1485861169</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.30 for Plasma 5.9 Beta testing</comment>
+    <requestid>451156</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>71276a2cb59ead6eefc6dec15f016463</srcmd5>
+    <version>5.31.0</version>
+    <time>1488558546</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Frameworks 5.31 and KDE Plasma 5.9.3</comment>
+    <requestid>461498</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>e408bd516711dbf4bf47678466a9ad17</srcmd5>
+    <version>5.32.0</version>
+    <time>1490706816</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Frameworks 5.32.0</comment>
+    <requestid>481550</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>98373916ea65126ebb22321408611401</srcmd5>
+    <version>5.33.0</version>
+    <time>1493580142</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Frameworks 5.33.0</comment>
+    <requestid>492102</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>3d2db4983aae78d3d49e620246568c02</srcmd5>
+    <version>5.34.0</version>
+    <time>1496326945</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 494976 from Vogtinator)</comment>
+    <requestid>495082</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ee35147c00c3c9396b74da2f32e74ebf</srcmd5>
+    <version>5.35.0</version>
+    <time>1499291662</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.35</comment>
+    <requestid>502984</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>6fce2743874fdefba114eecb9a50af32</srcmd5>
+    <version>5.36.0</version>
+    <time>1500280012</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.36.0</comment>
+    <requestid>509946</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>363130429548c8cebd90288ff1c63b02</srcmd5>
+    <version>5.37.0</version>
+    <time>1503590402</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.37.0</comment>
+    <requestid>516712</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>4731dbccf97b96953a70dc2f100f9794</srcmd5>
+    <version>5.38.0</version>
+    <time>1505831298</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.38</comment>
+    <requestid>526686</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a5653f68e85db5f0c590fc58ef93fde4</srcmd5>
+    <version>5.39.0</version>
+    <time>1509105573</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.39.0</comment>
+    <requestid>536365</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>fe1dc399e7c45a0b6bf6a74834736ac2</srcmd5>
+    <version>5.40.0</version>
+    <time>1510839733</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.40.0</comment>
+    <requestid>541700</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>7137fb9065adc5ad0c5b94bb9af8c7ea</srcmd5>
+    <version>5.41.0</version>
+    <time>1515505565</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.41 (forwarded request 559020 from luca_b)</comment>
+    <requestid>559482</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>d2c1aceb6c8951e3549752a793c558f4</srcmd5>
+    <version>5.42.0</version>
+    <time>1516633486</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.42 (forwarded request 566643 from luca_b)</comment>
+    <requestid>566721</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>705b4e770cbd5a469ba28527ae3d3c42</srcmd5>
+    <version>5.43.0</version>
+    <time>1518813376</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.43.0</comment>
+    <requestid>576575</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>9627708cae785dbba14ee49da97a56f9</srcmd5>
+    <version>5.43.0</version>
+    <time>1519844402</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579845</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>1a95615acd0faf73afc727fdbfbd9554</srcmd5>
+    <version>5.44.0</version>
+    <time>1521578935</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.44</comment>
+    <requestid>586873</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>0cb3bfbe7a3cc0805d2b52e1e3f357fc</srcmd5>
+    <version>5.44.0</version>
+    <time>1523447377</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594855</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>5f7d1f54f5825b01d257dc4d1238bcd6</srcmd5>
+    <version>5.45.0</version>
+    <time>1524144002</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.45</comment>
+    <requestid>596916</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>b325101e9bdd7a3c58295027b542b8cd</srcmd5>
+    <version>5.45.0</version>
+    <time>1525611585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603352</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>62e0b030c6291eecb527e5e0b3cd62fa</srcmd5>
+    <version>5.46.0</version>
+    <time>1526646319</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.46.0</comment>
+    <requestid>607603</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>3fd011a9edbd485bfbf7781d9bd44192</srcmd5>
+    <version>5.47.0</version>
+    <time>1529666747</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Frameworks 5.47.0</comment>
+    <requestid>616804</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>630010f1c962164de816ab40b25aa0a4</srcmd5>
+    <version>5.48.0</version>
+    <time>1532161047</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.48.0 (forwarded request 623248 from luca_b)</comment>
+    <requestid>623331</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>ecf9a26a7276ee06008ad80490f53c5e</srcmd5>
+    <version>5.49.0</version>
+    <time>1535122681</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.49.0</comment>
+    <requestid>630652</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>23274a073435616a2367015f5ad3ca34</srcmd5>
+    <version>5.50.0</version>
+    <time>1538374247</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.50</comment>
+    <requestid>636040</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>853021f7fac567d010ad08596d1346d3</srcmd5>
+    <version>5.51.0</version>
+    <time>1540199833</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.51</comment>
+    <requestid>642361</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>5ee1c426b4e0a733c299617149523e76</srcmd5>
+    <version>5.52.0</version>
+    <time>1542202775</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.52.0</comment>
+    <requestid>648558</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>da05e3732559e36dce86ac88c39dd47f</srcmd5>
+    <version>5.53.0</version>
+    <time>1545223493</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.53</comment>
+    <requestid>658607</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>e31f83b779340377e719a509dee1f143</srcmd5>
+    <version>5.54.0</version>
+    <time>1548062613</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.54.0 (forwarded request 665730 from luca_b)</comment>
+    <requestid>665875</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>986645e95b3b5b556d3ffc7bfb13250c</srcmd5>
+    <version>5.55.0</version>
+    <time>1550150970</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.55.0</comment>
+    <requestid>674283</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>3b6ef1fa0a1e46dc02e5b2d2af89b1fa</srcmd5>
+    <version>5.55.0</version>
+    <time>1551386008</time>
+    <user>coolo</user>
+    <comment> (forwarded request 677631 from alarrosa)</comment>
+    <requestid>678731</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>c7774f964ef4922d4e0d7475444aa755</srcmd5>
+    <version>5.56.0</version>
+    <time>1553158199</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.56.0</comment>
+    <requestid>686783</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>1772d5276f9cacce39e3855f49248823</srcmd5>
+    <version>5.57.0</version>
+    <time>1555701929</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Frameworks 5.57.0</comment>
+    <requestid>695267</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>dbcab448eb2cc276def5749086a8242f</srcmd5>
+    <version>5.58.0</version>
+    <time>1558427664</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.58 (forwarded request 703255 from luca_b)</comment>
+    <requestid>703394</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>887cac0a24fbc5e872418eafc7b0edbd</srcmd5>
+    <version>5.59.0</version>
+    <time>1561194974</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.59.0</comment>
+    <requestid>710784</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>ff2ddda6047c6ef48191bdcb80ad067a</srcmd5>
+    <version>5.60.0</version>
+    <time>1564136576</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.60.0</comment>
+    <requestid>715922</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>b94487c7636191c25c6cd4d127e20ee5</srcmd5>
+    <version>5.61.0</version>
+    <time>1566242729</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.61</comment>
+    <requestid>722510</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>cada36b5c7df87ba6fe5ca261a03e37c</srcmd5>
+    <version>5.62.0</version>
+    <time>1569234471</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.62</comment>
+    <requestid>730972</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,15 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a68b07471883a155bda64e4103a000e2</srcmd5>
+    <version>0.9.2</version>
+    <time>1554114927</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unnecessary bcond test
+- Add fdupes
+- Remove build dependencies devel, tox and wheel
+- Use %license
+- initial version
+</comment>
+    <requestid>687293</requestid>
+  </revision>
+</revisionlist>

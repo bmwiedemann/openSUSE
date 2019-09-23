@@ -1,0 +1,40 @@
+--- a/mesonbuild/dependencies/dev.py
++++ b/mesonbuild/dependencies/dev.py
+@@ -343,10 +343,11 @@ class LLVMDependency(ConfigToolDependenc
+         not for shared-linnking, we have to figure those out ourselves, because
+         of course we do.
+         """
+-        if self.static:
+-            self.link_args = self.get_config_value(
+-                ['--libs', '--ldflags', '--system-libs'] + list(self.required_modules),
+-                'link_args')
++        #if self.static:
++        self.link_args = self.get_config_value(
++            ['--libs', '--ldflags', '--system-libs'] + list(self.required_modules),
++            'link_args')
++        """
+         else:
+             # llvm-config will provide arguments for static linking, so we get
+             # to figure out for ourselves what to link with. We'll do that by
+@@ -365,6 +366,7 @@ class LLVMDependency(ConfigToolDependenc
+             else:
+                 raise DependencyException(
+                     'Could not find a dynamically linkable library for LLVM.')
++        """
+ 
+     def check_components(self, modules, required=True):
+         """Check for llvm components (modules in meson terms).
+--- a/run_unittests.py
++++ b/run_unittests.py
+@@ -4771,6 +4771,11 @@ class NativeFileTests(BasePlatformTests)
+         # Do the skip at this level to avoid screwing up the cache
+         if not shutil.which('llvm-config'):
+             raise unittest.SkipTest('No llvm-installed, cannot test')
++
++        output = subprocess.getoutput('llvm-config --version')
++        if version_compare(output, '< 3.9'):
++            raise unittest.SkipTest('llvm-config >= 3.9 needed for the test')
++
+         self._simple_test('config_dep', 'llvm-config')
+ 
+     def test_python3_module(self):

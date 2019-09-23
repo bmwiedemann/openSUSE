@@ -1,0 +1,7 @@
+[Unit]
+Description=HP DriveGuard Daemon
+
+[Service]
+Type=dbus
+BusName=com.hp.DriveGuard
+ExecStart=/usr/sbin/hp-drive-guard-daemon

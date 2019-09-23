@@ -1,0 +1,128 @@
+<revisionlist>
+  <revision rev="1" vrev="21">
+    <srcmd5>b614573db1af5a64ffcc7c5458de2071</srcmd5>
+    <version>0.63</version>
+    <time>1168902520</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="116">
+    <srcmd5>0db6a8e49973ea9e65690a00a63ad9df</srcmd5>
+    <version>0.63</version>
+    <time>1200872780</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="188">
+    <srcmd5>0db6a8e49973ea9e65690a00a63ad9df</srcmd5>
+    <version>0.63</version>
+    <time>1200872780</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="189">
+    <srcmd5>7afaf8a4949f1956131bcf2c07a4cdbb</srcmd5>
+    <version>0.63</version>
+    <time>1245337627</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="191">
+    <srcmd5>7afaf8a4949f1956131bcf2c07a4cdbb</srcmd5>
+    <version>0.63</version>
+    <time>1245337627</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="192">
+    <srcmd5>fb4f77aabe401bac79e2617ba9864d91</srcmd5>
+    <version>0.63</version>
+    <time>1268923299</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="194">
+    <srcmd5>fb4f77aabe401bac79e2617ba9864d91</srcmd5>
+    <version>0.63</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="195">
+    <srcmd5>fb4f77aabe401bac79e2617ba9864d91</srcmd5>
+    <version>0.63</version>
+    <time>1278678570</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="198">
+    <srcmd5>fb4f77aabe401bac79e2617ba9864d91</srcmd5>
+    <version>0.63</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="199">
+    <srcmd5>353db39435b2cd36a3c8464ca70b5803</srcmd5>
+    <version>0.63</version>
+    <time>1316515886</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build (forwarded request 83222 from jengelh)</comment>
+    <requestid>83723</requestid>
+  </revision>
+  <revision rev="11" vrev="200">
+    <srcmd5>fc494baf2c71e830d333a4f6a7133baf</srcmd5>
+    <version>0.63</version>
+    <time>1317626139</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 85981 from coolo)</comment>
+    <requestid>86057</requestid>
+  </revision>
+  <revision rev="12" vrev="202">
+    <srcmd5>fc494baf2c71e830d333a4f6a7133baf</srcmd5>
+    <version>0.63</version>
+    <time>1319181841</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="204">
+    <srcmd5>fc494baf2c71e830d333a4f6a7133baf</srcmd5>
+    <version>0.63</version>
+    <time>1340183270</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="205">
+    <srcmd5>7204f4f2536338eb22458ce6d51b5dfd</srcmd5>
+    <version>0.63</version>
+    <time>1347487303</time>
+    <user>namtrac</user>
+    <comment>license update: GPL-2.0+ or AFL-2.1
+SPDX format (forwarded request 133757 from babelworx)</comment>
+    <requestid>133771</requestid>
+  </revision>
+  <revision rev="15" vrev="207">
+    <srcmd5>7204f4f2536338eb22458ce6d51b5dfd</srcmd5>
+    <version>0.63</version>
+    <time>1359108799</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="209">
+    <srcmd5>7204f4f2536338eb22458ce6d51b5dfd</srcmd5>
+    <version>0.63</version>
+    <time>1379662207</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="211">
+    <srcmd5>7204f4f2536338eb22458ce6d51b5dfd</srcmd5>
+    <version>0.63</version>
+    <time>1409300742</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="212">
+    <srcmd5>80530f65d22b4fe54042de1bc5108db1</srcmd5>
+    <version>0.63</version>
+    <time>1513677505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557982</requestid>
+  </revision>
+</revisionlist>

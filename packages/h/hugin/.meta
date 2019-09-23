@@ -1,0 +1,11 @@
+<package name="hugin" project="openSUSE:Factory">
+  <title>Toolchain for Stitching of Images and Creating Panoramas</title>
+  <description>Hugin can be used to stitch multiple images together. The resulting
+image can span 360 degrees. Another common use is the creation of very
+high resolution pictures by combining multiple images.
+
+Other tools in this package can correct lens distortion, vignetting and
+chromatic abberation, create HDR images, provide automatic feature
+detection and extraction of key points.</description>
+  <devel project="graphics" package="hugin"/>
+</package>

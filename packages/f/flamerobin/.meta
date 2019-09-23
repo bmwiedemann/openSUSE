@@ -1,0 +1,6 @@
+<package name="flamerobin" project="openSUSE:Factory">
+  <title>Graphical client for Firebird</title>
+  <description>FlameRobin is a database administration tool for Firebird DBMS based on wxgtk
+toolkit.</description>
+  <devel project="server:database" package="flamerobin"/>
+</package>

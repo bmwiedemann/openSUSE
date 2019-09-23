@@ -1,0 +1,114 @@
+-------------------------------------------------------------------
+Wed Sep 11 07:47:17 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2019-09-08:
+  * Interpret empty server tag values as missing tag values. As
+    required by https://ircv3.net/specs/extensions/message-tags
+- Changes from version 2019-08-25:
+  * Config: Prevent accidental leak of private values on public
+    channels.
+- Changes from version 2019-07-17:
+  * Google: Update for Google's new HTML layout.
+
+-------------------------------------------------------------------
+Tue Mar 19 16:36:41 UTC 2019 - Atri B <badshah400@gmail.com>
+
+- Update to version 2019-02-23:
+  * Revert changes to the structure of sdist packages.
+  * Fix bugs in wrapping IRC messages.
+  * Support for (future) Python 3.8.
+  * Fix encoding issue on Python 2.
+  * Support [ipv6]:port format.
+
+-------------------------------------------------------------------
+Mon Oct 22 14:05:21 UTC 2018 - badshah400@gmail.com
+
+- Update to version 2018-09-10:
+  * Fix Python 3.7 support.
+
+-------------------------------------------------------------------
+Tue Aug 28 09:15:35 UTC 2018 - BArendartchuk@suse.com
+
+- enable Python 2 binaries with update-alternatives: they are
+  needed for running legacy plugins
+
+-------------------------------------------------------------------
+Fri Aug 17 10:26:06 UTC 2018 - tchvatal@suse.com
+
+- Drop -devel from deps
+
+-------------------------------------------------------------------
+Thu Aug 16 14:49:58 UTC 2018 - badshah400@gmail.com
+
+- Update to version 2018-06-25-2:
+  * test_plugin_create: skip if supybot-plugin-create is not
+    installed.
+- Changes from version 2018-06-25:
+  * Fixes and tests to supybot-plugin-create; modernize the plugin
+    template (gh#ProgVal/Limnoria#1340)
+  * supybot-plugin-create: compactify import statements in the
+    template
+  * supybot-plugin-create: prefer importlib over imp on Python >=
+    3.4
+  * test: add test cases for supybot-plugin-create
+  * -plugin-create: fix errors when only a subset of args are
+    given
+  * -plugin-create: rename --real-name to --author/-a
+  * -plugin-create: add -d as an alias to --desc for consistency
+
+-------------------------------------------------------------------
+Thu May 10 15:43:03 UTC 2018 - toddrme2178@gmail.com
+
+- Avoid problem with bytecode being overwritten by tests
+
+-------------------------------------------------------------------
+Mon Apr 30 18:58:58 UTC 2018 - badshah400@gmail.com
+
+- Update to version 2018-04-21:
+  * Do not break UTF-8 characters in long words. Closes
+    gh#ProgVal/Limnoria#1333.
+
+-------------------------------------------------------------------
+Wed Apr 18 18:43:28 UTC 2018 - badshah400@gmail.com
+
+- The gnupg python module is called python{2,3}-python-gnupg,
+  adapt Requires accordingly.
+
+-------------------------------------------------------------------
+Fri Apr 13 09:10:42 UTC 2018 - badshah400@gmail.com
+
+- Switch to using PySocks instead of SocksiPy: the former is
+  well-maintained than the latter.
+
+-------------------------------------------------------------------
+Sat Mar 31 11:01:05 UTC 2018 - jengelh@inai.de
+
+- Remove empty filler marketing wording from description.
+
+-------------------------------------------------------------------
+Wed Feb 21 14:38:22 UTC 2018 - badshah400@gmail.com
+
+- Enable python2 module [not binaries] since we have
+  python2-SocksiPy now.
+
+-------------------------------------------------------------------
+Thu Feb 15 23:59:41 UTC 2018 - badshah400@gmail.com
+
+- Update to master-2018-01-28:
+  * NickAuth: Fix NameError caused by e732931.
+
+-------------------------------------------------------------------
+Mon Dec 18 08:48:19 UTC 2017 - badshah400@gmail.com
+
+- Update to master-2017-10-25:
+  * Aka: Escape the command in help strings, so they can be
+    copy-pasted into @aka add.
+- Convert to python single-spec; disable python2 modules as
+  python2-SocksiPy is not available.
+- Enable tests as part of %%check.
+
+-------------------------------------------------------------------
+Fri Nov 25 01:23:30 UTC 2016 - badshah400@gmail.com
+
+- Initial package.
+

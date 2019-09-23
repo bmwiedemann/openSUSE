@@ -1,0 +1,10 @@
+<package name="atheme" project="openSUSE:Factory">
+  <title>A portable, secure set of open source, modular IRC services</title>
+  <description>Atheme is a portable, secure set of open source, modular IRC services released
+under the BSD license, designed to run on many IRCds.
+
+Unlike alternative packages, Atheme's core is minimalistic, providing only core
+functionality. Atheme is a complete services set, excluding features designed
+for oper abuse.</description>
+  <devel project="server:irc" package="atheme"/>
+</package>

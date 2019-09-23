@@ -1,0 +1,27 @@
+From bd00af48ca0b0165eea66f47cd9556ac4cee7219 Mon Sep 17 00:00:00 2001
+From: Peter Colberg <peter@colberg.org>
+Date: Sat, 5 Aug 2017 11:58:26 -0400
+Subject: [PATCH 1/2] Declare cgi_error noreturn
+
+This declares the function cgi_error with the attribute __noreturn__ to
+hint to GCC/Clang that the function exits the program and to prevent
+implicit-fallthrough warnings in the function handle_fcgi_request.
+---
+ fcgiwrap.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/fcgiwrap.c b/fcgiwrap.c
+index b44d8aa..751c100 100644
+--- a/fcgiwrap.c
++++ b/fcgiwrap.c
+@@ -500,6 +500,7 @@ static bool is_allowed_program(const char *program) {
+ 	return false;
+ }
+ 
++__attribute__((__noreturn__))
+ static void cgi_error(const char *message, const char *reason, const char *filename)
+ {
+ 	printf("Status: %s\r\nContent-Type: text/plain\r\n\r\n%s\r\n",
+-- 
+2.20.1
+

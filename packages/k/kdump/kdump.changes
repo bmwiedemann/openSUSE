@@ -1,0 +1,1341 @@
+-------------------------------------------------------------------
+Wed Jun 12 15:04:56 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Fri Apr 26 07:36:54 UTC 2019 - Petr Tesarik <ptesarik@suse.com>
+
+- kdump-kdumprd-Look-for-boot-image-and-boot-Image.patch: kdumprd:
+  Look for /boot/image-* and /boot/Image-* (bsc#1132799).
+
+-------------------------------------------------------------------
+Tue Apr 16 09:12:51 UTC 2019 - ptesarik@suse.com
+
+- kdump-Add-skip_balance-option-to-BTRFS-mounts.patch: Add
+  skip_balance option to BTRFS mounts (bsc#1108255).
+
+-------------------------------------------------------------------
+Wed Mar 20 15:35:29 UTC 2019 - ptesarik@suse.com
+
+- Use %license instead of %doc (bsc#1082318, bsc#1129947).
+
+-------------------------------------------------------------------
+Wed Mar 20 13:34:40 UTC 2019 - ptesarik@suse.com
+
+- kdump-fix-multipath-user_friendly_names.patch: Fix multipath
+  configuration with user_friendly_names and/or aliases
+  (bsc#1111207, LTC#171953, bsc#1125218, LTC#175465).
+
+-------------------------------------------------------------------
+Wed Mar 20 13:34:16 UTC 2019 - ptesarik@suse.com
+
+- kdump-recover-from-missing-CRASHTIME.patch: Recover from missing
+  CRASHTIME= in VMCOREINFO (bsc#1112387).
+
+-------------------------------------------------------------------
+Wed Mar 20 13:26:08 UTC 2019 - ptesarik@suse.com
+
+- kdump-fallback-re-register-fadump-from-userspace.patch:
+  Re-register FADUMP from userspace if the kernel cannot do it
+  (bsc#1108170, LTC#171288, bsc#1094016, LTC#168050)
+
+-------------------------------------------------------------------
+Wed Mar 20 13:21:56 UTC 2019 - ptesarik@suse.com
+
+- kdump-Restore-only-static-routes-in-kdump-initrd.patch: Restore
+  only static routes in kdump initrd (bsc#1093795).
+
+-------------------------------------------------------------------
+Wed Mar 20 13:14:45 UTC 2019 - ptesarik@suse.com
+
+- kdump-on-error-option-yesno.patch: Support yes/no style for
+  KDUMP_CONTINUE_ON_ERROR (bsc#1083155).
+
+-------------------------------------------------------------------
+Wed Mar 20 13:06:26 UTC 2019 - ptesarik@suse.com
+
+- kdump-use-pbl.patch: Replace obsolete perl-Bootloader library
+  with a simpler script (bsc#1050349).
+
+-------------------------------------------------------------------
+Wed Mar 20 12:48:55 UTC 2019 - ptesarik@suse.com
+
+- Ensure added kdump-early.service is enabled properly after update
+  (bsc#1021484).
+
+-------------------------------------------------------------------
+Thu Mar  7 20:40:39 UTC 2019 - ptesarik@suse.com
+
+- kdump-remove-noefi-and-acpi_rsdp-for-efi-firmware.patch: Remove
+  noefi and acpi_rsdp for EFI firmware (bsc#1123940).
+
+-------------------------------------------------------------------
+Fri Oct  5 14:31:49 UTC 2018 - ptesarik@suse.com
+
+- kdump-turn-off-NUMA-in-kdump-kernel.patch: Turn off NUMA in the
+  kdump kernel (bsc#1109784, bsc#1102609).
+
+-------------------------------------------------------------------
+Fri Oct  5 14:29:47 UTC 2018 - ptesarik@suse.com
+
+- kdump-fadump-add-udev-support.patch: fadump: add udev event
+  support for fadump (bsc#1108170).
+
+-------------------------------------------------------------------
+Fri Oct  5 14:28:01 UTC 2018 - ptesarik@suse.com
+
+- kdump-fadump-avoid-multipath-optimizations.patch: fadump: avoid
+  multipath optimizations that break regular boot (bsc#1101730).
+- kdump-split-cmdline-purpose-wise.patch: cmdline: split kdump
+  cmdline purpose wise (bsc#1101730).
+- kdump-fadump-fix-network-bring-up.patch: fadump: fix network
+  bring up issue during default boot (bsc#1101730).
+
+-------------------------------------------------------------------
+Wed May 16 17:44:58 UTC 2018 - mbrugger@suse.com
+
+- fix URL of upstream project
+
+-------------------------------------------------------------------
+Fri May  4 11:30:46 UTC 2018 - ptesarik@suse.com
+
+- kdump-block-initrd-parse-etc.service.patch: Block
+  initrd-parse-etc.service until dump is saved (bsc#1091186).
+
+-------------------------------------------------------------------
+Fri May  4 08:13:39 UTC 2018 - ptesarik@suse.com
+
+- Remove kernel-ELF-aarch64: Included in upstream tarball.
+
+-------------------------------------------------------------------
+Thu May  3 09:19:16 UTC 2018 - ptesarik@suse.com
+
+- Update to 0.9.0
+  o Remove support for mkinitrd(8).
+- Drop patches now in mainline:
+  o kdump-Don-t-split-by-default.patch
+  o kdump-Dont-exit-even-if-initrd-is-not-built.patch
+  o kdump-KDUMP_SSH_IDENTITY-cfg.patch
+  o kdump-KDUMP_SSH_IDENTITY.patch
+  o kdump-Limit-kdump-cpus-to-number-provided-by-config.patch
+  o kdump-Routable-preferred-source-address.patch
+  o kdump-URLTransfer-complete-target.patch
+  o kdump-aarch64.patch
+  o kdump-activate-QETH-devices.patch
+  o kdump-additional-mounts-in-dracut-module.patch
+  o kdump-always-copy-timezone.patch
+  o kdump-always-kexec_load-if-kexec_file_load-fails.patch
+  o kdump-always-pass-kernelver-to-dracut.patch
+  o kdump-bail-out-if-no-default-interface.patch
+  o kdump-bind-mount-sysroot.patch
+  o kdump-bootloader-filter-out-KDUMPTOOL_FLAGS.patch
+  o kdump-calibrate-adjust-sizeof-struct-page.patch
+  o kdump-calibrate-do-not-add-KDUMP_PHYS_LOAD-to-RAM.patch
+  o kdump-calibrate-update-kernel-text-data-size.patch
+  o kdump-calibrate-update-user-space-requirements.patch
+  o kdump-cmake-compat.patch
+  o kdump-do-not-check-bind-mount.patch
+  o kdump-do-not-free-fadump-memory-when-immediate-reboot-is-requested.patch
+  o kdump-do-not-touch-dracut-vars-if-not-kdumprd.patch
+  o kdump-explicitly-request-zFCP-devices.patch
+  o kdump-fail-if-fadump-cannot-be-registered.patch
+  o kdump-fix-m_threads-missing-initialization.patch
+  o kdump-fix-missing-index-of-kdump_Host.patch
+  o kdump-fix-save_dump-to-NFS.patch
+  o kdump-fix-service-files.patch
+  o kdump-invoke-subcommand-destructors-on-exit.patch
+  o kdump-kdump_echo-and-kdump_logger-helpers.patch
+  o kdump-move-class-SystemCPU-to-header-file.patch
+  o kdump-multithreading-by-default.patch
+  o kdump-no-crashkernel-in-Xen-PV-DomU.patch
+  o kdump-no-xen-secondary-kernel.patch
+  o kdump-nokaslr.patch
+  o kdump-nsswitch.conf-filtering.patch
+  o kdump-pass-IPv6-address-prefix-separately.patch
+  o kdump-pass-all-IP-routes-to-kdump-environment.patch
+  o kdump-pre-generate-mount-units.patch
+  o kdump-prepend-IP-address.patch
+  o kdump-remount-sysroot-readwrite.patch
+  o kdump-remove-IPv6-brackets-for-getaddrinfo.patch
+  o kdump-run-mkinitrd-if-fadump-is-active.patch
+  o kdump-skip-IPv4-if-no-address.patch
+  o kdump-source-save_dump.patch
+  o kdump-treat-KDUMP_CPUS-0-as-all-available-CPUs.patch
+  o kdump-try-both-kexec_load-and-kexec_file_load.patch
+  o kdump-use-bus-id-to-identify-qeth-devices.patch
+  o kdump-x86_64-kexec-file-syscall.patch
+- Remove kdump-cmake-compat.patch: Since mkinitrd support has been
+  removed, compatibility with SLE11 is no longer needed.
+
+-------------------------------------------------------------------
+Wed May  2 11:33:01 UTC 2018 - ptesarik@suse.com
+
+- kdump-do-not-touch-dracut-vars-if-not-kdumprd.patch: Do not touch
+  any dracut variables when generating a non-kdump initrd
+  (bsc#1091304).
+
+-------------------------------------------------------------------
+Fri Apr 20 16:06:40 UTC 2018 - ptesarik@suse.com
+
+- kdump-additional-mounts-in-dracut-module.patch: Handle additional
+  mounts in the kdump dracut module (bsc#1089917).
+- kdump-run-mkinitrd-if-fadump-is-active.patch: Run mkinitrd if
+  fadump is active (bsc#1089917).
+
+-------------------------------------------------------------------
+Fri Apr  6 16:48:57 UTC 2018 - ptesarik@suse.com
+
+- kdump-pass-IPv6-address-prefix-separately.patch: IPv6 setup: pass
+  address prefix in separate dracut arg (bsc#1062026).
+- kdump-pass-all-IP-routes-to-kdump-environment.patch: IP setup:
+  pass all routes to kdump environment (bsc#1062026).
+- kdump-remove-IPv6-brackets-for-getaddrinfo.patch: Routable: do
+  not pass bracketed IPv6 to getaddrinfo (bsc#1062026).
+- kdump-skip-IPv4-if-no-address.patch: IP setup: don't bother with
+  IPv4 if there are no addresses (bsc#1062026).
+
+-------------------------------------------------------------------
+Fri Apr  6 12:49:54 UTC 2018 - ptesarik@suse.com
+
+- kdump-use-bus-id-to-identify-qeth-devices.patch: Use bus id to
+  identify qeth devices (bsc#1085617).
+
+-------------------------------------------------------------------
+Tue Mar 13 15:48:28 UTC 2018 - ptesarik@suse.com
+
+- kdump-always-copy-timezone.patch: Always copy timezone data into
+  kdumprd (bsc#1081646).
+
+-------------------------------------------------------------------
+Tue Feb 27 10:26:57 UTC 2018 - ptesarik@suse.com
+
+- kdump-no-crashkernel-in-Xen-PV-DomU.patch: Do not reserve
+  crashkernel on Xen PV DomU (bsc#989792).
+
+-------------------------------------------------------------------
+Tue Feb 27 09:06:17 UTC 2018 - ptesarik@suse.com
+
+- kdump-nokaslr.patch: Add 'nokaslr' to the kdump kernel command
+  line (bsc#1075937).
+
+-------------------------------------------------------------------
+Fri Feb 23 08:07:59 UTC 2018 - ptesarik@suse.com
+
+- kdump-always-kexec_load-if-kexec_file_load-fails.patch: Try
+  kexec_load(2) if kexec_file_load(2) fails for any reason
+  (bsc#1080916).
+
+-------------------------------------------------------------------
+Thu Feb 22 13:10:33 UTC 2018 - ptesarik@suse.com
+
+- kdump-calibrate-do-not-add-KDUMP_PHYS_LOAD-to-RAM.patch:
+  calibrate: Do not add KDUMP_PHYS_LOAD to required RAM.
+- kdump-bootloader-filter-out-KDUMPTOOL_FLAGS.patch: bootloader:
+  Filter out KDUMPTOOL_FLAGS (bsc#1072584).
+
+-------------------------------------------------------------------
+Fri Feb  9 17:46:06 UTC 2018 - ptesarik@suse.com
+
+- kdump-nsswitch.conf-filtering.patch 
+
+-------------------------------------------------------------------
+Fri Feb  9 17:44:42 UTC 2018 - ptesarik@suse.com
+
+- kdump-fix-missing-index-of-kdump_Host.patch: Fix missing index of
+  kdump_Host (bsc#1002617).
+
+-------------------------------------------------------------------
+Fri Feb  9 16:09:48 UTC 2018 - ptesarik@suse.com
+
+- kdump-bail-out-if-no-default-interface.patch: Bail out of
+  kdump_check_net if no default interface is found (bsc#1058202).
+
+-------------------------------------------------------------------
+Thu Feb  8 18:38:43 UTC 2018 - ptesarik@suse.com
+
+- kdump-calibrate-adjust-sizeof-struct-page.patch: calibrate:
+  Adjust sizeof(struct page).
+- kdump-calibrate-update-kernel-text-data-size.patch: calibrate:
+  Update kernel text+data size.
+- kdump-calibrate-update-user-space-requirements.patch: calibrate:
+  Update user-space requirements.
+
+-------------------------------------------------------------------
+Fri Jan 26 13:03:47 UTC 2018 - ptesarik@suse.com
+
+- kdump-fix-m_threads-missing-initialization.patch: Fix m_threads
+  missing initialization (bsc#1047609).
+
+-------------------------------------------------------------------
+Tue Jan 16 13:35:49 UTC 2018 - ptesarik@suse.com
+
+- kdump-try-both-kexec_load-and-kexec_file_load.patch: Try both
+  kexec_load(2) and kexec_file_load(2) (bsc#951144).
+
+-------------------------------------------------------------------
+Tue Jan 16 13:32:25 UTC 2018 - ptesarik@suse.com
+
+- kdump-kdump_echo-and-kdump_logger-helpers.patch: load.sh:
+  introduce kdump_echo and kdump_logger helpers (bsc#951144).
+
+-------------------------------------------------------------------
+Mon Nov 27 15:23:36 UTC 2017 - rbrown@suse.com
+
+- Add kdump-fillupdir-fixes.patch and correct specfile to build
+  with new fillupdir location
+
+-------------------------------------------------------------------
+Thu Nov 23 13:51:22 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Nov 15 12:25:57 UTC 2017 - msuchanek@suse.com
+
+- kdump-Dont-exit-even-if-initrd-is-not-built.patch: fadump restart does not
+  always rebuild initramfs but may need to re-register (bsc#1047781).
+- kdump-Limit-kdump-cpus-to-number-provided-by-config.patch (bsc#1036223, bsc#1068234).
+- kdump-Don-t-split-by-default.patch (bsc#1036223, bsc#1068234).
+
+-------------------------------------------------------------------
+Thu Jun 29 16:31:26 UTC 2017 - ptesarik@suse.com
+
+- kdump-activate-QETH-devices.patch: Activate QETH network devices
+  (bsc#1038669).
+
+-------------------------------------------------------------------
+Tue Jun 27 06:06:54 UTC 2017 - ptesarik@suse.com
+
+- Drop kdump-do-not-reload-FADUMP-on-CPU-memory-hotplug.patch:
+  Reload is needed even with fadmp (bsc#1040567).
+
+-------------------------------------------------------------------
+Mon Jun 26 11:24:47 UTC 2017 - ptesarik@suse.com
+
+- kdump-fail-if-fadump-cannot-be-registered.patch: Fail at startup
+  if fadump cannot be registered (bsc#1040567).
+- kdump-do-not-reload-FADUMP-on-CPU-memory-hotplug.patch: Do not
+  reload on CPU/memory hotplug when using FADUMP (bsc#1040567).
+
+-------------------------------------------------------------------
+Fri Jun 23 12:56:45 UTC 2017 - ptesarik@suse.com
+
+- kdump-explicitly-request-zFCP-devices.patch: Explicitly request
+  zFCP devices in kdump initrd (bsc#1008352).
+
+-------------------------------------------------------------------
+Fri Jun 23 11:51:11 UTC 2017 - ptesarik@suse.com
+
+- kdump-move-class-SystemCPU-to-header-file.patch: Move class
+  SystemCPU to a header file (bsc#1036223).
+- kdump-treat-KDUMP_CPUS-0-as-all-available-CPUs.patch: Treat
+  KDUMP_CPUS=0 as "all available CPUs" (bsc#1036223).
+- kdump-multithreading-by-default.patch: Use multithreading by
+  default (bsc#1036223).
+
+-------------------------------------------------------------------
+Thu Jun 22 12:42:50 UTC 2017 - ptesarik@suse.com
+
+- kdump-fix-save_dump-to-NFS.patch: Fix save_dump to NFS targets
+  (bsc#1045541).
+- kdump-invoke-subcommand-destructors-on-exit.patch: Invoke
+  subcommand destructors on exit (bsc#1045541).
+
+-------------------------------------------------------------------
+Fri Jun 16 12:04:14 UTC 2017 - msuchanek@suse.com
+
+- kdump-do-not-free-fadump-memory-when-immediate-reboot-is-requested.patch
+  Releasing fadump memory can take a long time so skip it when
+  rebooting anyway (bsc#1040610).
+
+-------------------------------------------------------------------
+Tue Jun 15 12:55:34 UTC 2017 - msuchanek@suse.com
+
+- kdump-do-not-check-bind-mount.patch: Do not request filesystem
+  check on bind mounts (bsc#1034169).
+- kdump-remount-sysroot-readwrite.patch: Also remount writable
+  any mounts that were already mounted readonly by systemd
+  (bsc#1034169).
+
+-------------------------------------------------------------------
+Wed Jun 14 12:48:34 UTC 2017 - ptesarik@suse.com
+
+- kdump-Routable-preferred-source-address.patch: Routable: parse
+  and store preferred source address (FATE#321844).
+- kdump-URLTransfer-complete-target.patch: Use the complete target
+  URL for URLTransfer (FATE#321844).
+- kdump-prepend-IP-address.patch: Prepend IP address to remote
+  target subdirectory (FATE#321844).
+
+-------------------------------------------------------------------
+Thu Jun  8 15:02:09 UTC 2017 - ptesarik@suse.com
+
+- kdump-fix-service-files.patch: Fix kdump-related services
+  (bsc#1021484).
+
+-------------------------------------------------------------------
+Thu Jun  8 13:10:41 UTC 2017 - ptesarik@suse.com
+
+- kernel-ELF-aarch64: Test data for aarch64 findkernel.
+- kdump-KDUMP_SSH_IDENTITY.patch: Update with later upstream fixes.
+
+-------------------------------------------------------------------
+Wed Jun  7 11:43:46 UTC 2017 - ptesarik@suse.com
+
+- kdump-aarch64.patch: kdumptool: add aarch64 (bsc#1033464).
+
+-------------------------------------------------------------------
+Thu Jun  1 14:50:25 UTC 2017 - msuchanek@suse.com
+
+- kdump-source-save_dump.patch: save_dump.sh is designed to be
+  sourced and has numerous toplevel return statements. Source it
+  from the service definition as well to prevent bash complaints.
+  (bcs#1034169).
+
+-------------------------------------------------------------------
+Wed May 17 13:31:11 UTC 2017 - ptesarik@suse.com
+
+- kdump-x86_64-kexec-file-syscall.patch: add -s on x86_64 for
+  signature verification of kernel. (fate#315018, bsc#884453)
+
+-------------------------------------------------------------------
+Wed May 17 13:18:23 UTC 2017 - ptesarik@suse.com
+
+- kdump-bind-mount-sysroot.patch: Convert sysroot to a bind mount
+  in kdump initrd (bsc#976864).
+- kdump-pre-generate-mount-units.patch: Pre-generate kdump mount
+  units (bsc#942895).
+- kdump-always-pass-kernelver-to-dracut.patch: Always pass kernel
+  version to dracut (bsc#900418).
+- kdump-no-xen-secondary-kernel.patch: Avoid Xenlinux (aka
+  traditional, Xenified or SUSE) kernels as kdump kernel
+  (bsc#900418, bsc#974270).
+
+-------------------------------------------------------------------
+Tue May 16 11:31:53 UTC 2017 - ptesarik@suse.com
+
+- kdump-KDUMP_SSH_IDENTITY.patch: Add KDUMP_SSH_IDENTITY config
+  option (FATE#321583).
+- kdump-KDUMP_SSH_IDENTITY-cfg.patch: Add KDUMP_SSH_IDENTITY to the
+  config file template (FATE#321583).
+
+-------------------------------------------------------------------
+Sat Feb 18 14:38:57 CET 2017 - kukuk@suse.de
+
+- Don't require insserv if we use systemd
+
+-------------------------------------------------------------------
+Wed Oct  5 13:12:53 UTC 2016 - ptesarik@suse.com
+
+- Remove kdump-helpers from Provides. This was needed to allow
+  upgrading in SLE10, but this distribution is discontinued now.
+
+-------------------------------------------------------------------
+Wed Oct  5 10:55:39 UTC 2016 - ptesarik@suse.com
+
+- kdump-cmake-compat.patch: Build fix for pre-3.0.2 cmake.
+
+-------------------------------------------------------------------
+Wed Oct  5 07:53:00 UTC 2016 - ptesarik@suse.com
+
+- Update to 0.8.16
+  o Improve systemd integration (FATE#319020, bsc#900134,
+    bsc#909515, bsc#936363, bsc#936475, bsc#936489, bsc#942895,
+    bsc#943902, bsc#944606, bsc#947825, bsc#948913).
+  o Use OpenSSH for SSH and SFTP (FATE#318874, bsc#917747).
+  o Improve 'kdumptool calibrate' (FATE#318842, bsc#882082,
+    bsc#947539, bsc#952141, bsc#953732).
+  o Improve network initialization (bsc#943214, bsc#944201,
+    bsc#980328).
+  o Fix FADUMP with systemd (bsc#917846, bsc#923790, bsc#944699).
+  o Fix saving to XFS (bsc#964206).
+  o Use full path to dracut (bsc#989972, bsc#990200,
+    CVE-2016-5759).
+  o Documentation updates (bsc#987862, bsc#997104).
+  o Various smaller fixes (bsc#905690, bsc#927451, bsc#932339,
+    bsc#934581, bsc#941088, bsc#946242, bsc#948956, bsc#951844,
+    bsc#952149, bsc#970708, bsc#973213, bsc#984799, bsc#986081).
+- Drop patches now in mainline:
+  o 0001-multipath-Write-proper-regex-into-multipath-conf.patch
+  o kdump-add-IPv6-KDUMP_NETCONFIG-modes.patch
+  o kdump-bootloader-grub2.patch
+  o kdump-calibrate-systemd-initramfs.patch
+  o kdump-calibrate-systemd-runtime.patch
+  o kdump-count-const-slabs.patch
+  o kdump-count-framebuffer.patch
+  o kdump-enable-fadump-ppc64le.patch
+  o kdump-fadump-bootloader-always.patch
+  o kdump-fadump-keep-sysroot.patch
+  o kdump-get-multipath-wwid-from-sysfs.patch
+  o kdump-move-network-setup-to-module-setup.patch
+  o kdump-remove-root-and-resume.patch
+  o kdump-split-kdump_default_netdev.patch
+  o kdump-systemd-support.patch
+  o kdump-use-fstab-device.patch
+- Drop obsolete patches:
+  o kdump-0.8.15-fix-shebang.patch
+
+-------------------------------------------------------------------
+Thu Feb 11 14:54:58 UTC 2016 - rguenther@suse.com
+
+- explicitely build with -std=gnu++98
+
+-------------------------------------------------------------------
+Sun Nov 23 05:31:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix shebang in rc.kdump.functions
+- add patches:
+  * kdump-0.8.15-fix-shebang.patch
+
+-------------------------------------------------------------------
+Sun Nov 09 05:26:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post/postun scripts
+
+-------------------------------------------------------------------
+Fri Sep 26 14:13:54 UTC 2014 - ptesarik@suse.cz
+
+- kdump-enable-fadump-ppc64le.patch: Enable FADUMP on ppc64le
+  (bsc#889192).
+- kdump-fadump-bootloader-always.patch: Always turn on fadump if
+  KDUMP_FADUMP is true (bsc#889192).
+- kdump-bootloader-grub2.patch: kdump-Bootloader: add support for
+  GRUB2 (bsc#889192).
+- kdump-fadump-keep-sysroot.patch: Keep /sysroot mount point if
+  fadump is on (bsc#889192).
+- kdump-get-multipath-wwid-from-sysfs.patch: Refresh.
+
+-------------------------------------------------------------------
+Fri Sep 26 10:05:56 UTC 2014 - ptesarik@suse.cz
+
+- kdump-add-IPv6-KDUMP_NETCONFIG-modes.patch: Refresh: Fix ip
+  error messages when KDUMP_NETCONFIG=auto (bnc#885897).
+
+-------------------------------------------------------------------
+Tue Sep 23 14:17:01 UTC 2014 - ptesarik@suse.cz
+
+- kdump-split-kdump_default_netdev.patch: Cleanup: Split
+  kdump_default_netdev (bnc#885897).
+- kdump-move-network-setup-to-module-setup.patch: Move dracut
+  network command line to module-setup.sh (bnc#885897).
+- kdump-add-IPv6-KDUMP_NETCONFIG-modes.patch: Add KDUMP_NETCONFIG
+  modes to support IPv6 (bnc#885897).
+
+-------------------------------------------------------------------
+Mon Sep 22 15:32:22 UTC 2014 - ptesarik@suse.cz
+
+- kdump-get-multipath-wwid-from-sysfs.patch: Get required multipath
+  wwids from sysfs (bnc#883883).
+
+-------------------------------------------------------------------
+Thu Sep 18 15:33:21 UTC 2014 - ptesarik@suse.cz
+
+- kdump-remove-root-and-resume.patch: Remove root= and resume= from
+  the kdump kernel command line (bnc#883883).
+- kdump-systemd-support.patch: Dracut-systemd support (bnc#883883).
+- kdump-calibrate-systemd-runtime.patch: Calibrate: update
+  user-space run-time requirements for systemd (bnc#883883).
+- kdump-calibrate-systemd-initramfs.patch: Calibrate: update the
+  initramfs size (bnc#883883).
+
+-------------------------------------------------------------------
+Tue Sep  9 06:08:44 UTC 2014 - ptesarik@suse.cz
+
+- kdump-count-const-slabs.patch: Add missing addition.
+
+-------------------------------------------------------------------
+Mon Sep  8 15:36:29 UTC 2014 - ptesarik@suse.cz
+
+- kdump-count-const-slabs.patch: Take constant-size slabs into
+  account for "kdump calibrate" (bnc#879460).
+
+-------------------------------------------------------------------
+Mon Sep  8 07:40:17 UTC 2014 - ptesarik@suse.cz
+
+- kdump-count-framebuffer.patch: Take framebuffer size into account
+  for "kdumptool calibrate" (bnc#879460).
+
+-------------------------------------------------------------------
+Fri Sep  5 11:42:40 UTC 2014 - ptesarik@suse.cz
+
+- kdump-use-fstab-device.patch: Use device from /etc/fstab to mount
+  / and /boot (bnc#892451).
+
+-------------------------------------------------------------------
+Mon Sep  1 14:21:38 UTC 2014 - juwolf@suse.com
+
+- Write proper regex into multipath.conf to prevent syntax error there
+  (bnc#883883)
+  Add: 0001-multipath-Write-proper-regex-into-multipath-conf.patch
+
+-------------------------------------------------------------------
+Mon Aug 18 10:18:48 UTC 2014 - ptesarik@suse.cz
+
+- specfile: Remove call to mkinitrd_setup. With dracut, this is
+  completely useless; with mkinitrd, the setup script is run
+  automatically after a new mkinitrd script is installed.
+
+-------------------------------------------------------------------
+Fri Jul  4 11:48:20 UTC 2014 - ptesarik@suse.cz
+
+- Switch from mkinitrd to dracut for SLES12 and openSUSE > 13.1.
+
+-------------------------------------------------------------------
+Fri Jul  4 11:25:25 UTC 2014 - ptesarik@suse.cz
+
+- Update to 0.8.15 
+  o Disable memory cgroup in kdump kernel
+  o Limit the number of CPUs on all architectures
+  o Increase udevd memory requirements
+  o If possible, use wicked to determine network mode
+  o Take number of possible CPUs into account for calibrate
+
+- kdump-disable-memory-cgroup.patch: Dropped.
+
+-------------------------------------------------------------------
+Mon Jun 16 11:27:57 UTC 2014 - ptesarik@suse.cz
+
+- kdump-disable-memory-cgroup.patch: disable memory cgroup in the
+  kdump kernel (bnc#881091). 
+
+-------------------------------------------------------------------
+Mon Jun 16 10:51:43 UTC 2014 - ptesarik@suse.cz
+
+- Update to 0.8.14
+  o Disable ACPI memory hotplug in kdump kernel (bnc#881091).
+  o Update kernel and initrd estimates
+  o Install mount-kdump.sh to dracut module directory (bnc#881851).
+
+- Remove version number from rpmlintrc.
+
+-------------------------------------------------------------------
+Fri May 30 11:31:44 UTC 2014 - ptesarik@suse.cz
+
+- Update to 0.8.13
+  o Store current configuration if KDUMP_NETCONFIG is static
+    (bnc#876212).
+  o Modify kdump udev rules to work with systemd
+    (bnc#874992, bnc#809209).
+  o Support percent-encoded URLs for KDUMP_SAVEDIR (bnc#869590).
+
+- kdump-fix-udev-rules.patch: Dropped.
+- kdump-urldecode.patch: Dropped.
+
+-------------------------------------------------------------------
+Tue May 20 11:15:40 UTC 2014 - ptesarik@suse.cz
+
+- kdump-urldecode.patch: Perform percent decoding on target URL
+  (bnc#869590).
+
+-------------------------------------------------------------------
+Mon May 19 14:18:27 UTC 2014 - ptesarik@suse.cz
+
+- kdump-fix-udev-rules.patch: Avoid entering failed state on CPU
+  hotplug (bnc#874992, bnc#809209).
+
+-------------------------------------------------------------------
+Fri May 16 17:42:37 UTC 2014 - ptesarik@suse.cz
+
+- Update to 0.8.12
+  o Add "ssh" target protocol to transfer the file over the
+    standard input to a remote host using the standard ssh client
+    (bnc#868704).
+  o Prevent double mount of the root file system (bnc#875738).
+  o Allow taking remote dumps without mounting any file systems
+
+- specfile: update URL
+
+-------------------------------------------------------------------
+Mon May  5 11:40:52 UTC 2014 - ptesarik@suse.cz
+
+- Update to 0.8.11
+  o Use fast xz compression with dracut (bnc#870549)
+  o Mount boot/root partition only if needed
+  o Copy required programs to the initrd (bnc#874571).
+
+- kdump-0.8.10-dracut-xz-opt.patch: Dropped.
+
+-------------------------------------------------------------------
+Tue Apr 15 06:26:08 UTC 2014 - ptesarik@suse.cz
+
+- kdump-0.8.10-dracut-xz-opt.patch: Use fast xz compression with
+  dracut (bnc#870549).
+
+-------------------------------------------------------------------
+Fri Mar 28 13:15:08 UTC 2014 - ptesarik@suse.cz
+
+- specfile cleanup: remove blocks for pre-openSUSE11.0
+- fix location of the udev files (see sr 227790).
+
+-------------------------------------------------------------------
+Thu Mar 27 15:51:34 UTC 2014 - ptesarik@suse.cz
+
+- Update to 0.8.10
+  o Support snappy compression algorithm (FATE#315726)
+  o Improved algorithm for "calibrate"
+  o Network support for dracut
+  o Filter out DomU pages, when dumping a Xen virtualization host
+    (bnc#864910)
+  o Do not try to copy separate debuginfo files (bnc#869971)
+  o Unit test for FilePath::listDir() (SUSE Test Initiative)
+  o delete_dumps: ignore non-kdump directories (FATE#313185)
+  o fixed the testsuite on non-x86
+
+- include and run the test suite
+- kdump-ledblink-background.patch: Dropped.
+- kdump-initrd-network.patch: Dropped.
+- kdump-0.8.10-detect-xen-dumps.patch: Dropped.
+
+-------------------------------------------------------------------
+Tue Mar 18 16:55:26 UTC 2014 - ptesarik@suse.cz
+
+- kdump-0.8.9-detect-xen-dumps.patch: fix uninitialized variable;
+  without the fix, '-X' is (almost) always added.
+
+-------------------------------------------------------------------
+Tue Mar 18 10:28:56 UTC 2014 - ptesarik@suse.cz
+
+- drop dependency on dracut-network again, because this subpackage
+  has been merged with the main dracut package
+
+-------------------------------------------------------------------
+Mon Mar 17 14:39:01 UTC 2014 - ptesarik@suse.cz
+
+- kdump-initrd-network.patch: fix KDUMP_NETCONFIG="auto"
+
+-------------------------------------------------------------------
+Mon Mar 17 12:33:49 UTC 2014 - ptesarik@suse.cz
+
+- add dependency on dracut-network in SLE12 and Factory
+- kdump-initrd-network.patch: include dracut 'network' module if
+  network is required
+
+-------------------------------------------------------------------
+Fri Mar 14 11:03:35 UTC 2014 - ptesarik@suse.cz
+
+- kdump-0.8.9-detect-xen-dumps.patch: Add '-X' to makedumpfile when
+  dumping a Xen host (bnc#864910).
+
+-------------------------------------------------------------------
+Fri Mar 14 07:21:41 UTC 2014 - ptesarik@suse.cz
+
+- kdump-ledblink-background.patch: Run kdumptool in the background.
+
+-------------------------------------------------------------------
+Wed Mar  5 16:58:02 UTC 2014 - juwolf@suse.com
+
+- kdump-initrd-network.patch: Added dracut network activation in
+  initrd to mkdumprd.
+
+-------------------------------------------------------------------
+Tue Mar  4 12:19:24 UTC 2014 - juwolf@suse.com
+
+- kdump-ledblink-background.patch: Fixed wrong argument for
+  ledblink.
+
+-------------------------------------------------------------------
+Sun Mar  2 15:35:11 UTC 2014 - ptesarik@suse.cz
+
+- %filelist simplified as suggested by tcech@suse.cz.
+
+-------------------------------------------------------------------
+Fri Feb 28 19:18:00 UTC 2014 - ptesarik@suse.cz
+
+- Update to 0.8.9
+  o fix dracut support
+  o fix dump save when /boot is not a mount point
+
+- kdumptool_find_kernel.patch: Dropped.
+
+-------------------------------------------------------------------
+Fri Feb 28 17:21:29 UTC 2014 - ptesarik@suse.cz
+
+- Update to 0.8.8
+  o dracut support
+  o new kdumptool command: calibrate
+  o new kdumptool flag: NOSPLIT
+  o better support for SMP dumps
+
+- kdump-0.8.7-bsp.patch: Dropped.
+- kdump-0.8.7-calibrate.patch: Dropped.
+- kdump-0.8.7-nr_cpus.patch: Dropped.
+
+-------------------------------------------------------------------
+Fri Feb 14 16:14:45 UTC 2014 - ptesarik@suse.cz
+
+- kdump-0.8.7-nr_cpus.patch: Use nr_cpus instead of maxcpus with
+  recent kernels. (FATE#315725).
+- kdump-0.8.7-bsp.patch: Add disable_cpu_apicid for BSP to the
+  commandline (bnc#861981).
+- kdump-0.8.7-calibrate.patch: Implement kdump memory calibration
+  (FATE#315241).
+
+
+-------------------------------------------------------------------
+Fri Feb 14 12:15:14 UTC 2014 - juwolf@suse.com
+
+- Added patch kdumptool_find_kernel.patch: kdumptool argument order was
+  wrong in debug mode 
+
+-------------------------------------------------------------------
+Fri Jan 24 02:26:20 UTC 2014 - mpost@suse.com
+
+- Removed s390x from the list of excluded architectures.
+
+-------------------------------------------------------------------
+Mon Jan 13 06:37:39 UTC 2014 - ptesarik@suse.cz
+
+- Update to 0.8.7
+  o Change libelf interface to elfutils (libelf1)
+  o Fix parsing of command line options
+  o New tests
+  o Many code cleanups 
+
+-------------------------------------------------------------------
+Fri Dec  6 17:25:46 UTC 2013 - ptesarik@suse.cz
+
+- Update to 0.8.6
+  o IPv6 support (FATE 316563) 
+  o unmount filesystems before rebooting kdump environment
+
+-------------------------------------------------------------------
+Fri Sep 13 10:30:09 UTC 2013 - ptesarik@suse.cz
+
+- Update to 0.8.5
+  o See NEWS for a complete list of changes. 
+- kdump.spec: add newly installed files
+
+-------------------------------------------------------------------
+Wed Sep  4 14:50:58 UTC 2013 - fcrozat@suse.com
+
+- Add kdump.service to properly handle kdump initscript with
+  systemd.
+
+-------------------------------------------------------------------
+Wed Jan  2 16:05:51 UTC 2013 - ptesarik@suse.cz
+
+- Fix the broken package rename from kdump-helpers.
+
+-------------------------------------------------------------------
+Wed Jan  2 15:38:25 UTC 2013 - ptesarik@suse.cz
+
+- Update to 0.8.2
+  o FATE#314283: kdump: log-only mode
+  o checking of SSH keys
+  o lots of cleanups and bugfixes
+- Drop the following patches (included in upstream now):
+  o kdump-fix-gcc46.diff
+  o kdump-gcc47.patch
+  o kdump-save-log
+  o kdump-add-none-format
+  o kdump-udev-rule
+  o kdump-usrmerge.patch
+- kdump-format-list: Dropped (wrong).
+
+-------------------------------------------------------------------
+Sun Oct  7 22:16:04 UTC 2012 - crrodriguez@opensuse.org
+
+- Since the /usr merge, the mkinitrd bits are broken
+  since tools have changed locations.
+- Recommend nfs-client and cifs-utils too. 
+
+-------------------------------------------------------------------
+Wed Apr 11 03:45:19 UTC 2012 - jeffm@suse.com.
+
+- kdump: Add 'none' format
+- kdump: Allow format to be a list
+- kdump: Save dmesg during dump
+- kdump: Use correct script location in udev rule
+
+-------------------------------------------------------------------
+Sat Mar 17 15:23:22 UTC 2012 - dimstar@opensuse.org
+
+- Add kdump-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Sun Jun  5 17:38:54 UTC 2011 - bernhard@bwalle.de
+
+- Fix build with gcc 4.6.
+
+-------------------------------------------------------------------
+Wed Apr 27 19:55:30 CEST 2011 - jeffm@suse.de
+
+- Updated description to reference packages required for debugging
+  (bnc#690194).
+
+-------------------------------------------------------------------
+Fri Jan 23 16:46:36 CET 2009 - bwalle@suse.de
+
+- Update to 0.8.1
+  o Fix invalid syntax in CMakeLists.txt.
+  o Fix manpage, the command is called read_ikconfig and not
+    print_ikconfig (bnc #468782).
+  o Remove the documentation about the non-working network
+    configuration in Xen since that has been fixed meanwhile.
+  o Make it possible to exit the shell spawned in the initrd with
+    'exit' to boot in the kdump system for debugging.
+
+-------------------------------------------------------------------
+Wed Jan 14 10:34:37 CET 2009 - bwalle@suse.de
+
+- Update to 0.8.0
+  o Call asciidoc a2x with -L to fix manual page generation
+    problems with asciidoc 8.3.x.
+
+-------------------------------------------------------------------
+Thu Dec 11 11:11:38 CET 2008 - bwalle@suse.de
+
+- Add BuildIgnore for 'fop' which breaks the Java dependency
+  that is not needed for asciidoc generating just manual pages
+  (improve build speed).
+
+-------------------------------------------------------------------
+Wed Dec 03 20:09:12 CET 2008 - bwalle@suse.de
+
+- Update to 0.7.4
+  o Don't update bootloader in mkdumprd(8).
+- Don't build on s390, s390x and ppc because there is no kdump
+  on that architectures.
+
+-------------------------------------------------------------------
+Mon Nov 24 22:48:56 CET 2008 - bwalle@suse.de
+
+- Update to 0.7.3
+  o Document kdump problems on Xen.
+  o Don't display the full mkinitrd output.
+  o Warn about zero-size vmcore.
+  o Default to the auto-detected kernel when mkdumprd is called
+    without arguments instead of defaulting to the running kernel.
+  o Parse VMCOREINFO_XEN when present with 'read_vmcoreinfo'.
+  o Pass the kernel release of the crashed kernel via command line
+    in case of Xen.
+  o Improve error handling when no crash kernel release is
+    available when saving the dump.
+
+-------------------------------------------------------------------
+Fri Nov 21 13:46:57 CET 2008 - bwalle@suse.de
+
+- Update to 0.7.2
+  o Don't use the FQDN but only the hostname to avoid DNS lookups
+    and errors on wrongly configured systems (bnc#442830).
+  o Fix empty KDUMP_SAVEDIR line when replacing the symbolic link
+    with the absolute path.
+  o Don't set sysctl kernel.unknown_nmi_panic=1 by default
+    (bnc#388736).
+  o Mention kernel.panic_on_unrecovered_nmi in the kdump(7)
+    manpage.
+
+-------------------------------------------------------------------
+Thu Nov 20 15:08:15 CET 2008 - bwalle@suse.de
+
+- Update to 0.7.1
+  o Document 256M limit on ppc64 for large machines in kdump(7).
+
+-------------------------------------------------------------------
+Wed Nov 19 13:29:21 CET 2008 - bwalle@suse.de
+
+- Only regenerate the initrd once after update. But make sure that
+  it always gets regenerated.
+- Update to 0.7.0
+  o Add read_ikconfig command.
+  o Add find_kernel command in kdumptool, replacing the find code
+    in the init script. Needed to prefer the default kernel even
+    if the maxcpus kernel (or a realtime kernel) is currently
+    booted (bnc#444658).
+  o Implement KDUMP_VERBOSE = 16 to debug kdump find_kernel.
+  o Make boot.kdump dependent on boot.localnet to have a correct
+    hostname (bnc#442830).
+  o Fix stripping of the crashkernel command line again
+    (bnc#444687).
+  o Don't include test cases in the release tarball. They are
+    very incomplete and contain too huge test data.
+  o Honor TMPDIR and set that to disk space instead of the ramdisk
+    when saving the dump in the initrd.
+
+-------------------------------------------------------------------
+Thu Nov 13 12:03:51 CET 2008 - bwalle@suse.de
+
+- Update to 0.6.7
+  o Strip the whole crashkernel option when loading the kdump
+    kernel, not only parts of them, also when the extended
+    crashkernel syntax has been used.
+
+-------------------------------------------------------------------
+Wed Nov 12 10:04:28 CET 2008 - bwalle@suse.de
+
+- Update to 0.6.6
+  o Fix wrong path when modifying the /etc/sysconfig/kdump file
+    when creating the kdump initrd.
+  o Prepend a space before MAKEDUMPFILE_OPTIONS so that there's
+    always a space between command and the first argument.
+  o Fix finding of the kernel image (/boot/vmlinuz) with rootdir.
+
+-------------------------------------------------------------------
+Tue Nov 11 21:38:24 CET 2008 - bwalle@suse.de
+
+- Update to 0.6.5
+  o Fix copying of debug info when --root is specified and the
+    debug file resides in GLOBALDEBUGDIR/EXECDIR/DEBUGFILE
+    (bnc#443828).
+
+-------------------------------------------------------------------
+Tue Nov 11 15:50:24 CET 2008 - bwalle@suse.de
+
+- Fix string in %preun (kexec -> kdump).
+- Regenerate the kdump initrd on next startup after the kdump
+  package has been updated.
+
+-------------------------------------------------------------------
+Sun Nov 02 15:05:13 CET 2008 - bwalle@suse.de
+
+- Update to 0.6.4
+  o change default location for KDUMP_SAVEDIR to "/var/crash"
+  o actually check <version>-kdump before <version>-<flavour> when
+    looking for a suitable kdump kernel
+  o boot.kdump: Use the full kernel release (obtained with
+    /sbin/get_kernel_version) to build the initrd name also when
+    symlinks are used (bnc#438218)
+  o Assume a default terminal size of 80x25 (for printing the
+    horizontal line)
+  o Check the exit status of kdumptool
+  o Implement support for resolving symbolic links inside a root
+    directory (--root=...) when saving the dump. (bnc#431492)
+  o Don't print a (red) info message that email failed if both
+    KDUMP_SMTP_SERVER and KDUMP_NOTIFICATION_TO are empty.
+  o If KDUMP_SAVEDIR points to a local file, resolve symlinks when
+    creating the initrd because in theory the file system that
+    contains parts of the symlinks is not mounted in initrd.
+  o Fix KDUMP_NETCONFIG=auto by calling mkinitrd with right
+    parameters.
+  o Create core dumps in the initrd when kdumptool crashes.
+  o Fix std::logic_error in Email::send() that caused kdumptool to
+    terminate unexpectedly.
+  o Set the hostname of the SMTP session based on the --fqdn
+    parameter.
+  o Don't report a failure in the email when there is no one.
+- Drop following patches (folded in 0.6.4):
+  o kdump-2860e7a5d481633aca345b07db28d95fdb04d649
+    Add documentation for "Extended crashkernel commandline"
+  o kdump-56814cf5d03dff1d6233de996e79e1dd54cf5144
+    boot.kdump: Use the full kernel release for initrd name
+  o kdump-8580f201f2f759eb78c646a6b98727b4508101d3
+    Reflect 'boot.kdump' in kdump(7)
+  o kdump-8712f642965d13539148e385aefb805e3464b62d
+    Actually check <version>-kdump before <version>-<flavour> when
+    looking for a suitable kdump kernel
+  o kdump-f4cf2ef3cc3e6414d7d9386de0ebf7d633cbfed5
+    Change default location of KDUMP_SAVEDIR to "/var/crash"
+
+-------------------------------------------------------------------
+Tue Oct 28 13:22:28 CET 2008 - schwab@suse.de
+
+- Fix %post failure.
+
+-------------------------------------------------------------------
+Sun Oct 26 19:49:16 CET 2008 - bwalle@suse.de
+
+- Use the full kernel release (obtained with get_kernel_version)
+  to build the initrd name also when symlinks are used
+  (bnc#438218).
+
+-------------------------------------------------------------------
+Wed Oct 22 23:05:50 CEST 2008 - bwalle@suse.de
+
+- Actually check <version>-kdump before <version>-<flavour> when
+  looking for a suitable kdump kernel.
+
+-------------------------------------------------------------------
+Fri Oct 17 16:19:27 CEST 2008 - bwalle@suse.de
+
+- /etc/sysconfig/kdump should be only readable as root since it
+  may contain passwords (bnc#436042).
+
+-------------------------------------------------------------------
+Wed Oct 15 15:05:55 CEST 2008 - bwalle@suse.de
+
+- Reflect 'boot.kdump' in kdump(7).
+- Add rpmlintrc: The init script name is correct.
+
+-------------------------------------------------------------------
+Mon Oct 13 18:59:50 CEST 2008 - bwalle@suse.de
+
+- Add documentation for "Extended crashkernel commandline"
+  (bnc#430276).
+
+-------------------------------------------------------------------
+Wed Sep  3 15:51:52 CEST 2008 - crrodriguez@suse.de
+
+- use RPM_OPT_FLAGS everywhere [FATE #300498]
+
+-------------------------------------------------------------------
+Sat Aug 23 19:18:09 CEST 2008 - bwalle@suse.de
+
+- /var/crash is now part of the filesystem RPM (removing %dir)
+
+-------------------------------------------------------------------
+Mon Aug 18 18:10:16 CEST 2008 - bwalle@suse.de
+
+- also create /var/log/dump link when the /var/log/dump directory
+  did not exist
+- delete /var/log/dump link in %postun
+
+-------------------------------------------------------------------
+Mon Aug 18 16:40:53 CEST 2008 - bwalle@suse.de
+
+- change default for KDUMP_SAVEDIR to "/var/crash"
+
+-------------------------------------------------------------------
+Fri Aug 15 14:41:25 CEST 2008 - bwalle@suse.de
+
+- update to 0.6.3
+  o make the kdump init script a boot script ("boot.kdump")
+  o fix init script comments
+  o add meta information to manpages
+
+-------------------------------------------------------------------
+Tue Aug 12 10:07:02 CEST 2008 - bwalle@suse.de
+
+- update to 0.6.2
+  o correct init script: remove remote FS dependency and also add
+    "Should-Stop"
+
+-------------------------------------------------------------------
+Sat Aug  9 18:37:52 CEST 2008 - bwalle@suse.de
+
+- update to 0.6.1
+  o add kdump(7) manual page
+
+-------------------------------------------------------------------
+Thu Aug 07 11:40:17 CEST 2008 - bwalle@suse.de
+
+- update to 0.6.0
+  o add vmcore(5) manual page
+  o implement email support
+- use PreReq for mkinitrd instead of BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug  4 22:27:26 CEST 2008 - bwalle@suse.de
+
+- Don't report ELF32 as "invalid ELF class"
+
+-------------------------------------------------------------------
+Fri Aug 01 12:00:17 CEST 2008 - bwalle@suse.de
+
+- update to 0.5.5
+  o make dependency to libssh2 optional
+
+-------------------------------------------------------------------
+Thu Jul 31 23:41:06 CEST 2008 - bwalle@suse.de
+
+- update to 0.5.4
+  o always create empty ${tmp_mnt}/etc/fstab.kdump
+  o change execution state to 'boot'
+  o use UUID for fstab.kdump
+  o open a shell if something fails and KDUMP_CONTINUE_ON_ERROR is
+    true
+  o don't include JFS to initrd
+  o don't add -s '' parameter to mkinitrd call if the boot splash
+    script is not available
+  o handle more programs in $KDUMP_REQUIRED_PROGRAMS correct
+  o move original /etc/fstab back
+- add %config to udev rule
+
+-------------------------------------------------------------------
+Mon Jul 28 23:39:24 CEST 2008 - bwalle@suse.de
+
+- update to 0.5.3
+  o don't exit with error code when the dump directory does not yet
+    exist in the 'delete_dumps' command
+  o fix syntax error in init/boot-kdump.sh
+
+-------------------------------------------------------------------
+Mon Jul 28 23:12:12 CEST 2008 - bwalle@suse.de
+
+- call mkinitrd_setup in %post and %postun
+
+-------------------------------------------------------------------
+Mon Jul 28 11:58:28 CEST 2008 - bwalle@suse.de
+
+- update to 0.5.2
+  o copy required programs (KDUMP_REQUIRED_PROGRAMS) in initrd
+  o mount dump partition and boot partition in initrd
+  o don't exit with error code when the dump directory does not yet
+    exist in the 'delete_dumps' command
+
+-------------------------------------------------------------------
+Thu Jul 24 22:20:00 CEST 2008 - bwalle@suse.de
+
+- update to 0.5.1
+  o add 'print_target' sub command
+  o implement SSH public/private key authentication
+
+-------------------------------------------------------------------
+Thu Jul 24 01:45:11 CEST 2008 - bwalle@suse.de
+
+- update to 0.5.0 (FATE #303043)
+  o initrd-based dumping
+  o basically rewrite
+
+-------------------------------------------------------------------
+Fri Jun 13 17:34:43 CEST 2008 - bwalle@suse.de
+
+- update to 0.3.4
+  o try also $(uname -i) to find the makedumpfile.config in
+    /usr/src/linux-${version}-obj/${arch}/${flavour}
+  o filter "mem" kernel parameter before loading the kdump kernel
+    (bnc#393324)
+- delete kdump-clarify-README: merged in new version
+- delete kdump-default-nmi: merged in new version
+- delete kdump-reload-memory-hotplug: merged in new version
+- delete kdump-fix-kernel-detection: merged in new version
+
+-------------------------------------------------------------------
+Sun Jun 01 17:56:40 CEST 2008 - bwalle@suse.de
+
+- set KDUMP_KERNELVER="" on i386 instead of KDUMP_KERNELVER="kdump"
+  (with "kdump", the kdump kernel cannot be loaded without manually
+  editing the configuration file (bnc#396221)
+
+-------------------------------------------------------------------
+Mon May 26 17:45:18 CEST 2008 - bwalle@suse.de
+
+- fix load of kdump kernel when KDUMP_KERNELVER="kdump" on ppc64
+  (bnc#394216)
+
+-------------------------------------------------------------------
+Tue May 20 10:54:19 CEST 2008 - bwalle@suse.de
+
+- fix typo when checking the result of kdump_kernel_loaded
+
+-------------------------------------------------------------------
+Mon May 19 20:24:48 CEST 2008 - bwalle@suse.de
+
+- implement "try-restart" command and use that implementation also
+  for "condrestart"
+- add udev rules to reload kdump configuration on memory or CPU
+  hotplug (bnc#389658)
+- set panic_on_unrecovered_nmi only when it exists
+
+-------------------------------------------------------------------
+Tue May 13 16:27:48 CEST 2008 - bwalle@suse.de
+
+- set panic_on_unrecovered_nmi as default (bnc#388736)
+
+-------------------------------------------------------------------
+Fri Apr 18 18:38:31 CEST 2008 - bwalle@suse.de
+
+- clarified README that memory sizes are only recommended values
+  (bnc#380577)
+
+-------------------------------------------------------------------
+Wed Feb 20 11:48:28 CET 2008 - bwalle@suse.de
+
+- use "-o NumberOfPasswordPrompts=0 -o CheckHostIP=no -o
+  StrictHostKeyChecking=no" when calling ssh because the user may
+  not be able to confirm the questions (bnc#355973)
+- require "$network" in init script so than when runlevel 3 is set
+  in /etc/sysconfig/kdump, network is available to the kdump
+  scripts (bnc#293171)
+- update version to 0.2.3
+
+-------------------------------------------------------------------
+Sun Jan 13 19:52:58 CET 2008 - bwalle@suse.de
+
+- don't add initrd blink stuff for openSUSE <= 10.2 because
+  there was no modular initrd script
+
+-------------------------------------------------------------------
+Tue Jan  8 13:15:03 CET 2008 - bwalle@suse.de
+
+- log the result of kexec call to avoid the impression that loading
+  kdump kernel succeeded even if kexec terminated non-zero (350289)
+- don't set kernel.panic_on_oops to 1 if kexec failed (350289)
+- updated version to 0.3.2
+- require kexec-tools
+
+-------------------------------------------------------------------
+Wed Dec 12 15:30:20 CET 2007 - bwalle@suse.de
+
+- check the disk space afterwards if makedumpfile is used since
+  it's not possible to know the dump image size in advance
+- updated version to 0.3.1
+
+-------------------------------------------------------------------
+Mon Nov 12 15:05:06 CET 2007 - tiwai@suse.de
+
+- fix PreReq for insserv and fillup
+
+-------------------------------------------------------------------
+Tue Nov  6 10:18:15 CET 2007 - bwalle@suse.de
+
+- add "coreutils" and "sed" to PreReq to make rpmlint happy
+
+-------------------------------------------------------------------
+Thu Oct 11 16:17:07 CEST 2007 - bwalle@suse.de
+
+- rename kdump-helpers to kdump
+- added GDB helpers, init script and sysconfig file
+  (formerly all in the kexec-tools package)
+- added README (formerly README.SUSE in the kexec-tools package)
+- fix compile warning in src/read-debuglink.c
+- log save message to syslog if $KDUMP_VERBOSE & 1 > 0 (#331118)
+- improve algorithm for finding the kdump kernel
+- updated version to 0.3.0
+
+-------------------------------------------------------------------
+Mon Sep  3 16:51:53 CEST 2007 - bwalle@suse.de
+
+- don't use locking for NFS (#307178)
+
+-------------------------------------------------------------------
+Wed Aug 29 19:11:55 CEST 2007 - bwalle@suse.de
+
+- added Recommends: makedumpfile
+
+-------------------------------------------------------------------
+Mon Aug 13 16:45:12 CEST 2007 - bwalle@suse.de
+
+- run bootloader after modifying initrd
+
+-------------------------------------------------------------------
+Fri Jul 27 12:51:44 CEST 2007 - bwalle@suse.de
+
+- update to 0.2.4 (#302257)
+  o implement KDUMP_KEEP_OLD_DUMPS = -2 for deleting all dumps
+    (except the latest, which is saved afterwards
+
+-------------------------------------------------------------------
+Mon Jul  2 16:49:49 CEST 2007 - tiwai@suse.de
+
+- changed from libelf to libelf0-devel in buildrequires.
+
+-------------------------------------------------------------------
+Mon Jun 18 13:57:15 CEST 2007 - bwalle@suse.de
+
+- update to 0.2.3
+  o fixed read-debuglink
+  o changed NFS URL, no separation between share and directory
+  o added kdump-led_blink to blink LEDs (for broken VGA console)
+  o added mkinitrd script (for blink) and /sbin/mkinitrd to
+    %postin and %postun
+
+-------------------------------------------------------------------
+Mon Jun 11 15:26:09 CEST 2007 - bwalle@suse.de
+
+- update to 0.2.2
+  o add read-debuglink
+
+-------------------------------------------------------------------
+Sun Jun 10 23:12:53 CEST 2007 - bwalle@suse.de
+
+- update to 0.2.1
+  o add manpages for all programs
+
+-------------------------------------------------------------------
+Mon May 28 18:15:56 CEST 2007 - bwalle@suse.de
+
+- first version
+

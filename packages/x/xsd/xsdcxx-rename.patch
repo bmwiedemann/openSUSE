@@ -1,0 +1,112 @@
+diff --git a/xsd/doc/xsd.1 b/xsd/doc/xsd.1
+index dc5b38a..5b960f0 100644
+--- a/xsd/doc/xsd.1
++++ b/xsd/doc/xsd.1
+@@ -3,14 +3,14 @@
+ .\"
+ .TH XSD 1 "July 2014" "XSD 4.0.0"
+ .SH NAME
+-xsd \- W3C XML Schema to C++ Compiler
++xsdcxx \- W3C XML Schema to C++ Compiler
+ .\"
+ .\"
+ .\"
+ .\"--------------------------------------------------------------------
+ .SH SYNOPSIS
+ .\"--------------------------------------------------------------------
+-.B xsd
++.B xsdcxx
+ .I command
+ .B [
+ .I options
+@@ -20,19 +20,19 @@ xsd \- W3C XML Schema to C++ Compiler
+ .I file
+ .B ...]
+ .in
+-.B xsd help
++.B xsdcxx help
+ .B [
+ .I command
+ .B ]
+ .in
+-.B xsd version
++.B xsdcxx version
+ .\"
+ .\"
+ .\"
+ .\"--------------------------------------------------------------------
+ .SH DESCRIPTION
+ .\"--------------------------------------------------------------------
+-.B xsd
++.B xsdcxx
+ generates vocabulary-specific, statically-typed C++ mapping from W3C XML
+ Schema definitions. Particular mapping to produce is selected by a
+ .IR command .
+@@ -96,7 +96,7 @@ Print usage information and exit. Use
+ .PP
+ .RS
+ .RS 3
+-.B xsd help
++.B xsdcxx help
+ .I command
+ .RE
+ .PP
+@@ -1632,7 +1632,7 @@ option. With this approach you don't need to worry about shell quoting.
+ .\"
+ .SH DIAGNOSTICS
+ If the input file is not a valid W3C XML Schema definition,
+-.B xsd
++.B xsdcxx
+ will issue diagnostic messages to
+ .B STDERR
+ and exit with non-zero exit code.
+diff --git a/xsd/doc/xsd.xhtml b/xsd/doc/xsd.xhtml
+index 989d1bd..a89ff3e 100644
+--- a/xsd/doc/xsd.xhtml
++++ b/xsd/doc/xsd.xhtml
+@@ -55,14 +55,14 @@
+   <h1>SYNOPSIS</h1>
+ 
+   <dl id="synopsis">
+-    <dt><code><b>xsd</b> <i>command</i> [<i>options</i>] <i>file</i> [<i>file</i> ...]</code></dt>
+-    <dt><code><b>xsd help</b> [<i>command</i>]</code></dt>
+-    <dt><code><b>xsd version</b></code></dt>
++    <dt><code><b>xsdcxx</b> <i>command</i> [<i>options</i>] <i>file</i> [<i>file</i> ...]</code></dt>
++    <dt><code><b>xsdcxx help</b> [<i>command</i>]</code></dt>
++    <dt><code><b>xsdcxx version</b></code></dt>
+   </dl>
+ 
+   <h1>DESCRIPTION</h1>
+ 
+-  <p><code><b>xsd</b></code> generates vocabulary-specific, statically-typed
++  <p><code><b>xsdcxx</b></code> generates vocabulary-specific, statically-typed
+   C++ mapping from W3C XML Schema definitions. Particular mapping to
+   produce is selected by a <code><i>command</i></code>. Each mapping has
+   a number of mapping-specific <code><i>options</i></code> that should
+@@ -104,7 +104,7 @@
+ 
+     <dt><code><b>help</b></code></dt>
+     <dd>Print usage information and exit. Use
+-      <p><code><b>xsd help</b> <i>command</i></code></p>
++      <p><code><b>xsdcxx help</b> <i>command</i></code></p>
+       for command-specific help.
+     </dd>
+ 
+@@ -219,7 +219,7 @@
+ 
+   <p>For example, if you have file <code><b>hello.xsd</b></code> with
+   namespace <code><b>http://example.com/hello</b></code> and you run
+-  <code><b>xsd</b></code> on this file, then the string in question will
++  <code><b>xsdcxx</b></code> on this file, then the string in question will
+   be:</p>
+ 
+   <p><code><b>hello.xsd. http://example.com/hello</b></code></p>
+@@ -1530,7 +1530,7 @@ namespace .*
+   <h1>DIAGNOSTICS</h1>
+ 
+   <p>If the input file is not a valid W3C XML Schema definition,
+-    <code><b>xsd</b></code> will issue diagnostic messages to STDERR
++    <code><b>xsdcxx</b></code> will issue diagnostic messages to STDERR
+     and exit with non-zero exit code.</p>
+ 
+   <h1>BUGS</h1>

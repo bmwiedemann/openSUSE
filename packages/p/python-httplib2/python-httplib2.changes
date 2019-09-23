@@ -1,0 +1,337 @@
+-------------------------------------------------------------------
+Fri Aug  2 09:41:37 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.13.1
+  0.13.1
+   * Python3: Use no_proxy
+     https://github.com/httplib2/httplib2/pull/140
+  0.13.0
+    * Allow setting TLS max/min versions
+      https://github.com/httplib2/httplib2/pull/138
+  0.12.3
+    * No changes to library. Distribute py3 wheels.
+  0.12.1
+    * Catch socket timeouts and clear dead connection
+      https://github.com/httplib2/httplib2/issues/18
+      https://github.com/httplib2/httplib2/pull/111
+    * Officially support Python 3.7 (package metadata)
+      https://github.com/httplib2/httplib2/issues/123
+  0.12.0
+    * Drop support for Python 3.3
+    * ca_certs from environment HTTPLIB2_CA_CERTS or certifi
+      https://github.com/httplib2/httplib2/pull/117
+    * PROXY_TYPE_HTTP with non-empty user/pass raised TypeError: bytes required
+      https://github.com/httplib2/httplib2/pull/115
+    * Revert http:443->https workaround
+      https://github.com/httplib2/httplib2/issues/112
+    * eliminate connection pool read race
+      https://github.com/httplib2/httplib2/pull/110
+    * cache: stronger safename
+      https://github.com/httplib2/httplib2/pull/101
+  0.11.3
+    * No changes, just reupload of 0.11.2 after fixing automatic release conditions in Travis.
+  0.11.2
+    * proxy: py3 NameError basestring
+      https://github.com/httplib2/httplib2/pull/100
+  0.11.1
+    * Fix HTTP(S)ConnectionWithTimeout AttributeError proxy_info
+      https://github.com/httplib2/httplib2/pull/97
+  0.11.0
+    * Add DigiCert Global Root G2 serial 033af1e6a711a9a0bb2864b11d09fae5
+      https://github.com/httplib2/httplib2/pull/91
+    * python3 proxy support
+      https://github.com/httplib2/httplib2/pull/90
+    * If no_proxy environment value ends with comma then proxy is not used
+      https://github.com/httplib2/httplib2/issues/11
+    * fix UnicodeDecodeError using socks5 proxy
+      https://github.com/httplib2/httplib2/pull/64
+    * Respect NO_PROXY env var in proxy_info_from_url
+      https://github.com/httplib2/httplib2/pull/58
+    * NO_PROXY=bar was matching foobar (suffix without dot delimiter)
+      New behavior matches curl/wget:
+      - no_proxy=foo.bar will only skip proxy for exact hostname match
+      - no_proxy=.wild.card will skip proxy for any.subdomains.wild.card
+      https://github.com/httplib2/httplib2/issues/94
+    * Bugfix for Content-Encoding: deflate
+      https://stackoverflow.com/a/22311297
+- deleted patches
+  - httplib2-use-system-certs.patch (not needed)
+    httplib2 started to use certifi and this is already bent to
+    use system certificate bundle by
+    python-certifi-shipped-requests-cabundle.patch
+
+-------------------------------------------------------------------
+Fri Feb 23 16:31:07 UTC 2018 - snica@suse.com
+
+- update httplib2-use-system-certs.patch: handle
+  the case when validation is disabled correctly.
+
+  The 'check_hostname' context attribute has to be
+  set first, othewise a "ValueError: Cannot set 
+  verify_mode to CERT_NONE when check_hostname 
+  is enabled." exception is raised.
+
+-------------------------------------------------------------------
+Wed Jan 10 07:47:54 UTC 2018 - dmueller@suse.com
+
+- update httplib2-use-system-certs.patch: handle
+  the case with ssl_version being None correctly
+
+-------------------------------------------------------------------
+Tue Jan  9 11:04:53 UTC 2018 - dmueller@suse.com
+
+- update httplib2-use-system-certs.patch: Also use
+  ssl.create_default_context in the python2 case so that
+  the system wide certificates are loaded as trusted again.
+
+-------------------------------------------------------------------
+Wed Apr 19 22:13:57 UTC 2017 - toddrme2178@gmail.com
+
+- Source url must be https.
+
+-------------------------------------------------------------------
+Wed Apr 19 14:16:35 UTC 2017 - toddrme2178@gmail.com
+
+- Spec file cleanups
+
+-------------------------------------------------------------------
+Wed Apr 12 18:16:09 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 0.10.3
+  *  Fix certificate validation on Python<=2.7.8 without ssl.CertificateError
+- Update to 0.10.2
+  * Just a reupload of 0.10.1, which was broken for Python3
+    because wheel distribution doesn't play well with our 2/3 split code base.
+- Update to 0.10.1
+  * Remove VeriSign Class 3 CA from trusted certs
+  * Add IdenTrust DST Root CA X3
+  * Support for specifying the SSL protocol version (Python v2)
+  * On App Engine use urlfetch's default deadline if None is passed.
+  * Fix TypeError on AppEngine “__init__() got an unexpected keyword argument 'ssl_version’”
+  * Send SNI data for SSL connections on Python 2.7.9+
+  * Verify the server hostname if certificate validation is enabled
+  * Add proxy_headers argument to ProxyInfo constructor
+  * Make disable_ssl_certificate_validation work with Python 3.5.
+  * Fix socket error handling
+- Remove httplib2-bnc-818100.patch, merged upstream.
+
+-------------------------------------------------------------------
+Wed Oct 12 19:50:16 UTC 2016 - rjschwei@suse.com
+
+- Project moved from code.google.com to GitHub, fix the url
+  accordingly
+
+-------------------------------------------------------------------
+Wed Apr 27 14:38:59 UTC 2016 - jmatejek@suse.com
+
+- attempt to build multi-python
+
+-------------------------------------------------------------------
+Wed Mar  2 16:45:18 UTC 2016 - jmatejek@suse.com
+
+- update and cleanup of httplib2-use-system-certs.patch,
+  so that the passthrough is clean for python2 and so that it does
+  the right thing in python3
+
+-------------------------------------------------------------------
+Thu Dec  3 18:18:16 UTC 2015 - rjschwei@suse.com
+
+- Update to version 0.9.2:
+  * Fix incorrect ResponseNotReady exceptions, retry on transient errors.
+
+-------------------------------------------------------------------
+Tue Dec  1 14:59:02 UTC 2015 - rjschwei@suse.com
+
+- Include 0.9.1 in SLE 12 (FATE#319904, bsc#954690)
+
+-------------------------------------------------------------------
+Wed May  6 15:17:13 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.9.1:
+  * fix #296: There was a problem with headers when a binary string
+    is passed (like b'Authorization').
+  * fix #276: Default to doing DNS resolution through a proxy
+    server if present.
+
+-------------------------------------------------------------------
+Mon Sep 15 09:28:56 UTC 2014 - tbechtold@suse.com
+
+- update to version 0.9
+  * Release 0.9. The heartbleed release.
+  * Add an updated cacerts.txt file and fix some tests. Turns out nginx doesn't support etags on gzip'd content.
+  * Merge pull request #259 from snarfed/master
+  * use socket.getdefaulttimeout() on App Engine as well as off, take 2
+  * Merge pull request #258 from snarfed/master
+  * use socket.getdefaulttimeout() on App Engine as well as off
+  * Update README.md
+  * whitespace fix
+  * Remove redundant README
+  * Remove unused files.
+  * Update README.md
+  * Merge ../httplib2.current
+  * Update README.md
+  * Last fixed for markdown.
+  * Update README.md
+  * Markdown fixes.
+  * Moving README over to README.md
+  * Pass method by name, not positionally. Fixes issue #252. Reviewed in https://codereview.appspot.com/7987046/.
+  * Fix handling of BadStatusLine. Fixes issue #250. Review in https://codereview.appspot.com/7529045/.
+  * Clean up tags
+  * Added tag 0.8 for changeset 427a4ff7b7e4
+
+-------------------------------------------------------------------
+Wed Mar  5 21:21:56 UTC 2014 - rschweikert@suse.com
+
+- Modify httplib2-use-system-certs.patch to not depend on a generated bundle.
+  OpenSSL has everything built in to do the cert verification, we do not
+  need to pass a cert bundle file
+
+-------------------------------------------------------------------
+Thu Feb 13 08:00:00 UTC 2014 - rschweikert@suse.com
+
+- Include in SLE 12 (FATE #316168)
+
+-------------------------------------------------------------------
+Sat Nov 30 10:26:23 UTC 2013 - rschweikert@suse.com
+
+- SUSE internal build service does not recognize %0{sles_version}
+  use a different version inidcator to depend on openssl-certs vs
+  ca-certificates
+
+-------------------------------------------------------------------
+Thu Aug 15 10:06:46 UTC 2013 - speilicke@suse.com
+
+- Drop pre_checkin.sh
+
+-------------------------------------------------------------------
+Thu May  2 10:23:29 UTC 2013 - speilicke@suse.com
+
+- Add httplib2-bnc-818100.patch (bnc#818100): Fix for subsequent
+  request SSL certificate validation
+
+-------------------------------------------------------------------
+Fri Mar 22 13:30:17 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.8:
+  + Improved App Engine behavior
+
+-------------------------------------------------------------------
+Fri Jan 11 19:51:38 UTC 2013 - p.drouand@gmail.com
+
+- Drop unneeded python-pyOpenSSL Requires
+
+-------------------------------------------------------------------
+Fri Jan 11 19:39:31 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Fri Jan 11 19:38:07 UTC 2013 - p.drouand@gmail.com
+
+- Update to 0.7.7 version:
+  * More fixes for App Engine, now less likely to swallow important exceptions.
+  * Adding proxy_info_from_* methods to Python3. Reviewed in https://codereview.appspot.com/6588078/.
+  * Added GeoTrust cert
+  * Make httplib2.Http() instances pickleable. Reviewed in https://codereview.appspot.com/6506074/
+  * The following issues have been fixed:
+    - 229 python3 httplib2 clobbers multiple headers of same key
+    - 230 Expose meaningful exception for App Engine URLFetch ResponseTooLargeError
+    - 231 Expose App Engine URLFetch DeadlineExceededError for debugging purposes
+
+-------------------------------------------------------------------
+Sat Oct  6 22:26:47 UTC 2012 - os-dev@jacraig.com
+
+- Update to 0.7.6:
+  * Fix app engine
+  * On Python App Engine 2.7 a body can be passed in that is actually a
+    stream. Do a full read of the contents of that stream before proceeding.
+- Update URL to one given in setup.py; also where the old one redirects to.
+
+-------------------------------------------------------------------
+Sun Sep  9 16:29:51 UTC 2012 - os-dev@jacraig.com
+
+- Update to 0.7.5, no changelog provided.
+
+-------------------------------------------------------------------
+Mon Jul 23 14:56:00 UTC 2012 - saschpe@suse.de
+
+- Require openssl-certs on SLE instead of ca-certificates
+
+-------------------------------------------------------------------
+Tue Jul 17 08:24:44 UTC 2012 - saschpe@suse.de
+
+- Add missing runtime requirement on python-pyOpenSSL to gain
+  access to 'ssl' module
+
+-------------------------------------------------------------------
+Mon Jul  9 08:47:20 UTC 2012 - cfarrell@suse.com
+
+- license update: MIT and Apache-2.0 and (MPL-1.1 or GPL-2.0+ or LGPL-2.1+)
+  __init__.py contains code derived from a Google owned Apache project.
+  cacerts.txt is Mozilla triple-licensed.
+
+-------------------------------------------------------------------
+Wed Jun 20 11:41:56 UTC 2012 - saschpe@suse.de
+
+- Don't ship private copy of Mozilla NSS certs, use system certs
+  instead (bnc#761162) 
+
+-------------------------------------------------------------------
+Tue Jun  5 09:56:01 UTC 2012 - cstender@opensuse.org
+
+- update to version 0.7.4
+  * See CHANGELOG for all changes and fixes
+
+-------------------------------------------------------------------
+Thu Dec 22 12:52:35 UTC 2011 - cstender@suse.com
+
+- updated to version 0.7.2
+
+-------------------------------------------------------------------
+Mon Jul 11 14:06:42 CEST 2011 - cstender@suse.de
+
+- updated to version 0.7.1
+  * See CHANGELOG for all changes and fixes
+
+-------------------------------------------------------------------
+Mon Apr 19 13:47:15 CEST 2010 - dmueller@suse.de
+
+- update to version 0.6.0:
+  * include python 3 support/compatibility
+
+-------------------------------------------------------------------
+Thu Aug 13 10:55:40 UTC 2009 - cstender@novell.com
+
+- build as noarch
+
+-------------------------------------------------------------------
+Tue Aug  4 10:51:26 UTC 2009 - cstender@novell.com
+
+- updated to version 0.5.0
+  * Fixed the following bugs:
+    #12 - Cache-Control: only-if-cached incorrectly does request if
+          item not in cache 
+    #39 - Deprecation warnings in Python 2.6
+    #54 - Http.request fails accesing Google account via http proxy
+    #56 - Block on response.read() for HEAD requests.
+    #57 - Timeout ignore for Python 2.6
+    #58 - Fixed parsing of Cache-Control: header to make it more
+          robust
+
+-------------------------------------------------------------------
+Tue Sep  9 12:41:28 CEST 2008 - cstender@suse.de
+
+- updated package to version 0.4.0
+  o added support for proxies if the Socksipy module is installed
+  o fixed bug with some HEAD responses having content-length set to
+    zero incorrectly
+  o fixed most except's to catch a specific exception
+  o added 'connection_type' parameter to Http.request()
+  o the default for 'force_exception_to_status_code' was changed to
+    False
+
+-------------------------------------------------------------------
+Sat Oct 21 22:37:29 CEST 2006 - dgollub@suse.de
+
+- initial version of python-httplib2 (0.2.0) 
+

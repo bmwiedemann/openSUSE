@@ -1,0 +1,187 @@
+-------------------------------------------------------------------
+Sun Sep  1 10:01:01 UTC 2019 - antoine.belvire@opensuse.org
+
+- Fix translation loading:
+  * Update solarus-1.6.2-install-gui-translations.patch with
+    final version pushed to upstream.
+
+-------------------------------------------------------------------
+Wed Aug 21 07:46:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Package description updates.
+
+-------------------------------------------------------------------
+Fri Aug 16 16:48:12 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.6.2:
+  * Fix scrolling teletransporters with a square size (#1412).
+  * Fix hero displayed above stairs walls.
+- Install translations for solarus-gui:
+  * Add solarus-1.6.2-install-gui-translations.patch.
+  * Create solarus-gui-lang subpackage.
+- Add _service file to create a tarball without the big
+  'libraries' folder which is relevant only for Windows/Mac builds.
+- Disable check section on Leap <= 15.1 to fix build.
+- Disable test "lua/bugs/1269_coroutines" as it is unstable.
+- Remove obsolete build dependency on update-desktop-files.
+
+-------------------------------------------------------------------
+Sat Aug 10 16:04:10 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to 1.6.1:
+  * Engine changes:
+    + Add `-force-software-rendering` switch to solarus-run.
+    + Add argument to set mouse cursor visibility on start (#1263).
+    + Add simple performance counters to the engine (#1280).
+    + Add argument to set fullscreen mode on start (#1281).
+    + Add joypad buttons combo for quitting the engine (#1283).
+    + Add git revision information to build and main loop startup
+      (#1292).
+    + Add argument to set the joypad axis deadzone (#1293).
+    + Add debug warning if a surface is larger than 2048 x 2048
+      (#1294).
+    + Add support of carried object sprites with multiple
+      directions (#1392).
+    + Improve CMake build (#1270, #1276, #1277, #1288, #1320).
+    + Fix several crashes (#1354, #1371, #1353, #1366, #1374,
+      #1361).
+    + Other bugfixes. See installed changelog.txt for more details.
+  * Lua API changes:
+    + This release adds new features but does not introduce any
+      incompatibility.
+    + Add methods game:get/set_transition_style() (#1368).
+    + Add methods state:get/set_can_use_teletransporter/switch/
+      stream() (#1363).
+    + Make surface, text_surface and timer userdata types indexable
+      (#1394).
+- Remove solarus-1.6.0-fix-desktop-exec.patch: Fixed upstream.
+- Update spec file:
+  * Split GUI and GUI library from main package.
+  * Update URL, Source and Description fields.
+  * Remove obsolete desktop_database_post(un) macros.
+  * Use cmake_build macro.
+  * Add check section.
+
+-------------------------------------------------------------------
+Sat Dec 22 20:21:07 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to 1.6.0:
+  * Engine changes:
+    + Solarus 1.5 quests are still supported by Solarus 1.6.
+    + Add support of OpenGL shaders.
+    + Replaced SDL renderer by a custom GL backend.
+    + Improve the performance of loading images.
+    + Maps can now use multiple tilesets.
+    + Animated tile patterns can now have any frame number and
+      delay.
+    + Treasure dialogs are now optional.
+    + Allow entities to have a non-multiple of 8 size.
+    + Don't center the hero on non-blocking streams.
+    + Allow pickables to follow streams.
+    + Blocks can now be moved multiple times.
+    + Add support of .otf fonts.
+    + Improve Lua error messages.
+    + CLI can accept an archive's path as argument.
+    + Bug fixes.
+  * Solarus launcher GUI changes:
+    + Show the path and the compatibility format of each quest.
+    + Lua console: provide variables game, map, entities and tp
+      function.
+    + Clear the console when a quest is started.
+    + FileDialog now expects a file, either quest.dat or an
+      archive (.solarus, .zip).
+  * Lua API changes:
+    + This release adds new features and deprecates a few ones but
+      does not introduce any incompatibility.
+    + See installed changelog.txt for full changelog.
+- Update build dependencies:
+  * Add pkgconfig(gl): Was already pulled by other dependencies
+    but now it's actually used.
+- Update patches:
+  * Drop appdata.patch: Fixed upstream.
+  * Add solarus-1.6.0-fix-desktop-exec.patch: Fix executable name
+    in desktop file.
+
+-------------------------------------------------------------------
+Mon Aug 14 10:39:41 UTC 2017 - aloisio@gmx.com
+
+- Update to 1.5.3
+  * Speed up loading maps by keeping tilesets in a cache (#1019).
+  * Fix text_surface:set_horizontal/vertical_alignment() not
+    working.
+  * Fix parallax dynamic tiles still displayed when disabled or
+    invisible.
+  * Improve error message of non-square tile patterns with diagonal
+    obstacles.
+
+- Dropped luajit-5_1-2.1.patch and icons-desktop-man.patch
+  (merged upstream)
+
+-------------------------------------------------------------------
+Sat Feb 18 08:45:46 UTC 2017 - mailaender@opensuse.org
+
+- Add appdata.patch for https://en.opensuse.org/openSUSE:AppStore
+
+-------------------------------------------------------------------
+Wed Jan 25 09:09:53 UTC 2017 - jengelh@inai.de
+
+- Implement shared library packaging guideline.
+  Trim filler words from description.
+
+-------------------------------------------------------------------
+Tue Jan 24 07:55:45 UTC 2017 - mailaender@opensuse.org
+
+- New upstream version 1.5.1
+- build the Qt5 quest launcher GUI
+- remove fix-libsuffix.patch (included upstream)
+- remove fix-luajit-cmake.patch (included upstream)
+- add luajit-5_1-2.1.patch to fix the build with LuaJIT 2.1
+- add icons-desktop-man.patch to complete the cmake installation
+
+-------------------------------------------------------------------
+Mon Jan 25 01:34:54 UTC 2016 - rpm@fthiessen.de
+
+- New upstream version 1.4.5:
+  * Fix file name not shown when there is an error in dialogs file.
+  * Fix saving special characters in data files.
+  * Fix sol.main.load_file() returning a string instead of
+    nil on error.
+  * Fix performance issue when sprites have huge frame delays.
+  * Fix collisions triggered for removed entities.
+  * Fix hero disappearing if lifting animation has less
+    than 5 frames.
+  * Fix collisions with diagonal dynamic tiles larger than 8x8.
+  * Fix path finding movement not working with NPCs.
+  * Fix stuck on non-traversable dynamic tiles covered
+    by traversables.
+  * Fix collision detection of custom entities that do not move.
+  * Fix pickables with special movement falling in holes too early.
+  * Fix blocking streams not working when the hero's
+    speed is greater.
+
+-------------------------------------------------------------------
+Sat Nov 21 12:33:31 UTC 2015 - rpm@fthiessen.de
+
+- Updated to 1.4.4:
+  * spec file clean up
+  * Added fix-libsuffix.patch to install library into /usr/lib64
+    on e.g. x86_64 instead /usr/lib
+  * Added fix-luajit-cmake.patch to detect luajit headers in
+    include path with lua_suffix.
+
+-------------------------------------------------------------------
+Wed Jul  2 19:04:21 UTC 2014 - mailaender@opensuse.org
+
+- Adapted for SUSE
+- Update to 1.2.0
+
+-------------------------------------------------------------------
+Fri Jan  3 00:00:00 UTC 2014 - huaren.zhong@gmail.com
+
+- Rebuild for Fedora
+
+-------------------------------------------------------------------
+Wed Dec 28 00:00:00 UTC 2011 - giacomosrv@gmail.com
+
+- packaged solarus version 0.9.0
+

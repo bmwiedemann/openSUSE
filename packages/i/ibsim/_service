@@ -1,0 +1,17 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/linux-rdma/ibsim.git</param>
+    <param name="package-meta">no</param>
+    <param name="exclude">.git</param>
+    <param name="filename">ibsim</param>
+    <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
+    <param name="versionrewrite-pattern">ibsim(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="revision">aa3c4458c48877e65f909bb1a9ac9c859d01efde</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*ibsim*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

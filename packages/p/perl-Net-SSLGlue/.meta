@@ -1,0 +1,17 @@
+<package name="perl-Net-SSLGlue" project="openSUSE:Factory">
+  <title>add/extend SSL support for common perl modules</title>
+  <description>Some commonly used perl modules don't have SSL support at all, even if the
+protocol supports it. Others have SSL support, but most of them don't do
+proper checking of the server's certificate.
+
+The 'Net::SSLGlue::*' modules try to add SSL support or proper certificate
+checking to these modules. Currently support for the following modules is
+available:
+
+* Net::SMTP - add SSL from beginning or using STARTTLS
+
+* Net::LDAP - add proper certificate checking
+
+* LWP - add proper certificate checking</description>
+  <devel project="devel:languages:perl" package="perl-Net-SSLGlue"/>
+</package>

@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Mon Mar  4 12:19:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.4:
+  * Support python3
+- Switch to singlespec
+- Run tests
+
+-------------------------------------------------------------------
+Mon Nov 14 14:02:43 UTC 2016 - dmueller@suse.com
+
+- update to 1.0.0:
+  * Added ability to pass names as unicode in Python 2.
+  * Added ability to pass names as bytes in Python 3.
+  * Made unit tests nicer by taking advantage of Python 2.7+
+
+-------------------------------------------------------------------
+Tue Feb 17 07:14:05 UTC 2015 - tbechtold@suse.com
+
+- update to 0.9.9:
+  * Added the ability to build on platforms that don't support the
+    POSIX Realtime Signals Extension.
+  * Added extensive unit tests.
+  * Minor documentation updates.
+
+-------------------------------------------------------------------
+Mon May 26 19:18:53 UTC 2014 - dmueller@suse.com
+
+- Initial package (0.9.8) 
+

@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dcda016acca373433e4575f6ce96bffc</srcmd5>
+    <version>5</version>
+    <time>1383143769</time>
+    <user>scarabeus_factory</user>
+    <comment>GPRename is a complete GTK2/perl batch renamer for files and directories.
+A patch became mentioned by name in the changes-file.</comment>
+    <requestid>204352</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>18f210b233c51bbbdd00f44e9fe7a590</srcmd5>
+    <version>5.0.20140325</version>
+    <time>1396291385</time>
+    <user>coolo</user>
+    <comment>- Updated to upstream 20140325:
+  * Modified: icon file location in gprename.desktop;
+  * Added: &quot;Permission denied&quot; and &quot;Path doesn't exist&quot;
+    error message.
+- Removed validate-desktopfile.patch as useless.
+- Added desktop_icon.patch to prevent 3 build time
+  and one run time error, see more at spec.
+- Added desktop_database_post(un) macros.
+
+PS Factory provides x64 build. Others are disabled in order to save atm work. (forwarded request 227615 from DarkSS)</comment>
+    <requestid>228249</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>18f210b233c51bbbdd00f44e9fe7a590</srcmd5>
+    <version>5.0.20140325</version>
+    <time>1409301090</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

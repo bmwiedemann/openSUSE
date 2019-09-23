@@ -1,0 +1,24 @@
+Index: VirtualBox-6.0.2/src/VBox/Frontends/VirtualBox/src/precomp_vcc.h
+===================================================================
+--- VirtualBox-6.0.2.orig/src/VBox/Frontends/VirtualBox/src/precomp_vcc.h
++++ VirtualBox-6.0.2/src/VBox/Frontends/VirtualBox/src/precomp_vcc.h
+@@ -83,6 +83,7 @@
+ #include <QtWidgets/qgraphicsitem.h>
+ #include <QtWidgets/qgraphicslayoutitem.h>
+ #include <QtWidgets/qgraphicswidget.h>
++#include <QtWidgets/qbuttongroup.h>
+ #include <QtCore/QMetaType>
+ #include <QtGui/qevent.h>
+ #include <QtGui/qtouchdevice.h>
+Index: VirtualBox-6.0.2/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsProxy.cpp
+===================================================================
+--- VirtualBox-6.0.2.orig/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsProxy.cpp
++++ VirtualBox-6.0.2/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsProxy.cpp
+@@ -18,6 +18,7 @@
+ /* Qt includes: */
+ #include <QButtonGroup>
+ #include <QRegExpValidator>
++#include <QButtonGroup>
+ 
+ /* GUI includes: */
+ #include "QIWidgetValidator.h"

@@ -1,0 +1,103 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c5d3878ffdcbab62651afb73b41cde92</srcmd5>
+    <version>1.6</version>
+    <time>1376858119</time>
+    <user>scarabeus_factory</user>
+    <comment>dependency of python-wheel
+</comment>
+    <requestid>186714</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c5d3878ffdcbab62651afb73b41cde92</srcmd5>
+    <version>1.6</version>
+    <time>1379664262</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>993ced2efa04e656cb5d62a85b2e7c83</srcmd5>
+    <version>1.7.0</version>
+    <time>1406793857</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242982</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>993ced2efa04e656cb5d62a85b2e7c83</srcmd5>
+    <version>1.7.0</version>
+    <time>1409302967</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a9af140d1c3bb7f12ccd852b2742882c</srcmd5>
+    <version>1.8.1</version>
+    <time>1431795708</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307473</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>57ac4ed5f89fcc00ad5fe70f3313693f</srcmd5>
+    <version>2.2.0</version>
+    <time>1446208992</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340454</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>def858ca6a4b81b7be5c268b4af7f1a5</srcmd5>
+    <version>2.4.0</version>
+    <time>1492714203</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>485021</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f208dae264f12538dd4873d3ce79662b</srcmd5>
+    <version>2.5.1</version>
+    <time>1507391231</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530442</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>07c1da26e83f071dfae1f51fdf2df687</srcmd5>
+    <version>2.6.0</version>
+    <time>1541666380</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.0
+- cleanup deps
+ * Dropped support for Python &amp;lt; 3.4, Pytest &amp;lt; 3.5 and Coverage &amp;lt; 4.4
+ * Fixed some documentation formatting.
+ * Added an example with addopts in documentation.
+ * Fixed TypeError: 'NoneType' object is not iterable in certain xdist configurations.
+ * Added a no_cover marker and fixture.
+ * Fixed broken no_cover check when running doctests.
+ * Fixed various issues with path normalization in reports
+    (when combining coverage data from parallel mode). 
+ * Report generation failures don't raise exceptions anymore.
+    A warning will be logged instead. (forwarded request 644865 from mimi_vx)</comment>
+    <requestid>644866</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>777cf764b3201ef172a9a1a9c82bb899</srcmd5>
+    <version>2.6.1</version>
+    <time>1551024393</time>
+    <user>coolo</user>
+    <comment>- Update to 2.6.1:
+  * Added support for Pytest 4.1. Contributed by Daniel Hahler and Семён Марьясин in #253 and #230.
+  * Various test and docs fixes. Contributed by Daniel Hahler in #224 and #223.
+  * Fixed the &quot;Module already imported&quot; issue (#211). Contributed by Daniel Hahler in #228.</comment>
+    <requestid>674557</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>38c14e778035e567422ed458bb751c4c</srcmd5>
+    <version>2.7.1</version>
+    <time>1560861794</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>705618</requestid>
+  </revision>
+</revisionlist>

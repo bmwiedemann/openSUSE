@@ -1,0 +1,5 @@
+<package name="ghc-byteable" project="openSUSE:Factory">
+  <title>Type class for sequence of bytes</title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-byteable"/>
+</package>

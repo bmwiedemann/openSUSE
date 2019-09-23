@@ -1,0 +1,86 @@
+From d4f65688290a2362af9a66ecb3ae93beb591fbf9 Mon Sep 17 00:00:00 2001
+From: Michal Vyskocil <mvyskocil@suse.cz>
+Date: Thu, 29 Sep 2011 09:19:01 +0200
+Subject: [PATCH] documentation for the locale keyword
+
+---
+ doc/groff.texi  |   28 +++++++++++++++++++++++++++-
+ man/groff_font.5.man |    8 +++++++-
+ 2 files changed, 34 insertions(+), 2 deletions(-)
+
+diff --git a/doc/groff.texi b/doc/groff.texi
+index 7b09e0f..1cff7b4 100644
+--- a/doc/groff.texi
++++ b/doc/groff.texi
+@@ -16530,7 +16530,7 @@ types @code{A0}-@code{A7}, @code{B0}-@code{B7}, @code{C0}-@code{C7},
+ significant for @var{string} if it holds predefined paper types.
+ Alternatively, @var{string} can be a file name (e.g.@:
+ @file{/etc/papersize}); if the file can be opened, @code{groff} reads
+-the first line and tests for the above paper sizes.  Finally,
++the first line and tests for the above paper sizes.  Or,
+ @var{string} can be a custom paper size in the format
+ @code{@var{length},@var{width}} (no spaces before and after the comma).
+ Both @var{length} and @var{width} must have a unit appended; valid
+@@ -16540,6 +16540,32 @@ which starts with a digit is always treated as a custom paper format.
+ @code{papersize} sets both the vertical and horizontal dimension of the
+ output medium.
+ 
++Finally, @var{string} can be a keyword @code{locale}. In this case groff will
++determine the default paper size from the country code of @code{LC_PAPER}. For
++most of combinations (including @code{LC_PAPER=C} or @code{POSIX}) a4 is used.
++In case of countries listed in Common Language Data Repository 2.0 of Unicode
++Consorcium - US (@code{US}), Canada (@code{CA}), Belize (@code{BZ}), Chile
++(@code{CL}), Colombia (@code{CO}), Costa Rica (@code{CR}), El Salvador
++(@code{SV}), Guatemala (@code{GT}), Panama (@code{PA}), Philippines
++(@code{PH}), Puerto Rico (@code{PR}), Mexico (@code{MX}), Nicaragua (@code{NI})
++and the Venezula (@code{VE}) size letter is used. The value of @code{LC_PAPER}
++is usually derived from @code{LANG} or @code{LC_ALL} and needs to be changed
++only if your main locale does not match the expected default paper size. Then
++you need to put the correct LC_PAPER variable into your environment.
++
++@example
++@group
++# the locale keyword is in devpts
++shell> grep papersize /usr/share/groff/current/font/devps/DESC
++papersize locale
++# default locale is US producing a letter papersize
++shell> locale | grep LC_PAPER
++LC_PAPER="en_US.UTF-8"
++# let's use a4 (German default) in this case
++shell> LC_PAPER=de_DE.UTF-8 groff -Tps ...
++@end group
++@end example
++
+ More than one argument can be specified; @code{groff} scans from left to
+ right and uses the first valid paper specification.
+ 
+diff --git a/man/groff_font.5.man b/man/groff_font.5.man
+index 64bd212..29a7136 100644
+--- a/man/groff_font.5.man
++++ b/man/groff_font.5.man
+@@ -150,7 +150,7 @@ can be a file name (e.g.\& `/etc/papersize'); if the file can be opened,
+ .B groff
+ reads the first line and tests for the above paper sizes.
+ .
+-Finally,
++or,
+ .I string
+ can be a custom paper size in the format
+ .IB length , width
+@@ -172,7 +172,13 @@ format.
+ .B papersize
+ sets both the vertical and horizontal dimension of the output medium.
+ .
++Finally
++.I string
++can be a keyword locale, so
++.B groff
++will determine the papersize from system locale (LC_PAPER).
+ .IP
++.
+ More than one argument can be specified;
+ .B groff
+ scans from left to right and uses the first valid paper specification.
+-- 
+1.7.6.3
+

@@ -1,0 +1,10 @@
+--- clamtk.orig	2014-01-03 10:41:58.694487416 +0100
++++ clamtk	2014-01-03 10:42:15.532498868 +0100
+@@ -19,6 +19,7 @@
+ use utf8;
+ $| = 1;
+ 
++use lib qw(/usr/lib);
+ use ClamTk::Analysis;
+ use ClamTk::App;
+ use ClamTk::Assistant;

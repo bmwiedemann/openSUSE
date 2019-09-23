@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Tue Jun  4 09:45:39 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Remove unneccesary %python_expand prefix from %fdupes call
+
+-------------------------------------------------------------------
+Tue Apr 16 14:59:43 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 0.4.1
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Bump minimum version for Python Azure SDK namespace
+  packages to 3.0.0 in BuildRequires and Requires
+- Refresh patches for new version
+  + aci_drop-compatible-releases-operator.patch
+- Remove python3-devel package from BuildRequires
+- Remove unzip package from BuildRequires
+- Run fdupes to hardlink duplicate files
+  + Add fdupes to BuildRequires
+  + Add %fdupes invocation to %install
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Mon Sep 17 11:03:03 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 0.3.28
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Add patch to drop compatible releases operator from setup.py,
+  required for SLES12 as the setuptools version is too old
+  + aci_drop-compatible-releases-operator.patch
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Wed Apr 18 13:50:04 UTC 2018 - adrian.glaubitz@suse.com
+
+- New upstream release
+  + Version 0.3.19
+- Move LICENSE.txt from %doc to %license section
+- Remove %{python3_sitelib}/azclishell from %files as it
+  has been moved to %{python3_sitelib}/interactive/
+
+-------------------------------------------------------------------
+Thu Feb  8 12:14:50 UTC 2018 - adrian.glaubitz@suse.com
+
+- New upstream release
+  + Version 0.3.15
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Install HISTORY.rst into doc directory
+
+-------------------------------------------------------------------
+Mon Sep 25 14:36:24 UTC 2017 - adrian.glaubitz@suse.com
+
+- Initial build
+  + Version 0.3.10

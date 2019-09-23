@@ -1,0 +1,123 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e4c979a5ffcb49862c1166ba4cf12ae8</srcmd5>
+    <version>6.9.1</version>
+    <time>1336471358</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115432</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e4c979a5ffcb49862c1166ba4cf12ae8</srcmd5>
+    <version>6.9.1</version>
+    <time>1340184348</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0d4704af70277b5bdb4dac2801412594</srcmd5>
+    <version>6.9.3</version>
+    <time>1348380611</time>
+    <user>coolo</user>
+    <comment>- U_mach64-fix-build-on-32-bit.patch 
+  * fix build on 32-bit. tvout code only builds on 32-bit.
+
+- Update to version 6.9.3
+  * fix build against server without XAA</comment>
+    <requestid>134893</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b2deeb55c8f0db6c3e134a01e13de92e</srcmd5>
+    <version>6.9.4</version>
+    <time>1356731455</time>
+    <user>namtrac</user>
+    <comment>Update (forwarded request 146288 from Zaitor)</comment>
+    <requestid>146565</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>b2deeb55c8f0db6c3e134a01e13de92e</srcmd5>
+    <version>6.9.4</version>
+    <time>1359110612</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>8754991ed449263884034f984b8b0e88</srcmd5>
+    <version>6.9.4</version>
+    <time>1363856086</time>
+    <user>coolo</user>
+    <comment>- introduce hardware supplements conditional on xorg-x11-server
+  package (bnc#810333)</comment>
+    <requestid>160264</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>c1254cc001ec9b421570c10ec23a3916</srcmd5>
+    <version>6.9.4</version>
+    <time>1377248971</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195909</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>c1254cc001ec9b421570c10ec23a3916</srcmd5>
+    <version>6.9.4</version>
+    <time>1379665025</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>062d4472dfb7b881036bff6c924d73f2</srcmd5>
+    <version>6.9.4</version>
+    <time>1393568743</time>
+    <user>coolo</user>
+    <comment>- U_Deal-with-pPict-pDrawable-NULL-for-source-only-pictures.patch
+  * Deal with pPict-&gt;pDrawable == NULL for source-only pictures.
+    Falling back to software rendering for such source pictures (solid/gradient).
+Fixes a crash in the mach64 driver (bnc#865607)
+ (forwarded request 223852 from wolfi323)</comment>
+    <requestid>224084</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>062d4472dfb7b881036bff6c924d73f2</srcmd5>
+    <version>6.9.4</version>
+    <time>1409303708</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>2b8fcb1b71fdc3cf96aed2d267f90610</srcmd5>
+    <version>6.9.4</version>
+    <time>1423595786</time>
+    <user>dimstar_suse</user>
+    <comment>- U_mach64-fix-build-probably-not-required-with-pci-acce.patch
+  * fixes build against xorg-server 1.17</comment>
+    <requestid>284466</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6c13bf62c0b31778aae73e042c7fd2ef</srcmd5>
+    <version>6.9.5</version>
+    <time>1430891352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.9.5
+  * preinit: Don't bother explicitly loading int10, vbe will do it for us
+  * Bump minimum xserver to 1.4
+  * Remove unused atidecoder.c &amp; atidecoder.h
+  * Remove unused atiaudio.c &amp; ATIAudioNames declaration
+  * Drop dependence on xf86PciInfo.h
+  * mach64: fix build probably not required with pci access anyways
+  * Deal with pPict-&gt;pDrawable == NULL for source-only pictures.
+- deprecates 
+  * U_Deal-with-pPict-pDrawable-NULL-for-source-only-pictures.patch
+  * U_mach64-fix-build-probably-not-required-with-pci-acce.patch</comment>
+    <requestid>305390</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c2085295a1dcb9195d42b1ac42cc0716</srcmd5>
+    <version>6.9.6</version>
+    <time>1527582782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.9.6
+  * A boring release, fixing source compatibility with xserver 1.20.</comment>
+    <requestid>610634</requestid>
+  </revision>
+</revisionlist>

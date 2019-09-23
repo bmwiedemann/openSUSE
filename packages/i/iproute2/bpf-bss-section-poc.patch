@@ -1,0 +1,113 @@
+From 8f256b14edf9fdba3e0c688b76a4124d8627cde1 Mon Sep 17 00:00:00 2001
+From: Joe Stringer <joe@wand.net.nz>
+Date: Thu, 24 Jan 2019 20:55:39 -0800
+Subject: [PATCH iproute2-next 2/2] bpf: bss section poc
+To: Stephen Hemminger <stephen@networkplumber.org>
+Cc: netdev@vger.kernel.org, daniel@iogearbox.net
+
+The .bss section denotes uninitialized data, which is for instance what
+clang will generate if a static variable is set to zero by default.
+Teach the bpf library about .bss so that such variables can be properly
+initialized.
+
+Signed-off-by: Joe Stringer <joe@wand.net.nz>
+---
+ lib/bpf.c | 37 +++++++++++++++++++++++++++++++++++--
+ 1 file changed, 35 insertions(+), 2 deletions(-)
+
+diff --git a/lib/bpf.c b/lib/bpf.c
+index eb208275ebaa..69eaa5ee732d 100644
+--- a/lib/bpf.c
++++ b/lib/bpf.c
+@@ -1159,6 +1159,7 @@ struct bpf_elf_ctx {
+ 	int			sec_text;
+ 	int			sec_btf;
+ 	int			sec_data;
++	int			sec_bss;
+ 	char			license[ELF_MAX_LICENSE_LEN];
+ 	enum bpf_prog_type	type;
+ 	__u32			ifindex;
+@@ -2048,6 +2049,14 @@ static int bpf_fetch_data(struct bpf_elf_ctx *ctx, int section,
+ 	return 0;
+ }
+ 
++static int bpf_fetch_bss(struct bpf_elf_ctx *ctx, int section,
++			  struct bpf_elf_sec_data *data)
++{
++	ctx->sec_bss = section;
++	ctx->sec_done[section] = true;
++	return 0;
++}
++
+ static void bpf_btf_report(int fd, struct bpf_elf_ctx *ctx)
+ {
+ 	fprintf(stderr, "\nBTF debug data section \'.BTF\' %s%s (%d)!\n",
+@@ -2262,6 +2271,11 @@ static bool bpf_has_glob_data(const struct bpf_elf_ctx *ctx)
+ 	return ctx->sec_data;
+ }
+ 
++static bool bpf_has_bss_data(const struct bpf_elf_ctx *ctx)
++{
++	return ctx->sec_bss;
++}
++
+ static int bpf_fetch_ancillary(struct bpf_elf_ctx *ctx, bool check_text_sec)
+ {
+ 	struct bpf_elf_sec_data data;
+@@ -2286,6 +2300,9 @@ static int bpf_fetch_ancillary(struct bpf_elf_ctx *ctx, bool check_text_sec)
+ 		else if (data.sec_hdr.sh_type == SHT_PROGBITS &&
+ 			 !strcmp(data.sec_name, ".data"))
+ 			ret = bpf_fetch_data(ctx, i, &data);
++		else if (data.sec_hdr.sh_type == SHT_NOBITS &&
++			 !strcmp(data.sec_name, ".bss"))
++			ret = bpf_fetch_bss(ctx, i, &data);
+ 		else if (data.sec_hdr.sh_type == SHT_SYMTAB &&
+ 			 !strcmp(data.sec_name, ".symtab"))
+ 			ret = bpf_fetch_symtab(ctx, i, &data);
+@@ -2414,6 +2431,19 @@ static int bpf_apply_relo_glob(struct bpf_elf_ctx *ctx, struct bpf_elf_prog *pro
+ 	return 0;
+ }
+ 
++static int bpf_apply_relo_bss(struct bpf_elf_ctx *ctx, struct bpf_elf_prog *prog,
++			      GElf_Rel *relo, GElf_Sym *sym,
++			      struct bpf_relo_props *props)
++{
++	unsigned int insn_off = relo->r_offset / sizeof(struct bpf_insn);
++
++	if (insn_off >= prog->insns_num)
++		return -EINVAL;
++
++	prog->insns[insn_off].imm = 0;
++	return 0;
++}
++
+ static int bpf_apply_relo_call(struct bpf_elf_ctx *ctx, struct bpf_elf_prog *prog,
+ 			       GElf_Rel *relo, GElf_Sym *sym,
+ 			       struct bpf_relo_props *props)
+@@ -2470,10 +2500,12 @@ static int bpf_apply_relo_data(struct bpf_elf_ctx *ctx,
+ 			ret = bpf_apply_relo_map(ctx, prog, &relo, &sym, props);
+ 		else if (sym.st_shndx == ctx->sec_data)
+ 			ret = bpf_apply_relo_glob(ctx, prog, &relo, &sym, props);
++		else if (sym.st_shndx == ctx->sec_bss)
++			ret = bpf_apply_relo_bss(ctx, prog, &relo, &sym, props);
+ 		else if (sym.st_shndx == ctx->sec_text)
+ 			ret = bpf_apply_relo_call(ctx, prog, &relo, &sym, props);
+ 		else
+-			fprintf(stderr, "ELF contains non-{map,data,call} related relo data in entry %u pointing to section %u! Compiler bug?!\n",
++			fprintf(stderr, "ELF contains non-{bss,call,data,map} related relo data in entry %u pointing to section %u! Compiler bug?!\n",
+ 				relo_ent, sym.st_shndx);
+ 		if (ret < 0)
+ 			return ret;
+@@ -2569,7 +2601,8 @@ static int bpf_fetch_prog_sec(struct bpf_elf_ctx *ctx, const char *section)
+ 			return ret;
+ 	}
+ 
+-	if (bpf_has_map_data(ctx) || bpf_has_call_data(ctx) || bpf_has_glob_data(ctx))
++	if (bpf_has_map_data(ctx) || bpf_has_call_data(ctx) ||
++	    bpf_has_glob_data(ctx) || bpf_has_bss_data(ctx))
+ 		ret = bpf_fetch_prog_relo(ctx, section, &lderr, &sseen, &prog);
+ 	if (ret < 0 && !lderr)
+ 		ret = bpf_fetch_prog(ctx, section, &sseen);
+-- 
+2.19.1
+

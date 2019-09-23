@@ -1,0 +1,9 @@
+<package name="perl-WWW-Pastebin-PastebinCom-Create" project="openSUSE:Factory">
+  <title>Paste to pastebin.com from Perl</title>
+  <description>The module provides means of pasting large texts into the
+http://pastebin.com pastebin site.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-WWW-Pastebin-PastebinCom-Create"/>
+  <url>http://search.cpan.org/dist/WWW-Pastebin-PastebinCom-Create</url>
+</package>

@@ -1,0 +1,258 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42619d3df85dcfb9e4fecdb50a0e440a</srcmd5>
+    <version>11.0.0.0~0</version>
+    <time>1517323499</time>
+    <user>dimstar_suse</user>
+    <comment>java-11-openjdk very very very early technology preview</comment>
+    <requestid>570884</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>287e13307d38f86023d0416cb391f180</srcmd5>
+    <version>11.0.0.0~1</version>
+    <time>1519145788</time>
+    <user>dimstar_suse</user>
+    <comment>jdk-11+1</comment>
+    <requestid>578271</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9e99aa5d52d368b37fd2ba8e2f788e34</srcmd5>
+    <version>11.0.0.0~2</version>
+    <time>1519683971</time>
+    <user>dimstar_suse</user>
+    <comment>jdk-11+2</comment>
+    <requestid>580074</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0622faaef52006fa9a43b594e29b5106</srcmd5>
+    <version>11.0.0.0~3</version>
+    <time>1520021584</time>
+    <user>dimstar_suse</user>
+    <comment>jdk-11+3</comment>
+    <requestid>581959</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c888d1c8a832328a62f96aa481b63022</srcmd5>
+    <version>11.0.0.0~4</version>
+    <time>1521052801</time>
+    <user>dimstar_suse</user>
+    <comment>jdk-11+4</comment>
+    <requestid>586388</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>29f4f6f9ace59c30a262202efdda1c9c</srcmd5>
+    <version>11.0.0.0~6</version>
+    <time>1522062620</time>
+    <user>dimstar_suse</user>
+    <comment>jdk-11+6</comment>
+    <requestid>590761</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4af10d79dc9614794cff1be42bd03901</srcmd5>
+    <version>11.0.0.0~7</version>
+    <time>1522832898</time>
+    <user>dimstar_suse</user>
+    <comment>jdk-11+7</comment>
+    <requestid>593265</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>04fb854103e3b787b3d030c492008400</srcmd5>
+    <version>11.0.0.0~8</version>
+    <time>1523029821</time>
+    <user>dimstar_suse</user>
+    <comment>jdk-11+8</comment>
+    <requestid>593968</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4afad5108e219b26b750f9a800ec45a6</srcmd5>
+    <version>11.0.0.0~10</version>
+    <time>1524400859</time>
+    <user>dimstar_suse</user>
+    <comment>jdk-11+10, April 2018 CPU</comment>
+    <requestid>599530</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9bf82b5abccae331a8485073167b507f</srcmd5>
+    <version>11.0.0.0~11</version>
+    <time>1525121673</time>
+    <user>dimstar_suse</user>
+    <comment>jdk-11+11</comment>
+    <requestid>602078</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>be3874dfe0c1d9577f59fe047158c77a</srcmd5>
+    <version>11.0.0.0~12</version>
+    <time>1525960124</time>
+    <user>dimstar_suse</user>
+    <comment>jdk-11+12</comment>
+    <requestid>605300</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8a0388e94e93873259c811851a613590</srcmd5>
+    <version>11.0.0.0~13</version>
+    <time>1526220382</time>
+    <user>dimstar_suse</user>
+    <comment>jdk-11+13</comment>
+    <requestid>606617</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>99d115297a4442d61c529b95c48993e7</srcmd5>
+    <version>11.0.0.0~13</version>
+    <time>1526372109</time>
+    <user>dimstar_suse</user>
+    <comment>fix s390x</comment>
+    <requestid>606919</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ea9625cc02d4a6fa3652a80482435ab3</srcmd5>
+    <version>11.0.0.0~15</version>
+    <time>1527583483</time>
+    <user>dimstar_suse</user>
+    <comment>jdk-11+15</comment>
+    <requestid>612288</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6395bcd02d15380b950e3dce94a3b067</srcmd5>
+    <version>11.0.0.0~16</version>
+    <time>1527934483</time>
+    <user>dimstar_suse</user>
+    <comment>jdk-11+16</comment>
+    <requestid>613488</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2574c3234c131a16897b75d60a54fd27</srcmd5>
+    <version>11.0.0.0~19</version>
+    <time>1529919583</time>
+    <user>dimstar_suse</user>
+    <comment>jdk-11+19</comment>
+    <requestid>618467</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1a62d10386d4be5bfac7c7b2aaca325d</srcmd5>
+    <version>11.0.0.0~20</version>
+    <time>1530653682</time>
+    <user>dimstar_suse</user>
+    <comment>Rampdown 1 phase</comment>
+    <requestid>620393</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>57e2b672882a56ebb13ff3adfc947f98</srcmd5>
+    <version>11.0.0.0~24</version>
+    <time>1532774568</time>
+    <user>dimstar_suse</user>
+    <comment>Oracle July 2018 CPU</comment>
+    <requestid>625467</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>36c4ee52b0cc6c3827685bd26ca67548</srcmd5>
+    <version>11.0.0.0~27</version>
+    <time>1534774899</time>
+    <user>dimstar_suse</user>
+    <comment>jdk-11+27</comment>
+    <requestid>630458</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5ee28767c17c690b621e8fcdbd41215c</srcmd5>
+    <version>11.0.0.0~28</version>
+    <time>1535123576</time>
+    <user>dimstar_suse</user>
+    <comment>jdk-11+28 (OpenJDK 11 rc1)</comment>
+    <requestid>631232</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>b259f5f0efdbcc95924ba4b4f89d59c2</srcmd5>
+    <version>11.0.0.0~28</version>
+    <time>1536679223</time>
+    <user>maxlin_factory</user>
+    <comment>Update some of the javaee modules</comment>
+    <requestid>634877</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>6d2899036020ff4cc9235f39e0c61ed8</srcmd5>
+    <version>11.0.0.0~28</version>
+    <time>1536833480</time>
+    <user>maxlin_factory</user>
+    <comment>ZGC for java 11</comment>
+    <requestid>635213</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>dbf29b1751a473b02ffaa7e91ce2e606</srcmd5>
+    <version>11.0.0.0</version>
+    <time>1538502271</time>
+    <user>dimstar_suse</user>
+    <comment>Official Java 11 release</comment>
+    <requestid>638287</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>6dd86c207c5cf963a019a2540a5f7770</srcmd5>
+    <version>11.0.0.0</version>
+    <time>1539250864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639801</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>32cea732bfc23af5f674d00ed5e0a806</srcmd5>
+    <version>11.0.1.0</version>
+    <time>1540319696</time>
+    <user>dimstar_suse</user>
+    <comment>Oracle October 2018 CPU</comment>
+    <requestid>642598</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>a3ed17c285a36f8f5335363e1cd80f25</srcmd5>
+    <version>11.0.1.0</version>
+    <time>1541509412</time>
+    <user>dimstar_suse</user>
+    <comment>Fix incomplete merging back of javaee modules</comment>
+    <requestid>644168</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>664cce612de92a1112de82e90a8ecd85</srcmd5>
+    <version>11.0.1.0</version>
+    <time>1547540056</time>
+    <user>dimstar_suse</user>
+    <comment>Don't resolve the added JavaEE module by default</comment>
+    <requestid>664417</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>92f99a1f5cfeb939fc7aa16147733607</srcmd5>
+    <version>11.0.2.0</version>
+    <time>1548537480</time>
+    <user>dimstar_suse</user>
+    <comment>Oracle January 2019 CPU</comment>
+    <requestid>666670</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>62551f9e512cef29258647f83f0bff9e</srcmd5>
+    <version>11.0.3.0</version>
+    <time>1555691716</time>
+    <user>dimstar_suse</user>
+    <comment>April 2019 CPU</comment>
+    <requestid>695034</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>0804743788709efbaf56f843ffbeac01</srcmd5>
+    <version>11.0.3.0</version>
+    <time>1556817259</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1131378</comment>
+    <requestid>699400</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>229615fb2d9d7c6e52435445af6a131c</srcmd5>
+    <version>11.0.3.0</version>
+    <time>1562590842</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1140461 and bsc#1115375</comment>
+    <requestid>713602</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ba76d074d7c1ab1412f2fcaf467877a2</srcmd5>
+    <version>11.0.4.0</version>
+    <time>1564136642</time>
+    <user>dimstar_suse</user>
+    <comment>July 2019 CPU</comment>
+    <requestid>716026</requestid>
+  </revision>
+</revisionlist>

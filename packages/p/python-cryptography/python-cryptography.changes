@@ -1,0 +1,811 @@
+-------------------------------------------------------------------
+Mon Jun  3 13:45:56 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.7
+ * BACKWARDS INCOMPATIBLE: Removed the cryptography.hazmat.primitives.mac.MACContext interface.
+   The CMAC and HMAC APIs have not changed, but they are no longer registered
+   as MACContext instances.
+ * Removed support for running our tests with setup.py test.
+ * Add support for :class:`~cryptography.hazmat.primitives.poly1305.Poly1305`
+   when using OpenSSL 1.1.1 or newer.
+ * Support serialization with Encoding.OpenSSH and PublicFormat.OpenSSH
+   in :meth:`Ed25519PublicKey.public_bytes <cryptography.hazmat.primitives.asymmetric.ed25519.Ed25519PublicKey.public_bytes>` .
+ * Correctly allow passing a SubjectKeyIdentifier to :meth:`~cryptography.x509.AuthorityKeyIdentifier.from_issuer_subject_key_identifier`
+   and deprecate passing an Extension object.
+
+-------------------------------------------------------------------
+Wed May 29 14:41:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Simplify the test execution to be more understandable
+
+-------------------------------------------------------------------
+Thu Feb 28 19:50:33 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.6.1:
+  * BACKWARDS INCOMPATIBLE: 
+    Removedcryptography.hazmat.primitives.asymmetric.utils.encode_rfc6979_signature 
+    andcryptography.hazmat.primitives.asymmetric.utils.decode_rfc6979_signature, 
+    which had been deprecated for nearly 4 years. Use encode_dss_signature() 
+    and decode_dss_signature()instead.
+  * BACKWARDS INCOMPATIBLE: Removed cryptography.x509.Certificate.serial, which 
+    had been deprecated for nearly 3 years. Use serial_number instead.
+  * Updated Windows, macOS, and manylinux1 wheels to be compiled with
+    OpenSSL 1.1.1b.
+  * Added support for Ed448 signing when using OpenSSL 1.1.1b or newer.
+  * Added support for Ed25519 signing when using OpenSSL 1.1.1b or newer.
+  * load_ssh_public_key() can now load ed25519 public keys.
+  * Add support for easily mapping an object identifier to its elliptic curve 
+    class viaget_curve_for_oid().
+  * Add support for OpenSSL when compiled with the no-engine 
+    (OPENSSL_NO_ENGINE) flag.
+
+-------------------------------------------------------------------
+Fri Jan 25 08:25:35 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Dependency on python-idna changed to "Recommends" aligned with
+  change in upstream source (see below)
+- update to 2.5:
+  * BACKWARDS INCOMPATIBLE: U-label strings were deprecated in version 2.1, 
+    but this version removes the default idna dependency as well. If you still 
+    need this deprecated path please install cryptography with the idna extra: 
+    pip install cryptography[idna].
+  * BACKWARDS INCOMPATIBLE: The minimum supported PyPy version is now 5.4.
+  * Numerous classes and functions have been updated to allow bytes-like 
+    types for keying material and passwords, including symmetric algorithms, 
+    AEAD ciphers, KDFs, loading asymmetric keys, and one time password classes.
+  * Updated Windows, macOS, and manylinux1 wheels to be compiled with OpenSSL 1.1.1a.
+  * Added support for SHA512_224 and SHA512_256 when using OpenSSL 1.1.1.
+  * Added support for SHA3_224, SHA3_256, SHA3_384, and SHA3_512 when using OpenSSL 1.1.1.
+  * Added support for X448 key exchange when using OpenSSL 1.1.1.
+  * Added support for SHAKE128 and SHAKE256 when using OpenSSL 1.1.1.
+  * Added initial support for parsing PKCS12 files with load_key_and_certificates().
+  * Added support for IssuingDistributionPoint.
+  * Added rfc4514_string() method to x509.Name, 
+    x509.RelativeDistinguishedName, and x509.NameAttribute to format the name 
+    or component an RFC 4514 Distinguished Name string.
+  * Added from_encoded_point(), which immediately checks if the point is on 
+    the curve and supports compressed points. Deprecated the previous method 
+    from_encoded_point().
+  * Added signature_hash_algorithm to OCSPResponse.
+  * Updated X25519 key exchange support to allow additional serialization 
+    methods. Calling public_bytes() with no arguments has been deprecated.
+  * Added support for encoding compressed and uncompressed points via 
+    public_bytes(). Deprecated the previous method encode_point().
+
+-------------------------------------------------------------------
+Thu Jan  3 11:40:58 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.4.2:
+  * Updated Windows, macOS, and manylinux1 wheels to be compiled
+    with OpenSSL 1.1.0j.
+
+-------------------------------------------------------------------
+Thu Dec  6 13:13:21 CET 2018 - mcepl@suse.com
+
+- Update to 2.4.1:
+    * Dropped support for LibreSSL 2.4.x.
+    * Deprecated OpenSSL 1.0.1 support. OpenSSL 1.0.1 is no
+      longer supported by the OpenSSL project. At this time there
+      is no time table for dropping support, however we strongly
+      encourage all users to upgrade or install cryptography from
+      a wheel.
+    * Added initial :doc:`OCSP </x509/ocsp>` support.
+    * Added support for cryptography.x509.PrecertPoison.
+
+-------------------------------------------------------------------
+Thu Dec  6 11:48:31 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+
+-------------------------------------------------------------------
+Tue Aug 21 07:43:31 UTC 2018 - tchvatal@suse.com
+
+- Update to 2.3.1:
+  * updated tests for upstream wycheproof changes
+  * many other tiny test tweaks
+
+-------------------------------------------------------------------
+Wed Jul 18 13:20:58 UTC 2018 - michael@stroeder.com
+
+- update to 2.3:
+  * SECURITY ISSUE: finalize_with_tag() allowed tag truncation by default 
+    which can allow tag forgery in some cases. The method now enforces the 
+    min_tag_length provided to the GCM constructor.
+  * Added support for Python 3.7.
+  * Added extract_timestamp() to get the authenticated timestamp of a Fernet token.
+  * Support for Python 2.7.x without hmac.compare_digest has been deprecated. 
+    We will require Python 2.7.7 or higher (or 2.7.6 on Ubuntu) in the next 
+    cryptography release.
+  * Fixed multiple issues preventing cryptography from compiling
+    against LibreSSL 2.7.x.
+  * Added get_revoked_certificate_by_serial_number for quick
+    serial number searches in CRLs.
+  * The RelativeDistinguishedName class now preserves the order of attributes.
+    Duplicate attributes now raise an error instead of silently discarding duplicates.
+  * aes_key_unwrap() and aes_key_unwrap_with_padding() now raise InvalidUnwrap
+    if the wrapped key is an invalid length, instead of ValueError.
+
+-------------------------------------------------------------------
+Tue Jun 12 07:24:12 UTC 2018 - mimi.vx@gmail.com
+
+- update to 2.2.2
+  * fix build on some systems with openssl 1.1.0h
+
+-------------------------------------------------------------------
+Mon Mar 26 07:44:53 UTC 2018 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Use %setup to unpack all archives do not rely on tar calls
+
+-------------------------------------------------------------------
+Sun Mar 25 20:39:43 UTC 2018 - michael@stroeder.com
+
+- Update to upstream release 2.2.1:
+  * Reverted a change to GeneralNames which prohibited having zero elements,
+    due to breakages.
+  * Fixed a bug in
+    :func:`~cryptography.hazmat.primitives.keywrap.aes_key_unwrap_with_padding`
+    that caused it to raise InvalidUnwrap when key length modulo 8 was zero.
+  * BACKWARDS INCOMPATIBLE: Support for Python 2.6 has been dropped.
+  * Resolved a bug in HKDF that incorrectly constrained output size.
+  * Added
+    :class:`~cryptography.hazmat.primitives.asymmetric.ec.BrainpoolP256R1`,
+    :class:`~cryptography.hazmat.primitives.asymmetric.ec.BrainpoolP384R1`, and
+    :class:`~cryptography.hazmat.primitives.asymmetric.ec.BrainpoolP512R1` to
+    support inter-operating with systems like German smart meters.
+  * Added token rotation support to :doc:`Fernet </fernet>` with
+    :meth:`~cryptography.fernet.MultiFernet.rotate`.
+  * Fixed a memory leak in
+    :func:`~cryptography.hazmat.primitives.asymmetric.ec.derive_private_key`.
+  * Added support for AES key wrapping with padding via
+    :func:`~cryptography.hazmat.primitives.keywrap.aes_key_wrap_with_padding` and
+    :func:`~cryptography.hazmat.primitives.keywrap.aes_key_unwrap_with_padding` .
+* Allow loading DSA keys with 224 bit q.
+
+-------------------------------------------------------------------
+Fri Mar  2 16:44:33 UTC 2018 - chris@computersalat.de
+
+- fix deps for hypothesis, pytest
+
+-------------------------------------------------------------------
+Thu Feb  8 10:54:03 UTC 2018 - tbechtold@suse.com
+
+- Fix previous change and explicitly require python2 instead of
+  python because python itself is also provided by python3.
+  This fixes:
+  ImportError: No module named _ssl
+  when using python-cryptography in a python2 build environment
+
+-------------------------------------------------------------------
+Sat Feb  3 13:02:06 UTC 2018 - tchvatal@suse.com
+
+- Fix the previous change to not pull in py2 on py3 enviroment
+
+-------------------------------------------------------------------
+Sat Jan 27 11:25:02 UTC 2018 - dmueller@suse.com
+
+- fix requires on python ssl once more after the last change
+
+-------------------------------------------------------------------
+Thu Jan 18 13:30:12 UTC 2018 - tchvatal@suse.com
+
+- Add proper conditional for the python2, the ifpython works only
+  for the requires/etc
+
+-------------------------------------------------------------------
+Tue Jan 16 10:14:37 UTC 2018 - dmueller@suse.com
+
+- add missing dependency on python ssl
+
+-------------------------------------------------------------------
+Fri Dec  8 18:04:13 UTC 2017 - arun@gmx.de
+
+- update to version 2.1.4:
+  * Added X509_up_ref for an upcoming pyOpenSSL release.
+
+-------------------------------------------------------------------
+Thu Nov  9 06:06:39 UTC 2017 - arun@gmx.de
+
+- update to version 2.1.3:
+  * Updated Windows, macOS, and manylinux1 wheels to be compiled with
+    OpenSSL 1.1.0g.
+
+-------------------------------------------------------------------
+Fri Nov  3 15:47:03 UTC 2017 - arun@gmx.de
+
+- update to version 2.1.2:
+  * Corrected a bug with the manylinux1 wheels where OpenSSL’s stack
+    was marked executable.
+
+-------------------------------------------------------------------
+Thu Nov  2 08:41:18 UTC 2017 - mimi.vx@gmail.com
+
+- fix BuildRequires conditions for python3
+
+-------------------------------------------------------------------
+Thu Oct 12 07:41:48 UTC 2017 - michael@stroeder.com
+
+- update to 2.1.1
+
+-------------------------------------------------------------------
+Thu Sep 28 14:50:51 UTC 2017 - sean.marlow@suse.com
+
+- Fix cffi version requirement.
+
+-------------------------------------------------------------------
+Thu Sep  7 11:18:35 UTC 2017 - vcizek@suse.com
+
+- Disable memleak tests to fix build with OpenSSL 1.1 (bsc#1055478)
+  * add skip_openssl_memleak_test.patch
+
+-------------------------------------------------------------------
+Thu Aug  3 23:14:49 UTC 2017 - michael@stroeder.com
+
+- update to 2.0.3
+
+-------------------------------------------------------------------
+Thu Jul 27 10:49:07 UTC 2017 - michael@stroeder.com
+
+- update to 2.0.2
+
+-------------------------------------------------------------------
+Mon Jul 17 17:08:59 UTC 2017 - michael@stroeder.com
+
+- update to 2.0
+
+-------------------------------------------------------------------
+Wed May 31 11:36:35 UTC 2017 - michael@stroeder.com
+
+- update to 1.9
+
+-------------------------------------------------------------------
+Tue May  2 12:58:37 UTC 2017 - jmatejek@suse.com
+
+- add python-packaging to requirements explicitly instead of relying
+  on setuptools to pull it in
+
+-------------------------------------------------------------------
+Mon Mar 20 20:34:03 UTC 2017 - tbechtold@suse.com
+
+- Switch to singlespec approach
+
+-------------------------------------------------------------------
+Thu Mar 16 14:13:56 UTC 2017 - tbechtold@suse.com
+
+- update to 1.8.1
+- Adust Requires and BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan 29 14:57:28 UTC 2017 - michael@stroeder.com
+
+- update to 1.7.2
+
+-------------------------------------------------------------------
+Wed Dec 14 20:31:53 UTC 2016 - michael@stroeder.com
+
+- update to 1.7.1 which contains regression fix for 1.7
+
+-------------------------------------------------------------------
+Tue Dec 13 12:21:24 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.7
+* support for OpenSSL 1.0.0 has been removed.
+* Added support for Diffie-Hellman key exchange
+* The OS random engine for OpenSSL has been rewritten
+
+-------------------------------------------------------------------
+Wed Nov 23 09:40:23 UTC 2016 - michael@stroeder.com
+
+- update to 1.6
+
+-------------------------------------------------------------------
+Fri Nov 11 19:13:36 UTC 2016 - michael@stroeder.com
+
+- update to 1.5.3
+- python-cryptography-enable-gost.patch is obsolete
+
+-------------------------------------------------------------------
+Mon Sep 26 06:26:21 UTC 2016 - meissner@suse.com
+
+- python-cryptography-enable-gost.patch: temporary patch
+  to run tests against 1.0.2i, GOST cert extraction now works.
+
+-------------------------------------------------------------------
+Sun Jul 17 15:07:04 UTC 2016 - matwey.kornilov@gmail.com
+
+- Introduce requirement setuptools >= 11.3
+  to follow egg-info/requires.txt content
+
+-------------------------------------------------------------------
+Mon Jun  6 13:03:35 UTC 2016 - dmueller@suse.com
+
+- fix download urls
+
+-------------------------------------------------------------------
+Fri Jun  3 19:37:40 UTC 2016 - michael@stroeder.com
+
+- update to upstream release 1.3.4
+  * Added new OpenSSL functions to the bindings to support an upcoming
+    ``pyOpenSSL`` release.
+
+-------------------------------------------------------------------
+Fri May  6 07:43:10 UTC 2016 - dmueller@suse.com
+
+- correct source urls
+
+-------------------------------------------------------------------
+Thu May  5 17:08:06 UTC 2016 - michael@stroeder.com
+
+- update to upstream release 1.3.2
+  * Updated Windows and OS X wheels to be compiled against OpenSSL 1.0.2h.
+  * Fixed an issue preventing ``cryptography`` from compiling against
+    LibreSSL 2.3.x.
+
+-------------------------------------------------------------------
+Fri Mar 18 14:39:05 UTC 2016 - michael@stroeder.com
+
+- removed obsolete cryptography-new-bio-new-type.patch
+- update to upstream release 1.3.1
+  * Fixed a bug that caused an AttributeError when using mock to patch
+    some cryptography modules.
+  * Added support for padding ANSI X.923 with ANSIX923.
+  * Deprecated support for OpenSSL 0.9.8. Support will be removed in 
+    cryptography 1.4.
+  * Added support for the PolicyConstraints X.509 extension including both 
+    parsing and generation using CertificateBuilder and 
+    CertificateSigningRequestBuilder.
+  * Added is_signature_valid to CertificateSigningRequest.
+  * Fixed an intermittent AssertionError when performing an RSA decryption 
+    on an invalid ciphertext, ValueError is now correctly raised in all 
+    cases.
+  * Added from_issuer_subject_key_identifier().
+
+-------------------------------------------------------------------
+Sun Mar 13 21:20:00 UTC 2016 - dmueller@suse.com
+
+- fix license
+
+-------------------------------------------------------------------
+Wed Mar  2 21:47:58 UTC 2016 - dimstar@opensuse.org
+
+- Add pkg-config BuildRequires: in order for the last introduced
+  condition to apply the patch to work, pkg-config has to be
+  present.
+
+-------------------------------------------------------------------
+Wed Mar  2 14:19:46 UTC 2016 - meissner@suse.com
+
+- cryptography-new-bio-new-type.patch: openssl 1.0.2g changed
+  the type of BIO_new_mem_buf() (added a const).
+
+-------------------------------------------------------------------
+Sat Jan  9 16:58:46 UTC 2016 - michael@stroeder.com
+
+- update to upstream release 1.2.1
+
+  1.2.1 - 2016-01-08
+  * Reverts a change to an OpenSSL EVP_PKEY object that caused
+    errors with pyOpenSSL.
+  1.2 - 2016-01-08
+  * BACKWARDS INCOMPATIBLE: RevokedCertificate extensions now
+    uses extension classes rather than returning raw values
+    inside the Extension value. The new classes are:
+        o CertificateIssuer
+        o CRLReason
+        o InvalidityDate
+  * Deprecated support for OpenSSL 0.9.8 and 1.0.0. At this time
+    there is no time table for actually dropping support,
+    however we strongly encourage all users to upgrade, as those
+    versions no longer receive support from the OpenSSL project.
+  * The Certificate class now has signature and
+    tbs_certificate_bytes attributes.
+  * The CertificateSigningRequest class now has signature and
+    tbs_certrequest_bytes attributes.
+  * The CertificateRevocationList class now has signature and
+    tbs_certlist_bytes attributes.
+  * NameConstraints are now supported in the CertificateBuilder
+    and CertificateSigningRequestBuilder.
+  * Support serialization of certificate revocation lists using
+    the public_bytes() method of CertificateRevocationList.
+  * Add support for parsing CertificateRevocationList extensions
+    () in the OpenSSL backend. The following extensions are
+    currently supported:
+        o AuthorityInformationAccess
+        o AuthorityKeyIdentifier
+        o CRLNumber
+        o IssuerAlternativeName
+  * Added CertificateRevocationListBuilder and
+    RevokedCertificateBuilder to allow creation of CRLs.
+  * Unrecognized non-critical X.509 extensions are now parsed
+    into an UnrecognizedExtension object.
+
+-------------------------------------------------------------------
+Wed Dec 30 12:41:26 UTC 2015 - michael@stroeder.com
+
+- update to 1.1.2:
+  * Fixed a SIGBUS crash with the OS X wheels caused by redefinition of a
+    method.
+  * Fixed a runtime error ``undefined symbol EC_GFp_nistp224_method`` that
+    occurred with some OpenSSL installations.
+  * Updated Windows and OS X wheels to be compiled against OpenSSL 1.0.2e.
+
+-------------------------------------------------------------------
+Wed Dec  9 10:35:20 UTC 2015 - dmueller@suse.com
+
+- update to 1.1.1:
+  * Fixed several small bugs related to compiling the OpenSSL bindings with
+    unusual OpenSSL configurations.
+  * Resolved an issue where, depending on the method of installation and
+    which Python interpreter they were using, users on El Capitan (OS X 10.11)
+    may have seen an ``InternalError`` on import.
+
+-------------------------------------------------------------------
+Wed Dec  9 10:19:45 UTC 2015 - dmueller@suse.com
+
+- fix build for sle11 (disable testsuite as it depends on python-hypothesis
+  which is not available for sle11 anymore)
+
+-------------------------------------------------------------------
+Tue Nov 10 04:16:13 UTC 2015 - tbechtold@suse.com
+
+- update to 1.1:
+  * Added support for Elliptic Curve Diffie-Hellman with
+    :class:`~cryptography.hazmat.primitives.asymmetric.ec.ECDH`.
+  * Added :class:`~cryptography.hazmat.primitives.kdf.x963kdf.X963KDF`.
+  * Added support for parsing certificate revocation lists (CRLs) using
+    :func:`~cryptography.x509.load_pem_x509_crl` and
+    :func:`~cryptography.x509.load_der_x509_crl`.
+  * Add support for AES key wrapping with
+    :func:`~cryptography.hazmat.primitives.keywrap.aes_key_wrap` and
+    :func:`~cryptography.hazmat.primitives.keywrap.aes_key_unwrap`.
+  * Added a ``__hash__`` method to :class:`~cryptography.x509.Name`.
+  * Add support for encoding and decoding elliptic curve points to a byte string
+    form using
+    :meth:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers.encode_point`
+    and
+    :meth:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers.from_encoded_point`.
+  * Added :meth:`~cryptography.x509.Extensions.get_extension_for_class`.
+  * :class:`~cryptography.x509.CertificatePolicies` are now supported in the
+    :class:`~cryptography.x509.CertificateBuilder`.
+  * ``countryName`` is now encoded as a ``PrintableString`` when creating subject
+    and issuer distinguished names with the Certificate and CSR builder classes.
+  * **SECURITY ISSUE**: The OpenSSL backend prior to 1.0.2 made extensive use
+    of assertions to check response codes where our tests could not trigger a
+    failure.  However, when Python is run with ``-O`` these asserts are optimized
+    away.  If a user ran Python with this flag and got an invalid response code
+    this could result in undefined behavior or worse. Accordingly, all response
+    checks from the OpenSSL backend have been converted from ``assert``
+    to a true function call. Credit **Emilia Käsper (Google Security Team)**
+    for the report.
+  * We now ship OS X wheels that statically link OpenSSL by default. When
+    installing a wheel on OS X 10.10+ (and using a Python compiled against the
+    10.10 SDK) users will no longer need to compile. See :doc:`/installation` for
+    alternate installation methods if required.
+  * Set the default string mask to UTF-8 in the OpenSSL backend to resolve
+    character encoding issues with older versions of OpenSSL.
+  * Several new OpenSSL bindings have been added to support a future pyOpenSSL
+    release.
+  * Raise an error during install on PyPy < 2.6. 1.0+ requires PyPy 2.6+.
+- Remove 2293.patch . Applied in a different way upstream.
+- Add BuildRequires for python-hypothesis and python-pyasn1-modules for running
+  unittests
+
+-------------------------------------------------------------------
+Wed Sep 30 12:01:27 UTC 2015 - dmueller@suse.com
+
+- require the cffi version it was built against to avoid (bsc#948198)
+
+-------------------------------------------------------------------
+Tue Sep 29 13:54:24 UTC 2015 - tbechtold@suse.com
+
+- Add 2293.patch for "osrandom engine already registered" (bnc#947679)
+
+-------------------------------------------------------------------
+Thu Sep 17 13:11:06 UTC 2015 - tbechtold@suse.com
+
+- Add disable-uneven-sizes-tests.patch (bnc#944204)
+  openssl in SLE12SP1 doesn't allow uneven bit sizes for rsa keys
+
+-------------------------------------------------------------------
+Sat Aug 22 10:30:08 UTC 2015 - tbechtold@suse.com
+
+- update to 1.0 (fate#318838):
+  * Switched to the new `cffi`_ ``set_source`` out-of-line API mode for
+    compilation. This results in significantly faster imports and lowered
+    memory consumption. Due to this change we no longer support PyPy releases
+    older than 2.6 nor do we support any released version of PyPy3 (until a
+    version supporting cffi 1.0 comes out).
+  * Fix parsing of OpenSSH public keys that have spaces in comments.
+  * Support serialization of certificate signing requests using the
+    ``public_bytes`` method of
+    :class:`~cryptography.x509.CertificateSigningRequest`.
+  * Support serialization of certificates using the ``public_bytes`` method of
+    :class:`~cryptography.x509.Certificate`.
+  * Add ``get_provisioning_uri`` method to
+    :class:`~cryptography.hazmat.primitives.twofactor.hotp.HOTP` and
+    :class:`~cryptography.hazmat.primitives.twofactor.totp.TOTP` for generating
+    provisioning URIs.
+  * Add :class:`~cryptography.hazmat.primitives.kdf.concatkdf.ConcatKDFHash`
+    and :class:`~cryptography.hazmat.primitives.kdf.concatkdf.ConcatKDFHMAC`.
+  * Raise a ``TypeError`` when passing objects that are not text as the value to
+    :class:`~cryptography.x509.NameAttribute`.
+  * Add support for :class:`~cryptography.x509.OtherName` as a general name
+    type.
+  * Added new X.509 extension support in :class:`~cryptography.x509.Certificate`
+    The following new extensions are now supported:
+
+    * :class:`~cryptography.x509.OCSPNoCheck`
+    * :class:`~cryptography.x509.InhibitAnyPolicy`
+    * :class:`~cryptography.x509.IssuerAlternativeName`
+    * :class:`~cryptography.x509.NameConstraints`
+
+  * Extension support was added to
+    :class:`~cryptography.x509.CertificateSigningRequest`.
+  * Add support for creating signed certificates with
+    :class:`~cryptography.x509.CertificateBuilder`. This includes support for
+    the following extensions:
+
+    * :class:`~cryptography.x509.BasicConstraints`
+    * :class:`~cryptography.x509.SubjectAlternativeName`
+    * :class:`~cryptography.x509.KeyUsage`
+    * :class:`~cryptography.x509.ExtendedKeyUsage`
+    * :class:`~cryptography.x509.SubjectKeyIdentifier`
+    * :class:`~cryptography.x509.AuthorityKeyIdentifier`
+    * :class:`~cryptography.x509.AuthorityInformationAccess`
+    * :class:`~cryptography.x509.CRLDistributionPoints`
+    * :class:`~cryptography.x509.InhibitAnyPolicy`
+    * :class:`~cryptography.x509.IssuerAlternativeName`
+    * :class:`~cryptography.x509.OCSPNoCheck`
+
+  * Add support for creating certificate signing requests with
+    :class:`~cryptography.x509.CertificateSigningRequestBuilder`. This includes
+    support for the same extensions supported in the ``CertificateBuilder``.
+  * Deprecate ``encode_rfc6979_signature`` and ``decode_rfc6979_signature`` in
+    favor of
+    :func:`~cryptography.hazmat.primitives.asymmetric.utils.encode_dss_signature`
+    and
+    :func:`~cryptography.hazmat.primitives.asymmetric.utils.decode_dss_signature`.
+- Adjust Requires according to requires.txt
+
+-------------------------------------------------------------------
+Wed Jul 29 18:05:55 UTC 2015 - tbechtold@suse.com
+
+- update to 0.9.3:
+  * Updated Windows wheels to be compiled against OpenSSL 1.0.2d.
+  * Updated Windows wheels to be compiled against OpenSSL 1.0.2c.
+  * **SECURITY ISSUE**: Fixed a double free in the OpenSSL backend when using DSA
+   to verify signatures. Note that this only affects PyPy 2.6.0 and (presently
+   unreleased) CFFI versions greater than 1.1.0.
+  * Removed support for Python 3.2. This version of Python is rarely used
+    and caused support headaches. Users affected by this should upgrade to 3.3+.
+  * Deprecated support for Python 2.6. At the time there is no time table for
+    actually dropping support, however we strongly encourage all users to upgrade
+    their Python, as Python 2.6 no longer receives support from the Python core
+    team.
+  * Add support for the
+    :class:`~cryptography.hazmat.primitives.asymmetric.ec.SECP256K1` elliptic
+    curve.
+  * Fixed compilation when using an OpenSSL which was compiled with the
+    ``no-comp`` (``OPENSSL_NO_COMP``) option.
+  * Support :attr:`~cryptography.hazmat.primitives.serialization.Encoding.DER`
+    serialization of public keys using the ``public_bytes`` method of
+    :class:`~cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKeyWithSerialization`,
+    :class:`~cryptography.hazmat.primitives.asymmetric.dsa.DSAPublicKeyWithSerialization`,
+    and
+    :class:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicKeyWithSerialization`.
+  * Support :attr:`~cryptography.hazmat.primitives.serialization.Encoding.DER`
+    serialization of private keys using the ``private_bytes`` method of
+    :class:`~cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKeyWithSerialization`,
+    :class:`~cryptography.hazmat.primitives.asymmetric.dsa.DSAPrivateKeyWithSerialization`,
+    and
+    :class:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKeyWithSerialization`.
+  * Add support for parsing X.509 certificate signing requests (CSRs) with
+    :func:`~cryptography.x509.load_pem_x509_csr` and
+    :func:`~cryptography.x509.load_der_x509_csr`.
+  * Moved ``cryptography.exceptions.InvalidToken`` to
+    :class:`cryptography.hazmat.primitives.twofactor.InvalidToken` and deprecated
+    the old location. This was moved to minimize confusion between this exception
+    and :class:`cryptography.fernet.InvalidToken`.
+  * Added support for X.509 extensions in :class:`~cryptography.x509.Certificate`
+    objects. The following extensions are supported as of this release:
+
+    * :class:`~cryptography.x509.BasicConstraints`
+    * :class:`~cryptography.x509.AuthorityKeyIdentifier`
+    * :class:`~cryptography.x509.SubjectKeyIdentifier`
+    * :class:`~cryptography.x509.KeyUsage`
+    * :class:`~cryptography.x509.SubjectAlternativeName`
+    * :class:`~cryptography.x509.ExtendedKeyUsage`
+    * :class:`~cryptography.x509.CRLDistributionPoints`
+    * :class:`~cryptography.x509.AuthorityInformationAccess`
+    * :class:`~cryptography.x509.CertificatePolicies`
+
+    Note that unsupported extensions with the critical flag raise
+    :class:`~cryptography.x509.UnsupportedExtension` while unsupported extensions
+    set to non-critical are silently ignored. Read the
+    :doc:`X.509 documentation</x509>` for more information.
+- add python-pyasn1, python-ipaddress and python-idna as Requires/BuildRequires
+
+-------------------------------------------------------------------
+Thu Apr 23 06:38:42 UTC 2015 - mcihar@suse.cz
+
+- Update to 0.8.2:
+  * Fixed a race condition when initializing the OpenSSL or CommonCrypto backends
+    in a multi-threaded scenario.
+
+-------------------------------------------------------------------
+Tue Apr  7 10:00:28 UTC 2015 - tbechtold@suse.com
+
+- update to 0.8.1:
+  * Updated Windows wheels to be compiled against OpenSSL 1.0.2a.
+  * func:`~cryptography.hazmat.primitives.serialization.load_ssh_public_key` can
+    now load elliptic curve public keys.
+  * Added
+    :attr:`~cryptography.x509.Certificate.signature_hash_algorithm` support to
+    :class:`~cryptography.x509.Certificate`.
+  * Added
+    :func:`~cryptography.hazmat.primitives.asymmetric.rsa.rsa_recover_prime_factor  s`
+  * :class:`~cryptography.hazmat.primitives.kdf.KeyDerivationFunction` was moved
+    from :mod:`~cryptography.hazmat.primitives.interfaces` to
+    :mod:`~cryptography.hazmat.primitives.kdf`.
+  * Added support for parsing X.509 names. See the
+    :doc:`X.509 documentation</x509>` for more information.
+  * Added
+    :func:`~cryptography.hazmat.primitives.serialization.load_der_private_key` to
+    support loading of DER encoded private keys and
+    :func:`~cryptography.hazmat.primitives.serialization.load_der_public_key` to
+    support loading DER encoded public keys.
+  * Fixed building against LibreSSL, a compile-time substitute for OpenSSL.
+  * FreeBSD 9.2 was removed from the continuous integration system.
+  * Updated Windows wheels to be compiled against OpenSSL 1.0.2.
+  * :func:`~cryptography.hazmat.primitives.serialization.load_pem_public_key`
+    and :func:`~cryptography.hazmat.primitives.serialization.load_der_public_key`
+    now support PKCS1 RSA public keys (in addition to the previous support for
+    SubjectPublicKeyInfo format for RSA, EC, and DSA).
+  * Added
+    :class:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKeyWithSerialization`
+    and deprecated
+    :class:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKeyWithNumbers`.
+  * Added
+    :meth:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKeyWithSerialization.private_bytes`
+    to
+    :class:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKeyWithSerialization`.
+  * Added
+    :class:`~cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKeyWithSerialization`
+    and deprecated
+    :class:`~cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKeyWithNumbers`.
+  * Added
+    :meth:`~cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKeyWithSerialization.private_bytes`
+    to
+    :class:`~cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKeyWithSerialization`.
+  * Added
+    :class:`~cryptography.hazmat.primitives.asymmetric.dsa.DSAPrivateKeyWithSerialization`
+    and deprecated
+    :class:`~cryptography.hazmat.primitives.asymmetric.dsa.DSAPrivateKeyWithNumbers`.
+  * Added
+    :meth:`~cryptography.hazmat.primitives.asymmetric.dsa.DSAPrivateKeyWithSerialization.private_bytes`
+    to
+    :class:`~cryptography.hazmat.primitives.asymmetric.dsa.DSAPrivateKeyWithSerialization`.
+  * Added
+    :class:`~cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKeyWithSerialization`
+    and deprecated
+    :class:`~cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKeyWithNumbers`.
+  * Added
+    :meth:`~cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKeyWithSerialization.public_bytes`
+    to
+    :class:`~cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKeyWithSerialization`.
+  * Added
+    :class:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicKeyWithSerialization`
+    and deprecated
+    :class:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicKeyWithNumbers`.
+  * Added
+    :meth:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicKeyWithSerialization.public_bytes`
+    to
+    :class:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicKeyWithSerialization`.
+  * Added
+    :class:`~cryptography.hazmat.primitives.asymmetric.dsa.DSAPublicKeyWithSerialization`
+    and deprecated
+    :class:`~cryptography.hazmat.primitives.asymmetric.dsa.DSAPublicKeyWithNumbers`.
+  * Added
+    :meth:`~cryptography.hazmat.primitives.asymmetric.dsa.DSAPublicKeyWithSerialization.public_bytes`
+    to
+    :class:`~cryptography.hazmat.primitives.asymmetric.dsa.DSAPublicKeyWithSerialization`.
+  * :class:`~cryptography.hazmat.primitives.hashes.HashAlgorithm` and
+    :class:`~cryptography.hazmat.primitives.hashes.HashContext` were moved from
+    :mod:`~cryptography.hazmat.primitives.interfaces` to
+    :mod:`~cryptography.hazmat.primitives.hashes`.
+  * :class:`~cryptography.hazmat.primitives.ciphers.CipherContext`,
+    :class:`~cryptography.hazmat.primitives.ciphers.AEADCipherContext`,
+    :class:`~cryptography.hazmat.primitives.ciphers.AEADEncryptionContext`,
+    :class:`~cryptography.hazmat.primitives.ciphers.CipherAlgorithm`, and
+    :class:`~cryptography.hazmat.primitives.ciphers.BlockCipherAlgorithm`
+    were moved from :mod:`~cryptography.hazmat.primitives.interfaces` to
+    :mod:`~cryptography.hazmat.primitives.ciphers`.
+  * :class:`~cryptography.hazmat.primitives.ciphers.modes.Mode`,
+    :class:`~cryptography.hazmat.primitives.ciphers.modes.ModeWithInitializationVector`,
+    :class:`~cryptography.hazmat.primitives.ciphers.modes.ModeWithNonce`, and
+    :class:`~cryptography.hazmat.primitives.ciphers.modes.ModeWithAuthenticationTag`
+    were moved from :mod:`~cryptography.hazmat.primitives.interfaces` to
+    :mod:`~cryptography.hazmat.primitives.ciphers.modes`.
+  * :class:`~cryptography.hazmat.primitives.padding.PaddingContext` was moved
+    from :mod:`~cryptography.hazmat.primitives.interfaces` to
+    :mod:`~cryptography.hazmat.primitives.padding`.
+  *
+    :class:`~cryptography.hazmat.primitives.asymmetric.padding.AsymmetricPadding`
+    was moved from :mod:`~cryptography.hazmat.primitives.interfaces` to
+    :mod:`~cryptography.hazmat.primitives.asymmetric.padding`.
+  *
+    :class:`~cryptography.hazmat.primitives.asymmetric.AsymmetricSignatureContext`
+    and
+    :class:`~cryptography.hazmat.primitives.asymmetric.AsymmetricVerificationContext`
+    were moved from :mod:`~cryptography.hazmat.primitives.interfaces` to
+    :mod:`~cryptography.hazmat.primitives.asymmetric`.
+  * :class:`~cryptography.hazmat.primitives.asymmetric.dsa.DSAParameters`,
+    :class:`~cryptography.hazmat.primitives.asymmetric.dsa.DSAParametersWithNumbers`,
+    :class:`~cryptography.hazmat.primitives.asymmetric.dsa.DSAPrivateKey`,
+    :class:`~cryptography.hazmat.primitives.asymmetric.dsa.DSAPrivateKeyWithNumbers`,
+    :class:`~cryptography.hazmat.primitives.asymmetric.dsa.DSAPublicKey` and
+    :class:`~cryptography.hazmat.primitives.asymmetric.dsa.DSAPublicKeyWithNumbers`
+    were moved from :mod:`~cryptography.hazmat.primitives.interfaces` to
+    :mod:`~cryptography.hazmat.primitives.asymmetric.dsa`
+  * :class:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurve`,
+    :class:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurveSignatureAlgorithm`,
+    :class:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKey`,
+    :class:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKeyWithNumbers`,
+    :class:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicKey`,
+    and
+    :class:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicKeyWithNumbers`
+    were moved from :mod:`~cryptography.hazmat.primitives.interfaces` to
+    :mod:`~cryptography.hazmat.primitives.asymmetric.ec`.
+  * :class:`~cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey`,
+    :class:`~cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKeyWithNumbers`,
+    :class:`~cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey` and
+    :class:`~cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKeyWithNumbers`
+    were moved from :mod:`~cryptography.hazmat.primitives.interfaces` to
+    :mod:`~cryptography.hazmat.primitives.asymmetric.rsa`.
+  * Updated Windows wheels to be compiled against OpenSSL 1.0.1l.
+  * ``enum34`` is no longer installed on Python 3.4, where it is included in
+    the standard library.
+  * Added a new function to the OpenSSL bindings to support additional
+    functionality in pyOpenSSL.
+
+-------------------------------------------------------------------
+Mon Dec 29 18:08:34 UTC 2014 - jmatejek@suse.com
+
+- update to 0.7.1
+    * backwards-incompatible change: GCM module doesn't truncate tags
+      by default anymore
+    * removed deprecated arguments to MFG1 constructor
+    * ECC support
+    * added PEM and openssh key loading convenience methods
+    * support for many new ciphers and new features of existing ones
+    see CHANGELOG.rst for details
+- spec cleanup
+- reworked %check section
+- added changelog to docs
+
+-------------------------------------------------------------------
+Mon May 19 16:14:52 UTC 2014 - jmatejek@suse.com
+
+- update to 0.4
+    * added IDEA algorithm
+    * added HOTP, TOTP and CMAC primitives
+    * improved support for RSA and DSA public key cryptography
+- include cryptography_vectors as a source, in order to run the full
+  test suite (cryptography_vectors seems only useful for testing
+  this module, so it's probably not worth making a separate installable
+  package for it)
+- drop upstreamed cryptography-custom-install-cmd.patch
+
+-------------------------------------------------------------------
+Mon Mar 31 16:03:46 UTC 2014 - speilicke@suse.com
+
+- Add cryptography-custom-install-cmd.patch: Fix installation to plat_lib
+- Properly invoke testsuite, therefore add dependencies on iso8601 and pretend
+- Only use pkg-config for libffi on newer distros, stay with old-style
+  devel package requires to fix SLE build
+
+-------------------------------------------------------------------
+Mon Feb 24 12:43:32 UTC 2014 - mvyskocil@suse.com
+
+- Initial packaging of python-cryptography for openSUSE 
+

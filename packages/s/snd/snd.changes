@@ -1,0 +1,470 @@
+-------------------------------------------------------------------
+Thu Jul 11 18:08:30 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 19.5 (no changelog provided)
+- Remove snd-drop-date-time.diff, no longer required
+- Drop snd-fix-no-return.diff, fixed upstream
+- Reenable all archs, but without jack for anything but x86/ppc
+  (32 and 64 bit), as it uses inline assembly
+
+-------------------------------------------------------------------
+Tue Apr 10 23:22:58 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of descriptions.
+- Replace old $RPM_* shell vars by macros.
+- Favor find -exec over xargs.
+
+-------------------------------------------------------------------
+Wed Mar 28 12:55:23 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Build only for x86* and ppc* since other archs are not supported
+
+-------------------------------------------------------------------
+Mon Feb  6 12:46:33 CET 2017 - tiwai@suse.de
+
+- update to version 17.1:
+  also fix the build on TW (boo#1023723)
+- Drop obsoleted patch
+  snd-15.5_backport_remove_glprofile.patch
+- Fix no return value compile warnings:
+  snd-fix-no-return.diff
+- Avoid __DATE__ and __TIME__ usages (actually the code works fine
+  but the BS detects it falsely, so better to drop the line):
+  snd-drop-date-time.diff
+
+-------------------------------------------------------------------
+Sat Apr 18 10:44:12 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 15.5:
+  * repl.scm to replace use of readline in various cases
+- add snd-15.5_backport_remove_glprofile.patch:
+  fix build with gtk 3.16
+- drop sndrpmlintrc: hidden file not packaged anymore
+
+-------------------------------------------------------------------
+Wed Mar 25 15:23:06 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 15.4
+  * before-save-as-hook arg order changed, also new-sound, save-region,
+    save-selection, save-sound-as
+  * deprecated output-name-hook, info-popup-hook, peak-env-hook, start-hook
+  * changed s7_new_type_x args
+  * mus-audio* deprecated
+  * mus_set_name (and mus-set-name) deprecated
+  * sbcl support for gnuplot in dlocsig.lisp
+- No information available about previous releases
+- Replace gtk2-devel with gtk3-devel; build with gtk3 support
+- Use download Url as source
+- Remove obsolete %clean and AUTHORS section
+- Remove some obsolete stuff
+- Do not try to build audinfo; dropped by upstream
+- tutorial and Snd.ad have been dropped by upstream
+
+-------------------------------------------------------------------
+Wed Dec 21 10:31:48 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Wed Aug 31 10:32:48 UTC 2011 - pgajdos@suse.com
+
+- build with --no-copy-dt-needed-entries
+
+-------------------------------------------------------------------
+Sat Apr 10 07:56:00 UTC 2010 - davejplater@gmail.com
+
+- Fixed executable-stack rpmlint error in /usr/bin/snd
+
+-------------------------------------------------------------------
+Mon Apr  5 07:04:32 UTC 2010 - davejplater@gmail.com
+
+- Update to version 11.4. Fix broken Url: link. Binary sndrecord no
+  longer exists. Added sndrpmlintrc for hidden file in tutorial.
+
+-------------------------------------------------------------------
+Mon Jul 27 17:15:12 CEST 2009 - tiwai@suse.de
+
+- updated to version 10.7:
+  * default audio to ALSA
+  * Some improvements in generators.scm, dlocsig.scm.
+
+-------------------------------------------------------------------
+Mon Apr 27 14:23:32 CEST 2009 - tiwai@suse.de
+
+- updated to version 10.5:
+  * multidimensional and applicable vectors in s7.
+  * pulseaudio support (not enabled yet)
+  * moved the papoulis and dpss (slepian) fft-windows from
+    dsp.scm to clm.c.  added sinc-window.
+  * matlab mat-5 headers (for 1-channel sound data).
+  * all hash literals using ',' changed to use '=>' in *.rb
+   (for ruby 1.9.*) but ruby 1.9.n is not usable yet
+  * With Kjetil's help, s7 is more than twice as fast now in s7test.
+  * checked: mpfr 2.4.1, gtk 2.15.5|16.0|1, fftw 3.2.1, fth 1.2.3,
+    sbcl 1.0.27
+
+-------------------------------------------------------------------
+Fri Jan 30 16:17:36 CET 2009 - tiwai@suse.de
+
+- updated to version 10.3:
+  * improvements to rt stuff
+  * multiprecision math support
+  * sox header support
+  * jcvoi.scm
+  * deprecated sine-emulation, etc
+
+-------------------------------------------------------------------
+Mon Nov 10 14:31:46 CET 2008 - tiwai@suse.de
+
+- updated to version 10.1:
+  * rhypars.cms addition
+  * removed reader/writer locks in clm.c
+
+-------------------------------------------------------------------
+Wed Oct  1 18:09:37 CEST 2008 - tiwai@suse.de
+
+- updated to version 10.0:
+  * rt/faust/stalin improvements
+  * more generators
+  * S7 support
+  * others, see NEWS and HISTORY.Snd
+- build JACK support only for x86 (for build fixes)
+
+-------------------------------------------------------------------
+Thu Apr 17 14:52:10 CEST 2008 - tiwai@suse.de
+
+- updated to version 9.8:
+  * more rt improvements
+  * clm4 updates
+  * others, see NEWS
+
+-------------------------------------------------------------------
+Fri Jan 11 14:46:17 CET 2008 - tiwai@suse.de
+
+- updated to version 9.6:
+  * many Ruby improvements
+  * fixed a help-system bug
+  * 5 more generators in generators.scm
+  * Open recent item in File menu
+
+-------------------------------------------------------------------
+Thu Jul 12 18:33:25 CEST 2007 - tiwai@suse.de
+
+- updated to version 9.2:
+  * Forth/Ruby improvements
+  * RIFF bugfix
+  * fixes in snddiff.scm and examp.scm, green.scm
+
+-------------------------------------------------------------------
+Fri Jun  8 14:42:50 CEST 2007 - tiwai@suse.de
+
+- updated to version 9.1:
+  * Two new hooks: peak-env-hook, draw-mix-hook
+  * added mouse position args to mix-drag-hook
+  * changes in background-gradient, sound-mark-info,
+    mix-sync-max
+  * moved equalize-panes to snd-motif.scm
+
+-------------------------------------------------------------------
+Wed May 23 18:17:32 CEST 2007 - tiwai@suse.de
+
+- updated to version 9.0:
+  * removed mix-chans, mix-locked?, mix-inverted?, all track stuff
+   track-colors.scm, mix-menu.scm
+  * moved mix-properties into C.
+  * added edit-properties, mix-sync.
+  * spokenword.scm thanks to Ville Koskinen.
+  * recorder dialog removed.
+
+-------------------------------------------------------------------
+Tue Apr 17 16:44:02 CEST 2007 - tiwai@suse.de
+
+- fix buildrequires ladspa -> ladspa-devel
+
+-------------------------------------------------------------------
+Tue Mar 27 18:06:37 CEST 2007 - tiwai@suse.de
+
+- update to version 8.9:
+  * more fft windows
+  * better noise reduction in clean.scm
+  * added cairo graphics backend
+
+-------------------------------------------------------------------
+Mon Feb 12 16:35:20 CET 2007 - tiwai@suse.de
+
+- update to version 8.8:
+  * poussin-sum and jackson-sum in dsp.scm
+  * changed default-output-data-format to mus-bfloat
+  * removed initFile and the (undocumented) htmlDir X resources
+  * added read/write support for Apple's new CAFF (64-bit) audio
+    files
+
+-------------------------------------------------------------------
+Tue Jan  9 15:39:13 CET 2007 - tiwai@suse.de
+
+- updated to version 8.7:
+  * improvement in frame.scm
+  * many *.fs and *.rb improvements
+  * more to see NEWS and HISTORY.Snd
+
+-------------------------------------------------------------------
+Fri Oct 13 14:04:53 CEST 2006 - aj@suse.de
+
+- Add guile-devel to build requires.
+
+-------------------------------------------------------------------
+Thu Sep 21 20:13:53 CEST 2006 - tiwai@suse.de
+
+- updated to version 8.4:
+  * many ruby, forth, and sndins-related improvements
+  * improvements in some *.ins files
+  * snd_frg.scm, display-bark-fft, def-optkey-instrument, etc.
+
+-------------------------------------------------------------------
+Wed Sep  6 17:48:20 CEST 2006 - tiwai@suse.de
+
+- updated to version 8.3:
+  * Some additions to CLM generators
+  * new scms: dlocsig.scm, green.scm, snd8.scm
+  * g_signal and gtk_print_* to xg.c
+  * merged new-icons.scm into new-buttons.scm
+  * toolbar.scm also works in gtk
+  * *.fs updates
+
+-------------------------------------------------------------------
+Tue Jul  4 17:25:12 CEST 2006 - tiwai@suse.de
+
+- updated to version 8.2:
+  * fmviolin.clm.
+  * changed after-apply-hook to after-apply-controls-hook
+  * removed mus-make-error.
+  * Walter Zorn's wz_tooltip.js to spruce up the documentation
+
+-------------------------------------------------------------------
+Wed May 17 18:07:25 CEST 2006 - tiwai@suse.de
+
+- updated to version 8.1:
+  * many new scm and pd files
+  * improved alsa support
+  * see HISTORY.Snd for details
+- Use gtk2 as GUI.
+- Add gsl support.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:42 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 16 15:11:47 CET 2006 - tiwai@suse.de
+
+- updated to version 7.18.
+
+-------------------------------------------------------------------
+Sat Jan 14 20:23:32 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Oct 12 20:11:58 CEST 2005 - tiwai@suse.de
+
+- removed glib* from neededforbuild.
+
+-------------------------------------------------------------------
+Tue Apr 19 14:13:44 CEST 2005 - ro@suse.de
+
+- added missing sentinel 
+
+-------------------------------------------------------------------
+Mon Feb 14 17:40:59 CET 2005 - tiwai@suse.de
+
+- updated to version 7.10.
+
+-------------------------------------------------------------------
+Mon Jan 24 14:44:36 CET 2005 - tiwai@suse.de
+
+- update dto version 7.9
+- use fftw3, libsamplerate.
+
+-------------------------------------------------------------------
+Thu Apr 29 01:38:19 CEST 2004 - ro@suse.de
+
+- added -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Mon Mar 22 00:57:39 CET 2004 - ro@suse.de
+
+- removed *~ backup files
+
+-------------------------------------------------------------------
+Fri Feb 27 14:24:24 CET 2004 - tiwai@suse.de
+
+- updated to version 7.2
+- support jack and opengl.
+- built with the standard guile.
+- build as non-root.
+- added desktop file and icon.
+
+-------------------------------------------------------------------
+Fri Nov 21 01:40:52 CET 2003 - ro@suse.de
+
+- compile with -DALSA_PCM_OLD_HW_PARAMS_API
+
+-------------------------------------------------------------------
+Fri Nov  7 12:14:14 CET 2003 - ro@suse.de
+
+- fix for current autoconf 
+
+-------------------------------------------------------------------
+Mon Aug 25 16:05:57 CEST 2003 - tiwai@suse.de
+
+- updated to version 6.11.
+
+-------------------------------------------------------------------
+Thu Jun 12 07:55:18 CEST 2003 - kukuk@suse.de
+
+- Add missing directories to filelist
+
+-------------------------------------------------------------------
+Mon Feb  3 12:40:19 CET 2003 - tiwai@suse.de
+
+- removed -mminimal-toc for ppc64 (bug #23266).
+
+-------------------------------------------------------------------
+Fri Jan 17 12:34:45 CET 2003 - tiwai@suse.de
+
+- updated to version 6.5.
+- renamed patches to avoid the file name confliction.
+
+-------------------------------------------------------------------
+Tue Nov 26 10:54:04 CET 2002 - tiwai@suse.de
+
+- updated to version 6.3.
+
+-------------------------------------------------------------------
+Mon Nov 11 23:49:53 CET 2002 - ro@suse.de
+
+- changed neededforbuild <xshared> to <x-devel-packages>
+- changed neededforbuild <xdevel> to <>
+
+-------------------------------------------------------------------
+Tue Sep 24 16:28:29 CEST 2002 - tiwai@suse.de
+
+- updated to snd-6.1.
+  regenerated no-gtk patch.
+
+-------------------------------------------------------------------
+Mon Aug  5 15:50:12 CEST 2002 - tiwai@suse.de
+
+- build guile-1.5 together with snd.  guile-1.4.x is incompatible
+  and the scm files provided by snd don't work with it.
+  snd is linked statically with libguile.
+- provides dlp's version of snd together with a start-up script.
+- provides tutorial files.
+
+-------------------------------------------------------------------
+Tue Jul 16 16:29:06 CEST 2002 - tiwai@suse.de
+
+- updated to snd-5.12.
+- build snd with motif instead of gtk.
+  the gtk version is unlikely developed by the author...
+
+-------------------------------------------------------------------
+Sat Jun 29 21:26:53 CEST 2002 - olh@suse.de
+
+- build with -mminimal-toc on ppc64
+
+-------------------------------------------------------------------
+Wed Apr 10 13:13:33 CEST 2002 - tiwai@suse.de
+
+- updated to snd-5.8.
+- don't rebuild configure script;
+  now snd can use gtk2, which is not supported with guile-gtk.
+
+-------------------------------------------------------------------
+Tue Jan 15 15:29:31 CET 2002 - tiwai@suse.de
+
+- updated to snd-5.6.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:26:01 CET 2001 - tiwai@suse.de
+
+- updated to snd-5.5.
+  now built with ALSA 0.9.0.
+
+-------------------------------------------------------------------
+Mon Nov 12 14:53:25 CET 2001 - tiwai@suse.de
+
+- updated to snd-5.4.
+
+-------------------------------------------------------------------
+Fri Oct  5 18:50:00 CEST 2001 - tiwai@suse.de
+
+- updated to snd-5.3.
+
+-------------------------------------------------------------------
+Tue Sep  4 18:27:09 CEST 2001 - tiwai@suse.de
+
+- updated to snd-5.2.
+  built from the 5.2 tarball.
+
+-------------------------------------------------------------------
+Mon Aug 13 16:09:31 CEST 2001 - tiwai@suse.de
+
+- updated to snd-5.1 from cvs 20010813.
+
+-------------------------------------------------------------------
+Tue Jul 10 17:40:54 CEST 2001 - tiwai@suse.de
+
+- updated to snd-5.
+
+-------------------------------------------------------------------
+Mon Mar 26 14:37:33 CEST 2001 - tiwai@suse.de
+
+- Updated to snd-4.12.
+
+-------------------------------------------------------------------
+Thu Mar  8 12:36:05 CET 2001 - tiwai@suse.de
+
+- Fixed compile on ia64.
+
+-------------------------------------------------------------------
+Mon Feb  5 14:44:39 CET 2001 - tiwai@suse.de
+
+- Updated to snd-4.10.
+
+-------------------------------------------------------------------
+Wed Dec 13 15:51:07 CET 2000 - tiwai@suse.de
+
+- Updated to snd-4.8.
+
+-------------------------------------------------------------------
+Tue Nov 28 19:31:41 CET 2000 - tiwai@suse.de
+
+- Compile snd utilities.
+- Fixed files list.
+- Added guile-gtk in neededforbuild.
+- Support ALSA also on ppc.
+
+-------------------------------------------------------------------
+Thu Nov  2 14:00:11 CET 2000 - tiwai@suse.de
+
+- Updated to snd-4.7.
+- Fixed spec file for long package-name support.
+
+-------------------------------------------------------------------
+Tue Sep 26 17:38:10 CEST 2000 - tiwai@suse.de
+
+- Update to snd-4.6.
+- Compile with gtk instead of lesstif.
+
+-------------------------------------------------------------------
+Fri Sep  1 18:55:01 CEST 2000 - tiwai@suse.de
+
+- Compile fix for alpha.
+
+-------------------------------------------------------------------
+Mon Jul 24 16:27:15 CEST 2000 - tiwai@suse.de
+
+- snd ver.4 - compiled with motif and ALSA (for i386) and OSS (for PPC)
+

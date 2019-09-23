@@ -1,0 +1,2 @@
+# libnetease-meta-search.so is a plugins library
+addFilter("libnetease-meta-search.* devel-file-in-non-devel-package")

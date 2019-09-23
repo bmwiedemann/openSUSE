@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Sat Feb  8 05:37:59 UTC 2014 - coolo@suse.com
+
+- regenerate with cpanspec
+- fix the license
+
+-------------------------------------------------------------------
+Fri Feb  7 21:51:56 UTC 2014 - zaitor@opensuse.org
+
+- Own some dirs on 13.2 and newer, needed due to new perl version.
+
+-------------------------------------------------------------------
+Thu Aug 25 09:48:59 UTC 2011 - Sascha.Manns@open-slx.de
+
+- added URL 
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:43 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+* Fri Jan 23 2009 tuukka.pasanen@ilmi.fi
+- packaged perl-Gtk2-ImageView version 0.04 using the buildservice spec file wizard

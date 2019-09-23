@@ -1,0 +1,10 @@
+<package name="remake" project="openSUSE:Factory">
+  <title>A gnu make version including a debuger</title>
+  <description>remake is a patched and modernized version of GNU make utility that
+adds improved error reporting, the ability to trace execution in a
+comprehensible way, and a debugger.
+
+</description>
+  <devel project="devel:tools" package="remake"/>
+  <url>http://bashdb.sourceforge.net/remake/</url>
+</package>

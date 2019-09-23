@@ -1,0 +1,179 @@
+-------------------------------------------------------------------
+Sat Sep  1 05:23:30 UTC 2018 - coolo@suse.com
+
+- updated to 2.16
+   see /usr/share/doc/packages/perl-File-Path/Changes
+
+  2.16 2018-08-31
+      - Correct inadequate method of generating names for dummy users
+        and groups during testing (RTC 121967).  No change in
+        functionality from 2.15.
+
+-------------------------------------------------------------------
+Mon Jul 31 05:32:54 UTC 2017 - coolo@suse.com
+
+- updated to 2.15
+   see /usr/share/doc/packages/perl-File-Path/Changes
+
+  2.15 2017-07-29
+      - Correct documentation error re possible arguments for rmtree().
+
+-------------------------------------------------------------------
+Wed Jun 21 05:38:40 UTC 2017 - coolo@suse.com
+
+- updated to 2.14
+   see /usr/share/doc/packages/perl-File-Path/Changes
+
+  2.14 2017-06-07
+      - When creating subdirectories for testing underneath
+        File::Spec::Functions::tmpdir(), use randomly generated strings.
+      - No change in functionality from 2.13.
+
+-------------------------------------------------------------------
+Fri Jun  2 05:43:59 UTC 2017 - coolo@suse.com
+
+- updated to 2.13
+   see /usr/share/doc/packages/perl-File-Path/Changes
+
+  2.13 2017-05-31
+      - Document security vulnerability reported as CVE-2017-6512.
+  
+  2.12_008 2017-05-07
+      - Patch from John Lightsey.
+  
+  2.12_007 2017-04-22
+      - Skip tests where filesystem doesn't support permissions (RT 121248).
+      - Add AppVeyor configuration; thanks to Charlie Gonzalez and Hayo Baan.
+  
+  2.12_006 2017-04-21
+      - Modernize README, Makefile.PL, updating of version number
+        and release date in documentation.
+  
+  2.12_005 2017-04-21
+      - Recommend use of 'safe => 1' in remove_tree() and rmtree().
+      - Warn if mkpath() or make_path() is passed implausible options on
+        Windows.
+      - Corrections to errors in previous release.
+  
+  2.12_004 2017-04-18
+      - Certain functions used in tests are not available on Windows;
+        skip them.
+      - Move certain functions used in testing to t/FilePathTest.pm. 
+  
+  2.12_003 2017-04-07
+      - Add tests to improve coverage ratios as measured by Devel::Cover
+      - No functional changes.
+  
+  2.12_002 2017-03-12
+      - GH#41 RT 117019 Fixed File::Path::remove_tree option hash is auto
+                        populated and cannot be reused
+      - GH#40 Unskip in path root t
+      - GH#39 Remove superfluous assignment to $arg{perm}
+      - GH#38 Minor grammatical doc fixes.
+      - GH#37 Minor grammatical doc fixes.
+  
+  2.12_001 2016-09-18
+      - RT 94209  document that the thread safety issue will not change and
+        communicate alternative.
+      - RT 85878  be more generous with error check regex given we could be
+        dealing with a pre-1.25 Carp.
+      - GH #33    Be more precise in documentation example for make_path
+        error checking.
+      - GH #34 Skip Windows 2000 and earlier unit tests (test change).
+      - GH #36 Do not hardcode ENOENT (test change).
+
+-------------------------------------------------------------------
+Sat Oct 10 08:56:34 UTC 2015 - coolo@suse.com
+
+- updated to 2.12
+   see /usr/share/doc/packages/perl-File-Path/Changes
+
+  2.12     2015-10-09
+      - RT 105935 Change ERROR HANDLING doc section to be very clear about the
+        error handling mechanism for root nodes.
+      - RT 105935 Change ERROR HANDLING doc section to remove the EXPERIMENTAL
+        note; the error handling mechanism has been in place for several versions.
+  
+  
+  2.11_004 2015-10-01
+      - RT 105935 Revert change made in 2.10_001 to carp on failure to find root
+        directory when performing an rmtree.
+  
+  2.11_003 2015-08-03
+      - Fix root tests to properly call prereq() -- failed primarily on Windows
+        since getpwent/getgrent not implemented on Windows.
+  
+  2.11_002 2015-07-25
+      - Fix windows refactored tests - missing import and since it's out of
+        Path.t the path creation creates 2 directories (t/Path_win32.t)
+      - Fix root only tests.  getpwent/getgrent was called twice, causing
+        skip_all to trigger and giving impression all tests pass.
+  
+  2.11_001 2015-07-24
+      - RT 105527 FIX: Move eg/ and author tests from t/Path.t to xt/
+      - RT 105935 FIX: Clarify error behavior for rmtree errors on root directory
+        (not fixed but documented).  Clarify in documentation the how alike
+        rmtree is to 'rm -r'.
+      - RT 105977 FIX: Fix INSTALLDIRS for Perl 5.6
+      - RT 105986 FIX: Refactor unit tests to better care for test counts
+      - RT 106039 FIX: Wrong version in Pod
+      - RT 106043 FIX: Suboptimal error message
+      - RT 106045 FIX: _run_for_warning does not consume multiple messages
+      - RT 106047 FIX: _run_for_verbose cause fail test on 5.6.2
+      - Removed optional File::Output usage and run those tests for everyone.
+
+-------------------------------------------------------------------
+Mon Sep  7 15:19:52 UTC 2015 - coolo@suse.com
+
+- extend version 
+
+-------------------------------------------------------------------
+Sun Jul 19 08:50:47 UTC 2015 - coolo@suse.com
+
+- updated to 2.11
+   see /usr/share/doc/packages/perl-File-Path/Changes
+
+  2.11     2015-07-17
+      - Change argument check error from croak to carp since there are some
+        dependent modules using non-standard options.  The error check will
+        move back to croak when dependent modules have the opportunity to
+        correct the argument.
+  
+  2.10_005 2015-07-17
+      - Better argument checking and reporting of failure for unrecognized
+        options.
+      - RT 71562 Document automount race condition limitation and workaround
+      - RT 99230 Document multithreaded application limitation and that the
+        limitation may be removed in a future release.
+  
+  2.10_004 2015-07-10
+      - Remove use of English.pm since it breaks many older Perls
+      - Fix a unit test skip count for users who have not installed
+        Test::Output
+  
+  2.10_003 2015-07-08
+      - Administrative changes to MANIFEST and MANIFEST.SKIP
+      - Style changes to Path.pm for easier reading of code
+      - Removal of pod.t
+      - Use English.pm to make variables like $! more fluent for code readers
+  
+  2.10_002 2015-06-26
+      - RT 42139.  Add better SKIP test emit for VMS.
+      - RT 85360.  Fix typos and better .gitignore and MANIFEST.SKIP settings.
+      - RT 51588.  Added patch elements but unable to verify on VMS.
+  
+  2.10_001 2015-06-24
+      - RT 39949.  Report errors on lstat failure.
+      - RT 53178.  Deprecate UNIVERSAL::isa usage
+      - RT 70657.  Test added.
+      - RT 70938.  Documentation fix for Windows native relative usage
+      - RT 72256.  Option added for setting permission (chmod)
+      - RT 73840.  Fix taint/untaint bug.
+      - RT 95150.  Add CPAN metadata for source tree location.
+      - RT 103512. Documentation language fix.
+
+-------------------------------------------------------------------
+Fri Jan 17 20:07:03 UTC 2014 - lars@linux-schulserver.de
+
+- initial package 2.09
+

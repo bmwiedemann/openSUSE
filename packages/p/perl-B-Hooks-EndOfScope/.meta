@@ -1,0 +1,7 @@
+<package name="perl-B-Hooks-EndOfScope" project="openSUSE:Factory">
+  <title>Execute code after a scope finished compilation</title>
+  <description>This module allows you to execute code when perl finished compiling the
+surrounding scope.</description>
+  <devel project="devel:languages:perl" package="perl-B-Hooks-EndOfScope"/>
+  <url>http://search.cpan.org/dist/B-Hooks-EndOfScope</url>
+</package>

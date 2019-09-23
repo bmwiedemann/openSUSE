@@ -1,0 +1,652 @@
+-------------------------------------------------------------------
+Thu Sep  5 14:00:42 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- Changes since 19.08.0:
+  * Fix Bug 409662 - Missing "Save Attachments..." from Multiple Emails (kde#409662) 
+  * Fix using correct parent widget.
+
+-------------------------------------------------------------------
+Fri Aug  9 08:31:14 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- Changes since 19.07.90:
+  * Adapt to KCalendarCore namespace change
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:49 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- Changes since 19.07.80:
+  * Cleanup now unused DBUS/Mailer code
+  * Check if KMail is running before calling it, to avoid autostarting it at kontact startup
+  * Provide DBus activation file for kmail
+  * Remove wrong use of DBUS/Mailer servicetype
+  * summaryview_part.h - fix build by including QMap
+  * Fix apps name
+
+-------------------------------------------------------------------
+Tue Jul 23 11:59:01 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Fri Jul 19 08:41:34 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use %_kf5_debugdir for logging categories.
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:36 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- Changes since 19.04.2:
+  * i18n: use rc.cpp for extra sources
+  * Don't save htmlLoadExternalOverride when it's default value
+  * Fix kontact crash on logout. (kde#404881)
+  * Fix warning about Qt::AA_EnableHighDpiScaling
+- Dropped patches, now upstream:
+  * fix-kontact-crash-on-logout.patch
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:54 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- Changes since 19.04.1:
+  * const'ify method here
+  * Fix crash when we want to open it in akonadi console
+  * Archive now can't work as config dialog is a separate process now.
+  * Bug 407967 - new mail: cursor jumps into blindcarboncopy (kde#407967)
+  * We can save several email as mbox
+- Add upstream patch to fix a kontact crash on logout (kde#404881):
+  * fix-kontact-crash-on-logout.patch
+- Dropped patches, now upstream:
+  * Fix-Bug-407967.patch
+
+-------------------------------------------------------------------
+Tue May 28 06:00:57 UTC 2019 - wbauer@tmo.at
+
+- Add Fix-Bug-407967.patch to ensure that the "To:" field always
+  has focus when creating a new mail (boo#1136481, kde#407967)
+
+-------------------------------------------------------------------
+Fri May 10 05:37:15 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- Changes since 19.04.0:
+  * Fix opening the New Mail Notifier agent configuration
+  * Fix Bug 407143 - settings window is too small (kde#407143)
+  * Really fix load recent file
+  * Use default encoding
+  * Fix get charset
+  * Fix Bug 391631 - Identity not in list after creation (kde#391631)
+
+-------------------------------------------------------------------
+Sat Apr 20 06:51:56 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- Changes since 19.03.90:
+  * Fix autotest
+  * Fix crash in autotest
+  * Fix Bug 406324 - Messages detected as scam are deleted when moved to trash (kde#406324)
+  * Fix bug Bug 406324 - Messages detected as scam are deleted when moved to trash
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:42 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * Fix insert text even in subject
+  * Remove unused include
+  * When we double click on a message we must use the same settings
+  * Convert to camelcase include
+  * Fix Bug 405775 - 'Impossible to send email' notification is too intrusive (kde#405775)
+  * Allow to insert emoticon in subject too
+  * Workaround qt5.13 bug
+
+-------------------------------------------------------------------
+Wed Mar 27 06:41:04 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:19 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * Fix Bug 403313 - Encoding problem on kmail2 5.10.1 when creating composer from command line (kde#403313)
+
+-------------------------------------------------------------------
+Sat Feb 09 08:25:12 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * Fix Bug 403313 - Encoding problem on kmail2 5.10.1 when creating composer from command line (kde#403313)
+
+-------------------------------------------------------------------
+Fri Jan 11 05:42:20 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * unifiedmailboxagent: Stop using std::optional.
+  * Fix Bug 402378 - mailto staement , uncomplete url past to kmail composer
+  * Make sure that it doesn't crash here
+  * Fix Bug 401419 - Kmail crashes on trying to open any email (kde#401419)
+  * Fix add parentwidget
+- Dropped patches, now upstream:
+  * 0001-Fix-Bug-401419-Kmail-crashes-on-trying-to-open-any-e.patch
+
+-------------------------------------------------------------------
+Fri Dec 14 06:09:13 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * Fix Bug 401685 - context menu option for mailing list actions confused about which list is relevant (kde#401685)
+- Add upstream patch 0001-Fix-Bug-401419-Kmail-crashes-on-trying-to-open-any-e.patch:
+  * Fixes Kmail crashing when trying to open a mail (kde#401419)
+
+-------------------------------------------------------------------
+Mon Dec 03 20:56:03 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * Fix mem leak
+  * Fix potential mem leak
+  * Fix mem leak
+  * Fix mem leak
+  * Make sure the unified mailbox dialog is only really shown once
+  * Remove unused method
+
+-------------------------------------------------------------------
+Thu Nov 22 17:39:57 UTC 2018 - wbauer@tmo.at
+
+- Use gcc7 to build on Leap 42.3, the default 4.8 is too old
+
+-------------------------------------------------------------------
+Tue Nov 20 06:22:30 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:57:07 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 08 20:43:39 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * Fix show html format
+  * Fix save format
+  * Fix Bug 395711 - Since last Update kmail didn't load external images anymore (kde#395711)
+  * Fix icon in notification
+
+-------------------------------------------------------------------
+Thu Oct 11 20:06:54 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * Don't show quota page when quota max < 0
+  * Allow to restore with mailtransportname and identity name.
+  * Initialize with identity
+  * Emit signal when identity is not found
+  * Fix use identity, it will select correct send folder now.
+  * Fix Bug 397937 - Kmail wrong trash icon (kde#397937)
+
+-------------------------------------------------------------------
+Thu Sep 06 18:43:03 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * Squeeze title menu
+  * Remove unused action
+  * Add missing action + use zoom_menu directly
+  * Remove unused action
+  * Fix Bug 397717 - "View Source" option is on 2 menus i.e. "View" and "Message". (kde#397717)
+  * Backport setting for delete-without-confirmation from master, without GUI.
+  * Fix Quota progress bar for quota limit of 2GB and more
+
+-------------------------------------------------------------------
+Thu Aug 16 22:05:14 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * Fix enable/disable print action
+  * Add warning when we can't print message
+  * Add "Add Followup Reminder..." entry in messagelib popupmenu too
+  * Port to setAutoSaveSettings so that saving happens before hiding. (kde#396339)
+  * KMail: don't sync after save, don't reload after last sync
+
+-------------------------------------------------------------------
+Thu Jul 26 13:00:46 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Fri Jul 13 04:50:01 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * Fix Bug 395353 - kmail doesn't honor Subject and In-Reply-To in mailto: links (kde#395353)
+  * KMail: don't move the mainwindow to the current desktop when invoking a composer
+  * Fix typo in argument name
+  * Allow to make working as an email when we forward message as attachment
+
+-------------------------------------------------------------------
+Thu Jun 21 07:59:43 UTC 2018 - lbeltrame@kde.org
+
+- Add explicit requires for pimcommon libraries (libKF5PimCommon5 and
+  libKF5PimCommonAkonadi5) and for messagelib
+
+-------------------------------------------------------------------
+Fri Jun 08 05:06:50 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * Bug 232911 - "Reply Without Quote" does not open message composer anymore (kde#232911)
+  * Fix show two icon when we use kontact.
+  * Fix warning about shortcut
+
+-------------------------------------------------------------------
+Fri May 11 05:17:58 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 18.04.0:
+  * Set focus to viewer when we use esc
+  * Distinguish between settings and explicit overrides for external content
+
+-------------------------------------------------------------------
+Wed Apr 18 07:49:30 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.0.php
+- Changes since 18.03.90:
+  * None
+
+-------------------------------------------------------------------
+Fri Apr 06 07:09:40 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.03.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04-rc.php
+- Changes since 17.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Mar 08 23:51:59 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.3.php
+- Changes since 17.12.2:
+  * Rename categories file name + follow kdepim categories name
+  * Fix Bug 390620 Editing an Identity while New Message window is open causes the Signature to be updated in the New Message window (kde#390620)
+
+-------------------------------------------------------------------
+Wed Feb 07 08:48:27 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.2.php
+- Changes since 17.12.1:
+  * Fix Bug 388953 - Apply filters on folder doesn't work anymore (kde#388953)
+
+-------------------------------------------------------------------
+Thu Jan 11 23:41:13 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.1.php
+- Changes since 17.12.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 09 14:59:06 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.0.php
+- Changes since 17.11.90:
+  * define kf5_version
+  * Fix Bug 387193 - "Paste as attachment" pastes text/plain like normal (kde#387193)
+
+-------------------------------------------------------------------
+Sat Dec 02 10:12:37 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-rc.php
+- Changes since 17.11.80:
+  * We must show actions even we don't select text
+  * Revert this changes. We can add KDEPIM_DEV_VERSION so I don't understand why it was removed. Or it was necessary to remove KDEPIM_DEV_VERSION. but it always used
+  * Fix compilation
+  * [komposerwin] Save configuration on window close
+
+-------------------------------------------------------------------
+Mon Nov 20 06:59:16 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-beta.php
+- Changes since 17.08.3:
+  * Too many changes to list here
+- Dropped patches, now upstream:
+  * use-icon-filename-for-systray-icon.patch
+
+-------------------------------------------------------------------
+Thu Nov 09 23:11:53 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * Fix bug when welcome page is displayed
+  * Display  warning on top of composer + fix special case
+  * Increase dependancy
+  * Fix show label
+
+-------------------------------------------------------------------
+Tue Oct 17 00:32:19 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * Add kconf_update script to adapt to .desktop name change in 17.08
+  * Remove element not index. Now progress dialog is closed when we indexed all collections
+  * Don't eat each key event
+  * Update title when we switch folder.
+
+-------------------------------------------------------------------
+Tue Oct 10 09:23:53 UTC 2017 - wbauer@tmo.at
+
+- Add use-icon-filename-for-systray-icon.patch to use the desktop
+  theme's new mail icon in the system tray (boo#1055079, kde#354820)
+
+-------------------------------------------------------------------
+Thu Sep 28 16:47:28 UTC 2017 - wbauer@tmo.at
+
+- Recommend akonadi-search to make index-related functionality
+  work out of the box (boo#1053540, boo#1013687)
+
+-------------------------------------------------------------------
+Thu Sep 07 07:02:19 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * Fix potential crash
+  * Don't set KMKernel::xmlGuiInstanceName() by default (kde#362281)
+  * Increase default value
+  * Readd a top margin otherwise it's difficult to find splitter to resize it.
+
+-------------------------------------------------------------------
+Fri Aug 11 22:45:43 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Aug  5 18:18:08 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.08-rc.php
+
+
+-------------------------------------------------------------------
+Sat Jul 15 23:00:08 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * Add missing method for setting collection
+  * Remove unused include
+  * Remove not necessary include
+
+-------------------------------------------------------------------
+Wed Jun 07 17:42:51 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * Make sure that we use plugin when we use sendlater feature
+  * Remove old option
+  * Add missing helper_p include
+  * Fix list when we have empty string
+  * Fix create list of emails
+  * Fix typo
+  * Rename methods
+- Dropped upstreamed patches:
+  * 0001-Add-missing-helper_p-include.patch
+
+-------------------------------------------------------------------
+Fri May 19 05:09:44 UTC 2017 - lbeltrame@kde.org
+
+- Add 0001-Add-missing-helper_p-include.patch: upstream patch
+  to fix building with Qt 5.6
+
+-------------------------------------------------------------------
+Wed May 17 20:36:30 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * Use a mCurrentCollection variable as discussed with david.
+  * Clean stylesheet when we select a valid folder
+  * Allow to add more file after --attach
+
+-------------------------------------------------------------------
+Sun Apr 16 10:45:04 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * SearchDialog: improve performance by caching collection full paths.
+  * Use QFileInfo::exists(...) static method
+  * Migrate some files
+  * Use QByteArrayLiteral here
+  * Don't allow to edit collection name in this dialogbox
+  * USe new signal from indexing agent
+  * Minor optimization. If collection id is not remove we don't need to call
+  * Use nullptr
+
+-------------------------------------------------------------------
+Wed Apr 12 20:25:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * Minor optimization
+  * It was an error to hide maximumattachmentsize feature
+  * Minor optimization
+  * Fix includes/Minor optimization
+
+-------------------------------------------------------------------
+Fri Apr  7 22:26:44 UTC 2017 - wbauer@tmo.at
+
+- Unconditionally build with libgpgmepp-devel/libqgpgme-devel,
+  gpgmepp5 is no longer supported
+
+-------------------------------------------------------------------
+Fri Apr  7 19:38:54 UTC 2017 - fabian@ritter-vogt.de
+
+- Remove unnecessary ldconfig calls for ktnef
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:33 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-beta.php
+- Changes since 16.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Mar  9 12:39:07 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * Use isEmpty() directly
+
+
+-------------------------------------------------------------------
+Thu Feb  9 07:00:40 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Sat Jan 14 08:58:32 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+-------------------------------------------------------------------
+Sat Dec 24 03:55:38 UTC 2016 - wbauer@tmo.at
+
+- Recommend akonadi-import-wizard (instead of
+  akonadi-import-wizards), that's how the package is called
+
+-------------------------------------------------------------------
+Tue Dec 13 19:47:28 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Sat Dec  3 16:33:29 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 12:32:34 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+
+-------------------------------------------------------------------
+Sun Nov 27 12:31:43 UTC 2016 - tittiatcoke@gmail.com
+
+- Update spec-files to be consistent wiht KA
+

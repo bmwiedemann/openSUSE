@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Fri Apr  6 12:10:22 UTC 2012 - vuntz@opensuse.org
+
+- Add gromit-link-x11.patch: explicitly link to libX11 and libm to
+  fix build.
+
+-------------------------------------------------------------------
+Fri Jan 14 14:37:09 CET 2011 - vuntz@opensuse.org
+
+- Rework previous change:
+  + Do not change gromit-cflags.patch.
+  + Add gromit-no-DISABLE_DEPRECATED.patch to remove all the
+    *_DISABLE_DEPRECATED flags. It's better to have it as a
+    separate patch.
+
+-------------------------------------------------------------------
+Wed Jan 12 16:15:57 UTC 2011 - malcolmlewis@opensuse.org
+
+- Drop -DGDK_DISABLE_DEPRECATED flag until the GDK drawing code is
+  ported to cairo.
+  http://mail.gnome.org/archives/commits-list/2010-August/msg05327.html 
+
+-------------------------------------------------------------------
+Sun Jun 14 02:36:06 CEST 2009 - vuntz@novell.com
+
+- Initial package.
+

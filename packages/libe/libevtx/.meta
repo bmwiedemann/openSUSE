@@ -1,0 +1,6 @@
+<package name="libevtx" project="openSUSE:Factory">
+  <title>Library to access the Windows XML Event Log (EVTX) format</title>
+  <description>Library and tooling to access the Windows XML Event Log (EVTX) format.  For the Windows pre-XML Event Log (EVT) format see: libevt 
+</description>
+  <devel project="security:forensics" package="libevtx"/>
+</package>

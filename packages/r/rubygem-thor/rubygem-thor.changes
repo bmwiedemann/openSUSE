@@ -1,0 +1,200 @@
+-------------------------------------------------------------------
+Mon Nov 12 17:49:13 UTC 2018 - mschnitzer@suse.com
+
+- updated to version 0.20.3
+
+  * Support old versions of `did_you_mean`.
+
+  # from version 0.20.2
+  * Fix `did_you_mean` support.
+
+  # from version 0.20.1
+  * Support new versions fo ERB.
+  * Fix `check_unknown_options!` to not check the content that was not parsed, i.e. after a `--` or after the first unknown with `stop_on_unknown_option!`
+  * Add `did_you_mean` support.
+
+-------------------------------------------------------------------
+Mon Aug 21 06:00:39 UTC 2017 - mschnitzer@suse.com
+
+- updated to version 0.20.0
+  * Add check_default_type! to check if the default value of an option
+    matches the defined type. It removes the warning on usage and gives
+    the command authors the possibility to check for programming errors.
+  * Add disable_required_check! to disable check for required options in
+    some commands. It is a substitute of disable_class_options that was
+    not working as intended.
+  * Add inject_into_module. 
+
+-------------------------------------------------------------------
+Fri Dec  9 05:48:05 UTC 2016 - coolo@suse.com
+
+- updated to version 0.19.4
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Sun Nov 27 05:50:09 UTC 2016 - coolo@suse.com
+
+- updated to version 0.19.3
+ see installed CHANGELOG.md
+
+  ## 0.19.1, release 2014-03-24
+  * Fix `say` non-String break regression
+  
+  ## 0.19.0, release 2014-03-22
+  * Add support for a default to #ask
+  * Avoid @namespace not initialized warning
+  * Avoid private attribute? warning
+  * Fix initializing with unknown options
+  * Loosen required_rubygems_version for compatibility with Ubuntu 10.04
+  * Shell#ask: support a noecho option for stdin
+  * Shell#ask: change API to be :echo => false
+  * Display a message without a stack trace for ambiguous commands
+  * Make say and say_status thread safe
+  * Dependency for console io version check
+  * Alias --help to help on subcommands
+  * Use mime-types 1.x for Ruby 1.8.7 compatibility for Ruby 1.8 only
+  * Accept .tt files as templates
+  * Check if numeric value is in enum
+  * Use Readline for user input
+  * Fix dispatching of subcommands (concerning :help and *args)
+  * Fix warnings when running specs with `$VERBOSE = true`
+  * Make subcommand help more consistent
+  * Make the current command chain accessible in command
+
+-------------------------------------------------------------------
+Thu Oct 23 09:30:11 UTC 2014 - tboerger@suse.com
+
+- Updated last pieces for new macros (fate#318281, boo#1041418)
+
+-------------------------------------------------------------------
+Mon Oct 13 07:20:00 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Mon Mar 24 18:59:30 UTC 2014 - coolo@suse.com
+
+- updated to version 0.19.1, no changelog
+
+-------------------------------------------------------------------
+Sun Mar 23 06:56:31 UTC 2014 - coolo@suse.com
+
+- updated to version 0.19.0, no changelog
+
+-------------------------------------------------------------------
+Sat Jul 20 11:10:45 UTC 2013 - coolo@suse.com
+
+- fix update-alternatives usage
+
+-------------------------------------------------------------------
+Fri Apr 12 09:20:53 UTC 2013 - coolo@suse.com
+
+- updated to version 0.18.1
+
+-------------------------------------------------------------------
+Thu Jan 24 06:37:33 UTC 2013 - coolo@suse.com
+
+- updated to version 0.17.0
+ * Add better support for tasks that accept arbitrary additional arguments (e.g. things like `bundle exec`)
+ * Add #stop_on_unknown_option!
+ * Only strip from stdin.gets if it wasn't ended with EOF
+ * Allow "send" as a task name
+ * Allow passing options as arguments after "--"
+ * Autoload Thor::Group
+
+-------------------------------------------------------------------
+Sun Aug 26 05:32:09 UTC 2012 - coolo@suse.com
+
+- updated to version 0.16.0
+  * Add enum to string arguments
+
+-------------------------------------------------------------------
+Wed Aug  1 04:55:59 UTC 2012 - coolo@suse.com
+
+- update to 0.15.4
+  * Fix regression when destination root contains reserved regexp characters
+  
+  == 0.15.3, release 2012-06-18
+  * Support strict_args_position! for backwards compatibility
+  * Escape Dir glob characters in paths
+  
+  == 0.15.2, released 2012-05-07
+  * Added print_in_columns
+  * Exposed terminal_width as a public API
+  
+  == 0.15.1, release 2012-05-06
+  * Fix Ruby 1.8 truncation bug with unicode chars
+  * Fix shell delegate methods to pass their block
+  * Don't output trailing spaces when printing the last column in a table
+  
+  == 0.15, released 2012-04-29
+  * Alias method_options to options
+  * Refactor say to allow multiple colors
+  * Exposed error as a public API
+  * Exposed file_collision as a public API
+  * Exposed print_wrapped as a public API
+  * Exposed set_color as a public API
+  * Fix number-formatting bugs in print_table
+  * Fix "indent" typo in print_table
+  * Fix Errno::EPIPE when piping tasks to `head`
+  * More friendly error messages
+
+-------------------------------------------------------------------
+Tue Jul 31 12:55:48 UTC 2012 - jreidinger@suse.com
+
+- use new gem2rpm to provide new provisions 
+
+-------------------------------------------------------------------
+Fri Mar 23 10:37:33 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Factory preparation
+
+-------------------------------------------------------------------
+Mon Feb 20 23:58:46 UTC 2012 - mrueckert@suse.de
+
+- added missing provides
+
+-------------------------------------------------------------------
+Tue Aug 16 12:27:46 UTC 2011 - mrueckert@suse.de
+
+- change license header to "MIT and Ruby" (bnc#712368)
+
+-------------------------------------------------------------------
+Wed Jul 20 16:45:15 UTC 2011 - mrueckert@suse.de
+
+- regenerate with latest gem2rpm
+  - split out doc and testsuite subpackages
+- add provides for the versioned name used in the requires
+
+-------------------------------------------------------------------
+Thu Dec  9 16:18:29 UTC 2010 - chris@computersalat.de
+
+- update to version 0.14.6
+  * Fix a load order bug and add rake as development dependency.
+
+-------------------------------------------------------------------
+Thu Nov 18 17:47:52 UTC 2010 - mrueckert@suse.de
+
+- update to version 0.14.4
+
+-------------------------------------------------------------------
+Mon Aug 30 13:45:42 UTC 2010 - mrueckert@suse.de
+
+- update to version 0.14.0
+
+-------------------------------------------------------------------
+Mon Jun 14 18:25:54 UTC 2010 - mrueckert@suse.de
+
+- update to version 0.13.6
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Thu Feb 18 22:24:06 UTC 2010 - prusnak@suse.cz
+
+- created package
+

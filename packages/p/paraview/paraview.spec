@@ -19,7 +19,7 @@
 %define major_ver 5.6
 
 Name:           paraview
-Version:        5.6.1
+Version:        5.6.2
 Release:        0
 Summary:        Data analysis and visualization application
 License:        BSD-3-Clause
@@ -120,6 +120,8 @@ for ParaView or to embed ParaView Catalyst in a simulation program.
 %patch9 -p1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+
 # Prepare for gcc 4.9.0: work around gcc 4.9.0 regression
 # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=61294
 sed -i -e 's/-Wl,--fatal-warnings//' VTK/CMake/vtkCompilerExtraFlags.cmake

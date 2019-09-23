@@ -1,0 +1,6 @@
+<package name="perl-Email-MIME-Encodings" project="openSUSE:Factory">
+  <title>A Unified Interface to MIME Encoding and Decoding</title>
+  <description>This module simply wraps MIME::Base64 and MIME::QuotedPrint so that you can throw the contents of a Content-Transfer-Encoding header at some text and have the right thing happen.
+  </description>
+  <devel project="devel:languages:perl" package="perl-Email-MIME-Encodings"/>
+</package>

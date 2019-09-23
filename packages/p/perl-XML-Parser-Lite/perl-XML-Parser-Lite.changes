@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Mon Aug 20 06:21:25 UTC 2018 - coolo@suse.com
+
+- updated to 0.722
+   see /usr/share/doc/packages/perl-XML-Parser-Lite/Changes
+
+  0.722 2018-08-19 PHRED
+      - Remove unnecessary tests [github/paultcochrane for all]
+      - Fix link to dist repo
+      - Added continuous integration configurations
+      - Minor fixes and cosmetic changes to make code adhere better to current
+        Perl best practices
+      - Documentation fixes
+
+-------------------------------------------------------------------
+Sun Jun  7 09:15:02 UTC 2015 - coolo@suse.com
+
+- updated to 0.721
+   see /usr/share/doc/packages/perl-XML-Parser-Lite/Changes
+
+-------------------------------------------------------------------
+Fri Apr 17 11:44:22 UTC 2015 - coolo@suse.com
+
+- initial package 
+

@@ -1,0 +1,479 @@
+-------------------------------------------------------------------
+Wed Aug  1 12:38:24 UTC 2018 - lnussel@suse.de
+
+- can't package database in /var/lib/GeoIP anymore as it breaks with
+  transactional updates (boo#1093352). Ideally one would put the
+  static version in /usr/share with the files in /var overriding
+  that. Since GeoIP is considered deprecated in favor of
+  libmaxminddb anyways, we'll just ship GeoIP-data as empty shell to
+  own the files for uninstall.
+
+-------------------------------------------------------------------
+Thu Mar 15 12:48:32 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.6.12:
+  * Populate metro and area code when performing lookups in IPv6
+    City databases. Previously this was only done when using IPv4
+    City databases.
+- Modernise spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Nov 16 10:09:53 UTC 2017 - jengelh@inai.de
+
+- Rectify RPM groups.
+  Remove pointless --with-pic since there are no static libs.
+
+-------------------------------------------------------------------
+Thu Nov 16 09:46:12 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.6.11:
+  * Fix use of a NULL pointer when opening a corrupt database with
+    GeoIP_open
+  * GeoIP_database_info now returns the full version string rather
+    than incorrectly truncating it.
+
+-------------------------------------------------------------------
+Thu Jun 16 09:06:14 UTC 2016 - martin.liska@suse.com
+
+- Fix compilation errors seen by GCC6.
+
+-------------------------------------------------------------------
+Thu Feb  4 20:08:42 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.6.9
+  * Fix a regression introduced in version 1.6.8, which caused 
+    GeoIP_database_info to erroneously return NULL.
+- Changes for 1.6.8
+  * Allow compilation on older systems by relaxing the autoconf 
+    and automake minimum versions. Thank you, Jose Rubio!
+  * Avoid potential problems in multi-threaded environments by 
+    consistently using pread() rather than read().
+  * Fix various small issues reported by clang's static analyser.
+
+-------------------------------------------------------------------
+Mon Nov 16 11:05:00 UTC 2015 - mrueckert@suse.de
+
+- Update to 1.6.7
+  * Fixed a MSVC parser stack overflow when parsing regionName.c
+    and timeZone.c. Fix by elliotlo. GitHub #64.
+  * Updated region codes and timezones.
+    When using GEOIP_MEMORY_CACHE with an invalid database file,
+    the search tree traversal could attempt to read memory outside
+    of the memory allocated for the memory cache, resulting in a
+    segmentation fault. A check was added to ensure that the
+    traversal code does not try to read beyond the end of the file,
+    whether in memory, memory mapped, or on disk.
+  * Previously the return values from file reads were ignored. We now
+    check these values to ensure that there were no errors.
+- copy the tools from the debian package to work with the database
+  files. new BR gcc-c++. Files are installed into the same path as
+  on debian /usr/lib/geoip/. new binaries:
+  /usr/lib/geoip/geoip-generator
+  /usr/lib/geoip/geoip-generator-asn
+  /usr/lib/geoip/v4-to-v6-layout.pl
+
+-------------------------------------------------------------------
+Mon Sep 28 15:05:10 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.6.6
+  * Replaced usage of deprecated fileno, read, and lseek on Visual 
+    Studio 2005+ with their ISO C++ conformant replacements.
+  * A warning about using a double as a float was fixed.
+  * Fixed segfault when doing a lookup on an empty database.
+  * Fixed a memcheck error from valgrind in the _check_mtime 
+    function.
+  * Fixed _check_mtime to check the return value of gettimeofday 
+    rather than just assuming it worked.
+
+-------------------------------------------------------------------
+Thu Mar 12 20:34:17 UTC 2015 - astieger@suse.com
+
+- Remove unused zlib build requirement
+- fix pubpackage arch build error, for SLE 11 SP3
+
+-------------------------------------------------------------------
+Tue Mar 10 16:17:50 UTC 2015 - jweberhofer@weberhofer.at
+
+* Updated LICENSE, using the upstream version.
+
+* The GPL license has been removed:test-driver is licensed under the GPL but
+  is not packaged, libGeoIPUpdate is no longer part of the package.
+
+* Changed handling of ghost files.
+
+* Moved data into a seperate package.
+
+-------------------------------------------------------------------
+Fri Mar  6 18:40:37 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.6.5
+  * A segmentation fault in geoiplookup was fixed when the utility 
+    was passed an invalid database. (Reported in Red Hat 
+    bug #1180874.)
+  * Additional validation was added for validation of the size used 
+    in the creation of the index cache. (Based on discussion in 
+    Red Hat bug #832913.)
+  * Changed the code to only look up country codes by using 
+    functions which ensure that we do not try to look past the end 
+    of an array. (Reported by Ivan Sorokin. GitHub #53)
+
+-------------------------------------------------------------------
+Sat Feb 21 10:33:33 UTC 2015 - mpluskal@suse.com
+- Disable checks, they fail with currently provided data file.
+- Update to 1.6.4:
+  + Update Fips code
+  + Several issues with the MinGW build were fixed.
+  + Use a constructor in pread.c to ensure the critical section is 
+    always initialized.
+  + Added missing include of io.h on Windows
+  + Fixed configure warning that 'missing' script is too old or 
+    missing.
+  + Previously nmake /f Makefile.vc clean would fail on Windows. This was fixed.
+  + Obsolete win32 and NetWare make files were removed.
+  + Numerous documentation updates.
+- Changes from 1.6.3:
+  + Added a GEOIP_SILENCE flag. Include this flag when calling 
+    GeoIP_open to prevent any messages from being written to stderr.
+  + Mitigate a possible race condition when running nuder threads 
+    in the GeoIP_cleanup function.
+  + Added some recommendations to the docs on using this library 
+    in a threaded application.
+  + Fixed some bugs discovered by coverity, including failure to 
+    check some system call return values and making sure all 
+    strings are null-terminated
+- Changes from 1.6.2:
+  + Two files required for building on Win32 were missing from the 
+    1.6.1 release. These files were added. There are no changes 
+    affecting other platforms.
+- Changes from 1.6.1:
+  + Improve Win32 support.
+  + Update FIPS codes.
+- Changes from 1.6.0:
+  + The GeoIP Update program was move to its own repo and source 
+    distribution.
+
+-------------------------------------------------------------------
+Wed Jul 31 14:49:02 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.5.1:
+  + Update time_zone for Ontario, Canada.
+  + geoiplookup and geoiplookup6 exit code is 0 when user asked for
+    help.
+  + Added -h option to geoiplookup6.
+  + Do not load the database file if nodes and file size do not
+    make sense.
+  + Keep README and man pages in pure ascii.
+  + It doesn't make sense to use GEOIP_INDEX_MODE with small
+    databases like GEOIP_COUNTRY_EDITION. Instead of undefined
+    behaviour we handle it silently as GEOIP_MEMORY_MODE.
+  + Update FIPS codes for Greece.
+- Changes from version 1.5.0:
+  + Rename custom_directory to GeoIP_custom_directory.
+  + Make sure the database match the requested type. This is
+    helpful for Databases with the same default name and the
+    general geoiplookup form (geoiplookup without a specific
+    database).
+  + apps/geoiplookup6.c use the ipnum instead of the hostname
+    for lookups.
+  + Use configure.ac instead of configure.in.
+  + Region lookup is a bit faster.
+  + Add pkg-config file.
+  + Updates required to build a Windows DLL under MinGW.
+  + Make API thread safe.
+  + geoiplookup's default charset is UTF8 -l change the charset
+    back to iso8859-1.
+  + geoipupdate skips \r otherwise it might be part of the last
+    product_id.
+  + Update time zones.
+  + Update Region codes.
+  + Remove the unused CITYCONFIDENCE* database types.
+  + bootstrap rebuilds ltmain.sh.
+  + Update README.OSX for Lion.
+  + Change Macedonia to Macedonia, The Former Yugoslav Republic of.
+  + Add region_name to geoiplookup GEOIP_CITY_EDITION_REV1.
+  + Add region_name to geoiplookup GEOIP_CITY_EDITION_REV0.
+  + Add a --disable-data-files option.
+  + Add GEOIP_ACCURACYRADIUS_EDITION and
+    GEOIP_ACCURACYRADIUS_EDITION_V6.
+  + Add more database types GEOIP_COUNTRYCONF_EDITION,
+    GEOIP_CITYCONF_EDITION, GEOIP_REGIONCONF_EDITION and
+    GEOIP_POSTALCONF_EDITION.
+  + Fix default filenames for GEOIP_NETSPEED_EDITION_REV1 and
+    GEOIP_NETSPEED_EDITION_REV1_V6.
+- Add pkg-config BuildRequires: needed in order for the pkgconfig()
+  provides to be automatically provided.
+- Drop libtool BuildRequires and call to autoreconf: the tarball is
+  in good condition now.
+
+-------------------------------------------------------------------
+Wed Feb  6 09:59:48 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-2.0+ and LGPL-2.1+
+  Clean up
+
+-------------------------------------------------------------------
+Mon Feb  4 09:05:41 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Tue May 29 14:47:58 UTC 2012 - jengelh@inai.de
+
+- Regenerate autotools files manually to resolve build failure
+  stemming from automatic mode
+
+-------------------------------------------------------------------
+Wed Apr 11 18:40:40 UTC 2012 - andreas.stieger@gmx.de
+
+- add build requirement libtool
+
+-------------------------------------------------------------------
+Sat Mar 24 00:00:40 UTC 2012 - poeml@cmdline.net
+
+- run libtoolize -f, or make will fail
+- fix filelist, which had a hardcoded version number
+
+-------------------------------------------------------------------
+Fri Mar 23 22:43:06 UTC 2012 - poeml@cmdline.net
+
+- update to 1.4.8
+  * Fix GEOIP_DOMAIN_EDITION_V6
+  * Add new Datatypes GEOIP_NETSPEED_EDITION_REV1_V6 and
+      GEOIP_NETSPEED_EDITION_REV1
+  * Fix possible directory traversal weakness in geoipupdate-pureperl.pl with
+      malicious update server
+  * Fix GEOIP_ORG_EDITION_V6 and GEOIP_ISP_EDITION_V6
+
+-------------------------------------------------------------------
+Sat Jan 28 15:27:16 UTC 2012 - coolo@suse.com
+
+- use original tar
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:35 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Fri Dec 16 12:52:41 UTC 2011 - lnussel@suse.de
+
+- remove nonexistant libGeoIP requirement from libGeoIP-devel-32bit
+
+-------------------------------------------------------------------
+Fri Sep 16 17:50:18 UTC 2011 - jengelh@medozas.de
+
+- Add libGeoIP-devel to baselibs
+- Remove redundant tags/sections
+
+-------------------------------------------------------------------
+Mon May 23 08:42:37 UTC 2011 - lnussel@suse.de
+
+- new version 1.4.7
+  * better IPv6 support
+  * various bug fixes
+- add baselibs.conf
+
+-------------------------------------------------------------------
+Thu Jun 18 09:49:54 UTC 2009 - lnussel@novell.com
+
+- move database files to /var/lib/GeoIP
+
+-------------------------------------------------------------------
+Wed Jun 17 18:02:31 CEST 2009 - prusnak@suse.cz
+
+- added tool which fetches the current GeoIP data (geoip-fetch)
+
+-------------------------------------------------------------------
+Thu May 28 11:01:18 CEST 2009 - lnussel@suse.de
+
+- new version 1.4.6 (bugfix release)
+
+-------------------------------------------------------------------
+Thu Dec  4 13:54:16 CET 2008 - lnussel@suse.de
+
+- add GPL file (bnc#449068)
+
+-------------------------------------------------------------------
+Wed Sep 17 17:58:06 CEST 2008 - lnussel@suse.de
+
+- new version 1.4.5
+  * new functions GeoIP_range_by_ip_delete, GeoIP_range_by_ip, array access functions
+  * ipv6 support
+  * http proxy support
+  * more time zones
+
+-------------------------------------------------------------------
+Sun Sep 14 11:39:12 CEST 2008 - lnussel@suse.de
+
+- recommends main package due to data file
+
+-------------------------------------------------------------------
+Tue Jan 22 09:54:25 CET 2008 - lnussel@suse.de
+
+- new version 1.4.4, breaks ABI wrt GeoIP_country_code!
+  * Updated original geoipupdate to return "Invalid product ID or
+    subscription expired"
+  * Added BL/Saint Barthelemy, MF/Saint Martin (ISO-3166-1
+    additions)
+  * Check for illegal IP strings, return 0 if IP is not well formed
+    IPv4 e.g. 1.2.3.4.5 and 1.2.3
+  * Clarified that while core GeoIP library is LGPL, libGeoIPUpdate
+    depends on md5.c and types.h which are GPL.
+  * speedup the conversion from ipstring to ipnum in
+    _GeoIP_addr_to_num. Doubles the speed of GEOIP_MEMORY_CACHE and
+    GEOIP_MMAP_CACHE
+  * Added new mmap shared memory caching option, GEOIP_MMAP_CACHE
+
+-------------------------------------------------------------------
+Tue Oct  9 06:15:45 CEST 2007 - mrueckert@suse.de
+
+- move the ldconfig calls to the correct package
+
+-------------------------------------------------------------------
+Sun Oct  7 07:56:45 CEST 2007 - mrueckert@suse.de
+
+- new version 1.4.3
+  ! CHANGE with geoiplookup facility: -v flag now returns database
+    info for all databases, not just GeoIP Country
+  * Added ability to get netmask of network block from last lookup
+    using GeoIP_last_netmask
+  * Fixed GeoIP_database_info bug with GeoLite City
+  * Replaced 4 with sizeof(char*) to fix issues with geoipupdate on
+    64 Bit machines
+  * Added GeoIP_set_charset function - enables UTF8 output of city
+    name if GEOIP_CHARSET_UTF8 flag is passed to GeoIP_set_charset
+  * Fixed segfault issue if calling GeoIP_db_avail before opening
+    a database
+  * Added continent_code to GeoIP City's record struct
+    (Frank Mather)
+- changes to the package layout:
+  - splitted out library package (libGeoIP1)
+  - renamed devel package GeoIP-devel to libGeoIP-devel
+
+-------------------------------------------------------------------
+Thu Aug 30 00:30:58 CEST 2007 - mrueckert@suse.de
+
+- we dont need zlib-devel to link against libGeoIP
+
+-------------------------------------------------------------------
+Thu Aug 29 16:28:01 CEST 2007 - mrueckert@suse.de
+
+- spec file cleanup
+- fix rpmlint warnings
+
+-------------------------------------------------------------------
+Wed Aug 29 12:03:20 CEST 2007 - crrodriguez@suse.de
+
+- run ldconfig
+- fix devel package dependencies 
+
+-------------------------------------------------------------------
+Thu Apr  5 13:32:05 CEST 2007 - mrueckert@suse.de
+
+- submit the splitted package from the buildservice
+
+-------------------------------------------------------------------
+Thu Mar 29 12:15:06 CEST 2007 - lnussel@suse.de
+
+- new version 1.4.2
+  * Replaced CS/Serbia and Montenegro with RS/Serbia, removed
+    ZR/Zaire, added ME/Montenegro
+  * Added AX/Aland Islands, GG/Guernsey, IM/Isle of Man, JE/Jersey
+    (ISO-3166-1 changes)
+  * Added GeoIP_time_zone_by_country_and_region(),
+    GeoIP_region_name_by_code()
+  * Added -d flag to enable custom path for geoipupdate
+- don't package *.a and *.la
+- add zlib-devel to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 26 21:07:13 CET 2007 - mrueckert@suse.de
+
+- update to version 1.4.1
+  * Replaced CS/Serbia and Montenegro with RS/Serbia, removed
+    ZR/Zaire, added ME/Montenegro
+  * Added AX/Aland Islands, GG/Guernsey, IM/Isle of Man, JE/Jersey
+    (ISO-3166-1 changes)
+  * Added GeoIP_time_zone_by_country_and_region, to lookup zoneinfo
+    timezone by country and region (Frank Mather)
+  * Added GeoIP_region_name_by_code, to lookup region name from
+    region code (Frank Mather)
+  * added -f and -d flags to enable custom paths for geoiplookup
+    utility program (Frank Mather)
+  * Added benchmarks for GeoIP Region and City in test/benchmark.c
+    (Frank Mather)
+  * Fixed build issue when using --as-needed flag
+    (Diego 'Flameeyes' Pettenò)
+  * Add sanity checking for filename returned by MaxMind.com server
+    for geoipupdate filename (Dean Gaudet, arctic.org)
+  * Fixed memory leaks under error conditions, buffer overflow
+    using sprintf, and issue where a corrupted cache file could
+    core dump the file (Nick Galbreath, Right Media Inc)
+
+-------------------------------------------------------------------
+Sat Dec  9 00:56:13 CET 2006 - mrueckert@suse.de
+
+- spec file clean up
+- split out the devel files
+
+-------------------------------------------------------------------
+Sat Oct 28 14:48:36 CEST 2006 - lnussel@suse.de
+
+- update to version 1.4.0
+  * license change to LGPL
+  * various fixes
+
+-------------------------------------------------------------------
+Mon May 15 19:35:16 CEST 2006 - cthiel@suse.de
+
+- update to version 1.3.17
+  * Fixed headers for Windows/Netware compliation
+  * Updated README documentation
+  * Updated geoipupdate so that it writes file as it is uncompressed inst
+    of storing entire GeoIP.dat file in memory
+  * Updated geoiplookup so that it returns GeoIP Domain Name if available
+  * Updated geoipupdate so that it reports whether databases are updated
+    in non-verbose mode
+  * Fixed compliation error in GeoIPUpdate.c
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:47 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 15 10:00:58 CEST 2005 - lnussel@suse.de
+
+- new version 1.3.14
+
+-------------------------------------------------------------------
+Mon Jul  4 09:55:26 CEST 2005 - lnussel@suse.de
+
+- fix gcc warnings (#95085)
+
+-------------------------------------------------------------------
+Thu Nov 25 16:18:01 CET 2004 - lnussel@suse.de
+
+- new version 1.3.8
+
+-------------------------------------------------------------------
+Thu Nov 18 01:52:51 CET 2004 - ro@suse.de
+
+- fixed file list 
+
+-------------------------------------------------------------------
+Thu Jul 15 18:05:48 CEST 2004 - lnussel@suse.de
+
+- new version 1.3.5
+- fix missing prototype and a memleak
+
+-------------------------------------------------------------------
+Fri Apr 16 18:21:46 CEST 2004 - lnussel@suse.de
+
+- fix missing return value in main() of some test programs
+
+-------------------------------------------------------------------
+Mon Nov 24 13:47:24 CET 2003 - lnussel@suse.de
+
+- initial package, version 1.3.1
+

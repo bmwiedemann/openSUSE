@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Wed Sep 11 12:29:13 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.38.0
+  * Fixed OS detection in the Apache plugin on Scientific Linux.
+
+-------------------------------------------------------------------
+Mon Aug 26 10:40:44 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.37.2
+  * Turn off session tickets for apache plugin by default
+  * Stop disabling TLS session tickets in Apache as it caused TLS 
+    failures on some systems.
+
+-------------------------------------------------------------------
+Wed Jul 17 13:35:38 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.36.0 (bsc#1141928)
+  * The error message when Certbot's Apache plugin is unable to 
+    modify your Apache configuration has been improved.
+
+-------------------------------------------------------------------
+Tue Jun 18 09:47:51 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.35.1
+  * sync with main certbot package
+
+-------------------------------------------------------------------
+Sat May 18 23:26:07 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.34.2:
+  * lockstep with main certbot package
+
+-------------------------------------------------------------------
+Mon Mar 18 09:22:45 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.32.0
+  * Apache plugin now respects CERTBOT_DOCS environment variable
+    when adding command line defaults.
+  * Tests execution for certbot, certbot-apache and certbot-nginx 
+    packages now relies on pytest.
+
+-------------------------------------------------------------------
+Fri Feb  8 10:35:28 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.31.0
+  * Apache plugin now attempts to configure all VirtualHosts matching 
+    requested domain name instead of only a single one when answering 
+    the HTTP-01 challenge.
+
+-------------------------------------------------------------------
+Tue Jan 29 11:43:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.30.2:
+  * Various small fixes
+
+-------------------------------------------------------------------
+Fri Nov 16 17:29:50 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.28.0
+  * Stop preferring TLS-SNI.
+  * The grammar used by Augeas parser in Apache plugin was updated 
+    to fix various parsing errors.
+
+-------------------------------------------------------------------
+Fri Sep 14 08:21:34 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.27.1
+  * parameter name in OpenSUSE overrides for default parameters
+  * several other fixes
+
+-------------------------------------------------------------------
+Mon Sep  3 12:05:48 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update runtime requirements
+
+-------------------------------------------------------------------
+Wed Aug 29 10:37:30 UTC 2018 - mcalabkova@suse.com
+
+- Packaged license and readme
+
+-------------------------------------------------------------------
+Wed Aug 29 09:44:39 UTC 2018 - mcalabkova@suse.com
+
+- Split the module from the main certbot package

@@ -1,0 +1,32 @@
+Index: Clementine-36cc5b82f4daf5c2d4e93dc8072665e5a3ca622b/CMakeLists.txt
+===================================================================
+--- Clementine-36cc5b82f4daf5c2d4e93dc8072665e5a3ca622b.orig/CMakeLists.txt	2019-02-13 06:02:56.000000000 +0200
++++ Clementine-36cc5b82f4daf5c2d4e93dc8072665e5a3ca622b/CMakeLists.txt	2019-03-27 09:11:18.298146436 +0200
+@@ -399,11 +399,10 @@ endif(NOT QTIOCOMPRESSOR_INCLUDE_DIRS OR
+ # used to link to system installed qxt instead.
+ option(USE_SYSTEM_QXT "Don't set this option unless your system Qxt library has been compiled with the Clementine patches in 3rdparty" OFF)
+ if (USE_SYSTEM_QXT)
+-  find_path(QXTCORE_INCLUDE_DIRS qxtglobal.h PATH_SUFFIXES qt5/QxtCore)
+-  find_path(QXTGUI_INCLUDE_DIRS qxtglobalshortcut.h PATH_SUFFIXES qt5/QxtWidgets)
+-  set(QXT_INCLUDE_DIRS ${QXTCORE_INCLUDE_DIRS} ${QXTGUI_INCLUDE_DIRS})
++  find_path(QXTGLOBALSHORTCUT_INCLUDE_DIRS qxtglobalshortcut.h PATH_SUFFIXES qxtglobalshortcut)
++  set(QXT_INCLUDE_DIRS ${QXTGLOBALSHORTCUT_INCLUDE_DIRS})
+   # We only need its header. We don't need to link to QxtCore.
+-  find_library(QXT_LIBRARIES QxtWidgets-qt5)
++  find_library(QXT_LIBRARIES qxtglobalshortcut)
+ else (USE_SYSTEM_QXT)
+   add_definitions(-DQXT_STATIC -DBUILD_QXT_GUI -DBUILD_QXT_CORE)
+   set(QXT_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/qxt)
+Index: Clementine-36cc5b82f4daf5c2d4e93dc8072665e5a3ca622b/src/core/qxtglobalshortcutbackend.cpp
+===================================================================
+--- Clementine-36cc5b82f4daf5c2d4e93dc8072665e5a3ca622b.orig/src/core/qxtglobalshortcutbackend.cpp	2019-02-13 06:02:56.000000000 +0200
++++ Clementine-36cc5b82f4daf5c2d4e93dc8072665e5a3ca622b/src/core/qxtglobalshortcutbackend.cpp	2019-03-27 09:11:18.298146436 +0200
+@@ -41,7 +41,7 @@ bool QxtGlobalShortcutBackend::DoRegiste
+ void QxtGlobalShortcutBackend::AddShortcut(QAction* action) {
+   if (action->shortcut().isEmpty()) return;
+   QxtGlobalShortcut* shortcut = new QxtGlobalShortcut(action->shortcut(), this);
+-  connect(shortcut, SIGNAL(activated()), action, SLOT(trigger()));
++  connect(shortcut, &QxtGlobalShortcut::activated, action, &QAction::trigger);
+   shortcuts_ << shortcut;
+ }
+ 

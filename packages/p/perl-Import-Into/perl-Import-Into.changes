@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Fri Aug 28 09:53:32 UTC 2015 - coolo@suse.com
+
+- updated to 1.002005
+   see /usr/share/doc/packages/perl-Import-Into/Changes
+
+  1.002005 - 2015-08-28
+    - fix level as a hashref parameter
+
+-------------------------------------------------------------------
+Fri Jul 25 09:31:59 UTC 2014 - coolo@suse.com
+
+- updated to 1.002004
+   - fix prerequisite declarations for older toolchain
+ 
+ 1.002003 - 2014-07-09
+   - module loading is now done while importing, making it unnecessary to load
+     them beforehand (RT#96995, Christian Walde)
+ 
+ 1.002002 - 2014-05-06
+   - minor metadata updates
+
+-------------------------------------------------------------------
+Sat Mar 22 19:05:03 UTC 2014 - coolo@suse.com
+
+- updated to 1.002001
+  - fix tests and Makefile.PL to support perl 5.6
+  - allow specifying by caller level, as well as specifying file, line,
+    and version
+
+-------------------------------------------------------------------
+Thu Aug  1 13:49:28 UTC 2013 - coolo@suse.com
+
+- initial package 1.001001
+    * created by cpanspec 1.78.07
+

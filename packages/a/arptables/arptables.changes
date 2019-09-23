@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Fri Aug 24 10:20:05 UTC 2018 - jengelh@inai.de
+
+- Move arptables to arptables-legacy and use update-alternatives to
+  offer a selection mechanism.
+
+-------------------------------------------------------------------
+Wed Feb  8 12:41:06 UTC 2017 - jengelh@inai.de
+
+- Add missing space to description [boo#1022775]
+
+-------------------------------------------------------------------
+Sun Mar 29 20:52:27 UTC 2015 - jengelh@inai.de
+
+- Cleanup specfile, and note down git repo URL.
+
+-------------------------------------------------------------------
+Thu Jan 10 21:47:17 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 0.0.4
+* also print the -i and -o interface if -v is not specified
+* fix handling of inversion flag
+* let --proto-type also accept hexadecimal input
+* add xtables CLASSIFY target
+- Dropped arptables-install.diff and arptables-warnings.diff,
+  merged upstream
+- Switch version number to what upstream uses (1.0.4 -> 0.0.4),
+  yast/libzypp can handle downgrades for some years now
+
+-------------------------------------------------------------------
+Sat Sep 17 12:16:34 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Mon Mar 21 16:51:40 UTC 2011 - coolo@novell.com
+
+- licenses package is about to die
+
+-------------------------------------------------------------------
+Fri May  7 14:31:06 CEST 2010 - meissner@suse.de
+
+- actually apply RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Mon Mar 15 12:44:28 UTC 2010 - jengelh@medozas.de
+
+- drop JF fork and use the mainline arptables again
+- update to v0.0.3-4
+  * Update the userspace arptables tool to kernels 2.6.16 and
+    above. A change in the kernel API broke compatibility with the
+    arptables tool around release 2.6.16, causing the filtering to
+    behave unexpectedly.
+
+-------------------------------------------------------------------
+Sat Dec 19 18:40:37 CET 2009 - jengelh@medozas.de
+
+- Enable parallel build
+
+-------------------------------------------------------------------
+Mon Sep  7 14:01:39 CEST 2009 - mt@suse.de
+
+- Fixed to close opened files (bnc#518204).
+
+-------------------------------------------------------------------
+Tue Jan 13 12:45:41 CET 2009 - mt@suse.de
+
+- Added symlink to the GPL-2.0.txt license file (bnc#424589).
+
+-------------------------------------------------------------------
+Fri Sep  5 16:23:41 CEST 2008 - mt@suse.de
+
+- Initial arptables_jf-0.0.8 package (fate#303394).
+

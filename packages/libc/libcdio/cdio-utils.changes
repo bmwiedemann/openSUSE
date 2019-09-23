@@ -1,0 +1,381 @@
+-------------------------------------------------------------------
+Mon Jun 11 09:28:44 UTC 2018 - kbabioch@suse.com
+
+- Update to version 2.0.0
+  - Fixed several memory leaks
+- Applied spec-cleaner
+- Require newer vcdimager
+
+-------------------------------------------------------------------
+Tue Sep  5 12:02:14 UTC 2017 - jengelh@inai.de
+
+- Remove --with-pic (only useful for static libs) and compact
+  --enable-static=n.
+- Change description to reflect the package content.
+
+-------------------------------------------------------------------
+Sun Sep  3 10:50:45 UTC 2017 - astieger@suse.com
+
+- update to 0.94:
+  * CD-TEXT fixes and improvements
+  * eject fixes
+  * various bug fixes
+  
+-------------------------------------------------------------------
+Tue Jun 16 11:14:07 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+- Remove ppc obsoletes/provides as it affects unsupported releases
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Jan 31 15:43:30 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.93
+  * Add cdio_free, iso9660_stat_free, and iso9660_xa_free functions.
+  * Deprecate mmc_isrc_track_read_subchannel
+  * Add mmc_get_track_isrc function.
+  * Update OS versions we recognize
+  * OSX, and MS Windows, ISO 9660 and other bug fixes
+  * Remove Coverty scan warnins and errors
+  * OS/2 driver performance update - KO Myung-Hun
+- Bump so versions 
+  * libcdio14 to libcdio16
+  * libiso9660-8 to libiso9660-10
+- Update baselibs.conf
+- Remove depreciated AUTHORS section
+
+-------------------------------------------------------------------
+Sun Feb 17 00:17:25 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 0.90
+  * CD-Text overhaul and API change (Leon Merten Lohse)
+  * Works again (somewhat) on MinGW; tolerence for Microsoft's C compiler (Pete Batard)
+  * UDF, Joliet and Rock-Ridge fixes (Pete Batard)
+  * OSX fixes (Natalia Portillo and Robert William Fuller)
+  * paranoia library removed as that is GPL 2-ish. This is now a separate project
+  * file names in cue files are relative to the cue file rather than cwd.
+  * Update mmc.h to include MMC-5 commands. (Or MMC-6 since it adds nothing new)
+  * Add mmc_cmd2str() to show MMC command name. Show that in some errors
+  * Add UDF reading to iso-read and iso-info via --udf or -U (Christophe Fergeau)
+  * bug fixes, more tests, update documentation
+
+-------------------------------------------------------------------
+Fri May 18 14:44:19 UTC 2012 - davejplater@gmail.com
+
+- Created seperate linked package cdio-utils to prevent cycles.
+
+-------------------------------------------------------------------
+Sun Apr 15 09:27:39 UTC 2012 - davejplater@gmail.com
+
+- Update to 0.83.git from 14/04/2012 git head.
+- libcdio-paranoia separated from libcdio due to license issues
+  see bnc#756564
+
+-------------------------------------------------------------------
+Fri Apr  6 13:36:03 UTC 2012 - davejplater@gmail.com
+
+- Update to libcdio-0.83, removed need for libcdio-mini by adding
+  linker library paths to sources in the spec file build section.
+- Upstream changes:
+ *Add retrieval SCSI sense reply from the most-recent MMC command.
+ *Add exclusive read/write access for devices which is used for
+  experimental writing/burning. Currently only on GNU/Linux and FreeBSD.
+ *MMC bug fixes
+ *FreeBSD drive list now shows empty drives.
+ *Add ability to retrieve SCSI tuple for a name and/or fake one up for
+  programs that wanto to cd-record compatible.
+ *Tolerance for OS's without timezone in their struct tm (e.g. Solaris)
+  added iso9660_set_{d,l}time_with_timezone
+ *Add mmc_get_disk_erasable
+ *Update MMC Feature Profile list, DVD Book types
+ *Reduce range of seek in paranoia_seek to be int32_t
+ *Remove some potential flaws found by Coverty's static analysis tool
+ *Add ISRC track info to cd-info output.
+ *Don't wrap-around volume adjustment for cdda-player. 
+ *Handle double-byte strings in CD-text
+ *--no-header on cd-info omits copyright and warranty
+  
+-------------------------------------------------------------------
+Sun Nov 13 09:32:01 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire
+
+-------------------------------------------------------------------
+Sun Nov 13 09:29:59 UTC 2011 - coolo@suse.com
+
+- one less _service file for factory
+
+-------------------------------------------------------------------
+Mon Mar 21 16:57:18 UTC 2011 - coolo@novell.com
+
+- licenses package is about to die
+ 
+-------------------------------------------------------------------
+Tue Feb  8 09:42:31 UTC 2011 - dimstar@opensuse.org
+
+- Rename Shared Object package to libcdio12, conforming the
+  libraries name.
+- Adjust rpmlintrc to only ignore shared lib names of the -mini
+  packages. This avoids missing shlib renames for the 'main'
+  package.
+
+-------------------------------------------------------------------
+Sun Jan 30 18:55:42 UTC 2011 - sagiben@gmail.com
+
+- Updated to version 0.82
+- Upstream changes :
+ *Remove all uses of CDIO_MIN_DRIVER,
+  CDIO_MAX_DRIVER, CDIO_MIN_DEVICE_DRIVER or CDIO_MAX_DEVICE_DRIVER.
+ *FreeBSD get_media_changed fixes
+ *MingGW/Msys compilation issues
+ *Add OS/2 driver
+ *Cross compilations fixes and uclinix is like GNU/Linux
+ *Numerous other bug fixes
+
+-------------------------------------------------------------------
+Mon Apr 26 11:36:24 CEST 2010 - ro@suse.de
+
+- add build-ignore for libcdio-mini-devel 
+
+-------------------------------------------------------------------
+Sun Jan 31 21:10:55 CET 2010 - jengelh@medozas.de
+
+- Package baselibs.conf
+
+-------------------------------------------------------------------
+Thu Aug  6 18:54:05 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 0.81:
+  * license of manual now GFDL 1.2 or later
+  * Nero image handling more complete.
+  * ISRC query for image files.
+  * Allow reading pregap of a track via get_track_pregap_lsn().
+  * Fixes of iso9660 time setting/getting routines, making them
+    reentrant.
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Tue Sep  9 12:30:19 CEST 2008 - sbrabec@suse.cz
+
+- Update Summary of *mini* packages (bnc#418304).
+
+-------------------------------------------------------------------
+Wed Jun 18 15:33:14 CEST 2008 - schwab@suse.de
+
+- Use autoreconf -i.
+
+-------------------------------------------------------------------
+Fri May 23 22:43:19 CEST 2008 - hpj@suse.de
+
+- Add libcdio-bnc394195-install-all-pc-files.patch (bnc#394195).
+
+-------------------------------------------------------------------
+Wed May 21 19:16:24 CEST 2008 - cthiel@suse.de
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Fri Apr 25 16:03:38 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 0.80:
+  * Add option to log summary output in cd-paranoia
+  * More string bounds checking to eliminate known string overflow
+    conditions, Savannah#21910
+  * add --mode="any" on cd-read which uses a mmc_read_sectors with
+    read-type CDIO_MMC_READ_TYPE_ANY.
+  * add --log-summary option to cd-paranoia. Unused option
+    --output-info (-i) removed
+  * some small packaging bugs fixed
+  * probably the last GPL v2 release; GPL v3 on the horizon.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Feb 27 18:59:31 CET 2008 - sbrabec@suse.cz
+
+- Fixed more possible memory allocation buffer overflows
+  (bnc#351127).
+
+-------------------------------------------------------------------
+Wed Jan  9 17:52:24 CET 2008 - sbrabec@suse.cz
+
+- Fixed buffer overflows for long Joliet names (#351127).
+
+-------------------------------------------------------------------
+Wed Dec  5 14:52:36 CET 2007 - ro@suse.de
+
+- provide main package name in library package for debuginfo
+  for mini package
+
+-------------------------------------------------------------------
+Fri Nov 16 14:00:19 CET 2007 - sbrabec@suse.cz
+
+- Removed unwanted NoSource preventing mirroring to Factory.
+
+-------------------------------------------------------------------
+Fri Nov  9 06:42:52 CET 2007 - crrodriguez@suse.de
+
+- fix build with gcc43
+- update to version 0.79
+ * libcdio cdparanoia doing the wrong thing on a single-sector read. Savannah patch #5999.
+ * Leds to an open file descriptor making it impossible of e.g.
+   unmounting a CDROM containing the file. Savannah bug #21147.
+ * bug #19221 (possibly): memory Leak opening an inaccessible device
+ * more than 30 other bugfixes
+- remove libtool archives with empty dependency_libs
+- exclude static libraries 
+
+-------------------------------------------------------------------
+Tue Aug  7 17:01:59 CEST 2007 - sbrabec@suse.cz
+
+- Fixed mini file list.
+
+-------------------------------------------------------------------
+Sun Aug  5 08:35:10 CEST 2007 - coolo@suse.de
+
+- adding versioned provides for upgrade
+
+-------------------------------------------------------------------
+Fri Jul 20 17:30:18 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 0.78.2:
+  * Fixed bug in libcdio.so version numbering.
+  * Added mmc-tool and mmc-close-tray.
+  * libudf: can now read (extract) file data, at least for ICB
+    strategy type 4.
+  * libcdio is starting to get updated for UTF-8 support.
+  * Fixes to eject.
+  * Other fixes.
+- Split package according to shared library packaging policy.
+- Added script to convert libcdio.spec to libcdio-mini.spec and
+  update library package names.
+
+-------------------------------------------------------------------
+Mon Mar 12 16:49:56 CET 2007 - sbrabec@suse.cz
+
+- Fixed NoSrc and Provides of temporary package.
+
+-------------------------------------------------------------------
+Fri Oct  6 16:35:33 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 0.77:
+  * Added object-oriented C++ wrapper.
+  * Replaced libpopt with getopt in binaries.
+  * Documented cd-paranoia.
+  * Added cdio_eject_media_drive.
+  * Added more generic read_sectors().
+  * Some provision for handling Rock-Ridge device numbers.
+  * Block read routines return success if asked to read 0 blocks.
+  * Start UDF handling
+  * Improved developer documentation.
+  * Code improvements.
+  * Bug fixes.
+  * Small cdda-player improvements.
+  * NRG checking parses file.
+  * Revised and improved example programs.
+  * Replaced all uses of strcat and strcpy with strncat and
+    strncpy.
+
+-------------------------------------------------------------------
+Mon Jul  3 16:19:33 CEST 2006 - max@suse.de
+
+- Added gcc-c++ to neededforbuild.
+
+-------------------------------------------------------------------
+Fri Jun 30 13:19:32 CEST 2006 - sbrabec@suse.cz
+
+- Fixed cyclic dependencies in a correct way.
+
+-------------------------------------------------------------------
+Tue Jun 27 18:43:46 CEST 2006 - sbrabec@suse.cz
+
+- Use NoSource in libcdio-mini.
+
+-------------------------------------------------------------------
+Thu Jun 22 18:35:39 CEST 2006 - sbrabec@suse.cz
+
+- Simpler solution of cyclic dependencies.
+
+-------------------------------------------------------------------
+Tue Jan 31 14:20:00 CET 2006 - sbrabec@suse.cz
+
+- Do not link with invalid rpath.
+- Enabled parallel build.
+- Fixed devel splitting.
+
+-------------------------------------------------------------------
+Thu Jan 26 15:51:26 CET 2006 - sbrabec@suse.cz
+
+- Added %install_info_prereq.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:30 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov  8 19:19:23 CET 2005 - sbrabec@suse.cz
+
+- Fixed libiso9660.la circular dependency prevention trick.
+
+-------------------------------------------------------------------
+Wed Oct 26 13:32:25 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 0.76.
+- Build as user.
+
+-------------------------------------------------------------------
+Fri Aug  5 11:00:41 CEST 2005 - sbrabec@suse.cz
+
+- Build with libcddb-1.2.1.
+
+-------------------------------------------------------------------
+Fri Jul 29 15:58:20 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 0.75.
+
+-------------------------------------------------------------------
+Mon May  9 13:08:25 CEST 2005 - sbrabec@suse.cz
+
+- Build with libcddb-1.0.2.
+
+-------------------------------------------------------------------
+Tue Apr 26 13:23:29 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 0.73.
+
+-------------------------------------------------------------------
+Fri Apr  1 08:39:02 CEST 2005 - meissner@suse.de
+
+- fixed gcc4 compile problem. 
+
+-------------------------------------------------------------------
+Thu Feb  3 14:30:09 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 0.72.
+
+-------------------------------------------------------------------
+Mon Jan 31 15:46:35 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 0.72rc2.
+
+-------------------------------------------------------------------
+Mon Jan 24 17:28:43 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 0.71.
+
+-------------------------------------------------------------------
+Tue Nov 09 14:52:28 CET 2004 - sbrabec@suse.cz
+
+- New SuSE package, version 0.70.
+- Work-around of circular dependency on libcddb and vcdimager.
+

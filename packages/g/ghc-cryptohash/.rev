@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>febd705135322d7ea56e47f5c6c76d0d</srcmd5>
+    <version>0.11.6</version>
+    <time>1432190165</time>
+    <user>coolo</user>
+    <comment>Collection of crypto hashes, fast, pure and practical</comment>
+    <requestid>307785</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c1d522b5e958525500314d51f9de494a</srcmd5>
+    <version>0.11.9</version>
+    <time>1464484378</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.9 
+
+- update to 0.11.7 (forwarded request 398205 from mimi_vx)</comment>
+    <requestid>398206</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4f8485a9e65eb2ea13f1c4625def50ae</srcmd5>
+    <version>0.11.9</version>
+    <time>1469081133</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411388</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>2f5c0d71719b3d7adccb182d62e03c64</srcmd5>
+    <version>0.11.9</version>
+    <time>1505503770</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524355</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>2d2748f36f809b9945df111cab9328b9</srcmd5>
+    <version>0.11.9</version>
+    <time>1527675484</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609772</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>85f078a2d0fc261cd0c6bc6886c54333</srcmd5>
+    <version>0.11.9</version>
+    <time>1532445399</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 0.11.9
+- update to 0.11.7
+- update to 0.11.6
+- Update to version 0.11.0</comment>
+    <requestid>623749</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>fcae95d3d86e1a735958b7717dc733f2</srcmd5>
+    <version>0.11.9</version>
+    <time>1540448637</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643374</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,58 @@
+From 48c1bbb9cbd6d6e71178e82fd45a7409efbb9d72 Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Wed, 27 Apr 2011 13:56:47 +0200
+Subject: [PATCH] dhcp-4.2.2-dhclient-option-checks
+References: bnc#643845
+
+---
+ client/dhclient.c | 6 +++---
+ common/options.c  | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/client/dhclient.c b/client/dhclient.c
+index b7a14fe..19a527b 100644
+--- a/client/dhclient.c
++++ b/client/dhclient.c
+@@ -3301,7 +3301,7 @@ void script_write_params (client, prefix, lease)
+ 		} else {
+ 			log_error("suspect value in %s "
+ 				  "option - discarded",
+-				  lease->filename);
++				  "filename");
+ 		}
+ 	}
+ 
+@@ -3314,7 +3314,7 @@ void script_write_params (client, prefix, lease)
+ 		} else {
+ 			log_error("suspect value in %s "
+ 				  "option - discarded",
+-				  lease->server_name);
++				  "server-name");
+ 		}
+ 	}
+ 
+@@ -4283,7 +4283,7 @@ static int check_domain_name(const char *ptr, size_t len, int dots)
+ 	const char *p;
+ 
+ 	/* not empty or complete length not over 255 characters   */
+-	if ((len == 0) || (len > 256))
++	if ((len == 0) || (len >= 256))
+ 		return(-1);
+ 
+ 	/* consists of [[:alnum:]-]+ labels separated by [.]      */
+diff --git a/common/options.c b/common/options.c
+index 56bb151..be44a70 100644
+--- a/common/options.c
++++ b/common/options.c
+@@ -3979,7 +3979,7 @@ pretty_escape(char **dst, char *dend, const unsigned char **src,
+ 			}
+ 		} else if (**src == '"' || **src == '\'' || **src == '$' ||
+ 			   **src == '`' || **src == '\\' || **src == '|' ||
+-			   **src == '&') {
++			   **src == '&' || **src == ';') {
+ 			if (*dst + 2 > dend)
+ 				return -1;
+ 
+-- 
+1.8.4
+

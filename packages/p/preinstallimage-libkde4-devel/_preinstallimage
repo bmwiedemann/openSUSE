@@ -1,0 +1,4 @@
+Name: libkde4-devel
+BuildRequires: libkde4-devel
+#!BuildIgnore: brp-trim-desktopfiles
+#!BuildIgnore: cputype-armv6

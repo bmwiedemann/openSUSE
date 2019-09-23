@@ -1,0 +1,154 @@
+-------------------------------------------------------------------
+Wed Aug 14 08:23:26 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Freshen a bit
+
+-------------------------------------------------------------------
+Sat Nov 14 22:10:12 UTC 2015 - jengelh@inai.de
+
+- Update groups and trim descriptions.
+- Remove redundant --with-pic; shared libraries always get it
+  anyway.
+- Name the utility package -tools as with many other pkgs.
+  Set its license.
+
+-------------------------------------------------------------------
+Sat Mar 21 07:35:05 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use url for source
+- Remove obsolete ppc provides/obsoletes
+
+-------------------------------------------------------------------
+Thu Sep  4 16:55:05 UTC 2014 - crrodriguez@opensuse.org
+
+- Just like the companion librawxxx, this package has screwed 
+  symbol names, fix them by exporting only the public API.
+  (libavc-fix-symbolexports.patch)
+
+-------------------------------------------------------------------
+Fri Dec  2 15:47:56 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Oct  3 16:31:50 UTC 2010 - davejplater@gmail.com
+
+- Update to version 0.5.4
+- Upstream changes :
+  panelctl.[c1]: apply patch from Jerry Fiddler to add options --guid,
+  --specid, --swversion, and --commands.
+
+-------------------------------------------------------------------
+Fri Dec 18 13:25:56 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Fri Jan  9 01:46:50 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Dec  4 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Oct  6 09:54:28 CEST 2008 - olh@suse.de
+
+- fix ordered comparison of pointer with integer zero (bnc#431913)
+
+-------------------------------------------------------------------
+Wed May 21 19:15:15 CEST 2008 - cthiel@suse.de
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Sat Aug  4 16:48:59 CEST 2007 - olh@suse.de
+
+- remove mkrfc2734 for 2.4 kernel
+  split libavc1394-0 package which contains only libraries
+
+-------------------------------------------------------------------
+Wed Jul 19 17:02:08 CEST 2006 - olh@suse.de
+
+- update to  0.5.3:
+  bugfixes
+  new avc1394_transaction_block2() function that returns the length
+  of the response.
+  Panel subunit indirect mode constants added to header.
+  new panelctl utility based upon 6200ch and 6200cmd from MythTV developers.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:23 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Sep 26 22:49:58 CEST 2005 - mls@suse.de
+
+- make devel package require base package
+
+-------------------------------------------------------------------
+Sat Jul  2 11:36:28 CEST 2005 - olh@suse.de
+
+- package all *.so files
+
+-------------------------------------------------------------------
+Fri Jul  1 15:51:51 CEST 2005 - olh@suse.de
+
+- update to 0.5.1
+
+-------------------------------------------------------------------
+Sun Jan 11 09:45:16 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Thu Nov 13 13:40:51 CET 2003 - sf@suse.de
+
+- update to 0.4.1
+
+-------------------------------------------------------------------
+Thu Jun 12 16:25:09 CEST 2003 - coolo@suse.de
+
+- fixing file list
+
+-------------------------------------------------------------------
+Thu Dec 12 09:44:55 CET 2002 - coolo@suse.de
+
+- actually adding the patch may help (noone noticed? :)
+
+-------------------------------------------------------------------
+Wed Dec 11 11:36:03 CET 2002 - coolo@suse.de
+
+- removed undefined symbols from the libraries
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Fri Jul 12 11:02:06 CEST 2002 - meissner@suse.de
+
+- rerurn auto* tools.
+
+-------------------------------------------------------------------
+Tue Mar 26 10:20:18 CET 2002 - sf@suse.de
+
+- initial version 0.3.1 
+

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4fc63886067dd37d677d7fb7cb8116a2</srcmd5>
+    <version>0.1.3</version>
+    <time>1542281910</time>
+    <user>dimstar_suse</user>
+    <comment>provides GIL-less audio playback support to other python packages</comment>
+    <requestid>645966</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>22cb4f8db35ec60ec45cd9824f4db5e1</srcmd5>
+    <version>0.1.3</version>
+    <time>1545648038</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659528</requestid>
+  </revision>
+</revisionlist>

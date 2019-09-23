@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4be8b6dc2359f87539d46b2f16e168e6</srcmd5>
+    <version>0.17.4</version>
+    <time>1554384134</time>
+    <user>dimstar_suse</user>
+    <comment>- Add subpackage vim-fzf with the original vim plugin for fzf (there
+  is also more extensive third party plugin on
+  https://github.com/junegunn/fzf.vim)
+- update to 0.17.4
+  * Added --layout option with a new layout called reverse-list.
+    --layout=reverse is a synonym for --reverse
+    --layout=default is a synonym for --no-reverse
+  * Preview window will be updated even when there is no match for
+    the query if any of the placeholder expressions (e.g. {q}, {+})
+    evaluates to a non-empty string.
+  * More keys for binding: shift-{up,down}, alt-{up,down,left,
+    right}
+  * fzf can now start when /dev/tty is not available by making
+    an educated guess.
+  * bash/zsh completion improvements
+  * install and uninstall scripts support generating files under
+    XDG_CONFIG_HOME on --xdg flag.
+- remove sed patch for non-excecutable fix (merged upstream)
+- initial package
+</comment>
+    <requestid>689314</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fbf61f04e3a4fd785c151731ceb97b2e</srcmd5>
+    <version>0.18.0</version>
+    <time>1555691978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.0:
+  - 0.18.0
+    - Added placeholder expression for zero-based item index: {n}
+      and {+n} fzf --preview 'echo {n}: {}'
+    - Added color option for the gutter: --color gutter:-1
+    - Added --no-unicode option for drawing borders in
+      non-Unicode, ASCII characters
+    - FZF_PREVIEW_LINES and FZF_PREVIEW_COLUMNS are exported to
+      preview process fzf still overrides LINES and COLUMNS as
+      before, but they may be reset by the default shell.
+    - Bug fixes and improvements See
+      https://github.com/junegunn/fzf/milestone/14?closed=1
+  - Update to 0.17.5:
+    - Bug fixes and improvements See
+      https://github.com/junegunn/fzf/milestone/13?closed=1
+    - Search query longer than the screen width is allowed (up to
+      300 chars)
+- Patch build-mode-pie.patch removed as it is unneeded
+  (we don't use Makefile anymore).
+</comment>
+    <requestid>695858</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>512804a27f6d2be892004e2244b346f3</srcmd5>
+    <version>0.18.0</version>
+    <time>1556022941</time>
+    <user>maxlin_factory</user>
+    <comment>- Remove pointless double extraction of tarball again.</comment>
+    <requestid>696454</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,220 @@
+From 6e631074330aa6ea210b05dae3a2dcf5223b311f Mon Sep 17 00:00:00 2001
+From: Jan Kara <jack@suse.cz>
+Date: Thu, 15 Aug 2019 11:19:20 +0200
+Subject: [PATCH] warnquota: Do not ignore errors in config file
+
+Currently warnquota ignores unknown variables, or lines we cannot parse
+in the config file. This is potentially dangerous as that may result
+in errors being missed and warnquota operating differently than
+administrator intended. Change warnquota to abort on errors in config
+file and provide -I option for ignoring errors for backward
+compatibility.
+
+Signed-off-by: Jan Kara <jack@suse.cz>
+---
+ common.c    | 13 ++++++---
+ common.h    |  4 +++
+ warnquota.c | 82 ++++++++++++++++++++++++++++++++++++++++++++++-------
+ 3 files changed, 85 insertions(+), 14 deletions(-)
+
+Index: quota-4.05/common.c
+===================================================================
+--- quota-4.05.orig/common.c
++++ quota-4.05/common.c
+@@ -61,17 +61,22 @@ void die(int ret, char *fmtstr, ...)
+ 	exit(ret);
+ }
+ 
+-void errstr(char *fmtstr, ...)
++void errstrv(char *fmtstr, va_list args)
+ {
+-	va_list args;
+-
+-	va_start(args, fmtstr);
+ 	if (enable_syslog)
+ 		do_syslog(LOG_ERR, fmtstr, args);
+ 	else {
+ 		fprintf(stderr, "%s: ", progname);
+ 		vfprintf(stderr, fmtstr, args);
+ 	}
++}
++
++void errstr(char *fmtstr, ...)
++{
++	va_list args;
++
++	va_start(args, fmtstr);
++	errstrv(fmtstr, args);
+ 	va_end(args);
+ }
+ 
+Index: quota-4.05/common.h
+===================================================================
+--- quota-4.05.orig/common.h
++++ quota-4.05/common.h
+@@ -8,6 +8,7 @@
+ #define GUARD_COMMON_H
+ 
+ #include <time.h>
++#include <stdarg.h>
+ 
+ #ifndef __attribute__
+ # if !defined __GNUC__ || __GNUC__ < 2 || (__GNUC__ == 2 && __GNUC_MINOR__ < 8) || __STRICT_ANSI__
+@@ -21,6 +22,9 @@ extern char *progname;
+ /* Finish programs being */
+ void __attribute ((noreturn)) die(int, char *, ...) __attribute__ ((__format__ (__printf__, 2, 3)));
+ 
++/* Print error from va_list */
++void errstrv(char *, va_list);
++
+ /* Print an error */
+ void errstr(char *, ...) __attribute__ ((__format__ (__printf__, 1, 2)));
+ 
+Index: quota-4.05/warnquota.c
+===================================================================
+--- quota-4.05.orig/warnquota.c
++++ quota-4.05/warnquota.c
+@@ -24,6 +24,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <errno.h>
++#include <stdarg.h>
+ #include <ctype.h>
+ #include <signal.h>
+ #include <grp.h>
+@@ -87,6 +88,7 @@
+ #define FL_GROUP 2
+ #define FL_NOAUTOFS 4
+ #define FL_NODETAILS 16
++#define FL_IGNORE_CFG_ERR 32
+ 
+ struct usage {
+ 	char *devicename;
+@@ -707,6 +709,22 @@ Unrecognized expression %%%c.\n"), varna
+ 	}
+ }
+ 
++static void print_cfg_err(char *fmt, ...)
++{
++	va_list args;
++
++	va_start(args, fmt);
++	errstrv(fmt, args);
++	va_end(args);
++	if (flags & FL_IGNORE_CFG_ERR) {
++		errstr(_("Ignoring error in config file.\n"));
++	} else {
++		errstr(_("Aborting. Use option -I if you want warnquota to "
++			"ignore errors in the config file as it used to in "
++			"older versions.\n"));
++	}
++}
++
+ /*
+  * Reads config parameters from configfile
+  * uses default values if errstr occurs
+@@ -771,9 +789,18 @@ static int readconfigfile(const char *fi
+ 				continue;
+ 		}
+ 		len = bufpos + strlen(buff+bufpos);
+-		if (buff[len-1] != '\n')
+-			errstr(_("Line %d too long. Truncating.\n"), line);
+-		else {
++		if (buff[len-1] != '\n') {
++			if (len == IOBUF_SIZE-1) {
++				print_cfg_err(
++					_("line %d: Line too long! Maximum is %d.\n"),
++				        line, IOBUF_SIZE-1);
++				if (flags & FL_IGNORE_CFG_ERR)
++					continue;
++				return -1;
++			}
++			/* Last line without \n. Just pretend there is one. */
++			len++;
++		} else {
+ 			len--;
+ 			if (buff[len-1] == '\\') {	/* Should join with next line? */
+ 				bufpos = len-1;
+@@ -886,15 +913,45 @@ cc_parse_err:
+ 				sstrncpy(config->ldap_mail_attr, value, CNF_BUFFER);
+ 			else if(!strcmp(var, "LDAP_DEFAULT_MAIL_DOMAIN"))
+ 				sstrncpy(config->default_domain, value, CNF_BUFFER);
++#else
++			else if (!strcmp(var, "LDAP_MAIL") ||
++				 !strcmp(var, "LDAP_TLS") ||
++				 !strcmp(var, "LDAP_HOST") ||
++				 !strcmp(var, "LDAP_PORT") ||
++				 !strcmp(var, "LDAP_URI") ||
++				 !strcmp(var, "LDAP_BINDDN") ||
++				 !strcmp(var, "LDAP_BINDPW") ||
++				 !strcmp(var, "LDAP_BASEDN") ||
++				 !strcmp(var, "LDAP_SEARCH_ATTRIBUTE") ||
++				 !strcmp(var, "LDAP_MAIL_ATTRIBUTE") ||
++				 !strcmp(var, "LDAP_DEFAULT_MAIL_DOMAIN")) {
++				print_cfg_err(_("line %d: LDAP variable in config "
++					"file but LDAP support is not compiled.\n"), line);
++				if (flags & FL_IGNORE_CFG_ERR)
++					continue;
++				return -1;
++			}
+ #endif
+-			else	/* not matched at all */
+-				errstr(_("Error in config file (line %d), ignoring\n"), line);
++			else {	/* not matched at all */
++				print_cfg_err(_("line %d: Unknown variable %s in "
++					"config file.\n"), line, var);
++				if (flags & FL_IGNORE_CFG_ERR)
++					continue;
++				return -1;
++			}
+ 		}
+-		else		/* no '=' char in this line */
+-			errstr(_("Possible error in config file (line %d), ignoring\n"), line);
++		else {		/* no '=' char in this line */
++			print_cfg_err(_("line %d: Missing '=' in config file.\n"), line);
++			if (flags & FL_IGNORE_CFG_ERR)
++				continue;
++			return -1;
++		}
++	}
++	if (bufpos) {
++		print_cfg_err(_("line %d: Unterminated last line.\n"), line);
++		if (!(flags & FL_IGNORE_CFG_ERR))
++			return -1;
+ 	}
+-	if (bufpos)
+-		errstr(_("Unterminated last line, ignoring\n"));
+ #ifdef USE_LDAP_MAIL_LOOKUP
+ 	if (config->use_ldap_mail)
+ 	{
+@@ -1041,6 +1098,7 @@ static void usage(void)
+ -c, --config=config-file        non-default config file\n\
+ -q, --quota-tab=quotatab-file   non-default quotatab\n\
+ -a, --admins-file=admins-file   non-default admins file\n\
++-I, --ignore-config-errors	ignore unknown statements in config file\n\
+ -h, --help                      display this help message and exit\n\
+ -v, --version                   display version information and exit\n\n"));
+ 	errstr(_("Bugs to %s\n"), PACKAGE_BUGREPORT);
+@@ -1062,10 +1120,11 @@ static void parse_options(int argcnt, ch
+ 		{ "no-autofs", 0, NULL, 'i' },
+ 		{ "human-readable", 2, NULL, 's' },
+ 		{ "no-details", 0, NULL, 'd' },
++		{ "ignore-config-errors", 0, NULL, 'I' },
+ 		{ NULL, 0, NULL, 0 }
+ 	};
+  
+-	while ((ret = getopt_long(argcnt, argstr, "ugVF:hc:q:a:is::d", long_opts, NULL)) != -1) {
++	while ((ret = getopt_long(argcnt, argstr, "ugVF:hc:q:a:is::dI", long_opts, NULL)) != -1) {
+ 		switch (ret) {
+ 		  case '?':
+ 		  case 'h':
+@@ -1105,6 +1164,9 @@ static void parse_options(int argcnt, ch
+ 		  case 'd':
+ 			flags |= FL_NODETAILS;
+ 			break;
++		  case 'I':
++			flags |= FL_IGNORE_CFG_ERR;
++			break;
+ 		}
+ 	}
+ 	if (!(flags & FL_USER) && !(flags & FL_GROUP))

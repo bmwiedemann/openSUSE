@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Sun Jul  7 11:32:12 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Wrap main description.
+
+-------------------------------------------------------------------
+Sun Jun 30 09:54:30 UTC 2019 - Philipp <p.seiler@linuxmail.org>
+
+- removed RPM group FIXME as the already present group was the most
+  most fitting one
+
+-------------------------------------------------------------------
+Tue Jun 25 19:11:57 UTC 2019 - Philipp <p.seiler@linuxmail.org>
+
+- used spec-cleaner for cleanup (changed license to use macro)
+
+-------------------------------------------------------------------
+Thu Jan 24 15:51:54 UTC 2019 - p.seiler@linuxmail.org
+
+- Updated to hactool version 1.2.2
+ * Support was added for 6.2.0+ new key derivation using tsec_root_key and master_kek_source_##.
+ * 6.2.0 keydata will no longer be called "Unknown".
+ * A bug was fixed involving argument violation to mbed_tls aes routines.
+
+-------------------------------------------------------------------
+Tue Jul 31 08:34:00 UTC 2018 - p.seiler@linuxmail.org
+
+- initial commit

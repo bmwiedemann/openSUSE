@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Thu Mar 30 10:24:52 UTC 2017 - jweberhofer@weberhofer.at
+
+- added license to package
+
+-------------------------------------------------------------------
+Tue Jan 17 16:08:45 UTC 2017 - jweberhofer@weberhofer.at
+
+- build PHP7 package
+- cleaned up spec
+- provides php-uuid symbol
+
+-------------------------------------------------------------------
+Tue Jan 12 15:30:41 UTC 2016 - pgajdos@suse.com
+
+- updated to 1.0.4
+
+-------------------------------------------------------------------
+Sun Jul 29 05:38:02 UTC 2012 - crrodriguez@opensuse.org
+
+- Fix build with newer PHP 
+
+-------------------------------------------------------------------
+Mon Aug 17 01:10:28 CEST 2009 - crrodriguez@suse.de
+
+- use new versioning macros if possible
+
+-------------------------------------------------------------------
+Wed Apr  2 02:39:46 CEST 2008 - crrodriguez@suse.de
+
+- update to version 1.0.2 
+
+-------------------------------------------------------------------
+Wed Mar 26 05:10:21 CET 2008 - crrodriguez@suse.de
+
+- update to version 1.0.1, only non-linux specific changes 
+
+-------------------------------------------------------------------
+Thu Nov 16 00:00:00 CET 2006 - soporte@onfocus.cl
+
+- very first build

@@ -1,0 +1,255 @@
+---
+ Makefile.am |    4 -
+ lib.c       |    8 ++-
+ mbox.c      |    5 ++
+ mh.c        |    9 +++-
+ mutt.h      |    3 +
+ opennfs.c   |  122 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ sendlib.c   |    4 +
+ 7 files changed, 150 insertions(+), 5 deletions(-)
+
+--- Makefile.am
++++ Makefile.am	2019-01-02 13:10:35.863891779 +0000
+@@ -32,7 +32,7 @@ mutt_SOURCES = \
+ 	edit.c enter.c flags.c init.c filter.c from.c \
+ 	getdomain.c group.c \
+ 	handler.c hash.c hdrline.c headers.c help.c hook.c keymap.c \
+-	main.c mbox.c menu.c mh.c mx.c pager.c parse.c pattern.c \
++	main.c mbox.c menu.c mh.c mx.c opennfs.c pager.c parse.c pattern.c \
+ 	postpone.c query.c recvattach.c recvcmd.c \
+ 	rfc822.c rfc1524.c rfc2047.c rfc2231.c rfc3676.c \
+ 	score.c send.c sendlib.c signal.c sort.c \
+@@ -86,7 +86,7 @@ mutt_dotlock_SOURCES = mutt_dotlock.c
+ mutt_dotlock_LDADD = $(LIBOBJS)
+ mutt_dotlock_DEPENDENCIES = $(LIBOBJS)
+ 
+-mutt_pgpring_SOURCES = pgppubring.c pgplib.c lib.c extlib.c sha1.c md5.c pgppacket.c ascii.c
++mutt_pgpring_SOURCES = opennfs.c pgppubring.c pgplib.c lib.c extlib.c sha1.c md5.c pgppacket.c ascii.c
+ mutt_pgpring_LDADD = $(LIBOBJS) $(INTLLIBS)
+ mutt_pgpring_DEPENDENCIES = $(LIBOBJS) $(INTLDEPS)
+ 
+--- lib.c
++++ lib.c	2019-01-02 13:10:35.863891779 +0000
+@@ -50,9 +50,9 @@
+ #define EX_OK 0
+ #endif
+ 
++#include "mutt.h"
+ #include "lib.h"
+ 
+-
+ static const struct sysexits
+ {
+   int v;
+@@ -665,6 +665,10 @@ int safe_open (const char *path, int fla
+   struct stat osb, nsb;
+   int fd;
+ 
++#if defined(__linux__)
++  if ((fd = opennfs (path, flags, 0600)) < 0)
++    return fd;
++#else
+   if (flags & O_EXCL) 
+   {
+     char safe_file[_POSIX_PATH_MAX];
+@@ -688,7 +692,7 @@ int safe_open (const char *path, int fla
+ 
+   if ((fd = open (path, flags & ~O_EXCL, 0600)) < 0)
+     return fd;
+-    
++#endif
+   /* make sure the file is not symlink */
+   if (lstat (path, &osb) < 0 || fstat (fd, &nsb) < 0 ||
+       compare_stat(&osb, &nsb) == -1)
+--- mbox.c
++++ mbox.c	2019-01-02 13:10:35.867891705 +0000
+@@ -889,8 +889,13 @@ static int mbox_sync_mailbox (CONTEXT *c
+ 
+   /* Create a temporary file to write the new version of the mailbox in. */
+   mutt_mktemp (tempfile, sizeof (tempfile));
++#if defined(__linux__)
++  if ((i = opennfs(tempfile, O_WRONLY | O_EXCL | O_CREAT, 0600)) == -1 ||
++      (fp = fdopen(i, "w")) == NULL)
++#else
+   if ((i = open (tempfile, O_WRONLY | O_EXCL | O_CREAT, 0600)) == -1 ||
+       (fp = fdopen (i, "w")) == NULL)
++#endif
+   {
+     if (-1 != i)
+     {
+--- mh.c
++++ mh.c	2019-01-02 13:10:35.867891705 +0000
+@@ -369,7 +369,11 @@ static int mh_mkstemp (CONTEXT * dest, F
+   {
+     mutt_buffer_printf (path, "%s/.mutt-%s-%d-%d",
+ 	      dest->path, NONULL (Hostname), (int) getpid (), Counter++);
++#if defined(__linux__)
++    if ((fd = opennfs(mutt_b2s (path), O_WRONLY | O_EXCL | O_CREAT, 0666)) == -1)
++#else
+     if ((fd = open (mutt_b2s (path), O_WRONLY | O_EXCL | O_CREAT, 0666)) == -1)
++#endif
+     {
+       if (errno != EEXIST)
+       {
+@@ -1548,8 +1552,11 @@ static int maildir_open_new_message (MES
+ 
+     dprint (2, (debugfile, "maildir_open_new_message (): Trying %s.\n",
+ 		mutt_b2s (path)));
+-
++#if defined(__linux__)
++    if ((fd = opennfs(mutt_b2s (path), O_WRONLY | O_EXCL | O_CREAT, 0666)) == -1)
++#else
+     if ((fd = open (mutt_b2s (path), O_WRONLY | O_EXCL | O_CREAT, 0666)) == -1)
++#endif
+     {
+       if (errno != EEXIST)
+       {
+--- mutt.h
++++ mutt.h	2019-01-02 13:10:35.867891705 +0000
+@@ -1102,4 +1102,7 @@ typedef struct
+ #include "lib.h"
+ #include "globals.h"
+ 
++#if defined(__linux__)
++extern int opennfs(const char *, int, int);
++#endif
+ #endif /*MUTT_H*/
+--- opennfs.c
++++ opennfs.c	2019-01-02 13:10:35.867891705 +0000
+@@ -0,0 +1,122 @@
++#include <errno.h>
++#include <fcntl.h>
++#include <libgen.h>
++#include <limits.h>
++#include <nfs/nfs.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <sys/vfs.h>
++#include <unistd.h>
++
++#ifndef  NFS_SUPER_MAGIC
++# define NFS_SUPER_MAGIC 0x6969
++#endif
++
++int opennfs(const char *path, int flags, int mode)
++{
++    char tmplock[NFS_MAXPATHLEN+1], sysname[256];
++    char *slash, *ptr, *dir, *base, *clear = (char*)0;
++    struct stat ps, ts;
++    struct statfs fs;
++    ssize_t len;
++    int ret;
++
++    if ((flags & (O_WRONLY|O_RDWR)) == 0)
++	goto safe;
++
++    if ((flags & (O_EXCL|O_CREAT)) != (O_EXCL|O_CREAT))
++	goto safe;
++
++#if defined(O_NOFOLLOW)
++    flags |= O_NOFOLLOW;
++#endif
++
++    ret = -1;
++    if ((clear = strdup(path)) == (char*)0)
++	goto err;
++    dir = dirname(clear);
++
++    if ((ret = (statfs(dir, &fs))) < 0)
++	goto err;
++
++    if (fs.f_type != NFS_SUPER_MAGIC)
++	goto safe;
++
++    if ((ret = gethostname(sysname, sizeof(sysname))) < 0)
++	goto err;
++
++    ret = -1;
++    ptr = &tmplock[0];
++    if (((len = snprintf(ptr, NFS_MAXPATHLEN, "%s/.%s-XXXXXX", dir, sysname)) < 0) || (len >= NFS_MAXPATHLEN))
++	goto err;
++    ptr += len;
++    slash = ptr;
++
++    free(clear);
++    clear = (char*)0;
++
++    if (mkdtemp(tmplock) == (char*)0)
++	goto err;
++
++    ret = -1;
++    if ((clear = strdup(path)) == (char*)0)
++	goto rmd;
++    base = basename(clear);
++
++    ret = -1;
++    if (((len = snprintf(ptr, NFS_MAXPATHLEN - len, "/%s", base)) < 0) || (len >= (NFS_MAXPATHLEN - len)))
++	goto rmd;
++
++    free(clear);
++    clear = (char*)0;
++
++    if ((ret = open(tmplock, flags, mode)) < 0)
++	goto rmd;
++
++    errno = 0;
++    do {
++	len = write(ret, "0", 2);
++    } while ((len < 0) && (errno == EINTR));
++    close(ret);
++
++    ret = -1;
++    errno = EBADF;
++    if (len != 2)
++	goto unl;
++
++    errno = 0;
++    if ((ret = lstat(tmplock, &ts)) < 0)
++	goto unl;
++
++    if (((ret = link(tmplock, path)) < 0) && (errno == EEXIST))
++	goto unl;
++
++    if ((ret = lstat(path, &ps)) < 0)
++	goto unl;
++
++    ret = -1;
++    errno = EEXIST;
++    if (ps.st_nlink != 2)
++	goto unl;
++    if ((ps.st_rdev != ts.st_rdev) || (ps.st_ino != ts.st_ino))
++	goto unl;
++
++    errno = 0;
++    flags |= O_TRUNC;
++    flags &= ~(O_EXCL|O_CREAT);
++    ret = open(path, flags, mode);
++unl:
++    unlink(tmplock);
++rmd:
++    *slash = '\0';
++    rmdir(tmplock);
++err:
++    if (clear) free(clear);
++    return ret;
++safe:
++    if (clear) free(clear);
++    return open(path, flags, mode);
++}
+--- sendlib.c
++++ sendlib.c	2019-01-02 13:10:35.867891705 +0000
+@@ -2256,7 +2256,11 @@ send_msg (const char *path, char **args,
+       if (SendmailWait >= 0 && tempfile && *tempfile)
+       {
+ 	/* *tempfile will be opened as stdout */
++#if defined(__linux__)
++	if (opennfs(*tempfile, O_WRONLY | O_APPEND | O_CREAT | O_EXCL, 0600) < 0)
++#else
+ 	if (open (*tempfile, O_WRONLY | O_APPEND | O_CREAT | O_EXCL, 0600) < 0)
++#endif
+ 	  _exit (S_ERR);
+ 	/* redirect stderr to *tempfile too */
+ 	if (dup (1) < 0)

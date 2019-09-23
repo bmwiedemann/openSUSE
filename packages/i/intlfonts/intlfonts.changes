@@ -1,0 +1,229 @@
+-------------------------------------------------------------------
+Sat Apr 29 16:26:20 UTC 2017 - bwiedemann@suse.com
+
+- call gzip -n to make build fully reproducible
+
+-------------------------------------------------------------------
+Fri Apr 15 08:51:08 UTC 2016 - normand@linux.vnet.ibm.com
+
+- spec file change to avoid transient build failure
+  about the 'for b' loop generating the *pcf.gz files.
+
+-------------------------------------------------------------------
+Fri Aug  1 12:01:19 UTC 2014 - werner@suse.de
+
+- Rename README.SuSE to README.SUSE (bnc#889017) 
+
+-------------------------------------------------------------------
+Wed Nov  7 12:33:04 UTC 2012 - pgajdos@suse.com
+
+- license HPND and SUSE-Redistributable-Content and SUSE-Public-Domain
+  [bnc#786092]
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Sat Jun 30 09:45:08 UTC 2012 - i@marguerite.su
+
+- fix builds for 12.2
+  * now bdftopcf is a separated package from xorg-x11.
+
+-------------------------------------------------------------------
+Mon Jun 11 19:58:56 CEST 2012 - tiwai@suse.de
+
+- Add missing provides/obsletes for intlfnts package
+
+-------------------------------------------------------------------
+Tue Jun  5 14:21:39 UTC 2012 - werner@suse.de
+
+- Remove Asian/tib16-mule.bdf, Asian/tib1c16-mule.bdf, Asian/tib1c24-mule.bdf,
+  and Asian/tib24-mule.bdf due legal issue  (bnc#765434)
+
+-------------------------------------------------------------------
+Thu May 17 09:10:14 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Thu Dec 22 15:41:17 CET 2011 - tiwai@suse.de
+
+- Renamed intlfnts -> intlfonts,
+  ifntarab -> intlfonts-arabic-bitmap-fonts,
+  ifntasia -> intlfonts-asian-bitmap-fonts,
+  ifntchia -> intlfonts-chinese-bitmap-fonts,
+  ifntchib -> intlfonts-chinese-big-bitmap-fonts,
+  ifntethi -> intlfonts-ethiopic-bitmap-fonts,
+  ifnteuro -> intlfonts-euro-bitmap-fonts,
+  ifntjapa -> intlfonts-japanese-bitmap-fonts,
+  ifntjapb -> intlfonts-japanese-big-bitmap-fonts,
+  ifntphon -> intlfonts-phonetic-bitmap-fonts,
+  intlfonts-ttf -> intlfonts-ttf-fonts, and
+  intlfonts-bdf -> intlfonts-bdf-fonts according to
+  openSUSE packaging guidelines and FATE#313035
+  Adjusted Obsoletes and Provides accordingly
+- Add new package intlfonts-type1-fonts
+- Changed the document location to the central place
+
+-------------------------------------------------------------------
+Mon Nov  8 13:32:15 UTC 2010 - coolo@novell.com
+
+- remove supoprt for pre-9.1
+
+-------------------------------------------------------------------
+Tue Aug 15 12:38:46 CEST 2006 - schwab@suse.de
+
+- Fix file list.
+
+-------------------------------------------------------------------
+Mon Aug 07 09:52:12 CEST 2006 - mfabian@suse.de
+
+- make it build again on STABLE (paths changed because of the
+  move to Xorg X11R7).
+
+-------------------------------------------------------------------
+Wed Mar 01 15:38:20 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(...)".
+
+-------------------------------------------------------------------
+Mon Feb 13 19:51:44 CET 2006 - mfabian@suse.de
+
+- Bugzilla #150552: add some missing BDF properties to the
+  Latin9 "Efont" fonts.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:33 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec 03 19:11:40 CET 2004 - mfabian@suse.de
+
+- use new macro "%run_suseconfig_fonts".
+
+-------------------------------------------------------------------
+Thu Aug 12 18:17:33 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #39451: run SuSEconfig.fonts only if it exists.
+- run the SuSEconfig scripts for the correct sub-packages.
+
+-------------------------------------------------------------------
+Wed Mar  3 15:31:26 CET 2004 - werner@suse.de
+
+- Add dependencies to be able to execute SuSEconfig.fonts (#35283)
+
+-------------------------------------------------------------------
+Fri Feb 27 15:21:38 CET 2004 - mfabian@suse.de
+
+- run SuSEconfig.fonts and SuSEconfig.pango in %post and %postun
+
+-------------------------------------------------------------------
+Wed Nov 26 16:21:53 CET 2003 - mfabian@suse.de
+
+- remove unsupported "ascii-0" encoding from fonts.scale.
+
+-------------------------------------------------------------------
+Tue Nov  4 00:25:53 CET 2003 - ro@suse.de
+
+- updated neededforbuild
+- don't build as root
+
+-------------------------------------------------------------------
+Tue Aug 12 16:10:52 CEST 2003 - mfabian@suse.de
+
+-  update to version 1.2.1.
+   The only change from version 1.2 is that the fonts 
+   j83-32.bdf and j83-48.bdf which were created from the
+   Watanabe-font have been replaced by fonts created
+   from jiskan16.bdf and jiskan24.bdf by bdfresize respectively.
+   For more details about the (possible) problem with the
+   Watanabe font see:
+   http://khdd.net/kanou/fonts/stolenbitmap.html
+
+-------------------------------------------------------------------
+Thu Jun 12 15:40:10 CEST 2003 - coolo@suse.de
+
+- package directories too
+
+-------------------------------------------------------------------
+Thu Apr 17 15:08:09 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Fri Mar 15 00:47:35 CET 2002 - mfabian@suse.de
+
+- add 8x16 and 12x24 bitmap fonts in iso8859-15 encoding
+  (in medium-r, medium-i, bold-r, bold-i) to fix the problem
+  that 'LANG=de_DE@euro emacs' displayed German umlauts, the
+  euro-logo etc... as boxes by default.
+
+-------------------------------------------------------------------
+Wed Mar  7 16:21:48 CET 2001 - werner@suse.de
+
+- We need X environment
+
+-------------------------------------------------------------------
+Sat Jan 20 14:40:27 CET 2001 - mfabian@suse.de
+
+- bumped version number to 1.2
+- installed missing tib24-mule.bdf
+
+-------------------------------------------------------------------
+Fri Jan 19 18:31:03 CET 2001 - violiet@suse.de
+
+- updated to intlfonts-1.2 
+- new subpackage intlfonts-ttf (TrueType fonts)
+- new subpackage intlfonts-bdf (bdf-fonts used for printing
+  exotic languages from Emacs)
+- added BuildArchitectures: noarch
+
+-------------------------------------------------------------------
+Thu Dec 14 16:42:11 CET 2000 - werner@suse.de
+
+- Group tag
+
+-------------------------------------------------------------------
+Thu Jun  8 02:04:26 CEST 2000 - ro@suse.de
+
+- doc relocation
+
+-------------------------------------------------------------------
+Mon Sep 27 16:31:01 CEST 1999 - bs@suse.de
+
+- fixed requirements for sub packages
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Apr 28 01:50:57 MEST 1999 - ro@suse.de
+
+- rpm-3.0 needs a %% for every % in the specfile if not for a macro
+
+------------------------------------------------------------------------------
+Thu Apr 15 22:30:37 CEST 1999 - werner@suse.de
+
+	- Add a README.SuSE
+
+------------------------------------------------------------------------------
+Thu Apr 15 21:03:17 CEST 1999 - werner@suse.de
+
+	- Initial package for several X11 fonts
+	  * Arab fonts for X11
+	  * Asian fonts for X11
+	  * Chinese fonts for X11
+	  * Big Chinese fonts for X11
+	  * Ethiopic fonts for X11
+	  * European fonts for X11
+	  * Japanese fonts for X11
+	  * Big Japanese fonts for X11
+	  * IPA font for X11
+
+------------------------------------------------------------------------------

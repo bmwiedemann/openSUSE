@@ -1,0 +1,9 @@
+#
+# firewall messages into separate file and stop their further processing
+#
+if      ($syslogfacility-text == 'kern') and \
+        ($msg contains 'IN=' and $msg contains 'OUT=') \
+then {
+        -/var/log/firewall
+        stop
+}

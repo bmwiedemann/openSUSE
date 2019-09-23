@@ -1,0 +1,26 @@
+From: Luke Jones <luke.nukem.jones@gmail.com>
+Date: Mon, 19 Dec 2016 21:33:56 +0000
+
+Fix conversion from wxString to wxChar when using wxWidgets >= 3.0.2
+
+---
+ src/UI/Lists/ArchiveEntryList.cpp |    6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+Index: SLADE-3.1.1.4/src/UI/Lists/ArchiveEntryList.cpp
+===================================================================
+--- SLADE-3.1.1.4.orig/src/UI/Lists/ArchiveEntryList.cpp
++++ SLADE-3.1.1.4/src/UI/Lists/ArchiveEntryList.cpp
+@@ -584,8 +584,10 @@ bool ArchiveEntryList::entrySort(long le
+ 			result = 0;
+ 
+ 		// Name sort
+-		else if (ael_current->col_name >= 0 && ael_current->col_name == lv_current->sortColumn())
+-			result = le->getName().CompareTo(re->getName(), string::ignoreCase);
++		else if (ael_current->col_name >= 0 && ael_current->col_name == lv_current->sortColumn()) {
++			const wxChar *reName = re->getName().c_str();
++			result = le->getName().CompareTo(reName, string::ignoreCase);
++		}
+ 
+ 		// Other (default) sort
+ 		else

@@ -1,0 +1,6 @@
+<package name="yast2-slp-server" project="openSUSE:Factory">
+  <title>YaST2 SLP Daemon Server Configuration</title>
+  <description>This package contains the YaST2 component for the configuration of an
+SLP daemon.</description>
+  <devel project="YaST:Head" package="yast2-slp-server"/>
+</package>

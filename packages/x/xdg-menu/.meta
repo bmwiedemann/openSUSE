@@ -1,0 +1,6 @@
+<package name="xdg-menu" project="openSUSE:Factory">
+  <title>XDG Menus for WindowMaker and other Window Managers</title>
+  <description>This package contains a Perl script which converts XDG menus to formats
+used by WindowMaker and other window managers.</description>
+  <devel project="X11:common:Factory" package="xdg-menu"/>
+</package>

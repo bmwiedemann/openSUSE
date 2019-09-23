@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Tue Apr  2 13:07:52 UTC 2019 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- Update to version 5.0.1
+  * See https://dev.minetest.net/Changelog#5.0.0_.E2.86.92_5.0.1
+
+-------------------------------------------------------------------
+Sun Mar 24 17:09:57 UTC 2019 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- Update to version 5.0.0
+  * See https://dev.minetest.net/Changelog#0.4.16_.E2.86.92_5.0.0
+
+-------------------------------------------------------------------
+Tue Aug  7 13:07:35 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.4.17:
+  * Fix boo#1103904
+  * See https://dev.minetest.net/Changelog#0.4.16_.E2.86.92_0.4.17
+- Add the licence file to the package.
+
+-------------------------------------------------------------------
+Mon Jan 22 21:15:53 UTC 2018 - opensuse@trummer.xyz
+
+- Don't require minetest, to make headless installation possible
+
+-------------------------------------------------------------------
+Mon Jun  5 12:42:30 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.4.16:
+  * See http://dev.minetest.net/Changelog#0.4.15_.E2.86.92_0.4.16
+
+-------------------------------------------------------------------
+Tue Jan 10 14:10:40 UTC 2017 - rpm@fthiessen.de
+
+- Added minetest-game-rpmlintrc to fix build on openSUSE 13.1
+
+-------------------------------------------------------------------
+Mon Dec 26 06:56:26 UTC 2016 - mailaender@opensuse.org
+
+- Update to version 0.4.15
+
+-------------------------------------------------------------------
+Wed Jul 27 22:35:24 UTC 2016 - jengelh@inai.de
+
+- Update License field
+
+-------------------------------------------------------------------
+Mon May 16 21:46:00 UTC 2016 - rpm@fthiessen.de
+
+- Update to 0.4.14
+
+-------------------------------------------------------------------
+Wed Nov 25 01:00:05 UTC 2015 - rpm@fthiessen.de
+
+- Update to 0.4.13
+
+-------------------------------------------------------------------
+Thu Feb 19 19:13:28 UTC 2015 - khyota@redhyena.net
+
+- update 0.4.12
+
+-------------------------------------------------------------------
+Sun Sep 21 06:22:05 UTC 2014 - mailaender@opensuse.org
+
+- update 0.4.10
+
+-------------------------------------------------------------------
+Tue Jan  7 12:07:27 UTC 2014 - mailaender@opensuse.org
+
+- update 0.4.9
+
+-------------------------------------------------------------------
+Thu Aug  8 09:56:16 UTC 2013 - opensuse@dstoecker.de
+
+- update to 0.4.7
+
+-------------------------------------------------------------------
+Fri Apr 12 14:51:20 UTC 2013 - mailaender@opensuse.org
+
+- update to version 0.4.6
+
+-------------------------------------------------------------------
+Sun Dec  9 20:38:46 UTC 2012 - m407@mail.ru
+
+- Build version 0.4.4
+
+-------------------------------------------------------------------
+Sun Sep 23 06:58:34 UTC 2012 - joop.boonen@opensuse.org
+
+- Renamed the spec and changes file to the correct name
+- Removed the creative mod as it's currently broken
+- Used fdupes to get link duplicate file
+
+-------------------------------------------------------------------
+Sat Sep 22 15:02:01 UTC 2012 - joop.boonen@opensuse.org
+
+- Build version 0.4.3
+
+-------------------------------------------------------------------
+Fri Aug 10 09:41:29 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Always build for noarch
+
+-------------------------------------------------------------------
+Fri Aug 10 09:34:13 UTC 2012 - m407@mail.ru
+
+- Initial package (version 0.4.1) for build.opensuse.org

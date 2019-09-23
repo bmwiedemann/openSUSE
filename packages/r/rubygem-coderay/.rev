@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>20e7ad4559a415738ff1b6db971dbb04</srcmd5>
+    <version>1.0.6</version>
+    <time>1338890590</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>123531</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>20e7ad4559a415738ff1b6db971dbb04</srcmd5>
+    <version>1.0.6</version>
+    <time>1340184158</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>244dbb3b084efb1fd4d0f3a54ee1ffdc</srcmd5>
+    <version>1.0.7</version>
+    <time>1342424454</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>127927</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>86dfda2ae52b4770e7c1a0a3d9d20f1e</srcmd5>
+    <version>1.0.8</version>
+    <time>1349721344</time>
+    <user>coolo</user>
+    <comment>- updated to version 1.0.8, no changelog</comment>
+    <requestid>137452</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>86dfda2ae52b4770e7c1a0a3d9d20f1e</srcmd5>
+    <version>1.0.8</version>
+    <time>1359110309</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f124c36ca34d0120505b8ec4b466eb0d</srcmd5>
+    <version>1.0.9</version>
+    <time>1363269687</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>158215</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>f124c36ca34d0120505b8ec4b466eb0d</srcmd5>
+    <version>1.0.9</version>
+    <time>1379664509</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>535e04366c07fab8c0988e03015f364d</srcmd5>
+    <version>1.1.0</version>
+    <time>1381064269</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to version 1.1.0, no changelog</comment>
+    <requestid>202194</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>535e04366c07fab8c0988e03015f364d</srcmd5>
+    <version>1.1.0</version>
+    <time>1409303222</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>690ea2decd471500dbe266d817f8f929</srcmd5>
+    <version>1.1.0</version>
+    <time>1414066837</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258001</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8deb6b108b0240e0baacb47b78827f67</srcmd5>
+    <version>1.1.1</version>
+    <time>1457353623</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>365460</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6e971fa4b7498d1df4fab271f8165815</srcmd5>
+    <version>1.1.2</version>
+    <time>1505239046</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523576</requestid>
+  </revision>
+</revisionlist>

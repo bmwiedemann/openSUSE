@@ -1,0 +1,2 @@
+addFilter("W: non-executable-script /usr/lib.*/python.*/site-packages/cvs2svn.*")
+addFilter("W: python-naming-policy-not-applied .*")

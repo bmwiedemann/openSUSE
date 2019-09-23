@@ -1,0 +1,17 @@
+Index: grub-2.02/grub-core/loader/emu/linux.c
+===================================================================
+--- grub-2.02.orig/grub-core/loader/emu/linux.c
++++ grub-2.02/grub-core/loader/emu/linux.c
+@@ -76,9 +76,10 @@ grub_linux_boot (void)
+     grub_fatal (N_("Error trying to perform 'systemctl kexec'"));
+ 
+   /* need to check read-only root before resetting hard!? */
+-  grub_printf("Performing 'kexec -e'");
++  grub_printf("Performing 'kexec -e -x'");
+   kexec[1] = "-e";
+-  kexec[2] = NULL;
++  kexec[2] = "-x";
++  kexec[3] = NULL;
+   rc = grub_util_exec(kexec);
+   if ( rc != GRUB_ERR_NONE )
+     grub_fatal (N_("Error trying to directly perform 'kexec -e'."));

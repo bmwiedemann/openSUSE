@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/docker/distribution.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">2.6.2</param>
+    <param name="revision">v2.6.2</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">distribution-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">distribution</param>
+  </service>
+</services>

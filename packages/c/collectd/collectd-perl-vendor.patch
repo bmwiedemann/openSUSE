@@ -1,0 +1,13 @@
+diff --git a/Makefile.am b/Makefile.am
+index 2ef2442..145e98c 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2000,7 +2000,7 @@ uninstall-hook:
+ all-local: @PERL_BINDINGS@
+ 
+ install-exec-local:
+-	[ ! -f buildperl/Makefile ] || ( cd buildperl && $(MAKE) install )
++	[ ! -f buildperl/Makefile ] || ( cd buildperl && $(MAKE) install_vendor )
+ 
+ # Perl 'make uninstall' does not work as well as wanted.
+ # So we do the work here.

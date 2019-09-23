@@ -1,0 +1,1594 @@
+-------------------------------------------------------------------
+Thu Aug 22 15:05:04 CEST 2019 - schubi@suse.de
+
+- Using rb_default_ruby_abi tag in the spec file in order to
+  handle several ruby versions (bsc#1146403).
+- 4.2.5
+
+-------------------------------------------------------------------
+Fri Jul 19 09:19:14 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Added "BuildRequires: update-desktop-files"
+- Related to the previous desktop file changes (fate#319035)
+- 4.2.4
+
+-------------------------------------------------------------------
+Sun Jul 14 18:55:53 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add missing Oxygen icons (boo#1125450)
+- 4.2.3
+
+-------------------------------------------------------------------
+Tue May 14 08:31:24 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildIgnore yast2-branding: yast2-branding is a provided
+  capability. In order to be able to bootstrap this package, we
+  need to help OBS to know it can ignore the absence of
+  yast2-branding when starting to build this package (boo#1134976).
+- 4.2.2
+
+-------------------------------------------------------------------
+Thu May  2 13:46:02 UTC 2019 - lnussel@suse.de
+
+- on SLE the qt branding files are included in yast2-them so they
+  conflict with the separate package that exists on openSUSE
+  (boo#1133415)
+- 4.2.1
+
+-------------------------------------------------------------------
+Mon Mar 25 13:49:42 UTC 2019 - lnussel@suse.de
+
+- use yast2-qt-branding as requirement to allow alternative branding
+  too (bsc#1105792)
+- 4.2.0
+
+-------------------------------------------------------------------
+Mon Mar 18 15:10:21 UTC 2019 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Require yast2-qt-branding-openSUSE for openSUSE distros
+  so YaST firstboot has some branding (bsc#1105792)
+- 4.1.11
+
+-------------------------------------------------------------------
+Fri Feb 15 08:17:36 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Update oxygen icon theme (boo#1125450)
+- 4.1.10
+
+-------------------------------------------------------------------
+Sun Jan  6 09:36:39 UTC 2019 - Noah Davis <noahadvs@gmail.com>
+
+- Add Breeze pattern icons (boo#971671)
+
+-------------------------------------------------------------------
+Thu Dec 20 14:39:51 CET 2018 - schubi@suse.de
+
+- Added pattern-public-cloud.svg icon for public cloud
+  (bsc#1119961).
+- 4.1.8
+
+-------------------------------------------------------------------
+Tue Nov 27 22:10:23 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Install via rake (boo#1108422)
+- 4.1.7
+
+-------------------------------------------------------------------
+Mon Nov 26 12:22:00 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Provide icon with module (boo#1109310)
+- 4.1.6
+
+-------------------------------------------------------------------
+Wed Nov  7 09:59:12 CET 2018 - schubi@suse.de
+
+- Update: removing {yast_themedir}/current link of older packages
+  at first of all in order to install links via cpio of the new
+  package (bsc#1114620) 
+- 4.1.5
+
+-------------------------------------------------------------------
+Tue Oct 16 16:06:51 CEST 2018 - schubi@suse.de
+
+- Added license file to spec.
+
+-------------------------------------------------------------------
+Sun Sep 30 00:40:53 CEST 2018 - hellcp@opensuse.org
+
+- Changed icons to Gnome spec (boo#1110241)
+- Added hicolor/scalable/devices (boo#1109382)
+- New files in devices directory have been named according
+  to the suggested schema (boo#1110236)
+- Optipng'd all the pngs and scroted all new icons for
+  space saving
+- 4.1.4
+
+-------------------------------------------------------------------
+Tue Sep 18 09:59:20 CEST 2018 - hellcp@opensuse.org
+
+- Add KDE PIM icon (boo#1107103)
+- 4.1.3
+
+-------------------------------------------------------------------
+Fri Sep 14 11:01:56 CEST 2018 - schubi@suse.de
+
+- Unify icon location for SLES and OpenSUSE (bsc#1104067).
+- 4.1.2
+
+-------------------------------------------------------------------
+Mon Aug 20 11:11:52 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Mon Aug  6 16:50:11 UTC 2018 - hellcp@opensuse.org
+
+- Add new version of icons and more specific pattern icons
+  (boo#1039994)
+- 4.1.1
+
+-------------------------------------------------------------------
+Wed Jun 20 10:11:23 UTC 2018 - mvetter@suse.com
+
+- Add icons for LXQt pattern (bsc#1097842)
+- 4.1.0
+
+-------------------------------------------------------------------
+Mon Apr 16 12:58:49 UTC 2018 - mvidner@suse.com
+
+- Don't hard-code the role text color (bsc#1087399).
+- 4.0.4
+
+-------------------------------------------------------------------
+Thu Oct 12 15:33:48 UTC 2017 - lslezak@suse.cz
+
+- Fixed the check box style in the MultiSelectionBox widget
+  to use the same icons as the usual CheckBox widgets, the check
+  boxes were almost invisible (bsc#1062356)
+- 4.0.3
+
+-------------------------------------------------------------------
+Fri Oct  6 15:08:20 UTC 2017 - jreidinger@suse.com
+
+- improve auto-selected.png and add also svg source for it
+  (bsc#1054965)
+- 4.0.2
+
+-------------------------------------------------------------------
+Thu Oct  5 13:37:55 UTC 2017 - jreidinger@suse.com
+
+- add to SLE theme registration specific auto-selected.png
+  (bsc#1054965)
+- 4.0.1
+
+-------------------------------------------------------------------
+Fri Sep 22 14:17:01 UTC 2017 - jreidinger@suse.com
+
+- fix packaging for SLE (bsc#1057838)
+- 4.0.0
+
+-------------------------------------------------------------------
+Fri Aug 11 11:48:06 UTC 2017 - lslezak@suse.cz
+
+- Fixed black-on-black color for the editable combo box in the
+  cyan and b&w color themes (bsc#1052723)
+- 3.3.0
+
+-------------------------------------------------------------------
+Tue Jun 13 12:27:49 UTC 2017 - lnussel@suse.de
+
+- Remove red "N" from logos (boo#953761)
+- 3.2.3
+
+-------------------------------------------------------------------
+Sat Feb  4 08:46:10 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+- 3.2.2: add yast2-branding-openSUSE-Oxygen empty package to
+  trigger swich into Oxygen theme for YaST2 in openSUSE 
+  (bsc#942136).
+
+-------------------------------------------------------------------
+Mon Oct 17 15:11:21 UTC 2016 - igonzalezsosa@suse.com
+
+- Add basic high-contrast styles for the installer
+  (bsc#780621 and bsc#768112)
+- 3.2.1
+
+-------------------------------------------------------------------
+Fri Oct 14 08:57:21 UTC 2016 - jreidinger@suse.com
+
+- fix button group title padding on SLE (bsc#877477)
+- 3.2.0
+
+-------------------------------------------------------------------
+Tue Oct  4 13:38:27 UTC 2016 - jreidinger@suse.com
+
+- unify back -SLE subpackage to main yast2-theme. This is done by
+  separated build results on opensuse and SLE ( as there is
+  colliding files, like icewm configuration ). (bsc#996498)
+- 3.1.42
+
+-------------------------------------------------------------------
+Wed Aug 17 07:03:35 UTC 2016 - lslezak@suse.cz
+
+- Added back the style and assets for the left pane global
+  progress, it is still used by the firstboot module (bsc#963034)
+  [by Fabian Vogt]
+- 3.1.41
+
+-------------------------------------------------------------------
+Tue Jul 12 08:31:23 UTC 2016 - lslezak@suse.cz
+
+- Fixed a typo in an image name in installation.qss
+- Added missing separator.png
+- Removed the obsolete and unused images to make the inst-sys
+  smaller (bsc#974601)
+- 3.1.40
+
+-------------------------------------------------------------------
+Fri Jun 17 09:08:44 UTC 2016 - lslezak@suse.cz
+
+- Add a style for disabled menu items, gray them out
+  (bsc#983919) [by mvidner]
+- 3.1.39
+
+-------------------------------------------------------------------
+Thu Feb 25 13:55:27 UTC 2016 - lslezak@suse.cz
+
+- Hide the window title during installation (workaround: set the
+  same foreground and background colors) (bsc#965086)
+- 3.1.38
+
+-------------------------------------------------------------------
+Wed Feb 10 13:12:22 UTC 2016 - cwh@suse.com
+
+- Fix spelling of SUSE Linux. (bsc#964241)
+- 3.1.37
+
+-------------------------------------------------------------------
+Thu Jan 28 17:06:29 UTC 2016 - alarrosa@suse.com
+
+- add yast-modem icon which is needed by the Communication package group
+  in the Yast2's software manager (bnc#953027)
+- 3.1.36
+
+-------------------------------------------------------------------
+Tue Oct 20 10:56:16 UTC 2015 - lslezak@suse.cz
+
+- Fixed styling for the package manager filter view widgets
+  (unreadable white-on-white labels) (bsc#950283)
+- 3.1.35
+
+-------------------------------------------------------------------
+Fri Sep 18 10:17:54 UTC 2015 - simon@simotek.net
+
+- apps/pattern-e17.png -> apps/pattern-enlightenment.png due to 
+  pattern rename
+
+-------------------------------------------------------------------
+Fri Sep 18 10:10:54 UTC 2015 - lslezak@suse.cz
+
+- use a bigger font for the main dialog title (bsc#930864)
+- 3.1.34
+
+-------------------------------------------------------------------
+Fri Sep 18 09:26:29 UTC 2015 - p.drouand@gmail.com
+
+- add icons for the MATE pattern
+- 3.1.33
+
+-------------------------------------------------------------------
+Fri Oct 24 08:12:51 UTC 2014 - coolo@suse.com
+
+- change twm to look back on light gray again
+- 3.1.32
+
+-------------------------------------------------------------------
+Wed Sep 10 11:52:33 UTC 2014 - coolo@suse.com
+
+- workaround for rpm's inability to update from symlink to directory
+- 3.1.31
+
+-------------------------------------------------------------------
+Sun Aug 31 08:19:50 UTC 2014 - coolo@suse.com
+
+- libyui looks for icons only in theme/current/icons, so we need
+  to provide a symlink
+- 3.1.30
+
+-------------------------------------------------------------------
+Thu Aug 28 10:45:49 UTC 2014 - coolo@suse.com
+
+- restore the hicolor icons and install the KDE icons in their correct place
+- the KDE menus will pick up oxygen, yast will stick to consistent hicolor
+  theme (bnc#893426)
+- 3.1.29
+
+-------------------------------------------------------------------
+Thu Aug  7 12:42:03 UTC 2014 - coolo@suse.com
+
+- no longer package yast2-theme-openSUSE, but fix the whole branding
+  for openSUSE and let it build yast2-branding-openSUSE replacing the old
+  one - fixing BNC#876555
+- 3.1.26
+
+-------------------------------------------------------------------
+Mon Jul 28 02:17:18 UTC 2014 - nwang@suse.com
+
+- BNC#888070. Add icons of yast2 iplb and yast2 geo-cluster.
+- 3.1.23
+
+-------------------------------------------------------------------
+Sun Apr 27 05:33:34 UTC 2014 - coolo@suse.com
+
+- adapt icewm to the new yast theme
+- 3.1.18
+
+-------------------------------------------------------------------
+Thu Apr 24 06:44:46 UTC 2014 - jsrain@suse.cz
+
+- graphics and style adjustments by Ken Wimer (bnc#868722)
+- 3.1.17
+
+-------------------------------------------------------------------
+Wed Apr 23 08:55:46 UTC 2014 - jsrain@suse.cz
+
+- added style for header bar with logo (bnc#868722)
+- 3.1.16
+
+-------------------------------------------------------------------
+Wed Apr 16 09:40:01 CEST 2014 - locilka@suse.com
+
+- New dialog labels, text hightlighting, BarGraph, Tab shifting
+  buttons (by Ken Wimer)
+  (bnc#869727, bnc#868268)
+- 3.1.15
+
+-------------------------------------------------------------------
+Mon Mar 31 11:33:43 UTC 2014 - jreidinger@suse.com
+
+- keep in sync version ( no user change for opensuse )
+- 3.1.14
+
+-------------------------------------------------------------------
+Thu Mar 13 15:20:35 UTC 2014 - coolo@suse.com
+
+- simplify the openSUSE theme by only providing one icon set
+- 3.1.12
+
+-------------------------------------------------------------------
+Thu Mar 13 13:28:03 UTC 2014 - jreidinger@suse.com
+
+- add icon for high availability YaST module 
+  (bnc#708666,bnc#866738)
+- 3.1.11
+
+-------------------------------------------------------------------
+Tue Mar 11 15:29:20 UTC 2014 - jreidinger@suse.com
+
+- move icewm installation config here from yast2-x11 as it have
+  different colors for different themes
+- 3.1.10
+
+-------------------------------------------------------------------
+Tue Mar 11 08:10:05 UTC 2014 - jreidinger@suse.com
+
+- split SLE theme to allow different set of icons in control center
+  (bnc#864830)
+- 3.1.9
+
+-------------------------------------------------------------------
+Thu Mar  6 09:36:02 UTC 2014 - vmoravec@suse.com
+
+- Revert deleted virtual management icons (bnc#866696)
+- 3.1.8
+
+-------------------------------------------------------------------
+Wed Mar  5 14:40:35 UTC 2014 - mvidner@suse.com
+
+- updated SLE installation theme (by Ken Wimer)
+  mainly sofware selection
+- 3.1.7
+
+-------------------------------------------------------------------
+Fri Feb 21 14:44:13 CET 2014 - locilka@suse.com
+
+- Fixed table header not to overlap the first line in a table
+  (bnc#865040) together with mvidner
+- 3.1.6
+
+-------------------------------------------------------------------
+Thu Feb 13 18:03:49 UTC 2014 - lslezak@suse.cz
+
+- updated package selector style (by Ken Wimer)
+- 3.1.5
+
+-------------------------------------------------------------------
+Tue Feb 11 10:08:52 UTC 2014 - lslezak@suse.cz
+
+- updated SLE installation theme (by Ken Wimer)
+- 3.1.4
+
+-------------------------------------------------------------------
+Fri Feb  7 14:54:07 UTC 2014 - lslezak@suse.cz
+
+- updated SLE installation theme (by Ken Wimer)
+- 3.1.3
+
+-------------------------------------------------------------------
+Fri Feb  7 14:38:53 UTC 2014 - vmoravec@suse.com
+
+- Removed unused icons: yast-cdrom yast-create-new-vm yast-dirinstallr
+  yast-dumpdevice yast-fax yast-fingerprint yast-groups yast-idedma
+  yast-irda yast-modem yast-pci_id yast-power-management
+  yast-profile-manager yast-ramdisk yast-repair yast-vm-management
+  yast-casa yast-mascot yast-hdd yast-xen-dirinstall yast-floppy
+  yast-search-linux-partition yast-LDAP-user apparmor_update_wizard
+  yast-NIS-user yast-update-possibility yast-webpin yast-support-query
+  yast-ipsec yast-hdd-controller yast-firewire yast-usb apparmor_creation_wizard
+  yast-system-files yast-system-profile apparmor_control_panel yast-package-manager
+  linux-user-mgmt answering-machine yast-autofs yast-bootfloppy
+  yast-bootmsg yast-casa-ats
+
+-------------------------------------------------------------------
+Thu Jan 23 10:18:10 UTC 2014 - lslezak@suse.cz
+
+- Switch to the new installer look (CSS provided by Ken Wimer)
+- 3.1.2
+
+-------------------------------------------------------------------
+Mon Jan 20 08:58:51 UTC 2014 - jreidinger@suse.com
+
+- Remove VERSION file and use only version in spec file
+- 3.1.1
+
+-------------------------------------------------------------------
+Wed Nov 13 15:13:53 UTC 2013 - lslezak@suse.cz
+
+- added E17 icon for pattern selection [by Martin Schlander]
+
+-------------------------------------------------------------------
+Thu Sep 26 17:39:00 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Tue Sep 24 08:08:57 UTC 2013 - lslezak@suse.cz
+
+- world map - make dotted a questionable Indian border (bnc#779489)
+- 3.0.1
+
+-------------------------------------------------------------------
+Tue Jul 30 08:29:41 UTC 2013 - yast-devel@opensuse.org
+
+- version 3.0.0
+
+-------------------------------------------------------------------
+Tue May 14 07:28:54 UTC 2013 - coolo@suse.com
+
+- remove kuser icon, it's unclear where it's used and it conflicts
+  with the kuser application icon. If the icon is needed, it should
+  have some name on its own (but then we need to fix the users of the 
+  icon too and I have no idea what that users would be, the git log
+  doesn't say)
+
+-------------------------------------------------------------------
+Tue Nov 13 11:15:13 CET 2012 - tgoettlicher@suse.de
+
+- confirmed license GPL v2
+- 2.21.19
+
+-------------------------------------------------------------------
+Tue Oct 18 08:59:44 UTC 2011 - coolo@suse.com
+
+- make wizard a directory again and link single files as we did 
+  in the past (long standing rpm bug)
+- 2.21.18
+
+-------------------------------------------------------------------
+Mon Oct 17 12:13:20 CEST 2011 - tgoettlicher@suse.de
+
+- added iucv icons
+- 2.21.17
+
+-------------------------------------------------------------------
+Thu Oct 13 15:12:40 UTC 2011 - coolo@suse.com
+
+- add a symlink for the wizard (split into qt-branding)
+- 2.21.16
+
+-------------------------------------------------------------------
+Mon Oct 10 16:57:16 CEST 2011 - tgoettlicher@suse.de
+
+- renamed icons
+- 2.21.15
+
+-------------------------------------------------------------------
+Fri Oct  7 10:38:45 CEST 2011 - tgoettlicher@suse.de
+
+- updated oxygen icons provided by Martin Schlander a 2nd time
+- 2.21.14
+
+-------------------------------------------------------------------
+Tue Oct  4 16:30:02 CEST 2011 - tgoettlicher@suse.de
+
+- updated oxygen icons provided by Martin Schlander 
+- 2.21.13
+
+-------------------------------------------------------------------
+Fri Sep 23 11:22:20 CEST 2011 - tgoettlicher@suse.de
+
+- removed unversioned Provides/Obsoletes from spec file
+- 2.21.12
+
+-------------------------------------------------------------------
+Thu Sep 22 14:24:52 UTC 2011 - coolo@suse.com
+
+- move wizards into art repo - yast2-qt-branding now required by
+  yast2-qt
+
+-------------------------------------------------------------------
+Mon Aug 29 16:52:47 CEST 2011 - tgoettlicher@suse.de
+
+- Added icons for snapper (bnc#711193) and s390 modules to SLE theme
+- 2.21.8
+
+-------------------------------------------------------------------
+Mon Aug 29 12:47:08 CEST 2011 - tgoettlicher@suse.de
+
+- Added icons for snapper (bnc#711193) and s390 modules
+- 2.21.7
+
+-------------------------------------------------------------------
+Thu Aug  4 14:52:52 CEST 2011 - tgoettlicher@suse.de
+
+- Added icons with red, green, yellow and gray dots, needed
+  for snapper (bnc #710084)
+- 2.21.6
+
+-------------------------------------------------------------------
+Thu Jun  9 15:31:18 CEST 2011 - tgoettlicher@suse.de
+
+- Fixed spec file to include 256x256 icons.
+- 2.21.5
+
+-------------------------------------------------------------------
+Tue Jun  7 19:26:01 UTC 2011 - badshah400@gmail.com
+
+- Include high resolution png images (256x256) and scalable svg
+  images to make icons look better in gnome-shell
+- 2.21.4
+
+-------------------------------------------------------------------
+Tue May 17 15:14:02 CEST 2011 - tgoettlicher@suse.de
+
+- Added icons for FCoE (Fibre Channel over Ethernet)
+- 2.21.3
+
+-------------------------------------------------------------------
+Fri Apr 29 14:31:58 CEST 2011 - tgoettlicher@suse.de
+
+- Removed openSUSE-Metal theme (bnc #690851)
+- 2.21.2
+
+-------------------------------------------------------------------
+Thu Apr 28 17:22:33 CEST 2011 - tgoettlicher@suse.de
+
+- Added openSUSE-Metal theme 
+- 2.21.1
+
+-------------------------------------------------------------------
+Wed Feb  2 16:49:48 CET 2011 - tgoettlicher@suse.de
+
+- fixed font shown in qt interface (bnc #545581)
+- 2.20.3
+
+-------------------------------------------------------------------
+Fri Jan 28 10:29:25 UTC 2011 - coolo@novell.com
+
+- blurr the background to increase usability
+- 2.20.2
+
+-------------------------------------------------------------------
+Wed Jan 26 12:19:57 UTC 2011 - coolo@novell.com
+
+- use dark stripes with light text for 11.4
+- 2.20.1
+
+-------------------------------------------------------------------
+Wed May 19 10:16:37 CEST 2010 - tgoettlicher@suse.de
+
+- moved oxygen icons to correct directory 
+- 2.19.2
+
+-------------------------------------------------------------------
+Mon May 17 16:29:24 CEST 2010 - tgoettlicher@suse.de
+
+- added oxygen icons provided by Martin Schlander
+- 2.19.1
+
+-------------------------------------------------------------------
+Tue May 11 16:29:51 CEST 2010 - jimmac@novell.com
+
+- initial 11.3 styling
+
+-------------------------------------------------------------------
+Fri Jan 15 13:27:26 CET 2010 - jsrain@suse.cz
+
+- added icons for the LXDE pattern
+- 2.19.0
+
+-------------------------------------------------------------------
+Wed Dec  2 19:29:14 CET 2009 - jimmac@novell.com
+
+- address the button submenu styling. bnc#444400 and bnc#458001.
+
+-------------------------------------------------------------------
+Tue Nov 24 14:52:37 CET 2009 - jimmac@novell.com
+
+- use wrench for the launcher icon again. In all sizes. The arrdvark mascot added as yast-mascot. bnc#501452, bnc#544921
+
+-------------------------------------------------------------------
+Wed Nov  4 14:49:33 CET 2009 - jimmac@novell.com
+
+- fix margin for the sidebar headers. bnc#547641
+- 2.18.11
+
+-------------------------------------------------------------------
+Thu Oct 15 10:03:22 UTC 2009 - coolo@novell.com
+
+- fix gnome-pattern icon (bnc#545753)
+- 2.18.10
+
+-------------------------------------------------------------------
+Thu Oct  8 17:27:33 CEST 2009 - jimmac@novell.com
+
+- remove padding around richtext to work around Qt regression. bnc#533581
+- 2.18.9
+
+-------------------------------------------------------------------
+Wed Sep 16 11:41:06 CEST 2009 - jimmac@novell.com
+
+- dark gnome logo for the light installer
+- REIPL icon. bnc#529990
+- all states for the checkbox widget. bnc#445418
+- focused state for qcombobox. bnc#499909
+- focused state for buttons. remove dotted outline. bnc#471861
+- 2.18.9
+
+-------------------------------------------------------------------
+Tue Sep  8 10:26:23 CEST 2009 - tgoettlicher@suse.de
+
+- updated Oxygen icons
+- 2.18.8
+
+-------------------------------------------------------------------
+Fri Sep  4 12:25:22 CEST 2009 - jimmac@novell.com
+
+- yast.png. Same app icon everywhere. bnc#535398
+- 2.18.7
+
+-------------------------------------------------------------------
+Tue Sep  1 09:44:54 CEST 2009 - jimmac@novell.com
+
+- yast-webpin for openSUSE and SLE themes.
+- yast-dump. bnc#529982
+- yast-xpram. bnc#529984
+- 2.18.6
+
+-------------------------------------------------------------------
+Mon Aug 24 10:55:06 CEST 2009 - kmachalkova@suse.cz
+
+- New webpin icons from Javier Llorente (javier@opensuse.org)
+- 2.18.5
+
+-------------------------------------------------------------------
+Fri Jun 05 16:17:20 CET 2009 - jimmac@novell.com
+
+- initial revision of the 11.2 installer theme
+- 2.18.4
+
+-------------------------------------------------------------------
+Mon Apr 27 10:17:16 CEST 2009 - locilka@suse.cz
+
+- Re-added the old YaST icon as 'yast-spanner'.
+- New YaST and SMT icons created by jimmac.
+- 2.18.3
+
+-------------------------------------------------------------------
+Tue Apr 21 16:36:36 CEST 2009 - coolo@suse.de
+
+- update the logo to say 11.2 (ugly)
+- 2.18.2
+
+-------------------------------------------------------------------
+Wed Apr  1 13:47:29 CEST 2009 - locilka@suse.cz
+
+- New YaST icon based on new YaST Mascot: Aardvark.
+- 2.18.1
+
+-------------------------------------------------------------------
+Thu Jan 22 12:24:56 CET 2009 - jimmac@novell.com
+
+- set the SLE green for links (a) as well. bug #446588
+- 2.18.0
+
+-------------------------------------------------------------------
+Mon Dec 15 15:40:42 CET 2008 - jimmac@novell.com
+
+- add a subtle stroke to the inactive tabs to avoid them merging 
+  together visually
+- workaround for text clipping in dropboxes (see #448139)
+
+-------------------------------------------------------------------
+Thu Dec 11 23:26:46 CET 2008 - jimmac@novell.com
+- crop images to force scaling at all resolutions. Suggested workaround for 
+  bug #438110
+- address some contrast issues with QCombox and QPushButon widgets with menus
+- V 2.17.5 
+
+-------------------------------------------------------------------
+Tue Dec  9 13:21:08 CET 2008 - ug@suse.de
+
+- icon for deploy image in autoyast UI added (bnc#457580)
+- icon for firstboot in autoyast UI added (bnc#457579)
+- 2.17.14
+
+-------------------------------------------------------------------
+Fri Nov 28 17:05:41 CET 2008 - jimmac@jimmac.net
+
+- SLE: make the scrollbars, progressbar and buttons less saturated to match the 
+  color of the background. bug #449746
+
+-------------------------------------------------------------------
+Fri Nov 28 16:46:57 CET 2008 - jimmac@jimmac.net
+
+- SLE: make richtext headers readable. bug #446588
+- 2.17.13
+
+-------------------------------------------------------------------
+Thu Nov 27 15:22:56 CET 2008 - jimmac@jimmac.net
+
+- openSUSE: make sure both image backgrounds are RGB to avoid compositing
+  issues (Discussed in bug #449150, some rendering artifacts still remain with
+  indexed/greyscale PNGs).
+
+-------------------------------------------------------------------
+Wed Nov 19 22:43:27 CET 2008 - jimmac@gmail.com
+
+- SLE: fix a label color for groups. bnc #446712
+- 2.17.12
+
+-------------------------------------------------------------------
+Wed Nov 19 10:07:10 CET 2008 - jsrain@suse.cz
+
+- fixed prefered openSUSE theme handling (bnc #444806)
+- 2.17.11
+-------------------------------------------------------------------
+Thu Nov 13 12:48:54 CET 2008 - jimmac@novell.com
+
+- SLE: fix tooltip background color. bug #442450
+
+-------------------------------------------------------------------
+Mon Nov 10 16:11:35 CET 2008 - coolo@suse.de
+
+- update from Martin for oxygen
+- 2.17.10
+
+-------------------------------------------------------------------
+Mon Nov 10 16:06:04 CET 2008 - jimmac@novell.com
+
+- Qt doesn't like greyscale PNGs
+
+-------------------------------------------------------------------
+Fri Nov  7 03:15:17 CET 2008 - jimmac@novell.com
+
+- SLE: dithered backgrounds to 16bit to avoid color banding
+
+-------------------------------------------------------------------
+Thu Nov  6 10:20:22 CET 2008 - locilka@suse.cz
+
+- (jimmac) Fixed appearance of editable combo-boxes (bnc #440896).
+- (jimmac) Added 16x16 Makefiles.
+- 2.17.9
+
+-------------------------------------------------------------------
+Tue Nov  4 12:18:17 CET 2008 - jsrain@suse.cz
+
+- fixed dependencies
+- 2.17.8
+
+-------------------------------------------------------------------
+Tue Nov  4 08:45:52 CET 2008 - jsrain@suse.cz
+
+- merged yast2-theme-SLE into one source package
+- fixed openSUSE-current symlink handling (bnc #436052)
+- 2.17.7
+
+-------------------------------------------------------------------
+Thu Oct 23 11:51:40 CEST 2008 - coolo@suse.de
+
+- update for Oxygen theme
+- V 2.17.6
+
+-------------------------------------------------------------------
+Tue Oct  7 13:43:08 CEST 2008 - sh@suse.de
+
+- (jimmac) Fixed bnc #427923: Distro uses openSUSE 11.0 branding
+- V 2.17.5 
+
+-------------------------------------------------------------------
+Wed Sep 24 16:07:19 CEST 2008 - gs@suse.de
+
+- icons for new module yast2-audit-laf added
+- 2.17.4
+
+-------------------------------------------------------------------
+Thu Sep 11 15:36:58 CEST 2008 - jsrain@suse.cz
+
+- adapted to existence of yast2-branding packages (fate #301794)
+- 2.17.3
+
+-------------------------------------------------------------------
+Fri Aug 22 10:52:00 CEST 2008 - sschober@suse.de
+
+- added missing 22x22 yast2 group icons
+- 2.17.2
+
+-------------------------------------------------------------------
+Wed Aug 06 16:56:21 CEST 2008 - aschnell@suse.de
+
+- icons for new expert partitioner
+- 2.17.1
+
+-------------------------------------------------------------------
+Fri Jul 11 13:13:36 CEST 2008 - locilka@suse.cz
+
+- Added msg_question.png to all 32x32.
+
+-------------------------------------------------------------------
+Wed Jun  4 13:13:42 CEST 2008 - sh@suse.de
+
+- Added Martin Schlander's new Oxygen icons (bnc #397020):
+  - yast-casa
+  - yast-checkmedia
+  - yast-host
+  - yast-ntp-client
+  - yast-squid
+  - yast-system
+- V 2.16.38
+
+-------------------------------------------------------------------
+Tue Jun  3 16:06:21 CEST 2008 - jsrain@suse.cz
+
+- added icons for yast-squid (bnc #392940)
+- 2.16.37
+
+-------------------------------------------------------------------
+Mon Jun  2 12:12:25 CEST 2008 - sh@suse.de
+
+- (coolo) Fixed bnc #395699: Wizard side bar too narrow in Korean
+- V 2.16.36 
+
+-------------------------------------------------------------------
+Fri May 30 11:55:50 CEST 2008 - sh@suse.de
+
+- Added icons for yast-casa (bnc #384744) 
+- V 2.16.35
+
+-------------------------------------------------------------------
+Thu May 29 15:10:24 CEST 2008 - sh@suse.de
+
+- Moved 48x48/yast2-casa-ats to correct directory (bnc #384744)
+- V 2.16.34
+
+-------------------------------------------------------------------
+Wed May 28 11:44:38 CEST 2008 - sh@suse.de
+
+- Added yast-casa-ats icons (bnc #384744)
+- V 2.16.33 
+
+-------------------------------------------------------------------
+Tue May 27 17:42:37 CEST 2008 - dmacvicar@suse.de
+
+- fix text color broken in previous changes.
+- V 2.16.32
+
+-------------------------------------------------------------------
+Mon May 26 21:50:30 CEST 2008 - coolo@suse.de
+
+- revert half of the last change
+
+-------------------------------------------------------------------
+Mon May 26 17:17:15 CEST 2008 - dmacvicar@suse.de
+
+- fix QTextBrowser have white text due to 
+  QWidget setting color to white. (bnc#389739)
+- V 2.16.31
+
+-------------------------------------------------------------------
+Mon May 26 11:43:48 CEST 2008 - coolo@suse.de
+
+- fixing contrast of green and blue (bnc#373162)
+- V 2.16.30
+
+-------------------------------------------------------------------
+Wed May 21 07:29:48 CEST 2008 - coolo@suse.de
+
+- Several color fixes in the stylesheet (bnc#375177)
+- V 2.16.29
+
+-------------------------------------------------------------------
+Fri May 16 16:29:48 CEST 2008 - sh@suse.de
+
+- Fixed bnc #374704: Missing icons in wizard
+  No longer actively suppressing the DialogIcon widget
+- V 2.16.28 
+
+-------------------------------------------------------------------
+Tue May  6 11:44:58 CEST 2008 - sh@suse.de
+
+- Fixed bnc #384761: Typos in filenames (patten -> pattern) 
+- V 2.16.27
+
+-------------------------------------------------------------------
+Mon May  5 15:48:37 CEST 2008 - coolo@suse.de
+
+- style horizontal sliders too
+- fully styled vertical slider
+- add some padding to the text boxes. Looked too crammed
+- V 2.16.26
+
+-------------------------------------------------------------------
+Tue Apr 29 21:48:37 CEST 2008 - coolo@suse.de
+
+- Oxygen update by Martin
+- V 2.16.25
+
+-------------------------------------------------------------------
+Mon Apr 28 17:58:32 CEST 2008 - sh@suse.de
+
+- Added yast.png icon for yast2-controlcenter in all themes
+  (bnc #144694) 
+
+-------------------------------------------------------------------
+Tue Apr 22 18:20:39 CEST 2008 - coolo@suse.de
+
+- adding a kde4 icon
+
+-------------------------------------------------------------------
+Thu Apr 17 15:33:52 CEST 2008 - coolo@suse.de
+
+- overwrite the red color - does not fit well on gray
+
+-------------------------------------------------------------------
+Wed Apr 16 13:35:40 CEST 2008 - locilka@suse.cz
+
+- Added pattern-xfce (bnc #377584).
+- V 2.16.21
+
+-------------------------------------------------------------------
+Wed Apr 16 09:35:46 CEST 2008 - coolo@suse.de
+
+- last minute fixes by jimmac
+- V 2.16.20
+
+-------------------------------------------------------------------
+Sun Apr 13 19:08:24 CEST 2008 - coolo@suse.de
+
+- fixed groupbox text color (bnc#378694)
+- V 2.16.19
+
+-------------------------------------------------------------------
+Fri Apr 11 22:46:56 CEST 2008 - coolo@suse.de
+
+- several fixes
+
+-------------------------------------------------------------------
+Fri Apr  4 11:07:13 CET 2008 - tgoettlicher@suse.de
+
+- fixed frame style of rich text widget (bnc #369685)
+
+-------------------------------------------------------------------
+Mon Mar 10 11:10:27 CET 2008 - coolo@suse.de
+
+- adding 0.2 of yast2-oxygen
+- several theme changes from Jimmac
+- V. 2.16.17
+
+-------------------------------------------------------------------
+Wed Mar  5 21:33:20 CET 2008 - coolo@suse.de
+
+- replace default style with a light version and
+  only use the heavy one during installation
+
+-------------------------------------------------------------------
+Tue Mar  4 14:33:29 CET 2008 - coolo@suse.de
+
+- making radiobuttons visible
+
+-------------------------------------------------------------------
+Mon Mar  3 14:51:43 CET 2008 - coolo@suse.de
+
+- another iteration on non-white foregrounds
+
+-------------------------------------------------------------------
+Fri Feb 22 11:19:32 CET 2008 - coolo@suse.de
+
+- combobox look better if not white-white too
+
+-------------------------------------------------------------------
+Thu Feb 21 21:01:28 CET 2008 - coolo@suse.de
+
+- trying to make some widgets visible
+
+-------------------------------------------------------------------
+Tue Feb 19 08:22:12 CET 2008 - coolo@suse.de
+
+- several fixes from Jakub
+- V 2.16.13
+
+-------------------------------------------------------------------
+Fri Feb 15 11:58:35 CET 2008 - coolo@suse.de
+
+- Jakub couldn't stand my ugly designer caps - YEAH!
+- V 2.16.12
+
+-------------------------------------------------------------------
+Mon Feb 13 14:34:29 CET 2008 - visnov@suse.de
+
+- add icon for system users
+
+-------------------------------------------------------------------
+Mon Feb 12 09:26:19 CET 2008 - tgoettlicher@suse.de
+
+- reverted last change
+- V 2.16.11
+
+-------------------------------------------------------------------
+Mon Feb 11 11:44:29 CET 2008 - tgoettlicher@suse.de
+
+- fixed themes (bnc #359720)
+- V 2.16.10
+
+-------------------------------------------------------------------
+Thu Jan 31 16:51:29 CET 2008 - coolo@suse.de
+
+- fixing colour palette
+- V 2.16.9
+
+-------------------------------------------------------------------
+Wed Jan 30 16:59:57 CET 2008 - coolo@suse.de
+
+- updates to the themeing
+- V 2.16.8
+
+-------------------------------------------------------------------
+Sun Jan 27 16:07:15 CET 2008 - coolo@suse.de
+
+- made more widgets green after Jiri complained
+- V 2.16.7
+
+-------------------------------------------------------------------
+Wed Jan 23 12:54:04 CET 2008 - coolo@suse.de
+
+- update worldmap with a one generated from marble (author tackat)
+- V 2.16.6
+
+-------------------------------------------------------------------
+Tue Jan 22 14:36:33 CET 2008 - kmachalkova@suse.cz
+
+- Icons from yast2-apparmor moved here
+- 2.16.5 
+
+-------------------------------------------------------------------
+Sat Jan  5 13:43:34 CET 2008 - coolo@suse.de
+
+- also set a color for a disabled push button (#350794)
+- V 2.16.4
+
+-------------------------------------------------------------------
+Mon Dec 24 17:24:16 CET 2007 - coolo@suse.de
+
+- rework openSUSE-Crystal to rely on openSUSE theme for common files
+- V 2.16.3
+
+-------------------------------------------------------------------
+Wed Dec 19 19:18:30 CET 2007 - coolo@suse.de
+
+- adding some padding also to the non-steps layout
+- V 2.16.2
+
+-------------------------------------------------------------------
+Tue Dec 18 16:55:27 CET 2007 - coolo@suse.de
+
+- moving wizard theming from qt to theme
+
+-------------------------------------------------------------------
+Tue Dec 18 16:53:34 CET 2007 - coolo@suse.de
+
+- Adding worldmap
+- V 2.16.1
+
+-------------------------------------------------------------------
+Mon Sep 24 18:14:24 CEST 2007 - tgoettlicher@suse.de
+
+- Added pattern icons (#216557)
+- V 2.15.14
+
+-------------------------------------------------------------------
+Mon Sep  3 15:55:04 CEST 2007 - sh@suse.de
+
+- Added animations in GIF format, too so even yast2-gtk can play them 
+- V 2.15.13
+
+-------------------------------------------------------------------
+Mon Sep  3 13:21:21 CEST 2007 - sh@suse.de
+
+- Added animations (for bug #296945: Busy indicator)
+- V 2.15.12 
+
+-------------------------------------------------------------------
+Mon Sep  3 11:48:00 CEST 2007 - sh@suse.de
+
+- V 2.15.11
+- (sreeves@novell.com) exchanged icon for YaST2 control center 
+  (bug #8097)
+
+-------------------------------------------------------------------
+Wed Aug 29 14:34:05 CEST 2007 - tgoettlicher@suse.de
+
+- removed title-bar-gradient.png
+- r40565
+- V 2.15.10
+
+
+-------------------------------------------------------------------
+Wed Aug 22 13:54:17 CEST 2007 - jsrain@suse.cz
+
+- added missing icons for VM management (#301016)
+- 2.15.8
+
+-------------------------------------------------------------------
+Tue Aug 14 08:59:19 CEST 2007 - jsuchome@suse.cz
+
+- added icons for fingerprint-reader, live installation (#299751)
+- changed icon for language
+- 2.15.7 
+
+-------------------------------------------------------------------
+Fri Aug  3 16:44:11 CEST 2007 - jsrain@suse.cz
+
+- added icons for Kiwi and SSH server
+- V 2.15.6
+
+-------------------------------------------------------------------
+Fri Aug  3 13:21:47 CEST 2007 - sh@suse.de
+
+- V 2.15.5
+- Fixed bug #294170: Missing icons for vm_install
+
+-------------------------------------------------------------------
+Tue Jul  3 15:57:47 CEST 2007 - locilka@suse.cz
+
+- Created identical copy of yast2-theme-openSUSE under the name
+  yast2-theme-openSUSE-Crystal (FATE #301304). The old theme will
+  use Tango and the new one Crystal iconsets.
+- Initially NLD-theme was used for yast2-theme-openSUSE.
+- V 2.15.4
+
+-------------------------------------------------------------------
+Sat Jun 16 00:22:11 CEST 2007 - dmueller@suse.de
+
+- hardlink theme files that are duplicate
+
+-------------------------------------------------------------------
+Mon Apr 30 18:03:00 CEST 2007 - ro@suse.de
+
+- specify provides for yast2_theme more closely
+  (needed for hack in yast2-sudo working around 253001)
+
+-------------------------------------------------------------------
+Wed Apr 18 16:46:47 CEST 2007 - juhliarik@suse.cz
+
+- Added ftp-server icons
+- V 2.15.3
+
+-------------------------------------------------------------------
+Mon Mar  5 13:27:38 CET 2007 - jsrain@suse.cz
+
+- added yast2-isns icons
+
+-------------------------------------------------------------------
+Thu Feb 22 14:39:17 CET 2007 - sh@suse.de
+
+- Added default icon for y2cc groups: yast-default-group.png
+- V 2.15.2
+
+-------------------------------------------------------------------
+Wed Feb 21 17:36:53 CET 2007 - sh@suse.de
+
+- Fixed bug #247294: Icons cause RPM file conflicts
+  * Enforced consistent yast- prefix for icons 
+  * Removed obsolete icons without yast- prefix
+    (no longer in use in any .desktop file or YCP code)
+- V 2.15.1
+
+-------------------------------------------------------------------
+Thu Dec  7 09:24:53 CET 2006 - locilka@suse.cz
+
+- Moving License and Installation Mode icons from 22x22/ to
+  22x22/apps/ directory (#237359).
+- V 2.15.0
+
+-------------------------------------------------------------------
+Fri Nov 10 14:04:08 CET 2006 - sh@suse.de
+
+- Merged SLE-10-SP1-Branch to trunk (-r31627:34248)
+- V 2.14.1 
+
+-------------------------------------------------------------------
+Wed Oct 18 11:32:09 CEST 2006 - locilka@suse.cz
+
+- Reverting the previous change on AJ's request.
+- 2.13.16
+
+-------------------------------------------------------------------
+Mon Oct  2 12:47:28 CEST 2006 - locilka@suse.cz
+
+- Modified openSUSE theme to use Tango iconset (FATE #301304).
+- 2.13.15
+
+-------------------------------------------------------------------
+Tue Sep 19 17:01:07 CEST 2006 - locilka@suse.cz
+
+- Added yast-desktop-select icon (taken from yast-x11)
+- 2.13.14
+
+-------------------------------------------------------------------
+Thu Sep 14 16:34:13 CEST 2006 - sh@suse.de
+
+- Renamed subpackage yast2-theme-SuSELinux to yast2-theme-openSUSE 
+- V 2.13.13
+
+-------------------------------------------------------------------
+Fri Sep  8 14:49:15 CEST 2006 - kmachalkova@suse.cz
+
+- Added missing 22x22 yast-dns icon (partly #203816)
+- 2.13.12
+
+-------------------------------------------------------------------
+Wed Sep  6 17:22:33 CEST 2006 - locilka@suse.cz
+
+- Added icons for License Agreement dialog.
+- 2.13.11
+
+-------------------------------------------------------------------
+Tue Sep  5 13:23:27 CEST 2006 - locilka@suse.cz
+
+- Added icons for Installation Mode, yast-inst-mode (#200811)
+- 2.13.10
+
+-------------------------------------------------------------------
+Fri Aug 18 16:22:32 CEST 2006 - kmachalkova@suse.cz
+
+- new icon for sudo (#197532)
+- 2.13.9
+
+-------------------------------------------------------------------
+Wed Jul 12 09:45:25 CEST 2006 - jsuchome@suse.cz
+
+- new icon for ldap browser (#188165)
+- 2.13.8 
+
+-------------------------------------------------------------------
+Wed Apr 19 12:00:54 CEST 2006 - sh@suse.de
+
+- Made icons available for GNOME hicolor theme (bug #166008) 
+- V 2.13.7
+
+-------------------------------------------------------------------
+Mon Apr 10 16:26:44 CEST 2006 - cihlarov@suse.cz
+
+- Added yast-addon icons (bug #154930) 
+- V 2.13.6
+
+-------------------------------------------------------------------
+Mon Mar 27 16:08:36 CEST 2006 - sh@suse.de
+
+- Expanded old yast2-devel-packages macro in BuildRequires
+- V 2.13.5
+
+-------------------------------------------------------------------
+Fri Mar 24 17:09:06 CET 2006 - jdsn@suse.de
+
+- new icon for product registration (blocker: #160293)
+- 2.13.4
+
+-------------------------------------------------------------------
+Tue Feb 21 09:08:50 CET 2006 - mzugec@suse.cz
+
+- #15228 slp -> slp-server 
+
+-------------------------------------------------------------------
+Tue Feb  7 14:09:34 CET 2006 - mzugec@suse.cz
+
+- added icons for iscsi-server and iscsi-client 
+
+-------------------------------------------------------------------
+Tue Jan 24 13:36:47 CET 2006 - mzugec@suse.cz
+
+- added icons for yast2-release-notes
+
+-------------------------------------------------------------------
+Tue Sep  6 14:54:49 CEST 2005 - sh@suse.de
+
+- Exchanged KDE icon (bug #115312)
+- Added icons for new installation dialogs (license, mode, desktop)
+- V 2.12.7 
+
+-------------------------------------------------------------------
+Mon Aug 29 17:50:14 CEST 2005 - jsuchome@suse.cz
+
+- fixed control-center icon for users (#113770)
+- 2.12.6
+
+-------------------------------------------------------------------
+Fri Aug  5 12:40:56 CEST 2005 - jsrain@suse.cz
+
+- added screenshots of KDE and GNOME desktops
+- 2.12.5
+
+-------------------------------------------------------------------
+Wed Jul 20 15:12:00 CEST 2005 - sh@suse.de
+
+- Added large icons for desktop selection (gnome.png, kde.png)
+- V 2.12.4 
+
+-------------------------------------------------------------------
+Tue Jul  5 17:17:34 CEST 2005 - sh@suse.de
+
+- Added wallpapers/ dir and wallpapers/welcome.jpg
+- V 2.12.3 
+
+-------------------------------------------------------------------
+Tue Jun  7 16:17:25 CEST 2005 - sh@suse.de
+
+- Added missing 32x32 icons
+- Added transparent border to 32x32 group icons 
+- V 2.12.2
+
+-------------------------------------------------------------------
+Tue Apr  5 15:42:37 CEST 2005 - sh@suse.de
+
+- Merged 9.3 branch 21937:22172 to trunk  
+- V 2.12.1
+
+-------------------------------------------------------------------
+Wed Mar  2 17:33:30 CET 2005 - sh@suse.de
+
+- Starting to introduce consistent naming policy: yast2-<module-name>
+- Renamed source.png -> yast2-inst-source.png
+- Added yast2-media-check.png
+- V 2.11.2 
+
+-------------------------------------------------------------------
+Mon Feb  7 20:46:05 CET 2005 - sh@suse.de
+
+- Added icons for standard popups 
+- V 2.11.1
+
+-------------------------------------------------------------------
+Wed Sep 29 16:22:43 CEST 2004 - sh@suse.de
+
+- V 2.10.5
+- Fixed 22x22 icon names: #46326, #46327, #46322
+
+-------------------------------------------------------------------
+Wed Sep 29 11:50:02 CEST 2004 - sh@suse.de
+
+- V 2.10.4
+- Fixed bug #46320: Wrong 22x22 icon name for dhcp-server
+- Fixed bug #46321: Wrong 22x22 icon name for dns-server
+
+-------------------------------------------------------------------
+Mon Sep 13 17:45:36 CEST 2004 - jsrain@suse.cz
+
+- changed logo for the test page
+- 2.10.3
+
+-------------------------------------------------------------------
+Wed Sep  1 11:51:47 CEST 2004 - sh@suse.de
+
+- Added irda icons by Ken
+- V 2.10.2 
+
+-------------------------------------------------------------------
+Tue Aug 31 15:20:34 CEST 2004 - sh@suse.de
+
+- Added bluetooth icons by Ken
+- V 2.10.1 
+
+-------------------------------------------------------------------
+Sat Aug 14 15:06:46 CEST 2004 - nashif@suse.de
+
+- Merged changes from 9.1 
+- 2.10.0
+
+-------------------------------------------------------------------
+Sun May  9 15:48:57 CEST 2004 - schwab@suse.de
+
+- Fix %post.
+
+-------------------------------------------------------------------
+Wed May  5 15:36:49 CEST 2004 - sh@suse.de
+
+- V 2.9.13
+- Not only obsolete, also provide yast2-theme-UnitedLinux (bug #38502) 
+
+-------------------------------------------------------------------
+Wed Apr 28 16:48:21 CEST 2004 - sh@suse.de
+
+- V 2.9.12
+- Added some new icons by ken
+- Moved zfcp / dasd icons to correct subdir
+- Obsolete yast2-theme-UnitedLinux (bug #38502) 
+
+-------------------------------------------------------------------
+Tue Apr 27 17:36:38 CEST 2004 - sh@suse.de
+
+- V 2.9.11
+- Added icons for S/390 zfcp and dasd (bug #39514) 
+
+-------------------------------------------------------------------
+Sun Apr 18 17:34:00 CEST 2004 - nashif@suse.de
+
+- Added missing icons: wol,instserver,autoyast
+- V 2.9.10
+
+-------------------------------------------------------------------
+Mon Apr  5 17:09:11 CEST 2004 - sh@suse.de
+
+- V 2.9.9
+- (nashif) Fixed bug #38380: Added missing icon for SLP browser 
+
+-------------------------------------------------------------------
+Sat Apr  3 03:44:33 CEST 2004 - nashif@suse.de
+
+- added tree button icon
+- added missing rc_config icon
+
+-------------------------------------------------------------------
+Fri Apr  2 16:19:05 CEST 2004 - sh@suse.de
+
+- License change to GPL
+
+-------------------------------------------------------------------
+Fri Apr  2 13:31:13 CEST 2004 - sh@suse.de
+
+- V 2.9.7
+- Light grey / white logos (no more blue in the logos)
+
+-------------------------------------------------------------------
+Thu Apr  1 17:59:48 CEST 2004 - sh@suse.de
+
+- V 2.9.6
+- New steel grey background and grey blue logos 
+  (will get some more tweaking, but way better than screaming green)
+
+-------------------------------------------------------------------
+Tue Mar 30 16:13:38 CEST 2004 - adrian@suse.de
+
+- add 32x32 icons
+
+-------------------------------------------------------------------
+Fri Mar 26 14:32:01 CET 2004 - sh@suse.de
+
+- V 2.9.5
+- Exchanged title bar logos (Ken) 
+
+-------------------------------------------------------------------
+Thu Mar 25 17:12:35 CET 2004 - sh@suse.de
+
+- V 2.9.4
+- Provide same title images like for wizard also for control-center  
+
+-------------------------------------------------------------------
+Tue Mar 23 18:41:52 CET 2004 - sh@suse.de
+
+- V 2.9.3
+- Moved icons from yast2-control-center to this package
+- Imported 22x22 icons for wizard headings (by Ken)
+- Moved old module icons to separate 48x48 subdir 
+
+-------------------------------------------------------------------
+Mon Mar 22 18:05:28 CET 2004 - sh@suse.de
+
+- V 2.9.2
+- New green theme by Ken
+
+-------------------------------------------------------------------
+Wed Mar 10 01:40:12 CET 2004 - sh@suse.de
+
+- V 2.9.1
+- Completely new pics for completely new wizard 
+
+-------------------------------------------------------------------
+Wed Dec  3 08:40:59 CET 2003 - jsrain@suse.de
+
+- added theme-specific parts of printer test page (#21661)
+- 2.9.0
+
+-------------------------------------------------------------------
+Fri Aug 01 11:19:05 CEST 2003 - arvin@suse.de
+
+- fixed spec file so that autobuild can increases release number
+
+-------------------------------------------------------------------
+Thu Jun 12 12:55:27 CEST 2003 - msvec@suse.cz
+
+- correct neededforbuild
+- 2.8.2
+
+-------------------------------------------------------------------
+Mon Jun  9 11:30:47 CEST 2003 - msvec@suse.de
+
+- correctly package documentation
+- 2.8.1
+
+-------------------------------------------------------------------
+Tue Mar 11 13:55:03 CET 2003 - sh@suse.de
+
+- V 2.7.1
+- New image for active step with correct background color (Ken)
+
+-------------------------------------------------------------------
+Wed Oct  2 14:29:48 CEST 2002 - cschum@suse.de
+
+- Added headers for YOU.
+
+-------------------------------------------------------------------
+Thu Sep 05 18:35:39 CEST 2002 - arvin@suse.de
+
+- yast2-theme contains two subpackages yast2-theme-SuSELinux
+  and yast2-theme-UnitedLinux
+
+-------------------------------------------------------------------
+Mon Sep  2 13:25:51 CEST 2002 - sh@suse.de
+
+- V 2.6.6
+- New images from wimer@suse.de: Consistent colors
+
+-------------------------------------------------------------------
+Thu Aug 29 15:27:16 CEST 2002 - sh@suse.de
+
+- V 2.6.5
+- New images from wimer@suse.de: Grey style
+
+-------------------------------------------------------------------
+Fri Jul 19 11:21:56 CEST 2002 - sh@suse.de
+
+- V 2.6.4
+- made image names more consistent for easier OEM logo handling
+
+-------------------------------------------------------------------
+Mon Jul 08 12:24:59 CEST 2002 - arvin@suse.de
+
+- now really added images from wizard
+
+-------------------------------------------------------------------
+Sun Jul 07 19:47:35 CEST 2002 - arvin@suse.de
+
+- added images from wizard
+
+-------------------------------------------------------------------
+Thu Jul 04 13:28:18 CEST 2002 - arvin@suse.de
+
+- move non binary file from /usr/lib/YaST2 to /usr/share/YaST2
+
+-------------------------------------------------------------------
+Mon Jul 01 11:24:19 CEST 2002 - arvin@suse.de
+
+- new package with theme able images for YaST2
+

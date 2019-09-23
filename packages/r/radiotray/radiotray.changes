@@ -1,0 +1,148 @@
+-------------------------------------------------------------------
+Sun Jan 13 11:40:16 UTC 2019 - ecsos@opensuse.org
+
+- Fix wrong require python-dbus.
+  Python-dbus does not exists. Python-dbus-python exists.
+
+-------------------------------------------------------------------
+Tue Jan  1 11:14:17 UTC 2019 - antoine.belvire@opensuse.org
+
+- Add missing requirement on python-dbus (boo#1120427).
+- Clean spec file.
+
+-------------------------------------------------------------------
+Sat Sep  9 16:07:37 UTC 2017 - zaitor@opensuse.org
+
+- Add gstreamer-plugins-ugly Recommends: Help users pull in often
+  needed codecs to play internet radio streams.
+
+-------------------------------------------------------------------
+Tue Jul 25 09:48:40 UTC 2017 - tchvatal@suse.com
+
+- Remove some sle11 conditions that are no longer needed
+- Remove fluendo plugins as we no longer need it mp3 is available
+  out of the box in the system
+
+-------------------------------------------------------------------
+Tue May 10 18:25:29 UTC 2016 - zaitor@opensuse.org
+
+- Add radiotray-port-gst1-gtk3.patch: Port to gtk3 and
+  gstreamer-1.0.
+- Following above port: Replace gstreamer-0_10-plugins-fluendo_mp3
+  for gstreamer-fluendo_mp3 recommends, and python-gstreamer-0_10
+  for python-gst Requires. Also add python-gobject-Gdk Requires
+  following the split in python-gobject.
+- Stop passing
+  sed -i 's:^#!/usr/bin/env :#!/usr/bin/:' src/radiotray.py, now
+  part of patch.
+
+-------------------------------------------------------------------
+Thu Jan  1 01:33:52 UTC 2015 - ecsos@opensuse.org
+
+- Add gstreamer-0_10-plugins-fluendo_mp3 Recommends: most internet
+  radio stations stream in MP3 and a valid codec is required.
+
+-------------------------------------------------------------------
+Fri Nov  7 04:26:52 UTC 2014 - antoine.belvire@laposte.net
+
+- Add radiotray-0.7.3-fix-wrong-mutex-unlock.patch: fix crash
+  at startup by adding missing call to gdk.threads_enter() in
+  SysTray.py (boo#904322).
+
+-------------------------------------------------------------------
+Wed Aug 15 11:46:31 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.7.3:
+  + Added buffer size control to configuration file
+    ("buffer_sizer")
+  + Added partial support for album cover download
+  + Fixed issues with icon not appearing in some platforms
+  + Improved tooltip on sleeptimer
+  + Fixed issue with configuration location
+  + Added plugin for multimedia keys under Mate
+  + Improved plugin configuration dialog
+  + Added toggle operation to DBus interface
+  + Fix problem with segmentatinon faults
+  + Fix problem with temporary network failures
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 23 17:39:27 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.7.2:
+  + Fixed issue with icon on appindicator
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec 14 14:44:15 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.7.1:
+  + Added a missing file to package
+  + Updated translations
+- Changes from version 0.7.0:
+  + Added plugins system
+  + Moved sleep timer functionality to a plugin
+  + Improved user interaction in bookmarks configuration dialog
+  + Moved gnome media shortcut keys funcionality to a plugin
+  + Moved notifications to a plugin
+  + New Song History plugin
+  + Added a proper logging
+  + Read-only bookmark support
+  + Increased default radio stations list
+  + Fix for MMS redirects
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 20 09:12:48 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.6.4:
+  + Several bug fixes.
+  + Added first run configuration dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 15 12:10:39 CET 2011 - badshah400@gmail.com
+
+- Update to version 0.6.3:
+  + Fixed build
+- Changes from version 0.6.2:
+  + Added --resume parameter to play last radio station
+  + Added application indicator support
+  + Added user-agent information
+  + Added sleep timer
+  + Several bug fixes
+  + Updated translations and added a few more.
+- Drop radiotray-underscore.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Feb 12 19:47:31 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+
+-------------------------------------------------------------------
+Wed Dec  8 13:29:17 CET 2010 - vuntz@opensuse.org
+
+- Fix license tag: the application is GPLv1+ (!), not GPLv2+.
+- Change python-devel BuildRequires to python, it's enough.
+- Fix Requires: change python-pyinotify to python-notify.
+- Add %py_requires.
+- Reformat the description.
+- Split lang subpackage.
+- Use %suse_update_desktop_file instead of desktop-file-validate
+  for now, until we can really get rid of this macro.
+
+-------------------------------------------------------------------
+Wed Nov  3 15:05:23 UTC 2010 - prusnak@opensuse.org
+
+- Do not process underscores (radiotray-underscore.patch).
+- Add python-xdg to Requires.
+
+-------------------------------------------------------------------
+Thu Oct 28 18:04:02 UTC 2010 - prusnak@opensuse.org
+
+- created package (based on Fedora one by Jean-Francois Saucier)
+

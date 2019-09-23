@@ -1,0 +1,33 @@
+commit f31f00876bd7a1b6a64580138d5208f01dfa81ab
+Author: Kurt Garloff <kurt@garloff.de>
+Date:   Sat May 12 09:34:22 2018 +0000
+
+    Use sys/random.h for getrandom() decl if present.
+
+diff --git a/configure.in b/configure.in
+index af1ef75..d9b6950 100644
+--- a/configure.in
++++ b/configure.in
+@@ -6,7 +6,7 @@ AC_C_INLINE
+ AC_HEADER_STDC
+ #AC_PROG_INSTALL
+ #CFLAGS="$CFLAGS -DHAVE_CONFIG_H"
+-AC_CHECK_HEADERS([fallocate.h dlfcn.h unistd.h attr/xattr.h sys/acl.h sys/ioctl.h endian.h linux/fs.h linux/fiemap.h stdint.h lzo/lzo1x.h openssl/evp.h linux/random.h malloc.h sched.h sys/statvfs.h])
++AC_CHECK_HEADERS([fallocate.h dlfcn.h unistd.h attr/xattr.h sys/acl.h sys/ioctl.h endian.h linux/fs.h linux/fiemap.h stdint.h lzo/lzo1x.h openssl/evp.h linux/random.h sys/random.h malloc.h sched.h sys/statvfs.h])
+ AC_CHECK_FUNCS([ffs ffsl basename fallocate64 splice getopt_long open64 pread pread64 lseek64 stat64 posix_fadvise posix_fadvise64 __builtin_prefetch htobe64 feof_unlocked getline getentropy getrandom posix_memalign valloc sched_yield fstatvfs __builtin_cpu_supports])
+ AC_CHECK_LIB(dl,dlsym)
+ AC_CHECK_LIB(fallocate,linux_fallocate64)
+diff --git a/random.c b/random.c
+index e558bed..9b2304c 100644
+--- a/random.c
++++ b/random.c
+@@ -22,6 +22,9 @@ typedef unsigned int __u32;
+ #ifdef HAVE_LINUX_RANDOM_H
+ #include <linux/random.h>
+ #endif
++#ifdef HAVE_SYS_RANDOM_H
++#include <sys/random.h>
++#endif
+ 
+ static void msleep(unsigned int msecs)
+ {

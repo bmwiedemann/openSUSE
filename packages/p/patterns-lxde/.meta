@@ -1,0 +1,9 @@
+<package name="patterns-lxde" project="openSUSE:Factory">
+  <title> Patterns for Installation (lxde) </title>
+  <description>This is an internal package that is used to create the patterns as part
+of the installation source setup.  Installation of this package does
+not make sense. 
+
+This particular package contains the lxde desktop patterns.</description>
+  <devel project="X11:lxde" package="patterns-lxde"/>
+</package>

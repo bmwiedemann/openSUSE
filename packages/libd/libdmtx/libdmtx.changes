@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Sun Sep  8 02:43:54 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Drop ImageMagick BuildRequires, unnecessary since libdmtx 0.7.4  
+
+-------------------------------------------------------------------
+Thu Jun 20 07:33:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.7.5
+  * Add support for GS-1 encoding via the FCN1 character
+  * Fix dmtxDecodeMatrixRegion returning a freed pointer
+  * makefile: migrating ANSI C -> C99
+  * Fixed Data Mosaic encoding bug
+- Change the upstream URL.
+- Drop patches, now upstream:
+  * libdmtx-mosaic.patch
+  * libdmtx-explicit-cast.patch
+- Rebase libdmtx-DmtxPropRowPadBytes.patch.
+- Update the License tag, only BSD-2-Clause files are used.
+
+-------------------------------------------------------------------
+Mon Dec  7 20:41:43 UTC 2015 - jengelh@inai.de
+
+- Update RPM group and use a source URL
+
+-------------------------------------------------------------------
+Thu Dec  3 12:40:01 UTC 2015 - tchvatal@suse.com
+
+- Add few patches to improve funcitonality bnc#881387:
+  * libdmtx-DmtxPropRowPadBytes.patch
+  * libdmtx-explicit-cast.patch
+  * libdmtx-mosaic.patch
+
+-------------------------------------------------------------------
+Thu Sep 11 14:40:56 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add baselibs.conf, needed for kdebase4-workspace-libs-32bit
+
+-------------------------------------------------------------------
+Tue Nov 20 12:36:01 UTC 2012 - cgiboudeaux@gmx.com
+
+- Fix the SLES build (%make_install not expanded)
+- Fix a couple rpmlint warnings
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:42 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Mon Jul 25 09:42:19 UTC 2011 - coolo@novell.com
+
+- make snprintf available to the sources
+
+-------------------------------------------------------------------
+Tue Jul 19 13:27:59 UTC 2011 - cgiboudeaux@gmx.com
+
+- Update to 0.7.4
+  library: Relicensed to use Simplified BSD with waiver option
+  library: Added new error codes and messages in dmtxencode.c
+  library: Added DmtxByteList struct and supporting functions
+  library: Changed file header with updated text
+  library: Fixed ECC bug for 144x144 case (thanks Huver!)
+  library: New Reed Solomon implementation
+  library: New repository structure: libdmtx, dmtx-utils, and dmtx-wrappers
+
+-------------------------------------------------------------------
+Sun May  8 15:32:43 UTC 2011 - cgiboudeaux@gmx.com
+
+- Add dmtx.
+

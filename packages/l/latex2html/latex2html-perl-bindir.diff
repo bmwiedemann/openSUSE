@@ -1,0 +1,9 @@
+--- cweb2html/makemake.pl
++++ cweb2html/makemake.pl
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ 
+ ################################################################################
+ # Copyright 1998-1999 by Jens Lippmann (lippmann@rbg.informatik.tu-darmstadt.de)
+

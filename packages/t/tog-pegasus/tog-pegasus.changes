@@ -1,0 +1,646 @@
+-------------------------------------------------------------------
+Sun Sep  9 03:52:12 UTC 2018 - Bernhard M. Wiedemann <bwiedemann@suse.com>
+
+- Make package build more reproducible
+
+-------------------------------------------------------------------
+Mon Dec  4 13:24:38 UTC 2017 - mvetter@suse.com
+
+- Don't conditionalize patch 6.
+  Have seperate patch numbers for: pegasus-SUSE-pam-wbem.patch (61)
+  pegasus-2.5.1-pam-wbem.patch (62) to have them always present.
+  Only apply conditionally.
+
+-------------------------------------------------------------------
+Mon Dec  4 13:16:24 UTC 2017 - mvetter@suse.com
+
+- Add pegasus-2.14.1-openssl-1.1.patch:
+  Fix building with OpenSSL 1.1
+
+-------------------------------------------------------------------
+Thu Mar 23 17:10:08 UTC 2017 - jengelh@inai.de
+
+- RPM group corrections.
+
+-------------------------------------------------------------------
+Mon Mar 13 07:54:41 UTC 2017 - kkaempf@suse.com
+
+- package OpenPegasusNOTICE.txt
+
+-------------------------------------------------------------------
+Wed Jan 25 04:27:26 UTC 2017 - bwiedemann@suse.com
+
+- strip time and PID from logs to create reproducible build results
+
+-------------------------------------------------------------------
+Fri Jun 19 07:03:42 UTC 2015 - kkaempf@suse.com
+
+- Fix SLE 11 build
+
+-------------------------------------------------------------------
+Wed Jun 10 07:29:19 UTC 2015 - kkaempf@suse.com
+
+- Adapt to openssl-1.0.2a (pegasus-2.14.1-openssl.patch)
+
+-------------------------------------------------------------------
+Tue Jun  2 13:48:21 UTC 2015 - kkaempf@suse.com
+
+- Add more include files to tog-pegasus-devel to build 'cimple'
+
+-------------------------------------------------------------------
+Tue Apr 21 14:48:33 UTC 2015 - kkaempf@suse.com
+
+- Update to 2.14.1
+  See https://collaboration.opengroup.org/pegasus/pp/documents/32512/ReleaseNotes.htm
+  for full list of changes
+
+- fix build
+  - pegasus-2.14.1-build-fixes.patch
+  - pegasus-2.14.1-fix-compiler-warnings.patch
+
+- remove upstream patches
+  - pegasus-2.13.0-PG_ComputerSystem.CreationClassName.patch
+  - pegasus-2.13.0-build-fix.patch
+  - pegasus-2.13.0-SSLGeneration.patch
+  - pegasus-2.13.0-CMGetKey-data-type-fix.patch
+  - pegasus-2.13.0-wrong-embedded-instances-from-cimom-callback.patch
+
+-------------------------------------------------------------------
+Tue Mar 24 08:19:02 UTC 2015 - kkaempf@suse.com
+
+- Create group 'wbem' in tog-pegasus %post script
+- Added conflicts
+  tog-pegasus-devel with sblim-cmpi-c++-devel
+  tog-pegasus-libs with libcmpiCppImpl0
+
+-------------------------------------------------------------------
+Fri Mar 20 08:34:54 UTC 2015 - kkaempf@suse.com
+
+- Add generate-certs.SUSE
+
+-------------------------------------------------------------------
+Tue Mar 10 06:48:33 UTC 2015 - kkaempf@suse.com
+
+- Adapt Fedora packaging
+  * Added patches
+    pegasus-2.10.0-dont-strip.patch
+    pegasus-2.10.0-sparc-posix-lock.patch
+    pegasus-2.12.0-cimmofl-allow-experimental.patch
+    pegasus-2.12.0-empty_arrays.patch
+    pegasus-2.12.0-null_value.patch
+    pegasus-2.12.0-schema-version-and-includes.patch
+    pegasus-2.13.0-build-fix.patch
+    pegasus-2.13.0-CMGetKey-data-type-fix.patch
+    pegasus-2.13.0-enable-subscriptions-for-nonprivileged-users.patch
+    pegasus-2.13.0-gcc5-build.patch
+    pegasus-2.13.0-PG_ComputerSystem.CreationClassName.patch
+    pegasus-2.13.0-SSLGeneration.patch
+    pegasus-2.13.0-wrong-embedded-instances-from-cimom-callback.patch
+    pegasus-2.5.1-pam-wbem.patch
+    pegasus-SUSE-pam-wbem.patch
+    pegasus-2.6.0-cimuser.patch
+    pegasus-2.7.0-no_snmp_tests.patch
+    pegasus-2.7.0-PIE.patch
+    pegasus-2.9.0-cmpi-provider-lib.patch
+    pegasus-2.9.0-local-or-remote-auth.patch
+    pegasus-2.9.0-no-rpath.patch
+    pegasus-2.9.0-redhat-config.patch
+    pegasus-2.9.0-sparc.patch
+    pegasus-2.9.1-getpagesize.patch
+  * Removed patches
+    pegasus-2.13.0-allow-unused.patch
+    pegasus-2.13.0-config.patch
+    pegasus-2.13.0-defineable-user.patch
+    pegasus-2.13.0-no-return-in-nonvoid-function.patch
+    pegasus-2.13.0-notests.patch
+    pegasus-2.7.0-strncat.patch
+    pegasus-no-strip.patch
+    pegasus-pam-wbem.patch
+
+-------------------------------------------------------------------
+Fri Dec 13 14:05:44 UTC 2013 - kkaempf@suse.com
+
+- Update to 2.13.0
+  Features
+  - PEP 304 Enhance repupgrade utility to support "interop" namespace
+  - PEP 365 Add support for PUSH_WITH_ACK delivery mode for WSMAN
+            indications
+  Bugfixes
+  - Bug 9645 Change default Schema version to use CIM Schema 2.36
+  - Bug 9635 IPV6 support for OpenPegasus slp using OpenSLP 2.0
+  - Bug 9643 Role-based authorization extension for CMPI providers
+
+  See https://collaboration.opengroup.org/pegasus/pp/documents/29166/ReleaseNotes.htm
+  for full release notes.
+
+-------------------------------------------------------------------
+Thu Mar 28 07:56:50 UTC 2013 - kkaempf@suse.com
+
+- Update to 2.12.1
+  Minor bugfix release
+
+-------------------------------------------------------------------
+Sat Nov 24 10:50:04 UTC 2012 - kkaempf@suse.com
+
+- Splitt off libpegclient1, libpegcommon1, libpegexportserver1
+  and libpeglistener1 as sub-packages to use by tools
+  (i.e. cimlistener from cimple)
+
+-------------------------------------------------------------------
+Sat Nov 24 10:38:59 UTC 2012 - kkaempf@suse.com
+
+- Remove 'Authors' from %description
+
+-------------------------------------------------------------------
+Tue Oct 16 14:37:47 UTC 2012 - kkaempf@suse.com
+
+- Update to 2.12.0 final release
+  Features
+  - PEP 360 Provider Lifecycle Indications
+  - PEP 361 cimcli support for embedded instances
+  - PEP 304 Allow modification of name of interop namespace
+  - PEP 358 WSMan indication handling and subscription support
+  Bugfixes
+  - Bug 8891 Enhance cimsub to add operations to create filters,
+             destinations and subscriptions
+  - Bug 5667 Remove experimental form buildInstance and filter
+             functions in CIMInstance class
+  - Bug 8952 Support Configurable cipher suites in OpenPegasus
+  - Bug 8984 Add support for indication deliver connection pooling
+  - Bug 9008 Add new Indication runtime configuration variables:
+             maxIndicaitonDeliveryRetry Attempts  and
+             minIndicationdeliveryRetryInterval
+  - Bug 9013 Enable ordered indication delivery from provider through
+             CIMServer when PEGASUS_ENABLE_DMTF_INDICATION_PROFILE compile
+             flag is set
+  - Bug 9080 Guaranteed provider lifecycle indication delivery during
+             CIMServer shutdonw
+  - Bug 9112 Advertise IndicationService conformance to Indications Profile
+             by imlementing CIM_ElementConformsToProfile when
+             PEGASUS_ENABLE_DMTF_INDICATION_PROFILE_SUPPORT defined
+  - Bug 9114 Advertise DMTF Indications Profile (DSP1054) 1.1.0 conformance
+  - Bug 9118 Add support for CIM_IndicationFilter.SourceNamespaces[]
+             property
+  - Bug 9136 Runtime configuration option to restrict cimserver to listen
+             on selected network interfaces
+  - Bug 9155 Update to include CIM 2.31 Schema and set this as default
+             schema
+  - Bug 9159 Add SSL Support to Dynamic Listener
+  - Bug 9172 Add capability for administrator to override hostname used
+             by providers. This adds  new runtime configuration variable
+             hostname and fullyQualifiedHostName. It is necessary to
+             upgrade existing repositories using repupgrade utility when
+             upgrading from OpenPegasus less that 2.12.0 and reusing an
+             existing repository.
+  - Bug 9215 Add support of CQL query language to ExecQuery operation in
+             general. When the server receives  ExecQuery it executes
+             enumerate instance for providers that do not support ExecQuery
+             and filters result.
+  - Bug 9209 Add operations for display class tree and counting instances
+             to cimcli
+  - Bug 9227 Enhance cimsub for batches of subscription oriented operations
+  - Bug 9229 Add gcc build support on hp-ux for the Common, Client and
+             General libraries.
+  - Bug 9236 Support for clang/clang++ compiler on Linux. This version
+             supports only X86 and X86_64 and requires clang version 3
+             or greater.
+
+-------------------------------------------------------------------
+Wed Sep 26 08:09:30 UTC 2012 - kkaempf@suse.com
+
+- Fix Fedora and RHEL6 build failures
+
+-------------------------------------------------------------------
+Wed Sep 26 07:38:37 UTC 2012 - kkaempf@suse.com
+
+- Update to 2.12.0 pre-release
+
+-------------------------------------------------------------------
+Tue Apr  3 14:56:21 UTC 2012 - kkaempf@suse.com
+
+- Fix CentOS build
+
+-------------------------------------------------------------------
+Fri Mar  2 15:15:50 UTC 2012 - kkaempf@suse.com
+
+- Package pkgconfig in -devel only,
+  make -devel-internal require -devel
+
+-------------------------------------------------------------------
+Thu Mar  1 07:42:39 UTC 2012 - kkaempf@suse.com
+
+- Re-add CMPI header files to tog-pegasus-devel
+- don't conflict with sblim-cpmi-devel any more
+
+-------------------------------------------------------------------
+Tue Feb 28 17:30:56 UTC 2012 - kkaempf@suse.com
+
+- Fix build on openSUSE 12.1/Factory
+
+-------------------------------------------------------------------
+Fri Sep 16 10:43:04 UTC 2011 - kkaempf@suse.com
+
+- Update to 2.11.1
+  minor release
+  - PEP 318 Run 32 bit providers in 64 bit OpenPegasus
+  - PEP 356 Provider Module Grouping
+  - PEP 357 SNMP V3 Trap Generation in Pegasus Indication Handler
+  - PEP 324 DMTF Indications Profile (DSP 1054) Implementation, stage 2
+  - PEP 349 Improve the availability of the CIMOM by better isolation
+            from faulty providers
+
+  - Bug 8787 Add External SLP support to release builds
+  - Bug 8800 enable PEGASUS_USE_RELEASE_CONFIG_OPTIONS build option
+             to have true/false values
+  - Bug 8806 Diagnose data for BAD UTF8 exception 
+  - Bug 8825 Option to specify multiple provider dirs for release builds 
+  - Bug 8839 OOP Provider recovery enhancement 
+  - Bug 8845 Enhance SSL Certificate info to expose the whole certificate
+  - Bug 8871 Enhance WSMan Server Adpater to include enumeration
+             association filters 
+  - Bug 9036 New runtime configuration options for Indication Service
+  - Bug 9014 Correct issue with Provider backward compatibility due to
+             a new virtual function that was introduced in Pegasus 2.11.0
+
+- Version 2.10
+  - PEP 311 WS-Management Support in CIM Server - Phase II.
+            NOTE: This is an update of the same PEP number that
+	    incorporated WS_Management changes to Pegasus 2.9.0 to
+	    incorporate more WS_Management functionality.
+  - PEP 283 Extend CIMCLI to create/modify instances with other features
+  - PEP 348 Single-Memory-Object for CMPI structure
+  - PEP 347 Separate Internal Modules from Common Library
+  - PEP 350 Multi CIMOM support on same OS
+
+  - Bug 8525 repupgrade utility enhancement to update SystemName property
+             in indication filter/handler and ObjectManager instances
+  - Bug 8406 Indication service can be disabled/enabled dynamically
+
+-------------------------------------------------------------------
+Wed Dec  1 10:46:24 UTC 2010 - kkaempf@novell.com
+
+- Update to 2.9.2
+  - PEP 311 WS-Management Support in CIM Server - Phase II
+  - PEP 314 SQLite Repository
+  - PEP 316 In-Memory-Tracing
+  - PEP 328 Solaris 11 (Nevada) support for CC compiler and IX86
+
+ - Bug 7902 Allow modifyClass on non-leaf class
+ - Bug 7996 64 bit platform support for z/OS
+ - Bug 8074 Significant performance enhancement in out-of-process
+            providers (~ 300%) through binary protocol
+ - Bug 8171 Access to binary protocol for clients
+
+-------------------------------------------------------------------
+Wed Sep 15 08:32:42 UTC 2010 - kkaempf@novell.com
+
+- Fix RH/Fedora builds
+
+-------------------------------------------------------------------
+Sun May  2 14:40:25 UTC 2010 - aj@suse.de
+
+- Handle /var/run on tmpfs.
+- Provide pkg-config provides.
+
+-------------------------------------------------------------------
+Tue Apr 20 11:31:56 CEST 2010 - meissner@suse.de
+
+- fix build with openssl 1.0
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:49 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Wed Sep  2 11:44:16 CEST 2009 - mhrusecky@suse.cz
+
+- using echo instead of print in shell script loadmof.sh
+- searching for mof_compiler.py in versioned python directory too
+
+-------------------------------------------------------------------
+Wed Aug 12 14:26:45 CEST 2009 - mhrusecky@suse.cz
+
+- better condition in one if (minor code cleanup) [bnc#517722]
+
+-------------------------------------------------------------------
+Mon May 25 16:50:44 CEST 2009 - mhrusecky@suse.cz
+
+- repository is owned by pegasus user and daemon is running as pegasus as well
+- 'rctog-pegasus start' fixed so second run wouldn't try to run same daemon again
+
+-------------------------------------------------------------------
+Thu May 21 15:38:31 CEST 2009 - mhrusecky@suse.cz
+
+- updated to version 2.9.0
+
+-------------------------------------------------------------------
+Mon May 18 09:36:43 CEST 2009 - mhrusecky@suse.cz
+
+- fixed build in Factory
+
+-------------------------------------------------------------------
+Tue May 12 19:45:09 CEST 2009 - mhrusecky@suse.cz
+
+- adding conflict with sblim-cmpi-devel to spec file
+
+-------------------------------------------------------------------
+Thu Nov 20 18:08:08 CET 2008 - mhrusecky@suse.cz
+
+- adding %fdupes into the spec file to fix build on ia64
+  (same build ID in nonidentical files broke extracting debug info)
+
+-------------------------------------------------------------------
+Fri Nov  7 02:34:57 CET 2008 - ro@suse.de
+
+- move pkgconfig creation out of specfile (confuses parser ...)
+- add python-httplib2 and openssl to buildrequires to fix build 
+
+-------------------------------------------------------------------
+Fri Sep 19 11:15:38 MDT 2008 - bwhiteley@suse.de
+
+- Put %_libdir/*.so files back in the main package, as many of 
+  them need to be there. 
+- Removed Python provider manager from this package.  It is in a 
+  separate package now due to pluggable provider manager support 
+  in Pegasus 2.8.  Also, CMPI-based Python providers are now 
+  preferred (cmpi-bindings project within http://omc-project.org/)
+- Disable building of most test code. 
+- Remove test-internal subpackage.
+
+-------------------------------------------------------------------
+Fri Sep 19 15:36:19 CEST 2008 - mmarek@suse.cz
+
+- updated to 2.8.0
+  new features in this version:
+  * Memory Resident Repository (PEP 307)
+  * WS-Management Support in CIM Server 	 (PEP 311)
+  * Pluggable Provider Managers - Enhancement (PEP 313)
+  * Tracing in OpenPegasus - Enhancement (PEP 315)
+  * Profile Registration Profile Support (PEP 319)
+  * Track Generated Indications Data (PEP 322)
+  * DMTf Indication Profile Implementation, Stage 1 (DMTF DSP 1054)
+    (PEP 323)
+  * Track Generated Indications Data (PEP 322)
+
+-------------------------------------------------------------------
+Mon Aug 18 15:50:33 CEST 2008 - mmarek@suse.de
+
+- use LSB keywords instead of X-UnitedLinux-* in the init script
+
+-------------------------------------------------------------------
+Tue Jul 15 15:02:14 CEST 2008 - mmarek@suse.cz
+
+- only put folowing .so files into the main package (bnc#341368):
+  %_libdir/Pegasus/*/*.so
+  %_libdir/lib*Handler.so
+  everything else goes to the -devel subpackage
+
+-------------------------------------------------------------------
+Fri Jul  4 10:30:22 CEST 2008 - mmarek@suse.cz
+
+- split /usr/include/Pegasus-internal into devel-internal
+  subpackage
+
+-------------------------------------------------------------------
+Mon May 12 15:31:14 CEST 2008 - mmarek@suse.cz
+
+- drop provider-register.sh usage in peg-loadmof.sh, it can't find
+  MOFs in /usr/share/mof/* (bnc#389134)
+
+-------------------------------------------------------------------
+Mon May 12 13:48:23 CEST 2008 - mmarek@suse.cz
+
+- don't install internal headers executable
+
+-------------------------------------------------------------------
+Thu Apr 17 21:31:10 CEST 2008 - npaxton@novell.com
+
+- install non-frozen headers to /usr/include/Pegasus-internal
+
+-------------------------------------------------------------------
+Wed Apr  2 18:13:00 MDT 2008 - bwhiteley@suse.de
+
+- Renamed README.SuSE.Security to README.SUSE.Security.
+- Patch to allow connection to UDS with credentials (pegasus_bug:7563). 
+
+-------------------------------------------------------------------
+Mon Mar 24 16:02:00 MST 2008 - npaxton@novell.com
+
+- Add pluggable provider manager patch
+
+-------------------------------------------------------------------
+Thu Mar 20 16:21:41 CET 2008 - mmarek@suse.cz
+
+- cim-schema is also used in %%post
+
+-------------------------------------------------------------------
+Thu Mar 20 11:53:56 CET 2008 - mmarek@suse.cz
+
+- Changed the python-pywbem dependency to PreReq, as it is used
+  in %%post.
+- Synced *.changes and %%changelog in the specfile
+
+-------------------------------------------------------------------
+Wed Feb 27 18:35:00 MST 2008 - jcarey@novell.com
+
+- Changed to use copy of given OperationContext when making up
+  calls to the CIMOM. Fixes problem where the requesting user
+  name was not being used when making these calls. The user
+  identity was not available to providers.
+
+-------------------------------------------------------------------
+Fri Feb 22 15:47:59 MST 2008 - bwhiteley@suse.de
+
+- Don't build root/cimv2 namespace during build.  Create it during
+  install instead with new python MOF compiler.  Don't register any
+  PG providers by default. 
+
+-------------------------------------------------------------------
+Wed Feb 20 14:00:00 MST 2008 - jcarey@novell.com
+
+- Changed to not allow exception to be thrown from the
+  processMessage method of the provider manager.
+
+-------------------------------------------------------------------
+Fri Feb 15 15:04:22 MST 2008 - bwhiteley@suse.de
+
+- Make cimsrvr user a member of the pegasus group.  Otherwise, 
+  in-process providers do not work. 
+
+-------------------------------------------------------------------
+Fri Feb  8 21:44:19 MST 2008 - bwhiteley@suse.de
+
+- Allow root user to log in from remote (bnc#344466)
+
+-------------------------------------------------------------------
+Tue Feb  5 14:00:00 MST 2008 - jcarey@novell.com
+
+- Changed so the default action is performed when a SIGCHLD signal
+  is received (pegasus-sigchld.patch).
+
+-------------------------------------------------------------------
+Fri Feb  1 12:01:56 MST 2008 - bwhiteley@suse.de
+
+- Changed peg-loadmof.sh to use new pywbem MOF compiler instead of 
+  Pegasus MOF compiler. 
+- Fixed the python provider manager to cleanly unload providers. 
+
+-------------------------------------------------------------------
+Mon Jan 21 15:54:34 CET 2008 - mmarek@suse.cz
+
+- copy repository to prev_repository instead of rename, to make
+  patchrpms happy
+
+-------------------------------------------------------------------
+Fri Jan 11 13:04:05 CET 2008 - mmarek@suse.cz  
+   
+- run repupgrade on package update [#349347]  
+
+-------------------------------------------------------------------
+Wed Jan  9 22:20:36 MST 2008 - bwhiteley@suse.de
+
+- Added a new file with build options, instead of patching the one 
+  that comes with the project. 
+- Changed PEGASUS_CLASS_CACHE_SIZE=30
+- Changed PEGASUS_DEFAULT_USERCTXT_REQUESTOR=true
+- Disabled PEGASUS_USE_RELEASE_CONFIG_OPTIONS.  When this is enabled, it's 
+  impossible to change the listen port numbers.
+- Created a new cimserver_planned.conf with all runtime options present
+  and documented. 
+
+-------------------------------------------------------------------
+Tue Jan  8 10:37:36 CET 2008 - mmarek@suse.cz
+
+- reduced BuildRequires (enables SLES9 build in the buildservice)
+
+-------------------------------------------------------------------
+Mon Jan  7 11:19:22 CET 2008 - mmarek@suse.cz
+
+- synced with the systemsmanagement:wbem buildservice project
+  * set authorizedUserGroups=pegasus in config
+  * updated the python provider interface
+  * added pegutil script to start a minimal cimserver on demand
+    to simplify loadmof.sh
+  * updated pegasus-config.patch
+  * send content-length header in 401 case in XmlWriter.cpp
+    (pegasus-http401-content-length.patch)
+  * move the .so symlinks back to the main package for now
+    [#341368]
+
+-------------------------------------------------------------------
+Mon Dec  3 14:36:29 CET 2007 - mmarek@suse.cz
+
+- fixed incorrect strncat() call in OperatingSystem_Linux.cpp
+
+-------------------------------------------------------------------
+Tue Nov 27 23:23:12 CET 2007 - bwhiteley@suse.de
+
+- Added python provider interface.
+
+-------------------------------------------------------------------
+Thu Nov 15 17:47:18 CET 2007 - mmarek@suse.cz
+
+- add .so symlinks for all installed libraries [#341368] and move
+  them to -devel
+
+-------------------------------------------------------------------
+Fri Nov  2 13:58:08 CET 2007 - mmarek@suse.cz
+
+- reduced BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct 31 15:11:33 CET 2007 - mmarek@suse.cz
+
+- added a workaround for a gcc bug [#337901, gcc.gnu.org/PR31081]
+  to fix BETA build
+
+-------------------------------------------------------------------
+Tue Oct 30 17:27:35 CET 2007 - mmarek@suse.cz
+
+- updated to 2.7.0
+  new features in this version:
+  * Add Platform support IBM i5/PASE - Portable Application
+    Solutions Environment (PASE) (PEP 284)
+  * Reduce the Amount of CIM Server code that runs Privileged
+    (Privilege Separation) (PEP 286)
+  * Add Support for IPv6 - Stage 1 (Note: This functionality was
+    made available but normally disabled Pegasus 2.6.1) (PEP 291)
+  * Add IPV6 Support for SNMP Indication Handler and include
+    NET-SNMP indication handler in Linux RPM (PEP 62)
+  * Enhanced Log File Support (PEP 302)
+  * Add support for certificate-based authentication audit logging
+    (PEP 258)
+  * Add two new trace components to facilitate triage of indication
+    delivery issues (bug 6466)
+  new features from 2.6.0:
+  * Embedded Instance Support in Pegasus (PEP 233)
+  * Providing SMI-Server Profile through OpenPegasus (PEP 244)
+  * Incorporation of CIM_Error into OpenPegasus Infrastructure
+    (PEP 245)
+  * Language Interfaces (PEP 246)
+  * Reducing Pegasus Code size and static memory usage (PEP 255)
+  * Indication Subscription Management (PEP 257)
+  * Audit Logging (PEP 258)
+  * SSL Certificate Management Command Interfaces (PEP 259)
+  * CMPI 2.0 Currency (PEP 260)
+  * SLP enhancements for Pegasus 2.6 (PEP 267)
+  * Repository Archive (PEP 271)
+- rewrote the specfile from scratch
+- updated the local-or-remote patch to support IPv6 and privilege
+  separation
+
+-------------------------------------------------------------------
+Sat Aug 11 14:27:13 CEST 2007 - dmueller@suse.de
+
+- rename test package to test-internal and remove
+  it from production state (fixes build)
+
+-------------------------------------------------------------------
+Thu Jan 18 21:42:13 CET 2007 - mrueckert@suse.de
+
+- prefixed loadmof.sh and rmmof.sh with "peg-"
+  and require cim-schema. (#228349|FATE #301801)
+
+-------------------------------------------------------------------
+Thu Jan 18 21:36:20 CET 2007 - mrueckert@suse.de
+
+- add symlink for libcmpiCppImpl.so.1 to
+  libcmpiCppImpl.so and install the CMPI headers (#233452)
+
+-------------------------------------------------------------------
+Thu Nov 16 22:23:11 CET 2006 - mrueckert@suse.de
+
+- make sure all manpages are world readable (#209441)
+
+-------------------------------------------------------------------
+Tue Jul 11 20:51:50 CEST 2006 - mrueckert@suse.de
+
+- build tests rpm
+- move *.so symlinks into the base package. needed for plugin
+  loading.
+- create ssl certs in the init script if needed
+- properly handle return codes in provider-register.sh
+- set "repositoryIsDefaultInstanceProvider=true" so sblim-gather
+  can register properly
+
+-------------------------------------------------------------------
+Mon Jul 10 15:23:19 CEST 2006 - mrueckert@suse.de
+
+- obsolete/provide pegasuse-wbem
+
+-------------------------------------------------------------------
+Mon Jul 10 14:15:15 CEST 2006 - mrueckert@suse.de
+
+- comment out the Requires(post|pre|postun) for now
+
+-------------------------------------------------------------------
+Fri Jul  7 16:06:53 CEST 2006 - mrueckert@suse.de
+
+- dont package the debug files in the base package
+
+-------------------------------------------------------------------
+Fri Jul  7 03:57:28 CEST 2006 - mrueckert@suse.de
+
+- Initial package based on the fedora core 6 package
+

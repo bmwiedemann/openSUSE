@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Tue May 26 13:26:04 UTC 2015 - lmuelle@suse.com
+
+- Split package into libilbc0 and ilbc-devel.
+
+-------------------------------------------------------------------
+Sat Oct 15 04:47:04 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Thu Jan  7 20:25:01 CET 2010 - coolo@suse.de
+
+- make it link against libm since it uses sqrt and others
+  (Fixes ilbc detection by opal)
+
+-------------------------------------------------------------------
+Mon Feb 25 07:55:04 CET 2008 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-post* errors
+- remove libtool archives with empty dependency_libs and static libraries
+
+-------------------------------------------------------------------
+Thu Mar 22 09:16:21 CET 2007 - mskibbe@suse.de
+
+- create package
+

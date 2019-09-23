@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Kurso de Esperanto
+GenericName=Esperanto Course
+GenericName[eo]=Kurso de Esperanto
+GenericName[ru]=Курс эсперанто
+GenericName[uk]=Курс есперанто
+Comment=Multimedia application for teaching oneself Esperanto
+Comment[eo]=Multrimeda apliko por la memlernado de Esperanto
+Comment[ru]=Мультимедийное приложение для изучения эсперанто
+Comment[uk]=Мультимедійне прикладанне для вивчення есперанто
+Exec=kurso-de-esperanto %U
+Icon=kurso-de-esperanto
+Terminal=false
+Categories=Education;Languages;

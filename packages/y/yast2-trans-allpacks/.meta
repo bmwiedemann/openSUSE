@@ -1,0 +1,8 @@
+<package name="yast2-trans-allpacks" project="openSUSE:Factory">
+  <title>Internal: Require all YaST Translation Packages (Empty)</title>
+  <description>The package requires all YaST translation packages
+(yast2-trans-{??,??_??}).  Otherwise it is empty.
+
+For internal use only.</description>
+  <devel project="YaST:Head" package="yast2-trans-allpacks"/>
+</package>

@@ -52,10 +52,12 @@ Slycot is a wrapper for the SLICOT control and systems library.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%{python_expand # make sure the correct f2py flavor is executed
+%{$python_build} --generator "Unix Makefiles" -- -DF2PY_EXECUTABLE=/usr/bin/f2py%{$python_bin_suffix}
+}
 
 %install
-%python_expand %{$python_install} --install-lib %{$python_sitearch}
+%python_expand %{$python_install} --install-lib %{$python_sitearch} --generator "Unix Makefiles"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check

@@ -1,0 +1,5 @@
+<package name="threadweaver" project="openSUSE:Factory">
+  <title>threadweaver</title>
+  <description>ThreadWeaver</description>
+  <devel project="KDE:Frameworks5" package="threadweaver"/>
+</package>

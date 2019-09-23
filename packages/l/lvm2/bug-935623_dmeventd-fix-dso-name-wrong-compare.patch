@@ -1,0 +1,36 @@
+From d5246ee0d534677439cf4af780422fbb2c9068b2 Mon Sep 17 00:00:00 2001
+From: Liuhua Wang <lwang@suse.com>
+Date: Thu, 9 Jul 2015 15:44:20 +0800
+Subject: [PATCH] dmeventd: fix dso name wrong compare
+
+dso_name is thought as not empty and doesn't create monitor thread,
+because lvm sets empty dso_name with "-".
+
+Signed-off-by: Liuhua Wang <lwang@suse.com>
+References: bnc#935623
+---
+ daemons/dmeventd/dmeventd.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git LVM2.2.02.120.orig/daemons/dmeventd/dmeventd.c LVM2.2.02.120/daemons/dmeventd/dmeventd.c
+index e8d1e3b..3b1952c 100644
+--- LVM2.2.02.120.orig/daemons/dmeventd/dmeventd.c
++++ LVM2.2.02.120/daemons/dmeventd/dmeventd.c
+@@ -1218,12 +1218,12 @@ static int _want_registered_device(char *dso_name, char *device_uuid,
+ 				   struct thread_status *thread)
+ {
+ 	/* If DSO names and device paths are equal. */
+-	if (dso_name && device_uuid)
++	if (dso_name && strcmp(dso_name, "-") && device_uuid)
+ 		return !strcmp(dso_name, thread->dso_data->dso_name) &&
+ 		    !strcmp(device_uuid, thread->device.uuid);
+ 
+ 	/* If DSO names are equal. */
+-	if (dso_name)
++	if (dso_name && strcmp(dso_name, "-"))
+ 		return !strcmp(dso_name, thread->dso_data->dso_name);
+ 
+ 	/* If device paths are equal. */
+-- 
+1.8.4.5
+

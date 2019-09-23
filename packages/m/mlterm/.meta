@@ -1,0 +1,37 @@
+<package name="mlterm" project="openSUSE:Factory">
+  <title>Multilingual Terminal Emulator for X</title>
+  <description>Mlterm is a multilingual terminal emulator for the X Window System.
+
+Multilingual features:
+
+supported charsets: US_ASCII, ISO8859[1-11], ISO8859[13-16], TCVN5712,
+VISCII, KOI8_R, KOI8_U, JISX0201, JISX0208, JISX0212, JISX0213, GB2312,
+GBK, KSC5601, UHC, CNS11643-N, Big5, UCS2(4)
+
+supported encodings: ISO-8859-[1-11], ISO-8859- [13-16], TCVN5612,
+VISCII, KOI8_R, KOI8_U, EUC-JP, EUC-JISX0213, ISO-2022-JP [1, 2, 3],
+Shift_JIS, Shift_JISX0213, EUC-KR, UHC, JOHAB, ISO-2022-KR,
+ISO-2022-CN, GB2312(EUC-CN), GBK, GB18030, EUC-TW, Big5, Hz, UTF-8
+
+character composition: TIS620, TCVN5712, JISX0213, UNICODE
+
+Multiple xims are also supported and you can dynamically change various
+xims.
+
+Other features:
+
+* scroll by wheel mouse
+
+* antialias font (requires Xft and Xrender extensions)
+
+* proportional font
+
+* transparent background
+
+* background image (requires Imlib)
+
+* multiple pty windows
+
+* scrollbar plug-in API (unstable)</description>
+  <devel project="M17N" package="mlterm"/>
+</package>

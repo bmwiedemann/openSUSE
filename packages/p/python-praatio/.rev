@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c5c2c784cb637c2737ccec70729c6858</srcmd5>
+    <version>3.6.12</version>
+    <time>1541511631</time>
+    <user>dimstar_suse</user>
+    <comment>tool for working with praat and praat files</comment>
+    <requestid>646482</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e556923fa98f6500831770e4a23e3345</srcmd5>
+    <version>3.6.13</version>
+    <time>1546946771</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660795</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ae73e0dd2d41a8fb1626e0e4735014f1</srcmd5>
+    <version>3.7.1</version>
+    <time>1557264042</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701408</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>348ac9adba716af890ca2fb53b372068</srcmd5>
+    <version>3.8.0</version>
+    <time>1564302130</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718978</requestid>
+  </revision>
+</revisionlist>

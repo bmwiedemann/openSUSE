@@ -1,0 +1,22 @@
+--- a/test/test-getnameinfo.c
++++ b/test/test-getnameinfo.c
+@@ -39,6 +39,8 @@ static void getnameinfo_req(uv_getnamein
+                             const char* hostname,
+                             const char* service) {
+   ASSERT(handle != NULL);
++  if (status != 0)
++     fprintf(stderr, " status: %d\n", status);
+   ASSERT(status == 0);
+   ASSERT(hostname != NULL);
+   ASSERT(service != NULL);
+--- a/test/test-list.h
++++ b/test/test-list.h
+@@ -792,7 +792,7 @@ TASK_LIST_START
+ 
+   TEST_ENTRY  (getnameinfo_basic_ip4)
+   TEST_ENTRY  (getnameinfo_basic_ip4_sync)
+-  TEST_ENTRY  (getnameinfo_basic_ip6)
++//  TEST_ENTRY  (getnameinfo_basic_ip6) // broken on OBS because no network to resolve ::1 => hostname
+ 
+   TEST_ENTRY  (getsockname_tcp)
+   TEST_ENTRY  (getsockname_udp)

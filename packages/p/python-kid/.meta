@@ -1,0 +1,7 @@
+<package name="python-kid" project="openSUSE:Factory">
+  <title>Kid - A simple and pythonic XML template language</title>
+  <description>Kid is a simple Python based template language for generating and transforming XML vocabularies. Kid was spawned as a result of a kinky love triangle between XSLT, TAL, and PHP. We believe many of the best features of these languages live on in Kid with much of the limitations and complexity stamped out (well, eventually :).
+
+Templates are compiled to native Python byte-code and may be imported and used like normal Python modules. </description>
+  <devel project="devel:languages:python" package="python-kid"/>
+</package>

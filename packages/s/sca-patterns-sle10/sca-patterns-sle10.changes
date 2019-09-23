@@ -1,0 +1,606 @@
+-------------------------------------------------------------------
+Tue Jan  2 19:32:16 UTC 2018 - jason.record@suse.com
+
+- Removed unnecessary %clean from spec
+
+-------------------------------------------------------------------
+Mon Dec 18 18:58:39 UTC 2017 - jason.record@suse.com
+
+- Updated spec file with spec-cleaner suggestions
+- Removed COPYING.GPLv2
+
+-------------------------------------------------------------------
+Fri Jun  2 23:04:19 UTC 2017 - jason.record@suse.com
+
+- Added security patterns (bsc#1042514)
+
+-------------------------------------------------------------------
+Tue Aug 23 15:46:33 UTC 2016 - jrecord@suse.com
+
+- New Security Patterns
+  sle10sp4/ntp_SUSE-SU-2016_1912-1_10.4.py
+  sle10sp4/yast2-ntp-client_SUSE-SU-2016_2094-1_10.4.py
+
+-------------------------------------------------------------------
+Fri Jun  3 16:31:50 UTC 2016 - jason.record@suse.com
+
+- New Security Patterns
+  sle10sp4/firefox_SUSE-SU-2016_1352-1_10.4.py
+  sle10sp4/java_SUSE-SU-2016_1388-1_10.4.py
+  sle10sp4/openssl_SUSE-SU-2016_1360-1_10.4.py
+  sle10sp4/xen_SUSE-SU-2016_1445-1_10.4.py
+
+-------------------------------------------------------------------
+Fri Apr 22 15:24:46 UTC 2016 - jrecord@suse.com
+
+- New Security Pattern
+  sle10sp4/samba_SUSE-SU-2016_1105-1_10.4.py
+
+-------------------------------------------------------------------
+Thu Apr  7 18:51:18 UTC 2016 - jrecord@suse.com
+
+- New Security Patterns
+  sle10sp4/firefox_SUSE-SU-2016_0820-1_10.4.py
+  sle10sp4/java_SUSE-SU-2016_0776-1_10.4.py
+
+-------------------------------------------------------------------
+Tue Mar  8 17:39:11 UTC 2016 - jrecord@suse.com
+
+- New Security Patterns
+  sle10sp4/openssl_SUSE-SU-2016_0678-1_10.4.py
+  sle10sp4/xen_SUSE-SU-2016_0658-1_10.4.py
+
+-------------------------------------------------------------------
+Tue Feb 23 19:41:31 UTC 2016 - jrecord@suse.com
+
+- Updated patterns (bsc#953203)
+
+-------------------------------------------------------------------
+Wed Jan 27 18:26:06 UTC 2016 - jrecord@suse.com
+
+- New Security Patterns
+  sle10sp4/bind_SUSE-SU-2016_0227-1_10.4.py
+  sle10sp4/java_SUSE-SU-2016_0113-1_10.4.py
+
+-------------------------------------------------------------------
+Fri Dec  4 15:43:58 UTC 2015 - jrecord@suse.com
+
+- New Security Pattern
+  sle10sp4/firefox_SUSE-SU-2015_2081-1_10.4.py
+
+-------------------------------------------------------------------
+Thu Oct  8 17:17:52 UTC 2015 - jrecord@suse.com
+
+- New Security Pattern
+  sle10sp4/xen_SUSE-SU-2015_1643-1_10.4.py
+
+-------------------------------------------------------------------
+Thu Jul 30 20:28:58 UTC 2015 - jrecord@suse.com
+
+- New Security Pattern
+  sle10sp4/bind_SUSE-SU-2015_1322-1_10.4.py
+
+-------------------------------------------------------------------
+Thu Jul  9 15:26:12 UTC 2015 - jrecord@suse.com
+
+- New Security Patterns
+  sle10sp4/openssl_SUSE-SU-2015_1181-2_10.4.py
+  sle10sp4/openssl_SUSE-SU-2015_1183-2_10.4.py
+  sle10sp4/xen_SUSE-SU-2015_1206-1_10.4.py
+
+-------------------------------------------------------------------
+Mon Jun 29 19:07:11 UTC 2015 - jrecord@suse.com
+
+- New Security Pattern
+  sle10sp4/java_SUSE-SU-2015_1138-1_10.4.py
+
+-------------------------------------------------------------------
+Wed Jun 24 16:43:36 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle10sp4/java_SUSE-SU-2015_1085-1_10.4.py
+
+-------------------------------------------------------------------
+Tue May 26 14:53:09 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle10sp4/xen_SUSE-SU-2015_0889-2_10.4.py
+
+-------------------------------------------------------------------
+Fri May  1 16:17:57 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle10sp4/kernel_SUSE-SU-2015_0812-1_10.4.py
+
+-------------------------------------------------------------------
+Wed Apr  1 13:02:41 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle10sp4/mozillafirefox_SUSE-SU-2015_0593-2_10.4.py
+
+-------------------------------------------------------------------
+Mon Mar 23 22:20:48 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle10sp4/bind_SUSE-SU-2015_0488-1_10.4.py
+
+-------------------------------------------------------------------
+Sat Mar  7 15:03:26 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle10sp4/firefox_SUSE-SU-2015_0447-1_10.4.py
+
+-------------------------------------------------------------------
+Thu Feb 26 14:50:25 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle10sp4/java_SUSE-SU-2015_0376-1_10.4.py
+
+-------------------------------------------------------------------
+Mon Feb 23 20:31:34 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle10sp4/java_SUSE-SU-2015_0345-1_10.4.py
+
+-------------------------------------------------------------------
+Fri Feb 20 18:12:51 UTC 2015 - jrecord@suse.com
+
+- New Patterns
+  sle10sp4/clamav_SUSE-SU-2015_0298-1_10.4.py
+  sle10sp4/xntp_SUSE-SU-2015_0322-1_10.4.py
+
+-------------------------------------------------------------------
+Thu Jan 29 22:04:05 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle10all/smtdup-7011387.py
+
+-------------------------------------------------------------------
+Thu Jan 29 17:48:28 UTC 2015 - jrecord@suse.com
+
+- fixed bad glib links
+
+-------------------------------------------------------------------
+Thu Jan 29 14:55:17 UTC 2015 - jrecord@suse.com
+
+- New Patterns
+  sle10sp4/firefox_SUSE-SU-2015_0171-1_10.4.py
+  sle10sp4/glibc_SUSE-SU-2015_0158-1_10.4.py
+
+-------------------------------------------------------------------
+Fri Jan 23 17:30:10 UTC 2015 - jrecord@suse.com
+
+- Makefile includes obnew to commit changes to OBS 
+
+-------------------------------------------------------------------
+Wed Dec 24 19:42:25 UTC 2014 - jrecord@suse.com
+
+- New Pattern
+  sle10sp4/xntp_SUSE-SU-2014_1686-2_10.4.py
+
+-------------------------------------------------------------------
+Mon Dec 15 20:34:36 UTC 2014 - jrecord@suse.com
+
+- New Pattern
+  sle10sp4/firefox_SUSE-SU-2014_1624-1_10.4.py
+
+-------------------------------------------------------------------
+Fri Dec  5 22:08:17 UTC 2014 - jrecord@suse.com
+
+New Pattern
+- sle10sp4/clamav_SUSE-SU-2014_1574-1_10.4.py
+
+-------------------------------------------------------------------
+Fri Dec  5 21:54:49 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp2/apache_SUSE-SU-2011_1216-1_10.2.py
+  sle10sp2/bind_SUSE-SU-2011_1270-2_10.2.py
+  sle10sp2/quagga_SUSE-SU-2011_1316-1_10.2.py
+  sle10sp3/apache_SUSE-SU-2011_1010-1_10.3.py
+  sle10sp3/apache_SUSE-SU-2011_1229-1_10.3.py
+  sle10sp3/bind_SUSE-SU-2011_1270-1_10.3.py
+  sle10sp3/compat-openssl097g_SUSE-SU-2011_0847-1_10.3.py
+  sle10sp3/firefox_SUSE-SU-2011_0727-1_10.3.py
+  sle10sp3/firefox_SUSE-SU-2011_0967-1_10.3.py
+  sle10sp3/firefox_SUSE-SU-2011_1096-1_10.3.py
+  sle10sp3/java_SUSE-SU-2011_0807-1_10.3.py
+  sle10sp3/java_SUSE-SU-2011_0863-1_10.3.py
+  sle10sp3/java_SUSE-SU-2011_0966-1_10.3.py
+  sle10sp3/kernel_SUSE-SU-2011_0711-1_10.3.py
+  sle10sp3/kernel_SUSE-SU-2011_0737-1_10.3.py
+  sle10sp3/kernel_SUSE-SU-2011_1058-1_10.3.py
+  sle10sp3/libgssglue_SUSE-SU-2011_0696-1_10.3.py
+  sle10sp3/nss_SUSE-SU-2011_1042-1_10.3.py
+  sle10sp3/openssl-certs_SUSE-SU-2011_0995-1_10.3.py
+  sle10sp3/pam_SUSE-SU-2011_1209-1_10.3.py
+  sle10sp3/popt_SUSE-SU-2011_1140-2_10.3.py
+  sle10sp3/pure-ftpd_SUSE-SU-2011_1029-1_10.3.py
+  sle10sp3/quagga_SUSE-SU-2011_1075-1_10.3.py
+  sle10sp3/xen_SUSE-SU-2011_1057-1_10.3.py
+  sle10sp4/apache_SUSE-SU-2011_1007-1_10.4.py
+  sle10sp4/bind_SUSE-SU-2011_0608-1_10.4.py
+  sle10sp4/bind_SUSE-SU-2011_0759-1_10.4.py
+  sle10sp4/bind_SUSE-SU-2011_1268-1_10.4.py
+  sle10sp4/compat-openssl097g_SUSE-SU-2011_0847-1_10.4.py
+  sle10sp4/firefox_SUSE-SU-2011_0727-1_10.4.py
+  sle10sp4/firefox_SUSE-SU-2011_0967-1_10.4.py
+  sle10sp4/firefox_SUSE-SU-2011_1096-1_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2011_0614-1_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2011_0640-1_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2011_0894-1_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2011_1063-1_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2011_1244-1_10.4.py
+  sle10sp4/freetype2_SUSE-SU-2011_1306-1_10.4.py
+  sle10sp4/jasper_SUSE-SU-2011_1317-2_10.4.py
+  sle10sp4/java_SUSE-SU-2011_0632-1_10.4.py
+  sle10sp4/java_SUSE-SU-2011_0807-1_10.4.py
+  sle10sp4/java_SUSE-SU-2011_0863-1_10.4.py
+  sle10sp4/java_SUSE-SU-2011_0966-1_10.4.py
+  sle10sp4/java_SUSE-SU-2011_1298-1_10.4.py
+  sle10sp4/kernel_SUSE-SU-2011_0899-1_10.4.py
+  sle10sp4/kernel_SUSE-SU-2011_1195-1_10.4.py
+  sle10sp4/libgssglue_SUSE-SU-2011_0696-1_10.4.py
+  sle10sp4/mozilla-nss_SUSE-SU-2011_1256-2_10.4.py
+  sle10sp4/mozillafirefox_SUSE-SU-2011_1266-1_10.4.py
+  sle10sp4/nss_SUSE-SU-2011_1042-1_10.4.py
+  sle10sp4/openssl-certs_SUSE-SU-2011_0995-1_10.4.py
+  sle10sp4/pam_SUSE-SU-2011_1205-1_10.4.py
+  sle10sp4/popt_SUSE-SU-2011_1140-2_10.4.py
+  sle10sp4/pure-ftpd-debuginfo_SUSE-SU-2011_1028-1_10.4.py
+  sle10sp4/quagga_SUSE-SU-2011_1075-1_10.4.py
+  sle10sp4/reader_SUSE-SU-2011_1239-1_10.4.py
+  sle10sp4/subversion_SUSE-SU-2011_0692-1_10.4.py
+  sle10sp4/vpnc_SUSE-SU-2011_0980-1_10.4.py
+  sle10sp4/wireshark_SUSE-SU-2011_1262-1_10.4.py
+  sle10sp4/xen_SUSE-SU-2011_0925-1_10.4.py
+  sle10sp4/xen_SUSE-SU-2011_0983-1_10.4.py
+  sle10sp4/xorg-x11_SUSE-SU-2011_1035-2_10.4.py
+
+-------------------------------------------------------------------
+Fri Dec  5 20:13:19 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp0/samba_SUSE-SU-2012_0500-1_10.0.py
+  sle10sp0/samba_SUSE-SU-2012_0591-1_10.0.py
+  sle10sp2/bind_SUSE-SU-2012_0741-5_10.2.py
+  sle10sp2/freetype2_SUSE-SU-2012_0553-1_10.2.py
+  sle10sp2/krb5_SUSE-SU-2012_0010-1_10.2.py
+  sle10sp2/krb5_SUSE-SU-2012_0042-1_10.2.py
+  sle10sp2/samba_SUSE-SU-2012_0348-1_10.2.py
+  sle10sp2/samba_SUSE-SU-2012_0501-1_10.2.py
+  sle10sp2/xen_SUSE-SU-2012_0730-1_10.2.py
+  sle10sp2/xen_SUSE-SU-2012_1133-1_10.2.py
+  sle10sp3/bind_SUSE-SU-2012_0741-4_10.3.py
+  sle10sp3/freetype2_SUSE-SU-2012_0483-2_10.3.py
+  sle10sp3/kerberos_SUSE-SU-2012_0018-1_10.3.py
+  sle10sp3/kerberos_SUSE-SU-2012_0050-1_10.3.py
+  sle10sp3/openssl_SUSE-SU-2012_0674-1_10.3.py
+  sle10sp3/samba_SUSE-SU-2012_0337-1_10.3.py
+  sle10sp3/samba_SUSE-SU-2012_0504-1_10.3.py
+  sle10sp3/xen_SUSE-SU-2012_0730-1_10.3.py
+  sle10sp3/xen_SUSE-SU-2012_1129-1_10.3.py
+  sle10sp4/apache2_SUSE-SU-2012_0323-1_10.4.py
+  sle10sp4/bind_SUSE-SU-2012_0741-3_10.4.py
+  sle10sp4/bind_SUSE-SU-2012_1199-1_10.4.py
+  sle10sp4/compat-openssl097g_SUSE-SU-2012_1149-1_10.4.py
+  sle10sp4/firefox_SUSE-SU-2012_0221-1_10.4.py
+  sle10sp4/firefox_SUSE-SU-2012_0425-1_10.4.py
+  sle10sp4/firefox_SUSE-SU-2012_0746-1_10.4.py
+  sle10sp4/firefox_SUSE-SU-2012_0895-1_10.4.py
+  sle10sp4/firefox_SUSE-SU-2012_1167-1_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2012_0299-1_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2012_0332-2_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2012_0437-1_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2012_0592-2_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2012_0724-1_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2012_1001-2_10.4.py
+  sle10sp4/freetype2_SUSE-SU-2012_0483-1_10.4.py
+  sle10sp4/ghostscript_SUSE-SU-2012_1222-1_10.4.py
+  sle10sp4/gimp_SUSE-SU-2012_1027-1_10.4.py
+  sle10sp4/gimp_SUSE-SU-2012_1038-1_10.4.py
+  sle10sp4/glibc_SUSE-SU-2012_0023-1_10.4.py
+  sle10sp4/glibc_SUSE-SU-2012_0055-1_10.4.py
+  sle10sp4/java_SUSE-SU-2012_0114-1_10.4.py
+  sle10sp4/java_SUSE-SU-2012_0122-1_10.4.py
+  sle10sp4/java_SUSE-SU-2012_0602-1_10.4.py
+  sle10sp4/java_SUSE-SU-2012_0603-1_10.4.py
+  sle10sp4/java_SUSE-SU-2012_0734-1_10.4.py
+  sle10sp4/java_SUSE-SU-2012_1177-1_10.4.py
+  sle10sp4/java_SUSE-SU-2012_1204-1_10.4.py
+  sle10sp4/java_SUSE-SU-2012_1265-1_10.4.py
+  sle10sp4/kerberos_SUSE-SU-2012_0018-1_10.4.py
+  sle10sp4/kerberos_SUSE-SU-2012_0050-1_10.4.py
+  sle10sp4/libexif_SUSE-SU-2012_0902-1_10.4.py
+  sle10sp4/libpng_SUSE-SU-2012_0318-1_10.4.py
+  sle10sp4/libpurple_SUSE-SU-2012_0890-1_10.4.py
+  sle10sp4/libtiff_SUSE-SU-2012_0894-1_10.4.py
+  sle10sp4/libvorbis_SUSE-SU-2012_0326-1_10.4.py
+  sle10sp4/libxml2_SUSE-SU-2012_0117-1_10.4.py
+  sle10sp4/mozillafirefox_SUSE-SU-2012_0688-1_10.4.py
+  sle10sp4/openssl_SUSE-SU-2012_0084-1_10.4.py
+  sle10sp4/openssl_SUSE-SU-2012_0637-1_10.4.py
+  sle10sp4/openssl_SUSE-SU-2012_0679-1_10.4.py
+  sle10sp4/php5_SUSE-SU-2012_0411-1_10.4.py
+  sle10sp4/php5_SUSE-SU-2012_0598-1_10.4.py
+  sle10sp4/php5_SUSE-SU-2012_0721-1_10.4.py
+  sle10sp4/php5_SUSE-SU-2012_1034-1_10.4.py
+  sle10sp4/php5_SUSE-SU-2012_1130-1_10.4.py
+  sle10sp4/php5_SUSE-SU-2012_1210-1_10.4.py
+  sle10sp4/pidgin_SUSE-SU-2012_0782-1_10.4.py
+  sle10sp4/reader_SUSE-SU-2012_0086-1_10.4.py
+  sle10sp4/reader_SUSE-SU-2012_0524-1_10.4.py
+  sle10sp4/samba_SUSE-SU-2012_0337-1_10.4.py
+  sle10sp4/samba_SUSE-SU-2012_0504-1_10.4.py
+  sle10sp4/xen_SUSE-SU-2012_0730-1_10.4.py
+  sle10sp4/xen_SUSE-SU-2012_1135-1_10.4.py
+  sle10sp4/xulrunner_SUSE-SU-2012_0298-1_10.4.py
+
+-------------------------------------------------------------------
+Thu Dec  4 23:03:20 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp0/samba_SUSE-SU-2013_0519-1_10.0.py
+  sle10sp3/java_SUSE-SU-2013_0440-3_10.3.py
+  sle10sp3/java_SUSE-SU-2013_0440-6_10.3.py
+  sle10sp3/java_SUSE-SU-2013_0456-2_10.3.py
+  sle10sp4/firefox_SUSE-SU-2013_0471-1_10.4.py
+  sle10sp4/gnutls_SUSE-SU-2013_1060-1_10.4.py
+
+-------------------------------------------------------------------
+Mon Nov 24 20:39:25 UTC 2014 - jrecord@suse.com
+
+- New Pattern
+  sle10sp4/MozillaFirefox_SUSE-SU-2014_1458-3_10.4.py
+
+-------------------------------------------------------------------
+Fri Nov 21 17:20:27 UTC 2014 - jrecord@suse.com
+
+- Fixed uninitialized LINE_CONTENT error in sle10all/subscription-00001.pl
+
+-------------------------------------------------------------------
+Tue Nov 18 16:15:21 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp4/OpenSSL_SUSE-SU-2014_1387-1_10.4.py
+  sle10sp4/wget_SUSE-SU-2014_1408-1_10.4.py
+
+-------------------------------------------------------------------
+Mon Nov 10 20:45:36 UTC 2014 - jrecord@suse.com
+
+- New Pattern
+  sle10all/resolve-7015868.py
+
+-------------------------------------------------------------------
+Thu Oct 30 15:53:28 UTC 2014 - jrecord@suse.com
+
+- New Pattern
+  sle10all/numa-7015827.py
+
+-------------------------------------------------------------------
+Fri Oct 10 17:24:54 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp3/apache-7015750.py
+  sle10sp4/apache-7015750.py
+
+-------------------------------------------------------------------
+Fri Oct  3 15:28:58 UTC 2014 - jrecord@suse.com
+
+- New Pattern
+  sle10sp4/mozilla-nss_SUSE-SU-2014_1220-4_10.4.py
+
+-------------------------------------------------------------------
+Tue Sep 30 21:58:34 UTC 2014 - jrecord@suse.com
+
+- New Pattern
+  sle10sp3/mozilla-nss_SUSE-SU-2014_1220-3_10.3.py
+
+-------------------------------------------------------------------
+Mon Sep 29 14:28:29 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp3/bash_SUSE-SU-2014_1247-1_10.3.py
+  sle10sp4/bash_SUSE-SU-2014_1247-1_10.4.py
+
+-------------------------------------------------------------------
+Fri Sep 26 18:54:09 UTC 2014 - jrecord@suse.com
+
+- Update bash security announcements with TID and BUG
+
+-------------------------------------------------------------------
+Thu Sep 25 14:19:36 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp3/bash_SUSE-SU-2014_1214-1_10.3.py
+  sle10sp4/bash_SUSE-SU-2014_1213-1_10.4.py
+
+-------------------------------------------------------------------
+Tue Sep 23 22:31:31 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10all/obsrepo-7015683.py
+  sle10sp3/MozillaFirefox_SUSE-SU-2014_1120-1_10.3.py
+  sle10sp3/apache2_SUSE-SU-2014_1082-1_10.3.py
+  sle10sp3/glibc_SUSE-SU-2014_1128-1_10.3.py
+  sle10sp4/MozillaFirefox_SUSE-SU-2014_1120-2_10.4.py
+  sle10sp4/apache2_SUSE-SU-2014_1082-1_10.4.py
+  sle10sp4/glibc_SUSE-SU-2014_1119-1_10.4.py
+
+-------------------------------------------------------------------
+Tue Aug 12 20:26:04 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp3/Firefox_SUSE-SU-2014_0960-1_10.3.py
+  sle10sp4/Firefox_SUSE-SU-2014_0960-1_10.4.py
+
+-------------------------------------------------------------------
+Fri Aug  1 20:21:54 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp3/lzo_SUSE-SU-2014_0955-1_10.3.py
+  sle10sp4/lzo_SUSE-SU-2014_0955-1_10.4.py
+
+-------------------------------------------------------------------
+Thu Jul 17 22:39:54 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp4/firefox-SUSE-SU-2014_0905-1.py
+  sle10sp4/php5-SUSE-SU-2014_0873-1.py
+  sle10sp3/firefox-SUSE-SU-2014_0905-1.py
+  sle10sp3/php5-SUSE-SU-2014_0873-1.py
+
+-------------------------------------------------------------------
+Mon Jul  7 16:15:48 UTC 2014 - jrecord@suse.com
+
+- Fixed invalid header processing in mntspace-00001.pl
+
+-------------------------------------------------------------------
+Thu Jun 26 13:59:04 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp4/firefox-SUSE-SU-2014_0824-2.pl
+  sle10sp3/firefox-SUSE-SU-2014_0824-1.pl
+
+-------------------------------------------------------------------
+Wed Jun 25 20:17:50 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp3/gnutls-SUSE-SU-2014_0788-2.pl
+  sle10sp4/gnutls-SUSE-SU-2014_0788-2.pl
+  sle10sp3/openssl-SUSE-SU-2014_0759-2.pl
+  sle10sp4/openssl-SUSE-SU-2014_0759-2.pl
+  sle10sp4/javaibm-SUSE-SU-2014_0728-2.pl
+  sle10sp4/firefox-SUSE-SU-2014_0727-1.pl
+  sle10sp3/javaibm-SUSE-SU-2014_0728-2.pl
+
+-------------------------------------------------------------------
+Thu Jun 12 18:46:43 UTC 2014 - jrecord@suse.com
+
+- Fixed invalid NTP fields in sle10all/ntp-00002.pl
+
+-------------------------------------------------------------------
+Mon Jun  2 19:07:03 UTC 2014 - jrecord@suse.com
+
+- Fixed calculation errors in sle10all/parted-00001.pl
+- New Patterns
+  sle10sp3/firefox-SUSE-SU-2014_0665-2.pl
+
+-------------------------------------------------------------------
+Wed May 21 21:59:01 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10all/vfx_inode_table_7015089.py
+
+-------------------------------------------------------------------
+Wed May 21 14:21:11 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp3/strongswan-SUSE-SU-2014_0529-1.pl
+  sle10sp4/strongswan-SUSE-SU-2014_0529-1.pl
+
+-------------------------------------------------------------------
+Wed May 20 11:33:53 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp4/kernel-SUSE-SU-2014_0536-1.pl
+  sle10sp3/xen-SUSE-SU-2014_0470-1.pl
+
+-------------------------------------------------------------------
+Fri Apr 25 21:03:21 UTC 2014 - jrecord@suse.com
+
+- Now subscription-00001.pl uses installation_sources
+- Fixed mntspace-00001.pl df error handling
+- Fixed subscription-00001.pl uninitialized value $LINE_CONTENT[1]
+
+-------------------------------------------------------------------
+Tue Apr 22 16:32:59 UTC 2014 - jrecord@suse.com
+
+- Fixed Use of uninitialized value in addition in bhc-cpucs-00001.pl
+- Fixed Argument "like:" isn't numeric in bhc-cpuint-00001.pl
+- Fixed Use of uninitialized value in pattern match in fsaio-00002.pl
+- Fixed Argument "" isn't numeric in fsaio-00001.pl
+- Fixed bhc-kerneltaint-00001.pl to check for invalid taint
+
+-------------------------------------------------------------------
+Wed Apr  9 17:58:44 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10all/lastlogin-7014881.py
+
+-------------------------------------------------------------------
+Mon Apr  7 15:33:14 UTC 2014 - jrecord@suse.com
+
+- New Security Patterns
+  sle10sp4/xen-SUSE-SU-2014_0411-1.pl
+  sle10sp3/gnutls-SUSE-SU-2014_0320-1.pl
+  sle10sp4/gnutls-SUSE-SU-2014_0321-1.pl
+
+-------------------------------------------------------------------
+Wed Apr  2 21:41:00 UTC 2014 - jrecord@suse.com
+
+- New Security Patterns
+  sle10sp4/javaibm-SUSE-SU-2014_0266-3.pl
+  sle10sp3/javaibm-SUSE-SU-2014_0266-1.pl
+  sle10sp4/libxml2-SUSE-SU-2013_1627-1.pl
+  sle10sp3/libxml2-SUSE-SU-2013_1625-1.pl
+  sle10sp4/mozilla-SUSE-SU-2013_1807-1.pl
+  sle10sp3/mozilla-SUSE-SU-2013_1807-1.pl
+
+-------------------------------------------------------------------
+Fri Mar 21 18:39:51 UTC 2014 - jrecord@suse.com
+
+- Fixed spec macro
+
+-------------------------------------------------------------------
+Thu Mar 20 15:50:04 UTC 2014 - jrecord@suse.com
+
+- Removed duplicates with fdupes
+- Fixed FSF address in all patterns
+
+-------------------------------------------------------------------
+Thu Mar 13 16:52:21 UTC 2014 - jrecord@suse.com
+
+- Change to System/Monitoring spec Group
+
+-------------------------------------------------------------------
+Thu Mar  6 18:06:16 UTC 2014 - jrecord@suse.com
+
+- Fixed out of range index errors
+  sle10all/bhc-memused-00001.pl
+- New pattern
+  sle10all/reg-7016440.py
+  sle10all/chmod-7014410.py
+  sle10all/login-7014706.py
+
+-------------------------------------------------------------------
+Sat Feb  8 22:27:14 UTC 2014 - jrecord@suse.com
+
+- Packaged COPYING.GPLv2
+
+-------------------------------------------------------------------
+Fri Jan 31 19:41:38 UTC 2014 - jrecord@suse.com
+
+- added
+  sle10all/net-7007649.py
+- includes pertinent patterns from sca-patterns-sleall
+- includes pertinent patterns from sca-patterns-samba
+- includes pertinent patterns from sca-patterns-basic
+
+-------------------------------------------------------------------
+Thu Jan 16 10:52:41 MST 2014 jrecord@suse.com
+
+- relocated files according to FHS
+
+-------------------------------------------------------------------
+Wed Dec 20 10:52:41 MST 2013 jrecord@suse.com
+
+- separated as individual RPM package
+- added
+  firefox-SUSE-SU-2013_1678-1d.pl sle10sp4
+  firefox-SUSE-SU-2013_1678-1e.pl sle10sp3
+  java-SUSE-SU-2013_1677-23.pl sle10sp3
+  java-SUSE-SU-2013_1677-2d.pl sle10sp4
+  javaibm-SUSE-SU-2013_1669-1a.pl sle10sp4
+  javaibm-SUSE-SU-2013_1669-1b.pl sle10sp3
+

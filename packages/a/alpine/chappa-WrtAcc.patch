@@ -1,0 +1,354 @@
+diff -rc alpine-2.21/pico/basic.c alpine-2.21.WrtAcc/pico/basic.c
+*** alpine-2.21/pico/basic.c	Sun Feb  5 16:02:36 2017
+--- alpine-2.21.WrtAcc/pico/basic.c	Sun Feb  5 16:15:24 2017
+***************
+*** 342,347 ****
+--- 342,530 ----
+      return(TRUE);
+  }
+  
++ unsigned char GetAccent()
++ {
++   UCS c,d;
++     c = GetKey();
++     if ((c == '?') || (c == '!')) {
++         d = c;
++         c = '\\';
++     }
++     else
++       if ((c == 's') || (c == 'S')){
++ 	 c =  d = 's';
++       }
++       else 
++ 	if ((c == 'l') || (c == 'L')){
++ 	   c =  d = 'l';
++ 	}
++ 	else
++           d = GetKey();
++ 	return accent(c,d);
++ }
++ 
++ int pineaccent(f,n)
++   int f,n;
++ { unsigned char e;
++    
++        if (e = GetAccent())
++           execute(e, 0, 1);
++        return 1;
++ }
++ 
++ unsigned char accent(f,n)
++ UCS f,n;
++ {  UCS c,d;
++ 
++        c =  f;
++        d =  n;
++        switch(c){
++         case '~' :  
++                    switch(d){
++                                case 'a' : return '\343';
++                                case 'n' : return '\361';
++                                case 'o' : return '\365';
++                                case 'A' : return '\303';
++                                case 'N' : return '\321';
++                                case 'O' : return '\325';
++                             }
++                        break;
++         case '\047' :
++                        switch(d){
++                                case 'a' : return '\341';
++                                case 'e' : return '\351';
++                                case 'i' : return '\355';
++                                case 'o' : return '\363';
++                                case 'u' : return '\372';
++                                case 'y' : return '\375';
++                                case 'A' : return '\301';
++                                case 'E' : return '\311';
++                                case 'I' : return '\315';
++                                case 'O' : return '\323';
++                                case 'U' : return '\332';
++                                case 'Y' : return '\335';
++                                     }
++                        break;
++         case '"' :
++                        switch(d){
++                                case 'a' : return '\344';
++                                case 'e' : return '\353';
++                                case 'i' : return '\357';
++                                case 'o' : return '\366';
++                                case 'u' : return '\374';
++                                case 'y' : return '\377';
++                                case 'A' : return '\304';
++                                case 'E' : return '\313';
++                                case 'I' : return '\317';
++                                case 'O' : return '\326';
++                                case 'U' : return '\334';
++                                     }
++                        break;
++         case '^' :
++                        switch(d){
++                                case 'a' : return '\342';
++                                case 'e' : return '\352';
++                                case 'i' : return '\356';
++                                case 'o' : return '\364';
++                                case 'u' : return '\373';
++                                case 'A' : return '\302';
++                                case 'E' : return '\312';
++                                case 'I' : return '\316';
++                                case 'O' : return '\324';
++                                case 'U' : return '\333';
++ 			       case '0' : return '\260';
++ 			       case '1' : return '\271';
++ 			       case '2' : return '\262';
++ 			       case '3' : return '\263';
++                                     }
++                        break;
++         case '`' :
++                        switch(d){
++                                case 'a' : return '\340';
++                                case 'e' : return '\350';
++                                case 'i' : return '\354';
++                                case 'o' : return '\362';
++                                case 'u' : return '\371';
++                                case 'A' : return '\300';
++                                case 'E' : return '\310';
++                                case 'I' : return '\314';
++                                case 'O' : return '\322';
++                                case 'U' : return '\331';
++                                     }
++                        break;
++         case 'o' :
++                        switch(d){
++                                case 'a' : return '\345';
++                                case 'A' : return '\305';
++ 			       case '/' : return '\370';
++ 			       case 'r' : return '\256';
++ 			       case 'R' : return '\256';
++ 			       case 'c' : return '\251';
++ 			       case 'C' : return '\251';
++ 				}
++                        break;
++ 	case '-' :
++ 		       switch(d){
++ 			       case 'o' : return '\272';
++ 			       case 'O' : return '\272';
++ 			       case '0' : return '\272';
++ 			       case 'a' : return '\252';
++ 			       case 'A' : return '\252';
++ 			       case 'l' : return '\243';
++ 			       case 'L' : return '\243';
++ 				}
++ 		       break;
++ 	case 'O' :
++ 		       switch(d){
++ 			       case '/' : return '\330';
++ 			       case 'r' : return '\256';
++ 			       case 'R' : return '\256';
++ 			       case 'c' : return '\251';
++ 			       case 'C' : return '\251';
++ 				}
++         case '/' :
++                        switch(d){
++                                case 'o' : return '\370';
++                                case 'O' : return '\330';
++ 				}
++                        break;
++         case 'a' :
++                        switch(d){
++                                case 'e' : return '\346';
++                                case 'E' : return '\346';
++ 				}
++                        break;
++         case 'A' :
++                        switch(d){
++                                 case 'E' : return '\306';
++                                case 'e' : return '\306';
++ 				}
++                        break;
++         case ',' :
++                        switch(d){
++                                case 'c' : return '\347';
++                                case 'C' : return '\307';
++                                     }
++                        break;
++         case '\\' :
++                        switch(d){
++                                case '?' : return '\277';
++                                case '!' : return '\241';
++                                     }
++                        break;
++        case 's' :
++                         switch(d){
++                                 case 's' : return '\337';
++                                      }
++ 			break;
++        case 'l' :
++                         switch(d){
++                                 case 'l' : return '\243';
++                                  }
++ 		break;
++        }
++        return '\0';
++ }
+  
+  /* 
+   * go forword to the end of the current paragraph
+diff -rc alpine-2.21/pico/composer.c alpine-2.21.WrtAcc/pico/composer.c
+*** alpine-2.21/pico/composer.c	Sun Feb  5 16:02:36 2017
+--- alpine-2.21.WrtAcc/pico/composer.c	Sun Feb  5 16:15:24 2017
+***************
+*** 2015,2021 ****
+  	tbufp = &strng[ods.p_len];
+  
+  	if(VALID_KEY(ch)){			/* char input */
+!             /*
+               * if we are allowing editing, insert the new char
+               * end up leaving tbufp pointing to newly
+               * inserted character in string, and offset to the
+--- 2015,2021 ----
+  	tbufp = &strng[ods.p_len];
+  
+  	if(VALID_KEY(ch)){			/* char input */
+! insert_char:/*
+               * if we are allowing editing, insert the new char
+               * end up leaving tbufp pointing to newly
+               * inserted character in string, and offset to the
+***************
+*** 2095,2100 ****
+--- 2095,2107 ----
+          }
+          else {					/* interpret ch as a command */
+              switch (ch = normalize_cmd(ch, ckm, 2)) {
++ 	      case (CTRL|'\\') :
++ 		if (ch = GetAccent())
++ 		  goto insert_char;
++ 		else
++ 		  clearcursor();
++ 	      break;
++ 
+                case (CTRL|KEY_LEFT):     /* word skip left */
+                  if(ods.p_ind > 0)       /* Scoot one char left if possible */
+                    ods.p_ind--;
+diff -rc alpine-2.21/pico/display.c alpine-2.21.WrtAcc/pico/display.c
+*** alpine-2.21/pico/display.c	Sun Feb  5 16:02:36 2017
+--- alpine-2.21.WrtAcc/pico/display.c	Sun Feb  5 16:15:24 2017
+***************
+*** 2196,2201 ****
+--- 2196,2206 ----
+  	    b = &buf[ucs4_strlen(buf)];
+  	    continue;
+  
++           case (CTRL|'\\'):
++            if (c = GetAccent())
++              goto text;
++           continue;
++ 
+  	  case (CTRL|'F') :			/* CTRL-F forward a char*/
+  	  case KEY_RIGHT :
+  	    if(*b == '\0')
+***************
+*** 2314,2320 ****
+  #endif
+  
+  	  default : 
+! 
+  	    /* look for match in extra_v */
+  	    for(i = 0; i < 12; i++)
+  	      if(c && c == extra_v[i]){
+--- 2319,2325 ----
+  #endif
+  
+  	  default : 
+! text:
+  	    /* look for match in extra_v */
+  	    for(i = 0; i < 12; i++)
+  	      if(c && c == extra_v[i]){
+diff -rc alpine-2.21/pico/ebind.h alpine-2.21.WrtAcc/pico/ebind.h
+*** alpine-2.21/pico/ebind.h	Sun Feb  5 16:02:36 2017
+--- alpine-2.21.WrtAcc/pico/ebind.h	Sun Feb  5 16:15:24 2017
+***************
+*** 61,67 ****
+  #ifdef	MOUSE
+  	{KEY_MOUSE,		mousepress},
+  #ifndef _WINDOWS
+! 	{CTRL|'\\',		toggle_xterm_mouse},
+  #endif
+  #endif
+  	{CTRL|'A',		gotobol},
+--- 61,67 ----
+  #ifdef	MOUSE
+  	{KEY_MOUSE,		mousepress},
+  #ifndef _WINDOWS
+! 	{CTRL|'|',		toggle_xterm_mouse},
+  #endif
+  #endif
+  	{CTRL|'A',		gotobol},
+***************
+*** 100,106 ****
+  	{CTRL|KEY_HOME,	gotobob},
+  	{CTRL|KEY_END,	gotoeob},
+  	{0x7F,			backdel},
+! 	{0,			NULL}
+  };
+  
+  
+--- 100,108 ----
+  	{CTRL|KEY_HOME,	gotobob},
+  	{CTRL|KEY_END,	gotoeob},
+  	{0x7F,			backdel},
+!         {CTRL|'\\',             pineaccent},
+! 	{0,
+! NULL}
+  };
+  
+  
+***************
+*** 123,129 ****
+  #ifdef	MOUSE
+  	{KEY_MOUSE,		mousepress},
+  #ifndef _WINDOWS
+! 	{CTRL|'\\',		toggle_xterm_mouse},
+  #endif
+  #endif
+  	{CTRL|'A',		gotobol},
+--- 125,131 ----
+  #ifdef	MOUSE
+  	{KEY_MOUSE,		mousepress},
+  #ifndef _WINDOWS
+! 	{CTRL|'|',		toggle_xterm_mouse},
+  #endif
+  #endif
+  	{CTRL|'A',		gotobol},
+diff -rc alpine-2.21/pico/efunc.h alpine-2.21.WrtAcc/pico/efunc.h
+*** alpine-2.21/pico/efunc.h	Sun Feb  5 16:02:36 2017
+--- alpine-2.21.WrtAcc/pico/efunc.h	Sun Feb  5 16:15:24 2017
+***************
+*** 54,59 ****
+--- 54,62 ----
+  extern	int backline(int, int);
+  extern	int gotobop(int, int);
+  extern	int gotoeop(int, int);
++ extern  int pineaccent(int, int);
++ extern  unsigned char accent(UCS, UCS);
++ extern  unsigned char GetAccent(void);
+  extern	int forwpage(int, int);
+  extern	int backpage(int, int);
+  extern  int scrollupline(int, int);
+diff -rc alpine-2.21/pico/main.c alpine-2.21.WrtAcc/pico/main.c
+*** alpine-2.21/pico/main.c	Sun Feb  5 16:02:36 2017
+--- alpine-2.21.WrtAcc/pico/main.c	Sun Feb  5 16:15:24 2017
+***************
+*** 451,456 ****
+--- 451,462 ----
+  	      emlwrite(_("You may possibly have new mail."), NULL);
+  	}
+  
++          if (c == (CTRL|'\\')){
++            c = GetAccent();
++ 	   if (!c)
++ 	     c = NODATA;
++ 	 }
++ 
+  	if(km_popped)
+  	  switch(c){
+  	    case NODATA:

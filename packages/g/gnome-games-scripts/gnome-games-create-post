@@ -1,0 +1,22 @@
+#!/bin/bash
+
+PACKAGES=`ls $1/var/games/*.scores | sed "s,^.*/,,g;s,\.[^/]*$,,g" | sort -u`
+
+for PACKAGE in $PACKAGES; do
+  exec >$PACKAGE.scores_post
+  echo -n "for SCORES in "
+
+  echo $1/var/games/$PACKAGE.*.scores | sed "s:$1/var/games/::g"
+  cat <<EOF
+do
+    if [ ! -r \$SCORES ]
+    then
+        touch var/games/\$SCORES
+    fi
+    chown games:games var/games/\$SCORES
+    chmod 664 var/games/\$SCORES
+done
+EOF
+
+  exec >&-
+done

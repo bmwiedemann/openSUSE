@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Tue Feb 26 11:15:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove replace-pytest-pep8-with-pytest-codestyle.patch
+- Remove not needed test dependencies:
+  * update patch fix-requirements.patch
+
+-------------------------------------------------------------------
+Wed Oct 10 14:57:17 UTC 2018 - Antonio Larrosa <alarrosa@suse.com> - 0.5.0
+
+- Remove conditional test variable from spec file and keep it enabled
+
+-------------------------------------------------------------------
+Fri Sep 21 07:49:52 UTC 2018 - Antonio Larrosa <alarrosa@suse.com> - 0.5.0
+
+- Add replace-pytest-pep8-with-pytest-codestyle.patch to replace
+  the pytest-pep8 requirement with the newer pytest-codestyle package
+
+-------------------------------------------------------------------
+Wed Sep 19 16:57:54 UTC 2018 - Antonio Larrosa <alarrosa@suse.com> - 0.5.0
+
+- Enable tests and add required buildrequires
+
+-------------------------------------------------------------------
+Wed Aug 22 06:05:36 UTC 2018 - alarrosa@suse.com - 0.5.0
+
+- Initial release of python-Flask-Gravatar-0.5.0
+- Add fix-requirements.patch to fix wrong requirements only needed for tests

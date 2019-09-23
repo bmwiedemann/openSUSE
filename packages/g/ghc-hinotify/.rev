@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>12920e2c7278eeff3cd966f8b1850512</srcmd5>
+    <version>0.3.7</version>
+    <time>1432636317</time>
+    <user>dimstar_suse</user>
+    <comment>Haskell inotify library</comment>
+    <requestid>307874</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ccac9a0aeeb3f19fc5e9afef7da3b656</srcmd5>
+    <version>0.3.8.1</version>
+    <time>1439191010</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.8.1
+* Use file system encoding for file names.</comment>
+    <requestid>321483</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5387415e96093b371b9ae33e817e22ae</srcmd5>
+    <version>0.3.8.1</version>
+    <time>1469081066</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411372</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>de8404a404aefb7bba972bcdd0af6a69</srcmd5>
+    <version>0.3.9</version>
+    <time>1484232589</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447691</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>af557081d5c07f1b50560e227c0d31f5</srcmd5>
+    <version>0.3.9</version>
+    <time>1505504904</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524754</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a56fc49a0a6afccf2a376a6502bccb56</srcmd5>
+    <version>0.3.10</version>
+    <time>1527674916</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-hinotify to the latest version.</comment>
+    <requestid>607810</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1f44bda5516e60e572b67ddf7f255d0a</srcmd5>
+    <version>0.3.10</version>
+    <time>1532445562</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- initial commit of package ghc-hinotify version 0.3.7</comment>
+    <requestid>623784</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9f900980427b2307f67da81dd07f9ef4</srcmd5>
+    <version>0.4</version>
+    <time>1535367492</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>631365</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>3ff00eed3da30b96287e9c3cddb3f2f4</srcmd5>
+    <version>0.4</version>
+    <time>1540448768</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643401</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,13 @@
+Index: xgalaga++-0.8.4/Makefile
+===================================================================
+--- xgalaga++-0.8.4.orig/Makefile
++++ xgalaga++-0.8.4/Makefile
+@@ -124,7 +124,7 @@ CXXOPTS = $(GOAL_OPTS) $(COMPILE_OPTS) $
+ LDOPTS = $(GOAL_OPTS) $(LNK_LIBS)
+ 
+ # source files in this project
+-sources := $(wildcard $(srcdir)/*.$(SOURCE_SUFFIX))
++sources := $(sort $(wildcard $(srcdir)/*.$(SOURCE_SUFFIX)))
+ 
+ # object files in this project
+ objs := $(notdir $(sources))

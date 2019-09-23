@@ -1,0 +1,302 @@
+From: Emil Velikov <emil.velikov@collabora.com>
+Date: Mon Jul 17 12:01:57 2017 +0100
+Subject: [PATCH 7/7]xf86-video-sis: remove the GlxSetVisualConfigs stub and friends
+Patch-mainline: Upstream
+Git-repo: git://anongit.freedesktop.org/xorg/driver/xf86-video-sis
+Git-commit: a50b2b3412dd8e7f3916acb142c942e85ffcb3e5
+References: 
+Signed-off-by: Max Staudt <mstaudt@suse.de>
+
+The function was an empty since 2008 at least. Remove it alongside the
+unused GLX visuals code.
+
+With this all the GL/GLX dependencies in the driver are gone.
+
+Cc: Connor Behan <connor.behan@gmail.com>
+Cc: Thomas Klausner <wiz@NetBSD.org>
+Signed-off-by: Emil Velikov <emil.velikov@collabora.com>
+---
+ src/sis.h        |   4 --
+ src/sis_dri.c    | 161 +------------------------------------------------------
+ src/sis_dri.h    |   5 --
+ src/sis_driver.c |  10 +---
+ 4 files changed, 3 insertions(+), 177 deletions(-)
+
+diff --git a/src/sis.h b/src/sis.h
+index 385b784..2b764cb 100644
+--- a/src/sis.h
++++ b/src/sis.h
+@@ -197,7 +197,6 @@
+ #include "sarea.h"
+ #define _XF86DRI_SERVER_
+ #include "dri.h"
+-#include "GL/glxint.h"
+ #include "sis_dri.h"
+ #endif /* SISDRI */
+ 
+@@ -1198,9 +1197,6 @@ typedef struct {
+     Bool		directRenderingEnabled;
+     DRIInfoPtr 		pDRIInfo;
+     int			drmSubFD;
+-    int			numVisualConfigs;
+-    __GLXvisualConfig*	pVisualConfigs;
+-    SISConfigPrivPtr	pVisualConfigsPriv;
+     SISRegRec		DRContextRegs;
+ #endif
+ 
+diff --git a/src/sis_dri.c b/src/sis_dri.c
+index 9a045a2..5778c51 100644
+--- a/src/sis_dri.c
++++ b/src/sis_dri.c
+@@ -44,7 +44,6 @@
+ #include "sis_regs.h"
+ 
+ #include "fb.h"
+-#include "GL/glxtokens.h"
+ 
+ #ifndef SISHAVEDRMWRITE
+ # if XF86_VERSION_CURRENT < XF86_VERSION_NUMERIC(4,2,99,0,0)
+@@ -96,12 +95,6 @@ extern char *DRICreatePCIBusID(pciVideoPtr PciInfo);
+   while( (SIS_MMIO_IN16(pSiS->IOBase, Q_STATUS+2) & 0x8000) != 0x8000){}; \
+   }
+ 
+-extern void GlxSetVisualConfigs(
+-    int nconfigs,
+-    __GLXvisualConfig *configs,
+-    void **configprivs
+-);
+-
+ /* The kernel's "sis" DRM module handles all chipsets */
+ static char SISKernelDriverName[] = "sis";
+ 
+@@ -110,7 +103,6 @@ static char SISClientDriverNameSiS300[] = "sis";	/* 300, 540, 630, 730 */
+ static char SISClientDriverNameSiS315[] = "sis315";	/* All of 315/330 series */
+ static char SISClientDriverNameXGI[]    = "xgi";	/* XGI V3, V5, V8 */
+ 
+-static Bool SISInitVisualConfigs(ScreenPtr pScreen);
+ static Bool SISCreateContext(ScreenPtr pScreen, VisualPtr visual,
+                    drm_context_t hwContext, void *pVisualConfigPriv,
+                    DRIContextType contextStore);
+@@ -125,141 +117,6 @@ static void SISDRIInitBuffers(WindowPtr pWin, RegionPtr prgn, CARD32 index);
+ static void SISDRIMoveBuffers(WindowPtr pParent, DDXPointRec ptOldOrg,
+                    RegionPtr prgnSrc, CARD32 index);
+ 
+-static Bool
+-SISInitVisualConfigs(ScreenPtr pScreen)
+-{
+-  ScrnInfoPtr pScrn = xf86ScreenToScrn(pScreen);
+-  SISPtr pSIS = SISPTR(pScrn);
+-  int numConfigs = 0;
+-  __GLXvisualConfig *pConfigs = 0;
+-  SISConfigPrivPtr pSISConfigs = 0;
+-  SISConfigPrivPtr *pSISConfigPtrs = 0;
+-  int i, db, z_stencil, accum;
+-  Bool useZ16 = FALSE;
+-
+-  if(getenv("SIS_FORCE_Z16")) {
+-     useZ16 = TRUE;
+-  }
+-
+-  switch (pScrn->bitsPerPixel) {
+-  case 8:
+-  case 24:
+-    break;
+-  case 16:
+-  case 32:
+-    numConfigs = (useZ16) ? 8 : 16;
+-
+-    if(!(pConfigs = (__GLXvisualConfig*)calloc(sizeof(__GLXvisualConfig),
+-						   numConfigs))) {
+-       return FALSE;
+-    }
+-    if(!(pSISConfigs = (SISConfigPrivPtr)calloc(sizeof(SISConfigPrivRec),
+-						    numConfigs))) {
+-       free(pConfigs);
+-       return FALSE;
+-    }
+-    if(!(pSISConfigPtrs = (SISConfigPrivPtr*)calloc(sizeof(SISConfigPrivPtr),
+-							  numConfigs))) {
+-       free(pConfigs);
+-       free(pSISConfigs);
+-       return FALSE;
+-    }
+-    for(i=0; i<numConfigs; i++) pSISConfigPtrs[i] = &pSISConfigs[i];
+-
+-    i = 0;
+-    for(accum = 0; accum <= 1; accum++) {
+-       for(z_stencil = 0; z_stencil < (useZ16 ? 2 : 4); z_stencil++) {
+-	  for(db = 0; db <= 1; db++) {
+-	     pConfigs[i].vid = -1;
+-	     pConfigs[i].class = -1;
+-	     pConfigs[i].rgba = TRUE;
+-	     if(pScrn->bitsPerPixel == 16) {
+-	        pConfigs[i].redSize   = 5;
+-	        pConfigs[i].greenSize = 6;
+-	        pConfigs[i].blueSize  = 5;
+-	        pConfigs[i].alphaSize = 0;
+-	        pConfigs[i].redMask   = 0x0000F800;
+-	        pConfigs[i].greenMask = 0x000007E0;
+-	        pConfigs[i].blueMask  = 0x0000001F;
+-	        pConfigs[i].alphaMask = 0x00000000;
+-	     } else {
+-	        pConfigs[i].redSize   = 8;
+-	        pConfigs[i].greenSize = 8;
+-	        pConfigs[i].blueSize  = 8;
+-	        pConfigs[i].alphaSize = 8;
+-	        pConfigs[i].redMask   = 0x00FF0000;
+-	        pConfigs[i].greenMask = 0x0000FF00;
+-	        pConfigs[i].blueMask  = 0x000000FF;
+-	        pConfigs[i].alphaMask = 0xFF000000;
+-	     }
+-	     if(accum) {
+-	        pConfigs[i].accumRedSize   = 16;
+-	        pConfigs[i].accumGreenSize = 16;
+-	        pConfigs[i].accumBlueSize  = 16;
+-	        if(pConfigs[i].alphaMask == 0)
+-	           pConfigs[i].accumAlphaSize = 0;
+-	        else
+-	           pConfigs[i].accumAlphaSize = 16;
+-	     } else {
+-	        pConfigs[i].accumRedSize   = 0;
+-	        pConfigs[i].accumGreenSize = 0;
+-	        pConfigs[i].accumBlueSize  = 0;
+-	        pConfigs[i].accumAlphaSize = 0;
+-	     }
+-	     if(db) pConfigs[i].doubleBuffer = TRUE;
+-	     else   pConfigs[i].doubleBuffer = FALSE;
+-	     pConfigs[i].stereo = FALSE;
+-	     pConfigs[i].bufferSize = -1;
+-	     switch(z_stencil) {
+-	     case 0:
+-	        pConfigs[i].depthSize = 0;
+-	        pConfigs[i].stencilSize = 0;
+-	        break;
+-	     case 1:
+-	        pConfigs[i].depthSize = 16;
+-	        pConfigs[i].stencilSize = 0;
+-	        break;
+-	     case 2:
+-	       pConfigs[i].depthSize = 32;
+-	       pConfigs[i].stencilSize = 0;
+-	       break;
+-	     case 3:
+-	       pConfigs[i].depthSize = 24;
+-	       pConfigs[i].stencilSize = 8;
+-	       break;
+-             }
+-	     pConfigs[i].auxBuffers = 0;
+-	     pConfigs[i].level = 0;
+-	     if(pConfigs[i].accumRedSize != 0)
+-	        pConfigs[i].visualRating = GLX_SLOW_CONFIG;
+-	     else
+-	        pConfigs[i].visualRating = GLX_NONE_EXT;
+-	     pConfigs[i].transparentPixel = GLX_NONE;
+-	     pConfigs[i].transparentRed   = 0;
+-	     pConfigs[i].transparentGreen = 0;
+-	     pConfigs[i].transparentBlue  = 0;
+-	     pConfigs[i].transparentAlpha = 0;
+-	     pConfigs[i].transparentIndex = 0;
+-	     i++;
+-	  }
+-       }
+-    }
+-    if(i != numConfigs) {
+-       xf86DrvMsg(pScrn->scrnIndex, X_ERROR,
+-		"[dri] Incorrect initialization of visuals. Disabling the DRI.\n");
+-       return FALSE;
+-    }
+-    break;
+-  }
+-
+-  pSIS->numVisualConfigs = numConfigs;
+-  pSIS->pVisualConfigs = pConfigs;
+-  pSIS->pVisualConfigsPriv = pSISConfigs;
+-  GlxSetVisualConfigs(numConfigs, pConfigs, (void**)pSISConfigPtrs);
+-
+-  return TRUE;
+-}
+-
+ Bool
+ SISDRIScreenInit(ScreenPtr pScreen)
+ {
+@@ -276,10 +133,9 @@ SISDRIScreenInit(ScreenPtr pScreen)
+    pSIS->cmdQ_SharedWritePortBackup = NULL;
+ #endif
+ 
+-  /* Check that the GLX, DRI, and DRM modules have been loaded by testing
++  /* Check that the DRI, and DRM modules have been loaded by testing
+    * for canonical symbols in each module.
+    */
+-  if(!xf86LoaderCheckSymbol("GlxSetVisualConfigs")) return FALSE;
+   if(!xf86LoaderCheckSymbol("drmAvailable"))        return FALSE;
+   if(!xf86LoaderCheckSymbol("DRIQueryVersion")) {
+      xf86DrvMsg(pScreen->myNum, X_ERROR,
+@@ -651,11 +507,6 @@ SISDRIScreenInit(ScreenPtr pScreen)
+ 
+   pSISDRI->irqEnabled = pSIS->irqEnabled;
+ 
+-  if(!(SISInitVisualConfigs(pScreen))) {
+-     SISDRICloseScreen(pScreen);
+-     return FALSE;
+-  }
+-
+   xf86DrvMsg(pScrn->scrnIndex, X_INFO, "[dri] Visual configs initialized\n" );
+ 
+   return TRUE;
+@@ -801,16 +652,6 @@ SISDRICloseScreen(ScreenPtr pScreen)
+      pSIS->pDRIInfo = NULL;
+   }
+ 
+-  if(pSIS->pVisualConfigs) {
+-     free(pSIS->pVisualConfigs);
+-     pSIS->pVisualConfigs = NULL;
+-  }
+-
+-  if(pSIS->pVisualConfigsPriv) {
+-     free(pSIS->pVisualConfigsPriv);
+-     pSIS->pVisualConfigsPriv = NULL;
+-  }
+-
+ }
+ 
+ /* TODO: xserver receives driver's swapping event and do something
+diff --git a/src/sis_dri.h b/src/sis_dri.h
+index 399d757..ce9039c 100644
+--- a/src/sis_dri.h
++++ b/src/sis_dri.h
+@@ -106,11 +106,6 @@ typedef struct {
+ typedef struct {
+   /* Nothing here yet */
+   int dummy;
+-} SISConfigPrivRec, *SISConfigPrivPtr;
+-
+-typedef struct {
+-  /* Nothing here yet */
+-  int dummy;
+ } SISDRIContextRec, *SISDRIContextPtr;
+ 
+ #include "screenint.h"
+diff --git a/src/sis_driver.c b/src/sis_driver.c
+index 513f68b..4e51e2e 100644
+--- a/src/sis_driver.c
++++ b/src/sis_driver.c
+@@ -6901,17 +6901,11 @@ SISPreInit(ScrnInfoPtr pScrn, int flags)
+        }
+     }
+ 
+-    /* Load the dri and glx modules if requested. */
++    /* Load the dri modules if requested. */
+ #ifdef SISDRI
+     if(pSiS->loadDRI) {
+        if(!xf86LoaderCheckSymbol("DRIScreenInit")) {
+-	  if(xf86LoadSubModule(pScrn, "dri")) {
+-	     if(!xf86LoaderCheckSymbol("GlxSetVisualConfigs")) {
+-	        if(!xf86LoadSubModule(pScrn, "glx")) {
+-		   SISErrorLog(pScrn, "Failed to load glx module\n");
+-		}
+-	     }
+-	  } else {
++	  if(!xf86LoadSubModule(pScrn, "dri")) {
+ 	     SISErrorLog(pScrn, "Failed to load dri module\n");
+ 	  }
+        }

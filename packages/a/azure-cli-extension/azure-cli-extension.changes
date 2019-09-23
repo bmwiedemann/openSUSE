@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Tue Jun  4 09:43:08 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Remove unneccesary %python_expand prefix from %fdupes call
+
+-------------------------------------------------------------------
+Tue Apr 16 14:46:24 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 0.2.3
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Bump minimum version for Python Azure SDK namespace
+  packages to 3.0.0 in BuildRequires and Requires
+- Remove python3-devel package from BuildRequires
+- Remove unzip package from BuildRequires
+- Run fdupes to hardlink duplicate files
+  + Add fdupes to BuildRequires
+  + Add %fdupes invocation to %install
+
+-------------------------------------------------------------------
+Mon Sep 17 10:24:12 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 0.2.1
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Wed Apr 18 11:59:42 UTC 2018 - adrian.glaubitz@suse.com
+
+- New upstream release
+  + Version 0.0.12
+- Move LICENSE.txt from %doc to %license section
+
+-------------------------------------------------------------------
+Thu Feb  8 11:51:52 UTC 2018 - adrian.glaubitz@suse.com
+
+- New upstream release
+  + Version 0.0.8
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Install HISTORY.rst into doc directory
+
+-------------------------------------------------------------------
+Mon Sep 25 13:58:38 UTC 2017 - adrian.glaubitz@suse.com
+
+- Initial build
+  + Version 0.0.3

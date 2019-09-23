@@ -1,0 +1,944 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>7f8410550649d68e1ebabb1613a01976</srcmd5>
+    <version>2009.01.27</version>
+    <time>1233718146</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>aeec5cac64eda8b4ec8b65e2e6b6e0e1</srcmd5>
+    <version>2009.01.27</version>
+    <time>1233930155</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4456356e2a370c0a53a1dee971a9cf05</srcmd5>
+    <version>2009.01.27</version>
+    <time>1233948762</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>6be8f9e8a01d79da00448ec7dddaeb8a</srcmd5>
+    <version>2009.01.27</version>
+    <time>1234017587</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>439223b90cb47c6b3b7e47813ef86773</srcmd5>
+    <version>2009.01.27</version>
+    <time>1234046089</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>c448aea8cc35a9ceed3753092b4b4850</srcmd5>
+    <version>2009.01.27</version>
+    <time>1234141551</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>ecb3abfd2a58294502ecd68a3c41f135</srcmd5>
+    <version>2009.01.27</version>
+    <time>1241710721</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>5990cedb55436e7e1df3461e10300bd3</srcmd5>
+    <version>2009.01.27</version>
+    <time>1247587082</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>43cec1caa7e15b1d85dee5fd2203d4fa</srcmd5>
+    <version>2009.01.27</version>
+    <time>1247671602</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7193c10113801b619fb91d3c9537ede1</srcmd5>
+    <version>2009.07.23</version>
+    <time>1248359714</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>376be3ffb18fdeee02f73992866d72e8</srcmd5>
+    <version>2009.07.27</version>
+    <time>1248713018</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>642a22ba74aa61f72ca189061c1f9d37</srcmd5>
+    <version>2009.08.04</version>
+    <time>1249425188</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7704a32dde0402dbcaeb4a0d6f0f0418</srcmd5>
+    <version>2009.08.06</version>
+    <time>1249688730</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>59e2309af9efaaa3430654d401019ca0</srcmd5>
+    <version>2009.08.20</version>
+    <time>1251298906</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 18607 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>76d456401c4e1ab3e44432aca0db5f14</srcmd5>
+    <version>2009.08.20</version>
+    <time>1253719395</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 20945 from user oertel
+</comment>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>616c857cef6aa37ff6fabcc3837b5a55</srcmd5>
+    <version>2009.08.20</version>
+    <time>1254967300</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 22022 from user coolo
+</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>616c857cef6aa37ff6fabcc3837b5a55</srcmd5>
+    <version>2009.08.20</version>
+    <time>1254967300</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 22022 from user coolo
+</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b1de8562e92a12f480a17747f3e90c22</srcmd5>
+    <version>2009.10.14</version>
+    <time>1256076405</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 22561 from user a_jaeger
+</comment>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>97db7c4a0c3bed30f04ed106d83b1ee3</srcmd5>
+    <version>2009.10.14</version>
+    <time>1256202566</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 22842 from user coolo
+</comment>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>032a6616b0b919f331470b5784c57256</srcmd5>
+    <version>2009.10.14</version>
+    <time>1258542287</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 24619 from user a_jaeger
+</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>9512612ad2876a8126b328c504646b5e</srcmd5>
+    <version>2009.10.14</version>
+    <time>1260975572</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 26352 from user a_jaeger
+</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>39db3acadcde29c4fc359d3693b7db9d</srcmd5>
+    <version>2009.10.14</version>
+    <time>1267955655</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 34195 from user a_jaeger
+</comment>
+    <requestid>34195</requestid>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>ad6d2b7294493621dd8ab7c225d9aeb7</srcmd5>
+    <version>2009.10.14</version>
+    <time>1268610058</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 34744 from user a_jaeger
+</comment>
+    <requestid>34744</requestid>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>cabb30886b6f1d70f8b81e827737c370</srcmd5>
+    <version>2009.10.14</version>
+    <time>1268923126</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>16165a038b365c0f7dfdc165ee0e4092</srcmd5>
+    <version>2009.10.14</version>
+    <time>1269566956</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 35551 from user a_jaeger
+</comment>
+    <requestid>35551</requestid>
+  </revision>
+  <revision rev="26" vrev="9">
+    <srcmd5>27fe492247ec0817a0cbf5f139b50963</srcmd5>
+    <version>2009.10.14</version>
+    <time>1273313108</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 39664 from user a_jaeger
+</comment>
+    <requestid>39664</requestid>
+  </revision>
+  <revision rev="27" vrev="10">
+    <srcmd5>8e615cc47daa422c92ca16a4e62a2e65</srcmd5>
+    <version>2009.10.14</version>
+    <time>1273597209</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 39689 from user a_jaeger
+</comment>
+    <requestid>39689</requestid>
+  </revision>
+  <revision rev="28" vrev="11">
+    <srcmd5>b0a09297492817ab067c37a21ae73b25</srcmd5>
+    <version>2009.10.14</version>
+    <time>1273654489</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 39825 from user a_jaeger
+</comment>
+    <requestid>39825</requestid>
+  </revision>
+  <revision rev="29" vrev="12">
+    <srcmd5>035b9d7ec89d908fec7c63d164d6f91f</srcmd5>
+    <version>2009.10.14</version>
+    <time>1273790820</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 39862 from user a_jaeger
+</comment>
+    <requestid>39862</requestid>
+  </revision>
+  <revision rev="30" vrev="13">
+    <srcmd5>fa16d312d3a75de51128b88f6c681617</srcmd5>
+    <version>2009.10.14</version>
+    <time>1274131203</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 40103 from user a_jaeger
+</comment>
+    <requestid>40103</requestid>
+  </revision>
+  <revision rev="31" vrev="14">
+    <srcmd5>da7345f638c94aae117261f8e19b8075</srcmd5>
+    <version>2009.10.14</version>
+    <time>1274477412</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 40421 from user a_jaeger
+</comment>
+    <requestid>40421</requestid>
+  </revision>
+  <revision rev="32" vrev="15">
+    <srcmd5>9397ac1d881b338d87d186d0bc22a0f6</srcmd5>
+    <version>2009.10.14</version>
+    <time>1274792237</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 40613 from user a_jaeger
+</comment>
+    <requestid>40613</requestid>
+  </revision>
+  <revision rev="33" vrev="17">
+    <srcmd5>9397ac1d881b338d87d186d0bc22a0f6</srcmd5>
+    <version>2009.10.14</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="34" vrev="18">
+    <srcmd5>9397ac1d881b338d87d186d0bc22a0f6</srcmd5>
+    <version>2009.10.14</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="35" vrev="19">
+    <srcmd5>32fb9686dafb38aee0160fbe557e6e12</srcmd5>
+    <version>2009.10.14</version>
+    <time>1283165044</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 46548 from user a_jaeger
+</comment>
+    <requestid>46548</requestid>
+  </revision>
+  <revision rev="36" vrev="20">
+    <srcmd5>62dbe5af5e8c86c662fb35561b369db9</srcmd5>
+    <version>2009.10.14</version>
+    <time>1283523394</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 46874 from user a_jaeger
+</comment>
+    <requestid>46874</requestid>
+  </revision>
+  <revision rev="37" vrev="21">
+    <srcmd5>977e9b0826889e8cd37bfefc4747b310</srcmd5>
+    <version>unknown</version>
+    <time>1284198306</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 47638 from user a_jaeger
+</comment>
+    <requestid>47638</requestid>
+  </revision>
+  <revision rev="38" vrev="22">
+    <srcmd5>1d95006cde0e1170915ff71e90134665</srcmd5>
+    <version>2009.10.14</version>
+    <time>1285067534</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 48629 from user a_jaeger
+</comment>
+    <requestid>48629</requestid>
+  </revision>
+  <revision rev="39" vrev="23">
+    <srcmd5>da93be4a37289589826dad68dce5045a</srcmd5>
+    <version>2009.10.14</version>
+    <time>1285279302</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 48806 from user a_jaeger
+</comment>
+    <requestid>48806</requestid>
+  </revision>
+  <revision rev="40" vrev="24">
+    <srcmd5>bc56cb2f05494f4c4622c98f34953baa</srcmd5>
+    <version>2009.10.14</version>
+    <time>1285529422</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/build-compare based on submit request 49107 from user a_jaeger
+</comment>
+    <requestid>49107</requestid>
+  </revision>
+  <revision rev="41" vrev="25">
+    <srcmd5>e634e7b3b7d4431c93a98e8321b84f44</srcmd5>
+    <version>2009.10.14</version>
+    <time>1287958842</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51319 from user a_jaeger
+</comment>
+    <requestid>51319</requestid>
+  </revision>
+  <revision rev="42" vrev="26">
+    <srcmd5>9b752f2698eeb1cdb39e3d656768a867</srcmd5>
+    <version>2009.10.14</version>
+    <time>1287958853</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51319
+</comment>
+  </revision>
+  <revision rev="43" vrev="27">
+    <srcmd5>dadeace79b43abf32e2e41a03abdea11</srcmd5>
+    <version>2009.10.14</version>
+    <time>1288272289</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51572 from user a_jaeger
+</comment>
+    <requestid>51572</requestid>
+  </revision>
+  <revision rev="44" vrev="28">
+    <srcmd5>19c00e0773b7ce5224a05f6a901734d4</srcmd5>
+    <version>2009.10.14</version>
+    <time>1288272298</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51572
+</comment>
+  </revision>
+  <revision rev="45" vrev="31">
+    <srcmd5>19c00e0773b7ce5224a05f6a901734d4</srcmd5>
+    <version>2009.10.14</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="46" vrev="26">
+    <srcmd5>1e57480bb9f5ee22073401b8be2ce508</srcmd5>
+    <version>2011.02.28</version>
+    <time>1298903457</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63016 from user a_jaeger
+</comment>
+    <requestid>63016</requestid>
+  </revision>
+  <revision rev="47" vrev="27">
+    <srcmd5>76b076f2dd21cea8db5bcd68e27e67bd</srcmd5>
+    <version>2011.02.28</version>
+    <time>1298903469</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63016
+</comment>
+  </revision>
+  <revision rev="48" vrev="28">
+    <srcmd5>f0e867e478a02acd9adba6bb680ea8f8</srcmd5>
+    <version>2011.02.28</version>
+    <time>1300271654</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64169 from user a_jaeger
+</comment>
+    <requestid>64169</requestid>
+  </revision>
+  <revision rev="49" vrev="29">
+    <srcmd5>75dd997058f82569b35569e045f7a2ff</srcmd5>
+    <version>2011.02.28</version>
+    <time>1300271660</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64169
+</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>f45d467834dc22f38577a9d14f760003</srcmd5>
+    <version>2011.04.19</version>
+    <time>1303300598</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67899 from user coolo
+</comment>
+    <requestid>67899</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>b54b5d6101dd969e3a1865dd571da80f</srcmd5>
+    <version>2011.04.19</version>
+    <time>1306156680</time>
+    <user>saschpe</user>
+    <comment>Remove debug echo output.
+ (forwarded request 70852 from a_jaeger)</comment>
+    <requestid>70853</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>39e80f4e67dee6a566e31cc559fbb562</srcmd5>
+    <version>2011.04.19</version>
+    <time>1306156691</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70853
+</comment>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>56eced1794b757952d2e1072107e8521</srcmd5>
+    <version>2011.04.19</version>
+    <time>1310465088</time>
+    <user>saschpe</user>
+    <comment>forwarding dirks fix (fixed)</comment>
+    <requestid>76056</requestid>
+  </revision>
+  <revision rev="54" vrev="5">
+    <srcmd5>00c76bc7f92a311166e11a202de0f00a</srcmd5>
+    <version>2011.04.19</version>
+    <time>1310465098</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76056
+</comment>
+  </revision>
+  <revision rev="55" vrev="6">
+    <srcmd5>2138688a8ecddd68a30e31b75de24b16</srcmd5>
+    <version>2011.04.19</version>
+    <time>1314886001</time>
+    <user>saschpe</user>
+    <comment>- comparing fileclass was no good idea after all</comment>
+    <requestid>80407</requestid>
+  </revision>
+  <revision rev="56" vrev="7">
+    <srcmd5>f3d0c1795702b7b6c4611f1436050987</srcmd5>
+    <version>2011.04.19</version>
+    <time>1314886010</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80407
+</comment>
+  </revision>
+  <revision rev="57" vrev="8">
+    <srcmd5>ab535378baa55d04f4f2040f8fee86b1</srcmd5>
+    <version>2011.04.19</version>
+    <time>1316459125</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82930 from jengelh)</comment>
+    <requestid>82943</requestid>
+  </revision>
+  <revision rev="58" vrev="10">
+    <srcmd5>ab535378baa55d04f4f2040f8fee86b1</srcmd5>
+    <version>2011.04.19</version>
+    <time>1319181797</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="59" vrev="11">
+    <srcmd5>8fcc014cb6a592a01223382931ac7f19</srcmd5>
+    <version>2011.04.19</version>
+    <time>1323190914</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="60" vrev="6">
+    <srcmd5>656fc4d83be4e503af7172f2d5a9d367</srcmd5>
+    <version>2012.01.09</version>
+    <time>1326292562</time>
+    <user>coolo</user>
+    <comment>Compare rpmlint.log as well. (forwarded request 99499 from a_jaeger)</comment>
+    <requestid>99622</requestid>
+  </revision>
+  <revision rev="61" vrev="7">
+    <srcmd5>d309c4c88e7d48a3880d7469b64cac37</srcmd5>
+    <version>2012.01.09</version>
+    <time>1326384760</time>
+    <user>coolo</user>
+    <comment>Fix syntax error (forwarded request 100064 from a_jaeger)</comment>
+    <requestid>100065</requestid>
+  </revision>
+  <revision rev="62" vrev="8">
+    <srcmd5>6a16dcfa4ece27690609d2036057702b</srcmd5>
+    <version>2012.01.09</version>
+    <time>1327087384</time>
+    <user>coolo</user>
+    <comment>Sort rpmlint.log files first. (forwarded request 100864 from a_jaeger)</comment>
+    <requestid>100865</requestid>
+  </revision>
+  <revision rev="63" vrev="6">
+    <srcmd5>c36cf5f50815beca630d0e3e1d515ce9</srcmd5>
+    <version>2012.01.26</version>
+    <time>1327673810</time>
+    <user>coolo</user>
+    <comment>Remove release from rpmlint.log before comparing. (forwarded request 101698 from a_jaeger)</comment>
+    <requestid>101699</requestid>
+  </revision>
+  <revision rev="64" vrev="7">
+    <srcmd5>cd3a1f05a4803b1a7a2877cd4b6584e6</srcmd5>
+    <version>2012.01.26</version>
+    <time>1328622294</time>
+    <user>coolo</user>
+    <comment>Fix bug in rpmlint handling (forwarded request 102885 from a_jaeger)</comment>
+    <requestid>102886</requestid>
+  </revision>
+  <revision rev="65" vrev="8">
+    <srcmd5>9742c9e653bdff96d0d70dc729791c1a</srcmd5>
+    <version>2012.01.26</version>
+    <time>1329405099</time>
+    <user>coolo</user>
+    <comment>- !unchanged if rpmlint.log was new created
+- !unchanged if appdata.xml was new or updated</comment>
+    <requestid>105426</requestid>
+  </revision>
+  <revision rev="66" vrev="9">
+    <srcmd5>bb80bb09acb8b580f1906893b0379ece</srcmd5>
+    <version>2012.01.26</version>
+    <time>1329426043</time>
+    <user>coolo</user>
+    <comment>- fix missing test in shell script</comment>
+  </revision>
+  <revision rev="67" vrev="10">
+    <srcmd5>f4ef4a7f37335420442ebaa5d9c1c2c1</srcmd5>
+    <version>2012.01.26</version>
+    <time>1329922370</time>
+    <user>coolo</user>
+    <comment>Remove release from pre/post scripts (forwarded request 106436 from a_jaeger)</comment>
+    <requestid>106437</requestid>
+  </revision>
+  <revision rev="68" vrev="11">
+    <srcmd5>06296a3adb5deb442a23530090a34dd8</srcmd5>
+    <version>2012.01.26</version>
+    <time>1331324512</time>
+    <user>coolo</user>
+    <comment>- Improve kde index.cache handling
+
+In home:RedDwarf/kdenlive makes a difference. You can see the openSUSE_Factory/x86_64 build now compares as identical, but (if you are fast) the other builds fail with the index.cache file. (forwarded request 108558 from RedDwarf)</comment>
+    <requestid>108577</requestid>
+  </revision>
+  <revision rev="69" vrev="12">
+    <srcmd5>a11e185cc313d8dfc554e4d4316f7700</srcmd5>
+    <version>2012.01.26</version>
+    <time>1334215195</time>
+    <user>coolo</user>
+    <comment>- Handle gtk-doc documentation (forwarded request 112577 from RedDwarf)</comment>
+    <requestid>112593</requestid>
+  </revision>
+  <revision rev="70" vrev="13">
+    <srcmd5>08d3523a1b9d320857d5b4cc8c3372ac</srcmd5>
+    <version>2012.01.26</version>
+    <time>1336423421</time>
+    <user>coolo</user>
+    <comment>Improve pdf handling (forwarded request 116654 from a_jaeger)</comment>
+    <requestid>116655</requestid>
+  </revision>
+  <revision rev="71" vrev="14">
+    <srcmd5>98658d310384ddf7ae9fce1a83754027</srcmd5>
+    <version>2012.01.26</version>
+    <time>1336492836</time>
+    <user>coolo</user>
+    <comment>Further enhancements for PDF files. (forwarded request 116740 from a_jaeger)</comment>
+    <requestid>116741</requestid>
+  </revision>
+  <revision rev="72" vrev="15">
+    <srcmd5>1b861378c62ed2f848b24023a6599b30</srcmd5>
+    <version>2012.01.26</version>
+    <time>1337955269</time>
+    <user>coolo</user>
+    <comment>Only handle files. (forwarded request 122045 from a_jaeger)</comment>
+    <requestid>122046</requestid>
+  </revision>
+  <revision rev="73" vrev="17">
+    <srcmd5>1b861378c62ed2f848b24023a6599b30</srcmd5>
+    <version>2012.01.26</version>
+    <time>1340183216</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="74" vrev="19">
+    <srcmd5>1b861378c62ed2f848b24023a6599b30</srcmd5>
+    <version>2012.01.26</version>
+    <time>1359108719</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="75" vrev="21">
+    <srcmd5>1b861378c62ed2f848b24023a6599b30</srcmd5>
+    <version>2012.01.26</version>
+    <time>1379662060</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="76" vrev="22">
+    <srcmd5>47346a06ef57e22c84a605e17ca1dc11</srcmd5>
+    <version>2012.01.26</version>
+    <time>1382088704</time>
+    <user>scarabeus_factory</user>
+    <comment>- Also look into MSB shared objects (forwarded request 203626 from Andreas_Schwab)</comment>
+    <requestid>203670</requestid>
+  </revision>
+  <revision rev="77" vrev="23">
+    <srcmd5>4449adfea8d04948862fd2283c258b52</srcmd5>
+    <version>2012.01.26</version>
+    <time>1404973486</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239818</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>12105699d75ca8a9f2fb7b5fb3ebc043</srcmd5>
+    <version>2014.07.15</version>
+    <time>1405760674</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241376</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>ab5564a399d859c6f76a544fbdfaf234</srcmd5>
+    <version>2014.07.15</version>
+    <time>1406272127</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241832</requestid>
+  </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>3e91f64d81ddc343b43fecbec3e876dd</srcmd5>
+    <version>2014.07.15</version>
+    <time>1408634689</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>245209</requestid>
+  </revision>
+  <revision rev="81" vrev="5">
+    <srcmd5>3e91f64d81ddc343b43fecbec3e876dd</srcmd5>
+    <version>2014.07.15</version>
+    <time>1409300590</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="82" vrev="6">
+    <srcmd5>305212be152c240a51de8d7c0dab7c84</srcmd5>
+    <version>2014.07.15</version>
+    <time>1416347595</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261535</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>7ec682941f27fd79aca927c544eabbbb</srcmd5>
+    <version>2014.11.25</version>
+    <time>1417438826</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263196</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>838054f11ec183d625a9e85d97ffa5d8</srcmd5>
+    <version>2015.01.21</version>
+    <time>1422594123</time>
+    <user>dimstar_suse</user>
+    <comment>- 2015.01.21
+- Remove leading spaces from file(1) output
+- Force removal of tmpdir to handle files marked as read-only
+
+- 2015.01.14
+- Trim VERSION-RELEASE instead of RELEASE because the release number
+  will match other substrings.
+- Use regex instead  in sed /regex/ to match dots properly
+- Handle plain cpio archives from gfxboot
+- Add patterns for .TH header in man pages to handle all cases</comment>
+    <requestid>282298</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>fec14245856b74469448ffc8967364e7</srcmd5>
+    <version>2015.02.06</version>
+    <time>1423392131</time>
+    <user>dimstar_suse</user>
+    <comment>- 2015.02.06
+- Remove more javadoc references (bnc#916161)
+- Handle *.war files like *.jar files
+- Trim name-version-release string in update-scripts
+
+- 2015.02.04
+- Handle ruby gem files, they are tar archives (bnc#916047)
+- Remove Creator: and CreationDate: tags from .ps files (bnc#915952)
+- Correct regex for hostname in libtool (bnc#916268)
+
+- 2015.02.03
+- Trim .TH also in perl man pages (bnc#915941)
+- Trim first line of man page to catch overly verbose tools
+- Use correct offset for patching mtime out of .pyc files
+- Add BuildIgnore to allow bootstrap in sle11
+
+- 2015.02.02
+- Trim VERSION-RELEASE also in rpmlint log
+- Adjust regex for spec comparing in src.rpm
+- handle also stick and setuid directory from file(1) output</comment>
+    <requestid>284445</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>08d584ceb7f01e9289b49170920ec82f</srcmd5>
+    <version>2015.02.10</version>
+    <time>1424621995</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>286743</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>4748af7d7d8b2d792c49793e6539e130</srcmd5>
+    <version>2015.03.20</version>
+    <time>1427735351</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>293474</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>cdc10f65cc63d524a9608d36fc03b946</srcmd5>
+    <version>2015.04.13</version>
+    <time>1429768542</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>298179</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>3e0e61a3509a73a668dbdb30bd6e6f86</srcmd5>
+    <version>2015.04.28</version>
+    <time>1430904125</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>305449</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>b1aed4f12c65d1301587a36b9572b905</srcmd5>
+    <version>2015.07.15</version>
+    <time>1440135300</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>317886</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>0a207439c67aedc64946d7a8d02925d8</srcmd5>
+    <version>20150821T175907.9b8c0be</version>
+    <time>1441726525</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>328214</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>918cb39479cb4b8e1b44e26b2d3ab022</srcmd5>
+    <version>20151022T083541.cd832db</version>
+    <time>1446465246</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>341397</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>223a5a8c8ef144eab6cbc8468ed6f47d</srcmd5>
+    <version>20160104T085658.0b929c8</version>
+    <time>1452941735</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>353018</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>e5e9b3c08535f42f54dc367debe36f46</srcmd5>
+    <version>20160308T194108.4a952dd</version>
+    <time>1458560654</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove hacks from /var/adm/update-scripts|messages case
+
+- Handle /var/adm/update-messages in scripts and filelist
+
+- Whitespace in javadoc case
+- Whitespace changes in html case
+- Move case kde/gtk html up in the case list
+- Move case rdoc html up in the case list
+- Add option -a to same-build-result.sh and loop through all rpms
+- Rework sorting of rpm files in same-build-result.sh
+- Better diagnostic if number of subpackages changes
+- Create tmpfiles earlier in same-build-result.sh
+- Handle all javadoc html files
+
+- Handle yet another variant of elc timestamps
+
+- Handle timestamp in dvi files
+- Handle Last-modified HTML META tag
+- Handle yet another variant of javadoc timestamps</comment>
+    <requestid>368652</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>8573dfba3fa7da679d507c944b072b84</srcmd5>
+    <version>20160406T155640.b74db7f</version>
+    <time>1460924099</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>389535</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>b20d91ef76c1b706982340d94043bfc1</srcmd5>
+    <version>20160805T154520.57bb571</version>
+    <time>1472111346</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>419009</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>4c139b218cfe0da95ee8d9fba7937a45</srcmd5>
+    <version>20160825T182753.c18eb00</version>
+    <time>1473102638</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>424299</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>35dd02287a145e10e31f142be2d18725</srcmd5>
+    <version>20160921T091855.efc253f</version>
+    <time>1475241141</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>430706</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>271bc8d05c4c5fb57b0932e1d609925b</srcmd5>
+    <version>20161012T163739.10c9ac7</version>
+    <time>1476997480</time>
+    <user>dimstar_suse</user>
+    <comment>- pkg-diff.sh: use option --speed-large-files for diffing
+  disassembler output (bsc#1003528)</comment>
+    <requestid>434574</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>109f4bb54a1d817243ac41913a99f417</srcmd5>
+    <version>20161109T075305.eed6e97</version>
+    <time>1479556121</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>440551</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>9b99e2eeebdcf03fe7029e1b3b39c642</srcmd5>
+    <version>20161214T095953.e1115b2</version>
+    <time>1483047709</time>
+    <user>lnussel_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447288</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>3fbe03761d6bcc0c998acd8a89b7f63e</srcmd5>
+    <version>20170212T094342.98f72fb</version>
+    <time>1488732414</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove warning file-contains-date-and-time from rpmlint.log
+
+- Fix name-version-release regex for release without dots</comment>
+    <requestid>456496</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>65fec3428948b8508cd6127e8ded7d18</srcmd5>
+    <version>20170331T154431.96db83e</version>
+    <time>1492009809</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>486461</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>2ee9947d160832d6c437be29623fe231</srcmd5>
+    <version>20170727T140623.5b2169e</version>
+    <time>1502186198</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>514218</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>6f6ccde3c784de814f172fda33c2bf3c</srcmd5>
+    <version>20171020T085619.7cef93b</version>
+    <time>1509193086</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove newly introduced files-duplicate check from rpmlint
+  In case files are hardlinked, the source and destination is
+  scrambled in rpm output: the pkg will be republished.
+  In case files are not hardlinked, the source and destination
+  is scrambled in rpmlint output: the pkg will be republished</comment>
+    <requestid>535371</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>eb90bdad47c536d682a30df8d33c0b7f</srcmd5>
+    <version>20171108T070456.b855319</version>
+    <time>1510760930</time>
+    <user>dimstar_suse</user>
+    <comment>- srpm check requires cpio
+
+- Fix usage of cmp_spec and unrpm in srpm-check.sh
+
+- Catch empty rpm -qp --qf output for tags not understood by rpm</comment>
+    <requestid>539772</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>a40e7816a8af43956c6c29eaa40507a9</srcmd5>
+    <version>20171204T112209.f06fbac</version>
+    <time>1513676655</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>555909</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>5b439921f46fc1efeaf9de49058cf9fd</srcmd5>
+    <version>20180706T160151.66224a8</version>
+    <time>1530993156</time>
+    <user>dimstar_suse</user>
+    <comment>- pkg-diff: fix diff returning 0
+
+- Match also ELF pie executable (bsc#1097339)
+
+- Remove trailing space from two match patterns
+
+- Recognize &quot;setuid ELF nn-bit xSB shared object&quot; ELF binaries
+
+- Avoid large temporary files from hexdump output and avoid
+  diff(1) runing OOM by using a fifo (issue#24)
+
+- check rpm capabilities for recommends/suggests
+
+- Ignore /usr/lib/.build-id differences in package filelist</comment>
+    <requestid>621344</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>720234f4383b24ab77368c8980faf5fb</srcmd5>
+    <version>20190219T103140.3277313</version>
+    <time>1551023703</time>
+    <user>coolo</user>
+    <comment>- javadoc: filter dc.created
+- Support filenames with spaces
+- jar: always list files without date+size
+- Fix differing jars reported as identical
+
+- Ignore value of Release header when comparing spec files</comment>
+    <requestid>677296</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>6d8f279fd3abd96d3531cdb65b8c961c</srcmd5>
+    <version>20190814T133923.4dfa207</version>
+    <time>1566899917</time>
+    <user>dimstar_suse</user>
+    <comment>- pkg-diff.sh: Ignore R build timestamp &amp; temp paths
+  https://github.com/openSUSE/build-compare/pull/34</comment>
+    <requestid>723342</requestid>
+  </revision>
+</revisionlist>

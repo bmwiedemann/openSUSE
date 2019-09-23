@@ -1,0 +1,19 @@
+#!/bin/bash
+if test -z "$PACKAGE" ; then
+   echo "This is a hook file for upstream-collect.sh. It cannot be called separately."
+   exit 255
+fi
+
+# For other versions than sles10:
+# Hack for nm-applet, which uses different hierrarchy than upstream:
+#if test $DOMAIN = nm-applet ; then
+#    RPMPODIR=$(echo $RPMPKGDIR/BUILD/*/nm-applet-*/${DIR#*/})
+#fi
+# Hack for banshee and beagle, strangely placed to svn
+#if test $DOMAIN = banshee-1 ; then
+#    REPODIR=banshee/banshee/po
+#fi
+# Hack for gnome-themes, which bundles several projects in SuSE:
+if test $DOMAIN = gnome-themes ; then
+    RPMPODIR=$(echo $RPMPKGDIR/BUILD/gnome-themes-*/${DIR#*/})
+fi

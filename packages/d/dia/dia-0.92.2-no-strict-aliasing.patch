@@ -1,0 +1,13 @@
+Index: configure.in
+===================================================================
+--- configure.in.orig
++++ configure.in
+@@ -409,7 +409,7 @@ if test "$GCC" = yes; then
+   DIA_CHECK_CFLAG(-Wmissing-prototypes)
+   DIA_CHECK_CFLAG(-Wmissing-declarations)
+   DIA_CHECK_CFLAG(-finline-functions)
+-  DIA_CHECK_CFLAG(-fstrict-aliasing)
++  DIA_CHECK_CFLAG(-fno-strict-aliasing)
+   dnl DIA_CHECK_CFLAG(-Wshadow)
+   DIA_CHECK_CFLAG(-Wpointer-arith)
+   dnl DIA_CHECK_CFLAG(-Wswitch-enum)

@@ -1,0 +1,603 @@
+==========================================================================
+PLEASE READE THIS DOCUMENT CAREFULLY.  IT CONTAINS IMPORTANT UPDATES TO
+THE RASMOL 2.7.3 DOCUMENTATION ON OBTAINING, INSTALLING AND USING RASMOL.
+==========================================================================
+                        _ R E A D M E . F I R S T
+                     R a s M o l   v 2 . 7 . 3 . 1 _ R U
+                    Molecular Graphics Visualisation Tool
+                             29 December 2006
+
+                     Based on RasMol 2.6 by Roger Sayle
+    Biomolecular Structures Group, Glaxo Wellcome Research & Development,
+                        Stevenage, Hertfordshire, UK
+           Version 2.6, August 1995, Version 2.6.4, December 1998
+                    Copyright (C) Roger Sayle 1992-1999
+
+                            and Based on Mods by
+
+   Author             Version, Date             Copyright
+
+   Arne Mueller       RasMol 2.6x1      May 98   (C) Arne Mueller 1998
+
+   Gary Grossman and  RasMol 2.5-ucb    Nov 95   (C) UC Regents/ModularCHEM
+   Marco Molinaro     RasMol 2.5-ucb    Nov 96       Consortium 1995, 1996
+
+   Philippe Valadon   RasTop 1.3        Aug 00   (C) Philippe Valadon 2000
+
+   Herbert J.         RasMol 2.7.0      Mar 99   (C) Herbert J. Bernstein
+   Bernstein          RasMol 2.7.1      Jun 99       1998-2006
+                      RasMol 2.7.1.1    Jan 01
+                      RasMol 2.7.2      Aug 00
+                      RasMol 2.7.2.1    Apr 01
+                      RasMol 2.7.2.1.1  Jan 04
+                      RasMol 2.7.3      Feb 05
+                      RasMol 2.7.3.1    Apr 06
+                      RasMol 2.7.3.1_RU Dec 06
+
+   with RasMol 2.7.3 incorporating changes by Clarice Chigbo, Ricky Chachra,
+   and Mamoru Yamanishi.  Work on RasMol 2.7.3 supported in part by
+   grants DBI-0203064, DBI-0315281 and EF-0312612 from the U.S. National
+   Science Foundation and grant DE-FG02-03ER63601 from the U.S. Department
+   of Energy.          
+
+                     and Incorporating Translations by
+
+   Author                               Item                     Language
+
+   Isabel Servan Martinez,              2.6 Manual               Spanish
+   Jose Miguel Fernandez Fernandez
+   Jose Miguel Fernandez Fernandez      2.7.1 Manual             Spanish
+   Fernando Gabriel Ranea               2.7.1 menus and messages Spanish
+
+   Jean-Pierre Demailly                 2.7.1 menus and messages French
+
+   Giuseppe Martini, Giovanni Paolella, 2.7.1 menus and messages Italian
+   A. Davassi, M. Masullo, C. Liotto    2.7.1 help file
+
+   G. Pozhvanov                         2.7.3 menus and messages Russian
+
+                              This Release by
+   Herbert J. Bernstein, Bernstein + Sons, P.O. Box 177, Bellport, NY, USA
+                        yaya@bernstein-plus-sons.com
+                Copyright (C) Herbert J. Bernstein 1998-2006
+
+   The original RasMol manual was created by Roger Sayle.  In July 1996,
+   Dr. Margaret Wong of the Chemistry Department, Swinburne University
+   of Technology, Australia, made extensive revisions to the RasMol 2.5
+   manual to accurately reflect the operation of RasMol 2.6.  Eric Martz
+   of the University of Massachusetts made further revisions.  In May
+   1997, William McClure of Carnegie Mellon University reorganized the
+   HTML version of the manual into multiple sections which could be
+   downloaded quickly and added use of frames.   Portions of the 2.7.1
+   version of the RasMol manual were derived with permission from
+   William McClure's version using Roger Sayle's rasmol.doc for
+   version 2.6.4 as the primary source. Changes were made in August 2000 for
+   RasMol version 2.7.2, January 2001 for RasMol version 2.7.1.1, April 2001
+   for RasMol version 2.7.2.1 and February 2005 for RasMol version 2.7.3.
+
+                  Documentation Last Updated 19 April 2005
+            Edited by Herbert J. Bernstein and Frances C. Bernstein
+
+                                Translations
+
+   Thanks to the efforts of Jose Miguel Fernandez Fernandez (Departamento
+   de Bioquimica y Biologia Molecular. Universidad de Granada. Espana
+   (jmfernan@ugr.es)) a translation of the Manual for Rasmol version
+   2.7.1 into Spanish is now available. La traduccion espanola del manual
+   de la version de la Dra. Wong revisada por Eric Martz fue realizada
+   por Isabel Servan Martinez y Jose Miguel Fernandez Fernandez. La
+   actual traduccion del Manual de RasMol 2.7.1 ha sido realizada usando
+   como base la anterior de RasMol 2.6 por  Jose Miguel Fernandez
+   Fernandez.
+
+   Thanks to translations by Fernando Gabriel Ranea in late 2000 and
+   early 2001, RasMol is now capable of rendering most menu items and
+   messages in Spanish. Jean-Pierre Demailly provided French translations
+   of menus and messages in January 2001. Giuseppe Martini and Giovanni
+   Paolella with contributions by A. Davassi, M. Masullo and C. Liotto
+   provided Italian translation of menus and messages in March 2001.
+
+ ===========================================================================
+          THIS IS A PRELIMINARY RELEASE INVOLVING EXTENSIVE MODIFICATIONS
+                           ***** USE WITH CAUTION ******
+ ===========================================================================
+ 
+                                 IMPORTANT
+
+   This version is based in directly on RasMol version 2.7.2.1.1, on RasMol 
+   version 2.7.2, on RasMol version 2.7.1, on RasMol version 2.6_CIF.2, on 
+   RasMol version 2.6x1, on RasMol version 2.6.4, and RasMol 2.5-ucb and 2.6-ucb.
+
+   Please read the file NOTICE for important notices which apply to this 
+   package and for license terms (GPL  or RASLIC).
+ ===========================================================================
+
+  The source kit for this version of RasMol is available at
+
+  http://www.RasMol.org/RasMol_2.7.4_pending/RasMol_2_7_3_1_RU_29Dec06.tar.gz
+
+  Binaries releases may include files from external packages covered
+  by other licenses.  See
+
+  http://www.RasMol.org/external_packages.shtml
+ ===========================================================================
+
+  RasMol_2_7_3_1_RU is an pre-release of RasMol 2.7.4 incorporating the 
+  following modifications:
+
+  * Correction to mouse handling to avoid run away rotation in the X-windows 
+  versions.    The bug was isolated in careful testing by Niroshan Egodawatte.  
+  The proposed  fix is by H. J. Bernstein. This is a revised version of the 
+  patch of 15 December 2005,  which had problems with window resizing 
+  discovered by Isaac Awuah Asiamah.  See
+
+  http://www.RasMol.org/RasMol_2.7.4_pending/mouserun2.patch
+
+  * Correction to trailing bits of Z-coordinate when writing out PDB files.  
+  The problem was reported by Senn Hans Martin.  The proposed fix is by H. J.
+  Bernstein and  was tested by Senn Hans Martin.  See
+
+  http://www.RasMol.org/RasMol_2.7.4_pending/ztrl.patch
+
+  * Correction to handling of distance monitors for atoms more than 170 
+  Angstroms apart.  The problem was reported by Dan Bolster in trying 
+  distance monitors to measure viruses.  The proposed fix is by H. J. 
+  Bernstein.  See
+
+  http://www.RasMol.org/RasMol_2.7.4_pending/distfix.patch
+
+  * Release 2.7.3.1.  As part of the development of 2.7.4, the patches
+  above and a new patch to update the versions in rasmol.h, etc.  See
+
+  http://www.RasMol.org/RasMol_2.7.4_pending/version_2.7.3.1.patch
+
+  * Release_2.7.3.1_ru.  The changes to Release 2.7.3.1 to incorporate 
+  Russian language messages and menus have been combined with several 
+  other changes in one large (1MB) patch, RasMol_2.7.3.1_ru_29Dec06.patch. 
+  After applying the patch,  all symlinks should be manually removed, and 
+  the new icons raswin.ico, raswin_doc.ico, raswin_scr.ico should be placed 
+  in src/mswin.  Finally the new pattern of symlinks should be created 
+  from the top level by executing
+
+  ./.symlinks
+
+  A sample script for applying the patches and doing this cleanup is 
+  provided.
+
+  The changes are as follows:
+
+  * Russian language messages and were translated by Gregory A. 
+  Pozhvanov (pozhvanov at gmail dot com) of Saint-Petersburg State 
+  University.
+
+  * An MS windows installer was proposed by G. A. Pozhvanov, and 
+  reimplemented on the open source base of NSIS-2.21.
+
+  * A unix installer script, rasmol_install.sh, and a matching script 
+  to select an appropropriate binary version to run under unix, 
+  rasmol_run.sh have been added by H. J. Bernstein
+
+  * Language selections have been made "sticky".
+
+  * The "About" dialog has been made uniform among platforms and 
+  "Register" and "Donate" buttons have been added to the "About" 
+  dialog screen and to the menus.
+
+  * In response to a bug report from Steve Shaw (shaws at mail 
+  dot nih dot gov) at the NIH, two new options have been added for 
+  export of VRML images:  "rotate"  and "mirror".
+
+     write vrml mirror <filename>
+
+  will write a vrml file with all axes mirrored (x -> -x, y -> -y 
+  and z -> -z) and
+
+     write vrml rotate <filename>
+
+  will write a vrml file rotated 180 degrees around the x-axis 
+  (x - > x, y -> -y, z-> -z)
+
+  * Code from 2003 by Vencislav Stanev to export Raster3D scripts 
+  from RasMol was  integrated with this release, and support for 
+  ribbons was added.
+
+  * In order to support builds on newer 64-bit unix systems, Nikolay 
+  Darakev added code to the build scripts to check the length of long 
+  integers and to adjust the builds.
+
+  See 
+
+  http://www.RasMol.org/RasMol_2.7.4_pending/RasMol_2_7_3_1_RU_29Dec06.patch
+  http://www.RasMol.org/RasMol_2.7.4_pending/patch_RasMol_2.7.3_to_RasMol_2.7.3.1_ru_29Dec06.sh
+  http://www.RasMol.org/RasMol_2.7.4_pending/raswin.ico
+  http://www.RasMol.org/RasMol_2.7.4_pending/raswin_doc.ico
+  http://www.RasMol.org/RasMol_2.7.4_pending/raswin_src.ico
+
+  
+
+
+ ===========================================================================
+   CHANGES TO THE RASMOL 2.7.3 INSTALL INSTRUCTIONS for RASMOL 2.7.3.1_RU
+ ===========================================================================
+
+ INSTALLATION FROM A BINARY KIT:
+
+ For MS Windows, download
+
+   http://www.RasMol.org/RasWin_2_7_3_1_RU_Install.exe
+
+ to your desktop and run it.
+
+ For a unix system (including Mac OS X), if there is a binary kit for your
+ system, download the tarball, unpack it and check for the file
+ _README_FIRST (the version of this file for that system) and follow
+ the instructions given there.  In general, all that is required
+ is:
+
+    1.  If planning a system install, do the following steps
+    as root or using sudo.
+
+    2.  Either unset RASMOLPATH or check that it is set to
+    the appropriate path for your rasmol installtion.  For most
+    systems, it is best to unset RASMOLPATH.  This is especially
+    important if you have installed CCP4, which sets RASMOLPATH
+    to a value appropriate to the version of rasmol in the
+    CCP4 kit.
+
+    3.  If you wish to force installation of the font kits that come
+    with rasmol, you should also unset DISPLAY before doing the
+    install, so that rasmol_install.sh will be unable to find
+    any existing fonts.
+
+    4.  If your system does not provide a Bourne-style shell
+    as /bin/sh, change the first line of rasmol_install.sh
+    to refer to an appropriate Bourne-style shell, e.g.
+         #/usr/local/bin/bash
+    and add the option --shell=shellpath (e.g.
+    --shell=/usr/local/bin/bash) to any invocation of
+    rasmol_install.sh
+
+    5.  If you are doing a system install, add the option --system
+    to any invocation of rasmol_install.sh
+
+    6.  Invoke ./rasmol_install.sh with the options noted above.
+    For an ordinary user install
+        ./rasmol_install.sh
+    should suffice.  When the script runs it will ask for
+    confirmation of the chosen installation directories.
+    To perform the installation, you must answer "y" or "Y".
+    The default is no.
+    
+ INSTALLATION FROM SOURCE:
+
+ All versions need unix style utilities to work with the source.  Builds
+ for MS Windows and Mac Classic are done with CodeWarrior.  Builds in
+ a unix environment (including Mac OS X) need xmkmf and gcc.  Builds
+ with visual studio are not supported at this time.
+
+ The source of RasMol 2.7.3.1_RU can be downloaded as a complete tarball
+ from
+
+ http://www.RasMol.org/RasMol_2.7.4_pending/RasMol_2_7_3_1_RU_29Dec06.tar.gz
+
+ This tarball should be placed in the directory in which the build is to be
+ done and unpacked with the command:
+
+ gunzip < RasMol_2_7_3_1_RU_29Dec06.tar.gz | tar xvf -
+
+ (Alternatively, if you have been making your own modifications to RasMol
+ 2.7.3, you may wish to start with a copy of your modified RasMol_2.7.3
+ directory, apply the patches listed in the prior section using
+ patch_RasMol_2.7.3_to_RasMol_2.7.3.1_ru_29Dec06.sh, and then rename the
+ patched directory RasMol_2_7_3_1_RU_29Dec06.  If you are doing an
+ MS Windows build be certain to pick up the new icons).
+
+ This will create a directory
+
+    RasMol_2_7_3_1_RU_29Dec06
+
+ with the following subdirectory structure
+
+ RasMol_2_7_3_1_RU_29Dec06
+  |-- ChangeLog
+  |-- RCS
+  |-- data
+  |-- doc
+  |   `-- RCS
+  |-- html_graphics
+  `-- src
+      |-- RCS
+      |-- mac
+      |   |-- RCS
+      |-- mingw
+      |-- mswin
+      |-- new_patches
+      |-- old_patches
+      |-- txt
+      `-- vms
+
+  Binaries may then be build according to the instructions for RasMol
+  2.7.3.  In unix systems, including Mac OS X, a complete set of
+  binaries for 32- 16- and 8-bit visuals should be build with
+  on of the scripts included in the src directory:  build_all.sh
+  for most unix systems, and build_MACOSX.sh for OS X.  The scripts
+  may need to be edited to adapt to local conventions, especially
+  to pick up the xforms library, if available.
+
+  At this point, under MS Windows, the next step would be to build an
+  NSIS windows installer using the src/mswin/raswin_install.nsi
+  script.  You will need to install NSIS in a windows system to
+  create the installer.  
+
+  See http://www.RasMol.org/external_packages.shtml
+
+  Under unix or Mac OS X, if you are not certain you have all the
+  appropriate X11 fonts, you will need to add font kits in
+  a directory named external_packages at the same level as
+  the src directory using the kits at
+
+  http://www.RasMol.org/cyr-rfx-windows-1251-1.1.tar.gz
+  http://www.RasMol.org/jmk-x11-fonts-3.0.tar.gz
+
+  The modified directory structure would then be
+
+  RasMol_2_7_3_1_RU_29Dec06
+  |-- ChangeLog
+  |-- RCS
+  |-- data
+  |-- doc
+  |   `-- RCS
+  |-- external_packages
+  |   |-- cyr-rfx-windows-1251-1.1
+  |   |   |-- 75dpi
+  |   |   |   |-- CVS
+  |   |   |-- CVS
+  |   |   |-- doc
+  |   |   |   |-- CVS
+  |   |   `-- misc
+  |   |       |-- CVS
+  |   `-- jmk-x11-fonts-3.0
+  |       |-- modd
+  |       |   |-- ascii
+  |       |   `-- iso8859-1-parts
+  |       |-- neep
+  |           |-- ascii
+  |           |-- fragments
+  |           |-- iso8859-1-parts
+  |           |-- iso8859-15-parts
+  |           |-- iso8859-2-parts
+  |           `-- iso8859-9-parts
+  |-- html_graphics
+  |-- src
+      |-- RCS
+      |-- mac
+      |   |-- RCS
+      |-- mingw
+      |-- mswin
+      |-- new_patches
+      |-- old_patches
+      |-- txt
+      `-- vms
+
+  Under unix and Mac OS X, once the binaries have been build and
+  the fonts from external_packages have been added, return to the
+  src directory and execute the command
+
+    sh rasmol_install.sh
+
+  to install the rasmol binaries, the rasmol.hlp file and the fonts.
+  The install can be controlled by both options and environment
+  variables.  For more details, see the changes to the RasMol
+  manual, below.
+
+ ===========================================================================
+        CHANGES TO THE RASMOL 2.7.3 MANUAL for RASMOL 2.7.3.1_RU
+ ===========================================================================
+
+ In general, the manual for RasMol 2.7.3 may be used for RASMOL 2.7.3.1_RU
+
+ These are the major differences:
+
+ 1.  Starting RasMol
+
+ Under MS Windows, RasMol can be started from the command line in an MSDOS or 
+ CMD window or by double-clicking the RasMol icon.  In addition, starting with 
+ RasMol 2.7.3.1 RU, RasMol can be installed so that is can be selected from
+ the program list in the start menu.
+
+ Under Unix, RasMol can be started from a terminal window as in the past.
+ However, in that case it is the responsibility of the user or system 
+ administrator to ensure that the environment variable RASMOLPATH has
+ been set to the path leading to the file rasmol.hlp and that the
+ necessary fonts have been loaded for use by the X server and that
+ the correct font and encoding has been selected for use by the 
+ terminal window.  In addition, the user has to select a rasmol
+ binary that corresponds to the pixel bit depth supported by the
+ X server.  Two new scripts, rasmol_install.sh and rasmol_run.sh
+ have been provided to simplify and partially automate this process.
+
+ If rasmol is installed by used of rasmol_run.sh, the binaries for
+ all pixel bit depths, the rasmol help file, rasmol.hlp, and the
+ script rasmol_run.sh will all be installed in a common directory,
+ usually /usr/lib/RasMol_2_7_3_1 for a system install or 
+ $HOME/lib/RasMol_2_7_3_1 for a user install.  At the same time,
+ a special wrapper script that sets RASMOLPATH to the path to
+ rasmol installation directory and then executes rasmol_run.sh is 
+ installed in an appropriate binary directory, usually as 
+ /usr/bin/rasmol for a system install or $HOME/bin/rasmol for a
+ user install.
+
+ The configuration of the install can be controlled by the
+ following options:
+
+      rasmol_install.sh usage:
+        rasmol_run.sh [--help] |
+          [--prefix=installdir] |
+          [--compilefonts] |
+          [--system] | [--local] "
+
+
+      --help prints out rasmol_install.sh usage
+
+      --prefix=installdir
+        specifies the directory within which the installation will
+        be done.  This is not the RASMOLPATH path, but the path
+        intended to contain lib/RasMol_2_7_3_1 and bin/rasmol
+
+      --compilefonts
+        asks that rasmol_install.sh recompile the bdf versions
+        of the fonts that it installs to pcf versions.  This
+        should not be necessary on newer machines, but on some
+        older systems, e.g. a Solaris 2.5 system, fonts compiled 
+        in one endian format cannot be handled by an X-server
+        expecting the other format and must be recompiled with
+        the version of bdf2pdf native to that system.
+
+      --shell=shellpath
+        specifies the path of a Bourne-style shell to use in place
+        of /bin/sh, e.g. --shell=/usr/local/bin/bash
+
+      --system
+        if not otherwise specified by --prefix or by the
+        RASMOTHPATH environment variable, try to install
+        in the binaries and help file in /usr/lib/RasMol_2_7_3_1
+
+      --local
+        if not otherwise specified by --prefix or by the
+        RASMOTHPATH environment variable, try to install
+        in the binaries and help file in $HOME/lib/RasMol_2_7_3_1
+
+  The following environment variables are used in the install:
+
+        RASMOLPATH       This is the path to the rasmol directory containing
+  the rasmol help file, rasmol.hlp, and other relevant files.  If no
+  --prefix option is specified, the target installation directory is
+  specified by this variable.  If the --prefix option is specified, it
+  overrides any existing setting of RASMOLPATH.  If the original
+  RASMOLPATH or the RASMOLPATH constructed from the --prefix option by
+  appending "/lib/RASMOL_2_7_3_1", has "lib" as its second to last path
+  component, the rasmol wrapper script is installed in a path
+  constructed by stripping the last two path components of RASMOLPATH
+  and then appending /bin/rasmol.  If "lib" is not such a component,
+  the wrapper is installed in a path contructed by stripping only
+  the last component of RASMOLPATH and then appending only rasmol.
+
+      RASMOL_LANTIN1FDIR   This is the path to the X11 ISO 8859-1 font 
+  directory to be used if the rasmol_install.sh does not find the font
+  -*-*-bold-o-normal-*-14-*-iso8859-1 already installed.  If 
+  RASMOL_LATIN1FDIR is not specified, a limited search is make for
+  the jmk font collection.
+
+      RASMOL_CP1251FDIR    This is the path to the X11 Cyrillic code page
+  1251 font directory to be used if rasmol_install.sh does not find the
+  font -*-*-bold-o-normal-*-14-*-*1251 already installed.  If
+  RASMOL_CP1251FDIR is not specified, or if the specified path does
+  not contain misc and 75dpi subdirectories a limited search is made
+  for the cry-rfx windows 1251 font collection.
+
+      RASMOL_DEBUG         If this environment variable is non-empty,
+  rasmol_install.sh provides debugging information.
+
+  Note that rasmol_install.sh specifies /bin/sh for its execution.
+  If /bin/sh is not available or is not a Bourne-style shell, then
+  some Bourne-style shell, such as bash, should be substituted.
+  The copy of script rasmol_run.sh in the installation directory
+  should also be setup to use a Bourne-style shell, as should
+  the rasmol wrapper script.  The option --shell=shellpath can
+  be used to do the rest of the changes once the first line
+  of rasmol_install.sh has been changed.
+     
+
+  Once the install has been done, the path to the wrapper rasmol
+  script should be added to the user PATH, if not already there.
+
+  Then rasmol can be executed by the command "rasmol", which will
+  set RASMOLPATH and run rasmol_run.sh.  The options for rasmol_run.sh
+  are "--help" and the command line options of rasmol.  Except for
+  "--help" all the options are passed on the rasmol.   A set of
+  language specification option are processed by rasmol_run.sh
+  as well as being passed on to rasmol.  If no language is specified,
+  the environment variable RASMOL_LANG and then the file 
+  $HOME/.rasmol/RasMol.flg are checked for a language specifier.
+  If no language is specifed, English is assumed.  At this time
+  rasmol supports English, French, Italian, Russian and Spanish.
+  If the language chosen is English, French, Italian or Spanish,
+  rasmol_run.sh checks for the availability of the font
+  -*-*-bold-o-normal-*-14-*-iso8859-1.  If the language chosen
+  is Russian, rasmol_run.sh checks for the availability of
+  the font -*-*-bold-o-normal-*-14-*-*1251.  If the font
+  is not found, and the jmk or cyr-rfx-windows-1251 font
+  directories have been set up, rasmol_run.sh uses xset to
+  add those font directories to the X server font path.  If using
+  a remote X-server, it is important to have added those fonts
+  to the font server before calling rasmol_run.sh.  rasmol_run.sh
+  then tries to find an appropriate terminal window font to
+  support the selected language and normally will spawn an
+  xterm using that font as the terminal font and invoking
+  a rasmol binary matching the available pixel bit depth.
+
+  The spawned xterm, however, does not report start-up errors
+  back to the originating window.  If rasmol does not start,
+  the problem can be debugged by setting the environment
+  variable RASMOL_NOSPAWN of a non-empty value.  This will
+  cause rasmol to be run in the original window, making start-up
+  errors visible.  However, the font selection will not be made,
+  and should be made manually by the user if relevant to debugging
+  the problem.  Normally RASMOL_NOSPAWN is not needed again once a
+  satisfactory installation has been made and tested.  The list of
+  environment variables supported by rasmol_run.sh is:
+
+      RASMOL_LANG         the name of the language to be used
+      RASMOLPATH          path to the directory containing rasmol_run.sh
+      RASMOL_LIBSFORMPATH path to xforms library directory"
+      RASMOL_LANTIN1FDIR  path to X11 ISO 8859-1 font directory"
+      RASMOL_CP1251FDIR   path to X11 ISO CP 1251 font directory"
+      RASMOL_DEBUG        if non-empty, report settings"
+      RASMOL_NOSPAWN      if non-empty, do not spawn an intermediary xterm"
+
+  
+  Note that the locale variables, LANG, LC_ALL, etc. are not used in
+  this release and should not be set.  They can cause the spawned
+  xterm to use an encoding that does not support the fonts used
+  by this release of rasmol.
+ 
+  2.  New Menu Options
+
+  For all platforms, the list of export formats in menus has been
+  updated to correspond to all the formats listed for the save and
+  write commands.  The "About" dialog has been made uniform across
+  platforms and not includes buttons for "Register", "OK", "Donate"
+  and a checkbox for "Do not show this dialog at startup".  The
+  Help menu (or the top of the Apple menu under Mac Classic) has 
+  been extended to list "About RasMol", "User Manual", "Register"
+  and "Donate".
+
+  3.  Changes to Commands
+
+  3.1.  The language to be used for messages and menus may be selected
+  with the commands "English", "French", "Italian", "Russian" or 
+  "Spanish".  Appropriate fonts must be installed before using
+  a language.  In most cases the fonts for "English", "French",
+  "Italian" and "Spanish" are already present.  For MS Windows
+  and most unix systems, for support of Russian in this release,
+  Code Page 1251 fonts need to be installed.  For Mac Classic
+  systems, the ER Kurier Macintosh fonts need to be installed.
+
+  3.2.  Two new options have been added for export of VRML images:  
+  "rotate"  and "mirror".
+
+     write vrml mirror <filename>
+
+  will write a vrml file with all axes mirrored (x -> -x, y -> -y 
+  and z -> -z) and
+
+     write vrml rotate <filename>
+
+  will write a vrml file rotated 180 degrees around the x-axis 
+  (x - > x, y -> -y, z-> -z)
+  
+
+   Updated 30 December 2006.
+   Herbert J. Bernstein
+   Bernstein + Sons, 5 Brewster Lane, Bellport, NY 11713-2803, USA
+   yaya at bernstein-plus-sons dot com

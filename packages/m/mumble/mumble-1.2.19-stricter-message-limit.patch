@@ -1,0 +1,22 @@
+From: 4761ca41ab1f611cd4a6d117f9f6cfd7c64f6b55
+From: MadMaurice <madmaurice@zom.bi>
+Date:   Fri Aug 31 00:01:40 2018 +0200
+
+    Lower bucket params
+    
+    Use 1 tokens per second and 5 burst instead of 4 tokens per second and 30 burst
+
+diff -Nur old/src/murmur/ServerUser.cpp new/src/murmur/ServerUser.cpp
+--- old/src/murmur/ServerUser.cpp	2019-07-13 01:28:14.972194419 +0200
++++ new/src/murmur/ServerUser.cpp	2019-07-13 01:29:36.724758470 +0200
+@@ -154,8 +154,8 @@
+ 
+ #endif
+ 
+-// Rate limiting: burst up to 30, 4 message per sec limit over longer time
+-LeakyBucket::LeakyBucket() : tokensPerSec(4), maxTokens(30), currentTokens(0) {
++// Rate limiting: burst up to 5, 1 message per sec limit over longer time
++LeakyBucket::LeakyBucket() : tokensPerSec(1), maxTokens(5), currentTokens(0) {
+ 	lastUpdate = now();
+ }
+ 

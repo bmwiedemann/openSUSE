@@ -1,0 +1,115 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>f38c11f11ba77f2f420b9778a74ddeed</srcmd5>
+    <version>2.26.0</version>
+    <time>1317214988</time>
+    <user>saschpe</user>
+    <comment>readd with fixed build</comment>
+    <requestid>85299</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>f38c11f11ba77f2f420b9778a74ddeed</srcmd5>
+    <version>2.26.0</version>
+    <time>1319181916</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>9a03dc3cb47ddcd0a6ed8a4e0e580132</srcmd5>
+    <version>2.26.0</version>
+    <time>1323191627</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>9a03dc3cb47ddcd0a6ed8a4e0e580132</srcmd5>
+    <version>2.26.0</version>
+    <time>1340183377</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>6aea14164c983a27c47de4bbbeca2de7</srcmd5>
+    <version>2.26.0</version>
+    <time>1341832088</time>
+    <user>coolo</user>
+    <comment>Hi decriptor, you need to review this one carefully as I'm no mono packager, but this seems correct to me. (forwarded request 126736 from Zaitor)</comment>
+    <requestid>126739</requestid>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>6aea14164c983a27c47de4bbbeca2de7</srcmd5>
+    <version>2.26.0</version>
+    <time>1359108953</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>c79118b8b2d2aa82cb141cd8912df804</srcmd5>
+    <version>2.26.0</version>
+    <time>1362992935</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 157368 from coolo)</comment>
+    <requestid>157392</requestid>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>c79118b8b2d2aa82cb141cd8912df804</srcmd5>
+    <version>2.26.0</version>
+    <time>1379662480</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>c79118b8b2d2aa82cb141cd8912df804</srcmd5>
+    <version>2.26.0</version>
+    <time>1409301016</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>35cad5bb92cdf8e7f259a9a72e98ea57</srcmd5>
+    <version>2.26.0</version>
+    <time>1451390408</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351095</requestid>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>133daaadb6fef1870840d64d0562c81e</srcmd5>
+    <version>2.26.0</version>
+    <time>1452263030</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352535</requestid>
+  </revision>
+  <revision rev="12" vrev="18">
+    <srcmd5>5a7879e237ca078811a6a892bf74ac3e</srcmd5>
+    <version>2.26.0</version>
+    <time>1456434141</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358947</requestid>
+  </revision>
+  <revision rev="13" vrev="19">
+    <srcmd5>52f05728be14b9385e3db8771b9d8810</srcmd5>
+    <version>2.26.0</version>
+    <time>1467541747</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405986</requestid>
+  </revision>
+  <revision rev="14" vrev="20">
+    <srcmd5>58a964378b1afea0ba01911bff23ffbb</srcmd5>
+    <version>2.26.0</version>
+    <time>1526463705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607431</requestid>
+  </revision>
+  <revision rev="15" vrev="21">
+    <srcmd5>f0fff94d29a0a66829dbfaf299ba9e69</srcmd5>
+    <version>2.26.0</version>
+    <time>1529667282</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>618068</requestid>
+  </revision>
+</revisionlist>

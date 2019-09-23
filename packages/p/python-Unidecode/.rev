@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dfb92d44351f789a7eb6725c4ad6dd48</srcmd5>
+    <version>0.04.18</version>
+    <time>1447882472</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency of Education/units</comment>
+    <requestid>343833</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d8adaede06cbe55d30c3939694c10bd5</srcmd5>
+    <version>0.04.19</version>
+    <time>1453799707</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355483</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a920ea24b1c21fe610544cde161a56ac</srcmd5>
+    <version>0.04.20</version>
+    <time>1484233043</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449646</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>25e8216a7095bf0b42185a22f207935b</srcmd5>
+    <version>0.04.20</version>
+    <time>1492417583</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>487434</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e992d5e0fa6f3bef35937065444ba414</srcmd5>
+    <version>0.04.21</version>
+    <time>1498742209</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506879</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e2451de3d9d8dcdb37f158377071992a</srcmd5>
+    <version>1.0.22</version>
+    <time>1515342247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562241</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bad482b19f267cfc9600bce9f927987a</srcmd5>
+    <version>1.0.23</version>
+    <time>1543224278</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650341</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>528bafa777f1d587a8a42f9ea34d6e13</srcmd5>
+    <version>1.0.23</version>
+    <time>1544189777</time>
+    <user>dimstar_suse</user>
+    <comment>- Run correct fdupes call
+
+- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>655700</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>299cc4de71af9accc1d41602756f9e0a</srcmd5>
+    <version>1.1.0</version>
+    <time>1560760224</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710078</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bcec79e4f5635baa9207827669bb2831</srcmd5>
+    <version>1.1.1</version>
+    <time>1569233255</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1:
+  * no upstream changelog</comment>
+    <requestid>730130</requestid>
+  </revision>
+</revisionlist>

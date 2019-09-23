@@ -1,0 +1,158 @@
+<revisionlist>
+  <revision rev="1" vrev="11">
+    <srcmd5>885062a43eeba46012f62c25b131b538</srcmd5>
+    <version>1.0</version>
+    <time>1168902497</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="103">
+    <srcmd5>8bb4163450d4f647c5ba6aba85cdda25</srcmd5>
+    <version>1.0</version>
+    <time>1185821611</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="253">
+    <srcmd5>8bb4163450d4f647c5ba6aba85cdda25</srcmd5>
+    <version>1.0</version>
+    <time>1185821611</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="254">
+    <srcmd5>47fa1a853563db6962c19553761a6d89</srcmd5>
+    <version>1.0</version>
+    <time>1243551104</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="255">
+    <srcmd5>e0014b5f3e391ad5059578098806f9cf</srcmd5>
+    <version>1.0</version>
+    <time>1245464618</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="256">
+    <srcmd5>52b1bfd3c90d23c60695a07ecad11a9e</srcmd5>
+    <version>1.0</version>
+    <time>1253144590</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups-backends based on submit request 20527 from user jsmeix
+</comment>
+  </revision>
+  <revision rev="7" vrev="258">
+    <srcmd5>52b1bfd3c90d23c60695a07ecad11a9e</srcmd5>
+    <version>1.0</version>
+    <time>1253144590</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups-backends based on submit request 20527 from user jsmeix
+</comment>
+  </revision>
+  <revision rev="8" vrev="259">
+    <srcmd5>d1fb535a8604eff169fbd70f2c55620c</srcmd5>
+    <version>1.0</version>
+    <time>1268923272</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="260">
+    <srcmd5>93ac7ff382fe8cdde4e084747e42fd46</srcmd5>
+    <version>1.0</version>
+    <time>1270757446</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups-backends based on submit request 37419 from user jsmeix
+</comment>
+    <requestid>37419</requestid>
+  </revision>
+  <revision rev="10" vrev="262">
+    <srcmd5>93ac7ff382fe8cdde4e084747e42fd46</srcmd5>
+    <version>1.0</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="263">
+    <srcmd5>93ac7ff382fe8cdde4e084747e42fd46</srcmd5>
+    <version>1.0</version>
+    <time>1278678569</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="266">
+    <srcmd5>93ac7ff382fe8cdde4e084747e42fd46</srcmd5>
+    <version>1.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="268">
+    <srcmd5>93ac7ff382fe8cdde4e084747e42fd46</srcmd5>
+    <version>1.0</version>
+    <time>1319181837</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="269">
+    <srcmd5>f99c851105753aeb9c8cb1e758123764</srcmd5>
+    <version>1.0</version>
+    <time>1329221101</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103868</requestid>
+  </revision>
+  <revision rev="15" vrev="270">
+    <srcmd5>6690f527f45540cb6257c685c617856f</srcmd5>
+    <version>1.0</version>
+    <time>1329823031</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>106227</requestid>
+  </revision>
+  <revision rev="16" vrev="272">
+    <srcmd5>6690f527f45540cb6257c685c617856f</srcmd5>
+    <version>1.0</version>
+    <time>1340183265</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="274">
+    <srcmd5>6690f527f45540cb6257c685c617856f</srcmd5>
+    <version>1.0</version>
+    <time>1359108790</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="276">
+    <srcmd5>6690f527f45540cb6257c685c617856f</srcmd5>
+    <version>1.0</version>
+    <time>1379662192</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>566620c0e9060c4289660e58c2079fe6</srcmd5>
+    <version>1.1</version>
+    <time>1396158954</time>
+    <user>coolo</user>
+    <comment>Added beh the Backend Error Handler (forwarded request 228070 from jsmeix)</comment>
+    <requestid>228073</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>566620c0e9060c4289660e58c2079fe6</srcmd5>
+    <version>1.1</version>
+    <time>1409300726</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>efb3a0bf78fe792c986d970437393075</srcmd5>
+    <version>1.1</version>
+    <time>1457966512</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>369672</requestid>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>09799895eaf146a8d0d7775870092f78</srcmd5>
+    <version>1.1</version>
+    <time>1489345504</time>
+    <user>dimstar_suse</user>
+    <comment>- Corrected improper source macro for COPYING file. (forwarded request 478003 from sfalken)</comment>
+    <requestid>478317</requestid>
+  </revision>
+</revisionlist>

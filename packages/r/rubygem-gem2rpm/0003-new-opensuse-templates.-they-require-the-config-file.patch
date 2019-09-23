@@ -1,0 +1,507 @@
+From 5e1e30e5addc99825b3bf873983ca48732493060 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <mrueckert@suse.de>
+Date: Thu, 24 Jul 2014 16:55:57 +0200
+Subject: [PATCH 03/32] new opensuse templates. they require the config file
+ support.
+
+---
+ templates/gem_packages.spec.erb | 236 ++++++++++++++++++++++++++++++++
+ templates/opensuse.spec.erb     | 213 +++++++++++++++++++++++-----
+ 2 files changed, 414 insertions(+), 35 deletions(-)
+ create mode 100644 templates/gem_packages.spec.erb
+
+diff --git a/templates/gem_packages.spec.erb b/templates/gem_packages.spec.erb
+new file mode 100644
+index 0000000..d1734db
+--- /dev/null
++++ b/templates/gem_packages.spec.erb
+@@ -0,0 +1,236 @@
++<%
++  def self.patch_mod_full_name(path, mod_full_name)
++    path.gsub(/\/-/, "/#{mod_full_name}")
++  end
++  
++  def self.patch_libdir(path)
++    # path ? path.gsub(/\/usr\/lib(64)?/, '%{_libdir}') : path
++    path
++  end
++
++  def self.get_extension_doc_dir(gem_spec)
++    if gem_spec.respond_to?(:extensions_dir) && RUBY_ENGINE != 'rbx'
++      rp = gem_spec.extensions_dir.rpartition(gem_spec.base_dir)
++      return File.join(rp[1], 'doc', rp[2]) 
++    end
++    return nil
++  end
++
++  def self.get_mod_weight(spec)
++    versions=spec.version.to_s.split('.')
++    begin v1=Integer(versions[0]) rescue v1=1 end
++    begin v2=Integer(versions[1]) rescue v2=0 end
++    begin v3=Integer(versions[2]) rescue v3=0 end 
++    weight=v1*10000+v2*100+v3
++  end
++
++  def self.filecontent_or_value(path)
++    (path and File.exists?(path)) ? File.read(path) : path
++  end
++
++  def self.parse_custom_pkgs(env_value)
++    custom_pkgs = {}
++    if env_value
++      list = env_value.split(/\s+/)
++      list.each do |element|
++        pkg_name,filelist_path, preamble, description = element.split(/\|/, 4)
++        filelist    = filecontent_or_value(filelist_path)
++        preamble    = filecontent_or_value(preamble)
++        description = filecontent_or_value(description)
++        custom_pkgs[pkg_name] = {
++          "filelist" => filelist,
++          "preamble" => preamble,
++          "description" => description,
++        }
++      end
++    end
++    custom_pkgs
++  end
++  
++  rb_suffix          = RbConfig::CONFIG['ruby_install_name'].gsub(/^ruby/, '')
++  rb_pkgname         = RbConfig::CONFIG['ruby_install_name'].gsub(/^ruby\./, '')
++  if rb_suffix =~ /\A\d+\.\d+\z/
++    rb_suffix  = '.ruby' + rb_suffix
++  end
++  pkg_basename       = rb_pkgname + '-rubygem-' + spec.name
++
++  mod_full_name      = "#{spec.name}-#{spec.version}"
++  mod_weight         = get_mod_weight(spec) 
++
++  gem_platform       = Gem::Platform.new(RbConfig::CONFIG["arch"]).to_s
++  rb_bindir          = RbConfig::CONFIG['bindir']
++  rb_sysconfdir      = RbConfig::CONFIG['sysconfdir']
++  docdir             = '/usr/share/doc/packages'
++  gem_spec           = Gem::Specification.new
++  gem_base_dir       = patch_libdir(gem_spec.base_dir)
++  gem_cache_dir      = patch_libdir(gem_spec.cache_dir)
++  gem_gems_dir       = patch_libdir(gem_spec.gems_dir)
++  gem_spec_dir       = patch_libdir(gem_spec.spec_dir)
++  gem_bin_dir        = patch_libdir(patch_mod_full_name(gem_spec.bin_dir , mod_full_name ))
++  gem_doc_dir        = patch_libdir(patch_mod_full_name(gem_spec.doc_dir,  mod_full_name ))
++  gem_gem_dir        = patch_libdir(patch_mod_full_name(gem_spec.gem_dir,  mod_full_name ))
++  gem_ri_dir         = patch_libdir(patch_mod_full_name(gem_spec.ri_dir,   mod_full_name ))
++  #ruby2.1
++  gem_extensions_dir = gem_spec.respond_to?(:extensions_dir) ? patch_libdir(gem_spec.extensions_dir) : nil
++  gem_extension_dir  = gem_spec.respond_to?(:extension_dir)  ? patch_libdir(patch_mod_full_name(gem_spec.extension_dir, mod_full_name)) : nil
++  gem_extension_doc  = patch_libdir(get_extension_doc_dir(gem_spec))
++  #/ruby2.1
++%>
++%package -n <%= pkg_basename %><%= config[:version_suffix] %>
++<% for req in spec.required_ruby_version -%>
++<%   unless req.empty? -%>
++Requires:       <%= rb_pkgname %> <%= req %>
++<%   end -%>
++<% end -%>
++# MANUAL
++<% if config[:main] && config[:main][:preamble] -%>
++<%= config[:main][:preamble] %>
++<% end -%>
++# /MANUAL
++Summary:        <%= config[:summary] or spec.summary %>
++Group:          Development/Languages/Ruby
++<% unless spec.executables.empty? -%>
++PreReq:         update-alternatives
++<% end -%>
++
++%description -n <%= pkg_basename %><%= config[:version_suffix] %>
++<%= config[:description] or spec.description -%>
++
++<% if spec.has_rdoc && not(config[:disable_docs]) -%>
++%package -n <%= pkg_basename %>-doc<%= config[:version_suffix] %>
++Summary:        RDoc documentation for <%= spec.name %>
++Group:          Development/Languages/Ruby
++Requires:       <%= pkg_basename %><%= config[:version_suffix] %> = <%= spec.version %>
++
++%description -n <%= pkg_basename %>-doc<%= config[:version_suffix] %>
++Documentation generated at gem installation time.
++Usually in RDoc and RI formats.
++
++<% end -%>
++<% test_frameworks = Hash.new
++   docdirfiles = []
++   format.file_entries.each do |entry|
++     # new rubygems version has it different
++     if entry.kind_of?(Array)
++       path=entry[0]['path']
++     else
++       path=entry
++     end
++     path.gsub!(%r{^\./}, '')
++     %w(test spec).each { |framework|
++       test_frameworks[framework] = 1 if path.index(framework + "/") == 0
++     }
++     %w(changes copying history legal license mit-license changelog readme).each { |file|
++      bpath = path.downcase.gsub(%r{\.rdoc$}, '').gsub(%r{\.txt$}, '').gsub(%r{\.md$}, '')
++      #$stderr.puts "PATH #{path} #{bpath} #{file}"
++      docdirfiles << path if bpath == file
++     }
++   end
++
++   test_frameworks = test_frameworks.keys.sort
++-%>
++<% unless test_frameworks.empty? -%>
++%package -n <%= pkg_basename %>-testsuite<%= config[:version_suffix] %>
++Summary:        Test suite for <%= spec.name %>
++Group:          Development/Languages/Ruby
++Requires:       <%= pkg_basename %><%= config[:version_suffix] %> = <%= spec.version %>
++
++%description -n <%= pkg_basename %>-testsuite<%= config[:version_suffix] %>
++Test::Unit or RSpec files, useful for developers.
++
++<% end -%>
++
++<% unless spec.executables.empty? -%>
++%post -n <%= pkg_basename %><%= config[:version_suffix] %>
++<% spec.executables.each do |executable| -%>
++/usr/sbin/update-alternatives --install \
++    <%= rb_bindir %>/<%= executable %>                      <%= executable                      %> <%= rb_bindir %>/<%= "#{executable}#{rb_suffix}-#{spec.version}" %> <%= mod_weight %>
++/usr/sbin/update-alternatives --install \
++    <%= rb_bindir %>/<%= "#{executable}-#{spec.version}" %> <%= "#{executable}-#{spec.version}" %> <%= rb_bindir %>/<%= "#{executable}#{rb_suffix}-#{spec.version}" %> <%= mod_weight %>
++/usr/sbin/update-alternatives --install \
++    <%= rb_bindir %>/<%= "#{executable}#{rb_suffix}" %>     <%= "#{executable}#{rb_suffix}"     %> <%= rb_bindir %>/<%= "#{executable}#{rb_suffix}-#{spec.version}" %> <%= mod_weight %>
++<% end -%>
++
++%preun -n <%= pkg_basename %><%= config[:version_suffix] %>
++if [ "$1" = 0 ] ; then
++<% spec.executables.each do |executable| -%>
++    /usr/sbin/update-alternatives --remove <%= executable                      %> <%= rb_bindir %>/<%= "#{executable}#{rb_suffix}-#{spec.version}" %>
++    /usr/sbin/update-alternatives --remove <%= "#{executable}-#{spec.version}" %> <%= rb_bindir %>/<%= "#{executable}#{rb_suffix}-#{spec.version}" %>
++    /usr/sbin/update-alternatives --remove <%= "#{executable}#{rb_suffix}"     %> <%= rb_bindir %>/<%= "#{executable}#{rb_suffix}-#{spec.version}" %>
++<% end -%>
++fi
++<% end -%>
++
++%files -n <%= pkg_basename %><%= config[:version_suffix] %>
++%defattr(-,root,root,-)
++# MANUAL
++<% if config[:main] && config[:main][:filelist] -%>
++<%= config[:main][:filelist] -%>
++<% end -%>
++# /MANUAL
++<% unless docdirfiles.empty? -%>
++<%= docdir %>/<%= pkg_basename %><%= config[:version_suffix] %>
++<% end -%>
++<% spec.executables.each do |executable| -%>
++<%= rb_bindir %>/<%= "#{executable}#{rb_suffix}-#{spec.version}" %>
++%ghost <%= rb_bindir %>/<%= "#{executable}#{rb_suffix}" %>
++%ghost <%= rb_bindir %>/<%= "#{executable}-#{spec.version}" %>
++%ghost <%= rb_bindir %>/<%= executable %>
++%ghost <%= rb_sysconfdir %>/alternatives/<%= executable %>
++%ghost <%= rb_sysconfdir %>/alternatives/<%= "#{executable}#{rb_suffix}" %>
++%ghost <%= rb_sysconfdir %>/alternatives/<%= "#{executable}-#{spec.version}" %>
++<% end -%>
++# cache file
++<%= gem_cache_dir %>/<%= mod_full_name %>.gem
++<%= gem_gem_dir %>
++<% unless spec.extensions.empty? or gem_extension_dir.nil? -%>
++<%= gem_extension_dir %>
++<% end -%>
++<% test_frameworks.each do |framework| -%>
++%exclude <%= File.join gem_gem_dir, framework %>
++<% end -%>
++<%= gem_spec_dir %>/<%= mod_full_name -%>.gemspec
++
++<% if spec.has_rdoc && not(config[:disable_docs]) -%>
++%files -n <%= pkg_basename %>-doc<%= config[:version_suffix] %>
++%defattr(-,root,root,-)
++%doc <%= gem_doc_dir %>
++<%   unless spec.extensions.empty? or gem_extension_doc.nil? -%>
++%doc <%= gem_extension_doc %>
++<%   end -%>
++<% end -%>
++
++<% unless test_frameworks.empty? -%>
++%files -n <%= pkg_basename %>-testsuite<%= config[:version_suffix] %>
++%defattr(-,root,root,-)
++<%   test_frameworks.each do |framework| -%>
++<%= File.join gem_gem_dir, framework %>
++<%   end -%>
++<% end -%>
++<%
++  if config[:custom_pkgs_ruby_versioned]
++    config[:custom_pkgs_ruby_versioned].each do |custom_pkg_name, data|
++-%> 
++%package -n <%= pkg_basename %>-<%= custom_pkg_name %><%= config[:version_suffix] %>
++<% if data[:preamble] and data[:preamble] != '' -%>
++<%= data[:preamble] %>
++<% else %>
++Summary:        <%= custom_pkg_name %> sub package for <%= spec.name %>
++Group:          Development/Languages/Ruby
++<% end %>
++Requires:       <%= pkg_basename %><%= config[:version_suffix] %> = <%= spec.version %>
++%description -n <%= pkg_basename %>-<%= custom_pkg_name %><%= config[:version_suffix] %>
++<% if data[:description] and data[:description] != '' -%>
++<%= data[:description] %>
++<% else %>
++<%= spec.description -%>
++
++This package holds the <%= custom_pkg_name %> sub package for <%= spec.name -%>
++<% end %>
++%files -n <%= pkg_basename %>-<%= custom_pkg_name %><%= config[:version_suffix] %>
++%defattr(-,root,root,-)
++<%= data['filelist'] -%>
++<%
++     end
++   end
++-%>
+diff --git a/templates/opensuse.spec.erb b/templates/opensuse.spec.erb
+index 37de592..25fdec3 100644
+--- a/templates/opensuse.spec.erb
++++ b/templates/opensuse.spec.erb
+@@ -1,7 +1,7 @@
+ #
+-# spec file for package rubygem-<%= spec.name %> (Version <%= spec.version %>)
++# spec file for package rubygem-<%= spec.name %><%= config[:version_suffix] %>
+ #
+-# Copyright (c) 2009 SUSE LINUX Products GmbH, Nuernberg, Germany.
++# Copyright (c) <%= Time.now.year %> SUSE LINUX Products GmbH, Nuernberg, Germany.
+ #
+ # All modifications and additions to the file contributed by third parties
+ # remain the property of their copyright owners, unless otherwise agreed
+@@ -14,59 +14,202 @@
+ 
+ # Please submit bugfixes or comments via http://bugs.opensuse.org/
+ #
++<% if config && not(config.empty?) -%>
++#
++# This file was generated with a gem2rpm.yml and not just plain gem2rpm.
++# All sections marked as MANUAL, license headers, summaries and descriptions
++# can be maintained in that file. Please consult this file before editing any
++# of those fields
++#
++<% end -%>
+ 
+-# norootforbuild
+-Name:           rubygem-<%= spec.name %>
++Name:           <%= config[:name] ? config[:name] : "rubygem-#{spec.name}#{config[:version_suffix]}"  %>
+ Version:        <%= spec.version %>
+ Release:        0
+ %define mod_name <%= spec.name %>
+-#
+-Group:          Development/Languages/Ruby
+-License:        GPLv2+ or Ruby
+-#
++%define mod_full_name %{mod_name}-%{version}
++<% if config[:version_suffix] -%>
++%define mod_version_suffix <%= config[:version_suffix] %>
++<% end -%>
++<% if config[:preamble] -%>
++# MANUAL
++<%= config[:preamble] %>
++# /MANUAL
++<% end -%>
+ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+-BuildRequires:  rubygems_with_buildroot_patch
+-Requires:       rubygems >= <%= Gem::RubyGemsVersion %>
+-<%
+-# no need to add a requires ruby >= 0 here. will be pulled in via rubygems already
+-  unless spec.required_ruby_version == ['']
+--%>
+-Requires:       ruby <%= spec.required_ruby_version %>
+-BuildRequires:  ruby-devel <%= spec.required_ruby_version %>
++BuildRequires:  ruby-macros >= 5
++<% for req in spec.required_ruby_version -%>
++<%   unless req.empty? -%>
++<%     if spec.extensions.empty? -%>
++BuildRequires:  %{ruby <%= req %>}
++<%     else -%>
++BuildRequires:  %{rubydevel <%= req %>}
++<%     end -%>
++<%   else -%>
++<%     if spec.extensions.empty? -%>
++BuildRequires:  %{ruby}
++<%     else -%>
++BuildRequires:  %{rubydevel}
++<%     end -%>
++<%   end -%>
+ <% end -%>
+-<% for d in spec.dependencies -%>
++<% for d in spec.runtime_dependencies -%>
++<% if ['rdoc'].include? d.name.to_s -%>
++# <%= d.name %> <%= d.__getobj__().requirement %>
+ <% for req in d.requirement -%>
+-BuildRequires:  rubygem-<%= d.name %> <%= req %>
+-Requires:       rubygem-<%= d.name %> <%= req %>
++BuildRequires:  %{rubygem <%= d.name %>  <%= req  %>}
+ <% end -%>
+ <% end -%>
+-#
++<% end -%>
++BuildRequires:  %{rubygem gem2rpm}
++<% unless spec.rdoc_options.empty? || config[:disable_automatic_rdoc_dep] -%>
++BuildRequires:  %{rubygem rdoc > 3.10}
++<% end -%>
++<% unless spec.executables.empty? -%>
++BuildRequires:  update-alternatives
++<% end -%>
++<% unless spec.homepage.nil? || spec.homepage.empty? -%>
+ Url:            <%= spec.homepage %>
+-Source:         %{mod_name}-%{version}.gem
+-#
+-Summary:        <%= spec.summary.gsub(/\.$/, "") %>
++<% end -%>
++Source:         http://rubygems.org/gems/%{mod_full_name}.gem
++<% if config[:sources]
++     config[:sources].each_with_index do |src, i| -%>
++Source<%= i+1 %>:       <%= src %>
++<% end
++ end -%>
++<% if config[:patches] -%>
++# MANUAL
++<%   config[:patches].each_with_index do |patch,i| -%>
++Patch<%= i %>:  <%= patch[0] %>
++<%  end -%>
++# /MANUAL
++<% end -%>
++Summary:        <%= config[:summary] or spec.summary %>
++License:        <%= config[:license] or (spec.licenses and spec.licenses.join(" and ")) or 'CHECK(Ruby)' %>
++Group:          Development/Languages/Ruby
++<% unless spec.executables.empty? -%>
++PreReq:         update-alternatives
++<% end -%>
++
+ %description
+-<%= spec.description %>
++<%= config[:description] or spec.description -%>
++
++<% # TODO move into gem2rpm as gem_packages.sh also need this and we only leave it here for getting the docfiles list
++   test_frameworks = Hash.new
++   docdirfiles = []
++   format.file_entries.each do |entry|
++     # new rubygems version has it different
++     if entry.kind_of?(Array)
++       path=entry[0]['path']
++     else
++       path=entry
++     end
++     path.gsub!(%r{^\./}, '')
++     %w(test spec).each { |framework|
++       test_frameworks[framework] = 1 if path.index(framework + "/") == 0
++     }
++     %w(changes copying history legal license mit-license changelog readme).each { |file|
++      bpath = path.downcase.gsub(%r{\.rdoc$}, '').gsub(%r{\.txt$}, '').gsub(%r{\.md$}, '')
++      #$stderr.puts "PATH #{path} #{bpath} #{file}"
++      docdirfiles << path if bpath == file
++     }
++   end
+ 
++   test_frameworks = test_frameworks.keys.sort
++-%>
+ %prep
++<% unless config[:patches].nil? or config[:patches].empty? -%>
++%gem_unpack
++<% config[:patches].each_with_index do |patch, i| -%>
++%patch<%= i %> <%= patch[1] if patch[1] %>
++<% end -%>
++%gem_build
++<% end -%>
++
+ %build
++
+ %install
+-%gem_install %{S:0}
+-<% unless spec.extensions.empty? %>
++<% if config[:pre_install] -%>
++# MANUAL
++<%= config[:pre_install] %>
++# /MANUAL
++<% end -%>
++%gem_install \
++<% if config[:gem_install_args] -%>
++<%= config[:gem_install_args] %> \
++<% end -%>
++<% if config[:disable_docs] -%>
++  --no-rdoc --no-ri \
++<% end -%>
++<% unless spec.executables.empty? -%>
++  --symlink-binaries \
++<% end -%>
++<% unless docdirfiles.empty? -%>
++  --doc-files="<%= docdirfiles.join(' ') %>" \
++<% end -%>
++  -f
++<% unless spec.extensions.empty? -%>
+ %gem_cleanup
+-<% end %>
++<% end -%>
++<% if config[:post_install] -%>
++# MANUAL
++<%= config[:post_install] %>
++# /MANUAL
++
++<% end -%>
+ 
+-%clean
+-%{__rm} -rf %{buildroot}
++<% if config[:testsuite_command] -%>
++# MANUAL
++%check
++<%= config[:testsuite_command] %>
++#/ MANUAL
+ 
++<% end -%>
++<% if config[:filelist] -%>
+ %files
+ %defattr(-,root,root,-)
+-<% spec.executables.each do |executable|  %>
+-%{_bindir}/<%= executable %>
++<%= config[:filelist] %>
++
++<% end -%>
++<% if config[:scripts]
++     if config[:scripts].is_a? Hash
++       config[:scripts].each do |section, content| -%>
++%<%= section %>
++<%= content %>
++
++<%     end
++     else -%>
++<%= config[:scripts] %>
++
++<%   end
++   end
++-%>
++<% if config[:custom_pkgs]
++     config[:custom_pkgs].each do |custom_pkg_name, data|
++-%>
++%package <%= custom_pkg_name %><%= config[:version_suffix] %>
++<% if data[:preamble] and data[:preamble] != '' -%>
++<%= data[:preamble] %>
++<% else %>
++Summary:        <%= custom_pkg_name %> sub package for <%= spec.name %>
++Group:          Development/Languages/Ruby
+ <% end %>
+-%{_libdir}/ruby/gems/%{rb_ver}/cache/%{mod_name}-%{version}.gem
+-%{_libdir}/ruby/gems/%{rb_ver}/gems/%{mod_name}-%{version}/
+-%{_libdir}/ruby/gems/%{rb_ver}/specifications/%{mod_name}-%{version}.gemspec
+-%doc %{_libdir}/ruby/gems/%{rb_ver}/doc/%{mod_name}-%{version}/
++# Requires:      rubygem-<%= spec.name %><%= config[:version_suffix] %> = <%= spec.version %>
++%description <%= custom_pkg_name %><%= config[:version_suffix] %>
++<% if data[:description] and data[:description] != '' -%>
++<%= data[:description] %>
++<% else %>
++<%= spec.description -%>
++
++This package holds the <%= custom_pkg_name %> sub package for <%= spec.name -%>
++<% end %>
++%files <%= custom_pkg_name %><%= config[:version_suffix] %>
++%defattr(-,root,root,-)
++<%= data[:filelist] %>
++
++<%   end
++   end
++-%>
++%gem_packages
+ 
+ %changelog
+-- 
+2.20.1
+

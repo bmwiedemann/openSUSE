@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e8354cc88c3fec1ca949fbe885be838a</srcmd5>
+    <version>3.0.0.4</version>
+    <time>1448553789</time>
+    <user>dimstar_suse</user>
+    <comment>stm-chans: Additional types of channels for STM.</comment>
+    <requestid>345721</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3950b3f6eb69a4ae107e4d355cbf7187</srcmd5>
+    <version>3.0.0.4</version>
+    <time>1468999432</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411808</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e7e881f034b6ef77d174922590dcfbdd</srcmd5>
+    <version>3.0.0.4</version>
+    <time>1505506459</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525426</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e2f9fd55ae38ddee40d386f61b72c535</srcmd5>
+    <version>3.0.0.4</version>
+    <time>1527675640</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609819</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c48595f3fde3c20e8d23b9dd903c0345</srcmd5>
+    <version>3.0.0.4</version>
+    <time>1532445721</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623859</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>2dbe32d7fa7d34e09bbc7edbd98c5783</srcmd5>
+    <version>3.0.0.4</version>
+    <time>1540451101</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643461</requestid>
+  </revision>
+</revisionlist>

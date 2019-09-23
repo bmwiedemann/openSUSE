@@ -1,0 +1,210 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3bb73f782483c0e7beb5fadf3dba4971</srcmd5>
+    <version>1.3.4</version>
+    <time>1168361541</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="26">
+    <srcmd5>28d914f450be61833a403a2e1462df2e</srcmd5>
+    <version>1.3.4</version>
+    <time>1179965444</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eae6667e0b6dd5bf8da64da0428fcb6b</srcmd5>
+    <version>1.4.0</version>
+    <time>1186172633</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="19">
+    <srcmd5>5d18eed916006eb6a67287c91d4e54b0</srcmd5>
+    <version>1.4.0</version>
+    <time>1189420887</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6ec4502139d6a5fa955437cf39c1f16c</srcmd5>
+    <version>1.5.1</version>
+    <time>1204219234</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="42">
+    <srcmd5>244acdc96cfea77e84f503bbe6c63e63</srcmd5>
+    <version>1.5.1</version>
+    <time>1214421650</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2f452e30db0b2b2d4fb1296a1dda5d65</srcmd5>
+    <version>1.5.3</version>
+    <time>1231894186</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>2f452e30db0b2b2d4fb1296a1dda5d65</srcmd5>
+    <version>1.5.3</version>
+    <time>1231894186</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>ab80f0e068c74dde360682206e864a37</srcmd5>
+    <version>1.5.3</version>
+    <time>1268924889</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6e0f09a57de5e8166bf09d09eb666d35</srcmd5>
+    <version>1.6.0</version>
+    <time>1272213596</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/m17n-lib based on submit request 38559 from user tiwai
+</comment>
+    <requestid>38559</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d9669db218bf1fa7da4ec5bb1b848245</srcmd5>
+    <version>1.6.0</version>
+    <time>1274208241</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/m17n-lib based on submit request 40289 from user coolo
+</comment>
+    <requestid>40289</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>d9669db218bf1fa7da4ec5bb1b848245</srcmd5>
+    <version>1.6.0</version>
+    <time>1278667366</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>d9669db218bf1fa7da4ec5bb1b848245</srcmd5>
+    <version>1.6.0</version>
+    <time>1278678595</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>d9669db218bf1fa7da4ec5bb1b848245</srcmd5>
+    <version>1.6.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>38f1c30e4da223b8458771f3828ae736</srcmd5>
+    <version>1.6.2</version>
+    <time>1312461527</time>
+    <user>saschpe</user>
+    <comment>- Update to version 1.6.2: bug fix release; see ChangeLog
+- Fix compile warnings
+- Split libm17n0 subpackage for shared libraries
+- Add baselibs.conf</comment>
+    <requestid>77976</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>0198c21477f608b71743df99976b9a39</srcmd5>
+    <version>1.6.2</version>
+    <time>1312461543</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77976
+</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>0198c21477f608b71743df99976b9a39</srcmd5>
+    <version>1.6.2</version>
+    <time>1319182167</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>0fe0fe45844eaef36fa410b203b6a895</srcmd5>
+    <version>1.6.2</version>
+    <time>1323192479</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5f31061f3327efeae383b3b2f7f76edb</srcmd5>
+    <version>1.6.3</version>
+    <time>1328098598</time>
+    <user>coolo</user>
+    <comment>- updated to version 1.6.3:
+  Minor bugs fixed and several new input methods added, including
+  the segfault fix with VLC</comment>
+    <requestid>102350</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>5f31061f3327efeae383b3b2f7f76edb</srcmd5>
+    <version>1.6.3</version>
+    <time>1340183685</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>5f31061f3327efeae383b3b2f7f76edb</srcmd5>
+    <version>1.6.3</version>
+    <time>1359109424</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>230aade405b323c254176f968d34258a</srcmd5>
+    <version>1.6.3</version>
+    <time>1363950069</time>
+    <user>coolo</user>
+    <comment>license update: LGPL-2.1+ and GPL-2.0+
+Consolidate - the GPL-2.0+ is only included because of test scripts (e.g. src/linkcore.c). (forwarded request 159772 from babelworx)</comment>
+    <requestid>159788</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8906bfd8add032de8f513be6bffc213f</srcmd5>
+    <version>1.6.4</version>
+    <time>1372743566</time>
+    <user>coolo</user>
+    <comment>update  version  1.6.4 (forwarded request 181599 from MargueriteSu)</comment>
+    <requestid>181600</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>8906bfd8add032de8f513be6bffc213f</srcmd5>
+    <version>1.6.4</version>
+    <time>1379663239</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>8906bfd8add032de8f513be6bffc213f</srcmd5>
+    <version>1.6.4</version>
+    <time>1409301844</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8a0ca582229767aca53690fe6872feb7</srcmd5>
+    <version>1.7.0</version>
+    <time>1425565946</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288459</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>e19baf0bcb816c4212d377bb52fb0087</srcmd5>
+    <version>1.7.0</version>
+    <time>1481459028</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix crash in Marathi transliteration:
+  m17n-lib-1.7.0-fix-crash-in-marathi-transliteration.patch
+  See also:
+  https://lists.nongnu.org/archive/html/m17n-list/2015-08/msg00001.html
+  https://lists.nongnu.org/archive/html/m17n-list/2015-08/msg00002.html</comment>
+    <requestid>444702</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>8090852566d143ddc6eb20537e91ae69</srcmd5>
+    <version>1.7.0</version>
+    <time>1503308136</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516900</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,65 @@
+From 80c3b355f2f4fe61b46f53d9078dd7ccac127b76 Mon Sep 17 00:00:00 2001
+From: Chris Norman <chris.norman2@googlemail.com>
+Date: Sat, 13 May 2017 20:46:31 +0100
+Subject: [PATCH 2/2] Removed the references to u'' and iteritems for
+ dictionaries. Also began to update the tests.
+
+---
+ jsondate/__init__.py   | 9 +--------
+ test-requirements.txt  | 4 ++++
+ tests/test_jsondate.py | 4 ++--
+ 3 files changed, 7 insertions(+), 10 deletions(-)
+ create mode 100644 test-requirements.txt
+
+diff --git a/jsondate/__init__.py b/jsondate/__init__.py
+index 4486574..4cc10f1 100644
+--- a/jsondate/__init__.py
++++ b/jsondate/__init__.py
+@@ -15,14 +15,7 @@ def _datetime_encoder(obj):
+ 
+ 
+ def _datetime_decoder(dict_):
+-    for key, value in dict_.iteritems():
+-        # The built-in `json` library will `unicode` strings, except for empty
+-        # strings which are of type `str`. `jsondate` patches this for
+-        # consistency so that `unicode` is always returned.
+-        if value == '':
+-            dict_[key] = u''
+-            continue
+-
++    for key, value in dict_.items():
+         try:
+             datetime_obj = datetime.datetime.strptime(value, ISO8601_FMT)
+             dict_[key] = datetime_obj
+diff --git a/test-requirements.txt b/test-requirements.txt
+new file mode 100644
+index 0000000..ff3197f
+--- /dev/null
++++ b/test-requirements.txt
+@@ -0,0 +1,4 @@
++# Only needed for running the tests.
++
++pytest
++jsonschema
+diff --git a/tests/test_jsondate.py b/tests/test_jsondate.py
+index 78e08bf..04610ff 100644
+--- a/tests/test_jsondate.py
++++ b/tests/test_jsondate.py
+@@ -1,7 +1,7 @@
+ import datetime
+ import json
+ import unittest
+-import StringIO
++from io import StringIO
+ 
+ import jsondate
+ 
+@@ -57,7 +57,7 @@ def test_dumps_datelike_string_does_not_roundtrip(self):
+ 
+     def test_dump_datetime_roundtrips(self):
+         orig_dict = dict(created_at=datetime.date(2011, 1, 1))
+-        fileobj = StringIO.StringIO()
++        fileobj = StringIO()
+         jsondate.dump(orig_dict, fileobj)
+         fileobj.seek(0)
+         self.assertEqual(orig_dict, jsondate.load(fileobj))

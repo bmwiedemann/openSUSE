@@ -1,0 +1,14 @@
+<package name="midori" project="openSUSE:Factory">
+  <title>Lightweight Webkit-based Web Browser</title>
+  <description>Midori is a lightweight web browser based on WebKit and GTK+. Its major
+features are:
+
+* Tabs, windows and session management.
+* Flexibly configurable Web Search.
+* User scripts and user styles support.
+* Straightforward bookmark management.
+* Customizable and extensible interface.
+* Extensions written in C and Vala.</description>
+  <devel project="X11:xfce" package="midori"/>
+  <url>http://twotoasts.de/index.php?/pages/midori_summary.html</url>
+</package>

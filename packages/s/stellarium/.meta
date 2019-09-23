@@ -1,0 +1,6 @@
+<package name="stellarium" project="openSUSE:Factory">
+  <title>Stellarium</title>
+  <description>Stellarium is a free software available for Windows, Linux/Unix and MacOSX. It renders 3D photo-realistic skies in real time. With stellarium, you really see what you can see with your eyes, binoculars or a small telescope.</description>
+  <devel project="Education" package="stellarium"/>
+  <url>http://stellarium.sourceforge.net</url>
+</package>

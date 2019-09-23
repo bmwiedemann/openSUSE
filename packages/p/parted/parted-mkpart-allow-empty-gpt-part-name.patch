@@ -1,0 +1,68 @@
+From: Sebastian Parschauer <sparschauer@suse.de>
+Date: Fri, 11 Aug 2017 12:46:42 +0200
+Subject: parted/ui: Count empty quoted strings as words in multi_word
+ mode
+References: bsc#1023818, boo#1032562
+Patch-mainline: submitted, 2017-08-11
+
+In non-interactive mode, the command line arguments are appended
+to a string list with command_line_push_line() in multi_word mode.
+That mode does not count empty strings as a word.
+For mkpart and a GPT disk label, the partition name is picked up
+from that string list. The partition name is mandatory and we
+cannot make it optional. So it is not possible to set an empty
+partition name from command line this way.
+Also setting a default name is no option as this causes duplicate
+/dev/disk/by-partlabel/ symlinks and systemd errors this way.
+
+So count empty quoted strings as words in multi_word mode to allow
+the following commands to set an empty partition name.
+
+parted -s /dev/vdb mkpart "''" 1MiB 100%
+parted -s /dev/vdb mkpart '""' ext3 1MiB 100%
+parted -s /dev/vdb name 1 "''"
+
+The quoting is required as in interactive mode the command
+"mkpart " (with a trailing space) would set the partition name to
+an empty string already.
+
+Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
+---
+ parted/ui.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/parted/ui.c b/parted/ui.c
+index 752860baa087..9991596a3a5a 100644
+--- a/parted/ui.c
++++ b/parted/ui.c
+@@ -719,6 +719,7 @@ void
+ command_line_push_line (const char* line, int multi_word)
+ {
+         int     quoted = 0;
++        int     quotes_empty = 0;
+         char    quote_char = 0;
+         char    this_word [256];
+         int     i;
+@@ -746,6 +747,9 @@ command_line_push_line (const char* line, int multi_word)
+ 
+                         if (quoted && *line == quote_char) {
+                                 quoted = 0;
++                                /* allow empty partition name in script mode */
++                                if (!i)
++                                        quotes_empty = 1;
+                                 continue;
+                         }
+ 
+@@ -753,9 +757,11 @@ command_line_push_line (const char* line, int multi_word)
+                         if (quoted && line[0] == '\\' && line[1])
+                                 line++;
+ 
++                        quotes_empty = 0;
+                         this_word [i++] = *line;
+                 }
+-                if (i || !multi_word) {
++                if (i || !multi_word || quotes_empty) {
++                        quotes_empty = 0;
+                         this_word [i] = 0;
+                         command_line_push_word (this_word);
+                 }

@@ -1,0 +1,31 @@
+---
+#description_paragraphs: 3
+#description: |-
+#  override description from CPAN
+#summary: override summary from CPAN
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+patches:
+  Do_not_set_RPATH_by_default.patch: -p1
+#preamble: |-
+# BuildRequires:  gcc-c++
+#post_prep: |-
+# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
+# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+post_build: |-
+# rm unused.files
+post_install: |-
+ rm $RPM_BUILD_ROOT/usr/bin/instmodsh
+ rm $RPM_BUILD_ROOT/usr/share/man/man1/instmodsh.1
+#license: SUSE-NonFree
+#skip_noarch: 1
+custom_build: |-
+ export BUILDING_AS_PACKAGE=1
+ %{__perl} Makefile.PL INSTALLDIRS=vendor
+ %{__make} %{?_smp_mflags}
+
+#custom_test: |-
+#startserver && make test
+#ignore_requires: Bizarre::Module

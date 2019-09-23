@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon Jul 15 15:06:26 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Replace namespace nspkg.pth and --single-version-externally-managed
+  with a normal namespace __init__.py
+- Bumped version to 1.0.0+post1 due to incompatible namespace technique
+- Tidy spec
+
+-------------------------------------------------------------------
+Mon Apr 24 13:16:01 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Tue Oct 11 18:24:27 UTC 2016 - rjschwei@suse.com
+
+- Initial build    (FATE#321630, bsc#1002895)
+  + Include in SLES 12
+  + Version 1.0.0
+

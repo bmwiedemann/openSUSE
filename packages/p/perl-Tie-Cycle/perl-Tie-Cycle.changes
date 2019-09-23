@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Mon Jul 10 06:33:55 UTC 2017 - coolo@suse.com
+
+- updated to 1.225
+   see /usr/share/doc/packages/perl-Tie-Cycle/Changes
+
+  1.225 2017-07-09T17:49:10Z
+  	* Bump the version to reindex (See https://github.com/andk/pause/issues/248 )
+
+-------------------------------------------------------------------
+Wed Apr 19 06:52:26 UTC 2017 - coolo@suse.com
+
+- updated to 1.224
+   see /usr/share/doc/packages/perl-Tie-Cycle/Changes
+
+  1.224 2017-04-18T11:41:22Z
+  	* Fix up various dist things and clarify that this is under
+  	the Artistic License 2.0.
+
+-------------------------------------------------------------------
+Tue Feb 14 07:51:13 UTC 2017 - coolo@suse.com
+
+- updated to 1.222
+   see /usr/share/doc/packages/perl-Tie-Cycle/Changes
+
+  1.222 2017-01-20T11:30:37Z
+  	* The module seems to have disappeared from CPAN, so I'm
+  	re-uploading.
+
+-------------------------------------------------------------------
+Sun Feb  7 10:49:44 UTC 2016 - coolo@suse.com
+
+- updated to 1.221
+   see /usr/share/doc/packages/perl-Tie-Cycle/Changes
+
+-------------------------------------------------------------------
+Tue Apr 14 20:38:26 UTC 2015 - coolo@suse.com
+
+- updated to 1.21
+   see /usr/share/doc/packages/perl-Tie-Cycle/Changes
+
+  1.21 - Fri Oct  3 22:08:25 2014
+  	* Update Makefile for better META data
+  
+  1.19_01 - Mon Sep  2 10:51:42 2013
+  	* Take out // (5.10 feature I used without thought) to restore
+  	5.8 compatibility.
+
+-------------------------------------------------------------------
+Fri Oct  4 09:15:18 UTC 2013 - coolo@suse.com
+
+- updated to 1.19
+     * Update for modern usage, better code
+     * I use this as an example in Mastering Perl, so I shouldn't
+       leave embarrassing practices in the code. :)
+
+-------------------------------------------------------------------
+Fri Jun 28 16:56:58 UTC 2013 - coolo@suse.com
+
+- initial package 1.17
+    * created by cpanspec 1.78.06
+

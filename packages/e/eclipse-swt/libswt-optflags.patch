@@ -1,0 +1,82 @@
+--- make_linux.mak.orig	2014-01-11 15:37:31.853696321 +0100
++++ make_linux.mak	2014-01-11 15:37:31.875695888 +0100
+@@ -115,7 +115,7 @@
+ WEBKIT_OBJECTS = swt.o webkit.o webkit_structs.o webkit_stats.o
+ GLX_OBJECTS = swt.o glx.o glx_structs.o glx_stats.o
+ 
+-CFLAGS = -O -Wall \
++CFLAGS = $(RPM_OPT_FLAGS) \
+ 		-DSWT_VERSION=$(SWT_VERSION) \
+ 		$(NATIVE_STATS) \
+ 		-DLINUX -DGTK \
+@@ -230,19 +230,19 @@
+ make_mozilla:$(MOZILLA_LIB)
+ 
+ $(MOZILLA_LIB): $(MOZILLA_OBJECTS)
+-	$(CXX) -o $(MOZILLA_LIB) $(MOZILLA_OBJECTS) $(MOZILLALFLAGS) ${MOZILLA_LIBS}
++	$(CXX) $(RPM_OPT_FLAGS) -o $(MOZILLA_LIB) $(MOZILLA_OBJECTS) $(MOZILLALFLAGS) ${MOZILLA_LIBS}
+ 
+ xpcom.o: xpcom.cpp
+-	$(CXX) $(MOZILLACFLAGS) $(MOZILLAEXCLUDES) ${MOZILLA_INCLUDES} -c xpcom.cpp
++	$(CXX) $(RPM_OPT_FLAGS) $(MOZILLACFLAGS) $(MOZILLAEXCLUDES) ${MOZILLA_INCLUDES} -c xpcom.cpp
+ 
+ xpcom_structs.o: xpcom_structs.cpp
+-	$(CXX) $(MOZILLACFLAGS) $(MOZILLAEXCLUDES) ${MOZILLA_INCLUDES} -c xpcom_structs.cpp
++	$(CXX) $(RPM_OPT_FLAGS) $(MOZILLACFLAGS) $(MOZILLAEXCLUDES) ${MOZILLA_INCLUDES} -c xpcom_structs.cpp
+ 	
+ xpcom_custom.o: xpcom_custom.cpp
+-	$(CXX) $(MOZILLACFLAGS) $(MOZILLAEXCLUDES) ${MOZILLA_INCLUDES} -c xpcom_custom.cpp
++	$(CXX) $(RPM_OPT_FLAGS) $(MOZILLACFLAGS) $(MOZILLAEXCLUDES) ${MOZILLA_INCLUDES} -c xpcom_custom.cpp
+ 
+ xpcom_stats.o: xpcom_stats.cpp
+-	$(CXX) $(MOZILLACFLAGS) $(MOZILLAEXCLUDES) ${MOZILLA_INCLUDES} -c xpcom_stats.cpp
++	$(CXX) $(RPM_OPT_FLAGS) $(MOZILLACFLAGS) $(MOZILLAEXCLUDES) ${MOZILLA_INCLUDES} -c xpcom_stats.cpp
+ 
+ #
+ # XULRunner lib
+@@ -251,19 +251,19 @@
+ 
+ $(XULRUNNER_LIB): $(XULRUNNER_OBJECTS)
+ 	echo -e "#include<stdlib.h>\nsize_t je_malloc_usable_size_in_advance(size_t n) {\nreturn n;\n}" | gcc  $(LFLAGS) $(CFLAGS) -xc - -o libswt-xulrunner-fix.so
+-	$(CXX) -o $(XULRUNNER_LIB) $(XULRUNNER_OBJECTS) $(MOZILLALFLAGS) ${XULRUNNER_LIBS}
++	$(CXX) $(RPM_OPT_FLAGS) -o $(XULRUNNER_LIB) $(XULRUNNER_OBJECTS) $(MOZILLALFLAGS) ${XULRUNNER_LIBS}
+ 
+ xpcomxul.o: xpcom.cpp
+-	$(CXX) -o xpcomxul.o $(MOZILLACFLAGS) $(XULRUNNEREXCLUDES) ${XULRUNNER_INCLUDES} -c xpcom.cpp
++	$(CXX) $(RPM_OPT_FLAGS) -o xpcomxul.o $(MOZILLACFLAGS) $(XULRUNNEREXCLUDES) ${XULRUNNER_INCLUDES} -c xpcom.cpp
+ 
+ xpcomxul_structs.o: xpcom_structs.cpp
+-	$(CXX) -o xpcomxul_structs.o $(MOZILLACFLAGS) $(XULRUNNEREXCLUDES) ${XULRUNNER_INCLUDES} -c xpcom_structs.cpp
++	$(CXX) $(RPM_OPT_FLAGS) -o xpcomxul_structs.o $(MOZILLACFLAGS) $(XULRUNNEREXCLUDES) ${XULRUNNER_INCLUDES} -c xpcom_structs.cpp
+ 	
+ xpcomxul_custom.o: xpcom_custom.cpp
+-	$(CXX) -o xpcomxul_custom.o $(MOZILLACFLAGS) $(XULRUNNEREXCLUDES) ${XULRUNNER_INCLUDES} -c xpcom_custom.cpp
++	$(CXX) $(RPM_OPT_FLAGS) -o xpcomxul_custom.o $(MOZILLACFLAGS) $(XULRUNNEREXCLUDES) ${XULRUNNER_INCLUDES} -c xpcom_custom.cpp
+ 
+ xpcomxul_stats.o: xpcom_stats.cpp
+-	$(CXX) -o xpcomxul_stats.o $(MOZILLACFLAGS) $(XULRUNNEREXCLUDES) ${XULRUNNER_INCLUDES} -c xpcom_stats.cpp
++	$(CXX) $(RPM_OPT_FLAGS) -o xpcomxul_stats.o $(MOZILLACFLAGS) $(XULRUNNEREXCLUDES) ${XULRUNNER_INCLUDES} -c xpcom_stats.cpp
+ 
+ #
+ # XPCOMInit lib
+@@ -271,16 +271,16 @@
+ make_xpcominit:$(XPCOMINIT_LIB)
+ 
+ $(XPCOMINIT_LIB): $(XPCOMINIT_OBJECTS)
+-	$(CXX) -o $(XPCOMINIT_LIB) $(XPCOMINIT_OBJECTS) $(MOZILLALFLAGS) ${XULRUNNER_LIBS}
++	$(CXX) $(RPM_OPT_FLAGS) -o $(XPCOMINIT_LIB) $(XPCOMINIT_OBJECTS) $(MOZILLALFLAGS) ${XULRUNNER_LIBS}
+ 
+ xpcominit.o: xpcominit.cpp
+-	$(CXX) $(MOZILLACFLAGS) ${XULRUNNER_INCLUDES} -c xpcominit.cpp
++	$(CXX) $(RPM_OPT_FLAGS) $(MOZILLACFLAGS) ${XULRUNNER_INCLUDES} -c xpcominit.cpp
+ 
+ xpcominit_structs.o: xpcominit_structs.cpp
+-	$(CXX) $(MOZILLACFLAGS) ${XULRUNNER_INCLUDES} -c xpcominit_structs.cpp
++	$(CXX) $(RPM_OPT_FLAGS) $(MOZILLACFLAGS) ${XULRUNNER_INCLUDES} -c xpcominit_structs.cpp
+ 	
+ xpcominit_stats.o: xpcominit_stats.cpp
+-	$(CXX) $(MOZILLACFLAGS) ${XULRUNNER_INCLUDES} -c xpcominit_stats.cpp
++	$(CXX) $(RPM_OPT_FLAGS) $(MOZILLACFLAGS) ${XULRUNNER_INCLUDES} -c xpcominit_stats.cpp
+ 
+ #
+ # WebKit lib

@@ -1,0 +1,517 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>24c34497fd7c8bf4f2d721c036bda725</srcmd5>
+    <version>6.14.4</version>
+    <time>1336471321</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115423</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0308dec9d5551e62e4f653719bc24ae9</srcmd5>
+    <version>6.14.4</version>
+    <time>1337578394</time>
+    <user>coolo</user>
+    <comment>- Add upstream patches to accelerate solid pictures, fixes color
+  corruption problems with new cairo.</comment>
+    <requestid>121190</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0ff40c129c09e0725528d86566fc48b3</srcmd5>
+    <version>6.14.4</version>
+    <time>1339352432</time>
+    <user>coolo</user>
+    <comment>- U_EXA-UMS-Synchronize-to-the-GPU-before-writing-solid-.patch
+  * that one is required to fix the rendering corruption in UMS
+    introduced with the previous patch (bnc#765973) 
+
+- U_EXA-Attempt-to-fix-solid-picture-acceleration-with-U.patch 
+  * Attempt to fix solid picture acceleration with UMS. (fdo#49182,
+    bnc#765973)</comment>
+    <requestid>124244</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>0ff40c129c09e0725528d86566fc48b3</srcmd5>
+    <version>6.14.4</version>
+    <time>1340184347</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c89d6131879448639cfecb971c70b5ef</srcmd5>
+    <version>6.14.6.2</version>
+    <time>1347970281</time>
+    <user>coolo</user>
+    <comment>- Update to version 6.14.6
+  - radeon: dixPrivateKeyRegistered is only in server 1.9
+  - radeon: require libdrm 2.4.36 for KMS support.
+  - UMS: Fix CRTC DPMS state check.
+  - Fix up displayWidth vs. virtualX confusion in radeon_setup_kernel_mem().
+- Removed patches: (Fixed in this release)
+  -  U_UMS-Fix-CRTC-DPMS-state-check.patch
+- Theatre drivers removed
+
+- Update to version 6.14.5
+  New in this Release:
+    + add solid picture accel
+    + tiling fixes
+    + new pci ids
+    + 6xx-9xx Xv improvements
+    + support for upcoming xserver API changes
+    + bug fixes
+  Added patch:
+    U_UMS-Fix-CRTC-DPMS-state-check.patch
+  Removed patches: (Fixed in this release)
+    U_xf86-video-ati-6.14.4-exa-solid-accel-evergreen.patch
+    U_xf86-video-ati-6.14.4-exa-solid-accel-r100.patch
+    U_xf86-video-ati-6.14.4-exa-solid-accel-r200.patch
+    U_xf86-video-ati-6.14.4-exa-solid-accel-r300.patch
+    U_EXA-Attempt-to-fix-solid-picture-acceleration-with-U.patch
+    U_EXA-UMS-Synchronize-to-the-GPU-before-writing-solid-.patch</comment>
+    <requestid>134838</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>944fff593f3c197ccac9938bd388c0c7</srcmd5>
+    <version>6.14.6.5</version>
+    <time>1348575060</time>
+    <user>coolo</user>
+    <comment>- updated to git commit #8637f77 
+  * glamor: Force acceleration for DRI2 copies.
+    Improves performance of non-pageflipped 3D apps on SI.</comment>
+    <requestid>135787</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ab3b6d3fb08bd08918440b8554982d08</srcmd5>
+    <version>6.98.1</version>
+    <time>1351159934</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>139209</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>340c43779bb852f68f2215d9f1f775e7</srcmd5>
+    <version>7.0.0</version>
+    <time>1354888724</time>
+    <user>namtrac</user>
+    <comment>Update to version 7.0.0 (forwarded request 140359 from tobijk)</comment>
+    <requestid>144515</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>340c43779bb852f68f2215d9f1f775e7</srcmd5>
+    <version>7.0.0</version>
+    <time>1359110609</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>afdd6fad1e137fb4c393bf08a53d8cbc</srcmd5>
+    <version>7.1.0</version>
+    <time>1359731412</time>
+    <user>coolo</user>
+    <comment>Update to version 7.1.0
+Just leave it pending if you dont want it 'till 13.1 (forwarded request 150617 from tobijk)</comment>
+    <requestid>150727</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4aa693384d86e3efc43272fa10b97748</srcmd5>
+    <version>7.1.0</version>
+    <time>1363859804</time>
+    <user>coolo</user>
+    <comment>- introduce hardware supplements conditional on xorg-x11-server
+  package (bnc#810333)</comment>
+    <requestid>160285</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ef783333603747760cbe428cf2c6e20b</srcmd5>
+    <version>7.1.0_git20130705</version>
+    <time>1373030488</time>
+    <user>coolo</user>
+    <comment>- Update to 7.1.0_git20130705 snapshot:
+  + radeon/kms: add kabini pci ids
+  + radeon/kms: add bonaire pci ids
+  + radeon: update cursor handling for CIK
+  + radeon: add family ids for CIK
+  + radeon: add family ids for CIK
+  + radeon: fix a memory leak in get_modes() callback.
+  + handfull of DRI2 fixes
+  + radeon: add Hainan pci ids
+  + radeon: add hainan chip family
+  + radeon: add new richland pci ids
+  + radeon: add new SI pci ids
+  + radeonsi: add 2d tiling support
+  + glamor: Only enable for depth &gt;= 24
+  + glamor: Enable by default on SI
+  + radeon: add Richland pci ids
+  + radeon: add oland chip family</comment>
+    <requestid>182283</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>734b84d4cd52299ee42c1475e2122684</srcmd5>
+    <version>7.2.0</version>
+    <time>1376124704</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 7.2.0 (forwarded request 186278 from sumski)</comment>
+    <requestid>186280</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>734b84d4cd52299ee42c1475e2122684</srcmd5>
+    <version>7.2.0</version>
+    <time>1379665022</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cdd00e6042c08a7c42b7e62e55a3ae35</srcmd5>
+    <version>7.3.0</version>
+    <time>1391182951</time>
+    <user>coolo</user>
+    <comment>- Update to 7.3.0; changes since 7.2.0:
+    radeon: disallow glamor on pre-R600 asics
+    radeon/kms: add berlin pci ids
+    radeon: enable glamor by default (v4)
+    radeon: fix limit handling for cards with &gt;4G of ram
+    drm/radeon: fix non-glamor build
+    radeon: fix the non-glamor build harder...
+    radeon: enable tiling on SI by default (v2)
+    radeon: add support for Hawaii
+    radeon/kms: add Hawaii pci ids
+    drm/radeon: fix SUMO2 pci id
+    radeon/exa: Always use a scratch surface for UTS to vram
+    Require glamor 0.6.0
+    EXA/evergreen: Paranoia around linear tiling. (v2)
+    radeon: use glamor Xv support if present.
+    radeon/glamor: with new pixmap for dri2 drawable no need to
+      create new texture
+    Fix shadowfb on big-endian machines
+    DRI2: Install client callback only once
+    dri2: Make last_vblank_seq local unsigned to match dpms_last_seq
+    Don't require the glamoregl module to be pre-loaded with xserver &gt;= 1.15
+    radeon: Set first parameter of drmOpen() to NULL
+    radeon: Restore kernel module load on FreeBSD.
+    radeon: disable 2D tiling on buffers &lt; 128 pixels
+- removed obsolete patches xf86-video-ati.diff, 
+  xf86-video-ati-bug519261-increase-virtual.diff,
+  xf86-video-ati-disable-dri-bug437651-ia64only.diff since
+  modesetting is now being done in kernel space (KMS) and IA64 is
+  no longer considered a relevant architecture for current SUSE
+  products
+- specfile cleanup</comment>
+    <requestid>215611</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1fdf4c107550b5b33cad3697f17b3b7e</srcmd5>
+    <version>7.3.0.1</version>
+    <time>1395513972</time>
+    <user>coolo</user>
+    <comment>- remove URL in specfile sourceline for snapshot tarball in the
+  hope to be accepted by buildservice now
+
+- Update to latest git version bdc412044f6ced056cd57320d1b2ee0d967c219
+- Add conditional for X-Server internal glamor vs standalone glamor</comment>
+    <requestid>226777</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d3434ed42596a4baada3831bfcdacbd3</srcmd5>
+    <version>7.4.0</version>
+    <time>1404157491</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238854</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>d3434ed42596a4baada3831bfcdacbd3</srcmd5>
+    <version>7.4.0</version>
+    <time>1409303704</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>f21f53f7a1f47f19fd7c48c4352da789</srcmd5>
+    <version>7.4.0</version>
+    <time>1410968505</time>
+    <user>coolo</user>
+    <comment>- U_Handle-CRTC-DPMS-from-output-DPMS-hooks.patch
+  * Handle CRTC DPMS from output DPMS hooks (bnc#896378)</comment>
+    <requestid>248854</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8fdc36413a383e2d4ae366867feebba7</srcmd5>
+    <version>7.5.0</version>
+    <time>1413382768</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254107</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>08b00da51c4d4f2d7c2a6f42a414ac8d</srcmd5>
+    <version>7.6.1</version>
+    <time>1447766490</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344213</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b9e8c1f57ec825fa39abe463ea76c904</srcmd5>
+    <version>7.7.0</version>
+    <time>1460480416</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.7:
+  * Option &quot;TearFree&quot; can now prevent tearing with rotation/reflection as
+    well (with Xorg &gt;= 1.16).
+  * RandR CRTC transforms now work correctly (but for now still exhibit
+    tearing even with TearFree).
+  * The RandR 1.4 provider name is now no longer hardcoded to &quot;radeon&quot;
+    but constructed from the GPU chipset name and bus ID, allowing
+    several GPUs supported by this driver to be distinguished by name.
+  * The RandR primary output is now always explicitly marked as such.
+  * The driver can now make use of more than 256MB of VRAM for scanout
+    buffers, allowing e.g. virtual desktop sizes &gt;= 8192x8192 to work.
+  * The driver can prevent clients trying to use the DRI3 extension over a
+    display connection forwarded via SSH from hanging.
+  * Many more fixes for issues using the DRI3/Present extensions.</comment>
+    <requestid>386301</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c6cb47d00e57e91856b0d0c87535a48c</srcmd5>
+    <version>7.7.1</version>
+    <time>1474622619</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428711</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>55054725f120a3ed5dd4899be7791291</srcmd5>
+    <version>7.7.1</version>
+    <time>1478377353</time>
+    <user>dimstar_suse</user>
+    <comment>- U_01-dri3-Return-NULL-from-radeon_dri3_pixmap_from_fd-if-calloc-fails.patch
+  U_02-Add-support-for-async-flips-to-radeon_do_pageflip.patch
+  U_03-present-Support-async-flips.patch
+  U_04-Enable-DRI3-by-default-when-building-for-Xorg-1.18.3.patch
+  U_05-EXA-6xx-7xx-fast-solid-pixmap-support.patch
+  U_06-EXA-6xx-7xx-accelerate-PictOpOver-with-component-alpha.patch
+  U_07-Adapt-to-XF86_CRTC_VERSION-7.patch
+  U_08-Add-explicit-RADEON_DRM_QUEUE_ERROR-define.patch
+  U_09-Don-t-enable-DRI3-by-default-with-EXA.patch
+  U_10-Use-EventCallback-to-avoid-flushing-every-time-in-the-FlushCallback.patch
+  U_11-Keep-track-of-damage-event-related-flushes-per-client-v2.patch
+  U_12-Use-drmmode_crtc_scanout_-helpers-for-RandR-1.4-scanout-pixmaps.patch
+  U_13-Handle-RandR-1.4-slave-dirty-updates-via-radeon_drm_queue.patch
+  U_14-Track-damage-accurately-for-RandR-1.4-slave-scanout.patch
+  U_15-Fix-build-against-xserver-1.13.patch
+  U_16-Only-copy-from-screen-pixmap-to-shared-pixmap-on-demand-for-slave-scanout.patch
+  U_17-Factor-out-transform_region-helper.patch
+  U_18-Move-up-radeon_scanout_extents_intersect.patch
+  U_19-Synchronize-scanout-pixmaps-for-TearFree.patch
+  U_20-Make-TearFree-effective-with-PRIME-slave-scanout.patch
+  Include patches that haven't made it into the 7.7.1 release.
+  This means almost all commits between xf86-video-ati-7.7.0
+  and 12d30eeb9711bd2b1609d6bbb74c4a1760596f72.
+  Fixes (bsc#990066).</comment>
+    <requestid>438282</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>49eb646bf34b409e5ad13d0b228b479b</srcmd5>
+    <version>7.7.1</version>
+    <time>1479073779</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439510</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>4587ee959e110129b6b6e0b6aeb5a91f</srcmd5>
+    <version>7.8.0</version>
+    <time>1480018662</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.8.0:
+  This release supports xserver versions 1.10-1.19.
+  Highlights:
+  + Significant 2D compositing performance increase, in particular with
+    glamor enabled.
+  + Option &quot;TearFree&quot; can now prevent tearing in all possible display
+    configurations (with current versions of Xorg). Specifically, it's
+    now also effective with arbitrary RandR transforms and with RandR 1.4
+    slave output.
+  + DRI3 is now enabled by default if the Xorg version is &gt;= 1.18.3 and
+    glamor is enabled.
+  + DRI3/Present asynchronous page flips are now supported (requires
+    corresponding kernel driver support, available in current versions of
+    the Linux kernel). This can increase performance of fullscreen
+    applications with sync-to-vblank disabled.
+  + The HW cursor can now be used with RandR 1.4 slave output or with
+    TearFree &amp; rotation.
+  + Performance improvements with RandR 1.4 slave output.
+  + The list of supported GPUs in the Xorg log file has been slightly
+    tidied up.
+  + RandR 1.4 provider capabilities are now advertised more accurately.
+- Remove upstream patches:
+  + U_01-dri3-Return-NULL-from-radeon_dri3_pixmap_from_fd-if-calloc-fails.patch
+  + U_02-Add-support-for-async-flips-to-radeon_do_pageflip.patch
+  + U_03-present-Support-async-flips.patch
+  + U_04-Enable-DRI3-by-default-when-building-for-Xorg-1.18.3.patch
+  + U_05-EXA-6xx-7xx-fast-solid-pixmap-support.patch
+  + U_06-EXA-6xx-7xx-accelerate-PictOpOver-with-component-alpha.patch
+  + U_07-Adapt-to-XF86_CRTC_VERSION-7.patch
+  + U_08-Add-explicit-RADEON_DRM_QUEUE_ERROR-define.patch
+  + U_09-Don-t-enable-DRI3-by-default-with-EXA.patch
+  + U_10-Use-EventCallback-to-avoid-flushing-every-time-in-the-FlushCallback.patch
+  + U_11-Keep-track-of-damage-event-related-flushes-per-client-v2.patch
+  + U_12-Use-drmmode_crtc_scanout_-helpers-for-RandR-1.4-scanout-pixmaps.patch
+  + U_13-Handle-RandR-1.4-slave-dirty-updates-via-radeon_drm_queue.patch
+  + U_14-Track-damage-accurately-for-RandR-1.4-slave-scanout.patch
+  + U_15-Fix-build-against-xserver-1.13.patch
+  + U_16-Only-copy-from-screen-pixmap-to-shared-pixmap-on-demand-for-slave-scanout.patch
+  + U_17-Factor-out-transform_region-helper.patch
+  + U_18-Move-up-radeon_scanout_extents_intersect.patch
+  + U_19-Synchronize-scanout-pixmaps-for-TearFree.patch
+  + U_20-Make-TearFree-effective-with-PRIME-slave-scanout.patch
+  + U_21-Refactor-radeon_mode_hotplug.patch
+  + U_22-Use-pRADEONEnt-to-find-both-screens-of-a-GPU-in-radeon_mode_hotplug.patch</comment>
+    <requestid>441180</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0499db42faceb9928d0bf7ed8f60a55d</srcmd5>
+    <version>7.9.0</version>
+    <time>1490132652</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>480190</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>968ac997b99892867b771384c7bff4fb</srcmd5>
+    <version>7.9.0</version>
+    <time>1492516059</time>
+    <user>dimstar_suse</user>
+    <comment>- SLE merge (missing fate/bugzilla entries)
+  * bsc#990066 (we have even newer version than 7.7 meanwhile)
+  * fate #320388 (factory is building against an even higher
+    Xserver version, so covered as well)
+  * fate #315643-315645, 319159-319161, 319618 (we have the latest
+    available radeon driver X driver)
+  * bsc#936452, FATE#319131 (seems this macro is no longer been used
+    also in sle12-sp2)
+  * bnc#896378 (also handled in factory, but patch is meanwhile
+    upstream and included in driver release 7.9.0)</comment>
+    <requestid>487809</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>594851507f876a7734ad4913edfcf3fa</srcmd5>
+    <version>7.10.0</version>
+    <time>1505237819</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.10.0
+  * Clients can now use DRI page flipping even while TearFree is enabled
+  for any CRTC. This should improve performance of such clients
+  (including compositing managers) while TearFree is enabled, and avoid
+  other issues such as tearing on other CRTCs where TearFree isn't
+  enabled.
+  * The driver now takes measures to prevent other DRM master processes
+  (potentially from other local users) from accessing buffers created by
+  this driver while switched away to a different VT. Other DRM master
+  processes should only be able to access a single buffer anymore, which
+  contains only all-black pixels.
+  * The gamma ramp is now applied to the HW cursor as well, so the HW
+  cursor doesn't look odd when e.g. using Redshift or similar tools.
+  * Plus other improvements and fixes. Thanks to everybody who
+  contributed to this release in any way!</comment>
+    <requestid>522263</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>efcadf7e90d35502e8b2a9e94d38a143</srcmd5>
+    <version>7.10.0</version>
+    <time>1513343023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556530</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>adfc0f5a2d7dc9c9cc9b8b64c434aa02</srcmd5>
+    <version>7.10.0</version>
+    <time>1514027449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559104</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>83ffe4116e9430d58b2783a4edf8e244</srcmd5>
+    <version>18.0.0</version>
+    <time>1520852687</time>
+    <user>dimstar_suse</user>
+    <comment>- &quot;I'm pleased to announce the 18.0.0 release of xf86-video-ati, the Xorg
+  driver for ATI/AMD Radeon GPUs supported by the radeon kernel driver.
+  This release supports xserver versions 1.13-1.19. It also works with
+  xserver 1.20 RC1, so unless something unexpected happens, it should work
+  with xserver 1.20 as well.&quot;
+  Highlights:
+  * New year-based versioning scheme
+  * Page flipping can now be used even when the HW cursor can't be used in
+    some cases
+  * Support for 30-bit RGB colour output. Note that gamma correction is
+    currently not available with 30-bit colour. Also, GLAMOR hardware
+    acceleration is not available with 30-bit colour with xserver versions
+    before 1.20.
+  Plus other improvements and fixes. Thanks to everybody who contributed
+  to this release in any way!</comment>
+    <requestid>583861</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>cbc4eb0c2ff37b37a8737538fa513cbe</srcmd5>
+    <version>18.0.1</version>
+    <time>1523126968</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 18.0.1
+  * This release supports xserver versions 1.13-1.19. It also works with
+    xserver 1.20 RC1, so unless something unexpected happens, it should work
+    with xserver 1.20 as well.
+    This is a bug-fix release addressing issues in 18.0.0. While those
+    issues shouldn't affect most users, I recommend that all users of 18.0.0
+    update to 18.0.1.
+    + The Xorg process could crash when multiple primary screens are
+      configured in xorg.conf.
+    + TearFree could trigger debugging messages in the pixman library</comment>
+    <requestid>593545</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>8eeca37cb09f8c74aff40f6f27305870</srcmd5>
+    <version>18.0.1.g50</version>
+    <time>1536147785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629901</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>cdca4c9d1833261d1157ed154ef29c0b</srcmd5>
+    <version>18.1.0</version>
+    <time>1537436279</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to release 18.1.0
+  * This release supports xserver versions 1.13-1.20.
+  * Fixed random screen corruption and crashes when using GLAMOR with Xorg
+    1.20.
+  * Support for leasing RandR outputs to clients.
+  * Various robustness fixes for TearFree. In particular, fixed several
+    cases in which disabling TearFree at runtime would result in the Xorg
+    process freezing or crashing.
+  * Fixed some m4 related build issues with older versions of autotools.</comment>
+    <requestid>635870</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e0e52f1ad616ea08a3c8a437f51f4b02</srcmd5>
+    <version>19.0.1</version>
+    <time>1553635803</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 19.0.1
+  * Fixes for two regressions which crept into the 19.0.0 release.
+  * Add support for RandR output tile properties, allowing monitors
+    using DisplayPort Multi Stream Transport tiling to work better
+    out of the box. (Note that DP MST support in the radeon kernel
+    driver is still experimental and disabled by default)
+
+- Update to release 19.0.0
+  * Various TearFree related fixes and robustness improvements.
+  * Up to six independent instances per GPU are now supported in
+    &quot;Zaphod&quot; style multi-head configurations.
+  * Other improvements and fixes</comment>
+    <requestid>687665</requestid>
+  </revision>
+</revisionlist>

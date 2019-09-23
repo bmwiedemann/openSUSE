@@ -1,0 +1,9 @@
+<package name="golang-github-jteeuwen-go-bindata" project="openSUSE:Factory">
+  <title> A small utility which generates Go code from any file. Useful for embedding binary data in a Go program.</title>
+  <description>This package converts any file into manageable Go source code. Useful for embedding binary data into a go program. The file data is optionally gzip compressed before being converted to a raw byte slice.
+
+It comes with a command line tool in the go-bindata sub directory. This tool offers a set of command line options, used to customize the output being generated.
+
+**NOTE**: this package is required by the Kubernetes build process since 1.4.</description>
+  <devel project="devel:CaaSP:Head:ControllerNode" package="golang-github-jteeuwen-go-bindata"/>
+</package>

@@ -1,0 +1,16 @@
+<package name="nkf" project="openSUSE:Factory">
+  <title>Network Kanji Code Conversion Filter</title>
+  <description>Nkf is a yet another Kanji code converter among networks, hosts, and
+terminals. It converts input Kanji code to designated Kanji code, such
+as 7-bit JIS, MS-kanji (shifted-JIS) or EUC.
+
+One of the most unique facility of nkf is the guess of the input kanji
+code.  It currently recognizes 7-bit JIS, MS-kanji (shifted-JIS), and 
+EUC. So users do not need the input Kanji code specification.
+
+By  default,  X0201  kana is converted into X0208 kana. For X0201 kana,
+SO/SI, SSO and ESC-(-I methods are  supported. For automatic code
+detection, nkf assumes no X0201 kana in MS-Kanji. To accept X0201 in
+MS-Kanji, use -X, -x, or -S.</description>
+  <devel project="M17N" package="nkf"/>
+</package>

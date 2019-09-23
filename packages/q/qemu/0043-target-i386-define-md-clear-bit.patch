@@ -1,0 +1,32 @@
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Wed, 15 May 2019 15:10:10 +0100
+Subject: target/i386: define md-clear bit
+
+md-clear is a new CPUID bit which is set when microcode provides the
+mechanism to invoke a flush of various exploitable CPU buffers by invoking
+the VERW instruction.
+
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Message-Id: <20190515141011.5315-2-berrange@redhat.com>
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+(cherry picked from commit b2ae52101fca7f9547ac2f388085dbc58f8fe1c0)
+[BR: BSC#1111331 CVE-2018-12126 CVE-2018-12127 CVE-2018-12130
+CVE-2019-11091]
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ target/i386/cpu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index d6bb57d210..4ea78a4939 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -1076,7 +1076,7 @@ static FeatureWordInfo feature_word_info[FEATURE_WORDS] = {
+         .feat_names = {
+             NULL, NULL, "avx512-4vnniw", "avx512-4fmaps",
+             NULL, NULL, NULL, NULL,
+-            NULL, NULL, NULL, NULL,
++            NULL, NULL, "md-clear", NULL,
+             NULL, NULL, NULL, NULL,
+             NULL, NULL, NULL, NULL,
+             NULL, NULL, NULL, NULL,

@@ -1,0 +1,35 @@
+# macro: %png_fix path/to/name-of.png
+#        for given png, fixes 'IDAT: invalid distance too far back', etc., 
+#        see pngfix --help
+#
+#     -q do not output if macro fixed something or find unrecoverable error
+#
+#     this macro fails only if there is an unrecoverable error in the png
+#     -- pngfix returns nonzero and $png.fixed doesn't exist; run pngfix
+#     on that file, see return code and compare with pngfix --help output
+%png_fix(q) \
+  if test "x%1" == "x%%1"; then \
+    echo "Missing argument in call to %%png_fix: path and name of png file." \
+    exit 1 \
+  fi \
+  /usr/bin/pngfix %{-q: -qq} --suffix='.fixed' "%1" || true \
+  mv "%1.fixed" "%1" \
+  %nil
+#
+# macro: %png_fix_dir
+#        for given directory, search *.png (recursively) and potentionaly
+#        fix 'IDAT: invalid distance too far back', etc., see pngfix --help
+#
+#     -q do not output if pngfix fixed something or find unrecoverable error
+#
+%png_fix_dir(q) \
+  if test "x%1" == "x%%1"; then \
+    echo "Missing argument in call to %%png_fix_dir: dir where to search png files." \
+    exit 1 \
+  fi \
+  for png in `find "%1" -iname '*.png'`; do \
+    # -q will be propagated \
+    %png_fix $png \
+  done \
+  %nil
+

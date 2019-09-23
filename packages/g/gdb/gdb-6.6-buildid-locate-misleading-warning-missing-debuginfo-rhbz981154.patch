@@ -1,0 +1,129 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: 
+ gdb-6.6-buildid-locate-misleading-warning-missing-debuginfo-rhbz981154.patch
+
+;; Fix 'gdb gives highly misleading error when debuginfo pkg is present,
+;; but not corresponding binary pkg' (RH BZ 981154).
+;;=push+jan
+
+Comments by Sergio Durigan Junior <sergiodj@redhat.com>:
+
+  This is the fix for RH BZ #981154
+
+  It is mainly a testcase addition, but a minor fix in the gdb/build-id.c
+  file was also needed.
+
+  gdb/build-id.c was added by:
+
+  commit dc294be54c96414035eed7d53dafdea0a6f31a72
+  Author: Tom Tromey <tromey@redhat.com>
+  Date:   Tue Oct 8 19:56:15 2013 +0000
+
+  and had a little thinko there.  The variable 'filename' needs to be set to
+  NULL after it is free'd, otherwise the code below thinks that it is still
+  valid and doesn't print the necessary warning ("Try: yum install ...").
+
+diff --git a/gdb/testsuite/gdb.base/rhbz981154-misleading-yum-install-warning.exp b/gdb/testsuite/gdb.base/rhbz981154-misleading-yum-install-warning.exp
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/rhbz981154-misleading-yum-install-warning.exp
+@@ -0,0 +1,97 @@
++#   Copyright (C) 2014  Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++standard_testfile "normal.c"
++
++if { [prepare_for_testing ${testfile}.exp ${testfile} ${srcfile}] } {
++    return -1
++}
++
++# Get the build-id of the file
++set build_id_debug_file [build_id_debug_filename_get $binfile]
++regsub -all ".debug$" $build_id_debug_file "" build_id_without_debug
++
++# Run to main
++if { ![runto_main] } {
++    return -1
++}
++
++# We first need to generate a corefile
++set escapedfilename [string_to_regexp [standard_output_file gcore.test]]
++set core_supported 0
++gdb_test_multiple "gcore [standard_output_file gcore.test]" \
++	"save a corefile" \
++{
++  -re "Saved corefile ${escapedfilename}\[\r\n\]+$gdb_prompt $" {
++    pass "save a corefile"
++    global core_supported
++    set core_supported 1
++  }
++  -re "Can't create a corefile\[\r\n\]+$gdb_prompt $" {
++    unsupported "save a corefile"
++    global core_supported
++    set core_supported 0
++  }
++}
++
++if {!$core_supported} {
++  return -1
++}
++
++# Move the binfile to a temporary name
++remote_exec build "mv $binfile ${binfile}.old"
++
++# Reinitialize GDB and see if we get a yum/dnf warning
++gdb_exit
++gdb_start
++gdb_reinitialize_dir $srcdir/$subdir
++
++with_test_prefix "first run:" {
++    gdb_test "set build-id-verbose 1" "" \
++	"set build-id-verbose"
++
++    gdb_test "set debug-file-directory [file dirname [standard_output_file gcore.test]]" "" \
++	"set debug-file-directory"
++
++    gdb_test "core-file [standard_output_file gcore.test]" \
++	"Missing separate debuginfo for the main executable file\r\nTry: (yum|dnf) --enablerepo='\\*debug\\*' install [standard_output_file $build_id_without_debug]\r\n.*" \
++	"test first yum/dnf warning"
++}
++
++# Now we define and create our .build-id
++file mkdir [file dirname [standard_output_file ${build_id_without_debug}]]
++# Cannot use "file link" (from TCL) because it requires the target file to
++# exist.
++remote_exec build "ln -s $binfile [standard_output_file ${build_id_without_debug}]"
++
++# Reinitialize GDB to get the second yum/dnf warning
++gdb_exit
++gdb_start
++gdb_reinitialize_dir $srcdir/$subdir
++
++with_test_prefix "second run:" {
++    gdb_test "set build-id-verbose 1" "" \
++	"set build-id-verbose"
++
++    gdb_test "set debug-file-directory [file dirname [standard_output_file gcore.test]]" "" \
++	"set debug-file-directory"
++
++    gdb_test "core-file [standard_output_file gcore.test]" \
++	"Missing separate debuginfo for the main executable file\r\nTry: (yum|dnf) --enablerepo='\\*debug\\*' install $binfile\r\n.*" \
++	"test second yum/dnf warning"
++}
++
++# Leaving the link there will cause breakage in the next run.
++remote_exec build "rm -f [standard_output_file ${build_id_without_debug}]"

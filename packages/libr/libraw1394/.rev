@@ -1,0 +1,207 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e3a3c9813d993cc360dca5baa3cff9f1</srcmd5>
+    <version>1.2.1</version>
+    <time>1168903383</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="24">
+    <srcmd5>3a1aeabdc2a73b401e464d280b0b2f00</srcmd5>
+    <version>1.2.1</version>
+    <time>1170086654</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="53">
+    <srcmd5>36f40d6a663f902f1596964069fc63f4</srcmd5>
+    <version>1.2.1</version>
+    <time>1186307023</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>baab8d5ae45071a1e8975de9f6a228ea</srcmd5>
+    <version>1.3.0</version>
+    <time>1207166611</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>82fcd802e2eb3b20777b3ed299e1e231</srcmd5>
+    <version>1.3.0</version>
+    <time>1207830734</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="12">
+    <srcmd5>28848367bf39ecca9f33bec33d73d94d</srcmd5>
+    <version>1.3.0</version>
+    <time>1211414399</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="16">
+    <srcmd5>4ab0fc9de8a65eadb28bd2f96b06124e</srcmd5>
+    <version>1.3.0</version>
+    <time>1214420769</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="41">
+    <srcmd5>4e152002d4bd51c958e613fae96b49eb</srcmd5>
+    <version>1.3.0</version>
+    <time>1231436591</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="43">
+    <srcmd5>4e152002d4bd51c958e613fae96b49eb</srcmd5>
+    <version>1.3.0</version>
+    <time>1231436591</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="44">
+    <srcmd5>b61f3302c6cef849659289e3c0026579</srcmd5>
+    <version>1.3.0</version>
+    <time>1262129213</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libraw1394 based on submit request 27745 from user tiwai
+</comment>
+  </revision>
+  <revision rev="11" vrev="45">
+    <srcmd5>1dce7f47ec8898233f175179f603c7cd</srcmd5>
+    <version>1.3.0</version>
+    <time>1268924702</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="46">
+    <srcmd5>beb0708a76956c663cac7a864c4e38d8</srcmd5>
+    <version>1.3.0</version>
+    <time>1272102001</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libraw1394 based on submit request 38651 from user coolo
+</comment>
+    <requestid>38651</requestid>
+  </revision>
+  <revision rev="13" vrev="48">
+    <srcmd5>beb0708a76956c663cac7a864c4e38d8</srcmd5>
+    <version>1.3.0</version>
+    <time>1278667362</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="49">
+    <srcmd5>beb0708a76956c663cac7a864c4e38d8</srcmd5>
+    <version>1.3.0</version>
+    <time>1278678592</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>dcbfebd9915ba60ba803ec798fd5a51c</srcmd5>
+    <version>2.0.5</version>
+    <time>1286483122</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libraw1394 based on submit request 49953 from user plater
+</comment>
+    <requestid>49953</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>cf48bfcaea8dd06a53fd0ea6d6754a4f</srcmd5>
+    <version>2.0.5</version>
+    <time>1287353754</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libraw1394 based on submit request 50864 from user elvigia
+</comment>
+    <requestid>50864</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>cf48bfcaea8dd06a53fd0ea6d6754a4f</srcmd5>
+    <version>2.0.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>a682250bc72c17688be93c26f3fc651e</srcmd5>
+    <version>2.0.7</version>
+    <time>1311753088</time>
+    <user>saschpe</user>
+    <comment>Update to 2.0.7 (forwarded request 77064 from a_jaeger)</comment>
+    <requestid>77149</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>b2ccd0742c402432723a6ac7b4093913</srcmd5>
+    <version>2.0.7</version>
+    <time>1311753099</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77149
+</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>b2ccd0742c402432723a6ac7b4093913</srcmd5>
+    <version>2.0.7</version>
+    <time>1319182127</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>3de822865f0f121e750ce773c59541c2</srcmd5>
+    <version>2.0.7</version>
+    <time>1323192325</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>3de822865f0f121e750ce773c59541c2</srcmd5>
+    <version>2.0.7</version>
+    <time>1340183627</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>3de822865f0f121e750ce773c59541c2</srcmd5>
+    <version>2.0.7</version>
+    <time>1359109337</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f07bf1b16b51561acbd1fe9098379bde</srcmd5>
+    <version>2.1.0</version>
+    <time>1364157467</time>
+    <user>coolo</user>
+    <comment>Update to version 2.1.0 (forwarded request 160696 from Zaitor)</comment>
+    <requestid>160749</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>f07bf1b16b51561acbd1fe9098379bde</srcmd5>
+    <version>2.1.0</version>
+    <time>1379663064</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>f07bf1b16b51561acbd1fe9098379bde</srcmd5>
+    <version>2.1.0</version>
+    <time>1409301691</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>c897c279b4c096fc3d9141ad03980f66</srcmd5>
+    <version>2.1.0</version>
+    <time>1411017120</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248388</requestid>
+  </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>da185a4d72f000a443862c42f3d828a6</srcmd5>
+    <version>2.1.0</version>
+    <time>1427273672</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292284</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>155fb48010fcfd5372300f6ace8ce758</srcmd5>
+    <version>2.1.1</version>
+    <time>1447882331</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344436</requestid>
+  </revision>
+</revisionlist>

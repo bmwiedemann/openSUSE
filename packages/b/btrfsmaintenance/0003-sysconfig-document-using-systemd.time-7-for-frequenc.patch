@@ -1,0 +1,53 @@
+From 0302324b7a824741a39e3928dc7a8617485e03ce Mon Sep 17 00:00:00 2001
+From: Jeff Mahoney <jeffm@suse.com>
+Date: Fri, 25 Jan 2019 13:35:54 -0500
+Subject: sysconfig: document using systemd.time(7) for frequency of operations
+References: fate#325529 jsc#SLE-3188
+
+On systems using systemd timers, the calendar event format documented in
+systemd.time(7) may be used to specify when to run balance, defrag,
+scrub, or trim events.  This commit documents that validity.
+---
+ sysconfig.btrfsmaintenance | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/sysconfig.btrfsmaintenance b/sysconfig.btrfsmaintenance
+index 5a34c83..b35e2cf 100644
+--- a/sysconfig.btrfsmaintenance
++++ b/sysconfig.btrfsmaintenance
+@@ -48,6 +48,10 @@ BTRFS_BALANCE_MOUNTPOINTS="/"
+ ## ServiceRestart: btrfsmaintenance-refresh
+ #
+ # Frequency of periodic balance.
++#
++# The frequency may be specified using one of the listed values or
++# in the format documented in the "Calendar Events" section of systemd.time(7),
++# if available.
+ BTRFS_BALANCE_PERIOD="weekly"
+ 
+ ## Path:        System/File systems/btrfs
+@@ -89,6 +93,10 @@ BTRFS_SCRUB_MOUNTPOINTS="/"
+ ## ServiceRestart: btrfsmaintenance-refresh
+ #
+ # Frequency of periodic scrub.
++#
++# The frequency may be specified using one of the listed values or
++# in the format documented in the "Calendar Events" section of systemd.time(7),
++# if available.
+ BTRFS_SCRUB_PERIOD="monthly"
+ 
+ ## Path:        System/File systems/btrfs
+@@ -115,6 +123,10 @@ BTRFS_SCRUB_READ_ONLY="false"
+ # Frequency of periodic trim. Off by default so it does not collide with
+ # fstrim.timer . If you do not use the timer, turn it on here. The recommended
+ # period is 'weekly'.
++#
++# The frequency may be specified using one of the listed values or
++# in the format documented in the "Calendar Events" section of systemd.time(7),
++# if available.
+ BTRFS_TRIM_PERIOD="none"
+ 
+ ## Path:        System/File systems/btrfs
+-- 
+2.16.4
+

@@ -1,0 +1,45 @@
+Reference: bnc#869024
+Disable graphics on s390x
+Index: virt-manager-2.2.1/virtinst/guest.py
+===================================================================
+--- virt-manager-2.2.1.orig/virtinst/guest.py
++++ virt-manager-2.2.1/virtinst/guest.py
+@@ -225,7 +225,10 @@ class Guest(XMLBuilder):
+         self.skip_default_channel = False
+         self.skip_default_sound = False
+         self.skip_default_usbredir = False
+-        self.skip_default_graphics = False
++        if self.os.is_s390x():
++            self.skip_default_graphics = True
++        else:
++            self.skip_default_graphics = False
+         self.skip_default_rng = False
+         self.disable_default_memballoon = False
+         self.x86_cpu_default = self.cpu.SPECIAL_MODE_APP_DEFAULT
+@@ -480,7 +483,7 @@ class Guest(XMLBuilder):
+         if not os_support:
+             return False
+ 
+-        if self.os.is_x86():
++        if self.os.is_x86() or self.os.is_s390x():
+             return True
+ 
+         return False
+@@ -864,7 +867,7 @@ class Guest(XMLBuilder):
+         self.add_device(dev)
+ 
+     def _add_default_video_device(self):
+-        if self.os.is_container():
++        if self.os.is_container() or self.os.is_s390x():
+             return
+         if self.devices.video:
+             return
+@@ -931,7 +934,7 @@ class Guest(XMLBuilder):
+             return
+         if self.os.is_container() and not self.conn.is_vz():
+             return
+-        if self.os.arch not in ["x86_64", "i686", "ppc64", "ppc64le"]:
++        if self.os.arch not in ["x86_64", "i686", "ppc64", "ppc64le", "s390x"]:
+             return
+         self.add_device(DeviceGraphics(self.conn))
+ 

@@ -1,0 +1,329 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d754d32d9b10a36df9d2b5d5afad05e2</srcmd5>
+    <version>0.4.3</version>
+    <time>1270681787</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/orc based on submit request 36732 from user vuntz
+</comment>
+    <requestid>36732</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d50fee20861201d07850b5bf1ecdc0e1</srcmd5>
+    <version>0.4.4</version>
+    <time>1275322707</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/orc based on submit request 40647 from user prusnak
+</comment>
+    <requestid>40647</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d50fee20861201d07850b5bf1ecdc0e1</srcmd5>
+    <version>0.4.4</version>
+    <time>1278667374</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>d50fee20861201d07850b5bf1ecdc0e1</srcmd5>
+    <version>0.4.4</version>
+    <time>1278678607</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b438dd3c23c3a5ed419b082ae2802c61</srcmd5>
+    <version>0.4.6</version>
+    <time>1281313219</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/orc based on submit request 44758 from user vuntz
+</comment>
+    <requestid>44758</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>96257d57277a6ea41fc25fb71e16bab4</srcmd5>
+    <version>0.4.7</version>
+    <time>1282915408</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/orc based on submit request 46316 from user vuntz
+</comment>
+    <requestid>46316</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ab7567a27c2f7a99ab5865c5d338fac5</srcmd5>
+    <version>0.4.8</version>
+    <time>1283514163</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/orc based on submit request 46715 from user vuntz
+</comment>
+    <requestid>46715</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e0589bc17585a13c779fc19930707ca6</srcmd5>
+    <version>unknown</version>
+    <time>1284371334</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/orc based on submit request 47709 from user vuntz
+</comment>
+    <requestid>47709</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>498a56cedb9770a21c95dbb25274d9e5</srcmd5>
+    <version>0.4.10</version>
+    <time>1286791963</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/orc based on submit request 50142 from user vuntz
+</comment>
+    <requestid>50142</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>38ae9449e69a42526d5fbd3072ebc623</srcmd5>
+    <version>0.4.11</version>
+    <time>1287413419</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50894 from user vuntz
+</comment>
+    <requestid>50894</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d039711c3cd334d9627b295f6a0a7c45</srcmd5>
+    <version>0.4.11</version>
+    <time>1287413578</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>02d936f255659dfba5e58cc4a84ae16f</srcmd5>
+    <version>0.4.11</version>
+    <time>1291993572</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55244 from user elvigia
+</comment>
+    <requestid>55244</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>d8c2f95aadbf66526c780e2f24d79741</srcmd5>
+    <version>0.4.11</version>
+    <time>1291993578</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55244
+</comment>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>d8c2f95aadbf66526c780e2f24d79741</srcmd5>
+    <version>0.4.11</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3d82db9fe189b945561bd25bdfc3b439</srcmd5>
+    <version>0.4.16</version>
+    <time>1317744853</time>
+    <user>oertel</user>
+    <comment>Update to 0.4.16 (forwarded request 86383 from vuntz)</comment>
+    <requestid>86501</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>3d82db9fe189b945561bd25bdfc3b439</srcmd5>
+    <version>0.4.16</version>
+    <time>1319182222</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>c71dd32aeb5dbb2804021d77154944d3</srcmd5>
+    <version>0.4.16</version>
+    <time>1328261102</time>
+    <user>coolo</user>
+    <comment>- Fix license to be BSD-3-Clause 
+
+- disable check on ppc ppc64</comment>
+    <requestid>102473</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>02c16149efb0250c043462fb3d28a284</srcmd5>
+    <version>0.4.16</version>
+    <time>1331324693</time>
+    <user>coolo</user>
+    <comment>- Disable check on ARM</comment>
+    <requestid>108484</requestid>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>02c16149efb0250c043462fb3d28a284</srcmd5>
+    <version>0.4.16</version>
+    <time>1340183768</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>2ecb45ef20fc4ba36fc26c4af7f9829d</srcmd5>
+    <version>0.4.16</version>
+    <time>1348412881</time>
+    <user>coolo</user>
+    <comment>- ppc64.patch: Add support for PowerPC64
+- altivec.patch: Fix altivec implementation of cmpltf and cmplef operations
+- Reenable check on ppc and ppc64 (forwarded request 134801 from AndreasSchwab)</comment>
+    <requestid>134868</requestid>
+  </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>2ecb45ef20fc4ba36fc26c4af7f9829d</srcmd5>
+    <version>0.4.16</version>
+    <time>1359109557</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f27ee1dfa33427d35698de294c25edd4</srcmd5>
+    <version>0.4.17</version>
+    <time>1368713687</time>
+    <user>coolo</user>
+    <comment>Update to 0.4.17 (forwarded request 175783 from dimstar)</comment>
+    <requestid>175834</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>f27ee1dfa33427d35698de294c25edd4</srcmd5>
+    <version>0.4.17</version>
+    <time>1379663454</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>85c7af863c52552a7dffba28a7ae2477</srcmd5>
+    <version>0.4.18</version>
+    <time>1387798491</time>
+    <user>scarabeus_factory</user>
+    <comment>Maintenance release:
+
+- Update to version 0.4.18:
+  + Important bugfix in reading constants from bytecode.
+  + Documentation and code cleanup.
+  + Fix cache flushing on iOS. (forwarded request 211896 from Zaitor)</comment>
+    <requestid>212002</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>85c7af863c52552a7dffba28a7ae2477</srcmd5>
+    <version>0.4.18</version>
+    <time>1409302080</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>17afc9e9810718a09e8173e510024e76</srcmd5>
+    <version>0.4.22</version>
+    <time>1411220991</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249940</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>c99910605ce27875c6b504a6f8859051</srcmd5>
+    <version>0.4.22</version>
+    <time>1412155319</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>251858</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>96f6dd19e1a6c62b90ac0e9c015e7620</srcmd5>
+    <version>0.4.22</version>
+    <time>1413739646</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>256940</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2deedcdb6ab5e6e45df5ee3b774d0ee8</srcmd5>
+    <version>0.4.23</version>
+    <time>1420021322</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266616</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>ce5bd4b23fb8c9428bda1627442e44df</srcmd5>
+    <version>0.4.23</version>
+    <time>1425377540</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288266</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b68321025b3b3f8816569f37fe840fd4</srcmd5>
+    <version>0.4.24</version>
+    <time>1437299071</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315784</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>7add48cf24898444b52ca1926adf4ff8</srcmd5>
+    <version>0.4.24</version>
+    <time>1444833535</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>334705</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>08481e67dd7a167f9375d52c0127af53</srcmd5>
+    <version>0.4.25</version>
+    <time>1457532919</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>366762</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>71ee12630a2677cd957208a1fefe7d94</srcmd5>
+    <version>0.4.26</version>
+    <time>1473103004</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release</comment>
+    <requestid>424274</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>238e3d6849bce1c8c2041b9aac9580ca</srcmd5>
+    <version>0.4.26</version>
+    <time>1487462317</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457153</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>fdfc5aa8fea131418aaebe0342bd1b64</srcmd5>
+    <version>0.4.27</version>
+    <time>1500669722</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511061</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>86432ab1c072db08105084dce15916c6</srcmd5>
+    <version>0.4.27</version>
+    <time>1505331721</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520823</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0cee237a45527615b29bf84b6f2ce860</srcmd5>
+    <version>0.4.28</version>
+    <time>1511426034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544013</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>4d6c148fea15ae6cf06e85dfb9ad6e6e</srcmd5>
+    <version>0.4.29</version>
+    <time>1557263471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700967</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>5b7dda4da626d70349f0abe4751dd63c</srcmd5>
+    <version>0.4.30</version>
+    <time>1568900868</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729787</requestid>
+  </revision>
+</revisionlist>

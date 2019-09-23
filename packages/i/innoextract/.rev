@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>076080ecf6b856af91a310a47d8bdea1</srcmd5>
+    <version>1.4</version>
+    <time>1428949835</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>295481</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0f0cae2fd9e1c2859dfe4307e4b27287</srcmd5>
+    <version>1.5</version>
+    <time>1447353690</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343918</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9cefa76383b99cb1e62a96ffd633a300</srcmd5>
+    <version>1.5</version>
+    <time>1458228933</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with CMake 3.5
+  * innoextract-cmake.patch</comment>
+    <requestid>373605</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f15638b1b7dc51e349df73fb3399450c</srcmd5>
+    <version>1.6</version>
+    <time>1459002559</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6
+  * Added support for Inno Setup 5.5.7 (and 5.5.8) installers
+  * Added a --collisions=rename-all option
+  * Fixed issues with the --collisions=rename option
+  * Unsafe characters in special constant strings (ie : in 
+    {code:…}) are now replaced with $
+  * Windows: Fixed progress bar flickering while printing extracted
+    filenames
+  * Windows binaries: Fixed crash on platforms without AVX support
+- Drop upstream patch innoextract-cmake.patch</comment>
+    <requestid>379563</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b64679e3e9016c3bbf595e727ec9f47a</srcmd5>
+    <version>1.6</version>
+    <time>1486135668</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453803</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>a38ecfd16e72b1b4da9a43c853c6ea26</srcmd5>
+    <version>1.6</version>
+    <time>1521579504</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop support for Building on Leap-42
+- Modernise spec file with spec-clener
+- Use more of cmake macros
+- Trim unused build dependency on doxygen</comment>
+    <requestid>586689</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b20e28f0d2765d310ef257dfaf18592c</srcmd5>
+    <version>1.7</version>
+    <time>1535123589</time>
+    <user>dimstar_suse</user>
+    <comment>- Be more explicit about requirements
+
+- Update to version 1.7
+  * Added support for Inno Setup 5.6.0 installers
+  * Added support for new GOG installers with GOG Galaxy file parts
+  * Added support for encrypted installers
+  * Added --list-sizes and --list-checksums options to print file
+    information
+  * Adde a --data-version (-V) option to check if an executable is
+    an Inno Setup installer
+  * Fixed case-sensitivity in parent directory when creating
+    subdirectories
+  * Fixed issues with names used to load .bin slice files
+- Verify source signature</comment>
+    <requestid>631245</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b06fca2c03e61b5a415228b269ae6465</srcmd5>
+    <version>1.7</version>
+    <time>1554965345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692895</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>43e28940cb581d6850767f664e177b68</srcmd5>
+    <version>1.8</version>
+    <time>1568720400</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731488</requestid>
+  </revision>
+</revisionlist>

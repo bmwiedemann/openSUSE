@@ -1,0 +1,1139 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b55e6a4be998dbe44506ee0981fff92d</srcmd5>
+    <version>4.2.4p4</version>
+    <time>1200973439</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>21f93671dfc52f8b6671298fdfeb1f76</srcmd5>
+    <version>4.2.4p4</version>
+    <time>1201126917</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="16">
+    <srcmd5>575f739b9986489ab8e59ff86727bbb5</srcmd5>
+    <version>4.2.4p4</version>
+    <time>1205348088</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="17">
+    <srcmd5>9a402164af32df9a5eb278d379919e29</srcmd5>
+    <version>4.2.4p4</version>
+    <time>1205489535</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="23">
+    <srcmd5>9a6e2e120e76db16894c35da61a926c2</srcmd5>
+    <version>4.2.4p4</version>
+    <time>1206545151</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="26">
+    <srcmd5>1a443b2716999a084d382fbe3cec1ab9</srcmd5>
+    <version>4.2.4p4</version>
+    <time>1207178715</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="35">
+    <srcmd5>ed89caf8f679d97289e6ee2eff0a04b8</srcmd5>
+    <version>4.2.4p4</version>
+    <time>1210110549</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="38">
+    <srcmd5>97a4327c040a8fcfd70204d98b100755</srcmd5>
+    <version>4.2.4p4</version>
+    <time>1210942194</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="40">
+    <srcmd5>e016474571e92802dae9580331f4bc7f</srcmd5>
+    <version>4.2.4p4</version>
+    <time>1211421306</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="41">
+    <srcmd5>c955e0736d76ba47028ef4dcf2a4966e</srcmd5>
+    <version>4.2.4p4</version>
+    <time>1211836602</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="50">
+    <srcmd5>f4b65dbcb08e3fa2eb36e42ec9beee7e</srcmd5>
+    <version>4.2.4p4</version>
+    <time>1216062372</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="77">
+    <srcmd5>486b0240dd9522714c212f25ce770f84</srcmd5>
+    <version>4.2.4p4</version>
+    <time>1220883885</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4f84168251c0be48eb21fc8be7be9434</srcmd5>
+    <version>4.2.4p5</version>
+    <time>1221278881</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>96434074ebafafd23e298261a468bf65</srcmd5>
+    <version>4.2.4p5</version>
+    <time>1222704456</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>d1fb1c9c702cb88296b1ff56544f5080</srcmd5>
+    <version>4.2.4p5</version>
+    <time>1223306939</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>20653674c8cc7795434a0f19d87a77ee</srcmd5>
+    <version>4.2.4p5</version>
+    <time>1223388546</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>53b5aba2c1d10ab4158bf488fd60faba</srcmd5>
+    <version>4.2.4p5</version>
+    <time>1223483232</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>d5fa2f9012ec3ed6b529a759dff46849</srcmd5>
+    <version>4.2.4p5</version>
+    <time>1224004195</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>12c699605100c245e5fc05ca2187c1a1</srcmd5>
+    <version>4.2.4p5</version>
+    <time>1224692910</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>5a3d8b5396256026fadeb56df2e47f65</srcmd5>
+    <version>4.2.4p5</version>
+    <time>1224757613</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>dbace1bb4394946eeaa972a5fe7a2341</srcmd5>
+    <version>4.2.4p5</version>
+    <time>1224854521</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="12">
+    <srcmd5>bc9e7271aa0622436a83d7c83a0ad3cc</srcmd5>
+    <version>4.2.4p5</version>
+    <time>1225718049</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="13">
+    <srcmd5>2c70acc998d612110a8961b6c8b98c9c</srcmd5>
+    <version>4.2.4p5</version>
+    <time>1226068204</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="14">
+    <srcmd5>22d398ee1706b26bc6eae15f3cfab7fc</srcmd5>
+    <version>4.2.4p5</version>
+    <time>1226328634</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="15">
+    <srcmd5>4e45c7be2dd372fe7cdce4422237476f</srcmd5>
+    <version>4.2.4p5</version>
+    <time>1226939592</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f90a9e0661296218fcdcfb7aca8e6d41</srcmd5>
+    <version>4.2.4p6</version>
+    <time>1231508063</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>4de48338f69eb8dbe35844d9b2313f85</srcmd5>
+    <version>4.2.4p6</version>
+    <time>1241628666</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0008326ecf886b6e75ce37447f605c48</srcmd5>
+    <version>4.2.4p7</version>
+    <time>1246707570</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>f1ef7f5f715c097218bd954bc0ea201d</srcmd5>
+    <version>4.2.4p7</version>
+    <time>1247275499</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>2cf749d584b471035cd067d471c91cbc</srcmd5>
+    <version>4.2.4p7</version>
+    <time>1247758626</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>7033bce95e2e4e166ccaafad4487817a</srcmd5>
+    <version>4.2.4p7</version>
+    <time>1248172368</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>592d96ae78e92ad921a0677d4fedffbd</srcmd5>
+    <version>4.2.4p7</version>
+    <time>1254788187</time>
+    <user>autobuild</user>
+    <comment>Copy from network:time/ntp based on submit request 21637 from user seife
+</comment>
+  </revision>
+  <revision rev="33" vrev="7">
+    <srcmd5>592d96ae78e92ad921a0677d4fedffbd</srcmd5>
+    <version>4.2.4p7</version>
+    <time>1254788187</time>
+    <user>autobuild</user>
+    <comment>Copy from network:time/ntp based on submit request 21637 from user seife
+</comment>
+  </revision>
+  <revision rev="34" vrev="8">
+    <srcmd5>0cc87db3ed8ffde6f81a1dd9749823f4</srcmd5>
+    <version>4.2.4p7</version>
+    <time>1259754229</time>
+    <user>autobuild</user>
+    <comment>Copy from network:time/ntp based on submit request 25229 from user seife
+</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>aae59883014ddd7e581e5364cb315a6b</srcmd5>
+    <version>4.2.4p8</version>
+    <time>1260543477</time>
+    <user>autobuild</user>
+    <comment>Copy from network:time/ntp based on submit request 26116 from user varkoly
+</comment>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>d24a25097e5884d22a25a8b265af5144</srcmd5>
+    <version>4.2.4p8</version>
+    <time>1262892386</time>
+    <user>autobuild</user>
+    <comment>Copy from network:time/ntp based on submit request 28239 from user coolo
+</comment>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>e4c00b93e3e14d055f83f24450e0ddf2</srcmd5>
+    <version>4.2.4p8</version>
+    <time>1268925119</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>e8e4fd48d145fa109fd1942ef7e0ac66</srcmd5>
+    <version>4.2.4p8</version>
+    <time>1268987109</time>
+    <user>autobuild</user>
+    <comment>Copy from network:time/ntp based on submit request 35326 from user varkoly
+</comment>
+    <requestid>35326</requestid>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>1d4ff9bd599ad902b3dacfc8a7dee969</srcmd5>
+    <version>4.2.4p8</version>
+    <time>1271372995</time>
+    <user>autobuild</user>
+    <comment>Copy from network:time/ntp based on submit request 37598 from user varkoly
+</comment>
+    <requestid>37598</requestid>
+  </revision>
+  <revision rev="40" vrev="6">
+    <srcmd5>6e198c832d79455f703f726524afb4e1</srcmd5>
+    <version>4.2.4p8</version>
+    <time>1272213848</time>
+    <user>autobuild</user>
+    <comment>Copy from network:time/ntp based on submit request 38574 from user varkoly
+</comment>
+    <requestid>38574</requestid>
+  </revision>
+  <revision rev="41" vrev="8">
+    <srcmd5>6e198c832d79455f703f726524afb4e1</srcmd5>
+    <version>4.2.4p8</version>
+    <time>1278667371</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="42" vrev="9">
+    <srcmd5>6e198c832d79455f703f726524afb4e1</srcmd5>
+    <version>4.2.4p8</version>
+    <time>1278678601</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="43" vrev="10">
+    <srcmd5>f8704bba9289efaf17171f5ac043e9c2</srcmd5>
+    <version>4.2.4p8</version>
+    <time>1286310642</time>
+    <user>autobuild</user>
+    <comment>Copy from network:time/ntp based on submit request 49785 from user varkoly
+</comment>
+    <requestid>49785</requestid>
+  </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>78132f15d0f5666cf6a82edca9c4724b</srcmd5>
+    <version>4.2.6p2</version>
+    <time>1291221789</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54248 from user varkoly
+</comment>
+    <requestid>54248</requestid>
+  </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>6cb63082aad8d05134e7ad564bc931f7</srcmd5>
+    <version>4.2.6p2</version>
+    <time>1291221795</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54248
+</comment>
+  </revision>
+  <revision rev="46" vrev="7">
+    <srcmd5>6cca81bfc98a0298de53ebe3687fac2c</srcmd5>
+    <version>4.2.6p2</version>
+    <time>1291822138</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55231 from user varkoly
+</comment>
+    <requestid>55231</requestid>
+  </revision>
+  <revision rev="47" vrev="8">
+    <srcmd5>fac3039377b2327230b942cf1c303cbf</srcmd5>
+    <version>4.2.6p2</version>
+    <time>1291822144</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55231
+</comment>
+  </revision>
+  <revision rev="48" vrev="9">
+    <srcmd5>1774854689429c86cfbf96e73f09c61a</srcmd5>
+    <version>4.2.6p2</version>
+    <time>1292253162</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55798 from user varkoly
+</comment>
+    <requestid>55798</requestid>
+  </revision>
+  <revision rev="49" vrev="10">
+    <srcmd5>6c78c0393d4b1343f3f88114dc6e0509</srcmd5>
+    <version>4.2.6p2</version>
+    <time>1292253168</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55798
+</comment>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>986263889f23ca45d46a28b9092f6e91</srcmd5>
+    <version>4.2.6p3</version>
+    <time>1294666525</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57631 from user coolo
+</comment>
+    <requestid>57631</requestid>
+  </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>d30904b995106160bb890e349d00f293</srcmd5>
+    <version>4.2.6p3</version>
+    <time>1294666535</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57631
+</comment>
+  </revision>
+  <revision rev="52" vrev="7">
+    <srcmd5>d30904b995106160bb890e349d00f293</srcmd5>
+    <version>4.2.6p3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="53" vrev="8">
+    <srcmd5>8ef60fa2e69aeb99f844e3e06ebd7a1e</srcmd5>
+    <version>4.2.6p3</version>
+    <time>1298328403</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62372 from user varkoly
+</comment>
+    <requestid>62372</requestid>
+  </revision>
+  <revision rev="54" vrev="9">
+    <srcmd5>35519819c123edf427580b5bbf79441a</srcmd5>
+    <version>4.2.6p3</version>
+    <time>1298328411</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62372
+</comment>
+  </revision>
+  <revision rev="55" vrev="10">
+    <srcmd5>b01da3a4db9010c4aed285b2a4f501d8</srcmd5>
+    <version>4.2.6p3</version>
+    <time>1303386107</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 67003 from user coolo
+</comment>
+    <requestid>67003</requestid>
+  </revision>
+  <revision rev="56" vrev="11">
+    <srcmd5>8101192e3df682cc17e3b1f24b8506e9</srcmd5>
+    <version>4.2.6p3</version>
+    <time>1303386115</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 67003
+</comment>
+  </revision>
+  <revision rev="57" vrev="12">
+    <srcmd5>b342a621969b9e9084864ea313684926</srcmd5>
+    <version>4.2.6p3</version>
+    <time>1306924698</time>
+    <user>saschpe</user>
+    <comment>- The default timeout for sntp is to long. This can stop booting 
+- bnc#689070 - ntp post install script always removes /etc/sysconfig/ntp
+- bnc#688529 - (ntp) ntpq and ntpdc command history broken
+- bnc#695598 - &quot;Started sntp&quot; in /var/log/messages
+
+- fix &quot;rcntp ntptimeset&quot;
+   * never try to syncronize with local clocks (127.127.*), which led to 
+     sntp blocking until timeout elapsed (and probably blocking boot 
+     sequence for ~5 min per device..)
+- fix DOS line breaks in some doc files
+
+- fix/improve init script
+   * related to bugzilla 688132
+   * &quot;rcntp ntptimeset&quot; could not parse servers from ntp.conf when IP proto
+     was specified (server [-4|-6] hostname)
+   * &quot;rcntp ntptimeset&quot; is now using ip proto parameter (-4|-6) if it's set in
+     NTPD_OPTIONS and skip servers where the opposite proto is defined</comment>
+    <requestid>72405</requestid>
+  </revision>
+  <revision rev="58" vrev="13">
+    <srcmd5>3f2ac070ec16adb5db1a1b22e58c51e6</srcmd5>
+    <version>4.2.6p3</version>
+    <time>1306924706</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72405
+</comment>
+  </revision>
+  <revision rev="59" vrev="14">
+    <srcmd5>8f68f7ee59dfb512742fff770418c1e1</srcmd5>
+    <version>4.2.6p3</version>
+    <time>1314355724</time>
+    <user>saschpe</user>
+    <comment>- bnc#699724 - ntpdate was replaced with a dud script</comment>
+    <requestid>79859</requestid>
+  </revision>
+  <revision rev="60" vrev="15">
+    <srcmd5>f978556ccbe3990d4fdb39d5e8b36cd4</srcmd5>
+    <version>4.2.6p3</version>
+    <time>1314355734</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79859
+</comment>
+  </revision>
+  <revision rev="61" vrev="17">
+    <srcmd5>f978556ccbe3990d4fdb39d5e8b36cd4</srcmd5>
+    <version>4.2.6p3</version>
+    <time>1319182205</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="62" vrev="18">
+    <srcmd5>11a398ad80139979870556febd52691e</srcmd5>
+    <version>4.2.6p3</version>
+    <time>1319716191</time>
+    <user>coolo</user>
+    <comment>- bnc#656509 - don't use --bind on /var/lib/ntp/proc</comment>
+    <requestid>89486</requestid>
+  </revision>
+  <revision rev="63" vrev="19">
+    <srcmd5>35d90d2d6260dbfd4191db42b01cf271</srcmd5>
+    <version>4.2.6p3</version>
+    <time>1322259136</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 93605 from coolo)</comment>
+    <requestid>93607</requestid>
+  </revision>
+  <revision rev="64" vrev="20">
+    <srcmd5>22d72644656559dd43464df88a7fd684</srcmd5>
+    <version>4.2.6p3</version>
+    <time>1323192764</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>f2a175fa29ac992b41d884714462ec7f</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1327583199</time>
+    <user>coolo</user>
+    <comment>- Remove superfluous remove of acconfig.h while build.
+- BuildRequire autoconf to avoid implicit dependency for post-11.4 systems.
+- Remove call to suse_update_config macro for post-11.4 systems.
+- BuildRequire fdupes for post-10.1 systems.
+- Do not call autoreconf for pre-10.2 systems.
+- Update to version 4.2.6p5.
+  Cf. package changelog for details.
+- Update to version 4.2.6p4.
+  Cf. package changelog for details.
+- Remove superfluously used NTPD_PID_NOPREFIX from init script.
+- Refresh patches to apply with no offset. (forwarded request 99525 from lmuelle)</comment>
+    <requestid>101501</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>7d7db6710dad39bdbe15c90272a4d55c</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1336452421</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>116236</requestid>
+  </revision>
+  <revision rev="67" vrev="4">
+    <srcmd5>7d7db6710dad39bdbe15c90272a4d55c</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1340183739</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="68" vrev="5">
+    <srcmd5>e57a08e3c0ab07f34c2d7900c0bd1bc0</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1341820642</time>
+    <user>coolo</user>
+    <comment>license update: (MIT and BSD-3-Clause and BSD-4-Clause) and GPL-2.0
+Properly categorise licenses and sync with Fedora declaration (forwarded request 127106 from babelworx)</comment>
+    <requestid>127215</requestid>
+  </revision>
+  <revision rev="69" vrev="6">
+    <srcmd5>c521cdf668ede0aa74e06cfacc52d64a</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1343162582</time>
+    <user>namtrac</user>
+    <comment>-  Openssl wanted but not properly detected, fixed. (forwarded request 128294 from elvigia)</comment>
+    <requestid>128869</requestid>
+  </revision>
+  <revision rev="70" vrev="7">
+    <srcmd5>fab2246054cfe75b87778ab5afb6b162</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1351159885</time>
+    <user>namtrac</user>
+    <comment>Created the correct link to /run/ntp (forwarded request 130555 from msmeissn)</comment>
+    <requestid>139178</requestid>
+  </revision>
+  <revision rev="71" vrev="8">
+    <srcmd5>d0d45a53573d0eed49ec051be33a3c9c</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1358683101</time>
+    <user>coolo</user>
+    <comment>- logrotate is not strictly required for operation of ntp so change
+  it to Suggested. That way the minimal installation doesn't draw in
+  cron and postfix. (forwarded request 149239 from lnussel)</comment>
+    <requestid>149258</requestid>
+  </revision>
+  <revision rev="72" vrev="10">
+    <srcmd5>d0d45a53573d0eed49ec051be33a3c9c</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1359109518</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="73" vrev="11">
+    <srcmd5>7e174450cd4fa59002987ac4ba185f62</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1361821163</time>
+    <user>coolo</user>
+    <comment>- disable Undisciplined Local Clock in default conf file (bnc#784760) (forwarded request 156062 from -miska-)</comment>
+    <requestid>156338</requestid>
+  </revision>
+  <revision rev="74" vrev="12">
+    <srcmd5>a398d156879942dbc1eb50946e6f1a5b</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1362137180</time>
+    <user>coolo</user>
+    <comment>- bnc#797351 - ntpd &quot;listen-on&quot; directive support is missing/broken;
+  unable to restrict/secure listening IPs 
+
+- bnc#793012 - NTP default to 'sync time on startup' conflicts with NetworkManager</comment>
+    <requestid>156793</requestid>
+  </revision>
+  <revision rev="75" vrev="13">
+    <srcmd5>9d73121d10e321e68975de4d9add361d</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1362983138</time>
+    <user>coolo</user>
+    <comment>fix build with automake-1.13 (forwarded request 158115 from seife)</comment>
+    <requestid>158201</requestid>
+  </revision>
+  <revision rev="76" vrev="14">
+    <srcmd5>da7c4aea4cbf0643556590f397cb978d</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1377629608</time>
+    <user>coolo</user>
+    <comment>- Build with -DOPENSSL_LOAD_CONF , ntp must respect and use 
+  the system's openssl configuration. (forwarded request 195641 from elvigia)</comment>
+    <requestid>196291</requestid>
+  </revision>
+  <revision rev="77" vrev="16">
+    <srcmd5>da7c4aea4cbf0643556590f397cb978d</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1379663387</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="78" vrev="17">
+    <srcmd5>0c79602d795bfb84f221578deae57f58</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1382515851</time>
+    <user>scarabeus_factory</user>
+    <comment>- bnc#838458 ntp start script does not update /var/lib/ntp/etc/localtime file if /etc/localtime is symlink</comment>
+    <requestid>204325</requestid>
+  </revision>
+  <revision rev="79" vrev="18">
+    <srcmd5>cf5ee7139406c48fcab1a6ae17cdb3bf</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1390303784</time>
+    <user>coolo</user>
+    <comment>- CVE-2013-5211, bnc#857195: restrict query, configuration,
+  modification access from world by default. Avoids that ntp can
+  be used as a DDoS amplifier.</comment>
+    <requestid>214511</requestid>
+  </revision>
+  <revision rev="80" vrev="19">
+    <srcmd5>cfd046e755284be7829f67a25c25610b</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1392481047</time>
+    <user>coolo</user>
+    <comment>- bnc#863815, ntp-sntp-recverr.patch: Get sntp to recognize socket
+  errors, so that it skips unreachable destinations immediately
+  instead of trying to reach them for more than five minutes
+  before finally timing out.
+  This patch will probably be obsoleted by the next major upgrade,
+  because the current development release takes a different
+  approach to get a quick answer from one of the specified servers.</comment>
+    <requestid>222347</requestid>
+  </revision>
+  <revision rev="81" vrev="20">
+    <srcmd5>225727693aec4f5e6cf6372d6f7cc839</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1396701784</time>
+    <user>coolo</user>
+    <comment>- Remove empty insserv call whic hhad only caused an error message
+- Correct 50-ntp.list to include ntpd.service 
+
+- Restart nptd if failed or aborted (FATE#315133) 
+
+- Add missing systemd %pre macro (forwarded request 228826 from WernerFink)</comment>
+    <requestid>228827</requestid>
+  </revision>
+  <revision rev="82" vrev="21">
+    <srcmd5>d2916fb29d4e997b407a736434f43457</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1399056747</time>
+    <user>coolo</user>
+    <comment>- Remove /var/run/ntp from the package:
+  http://lists.opensuse.org/opensuse-packaging/2014-04/msg00046.html
+- Fix Provides/Obsoletes of package aliases.
+- Add /usr/sbin/rc* links.
+- Stay enabled across sysv to systemd migrations (bnc#875490).
+
+- fix &quot;start-ntp addserver&quot;: start-ntp has no &quot;status&quot; method</comment>
+    <requestid>232333</requestid>
+  </revision>
+  <revision rev="83" vrev="22">
+    <srcmd5>5cc750bb3d16d01cf3e6f742e817685f</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1399703506</time>
+    <user>coolo</user>
+    <comment>fix start-ntpd again: service is now called ntpd, not ntp. Either this changed or my last SR was bogus :-( (forwarded request 232861 from seife)</comment>
+    <requestid>232862</requestid>
+  </revision>
+  <revision rev="84" vrev="23">
+    <srcmd5>22f31a5f7708ec1d11a7c84d644d47f5</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1403702648</time>
+    <user>coolo</user>
+    <comment>- Try to fix broken migration from openSUSE-13.1
+
+- Forward-port some bugs that got fixed for SLE11 (bnc#831311):
+  * bnc#817893
+  * bnc#482349
+  * bnc#817893.patch
+
+- Cleanup with spec cleaner for better readability
+- Remove conditionals for &lt; 12.2 distros as it does not work on
+  them anyway.</comment>
+    <requestid>238394</requestid>
+  </revision>
+  <revision rev="85" vrev="24">
+    <srcmd5>09c097fa9daa568df9990bd2e125f5a0</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1406521873</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242368</requestid>
+  </revision>
+  <revision rev="86" vrev="26">
+    <srcmd5>09c097fa9daa568df9990bd2e125f5a0</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1409302001</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="87" vrev="27">
+    <srcmd5>db15df70227762e4f45b4aaee71f2f7d</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1413269947</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>253820</requestid>
+  </revision>
+  <revision rev="88" vrev="28">
+    <srcmd5>ac65528f77c24944c36afc5cb876c3d3</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1419249248</time>
+    <user>dimstar_suse</user>
+    <comment>- bnc#910764: VU#852879 ntp security fixes
+  * A potential remote code execution problem was found inside
+    ntpd. The functions crypto_recv() (when using autokey
+    authentication), ctl_putdata(), and configure() where updated
+    to avoid buffer overflows that could be
+    exploited. (CVE-2014-9295)
+  * Furthermore a problem inside the ntpd error handling was found
+    that is missing a return statement. This could also lead to a
+    potentially attack vector. (CVE-2014-9296)
+- ntp-CVE-2014-9295.patch and ntp-CVE-2014-9296.patch will be
+  obsoleted by the upcoming update to version 4.2.8.</comment>
+    <requestid>265959</requestid>
+  </revision>
+  <revision rev="89" vrev="29">
+    <srcmd5>d6b60318fb10b16953efb7e8447810f1</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1419546101</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266310</requestid>
+  </revision>
+  <revision rev="90" vrev="30">
+    <srcmd5>403d8195a1c078b2c796b52ea03faa2b</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1421334060</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280928</requestid>
+  </revision>
+  <revision rev="91" vrev="31">
+    <srcmd5>9605299732c0471e9dcdcedcfaf61e91</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1422790153</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283446</requestid>
+  </revision>
+  <revision rev="92" vrev="32">
+    <srcmd5>1cd4384b5474dcd8179faa0d5b629bca</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1426174588</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290033</requestid>
+  </revision>
+  <revision rev="93" vrev="33">
+    <srcmd5>6a412a34b8d32ea3f77794bc7c6e53a1</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1427736639</time>
+    <user>dimstar_suse</user>
+    <comment>- /bin/logger is needed for runtime configuration (bnc#924451).</comment>
+    <requestid>293382</requestid>
+  </revision>
+  <revision rev="94" vrev="34">
+    <srcmd5>1567abbc71bd2dff1b56f8479c95af42</srcmd5>
+    <version>4.2.6p5</version>
+    <time>1428391683</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293918</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>ce0cbc7baec8b7bc9e3add1a910f351b</srcmd5>
+    <version>4.2.8p2</version>
+    <time>1429658184</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298154</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>3275fd22bc068176140f59e6f5d86a0d</srcmd5>
+    <version>4.2.8p3</version>
+    <time>1437803026</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>318177</requestid>
+  </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>2ce20021e1c753ff12aef51933525034</srcmd5>
+    <version>4.2.8p3</version>
+    <time>1440479831</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>324699</requestid>
+  </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>52ae287ef5f5803192ad720fec1479f0</srcmd5>
+    <version>4.2.8p3</version>
+    <time>1442392633</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>330479</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>67e3c20d539b4cf1e6417dd601127e96</srcmd5>
+    <version>4.2.8p4</version>
+    <time>1447882365</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>344194</requestid>
+  </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>20fa23921ef456f9325ff390313dade5</srcmd5>
+    <version>4.2.8p4</version>
+    <time>1453507425</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354703</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>e1f1b4a9b83d33aeb0d3104df59b6a73</srcmd5>
+    <version>4.2.8p6</version>
+    <time>1458332932</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2015-8158, bsc#962966: potential infinite loop in ntpq
+- CVE-2015-8138, bsc#963002: Zero Origin Timestamp Bypass
+- CVE-2015-7978, bsc#963000: Stack exhaustion in recursive
+  traversal of restriction list.
+- CVE-2015-7979, bsc#962784: off-path denial of service on
+  authenticated broadcast mode
+- CVE-2015-7977, bsc#962970: restriction list NULL pointer
+  dereference
+- CVE-2015-7976, bsc#962802: 'ntpq saveconfig' command allows
+  dangerous characters in filenames
+- CVE-2015-7975, bsc#962988: nextvar() missing length check in ntpq
+- CVE-2015-7974, bsc#962960: Missing key check allows impersonation
+  between authenticated peers
+- CVE-2015-7973, bsc#962995: replay attack on authenticated
+  broadcast mode
+- CVE-2015-5300, bsc#951629: MITM attacker can force ntpd to make
+  a step larger than the panic threshold
+
+- update to 4.2.8p6
+  * fixes low- and medium-severity vulnerabilities
+    4.2.8p6: CVE-2015-8158 CVE-2015-8138 CVE-2015-7978
+    CVE-2015-7979 CVE-2015-7977 CVE-2015-7976 CVE-2015-7975
+    CVE-2015-7974 CVE-2015-7973
+    4.2.8p5: CVE-2015-5300
+  * bug fixes
+----------------------- --------------------------------------------</comment>
+    <requestid>370038</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>ede72049a033b5867feeccb94849e313</srcmd5>
+    <version>4.2.8p8</version>
+    <time>1465847679</time>
+    <user>dimstar_suse</user>
+    <comment>- Keep the parent process alive until the daemon has finished
+  initialisation, to make sure that the PID file exists when the
+  parent returns (ntp-daemonize.patch).
+- Update to 4.2.8p8 (bsc#982056):
+  * CVE-2016-4953, bsc#982065: Bad authentication demobilizes
+    ephemeral associations.
+  * CVE-2016-4954, bsc#982066: Processing spoofed server packets.
+  * CVE-2016-4955, bsc#982067: Autokey association reset.
+  * CVE-2016-4956, bsc#982068: Broadcast interleave.
+  * CVE-2016-4957, bsc#982064: CRYPTO_NAK crash.
+- Change the process name of the forking DNS worker process to
+  avoid the impression that ntpd is started twice.
+  (bsc#979302, ntp-processname.patch).
+- Don't ignore SIGCHILD because it breaks wait()
+  (boo#981422, ntp-sigchld.patch).
+- ntp-wait does not accept fractional seconds, so use 1 instead of
+  0.2 in ntp-wait.service (boo#979981).
+- Separate the creation of ntp.keys and key #1 in it to avoid
+  problems when upgrading installations that have the file, but
+  no key #1, which is needed e.g. by &quot;rcntp addserver&quot;.
+- Fix the TZ offset output of sntp during DST.
+  (bsc#951559, ntp-sntp-dst.patch)
+- Add /var/db/ntp-kod (bsc#916617).
+- Add ntp-ENOBUFS.patch to limit a warning that might happen
+  quite a lot on loaded systems (bsc#956773).
+- Don't wait for 11 minutes to restart ntpd when it has died
+  (boo#894031).
+
+- Update to 4.2.8p7 (bsc#977446):
+  * CVE-2016-1547, bsc#977459:</comment>
+    <requestid>400540</requestid>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>6fa1336a892bb31be98ef2d26bf19abc</srcmd5>
+    <version>4.2.8p8</version>
+    <time>1473102812</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423960</requestid>
+  </revision>
+  <revision rev="104" vrev="3">
+    <srcmd5>ede72049a033b5867feeccb94849e313</srcmd5>
+    <version>4.2.8p8</version>
+    <time>1473364534</time>
+    <user>dimstar_suse</user>
+    <comment>Revert the last patch - this seems totally broken when running ntp in a chroot</comment>
+    <requestid>425845</requestid>
+  </revision>
+  <revision rev="105" vrev="4">
+    <srcmd5>94468a546de314570f645a87097e97e0</srcmd5>
+    <version>4.2.8p8</version>
+    <time>1475241933</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>430705</requestid>
+  </revision>
+  <revision rev="106" vrev="5">
+    <srcmd5>10a026646cb2775478e9e6e596e011f7</srcmd5>
+    <version>4.2.8p8</version>
+    <time>1476430065</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>434567</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>6801b6016ce32afa66216f861bfe5319</srcmd5>
+    <version>4.2.8p9</version>
+    <time>1480071745</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.8p9:
+  * CVE-2016-9311: Trap crash.
+  * CVE-2016-9310: Mode 6 unauthenticated trap information
+    disclosure and DDoS vector.
+  * CVE-2016-7427: Broadcast Mode Replay Prevention DoS.
+  * CVE-2016-7428: Broadcast Mode Poll Interval Enforcement DoS.
+  * CVE-2016-7431: Regression: 010-origin: Zero Origin Timestamp
+    Bypass.
+  * CVE-2016-7434: Null pointer dereference in
+    _IO_str_init_static_internal().
+  * CVE-2016-7429: Interface selection attack.
+  * CVE-2016-7426: Client rate limiting and server responses.
+  * CVE-2016-7433: Reboot sync calculation problem.
+  * Fix a spurious error message (obsoletes ntp-sigchld.patch).
+  * Other bugfixes, see /usr/share/doc/packages/ntp/ChangeLog.
+- Fix a regression in &quot;trap&quot; (bsc#981252, ntp-trap.patch).
+- Reduce the number of netlink groups to listen on for changes to
+  the local network setup (bsc#992606, ntp-netlink.patch).
+- Fix segfault in &quot;sntp -a&quot; (bnc#1009434, ntp-sntp-a.patch).
+- Silence an OpenSSL version warning (bsc#992038,
+  ntp-openssl-version.patch).</comment>
+    <requestid>441452</requestid>
+  </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>3db6d8f33f8b94a5dd059c257a05c9de</srcmd5>
+    <version>4.2.8p9</version>
+    <time>1489241850</time>
+    <user>dimstar_suse</user>
+    <comment>- Move ntp-kod to /var/lib/ntp/db, because /var/db is not a
+  standard directory and causes problems for transactional updates
+  (ntp-move-kod-file.patch)
+
+- Remove 50-ntp.list (bsc#1011919).
+- Use system-wide libevent instead of local copy.
+
+- Simplify ntpd's search for its own executable to prevent AppArmor
+  warnings (bsc#956365, ntp-pathfind.patch).</comment>
+    <requestid>461929</requestid>
+  </revision>
+  <revision rev="109" vrev="3">
+    <srcmd5>82bc1e0c189419e97e2adb7d507d3166</srcmd5>
+    <version>4.2.8p9</version>
+    <time>1490132704</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>480781</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>41a898644c4de10e8f3730f0f4d1ff71</srcmd5>
+    <version>4.2.8p10</version>
+    <time>1491907207</time>
+    <user>maxlin_factory</user>
+    <comment>- Enable experimental leap smearing (fate#321003).
+  See /usr/share/doc/packages/ntp/README.leapsmear for details.
+
+- Fix spelling and default values in conf.sysconfig.ntp
+
+- Update to 4.2.8p10 (bsc#1030050):
+  * Sec 3389 / CVE-2017-6464 / VU#325339: NTP-01-016 NTP:
+    Denial of Service via Malformed Config
+  * Sec 3388 / CVE-2017-6462 / VU#325339: NTP-01-014 NTP:
+    Buffer Overflow in DPTS Clock
+  * Sec 3387 / CVE-2017-6463 / VU#325339: NTP-01-012 NTP:
+    Authenticated DoS via Malicious Config Option
+  * Sec 3386: NTP-01-011 NTP:
+    ntpq_stripquotes() returns incorrect Value
+  * Sec 3385: NTP-01-010 NTP:
+    ereallocarray()/eallocarray() underused
+  * Sec 3381: NTP-01-006 NTP: Copious amounts of Unused Code
+  * Sec 3380: NTP-01-005 NTP: Off-by-one in Oncore GPS Receiver
+  * Sec 3379 / CVE-2017-6458 / VU#325339: NTP-01-004 NTP:
+    Potential Overflows in ctl_put() functions
+  * Sec 3378 / CVE-2017-6451 / VU#325339: NTP-01-003
+    Improper use of snprintf() in mx4200_send()
+  * Sec 3377 / CVE-2017-6460 / VU#325339: NTP-01-002
+    Buffer Overflow in ntpq when fetching reslist
+  * Sec 3376: NTP-01-001 Makefile does not enforce Security Flags
+  * Sec 3361 / CVE-2016-9042 / VU#325339: 0rigin (zero origin) DoS.
+  * [Bug 3393] clang scan-build findings
+  * [Bug 3363] Support for openssl-1.1.0 without compatibility modes
+  * [Bug 3356] Bugfix 3072 breaks multicastclient
+  * [Bug 3173] forking async worker: interrupted pipe I/O</comment>
+    <requestid>486156</requestid>
+  </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>92ef52f1e293253c866b0060903a3279</srcmd5>
+    <version>4.2.8p10</version>
+    <time>1512042072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545184</requestid>
+  </revision>
+  <revision rev="112" vrev="3">
+    <srcmd5>ac9528726e257269975dbf0aaa1b8b1b</srcmd5>
+    <version>4.2.8p10</version>
+    <time>1516091047</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>561845</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>a51e3e419b234aacbf1b4132829bb170</srcmd5>
+    <version>4.2.8p11</version>
+    <time>1521498669</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.8p11 (bsc#1082210):
+  * CVE-2016-1549: Sybil vulnerability: ephemeral association
+    attack. While fixed in ntp-4.2.8p7, there are significant
+    additional protections for this issue in 4.2.8p11.
+  * CVE-2018-7182, bsc#1083426: ctl_getitem(): buffer read overrun
+    leads to undefined behavior and information leak.
+  * CVE-2018-7170, bsc#1083424: Multiple authenticated ephemeral
+    associations.
+  * CVE-2018-7184, bsc#1083422: Interleaved symmetric mode cannot
+    recover from bad state.
+  * CVE-2018-7185, bsc#1083420: Unauthenticated packet can reset
+    authenticated interleaved association.
+  * CVE-2018-7183, bsc#1083417: ntpq:decodearr() can write beyond
+    its buffer limit.
+  * Obsoletes these patches: ntp-sntp-a.patch, ntp-warnings.patch
+- Remove dead code from conf.start-ntpd (bsc#1082063).
+- Don't use libevent's cached time stamps in sntp.
+  (bsc#1077445, ntp-sntp-libevent.patch)</comment>
+    <requestid>586702</requestid>
+  </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>7d3eb604ff2d75b105c199494f416f16</srcmd5>
+    <version>4.2.8p11</version>
+    <time>1522596323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592537</requestid>
+  </revision>
+  <revision rev="115" vrev="3">
+    <srcmd5>83e082f8f182e9dabe3d94ec23adb570</srcmd5>
+    <version>4.2.8p11</version>
+    <time>1525121541</time>
+    <user>dimstar_suse</user>
+    <comment>- Refactor the key handling in %post so that it does not overwrite
+  user settings (bsc#1036505) and is more robust against ignored
+  SIGPIPE (bsc#1090564).</comment>
+    <requestid>601632</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>32ef0ff04d502569e56f7566068cf1a9</srcmd5>
+    <version>4.2.8p12</version>
+    <time>1540198894</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.8p12
+  * CVE-2018-12327, bsc#1098531: fixed stack buffer overflow in
+    the openhost() command-line call of NTPQ/NTPDC.
+  * Add further tweaks to improve the fix for CVE-2018-7170,
+    bsc#1083424.
+  * ntp-usrgrp-resolver.patch was integrated upstream.
+- Don't run autoreconf anymore and remove all related hacks and
+  BuildRequires.</comment>
+    <requestid>640670</requestid>
+  </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>9e1ffba810642da92ed922ed1e036f0b</srcmd5>
+    <version>4.2.8p12</version>
+    <time>1545866596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657615</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>ff85b004a447152adc901337c90ba369</srcmd5>
+    <version>4.2.8p13</version>
+    <time>1552464517</time>
+    <user>dimstar_suse</user>
+    <comment>- Update ro 4.2.8p13
+  * CVE-2019-8936, bsc#1128525: Crafted null dereference attack in
+    authenticated mode 6 packet.
+  * Fix several bugs in the BANCOMM reclock driver.
+  * Fix ntp_loopfilter.c snprintf compilation warnings.
+  * Fix spurious initgroups() error message.
+  * Fix STA_NANO struct timex units.
+  * Fix GPS week rollover in libparse.
+  * Fix incorrect poll interval in packet.
+  * Add a missing check for ENABLE_CMAC.
+
+- Drop use of $FIRST_ARG in ntp.spec
+  The use of $FIRST_ARG was probably required because of the
+  %service_* rpm macros were playing tricks on the shell positional
+  parameters. This is bad practice and error prones so let's assume
+  that no macros should do that anymore and hence it's safe to assume
+  that positional parameters remains unchanged after any rpm macro
+  call.</comment>
+    <requestid>684184</requestid>
+  </revision>
+  <revision rev="119" vrev="2">
+    <srcmd5>6e4e0cbb62e4881d81c442b2c0f8d68d</srcmd5>
+    <version>4.2.8p13</version>
+    <time>1556915208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700033</requestid>
+  </revision>
+  <revision rev="120" vrev="3">
+    <srcmd5>ef65ae82d847012244ae9d862856e7c3</srcmd5>
+    <version>4.2.8p13</version>
+    <time>1561405662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709068</requestid>
+  </revision>
+  <revision rev="121" vrev="4">
+    <srcmd5>13d4f59ffd7c39c0317d36ceb0067414</srcmd5>
+    <version>4.2.8p13</version>
+    <time>1564413869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715673</requestid>
+  </revision>
+  <revision rev="122" vrev="5">
+    <srcmd5>96b6de18102be81b2d21808723f57fda</srcmd5>
+    <version>4.2.8p13</version>
+    <time>1565178857</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720097</requestid>
+  </revision>
+</revisionlist>

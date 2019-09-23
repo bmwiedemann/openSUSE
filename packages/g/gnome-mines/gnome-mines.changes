@@ -1,0 +1,652 @@
+-------------------------------------------------------------------
+Tue May  7 06:45:54 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.2:
+  + Show keyboard cursor with bgcolors theme.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr  5 07:57:53 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update License to GPL-3.0-or-later.
+
+-------------------------------------------------------------------
+Mon Mar 11 18:05:59 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 09:28:42 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 20 17:24:45 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 16 22:22:09 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Added suggested appdata tags.
+  + Tests to validate appdata and desktop.
+  + Keyboard shortcuts page.
+  + Automated builds using Gitlab CI.
+  + Updated application icon.
+  + Snap packaging updates.
+  + Added in-game shortcuts to keyboard shortcuts window.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan  8 12:37:23 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.4.1:
+  + Fixed crash when opening appearance dialog.
+  + Add libmath dependency to possibly fix linking issues.
+- Drop update-desktop-files BuildRequires and macro: No longer
+  needed.
+
+-------------------------------------------------------------------
+Mon Jan  7 19:59:42 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.4:
+  + Avoid unnecessary icon regeneration.
+  + Extend css to cover tile theme images.
+  + Fixed initial aspect ratio issues.
+  + Change default theme to bgcolors.
+  + Remove transitions for a snappier experience.
+  + Add Keyboard shortcuts overlay.
+  + Code cleanup.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan  5 00:24:18 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.3:
+  + Avoid unnecessary icon regeneration.
+  + Extend css to cover tile theme images.
+  + Fixed initial aspect ratio issues.
+  + Change default theme to bgcolors.
+  + Remove transitions for a snappier experience.
+  + Add Keyboard shortcuts overlay.
+  + Code cleanup.
+  + Updated translations.
+- Changes from version 3.31.1:
+  + Appmenu removal.
+  + Code cleanup.
+  + Enjoy the victory after winning.
+
+-------------------------------------------------------------------
+Wed Sep 26 19:00:57 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1.1:
+  + Fixed invisible flag.
+
+-------------------------------------------------------------------
+Wed Sep 26 15:11:13 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + Install 256x256 icon.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  8 09:44:30 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + Updated translations.
+  + Help cleanup.
+  + Flatpak dependency urls updated to gitlab.
+- Remove lang package from recommended packages as it already
+  supplements main package (same effect, it's redundant).
+
+-------------------------------------------------------------------
+Sat Jun 23 00:50:24 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.3:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 13 07:59:01 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  6 16:17:33 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92.1:
+  + Include meson build files in the tarball.
+
+-------------------------------------------------------------------
+Tue Mar  6 10:57:56 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Fixed icon install dir.
+  + Install appdata to non-deprecated location.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:28:46 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb  5 01:27:58 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.90:
+  + Fixed icon redraw issues.
+  + Added snap packaging.
+  + Updated translations.
+- Update Url tag to https://wiki.gnome.org/Mines: current Mines'
+  web page.
+- Drop intltool BuildRequires following upstream migration to
+  Gettext.
+- Drop %glib2_gsettings_schema_post, %desktop_database_post,
+  %icon_theme_cache_post post/postun scriptlets and
+  %glib2_gsettings_schema_requires macro: they are no longer needed
+  since RPM File Triggers.
+- Add meson BuildRequires and replace configure, make and
+  make_install macros with meson, meson_build and meson_install,
+  reflecting upstream port to Meson build system.
+- Add gee-0.8 and vapigen pkgconfig modules BuildRequires: new
+  dependencies.
+
+-------------------------------------------------------------------
+Tue Nov 14 08:34:40 UTC 2017 - fezhang@suse.com
+
+- Update to version 3.27.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 12 01:21:47 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  6 21:59:49 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.25.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 22 09:16:01 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 15 12:54:46 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.90:
+  + Fixed Bugzilla submit bug button text.
+  + Use glib preset for i18n.
+  + Build changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 23 10:41:22 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.2:
+  + Added flatpak manifest.
+  + Added meson build rules.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 21 10:00:43 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 27 21:43:09 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 22 12:23:26 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.23.2:
+  + Use start-time mine randomization.
+  + Removed deprecated calls.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 11 01:06:45 UTC 2016 - firebird209@gmail.com
+
+- Update to version 3.22.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 10 20:52:38 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 18:41:07 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Added content ratings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 13 08:07:15 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 29 22:34:40 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + libgnome-games-support dep change fixes.
+  + Updated translations.
+- Replace pkgconfig(libgnome-games-support-1.0) BuildRequires with
+  pkgconfig(libgnome-games-support-1) following upstream.
+
+-------------------------------------------------------------------
+Tue Aug 16 13:59:45 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.21.90.1:
+  + Build with new libgnome-games-support.
+- Changes from version 3.21.90:
+  + Appdata updates.
+  + Updated translations.
+- Replace pkgconfig(libgames-support-1.0) BuildRequires with
+  pkgconfig(libgnome-games-support-1.0), following upstreams port.
+
+-------------------------------------------------------------------
+Tue Jun 21 20:28:24 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.3:
+  + Smaller minimum tile size to fit larger boards on fullHD.
+  + Disable accels on the custom game screen.
+  + Use libgames-support for score tracking.
+- Add pkgconfig(libgames-support-1.0) BuildRequires: New
+  dependency.
+
+-------------------------------------------------------------------
+Wed Jun 15 10:18:53 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Can not enter custom size (bgo#766145).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 22 09:48:23 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 15 10:35:15 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.91:
+  + Fixed usage of deprecated icon name.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 15:56:01 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.90:
+  + Updated the Appdata to spec version 0.7+.
+  + Fixed window size growing huge with GTK+ 3.20.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 19 10:31:54 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.4:
+  + Stop using deprecated gnome-common.
+  + Add pre-commit and pre-applypatch hooks.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec 23 13:36:14 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.19.3:
+  + Updated appdata and doap.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 24 00:07:44 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.2:
+  + Improved keyboard cursor display and behaviour.
+  + Added extra keyboard shortcuts for starting/stopping games.
+  + Change tile click behaviour to reveal tile on click release.
+  + Fixed jumping clock issue in timer.
+  + Show incorrectly flagged fields.
+  + Updated translations.
+- Changes from version 3.19.1:
+  + Fixed timer reset and timer jumps.
+  + Updated translations.
+- Add fdupes BuildRequires and pass corresponding macro to remove
+  duplicates.
+- Stop obsoleting gnomine, no version supported in openSUSE ships
+  this anymore.
+
+-------------------------------------------------------------------
+Tue Nov 10 07:47:25 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.2:
+  + Improved keyboard cursor display.
+  + Added keyboard shortcuts to start/stop game.
+  + Changed tile click to reveal on click release.
+  + Fixed timer reset on game won.
+  + Show incorrectly flagged fields.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 12 19:09:33 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 06:30:59 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 07:55:07 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 09:19:46 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 17 21:07:36 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 21 14:30:55 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.4:
+  + Performance improvements.
+  + Reduced high CPU usage after consecutive games.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 26 08:17:16 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.3:
+  + Added animations enable/disable checkbox.
+  + Fixed unclickable spots between grid cells.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 27 08:15:00 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.2:
+  + Fixed keyboard navigation limits.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 15 07:28:04 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + Provide a symbolic icon.
+  + Fixed theme selector initialization glitch.
+  + Updated translations.
+- Remove HighContrast %icon_theme_cache_post(un) calls, as Symbolic
+  icons have replaced them.
+
+-------------------------------------------------------------------
+Mon Mar 23 20:16:54 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 08:42:19 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 08:34:20 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 17 09:08:13 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Readded screen transitions.
+  + Code cleanup.
+  + Removed New Game from app menu.
+  + Updated About dialog.
+  + Connect to size_allocate.
+  + Do not save size when tiled.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 26 11:46:03 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.4:
+  + Added support for themes and theme selector dialog.
+  + Fixed distance between game area and sidebar buttons.
+  + Removed hover effect from inactive tiles.
+  + Do not hide any buttons.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec 17 20:41:22 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.3:
+  + Use appstream-util for appdata validation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 13 20:35:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + use XDG_CURRENT_DESKTOP to use/avoid headerbar.
+  + Fixed sidebar resizing on game start glitch.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 10:25:06 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Appdata: updated screenshot size.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 16 11:23:49 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + Don't translate timer labels.
+  + Symbolic flag install path fixed.
+  + Use new function for setting accelerators.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  1 22:39:30 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.91:
+  + Ignore the clock after exploding.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 18 20:26:53 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + High contrast icons.
+  + Updated translations.
+- Handle HighContrast icons in post/postun.
+
+-------------------------------------------------------------------
+Mon Jul 21 20:51:15 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.4:
+  + Theme tweaks for the latest Adwaita.
+  + Fixed rough image rendering.
+  + Do not use deprecated methods and properties.
+  + Fixed styling issues causing diamonds to appear in the grid.
+  + Fixed small flag icon.
+  + Translatable clock label.
+  + Better-looking minimum width request for the small board.
+  + Don't show headerbar/appmenu on systems that don't support it.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 12 18:48:27 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.2:
+  + Update CSS style.
+  + Flipped tiles should not appear sensitive on hover.
+  + Scrollbars added for large custom minefields.
+  + Use improved flag icon in right column.
+  + Rename Difficulty button to Change Difficulty.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 17 13:07:58 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.1:
+  + Use delayed settings saving.
+  + New game screen improvements.
+  + Custom game screen improvements.
+  + Removed the preferences dialog.
+  + Better minimum size request.
+  + Reimplemented the minefield to be CSS stylable.
+  + Moved user interface creating code to Glade UI files.
+  + Added good-looking CSS style.
+  + Updated help.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 17 12:52:44 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 15 09:13:46 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 24 20:55:59 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated help.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 19 13:36:38 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Appdata: update screenshot size.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 18 19:11:46 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Appdata: specify project_group.
+  + Rename desktop file to gnome-mines.desktop.
+  + Hint time penalty now increases.
+  + Add tooltips to buttons.
+
+-------------------------------------------------------------------
+Tue Dec 17 19:03:28 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Move buttons to side of window.
+  + Enable question flags by default.
+  + Allow setting percentage of mines on the board in custom games.
+  + Scores dialog: autoscroll to new score.
+  + Scores dialog: replace Quit button with Close.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 30 10:06:55 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.1:
+  + Redesigned interface.
+  + Remove BugBuddy support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Oct 13 11:09:31 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Remove "Hint" action from app menu.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 23 21:11:13 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 16 22:17:05 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.92:
+  + Add appdata file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 21 14:19:27 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Resize the window when switching to a smaller minefield.
+  + Fix broken links and typos in user help.
+  + Fix name of app menu when not launched by GNOME Shell.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 20 07:05:02 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.2:
+  + Help: update damned lies module name to gnome-mines.
+  + Fix crash when releasing button outside minefield.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 15 17:39:06 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 27 07:39:14 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 19 22:02:48 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + Renamed desktop file back to gnomine.dekstop.
+  + Increase number visibility.
+  + Keyboard support.
+  + Updated translations.
+- Also obsolete gnomine-lang to ease upgrades.
+
+-------------------------------------------------------------------
+Tue Mar  5 20:16:14 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 3.7.90: split-off from gnome-games.
+

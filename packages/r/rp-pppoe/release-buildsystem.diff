@@ -1,0 +1,19 @@
+Index: src/Makefile.in
+===================================================================
+--- src/Makefile.in.orig
++++ src/Makefile.in
+@@ -214,11 +214,9 @@ install: all
+ 		mkdir -p $(DESTDIR)/etc/rc.d/init.d ;\
+ 		$(install) -m 755 ../scripts/pppoe-init-turbolinux $(DESTDIR)/etc/rc.d/init.d/pppoe ; \
+ 	fi
+-	@if [ -f /etc/SuSE-release ] ; then \
+-		echo "Looks like a SuSE Linux system; installing $(DESTDIR)/etc/rc.d/init.d/pppoe" ; \
+-		mkdir -p $(DESTDIR)/etc/rc.d/init.d ;\
+-		$(install) -m 755 ../scripts/pppoe-init-suse $(DESTDIR)/etc/rc.d/init.d/pppoe ; \
+-	fi
++	echo "Looks like a SuSE Linux system; installing $(DESTDIR)/etc/init.d/pppoe" ; \
++	mkdir -p $(DESTDIR)/etc/init.d ;\
++	$(install) -m 755 ../scripts/pppoe-init-suse $(DESTDIR)/etc/init.d/pppoe ; \
+ 
+ 	@if [ -f l2tp/handlers/sync-pppd.so ] ; then \
+ 		mkdir -p $(DESTDIR)/usr/lib/l2tp/plugins ; \

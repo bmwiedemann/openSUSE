@@ -1,0 +1,6 @@
+<package name="python-Twisted" project="openSUSE:Factory">
+  <title></title>
+  <description>An extensible framework for Python programming, with special focus
+on event-based network programming and multiprotocol integration.</description>
+  <devel project="devel:languages:python" package="python-Twisted"/>
+</package>

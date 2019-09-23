@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Mon Aug 22 11:40:04 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.0.3
+* add JSON output format
+* Extend accounting capabilities to support quotas
+
+-------------------------------------------------------------------
+Mon Dec  8 23:39:19 UTC 2014 - jengelh@inai.de
+
+- Drop %version from subincludedir, it tends to break recompiles of
+  already-built trees on library updates.
+
+-------------------------------------------------------------------
+Tue Sep 23 15:43:40 UTC 2014 - jengelh@inai.de
+
+- Drop gpg-offline build-time requirement; this is now handled by
+  the local source validator
+
+-------------------------------------------------------------------
+Mon Mar  4 13:52:21 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.0.2
+* This release fixes inversions between byte and packet counters.
+- Drop rhel5-patch1.diff, rhel5-patch2.diff (merged upstream)
+
+-------------------------------------------------------------------
+Wed Nov 28 20:10:08 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signature
+
+-------------------------------------------------------------------
+Mon Oct  8 23:49:34 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.0.1
+* This release adds the new flag NFACCT_SNPRINTF_T_XML for
+  nfacct_snprintf and several cleanups.
+
+-------------------------------------------------------------------
+Tue Mar 27 13:55:31 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 1.0.0
+* nfacct: change prototype of nfacct_snprintf() to support output
+  in XML
+* nfacct: check if attribute is set in nfacct_attr_get*
+
+-------------------------------------------------------------------
+Thu Dec 29 21:28:40 UTC 2011 - jengelh@medozas.de
+
+- Initial package for build.opensuse.org

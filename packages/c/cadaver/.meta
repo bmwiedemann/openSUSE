@@ -1,0 +1,7 @@
+<package name="cadaver" project="openSUSE:Factory">
+  <title>Command Line WebDAV Client for Unix</title>
+  <description>Cadaver is a command-line WebDAV client for Unix. It supports file
+upload, download, on-screen display, namespace operations (move and
+copy), collection creation and deletion, and locking operations.</description>
+  <devel project="network" package="cadaver"/>
+</package>

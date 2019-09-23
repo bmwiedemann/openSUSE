@@ -1,0 +1,10 @@
+--- a/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py
++++ b/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py
+@@ -87,6 +87,7 @@ STANDALONE_MODULES = [
+     [_("Software Sources"),              "pkexec mintsources",                  "cs-sources",         "admin",          _("ppa, repository, package, source, download")],
+     [_("Package Management"),            "dnfdragora",                          "cs-sources",         "admin",          _("update, install, repository, package, source, download")],
+     [_("Package Management"),            "yumex-dnf",                           "cs-sources",         "admin",          _("update, install, repository, package, source, download")],
++    [_("YaST"),                          "xdg-su -c /sbin/yast2",               "yast",               "admin",          _("system, admin, yast2, settings")],
+     [_("Users and Groups"),              "cinnamon-settings-users",             "cs-user-accounts",   "admin",          _("user, users, account, accounts, group, groups, password")],
+     [_("Bluetooth"),                     "blueberry",                           "cs-bluetooth",       "hardware",       _("bluetooth, dongle, transfer, mobile")],
+     [_("Manage Services and Units"),     "systemd-manager-pkexec",              "cs-sources",         "admin",          _("systemd, units, services, systemctl, init")]

@@ -1,0 +1,47 @@
+# Macros for building OpenStack RPMs.
+#
+
+#
+# Python macros
+#
+
+%py_setup setup.py
+
+%py_shbang_opts -s
+
+%py_build() %{expand:\
+CFLAGS="%{optflags}" %{__python} %{py_setup} %{?py_setup_args} build --executable="%{__python2} %{py_shbang_opts}" %{?1}\
+}
+
+%py2_shbang_opts -s
+
+%py2_build() %{expand:\
+CFLAGS="%{optflags}" %{__python2} %{py_setup} %{?py_setup_args} build --executable="%{__python2} %{py2_shbang_opts}" %{?1}\
+}
+
+%py2_install() %{expand:\
+CFLAGS="%{optflags}" %{__python2} %{py_setup} %{?py_setup_args} install -O1 --skip-build --root %{buildroot} %{?1}\
+}
+
+#
+# OpenStack macros
+#
+
+# the directory where the test files will be installed
+%openstack_test_package_dir %{_localstatedir}/lib/%{name}-test
+
+# Installing a test package is always done the same way.
+# the macro takes a single parameter - the component which is the
+# name that is installed into site-packages
+# e.g. for python-novaclient the name is novaclient
+%openstack_test_package_install() \
+install -d -m 755 %{buildroot}/%{openstack_test_package_dir} \
+# Some packages differ here, try to install as much as possible: \
+cp -av \\\
+       README.md README.rst PKG-INFO .testr.conf .stestr.conf .*tests bin \\\
+       etc examples run_tests.* setup.cfg setup.py \\\
+       smoketests static test tests tools tox.ini \\\
+   %{buildroot}/%{openstack_test_package_dir} || : \
+rm -rf %{buildroot}/%{openstack_test_package_dir}/%1 \
+ln -s %{python2_sitelib}/%1 %{buildroot}/%{openstack_test_package_dir}/%1 \
+%nil

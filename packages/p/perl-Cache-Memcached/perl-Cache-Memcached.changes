@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Fri Apr 17 17:06:16 UTC 2015 - coolo@suse.com
+
+- updated to 1.30
+   see /usr/share/doc/packages/perl-Cache-Memcached/ChangeLog
+
+  2012-05-19: version 1.30
+  
+  	* Fix buck2sock corruption that causes errors like
+  	  "No map found matching for GLOB" or "No sock found for" (hachi@cpan.org)
+  	    https://rt.cpan.org/Ticket/Display.html?id=62872
+  
+  	* Fix t/05_reconnect_timeout.t to not fail on networks that fast-reject
+  	  TEST-NET-1 https://rt.cpan.org/Ticket/Display.html?id=74500
+  
+  	* Fix warning about undefined value in GetParser.pm (kost@ropnet.ru)
+  	    https://rt.cpan.org/Ticket/Display.html?id=31067
+  
+  	* Add documentation of connect_timeout and select_timeout
+  	    https://rt.cpan.org/Ticket/Display.html?id=30904
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:32 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Sep 22 11:51:00 UTC 2010 - dbahi@novell.com
+
+- for some reason in obs build t/05_reconnect_timeout
+  does not pause - and thus fails. works fine with --local build
+  so removing test.
+
+-------------------------------------------------------------------
+Tue Sep 21 11:17:08 UTC 2010 - dbahi@novell.com
+
+- initial package 1.29
+  * created by cpanspec 1.78
+

@@ -1,0 +1,19 @@
+From: Thomas Renninger <trenn@suse.de>
+
+Fix compile issue:
+src/thd_trip_point.h:46:38: error: 'INT32_MAX' was not declared in this scope
+ #define TRIP_PT_INVALID_TARGET_STATE INT32_MAX
+
+
+Index: thermal_daemon-1.8/src/thd_trip_point.h
+===================================================================
+--- thermal_daemon-1.8.orig/src/thd_trip_point.h	2018-09-12 22:58:08.000000000 +0200
++++ thermal_daemon-1.8/src/thd_trip_point.h	2018-11-02 15:57:22.742358004 +0100
+@@ -30,6 +30,7 @@
+ #include "thd_preference.h"
+ #include "thd_cdev.h"
+ #include <time.h>
++#include <stdint.h>
+ #include <vector>
+ #include <algorithm>    // std::sort
+ #include <stdexcept>

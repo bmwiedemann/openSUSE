@@ -1,0 +1,742 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>699a42248591710fbf12544d77b7106d</srcmd5>
+    <version>4.4.1491400697.19ef0fc5</version>
+    <time>1494345799</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission; improved description vs. #492864</comment>
+    <requestid>493425</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0f457cecfa167305c7719a03f84130a0</srcmd5>
+    <version>4.4.1497257618.89b04ed8</version>
+    <time>1497518680</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.1497257618.89b04ed8:
+  * Allow plugins to load specific configurations
+  * Remove auth_config from OpenQA::WebAPI::Auth::*
+  * Add fullscreen base into project
+  * Add form entry for fullscreen view
+  * Fix navbar to not hide if dropdown selected
+  * Change help popover description in filtersection
+  * Correct main controller and index page
+  * Add error message for missing webserver
+  * Add link to CaaSP staging (#1360)
+  * Also recognize fdo bugrefs in Utils.pm (#1367)
+  * Database change for bug status
+  * Improve assets log messages (#1365)
+  * Documentation for GRE (#1369)
+  * Extend sorting by time to parent group overview (#1362)
+- Include upstream changes for worker with no-cleanup
+
+- Prequire needed group nogroup
+
+- Re-enable dbus service installation
+
+- Do not suppress errors from useradd
+- Rectify RPM groups</comment>
+    <requestid>503557</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fc96af4a1d44f84eda78e356da7cb3ea</srcmd5>
+    <version>4.5.1509097496.8b8e8e20</version>
+    <time>1509305084</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1509097496.8b8e8e20</comment>
+    <requestid>537318</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0c7bd6047b6b50910c7ba37e336784dd</srcmd5>
+    <version>4.5.1511709996.0670f622</version>
+    <time>1511817498</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1511709996.0670f622</comment>
+    <requestid>545843</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4210921c52fe0f5f76ceb746e9e4498a</srcmd5>
+    <version>4.5.1511814842.53907890</version>
+    <time>1511949249</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1511814842.53907890</comment>
+    <requestid>546170</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>795a84e94ccc197eb0589b38c2ddb03a</srcmd5>
+    <version>4.5.1513750232.be133588</version>
+    <time>1515505810</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1513750232.be133588</comment>
+    <requestid>561981</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7e976efc9b5a52cf88c6ee37ebb28cce</srcmd5>
+    <version>4.5.1515509269.fa07a084</version>
+    <time>1515623771</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1515509269.fa07a084</comment>
+    <requestid>563070</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9c17cdda1972bb450f1f879b43014f93</srcmd5>
+    <version>4.5.1515767133.56cd6ee5</version>
+    <time>1515876594</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1515767133.56cd6ee5</comment>
+    <requestid>563961</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ceeb40a70807c6e183b0e628f0f8fa08</srcmd5>
+    <version>4.5.1516716144.98db9c99</version>
+    <time>1516804323</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1516716144.98db9c99</comment>
+    <requestid>568721</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>03ba8a1db64fae9ad650b19e476c82df</srcmd5>
+    <version>4.5.1517920216.2250682a</version>
+    <time>1517932266</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1517920216.2250682a</comment>
+    <requestid>573302</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5c04c67ec4198acc6f6345039535f202</srcmd5>
+    <version>4.5.1518003872.3977d2f5</version>
+    <time>1518601891</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1518003872.3977d2f5</comment>
+    <requestid>576269</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>409f837dfd413b6ad71a31f7dc2dfef1</srcmd5>
+    <version>4.5.1519128406.810fb68b</version>
+    <time>1519145846</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1519128406.810fb68b</comment>
+    <requestid>578346</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>971b82f8bedfa0ca6f263e818c01d6b3</srcmd5>
+    <version>4.5.1519929327.f726adcc</version>
+    <time>1520164307</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1519929327.f726adcc</comment>
+    <requestid>582130</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7de1b6c4af61a12db69c012ef75f7c30</srcmd5>
+    <version>4.5.1520100590.2279151e</version>
+    <time>1520415560</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1520100590.2279151e</comment>
+    <requestid>583662</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8bce8aff9350a39d393526bcb51b2eba</srcmd5>
+    <version>4.5.1520515419.c3df6f91</version>
+    <time>1520778354</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1520515419.c3df6f91</comment>
+    <requestid>585204</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3cf8a71bcefab395b7a5df4477e0ddbb</srcmd5>
+    <version>4.5.1523608608.fca0aa46</version>
+    <time>1523875931</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1523608608.fca0aa46</comment>
+    <requestid>596779</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e07ffbe81f373e6c80a3196ad7aa45f4</srcmd5>
+    <version>4.5.1524056562.74e334c1</version>
+    <time>1524238254</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1524056562.74e334c1</comment>
+    <requestid>598549</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>39384dc0c910cda1512ab1caf963ea7a</srcmd5>
+    <version>4.5.1524586233.92db89bc</version>
+    <time>1524838126</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1524586233.92db89bc</comment>
+    <requestid>601539</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>77ceeb6785f7ab08c3c1c9d5522fa380</srcmd5>
+    <version>4.5.1525548058.3f6bb61a</version>
+    <time>1525779442</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1525548058.3f6bb61a</comment>
+    <requestid>604660</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ed588b4fbf25740279d776d7dbdd4dfb</srcmd5>
+    <version>4.5.1526033850.1ad9148d</version>
+    <time>1526372099</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1526033850.1ad9148d</comment>
+    <requestid>606859</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7e262d8f28ff8877a3b7145e3abcd888</srcmd5>
+    <version>4.5.1526551139.04373a1e</version>
+    <time>1526573163</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1526551139.04373a1e</comment>
+    <requestid>610065</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cfd0a604559aca5ae97569fd8ed4efa3</srcmd5>
+    <version>4.5.1527149502.003be4d6</version>
+    <time>1527583723</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1527149502.003be4d6</comment>
+    <requestid>612555</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a1d8701c44dd01641019706b0b642b65</srcmd5>
+    <version>4.5.1527697506.2eedfb2e</version>
+    <time>1527934343</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1527697506.2eedfb2e</comment>
+    <requestid>613264</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b47d086705e78e9d780a94cbe465b010</srcmd5>
+    <version>4.5.1528009330.e68ebe2b</version>
+    <time>1528111352</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1528009330.e68ebe2b</comment>
+    <requestid>613831</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a6c44f4798861c44f9ca3ff7161b939e</srcmd5>
+    <version>4.6.1529433451.a70c6e82</version>
+    <time>1529501683</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 4.6.1529433451.a70c6e82:
+  * Remove running_or_waiting method
+  * Remove waiting state that was leftover from 5e65496f
+  * Ensure proxy is connected to os-autoinst in devel test
+  * Allow status as a ws_proxy command
+  * Make waiting for paused more robust against disconnects
+  * Remove unused parameter in wait_for_developer_console_contains_log_message
+  * Let the web socket console automatically reconnect
+  * Ensure ws connection won't timeout in fullstack tests
+  * Improve check for developer console in fullstack test
+  * Remove link to developer console
+  * Use docker image from OBS (#1685)
+  * Let tmpfiles.d create the mount point &quot;share&quot; (#1689)
+  * Add basic barrier documentation
+  * Improve documentation about mutexes
+  * Remove $isodir from Utils (only used in tests)
+  * Remove /tests/X/iso route
+  * Remove hdddir and otherdir from Utils
+  * Fix waiting for development session
+  * Don't fake D-Bus when running the devel fullstack test
+  * Propagate os-autoinst URL from worker to web UI
+  * Fix CSS for developer console
+  * Fix path for liveviewhandler in Apache config
+  * Adapt execution of developer test to latest changes
+  * Fix perl critic error
+  * Open the 2nd window/tab in devel mode test correctly
+  * Handle errors happening before dev session correctly
+  * Add unit test for developer mode
+  * Remove unneccassary D-bus env for livehandler
+  * Refactor live view handler to use regular methods</comment>
+    <requestid>617892</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7f2b749de4314933e57648977d6b0134</srcmd5>
+    <version>4.6.1530017682.0f384112</version>
+    <time>1530087789</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1530017682.0f384112
+4.6.1530017682.0f384112</comment>
+    <requestid>619223</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3492f4c495b4d9dad75f5217b35cf646</srcmd5>
+    <version>4.6.1531161673.f7fc21dd</version>
+    <time>1531379922</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1531161673.f7fc21dd
+4.6.1531161673.f7fc21dd</comment>
+    <requestid>621910</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ead74c73ed848d0ed461b594f13f3160</srcmd5>
+    <version>4.6.1533914931.14b73490</version>
+    <time>1534100126</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1533914931.14b73490
+4.6.1533914931.14b73490</comment>
+    <requestid>628671</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3ae52d20a7252a6e888b62100a286c67</srcmd5>
+    <version>4.6.1534873283.be929573</version>
+    <time>1534940496</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1534873283.be929573
+4.6.1534873283.be929573</comment>
+    <requestid>630804</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f432e6cd41741eec7fa62802cd1870cb</srcmd5>
+    <version>4.6.1536432963.ac9f540e</version>
+    <time>1536679133</time>
+    <user>maxlin_factory</user>
+    <comment>Update to 4.6.1536432963.ac9f540e
+4.6.1536432963.ac9f540e</comment>
+    <requestid>634610</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7b05be3b18e92494c107258159bc887d</srcmd5>
+    <version>4.6.1536756702.f75303c1</version>
+    <time>1537018819</time>
+    <user>maxlin_factory</user>
+    <comment>Update to 4.6.1536756702.f75303c1
+4.6.1536756702.f75303c1</comment>
+    <requestid>635567</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9351bcc141fa322033864d7e6f30a077</srcmd5>
+    <version>4.6.1537939546.7aa7ed58</version>
+    <time>1538117568</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1537939546.7aa7ed58
+4.6.1537939546.7aa7ed58</comment>
+    <requestid>638326</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a12df0463c24bdcf99403a9892447c44</srcmd5>
+    <version>4.6.1538057874.2d8d0618</version>
+    <time>1538374804</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1538057874.2d8d0618
+4.6.1538057874.2d8d0618</comment>
+    <requestid>639153</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>05d99f8c2d3b44d780b27dce8e9a3e2c</srcmd5>
+    <version>4.6.1538413557.f9e2a131</version>
+    <time>1538672483</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1538413557.f9e2a131
+4.6.1538413557.f9e2a131</comment>
+    <requestid>639713</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>fe04a8d6341a48600a3ea658f310755a</srcmd5>
+    <version>4.6.1543249675.02bb8eff</version>
+    <time>1543399985</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1543249675.02bb8eff
+4.6.1543249675.02bb8eff</comment>
+    <requestid>652062</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>843661a27fcf3f7fdbbcd99bc05bd236</srcmd5>
+    <version>4.6.1543400978.50e006bc</version>
+    <time>1543528817</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1543400978.50e006bc
+4.6.1543400978.50e006bc</comment>
+    <requestid>652386</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a9a163b9af112e262011a2ff88b7eb4f</srcmd5>
+    <version>4.6.1543830229.359b5dd9</version>
+    <time>1543953337</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1543830229.359b5dd9
+4.6.1543830229.359b5dd9</comment>
+    <requestid>653606</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>bd59b57126bb2de92c2fa32d5627f8fd</srcmd5>
+    <version>4.6.1544166689.47296c23</version>
+    <time>1544190002</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1544166689.47296c23
+4.6.1544166689.47296c23</comment>
+    <requestid>655987</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>8ab19580f5724bda10300da9f7468eed</srcmd5>
+    <version>4.6.1544510066.913d8f26</version>
+    <time>1544539781</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1544510066.913d8f26
+4.6.1544510066.913d8f26</comment>
+    <requestid>657104</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>04f1aa6dce33ab2258b330ad5f40550c</srcmd5>
+    <version>4.6.1544609268.19a4cf68</version>
+    <time>1544726971</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1544609268.19a4cf68
+4.6.1544609268.19a4cf68</comment>
+    <requestid>657733</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>25bc55687f8f4053d6db6ccd564a7a49</srcmd5>
+    <version>4.6.1545054233.21210ce3</version>
+    <time>1545141585</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1545054233.21210ce3
+4.6.1545054233.21210ce3</comment>
+    <requestid>658981</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>9cae2b6beba8720d7b05d9407eccb23d</srcmd5>
+    <version>4.6.1545230885.56b79eeb</version>
+    <time>1545376918</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1545230885.56b79eeb
+4.6.1545230885.56b79eeb</comment>
+    <requestid>660159</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e5081f71e9846e50b32e191b749d8a64</srcmd5>
+    <version>4.6.1545406149.53968c1e</version>
+    <time>1545648455</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1545406149.53968c1e
+4.6.1545406149.53968c1e</comment>
+    <requestid>660689</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>3b92ed4f0460e173ca181ea9c19afdce</srcmd5>
+    <version>4.6.1547114886.81dabdea</version>
+    <time>1547211913</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1547114886.81dabdea
+4.6.1547114886.81dabdea</comment>
+    <requestid>664324</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>756708022e0cbbd42cddb6b2791befd5</srcmd5>
+    <version>4.6.1547830304.62f9aaaa</version>
+    <time>1548064860</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1547830304.62f9aaaa
+4.6.1547830304.62f9aaaa</comment>
+    <requestid>667073</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>46c489c2fcb9d069220d0f86875e65e5</srcmd5>
+    <version>4.6.1548078204.c9f60161</version>
+    <time>1548335731</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1548078204.c9f60161
+4.6.1548078204.c9f60161</comment>
+    <requestid>668160</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>9ae44b6834268e34d1aa87e4920855b8</srcmd5>
+    <version>4.6.1548420629.e8e80a4b</version>
+    <time>1548704901</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1548420629.e8e80a4b
+4.6.1548420629.e8e80a4b</comment>
+    <requestid>668767</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>8e1e79eb1beb48ac15a6755208832e78</srcmd5>
+    <version>4.6.1548936964.47070d70</version>
+    <time>1549140577</time>
+    <user>coolo</user>
+    <comment>Update to 4.6.1548936964.47070d70
+4.6.1548936964.47070d70</comment>
+    <requestid>670475</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>1225abcdee4c98a9c536d970d0710b7f</srcmd5>
+    <version>4.6.1549026855.08485c7c</version>
+    <time>1549286670</time>
+    <user>coolo</user>
+    <comment>Update to 4.6.1549026855.08485c7c
+4.6.1549026855.08485c7c</comment>
+    <requestid>670839</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>0ce6e38d6b71494266837488659c1a59</srcmd5>
+    <version>4.6.1549379724.2b90641c</version>
+    <time>1549464489</time>
+    <user>coolo</user>
+    <comment>Update to 4.6.1549379724.2b90641c
+4.6.1549379724.2b90641c</comment>
+    <requestid>671926</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>0da6ebc9895ba931fc217839d2d2644e</srcmd5>
+    <version>4.6.1549799415.315b994a</version>
+    <time>1549916856</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1549799415.315b994a
+4.6.1549799415.315b994a</comment>
+    <requestid>673146</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>e784498e7b12c46ffc7c8447b09ef78f</srcmd5>
+    <version>4.6.1549966436.c3938033</version>
+    <time>1550048919</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1549966436.c3938033
+4.6.1549966436.c3938033</comment>
+    <requestid>674334</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>3eb8d0a3806e389e73dced600370b0e3</srcmd5>
+    <version>4.6.1550584043.5098c32d</version>
+    <time>1550668432</time>
+    <user>maxlin_factory</user>
+    <comment>Update to 4.6.1550584043.5098c32d
+4.6.1550584043.5098c32d</comment>
+    <requestid>677475</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>2a8ef47882f8028911a39eebfe7f1720</srcmd5>
+    <version>4.6.1550673294.3fb7464e</version>
+    <time>1551113769</time>
+    <user>coolo</user>
+    <comment>Update to 4.6.1550673294.3fb7464e
+4.6.1550673294.3fb7464e</comment>
+    <requestid>678530</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>725c236d90db81d13e6b6929a1195bb1</srcmd5>
+    <version>4.6.1551101052.7f891940</version>
+    <time>1551276562</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1551101052.7f891940
+4.6.1551101052.7f891940</comment>
+    <requestid>679597</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>32f8b300fa08c5a8c1169f40e0e4b595</srcmd5>
+    <version>4.6.1551454083.e27d66d8</version>
+    <time>1551687835</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1551454083.e27d66d8
+4.6.1551454083.e27d66d8</comment>
+    <requestid>681090</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>47aa0ff106808027f6d592d501ba98ab</srcmd5>
+    <version>4.6.1551797932.a5aadf24</version>
+    <time>1551883836</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1551797932.a5aadf24
+4.6.1551797932.a5aadf24</comment>
+    <requestid>681951</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>e65d2f61461d5b725a0e2c147c114edb</srcmd5>
+    <version>4.6.1551963862.0a6b30be</version>
+    <time>1552207095</time>
+    <user>coolo</user>
+    <comment>Update to 4.6.1551963862.0a6b30be
+4.6.1551963862.0a6b30be</comment>
+    <requestid>682664</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>9ab451a22d4e3aac2befd326a92012ec</srcmd5>
+    <version>4.6.1552078716.6b292c9a</version>
+    <time>1552299360</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1552078716.6b292c9a
+4.6.1552078716.6b292c9a</comment>
+    <requestid>683580</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>629025426ddbcf67e55b482187e418d0</srcmd5>
+    <version>4.6.1552406543.b3e49dcb</version>
+    <time>1552464974</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1552406543.b3e49dcb
+4.6.1552406543.b3e49dcb</comment>
+    <requestid>684489</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>b78d9114efcc7744f8e6b192e243990f</srcmd5>
+    <version>4.6.1552567428.80082fe5</version>
+    <time>1552643557</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1552567428.80082fe5
+4.6.1552567428.80082fe5</comment>
+    <requestid>685186</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>c06bed208f7a57481bc0e61ae7c8c2b7</srcmd5>
+    <version>4.6.1553599469.57d6b3ca</version>
+    <time>1554115226</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1553599469.57d6b3ca
+4.6.1553599469.57d6b3ca</comment>
+    <requestid>690260</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>39991c7ed21fc91ea20cee631d2b4f9c</srcmd5>
+    <version>4.6.1554809752.3a77164a</version>
+    <time>1555322000</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1554809752.3a77164a
+4.6.1554809752.3a77164a</comment>
+    <requestid>694131</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>42516787a89831145fd1945432875500</srcmd5>
+    <version>4.6.1555478309.f6dfdd9b</version>
+    <time>1555574220</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1555478309.f6dfdd9b
+4.6.1555478309.f6dfdd9b</comment>
+    <requestid>695274</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>8ff7f9d4a92bf2d80c3d234039cc847c</srcmd5>
+    <version>4.6.1557739992.f9fbeb06</version>
+    <time>1557834191</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1557739992.f9fbeb06
+4.6.1557739992.f9fbeb06</comment>
+    <requestid>702642</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>52a4981d01dfa8e30af64c0a43980c40</srcmd5>
+    <version>4.6.1558084113.18c6f052</version>
+    <time>1558427887</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1558084113.18c6f052
+4.6.1558084113.18c6f052</comment>
+    <requestid>704157</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>72274a364448424a461bd2f0cba80942</srcmd5>
+    <version>4.6.1558532409.ab91f319</version>
+    <time>1558690238</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1558532409.ab91f319
+4.6.1558532409.ab91f319</comment>
+    <requestid>704781</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>299318d69d10e5836cea4eb4b3306ab0</srcmd5>
+    <version>4.6.1559047081.8050f3f0</version>
+    <time>1559481498</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1559047081.8050f3f0
+4.6.1559047081.8050f3f0</comment>
+    <requestid>706753</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>724f3a90b8ab0ee425c9a25b588c07c5</srcmd5>
+    <version>4.6.1559744346.36d65edf</version>
+    <time>1559837879</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1559744346.36d65edf
+4.6.1559744346.36d65edf</comment>
+    <requestid>707872</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>6ba9391b586a8bd944a7f6f5dd793652</srcmd5>
+    <version>4.6.1560026218.807c3c09</version>
+    <time>1560338374</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1560026218.807c3c09
+4.6.1560026218.807c3c09</comment>
+    <requestid>709343</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>58b8a3b01f7075a6a7ed18d44bc64979</srcmd5>
+    <version>4.6.1560497112.f26a0400</version>
+    <time>1560537798</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1560497112.f26a0400
+4.6.1560497112.f26a0400</comment>
+    <requestid>710011</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>b04b9e9393d01a77ad66fc3337c07570</srcmd5>
+    <version>4.6.1560549641.c09044ae</version>
+    <time>1560760495</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1560549641.c09044ae
+4.6.1560549641.c09044ae</comment>
+    <requestid>710227</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>61ea61236de9d5f7b773fc35733f2616</srcmd5>
+    <version>4.6.1560873517.08f60a7b</version>
+    <time>1560971619</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1560873517.08f60a7b
+4.6.1560873517.08f60a7b</comment>
+    <requestid>710836</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>a103cd70eed247d62b0d4bb3323d946f</srcmd5>
+    <version>4.6.1561118372.b9b694d3</version>
+    <time>1561494119</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1561118372.b9b694d3
+4.6.1561118372.b9b694d3</comment>
+    <requestid>711804</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>507a0b57b1ee6d0451e9e74b7b3ffec5</srcmd5>
+    <version>4.6.1561959871.3b6d67be</version>
+    <time>1561970676</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1561959871.3b6d67be
+4.6.1561959871.3b6d67be</comment>
+    <requestid>712726</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>8dc41d6491634445241064d783cecc09</srcmd5>
+    <version>4.6.1562157181.8465317e</version>
+    <time>1562247842</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1562157181.8465317e
+4.6.1562157181.8465317e</comment>
+    <requestid>713259</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>db90322f7bce57ebcb0a0251e9c044c8</srcmd5>
+    <version>4.6.1562333920.03805636</version>
+    <time>1562591550</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1562333920.03805636
+4.6.1562333920.03805636
+4.6.1562333920.03805636</comment>
+    <requestid>713952</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>70c58171ea29874e2be81d02183c5933</srcmd5>
+    <version>4.6.1563206570.e00d3964</version>
+    <time>1563362419</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1563206570.e00d3964
+4.6.1563206570.e00d3964
+4.6.1563206570.e00d3964</comment>
+    <requestid>715610</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>75ee7725c134e467926be581f73c9c24</srcmd5>
+    <version>4.6.1568387059.db88ff48d</version>
+    <time>1568805139</time>
+    <user>maxlin_factory</user>
+    <comment>Update to 4.6.1568387059.db88ff48d
+4.6.1568387059.db88ff48d
+4.6.1568387059.db88ff48d</comment>
+    <requestid>731496</requestid>
+  </revision>
+</revisionlist>

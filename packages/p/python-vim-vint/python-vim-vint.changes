@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Mon Sep 16 10:46:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Updat eto 0.3.21:
+  * various bugfixes only
+- Drop upstream merged patch yaml5.patch
+
+-------------------------------------------------------------------
+Mon Mar 18 10:59:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix hardcoded versions
+- Add patch to build with new PyYAML 5:
+  * yaml5.patch
+
+-------------------------------------------------------------------
+Wed Feb 13 06:23:38 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add missing dependencies for Python 2, enum34 and pathlib and add
+  missing test dependency mock
+- Remove unnecessary build dependency python-devel
+- Remove %bcond test
+- Fix CLI tests with test-sys-executable.patch
+- Change version == pins to >= in setup.py and test-requirements.txt
+- Update to v0.3.19
+  * New features
+    + Initial support for stdin
+  * Bug fixes
+    + Disable ProhibitImplicitScopeVariable
+    + Suppress warnings caused by map([], ' "x" ')
+    + Fix linting autocmd
+    + Fix acceptance tests
+  * Optimize
+    + ProhibitUnusedVariable
+    + get_asset_path
+    + ConfigProjectSource
+  * Documentation
+    + Link to default config
+    + Fix a broken code block for example
+
+-------------------------------------------------------------------
+Thu Nov 16 17:46:12 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version v0.3.18

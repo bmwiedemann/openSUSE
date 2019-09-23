@@ -1,0 +1,26 @@
+Index: conf/logfiles/iptables.conf
+===================================================================
+--- conf/logfiles/iptables.conf.orig	2010-04-30 23:36:27.000000000 +0200
++++ conf/logfiles/iptables.conf	2011-10-17 12:48:39.746113236 +0200
+@@ -6,17 +6,21 @@
+ # This was written and is maintained by:
+ #    Kirk Bauer <kirk@kaybee.org>
+ #
++# Modified for SLE and openSUSE by Philipp Thomas <pth@suse.de>
++#
+ # Please send all comments, suggestions, bug reports,
+ #    etc, to kirk@kaybee.org.
+ ########################################################
+ 
+ # What actual file?  Defaults to LogPath if not absolute path....
+ LogFile = ulogd/ulogd.syslogemu
++LogFile = firewall
+ 
+ # If the archives are searched, here is one or more line
+ # (optionally containing wildcards) that tell where they are...
+ Archive = ulogd/ulogd.syslogemu.*
+ Archive = ulogd/ulogd.syslogemu-*
++Archive = firewall-*
+ 
+ # Keep only the lines in the proper date range...
+ *ApplyStdDate

@@ -1,0 +1,268 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>09a17e64302a622c6814020d48efc14b</srcmd5>
+    <version>0.7.2</version>
+    <time>1311249876</time>
+    <user>darix</user>
+    <comment>Replaces python-flask</comment>
+    <requestid>76556</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2b2d2dcc3e99a57535be89a90cdd390c</srcmd5>
+    <version>0.7.2</version>
+    <time>1311249890</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 76556
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>67af658cc2e0a9fb8a40bbaf9b7f5777</srcmd5>
+    <version>0.7.2</version>
+    <time>1317024705</time>
+    <user>saschpe</user>
+    <comment>- Set license to BSD-3-Clause (SPDX style)
+- Require python-distribute instead of python-setuptools
+- Remove %clean section</comment>
+    <requestid>84392</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>67af658cc2e0a9fb8a40bbaf9b7f5777</srcmd5>
+    <version>0.7.2</version>
+    <time>1319182378</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>af9503285d2c1973e9003eb5c78334e6</srcmd5>
+    <version>0.8</version>
+    <time>1321274128</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.8:
+  * Refactored session support into a session interface so that
+    the implementation of the sessions can be changed without
+    having to override the Flask class.
+  * Empty session cookies are now deleted properly automatically.
+  * View functions can now opt out of getting the automatic
+    OPTIONS implementation.
+  * HTTP exceptions and Bad Request errors can now be trapped so that they
+    show up normally in the traceback.
+  * Flask in debug mode is now detecting some common problems and tries to
+    warn you about them.
+  * Flask in debug mode will now complain with an assertion error if a view
+    was attached after the first request was handled.  This gives earlier
+    feedback when users forget to import view code ahead of time.
+  * Added the ability to register callbacks that are only triggered once at
+    the beginning of the first request. (:meth:`Flask.before_first_request`)
+  * Malformed JSON data will now trigger a bad request HTTP exception instead
+    of a value error which usually would result in a 500 internal server
+    error if not handled.  This is a backwards incompatible change.
+  * Applications now not only have a root path where the resources and modules
+    are located but also an instane path which is the designated place to
+    drop files that are modified at runtime (uploads etc.).  Also this is
+    conceptionally only instance depending and outside version control so it's
+    the perfect place to put configuration files etc.  For more information
+    see :ref:`instance-folders`.
+  * Added the ``APPLICATION_ROOT`` configuration variable.
+  * Implemented :meth:`~flask.testing.TestClient.session_transaction` to
+    easily modify sessions from the test environment.
+  * Refactored test client internally.  The ``APPLICATION_ROOT`` configuration
+    variable as well as ``SERVER_NAME`` are now properly used by the test client</comment>
+    <requestid>90912</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f2b0cffb0415c092eb9e4cee19115b98</srcmd5>
+    <version>0.8</version>
+    <time>1323194137</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>f2b0cffb0415c092eb9e4cee19115b98</srcmd5>
+    <version>0.8</version>
+    <time>1340184029</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>922b7f2c88cfdc7e1a6d16a65d5f813e</srcmd5>
+    <version>0.9</version>
+    <time>1353133652</time>
+    <user>coolo</user>
+    <comment>- Disable testsuite on SLE_11_SP2
+
+- Update to version 0.9:
+  + The :func:flask.Request.on_json_loading_failed now returns a JSON formatted
+    response by default.
+  + The :func:flask.url_for function now can generate anchors to the
+    generated links.
+  + The :func:flask.url_for function now can also explicitly generate
+    URL rules specific to a given HTTP method.
+  + Logger now only returns the debug log setting if it was not set
+    explicitly.
+  + Unregister a circular dependency between the WSGI environment and
+    the request object when shutting down the request.  This means that
+    environ werkzeug.request will be None after the response was
+    returned to the WSGI server but has the advantage that the garbage
+    collector is not needed on CPython to tear down the request unless
+    the user created circular dependencies themselves.
+  + Session is now stored after callbacks so that if the session payload
+    is stored in the session you can still modify it in an after
+    request callback.
+  + The :class:flask.Flask class will avoid importing the provided import name
+    if it can (the required first parameter), to benefit tools which build Flask
+    instances programmatically.  The Flask class will fall back to using import
+    on systems with custom module hooks, e.g. Google App Engine, or when the
+    import name is inside a zip archive (usually a .egg) prior to Python 2.7.
+  + Blueprints now have a decorator to add custom template filters application
+    wide, :meth:flask.Blueprint.app_template_filter.
+  + The Flask and Blueprint classes now have a non-decorator method for adding
+    custom template filters application wide,
+    :meth:flask.Flask.add_template_filter and</comment>
+    <requestid>141541</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>922b7f2c88cfdc7e1a6d16a65d5f813e</srcmd5>
+    <version>0.9</version>
+    <time>1359109975</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>922b7f2c88cfdc7e1a6d16a65d5f813e</srcmd5>
+    <version>0.9</version>
+    <time>1379664102</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>13ca487c3f2483cd26727cdae33f5582</srcmd5>
+    <version>0.10.1</version>
+    <time>1380112621</time>
+    <user>coolo</user>
+    <comment>- add dependency on itsdangerous (forwarded request 197961 from dirkmueller)</comment>
+    <requestid>197962</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>3787b074c3e45fed1b97fcd97a097734</srcmd5>
+    <version>0.10.1</version>
+    <time>1382692564</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204561</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>3787b074c3e45fed1b97fcd97a097734</srcmd5>
+    <version>0.10.1</version>
+    <time>1409302788</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ac7580c8efa1370ed767f38d1a855751</srcmd5>
+    <version>0.11.1</version>
+    <time>1474976674</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>429835</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c59692ddc46253c2e2546b6785f9e168</srcmd5>
+    <version>0.11.1</version>
+    <time>1480341974</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441851</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>57015a0944809d1c02e4697c83a90800</srcmd5>
+    <version>0.12.1</version>
+    <time>1493368711</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>487844</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a4001b4284e3323af740446e7c0fa07b</srcmd5>
+    <version>0.12.2</version>
+    <time>1502707021</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515228</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>87b1f61fe7aa1500bd55a453d31d67a7</srcmd5>
+    <version>1.0</version>
+    <time>1525611327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602328</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d1630eb441411377e80f34d7f9657491</srcmd5>
+    <version>1.0.2</version>
+    <time>1526030761</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605120</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e8930075a114c510ee9c43946b5778d9</srcmd5>
+    <version>1.0.3</version>
+    <time>1560861809</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.3:
+  * :func:`send_file` encodes filenames as ASCII instead of Latin-1
+    (ISO-8859-1). This fixes compatibility with Gunicorn, which is
+    stricter about header encodings than PEP 3333. (`#2766`_)
+  * Allow custom CLIs using ``FlaskGroup`` to set the debug flag without
+    it always being overwritten based on environment variables.
+    (`#2765`_)
+  * ``flask --version`` outputs Werkzeug's version and simplifies the
+    Python version. (`#2825`_)
+  * :func:`send_file` handles an ``attachment_filename`` that is a
+    native Python 2 string (bytes) with UTF-8 coded bytes. (`#2933`_)
+  * A catch-all error handler registered for ``HTTPException`` will not
+    handle ``RoutingExcpetion``, which is used internally during
+    routing. This fixes the unexpected behavior that had been introduced
+    in 1.0. (`#2986`_)
+  * Passing the ``json`` argument to ``app.test_client`` does not
+    push/pop an extra app context. (`#2900`_)</comment>
+    <requestid>705805</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0326b08367547ae6ee44345c1e6e8c06</srcmd5>
+    <version>1.1.1</version>
+    <time>1564484590</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1:
+  * The flask.json_available flag was added back for compatibility with some
+    extensions. It will raise a deprecation warning when used, and will be
+    removed in version 2.0.0. #3288
+
+- specfile:
+  * updated version of Werkzeug requirement to 0.15
+  * AUTHORS file not in tar-ball
+  * license file got renamed to LICENSE.rst
+  * be more specific in %files section
+- update to version 1.1.0:
+  * Bump minimum Werkzeug version to &gt;= 0.15.
+  * Drop support for Python 3.4.
+  * Error handlers for &quot;InternalServerError&quot; or &quot;500&quot; will always be
+      passed an instance of &quot;InternalServerError&quot;. If they are invoked
+      due to an unhandled exception, that original exception is now
+      available as &quot;e.original_exception&quot; rather than being passed
+      directly to the handler. The same is true if the handler is for
+      the base &quot;HTTPException&quot;. This makes error handler behavior more
+      consistent. :pr:`3266`
+    + :meth:`Flask.finalize_request` is called for all unhandled
+        exceptions even if there is no &quot;500&quot; error handler.
+  * :attr:`Flask.logger` takes the same name as :attr:`Flask.name`
+      (the value passed as &quot;Flask(import_name)&quot;. This reverts 1.0's
+      behavior of always logging to &quot;&quot;flask.app&quot;&quot;, in order to support
+      multiple apps in the same process. A warning will be shown if
+      old configuration is detected that needs to be
+      moved. :issue:`2866`
+  * :meth:`flask.RequestContext.copy` includes the current session
+      object in the request context copy. This prevents &quot;session&quot;</comment>
+    <requestid>717080</requestid>
+  </revision>
+</revisionlist>

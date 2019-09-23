@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>930c450885642a7bd2963483856d2e7f</srcmd5>
+    <version>1.0.0</version>
+    <time>1562843777</time>
+    <user>dimstar_suse</user>
+    <comment>libXpresent provides an X Window System client interface to the Present
+extension to the X protocol.
+The Present extension provides a way for applications to update their window
+contents from a pixmap in a well defined fashion, synchronizing with the
+display refresh and potentially using a more efficient mechanism than
+copying the contents of the source pixmap.
+The reason for wanting this in Factory is that we need it to be able to
+deliver xfwm4 of the upcoming Xfce 4.14 release with Xpresent support as a
+fallback where vblank via GLX might not be available
+
+https://github.com/xfce-mirror/xfwm4/blob/master/COMPOSITOR</comment>
+    <requestid>714032</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8e1e02c02cae10a3cbb627cfa85a8b03</srcmd5>
+    <version>1.0.0</version>
+    <time>1568190922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729763</requestid>
+  </revision>
+</revisionlist>

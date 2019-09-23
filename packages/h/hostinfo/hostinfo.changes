@@ -1,0 +1,117 @@
+-------------------------------------------------------------------
+Sat Mar 10 17:55:17 UTC 2018 - jason.record@suse.com
+
+- Added 91-hostinfo.rules for network rules
+- Add INCLUDE_MOTD for message of the day
+
+-------------------------------------------------------------------
+Thu Mar  8 19:49:09 UTC 2018 - jason.record@suse.com
+
+- Added rchostinfo link
+- Removed preset in favor of system presets
+
+-------------------------------------------------------------------
+Thu Mar  8 16:25:45 UTC 2018 - jason.record@suse.com
+
+- Added deConfigure for uninstall procedure
+- Removed spec start and cleanup references
+
+-------------------------------------------------------------------
+Fri Mar  2 19:48:11 UTC 2018 - jason.record@suse.com
+
+- Added cleanUp to catch all exits
+- Added pre-existing run check
+- Updated hostinfo.timer
+- Added custom action
+
+-------------------------------------------------------------------
+Wed Feb 21 22:29:49 UTC 2018 - jason.record@suse.com
+
+- Start hostinfo.timer at install
+- Added ssh key fingerprints
+- Added hostinfo.timer
+
+-------------------------------------------------------------------
+Mon Feb 12 20:39:28 UTC 2018 - jason.record@suse.com
+
+- Updated hostinfo(8) man page
+- Distribution information first comes from baseproduct
+- Added CPU Load
+
+-------------------------------------------------------------------
+Thu Feb  8 19:57:45 UTC 2018 - jason.record@suse.com
+
+- Integrated hostinfo with issue-generator (bsc#1080153)
+
+-------------------------------------------------------------------
+Wed Feb  7 15:03:28 UTC 2018 - jason.record@suse.com
+
+- Consolidated rpm reads
+
+-------------------------------------------------------------------
+Tue Feb  6 19:07:38 UTC 2018 - jason.record@suse.com
+
+- Corrected memory with updated free output (bsc#1079662)
+- showNetAddr uses ip address instead of ifconfig
+
+-------------------------------------------------------------------
+Wed Jan 10 20:43:20 UTC 2018 - jason.record@suse.com
+
+- Fixed kernel install time
+- Fixed taint and distribution tags
+- Fixed spec file for sle15
+
+-------------------------------------------------------------------
+Thu Aug 14 16:00:26 UTC 2014 - jrecord@suse.com
+
+- Fixed 3rd party detection (bnc#891604)
+
+-------------------------------------------------------------------
+Fri Apr 25 17:15:43 UTC 2014 - jrecord@suse.com
+
+- Added CIDR to IP address list
+- Only show taint status for SLE12
+- Fixed missing interface (bnc#874878)
+
+-------------------------------------------------------------------
+Wed Mar 19 20:02:25 UTC 2014 - jrecord@suse.com
+
+- Update man page
+- Fixed FSF address in files
+- Change to System/Monitoring spec Group
+
+-------------------------------------------------------------------
+Fri Feb 28 12:42:34 UTC 2014 - jrecord@suse.com
+
+- Requires sed
+
+-------------------------------------------------------------------
+Tue Feb 25 20:12:51 UTC 2014 - jrecord@suse.com
+
+- Annotated hostinforc
+- Updated man page
+- Replaced hostinfo-updates with hostinfo-refreash
+- hostinfo-refreash is the cron.daily cron
+- Added hostinfo-refreash to cron.daily
+- Hostinfo creates /var/spool/hostinfo/root-motd
+
+-------------------------------------------------------------------
+Wed Feb 12 19:55:57 UTC 2014 - jrecord@suse.com
+
+- Added hostinfo-updates to check patch information
+- Installs into .profile
+- Hostinfo-updates links to cron.daily
+- Added startup switches for hostinfo
+- Updated man pages
+
+-------------------------------------------------------------------
+Thu Jan 30 23:51:43 UTC 2014 - jrecord@suse.com
+
+- Added hostinfo.changes
+
+-------------------------------------------------------------------
+Fri Jan 24 15:32:28 MST 2014 - jrecord@suse.com
+
+- added kernel taint and install time
+- initial
+

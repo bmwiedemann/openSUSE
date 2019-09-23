@@ -1,0 +1,31 @@
+---
+ libparted/labels/mac.c |    9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+Index: parted-3.2/libparted/labels/mac.c
+===================================================================
+--- parted-3.2.orig/libparted/labels/mac.c
++++ parted-3.2/libparted/labels/mac.c
+@@ -467,7 +467,7 @@ _rawpart_is_void (MacRawPartition* raw_p
+ 	return _rawpart_cmp_type (raw_part, "Apple_Void");
+ }
+ 
+-/* returns 1 if the raw_part represents a partition that is "unused space", or
++/* returns 0 if the raw_part represents a partition that is "unused space", or
+  * doesn't represent a partition at all.  NOTE: some people make Apple_Free
+  * partitions with MacOS, because they can't select another type.  So, if the
+  * name is anything other than "Extra" or "", it is treated as a "real"
+@@ -530,6 +530,13 @@ _rawpart_analyse (MacRawPartition* raw_p
+ 	if (!part)
+ 		goto error;
+ 
++	/* Check for Apple_Free and set type to PED_PARTITION_FREESPACE */
++	if (_rawpart_cmp_type (raw_part, "Apple_Free")
++	    && (strcmp (raw_part->name, "Extra") == 0))
++		part->type = PED_PARTITION_FREESPACE;
++	else
++		part->type = PED_PARTITION_NORMAL;
++
+ 	mac_part_data = part->disk_specific;
+ 
+ 	strncpy (mac_part_data->volume_name, raw_part->name, 32);

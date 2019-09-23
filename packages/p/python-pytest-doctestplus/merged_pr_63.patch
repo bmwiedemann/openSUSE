@@ -1,0 +1,22 @@
+From 0a7176531d8395a381bf76ce8ae2e59eef1a60ea Mon Sep 17 00:00:00 2001
+From: Pey Lian Lim <2090236+pllim@users.noreply.github.com>
+Date: Fri, 16 Aug 2019 14:55:38 -0400
+Subject: [PATCH] Compatibility with pytest 5.1
+
+---
+ pytest_doctestplus/plugin.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pytest_doctestplus/plugin.py b/pytest_doctestplus/plugin.py
+index 8a830f9..20114b8 100644
+--- a/pytest_doctestplus/plugin.py
++++ b/pytest_doctestplus/plugin.py
+@@ -160,7 +160,7 @@ def runtest(self):
+             failed, tot = doctest.testfile(
+                 str(self.fspath), module_relative=False,
+                 optionflags=options, parser=DocTestParserPlus(),
+-                extraglobs=dict(getfixture=fixture_request.getfuncargvalue),
++                extraglobs=dict(getfixture=fixture_request.getfixturevalue),
+                 raise_on_error=True, verbose=False, encoding='utf-8')
+ 
+         def reportinfo(self):

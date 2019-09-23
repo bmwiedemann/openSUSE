@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e625afa3f24a71f167146dfe247f3472</srcmd5>
+    <version>2.9.1</version>
+    <time>1528897001</time>
+    <user>maxlin_factory</user>
+    <comment>Required by python-sybil</comment>
+    <requestid>615010</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>02be09152f707b02d0598913aed182cb</srcmd5>
+    <version>2.9.1</version>
+    <time>1545648152</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659609</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>316079c9d22a08d252bc101c371c9914</srcmd5>
+    <version>2.9.2</version>
+    <time>1563808816</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.2:
+  * Small fixes in metadata</comment>
+    <requestid>717597</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a5e65fd093a7b937429f356e8ffdfc22</srcmd5>
+    <version>2.9.3</version>
+    <time>1568190981</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.3:
+  * various fixes</comment>
+    <requestid>729829</requestid>
+  </revision>
+</revisionlist>

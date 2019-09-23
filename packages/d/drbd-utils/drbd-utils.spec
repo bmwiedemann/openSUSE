@@ -1,7 +1,7 @@
 #
 # spec file for package drbd-utils
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@ Name:           drbd-utils
 Version:        9.10.0
 Release:        0
 Summary:        Distributed Replicated Block Device
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/HA
 Url:            http://www.drbd.org/
 Source:         http://www.linbit.com/downloads/drbd/utils/%{name}-%{version}.tar.gz
@@ -40,6 +40,7 @@ Patch5:         move_fencing_from_disk_to_net_in_example.patch
 # Bach port patch for kernel v5.2
 Patch6:         netlink-prepare-for-kernel-v5.2.patch
 Patch7:         netlink-Add-NLA_F_NESTED-flag-to-nested-attribute.patch
+Patch8:         cibadmin-return-code-convert.patch
 
 Provides:       drbd-bash-completion = %{version}
 Provides:       drbd-pacemaker = %{version}
@@ -66,13 +67,13 @@ BuildRequires:  glibc-devel
 BuildRequires:  libxslt
 BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  udev
+BuildRequires:  pkgconfig(systemd)
 %if %{with drbdmon}
 BuildRequires:  gcc-c++
 %endif
 %if %{without prebuiltman}
-BuildRequires: po4a
+BuildRequires:  po4a
 %endif
 Provides:       drbd-control
 Provides:       drbdsetup
@@ -92,6 +93,7 @@ raid 1. It is a building block for setting up clusters.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 export WANT_DRBD_REPRODUCIBLE_BUILD=1

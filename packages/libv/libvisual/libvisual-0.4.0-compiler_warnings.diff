@@ -1,0 +1,493 @@
+--- libvisual/lv_audio.c
++++ libvisual/lv_audio.c
+@@ -36,8 +36,10 @@
+ static int audio_samplepool_channel_dtor (VisObject *object);
+ static int audio_sample_dtor (VisObject *object);
+ 
++/*
+ static int audio_band_total (VisAudio *audio, int begin, int end);
+ static int audio_band_energy (VisAudio *audio, int band, int length);
++*/
+ 
+ /* Format transform functions */
+ static int transform_format_buffer_from_float (VisBuffer *dest, VisBuffer *src, int size, int sign);
+@@ -111,11 +113,10 @@
+ 	return VISUAL_OK;
+ }
+ 
+-
++/*
+ static int audio_band_total (VisAudio *audio, int begin, int end)
+ {
+ 	int bpmtotal = 0;
+-	int i;
+ 
+ //	for (i = begin; i < end; i++)
+ //		bpmtotal += audio->freq[2][i];
+@@ -129,7 +130,6 @@
+ static int audio_band_energy (VisAudio *audio, int band, int length)
+ {
+ 	int energytotal = 0;
+-	int i;
+ 
+ //	for (i = 0; i < length; i++)
+ //		energytotal += audio->bpmhistory[i][band];
+@@ -139,7 +139,7 @@
+ 	else
+ 		return 0;
+ }
+-
++*/
+ /**
+  * @defgroup VisAudio VisAudio
+  * @{
+@@ -206,12 +206,15 @@
+  */
+ int visual_audio_analyze (VisAudio *audio)
+ {
++/*
+         float temp_out[256];
+ 	float temp_audio[2][512];
++*/
+ 	short pcm[3][1024];
++/*
+ 	double scale;
+ 	int i, j, y;
+-
++*/
+ 	visual_log_return_val_if_fail (audio != NULL, -VISUAL_ERROR_AUDIO_NULL);
+ 
+ 	/* Load the pcm data */
+@@ -464,8 +467,8 @@
+ int visual_audio_get_sample_mixed_category (VisAudio *audio, VisBuffer *buffer, char *category, int divide)
+ {
+ 	VisListEntry *le = NULL;
+-	VisAudioSamplePool *samplepool;
+-	VisAudioSamplePoolChannel *channel;
++	VisAudioSamplePool *samplepool = NULL;
++	VisAudioSamplePoolChannel *channel = NULL;
+ 	VisBuffer temp;
+ 	int first = TRUE;
+ 
+@@ -497,8 +500,8 @@
+ int visual_audio_get_sample_mixed_all (VisAudio *audio, VisBuffer *buffer, int divide)
+ {
+ 	VisListEntry *le = NULL;
+-	VisAudioSamplePool *samplepool;
+-	VisAudioSamplePoolChannel *channel;
++	VisAudioSamplePool *samplepool = NULL;
++	VisAudioSamplePoolChannel *channel = NULL;
+ 	VisBuffer temp;
+ 	int first = TRUE;
+ 
+@@ -549,7 +552,6 @@
+ 	int ret;
+ 	float *data;
+ 	int datasize;
+-	int i;
+ 
+ 	visual_log_return_val_if_fail (audio != NULL, -VISUAL_ERROR_AUDIO_NULL);
+ 	visual_log_return_val_if_fail (buffer != NULL, -VISUAL_ERROR_BUFFER_NULL);
+@@ -591,7 +593,6 @@
+ 	int ret;
+ 	float *data;
+ 	int datasize;
+-	int i;
+ 
+ 	visual_log_return_val_if_fail (buffer != NULL, -VISUAL_ERROR_BUFFER_NULL);
+ 	visual_log_return_val_if_fail (sample != NULL, -VISUAL_ERROR_BUFFER_NULL);
+--- libvisual/lv_collection.c
++++ libvisual/lv_collection.c
+@@ -27,7 +27,7 @@
+ 
+ #include "lv_common.h"
+ #include "lv_collection.h"
+-
++/*
+ static int collection_iter_dtor (VisObject *object);
+ 
+ static int collection_iter_dtor (VisObject *object)
+@@ -45,7 +45,7 @@
+ 
+ 	return VISUAL_OK;
+ }
+-
++*/
+ 
+ /**
+  * @defgroup VisCollection VisCollection
+--- libvisual/lv_cpu.c
++++ libvisual/lv_cpu.c
+@@ -312,7 +312,6 @@
+ static int cpuid (unsigned int ax, unsigned int *p)
+ {
+ #if defined(VISUAL_ARCH_X86)
+-	uint32_t flags;
+ 
+ 	__asm __volatile
+ 		("movl %%ebx, %%esi\n\t"
+@@ -341,12 +340,9 @@
+  */
+ void visual_cpu_initialize ()
+ {
+-	uint32_t cpu_flags;
+ 	unsigned int regs[4];
+ 	unsigned int regs2[4];
+ 
+-	int mib[2], ncpu;
+-	visual_size_t len;
+ 
+ 	visual_mem_set (&__lv_cpu_caps, 0, sizeof (VisCPU));
+ 
+--- libvisual/lv_fourier.c
++++ libvisual/lv_fourier.c
+@@ -81,7 +81,6 @@
+ static int dft_cache_destroyer (VisObject *object);
+ static DFTCacheEntry *dft_cache_get (VisDFT *dft);
+ 
+-static int log_scale_cache_destroy (VisObject *object);
+ static LogScaleCacheEntry *log_scale_cache_get (int size);
+ 
+ static void perform_dft_brute_force (VisDFT *fourier, float *output, float *input);
+@@ -476,8 +475,6 @@
+  */
+ int visual_dft_perform (VisDFT *dft, float *output, float *input)
+ {
+-	unsigned int i;
+-
+ 	visual_log_return_val_if_fail (dft != NULL, -VISUAL_ERROR_FOURIER_NULL);
+ 	visual_log_return_val_if_fail (output != NULL, -VISUAL_ERROR_NULL);
+ 	visual_log_return_val_if_fail (input != NULL, -VISUAL_ERROR_NULL);
+@@ -542,8 +539,6 @@
+ 
+ int visual_dft_log_scale_standard (float *output, float *input, int size)
+ {
+-	int i;
+-
+ 	visual_log_return_val_if_fail (output != NULL, -VISUAL_ERROR_NULL);
+ 	visual_log_return_val_if_fail (input != NULL, -VISUAL_ERROR_NULL);
+ 
+--- libvisual/lv_hashmap.c
++++ libvisual/lv_hashmap.c
+@@ -64,9 +64,7 @@
+ 
+ static int hashmap_destroy (VisCollection *collection)
+ {
+-	VisCollectionDestroyerFunc destroyer;
+ 	VisHashmap *hashmap = VISUAL_HASHMAP (collection);
+-	VisHashmapEntry *mentry;
+ 	int i;
+ 
+ 	for (i = 0; i < hashmap->size; i++)
+@@ -125,7 +123,6 @@
+ {
+ 	VisCollectionIter *iter;
+ 	HashmapIterContext *context;
+-	VisHashmap *hashmap = VISUAL_HASHMAP (collection);
+ 
+ 	context = visual_mem_new0 (HashmapIterContext, 1);
+ 
+@@ -200,7 +197,6 @@
+ 
+ static void hashmap_iter_next (VisCollectionIter *iter, VisCollection *collection, VisObject *itercontext)
+ {
+-	VisHashmap *hashmap = VISUAL_HASHMAP (collection);
+ 	HashmapIterContext *context = HASHMAP_ITERCONTEXT (itercontext);
+ 
+ 	if (context->retrieved == FALSE) {
+@@ -502,8 +498,6 @@
+ 
+ int visual_hashmap_set_table_size (VisHashmap *hashmap, int tablesize)
+ {
+-	int oldsize;
+-
+ 	visual_log_return_val_if_fail (hashmap != NULL, -VISUAL_ERROR_HASHMAP_NULL);
+ 
+ 	/* Table was not empty, rehash */
+--- libvisual/lv_libvisual.c
++++ libvisual/lv_libvisual.c
+@@ -186,7 +186,7 @@
+ 	int i;
+ 
+ 	if (__lv_plugpaths == NULL)
+-			return VISUAL_OK;
++			return;
+ 
+ 	for (i = 0; i < __lv_plugpath_cnt - 1; i++)
+ 		visual_mem_free (__lv_plugpaths[i]);
+--- libvisual/lv_mem.c
++++ libvisual/lv_mem.c
+@@ -41,22 +41,18 @@
+ static void *mem_copy_mmx (void *dest, const void *src, visual_size_t n);
+ static void *mem_copy_mmx2 (void *dest, const void *src, visual_size_t n);
+ static void *mem_copy_3dnow (void *dest, const void *src, visual_size_t n);
+-static void *mem_copy_altivec (void *dest, const void *src, visual_size_t n);
+ 
+ static void *mem_set8_c (void *dest, int c, visual_size_t n);
+ static void *mem_set8_mmx (void *dest, int c, visual_size_t n);
+ static void *mem_set8_mmx2 (void *dest, int c, visual_size_t n);
+-static void *mem_set8_altivec (void *dest, int c, visual_size_t n);
+ 
+ static void *mem_set16_c (void *dest, int c, visual_size_t n);
+ static void *mem_set16_mmx (void *dest, int c, visual_size_t n);
+ static void *mem_set16_mmx2 (void *dest, int c, visual_size_t n);
+-static void *mem_set16_altivec (void *dest, int c, visual_size_t n);
+ 
+ static void *mem_set32_c (void *dest, int c, visual_size_t n);
+ static void *mem_set32_mmx (void *dest, int c, visual_size_t n);
+ static void *mem_set32_mmx2 (void *dest, int c, visual_size_t n);
+-static void *mem_set32_altivec (void *dest, int c, visual_size_t n);
+ 
+ /* Optimal performance functions set by visual_mem_initialize(). */
+ VisMemCopyFunc visual_mem_copy = mem_copy_c;
+@@ -373,11 +369,6 @@
+ 	return dest;
+ }
+ 
+-static void *mem_copy_altivec (void *dest, const void *src, visual_size_t n)
+-{
+-
+-}
+-
+ /* Memset functions, 1 byte memset */
+ static void *mem_set8_c (void *dest, int c, visual_size_t n)
+ {
+@@ -523,11 +514,6 @@
+ 	return dest;
+ }
+ 
+-static void *mem_set8_altivec (void *dest, int c, visual_size_t n)
+-{
+-
+-}
+-
+ /* Memset functions, 2 byte memset */
+ static void *mem_set16_c (void *dest, int c, visual_size_t n)
+ {
+@@ -667,11 +653,6 @@
+ 	return dest;
+ }
+ 
+-static void *mem_set16_altivec (void *dest, int c, visual_size_t n)
+-{
+-
+-}
+-
+ /* Memset functions, 4 byte memset */
+ static void *mem_set32_c (void *dest, int c, visual_size_t n)
+ {
+@@ -778,11 +759,6 @@
+ 	return dest;
+ }
+ 
+-static void *mem_set32_altivec (void *dest, int c, visual_size_t n)
+-{
+-
+-}
+-
+ /**
+  * @}
+  */
+--- libvisual/lv_morph.c
++++ libvisual/lv_morph.c
+@@ -240,7 +240,6 @@
+  */
+ int visual_morph_get_supported_depth (VisMorph *morph)
+ {
+-	VisPluginData *plugin;
+ 	VisMorphPlugin *morphplugin;
+ 
+ 	visual_log_return_val_if_fail (morph != NULL, -VISUAL_ERROR_MORPH_NULL);
+@@ -256,7 +255,6 @@
+ 
+ VisVideoAttributeOptions *visual_morph_get_video_attribute_options (VisMorph *morph)
+ {
+-	VisPluginData *plugin;
+ 	VisMorphPlugin *morphplugin;
+ 
+ 	visual_log_return_val_if_fail (morph != NULL, NULL);
+--- libvisual/lv_plugin.c
++++ libvisual/lv_plugin.c
+@@ -817,7 +817,6 @@
+ 	VisPluginRef **ref;
+ 	VisPluginInfo *plug_info;
+ 	VisPluginInfo *dup_info;
+-	const char *plug_name;
+ 	VisPluginGetInfoFunc get_plugin_info;
+ 	int *plugin_version;
+ #if defined(VISUAL_OS_WIN32)
+--- libvisual/lv_rectangle.c
++++ libvisual/lv_rectangle.c
+@@ -46,7 +46,7 @@
+  */
+ VisRectangle *visual_rectangle_new (int x, int y, int width, int height)
+ {
+-	VisRectangle *rect;
++	VisRectangle *rect = NULL;
+ 
+ 	/* Do the VisObject initialization */
+ 	visual_object_initialize (VISUAL_OBJECT (rect), TRUE, NULL);
+@@ -339,8 +339,6 @@
+  */
+ int visual_rectangle_denormalise_many_values (VisRectangle *rect, float *fxlist, float *fylist, int32_t *xlist, int32_t *ylist, int size)
+ {
+-	int i;
+-
+ 	visual_log_return_val_if_fail (rect != NULL, -VISUAL_ERROR_RECTANGLE_NULL);
+ 
+ 	visual_math_vectorized_floats_to_int32s_multiply (xlist, fxlist, size, rect->width);
+--- libvisual/lv_ringbuffer.c
++++ libvisual/lv_ringbuffer.c
+@@ -253,8 +253,6 @@
+ 	VisListEntry *le = NULL;
+ 	VisRingBufferEntry *entry;
+ 	int curposition = 0;
+-	int curoffset = 0;
+-	int positioncorr = 0;
+ 	int startat = 0;
+ 	int buffercorr = 0;
+ 
+@@ -273,7 +271,7 @@
+ 		le = NULL;
+ 
+ 		while ((entry = visual_list_next (ringbuffer->entries, &le)) != NULL) {
+-			VisBuffer *tempbuf;
++			VisBuffer *tempbuf = NULL;
+ 
+ 			lindex++;
+ 
+@@ -337,7 +335,6 @@
+ {
+ 	VisListEntry *le = NULL;
+ 	VisRingBufferEntry *entry;
+-	int curposition = 0;
+ 	int curoffset = 0;
+ 	int startat = 0;
+ 
+--- libvisual/lv_thread.c
++++ libvisual/lv_thread.c
+@@ -94,6 +94,7 @@
+ static int mutex_unlock_posix (VisMutex *mutex);
+ 
+ /* Windows32 implementation */
++/*
+ static VisThread *thread_create_win32 (VisThreadFunc func, void *data, int joinable);
+ static int thread_free_win32 (VisThread *thread);
+ static void *thread_join_win32 (VisThread *thread);
+@@ -106,7 +107,7 @@
+ static int mutex_lock_win32 (VisMutex *mutex);
+ static int mutex_trylock_win32 (VisMutex *mutex);
+ static int mutex_unlock_win32 (VisMutex *mutex);
+-
++*/
+ /* GThread implementation */
+ static VisThread *thread_create_gthread (VisThreadFunc func, void *data, int joinable);
+ static int thread_free_gthread (VisThread *thread);
+@@ -581,6 +582,7 @@
+ }
+ 
+ /* Windows32 implementation */
++/*
+ static VisThread *thread_create_win32 (VisThreadFunc func, void *data, int joinable)
+ {
+ 	VisThread *thread = NULL;
+@@ -597,13 +599,13 @@
+ 
+ 		return NULL;
+ 	}
+-/*
++/-*
+ 	printf("Waiting for thread to finish...\n");
+ 	if (WaitForSingleObject(a_thread, INFINITE) != WAIT_OBJECT_0) {
+ 		perror("Thread join failed");
+ 		exit(EXIT_FAILURE);
+ 	}
+-*/
++*-/
+ 	// Retrieve the code returned by the thread.
+ 	//     GetExitCodeThread(a_thread, &thread_result);
+ #endif
+@@ -692,7 +694,7 @@
+ 
+ #endif
+ }
+-
++*/
+ /* GThread implementation */
+ static VisThread *thread_create_gthread (VisThreadFunc func, void *data, int joinable)
+ {
+--- libvisual/lv_ui.c
++++ libvisual/lv_ui.c
+@@ -339,9 +339,6 @@
+  */
+ VisList *visual_ui_box_get_childs (VisUIBox *box)
+ {
+-	VisUIWidget *next;
+-	VisListEntry *le = NULL;
+-
+ 	visual_log_return_val_if_fail (box != NULL, NULL);
+ 
+ 	return &box->childs;
+@@ -1066,7 +1063,6 @@
+  */
+ int visual_ui_choice_add_many (VisUIChoice *choice, VisParamEntry *paramchoices)
+ {
+-	VisUIChoiceEntry *centry;
+ 	int i = 0;
+ 
+ 	visual_log_return_val_if_fail (choice != NULL, -VISUAL_ERROR_UI_CHOICE_NULL);
+--- libvisual/lv_video.c
++++ libvisual/lv_video.c
+@@ -1701,7 +1701,6 @@
+ int visual_video_fill_color (VisVideo *video, VisColor *rcolor)
+ {
+ 	VisColor color;
+-	VisRectangle rect;
+ 
+ 	visual_log_return_val_if_fail (video != NULL, -VISUAL_ERROR_VIDEO_NULL);
+ 
+@@ -2712,7 +2711,6 @@
+ {
+ 	uint8_t *destbuf, *srcbuf;
+ 	int x, y;
+-	int i = 0;
+ 	int pitchdiff = dest->pitch - (dest->width * dest->bpp);
+ 
+ 	destbuf = visual_video_get_pixels (dest);
+@@ -3165,7 +3163,7 @@
+ 		u = 0;
+ 
+ 		for (x = dest->width - 1; x--; u += du) {
+-			uint8_t cul, cll, cur, clr, b;
++			uint8_t cul, cll, cur, clr;
+ 			uint32_t ul, ll, ur, lr; /* fixed point 16.16 [0,1[   */
+ 			uint32_t b0; /* fixed point 16.16 [0,255[ */
+ 
+@@ -3228,7 +3226,7 @@
+ 		for (x = dest->width - 1; x--; u += du) {
+ 			_color16 cul, cll, cur, clr, b;
+ 			uint32_t ul, ll, ur, lr; /* fixed point 16.16 [0,1[   */
+-			uint32_t b3, b2, b1, b0; /* fixed point 16.16 [0,255[ */
++			uint32_t b2, b1, b0; /* fixed point 16.16 [0,255[ */
+ 
+ 			/* fracU = frac(u) = u & 0xffff */
+ 			/* fixed point format convertion: fracU >>= 8) */
+@@ -3303,7 +3301,7 @@
+ 		for (x = dest->width - 1; x--; u += du) {
+ 			_color24 cul, cll, cur, clr, b;
+ 			uint32_t ul, ll, ur, lr; /* fixed point 16.16 [0,1[   */
+-			uint32_t b3, b2, b1, b0; /* fixed point 16.16 [0,255[ */
++			uint32_t b2, b1, b0; /* fixed point 16.16 [0,255[ */
+ 
+ 			/* fracU = frac(u) = u & 0xffff */
+ 			/* fixed point format convertion: fracU >>= 8) */
+--- libvisual/lv_video_simd.c
++++ libvisual/lv_video_simd.c
+@@ -37,7 +37,6 @@
+ 	int i, j;
+ 	uint8_t *destbuf = visual_video_get_pixels (dest);
+ 	uint8_t *srcbuf = visual_video_get_pixels (src);
+-	uint8_t alpha;
+ 
+ 	for (i = 0; i < src->height; i++) {
+ 		for (j = 0; j < src->width; j++) {

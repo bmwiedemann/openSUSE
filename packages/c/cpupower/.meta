@@ -1,0 +1,7 @@
+<package name="cpupower" project="openSUSE:Factory">
+  <title>Tools to determine and set CPU Power related Settings</title>
+  <description>This tool is to make access to the Linux kernel's processor power subsystems
+like CPU frequency switching (cpufreq) or CPU sleep states (cpuidle) for users
+and userspace tools easier.</description>
+  <devel project="hardware" package="cpupower"/>
+</package>

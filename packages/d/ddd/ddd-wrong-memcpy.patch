@@ -1,0 +1,13 @@
+Index: ddd-3.3.12/ddd/ddd.C
+===================================================================
+--- ddd-3.3.12.orig/ddd/ddd.C
++++ ddd-3.3.12/ddd/ddd.C
+@@ -5822,7 +5822,7 @@ struct WhenReadyInfo {
+ 	}
+ 	else
+ 	{
+-	    memcpy(cbs.event, c.event, sizeof(cbs.event));
++	    memcpy(cbs.event, c.event, sizeof(XEvent));
+ 	    cbs.event = &event;
+ 	}
+     }

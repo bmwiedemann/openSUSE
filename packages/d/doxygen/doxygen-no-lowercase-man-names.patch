@@ -1,0 +1,12 @@
+Index: doxygen-1.8.10/src/fortranscanner.l
+===================================================================
+--- doxygen-1.8.10.orig/src/fortranscanner.l
++++ doxygen-1.8.10/src/fortranscanner.l
+@@ -2090,7 +2090,6 @@ static void initEntry()
+ */
+ static void addCurrentEntry(int case_insens)
+ {
+-  if (case_insens) current->name = current->name.lower();
+   //printf("===Adding entry %s to %s\n", current->name.data(), current_root->name.data());
+   current_root->addSubEntry(current);
+   last_entry = current;

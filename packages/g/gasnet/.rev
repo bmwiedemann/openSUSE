@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3686b0fc38ec77dba4f8295b8e35efd0</srcmd5>
+    <version>1.28.0</version>
+    <time>1487029306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>455153</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7bc57de43ba795f18d382e2312c521d7</srcmd5>
+    <version>1.28.2</version>
+    <time>1490026238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>481070</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2cfd2d3cfa3d83abecebe47df11ead25</srcmd5>
+    <version>1.28.2</version>
+    <time>1495883794</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>497819</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0e0486e563c252914e5dce3663285dd0</srcmd5>
+    <version>1.28.2</version>
+    <time>1496534450</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>500756</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>313c671492e8d81f758af4f44f392b6a</srcmd5>
+    <version>1.28.2</version>
+    <time>1497944437</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504597</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>72d9e66724c2138629e0d4c94e02bb6e</srcmd5>
+    <version>1.28.2</version>
+    <time>1500275327</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove BuildRequires for libpsm2-compat
+- Build with OFI support on x86</comment>
+    <requestid>507883</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>eb0af6ee5f78d17f398fceb722df241f</srcmd5>
+    <version>1.28.2</version>
+    <time>1502629147</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>516054</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f3182213bbd26d183503729cce5b8305</srcmd5>
+    <version>1.30.0</version>
+    <time>1504617578</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521006</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>dcb7e1651d0d2b1154b457e742523d13</srcmd5>
+    <version>1.30.0</version>
+    <time>1505238802</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521636</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>863a4dc280060632c123a87f7122fb16</srcmd5>
+    <version>1.30.0</version>
+    <time>1507391523</time>
+    <user>dimstar_suse</user>
+    <comment>- Force load of MPI environment
+- Use OpenMPI2 instead of OpenMPI1 except for ppc64be (unsupported by OpenMPI &gt;= 2)
+
+Requires and fixes SR#532253 and SR#532254</comment>
+    <requestid>532255</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>6e452466c3ae28534aa74f8d5da9547e</srcmd5>
+    <version>1.30.0</version>
+    <time>1548064732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666634</requestid>
+  </revision>
+</revisionlist>

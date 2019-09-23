@@ -1,0 +1,72 @@
+commit 39096d08575e62cf025a4fa2555b24ee5c19e23d
+Author: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+Date:   Mon Aug 28 14:07:34 2017 +0200
+
+    opa-fm Fallback to custom vendor if os_vendor fails
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+
+diff --git MakeTools/funcs-ext.sh MakeTools/funcs-ext.sh
+index 56a85fd68afa..8c49f79bc6be 100755
+--- MakeTools/funcs-ext.sh
++++ MakeTools/funcs-ext.sh
+@@ -710,31 +710,36 @@ function os_vendor()
+         # Apple Mac
+         rval=apple
+     else
+-        filelist=($('ls' /etc/*-release | egrep -v lsb | egrep -v os))
+-        rval=""
+-        if [ ${#filelist[@]} -eq 0 ] && [ -f /etc/lsb-release ]; then
+-            rval=$(cat /etc/lsb-release | egrep DISTRIB_ID | cut -d'=' -f2 | tr '[:upper:]' '[:lower:]')
+-        fi
+-        for file in $filelist
+-        do
+-	    if [ -f $file ]
+-	    then
+-		rval=$(basename $file -release)
+-		if [ $rval = 'SuSE' ]
+-		then
+-			if [ -f /etc/UnitedLinux-release ]
+-			then
+-				rval=UnitedLinux
++        if [ $? == 1 ]
++        then
++            rval="custom"
++        else
++			filelist=($('ls' /etc/*-release | egrep -v lsb | egrep -v os))
++			rval=""
++			if [ ${#filelist[@]} -eq 0 ] && [ -f /etc/lsb-release ]; then
++				rval=$(cat /etc/lsb-release | egrep DISTRIB_ID | cut -d'=' -f2 | tr '[:upper:]' '[:lower:]')
+ 			fi
+-		elif [ $rval = 'centos' ]
+-		then
+-			rval=redhat
+-		elif [ $rval != 'os' ]
+-		then
+-			break
++			for file in $filelist
++			do
++				if [ -f $file ]
++				then
++					rval=$(basename $file -release)
++					if [ $rval = 'SuSE' ]
++					then
++						if [ -f /etc/UnitedLinux-release ]
++						then
++							rval=UnitedLinux
++						fi
++					elif [ $rval = 'centos' ]
++					then
++						rval=redhat
++					elif [ $rval != 'os' ]
++					then
++						break
++					fi
++				fi
++			done
+ 		fi
+-	    fi
+-        done
+     fi
+     echo $rval
+ }

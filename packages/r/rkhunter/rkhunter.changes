@@ -1,0 +1,480 @@
+-------------------------------------------------------------------
+Fri Aug 23 15:11:01 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- package the /etc/cron.daily instead of buildrequire cron
+
+-------------------------------------------------------------------
+Tue Aug 20 11:25:02 CEST 2019 - kukuk@suse.de
+
+- BuildRequire cron, as this contains now the cron directories
+
+-------------------------------------------------------------------
+Thu Apr 11 16:43:07 UTC 2019 - ecsos@opensuse.org
+
+- Generate rkhunter.conf.local to prevent hash error for 
+  rkhunter.conf.
+- Remove some rpmlint-erros.
+
+-------------------------------------------------------------------
+Tue Sep 25 06:48:38 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace %__-type macro indirections.
+- Avoid repeating name in summary.
+
+-------------------------------------------------------------------
+Mon Sep 24 06:23:55 UTC 2018 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- upgrade to version 1.4.6 
+
+  * 1.4.6 (20/02/2018)
+
+
+  * New:
+   - Added support for Alpine Linux (busybox).
+   - Added the 'Diamorphine LKM' test.
+   - Added the ALLOWIPCPID configuration file option. This will allow
+   specific PIDs to be whitelisted from the shared memory check.
+   - Added the ALLOWIPCUSER configuration file option. This will allow
+   specific usernames to be whitelisted from the shared memory check.
+   - Added the IPC_SEG_SIZE configuration file option. This can be used
+   to set the minimum shared memory segment size to check. The default
+   value is 1048576 bytes (1MB).
+   - Added the SKIP_INODE_CHECK configuration file option. Setting this
+   option will disable the reporting of any changed inode numbers.
+   The default is to report inode changes. (This option may be useful
+   for filesystems such as Btrfs.)
+   - Added Ebury sshd backdoor test.
+   - Added a new SSH configuration test to check for various suspicious
+   configuration options. Currently there is only one check which
+   relates to the Ebury backdoor.
+   - Added basic test for Jynx2 rootkit.
+   - Added Komplex trojan test.
+   - Added basic test for KeRanger running process.
+   - Added test for Keydnap backdoor.
+   - Added basic test for Eleanor backdoor running process.
+   - Added basic tests for Mokes backdoor.
+   - Added tests for Proton backdoor.
+   - Added the SUSPSCAN_WHITELIST configuration file option. This
+   option can be used to whitelist file pathnames from the
+   'suspscan' test.
+
+ * Changes:
+   - The 'ipc_shared_mem' test will now log the minimum segment size
+   that will be checked. It will also log the size of any segments
+   which appear suspicious (that is, larger than the configured
+   allowed maximum size).
+   - If verbose logging is disabled, then generally only the test
+   name and the final result for the test will now be logged.
+   - Kernel symbol checks will now use the 'System.map' file, if it
+   exists, and no other kernel symbol file can be found.
+
+ * Bugfixes:
+   - For prelinked systems ensure that the default hash function is
+   SHA1 and not SHA256.
+   - The result from the 'hidden_procs' test was not being
+   calculated correctly.
+   - Checking the O/S version number could be missed in some cases.
+   - Minor improvement to the *BSD immutable files check.
+   - The 'OS_VERSION_FILE' configuration option pathname cannot be
+   a link, but this was not checked.
+   - Improved checks for the O/S name on Devuan systems.
+   - Handling of the '/etc/issue' file during O/S detection has now
+   improved. Escape sequences are either replaced or removed.
+   - Not all the linux kernel module names were being checked.
+   - The logging of detached memory segments tried to show the
+   process pathname. This has now been corrected, and where no
+   pathname is available, the segment owner and PID will be logged.
+   - It was possible for the return code to be lost when running the
+   'ipc_shared_mem' test. This has now been corrected.
+   - Some configuration options were still not being handled correctly
+   when specified more than once.
+   - The 'ipc_shared_mem' test did not correctly handle whitelisting
+   when a segment pathname was flagged as deleted. This has now
+   been corrected.
+   - Commands disabled in the configuration file were being logged
+   as not found. They are now logged as having been disabled.
+   - Disabling verbose logging could hide some warning messages.
+   - The 'shared_libs' test now caters for simple filenames, as well
+   as pathnames which contain the '$LIB', '$ORIGIN' or '$PLATFORM'
+   variables.
+
+ --
+
+-------------------------------------------------------------------
+Thu Nov 23 13:44:17 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Mon Jul  3 00:00:00 UTC 2017 - sven@uebelacker.net
+
+- upgrade to version 1.4.4 (29/06/2017)
+- Added the GLOBSTAR configuration file option. This will set the shells globstar option to allow recursive checks of directories. By default this option is disabled.
+- Added a Japanese translation file.
+- Added support for the 'BSDng' package manager option. This can be used by those *BSD systems which have the 'pkg' command available (currently later FreeBSD systems).
+- The BSD package manager will now try the 'pkg_info' command '-W' option if the '-F' option fails.
+- Added the LOCKDIR configuration option. It is now possible to specify the directory rkhunter will use to store the lock file (if USE_LOCKING has been set). The default is unset, and this will cause rkhunter to look for a directory to use. Details are in the configuration file.
+- Added the ALLOWIPCPROC configuration file option. This can be used to whitelist suspicious processes using shared memory segments (found during the 'ipc_shared_mem' check).
+
+-------------------------------------------------------------------
+Fri Apr  7 09:24:10 UTC 2017 - saigkill@opensuse.org
+
+- whitelist /dev/shm/CAPI20* and /dev/shm/sem.CAPI20* (boo#1030378)
+- whitelist /usr/bin/.fipscheck.hmac (boo#1030378)
+
+-------------------------------------------------------------------
+Tue Oct 25 06:54:06 UTC 2016 - meissner@suse.com
+
+- do not use /etc/SuSE-release anymore, fallback to generic
+  /etc/os-release (bsc#1006382)
+
+-------------------------------------------------------------------
+Sun Feb 28 10:02:20 UTC 2016 - bwiedemann@suse.com
+
+- Add rkhunter-grep-fix.patch to fix a bogus warning (boo#968578)
+
+-------------------------------------------------------------------
+Fri Dec 25 16:31:28 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+
+-------------------------------------------------------------------
+Sun May 10 08:08:40 UTC 2015 - VolkerKuhlmann@gmx.de
+
+- Default config file changed so APPEND_LOG was no longer activated.
+  Add to /etc/rkhunter.d/00-opensuse.conf
+
+-------------------------------------------------------------------
+Sun May 10 06:58:54 UTC 2015 - VolkerKuhlmann@gmx.de
+
+- Fix spec obliterating PKGMGR_NO_VRFY. This fixes bnc#926624
+- Create /etc/rkhunter.d and put config added by rpm in a file in it.
+- Fix hideous way of spec adding config variables to a file.
+
+-------------------------------------------------------------------
+Sun Apr  5 20:33:51 UTC 2015 - arun@gmx.de
+
+- specfile:
+  * added ALLOWHIDENFILE /dev/.blkid.tab, /dev/.blkid.tab.old, and
+    /etc/.updated
+
+-------------------------------------------------------------------
+Fri Oct 24 20:55:20 UTC 2014 - Greg.Freemyer@gmail.com
+
+- update to v1.4.2
+	* See CHANGELOG at http://rkhunter.cvs.sourceforge.net/viewvc/rkhunter/rkhunter/files/CHANGELOG
+- change Source: field to full URL
+- change the spelling of README.SuSE to README.SUSE
+- delete patch rkhunter-1.4.0-crontab.patch, now upstream
+- add +%{_var}/lib/%{name}/db/signatures to %files section
+
+-------------------------------------------------------------------
+Tue Oct 14 10:47:10 UTC 2014 - jengelh@inai.de
+
+- Remove bogus AutoReqProv: off
+- Remove ancient specfile tags and sections
+
+-------------------------------------------------------------------
+Sat Jan 11 09:09:00 UTC 2014 - meissner@suse.com
+
+- handle current lib64 platforms, added ppc64le and s390x.
+
+-------------------------------------------------------------------
+Fri Jun 28 19:58:21 UTC 2013 - Sascha Manns <saigkill@opensuse.org>
+
+- added some more strings to fix the issue.  
+
+-------------------------------------------------------------------
+Fri Jun 28 13:24:26 UTC 2013 - Sascha Manns <saigkill@opensuse.org>
+
+- fixed bnc#826276 (added string /dev/.sysconfig/network to
+  ALLOWEDDEVFILE)
+
+-------------------------------------------------------------------
+Mon Mar 25 23:01:40 UTC 2013 - schwab@suse.de
+
+- Add aarch64 to the list of lib64 platforms
+
+-------------------------------------------------------------------
+Mon Mar 18 10:30:16 UTC 2013 - Sascha Manns <saigkill@opensuse.org>
+
+- fixed bnc#776687 (changed OS_VERSION_FILE in rkhunter.con to
+  /etc/SuSE-release) 
+
+-------------------------------------------------------------------
+Mon Jan 07 13:18:00 UTC 2013 - bjoern@cs.tu-berlin.de
+
+Changes:
+- do not report a false positive on /etc/crontab
+- see http://sourceforge.net/tracker/?func=detail&atid=794187&aid=3591302&group_id=155034
+
+-------------------------------------------------------------------
+Sun May 13 20:58:04 UTC 2012 - Sascha.Manns@open-slx.de
+
+- updated to 1.4.0
+ * 1.4.0 (01/05/2012)
+
+ New:
+ - Added the '--list propfiles' command-line option. This will dump
+   out the list of filenames that will be searched for when building the
+   fileproperties database. By default the list is not shown if just
+   '--list' is used.
+ - Added Jynx rootkit check.
+ - Added Turtle/Turtle2 rootkit check.
+ - Added KBeast rootkit check.
+ - The installer now supports the Slackware TXZ package layout option.
+
+ Changes:
+ - Avoid checking exclamation points in ALLOWDEVFILE checks (this was
+   caught on 01/05/2012 causing a reissue of the 1.4.0 release).
+ - Allow the ALLOWDEVFILE, ALLOWHIDDENFILE and ALLOWHIDDENDIR options
+   to
+   use '%' as the space character. (Note: This is a temporary fix).
+ - The ALLOWPROCDELFILE option can now use wildcards in the file
+   names.
+ - The '--list perl' command-line option now shows whether the perl
+   command itself is installed or not.
+ - The 'shared_libs' test now allows whitelisting of the preloading
+   environment variables.
+ - The '-r/--rootdir' command-line options, and the ROOTDIR
+   configuration option are now deprecated. If they are used then an
+   error message will be displayed. The options will have no effect,
+   but rkhunter will continue. The options will be completely removed
+   at the next release.
+ - The 'hidden_ports' test will now show if a found port is TCP or
+   UDP.
+ - It is now possible to whitelist ports in the 'hidden_ports' test
+   using the PORT_WHITELIST configuration option.
+
+ Bugfixes:
+ - Allow the ALLOWPROCDELFILE option to work again.
+ - Correct the check of the ProFTPD version number.
+ - Fix the FreeBSD 'sockstat' command check to ensure that the correct
+   fields are used.
+ - Fix for newer version of the 'file' command when reporting scripts.
+ - Fix the ALLOWHIDDENFILE option to allow hidden symbolic links.
+ - The 'filesystem' check now handles files and directories with
+   spaces
+   in their names correctly.
+ - The 'startup_files' test was displaying file names with spaces in
+   them incorrectly. Also the test was not checking files which were
+   in hidden directories.
+ - Ensure that the ALLOWDEVFILE, ALLOWHIDDENFILE and ALLOWHIDDENDIR
+   options re-evaluate their whitelisting lists to ensure that any
+   wildcard entries are the most recent. (A time window previously
+   existed which meant that the list was processed, but new files
+   could be created before the test was run. As such they were
+   reported as false-positive warnings, when they should have been
+   whitelisted.)
+ - Allow the EXISTWHITELIST option to work with symbolic links.
+ - The test of whether prelinking is being used or not was sometimes
+   causing the file properties hash test to be skipped, without the
+   real reason being stated. Now the hash test will proceed but the
+   user will still get a warning (because it detects that prelinking
+   was used and is not now, or vice-versa).
+ - Rkhunter will now check to see if the 'head' and 'tail' commands
+   understand the '-n' option. If they do, then it will be used. If
+   they do not, then the older 'head -1' and 'tail -1' commands will be
+   used. 
+
+-------------------------------------------------------------------
+Thu Sep 22 14:12:47 UTC 2011 - Sascha.Manns@open-slx.de
+
+- fixed bnc#717773 rkhunter sends email without To-Header
+- added 'echo "To: $REPORT_EMAIL" into rkhunter.cron 
+
+-------------------------------------------------------------------
+Thu Aug  4 14:28:31 UTC 2011 - Sascha.Manns@open-slx.de
+
+- fixed License to GPLv2 or later
+  has misunderstood a message 
+
+-------------------------------------------------------------------
+Tue May 24 11:30:58 UTC 2011 - saigkill@opensuse.org
+
+- fixed bnc#695317 based on Volker Kuhlmann THX 
+
+-------------------------------------------------------------------
+Wed Nov 17 13:56:58 UTC 2010 - saigkill@opensuse.org
+
+- Updated to version 1.3.8 
+
+-------------------------------------------------------------------
+Mon Nov 30 16:44:30 UTC 2009 - saigkill@opensuse.org
+
+- updated to Version 1.3.6 
+
+-------------------------------------------------------------------
+Mon Nov 30 16:42:06 UTC 2009 - saigkill@opensuse.org
+
+- cleanup : 
+
+-------------------------------------------------------------------
+Sat Jan 10 18:46:00 UTC 2009 - saigkill@opensuse.org - 1.3.4
+
+- branched for OpenSUSE:Factory:contrib
+- changed License to GPLv3 
+- changed Sourcecode from *.tar.gz to tar.bz2
+
+-------------------------------------------------------------------
+Wed Dec 31 00:00:00 CET 2008 - lrupp@suse.de - 1.3.4
+
+- update to 1.3.4
+   + The change log lists 4 additions, 8 changes and 9 bugfixes. Here are a few:
+   + Added IntoXonia-NG rootkit check.
+   + Added Phalanx2 rootkit check.
+   + Added support for TCB shadow files.
+   + The '--propupd' option can now take an optional file, 
+      directory or package name after it.
+   + Revised file properties inode check.
+   + Improved the O/S name detection.
+   + Improved hidden files and directories check.
+   + Improved debug file option.
+
+-------------------------------------------------------------------
+Fri Nov 14 12:29:36 CET 2008 - lrupp@suse.de - 1.3.2
+
+- added rkhunter-1.3.2-CVE-2008-4982.patch
+
+-------------------------------------------------------------------
+Tue Nov  4 10:31:05 CET 2008 - lars@linux-schulserver.de - 1.3.2
+
+- added --no-mail-on-warning as option to the sysconfig and cronjob
+  to avoid double mails
+
+-------------------------------------------------------------------
+Mon Jun 30 15:01:42 CEST 2008 - lrupp@suse.de - 1.3.2
+
+- added /dev/shm/pulse-shm to allowed dev files 
+
+-------------------------------------------------------------------
+Mon May 26 15:09:19 CEST 2008 - lrupp@suse.de - 1.3.2
+
+- allow users to disable SuSEconfig script via sysconfig file
+
+-------------------------------------------------------------------
+Thu May  8 13:24:38 CEST 2008 - lrupp@suse.de - 1.3.2
+
+- remove the --propupd option from cron: makes more problems than 
+  it solves
+- add SuSEconfig.rkhunter instead if build in OBS
+- update README.SuSE
+
+-------------------------------------------------------------------
+Tue May  6 12:31:43 CEST 2008 - lrupp@suse.de - 1.3.2
+
+- fix typo in cronjob (bnc#384668)
+- logrotate script is %config
+
+-------------------------------------------------------------------
+Mon Apr 28 18:10:37 CEST 2008 - lrupp@suse.de - 1.3.2
+
+- allow /dev/shm/sysconfig/new-stamp-* files
+
+-------------------------------------------------------------------
+Tue Apr  8 12:12:50 CEST 2008 - lrupp@suse.de - 1.3.2
+
+- fix typo in sysconfig file 
+
+-------------------------------------------------------------------
+Thu Apr  3 19:41:37 CEST 2008 - lrupp@suse.de - 1.3.2
+
+- update to 1.3.2:
+  The changelog lists 3 additions, 6 changes and 14 bugfixes. 
+  Naming a few: 
+  + Socklog and rsyslog daemons support. 
+  + Application version check errors mostly ignored. 
+  + Unset ALLOW_SSH_ROOT_USER and ALLOW_SSH_PROT_V1. 
+  + Application check whitelisting. 
+  + Correct scanning of /dev in LAZY mode. 
+  + Whitelisted passwordless account names logged. 
+  + Corrected obtaining process names in Solaris. 
+  + Correct hidden files/directories test behaviour. 
+  + Cater for those using fdesc/fdescfs. 
+
+-------------------------------------------------------------------
+Wed Feb  6 13:51:10 CET 2008 - lrupp@suse.de - 1.3.0
+
+- update to 1.3.0:
+  - many new features
+  (needs testing)
+
+-------------------------------------------------------------------
+Wed Nov 28 17:17:47 CET 2007 - lrupp@suse.de - 1.2.9
+
+- newdb.tar.bz2 updated
+- rkhunter-10.3.patch adapted
+
+-------------------------------------------------------------------
+Fri Jun 01 17:31:19 CET 2007 - lrupp@suse.de - 1.2.9
+
+- update to 1.29
+- improved the cronjob
+- added sysconfig file for cronjob
+- add /var/log/rkhunter.log as %ghost
+- add hashupd.sh to scripts directory
+
+-------------------------------------------------------------------
+Wed Nov 22 19:58:18 CET 2006 - meissner@suse.de - 1.2.8
+
+- use correct string for i586. #223221
+
+-------------------------------------------------------------------
+Thu Nov 16 11:37:13 CET 2006 - meissner@suse.de - 1.2.8
+
+- Detect openSUSE as product correctly. #216053
+- renamed cron script to have "suse.de-" prefix.
+
+-------------------------------------------------------------------
+Tue Nov  7 16:51:10 CET 2006 - meissner@suse.de - 1.2.8
+
+- Include the current database from upstream. #216053
+- daily cron script to mode 755
+
+-------------------------------------------------------------------
+Wed Jul 19 14:44:03 CEST 2006 - meissner@suse.de - 1.2.8
+
+- New version 1.2.8
+	- some hashes and version updated
+	- small fixes
+- Added SUSE Linux 10 hashes
+
+-------------------------------------------------------------------
+Thu Mar 23 14:12:10 CET 2006 - meissner@suse.de - 1.2.7
+
+- detect 10.1. #148471
+
+-------------------------------------------------------------------
+Wed Jan 25 21:47:41 CET 2006 - mls@suse.de - 1.2.7
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Dec  1 17:42:00 CET 2005 - meissner@suse.de - 1.2.7
+
+- Order ALLOW* directives in the right section.
+- Do not |mail in a cronjob, just let cron do it for itself.
+- Quiet down output so it usually should not mail.
+- Enable MAIL_ON_WARNING, send mail to root. #132683
+
+-------------------------------------------------------------------
+Wed Sep  7 10:40:53 CEST 2005 - meissner@suse.de - 1.2.7
+
+- ignore /etc/.pwd.lock, /etc/.java too. #115128
+
+-------------------------------------------------------------------
+Thu Aug 18 17:06:56 CEST 2005 - meissner@suse.de - 1.2.7
+
+- recognize 10.0, ignore /dev/.udevdb/.
+
+-------------------------------------------------------------------
+Fri Aug 12 14:08:55 CEST 2005 - meissner@suse.de - 1.2.7
+
+- Use /usr/share/rkhunter instead of /usr/%_lib/rkhunter.
+- Fixed some other problems.
+
+-------------------------------------------------------------------
+Mon Jul 11 18:16:41 CEST 2005 - meissner@suse.de - 1.2.7
+
+- Initial import of rkhunter 1.2.7

@@ -1,0 +1,20 @@
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Date: 2018-07-13
+
+Do not capture build system kernel version
+in order to make builds reproducible.
+See https://reproducible-builds.org/ for why this is good.
+
+Index: pidentd-3.0.19/src/support.c
+===================================================================
+--- pidentd-3.0.19.orig/src/support.c
++++ pidentd-3.0.19/src/support.c
+@@ -44,7 +44,7 @@ osinfo_get(char *buf)
+     if (uname(&ub) < 0)
+ 	return NULL;
+ #ifndef _AIX
+-    sprintf(buf, "%s %s", ub.sysname, ub.release);
++    sprintf(buf, "%s 2.6", ub.sysname);
+ #else
+     sprintf(buf, "%s %s.%s", ub.sysname, ub.version, ub.release);
+ #endif

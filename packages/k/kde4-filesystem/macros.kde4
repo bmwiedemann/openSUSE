@@ -1,0 +1,141 @@
+%_kde4_bindir     %{_bindir}
+%_kde4_datadir    %{_datadir}
+%_kde4_includedir %{_includedir}
+%_kde4_libdir     %{_libdir}
+%_kde4_mandir     %{_mandir}
+%_kde4_prefix     %{_prefix}
+%_kde4_sbindir    %{_sbindir}
+%_kde4_sysconfdir %{_sysconfdir}
+
+%_kde4_applicationsdir %{_kde4_datadir}/applications/kde4
+%_kde4_iconsdir        %{_kde4_datadir}/icons
+%_kde4_wallpapersdir   %{_kde4_datadir}/wallpapers
+
+%_kde4_sharedir        %{_kde4_datadir}/kde4
+%_kde4_appsdir         %{_kde4_sharedir}/apps
+%_kde4_configdir       %{_kde4_sharedir}/config
+%_kde4_configkcfgdir   %{_kde4_sharedir}/config.kcfg
+%_kde4_servicesdir     %{_kde4_sharedir}/services
+%_kde4_servicetypesdir %{_kde4_sharedir}/servicetypes
+
+%_kde4_docdir          %{_kde4_datadir}/doc/kde
+%_kde4_htmldir         %{_kde4_docdir}/HTML
+
+%_kde4_modulesdir      %{_kde4_libdir}/kde4
+%_kde4_libexecdir      %{_kde4_modulesdir}/libexec
+
+# these are for backwards compatibility
+%_kde_config_dir    %{_kde4_configdir}
+%_kde_html_dir      %{_kde4_htmldir}
+%_kde_libdir        %{_kde4_libdir}
+%_kde_prefix        %{_kde4_prefix}
+%_kde_share_dir     %{_kde4_sharedir}
+%_kde4_modules      %{_kde4_modulesdir}
+%_kde4_servicetypes %{_kde4_servicetypesdir}
+
+%_kde_platform_version 4.14.0
+%_kde_platform_minor_version %(echo %{_kde_platform_version} | cut -f 2 -d \.)
+%_kde_pimlibs_version  4.14.0
+%_kde_branding_version 4.14
+%_kde_akonadi_version  1.13.0
+
+%kde4_runtime_requires Requires: kdebase4-runtime >= %_kde_platform_version libqt4-x11 >= 4.8.1 kdebase4-workspace-libs
+%kde4_pimlibs_requires Requires: kdepimlibs4      >= %_kde_pimlibs_version
+%kde4_akonadi_requires Requires: akonadi-runtime  >= %_kde_akonadi_version akonadi-runtime < 1.13.40
+
+%_kde_build_type release
+
+%kde4_makeinstall make DESTDIR=%{?buildroot:%{buildroot}} install/fast
+
+%cmake_kde4(d:) \
+  export CFLAGS=$RPM_OPT_FLAGS \
+  export CXXFLAGS=$RPM_OPT_FLAGS \
+  export LDFLAGS="-Wl,-Bsymbolic-functions $LDFLAGS" \
+  _kde_libsuffix=$(echo %_lib | cut -b4-) \
+  test -n "`which icerun 2>/dev/null`" && icerun=" -DKDE4_SERIALIZE_TOOL=icerun" \
+  bdir=. \
+  %{-d:dir=%{-d*} \
+  mkdir $dir \
+  cd $dir \
+  bdir=.. } \
+  cmake -DCMAKE_SKIP_RPATH=ON \\\
+      -DCMAKE_INSTALL_PREFIX=%{_kde4_prefix} \\\
+      -DLIBEXEC_INSTALL_DIR:PATH=%{_kde4_libexecdir} \\\
+      -DLIB_SUFFIX="$_kde_libsuffix" \\\
+      -DCMAKE_BUILD_TYPE=%{_kde_build_type} \\\
+      -DKDE4_BUILD_TESTS=OFF \\\
+       $icerun $bdir %* \
+%{nil}
+
+%create_subdir_filelist(d:f:o:v:) \
+  %{!-d:echo -e "\\nERROR: missing parameter for macro create_subdir_filelist\\n" ; exit 1 ; } \
+  filelist=%{-f:%{-f*}}%{!-f:%{-d*}} \
+  filelist=${filelist#*/} \
+  if test -e doc/%{-d*}; then \
+    pushd doc/%{-d*} \
+    make DESTDIR=$RPM_BUILD_ROOT.%{-d*} install \
+    popd \
+  fi \
+  pushd %{-d*} \
+  make DESTDIR=$RPM_BUILD_ROOT.%{-d*} install \
+  mkdir -p $RPM_BUILD_DIR/%buildsubdir/filelists \
+  { \
+    echo "%%defattr(-,root,root,755)" \
+    if test -n "%{-v*}"; then \
+      devel_filelist=%{-v*} \
+      devel_filelist=${devel_filelist#*/} \
+      { \
+	echo "%%defattr(-,root,root,755)" \
+	find $RPM_BUILD_ROOT.%{-d*} \\( \\\
+	     -path "$RPM_BUILD_ROOT.%{-d*}/usr/include/*" \\( -type f -o -type l \\) -o \\\
+	     -path "$RPM_BUILD_ROOT.%{-d*}/usr/share/kde4/apps/cmake/modules/*" -type f -o \\\
+	     -name '*.so' -type l \\) -printf "/%%P\\n" \
+      } | tee -a $RPM_BUILD_DIR/%buildsubdir/filelists/$devel_filelist | \
+      sed -e '/^%%defattr/d' -e 's/^/%%exclude /' \
+    fi \
+    find $RPM_BUILD_ROOT.%{-d*} \\\
+	 \\( -path "$RPM_BUILD_ROOT.%{-d*}/usr/share/doc/kde/HTML/en/%{-d*}" -o \\\
+	    -path "$RPM_BUILD_ROOT.%{-d*}/usr/share/doc/kde/HTML/en/%{-d*}/*" -o \\\
+	    -path "$RPM_BUILD_ROOT.%{-d*}/usr/share/kde4/apps/%{-d*}" -o \\\
+	    -path "$RPM_BUILD_ROOT.%{-d*}/usr/share/kde4/apps/%{-d*}/*" \\) \\\
+	 -type d -printf "%%%%dir /%%P\\n" -o \\\
+    	 \\( -type f -o -type l \\) -printf "/%%P\\n" \
+  } | \
+  sed -r "s/man\\/man([1-9])\\/(.*)\\.[1-9]$/man\\/man\\1\\/\\2\\.\\1.gz/;s,^/usr/share/doc/kde/HTML/(.[^/])/,%%doc %%lang(\\1) &," >> $RPM_BUILD_DIR/%buildsubdir/filelists/$filelist \
+  rm -rf $RPM_BUILD_ROOT.%{-d*} \
+  popd \
+%{nil}
+
+%create_exclude_filelist \
+  pushd $RPM_BUILD_DIR/%buildsubdir/ \
+  for f in filelists/*; do \
+    case $f in \
+    filelists/exclude) ;; \
+    *) sed -e '/^%%defattr/d' -e 's/^%%exclude //' -e 's/^/%%exclude /' "$f";; \
+    esac \
+  done >filelists/exclude \
+  popd \
+%{nil}
+
+%__spec_clean_post rm -rf filelists
+
+%kde_post_install \
+        if test -e /usr/lib/rpm/suse_update_desktop_file.sh; then \
+               find $RPM_BUILD_ROOT/usr/share \\\
+                        -name '*.desktop' -o -name '*.directory' 2> /dev/null | while read file; do \
+                       test -r "$file" || continue \
+                       grep -q "^X-SuSE-translate=" "$file" && continue \
+                       case "$file" in \
+                        */.hidden/*) \
+                                %suse_update_desktop_file -n "$file" \
+                                ;; \
+                         *) \
+                                %suse_update_desktop_file "$file" \
+                                ;; \
+                        esac \
+                done \
+        fi \
+%{nil}
+
+%make_jobs \
+  %{__make} %{?_smp_mflags} VERBOSE=1

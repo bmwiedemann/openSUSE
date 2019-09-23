@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>907cc9559ea4ebcb816b2ed1bb665605</srcmd5>
+    <version>0.7.0</version>
+    <time>1551216062</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Python 3 tests
+- Add py34-no-singledispatch.patch to remove unnecessary 'singledispatch'
+  dependency, which is a backport from Python 3.4
+- Update to v0.7.0
+  * Changes
+    + Reflecting changes in RFC 8187 and RFC 8259,
+      notices 1253 (bad charset) and 1281 (bad encoding for JSON)
+      are now reported for all encodings other than UTF-8, and
+      notice 1255 (ISO-8859-1 in Content-Disposition) has been removed.
+  * Added
+    + Checks for quoted commas and semicolons that might confuse a naive parser
+      (notices 1299 and 1300).
+    + New checks for Link headers according to RFC 8288 (notices 1307,
+      1308, and 1309).
+    + Checks for immutable responses (notices 1301, 1302, and 1303).
+    + Early hints are now recognized (due to their idiosyncratic semantics,
+      they avoid many checks that are applied to all other responses).
+    + Checks for the Accept-Post header (notice 1310).
+    + Check for no Transfer-Encoding in response to HTTP/1.0 (notice 1306).
+    + Check for 100 (Continue) before switching protocols (notice 1305).
+    + Check that the sequence of responses to a request makes sense
+      (notice 1304).
+    + HAR files exported from Chrome and Insomnia are handled slightly better.
+  * Fixed
+    + Headers like Allow and Accept are now parsed more correctly
+      (RFC Errata 5257).
+    + gzip-encoded payloads are now decompressed more reliably.
+    + When analyzing TCP streams, HTTPolice now uses a stricter heuristic
+      for detecting HTTP/1.x streams, producing fewer spurious 1006/1009
+      notices.
+    + Notice 1291 (Preference-Applied needs Vary) is no longer reported
+      on responses to POST.
+- Use %license
+- Remove unnecessary build dependencies
+- Add more minimum versions
+- Initial version
+</comment>
+    <requestid>679177</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cca3cfa1a8f9ff95703478f8c9a82fe4</srcmd5>
+    <version>0.8.0</version>
+    <time>1557916469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702958</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d4832944b7873e76238d65726e5d1e91</srcmd5>
+    <version>0.9.0</version>
+    <time>1564137593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718282</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,113 @@
+-------------------------------------------------------------------
+Sun Aug 28 05:27:04 UTC 2016 - coolo@suse.com
+
+- updated to 1.06
+   see /usr/share/doc/packages/perl-Font-TTF/Changes
+
+-------------------------------------------------------------------
+Sat Aug 27 05:23:15 UTC 2016 - coolo@suse.com
+
+- updated to 1.06
+   see /usr/share/doc/packages/perl-Font-TTF/Changes
+
+-------------------------------------------------------------------
+Fri Aug 26 05:29:38 UTC 2016 - coolo@suse.com
+
+- updated to 1.06
+   see /usr/share/doc/packages/perl-Font-TTF/Changes
+
+-------------------------------------------------------------------
+Tue Apr 14 19:45:49 UTC 2015 - coolo@suse.com
+
+- updated to 1.05
+   see /usr/share/doc/packages/perl-Font-TTF/Changes
+
+  1.05 (r1069, 2015-01-26)
+  
+  * Add support for GSUB Type 8 Reverse-chaining substitution
+  * OpenType script/lang/feature tags now based on ISO/IEC 14496-22
+  * Remove deprecated GDL_old.pm 
+  *
+  * Bug fixes:
+  *    Fix rt.cpan.org 92150, 93597
+  *	 Force 0xFFFF sentry to be in a segment by itself in format 4 cmap subtables
+  *    Less aggressive cmap format 4 optimization to eliminate USV holes
+  *    Fix various issues reading WOFF-compressed font tables
+  *    Fix reading DSIG
+
+-------------------------------------------------------------------
+Mon Feb 24 06:08:33 UTC 2014 - coolo@suse.com
+
+- fix for bnc#766390
+  * License Issues
+- updated to 1.04
+ * Bug fixes:
+ *    Fix rt.cpan.org 80671, 80672; simplify fix for #42553 per OP
+ *    Shared tables in TTC weren't working
+ *    Quiet a cleanup warning in TTC processing
+ *    Update licensing info for test fonts to OFL
+
+-------------------------------------------------------------------
+Tue Nov 26 07:35:45 UTC 2013 - coolo@suse.com
+
+- updated to 1.03
+ * Add $t->minsize() to all tables for assisting with font subsetting
+ * Add deduping to Name table writing
+ * Add OS/2 table method to guess at Unicode and Codepage range bits.
+ * Add support for cmap format 13 subtables
+ * Expunge notion of 'dflt' language tag from Ttopen.pm
+ * Bug fixes
+
+-------------------------------------------------------------------
+Wed Jun  5 14:33:09 UTC 2013 - cfarrell@suse.com
+
+- license update: Artistic-2.0 and OFL-1.1
+  Test fonts are OFL-1.1 licensed
+
+-------------------------------------------------------------------
+Tue Jun  4 10:51:52 UTC 2013 - coolo@suse.com
+
+- updated to 1.02
+ * Add IO::String prerequisite to make BSD and other testing environments happy
+ 
+ * Major change to glyph creation/editing -- now utilizes ' isDirty' flag
+ * Add support for:
+ *    V4 OS/2 table
+ *    Reading WOFF fonts
+ *    MarkFilterSets in GDEF
+ *    Feature parameters (for cvxx, ssxx and size features)
+ *    Additional Graphite tables (Silf, Glac, and Gloc)
+ * Updated MS Lang IDs to Dec 2011
+ * Finish implementation of coverage table sorting
+ * Copyright and licensing updated to CPAN requirements
+ * Bug fixes
+ 
+ * Ensure coverage tables are properly sorted
+ * Additional OT tags (from OpenType 1.6)
+ * Bug fixes
+ 
+ * Add support for Graphite Sill table
+ * Handle kerning tables version > 0
+ * Bug fixes
+ 
+ * Bug fixes
+ * Change Copyright to Artistic License 2.0
+
+-------------------------------------------------------------------
+Thu Jun  7 14:04:57 UTC 2012 - chris@computersalat.de
+
+- fix license
+  * Artistic-2.0
+- fix deps
+
+-------------------------------------------------------------------
+Mon Sep  5 13:53:58 UTC 2011 - coolo@suse.com
+
+- updated to 0.48
+
+-------------------------------------------------------------------
+Thu Mar 31 18:44:19 UTC 2011 - coolo@novell.com
+
+- initial package 0.48
+  * created by cpanspec 1.78.03
+

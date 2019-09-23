@@ -1,0 +1,212 @@
+<revisionlist>
+  <revision rev="1" vrev="63">
+    <srcmd5>3bd292559774af6a6c6e899b4e9d7fe4</srcmd5>
+    <version>3a1</version>
+    <time>1168904240</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="86">
+    <srcmd5>5a34c3fde574e54207f162b8f01d8ca3</srcmd5>
+    <version>3a1</version>
+    <time>1173168019</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="88">
+    <srcmd5>c5b0638582cfe5e68d0e636dcf035df0</srcmd5>
+    <version>3a1</version>
+    <time>1173567341</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="93">
+    <srcmd5>414eaffa5aaac6f1faadd84e46011d40</srcmd5>
+    <version>3a1</version>
+    <time>1175622467</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>21662a03a42878dfce52be79c05f2da7</srcmd5>
+    <version>3a5</version>
+    <time>1199909363</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>c2ac46f4cd51de9b9dbd8f66ca0027d8</srcmd5>
+    <version>3a5</version>
+    <time>1202142826</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0821a553dc597e26ac0e2469a62f0e9d</srcmd5>
+    <version>3b1</version>
+    <time>1217648894</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="18">
+    <srcmd5>7f4fb5300b7ff99b617e22f4cf8737fb</srcmd5>
+    <version>3b1</version>
+    <time>1225817823</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="19">
+    <srcmd5>b2a52ca5258d5648227a1360d80bb1f8</srcmd5>
+    <version>3b1</version>
+    <time>1227011963</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="21">
+    <srcmd5>b2a52ca5258d5648227a1360d80bb1f8</srcmd5>
+    <version>3b1</version>
+    <time>1227011963</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>06043d759776c3d87b6124477ba2af32</srcmd5>
+    <version>3b2</version>
+    <time>1259926778</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:misc/slib based on submit request 25493 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>f0a502b4308041e84e1ef304b65e7fac</srcmd5>
+    <version>3b2</version>
+    <time>1264695642</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:misc/slib based on submit request 30691 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>8ff90085160c3e7595ae44661d4ba9d6</srcmd5>
+    <version>3b2</version>
+    <time>1268926187</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>8ff90085160c3e7595ae44661d4ba9d6</srcmd5>
+    <version>3b2</version>
+    <time>1278667390</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>8ff90085160c3e7595ae44661d4ba9d6</srcmd5>
+    <version>3b2</version>
+    <time>1278678620</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d568d2c16d632e16ae280a0877982244</srcmd5>
+    <version>3b3</version>
+    <time>1283517542</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:misc/slib based on submit request 46661 from user pgajdos
+</comment>
+    <requestid>46661</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>d568d2c16d632e16ae280a0877982244</srcmd5>
+    <version>3b3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>d568d2c16d632e16ae280a0877982244</srcmd5>
+    <version>3b3</version>
+    <time>1319182474</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>edd04faec6217142f45a6f3dcd4bf439</srcmd5>
+    <version>3b3</version>
+    <time>1327404147</time>
+    <user>coolo</user>
+    <comment>- using guile1 [bnc#724917]</comment>
+    <requestid>100607</requestid>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>2bd881253d2710eb26ae99c47bcff292</srcmd5>
+    <version>3b3</version>
+    <time>1337955531</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121874</requestid>
+  </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>2bd881253d2710eb26ae99c47bcff292</srcmd5>
+    <version>3b3</version>
+    <time>1340184221</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="11">
+    <srcmd5>3bf326908fdd9236237e3e78dcbf6c79</srcmd5>
+    <version>3b3</version>
+    <time>1347619115</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134029</requestid>
+  </revision>
+  <revision rev="23" vrev="12">
+    <srcmd5>e3746e0602c0a9ac85518af9f0cff6ef</srcmd5>
+    <version>3b3</version>
+    <time>1349251810</time>
+    <user>coolo</user>
+    <comment>Forward-port fixes submitted to 12.2:Update (forwarded request 136324 from dimstar)</comment>
+    <requestid>136478</requestid>
+  </revision>
+  <revision rev="24" vrev="14">
+    <srcmd5>e3746e0602c0a9ac85518af9f0cff6ef</srcmd5>
+    <version>3b3</version>
+    <time>1359110413</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5c06313f99dd6f2d11b65924e13908ec</srcmd5>
+    <version>3b4</version>
+    <time>1378749090</time>
+    <user>coolo</user>
+    <comment>- updated to 3b4:
+  * wttree.scm: Fixed bug where tree balance was lost by deletions 
+    http://hagi.is.s.u-tokyo.ac.jp/~yh/bst.pdf
+  * slib.sh, gosh.init: Added support for (gosh) Gauche-0.9.
+  * mitscheme.init: Removed support for defmacro when 
+    (mit-scheme-release &gt;= 9 0).
+  * trsrch.scm (substring?, substring-ci?): Replaced the skip-vector 
+    with an alist (to work with wide characters).
+  * etc. see http://people.csail.mit.edu/jaffer/SLIB.html</comment>
+    <requestid>198008</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>5c06313f99dd6f2d11b65924e13908ec</srcmd5>
+    <version>3b4</version>
+    <time>1379664692</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>5c06313f99dd6f2d11b65924e13908ec</srcmd5>
+    <version>3b4</version>
+    <time>1409303377</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>988fa941d9df7a34dfe55b7c1aaaeeda</srcmd5>
+    <version>3b5</version>
+    <time>1427445650</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293160</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>e3f0bde004ff0622e35239184443fe24</srcmd5>
+    <version>3b5</version>
+    <time>1500275432</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510095</requestid>
+  </revision>
+</revisionlist>

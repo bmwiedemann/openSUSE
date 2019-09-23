@@ -1,0 +1,525 @@
+-------------------------------------------------------------------
+Tue Feb 26 14:09:19 UTC 2019 - José Iván López González <jlopez@suse.com>
+
+- Version bump (bsc#1124009)
+- 4.1.0
+
+-------------------------------------------------------------------
+Tue Oct 16 15:40:28 CEST 2018 - schubi@suse.de
+
+- Added license file to spec.
+
+-------------------------------------------------------------------
+Mon Aug 20 09:32:45 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Fri Apr  6 18:51:53 UTC 2018 - mfilka@suse.com
+
+- bnc#1087957 - version bump
+- 4.0.0
+
+-------------------------------------------------------------------
+Tue Sep 20 15:05:49 UTC 2016 - jreidinger@suse.com
+
+- disable doc generation (FATE#320356)
+- remove unnecessary build dependency to speed up build
+  (bsc#999203)
+- 3.1.14
+
+-------------------------------------------------------------------
+Thu Sep 25 10:21:52 UTC 2014 - varkoly@suse.com
+
+- bnc#897997 YaST2 User authentication not enumerating LDAP options
+- 3.1.13
+
+-------------------------------------------------------------------
+Tue Aug  5 13:02:04 UTC 2014 - varkoly@suse.com
+
+- Set member_attribute to 'member'. We only use rfc2307bis.schema
+- bnc#889556 - yast2 users can not create ldap groups
+- 3.1.12  
+
+-------------------------------------------------------------------
+Tue Jul  1 09:47:36 UTC 2014 - ckornacker@suse.com
+
+- don't call deprecated methods in ldap_browser (bnc#885227)
+- 3.1.11
+
+-------------------------------------------------------------------
+Wed Jun 11 13:26:04 UTC 2014 - varkoly@suse.com
+
+- Do not add MenuButton to ButtonBox
+- 3.1.10
+
+-------------------------------------------------------------------
+Wed Mar 26 14:16:45 UTC 2014 - varkoly@suse.com
+
+- Remove some not used variables and functions
+- 3.1.9 
+
+-------------------------------------------------------------------
+Thu Mar 20 17:20:00 UTC 2014 - varkoly@suse.com
+
+- bnc#865812 - can't configure ldap login
+- 3.1.8 
+
+-------------------------------------------------------------------
+Wed Mar 12 16:22:18 UTC 2014 - varkoly@suse.com
+
+- ldap.conf is not case sensitive
+- @ldap_tls is a string not a boolean
+- code clean up. Remove not used variables
+- 3.1.7
+
+-------------------------------------------------------------------
+Thu Feb 13 13:59:06 UTC 2014 - varkoly@suse.com
+
+- Fix SCR.Reads and Writes first parameter. This must be path.
+
+-------------------------------------------------------------------
+Thu Feb 13 11:12:38 UTC 2014 - varkoly@suse.com
+
+- Remove not used subroutines from the Ldap module
+- BNC#863329 - Missing Ldap::Export()
+- BNC#863612 YaST reports Cannot find client ldap/routines.rb
+- Simplify ldap-conf agent: Until now ldap informations was saved in 
+  3 places: /etc/ldap.conf /etc/openldap/ldap.conf and the sysconfig
+  file ldap. From now on only /etc/openldap/ldap.conf will be used.
+  /etc/ldap.conf is only for nss_ldap which is not provided anymore
+  The variable BIND_DN in sysconfig file ldap can saved in 
+  /etc/openldap/ldap.conf too. BASE_CONFIG_DN was everytime 
+  ou=ldapconfig,$BASE
+- 3.1.6
+
+-------------------------------------------------------------------
+Tue Feb 11 16:33:18 UTC 2014 - jreidinger@suse.com
+
+- add missing sysconfig ldap agent
+- 3.1.5
+
+-------------------------------------------------------------------
+Tue Feb  4 14:55:42 UTC 2014 - jreidinger@suse.com
+
+- properly conflict with old yast2-ldap-client
+- 3.1.4
+
+-------------------------------------------------------------------
+Fri Jan 31 23:59:03 UTC 2014 - varkoly@suse.com
+
+- Include routines from routines.rb into Ldap.rb
+- 3.1.3 
+
+-------------------------------------------------------------------
+Fri Jan 31 11:53:35 UTC 2014 - varkoly@suse.com
+
+- Add yast2-network is needed by Ldap.rb
+
+-------------------------------------------------------------------
+Fri Jan 31 09:46:34 UTC 2014 - varkoly@suse.com
+
+- Increase version to mark that this package provides the
+  yast2-ldap-client functionality for other yast modules 
+
+-------------------------------------------------------------------
+Wed Jan 29 12:15:31 UTC 2014 - varkoly@suse.com
+
+- Include modules from yast2-ldap-client
+
+-------------------------------------------------------------------
+Wed Nov 13 15:56:18 UTC 2013 - jreidinger@suse.com
+
+- Add explicit COPYING file
+
+-------------------------------------------------------------------
+Thu Sep 19 06:52:05 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Tue Aug 13 11:10:07 UTC 2013 - lslezak@suse.cz
+
+- fixed build with yast2-devtools >= 3.0.3
+- 3.0.1
+
+-------------------------------------------------------------------
+Tue Jul 30 08:28:56 UTC 2013 - yast-devel@opensuse.org
+
+- version 3.0.0
+
+-------------------------------------------------------------------
+Fri Feb  1 09:52:08 CET 2013 - jsuchome@suse.cz
+
+- catch the possible exception from TLS options calls (bnc#801065)
+- 2.23.0
+
+-------------------------------------------------------------------
+Mon Mar 26 10:57:36 CEST 2012 - jsuchome@suse.cz
+
+- removed libxcrypt-devel from buildrequires
+- 2.22.2 
+
+-------------------------------------------------------------------
+Mon Feb 20 09:38:38 CET 2012 - jsuchome@suse.cz
+
+- added option to disable certificate checks (bnc#745877)
+- 2.22.1 
+
+-------------------------------------------------------------------
+Tue Jan 24 17:09:51 CET 2012 - jsuchome@suse.cz
+
+- confirmed license
+- 2.22.0 
+
+-------------------------------------------------------------------
+Fri Nov 25 12:21:42 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Aug 31 15:42:11 CEST 2011 - jsuchome@suse.cz
+
+- properly initialize value of ldap_initialized (bnc#710430)
+- 2.21.1
+
+-------------------------------------------------------------------
+Mon Apr  4 10:04:36 CEST 2011 - jsuchome@suse.cz
+
+- use the global TLS Options if present (bnc#684395)
+- 2.21.0
+
+-------------------------------------------------------------------
+Fri Feb  4 13:57:47 CET 2011 - jsuchome@suse.cz
+
+- added command to close the connection
+- 2.20.1
+
+-------------------------------------------------------------------
+Thu Jan 13 09:33:46 CET 2011 - jsuchome@suse.cz
+
+- added support for setting TLS options
+- 2.20.0
+
+-------------------------------------------------------------------
+Thu Jun 18 15:07:37 CEST 2009 - mvidner@suse.cz
+
+- Using autodocs-cc.ami, which contains a fix for automake 1.11.
+
+-------------------------------------------------------------------
+Wed Sep  3 14:34:14 CEST 2008 - jsuchome@suse.cz
+
+- LdapServerAccess.pm: adapted to new LdapServer API
+  (rhafer, bnc#422523)
+- 2.17.3
+
+-------------------------------------------------------------------
+Wed Aug  6 11:36:43 CEST 2008 - jsuchome@suse.cz
+- adapted LdapServerAccess to new API of yast2-ldap-server (rhafer)
+- 2.17.2 
+
+-------------------------------------------------------------------
+Fri Jul 18 12:02:34 CEST 2008 - jsuchome@suse.cz
+
+- do not lowercase LDAP object names (fate#303596)
+- 2.17.1
+
+-------------------------------------------------------------------
+Tue Jun 24 11:04:45 CEST 2008 - jsuchome@suse.cz
+
+- ldapcpplib-devel renamed to libldapcpp-devel (bnc#403082)
+- 2.17.0
+
+-------------------------------------------------------------------
+Fri Feb 29 13:51:31 CET 2008 - jsuchome@suse.cz
+
+- document Execute (.unbind) agent call 
+
+-------------------------------------------------------------------
+Wed Feb 27 09:36:35 CET 2008 - jsuchome@suse.cz
+
+- search for all attributes (this time pwdaccountlockedtime)
+  before modify action (bnc#364837)
+- 2.16.0
+
+-------------------------------------------------------------------
+Mon Mar  5 16:06:34 CET 2007 - jsuchome@suse.cz
+
+- return information that "starting TLS" failed (#246397)
+- 2.15.1
+
+-------------------------------------------------------------------
+Mon Dec 18 13:16:05 CET 2006 - jsuchome@suse.cz
+
+- ask attribute for 'usage' flag (required by F301179)
+- new call for testing password policy support (F301179)
+- better debug for referral exceptions
+- 2.15.0 
+
+-------------------------------------------------------------------
+Mon Nov  6 10:49:49 CET 2006 - jsuchome@suse.cz
+
+- fixed html documentation header
+- new version for new product
+- 2.14.0
+
+-------------------------------------------------------------------
+Fri Mar 31 14:52:14 CEST 2006 - jsuchome@suse.cz
+
+- constructor of LDAPConnection object may throw an exception (#159741)
+- 2.13.4 
+
+-------------------------------------------------------------------
+Thu Mar  9 16:49:30 CET 2006 - jsuchome@suse.cz
+
+- BuildRequires: added missing yast2
+- 2.13.3 
+
+-------------------------------------------------------------------
+Mon Feb  6 14:21:48 CET 2006 - jsuchome@suse.cz
+
+- reduced BuildRequires
+- 2.13.2
+
+-------------------------------------------------------------------
+Tue Nov 22 11:04:20 CET 2005 - jsuchome@suse.cz
+
+- adapted .users and .groups calls to to index maps names 
+  ("uid"/"cn" attributes)
+- added .users_by_uidnumber and .groups.by_gidnumber paths
+- 2.13.1
+
+-------------------------------------------------------------------
+Fri Oct 21 14:20:37 CEST 2005 - jsuchome@suse.cz
+
+- fixed failing builds, added some comments to functions
+- 2.13.0
+
+-------------------------------------------------------------------
+Wed Aug 10 09:30:03 CEST 2005 - jsuchome@suse.cz
+
+- use warnings, not errors for referral exceptions
+- 2.12.2 
+
+-------------------------------------------------------------------
+Thu Apr 21 14:36:06 CEST 2005 - jsuchome@suse.cz
+
+- adapted for new interface of new start_tls function (#55844)
+- 2.12.1 
+
+-------------------------------------------------------------------
+Tue Mar 15 10:15:21 CET 2005 - jsuchome@suse.cz
+
+- do not call methods from deleted object (#72190)
+- 2.12.0
+
+-------------------------------------------------------------------
+Mon Aug  9 15:42:01 CEST 2004 - jsuchome@suse.cz
+
+- LdapServerAccess.pm: function for adding indices and Samba ACL hack
+- 2.10.4
+
+-------------------------------------------------------------------
+Thu Aug  5 17:48:15 CEST 2004 - jsuchome@suse.cz
+
+- updated to handle the split of ldapcpplib library
+- 2.10.3
+
+-------------------------------------------------------------------
+Thu Jul 29 11:01:45 CEST 2004 - jsuchome@suse.cz
+
+- added LdapServerAccess.pm to provide access to LDAP server module
+- yast2 is required
+- 2.10.2
+
+-------------------------------------------------------------------
+Wed Jul 14 15:00:49 CEST 2004 - jsuchome@suse.cz
+
+- correctly initialize global values in constructor
+- read binary values also for users/groups
+- 2.10.1
+
+-------------------------------------------------------------------
+Fri Jun 11 15:43:31 CEST 2004 - jsuchome@suse.cz
+
+- implemented Execute (.ldap.ping) call (#41354)
+- 2.10.0
+
+-------------------------------------------------------------------
+Mon May 17 17:34:11 CEST 2004 - jsuchome@suse.cz
+
+- enhanced error logging
+- 2.9.15
+
+-------------------------------------------------------------------
+Wed May 12 10:56:26 CEST 2004 - jsuchome@suse.cz
+
+- fix of 'rdn' generating during rename (#40420)
+- 2.9.14
+
+-------------------------------------------------------------------
+Wed May  5 21:03:00 CEST 2004 - jsuchome@suse.cz
+
+- do not return error, when no user was found
+- 2.9.13
+
+-------------------------------------------------------------------
+Thu Apr 22 15:31:33 CEST 2004 - jsuchome@suse.cz
+
+- 2.9.12
+
+-------------------------------------------------------------------
+Wed Apr 21 10:29:04 CEST 2004 - jsuchome@suse.cz
+
+- enable recursive delete (#39185) and rename (#39193)
+
+-------------------------------------------------------------------
+Mon Apr 19 17:52:45 CEST 2004 - jsuchome@suse.cz
+
+- on error, return also additional message produced by server (#38668)
+
+-------------------------------------------------------------------
+Tue Apr 13 17:04:02 CEST 2004 - jsuchome@suse.cz
+
+- "include_dn" option: DN could be included in a map of each entry
+  found by search call (#38821)
+- 2.9.11
+
+-------------------------------------------------------------------
+Thu Apr  8 10:24:02 CEST 2004 - jsuchome@suse.cz
+
+- "use_tls" could be passed in initialization call
+
+-------------------------------------------------------------------
+Fri Apr  2 15:51:52 CEST 2004 - jsuchome@suse.cz
+
+- changed license to GPL
+- 2.9.10
+
+-------------------------------------------------------------------
+Tue Mar 30 10:11:18 CEST 2004 - jsuchome@suse.cz
+
+- enable TLS support (#37393)
+- 2.9.9
+
+-------------------------------------------------------------------
+Mon Mar 29 17:13:41 CEST 2004 - jsuchome@suse.cz
+
+- more on binary values: enable multi valued attributes 
+  (-> List of Byteblocks)
+- 2.9.8
+
+-------------------------------------------------------------------
+Thu Mar 25 18:11:54 CET 2004 - jsuchome@suse.cz
+
+- fixed adding new entry containing attribute with binary value
+- 2.9.7
+
+-------------------------------------------------------------------
+Mon Mar 22 13:18:18 CET 2004 - jsuchome@suse.cz
+
+- return lowercase attribute names
+- inital support for binary values
+- 2.9.6
+
+-------------------------------------------------------------------
+Fri Mar 19 14:57:21 CET 2004 - mvidner@suse.cz
+
+- added AGENT_LIBADD so that agents work from standalone Perl
+
+-------------------------------------------------------------------
+Mon Mar 15 11:24:21 CET 2004 - jsuchome@suse.cz
+
+- do not change LDAP keys for yast2-users usage 
+  ("uid" for users and "cn" for groups)
+- 2.9.5
+
+-------------------------------------------------------------------
+Fri Mar 12 13:47:59 CET 2004 - jsuchome@suse.cz
+
+- do not ignore userPassword value
+
+-------------------------------------------------------------------
+Wed Mar  3 14:12:21 CET 2004 - jsuchome@suse.cz
+
+- configurable member attribute of LDAP groups
+- 2.9.4
+
+-------------------------------------------------------------------
+Wed Feb 25 09:52:55 CET 2004 - jsuchome@suse.cz
+
+- convert string-type values to integers if possible
+
+-------------------------------------------------------------------
+Wed Feb 11 16:28:11 CET 2004 - jsuchome@suse.cz
+
+- attributes "uid" (for users) and "cn" (for groups) allowed only
+with single value
+- change in the rename process: first rename, then change the attributes
+- 2.9.3
+
+-------------------------------------------------------------------
+Tue Feb 10 18:15:23 CET 2004 - jsuchome@suse.cz
+
+- check for integer values and convert then to string
+
+-------------------------------------------------------------------
+Tue Feb  3 19:20:02 CET 2004 - jsuchome@suse.cz
+
+- updated for new Users module
+- change of some structures: use map instead of lists (better search)
+- 2.9.2
+
+-------------------------------------------------------------------
+Tue Nov 18 14:16:05 CET 2003 - jsuchome@suse.cz
+
+- 2.9.1 
+
+-------------------------------------------------------------------
+Tue Nov 18 13:28:57 CET 2003 - jsuchome@suse.cz
+
+- migrated to doxygen
+
+-------------------------------------------------------------------
+Fri Oct  3 10:59:27 CEST 2003 - jsuchome@suse.cz
+
+- attribute 'cn' not returned as 'fullname' any more (but as 'cn')
+- 2.9.0
+
+-------------------------------------------------------------------
+Tue Sep  2 15:05:56 CEST 2003 - jsuchome@suse.cz
+
+- do not read value of userPassword attribute (for yast2-users module)
+
+-------------------------------------------------------------------
+Mon Sep  1 16:58:14 CEST 2003 - jsuchome@suse.cz
+
+- added test for object class existence
+- 2.8.3
+
+-------------------------------------------------------------------
+Tue Aug 12 18:59:20 CEST 2003 - jsuchome@suse.de
+
+- updated agent documentation
+- 2.8.2
+
+-------------------------------------------------------------------
+Fri Jul 11 15:35:39 CEST 2003 - jsuchome@suse.de
+
+- groups are now groupOfUniqueNames
+
+-------------------------------------------------------------------
+Wed Jul  2 13:24:32 CEST 2003 - jsuchome@suse.de
+
+- schema support (reading, queries)
+- 2.8.1
+
+-------------------------------------------------------------------
+Wed May 28 08:59:16 2003 - jsuchome@suse.cz
+
+- Initial version
+- Enables generic search/add/modify/delete calls
+- Special calls used by yast2-users module
+

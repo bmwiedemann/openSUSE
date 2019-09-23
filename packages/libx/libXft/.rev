@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>21f34da1f346f151762c1f1e71a5dd52</srcmd5>
+    <version>2.2.0</version>
+    <time>1329476622</time>
+    <user>coolo</user>
+    <comment>- Split xorg-x11-libs into separate packages</comment>
+    <requestid>105458</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5582c9afb15ab1bb1f32b09929a7953a</srcmd5>
+    <version>2.3.0</version>
+    <time>1336471058</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115353</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>166e58ec177eb5f9b8f71ec4cef654db</srcmd5>
+    <version>2.3.1</version>
+    <time>1339352337</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.3.1
+- Remove the libXft-fix-bold-fonts.patch (fixed in this release)</comment>
+    <requestid>124038</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>166e58ec177eb5f9b8f71ec4cef654db</srcmd5>
+    <version>2.3.1</version>
+    <time>1340183558</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>166e58ec177eb5f9b8f71ec4cef654db</srcmd5>
+    <version>2.3.1</version>
+    <time>1359109233</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>f73cd78d9e9153be99da0abf627ea4f7</srcmd5>
+    <version>2.3.1</version>
+    <time>1363949732</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160095</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>f73cd78d9e9153be99da0abf627ea4f7</srcmd5>
+    <version>2.3.1</version>
+    <time>1379662885</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>2fcd6ac1b6199bece166a70d25389986</srcmd5>
+    <version>2.3.1</version>
+    <time>1386932301</time>
+    <user>coolo</user>
+    <comment>Added use-recommended-freetype-include.patch -- needed for freetype2 2.5.1. I've validated it builds, but disabled build so the whole staging doesn't get retriggered (forwarded request 210659 from sumski)</comment>
+    <requestid>210677</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3c79f9a1115b9c862e152200a732a7fd</srcmd5>
+    <version>2.3.2</version>
+    <time>1402996967</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.3.2
+  * This release fixes a build issue with FreeType 2.5.1 &amp; later,
+    and fixes the prototypes in the man page for XftDrawString8 &amp;
+    XftDrawRect.
+  * supersedes U_use-recommended-freetype-include.patch</comment>
+    <requestid>236453</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>3c79f9a1115b9c862e152200a732a7fd</srcmd5>
+    <version>2.3.2</version>
+    <time>1409301487</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>7eccbcfc73e7d06cb9c18ad3ec6a1707</srcmd5>
+    <version>2.3.2</version>
+    <time>1432280891</time>
+    <user>dimstar_suse</user>
+    <comment>- added baselibs.conf as source to specfile</comment>
+    <requestid>307922</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>f84a2310587d4dd744e95789e538c659</srcmd5>
+    <version>2.3.2</version>
+    <time>1548537490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667765</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ae99e559bffe32b13838266658edb2ff</srcmd5>
+    <version>2.3.3</version>
+    <time>1553635743</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.3
+  * This release updates XftDrawSrcPicture to use XRenderCreateSolidFill
+    when available (Render version 0.10 or later).</comment>
+    <requestid>687383</requestid>
+  </revision>
+</revisionlist>

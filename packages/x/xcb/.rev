@@ -1,0 +1,127 @@
+<revisionlist>
+  <revision rev="1" vrev="14">
+    <srcmd5>f65375fec6c847c433a9772ca18fab0a</srcmd5>
+    <version>2.5</version>
+    <time>1168904517</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="177">
+    <srcmd5>f65375fec6c847c433a9772ca18fab0a</srcmd5>
+    <version>2.5</version>
+    <time>1168904517</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="178">
+    <srcmd5>5ec497623c3f686d74bb07990dea5f97</srcmd5>
+    <version>2.5</version>
+    <time>1245363832</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="180">
+    <srcmd5>5ec497623c3f686d74bb07990dea5f97</srcmd5>
+    <version>2.5</version>
+    <time>1245363832</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="181">
+    <srcmd5>d0bbc1addc35a4162360862710b1faa5</srcmd5>
+    <version>2.5</version>
+    <time>1268926539</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="183">
+    <srcmd5>d0bbc1addc35a4162360862710b1faa5</srcmd5>
+    <version>2.5</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="184">
+    <srcmd5>d0bbc1addc35a4162360862710b1faa5</srcmd5>
+    <version>2.5</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="185">
+    <srcmd5>ecf85acae60de3b6875fbbdb56dfc471</srcmd5>
+    <version>2.5</version>
+    <time>1289415467</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52523 from user prusnak
+</comment>
+    <requestid>52523</requestid>
+  </revision>
+  <revision rev="9" vrev="186">
+    <srcmd5>a2b72a674446af1279e0cbc0dc2782b4</srcmd5>
+    <version>2.5</version>
+    <time>1289415474</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52523
+</comment>
+  </revision>
+  <revision rev="10" vrev="189">
+    <srcmd5>a2b72a674446af1279e0cbc0dc2782b4</srcmd5>
+    <version>2.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="191">
+    <srcmd5>a2b72a674446af1279e0cbc0dc2782b4</srcmd5>
+    <version>2.5</version>
+    <time>1319182579</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="192">
+    <srcmd5>30acbb8a174ce135d2bdbadbc76e670c</srcmd5>
+    <version>2.5</version>
+    <time>1323195237</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="193">
+    <srcmd5>37df7cae9e1a8b6b0a5e0401a45929d3</srcmd5>
+    <version>2.5</version>
+    <time>1330062870</time>
+    <user>coolo</user>
+    <comment>- fix build on factory (forwarded request 106636 from coolo)</comment>
+    <requestid>106670</requestid>
+  </revision>
+  <revision rev="14" vrev="195">
+    <srcmd5>37df7cae9e1a8b6b0a5e0401a45929d3</srcmd5>
+    <version>2.5</version>
+    <time>1340184335</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="197">
+    <srcmd5>37df7cae9e1a8b6b0a5e0401a45929d3</srcmd5>
+    <version>2.5</version>
+    <time>1359110592</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="199">
+    <srcmd5>37df7cae9e1a8b6b0a5e0401a45929d3</srcmd5>
+    <version>2.5</version>
+    <time>1379664994</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="201">
+    <srcmd5>37df7cae9e1a8b6b0a5e0401a45929d3</srcmd5>
+    <version>2.5</version>
+    <time>1409303675</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="202">
+    <srcmd5>b2627ccac201b4e93fb7005ecc0524e4</srcmd5>
+    <version>2.5</version>
+    <time>1412625895</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254146</requestid>
+  </revision>
+</revisionlist>

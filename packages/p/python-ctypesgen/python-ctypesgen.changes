@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Thu Dec  6 13:17:34 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix to build on py3, switch to github url/release/etc.
+
+-------------------------------------------------------------------
+Fri Jun  8 15:53:31 UTC 2018 - mcepl@suse.com
+
+- Clean SPEC file (py2k only)
+
+-------------------------------------------------------------------
+Fri Jun 08 15:38:49 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.1+git.1431361028.3d2d980:
+  * Update license, homepage, and usage.
+  * Fix test suite failures under Ubuntu 12.04 due to multiarch. Updated loader as libc and libm loading was failing due to looking in wrong directories.
+  * avoid logging output in testsuite.
+  * Fix issue #43, add support for bool type. Patch from Ronald Bos. Patch from Ronald adds support for GCC _Bool type and ANSI bool type (via stdbool.h).
+  * Fix issue #43, add support for bool type. Patch from Ronald Bos. Patch from Ronald adds support for GCC _Bool type and ANSI bool type (via stdbool.h).
+  * pre-compiler stage failed under Windows due to path with spaces for temporary header file. Quote temp file when calling precompiler.
+  * Do not require json (for python code gen).
+  * Quick replace error/warning/status messages with logging messages that behaves the same as original ctypesgen. Using logging module allows those messages to be disabled (or filtered) via standard logging. Currently not following best practices for logging due to attempt to preserve previous behavior.
+  * pep8 changes to test suite.
+  * Fix Issue #38: Tests failing to find correct printer
+
+-------------------------------------------------------------------
+Thu Aug 24 13:35:19 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Fri Sep 12 11:26:19 UTC 2014 - andreas.stieger@gmx.de
+
+- ctypesgen for python, forr submission to Factory 
+  * licence is BSD-3-Clause
+  * apply Python packaging standards
+  * rename from ctypesgen to python-ctypesgen, with obsoletes/
+    provides and same versioning scheme
+  * drop fix-python-path.diff
+  * update to r151
+  * fix warnings
+  * fix executable permissions
+  * generate manual page
+
+-------------------------------------------------------------------
+Sat Aug 13 00:01:18 CEST 2011 - dmueller@suse.de
+
+- fix build 
+
+

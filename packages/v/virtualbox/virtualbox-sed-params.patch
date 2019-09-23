@@ -1,0 +1,27 @@
+Index: VirtualBox-6.0.0/src/VBox/Main/Makefile.kmk
+===================================================================
+--- VirtualBox-6.0.0.orig/src/VBox/Main/Makefile.kmk
++++ VirtualBox-6.0.0/src/VBox/Main/Makefile.kmk
+@@ -1521,7 +1521,7 @@ $(VBoxAPIWrap_0_OUTDIR)/VBoxAPI.d.ts \
+ 	$(QUIET)$(VBOX_XSLTPROC) --stringparam KBUILD_HOST $(KBUILD_HOST) \
+ 		--stringparam generating "dtrace-probes" \
+ 		-o "$@" $(VBoxAPIWrap_VBOX_XSLT) $(VBOX_XIDL_FILE)
+-	$(QUIET)$(SED) -e '' -o "$@.tmp" \
++	$(QUIET)$(SED) -e '' --output "$@.tmp" \
+ 		"$(VBOX_PATH_MAIN_SRC)/src-all/VBoxAPI-start$(if-expr "$(VBOX_HOST_DTRACE_VERSION)" == "dtrace: Sun D 1.6.2",-alternative,).d" \
+ 		"$@" \
+ 		"$(VBOX_PATH_MAIN_SRC)/src-all/VBoxAPI-end$(if-expr "$(VBOX_HOST_DTRACE_VERSION)" == "dtrace: Sun D 1.6.2",-alternative,).d"
+Index: VirtualBox-6.0.0/src/VBox/Devices/Makefile.kmk
+===================================================================
+--- VirtualBox-6.0.0.orig/src/VBox/Devices/Makefile.kmk
++++ VirtualBox-6.0.0/src/VBox/Devices/Makefile.kmk
+@@ -859,8 +859,7 @@ VBOX_WITH_VMSVGA3D_DYNAMIC_LOAD = 1
+ 	$(call MSG_TOOL,iasl,VBoxDD,$<,$@)
+ 	$(QUIET)$(RM) -f $@ $@.tmp $@.pre
+ 	$(QUIET)$(TOOL_$(VBOX_GCC_TOOL)_CC) -E -P -x c -o $@.pre $<
+-	$(QUIET)$(SED) -e "s/<NL>/\n/g" \
+-		--output $@.pre1 $@.pre
++	$(QUIET)$(SED) -e "s/<NL>/\n/g" $@.pre > $@.pre1
+ 	$(QUIET)$(VBOX_IASLCMD) -tc -vs -p $@ $@.pre1
+ 	$(QUIET)$(MV) -f $@ $@.tmp
+ 	$(QUIET)$(SED) -e "s/AmlCode\|vboxssdt_cpuhotplug_aml_code/AmlCodeSsdtCpuHotPlug/g" \

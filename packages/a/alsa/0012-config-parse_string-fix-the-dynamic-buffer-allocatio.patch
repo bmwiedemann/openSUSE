@@ -1,0 +1,52 @@
+From 990b1a53ed800caac0bab1c2b7987205569861fe Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 24 May 2019 10:44:49 +0200
+Subject: [PATCH 12/25] config: parse_string() fix the dynamic buffer
+ allocation failure code (coverity)
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/conf.c | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/src/conf.c b/src/conf.c
+index 3a3c91bf4284..3e4b76a34ecf 100644
+--- a/src/conf.c
++++ b/src/conf.c
+@@ -4747,8 +4747,11 @@ static int parse_string(const char **ptr, char **val)
+ 			return -EINVAL;
+ 		case '\\':
+ 			c = parse_char(ptr);
+-			if (c < 0)
++			if (c < 0) {
++				if (alloc > bufsize)
++					free(buf);
+ 				return c;
++			}
+ 			break;
+ 		default:
+ 			(*ptr)++;
+@@ -4768,12 +4771,17 @@ static int parse_string(const char **ptr, char **val)
+ 			alloc *= 2;
+ 			if (old_alloc == bufsize) {
+ 				buf = malloc(alloc);
++				if (!buf)
++					return -ENOMEM;
+ 				memcpy(buf, _buf, old_alloc);
+ 			} else {
+-				buf = realloc(buf, alloc);
++				char *buf2 = realloc(buf, alloc);
++				if (!buf2) {
++					free(buf);
++					return -ENOMEM;
++				}
++				buf = buf2;
+ 			}
+-			if (!buf)
+-				return -ENOMEM;
+ 		}
+ 		buf[idx++] = c;
+ 	}
+-- 
+2.16.4
+

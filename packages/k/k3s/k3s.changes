@@ -1,0 +1,152 @@
+-------------------------------------------------------------------
+Thu May  2 12:44:52 UTC 2019 - Duncan Mac-Vicar <dmacvicar@suse.de>
+
+- Update to version 0.4.0
+  * Features and Enhancements
+    - Update to kubernetes v1.14.1 - Upgraded from Kubernetes
+      v1.13.5.
+      This Kubernetes upgrade moves pid limiting to beta and is
+      enabled by default, which may not be supported by all kernels.
+      K3s will auto-detect cgroup pids support and add flags as
+      needed if the pids module is not available. [#335]
+    - Add --bind-address flag for API server [#214]
+      Support custom bind address for kubernetes API server to bind to.
+    - Add --cluster-domain flag for custom kubelet and DNS configuration [#267]
+      Support configuring custom DNS cluster domains.
+    - Add --flannel-iface flag for agent [#72]
+      Support custom flannel interface.
+    - Add passthrough args [#290]
+      Support for overriding k3s default arguments or passing custom
+      arguments to Kubernetes processes:
+      --kube-apiserver-arg value
+        Customized flag for kube-apiserver process
+      --kube-scheduler-arg value
+        Customized flag for kube-scheduler process
+      --kube-controller-arg value
+        Customized flag for kube-controller-manager process
+      --kubelet-arg value
+        (agent) Customized flag for kubelet process
+      --kube-proxy-arg value
+        (agent) Customized flag for kube-proxy process
+    - Initial metrics-server support [#252]
+      Configures aggregation layer so metrics server can be launched and
+      metrics scraped. Future enhancements will remove need for a
+      custom metrics server deployment.
+    - Add experimental rootless support
+      Provides --rootless flag for running k3s agent as a user.
+  * Bug fixes
+    - Fixed an issue where k3s may not connect to the API server when using
+      proxy settings [#325]
+- Changes from Release v0.3.0
+  * Features and Enhancements
+    - Airgap support with helm and preinstalled images [#166]
+      Support static helm charts through the API server and loading
+      container images on agents. See our documentation for details
+      on how to perform airgap installations.
+    - Add --tls-san flag for API server cert validation [#200]
+      Support alternate names for cert generation to avoid API cert issues.
+    - Add --resolv-conf flag for custom kubelet DNS configuration [#53]
+    - Support configuring custom DNS resolvers or using the host system's
+      resolv.conf configuration. If the host system's resolv.conf doesn't
+      supply any viable resolvers, intelligently fallback to 8.8.8.8
+      (Google Public DNS).
+    - Update to kubernetes v1.13.5
+      This upgrade from v1.13.4 addresses Kubernetes CVE-2019-9946
+      and CVE-2019-1002101.
+  * Bug fixes
+    - Fixed an issue where the k3s service load balancer will not be created
+      if the port name is longer than 15 characters #90
+    - Fixed an issue where k3s does not ignore empty yaml documents in a
+      manfest #222
+    - Fixed an issue where k3s may not run with selinux, the installer will now
+      add selinux permissions #227
+    - Fixed an issue where k3s deployment manifests are created even if
+      --no-deploy is specified #230
+
+-------------------------------------------------------------------
+Fri Mar 15 18:57:35 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace the sales pitch in the description by new wording,
+  sourced from second block paragraph of k3s's README.md and
+  Wikipedia, so as to fulfill the openSUSE description
+  recommendations on what k3s is, and how it differs from other
+  implementations of its kind.
+
+-------------------------------------------------------------------
+Fri Mar 15 10:40:37 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix 'Conflicts'
+- Add 'iptables' requires
+- Package hyperkube sepraretly
+- Add a workaround for https://github.com/rancher/k3s/issues/231
+- Add kubectl and crictl symlinks
+- Update description
+
+-------------------------------------------------------------------
+Wed Mar 13 22:07:33 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add requires to 'conntrack-tools' and 'runc' as it is needed at
+  runtime
+
+-------------------------------------------------------------------
+Wed Mar 13 15:07:20 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix k3s-agent.service as '-u' is not a valid option
+
+-------------------------------------------------------------------
+Tue Mar 12 15:02:30 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to version 0.2.0:
+  * Features and Enhancements:
+    - Support arbitrary CRI implementations [#107] - Users can now 
+    configure k3s to use cri-o and other CRI implementations that 
+    are not packaged into k3s.
+    - Support for preloading images [#92] - Users can now have node
+    agents load docker images from a location on the host at startup,
+    eliminating the need to pull images from a remote location.
+    - Upgrade to Kubernetes v1.13.4 [#95] - Update to the latest 
+    release of Kubernetes.
+    - Support k3s on Rancher [#69] - Users can now import k3s 
+    clusters into Rancher (supported in Rancher v2.2.0-rc3 and later).
+    - Support agent options in server command [#73] - Users can now
+    set any of the options available to agents when starting the k3s
+    server node.
+    - Support the ability to run k3s as non-root user [#38] - User 
+    can now run the k3s server as a non-root user.
+    - Support the ability to read node token from a file [#98] - Users
+    can now have the node-agent read its token from a file rather
+    than passing it as a string.
+  * Bug fixes:
+    - Fixed an issue where preloaded deployment manifests fail to
+    deploy if no namespace is specified #151
+    - Fixed an issue where changes to helm chart values or 
+    values.yaml aren't always triggering an upgrade #187
+    - Fixed an issue where nodes with uppercase hostnames hang 
+    indefinitely #160
+    - Fixed an issue where containerd log level environment variable 
+    is not respected #188
+    - Fixed an issue where node-token path doesn't resolve for root
+    user in agent scripts #189
+    - Fixed an issue where traefik is not listed in the --no-deploy 
+    flag's help text #186
+    - Fixed an issue where changing cluster CIDR was not possible #93
+    - Fixed an issue where k3s systemd service should wait until 
+    the server is ready #57
+    - Fixed an issue where test volume mount e2e fails for k3s 
+    image #45
+    - Fixed an issue where component status is not accurate #126
+    - Fixed an issue where install script fails if wget is not 
+    available #48
+    - Added the ability to dynamically install the latest release
+    of k3s #47
+
+-------------------------------------------------------------------
+Mon Mar  4 14:35:14 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid 'cannot allocate memory' error seen 
+  on aarch64
+
+-------------------------------------------------------------------
+Thu Feb 28 07:33:11 UTC 2019 - Duncan Mac-Vicar <dmacvicar@suse.de>
+
+- Initial package - v0.1.0

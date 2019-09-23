@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Tue Sep 17 08:20:40 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.30
+   see /usr/share/doc/packages/perl-Locale-Maketext-Gettext/Changes
+
+  2019-09-17	version 1.30
+  	 Fix after 10 years.
+  	 1. 12-cache.t: Fixed so that it works on MS-Win32.  I forgot to
+  	    issue binmode when copying the MO files.
+  	 2. 00-signature.t: Removed TEST_SIGNATURE, as this does not work
+  	    on everybody who does not have my GPG public key, but me.
+  	 3. 03-errors.t: Removed the debugging output.
+
+-------------------------------------------------------------------
+Tue Sep 10 09:13:15 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.29
+   see /usr/share/doc/packages/perl-Locale-Maketext-Gettext/Changes
+
+  2019-09-09	version 1.29
+  	 Fix after 10 years.
+  	 1. Gettext.pm: Added support to purge the lexicon cache and
+  	    reread the MO file on calling textdomain() when MO file is
+  	    updated automatically.  This enables MO file live update with
+  	    persistant applications like Mojolicious or mod_perl.
+  	 2. Source is now on Github.  See:
+  	    https://github.com/imacat/Locale-Maketext-Gettext
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:22 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:16 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Nov 12 22:23:17 UTC 2010 - jw@novell.com
+
+- needed by publican
+- initial package 1.28
+  * created by cpanspec 1.78.02
+

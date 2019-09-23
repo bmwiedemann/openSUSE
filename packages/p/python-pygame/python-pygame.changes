@@ -1,0 +1,215 @@
+-------------------------------------------------------------------
+Mon May 20 08:46:49 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.9.6
+  * mixer thread deadlock issue when controlling it from different
+    threads.
+  * pygame.version.vernum now has major, minor, and patch attributes.
+- added patches
+  Do not test mp3 format.
+  + python-pygame-test-no-mp3.patch
+
+-------------------------------------------------------------------
+Mon Sep  3 14:42:31 UTC 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Clean up SPEC, avoid warnings.
+
+-------------------------------------------------------------------
+Tue Aug  7 15:32:41 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 1.9.4
+  * python 3.7 support.
+  * beta pypy support.
+  * pygame.draw fixes
+  * pygame.math is not experimental anymore. Speedups and bugfixes.
+  * Debian, Mac homebrew, mac virtualenv, manylinux and other platform fixes.
+  * documentation fixes, jedi support for type ahead in editors like VSCode and VIM.
+  * Surface.blits for blitting many surfaces at once more quickly.
+
+-------------------------------------------------------------------
+Wed Jun 13 14:54:51 UTC 2018 - toddrme2178@gmail.com
+
+- Get tests working.
+
+-------------------------------------------------------------------
+Thu Aug 17 22:13:05 UTC 2017 - jengelh@inai.de
+
+- Fix RPM group.
+
+-------------------------------------------------------------------
+Tue Aug  8 20:33:56 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 1.9.3
+  * This is a bugfix release which fixes a couple of key issues
+    which came up with 1.9.2
+- Update to version 1.9.2
+- Implement single-spec version
+- Fix source URL
+- Fix shebangs
+- Remove pygame-v4l-2.6.38.patch
+  No longer needed
+
+-------------------------------------------------------------------
+Sun Oct 12 09:49:51 UTC 2014 - mailaender@opensuse.org
+
+- fixed rpmlint error devel-file-in-non-devel-package
+- patch1 could need a tag
+- fixed rpmlint warning self-obsoletion pygame-doc
+- ignore missing executable flags in the -docs package
+- added missing build requires for portmidi
+- fixed rpmlint warning files-duplicate with fdupes
+- added rpmlintrc to whitelist the warnings about sample code
+- avoid redundancy in the %description
+
+-------------------------------------------------------------------
+Thu Jul  7 11:01:11 UTC 2011 - idonmez@novell.com
+
+- Add pygame-v4l-2.6.38.patch: use new v4l interface 
+
+-------------------------------------------------------------------
+Tue Jun  8 12:52:19 UTC 2010 - prusnak@opensuse.org
+
+- updated to 1.9.1
+  * add missing readme.html
+  * bugfixes
+
+-------------------------------------------------------------------
+Wed Aug  5 20:09:35 CEST 2009 - matejcik@suse.cz
+
+- update to 1.9.0
+  * many bugfixes
+  * full python-post-2.5 compatibility, py3k compatibility
+- patched setup to workaround broken source tarball (missing readme.html)
+- removed py2.5 compatibility patch
+
+-------------------------------------------------------------------
+Mon May  4 12:04:09 CEST 2009 - ro@suse.de
+
+- buildrequires: replace python-numeric by python-numpy
+  for >= 11.2
+
+-------------------------------------------------------------------
+Fri Mar 20 13:28:17 CET 2009 - matejcik@suse.cz
+
+- (re)added libpng-devel and libjpeg-devel for image format support
+
+-------------------------------------------------------------------
+Fri Sep 12 14:20:01 CEST 2008 - matejcik@suse.cz
+
+- update to 1.8.1
+  * lots of changes and fixes - see WHATSNEW for details
+
+-------------------------------------------------------------------
+Mon Jun  2 01:41:13 CEST 2008 - crrodriguez@suse.de
+
+- needs fno-strict-aliasing
+
+-------------------------------------------------------------------
+Thu Apr  3 16:15:37 CEST 2008 - prusnak@suse.cz
+
+- updated to 1.8.0
+  * lots of changes and fixes - see WHATSNEW for details
+- rewrite pep353.diff
+
+-------------------------------------------------------------------
+Tue Aug 21 21:14:44 CEST 2007 - meissner@suse.de
+
+- buildrequire SDL_ttf -> SDL_ttf-devel
+
+-------------------------------------------------------------------
+Tue Nov 21 11:32:47 CET 2006 - prusnak@suse.cz
+
+- changes according to PEP353 (pep353.diff)
+
+-------------------------------------------------------------------
+Tue Feb 28 16:46:03 CET 2006 - jmatejek@suse.cz
+
+- updated to reflect python changes due to #149809
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:51 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Oct  6 17:38:03 CEST 2005 - matejcik@suse.cz
+
+- update to 1.7.1release
+- removed readme.html, which is no longer provided
+
+-------------------------------------------------------------------
+Wed Feb  2 14:40:49 CET 2005 - ro@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Tue Sep 21 18:22:53 CEST 2004 - mcihar@suse.cz
+
+- update to 1.6.2, this (among others) fixes brokeness on x86_64 - bug #45731
+
+-------------------------------------------------------------------
+Fri Jan 30 16:28:25 CET 2004 - mcihar@suse.cz
+
+- fixed documentation installation
+
+-------------------------------------------------------------------
+Fri Oct 24 12:35:55 CEST 2003 - mcihar@suse.cz
+
+- update to 1.6 (This new release mainly contains stability and internal
+  fixes, small fixes for line and circle primitives, many fixes for locating
+  system TrueType fonts, an updated Mac OS X environment, and bigger integer
+  storage for Rect objects.)
+- patch was included in upstream
+- no root for build
+
+-------------------------------------------------------------------
+Thu Oct 02 11:54:20 CEST 2003 - mcihar@suse.cz
+
+- fixed mode related functions that failed on AMD64, thanks to gpayer@suse.de (bug #31709)
+
+-------------------------------------------------------------------
+Mon Jun 16 12:51:28 CEST 2003 - mcihar@suse.cz
+
+- use record-rpm
+- updated to 1.5.6
+
+-------------------------------------------------------------------
+Mon May 12 14:22:17 CEST 2003 - mcihar@suse.cz
+
+- use versioned dependency on python
+
+-------------------------------------------------------------------
+Wed Jan 08 11:42:06 CET 2003 - mcihar@suse.cz
+
+- added obsoletes and provides for rename
+- moved doc into %{_defaultdocdir}/python-pygame
+- some doc is in base package with info where to find more
+
+-------------------------------------------------------------------
+Mon Jan 06 12:16:46 CET 2003 - mcihar@suse.cz
+
+- update to 1.5.5
+    * improved Unicode support
+    * fixed some bugs
+- renamed to python-pygame
+
+-------------------------------------------------------------------
+Mon Aug 12 11:26:17 CEST 2002 - ro@suse.de
+
+- update to 1.5 to get rid of conflict with pause() from unistd
+
+-------------------------------------------------------------------
+Mon Feb 18 15:56:57 CET 2002 - vinil@suse.cz
+
+- pygame now requires python
+
+-------------------------------------------------------------------
+Mon Feb  4 15:31:30 CET 2002 - nadvornik@suse.cz
+
+- update to 1.4
+
+-------------------------------------------------------------------
+Tue Jan 29 14:36:49 CET 2002 - nadvornik@suse.cz
+
+- new package, version 1.3
+

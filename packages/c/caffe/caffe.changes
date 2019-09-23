@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Thu Jun  6 11:20:37 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid OOM
+
+-------------------------------------------------------------------
+Thu Jun  6 10:44:10 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- hpc modules were not loaded in check section 
+
+-------------------------------------------------------------------
+Tue May 28 12:35:03 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Run tests in %check
+
+-------------------------------------------------------------------
+Mon May 27 05:00:59 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Package %{p_includedir}/proto/caffe.pb.cc
+
+-------------------------------------------------------------------
+Mon Nov 19 09:29:25 UTC 2018 - eich@suse.com
+
+- Use HPC scripts for script sanitation.
+
+-------------------------------------------------------------------
+Mon Nov 19 07:32:31 UTC 2018 - eich@suse.com
+
+- Fix modules file for python packages.
+
+-------------------------------------------------------------------
+Mon Nov 19 02:11:06 UTC 2018 - eich@suse.com
+
+- Move python files over to HPC module path.
+
+-------------------------------------------------------------------
+Sun Nov 18 10:29:36 UTC 2018 - eich@suse.com
+
+- Add support for %hpc_modules_init. This fixes an issue with
+  unwanted dependencies.
+
+-------------------------------------------------------------------
+Sat Nov 10 08:49:53 UTC 2018 - eich@suse.com
+
+- Set required suse-hpc package version to >= 0.2.
+
+-------------------------------------------------------------------
+Fri Nov  9 10:24:32 UTC 2018 - eich@suse.com
+
+- Do not run ldconfig for HPC builds: there are no libraries
+  in the default search path.
+
+-------------------------------------------------------------------
+Fri Nov  9 10:17:49 UTC 2018 - eich@suse.com
+
+- Don't ship data that contains URLs to possibly copyrighted
+  material.
+
+-------------------------------------------------------------------
+Thu Nov  8 19:18:08 UTC 2018 - eich@suse.com
+
+- Rework spec file to add mutilbuild support and build HPC module
+  aware packages.
+
+-------------------------------------------------------------------
+Fri Oct 26 20:06:50 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Author lists are to be avoided in the description - remove it.
+- Clarify summaries and trim filler wording.
+
+-------------------------------------------------------------------
+Fri Oct 26 10:16:41 UTC 2018 - cgoll@suse.com
+
+- renamed package from python-caffe to python3-caffe and added 
+  example package
+
+-------------------------------------------------------------------
+Thu Oct 25 08:52:44 UTC 2018 - cgoll@suse.com
+
+- Fixed python sehbang lines and executeable bits 
+
+-------------------------------------------------------------------
+Mon Sep 10 12:41:31 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add Python support and package it in python-caffe
+
+-------------------------------------------------------------------
+Mon Sep 10 09:58:07 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Initial package, version 1.0 (based on home:franzzapata:learn/caffe)
+

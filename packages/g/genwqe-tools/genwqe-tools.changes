@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Tue Jul 30 15:27:04 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- for ppc64* remove in spec the lines about BUNDLE_LIBCXL
+  to avoid build error.
+- update rpmlintrc
+
+-------------------------------------------------------------------
+Mon Feb 12 09:57:10 UTC 2018 - normand@linux.vnet.ibm.com
+
+- update to git version 4.0.20
+  - Fix compressBound
+  - Add Debug tools
+  - Fix genwqe_cksum tool
+  - Fix missing manpages in spec file
+  - Fix new compiler warnings
+  - Improve Z_STREAM_END detection circumvention
+- detailed list of upstream commits:
+  https://github.com/ibm-genwqe/genwqe-user/commits/588a1fa
+
+-------------------------------------------------------------------
+Fri Oct 13 14:22:00 UTC 2017 - normand@linux.vnet.ibm.com
+
+- add two patches to avoid build failures (same as fedora)
+  genwqe-user-4.0.18-install-gzFile_test.patch
+  genwqe-user-4.0.18-config.patch
+  TODO: there are still rpmlint warnings/errors to work on.
+
+-------------------------------------------------------------------
+Thu Mar  2 10:42:24 UTC 2017 - Thomas.Blume@suse.com
+
+- stick to the Groups we had before, replace %{__foo} by just foo 
+  and drop the %changelog
+- remove redundant strip in specfile
+
+-------------------------------------------------------------------
+Wed Feb 22 06:10:55 UTC 2017 - Thomas.Blume@suse.com
+
+- directly use ibm git in _service file
+- add rpmlintrc as source to specfile
+
+-------------------------------------------------------------------
+Thu Feb 16 06:47:37 UTC 2017 - Thomas.Blume@suse.com
+
+- use correct git tag for version 4.0.18
+
+-------------------------------------------------------------------
+Fri Jan 20 13:47:39 UTC 2017 - Thomas.Blume@suse.com
+
+- update to git version 4.0.18
+  * pick up all the latest fixes and enhancements to provide continued support 
+    for the FPGA based PCIe gzip accelerator adapters on Power (fate#321594)
+  * delete genwqe_add_ldconfig_path.patch and genwqe-user-4.0.17-libcxl.patch
+    as they are present in version 4.0.18
+
+-------------------------------------------------------------------
+Thu Sep  8 11:16:01 UTC 2016 - Thomas.Blume@suse.com
+ 
+-- add s390 architecture (boo#990235)
+
+-------------------------------------------------------------------
+Fri Jul 15 09:18:25 UTC 2016 - normand@linux.vnet.ibm.com
+
+-  update with last upstream commit 596962e to address
+   https://github.com/ibm-genwqe/genwqe-user/issues/122
+
+-------------------------------------------------------------------
+Sat Jul  2 16:13:19 UTC 2016 - jengelh@inai.de
+
+- Make groups consistent with openSUSE use.
+  Make all directories owned all the time.
+
+-------------------------------------------------------------------
+Fri Jul  1 16:04:10 UTC 2016 - normand@linux.vnet.ibm.com
+
+-  clean spec file removing macros for make,install,mkdir, and
+   remove defattr as set by rpm itself.
+-  new genwqe_add_ldconfig_path.patch
+
+-------------------------------------------------------------------
+Fri Jul  1 14:55:01 UTC 2016 - normand@linux.vnet.ibm.com
+
+- update rpmlintrc file and reference it in spec.
+
+-------------------------------------------------------------------
+Fri Jul  1 14:09:21 UTC 2016 - normand@linux.vnet.ibm.com
+
+- use upstream github.com/ibm-genwqe not github.com/tblume
+- update from git v4.0.17 to master commit c2f7723
+- add ppc64 as target arch
+- link dynamically to libcxl available for ppc64/ppc64le
+- new genwqe-user-4.0.17-libcxl.patch
+
+-------------------------------------------------------------------
+Fri Apr 22 04:31:09 UTC 2016 - Thomas.Blume@suse.com
+
+- update to git version 4.0.17
+  * fixed: Segfaults due to -fPIC not used for all objects in libzADC.so 
+    (bsc#976588)
+
+-------------------------------------------------------------------
+Thu Apr  7 06:59:28 UTC 2016 - Thomas.Blume@suse.com
+
+- update to latest git version 4.0.16
+- remove some workarounds from specfile
+
+-------------------------------------------------------------------
+Thu Mar 10 12:11:30 UTC 2016 - thomas.blume@suse.com
+
+- inital release version 4.0.13 (taken from home:krisman/genwqe)

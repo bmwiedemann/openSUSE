@@ -1,0 +1,14 @@
+disable pulseaudio auto spawn as it is annoying
+Index: openal-soft-1.17.2/Alc/backends/pulseaudio.c
+===================================================================
+--- openal-soft-1.17.2.orig/Alc/backends/pulseaudio.c
++++ openal-soft-1.17.2/Alc/backends/pulseaudio.c
+@@ -1669,7 +1669,7 @@ static ALCboolean ALCpulseBackendFactory
+         pa_threaded_mainloop *loop;
+ 
+         pulse_ctx_flags = 0;
+-        if(!GetConfigValueBool(NULL, "pulse", "spawn-server", 1))
++        if(!GetConfigValueBool(NULL, "pulse", "spawn-server", 0))
+             pulse_ctx_flags |= PA_CONTEXT_NOAUTOSPAWN;
+ 
+         if((loop=pa_threaded_mainloop_new()) &&

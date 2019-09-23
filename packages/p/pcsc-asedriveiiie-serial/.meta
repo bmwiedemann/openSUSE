@@ -1,0 +1,9 @@
+<package name="pcsc-asedriveiiie-serial" project="openSUSE:Factory">
+  <title>ASEDrive IIIe Serial Smartcard Reader Driver</title>
+  <description>This package contains a driver for the ASEDrive IIIe Serial smart card
+reader.
+
+This driver is meant to be used with the PCSC-Lite daemon from the
+pcsc-lite package.</description>
+  <devel project="security:chipcard" package="pcsc-asedriveiiie-serial"/>
+</package>

@@ -1,0 +1,8 @@
+<package name="svxlink" project="openSUSE:Factory">
+  <title>The SvxLink project files</title>
+  <description>The SvxLink project is a multi purpose voice services system for
+ham radio use. For example, EchoLink connections are supported.
+Also, the SvxLink server can act as a repeater controller.
+</description>
+  <devel project="hardware:sdr" package="svxlink"/>
+</package>

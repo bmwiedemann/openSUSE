@@ -1,0 +1,209 @@
+diff -r -u vegastrike-src-0.5.1.r1/setup/src/include/central.cpp vegastrike-src-0.5.1.r1-nu/setup/src/include/central.cpp
+--- vegastrike-src-0.5.1.r1/setup/src/include/central.cpp	2004-10-24 23:27:13.000000000 -0300
++++ vegastrike-src-0.5.1.r1-nu/setup/src/include/central.cpp	2017-06-21 16:57:23.328270407 -0300
+@@ -28,7 +28,7 @@
+ 	ShowMain();
+ }
+ 
+-void SetGroup(char *group, char *setting) {
++void SetGroup(const char *group, const char *setting) {
+ 	struct group *CURRENT;
+ 	CURRENT = &GROUPS;
+ 	do {
+@@ -36,7 +36,7 @@
+ 		if (strcmp(group, CURRENT->name) == 0) { CURRENT->setting = NewString(setting); return; }
+ 	} while ((CURRENT = CURRENT->next) > 0);
+ }
+-void SetInfo(char *catagory, char *info) {
++void SetInfo(const char *catagory, const char *info) {
+ 	struct catagory *CURRENT;
+ 	CURRENT = &CATS;
+ 	do {
+@@ -45,7 +45,7 @@
+ 	} while ((CURRENT = CURRENT->next) > 0);
+ }
+ 
+-char *GetInfo(char *catagory) {
++const char *GetInfo(const char *catagory) {
+ 	struct catagory *CURRENT;
+ 	CURRENT = &CATS;
+ 	do {
+@@ -58,17 +58,17 @@
+ 	return catagory;
+ }
+ 
+-char *GetSetting(char *group) {
++const char *GetSetting(const char *group) {
+ 	struct group *CUR;
+ 	CUR = &GROUPS;
+ 	do {
+ 		if (CUR->name == NULL) { continue; }
+ 		if (strcmp(CUR->name, group) == 0) { return CUR->setting; }
+ 	} while ((CUR = CUR->next) > 0);
+-	return '\0';
++	return "\0";
+ }
+ 
+-struct catagory *GetCatStruct(char *name) {
++struct catagory *GetCatStruct(const char *name) {
+ 	struct catagory *CUR;
+ 	CUR = &CATS;
+ 	do {
+@@ -78,7 +78,7 @@
+ 	return 0;
+ }
+ 
+-struct group *GetGroupStruct(char *name) {
++struct group *GetGroupStruct(const char *name) {
+         struct group *CUR;
+         CUR = &GROUPS;
+         do {
+diff -r -u vegastrike-src-0.5.1.r1/setup/src/include/central.h vegastrike-src-0.5.1.r1-nu/setup/src/include/central.h
+--- vegastrike-src-0.5.1.r1/setup/src/include/central.h	2004-10-24 23:27:13.000000000 -0300
++++ vegastrike-src-0.5.1.r1-nu/setup/src/include/central.h	2017-06-21 16:57:23.328270407 -0300
+@@ -45,31 +45,31 @@
+ #define CONFIG_FILE "setup.config"
+ 
+ void Start(int*,char***);
+-void SetGroup(char *group, char *setting);
+-void SetInfo(char *catagory, char *info);
+-char *GetInfo(char *catagory);
+-char *GetSetting(char *group);
+-struct catagory *GetCatStruct(char *name);
+-struct group *GetGroupStruct(char *name);
++void SetGroup(const char *group, const char *setting);
++void SetInfo(const char *catagory, const char *info);
++const char *GetInfo(const char *catagory);
++const char *GetSetting(const char *group);
++struct catagory *GetCatStruct(const char *name);
++struct group *GetGroupStruct(const char *name);
+ typedef struct _GtkWidget GtkWidget;
+ struct catagory {
+-	char *group;
+-	char *name;
+-	char *info;
++	const char *group;
++	const char *name;
++	const char *info;
+ 	GtkWidget *button;
+ 	struct catagory *next;
+ };
+ 
+ struct group {
+-	char *name;
+-	char *setting;
++	const char *name;
++	const char *setting;
+ 	struct group *next;
+ };
+ 
+ struct global_settings {
+-	char *program_name;
+-	char *config_file;
+-	char *temp_file;
++	const char *program_name;
++	const char *config_file;
++	const char *temp_file;
+ 	int columns;
+ };
+ 
+diff -r -u vegastrike-src-0.5.1.r1/setup/src/include/display_gtk.cpp vegastrike-src-0.5.1.r1-nu/setup/src/include/display_gtk.cpp
+--- vegastrike-src-0.5.1.r1/setup/src/include/display_gtk.cpp	2008-04-23 08:05:43.000000000 -0300
++++ vegastrike-src-0.5.1.r1-nu/setup/src/include/display_gtk.cpp	2017-06-21 16:57:42.352296177 -0300
+@@ -16,7 +16,7 @@
+  **************************************************************************/
+ #include "display.h"
+ #ifdef GTK
+-void AddCats(GtkWidget *vbox, char *group, char *def);
++void AddCats(GtkWidget *vbox, const char *group, const char *def);
+ void ClickButton(GtkWidget *w, struct catagory *CUR);
+ 
+ #ifdef _WIN32
+@@ -145,7 +145,7 @@
+ }
+ 
+ 
+-void AddCats(GtkWidget *vbox, char *group, char *def) {
++void AddCats(GtkWidget *vbox, const char *group, const char *def) {
+ 	struct catagory *CUR;
+ 	GSList *radiogroup = NULL;
+ 	CUR = &CATS;
+@@ -186,7 +186,8 @@
+ void ClickButton(GtkWidget *w, struct catagory *CUR) {
+ 	struct catagory *OLD;
+ 	struct group *NEW;
+-	char *new_text, *old;
++	char *new_text;
++	const char *old;
+ 	int length;
+ 	length = strlen(GetInfo(CUR->name))+3;
+ 
+diff -r -u vegastrike-src-0.5.1.r1/setup/src/include/file.cpp vegastrike-src-0.5.1.r1-nu/setup/src/include/file.cpp
+--- vegastrike-src-0.5.1.r1/setup/src/include/file.cpp	2010-02-25 12:22:25.000000000 -0300
++++ vegastrike-src-0.5.1.r1-nu/setup/src/include/file.cpp	2017-06-21 16:57:23.332270413 -0300
+@@ -226,7 +226,7 @@
+     }
+ }
+ 
+-void Modconfig( int setting, char *name, char *group )
++void Modconfig( int setting, const char *name, const char *group )
+ {
+     FILE *rp, *wp;              //read and write
+     char  line[MAX_READ+1], write[MAX_READ+1], mid[MAX_READ+1];
+@@ -373,12 +373,12 @@
+     fclose( wp );
+ }
+ 
+-void EnableSetting( char *name, char *group )
++void EnableSetting( const char *name, const char *group )
+ {
+     Modconfig( 2, name, group );
+ }
+ 
+-void DisableSetting( char *name, char *group )
++void DisableSetting( const char *name, const char *group )
+ {
+     Modconfig( 1, name, group );
+ }
+diff -r -u vegastrike-src-0.5.1.r1/setup/src/include/file.h vegastrike-src-0.5.1.r1-nu/setup/src/include/file.h
+--- vegastrike-src-0.5.1.r1/setup/src/include/file.h	2002-01-24 02:36:04.000000000 -0300
++++ vegastrike-src-0.5.1.r1-nu/setup/src/include/file.h	2017-06-21 16:57:23.332270413 -0300
+@@ -23,8 +23,8 @@
+ 
+ void LoadMainConfig(void);
+ void LoadConfig(void);
+-void Modconfig(int setting, char *name, char *group);
+-void EnableSetting(char *name, char *group);
+-void DisableSetting(char *name, char *group);
++void Modconfig(int setting, const char *name, const char *group);
++void EnableSetting(const char *name, const char *group);
++void DisableSetting(const char *name, const char *group);
+ 
+ #endif
+diff -r -u vegastrike-src-0.5.1.r1/src/cmd/unit_collide.h vegastrike-src-0.5.1.r1-nu/src/cmd/unit_collide.h
+--- vegastrike-src-0.5.1.r1/src/cmd/unit_collide.h	2012-03-19 05:20:14.000000000 -0300
++++ vegastrike-src-0.5.1.r1-nu/src/cmd/unit_collide.h	2017-06-21 16:57:23.332270413 -0300
+@@ -94,9 +94,9 @@
+     {
+         if ( !hugeobjects.empty() )
+             hugeobjects.clear();
+-        if ( this->active_huge.size() )
++        if ( this->active_huge->size() )
+             ha.clear();
+-        if ( this->accum_huge.size() )
++        if ( this->accum_huge->size() )
+             hb.clear();
+         acc_huge.clear();
+         act_huge.clear();
+diff -r -u vegastrike-src-0.5.1.r1/src/gui/text_area.cpp vegastrike-src-0.5.1.r1-nu/src/gui/text_area.cpp
+--- vegastrike-src-0.5.1.r1/src/gui/text_area.cpp	2010-02-25 11:26:53.000000000 -0300
++++ vegastrike-src-0.5.1.r1-nu/src/gui/text_area.cpp	2017-06-21 16:57:23.332270413 -0300
+@@ -316,7 +316,7 @@
+ {
+     TextAreaItem *search;
+     search = ItemList->FindCount( cur_selected, 0 );
+-    if (search == 0) return '\0';
++    if (search == 0) return "\0";
+     if (type == 1) return search->name;
+ 
+     else return search->description;

@@ -1,0 +1,47 @@
+Avoid version number in generated files.
+Output will be identical between versions.
+In case the output changes, build-compare will catch it.
+--- a/html4.conf
++++ b/html4.conf
+@@ -460,7 +460,7 @@ endif::[]
+ <html>
+ <head>
+ <meta http-equiv="Content-Type" content="text/html; charset={encoding}">
+-<meta name="generator" content="AsciiDoc {asciidoc-version}">
++<meta name="generator" content="AsciiDoc">
+ <meta name="description" content="{description}">
+ <meta name="keywords" content="{keywords}">
+ <title>{title}</title>
+--- a/html5.conf
++++ b/html5.conf
+@@ -539,7 +539,7 @@ bodydata=<td class="tableblock halign-{c
+ <html lang="{lang=en}">
+ <head>
+ <meta http-equiv="Content-Type" content="text/html; charset={encoding}">
+-<meta name="generator" content="AsciiDoc {asciidoc-version}">
++<meta name="generator" content="AsciiDoc">
+ <meta name="description" content="{description}">
+ <meta name="keywords" content="{keywords}">
+ <title>{title}</title>
+--- a/slidy.conf
++++ b/slidy.conf
+@@ -68,7 +68,7 @@ text=<p>|</p>
+ <meta http-equiv="Content-Type" content="{quirks=application/xhtml+xml}{quirks?text/html}; charset={encoding}" />
+ ifndef::copyright[<meta name="copyright" content="Copyright &#169; {author}" />]
+ <meta name="copyright" content="Copyright &#169; {copyright}" />
+-<meta name="generator" content="AsciiDoc {asciidoc-version}" />
++<meta name="generator" content="AsciiDoc" />
+ <meta name="duration" content="{duration}" />
+ ifdef::linkcss[]
+ <link rel="stylesheet" href="{stylesdir=.}/{theme=asciidoc}.css" type="text/css" />
+--- a/xhtml11.conf
++++ b/xhtml11.conf
+@@ -531,7 +531,7 @@ cellspacing="0" cellpadding="4">
+ <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{lang=en}">
+ <head>
+ <meta http-equiv="Content-Type" content="{quirks=application/xhtml+xml}{quirks?text/html}; charset={encoding}" />
+-<meta name="generator" content="AsciiDoc {asciidoc-version}" />
++<meta name="generator" content="AsciiDoc" />
+ <meta name="description" content="{description}" />
+ <meta name="keywords" content="{keywords}" />
+ <title>{title}</title>

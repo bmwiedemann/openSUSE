@@ -1,0 +1,6 @@
+---
+:version_suffix: '-5_0'
+:preamble: |-
+  %if 0%{?suse_version} == 1110
+  %define rb_build_versions ruby21
+  %endif

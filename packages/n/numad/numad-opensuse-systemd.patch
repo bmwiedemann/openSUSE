@@ -1,0 +1,33 @@
+From 5e83c0ab0c37e69bea4c3c0493ff5d05763551ec Mon Sep 17 00:00:00 2001
+From: Mel Gorman <mgorman@suse.de>
+Date: Tue, 11 Jun 2013 09:00:28 +0100
+Subject: [PATCH] Make systemd service file openSUSE friendly
+
+Subject says it all. The After target is unnecessary and systemd should
+be informed what the PIDFile of the process is.
+
+Signed-off-by: Mel Gorman <mgorman@suse.de>
+---
+ numad.service | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/numad.service b/numad.service
+index faf51ef..d0c8c5b 100644
+--- a/numad.service
++++ b/numad.service
+@@ -1,14 +1,12 @@
+ [Unit]
+ Description=numad - The NUMA daemon that manages application locality.
+-After=syslog.target
+ 
+ [Service]
+ Type=forking
++PIDFile=/var/run/numad.pid
+ EnvironmentFile=/etc/numad.conf
+ ExecStart=/usr/sbin/numad -i $INTERVAL
+ ExecStop=/usr/sbin/numad -i 0
+ 
+ [Install]
+ WantedBy=multi-user.target
+-
+-

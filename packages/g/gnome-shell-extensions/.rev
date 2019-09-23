@@ -1,0 +1,776 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>593fcccf48f3121e7657273a1a99462d</srcmd5>
+    <version>3.0.1</version>
+    <time>1305014001</time>
+    <user>saschpe</user>
+    <comment>New package for GNOME 3: GNOME Shell extensions, that will be requested by various users</comment>
+    <requestid>69192</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bda654e70ee860630b5ea7ee879637ce</srcmd5>
+    <version>3.0.1</version>
+    <time>1305014011</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69192
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bd9b61a069145e19c511d7ceabc30e05</srcmd5>
+    <version>3.0.2</version>
+    <time>1306855977</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F</comment>
+    <requestid>71998</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>080d7be15b3bdac9ac489fe334727545</srcmd5>
+    <version>3.0.2</version>
+    <time>1306855989</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71998
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>960a1d4a04b253a28d34ff450eea2324</srcmd5>
+    <version>3.1.3</version>
+    <time>1310395876</time>
+    <user>saschpe</user>
+    <comment>Tweak</comment>
+    <requestid>75972</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>58436effb39a71bb5cb5e536ca6137d1</srcmd5>
+    <version>3.1.3</version>
+    <time>1310395906</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75972
+</comment>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>1a6d545c89f45af119ea0a725d6d48fa</srcmd5>
+    <version>3.1.3</version>
+    <time>1311319811</time>
+    <user>saschpe</user>
+    <comment>Fix some text (forwarded request 76580 from vuntz)</comment>
+    <requestid>76581</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>36524f15184c5901d9057c2e884449cb</srcmd5>
+    <version>3.1.3</version>
+    <time>1311319821</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76581
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ac928e3b92f02f3629a5e84a012424d8</srcmd5>
+    <version>3.1.4</version>
+    <time>1313142695</time>
+    <user>saschpe</user>
+    <comment>Update to 3.1.4 (forwarded request 78352 from dimstar)</comment>
+    <requestid>78591</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>3b9eeae93b343c33cd649724d52d510d</srcmd5>
+    <version>3.1.4</version>
+    <time>1313142705</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78591
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d546c0be2a88ff356933884f8f7566bd</srcmd5>
+    <version>3.2.0</version>
+    <time>1317805721</time>
+    <user>lrupp</user>
+    <comment>New stable version</comment>
+    <requestid>86356</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>d546c0be2a88ff356933884f8f7566bd</srcmd5>
+    <version>3.2.0</version>
+    <time>1319181925</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>32968eaf9feb4f820d17a27689a07097</srcmd5>
+    <version>3.2.0</version>
+    <time>1319551139</time>
+    <user>coolo</user>
+    <comment>Fix bugs</comment>
+    <requestid>89020</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>8b1414263c00ecf31119c47f595261d0</srcmd5>
+    <version>3.2.0</version>
+    <time>1319822499</time>
+    <user>coolo</user>
+    <comment>Allow individual extensions to be installed (forwarded request 89657 from RBrownCCB)</comment>
+    <requestid>89659</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>e52f6747a183a1369f1bda711615afbd</srcmd5>
+    <version>3.2.0</version>
+    <time>1323191681</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ad753bd9001fdd197f38ebb1900f58b1</srcmd5>
+    <version>3.4.0</version>
+    <time>1339363178</time>
+    <user>coolo</user>
+    <comment>Push G:F</comment>
+    <requestid>123644</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>ad753bd9001fdd197f38ebb1900f58b1</srcmd5>
+    <version>3.4.0</version>
+    <time>1340183388</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3656c08399d85497cf56ea36818213fb</srcmd5>
+    <version>3.6.2</version>
+    <time>1358082545</time>
+    <user>coolo</user>
+    <comment>Update to 3.6.2 - This is actually part of gnome 3.6, but was missed in the entire Factory life time... amazing (forwarded request 148222 from dimstar)</comment>
+    <requestid>148223</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>bfdc1a3ac4c11d70cc040f424fbb9eeb</srcmd5>
+    <version>3.6.2</version>
+    <time>1358865153</time>
+    <user>coolo</user>
+    <comment>- Add g-s-e-power-off-elipsis.patch: &quot;Power Off...&quot; was changed to
+  &quot;Power Off&quot;, but a bunch of translations missed that yet.
+
+- Add alternative-status-menu.gschema.override: Enable hibernate by
+  default for users of the packaged version of the
+  alternative-status-menu extension. (forwarded request 149264 from Zaitor)</comment>
+    <requestid>149515</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>bfdc1a3ac4c11d70cc040f424fbb9eeb</srcmd5>
+    <version>3.6.2</version>
+    <time>1359108966</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c48d44fdbf40cd4deb5d48c5d66dd3f9</srcmd5>
+    <version>3.8.0</version>
+    <time>1364986367</time>
+    <user>coolo</user>
+    <comment>Fix scriptlets... (forwarded request 161700 from vuntz)</comment>
+    <requestid>161782</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cdda5f4c67a2ba34071b64dcdbdaca4b</srcmd5>
+    <version>3.8.1</version>
+    <time>1366984186</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.8.1 to Factory - mostly small bug fixes over the existing 3.8.0 we have</comment>
+    <requestid>173254</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e5facaedc0f821f04395b5443dde0b19</srcmd5>
+    <version>3.9.1</version>
+    <time>1369719421</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.1 - been running it for a while now.</comment>
+    <requestid>176665</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>774b1c96a4f2adf07f3cdd7c19d823e5</srcmd5>
+    <version>3.9.3</version>
+    <time>1372527683</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.3, as announced</comment>
+    <requestid>181284</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>dd6a37f8cca88aaafb91dafc8a771854</srcmd5>
+    <version>3.9.4</version>
+    <time>1374400211</time>
+    <user>coolo</user>
+    <comment>Update to 3.9.4 (forwarded request 183797 from Zaitor)</comment>
+    <requestid>183851</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>08abd5b44ff49ffb781e4d3e304be544</srcmd5>
+    <version>3.9.5</version>
+    <time>1376648608</time>
+    <user>scarabeus_factory</user>
+    <comment>push GNOME:Factory</comment>
+    <requestid>186883</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0a02bf8e4e14f9a4670a3acbe8beb79a</srcmd5>
+    <version>3.9.90</version>
+    <time>1377873012</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.90</comment>
+    <requestid>196246</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>49fd0a1f93686cec2138b08abcf39e5b</srcmd5>
+    <version>3.9.91</version>
+    <time>1378892550</time>
+    <user>coolo</user>
+    <comment>Update to 3.9.91</comment>
+    <requestid>198119</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>49fd0a1f93686cec2138b08abcf39e5b</srcmd5>
+    <version>3.9.91</version>
+    <time>1379662504</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>76e65874281a61bdfe99dcfc2899f078</srcmd5>
+    <version>3.9.92</version>
+    <time>1379920602</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.92</comment>
+    <requestid>200009</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d5c29f6e213753fce474f01b2a13674a</srcmd5>
+    <version>3.10.0</version>
+    <time>1380295714</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.10.0</comment>
+    <requestid>200943</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>18bc70429cbbc47fec9156e03c062a35</srcmd5>
+    <version>3.10.1</version>
+    <time>1382011772</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.10.1 - GNOME Stable branch - Bugfixes only (forwarded request 203472 from Zaitor)</comment>
+    <requestid>203507</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>53004c1f78fb9022e8fe8bdde5a26d18</srcmd5>
+    <version>3.12.0</version>
+    <time>1399317343</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231738</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e0169548b0893375571525ed93aad522</srcmd5>
+    <version>3.12.2</version>
+    <time>1400588709</time>
+    <user>coolo</user>
+    <comment>Stable update (forwarded request 234415 from Zaitor)</comment>
+    <requestid>234526</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>e0169548b0893375571525ed93aad522</srcmd5>
+    <version>3.12.2</version>
+    <time>1409301039</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>24eddf2f45702c6b9af21a7228a951e0</srcmd5>
+    <version>3.14.0</version>
+    <time>1412098695</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.14.0 (forwarded request 251911 from Zaitor)</comment>
+    <requestid>252088</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4b9f719e8b1061596a53b018c6856388</srcmd5>
+    <version>3.14.1</version>
+    <time>1413382809</time>
+    <user>coolo</user>
+    <comment>- Update to versoin 3.14.1:
+  + alternateTab: Fix dismissing popup with Escape.
+  + Some improvements to the window-list (spacing in app buttons,
+    no flash when closing windows with auto-grouping).
+  + Updated translations.</comment>
+    <requestid>256589</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>7e01234e1bc3b0b2cc68cb20332972a6</srcmd5>
+    <version>3.14.2</version>
+    <time>1416347203</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.14.2</comment>
+    <requestid>261802</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>4701a2a66cde0d19ea494baafdcc239e</srcmd5>
+    <version>3.14.3</version>
+    <time>1419159739</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>265957</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>16edaf14b51e3567cbba1c49384ef5ad</srcmd5>
+    <version>3.16.0</version>
+    <time>1427736040</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 292778 from dimstar)</comment>
+    <requestid>292971</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>cf7909b70ed614a938182bbe342b65fb</srcmd5>
+    <version>3.16.1</version>
+    <time>1429768707</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>298433</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>a63a448681ddd3524b21c437dc8ae112</srcmd5>
+    <version>3.16.2</version>
+    <time>1436112168</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314943</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>7de3735020ad9feb851664fb70113f4e</srcmd5>
+    <version>3.18.0</version>
+    <time>1444141932</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.18.0 (forwarded request 332822 from dimstar)</comment>
+    <requestid>332912</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>7acd6a75667392348717154ff0fd8cb7</srcmd5>
+    <version>3.18.1</version>
+    <time>1445796549</time>
+    <user>coolo</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 339407 from Zaitor)</comment>
+    <requestid>339821</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>9e352e42bee02ff43fbe74c87da5258f</srcmd5>
+    <version>3.18.2</version>
+    <time>1448186412</time>
+    <user>coolo</user>
+    <comment>Stable update, please make sure gdm, gnome-shell, mutter and gnome-shell-extensions get the same staging</comment>
+    <requestid>344074</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>85a959e8d658e82f1f694d3226fcc6a1</srcmd5>
+    <version>3.18.3</version>
+    <time>1452721559</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353224</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>d39bae472e8770c38e7d487fbe010c64</srcmd5>
+    <version>3.20.0</version>
+    <time>1459255600</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.20.0 (forwarded request 378390 from dimstar)</comment>
+    <requestid>378654</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>8c31889c773478af1a36452adb28a6c3</srcmd5>
+    <version>3.20.1</version>
+    <time>1463393044</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>395504</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>74225adfd357c17b2df520e7ababf4c1</srcmd5>
+    <version>3.20.1</version>
+    <time>1472731434</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424185</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>2a630db4d193acb41511088269acb461</srcmd5>
+    <version>3.22.0</version>
+    <time>1474623443</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 428858 from Zaitor)</comment>
+    <requestid>429130</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>42dc9efd69fb9f40dd3c005786310046</srcmd5>
+    <version>3.22.1</version>
+    <time>1477481327</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435394</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>5ff6b985ab00388e9e7c92e70a90277b</srcmd5>
+    <version>3.22.2</version>
+    <time>1478958563</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.22.2 (forwarded request 439846 from dimstar)</comment>
+    <requestid>439892</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>86ed30d5bdfb2b4c2b92f15e563bab17</srcmd5>
+    <version>3.24.0</version>
+    <time>1490220553</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.24.0 (forwarded request 481571 from dimstar)</comment>
+    <requestid>481587</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>b1792ceb2d237bcf4a1759c678c6ee20</srcmd5>
+    <version>3.24.1</version>
+    <time>1493455888</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.24.1 (forwarded request 490815 from dimstar)</comment>
+    <requestid>490931</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>d85973d6dfc4b09654d8028e1c3dfd14</srcmd5>
+    <version>3.24.1</version>
+    <time>1495132743</time>
+    <user>dimstar_suse</user>
+    <comment>SLE sync.
+
+- Add SUSE logo on lock screen when auth is requested (bsc#1007468)
+  + sle-classic-lock-screen-background.patch
+  + SLE-theme.tar.gz
+
+- Enable SLE-Classic for Leap 42.2 (bnc#999655)
+  + add workspace indicator back for LEAP 42.2
+
+- Enable SLE-Classic for Leap 42.2 (bnc#999655)
+  + modify SPEC to re-enable SLE-Classic for Leap 42.2 (forwarded request 491387 from xiaoguang_wang)</comment>
+    <requestid>494261</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>5a86847f17391b3ff657f93dcd7eb347</srcmd5>
+    <version>3.24.2</version>
+    <time>1496225602</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496390</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>57915f23c9dcc701b9e2469bdcffc0ff</srcmd5>
+    <version>3.24.3</version>
+    <time>1500892261</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511634</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>fe2283fab6dfe6407d96200b85068ade</srcmd5>
+    <version>3.24.3</version>
+    <time>1502559520</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514680</requestid>
+  </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>4f0e1412c83fc1623b845bac432ce598</srcmd5>
+    <version>3.24.3</version>
+    <time>1503999561</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518576</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>cb0ef30f28c7abdbe7e6257113fc9ae8</srcmd5>
+    <version>3.26.0</version>
+    <time>1505332605</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 523824 from dimstar)</comment>
+    <requestid>523825</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>1552e6127a4e6f208005105a4c58ad3d</srcmd5>
+    <version>3.26.0</version>
+    <time>1505502382</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526066</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>cac3c1ffb7ec6657323ff78f2f332193</srcmd5>
+    <version>3.26.0</version>
+    <time>1505989851</time>
+    <user>dimstar_suse</user>
+    <comment>- Update patch gse-sle-classic-ext.patch.
+  Fix 'this._pureWinList is null', error involved in bsc#1046570
+  fix(bsc#1046570). (forwarded request 526947 from xiaoguang_wang)</comment>
+    <requestid>526969</requestid>
+  </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>d60a170b87edc989b9e7cf0dec071a8e</srcmd5>
+    <version>3.26.0</version>
+    <time>1506340297</time>
+    <user>dimstar_suse</user>
+    <comment>Reusbmit, after coolo found a stupid mistake (forwarded request 528342 from dimstar)</comment>
+    <requestid>528350</requestid>
+  </revision>
+  <revision rev="64" vrev="5">
+    <srcmd5>6d382f6d09b667ee89fc63de130cf940</srcmd5>
+    <version>3.26.0</version>
+    <time>1506678832</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable SLE-Classic session working on Wayland.
+  Add sle-classic.desktop in folder '{_datadir}/wayland-sessions/'
+  (bsc#1058797) (forwarded request 529029 from xiaoguang_wang)</comment>
+    <requestid>529141</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>3b02c2c274db45bae5b055fb888d1e21</srcmd5>
+    <version>3.26.1</version>
+    <time>1507280444</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 531478 from Zaitor)</comment>
+    <requestid>531580</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>86b0c9a10b6931887f643a7f124e6329</srcmd5>
+    <version>3.26.1</version>
+    <time>1507896550</time>
+    <user>dimstar_suse</user>
+    <comment>- Update gse-sle-classic-ext.patch to version 3.26.1 (forwarded request 532655 from xiaoguang_wang)</comment>
+    <requestid>532851</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>e0e06c6d9111fb14e090b6238fbb4e97</srcmd5>
+    <version>3.26.1</version>
+    <time>1508769712</time>
+    <user>dimstar_suse</user>
+    <comment>- Add sle-classic-xorg.desktop file.
+  Allow user to open X session or wayland session (bsc#1062909).
+- Add default.desktop file in '{_datadir}/wayland-sessions/'
+  Make default.desktop session working on wayland (bsc#1062196).
+
+- Update gnome-shell-add-app-to-desktop.patch, allow app
+  shortcut added to desktop could be executed with default (forwarded request 535094 from xiaoguang_wang)</comment>
+    <requestid>535506</requestid>
+  </revision>
+  <revision rev="68" vrev="4">
+    <srcmd5>e8521ce9be815a53196fd1576c2a66af</srcmd5>
+    <version>3.26.1</version>
+    <time>1509530941</time>
+    <user>dimstar_suse</user>
+    <comment>- Update gse-sle-classic-ext.patch, make the bottom panel 
+  background of SLE-Classic &quot;black&quot; in the Overview mode 
+  (bsc#1064377). (forwarded request 537511 from zhengqiang)</comment>
+    <requestid>537532</requestid>
+  </revision>
+  <revision rev="69" vrev="5">
+    <srcmd5>3c30a6cd7c51f6676256a7006aeef70f</srcmd5>
+    <version>3.26.1</version>
+    <time>1509732344</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply gnome-shell-add-app-to-desktop.patch on openSUSE
+  (bsc#1061742).
+
+- Update gse-sle-classic-ext.patch, make the bottom panel
+  background of SLE-Classic &quot;black&quot; in the Overview mode (forwarded request 538029 from xiaoguang_wang)</comment>
+    <requestid>538069</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>6b2a8b84b572feb319633554bac97930</srcmd5>
+    <version>3.26.2</version>
+    <time>1510321503</time>
+    <user>dimstar_suse</user>
+    <comment>- Move SLE-Classic function in gnome-shell to
+  gnome-shell-extensions (bsc#1065611).
+  + Update gnome-shell-add-app-to-desktop.patch
+  + Update gse-sle-classic-ext.patch
+  + Update sle-classic-favorites-menu-at-end.patch
+  + Update sle-classic-xorg.desktop
+  + Update sle-classic.desktop
+  + Add sle-classic.json
+  + Add sle-classic@suse.com.tar.gz (forwarded request 539426 from xiaoguang_wang)</comment>
+    <requestid>539469</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>8c6ceef037b11358a87e452241a20de5</srcmd5>
+    <version>3.26.2</version>
+    <time>1510505853</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply SLE-Classic session on Tumbleweed (bsc#1051772).
+  + Rename sle-classic-favorites-menu-at-end.patch to
+    gnome-shell-favorites-menu-at-end.patch (forwarded request 540129 from xiaoguang_wang)</comment>
+    <requestid>540575</requestid>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>5ecc09a706b10ee4667cec1113a259c7</srcmd5>
+    <version>3.26.2</version>
+    <time>1512055933</time>
+    <user>dimstar_suse</user>
+    <comment>- Lower update-alternative priority of sle-classic desktop to 20,
+  resulting in GNOME session becoming the default session
+  (fate#324384).
+
+- Add gnome-shell-extensions-window-list-app-icon-not-shown.patch:
+  Fix window-list doesn't show app icon on taskbar when working in
+  wayland (bgo#745064).</comment>
+    <requestid>545088</requestid>
+  </revision>
+  <revision rev="73" vrev="4">
+    <srcmd5>a0134ecfebeddef7cfa11d68d75e7997</srcmd5>
+    <version>3.26.2</version>
+    <time>1513676700</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix in SLE-Classic session application title bar doesn't show
+  application menu (bsc#1070090 bgo#746592).
+  + Update sle-classic@suse.com.tar.gz
+  + Update sle-classic.desktop
+  + Update sle-classic-xorg.desktop (forwarded request 556840 from xiaoguang_wang)</comment>
+    <requestid>556920</requestid>
+  </revision>
+  <revision rev="74" vrev="5">
+    <srcmd5>6611fb0a3194c662e5119714f5bc6019</srcmd5>
+    <version>3.26.2</version>
+    <time>1516091284</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562535</requestid>
+  </revision>
+  <revision rev="75" vrev="6">
+    <srcmd5>abbce9a96c5e7e0304585f3b2ff296f4</srcmd5>
+    <version>3.26.2</version>
+    <time>1518697208</time>
+    <user>dimstar_suse</user>
+    <comment>- Update sle-classic-xorg.desktop translations (bsc#1077156). (forwarded request 573928 from xiaoguang_wang)</comment>
+    <requestid>575812</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>dbf591531115f157bee02d255266a7e3</srcmd5>
+    <version>3.27.92</version>
+    <time>1521051799</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583538 from dimstar)</comment>
+    <requestid>584702</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>46c882444c74bf03efd148b3ffada3f2</srcmd5>
+    <version>3.28.0</version>
+    <time>1521052838</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 587034 from dimstar)</comment>
+    <requestid>587043</requestid>
+  </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>ed78e2d3970f951119217c706315a940</srcmd5>
+    <version>3.28.0</version>
+    <time>1522061116</time>
+    <user>dimstar_suse</user>
+    <comment>t-u-u / boo#1086036 (forwarded request 589315 from dimstar)</comment>
+    <requestid>590001</requestid>
+  </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>d77978ec0568eafa21f8d3d5e34602cc</srcmd5>
+    <version>3.28.0</version>
+    <time>1524400661</time>
+    <user>dimstar_suse</user>
+    <comment>- Update sle-classic-xorg.desktop translations (bsc#1077156). (forwarded request 598023 from xiaoguang_wang)</comment>
+    <requestid>598590</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>72dfce949e04de08565025871f9b54fd</srcmd5>
+    <version>3.28.1+20180413.6746061</version>
+    <time>1524642300</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.28.1+20180413.6746061:
+  + cleanup: Use Array.includes() to check for element existence.
+  + window-list: Handle no overrides settings.
+  + apps-menu: Duplicate destroy actor.
+  + Updated translations.
+- Switch back to using git-checkout via source-service, upstream
+  seems unable to produce tarballs. (forwarded request 599795 from iznogood)</comment>
+    <requestid>599944</requestid>
+  </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>bce6f8764ee47d6fff7aab7f4541b09b</srcmd5>
+    <version>3.28.1+20180413.6746061</version>
+    <time>1528195910</time>
+    <user>dimstar_suse</user>
+    <comment>- Update sle-classic@suse.com.tar.gz. Don't allow user to enable
+  sle-classic extension in tweak tool (bsc#1095325). (forwarded request 613837 from xiaoguang_wang)</comment>
+    <requestid>613929</requestid>
+  </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>646c92cdff257fd09f4411ef72edef50</srcmd5>
+    <version>3.28.1+20180413.6746061</version>
+    <time>1532033358</time>
+    <user>dimstar_suse</user>
+    <comment>- Update sle-classic@suse.com.tar.gz. After sle-classic extension
+  is disabled, can't show clone window in overview mode
+  (bsc#1095325). (forwarded request 623238 from xiaoguang_wang)</comment>
+    <requestid>623622</requestid>
+  </revision>
+  <revision rev="83" vrev="4">
+    <srcmd5>64fe5e0305ef8f131daa68398d25a4b3</srcmd5>
+    <version>3.28.1+20180413.6746061</version>
+    <time>1533045361</time>
+    <user>dimstar_suse</user>
+    <comment>I tried with both gnome-shell-extensions and gnome-shell-extensions-common, neither was found in tuu - so I guess there is no translations for this there? (forwarded request 625106 from iznogood)</comment>
+    <requestid>625127</requestid>
+  </revision>
+  <revision rev="84" vrev="5">
+    <srcmd5>9f1b102b350856e1a8f03b15c7a7883e</srcmd5>
+    <version>3.28.1+20180413.6746061</version>
+    <time>1533627727</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627475</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>1bfd8c4db1fe0f8c04b10c82fb10787b</srcmd5>
+    <version>3.30.1</version>
+    <time>1539757343</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 640830 from dimstar)</comment>
+    <requestid>641193</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>ac138e37439ed848cab64cf84a262d62</srcmd5>
+    <version>3.32.1</version>
+    <time>1556914618</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.32.1 (forwarded request 695540 from dimstar)</comment>
+    <requestid>695777</requestid>
+  </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>9826c924706b154815009e5b17eb3b86</srcmd5>
+    <version>3.32.1</version>
+    <time>1559481250</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706717</requestid>
+  </revision>
+  <revision rev="88" vrev="3">
+    <srcmd5>48a7eac8eb301bd665afe5c64a75d66e</srcmd5>
+    <version>3.32.1</version>
+    <time>1563259100</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714706</requestid>
+  </revision>
+  <revision rev="89" vrev="4">
+    <srcmd5>3342dd695150ece17d450d4be79dcce2</srcmd5>
+    <version>3.32.1</version>
+    <time>1565864766</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gse-apps-menu-Add_missing_chain-up.patch: PanelMenu.Button is
+  a bit weird in that it also &quot;contains&quot; its parent actor. That
+  container is supposed to be destroyed with the button, but as we
+  currently don't chain up to the parent class' _onDestroy(), we
+  leave behind an empty container every time the extension is
+  disabled. Fix this by adding the missing chain-up.</comment>
+    <requestid>721710</requestid>
+  </revision>
+</revisionlist>

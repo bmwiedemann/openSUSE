@@ -1,0 +1,5 @@
+<package name="bcache-tools" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="filesystems" package="bcache-tools"/>
+</package>

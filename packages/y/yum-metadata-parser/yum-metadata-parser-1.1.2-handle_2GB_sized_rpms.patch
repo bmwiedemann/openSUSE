@@ -1,0 +1,62 @@
+From a88e3bef4d71dc03244768a0764d442660f7a2bc Mon Sep 17 00:00:00 2001
+From: Duncan Mac-Vicar P <dmacvicar@suse.de>
+Date: Mon, 11 Feb 2013 13:58:30 +0100
+Subject: [PATCH] Handle > 2GB sized rpms, in XML => sqlite conversion, BZ
+ 612409.
+
+---
+ db.c |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/db.c b/db.c
+index d2b51d6..ac60b4d 100644
+--- a/db.c
++++ b/db.c
+@@ -520,9 +520,9 @@ yum_db_package_write (sqlite3 *db, sqlite3_stmt *handle, Package *p)
+     sqlite3_bind_int  (handle, 17, p->rpm_header_start);
+     sqlite3_bind_int  (handle, 18, p->rpm_header_end);
+     sqlite3_bind_text (handle, 19, p->rpm_packager, -1, SQLITE_STATIC);
+-    sqlite3_bind_int  (handle, 20, p->size_package);
+-    sqlite3_bind_int  (handle, 21, p->size_installed);
+-    sqlite3_bind_int  (handle, 22, p->size_archive);
++    sqlite3_bind_int64  (handle, 20, p->size_package);
++    sqlite3_bind_int64  (handle, 21, p->size_installed);
++    sqlite3_bind_int64  (handle, 22, p->size_archive);
+     sqlite3_bind_text (handle, 23, p->location_href, -1, SQLITE_STATIC);
+     sqlite3_bind_text (handle, 24, p->location_base, -1, SQLITE_STATIC);
+     sqlite3_bind_text (handle, 25, p->checksum_type, -1, SQLITE_STATIC);
+-- 
+1.7.10.4
+
+From fd3b45b29c23764f23cbe8ab7cc7912b2e79abea Mon Sep 17 00:00:00 2001
+From: James Antill <james@and.org>
+Date: Thu, 24 Feb 2011 11:18:54 -0500
+Subject: [PATCH 2/2] Change the conversion to be 64bit safe too, *sigh*. BZ
+ 612409
+
+---
+ xml-parser.c |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/xml-parser.c b/xml-parser.c
+index 9617d17..35f04e6 100644
+--- a/xml-parser.c
++++ b/xml-parser.c
+@@ -185,11 +185,11 @@ primary_parser_package_start (PrimarySAXContext *ctx,
+             value = attrs[++i];
+ 
+             if (!strcmp (attr, "package"))
+-                p->size_package = strtol(value, NULL, 10);
++                p->size_package = strtoll(value, NULL, 10);
+             else if (!strcmp (attr, "installed"))
+-                p->size_installed = strtol(value, NULL, 10);
++                p->size_installed = strtoll(value, NULL, 10);
+             else if (!strcmp (attr, "archive"))
+-                p->size_archive = strtol(value, NULL, 10);
++                p->size_archive = strtoll(value, NULL, 10);
+         }
+     }
+ 
+-- 
+1.7.10.4
+

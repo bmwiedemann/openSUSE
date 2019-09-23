@@ -1,0 +1,214 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cab1df7eb24e6dadf74ae95934b0dab9</srcmd5>
+    <version>17.10.0</version>
+    <time>1510150233</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain limesuite in Factory</comment>
+    <requestid>539144</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>32f4d91cc41deeb276cb1d5363a33a1f</srcmd5>
+    <version>17.12.0</version>
+    <time>1513852144</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558733</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cf3f8d7950d856ff2dccf8d4cb82fc41</srcmd5>
+    <version>18.04.0</version>
+    <time>1523447992</time>
+    <user>maxlin_factory</user>
+    <comment>- Cleanup with spec-cleaner
+- Update to version 18.04.0
+  * Fixed Tx filter calibration
+  * Fixed FPGA PLL configuration when B channel is disabled
+  * Fixed non-working controls in LimeSuiteGUI 'TRX Gain' tab
+  * Changed CGEN VCO tune algorithm
+  * LimeSDR-USB v1.4 updated to r2.16 gateware
+- Add patch:
+  * limesuite-fix-cmake-path.patch
+- Update to version 18.03.0
+  SoapyLMS changes:
+  * Do not tune NCO when LO is within tuning range
+  * Filter BW reported to match filtersCalibration
+  * Function implementations changed to use same code as LMS API
+  
+  LimeSuiteGUI changes:
+  * Added log levels
+  * Added additional controls to SPI panel
+  * Reduced number of programming modes in Programming panel
+  
+  LimeSuite library changes:
+  * Added LimeSDR-Mini programming
+  * Changed default settings for LimeSDR-Mini
+  * Updated calibrations
+  * Add phase alignment for dual channel configuration
+  * Updated FPGA PLL configuration
+  * Fix B channel only streaming
+  * Fixed LMS7002M::GetPathRFE for LNAH case
+  * Fixed CGEN not tuning to 484-487 MHz
+  
+  LMS API changes:
+  * LMS_Open() can no longer succeed without connecting to hardware
+  * LMS_Disconnect() and LMS_IsOpen() are now deprecated because of above change
+  * Changed firmware/gateware programming functions
+  * Changed lms_dev_info_t structure
+  * LMS_SetLOFrequency() now attempts to set different frequencies for A/B channels using NCO
+  * Fix Rx NCO direction flip (downconvert flag used to set Rx NCO to upconvert)
+  * Disabling LPF is now same as setting it to maximum bandwidth
+  * Extented gain range for LMS_SetGaindB()
+  
+  Other changes:
+  * Reduce SIMD flags when packaging for x86
+  * LimeSDR-USB v1.4 updated to r2.15 gateware
+  * LimeSDR-Mini v1.1 updated to r1.24 gateware
+- Add limesuite-fix-cmake-path.patch
+- Update to version 17.12.0
+  SoapyLMS changes:
+  * Force MIMO alignment
+  * Add TBB frontend gain configuration
+  * Fix/adjust gain ranges
+  LMS API changes:
+  * Increased USB timeouts
+  * Updated FTDI library (LimeSDR-Mini on Windows)
+  * RF switch control for LimeSDR-Mini
+  * Updated setup/destruction of streams
+  * various bug fixes
+  LimeSuiteGUI changes:
+  * Update LimeSDR-Mini panel
+- Update descriptions.
+- Use SSE-SIMD-FLAGS only on x86_64 machines
+- Update to version 17.10.0
+  SoapyLMS changes:
+  * Initial support for LimeSDR-Mini
+  * Disable calibration cache by default
+  LMS API changes:
+  * Initial support for LimeSDR-Mini
+  LimeSuiteGUI changes:
+  * Added scrollbars
+  * Fix multiple crashes that occured when board is not connected 
+  * Bring window to front when trying to open already opened window
+  * Some cosmetic GUI changes
+  * Added default config button to GUI
+  Other changes:
+  * LimeSDR v1.4 updated to r2.11 gateware
+- Build with -DENABLE_SIMD_FLAGS=&quot;SSE4.2&quot; to avoid the new default
+  optimization settings &quot;-mmarch=native&quot; otherwise it the binaries
+  are expected to crash on machines different from the build hosts.
+- Update to version 17.09.1
+  SoapyLMS changes:
+  - SoapyLMS7 caches stream enable and disables on close
+  - Fixed late packet reporting in SoapyLMS7 stream status
+  
+  LMS API changes:
+  - Added simple GPIO example utilizing functions from LimeSuite.h
+  - Fixed WriteStream() end of burst flushing in fifo.h
+  - Fixed abs() overload compiler issue in lms7_device.cpp
+  - Removed private include in mcu_program/host_src/main.cpp
+  - Fixed error checking bug causing compilation error on MacOS in
+    LMS_GetGaindB() and LMS_GetNormalizedGain() 
+  
+  Other changes:
+  - LimeSDR v1.4 updated to r2.10 gateware
+- Update to version 17.09.0
+  LimeSuite library changes:
+  - Added transfer size adjustment based on sample rate
+  - Improved MCU calibration procedures
+  - Initial support for LimeSDR-QPCIe
+  - Changed format to 16 bit for data transfer when float (non-native) format
+    is selected in API 
+  
+  LMS API changes:
+  - Added external reference clock(LMS_CLOCK_EXTREF) configuration to
+    LMS_SetClockFreq()  
+  - Change LMS_SetGaindB() and LMS_SetNormalizedGain() to select optimal
+    TBB gain for TX
+  - Fixed LMS_GetStreamStatus() not returning some status values
+  
+  LimeSuiteGUI changes:
+  - Unified read/write params in board controls panel
+  - Fixed some GUI fields not updating correctly/reporting wrong values
+  
+  Other changes:
+  - LimeSDR v1.4 updated to r2.9 gateware
+  - Added LMS API doxygen generation to CMake
+  - Added CMake option to enable compiler SIMD flags
+- Update to version 17.06.0
+  API additions:
+  - LMS_GPIODirRead
+  - LMS_GPIODirWrite
+  - LMS_CalibrateInternalADC
+  - LMS_CalibrateAnalogRSSIDC
+  - LMS_CalibrateRP_BIAS
+  - LMS_CalibrateTxGain
+  - LMS_SetClockFreqWithSpurCancelation
+  
+  General changes:
+  - SoapyLMS7 - added getMasterClockRates()
+  - SoapyLMS7 - added getSampleRateRange()
+  - LimeSDR v1.4 updated to r2.8 gateware
+  - GPIO support in SoapyLM7 module
+  - Library level logging support
+  - Speed up x640,x641 spi
+  - FFTviewer: add checkbox for RX-&gt;TX loopback control
+  - Merged major MCU based calibrations update
+- Update soapy-module version 0.5-2 -&gt; 0.6
+- Update to version 17.02.2
+  - Fixed register typo in LMS7002M::SetTxDCOffset()
+  - Added option defaults for stream args in SoapyLMS7
+  - Fixed LMS7002M::GetPathRFE() currently selected path
+- initial package, version 17.02.1
+</comment>
+    <requestid>594892</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e75637b3d0a932df9b7b78f1848e12c7</srcmd5>
+    <version>18.04.1</version>
+    <time>1524238278</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598771</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dcd92494a2fa65fc41588d0f5e806e1f</srcmd5>
+    <version>18.06.0</version>
+    <time>1529402461</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616715</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c280927bf11e5e73ca67ae14da131ec2</srcmd5>
+    <version>18.10.0</version>
+    <time>1539013552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640257</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a5e570abe6a5f1261a72b49d2f2b6bcb</srcmd5>
+    <version>18.10.0</version>
+    <time>1546246010</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661954</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>aa849abde949bf5f7bb9c086cbd70321</srcmd5>
+    <version>19.01.0</version>
+    <time>1552207177</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682757</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cd0728b459b8d55d0ec3cb94c36c38c1</srcmd5>
+    <version>19.04.0</version>
+    <time>1558341013</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704059</requestid>
+  </revision>
+</revisionlist>

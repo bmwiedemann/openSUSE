@@ -1,0 +1,244 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2ebe49d8641a4be4afde8b25796cf069</srcmd5>
+    <version>1.3.10</version>
+    <time>1427736781</time>
+    <user>dimstar_suse</user>
+    <comment>Polarssl replacement</comment>
+    <requestid>293450</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9a41f7ebcd09738e263243f6dd3504e8</srcmd5>
+    <version>1.3.10</version>
+    <time>1427983455</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293983</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>140c4648b6f14db0d1ef79fe8de22116</srcmd5>
+    <version>1.3.11</version>
+    <time>1435170294</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312209</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1d127faeee80d10c60ad25a2e9f02c5d</srcmd5>
+    <version>1.3.11</version>
+    <time>1439190681</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319258</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0b5288d9fc0db387f8440ee97f5bffa9</srcmd5>
+    <version>1.3.14</version>
+    <time>1445092689</time>
+    <user>coolo</user>
+    <comment>- Update to 1.3.14
+  * Added fix for CVE-2015-5291 (boo#949380) to prevent heap corruption due to buffer
+    overflow of the hostname or session ticket. Found by Guido Vranken,
+    Intelworks.</comment>
+    <requestid>337106</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>af90596011c66a2218622aa8edb33e81</srcmd5>
+    <version>1.3.15</version>
+    <time>1448400711</time>
+    <user>coolo</user>
+    <comment>- Update to 1.3.15</comment>
+    <requestid>345044</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>132ec562791ebdbeb098b8d4985e624a</srcmd5>
+    <version>1.3.16</version>
+    <time>1452850718</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.16</comment>
+    <requestid>352824</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9505b7765eb7c79ca3c0d0d5d5e7bb4f</srcmd5>
+    <version>1.3.17</version>
+    <time>1469080379</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.17 (boo#988956):</comment>
+    <requestid>408503</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>74f222ce920b03be8c61dc8a5361f05f</srcmd5>
+    <version>2.3.0</version>
+    <time>1475241773</time>
+    <user>dimstar_suse</user>
+    <comment>- Merge changes from home:X0F:HSF
+- Add mbedtls_fix522.patch which fixes building of dpendant
+  libraries
+
+- Update description
+
+- Split shared libraries to subpackages
+
+- update to 2.3.0:
+  * adding libmbedcrypto, libmbedx509
+  * headers moved to /usr/include/mbedtls
+  * remove compatibility symlink
+  * source compatibility header /usr/include/mbedtls/compat-1.3.h
+  * Use primary upstream license (Apache-2.0)</comment>
+    <requestid>423405</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5d7145bbe06d71936f061576581f1241</srcmd5>
+    <version>2.4.0</version>
+    <time>1479228782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0:</comment>
+    <requestid>440145</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>330972d05a8399ca9d94ab9e83b431e1</srcmd5>
+    <version>2.4.2</version>
+    <time>1489536277</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.2:</comment>
+    <requestid>478689</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d00af20b7be582b66acb200b81332fdf</srcmd5>
+    <version>2.5.1</version>
+    <time>1500669434</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.1:</comment>
+    <requestid>509216</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>15bf7b87d565e7f96463725345fd117d</srcmd5>
+    <version>2.6.0</version>
+    <time>1505331285</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523556</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>920c56092275c3b6ab4995cb6883b3f5</srcmd5>
+    <version>2.7.0</version>
+    <time>1518697312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576327</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>3060ce1915cecca27e4ad99f80286170</srcmd5>
+    <version>2.7.0</version>
+    <time>1520852867</time>
+    <user>dimstar_suse</user>
+    <comment>- Use more cmake macros
+- Update spec file using spec-cleaner</comment>
+    <requestid>584224</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>74021bcd3636be8325daaad30c670cfa</srcmd5>
+    <version>2.8.0</version>
+    <time>1523127194</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.8.0:
+  * Security:
+    + Defend against Bellcore glitch attacks by verifying the results of RSA private key operations.
+    + Fix implementation of the truncated HMAC extension. The previous implementation allowed an offline 2^80 brute force attack on the HMAC key of a single, uninterrupted connection (with no resumption of the session).
+    + Reject CRLs containing unsupported critical extensions. Found by Falko Strenzke and Evangelos Karatsiolis.
+    + Fix a buffer overread in ssl_parse_server_key_exchange() that could cause a crash on invalid input.
+    + Fix a buffer overread in ssl_parse_server_psk_hint() that could cause a crash on invalid input.
+  * Features:
+    + Enable reading encrypted PEM files produced by software that uses PBKDF2-SHA2, such as OpenSSL 1.1. Submitted by Antonio Quartulli, OpenVPN Inc. Fixes #1339
+    + Support public keys encoded in PKCS#1 format. #1122
+  * New deprecations:
+    + Compression and crypto don't mix. We don't recommend using compression and cryptography, and have deprecated support for record compression (configuration option MBEDTLS_ZLIB_SUPPORT).
+  * Bugfix:
+    + Fix mbedtls_x509_crt_profile_suiteb, which used to reject all certificates with flag MBEDTLS_X509_BADCERT_BAD_PK even when the key type was correct. In the context of SSL, this resulted in handshake failure. Reported by daniel in the Mbed TLS forum. #1351
+    + Fix setting version TLSv1 as minimal version, even if TLS 1 is not enabled. Set MBEDTLS_SSL_MIN_MAJOR_VERSION and MBEDTLS_SSL_MIN_MINOR_VERSION instead of MBEDTLS_SSL_MAJOR_VERSION_3 and MBEDTLS_SSL_MINOR_VERSION_1. #664
+    + Fix compilation error on Mingw32 when _TRUNCATE is defined. Use _TRUNCATE only if __MINGW32__ is not defined. Fix suggested by Thomas Glanzmann and Nick Wilson on issue #355
+    + Fix memory allocation corner cases in memory_buffer_alloc.c module. Found by Guido Vranken. #639
+    + Don't accept an invalid tag when parsing X.509 subject alternative names in some circumstances.
+    + Fix a possible arithmetic overflow in ssl_parse_server_key_exchange() that could cause a key exchange to fail on valid data.
+    + Fix a possible arithmetic overflow in ssl_parse_server_psk_hint() that could cause a key exchange to fail on valid data.
+    + Fix a 1-byte heap buffer overflow (read-only) during private key parsing. Found through fuzz testing.
+  * Changes
+    + Fix tag lengths and value ranges in the documentation of CCM encryption. Contributed by Mathieu Briand.
+    + Fix a typo in a comment in ctr_drbg.c. Contributed by Paul Sokolovsky.
+    + Remove support for the library reference configuration for picocoin.
+    + MD functions deprecated in 2.7.0 are no longer inline, to provide a migration path for those depending on the library's ABI.
+    + Use (void) when defining functions with no parameters. Contributed by Joris Aerts. #678</comment>
+    <requestid>593915</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d924e35297804136ef22c42a54afb717</srcmd5>
+    <version>2.11.0</version>
+    <time>1531469970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621852</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>183cf68cd5ae2bb17598e6e842e25ba6</srcmd5>
+    <version>2.12.0</version>
+    <time>1536678500</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 2.12.0:
+  * Security
+    + Fixed a vulnerability in the TLS ciphersuites based on use of CBC and SHA-384 in DTLS/TLS 1.0 to 1.2, that allowed an active network attacker to partially recover the plaintext of messages under certains conditions by exploiting timing side-channels.
+    + Fixed a vulnerability in TLS ciphersuites based on CBC, in DTLS/TLS 1.0 to 1.2, that allowed a local attacker, with the ability to execute code on the local machine as well as to manipulate network packets, to partially recover the plaintext of messages under certain conditions by using a cache attack targetting an internal MD/SHA buffer.
+    + Added a counter-measure against a vulnerability in TLS ciphersuites based on CBC, in DTLS/TLS 1.0 to 1.2, that allowed a local attacker with the ability to execute code on the local machine as well as manipulate network packets, to partially recover the plaintext of messages certain conditions (see previous entry) by using a cache attack targeting the SSL input record buffer.
+  * Features
+    + Added new cryptographic primitives, the stream cipher Chacha20, one-time authenticator Poly1305 and AEAD construct Chacha20-Poly1305, as defined in RFC 7539. Contributed by Daniel King.
+    + Added support for the CHACHA20-POLY1305 ciphersuites from RFC 7905.
+    + Made the receive and transmit buffers independently configurable in size, for situations where the outgoing buffer can be fixed at a smaller size than the incoming buffer
+    + Added support for the AES based key wrapping modes defined by NIST SP 800-38F algorithms KW and KWP and by RFC's 3394 and 5649.
+    + Added platform support for the Haiku OS.
+  * Bugfix
+    + Fixed the key_app_writer example which was creating an invalid ASN.1 tag by writing an additional leading zero byte. Found by Aryeh R. #1257.
+    + Fixed a C++ compilation error, caused by a variable named new. Found and fixed by Hirotaka Niisato. #1783.
+    + Fixed the &quot;no symbols&quot; warning issued by ranlib when building on Mac OS X. Fix contributed by tabascoeye.
+    + Clarified documentation for mbedtls_ssl_write() to include 0 as a valid return value. Found by @davidwu2000. #839.
+    + Fixed a memory leak in mbedtls_x509_csr_parse(). Found and fixed by catenacyber, Philippe Antoine. #1623.
+    + Added length checks to some TLS parsing functions. Found and fixed by Philippe Antoine from Catena cyber. #1663.
+    + Remove unused headers included in x509.c. Found by Chris Hanson and fixed by Brendan Shanks. #992.
+    + Fixed compilation error when MBEDTLS_ARC4_C is disabled and MBEDTLS_CIPHER_NULL_CIPHER is enabled. Found by TrinityTonic in #1719.
+    + Fixed the inline assembly for the MPI multiply helper function for i386 and i386 with SSE2. Found by László Langó. #1550.
+    + Fixed the namespacing in header files. Remove the mbedtls namespacing in the #include in the header files. #857.
+    + Fixed a compiler warning of 'use before initialisation' in mbedtls_pk_parse_key(). Found by Martin Boye Petersen and fixed by Dawid Drozd.#1098.
+    + Fixed decryption of zero length messages (which contain all padding) when a CBC based ciphersuite was used together with Encrypt-then-MAC.
+    + Fixed the ssl_client2 example to send application data with 0-length content when the request_size argument is set to 0 as stated in the documentation. #1833.
+    + Corrected the documentation for mbedtls_ssl_get_session(). This API has deep copy of the session, and the peer certificate is not lost. #926.
+    + Fixed issues when building to the C99 standard, using -std=c99. Fixed by Nick Wilson.
+  * Changes
+    + Fails when receiving a TLS alert message with an invalid length, or invalid zero-length messages when using TLS 1.2. Contributed by Espressif Systems.
+    + Changed the default behaviour of mbedtls_hkdf_extract() to return an error when calling with a NULL salt and non-zero salt length. Contributed by Brian J Murray</comment>
+    <requestid>631028</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bbd972792757edfb247e5299861ccbd5</srcmd5>
+    <version>2.14.1</version>
+    <time>1545222461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657256</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5a986f4c8e7149e61b6baa2227888687</srcmd5>
+    <version>2.16.0</version>
+    <time>1547554425</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.16.0:</comment>
+    <requestid>663383</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>73755e95c18e0b893b5568ab09831573</srcmd5>
+    <version>2.16.2</version>
+    <time>1567852509</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.16.2:
+  * Security improvements and bugfixes
+- Use ninja to for build</comment>
+    <requestid>728035</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>37abe80a615728a515cb4cb2d16c096f</srcmd5>
+    <version>0.06</version>
+    <time>1325658421</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>98178</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>db2b21e8d8ad1a748f1025a5f0442f13</srcmd5>
+    <version>0.07</version>
+    <time>1331037660</time>
+    <user>coolo</user>
+    <comment>- update to 0.07
+  - fix tests that started failing due to dependency error string change (offerk)</comment>
+    <requestid>108086</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>db2b21e8d8ad1a748f1025a5f0442f13</srcmd5>
+    <version>0.07</version>
+    <time>1340183879</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>db2b21e8d8ad1a748f1025a5f0442f13</srcmd5>
+    <version>0.07</version>
+    <time>1359109743</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d8a5825997565710054bf15b8f2add73</srcmd5>
+    <version>0.10</version>
+    <time>1375783547</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184829</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d8a5825997565710054bf15b8f2add73</srcmd5>
+    <version>0.10</version>
+    <time>1379663755</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7f557d14ce7582642ae06bd28a4f370c</srcmd5>
+    <version>0.11</version>
+    <time>1385496403</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208409</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7907d7279c075e9d1b0973de7b0ba0a2</srcmd5>
+    <version>0.27</version>
+    <time>1395400504</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>225371</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>7907d7279c075e9d1b0973de7b0ba0a2</srcmd5>
+    <version>0.27</version>
+    <time>1409302393</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>b5c45ac54513f338d214c0d504d5b14f</srcmd5>
+    <version>0.27</version>
+    <time>1410941456</time>
+    <user>coolo</user>
+    <comment>- add https://github.com/mjgardner/moosex-app-cmd/commit/61f086b1fe03fab5a96a999f7b21768504d7089c.patch
+  as 61f086b1fe03fab5a96a999f7b21768504d7089c.patch to fix build</comment>
+    <requestid>249325</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>dfede3e39d71b7a9e143f0dcbf7c7363</srcmd5>
+    <version>0.30</version>
+    <time>1423397046</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.30
+     - MouseX::App::Cmd has been split off into its own distribution;
+       now this dist uses Moose unconditionally, rather than Any::Moose
+     - Be more intelligent about determining Moose or Mouse requirements at
+       build time.
+- obsolete 61f086b1fe03fab5a96a999f7b21768504d7089c.patch</comment>
+    <requestid>284708</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>80df7fbefa7288d8be2de20d13d6b95b</srcmd5>
+    <version>0.31</version>
+    <time>1434003770</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311422</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0d30f99a3bd1826f0927288ae757a486</srcmd5>
+    <version>0.32</version>
+    <time>1442474443</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330956</requestid>
+  </revision>
+</revisionlist>

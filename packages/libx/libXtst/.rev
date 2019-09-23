@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4849c2322b5a775b530faf1b019f6f18</srcmd5>
+    <version>1.2.0</version>
+    <time>1329476716</time>
+    <user>coolo</user>
+    <comment>- Split xorg-x11-libs into separate packages</comment>
+    <requestid>105474</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>66380fa45e4d3b94f84068b3d2412f00</srcmd5>
+    <version>1.2.0</version>
+    <time>1330151436</time>
+    <user>coolo</user>
+    <comment>- Added missing &quot;xi&quot; requires to pkconfig file (bnc#748808)</comment>
+    <requestid>106792</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c97dd4d12e29a8997cc55f98338cb4ce</srcmd5>
+    <version>1.2.1</version>
+    <time>1336471094</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115364</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c97dd4d12e29a8997cc55f98338cb4ce</srcmd5>
+    <version>1.2.1</version>
+    <time>1340183560</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c97dd4d12e29a8997cc55f98338cb4ce</srcmd5>
+    <version>1.2.1</version>
+    <time>1359109236</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>847afb75f2ed6a3b9425415cb825e2fe</srcmd5>
+    <version>1.2.1</version>
+    <time>1363950002</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160106</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e8e2f7a31c442e3a0e680d03d4fa40c2</srcmd5>
+    <version>1.2.2</version>
+    <time>1370426275</time>
+    <user>coolo</user>
+    <comment>update to version 1.2.2 (forwarded request 177142 from tobijk)</comment>
+    <requestid>177157</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e8e2f7a31c442e3a0e680d03d4fa40c2</srcmd5>
+    <version>1.2.2</version>
+    <time>1379662890</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>e8e2f7a31c442e3a0e680d03d4fa40c2</srcmd5>
+    <version>1.2.2</version>
+    <time>1409301493</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5fe2da10311e845e592d2e459d696951</srcmd5>
+    <version>1.2.3</version>
+    <time>1478377331</time>
+    <user>dimstar_suse</user>
+    <comment>- tagged baselibs.conf as source in specfile
+- Update to version 1.2.3:
+  + Remove fallback for _XEatDataWords, require libX11 1.6 for it
+  + Out of boundary access and endless loop in libXtst</comment>
+    <requestid>438261</requestid>
+  </revision>
+</revisionlist>

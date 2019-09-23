@@ -1,0 +1,149 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>340fd7bb0c7465198796653017dd735b</srcmd5>
+    <version>0.25</version>
+    <time>1249916468</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>340fd7bb0c7465198796653017dd735b</srcmd5>
+    <version>0.25</version>
+    <time>1249916468</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>89960d94a2400a97ea8e97849dc686b1</srcmd5>
+    <version>0.25</version>
+    <time>1263491399</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Pod-POM based on submit request 29556 from user coolo
+</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>9d557e79403a4af4130f2171c1293ec8</srcmd5>
+    <version>0.25</version>
+    <time>1268925586</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>9d557e79403a4af4130f2171c1293ec8</srcmd5>
+    <version>0.25</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>9d557e79403a4af4130f2171c1293ec8</srcmd5>
+    <version>0.25</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1abb54460c04857cb97919c2479ffee1</srcmd5>
+    <version>0.27</version>
+    <time>1281392784</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Pod-POM based on submit request 45171 from user computersalat
+</comment>
+    <requestid>45171</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fa644e75dbb4b63ba1c6d82a3d8aae80</srcmd5>
+    <version>0.27</version>
+    <time>1291583625</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54628 from user coolo
+</comment>
+    <requestid>54628</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>0288bc600e85ff8a95b5acdecf94dd65</srcmd5>
+    <version>0.27</version>
+    <time>1291583631</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54628
+</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>0288bc600e85ff8a95b5acdecf94dd65</srcmd5>
+    <version>0.27</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>0288bc600e85ff8a95b5acdecf94dd65</srcmd5>
+    <version>0.27</version>
+    <time>1319182300</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>bb6386c79915da1b0bf5c8983f9037b2</srcmd5>
+    <version>0.27</version>
+    <time>1321630786</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92083</requestid>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>fc1e5edcaa5e04bd8161d3dcfd356cdb</srcmd5>
+    <version>0.27</version>
+    <time>1323193587</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>fc1e5edcaa5e04bd8161d3dcfd356cdb</srcmd5>
+    <version>0.27</version>
+    <time>1340183907</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>fc1e5edcaa5e04bd8161d3dcfd356cdb</srcmd5>
+    <version>0.27</version>
+    <time>1359109781</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d8adef0ab80c86823fff55dbbc43ddfd</srcmd5>
+    <version>0.28</version>
+    <time>1371146838</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 178318 from coolo)</comment>
+    <requestid>178327</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>d8adef0ab80c86823fff55dbbc43ddfd</srcmd5>
+    <version>0.28</version>
+    <time>1379663820</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ee18eabfc5bedf41f6d02f93e295d24f</srcmd5>
+    <version>0.29</version>
+    <time>1392185125</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221868</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>ee18eabfc5bedf41f6d02f93e295d24f</srcmd5>
+    <version>0.29</version>
+    <time>1409302456</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7f68d9e540b055e0d9721949f0617302</srcmd5>
+    <version>2.01</version>
+    <time>1448553716</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.01
+   see /usr/share/doc/packages/perl-Pod-POM/Changes</comment>
+    <requestid>345665</requestid>
+  </revision>
+</revisionlist>

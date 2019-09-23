@@ -1,0 +1,116 @@
+From: Sebastian Parschauer <sparschauer@suse.de>
+Date: Tue, 20 Feb 2018 12:16:26 +0100
+Subject: tests: Add /dev/md/ check to t6100
+For: libparted-canonicalize-dev-md-paths.patch
+References: bsc#1078820
+Patch-mainline: submitted, 2018-02-20
+
+The test t6100 checks creating two partitions with /dev/md99 and
+a gpt disk label. But using an md name with the symlink in /dev/md/
+is not tested. That path might not be canonicalized and the BLKPG*
+handling cannot find the existing partitions in /sys/block/$dev/.
+That can be observed when creating the second partition while the
+first one is in use.
+
+So move common code to new functions create_mddev() and
+remove_mdparts(), check if the swap tools are available, retest with
+/dev/md/pedtest99, msdos disk label, and the first partition as swap.
+
+Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
+---
+ tests/t6100-mdraid-partitions.sh | 62 +++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 55 insertions(+), 7 deletions(-)
+
+diff --git a/tests/t6100-mdraid-partitions.sh b/tests/t6100-mdraid-partitions.sh
+index dbb1686..b471f56 100755
+--- a/tests/t6100-mdraid-partitions.sh
++++ b/tests/t6100-mdraid-partitions.sh
+@@ -21,6 +21,7 @@
+ require_root_
+ require_scsi_debug_module_
+ require_mdadm_
++require_swap_
+ 
+ # create memory-backed device
+ scsi_debug_setup_ dev_size_mb=10 > dev-name ||
+@@ -40,13 +41,27 @@ parted -s "$scsi_dev" mklabel gpt \
+ compare /dev/null out || fail=1
+ wait_for_dev_to_appear_ ${scsi_dev}2 || { fail=1; cat /proc/partitions; }
+ 
++create_mddev() {
++  # create mdraid on top of both partitions
++  mdadm -C $md_dev --force -R -l1 -n2 "${scsi_dev}1" "${scsi_dev}2"
++}
++
+ cleanup_fn_() {
+   # stop mdraid array
+   mdadm -S $md_dev || warn_ "Failed to stop MD array, $md_dev"
+ }
+ 
+-# create mdraid on top of both partitions
+-mdadm -C $md_dev --force -R -l1 -n2 "${scsi_dev}1" "${scsi_dev}2"
++remove_mdparts() {
++  # Remove partitions from the raid device.
++  parted -s $md_dev rm 2 rm 1 > out 2>&1 || fail=1
++  compare /dev/null out || fail=1
++
++  # Verify that kernel has been informed about those removals.
++  wait_for_dev_to_disappear_ ${md_dev}p1 2 || { fail=1; cat /proc/partitions; }
++  wait_for_dev_to_disappear_ ${md_dev}p2 2 || { fail=1; cat /proc/partitions; }
++}
++
++create_mddev
+ 
+ # create gpt and two partitions on the raid device
+ parted -s $md_dev mklabel gpt \
+@@ -57,12 +72,45 @@ compare /dev/null out || fail=1
+ # Verify that kernel has been informed about the second device.
+ wait_for_dev_to_appear_ ${md_dev}p2 || { fail=1; cat /proc/partitions; }
+ 
+-# Remove partitions from the raid device.
+-parted -s $md_dev rm 2 rm 1 > out 2>&1 || fail=1
++remove_mdparts
++
++########################################################################
++# Second part with /dev/md/ symlink, msdos label and busy swap partition
++
++cleanup_fn_
++
++# Arbitrary name, not likely to be used already
++md_name=pedtest99
++md_dev=/dev/md/$md_name
++
++test -b $md_dev && skip_ "$md_dev already exists"
++
++create_mddev
++
++# create msdos and one partition on the raid device
++parted -s $md_dev mklabel msdos \
++    mkpart primary ext2 1M 2M > out 2>&1 || fail=1
++compare /dev/null out || fail=1
++
++# Verify that kernel has been informed about the device.
++wait_for_dev_to_appear_ ${md_dev}p1 || { fail=1; cat /proc/partitions; }
++
++# Create swap filesystem
++mkswap -f ${md_dev}p1 || fail=1
++
++# Use as swap to make it busy
++swapon ${md_dev}p1 || fail=1
++
++# create msdos and one partition on the raid device
++parted -s $md_dev mkpart primary ext2 2M 3M > out 2>&1 || fail=1
+ compare /dev/null out || fail=1
+ 
+-# Verify that kernel has been informed about those removals.
+-wait_for_dev_to_disappear_ ${md_dev}p1 2 || { fail=1; cat /proc/partitions; }
+-wait_for_dev_to_disappear_ ${md_dev}p2 2 || { fail=1; cat /proc/partitions; }
++# Verify that kernel has been informed about the second device.
++wait_for_dev_to_appear_ ${md_dev}p2 || { fail=1; cat /proc/partitions; }
++
++# Disable swap again
++swapoff ${md_dev}p1 || warn_ "Failed to disable swap on ${md_dev}p1"
++
++remove_mdparts
+ 
+ Exit $fail

@@ -1,0 +1,128 @@
+-------------------------------------------------------------------
+Sat May 11 16:15:57 UTC 2019 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Updated to 0.6.70-13186-g2c3ee31903 snapshot.
+
+-------------------------------------------------------------------
+Sun Apr 14 12:43:33 UTC 2019 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Updated to 0.6.70-13163-g100049e6a6 snapshot.
+
+-------------------------------------------------------------------
+Sat Apr  6 14:46:33 UTC 2019 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Updated to 0.6.70-13143-gd05082db2d snapshot.
+- openSUSE 12.1 isn't a point of interest.
+
+-------------------------------------------------------------------
+Sun Jun 10 09:49:32 UTC 2018 - dap.darkness@gmail.com
+
+- Updated to 0.6.70-11552-gf61ee51c3d snapshot.
+
+-------------------------------------------------------------------
+Tue Jan 23 16:27:12 UTC 2018 - dap.darkness@gmail.com
+
+- Updated to 0.6.70-10870-g558588d6ec snapshot.
+
+-------------------------------------------------------------------
+Sun Aug 13 07:51:04 UTC 2017 - dap.darkness@gmail.com
+
+- Updated to 0.6.70-9561-gaf7a4f70b8 git snapshot.
+
+-------------------------------------------------------------------
+Thu Aug 10 16:06:32 UTC 2017 - dap.darkness@gmail.com
+
+- Updated to 0.6.70-9432-g81ef79f367 git snapshot.
+
+-------------------------------------------------------------------
+Sat Jun 24 07:09:58 UTC 2017 - dap.darkness@gmail.com
+
+- Updated to 0.6.70-9312-g4cc613a2df git snapshot.
+
+-------------------------------------------------------------------
+Mon Jun 12 03:21:35 UTC 2017 - dap.darkness@gmail.com
+
+- Fixed Source URL for factory-auto.
+
+-------------------------------------------------------------------
+Mon Jun  5 15:04:22 UTC 2017 - dap.darkness@gmail.com
+
+- Updated to 0.6.70-9233-gffda87bea6 git snapshot.
+
+-------------------------------------------------------------------
+Sat May  7 13:07:16 UTC 2016 - dap.darkness@gmail.com
+
+- Updated to 0.6.70-6645-gcd10d7e git snapshot.
+
+-------------------------------------------------------------------
+Wed Feb  3 17:25:40 UTC 2016 - dap.darkness@gmail.com
+
+- 0.6.70-6053-g34d21e8 git snapshot.
+- leechcraft-lmp-append-gstreamer-include-dirs-pkgconfig.patch
+  was removed as already provided via upstream tarball.
+
+-------------------------------------------------------------------
+Sun Nov 29 15:18:53 UTC 2015 - mlin@suse.com
+
+- Add leechcraft-lmp-append-gstreamer-include-dirs-pkgconfig.patch
+  * Fix compilation in lmp plugin with GStreamer 1.5.1 and above 
+
+-------------------------------------------------------------------
+Wed Jun 10 16:35:52 UTC 2015 - dap.darkness@gmail.com
+
+- 0.6.70-3565-g2d86529 git snapshot.
+
+-------------------------------------------------------------------
+Mon May 25 18:25:50 UTC 2015 - dap.darkness@gmail.com
+
+- 0.6.70-3466-g864bd1a git snapshot.
+
+-------------------------------------------------------------------
+Tue Apr 21 08:29:38 UTC 2015 - dap.darkness@gmail.com
+
+- 0.6.70-2742-gfaed6e2 git snapshot.
+
+-------------------------------------------------------------------
+Wed Jul 30 14:38:58 UTC 2014 - dap.darkness@gmail.com
+
+- 0.6.70 release.
+
+-------------------------------------------------------------------
+Mon Jul  7 16:23:44 UTC 2014 - dap.darkness@gmail.com
+
+- 0.6.65-380-gffa0f72 git snapshot.
+
+-------------------------------------------------------------------
+Mon Apr 28 10:25:32 UTC 2014 - schwab@linux-m68k.org
+
+- Add graphviz-gnome to build requires for png support
+
+-------------------------------------------------------------------
+Sat Apr  5 11:56:18 UTC 2014 - dap.darkness@gmail.com
+
+- 0.6.65 release.
+
+-------------------------------------------------------------------
+Mon Dec 30 16:18:59 UTC 2013 - dap.darkness@gmail.com
+
+- 0.6.60 release.
+
+-------------------------------------------------------------------
+Sat Dec 21 16:11:29 UTC 2013 - dap.darkness@gmail.com
+
+- Unsupported distros (oS < 12.2) were dropped.
+
+-------------------------------------------------------------------
+Wed Sep 11 20:50:53 UTC 2013 - dap.darkness@gmail.com
+
+- 0.6.0 bugfix release.
+
+-------------------------------------------------------------------
+Fri Jul 12 21:10:02 UTC 2013 - dap.darkness@gmail.com
+
+- 0.5.99 bugfix release.
+
+-------------------------------------------------------------------
+Sun Jun 16 17:00:38 UTC 2013 - dap.darkness@gmail.com
+
+- Split out from the main package.

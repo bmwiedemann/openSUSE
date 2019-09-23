@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Thu Jul 25 11:52:20 UTC 2019 - pgajdos@suse.com
+
+- version update to 6.2.0
+  * Allow :meth:`av.open` to be used as a context manager.
+  * Fix compatibility with PyPy, the full test suite now passes. (:issue:`130`)
+  * Add :meth:`.InputContainer.close` method. (:issue:`317`, :issue:`456`)
+  * Ensure audio output gets flushes when using a FIFO. (:issue:`511`)
+  * Make Python I/O buffer size configurable. (:issue:`512`)
+  * Make :class:`.AudioFrame` and :class:`VideoFrame` more garbage-collector
+    friendly by breaking a reference cycle. (:issue:`517`)
+
+-------------------------------------------------------------------
+Tue Apr 16 10:10:03 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the spec file to adhere requirements
+- Do not use service and fetch files from pypi
+
+-------------------------------------------------------------------
+Sun Apr 14 18:55:53 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Moved scratchpad (examples) to share dir
+
+-------------------------------------------------------------------
+Thu Mar 21 13:17:54 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- initial package of version 6.1.2

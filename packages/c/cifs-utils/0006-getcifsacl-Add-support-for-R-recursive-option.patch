@@ -1,0 +1,123 @@
+From 43f389bb3759ea49efb705acd2d314fd91a7bc57 Mon Sep 17 00:00:00 2001
+From: Kenneth D'souza <kdsouza@redhat.com>
+Date: Mon, 22 Apr 2019 11:23:41 +0530
+Subject: [PATCH] getcifsacl: Add support for -R(recursive) option.
+
+Add support for -R option so we can list the ACLs of all files and
+directories recursively.
+
+Signed-off-by: Kenneth D'souza <kdsouza@redhat.com>
+---
+ getcifsacl.c      | 32 +++++++++++++++++++++++++++-----
+ getcifsacl.rst.in |  3 +++
+ 2 files changed, 30 insertions(+), 5 deletions(-)
+
+diff --git a/getcifsacl.c b/getcifsacl.c
+index bea81ee..d58b769 100644
+--- a/getcifsacl.c
++++ b/getcifsacl.c
+@@ -37,10 +37,12 @@
+ #include <sys/xattr.h>
+ #include "cifsacl.h"
+ #include "idmap_plugin.h"
++#include <ftw.h>
+ 
+ static void *plugin_handle;
+ static bool plugin_loaded;
+ static char *execname;
++static bool raw = false;
+ 
+ static void
+ print_each_ace_mask(uint32_t mask)
+@@ -336,12 +338,14 @@ getcifsacl_usage(const char *prog)
+ 	fprintf(stderr, "\n");
+ 	fprintf(stderr, "\t-v	Version of the program\n");
+ 	fprintf(stderr, "\n");
++	fprintf(stderr, "\t-R 	recurse into subdirectories\n");
++	fprintf(stderr, "\n");
+ 	fprintf(stderr, "\t-r	Display raw values of the ACE fields\n");
+ 	fprintf(stderr, "\nRefer to getcifsacl(1) manpage for details\n");
+ }
+ 
+ static void
+-getcifsacl(const char *filename, bool raw)
++getcifsacl(const char *filename)
+ {
+ 	ssize_t attrlen;
+ 	size_t bufsize = BUFSIZE;
+@@ -381,12 +385,21 @@ cifsacl:
+ 	free(attrval);
+ }
+ 
++static int recursive(const char *filename, const struct stat *sb, int tflag, struct FTW *ftwbuf)
++{
++	(void)sb;
++	(void)tflag;
++	(void)ftwbuf;
++	getcifsacl(filename);
++	return 0;
++}
++
+ int
+ main(const int argc, char *const argv[])
+ {
+ 	int c, ret = 0;
+-	bool raw = false;
+ 	execname = basename(argv[0]);
++	int do_recursive = 0;
+ 
+ 	if (argc < 2) {
+ 		fprintf(stderr, "%s: you must specify a filename.\n", execname);
+@@ -394,7 +407,7 @@ main(const int argc, char *const argv[])
+ 		goto out;
+ 	}
+ 
+-	while ((c = getopt_long(argc, argv, "rhv", NULL, NULL)) != -1) {
++	while ((c = getopt_long(argc, argv, "Rrhv", NULL, NULL)) != -1) {
+ 		switch (c) {
+ 		case 'v':
+ 			printf("Version: %s\n", VERSION);
+@@ -402,6 +415,9 @@ main(const int argc, char *const argv[])
+ 		case 'r':
+ 			raw = true;
+ 			break;
++		case 'R':
++			do_recursive = 1;
++			break;
+ 		default:
+ 			getcifsacl_usage(execname);
+ 			goto out;
+@@ -423,8 +439,14 @@ main(const int argc, char *const argv[])
+ 			plugin_loaded = true;
+ 	}
+ 
+-	for(; optind < argc; optind++)
+-		getcifsacl(argv[optind], raw);
++	for(; optind < argc; optind++) {
++		if(do_recursive) {
++			if (nftw(argv[optind], recursive, 20, 0) == -1)
++				fprintf(stderr, "Invalid filename %s: %s\n", argv[optind], strerror(errno));
++		}
++		else
++			getcifsacl(argv[optind]);
++	}
+ 
+ out:
+ 	if (plugin_loaded)
+diff --git a/getcifsacl.rst.in b/getcifsacl.rst.in
+index 21a10cd..ffde968 100644
+--- a/getcifsacl.rst.in
++++ b/getcifsacl.rst.in
+@@ -43,6 +43,9 @@ OPTIONS
+   flags are displayed in hexadecimal format, a SID is not mapped to a
+   name.
+ 
++-R
++  List the ACLs of all files and directories recursively.
++
+ *****
+ NOTES
+ *****
+-- 
+2.16.4
+

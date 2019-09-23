@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d98ce21c8ec235f2f8644188fd5e4acb</srcmd5>
+    <version>2.4</version>
+    <time>1440871476</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>327225</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>de3756099cf66693bc5ee4fd9b075cdb</srcmd5>
+    <version>2.4</version>
+    <time>1525426154</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix url
+
+- Provide python2-faulthandler for compatibility with singlespec
+  macros</comment>
+    <requestid>603176</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>12413f748dcef298552d450dd1f31b59</srcmd5>
+    <version>3.1</version>
+    <time>1553809708</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to skip one test that fails in OBS:
+  * skip-test.patch
+
+- Update to 3.1:
+  * Project moved from https://github.com/haypo/faulthandler to https://github.com/vstinner/faulthandler
+  * Fix tests: accept &quot;python2&quot; and &quot;python2.7&quot; thread name in tests
+  * Fix tests on Python 2.6.
+  * On Windows, faulthandler.register() now also installs an handler for Windows exceptions.
+  * Add support for the PYTHONFAULTHANDLER environment variable. Patch written by Ionel Cristian Mărieș.
+  * Issue #23433: Fix undefined behaviour in faulthandler._stack_overflow(): don't compare pointers, use the Py_uintptr_t type instead of void*. It fixes test_faulthandler on Fedora 22 which now uses GCC 5.
+  * The write() function used to write the traceback is now retried when it is interrupted by a signal.
+  * Issue #23566: enable(), register(), dump_traceback() and dump_traceback_later() functions now accept file descriptors. Patch by Wei Wu.
+  * Drop support and Python 2.5, 2.6, 3.1 and 3.2: only support Python 2.7. No Linux distribution use these versions anymore, so it becomes difficult to test these versions.
+  * Add tox.ini to run tests with tox: it creates a virtual environment, compile and install faulthandler, and run unit tests.
+  * Add Travis YAML configuration.
+- Run tests</comment>
+    <requestid>688733</requestid>
+  </revision>
+</revisionlist>

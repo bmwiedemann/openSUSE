@@ -1,0 +1,10 @@
+<package name="zvbi" project="openSUSE:Factory">
+  <title>Linux &quot;VBI proxy&quot;</title>
+  <description>With &quot;video4linux&quot; drivers only one application at a time can capture
+VBI data.  The 2nd generation &quot;v4l2&quot; API allows multiple clients to
+open a device, but still only one client may read from the device.  If
+for example the Nxtvepg daemon runs in the background users will not be
+able to start a Teletext application.  The VBI proxy was developed as a
+solution to this problem.</description>
+  <devel project="multimedia:apps" package="zvbi"/>
+</package>

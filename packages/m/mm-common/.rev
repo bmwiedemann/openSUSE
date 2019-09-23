@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51f1c3cc1064d0f1ba581e2a4128dcd1</srcmd5>
+    <version>0.9.10</version>
+    <time>1474370761</time>
+    <user>dimstar_suse</user>
+    <comment>New package for GNOME 3.22 - need to pass legal, dep to gnome builder</comment>
+    <requestid>427906</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e4fba2aa02e437e7e7ffc8d1f3106f5c</srcmd5>
+    <version>0.9.11</version>
+    <time>1518596423</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 572980 from dimstar)</comment>
+    <requestid>575534</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3a354d134ee38739bc86c548903f3caa</srcmd5>
+    <version>0.9.11</version>
+    <time>1520502524</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581281 from dimstar)</comment>
+    <requestid>582848</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>18030f9a416f83599165beb84c90a8c0</srcmd5>
+    <version>0.9.12</version>
+    <time>1524144375</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597474</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>18fbba1e2c778c99a84e142e575ece86</srcmd5>
+    <version>0.9.12</version>
+    <time>1565694711</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722101</requestid>
+  </revision>
+</revisionlist>

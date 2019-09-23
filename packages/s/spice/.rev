@@ -1,0 +1,310 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5bd85eeb3cac7f38e9137d98e1c549b1</srcmd5>
+    <version>0.10.0</version>
+    <time>1324831298</time>
+    <user>coolo</user>
+    <comment>This submission fixes bnc#736792, regarding licensing problem pointed out in previous submit request.</comment>
+    <requestid>96824</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c38803db7a4ec635e6f6bc08616e0262</srcmd5>
+    <version>0.10.0</version>
+    <time>1326104232</time>
+    <user>coolo</user>
+    <comment>- Only x86 and x86-64 are supported (forwarded request 99155 from k0da)</comment>
+    <requestid>99159</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>67792629030295901497e0508ba849ff</srcmd5>
+    <version>0.10.0</version>
+    <time>1329823555</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>106230</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>629cb5ab51104fcc6e1464e4fba7ebef</srcmd5>
+    <version>0.10.0</version>
+    <time>1332416488</time>
+    <user>coolo</user>
+    <comment>Add more fixes from upstream git... completed fixes for gcc 4.7. (forwarded request 110215 from dimstar)</comment>
+    <requestid>110216</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>44e3374a1739523a4b74ef09766e9809</srcmd5>
+    <version>0.10.1</version>
+    <time>1333355503</time>
+    <user>coolo</user>
+    <comment>Update to 0.10.1, sorry for the spamming, but had to fix yet an other unintended change done by osc collab... (forwarded request 112109 from Zaitor)</comment>
+    <requestid>112116</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c33bd87cb649c6b7df43e5f88a799df1</srcmd5>
+    <version>0.10.1</version>
+    <time>1334217126</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 112275 from dimstar)</comment>
+    <requestid>112283</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>c33bd87cb649c6b7df43e5f88a799df1</srcmd5>
+    <version>0.10.1</version>
+    <time>1340184232</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>9d82ef67520c63acaea980f9232259a3</srcmd5>
+    <version>0.10.1</version>
+    <time>1353266815</time>
+    <user>namtrac</user>
+    <comment>Fix build with glibc 2.17 (forwarded request 141615 from a_jaeger)</comment>
+    <requestid>141640</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>406d014308c34306d3efdcfefa9a6102</srcmd5>
+    <version>0.12.0</version>
+    <time>1354118222</time>
+    <user>coolo</user>
+    <comment>Update SPICE to 0.12.0 since QEMU v1.3.0-rc0 fails to build against 0.10.1. spice-protocol is already at 0.12.2. (forwarded request 142518 from a_faerber)</comment>
+    <requestid>142992</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>406d014308c34306d3efdcfefa9a6102</srcmd5>
+    <version>0.12.0</version>
+    <time>1359110428</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c3da2ab87e764bf963afeea8ca861767</srcmd5>
+    <version>0.12.2</version>
+    <time>1368721250</time>
+    <user>coolo</user>
+    <comment>Update to 0.12.2 (forwarded request 175780 from olh)</comment>
+    <requestid>175870</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f9d334f027535b156656ecb96fd78eb9</srcmd5>
+    <version>0.12.4</version>
+    <time>1375730467</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>185898</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>f9d334f027535b156656ecb96fd78eb9</srcmd5>
+    <version>0.12.4</version>
+    <time>1379664720</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>f9d334f027535b156656ecb96fd78eb9</srcmd5>
+    <version>0.12.4</version>
+    <time>1409303401</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f6db1da996ed20f8eaea785f1dc0063e</srcmd5>
+    <version>0.12.5</version>
+    <time>1413739644</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256927</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>7c712d29e7396ffd152589588bf0fc95</srcmd5>
+    <version>0.12.5</version>
+    <time>1414218756</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257771</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>be663798d414abd13e10495bc0baee41</srcmd5>
+    <version>0.12.5</version>
+    <time>1433577214</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>310475</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>921e9e4d2928495631e3788ca4b6c8c7</srcmd5>
+    <version>0.12.5</version>
+    <time>1442638377</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>329580</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a73ce0b36e9b98781f178f2e5f12cb4f</srcmd5>
+    <version>0.12.6</version>
+    <time>1445092670</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.12.6
+  + Removed spicec client code, it has been superseded by remote-viewer
+    and other spice-gtk based clients
+  + Unix socket support
+  + LZ4 support
+  + Let clients specify their preferred image compression format
+  + Allow to record and replay a spice-server session
+  + Fixes for CVE-2015-3247 CVE-2015-5260 and CVE-2015-5261
+    bsc#944787, bsc#948976
+  + spice-protocol submodule has been removed, spice-protocol must
+    now be installed when building spice-server
+  + Remove write polling in chardevs to reduce wakeups
+- Remove upstream merged patches:
+  + spice-Don-t-use-48kHz-for-playback-recording-rates.patch
+  + password-length-check.patch
+  + cve-2015-3247.patch</comment>
+    <requestid>336979</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3594f03f96a65cc40e785273e3c66a50</srcmd5>
+    <version>0.12.7</version>
+    <time>1460739896</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390125</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8c7c2f5b24cb6a22eaea8e94cbef8b7c</srcmd5>
+    <version>0.12.8</version>
+    <time>1477134137</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435883</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>e66e1eb0fd47fb1e6a3eb1270011f2f9</srcmd5>
+    <version>0.12.8</version>
+    <time>1479150634</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440002</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>c5b47a586c7102cf69434940a00f3b66</srcmd5>
+    <version>0.12.8</version>
+    <time>1483954339</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448469</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>28d899a7999dd9dec2bb0eb1874ea866</srcmd5>
+    <version>0.12.8</version>
+    <time>1486547017</time>
+    <user>dimstar_suse</user>
+    <comment>- Synchronize with SLES (fate#322402):
+  + bnc#894069: disable smartcard support for SLES
+  + merge changelog
+
+  + Fixes for bsc#982385 / CVE-2016-0749 and bsc#982386 / CVE-2016-2150.
+- Update to version 0.12.7 (fate#320079)
+  + bsc#848279: fix CVE-2013-4282.</comment>
+    <requestid>454133</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>365d85b508bb983f13fb76fcce8d74ce</srcmd5>
+    <version>0.12.8</version>
+    <time>1486773407</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patches to fix two security vulnerabilities. 
+  * CVE-2016-9577-buffer-overflow-in-main_channel_alloc_msg_rcv_buf.patch
+    [CVE-2016-9577, bsc#1023078]
+  * CVE-2016-9578-remote-dos-via-crafted-message.patch
+    [CVE-2016-9578, bsc#1023079]</comment>
+    <requestid>455554</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>cfef889ba5b9bb4cddd89ec9b914e55b</srcmd5>
+    <version>0.14.0</version>
+    <time>1509723072</time>
+    <user>dimstar_suse</user>
+    <comment>- Release 0.14.0</comment>
+    <requestid>536913</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>38ef2000fdad2bbc58592ed810497a10</srcmd5>
+    <version>0.14.0</version>
+    <time>1517516815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571469</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>0d3a5407ab7d288567ed006b278a17ea</srcmd5>
+    <version>0.14.0</version>
+    <time>1532681432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625045</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>269a63b50ff2458c61f78079b14ab0fa</srcmd5>
+    <version>0.14.0</version>
+    <time>1535440882</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630531</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b397a6b83b3801d1384a7912b96972c1</srcmd5>
+    <version>0.14.1</version>
+    <time>1538377408</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636755</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>503d3dadd0e0c0221d55eda9b32489f1</srcmd5>
+    <version>0.14.1</version>
+    <time>1550049366</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669352</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>78af620ce2d4b7eff95508c7feb539c2</srcmd5>
+    <version>0.14.1</version>
+    <time>1551686946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680532</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>99140d8c52db525824f5c9471a37de78</srcmd5>
+    <version>0.14.2</version>
+    <time>1558515090</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.2 stable release
+  The main changes are support for Meson build and graphic device
+  info messages allowing to better support multi-monitor
+  configurations.
+  * support H265 in stream-channel
+  * add support for building with meson/ninja
+  * minor tests fixes improving CI
+  * set char device state for smartcard, allowing Qemu optimization
+  * improve red-parse-qxl.c interface making it more consistent
+  * add some instrumentation for streaming device
+  * QXL interface: add a function to identify monitors in the guest
+    (spice_qxl_set_device_info)
+  * add support for GraphicsDeviceInfo messages
+  * video-stream: prevent crash on stream reattach
+  * make channel client callbacks virtual functions
+  * bumped minimum required glib version to 2.38
+  * attempt to have a reliable led state for keyboard modifiers
+- Removed patches:
+  (The first two are altered versions of what is carried upstream.
+  I think we're fine with what upstream does here)
+  0001-lz-Avoid-buffer-reading-overflow-checking-for-image-.patch
+  0002-lz-More-checks-on-image-sizes.patch
+  0001-memslot-Fix-off-by-one-error-in-group-slot-boundary-.patch
+</comment>
+    <requestid>703827</requestid>
+  </revision>
+</revisionlist>

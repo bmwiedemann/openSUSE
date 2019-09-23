@@ -1,0 +1,13 @@
+--- cloudinit/net/sysconfig.py.orig
++++ cloudinit/net/sysconfig.py
+@@ -660,9 +660,7 @@ def available(target=None):
+         if not util.which(p, search=search, target=target):
+             return False
+ 
+-    expected_paths = [
+-        'etc/sysconfig/network-scripts/network-functions',
+-        'etc/sysconfig/network-scripts/ifdown-eth']
++    expected_paths = ['etc/sysconfig/network/scripts/functions.netconfig']
+     for p in expected_paths:
+         if not os.path.isfile(util.target_path(target, p)):
+             return False

@@ -1,0 +1,8 @@
+<package name="felix-osgi-core" project="openSUSE:Factory">
+  <title>Felix OSGi R4 Core Bundle</title>
+  <description>OSGi Service Platform Release 4 Core Interfaces and Classes.
+
+</description>
+  <devel project="Java:packages" package="felix-osgi-core"/>
+  <url>http://felix.apache.org/site/apache-felix-osgi-core.html</url>
+</package>

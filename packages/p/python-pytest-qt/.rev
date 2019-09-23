@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b2e89ffdbc5f539cd7f2b942b313fefc</srcmd5>
+    <version>2.1.2</version>
+    <time>1504102932</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by the latest version of spyder and spyder3</comment>
+    <requestid>519217</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ac890166528f44b55af9d3206c62bf51</srcmd5>
+    <version>2.3.1</version>
+    <time>1526372067</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable tests
+- Add patch skip-timeout-tests.patch to skip test randomly
+  failing in OBS
+
+- specfile:
+  * update copyright year
+- update to version 2.3.1:
+  * PYTEST_QT_API environment variable correctly wins over qt_api ini
+    variable if both are set at the same time (#196). Thanks @mochick
+    for the PR.
+- changes from version 2.3.0:
+  * New qapp_args fixture which can be used to pass custom arguments
+    to QApplication. Thanks @The-Compiler for the PR.
+- changes from version 2.2.1:
+  * modeltester now accepts QBrush for BackgroundColorRole and
+    TextColorRole (#189). Thanks @p0las for the PR.
+- changes from version 2.2.0:
+  * pytest-qt now supports PySide2 thanks to @rth!</comment>
+    <requestid>606759</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eaf75cd1f5a896504eae803733141379</srcmd5>
+    <version>2.4.0</version>
+    <time>1527934368</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613325</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>14935f3b3c7b7390257ded1f8414c0c3</srcmd5>
+    <version>3.2.1</version>
+    <time>1544441342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656135</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cbde8e354335f48bb6d151543ff4e480</srcmd5>
+    <version>3.2.2</version>
+    <time>1549018064</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.2:
+  * Fix Off-by-one error in modeltester (#249). Thanks @ext-jmmugnes for the PR.</comment>
+    <requestid>670279</requestid>
+  </revision>
+</revisionlist>

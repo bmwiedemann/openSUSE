@@ -1,0 +1,321 @@
+Index: memcached-1.5.17/configure.ac
+===================================================================
+--- memcached-1.5.17.orig/configure.ac	2019-07-16 00:34:51.000000000 +0200
++++ memcached-1.5.17/configure.ac	2019-09-03 11:47:53.521535332 +0200
+@@ -4,10 +4,13 @@ m4_include([m4/c99-backport.m4])
+ AC_INIT([memcached], [VERSION_NUMBER], [memcached@googlegroups.com])
+ AC_CANONICAL_HOST
+ AC_CONFIG_SRCDIR([memcached.c])
+-AM_INIT_AUTOMAKE([foreign])
++AM_INIT_AUTOMAKE([foreign -Wall -Wno-portability tar-pax subdir-objects])
+ AM_CONFIG_HEADER([config.h])
+ 
+ AC_PROG_CC
++AC_PROG_CC_STDC
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
+ 
+ dnl **********************************************************************
+ dnl DETECT_ICC ([ACTION-IF-YES], [ACTION-IF-NO])
+@@ -113,14 +116,11 @@ AC_DEFUN([AC_C_DETECT_SASL_CB_GETCONF],
+ [
+     AC_CACHE_CHECK([for SASL_CB_GETCONF],
+         [ac_cv_c_sasl_cb_getconf],
+-        [AC_TRY_COMPILE(
+-            [
++        [AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+ #include <sasl/sasl.h>
+-            ], [
++            ]], [[
+ unsigned long val = SASL_CB_GETCONF;
+-            ],
+-            [ ac_cv_c_sasl_cb_getconf=yes ],
+-            [ ac_cv_c_sasl_cb_getconf=no ])
++            ]])],[ ac_cv_c_sasl_cb_getconf=yes ],[ ac_cv_c_sasl_cb_getconf=no ])
+         ])
+     AS_IF([test "$ac_cv_c_sasl_cb_getconf" = "yes"],
+           [AC_DEFINE([HAVE_SASL_CB_GETCONF], 1,
+@@ -251,23 +251,6 @@ fi
+ AC_SUBST(PROFILER_FLAGS)
+ 
+ 
+-AC_ARG_ENABLE(64bit,
+-  [AS_HELP_STRING([--enable-64bit],[build 64bit version])])
+-if test "x$enable_64bit" = "xyes"
+-then
+-    org_cflags=$CFLAGS
+-    CFLAGS=-m64
+-    AC_RUN_IFELSE(
+-      [AC_LANG_PROGRAM([], [dnl
+-return sizeof(void*) == 8 ? 0 : 1;
+-      ])
+-    ],[
+-      CFLAGS="-m64 $org_cflags"
+-    ],[
+-    AC_MSG_ERROR([Don't know how to build a 64-bit object.])
+-    ])
+-fi
+-
+ # Issue 213: Search for clock_gettime to help people linking
+ #            with a static version of libevent
+ AC_SEARCH_LIBS(clock_gettime, rt)
+@@ -276,91 +259,7 @@ AC_SEARCH_LIBS(clock_gettime, rt)
+ AC_SEARCH_LIBS(socket, socket)
+ AC_SEARCH_LIBS(gethostbyname, nsl)
+ 
+-trylibeventdir=""
+-AC_ARG_WITH(libevent,
+-       [  --with-libevent=PATH     Specify path to libevent installation ],
+-       [
+-                if test "x$withval" != "xno" ; then
+-                        trylibeventdir=$withval
+-                fi
+-       ]
+-)
+-
+-dnl ------------------------------------------------------
+-dnl libevent detection.  swiped from Tor.  modified a bit.
+-
+-LIBEVENT_URL=https://www.monkey.org/~provos/libevent/
+-
+-AC_CACHE_CHECK([for libevent directory], ac_cv_libevent_dir, [
+-  saved_LIBS="$LIBS"
+-  saved_LDFLAGS="$LDFLAGS"
+-  saved_CPPFLAGS="$CPPFLAGS"
+-  le_found=no
+-  for ledir in $trylibeventdir "" $prefix /usr/local ; do
+-    LDFLAGS="$saved_LDFLAGS"
+-    LIBS="-levent $saved_LIBS"
+-
+-    # Skip the directory if it isn't there.
+-    if test ! -z "$ledir" -a ! -d "$ledir" ; then
+-       continue;
+-    fi
+-    if test ! -z "$ledir" ; then
+-      if test -d "$ledir/lib" ; then
+-        LDFLAGS="-L$ledir/lib $LDFLAGS"
+-      else
+-        LDFLAGS="-L$ledir $LDFLAGS"
+-      fi
+-      if test -d "$ledir/include" ; then
+-        CPPFLAGS="-I$ledir/include $CPPFLAGS"
+-      else
+-        CPPFLAGS="-I$ledir $CPPFLAGS"
+-      fi
+-    fi
+-    # Can I compile and link it?
+-    AC_TRY_LINK([#include <sys/time.h>
+-#include <sys/types.h>
+-#include <event.h>], [ event_init(); ],
+-       [ libevent_linked=yes ], [ libevent_linked=no ])
+-    if test $libevent_linked = yes; then
+-       if test ! -z "$ledir" ; then
+-         ac_cv_libevent_dir=$ledir
+-         _myos=`echo $target_os | cut -f 1 -d .`
+-         AS_IF(test "$SUNCC" = "yes" -o "x$_myos" = "xsolaris2",
+-               [saved_LDFLAGS="$saved_LDFLAGS -Wl,-R$ledir/lib"],
+-               [AS_IF(test "$GCC" = "yes",
+-                     [saved_LDFLAGS="$saved_LDFLAGS -Wl,-rpath,$ledir/lib"])])
+-       else
+-         ac_cv_libevent_dir="(system)"
+-       fi
+-       le_found=yes
+-       break
+-    fi
+-  done
+-  LIBS="$saved_LIBS"
+-  LDFLAGS="$saved_LDFLAGS"
+-  CPPFLAGS="$saved_CPPFLAGS"
+-  if test $le_found = no ; then
+-    AC_MSG_ERROR([libevent is required.  You can get it from $LIBEVENT_URL
+-
+-      If it's already installed, specify its path using --with-libevent=/dir/
+-])
+-  fi
+-])
+-LIBS="-levent $LIBS"
+-if test $ac_cv_libevent_dir != "(system)"; then
+-  if test -d "$ac_cv_libevent_dir/lib" ; then
+-    LDFLAGS="-L$ac_cv_libevent_dir/lib $LDFLAGS"
+-    le_libdir="$ac_cv_libevent_dir/lib"
+-  else
+-    LDFLAGS="-L$ac_cv_libevent_dir $LDFLAGS"
+-    le_libdir="$ac_cv_libevent_dir"
+-  fi
+-  if test -d "$ac_cv_libevent_dir/include" ; then
+-    CPPFLAGS="-I$ac_cv_libevent_dir/include $CPPFLAGS"
+-  else
+-    CPPFLAGS="-I$ac_cv_libevent_dir $CPPFLAGS"
+-  fi
+-fi
++PKG_CHECK_MODULES([LIBEVENT], [libevent])
+ 
+ trylibssldir=""
+ AC_ARG_WITH(libssl,
+@@ -478,14 +377,14 @@ dnl ************************************
+ AC_DEFUN([AC_HAVE_SASL_CALLBACK_FT],
+ [AC_CACHE_CHECK(for sasl_callback_ft, ac_cv_has_sasl_callback_ft,
+ [
+-  AC_TRY_COMPILE([
++  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+     #ifdef HAVE_SASL_SASL_H
+     #include <sasl/sasl.h>
+     #include <sasl/saslplug.h>
+     #endif
+-  ],[
++  ]], [[
+     sasl_callback_ft a_callback;
+-  ],[
++  ]])],[
+     ac_cv_has_sasl_callback_ft=yes
+   ],[
+     ac_cv_has_sasl_callback_ft=no
+@@ -507,18 +406,15 @@ AC_DEFUN([AC_C_DETECT_UINT64_SUPPORT],
+ [
+     AC_CACHE_CHECK([for print macros for integers (C99 section 7.8.1)],
+         [ac_cv_c_uint64_support],
+-        [AC_TRY_COMPILE(
+-            [
++        [AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+ #ifdef HAVE_INTTYPES_H
+ #include <inttypes.h>
+ #endif
+ #include <stdio.h>
+-            ], [
++            ]], [[
+   uint64_t val = 0;
+   fprintf(stderr, "%" PRIu64 "\n", val);
+-            ],
+-            [ ac_cv_c_uint64_support=yes ],
+-            [ ac_cv_c_uint64_support=no ])
++            ]])],[ ac_cv_c_uint64_support=yes ],[ ac_cv_c_uint64_support=no ])
+         ])
+ ])
+ 
+@@ -537,12 +433,12 @@ dnl Check if the type socklen_t is defin
+ AC_DEFUN([AC_C_SOCKLEN_T],
+ [AC_CACHE_CHECK(for socklen_t, ac_cv_c_socklen_t,
+ [
+-  AC_TRY_COMPILE([
++  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+     #include <sys/types.h>
+     #include <sys/socket.h>
+-  ],[
++  ]], [[
+     socklen_t foo;
+-  ],[
++  ]])],[
+     ac_cv_c_socklen_t=yes
+   ],[
+     ac_cv_c_socklen_t=no
+@@ -581,35 +477,6 @@ fi
+ 
+ AC_C_ENDIAN
+ 
+-AC_DEFUN([AC_C_HTONLL],
+-[
+-    AC_MSG_CHECKING([for htonll])
+-    have_htoll="no"
+-    AC_TRY_LINK([
+-#include <sys/types.h>
+-#include <netinet/in.h>
+-#ifdef HAVE_INTTYPES_H
+-#include <inttypes.h> */
+-#endif
+-       ], [
+-          return htonll(0);
+-       ], [
+-          have_htoll="yes"
+-          AC_DEFINE([HAVE_HTONLL], [1], [Have ntohll])
+-    ], [
+-          have_htoll="no"
+-    ])
+-
+-    AC_MSG_RESULT([$have_htoll])
+-])
+-
+-AC_C_HTONLL
+-
+-dnl Check whether the user's system supports pthread
+-AC_SEARCH_LIBS(pthread_create, pthread)
+-if test "x$ac_cv_search_pthread_create" = "xno"; then
+-  AC_MSG_ERROR([Can't enable threads without the POSIX thread library.])
+-fi
+ 
+ AC_CHECK_FUNCS(mlockall)
+ AC_CHECK_FUNCS(getpagesizes)
+@@ -670,13 +537,13 @@ dnl These were added in 4.1.2, but 32bit
+ dnl lacks testable defines.
+ have_gcc_atomics=no
+ AC_MSG_CHECKING(for GCC atomics)
+-AC_TRY_LINK([],[
++AC_LINK_IFELSE([AC_LANG_PROGRAM([[]], [[
+   unsigned short a;
+   unsigned short b;
+   b = __sync_add_and_fetch(&a, 1);
+   b = __sync_sub_and_fetch(&a, 2);
+-  ],[have_gcc_atomics=yes
+-  AC_DEFINE(HAVE_GCC_ATOMICS, 1, [GCC Atomics available])])
++  ]])],[have_gcc_atomics=yes
++  AC_DEFINE(HAVE_GCC_ATOMICS, 1, [GCC Atomics available])],[])
+ AC_MSG_RESULT($have_gcc_atomics)
+ 
+ dnl Check for usage of 64bit atomics
+@@ -758,29 +625,5 @@ AM_CONDITIONAL([BUILD_SPECIFICATIONS],
+                [test "x$enable_docs" != "xno" -a "x$XML2RFC" != "xno" -a "x$XSLTPROC" != "xno"])
+ 
+ 
+-dnl Let the compiler be a bit more picky. Please note that you cannot
+-dnl specify these flags to the compiler before AC_CHECK_FUNCS, because
+-dnl the test program will generate a compilation warning and hence fail
+-dnl to detect the function ;-)
+-if test "$ICC" = "yes"
+-then
+-   dnl ICC trying to be gcc.
+-   CFLAGS="$CFLAGS -diag-disable 187 -Wall -Werror"
+-   AC_DEFINE([_GNU_SOURCE],[1],[find sigignore on Linux])
+-elif test "$GCC" = "yes"
+-then
+-  GCC_VERSION=`$CC -dumpversion`
+-  CFLAGS="$CFLAGS -Wall -Werror -pedantic -Wmissing-prototypes -Wmissing-declarations -Wredundant-decls"
+-  case $GCC_VERSION in
+-    4.4.*)
+-    CFLAGS="$CFLAGS -fno-strict-aliasing"
+-    ;;
+-  esac
+-  AC_DEFINE([_GNU_SOURCE],[1],[find sigignore on Linux])
+-elif test "$SUNCC" = "yes"
+-then
+-  CFLAGS="$CFLAGS -errfmt=error -errwarn -errshort=tags"
+-fi
+-
+ AC_CONFIG_FILES(Makefile doc/Makefile)
+ AC_OUTPUT
+Index: memcached-1.5.17/Makefile.am
+===================================================================
+--- memcached-1.5.17.orig/Makefile.am	2019-08-28 00:17:56.000000000 +0200
++++ memcached-1.5.17/Makefile.am	2019-09-03 11:45:07.724581146 +0200
+@@ -1,3 +1,6 @@
++AM_CFLAGS = -pthread -Wall -Wmissing-prototypes -Wmissing-declarations -Wredundant-decls
++AM_CPPFLAGS = -include $(top_builddir)/config.h
++
+ bin_PROGRAMS = memcached
+ pkginclude_HEADERS = protocol_binary.h
+ noinst_PROGRAMS = memcached-debug sizes testapp timedrun
+@@ -63,11 +66,12 @@ memcached_SOURCES += tls.c tls.h
+ endif
+ 
+ memcached_debug_SOURCES = $(memcached_SOURCES)
+-memcached_CPPFLAGS = -DNDEBUG
+-memcached_debug_LDADD = @PROFILER_LDFLAGS@
+-memcached_debug_CFLAGS = @PROFILER_FLAGS@
++memcached_CPPFLAGS = $(AM_CPPFLAGS) -DNDEBUG
++memcached_debug_LDADD = @PROFILER_LDFLAGS@ $(LIBEVENT_LIBS)
++memcached_debug_CFLAGS = @PROFILER_FLAGS@ $(AM_CFLAGS)
++memcached_debug_CPPFLAGS = $(AM_CPPFLAGS)
+ 
+-memcached_LDADD =
++memcached_LDADD = $(LIBEVENT_LIBS)
+ memcached_DEPENDENCIES =
+ memcached_debug_DEPENDENCIES =
+ CLEANFILES=

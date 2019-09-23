@@ -1,0 +1,6 @@
+<package name="lockdev" project="openSUSE:Factory">
+  <title>A library for locking devices</title>
+  <description>Lockdev provides a reliable way to put an exclusive lock to devices
+using both FSSTND and SVr4 methods.</description>
+  <devel project="Base:System" package="lockdev"/>
+</package>

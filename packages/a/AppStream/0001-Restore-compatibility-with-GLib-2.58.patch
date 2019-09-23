@@ -1,0 +1,150 @@
+From 919bea53ada992d8f02b5e6e1e016c912ca9aadf Mon Sep 17 00:00:00 2001
+From: Matthias Klumpp <matthias@tenstral.net>
+Date: Mon, 17 Jun 2019 20:51:21 +0200
+Subject: [PATCH] Restore compatibility with GLib < 2.58
+
+Since g_ptr_array_steal_index_fast() does not exist in older GLib
+versions, we do something that is - sort of - equivalent when building
+against older versions (but slightly slower and uglier).
+---
+ src/as-cache.c         |  3 +--
+ src/as-pool.c          | 21 +++++++--------------
+ src/as-utils-private.h |  3 +++
+ src/as-utils.c         | 25 +++++++++++++++++++++++++
+ 4 files changed, 36 insertions(+), 16 deletions(-)
+
+Index: AppStream-0.12.7/src/as-cache.c
+===================================================================
+--- AppStream-0.12.7.orig/src/as-cache.c
++++ AppStream-0.12.7/src/as-cache.c
+@@ -1909,8 +1909,7 @@ as_cache_get_components_by_categories (A
+ 			return NULL;
+ 		}
+ 
+-		while (tmp_res->len != 0)
+-			g_ptr_array_add (result, g_ptr_array_steal_index_fast (tmp_res, 0));
++		as_object_ptr_array_absorb (result, tmp_res);
+ 	}
+ 
+ 	if (result == NULL) {
+Index: AppStream-0.12.7/src/as-pool.c
+===================================================================
+--- AppStream-0.12.7.orig/src/as-pool.c
++++ AppStream-0.12.7/src/as-pool.c
+@@ -1283,8 +1283,7 @@ as_pool_get_components (AsPool *pool)
+ 			g_warning ("Unable to retrieve all components from system cache: %s", tmp_error->message);
+ 			return result;
+ 		}
+-		while (tmp_res->len != 0)
+-			g_ptr_array_add (result, g_ptr_array_steal_index_fast (tmp_res, 0));
++		as_object_ptr_array_absorb (result, tmp_res);
+ 	}
+ 
+ 	return result;
+@@ -1321,8 +1320,7 @@ as_pool_get_components_by_id (AsPool *po
+ 			g_warning ("Unable find components by ID in system cache: %s", tmp_error->message);
+ 			return result;
+ 		}
+-		while (tmp_res->len != 0)
+-			g_ptr_array_add (result, g_ptr_array_steal_index_fast (tmp_res, 0));
++		as_object_ptr_array_absorb (result, tmp_res);
+ 	}
+ 
+ 	return result;
+@@ -1360,8 +1358,7 @@ as_pool_get_components_by_provided_item
+ 			g_warning ("Unable find components by provided item in system cache: %s", tmp_error->message);
+ 			return result;
+ 		}
+-		while (tmp_res->len != 0)
+-			g_ptr_array_add (result, g_ptr_array_steal_index_fast (tmp_res, 0));
++		as_object_ptr_array_absorb (result, tmp_res);
+ 	}
+ 
+ 	return result;
+@@ -1396,8 +1393,7 @@ as_pool_get_components_by_kind (AsPool *
+ 			g_warning ("Unable find components by kind in system cache: %s", tmp_error->message);
+ 			return result;
+ 		}
+-		while (tmp_res->len != 0)
+-			g_ptr_array_add (result, g_ptr_array_steal_index_fast (tmp_res, 0));
++		as_object_ptr_array_absorb (result, tmp_res);
+ 	}
+ 
+ 	return result;
+@@ -1439,8 +1435,7 @@ as_pool_get_components_by_categories (As
+ 			g_warning ("Unable find components by categories in system cache: %s", tmp_error->message);
+ 			return result;
+ 		}
+-		while (tmp_res->len != 0)
+-			g_ptr_array_add (result, g_ptr_array_steal_index_fast (tmp_res, 0));
++		as_object_ptr_array_absorb (result, tmp_res);
+ 	}
+ 
+ 	return result;
+@@ -1481,8 +1476,7 @@ as_pool_get_components_by_launchable (As
+ 			g_warning ("Unable find components by launchable in system cache: %s", tmp_error->message);
+ 			return result;
+ 		}
+-		while (tmp_res->len != 0)
+-			g_ptr_array_add (result, g_ptr_array_steal_index_fast (tmp_res, 0));
++		as_object_ptr_array_absorb (result, tmp_res);
+ 	}
+ 
+ 	return result;
+@@ -1629,8 +1623,7 @@ as_pool_search (AsPool *pool, const gcha
+ 			g_warning ("Search in system cache failed: %s", tmp_error->message);
+ 			return result;
+ 		}
+-		while (tmp_res->len != 0)
+-			g_ptr_array_add (result, g_ptr_array_steal_index_fast (tmp_res, 0));
++		as_object_ptr_array_absorb (result, tmp_res);
+ 	}
+ 
+ 	/* sort the results by their priority (this was explicitly disabled for the caches before,
+Index: AppStream-0.12.7/src/as-utils-private.h
+===================================================================
+--- AppStream-0.12.7.orig/src/as-utils-private.h
++++ AppStream-0.12.7/src/as-utils-private.h
+@@ -93,6 +93,9 @@ gchar			*as_utils_dns_to_rdns (const gch
+ 
+ void			as_utils_sort_components_by_score (GPtrArray *cpts);
+ 
++void			as_object_ptr_array_absorb (GPtrArray *dest,
++						    GPtrArray *src);
++
+ #pragma GCC visibility pop
+ G_END_DECLS
+ 
+Index: AppStream-0.12.7/src/as-utils.c
+===================================================================
+--- AppStream-0.12.7.orig/src/as-utils.c
++++ AppStream-0.12.7/src/as-utils.c
+@@ -1261,3 +1261,28 @@ as_utils_sort_components_by_score (GPtrA
+ {
+ 	g_ptr_array_sort (cpts, as_sort_components_by_score_cb);
+ }
++
++/**
++ * as_object_ptr_array_absorb:
++ *
++ * Append contents from source array of GObjects to destination array,
++ * transferring ownership to the destination and removing values
++ * from the source (effectively moving the data).
++ * The source array will be empty afterwards.
++ *
++ * This function assumes that a GDestroyNotify function is set on the
++ * GPtrArray if GLib < 2.58.
++ */
++void
++as_object_ptr_array_absorb (GPtrArray *dest, GPtrArray *src)
++{
++#if GLIB_CHECK_VERSION(2,58,0)
++	while (src->len != 0)
++		g_ptr_array_add (dest, g_ptr_array_steal_index_fast (src, 0));
++#else
++	while (src->len != 0) {
++		g_ptr_array_add (dest, g_object_ref (g_ptr_array_index (src, 0)));
++		g_ptr_array_remove_index_fast (src, 0);
++	}
++#endif
++}

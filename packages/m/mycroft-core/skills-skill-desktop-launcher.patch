@@ -1,0 +1,80 @@
+From 223936a719bb65bd7dd7e65fd48ee387e29583ef Mon Sep 17 00:00:00 2001
+From: Antonio Larrosa <antonio.larrosa@gmail.com>
+Date: Mon, 5 Mar 2018 13:22:48 +0100
+Subject: [PATCH] Fix code to work with both python2 and python3
+
+Additionally move the imports to the beginning of the file.
+
+I would remove the sys.path.append code, but I didn't
+want to change the behaviour.
+---
+ __init__.py | 25 ++++++++++++-------------
+ 1 file changed, 12 insertions(+), 13 deletions(-)
+
+diff --git skill-desktop-launcher/__init__.py skill-desktop-launcher.new/__init__.py
+index ed5b69c..656448c 100644
+--- skill-desktop-launcher/__init__.py
++++ skill-desktop-launcher.new/__init__.py
+@@ -17,7 +17,6 @@
+ 
+ 
+ import sys
+-import urllib2
+ import webbrowser
+ import subprocess
+ 
+@@ -27,6 +26,16 @@
+ 
+ from mycroft.skills.core import MycroftSkill
+ from mycroft.util.log import getLogger
++if sys.version_info[0] < 3:
++    from urllib import quote
++    try:
++        import gio
++    except ModuleNotFoundError:
++        sys.path.append("/usr/lib/python2.7/dist-packages")
++        import gio
++else:
++    from urllib.parse import quote
++    from gi.repository import Gio as gio
+ 
+ logger = getLogger(__name__)
+ __author__ = 'seanfitz'
+@@ -40,16 +49,6 @@ def __init__(self):
+         self.appmap = {}
+ 
+     def initialize(self):
+-        try:
+-            import gio
+-        except:
+-            sys.path.append("/usr/lib/python2.7/dist-packages")
+-            try:
+-                import gio
+-            except:
+-                logger.error("Could not import gio")
+-                return
+-
+         tokenizer = EnglishTokenizer()
+ 
+         for app in gio.app_info_get_all():
+@@ -98,17 +97,17 @@ class DesktopLauncherSkill(MycroftSkill):
+ 
+     def handle_close_desktop_app(self, message):
+         app_name = message.data.get('Application')
+-        subprocess.call( [ "killall", "-9", app_name ] )
++        subprocess.call( [ "killall", app_name ] )
+ 
+     def handle_launch_website(self, message):
+         site = message.data.get("Website")
+-        webbrowser.open(IFL_TEMPLATE % (urllib2.quote(site)))
++        webbrowser.open(IFL_TEMPLATE % (quote(site)))
+ 
+     def handle_search_website(self, message):
+         site = message.data.get("Website")
+         search_terms = message.data.get("SearchTerms")
+         search_str = site + " " + search_terms
+-        webbrowser.open(IFL_TEMPLATE % (urllib2.quote(search_str)))
++        webbrowser.open(IFL_TEMPLATE % (quote(search_str)))
+ 
+     def stop(self):
+         pass

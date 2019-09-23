@@ -1,0 +1,27 @@
+From 8c11de79260105c5ad38454c7766290e6994fa11 Mon Sep 17 00:00:00 2001
+From: Philippe Normand <philn@igalia.com>
+Date: Mon, 15 Apr 2019 16:51:26 +0100
+Subject: [PATCH] pluginutil: Remove Mesa from drivers white list
+
+The Mesa Gallium driver is poorly tested currently, leading to bad user
+experience for AMD users. The driver can be added back to the white list at
+runtime using the GST_VAAPI_ALL_DRIVERS environment variable.
+---
+ gst/vaapi/gstvaapipluginutil.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/gst/vaapi/gstvaapipluginutil.c b/gst/vaapi/gstvaapipluginutil.c
+index 3599b6a0..b4699726 100644
+--- a/gst/vaapi/gstvaapipluginutil.c
++++ b/gst/vaapi/gstvaapipluginutil.c
+@@ -954,7 +954,6 @@ gst_vaapi_driver_is_whitelisted (GstVaapiDisplay * display)
+   guint i;
+   static const gchar *whitelist[] = {
+     "Intel i965 driver",
+-    "mesa gallium",
+     NULL
+   };
+ 
+-- 
+2.22.0
+

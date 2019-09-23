@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Sat Jan 19 09:30:39 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.5:
+  + Remove Xaw mention from README.
+  + config: Add missing AC_CONFIG_SRCDIR.
+  + Remove dependency on libXaw.
+  + man: remove trailing spaces and tabs.
+  + config: 
+    - Move man pages into their own directory.
+    - Replace deprecated AM_CONFIG_HEADER with AC_CONFIG_HEADERS.
+    - Replace deprecated AC_HELP_STRING with AS_HELP_STRING.
+- Drop pkgconfig(xaw7) BuildRequires, no longer needed.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split beforelight from xorg-x11. Initial version: 1.0.4.
+

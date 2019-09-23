@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>35175e3a266926297b24e62dae3f60c9</srcmd5>
+    <version>2.06.09</version>
+    <time>1398434964</time>
+    <user>coolo</user>
+    <comment>New package: HepMC is a high energy particle physics software for maintaining event records for MC generators.</comment>
+    <requestid>230703</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>35175e3a266926297b24e62dae3f60c9</srcmd5>
+    <version>2.06.09</version>
+    <time>1409300430</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d25d4a938ffcea3e8695585126154ffb</srcmd5>
+    <version>3.0.0</version>
+    <time>1503593340</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515864</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>962e5fdd9e6e950291127ec51c316467</srcmd5>
+    <version>3.1.1</version>
+    <time>1557141995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700424</requestid>
+  </revision>
+</revisionlist>

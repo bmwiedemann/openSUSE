@@ -1,0 +1,12 @@
+diff -Nru azure-mgmt-network-2.6.0rc1.orig/setup.py azure-mgmt-network-2.6.0rc1/setup.py
+--- azure-mgmt-network-2.6.0rc1.orig/setup.py	2019-02-15 16:55:42.000000000 +0100
++++ azure-mgmt-network-2.6.0rc1/setup.py	2019-03-28 12:55:29.228799159 +0100
+@@ -79,7 +79,7 @@
+     install_requires=[
+         'msrest>=0.5.0',
+         'msrestazure>=0.4.32,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     extras_require={
+         ":python_version<'3.0'": ['azure-mgmt-nspkg'],

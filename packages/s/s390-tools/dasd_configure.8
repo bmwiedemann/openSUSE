@@ -1,0 +1,152 @@
+.TH dasd_configure "8" "February 2013" "s390-tools"
+.SH NAME
+dasd_configure \- Configures or deconfigures a Direct Access Storage Device (DASD) volume.
+.SH SYNOPSIS
+.B dasd_configure [-f -t dasd_type ] ccwid online [use_diag]
+.SH DESCRIPTION
+.B dasd_configure
+is intended to make it easy to persistently add and remove DASD volumes. In addition to bringing the volume online or offline, it will also create or delete the necessary udev rules for the volume.
+.SH PARAMETERS
+.IP -f
+Force creation of udev rules, do not check values in /sys.
+.IP -t
+Must be either dasd-eckd or dasd-fba. Must be provided if -f is used.
+.IP ccwid
+The device number of the DASD volume. Takes the form x.y.ssss where
+.RS
+.B x
+is always 0 until IBM creates something that uses that number.
+.RE
+.RS
+.B y
+is the logical channel subsystem (lcss) number. Most often this is 0, but it could be non-zero.
+.RE
+.RS
+.B ssss
+is the four digit subchannel address of the device, in hexidecimal, with leading zeros. If entered in upper/mixed case, this is automatically converted to lower case.
+.RE
+.IP online
+Either a literal 1 to bring the volume online or a literal 0 to take it offline
+.RE
+.IP use_diag
+Either a literal 1 to use the DIAG driver for this device, or a literal 0 to use the "normal" driver.
+.RE
+.SH FILES
+.I /etc/udev/rules.d/51-dasd-<ccwid>.rules
+.RS
+This file provides the udev rules necessary to activate a specific DASD volume.
+.RE
+.SH ENVIRONMENT
+.IP DEBUG
+If set to "yes" some minimal debugging information is output during execution.
+.SH DIAGNOSTICS
+The following messages may be issued on stdout:
+.IP
+.B /sysfs not present
+.RS
+The sysfs file system could not be found in /proc/mounts, so there's nothing the script can do. Return code 1 is set.
+.RE
+.IP
+.B Invalid device status $ONLINE It must be a zero or a one.
+.RS
+A value other than 0 or 1 was specified for the second parameter, online. Return code 2 is set.
+.RE
+.IP
+.B No device ${CCW_CHAN_ID}
+.RS
+A non-existent <ccwid> was specified for the DASD volume. Remember the x.y.ssss format is necessary. Return code 3 is set.
+.RE
+.IP
+.B Could not set the device offline for DIAG access
+.RS
+You specified that the DIAG driver be used for this device. However, the device was already online without DIAG mode set, and something prevented it from being taken offline. (The use_diag value can only be modified when the disk is offline to the system.) Return code 4 is set.
+.RE
+.IP
+.B Could not set device ${CCW_CHAN_ID} online
+.RS
+The attempt to bring the DASD volume online failed. Try "dmesg" to see if there is any indication why. Return code 4 is set.
+.RE
+.IP
+.B Could not set device ${CCW_CHAN_ID} offline
+.RS
+The attempt to take the DASD volume offline failed. Try "dmesg" to see if there is any indication why. Return code 4 is set.
+.RE
+.IP
+.B Not a DASD device (cu $_cutype, dev $_devtype)
+.RS
+The ccwid you specified does not refer to a DASD volume. Return code 5 is set.
+.RE
+.IP
+.B Could not load module ${MODULE}
+.RS
+The dasd_eckd_mod.ko or dasd_fba_mod.ko module failed to load. Try "dmesg" to see if there is any indication why. Return code 6 is set.
+.RE
+.IP
+.B Failed to activate device ${CCW_CHAN_ID}, device in state $_dasd_state
+.RS
+The attempt to bring the DASD volume online failed. The volume was left in the state described (which will not be online or offline.) Return code 7 is set.
+.RE
+.IP
+.B Device ${CCW_CHAN_ID} is unformatted
+.RS
+The DASD volume was brought online, but it has not been formatted with dasdfmt. This condition is really only important for YaST to determine if it should prompt the user to decide if they want to format it or not at that point. The udev rules are not created. After the disk has been formatted, re-run dasd_configure to take the volume offline, and then again to bring it online. Return code 8 is set.
+.RE
+.IP
+.B Only dasd-eckd or dasd-fba are supported.
+.RS
+Either an invalid -t value was specified, or -f was specified without -t. Return code 9 is set.
+.RE
+
+If environment variable DEBUG is set to "yes," the following messages may be issued on stdout:
+.IP
+.B Configuring device ${CCW_CHAN_ID}
+.RS
+Just a little bit of verbosity, since it just indicates that we got past certain error checks and will now try to do something useful.
+.RE
+.IP
+.B Setting device offline for DIAG access
+.RS
+Just a little bit of verbosity.
+.RE
+.IP
+.B Setting device read-only
+.RS
+Just a little bit of verbosity.
+.RE
+.IP
+.B Activating DIAG access mode
+.RS
+Just a little bit of verbosity.
+.RE
+.IP
+.B DIAG mode not available
+.RS
+You specified that the DIAG driver should be used for this DASD volume. The script tried to honor this, but was not able to do so. Non-DIAG mode was used instead.
+.RE
+.IP
+.B Deactivating DIAG access mode
+.RS
+You specified that the DIAG driver NOT be used for this DASD volume, but the use_diag flag was already set for it.
+.RE
+.IP
+.B Setting device online
+.RS
+Just a little bit of verbosity.
+.RE
+.IP
+.B Device ${CCW_CHAN_ID} is already online
+.RS
+An attempt was made to bring the DASD volume online when it was already online.
+.RE
+.IP
+.B Setting device offline
+.RS
+Just a little bit of verbosity.
+.RE
+.IP
+.B Device ${CCW_CHAN_ID} is already offline
+.RS
+An attempt was made to take the DASD volume offline when it was already offline.
+.RE
+.SH BUGS
+Gotta be some, I'm sure. If you find one, please open a bug report.

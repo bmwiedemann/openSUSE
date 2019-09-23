@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e68719ec4fd4a87641602f9b98c2c44e</srcmd5>
+    <version>0.2.14</version>
+    <time>1306496536</time>
+    <user>saschpe</user>
+    <comment>Needed to fix bnc#676294</comment>
+    <requestid>67530</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8ea9b4da62f2fc33b9378d6c2c3ec3d9</srcmd5>
+    <version>0.2.14</version>
+    <time>1306496545</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67530
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d98c6f71332180fec69829aae97aad13</srcmd5>
+    <version>0.2.16</version>
+    <time>1307547441</time>
+    <user>saschpe</user>
+    <comment>Update package to latest version, &gt;= 0.2.15 required to fix another package bnc#676294</comment>
+    <requestid>72231</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>68758bfd7a6687fde6792c057f7b09b6</srcmd5>
+    <version>0.2.16</version>
+    <time>1307547449</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72231
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d8568c1b3512abed080fc55a152f2a6b</srcmd5>
+    <version>0.2.19</version>
+    <time>1313049979</time>
+    <user>saschpe</user>
+    <comment>- fixed soname in .spec (warnings: TODO) (forwarded request 78361 from dnh)</comment>
+    <requestid>78380</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>efe693cdff2ac350931ec0447903254b</srcmd5>
+    <version>0.2.19</version>
+    <time>1313049986</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78380
+</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>efe693cdff2ac350931ec0447903254b</srcmd5>
+    <version>0.2.19</version>
+    <time>1319182420</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>8c6338ad52d74be4ae111afd94073132</srcmd5>
+    <version>0.2.19</version>
+    <time>1322814496</time>
+    <user>coolo</user>
+    <comment>- add missing include stdio.h to fix build (forwarded request 94590 from oertel)</comment>
+    <requestid>94595</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>86f079e26db1826b63ff1fe7e28c06c1</srcmd5>
+    <version>0.4.1</version>
+    <time>1327404086</time>
+    <user>coolo</user>
+    <comment>Update to 0.4.1 (forwarded request 99629 from vuntz)</comment>
+    <requestid>99633</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>86f079e26db1826b63ff1fe7e28c06c1</srcmd5>
+    <version>0.4.1</version>
+    <time>1340184134</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>86f079e26db1826b63ff1fe7e28c06c1</srcmd5>
+    <version>0.4.1</version>
+    <time>1359110270</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bb8f99b15ac57a8f3e1d701694c0d457</srcmd5>
+    <version>0.4.2</version>
+    <time>1367904861</time>
+    <user>coolo</user>
+    <comment> (forwarded request 174503 from Grauw0lf)</comment>
+    <requestid>174614</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bd0f570a36c97b607797303fbd374aec</srcmd5>
+    <version>0.9.3</version>
+    <time>1377856096</time>
+    <user>coolo</user>
+    <comment>Update to 0.9.3 (forwarded request 196380 from dimstar)</comment>
+    <requestid>196381</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>bd0f570a36c97b607797303fbd374aec</srcmd5>
+    <version>0.9.3</version>
+    <time>1379664427</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4556faeabb435b392a570ff79e387f49</srcmd5>
+    <version>0.9.5</version>
+    <time>1392222357</time>
+    <user>coolo</user>
+    <comment>Update to 0.9.5 (forwarded request 221684 from dimstar)</comment>
+    <requestid>221785</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>4556faeabb435b392a570ff79e387f49</srcmd5>
+    <version>0.9.5</version>
+    <time>1409303156</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>c907888d1345d6e6901747fec14b7d4b</srcmd5>
+    <version>0.9.5</version>
+    <time>1485250780</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451872</requestid>
+  </revision>
+</revisionlist>

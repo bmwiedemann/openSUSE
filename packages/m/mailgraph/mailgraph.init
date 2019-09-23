@@ -1,0 +1,137 @@
+#!/bin/sh
+# Copyright (c) 2007 Scorpio IT, Deidesheim, Germany
+#
+# Author: Christian Wittmer
+# please send feedback to <rpm@scorpio-it.net>
+#
+# /etc/init.d/mailgraph
+#
+### BEGIN INIT INFO
+# Provides:       mailgraph
+# Required-Start: $network $named $syslog $remote_fs $time postfix
+# Should-Start:
+# Required-Stop:  $network $named $syslog $remote_fs $time postfix
+# Should-Stop:
+# Default-Start:  3 5
+# Default-Stop:   0 1 2 6
+# Short-Description: start Mail Statistics Grapher (mailgraph)
+# Description:    start the Mail Statistics Grapher
+#	a very simple mail statistics RRDtool frontend for Postfix
+### END INIT INFO
+
+# check for sysconfig file
+[ -f /etc/sysconfig/mailgraph ] && . /etc/sysconfig/mailgraph ;
+
+PATH=/bin:/usr/bin
+MG_BIN="/usr/bin/mailgraph.pl"
+MG_OPTS=${MAILGRAPH_OPTS:="-d -v"}
+PID=${MAILGRAPH_PID:="/var/run/mailgraph.pid"}
+RRD=${MAILGRAPH_RRD:="/var/lib/mailgraph"}
+LOG=${MAILGRAPH_LOG:="/var/log/mailgraph/mailgraph.log"}
+LOG_FILE=${MAILGRAPH_LOG_FILE:="/var/log/mail"}
+LOG_TYPE=${MAILGRAPH_LOG_TYPE:="syslog"}
+
+# Shell functions sourced from /etc/rc.status:
+#      rc_check         check and set local and overall rc status
+#      rc_status        check and set local and overall rc status
+#      rc_status -v     ditto but be verbose in local rc status
+#      rc_status -v -r  ditto and clear the local rc status
+#      rc_failed        set local and overall rc status to failed
+#      rc_failed <num>  set local and overall rc status to <num><num>
+#      rc_reset         clear local rc status (overall remains)
+#      rc_exit          exit appropriate to overall rc status
+. /etc/rc.status
+
+# First reset status of this service
+rc_reset
+
+# Return values acc. to LSB for all commands but status:
+# 0 - success
+# 1 - generic or unspecified error
+# 2 - invalid or excess argument(s)
+# 3 - unimplemented feature (e.g. "reload")
+# 4 - insufficient privilege
+# 5 - program is not installed
+# 6 - program is not configured
+# 7 - program is not running
+# 
+# Note that starting an already running service, stopping
+# or restarting a not-running service as well as the restart
+# with force-reload (in case signalling is not supported) are
+# considered a success.
+
+case "$1" in
+    start)
+	echo -n "Starting mail statistics grapher (mailgraph): "
+	## Start daemon with startproc(8). If this fails
+	## the echo return value is set appropriate.
+	nice -19 ${MG_BIN} ${MG_OPTS} \
+		--logfile ${LOG_FILE} \
+		--logtype ${LOG_TYPE} \
+		--daemon-pid=${PID} \
+		--daemon-rrd=${RRD} \
+		--daemon-log=${LOG}
+
+	# Remember status and be verbose
+	rc_status -v
+  ;;
+    stop)
+	echo -n "Stopping mail statistics grapher (mailgraph): "
+	## Stop daemon with killproc(8) and if this fails
+	## set echo the echo return value.
+	/sbin/killproc -p ${PID} ${MG_BIN}
+
+	# Remember status and be verbose
+	rc_status -v
+  ;;
+    restart)
+	## Stop the service and regardless of whether it was
+        ## running or not, start it again.
+	$0 stop
+	$0 start
+
+	# Remember status and be quiet
+	rc_status
+  ;;
+    reload)  
+	echo -n "Reload mail statistics grapher (mailgraph): "  
+	/sbin/killproc -p ${PID} -HUP ${MG_BIN}
+
+	# Remember status and be verbose
+	rc_status -v  
+  ;; 
+    status)
+	echo -n "Checking for statistics grapher (mailgraph): "
+	## Check status with checkproc(8), if process is running
+	## checkproc will return with exit status 0.
+
+	# Status has a slightly different for the status command:
+	# 0 - service running
+	# 1 - service dead, but /var/run/  pid  file exists
+	# 2 - service dead, but /var/lock/ lock file exists
+	# 3 - service not running
+
+	# NOTE: checkproc returns LSB compliant status values.
+	/sbin/checkproc -p ${PID} ${MG_BIN}
+
+	# Remember status and be verbose
+	rc_status -v
+  ;;
+    info)
+	echo "Info about VAR's of statistics grapher (mailgraph): "
+	echo "Binary:     $MG_BIN"
+	echo "Options:    $MG_OPTS"
+	echo "PID file:   $PID"
+	echo "RRD DIR:    $RRD"
+	echo "LOG:        $LOG"
+	echo "LOG file:   $LOG_FILE"
+	echo "LOG type:   $LOG_TYPE"
+  ;;
+    *)
+	echo "Usage: $0 { start|stop|restart|reload|status|info}"
+	exit 1
+  ;;
+esac
+
+# finally clean exit
+rc_exit

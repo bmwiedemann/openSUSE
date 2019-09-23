@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Mon Apr 15 20:39:58 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Sat Apr 13 01:59:10 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+- Re-enable Python 2; tidy spec
+- Update to v3.1.3
+
+-------------------------------------------------------------------
+Sun Jun 24 22:31:14 UTC 2018 - arun@gmx.de
+
+- Convert to single spec, with Python 2 disabled
+- Update to v3.1.1
+
+-------------------------------------------------------------------
+Tue Jun  7 19:36:04 UTC 2016 - sbahling@suse.com
+
+- Initial package. Version 2.3.

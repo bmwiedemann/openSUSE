@@ -1,0 +1,12 @@
+diff -aur a/src/mainwindow.cpp b/src/mainwindow.cpp
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -232,7 +232,7 @@ void MainWindow::lazyInit() {
+ 
+     ChannelAggregator::instance()->start();
+ 
+-    checkForUpdate();
++    //checkForUpdate();
+ 
+     initialized = true;
+ }

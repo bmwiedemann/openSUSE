@@ -1,0 +1,467 @@
+-------------------------------------------------------------------
+Sat Jun 15 15:32:22 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.0.0 (changes since 4.0.0~rc3):
+  * ipconsole: Do not swallow ImportErrors
+  * Equaliser: Save present correctly.
+  * Fix unicode issue in saved playlists.
+  * Fix rating setting in playlists.
+  * Fix SmartPlaylists with timestamps.
+  * Improve support for AlbumArtist: collection pane,
+    playlist column, track properties
+  * Moodbar improvements.
+  * Many tags are now directly editable in the playlist view.
+  * Drop support for HAL and UDisks v1.
+  * Fix playlist column editing click/drag issues.
+  * F2 now also triggers track tag editing.
+  * Fix accelerators issue that caused a bug in the audioscrobbler
+    plugin.
+  * Remove AWN plugin.
+  * panel/playlists: Fix some drag&drop stuff.
+  * Many minor fixes and enhancements
+  * Update translations.
+- Stop using GPG signing as upstream did not sign the tarball.
+
+-------------------------------------------------------------------
+Sat Dec 15 14:49:14 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 4.0.0~rc3 (changes since 4.0.0~rc0):
+  * DAAP fixes.
+  * Add random shuffle mode.
+  * Fix cairo issues on pygobject 3.30.
+  * Fix issues reading tags when tagless media are in a collection.
+  * Plugin updates for DAAP/Last.fm.
+  * Fix bugs in parsing track streams.
+  * SmartPlaylist bug with empty collection.
+
+-------------------------------------------------------------------
+Thu Jun 28 17:40:25 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 4.0.0~rc0:
+  * Add a setting to tell Gtk to use the dark theme.
+  * Drag and drop fixes.
+
+-------------------------------------------------------------------
+Mon Mar 19 15:12:01 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 4.0.0~beta3:
+  * Massive speed improvements, can handle a 50000+ song library.
+  * Improve support for reading .aif/.aiff/.aifc files.
+  * Smart playlist now supports matching by a whole word.
+  * Smart playlist now supports a user-specified default sort
+    order.
+  * Plugins cleanup.
+- Use GPG signing.
+
+-------------------------------------------------------------------
+Sun Jun 18 17:07:58 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 4.0.0~beta2:
+  * Force usage of bsddb/bsddb3.
+  * Various fixes.
+
+-------------------------------------------------------------------
+Wed May 24 12:00:39 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 4.0.0~beta1:
+  * No changelog available.
+- Rebase exaile-no-splash-default.patch,
+  exaile-mate-screensaver.patch.
+- Add PGP signing.
+
+-------------------------------------------------------------------
+Wed May 10 20:30:23 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.5+git20170510:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Wed Jan 25 23:39:03 UTC 2017 - jengelh@inai.de
+
+- Ensure fdupes does not run across partitions
+
+-------------------------------------------------------------------
+Thu Jan 19 00:16:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.4.5+git20170110:
+  * No changelog available.
+- Rebase exaile-no-splash-default.patch,
+  exaile-mate-screensaver.patch.
+
+-------------------------------------------------------------------
+Wed Apr 29 09:21:54 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.4.5:
+  * Errors loading Smart Playlists that filter based on a playlist.
+  * Missing icon issue.
+  * Disable equalizer by default.
+  * Translations update.
+
+-------------------------------------------------------------------
+Sat Mar 21 17:23:21 UTC 2015 - sor.alexei@meowr.ru
+
+- Add exaile-no-splash-default.patch to make Exaile not show splash
+  screen on startup by default, Exaile starts fast enough.
+- Add exaile-mate-screensaver.patch which makes screensaverpause
+  plugin to work with MATE ScreenSaver.
+
+-------------------------------------------------------------------
+Mon Mar 16 11:30:23 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.4.4:
+  * If you installed Exaile by Makefile, or in slightly nonstandard
+    ways, translations would not actually work.
+  * Catch OSError when git is not installed.
+  * Fix search fail when there is a file with wrong encoding.
+  * Fix playlist import error.
+  * Add export playlists to right click menu on playlists tab.
+  * Fix tray menu item for removing current playlist item.
+
+-------------------------------------------------------------------
+Thu Dec 18 21:25:12 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 3.4.3:
+  * Smart Playlists with criteria involving timestamps now work.
+  * Significant translations update.
+
+-------------------------------------------------------------------
+Mon Nov 10 10:02:40 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 3.4.2:
+  * Exaile did not always update individual files when changed
+    externally.
+  * Add an option to 'force rescan' of files for users with
+    misbehaving external tagger applications.
+  * GroupTagger plugin: Potential tag loss when using externally
+    modified files.
+
+-------------------------------------------------------------------
+Sun Nov  2 20:07:17 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 3.4.1:
+  * Delay the import of modules that depend on PyGTK to after
+    --help handling.
+  * Don't refuse to run as root: we're not the moral police.
+    IIRC there were bugs when running as root, so message saying
+    it is unsupported still prints out.
+
+-------------------------------------------------------------------
+Sun Sep 28 16:12:15 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 3.4.0.2 (changes since 3.3.2):
+  * Audio output device can now be switched while playing songs
+  * Improved unicode support
+  * An option has been added to disallow playback while another
+    song is playing
+  * UDisks/UDisks2 support
+  * Covers: cover manager improvements, saving to disk
+  * Create appdata folder in Makefile
+  * Playlists can be shown in multiple panes
+  * The left tab panels are now closable
+  * BPM counter plugin has better UI integration
+  * Create playlists based on other playlists
+  * Support for filtering over 20 different tag types
+  * A simpler plugin API is available (but the old one still works!)
+  * Plugin manager doesn't show users potentially broken plugins
+    anymore
+  * New plugins: console, Icecast Radio, lyricsmania, mono output,
+    playlist analyzer, Soma.FM
+  * Broken/old plugins removed: lyricsfly, shoutcast
+  * Fixes/improvements for various plugins
+- Spec cleanup.
+- Remove exaile_nowindows.suse.patch.
+
+-------------------------------------------------------------------
+Sat Nov 03 00:00:00 UTC 2013 - propstmatthias@googlemail.com
+
+- Update to 3.3.2:
+  * Tracks were sometimes selected incorrectly when searching a
+    playlist
+  * Sometimes the main window wouldn't appear when minimizing to
+    the system tray
+  * More tags supported for MP4/M4A/FLAC/OGG files
+  * Locale bugs when executing --help
+  * Fixed plugins: librivox
+
+-------------------------------------------------------------------
+Sun Nov 18 00:00:00 UTC 2012 - propstmatthias@googlemail.com
+
+- Update to 3.3.1:
+  * Accessibility related fixes
+  * Dynamic playlists are now working correctly
+  * WMA files are properly supported now
+  * Playlist import is now more robust
+  * Internal tags (those starting with __) were clobbered when
+      being restored to playlists, so things like ratings and other
+      such things would disappear mysteriously. This is no longer
+      the case.
+  * Fixed plugins: ContextInfo, mini-mode, osd, last.fm
+
+-------------------------------------------------------------------  
+Sat Sep 29 00:00:00 UTC 2012 - propstmatthias@googlemail.com
+
+- Fix python-bytecode-inconsistent-mtime.
+
+-------------------------------------------------------------------
+Fri Sep 28 00:00:00 UTC 2012 - propstmatthias@googlemail.com
+
+- Fix wrong date in changes.
+- Fix wrong License in specfile.
+- Fix broken org.service for dbus daemon (contained buildroot).
+- Remove Windows-specific files from the original source.
+
+-------------------------------------------------------------------
+Fri Sep 28 00:00:00 UTC 2012 - propstmatthias@googlemail.com
+
+- Update to 3.3.0:
+  * Lots of threading issues which resulted in hangs during
+    playback and upon startup
+  * Sanitize passwords from stream URLs to keep them from being
+    displayed, submitted and stored
+  * Asynchronous cover fetching
+  * Escape XML-critical characters for ASX and XSPF playlist export
+  * Improved import of media from drag drops
+  * Tracks and playlist import from and export to arbitrary
+    locations (like network locations)
+  * Tracks are moved to the Trash by default if possible instead of
+    directly deleting them
+  * Various other small changes to make things behave more natural
+  * Revamped cover chooser (spinner as loading indicator¹,
+    thumbnail bar, cover details like source and size) and cover
+    manager (better threading, faster, more progress indication,
+    facelift)
+  * Implement automatic scrolling during drag operations
+  * Facelift and small improvements for the track properties dialog
+  * New button in the playlist notebook¹ (click for new playlist,
+    drop something on it to pre-fill the new playlist)
+  * Ability to add arbitrary markers to the playback progress bar
+    for jumping
+  * Ability to restore closed playlist tabs
+  * Completely new, provider-based menu system, some places not yet
+    ported (allows for easy customization and extension of menus
+    like e.g. rating and Last.fm Love/Unlove menu items)
+  * Playlist columns ported to the provider system
+  * Comments tag in the track properties and as playlist column
+  * New playlist column: scheduled playback time of tracks
+  * Add icons to the preferences dialogs and categories to the
+    plugins list
+  * Option to hide the main track info pane or only the cover widget
+    within
+  * Completely rewritten playlist API (cleaner, more flexible and
+    extensible, move and copy tracks arbitrarily between playlists)
+  * Intelligent playlist default naming (no duplicates, always takes
+    free name slots)
+  * Allow for randomizing a selection of tracks instead of only the
+    full playlist
+  * Playlist importers/exporters ported to the provider system (more
+    flexible, easily extendable with additional formats)
+  * Enhanced playlist recognition upon import (fast type detection,
+    file extension and slow type detection)
+  * Support relative paths in playlist import/export
+  * Method/CLI option to export the current playlist
+  * DBus service activation enabled
+  * Added method for pausing
+  * Added method/CLI option for formatted playback queries
+  * Support albumartist for MP3/MP4
+  * Properly read tags from files with non-ASCII names
+  * Properly read all available covers embedded in tags and keep
+    their information
+  * Proper handling of an arbitrary amount of covers embedded in tags
+    (cover fetching and track properties)
+  * A-B Repeat: repeat segment of a track by placing two markers on
+    the playback progress bar
+  * BPM Counter: manually set BPM per track
+  * Group Tagger: add custom labels to tracks and gather tracks by
+    these labels (via smart playlist filters)
+  * History: keep history of played tracks and export them to a
+    playlist
+  * Inhibit Suspend: prevent suspend on e.g. notebooks during playback
+  * Last.fm Loved Tracks: love/unlove tracks, see loved state of tracks
+  * Main Menu Button: moves the main menu into a single Chrome-like button
+  * OSD: formerly core, now completely rewritten with new options
+  * Preview Device: allows playing audio over a secondary device,
+    useful for DJs
+  * Wikipedia: information about the current artist
+  * Various fixes and improvements for other plugins
+
+-------------------------------------------------------------------
+Thu Oct 13 10:50:40 UTC 2011 - prusnak@opensuse.org
+
+- spec cleanup
+
+-------------------------------------------------------------------
+Sun Jul 24 00:00:00 UTC 2011 - propstmatthias@googlemail.com
+
+- update to 0.3.2.2
+  + We are now capable of using the external bsddb3 module if distributions disable
+    python2’s deprecated built-in bsddb support, as Arch Linux did recently.
+  + Compatibility with newer Ex Falso releases was restored to the Ex Falso plugin.
+  + Exaile no longer stops scanning when it encounters permissions errors
+
+-------------------------------------------------------------------
+Tue Feb 15 00:00:00 UTC 2011 - propstmatthias@googlemail.com
+
+- update to 0.3.2.1
+  + The shoutcast plugin has been removed from the default install, as shoucast has changed their API
+    and the new terms of service are not compatible with our license.
+  + The default lyrics provider was changed to lyricwiki, as lyricfly no longer works properly.
+  + A bug that prevented Exaile from running on very recent versions of pygobject was fixed.
+  + A bug preventing files from being added via the CLI was fixed.
+  + Prevent running as root
+  + fixed some minor issues
+
+-------------------------------------------------------------------
+Wed Jun 30 00:00:00 UTC 2010 - propstmatthias@googlemail.com
+
+- update to 0.3.2.0
+  + No new features since the rc, just a smattering of minor bugfixes.
+
+-------------------------------------------------------------------
+Tue Jun 01 00:00:00 UTC 2010 - propstmatthias@googlemail.com
+
+- update to 0.3.1.2
+  + Full python2.5 compatibility was restored
+  + A bug resulting in unexpected duplicate playlist entries was fixed
+  + Several stability and interface issues were resolved
+
+-------------------------------------------------------------------
+Wed May 19 00:00:00 UTC 2010 - prusnak@opensuse.org
+
+- cleanup spec file
+
+-------------------------------------------------------------------
+Sat Apr 13 00:00:00 UTC 2010 - propstmatthias@googlemail.com
+
+- update to 0.3.1.1
+  + an issue that could cause exaile to be unable to run without installing was fixed
+  + the tagger now only writes to changed files, not all selected files
+  + an edge case that could result in new playlists not being saved was resolved
+  + album shuffle now properly respects discnumber tags and double-digit tracknumber tags
+  + arguments passed to the installed exaile script are now properly quoted,
+    resolving issues with using filenames that had spaces or unusual characters in them.
+  + a number of additional minor issues were resolved
+
+-------------------------------------------------------------------
+Sat Mar 20 00:00:00 UTC 2010 - propstmatthias@googlemail.com
+
+- fixed exaile for opensuse 11.0
+
+-------------------------------------------------------------------
+Thu Mar 18 00:00:00 UTC 2010 - propstmatthias@googlemail.com
+
+- update to 0.3.1.0
+  + A completely revamped and much more powerful tag editor
+  + An equalizer!
+  + Collection panel should now be faster
+  + Better support for non-standard filename encodings
+  + A standalone lyrics pane plugin
+  + Plugins for DAAP music sharing support
+  + Better display of compilation albums
+
+-------------------------------------------------------------------
+Sun Nov 22 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- added patch exaile_p1_fix_sysconfwarn.patch
+  +uses settings.conf instead of settings.ini
+
+-------------------------------------------------------------------
+Sun Nov 22 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- removed MP in Release name
+- removed explicit requires
+- changed buildarch to noarch
+
+-------------------------------------------------------------------
+Wed Nov 11 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- update to 0.3.0.2:
+  +fixed 20 bugs
+- added librsvg and librsvg-devel requirements for building
+- fixed some errors in rpm found by prmlint
+
+-------------------------------------------------------------------
+Tue Nov 03 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- rebuild this version to fix some bugs
+
+-------------------------------------------------------------------
+Wed Sep 10 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- update to bug fix version of exaile
+- fixed 14 bugs from previous version
+
+-------------------------------------------------------------------
+Mon Aug 31 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- update to final release of exaile
+
+-------------------------------------------------------------------
+Wed Aug 19 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- update to 0.3.0b1
+
+-------------------------------------------------------------------
+Wed Jul 22 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- update to 0.3.0a3
+
+-------------------------------------------------------------------
+Tue Jun 02 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- switched to newest alpha
+
+-------------------------------------------------------------------
+Wed May 28 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- weekly build
+
+-------------------------------------------------------------------
+Wed May 14 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- new weekly build
+
+-------------------------------------------------------------------
+Mon May 11 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- used opensuse build service for building
+- made some changes in specfile
+
+-------------------------------------------------------------------
+Wed Apr 22 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- new weekly build
+
+-------------------------------------------------------------------
+Wed Apr 15 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- new weekly build
+
+-------------------------------------------------------------------
+Wed Apr 08 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- new weekly build
+
+-------------------------------------------------------------------
+Wed Apr 02 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- builded weekly build
+- added missing file to files list
+
+-------------------------------------------------------------------
+Wed Apr 02 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- fixed path to exaile.dektop
+- fixed Makefile
+
+-------------------------------------------------------------------
+Wed Apr 01 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- cleaned up the specfile
+- changed Distribution to Vendor
+- added BuildRoot
+- made package more suse conform
+
+-------------------------------------------------------------------
+Sun Mar 08 00:00:00 UTC 2009 - propstmatthias@googlemail.com
+
+- initial build for Opensuse 11.0

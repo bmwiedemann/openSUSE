@@ -1,0 +1,1176 @@
+-------------------------------------------------------------------
+Wed Apr  4 05:22:54 UTC 2018 - glin@suse.com
+
+- added rxvt-unicode-secondarywheel.patch from to add the new
+  option: secondaryWheel to enable mouse scrolling for the pagers,
+  e.g. less, man, vim, etc.
+
+-------------------------------------------------------------------
+Wed May 31 14:55:32 UTC 2017 - mrueckert@suse.de
+
+- added rxvt-unicode-hardening.patch: (boo# 1036456)
+  While urxvt is not directly affected by CVE-2017-7483. We add a
+  patch to harden urxvt to avoid similar bugs in the future.
+
+-------------------------------------------------------------------
+Mon Nov  7 08:30:16 UTC 2016 - mimi.vx@gmail.com
+
+- update to 9.22
+  - NOTICE: this release updates terminfo.
+	- add terminfo capabilities for various ctrl and shift-ctrl key variants
+        - fix longstanding core font encoding bug where some character
+          ranges could not be mapped from unicode to the font: affected
+          encodings are big5, gb2312, iso8859-8 (hebrew), jis0201 and
+          ksc5601 .
+        - fix crash when the number of columns is 1 and a 0 width character is inserted
+        - fix a crash when parsing an invalid color specification
+        - fix a buffer overflow in font name parser
+	- do not start blinking cursor if the window is unfocused
+	- change the width of underline and i-beam cursor to 2 pixels (based on
+	  a patch by Omar Sandoval).
+	- add pointerShape resource to change the mouse pointer shape
+	- a keysym resource for a key which is already bound to an
+	  action now properly rebinds the key.
+	- do not report mouse motion events if Shift is active
+	- put the alpha component last in responses to OSC color queries
+	- the key_press hook is now invoked before processing the
+	  event, as documented. This change was done in 9.21 but not
+	  announced and fixes debian bugs #511377, #531751 and red hat
+	  bug #1105069. Note that this change breaks a few scripts,
+	  such as mark-yank-urls, which rely on the previous buggy
+	  behaviour that urxvt processes the event (in particular
+	  keysym bindings) before invoking the hook.
+	- the tabbed extension now properly refreshes the active tab
+	  on a key press when the mouse pointer is outside the terminal
+	  window.
+	- add 'lookup_keysym' perl method to lookup the action bound
+	  to a key combination.
+	- a key combination bound to 'matcher:select' can now be used
+	  to cycle through the matches in matcher.
+        - change perl integer accessors (->width et al.) into mutators.
+
+-------------------------------------------------------------------
+Fri Jul 17 13:17:47 UTC 2015 - mrueckert@suse.de
+
+- move requires for the terminfo files from terminfo to
+  terminfo-base (boo #936332)
+
+-------------------------------------------------------------------
+Wed Jun 24 16:19:43 UTC 2015 - meissner@suse.com
+
+- install COPYING
+
+-------------------------------------------------------------------
+Tue Jun 23 14:37:52 UTC 2015 - mimi.vx@gmail.com
+
+- remove %{_terminfo}/r/rxvt-unicode 
+
+-------------------------------------------------------------------
+Tue Jun 23 11:18:45 UTC 2015 - meissner@suse.com
+
+- %clean section removed, moved makeinstall to %install
+
+-------------------------------------------------------------------
+Thu Jun 18 20:46:55 UTC 2015 - mimi.vx@gmail.com
+
+- update to 9.21
+    - fix pixel droppings on overdraw when a secondary core font has the
+          same height but different ascent.
+        - implement cvvis in terminfo as blinking cursor, to distinguish it
+          from cnorm (emacs uses cvvis which is commonly a blinking cursor).
+        - when xft support was compiled in, colour queries erroneously returned
+          premultiplied values, this also affected internal queries, for example
+          when calculating faded colour. alpha is now divided out when possible,
+          which is more correct but loses colour resolution.
+    - add DECSCUSR xterm extension to set the cursor to a vertical bar.
+    - add 'extension:string' action, and associated on_action perl
+      hook, for keysym resources that invokes actions provided by
+      perl extensions. The 'perl:string' action and
+      on_user_command hook are deprecated but still supported.
+    - add 'builtin-string' action for keysym resources that restores string
+      mappings for keys that have predefined actions in urxvt.
+    - add -k option to urxvtc for killing the daemon process.
+        - document urxvtd's -e/--eval option that was implemented in 9.16,
+          but not documented.
+    - add -dockapp option to make the wm treat urxvt as a dockapp.
+    - add -mc option and multiClickTime resource to set the maximum time
+      between multi-click select events (patch by Joe Peterson).
+    - new 'eval' extension to evaluate arbitrary perl code with keysym
+      bindings. The extension also provides methods that implement basic
+      actions, such as pasting selections and scrolling.
+    - the macosx-clipboard and macosx-clipboard-native extensions have been removed.
+    - kuake extension now uses the kuake.hotkey resource to specify the hotkey.
+    - new 'matcher:select' mode of matcher to iterate over the matches with the keyboard.
+    - the 'matcher:list' feature of matcher now honours the launcher
+      associated to a matched pattern.
+    - speed-up matcher underlining on very long lines (reported by Edward Z. Yang).
+    - fix up/down commands of searchable-scrollback so that they always move
+      to the previous/next logical line with a match, if any.
+    - searchable-scrollback resource has been deprecated (use keysym instead).
+        - extension parameter passing is deprecated (use resource mechanism instead).
+        - upgrade to GPLv3 (see COPYING).
+    - compile out of the box on Solaris 10, again.
+        - fix height and position of the stippled area in next scrollbar (patch
+          by Thomas Otto).
+        - fix off-by-one bug causing the iso14755 window not to jump out of the
+          way properly.
+    - fix crash that may happen if a lib to which urxvt is linked to calls setenv.
+    - fix memory leak in special_{encode,decode} perl methods.
+    - fix refresh bug that occurs when reverse video is set on a cell
+      containing a space and with the same bg and fg colour, red hat bug
+      #830236.
+        - fix crash that may happen if an x error is received after a terminal
+          window/popup has been destroyed already.
+        - removed superfluous 0 digit from sgr terminfo sequence.
+        - greatly improve colour allocation on colour-starved pseudocolour
+          displays to avoid read-write cells instead of simply failing
+          (this is only relevant for antique 8bpp frame buffers).
+        - do not free fade colours when not doing fading (this is likely
+          only relevant for antique 8bpp frame buffers).
+    - do not specialcase 2 or 4 colour visuals, leading to
+          simpler and actually more correct code.
+        - hopefully no longer leak colours on !truecolour visuals.
+        - use consistent method names (scr_recolour => scr_recolor).
+        - use simpler (but slightly less bogus) formula for nearest
+          colour choice (this is likely only relevant for antique 8bpp
+          frame buffers).
+        - remove fallback behaviour when initialising colours - the
+          behaviour was inconsistent between startup vs. later and
+          was only effective when valid colours couldn't be allocated.
+* add rxvt-unicode-9.21-xsubpp.patch to correct wrong harcoded patch in makefile
+* add rxvt-unicode-0001-Prefer-XDG_RUNTIME_DIR-over-the-HOME.patch
+* removed unused rxvt-unicode-remove_unused_attribute.patch
+
+-------------------------------------------------------------------
+Mon Jun 15 17:41:11 UTC 2015 - mrueckert@suse.de
+
+- sync categories in desktop files with xterm
+
+-------------------------------------------------------------------
+Sun Nov  2 02:18:07 UTC 2014 - crrodriguez@opensuse.org
+
+- Switch to individual pkgconfig() build requires 
+  instead of using metapackage xorg-x11-devel
+
+-------------------------------------------------------------------
+Tue Jun 10 15:01:39 UTC 2014 - mrueckert@suse.de
+
+- update to 9.20 (bnc#876101 CVE-2014-3121)
+  - (libptytty) fix bug that prevented urxvtd from writing utmp
+    entries when using --fork (reported by Ryan Kavanagh).
+  - security bugfix: window property values could be queried even
+    in secure mode (reported by Phillip Hallam-Baker).
+  - fix build when perl is enabled and fading is disabled.
+  - fix regression that broke continuous scrolling when pressing
+    and holding the scrollbar up or down button, gentoo bug
+    #493992.
+  - increase the maximum length of a command sequence to 32k bytes,
+    to allow longer OSC sequences (previous limit was 2k).
+  - new Ctrl-Meta-c and Ctrl-Meta-v bindings to interact with the
+    CLIPBOARD selection.
+  - new extension: selection-to-clipboard.
+  - the extensions macosx-clipboard and macosx-clipboard-native are
+    deprecated and will be removed in the next release.  Support
+    for the clipboard on OS X can be more generally enabled by
+    setting the XQuartz preference to sync the OS X pasteboard
+    and the X11 clipboard.
+- dropped rxvt-return-in-nonvoid-function.patch included upstream
+- refreshed patches:
+  old name: rxvt-unicode-9.14-CVE-2008-1142-DISPLAY.patch
+  new name: rxvt-unicode-9.20-CVE-2008-1142-DISPLAY.patch
+
+-------------------------------------------------------------------
+Fri Dec  6 20:54:24 UTC 2013 - dhall@wustl.edu
+
+- Add rxvt-return-in-nonvoid-function.patch: removes build failure
+  from not returning from nonvoid function
+- rename README.SuSE to README.SUSE for rpmlint
+
+-------------------------------------------------------------------
+Fri Dec  6 20:32:45 UTC 2013 - dhall@wustl.edu
+
+- added background perl module to files packaged
+
+-------------------------------------------------------------------
+Fri Dec  6 20:19:22 UTC 2013 - dhall@wustl.edu
+
+- update to 9.19
+  * work around perl 5.18.0 breakage in tabbed extension
+    (reported by Karol Blazewicz) and in pod (Dominic Hargreaves).
+  * fix regression that caused the double-click word selection to
+  * erroneously include a tab on the left of the selected word.
+  * implement FOCUS variable and focus_fade function in background
+    expression, to allow focus-sensitive background images.
+  * add support for the set cursor style (DECSCUSR) control
+    function.
+  * honour cursorColor also when the cursor style is underline.
+  * export some Color_xxx constants to Perl.
+  - 9.18
+    * fix regression that caused artifacts on resize.
+  - 9.17
+    * add shade operator in background perl extension.
+    * avoid starting or ending the selection in the middle of wide
+      characters to avoid artifacts (reported by Tiago Resende).
+    * fix artifacts that may occur if the character in the cursor
+      cell has width > 1 (reported by Tiago Resende).
+    * fix regression that causes artifacts on scrolling if
+      saveLines is 0 and the window is resized (reported by Bert
+      Münnich).
+    * fix build when perl is enabled and pixbuf and transparency
+      are disabled.
+  - 9.16
+    * the "so much new stuff your eyes will pop out" release.
+    * INCOMPATIBLE CHANGE: renamed urlLauncher resource to url-launcher.
+    * fix processing of DEC private mode save sequences (patch by Patrick
+      Hemmer).
+    * perl extensions now have their own manpages, installed as urxvt-NAME(1),
+      e.g. urxvt-background(1) - see urxvt-extensions(1) for a list.
+    * fix disabling of cursor blink with the option-popup menu (based on a
+      patch by Jan Larres).
+    * the font height is not augmented anymore when lineSpace is non zero.
+    * fix "new pagemap" vs. "delete pagemap" mismatch ([] vs. non-[]),
+      as diagnosed by clang.
+    * fix height mismatch between active and inactive cursor when
+      lineSpace is non zero (patch by Stanislav Seletskiy).
+    * make it compile with LOCAL_X_IS_UNIX again (reported by
+      nickfailure@gmail.com).
+    * completely redone background pixmap support - users can now
+      specify arbitrary expressions (And programs) that calculate
+      new terminal backgrounds. see the urxvt-background manpage
+      for details.
+    * xrender is now required for background pixmap support.
+    * perl extensions can now provide commandline switches and resources
+      which show up in -help etc.
+    * iso14755 51 mode window now displays row and column.
+    * implement a -visual switch and move that and -depth to frills, also
+      warn when we can't get the requested visual.
+    * new env variable: RXVT_PERL_LIB.
+    * allocate all screen memory in one go and let the virtual memory
+      subsystem sort it out. this simplifies code, improves access
+      locality, saves a bit of ram and makes things a bit faster, too.
+    * remove support for libafterimage.
+    * update to CVS version of libev, for a whopping 11kb size decrease.
+    * do not ship yet another copy of ecb.h, use the one in libev or
+      libptytty instead.
+    * selectively mark some methods as cache-hot/cache cold, which
+      might speed up execution but definitely decreases codesize.
+    * Fix regression that prevented the scrollbar trough color
+      from being applied (reported by Derek B. Noonburg).
+    * Fix the scrollbar size for rxvt style (patch by Mark Robinson).
+
+-------------------------------------------------------------------
+Sun Jan 22 02:11:41 UTC 2012 - pascal.bleser@opensuse.org
+
+- enable support for libstartup-notification
+- update to 9.15:
+  * finding a matching font (e.g. bold version of the base font) was broken
+  * fix parsing of bg image styles: they really work now
+  * fix blurring of bg image borders when using xrender
+  * fix xrender blur on common xrender implementations that do not behave
+    correctly when the same pixmap is used as source and destination in
+    composite operations
+  * fix regression that caused tabbed to compute the wrong size for tabs
+  * allow again an empty suffix in a keysym list spec
+
+-------------------------------------------------------------------
+Wed Dec 21 23:46:34 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 9.14:
+  * INCOMPATIBLE CHANGE: the urxvtd default socket path is now
+    $HOME/.urxvt/urxvtd-<nodename>
+  * INCOMPATIBLE CHANGE: the "list" keysym expansion now requires loading of
+    the "keysym-list" perl extension
+  * INCOMPATIBLE CHANGE: A scale value of 0 in the bg image geometry no longer
+    enables tiling, so as to make it possible to disable both scaling and
+    tiling
+  * overhaul of the bg image operations. The old operations have been
+    deprecated in favour of elementary operations and styles built on top of
+    the new operations and scale/position settings
+  * support for libafterimage is deprecated and will be removed in the next
+    release
+  * fix a crash caused by selection_check not properly resetting out-of-bounds
+    mark values (can happen when extending a selection while scrolling up in
+    curses programs for example)
+  * do not move the selection when scrolling up and the selection is outside
+    the scrolling region
+  * fix display of bold bright black
+  * fix memory leak when urgentOnBell is set
+  * fix a redraw bug that occurs when a bg pixmap is set and the wm does not
+    honour the size hints set by urxvt. Now urxvt forces the size of the
+    terminal window to be a multiple of the cell size
+  * sanitise the argument of SD / SU sequences. Fixes a possible crash when the
+    argument is big enough, red hat bug #711137
+  * correctly split long lines when scrolling
+  * urxvt now looks for perl extensions also in $HOME/.urxvt/ext
+  * add bell-command perl extension to execute a command when a bell event
+    occurs
+  * add set_urgency perl binding to set/reset the urgency hint
+  * consume button release event in matcher (exg)
+  * keyboard accessible list of recent matches in matcher
+  * properly process 'keysym' sequences in tabbed when using 'focus follows
+    mouse' and the focus is on the main window but not on the active terminal
+    window
+  * support for the freedesktop startup-notification protocol
+  * the direction of VPR and VPB commands was reversed
+  * fix alignment of inherited root pixmap when it is a different size than the
+    root window and the terminal window is off the left or top edge
+  * make $self visible in "eval perl expression" popup action, also handle
+    exceptions better
+  * fix parsing of '-e' when it occurs as an option argument, such as in 'urxvt
+    -title -e'
+
+- changes from 9.12:
+  * fix regression in processing of SelectionNotify events. urxvt would fail to
+    request a selection if the owner did not support the UTF8_STRING target
+  * fix rendering of double width chars in certain circumstances, more likely
+    to happen if urxvt is compiled with 256 colors support as urxvt runs out of
+    fonts much earlier then. Fixes gentoo bug #358151
+  * restore support for 'list' syntax in keysym resources
+  * always premultiply colour values - while this increases differences between
+    core fonts and xft, it is "more correct" in practical situations
+  * disable PTYTTY_REENTRANT option - not needed for urxvt and saves a bit of
+    code
+  * remove lucidatypewriter from the list of fallback fonts, it was the only
+    non-xft non-cellfont in the list anyway
+
+- changes from 9.11:
+  * remove 'list' syntax for keysym resources, as it serves no useful purpose.
+    If you need it, poke us and provide a use case
+  * fix alpha channel support. Premultiply alpha in colours if the visual
+    supports an alpha channel, as xrender expects premultiplied alpha
+  * fix reply to a selection request sent by an obsolete client such as
+    syncterm
+  * fix crash when the window is resized and the overlay is active
+  * match character-wise rather than byte-wise in selection extension again.
+    perl 5.8.9+ is required to avoid extreme slowdowns. Fixes debian bugs
+    #523072, #616463
+  * fix a possible crash if the INCR transfer process for a selection property
+    timeouts and at least one chunk is received
+  * work around a memory corruption bug in xorg's XrmSetDatabase (apparently
+    broken since http://lists.freedesktop.org/archives/xorg-commit-diffs/2004-March/000239.html)
+  * fix memory corruption bug when custom command sequences bound to keys were
+    injected into an already-full pty input buffer
+  * gdk-pixbuf is autodetected by default and preferred over libafterimage
+  * do not prepend a newline to the selection text when the starting line of
+    the selection is not highlighted
+  * don't swap perl env with real env, save and restore it, just in case we
+    ever get recursive perl invocations. also saves a bit of codespace with gcc
+  * fix various memory leaks
+  * fix typo in kIC terminfo capability, debian bug #446444
+  * document 'thickness' resource
+  * fix debian bug #504817, to the extent possible
+  * add support for previewing the pasted data in confirm-paste
+  * added "newlines to spaces" option in selection-popup
+  * revert to 38400 baud max., mission accomplished
+  * no longer create scary "pty_fill: PLEASE REPORT" message, instead, silently
+    drain the input (problem is well understood now)
+  * no longer swallow rob nation's own graphics mode commands
+
+-------------------------------------------------------------------
+Fri Apr 29 23:18:06 UTC 2011 - mrueckert@suse.de
+
+- run suse_update_desktop_file
+
+-------------------------------------------------------------------
+Fri Apr 29 21:55:39 UTC 2011 - mrueckert@suse.de
+
+- add desktop files (based on the desktop file from arch linux)
+  http://projects.archlinux.org/svntogit/packages.git/plain/rxvt-unicode/trunk/rxvt-unicode.desktop
+
+-------------------------------------------------------------------
+Fri Apr 29 21:29:52 UTC 2011 - mrueckert@suse.de
+
+- fix packaging of terminfo files
+
+-------------------------------------------------------------------
+Mon Dec 27 23:33:34 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to version 9.10
+  * fix minor memory leaks in urxvt and urxvtd
+  * fix regression in urxvtd that prevented options from being
+    correctly set
+  * implement xterm's horribly broken 1005 mouse reporting mode,
+    and an alternative 1015 mode that works in non-utf-8 locales
+    and has fewer limitations
+  * fix a possible bug where mouse notifications didn't work after
+    startup for the upper left corner
+  * implement our own pixbuf to pixmap rendering to get rid of
+    dependency on buggy gdk-pixbuf-xlib; only truecolor visuals are
+    supported
+  * apply tinting before shading when both operations are
+    requested: previously they were intermixed when lightening and
+    the result was inaccurate and confusing; note that now a black
+    tint yields a completely black image, regardless of shading
+  * avoid spurious redraws of the bg image when bg is transparent
+    or when using 'root' mode
+  * dynamically number options according to compiletime requirements
+
+-------------------------------------------------------------------
+Fri Dec 10 21:46:54 UTC 2010 - mrueckert@suse.de
+
+- reenable 256bit support:
+  the 256color support is a compile time option. so we provide 2
+  binaries now.
+
+  WARNING: you need a patched screen on < 11.4 to use the 256color
+  version.
+
+  - binaries come as <binname>-256color
+  - removed --with-term from the configure params.
+    each of the binaries will set correct TERM variable depending
+    on the compile time option
+  - added note to README.SuSE
+- spec clean up
+- added --enable-warnings to see the compiler warnings
+
+-------------------------------------------------------------------
+Fri Dec 10 19:25:29 UTC 2010 - mrueckert@suse.de
+
+- disable 256color support
+
+-------------------------------------------------------------------
+Fri Dec 10 18:25:04 UTC 2010 - mrueckert@suse.de
+
+- update to version 9.09
+  - NOTICE: this release updates terminfo/termcap.
+    - the bestest release ever.
+  - it was verified that urxvt handles µ and μ correctly.
+  - add support for blending and blurring with XRender
+    (Emanuele Giaquinta).
+  - add support for using gdk-pixbuf as image backend
+    (Emanuele Giaquinta).
+  - cleanup and minor fixes of the image code (Emanuele Giaquinta).
+  - new perl extension "confirm-paste" (Emanuele Giaquinta).
+  - new on_tt_paste perl hook and tt_paste perl binding (Emanuele
+    Giaquinta).
+  - new on_bell perl hook (Emanuele Giaquinta).
+  - searchable-scrollback no longer ignores the first line
+    (Emanuele Giaquinta).
+  - Use COMPOUND_TEXT encoding for WM_NAME/WM_ICON_NAME value when
+    it is not fully convertible to STRING (patch by James Cloos).
+  - fix a buffer overflow that would cause wrong key sequences to
+    be generated for numpad keys (introduced in 9.05).
+  - fix definition of sgr0 to work around limitations in luit.
+  - extend ISO 14755 5.4 mode to also print the font name of the
+    characters other than first one in the selected cell
+    (Emanuele Giaquinta).
+  - new iso14755 option to disable ISO 14755 at runtime
+    (Emanuele Giaquinta).
+  - make sure pagewise scrolling scrolls at least one line
+    (found by Mikachu).
+  - remove deprecated OSC 18 / 19 and make OSC 17 / 19 apply to
+    highlightColor / highlightTextColor (Emanuele Giaquinta).
+  - add highlightTextColor resource to change the foreground colour
+    of highlighted characters (Emanuele Giaquinta).
+  - make highlightColor apply also to selected cells with reverse
+    video but not to non selected cells with reverse video
+    (Emanuele Giaquinta).
+  - remove colorRV resource (it was enabled only with frills off).
+  - fix numlock handling, the most longstanding bug to date
+    (Emanuele Giaquinta).
+  - reduce the number of custom bits to 4, to make room for 256
+    colours.
+  - add support for 256 colors (Emanuele Giaquinta, Marc Lehmann).
+  - add rxvt-unicode-256color terminfo and use it by default in 256
+    colors mode.
+  - update rxvt-unicode terminfo to state 7744 colour pairs to
+    cover all 88*88 possible pairs.
+  - fix hang if DECAWM is not set and there are not enough columns
+    to insert a character (Emanuele Giaquinta).
+  - cub1 ("backspace") will now respect wrapping when past the
+    rightmost column, working around a shortcoming of most tty line
+    discipline's line editing.
+  - add support for grabbing the clipboard selection and extend
+    selection{_clear,_grab,} perl bindings to optionally work on
+    the clipboard selection (based on patch by Dana Jansens).
+  - no longer force CERASE to BACKSPACE - use the system default.
+    affects default value for VERASE only when no compatible
+    setting for backspacekey was given.
+  - use higher than 38400 baudrate setting, if detected.
+  - erase screen would clear to the wrong background when blinking
+    was enabled (which selects high intensity under some
+    circumstances).
+  - scr_kill_char didn't touch the line.
+  - upgrade and port to libev-4.01.
+- spec file clean up:
+  - removed old x handling
+  - removed unsupported configure options
+  - reorded configure options to use the same order as in the
+    configure output for easier matching
+- dropped rxvt-unicode-9.05.diff
+
+-------------------------------------------------------------------
+Wed Dec 30 10:41:46 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to version 9.07:
+  * maintenance release, fixing a large number of minor issues,
+    such as compilation problems that have been found since the
+    last release
+
+-------------------------------------------------------------------
+Thu Aug 13 15:53:07 UTC 2009 - puzel@novell.com
+
+- update to version 9.06:
+  - updates libev to 3.48.
+  - the aterm code now frees the as visual and image manager objects
+    when a window was closed.
+  - do not (wrongly) adjust the virtual line length inside
+    scr_insdel_chars/ERASE (Miroslav Lichvar).
+  - fix an issue where wide tab characters caused character shifts
+    when part of them was deleted (tracked down by Miroslav Lichvar).
+  - artificially enlargen the previous character at the end of a line
+    when trying to output a character that doesn't fit. looks ugly, but
+    makes copy&paste work.
+  - remove bogus "setuid/setgid security issues" from rxvt.1.pod, they
+    no longer apply.
+  - the urgency hint is now cleared on both focus in and focus out.
+  - cache urgency hint locally to avoid server rtt on every focus change.
+  - perl 5.10 needs PERL_SYS_INIT3 on hppa.
+  - ignore byte-order marks and do not treat them like combining characters.
+  - fix build issue when CURSOR_BLINK is not defined (Emanuele Giaquinta).
+  - do some µ-optimisations to the character fast path.
+  - use a less cunning, but more robust algorithm to avoid one terminal
+    monopolising the whole process by outputting a lot of text.
+  - try to work around linux first breaking sched_yield and now breaking
+    the only known workaround.
+  - new option -icon to set _NET_WM_ICON (based on patch by Frank Schmitt).
+  - initialise the as visual only on demand, instead of unconditionally,
+    to save memory in the common case of not using visual gimmicks.
+  - try to work around bugs in a few wm's that errornously resize
+    client windows on hint property updates by temporarily
+    disabling size hints.
+  - implement the DECSTR soft reset sequence and use it for tput init,
+    and make hard RIS and DECSTR both reset more private modes, such
+    as mouse reporting.
+  - redundantly clear mouse reporting and a few other states in
+    tput init/tput reset, for older urxvts.
+  - partial/full clear screens did cause flickering and possibly pixel
+    droppings when urxvt viewed the scrollback buffer.
+  - use current rendition style in DCH sequence.
+  - the 132/80 mode switch no longer forces a screen reset.
+  - add an osc sequence to change the border colour (Emanuele Giaquinta).
+  - new perl extension "overlay-osc", for status displays and the like.
+  - fix some minor cursor drawing issues with overlays by allowing
+    overlays to modify screen flags (to disable the cursor themselves).
+  - work around programs not restoring rstyle before rmcup
+    (analysed by Miroslav Lichvar).
+
+-------------------------------------------------------------------
+Tue Jun 16 11:49:44 CEST 2009 - coolo@novell.com
+
+- fix build
+
+-------------------------------------------------------------------
+Mon Aug 11 18:01:01 CEST 2008 - mrueckert@suse.de
+
+- update to version 9.05
+  - new option --cd/chdir to set the starting working directory.
+  - tabbed extension now starts in the "correct" working directory.
+  - work around fedora 9 providing isastream but not the relevant
+    header file for it (report by Tuncer Ayaz).
+  - upgrade libev, fixing a bug in the select backend with more
+    than 31 file descriptors on non-linux 64 bit systems.
+  - correctly reset the multibyte state to the initial one after
+    EILSEQ (patch by Neil Booth). This fixes the issue of
+    rxvt-unicode not properly displaying text after an illegal
+    sequence on NetBSD and probably other systems.
+  - more intelligent property handling with -pe tabbed, works
+    around broken window managers (kwm et al.), saves bandwidth and
+    should help working window managers as well.
+  - made tabs moveable (based on a patch by Petr Machata).
+  - implement ESC [ 3 K as a more rational alternative to ESC [ 0 K.
+  - support relative paths for RXVT_SOCKET in urxvtd.
+  - the tabbed extension now blindly copies over all (rxvt-)
+    resources from the toplevel window to the children.
+  - better diagnostic on 0x0 window geometries.
+  - update AnyEvent API to version 3.4 and above.
+  - document the default value of :0 for DISPLAY.
+  - rename perl method XChangeWindowProperty to XChangeProperty.
+
+-------------------------------------------------------------------
+Mon Aug 11 17:28:46 CEST 2008 - mrueckert@suse.de
+
+- added rxvt-unicode-9.02-CVE-2008-1142-DISPLAY.patch: (bnc#415661)
+  do not fallback to :0 if $DISPLAY is not set
+
+-------------------------------------------------------------------
+Fri Feb 29 00:58:29 CET 2008 - mrueckert@suse.de
+
+- update to version 9.02
+  - the "exg makes everybody happy" release.
+  - fix build with !xft.
+  - always compile in plain style scrollbar.
+- additional changes from 9.01
+  - be more aggressive about handling X events, this seems to be
+    required with newer xlibs (should fix the "screen stays black
+    until event is received" problem, again :)
+  - add buffered resource to control xft double-buffering.
+- additional changes from 9.0
+  - fix a crash bug where urxvtd would crash when urxvtc was called
+    with wrong arguments (I wish debian maintainers in general
+    would report bugs and their proposed fixes to the original
+    package maintaienrs instead of sitting on them for good measure
+    to see if anybody notices).
+  - drawing xft compose characters was causing garbage to be drawn.
+  - correctly clear xft character background in all cases.
+  - implement bracketed paste mode (xterm private mode 2004).
+  - improve documentation on alpha channel handling, make urxvt
+    work better on servers lacking the RENDER extension when alpha
+    channels or background images are used.
+  - check for refresh after initialising to avoid staying blank
+    till the first event arrives. or so.
+  - the FORCE_UNBUFFERED_XFT feature macro works again.
+  - continuously update transparency while moving/resizing now.
+  - OSC 39/49 are deprecated and aliased to OSC 10/11.
+  - cub1 now acts as advertised (and ignores the "wrapped" state).
+  - the 132/80 mode switch now forces a height of 24, too, and
+    resets the terminal.
+  - scrollbar code cleanups.
+  - stopping children is no longer confused with children exiting.
+  - removed (undocumented) #aarrggbb format.
+  - updated to libev 3.0.
+- additional changes from 8.9
+  - fix the issue where urxvtd would not immediately close a window
+    when the command exited but only on the next X event.
+  - changed terminfo file not to use application keypad mode.
+  - fix the issue where making a selection in one urxvtd window
+    would not clear it visually in another.
+  - fix an issue of urxvt not getting background pixmap updates and
+    flickering after bg pixmap changes (reported by Mikachu).
+  - fix redraw bug in xterm scrollbar with -sr
+    (reported by Mikachu).
+  - correctly provide dependencies for libev (µikachu).
+  - minor code reorganisations and cleanups.
+  - be more robust in case the urxvt-popup extension cannot be
+    loaded.
+
+-------------------------------------------------------------------
+Sun Dec 23 17:42:24 CET 2007 - mrueckert@suse.de
+
+- update to version 8.8
+  - option -C was aliased to all unsupported options, activating
+    options that shouldn't be compiled in, leading to interesting
+    effects.
+  - updated libev, working around a bug in linux 2.4, curing the
+    symptom of urxvt not closing its window on shell exit. also
+    fixes a problem with urxvt not refreshing.
+  - the text blink callback was called even when no blinking text
+    was visible.
+  - pre-8.4 slipwheeling behaviour has been reinstated, with some
+    minor improvements.
+  - streamlined x events processing to only flush once per display
+    and not once per terminal window.
+  - quite a bit of minor code cleanups and codesize optimisations.
+
+-------------------------------------------------------------------
+Tue Dec  4 16:42:15 CET 2007 - mrueckert@suse.de
+
+- update to version 8.7
+  - update libev with an important bugfix that would cause crashes
+    when closing windows (when using rxvtd, and update is
+    recommended).
+  - do not compile in the block builtin graphics with
+    --disable-frills.
+- additional changes from 8.6
+  - upgrade libev to disable kqueue on anything but netbsd as it
+    seems to be broken everywhere else w.r.t. ptys.
+  - allow for spurious event notifications, as at least epoll and
+    especially solaris ports like to lie about them (symptoms:
+    urxvt "hangs" until there is some x11 related activity).
+  - -keysym command line options are now subjected to xlib parsing.
+  - add 'xrm' option analogous to Xt one.
+- additional changes from 8.5a
+  - make it compile with --disable-transparency.
+
+-------------------------------------------------------------------
+Wed Nov 21 10:08:37 CET 2007 - mrueckert@suse.de
+
+- require the terminfo package (#329137,#342086)
+- update to version 8.5
+  - expect major portability issues in this release: please test
+    and report.
+  - converted from the veritable io manager event loop to the high
+    performance libev (http://software.schmorp.de/pkg/libev).
+  - minor tuning to the perl selection (include single words and
+    more quoting chars).
+  - fix memory leak in pixmap code.
+  - fix a serious bug while setting the XIM destroy callback on
+    (typical) 64 bit systems.
+  - automove-background functionality re-implemented internaly
+    using :root op in pixmap geometry string. For example: rxvt
+    -pixmap "image.jpg;:root"
+  - do not link rxvtc against every lib on the planet anymore.
+  - parallel builds should work once more.
+- removed rxvt-unicode-7.7_missing_sentinel.patch:
+  upstream fixed it differently
+- no longer run autogen.sh
+
+-------------------------------------------------------------------
+Sat Oct 27 23:39:44 CEST 2007 - mrueckert@suse.de
+
+- update to version 8.4
+  - overhaul of the transparency/pixmap code (sasha).
+  - fix possible race betwen visual bell and poweron.
+    (reported by Martin von Gagern, gentoo?).
+  - rxvt -e no longer crashes the child.
+  - fixed some minor memleaks on incorrect usage or
+    missing DISPLAY.
+  - implement xterm 1002/1003 mouse tracking modes (exg).
+  - source code organisational cleanups (exg).
+  - updated io_manager.
+- additional changes from 8.3
+  - new option: skipScroll/-ss, enabled by default.
+  - go with the times and expect x11 library files in /usr/lib, not
+    /usr/X11R6/lib.
+  - initial transparency improvement/afterimage support patch by
+    Sasha Vasko.
+  - add urgentOnBell resource to set the urgency hint (patch by
+    Philip Paeps).
+  - do not process focus events caused by grabs (patch by Mikachu).
+  - add iso14755_52 resource to disable iso14755 5.2 (exg).
+  - add binding for backspace in iso14755 5.1 to remove the last
+    digit (exg).
+  - better option handling, support more than 30 options (exg).
+  - nuke reconf script, serves no purpose anymore.
+  - fixed and documented matcher/on_user_command processing in
+    matcher extension (tpope).
+  - compile out of the box on Solaris 10 (exg).
+  - fix MappingNotify events (reported by Stephan Walter).
+  - zero-initialise mwmhints, this seems to solve all sorts of
+    minor problems.
+- removed rxvt-unicode-8.3_transparent_terminal.patch:
+  obsoleted by the rewrite of the transparency code
+
+-------------------------------------------------------------------
+Tue Aug 28 17:37:07 CEST 2007 - mrueckert@suse.de
+
+- added rxvt-unicode-8.3_transparent_terminal.patch: (#153423)
+  fix disappearing window decorations with metacity
+  (patch by Emanuele Giaquinta <exg@irssi.org>)
+
+-------------------------------------------------------------------
+Thu Aug 23 02:20:32 CEST 2007 - mrueckert@suse.de
+
+- added a README.SuSE: (#231855)
+  Explain how to enable colored bold/underline on urxvt.
+
+-------------------------------------------------------------------
+Sun Aug  5 16:52:30 CEST 2007 - mrueckert@suse.de
+
+- fix rpmlint warnings:
+  * package scripts from doc dir in examples/
+  * add rpmlintrc for the scripts in %{_libdir}/%{name}
+
+-------------------------------------------------------------------
+Sat Aug  4 10:01:30 CEST 2007 - mrueckert@suse.de
+
+- update to version 8.2:
+  - new option: skipScroll/-ss, enabled by default.
+  - go with the times and expect x11 library files in /usr/lib, not
+    /usr/X11R6/lib.
+  - initial transparency improvement/afterimage support patch by
+    Sasha Vasko.
+  - add urgentOnBell resource to set the urgency hint
+    (patch by Philip Paeps).
+  - do not process focus events caused by grabs (patch by Mikachu).
+  - add iso14755_52 resource to disable iso14755 5.2 (exg).
+  - add binding for backspace in iso14755 5.1 to remove the last
+    digit (exg).
+  - better option handling, support more than 30 options (exg).
+  - nuke reconf script, serves no purpose anymore.
+  - fixed and documented matcher/on_user_command processing in
+    matcher extension (tpope).
+  - compile out of the box on Solaris 10 (exg).
+  - fix MappingNotify events (reported by Stephan Walter).
+  - zero-initialise mwmhints, this seems to solve all sorts of
+    minor problems.
+- remove upstreamed patches:
+  rxvt-unicode-8.2_missing_stdlib_h.patch
+  rxvt-unicode-ptytty.patch
+
+-------------------------------------------------------------------
+Tue Apr  3 22:05:42 CEST 2007 - mrueckert@suse.de
+
+- fixed order of changelog entries
+
+-------------------------------------------------------------------
+Fri Feb 23 16:35:33 CET 2007 - mrueckert@suse.de
+
+- modified fix-x-locale-detection-x11r7.patch to use the same fix
+  as rxvt-unicode-ptytty.patch. new name is
+  rxvt-unicode-8.2_missing_stdlib_h.patch
+  This change obsoletes rxvt-unicode-7.7_utmp_including.patch.
+- removed rxvt-unicode-7.7_gcc-warnings.patch
+
+-------------------------------------------------------------------
+Sun Feb 18 20:27:16 CET 2007 - mrueckert@suse.de
+
+- update to version 8.2:
+  - fix make depend in src/, reported by exg.
+  - fixed typo in urxvt::GET_CUSTOM, causing the result to be
+    wrong. (patch by Sergey Vlasov).
+  - unbundled iom perl interface somewhat.
+  - scrollbar-xterm now uses the selected scrollColor instead of
+    fg (found by Aiviru).
+  - disabled linux kernel bug workaround again: disabling it
+    gives a 50% speed hit on affected machines, while enabling
+    it gives a similar speed hit to screen, which is likely the
+    more common case to work around for :/
+  - urxvt::rend2mask perl function, and utilization of it by
+    matcher (patch by Moshe Kamensky).
+  - use perl:matcher on a keysym to open most recently displayed
+    URL.
+  - with matcher, when multiple patterns match, last wins, not
+    first.
+  - fix make and make install with srcdir != builddir.
+  - updated bundled libptytty to fix a bug where the tty would be
+    kept open (see the libptytty ChangeLog for details).
+  - delay setting the IUTF8 flag to after the tty settings have
+    been set so its value does not get lost (reported and analysed
+    by Andrei Paskevich).
+  - rip out support for obsolete sgtty.h interface.
+  - rip out support for non-POSIX termios variants.
+  - update libptytty.
+  - update iom.C, make it call ptytty::sanitise_stdfd on init.
+  - when !XFT, change rounding of colours to use a less correct
+    formula to meet user expectancies (#aaa becomes #a000a000a000
+    not #9f9f9f9f9f9f).
+  - change the starting offset of the pixmap set with
+    backgroundPixmap from (50,50) to (0,0).
+  - fix a typo in button_release, now meta-button2 request the
+    value of the Clipboard selection as it should (patch by Serge
+    Koksharov).
+  - fix a bug in drawing a cell with a nonspacing char when using
+    an xft font with inheritPixmap and tintColor.
+
+-------------------------------------------------------------------
+Wed Jan 17 18:58:07 CET 2007 - mrueckert@suse.de
+
+- update to version 8.1:
+  - fix the assumption that chars < 256 are single-width. Now only
+    assume this for codepoints 32 to 126 (reported by Dai.H.).
+  - $term->strwidth returned wide chars as width 1, because some
+    jerk confused min and max. Fixing this also fixes xim-onthespot.
+    Reported by Takano Akio.
+  - secondaryScroll is now enabled by default (as per the manpage),
+    reported by exg.
+  - correct the description of [percent]color rgba format in the
+    manpage.
+  - incorporated macosx-clipboard extension by Samuel Ljungkvist.
+  - ignore (some) useless focus events. (reported by mmc)
+  - updated compose table to unicode 5.0.0.
+
+-------------------------------------------------------------------
+Fri Nov  3 02:38:56 CET 2006 - mrueckert@suse.de
+
+- uptdate to version 8.0:
+  Combining characters will no longer erase the characters below
+  them. Font bold/italic morphing will not be applied to
+  manually-specified fonts. A crash when using non-UTF-8 locales
+  (e.g. C) has been fixed. The powerful "matcher" extension now
+  replaces mark-urls. The outline cursor color is now correct;
+  starting urxvtc in an inaccessible directory no longer crashes
+  urxvtd.
+
+-------------------------------------------------------------------
+Mon Aug 14 13:28:01 CEST 2006 - mfabian@suse.de
+
+- fix configure.ac test for working Xlocale (makes XIM work again).
+
+-------------------------------------------------------------------
+Fri Aug 11 20:53:39 CEST 2006 - mfabian@suse.de
+
+- move stuff from /usr/X11R6/ to /usr/ (because of X11R7).
+
+-------------------------------------------------------------------
+Mon Aug  7 22:15:26 CEST 2006 - mrueckert@suse.de
+
+- Update to version 7.9:
+  * fix the crashing bug people encountered with 7.8 + urxvtd +
+    perl + transparency. Oight to fix debian bug #380348.
+  * fix urxvtc.1.pod: it actually claimed -pty-fd would not work.
+    But it does! :->
+  * rxvt_fatal() in case the locale string is too long for our
+    static buffer.
+  * fixed many, many, typos in the manpages (patch supplied by ves)
+
+
+-------------------------------------------------------------------
+Mon Aug  7 03:27:38 CEST 2006 - mrueckert@suse.de
+
+- added -DXPM_INC_X11=1 to the CFLAGS so we properly link with xpm
+  on 10.2 and newer
+- a little bit spec file cleanup
+
+-------------------------------------------------------------------
+Thu Jul 20 17:55:56 CEST 2006 - mrueckert@suse.de
+
+- Update to version 7.8:
+  This release primarily fixes a lot of bugs but also adds a few
+  minor features: unlike Xt and previous versions, rxvt-unicode
+  now always reads $HOME/.Xdefaults, a kuake-like extension has
+  been added, Xft and X11 colours now agree (this fixes colour
+  banding effects), hilightcolour-support has been re-enabled,
+  the "depth" resource is now respected, several Debian patches
+  have been integrated, and double-buffered Xft is now
+  configurable via features.h. Many minor bugs have been fixed.
+
+- WARNING this version seems to have a broken daemon mode (urxvtd)
+
+-------------------------------------------------------------------
+Thu Jul 20 17:14:50 CEST 2006 - schwab@suse.de
+
+- Fix broken configure check.
+
+-------------------------------------------------------------------
+Mon Jul 17 18:07:42 CEST 2006 - mrueckert@suse.de
+
+- added rxvt-unicode-7.7_utmp_including.patch:
+  UTMP_FILE is defined in /usr/include/utmp.h
+  if you want to check for it, you have to include it before
+  checking for it.
+
+-------------------------------------------------------------------
+Tue May 23 13:54:30 CEST 2006 - mrueckert@suse.de
+
+- No longer install the terminfo file. It is part of the terminfo
+  package now.
+
+-------------------------------------------------------------------
+Tue May 16 20:19:43 CEST 2006 - mrueckert@suse.de
+
+- Update to version 7.7
+  o use double-buffered drawing (xft fonts only). On many
+    driver/hardware combination this actually increases xft
+    drawing speed, at the expense of more network bandwidth and
+    slight nausea on the side of the author.
+  o readline perl extension now requires shift-click instead of
+    a normal click, and eats the click.
+  o tabbed perl extension now supports -e.
+  o disabled graphics-exposures on the main drawing GC, report
+    any refresh bugs please.
+  o improve property handling for -pe tabbed: avoid unnecessary
+    property changes (for kde's benefit) at the expense of extra
+    round-trips, improve size hint setting.
+  o modified XIM according to a patch sent by Takano Akio that
+    sets the preedit rectangle for OverTheSpot, which helps some
+    input methods to correctly position their preedit window.
+  o un-optimise the line clearing on newly scrolled-in lines a
+    bit: the former reasoning was that any fg colour on default bg
+    looks the same in empts spaces, but thats not true when
+    reversing (e.g.  selection), so also check for matching fg
+    colours. This fixes the problem where selecting newly
+    scrolled-in lines would exhibit wrong colours.
+  o fix a bug in the perl interface causing focus in events to
+    generate focus out perl events, causing bad focus effects
+    with -pe tabbed.
+  o fix a race resulting in a crash on exiting.
+  o fix a with --disable-xft that caused xfreecolors to be called
+    on colors never allocated, resulting in aborts
+    (reported by Paco-Paco).
+  o resources on non-initial screens weren't refetched correctly
+    (reported by Paco-Paco).
+  o fix a bug in xcopyarea pass and _disable_ it, as it seems not
+    to be working in either rxvt-unicode nor in the original rxvt.
+  o removed undocumented -exec alias for the -e option.
+
+- Additional changes from 7.6:
+  o changed interpretation of [alpha] colour prefix.
+  o +option now really sets the option to default, instead of
+    using the resource value.
+  o options that require an argument now really _require_ an
+    argument.
+  o the tabbed extension now forwards focus and keys events to
+    th relevant tab window.
+  o tab colours are now configurable and have sensible defaults
+    (initial patch by hednod).
+  o option menu is extendable, readline, selection and selection-
+    autotransform can now be disabled/enabled at runtime.
+  o forcing a configure event to tabbed subwindows with -pe
+    tabbed, for the benefit of automove-background.
+  o the automove-background extension added a wrong constant
+    offset.
+  o force refresh of XA_RESOURCE_STRING on virtual reconnect.
+  o return exit status 2 in urxvtc when urxvtd couldn't be
+    contacted.
+  o the linux yield hack is back, now using usleep, and enabled
+    only on __linux__.
+  o further round trip eliminations in the !XFT case by
+    remembering the colour components.
+  o plain scrollbar works better with -sr.
+  o fixed half-shadow scrollbar look.
+  o more colour rtt optimisations.
+  o properly(?) free colours on window close.
+  o reorganised the FAQ into multiple sections.
+  o add ISO646.1991-IRV to the list of supported codesets.
+  o minor libptytty update.
+
+-------------------------------------------------------------------
+Wed Mar 01 11:17:02 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(xorg-x11:ja;ko;zh)".
+
+-------------------------------------------------------------------
+Tue Jan 31 23:41:13 CET 2006 - mrueckert@suse.de
+
+- Update to version 7.5
+  o further improvements to the careful mode detection, and font width
+    detection:
+    o fully double-wide fonts will now be correctly treated,
+    o overlap detection was improved.
+    o detect totally broken fonts (usually synthesized by xft).
+    o careful mode forced refresh sometimes clashed with blinking,
+      causing unnecessary screen redraws.
+  o better handling of XFT combining characters.
+  o enable antialiasing for some replacement fonts, as they
+    might get used for other encodings which really need it, later.
+  o remove spacing=100 from all default fonts, as this creates totally
+    weird spacing (5 times normal) with xft.
+  o removed iso10646 fallback, as xorgs iso10646 encoded fonts are mostly
+    broken.
+  o removed gnu unifont fallback, all combining characters are broken.
+  o replace named colours by xorg's rgb.txt equivalents, to
+    reduce round trip time on startup, and short-cut allocation
+    of rgb:rr/gg/bb for xft.
+  o short-cut allocation of rgb values in the xlib case
+    (patch by Paco-Paco).
+  o overhauled color management: smaller codesize, alpha support.
+  o support "rgba:rrrr/gggg/bbbb/aaaa" color specifications and
+    an "[alpha]" prefix.
+  o try to work around Xft and Xrender forcing everything to be 100%
+    transparent. Long Live Xft!
+  o do not include X11/Intrinsic.h anymore, directly use
+    Xlib/Xutil/Xresource directly.
+  o try to find a nearest matching color when color allocation fails
+    on a pseudocolor screen.
+  o SYNCCVS: compared to rxvt-cvs 2006-01-28, no relevant changes.
+  o fix version report (DA) (which was unfortunately broken).
+  o changed version number report again, now to emulate xterm closer.
+  o added the OSC sequence 702 to detect the urxvt version number.
+  o small configure updates.
+  o further RTT optimisations.
+
+- additional changes from 7.4
+  o screen background wasn't always erased properly when scrolling,
+  o re-enabled clearing optimisation disabled in 7.4pre.
+  o small configure updates for libptytty.
+  o fixed version options: line output.
+  o removed stoopid debugging message left in the code.
+
+-------------------------------------------------------------------
+Fri Jan 27 13:01:49 CET 2006 - mrueckert@suse.de
+
+- update to 7.3
+  o don't let iso14755 or mouse reporting get into the way of perl
+    (could lead to global grabs never being cleared).
+  o experimental OnTheSpot editing support (-pe xim-onthespot).
+  o moved Shift-Button2 paste combination to Meta-Button2.
+  o the cutchars resource will now be respected and used by the
+    selection extension.
+  o added the "remote-clipboard" extension which just runs
+    external commands to fetch and store the selection data.
+  o added -depth switch that tries to get a different visual depth
+    than the default (replaces the old PREFER_24_BIT logic).
+  o removed (unused) arabic presentation form composing sequences.
+  o be more strict when deciding that a core font glyph is too
+    wide and needs the careful rendering mode.
+  o allow more leeway for italic fonts when deciding that a
+    character is too wide and needs careful mode.
+  o redraw even more characters around characters using careful
+    mode.
+  o made selection-pastebin fully asynchronous.
+  o reduced number of server turnarounds at startup by allocating
+    atoms only once per display.
+  o renamed on_keyboard_command to on_user_command.
+  o changed version sos (ESC [ > c) response to be more compatible
+    with xterm.
+
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:17 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 02:31:26 CET 2006 - mrueckert@suse.de
+
+- update to version 7.2
+
+-------------------------------------------------------------------
+Thu Jan 19 22:28:50 CET 2006 - mrueckert@suse.de
+
+- update to version 7.1
+- removed rxvt-unicode-5.6-configure.in.patch
+- added rxvt-unicode-7.1_gcc-warnings.patch to fix at least the
+  "is used uninitialized"
+
+-------------------------------------------------------------------
+Sat Jan 14 00:22:59 CET 2006 - mrueckert@suse.de
+
+- updated to 7.0
+- removed rxvt-unicode-security.patch. we have seteuid/setegid
+  so the path isnt even used.
+- updated xpm patch for 7.0
+
+-------------------------------------------------------------------
+Tue Jan 10 17:48:39 CET 2006 - lmichnovic@suse.cz
+
+- added 3 patches
+  rxvt-unicode-always_true_if.patch
+  rxvt-unicode-xpm_buildhack.patch (reenabled --with-xpm flag)
+  rxvt-unicode-security.patch (from package rxvt)
+
+-------------------------------------------------------------------
+Sun Jan  8 02:39:00 CET 2006 - mrueckert@suse.de
+
+- reenabled old meta key behavior.
+- disabled xpm background until i fixed the build
+- install into /usr/X11R6
+
+-------------------------------------------------------------------
+Thu Jan  5 01:12:56 CET 2006 - mrueckert@suse.de
+
+- Update to version 6.3
+ - bugfixes
+ - perl support
+- added a small patch to fix a missing return statement
+- added -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Mon Jan  2 23:27:58 CET 2006 - mrueckert@suse.de
+
+- Update to 6.2
+  - improved terminal handling with even fewer resource usage.
+  - many small bug fixes.
+
+-------------------------------------------------------------------
+Sat Dec 17 23:23:39 CET 2005 - mrueckert@suse.de
+
+- Update to version 5.9
+ - fixed signal handling in urxvtd
+ - if fontconfig returns invalid fonts abort with error message
+   instead of just crashing.
+ - initialize menu properly
+
+-------------------------------------------------------------------
+Tue Dec  6 19:45:34 CET 2005 - mrueckert@suse.de
+
+- Applied small patch to fix a problem in current fontconfig.
+  Instead of crashing it exists with a nice error message now. ;)
+
+
+-------------------------------------------------------------------
+Wed Oct 26 15:05:11 CEST 2005 - mrueckert@suse.de
+
+- Update to version 5.8
+
+-------------------------------------------------------------------
+Wed Jul 13 11:59:31 CEST 2005 - mrueckert@suse.de
+
+- Update to version 5.7
+
+-------------------------------------------------------------------
+Wed Jun  8 19:19:29 CEST 2005 - mrueckert@suse.de
+
+- Started package with version 5.5.
+

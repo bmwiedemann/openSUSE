@@ -1,0 +1,458 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:36:49 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Nov 14 12:26:54 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.0.1 (jsc#SLE-8163, FATE#324347):
+  + Element::remove_attribute(): Delete the C++ wrapper
+    (bgo#768404).
+
+-------------------------------------------------------------------
+Tue Feb  2 13:03:04 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.0.0:
+  + This release is identical to the unstable 2.91.3, except for
+    the so name, which has now been bumped (bgo#760574).
+- Rename libxml++-3_0-0 subpackage to libxml++-3_0-1, following
+  upstreams soname bump (also in baselibs.conf).
+
+-------------------------------------------------------------------
+Tue Jan 12 22:16:42 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.91.3:
+  + Element: Remove a redundant nullptr check (bgo#757515).
+  + Use scoped enums (enum class) instead of unscoped enums.
+  + Document: Test for nullptr in a constructor.
+  + DomParser: Make operator bool() explicit.
+  + The ABI and API are not identical to libxml++ 2.91.2.
+
+-------------------------------------------------------------------
+Fri Nov 27 21:35:14 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.91.2:
+  + Remove the preprocessor constant LIBXMLCPP_EXCEPTIONS_ENABLED.
+    It was always 1.
+  + Add a config-time test for support of std::exception_ptr. Don't
+    try to use std::exception_ptr on a system where it does not
+    exist. This includes re-implementing the wrapped_exception
+    class and the raise() and clone() methods in xmlpp::exception
+    and its subclasses (bgo##757042).
+  + The ABI is not identical to that of libxml++ 2.91.1. There may
+    be more changes in ABI and/or API before the first stable
+    libxml++-3.0 release.
+- Changes from version 2.91.1:
+  + Renamed ABI from libxml++-2.6 to libxml++-3.0.
+  + This requires applications to change their pkg-config check to
+    libxml++-3.0 when they wish to use libxml++ 2.9x or 3.x instead
+    of libxml++2.x. (bgo#754673).
+  + There may be more changes in ABI and/or API before the first
+    stable libxml++-3.0 release.
+  + Node: Add const_NodeList and use it in a const version of
+    get_children().
+  + Add const_NodeSet and use it in a const version of find().
+  + Replace xmlpp::NodeSet by xmlpp::Node::NodeSet.
+  + Element: Add const_Attribute_list and use it in a const
+    version of get_attributes() (bgo#338907).
+  + Document: Add a non-const version of get_root_node(). Let the
+    const version return a const pointer (bgo#632522).
+  + Element: Add a non-const version of get_attribute(). Let the
+    const version return a const pointer (bgo#632524).
+  + Replace the deprecated std::auto_ptr by std::unique_ptr
+    (bgo#753123).
+  + DomParser: The default behaviour is to throw both parse errors
+    and validity errors in an exception instead of printing some
+    messages on stderr.
+  + Parser: Some protected data has become private.
+  + Several classes: Some virtual methods have become non-virtual,
+    and some non-virtual methods have become virtual.
+  + Remove class xmlpp::wrapped_exception and the deprecated
+    classes Schema and SchemaValidator.
+  + xmlpp::exception and its subclasses: Remove Raise() and
+    Clone().
+  + SaxParser: Start each parsing with a new Document for entity
+    resolution.
+  + Move all Node::add_child*() methods to Element and rename them
+    to add_child_element*().
+  + Attribute: Move set_value() to AttributeNode.
+  + Use std::string instead of Glib::ustring for filenames.
+  + Node: Replace remove_child() by remove_node().
+  + Move some code from DtdValidator to Dtd.
+  + Element: Rename set/get_child_text() to
+    set/get_first_child_text().
+  + Rename subpackages following upstreams soname bump.
+  + Bump version in baselibs.conf.
+
+-------------------------------------------------------------------
+Wed Sep 30 13:53:32 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.40.0:
+  + Build improvements.
+
+-------------------------------------------------------------------
+Sat Sep  5 19:36:42 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.39.2:
+  + SaxParser: Fix “double free or corruption” if a std::exception
+    is thrown by a handler method.
+  + Replace some (deprecated in C++11) std::auto_ptr by
+    std::unique_ptr. There are still some auto_ptrs in header files
+    bug replacing them would break ABI (bgo#753123).
+
+-------------------------------------------------------------------
+Sat Jul 25 12:50:39 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.39.1:
+  + Use (and require) C++11.
+
+-------------------------------------------------------------------
+Thu Jul 23 22:57:50 UTC 2015 - zaitor@opensuse.org
+
+- Run spec-cleaner, make spec more modern.
+- Replace glibmm2-devel and libxml2-devel for their pkgconfig()
+  equivalents.
+
+-------------------------------------------------------------------
+Mon Jun  8 10:49:53 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.38.1:
+  + Fix the build with C++11 compilers, such as MS Visual C++ 2013.
+    Implicit conversions from streams to bool are no longer
+    allowed.
+  + Build:
+    - Disable deprecated API in dependencies if
+      --enable-warnings=fatal.
+    - Require libxml2 2.7.7 or later.
+
+-------------------------------------------------------------------
+Fri Feb 27 18:46:36 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.38.0:
+  + No changes from last relase, stable version bump only.
+
+-------------------------------------------------------------------
+Wed Jan 28 10:00:10 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.37.2:
+  + Add version information to libxml++config.h.
+  + Document: Avoid possible null pointer dereference (bgo#732604).
+  + Element::set_namespace_declaration(): Update the node's
+    associated namespace. Add dom_update_namespace example program
+    (bgo#737682).
+  + Add Node::add_child_with_new_ns() (bgo#737682).
+  + Schema: Don't use null pointers in get_name(),
+    get_target_namespace() and get_version().
+  + Add XsdSchema and XsdValidator. Deprecate Schema and
+    SchemaValidator.
+  + Add RelaxNGSchema and RelaxNGValidator (bgo#737712).
+  + Parser: Add input operator>>(std::istream& in, Parser& parser)
+    (bgo#329281).
+  + Documentation: Use doxygen-extra.css from the mm-common
+    package. Requires mm-common 0.9.7 when configured to use
+    maintainer-mode.
+  + Build: Avoid infinite loop with Doxygen 1.8.6.
+
+-------------------------------------------------------------------
+Mon Aug 18 15:19:27 UTC 2014 - fcrozat@suse.com
+
+- Add obsoletes/provides to baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Sep 16 11:16:35 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.37.1:
+  + Parser: Add [set|get]_include_default_attributes()
+    (bgo#701674).
+  + Improve some null-pointer checks (bgo#705187).
+  + Build fixes (bgo#678390, bgo#702136).
+  + Updated documentation.
+
+-------------------------------------------------------------------
+Mon Nov  5 08:53:34 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.36.0:
+  + Element::set_namespace_declaration(): It is not an error to set
+    the same URI twice (bgo#635846).
+  + Require libxml-2.0 >= 2.7.3.
+  + Parser::initialize_context(): Call xmlCtxtUseOptions().
+
+-------------------------------------------------------------------
+Wed Oct 10 16:53:00 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.35.4:
+  + Document:
+    - Add process_xinclude(), using new XIncludeStart and
+      XIncludeEnd classes, derived from Node. (bgo#338521)
+    - Make the Document(xmlDoc*) constructor public. (bgo#668980)
+  + Parser: Make it thread-safe. (bgo#681467)
+  + Schema::set_document(): If the argument 'document' is 0 then
+    create an empty document, as the documentation says.
+  + Improve the error handling. (bgo#635846)
+  + Updated documentation.
+
+-------------------------------------------------------------------
+Thu Jun 21 11:20:19 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.35.3:
+  + Note:
+    - Add eval_to_[boolean|number|string]() methods. (bgo#316244)
+    - Fix memory problems in import_node(). (bgo#672992)
+  + Build:
+    - The examples are now built and run during make check.
+      (bgo#678390)
+    - Define LIBXMLCPP_EXCEPTIONS_ENABLED unconditionally.
+
+-------------------------------------------------------------------
+Thu Mar 22 18:55:24 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.35.2:
+  + Node: Add get_first_child() (bgo#648125).
+  + Build: Remove the --disable-api-exceptions configure option.
+
+-------------------------------------------------------------------
+Thu Feb 16 19:02:43 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.35.1:
+  + Handle attributes with default values correctly (bgo#669635)
+  + Improved handling of entity references and processing
+    instructions (bgo#669481)
+  + Parser: Throw more detailed error messages (bgo#304020)
+  + Document: Make the Document(xmlDoc*) constructor protected.
+    (bgo#668980)
+
+-------------------------------------------------------------------
+Tue Sep  6 09:29:07 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.34.2:
+  + Element: Add add_child_cdata(), like the existing
+    add_child_text().
+  + Node::create_new_child_node(): Use the default namespace if
+    none is specified (bgo#656110).
+  + Documentation: Fix a markup typo.
+
+-------------------------------------------------------------------
+Tue Apr 26 23:55:01 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 2.34.1:
+  + Do not require mm-common during the tarball build.
+- Changes from version 2.34.0:
+  + Build fix.
+- Changes from version 2.33.1:
+  + Node::remove_child(): Fix a memory management problem
+    introduced in 2.33.1.
+  + Document::do_write_to_stream(), Schema::set_document(): Check
+    the results from xmlSchemaNewDocParserCtxt() and
+    xmlSaveFormatFileTo() (bgo#635846)
+- Changes from version 2.33.1:
+  + (Hopefully) allow separate and multi-threaded libxml2 usage by
+    not using the global xmlRegisterNodeDefault() and
+    xmlDeregisterNodeDefault() callbacks.
+  + Do not call xmlCleanupParser() when the library is unloaded,
+    because it is brutal and can break other parts of applications
+    that try to use libxml separately.
+  + Minor code improvement.
+  + Build: Build the examples by default.
+
+-------------------------------------------------------------------
+Fri Oct 15 09:24:50 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + Node::find(): Check xmlNode::type for a XML_NAMESPACE_DECL to
+    prevent a crash/corruption (bgo#386013)
+  + Build: Added an MSVC .net 2010 and 64-bit Windows builds.
+
+-------------------------------------------------------------------
+Thu Oct 14 08:15:05 UTC 2010 - coolo@novell.com
+
+- add baselibs.conf to build 32bit libs needed for libffado2-32bit
+
+-------------------------------------------------------------------
+Fri May  7 00:10:45 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.1:
+  + Documentation fixes.
+- Drop libxml++-2.24.0-pkgconfig-requires-private.patch.
+
+-------------------------------------------------------------------
+Tue Mar 30 20:01:02 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Build system rewrite.
+  + Use mm-common for reference documentation generation. Fixes
+    bgo#583411, bgo#614260, bgo#551501
+  + Fix several compiler warnings.
+  + Use 0 instead of NULL.
+- Rebase libxml++-2.24.0-pkgconfig-requires-private.patch.
+- Create a libxml++-2_6-2 subpackage to follow the library policy.
+  It provides/obsoletes libxml++.
+- Update build/install sections as well as the file list because of
+  the build system rewrite.
+
+-------------------------------------------------------------------
+Wed Jul 29 16:46:47 CEST 2009 - vuntz@novell.com
+
+- Remove unneeded update-desktop-files BuildRequires.
+
+-------------------------------------------------------------------
+Tue Jul 28 17:38:20 CEST 2009 - lmedinas@gmail.com
+
+- Update to version 2.26.1:
+  + Build fixes
+  + Build without exceptions
+
+-------------------------------------------------------------------
+Mon Mar 16 22:26:08 CET 2009 - vuntz@novell.com
+
+- Update to version 2.26.0:
+  + Increased version number to match GNOME 2.26.
+- Remove AutoReqProv: it's default now.
+
+-------------------------------------------------------------------
+Sat Mar 14 00:55:00 CET 2009 - mboman@suse.de
+
+- Update to version 2.24.3:
+  + TextReader: Actually throw exceptions on errors (This breaks
+    ABI but we do not believe that this class could be used with
+    this problem so it should not actually break any application.)
+  + Build: Windows: Remove unnecessary vsnprint define.
+- Don't run autoreconf
+
+-------------------------------------------------------------------
+Tue Jan 13 18:56:07 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files
+- corrct -devel package dependencies
+
+-------------------------------------------------------------------
+Mon Dec 29 09:55:00 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.2:
+  * Fixed another two memory leaks (bgo#563321)
+  * Removed obsolete MSVC6 project files
+
+-------------------------------------------------------------------
+Sat Dec 20 11:37:20 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.1:
+  + Added new Schema and SchemaValidator classes to MSVC project files
+  + Avoid a memory leak in Validator::check_for_exception.
+  + Avoid a memory leak in schema class.
+
+-------------------------------------------------------------------
+Fri Oct  3 18:47:27 WST 2008 - mboman@suse.de
+
+- Update to version 2.24.0:
+  + Added Schema and SchemaValidator classes, demonstrated in 
+    examples/schemavalidation. bgo#312216
+  + Element: Added add_child_text() with a previous_node parameter, for
+    adding between existing nodes. Added add_child_text_before() too.
+  + Node: Added add_child() with a previous_node parameter, for adding
+    between existing nodes. Added add_child_before() too.
+  + SaxParser: added parse_chunk_raw().
+
+-------------------------------------------------------------------
+Sun Aug 24 06:24:24 CEST 2008 - mboman@novell.com
+
+- Upgraded to version 2.23.3:
+  * Attribute: Return the correct value even when using a namespace.
+    bgo#547689
+  * Fixed MSVC++ Windows build.
+  * SaxParser: added parse_chunk_raw().
+  * examples: sax_parser: Catch convert errors when printing an exception to
+    std:cout, though libxml++/libxml should always supply valid UTF-8.
+  * Added Schema and SchemaValidator classes, demonstrated in
+    examples/schemavalidation. bgo#312216.
+  * Element: Added add_child_text() with a previous_node parameter, for
+    adding between existing nodes. Added add_child_text_before() too.
+  * Node: Added add_child() with a previous_node parameter, for adding
+    between existing nodes. Added add_child_before() too.
+
+-------------------------------------------------------------------
+Thu Apr  3 06:24:24 CEST 2008 - hpj@suse.de
+
+- Upgraded to version 2.22.0:
+
+  * Document: Fix a memory leak, by calling xmlCleanupParser 
+  in the destructor.
+  * Build: Fix the build with gcc 4.3 pre-releases.
+
+- Removed libxml++-include-memory.patch, now in upstream.
+
+-------------------------------------------------------------------
+Wed Nov 21 00:51:05 CET 2007 - maw@suse.de
+
+- Add libxml++-include-memory.patch
+- Use %fdupes.
+
+-------------------------------------------------------------------
+Wed Sep 19 15:58:22 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.20.0:
+  * Element: Added get_attribute_value(), to get a simple text
+    value for an attribute.
+  * Added an experimental --enable-api-exceptions configure option,
+    to allow libxml++ to build without exceptions.
+
+-------------------------------------------------------------------
+Thu Apr 12 13:21:40 CDT 2007 - maw@suse.de
+
+- Update to version 2.18.0
+- Fixes for bugzilla.gnome.org #380110, #351867, #361950, #351215,
+  and #351876.
+
+-------------------------------------------------------------------
+Fri Jan 12 13:24:11 CET 2007 - sbrabec@suse.cz
+
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Fri Dec 15 10:05:55 CST 2006 - maw@suse.de
+
+- Move to /usr
+
+-------------------------------------------------------------------
+Tue Nov 28 15:27:27 CET 2006 - sbrabec@suse.cz
+
+- Require new package name glibmm2-devel.
+
+-------------------------------------------------------------------
+Tue Oct 31 17:52:48 CET 2006 - meissner@suse.de
+
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Mon Sep 18 20:03:50 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.14.0
+- Improved ContentNode documentation
+- Added find() overload that takes namespaces to register during the search,
+  using xmlXPathRegisterNs(). Bug #323935
+- set_namespace(): When creating a default namespace, avoid the
+  "The namespace () has not been declared" warning, by passing 0 to
+  xmlSearchNs() instead of an empty string. Bug #318186
+- Build: Fix buildir!=srcdir builds. Bug #319863.
+- Tutorial: Mention pkg-config
+- Reference: Grammar fixes and a small fix for find 
+
+-------------------------------------------------------------------
+Fri Mar 24 02:29:01 CET 2006 - ro@suse.de
+
+- re-enable autoreconf to fix build on ppc64 and s390x
+
+-------------------------------------------------------------------
+Mon Feb 27 06:55:53 CET 2006 - aj@suse.de
+
+- Reduce BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:27 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Nov  4 23:40:48 CET 2005 - gekker@suse.de
+
+- Initial import of package into autobuild, version 2.12.0
+

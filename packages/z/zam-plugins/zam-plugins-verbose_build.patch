@@ -1,0 +1,155 @@
+Index: zam-plugins-3.11/dpf/dgl/Makefile
+===================================================================
+--- zam-plugins-3.11.orig/dpf/dgl/Makefile
++++ zam-plugins-3.11/dpf/dgl/Makefile
+@@ -46,7 +46,9 @@ all: $(TARGET)
+ ../build/libdgl.a: $(OBJS)
+ 	-@mkdir -p ../build
+ 	@echo "Creating libdgl.a"
++	@echo @rm -f $@
+ 	@rm -f $@
++	@echo $(AR) crs $@ $^
+ 	@$(AR) crs $@ $^
+ 
+ # ---------------------------------------------------------------------------------------------------------------------
+@@ -54,21 +56,25 @@ all: $(TARGET)
+ ../build/dgl/%.c.o: src/%.c
+ 	-@mkdir -p ../build/dgl
+ 	@echo "Compiling $<"
++	@echo $(CC) $< $(BUILD_C_FLAGS) -c -o $@
+ 	@$(CC) $< $(BUILD_C_FLAGS) -c -o $@
+ 
+ ../build/dgl/%.cpp.o: src/%.cpp
+ 	-@mkdir -p ../build/dgl
+ 	@echo "Compiling $<"
++	@echo $(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@
+ 	@$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@
+ 
+ ../build/dgl/Window.cpp.o: src/Window.cpp src/sofd/* src/pugl/*
+ 	-@mkdir -p ../build/dgl
+ 	@echo "Compiling $<"
++	@echo $(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@
+ 	@$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@
+ 
+ ../build/dgl/Window.mm.o: src/Window.cpp src/sofd/* src/pugl/*
+ 	-@mkdir -p ../build/dgl
+ 	@echo "Compiling $<"
++	@echo $(CXX) $< $(BUILD_CXX_FLAGS) -ObjC++ -c -o $@
+ 	@$(CXX) $< $(BUILD_CXX_FLAGS) -ObjC++ -c -o $@
+ 
+ # ---------------------------------------------------------------------------------------------------------------------
+Index: zam-plugins-3.11/dpf/Makefile.plugins.mk
+===================================================================
+--- zam-plugins-3.11.orig/dpf/Makefile.plugins.mk
++++ zam-plugins-3.11/dpf/Makefile.plugins.mk
+@@ -79,11 +79,13 @@ all:
+ $(BUILD_DIR)/%.c.o: %.c
+ 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
+ 	@echo "Compiling $<"
++	@echo $(CC) $< $(BUILD_C_FLAGS) -c -o $@
+ 	@$(CC) $< $(BUILD_C_FLAGS) -c -o $@
+-
++	
+ $(BUILD_DIR)/%.cpp.o: %.cpp
+ 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
+ 	@echo "Compiling $<"
++	@echo $(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@
+ 	@$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@
+ 
+ clean:
+@@ -95,21 +97,25 @@ clean:
+ $(BUILD_DIR)/DistrhoPluginMain_%.cpp.o: $(DPF_PATH)/distrho/DistrhoPluginMain.cpp
+ 	-@mkdir -p $(BUILD_DIR)
+ 	@echo "Compiling DistrhoPluginMain.cpp ($*)"
++	@echo $(CXX) $< $(BUILD_CXX_FLAGS) -DDISTRHO_PLUGIN_TARGET_$* -c -o $@
+ 	@$(CXX) $< $(BUILD_CXX_FLAGS) -DDISTRHO_PLUGIN_TARGET_$* -c -o $@
+ 
+ $(BUILD_DIR)/DistrhoUIMain_%.cpp.o: $(DPF_PATH)/distrho/DistrhoUIMain.cpp
+ 	-@mkdir -p $(BUILD_DIR)
+ 	@echo "Compiling DistrhoUIMain.cpp ($*)"
++	@echo $(CXX) $< $(BUILD_CXX_FLAGS) -DDISTRHO_PLUGIN_TARGET_$* -c -o $@
+ 	@$(CXX) $< $(BUILD_CXX_FLAGS) -DDISTRHO_PLUGIN_TARGET_$* -c -o $@
+ 
+ $(BUILD_DIR)/DistrhoPluginMain_JACK.cpp.o: $(DPF_PATH)/distrho/DistrhoPluginMain.cpp
+ 	-@mkdir -p $(BUILD_DIR)
+ 	@echo "Compiling DistrhoPluginMain.cpp (JACK)"
++	@echo $(CXX) $< $(BUILD_CXX_FLAGS) $(shell pkg-config --cflags jack) -DDISTRHO_PLUGIN_TARGET_JACK -c -o $@
+ 	@$(CXX) $< $(BUILD_CXX_FLAGS) $(shell pkg-config --cflags jack) -DDISTRHO_PLUGIN_TARGET_JACK -c -o $@
+ 
+ $(BUILD_DIR)/DistrhoUIMain_DSSI.cpp.o: $(DPF_PATH)/distrho/DistrhoUIMain.cpp
+ 	-@mkdir -p $(BUILD_DIR)
+ 	@echo "Compiling DistrhoUIMain.cpp (DSSI)"
++	@echo $(CXX) $< $(BUILD_CXX_FLAGS) $(shell pkg-config --cflags liblo) -DDISTRHO_PLUGIN_TARGET_DSSI -c -o $@
+ 	@$(CXX) $< $(BUILD_CXX_FLAGS) $(shell pkg-config --cflags liblo) -DDISTRHO_PLUGIN_TARGET_DSSI -c -o $@
+ 
+ # ---------------------------------------------------------------------------------------------------------------------
+@@ -124,6 +130,7 @@ $(jack): $(OBJS_DSP) $(BUILD_DIR)/Distrh
+ endif
+ 	-@mkdir -p $(shell dirname $@)
+ 	@echo "Creating JACK standalone for $(NAME)"
++	@echo $(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) $(shell pkg-config --libs jack) -o $@
+ 	@$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) $(shell pkg-config --libs jack) -o $@
+ 
+ # ---------------------------------------------------------------------------------------------------------------------
+@@ -134,6 +141,7 @@ ladspa: $(ladspa_dsp)
+ $(ladspa_dsp): $(OBJS_DSP) $(BUILD_DIR)/DistrhoPluginMain_LADSPA.cpp.o
+ 	-@mkdir -p $(shell dirname $@)
+ 	@echo "Creating LADSPA plugin for $(NAME)"
++	@echo $(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(SHARED) -o $@
+ 	@$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(SHARED) -o $@
+ 
+ # ---------------------------------------------------------------------------------------------------------------------
+@@ -146,11 +154,13 @@ dssi_ui:  $(dssi_ui)
+ $(dssi_dsp): $(OBJS_DSP) $(BUILD_DIR)/DistrhoPluginMain_DSSI.cpp.o
+ 	-@mkdir -p $(shell dirname $@)
+ 	@echo "Creating DSSI plugin library for $(NAME)"
++	@echo $(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(SHARED) -o $@
+ 	@$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(SHARED) -o $@
+ 
+ $(dssi_ui): $(OBJS_UI) $(BUILD_DIR)/DistrhoUIMain_DSSI.cpp.o $(DPF_PATH)/build/libdgl.a
+ 	-@mkdir -p $(shell dirname $@)
+ 	@echo "Creating DSSI UI for $(NAME)"
++	@echo $(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) $(shell pkg-config --libs liblo) -o $@
+ 	@$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) $(shell pkg-config --libs liblo) -o $@
+ 
+ # ---------------------------------------------------------------------------------------------------------------------
+@@ -163,16 +173,19 @@ lv2_sep: $(lv2_dsp) $(lv2_ui)
+ $(lv2): $(OBJS_DSP) $(OBJS_UI) $(BUILD_DIR)/DistrhoPluginMain_LV2.cpp.o $(BUILD_DIR)/DistrhoUIMain_LV2.cpp.o $(DPF_PATH)/build/libdgl.a
+ 	-@mkdir -p $(shell dirname $@)
+ 	@echo "Creating LV2 plugin for $(NAME)"
++	@echo $(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) $(SHARED) -o $@
+ 	@$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) $(SHARED) -o $@
+ 
+ $(lv2_dsp): $(OBJS_DSP) $(BUILD_DIR)/DistrhoPluginMain_LV2.cpp.o
+ 	-@mkdir -p $(shell dirname $@)
+ 	@echo "Creating LV2 plugin library for $(NAME)"
++	@echo $(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(SHARED) -o $@
+ 	@$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(SHARED) -o $@
+ 
+ $(lv2_ui): $(OBJS_UI) $(BUILD_DIR)/DistrhoUIMain_LV2.cpp.o $(DPF_PATH)/build/libdgl.a
+ 	-@mkdir -p $(shell dirname $@)
+ 	@echo "Creating LV2 plugin UI for $(NAME)"
++	@echo $(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) $(SHARED) -o $@
+ 	@$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) $(SHARED) -o $@
+ 
+ # ---------------------------------------------------------------------------------------------------------------------
+@@ -187,6 +200,7 @@ $(vst): $(OBJS_DSP) $(BUILD_DIR)/Distrho
+ endif
+ 	-@mkdir -p $(shell dirname $@)
+ 	@echo "Creating VST plugin for $(NAME)"
++	@echo $(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) $(SHARED) -o $@
+ 	@$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) $(SHARED) -o $@
+ 
+ # ---------------------------------------------------------------------------------------------------------------------
+Index: zam-plugins-3.11/plugins/zita-convolver.mk
+===================================================================
+--- zam-plugins-3.11.orig/plugins/zita-convolver.mk
++++ zam-plugins-3.11/plugins/zita-convolver.mk
+@@ -9,6 +9,7 @@
+ $(BUILD_DIR)/zita-convolver.cpp.o: ../../lib/zita-convolver-4.0.0/zita-convolver.cpp
+ 	-@mkdir -p $(BUILD_DIR)
+ 	@echo "Compiling zita-convolver.cpp"
++	@echo $(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@
+ 	@$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@
+ 
+ -include $(BUILD_DIR)/zita-convolver.cpp.d

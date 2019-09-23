@@ -1,0 +1,35 @@
+From: toddrme2178@gmail.com
+Date: 2017-09-20
+Subject: Use rpm paths
+
+Use single-line paths. These should be replaced with the appropriate
+system paths in the .spec file.
+
+---
+
+--- a/jupyter_core/paths.py
++++ b/jupyter_core/paths.py
+@@ -117,10 +117,7 @@
+     else:  # PROGRAMDATA is not defined by default on XP.
+         SYSTEM_JUPYTER_PATH = [os.path.join(sys.prefix, 'share', 'jupyter')]
+ else:
+-    SYSTEM_JUPYTER_PATH = [
+-        "/usr/local/share/jupyter",
+-        "/usr/share/jupyter",
+-    ]
++    SYSTEM_JUPYTER_PATH = ["/usr/share/jupyter"]
+ 
+ ENV_JUPYTER_PATH = [os.path.join(sys.prefix, 'share', 'jupyter')]
+ 
+@@ -169,10 +166,7 @@
+     else:  # PROGRAMDATA is not defined by default on XP.
+         SYSTEM_CONFIG_PATH = []
+ else:
+-    SYSTEM_CONFIG_PATH = [
+-        "/usr/local/etc/jupyter",
+-        "/etc/jupyter",
+-    ]
++    SYSTEM_CONFIG_PATH = ["/etc/jupyter"]
+ 
+ ENV_CONFIG_PATH = [os.path.join(sys.prefix, 'etc', 'jupyter')]
+ 

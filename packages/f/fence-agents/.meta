@@ -1,0 +1,7 @@
+<package name="fence-agents" project="openSUSE:Factory">
+  <title>Fence Agents for Pacemaker from RHCS</title>
+  <description>Fence Agents is a collection of scripts to handle remote power
+management for several devices.
+</description>
+  <devel project="network:ha-clustering:Factory" package="fence-agents"/>
+</package>

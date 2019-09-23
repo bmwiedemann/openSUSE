@@ -1,0 +1,13 @@
+<services>
+  <service mode="disabled" name="renderspec">
+    <param name="input-template">https://raw.githubusercontent.com/openstack/rpm-packaging/stable/queens/openstack/murano-pkg-check/murano-pkg-check.spec.j2</param>
+    <param name="output-name">python-murano-pkg-check.spec</param>
+    <param name="requirements">https://raw.githubusercontent.com/openstack/rpm-packaging/stable/queens/requirements.txt</param>
+    <param name="changelog-email">cloud-devel@suse.de</param>
+    <param name="changelog-provider">gh,openstack,python-murano-pkg-check</param>
+  </service>
+  <service mode="disabled" name="download_files">
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="format_spec_file" mode="disabled"/>
+</services>

@@ -1,0 +1,5 @@
+<package name="virt-top" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization" package="virt-top"/>
+</package>

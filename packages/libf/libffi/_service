@@ -1,0 +1,15 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/libffi/libffi</param>
+		<param name="revision">master</param>
+		<param name="filename">libffi</param>
+		<param name="parent-tag">v3.2.1</param>
+		<param name="versionformat">3.2.1.git@TAG_OFFSET@</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

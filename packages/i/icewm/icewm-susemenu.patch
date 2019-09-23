@@ -1,0 +1,89 @@
+diff --git a/lib/menu.in b/lib/menu.in
+index f200514..3118471 100644
+--- a/lib/menu.in
++++ b/lib/menu.in
+@@ -12,5 +12,6 @@ prog Firefox mozilla firefox
+ prog Hexchat xchat hexchat
+ prog Gimp gimp gimp
+ includeprog icewm-menu-fdo --sep-before --no-sep-others
+-menufile Programs folder programs
++#menufile Programs folder programs
+ menufile Tool_bar folder toolbar
++menuprog SUSE folder xdg_menu --format icewm
+diff --git a/src/wmmenu.cc b/src/wmmenu.cc
+index ccee25e..ec2ff81 100644
+--- a/src/wmmenu.cc
++++ b/src/wmmenu.cc
+@@ -297,6 +297,45 @@ char* MenuLoader::parseMenuProg(char *p, ObjectContainer *container)
+     return p;
+ }
+ 
++char* MenuLoader::parseSuseProg(char *p, ObjectContainer *container)
++{
++    Argument name;
++
++    p = YConfig::getArgument(&name, p);
++    if (p == 0) return p;
++
++    Argument icons;
++
++    p = YConfig::getArgument(&icons, p);
++    if (p == 0) return p;
++
++    Argument command;
++    YStringArray args;
++
++    p = getCommandArgs(p, &command, args);
++    if (p == 0) {
++        msg(_("Error at prog %s"), name.cstr());
++        return p;
++    }
++
++    ref<YIcon> icon;
++#ifndef LITE
++    if (icons[0] != '-')
++        icon = YIcon::getIcon(icons);
++#endif
++    MSG(("suseprog %s %s", name.cstr(), command.cstr()));
++
++    upath fullPath = findPath(getenv("PATH"), X_OK, command.cstr());
++    if (fullPath != null) {
++        ObjectMenu *progmenu = new MenuProgMenu(
++                app, smActionListener, wmActionListener,
++                name.cstr(), command.cstr(), args, 0);
++        if (progmenu)
++           container->addContainer(name.cstr(), icon, progmenu);
++    }    
++    return p;
++}
++
+ char* MenuLoader::parseMenuProgReload(char *p, ObjectContainer *container)
+ {
+     Argument name;
+@@ -398,6 +437,9 @@ char* MenuLoader::parseWord(char *word, char *p, ObjectContainer *container)
+         else if (!strcmp(word, "menuprogreload")) {
+             p = parseMenuProgReload(p, container);
+         }
++        else if (!strcmp(word, "suseprog")) {
++            p = parseSuseProg(p, container);
++        }
+         else if (!strcmp(word, "include")) {
+             p = parseIncludeStatement(p, container);
+         }
+diff --git a/src/wmprog.h b/src/wmprog.h
+index 4e9bd1f..d5b9827 100644
+--- a/src/wmprog.h
++++ b/src/wmprog.h
+@@ -31,10 +31,12 @@ private:
+     char* parseMenuFile(char *data, ObjectContainer *container);
+     char* parseMenuProg(char *data, ObjectContainer *container);
+     char* parseMenuProgReload(char *data, ObjectContainer *container);
++    char* parseSuseProg(char *p, ObjectContainer *container);
+     char* parseKey(char *word, char *p);
+     char* parseProgram(char *word, char *p, ObjectContainer *container);
+     char* parseWord(char *word, char *p, ObjectContainer *container);
+ 
++
+     IApp *app;
+     YSMListener *smActionListener;
+     YActionListener *wmActionListener;

@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>60e2cc989144ce827019f898e43957a1</srcmd5>
+    <version>0.4.0</version>
+    <time>1322501265</time>
+    <user>coolo</user>
+    <comment>new polkit</comment>
+    <requestid>94109</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9f14d83400712852463e12714b481116</srcmd5>
+    <version>0.4.0</version>
+    <time>1323194467</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>9f14d83400712852463e12714b481116</srcmd5>
+    <version>0.4.0</version>
+    <time>1340184165</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>17db8d3c570672477759e2cdca92669e</srcmd5>
+    <version>2.0.0</version>
+    <time>1348412934</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134055</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9b93d0f3bc7b2c90df575fd1332784c0</srcmd5>
+    <version>2.0.2</version>
+    <time>1348427612</time>
+    <user>coolo</user>
+    <comment>- updated to version 2.0.2
+  - Lack of newline at end of file causes error (thanks erebor) [issue #12]
+
+- updated to version 2.0.1
+  - Better error message for malformed INI files</comment>
+    <requestid>135471</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9b93d0f3bc7b2c90df575fd1332784c0</srcmd5>
+    <version>2.0.2</version>
+    <time>1359110324</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>9b93d0f3bc7b2c90df575fd1332784c0</srcmd5>
+    <version>2.0.2</version>
+    <time>1379664532</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>9b93d0f3bc7b2c90df575fd1332784c0</srcmd5>
+    <version>2.0.2</version>
+    <time>1409303241</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>046decf29658b23572a7b5e493788e85</srcmd5>
+    <version>3.0.0</version>
+    <time>1423669501</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285483</requestid>
+  </revision>
+</revisionlist>

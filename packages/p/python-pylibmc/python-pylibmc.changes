@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Tue Sep 10 12:04:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.6.1:
+  * no changelog provided
+
+-------------------------------------------------------------------
+Tue Mar 12 05:07:50 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove bcond test
+- Activate test suite
+- Use %license
+- Update URL to GitHub repository
+- Update to v1.6.0
+
+-------------------------------------------------------------------
+Sat Sep  2 22:06:36 UTC 2017 - jengelh@inai.de
+
+- Expand description.
+
+-------------------------------------------------------------------
+Thu Aug 31 21:35:05 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 1.5.2
+  * Fixes critical memory leaks in common code paths
+    introduced in 1.4.2.
+  * Fixes a critical bug in a corner of the zlib inflation code,
+    where prior memory errors would trigger a double free.
+
+-------------------------------------------------------------------
+Thu Aug 24 13:51:15 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Mon May 11 16:25:23 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.4.2:
+  * no changelog available
+- additional changes from version 1.4.0:
+  * Python 3.x support
+  * miscellaneous bug fixes
+  * testing improvements
+  * documentation updates
+- additional changes from version 1.3.0:
+  * Added touch support
+  * Added compress_level
+  * Added weighted distribution
+  * Added automated benchmarking utility
+  * Added Travis CI and build status
+  * Added behavior dead_timeout
+  * Added behaviors tcp_keepalive
+  * Added behavior callback_prefix_key
+  * Lots of bug tuning, fixes, tests, and documentation
+- remove LICENSE from package: not provided anymore
+
+-------------------------------------------------------------------
+Wed Sep 18 11:50:18 UTC 2013 - speilicke@suse.com
+
+- Fix license spelling
+
+-------------------------------------------------------------------
+Fri Aug  9 08:55:42 UTC 2013 - speilicke@suse.com
+
+- Fix license (SPDX style)
+
+-------------------------------------------------------------------
+Fri Aug  9 08:41:41 UTC 2013 - speilicke@suse.com
+
+- Initial version
+
+

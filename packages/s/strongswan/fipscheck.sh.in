@@ -1,0 +1,69 @@
+#! /bin/bash
+#
+# Copyright (C) 2014 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, see <http://www.gnu.org/licenses/>.
+#
+# Author: Marius Tomaschewski <mt@suse.de>
+#
+IPSEC_DIR="@IPSEC_DIR@"
+IPSEC_LIBDIR="@IPSEC_LIBDIR@"
+IPSEC_BINDIR="@IPSEC_BINDIR@"
+IPSEC_SBINDIR="@IPSEC_SBINDIR@"
+fipscheck_bin="/usr/bin/fipscheck"
+
+# minimal usage hint
+if test $# -gt 0 ; then
+	echo "usage: ipsec _fipscheck" >&2
+	exit 2
+fi
+
+#
+# "ipsec xxx" starts this script only if crypto/fips_enabled=1,
+# except while a manually enforced check via "ipsec _fipscheck".
+#
+#read 2>/dev/null fips_enabled < /proc/sys/crypto/fips_enabled
+#test "X$fips_enabled" = "X1" || exit 0
+
+# verify that fipscheck is installed
+test -x "$fipscheck_bin" || {
+	test "X$FIPSCHECK_DEBUG" = "Xerror" && \
+	echo "${0##*/}: $fipscheck_bin utility missed" >&2
+	exit 4
+}
+
+shopt -s nullglob
+
+files=()
+for h in ${IPSEC_DIR}/.*.hmac \
+	 ${IPSEC_LIBDIR}/.*.hmac \
+	 ${IPSEC_LIBDIR}/imcvs/.*.hmac \
+	 ${IPSEC_LIBDIR}/plugins/.*.hmac \
+	 ${IPSEC_SBINDIR}/.ipsec.hmac \
+	;
+do
+	dir="${h%/*}"
+	name="${h##*/.}"
+	file="${dir}/${name%.hmac}"
+	# some part is not installed
+	test -f "${file}" && files+=("$file")
+done
+
+if test ${#files[@]} -gt 0 ; then
+	$fipscheck_bin ${files[@]} ; exit $?
+elif test "X$FIPSCHECK_DEBUG" = "Xerror" ; then
+	echo "${0##*/}: unable to find any checksum/hmac file" >&2
+fi
+exit 3
+

@@ -1,0 +1,75 @@
+diff --git a/docs/man/telemctl.1.rst b/docs/man/telemctl.1.rst
+index 2aef720..0ab7017 100644
+--- a/docs/man/telemctl.1.rst
++++ b/docs/man/telemctl.1.rst
+@@ -31,6 +31,9 @@ OPTIONS
+  * ``start``|``stop``|``restart``:
+    Starts, stops or restarts all running telemetry services.
+ 
++ * ``enable``|``disable``:
++   Enables or disables all telemetry services.
++
+  * ``opt-in``:
+    Opts in to telemetry, and starts telemetry services. The opt-out file
+    ``/etc/telemetrics/opt-out`` is removed.
+diff --git a/src/telemctl.c b/src/telemctl.c
+index 4df8dbb..ade3659 100644
+--- a/src/telemctl.c
++++ b/src/telemctl.c
+@@ -64,6 +64,8 @@ static char *SERVICES[] = {
+ static int telemctl_start(void);
+ static int telemctl_stop(void);
+ static int telemctl_restart(void);
++static int telemctl_enable(void);
++static int telemctl_disable(void);
+ static int telemctl_is_active(void);
+ static int telemctl_opt_out(void);
+ static int telemctl_opt_in(void);
+@@ -82,6 +84,8 @@ static struct telemcmd commands[] = {
+         {"stop",      {.f1=telemctl_stop},     "Stops all running telemetry services" },
+         {"start",     {.f1=telemctl_start},    "Starts all telemetry services" },
+         {"restart",   {.f1=telemctl_restart},  "Restarts all telemetry services" },
++        {"enable",    {.f1=telemctl_enable},   "Enable telemetry services" },
++        {"disable",   {.f1=telemctl_disable},  "Disable telemetry services" },
+         {"is-active", {.f1=telemctl_is_active},"Checks if telemprobd and telempostd are active" },
+         {"opt-in",    {.f1=telemctl_opt_in},   "Opts in to telemetry, and starts telemetry services" },
+         {"opt-out",   {.f1=telemctl_opt_out},  "Opts out of telemetry, and stops telemetry services" },
+@@ -216,6 +220,38 @@ static int telemctl_restart(void)
+ /*
+ Script code:
+ 
++telem_enable() {
++  for_each_service "enable" ${SPECIAL_UNITS[@]}
++}
++*/
++static int telemctl_enable(void)
++{
++        int ret;
++
++	/* the units in SERVICES are activated as needed, so no need to enable them */
++        ret =  for_each_service("enable", SPECIAL_UNITS, NUM_SPECIAL_UNITS);
++        return ret;
++}
++
++/*
++Script code:
++
++telem_disable() {
++  for_each_service "disable" ${SPECIAL_UNITS[@]}
++}
++*/
++static int telemctl_disable(void)
++{
++        int ret;
++
++	/* the units in SERVICES are only enabled, so only disable them, too. */
++        ret =  for_each_service("disable", SPECIAL_UNITS, NUM_SPECIAL_UNITS);
++        return ret;
++}
++
++/*
++Script code:
++
+ telem_is_active() {
+   echo "telemprobd :" $(systemctl is-active telemprobd.socket)
+   echo "telempostd :" $(systemctl is-active telempostd.path)

@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Sat Oct  6 12:30:20 UTC 2018 - wnereiz@member.fsf.org
+
+- Add dependency packages python3-cairo and python3-dbus-python
+  (bsc#1102282)
+- Some minor changes to satisfy spec-cleaner
+
+-------------------------------------------------------------------
+Sun Feb 18 18:53:02 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Sun Feb 18 14:00:20 UTC 2018 - wnereiz@kawashiro.org
+
+- Update to version v319, and fix .desktop file categories 
+
+-------------------------------------------------------------------
+Sun Feb 12 05:52:54 UTC 2017 - wnereiz@kawashiro.org
+
+- Updated to version v305. There're some big changes from upstream:
+  + Project home changed to github
+  + Switched to python3
+  + Gtk3 support
+  + other minor changes
+
+-------------------------------------------------------------------
+Tue Jan 17 16:45:38 UTC 2017 - mpluskal@suse.com
+
+- Correct rpm group
+- Enable parallel build
+- Update dependencies
+
+-------------------------------------------------------------------
+Sat Jul  9 14:00:41 UTC 2016 - wnereiz@kawashiro.org
+
+- Remove useless python-wnck dependency (for pushing to Leap) 
+
+-------------------------------------------------------------------
+Sat Jan  2 11:38:50 UTC 2016 - mimi.vx@gmail.com
+
+- spec-cleaned 
+
+-------------------------------------------------------------------
+* Thu Jun 6 2014 wnereiz <wnereiz@gmail.com>
+- Remove %clean since it is not needed anymore.
+
+* Thu Jun 5 2014 wnereiz <wnereiz@gmail.com>
+- Some changes based on rpmlint results
+  + Resolve standard-dir-owned-by-package problem 
+  + Change GPL version to spec standard.
+- Use %_libdir instead of hardcode in spec.
+
+* Thu Jan 2 2014 wnereiz <wnereiz@gmail.com>
+- Version 208
+- Build rpm form the upstream codes

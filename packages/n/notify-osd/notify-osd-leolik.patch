@@ -1,0 +1,825 @@
+diff -ruN src_old/bubble.c src/bubble.c
+--- src_old/bubble.c
++++ src/bubble.c
+@@ -127,25 +127,25 @@
+ // FIXME: this is in class Defaults already, but not yet hooked up so for the
+ // moment we use the macros here, these values reflect the visual-guideline
+ // for jaunty notifications
+-#define TEXT_TITLE_COLOR_R 1.0f
+-#define TEXT_TITLE_COLOR_G 1.0f
+-#define TEXT_TITLE_COLOR_B 1.0f
+-#define TEXT_TITLE_COLOR_A 1.0f
+-
+-#define TEXT_BODY_COLOR_R  0.91f
+-#define TEXT_BODY_COLOR_G  0.91f
+-#define TEXT_BODY_COLOR_B  0.91f
+-#define TEXT_BODY_COLOR_A  1.0f
++float TEXT_TITLE_COLOR_R = 1.0f;
++float TEXT_TITLE_COLOR_G = 1.0f;
++float TEXT_TITLE_COLOR_B = 1.0f;
++float TEXT_TITLE_COLOR_A = 1.0f;
++
++float TEXT_BODY_COLOR_R  = 0.91f;
++float TEXT_BODY_COLOR_G  = 0.91f;
++float TEXT_BODY_COLOR_B  = 0.91f;
++float TEXT_BODY_COLOR_A  = 1.0f;
+ 
+ #define TEXT_SHADOW_COLOR_R 0.0f
+ #define TEXT_SHADOW_COLOR_G 0.0f 
+ #define TEXT_SHADOW_COLOR_B 0.0f 
+-#define TEXT_SHADOW_COLOR_A 1.0f 
++float TEXT_SHADOW_COLOR_A  = 1.0f;
+ 
+-#define BUBBLE_BG_COLOR_R  0.15f
+-#define BUBBLE_BG_COLOR_G  0.15f
+-#define BUBBLE_BG_COLOR_B  0.15f
+-#define BUBBLE_BG_COLOR_A  0.9f
++float BUBBLE_BG_COLOR_R  = 0.07f;
++float BUBBLE_BG_COLOR_G  = 0.07f;
++float BUBBLE_BG_COLOR_B  = 0.07f;
++float BUBBLE_BG_COLOR_A  = 0.9f;
+ 
+ #define INDICATOR_UNLIT_R  1.0f
+ #define INDICATOR_UNLIT_G  1.0f
+@@ -166,6 +166,10 @@
+ #define BUBBLE_CONTENT_BLUR_RADIUS 4
+ #define TEXT_DROP_SHADOW_SIZE      2
+ 
++gboolean BUBBLE_PREVENT_FADE   = TRUE;
++gboolean BUBBLE_CLOSE_ON_CLICK = FALSE;
++gboolean BUBBLE_AS_DESKTOP_BG = FALSE;
++
+ //-- private functions ---------------------------------------------------------
+ 
+ static guint g_bubble_signals[LAST_SIGNAL] = { 0 };
+@@ -752,17 +756,32 @@
+ 			2.0f * EM2PIXELS (get_shadow_size (self), d));
+ 		cairo_fill (cr);
+ 		cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
+-		cairo_set_source_rgba (cr,
+-				       color.red,
+-				       color.green,
+-				       color.blue,
+-				       BUBBLE_BG_COLOR_A);
++		if (BUBBLE_AS_DESKTOP_BG) {
++			cairo_set_source_rgba (cr,
++						color.red,
++						color.green,
++						color.blue,
++						BUBBLE_BG_COLOR_A);	
++		} else {
++			cairo_set_source_rgba (cr,
++						BUBBLE_BG_COLOR_R,
++						BUBBLE_BG_COLOR_G,
++						BUBBLE_BG_COLOR_B,
++						BUBBLE_BG_COLOR_A);
++		}
+ 	}
+ 	else
+-		cairo_set_source_rgb (cr,
+-				       color.red,
+-				       color.green,
+-				       color.blue);
++		if (BUBBLE_AS_DESKTOP_BG) {
++			cairo_set_source_rgb (cr,
++						color.red,
++						color.green,
++						color.blue);
++		} else {
++			cairo_set_source_rgb (cr,
++						BUBBLE_BG_COLOR_R,
++						BUBBLE_BG_COLOR_G,
++						BUBBLE_BG_COLOR_B);
++		}
+ 
+ 	draw_round_rect (
+ 		cr,
+@@ -1660,15 +1679,23 @@
+ 	// sanity check
+ 	if (!window)
+ 		return;
+-
+-	// set an 1x1 input-region to allow click-through 
+-	region = cairo_region_create_rectangle (&rect);
+-	if (cairo_region_status (region) == CAIRO_STATUS_SUCCESS)
++	
++	if (!BUBBLE_CLOSE_ON_CLICK)
++	{
++		// set an 1x1 input-region to allow click-through 
++		region = cairo_region_create_rectangle (&rect);
++		if (cairo_region_status (region) == CAIRO_STATUS_SUCCESS)
++		{
++			gtk_widget_input_shape_combine_region (window, NULL);
++			gtk_widget_input_shape_combine_region (window, region);
++		}
++		cairo_region_destroy (region);
++	}
++	else
+ 	{
+-		gtk_widget_input_shape_combine_region (window, NULL);
+-		gtk_widget_input_shape_combine_region (window, region);
++		GdkWindow *window_ = gtk_widget_get_window (window);
++		gdk_window_set_events (window_, gdk_window_get_events (window_) | GDK_BUTTON_PRESS);
+ 	}
+-	cairo_region_destroy (region);
+ }
+ 
+ static void
+@@ -1755,7 +1782,7 @@
+ 	cairo_paint (cr);
+ 	cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
+ 
+-	if (priv->prevent_fade || !priv->composited)
++	if (!BUBBLE_PREVENT_FADE || priv->prevent_fade || !priv->composited)
+ 	{
+ 	        // render drop-shadow and bubble-background
+ 		_render_background (bubble, cr, 1.0f, 0.0f);
+@@ -1786,6 +1813,31 @@
+ }
+ 
+ static gboolean
++button_press_event_handler (GtkWidget* window G_GNUC_UNUSED, 
++          GdkEventButton* event, 
++          Bubble* bubble)
++{
++ BubblePrivate* priv;
++
++ priv = bubble->priv;
++
++ if (priv->mouse_over && event->button == 1)
++ {
++   bubble_hide (bubble);
++
++   dbus_send_close_signal (bubble_get_sender (bubble),
++         bubble_get_id (bubble),
++         1);
++
++   g_signal_emit (bubble, g_bubble_signals[TIMED_OUT], 0);
++
++   return TRUE;
++ }
++
++ return FALSE;
++}
++
++static gboolean
+ redraw_handler (Bubble* bubble)
+ {
+ 	GtkWindow*     window;
+@@ -1809,7 +1861,7 @@
+ 
+ 	if (priv->alpha == NULL)
+ 	{
+-		if (priv->distance < 1.0f && !priv->prevent_fade)
++		if (priv->distance < 1.0f && !priv->prevent_fade && BUBBLE_PREVENT_FADE)
+ 		{
+ 			gtk_widget_set_opacity (priv->widget,
+ 			                        WINDOW_MIN_OPACITY +
+@@ -1913,7 +1965,7 @@
+ 
+ 		// mark mouse-pointer having left bubble and proximity-area
+ 		// after inital show-up of bubble
+-		if (priv->prevent_fade && priv->distance > 1.0f)
++		if (BUBBLE_PREVENT_FADE && priv->prevent_fade && priv->distance > 1.0f)
+ 			priv->prevent_fade = FALSE;
+ 	}
+ 
+@@ -2205,6 +2257,14 @@
+ 	                  G_CALLBACK (bubble_draw),
+ 	                  this);
+ 
++	if (BUBBLE_CLOSE_ON_CLICK)
++	{
++	  g_signal_connect (window,
++	        "button-press-event",
++	        G_CALLBACK (button_press_event_handler),
++	        this);
++	}
++
+ 	// "clear" input-mask, set title/icon/attributes
+ 	gtk_widget_set_app_paintable (window, TRUE);
+ 	gtk_window_set_title (GTK_WINDOW (window), "notify-osd");
+@@ -2690,7 +2750,7 @@
+ 
+ 	priv = self->priv;
+ 
+-	if (priv->prevent_fade)
++	if (BUBBLE_PREVENT_FADE && priv->prevent_fade)
+ 		return FALSE;
+ 
+ 	return priv->mouse_over;
+@@ -2794,7 +2854,7 @@
+ 
+ 	// check if mouse-pointer is over bubble (and proximity-area) initially
+ 	pointer_update (self);
+-	if (priv->distance <= 1.0f)
++	if (priv->distance <= 1.0f || !BUBBLE_PREVENT_FADE)
+ 		priv->prevent_fade = TRUE;
+ 	else
+ 		priv->prevent_fade = FALSE;
+@@ -3357,6 +3417,8 @@
+ 	gint           old_bubble_height = 0;
+ 	gint           new_bubble_width  = 0;
+ 	gint           new_bubble_height = 0;
++	gint		   x;
++ 	gint		   y;
+ 	Defaults*      d;
+ 	BubblePrivate* priv;
+ 
+@@ -3551,6 +3613,13 @@
+ 		_refresh_body (self);
+ 
+ 	update_shape (self);
++	
++	if (defaults_get_gravity (d) == GRAVITY_SOUTH_EAST)
++ 	{
++ 		bubble_get_position(self, &x, &y);
++ 		bubble_move(self, x, y - (new_bubble_height - old_bubble_height));
++ 	}
++ 	
+ }
+ 
+ void
+diff -ruN src_old/defaults.c src/defaults.c
+--- src_old/defaults.c
++++ src/defaults.c
+@@ -104,40 +104,41 @@
+ /* these values are interpreted as em-measurements and do comply to the 
+  * visual guide for jaunty-notifications */
+ #define DEFAULT_DESKTOP_BOTTOM_GAP    6.0f
+-#define DEFAULT_BUBBLE_WIDTH         24.0f
+-#define DEFAULT_BUBBLE_MIN_HEIGHT     5.0f
+-#define DEFAULT_BUBBLE_MAX_HEIGHT    12.2f
+-#define DEFAULT_BUBBLE_VERT_GAP       0.5f
+-#define DEFAULT_BUBBLE_HORZ_GAP       0.5f
++float DEFAULT_BUBBLE_WIDTH  = 24.0f;
++float DEFAULT_BUBBLE_MIN_HEIGHT  = 5.0f;
++float DEFAULT_BUBBLE_MAX_HEIGHT  = 12.2f;
++float DEFAULT_BUBBLE_VERT_GAP  = 0.5f;
++float DEFAULT_BUBBLE_HORZ_GAP  = 0.5f;
+ #define DEFAULT_BUBBLE_SHADOW_SIZE    0.7f
+ #define DEFAULT_BUBBLE_SHADOW_COLOR  "#000000"
+ #define DEFAULT_BUBBLE_BG_COLOR      "#131313"
+ #define DEFAULT_BUBBLE_BG_OPACITY    "#cc"
+ #define DEFAULT_BUBBLE_HOVER_OPACITY "#66"
+-#define DEFAULT_BUBBLE_CORNER_RADIUS 0.375f
++float DEFAULT_BUBBLE_CORNER_RADIUS  = 0.375f;
+ #define DEFAULT_CONTENT_SHADOW_SIZE  0.125f
+ #define DEFAULT_CONTENT_SHADOW_COLOR "#000000"
+-#define DEFAULT_MARGIN_SIZE          1.0f
+-#define DEFAULT_ICON_SIZE            3.0f
+-#define DEFAULT_GAUGE_SIZE           0.625f
+-#define DEFAULT_GAUGE_OUTLINE_WIDTH  0.125f
++float DEFAULT_MARGIN_SIZE  = 1.0f;
++float DEFAULT_ICON_SIZE  = 3.0f;
++float DEFAULT_GAUGE_SIZE  = 0.625f;
++#define DEFAULT_GAUGE_OUTLINE_WIDTH	 0.125f
+ #define DEFAULT_TEXT_FONT_FACE       "Sans"
+ #define DEFAULT_TEXT_TITLE_COLOR     "#ffffff"
+-#define DEFAULT_TEXT_TITLE_WEIGHT    TEXT_WEIGHT_BOLD
+-#define DEFAULT_TEXT_TITLE_SIZE      1.0f
++short DEFAULT_TEXT_TITLE_WEIGHT  = TEXT_WEIGHT_BOLD;
++float DEFAULT_TEXT_TITLE_SIZE  = 1.0f;
+ #define DEFAULT_TEXT_BODY_COLOR      "#eaeaea"
+-#define DEFAULT_TEXT_BODY_WEIGHT     TEXT_WEIGHT_NORMAL
+-#define DEFAULT_TEXT_BODY_SIZE       0.9f
++short DEFAULT_TEXT_BODY_WEIGHT  = TEXT_WEIGHT_NORMAL;
++float DEFAULT_TEXT_BODY_SIZE  = 0.9f;
+ #define DEFAULT_PIXELS_PER_EM        10.0f
+ #define DEFAULT_SYSTEM_FONT_SIZE     10.0f
+ #define DEFAULT_SCREEN_DPI           96.0f
+ #define DEFAULT_GRAVITY              GRAVITY_NORTH_EAST
++short SLOT_ALLOCATION  = SLOT_ALLOCATION_DYNAMIC;
+ 
+ /* these values are interpreted as milliseconds-measurements and do comply to
+  * the visual guide for jaunty-notifications */
+-#define DEFAULT_FADE_IN_TIMEOUT      250
+-#define DEFAULT_FADE_OUT_TIMEOUT     1000
+-#define DEFAULT_ON_SCREEN_TIMEOUT    10000
++float DEFAULT_FADE_IN_TIMEOUT  = 250;
++float DEFAULT_FADE_OUT_TIMEOUT  = 1000;
++float DEFAULT_ON_SCREEN_TIMEOUT  = 10000;
+ 
+ /* notify-osd settings */
+ #define NOTIFY_OSD_SCHEMA            "com.canonical.notify-osd"
+@@ -236,7 +237,7 @@
+ 	gravity = g_settings_get_int (self->nosd_settings, GSETTINGS_GRAVITY_KEY);
+ 
+ 	// protect against out-of-bounds values for gravity
+-	if (gravity != GRAVITY_EAST && gravity != GRAVITY_NORTH_EAST)
++	if (gravity != GRAVITY_EAST && gravity != GRAVITY_NORTH_EAST && gravity != GRAVITY_WEST && gravity != GRAVITY_NORTH_WEST && gravity != GRAVITY_SOUTH_EAST && gravity != GRAVITY_SOUTH_WEST)
+ 		gravity = DEFAULT_GRAVITY;
+ 
+ 	// update stored DPI-value
+@@ -479,7 +480,7 @@
+ 					  self);
+ 
+ 	// use fixed slot-allocation for async. and sync. bubbles
+-	self->slot_allocation = SLOT_ALLOCATION_FIXED;
++	self->slot_allocation = SLOT_ALLOCATION;
+ }
+ 
+ static void
+@@ -1340,7 +1341,7 @@
+ 				"gravity",
+ 				"Positional hint for placing bubbles",
+ 				0,
+-				2,
++				6,
+ 				DEFAULT_GRAVITY,
+ 				G_PARAM_CONSTRUCT |
+ 				G_PARAM_READWRITE |
+@@ -1378,6 +1379,17 @@
+ 	return self->desktop_height;
+ }
+ 
++gint
++defaults_get_desktop_left (Defaults* self)
++{
++	gint left_edge;
++
++	if (!self || !IS_DEFAULTS (self))
++		return 0;
++
++	return self->desktop_left;
++}
++
+ gdouble
+ defaults_get_desktop_bottom_gap (Defaults* self)
+ {
+diff -ruN src_old/defaults.h src/defaults.h
+--- src_old/defaults.h
++++ src/defaults.h
+@@ -59,7 +59,13 @@
+ {
+         GRAVITY_NONE = 0,
+         GRAVITY_NORTH_EAST, // top-right of screen
+-        GRAVITY_EAST        // vertically centered at right of screen
++        GRAVITY_EAST,       // vertically centered at right of screen
++        GRAVITY_SOUTH_EAST,  // bottom-right of screen
++        GRAVITY_SOUTH_WEST,  // bottom-left of screen
++        GRAVITY_WEST,  // vertically centered at left of screen
++        GRAVITY_NORTH_WEST		// top-left of screen
++        
++        
+ } Gravity;
+ 
+ typedef enum
+@@ -79,6 +85,7 @@
+ 	GSettings*     gnome_settings;
+ 	gint           desktop_width;
+ 	gint           desktop_height;
++	gint           desktop_left;
+ 	gdouble        desktop_bottom_gap;
+ 	gdouble        stack_height;
+ 	gdouble        bubble_vert_gap;
+diff -ruN src_old/display.c src/display.c
+--- src_old/display.c
++++ src/display.c
+@@ -314,8 +314,10 @@
+ 		return FALSE;
+ 	}
+ 
++    /*
+ 	bubble_set_timeout (bubble,
+ 			    defaults_get_on_screen_timeout (self->defaults));
++                */
+ 
+ 	defaults_get_top_corner (self->defaults, &screen, &x, &y);
+ 
+diff -ruN src_old/main.c src/main.c
+--- src_old/main.c
++++ src/main.c
+@@ -25,6 +25,10 @@
+ ** with this program.  If not, see <http://www.gnu.org/licenses/>.
+ **
+ *******************************************************************************/
++#define _GNU_SOURCE    /* getline */
++#include <unistd.h>    /* getuid */
++#include <pwd.h>       /* getpwuid */
++#include <sys/types.h>
+ 
+ #include <string.h>
+ #include <stdlib.h>
+@@ -39,6 +43,213 @@
+ 
+ #define ICONS_DIR  (DATADIR G_DIR_SEPARATOR_S "notify-osd" G_DIR_SEPARATOR_S "icons")
+ 
++/* begin hack */
++extern float TEXT_TITLE_COLOR_R;
++extern float TEXT_TITLE_COLOR_G;
++extern float TEXT_TITLE_COLOR_B;
++extern float TEXT_TITLE_COLOR_A;
++
++extern float TEXT_BODY_COLOR_R;
++extern float TEXT_BODY_COLOR_G;
++extern float TEXT_BODY_COLOR_B;
++extern float TEXT_BODY_COLOR_A;
++
++extern float TEXT_SHADOW_COLOR_A;
++
++extern float BUBBLE_BG_COLOR_R;
++extern float BUBBLE_BG_COLOR_G;
++extern float BUBBLE_BG_COLOR_B;
++extern float BUBBLE_BG_COLOR_A;
++
++extern float DEFAULT_TEXT_TITLE_SIZE;
++extern float DEFAULT_TEXT_BODY_SIZE;
++extern float DEFAULT_ON_SCREEN_TIMEOUT;
++
++extern short DEFAULT_TEXT_TITLE_WEIGHT;
++extern short DEFAULT_TEXT_BODY_WEIGHT;
++extern short SLOT_ALLOCATION;
++
++extern float DEFAULT_MARGIN_SIZE;
++extern float DEFAULT_BUBBLE_CORNER_RADIUS;
++extern float DEFAULT_BUBBLE_WIDTH;
++extern float DEFAULT_BUBBLE_VERT_GAP;
++extern float DEFAULT_BUBBLE_HORZ_GAP;
++extern float DEFAULT_ICON_SIZE;
++extern float DEFAULT_GAUGE_SIZE;
++
++extern gboolean BUBBLE_PREVENT_FADE;
++extern gboolean BUBBLE_CLOSE_ON_CLICK;
++extern gboolean BUBBLE_AS_DESKTOP_BG;
++
++void parse_color(unsigned int c, float* r, float* g, float* b) 
++{
++    *b = (float)(c & 0xFF) / (float)(0xFF);
++    c >>= 8;
++    *g = (float)(c & 0xFF) / (float)(0xFF);
++    c >>= 8;
++    *r = (float)(c & 0xFF) / (float)(0xFF);
++}
++
++
++void load_settings(void)
++{
++    char file[PATH_MAX];
++    uid_t uid = getuid();
++    const char* settings_file_name = ".notify-osd";
++    
++    struct passwd* pw = getpwuid(uid);
++    if (!pw) {
++        fprintf(stderr,
++                "failed to retrieve home directory. using default settings.\n");
++        return;
++    }
++    /* $HOME/.notify-osd */
++    snprintf(file, sizeof(file), "%s%s%s", pw->pw_dir,
++             G_DIR_SEPARATOR_S, settings_file_name);
++
++    FILE* fp = fopen(file, "r");
++
++    if (!fp) {
++        fprintf(stderr, "could not open '%s'. using default settings.\n", file);
++        return;
++
++    }
++    printf("reading settings from '%s'\n", file);
++
++    char* buf = NULL;
++    size_t size = 0;
++    char key[32], value[32];
++    float fvalue;
++    unsigned int ivalue;
++ 
++    while(getline(&buf, &size, fp) != -1) {
++        if (sscanf(buf, "%31s = %31s", key, value) != 2)
++            continue;
++        if (!strcmp(key, "bubble-background-color") &&
++            sscanf(value, "%x", &ivalue)) {
++
++            parse_color(ivalue, &BUBBLE_BG_COLOR_R, &BUBBLE_BG_COLOR_G,
++                        &BUBBLE_BG_COLOR_B);
++            
++
++        } else if (!strcmp(key, "bubble-background-opacity") &&
++                   sscanf(value, "%f", &fvalue)) {
++            
++            BUBBLE_BG_COLOR_A = fvalue*0.01;
++            
++        } else if (!strcmp(key, "text-title-color")  &&
++                   sscanf(value, "%x", &ivalue) ) {
++
++            parse_color(ivalue, &TEXT_TITLE_COLOR_R, &TEXT_TITLE_COLOR_G,
++                        &TEXT_TITLE_COLOR_B);
++            
++        } else if (!strcmp(key, "text-title-opacity") &&
++                   sscanf(value, "%f", &fvalue) ) {
++            
++            TEXT_TITLE_COLOR_A = fvalue*0.01;
++            
++        } else if (!strcmp(key, "text-body-color")  &&
++                   sscanf(value, "%x", &ivalue) ) {
++
++            parse_color(ivalue, &TEXT_BODY_COLOR_R, &TEXT_BODY_COLOR_G,
++                        &TEXT_BODY_COLOR_B);
++
++        } else if (!strcmp(key, "text-body-opacity") &&
++                   sscanf(value, "%f", &fvalue) ) {
++            
++            TEXT_BODY_COLOR_A = fvalue*0.01;
++            
++        } else if (!strcmp(key, "text-shadow-opacity") &&
++                   sscanf(value, "%f", &fvalue) ) {
++            
++            TEXT_SHADOW_COLOR_A = fvalue*0.01;
++            
++        } else if (!strcmp(key, "text-title-size") &&
++                   sscanf(value, "%f", &fvalue) ) {
++            DEFAULT_TEXT_TITLE_SIZE = fvalue*0.01;
++            
++        } else if (!strcmp(key, "text-body-size") &&
++                   sscanf(value, "%f", &fvalue) ) {
++            DEFAULT_TEXT_BODY_SIZE = fvalue*0.01;
++            
++        } else if (!strcmp(key, "bubble-expire-timeout") &&
++                   sscanf(value, "%f", &fvalue) ) {
++            DEFAULT_ON_SCREEN_TIMEOUT = fvalue*1000;
++            
++        } else if (!strcmp(key, "text-title-weight")) {
++					if (!strcmp(value, "bold")) {
++						DEFAULT_TEXT_TITLE_WEIGHT = 700;
++					} else	if (!strcmp(value, "normal")) {
++						DEFAULT_TEXT_TITLE_WEIGHT = 400;
++					} else	if (!strcmp(value, "light")) {
++						DEFAULT_TEXT_TITLE_WEIGHT = 300;
++					}
++        } else if (!strcmp(key, "text-body-weight")) {
++					if (!strcmp(value, "bold")) {
++						DEFAULT_TEXT_BODY_WEIGHT = 700;
++					} else	if (!strcmp(value, "normal")) {
++						DEFAULT_TEXT_BODY_WEIGHT = 400;
++					} else	if (!strcmp(value, "light")) {
++						DEFAULT_TEXT_BODY_WEIGHT = 300;
++					}
++        } else if (!strcmp(key, "text-margin-size") &&
++                   sscanf(value, "%f", &fvalue) ) {
++            DEFAULT_MARGIN_SIZE = fvalue*0.1;
++            
++        } else if (!strcmp(key, "bubble-corner-radius") &&
++                   sscanf(value, "%f", &fvalue) ) {
++            DEFAULT_BUBBLE_CORNER_RADIUS = fvalue*0.01;
++            
++        } else if (!strcmp(key, "bubble-width") &&
++                   sscanf(value, "%f", &fvalue) ) {
++            DEFAULT_BUBBLE_WIDTH = fvalue*0.1;
++            
++        } else if (!strcmp(key, "slot-allocation")) {
++					if (!strcmp(value, "dynamic")) {
++						SLOT_ALLOCATION = SLOT_ALLOCATION_DYNAMIC;
++					} else	if (!strcmp(value, "fixed")) {
++						SLOT_ALLOCATION = SLOT_ALLOCATION_FIXED;
++					}
++        } else if (!strcmp(key, "bubble-vertical-gap") &&
++                   sscanf(value, "%f", &fvalue) ) {
++            DEFAULT_BUBBLE_VERT_GAP = fvalue*0.1;
++            
++        } else if (!strcmp(key, "bubble-horizontal-gap") &&
++                   sscanf(value, "%f", &fvalue) ) {
++            DEFAULT_BUBBLE_HORZ_GAP = fvalue*0.1;
++            
++        } else if (!strcmp(key, "bubble-icon-size") &&
++                   sscanf(value, "%f", &fvalue) ) {
++            DEFAULT_ICON_SIZE = fvalue*0.1;
++            
++        } else if (!strcmp(key, "bubble-gauge-size") &&
++                   sscanf(value, "%f", &fvalue) ) {
++            DEFAULT_GAUGE_SIZE = fvalue*0.1;
++            
++        } else if (!strcmp(key, "bubble-prevent-fade") &&
++                   sscanf(value, "%d", &ivalue) ) {
++            BUBBLE_PREVENT_FADE = ivalue;
++
++        } else if (!strcmp(key, "bubble-close-on-click") &&
++                   sscanf(value, "%d", &ivalue) ) {
++            BUBBLE_CLOSE_ON_CLICK = ivalue;
++
++        } else if (!strcmp(key, "bubble-as-desktop-bg") &&
++                   sscanf(value, "%d", &ivalue) ) {
++            BUBBLE_AS_DESKTOP_BG = ivalue;
++
++        }
++        
++    }
++
++    if (buf) {
++        free(buf);
++    }
++
++    fclose(fp);
++}
++/* end hack */
++
+ int
+ main (int    argc,
+       char** argv)
+@@ -57,6 +268,8 @@
+ 	gtk_icon_theme_append_search_path(gtk_icon_theme_get_default(),
+ 	                                  ICONS_DIR);
+ 
++	load_settings();
++	
+ 	defaults = defaults_new ();
+ 	observer = observer_new ();
+ 	stack = stack_new (defaults, observer);
+diff -ruN src_old/stack.c src/stack.c
+--- src_old/stack.c
++++ src/stack.c
+@@ -44,6 +44,7 @@
+ G_DEFINE_TYPE (Stack, stack, G_TYPE_OBJECT);
+ 
+ #define FORCED_SHUTDOWN_THRESHOLD 500
++#define NOTIFY_EXPIRES_DEFAULT -1
+ 
+ /* fwd declaration */
+ void close_handler (GObject* n, Stack*  stack);
+@@ -674,6 +675,15 @@
+ 	if (body)
+ 		bubble_set_message_body (bubble, body);
+ 
++    if (timeout == NOTIFY_EXPIRES_DEFAULT) {
++        bubble_set_timeout (bubble,
++                            defaults_get_on_screen_timeout (self->defaults));
++    }
++    else {
++        bubble_set_timeout (bubble, timeout);
++    }
++			    
++
+ 	if (new_bubble && bubble_is_append_allowed(bubble)) {
+ 		app_bubble = find_bubble_for_append(self, bubble);
+ 
+@@ -984,8 +994,54 @@
+ 					case SLOT_ALLOCATION_FIXED:
+ 						*y += EM2PIXELS (defaults_get_icon_size (d), d) +
+ 						      2 * EM2PIXELS (defaults_get_margin_size (d), d) +
+-						      EM2PIXELS (defaults_get_bubble_vert_gap (d), d); /* +
+-						      2 * EM2PIXELS (defaults_get_bubble_shadow_size (d, is_composited), d);*/
++						      EM2PIXELS (defaults_get_bubble_vert_gap (d), d) + 2;
++					break;
++
++					case SLOT_ALLOCATION_DYNAMIC:
++						g_assert (stack_is_slot_vacant (self, SLOT_TOP) == OCCUPIED);
++						*y += bubble_get_height (self->slots[SLOT_TOP]) +
++						      EM2PIXELS (defaults_get_bubble_vert_gap (d), d) -
++						      2 * EM2PIXELS (defaults_get_bubble_shadow_size (d, is_composited), d);
++					break;
++
++					default:
++					break;
++				}
++
++			}
++		break;
++		
++		case GRAVITY_WEST:
++			d = self->defaults;
++
++			*x = defaults_get_desktop_left (d);
++
++			// the position for the sync./feedback bubble
++			if (slot == SLOT_TOP)
++				*y += defaults_get_desktop_height (d) / 2 -
++				      EM2PIXELS (defaults_get_bubble_vert_gap (d) / 2.0f, d) -
++				      bubble_height +
++				      EM2PIXELS (defaults_get_bubble_shadow_size (d, is_composited), d);
++			// the position for the async. bubble
++			else if (slot == SLOT_BOTTOM)
++				*y += defaults_get_desktop_height (d) / 2 +
++				      EM2PIXELS (defaults_get_bubble_vert_gap (d) / 2.0f, d) -
++				      EM2PIXELS (defaults_get_bubble_shadow_size (d, is_composited), d);
++		break;
++
++		case GRAVITY_NORTH_WEST:
++			d = self->defaults;
++
++			*x = defaults_get_desktop_left (d);
++
++			if (slot == SLOT_BOTTOM)
++			{
++				switch (defaults_get_slot_allocation (d))
++				{
++					case SLOT_ALLOCATION_FIXED:
++						*y += EM2PIXELS (defaults_get_icon_size (d), d) +
++						      2 * EM2PIXELS (defaults_get_margin_size (d), d) +
++						      EM2PIXELS (defaults_get_bubble_vert_gap (d), d) + 2;
+ 					break;
+ 
+ 					case SLOT_ALLOCATION_DYNAMIC:
+@@ -1001,6 +1057,114 @@
+ 
+ 			}
+ 		break;
++		
++ 		case GRAVITY_SOUTH_EAST:
++ 			d = self->defaults;
++ 			
++			switch (defaults_get_slot_allocation (d))
++			{
++				case SLOT_ALLOCATION_FIXED:
++					if (slot == SLOT_TOP)
++					{
++						*y += defaults_get_desktop_height (d) -
++							  2 * EM2PIXELS (defaults_get_bubble_vert_gap (d), d) -
++							  bubble_height +
++							  2 * EM2PIXELS (defaults_get_bubble_shadow_size (d, is_composited), d);
++							  
++					}
++		 
++					if (slot == SLOT_BOTTOM)
++					{
++						*y += defaults_get_desktop_height (d) -
++							  bubble_height -
++							  EM2PIXELS (defaults_get_icon_size (d), d) -
++						      2 * EM2PIXELS (defaults_get_margin_size (d), d) -
++						      3 * EM2PIXELS (defaults_get_bubble_vert_gap (d), d) +
++						      2 * EM2PIXELS (defaults_get_bubble_shadow_size (d, is_composited), d) - 2;
++							  
++					}
++				break;
++
++				case SLOT_ALLOCATION_DYNAMIC:
++					if (slot == SLOT_TOP)
++					{
++						*y += defaults_get_desktop_height (d) -
++							  2 * EM2PIXELS (defaults_get_bubble_vert_gap (d), d) -
++							  bubble_height +
++							  2 * EM2PIXELS (defaults_get_bubble_shadow_size (d, is_composited), d);
++					}
++		 
++					if (slot == SLOT_BOTTOM)
++					{
++						g_assert (stack_is_slot_vacant (self, SLOT_TOP) == OCCUPIED);
++						*y += defaults_get_desktop_height (d) -
++							  3 * EM2PIXELS (defaults_get_bubble_vert_gap (d), d) -
++							  bubble_height +
++							  4 * EM2PIXELS (defaults_get_bubble_shadow_size (d, is_composited), d) -
++							  bubble_get_height (self->slots[SLOT_TOP]);
++					}
++				break;
++
++				default:
++				break;
++			}
++				
++		break;
++		
++ 		case GRAVITY_SOUTH_WEST:
++ 			d = self->defaults;
++ 			
++ 			*x = defaults_get_desktop_left (d);
++ 			
++			switch (defaults_get_slot_allocation (d))
++			{
++				case SLOT_ALLOCATION_FIXED:
++					if (slot == SLOT_TOP)
++					{
++						*y += defaults_get_desktop_height (d) -
++							  2 * EM2PIXELS (defaults_get_bubble_vert_gap (d), d) -
++							  bubble_height +
++							  2 * EM2PIXELS (defaults_get_bubble_shadow_size (d, is_composited), d);
++							  
++					}
++		 
++					if (slot == SLOT_BOTTOM)
++					{
++						*y += defaults_get_desktop_height (d) -
++							  bubble_height -
++							  EM2PIXELS (defaults_get_icon_size (d), d) -
++						      2 * EM2PIXELS (defaults_get_margin_size (d), d) -
++						      3 * EM2PIXELS (defaults_get_bubble_vert_gap (d), d) +
++						      2 * EM2PIXELS (defaults_get_bubble_shadow_size (d, is_composited), d) - 2;
++							  
++					}
++				break;
++
++				case SLOT_ALLOCATION_DYNAMIC:
++					if (slot == SLOT_TOP)
++					{
++						*y += defaults_get_desktop_height (d) -
++							  2 * EM2PIXELS (defaults_get_bubble_vert_gap (d), d) -
++							  bubble_height +
++							  2 * EM2PIXELS (defaults_get_bubble_shadow_size (d, is_composited), d);
++					}
++		 
++					if (slot == SLOT_BOTTOM)
++					{
++						g_assert (stack_is_slot_vacant (self, SLOT_TOP) == OCCUPIED);
++						*y += defaults_get_desktop_height (d) -
++							  3 * EM2PIXELS (defaults_get_bubble_vert_gap (d), d) -
++							  bubble_height +
++							  4 * EM2PIXELS (defaults_get_bubble_shadow_size (d, is_composited), d) -
++							  bubble_get_height (self->slots[SLOT_TOP]);
++					}
++				break;
++
++				default:
++				break;
++			}
++				
++		break;
+ 
+ 		default:
+ 			g_warning ("Unhandled placement!\n");

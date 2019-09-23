@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Thu Nov 22 20:57:50 UTC 2018 - Axel Braun <axel.braun@gmx.de>
+
+- vewrsion 0.10.3
+  Check for binary type before encoding
+
+-------------------------------------------------------------------
+Thu Sep 21 14:24:15 UTC 2017 - toddrme2178@gmail.com
+
+- Fix summary and description
+- Get unit tests working.
+- Disable python2 buil. This package is not compatible with python2
+
+-------------------------------------------------------------------
+Mon Sep 18 17:07:32 UTC 2017 - toddrme2178@gmail.com
+
+- Add provides/obsoletes for python-PyWebDav
+- Implement update-alternatives for compatibility with
+  python-PyWebDAV3
+
+-------------------------------------------------------------------
+Thu Sep  7 22:40:42 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

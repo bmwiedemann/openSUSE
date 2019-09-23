@@ -1,0 +1,7 @@
+<services>
+  <service name="download_url" mode="disabled">
+    <param name="protocol">https</param>
+    <param name="host">github.com</param>
+    <param name="path">/kubic-project/velum/archive/master.tar.gz</param>
+  </service>
+</services>

@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Thu Aug 15 13:17:05 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Fix wildcard for ip6t_.*
+
+-------------------------------------------------------------------
+Thu Aug  8 21:35:08 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Shorten module list by using wildcards.
+
+-------------------------------------------------------------------
+Fri Jul 26 12:43:32 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Add all netfilter and xfrm modules (boo#1142841)
+
+-------------------------------------------------------------------
+Thu Apr 11 19:27:52 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- dw_mmc-bluefield is not needed in kernel-default-base (bsc#1131574).
+
+-------------------------------------------------------------------
+Thu Apr  4 14:37:46 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Add dw_mmc-bluefield driver (bsc#1118752)
+
+-------------------------------------------------------------------
+Thu Apr  4 11:45:00 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Add back bpfilter, got lost during split (boo#1106751)
+
+-------------------------------------------------------------------
+Wed Mar 27 09:22:05 UTC 2019 - lnussel@suse.de
+
+- Limit build architectures on SLE to the ones that actually have a kernel in
+  SLE (ie not i586).
+
+-------------------------------------------------------------------
+Fri Mar 15 21:23:24 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Separate kernel-deafult-base from kernel-default (FATE#326579,
+		jsc#SLE-4117, jsc#SLE-3853, bsc#1128910).

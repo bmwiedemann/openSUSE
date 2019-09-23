@@ -1,0 +1,255 @@
+-------------------------------------------------------------------
+Sun Sep 16 15:31:38 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * be more specific in %files section
+
+- update to version 0.4.15:
+  * Support for RISC-V architecture
+  * Workaround a gcc bug on ppc64
+
+-------------------------------------------------------------------
+Tue Aug  7 15:26:22 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.4.14
+  * Support for C-SKY architecture
+  * Fixed support for ppc64 ABI
+  * Fixed support for Python 3.7
+- Remove upstream-included greenlet-ppc64le.patch
+
+-------------------------------------------------------------------
+Fri Feb  2 13:34:46 UTC 2018 - tchvatal@suse.com
+
+- Add patch to fix build on ppc64le to not clobber r2 register:
+  * greenlet-ppc64le.patch
+
+-------------------------------------------------------------------
+Fri Feb  2 13:32:25 UTC 2018 - tchvatal@suse.com
+
+- Version update to 0.4.13:
+  * Support for Python 3.7
+  * Support for MinGW x64
+
+-------------------------------------------------------------------
+Wed Apr 19 17:46:25 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 0.4.12
+  * Stop using trashcan api
+- Update to 0.4.11
+  * Fixes for aarch64 architecture
+- Implement singlespec version
+
+-------------------------------------------------------------------
+Fri Sep  2 21:10:46 UTC 2016 - tbechtold@suse.com
+
+- update to 4.10.0:
+  - Added missing files to manifest
+  - Added workaround for ppc32 on Linux
+  - Start building binary manylinux1 wheels
+- Use pypi.io as Source url
+
+-------------------------------------------------------------------
+Sat Apr 16 21:29:08 UTC 2016 - t.gruner@katodev.de
+
+- update to 0.4.9
+- remove ppc64le-support.patch (is part of this version now)
+
+-------------------------------------------------------------------
+Mon Jun 22 14:34:33 UTC 2015 - tbechtold@suse.com
+
+- update to 0.4.7:
+  - Added a missing workaround for `return 0` on mips
+  - Restore compatibility with Python 2.5
+  - Fixed stack switching on sparc
+
+-------------------------------------------------------------------
+Wed May  6 12:29:51 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.4.6:
+  * Expose `_stack_saved` property on greenlet objects, it may be
+    used to introspect the amount of memory used by a saved stack,
+    but the API is subject to change in the future
+  * Added a workaround for `return 0` compiler optimizations on all
+    architectures
+  * C API typo fixes
+- add -fno-strict-aliasing to CFLAGS to fix compiler warnings
+- remove hidden file .buildinfo from html documentation
+
+-------------------------------------------------------------------
+Tue Nov 18 13:57:34 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 0.4.5
+  - Fixed several bugs in greenlet C API
+  - Fixed a bug in multi-threaded applications, which manifested itself
+    with spurious "cannot switch to a different thread" exceptions
+  - Fixed some crashes on arm and mips architectures
+
+-------------------------------------------------------------------
+Thu Nov  6 04:56:09 UTC 2014 - tserong@suse.com
+
+- Include LICENSE and LICENSE.PSF in package
+
+-------------------------------------------------------------------
+Mon Nov  3 22:19:05 UTC 2014 - dvaleev@suse.com
+
+- build with -fno-tree-dominator-opts (boo#902146) 
+
+-------------------------------------------------------------------
+Fri Sep 12 21:22:30 UTC 2014 - dmueller@suse.com
+
+- update to 0.4.4:
+  - Fixed PyGreenlet_SetParent signature, thanks to BoonsNaibot
+  - Fixed 64-bit Windows builds depending on wrong runtime dll
+
+-------------------------------------------------------------------
+Fri Aug 15 11:58:41 UTC 2014 - mcihar@suse.cz
+
+- Update to version 0.4.3:
+  + Better slp_switch performance on SPARC
+  + Drop support for Python 2.3
+  + Fix trashcan assertions on debug builds of Python
+  + Remove deprecated -fno-tree-dominator-opts compiler switch
+  + Enable switch code for SunStudio on 32-bit SunOS
+  + Support for abc abstract methods in greenlet subclasses
+  + Support custom directories for tests
+  + Document switch tracing support
+
+-------------------------------------------------------------------
+Fri Jan 17 15:26:02 UTC 2014 - speilicke@suse.com
+
+- Update to version 0.4.2:
+  + Add .travis.yml
+  + Fix 'err' may be used uninitialized in this function
+  + Check _MSC_VER for msvc specific code
+  + Fix slp_switch on SPARC for multi-threaded environments
+  + Add support for m68k
+
+-------------------------------------------------------------------
+Tue Dec 10 12:33:07 UTC 2013 - uweigand@de.ibm.com
+
+- ppc64le-support.patch: Support powerpc64le-linux (ELFv2 ABI).
+  Save/restore vector and floating-point registers as well on ppc.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:06:14 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Thu Aug  8 10:54:47 UTC 2013 - dvaleev@suse.com
+
+- run tests we optflags. Stuff got compiled in %check again. 
+
+-------------------------------------------------------------------
+Tue Aug  6 12:34:48 UTC 2013 - speilicke@suse.com
+
+- Drop python-greenlet-aarch64-support.diff
+
+-------------------------------------------------------------------
+Mon Jun 10 12:35:26 UTC 2013 - dmueller@suse.com
+
+- update to 0.4.1:
+  * fix segfaults when using gcc 4.8 on amd64/x86 unix
+  * try to disable certain gcc 4.8 optimizations that make greenlet
+    crash
+  * Fix greenlet on aarch64 with gcc 4.8
+  * workaround segfault on SunOS/sun4v
+  * Add support for Aarch64
+  * Add support for x32 psABI on x86_64
+  * Changed memory constraints for assembly macro for PPC Linux
+  platforms.
+- remove python-greenlet-aarch64-support.diff
+
+-------------------------------------------------------------------
+Mon Apr  8 11:40:21 UTC 2013 - matz@suse.de
+
+- Add python-greenlet-aarch64-support.diff, for, well, aarch64
+  support.
+
+-------------------------------------------------------------------
+Wed Jan  2 18:01:09 UTC 2013 - toddrme2178@gmail.com
+
+- Fix building on SLES
+
+-------------------------------------------------------------------
+Wed Dec 19 15:52:27 UTC 2012 - saschpe@suse.de
+
+- The devel subpackage contains only headers and thus is noarch
+
+-------------------------------------------------------------------
+Fri Nov 23 12:05:16 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.4.0:
+  + Greenlet has an instance dictionary now, which means it can be
+    used for implementing greenlet local storage, etc. However, this
+    might introduce incompatibility if subclasses have __dict__ in their
+    __slots__. Classes like that will fail, because greenlet already
+    has __dict__ out of the box.
+  + Greenlet no longer leaks memory after thread termination, as long as
+    terminated thread has no running greenlets left at the time.
+  + Add support for debian sparc and openbsd5-sparc64
+  + Add support for ppc64 linux
+  + Don't allow greenlets to be copied with copy.copy/deepcopy
+  + Fix arm32/thumb support
+  + Restore greenlet's parent after kill
+  + Add experimental greenlet tracing
+- Changes from version 0.3.4:
+  + Use plain distutils for install command, this fixes installation of
+    the greenlet.h header.
+  + Enhanced arm32 support
+  + Fix support for Linux/S390 zSeries
+  + Workaround compiler bug on RHEL 3 / CentOS 3
+- Changes from version 0.3.3:
+  + Use sphinx to build documentation and publish it on greenlet.rtfd.org
+  + Prevent segfaults on openbsd 4/i386
+  + Workaround gcc-4.0 not allowing to clobber rbx
+  + Enhance test infrastructure
+  + Fix possible compilation problems when including greenlet.h in C++ mode
+  + Make the greenlet module work on x64 windows
+  + Add a test for greenlet C++ exceptions
+  + Fix compilation on Solaris with SunStudio
+- Changes from version 0.3.2:
+  + Fix various crashes with recent gcc versions and VC90
+  + Try to fix stack save/restore on arm32
+  + Store and restore the threadstate on exceptions like pypy/stackless do
+  + GreenletExit is now based on BaseException on Python >= 2.5
+  + Switch to using PyCapsule for Python 2.7 and 3.1
+  + Port for AIX on PowerPC
+  + Fix the sparc/solaris header
+  + Improved build dependencies patch from flub.
+  + Can't pass parent=None to greenlet.greenlet() (fixes #21)
+  + Rudimentary gc support (only non-live greenlets are garbage collected though)
+- Dropped the following patches (merged upstream):
+  + get-rid-of-ts_origin.patch
+  + i686-register-fixes.patch
+  + ppc-support.patch
+  + ppc64-support.patch
+- Build HTML documentation
+
+-------------------------------------------------------------------
+Tue Jul  3 09:53:32 UTC 2012 - dvaleev@suse.com
+
+- add ppc64 platform support
+- fix ppc platform 
+
+-------------------------------------------------------------------
+Fri Dec 23 13:20:47 UTC 2011 - idonmez@suse.com
+
+- Add upstream commits 25bf29f4d3b7 and 2d5b17472757 (bnc#738431) 
+- Implement %check
+
+-------------------------------------------------------------------
+Wed Sep 21 09:35:58 UTC 2011 - saschpe@suse.de
+
+- Spec file cleanup:
+  * BuildRequire modern python-distribute instead of python-setuptools
+  * No need for changing executable bits for benchmarks
+  * Use SUSE version checks around specific macros
+  * Only require %{name} = %{version} in devel package
+
+-------------------------------------------------------------------
+Fri Nov 26 14:44:42 UTC 2010 - seife+obs@b1-systems.com
+
+- initial package (version 0.3.1)
+

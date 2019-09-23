@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d2c595dffed56eb39395e86653eba4c0</srcmd5>
+    <version>13.1</version>
+    <time>1388395376</time>
+    <user>coolo</user>
+    <comment>Mate for OpenSUSE see http://lists.opensuse.org/opensuse-factory/2013-09/msg00387.html</comment>
+    <requestid>211712</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>41d6a8865319db43c18b232b0d0b9efe</srcmd5>
+    <version>13.2</version>
+    <time>1395495919</time>
+    <user>coolo</user>
+    <comment>Full of changes (forwarded request 226470 from posophe)</comment>
+    <requestid>226471</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>46ec5c6ecbe94754c12dc598b4e24d3e</srcmd5>
+    <version>13.2</version>
+    <time>1397042107</time>
+    <user>coolo</user>
+    <comment>Revert last change (forwarded request 229406 from posophe)</comment>
+    <requestid>229407</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>2fcbdb1b21626ec7aa5e432bb258dd9a</srcmd5>
+    <version>13.2</version>
+    <time>1399032027</time>
+    <user>coolo</user>
+    <comment>Fixes (forwarded request 232290 from posophe)</comment>
+    <requestid>232291</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>5f87c2008773cb85f8d9eff315f5491c</srcmd5>
+    <version>13.2</version>
+    <time>1405404048</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240764</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>5f87c2008773cb85f8d9eff315f5491c</srcmd5>
+    <version>13.2</version>
+    <time>1409301861</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>1139465c2f5960d1680aaea9ced6cc66</srcmd5>
+    <version>13.2</version>
+    <time>1412799243</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254693</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>4fa2064346c41baae1c297a52b5dbef3</srcmd5>
+    <version>13.2</version>
+    <time>1413616190</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257424</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>24b1f9ac3be5b35dadfe6b28637e1d0e</srcmd5>
+    <version>13.2</version>
+    <time>1414219680</time>
+    <user>coolo</user>
+    <comment>- Use Adwaita theme and Mate icons; because of troubles with GTK3
+  applications, it's better to use Gnome default theme
+
+Please relay on oS13.2</comment>
+    <requestid>258304</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>91b84e51d8e9a89382a03e1194e65343</srcmd5>
+    <version>13.2</version>
+    <time>1415289041</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259994</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>27ba252458d785fae63b05080227f397</srcmd5>
+    <version>13.2</version>
+    <time>1436331548</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314207</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c34948413ffb5508b5dc3918b16e2fc4</srcmd5>
+    <version>42.1</version>
+    <time>1447234269</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>342927</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>01a369b2e8f5d22266201aa00de30bd2</srcmd5>
+    <version>42.1</version>
+    <time>1452611544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>352339</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>d020c71014398e613ba69ef57a4090dc</srcmd5>
+    <version>42.1</version>
+    <time>1459845780</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>382620</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>789f21013c4e5454590918ca92f31f59</srcmd5>
+    <version>42.1</version>
+    <time>1460482723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>387426</requestid>
+  </revision>
+</revisionlist>

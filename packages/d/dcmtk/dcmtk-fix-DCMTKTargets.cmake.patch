@@ -1,0 +1,29 @@
+diff --git a/CMake/GenerateCMakeExports.cmake b/CMake/GenerateCMakeExports.cmake
+index 9a9feb3..e13332a 100644
+--- a/CMake/GenerateCMakeExports.cmake
++++ b/CMake/GenerateCMakeExports.cmake
+@@ -15,8 +15,9 @@
+ # DCMTKConfig.cmake will contain options used to build this DCMTK package
+ 
+ # Get and store all executable targets to DCMTKTargets.cmake within build's main dir
+-get_property(DCMTK_EXECUTABLE_TARGETS GLOBAL PROPERTY DCMTK_EXECUTABLE_TARGETS)
+-export(TARGETS ${DCMTK_EXECUTABLE_TARGETS} FILE "${DCMTK_BUILD_CMKDIR}/DCMTKTargets.cmake")
++## DO NOT TRACK EXECUTABLES, IT BREAKS usage of 'dcmtk-devel' without 'dcmtk' package
++#get_property(DCMTK_EXECUTABLE_TARGETS GLOBAL PROPERTY DCMTK_EXECUTABLE_TARGETS)
++#export(TARGETS ${DCMTK_EXECUTABLE_TARGETS} FILE "${DCMTK_BUILD_CMKDIR}/DCMTKTargets.cmake")
+ 
+ # Get and store libraries to DCMTKTargets.cmake within the build's main dir
+ get_property(DCMTK_LIBRARY_TARGETS GLOBAL PROPERTY DCMTK_LIBRARY_TARGETS)
+diff --git a/CMake/dcmtkMacros.cmake b/CMake/dcmtkMacros.cmake
+index db0cd51..3501818 100644
+--- a/CMake/dcmtkMacros.cmake
++++ b/CMake/dcmtkMacros.cmake
+@@ -64,7 +64,7 @@ macro(DCMTK_ADD_EXECUTABLE PROGRAM)
+ 
+         # declare installation files, also export DCMTKTargets.cmake
+         install(TARGETS ${PROGRAM}
+-                EXPORT DCMTKTargets
++                # EXPORT DCMTKTargets
+                 COMPONENT bin
+                 DESTINATION ${CMAKE_INSTALL_BINDIR})
+     endif()

@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bc8950d646844a78ce66688723915491</srcmd5>
+    <version>0.2.3.0</version>
+    <time>1504206199</time>
+    <user>dimstar_suse</user>
+    <comment>missing dependency for adi:49</comment>
+    <requestid>513609</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>42aeac391ade9490ab21c21e44e430ce</srcmd5>
+    <version>0.2.6.0</version>
+    <time>1527675269</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-th-abstraction to the latest version.</comment>
+    <requestid>607901</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>95def597096a0d6fad23838e35ff7b87</srcmd5>
+    <version>0.2.8.0</version>
+    <time>1532445768</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update th-abstraction to version 0.2.8.0.
+  ## 0.2.8.0 -- 2018-06-29
+  * GADT reification is now much more robust with respect to `PolyKinds`:
+    * A bug in which universally quantified kind variables were mistakenly
+      flagged as existential has been fixed.
+    * A bug in which the kinds of existentially quantified type variables
+      were not substituted properly has been fixed.
+    * More kind equalities are detected than before. For example, in the
+      following data type:
+      ```haskell
+      data T (a :: k) where
+        MkT :: forall (a :: Bool). T a
+      ```
+      We now catch the `k ~ Bool` equality.
+  * Tweak `resolveTypeSynonyms` so that failing to reify a type constructor
+    name so longer results in an error. Among other benefits, this makes
+    it possible to pass data types with GADT syntax to `normalizeDec`.
+  ## 0.2.7.0 -- 2018-06-17
+  * Fix bug in which data family instances with duplicate occurrences of type
+    variables in the left-hand side would have redundant equality constraints
+    in their contexts.</comment>
+    <requestid>623871</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2eae25f0cfcdad66e3351d48cf3b9b8e</srcmd5>
+    <version>0.2.8.0</version>
+    <time>1540451154</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643469</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7261748af9e8b6497fd66075933599f4</srcmd5>
+    <version>0.2.10.0</version>
+    <time>1545996919</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>661501</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9b5ccebe19eb7aa551bc3ff8aef9c316</srcmd5>
+    <version>0.2.11.0</version>
+    <time>1551883647</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>681688</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>89f2ce5955264082b761b03be805c7e3</srcmd5>
+    <version>0.3.1.0</version>
+    <time>1557389421</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>700204</requestid>
+  </revision>
+</revisionlist>

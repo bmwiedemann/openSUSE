@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4696babca9120f56a531b98dce999dce</srcmd5>
+    <version>2.0.4</version>
+    <time>1322738794</time>
+    <user>coolo</user>
+    <comment>needed for webyast</comment>
+    <requestid>94576</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1a6a7b27443d88b309ef6d046e976b44</srcmd5>
+    <version>2.0.4</version>
+    <time>1323194480</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1a6a7b27443d88b309ef6d046e976b44</srcmd5>
+    <version>2.0.4</version>
+    <time>1340184175</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>1a6a7b27443d88b309ef6d046e976b44</srcmd5>
+    <version>2.0.4</version>
+    <time>1359110345</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>1eacfb0e74046770df139ae59a3e2265</srcmd5>
+    <version>2.0.4</version>
+    <time>1364987162</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>161685</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>1eacfb0e74046770df139ae59a3e2265</srcmd5>
+    <version>2.0.4</version>
+    <time>1379664571</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>1eacfb0e74046770df139ae59a3e2265</srcmd5>
+    <version>2.0.4</version>
+    <time>1409303280</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>109a55c5316cd5af3ca5e24c97ec5fdc</srcmd5>
+    <version>2.0.4</version>
+    <time>1413987831</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>257648</requestid>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>99d6c407449118fb5ccc3246d9b70015</srcmd5>
+    <version>2.0.4</version>
+    <time>1460482363</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>384795</requestid>
+  </revision>
+</revisionlist>

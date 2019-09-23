@@ -1,0 +1,530 @@
+From: Egbert Eich <eich@freedesktop.org>
+Date: Tue May 6 16:31:19 2014 +0200
+Subject: [PATCH]Change shadow fb implementation from DDX based to miext/damage based
+Patch-mainline: to be upstreamed
+Git-commit: 2ef052a4baaed2d9fcc5e607a4673116b19c16b5
+Git-repo: ssh://git.freedesktop.org/git/xorg/driver/xf86-video-mga
+References: bnc#876098
+Signed-off-by: Egbert Eich <eich@suse.com>
+
+This fixes rendering artefacts with antialiased font drawing and
+gets rid of some code.
+
+Signed-off-by: Egbert Eich <eich@freedesktop.org>
+---
+ src/mga.h        |  12 +--
+ src/mga_driver.c |  70 ++++++++-------
+ src/mga_shadow.c | 266 +++++++++++--------------------------------------------
+ 3 files changed, 94 insertions(+), 254 deletions(-)
+
+Index: xf86-video-mga-2.0.0/src/mga.h
+===================================================================
+--- xf86-video-mga-2.0.0.orig/src/mga.h
++++ xf86-video-mga-2.0.0/src/mga.h
+@@ -539,7 +539,6 @@ typedef struct {
+     Bool		ShowCache;
+     Bool		ShadowFB;
+     unsigned char *	ShadowPtr;
+-    int			ShadowPitch;
+     int			MemClk;
+     int			MinClock;
+     int			MaxClock;
+@@ -576,6 +575,8 @@ typedef struct {
+     void		(*PointerMoved)(SCRN_ARG_TYPE arg, int x, int y);
+     CloseScreenProcPtr	CloseScreen;
+     ScreenBlockHandlerProcPtr BlockHandler;
++/* shadowfb */
++    CreateScreenResourcesProcPtr	CreateScreenResources;
+     unsigned int	(*ddc1Read)(ScrnInfoPtr);
+     void (*DDC1SetSpeed)(ScrnInfoPtr, xf86ddcSpeed);
+     Bool		(*i2cInit)(ScrnInfoPtr);
+@@ -743,19 +744,14 @@ void MGAPolyArcThinSolid(DrawablePtr, GC
+ 
+ Bool MGADGAInit(ScreenPtr pScreen);
+ 
+-void MGARefreshArea(ScrnInfoPtr pScrn, int num, BoxPtr pbox);
+-void MGARefreshArea8(ScrnInfoPtr pScrn, int num, BoxPtr pbox);
+-void MGARefreshArea16(ScrnInfoPtr pScrn, int num, BoxPtr pbox);
+-void MGARefreshArea24(ScrnInfoPtr pScrn, int num, BoxPtr pbox);
+-void MGARefreshArea32(ScrnInfoPtr pScrn, int num, BoxPtr pbox);
+-
+ void mgaDoSetupForScreenToScreenCopy( ScrnInfoPtr pScrn, int xdir,
+     int ydir, int rop, unsigned int planemask, int trans, unsigned int bpp );
+ 
+ void mgaDoSetupForSolidFill( ScrnInfoPtr pScrn, int color, int rop,
+     unsigned int planemask, unsigned int bpp );
+ 
+-void MGAPointerMoved(SCRN_ARG_TYPE arg, int x, int y);
++Bool MGAShadowInit(ScreenPtr pScreen);
++void MGAShadowPointerMoved(SCRN_ARG_TYPE arg, int x, int y);
+ 
+ void MGAInitVideo(ScreenPtr pScreen);
+ void MGAResetVideo(ScrnInfoPtr pScrn);
+Index: xf86-video-mga-2.0.0/src/mga_driver.c
+===================================================================
+--- xf86-video-mga-2.0.0.orig/src/mga_driver.c
++++ xf86-video-mga-2.0.0/src/mga_driver.c
+@@ -92,7 +92,7 @@
+ #endif
+ 
+ #include "xf86cmap.h"
+-#include "shadowfb.h"
++#include "shadow.h"
+ #include "fbdevhw.h"
+ 
+ #ifdef MGADRI
+@@ -2046,7 +2046,7 @@ MGAPreInit(ScrnInfoPtr pScrn, int flags)
+                 pMga->ShadowFB = TRUE;
+                 pMga->NoAccel = TRUE;
+                 pMga->HWCursor = FALSE;
+-                pMga->Rotate = 1;
++                pMga->Rotate = 270;
+                 xf86DrvMsg(pScrn->scrnIndex, X_CONFIG,
+                         "Rotating screen clockwise - acceleration disabled\n");
+             } else
+@@ -2054,10 +2054,17 @@ MGAPreInit(ScrnInfoPtr pScrn, int flags)
+                 pMga->ShadowFB = TRUE;
+                 pMga->NoAccel = TRUE;
+                 pMga->HWCursor = FALSE;
+-                pMga->Rotate = -1;
++                pMga->Rotate = 90;
+                 xf86DrvMsg(pScrn->scrnIndex, X_CONFIG,
+                         "Rotating screen counter clockwise - acceleration disabled\n");
+-            } else {
++            } else if(!xf86NameCmp(s, "UD")) {
++                pMga->ShadowFB = TRUE;
++                pMga->NoAccel = TRUE;
++                pMga->HWCursor = FALSE;
++                pMga->Rotate = 180;
++                xf86DrvMsg(pScrn->scrnIndex, X_CONFIG,
++                        "Rotating screen upside down - acceleration disabled\n");
++	    } else {
+                 xf86DrvMsg(pScrn->scrnIndex, X_CONFIG,
+                         "\"%s\" is not a valid value for Option \"Rotate\"\n", s);
+                 xf86DrvMsg(pScrn->scrnIndex, X_INFO,
+@@ -2078,6 +2085,7 @@ MGAPreInit(ScrnInfoPtr pScrn, int flags)
+ 		           "Falling back to shadowfb\n");
+ 		pMga->ShadowFB = TRUE;
+ 		pMga->NoAccel = TRUE;
++                pMga->HWCursor = FALSE;
+ 	    }
+ 	} else {
+ #endif
+@@ -2087,6 +2095,7 @@ MGAPreInit(ScrnInfoPtr pScrn, int flags)
+ 		           "Falling back to shadowfb\n");
+ 		pMga->ShadowFB = TRUE;
+ 		pMga->NoAccel = TRUE;
++                pMga->HWCursor = FALSE;
+ 	    }
+ #endif
+ #ifdef USE_EXA
+@@ -2605,7 +2614,7 @@ MGAPreInit(ScrnInfoPtr pScrn, int flags)
+ 
+     /* Load shadowfb if needed */
+     if (pMga->ShadowFB) {
+-	if (!xf86LoadSubModule(pScrn, "shadowfb")) {
++	if (!xf86LoadSubModule(pScrn, "shadow")) {
+ 	    MGAFreeRec(pScrn);
+ 	    return FALSE;
+ 	}
+@@ -3159,7 +3168,6 @@ MGACrtc2FillStrip(ScrnInfoPtr pScrn)
+     }
+ }
+ 
+-
+ /* Mandatory */
+ 
+ /* This gets called at the start of each server generation */
+@@ -3339,9 +3347,8 @@ MGAScreenInit(SCREEN_INIT_ARGS_DECL)
+     }
+ 
+     if(pMga->ShadowFB) {
+- 	pMga->ShadowPitch = BitmapBytePad(pScrn->bitsPerPixel * width);
+-	pMga->ShadowPtr = malloc(pMga->ShadowPitch * height);
+-	displayWidth = pMga->ShadowPitch / (pScrn->bitsPerPixel >> 3);
++	pMga->ShadowPtr = (unsigned char *)xnfcalloc(1, width * height *
++                                                     (pScrn->bitsPerPixel >> 3));
+         FBStart = pMga->ShadowPtr;
+     } else {
+ 	pMga->ShadowPtr = NULL;
+@@ -3380,7 +3387,7 @@ MGAScreenInit(SCREEN_INIT_ARGS_DECL)
+ 	  "Static buffer allocation failed, not initializing the DRI\n");
+        xf86DrvMsg(pScrn->scrnIndex, X_ERROR,
+ 	  "Need at least %d kB video memory at this resolution, bit depth\n",
+-	  (3 * displayWidth * height * (pScrn->bitsPerPixel >> 3)) / 1024 );
++          (3 * pScrn->displayWidth * height * (pScrn->bitsPerPixel >> 3)) / 1024 );
+        pMga->directRenderingEnabled = FALSE;
+     }
+     else {
+@@ -3390,7 +3397,7 @@ MGAScreenInit(SCREEN_INIT_ARGS_DECL)
+ 
+ 
+     if (!fbScreenInit(pScreen, FBStart, width, height, pScrn->xDpi,
+-		      pScrn->yDpi, displayWidth, pScrn->bitsPerPixel)) {
++		      pScrn->yDpi, pScrn->displayWidth, pScrn->bitsPerPixel)) {
+ 	return FALSE;
+     }
+ 
+@@ -3413,6 +3420,20 @@ MGAScreenInit(SCREEN_INIT_ARGS_DECL)
+     /* must be after RGB ordering fixed */
+     fbPictureInit (pScreen, 0, 0);
+ 
++    if (pMga->ShadowFB) {
++	if(pMga->Rotate) {
++	    if (!pMga->PointerMoved) {
++	    pMga->PointerMoved = pScrn->PointerMoved;
++	    pScrn->PointerMoved = MGAShadowPointerMoved;
++	    }
++	}
++        if (!MGAShadowInit(pScreen)) {
++            xf86DrvMsg(pScrn->scrnIndex, X_ERROR,
++                       "shadow framebuffer initialization failed\n");
++            return FALSE;
++        }
++    }
++
+     xf86SetBlackWhitePixels(pScreen);
+ 
+     pMga->BlockHandler = pScreen->BlockHandler;
+@@ -3469,26 +3490,6 @@ MGAScreenInit(SCREEN_INIT_ARGS_DECL)
+ 	NULL, f))
+ 	return FALSE;
+ 
+-    if(pMga->ShadowFB) {
+-	RefreshAreaFuncPtr refreshArea = MGARefreshArea;
+-
+-	if(pMga->Rotate) {
+-	    if (!pMga->PointerMoved) {
+-	    pMga->PointerMoved = pScrn->PointerMoved;
+-	    pScrn->PointerMoved = MGAPointerMoved;
+-	    }
+-
+-	   switch(pScrn->bitsPerPixel) {
+-	   case 8:	refreshArea = MGARefreshArea8;	break;
+-	   case 16:	refreshArea = MGARefreshArea16;	break;
+-	   case 24:	refreshArea = MGARefreshArea24;	break;
+-	   case 32:	refreshArea = MGARefreshArea32;	break;
+-	   }
+-	}
+-
+-	ShadowFBInit(pScreen, refreshArea);
+-    }
+-
+     xf86DPMSInit(pScreen, mga_dpms_set_proc, 0);
+ 
+     pScrn->memPhysBase = pMga->FbAddress;
+@@ -3812,7 +3813,11 @@ MGACloseScreen(CLOSE_SCREEN_ARGS_DECL)
+ #endif
+     if (pMga->CursorInfoRec)
+     	xf86DestroyCursorInfoRec(pMga->CursorInfoRec);
+-    free(pMga->ShadowPtr);
++    if (pMga->ShadowFB) {
++        shadowRemove(pScreen, pScreen->GetScreenPixmap(pScreen));
++        free(pMga->ShadowPtr);
++        pMga->ShadowPtr = NULL;
++    }
+     free(pMga->DGAModes);
+     free(pMga->adaptor);
+     free(pMga->portPrivate);
+@@ -4220,3 +4225,4 @@ MGAG100BlackMagic(ScrnInfoPtr pScrn)
+     OUTREG(MGAREG_MACCESS, 1<<15);
+     usleep(10);
+ }
++
+Index: xf86-video-mga-2.0.0/src/mga_shadow.c
+===================================================================
+--- xf86-video-mga-2.0.0.orig/src/mga_shadow.c
++++ xf86-video-mga-2.0.0/src/mga_shadow.c
+@@ -9,244 +9,82 @@
+ 
+ #include "xf86.h"
+ #include "xf86_OSproc.h"
+-#include "xf86Pci.h"
+-#include "mga_reg.h"
+ #include "mga.h"
+-#include "shadowfb.h"
++#include "shadow.h"
+ #include "servermd.h"
+ 
+-
+-
+-void
+-MGARefreshArea(ScrnInfoPtr pScrn, int num, BoxPtr pbox)
++static void *
++MGAShadowWindowLinear(ScreenPtr pScreen, CARD32 row, CARD32 offset, int mode,
++		 CARD32 *size, void *closure)
+ {
++    ScrnInfoPtr pScrn = xf86ScreenToScrn(pScreen);
+     MGAPtr pMga = MGAPTR(pScrn);
+-    int width, height, Bpp, FBPitch;
+-    unsigned char *src, *dst;
+-   
+-    Bpp = pScrn->bitsPerPixel >> 3;
+-    FBPitch = BitmapBytePad(pScrn->displayWidth * pScrn->bitsPerPixel);
+-
+-    while(num--) {
+-	width = (pbox->x2 - pbox->x1) * Bpp;
+-	height = pbox->y2 - pbox->y1;
+-	src = pMga->ShadowPtr + (pbox->y1 * pMga->ShadowPitch) + 
+-						(pbox->x1 * Bpp);
+-	dst = pMga->FbStart + (pbox->y1 * FBPitch) + (pbox->x1 * Bpp);
+-
+-	while(height--) {
+-	    memcpy(dst, src, width);
+-	    dst += FBPitch;
+-	    src += pMga->ShadowPitch;
+-	}
+-	
+-	pbox++;
+-    }
+-} 
++    void *pointer;
+ 
+-void
+-MGAPointerMoved(SCRN_ARG_TYPE arg, int x, int y)
+-{
+-    SCRN_INFO_PTR(arg);
+-    MGAPtr pMga = MGAPTR(pScrn);
+-    int newX, newY;
++    if (!pScrn->vtSema)
++        return NULL;
+ 
+-    if(pMga->Rotate == 1) {
+-	newX = pScrn->pScreen->height - y - 1;
+-	newY = x;
+-    } else {
+-	newX = y;
+-	newY = pScrn->pScreen->width - x - 1;
+-    }
+-
+-    (*pMga->PointerMoved)(arg, newX, newY);
++    *size = pScrn->displayWidth * (pScrn->bitsPerPixel >> 3);
++    return ((CARD8 *)pMga->FbStart + (row * *size) + offset);
+ }
+ 
+-void
+-MGARefreshArea8(ScrnInfoPtr pScrn, int num, BoxPtr pbox)
++static Bool
++MGAShadowCreateScreenResources(ScreenPtr pScreen)
+ {
++    ScrnInfoPtr pScrn = xf86ScreenToScrn(pScreen);
+     MGAPtr pMga = MGAPTR(pScrn);
+-    int count, width, height, y1, y2, dstPitch, srcPitch;
+-    CARD8 *dstPtr, *srcPtr, *src;
+-    CARD32 *dst;
+-
+-    dstPitch = pScrn->displayWidth;
+-    srcPitch = -pMga->Rotate * pMga->ShadowPitch;
+-
+-    while(num--) {
+-	width = pbox->x2 - pbox->x1;
+-	y1 = pbox->y1 & ~3;
+-	y2 = (pbox->y2 + 3) & ~3;
+-	height = (y2 - y1) >> 2;  /* in dwords */
+-
+-	if(pMga->Rotate == 1) {
+-	    dstPtr = pMga->FbStart + 
+-			(pbox->x1 * dstPitch) + pScrn->virtualX - y2;
+-	    srcPtr = pMga->ShadowPtr + ((1 - y2) * srcPitch) + pbox->x1;
+-	} else {
+-	    dstPtr = pMga->FbStart + 
+-			((pScrn->virtualY - pbox->x2) * dstPitch) + y1;
+-	    srcPtr = pMga->ShadowPtr + (y1 * srcPitch) + pbox->x2 - 1;
+-	}
+-
+-	while(width--) {
+-	    src = srcPtr;
+-	    dst = (CARD32*)dstPtr;
+-	    count = height;
+-	    while(count--) {
+-		*(dst++) = src[0] | (src[srcPitch] << 8) | 
+-					(src[srcPitch * 2] << 16) | 
+-					(src[srcPitch * 3] << 24);
+-		src += srcPitch * 4;
+-	    }
+-	    srcPtr += pMga->Rotate;
+-	    dstPtr += dstPitch;
+-	}
++    PixmapPtr pPixmap;
++    Bool ret;
+ 
+-	pbox++;
+-    }
+-} 
++    pScreen->CreateScreenResources = pMga->CreateScreenResources;
++    ret = pScreen->CreateScreenResources(pScreen);
++    pScreen->CreateScreenResources = MGAShadowCreateScreenResources;
+ 
++    if (!ret)
++	return FALSE;
+ 
+-void
+-MGARefreshArea16(ScrnInfoPtr pScrn, int num, BoxPtr pbox)
+-{
+-    MGAPtr pMga = MGAPTR(pScrn);
+-    int count, width, height, y1, y2, dstPitch, srcPitch;
+-    CARD16 *dstPtr, *srcPtr, *src;
+-    CARD32 *dst;
+-
+-    dstPitch = pScrn->displayWidth;
+-    srcPitch = -pMga->Rotate * pMga->ShadowPitch >> 1;
+-
+-    while(num--) {
+-	width = pbox->x2 - pbox->x1;
+-	y1 = pbox->y1 & ~1;
+-	y2 = (pbox->y2 + 1) & ~1;
+-	height = (y2 - y1) >> 1;  /* in dwords */
+-
+-	if(pMga->Rotate == 1) {
+-	    dstPtr = (CARD16*)pMga->FbStart + 
+-			(pbox->x1 * dstPitch) + pScrn->virtualX - y2;
+-	    srcPtr = (CARD16*)pMga->ShadowPtr + 
+-			((1 - y2) * srcPitch) + pbox->x1;
+-	} else {
+-	    dstPtr = (CARD16*)pMga->FbStart + 
+-			((pScrn->virtualY - pbox->x2) * dstPitch) + y1;
+-	    srcPtr = (CARD16*)pMga->ShadowPtr + 
+-			(y1 * srcPitch) + pbox->x2 - 1;
+-	}
+-
+-	while(width--) {
+-	    src = srcPtr;
+-	    dst = (CARD32*)dstPtr;
+-	    count = height;
+-	    while(count--) {
+-		*(dst++) = src[0] | (src[srcPitch] << 16);
+-		src += srcPitch * 2;
+-	    }
+-	    srcPtr += pMga->Rotate;
+-	    dstPtr += dstPitch;
+-	}
++    pPixmap = pScreen->GetScreenPixmap(pScreen);
+ 
+-	pbox++;
++    if (!shadowAdd(pScreen, pPixmap, pMga->Rotate ?
++		   shadowUpdateRotatePackedWeak() : shadowUpdatePackedWeak(),
++		   MGAShadowWindowLinear, pMga->Rotate, NULL)) {
++	return FALSE;
+     }
+-}
+ 
++    return TRUE;
++}
+ 
+-/* this one could be faster */
+-void
+-MGARefreshArea24(ScrnInfoPtr pScrn, int num, BoxPtr pbox)
++Bool
++MGAShadowInit(ScreenPtr pScreen)
+ {
++    ScrnInfoPtr pScrn = xf86ScreenToScrn(pScreen);
+     MGAPtr pMga = MGAPTR(pScrn);
+-    int count, width, height, y1, y2, dstPitch, srcPitch;
+-    CARD8 *dstPtr, *srcPtr, *src;
+-    CARD32 *dst;
+-
+-    dstPitch = BitmapBytePad(pScrn->displayWidth * 24);
+-    srcPitch = -pMga->Rotate * pMga->ShadowPitch;
+-
+-    while(num--) {
+-        width = pbox->x2 - pbox->x1;
+-        y1 = pbox->y1 & ~3;
+-        y2 = (pbox->y2 + 3) & ~3;
+-        height = (y2 - y1) >> 2;  /* blocks of 3 dwords */
+-
+-	if(pMga->Rotate == 1) {
+-	    dstPtr = pMga->FbStart + 
+-			(pbox->x1 * dstPitch) + ((pScrn->virtualX - y2) * 3);
+-	    srcPtr = pMga->ShadowPtr + ((1 - y2) * srcPitch) + (pbox->x1 * 3);
+-	} else {
+-	    dstPtr = pMga->FbStart + 
+-			((pScrn->virtualY - pbox->x2) * dstPitch) + (y1 * 3);
+-	    srcPtr = pMga->ShadowPtr + (y1 * srcPitch) + (pbox->x2 * 3) - 3;
+-	}
+-
+-	while(width--) {
+-	    src = srcPtr;
+-	    dst = (CARD32*)dstPtr;
+-	    count = height;
+-	    while(count--) {
+-		dst[0] = src[0] | (src[1] << 8) | (src[2] << 16) |
+-				(src[srcPitch] << 24);		
+-		dst[1] = src[srcPitch + 1] | (src[srcPitch + 2] << 8) |
+-				(src[srcPitch * 2] << 16) |
+-				(src[(srcPitch * 2) + 1] << 24);		
+-		dst[2] = src[(srcPitch * 2) + 2] | (src[srcPitch * 3] << 8) |
+-				(src[(srcPitch * 3) + 1] << 16) |
+-				(src[(srcPitch * 3) + 2] << 24);	
+-		dst += 3;
+-		src += srcPitch * 4;
+-	    }
+-	    srcPtr += pMga->Rotate * 3;
+-	    dstPtr += dstPitch; 
+-	}
+ 
+-	pbox++;
++    if (!shadowSetup(pScreen)) {
++	return FALSE;
+     }
++
++    pMga->CreateScreenResources = pScreen->CreateScreenResources;
++    pScreen->CreateScreenResources = MGAShadowCreateScreenResources;
++
++    return TRUE;
+ }
+ 
+ void
+-MGARefreshArea32(ScrnInfoPtr pScrn, int num, BoxPtr pbox)
++MGAShadowPointerMoved(SCRN_ARG_TYPE arg, int x, int y)
+ {
++    SCRN_INFO_PTR(arg);
+     MGAPtr pMga = MGAPTR(pScrn);
+-    int count, width, height, dstPitch, srcPitch;
+-    CARD32 *dstPtr, *srcPtr, *src, *dst;
+-
+-    dstPitch = pScrn->displayWidth;
+-    srcPitch = -pMga->Rotate * pMga->ShadowPitch >> 2;
+-
+-    while(num--) {
+-	width = pbox->x2 - pbox->x1;
+-	height = pbox->y2 - pbox->y1;
+-
+-	if(pMga->Rotate == 1) {
+-	    dstPtr = (CARD32*)pMga->FbStart + 
+-			(pbox->x1 * dstPitch) + pScrn->virtualX - pbox->y2;
+-	    srcPtr = (CARD32*)pMga->ShadowPtr + 
+-			((1 - pbox->y2) * srcPitch) + pbox->x1;
+-	} else {
+-	    dstPtr = (CARD32*)pMga->FbStart + 
+-			((pScrn->virtualY - pbox->x2) * dstPitch) + pbox->y1;
+-	    srcPtr = (CARD32*)pMga->ShadowPtr + 
+-			(pbox->y1 * srcPitch) + pbox->x2 - 1;
+-	}
+-
+-	while(width--) {
+-	    src = srcPtr;
+-	    dst = dstPtr;
+-	    count = height;
+-	    while(count--) {
+-		*(dst++) = *src;
+-		src += srcPitch;
+-	    }
+-	    srcPtr += pMga->Rotate;
+-	    dstPtr += dstPitch;
+-	}
++    int newX, newY;
+ 
+-	pbox++;
++    if(pMga->Rotate == 1) {
++	newX = pScrn->pScreen->height - y - 1;
++	newY = x;
++    } else {
++	newX = y;
++	newY = pScrn->pScreen->width - x - 1;
+     }
+-}
+-
+ 
++    (*pMga->PointerMoved)(arg, newX, newY);
++}
+ 

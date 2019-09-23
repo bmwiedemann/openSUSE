@@ -1,0 +1,264 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>109b1f9a1e21b395af80856f952c15c3</srcmd5>
+    <version>2.34</version>
+    <time>1168903936</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="75">
+    <srcmd5>bcf8746228ae773ff26070c6e8105a14</srcmd5>
+    <version>2.34</version>
+    <time>1177697477</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="91">
+    <srcmd5>555c8a064076a07ce9a66633ed169ad9</srcmd5>
+    <version>2.34</version>
+    <time>1184790131</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="92">
+    <srcmd5>2c7fd205c84e045b2eb06b0eb927c95c</srcmd5>
+    <version>2.34</version>
+    <time>1184832260</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a11bc1924d27432ee212fe2e37f175b2</srcmd5>
+    <version>2.36</version>
+    <time>1195779525</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="60">
+    <srcmd5>a11bc1924d27432ee212fe2e37f175b2</srcmd5>
+    <version>2.36</version>
+    <time>1195779525</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="61">
+    <srcmd5>be8069059345fa7e19d2a1a6d16b7ee3</srcmd5>
+    <version>2.36</version>
+    <time>1245338170</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="62">
+    <srcmd5>bb10473a8078d48ec2ffc84b19036ecd</srcmd5>
+    <version>2.36</version>
+    <time>1251474808</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-Parser based on submit request 19031 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="64">
+    <srcmd5>bb10473a8078d48ec2ffc84b19036ecd</srcmd5>
+    <version>2.36</version>
+    <time>1251474808</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-Parser based on submit request 19031 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="65">
+    <srcmd5>84fee49e31e61718d43bf8d5fc9db369</srcmd5>
+    <version>2.36</version>
+    <time>1268925662</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="66">
+    <srcmd5>fcf1e4239760fac4055eaf8d20e035b8</srcmd5>
+    <version>2.36</version>
+    <time>1273509547</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-Parser based on submit request 39747 from user anicka
+</comment>
+    <requestid>39747</requestid>
+  </revision>
+  <revision rev="12" vrev="68">
+    <srcmd5>fcf1e4239760fac4055eaf8d20e035b8</srcmd5>
+    <version>2.36</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="69">
+    <srcmd5>fcf1e4239760fac4055eaf8d20e035b8</srcmd5>
+    <version>2.36</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b69699533068244a4c188814a44dfdcf</srcmd5>
+    <version>2.40</version>
+    <time>1285067014</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-Parser based on submit request 48622 from user anicka
+</comment>
+    <requestid>48622</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>82f9e215f0427ec539c76f0c296f228e</srcmd5>
+    <version>2.40</version>
+    <time>1292239795</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 55721 from user coolo
+</comment>
+    <requestid>55721</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>d65124baadb30738f7b0075bd1d7e034</srcmd5>
+    <version>2.40</version>
+    <time>1292239809</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 55721
+</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>d65124baadb30738f7b0075bd1d7e034</srcmd5>
+    <version>2.40</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>03fa40df8897b996961bb6db5dceef58</srcmd5>
+    <version>2.40</version>
+    <time>1300352302</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64336 from user computersalat
+</comment>
+    <requestid>64336</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>f7b634cffe178e854fea605c96b3db6c</srcmd5>
+    <version>2.40</version>
+    <time>1300352309</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64336
+</comment>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>c900a3c25c83412f3de44158319dca66</srcmd5>
+    <version>2.41</version>
+    <time>1307373074</time>
+    <user>saschpe</user>
+    <comment>- update to 2.41
+    - better installation instructions
+    - Small spelling patches from Debian package - Thanks Nicholas Bamber
+    - RT 68399 - Upgrade Devel::CheckLib to 0.93 to make it
+      perl 5.14 compliant - qw()
+    - RT 67207 - Stop doing tied on globs - Thanks sprout
+    - RT 31319 - Fix doc links in POD for XML/Parser.pm</comment>
+    <requestid>72747</requestid>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>32bbaf798688f75a6a13bcc80ea15465</srcmd5>
+    <version>2.41</version>
+    <time>1307373086</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72747
+</comment>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>5f80072399ea6ab3a6a3f101a9cac498</srcmd5>
+    <version>2.41</version>
+    <time>1314779518</time>
+    <user>saschpe</user>
+    <comment>Standardized &quot;Authors:&quot; format in description of perl-XML-Parser.spec (forwarded request 80254 from aturrini)</comment>
+    <requestid>80278</requestid>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>9c13b58c86c3c549ea7edb5852454602</srcmd5>
+    <version>2.41</version>
+    <time>1314779526</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80278
+</comment>
+  </revision>
+  <revision rev="24" vrev="12">
+    <srcmd5>9c13b58c86c3c549ea7edb5852454602</srcmd5>
+    <version>2.41</version>
+    <time>1319182323</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="25" vrev="13">
+    <srcmd5>760055d32f46d81ba9aca300f2965e48</srcmd5>
+    <version>2.41</version>
+    <time>1321876236</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92181</requestid>
+  </revision>
+  <revision rev="26" vrev="14">
+    <srcmd5>6e444446e0f5de492a7ec01b263c2fc8</srcmd5>
+    <version>2.41</version>
+    <time>1323193792</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="27" vrev="16">
+    <srcmd5>6e444446e0f5de492a7ec01b263c2fc8</srcmd5>
+    <version>2.41</version>
+    <time>1340183954</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="28" vrev="18">
+    <srcmd5>6e444446e0f5de492a7ec01b263c2fc8</srcmd5>
+    <version>2.41</version>
+    <time>1359109852</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="19">
+    <srcmd5>abedf999c4c66cc7d86049485e20103b</srcmd5>
+    <version>2.41</version>
+    <time>1366178668</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 164068 from namtrac)</comment>
+    <requestid>164082</requestid>
+  </revision>
+  <revision rev="30" vrev="21">
+    <srcmd5>abedf999c4c66cc7d86049485e20103b</srcmd5>
+    <version>2.41</version>
+    <time>1379663922</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="23">
+    <srcmd5>abedf999c4c66cc7d86049485e20103b</srcmd5>
+    <version>2.41</version>
+    <time>1409302572</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>4e8e91ef693d1f1efdc4060d823575c3</srcmd5>
+    <version>2.44</version>
+    <time>1423668714</time>
+    <user>dimstar_suse</user>
+    <comment>- avoid a cycle with LWP
+
+- updated to 2.44
+    - RT 99098 - Revert &quot;Add more useful error message on parse to Expat&quot;. It breaks
+      XML::Twig. Calling code will need to do this if it's needed.
+    - RT 100959 - Add use FileHandle to t/astress.t - Make perl 5.10.0 happy.
+
+- Update to version 2.43
+  + POD patch to man from Debian via Nicholas Bamber
+  + POD patch from Debian via gregor herrmann.
+  + Add more useful error message on parse to Expat
+  + Fix LWP dependency to be LWP::Useragent
+  + Bump to 2.43 for overdue release to CPAN.
+- Remove obsolete Authors section
+- Remove redundant %clean section</comment>
+    <requestid>284728</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>da5c4b888f3c8bf804af1a1d315833c0</srcmd5>
+    <version>2.44</version>
+    <time>1568189739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726727</requestid>
+  </revision>
+</revisionlist>

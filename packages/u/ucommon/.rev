@@ -1,0 +1,183 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e57e84899898fefd35f86e2c8f751719</srcmd5>
+    <version>5.0.5</version>
+    <time>1313052738</time>
+    <user>saschpe</user>
+    <comment>New package GNU uCommon C++, A portable C++ runtime for threads and sockets that is used in the new versions of GNU ccRTP and associated/dependend packages. Eventually this package replaces the current commoncpp2 (GNU cc++) package</comment>
+    <requestid>77912</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>015eb0cfbe2a4cf037517568a4195cff</srcmd5>
+    <version>5.0.5</version>
+    <time>1313052749</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77912
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>015eb0cfbe2a4cf037517568a4195cff</srcmd5>
+    <version>5.0.5</version>
+    <time>1319182534</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>ac841e4175f0fc9d75e7a59683e0c809</srcmd5>
+    <version>5.0.5</version>
+    <time>1322580304</time>
+    <user>coolo</user>
+    <comment>- Use upstream tarball 
+
+- define LIB_SUFFIX for other lib64 platforms</comment>
+    <requestid>94289</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>a04175cbeb37b2c2b0f51a7b81838f8e</srcmd5>
+    <version>5.0.5</version>
+    <time>1323194994</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>77ee675ccf048e32065a9d7f33d04502</srcmd5>
+    <version>5.0.5</version>
+    <time>1328718068</time>
+    <user>coolo</user>
+    <comment>Forward</comment>
+    <requestid>103274</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>77ee675ccf048e32065a9d7f33d04502</srcmd5>
+    <version>5.0.5</version>
+    <time>1340184292</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>77ee675ccf048e32065a9d7f33d04502</srcmd5>
+    <version>5.0.5</version>
+    <time>1359110516</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>35fc40d2f22c4da36f14499effbf4e77</srcmd5>
+    <version>6.0.5</version>
+    <time>1371544789</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 6.0.5</comment>
+    <requestid>179229</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>35fc40d2f22c4da36f14499effbf4e77</srcmd5>
+    <version>6.0.5</version>
+    <time>1379664872</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ea79fa390537d86b0fe40172be5ca34c</srcmd5>
+    <version>6.0.7</version>
+    <time>1381223207</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202574</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>39ddbd157bdbe648294f57758da419a1</srcmd5>
+    <version>6.1.3</version>
+    <time>1400006929</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>233482</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d682a61ee8e7b5fa7b7b5daa1fbe1f8e</srcmd5>
+    <version>6.1.10</version>
+    <time>1407744470</time>
+    <user>lnussel</user>
+    <comment>- Update to new upstream release 6.1.10</comment>
+    <requestid>244129</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>d682a61ee8e7b5fa7b7b5daa1fbe1f8e</srcmd5>
+    <version>6.1.10</version>
+    <time>1409303559</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6d0b197bed0d7b3069b4e187ca9d557a</srcmd5>
+    <version>6.3.0</version>
+    <time>1420429464</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.3.0</comment>
+    <requestid>267135</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>47d5df3299111b2b6977a6e7b4450cbf</srcmd5>
+    <version>6.3.1</version>
+    <time>1427653095</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 6.3.1</comment>
+    <requestid>293608</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7295e131adc165bd38b08c948f42ba7d</srcmd5>
+    <version>6.5.1</version>
+    <time>1439556412</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.5.1
+  * thread shared references added</comment>
+    <requestid>322595</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9f68e74038b7cb36f9a56a37e0ad4976</srcmd5>
+    <version>6.5.7</version>
+    <time>1441054756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.5.7 (forwarded request 327900 from pluskalm)</comment>
+    <requestid>327901</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>62a90676622541eed5377dac2261001a</srcmd5>
+    <version>6.6.0</version>
+    <time>1441822877</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329821</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bb4cf7186fa9fc949d3e8718febcf8b7</srcmd5>
+    <version>6.6.1</version>
+    <time>1444130850</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.6.1
+  * errlog for error (forwarded request 336410 from pluskalm)</comment>
+    <requestid>336411</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2d5c2514fe9c4cc7f8f049cd5c713c30</srcmd5>
+    <version>6.6.2</version>
+    <time>1447588005</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 6.6.2</comment>
+    <requestid>344257</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f8b102f9e31f288cc72f7a3fe374cd27</srcmd5>
+    <version>7.0.0</version>
+    <time>1451674077</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>351018</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>de8ae6dfdf8f5a41edebcadc36638a2e</srcmd5>
+    <version>7.0.0</version>
+    <time>1513015057</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire pre-1.1 openssl.</comment>
+    <requestid>555907</requestid>
+  </revision>
+</revisionlist>

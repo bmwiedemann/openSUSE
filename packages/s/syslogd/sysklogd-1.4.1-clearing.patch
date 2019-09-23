@@ -1,0 +1,277 @@
+!
+! Be able to write errors on creating of pid file on
+! the current terminal (bug #394787)
+!
+--- klogd.c
++++ klogd.c	2008-05-28 10:01:46.000000000 +0000
+@@ -1098,6 +1098,10 @@ int main(argc, argv)
+ 				auto int fl;
+ 				int num_fds = getdtablesize();
+ 		
++				/* tuck my process id away */
++				if (!write_pid(PidFile))
++					Terminate();
++
+ 				/* This is the child closing its file descriptors. */
+ 				for (fl= 0; fl <= num_fds; ++fl)
+ 				{
+@@ -1117,19 +1121,18 @@ int main(argc, argv)
+ 			fputs("klogd: Already running.\n", stderr);
+ 			exit(1);
+ 		}
+-	}
+-
+-
+-	/* tuck my process id away */
+-	if (!check_pid(PidFile))
+-	{
+-		if (!write_pid(PidFile))
++	} else {
++		/* tuck my process id away */
++		if (!check_pid(PidFile))
++		{
++			if (!write_pid(PidFile))
++				Terminate();
++		}
++		else
++		{
++			fputs("klogd: Already running.\n", stderr);
+ 			Terminate();
+-	}
+-	else
+-	{
+-		fputs("klogd: Already running.\n", stderr);
+-		Terminate();
++		}
+ 	}
+ #endif	
+ 
+--- pidfile.c
++++ pidfile.c	2008-05-29 21:43:35.280028303 +0000
+@@ -23,6 +23,7 @@
+  * Sat Aug 19 13:24:33 MET DST 1995: Martin Schulze
+  *	First version (v0.2) released
+  */
++#define USE_FCNTL	1
+ 
+ #include <stdio.h>
+ #include <unistd.h>
+@@ -31,6 +32,10 @@
+ #include <string.h>
+ #include <errno.h>
+ #include <signal.h>
++#if defined(USE_FCNTL) && (USE_FCNTL != 0)
++# include <unistd.h>
++# include <fcntl.h>
++#endif
+ 
+ /* read_pid
+  *
+@@ -86,6 +91,9 @@ int write_pid (char *pidfile)
+   FILE *f;
+   int fd;
+   int pid;
++#if defined(USE_FCNTL) && (USE_FCNTL != 0)
++  struct flock lck;
++#endif
+ 
+   if ( ((fd = open(pidfile, O_RDWR|O_CREAT, 0644)) == -1)
+        || ((f = fdopen(fd, "r+")) == NULL) ) {
+@@ -93,23 +101,46 @@ int write_pid (char *pidfile)
+       return 0;
+   }
+ 
++#if defined(USE_FCNTL) && (USE_FCNTL != 0)
++  memset(&lck, 0, sizeof (struct flock));
++  lck.l_type = F_WRLCK;
++  lck.l_whence = SEEK_SET;
++
++  if (fcntl(fd, F_SETLK, &lck) == -1) {
++      fclose(f);
++      memset(&lck, 0, sizeof (struct flock));
++      fcntl(fd, F_GETLK, &lck);
++      fprintf(stderr, "Can't lock, lock is held by pid %d.\n", lck.l_pid);
++      return 0;
++  }
++#else
+   if (flock(fd, LOCK_EX|LOCK_NB) == -1) {
+       fscanf(f, "%d", &pid);
+       fclose(f);
+-      printf("Can't lock, lock is held by pid %d.\n", pid);
++      fprintf(stderr, "Can't lock, lock is held by pid %d.\n", pid);
+       return 0;
+   }
++#endif
+ 
+   pid = getpid();
+   if (!fprintf(f,"%d\n", pid)) {
+-      printf("Can't write pid , %s.\n", strerror(errno));
++      fprintf(stderr, "Can't write pid , %s.\n", strerror(errno));
+       close(fd);
+       return 0;
+   }
+   fflush(f);
+ 
+-  if (flock(fd, LOCK_UN) == -1) {
+-      printf("Can't unlock pidfile %s, %s.\n", pidfile, strerror(errno));
++#if defined(USE_FCNTL) && (USE_FCNTL != 0)
++  memset(&lck, 0, sizeof (struct flock));
++  lck.l_type = F_UNLCK;
++  lck.l_whence = SEEK_SET;
++
++  if (fcntl(fd, F_SETLK, &lck) == -1)
++#else
++  if (flock(fd, LOCK_UN) == -1)
++#endif
++  {
++      fprintf(stderr,"Can't unlock pidfile %s, %s.\n", pidfile, strerror(errno));
+       close(fd);
+       return 0;
+   }
+--- syslogd.c
++++ syslogd.c	2008-05-28 10:12:25.000000000 +0000
+@@ -22,7 +22,7 @@ char copyright2[] =
+ #endif /* not lint */
+ 
+ #if !defined(lint) && !defined(NO_SCCS)
+-static char sccsid[] = "@(#)syslogd.c	5.27 (Berkeley) 10/10/88";
++static char sccsid[]  __attribute__ ((unused)) = "@(#)syslogd.c	5.27 (Berkeley) 10/10/88";
+ #endif /* not lint */
+ 
+ /*
+@@ -821,8 +821,10 @@ int main(argc, argv)
+ 	int len, num_fds;
+ #else /* __GLIBC__ */
+ #ifndef TESTING
++#ifdef SYSLOG_INET
+ 	size_t len;
+ #endif
++#endif
+ 	int num_fds;
+ #endif /* __GLIBC__ */
+ 	/*
+@@ -841,7 +843,9 @@ int main(argc, argv)
+ 	fd_set readfds;
+ 
+ #ifndef TESTING
++#ifdef SYSLOG_UNIXAF
+ 	int	fd;
++#endif
+ #ifdef  SYSLOG_INET
+ #ifdef INET6
+ 	struct sockaddr_storage frominet;
+@@ -856,7 +860,9 @@ int main(argc, argv)
+ 	int ch;
+ 	struct hostent *hent;
+ 
++#if defined(SYSLOG_UNIXAF) || defined(TESTING)
+ 	char line[MAXLINE +1];
++#endif
+ 	extern int optind;
+ 	extern char *optarg;
+ 	int maxfds;
+@@ -975,10 +981,19 @@ int main(argc, argv)
+ 			case 0:
+ 				signal (SIGTERM, SIG_DFL);
+ 
++				/* tuck my process id away */
++				dprintf("Writing pidfile.\n");
++				if (!write_pid(PidFile))
++				{
++					dprintf("Can't write pid.\n");
++					exit(1);
++				}
++
+ 				num_fds = getdtablesize();
+ 				for (i = 0; i < num_fds; i++)
+ 					(void) close(i);
+ 				untty();
++				break;
+ 			}
+ 		}
+ 		else
+@@ -988,32 +1003,32 @@ int main(argc, argv)
+ 		}
+ 	}
+ 	else
++	{
+ #endif
+ 		debugging_on = 1;
+ #ifndef SYSV
+-	else
+ 		setlinebuf(stdout);
+ #endif
+-
+ #ifndef TESTING
+-	/* tuck my process id away */
+-	if ( !Debug )
+-	{
+-		dprintf("Writing pidfile.\n");
+-		if (!check_pid(PidFile))
++		/* tuck my process id away */
++		if ( !Debug )
+ 		{
+-			if (!write_pid(PidFile))
++			dprintf("Writing pidfile.\n");
++			if (!check_pid(PidFile))
+ 			{
+-				dprintf("Can't write pid.\n");
++				if (!write_pid(PidFile))
++				{
++					dprintf("Can't write pid.\n");
++					exit(1);
++				}
++			}
++			else
++			{
++				dprintf("Pidfile (and pid) already exist.\n");
+ 				exit(1);
+ 			}
+-		}
+-		else
+-		{
+-			dprintf("Pidfile (and pid) already exist.\n");
+-			exit(1);
+-		}
+-	} /* if ( !Debug ) */
++		} /* if ( !Debug ) */
++	}
+ #endif
+ 
+ 	consfile.f_type = F_CONSOLE;
+@@ -1659,8 +1674,13 @@ void logmsg(pri, msg, from, flags)
+ 	int flags;
+ {
+ 	register struct filed *f;
+-	int fac, prilev, lognum;
++	int fac, prilev;
+ 	int msglen;
++#ifndef SYSV
++	int omask;
++#else
++	int lognum;
++#endif
+ 	char *timestamp;
+ 
+ 	dprintf("logmsg: %s, flags %x, from %s, msg %s\n", textpri(pri), flags, from, msg);
+@@ -2402,11 +2422,9 @@ void init()
+ 	register int i, lognum;
+ 	register FILE *cf;
+ 	register struct filed *f;
+-#ifndef TESTING
+ #ifndef SYSV
+ 	register struct filed **nextp = (struct filed **) 0;
+ #endif
+-#endif
+ 	register char *p;
+ 	register unsigned int Forwarding = 0;
+ #ifdef CONT_LINE
+@@ -2487,7 +2505,7 @@ void init()
+ #else
+ 		*nextp = (struct filed *)calloc(1, sizeof(*f));
+ 		cfline("*.ERR\t" _PATH_CONSOLE, *nextp);
+-		(*nextp)->f_next = (struct filed *)calloc(1, sizeof(*f))	/* ASP */
++		(*nextp)->f_next = (struct filed *)calloc(1, sizeof(*f));	/* ASP */
+ 		cfline("*.PANIC\t*", (*nextp)->f_next);
+ #endif
+ 		Initialized = 1;

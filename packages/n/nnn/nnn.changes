@@ -1,0 +1,269 @@
+-------------------------------------------------------------------
+Tue Aug  6 06:43:23 UTC 2019 - Dilawar Singh <dilawar.s.rajput@gmail.com>
+
+- Update to 2.6 
+    * new plugins
+        view image or browse a directory of images in terminal
+        show image thumbnails
+        PDF and text file reader
+        calculate and verify checksum of selection or file
+        append (and play) selection/dir/file music in MOC
+        variable bitrate mp3 ringtone generator
+        split current file or join selection
+    * better experience on Termux (and touch based devices)
+        mouse scrolling support (with ncursesw6.0 and above)
+        tap/left click to visit parent, toggle nav-as-you-type mode
+    * light mode set as default
+    * show status bar and use reverse video in light mode
+    * changed program options
+        -d: detail mode
+        -H: show hidden files
+        -l is retired
+    * support XDG_CONFIG_HOME
+    * support / as an additional Leader key when filter is on
+    * sort by file extension
+    * use zip/unzip/tar if atool/bsdtar not found
+    * support duplicate file (key ^R, same as rename file)
+    * new config option NNN_SSHFS_OPTS to specify sshfs options
+    * restrict opening 0 byte files (NNN_RESTRICT_0B is obsolete)
+    * critical defects fixed
+        fix #276 - crash with variable length inotify event handling
+        fix #285 - hang after deleting/moving current directory
+        fix #274 - a broken prompt on empty input with libreadline
+        fix #304 - list selection from another instance
+    * cmatrix as locker fallback
+    * wait for user input after running a command from prompt
+    * scrolloff set to 3 from 5
+
+-------------------------------------------------------------------
+Tue May 28 05:06:30 UTC 2019 - Dilawar Singh <dilawar.s.rajput@gmail.com>
+
+-  Update to 2.5 
+   *  plugin support. 19 plugins added. Some are:
+        pdfview: view a PDF in pager
+        nmount: (un)mount a storage device
+        ndiff: file and directory diff for selection
+        hexview: view a file in hex
+        imgresize: batch resize images to desktop resolution
+        ipinfo: check your IP address and whois information
+        transfer: upload a file to transfer.in
+        pastebin: paste the contents of a text file to paste.ubuntu.com
+        boom: play random music from a directory
+        nwal: set an image as wallpaper using nitrogen
+        pywal: set selected image as wallpaper, change terminal color scheme
+        getplugs: update plugins
+    * SSHFS support
+    * support bsdtar, simplify patool integration
+    * native batch rename support (vidir dependency dropped) including selection
+    * mouse support
+    * new location for config files - ~/.config/nnn
+        plugin dir location: ~/.config/nnn/plugins
+        selection file .nnncp is now ~/.config/nnn/.selection
+    * support configuration as the default file manager
+    * per-context detail/light mode
+    * case-insensitive version compare
+    * shortcut to visit / - ` (backtick)
+    * vim-like scrolloff support
+    * ^D & ^U: scroll half page, PgDn & PdUp: scroll full page
+    * fix selection across contexts
+    * recognize Home and End keys at prompt for editing
+    * fix broken program option -b
+    * POSIX-compliant user-scripts (wherever possible)
+    * NNN_SCRIPT is retired (replaced by plugins)
+
+-------------------------------------------------------------------
+Tue Mar 19 02:59:53 UTC 2019 - dilawar.s.rajput@gmail.com
+
+- Update to 2.4
+
+    * Tinier and lighter!
+    * FreeDesktop.org compliant trashing
+    * mark selected entries with +
+    * wild mode (option -w, key ^W) for nav-as-you-type
+    * POSIX-compliant GUI app launcher with drop-down menu (key =)
+    * new scripts:
+    *   -  upload image to imgur
+    *   -  send selection to Android using kdeconnect-cli
+    * show permissions in detail mode
+    * cp, mv progress bar on Linux (needs advcpmv) [BSD, macOS shows on ^T]
+    * make libreadline an optional dep (reduces memory usage)
+    * minimize the number of redraws
+    * handle screen resize gracefully
+    * option -d to show hidden files (NNN_SHOW_HIDDEN is removed)
+    * additional key K to toggle selection
+    * change visit start dir key to @
+    * option -C to disable colors removed
+    * per-context initial directory replaced by program start dir
+    * marker msg when spawning new shell removed
+    * rename debug file to nnndbg
+
+-------------------------------------------------------------------
+Wed Feb 20 05:56:46 UTC 2019 - Dilawar Singh <dilawar.s.rajput@gmail.com>
+
+- update to 2.3
+    * user-contributed scripts repository https://github.com/jarun/nnn/tree/master/user-scripts
+    * substring search for filters (option -s)
+    * version sort (option -n)
+    * key N (1 <= N <= 4) to switch to context N
+    * disk usage calculation abort with ^C
+    * create sym/hard link(s) to files in selection
+    * archiving of selection
+    * show dir symlinks along with dirs on top
+    * use nnn as a file picker with picker.sh
+    * fixed CJK character handling at prompts
+    * bring back NNN_OPENER to specify file opener
+    * env var NNN_NOTE and keybind ^N for quick notes
+    * handle multiple arguments in VISUAL/EDITOR
+    * show the current directory being scanned in du mode
+    * select all files with Y
+    * remap key to show command prompt to ^P
+    * key , replaces ` as alternative Leader Key
+    * keybind for visit pinned directory is now ^B
+    * additional key ^V to run or select custom script
+    * use libreadline for command prompt
+    * reduce delay on Esc press
+    * config option to avoid unexpected behaviour on 0-byte file open (see #187)
+    * rename config option DISABLE_FILE_OPEN_ON_NAV to NNN_RESTRICT_NAV_OPEN
+    * keys removed - $, ^, Backspace, ^H, ^P, ^M, ^W, `
+
+-------------------------------------------------------------------
+Tue Jan  8 04:06:41 UTC 2019 - Dilawar Singh <dilawar.s.rajput@gmail.com>
+
+- Update to 2.2
+  * (neo)vim plugin nnn.vim
+  * macOS fixes
+    - Fix issues with file copy, move, remove
+    - Handle Del in rename prompt
+    - Pass correct file option to identify mime
+  * Support selection across directories and contexts
+  * Offer option force before file remove
+  * Keys Tab, ^I to go to next active context
+  * Per-context directory color specified by $NNN_CONTEXT_COLORS
+    - Option -c is removed
+  * Option -C to disable colors
+  * Choose script to run from a script directory
+  * Run a command (or launch an application)
+  * Run file as executable (key C)
+  * Documentation on lftp integration for remote file transfers
+  * Support a combined set of arguments to $EDITOR, $PAGER and $SHELL
+  * Handle > 2 GB files on 32-bit ARM
+  * Env var $DISABLE_FILE_OPEN_ON_NAV to disable file open on Right or l
+  * NUL-terminated file paths in selection list instead of LF
+  * Better support for Termux and Cygwin environments
+  * Remapped keys
+     - ^I - go to next active context
+     - ^T - toggle navigate-as-you-type
+
+-------------------------------------------------------------------
+Fri Nov 23 22:19:18 UTC 2018 - dilawar.s.rajput@gmail.com
+
+- Update to 2.1
+  * Multiple contexts (aka tabs aka workspaces) [max 4]
+  * Copy, move, remove selected files, remove current file
+  * Leader key (like vim)
+  * In-built GUI app launcher with up to 2 arguments (key o)
+  * List copy selection (key y)
+  * Env var NNN_NO_AUTOSELECT to disable dir auto-select
+  * Key Esc exits prompt, ^L clears prompt
+  * Program runtime help revamped
+  * Static code analysis integration
+  * gcc-8 warnings fixed
+  * Remapped keys:
+      ^W - go to pinned dir
+      ^X - delete current entry
+      ^Q - quit program
+  * nlay is retired (functionality built into nnn)
+  * chdir prompt is retired
+  * Env var NNN_NO_X retired, selection now works out of the box
+  * Only single-char bookmark keys (to work with Leader key)
+
+-------------------------------------------------------------------
+Fri Oct 19 15:11:55 UTC 2018 - dilawar.s.rajput@gmail.com
+
+- Update to 2.0 
+  * Added mode to show apparent size (key S)
+  * Added script to integrate patool instead of atool
+  * Added support bashlock (OS X) and lock (BSD) as terminal locker
+  * Added symbol @/ for symlink to dir
+  * Dependency on libreadline removed
+
+-------------------------------------------------------------------
+Fri Aug 10 06:17:44 UTC 2018 - dilawar.s.rajput@gmail.com
+
+- Update to 1.9
+  * Support unlimited number of scripts
+  * Pass currently selected filename as first argument to custom scripts
+  * Support directory auto-select in navigate-as-you-type mode
+  * Show selection name in archive name prompt
+  * Better support on RHEL 25 with earlier version on curses
+  * Sample script for fzy integration
+
+-------------------------------------------------------------------
+Tue May  1 23:30:03 UTC 2018 - avindra@opensuse.org
+
+- Update to 1.8
+  * Run a custom script
+  * Archive selected file/directory
+  * Show number of cherry-picked files in multi-copy mode
+  * Env var NNN_SHOW_HIDDEN to show hidden files by default
+  * Additional information in help screen
+  * Prefer env var VISUAL, if defined, to EDITOR
+  * New/changed/remapped shortcuts
+    ^] - spawn a new shell in current directory
+    r - edit directory entries in vidir
+    R - run a custom script
+    ^I - toggle navigate-as-you-type mode
+    L - lock the current terminal
+  * All Ctrl shortcuts enabled in navigate-as-you-type mode
+  * Fix: GUI programs closing when parent terminal is closed
+  * Recognize ~, - and & at bookmark prompt
+  * Recognize ruby (.rb) files as text files
+  * Efficient integer-only file size calculation
+- minor cleanup with spec-cleaner
+- include license, readme and changelog
+
+-------------------------------------------------------------------
+Wed Feb 28 00:49:45 UTC 2018 - avindra@opensuse.org
+
+- Update to 1.7
+  * Batch rename/move/delete files in vidir (from moreutils)
+  * Copy multiple file paths
+  * Copy file paths when X is unavailable
+  * Optionally quote individual file paths with single quotes on copy
+  * Use ISO 8601 date format in file details
+  * See CHANGELOG for new and changed keybindings
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jan  2 15:26:34 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Tue Jan  2 03:14:43 UTC 2018 - avindra@opensuse.org
+
+- Update to 1.6
+  * Shortcut ^O to open file with custom application
+  * Option -b to open bookmarks directly at start
+  * Huge performance improvements around file name storing and
+    handling
+  * Several large static buffers removed or reduced
+  * Several internal algorithms fine tuned for performance /
+    resource usage
+- pass through optflags
+
+-------------------------------------------------------------------
+Fri Oct  6 01:18:34 UTC 2017 - aavindraa@gmail.com
+
+- Update to 1.5
+  * File and directory creation (n)
+  * Env variable NNN_NOWAIT to unblock nnn when opening files (DE-specific)
+  * Show current entry number in status bar
+  * Support archive listing (F) and extraction (Ctrl-X) [using atool]
+  * Show correct file size on i386 for large files (> 2GB)
+- Drop _service file
+
+-------------------------------------------------------------------
+Mon Sep 11 16:47:56 UTC 2017 - aavindraa@gmail.com
+
+- Create initial package at 1.4

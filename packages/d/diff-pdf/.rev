@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc2c46b1bc5ff7b8385d636eae1dfd6e</srcmd5>
+    <version>0.2</version>
+    <time>1464964716</time>
+    <user>dimstar_suse</user>
+    <comment>New package, somehow usefull tool</comment>
+    <requestid>398691</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f4f7712df3f8923c046fc3b0f0068ebb</srcmd5>
+    <version>0.2</version>
+    <time>1466333590</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc6 (boo#985353)
+- Use safer ldflags</comment>
+    <requestid>403346</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3884eb55f775e38c37c27913973bc19f</srcmd5>
+    <version>1.0.4</version>
+    <time>1336471169</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115385</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3884eb55f775e38c37c27913973bc19f</srcmd5>
+    <version>1.0.4</version>
+    <time>1340184144</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f362129315df4c1572d7acecc4560046</srcmd5>
+    <version>1.0.5</version>
+    <time>1358873252</time>
+    <user>coolo</user>
+    <comment>Update (forwarded request 149336 from Zaitor)</comment>
+    <requestid>149366</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f362129315df4c1572d7acecc4560046</srcmd5>
+    <version>1.0.5</version>
+    <time>1359110288</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>f362129315df4c1572d7acecc4560046</srcmd5>
+    <version>1.0.5</version>
+    <time>1379664455</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>f362129315df4c1572d7acecc4560046</srcmd5>
+    <version>1.0.5</version>
+    <time>1409303186</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2d75433fd10012826eca508aeacd07b3</srcmd5>
+    <version>1.0.6</version>
+    <time>1416824252</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.6
+  * This release includes contributions by Daphne Pfister to
+    resynchronize the X11 color name list with the CSS color
+    name list that has forked from ours, and also includes a
+    couple minor improements to the showrgb program and to the
+    build configuration.</comment>
+    <requestid>262022</requestid>
+  </revision>
+</revisionlist>

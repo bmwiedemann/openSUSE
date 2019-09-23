@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>30ca2a55c4b296f14d13f9791db7aa5c</srcmd5>
+    <version>1.1.1</version>
+    <time>1329487279</time>
+    <user>coolo</user>
+    <comment>- Provide a valid upstream URL, ran spec-cleaner
+
+- Split xorg-x11-libs into separate packages</comment>
+    <requestid>105654</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2f9a23d9376914535c6550ce15521fc3</srcmd5>
+    <version>1.1.1</version>
+    <time>1332501093</time>
+    <user>coolo</user>
+    <comment>- Avoid tarballs in the Homepage link</comment>
+    <requestid>110637</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>2f9a23d9376914535c6550ce15521fc3</srcmd5>
+    <version>1.1.1</version>
+    <time>1340184335</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>2f9a23d9376914535c6550ce15521fc3</srcmd5>
+    <version>1.1.1</version>
+    <time>1359110591</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>ee777cd7c2249b4dbed6964ce04847f8</srcmd5>
+    <version>1.1.1</version>
+    <time>1365174962</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162738 from namtrac)</comment>
+    <requestid>162815</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>542fb82db8a23b33378fa404d9dbaa6c</srcmd5>
+    <version>1.1.1</version>
+    <time>1377856291</time>
+    <user>coolo</user>
+    <comment>- create main package and move bitmaps there (bnc#836530)</comment>
+    <requestid>196750</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>542fb82db8a23b33378fa404d9dbaa6c</srcmd5>
+    <version>1.1.1</version>
+    <time>1379664993</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>542fb82db8a23b33378fa404d9dbaa6c</srcmd5>
+    <version>1.1.1</version>
+    <time>1409303673</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9646d991f0d001df68e0086ebfa3c0eb</srcmd5>
+    <version>1.1.2</version>
+    <time>1524237857</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.2
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Remove unused libdir setting from xbitmaps.pc
+  * autogen.sh: use quoted string variables
+  * config: replace deprecated use of AC_OUTPUT with AC_CONFIG_FILES
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>593566</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,250 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>851685c8d502a1e04657cf5885fd36bf</srcmd5>
+    <version>2.0.3</version>
+    <time>1228102766</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6ba1218693a7963c5e42adfb45a046d8</srcmd5>
+    <version>2.0.3</version>
+    <time>1228751394</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>6ba1218693a7963c5e42adfb45a046d8</srcmd5>
+    <version>2.0.3</version>
+    <time>1228751394</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>6d3fcfb9324b70876910c2ac32756fe2</srcmd5>
+    <version>2.0.3</version>
+    <time>1266507175</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libvpd2 based on submit request 32739 from user coolo
+</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>eca9de847fc0efb16409707ca82dbb0f</srcmd5>
+    <version>2.0.3</version>
+    <time>1268924762</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>eca9de847fc0efb16409707ca82dbb0f</srcmd5>
+    <version>2.0.3</version>
+    <time>1278667364</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>eca9de847fc0efb16409707ca82dbb0f</srcmd5>
+    <version>2.0.3</version>
+    <time>1278678593</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>eca9de847fc0efb16409707ca82dbb0f</srcmd5>
+    <version>2.0.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>12b8959eb070250239a4e0afc50ecaf3</srcmd5>
+    <version>2.0.3</version>
+    <time>1303300489</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67876 from user coolo
+</comment>
+    <requestid>67876</requestid>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>47a039878e9ab376873ecebcd2cad221</srcmd5>
+    <version>2.0.3</version>
+    <time>1303300498</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67876
+</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>47a039878e9ab376873ecebcd2cad221</srcmd5>
+    <version>2.0.3</version>
+    <time>1319182145</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a8c87af364589d98870b75830218bc8b</srcmd5>
+    <version>2.1.3</version>
+    <time>1324830962</time>
+    <user>coolo</user>
+    <comment>- spec file cleanups
+
+- Use %_smp_mflags for parallel build
+- Remove redundant tags/sections (cf. specfile guidelines)
+
+- update to 2.1.3
+  - Rebuild rpms for ppc 32-bit.
+  - add pkg-config to BuildRequires to avoid rpmlint warings 
+  - drop libvpd-pkg.patch and libvpd.return-value.patch</comment>
+    <requestid>97346</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>867cf91fd4ee4bfa56ae172a44300db2</srcmd5>
+    <version>2.1.3</version>
+    <time>1332416083</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 110496 from dimstar)</comment>
+    <requestid>110508</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>59f1e6dba7957ddff6147312a4e76ed6</srcmd5>
+    <version>2.1.3</version>
+    <time>1338890552</time>
+    <user>coolo</user>
+    <comment>clean up spec file (forwarded request 123225 from jloeser)</comment>
+    <requestid>123304</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>59f1e6dba7957ddff6147312a4e76ed6</srcmd5>
+    <version>2.1.3</version>
+    <time>1340183651</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cc138424899652aebbc71550ab5b00c7</srcmd5>
+    <version>2.2.0</version>
+    <time>1355474500</time>
+    <user>coolo</user>
+    <comment>- update to 2.2.0
+  No upstream changelog provided
+- don't run autoreconf
+- remove libtool from BuildRequires (forwarded request 144984 from k0da)</comment>
+    <requestid>144985</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>cc138424899652aebbc71550ab5b00c7</srcmd5>
+    <version>2.2.0</version>
+    <time>1359109373</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>cc138424899652aebbc71550ab5b00c7</srcmd5>
+    <version>2.2.0</version>
+    <time>1379663128</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fea605a9113ef172e773b9f80a7d562d</srcmd5>
+    <version>2.2.2</version>
+    <time>1390395194</time>
+    <user>coolo</user>
+    <comment>- version update to 2.2.2 (FATE#315460)
+  minor bugfixes
+  add udev rule for vpdupdate
+  no upstream changelog provided
+- libvpd2.makefile.patch: fix udev rules directory
+- add udev and automake to BuildRequires for correct udev rules.d 
+  directory</comment>
+    <requestid>214606</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>45696813548f0065bf8639a23c4b9594</srcmd5>
+    <version>2.2.3</version>
+    <time>1400056799</time>
+    <user>coolo</user>
+    <comment>- Version bump to 2.2.3:
+  * Restrict vpdupdate triggers to device change events 
+- Cleanup with spec-cleaner
+- Add libtool and autoconf as requirements and reconfigure the
+  autofoo*
+- Add download url proper for the tarball.
+- Remove no longer needed patch libvpd2-gcc47.patch</comment>
+    <requestid>233719</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>45696813548f0065bf8639a23c4b9594</srcmd5>
+    <version>2.2.3</version>
+    <time>1409301757</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a89089da44dbfdd874cabd867f4b17e9</srcmd5>
+    <version>2.2.4</version>
+    <time>1409998708</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247501</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>26c09314150cdcf7b2efc55dc3ab671e</srcmd5>
+    <version>2.2.4</version>
+    <time>1438794901</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>320547</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>26c09314150cdcf7b2efc55dc3ab671e</srcmd5>
+    <version>2.2.4</version>
+    <time>1438795086</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>320547</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>69d8a830acde30c97ce3c2ea13cd3feb</srcmd5>
+    <version>2.2.5</version>
+    <time>1448553851</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346094</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>4c3356940c91d697b750b5eef1ebdb2a</srcmd5>
+    <version>2.2.5</version>
+    <time>1508503679</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535445</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>7fc8c49109ed37c42dee1e073710862b</srcmd5>
+    <version>2.2.5</version>
+    <time>1527934502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613503</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>57ee55a8abaea2795dcf795bf7dbceb5</srcmd5>
+    <version>2.2.6</version>
+    <time>1529919504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618010</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>e7ed5fcd7398121b58b128902a6b0079</srcmd5>
+    <version>2.2.6</version>
+    <time>1541667050</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647044</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>8a71a6f94d70d6a8eeeee5e3256dfa02</srcmd5>
+    <version>2.2.6</version>
+    <time>1550048360</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pkgconfig dependencies
+- Use %license macro</comment>
+    <requestid>666411</requestid>
+  </revision>
+</revisionlist>

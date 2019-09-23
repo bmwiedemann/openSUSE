@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e6d7ee8979b2d0d0797c829d60d74bba</srcmd5>
+    <version>0.8.0</version>
+    <time>1485040511</time>
+    <user>dimstar_suse</user>
+    <comment>The second try. The program is completely rewritten.</comment>
+    <requestid>442050</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c91fa1779e67f4e6ed7cde6cd6d7d537</srcmd5>
+    <version>0.8.0</version>
+    <time>1486465717</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455107</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ebb0532865bcea52b818112832fc48e2</srcmd5>
+    <version>0.9.0</version>
+    <time>1491566199</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486095</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c007f597785955820531e43a23379f1c</srcmd5>
+    <version>0.9.1</version>
+    <time>1500275545</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510397</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>333f81b55d62a3ed03789dc6e4f0376c</srcmd5>
+    <version>1.1.0</version>
+    <time>1515505974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562165</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d5b442caad2545e49003304383996505</srcmd5>
+    <version>1.2.0</version>
+    <time>1523029666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593835</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6b78bfb3d74a248f80d1a44439b9d868</srcmd5>
+    <version>1.3.0</version>
+    <time>1525121722</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602147</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>49bfed99844bf995e069a1346c1ad3e4</srcmd5>
+    <version>3.0.0</version>
+    <time>1557263753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692426</requestid>
+  </revision>
+</revisionlist>

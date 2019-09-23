@@ -1,0 +1,17 @@
+<package name="perl-HTML-RewriteAttributes" project="openSUSE:Factory">
+  <title>Concise attribute rewriting</title>
+  <description>HTML::RewriteAttributes is designed for simple yet powerful HTML attribute
+rewriting.
+
+You simply specify a callback to run for each attribute and we do the rest for
+you.
+
+This module is designed to be subclassable to make handling special cases
+eaiser. See the source for methods you can override.
+
+Author:
+-------
+    Shawn M Moore, &lt;sartak@bestpractical.com&gt;</description>
+  <devel project="devel:languages:perl" package="perl-HTML-RewriteAttributes"/>
+  <url>http://search.cpan.org/dist/HTML-RewriteAttributes/</url>
+</package>

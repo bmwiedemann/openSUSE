@@ -1,0 +1,6 @@
+<package name="gutenprint" project="openSUSE:Factory">
+  <title>Printer drivers for CUPS from the Gutenprint project</title>
+  <description>The Gutenprint (formerly Gimp-Print) printer drivers for CUPS.
+See the user's manual at /usr/share/gutenprint/doc/gutenprint-users-manual.pdf</description>
+  <devel project="Printing" package="gutenprint"/>
+</package>

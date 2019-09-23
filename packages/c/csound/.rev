@@ -1,0 +1,218 @@
+<revisionlist>
+  <revision rev="1" vrev="228">
+    <srcmd5>e08794b7c05baf1159d767d2cdc19013</srcmd5>
+    <version>4.24.1</version>
+    <time>1168902492</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0138ef4f5bf9c905772b27767398129b</srcmd5>
+    <version>5.04</version>
+    <time>1169511205</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e6ace57959f7fb7eeb07b63c0a6e9dc6</srcmd5>
+    <version>5.05</version>
+    <time>1175041193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bd95373e4cd2bc40edaf6bf307e8813b</srcmd5>
+    <version>5.06.0</version>
+    <time>1181596661</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>e051d3ce104667f7adf270f444f2260a</srcmd5>
+    <version>5.06.0</version>
+    <time>1182359203</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="128">
+    <srcmd5>e051d3ce104667f7adf270f444f2260a</srcmd5>
+    <version>5.06.0</version>
+    <time>1182359203</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="129">
+    <srcmd5>a935503775104cfde2590506821ec4f7</srcmd5>
+    <version>5.06.0</version>
+    <time>1223303999</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="130">
+    <srcmd5>e3db5a485429d8e9f0974e2a14045786</srcmd5>
+    <version>5.06.0</version>
+    <time>1233270817</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="131">
+    <srcmd5>acb27301ab4d86fdd91c7520b1735906</srcmd5>
+    <version>5.06.0</version>
+    <time>1247846527</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="133">
+    <srcmd5>acb27301ab4d86fdd91c7520b1735906</srcmd5>
+    <version>5.06.0</version>
+    <time>1247846527</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="134">
+    <srcmd5>8b45fa821031cbe4c488ab51097cf592</srcmd5>
+    <version>5.06.0</version>
+    <time>1268923266</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="136">
+    <srcmd5>8b45fa821031cbe4c488ab51097cf592</srcmd5>
+    <version>5.06.0</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="137">
+    <srcmd5>8b45fa821031cbe4c488ab51097cf592</srcmd5>
+    <version>5.06.0</version>
+    <time>1278678569</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="140">
+    <srcmd5>8b45fa821031cbe4c488ab51097cf592</srcmd5>
+    <version>5.06.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="141">
+    <srcmd5>3d5ee016a7fbd1300245cc6fd9caba72</srcmd5>
+    <version>5.06.0</version>
+    <time>1316766120</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 83148 from jengelh)</comment>
+    <requestid>83974</requestid>
+  </revision>
+  <revision rev="16" vrev="143">
+    <srcmd5>3d5ee016a7fbd1300245cc6fd9caba72</srcmd5>
+    <version>5.06.0</version>
+    <time>1319181836</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="144">
+    <srcmd5>b6ed4f2c4447ad2ed11b0b71a3a4b917</srcmd5>
+    <version>5.06.0</version>
+    <time>1323191091</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>218280df315cabcf2af727474cd9c75b</srcmd5>
+    <version>5.16.6</version>
+    <time>1330618745</time>
+    <user>coolo</user>
+    <comment>- updated to version 5.16.6, including a fix for
+  VUL-0: CVE-2012-0270: csound: two buffer overflow flaws in
+  getnum() (bnc#749073)
+- drop obsoleted patches
+
+- updated to version 5.15.0
+- drop unused patches
+- fix wrong memset and strncat usage ({memset,strncat}-fix.patch)
+- create -devel subpackage</comment>
+    <requestid>107162</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>429c1371fcf8d0323c88a26b2cf1457a</srcmd5>
+    <version>5.16.6</version>
+    <time>1334818123</time>
+    <user>coolo</user>
+    <comment>- VUL-0: csound: buffer overflow in pv_import (CVE-2012-2106,
+  bnc#757254),
+  VUL-0: csound: buffer overflow in lpc_import (CVE-2012-2107,
+  bnc#757255),
+  VUL-0: csound: Stack-based buffer overflow in lpc_import
+  (CVE-2012-2108, bnc#757256):
+  a single patch for all three issues</comment>
+    <requestid>114350</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>429c1371fcf8d0323c88a26b2cf1457a</srcmd5>
+    <version>5.16.6</version>
+    <time>1340183263</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c2247f347c80cd4cdf7ca635c901911c</srcmd5>
+    <version>5.18.02</version>
+    <time>1352358216</time>
+    <user>coolo</user>
+    <comment>- updated to version 5.18.02, including previous security fixes:
+  this fixes the build failure on FACTORY with new bison, too;
+  see ChangeLog for detailed updates and fixes (forwarded request 140370 from tiwai)</comment>
+    <requestid>140492</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>c2247f347c80cd4cdf7ca635c901911c</srcmd5>
+    <version>5.18.02</version>
+    <time>1359108788</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>c2247f347c80cd4cdf7ca635c901911c</srcmd5>
+    <version>5.18.02</version>
+    <time>1379662185</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>c2247f347c80cd4cdf7ca635c901911c</srcmd5>
+    <version>5.18.02</version>
+    <time>1409300721</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>3c7df78aa98140314e20f03c26d78d00</srcmd5>
+    <version>5.18.02</version>
+    <time>1484660267</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450584</requestid>
+  </revision>
+  <revision rev="26" vrev="9">
+    <srcmd5>30354f0fdecbda9c835b055ff2eb8d4b</srcmd5>
+    <version>5.18.02</version>
+    <time>1487149526</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456405</requestid>
+  </revision>
+  <revision rev="27" vrev="10">
+    <srcmd5>a91224be69d585f13873367d1aab2401</srcmd5>
+    <version>5.18.02</version>
+    <time>1510322231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540137</requestid>
+  </revision>
+  <revision rev="28" vrev="11">
+    <srcmd5>71fd87dcbc87b58164fdf790e2403116</srcmd5>
+    <version>5.18.02</version>
+    <time>1511517304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544858</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>930deebdbaf436d9ba9241e2ce3974a6</srcmd5>
+    <version>6.12.2</version>
+    <time>1562056787</time>
+    <user>dimstar_suse</user>
+    <comment>fix requires in devel package</comment>
+    <requestid>712999</requestid>
+  </revision>
+</revisionlist>

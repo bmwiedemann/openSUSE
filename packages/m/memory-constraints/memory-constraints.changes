@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Sat Jun 15 14:34:00 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Take SwapTotal into account, MemTotal only reflects physical memory. Some
+  workers have a considerable amount of swap.
+
+-------------------------------------------------------------------
+Sat Apr  7 14:57:25 UTC 2018 - tchvatal@suse.com
+
+- Fix the macros to define default value if _threads are not defined
+  to fallback to amount of CPUs
+
+-------------------------------------------------------------------
+Fri Apr  6 13:41:22 UTC 2018 - tchvatal@suse.com
+
+- Use install instead of mkdir and cp
+
+-------------------------------------------------------------------
+Fri Apr  6 13:00:10 UTC 2018 - tchvatal@suse.com
+
+- Update description to contain less typos
+
+-------------------------------------------------------------------
+Fri Apr  6 10:56:54 UTC 2018 - tchvatal@suse.com
+
+- Initial package to ensure restrictions on jobs when building
+  huge packages
+

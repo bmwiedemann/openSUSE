@@ -1,0 +1,16 @@
+--- src/events.c
++++ src/events.c	2012-05-31 15:13:06.832009873 +0000
+@@ -1611,8 +1611,11 @@ upshift_event (Lisp_Object event)
+     XSET_EVENT_KEY_KEYSYM (event, make_char (c + 'A' - 'a'));
+   else
+     if (!(XEVENT_KEY_MODIFIERS (event) & XEMACS_MOD_SHIFT))
+-      XSET_EVENT_KEY_MODIFIERS
+-	(event, XEVENT_KEY_MODIFIERS (event) |= XEMACS_MOD_SHIFT);
++      {
++	Lisp_Object tmp = XEVENT_KEY_MODIFIERS (event);
++	tmp |= XEMACS_MOD_SHIFT;
++	XSET_EVENT_KEY_MODIFIERS (event, tmp);
++      }
+ }
+ 
+ void

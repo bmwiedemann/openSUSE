@@ -1,0 +1,30 @@
+--- a/configure
++++ b/configure
+@@ -4676,6 +4676,12 @@
+         LIB64=1
+ 	;;
+ 
++   powerpc64le)
++	MACHTYPE=ppc64le
++	P_64BIT=1
++        LIB64=1
++	;;
++
+    * )
+ 	MACHTYPE=$target_cpu
+ 	{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: \"CPU $target_cpu not recognized - proceed with caution!\"" >&5
+--- a/configure.ac
++++ b/configure.ac
+@@ -351,6 +351,12 @@
+         LIB64=1
+ 	;;
+ 
++   powerpc64le)
++	MACHTYPE=ppc64le
++	P_64BIT=1
++        LIB64=1
++	;;
++
+    * )
+ 	MACHTYPE=$target_cpu
+ 	AC_MSG_WARN("CPU $target_cpu not recognized - proceed with caution!")

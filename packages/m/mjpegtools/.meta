@@ -1,0 +1,9 @@
+<package name="mjpegtools" project="openSUSE:Factory">
+  <title>MJPEG Video Capture and Processing Tools</title>
+  <description>The mjpegtools allow for capture, playback, processing, and simple
+editing of MJPEG AV data. The hardware I/O applications are intended
+for use with Zoran MJPEG framegrabber-based hardware (see the
+zoran-driver package), but the processing tools can be used with MJPEG
+data from other sources as well.</description>
+  <devel project="multimedia:libs" package="mjpegtools"/>
+</package>

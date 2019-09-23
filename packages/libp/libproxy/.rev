@@ -1,0 +1,621 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>5a5651ad7e41ebbcc5e2b1c0f796fa21</srcmd5>
+    <version>0.2.3</version>
+    <time>1234496491</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>af5ec36a63c05a27ac62aa0933b9f423</srcmd5>
+    <version>0.2.3</version>
+    <time>1234806112</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>445634a3e1ea64c4afdfdf28fd2fb564</srcmd5>
+    <version>0.2.3</version>
+    <time>1235647428</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>f77d1d10f22ab683d7d65e11acda4572</srcmd5>
+    <version>0.2.3</version>
+    <time>1238106959</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>60f829d32ff99ad55d45321e07d8301c</srcmd5>
+    <version>0.2.3</version>
+    <time>1240534532</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>918ca125081b3de3f222c21003bd2a6b</srcmd5>
+    <version>0.2.3</version>
+    <time>1243470593</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>803bc1d6e0602c4591805b0af9214cb5</srcmd5>
+    <version>0.2.3</version>
+    <time>1247755436</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1260f56bb468d864a2ff7602c6348c9a</srcmd5>
+    <version>0.3.0</version>
+    <time>1250512349</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libproxy based on submit request 17993 from user vuntz
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2ac467eaf6a08a29b7a1d294c2af6bb0</srcmd5>
+    <version>0.3.1</version>
+    <time>1255373808</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libproxy based on submit request 22290 from user dimstar
+</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>2ac467eaf6a08a29b7a1d294c2af6bb0</srcmd5>
+    <version>0.3.1</version>
+    <time>1255373808</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libproxy based on submit request 22290 from user dimstar
+</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>edd5c099078c66a93893f204c4d1e09a</srcmd5>
+    <version>0.3.1</version>
+    <time>1264068809</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libproxy based on submit request 29748 from user vuntz
+</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f92d007895cca17e91cadff9e7e222ea</srcmd5>
+    <version>0.4.0</version>
+    <time>1267751668</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libproxy based on submit request 33973 from user dimstar
+</comment>
+    <requestid>33973</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>115d70ba4194b70d6cee371ce3938b7f</srcmd5>
+    <version>0.4.0</version>
+    <time>1267955908</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libproxy based on submit request 34205 from user dimstar
+</comment>
+    <requestid>34205</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>628243b686744344a0bdebdce208ae76</srcmd5>
+    <version>0.4.0</version>
+    <time>1268268129</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libproxy based on submit request 34488 from user dimstar
+</comment>
+    <requestid>34488</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>70eb73ed4c60b930ae7d6bda4919ffea</srcmd5>
+    <version>0.4.0</version>
+    <time>1268924688</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>c4ccb4b8241fbab10f802f1b76a3bea2</srcmd5>
+    <version>0.4.0</version>
+    <time>1268952551</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libproxy based on submit request 35236 from user MBoman
+</comment>
+    <requestid>35236</requestid>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>3d6da65a9eddb566d31619a0e5508563</srcmd5>
+    <version>0.4.0</version>
+    <time>1270084791</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libproxy based on submit request 36375 from user vuntz
+</comment>
+    <requestid>36375</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bf9e9a623a3c19b5eb578aaeec147426</srcmd5>
+    <version>0.4.2</version>
+    <time>1275060162</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libproxy based on submit request 40752 from user vuntz
+</comment>
+    <requestid>40752</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a8a45bf07dde9380794a054f8539104f</srcmd5>
+    <version>0.4.3</version>
+    <time>1276244817</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libproxy based on submit request 41299 from user dimstar
+</comment>
+    <requestid>41299</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>a8a45bf07dde9380794a054f8539104f</srcmd5>
+    <version>0.4.3</version>
+    <time>1278667361</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>a8a45bf07dde9380794a054f8539104f</srcmd5>
+    <version>0.4.3</version>
+    <time>1278678591</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bb2c3f18842419ee0cc09c0089448b44</srcmd5>
+    <version>0.4.5</version>
+    <time>1283515042</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libproxy based on submit request 46523 from user dimstar
+</comment>
+    <requestid>46523</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>6d0f6362ac0310d77171ffe2768bb122</srcmd5>
+    <version>unknown</version>
+    <time>1284370877</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libproxy based on submit request 47788 from user vuntz
+</comment>
+    <requestid>47788</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>94366c7a0db844f64f96d4cedd349a24</srcmd5>
+    <version>0.4.6</version>
+    <time>1292760527</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 55928 from user dimstar
+</comment>
+    <requestid>55928</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>79fd3c69e039ef6a7acb2ff4d304627e</srcmd5>
+    <version>0.4.6</version>
+    <time>1292760533</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 55928
+</comment>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>79fd3c69e039ef6a7acb2ff4d304627e</srcmd5>
+    <version>0.4.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>7553bae9fa555b2644c9e826e077d814</srcmd5>
+    <version>0.4.6</version>
+    <time>1298026917</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61552 from user vuntz
+</comment>
+    <requestid>61552</requestid>
+  </revision>
+  <revision rev="28" vrev="9">
+    <srcmd5>ea1ab688f12a28581a0b64ca77c787e2</srcmd5>
+    <version>0.4.6</version>
+    <time>1298026927</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61552
+</comment>
+  </revision>
+  <revision rev="29" vrev="10">
+    <srcmd5>7ba6bf09df9d1ac875d114fdc968fd36</srcmd5>
+    <version>0.4.6</version>
+    <time>1303197165</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67835 from user coolo
+</comment>
+    <requestid>67835</requestid>
+  </revision>
+  <revision rev="30" vrev="11">
+    <srcmd5>d22de7500bc4d1c04f656fbccccbff2c</srcmd5>
+    <version>0.4.6</version>
+    <time>1303197176</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67835
+</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>3f57fd362cf42b81dd7bdef21b379524</srcmd5>
+    <version>0.4.7</version>
+    <time>1307542966</time>
+    <user>saschpe</user>
+    <comment>New upstream version</comment>
+    <requestid>72939</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>a5437d2f0d6910f2e86e979b6488fd89</srcmd5>
+    <version>0.4.7</version>
+    <time>1307542978</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72939
+</comment>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>8277229224ffaa19648ee5ff684a28ca</srcmd5>
+    <version>0.4.7</version>
+    <time>1308640429</time>
+    <user>saschpe</user>
+    <comment>Fix build of the plugins when using libwebkitgtk-3.0 1.5.1 (forwarded request 74231 from dimstar)</comment>
+    <requestid>74232</requestid>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>cd282d83bc376125c2ec325e09780174</srcmd5>
+    <version>0.4.7</version>
+    <time>1308640444</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74232
+</comment>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>4f6701a176233a5903684faba67afe55</srcmd5>
+    <version>0.4.7</version>
+    <time>1311835942</time>
+    <user>saschpe</user>
+    <comment>Stop using xulrunner (forwarded request 77223 from vuntz)</comment>
+    <requestid>77304</requestid>
+  </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>b3345d383f94ec87909871d785e66c55</srcmd5>
+    <version>0.4.7</version>
+    <time>1311835953</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77304
+</comment>
+  </revision>
+  <revision rev="37" vrev="8">
+    <srcmd5>b3345d383f94ec87909871d785e66c55</srcmd5>
+    <version>0.4.7</version>
+    <time>1319182124</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="38" vrev="9">
+    <srcmd5>a1d364eab7ced5cb265c290d1035f569</srcmd5>
+    <version>0.4.7</version>
+    <time>1320488372</time>
+    <user>coolo</user>
+    <comment>fix build on arm (forwarded request 90072 from adrianSuSE)</comment>
+    <requestid>90073</requestid>
+  </revision>
+  <revision rev="39" vrev="10">
+    <srcmd5>8bacd1e445c323b12a05d67a3469d818</srcmd5>
+    <version>0.4.7</version>
+    <time>1325846731</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>99101</requestid>
+  </revision>
+  <revision rev="40" vrev="11">
+    <srcmd5>34a19d43660e3b3eb728493cf9a583d9</srcmd5>
+    <version>0.4.7</version>
+    <time>1328261027</time>
+    <user>coolo</user>
+    <comment>Add trim patch... we released this as an update on 11.4 already,
+               then missed it in 12.1... again a maintenance update running...
+               include it in Factory now so we don't loose it again (forwarded request 102423 from dimstar)</comment>
+    <requestid>102447</requestid>
+  </revision>
+  <revision rev="41" vrev="12">
+    <srcmd5>d6b8d8648b177859691f627594857df4</srcmd5>
+    <version>0.4.7</version>
+    <time>1332147495</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>109441</requestid>
+  </revision>
+  <revision rev="42" vrev="13">
+    <srcmd5>a22bdb5443deb39ef617f35b22633837</srcmd5>
+    <version>0.4.7</version>
+    <time>1339362781</time>
+    <user>coolo</user>
+    <comment>- Add libproxy-force-bipr.patch: Force building pacrunner as module
+  This is required as libproxy, when building only one pacrunner,
+  links the module internal. But as we only temporarly disable
+  the mozjs, we do need to keep the webkit runner as an external
+  module.
+- Also pass -DBIPR=0 to cmake, to enable the patch above.
+
+- Temporaryly disable the mozjs pacrunner: it casues crashes due
+  to symbol conflicts in Firefox (bnc#759123):
+  + Introduce build_mozjs defnies, currently set to 0
+  + Conditionally build the pacrunner-mozjs package
+  + conditionally buildrequire pkgconfig(mozjs185)
+  + When not building mozjs pacrunner, obsolete the package by
+    libproxy1.
+
+- Add libproxy-force-bipr.patch: Force building pacrunner as module
+  This is required as libproxy, when building only one pacrunner,
+  links the module internal. But as we only temporarly disable
+  the mozjs, we do need to keep the webkit runner as an external
+  module.
+- Also pass -DBIPR=0 to cmake, to enable the patch above.
+
+- Temporaryly disable the mozjs pacrunner: it casues crashes due
+  to symbol conflicts in Firefox (bnc#759123):
+  + Introduce build_mozjs defnies, currently set to 0
+  + Conditionally build the pacrunner-mozjs package
+  + conditionally buildrequire pkgconfig(mozjs185)
+  + When not building mozjs pacrunner, obsolete the package by
+    libproxy1. (forwarded request 124317 from dimstar)</comment>
+    <requestid>124319</requestid>
+  </revision>
+  <revision rev="43" vrev="15">
+    <srcmd5>a22bdb5443deb39ef617f35b22633837</srcmd5>
+    <version>0.4.7</version>
+    <time>1340183623</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="44" vrev="16">
+    <srcmd5>41b9c2a328f03563c1ce7a62da6c5f47</srcmd5>
+    <version>0.4.7</version>
+    <time>1349252929</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136749</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>871e912ff1d4b7a992a5afb3bbc9b1a2</srcmd5>
+    <version>0.4.8</version>
+    <time>1350021981</time>
+    <user>coolo</user>
+    <comment>Update to 0.4.8 (forwarded request 136807 from Zaitor)</comment>
+    <requestid>137643</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b4f9b5c632ba95b761a8bf9df4ca6b11</srcmd5>
+    <version>0.4.9</version>
+    <time>1350150808</time>
+    <user>coolo</user>
+    <comment>Resubmit post fix</comment>
+    <requestid>137984</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>a794d5f43f09d572b9951883f54843bb</srcmd5>
+    <version>0.4.10</version>
+    <time>1350646360</time>
+    <user>coolo</user>
+    <comment>Update to 0.4.10 - Resubmit post review (forwarded request 138540 from dimstar)</comment>
+    <requestid>138558</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>65f98f9b11d931929e3b4202152e1b87</srcmd5>
+    <version>0.4.10</version>
+    <time>1352796110</time>
+    <user>coolo</user>
+    <comment>tweak (forwarded request 140965 from dimstar)</comment>
+    <requestid>140966</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>2312bcab30b75a010cf0a882cbeee1de</srcmd5>
+    <version>0.4.11</version>
+    <time>1354887673</time>
+    <user>namtrac</user>
+    <comment>Push G:F for M2</comment>
+    <requestid>144504</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>2312bcab30b75a010cf0a882cbeee1de</srcmd5>
+    <version>0.4.11</version>
+    <time>1359109330</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>548069ac0d3c65ec970f7e0e3570c5e5</srcmd5>
+    <version>0.4.11</version>
+    <time>1362131349</time>
+    <user>coolo</user>
+    <comment>Remove mono support for aarch64</comment>
+    <requestid>156875</requestid>
+  </revision>
+  <revision rev="52" vrev="5">
+    <srcmd5>63270492c136d326553dc9137a9de793</srcmd5>
+    <version>0.4.11</version>
+    <time>1373981831</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.4 - hopefully in the for #oSC13</comment>
+    <requestid>183178</requestid>
+  </revision>
+  <revision rev="53" vrev="6">
+    <srcmd5>8f4fd14030d88a632f5f552febf6cce1</srcmd5>
+    <version>0.4.11</version>
+    <time>1376385030</time>
+    <user>scarabeus_factory</user>
+    <comment>Let's see who dares reviewing this :) (forwarded request 186180 from Zaitor)</comment>
+    <requestid>186200</requestid>
+  </revision>
+  <revision rev="54" vrev="7">
+    <srcmd5>fdfb1125f4a0d3016988367d51f69c4a</srcmd5>
+    <version>0.4.11</version>
+    <time>1377855718</time>
+    <user>coolo</user>
+    <comment>
+- Add libproxy-pxgsettings-crash.patch: fix crash in pxgsettings
+               when it's closing down (bnc#836576).  Wait for libproxy and
+               libproxy plugins to fully build before accepting into G:F.
+ (forwarded request 196570 from Zaitor)</comment>
+    <requestid>196576</requestid>
+  </revision>
+  <revision rev="55" vrev="8">
+    <srcmd5>cf0c938767f2e6588584bae0fe0a3576</srcmd5>
+    <version>0.4.11</version>
+    <time>1378713254</time>
+    <user>coolo</user>
+    <comment>Submit mls' fix.. cleaned up and standardized</comment>
+    <requestid>197823</requestid>
+  </revision>
+  <revision rev="56" vrev="10">
+    <srcmd5>cf0c938767f2e6588584bae0fe0a3576</srcmd5>
+    <version>0.4.11</version>
+    <time>1379663053</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="57" vrev="11">
+    <srcmd5>2017fe424305d902d3593187345356a5</srcmd5>
+    <version>0.4.11</version>
+    <time>1407485412</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>243759</requestid>
+  </revision>
+  <revision rev="58" vrev="13">
+    <srcmd5>2017fe424305d902d3593187345356a5</srcmd5>
+    <version>0.4.11</version>
+    <time>1409301670</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="59" vrev="14">
+    <srcmd5>9dc53656da2faff3283733999d3c392e</srcmd5>
+    <version>0.4.11</version>
+    <time>1437059804</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316449</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>de5569aa99364a87376ab6ff763c70bc</srcmd5>
+    <version>0.4.12</version>
+    <time>1453416073</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353660</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>587cdad62333943b4fcab768ff50aee2</srcmd5>
+    <version>0.4.13</version>
+    <time>1462443062</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>392421</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>4b1b22824bc196434347a2e51b1290a9</srcmd5>
+    <version>0.4.13</version>
+    <time>1463124212</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394684</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>7176a2dda2c9e485639396ec0413273b</srcmd5>
+    <version>0.4.13</version>
+    <time>1469742227</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412800</requestid>
+  </revision>
+  <revision rev="64" vrev="4">
+    <srcmd5>291d4df873f5ac01a58335f9fa086d2d</srcmd5>
+    <version>0.4.13</version>
+    <time>1472594728</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423550</requestid>
+  </revision>
+  <revision rev="65" vrev="5">
+    <srcmd5>0ff83e3facbf377c543e9ce92a3cebc8</srcmd5>
+    <version>0.4.13</version>
+    <time>1474475189</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>426657</requestid>
+  </revision>
+  <revision rev="66" vrev="6">
+    <srcmd5>a3c9b7c3c316eeeb1a74e927be1b3073</srcmd5>
+    <version>0.4.13</version>
+    <time>1476113523</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>431518</requestid>
+  </revision>
+  <revision rev="67" vrev="7">
+    <srcmd5>b9cb75319c710e86a65ce70e401a0af2</srcmd5>
+    <version>0.4.13</version>
+    <time>1480025741</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with cmake 3.7 - somehow this was not spotted in staging (forwarded request 441359 from dimstar)</comment>
+    <requestid>441369</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>b067bf9fee7b2d56be9543ce1f668ef7</srcmd5>
+    <version>0.4.14</version>
+    <time>1484132282</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449418</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>78ffe7a679fa9afaade972e77601fedb</srcmd5>
+    <version>0.4.14</version>
+    <time>1486716364</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454969</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>9e66f1d87f97e7c396b7e65127b5714c</srcmd5>
+    <version>0.4.15</version>
+    <time>1505331833</time>
+    <user>dimstar_suse</user>
+    <comment>- Update descriptions and RPM categories. (forwarded request 522148 from jengelh)</comment>
+    <requestid>522333</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>85147ed8188c39dbb08c79c1d82c4372</srcmd5>
+    <version>0.4.15</version>
+    <time>1519844495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580252</requestid>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>6e2d38487d2c6bb8322f29a6f74f9c76</srcmd5>
+    <version>0.4.15</version>
+    <time>1531379721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621484</requestid>
+  </revision>
+  <revision rev="73" vrev="4">
+    <srcmd5>04384cfc5a0674b0847734f9f37900af</srcmd5>
+    <version>0.4.15</version>
+    <time>1539757210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Url tag to point to http://libproxy.github.io/libproxy/
+- Add libproxy-python3.7.patch: Support python 3.7 and 3.8.
+- Drop py_requires: no longer needed.
+
+- Update Url tag to point to http://libproxy.github.io/libproxy/
+- Add libproxy-python3.7.patch: Support python 3.7 and 3.8.
+- Drop py_requires: no longer needed. (forwarded request 640078 from dimstar)</comment>
+    <requestid>640108</requestid>
+  </revision>
+  <revision rev="74" vrev="5">
+    <srcmd5>c42677544c61410e9ba3ca619504df38</srcmd5>
+    <version>0.4.15</version>
+    <time>1545223614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657732</requestid>
+  </revision>
+</revisionlist>

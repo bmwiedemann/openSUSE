@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>63a14c87dece1e0fb873aa25b6204997</srcmd5>
+    <version>0.14.0</version>
+    <time>1465335958</time>
+    <user>dimstar_suse</user>
+    <comment>hpack: An alternative format for Haskell packages , future dep of stack</comment>
+    <requestid>397418</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>384a920413c0b02364d3d403ccaa8e5f</srcmd5>
+    <version>0.14.1</version>
+    <time>1465938504</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.1 (forwarded request 401641 from mimi_vx)</comment>
+    <requestid>401642</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>066b70401e97189ef55012dda5321b11</srcmd5>
+    <version>0.14.1</version>
+    <time>1468999329</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411783</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>d3f7956326ff016545294064bd685698</srcmd5>
+    <version>0.14.1</version>
+    <time>1472379486</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>422111</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>efa81d66dc95e8d5abc98ee8457d37a9</srcmd5>
+    <version>0.17.0</version>
+    <time>1488559982</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>461705</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>8a9847f87624721c0dfbbcc633ef7005</srcmd5>
+    <version>0.17.0</version>
+    <time>1491896927</time>
+    <user>maxlin_factory</user>
+    <comment>Improve %description as requested in the previous reviewd.</comment>
+    <requestid>486512</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>73a0e6df57c6260074bbecebfae60510</srcmd5>
+    <version>0.17.1</version>
+    <time>1498046218</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504688</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fcd37883f12a71e6f3e425a68f4830c5</srcmd5>
+    <version>0.18.1</version>
+    <time>1504206182</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>513571</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1d984e5cca68ad3ecf2fdb27ce45fa35</srcmd5>
+    <version>0.18.1</version>
+    <time>1505507359</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525776</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b668f4b3406a05afb1bee1661c35b482</srcmd5>
+    <version>0.28.2</version>
+    <time>1527675381</time>
+    <user>dimstar_suse</user>
+    <comment>Update hpack to the latest version.</comment>
+    <requestid>607961</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>aaf7d95a6e9fcdc18bea77d8c3c53936</srcmd5>
+    <version>0.29.5</version>
+    <time>1532445817</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update hpack to version 0.29.5.
+  - Fix a regression related to indentation sniffing (close #310)
+  - Desugar ^&gt;= when dependency is a string (see #309)
+  - Add support for Apache, MPL and ISC when inferring `license` (see #305)
+  - Desugar `^&gt;=` for compatibility with `Cabal &lt; 2` (see #213)
+  - Add support for GPL, LGPL and AGPL when inferring `license` (see #305)
+  - Add missing `extra-source-files` (see #302)
+  - Infer `license` from `license-file`
+  - Put the `cabal-version` at the beginning of the generated file. This Is
+    required with `cabal-version: 2.1` and higher. (see #292)
+  - With `cabal-version: 2.1` or higher omit `&gt;=` when rendering (see #292)
+  - Require `cabal-version: 2.2` when SPDX license identifiers are used (see #292)
+  - Map cabal-style licenses to SPDX license identifiers when `cabal-version`
+    is 2.2 or higher (see #292)</comment>
+    <requestid>623904</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>acba0e3b9e86045c045a1f26fce8cdca</srcmd5>
+    <version>0.29.7</version>
+    <time>1534774865</time>
+    <user>dimstar_suse</user>
+    <comment>- Update hpack to version 0.29.7.
+  ## Changes in 0.29.7
+    - Expose more stuff from `Hpack.Yaml` so that it can be used by third parties
+  ## Changes in 0.29.6
+    - Add `spec-version` (see #300)</comment>
+    <requestid>630377</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>857d93bcb1d01b693a1f2e46e950fd91</srcmd5>
+    <version>0.31.0</version>
+    <time>1540448381</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642910</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ac7c88d9c5f9ce83fa8d2662898b8eeb</srcmd5>
+    <version>0.31.1</version>
+    <time>1541746397</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>646367</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2da51eae406b74bb58e0397b8550aa7d</srcmd5>
+    <version>0.31.2</version>
+    <time>1551883650</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>681689</requestid>
+  </revision>
+</revisionlist>

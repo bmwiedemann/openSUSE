@@ -1,0 +1,43 @@
+# It's not recommended to modify this file in-place, because it will be
+# overwritten during package upgrades.  If you want to customize, the
+# best way is to create a file "/etc/systemd/system/pgagent-10.service",
+# containing
+#	.include /lib/systemd/system/pgagent-10.service
+#	...make your changes here...
+# For more info about custom unit files, see
+# http://fedoraproject.org/wiki/Systemd#How_do_I_customize_a_unit_file.2F_add_a_custom_unit_file.3F
+
+# Note: changing PGDATA will typically require adjusting SELinux
+# configuration as well.
+
+[Unit]
+Description=PgAgent for PostgreSQL %{pg_version}
+After=syslog.target
+After=network.target
+
+[Service]
+Type=forking
+
+User=pgagent
+Group=pgagent
+
+# Location of the configuration file
+EnvironmentFile=/etc/pgagent/%{name}.conf
+
+# Where to send early-startup messages from the server (before the logging
+# options of pgagent.conf take effect)
+# This is normally controlled by the global default set by systemd
+# StandardOutput=syslog
+
+# Disable OOM kill on the postmaster
+OOMScoreAdjust=-1000
+
+ExecStart=/usr/bin/%{name} -s ${LOGFILE} hostaddr=${DBHOST} dbname=${DBNAME} user=${DBUSER} port=${DBPORT}
+KillMode=mixed
+KillSignal=SIGINT
+
+# Give a reasonable amount of time for the server to start up/shut down
+TimeoutSec=300
+
+[Install]
+WantedBy=multi-user.target

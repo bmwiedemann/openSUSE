@@ -1,0 +1,17 @@
+--- mysql-workbench-community-6.3.7-src.orig/frontend/linux/workbench/mysql-workbench.in	2016-06-08 15:51:41.000000000 +0300
++++ mysql-workbench-community-6.3.7-src/frontend/linux/workbench/mysql-workbench.in	2016-07-21 20:13:29.491388434 +0300
+@@ -45,6 +45,14 @@
+   fi
+ fi
+ 
++if test -f $wblibdir/libsqlparser.so; then
++  if test "$LD_PRELOAD" != ""; then
++    export LD_PRELOAD="$LD_PRELOAD:$wblibdir/libsqlparser.so"
++  else
++    export LD_PRELOAD="$wblibdir/libsqlparser.so"
++  fi
++fi
++
+ 
+ # if libcairo and pixman are in the wb libraries dir, force them to be preloaded
+ if test -f $wblibdir/libcairo.so.2; then

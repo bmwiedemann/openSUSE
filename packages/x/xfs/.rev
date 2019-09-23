@@ -1,0 +1,135 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0993f30a96405c8e39f57fd83f90118f</srcmd5>
+    <version>1.1.2</version>
+    <time>1336471453</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115453</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>400dd81708b19b9eedf69b70011ce66b</srcmd5>
+    <version>1.1.2</version>
+    <time>1337164047</time>
+    <user>coolo</user>
+    <comment>- make use of %verfiy(not md5 size mtime) for /etc/X11/fs/config
+  (bnc#761824)</comment>
+    <requestid>120718</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>400dd81708b19b9eedf69b70011ce66b</srcmd5>
+    <version>1.1.2</version>
+    <time>1340184363</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>400dd81708b19b9eedf69b70011ce66b</srcmd5>
+    <version>1.1.2</version>
+    <time>1359110640</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7f201bd83e46e8e0db54c1704c3e1ca2</srcmd5>
+    <version>1.1.3</version>
+    <time>1367935411</time>
+    <user>coolo</user>
+    <comment>- xfs 1.1.3
+  * This release contains a number of code cleanups and other
+    minor fixes.</comment>
+    <requestid>174707</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5fd23d6fef03ad720d9ca99b1f657462</srcmd5>
+    <version>1.1.3</version>
+    <time>1371156605</time>
+    <user>coolo</user>
+    <comment>license update: HPND
+This is HPND, not MIT (absence of express sublicensing permission etc) (forwarded request 178786 from babelworx)</comment>
+    <requestid>178795</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>5fd23d6fef03ad720d9ca99b1f657462</srcmd5>
+    <version>1.1.3</version>
+    <time>1379665063</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>1478329b852dd6cc9e647adba418da23</srcmd5>
+    <version>1.1.3</version>
+    <time>1395513969</time>
+    <user>coolo</user>
+    <comment>- udpated to current git id 2c79452 in order to fix build for
+  latest libXfont</comment>
+    <requestid>226733</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>196608de9b9b078c86582b62658fc18d</srcmd5>
+    <version>1.1.3</version>
+    <time>1405520380</time>
+    <user>coolo</user>
+    <comment>- U_Only-call-SnfSetFormat-if-libXfont-is-built-with-SNF.patch
+  * needed after switching to libXfont 1.8, which now disables
+    support for SNF font format by default</comment>
+    <requestid>241072</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6735b931f1ae758d173b595b9ce0fc87</srcmd5>
+    <version>1.1.4</version>
+    <time>1409118367</time>
+    <user>coolo</user>
+    <comment>- xfs 1.1.4
+  * This release improves compatibility with libXfont 1.5 and
+    cleans up many compiler warnings and chunks of dead code.
+  * supersedes U_Only-call-SnfSetFormat-if-libXfont-is-built-with-SNF.patch</comment>
+    <requestid>246331</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>6735b931f1ae758d173b595b9ce0fc87</srcmd5>
+    <version>1.1.4</version>
+    <time>1409303748</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>8ea9b168b8957f4620b4d01cae51cda1</srcmd5>
+    <version>1.1.4</version>
+    <time>1496225992</time>
+    <user>dimstar_suse</user>
+    <comment>- includes everything needed for missing sle issue entries:
+  fate #320388 (bsc#1041620)</comment>
+    <requestid>499645</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3a6954917c8d1fdab81ce987ee37c87c</srcmd5>
+    <version>1.2.0</version>
+    <time>1512042314</time>
+    <user>dimstar_suse</user>
+    <comment>- xfs 1.2.0
+  * This release ports the X Font Server to libXfont 2.x. 
+    Distributions may now drop libXfont 1.x at their convenience.
+    This conversion has been lightly tested but some issues may
+    remain; please report any new issues to xorg-devel@lists.x.org.</comment>
+    <requestid>546298</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>198f877b85c8e0abee3824b665cfbe50</srcmd5>
+    <version>1.2.0</version>
+    <time>1518187894</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed build (looks like a manual page has been dropped)</comment>
+    <requestid>574302</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>be415002f7bad932beb7fac96bc8c986</srcmd5>
+    <version>1.2.0</version>
+    <time>1542580274</time>
+    <user>dimstar_suse</user>
+    <comment>- switched from init.d script to a native systemd service 
+  (boo#1116053)
+- cleanup in specfile</comment>
+    <requestid>649350</requestid>
+  </revision>
+</revisionlist>

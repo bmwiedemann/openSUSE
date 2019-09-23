@@ -1,0 +1,166 @@
+-------------------------------------------------------------------
+Tue Aug 20 07:15:49 UTC 2019 - mvetter@suse.com
+
+- Update to 0.11.1:
+  * Fix a regression in compilation without X11.
+  * Fixes and improvements to syntax highlighting and support it with printing.
+- Changes from 0.11.0:
+  * FeatherPad supports spell checking with Hunspell. Spell checking
+    requires adding an appropriate Hunspell dictionary (see
+	Preferences → Text → Spell Checking). New words can also be
+    added to each dictionary and are saved in FeatherPad's config directory.
+  * A new font dialog that distinguishes programming fonts from others.
+  * Shift+Enter is made smarter, especially with numbered lists.
+  * Better handling of typed custom shortcuts (including a workaround
+    for a new Qt bug related to Meta key).
+  * False warnings are prevented on startup.
+  * Recent changes to settings won't be lost if the app is running on logout.
+  * Native file dialogs are used by default.
+  * The insert mode is also toggled by the keypad insert key.
+  * Many fixes are made to Perl's syntax highlighting.
+  * Deprecated Qt methods are replaced.
+
+-------------------------------------------------------------------
+Wed May 22 09:09:19 UTC 2019 - mvetter@suse.com
+
+- Update to 0.10.0:
+  * Added support for searching/replacing regular expressions.
+  * Added cmake support.
+  * Replace triple periods and double hyphens with ellipses and em dashes respectively on typing (can be disabled in Preferences).
+  * The Preferences dialog has a better layout and its size is always remembered.
+  * Workaround for a Qt bug that gives non-plain text to clipboard on copying/cutting/selecting text.
+  * Fixed a crash under Wayland.
+  * Fixed a small issue in determining whether files should be opened in tabs or separate windows.
+  * Added lots of cmake patterns for syntax highlighting.
+  * Disabled tab DND without X11, mainly because Wayland still has a serious problem with QDrag. 
+
+-------------------------------------------------------------------
+Mon Feb 25 09:58:56 UTC 2019 - mvetter@suse.com
+
+- Update to 0.9.4:
+  * Don't toggle the insert mode when a modifier is also pressed.
+  * BSD issues are fixed by Brian Callahan (ibara at GitHub).
+  * Added YAML and Fountain to syntax highlighting.
+  * Don't consider empty shortcuts ambiguous.
+  * Fixed an issue about savable docs in Preferences dialog.
+
+-------------------------------------------------------------------
+Tue Feb  5 07:07:24 UTC 2019 - mvetter@suse.com
+
+- Update to 0.9.3:
+  * Added support for highlighting C++11 raw string literals.
+  * Added reStructuredText to syntax highlighting.
+  * Fixes for custom shortcuts with different languages/platforms.
+  * Set the size of default font to that of system font.
+  * Supported optional translations for Help.
+  * Added a (transient) warning bar to root windows.
+  * Fixed small mistakes in the code and dropped the obsolete class QDesktopWidget.
+  * Do not open non-text files by default (because they may take a lot of CPU time -- can be changed in Preferences).
+
+-------------------------------------------------------------------
+Sun Dec 16 02:59:06 UTC 2018 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.2:
+  * Fixed the extra CPU time taken by bracket matching.
+  * Fixed some typos (thanks to flopp at GitHub).
+  * Ensure that the tab drag source is one of our windows (and not a root instance, for example).
+  * Use our standard URL pattern with changelog too.
+  * Added an option to remember the window position (disabled by default).
+  * Show status bar by default (for users to find advanced options more easily).
+  * When copying the file path to the clipboard, include its name too.
+  * Added actions for sorting selected lines (to the right-click menu).
+  * Removed an old workaround for KDE's clipboard because it isn't needed anymore and can cause a delay on startup
+
+-------------------------------------------------------------------
+Mon Oct  8 08:20:00 UTC 2018 - mvetter@suse.com
+
+- Update to 0.9.1:
+  * The window title is set to the whole file path, including the file name.
+  * The line number strip is enhanced.
+  * Tab switch shortcuts can be customized now.
+  * The warning bar is shown as a translucent layer over the tab widget with animation.
+  * A shortcut is added for activating the last active tab.
+  * "gio" is tried first for opening hyperlinks because Qt may resort to "xdg-open", which isn't always a good choice.
+  * A workaround is added for a new bug in KDE's file dialog.
+  * Compilation without X11 is possible with qmake WITHOUT_X11=YES. Also, Haiku OS is supported.
+  * Several fixes and improvements.
+
+-------------------------------------------------------------------
+Wed Aug  8 16:59:26 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Tue May 22 09:40:32 UTC 2018 - mvetter@suse.com
+
+- Update to 0.9:
+  * Added an option for the text tab size in terms of spaces.
+  * Added "To Upper Case" and "To Lower Case".
+  * Disable the language button for documents that are made uneditable because of their contents.
+  * Open the files of the last window instead of starting with all recent files (if the related option is checked).
+  * Restore cursor positions with last window files too.
+  * Remove the lock file only at the end, when the config is written, because writing may take some time with cursor positions.
+  * Before focusing an existing side-pane with its toggling shortcut, ensure its visibility.
+  * Added the overwrite mode, which is toggled by pressing the Insert key.
+  * Added an option for saving unmodified files.
+  * Added an option for closing a window on closing its last tab.
+  * Fixed a regression in recognizing special files (started when QRegExp was replaced by QRegularExpression).
+  * Added Ctrl+Up/Down for scrolling by one line without moving the cursor.
+  * Added Meta+Up/Down for going to the same position in the previous/next unwrapped line.
+  * Added shortcuts (Ctrl+Shift+Up/Down) for moving lines.
+  * Added a history popup to the search bar.
+  * Set the window title to the path.
+  * Also open paths that point to nonexistent files (to save them later).
+  * Don't show the warning bar when there's a modal dialog.
+  * Added command-line options for cursor position.
+  * Deal with relative paths completely.
+  * Added an option to not permit opening of non-text files.
+  * Added the number of pages to tab/side-item context menu.
+  * Made Ctrl+Tab, Ctrl+Meta+Tab and Shift+Tab really align the text.
+  * Covered regex inside QML too (with syntax highlighting).
+  * Never remove trailing spaces with diff files.
+  * Made highlighting of JavaScript regex faster and fixed some bugs in it.
+  * Added an option for thick text cursor.
+  * Made the current line number bold and added a marker for wrapped lines. Also made the line highlighter much milder.
+  * Center the current line on clicking inside the line number strip.
+  * Toggle side-pane by middle clicking an empty space inside it or inside the tab-bar.
+  * Put the line number strip on the right with an RTL layout.
+
+-------------------------------------------------------------------
+Sun May 20 09:57:55 UTC 2018 - mvetter@suse.com
+
+- Run spec-cleaner
+- Delete _service file
+- Remove desktop and icon cache update
+- Update to 0.8:
+  * Close the warning-bar when the text is scrolled.
+  * Fixed highlighting and markdown.
+  * Added the symlink "fpad".
+  * Added an options for auto-saving of opened files (disabled by default).
+  * Add a new tab on double clicking an empty space of the tabbar.
+  * An option for showing the cursor position on the statusbar (disabled by default).
+  * Support syntax override (disabled by default).
+  * An option for vertical position lines.
+  * Open hyperlinks of highlighted texts by left-clikcing them while the Ctrl key is pressed and also with an item in the context menu.
+  * Added an option for removing trailing spaces on saving (Markdown's trailing double spaces are taken care of).
+  * Added Undo/Redo to custom shortcuts, although their default shortcuts are hard-coded in Qt.
+  * Show whitespaces or line/document ends with normal texts too (by using the URL syntax highlighting).
+  * Never show the horizontal scrollbar on wrapping (when whitespaces are visible).
+  * Handle "&quot;", "&gt;" and "&lt;", especially in XML.
+  * Support hard-coded symbolic icons that change their colors appropriately (adapted from Cantata).
+  * Bug fixes
+
+-------------------------------------------------------------------
+Tue Jan 30 16:07:24 UTC 2018 - and.november@opensuse.org
+
+- update to version 0.7
+
+-------------------------------------------------------------------
+Tue Jan  2 20:30:41 UTC 2018 - and.november@opensuse.org
+
+- update to version 0.6.3
+
+-------------------------------------------------------------------
+Sun Apr 16 04:22:05 UTC 2017 - and.november@opensuse.org
+
+- initial package (version 0.5.8) for openSUSE

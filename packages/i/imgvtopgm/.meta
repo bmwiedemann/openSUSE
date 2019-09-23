@@ -1,0 +1,11 @@
+<package name="imgvtopgm" project="openSUSE:Factory">
+  <title>Palm Pilot Image Viewer to PGM Converter</title>
+  <description>Tools for converting Pilot Image Viewer pdb files to and from Portable
+Graymaps and Portable Bitmaps. The tools support grayscale and
+monochrome images with or without compression and with or without
+notes.
+
+If you are looking for a cool (and free) image viewer for your Pilot,
+you should look at TinyViewer (http://www.righto.com/pilot/tv.html).</description>
+  <devel project="graphics" package="imgvtopgm"/>
+</package>

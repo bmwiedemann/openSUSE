@@ -1,0 +1,168 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0cc954d3281dcc6306c208a2a0ad2f0c</srcmd5>
+    <version>unknown</version>
+    <time>1346225604</time>
+    <user>coolo</user>
+    <comment>add link</comment>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0cc954d3281dcc6306c208a2a0ad2f0c</srcmd5>
+    <version>unknown</version>
+    <time>1359108715</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ef27932c40da79dcb66525f159998962</srcmd5>
+    <version>unknown</version>
+    <time>1372760422</time>
+    <user>coolo</user>
+    <comment>I decide to split it (data) from librime, because now they distributes with different version numbers. so if any existing package link in Factory points to openSUSE:Factory librime, please remove brise first then accept this package. thanks</comment>
+    <requestid>181464</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>59d24aac7805c604041db0c3e8700e8f</srcmd5>
+    <version>unknown</version>
+    <time>1372921371</time>
+    <user>coolo</user>
+    <comment>trying to fix it</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>82926471aa73d2bff4a4574526dd8f94</srcmd5>
+    <version>0.22</version>
+    <time>1372921381</time>
+    <user>coolo</user>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>82926471aa73d2bff4a4574526dd8f94</srcmd5>
+    <version>0.22</version>
+    <time>1379662055</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8ab96a2bc0dcf0b5d98a22f6b7ec1983</srcmd5>
+    <version>0.30</version>
+    <time>1384265041</time>
+    <user>coolo</user>
+    <comment>update 0.30 (forwarded request 206584 from MargueriteSu)</comment>
+    <requestid>206585</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>13500a64d69030195e05b07e094136a3</srcmd5>
+    <version>0.33git20140315</version>
+    <time>1395146429</time>
+    <user>coolo</user>
+    <comment>update version 0.33 (forwarded request 226070 from MargueriteSu)</comment>
+    <requestid>226071</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>32802cf0a06cda62722e86468293bbf1</srcmd5>
+    <version>0.35+git20140810</version>
+    <time>1407744468</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244114</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>32802cf0a06cda62722e86468293bbf1</srcmd5>
+    <version>0.35+git20140810</version>
+    <time>1409300583</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>96f449ade416346cf909c16dded7d23b</srcmd5>
+    <version>0.36+git20150729.5c8435e</version>
+    <time>1439385294</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322018</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3ab726ce6a978edfb41e965df0ccb781</srcmd5>
+    <version>0.36+git20160221.7dbd56b</version>
+    <time>1457426341</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>365075</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>bf75ac040eb5080cd13315306d734462</srcmd5>
+    <version>0.36+git20160221.7dbd56b</version>
+    <time>1461334987</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>378438</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4cf89e6e0f42a0b3be74d1c8bdcd7857</srcmd5>
+    <version>0.39+git20190120.8d5bc2e</version>
+    <time>1563701718</time>
+    <user>dimstar_suse</user>
+    <comment>- update 0.39+git20190120.8d5ec2e
+  * brise was deprecated since plum came out. openSUSE still
+    provides brise but it is just a collection of &quot;:all&quot;
+    schema set fetched by plum. the version will just
+    indicate the time when maintainer updates the package
+    from now on, because every schema has a separate git
+    repository and no way to get a version. but we'd better
+    collect some major changes from these repositories and
+    list here.
+- Make sure source code's LICENSE file install by default.
+- Update to version 0.36+git20160221.7dbd56b
+- update version 0.36+git20150729.5c8435e
+- update version 0.35+git20140810
+  * default.yaml: add switch 'ascii_punct' to switch on and off Chinese
+    punctuations; add hotkey Control+. to toggle ascii_punct;
+    add hotkey Control+h for BackSpace, Control+[ for Escape;
+    clear unfinished input when switching off Chinese mode with Caps Lock;
+    enable folded options in schema list, press space key to unfold.
+  * essay.txt: replaces essay.kct in installed files; fix bugs.
+  * symbols.yaml: /bdz for Chinese punctuations in vertical writing.
+  * stroke.dict.yaml: adopt BSD license as approved by its original author.
+  * combo_pinyin: silently ignore invalid chords.
+  * luna_pinyin_fluency: input various numeric characters with /0 ~ /10.
+  * luna_pinyin, terra_pinyin, emoji, stroke, zyenpheng: update tables.
+- update version 0.33git20140315
+  * symbols.yaml: rearranged symbol table by Patricivs.
+  * emoji: more Emoji symbols; support tips and alternative spellings.
+  * jyutping: include more Cantonese phrases.
+  * essay.txt, luna_pinyin, terra_pinyin: lots of improvements.
+  * many other bugfixes since then.
+- update version 0.30
+  * default.yaml, symbols.yaml: prefer middle dot U+00B7 to U+30FB.
+  * bopomofo_tw: bopomofo, output in Taiwan standard.
+  * jyutping: include more characters.
+  * luna_pinyin_simp: enable hotkey Control+Shift+4 to toggle
+    simplified/traditional Chinese mode.
+  * essay.txt, luna_pinyin, terra_pinyin: lots of improvements.
+- update version 0.22
+  * essay.txt, luna_pinyin, terra_pinyin: lots of bug-fixes.
+  * wubi86: auto-commit complete words. (max_code_length: 4)
+  * luna_pinyin*: enable user created custom_phrase.txt (rime&gt;=0.9.9) 
+- although this package only have a /usr/share/rime-data,
+  but it need building, 32-bit and 64-bit results are different.
+  So remove BuildArch: noarch tag to fix ibus/fcitx-rime crash.
+- update version 0.13
+  * install data files from a separate package.
+  * update: luna_pinyin, terra_pinyin, jyutping tables.
+  * update: essay database.
+  * new schema: emoji.
+- initial version 0.9.2
+  * chord-typing support: combine multiple keys to compose a syllable at once.
+  * configuration: global page_size setting.
+  * inline mode: extend the API to support inline mode.
+  * table translator: add option to filter candidates by character set.
+  * user dictionary: automatic recovery for corrupted databases.
+  * user dictionary: fixed a bug that was responsible for missing user phrases.
+  * rime_deployer: a utility program to prepare Rime's workspace.
+  * rime_dict_manager: a utility program to import/export user dictionaries.
+  * librime package: include 'brise', a collection of preset schemata in the package.
+  * new schema: Middle Chinese Phonetic Transcription.
+  * new schema: IPA input method in X-SAMPA.
+</comment>
+    <requestid>717227</requestid>
+  </revision>
+</revisionlist>

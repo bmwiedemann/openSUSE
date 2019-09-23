@@ -1,0 +1,30 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2017-04-30 02:23:53.236493153 +0200
+
+Stop punting the types pointers.
+
+rsb_test_accuracy.c:117:2: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  RSB_NUMERICAL_TYPE_SET_ELEMENT_FROM_DOUBLE(eps,RSB_NORMWISE_BACKWARD_ERROR_TOLERANCE,typecode);
+---
+ rsb_types.h |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+Index: librsb-1.2.0-rc6/rsb_types.h
+===================================================================
+--- librsb-1.2.0-rc6.orig/rsb_types.h
++++ librsb-1.2.0-rc6/rsb_types.h
+@@ -375,10 +375,10 @@ extern "C" {
+ 		switch(TYPE) \
+ 		{ \
+ 			/* supported (double,float,float complex,double complex) */ \
+-			case RSB_NUMERICAL_TYPE_DOUBLE 	:	*(double*)(DST)=(double)(DSRC); break; \
+-			case RSB_NUMERICAL_TYPE_FLOAT 	:	*(float*)(DST)=(float)(DSRC); break; \
+-			case RSB_NUMERICAL_TYPE_FLOAT_COMPLEX 	:	*(float complex*)(DST)=(float complex)(DSRC); break; \
+-			case RSB_NUMERICAL_TYPE_DOUBLE_COMPLEX 	:	*(double complex*)(DST)=(double complex)(DSRC); break; \
++			case RSB_NUMERICAL_TYPE_DOUBLE 	: { double z = (DSRC); memcpy(DST, &z, sizeof(z)); break; } \
++			case RSB_NUMERICAL_TYPE_FLOAT 	: { float z = (DSRC); memcpy(DST, &z, sizeof(z)); break; } \
++			case RSB_NUMERICAL_TYPE_FLOAT_COMPLEX 	: { float complex z = (DSRC); memcpy(DST, &z, sizeof(z)); break; } \
++			case RSB_NUMERICAL_TYPE_DOUBLE_COMPLEX 	: { double complex z = (DSRC); memcpy(DST, &z, sizeof(z)); break; } \
+ 			/* unsupported type */ \
+ 			default : ; \
+ 		} \

@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Fri Feb 15 11:14:58 UTC 2019 - Petr Cervinka <petr@cervinka.net>
+
+- Disable appindicator support (boo#1125586)
+
+-------------------------------------------------------------------
+Sat Jan  5 09:46:28 UTC 2019 - Petr Cervinka <petr@cervinka.net>
+
+- Version bump to 0.7.1: 
+  * Check stream_input and stream_output settings
+
+-------------------------------------------------------------------
+Mon Oct  1 08:17:26 UTC 2018 - Petr Cervinka <petr@cervinka.net>
+
+- Fix build on Leap 42.3 
+
+-------------------------------------------------------------------
+Mon Oct  1 07:22:10 UTC 2018 - Petr Cervinka <petr@cervinka.net>
+
+- Version bump to 0.7.0: 
+  * Disable status icon tooltip for connected state
+  * Fix: Recognize the option -N systray_action
+  * systray: fix memory leak
+  * Add option to terminate server
+  * Split glade for gtk2/3
+  * Fix coding style
+  * Deprecate old notification options
+  * Remove deprecated option max-volume
+  * Simplify notification handling
+  * Granular notification options
+  * Set fallback icon for notifications where no icon is provided
+  * Capitalization in new sink/source notification
+  * Update item on failed move
+  * Fix segfault on failed move
+  * Fix capitalization of stream menu items
+  * autotools: split EXTRA_DIST, add man page and desktop entry
+  * Make glade gtk2 compatible
+- Remove fix-memory-leak.patch, fixed in upstream
+
+-------------------------------------------------------------------
+Tue Apr 10 09:13:03 UTC 2018 - mpluskal@suse.com
+
+- Update dependencies
+
+-------------------------------------------------------------------
+Tue Apr 10 06:16:09 UTC 2018 - petr@cervinka.net
+
+- Add pulseaudio as dependency (boo#1084813) 
+- Apply spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 28 16:37:54 UTC 2017 - petr@cervinka.net
+
+- Add upstream patch fix-memory-leak.patch for memory leak (boo#1070195) 
+- spec file cleaned
+
+-------------------------------------------------------------------
+Mon Jul 18 11:42:38 UTC 2016 - petr@cervinka.net
+
+- Version bump to 0.6.0:
+  * start pavucontrol with ctrl-click on status icon
+  * update systray icon on default sink change  
+  * add context menu option to move all in/outputs to sink/source
+  * update the volume icon of non-default sinks
+  * To fix notifications for changes of their volume level
+  * possible to set the volume icon for notifications independent of the tray icon
+  * use gauges for volume notifications
+  * set notification icon when changing systray icon
+  * send notifications only on volume / mute changes
+  * add option to always send notifications on volume change
+  * log systray implementation
+  * add option to include monitors
+  * support disabling status icon support
+  * include volume and muted state in item name
+  * set notification urgency to low
+  * minor Housekeeping for README
+  * deprecate --max-volume in favor of --volume-max
+  * add option to disable all notifications
+  * re-add volume-max option handling
+  * update manpage with --volume-inc
+  * add option to set volume increment
+  * add TODO entries for feature requests
+  * stop using stock GtkButton
+  * check mii only where needed
+  * start pavucontrol with ctrl-click on status icon
+  * pasystray.desktop: Add missing semicolon to "Keywords"
+
+- Removed patch icon_keywords_fix.patch (fixed in upstream) 
+
+-------------------------------------------------------------------
+Mon Jan 11 11:10:36 UTC 2016 - petr@cervinka.net
+
+- updated License to LGPL-2.1+ in spec file  
+
+-------------------------------------------------------------------
+Thu Jan  7 12:01:02 UTC 2016 - petr.cervinka@gmail.com
+
+- New package 
+- pasystray.desktop: Add missing semicolon to "Keywords" 
+- disabled wayland in build requirements for Leap 42.1 / SLE12 
+- spec file cleaned 

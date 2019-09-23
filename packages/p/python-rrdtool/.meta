@@ -1,0 +1,5 @@
+<package name="python-rrdtool" project="openSUSE:Factory">
+  <title>Python bindings for rrdtool</title>
+  <description>This package contains Python bindings for rrdtool.</description>
+  <devel project="devel:languages:python" package="python-rrdtool"/>
+</package>

@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>01149fef13bb486fbcf23b4deefd391d</srcmd5>
+    <version>2.1</version>
+    <time>1325767810</time>
+    <user>coolo</user>
+    <comment>New font under OFL</comment>
+    <requestid>98739</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c1c9f4d14d2bfb636c64fb7e14f3df0b</srcmd5>
+    <version>2.1</version>
+    <time>1329391745</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104573 from coolo)</comment>
+    <requestid>105051</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c1c9f4d14d2bfb636c64fb7e14f3df0b</srcmd5>
+    <version>2.1</version>
+    <time>1340184315</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>7dcd23b4e6fae0fa1f45282303c0fdf7</srcmd5>
+    <version>2.1</version>
+    <time>1347619317</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133997</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>7dcd23b4e6fae0fa1f45282303c0fdf7</srcmd5>
+    <version>2.1</version>
+    <time>1359110550</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>7dcd23b4e6fae0fa1f45282303c0fdf7</srcmd5>
+    <version>2.1</version>
+    <time>1379664937</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5ff770d4801d2104143e35e86573a181</srcmd5>
+    <version>3.005</version>
+    <time>1402947459</time>
+    <user>coolo</user>
+    <comment>Update fonts to 3.005 (forwarded request 237216 from stknorr)</comment>
+    <requestid>237219</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>5ff770d4801d2104143e35e86573a181</srcmd5>
+    <version>3.005</version>
+    <time>1409303616</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e19ba1016b2c0dc7b60b7957b649bd79</srcmd5>
+    <version>4.015</version>
+    <time>1522935240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593572</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7b0fbf75c2899aadc4f4e5aa93e6dfd8</srcmd5>
+    <version>4.105</version>
+    <time>1530303930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>616337</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f43f7f44319f264a53636e23d5ed3f6b</srcmd5>
+    <version>4.105</version>
+    <time>1533214716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626688</requestid>
+  </revision>
+</revisionlist>

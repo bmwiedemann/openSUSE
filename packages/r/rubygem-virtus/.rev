@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>49e2bded488716f589692b02c6e3ca35</srcmd5>
+    <version>1.0.4</version>
+    <time>1424693963</time>
+    <user>dimstar_suse</user>
+    <comment>This will be a dependency for the upcoming new hawk version.</comment>
+    <requestid>286621</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8fdcf2f832afb57c42bc49bc27bd37ed</srcmd5>
+    <version>1.0.5</version>
+    <time>1427109496</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 1.0.5
+ * [feature] Support for :nullify_blank option when configuring a virtus module (lucasmazza)</comment>
+    <requestid>292107</requestid>
+  </revision>
+</revisionlist>

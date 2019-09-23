@@ -1,0 +1,12 @@
+<package name="yast2-online-update" project="openSUSE:Factory">
+  <title>YaST2 - Online Update (YOU)</title>
+  <description>YaST Online Update (YOU) provides a convenient way to download and
+install security and other system updates. By default it uses the
+official SuSE mirrors as the update sources, but it can also use local
+patch repositories or patch CDs.
+
+This package provides the graphical user interface for YOU which can be
+used with or without the X Window System. It can be started from the
+YaST control center.</description>
+  <devel project="YaST:Head" package="yast2-online-update"/>
+</package>

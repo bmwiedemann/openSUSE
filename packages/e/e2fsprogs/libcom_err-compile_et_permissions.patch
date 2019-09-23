@@ -1,0 +1,13 @@
+Index: e2fsprogs-1.42.13/lib/et/compile_et.sh.in
+===================================================================
+--- e2fsprogs-1.42.13.orig/lib/et/compile_et.sh.in
++++ e2fsprogs-1.42.13/lib/et/compile_et.sh.in
+@@ -51,7 +51,7 @@ if test -f ${BASE}.h && cmp -s ${BASE}.h
+     rm -f ${BASE}.h.$$
+ else
+     mv -f ${BASE}.h.$$ ${BASE}.h
+-    chmod a-w ${BASE}.h
++#    chmod a-w ${BASE}.h
+ fi
+ $AWK -f "${DIR}/et_c.awk" "outfile=${BASE}.c.$$" "outfn=${BASE}.c" "$ROOT.et"
+ if test -f ${BASE}.c && cmp -s ${BASE}.c.$$ ${BASE}.c ; then

@@ -1,0 +1,359 @@
+-------------------------------------------------------------------
+Mon Feb 18 04:29:24 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 3.0.32:
+  * See /usr/share/doc/packages/inxi/inxi.changelog
+
+-------------------------------------------------------------------
+Fri Jan 25 06:24:18 UTC 2019 - seanlew@opensuse.org
+
+- Update to version 3.0.30:
+  * See /usr/share/doc/packages/inxi/inxi.changelog
+
+-------------------------------------------------------------------
+Sat Dec 15 13:47:09 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.0.29:
+  * See /usr/share/doc/packages/inxi/inxi.changelog
+
+-------------------------------------------------------------------
+Wed Dec  5 13:33:12 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.0.28:
+  * See /usr/share/doc/packages/inxi/inxi.changelog
+
+-------------------------------------------------------------------
+Thu Oct 25 12:16:46 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.0.27:
+  * See /usr/share/doc/packages/inxi/inxi.changelog
+
+-------------------------------------------------------------------
+Sat Oct  6 18:12:58 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.0.26:
+  * See /usr/share/doc/packages/inxi/inxi.changelog
+
+-------------------------------------------------------------------
+Thu Aug  9 12:01:37 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.0.20:
+  * See /usr/share/doc/packages/inxi/inxi.changelog
+
+-------------------------------------------------------------------
+Sun Jul 22 16:08:09 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.0.18:
+  * See /usr/share/doc/packages/inxi/inxi.changelog
+
+-------------------------------------------------------------------
+Tue May 22 07:20:12 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.0.10:
+  * See /usr/share/doc/packages/inxi/inxi.changelog
+- Add additional requirements (boo#1085951).
+
+-------------------------------------------------------------------
+Wed Oct 18 06:17:40 UTC 2017 - aavindraa@gmail.com
+
+- Update to version 2.3.40:
+  * See /usr/share/doc/packages/inxi/inxi.changelog
+
+-------------------------------------------------------------------
+Tue Jul 25 13:12:11 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 2.3.25:
+  * See https://github.com/smxi/inxi/blob/master/inxi.changelog
+
+-------------------------------------------------------------------
+Wed Mar 15 08:23:42 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 2.3.8 (changes since 2.3.5):
+  * While default configs remain in /etc/inxi.conf, the user
+    overrides now use $XDG_CONFIG_HOME for the config and
+    $XDG_DATA_HOME for the log/debugger data, which were previously
+    in $HOME/.inxi.
+    If neither of these cases are present, inxi will default to its
+    legacy user data directory: $HOME/.inxi as before.
+    In order to make this switch transparent to users, inxi will
+    move the files to the new location.
+  * Add some more XDG debugger data to cover this for future
+    debugger data.
+  * Fix manual inxi install not putting man pages in
+    /usr/local/share/man/man1, which had caused an issue with the
+    Arch linux inxi installer.
+  * Small text changes and cleanup and updates in man page.
+  * Fix a sloppy regex removing the BIOS from BIOSTAR.
+  * Fix a few other sloppy gsub, and a few gensub errors as well.
+  * Add a sisimedia video driver to the support list.
+
+-------------------------------------------------------------------
+Sun Dec  4 19:10:15 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 2.3.5:
+  * Fix inxi failing to add 'modesetting' graphics driver, which
+    caused inxi to not show it in the output, which causes support
+    issues for users of that specific driver, like some cases with
+    Intel.
+    Also inxi was failing to show it unloaded in cases where
+    radeon/nouveau was used but it had been loaded by xorg to begin
+    with.
+
+-------------------------------------------------------------------
+Sat Nov  5 14:45:49 UTC 2016 - jengelh@inai.de
+
+- Update package description
+
+-------------------------------------------------------------------
+Sat Nov  5 10:01:19 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 2.3.4.1 (changes since 2.3.3.1):
+  * Improve -D output, now capacity is on its own line, and each
+    disc is on its own line always, this makes it easier to read
+    and/or parse.
+  * The lines now wrap nicely for extra data > console width, or
+    -y 80 for example if one is trying to force most of the data to
+    fit into 80 columns.
+  * Added to -m if valid output, and if no -I or -tm triggers used,
+    will show system ram used/total, from the -I line.
+
+-------------------------------------------------------------------
+Wed Nov  2 20:12:32 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 2.3.3.1 (changes since 2.3.0):
+  * Add basic support for Budgie desktop detection.
+    This is waiting more data, so the support will be missing the
+    version information.
+  * Add /var/tmp and /var/log and /opt to basic partition data: -P
+  * Modify the static BIOS in -M to now show UEFI for actually UEFI
+    booted systems, and, ideally, UEFI [Legacy] for UEFI booting 
+    with MBR (BIOS legacy mode), and BIOS for all others.
+  * Add device type show to -M: like desktop, laptop, notebook,
+    server, blade, vm (and try to get vm type).
+- Use the GitHub generated tarball using a commit hash.
+- Include the licence file.
+
+-------------------------------------------------------------------
+Sat May 14 13:41:44 UTC 2016 - malcolmlewis@opensuse.org
+
+- Updated to version 2.3.0:
+  + See https://github.com/smxi/inxi/commits/master for updates.
+- Spec file cleanup to point at github.
+
+-------------------------------------------------------------------
+Mon Oct 12 16:20:33 UTC 2015 - malcolmlewis@opensuse.org
+
+- Updated to version 2.2.28:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r2607.
+  + Last googlecode release, project moved to github.
+
+-------------------------------------------------------------------
+Thu Jul 23 01:18:55 UTC 2015 - malcolmlewis@opensuse.org
+
+- Updated to version 2.2.26:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r2605.
+
+-------------------------------------------------------------------
+Thu Jul  2 00:34:02 UTC 2015 - malcolmlewis@opensuse.org
+
+- Updated to version 2.2.25:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r2604.
+
+-------------------------------------------------------------------
+Sun May 17 19:13:00 UTC 2015 - malcolmlewis@opensuse.org
+
+- Updated to version 2.2.21:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r2595.
+
+-------------------------------------------------------------------
+Wed Feb 25 00:27:10 UTC 2015 - malcolmlewis@opensuse.org
+
+- Updated to version 2.2.19:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r2592.
+
+-------------------------------------------------------------------
+Thu Feb  5 01:17:40 UTC 2015 - malcolmlewis@opensuse.org
+
+- Updated to version 2.2.18:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r2585.
+
+-------------------------------------------------------------------
+Thu Nov 20 15:06:34 UTC 2014 - malcolmlewis@opensuse.org
+
+- Updated to version 2.2.16:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r2581.
+
+-------------------------------------------------------------------
+Fri Aug 15 00:06:22 UTC 2014 - malcolmlewis@opensuse.org
+
+- Updated to version 2.1.95:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r2376.
+
+-------------------------------------------------------------------
+Thu Jun  5 04:51:15 UTC 2014 - malcolmlewis@cableone.net
+
+- Updated to version 2.1.28:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r2324.
+
+-------------------------------------------------------------------
+Sun Apr  6 17:14:11 UTC 2014 - malcolmlewis@opensuse.org
+
+- Updated to version 2.1.18:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r2197.
+
+-------------------------------------------------------------------
+Mon Feb 10 05:07:38 UTC 2014 - malcolmlewis@opensuse.org
+
+- Updated to version 1.9.18:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r2065.
+
+-------------------------------------------------------------------
+Fri Nov  1 22:26:51 UTC 2013 - malcolmlewis@opensuse.org
+
+-  Updated to version 1.9.16:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r2055.
+
+-------------------------------------------------------------------
+Tue Oct 15 02:04:26 UTC 2013 - malcolmlewis@opensuse.org
+
+- Updated to version 1.9.16:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r2053.
+
+-------------------------------------------------------------------
+Sun Sep  1 02:13:10 UTC 2013 - malcolmlewis@opensuse.org
+
+- Updated to version 1.9.14:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r2038.
+
+-------------------------------------------------------------------
+Wed Aug  7 01:44:58 UTC 2013 - malcolmlewis@opensuse.org
+
+- Updated to version 1.9.12:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r2033.
+
+-------------------------------------------------------------------
+Thu May  9 01:15:43 UTC 2013 - malcolmlewis@opensuse.org
+
+- Updated to version 1.8.47:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r1985.
+
+-------------------------------------------------------------------
+Mon Mar  4 02:12:56 UTC 2013 - malcolmlewis@opensuse.org
+
+- Updated to version 1.8.45:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r1983.
+
+-------------------------------------------------------------------
+Fri Feb 15 05:36:02 UTC 2013 - malcolmlewis@opensuse.org
+
+- Updated to version 1.8.37:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r1883.
+- Add inxi.changelog to package.
+
+-------------------------------------------------------------------
+Sun Jan 20 20:13:56 UTC 2013 - malcolmlewis@opensuse.org
+
+- Updated to version 1.8.28:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r1722.
+
+-------------------------------------------------------------------
+Sat Nov 24 21:30:26 UTC 2012 - malcolmlewis@opensuse.org
+
+- Updated to version 1.8.23:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r1693.
+
+-------------------------------------------------------------------
+Tue Oct  9 23:09:26 UTC 2012 - malcolmlewis@opensuse.org
+
+- Updated to version 1.8.19:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r1663.
+  + Manual page changed to .1 from .8.
+
+-------------------------------------------------------------------
+Sat Sep  8 15:17:00 UTC 2012 - malcolmlewis@opensuse.org
+
+- Updated to version 1.8.14:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r1605.
+
+-------------------------------------------------------------------
+Tue Jun 19 22:36:44 UTC 2012 - malcolmlewis@opensuse.org
+
+- Updated to version 1.8.5:
+  + See http://code.google.com/p/inxi/source/list for updates
+    upto and including r1551.
+
+-------------------------------------------------------------------
+Sat Apr 21 01:21:37 UTC 2012 - malcolmlewis@opensuse.org
+
+- Updated to version 1.7.33:
+  + Adding in validation since user set ip addresses can be wrong.
+
+- Updates from version 1.7.32:
+  + Added feature where a different ip page can be added by
+    whoever.
+
+-------------------------------------------------------------------
+Thu Apr 12 15:07:49 UTC 2012 - malcolmlewis@opensuse.org
+
+- Updated to version 1.7.31:
+  + Updated recommends for arch, xprop has changed to xorg-xprop.
+  + Added support, as root user, for dmidecode in -M data.
+  + Language updates.
+
+-------------------------------------------------------------------
+Thu Mar 22 16:56:52 UTC 2012 - malcolmlewis@opensuse.org
+
+- Updated to version 1.7.30:
+  + Bug fix, some intel cpus give core id as 0 for each core, thus
+    creating a situation where inxi thinks it's a single core cpu,
+    no matter if it's multicpu or multicore.
+
+-------------------------------------------------------------------
+Wed Feb 15 00:02:54 UTC 2012 - malcolmlewis@opensuse.org
+
+- Updated to version 1.7.29:
+  + Fixed a logging bug, won't have any impact on users.
+
+-------------------------------------------------------------------
+Sun Feb  5 05:49:23 UTC 2012 - malcolmlewis@opensuse.org
+
+- Updated to version 1.7.28:
+  + Small bug fix, added separator character to Desktop item, that
+    was left out.
+- Updates from version 1.7.27:
+  + Added in aptosid-version and siduction-version to save
+    maintainers time of adding those.
+  + Big bug fix, usb networking output has apparently not worked
+    for a long time, that is now fixed.
+- Updates from version 1.7.26:
+  + Bug fix, first patch, usb networking wasn't working.
+- Updates from version 1.7.25:
+  + Not showing speed/duplex for lan card when it is down.
+
+-------------------------------------------------------------------
+Sat Oct 22 13:21:55 UTC 2011 - malcolmlewis@opensuse.org
+
+- Initial build. 
+

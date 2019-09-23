@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Fri Jul 26 13:34:02 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.14.1
+  * Enable RAs with gentoo when using dhcpv6-stateless
+  * network-manager: add network-pre dependencies
+  * Replace nodepool func jobs
+  * Add .zuul.yaml
+  * Pin sphinx
+  * OpenDev Migration Patch
+
+-------------------------------------------------------------------
+Fri Apr 26 06:45:10 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.14.0
+  * Ignore Wireguard interfaces
+  * Use openstackdocstheme
+
+-------------------------------------------------------------------
+Wed Jan  9 13:31:20 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Initial packaging (version 1.13.0)

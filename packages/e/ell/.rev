@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6692092f4fcbbfde2d41dc904d3381f9</srcmd5>
+    <version>0~1304</version>
+    <time>1485382773</time>
+    <user>dimstar_suse</user>
+    <comment>now with COPYING</comment>
+    <requestid>439943</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2047828c015c2d0944833680a8be8d50</srcmd5>
+    <version>0.5</version>
+    <time>1528492451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614218</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>884bfa9b8a24cd05a07f5d125865c0a0</srcmd5>
+    <version>0.15</version>
+    <time>1542579858</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.15</comment>
+    <requestid>650022</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bab10526434b6ea14e71084c8cc41e91</srcmd5>
+    <version>0.16</version>
+    <time>1545866637</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.16</comment>
+    <requestid>657941</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>534f20366075ca272a46b1c1d74a5f67</srcmd5>
+    <version>0.16</version>
+    <time>1549629916</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670897</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d09ea3932ef45c5cdaf1239631f4a528</srcmd5>
+    <version>0.17</version>
+    <time>1552901664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.17</comment>
+    <requestid>685289</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>aeabc01e85c8b0ee22e87c47d57ff704</srcmd5>
+    <version>0.18</version>
+    <time>1554715465</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.18:</comment>
+    <requestid>692011</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>abd8de99e705ea29e2e4a7a0716b0ceb</srcmd5>
+    <version>0.20</version>
+    <time>1559727438</time>
+    <user>dimstar_suse</user>
+    <comment>Update to upstream v 0.20 (forwarded request 706148 from xha)</comment>
+    <requestid>706904</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>676038019b3554a44d289bd958ac5a6e</srcmd5>
+    <version>0.21</version>
+    <time>1565694827</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.21</comment>
+    <requestid>722321</requestid>
+  </revision>
+</revisionlist>

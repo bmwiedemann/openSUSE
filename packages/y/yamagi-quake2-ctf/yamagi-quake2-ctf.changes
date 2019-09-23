@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Mon Feb 11 08:54:24 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim description.
+
+-------------------------------------------------------------------
+Sat Feb  9 14:49:03 UTC 2019 - mardnh@gmx.de
+
+- Mention desktop file as source
+- Use %make_jobs macro
+
+-------------------------------------------------------------------
+Thu Feb  7 21:38:11 UTC 2019 - mardnh@gmx.de
+
+- Update to version 1.06
+  * Small bugfixes.
+
+-------------------------------------------------------------------
+Fri Jun  9 19:08:24 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.05
+  - Some bugfixes to monster AI, mostly to keep the source
+    in sync with baseq2 and the other addons.
+
+-------------------------------------------------------------------
+Mon Aug  1 20:28:40 UTC 2016 - mardnh@gmx.de
+
+- Update to version 1.04
+  - Fix CMake support
+  - Make gibs and debris SOLID_BBOX so they move on entities.
+  - Switch from an arch whitelist to an "all archs are supported"
+    approach.
+- removed patch: fix-cmake.diff (fixed) upstream
+
+-------------------------------------------------------------------
+Mon Feb 22 20:51:17 UTC 2016 - mardnh@gmx.de
+
+- initial package
+

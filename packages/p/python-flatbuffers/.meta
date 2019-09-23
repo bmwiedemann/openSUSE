@@ -1,0 +1,6 @@
+<package name="python-flatbuffers" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="flatbuffers"/>
+  <bcntsynctag>flatbuffers</bcntsynctag>
+</package>

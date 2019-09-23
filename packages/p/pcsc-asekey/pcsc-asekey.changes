@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Sun Jun 12 09:32:48 UTC 2016 - opensuse.lietuviu.kalba@gmail.com
+
+- Fix: pcscd is started as root (boo#942847,
+  pcscd-group-no-longer-exist.patch).
+
+-------------------------------------------------------------------
+Fri Oct  2 15:37:35 CEST 2015 - sbrabec@suse.com
+
+- Update to version 3.7:
+  * udev rules to change group of the USB device to allow access
+    from pcscd
+  * Remove port number check needed for USB-style PCSC interface.
+  * Install driver as PCSC bundle needed for new pcsc-lite.
+- Add pcsc-asekey-no-duplicated-install.patch to not install twice.
+
+-------------------------------------------------------------------
+Thu Jul 12 19:33:55 CEST 2012 - sbrabec@suse.cz
+
+- Update to version 3.6:
+  * IFDHSetProtocolParameters does nothing when the protocol need
+    not be changed.
+
+-------------------------------------------------------------------
+Wed Apr  8 15:42:44 CEST 2009 - sbrabec@suse.cz
+
+- Added USB modalias supplements.
+- Require pcsc-lite.
+
+-------------------------------------------------------------------
+Fri Apr  4 14:50:38 CEST 2008 - sbrabec@suse.cz
+
+- New SuSE package, version 3.5 (FATE#302981).
+

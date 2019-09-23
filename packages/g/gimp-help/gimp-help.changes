@@ -1,0 +1,239 @@
+-------------------------------------------------------------------
+Wed Nov 29 17:18:23 UTC 2017 - plinnell@opensuse.org
+
+- Fix the download URL
+
+-------------------------------------------------------------------
+Tue Nov 28 09:44:16 UTC 2017 - fcrozat@suse.com
+
+- Update to version 2.8.2:
+  + Complete translation for Brazilian Portuguese
+  + Many improvements for existing translations
+  + Bug fixed: bgo#696034, bgo#724056, bgo#719859, bgo#719971,
+    bgo#720479, bgo#720209, bgo#719876, bgo#719748.
+- Add pngcrush as BuildRequires, replace xml2po BuildRequires by 
+  python-libxml2 (we use an internal copy of xml2po).
+- Use 'gimpmode' for xml2po again and unset
+  MALLOC_CHECK_/MALLOC_PERTURB_ again to prevent gimpmode crash.
+  This speed-up build time a lot.
+
+-------------------------------------------------------------------
+Sun Dec  1 21:50:17 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.8.1:
+  + Online documentation (http://docs.gimp.org) now provides a
+    language menu which allows users to switch to other
+    translations of the same document if available (bgo#168256).
+  + Bugs fixed: bgo#168256, bgo#676683, bgo#679173, bgo#680243,
+    bgo#711318.
+  + Updated translations.
+- Drop gimp-help-2.8.0-missing-po-files.patch: fixed upstream.
+- Add Brazilian Portuguese -lang package (pt_BR).
+- Disable -lang packages that actually did not contain
+  translations (fi, hr, lt, pl).
+
+-------------------------------------------------------------------
+Tue Feb  5 19:06:55 UTC 2013 - dimstar@opensuse.org
+
+- Pass XML2POFLAGS= to make: do not use the special 'gimpmode' for
+  xml2po.
+- No longer unset MALLOC_CHECK_ and MALLOC_PERTURB_, as not using
+  gimpmode does not expose the crash.
+
+-------------------------------------------------------------------
+Sat Jan 12 14:40:37 UTC 2013 - dimstar@opensuse.org
+
+- Add gimp-help-2.8.0-missing-po-files.patch: Add missing .po files
+  to the source directory. Fixes build on Factory.
+- Drop Makefile.GNU and use upstream shipped build system, as this
+  works again.
+- Unset MALLOC_CHECK_ and MALLOC_PERTURB_ to avoid some crashes
+  (hack only.. no fix yet).
+- Add new sub packages for new languages that apeared due to using
+  the upstream / maintained makefile: ca, el, en_GB, fi, hr, lt and
+  sl.
+
+-------------------------------------------------------------------
+Wed Oct 31 11:13:55 UTC 2012 - mvyskocil@suse.com
+
+- Since recent changes, fdupes can only link files of same
+  owner/permissions (bnc#784670). As we still want to make use
+  of fdupes, we adjust the permissions of the images folder's
+  content.
+
+-------------------------------------------------------------------
+Mon Jun 11 08:12:01 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.8.0:
+  + Bugfixes: bgo#642729, bgo#634992, bgo#634995, bgo#636149
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 17 09:23:42 UTC 2011 - dimstar@opensuse.org
+
+- Disable parallel build. The build system seems to be very
+  fragile and unreliable in this case.
+
+-------------------------------------------------------------------
+Sun Jan  9 11:18:15 CET 2011 - vuntz@opensuse.org
+
+- Update to version 2.6.1:
+  + Bugfixes: bgo#599700, bgo#618143, bgo#611265, bgo#563659,
+    bgo#602659
+  + Spelling fixes and new translations for: Italian, English,
+    German, French, Japnese, Norwegian, Swedish, Russian, Korean
+  + XSLT Stylesheet improvements
+  + Build system improviements
+- Changes from version 2.6.0:
+  + Bugfixes: bgo#591510, bgo#562448, bgo#568420, bgo#569729,
+    bgo#569731, bgo#569733, bgo#569739, bgo#574040, bgo#572673,
+    bgo#557443, bgo#576230, bgo#577710, bgo#556314, bgo#573828,
+    bgo#583840, bgo#573257, bgo#580532, bgo#585823, bgo#588318,
+    bgo#588316, bgo#544965, bgo#569739, bgo#591510, bgo#591510
+  + Spelling fixes and new translations for: English, German,
+    Italian, French, Japanese, Russian, Korean, Norwegian, Swedish
+  + Website typo fixes
+- Add Makefile.GNU and gimp-help-2.doap from git, since the default
+  Makefile provided in the tarball doesn't work (see bgo#639057).
+  This means we also have to manually install the files in
+  %install.
+- Change gimp-2.0 Requires and Enhances to gimp, since it's the
+  right name of the package now.
+- Update descriptions.
+- Remove old hacks to remove executable permission and rename the
+  no locale to nb: they are not needed anymore.
+- Change the use of fdupes to only create links between files of
+  the same language (since all languages are packaged separately).
+- Add subpackage for new locales (da, ja, nn, zh) and remove nb
+  subpackage.
+
+-------------------------------------------------------------------
+Fri Jan  7 11:32:30 CET 2011 - vuntz@opensuse.org
+
+- Use xml2po BuildRequires instead of gnome-doc-utils.
+- Improve summaries and descriptions.
+- Drop gimp-help-no.patch: it's not used, and we accomplish what we
+  want to fix the issue in %install. Also drop call to autoreconf
+  that we were still using because of this unapplied patch.
+- Drop gimp-help-update-spec.sh: it's really too complex for
+  nothing, and the update to 2.6 version of the help will break it.
+- Remove ownership of %{_datadir}/gimp and %{_datadir}/gimp/2.0
+  since it's not needed anymore.
+
+-------------------------------------------------------------------
+Thu Dec 30 19:35:03 UTC 2010 - aj@suse.de
+
+- Own some more directories.
+- Remove pre_checkin.sh, it's not used anymore.
+
+-------------------------------------------------------------------
+Mon Nov  3 00:20:03 CET 2008 - maw@suse.de
+
+- package dirs correctly; fix build
+
+-------------------------------------------------------------------
+Fri Oct 24 09:31:20 CDT 2008 - maw@suse.de
+
+- Update to version 2.4.2:
+  + Bugs fixed: bgo#515535, bgo#529924, bgo#546324, bgo#550551,
+    bgo#551082
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 22 13:17:57 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 2.4.1 (bnc#406692):
+  * documentation for GIMP 2.4
+  * new translations
+  * bug fixes
+- Split translations per locale.
+
+-------------------------------------------------------------------
+Fri Feb 16 13:34:42 CET 2007 - aj@suse.de
+
+- Do not run parallel make since the package build might break.
+
+-------------------------------------------------------------------
+Thu Jan 11 14:31:50 CET 2007 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:12 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 18 16:09:01 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 0.9.
+
+-------------------------------------------------------------------
+Mon Jan  9 15:45:03 CET 2006 - ro@suse.de
+
+- fix typo in specfile 
+
+-------------------------------------------------------------------
+Thu Jan  5 16:10:41 CET 2006 - sbrabec@suse.cz
+
+- Use Enhances covering both GIMP branches.
+
+-------------------------------------------------------------------
+Mon Aug 15 13:17:00 CEST 2005 - sbrabec@suse.cz
+
+- Require gimp-2.0 virtual instead of gimp.
+
+-------------------------------------------------------------------
+Wed Aug  3 15:21:54 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 0.8.
+- Build as noarch.
+
+-------------------------------------------------------------------
+Mon Feb 21 14:58:06 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 0.6.
+
+-------------------------------------------------------------------
+Mon Aug  9 18:27:02 CEST 2004 - ro@suse.de
+
+- update to version gimp-help-2-0.4
+
+-------------------------------------------------------------------
+Wed Apr  7 12:08:23 CEST 2004 - hhetter@suse.de
+
+- provide C -> en symlink (#37519) 
+
+-------------------------------------------------------------------
+Tue Mar 23 12:46:44 CET 2004 - sbrabec@suse.cz
+
+- Fixed GIMP2 paths.
+
+-------------------------------------------------------------------
+Fri Feb 27 13:51:52 CET 2004 - hhetter@suse.de
+
+- cvs checkout 20040227
+- update neededforbuild for prober stylesheet and dtd 
+
+-------------------------------------------------------------------
+Mon Feb 23 16:30:47 CET 2004 - ro@suse.de
+
+- renamed to gimp-help
+
+-------------------------------------------------------------------
+Fri Feb 20 00:32:48 CET 2004 - ro@suse.de
+
+- gimp2 package has been renamed to gimp
+
+-------------------------------------------------------------------
+Fri Nov  7 11:38:18 CET 2003 - ke@suse.de
+
+- Provide proper TextDecl for externally parsed entities. For background
+  info cf. http://bugzilla.gnome.org/show_bug.cgi?id=126351 .
+
+-------------------------------------------------------------------
+Thu Sep 11 14:50:51 CEST 2003 - sbrabec@suse.cz
+
+- Added preliminary help package for gimp2 (bug #30085).
+

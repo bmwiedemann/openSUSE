@@ -1,0 +1,18 @@
+<multibuild>
+  <package>openmpi1-gnu-hpc</package>
+  <package>openmpi</package>
+  <package>openmpi2-gnu-hpc</package>
+  <package>openmpi2</package>
+  <package>openmpi3-gnu-hpc</package>
+  <package>openmpi3</package>
+  <package>mpich-gnu-hpc</package>
+  <package>mpich-ofi-gnu-hpc</package>
+  <package>mpich-ofi</package>
+  <package>mpich</package>
+  <package>mvapich2-gnu-hpc</package>
+  <package>mvapich2</package>
+  <package>mvapich2-psm2-gnu-hpc</package>
+  <package>mvapich2-psm2</package>
+  <package>mvapich2-psm-gnu-hpc</package>
+  <package>mvapich2-psm</package>
+</multibuild>

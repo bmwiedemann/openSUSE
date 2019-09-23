@@ -1,0 +1,6 @@
+<package name="awesfx" project="openSUSE:Factory">
+  <title>SoundFont Utilities for SB AWE32/64 and Emu10k1 Drivers</title>
+  <description>The AWESFX package includes utility programs for controlling the
+wavetable function on SB AWE32/64 and Emu10k1 sound cards.</description>
+  <devel project="multimedia:apps" package="awesfx"/>
+</package>

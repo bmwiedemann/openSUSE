@@ -1,0 +1,7 @@
+<package name="pulseaudio" project="openSUSE:Factory">
+  <title>A Networked Sound Server</title>
+  <description>pulseaudio is a networked sound server for Linux, other Unix like
+operating systems and Microsoft Windows. It is intended to be an
+improved drop-in replacement for the Enlightened Sound Daemon (ESOUND).</description>
+  <devel project="multimedia:libs" package="pulseaudio"/>
+</package>

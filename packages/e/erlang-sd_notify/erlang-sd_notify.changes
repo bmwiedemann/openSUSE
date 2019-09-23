@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Mon Apr 16 18:29:07 UTC 2018 - matwey.kornilov@gmail.com
+
+- sd_pid_notify_with_fds() function is available in systemd v219
+
+-------------------------------------------------------------------
+Mon Apr 16 18:08:12 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1.0:
+  * docker build and rebar config
+  * add tag
+  * Update README.md
+  * Update README.md
+  * update readme
+  * Update the CentOS build for sd_notify to support Debian.
+  * Use "git" as version in app-file
+  * Update 18.3.1
+  * Update 18.3.1
+  * Update 18.3.1 fix
+  * Fix rabbitmq installation link
+  * update debian package
+  * update README
+  * added sd_pid_notify
+  * added sd_pid_notifyf
+  * cosmetics
+  * docker build
+  * update readme
+  * add docker for Erlang 19
+  * modified readme
+  * docker for 19
+  * Cosmetic
+  * Wrong array number
+  * Remove duplicated code
+  * Implement sd_pid_notify_with_fds
+  * Update README.md
+  * update for 19.1
+  * Add more files to ignore
+  * Change the docker image
+  * Add rpm spec for Centos
+  * Add rpm spec for Centos
+  * Restore history spec
+  * update to 0.13
+  * Add stub for NIF upgrade
+  * Fix another one typo
+  * Remove whitespace
+  * Remove bogus test stub
+  * Add basic test
+  * Make alias - make check -> make test
+  * change version to 0.14
+  * Run tests only if Erlang ver. is 19
+  * Enable testing
+  * List available Erlang versions
+  * Add more Erlang versions
+  * test systemd
+  * Move test message creation to where it belongs
+  * Don't fake list of sockets
+  * Add docker image to test Erlang 19 on Ubuntu
+  * Update docker image to 19.3
+  * Change package version to 1.0
+
+-------------------------------------------------------------------
+Thu Jul  2 11:58:12 UTC 2015 - rhafer@suse.com
+
+- Make sure to link against libsystemd to avoid "undefined symbol:
+  sd_notify" errors
+
+-------------------------------------------------------------------
+Tue Jun 23 17:50:42 UTC 2015 - tbechtold@suse.com
+
+- Initial packaging
+

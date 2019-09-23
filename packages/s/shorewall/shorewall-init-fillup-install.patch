@@ -1,0 +1,22 @@
+diff -rup a/install.sh b/install.sh
+--- a/install.sh	2018-03-01 17:44:42.000000000 +0100
++++ b/install.sh	2018-03-05 17:50:06.242326227 +0100
+@@ -385,10 +385,14 @@ else
+ 	    fi
+ 	fi
+     fi
+-
+-    if [ -n "$SYSCONFFILE" -a ! -f ${DESTDIR}${SYSCONFDIR}/${PRODUCT} ]; then
+-	install_file ${SYSCONFFILE} ${DESTDIR}${SYSCONFDIR}/$PRODUCT 0644
+-	echo "${SYSCONFFILE} file installed in ${DESTDIR}${SYSCONFDIR}/${PRODUCT}"
++    if [ $HOST = suse ]; then
++    mkdir -p ${DESTDIR}/${FILLUPDIR}
++    install_file sysconfig ${DESTDIR}/${FILLUPDIR}/sysconfig.shorewall-init 0644
++    else
++        if [ -n "$SYSCONFFILE" -a ! -f ${DESTDIR}${SYSCONFDIR}/${PRODUCT} ]; then
++           install_file ${SYSCONFFILE} ${DESTDIR}${SYSCONFDIR}/$PRODUCT 0644
++           echo "${SYSCONFFILE} file installed in ${DESTDIR}${SYSCONFDIR}/${PRODUCT}"
++        fi
+     fi
+ 
+     [ $HOST = suse ] && IFUPDOWN=ifupdown.suse.sh || IFUPDOWN=ifupdown.fedora.sh

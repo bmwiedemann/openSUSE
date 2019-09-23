@@ -1,0 +1,143 @@
+<revisionlist>
+  <revision rev="1" vrev="10">
+    <srcmd5>f53068db54d842e04588877bbeb4803f</srcmd5>
+    <version>3.3_1</version>
+    <time>1168904221</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f5cfe1be51af82903c7f473f5efd6b2c</srcmd5>
+    <version>3.7_0</version>
+    <time>1170847391</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="8">
+    <srcmd5>509a73bc3bfaeed5e46a77a84de3ce6d</srcmd5>
+    <version>3.7_0</version>
+    <time>1175185722</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>22153f13fb3cc7ef686f2aaff8fec810</srcmd5>
+    <version>3.7_2</version>
+    <time>1186176786</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0fa49083ba710d059fbbd89090f4571e</srcmd5>
+    <version>3.7_3</version>
+    <time>1208283293</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="34">
+    <srcmd5>0fa49083ba710d059fbbd89090f4571e</srcmd5>
+    <version>3.7_3</version>
+    <time>1208283293</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="35">
+    <srcmd5>c1848cc84556259b50b02c1b1252be37</srcmd5>
+    <version>3.7_3</version>
+    <time>1245340613</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="36">
+    <srcmd5>e71353887281e8b15269b3f30dd5759c</srcmd5>
+    <version>3.7_3</version>
+    <time>1251495625</time>
+    <user>autobuild</user>
+    <comment>Copy from Emulators/simh based on submit request 19026 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="9" vrev="38">
+    <srcmd5>e71353887281e8b15269b3f30dd5759c</srcmd5>
+    <version>3.7_3</version>
+    <time>1251495625</time>
+    <user>autobuild</user>
+    <comment>Copy from Emulators/simh based on submit request 19026 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="10" vrev="39">
+    <srcmd5>f6d19d7e9360827b908e0c07320d264f</srcmd5>
+    <version>3.7_3</version>
+    <time>1268926170</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="41">
+    <srcmd5>f6d19d7e9360827b908e0c07320d264f</srcmd5>
+    <version>3.7_3</version>
+    <time>1278667390</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="42">
+    <srcmd5>f6d19d7e9360827b908e0c07320d264f</srcmd5>
+    <version>3.7_3</version>
+    <time>1278678620</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="45">
+    <srcmd5>f6d19d7e9360827b908e0c07320d264f</srcmd5>
+    <version>3.7_3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="47">
+    <srcmd5>f6d19d7e9360827b908e0c07320d264f</srcmd5>
+    <version>3.7_3</version>
+    <time>1319182470</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="48">
+    <srcmd5>b781f61615be5b0ef1fbae1621ceed58</srcmd5>
+    <version>3.7_3</version>
+    <time>1323194651</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="50">
+    <srcmd5>b781f61615be5b0ef1fbae1621ceed58</srcmd5>
+    <version>3.7_3</version>
+    <time>1340184217</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="52">
+    <srcmd5>b781f61615be5b0ef1fbae1621ceed58</srcmd5>
+    <version>3.7_3</version>
+    <time>1359110407</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>19a862b5a7a5a2bacf0c1b463673132b</srcmd5>
+    <version>3.9_0</version>
+    <time>1367237902</time>
+    <user>coolo</user>
+    <comment>- Updated to latest upstream 39_0 version
+  a lot of changes please look at CHANGELOG_simh_rev_h.txt in
+  /usr/share/doc/packages/simh
+- Interim source fixes attached ( interim-20130422.patch )
+- Use source url for zip
+
+- Rename binary &quot;nova&quot; to &quot;simh.nova&quot; to avoid file conflict with
+  python-novaclient (from OpenStack)</comment>
+    <requestid>173012</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>19a862b5a7a5a2bacf0c1b463673132b</srcmd5>
+    <version>3.9_0</version>
+    <time>1379664682</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>19a862b5a7a5a2bacf0c1b463673132b</srcmd5>
+    <version>3.9_0</version>
+    <time>1409303368</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

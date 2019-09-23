@@ -1,0 +1,19 @@
+Index: Plugins.cmake
+===================================================================
+--- Plugins.cmake.orig
++++ Plugins.cmake
+@@ -120,6 +120,15 @@ if (UNIX AND NOT APPLE)
+ 	# mediaplayer
+ 		# MPD mediaplayer support
+ 		mpd_mediaplayer
++    # external (community)
++        # lookup of an interlocutor in public directory
++        anonymous_check
++        # kadu completion
++        kadu_completion
++        # support for importing history from gg 7 & 8
++        import_history
++        # mimetex support
++        mime_tex
+ 	)
+ endif (UNIX AND NOT APPLE)

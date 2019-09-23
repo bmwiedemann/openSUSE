@@ -1,0 +1,17 @@
+Index: haveged-1.9.1/configure.ac
+===================================================================
+---
+ haveged-1.9.4/configure.ac |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- haveged-1.9.4/configure.ac
++++ haveged-1.9.4/configure.ac	2018-09-19 09:23:01.331419209 +0000
+@@ -170,7 +170,7 @@ case "$host" in
+     AC_DEFINE(HAVE_ISA_IA64, 1, [Define to 1 for ia64])
+  ;;
+ 
+- powerpc-*|pcc-*|powerpc64-*|ppc64-*)
++ powerpc-*|pcc-*|powerpc64*|ppc64*)
+     AC_DEFINE(HAVE_ISA_PPC, 1, [Define to 1 for ppc])
+  ;;
+ 

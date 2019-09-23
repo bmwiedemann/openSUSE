@@ -1,0 +1,6 @@
+<package name="python-semanage" project="openSUSE:Factory">
+  <title>Python bindings for libsemanage</title>
+  <description>This package contains the python bindings for developing
+SELinux management applications.</description>
+  <devel project="openSUSE:Factory" package="libsemanage"/>
+</package>

@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Wed Dec 20 07:48:01 UTC 2017 - andy@onthewings.net
+
+- Update to neko 2.2.0.
+  * Backward compatible to neko 2.1.0.
+  * Improvements in CMake build options.
+  * Minor fixes related to utf8, https, mysql and sqlite support.
+  * Added `nekotools boot -c` to generate a C file for a .n file.
+  * Full changelog can be viewed at:
+    https://github.com/HaxeFoundation/neko/blob/master/CHANGES
+- Remove patches already applied in 2.2.0:
+  * patch0000-GC_INCLUDE_DIRS.diff
+  * patch0001-INSTALL_DIR.diff
+  * patch0002-GNUInstallDirs.diff
+  * patch0003-NEKOMODULE_PATH.diff
+  * patch0004-target_include_directories.patch
+  * patch0005-mincoming-stack-boundary.patch
+  * patch0006-INCLUDEDIR.diff
+  * patch0007-CMAKE_INSTALL_LIBDIR.diff
+  * nekovm-boot-c-1.patch
+  * nekovm-boot-c-2.patch
+  * nekovm-xlocale.patch
+ 
+-------------------------------------------------------------------
+Tue Sep  5 07:48:52 UTC 2017 - andy@onthewings.net
+
+- Add nekovm-xlocale.patch from upstream.
+
+-------------------------------------------------------------------
+Tue Jun 13 14:48:21 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description. Replace filler wording and
+  by more concrete characteristics.
+
+-------------------------------------------------------------------
+Sat Jun 05 03:09:00 UTC 2017 - andy@onthewings.net
+
+- Add patches from upstream for creating strippable binaries.
+  * nekovm-boot-c-1.patch
+  * nekovm-boot-c-2.patch
+- Make sure Ninja is used since there is problem building in
+  parallel using Make.
+
+-------------------------------------------------------------------
+Sat Oct 29 17:13:04 UTC 2016 - andy@onthewings.net
+
+- Update to neko 2.1.0.
+  * Remove patches already applied in 2.1.0:
+    * 0001-library-paths.patch
+    * 0002-ndll-paths.patch
+    * 0003-no-apache.patch
+    * 0004-no-mod_tora.patch
+    * 0005-set-soname.patch
+    * 0006-libmysqlclient.patch
+    * 0007-extra-cflags.patch
+    * 0008-jit.patch
+  * Add upstream patches:
+    * patch0000-GC_INCLUDE_DIRS.diff: fix a CMake variable typo.
+    * patch0001-INSTALL_DIR.diff, patch0002-GNUInstallDirs.diff,
+      and patch0003-NEKOMODULE_PATH.diff: fix install paths.
+    * patch0004-target_include_directories.patch: fix CMake
+      target_include_directories shim.
+    * patch0005-mincoming-stack-boundary.patch: use
+      -mincoming-stack-boundary when it is available.
+    * patch0006-INCLUDEDIR.diff: add missing reference to
+      *_INCLUDEDIR in CMake.
+    * patch0007-CMAKE_INSTALL_LIBDIR.diff: make sure
+      CMAKE_INSTALL_LIBDIR is relative. 
+
+-------------------------------------------------------------------
+Fri Nov 27 14:34:38 UTC 2015 - andy@onthewings.net
+
+- Rename package from nekovm to neko. 
+
+-------------------------------------------------------------------
+Thu Nov 26 16:34:13 UTC 2015 - andy@onthewings.net
+
+- License has been changed to MIT since neko 2.0.0.
+- Include patch of the upstream fix on JIT.
+- Provide .so.0 for compatibility with Debian.
+- Put libneko1 and neko-mysql to System/Libraries group.
+- Spec file clean up.
+  * Added BuildRoot as suggested in openSUSE specfile guidelines.
+- Remove nekoml.std from _bindir as it is not needed.
+
+-------------------------------------------------------------------
+Sat Jan 24 20:26:53 UTC 2015 - prusnak@opensuse.org
+
+- imported package from dmacvicar (version 2.0)
+

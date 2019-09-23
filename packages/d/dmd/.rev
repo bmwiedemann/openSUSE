@@ -1,0 +1,302 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b648792c8a55a4ae83da3586605c5d14</srcmd5>
+    <version>2.076.1</version>
+    <time>1510911523</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.076.1
+  * fix Issue 16997 - Integral promotion rules not being followed for unary + - ~ operators
+  * Mangled Symbols now back reference types and identifiers.
+  * Removed prelude assert for constructors &amp; destructors
+  * DMD builds are now reproducible
+- Build with AUTO_BOOTSTRAP
+- Rework description
+- Update to 2.073.2
+- https://en.opensuse.org/SourceUrls
+- Update to 2.073.1
+- Update to 2.071.0
+Compiler Changes
+- Import access checks for fully qualified names were fixed.
+- Protection for selective and renamed imports were fixed.
+Language Changes
+- Imports no longer hide locals declared in outer scopes.
+- Private symbols are no longer visible in other modules.
+- Manifest constant can now be used for deprecation message.
+Library Changes
+- A clear method has been added to associative arrays to remove all elements.
+- The GC now uses a spinlock instead of a recursive mutex.
+- Calls to GC.free are now ignored during finalization instead of throwing an InvalidMemoryOperationError, see Bugzilla 15353.
+- GC.addRoot and GC.addRange now use a separate lock.
+- GCAllocator.goodAllocSize was added.
+- High-level API of std.net.curl now uses Appender for received content. Which generally makes all calls slightly faster. Up to 200ms for large amounts of data.
+- Repeat was added to obtain a repeating AliasSeq consisting of template arguments.
+- fold was added as an alternative to reduce with argument order swapped.
+- Added nextPow2 and truncPow2 to std.math.
+- bsf, bsr, and popcnt now work with ulongs on 32 bit systems.
+- topN is now 5% - 7% faster.
+- Unary overloads of startsWith and endsWith were added.
+- maxCount and maxPos were added.
+- Range support for the convenience wrapper redBlackTree was added.
+See the full changelog here:
+http://dlang.org/changelog/2.071.0.html
+- Update to 2.070.2
+This is a bugfix release, please refer to the changelog for details:
+http://dlang.org/changelog/2.070.2.html
+- Update to 2.070.1
+This is a bugfix release, see the changelog for details:
+http://dlang.org/changelog/2.070.1.html
+Update to 2.070.0
+Language Changes
+- Add syntactic support to make an alias to a function literal.
+Library Changes
+- The package std.experimental.ndslice was added. It is also available as part of the Mir library.
+- The core.sys.windows package has been greatly expanded.
+- TypeInfo.init has been renamed to TypeInfo.initializer.
+- std.json encodes string control characters.
+- Default LogLevel of FileLogger was changed to LogLevel.all.
+- Access to the internal ptr and len fields of BitArray was deprecated.
+See the full changelog here:
+http://dlang.org/changelog/2.070.0.html
+Update to 2.069.2
+This is a bugfix release, see the changelog for details:
+http://dlang.org/changelog/2.069.2.html
+Update to 2.069
+This is the first release with a self-hosted dmd compiler and comes
+with even more rangified phobos functions,
+std.experimental.allocator, and many other improvements.
+See the changelog for more details.
+http://dlang.org/changelog/2.069.0.html
+- update 2.068.2
+- This point release fixes a few regressions 2.068.1, see the
+  changelog for more details:
+  http://dlang.org/changelog/2.068.2.html
+- update to 2.068.1
+- Fixes bugs and regressions in 2.068.0
+- update to 2.068.0
+Notable changes:
+- many rangified phobos functions
+- 2 new GC profilers
+- a new AA implementation
+- countless further improvements and fixes
+- update to 2.067.1
+- update to 2.067.0
+- add a valid dmd.conf file (from upstream)
+- recommend phobos-devel
+- use https://en.opensuse.org/SourceUrls
+- new project URL
+- split libphobos as discussed in bos#905648
+- add Artistic license
+- deprecate dmd-fix-build.patch
+- deprecate dmd-rpmlintrc
+- update to 2.066.1
+- fix license tag, Boost -&gt; BSL-1.0
+- add config file for include paths
+- update to 2.059
+- Parallel build with %_smp_mflags; strip redundant sections/tags
+- SPDX license field
+- created package (version 2.053)
+</comment>
+    <requestid>536992</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8b25bbd264eafcfd99bc539091ae6d8a</srcmd5>
+    <version>2.077.0</version>
+    <time>1510960943</time>
+    <user>dimstar_suse</user>
+    <comment>Added missing LICENSE.txt to docs
+Improved the spec file (forwarded request 542681 from worldcitizen)</comment>
+    <requestid>542682</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fad5183812dd59056072f67fc4cd7926</srcmd5>
+    <version>2.077.1</version>
+    <time>1513014998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555600</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>feafc3269b2565cbcbbf0b86dd5b13dd</srcmd5>
+    <version>2.077.1</version>
+    <time>1513245642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556570</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>7797cb404e632c2c0e7d5998167d5c0c</srcmd5>
+    <version>2.077.1</version>
+    <time>1514983164</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561041</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>18306b74407b1d414b7bccd868cd3a2b</srcmd5>
+    <version>2.078.0</version>
+    <time>1516443992</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>564052</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>09af18126dd9c47bb1a2b65db07986e9</srcmd5>
+    <version>2.078.1</version>
+    <time>1516880483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569392</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c290342b6810216d8a56fe3dd5a41d30</srcmd5>
+    <version>2.078.2</version>
+    <time>1518426955</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575415</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>130e7e891d4419ec5fe35aabd10283bb</srcmd5>
+    <version>2.078.3</version>
+    <time>1519041779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577880</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>0c26ae2f2e0adc984f41b5b92d2b5077</srcmd5>
+    <version>2.078.3</version>
+    <time>1520021515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581844</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8279b3ac9a9aed51444c44062b5a14d6</srcmd5>
+    <version>2.079.0</version>
+    <time>1520415385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583143</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e66cdcb00393ce71cb5d2eaf2643edf5</srcmd5>
+    <version>2.079.0</version>
+    <time>1522596455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592778</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>c1a7e83a594cf07034b164bbda443160</srcmd5>
+    <version>2.079.0</version>
+    <time>1523448186</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>595363</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9464c938ececa1a1dc7fefaa33ee15aa</srcmd5>
+    <version>2.079.1</version>
+    <time>1523956733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597226</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>feec6ad3548e401d7d8a72f3e548d2c2</srcmd5>
+    <version>2.080.0</version>
+    <time>1526220296</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605185</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>86c4c269588b1ad5c3c1ef49ed6e7f98</srcmd5>
+    <version>2.080.1</version>
+    <time>1529402602</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617146</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9a8cd091bb26001cd7e3a857a6b24d6c</srcmd5>
+    <version>2.081.0</version>
+    <time>1531947131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621465</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4a189c2366cda7f426f603921e6ba5eb</srcmd5>
+    <version>2.081.2</version>
+    <time>1534774784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630330</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5d4ed2d41ddbe9968b1749590c793051</srcmd5>
+    <version>2.082.0</version>
+    <time>1537018585</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634595</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>931ed5ee8d90a76742f96c8172500620</srcmd5>
+    <version>2.082.1</version>
+    <time>1539589554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641928</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>55b314b2b29a6c5264d4d6cdb99e2926</srcmd5>
+    <version>2.083.0</version>
+    <time>1544726840</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655418</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d391aeebacbb00b6ab0a441dcc6a4a4b</srcmd5>
+    <version>2.084.0</version>
+    <time>1546946906</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663056</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cd284c0e2b428c700531df943a2ed875</srcmd5>
+    <version>2.084.1</version>
+    <time>1550402515</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676700</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>56f461a619d83acba0943776a2d77945</srcmd5>
+    <version>2.085.0</version>
+    <time>1552902222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685841</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>587d4655e24f0ab7ac8e2b9bc3e2bcc3</srcmd5>
+    <version>2.085.1</version>
+    <time>1555237413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693900</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>fcd150fcb9fc397688f7e4c72d18c0af</srcmd5>
+    <version>2.087.1</version>
+    <time>1565864936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723308</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="gnome-online-accounts" project="openSUSE:Factory">
+  <title>GNOME service to access online accounts</title>
+  <description>gnome-online-accounts provides interfaces so applications and
+libraries in GNOME can access the user's online accounts.</description>
+  <devel project="GNOME:Factory" package="gnome-online-accounts"/>
+</package>

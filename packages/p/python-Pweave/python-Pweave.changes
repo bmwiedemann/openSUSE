@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Wed Sep 18 09:24:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip one more test that fails due to extra output from
+  new matplotlib:
+  * testFIR_FilterExampleTex
+
+-------------------------------------------------------------------
+Tue Mar  5 19:39:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update 0.30.3:
+  * no upstream changelog for this release
+- Run tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:52 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Sep 12 20:58:25 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

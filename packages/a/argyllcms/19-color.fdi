@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deviceinfo version="0.2">
+  <!-- This file normally lives at "/usr/share/hal/fdi/policy/10osvendor/19-color.fdi" -->
+  <!-- Color meter devices known to Argyll CMS
+       FDI creation: Nicolas Mailhot <nicolas.mailhot at laposte.net>
+       with input from David Zeuthen and Frdric Crozat,
+       maintained by Graeme Gill.
+    -->
+  <device>
+    <!-- Serial Connected Color Instruments -->
+    <match key="serial.device" exists="true">
+      <append key="info.capabilities" type="strlist">access_control</append>
+      <merge key="access_control.type" type="string">color</merge>
+      <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+    </match>
+    <!-- HCFR association -->
+    <match key="usb_device.vendor_id" int="0x04DB">
+      <!-- Display colorimeter -->
+      <match key="usb_device.product_id" int="0x005B">
+        <append key="info.capabilities" type="strlist">access_control</append>
+        <merge key="access_control.type" type="string">color</merge>
+        <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+    </match>
+    <!-- MonacoOPTIX -->
+    <match key="usb_device.vendor_id" int="0x0670">
+      <!-- Eye-One Display 1 - display colorimeter -->
+      <match key="usb_device.product_id" int="0x0001">
+        <append key="info.capabilities" type="strlist">access_control</append>
+        <merge key="access_control.type" type="string">color</merge>
+        <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+    </match>
+    <!-- X-Rite -->
+    <match key="usb_device.vendor_id" int="0x0765">
+      <!-- DTP20 "Pulse" - "swipe" type reflective spectrometer, that can be used un-tethered. -->
+      <match key="usb_device.product_id" int="0xd020">
+        <append key="info.capabilities" type="strlist">access_control</append>
+        <merge key="access_control.type" type="string">color</merge>
+        <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+      <!-- DTP92Q - CRT display colorimeter. (Not tested) -->
+      <match key="usb_device.product_id" int="0xd092">
+        <append key="info.capabilities" type="strlist">access_control</append>
+        <merge key="access_control.type" type="string">color</merge>
+        <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+      <!-- DTP94 "Optix XR" or "Optix XR2" - display colorimeter -->
+      <match key="usb_device.product_id" int="0xd094">
+        <append key="info.capabilities" type="strlist">access_control</append>
+        <merge key="access_control.type" type="string">color</merge>
+        <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+    </match>
+    <!-- ColorVision -->
+    <match key="usb_device.vendor_id" int="0x085C">
+      <!-- Spyder 2 - display colorimeter -->
+      <match key="usb_device.product_id" int="0x0200">
+        <append key="info.capabilities" type="strlist">access_control</append>
+        <merge key="access_control.type" type="string">color</merge>
+        <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+    </match>
+    <!-- Gretag-Macbeth -->
+    <match key="usb_device.vendor_id" int="0x0971">
+      <!-- Eye-One Monitor - spot emissive spectrometer -->
+      <match key="usb_device.product_id" int="0x2001">
+        <append key="info.capabilities" type="strlist">access_control</append>
+        <merge key="access_control.type" type="string">color</merge>
+        <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+      <!-- Eye-One Pro - spot and "swipe" reflective/emissive spectrometer -->
+      <match key="usb_device.product_id" int="0x2000">
+        <append key="info.capabilities" type="strlist">access_control</append>
+        <merge key="access_control.type" type="string">color</merge>
+        <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+      <!-- Eye-One Display - display colorimeter -->
+      <match key="usb_device.product_id" int="0x2003">
+        <append key="info.capabilities" type="strlist">access_control</append>
+        <merge key="access_control.type" type="string">color</merge>
+        <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+      <!-- Huey - display colorimeter -->
+      <match key="usb_device.product_id" int="0x2005">
+        <append key="info.capabilities" type="strlist">access_control</append>
+        <merge key="access_control.type" type="string">color</merge>
+        <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+    </match>
+  </device>
+</deviceinfo>

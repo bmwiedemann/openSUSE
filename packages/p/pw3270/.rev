@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9b575e8b8d3db64e4760783084f2227e</srcmd5>
+    <version>5.0</version>
+    <time>1443684545</time>
+    <user>dimstar_suse</user>
+    <comment>Fixing reported problems.</comment>
+    <requestid>332940</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>51f7ff717c10870c57d68b0b1d00284c</srcmd5>
+    <version>5.0</version>
+    <time>1459002329</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>376614</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f723cd83a8c778a781ddd57b1a154eb5</srcmd5>
+    <version>5.0</version>
+    <time>1481654051</time>
+    <user>dimstar_suse</user>
+    <comment>Fixing for bug 998842 (https://bugzilla.suse.com/show_bug.cgi?id=998842), updating changelogs.</comment>
+    <requestid>445467</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5a2ecba0ae2f3039c71eea17144e4670</srcmd5>
+    <version>5.1</version>
+    <time>1506453322</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526101</requestid>
+  </revision>
+</revisionlist>

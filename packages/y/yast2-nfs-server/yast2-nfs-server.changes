@@ -1,0 +1,866 @@
+-------------------------------------------------------------------
+Tue Aug 27 18:20:56 CEST 2019 - schubi@suse.de
+
+- Set X-SuSE-YaST-AutoInstResource in desktop file (bsc#144894).
+- 4.2.1
+
+-------------------------------------------------------------------
+Fri May 31 12:34:21 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Tue Feb 26 13:00:14 UTC 2019 - José Iván López González <jlopez@suse.com>
+
+- Version bump (bsc#1124009)
+- 4.1.0
+
+-------------------------------------------------------------------
+Sun Nov 25 20:03:51 UTC 2018 - Noah Davis <noahadvs@gmail.com>
+
+- Provide icon with module (boo#1109310)
+- 4.0.3
+
+-------------------------------------------------------------------
+Wed Nov 21 16:27:55 UTC 2018 - dgonzalez@suse.com
+
+- Use the real name for nfs-server service instead an alias
+  (bsc#1116779).
+- 4.0.2
+
+-------------------------------------------------------------------
+Tue Oct 16 16:11:30 CEST 2018 - schubi@suse.de
+
+- Added license file to spec.
+
+-------------------------------------------------------------------
+Wed Aug 22 16:10:12 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Thu Jun 28 09:40:46 CEST 2018 - schubi@suse.de
+
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.0.1
+
+-------------------------------------------------------------------
+Fri Feb  2 15:16:24 UTC 2018 - knut.anderssen@suse.com
+
+- Replace SuSEFirewall2 by firewalld (fate#323460)
+- 4.0.0
+
+-------------------------------------------------------------------
+Tue Jun  7 08:24:14 UTC 2016 - igonzalezsosa@suse.com
+
+- Stop generating autodocs (fate#320356)
+- 3.1.9
+
+-------------------------------------------------------------------
+Thu Dec  4 09:50:30 UTC 2014 - jreidinger@suse.com
+
+- remove X-KDE-Library from desktop file (bnc#899104)
+- 3.1.8
+
+-------------------------------------------------------------------
+Wed May 21 14:21:22 UTC 2014 - mvidner@suse.com
+
+- Avoid "Unable to start idmapd" (bnc#878878).
+- Removed dead code dealing with the user space nfs-server.rpm.
+- 3.1.7
+
+-------------------------------------------------------------------
+Mon May  5 15:54:01 CEST 2014 - locilka@suse.com
+
+- Obsolete Service.Status calls replaced with Service.active?
+- Finally dropped obsolete 'portmap' support (using only rpcbind)
+- Adapted testsuite
+- 3.1.6
+
+-------------------------------------------------------------------
+Fri Mar 28 15:47:26 UTC 2014 - vmoravec@suse.com
+
+- Fix testsuite again
+- 3.1.5
+
+-------------------------------------------------------------------
+Wed Mar 12 10:12:12 UTC 2014 - vmoravec@suse.com
+
+- Fix testuite due to changes in yast2
+- 3.1.4
+
+-------------------------------------------------------------------
+Thu Mar  6 11:04:45 UTC 2014 - vmoravec@suse.com
+
+- Fix testsuite due to changes in yast2
+- 3.1.3
+
+-------------------------------------------------------------------
+Mon Jan 27 08:12:41 UTC 2014 - mfilka@suse.com
+
+- fate#315589
+  - deprecated bind mount configuration with NFSv4 export
+- 3.1.2
+
+-------------------------------------------------------------------
+Wed Nov 13 15:56:18 UTC 2013 - jreidinger@suse.com
+
+- Add explicit COPYING file
+
+-------------------------------------------------------------------
+Thu Sep 19 11:35:00 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Wed Jul 31 08:34:01 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Wed Jun 26 16:39:49 UTC 2013 - lslezak@suse.cz
+
+- use ini-agent instead of Limal for reading /etc/idmapd.conf file,
+  Limal has been dropped in Factory (FATE#313242).
+- 2.24.0
+
+-------------------------------------------------------------------
+Thu May 16 15:21:24 CEST 2013 - locilka@suse.com
+
+- Adapted testsuites testing if service is enabled, implementation
+  has been changed in yast2 package (bnc#807507).
+- 2.21.7
+
+-------------------------------------------------------------------
+Mon Jan  7 09:09:02 UTC 2013 - locilka@suse.com
+
+- Testsuite adapted to merging SuSEfirewall2 services into one
+  (yast2-2.23.17)
+- 2.21.6
+
+-------------------------------------------------------------------
+Thu Jan  3 15:41:07 UTC 2013 - locilka@suse.com
+
+- Testsuites adapted to switching Service module to systemd
+  (yast2-2.23.15)
+- 2.21.5
+
+-------------------------------------------------------------------
+Thu Aug 16 08:03:24 UTC 2012 - mfilka@suse.com
+
+- allow colon in export options, see man 5 exports (sec= option)
+- bnc#775814
+- 2.21.4 
+
+-------------------------------------------------------------------
+Thu Mar 29 15:28:39 CEST 2012 - jsuchome@suse.cz
+
+- merged proofread texts 
+
+-------------------------------------------------------------------
+Fri Mar 16 08:49:43 UTC 2012 - mfilka@suse.com
+
+- Fixed testsuites
+- 2.21.3
+
+-------------------------------------------------------------------
+Thu Nov  3 13:48:33 CET 2011 - locilka@suse.cz
+
+- Fixed testsuites
+- 2.21.2
+
+-------------------------------------------------------------------
+Wed Sep 21 11:42:35 CEST 2011 - visnov@suse.cz
+
+- set dialog title
+- 2.21.1 
+
+-------------------------------------------------------------------
+Fri Sep  9 11:42:17 UTC 2011 - lslezak@suse.cz
+
+- updated testsuite (systemd adaptation)
+- 2.21.0
+
+-------------------------------------------------------------------
+Fri Aug  5 12:34:17 CEST 2011 - tgoettlicher@suse.de
+
+- fixed .desktop file (bnc #681249)
+
+-------------------------------------------------------------------
+Tue Jun 21 17:32:17 UTC 2011 - jreidinger@novell.com
+
+- use button box for OK/Cancel (bnc#701262) 
+
+-------------------------------------------------------------------
+Mon Jun 20 14:39:17 UTC 2011 - jreidinger@novell.com
+
+- detect if settings changed (bnc#460163) 
+
+------------------------------------------------------------------
+Wed Jan 13 18:56:03 CET 2010 - kmachalkova@suse.cz
+
+- Adjusted .desktop file(s) to wrap /sbin/yast2/ calls in xdg-su
+  where root privileges are needed, removed X-KDE-SubstituteUID key 
+  (bnc#540627)
+
+-------------------------------------------------------------------
+Mon Sep 21 09:44:32 CEST 2009 - mvidner@suse.cz
+
+- Recommend nfs-kernel-server (it is required and will be installed at
+  runtime anyway, bnc#535544).
+- Removed compatibility dependencies for a 7 years old release.
+- 2.18.1
+
+-------------------------------------------------------------------
+Sat Sep  5 06:00:13 CEST 2009 - mvidner@suse.cz
+
+- Added X-SuSE-YaST-Keywords for the Qt4 control center.
+- 2.18.0
+
+-------------------------------------------------------------------
+Mon Mar 16 14:45:43 CET 2009 - mvidner@suse.cz
+
+- Fixed 'unknown keyword "crossmntro"' in the default NFS4 options
+  (bnc#484663)
+- 2.17.7
+
+-------------------------------------------------------------------
+Tue Feb  3 16:26:12 CET 2009 - mvidner@suse.cz
+
+- Fixed the help for NFS4 bind mounts; added crossmnt (bnc#471874).
+- 2.17.6
+
+-------------------------------------------------------------------
+Wed Dec  3 16:07:28 CET 2008 - kmachalkova@suse.cz
+
+- Missing strings marked for translation (bnc#449700)
+
+-------------------------------------------------------------------
+Wed Nov 19 14:20:10 CET 2008 - mvidner@suse.cz
+
+- Fixed firewall port punching by updating the service reference
+  (bnc#446163).
+- 2.17.4
+
+-------------------------------------------------------------------
+Fri Nov  7 12:49:37 CET 2008 - mvidner@suse.cz
+
+- Adjusted dialog buttons according to YaST Style Guide
+  (bnc#440528).
+- 2.17.3
+
+-------------------------------------------------------------------
+Thu Oct  9 11:32:57 CEST 2008 - jsuchome@suse.cz
+
+- fixed failing testsuite (Service.ycp)
+- 2.17.2 
+
+-------------------------------------------------------------------
+Thu Oct  2 11:09:47 CEST 2008 - mvidner@suse.cz
+
+- Use rpcbind by default and fall back to portmap (bnc#423026).
+- 2.17.1
+
+-------------------------------------------------------------------
+Mon Sep  8 13:48:46 CEST 2008 - mvidner@suse.cz
+
+- Applied proofreading changes from Andrew Spackman.
+
+-------------------------------------------------------------------
+Wed Jul 23 19:06:11 CEST 2008 - mvidner@suse.cz
+
+- Help text: clarified that "*" works only in host names, not network
+  IPs (bnc#405207).
+- 2.17.0
+
+-------------------------------------------------------------------
+Wed May 21 12:26:53 CEST 2008 - mvidner@suse.cz
+
+- Split off yast2-nfs-common (bnc#387088).
+- 2.16.1
+
+-------------------------------------------------------------------
+Fri May 16 16:40:22 CEST 2008 - jsrain@suse.cz
+
+- added categories Settings and System into desktop file
+  (bnc #382778)
+
+-------------------------------------------------------------------
+Wed Apr 16 10:53:41 CEST 2008 - mvidner@suse.cz
+
+- Merged proofread texts.
+
+-------------------------------------------------------------------
+Mon Mar 17 12:43:32 CET 2008 - jsrain@suse.cz
+
+- added 'StartupNotify=true' to the desktop file (bnc #304964)
+- 2.16.0
+
+-------------------------------------------------------------------
+Wed Jan  2 13:34:33 CET 2008 - mvidner@suse.cz
+
+- Do not touch NFS4 during autoinstallation; really fixing "Unable to
+  write idmapd.conf" (#287338).
+- Do not pop up an error about idmapd during autoinstallation
+  (#260723).
+
+-------------------------------------------------------------------
+Mon Aug 20 14:17:18 CEST 2007 - mvidner@suse.cz
+
+- Require nfs-kernel-server.rpm because nfs-utils.rpm got split (#286300).
+- 2.15.4
+
+-------------------------------------------------------------------
+Fri May 25 13:30:04 CEST 2007 - jsrain@suse.cz
+
+- removed outdated translations from .desktop-files (#271209)
+
+-------------------------------------------------------------------
+Wed Mar 14 12:02:13 IST 2007 - pchakravarthi@novell.com
+
+- Added CLI for setting parameters related to NFSv4 server.
+  (nfs_server.ycp)
+- Modified the testsuite out files to reflect the changes made to
+  NfsServer.ycp
+- 2.15.3
+
+-------------------------------------------------------------------
+Tue Mar 13 13:19:22 CET 2007 - mvidner@suse.cz
+
+- Removed obsolete dependency on yast2-packager (#252979).
+- 2.15.2
+
+-------------------------------------------------------------------
+Mon Feb 26 16:52:08 CET 2007 - pchakravarthi@novell.com
+
+- Fixed #242545: settings were not visible.
+- Do not ignore changes when an item is deleted and readded (#243466).
+- Do not continue with no directory entered (#243034).
+- Fixed "Unable to start idmapd please check the domain settings"
+  (/etc/sysconfig/nfs was not flushed, #242565).
+- 2.15.1
+
+-------------------------------------------------------------------
+Mon Feb 26 15:17:11 CET 2007 - pchakravarthi@novell.com
+
+- Added a perl module ag_idmapd_conf for configuring entries in 
+  /etc/idmapd.conf
+- Added two scr agents - etc_idmapd_conf.scr and cfg_nfs.scr, the
+  former making use of ag_idmapd_conf and the later to configure
+  entries in /etc/sysconfig/nfs
+- Modified Makefile.am in agents directory to reflect above.
+- Modified NfsServer.ycp, ui.ycp and routines.ycp to make use of 
+  all above and adding ui pieces to make the module NFSv4 aware.
+- Modified the *.out files in testsuite/tests/ to reflect changes 
+  made above.
+- modified .spec.in file to add 'Requires' for limal-nfs-server
+  package and to include names of additional agent files.
+- Relevant FATE ID : #300609
+- merged all this from SLE10-SP1 (mvidner).
+
+-------------------------------------------------------------------
+Mon Feb 26 09:49:16 CET 2007 - mvidner@suse.cz
+
+- Added no_subtree_check to the default options to reflect a change in
+  nfs-utils-1.1.0 (#233709).
+- 2.15.0
+
+-------------------------------------------------------------------
+Mon Nov 20 14:51:58 CET 2006 - mvidner@suse.cz
+
+- Have all yast packages with 2.14.x in OS-10.2.
+- 2.14.0
+
+-------------------------------------------------------------------
+Mon Sep 11 17:42:23 CEST 2006 - mvidner@suse.cz
+
+- Fixed Progress nesting (#202351).
+- Using autodocs-ycp.ami (with parentheses for automake-1.9.6).
+- 2.13.6
+
+-------------------------------------------------------------------
+Tue Jul 11 13:50:53 CEST 2006 - mvidner@suse.cz
+
+- Warn if there are unbalanced parentheses, probably because of
+  misplaced whitespace in /etc/exports.
+- 2.13.5
+
+-------------------------------------------------------------------
+Mon Jul 10 13:38:56 CEST 2006 - mvidner@suse.cz
+
+- Join multiple entries for a single export path (#191218).
+- Filter out duplicated client specifications (#191218).
+- 2.13.4
+
+-------------------------------------------------------------------
+Tue Mar  7 17:21:51 CET 2006 - mvidner@suse.cz
+
+- Converted neededforbuild to BuildRequires
+  and removed yast2-devel-packages.
+- 2.13.3
+
+-------------------------------------------------------------------
+Mon Jan 16 15:30:29 CET 2006 - mvidner@suse.cz
+
+- Again adjusted test cases for NetworkManager related changes (~#135595).
+- 2.13.2
+
+-------------------------------------------------------------------
+Thu Jan  5 10:27:10 CET 2006 - mvidner@suse.cz
+
+- Adjusted testsuite for changes in firewall code.
+- 2.13.1
+
+-------------------------------------------------------------------
+Fri Sep 23 16:15:46 CEST 2005 - mvidner@suse.cz
+
+- Moved RNC schema from autoyast2.rpm.
+- 2.13.0
+
+-------------------------------------------------------------------
+Fri Aug 12 15:30:10 CEST 2005 - mvidner@suse.cz
+
+- Note the difference in anonymous wildcard between knfsd and unfsd in
+  the help text (#91175).
+- Added comments for translators and ycpdoc.
+- 2.12.1
+
+-------------------------------------------------------------------
+Wed May 18 16:29:24 CEST 2005 - mvidner@suse.cz
+
+- Texts proofread by rwalter.
+- 2.12.0
+
+-------------------------------------------------------------------
+Thu Feb 10 17:55:22 CET 2005 - mvidner@suse.cz
+
+- Another testsuite adjustment for firewall.
+- 2.11.5
+
+-------------------------------------------------------------------
+Mon Feb  7 16:42:54 CET 2005 - mvidner@suse.cz
+
+- Merged proofread texts.
+- 2.11.4
+
+-------------------------------------------------------------------
+Mon Jan 31 14:02:02 CET 2005 - mvidner@suse.cz
+
+- Adjusted testsuite for changes in firewall (build fix).
+- 2.11.3
+
+-------------------------------------------------------------------
+Fri Jan 14 17:19:12 CET 2005 - jsuchome@suse.cz
+
+- added basic command line support
+- 2.11.2 
+
+-------------------------------------------------------------------
+Mon Jan  3 15:51:42 CET 2005 - mvidner@suse.cz
+
+- Adjusted for firewall's move to yast2.rpm.
+- Using Progress::set.
+- 2.11.1
+
+-------------------------------------------------------------------
+Wed Nov 10 13:09:29 CET 2004 - mvidner@suse.cz
+
+- Updated to new Mode.
+- Replaced lookups and selects by brackets.
+- 2.11.0
+
+-------------------------------------------------------------------
+Wed Sep 15 15:47:53 CEST 2004 - mvidner@suse.cz
+
+- Use Package instead of Require.
+- 2.10.5
+
+-------------------------------------------------------------------
+Tue Sep 14 09:24:16 CEST 2004 - jsrain@suse.cz
+
+- adapted testsuite to more changes in yast2-firewall
+- 2.10.4
+
+-------------------------------------------------------------------
+Mon Sep  6 17:48:13 CEST 2004 - mvidner@suse.cz
+
+- Adjusted testsuite to changes in yast2-firewall (#44650).
+- 2.10.3
+
+-------------------------------------------------------------------
+Tue Aug 31 00:11:37 CEST 2004 - nashif@suse.de
+
+- use modified flag (#43904)
+
+-------------------------------------------------------------------
+Fri Aug 27 14:22:47 CEST 2004 - mvidner@suse.cz
+
+- Added Open Firewall button.
+- autoinst: check if nfslock is available during import (nashif)
+- 2.10.1
+
+-------------------------------------------------------------------
+Thu Jun 17 09:45:24 CEST 2004 - mvidner@suse.cz
+
+- Added "testedfiles" to test cases to make it work with the new testsuite.
+- 2.10.0
+
+-------------------------------------------------------------------
+Fri Apr  2 15:09:50 CEST 2004 - mvidner@suse.cz
+
+- changed license to GPL
+- 2.9.9
+
+-------------------------------------------------------------------
+Mon Mar 15 10:42:20 CET 2004 - mvidner@suse.cz
+
+- fixed canceling Abort (#35991)
+- re-enabled testsuite
+- 2.9.8
+
+-------------------------------------------------------------------
+Wed Mar 10 09:01:45 CET 2004 - kkaempf@suse.de
+
+- disable testsuite
+- 2.9.7
+
+-------------------------------------------------------------------
+Wed Mar 10 02:18:09 CET 2004 - sh@suse.de
+
+- V 2.9.6
+- Migration to new wizard 
+
+-------------------------------------------------------------------
+Tue Mar  9 10:39:09 CET 2004 - lslezak@suse.cz
+
+- use Service::, Sequencer::
+- set icon
+- testsuite update
+- version 2.9.5
+
+-------------------------------------------------------------------
+Sun Mar  7 22:39:02 CET 2004 - kkaempf@suse.de
+
+- fix testsuite
+
+-------------------------------------------------------------------
+Fri Mar  5 15:56:43 CET 2004 - mvidner@suse.cz
+
+- added typing information (lslezak)
+- 2.9.3
+
+-------------------------------------------------------------------
+Mon Feb  9 17:25:31 CET 2004 - lslezak@suse.cz
+
+- NfsServer.ycp - fixed data type
+- removed *.y2cc file
+- version 2.9.2
+
+-------------------------------------------------------------------
+Fri Jan 30 16:38:23 CET 2004 - mvidner@suse.cz
+
+- Adapted for the new interpreter (jhumpol)
+- 2.9.1
+
+-------------------------------------------------------------------
+Fri Nov 21 12:40:13 CET 2003 - lslezak@suse.cz
+
+- use UI:: file popup
+- fixed nonroot build (mvidner)
+- version 2.9.0
+
+-------------------------------------------------------------------
+Tue Sep 16 17:49:41 CEST 2003 - nashif@suse.de
+
+- Dont show help messages during autoinstallation
+- 2.8.7
+
+-------------------------------------------------------------------
+Fri Sep 12 06:59:38 CEST 2003 - nashif@suse.de
+
+- #30291: return list of required packages for autoinstallation
+- 2.8.6
+
+-------------------------------------------------------------------
+Fri Sep  5 09:51:43 CEST 2003 - lslezak@suse.cz
+
+- merged text from proofread
+- version 2.8.5
+
+-------------------------------------------------------------------
+Fri Aug 22 19:59:27 CEST 2003 - nashif@suse.de
+
+- return required packages during autoinstallation
+
+-------------------------------------------------------------------
+Thu Aug 14 16:45:46 CEST 2003 - jsuchome@suse.cz
+
+- removed confirmation dialog, success dialog and added writing
+  progress dialog (#28729)
+- 2.8.3
+
+-------------------------------------------------------------------
+Mon Aug  4 17:21:31 CEST 2003 - mvidner@suse.cz
+
+- Added desktop file (supersedes y2cc file).
+- 2.8.2
+
+-------------------------------------------------------------------
+Wed Jul 23 14:24:05 CEST 2003 - mvidner@suse.cz
+
+- Autoinst: if start_nfsserver is false, write /etc/exports anyway
+  (for heartbeat, #27001).
+- Using Label, Popup, Require.
+- 2.8.1
+
+-------------------------------------------------------------------
+Mon Mar  3 16:32:39 CET 2003 - mvidner@suse.de
+
+- Import accepts empty list and can reset settings (#24544).
+- Don't set Mode::config to true in _auto clients (nashif).
+- 2.7.4
+
+-------------------------------------------------------------------
+Mon Feb 17 16:47:12 CET 2003 - mvidner@suse.de
+
+- Changed _auto::Result to Export (nashif).
+- 2.7.2
+
+-------------------------------------------------------------------
+Mon Feb  3 17:12:47 CET 2003 - mvidner@suse.de
+
+- Added Read to _auto (nashif).
+- 2.7.1
+
+-------------------------------------------------------------------
+Mon Jan 20 10:24:31 CET 2003 - mvidner@suse.de
+
+- Using the new *_auto dispatcher (nashif).
+- Added function key shortcuts.
+- Fixed export options checking (phadraba).
+- Prevent agent from returning strings as integers/booleans (~#21804).
+- 2.7.0
+
+-------------------------------------------------------------------
+Mon Sep  9 16:57:52 EDT 2002 - nashif@suse.de
+
+- Implemented WriteOnly to 'only' write configuration without
+  actuallu activating any services
+- 2.6.13
+
+-------------------------------------------------------------------
+Fri Sep  6 13:15:33 CEST 2002 - mvidner@suse.cz
+
+- If nfslock is present, enable/start it along with nfsserver (#18952).
+- Options popup widened so that in ncurses "ro,root_squash,sync" fits in.
+- Fixed truncated buttons in ncurses.
+- 2.6.12
+
+-------------------------------------------------------------------
+Mon Aug 26 15:57:54 CEST 2002 - mvidner@suse.cz
+
+- Adapted for the new packagemanager.
+- 2.6.11
+
+-------------------------------------------------------------------
+Fri Aug  9 16:26:15 CEST 2002 - mvidner@suse.cz
+
+- Explicitly set sync, the new default of nfs-utils-1.0.1,
+  so that exportfs does not produce a warning.
+- Let the table keep the keyboard focus (#16116 workaround).
+- Report Runlevel::error_msg if enabling a service fails.
+- Make "yast2 nfs-server" invoke "yast2 nfs_server" (#17570).
+- 2.6.10
+
+-------------------------------------------------------------------
+Mon Aug  5 16:18:24 CEST 2002 - mvidner@suse.cz
+
+- Added autoyast interface (nashif).
+- 2.6.9
+
+-------------------------------------------------------------------
+Mon Jul 29 17:52:54 CEST 2002 - mvidner@suse.cz
+
+- After adding a directory to be exported, the restriction dialog
+  pops up automatically, with explicit defaults: "*" and "ro,root_squash".
+- WM close button means to abort.
+- Added missing comments for translators.
+- 2.6.8
+
+-------------------------------------------------------------------
+Fri Jul 19 18:34:12 CEST 2002 - mvidner@suse.cz
+
+- Errors when creating directories are non fatal, so don't abort writing.
+- Merged proofread texts.
+- 2.6.7
+
+-------------------------------------------------------------------
+Fri Jul 12 16:07:02 CEST 2002 - arvin@suse.de
+
+- use proper namespace for Args and CallFunction (#16776)
+
+-------------------------------------------------------------------
+Fri Jul 12 14:51:55 CEST 2002 - mvidner@suse.cz
+
+- Fixed dependencies, using devtools 2.6.6.
+- 2.6.5
+
+-------------------------------------------------------------------
+Thu Jul 04 21:31:21 CEST 2002 - arvin@suse.de
+
+- moved non binary files to /usr/share/YaST2
+
+-------------------------------------------------------------------
+Fri Jun 28 14:29:07 CEST 2002 - mvidner@suse.cz
+
+- Renamed to "yast2-nfs-server"
+- menuentries -> config
+- 2.6.2
+
+-------------------------------------------------------------------
+Wed Apr 24 13:55:14 CEST 2002 - mvidner@suse.cz
+
+- Check that the exported directory exists and ask if it should be created.
+- Better /etc/exports handling:
+  Don't insert \\\n (#15937)
+  Handle spaces in paths (allowed only for the kernel based server) (#15524)
+- Use * to mean all clients only if using the kernel based server.
+  The user mode server still needs an empty string to mean that.
+- Fix for automake 1.6
+- 2.6.1
+
+-------------------------------------------------------------------
+Thu Feb  7 17:29:16 CET 2002 - mvidner@suse.cz
+
+- Allow also the user mode nfs-server.
+- Sometimes buttons were not enabled.
+- Added SetFocus to input popups.
+- Had the English texts proofread.
+- 2.5.7
+
+-------------------------------------------------------------------
+Mon Jan 21 16:40:45 CET 2002 - mvidner@suse.cz
+
+- Using Wizard module.
+- Moved etc_exports.scr from yast2-agent-any.
+- Keyboard shortcut fixes.
+- 2.5.6
+
+-------------------------------------------------------------------
+Wed Jan  9 10:07:49 CET 2002 - mvidner@suse.cz
+
+- Removed old menu entry. (2.5.5)
+
+-------------------------------------------------------------------
+Tue Dec 18 11:39:41 CET 2001 - mvidner@suse.cz
+
+- Using Report module for errors.
+- New style menu entry.
+- 2.5.4
+
+-------------------------------------------------------------------
+Thu Nov 29 15:59:16 CET 2001 - mvidner@suse.cz
+
+- Converted to a Module.
+- Using y2automake and create-spec.
+- 2.5.3
+
+-------------------------------------------------------------------
+Tue Nov 13 10:57:20 CET 2001 - mvidner@suse.cz
+
+- Added default values for lookups.
+- 2.5.2
+
+-------------------------------------------------------------------
+Thu Oct 11 10:34:54 CEST 2001 - mvidner@suse.cz
+
+- Better export options checking; default options are nonempty ("*()")
+  to avoid warnings. (#11615)
+- 2.5.1
+
+-------------------------------------------------------------------
+Thu Sep 20 18:56:55 CEST 2001 - mvidner@suse.cz
+
+- Leave disabled the Add host button until a mount point is selected
+  that the host will apply to. (#11075)
+- Allow empty export options (parens are supplied automatically) (#11076);
+  empty host wildcard is translated to "*".
+- 2.4.11
+
+-------------------------------------------------------------------
+Mon Sep  3 14:16:37 CEST 2001 - mvidner@suse.cz
+
+- Start portmap only if not running already (Bug #9999). (2.4.10)
+
+-------------------------------------------------------------------
+Fri Aug 31 00:49:12 CEST 2001 - ro@suse.de
+
+- added <libycp-devel> to neededforbuild (for testsuite)
+
+-------------------------------------------------------------------
+Tue Aug 28 12:53:54 CEST 2001 - mvidner@suse.cz
+
+- Fixed a truncated table label (#9907). (2.4.8)
+
+-------------------------------------------------------------------
+Thu Aug 23 17:06:20 CEST 2001 - mvidner@suse.cz
+
+- Added documentation in a devel subpackage (2.4.7)
+
+-------------------------------------------------------------------
+Tue Aug 21 17:08:59 CEST 2001 - mvidner@suse.cz
+
+- Only one <p> per string.
+- Switched from START_* to runlevel_adjust.
+- 2.4.6
+
+-------------------------------------------------------------------
+Tue Aug  7 17:17:42 CEST 2001 - mvidner@suse.cz
+
+- Changed from RPM Requires to require.ycp.
+- 2.4.5
+
+-------------------------------------------------------------------
+Mon Jul 30 12:02:08 CEST 2001 - mvidner@suse.cz
+
+- Turned off autoheader.
+- Added an Abort button.
+- Parentheses are filtered from exports options, this time correctly.
+- Replaced _("&OK") by OKButtonLabel() etc.
+- Unified the buttons to Add-Edit-Delete.
+- Made keyboard shortcuts unique.
+- version 2.4.4
+
+-------------------------------------------------------------------
+Tue Jul 24 15:09:39 CEST 2001 - mvidner@suse.cz
+
+- Fixed a stupid error in the specfile.
+- version 2.4.3
+
+-------------------------------------------------------------------
+Mon Jul 23 17:07:07 CEST 2001 - mvidner@suse.cz
+
+- Fixed calling the writing function. Fixed obsolete Shell call.
+- Requires nfs-utils.
+- Parentheses are filtered from exports options.
+- version 2.4.2
+
+-------------------------------------------------------------------
+Thu Jul 19 12:00:00 CEST 2001 - msvec@suse.cz
+
+- correct textdomain
+- correct provides
+- version 2.4.1
+
+-------------------------------------------------------------------
+Wed Jul 18 19:31:53 CEST 2001 - msvec@suse.cz
+
+- split of the yast2-config-network
+- version 2.4.0

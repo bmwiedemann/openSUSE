@@ -1,0 +1,4 @@
+addFilter("incoherent-init-script-name atop")
+addFilter("incoherent-logrotate-file /etc/logrotate.d/psaccu_atop")
+addFilter("incoherent-logrotate-file /etc/logrotate.d/psaccs_atop")
+addFilter("no-manual-page-for-binary atop-.*")

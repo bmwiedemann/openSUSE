@@ -1,0 +1,33 @@
+From 823c0e9daeac9a1b8a8c667f38685e1ce92dca61 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Fri, 9 Mar 2018 21:51:23 +0100
+Subject: [PATCH] Support both [X11], [XDisplay], [Wayland] and
+ [WaylandDisplay] config sections
+
+In sddm 0.14.0, the [XDisplay] and [WaylandDisplay] sections were renamed for
+no good reason. This totally breaks existing configurations, so we need to
+fix that. Reverting would break forwards compat., so just alias them for now.
+---
+ src/common/ConfigReader.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/common/ConfigReader.cpp b/src/common/ConfigReader.cpp
+index 4b5983c..952f8ef 100644
+--- a/src/common/ConfigReader.cpp
++++ b/src/common/ConfigReader.cpp
+@@ -198,6 +198,12 @@ namespace SDDM {
+             // get rid of comments first
+             lineRef = lineRef.left(lineRef.indexOf(QLatin1Char('#'))).trimmed();
+ 
++            // In version 0.13.0, these sections were renamed for no good reason...
++            if (currentSection == QStringLiteral("XDisplay"))
++                currentSection = QStringLiteral("X11");
++            else if (currentSection == QStringLiteral("WaylandDisplay"))
++                currentSection = QStringLiteral("Wayland");
++
+             // value assignment
+             int separatorPosition = lineRef.indexOf(QLatin1Char('='));
+             if (separatorPosition >= 0) {
+-- 
+2.16.2
+

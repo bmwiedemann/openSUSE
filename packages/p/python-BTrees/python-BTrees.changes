@@ -1,0 +1,141 @@
+-------------------------------------------------------------------
+Mon Aug  5 11:36:26 UTC 2019 - pgajdos@suse.com
+
+- version update to 4.6.0
+  * Drop support for Python 3.4.
+  * Fix tests against persistent 4.4.
+  * Stop accidentally installing the 'terryfy' package in macOS wheels.
+    See `issue 98
+    <https://github.com/zopefoundation/BTrees/issues/98>`_.
+  * Fix segmentation fault in ``bucket_repr()``.  See
+    `issue 106 <https://github.com/zopefoundation/BTrees/issue/106>`_.
+
+-------------------------------------------------------------------
+Sun Feb 10 11:14:42 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v4.5.1
+  + Use pyproject.toml to specify build dependencies. This requires pip
+    18 or later to build from source.
+- 4.5.0
+  + Add support for Python 3.6 and 3.7, and drop support for Python 3.3.
+  + Raise an ``ImportError`` consistently on Python 3 if the C extension for
+    BTrees is used but the ``persistent`` C extension is not available.
+    Previously this could result in an odd ``AttributeError``.
+  + Fix the possibility of a rare crash in the C extension when
+    deallocating items.
+  + Respect the ``PURE_PYTHON`` environment variable at runtime even if
+    the C extensions are available.
+  + Always attempt to build the C extensions, but make their success
+    optional.
+  + Fix a ``DeprecationWarning`` that could come from I and L objects in
+    Python 2 in pure-Python mode.
+- Use %license
+
+-------------------------------------------------------------------
+Mon Jul 10 11:19:10 UTC 2017 - jengelh@inai.de
+
+- Fix duplicate summaries
+
+-------------------------------------------------------------------
+Sat Jun 24 12:19:41 UTC 2017 - aloisio@gmx.com
+
+- Update to version 4.4.1
+  * Fixed a packaging bug that caused extra files to be included
+    (some of which caused problems in some platforms).
+  4.4.0:
+  * Allow None as a special key (sorted smaller than all others).
+  * This is a bit of a return to BTrees 3 behavior in that Nones
+    are allowed as keys again. Other objects with default ordering
+    are still not allowed as keys.
+  4.3.2:
+  * Make the CPython implementation consistent with the
+    pure-Python implementation and only check object keys for
+    default comparison when setting keys. In Python 2 this makes it
+    possible to remove keys that were added using a less restrictive
+    version of BTrees. (In Python 3 keys that are unorderable still
+    cannot be removed.) Likewise, all versions can unpickle trees
+    that already had such keys. See:
+    https://github.com/zopefoundation/BTrees/issues/53 and
+    https://github.com/zopefoundation/BTrees/issues/51
+  * Make the Python implementation consistent with the CPython
+    implementation and check object key identity before checking
+    equality and performing comparisons. This can allow fixing trees
+    that have keys that now have broken comparison functions. See
+    https://github.com/zopefoundation/BTrees/issues/50
+  * Make the CPython implementation consistent with the
+    pure-Python implementation and no longer raise TypeError for an
+    object key (in object-keyed trees) with default comparison on
+    __getitem__, get or in operations. Instead, the results will be
+    a KeyError, the default value, and False, respectively.
+    Previously, CPython raised a TypeError in those cases, while the
+    Python implementation behaved as specified.
+  * Likewise, non-integer keys in integer-keyed trees will raise
+    KeyError, return the default and return False, respectively, in
+    both implementations. Previously, pure-Python raised a KeyError,
+    returned the default, and raised a TypeError, while CPython
+    raised TypeError in all three cases.
+  4.3.1:
+  * Packaging: fix password used to automate wheel creation on
+    Travis.
+  4.3.0:
+  * Fix unexpected OverflowError when passing 64bit values to
+    long keys / values on Win64. See:
+    https://github.com/zopefoundation/BTrees/issues/32
+  * When testing PURE_PYTHON environments under tox, avoid
+    poisoning the user’s global wheel cache.
+  * Ensure that the pure-Python implementation, used on PyPy and
+    when a C compiler isn’t available for CPython, pickles
+    identically to the C version. Unpickling will choose the best
+    available implementation. This change prevents interoperability
+    problems and database corruption if both implementations are in
+    use. While it is no longer possible to pickle a Python
+    implementation and have it unpickle to the Python implementation
+    if the C implementation is available, existing Python pickles
+    will still unpickle to the Python implementation (until pickled
+    again). See: https://github.com/zopefoundation/BTrees/issues/19
+  * Avoid creating invalid objects when unpickling empty BTrees
+    in a pure-Python environment.
+  * Drop support for Python 2.6 and 3.2.
+  4.2.0:
+  * Add support for Python 3.5.
+  4.1.4:
+  * Ensure that pure-Python Bucket and Set objects have a human
+    readable __repr__ like the C versions.
+  4.1.3:
+  * Fix _p_changed when removing items from small pure-Python
+    BTrees/TreeSets and when adding items to small pure-Python Sets.
+    See: https://github.com/zopefoundation/BTrees/issues/13
+
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Mon Apr 27 20:13:30 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 4.1.2:
+  * Suppress testing 64-bit values in OLBTrees on 32 bit machines.
+  * Fix _p_changed for small pure-Python BTrees.
+- make the tests less verbose to avoid spamming the build log
+
+-------------------------------------------------------------------
+Fri Feb  6 16:54:20 UTC 2015 - hpj@urpla.net
+
+- version 4.1.1
+
+  - 4.1.1 (2014-12-27)
+    Accomodate long values in pure-Python OLBTrees.
+
+  - 4.1.0 (2014-12-26)
+    Add support for PyPy and PyPy3.
+    Add support for Python 3.4.
+    BTree subclasses can define max_leaf_size or max_internal_size to control
+    maximum sizes for Bucket/Set and BTree/TreeSet nodes.  Detect integer overflow
+    on 32-bit machines correctly under Python 3.  Update pure-Python and C trees /
+    sets to accept explicit None to indicate max / min value for minKey, maxKey.
+    PR #3) Update pure-Python trees / sets to accept explicit None to indicate
+    pen ranges for keys, values, items. (PR #3)
+
+-------------------------------------------------------------------
+Fri Aug  2 19:21:24 UTC 2013 - hpj@urpla.net
+
+- version 4.0.8: initial build
+

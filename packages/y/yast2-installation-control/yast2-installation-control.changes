@@ -1,0 +1,394 @@
+-------------------------------------------------------------------
+Tue Aug 27 10:02:50 CEST 2019 - schubi@suse.de
+
+- Adapting Dockerfile to yast-ruby container.
+
+-------------------------------------------------------------------
+Mon Aug 19 14:36:52 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Add the multidisk_first option to the partitioning proposal
+  section (related to jsc#SLE-7238).
+- 4.2.5
+
+-------------------------------------------------------------------
+Mon Jul 15 16:08:18 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Add the separate_vgs and separate_vg_name elements
+  (part of jsc#SLE-7238).
+- 4.2.4
+
+-------------------------------------------------------------------
+Fri Jul 12 15:54:21 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Add the delete_resize_configurable and allocate_volume_mode
+  elements to the partitioning section (part of jsc#SLE-7238).
+- 4.2.3
+
+-------------------------------------------------------------------
+Thu Apr 25 13:26:09 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- fix cpu_mitigations to allow selection(bsc#1098559)
+- add option to set default cpu mitigations per product
+  (bsc#1098559)
+- 4.2.2
+
+-------------------------------------------------------------------
+Thu Apr 25 12:02:06 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added a simple test to check that the validation works
+  (the schema definition is valid) (related to bsc#1098559)
+- 4.2.1
+
+-------------------------------------------------------------------
+Tue Mar 19 09:52:15 UTC 2019 - David Díaz <dgonzalez@suse.com>
+
+- Add the "select_product" parameter to the software section,
+  which allows to indicate the product that should be selected
+  (bsc#1124590).
+- 4.2.0
+
+-------------------------------------------------------------------
+Mon Mar 18 08:38:40 UTC 2019 - David Díaz <dgonzalez@suse.com>
+
+- Add the readonly_language global parameter (bsc#1121256).
+- 4.1.7
+
+-------------------------------------------------------------------
+Thu Jan  3 10:50:49 UTC 2019 - jreidinger@suse.com
+
+- Drop system scenarios which were replaced by system roles 
+
+-------------------------------------------------------------------
+Mon Dec 17 12:08:31 UTC 2018 - igonzalezsosa@suse.com
+
+- Add a configuration_management section (fate#322722).
+- 4.1.6
+
+-------------------------------------------------------------------
+Fri Dec 14 11:50:09 UTC 2018 - dgonzalez@suse.com
+
+- Add macros related to skelcd (fate#325482)
+- 4.1.5
+
+-------------------------------------------------------------------
+Wed Nov 21 17:41:10 UTC 2018 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Added global parameter enable_local_users (Fate#326447)
+- 4.1.4
+
+-------------------------------------------------------------------
+Mon Nov 19 13:03:37 UTC 2018 - mfilka@suse.com
+
+- fate#325541 
+  - added flag disable_media_repo controlling cd / dvd repository
+    disablement when installation is over
+- 4.1.3
+
+-------------------------------------------------------------------
+Wed Oct 17 15:29:35 CEST 2018 - schubi@suse.de
+
+- Added flag save_y2logs to control.xml file in order to save
+  YaST logs at the end of installation (fate#325737)
+- 4.1.2
+
+-------------------------------------------------------------------
+Tue Oct 16 16:27:43 CEST 2018 - schubi@suse.de
+
+- Added license file to spec.
+
+-------------------------------------------------------------------
+Fri Oct 12 10:45:11 CEST 2018 - schubi@suse.de
+
+- Added tags full_system_media_name and full_system_download_url
+  in control.xml which describe the location for the
+  "all-packages" medium. This information will be shown if the
+  registration has been scipped by the user. No hint will be shown
+  if these tags have not been defined. (fate#325834)
+- 4.1.1
+
+-------------------------------------------------------------------
+Mon Aug 22 15:58:13 CEST 2018 - hellcp@opensuse.org
+
+- Add a way to switch to installation ui (boo#1088785)
+- 4.1.0
+
+-------------------------------------------------------------------
+Mon Aug 20 14:00:33 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Mon Mar 12 14:59:02 UTC 2018 - igonzalezsosa@suse.com
+
+- Add support for a new btrfs_read_only element in volumes
+  specifications (related to bsc#1079000).
+- 4.0.10
+
+-------------------------------------------------------------------
+Thu Jan 25 12:52:49 UTC 2018 - jsrain@suse.cz
+
+- schema clean-up, only one mode of selecting packages for upgrade
+  (bsc#1071708)
+- 4.0.9
+
+-------------------------------------------------------------------
+Wed Dec 13 16:05:33 UTC 2017 - jreidinger@suse.com
+
+- drop copy_to_system element (FATE#320873)
+- 4.0.8
+
+-------------------------------------------------------------------
+Wed Oct 25 11:41:06 CEST 2017 - snwint@suse.de
+
+- fix typo in control.rnc
+- release 4.0.7
+
+-------------------------------------------------------------------
+Tue Oct 17 14:18:34 UTC 2017 - snwint@suse.com
+
+- add fallback_for_desired_size to ng partitioning (fate#318196)
+- 4.0.6
+
+-------------------------------------------------------------------
+Tue Oct 17 09:53:22 UTC 2017 - snwint@suse.com
+
+- adjust control.rnc for storage-ng (fate#318196)
+- 4.0.5
+
+-------------------------------------------------------------------
+Mon Oct 16 08:49:33 UTC 2017 - jreidinger@suse.com
+
+- extend system role capabilities to redefine also globals,
+  network, proposals and modules to clone (bsc#1063216)
+- 4.0.4
+  
+
+-------------------------------------------------------------------
+Wed Oct 11 11:05:19 UTC 2017 - snwint@suse.com
+
+- add snapshots_percentage element and make it mutually exclusive
+  with snapshots_size
+- 4.0.3
+
+-------------------------------------------------------------------
+Tue Oct 10 13:45:06 UTC 2017 - snwint@suse.com
+
+- update control.xml specification to include the new storage-ng
+  partitioning data
+- do no longer allow more than one partitioning element
+- 4.0.2
+
+-------------------------------------------------------------------
+Tue Oct 10 10:29:07 UTC 2017 - jreidinger@suse.com
+
+- add "self_update_id" to allow defining an ID for self update SCC
+  query (bsc#1055556)
+- 4.0.1
+
+-------------------------------------------------------------------
+Wed Sep 20 13:55:59 UTC 2017 - jreidinger@suse.com
+
+- Add order element to system roles to allow easier inserting of
+  roles from add ons (bsc#1049297)
+- 4.0.0
+
+-------------------------------------------------------------------
+Tue Aug 22 12:02:29 CEST 2017 - shundhammer@suse.de
+
+- Merged SLE-12-SP3-CASP branch to master
+- 3.3.0
+
+-------------------------------------------------------------------
+Thu Aug 17 15:13:44 CEST 2017 - shundhammer@suse.de
+
+- Make filesystem type for home and root configurable in control.xml
+  (bsc#1051762)
+
+-------------------------------------------------------------------
+Mon Jun 26 11:09:53 CEST 2017 - shundhammer@suse.de
+
+- Allow different mount point for home partition (Fate#323532)
+- 3.2.6
+
+-------------------------------------------------------------------
+Mon Mar 13 16:00:38 UTC 2017 - igonzalezsosa@suse.com
+
+- Fix system roles specification in the update section
+  (related to FATE#320772)
+- no_default element in system roles definition is not mandatory
+  (bsc#1029171)
+- 3.2.5
+
+-------------------------------------------------------------------
+Mon Mar 13 13:01:19 UTC 2017 - igonzalezsosa@suse.com
+
+- Support to add roles through addons (FATE#320772)
+- 3.2.4
+
+-------------------------------------------------------------------
+Mon Feb 13 08:52:08 UTC 2017 - jreidinger@suse.com
+
+- add option to have roles with no default (poo#14936)
+- 3.2.3
+
+-------------------------------------------------------------------
+Mon Jan 16 09:22:37 UTC 2017 - mfilka@suse.com
+
+- fate#321739
+  - proposal's read_only node can be "hard" or "soft" to enable
+    editing in case of failure.
+- 3.2.2
+
+-------------------------------------------------------------------
+Fri Jan 13 15:36:15 UTC 2017 - igonzalezsosa@suse.com
+
+- Added new option to configure libzypp in a minimalistic way
+  (only required packages, no documentation and no multiversion)
+  (FATE#321764)
+
+-------------------------------------------------------------------
+Fri Jan 13 09:09:44 UTC 2017 - jreidinger@suse.com
+
+- fix typo in last change breaking build of skelcd (bsc#1019659)
+
+-------------------------------------------------------------------
+Thu Jan 12 08:35:49 UTC 2017 - jreidinger@suse.com
+
+- Added new option for roles to specify additional enabled services
+  (FATE#321754)
+
+-------------------------------------------------------------------
+Wed Dec 14 12:24:52 CET 2016 - shundhammer@suse.de
+
+- Added new parameter for CASP read-only Btrfs root subvolume
+ (Fate#321755)
+
+-------------------------------------------------------------------
+Fri Dec  9 14:00:43 CET 2016 - schubi@suse.de
+
+- Added new options:
+  -- readonly_timezone : Timezone cannot be changed by the user.
+     (Fate#321754)
+  -- clone_install_recommended_default : Default value in cloned
+     AutoYaST configuration files. (Fate#321764)
+
+-------------------------------------------------------------------
+Wed Dec  7 11:14:48 UTC 2016 - jreidinger@suse.com
+
+- Added new option for roles to specify its own additional dialogs
+  (FATE#321754)
+
+-------------------------------------------------------------------
+Thu Nov 17 12:02:19 CET 2016 - shundhammer@suse.de
+
+- Added new storage-related parameters for CASP workflow:
+  proposal_settings_editable and expert_partitioner_warning
+  (Fate#321736)
+- 3.2.1
+
+-------------------------------------------------------------------
+Mon Oct 31 09:41:57 UTC 2016 - lslezak@suse.cz
+
+- Added support for read-only proposal modules (fate#321739)
+- 3.2.0
+
+-------------------------------------------------------------------
+Thu Oct 27 14:51:19 CEST 2016 - shundhammer@suse.de
+
+- Make subvolumes configurable in control.xml (fate#321737)
+- 3.1.13.1
+
+-------------------------------------------------------------------
+Mon Mar 14 12:18:49 UTC 2016 - igonzalezsosa@suse.com
+
+- Added self_update_url (FATE#319716)
+- 3.1.13
+
+-------------------------------------------------------------------
+Tue Mar  1 14:29:12 UTC 2016 - mvidner@suse.com
+
+- Added system_roles section (FATE#317481).
+- 3.1.12
+
+-------------------------------------------------------------------
+Wed Oct  1 14:14:06 UTC 2014 - ancor@suse.com
+
+- Added globals->dhclient_set_hostname (bnc#870896)
+- 3.1.11
+
+-------------------------------------------------------------------
+Thu Aug 28 09:45:07 CEST 2014 - locilka@suse.com
+
+- Element 'packages' in 'one_supported_desktop' has been made
+  optional as it's not required by the handling code (bnc#864298)
+- 3.1.10
+
+-------------------------------------------------------------------
+Tue Jun 24 13:30:02 UTC 2014 - jreidinger@suse.com
+
+- add elemenent to set default for os_probing per product
+  (bnc#884007)
+- 3.1.9
+
+-------------------------------------------------------------------
+Fri May 16 15:51:37 CEST 2014 - locilka@suse.com
+
+- Added software->optional_default_patterns - optional patterns
+  selected for installation by default that do not cause reporting
+  an error if they are missing (bnc#876760)
+- 3.1.8
+
+-------------------------------------------------------------------
+Thu May 15 10:40:04 CEST 2014 - locilka@suse.com
+
+- Added software->upgrade->window_managers to handle upgrading
+  the system based on the default windowmanager (bnc#874116)
+- 3.1.7
+
+-------------------------------------------------------------------
+Fri Apr 18 10:17:58 CEST 2014 - locilka@suse.com
+
+- Added software->default_patterns - patterns selected for
+  installation by default (bnc#873923)
+- 3.1.6
+
+-------------------------------------------------------------------
+Wed Apr  2 13:38:56 UTC 2014 - jreidinger@suse.com
+
+- add element for separate ssh service enablement (bnc#865056)
+- 3.1.5
+
+-------------------------------------------------------------------
+Tue Jan  7 07:29:31 UTC 2014 - lslezak@suse.cz
+
+- move the control files to separate packages
+  (yast2-installation-control-openSUSE* and
+   yast2-installation-control-SLE*)
+- 3.1.4
+
+-------------------------------------------------------------------
+Mon Dec 16 12:13:46 UTC 2013 - lslezak@suse.cz
+
+- added libxslt-tools (providing xsltproc) to BuildRequires
+- 3.1.3
+
+-------------------------------------------------------------------
+Mon Dec 16 10:32:37 CET 2013 - aschnell@suse.de
+
+- added partitioning/btrfs_default_subvolume to allow same code
+  for openSUSE and SLES
+- 3.1.2
+
+-------------------------------------------------------------------
+Mon Dec 16 08:30:30 UTC 2013 - lslezak@suse.cz
+
+- generate openSUSE-promo and SLES-for-VMware control files from
+  the respective base files to remove the duplication
+- 3.1.1
+
+-------------------------------------------------------------------
+Thu Dec 12 08:52:58 UTC 2013 - lslezak@suse.cz
+
+- initial version
+- 3.1.0
+

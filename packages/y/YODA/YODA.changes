@@ -1,0 +1,280 @@
+-------------------------------------------------------------------
+Wed Aug 21 08:14:14 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.7.7:
+  * Fix printing of YAML annotations.
+  * Fix Python 3 / Unicode compatibility for Point.pyx.
+- Changes from version 1.7.6:
+  * Add xEdges and yEdges methods to the 2D Histo and Profile
+    classes, in C++ and Python.
+  * Remove @property attributes from Python xEdges methods.
+  * Fix Python3/argparse attribute access bug in yodamerge.
+- Changes from version 1.7.5:
+  * Convert bin/* scripts to use Python3-compatible argparse
+    rather than old optparse.
+  * Fix Histo1D::integralRange to include the second-argument bin
+    content as described in the docstring.
+  * Fix Python3 StringIO import compatibility
+  * Add -m/-M filtering to yodadiff.
+  * Fix HistoBin2D printing in Python interface.
+  * Protect yodamerge against zero-valued (?!) ScaledBy
+    attributes.
+- Drop conditional for boost BuildRequires pertaining to outdated
+  versions of openSUSE.
+
+-------------------------------------------------------------------
+Wed May  1 11:31:10 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.7.4:
+  * Roll out sameBinning methods for Profile1D and Profile2D.
+  * Add sameBinning methods for Histo1D and Histo2D.
+  * Remove debug couts from single-AO Writer::write() function.
+  * Add --ignore-missing and --ignore-new flags to yodadiff.
+  * Tidy up point-comparison output of yodadiff.
+  * Fix additional weighting in yodamerge
+- See %{_docdir}/YODA-devel/ChangeLog for changes between version
+  1.7.1 through 1.7.3.
+- Rebase sover.diff to apply cleanly.
+
+-------------------------------------------------------------------
+Wed May 23 08:17:39 UTC 2018 - badshah400@gmail.com
+
+- Update to version 1.7.0:
+  * Add Nentries printout to yodals -v
+  * Patches for ROOT conversion from Robert Hatcher -- thanks!
+  * Add YODA format version annotation, at version 2, and update
+    YODA reader to use version info and multiline YAML EOF marker.
+  * Write YODA annotations in YAML with a --- YAML break-line.
+  * Enable compressed writing from Python.
+  * Remove UNUSED macro in favour of anonymous args.
+  * Enable zipped writing... but only works from C++ so far.
+  * Add HistoBin2D::area(), and provide a default normto=1.0
+    argument on the Python Histo2D.normalize() method.
+  * Change license explicitly to GPLv3, cf. MCnet3 agreement.
+  * Parse YODA format AO headers as YAML (restriction to
+    single-line dict entries for now).
+  * Use a slightly enhanced fast numeric parser in ReaderYODA
+    (taken from LHAPDF, originally inspired by Gavin Salam).
+  * Add an UNSCALE spec option to yodascale, to undo ScaledBy
+    effects.
+  * Add optional zlib support via zstr
+  * Fix setVal(i, x) numbered-axis methods on Point2D and Point3D:
+    switch break statements were missing.
+  * Explicitly load all ROOT objects as a list rather than
+    generator. Patch from Dmitry Kalinkin.
+  * Improvements to yodaplot, including two operating modes: the
+    default CMP mode is suitable for plotting histos by path, from
+    raw .yoda files.
+  * Update yoda.plotting functions to treat plot-keys as args and
+    AO annotations via case-insensitive keys.
+  * Add annotationsDict to the Python AO interface.
+  * Add AO as an alias for AnalysisObject.
+  * Add parallel/compatibility yoda1 package to aid eventual
+    transition to YODA v2.
+  * Add x,y,zMins and Maxs to all 1D data types and scatters (and
+    x,yMin/Max to the scatters) -- Python interface only.
+  * Rework some of the yoda.plotting tools, making it a bit more
+    compatible with user-scripted matplotlib.
+  * Add convenience aliases H1D, H2D, P1D, P2D, and S1D, S2D, S3D
+    for the HistoXD, ProfileXD, and ScatterXD classes
+    respectively.
+  * Add xyVals/Errs and other 'bin array property' accessors to
+    the Python Histo1D and Profile1D types: important for
+    connection to matplotlib.
+  * Use Python natsort library to sort yodals output if available.
+- Rebase sover.diff.
+- Add BuildRequires: pkgconfig(zlib); now required for bulding
+  YODA.
+- Fix env-based hashbangs.
+
+-------------------------------------------------------------------
+Wed Aug  2 06:10:35 UTC 2017 - badshah400@gmail.com
+
+- Update to version 1.6.7:
+  * pyext/yoda/rootcompat.pyx: Fix ordering of TH1 vs. TProfile
+    conversion
+  * Add static Reader methods to match the Writer ones.
+  * Fix Histo2D and Profile2D total distribution reading from YODA
+    format.
+  * Convert TH1F to TH1D in root2flat. Much simpler than
+    duplicating the TH1D stuff in pyext.
+- Changes from version 1.6.6:
+  * Bugfixes in Cython bins accessors for Histo2D.
+  * Fixed warning messages about the obsoleteness of AIDA so that
+    the scripts actually still work.
+
+-------------------------------------------------------------------
+Mon Feb 13 15:52:49 UTC 2017 - jengelh@inai.de
+
+- Call ldconfig directly. Add sover.diff, enforce versioning
+  as per guidelines.
+
+-------------------------------------------------------------------
+Thu Feb  2 15:49:18 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Thu Nov 10 14:19:51 UTC 2016 - badshah400@gmail.com
+
+- Update to version 1.6.5:
+  * Fix handling of --enable/disable-root configure options.
+  * Improvements to Cython version testing.
+- Numerous changes from last packaged version (1.3.1) through
+  version 1.6.4. Please see ChangeLog file for details.
+- Drop YODA-boost-configure-for-GCC5.patch: no longer needed due
+  to fixes in upstream code.
+
+-------------------------------------------------------------------
+Thu Jun 25 06:28:15 UTC 2015 - badshah400@gmail.com
+
+- Add YODA-boost-configure-for-GCC5.patch to fix autoconf
+  boost macros lookup with GCC5; patch taken from boost.m4
+  upstream [https://github.com/tsuna/boost.m4].
+- Clean up some further remnants of %buildroot in python
+  byte-compiled files.
+
+-------------------------------------------------------------------
+Thu Jun 25 06:12:08 UTC 2015 - badshah400@gmail.com
+
+- Update to version 1.3.1:
+  + Adding usefocus optional argument to some mkScatter functions,
+    plus the Python bindings.
+  + Cleaning up some Python mappings of 2D histogram bin classes.
+  + Removing mappings of bin-level fill and scale operations in
+    Python.
+  + Fix formatting and error handling in Python Bin and Dbn
+    __repr__ methods.
+  + Add a -i/--in-place option pair on yodascale.
+  + Convert script matching options to use re search rather than
+    match.
+  + Adding matching options and verbose option to yodals.
+  + Improvements and additions to ROOTCnv.h routines, particularly
+    to TProfile creation: thanks to Roman Lysak for advice.
+  + Add convenience YODA/YODA.h header.
+  + yodascale now uses PointMatcher and can normalize or multiply
+    to abs values or ref histos/bin ranges.
+  + Adding yoda.matcher Python sub-package with PointMatcher
+    functionality. To be used in Professor 2.0 and in yodascale.
+  + Adding 'scat2' type to yodahist.
+  + Add match/unmatch args to all conversion scripts, via a new
+    Python yoda.script_helpers function.
+  + Script updates, improved docstrings, and improved tab
+    completion.
+  + Add a yoda.plotting sub-module, based on matplotlib.
+  + Small build improvements.
+  + Handle overflow filling in binned types without invoking an
+    exception.
+  + Change inRange to have non-fuzzy comparison behaviour.
+  + Improving/adding __div__ functions in Python for all binned
+    types.
+  + Add std:: prefix to isinf() calls in BinSearcher.h.
+
+-------------------------------------------------------------------
+Sun Oct 26 04:31:24 UTC 2014 - badshah400@gmail.com
+
+- Update to version 1.3.0:
+  + Use numEntries() rather than effNumEntries() when checking
+    consistency of inputs to efficiency() calculations -- the
+    effNumEntries of a set can be smaller than that of a strict
+    subset, surprisingly!
+  + Small improvements to yodahist and yodaplot behaviours/UIs.
+  + Adding setX/Y/Z(val, err) methods to Point3D.
+  + Add an efficiency method for 2D histos.
+  + Hide fill and fillBin methods from Python mappings of bin
+    types.
+
+-------------------------------------------------------------------
+Thu Sep 18 02:01:15 UTC 2014 - badshah400@gmail.com
+
+- Update to version 1.2.1:
+  + Hide non-const access to bin objects from histogram user:
+    avoids potential for inconsistency between total dbns and
+    in-range bins.
+  + Bug in BinSearcher fixed by Peter Richardson: constructor
+    arguments were passed in the wrong order when constructing
+    a LinEstimator in cases where log binning wouldn't be
+    allowed.
+  + Add protection against / characters in histo names in
+    yoda2root
+  + Add +=, -=, *-, /=, ++ and -- operators to Counter, along
+    with an (implicit) constructor from a double -- all for user
+    convenience so Counter can be used in lieu of a simple number 
+- Changes from version 1.2.0:
+  + Many changes from 1.1.0 version, please see installed
+    ChangeLog file
+- Add the new binaries yadals, yodaplot and yodascale to filelist.
+
+-------------------------------------------------------------------
+Sat Jun 21 21:59:18 UTC 2014 - badshah400@gmail.com
+
+- Update to version 1.1.0:
+  + YODA 1.1.0 release.
+  + Adding unit tests against ref data for yodamerge in make check.
+  + Removing 'foreach' macro definition and using raw
+    BOOST_FOREACH instead until C++11 is allowed.
+  + Adding pytest-p1d and pytest-p2d tests, and FLAT
+    writing/reading in pytests.
+  + Tweaking WriterFLAT and adding ReaderFLAT functionality for 2D
+    histos and profiles.
+  + Some basic (FLAT) write-out capability for 2D histos
+  + Improvements to the yodahist script, including support for 2D
+    histograms and input files.
+  + Adding bin edges constructors for all 1D and 2D histos in
+    Python.
+  + Improvements to Profile2D and Point2D interfaces in Python.
+  + Add a single-file at a time yodacnv multi-format converter
+    script (thanks to Andrii Verbytskyi for the suggestion).
+  + Typo fixes in Profile2D YODA-format parsing: 2D histo tests
+    now pass!
+  + Adding Python tests for Histo2D and Profile2D.
+  + Adding a YODA/Predicates.h header and using it in Axis2D bin
+    edge construction.
+  + Enabling Profile2D writing in various Writers, and a bit of IO
+    code tidying.
+  + Disable writing out of Histo2D and Profile2D outflows for now,
+    while they are redesigned, and get 2D I/O working for the
+    in-range part.
+  + Mapping the divide and efficiency functions into the Python
+    interface as class methods, including the __div__ special
+    function.
+  + Add the AnalysisObject::type() method back in Python (even
+    though type(ao) is more Pythonic, this may be useful)
+  + Add Profile2D YODA format writing, note need for Scatter
+    format change, add sumXY storage to both 2D histo types.
+  + Adding YODA reader functionality for Histo2D and Profile2D,
+    but without outflows support yet.
+  + Adding simple command line yodahist script for quick 1D
+    histogramming from plain text files, with weight support. More
+    development to come!
+  + Mapping linspace, logspace and a few stat functions into
+    Python.
+  + Fixes, script installation, and detailed numerical comparisons
+    in yodadiff.
+  + Change AnalysisObject::annotations to return the list of
+    annotation keys rather than the map, since the previous
+    behaviour mapped very badly into Python.
+  + Add special case handling for 2-arg use of x2y scripts where
+    the second arg is -, for stdin. This will be treated as
+    writing out to stdout, not converting two files one of which
+    is stdin.
+  + Adding a more portable version of getline to be used in the
+    YODA file parsing to avoid falling over on DOS-produced input
+    files.
+  + Adding the namespace protection workaround for Boost described
+    at http://www.boost.org/doc/libs/1_55_0/doc/html/foreach.html
+  + Adding an assumed-equal-run-size, ratio-like merging heuristic
+    for Scatter2Ds to yodamerge, and renaming the --normalize-all
+    flag to --assume-normalized.
+  + Adding and installing a pkg-config data file for YODA.
+  + Rationalising (and fixing?) the yodamerge logic re. user &
+    normalization scalings, and making way for a Scatter2D merging
+    heuristic
+- Packaging changes:
+  + Package new binaries yodacnv, yodadiff, yodahist
+  + Package new pkgconfig file (buildrequires pkg-config).
+ 
+-------------------------------------------------------------------
+Tue Dec 10 00:39:02 UTC 2013 - badshah400@gmail.com
+
+- Initial version 

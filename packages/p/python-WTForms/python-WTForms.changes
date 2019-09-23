@@ -1,0 +1,170 @@
+-------------------------------------------------------------------
+Mon Jul 29 12:02:19 UTC 2019 - pgajdos@suse.com
+
+- version update to 2.2.1
+  * :class:`~fields.StringField` only sets ``data = ''` when form data
+    is empty and an initial value was not provided. This fixes an issue
+    where the default value wasn't rendered with the initial form.
+    (`#291`_, `#355`_, `#401`_)
+  * Merged new and updated translations from the community.
+  * Passing ``data_`` args to render a field converts all the
+    underscores to hyphens when rendering the HTML attribute, not just
+    the first one. ``data_foo_bar`` becomes ``data-foo-bar``. (`#248`_)
+  * The :class:`~validators.UUID` validator uses the :class:`uuid.UUID`
+    class instead of a regex. (`#251`_)
+  * :class:`~fields.SelectField` copies the list of ``choices`` passed
+    to it so modifying an instance's choices will not modify the global
+    form definition. (`#286`_)
+  * Fields call :meth:`~fields.Field.process_formdata` even if the raw
+    data is empty. (`#280`_)
+  * Added a :class:`~fields.MultipleFileField` to handle a multi-file
+    input. :class:`~fields.FileField` continues to handle only one
+    value. The underlying :class:`~widgets.FileInput` widget gained a
+    ``multiple`` argument. (`#281`_)
+  * :class:`~fields.SelectField` choices can contain HTML (MarkupSafe
+    ``Markup`` object or equivalent API) and will be rendered properly.
+    (`#302`_)
+  * :class:`~fields.TimeField` and
+    :class:`html5.TimeField <fields.html5.TimeField>` were added.
+    (`#254`_)
+  * Improved :class:`~validators.Email`. Note that it is still
+    unreasonable to validate all emails with a regex and you should
+    prefer validating by actually sending an email. (`#294`_)
+  * Widgets render the ``required`` attribute when using a validator
+    that provides the ``'required'`` flag, such as
+    :class:`~validators.DataRequired`. (`#361`_)
+  * Fix a compatibility issue with SQLAlchemy 2.1 that caused
+    :class:`~ext.sqlalchemy.fields.QuerySelectField` to fail with
+    ``ValueError: too many values to unpack``. (`#391`_)
+- drop lang packages
+- test package
+
+-------------------------------------------------------------------
+Tue Dec  4 12:56:14 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Sep  2 16:47:57 UTC 2017 - jengelh@inai.de
+
+- Don't let description assume any particular user.
+
+-------------------------------------------------------------------
+Thu Aug 31 16:26:15 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 2.1
+  * Added `render_kw` to allow default rendering time options.
+  * Updated / added a number of localizations
+  * Updated docs
+  * Allow widgets to set flags
+
+-------------------------------------------------------------------
+Thu Aug 24 13:57:47 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Thu May 14 15:17:12 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 2.0.2:
+  * Added more localizations and updated some
+  * Validators for email and URL can validate IDNA-encoded domain
+    names and new TLDs
+  * Better DeprecationWarnings
+  * Support localization files in /usr/share/locale (for distro
+    packaging)
+- additional changes from version 2.0.1
+  * Released July 1, 2014
+  * Update wheel install to conditionally install ordereddict for
+    python 2.6
+  * Doc improvements
+- additional changes from version 2.0
+  * Add new class Meta paradigm for much more powerful
+    customization of WTForms
+  * Move i18n into core. Deprecate wtforms.ext.i18n
+  * Move CSRF into core. Deprecate wtforms.ext.csrf
+  * Fix issue rendering SelectFields with value=True
+  * Make DecimalField able to use babel locale-based number
+    formatting
+  * Drop Python 3.2 support (Python3 support for 3.3+ only)
+  * passing attr=False to WTForms widgets causes the value to be
+    ignored
+  * Unique validator in wtforms.ext.sqlalchemy has been removed
+- add new dependency python-ordereddict for SLE11
+- update the list of files to fix end of line encoding
+- use %find_lang for the lang subpackage: paths changed upstream
+- run the tests during build
+- rename CHANGES.txt to CHANGES.rst: changed upstream
+- rename README.txt to README.md: changed upstream
+
+-------------------------------------------------------------------
+Thu Apr 10 19:40:40 UTC 2014 - aboe76@gmail.com
+
+- Updated to version 1.0.5:
+  + Fix a bug in validators which causes translations to happen once then clobber any future translations.
+  + ext.sqlalchemy / ext.appengine: minor cleanups / deprecation.
+  + Allow blank string and the string 'false' to be considered false values for BooleanField (configurable). This is technically a breaking change, but it is not likey to affect the majority of users adversely.
+  + ext.i18n form allows passing LANGUAGES to the constructor.
+- from version 1.0.4:
+  + Add widgets and field implementations for HTML5 specialty input types.
+  + ext.appengine: Add NDB support.
+  + Add translations: Korean, Traditional Chinese
+- cleaned up spec file:
+  + created a doc package
+  + rpmlint lang warnings script taken from python-wxWidgets
+-------------------------------------------------------------------
+Thu Oct 24 11:17:32 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Sun Apr 14 15:08:35 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.0.3
+  + Tests complete in python 3.2/3.3.
+  + Localization for ru, fr.
+  + Minor fixes in documentation for clarity.
+  + FieldList now can take validators on the entire FieldList.
+  + ext.sqlalchemy model_form:
+    * Fix issue with QuerySelectField
+    * Fix issue in ColumnDefault conversion
+    * Support Enum type
+  + Field class now allows traversal in Django 1.4 templates.
+- Initial python3 support
+
+-------------------------------------------------------------------
+Tue Sep 27 09:20:43 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.6.3:
+  * Documentation: Substantial documentation improvements, including adding
+    Crash Course as a sphinx document.
+  * ext.django: QuerySetSelectField (and ModelSelectField) now accept get_label
+    similar to sqlalchemy equivalents.
+  * ext.appengine:
+    + model_form fixes: FloatField(#50), TimeField, DateTimeField(#55)
+    + ReferencePropertyField: now properly stores model object, not key. (#48)
+- Changes from version 0.6.2:
+  * ext.appengine: various field fixes (#34, #48), model_form changes (#41)
+  * Fix issue in Optional with non-string input.
+  * Make numeric fields more consistent.
+  * Tests: Improve test coverage substantially.
+- Recommend python-django, python-SQLAlchemy & python-google-appengine,
+  WTForms provides optional integration for each
+- Package documentation
+
+-------------------------------------------------------------------
+Tue Oct 26 14:27:30 UTC 2010 - kianseong@gmail.com
+
+- Further changes to spec based on review
+
+-------------------------------------------------------------------
+Tue Oct 26 11:01:37 UTC 2010 - kianseong@gmail.com
+
+- Changes to spec file based on review
+
+-------------------------------------------------------------------
+Tue Oct 26 03:20:45 UTC 2010 - kianseong@gmail.com
+
+- New package wtforms
+
+

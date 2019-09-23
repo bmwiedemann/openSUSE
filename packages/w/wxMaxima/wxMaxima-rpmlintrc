@@ -1,0 +1,3 @@
+# these package are not real libs - they just contain the name.....
+addFilter("explicit-lib-dependency.*libxml2")
+addFilter("explicit-lib-dependency.*libgnomeprint")

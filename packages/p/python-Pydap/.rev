@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>166dc20f781e1d824df6306323535e57</srcmd5>
+    <version>3.2.2</version>
+    <time>1524576665</time>
+    <user>dimstar_suse</user>
+    <comment>- remove dependency on abandoned (upstream) python-coards
+- fix update_alternative on uninstallation
+- remove check boundary condition and skip completely broken tests
+- run spec-cleaner
+- use %license for license
+- Implement single spec version
+- Update to version 3.2.2
+  * Python 3.3 is no longer supported. This is in line with
+    other similar projects (Numpy, Xarray, ...) and it preempts the
+    expected python 3.3 EOL in September 2017.
+  + Server improvements
+    * Merges pydap.handlers.netcdf into the main code base
+    * Adds a lightweight testing/development server
+    * Rewrites the server docs to reflect a post-paster world
+  + Miscellaneous bug fixes
+    * Ensures Byte use is consistent with DAP2 standards
+    * Fixes client authentication to UK's CEDA
+    * Fixes client communcation with ERDDAP servers
+    * Fixes regression bug in model.GridType (#43)
+    * Fixes bug where the iteration does not replace previous_chunk
+    * Fixes bugs in command-line server (#52 and #53)
+  + Fix mapping scheme for SequenceType (PR #89)
+    * Makes all types a mapping and protects the mapping semantics for sequence data
+    * Converts dict in StructureType to OrderedDict, changing
+      _original_keys handling (#3) and convers test_model.py to pytest
+      semantics (#82).
+    * Updats docs and docstrings. Added basic automatic
+      doctests. Doctests use integers for easy continuous integration
+    * 100% test coverage in src/pydap/model.py.
+  + Various codebase improvements
+    * Transition tests from nose to pytest
+    * Tests with flake8 on all Python version
+  + Adds timeout option to open_urls and open_dods
+- Update to version 3.2.1
+  + PyDAP client fixes
+    * Adds workaround to the client when making requests to older ESGF OPENDAP servers
+    * Fixes a bug where mechanicalsoup wouldn't its browser
+    * Adds handling for values of -NaN
+    * Overhauls URS authentication to use the requests library
+    * Sets a default charset when connecting to servers that do not
+  + Packaging fixes
+    * Moves gunicorn in to server_extras dependency list
+    * Adds test data to the release tarball
+  + Code base improvements
+    * Adds flake8 linting/checking to the code base
+    * Improves testing for client authentication
+    * Drops support for Python &lt; 2.7
+    * Converts internal imports to be explicit relative
+  + Miscellaneous bug fixes
+    * Fixes bug in fix_slices() when `stop` &gt; len
+    * Fixes unexpected flattening of sliced arrays (#41)
+    * Fixes bug where attributes were not propagated to nested structures (#75)
+- Update to version 3.2.0
+  * Adds some optimizations to the server for DAP sequences
+  * Rewrite of the client so that it's now able to stream real time data
+  * Simplifies the design of handlers, eliminating DAP-related details
+    (so that developers can focus only on the data parsing when creating
+    new handlers).
+  * Full test coverage and continuous integration
+  * Adds support for Python version 3.3 through 3.5
+  * Adds support for federated authentication through the Earth System
+    Grid Federation (ESGF) and NASA User Registration System (URS).
+  * Fixes HTML response to show all dimensions for BaseType variables
+- Initial version
+</comment>
+    <requestid>582107</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>49c86cff2fc399d0376db1637b976289</srcmd5>
+    <version>3.2.2</version>
+    <time>1548334985</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659308</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>811f3f831771137d8df5ab549436f3e6</srcmd5>
+    <version>3.2.2</version>
+    <time>1564576632</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in the gsw on python2, as it is optional dep
+- The tests are screwed up even in upstream git so pass them every
+  time :/</comment>
+    <requestid>720023</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa3520df71c1d06091c29cdac015dec9</srcmd5>
+    <version>0.2.3</version>
+    <time>1281403716</time>
+    <user>autobuild</user>
+    <comment>Copy from home:hmacht/killswitch-applet based on submit request 44997 from user hmacht
+</comment>
+    <requestid>44997</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>aa3520df71c1d06091c29cdac015dec9</srcmd5>
+    <version>0.2.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>aa3520df71c1d06091c29cdac015dec9</srcmd5>
+    <version>0.2.3</version>
+    <time>1319182048</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>c24137bc6a5ecf677657371d3170fe14</srcmd5>
+    <version>0.2.3</version>
+    <time>1338991648</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-WTFPL-2.0
+Use an SPDX compatible license (http://www.spdx.org/licenses or choose from the spreadsheet linked at license.opensuse.org) (forwarded request 123757 from babelworx)</comment>
+    <requestid>123759</requestid>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>c24137bc6a5ecf677657371d3170fe14</srcmd5>
+    <version>0.2.3</version>
+    <time>1340183528</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>c24137bc6a5ecf677657371d3170fe14</srcmd5>
+    <version>0.2.3</version>
+    <time>1359109188</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>c24137bc6a5ecf677657371d3170fe14</srcmd5>
+    <version>0.2.3</version>
+    <time>1379662807</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>2beb258eacc72c593b22cd132f5c2bec</srcmd5>
+    <version>0.2.3</version>
+    <time>1393253426</time>
+    <user>coolo</user>
+    <comment>add COPYING to doc, as requested by SUSE legal (forwarded request 223677 from seife)</comment>
+    <requestid>223678</requestid>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>2beb258eacc72c593b22cd132f5c2bec</srcmd5>
+    <version>0.2.3</version>
+    <time>1409301385</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

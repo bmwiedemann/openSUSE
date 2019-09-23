@@ -1,0 +1,5 @@
+<package name="kdenetwork-filesharing" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Applications" package="kdenetwork-filesharing"/>
+</package>

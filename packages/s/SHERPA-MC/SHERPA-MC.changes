@@ -1,0 +1,278 @@
+-------------------------------------------------------------------
+Thu Sep  5 13:07:17 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable link-time-optimization to prevent build failures.
+
+-------------------------------------------------------------------
+Thu May 23 00:08:54 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Enable ufo-interface and package it as part of python-%{name}
+  package. Requires scons for building.
+
+-------------------------------------------------------------------
+Tue Feb  5 13:16:04 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Refresh source tarball: updated by upstream without version
+  change or listing changes.
+- Use %%license to install COPYING file.
+- Minor specfile cleanups.
+
+-------------------------------------------------------------------
+Thu Jan 24 15:38:24 UTC 2019 - badshah400@gmail.com
+
+- Update to version 2.2.6:
+  * Add initial-state p_z and inelasticity selectors for DIS (#80)
+  * Improve the reweighting to include the local K=BBar/B factor
+    in MEPS@NLO runs (#73)
+  * Improve treatment of the shower reweighting scale cut-off, it
+    is now applied also when reweighting AlphaS and the PDFs in
+    the CKKW clustering sequence (also mentioned in #73)
+  * Adapt status=4 convention in the short HepMC output (#79)
+  * Compute approximate NLO EW corrections (and subleading orders)
+    as on-the-fly alternative event weights (#41). See Example in
+    Manual for details. Currently only works with a
+    soon-to-be-released version of OpenLoops.
+  * Add a filter between the perturbative and the non-perturbative
+    event phase, which can be used to reject events with
+    parton-level cuts (!94)
+  * Bug fixes:
+    - Fix NLO and Variable Selector routines (#70, #88)
+    - Fix unweighting treatment for the LocalKFactor (and its
+      on-the-fly variations) in negative events (#94)
+    - Fix argument validation in
+      GGH_KFactor_Setter::ClusterMassCorrectionFactor
+    - Fix core scale setter for DIS when the incoming particles
+      are ordered ep instead of pe and adapt it for ee->xy (where
+      xy is not a quark pair) (!81)
+    - Fix strong coupling reweighting in merging runs in cases
+      where nothing was clustered (#66)
+    - Fix beam remnants for DIS setups
+    - Fix rejection of rare negative-energy configurations in the
+      shower (#44)
+    - Fix treatment of negative UserHook weights in HepMC
+      interface (#100)
+    - Fix a mapping in the OpenLoops parameter-setting interface
+      (#87)
+    - Fix HEFT Higgs production with COMIX (#114)
+    - Fix compatibility issues with recent versions of Rivet
+    - Fix error when compiling with MCFM support
+    - Fix compilation on ARM/PowerPC architectures
+    - Make environment importing when building scons scripts more
+      bullet-proof
+    - Fix compilation of the HZTool interface add-on
+- Drop SHERPA-MC-fix_arm_build.patch: fixed upstream.
+- Rebase SHERPA-MC-no-return-in-non-void-function.patch: partially
+  upstreamed; fix new error introduced.
+
+-------------------------------------------------------------------
+Wed Apr 25 07:02:18 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to 2.2.5:
+  * Interface changes
+    - Add preliminary support for HepMC3 (this interface is still
+      being tested) 
+  * New features
+    - Improve decay showering off top quarks
+    - Improve single-top support and add examples and documentation 
+      for its production channels
+    - Improve hadronisation and hadron decays for heavy flavour 
+      production
+    - Introduce a user hook framework which allows users to easily 
+      implement 
+      event generation afterburners, see Examples/Userhook
+    - Add settings to output ME-only on-the-fly variations (along with 
+      the full ones): 
+        HEPMC_INCLUDE_ME_ONLY_VARIATIONS=1 (HepMC interface)
+    - New cut-off for parton-shower reweighting: 
+        CSS_REWEIGHT_SCALE_CUTOFF=<pt_min>, default: 5 GeV2
+        this is more generally applicable than using a cut-off on the 
+	number of reweighted emissions
+    - Improve support for on-the-fly variations of clustering steps 
+      (reweight each step locally instead of doing it globally)
+  * Bugfixes
+    - Fix issue with the overweight treatment for negative weights
+    - Add missing shower weight in some event outputs, e.g. when using 
+      `OUTPUT HepMC...[]`
+    - Fix issue with the overweight threshold for on-the-fly variations
+    - Fix issue with non-trivial beam spectra handling
+    - Fix possible issues with electron-"PDF" initialization
+    - Fix issue with the ISR-channel threshold for leptonic collider
+    - Fix X/Y functions in METOOLS (this is relevant for hadron decays)
+    - Fix crash in decay-channel sorting
+    - Fix crash when using EVENT_TYPE=HadronDecay
+    - Fix issue with CSS strong coupling values when using non-trivial 
+      scale factors
+    - Fix issue with QSF variations for real emission calculations with 
+      COMIX
+    - Fix crash when doing on-the-fly variations and invalid dipole 
+      kinematics occur
+    - Fix issue in the interplay of the flux and the BIWeight for 1 -> n 
+      processes
+    - Fix issue when using vertices with a vanishing coupling
+    - Fix rare "invalid amplitude" crashes
+    - Fix issues when adding limits for the number of t-channel propagators
+      in matrix elements
+    - Fix issue with checking PDF availability when enforcing jet vetoes
+    - Fix several compilation issues 
+- Add patch to fix ARM (and PPC) builds:
+  * SHERPA-MC-fix_arm_build.patch
+- Refresh partially upstreamed patch:
+  * SHERPA-MC-no-return-in-non-void-function.patch
+
+-------------------------------------------------------------------
+Fri Sep  8 11:29:07 UTC 2017 - badshah400@gmail.com
+
+- Upstream released a new 2.2.4 tarball, so refresh sources.
+
+-------------------------------------------------------------------
+Sat Sep  2 14:19:14 UTC 2017 - badshah400@gmail.com
+
+- Update to version 2.2.4:
+  * Interface Changes:
+    - New default parameters for hadronisation model to improve
+      heavy flavour production fractions and meson/baryon ratios.
+    - Updates to Recola interface with some new parameter (names),
+      please refer to the manual.
+    - Make STRICT_METS the default scale setter to guarantee full
+      scale setting accuracy for unweighted events. 
+  * New features
+    - Availability of DIRE NLO parton shower (cf.
+      arXiv:1705.00742). This is not (yet) the default shower, in
+      particular not in NLO-merged configurations.
+    - Higher numerical stability in parton shower kinematics
+      (re)construction.
+    - Add OVERWEIGHT_THRESHOLD allowing user to cap maximal weight
+      during event generation (cf. manual).
+    - Avoid spuriously large weights in NLO-merged samples due to
+      instable PDF ratios.
+    - Add interface for hadron-level selectors.
+    - Add Max_N_TChannels option in Amegic.
+    - Add possibility to identify partons which originate in the
+      hard decay handler.
+    - Restructure gzip support such that it can be switched off at
+      runtime (USE_GZIP).
+    - Enable on-the-fly reweighting for calculations with the
+      Higgs (Interference) add-on for HIGGS_INTERERENCE_MODE 1, 2,
+      3 or 4. 
+  * Bugfixes
+    - Bugfix in NLO-matched parton shower emission for non-trivial
+      colour structures like in V+2j@NLO. This fixes an eta
+      asymmetry which was visible at the ~2% level in such
+      samples.
+    - BSM models through UFO: fix running coupling behaviour and
+      treatment of exotic color octets.
+    - Bugfix in random generator for Poisson distributions with
+      large mean values.
+    - Bugfixes for segfaults and compiler warnings with gcc 7.1.
+    - Bugfix for colour assignment in clustering for loop-induced
+      merged processes.
+    - Bugfix for decay showering in conjunction with NLO+PS
+      matching. 
+- Change BuildRequires HepMC-devel to HepMC2-devel: not compatible
+  with HepMC >= 3.0.
+- Rename libSHERPA-MC-config to libSHERPA-MC0-config that follows
+  the shared lib versioning. In addition the ld.so.conf.d file is
+  also renamed to follow the shared lib version to make it
+  possible to install multiple versions of the shared lib.
+- Rebase SHERPA-MC-no-return-in-non-void-function.patch and add
+  fixes for one more function showing the same issue in version
+  2.2.4.
+- GCC >= 6.0 required, build fails with older GCC for openSUSE <=
+  1320.
+
+-------------------------------------------------------------------
+Fri Apr 28 06:47:09 UTC 2017 - badshah400@gmail.com
+
+- Update to version 2.2.3:
+  * Support for the Recola one-loop generator for QCD corrections.
+- Add SHERPA-MC-no-return-in-non-void-function.patch -- Fix a
+  non-void (bool) function that was not returning any data to
+  return "true".
+
+-------------------------------------------------------------------
+Mon Feb 13 17:55:08 UTC 2017 - jengelh@inai.de
+
+- Shared library package must only contain time-unique names;
+  split off libSHERPA-MC-config.
+
+-------------------------------------------------------------------
+Thu Feb  2 12:48:11 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Thu Nov 10 21:38:03 UTC 2016 - badshah400@gmail.com
+
+- Update to version 2.2.1:
+  * Incoporation of approximate NLO EW corrections in MEPS@NLO
+    simulation as described in arXiv:1511.08692
+  * On-the-fly renormalisation and factorisation scale, PDF and
+    alpha_s variations in the matrix elements for LO, LOPS, NLOPS,
+    MEPS, MENLOPS and MEPS@NLO simulations as described in
+    arXiv:1606.08753 
+- Changes from version 2.2.0: See
+  https://sherpa.hepforge.org/trac/wiki/SherpaDownloads/Sherpa-2.2.0.
+- Drop gcc6_char_cast.patch; incorporated upstream.
+
+-------------------------------------------------------------------
+Sun Jun 19 09:30:25 UTC 2016 - jengelh@inai.de
+
+- RPM group classification
+- run install_info in preun to avoid errors of missing files
+- Shared library subpackage is supposed to include the number
+
+-------------------------------------------------------------------
+Thu Jun 16 12:12:35 UTC 2016 - normand@linux.vnet.ibm.com
+
+-  new gcc6_char_cast.patch
+
+-------------------------------------------------------------------
+Mon Jun 23 18:22:37 UTC 2014 - badshah400@gmail.com
+
+- License tag in spefile corrected, should be GPL-2.0+ and
+  GPL-3.0.
+
+-------------------------------------------------------------------
+Sun Jun 22 00:41:33 UTC 2014 - badshah400@gmail.com
+
+- Update to version 2.1.1 (Bug-fix release):
+  + A bug related to MC@NLO has been fixed. This will affect the
+    total cross section in heavy quark production at the level of
+    few permille.
+  + A bug related to parton showering in associated Higgs boson
+    production has been fixed.
+  + A problem related to SQLite database locking on IBM BG/Q
+    systems has been solved.
+  + A bug related to CS subtraction with Comix has been fixed.
+    This will eliminate possible large weights in events
+    containing extremely soft gluons.
+  + A bug related to the QED corrections on the hard interaction
+    accidentally being switched off has been fixed.
+  + A bug related to the contents of the HepMC::PdfInfo? object
+    in MC@NLO event generation has been fixed.
+  + A bug in the underlying event simulation, presenting as a final
+    state particle asymmetry, has been fixed. An update of the
+    underlying event parameters was necessary, invalidating MPI
+    grids generated with previous versions.
+  + The Python interface to access Sherpa's matrix elements has
+    been updated and supplemented with a C++ interface.
+  + A bug in the CS subtraction in DRED has been fixed.
+- Changes from version 2.1.0:
+  + Introduced SQLite as the preferred storage manager
+  + Spin correlated decay chains (Comix only), includes all 1->2
+    and 1->3 decays allowed by the model, iterated to arbitrary
+    decay chain length, all decay steps are dressed with QCD
+    parton showers and QED corrections
+  + MC@NLO H events with Comix, speeds up initialisation and
+    runtime
+- Packaging changes:
+  + Disable rivet bindings until SHERPA-MC builds with latest
+    Rivet >= 2.1.2
+  + BuildRequires on sqlite3-devel introduced since version 2.1.0
+  + Package new binaries init_nlo.sh, make2scons, plot_graphs.sh.
+
+-------------------------------------------------------------------
+Mon Dec 16 20:30:07 UTC 2013 - badshah400@gmail.com
+
+- Initial version.
+

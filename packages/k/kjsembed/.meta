@@ -1,0 +1,5 @@
+<package name="kjsembed" project="openSUSE:Factory">
+  <title>kjsembed</title>
+  <description>KJSEmbed</description>
+  <devel project="KDE:Frameworks5" package="kjsembed"/>
+</package>

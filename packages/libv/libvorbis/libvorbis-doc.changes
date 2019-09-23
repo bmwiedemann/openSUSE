@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Sat Mar 17 14:55:12 CET 2018 - tiwai@suse.de
+
+- Split from libvorbis.spec to reduce the build dependencies
+

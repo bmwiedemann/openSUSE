@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>809c5d90900262f2563a89e95fdb0908</srcmd5>
+    <version>0.4.2</version>
+    <time>1551386366</time>
+    <user>coolo</user>
+    <comment>- Use noun phrase in summary.
+- Add python3-fixes.patch to make tests pass.
+- initial package using py2pack and version 0.4.2
+</comment>
+    <requestid>674924</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3ee45651564ccd59494cd3744dc50b3d</srcmd5>
+    <version>0.5.2</version>
+    <time>1567010197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726607</requestid>
+  </revision>
+</revisionlist>

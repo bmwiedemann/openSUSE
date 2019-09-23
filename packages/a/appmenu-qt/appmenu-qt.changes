@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Sat Feb  1 17:18:21 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 0.2.7~daily13.05.02
+  * Qt 5 support
+- Drop patches merged upstream: check-if-service-is-valid.diff,
+  do-not-force-menubar-to-be-shown-when-registrar-is-deleted.diff and
+  async-dbus-calls.diff
+- Explicitly enable Qt4, and disable Qt5 builds via cmake flags
+
+-------------------------------------------------------------------
+Fri Jan 18 13:40:02 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Add check-if-service-is-valid.diff and 
+  do-not-force-menubar-to-be-shown-when-registrar-is-deleted.diff
+  from upstream (lp#1099357) (lp#1096008) 
+
+-------------------------------------------------------------------
+Mon Jan 14 20:22:17 UTC 2013 - ctrippe@opensuse.org
+
+- Added patch async-dbus-calls.diff which makes appmenu-qt use
+  async dbus-calls. (bnc#798334)
+
+-------------------------------------------------------------------
+Tue Nov 20 10:37:13 UTC 2012 - cgiboudeaux@gmx.com
+
+- Fix the SLES build (%make_install is not expanded)
+- Fix the openSUSE_12.2_ARM build (%_libqt4_pluginsdir not defined)
+
+-------------------------------------------------------------------
+Tue Nov 13 22:47:56 UTC 2012 - hrvoje.senjan@gmail.com
+
+- Update license
+- Drop kde4-filesystem fromBuildRequires and add build 
+    flags accordingly
+- Adjust filelist to make use of Qt macros
+
+-------------------------------------------------------------------
+Wed Apr 18 21:49:39 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 0.2.6:
+  * Only allow one menubar to be exposed per window (lp#937892).
+  From 0.2.5:
+  * Register window again when it comes back after having been hidden
+    (lp#775278).
+  * Move call to link_directories() before add_library().
+- Spec file updates:
+  * Removed update-desktop-files and fdupes from BuildRequires: (not needed).
+  * Replaced libkde4-devel with kde4-filesystem in BuildRequires: since the
+    requirement is only for the kde build macros.
+
+-------------------------------------------------------------------
+Mon Feb 13 15:05:13 UTC 2012 - alinm.elena@gmail.com
+
+- initial commit 

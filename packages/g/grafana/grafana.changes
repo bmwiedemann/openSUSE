@@ -1,0 +1,885 @@
+-------------------------------------------------------------------
+Thu Sep 05 08:07:21 UTC 2019 - simon.crute@grafana.com
+
+- Version 6.3.5
+  * Upgrades
+    + Build: Upgrade to go 1.12.9. 
+  * Bug Fixes
+    + Dashboard: Fixes dashboards init failed loading error for dashboards with panel links that had missing properties. 
+    + Editor: Fixes issue where only entire lines were being copied.
+    + Explore: Fixes query field layout in splitted view for Safari browsers. 
+    + LDAP: multildap + ldap integration. 
+    + Profile/UserAdmin: Fix for user agent parser crashes grafana-server on 32-bit builds. 
+    + Prometheus: Prevents panel editor crash when switching to Prometheus datasource. 
+    + Prometheus: Changes brace-insertion behavior to be less annoying. 
+
+- Version 6.3.4 
+  * Security: CVE-2019-15043 - Parts of the HTTP API allow unauthenticated use.  
+
+
+-------------------------------------------------------------------
+Fri Aug 16 14:16:42 UTC 2019 - simon.crute@grafana.com
+
+- Version 6.3.3 
+  * Bug Fixes
+    + Annotations: Fix failing annotation query when time series query is cancelled. #18532 1, @dprokop 1 
+    + Auth: Do not set SameSite cookie attribute if cookie_samesite is none. #18462 1, @papagian 3 
+    + DataLinks: Apply scoped variables to data links correctly. #18454 1, @dprokop 1 
+    + DataLinks: Respect timezone when displaying datapoint’s timestamp in graph context menu. #18461 2, @dprokop 1 
+    + DataLinks: Use datapoint timestamp correctly when interpolating variables. #18459 1, @dprokop 1 
+    + Explore: Fix loading error for empty queries. #18488 1, @davkal 
+    + Graph: Fixes legend issue clicking on series line icon and issue with horizontal scrollbar being visible on windows. #18563 1, @torkelo 2 
+    + Graphite: Avoid glob of single-value array variables . #18420, @gotjosh 
+    + Prometheus: Fix queries with label_replace remove the $1 match when loading query editor. #18480 5, @hugohaggmark 3 
+    + Prometheus: More consistently allows for multi-line queries in editor. #18362 2, @kaydelaney 2 
+    + TimeSeries: Assume values are all numbers. #18540 4, @ryantxu 
+
+- Version 6.3.2
+  * Bug Fixes
+    + Gauge/BarGauge: Fixes issue with losts thresholds and issue loading Gauge with avg stat. #18375 12 
+
+- Version 6.3.1
+  * Bug Fixes
+    + PanelLinks: Fix crash issue Gauge & Bar Gauge for panels with panel links (drill down links). #18430 2 
+
+- Version 6.3.0
+  * Features / Enhancements
+    + OAuth: Do not set SameSite OAuth cookie if cookie_samesite is None. #18392 4, @papagian 3 
+    + Auth Proxy: Include additional headers as part of the cache key. #18298 6, @gotjosh 
+    + Build grafana images consistently. #18224 12, @hassanfarid 
+    + Docs: SAML. #18069 11, @gotjosh 
+    + Permissions: Show plugins in nav for non admin users but hide plugin configuration. #18234 1, @aocenas 
+    + TimePicker: Increase max height of quick range dropdown. #18247 2, @torkelo 2 
+    + Alerting: Add tags to alert rules. #10989 13, @Thib17 1 
+    + Alerting: Attempt to send email notifications to all given email addresses. #16881 1, @zhulongcheng 
+    + Alerting: Improve alert rule testing. #16286 2, @marefr 
+    + Alerting: Support for configuring content field for Discord alert notifier. #17017 2, @jan25 
+    + Alertmanager: Replace illegal chars with underscore in label names. #17002 5, @bergquist 1 
+    + Auth: Allow expiration of API keys. #17678, @papagian 3 
+    + Auth: Return device, os and browser when listing user auth tokens in HTTP API. #17504, @shavonn 1 
+    + Auth: Support list and revoke of user auth tokens in UI. #17434 2, @shavonn 1 
+    + AzureMonitor: change clashing built-in Grafana variables/macro names for Azure Logs. #17140, @shavonn 1 
+    + CloudWatch: Made region visible for AWS Cloudwatch Expressions. #17243 2, @utkarshcmu 
+    + Cloudwatch: Add AWS DocDB metrics. #17241, @utkarshcmu 
+    + Dashboard: Use timezone dashboard setting when exporting to CSV. #18002 1, @dehrax 
+    + Data links. #17267 11, @torkelo 2 
+    + Docker: Switch base image to ubuntu:latest from debian:stretch to avoid security issues… #17066 5, @bergquist 1 
+    + Elasticsearch: Support for visualizing logs in Explore . #17605 7, @marefr 
+    + Explore: Adds Live option for supported datasources. #17062 1, @hugohaggmark 3 
+    + Explore: Adds orgId to URL for sharing purposes. #17895 1, @kaydelaney 2 
+    + Explore: Adds support for new loki ‘start’ and ‘end’ params for labels endpoint. #17512, @kaydelaney 2 
+    + Explore: Adds support for toggling raw query mode in explore. #17870, @kaydelaney 2 
+    + Explore: Allow switching between metrics and logs . #16959 2, @marefr 
+    + Explore: Combines the timestamp and local time columns into one. #17775, @hugohaggmark 3 
+    + Explore: Display log lines context . #17097, @dprokop 1 
+    + Explore: Don’t parse log levels if provided by field or label. #17180 1, @marefr 
+    + Explore: Improves performance of Logs element by limiting re-rendering. #17685, @kaydelaney 2 
+    + Explore: Support for new LogQL filtering syntax. #16674 4, @davkal 
+    + Explore: Use new TimePicker from Grafana/UI. #17793, @hugohaggmark 3 
+    + Explore: handle newlines in LogRow Highlighter. #17425, @rrfeng 1 
+    + Graph: Added new fill gradient option. #17528 3, @torkelo 2 
+    + GraphPanel: Don’t sort series when legend table & sort column is not visible . #17095, @shavonn 1 
+    + InfluxDB: Support for visualizing logs in Explore. #17450 9, @hugohaggmark 3 
+    + Logging: Login and Logout actions (#17760). #17883 1, @ATTron 
+    + Logging: Move log package to pkg/infra. #17023, @zhulongcheng 
+    + Metrics: Expose stats about roles as metrics. #17469 2, @bergquist 1 
+    + MySQL/Postgres/MSSQL: Add parsing for day, weeks and year intervals in macros. #13086 6, @bernardd 
+    + MySQL: Add support for periodically reloading client certs. #14892, @tpetr 
+    + Plugins: replace dataFormats list with skipDataQuery flag in plugin.json. #16984, @ryantxu 
+    + Prometheus: Take timezone into account for step alignment. #17477, @fxmiii 
+    + Prometheus: Use overridden panel range for $__range instead of dashboard range. #17352, @patrick246 
+    + Prometheus: added time range filter to series labels query. #16851 3, @FUSAKLA 
+    + Provisioning: Support folder that doesn’t exist yet in dashboard provisioning. #17407 1, @Nexucis 
+    + Refresh picker: Handle empty intervals. #17585 1, @dehrax 
+    + Singlestat: Add y min/max config to singlestat sparklines. #17527 4, @pitr 
+    + Snapshot: use given key and deleteKey. #16876, @zhulongcheng 
+    + Templating: Correctly display __text in multi-value variable after page reload. #17840 1, @EduardSergeev 
+    + Templating: Support selecting all filtered values of a multi-value variable. #16873 2, @r66ad 
+    + Tracing: allow propagation with Zipkin headers. #17009 4, @jrockway 
+    + Users: Disable users removed from LDAP. #16820 2, @alexanderzobnin 
+  * Bug Fixes
+    + PanelLinks: Fix render issue when there is no panel description. #18408 3, @dehrax 
+    + OAuth: Fix “missing saved state” OAuth login failure due to SameSite cookie policy. #18332 1, @papagian 3 
+    + cli: fix for recognizing when in dev mode… #18334, @xlson 
+    + DataLinks: Fixes incorrect interpolation of ${__series_name} . #18251 1, @torkelo 2 
+    + Loki: Display live tailed logs in correct order in Explore. #18031 3, @kaydelaney 2 
+    + PhantomJS: Fixes rendering on Debian Buster. #18162 2, @xlson 
+    + TimePicker: Fixed style issue for custom range popover. #18244, @torkelo 2 
+    + Timerange: Fixes a bug where custom time ranges didn’t respect UTC. #18248 1, @kaydelaney 2 
+    + remote_cache: Fix redis connstr parsing. #18204 1, @mblaschke 
+    + AddPanel: Fix issue when removing moved add panel widget . #17659 2, @dehrax 
+    + CLI: Fix encrypt-datasource-passwords fails with sql error. #18014, @marefr 
+    + Elasticsearch: Fix default max concurrent shard requests. #17770 4, @marefr 
+    + Explore: Fix browsing back to dashboard panel. #17061, @jschill 
+    + Explore: Fix filter by series level in logs graph. #17798, @marefr 
+    + Explore: Fix issues when loading and both graph/table are collapsed. #17113, @marefr 
+    + Explore: Fix selection/copy of log lines. #17121, @marefr 
+    + Fix: Wrap value of multi variable in array when coming from URL. #16992 1, @aocenas 
+    + Frontend: Fix for Json tree component not working. #17608, @srid12 
+    + Graphite: Fix for issue with alias function being moved last. #17791, @torkelo 2 
+    + Graphite: Fixes issue with seriesByTag & function with variable param. #17795, @torkelo 2 
+    + Graphite: use POST for /metrics/find requests. #17814 2, @papagian 3 
+    + HTTP Server: Serve Grafana with a custom URL path prefix. #17048 6, @jan25 
+    + InfluxDB: Fixes single quotes are not escaped in label value filters. #17398 1, @Panzki 
+    + Prometheus: Correctly escape ‘|’ literals in interpolated PromQL variables. #16932, @Limess 
+    + Prometheus: Fix when adding label for metrics which contains colons in Explore. #16760, @tolwi 
+    + SinglestatPanel: Remove background color when value turns null. #17552 1, @druggieri 
+
+-------------------------------------------------------------------
+Tue Jul 30 14:14:38 CEST 2019 - ro@suse.de
+
+- make phantomjs dependency configurable 
+
+-------------------------------------------------------------------
+Thu Jul 11 08:21:07 UTC 2019 - Jan Fajerski <jan.fajerski@suse.com>
+
+- spec file change:
+  * alter permissions of /etc/grafana and /var/lib/grafana to 755
+  * alter owner of /etc/grafana/provisioning/dashboards tree to root:root
+  * this allows installing dashboards via rpms without these rpms depending on this rpm
+
+-------------------------------------------------------------------
+Tue Jun 25 19:12:43 UTC 2019 - dmueller@suse.com
+
+- Update to version 6.2.5:
+  * release 6.2.5
+  * Panel: Fully escape html in drilldown links (was only sanitized before)  (#17731)
+  * Grafana-CLI: Wrapper for `grafana-cli` within RPM/DEB packages and config/homepath are now global flags (#17695)
+  * config: fix connstr for remote_cache (#17675)
+  * TablePanel: fix annotations display (#17646)
+  * middleware: fix Strict-Transport-Security header (#17644)
+  * Elasticsearch: Fix empty query request to send properly (#17488)
+  * release 6.2.4
+  * grafana-cli: Fix receiving flags via command line (#17617)
+  * HTTPServer: Fix X-XSS-Protection header formatting (#17620)
+  * release 6.2.3
+  * cli: grafana-cli should receive flags from the command line (#17606)
+  * AuthProxy: Optimistic lock pattern for remote cache Set (#17485)
+  * OAuth: Fix for wrong user token updated on OAuth refresh in DS proxy (#17541)
+  *  middleware: add security related HTTP(S) response headers (#17522)
+  * remote_cache: Fix redis (#17483)
+  * auth_proxy: non-negative cache TTL (#17495)
+
+-------------------------------------------------------------------
+Sat Jun 15 06:45:19 UTC 2019 - dmueller@suse.com
+
+- Update to version 6.2.2:
+  * Security Fix: Prevent csv formula injection attack
+
+  * PluginConfig: Fixed plugin config page navigation when using subpath
+  * Explore: Update time range before running queries
+  * Perf: Fix slow dashboards ACL query
+  * Database: Initialize xorm with an empty schema for postgres
+  * CloudWatch: Avoid exception while accessing results
+
+-------------------------------------------------------------------
+Tue May 28 17:30:05 UTC 2019 - jcavalheiro@suse.com
+
+- Remove phantomjs dependency
+  * Modified: Makefile
+
+- Update to version 6.2.1
+  * Bug Fixes
+    + Auth Proxy: Resolve database is locked errors.
+    + Database: Retry transaction if sqlite returns database is locked error.
+    + Explore: Fixes so clicking in a Prometheus Table the query is filtered by clicked value.
+    + Singlestat: Fixes issue with value placement and line wraps.
+    + Tech: Update jQuery to 3.4.1 to fix issue on iOS 10 based browers as well as Chrome 53.x.
+  * Features / Enhancements
+    + CLI: Add command to migrate all datasources to use encrypted password fields.
+    + Gauge/BarGauge: Improvements to auto value font size.
+  * Modified: README
+
+- Update to version 6.2.0
+  * Bug Fixes
+    + BarGauge: Fix for negative min values.
+    + Gauge/BarGauge: Fix for issues editing min & max options.
+    + Search: Make only folder name only open search with current folder filter.
+    + AzureMonitor: Revert to clearing chained dropdowns.
+    + Dashboard: Fixes blank dashboard after window resize with panel without title.
+    + Dashboard: Fixes lazy loading & expanding collapsed rows on mobile.
+    + Dashboard: Fixes scrolling issues for Edge browser.
+    + Dashboard: Show refresh button in first kiosk(tv) mode.
+    + Explore: Fix empty result from datasource should render logs container.
+    + Explore: Fixes so clicking in a Prometheus Table the query is filtered by clicked value.
+    + Explore: Makes it possible to zoom in Explore/Loki/Graph without exception.
+    + Gauge: Fixes orientation issue after switching from BarGauge to Gauge.
+    + GettingStarted: Fixes layout issues in getting started panel.
+    + InfluxDB: Fix HTTP method should default to GET.
+    + Panels: Fixed alert icon position in panel header.
+    + Panels: Fixes panel error tooltip not showing.
+    + Plugins: Fix how datemath utils are exposed to plugins.
+    + Singlestat: fixed centering issue for very small panels.
+    + Search: Scroll issue in dashboard search in latest Chrome.
+    + Docker: Prevent a permission denied error when writing files to the default provisioning directory.
+    + Gauge: Adds background shade to gauge track and improves height usage.
+    + RemoteCache: Avoid race condition in Set causing error on insert. .
+    + Build: Fix bug where grafana didn't start after mysql on rpm packages.
+    + CloudWatch: Fixes query order not affecting series ordering & color.
+    + CloudWatch: Use default alias if there is no alias for metrics.
+    + Config: Fixes bug where timeouts for alerting was not parsed correctly.
+    + Elasticsearch: Fix view percentiles metric in table without date histogram.
+    + Explore: Prevents histogram loading from killing Prometheus instance.
+    + Graph: Allow override decimals to fully override.
+    + Mixed Datasource: Fix error when one query is disabled.
+    + Search: Fixes search limits and adds a page parameter.
+    + Security: Responses from backend should not be cached.
+  * Breaking Changes
+    + Plugins: Data source plugins that process hidden queries need to add a "hiddenQueries: true" attribute in plugin.json.
+    + Gauge Panel: The suffix / prefix options have been removed from the new Gauge Panel (introduced in v6.0). #16870.
+  * Features / Enhancements
+    + Plugins: Support templated urls in plugin routes.
+    + Packaging: New MSI windows installer package**.
+    + Admin: Add more stats about roles.
+    + Alert list panel: Support variables in filters.
+    + Alerting: Adjust label for send on all alerts to default .
+    + Alerting: Makes timeouts and retries configurable.
+    + Alerting: No notification when going from no data to pending.
+    + Alerting: Pushover alert, support for different sound for OK.
+    + Auth: Enable retries and transaction for some db calls for auth tokens .
+    + AzureMonitor: Adds support for multiple subscriptions per datasource.
+    + Bar Gauge: New multi series enabled gauge like panel with horizontal and vertical layouts and 3 display modes.
+    + Build: Upgrades to golang 1.12.4.
+    + CloudWatch: Update AWS/IoT metric and dimensions.
+    + Config: Show user-friendly error message instead of stack trace.
+    + Dashboard: Enable filtering dashboards in search by current folder.
+    + Dashboard: Lazy load out of view panels .
+    + DataProxy: Restore Set-Cookie header after proxy request.
+    + Datasources: Add pattern validation for time input on datasource config pages.
+    + Elasticsearch: Add 7.x version support.
+    + Explore: Adds reconnect for failing datasource.
+    + Explore: Support user timezone.
+    + InfluxDB: Add support for POST HTTP verb.
+    + Loki: Search is now case insensitive.
+    + OAuth: Update jwt regexp to include =.
+    + Panels: No title will no longer make panel header take up space.
+    + Prometheus: Adds tracing headers for Prometheus datasource.
+    + Provisioning: Add API endpoint to reload provisioning configs.
+    + Provisioning: Do not allow deletion of provisioned dashboards.
+    + Provisioning: Interpolate env vars in provisioning files.
+    + Security: Add new setting allow_embedding.
+    + Security: Store datasource passwords encrypted in secureJsonData.
+    + UX: Improve Grafana usage for smaller screens.
+    + Units: Add angle units, Arc Minutes and Seconds.
+
+-------------------------------------------------------------------
+Sat May 18 18:05:38 UTC 2019 - dmueller@suse.com
+
+- Update to version 6.1.6
+  * Security: Bump jQuery to 3.4.0
+  * Playlist: Fix loading dashboards by tag.
+
+- Update to version 6.0.2:
+  * Fixed issue with alert links in alert list panel causing panel not found errors, fixes #15680
+  * Improved error handling when rendering dashboard panels, fixes #15913
+  * fix allow anonymous server bind for ldap search
+  * add nil/length check when delete old login attempts
+  * fix discord notifier so it doesn't crash when there are no image generated
+  * fix only users that can edit a dashboard should be able to update panel json
+  * move to new component to handle focus
+  * added state to not set focus on search every render
+  * Snapshots update
+  * Use app config directly in ButtonRow instead of passing datasources page URL via prop
+  * Update snapshots
+  * Fixed url of back button in datasource edit page, when root_url configured
+  * release: Bumped version
+
+- Update to version 6.0.1:
+  * Bug Fixes:
+    + utils: show string errors
+    + Viewers with viewers_can_edit should be able to access /explore
+    +  log phantomjs output even if it timeout and include orgId when render alert
+
+- Update to version 6.0.0:
+  * Breaking Changes:
+    + Text Panel: The text panel does no longer by default allow unsantizied
+    HTML. This means that if you have text panels with scripts tags they will no
+    longer work as before. To enable unsafe javascript execution in text panels
+    enable the settings disable_sanitize_html under the section [panels] in your
+    Grafana ini file, or set env variable GF_PANELS_DISABLE_SANITIZE_HTML=true.
+    + Dashboard: Panel property minSpan replaced by maxPerRow. Dashboard
+    migration will automatically migrate all dashboard panels using the minSpan
+    property to the new maxPerRow property
+    + Internal Metrics Edition has been added to the build_info metric. This will break any Graphite queries using this metric. Edition will be a new label for the Prometheus metric.
+  * New Features:
+    + Alerting: Adds support for Google Hangouts Chat notifications
+    + Elasticsearch: Support bucket script pipeline aggregations
+    + Influxdb: Add support for time zone (tz) clause
+    + Snapshots: Enable deletion of public snapshot
+    + Provisioning: Provisioning support for alert notifiers
+    + Explore: A whole new way to do ad-hoc metric queries and exploration. Split view in half and compare metrics & logs and much much more. Read more here
+    + Auth: Replace remember me cookie solution for Grafana's builtin, LDAP and OAuth authentication with a solution based on short-lived tokens
+    + AzureMonitor: Enable alerting by converting Azure Monitor API to Go
+    + Explore A new query focused workflow for ad-hoc data exploration and troubleshooting.
+    + Grafana Loki Integration with the new open source log aggregation system from Grafana Labs.
+    + Gauge Panel A new standalone panel for gauges.
+    + New Panel Editor UX improves panel editing and enables easy switching between different visualizations.
+    + Google Stackdriver Datasource is out of beta and is officially released.
+    + React Plugin support enables an easier way to build plugins.
+    + Named Colors in our new improved color picker.
+    + Removal of user session storage makes Grafana easier to deploy & improves security.
+  * Bug Fixes:
+    + Metrics: Fixes broken usagestats metrics for /metrics
+    + Dashboard: Fixes kiosk mode should have &kiosk appended to the url
+    + Dashboard: Fixes kiosk=tv mode with autofitpanels should respect header
+    + Image rendering: Fixed image rendering issue for dashboards with auto refresh,
+    + Dashboard: Fix only users that can edit a dashboard should be able to update panel json.
+    + LDAP: fix allow anonymous initial bind for ldap search.
+    + UX: Fixed scrollbar not visible initially (only after manual scroll).
+    + Datasource admin TestData
+    + Dashboard: Fixed scrolling issue that caused scroll to be locked to bottom.
+    + Explore: Viewers with viewers_can_edit should be able to access /explore.
+    + Security fix: limit access to org admin and alerting pages.
+    + Panel Edit minInterval changes did not persist
+    + Teams: Fixed bug when getting teams for user.
+    + Stackdriver: fix for float64 bounds for distribution metrics
+    + Stackdriver: no reducers available for distribution type
+    + Influxdb: Add support for alerting on InfluxDB queries that use the non_negative_difference function
+    + Alerting: Fix percent_diff calculation when points are nulls
+    + Alerting: Fixed handling of alert urls with true flags
+    + Gauge: Fix issue with gauge requests being cancelled
+    + Gauge: Accept decimal inputs for thresholds
+    + UI: Fix error caused by named colors that are not part of named colors palette
+    + Search: Bug pressing special regexp chars in input fields
+    + Permissions: No need to have edit permissions to be able to "Save as"
+    + Search: Fix for issue with scrolling the "tags filter" dropdown
+    + Prometheus: Query for annotation always uses 60s step regardless of dashboard range
+    + Annotations: Fix creating annotation when graph panel has no data points position the popup outside viewport
+    + Piechart/Flot: Fixes multiple piechart instances with donut bug
+    + plus many minor changes and fixes
+
+- Update to version 5.4.3:
+  * Fixes:
+    + Alerting Invalid frequency causes division by zero in alert scheduler
+    + Dashboard Dashboard links do not update when time range changes
+    + Limits Support more than 1000 datasources per org
+    + Backend fix signed in user for orgId=0 result should return active org id
+    + Provisioning Adds orgId to user dto for provisioned dashboards
+
+- Update to version 5.4.2:
+  * Fixes:
+    + Datasource admin: Fix for issue creating new data source when same name exists
+    + OAuth: Fix for oauth auto login setting, can now be set using env variable
+    + Dashboard search: Fix for searching tags in tags filter dropdown.
+
+- Update to version 5.4.1:
+  * Fixes:
+    + Stackdriver: Fixes issue with data proxy and Authorization header
+    + Units: fixedUnit for Flow:l/min and mL/min
+    + Logging: Fix for issue where data proxy logged a secret when debug logging was enabled, now redacted.
+    + InfluxDB: Add support for alerting on InfluxDB queries that use the cumulative_sum function.
+    + Plugins: Panel plugins should no receive the panel-initialized event again as usual.
+    + Embedded Graphs: Iframe graph panels should now work as usual.
+    + Postgres: Improve PostgreSQL Query Editor if using different Schemas,
+    + Quotas: Fixed for updating org & user quotas.
+    + Cloudwatch: Add the AWS/SES Cloudwatch metrics of BounceRate and ComplaintRate to auto complete list.
+    + Dashboard Search: Fixed filtering by tag issues.
+    + Graph: Fixed time region issues,
+    + Graph: Fixed issue with series color picker popover being placed outside window.
+
+- Update to version 5.4.0:
+  * Breaking Changes:
+    + Postgres/MySQL/MSSQL datasources now per default uses max open connections = unlimited (earlier 10), max idle connections = 2 (earlier 10) and connection max lifetime = 4 hours (earlier unlimited).
+  * Features:
+    + Alerting: Introduce alert debouncing with the FOR setting.
+    + Alerting: Option to disable OK alert notifications
+    + Postgres/MySQL/MSSQL: Adds support for configuration of max open/idle connections and connection max lifetime. Also, panels with multiple SQL queries will now be executed concurrently
+    + MySQL: Graphical query builder
+    + MySQL: Support connecting thru Unix socket for MySQL datasource
+    + MSSQL: Add encrypt setting to allow configuration of how data sent between client and server are encrypted
+    + Stackdriver: Not possible to authenticate using GCE metadata server
+    + Teams: Team preferences (theme, home dashboard, timezone) support
+    + Graph: Time regions support enabling highlight of weekdays and/or certain timespans
+    + OAuth: Automatic redirect to sign-in with OAuth
+    + Stackdriver: Template query editor
+  * Fixes:
+    + Cloudwatch: Fix invalid time range causes segmentation fault
+    + Cloudwatch: AWS/CodeBuild metrics and dimensions
+    + MySQL: Fix $__timeFrom() and $__timeTo() should respect local time zone
+    + Graph: Fix legend always visible even if configured to be hidden
+    + Elasticsearch: Fix regression when using datasource version 6.0+ and alerting
+
+- Update to version 5.3.4:
+  * minor bug fixes
+
+-------------------------------------------------------------------
+Sat May 18 14:05:34 UTC 2019 - dmueller@suse.com
+
+- Update to version 5.3.3 (CVE-2018-19039, bsc#1115960) :
+  * File Exfiltration vulnerability Security fix
+
+-------------------------------------------------------------------
+Tue Jan  8 14:15:12 UTC 2019 - witold.bedyk@suse.com
+
+- Provide default dashboard provider from upstream
+
+-------------------------------------------------------------------
+Mon Oct 29 14:14:34 UTC 2018 - moio@suse.com
+
+- Update to version 5.3.2
+  * InfluxDB/Graphite/Postgres: Prevent cross site scripting (XSS) in query editor
+  * Postgres: Fix template variables error
+  * Cloudwatch: Fix service panic because of race conditions
+  * Cloudwatch: Fix check for invalid percentile statistics
+  * Stackdriver/Cloudwatch: Allow user to change unit in graph panel if cloudwatch/stackdriver datasource response doesn't include unit
+  * Stackdriver: stackdriver user-metrics duplicated response when multiple resource types
+  * Variables: Fix text box template variable doesn't work properly without a default value
+  * Variables: Fix variable dependency check when using ${var} format
+  * Dashboard: Fix kiosk=1 url parameter should put dashboard in kiosk mode
+  * LDAP: Fix super admins can also be admins of orgs
+  * Provisioning: Fix deleting provisioned dashboard folder should cleanup provisioning meta data
+  * Docker: adds curl back into the docker image for utility
+
+- Update to version 5.3.1
+  * Render: Fix PhantomJS render of graph panel when legend displayed as table to the right
+  * Stackdriver: Filter option disappears after removing initial filter
+  * Elasticsearch: Fix no limit size in terms aggregation for alerting queries
+  * InfluxDB: Fix for annotation issue that caused text to be shown twice
+  * Variables: Fix nesting variables leads to exception and missing refresh
+  * Variables: Prometheus: Single letter labels are not supported
+  * Graph: Fix graph time formatting for Last 24h ranges
+  * Playlist: Fix cannot add dashboards with long names to playlist
+  * HTTP API: Fix /api/org/users so that query and limit querystrings works
+
+- Update to version 5.3.0
+  * Stackdriver: Filter wildcards and regex matching are not yet supported
+  * Stackdriver: Support the distribution metric type for heatmaps
+  * Cloudwatch: Automatically set graph yaxis unit
+
+- Update to version 5.3.0-beta3
+  * Stackdriver: Fix for missing ngInject
+  * Permissions: Fix for broken permissions selector
+  * Alerting: Alert reminders deduping not working as expected when running multiple Grafana instances
+
+- Update to version 5.3.0-beta2
+  + New Features
+    * Annotations: Enable template variables in tagged annotations queries
+    * Stackdriver: Support for Google Stackdriver Datasource
+  + Minor
+    * Provisioning: Dashboard Provisioning now support symlinks that changes target
+    * OAuth: Allow oauth email attribute name to be configurable
+    * Tags: Default sort order for GetDashboardTags
+    * Prometheus: Label completion queries respect dashboard time range
+    * Prometheus: Allow to display annotations based on Prometheus series value
+    * Prometheus: Adhoc-filtering for Prometheus dashboards
+    * Singlestat: Fix gauge display accuracy for percents
+    * Dashboard: Prevent auto refresh from starting when loading dashboard with absolute time range
+    * Templating: New templating variable type Text box that allows free text input
+    * Alerting: Link to view full size image in Microsoft Teams alert notifier
+    * Alerting: Fixes a bug where all alerts would send reminders after upgrade & restart
+    * Alerting: Concurrent render limit for graphs used in notifications
+    * Postgres/MySQL/MSSQL: Add support for replacing $__interval and  $__interval_ms in alert queries
+
+- Update to version 5.3.0-beta1
+  + New Major Features
+    * Alerting: Notification reminders
+    * Dashboard: TV & Kiosk mode changes, new cycle view mode button in dashboard toolbar
+    * OAuth: Gitlab OAuth with support for filter by groups
+    * Postgres: Graphical query builder
+  + New Features
+    * LDAP: Define Grafana Admin permission in ldap group mappings, PR
+    * LDAP: Client certificates support
+    * Profile: List teams that the user is member of in current/active organization
+    * Configuration: Allow auto-assigning users to specific organization (other than Main. Org) and
+    * Dataproxy: Pass configured/auth headers to a Datasource
+    * CloudWatch: GetMetricData support
+    * Postgres: TimescaleDB support, e.g. use time_bucket for grouping by time when option enabled
+    * Cleanup: Make temp file time to live configurable
+  + Minor
+    * Alerting: Its now possible to configure the default value for how to handle errors and no data in alerting
+    * Alerting: Fix diff and percent_diff reducers
+    * Alerting: Fix rendering timeout which could cause notifications to not be sent due to rendering timing out
+    * Docker: Make it possible to set a specific plugin url
+    * GrafanaCli: Fixed issue with grafana-cli install plugin resulting in corrupt http response from source error
+    * Provisioning: Should allow one default datasource per organisation
+    * Github OAuth: Allow changes of user info at Github to be synched to Grafana when signing in
+    * OAuth: Fix overriding tls_skip_verify_insecure using environment variable
+    * Prometheus: Fix graph panel bar width issue in aligned prometheus queries
+    * Prometheus: Heatmap - fix unhandled error when some points are missing
+    * Prometheus: Add $__interval, $__interval_ms, $__range, $__range_s & $__range_ms support for dashboard and template queries
+    * Elasticsearch: For alerting/backend, support having index name to the right of pattern in index pattern
+    * Graphite: Fix for quoting of int function parameters (when using variables)
+    * InfluxDB: Support timeFilter in query templating for InfluxDB
+    * Postgres/MySQL/MSSQL: New $__unixEpochGroup and $__unixEpochGroupAlias macros
+    * Postgres/MySQL/MSSQL: Add previous fill mode to $__timeGroup macro which will fill in previously seen value when point is missing
+    * Postgres/MySQL/MSSQL: Use floor rounding in $__timeGroup macro function
+    * Postgres/MySQL/MSSQL: Use metric column as prefix when returning multiple value columns
+    * Postgres/MySQL/MSSQL: New $__timeGroupAlias macro. Postgres $__timeGroup no longer automatically adds time column alias
+    * Postgres/MySQL/MSSQL: Escape single quotes in variables
+    * Postgres/MySQL/MSSQL: Min time interval support
+    * MySQL/MSSQL: Use datetime format instead of epoch for $__timeFilter, $__timeFrom and $__timeTo macros
+    * Postgres: Escape ssl mode parameter in connectionstring
+    * Cloudwatch: Improved error handling
+    * Cloudwatch: AppSync metrics and dimensions
+    * Cloudwatch: Direct Connect metrics and dimensions
+    * Cloudwatch: Added BurstBalance metric to list of AWS RDS metrics
+    * Cloudwatch: Add new Redshift metrics and dimensions
+    * Dashboard: Fix selecting current dashboard from search should not reload dashboard
+    * Dashboard: Use uid when linking to dashboards internally in a dashboard
+    * Graph: Option to hide series from tooltip
+    * Singlestat: Make colorization of prefix and postfix optional in singlestat
+    * Table: Adjust header contrast for the light theme
+    * Table: Fix link color when using light theme and thresholds in use
+    * Table: Fix for useless horizontal scrollbar for table panel
+    * Table: Make table sorting stable when null values exist
+    * Heatmap: Fix broken tooltip and crosshair on Firefox
+    * Datasource: Fix UI issue with secret fields after updating datasource
+    * Variables: Skip unneeded extra query request when de-selecting variable values used for repeated panels
+    * Variables: Limit amount of queries executed when updating variable that other variable(s) are dependent on
+    * Variables: Support query variable refresh when another variable referenced in Regex field change its value
+    * Variables: Support variables in query variable Custom all value field
+    * Units: Change units to include characters for power of 2 and 3
+    * Units: Polish złoty currency
+    * Units: Adds bitcoin axes unit
+    * Api: Delete nonexistent datasource should return 404
+    * Logging: Reopen log files after receiving a SIGHUP signal
+    * Login: Show loading animation while waiting for authentication response on login
+    * UI: Fix iOS home screen "app" icon and Windows 10 app experience
+    * Plugins: Convert URL-like text to links in plugins readme
+    + Breaking changes
+    * Postgres datasource no longer automatically adds time column alias when using the $__timeGroup alias. However, there's code in place which should make this change backward compatible and shouldn't create any issues
+    * Kiosk mode now also hides submenu (variables)
+    * ?inactive url parameter no longer supported, replaced with kiosk=tv url parameter
+  + New experimental features
+    * Dashboard: Auto fit dashboard panels to optimize space used for current TV / Monitor
+  + Tech
+    * Frontend: Convert all Frontend Karma tests to Jest tests
+    * Backend: Upgrade to golang 1.11
+
+- Update to version 5.2.4
+  * GrafanaCli: Fixed issue with grafana-cli install plugin resulting in corrupt http response from source error
+
+- Update to version 5.2.3
+  * Important fix for LDAP & OAuth login vulnerability
+
+- Update to version 5.2.2
+  * Prometheus: Fix graph panel bar width issue in aligned prometheus queries
+  * Dashboard: Dashboard links not updated when changing variables
+  * Postgres/MySQL/MSSQL: Fix connection leak
+  * Plugins: Fix loading of external plugins
+  * Dashboard: Remove unwanted scrollbars in embedded panels
+  * Prometheus: Prevent error using $__interval_ms in query
+
+- Update to version 5.2.1
+  * Auth Proxy: Important security fix for whitelist of IP address feature
+  * UI: Fix - Grafana footer overlapping page
+  * Logging: Errors should be reported before crashing
+
+- Update to version 5.2.0-stable
+  * Plugins: Handle errors correctly when loading datasource plugin thx
+  * Render: Enhance error message if phantomjs executable is not found
+  * Dashboard: Set correct text in drop down when variable is present in url
+  * LDAP: Handle "dn" ldap attribute more gracefully
+
+- Update to version 5.2.0-beta3
+  * Build: All rpm packages should be signed
+
+- Update to version 5.2.0-beta2
+  + New Features
+    * Dashboard: Import dashboard to folder
+  + Minor
+    * Permissions: Important security fix for API keys with viewer role
+    * Dashboard: Fix so panel titles doesn't wrap
+    * Dashboard: Prevent double-click when saving dashboard
+    * Dashboard: AutoFocus the add-panel search filter thx
+    * Units: W/m2 (energy), l/h (flow) and kPa (pressure)
+    * Units: Litre/min (flow) and milliLitre/min (flow)
+    * Alerting: Fix mobile notifications for Microsoft Teams alert notifier
+    * Influxdb: Add support for mode function
+    * Cloudwatch: Fixes panic caused by bad timerange settings
+    * Auth Proxy: Whitelist proxy IP address instead of client IP address
+    * User Management: Make sure that a user always has a current org assigned
+    * Snapshots: Fix: annotations not properly extracted leading to incorrect rendering of annotations
+    * LDAP: Allow use of DN in group_search_filter_user_attribute and member_of
+    * Graph: Fix legend decimals precision calculation
+    * Dashboard: Make sure to process panels in collapsed rows when exporting dashboard
+    * Dashboard: Dashboard link doesn't work when "As dropdown" option is checked
+    * Dashboard: Fix regressions after save modal changes, including adhoc template issues
+    * Docker: Config keys ending with _FILE are not respected
+
+- Update to version 5.2.0-beta1
+  + New Features
+    * Elasticsearch: Alerting support
+    * Build: Crosscompile and packages Grafana on arm, windows, linux and darwin
+    * Login: Change admin password after first login
+    * Alert list panel: Updated to support filtering alerts by name, dashboard title, folder, tags
+  + Minor
+    * Dashboard: Modified time range and variables are now not saved by default
+    * Graph: Show invisible highest value bucket in histogram
+    * Dashboard: Enable "Save As..." if user has edit permission
+    * Prometheus: Query dates are now step-aligned
+    * Prometheus: Table columns order now changes when rearrange queries
+    * Variables: Fix variable interpolation when using multiple formatting types
+    * Dashboard: Fix date selector styling for dark/light theme in time picker control
+    * Discord: Alert notification channel type for Discord
+    * InfluxDB: Support SELECT queries in templating query
+    * InfluxDB: Support count distinct aggregation
+    * Dashboard: JSON Model under dashboard settings can now be updated & changes saved
+    * Security: Fix XSS vulnerabilities in dashboard links
+    * Singlestat: Fix "time of last point" shows local time when dashboard timezone set to UTC
+    * Prometheus: Add support for passing timeout parameter to Prometheus
+    * Login: Add optional option sign out url for generic oauth
+    * Login: Use proxy server from environment variable if available
+    * Invite users: Friendlier error message when smtp is not configured
+    * Graphite: Don't send distributed tracing headers when using direct/browser access mode
+    * Sidenav: Show create dashboard link for viewers if at least editor in one folder
+    * SQL: Second epochs are now correctly converted to ms
+    * Singlestat: Fix singlestat threshold tooltip
+    * Dashboard: Hide grid controls in fullscreen/low-activity views
+    * Dashboard: Validate uid when importing dashboards
+    * Docker: Support for env variables ending with _FILE
+    * Alert list panel: Show alerts for user with viewer role
+    * Provisioning: Verify checksum of dashboards before updating to reduce load on database
+    * Provisioning: Support symlinked files in dashboard provisioning config files
+    * Dashboard list panel: Search dashboards by folder
+    * Sidenav: Always show server admin link in sidenav if grafana admin
+
+- Update to version 5.1.5
+  * Docker: Config keys ending with _FILE are not respected
+
+- Update to version 5.1.4
+  * Permissions: Important security fix for API keys with viewer role
+
+-------------------------------------------------------------------
+Sat Jun 16 16:04:55 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 5.1.3:
+  * Heatmap support for Prometheus
+  * Align Zero-Line for Right and Left Y-axes
+  * allow setting the database
+  * MSSQL Data Source
+  * support multiple histogram series
+  * support cloudwatch high resolution query
+  * Added radiation units
+  * Modify Grafana Pagerduty notifier to use Pagerduty API V2
+  * prometheus editor: variable autocomplete support
+  * Use net.SplitHostPort to support IPv6
+  * See /usr/share/doc/packages/grafana/CHANGELOG.md for more details
+
+-------------------------------------------------------------------
+Sat Jun 16 16:01:25 UTC 2018 - mc@suse.com
+
+- remove unknown build flag -s
+
+-------------------------------------------------------------------
+Sat May  5 09:47:06 UTC 2018 - dmueller@suse.com
+
+- fix build for older distributions
+
+-------------------------------------------------------------------
+Wed Mar  7 16:27:46 UTC 2018 - jengelh@inai.de
+
+- Remove marketing wording from description.
+
+-------------------------------------------------------------------
+Wed Mar  7 12:20:50 UTC 2018 - jan.fajerski@suse.com
+
+- add user and group according to packaging guidelines
+- add README and Makefile as Sources
+
+-------------------------------------------------------------------
+Thu Mar 01 10:41:54 UTC 2018 - jfajerski@suse.com
+
+- Update to version 5.0.0:
+  + Github OAuth Fixed fetching github orgs from private github org
+  + Provisioning Now handles deletes when dashboard json files removed from disk
+  + Reset password Fixed problem with reset password form
+  + Save dashboard Fixed issue with time range & variable reset after saving
+  + Folders Make it easier/explicit to access/modify folders using the API
+  + many more bugfixes
+  + See /usr/share/doc/packages/grafana/CHANGELOG.md for more details
+
+-------------------------------------------------------------------
+Thu Feb 08 14:12:39 UTC 2018 - jfajerski@suse.com
+
+- Update to version 5.0.0beta1:
+  + New Features:
+    * Dashboard folders
+    * Teams User groups (teams) implemented. Can be used in folder & dashboard permission list.
+    * Dashboard grid: Panels are now layed out in a two dimensional grid (with x, y, w, h).
+    * Templating: Vertical repeat direction for panel repeats.
+    * UX: Major update to page header and navigation
+    * Dashboard settings: Combine dashboard settings views into one with side menu
+    * Alerting: Add support for internal image store
+    * Data Source Proxy: Add support for whitelisting specified cookies that will be passed through to the data source when proxying data source requests
+    * Text: Text panel are now edited in the ace editor
+    * Teams: Add Microsoft Teams notifier
+    * Datasources: Its now possible to configure datasources with config files
+    * Graphite: Query editor updated to support new query by tag features
+    * Dashboard history: New config file option versions_to_keep sets how many versions per dashboard to store
+    * Dashboard as cfg: Load dashboards from file into Grafana on startup/change
+    * Prometheus: Grafana can now send alerts to Prometheus Alertmanager while firing
+    * Table: Support multiple table formated queries in table panel
+    * Security: Protect against brute force (frequent) login attempts
+  + Breaking Changes:
+    * Persistent dashboard url's: New url's for dashboards that allows renaming dashboards without breaking links
+    * GET /api/alerts property dashboardUri renamed to url and is now the full url (that is including app sub url).
+  + Many Bugfixes
+  + See /usr/share/doc/packages/grafana/CHANGELOG.md for more details
+
+
+ -------------------------------------------------------------------
+Mon Jan 29 11:04:08 UTC 2018 - jan.fajerski@suse.com
+
+- Use %{_fillupdir} for sysconfig file
+
+-------------------------------------------------------------------
+Wed Jan 24 01:53:00 UTC 2018 - tserong@suse.com
+
+- Remove non-standard-gid from rpmlintrc
+
+-------------------------------------------------------------------
+Thu Jan 18 12:41:48 UTC 2018 - tserong@suse.com
+
+- Use GRAFANA_GROUP macro in spec file instead of GROUP (which otherwise
+  collides with the package group, resulting in incorrect file/directory
+  ownership)
+
+-------------------------------------------------------------------
+Sat Nov 11 20:21:28 UTC 2017 - kkaempf@suse.com
+
+- mark %{_datadir}/%{name}/conf/defaults.ini as %conf instead
+  of %doc, grafana-server won't start without this file.
+
+-------------------------------------------------------------------
+Tue Oct 24 15:25:39 UTC 2017 - johannes.grassler@suse.com
+
+- Create /var/lib/grafana/dashboards/
+
+-------------------------------------------------------------------
+Tue Oct 17 09:54:03 UTC 2017 - johannes.grassler@suse.com
+
+- Create plugin directory and clean up (create in %install, 
+  add to %files) handling of /var/lib/grafana/* and 
+  /var/log/grafana.
+
+-------------------------------------------------------------------
+Mon Sep 18 11:35:11 UTC 2017 - tserong@suse.com
+
+- Update to version 4.5.1:
+  + New Features:
+    * Table panel: Render cell values as links
+    * Elasticsearch: Add ad hoc filters directly by clicking values
+    * MySQL: New rich query editor with syntax highlighting
+    * Prometheus: New rich query editor with syntax highlighting
+  + Enhancements:
+    * GitHub OAuth: Support for GitHub organizations with 100+ teams
+    * Graphite: Calls to Graphite api /metrics/find now include time range
+    * Graphite: Added new graphite 1.0 functions
+    * Elasticsearch: Ad-hoc filters now use query phrase match filters
+  + Breaking change:
+    * InfluxDB/Elasticsearch: The panel & data source option named "Group by
+      time interval" is now named "Min time interval" and does now always
+      define a lower limit for the auto group by time.
+  + Other changes:
+    * InfluxDB: Change time range filter for absolute time ranges to be
+      inclusive instead of exclusive
+    * InfluxDB: Added paranthesis around tag filters in queries
+  + Bug Fixes:
+    - Modals: Maintain scroll position after opening/leaving modal
+    - Templating: You cannot select data source variables as data source
+      for other template variables
+    - MySQL/Postgres: Fix for max_idle_conn option default which was wrongly
+      set to zero which does not mean unlimited but means zero.
+  + See /usr/share/doc/packages/grafana/CHANGELOG.md for more details
+
+-------------------------------------------------------------------
+Thu Jun 22 09:37:11 UTC 2017 - jan.fajerski@suse.com
+
+- Fix spec file to create and own /var/{lib,log}/grafana (bsc#1044933)
+
+-------------------------------------------------------------------
+Fri Jun 16 02:24:58 UTC 2017 - tserong@suse.com
+
+- Require phantomjs package at runtime instead of shipping prebuilt
+  x86_64 phantomjs binary (bsc#1044444)
+
+-------------------------------------------------------------------
+Tue May  2 09:01:28 UTC 2017 - tserong@suse.com
+
+- Make %fdupes create hardlinks, not symlinks (symlinks result in
+  grafana not being able to load plugins, and the UI breaking)
+
+-------------------------------------------------------------------
+Fri Apr 28 10:00:11 UTC 2017 - tserong@suse.com
+
+- Moved build of frontend assets from RPM %pre and %posttrans to
+  Makefile, so this piece of work can be done by the packager, rather
+  than at installation time.
+
+-------------------------------------------------------------------
+Thu Mar 23 12:57:37 UTC 2017 - thipp@suse.de
+
+- Update to version 4.2.0
+- Refactoring based on new packaging proposal
+
+-------------------------------------------------------------------
+Mon Sep  5 12:40:30 UTC 2016 - avvissu@yandex.by
+
+- Update to 3.1.1:
+  * see: /usr/share/doc/packages/grafana/CHANGELOG.txt
+
+-------------------------------------------------------------------
+Wed Jun  1 23:20:02 UTC 2016 - avvissu@yandex.by
+
+- Update to 3.0.4:
+  * see: /usr/share/doc/packages/grafana/CHANGELOG.txt
+
+-------------------------------------------------------------------
+Wed May 25 04:14:58 UTC 2016 - avvissu@yandex.by
+
+- Update to 3.0.3:
+  * see: /usr/share/doc/packages/grafana/CHANGELOG.txt
+
+-------------------------------------------------------------------
+Tue May 17 05:28:14 UTC 2016 - avvissu@yandex.by
+
+- Update to 3.0.2
+  * see: /usr/share/doc/packages/grafana/CHANGELOG.txt
+- Enable dependency auto-generation
+- Don't use npm install -g grunt-cli
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Fri Apr  1 04:25:50 UTC 2016 - avvissu@yandex.by
+
+- Add golang(github.com/tools/godep)
+
+-------------------------------------------------------------------
+Thu Mar 31 13:40:28 UTC 2016 - avvissu@yandex.by
+
+- Remove static libraries
+
+-------------------------------------------------------------------
+Tue Mar 29 06:48:06 UTC 2016 - avvissu@yandex.by
+
+- Add _service file to control the URL used by %% pre
+
+-------------------------------------------------------------------
+Tue Feb 23 15:21:00 UTC 2016 - avvissu@yandex.ru
+
+- Use BuildRequires when a development branch becomes stable
+
+-------------------------------------------------------------------
+Mon Jan 25 16:47:59 UTC 2016 - avvissu@yandex.ru
+
+- Fix buid error: don't use %%goinstall (golang-macros.rb is not
+  stable)
+
+-------------------------------------------------------------------
+Tue Jan  5 03:36:40 UTC 2016 - avvissu@yandex.ru
+
+- Fix build error: change GOPATH
+- Copy the vendor folder after installation of package
+
+-------------------------------------------------------------------
+Fri Dec 11 22:37:23 UTC 2015 - avvissu@yandex.ru
+
+- Update to 2.6.0:
+  * see: /usr/share/doc/packages/grafana/CHANGELOG
+- Create a new spec file for building RPM
+
+-------------------------------------------------------------------
+Fri May  8 15:07:28 UTC 2015 - mrueckert@suse.de
+
+- initial package

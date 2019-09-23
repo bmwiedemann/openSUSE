@@ -1,0 +1,11 @@
+<package name="libbs2b" project="openSUSE:Factory">
+  <title>The Bauer stereophonic-to-binaural DSP library</title>
+  <description>The Bauer stereophonic-to-binaural DSP (bs2b) library and plugins is designed to
+improve headphone listening of stereo audio records. Recommended for headphone
+prolonged listening to disable superstereo fatigue without essential
+distortions.
+
+</description>
+  <devel project="multimedia:libs" package="libbs2b"/>
+  <url>http://bs2b.sourceforge.net/</url>
+</package>

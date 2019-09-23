@@ -1,0 +1,453 @@
+-------------------------------------------------------------------
+Thu Sep  5 16:28:48 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to 5.7.0
+  - Add all new APIs and constants in libvirt 5.7.0
+
+-------------------------------------------------------------------
+Mon Aug 12 22:26:41 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to 5.6.0
+  - Add all new APIs and constants in libvirt 5.6.0
+
+-------------------------------------------------------------------
+Wed Jul 24 20:39:48 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to 5.5.0
+  - Add all new APIs and constants in libvirt 5.5.0
+
+-------------------------------------------------------------------
+Mon Jun  3 17:16:02 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to 5.4.0
+  - Add all new APIs and constants in libvirt 5.4.0
+
+-------------------------------------------------------------------
+Wed May  8 20:38:33 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to 5.3.0
+  - Add all new APIs and constants in libvirt 5.3.0
+
+-------------------------------------------------------------------
+Wed Apr  3 20:57:40 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to 5.2.0
+  - Add all new APIs and constants in libvirt 5.2.0
+
+-------------------------------------------------------------------
+Wed Mar  6 02:06:14 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to 5.1.0
+  - Add all new APIs and constants in libvirt 5.1.0
+  - jsc#SLE-3887, jsc#SLE-4480, jsc#SLE-4577
+
+-------------------------------------------------------------------
+Tue Jan 22 22:34:20 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to 5.0.0
+  - Add all new APIs and constants in libvirt 5.0.0
+  - FATE#320928, FATE#325817, FATE#326380, FATE#326698
+
+-------------------------------------------------------------------
+Tue Dec  4 00:05:26 UTC 2018 - James Fehlig <jfehlig@suse.com>
+
+- Update to 4.10.0
+  - Add all new APIs and constants in libvirt 4.10.0
+  - FATE#320928, FATE#325817, FATE#326380, FATE#326698
+
+-------------------------------------------------------------------
+Mon Nov  5 16:28:26 UTC 2018 - James Fehlig <jfehlig@suse.com>
+
+- Update to 4.9.0
+  - Add all new APIs and constants in libvirt 4.9.0
+  - FATE#326371
+
+-------------------------------------------------------------------
+Tue Oct  2 20:14:44 UTC 2018 - jfehlig@suse.com
+
+- Update to 4.8.0
+  - Add all new APIs and constants in libvirt 4.8.0
+
+-------------------------------------------------------------------
+Thu Sep 20 20:50:13 UTC 2018 - James Fehlig <jfehlig@suse.com>
+
+- Update to 4.7.0
+  - Add all new APIs and constants in libvirt 4.7.0
+
+-------------------------------------------------------------------
+Mon Aug 13 20:19:02 UTC 2018 - jfehlig@suse.com
+
+- Update to 4.6.0
+  - Add all new APIs and constants in libvirt 4.6.0
+- spec: remove %defattr
+
+-------------------------------------------------------------------
+Fri Jul 27 19:52:17 UTC 2018 - jfehlig@suse.com
+
+- Update to 4.5.0
+  - Add all new APIs and constants in libvirt 4.5.0
+
+-------------------------------------------------------------------
+Mon Jun  4 22:43:37 UTC 2018 - jfehlig@suse.com
+
+- Update to 4.4.0
+  - Add all new APIs and constants in libvirt 4.4.0
+
+-------------------------------------------------------------------
+Wed May  2 22:45:01 UTC 2018 - jfehlig@suse.com
+
+- Update to 4.3.0
+  - Add all new APIs and constants in libvirt 4.3.0
+
+-------------------------------------------------------------------
+Thu Apr  5 15:32:09 UTC 2018 - jfehlig@suse.com
+
+- Update to 4.2.0
+  - Add all new APIs and constants in libvirt 4.2.0
+
+-------------------------------------------------------------------
+Mon Mar  5 18:20:19 UTC 2018 - jfehlig@suse.com
+
+- Update to 4.1.0
+  - Add all new APIs and constants in libvirt 4.1.0
+
+-------------------------------------------------------------------
+Fri Jan 19 18:39:23 UTC 2018 - jfehlig@suse.com
+
+- Update to 4.0.0
+  - Add all new APIs and constants in libvirt 4.0.0
+  - BuildRequire matching libvirt version
+
+-------------------------------------------------------------------
+Mon Dec 11 06:39:09 UTC 2017 - jfehlig@suse.com
+
+- Update to 3.10.0
+  - Add all new APIs and constants in libvirt 3.10.0
+
+-------------------------------------------------------------------
+Wed Nov 29 16:41:50 UTC 2017 - cbosdonnat@suse.com
+
+- Get rid of python2 dependency on python3 package
+
+-------------------------------------------------------------------
+Thu Nov  2 20:47:56 UTC 2017 - jfehlig@suse.com
+
+- Update to 3.9.0
+  - Add all new APIs and constants in libvirt 3.9.0
+
+-------------------------------------------------------------------
+Thu Oct  5 20:04:31 UTC 2017 - jfehlig@suse.com
+
+- Update to 3.8.0
+  - Add all new APIs and constants in libvirt 3.8.0
+
+-------------------------------------------------------------------
+Mon Oct  2 18:56:32 UTC 2017 - jengelh@inai.de
+
+- Rectify RPM group. Adjust descriptions for neutrality and
+  OS relevance.
+
+-------------------------------------------------------------------
+Fri Sep 15 16:30:22 UTC 2017 - jfehlig@suse.com
+
+- Update to 3.7.0
+  - Add all new APIs and constants in libvirt 3.7.0
+
+-------------------------------------------------------------------
+Wed Sep 13 09:03:07 UTC 2017 - tbechtold@suse.com
+
+- Only the python2 package should provide libvirt-python .
+
+-------------------------------------------------------------------
+Wed Aug  2 04:27:36 UTC 2017 - jfehlig@suse.com
+
+- Update to 3.6.0
+  - Add all new APIs and constants in libvirt 3.6.0
+
+-------------------------------------------------------------------
+Tue Jul 25 20:26:17 UTC 2017 - jfehlig@suse.com
+
+- Rename libvirt-python to python-libvirt-python
+- Convert to singlespec to support multiple pythons
+
+-------------------------------------------------------------------
+Thu Jul  6 21:20:32 UTC 2017 - jfehlig@suse.com
+
+- Update to 3.5.0
+  - Add all new APIs and constants in libvirt 3.5.0
+
+-------------------------------------------------------------------
+Fri Jun  2 17:43:08 UTC 2017 - jfehlig@suse.com
+
+- Update to 3.4.0
+  - Add all new APIs and constants in libvirt 3.4.0
+
+-------------------------------------------------------------------
+Mon May  8 17:40:15 UTC 2017 - jfehlig@suse.com
+
+- Update to 3.3.0
+  - Add all new APIs and constants in libvirt 3.3.0
+  - FATE#319684, FATE#321335, FATE#321349
+
+-------------------------------------------------------------------
+Mon Apr  3 04:45:02 UTC 2017 - jfehlig@suse.com
+
+- Update to 3.2.0
+  - Add all new APIs and constants in libvirt 3.2.0
+  - FATE#319684, FATE#321335, FATE#321349
+  
+-------------------------------------------------------------------
+Fri Mar  3 15:06:02 UTC 2017 - jfehlig@suse.com
+
+- Update to 3.1.0
+  - Add all new APIs and constants in libvirt 3.1.0
+
+-------------------------------------------------------------------
+Thu Feb  2 23:37:49 UTC 2017 - jfehlig@suse.com
+
+- SLE12 SP2 FATEs merged via version updates of the Factory
+  libvirt-python package:
+  FATE#316228, FATE#316628, FATE#319531, FATE#319810, FATE#320490
+- SLE12 SP1 FATEs merged via version updates of the Factory
+  libvirt-python package:
+  FATE#314466, FATE#314497, FATE#315157, FATE#318383
+  
+-------------------------------------------------------------------
+Thu Jan 19 19:04:30 UTC 2017 - jfehlig@suse.com
+
+- Update to 3.0.0
+  - Add all new APIs and constants in libvirt 3.0.0
+
+-------------------------------------------------------------------
+Tue Dec  6 03:33:52 UTC 2016 - jfehlig@suse.com
+
+- Update to 2.5.0
+  - Add all new APIs and constants in libvirt 2.5.0
+
+-------------------------------------------------------------------
+Wed Nov  2 22:04:19 UTC 2016 - jfehlig@suse.com
+
+- Update to 2.4.0
+  - Add all new APIs and constants in libvirt 2.4.0
+
+-------------------------------------------------------------------
+Wed Oct  5 20:56:30 UTC 2016 - jfehlig@suse.com
+
+- Update to 2.3.0
+  - Add all new APIs and constants in libvirt 2.3.0
+- spec: drop explicit Requires on libvirt-client package
+
+-------------------------------------------------------------------
+Tue Sep  6 02:58:00 UTC 2016 - jfehlig@suse.com
+
+- Update to 2.2.0
+  - Add all new APIs and constants in libvirt 2.2.0
+
+-------------------------------------------------------------------
+Sat Aug 20 23:08:23 UTC 2016 - jfehlig@suse.com
+
+- Update to 2.1.0
+  - Add all new APIs and constants in libvirt 2.1.0
+
+-------------------------------------------------------------------
+Fri Jul  1 16:40:51 UTC 2016 - jfehlig@suse.com
+
+- Update to 2.0.0
+  - Add all new APIs and constants in libvirt 2.0.0
+
+-------------------------------------------------------------------
+Tue Jun  7 04:28:37 UTC 2016 - jfehlig@suse.com
+
+- Update to 1.3.5
+  - Add all new APIs and constants in libvirt 1.3.5
+
+-------------------------------------------------------------------
+Tue May  3 20:22:03 UTC 2016 - jfehlig@suse.com
+
+- Update to 1.3.4
+  - Add all new APIs and constants in libvirt 1.3.4
+
+-------------------------------------------------------------------
+Tue Apr 12 23:48:41 UTC 2016 - jfehlig@suse.com
+
+- Update to 1.3.3
+  - Add all new APIs and constants in libvirt 1.3.3
+
+-------------------------------------------------------------------
+Tue Mar  1 18:02:25 UTC 2016 - jfehlig@suse.com
+
+- Update to 1.3.2
+  - Add all new APIs and constants in libvirt 1.3.2
+
+-------------------------------------------------------------------
+Mon Jan 18 19:35:09 UTC 2016 - jfehlig@suse.com
+
+- Update to 1.3.1
+  - Add all new APIs and constants in libvirt 1.3.1
+
+-------------------------------------------------------------------
+Thu Jan  7 03:09:07 UTC 2016 - jfehlig@suse.com
+
+- Require libvirt-client version >= libvirt-python version
+
+-------------------------------------------------------------------
+Mon Dec 21 23:36:17 UTC 2015 - jfehlig@suse.com
+
+- Update to 1.3.0
+  - Add all new APIs and constants in libvirt 1.3.0
+
+-------------------------------------------------------------------
+Thu Nov  5 00:32:51 UTC 2015 - jfehlig@suse.com
+
+- Update to 1.2.21
+  - Add all new APIs and constants in libvirt 1.2.21
+
+-------------------------------------------------------------------
+Fri Oct  2 20:57:57 UTC 2015 - jfehlig@suse.com
+
+- Update to 1.2.20
+  - Add all new APIs and constants in libvirt 1.2.20
+
+-------------------------------------------------------------------
+Wed Sep  2 15:29:55 UTC 2015 - jfehlig@suse.com
+
+- Update to 1.2.19
+  - Add all new APIs and constants in libvirt 1.2.19
+
+-------------------------------------------------------------------
+Tue Aug  4 15:17:49 UTC 2015 - jfehlig@suse.com
+
+- Update to 1.2.18
+  - Add all new APIs and constants in libvirt 1.2.18
+
+-------------------------------------------------------------------
+Thu Jul  2 16:58:01 MDT 2015 - jfehlig@suse.com
+
+- Update to 1.2.17
+  - Add all new APIs and constants in libvirt 1.2.17
+
+-------------------------------------------------------------------
+Mon Jun  1 14:37:49 MDT 2015 - jfehlig@suse.com
+
+- Update to 1.2.16
+  - Add all new APIs and constants in libvirt 1.2.16
+
+-------------------------------------------------------------------
+Mon May  4 09:06:48 MDT 2015 - jfehlig@suse.com
+
+- Update to 1.2.15
+  - Add all new APIs and constants in libvirt 1.2.15
+
+-------------------------------------------------------------------
+Thu Apr  2 14:10:37 MDT 2015 - jfehlig@suse.com
+
+- Update to 1.2.14
+  - Add all new APIs and constants in libvirt 1.2.14
+
+-------------------------------------------------------------------
+Mon Mar  2 12:40:05 MST 2015 - jfehlig@suse.com
+
+- Update to 1.2.13
+  - Add all new APIs and constants in libvirt 1.2.13
+
+-------------------------------------------------------------------
+Tue Jan 27 16:01:54 MST 2015 - jfehlig@suse.com
+
+- Update to 1.2.12
+  - Add all new APIs and constants in libvirt 1.2.12
+
+-------------------------------------------------------------------
+Mon Dec 15 10:42:02 MST 2014 - jfehlig@suse.com
+
+- Update to 1.2.11
+  - Add all new APIs and constants in libvirt 1.2.11
+
+-------------------------------------------------------------------
+Mon Nov  3 16:29:33 MST 2014 - jfehlig@suse.com
+
+- Update to 1.2.10
+  - Add all new APIs and constants in libvirt 1.2.10
+
+-------------------------------------------------------------------
+Thu Oct  2 15:33:15 MDT 2014 - jfehlig@suse.com
+
+- spec: Remove gpg-offline build dependency and use of gpg_verify
+  to verify tarball since this task can be performed by source
+  services
+
+-------------------------------------------------------------------
+Wed Oct  1 16:47:26 MDT 2014 - jfehlig@suse.com
+
+- Update to 1.2.9
+  - Add all new APIs and constants in libvirt 1.2.9
+- Verify tarball using %gpg_verify using associated .asc file
+  Add: libvirt-python.keyring, libvirt-python-1.2.9.tar.gz.asc
+  Use upstream .gz tarball instead of locally generated .bz2
+
+-------------------------------------------------------------------
+Tue Sep  2 09:28:25 MDT 2014 - jfehlig@suse.com
+
+- Update to 1.2.8
+  - Add all new APIs and constants in libvirt 1.2.8
+
+-------------------------------------------------------------------
+Tue Aug  5 16:35:18 MDT 2014 - jfehlig@suse.com
+
+- Update to 1.2.7
+  - Add all new APIs and constants in libvirt 1.2.7
+
+-------------------------------------------------------------------
+Wed Jul  2 13:36:18 MDT 2014 - jfehlig@suse.com
+
+- Update to 1.2.6
+  - Add all new APIs and constants in libvirt 1.2.6
+
+-------------------------------------------------------------------
+Sun Jun  1 22:43:05 MDT 2014 - jfehlig@suse.com
+
+- Update to 1.2.5
+  - Add all new APIs and constants in libvirt 1.2.5
+
+-------------------------------------------------------------------
+Mon May  5 20:12:27 MDT 2014 - jfehlig@suse.com
+
+- Update to 1.2.4
+  - Add all new APIs and constants in libvirt 1.2.4
+
+-------------------------------------------------------------------
+Mon Apr  7 11:54:39 MDT 2014 - jfehlig@suse.com
+
+- Update to 1.2.3
+  - Add all new APIs and constants in libvirt 1.2.3
+
+-------------------------------------------------------------------
+Sun Mar  2 19:49:08 MST 2014 - jfehlig@suse.com
+
+- Update to 1.2.2
+  - Add all new APIs and constants in libvirt 1.2.2
+
+-------------------------------------------------------------------
+Fri Jan 17 13:05:45 MST 2014 - jfehlig@suse.com
+
+- Update to 1.2.1
+  - Add all new APIs and constants in libvirt 1.2.1
+
+-------------------------------------------------------------------
+Mon Dec  9 10:22:59 MST 2013 - jfehlig@suse.com
+
+- Add missing BuildRoot definition
+
+-------------------------------------------------------------------
+Mon Dec  9 11:29:49 UTC 2013 - speilicke@suse.com
+
+- Fix macro usage (Build on SLE)
+- Don't rm *.egg-info
+- No need for CFLAGS
+
+-------------------------------------------------------------------
+Wed Dec  4 16:19:05 MST 2013 - jfehlig@suse.com
+
+- Initial packaging of libvirt python bindings after being split
+  out of libvirt.git.  The libvirt python bindings are now separate
+  from libvirt and maintained in git://libvirt.org/libvirt-python.git
+

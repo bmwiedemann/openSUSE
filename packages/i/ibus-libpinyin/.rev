@@ -1,0 +1,225 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c435af174e50471b3cf5aa7e9124e0e4</srcmd5>
+    <version>1.6.91</version>
+    <time>1373315079</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>182494</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6619db1573a77553d201d9cd1d8b4359</srcmd5>
+    <version>1.6.91</version>
+    <time>1373654859</time>
+    <user>coolo</user>
+    <comment>- enable lua support
+- bring it as default in DVD, add Provides tag (forwarded request 182886 from hillwood)</comment>
+    <requestid>182889</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>6619db1573a77553d201d9cd1d8b4359</srcmd5>
+    <version>1.6.91</version>
+    <time>1379662638</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>c71fa9881f1182a01bfe0c340e82988a</srcmd5>
+    <version>1.6.91</version>
+    <time>1383231807</time>
+    <user>coolo</user>
+    <comment>Please copy this request to openSUSE 13.1! ibus-libpinyin need python-xdg but it would not be auto installed in openSUSE 13.1!</comment>
+    <requestid>205346</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c05221628b06797374bfc4e8de112228</srcmd5>
+    <version>1.6.92</version>
+    <time>1393601097</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 1.6.92
+  * minor bug fixes (forwarded request 224174 from hillwood)</comment>
+    <requestid>224175</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>c05221628b06797374bfc4e8de112228</srcmd5>
+    <version>1.6.92</version>
+    <time>1409301195</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3aba63543c0cebd1ab6802d0340119e9</srcmd5>
+    <version>1.6.99.20150203</version>
+    <time>1424430116</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Requires error. (forwarded request 286912 from hillwood)</comment>
+    <requestid>286913</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a727446129802c5133007493c0ac76eb</srcmd5>
+    <version>1.7.1</version>
+    <time>1428652333</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.1
+  * select the first item in shortcut editor
+  * fixes shortcut keys in setup dialog
+  * fixes default values (forwarded request 294865 from hillwood)</comment>
+    <requestid>294868</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>594994dab58f20f3b0eb51815ce4f00e</srcmd5>
+    <version>1.7.2git20150720</version>
+    <time>1444130706</time>
+    <user>dimstar_suse</user>
+    <comment>- Update tp 1.7.2
+  * Fix for Lua 5.2 API change (luaL_register is deprecated)
+  * update po files
+  * update clearPinyinUserData method
+  * update m_dictionaries
+  * use pinyin_load_addon_phrase_library function
+  * update setup dialog
+  * fixes a typo
+  * add libpinyin.appdata.xml 
+- Fix boo#947676 (forwarded request 335018 from hillwood)</comment>
+    <requestid>335019</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>689fc1ca2145cddbf7864bfb58d040bf</srcmd5>
+    <version>1.7.4</version>
+    <time>1451390356</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350732</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a674efedee4eaf17fbb6d3444f3c9592</srcmd5>
+    <version>1.7.92</version>
+    <time>1471105845</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418374</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5b85d9488ab86bab2c8ce695751fcef6</srcmd5>
+    <version>1.8.0</version>
+    <time>1473548081</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.0
+  * use libpinyin 1.6.0 (forwarded request 425956 from hillwood)</comment>
+    <requestid>425958</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6944a7340e83f6a14fe0ee2af8d8cc9b</srcmd5>
+    <version>1.9.1</version>
+    <time>1507896740</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 1.9.1
+  * add sort candidate option to setup dialog
+
+- Update 1.9.0
+  * change dconf key name to lower case
+  * use libpinyin 1.9.91
+  * fixes config in setup dialog</comment>
+    <requestid>529097</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c24839315ac887271be6d4c6daa8cd1f</srcmd5>
+    <version>1.9.3</version>
+    <time>1520253851</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.9.3
+  * Translate input method name in ibus menu
+  * Remove phrases.txt
+
+- Update to 1.9.2 
+  * fixes pinyin and bopomofo config
+
+- Update to 1.9.1
+- Update to 1.9.0 (forwarded request 582462 from hillwood)</comment>
+    <requestid>582464</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>6fdd4e39df995e824dddfa1b75258881</srcmd5>
+    <version>1.9.3</version>
+    <time>1522225778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590943</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>42939a2b83cd2fce821d563802bca51f</srcmd5>
+    <version>1.10.0</version>
+    <time>1527583015</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.10.0
+  * bug fixes (forwarded request 610976 from hillwood)</comment>
+    <requestid>610978</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ea9a40840f629159c66c8da607984d93</srcmd5>
+    <version>1.10.91</version>
+    <time>1539589466</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 641827 from hillwood)</comment>
+    <requestid>641828</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>04f2dfa54c327d4a52fb59cd58bc0198</srcmd5>
+    <version>1.10.91</version>
+    <time>1542282076</time>
+    <user>dimstar_suse</user>
+    <comment>Add ibus-libpinyin-fix-build-fault.patch: fix build error for edition 1.10 in openSUSE-Leap-15(boo#1115778). (forwarded request 648727 from qzhao)</comment>
+    <requestid>649007</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b76947dea9257efddca6c9dc64a705d1</srcmd5>
+    <version>1.10.92</version>
+    <time>1543224923</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify ibus-libpinyin.spec: Add python3 compile condition to 
+  avoid ibus-libpinyin-setup crash in Tumbleweed's mixed 
+  environment(boo#1116485).
+- Update version to 1.10.92
+  * Fixes Enter handling
+</comment>
+    <requestid>651955</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>ebe835bef6cbf77336a28adecc0c7315</srcmd5>
+    <version>1.10.92</version>
+    <time>1543953302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653529</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>860c2946b7188ec36fbde232057c6a9e</srcmd5>
+    <version>1.11.0</version>
+    <time>1550151399</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.11.0
+  * Fix keypad decimal
+  * Fix emoji candidates
+  * Support configurable opencc config
+- Drop ibus-libpinyin-fix-build-fault.patch, merged by upstream.
+
+  python3. (forwarded request 674886 from hillwood)</comment>
+    <requestid>674891</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>25e530b0a08c9999bd309c614b12c468</srcmd5>
+    <version>1.11.1</version>
+    <time>1559375862</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706554</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>1d4ffb1e12ae3296316d17ba4e0bb28a</srcmd5>
+    <version>1.11.1</version>
+    <time>1567680200</time>
+    <user>dimstar_suse</user>
+    <comment>Add a bug ID (forwarded request 728226 from hillwood)</comment>
+    <requestid>728228</requestid>
+  </revision>
+</revisionlist>

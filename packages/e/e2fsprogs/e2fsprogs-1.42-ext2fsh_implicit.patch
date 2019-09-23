@@ -1,0 +1,12 @@
+Index: lib/ext2fs/ext2fs.h
+===================================================================
+--- lib/ext2fs/ext2fs.h.orig
++++ lib/ext2fs/ext2fs.h
+@@ -62,6 +62,7 @@ extern "C" {
+ #include <string.h>
+ #include <time.h>
+ #include <errno.h>
++#include <unistd.h>
+ 
+ #if EXT2_FLAT_INCLUDES
+ #include "e2_types.h"

@@ -1,0 +1,1861 @@
+-------------------------------------------------------------------
+Fri Jul 12 21:29:45 UTC 2019 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Update to strace 5.2 (boo#1149727)
+  * Improvements
+    * Implemented syscall return status filtering with -e status=set option
+      and its aliases: -z (limit syscall printing to successful syscalls only)
+      and -Z (limit syscall printing to failed syscalls only).
+    * Implemented decoding of open_tree, move_mount, fsopen, fsconfig, fsmount,
+      and fspick syscalls.
+    * Enhanced decoding of bpf, clone, inotify_init, mbind, and set_mempolicy
+      syscalls.
+    * Updated lists of AT_*, AUDIT_*, BPF_*, CLONE_*, ETH_*, KEY_*, KVM_*, MPOL_*,
+      TIPC_*, and V4L2_* constants.
+    * Updated lists of ioctl commands from Linux 5.2.
+  * Bug fixes
+    * Fixed syscall tampering on powerpc, powerpc64, sparc, and sparc64 when
+      PTRACE_GET_SYSCALL_INFO is in use.
+    * Fixed build with cutting-edge toolchain.
+
+-------------------------------------------------------------------
+Wed May 22 14:45:21 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Update to strace 5.1
+  * Bug fixes
+    * Fixed decoding of last two arguments of clone syscall on riscv.
+  * Improvements
+    * Added C-SKY architecture support.
+    * Implemented decoding of SO_TIMESTAMP*_NEW control messages.
+    * Implemented decoding of clock_gettime64, clock_settime64, clock_adjtime64,
+      clock_getres_time64, clock_nanosleep_time64, timer_gettime64,
+      timer_settime64, timerfd_gettime64, timerfd_settime64, utimensat_time64,
+      pselect6_time64, ppoll_time64, io_pgetevents_time64, recvmmsg_time64,
+      mq_timedsend_time64, mq_timedreceive_time64, semtimedop_time64,
+      rt_sigtimedwait_time64, futex_time64, sched_rr_get_interval_time64,
+      pidfd_send_signal, io_uring_setup, io_uring_enter, and io_uring_register
+      syscalls.
+    * Enhanced decoding of bpf syscall.
+    * Wired up getegid, geteuid, getppid, io_pgetevents, statfs64, and fstatfs64
+      syscalls on alpha.
+    * Wired up kexec_file_load and migrate_pages syscalls on arm.
+    * Wired up io_pgetevents, perf_event_open, seccomp, and statx syscalls
+      on ia64.
+    * Wired up seccomp syscall on m68k.
+    * Wired up statx syscall on sh.
+    * Wired up pkey_mprotect, pkey_alloc, and pkey_free syscalls on alpha, hppa,
+      ia64, m68k, s390, s390x, sh, sparc, and sparc64.
+    * Wired up rseq syscall on alpha, hppa, ia64, m68k, sh, sparc, sparc64,
+      and xtensa.
+    * Wired up direct ipc syscalls on m68k, mips o32, powerpc, powerpc64,
+      s390, s390x, sh, sparc, sparc64, and x86.
+    * Updated lists of BPF_*, FAN_*, F_SEAL_*, IPV6_*, NT_*, PR_SPEC_*, SO_*,
+      and V4L2_* constants.
+    * Updated lists of ioctl commands from Linux 5.1.
+
+-------------------------------------------------------------------
+Thu Apr 25 06:41:52 UTC 2019 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Ignore testsuite failures
+
+-------------------------------------------------------------------
+Tue Mar 19 09:48:16 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Update to strace 5.0
+  * Changes in behavior
+    * -D option now implies -I4
+    * Diagnostic message is no longer printed if an attempt to restart a process
+      has failed with ESRCH.
+    * ASCII dump no longer tries to read the whole buffer at once.
+  * Improvements
+    * Changed the way tracees are handled: all pending tracees are now waited for
+      before further processing, this improves fairness of tracee processing.
+    * Enhanced xlat styles support configured by -X option.
+    * Enhanced decoding of bpf syscall.
+    * Enhanced pid formatting in strace-log-merge output.
+    * Wired up kexec_file_load and rseq syscalls on aarch64, arc, metag, nios2,
+      or1k, riscv, and tile architectures.
+    * Updated lists of BPF_*, BTRFS_*, FAN_*, IFLA_*, KERN_*, KVM_CAP_*, NDA_*,
+      NETNSA_*, NT_*, PR_*, REL_*, SECCOMP_*, SCTP_*, UDP_*, V4L2_*, and *_MAGIC
+      constants.
+    * Updated lists of ioctl commands from Linux 5.0.
+  * Bug fixes
+    * Fixed ordering of sockaddr_in6 fields.
+    * Fixed strace-k test on alpha.
+    * Fixed build on mips o32.
+    * Fixed build on NOMMU architectures.
+    * Fixed build in --with-libiberty=yes mode.
+    * Fixed potential NULL dereference during printing of line continuation
+      for syscalls that haven't been decoded.
+    * Fixed strace-log-merge error diagnostics.
+
+-------------------------------------------------------------------
+Tue Mar 12 12:58:09 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- disable test failing with kernel 5.0
+
+-------------------------------------------------------------------
+Thu Dec 27 10:29:58 UTC 2018 - schwab@linux-m68k.org
+
+- Update to strace 4.26
+  * Changes in behavior
+    * If strace is interrupted by a signal it handles (currently
+      one of HUP, INT, QUIT, PIPE, or TERM), strace terminates
+      itself with this signal.
+  * Improvements
+    * Implemented obtainment of system call information using
+      PTRACE_GET_SYSCALL_INFO ptrace API.
+    * Implemented decoding of PTRACE_GET_SYSCALL_INFO ptrace request.
+    * Implemented decoding of BLKGETZONESZ, BLKGETNRZONES, and RND* ioctl
+      commands.
+    * Enhanced xlat styles support configured by -X option.
+    * Enhanced internet address formatting in structureless contexts.
+    * Enhanced decoding of getsockopt SO_ERROR option.
+    * Enhanced error diagnostics when the first exec fails.
+    * Added %net as a short form of %network in syscall specifications.
+    * Updated lists of ABS_*, BPF_*, FAN_*, IFA_*, IFLA_*, KVM_CAP_*, NETLINK_*,
+      NTF_*, PR_SPEC_*, REL_*, SOL_*, TCA_*, and V4L2_* constants.
+    * Updated lists of ioctl commands from Linux 4.20.
+    * Enhanced manual page.
+  * Bug fixes
+    * Fixed "xlat_idx: Unexpected xlat value 0" warnings.
+    * Fixed sthyi output format on s390.
+    * Documented -X option in strace -h output.
+
+-------------------------------------------------------------------
+Tue Oct 30 18:56:17 UTC 2018 - schwab@linux-m68k.org
+
+- Update to strace 4.25
+  * Improvements
+    * Implemented decoding of KVM_CHECK_EXTENSION and NBD_* ioctl commands.
+    * Implemented decoding of SOL_XDP socket option names.
+    * Implemented decoding of AF_PACKET protocols in socket syscall.
+    * Implemented decoding of AF_AX25 and AF_X25 addresses, protocols,
+      and options.
+    * Implemented stack trace printing on receiving signals.
+    * Enhanced xlat styles support configured by -X option.
+    * Enhanced decoding of IFLA_*, NETCONFA_*, and SMC_DIAG_* netlink attributes.
+    * Wired up io_pgetevents syscall on arm, sparc, and sparc64.
+    * Updated lists of AF_*, AUDIT_*, BPF_*, IFLA_*, IN_*, IPSTATS_*,
+      IPV4_DEVCONF_*, NT_*, SCTP_*, SO_*, SOCK_*, SOL_*, and V4L2_* constants.
+    * Updated lists of ioctl commands from Linux 4.19.
+  * Bug fixes
+    * Fixed decoding of bit sets in evdev ioctl commands.
+    * Fixed decoding of EVIOCGBIT(0, ...) ioctl commands.
+    * Fixed test suite for the case when mlockall and unimplemented syscalls
+      are explicitly disabled by a seccomp filter.
+
+-------------------------------------------------------------------
+Tue Aug 14 06:49:56 UTC 2018 - jslaby@suse.com
+
+- Update to strace 4.24
+  * Contains a fix for occasionally failing aio.gen.test
+  * Improvements
+    * Implemented decoding of kvm vcpu exit reason (-e kvm=vcpu option),
+      requires Linux kernel version 4.16.0 or higher.
+    * Implemented decoding of KVM_SET_CPUID2 and KVM_GET_*_CPUID ioctl commands.
+- Remove statx-redefinition.patch (in upstream now)
+
+-------------------------------------------------------------------
+Wed Aug  1 13:19:36 UTC 2018 - schwab@suse.de
+
+- statx-redefinition.patch: Workaround incompatibility between
+  <sys/stat.h> and <asm/stat.h>
+
+-------------------------------------------------------------------
+Sat Jun 16 13:55:58 UTC 2018 - schwab@linux-m68k.org
+
+- Update to strace 4.23
+  * Changes in behaviour
+    * On x32 personality, 64-bit syscalls (such as readv) are now shown with "#64"
+      suffix instead of "64:" prefix.
+    * Changed error number output format: error numbers are consistently
+      printed as "-1 ECONST (Error description)"
+      for known errors and as "-1 (errno 123)" for unknown errors,
+      regardless of -e raw qualification settings.
+    * Unfetchable addresses inside arrays are now printed as comments.
+    * Obsolete IA-32 mode syscall names are no longer printed on ia64.
+  * Improvements
+    * Implemented libdw backend for -k option, configured at build time
+      using --with-libdw option.
+    * Added -X option for configuring xlat output formatting (addresses
+      Debian bug #692915).
+    * Added support for personality designation ("64", "32", or "x32") to syscall
+      qualifications in -e trace expressions.
+    * Implemented injection of syscalls with no side effects as an alternative
+      to injection of an invalid syscall (-e inject=SET:syscall= expression).
+    * Improved support for reproducible builds (addresses Debian bug #896016).
+    * Implemented decoding of BPF_PROG_QUERY and BPF_RAW_TRACEPOINT_OPEN bpf
+      syscall commands.
+    * Implemented decoding of INOTIFY_IOC_SETNEXTWD and PERF_EVENT_IOC_* ioctl
+      commands.
+    * Implemented decoding of PR_GET_SPECULATION_CTRL and PR_SET_SPECULATION_CTRL
+      prctl syscall options.
+    * Enhanced decoding of bpf, getsockopt, setsockopt, and socket syscalls.
+    * Enhanced decoding of NETLINK_KOBJECT_UEVENT and NETLINK_ROUTE protocols.
+    * Enhanced decoding of *_DIAG_MEMINFO netlink attributes.
+    * Enhanced decoding of BTRFS_*, FS_IOC_*, SIOCGIFHWADDR, and SIOCSIFHWADDR
+      ioctl commands.
+    * Enhanced decoding of AF_BLUETOOTH socket addresses.
+    * Implemented decoding of io_pgetevent syscall.
+    * Wired up rseq syscall.
+    * Updated lists of ADJ_*, BPF_*, BPF_F_*, BPF_PROG_TYPE_*, ETH_P_*, FPE_*,
+      IFF_*, IPPROTO_*, MAP_*, MS_*, MSG_*, NETLINK_*, PACKET_*, PROT_*, SCTP_*,
+      SECCOMP_FILTER_FLAG_*, SEGV_*, SEM_*, SHM_*, SW_*, V4L2_CID_*,
+      V4L2_CTRL_CLASS_*, and V4L2_PIX_FMT_* constants.
+    * Updated lists of ioctl commands from Linux 4.17.
+  * Bug fixes
+    * Fixed decoding of msgtyp argument of msgrcv syscall.
+    * Fixed fallback definitions for F_*, MCL_*, MSG_ZEROCOPY, SI_*,
+      and SOL_SOCKET constants.
+    * Fixed -e trace=%pure expression on mips.
+- Use libdw for unwinding on Leap 15 or later
+
+-------------------------------------------------------------------
+Thu Apr  5 13:59:40 UTC 2018 - schwab@suse.de
+
+- Update to strace 4.22
+  * Changes in behaviour
+    * When printing string data, '8' and '9' following an octal escape sequence
+      no longer lead to unabbreviated octal escape sequence output, as they used
+      to do.
+    * Angle brackets are now printed as octal number escape sequences
+      in the output of paths associated with file descriptors.
+    * Data dump for write syscalls (-e write) is performed regardless
+      of successfulness of these syscall (addresses Debian bug #436284).
+    * -r and -t options are now affect output independently.  Previously,
+      -r option led to ignoring of the -t option (addresses Debian bug #466195).
+  * Improvements
+    * Implemented delay injection (-e inject=SET:delay_enter= and
+      -e inject=SET:delay_exit= options).
+    * Added -A option for opening output files in append mode
+      (addresses Debian bug #528488).
+    * IPv6 addresses shown in socket information in -yy mode are now printed
+      in brackets.
+    * Enhanced decoding of bpf, prctl and ptrace syscalls.
+    * Enhanced decoding of BTRFS_IOC_INO_PATHS, BTRFS_IOC_LOGICAL_INO, and PTP_*
+      ioctl commands.
+    * Enhanced NETLINK_ROUTE protocol decoding.
+    * Updated lists of signal codes.
+    * Updated lists of BPF_*, BTN_*, ETH_P_*, INET_DIAG_BC_*, KEY_*, POLL*, RWF_*,
+      SCHED_FLAG_*, SCTP_* and error constants.
+    * Implemented block/character device number printing in -yy mode.
+    * Known pixel/SDR format names are printed as comments for pixelformat fields
+      in v4l2 structures.
+    * Enhanced decoding of kern_features syscall.
+    * Enhanced NETLINK_NETFILTER netlink protocol decoder.
+    * Optimized handling of large number of tracees.
+    * Improved wall clock time measurement in syscall count statistics
+      (-c -w option).
+    * Extended the range of allowed values in -e inject=...:retval= expression.
+    * Added i18n support.
+    * Updated lists of ioctl commands from Linux 4.16.
+    * Enhanced manual page.
+  * Bug fixes
+    * Fixed build on m68k.
+    * Fixed v4l2 pixelformat decoding on big-endian architectures.
+    * Fixed -O option.
+
+-------------------------------------------------------------------
+Wed Feb 14 22:30:56 UTC 2018 - schwab@linux-m68k.org
+
+- Update to strace 4.21
+  * Changes in behaviour
+    * Warning is now issued when -F option is used.
+    * Warning is now issued when a tracee with unsupported personality
+      is attached.
+    * Unknown syscall numbers are now printed in hexadecimal form.
+  * Improvements
+    * Implemented decoding of netlink descriptor attributes as file descriptors.
+    * Implemented decoding of hugetlb page size selection flags.
+    * Implemented decoding of BPF_PROG_TEST_RUN, BPF_PROG_GET_NEXT_ID,
+      BPF_MAP_GET_NEXT_ID, BPF_PROG_GET_FD_BY_ID, BPF_MAP_GET_FD_BY_ID,
+      and BPF_OBJ_GET_INFO_BY_FD commands of bpf syscall.
+    * Enhanced decoding of get_thread_area, memfd_create, modify_ldt,
+      perf_event_open, reboot, s390_guarded_storage, s390_pcio_mmio_read,
+      s390_pci_mmio_write, s390_runtime_instr, s390_sthyi, set_thread_area,
+      and shmget syscalls.
+    * Implemented decoding of KVM_* and DM_LIST_DEVICES ioctl commands.
+    * Implemented decoding of riscv_flush_icache syscall.
+    * Enhanced decoding of getsockopt and setsockopt syscalls for SOL_NETLINK
+      level.
+    * Enhanced decoding of BPF_MAP_CREATE command of bpf syscall.
+    * Print values returned by mq_open syscall and first arguments
+      of mq_getsetattr, mq_notify, mq_timedreceive, and mq_timedsend syscalls
+      as file descriptors.
+    * Added decoding of get_tls syscall on arm.
+    * Added -e trace=%pure option for tracing system calls with no arguments that
+      never fail.
+    * Updated lists of IPV6_*, MAP_*, MEMBARRIER_CMD_*, MSG_*, NT_*, PKEY_*,
+      SHM_*, and TCP_* constants.
+    * Added manual page for the strace-log-merge command.
+    * Updated lists of ioctl commands from Linux 4.15.
+    * Implemented biarch support for s390x.
+    * Implemented an optional support for symbol demangling in strace -k output
+      (activated by --with-libiberty configure option).
+    * Information about availability of demangling and reliable personality
+      decoding (on architectures with multiple personalities) is now available
+      in strace -V output.
+    * Added decoding of pkey_alloc, pkey_free, and pkey_mprotect syscalls on
+      powerpc and powerpc64.
+    * Enhanced manual page.
+  * Bug fixes
+    * Fixed multi-personality support in cross builds.
+    * Added mq_getsetattr, mq_notify, mq_open, mq_timedreceive, and mq_timedsend
+      syscalls to %desc tracing set.
+    * Fixed path tracing support for mmap syscalls with indirect arguments and
+      for old select syscall.
+    * Fixed decoding of arm-specific (__ARM_NR_*) syscalls.
+    * Fixed open mode flags decoding.
+    * Fixed corner cases in handling of strace -ff -ttt logs by strace-log-merge.
+    * Error counts that exceed one billion are now printed correctly in call
+      summary output.
+    * Fixed call summary header for x32 personality.
+    * Changes of tracee personalities are reported more reliably.
+    * Fixed the case when strace attaches to a tracee being inside exec and its
+      first syscall stop is syscall-exit-stop instead of syscall-enter-stop,
+      which messed up all the syscall state tracking.
+    * Fixed printing of higher 32 bits of the return value for x32 personality.
+- update-futex-test-in-accordance-with-kernel-s-v4.15-.patch: removed
+
+-------------------------------------------------------------------
+Thu Jan 25 15:04:49 UTC 2018 - jslaby@suse.com
+
+- add update-futex-test-in-accordance-with-kernel-s-v4.15-.patch
+
+-------------------------------------------------------------------
+Tue Nov 14 17:30:50 UTC 2017 - schwab@linux-m68k.org
+
+- Update to strace 4.20
+  * Improvements
+    * Implemented decoding of NETLINK_NETFILTER netlink message types and flags.
+    * Implemented decoding of SECCOMP_GET_ACTION_AVAIL operation of seccomp
+      syscall.
+    * Updated lists of ARPHRD_*, BPF_*, ETH_P_*, LOOP_*, MADV_*,
+      MEMBARRIER_CMD_*, MFD_*, SECCOMP_*, SO_*, SOL_*, TCP_*, and UFFD_FEATURE_*
+      constants.
+    * Added decoding of statx syscall on hppa.
+    * Updated lists of ioctl commands from Linux 4.14.
+  * Bug fixes
+    * Fixed powerpc personality support on powerpc64.
+
+-------------------------------------------------------------------
+Tue Sep  5 17:29:48 UTC 2017 - schwab@linux-m68k.org
+
+- Update to strace 4.19
+  * Changes in behaviour
+    * Changed formatting of personality names on tile architecture in order
+      to make it in line with other multi-personality architectures.
+    * Changed field output order in struct v4l2_requestbuffers to improve in/out
+      field formatting.
+    * Changed handling of multiple signal= specifications in an injection
+      expression: multiple specification now leads to error instead of implicit
+      usage the last specification.
+  * Improvements
+    * Enhanced decoding of optlen argument of getsockopt syscall.
+    * Enhanced decoding of SO_LINGER option of getsockopt and setsockopt syscalls.
+    * Enhanced decoding of SO_PEERCRED option of getsockopt syscall.
+    * Enhanced decoding of IP_ADD_MEMBERSHIP, IP_DROP_MEMBERSHIP,
+      IPV6_ADD_MEMBERSHIP, IPV6_DROP_MEMBERSHIP, IPV6_JOIN_ANYCAST,
+      IPV6_LEAVE_ANYCAST, MCAST_JOIN_GROUP, and MCAST_LEAVE_GROUP options
+      of setsockopt syscall.
+    * Enhanced decoding of KEYCTL_DH_COMPUTE operation of keyctl syscall
+      (KDF parameters decoding).
+    * Implemented decoding of KEYCTL_RESTRICT_KEYRING operation of keyctl syscall.
+    * Enhanced decoding of UFFDIO_API ioctl command.
+    * Enhanced decoding of BPF_PROG_LOAD, BPF_MAP_CREATE, BPF_MAP_LOOKUP_ELEM,
+      and BPF_MAP_GET_NEXT_KEY commands of bpf syscall.
+    * Implemented decoding of linux socket filter programs specified
+      for SO_ATTACH_FILTER and SO_ATTACH_REUSEPORT_CBPF socket options.
+    * Implemented decoding of inet_diag_req_v2, inet_diag_req_compat,
+      packet_diag_msg, and smc_diag_msg netlink attributes of NETLINK_SOCK_DIAG.
+    * Implemented NETLINK_SELINUX protocol specific decoding.
+    * Implemented decoding of netlink message ack flags.
+    * Implemented decoding of nlmsgerr netlink attributes.
+    * Implemented basic protocol specific decoding of NETLINK_CRYPTO.
+    * Implemented decoding of crypto_user_alg netlink attributes
+      of NETLINK_CRYPTO.
+    * Implemented basic protocol specific decoding of addr, addrlabel, dcb, link,
+      mdb, neigh, neightbl, netconf, nsid, route, rule, tc, and tca messages
+      of NETLINK_ROUTE.
+    * Implemented decoding of NETLINK_KOBJECT_UEVENT messages.
+    * Improved handling of unexpected tracees (the ones that cloned with
+      CLONE_PARENT/CLONE_PTRACE or called PTRACE_TRACEME on themselves): they
+      are now PTRACE_DETACH'ed instead of PTRACE_CONT'ed.
+    * Updated lists of BPF_*, KEY_*, RWF_*, SCM_*, SO_*, and *_MAGIC constants.
+    * Added decoding of arch_prctl syscall on x86.
+    * Added decoding of seccomp, bpf, userfaultfd, membarrier, mlock2,
+      copy_file_range, preadv2, pwritev2, and statx on alpha.
+    * Added decoding of statx syscall on microblaze.
+    * Added decoding of s390_guarded_storage syscall on s390.
+    * Updated lists of ioctl commands from Linux 4.13.
+    * Enhanced manual page.
+  * Bug fixes
+    * Fixed printing of group_req structure on non-native personalities.
+    * Fixed output formatting of blkpg_ioctl_arg, dm_name_list, and iocb
+      structures.
+    * Fixed formatting of nul-terminated strings which have kernel-imposed size
+      limit.
+    * Fixed printing of paths that hit PATM_MAX limit in order to match kernel's
+      behaviour.
+    * Fixed build warnings on Android mips64.
+    * Fixed unused function "is_negated_errno" build warning when built
+      with clang.
+    * Fixed syscall number and arguments retrieval behaviour on sparc64 and
+      mips o32 after prctl(PR_SET_DUMPABLE, 0) makes PTRACE_PEEKTEXT impossible
+      to use if Linux kernel has commit v4.10-rc1~114^2~2.
+    * Fixed path tracing for execveat, symlink, symlinkat, inotify_add_watch,
+      and inotify_init syscalls.
+    * Fixed personality switch printing on sparc64 and risc-v.
+
+-------------------------------------------------------------------
+Wed Jul  5 16:09:50 UTC 2017 - schwab@linux-m68k.org
+
+- Update to strace 4.18
+  * Improvements
+    * Implemented decoding of SCM_TIMESTAMP* control messages.
+    * Implemented decoding of netlink NLMSG_DONE messages.
+    * Implemented decoding of netlink generic nlmsg_type and nlmsg_flags.
+    * Implemented decoding of NETLINK_AUDIT, NETLINK_NETFILTER, NETLINK_ROUTE,
+      NETLINK_SELINUX, NETLINK_SOCK_DIAG, and NETLINK_XFRM message types.
+    * Implemented decoding of NETLINK_GENERIC protocol families.
+    * Implemented basic protocol specific decoding of AF_INET, AF_INET6,
+      AF_NETLINK, AF_PACKET, AF_SMC, and AF_UNIX messages of NETLINK_SOCK_DIAG.
+    * Implemented basic decoding of netlink attributes.
+    * Implemented basic protocol specific decoding of AF_INET, AF_NETLINK,
+      AF_PACKET, AF_SMC, and AF_UNIX netlink attributes of NETLINK_SOCK_DIAG.
+    * Implemented decoding of inet_diag_msg, netlink_diag_msg, and unix_diag_msg
+      netlink attributes of NETLINK_SOCK_DIAG.
+    * Updated lists of ARPHRD_*, KEYCTL_*, NDIAG_SHOW_*, RTM_*, SCM_*, SCTP_*,
+      SO_*, V4L2_*, and prctl ARCH_* constants.
+    * Updated lists of ioctl commands from Linux 4.12.
+  * Bug fixes
+    * In interactive mode (-I2), those signals that were blocked at startup
+      will remain blocked for the whole period of strace execution.
+    * strace no longer resets SIGCHLD handler in tracees to the default action.
+    * When traced command is terminated by a blocked signal, strace unblocks
+      that signal to ensure its own termination with the same signal.
+    * Fixed corner cases in decoding of old sigaction syscall.
+    * Fixed build with old kernel headers on mips.
+    * Fixed build on aarch64 and tile with glibc >= 2.26.
+    * Fixed build on arc and nios2.
+
+-------------------------------------------------------------------
+Thu May 25 11:18:56 UTC 2017 - schwab@linux-m68k.org
+
+- Update to strace 4.17
+  * Changes in command line syntax
+    * Syscall classes specified in -e trace= option now have % prefix (like
+      -e trace=%process).  Old style class names without leading % are still
+      supported, but considered deprecated now.
+  * Improvements
+    * Optimized syscall filtering.
+    * Improved representation of timestamps.
+    * Enhanced decoding of sched_setattr syscall.
+    * Added -e trace=%stat option for tracing variants of stat syscall.
+    * Added -e trace=%lstat option for tracing variants of lstat syscall.
+    * Added -e trace=%fstat option for tracing variants of fstat and fstatat
+      syscalls.
+    * Added -e trace=%%stat option for tracing syscalls used for querying file
+      status information (stat, lstat, fstat, fstatat, statx, and their
+      variations).
+    * Added -e trace=%statfs option for tracing statfs, statfs64 and statvfs
+      syscalls.
+    * Added -e trace=%fstatfs option for tracing fstatfs, fstatfs64 and fstatvfs
+      syscalls.
+    * Added -e trace=%%statfs option for tracing syscalls used for querying file
+      system statistics information (statfs-like, fstatfs-like and ustat).
+    * Added -e trace=/regex option for filtering syscalls using regular
+      expressions.
+    * Added support for prepending of question mark before syscall qualification
+      in -e trace expressions in order to suppress error in case no syscalls
+      matched the provided qualification.
+    * Implemented decoding of signal mask in rt_sigreturn syscall on alpha, arc,
+      arm, avr32, bfin, cris, hppa, m68k, metag, microblaze, mips, nios2, or1k,
+      powerpc, powerpc64, riscv, sh, sh64, sparc, sparc64, tile, x86, and xtensa
+      architectures.
+    * Implemented decoding of statx syscall.
+    * Implemented decoding of NS_* ioctl commands.
+    * Implemented decoding of the remaining V4L2_BUF_TYPE_* types.
+    * Implemented decoding of VIDIOC_[SG]_TUNER ioctl commands.
+    * Implemented decoding of NLMSG_ERROR netlink messages.
+    * Improved decoding of BPF_PROG_ATTACH command of bpf syscall.
+    * Improved decoding of misplaced parts in DM_* ioctl commands.
+    * Updated lists of ioctl commands from Linux 4.11.
+  * Bug fixes
+    * Fixed decoding of flags argument of preadv2 and pwritev2 syscalls on x32.
+    * Fixed the number of arguments and tracing flags of alpha specific syscalls.
+    * Fixed decoding of old sigsuspend syscall on alpha, cris, mips, powerpc,
+      powerpc64, sh, sh64, sparc, and sparc64.
+    * Fixed decoding of sgetmask and ssetmask syscalls on 64-bit architectures.
+    * Fixed decoding of netlink messages received within struct msghdr.
+    * Worked around a bug in miscompiled aarch64 kernels leading to the 3rd
+      argument of sched_getattr syscall being not quite 32-bit.
+    * Fixed corner cases of printing inaccessible times argument of utimes
+      and futimesat syscalls.
+
+-------------------------------------------------------------------
+Wed Feb 15 10:10:27 UTC 2017 - schwab@linux-m68k.org
+
+- Update to strace 4.16
+  * Improvements
+    * Implemented syscall return value injection (-e inject=SET:retval= option).
+    * Implemented signal injection (-e inject=SET:signal= option).
+    * Implemented decoding of SUID_DUMP_* constants in PR_[GS]ET_DUMPABLE.
+    * Implemented decoding of all SG_* ioctl commands.
+    * Implemented decoding of ustat syscall.
+    * Implemented decoding of BPF_OBJ_PIN, BPF_OBJ_GET, BPF_PROG_ATTACH,
+      and BPF_PROG_DETACH commands of bpf syscall.
+    * Enhanced decoding of sg_io_hdr and sg_io_v4 structures.
+    * Enhanced decoding of get_robust_list, getrandom, io_submit, set_robust_list
+      syscalls.
+    * Enhanced decoding of entities of kernel long type on x32 and mips n32 ABIs.
+    * Updated lists of IP_*, IPV6_*, and LOOP_* constants.
+    * Updated lists of ioctl commands from Linux 4.10.
+    * Added decoding of recently added syscalls on avr32, microblaze, ppc,
+      and ppc64.
+  * Bug fixes
+    * Fixed pathmatch of oldselect syscall on 64-bit architectures.
+    * Fixed decoding of mmap2 syscall on s390 when arguments are not available.
+    * Fixed decoding of kexec_file_load, mprotect, pkey_mprotect, prctl, preadv*,
+      and pwritev* syscalls on x32.
+    * Fixed printing of string arguments of getxattr and setxattr syscalls
+      when -s option is used to limit the printed string size.
+    * Fixed decoding of ifconf, ifreq, and loop_info structures on non-native
+      personalities.
+    * Fixed decoding of SG_* and LOOP_* ioctl commands.
+    * Fixed build on mips with musl libc.
+    * Fixed cross-building of ioctlsort.
+    * Applied minor formatting fixes to the manual page.
+
+-------------------------------------------------------------------
+Wed Dec 14 11:07:04 UTC 2016 - schwab@suse.de
+
+- Update to strace 4.15
+  * Changes in behavior
+    * Time stamps are now printed according to ISO 8601.
+    * Changed output format of val3 parameter of futex FUTEX_WAKE_OP operation.
+    * The last argument of mincore, sched_getaffinity, and sched_setaffinity
+      syscalls is now formatted as an array.
+  * Improvements
+    * Implemented syscall fault injection (-e fault=... option).
+    * Implemented decoding of DM_* ioctl commands.
+    * Implemented decoding of attr parameter of perf_event_open syscall.
+    * Implemented decoding of pkey_alloc, pkey_free, and pkey_mprotect syscalls.
+    * Implemented dumping of mq_timedsend and mq_timedreceive syscalls.
+    * Implemented decoding of PR_SET_FP_MODE and PR_GET_FP_MODE operations
+      of prctl syscall.
+    * Implemented PTRACE_GETREGS API support on m68k.
+    * Updated lists of ARCH_*, BPF_*, BTRFS_*, FALLOC_*, MS_*, *_MAGIC,
+      and V4L2_* constants.
+    * Updated lists of ioctl commands from Linux 4.9.
+    * Added decoding of recently added syscalls on arc, x32, and xtensa.
+    * Enhanced manual page.
+  * Bug fixes
+    * Fixed corner cases in decoding of exit, exit_group, futimesat, getgroups,
+      getresuid, init_module, inotify_init1, kcmp, kexec_load, lookup_dcookie,
+      mq_getsetattr, mq_notify, mq_open, mq_timedreceive, mq_timedsend,
+      name_to_handle_at, prctl, process_vm_readv, process_vm_writev, setfsuid,
+      setgroups, setns, unshare, and utimes syscalls.
+    * Fixed handling of verbose flag in printing of controls array
+      of struct v4l2_ext_controls.
+    * Fixed omission of field names in the output of capability, sigaction,
+      sigevent, statfs, timespec, timeval, and utimbuf structures.
+    * Fixed printing of unknown syscalls in siginfo structure.
+    * Fixed decoding of ioctl constants on m68k.
+    * Fixed cris architecture support.
+    * Fixed cross build when host compiler does not support the same
+      set of warning flags as the cross compiler.
+    * Fixed build on SLE10 and SLE11.
+
+-------------------------------------------------------------------
+Wed Oct  5 08:46:49 UTC 2016 - schwab@suse.de
+
+- Update to strace 4.14
+  * Changes in behavior
+    * When using -p option without a command and no processes has been attached,
+      strace exits with exit status 1.
+  * Improvements
+    * Added printing of the mode argument of open and openat syscalls
+      when O_TMPFILE flag is set.  (Addresses Fedora bug #1377846).
+    * Enhanced -e abbrev=set, -e raw=set, and -e verbose=set.
+    * Enhanced decoding of futex, keyctl, quotactl, timerfd_settime,
+      and aio family syscalls.
+    * Implemented fetching of the 7th subcall argument on mips o32.
+    * Updated lists of BPF_*, ETH_P_*, KEXEC_ARCH_*, SCTP_*, TCP_*, and *_MAGIC
+      constants.
+    * Updated lists of ioctl commands from Linux 4.8.
+    * Added decoding of new syscalls on sh and sh64.
+    * Added RISC-V architecture support.
+  * Bug fixes
+    * Marked io_setup and io_destroy as memory mapping related syscalls.
+    * Fixed leakage of placeholder descriptors to tracees.
+    * Fixed printing of mode_t, umode_t, and umask types.
+    * Fixed decoding of iovec arrays without a limit on total data size.
+    * Fixed decoding of fadvise64, fallocate, futex, keyctl, quotactl, readahead,
+      and ipc family syscalls.
+    * Fixed decoding of invalid syscalls mapped to indirect subcalls.
+    * Fixed decoding of struct btrfs_ioctl_vol_args_v2 on non-native
+      personalities.
+    * Fixed decoding of PTRACE_DETACH on sparc and sparc64.
+    * Fixed decoding of struct stat64 on sparc64.
+    * Fixed decoding of uid and gid-related syscalls on sparc64.
+    * Fixed decoding of the forth argument of semctl syscall on sparc64.
+    * Fixed values of tty ioctl constants on sparc64.
+    * Fixed sparc personality support on sparc64.
+
+-------------------------------------------------------------------
+Fri Jul 29 11:46:54 UTC 2016 - schwab@linux-m68k.org
+
+- Update to strace 4.13.
+  * Improvements
+    * Implemented a general netlink socket parser.
+    * Enhanced decoding of socket addresses.
+    * Enhanced decoding of cmsghdr, msghdr, and mmsghdr structures.
+    * Enhanced decoding of accept, accept4, bind, getpeername, getsockname,
+      ipc, recvfrom, recvmsg, recvmmsg, sendto, sendmmsg, and socketcall
+      syscalls.
+    * Updated lists of AF_*, BPF_MAP_TYPE_*, KEY_*, KEYCTL_*, RWF_*, SS_*,
+      and *_MAGIC constants.
+    * Updated lists of ioctl commands from Linux 4.7.
+  * Bug fixes
+    * Fixed decoding of pid_t argument of prlimit64 syscall.
+    * Fixed sign extension issues in the parser of struct rusage.
+    * Fixed race condition in decoding of timeout argument of recvmmsg and
+      rt_sigtimedwait syscalls.
+    * Fixed build with fresh linux kernel headers.
+
+-------------------------------------------------------------------
+Wed Jun  1 16:21:56 UTC 2016 - schwab@linux-m68k.org
+
+- Update to strace 4.12.
+  * Improvements
+    * Implemented simultaneous use of -p option and tracing of a command.
+    * Implemented caching of netlink conversations to reduce amount of time
+      spent in decoding socket details in -yy mode.
+    * Implemented -yy mode decoding of protocol:portid pairs associated with
+      netlink socket descriptors.
+    * Implemented decoding of copy_file_range, preadv2, and pwritev2 syscalls.
+    * Implemented dumping of preadv, preadv2, pwritev, pwritev2, and vmsplice
+      syscalls.
+    * Implemented decoding of BTRFS_* and UFFDIO_* ioctl commands.
+    * Enhanced decoding of BLK*, EVIOC*, RTC_*, and VIDIOC_* ioctl commands.
+    * Enhanced decoding of fstatfs, fstatfs64, get_mempolicy, getdents,
+      getdents64, getgroups, getpriority, kill, mbind, migrate_pages, mknod,
+      mknodat, personality, poll, ppoll, quotactl, rt_sigpending,
+      rt_sigqueueinfo, rt_sigtimedwait, rt_tgsigqueueinfo, sched_getaffinity,
+      sched_setaffinity, seccomp, set_mempolicy, setgroups, setpriority, statfs,
+      statfs64, tgkill, waitid, and xattr family syscalls.
+    * Enhanced decoding of getxpid, getxuid, and getxgid syscalls on alpha.
+    * Enhanced decoding of pipe syscall on alpha, ia64, mips, sh, and sparc.
+    * Added decoding of bind, listen, and setsockopt direct syscalls on sparc.
+    * Added decoding of osf_statfs64 and osf_fstatfs64 syscalls on alpha.
+    * Added decoding of fadvise64 and fadvise64_64 on s390.
+    * Updated lists of AF_*, BPF_MAP_TYPE_*, CLONE_*, EPOLL*, IPV6_*, MADV_*,
+      MSG_*, PTRACE_*, SEGV_*, SO_*, SOL_*, *_MAGIC, and quotactl constants.
+    * Updated lists of ioctl commands from Linux 4.6.
+  * Bug fixes
+    * Fixed build on arc, metag, nios2, or1k, and tile architectures.
+    * Fixed decoding of 32-bit times syscall return value on 64-bit architectures.
+    * Fixed decoding of mlock2 syscall on sparc.
+    * Fixed decoding of osf_shmat syscall on alpha.
+    * Fixed decoding of syscalls unknown to the kernel on s390/s390x.
+    * Fixed decoding of preadv syscall in case of short read.
+    * Fixed decoding and dumping of readv syscall in case of short read.
+    * Fixed dumping of recvmsg and recvmmsg syscalls in case of short read.
+    * Fixed decoding of mincore syscall's last argument.
+    * Fixed remaining errors in mapping between syscall numbers and numbers
+      of syscall arguments.
+    * Applied various fixes to strace-graph script.
+
+-------------------------------------------------------------------
+Sat Apr 16 12:44:28 UTC 2016 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Drop alpha/sparc conditionals, neither is supported
+- Drop ppc/ppc64 provides/obsolete as no longer needed
+- Do not export OPTFLAGS as they are used anyways
+
+-------------------------------------------------------------------
+Sat Dec 26 15:46:23 UTC 2015 - schwab@linux-m68k.org
+
+- Update to strace 4.11.
+  * Changes in behavior
+    * Some syscalls have different names depending on architecture and
+      personality.  In these cases, syscall filtering and printing now
+      consistently uses the names that match corresponding __NR_* kernel
+      macros of the tracee's architecture and personality.
+    * Added strace prefix to all diagnostic messages.
+  * Improvements
+    * Enhanced and extended test suite.
+    * Implemented reliable tracing of processes whose personality differs
+      from the personality of strace, fixed decoding of 32-bit personality
+      syscalls on 64-bit architectures.
+    * When some data referenced by syscall arguments is irrelevant or cannot
+      be read from tracee's memory, strace now prints its address consistently.
+    * When a syscall is restarted using restart_syscall mechanism, strace now
+      shows the syscall name on architectures that expose this information.
+    * Print values returned by epoll_create1, eventfd, eventfd2, fanotify_init,
+      inotify_init1, perf_event_open, pipe, pipe2, signalfd, signalfd4, socket,
+      socketpair, timerfd, and timerfd_create syscalls, as well as F_DUPFD and
+      F_DUPFD_CLOEXEC fcntl commands, as file descriptors.
+    * Optimized decoding of indirect socket syscalls.
+    * Implemented decoding of nanoseconds along with seconds in stat family
+      syscalls (addresses Fedora bug #1251176).
+    * Implemented decoding of struct statfs.f_flags in statfs syscall.
+    * Implemented decoding of siginfo_t.si_syscall and siginfo_t.si_arch
+      in SIGSYS signal.
+    * Implemented decoding of indirect syscall on mips o32.
+    * Implemented decoding of IPPROTO_IP control messages.
+    * Implemented decoding of setsockopt syscall multicast arguments.
+    * Enhanced decoding of struct sigevent.
+    * Enhanced decoding of block, loop, mtd, ptp, rtc, SG_IO, socket, tty,
+      and v4l2 ioctl syscall arguments.
+    * Enhanced decoding of epoll_create, fcntl, fcntl64, futex, getdents,
+      getdents64, getsockopt, io_*, mount, msgctl, prctl, quotactl, recvfrom,
+      sendfile, setsockopt, and shmctl syscalls.
+    * Implemented decoding of bpf, execveat, ioperm, iopl, kcmp, kexec_file_load,
+      lookup_dcookie, membarrier, memfd_create, mlock2, name_to_handle_at,
+      open_by_handle_at, sched_getattr, sched_setattr, and userfaultfd syscalls.
+    * Updated lists of AF_*, EPOLL_*, FALLOC_FL_*, F_*, INPUT_PROP_*, IPPROTO_*,
+      IPV6_*, IP_*, KEY_*, LOCK_*, MNT_*, MS_*, PACKET_*, PERF_FLAG_*, PF_*,
+      PR_*, PTRACE_O_*, RENAME_*, SCTP_*, SECBIT_*, SO_*, TCP_*, and siginfo_t
+      constants.
+    * Added Nios II architecture support.
+    * Added new syscall entries to match Linux 4.4.
+  * Bug fixes
+    * Fixed potential short read of strings from tracee's memory.
+    * Fixed -qq option in conjunction with -o option.
+    * Fixed filtering of <unavailable> syscalls.
+    * Fixed decoding of ioctl syscall command on aarch64 and 32-bit architectures
+      with 64-bit aligned structures.
+    * Fixed decoding of eventfd2, epoll_create1, signalfd4, and sync_file_range2
+      syscall flags arguments.
+    * Fixed decoding of 4th argument of clock_nanosleep syscall.
+    * Fixed decoding of getpagesize syscall on m68k.
+    * Fixed decoding of getrandom and seccomp syscalls on aarch64.
+    * Fixed decoding of timezone argument of gettimeofday and settimeofday
+    * syscalls.
+    * Fixed decoding of offset argument of mmap2 syscall on arm, sparc,
+      and sparc64.
+    * Fixed decoding of pipe syscall on alpha and mips.
+    * Fixed decoding of pipe2 syscall on ia64, sh, sparc, and sparc64.
+    * Fixed decoding of signal mask argument of pselect6 syscall on x32.
+    * Fixed decoding of signal mask of rt_sigreturn syscall on aarch64, m68k,
+      and x32.
+    * Fixed decoding of 4th argument of semctl indirect syscall.
+    * Fixed decoding of sa_restorer and sa_mask of sigaction syscall on m68k.
+    * Fixed decoding of statfs64 and fstatfs64 syscalls on arm eabi.
+    * Fixed decoding of struct dirent on x32.
+    * Fixed decoding of times syscall return value on mips n32 and x32.
+    * Fixed decoding of path argument of umount2 syscall
+      (addresses Debian bug #785050).
+    * Worked around a kernel bug in tracing privileged executables.
+    * Fixed various errors in mapping between syscall numbers and associated
+      information like the number of syscall arguments, the name of syscall,
+      and syscall decoder.
+- All patches removed.
+  0001-aarch64-fix-rt_sigreturn-decoding.patch
+  0002-m68k-define-HAVE_SA_RESTORER.patch
+  0003-Fix-decoding-of-mmap2-for-arm.patch
+  0005-tests-select.test-handle-architectures-using-pselect.patch
+  0006-aarch64-fix-ioctl-decoding.patch
+  0007-m68k-fix-sigreturn-decoding.patch
+  0008-Fix-crash-in-ipc_sem-test.patch
+  0009-tests-ipc_-match-IPC_64-flag.patch
+  0010-semctl-fix-indirect-syscall-decoding.patch
+  0011-Fix-stat64-st_-acm-time-decoding-for-personalities-w.patch
+  0012-tests-verify-that-all-patterns-match.patch
+  0013-aarch64-properly-decode-generic-syscalls.patch
+  0014-stat64-v.test-add-newfstatat-syscall-support.patch
+  0015-tests-uid-use-fchown-instead-of-chown.patch
+
+-------------------------------------------------------------------
+Mon Nov 16 09:19:37 UTC 2015 - werner@suse.de
+
+- Add some package to the build requires to make test suite work.
+  That is haveged to generate entropy, sysvinit-tools to have the
+  tools to control start and stop of haveged, and the package time
+  to make the test on /usr/bin/time possible.
+
+-------------------------------------------------------------------
+Thu Oct 22 06:06:58 UTC 2015 - normand@linux.vnet.ibm.com
+
+- remove strace_ppc64le_bypass_getrandom_hang.patch
+  as cause of bug boo#946928 identified in builders setup
+
+-------------------------------------------------------------------
+Mon Sep 28 14:20:49 UTC 2015 - normand@linux.vnet.ibm.com
+
+- new patch to bypass bug boo#946928
+  strace_ppc64le_bypass_getrandom_hang.patch
+
+-------------------------------------------------------------------
+Wed May 20 09:29:35 UTC 2015 - schwab@suse.de
+
+- Disable libunwind support on aarch64
+  (../strace: Can't initiate libunwind: Input/output error)
+
+-------------------------------------------------------------------
+Sun Mar 29 17:02:23 UTC 2015 - jengelh@inai.de
+
+- Drop strace-32bit, since the normal strace build is powerful
+  enough. [bnc#924827]
+
+-------------------------------------------------------------------
+Tue Mar 24 09:02:49 UTC 2015 - schwab@suse.de
+
+- 0001-aarch64-fix-rt_sigreturn-decoding.patch,
+  0002-m68k-define-HAVE_SA_RESTORER.patch,
+  0003-Fix-decoding-of-mmap2-for-arm.patch,
+  0005-tests-select.test-handle-architectures-using-pselect.patch,
+  0006-aarch64-fix-ioctl-decoding.patch,
+  0007-m68k-fix-sigreturn-decoding.patch,
+  0008-Fix-crash-in-ipc_sem-test.patch,
+  0009-tests-ipc_-match-IPC_64-flag.patch,
+  0010-semctl-fix-indirect-syscall-decoding.patch,
+  0011-Fix-stat64-st_-acm-time-decoding-for-personalities-w.patch,
+  0012-tests-verify-that-all-patterns-match.patch,
+  0013-aarch64-properly-decode-generic-syscalls.patch,
+  0014-stat64-v.test-add-newfstatat-syscall-support.patch,
+  0015-tests-uid-use-fchown-instead-of-chown.patch: Patches from upstream
+  to fix testsuite failure.
+- Enable libunwind support (strace -k).
+
+-------------------------------------------------------------------
+Fri Mar 20 20:32:38 UTC 2015 - crrodriguez@opensuse.org
+
+- Update to strace 4.10 
+* Improvements
+  * Added -yy option to print protocol and address information associated with
+    socket descriptors.
+  * Extended "-e read=set" and "-e write=set" options to cover sendmsg,
+    recvmsg, sendmmsg, and recvmmsg syscalls.
+  * Implemented full 32-bit decoding of ioctl commands
+    (addresses Debian bug #692913 and Fedora bug #902788).
+  * Implemented PTRACE_GETREGS API support on ia64.
+  * Implemented PTRACE_GETREGS API support on mips.
+  * Implemented PTRACE_GETREGSET API support on s390/s390x.
+  * Implemented decoding of getrandom and seccomp syscalls.
+  * Implemented full decoding of 64-bit capability sets.
+  * Implemented decoding of all prctl commands.
+  * Implemented decoding of parametrized ioctl commands.
+  * Implemented decoding of evdev ioctl commands.
+  * Implemented decoding of v4l ioctl commands.
+  * Implemented decoding of SG_IO v4 ioctl commands.
+  * Implemented decoding of FIFREEZE/FITHAW/FITRIM ioctl commands.
+  * Implemented decoding of FALLOC_FL_* fallocate flags.
+  * Implemented decoding of rt_sigreturn signal mask on aarch64,
+    x32, and x86_64.
+  * Enhanced socket decoder to support bluetooth sockets.
+  * Enhanced decoding of unlisted ioctl commands.
+  * Enhanced decoding of getsockopt and setsockopt syscall.
+  * Enhanced decoding of sysinfo syscall.
+  * Enhanced decoding of struct cmsghdr.
+  * Enhanced decoding of wait status.
+  * Enhanced aio support on non-x86 architectures by using external libaio.h.
+  * Added O_TMPFILE to the list of recognized open mode flags.
+  * Updated the list of filesystem type constants that is used in decoding
+    statfs family syscalls.
+  * Updated lists of CAP_*, PR_*, PTRACE_*, SCHED_*, SO_*, SOL_*, SWAP_FLAG_*,
+    and TFD_* constants.
+  * Updated lists of signal constants from Linux 3.19.
+  * Updated lists of errno constants from Linux 3.19.
+  * Updated lists of ioctl commands from Linux 3.9.
+  * Added new syscall entries to match Linux 3.19.
+
+* Bug fixes
+  * Fixed various errors in mapping between syscall numbers and associated
+    information like the number of syscall arguments, the name of syscall,
+    and syscall decoder.
+  * Fixed quoting issues in printing descriptors, filenames, network interface
+    names, struct utsname members, device/volume names of BLK* ioctl commands.
+  * Fixed uid_t/git_t decoding.
+  * Fixed potential out-of-bounds read issues in getdents/getdents64 decoders.
+  * Fixed potential open flags truncation on some architectures.
+  * Fixed decoding of struct ifreq.ifr_name.
+  * Fixed decoding of SIOCSIFNAME ioctl command.
+  * Fixed decoding of RENAME_* renameat2 flags.
+  * Fixed decoding of UTIME_NOW/UTIME_OMIT timeval structures.
+  * Fixed decoding of indirect ipc subcalls on some architectures.
+  * Fixed decoding of fanotify_mark syscall on 32-bit architectures.
+  * Fixed decoding of 32-bit stat structures on 64-bit architectures.
+  * Fixed decoding of 32-bit struct cmsghdr on 64-bit architectures.
+  * Fixed decoding of 32-bit preadv/pwritev offset on 64-bit architectures.
+  * Fixed decoding of sigreturn/rt_sigreturn signal mask on ia64, ppc, ppc64,
+    sparc, sparc64, mips, and s390.
+  * Fixed instruction pointer output (-i option) on architectures that support
+    several personalities.
+  * Fixed behaviour of "-e read=set" and "-e write=set" when read and write
+    sets intersect.
+  * Fixed build on systems where struct sigaction has no sa_restorer member.
+
+-------------------------------------------------------------------
+Wed Nov 26 15:20:42 UTC 2014 - schwab@linux-m68k.org
+
+- Update to strace 4.9:
+  * Changes in behavior
+    * Disabled OABI support on ARM EABI systems by default,
+      added --enable-arm-oabi option to enable it at configure time.
+
+  * Improvements
+    * Added experimental -k option to print stack trace after each traced syscall.
+    * Added -w option to produce stats on syscall latency.
+      (addresses Debian bug #457497).
+    * Added ARC architecture support.
+    * Added PTRACE_GETREGS API support on PowerPC.
+    * Enhanced Bionic libc and musl libc support.
+    * Enhanced tracing of x86 personality processes on x86_64 and x32.
+    * Enhanced tracing of ARM personality processes on AArch64.
+    * Enhanced 32/64bit personality detection on PowerPC.
+    * Implemented decoding of add_key, ioprio_get, ioprio_set, kexec_load, keyctl,
+      renameat2, and request_key syscalls.
+    * Robustified decoding of select, pselect, and io_submit syscalls.
+    * Enhanced decoding of delete_module, fanotify_init, fanotify_mark, fcntl,
+      setdomainname, sethostname, setns, and sync_file_range syscalls.
+    * Enhanced decoding of signal bitmasks.
+    * Enhanced decoding of file descriptors.
+    * Enhanced siginfo_t decoding.
+    * Enhanced PF_NETLINK decoding.
+    * Updated CLOCK_* constants
+      (addresses Fedora bug #1088455).
+    * Added new syscall entries to match Linux 3.16.
+
+  * Bug fixes
+    * Added shmat and shmdt to the set of memory mapping related syscalls.
+    * Fixed detaching from stopped processes.
+    * Fixed fanotify_mark decoding on 32bit architectures.
+    * Fixed offset decoding in preadv and pwritev syscalls.
+    * Fixed select decoding for glibc in _FORTIFY_SOURCE mode.
+    * Fixed decoding of epoll_ctl syscall with EPOLL_CTL_DEL argument.
+    * Fixed build when <sys/ptrace.h> and <linux/ptrace.h> conflict
+      (addresses Fedora bug #993384).
+    * Miscellaneous corrections in the manual page.
+      (Addresses Debian bug #725987).
+- Remove obsolete patches:
+  * strace-4.7.diff
+  * strace-linux-ptrace-h.patch
+  * strace-ppc64le.patch
+  * strace_cid_03ef0b2.patch
+
+-------------------------------------------------------------------
+Fri Nov 14 09:19:16 UTC 2014 - dimstar@opensuse.org
+
+- No longer perform gpg validation; osc source_validator does it
+  implicit:
+  + Drop gpg-offline BuildRequires.
+  + No longer execute gpg_verify.
+
+-------------------------------------------------------------------
+Tue Feb 25 17:20:43 UTC 2014 - normand@linux.vnet.ibm.com
+
+- strace -p 99999 segfault for ppc64le archi disapear if
+  upstream patch 03ef0b2 is applied to this strace 4.8 version
+  (bnc#865151)
+
+- added patches:
+  * strace_cid_03ef0b2.patch
+-------------------------------------------------------------------
+Wed Dec  4 16:27:29 UTC 2013 - dvaleev@suse.com
+
+- Make ppc64le architecture known 
+
+/usr/bin/osc
+- added patches:
+  * strace-ppc64le.patch
+-------------------------------------------------------------------
+Wed Aug 14 09:11:17 UTC 2013 - schwab@suse.de
+
+- strace-linux-ptrace-h.patch: handle conflict with struct
+  ptrace_peeksiginfo_args between <sys/ptrace.h> and <linux/ptrace.h>
+
+-------------------------------------------------------------------
+Thu Jun 13 15:49:29 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 4.8
+* This is a stable release, with the usual bugfixes, enhanced
+  support for fresh Linux kernels, and other improvements.
+- Signature verification; remove redundant %clean section
+- Remove strace-aarch64.diff (merged)
+
+-------------------------------------------------------------------
+Sat Mar  2 12:06:13 UTC 2013 - schwab@suse.de
+
+- strace-aarch64.diff
+  Support for AArch64 from upstream
+
+-------------------------------------------------------------------
+Tue May 22 23:38:07 UTC 2012 - frank.lichtenheld@sophos.com
+
+- Add BuildRequires on xz to allow build on SLE_11_SP2
+
+-------------------------------------------------------------------
+Thu May  3 12:02:17 CEST 2012 - meissner@suse.de
+
+- updated to 4.7
+  * Changes in behavior
+    * strace no longer suspends waitpid until there is a child
+      for waitpid'ing process to collect status from.
+    * strace no longer detaches from a tracee which is supposed
+      to be going to die.
+    * strace now issues a new message: "+++ exited with EXITCODE +++"
+      which shows exact moment strace got exit notification,
+      analogous to existing "+++ killed by SIG +++" message.
+  
+  * Improvements
+    * Added x32 personality support (x86_64 architecture).
+    * Added -y and -P options to print file descriptor paths and
+      filter by those paths.
+    * Added -I option to control strace interactivity.
+    * Allowed -p option to take comma or whitespace-separated list of PIDs.
+    * Added strace_log_merge script helper to merge timestamped "strace -ff"
+      log files.
+    * Implemented decoding of clock_adjtime, get_robust_list, migrate_pages,
+      preadv, prlimit64, process_vm_readv, process_vm_writev, pwritev,
+      recvmmsg, recvmsg, rt_tgsigqueueinfo, sendmmsg, setns, set_robust_list,
+      sched_rr_get_interval, splice, syslog, tee and vmsplice syscalls.
+    * Enhanced decoding of capget, capset, getrlimit, flistxattr, io_submit,
+      listxattr, setrlimit and swapon syscalls.
+    * Implemented decoding of loop and mtd ioctls.
+    * Added syscall entries for new linux syscalls.
+    * Added syscall entries for direct socket system calls on powerpc.
+    * Updated the list of errno constants.
+    * Updated lists of MSG_*, STA_*, and TCP_* constants.
+    * Regenerated the list of ioctl names from Linux 3.3.
+    * Enhanced switching between processes with different personalities.
+    * Enhanced signals reporting by using short signal names.
+    * Made ERESTART* messages more descriptive.
+    * Made parsing of numbers from strings more robust.
+    * Added support for compat_statfs64 and statfs64.f_flags.
+    * Changed read of data blocks to use single process_vm_readv syscall
+      (when available) instead of several PTRACE_PEEKDATA operations.
+    * Changed read of registers on x86 and x86-64 to use single PTRACE_GETREGS
+      operation instead of several PTRACE_PEEKUSER operations.
+    * Applied various optimizations to make strace work faster.
+  * Bug fixes
+    * Implemented proper handling of real SIGTRAPs on kernels supporting
+      PTRACE_O_TRACESYSGOOD.
+      (Addresses Fedora bug #162774).
+    * Fixed sockaddr_un.sun_path name in decoded output.
+      (Addresses Debian bug #554946).
+    * Fixed to avoid potential core file clobbering on exit.
+      (Addresses Debian bug #656398).
+    * Fixed a typo in documentation.
+      (Addresses Debian bug #653309).
+    * Fixed decoding of timer id returned by timer_create.
+    * Fixed epoll_create1, epoll_wait and epoll_pwait decoding.
+    * Fixed *at syscalls flags decoding.
+    * Fixed ARM EABI 64-bit syscall's arguments decoding.
+    * Fixed semtimedop decoding on s390.
+    * Fixed osf_sigprocmask decoding on alpha.
+    * Fixed ipc and socket subcall decoding on several architectures.
+    * Corrected syscall entries for epoll_pwait, epoll_create, epoll_ctl,
+      epoll_wait, mincore, mlockall, prctl, reboot, sendfile, sendfile64,
+      sendmsg, sgetmask, ssetmask, swapon, tgkill and tkill syscalls.
+    * Corrected io_* syscall entries on ARM.
+    * Fixed PID prefix printing in "strace -oLOG -ff -p1 -p2 -p3" case.
+    * Fixed logging of unfinished lines in "strace -oLOG -ff" case.
+    * Fixed build when libaio-devel is not available.
+    * Fixed configure checks for PTRACE_* constants.
+    * Fixed compilation warnings remained on several architectures.
+  
+  * Portability
+    * Removed all non-Linux code.  After years of neglect, that dead code
+      just hampered further strace development.
+    * Linux kernel >= 2.6.18 is recommended.  Older versions might still
+      work but they haven't been thoroughly tested with this release.
+
+-------------------------------------------------------------------
+Tue Oct  4 14:44:37 UTC 2011 - tserong@suse.com
+
+- Skip "make check" when building under qemu (PTRACE not supported)
+
+-------------------------------------------------------------------
+Mon Apr 11 15:30:46 CEST 2011 - meissner@suse.de
+
+- More AIO decoding from Andi Kleen, bnc#679917
+
+-------------------------------------------------------------------
+Wed Mar 16 11:13:09 CET 2011 - meissner@suse.de
+
+- Updated to 4.6
+  * Changes in behavior
+    * Print diagnostic information about changes in personality mode to
+      standard error instead of standard output.
+  * Improvements
+    * Implemented a new method of following clone, fork, and vfork
+      syscalls using the Linux kernel's explicit facilities for tracing
+      creation of threads and child processes.
+    * Implemented CLONE_PARENT and CLONE_UNTRACED flags handling.
+    * Implemented decoding of TLS syscalls on m68k.
+    * Implemented biarch support on powerpc64.
+    * Implemented biarch support for getrlimit() and setrlimit().
+    * Implemented decoding of struct ucred in getsockopt SO_PEERCRED.
+    * Implemented SOL_SCTP socket options decoding.
+    * Added HDIO_* ioctl names. (Addresses Debian bug #450953).
+    * Added LOOP_* ioctl names.
+    * Updated lists of CLOCK_*, CLONE_*, MS_*, and SOL_* constants to match Linux 2.6.37.
+    * Updated the list of IPPROTO_* constants to match netinet/in.h.
+    * Implemented decoding of HDIO_* and BLK* ioctls.
+    * Added MicroBlaze architecture support.
+    * Added new syscall entries to match Linux 2.6.37.
+    * Regenerated list of ioctl names from Linux 2.6.37.
+    * Enhanced signal notification decoding.
+    * Documented -C and -D options.
+  * Bug fixes
+    * Fixed fetching syscall arguments on m68k.
+    * Fixed an error when judging whether a process has children.
+    * Fixed get/set_robust_list syscall numbers for powerpc.
+    * Fixed a corner case in printing clone flags.
+    * Fixed cross-compiling issues.
+    * Fixed build issues on powerpc64, SH and SPARC.
+    * Fixed syscall flags of fstatat*, mmap, mmap2, fadvise64*, swapoff,
+      fgetxattr, flistxattr, fremovexattr, epoll_create, fallocate,
+      fanotify_init, and fanotify_mark syscalls.
+    * Fixed decoding of get[ug]id, gete[ug]id and setfs[ug]id return values.
+    * Fixed biarch support in IO dumping.
+    * Fixed raw exit_group decoding.
+    * Fixed decoding of file descriptors on 64-bit architectures.
+    * Fixed a corner case in waitpid handling. (Addresses Red Hat bug #663547).
+    * Fixed stat64 decoding on mips (Addresses Debian bug #599028).
+    * Fixed misleading italics in the manual page. (Addresses Debian bug #589323). 
+- buildrequire libaio-devel bnc#679917
+- buildrequire lksctp-tools-devel for sctp decoding
+
+-------------------------------------------------------------------
+Wed Dec  8 11:35:56 UTC 2010 - puzel@novell.com
+
+- add strace-add-support-for-block-ioctls.patch 
+
+-------------------------------------------------------------------
+Tue Jul  6 23:19:50 UTC 2010 - jengelh@medozas.de
+
+- SPARC compile fixes
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Thu Apr 15 12:35:15 UTC 2010 - jw@novell.com
+
+- Update to version 4.5.20
+  * Implemented decoding of new linux syscalls: inotify_init1, recvmmsg.
+  * Implemented basic decoding of new linux syscalls: preadv, pwritev,
+    rt_tgsigqueueinfo, perf_event_open.
+  * Enhanced decoding of recently added syscalls on non-x86 architectures
+    by replacing a bare decoder with elaborate parsers enabled earlier
+    for x86/x86-64.
+  * Implemented -C option to combine regular and -c output.
+    (Addresses Debian bug #466196)
+  * Enhanced decoding of mbind and mremap syscalls.
+  * Enhanced SOL_PACKET socket options decoding.
+  * Regenerated list of ioctl names from linux 2.6.33.
+  * Added TILE architecture support.
+
+  * Fixed build with Linux kernel headers 2.6.32-rc5+.
+    (Addresses Debian bug #560516 and Fedora bug #539044)
+  * Fixed build on mips.
+  * Fixed handling of Linux systems without struct statfs64.
+  * Fixed reporting signal mask by sigreturn on powerpc.
+  * Fixed potential stack buffer overflow in select decoder.
+    (Addresses Fedora bug #556678)
+  * Corrected msgsnd indirect ipccall decoding.
+  * Corrected decoding of 64bit syscalls.
+    (Addresses Debian bug #570603)
+  * Corrected getsockopt decoding on architectures where
+    sizeof(long) > sizeof(int).
+    (Addresses Debian bug #494844)
+  * Corrected decoding of epoll_pwait.
+    (Addresses Debian bug #513014)
+  * Corrected handling of killed threads.
+- strace-4.5.19.diff almost fully upstreamed. shortening to one minor hunk.
+
+
+-------------------------------------------------------------------
+Sat Feb 13 21:27:50 CET 2010 - rguenther@suse.de
+
+- Update to version 4.5.19.
+  * When command exits, strace now exits with the same exit status.
+    If command is terminated by a signal, strace terminates itself
+    with the same signal, so that strace can be used as a wrapper
+    process transparent to the invoking parent process.
+    When using -p option, the exit status of strace is zero unless
+    there was an unexpected error in doing the tracing.
+    (Addresses Fedora bug #105371 and Debian bug #37665)
+  * Implemented decoding of new Linux syscalls: accept4, dup3,
+    epoll_create1, eventfd2, inotify_init1, pipe2, signalfd4.
+  * Implemented decoding of socket type flags introduced in Linux 2.6.27.
+  * Implemented decoding of accept4 socketcall.
+  * Enhanced prctl decoding.
+  * Enhanced nanosleep decoding.
+  * Enhanced ptrace decoding.
+  * Enhanced futex decoding.
+  * Enhanced CAP_* decoding.
+  * Enhanced SIOCS* ioctls decoding.
+  * Enhanced fcntl F_* flags decoding.
+  * Enhanced semop/semtimedop decoding.
+  * Updated ARM architecture support.
+  * Added Blackfin architecture support.
+  * Added AVR32 architecture support.
+  * Added CRIS architecture support.
+  * Made strace detect when traced process suddenly disappeared.
+  * Fixed syscall numbers for tee and sync_file_range.
+    (Addresses Debian bug #503124)
+  * Fixed several bugs in strings decoder, including potential heap
+    memory corruption.
+    (Addresses Fedora bugs #470529, #478324 and #511035)
+  * Marked sendfile(2) as a network syscall.
+    (Addresses Debian bug #509499)
+  * Fixed accept(2) decoding.
+  * Fixed sigtimedwait(2) decoding.
+  * Fixed build on ARM EABI.
+    (Addresses Debian bugs #520084 and #535564, and Fedora bug #507576)
+  * Fixed display of 32-bit fcntl(F_SETLK) on 64-bit architectures.
+    (Addresses Red Hat bug #471169)
+  * Fixed display of 32-bit argv array on 64-bit architectures.
+    (Addresses Fedora bug #519480)
+  * Fixed display of 32-bit struct sigaction on 64-bit architectures.
+  * Fixed HPPA architecture support.
+    (Addresses Debian bugs #437928 and #546619)
+- fix check for linux/netlink.h
+
+-------------------------------------------------------------------
+Mon Feb  1 12:31:40 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Wed Jan  7 14:43:14 CET 2009 - schwab@suse.de
+
+- Fix decoding of accept(2).
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Tue Nov 11 10:14:53 CET 2008 - schwab@suse.de
+
+- Fix corner cases in printstr and printpathn.
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Tue Sep  2 10:23:32 CEST 2008 - schwab@suse.de
+
+- Update to strace 4.5.18.
+  * Bug fixes.
+  * Support new Linux/PPC system call subpage_prot and PROT_SAO flag.
+  * In sigaction system call, display sa_flags value along with
+    SIG_DFL/SIG_IGN.
+
+-------------------------------------------------------------------
+Tue Aug 12 16:30:43 CEST 2008 - schwab@suse.de
+
+- Add fix for madvice decoding.
+
+-------------------------------------------------------------------
+Tue Aug  5 15:09:10 CEST 2008 - schwab@suse.de
+
+- Add fix for vfork handling.
+
+-------------------------------------------------------------------
+Tue Jul 22 09:47:31 CEST 2008 - schwab@suse.de
+
+- Update to strace 4.5.17.
+  * Many bug fixes.
+  * -F is now deprecated, -f has traced vfork too on Linux for a long time
+    now.
+  * Print O_CLOEXEC, MSG_CMSG_CLOEXEC flag bits.
+  * Improved output for prctl system call on Linux.
+  * Improved support for Linux/ARM.
+  * SA_NOMASK is now spelled SA_NODEFER, and SA_ONESHOT is spelled
+    SA_RESETHAND.
+
+-------------------------------------------------------------------
+Mon Jun 30 18:44:58 CEST 2008 - schwab@suse.de
+
+- Fix following vfork and clone2.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Nov 19 16:54:04 CET 2007 - schwab@suse.de
+
+- Fix getdents64 decoding.
+
+-------------------------------------------------------------------
+Fri Aug  3 13:44:47 CEST 2007 - schwab@suse.de
+
+- Update to strace 4.5.16.
+  * Bug fixes.
+  * Improved output for delete_module, futex, and mbind system calls on Linux.
+  * Improved output for SG_IO ioctls on Linux.
+  * Support new Linux system calls move_pages, utimensat, signalfd, timerfd,
+    eventfd, getcpu, epoll_pwait.
+
+-------------------------------------------------------------------
+Wed Apr 18 21:22:32 CEST 2007 - schwab@suse.de
+
+- Decode more ptrace options.
+
+-------------------------------------------------------------------
+Fri Mar 16 11:33:22 CET 2007 - schwab@suse.de
+
+- Remove obsolete patch.
+
+-------------------------------------------------------------------
+Wed Jan 17 17:47:15 CET 2007 - schwab@suse.de
+
+- Update to strace 4.5.15.
+  * Bug fixes.
+  * Several biarch improvements.
+  * Improved output for adjtimex, sysctl, quotactl, mount, umount.
+  * Support new Linux system calls *at, inotify*, pselect6, ppoll and unshare.
+
+-------------------------------------------------------------------
+Mon Oct  9 15:22:08 CEST 2006 - schwab@suse.de
+
+- Fix compilation with 2.6.18 kernel headers.
+
+-------------------------------------------------------------------
+Fri Sep 29 10:52:03 CEST 2006 - schwab@suse.de
+
+- Fix use of PT_GETSIGINFO.
+
+-------------------------------------------------------------------
+Fri Sep  8 23:27:35 CEST 2006 - schwab@suse.de
+
+- Fix last change.
+
+-------------------------------------------------------------------
+Thu Sep  7 17:22:38 CEST 2006 - schwab@suse.de
+
+- Add fixes from repository.
+
+-------------------------------------------------------------------
+Wed May 31 11:12:11 CEST 2006 - schwab@suse.de
+
+- Fix missing arguments.
+
+-------------------------------------------------------------------
+Sat Apr 29 16:04:24 CEST 2006 - schwab@suse.de
+
+- Add *at syscalls on ppc.
+
+-------------------------------------------------------------------
+Thu Apr 27 00:27:06 CEST 2006 - schwab@suse.de
+
+- Fix socket/ipc subcall decoding.
+- Fix ioctl decoding.
+
+-------------------------------------------------------------------
+Wed Apr  5 22:55:48 CEST 2006 - schwab@suse.de
+
+- Fix last change so it doesn't break ia64.
+- Add all other missing syscalls.
+
+-------------------------------------------------------------------
+Fri Mar 31 16:03:10 CEST 2006 - bk@suse.de
+
+- add parsing for the 13 *at syscalls and pselect6(i386 and x86_84)
+
+-------------------------------------------------------------------
+Sat Mar  4 19:53:41 CET 2006 - schwab@suse.de
+
+- Update to strace 4.5.14 (numerous bug fixes, required to support new
+  kernel features).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:58 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Nov  7 17:42:33 CET 2005 - schwab@suse.de
+
+- Follow all fork-like syscalls in strace-graph.
+
+-------------------------------------------------------------------
+Mon Oct 31 19:14:00 CET 2005 - od@suse.de
+
+- add struct sysinfo member mem_unit for linux >= 2.3.48
+
+-------------------------------------------------------------------
+Fri Oct 28 16:21:49 CEST 2005 - dmueller@suse.de
+
+- actually add inotify support 
+
+-------------------------------------------------------------------
+Thu Oct 13 15:54:23 CEST 2005 - schwab@suse.de
+
+- Add more syscall entries.
+
+-------------------------------------------------------------------
+Fri Oct  7 18:04:40 CEST 2005 - schwab@suse.de
+
+- Fix decoding of IPC syscalls.
+
+-------------------------------------------------------------------
+Thu Jul 21 10:48:21 CEST 2005 - schwab@suse.de
+
+- Update quota patch.
+
+-------------------------------------------------------------------
+Wed Jun 22 14:47:01 CEST 2005 - schwab@suse.de
+
+- Fix decoding of gettid.
+
+-------------------------------------------------------------------
+Mon Jun 20 11:10:18 CEST 2005 - schwab@suse.de
+
+- Update to strace 4.5.12.
+
+-------------------------------------------------------------------
+Wed Mar 30 11:25:23 CEST 2005 - schwab@suse.de
+
+- Update to strace 4.5.11.
+
+-------------------------------------------------------------------
+Wed Mar 16 15:07:40 CET 2005 - schwab@suse.de
+
+- Update to strace 4.5.10.
+
+-------------------------------------------------------------------
+Mon Feb 28 00:05:53 CET 2005 - schwab@suse.de
+
+- Fix getrval2 on ia64.
+
+-------------------------------------------------------------------
+Fri Feb  4 15:49:50 CET 2005 - schwab@suse.de
+
+- Update to strace 4.5.9.
+
+-------------------------------------------------------------------
+Sat Jan 22 17:33:05 CET 2005 - schwab@suse.de
+
+- Fix getsockopt decoding.
+
+-------------------------------------------------------------------
+Tue Dec  7 16:15:05 CET 2004 - uli@suse.de
+
+- added -i support on s390*
+
+-------------------------------------------------------------------
+Fri Nov 12 01:15:11 CET 2004 - schwab@suse.de
+
+- Update to strace 4.5.8.
+
+-------------------------------------------------------------------
+Tue Aug 31 14:02:13 CEST 2004 - schwab@suse.de
+
+- Update to strace 4.5.7.
+
+-------------------------------------------------------------------
+Mon Jul 12 21:38:24 CEST 2004 - schwab@suse.de
+
+- Update to strace 4.5.6.
+
+-------------------------------------------------------------------
+Mon Jun 28 14:54:36 CEST 2004 - schwab@suse.de
+
+- Update to strace 4.5.5.
+
+-------------------------------------------------------------------
+Sat Jun  5 14:44:55 CEST 2004 - schwab@suse.de
+
+- Update to strace 4.5.4.
+
+-------------------------------------------------------------------
+Wed May  5 23:41:34 CEST 2004 - schwab@suse.de
+
+- Fix handing of execve [#38479].
+
+-------------------------------------------------------------------
+Sat Apr 17 20:33:45 CEST 2004 - schwab@suse.de
+
+- Update to strace 4.5.3.
+
+-------------------------------------------------------------------
+Mon Apr  5 23:41:59 CEST 2004 - schwab@suse.de
+
+- Sign extend pid in sys_kill [#38433].
+
+-------------------------------------------------------------------
+Mon Mar  8 12:07:41 CET 2004 - schwab@suse.de
+
+- Update to strace 4.5.2, incorporates all recent changes.
+
+-------------------------------------------------------------------
+Thu Feb 26 17:40:22 CET 2004 - schwab@suse.de
+
+- Update from CVS.
+- Fix decoding of pipe syscall.
+
+-------------------------------------------------------------------
+Thu Jan 15 12:09:51 CET 2004 - schwab@suse.de
+
+- Fix use of kernel headers.
+
+-------------------------------------------------------------------
+Wed Nov 26 13:32:41 CET 2003 - schwab@suse.de
+
+- Update to strace 4.5.1.
+
+-------------------------------------------------------------------
+Tue Oct  7 22:39:19 CEST 2003 - schwab@suse.de
+
+- Fix building with new kernel headers.
+
+-------------------------------------------------------------------
+Thu Sep 25 14:33:56 CEST 2003 - schwab@suse.de
+
+- Update to strace 4.5.
+
+-------------------------------------------------------------------
+Tue Aug  5 18:50:10 CEST 2003 - ro@suse.de
+
+- fix compile with new quota include header 
+
+-------------------------------------------------------------------
+Wed Jun 11 13:06:05 CEST 2003 - schwab@suse.de
+
+- Update to strace 4.4.98.
+
+-------------------------------------------------------------------
+Sat May 10 17:11:46 CEST 2003 - schwab@suse.de
+
+- Fix modify_ldt_ldt_s -> user_desc.
+
+-------------------------------------------------------------------
+Fri May  9 20:47:08 CEST 2003 - schwab@suse.de
+
+- Fix building with new kernel headers.
+
+-------------------------------------------------------------------
+Wed Apr  2 17:51:04 CEST 2003 - schwab@suse.de
+
+- Update to 4.4.94.
+
+-------------------------------------------------------------------
+Mon Jan 20 16:02:19 CET 2003 - schwab@suse.de
+
+- Update to 4.4.92.
+
+-------------------------------------------------------------------
+Mon Nov 18 01:04:10 CET 2002 - ro@suse.de
+
+- fix build with latest autoconf 
+
+-------------------------------------------------------------------
+Thu Nov  7 18:07:48 CET 2002 - schwab@suse.de
+
+- Fix ia64 aio syscalls.
+
+-------------------------------------------------------------------
+Tue Nov  5 18:56:33 CET 2002 - schwab@suse.de
+
+- Last change extended to s390/s390x.
+
+-------------------------------------------------------------------
+Wed Oct 23 14:31:41 CEST 2002 - schwab@suse.de
+
+- Basic support for aio syscalls.
+
+-------------------------------------------------------------------
+Tue Oct  8 15:49:16 CEST 2002 - froh@suse.de
+
+- s390/s390x: add fix for obscure problem in the inner workings of
+  strace, symptom was SIGSEGV on e.g. 'strace getfacl .' (#20447)
+
+-------------------------------------------------------------------
+Thu Sep 26 21:33:31 CEST 2002 - schwab@suse.de
+
+- Add support for xattr syscalls [#18051].
+- Update ia64 patch.
+
+-------------------------------------------------------------------
+Thu Sep 19 16:03:21 CEST 2002 - mludvig@suse.cz
+
+- fixed old_mmap argument printing on x86-64
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Thu Sep 12 16:03:32 CEST 2002 - meissner@suse.de
+
+- Added ppc64 support.
+
+-------------------------------------------------------------------
+Thu Sep 12 13:28:02 CEST 2002 - uli@suse.de
+
+- added x86-64 biarch support by mludvig as reqd. by aj
+
+-------------------------------------------------------------------
+Mon Aug 12 21:28:21 CEST 2002 - schwab@suse.de
+
+- Add fixes for s390/s390x.
+
+-------------------------------------------------------------------
+Mon Jun 24 16:08:14 CEST 2002 - schwab@suse.de
+
+- Fix ioctl decoding on ppc.
+
+-------------------------------------------------------------------
+Tue Apr 23 16:19:01 CEST 2002 - schwab@suse.de
+
+- Fix ipc syscall decoding for architectures not using the ipc dispatcher.
+
+-------------------------------------------------------------------
+Mon Apr 22 13:00:53 CEST 2002 - schwab@suse.de
+
+- Cleanup x86-64 patch.
+- Use autoreconf.
+
+-------------------------------------------------------------------
+Mon Apr 22 09:36:11 CEST 2002 - sf@suse.de
+
+- added support for x86-64 (by ak@suse.de)
+- added %{suse_update_config}
+
+-------------------------------------------------------------------
+Mon Mar  4 14:54:03 CET 2002 - schwab@suse.de
+
+- Fix displaying of terminal ioctls [#14396].
+
+-------------------------------------------------------------------
+Wed Nov 21 17:31:08 CET 2001 - schwab@suse.de
+
+- Run autoconf to get up-to-date configure script.
+
+-------------------------------------------------------------------
+Fri Nov  9 12:02:54 CET 2001 - schwab@suse.de
+
+- Don't use <linux/module.h>.
+
+-------------------------------------------------------------------
+Mon Aug 20 13:53:05 CEST 2001 - schwab@suse.de
+
+- Fix configuration for s390.
+
+-------------------------------------------------------------------
+Mon Aug 20 09:45:34 CEST 2001 - schwab@suse.de
+
+- Update to strace 4.4.
+
+-------------------------------------------------------------------
+Tue Jul 31 10:55:06 CEST 2001 - schwab@suse.de
+
+- Fix tracing after execve for ia64.
+
+-------------------------------------------------------------------
+Tue Jun 12 10:58:49 CEST 2001 - schwab@suse.de
+
+- Fix for ppc and sparc.
+
+-------------------------------------------------------------------
+Fri Jun  8 16:32:31 CEST 2001 - schwab@suse.de
+
+- Update to strace 4.3.
+
+-------------------------------------------------------------------
+Mon May 14 23:16:11 CEST 2001 - bk@suse.de
+
+- fix long shifts to create long long logs for llseek, pread and pwrite.
+  (for 2147483748[2GB+100], strace logged 18446744071562068068 which is wrong)
+
+-------------------------------------------------------------------
+Wed Mar  7 12:16:34 CET 2001 - schwab@suse.de
+
+- Update IA64 patch.
+
+-------------------------------------------------------------------
+Wed Feb 14 02:35:51 CET 2001 - ro@suse.de
+
+- include time.h to fix compilation 
+
+-------------------------------------------------------------------
+Thu Jan  4 18:27:04 CET 2001 - stepan@suse.de
+
+- changed specfile to build cleanly on alphas
+
+-------------------------------------------------------------------
+Wed Dec  6 14:56:15 CET 2000 - schwab@suse.de
+
+- Don't include <asm/sigcontext.h> on ia64.
+- Implement {,f,l}stat on ia64.
+
+-------------------------------------------------------------------
+Mon Nov 13 11:57:14 CET 2000 - ro@suse.de
+
+- hacked to compile on 2.4 includes 
+
+-------------------------------------------------------------------
+Tue Sep 26 01:07:23 CEST 2000 - ro@suse.de
+
+- fixed dirent64 clash for all archs
+
+-------------------------------------------------------------------
+Mon Sep 18 10:57:10 CEST 2000 - schwab@suse.de
+
+- Fix clash with struct dirent64.
+
+-------------------------------------------------------------------
+Wed Sep  6 17:20:46 CEST 2000 - fober@suse.de
+
+- s390: upgrade to current ibm codedrop for s390
+
+-------------------------------------------------------------------
+Mon Aug 14 18:44:30 CEST 2000 - schwab@suse.de
+
+- Update ia64 patches.
+
+-------------------------------------------------------------------
+Tue Jun 20 14:15:40 CEST 2000 - schwab@suse.de
+
+- Update ia64 patches.
+
+-------------------------------------------------------------------
+Mon Jun 19 00:27:55 CEST 2000 - ro@suse.de
+
+- prevent inclusion of linux/time.h 
+
+-------------------------------------------------------------------
+Thu May 18 14:06:55 CEST 2000 - schwab@suse.de
+
+- Fixed to build with 2.3.99 kernels.
+
+-------------------------------------------------------------------
+Wed Apr 12 10:40:34 CEST 2000 - kukuk@suse.de
+
+- Fix define for STAT64 
+
+-------------------------------------------------------------------
+Thu Apr  6 19:09:04 MEST 2000 - bk@suse.de
+
+- s390 team added s390 patch
+
+-------------------------------------------------------------------
+Tue Mar 28 14:00:08 CEST 2000 - schwab@suse.de
+
+- Add ia64 patches.
+
+-------------------------------------------------------------------
+Wed Mar 22 16:50:21 CET 2000 - kukuk@suse.de
+
+- Update to 4.2
+- Fixes for SPARC
+
+-------------------------------------------------------------------
+Tue Jan 18 16:43:41 CET 2000 - ro@suse.de
+
+- fixed to build with 2.3 kernels 
+- man -> /usr/share/man
+
+-------------------------------------------------------------------
+Thu Dec  9 13:42:00 CET 1999 - schwab@suse.de
+
+- Remove obsolete SNDCTL_TMR_* ioctls that mask termios ioctls
+- Remove obsolete strerror and strsignal changes
+- Fix #if syntax
+
+-------------------------------------------------------------------
+Sun Dec  5 17:31:42 CET 1999 - kasal@suse.de
+
+- upgraded to strace-4.1
+
+-------------------------------------------------------------------
+Fri Dec  3 19:01:25 CET 1999 - kasal@suse.de
+
+- get rid of Makefile.Linux
+- fixed some headers for sparc & 2.3.x kernel
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu Sep  9 18:25:30 CEST 1999 - uli@suse.de
+
+- fixed for PPC
+
+-------------------------------------------------------------------
+Fri Aug 27 12:02:57 CEST 1999 - ro@suse.de
+
+- adapt to sysctl-changes
+
+-------------------------------------------------------------------
+Fri Jul  9 20:04:03 MEST 1999 - ro@suse.de
+
+- update to 4.0 using jurix diff
+
+-------------------------------------------------------------------
+Tue Apr 13 00:53:25 MEST 1999 - ro@suse.de
+
+- update 3.1.0.1 / merge patches
+
+-------------------------------------------------------------------
+Mon Apr 12 23:08:37 MEST 1999 - ro@suse.de
+
+- fixed for alpha
+
+-------------------------------------------------------------------
+Wed Mar 31 00:46:22 MEST 1999 - ro@suse.de
+
+- merged path from Stanislav Brabec and Massimiliano Ghilardi
+
+-------------------------------------------------------------------
+Tue Mar  9 08:28:59 MET 1999 - ro@suse.de
+
+- back to SYS_vfork
+
+-------------------------------------------------------------------
+Thu Jan 14 14:05:15 MET 1999 - ro@suse.de
+
+- changed "ifdef SYS_vfork" to "ifdef __NR_vfork"
+
+-------------------------------------------------------------------
+Mon Jan 11 11:48:17 MET 1999 - ro@suse.de
+
+- alpha-patches file.c: comment #if alpha
+                sock.c: include ioctls for alpha
+                term.c: include termio on alpha as well
+
+-------------------------------------------------------------------
+Mon Nov 16 10:45:29 MET 1998 - ro@suse.de
+
+- system.c: include sys/mount.h instead of linux/fs.h for glibc
+
+-------------------------------------------------------------------
+Wed Sep 30 11:51:34 MEST 1998 - ro@suse.de
+
+- if glibc: include sys/reg and linux/ptrace where needed
+
+-------------------------------------------------------------------
+Fri Jul 24 12:04:34 MEST 1998 - bs@suse.de
+
+- fixed configure for i686.
+
+-------------------------------------------------------------------
+Tue Feb 17 13:45:15 MET 1998 - ro@suse.de
+
+- diabled PRCTL in config.h.in (not with 2.0 kernel)
+
+----------------------------------------------------------------------------
+Wed Apr 30 15:57:14 CEST 1997 - florian@suse.de
+
+
+- add bug-fixes for llseek
+
+

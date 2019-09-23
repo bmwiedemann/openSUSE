@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Mon Mar  4 08:23:32 UTC 2019 - mvetter@suse.com
+
+- Update to first official release 0.1.0
+- Remove service file
+
+-------------------------------------------------------------------
+Tue Feb  7 21:07:49 UTC 2017 - callumjfarmer13@gmail.com
+
+- update to 0.0.20161206
+- dropped ncurses-fix.patch
+
+------------------------------------------------------------------
+Mon May  9 19:44:02 UTC 2016 - sleep_walker@opensuse.org
+
+- bump to new git snapshot 0.0.20160412
+- cleanup
+
+-------------------------------------------------------------------
+Thu Oct  8 19:42:40 UTC 2015 - sleep_walker@opensuse.org
+
+- fix whitespace inconsistency
+- cleanup changelog to match reviewer's taste
+- define patch unconditionaly (remove %ifs around it)
+- fix RPM group
+- reformat description
+- require only libxkbcommon 0.3.2 or higher
+- remove 4th argument of defattr to match reviewer's taste
+
+-------------------------------------------------------------------
+Wed Oct  7 21:56:39 UTC 2015 - sleep_walker@opensuse.org
+
+- disable ncurses build for now as I can't locate library with
+  wget_wch 
+
+-------------------------------------------------------------------
+Sat Sep 26 19:55:22 UTC 2015 - sleep_walker@opensuse.org
+
+- updated snapshot (20150923)
+- remove patches accepted by upstream
+- enable curses backed again and fix it (ncurses-fix.patch and sed)
+- clean up spec
+
+-------------------------------------------------------------------
+Mon Sep 21 18:14:15 UTC 2015 - sleep_walker@opensuse.org
+
+- let there be bemenu!
+

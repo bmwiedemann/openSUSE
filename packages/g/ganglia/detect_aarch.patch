@@ -1,0 +1,12 @@
+--- ./libmetrics/linux/metrics.c.orig	2018-03-29 14:51:41.974310218 +0200
++++ ./libmetrics/linux/metrics.c	2018-03-29 15:08:05.861449768 +0200
+@@ -618,6 +618,9 @@
+ #ifdef __arm__
+    snprintf(val.str, MAX_G_STRING_SIZE, "arm");
+ #endif
++#ifdef __aarch64__
++   snprintf(val.str, MAX_G_STRING_SIZE, "aarch64");
++#endif
+ #ifdef __hppa__
+    snprintf(val.str, MAX_G_STRING_SIZE, "hppa");
+ #endif

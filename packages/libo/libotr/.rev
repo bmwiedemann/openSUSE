@@ -1,0 +1,174 @@
+<revisionlist>
+  <revision rev="1" vrev="22">
+    <srcmd5>9c131a15424a18f4728ea6aec8a88db3</srcmd5>
+    <version>3.0.0</version>
+    <time>1168903373</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>42714dcf9e3bd8e960aa32ec6b45f700</srcmd5>
+    <version>3.1.0</version>
+    <time>1194900887</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8788a3c57529a4a739323780b7bc8f79</srcmd5>
+    <version>3.2.0</version>
+    <time>1222208999</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8788a3c57529a4a739323780b7bc8f79</srcmd5>
+    <version>3.2.0</version>
+    <time>1222208999</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>bc0c3569b07b5c6f9b4b86a777f9366a</srcmd5>
+    <version>3.2.0</version>
+    <time>1268924682</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>bc0c3569b07b5c6f9b4b86a777f9366a</srcmd5>
+    <version>3.2.0</version>
+    <time>1278667361</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>bc0c3569b07b5c6f9b4b86a777f9366a</srcmd5>
+    <version>3.2.0</version>
+    <time>1278678591</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>bc0c3569b07b5c6f9b4b86a777f9366a</srcmd5>
+    <version>3.2.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>bc0c3569b07b5c6f9b4b86a777f9366a</srcmd5>
+    <version>3.2.0</version>
+    <time>1319182121</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>9df1280ffb61a55393029eb5f93e1422</srcmd5>
+    <version>3.2.0</version>
+    <time>1321886840</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 92608 from coolo)</comment>
+    <requestid>92694</requestid>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>771798d22015de2a2cc2bee8c73cbec6</srcmd5>
+    <version>3.2.0</version>
+    <time>1329405521</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104390 from coolo)</comment>
+    <requestid>104963</requestid>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>771798d22015de2a2cc2bee8c73cbec6</srcmd5>
+    <version>3.2.0</version>
+    <time>1340183621</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>71540eecf7e3ff3ef4395a2e19cbd50b</srcmd5>
+    <version>4.0.0</version>
+    <time>1349244028</time>
+    <user>coolo</user>
+    <comment>fix typo (forwarded request 136082 from ketheriel)</comment>
+    <requestid>136094</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>71540eecf7e3ff3ef4395a2e19cbd50b</srcmd5>
+    <version>4.0.0</version>
+    <time>1359109324</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>08869d99ded064cc70c2e1050e4d4414</srcmd5>
+    <version>4.0.0</version>
+    <time>1372145241</time>
+    <user>coolo</user>
+    <comment>- verify source signature
+- remove autoreconf call (forwarded request 180059 from AndreasStieger)</comment>
+    <requestid>180090</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>08869d99ded064cc70c2e1050e4d4414</srcmd5>
+    <version>4.0.0</version>
+    <time>1379663040</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>e953682c746587ef6a73d9aab389fdfd</srcmd5>
+    <version>4.0.0</version>
+    <time>1389248011</time>
+    <user>coolo</user>
+    <comment>- added patch from upstream:
+  * pass-opdata-when-sending-message-fragment.patch -- fixes downstream kopete crashes: kde#328999, bnc#857501 (forwarded request 212929 from sumski)</comment>
+    <requestid>212978</requestid>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>e953682c746587ef6a73d9aab389fdfd</srcmd5>
+    <version>4.0.0</version>
+    <time>1409301660</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>95155f8ade4d088e8fa1b4521c82a5ef</srcmd5>
+    <version>4.1.0</version>
+    <time>1414776436</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257915</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>addd205842274491700d117cfdd35712</srcmd5>
+    <version>4.1.1</version>
+    <time>1459001316</time>
+    <user>dimstar_suse</user>
+    <comment>- libotr 4.1.1:
+  * Fix an integer overflow bug that can cause a heap buffer
+    overflow (and from there remote code execution) on 64-bit
+    platforms - CVE-2016-2851 (boo#969785)
+  * Fix possible free() of an uninitialized pointer
+  * Be stricter about parsing v3 fragments
+  * Add a testsuite (&quot;make check&quot; to run it)
+  * Fix a memory leak when reading a malformed instance tag file
+  * Protocol documentation clarifications
+- add libotr-4.1.1-fix-base64-tests.patch to fix test suite failure
+- skip failing tests on ppc architectures</comment>
+    <requestid>374787</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>5508ab767c33f847588d5cdf3776fd3a</srcmd5>
+    <version>4.1.1</version>
+    <time>1527084288</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license instead of %doc for license files.
+
+- Add libotr-test-underrun.patch: fix intermittent buffer underrun
+  in the regression test client (bsc#1091664).</comment>
+    <requestid>608989</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>807577b1af1bc3661ad9dfdd56d15da7</srcmd5>
+    <version>4.1.1</version>
+    <time>1538502105</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638819</requestid>
+  </revision>
+</revisionlist>

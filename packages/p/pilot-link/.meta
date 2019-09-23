@@ -1,0 +1,16 @@
+<package name="pilot-link" project="openSUSE:Factory">
+  <title>Pilot-Link Based Synchronization Development Header Files</title>
+  <description>pilot-link is a suite of tools used to connect your Palm or PalmOS compatible
+handheld with Unix, Linux, and any other POSIX-compatible machine. pilot-link
+works with all PalmOS handhelds, including those made by Handspring, Sony,
+and Palm, as well as others.
+
+pilot-link includes userspace &quot;conduits&quot; that allow you to synchronize
+information to and from your Palm device, as well as libraries of
+Palm-compatible functions that allow other applications to take advantage of
+the code included in pilot-link.
+
+There are also several language &quot;bindings&quot; that allow you to use your favorite
+development language with pilot-link, such as Java, Tcl, Perl, and Python.</description>
+  <devel project="mobile:synchronization:FACTORY" package="pilot-link"/>
+</package>

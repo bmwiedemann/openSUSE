@@ -1,0 +1,5 @@
+<package name="gajim-plugin-omemo" project="openSUSE:Factory">
+  <title>Gajim plugin for OMEMO Multi-End Message and Object Encryption</title>
+  <description>This plugin adds support to Gajim for the OMEMO Encryption, an XMPP Extension Protocol (XEP) for secure multi-client end-to-end encryption based on Double Ratchet and PEP.</description>
+  <devel project="network" package="gajim-plugin-omemo"/>
+</package>

@@ -1,0 +1,85 @@
+---
+ deprecated-scripts/get_module_list |   56 +++++++++++++++++++------------------
+ 1 file changed, 30 insertions(+), 26 deletions(-)
+
+Index: httpd-2.4.27/deprecated-scripts/get_module_list
+===================================================================
+--- httpd-2.4.27.orig/deprecated-scripts/get_module_list
++++ httpd-2.4.27/deprecated-scripts/get_module_list
+@@ -4,6 +4,10 @@ pname=apache2
+ : ${sysconfdir:=/etc/$pname}
+ : ${sysconfig_apache:=/etc/sysconfig/$pname}
+ default_APACHE_DOCUMENT_ROOT=/srv/www/htdocs
++modpath=/usr/lib
++if [ `/bin/arch` == "x86_64" ]; then
++  modpath=/usr/lib64
++fi
+ 
+ test -z "$APACHE_MODULES" && . /usr/share/$pname/load_configuration
+ apache_bin=$(/usr/share/$pname/find_mpm 2>/dev/null)
+@@ -61,26 +65,26 @@ for i in ${APACHE_MODULES[*]}; do
+ 		module_path=$i
+ 		;;
+ 	    *)
+-		for j in /usr/lib/$pname-$APACHE_MPM/mod_$i.so \
+-			 /usr/lib/$pname-$APACHE_MPM/$i.so \
+-			 /usr/lib/$pname-$APACHE_MPM/mod_$i \
+-			 /usr/lib/$pname-$APACHE_MPM/$i \
+-			 /usr/lib/$pname-$APACHE_MPM/${i/mod_}.so \
+-			 /usr/lib/$pname-$APACHE_MPM/${i/mod_} \
+-			 /usr/lib/$pname-$APACHE_MPM/lib${i/mod_}.so \
+-			 /usr/lib/$pname-$APACHE_MPM/lib${i/mod_} \
+-			 /usr/lib/$pname-$APACHE_MPM/lib$i.so \
+-			 /usr/lib/$pname-$APACHE_MPM/lib$i \
+-			 /usr/lib/$pname/mod_$i.so \
+-			 /usr/lib/$pname/$i.so \
+-			 /usr/lib/$pname/mod_$i \
+-			 /usr/lib/$pname/$i \
+-			 /usr/lib/$pname/${i/mod_}.so \
+-			 /usr/lib/$pname/${i/mod_} \
+-			 /usr/lib/$pname/lib${i/mod_}.so \
+-			 /usr/lib/$pname/lib${i/mod_} \
+-			 /usr/lib/$pname/lib$i.so \
+-			 /usr/lib/$pname/lib$i
++		for j in $modpath/$pname-$APACHE_MPM/mod_$i.so \
++			 $modpath/$pname-$APACHE_MPM/$i.so \
++			 $modpath/$pname-$APACHE_MPM/mod_$i \
++			 $modpath/$pname-$APACHE_MPM/$i \
++			 $modpath/$pname-$APACHE_MPM/${i/mod_}.so \
++			 $modpath/$pname-$APACHE_MPM/${i/mod_} \
++			 $modpath/$pname-$APACHE_MPM/lib${i/mod_}.so \
++			 $modpath/$pname-$APACHE_MPM/lib${i/mod_} \
++			 $modpath/$pname-$APACHE_MPM/lib$i.so \
++			 $modpath/$pname-$APACHE_MPM/lib$i \
++			 $modpath/$pname/mod_$i.so \
++			 $modpath/$pname/$i.so \
++			 $modpath/$pname/mod_$i \
++			 $modpath/$pname/$i \
++			 $modpath/$pname/${i/mod_}.so \
++			 $modpath/$pname/${i/mod_} \
++			 $modpath/$pname/lib${i/mod_}.so \
++			 $modpath/$pname/lib${i/mod_} \
++			 $modpath/$pname/lib$i.so \
++			 $modpath/$pname/lib$i
+ 		do
+ 			if [ -f $j ]; then
+ 				module_path=$j 
+@@ -105,12 +109,12 @@ done
+ echo >&3 -e "#\n"
+ exec 3<&-
+ chmod 644 $TMPFILE
+-if ! mv -Z $TMPFILE $sysconfdir/sysconfig.d/loadmodule.conf 2>/dev/null; then
+-  mv $TMPFILE $sysconfdir/sysconfig.d/loadmodule.conf
+-  if selinuxenabled; then
+-    restorecon $sysconfdir/sysconfig.d/loadmodule.conf
+-  fi
+-fi
++if ! mv -Z $TMPFILE $sysconfdir/sysconfig.d/loadmodule.conf 2>/dev/null; then
++  mv $TMPFILE $sysconfdir/sysconfig.d/loadmodule.conf
++#  if selinuxenabled; then
++#    restorecon $sysconfdir/sysconfig.d/loadmodule.conf
++#  fi
++fi
+ #echo -n ". "
+ 
+ 

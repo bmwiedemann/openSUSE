@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="828">
+    <srcmd5>9bfa5732393094bfb7c610e98e93796b</srcmd5>
+    <version>1.1.0</version>
+    <time>1168902724</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="850">
+    <srcmd5>ccbfb9cec538bef5fcbe397bd047a506</srcmd5>
+    <version>1.1.0</version>
+    <time>1182464129</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="928">
+    <srcmd5>ccbfb9cec538bef5fcbe397bd047a506</srcmd5>
+    <version>1.1.0</version>
+    <time>1182464129</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="929">
+    <srcmd5>504b42c3443474ae015f52d2ddc0e950</srcmd5>
+    <version>1.1.0</version>
+    <time>1245277763</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="931">
+    <srcmd5>504b42c3443474ae015f52d2ddc0e950</srcmd5>
+    <version>1.1.0</version>
+    <time>1245277763</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="932">
+    <srcmd5>3251bdbaffc24635fc7026a7821114ee</srcmd5>
+    <version>1.1.0</version>
+    <time>1268926350</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="934">
+    <srcmd5>3251bdbaffc24635fc7026a7821114ee</srcmd5>
+    <version>1.1.0</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="935">
+    <srcmd5>3251bdbaffc24635fc7026a7821114ee</srcmd5>
+    <version>1.1.0</version>
+    <time>1278678622</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="938">
+    <srcmd5>3251bdbaffc24635fc7026a7821114ee</srcmd5>
+    <version>1.1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="940">
+    <srcmd5>3251bdbaffc24635fc7026a7821114ee</srcmd5>
+    <version>1.1.0</version>
+    <time>1319182524</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="941">
+    <srcmd5>db886b5d109878648548826720a65ef5</srcmd5>
+    <version>1.1.0</version>
+    <time>1323194935</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="943">
+    <srcmd5>db886b5d109878648548826720a65ef5</srcmd5>
+    <version>1.1.0</version>
+    <time>1340184279</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="945">
+    <srcmd5>db886b5d109878648548826720a65ef5</srcmd5>
+    <version>1.1.0</version>
+    <time>1359110496</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="947">
+    <srcmd5>db886b5d109878648548826720a65ef5</srcmd5>
+    <version>1.1.0</version>
+    <time>1379664829</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="949">
+    <srcmd5>db886b5d109878648548826720a65ef5</srcmd5>
+    <version>1.1.0</version>
+    <time>1409303509</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="950">
+    <srcmd5>8593ab67ead4f901b681614d1a9d6cfe</srcmd5>
+    <version>1.1.0</version>
+    <time>1413616121</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256926</requestid>
+  </revision>
+</revisionlist>

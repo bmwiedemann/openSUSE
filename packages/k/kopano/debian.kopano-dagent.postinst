@@ -1,0 +1,8 @@
+#!/bin/sh
+chmod 750 /var/log/kopano || :
+chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
+chown -Rh kopano:kopano /var/lib/kopano/dagent 2>/dev/null || :
+chown -Rh kopano:kopano /var/lib/kopano/autorespond 2>/dev/null || :
+
+#DEBHELPER#
+

@@ -1,0 +1,229 @@
+<revisionlist>
+  <revision rev="1" vrev="18">
+    <srcmd5>e391c27decfab6dbfebd0f921ba04c93</srcmd5>
+    <version>1.2.5</version>
+    <time>1168901423</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="39">
+    <srcmd5>b478eab6f36e1aaa9c754ba9f5a38747</srcmd5>
+    <version>1.2.5</version>
+    <time>1172928960</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="74">
+    <srcmd5>e80e0dd04934d9148d00d6329b1050f1</srcmd5>
+    <version>1.2.5</version>
+    <time>1185149967</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>31c8069b73bc5358df081d8a3665c205</srcmd5>
+    <version>1.2.6</version>
+    <time>1185494960</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="46">
+    <srcmd5>b439f8a5f8619d3479af00e337c4e0d9</srcmd5>
+    <version>1.2.6</version>
+    <time>1197889505</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="59">
+    <srcmd5>8fdd2fe7c01eb789b47d119f29b5d059</srcmd5>
+    <version>1.2.6</version>
+    <time>1201908041</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="84">
+    <srcmd5>a908bcd683705160964f6a807e52ab52</srcmd5>
+    <version>1.2.6</version>
+    <time>1207834346</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="152">
+    <srcmd5>a908bcd683705160964f6a807e52ab52</srcmd5>
+    <version>1.2.6</version>
+    <time>1207834346</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="153">
+    <srcmd5>0fb45467683d2a5bb7fa8119f24fa2a0</srcmd5>
+    <version>1.2.6</version>
+    <time>1235953757</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f5d28e66110fca01912acd7132d9be1e</srcmd5>
+    <version>1.2.7</version>
+    <time>1242771377</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>3c9f35592030e177ddfc527385ed0e1d</srcmd5>
+    <version>1.2.7</version>
+    <time>1243545990</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>ea64f36e27068e9e5a06b871de829ebf</srcmd5>
+    <version>1.2.7</version>
+    <time>1243938992</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>c2ebd948871a7419b7821ec6f0a3cf33</srcmd5>
+    <version>1.2.7</version>
+    <time>1254959571</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_image based on submit request 22001 from user prusnak
+</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>c2ebd948871a7419b7821ec6f0a3cf33</srcmd5>
+    <version>1.2.7</version>
+    <time>1254959571</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_image based on submit request 22001 from user prusnak
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1e85ef44ceb1f5a2a019a4864e3d9597</srcmd5>
+    <version>1.2.10</version>
+    <time>1261824220</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_image based on submit request 27571 from user coolo
+</comment>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>039178b3da41682eb3e2ebb13a07f80b</srcmd5>
+    <version>1.2.10</version>
+    <time>1268922812</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>039178b3da41682eb3e2ebb13a07f80b</srcmd5>
+    <version>1.2.10</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>039178b3da41682eb3e2ebb13a07f80b</srcmd5>
+    <version>1.2.10</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>039178b3da41682eb3e2ebb13a07f80b</srcmd5>
+    <version>1.2.10</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="20" vrev="9">
+    <srcmd5>1f546f68002a7e88b086ac36d3383668</srcmd5>
+    <version>1.2.10</version>
+    <time>1316438957</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+
+- Update baselibs.conf to also ship libSDL_image-devel-32bit
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)</comment>
+    <requestid>83183</requestid>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>1f546f68002a7e88b086ac36d3383668</srcmd5>
+    <version>1.2.10</version>
+    <time>1319181757</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="12">
+    <srcmd5>04b9302cdb8ee21d9540f82a20197308</srcmd5>
+    <version>1.2.10</version>
+    <time>1323194571</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="23" vrev="14">
+    <srcmd5>04b9302cdb8ee21d9540f82a20197308</srcmd5>
+    <version>1.2.10</version>
+    <time>1340183156</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a769c178b09c9f11ce6e6371b1274e90</srcmd5>
+    <version>1.2.12</version>
+    <time>1346400063</time>
+    <user>coolo</user>
+    <comment>- updated to 1.2.12:
+ * Fixed regression in 1.2.11 loading 8-bit PNG images with libpng
+ * Fixed loading 8-bit PNG images on Mac OS X
+ * SDL_image is now under the zlib license
+ * Added WEBP image support
+ * Fixed compiling with libpng 1.4
+ * Added Android.mk to build on the Android platform
+ * Fixed loading HAM6 images with stencil mask
+ * Fixed bug loading 15 and 16 bit BMP images (forwarded request 131949 from pgajdos)</comment>
+    <requestid>131966</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>67796d6dfa97c48b5436dbf9f431188f</srcmd5>
+    <version>1.2.12</version>
+    <time>1357653549</time>
+    <user>coolo</user>
+    <comment>- Disable dynamic loading of common libraries, this 
+ is a bad idea to beging with.
+- Cleanup buildRequires. metpackage xorg-x11-devel is not required (forwarded request 146873 from elvigia)</comment>
+    <requestid>147405</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>67796d6dfa97c48b5436dbf9f431188f</srcmd5>
+    <version>1.2.12</version>
+    <time>1359108627</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>548c723d54be6907946798b0b0b8a76d</srcmd5>
+    <version>1.2.12</version>
+    <time>1376903590</time>
+    <user>scarabeus_factory</user>
+    <comment>- Enable WEBP support (forwarded request 187066 from jengelh)</comment>
+    <requestid>195365</requestid>
+  </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>548c723d54be6907946798b0b0b8a76d</srcmd5>
+    <version>1.2.12</version>
+    <time>1379661927</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>548c723d54be6907946798b0b0b8a76d</srcmd5>
+    <version>1.2.12</version>
+    <time>1409300447</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="10">
+    <srcmd5>ec03aa0f6dea2407870c2eacc81fc914</srcmd5>
+    <version>1.2.12</version>
+    <time>1420754734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>280323</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b596d780931fc002c8c66a8524c821d4</srcmd5>
+    <version>1.2.12+hg695</version>
+    <time>1567000898</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 1.2.12+hg695</comment>
+    <requestid>725585</requestid>
+  </revision>
+</revisionlist>

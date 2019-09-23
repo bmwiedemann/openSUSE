@@ -1,0 +1,12 @@
+<package name="wxhexeditor" project="openSUSE:Factory">
+  <title>A free HEX editor / disk editor</title>
+  <description>wxHexEditor is an another Hex Editor, created because of there was no good HEX editor for GNU/Linux, especially for big files. It supports files up to 2^64 bytes. Written with C++/wxWidgets and can be used with other operating systems such as Windows and OS X.
+
+Features:
+ * Ability to work with files up to 2EB (ExaByte);
+ * Crossplatform;
+ * Small footprint on RAM;
+ * Raw Disk Access (on POSIX systems);
+ * Does not create temporary files.</description>
+  <devel project="editors" package="wxhexeditor"/>
+</package>

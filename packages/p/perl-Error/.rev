@@ -1,0 +1,245 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>e43a89b1d8bf78cdfe4e8b57b7f98dc6</srcmd5>
+    <version>0.17012</version>
+    <time>1217818142</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>79ca04c144ecea411a168a639a2744d1</srcmd5>
+    <version>0.17015</version>
+    <time>1221235771</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>79ca04c144ecea411a168a639a2744d1</srcmd5>
+    <version>0.17015</version>
+    <time>1221235771</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ac44d1f1ef6f65f2182844cbd1e62dbc</srcmd5>
+    <version>0.17015</version>
+    <time>1263300809</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Error based on submit request 29192 from user coolo
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bfeb59f48d7737e59e8ba682483bf20a</srcmd5>
+    <version>0.17016</version>
+    <time>1263502553</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Error based on submit request 29470 from user anicka
+</comment>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a3a74c25e38be4e3e7ac2ad68bb78de7</srcmd5>
+    <version>0.17016</version>
+    <time>1268925447</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>a3a74c25e38be4e3e7ac2ad68bb78de7</srcmd5>
+    <version>0.17016</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>a3a74c25e38be4e3e7ac2ad68bb78de7</srcmd5>
+    <version>0.17016</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>857fb0ec9ba659a12a2a250fd03e01a8</srcmd5>
+    <version>0.17016</version>
+    <time>1290788410</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53912 from user computersalat
+</comment>
+    <requestid>53912</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>78c1b716b506b69d5a3bf7bd22bf41d6</srcmd5>
+    <version>0.17016</version>
+    <time>1290788421</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53912
+</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>e4b1897fe8d5c448ce7302a9860a0713</srcmd5>
+    <version>0.17016</version>
+    <time>1291582174</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54526 from user coolo
+</comment>
+    <requestid>54526</requestid>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>bd7f914993f0958f910266cd669f1cba</srcmd5>
+    <version>0.17016</version>
+    <time>1291582181</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54526
+</comment>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>bd7f914993f0958f910266cd669f1cba</srcmd5>
+    <version>0.17016</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>bd7f914993f0958f910266cd669f1cba</srcmd5>
+    <version>0.17016</version>
+    <time>1319182263</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>dd3be1052da187ce59b03cd486c4507a</srcmd5>
+    <version>0.17016</version>
+    <time>1321875576</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92235</requestid>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>17ef0734a39043c9c26f1f54c680fa20</srcmd5>
+    <version>0.17016</version>
+    <time>1323193259</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>720f95dc62ae10b2fcf4b92d7c17bd8c</srcmd5>
+    <version>0.17017</version>
+    <time>1329405714</time>
+    <user>coolo</user>
+    <comment>- update to 0.17017
+  - Bleadperl broke Error.pm's tests - 
+  	- https://rt.cpan.org/Ticket/Display.html?id=74770
+    - Applied a patch to check for optional trailing periods.
+	- Thanks to ANDK for the report and RURBAN for the patch</comment>
+    <requestid>104732</requestid>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>720f95dc62ae10b2fcf4b92d7c17bd8c</srcmd5>
+    <version>0.17017</version>
+    <time>1340183835</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>720f95dc62ae10b2fcf4b92d7c17bd8c</srcmd5>
+    <version>0.17017</version>
+    <time>1359109656</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>da58d0397fe1366f80a0123cfad09657</srcmd5>
+    <version>0.17020</version>
+    <time>1370877137</time>
+    <user>coolo</user>
+    <comment>- updated to 0.17020
+   Error.pm #0.17020
+   - Correct typos.
+     - https://rt.cpan.org/Ticket/Display.html?id=85023
+ 
+   Error.pm #0.17019
+   - Change to Shlomi Fish's new E-mail and web address.
+   - Clarify the licence of lib/Error/Simple.pm .
+     - https://rt.cpan.org/Ticket/Display.html?id=81277
+     - Thanks to Marcela
+ 
+   Error.pm #0.17018
+   - Add a $VERSION variable for Error::Simple.
+     - thanks to Kevin Dawson for the report.
+   - Add scripts/bump-version-number.pl .
+     - This can be used to bump the version numbers globally. (forwarded request 177379 from coolo)</comment>
+    <requestid>177420</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>da58d0397fe1366f80a0123cfad09657</srcmd5>
+    <version>0.17020</version>
+    <time>1379663661</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>acb876c259a74c4613e184a0f398a0c5</srcmd5>
+    <version>0.17021</version>
+    <time>1381064003</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202219</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>be68317fd0fd023d556260d67310f3f8</srcmd5>
+    <version>0.17022</version>
+    <time>1392222150</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221863</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>be68317fd0fd023d556260d67310f3f8</srcmd5>
+    <version>0.17022</version>
+    <time>1409302272</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e68af0f4886611dece44cd2ab05b0e32</srcmd5>
+    <version>0.17023</version>
+    <time>1429989410</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>297535</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5c6dc655eff323e11b82971981908492</srcmd5>
+    <version>0.17024</version>
+    <time>1434133684</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311430</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3a562dd95a20859e0cf9cb8d44a9a22a</srcmd5>
+    <version>0.17025</version>
+    <time>1502561162</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>515140</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2bf8a0f961bf7597131eb858ad1adc6e</srcmd5>
+    <version>0.17026</version>
+    <time>1527277034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611853</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>56ac59c8e7475a0356152c964ec0d3a4</srcmd5>
+    <version>0.17027</version>
+    <time>1542122798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647276</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fda76d0178bfa6b92e196c30fa16e01d</srcmd5>
+    <version>0.17028</version>
+    <time>1566912299</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725938</requestid>
+  </revision>
+</revisionlist>

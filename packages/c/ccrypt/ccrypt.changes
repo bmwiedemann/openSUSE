@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Fri Dec 14 14:28:50 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.11:
+  * In cat and unixcrypt modes, "-" can now be specified as a
+    filename to mean standard input.
+  * The emacs mode has been updated for compatibility with Emacs 26.
+  * Estonian translations were added.
+
+-------------------------------------------------------------------
+Thu Dec  7 11:25:03 UTC 2017 - mpluskal@suse.com
+
+- Split lang and emacs support subpackages
+- Run provided tests
+
+-------------------------------------------------------------------
+Thu Apr 28 13:12:17 UTC 2016 - mpluskal@suse.com
+
+- Install COPYING
+
+-------------------------------------------------------------------
+Wed Dec  9 18:56:47 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.10
+  * see ChangeLog for details
+- Cleanup spec file with spec-cleaner
+- Use shared gcrypt instead of bundled one
+- Enable emacs support
+- Initial changelog - previous packaging done by:
+  * Pascal Bleser <pascal.bleser@opensuse.org>
+  * Leo Eraly <leo@unstable.be>
+

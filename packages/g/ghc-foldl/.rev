@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>11b668e20bf7e6d6417a6de289c2f470</srcmd5>
+    <version>1.4.2</version>
+    <time>1532527686</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission</comment>
+    <requestid>624457</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>54b0a6f62d5b321265b6393067fe6308</srcmd5>
+    <version>1.4.3</version>
+    <time>1534774807</time>
+    <user>dimstar_suse</user>
+    <comment>- Update foldl to version 1.4.3.
+  1.4.3
+  * Add `Control.Scanl.scanr`
+  * Increase upper bound on `mwc-random`</comment>
+    <requestid>630363</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>81a5c60d37ee4633d90be38f376bb1fb</srcmd5>
+    <version>1.4.5</version>
+    <time>1540448170</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642858</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5b10b8ff17ff0e45f90e48a37d69873d</srcmd5>
+    <version>1.4.5</version>
+    <time>1558129456</time>
+    <user>dimstar_suse</user>
+    <comment>please add this update to openSUSE:Factory:Staging:adi:78</comment>
+    <requestid>703651</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3bbf41b20f1a59874707042ae78f7840</srcmd5>
+    <version>1.4.5</version>
+    <time>1560971434</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710625</requestid>
+  </revision>
+</revisionlist>

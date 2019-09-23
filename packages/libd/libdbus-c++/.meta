@@ -1,0 +1,18 @@
+<package name="libdbus-c++" project="openSUSE:Factory">
+  <title>C++ API for D-BUS</title>
+  <description>D-Bus is a message bus system, a simple way for applications to talk to one another. In addition to interprocess communication, D-Bus helps coordinate process lifecycle; it makes it simple and reliable to code a &quot;single instance&quot; application or daemon, and to launch applications and daemons on demand when their services are needed.
+
+See http://www.freedesktop.org/wiki/Software/dbus-c%2B%2B for more information.
+
+Notes:
+- both rpm and deb based distros are building somehow
+
+to-do:
+- fix the distros that do not build
+- figure out why Ubuntu 7.04/amd64 had expansion errors
+- verify content of built packages
+- use orig + diff file for rpm based distros, change spec accordingly
+
+</description>
+  <devel project="multimedia:libs" package="libdbus-c++"/>
+</package>

@@ -1,0 +1,398 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ed2a8a1617e49deca264ba3570c912f1</srcmd5>
+    <version>1.5.3</version>
+    <time>1309267212</time>
+    <user>saschpe</user>
+    <comment>Please add python-pyparsing to Factory, it is a dependency for python-pybtex and useful on its own</comment>
+    <requestid>73459</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9ca2c4b4debfa084da1aa11588bc448a</srcmd5>
+    <version>1.5.3</version>
+    <time>1309267238</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73459
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5683ecec2eb4d9f17024143edd558ed3</srcmd5>
+    <version>1.5.6</version>
+    <time>1309431436</time>
+    <user>darix</user>
+    <comment>- Update to version 1.5.6:
+  * Cleanup of parse action normalizing code, to be more version-tolerant,
+    and robust in the face of future Python versions
+  * Removal of exception cacheing, addressing a memory leak condition
+    in Python 3.
+  * Fixed bug when using packrat parsing, where a previously parsed
+    expression would duplicate subsequent tokens
+  * Fixed bug in srange, which accepted escaped hex characters of the 
+    form '\0x##', but should be '\x##'.  Both forms will be supported
+    for backwards compatibility.
+  * Added the Verilog parser to the provided set of examples, under the
+    MIT license.
+  * Added the excludeChars argument to the Word class, to simplify defining
+    a word composed of all characters in a large range except for one or two.
+  * Added optional overlap parameter to scanString, to return overlapping
+    matches found in the source text.
+  * Updated oneOf internal regular expression generation, with improved
+    parse time performance.
+  * Slight performance improvement in transformString, removing empty
+    strings from the list of string fragments built while scanning the
+    source text, before calling ''.join. Especially useful when using 
+    transformString to strip out selected text.
+  * Enhanced form of using the &quot;expr('name')&quot; style of results naming,
+    in lieu of calling setResultsName.  If name ends with an '*', then
+    this is equivalent to expr.setResultsName('name',listAllMatches=True).
+  * Fixed up internal list flattener to use iteration instead of recursion,
+    to avoid stack overflow when transforming large files.
+- Changes from version 1.5.5:
+  * Typo in Python3 version of pyparsing, &quot;builtin&quot; should be &quot;builtins&quot;.
+- Changes from version 1.5.4:</comment>
+    <requestid>74869</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f9c9679a34964b9bd21070dc104abaaa</srcmd5>
+    <version>1.5.6</version>
+    <time>1309431470</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 74869
+</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d4d42de149cb440bc6895d1f8989dcb4</srcmd5>
+    <version>1.5.6</version>
+    <time>1309767868</time>
+    <user>azouhr</user>
+    <comment>- Add Provides/Obsoletes for python-parsing</comment>
+    <requestid>75194</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>1cce6abdcf176cbb910cf0abdfb953c6</srcmd5>
+    <version>1.5.6</version>
+    <time>1309767878</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 75194
+</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>1cce6abdcf176cbb910cf0abdfb953c6</srcmd5>
+    <version>1.5.6</version>
+    <time>1319182402</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>c6c6771df941c99e4f3efd7c5ec5f716</srcmd5>
+    <version>1.5.6</version>
+    <time>1323194239</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>c6c6771df941c99e4f3efd7c5ec5f716</srcmd5>
+    <version>1.5.6</version>
+    <time>1340184083</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>653c6921845caebf4f8e7ecde779a45c</srcmd5>
+    <version>1.5.6</version>
+    <time>1353848007</time>
+    <user>coolo</user>
+    <comment>- Package examples
+- Spec file cleanup</comment>
+    <requestid>142597</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>e80acc666a3c0bcee9c15e87633a3544</srcmd5>
+    <version>1.5.6</version>
+    <time>1358168991</time>
+    <user>coolo</user>
+    <comment>- Fix license (MIT and GPL-2.0+ and GPL-3.0+)
+
+- Don't ship examples twice
+
+- Initial support of python3
+
+
+- Fix license (MIT and GPL-2.0+ and GPL-3.0+)
+
+- Don't ship examples twice
+
+- Initial support of python3</comment>
+    <requestid>148404</requestid>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>e80acc666a3c0bcee9c15e87633a3544</srcmd5>
+    <version>1.5.6</version>
+    <time>1359110100</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d14097a8d6e3d53d72983610dac00b2d</srcmd5>
+    <version>1.5.7</version>
+    <time>1363900332</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160219</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>456c23f851eb532bef60945f4a4b1ad8</srcmd5>
+    <version>1.5.7</version>
+    <time>1366183526</time>
+    <user>coolo</user>
+    <comment>This reverts the update to 2.0.0 for python 2.  It seems 1.5.7 does not work with python 3 and version 2.0.0 does not yet work with python 2, although it is apparently intended to</comment>
+    <requestid>163861</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>d21d1ffaef65e8a264a8d85f6f23d81f</srcmd5>
+    <version>1.5.7</version>
+    <time>1371649763</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179963</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>be6f5687b063795900a17bb0027f08d9</srcmd5>
+    <version>2.0.1</version>
+    <time>1379427542</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.0.1:
+  - Removed use of &quot;nonlocal&quot; that prevented using this version of 
+    pyparsing with Python 2.6 and 2.7. This will make it easier to 
+    install for packages that depend on pyparsing, under Python 
+    versions 2.6 and later. Those using older versions of Python
+    will have to manually install pyparsing 1.5.7.
+  - Fixed implementation of &lt;&lt;= operator to return self; reported by
+    Luc J. Bourhis, with patch fix by Mathias Mamsch - thanks, Luc
+    and Mathias!
+- Changes from version 2.0.0:
+  - Rather than release another combined Python 2.x/3.x release
+    I've decided to start a new major version that is only 
+    compatible with Python 3.x (and consequently Python 2.7 as
+    well due to backporting of key features). This version will
+    be the main development path from now on, with little follow-on
+    development on the 1.5.x path.
+  - Operator '&lt;&lt;' is now deprecated, in favor of operator '&lt;&lt;=' for
+    attaching parsing expressions to Forward() expressions. This is
+    being done to address precedence of operations problems with '&lt;&lt;'.
+    Operator '&lt;&lt;' will be removed in a future version of pyparsing.
+
+- remove nonsensical tarball</comment>
+    <requestid>199401</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>be6f5687b063795900a17bb0027f08d9</srcmd5>
+    <version>2.0.1</version>
+    <time>1379664257</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>c18e5d08b4c3fe31904024593f9e17b6</srcmd5>
+    <version>2.0.1</version>
+    <time>1379999498</time>
+    <user>coolo</user>
+    <comment>The examples are way too useful to not being included in -doc
+but keep them in examples dir
+
+- include examples in -doc package (forwarded request 200178 from frispete)</comment>
+    <requestid>200181</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>c18e5d08b4c3fe31904024593f9e17b6</srcmd5>
+    <version>2.0.1</version>
+    <time>1409302960</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5af0d8c31e8c48e3ad9bd9dde0b5d603</srcmd5>
+    <version>2.0.2</version>
+    <time>1421334067</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281025</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c396df3ad666f7594682b1f5bad3fb7d</srcmd5>
+    <version>2.0.3</version>
+    <time>1431982709</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307470</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>233b907b552eb8e89e0b163221670e97</srcmd5>
+    <version>2.0.7</version>
+    <time>1455611220</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357104</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>465cb2d97472ee3b44be81427b0db4f9</srcmd5>
+    <version>2.1.10</version>
+    <time>1478174168</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438176</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>49ea8c67e66110c9b32eedb840af6365</srcmd5>
+    <version>2.1.10</version>
+    <time>1481153213</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443683</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>db0c00a30f8231b0d3da6a4d653e25d0</srcmd5>
+    <version>2.1.10</version>
+    <time>1488216679</time>
+    <user>dimstar_suse</user>
+    <comment>first batch of singlespec packages</comment>
+    <requestid>460253</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>df8465cbeaa1f674c281cdb8085e51a7</srcmd5>
+    <version>2.2.0</version>
+    <time>1492617774</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>481878</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>ef98874258ae58ad84f9d74c9489895b</srcmd5>
+    <version>2.2.0</version>
+    <time>1536575390</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>633191</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>daaffb6855362c169ea03bdb4994dcd7</srcmd5>
+    <version>2.3.1~test5</version>
+    <time>1543223698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651320</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>e50139161a27029aa943a4c5fbf3b1b0</srcmd5>
+    <version>2.3.1~test5</version>
+    <time>1546695610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661745</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>959c4d55e6a09221825f9a3faac534f1</srcmd5>
+    <version>2.3.1~test5</version>
+    <time>1546946249</time>
+    <user>dimstar_suse</user>
+    <comment>- Add nose_to_unittest.patch to avoid nose BR and rewrite tests
+  to work (gh#pyparsing/pyparsing#64)
+</comment>
+    <requestid>663372</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1a337bc4674a30ac3c60a953ee3d2c9d</srcmd5>
+    <version>2.3.0+git.1546912853.bf348d6</version>
+    <time>1548704808</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildIgnore python[23]-pyparsing: python-packaging requires it
+  for some actions it could perform, but we don't make use of these
+  here. Ignoring this dependency allows us to break open a
+  BuildCycle.
+
+- Update to version 2.3.0+git.1546912853.bf348d6:
+  * Update CHANGES to include note on fixing issue #65; generalized the note about the decaf language example; added sample code from the statemachine examples.
+  * Unit test to test fix for issue #65
+  * Fix inconsistency between Keyword(caseless=True) and CaselessKeyword (issue #65)
+  * Fix typo: 'chemcialFormulas.py' -&gt; 'chemicalFormulas.py'
+  * Convert exception logging to use ParseException.explain()
+  * Add experimental ParseException.explain() method, to return a multiline string showing the parse expressions leading to a parsing failure
+  * Clean up CHANGES notes for new examples
+  * Add document signoff and library book state examples;
+  * Update statemachine demo code to Py3
+  * Update Lucene grammar example, but remove from Travis-CI acceptance scripts</comment>
+    <requestid>666937</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a05a8a4a267cb762daab73b47a59f64a</srcmd5>
+    <version>2.4.0</version>
+    <time>1555691879</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.0
+- drop nose_to_unittest.patch
+- drop _service
+ * Adds a pyparsing.__compat__ object for specifying compatibility with
+   future breaking changes.
+ * Conditionalizes the API-breaking behavior, based on the value
+   pyparsing.__compat__.collect_all_And_tokens.  By default, this value
+   will be set to True, reflecting the new bugfixed behavior.
+ * User code that is dependent on the pre-bugfix behavior can restore
+   it by setting this value to False.
+ * Updated unitTests.py and simple_unit_tests.py to be compatible with
+   &quot;python setup.py test&quot;.
+ * Fixed bug in runTests handling '\n' literals in quoted strings.
+ * Added tag_body attribute to the start tag expressions generated by
+   makeHTMLTags, so that you can avoid using SkipTo to roll your own
+   tag body expression:
+ * indentedBlock failure handling was improved
+ * Address Py2 incompatibility in simpleUnitTests, plus explain() and
+   Forward str() cleanup
+ * Fixed docstring with embedded '\w', which creates SyntaxWarnings in Py3.8.
+ * Added example parser for rosettacode.org tutorial compiler.
+ * Added example to show how an HTML table can be parsed into a
+   collection of Python lists or dicts, one per row.
+ * Updated SimpleSQL.py example to handle nested selects, reworked
+   'where' expression to use infixNotation.
+ * Added include_preprocessor.py, similar to macroExpander.py.
+ * Examples using makeHTMLTags use new tag_body expression when
+   retrieving a tag's body text.
+ * Updated examples that are runnable as unit tests</comment>
+    <requestid>695770</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>f2cbfb7fde86c570668b8c1077feee1d</srcmd5>
+    <version>2.4.2</version>
+    <time>1565266919</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.2:
+  - Updated the shorthand notation that has been added for repetition
+    expressions: expr[min, max], with '...' valid as a min or max value
+  - The defaults on all the `__diag__` switches have been set to False,
+    to avoid getting alarming warnings. To use these diagnostics, set
+    them to True after importing pyparsing.
+  - Fixed bug introduced by the use of __getitem__ for repetition,
+    overlooking Python's legacy implementation of iteration
+    by sequentially calling __getitem__ with increasing numbers until
+    getting an IndexError. Found during investigation of problem
+    reported by murlock, merci!
+  - Changed [...] to emit ZeroOrMore instead of OneOrMore.
+  - Removed code that treats ParserElements like iterables.
+  - Change all __diag__ switches to False.
+- update to 2.4.1.1:
+  - API change adding support for `expr[...]` - the original
+    code in 2.4.1 incorrectly implemented this as OneOrMore.
+    Code using this feature under this relase should explicitly
+    use `expr[0, ...]` for ZeroOrMore and `expr[1, ...]` for
+    OneOrMore. In 2.4.2 you will be able to write `expr[...]`
+    equivalent to `ZeroOrMore(expr)`.
+  - Bug if composing And, Or, MatchFirst, or Each expressions
+    using an expression. This only affects code which uses
+    explicit expression construction using the And, Or, etc.
+    classes instead of using overloaded operators '+', '^', and
+    so on. If constructing an And using a single expression,
+    you may get an error that &quot;cannot multiply ParserElement by
+    0 or (0, 0)&quot; or a Python `IndexError`.
+  - Some newly-added `__diag__` switches are enabled by default,
+    which may give rise to noisy user warnings for existing parsers.</comment>
+    <requestid>721168</requestid>
+  </revision>
+</revisionlist>

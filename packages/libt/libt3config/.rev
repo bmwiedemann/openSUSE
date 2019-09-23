@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c278c41bc1c720b3ff1060e7a61d0583</srcmd5>
+    <version>0.2.8</version>
+    <time>1371544334</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>179008</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c278c41bc1c720b3ff1060e7a61d0583</srcmd5>
+    <version>0.2.8</version>
+    <time>1379663106</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6136a54ae2deed02983f04ece0f649e3</srcmd5>
+    <version>0.2.9</version>
+    <time>1392638137</time>
+    <user>coolo</user>
+    <comment>- Declare CC=gcc to ensure we build with gcc; seems make falls back
+  to 'c99' otherwise (instead of requiring posix_cc). (forwarded request 221343 from dimstar)</comment>
+    <requestid>221632</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>6136a54ae2deed02983f04ece0f649e3</srcmd5>
+    <version>0.2.9</version>
+    <time>1409301730</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8c21453994290ad3789a0ae2e2cc0c3f</srcmd5>
+    <version>0.2.10</version>
+    <time>1424430102</time>
+    <user>dimstar_suse</user>
+    <comment>Update (forwarded request 286826 from posophe)</comment>
+    <requestid>286834</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>65d17d1f2fd6cfc51a7a51d3225d2b1e</srcmd5>
+    <version>0.2.11</version>
+    <time>1546946966</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.2.11</comment>
+    <requestid>663384</requestid>
+  </revision>
+</revisionlist>

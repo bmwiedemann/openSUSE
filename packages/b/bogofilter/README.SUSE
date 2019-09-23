@@ -1,0 +1,9 @@
+backends
+==========
+
+Post-13.1 it's possible to install multiple back-ends in parallel (db, sqlite3,
+and tokyocabinet).  The separation is based on the update-alternatives(8)
+mechanism.
+
+The db backend has the highest priority.  By this we ensure to stay compatible
+with former installs.

@@ -1,0 +1,227 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2f85cbc8deb9cf03037df6891068ec73</srcmd5>
+    <version>1.6.0</version>
+    <time>1387392129</time>
+    <user>coolo</user>
+    <comment>Mate for OpenSUSE see http://lists.opensuse.org/opensuse-factory/2013-09/msg00387.html</comment>
+    <requestid>199744</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1735536b3b84156fed4e2d0ec0c7671e</srcmd5>
+    <version>1.6.1</version>
+    <time>1389101850</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.6.1
+  + disable masking for area or window screenshots
+  + Fix Sun GNOME Documentation Team references
+  + screenshot: do not segfault when taking a window picture with no
+    delay
+  + Update AC_INIT_AUTOMAKE for make dist
+  + Remove files pulled in automatically
+  + Correct sgml filename
+  + Correct name in about dialog
+  + mate-screenshot: Fix save path selection
+    Closes #32 (https://github.com/mate-desktop/mate-utils/issues/32)
+    Fix from https://bugzilla.gnome.org/show_bug.cgi?id=579232
+  + Fix incorrect FSF addresses
+  + Use mate-disk-usage-analyzer icon instead of baobab
+  + Fix name of libmatedict in mate-dict.pc.in
+    Closes #6 (https://github.com/mate-desktop/mate-utils/issues/6)
+  + change installation path of mate-disk-usage-analyzer icon to hicolor
+- Add gtk-doc documentation of mate-dict to filelist of devel subpackage
+- Remove useless scrollkeeper build dependency (forwarded request 212941 from posophe)</comment>
+    <requestid>212942</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1f934a8c5351a71fb71e52e7006af7f9</srcmd5>
+    <version>1.8.0</version>
+    <time>1395495900</time>
+    <user>coolo</user>
+    <comment>Push X11:M:N to X11:M:F; new libraries (external dependencies) and a lot of renamed packages</comment>
+    <requestid>225357</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>daa5db3b6a7e3cd8bf1d19590b093de7</srcmd5>
+    <version>1.8.0</version>
+    <time>1395610388</time>
+    <user>scarabeus_factory</user>
+    <comment>Remove forgotten mate-doc-utils require (forwarded request 227115 from posophe)</comment>
+    <requestid>227116</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>daa5db3b6a7e3cd8bf1d19590b093de7</srcmd5>
+    <version>1.8.0</version>
+    <time>1409301874</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>def6fdccc0553ec247c272fbe1b90bfe</srcmd5>
+    <version>1.8.1</version>
+    <time>1412533908</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253804</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e794105784a32665d1353993ff2a76a7</srcmd5>
+    <version>1.10.1</version>
+    <time>1435870118</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314214</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ea9186de505033eb677700214f9edba9</srcmd5>
+    <version>1.10.2</version>
+    <time>1436888653</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>316047</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6324d3d8df11b19dd05ade398879f2e3</srcmd5>
+    <version>1.10.3</version>
+    <time>1441296235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>328635</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>da59c0a484e7420a8b1da2f156908406</srcmd5>
+    <version>1.12.0</version>
+    <time>1447234260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>342793</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>dd2c70d918a404e4061f6f1cadd1463a</srcmd5>
+    <version>1.12.0</version>
+    <time>1452611625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>353116</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>962e7c88d1e1ea68734320949e18d066</srcmd5>
+    <version>1.14.0</version>
+    <time>1460740257</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>386841</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a6a2ab3a435970b7244c0145c16c41a9</srcmd5>
+    <version>1.14.1</version>
+    <time>1471428285</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>419258</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bdb082e953d3a7b0c954353054bca479</srcmd5>
+    <version>1.16.0</version>
+    <time>1474807445</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>429557</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4f3fc2501e1451065701aad63ac1fbe1</srcmd5>
+    <version>1.18.0</version>
+    <time>1490026376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>481147</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>961cfd0b6272a1b09d7cde51b2926705</srcmd5>
+    <version>1.18.0</version>
+    <time>1491469325</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>482877</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1f10493efbd12048170df4a1a9ae30c2</srcmd5>
+    <version>1.18.1</version>
+    <time>1492714490</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>487803</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>22197a99a078f726f3cd303a6cde6c4e</srcmd5>
+    <version>1.18.2</version>
+    <time>1494263051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>493366</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d1854a151adac62d7ff7603413d33990</srcmd5>
+    <version>1.18.3</version>
+    <time>1510232259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537352</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bdcefddebe3552059ead6b5752acc729</srcmd5>
+    <version>1.20.0</version>
+    <time>1521579494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586624</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>f00e976b48fad8c75370baa2ff45f269</srcmd5>
+    <version>1.20.0</version>
+    <time>1521904563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590449</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>65287d24e6f8659b8091790d0c1d2881</srcmd5>
+    <version>1.20.1</version>
+    <time>1529919651</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618546</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7bcbd0d45ff7009228d4a343f067ba0b</srcmd5>
+    <version>1.20.2</version>
+    <time>1545996952</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.2.</comment>
+    <requestid>661662</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6ea8330fd94f7cf4cecd4ffb2e44897d</srcmd5>
+    <version>1.22.0</version>
+    <time>1558037118</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.0.</comment>
+    <requestid>684347</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b5cffb730e24f0bc58a22a742e44d9bf</srcmd5>
+    <version>1.22.1</version>
+    <time>1560970697</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.1.</comment>
+    <requestid>704755</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b40a134db456348ea40fb1346d35da6e</srcmd5>
+    <version>1.23.0</version>
+    <time>1564576557</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>719970</requestid>
+  </revision>
+</revisionlist>

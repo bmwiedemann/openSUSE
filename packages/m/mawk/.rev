@@ -1,0 +1,144 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7332b30bda41eada5e6775f97d6135e5</srcmd5>
+    <version>1.3.4</version>
+    <time>1267787705</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mawk based on submit request 33796 from user gberh
+</comment>
+    <requestid>33796</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e5e9d42ebdd0f42129cff02916b64d27</srcmd5>
+    <version>1.3.4</version>
+    <time>1268924916</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e5e9d42ebdd0f42129cff02916b64d27</srcmd5>
+    <version>1.3.4</version>
+    <time>1278667366</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e5e9d42ebdd0f42129cff02916b64d27</srcmd5>
+    <version>1.3.4</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>e5e9d42ebdd0f42129cff02916b64d27</srcmd5>
+    <version>1.3.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>e5e9d42ebdd0f42129cff02916b64d27</srcmd5>
+    <version>1.3.4</version>
+    <time>1319182173</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>9019577f244285f61244224a393dcbbe</srcmd5>
+    <version>1.3.4</version>
+    <time>1323192508</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>f4d8eb646d829c3ba9795c74562c3297</srcmd5>
+    <version>1.3.4</version>
+    <time>1326203467</time>
+    <user>coolo</user>
+    <comment>- added mawk-1.3.4-fix-regex-matching.patch which adds limit-check
+  after processing match(test, &quot;[^0-9A-Za-z]&quot;) to ensure the
+  internal trailing null of the test-string is not mistaken for
+  part of the string (backported from development snapshot,
+  bnc#740484)
+- specfile cleanup</comment>
+    <requestid>99588</requestid>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>d8b9796fb6976311adff86f1c5b75987</srcmd5>
+    <version>1.3.4</version>
+    <time>1337096531</time>
+    <user>coolo</user>
+    <comment>- package COPYING
+- simplify installation
+- make example scripts executable</comment>
+    <requestid>121032</requestid>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>d8b9796fb6976311adff86f1c5b75987</srcmd5>
+    <version>1.3.4</version>
+    <time>1340183692</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>d8b9796fb6976311adff86f1c5b75987</srcmd5>
+    <version>1.3.4</version>
+    <time>1359109435</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>d8b9796fb6976311adff86f1c5b75987</srcmd5>
+    <version>1.3.4</version>
+    <time>1379663271</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>b331000033842f706f386c47674f5f6d</srcmd5>
+    <version>1.3.4</version>
+    <time>1392815409</time>
+    <user>coolo</user>
+    <comment>- adjust update-alternative usage to packaging policy
+  (see http://lists.opensuse.org/opensuse-packaging/2014-02/msg00024.html)
+- move mawk to /usr/bin and add symlink in /bin</comment>
+    <requestid>221402</requestid>
+  </revision>
+  <revision rev="14" vrev="22">
+    <srcmd5>b331000033842f706f386c47674f5f6d</srcmd5>
+    <version>1.3.4</version>
+    <time>1409301877</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="23">
+    <srcmd5>1e28caa8ddf3b38f9ba0feea20e04fda</srcmd5>
+    <version>1.3.4</version>
+    <time>1428192267</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294504</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5b9a21c38c8a342eaf52c966be64c8ad</srcmd5>
+    <version>1.3.4.20150503</version>
+    <time>1448400815</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345041</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>7c565d8ae0d7d40a4b0b14938a6d90dd</srcmd5>
+    <version>1.3.4.20150503</version>
+    <time>1485863224</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453401</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0f8dc95a1de7e167ff252d70cec1e346</srcmd5>
+    <version>1.3.4.20171017</version>
+    <time>1531470117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622298</requestid>
+  </revision>
+</revisionlist>

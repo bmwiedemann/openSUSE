@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>853036766c0fc0f193f608a48fc1135e</srcmd5>
+    <version>1.1.0</version>
+    <time>1503593290</time>
+    <user>dimstar_suse</user>
+    <comment>replacement for php5-pear-Auth_SASL</comment>
+    <requestid>515119</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8f227a6b8e6f853576c449d8d3af4a1e</srcmd5>
+    <version>1.1.0</version>
+    <time>1549017897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669463</requestid>
+  </revision>
+</revisionlist>

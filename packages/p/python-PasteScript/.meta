@@ -1,0 +1,8 @@
+<package name="python-PasteScript" project="openSUSE:Factory">
+  <title></title>
+  <description>This is a pluggable command-line tool. It includes some built-in features:
+ 
+  * Create file layouts for packages.
+  * Serving up web applications, with configuration based on paste.deploy</description>
+  <devel project="devel:languages:python" package="python-PasteScript"/>
+</package>

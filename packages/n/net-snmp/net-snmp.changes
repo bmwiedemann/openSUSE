@@ -1,0 +1,1298 @@
+-------------------------------------------------------------------
+Thu Jul  4 08:06:47 UTC 2019 - abergmann@suse.com
+
+- Add Lustre filesystem support (bsc#1140341).
+  Add net-snmp-5.8-add-lustre-fs-support.patch
+
+-------------------------------------------------------------------
+Wed Mar  6 10:21:17 UTC 2019 - abergmann@suse.com
+
+- Remove FIRST_ARG usage from spec file (bsc#1126426). 
+
+-------------------------------------------------------------------
+Wed Oct 10 20:22:35 UTC 2018 - abergmann@suse.com
+
+- Update to net-snmp-5.8.
+  Fixes included:
+  * Fix remote DoS in agent/helpers/table.c (bsc#1111122, CVE-2018-18065)
+  * Fix agentx freezing on timeout (bsc#1027353)
+  * swintst_rpm: Protect against unspecified Group name (bsc#1102775)
+- Add tsm and tlstm MIBs and the USM security module. (bsc#1081164)
+- Rename and refactor patches and remove those that are already included
+  inside the new version.
+  Added:
+  * net-snmp-5.8-socket-path.patch
+  * net-snmp-5.8-testing-empty-arptable.patch
+  * net-snmp-5.8-pie.patch
+  * net-snmp-5.8-net-snmp-config-headercheck.patch
+  * net-snmp-5.8-perl-tk-warning.patch
+  * net-snmp-5.8-velocity-mib.patch
+  * net-snmp-5.8-netgroups.patch
+  * net-snmp-5.8-snmpstatus-suppress-output.patch
+  * net-snmp-5.8-fix-Makefile.PL.patch
+  * net-snmp-5.8-modern-rpm-api.patch
+  * net-snmp-5.8-fix-python3.patch
+  Removed:
+  * net-snmp-5.7.3-socket-path.patch
+  * net-snmp-5.7.3-testing-empty-arptable.patch
+  * net-snmp-5.7.3-pie.patch
+  * net-snmp-5.7.3-net-snmp-config-headercheck.patch
+  * net-snmp-5.7.3-perl-tk-warning.patch
+  * net-snmp-5.7.3-velocity-mib.patch
+  * net-snmp-5.7.3-fix-snmpd-crashing-when-an-agentx-disconnects.patch
+  * net-snmp-5.7.3-netgroups.patch
+  * net-snmp-5.7.3-snmpstatus-suppress-output.patch
+  * net-snmp-5.7.3-fix-snmp_pdu_parse-incomplete.patch
+  * net-snmp-5.7.3-Remove-U64-typedef.patch
+  * net-snmp-5.7.3-Fix-Makefile.PL.patch
+  * net-snmp-5.7.3-build-with-openssl-1.1.patch
+  * net-snmp-5.7.3-modern-rpm-api.patch
+  * net-snmp-python3.patch
+  * net-snmp-5.7.2-systemd.patch
+  * net-snmp-5.7.3-helpers-table-skip-if-next-handler-called.patch
+
+-------------------------------------------------------------------
+Mon Oct  8 23:44:37 UTC 2018 - abergmann@suse.com
+
+- Fix remote DoS in agent/helpers/table.c (bsc#1111122, CVE-2018-18065)
+  Add net-snmp-5.7.3-helpers-table-skip-if-next-handler-called.patch
+
+-------------------------------------------------------------------
+Mon Jun 18 13:50:35 CEST 2018 - kukuk@suse.de
+
+- Create /var/agentx via systemd tmpfiles in case of rollback,
+  snapshots and transactional updates [bsc#1098032]
+
+-------------------------------------------------------------------
+Wed Apr 18 12:04:14 UTC 2018 - tchvatal@suse.com
+
+- Fix permissions on unit files wrt bsc#1087977
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Mon Apr 16 15:03:50 UTC 2018 - abergmann@suse.com
+
+- Remove executable flags from systemd service files (bsc#1089295).
+
+-------------------------------------------------------------------
+Thu Feb  1 23:15:44 UTC 2018 - jengelh@inai.de
+
+- Fix RPM group for shlib subpackage.
+
+-------------------------------------------------------------------
+Wed Jan 24 14:07:16 UTC 2018 - tchvatal@suse.com
+
+- Properly conditionalize the py2 build
+
+-------------------------------------------------------------------
+Wed Jan 24 13:09:36 UTC 2018 - tchvatal@suse.com
+
+- Add patch from Fedora to support natively systemd:
+  * net-snmp-5.7.2-systemd.patch
+- Drop the check phase as whole 90% of the tests fail it makes
+  more sense to run them somewhere localy
+
+-------------------------------------------------------------------
+Mon Jan 22 12:24:33 UTC 2018 - tchvatal@suse.com
+
+- Take systemd service files from fedora to replace sysV scripts
+- Also convert the sysconfig files to match fedora ones, they
+  get bit more terse but it works seamlessly with systemd
+
+-------------------------------------------------------------------
+Fri Jan 19 17:36:38 UTC 2018 - tchvatal@suse.com
+
+- Format with spec-cleaner
+- Drop sle11 support as it fails to build anyway for ages
+- Rename python packages to be python-%{name} with obsoletes
+  * Use new singlespec macros
+  * Add patch converting the py files to python3/2 compat mode
+    net-snmp-python3.patch
+- Run full autoreconf instead of partial
+- Build with threads by building few targets first
+
+-------------------------------------------------------------------
+Mon Dec 11 17:14:43 UTC 2017 - dimstar@opensuse.org
+
+- Add net-snmp-5.7.3-modern-rpm-api.patch: Supprt modern RPM (>=
+  4.6) API. In RPM 4.14, the RPM 4.4 compatibility APIs are being
+  removed.
+
+-------------------------------------------------------------------
+Thu Nov 23 13:46:24 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Tue Jun 13 10:07:45 UTC 2017 - daniel.molkentin@suse.com
+
+- Fix build with OpenSSL 1.1 (bsc#1042664):
+  + Add net-snmp-5.7.3-build-with-openssl-1.1.patch, cumulated
+    squash-patch from the following upstream commits:
+      bbed6b86e70b5a3c54f14992696f2308a8d79511
+      14bb72fd12bf5b68662893f7d8afbc4a8d52a6c8
+      9641b472ef01208f92631016e91b0a4a518163f0
+      e4c6937483d4a680570cec05388d2e4b291868a6
+      b906c60c8a436d7360267a6d242526b33a9aaac8
+
+-------------------------------------------------------------------
+Sat May 21 08:48:48 UTC 2016 - dimstar@opensuse.org
+
+- Fix build with perl 5.24.0:
+  + Add net-snmp-5.7.3-Fix-Makefile.PL.patch: Fix build system
+    recursiely loading Makefile.Pl and destroying its internas.
+    See https://rt.perl.org/Public/Bug/Display.html?id=125907
+  + net-snmp-5.7.3-Remove-U64-typedef.patch: The U64 typedef
+    conflicts with a typedef in a Perl header file. Hence remove
+    the U64 typedef from the Net-SNMP header files. Backported from
+    upstream commit 477b4307ef1.
+
+-------------------------------------------------------------------
+Tue Mar 15 09:09:41 UTC 2016 - abergmann@suse.com
+
+- make snmpd and snmptrapd log message destination configurable
+  for syslog or a dedicated log file. (bsc#695677)
+- make snmpd and snmptrapd listening address(es) configurable via
+  the sysconfig file.
+
+-------------------------------------------------------------------
+Mon Feb 15 20:38:20 UTC 2016 - astieger@suse.com
+
+- fix build with GNU grep 2.23, use grep -a to force text matching
+
+-------------------------------------------------------------------
+Thu Sep  3 09:48:31 UTC 2015 - meissner@suse.com
+
+- reenabled md5 and des, as some tools build against it and need
+  the methods :(
+
+-------------------------------------------------------------------
+Thu Aug 13 20:24:01 UTC 2015 - abergmann@suse.com
+
+- added net-snmp-5.7.3-fix-snmp_pdu_parse-incomplete.patch: to fix
+  an incompletely initialized vulnerability within the
+  snmp_pdu_parse() function of snmp_api.c.
+  (bnc#940188, CVE-2015-5621)
+
+-------------------------------------------------------------------
+Mon Aug  3 14:35:47 UTC 2015 - meissner@suse.com
+
+- Disable MD5 authentication method, disable DES support
+  (if something breaks, tell me)
+
+-------------------------------------------------------------------
+Wed Jul 22 07:19:05 UTC 2015 - jengelh@inai.de
+
+- Request pkgconfig(libssl) instead of openssl-devel to support
+  using LibreSSL as well.
+
+-------------------------------------------------------------------
+Tue Jul 14 09:43:16 UTC 2015 - abergmann@suse.com
+
+- update to upstream version 5.7.3
+- remove patch that is now present in the upstream release:
+  * net-snmp-5.7.2-fix-snmptrapd-remote-denial-of-service.patch
+- rename patches to new version number 5.7.3:
+  delete:
+  * net-snmp-5.7.2-fix-snmpd-crashing-when-an-agentx-disconnects.patch
+  * net-snmp-5.7.2-net-snmp-config-headercheck.patch
+  * net-snmp-5.7.2-perl-tk-warning.patch
+  * net-snmp-5.7.2-pie.patch
+  * net-snmp-5.7.2-socket-path.patch
+  * net-snmp-5.7.2-testing-empty-arptable.patch
+  * net-snmp-5.7.2-velocity-mib.patch
+  add:
+  * net-snmp-5.7.3-fix-snmpd-crashing-when-an-agentx-disconnects.patch
+  * net-snmp-5.7.3-net-snmp-config-headercheck.patch
+  * net-snmp-5.7.3-perl-tk-warning.patch
+  * net-snmp-5.7.3-pie.patch
+  * net-snmp-5.7.3-socket-path.patch
+  * net-snmp-5.7.3-testing-empty-arptable.patch
+  * net-snmp-5.7.3-velocity-mib.patch
+- add build requirement 'procps' to fix a net-snmp-config error
+  (bsc#935863)
+- enable DTLS and TLS support (FATE#318789)
+  new binary 'snmptls' was added
+- add support for hostname netgroups (FATE#316305)
+  '@hostgroup' can be specified for multiple hosts
+  * net-snmp-5.7.3-netgroups.patch
+- suppress network statistics output in snmpstatus (FATE#316289)
+  '-Sn' don't print any info about the network
+  '-Si' don't print the operational status of network interfaces
+  * net-snmp-5.7.3-snmpstatus-suppress-output.patch
+
+-------------------------------------------------------------------
+Sun Nov 30 15:52:36 UTC 2014 - cobexer@gmail.com
+
+- also stop snmptrapd on removal
+
+-------------------------------------------------------------------
+Mon Sep 15 14:29:16 UTC 2014 - lchiquitto@suse.com
+
+- update to upstream version 5.7.3.pre5
+- remove patches that are now present in the upstream release:
+  * net-snmp-5.7.2-build-fix-for-strlcat.patch
+  * net-snmp-5.7.2-fix-mib-representation-of-timeout-values.patch
+  * net-snmp-5.7.2-fix-perl-trap-handler.patch
+- net-snmp-5.7.2-fix-snmptrapd-remote-denial-of-service.patch:
+  refresh and add patch header
+
+-------------------------------------------------------------------
+Wed Sep  3 19:35:54 UTC 2014 - abergmann@suse.com
+
+- added net-snmp-5.7.2-fix-snmptrapd-remote-denial-of-service.patch:
+  fix remote denial of service problem inside snmptrapd when started 
+  with the "-OQ" option (CVE-2014-3565)(bnc#894361)
+- added net-snmp-5.7.2-fix-perl-trap-handler.patch: fix potential 
+  remote denial of service problem inside the snmptrapd Perl trap 
+  handler (CVE-2014-2285)(bnc#866942) 
+
+-------------------------------------------------------------------
+Mon Jun 16 13:58:17 CEST 2014 - lchiquitto@suse.com
+
+- merge some old fixes from SLE 11:
+  * init script should provide snmpd. (bnc#466805) 
+  * stop all snmp agents when stopping the daemon. (bnc#473328)
+
+-------------------------------------------------------------------
+Sat May 17 18:57:58 UTC 2014 - coolo@suse.de
+
+- recompress .tar.gz - it has trailing garbage, hope we can readd
+  source url on next update
+
+-------------------------------------------------------------------
+Fri May 16 12:25:59 UTC 2014 - lchiquitto@suse.com
+
+- update to upstream version 5.7.2.1, fixing one security issue:
+  * A denial of service attack vector was discovered on the Linux
+    implementation of the ICMP-MIB. (CVE-2014-2284, bnc#866942)
+
+-------------------------------------------------------------------
+Wed May 14 22:06:00 CEST 2014 - lchiquitto@suse.com
+
+- net-snmp-5.7.2-fix-mib-representation-of-timeout-values.patch:
+  fix mib representation of timeout values (bnc#833153) 
+
+-------------------------------------------------------------------
+Thu May  8 11:47:01 CEST 2014 - ro@suse.de
+
+- use _rundir macro 
+
+-------------------------------------------------------------------
+Tue Feb 18 15:40:15 UTC 2014 - lchiquitto@suse.com
+
+- remove old workaround for ppc/ppc64 migrations which is no longer
+  needed (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Jul 15 11:49:08 UTC 2013 - mardnh@gmx.de
+
+- add support for python bindings
+
+-------------------------------------------------------------------
+Wed Jul 10 08:26:14 UTC 2013 - lars@linux-schulserver.de
+
+- improve snmptrapd init script (avoid to overwrite the logfile 
+  on restart)
+
+-------------------------------------------------------------------
+Mon May 20 11:22:24 UTC 2013 - lchiquitto@suse.com
+
+- Disable parallelism during build. The dependencies between the
+  Perl module and libnetsnmp are not defined correctly and might
+  result in broken linkage (bnc#819497, bnc#818907)
+
+-------------------------------------------------------------------
+Mon Apr 15 13:44:06 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Tue Dec 18 22:01:23 UTC 2012 - lchiquitto@suse.com
+
+- net-snmp-5.7.2-build-fix-for-strlcat.patch: fix exported strlcat()
+  prototype that could conflict with other packages (bnc#793548)
+
+-------------------------------------------------------------------
+Wed Oct 10 18:21:19 UTC 2012 - lchiquitto@suse.com
+
+- update to version 5.7.2: several bug fixes in the agent, client
+  utilities and libraries. The CHANGES file shipped with the
+  package contains a comprehensive list of fixes and improvements
+- rebase patches to apply cleanly:
+  * net-snmp-5.7.2-perl-tk-warning.patch
+  * net-snmp-5.7.2-socket-path.patch
+  * net-snmp-5.7.2-testing-empty-arptable.patch
+  * net-snmp-5.7.2-pie.patch
+  * net-snmp-5.7.2-velocity-mib.patch
+  * net-snmp-5.7.2-fix-snmpd-crashing-when-an-agentx-disconnects.patch
+- remove patches that are now present in the upstream release:
+  * net-snmp-5.7.0-recognize-reiserfs.patch
+  * net-snmp-5.7.1-snmplib-zero-timeout.patch
+  * net-snmp-5.7.1-old-api-double-free.patch
+  * net-snmp-5.7.1-use-pclose-to-close-pipes.patch
+  * net-snmp-5.7.1-fix-handling-of-large-filesystems.patch
+  * net-snmp-5.7.1-snmplib-default-retries.patch
+  * net-snmp-5.7.1-fsys-memory-leak.patch
+  * net-snmp-5.7.1-adjust-copyright-in-agent-txt-file.patch
+  * net-snmp-5.7.1-recognize-ocfs2.patch
+  * net-snmp-5.7.1-properly-clean-up-old-requests-in-subagents.patch
+  * net-snmp-5.7.1-reduce-code-duplication-in-agentx.patch
+  * net-snmp-5.7.1-log-agentx-disconnections.patch
+  * net-snmp-5.7.1-more-robust-handling-of-agentx-errors.patch
+  * net-snmp-5.7.1-report-problems-with-setundo-processing.patch
+  * net-snmp-5.7.1-fix-array-index-error.patch
+
+-------------------------------------------------------------------
+Fri Sep  7 17:28:00 UTC 2012 - jengelh@inai.de
+
+- Remove redundant sections from specfile
+- Avoid shipping .la files
+
+-------------------------------------------------------------------
+Mon May 14 17:39:17 UTC 2012 - lchiquitto@suse.com
+
+- fix array index error that could lead to a crash (CVE-2012-2141)
+  (bnc#759352)
+
+-------------------------------------------------------------------
+Thu Mar 29 22:14:55 UTC 2012 - lchiquitto@suse.com
+
+- fix agent crash when reloading a subagent (AgentX) during a query
+  (bnc#670789)
+
+-------------------------------------------------------------------
+Thu Mar 29 22:14:04 UTC 2012 - lchiquitto@suse.com
+
+- add OCFS2 to the list of known file systems
+
+-------------------------------------------------------------------
+Thu Mar 22 11:04:08 UTC 2012 - lchiquitto@suse.com
+
+- update copyright notice of AGENT.txt allowing us to redistribute
+  the file in our package (from Dave Shield) (bnc#750704)
+
+-------------------------------------------------------------------
+Wed Feb  8 06:09:32 UTC 2012 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Tue Nov  1 11:01:12 UTC 2011 - lchiquitto@suse.com
+
+- logrotate: use "reload" instead of "try-restart" to avoid an
+  unnecessary stop/start cycle in the agent (bnc#707636)
+
+-------------------------------------------------------------------
+Fri Oct 21 12:30:29 UTC 2011 - lchiquitto@suse.com
+
+- net-snmp-5.7.1-fsys-memory-leak.patch: fix a memory leak in
+  agent/mibgroup/hardware/fsys (bnc#725766)
+- net-snmp-5.7.1-snmplib-default-retries.patch: change default
+  number of retries back from 0 to 5 (bnc#725766)
+- net-snmp-5.7.1-fix-handling-of-large-filesystems.patch: fix
+  bug in handling large (>8TB) filesystems (bnc#725766)
+- net-snmp-5.7.1-use-pclose-to-close-pipes.patch: use pclose()
+  instead of fclose() to close a pipe (bnc#725766)
+- net-snmp-5.7.1-old-api-double-free.patch: agent: avoid double
+  free when netsnmp_register_old_api() fails (bnc#725766)
+- net-snmp-5.7.1-snmplib-zero-timeout.patch: snmplib: avoid
+  waiting indefinitely if a session has timeout zero (bnc#725766)
+
+-------------------------------------------------------------------
+Thu Sep 29 00:44:40 UTC 2011 - lchiquitto@suse.com
+
+- update to version 5.7.1: minor release including some bug fixes
+
+-------------------------------------------------------------------
+Fri Sep 16 17:24:39 UTC 2011 - jengelh@medozas.de
+
+- enable net-snmp-devel on all baselib architectures
+
+-------------------------------------------------------------------
+Wed Sep 14 18:33:18 UTC 2011 - lchiquitto@suse.com
+
+- make sure all delegated requests are removed before closing an
+  AgentX session (bnc#670789)
+
+-------------------------------------------------------------------
+Fri Sep  9 20:41:31 UTC 2011 - lchiquitto@suse.com
+
+- update to version 5.7.1.rc1 but keep package version as 5.7.1
+  to avoid update problems when the final version is released
+
+-------------------------------------------------------------------
+Fri Sep  9 20:18:31 UTC 2011 - lchiquitto@suse.com
+
+- small fixes to snmpd and snmptrapd init scripts:
+  - if $SNMPD_LOGLEVEL is not defined, use LOG_NOTICE instead of
+    LOG_DEBUG
+  - improve messages printed and service description
+  - write snmptrapd logs to /var/log/net-snmpd.log
+
+-------------------------------------------------------------------
+Fri Sep  9 19:36:55 UTC 2011 - lchiquitto@suse.com
+
+- update README.SUSE to reflect some recent changes and drop a bit
+  of outdated information
+- update baselibs to reflect new library version
+- spec file cleanup: rename some source files for consistency
+
+-------------------------------------------------------------------
+Thu Sep  1 12:48:57 UTC 2011 - lchiquitto@suse.com
+
+- add ReiserFS to the list of known file systems (bnc#715199)
+
+-------------------------------------------------------------------
+Tue Aug 30 01:43:26 UTC 2011 - lchiquitto@suse.com
+
+- install snmptrapd init script by default (bnc#712175)
+
+-------------------------------------------------------------------
+Tue Aug 30 01:37:28 UTC 2011 - lchiquitto@suse.com
+
+- fix logging option in snmptrapd init script (bnc#712174) 
+
+-------------------------------------------------------------------
+Thu Jul 14 17:46:57 UTC 2011 - lchiquitto@suse.com
+
+- update upstream patches from branch V5-7-patches to 20110714
+
+-------------------------------------------------------------------
+Tue Jul  5 12:28:00 UTC 2011 - lchiquitto@suse.com
+
+- update to version 5.7:
+  new features and lots of bug fixes
+- remove patches that are no longer needed:
+  net-snmp-5.6.0-enable-hrh-filesys.patch
+  net-snmp-5.6.1-recognize-jfs-and-xfs.patch
+  net-snmp-5.6.1-rpm490.patch
+- refresh and rename patches to apply cleanly after update:
+  net-snmp-5.7.0-pie.patch
+  net-snmp-5.7.0-velocity-mib.patch
+
+-------------------------------------------------------------------
+Thu May 19 14:43:13 CEST 2011 - mls@suse.de
+
+- switch from rpmdb to rpmts to support rpm-4.9.0
+
+-------------------------------------------------------------------
+Thu May 12 14:49:34 UTC 2011 - lchiquitto@suse.com
+
+- update upstream patches from branch V5-6-patches to 20110512
+
+-------------------------------------------------------------------
+Wed Apr 13 17:30:28 UTC 2011 - lchiquitto@suse.com
+
+- add JFS and XFS to the list of known file systems (bnc#687327)
+
+-------------------------------------------------------------------
+Mon Mar 28 18:53:16 UTC 2011 - lchiquitto@suse.com
+
+- update upstream patches from branch V5-6-patches to 20110328
+
+-------------------------------------------------------------------
+Tue Jan  4 11:34:19 UTC 2011 - lchiquitto@suse.com
+
+- fix libsnmp version in baselibs.conf
+
+-------------------------------------------------------------------
+Tue Jan  4 11:26:48 UTC 2011 - lchiquitto@suse.com
+
+- update to version 5.6.1:
+  new features and lots of bug fixes
+- update upstream patches from branch V5-6-patches to 20110104
+- remove patches that are no longer needed:
+  net-snmp-5.6.0-ethtool-speed.patch
+
+-------------------------------------------------------------------
+Tue Nov 30 18:09:58 UTC 2010 - lchiquitto@suse.com
+
+- remove /var/adm/perl-modules/net-snmp from the Perl module
+
+-------------------------------------------------------------------
+Mon Nov 29 10:43:34 UTC 2010 - lchiquitto@suse.com
+
+- update upstream patches from branch V5-6-patches to 20101129
+- spec file cleanup: upstream uses -fno-strict-aliasing by default
+  now
+- remove patches that are no longer needed:
+  net-snmp-5.5.0-rpmdb-h-detect.patch 
+  net-snmp-5.6.0-vendorperl.patch
+
+-------------------------------------------------------------------
+Wed Nov  3 12:04:50 UTC 2010 - lchiquitto@suse.com
+
+- if-mib: add support for more speeds with ethtool (bnc#650558)
+
+-------------------------------------------------------------------
+Mon Nov  1 17:54:34 UTC 2010 - lchiquitto@suse.com
+
+- update upstream patches from branch V5-6-patches to 20101101,
+  fixing a segmentation fault on shutdown (bnc#650282)
+
+-------------------------------------------------------------------
+Wed Oct 27 16:48:40 UTC 2010 - lchiquitto@suse.com
+
+- enable new implementation of hrStorage and hrFilesys to fix
+  persistent indexes in FS and Storage tables (bnc#648364)
+
+-------------------------------------------------------------------
+Thu Oct 21 14:37:36 UTC 2010 - lchiquitto@suse.com
+
+- update upstream patches from branch V5-6-patches to 20101021
+
+-------------------------------------------------------------------
+Tue Oct 19 23:59:46 UTC 2010 - lchiquitto@suse.com
+
+- update to version 5.6:
+  new features and lots of bug fixes
+- refresh and rename patches to apply cleanly after update:
+  net-snmp-5.6.0-pie.patch
+  net-snmp-5.6.0-vendorperl.patch
+  net-snmp-5.6.0-net-snmp-config-headercheck.patch
+
+-------------------------------------------------------------------
+Tue Aug  3 18:33:33 UTC 2010 - lchiquitto@suse.com
+
+- update upstream patches from branch V5-5-patches to 20100803
+
+-------------------------------------------------------------------
+Mon Jul 19 16:36:49 UTC 2010 - lchiquitto@suse.com
+
+- change default log level from DEBUG to NOTICE (bnc#623497)
+
+-------------------------------------------------------------------
+Fri Jul 16 01:04:14 UTC 2010 - lchiquitto@suse.com
+
+- spec file cleanup: remove old backward compatibility scripts
+
+-------------------------------------------------------------------
+Thu Jun  3 11:43:52 UTC 2010 - lchiquitto@suse.com
+
+- update upstream patches from branch V5-5-patches to 20100602:
+  fixed potential buffer overflow in parsing OIDs in config files
+
+-------------------------------------------------------------------
+Mon May 31 13:48:27 UTC 2010 - lchiquitto@suse.com
+
+- update upstream patches from branch V5-5-patches to 20100531
+- add net-snmp-5.5.0-rpmdb-h-detect.patch:
+  workaround for autoconf failing to detect rpm/rpmdb.h
+- remove patches that are no longer needed:
+  net-snmp-5.5.0-use-lmsensors-v3.patch
+
+-------------------------------------------------------------------
+Fri Apr 30 16:01:08 UTC 2010 - lchiquitto@suse.com
+
+- create /var/run/agentx during startup to support systems that
+  mount /var/run as tmpfs
+
+-------------------------------------------------------------------
+Wed Apr 28 21:41:22 UTC 2010 - lchiquitto@suse.com
+
+- update libsnmp package name to reflect the library version we
+  are currently shipping
+- remove patches that are obsolete:
+  net-snmp-5.4.rc2-versinfo.diff
+  net-snmp-5.4.2_snmpconf-selinux.patch 
+- refresh all patches to apply as "-p1"
+- spec file cleanup: remove conditionals to build on unsupported
+  versions of the distribution
+
+-------------------------------------------------------------------
+Wed Apr 28 21:38:21 UTC 2010 - lchiquitto@suse.com
+
+- update upstream patches from branch V5-5-patches to 20100428
+
+-------------------------------------------------------------------
+Mon Apr  5 15:58:58 UTC 2010 - lchiquitto@suse.com
+
+- add net-snmp-5.5.0_upstream-20100405.patch:
+  merge all patches committed to upstream branch V5-5-patches
+- remove patches that are now upstream:
+  net-snmp-5.4.2_audit.patch
+  net-snmp-5.5.0_autoconf.patch
+  net-snmp-5.4.2_overflow.patch
+  net-snmp-5.4.2.1-rpm4.7.patch
+  net-snmp-5.5.0_gcc45.patch
+
+-------------------------------------------------------------------
+Fri Mar  5 17:33:34 UTC 2010 - lchiquitto@suse.com
+
+- Fix strncat properly (from Andreas Jaeger)
+
+-------------------------------------------------------------------
+Mon Mar  1 20:45:50 UTC 2010 - aj@suse.de
+
+- Fix code errors found by gcc 4.5
+
+-------------------------------------------------------------------
+Wed Feb  3 11:03:39 CET 2010 - jdelvare@suse.de
+
+- build for libsensors4 instead of libsensors3
+
+-------------------------------------------------------------------
+Mon Feb  1 12:06:49 UTC 2010 - jengelh@medozas.de
+
+- remove sparcv9-specific baselib exceptions (not needed)
+
+-------------------------------------------------------------------
+Tue Jan 19 12:01:54 UTC 2010 - lchiquitto@suse.com
+
+- remove net-snmp-5.4.1.2-rmon-mib-revised_3.patch from sources
+  (upstream since 5.5)
+- refresh net-snmp-5.5.0_autoconf.patch
+- spec file cleanup: update package description
+
+-------------------------------------------------------------------
+Tue Dec 22 09:41:44 UTC 2009 - lchiquitto@suse.com
+
+- update to version 5.5:
+  new features and lots of bug fixes, including:
+  - fix hrSWRunPath for processes other than init (bnc#486270)
+- remove patches that are now upstream:
+  Add-Default-Router-Table-support.patch
+  Add-ICMP-Statistics-Tables-support.patch
+  Add-IPv6-Scope-Zone-Index.patch
+  Add-IPv6-support-on-Internet-Address-Translation-Tab.patch
+  Fix-for-IPv6-Interface-Table.patch
+  Fix-for-Internet-Address-Prefix-Table.patch
+  Fix-for-Internet-Address-Table.patch
+  Fix-for-tcpConnnectionTable-tcpListenerTable-udpEn.patch
+  Improve-IP-Statistics-tables.patch
+  net-snmp-5.3.0.1_trap-agent-addr_v2.patch
+  net-snmp-5.4.1.2-etherlike-mib-revised_4.patch
+  net-snmp-5.4.x_embedded_perl_error_message.patch
+
+-------------------------------------------------------------------
+Sat Dec 19 14:00:41 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+- add baselib defs for SPARC
+
+-------------------------------------------------------------------
+Sun Aug 30 15:17:12 UTC 2009 - aj@suse.de
+
+- Fix build with rpm 4.7 (net-snmp-5.4.2.1-rpm4.7.patch)
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Thu Jan 22 16:36:00 CET 2009 - mrueckert@suse.de
+
+- updated patches from Dell:
+  Those patches incorporate the latest fixes for remarks from the
+  upstream review
+  old: net-snmp-5.4.1.2-rmon-mib-revised.patch
+  new: net-snmp-5.4.1.2-rmon-mib-revised_3.patch
+  old: net-snmp-5.4.1.2-etherlike-mib-revised_2.patch
+  new: net-snmp-5.4.1.2-etherlike-mib-revised_4.patch
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during
+  distupgrade (bnc#437293)
+
+-------------------------------------------------------------------
+Fri Dec  5 22:07:47 CET 2008 - mrueckert@suse.de
+
+- fix the snmptrapd init script:
+  1. make sure the config isnt loaded twice.
+  2. do not truncate the net-snmp.log
+  3. use SNMPD_LOGLEVEL aswell.
+  4. write a pid
+- update snmptrapd section in README.SuSE
+- whitespace cleanup in both init scripts
+
+-------------------------------------------------------------------
+Fri Nov 21 14:53:28 CET 2008 - mrueckert@suse.de
+
+- update patches from Dell:
+  Upstream asked to reduce the logging in the mib module.
+  old name net-snmp-5.4.1.2-etherlike-mib-revised_1.patch
+  new name net-snmp-5.4.1.2-etherlike-mib-revised_2.patch
+
+-------------------------------------------------------------------
+Thu Nov 20 17:33:25 CET 2008 - mrueckert@suse.de
+
+- Remove the recommends on perl-Tk again. We rely on the fixed
+  warning in the perl_tk_warnings.patch. (bnc#443047)
+
+-------------------------------------------------------------------
+Tue Nov 11 16:54:26 CET 2008 - ro@suse.de
+
+- SLE-11 uses PPC64 instead of PPC, adapt baselibs.conf 
+
+-------------------------------------------------------------------
+Mon Nov 10 17:44:36 CET 2008 - mrueckert@suse.de
+
+- added net-snmp-5.4.x_embedded_perl_error_message.patch:
+  fix typo in error message (bnc#439857)
+
+-------------------------------------------------------------------
+Wed Nov  5 16:10:39 CET 2008 - mrueckert@suse.de
+
+- update to 5.4.2.1: (bnc#440950) (CVE-2008-4309)
+  fix crash in getbulk handling code
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Fri Oct 24 16:54:46 CEST 2008 - mrueckert@suse.de
+
+- added net-snmp-5.4.2_velocity-mib.patch (FATE#303556)
+
+-------------------------------------------------------------------
+Fri Oct 24 16:43:34 CEST 2008 - mrueckert@suse.de
+
+- refreshed patches to apply cleanly:
+  old: net-snmp-5.1.2-snmpconf-selinux.patch
+  new: net-snmp-5.4.2_snmpconf-selinux.patch
+  old: net-snmp-5.2.1-overflow.diff
+  new: net-snmp-5.4.2_overflow.patch
+  old: net-snmp-5.2.1.testing.empty_arptable.patch
+  new: net-snmp-5.4.2_testing.empty_arptable.patch
+  old: net-snmp-5.3.0.1-audit.diff
+  new: nmp-5.4.2_audit.patch
+  old: net-snmp-5.3_vendorperl.patch
+  new: net-snmp-5.4.2_vendorperl.patch
+  old: net-snmp-5.4.1-autoconf.diff
+  new: net-snmp-5.4.2_autoconf.patch
+  old: net-snmp-5.4.1_perl_tk_warning.patch
+  new: net-snmp-5.4.2_perl_tk_warning.patch
+  old: net-snmp-5.4_net-snmp-config_headercheck.patch
+  new: net-snmp-5.4.2_net-snmp-config_headercheck.patch
+
+-------------------------------------------------------------------
+Fri Oct 24 14:43:35 CEST 2008 - kkeil@suse.de
+
+- more IPv6 support from IBM (mainline backports) (bnc#437208)
+  Fix-for-tcpConnnectionTable-tcpListenerTable-udpEn.patch
+  Fix-for-IPv6-Interface-Table.patch
+  Fix-for-Internet-Address-Table.patch
+  Add-ICMP-Statistics-Tables-support.patch
+  Add-Default-Router-Table-support.patch
+  Add-IPv6-support-on-Internet-Address-Translation-Tab.patch
+  Fix-for-Internet-Address-Prefix-Table.patch
+  Add-IPv6-Scope-Zone-Index.patch
+  Improve-IP-Statistics-tables.patch
+
+-------------------------------------------------------------------
+Mon Oct 20 17:05:34 CEST 2008 - mrueckert@suse.de
+
+- remove lzma-alpha-devel. rpm-devel has to require it if it is
+  really needed
+
+-------------------------------------------------------------------
+Tue Sep 16 16:40:42 CEST 2008 - mrueckert@suse.de
+
+- updated patches from Dell:
+  net-snmp-5.4.1.2-etherlike-mib-revised_1.patch
+  net-snmp-5.4.1.2-rmon-mib-revised.patch
+  Those 2 patches obsolete the previous 3 patches.
+
+-------------------------------------------------------------------
+Sat Sep 13 14:55:57 CEST 2008 - mrueckert@suse.de
+
+- fix typo in the init script which breaks loading of agents
+  (bnc#415127)
+- also restart snmptrapd after logrotate (bnc#378069)
+
+-------------------------------------------------------------------
+Fri Sep 12 18:44:53 CEST 2008 - mrueckert@suse.de
+
+- add patches from Dell: (Fate#304310)
+  net-snmp-5.4.1.2-etherlike-mib-revised.patch
+  net-snmp-5.4.1.2-rmon-mib.patch
+  net-snmp-5.4.2_fix_dell_patches.patch
+
+-------------------------------------------------------------------
+Sat Sep  6 16:15:57 CEST 2008 - mrueckert@suse.de
+
+- update to version 5.4.2
+  - [PATCH 1921861]: Avoid endless loop after truncating 64bit int
+  - Better handling of CONTAINER_INSERT failures with multiple
+    indices
+  - [PATCH 2023633]: add SCTP-MIB implementation (Linux only)
+  - suppress annoying "registration != duplicate" warning for root
+    oids
+  - Update to libtool 1.5.26
+- add net-snmp-5.4.1_perl_tk_warning.patch (bnc#392695)
+  correctly recommend installing the perl-Tk package instead of
+  referring to cpan.
+- fix Required-Stop in the init scripts
+- cleanup the spec file:
+  - moved files from the mibs package to the packages where they
+    really belong (snmpconf-data, mib2c)
+  - move mib2c from the perl package to the devel package
+
+-------------------------------------------------------------------
+Mon Aug 25 11:53:31 CEST 2008 - prusnak@suse.cz
+
+- fixed wrong SELinux context (selinux.patch) [Fate#303662]
+
+-------------------------------------------------------------------
+Fri Aug 22 16:19:33 CEST 2008 - mrueckert@suse.de
+
+- fix init scripts
+- use %fillup_only as we dont launch the daemon per default
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Tue Mar 25 00:40:00 CET 2008 - ro@suse.de
+
+- added lzma-alpha-devel to buildreq 
+
+-------------------------------------------------------------------
+Fri Nov  2 15:07:41 CET 2007 - jdelvare@suse.de
+
+- libsensors is in a separate package now.
+
+-------------------------------------------------------------------
+Thu Aug  2 00:46:50 CEST 2007 - mrueckert@suse.de
+
+- update to 5.4.1
+  many small fixes. the highlights:
+  - link only needed libraries
+  - memleaks fixed
+  - python bindings (not yet packaged)
+- rediffed net-snmp-5.4.rc1-autoconf.diff
+  new name net-snmp-5.4.1-autoconf.diff
+- no longer build against lm_sensors on s390
+- split out new packages:
+  libsnmp15, snmp-mibs
+
+-------------------------------------------------------------------
+Mon Nov 13 16:04:58 CET 2006 - mrueckert@suse.de
+
+- update to 5.4.rc2:
+  tons of bugfixes, and new features. just to name a few:
+  - enabled embedded perl
+  - new MIB table to manage net-snmp access control extensions
+  - hal to abstract os specific aspects of the systems
+  - tree matching support for snmptrapd
+  - reworked transport creation in snmplib
+  - using the incoming ip for outgoing packets if possible.
+  - ipv6 aware tcp/udp mibs
+
+- removed patches:
+  (all of them are either upstream or obsolete)
+  net-snmp-5.2.1-acinclude.diff
+  net-snmp-5.2.1-acquotation.patch
+  net-snmp-5.2.1-compat.patch
+  net-snmp-5.2.1-localperl.diff
+  net-snmp-5.2.1-perl.diff
+  net-snmp-5.3.0.1-64bit.diff
+  net-snmp-5.3.0.1_agentx_socket_path_doc.patch
+  net-snmp-5.3.0.1_deprecated_sysctl_retrans_time.patch
+  net-snmp-5.3.0.1_disman_mib_crash.patch
+  net-snmp-5.3.0.1_ethtool.patch
+  net-snmp-5.3.0.1_linux_types_header.patch
+  net-snmp-5.3.0.1_missing_ifNumber.patch
+  net-snmp-5.3.0.1_netsnmp_register_mib_crash.patch
+  net-snmp-5.3.0.1_perl_ld_run_path.patch
+  net-snmp-5.3.0.1_sighup_vacm.patch
+  net-snmp-5.3.0.1-smux-trap.diff
+  net-snmp-5.3.0.1.tar.bz2
+  net-snmp-5.3.0.1_tcpwrapper_log_severity.patch
+  net-snmp-5.3.0.1_testsuite_no_smux.patch
+  net-snmp-5.3.0.1_tunnel_compilation.patch
+  net-snmp-5.3_perl_agent.xs-pointersize.patch
+  net-snmp-5.3_perl-printf.patch
+  net-snmp-5.4_default_store_return_value.patch
+  oid-names2_5.3.patch
+
+- added net-snmp-5.4_net-snmp-config_headercheck.patch:
+  warn if net-snmp-config is used but development files are missing.
+- updated net-snmp-5.2.1-autoconf.diff to apply cleanly against 5.4
+  new name: net-snmp-5.4.rc1-autoconf.diff
+- updated net-snmp-5.2.1-versinfo.diff to apply cleanly against 5.4
+  new name: net-snmp-5.4.rc2-versinfo.diff
+- added net-snmp-5.4.rc2_perl_SNMP_size_t.patch:
+  dont use int if you want size_t. fixes failures in the perl test
+  suite.
+
+-------------------------------------------------------------------
+Thu Oct 19 17:25:58 CEST 2006 - mrueckert@suse.de
+
+- added net-snmp-5.4_default_store_return_value.patch:
+  backport my patch from 5.4 so we can get rid of the build errors.
+  the patch removes/disables dead code.
+
+-------------------------------------------------------------------
+Fri Aug  4 02:34:14 CEST 2006 - mrueckert@suse.de
+
+- added net-snmp-5.3.0.1_perl_ld_run_path.patch:
+  the old perl replacement line broke linking of the SNMP libraries
+  into the perl modules. the patch sets the LD_RUN_PATH for the
+  build process to LIBDIR. (#180888)
+
+-------------------------------------------------------------------
+Thu May  4 17:05:26 CEST 2006 - mrueckert@suse.de
+
+- added net-snmp-5.3.0.1_sighup_vacm.patch:
+  The snmp agent was broken on SIGHUP. It lost all its MIB
+  informations. (upstream bug: #1473289)
+- added net-snmp-5.3.0.1_deprecated_sysctl_retrans_time.patch:
+  The snmpd used a deprecated sysctl to get the retransmit time
+  from the kernel. We didnt use this module but the mib library
+  triggered the sysctl. The patch uses retrans_time_ms when
+  available and corrects the correction factor for the old sysctl.
+  (bug: #170140, upstream: #1437287)
+- reenabled the lmsensors support. was disabled for testing and
+  never reenabled.
+
+-------------------------------------------------------------------
+Thu Apr 20 16:47:31 CEST 2006 - mrueckert@suse.de
+
+- net-snmp-5.3.0.1_missing_ifNumber.patch:
+  The 5.3 agent on Linux systems did not implement the 'ifNumber'
+  MIB object. (#159501)
+
+-------------------------------------------------------------------
+Wed Apr 19 14:33:10 CEST 2006 - mrueckert@suse.de
+
+- logrotate does not like if the postrotate script returns with
+  a non zero returncode.
+- add missing "-e" in echo line
+
+-------------------------------------------------------------------
+Mon Apr  3 17:51:21 CEST 2006 - mrueckert@suse.de
+
+- dont call "/etc/init.d/snmpd restart". this could start the 
+  daemon unconditionally (too large log file).
+  switched to "/etc/init.d/snmpd try-restart"
+
+-------------------------------------------------------------------
+Mon Apr  3 14:51:39 CEST 2006 - mrueckert@suse.de
+
+- run logrotate on startup if the logfile is too large. (#131072)
+
+-------------------------------------------------------------------
+Tue Mar 28 14:16:34 CEST 2006 - mrueckert@suse.de
+
+- fix compilation with ethtool support. (#155709)
+- added option to ignore accepted connections (#86634)
+  net-snmp-5.3.0.1_tcpwrapper_log_severity.patch
+  new sysconfig option: SNMPD_LOG_SUCCESSFUL_CONNECTIONS
+- pass the correct path to configure to set the desired log file
+- make smux listen to localhost by default. (#116742)
+- remove confpath patch. (#147808,#159768)
+
+-------------------------------------------------------------------
+Mon Mar 27 15:30:26 CEST 2006 - mrueckert@suse.de
+
+- updated and reenabled the audit patch
+
+-------------------------------------------------------------------
+Fri Mar 17 20:02:35 CET 2006 - mrueckert@suse.de
+
+- ported sysconfig options from sles9
+  SNMPD_LOGLEVEL -> SPECIFY the log level for the snmpd
+  SNMPD_USE_SMUX -> disable SMUX socket
+
+-------------------------------------------------------------------
+Fri Mar 10 00:20:11 CET 2006 - mrueckert@suse.de
+
+- disable embedded perl for now.
+
+-------------------------------------------------------------------
+Wed Mar  8 05:17:49 CET 2006 - mrueckert@suse.de
+
+- added net-snmp-5.3.0.1_agentx_socket_path_doc.patch:
+  fixes: net-snmp snmpd.conf(5) manpage gives wrong default
+  for AgentXSocket (#129437)
+- ported fix for bug #129923 from sles9
+- suppress the error message in the ucd-snmp upgrade script
+
+-------------------------------------------------------------------
+Wed Feb 22 18:45:23 CET 2006 - mrueckert@suse.de
+
+- we move the configs into /etc/snmp [#77935]
+- removed debugging packages from the build requires.
+
+-------------------------------------------------------------------
+Thu Feb 16 16:03:38 CET 2006 - mrueckert@suse.de
+
+- added net-snmp-5.3.0.1-smux-trap.diff
+  dont loose the value of string variables via smux traps [#150091]
+
+-------------------------------------------------------------------
+Fri Feb  3 16:39:21 CET 2006 - mrueckert@suse.de
+
+- added net-snmp-5.3.0.1_disman_mib_crash.patch
+ o fixes a crash in the disman mib loading
+- net-snmp-5.3.0.1_netsnmp_register_mib_crash.patch
+ o dont crash while registering mibs
+- net-snmp-5.3_perl_agent.xs-pointersize.patch
+ o dont use int if you mean intptr_t(IV)
+- net-snmp-5.3_perl-printf.patch
+ o unused format specifier in printf
+- net-snmp-5.3_vendorperl.patch
+ o do make install_vendor
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:27 CET 2006 - mrueckert@suse.de
+
+- removed net-snmp-5.2.1-cmdline.diff
+  better solution from upstream
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:36 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 00:50:55 CET 2006 - mrueckert@suse.de
+
+- update to version 5.3.0.1
+- removed patches that got applied upstream or superseeded by
+  upstream fixes:
+  net-snmp-5.2.1-uptime.diff
+  net-snmp-5.2.1-typeclash.diff
+  net-snmp-5.2.1-gcc.diff
+  net-snmp-5.2.1-dlopen-conf.diff
+  net-snmp-5.2.1-enomedium.diff
+  net-snmp-5.2.1-mktemp.diff
+  net-snmp-5.2.1-close-all-fds.diff
+  net-snmp-5.2.1-more-cpus.diff
+  net-snmp-5.2.1-nowraplibs.patch
+  net-snmp-5.2.1.set-var-value.patch
+
+- added 4 new patches:
+  net-snmp-5.3_perl_agent.xs-pointersize.patch
+   - fixes some casts of pointers to ints -> segfaults in the test
+     suite
+  net-snmp-5.3_perl-printf.patch
+  - fixes a printf warning
+  net-snmp-5.3_vendorperl.patch
+  - call perl modules install with install_vendor
+  net-snmp-5.1.1-pie.patch
+  - build snmpd and snmptrapd with pie
+
+-------------------------------------------------------------------
+Tue Nov 15 17:12:53 CET 2005 - uli@suse.de
+
+- no point in running the test suite in QEMU
+
+-------------------------------------------------------------------
+Wed Sep  7 13:53:40 CEST 2005 - mrueckert@suse.de
+
+- Added rpm-devel to the requires of the -devel package
+
+-------------------------------------------------------------------
+Fri Jun 17 17:46:41 CEST 2005 - mrueckert@suse.de
+
+- added disman/event-mib to the mib list (Bug #91039)
+- replaced patch25 (asn1 handling fix) with patch from the upstream.
+  (Bug #73804)
+- build snmpd and snmptrap with with -fpie/-pie
+
+-------------------------------------------------------------------
+Fri Jun 10 11:43:48 CEST 2005 - mrueckert@suse.de
+
+- Fixed test suite for boxes with empty arp tables.
+
+-------------------------------------------------------------------
+Tue May 17 12:52:00 CEST 2005 - hvogel@suse.de
+
+- Include the right header for compat mode (Bug #64074)
+- Fix length for type ASN_UNSIGNED (Bug #73804)
+- Get rid of WRAPLIBS in net-snmp-config (Bug #75879)
+- Fix ac quotation
+
+-------------------------------------------------------------------
+Tue Feb 22 14:28:17 CET 2005 - meissner@suse.de
+
+- moved tkmib and mib2c* to perl subpackage, since
+  they require it. #63992
+
+-------------------------------------------------------------------
+Wed Feb 16 18:28:44 CET 2005 - meissner@suse.de
+
+- Multiple non Intel CPU detection added.
+
+-------------------------------------------------------------------
+Sun Feb  6 18:50:48 CET 2005 - meissner@suse.de
+
+- Upgraded to 5.1.2 release. (lots of bugfixes as usual)
+
+-------------------------------------------------------------------
+Wed Feb  2 22:06:33 CET 2005 - meissner@suse.de
+
+- overflow counter32 and gauge32 on 64bit systems correctly. #50384
+
+-------------------------------------------------------------------
+Fri Nov 26 11:23:58 CET 2004 - meissner@suse.de
+
+- close all non standard filedescriptors on start.
+
+-------------------------------------------------------------------
+Thu Nov 25 12:01:56 CET 2004 - meissner@suse.de
+
+- Upgraded to 5.2 final.
+
+-------------------------------------------------------------------
+Mon Oct 25 17:16:58 CEST 2004 - meissner@suse.de
+
+- Upgraded to 5.2.1rc2. Dropped merged patches, rediffed
+  old ones.
+
+-------------------------------------------------------------------
+Tue Aug 17 14:28:42 CEST 2004 - coolo@suse.de
+
+- fixing pre-requires
+
+-------------------------------------------------------------------
+Thu Aug 12 17:40:53 CEST 2004 - meissner@suse.de
+
+- Upgrade to 5.1.2 final.
+
+-------------------------------------------------------------------
+Thu Jul 29 15:29:32 CEST 2004 - meissner@suse.de
+
+- Upgraded to upstream 5.1.2.rc2.
+
+-------------------------------------------------------------------
+Fri Jul 23 13:03:17 CEST 2004 - meissner@suse.de
+
+- Upgraded to 5.1.2.rc1.
+- Dropped some old patches / parts of old patches.
+- Fixed problem on little endian 64bit machines.
+
+-------------------------------------------------------------------
+Thu Jul 15 14:45:08 CEST 2004 - meissner@suse.de
+
+- removed double free on failure in netsnmp_register_old_api().
+  (bug #42580)
+- do not specify -c /etc/snmpd.conf (since it is already built in).
+  (bug #41706)
+- require openssl-devel in -devel package.
+
+-------------------------------------------------------------------
+Tue Jul  6 16:15:23 CEST 2004 - meissner@suse.de
+
+- replaced undefined C construct (x[n] = y[n++]) which caused the
+  testsuite to fail on i386.
+
+-------------------------------------------------------------------
+Mon Jul  5 11:45:35 CEST 2004 - uli@suse.de
+
+- sleep .3 s before starting agents (bug #42588) 
+
+-------------------------------------------------------------------
+Wed Jun 30 09:42:51 CEST 2004 - meissner@suse.de
+
+- Fixed 2 places of file descriptor leakage which lead to segfaults
+  during readdir/fgets. #33958
+
+-------------------------------------------------------------------
+Fri Mar 19 16:22:35 CET 2004 - meissner@suse.de
+
+- remove the #define PACKAGE_ from the included autoconf 
+  generated config.h file. #36355
+
+-------------------------------------------------------------------
+Fri Mar 19 00:56:32 CET 2004 - ro@suse.de
+
+- use stop_on_removal and restart_on_update macros (#36306)
+- package /var/log/net-snmp as %ghost (#36435)
+
+-------------------------------------------------------------------
+Tue Mar 16 23:20:36 CET 2004 - ro@suse.de
+
+- use mktemp in fixproc (#36103)
+
+-------------------------------------------------------------------
+Mon Mar 15 16:56:15 CET 2004 - ro@suse.de
+
+- avoid segfault in version-info (limit to 300 bytes)
+- open devices with NONBLOCK, don't wait for cdrom
+- avoid segfault in proc-cmdline output
+
+-------------------------------------------------------------------
+Mon Feb 16 14:26:25 CET 2004 - ro@suse.de
+
+- previous 64-bit fix went just one bit too far, fixed
+
+-------------------------------------------------------------------
+Wed Feb 11 17:22:14 CET 2004 - ro@suse.de
+
+- added smux mib (for quagga)
+
+-------------------------------------------------------------------
+Mon Feb  9 15:28:16 CET 2004 - ro@suse.de
+
+- fix dlopen detection in configure
+
+-------------------------------------------------------------------
+Wed Feb  4 11:57:54 CET 2004 - ro@suse.de
+
+- added requires for perl-TermReadKey
+
+-------------------------------------------------------------------
+Tue Jan 20 17:03:52 CET 2004 - ro@suse.de
+
+- try to fix at least some 64bit issues (eg. #33958)
+
+-------------------------------------------------------------------
+Thu Jan 15 17:35:03 CET 2004 - ro@suse.de
+
+- update arguments in rc-script 
+
+-------------------------------------------------------------------
+Fri Jan  9 12:24:10 CET 2004 - kukuk@suse.de
+
+- Fix some 64bit critical compiler warnings
+
+-------------------------------------------------------------------
+Fri Dec 12 12:09:03 CET 2003 - hare@suse.de
+
+- Fixed includes for build with evlog.
+
+-------------------------------------------------------------------
+Fri Nov 14 12:55:17 CET 2003 - ro@suse.de
+
+- update to 5.1
+
+-------------------------------------------------------------------
+Fri Nov 14 12:54:47 CET 2003 - ro@suse.de
+
+- build perl module as perl-SNMP
+
+-------------------------------------------------------------------
+Fri Nov 14 12:54:41 CET 2003 - ro@suse.de
+
+- enable ucd-snmp compatibility
+
+-------------------------------------------------------------------
+Thu Oct 23 16:41:21 CEST 2003 - ro@suse.de
+
+- update to 5.1.pre2 
+
+-------------------------------------------------------------------
+Thu Oct 23 15:55:33 CEST 2003 - ro@suse.de
+
+- revised audit patch
+- branched devel subpackage
+- added rpm support
+
+-------------------------------------------------------------------
+Wed Oct 22 17:29:22 CEST 2003 - ro@suse.de
+
+- created package and ported patches from ucd-snmp 
+

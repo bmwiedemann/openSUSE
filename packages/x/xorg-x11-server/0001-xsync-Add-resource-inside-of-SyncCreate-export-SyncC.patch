@@ -1,0 +1,242 @@
+From 7f962c70b6d9c346477f23f6c15211e749110078 Mon Sep 17 00:00:00 2001
+From: Alex Goins <agoins@nvidia.com>
+Date: Wed, 10 Apr 2019 13:48:02 -0500
+Subject: [PATCH] xsync: Add resource inside of SyncCreate, export SyncCreate
+
+As shown by DRI3 adding the SyncCreateFenceFromFD() function, extensions may
+want to create a fence, then initialize it in their own way. This currently
+can't be done without adding a function directly to Xext/sync.c due to the fact
+that the RTFence resource type is private and there is no external interface to
+add to it.
+
+To facilitate other X extensions creating fences and initializing them, this
+change exports SyncCreate() and adds the resource directly within it. Callers no
+longer need to call AddResource() after SyncCreate(), they only need to
+initialize the SyncObject.
+
+To prevent FreeFence() and FreeCounter() from segfaulting if the call to
+AddResource() fails before the sync object is initialized, this adds a new
+'initialized' parameter to SyncObject that, when FALSE, causes FreeFence() and
+FreeCounter() to skip de-initialization and simply free the object.
+Initialization after adding the resource shouldn't otherwise be a problem due to
+the single-threaded nature of X.
+
+Signed-off-by: Alex Goins <agoins@nvidia.com>
+Reviewed-by: James Jones <jajones@nvidia.com>
+Signed-off-by: Aaron Plattner <aplattner@nvidia.com>
+---
+ Xext/sync.c            | 50 ++++++++++++++++++++++++++++----------------------
+ Xext/syncsdk.h         |  3 +++
+ miext/sync/misync.c    | 27 ++++++++++++++++-----------
+ miext/sync/misync.h    |  1 +
+ miext/sync/misyncstr.h |  5 +++--
+ 5 files changed, 51 insertions(+), 35 deletions(-)
+
+diff --git a/Xext/sync.c b/Xext/sync.c
+index 8f22a865b..fd2ceb042 100644
+--- a/Xext/sync.c
++++ b/Xext/sync.c
+@@ -881,18 +881,21 @@ SyncChangeAlarmAttributes(ClientPtr client, SyncAlarm * pAlarm, Mask mask,
+     return Success;
+ }
+ 
+-static SyncObject *
++SyncObject *
+ SyncCreate(ClientPtr client, XID id, unsigned char type)
+ {
+     SyncObject *pSync;
++    RESTYPE resType;
+ 
+     switch (type) {
+     case SYNC_COUNTER:
+         pSync = malloc(sizeof(SyncCounter));
++        resType = RTCounter;
+         break;
+     case SYNC_FENCE:
+         pSync = (SyncObject *) dixAllocateObjectWithPrivates(SyncFence,
+                                                              PRIVATE_SYNC_FENCE);
++        resType = RTFence;
+         break;
+     default:
+         return NULL;
+@@ -901,6 +904,11 @@ SyncCreate(ClientPtr client, XID id, unsigned char type)
+     if (!pSync)
+         return NULL;
+ 
++    pSync->initialized = FALSE;
++
++    if (!AddResource(id, resType, (void *) pSync))
++        return NULL;
++
+     pSync->client = client;
+     pSync->id = id;
+     pSync->pTriglist = NULL;
+@@ -923,13 +931,10 @@ SyncCreateFenceFromFD(ClientPtr client, DrawablePtr pDraw, XID id, int fd, BOOL
+ 
+     status = miSyncInitFenceFromFD(pDraw, pFence, fd, initially_triggered);
+     if (status != Success) {
+-        dixFreeObjectWithPrivates(pFence, PRIVATE_SYNC_FENCE);
++        FreeResource(pFence->sync.id, RT_NONE);
+         return status;
+     }
+ 
+-    if (!AddResource(id, RTFence, (void *) pFence))
+-        return BadAlloc;
+-
+     return Success;
+ #else
+     return BadImplementation;
+@@ -957,8 +962,7 @@ SyncCreateCounter(ClientPtr client, XSyncCounter id, int64_t initialvalue)
+     pCounter->value = initialvalue;
+     pCounter->pSysCounterInfo = NULL;
+ 
+-    if (!AddResource(id, RTCounter, (void *) pCounter))
+-        return NULL;
++    pCounter->sync.initialized = TRUE;
+ 
+     return pCounter;
+ }
+@@ -1137,21 +1141,26 @@ static int
+ FreeCounter(void *env, XID id)
+ {
+     SyncCounter *pCounter = (SyncCounter *) env;
+-    SyncTriggerList *ptl, *pnext;
+ 
+     pCounter->sync.beingDestroyed = TRUE;
+-    /* tell all the counter's triggers that the counter has been destroyed */
+-    for (ptl = pCounter->sync.pTriglist; ptl; ptl = pnext) {
+-        (*ptl->pTrigger->CounterDestroyed) (ptl->pTrigger);
+-        pnext = ptl->next;
+-        free(ptl);              /* destroy the trigger list as we go */
+-    }
+-    if (IsSystemCounter(pCounter)) {
+-        xorg_list_del(&pCounter->pSysCounterInfo->entry);
+-        free(pCounter->pSysCounterInfo->name);
+-        free(pCounter->pSysCounterInfo->private);
+-        free(pCounter->pSysCounterInfo);
++
++    if (pCounter->sync.initialized) {
++        SyncTriggerList *ptl, *pnext;
++
++        /* tell all the counter's triggers that counter has been destroyed */
++        for (ptl = pCounter->sync.pTriglist; ptl; ptl = pnext) {
++            (*ptl->pTrigger->CounterDestroyed) (ptl->pTrigger);
++            pnext = ptl->next;
++            free(ptl); /* destroy the trigger list as we go */
++        }
++        if (IsSystemCounter(pCounter)) {
++            xorg_list_del(&pCounter->pSysCounterInfo->entry);
++            free(pCounter->pSysCounterInfo->name);
++            free(pCounter->pSysCounterInfo->private);
++            free(pCounter->pSysCounterInfo);
++        }
+     }
++
+     free(pCounter);
+     return Success;
+ }
+@@ -1889,9 +1898,6 @@ ProcSyncCreateFence(ClientPtr client)
+ 
+     miSyncInitFence(pDraw->pScreen, pFence, stuff->initially_triggered);
+ 
+-    if (!AddResource(stuff->fid, RTFence, (void *) pFence))
+-        return BadAlloc;
+-
+     return Success;
+ }
+ 
+diff --git a/Xext/syncsdk.h b/Xext/syncsdk.h
+index f1b99d010..c88285cb1 100644
+--- a/Xext/syncsdk.h
++++ b/Xext/syncsdk.h
+@@ -29,6 +29,9 @@
+ extern _X_EXPORT int
+  SyncVerifyFence(SyncFence ** ppFence, XID fid, ClientPtr client, Mask mode);
+ 
++extern _X_EXPORT SyncObject*
++ SyncCreate(ClientPtr client, XID id, unsigned char type);
++
+ #define VERIFY_SYNC_FENCE(pFence, fid, client, mode)			\
+     do {								\
+ 	int rc;								\
+diff --git a/miext/sync/misync.c b/miext/sync/misync.c
+index 490fa0b17..0931803f6 100644
+--- a/miext/sync/misync.c
++++ b/miext/sync/misync.c
+@@ -101,24 +101,29 @@ miSyncInitFence(ScreenPtr pScreen, SyncFence * pFence, Bool initially_triggered)
+     pFence->funcs = miSyncFenceFuncs;
+ 
+     pScreenPriv->funcs.CreateFence(pScreen, pFence, initially_triggered);
++
++    pFence->sync.initialized = TRUE;
+ }
+ 
+ void
+ miSyncDestroyFence(SyncFence * pFence)
+ {
+-    ScreenPtr pScreen = pFence->pScreen;
+-    SyncScreenPrivPtr pScreenPriv = SYNC_SCREEN_PRIV(pScreen);
+-    SyncTriggerList *ptl, *pNext;
+-
+     pFence->sync.beingDestroyed = TRUE;
+-    /* tell all the fence's triggers that the counter has been destroyed */
+-    for (ptl = pFence->sync.pTriglist; ptl; ptl = pNext) {
+-        (*ptl->pTrigger->CounterDestroyed) (ptl->pTrigger);
+-        pNext = ptl->next;
+-        free(ptl);              /* destroy the trigger list as we go */
+-    }
+ 
+-    pScreenPriv->funcs.DestroyFence(pScreen, pFence);
++    if (pFence->sync.initialized) {
++        ScreenPtr pScreen = pFence->pScreen;
++        SyncScreenPrivPtr pScreenPriv = SYNC_SCREEN_PRIV(pScreen);
++        SyncTriggerList *ptl, *pNext;
++
++        /* tell all the fence's triggers that the counter has been destroyed */
++        for (ptl = pFence->sync.pTriglist; ptl; ptl = pNext) {
++            (*ptl->pTrigger->CounterDestroyed) (ptl->pTrigger);
++            pNext = ptl->next;
++            free(ptl); /* destroy the trigger list as we go */
++        }
++
++        pScreenPriv->funcs.DestroyFence(pScreen, pFence);
++    }
+ 
+     dixFreeObjectWithPrivates(pFence, PRIVATE_SYNC_FENCE);
+ }
+diff --git a/miext/sync/misync.h b/miext/sync/misync.h
+index dc78c5fdb..f7082d5ea 100644
+--- a/miext/sync/misync.h
++++ b/miext/sync/misync.h
+@@ -28,6 +28,7 @@
+ #ifndef _MISYNC_H_
+ #define _MISYNC_H_
+ 
++typedef struct _SyncObject SyncObject;
+ typedef struct _SyncFence SyncFence;
+ typedef struct _SyncTrigger SyncTrigger;
+ 
+diff --git a/miext/sync/misyncstr.h b/miext/sync/misyncstr.h
+index 2eab2aa57..2a6e84a96 100644
+--- a/miext/sync/misyncstr.h
++++ b/miext/sync/misyncstr.h
+@@ -38,13 +38,14 @@
+ #define SYNC_COUNTER		0
+ #define SYNC_FENCE		1
+ 
+-typedef struct _SyncObject {
++struct _SyncObject {
+     ClientPtr client;           /* Owning client. 0 for system counters */
+     struct _SyncTriggerList *pTriglist; /* list of triggers */
+     XID id;                     /* resource ID */
+     unsigned char type;         /* SYNC_* */
++    Bool initialized;           /* FALSE if created but not initialized */
+     Bool beingDestroyed;        /* in process of going away */
+-} SyncObject;
++};
+ 
+ typedef struct _SyncCounter {
+     SyncObject sync;            /* Common sync object data */
+-- 
+2.16.4
+

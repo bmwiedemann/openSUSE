@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b64c7d107585044e5535042f3ebe23ad</srcmd5>
+    <version>unknown</version>
+    <time>1330157715</time>
+    <user>coolo</user>
+    <comment>link it</comment>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b64c7d107585044e5535042f3ebe23ad</srcmd5>
+    <version>unknown</version>
+    <time>1340183237</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>b64c7d107585044e5535042f3ebe23ad</srcmd5>
+    <version>unknown</version>
+    <time>1359108749</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>b64c7d107585044e5535042f3ebe23ad</srcmd5>
+    <version>unknown</version>
+    <time>1379662114</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>b64c7d107585044e5535042f3ebe23ad</srcmd5>
+    <version>unknown</version>
+    <time>1409300645</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

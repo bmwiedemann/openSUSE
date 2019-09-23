@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>10f3c8c78f62a9530ce6275a51b93bc6</srcmd5>
+    <version>0.9</version>
+    <time>1477644412</time>
+    <user>dimstar_suse</user>
+    <comment>New package, usefull tool for measuring io latencies</comment>
+    <requestid>437293</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e1509a124ba4b71c74ad68cdfb021b97</srcmd5>
+    <version>0.9</version>
+    <time>1478087181</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>437636</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b9f9928c00ccbfc2ee4ec09a0a709ba3</srcmd5>
+    <version>1.0</version>
+    <time>1490965755</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.0:</comment>
+    <requestid>482592</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,24 @@
+From 09910015795f95421c40d1bf78d1aba5dfffd399 Mon Sep 17 00:00:00 2001
+From: l10n daemon script <scripty@kde.org>
+Date: Mon, 25 Feb 2019 03:16:21 +0100
+Subject: [PATCH 35/35] GIT_SILENT made messages (after extraction)
+
+---
+ src/data/org.kde.kile.appdata.xml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/data/org.kde.kile.appdata.xml b/src/data/org.kde.kile.appdata.xml
+index f72a3219..36609aaf 100644
+--- a/src/data/org.kde.kile.appdata.xml
++++ b/src/data/org.kde.kile.appdata.xml
+@@ -21,6 +21,7 @@
+   <name xml:lang="pl">Kile</name>
+   <name xml:lang="pt">Kile</name>
+   <name xml:lang="pt-BR">Kile</name>
++  <name xml:lang="ru">Kile</name>
+   <name xml:lang="sk">Kile</name>
+   <name xml:lang="sv">Kile</name>
+   <name xml:lang="tr">Kile</name>
+-- 
+2.20.1
+

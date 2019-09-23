@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a71fe5669ed4914f87874c4b85c8b609</srcmd5>
+    <version>1.0.0</version>
+    <time>1434003712</time>
+    <user>dimstar_suse</user>
+    <comment>This is a dependency to an already existing package in TW...</comment>
+    <requestid>309795</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>876d21b05025c359d8874a4bcdef9227</srcmd5>
+    <version>1.0.1</version>
+    <time>1450861048</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>350431</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>49d37110fac8f56b12b95293a49ca156</srcmd5>
+    <version>1.1.0</version>
+    <time>1472731423</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424130</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e33a731caa271ed11e368460f8523f98</srcmd5>
+    <version>1.1.1</version>
+    <time>1503593102</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514463</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>65bd764179f0c732df61930cb295ef0d</srcmd5>
+    <version>1.2.0</version>
+    <time>1533732825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627903</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1d05e0a8e1c23bfef9a3f6a4b87311bc</srcmd5>
+    <version>1.2.0</version>
+    <time>1544094875</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654006</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>02a23688ee1a155c1b2b66d4cdfe4fc8</srcmd5>
+    <version>1.2.1</version>
+    <time>1552380288</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.1:
+  * Merge pull request #68 from datadriventests/fix-docstring-behavior</comment>
+    <requestid>682478</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,43 @@
+From 8676d77beb46e5a1f52ca0196ebebcd9890be5c2 Mon Sep 17 00:00:00 2001
+From: xiaoguang wang <xwang@suse.com>
+Date: Tue, 12 Mar 2019 10:59:46 +0800
+Subject: [PATCH] presence: Enable idle detection while screensaver is active
+
+Dim screen function depends on signal STATUS_CHANGED. To dim screen when
+screensaver is active, need to enable idle detection at that time.
+
+https://gitlab.gnome.org/GNOME/gnome-shell/issues/900
+---
+ gnome-session/gsm-presence.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/gnome-session/gsm-presence.c b/gnome-session/gsm-presence.c
+index fa476abc..cdfa3ccd 100644
+--- a/gnome-session/gsm-presence.c
++++ b/gnome-session/gsm-presence.c
+@@ -173,10 +173,7 @@ idle_became_idle_cb (GnomeIdleMonitor *idle_monitor,
+                      gpointer          user_data)
+ {
+         GsmPresence *presence = user_data;
+-        /* We should already be idle,
+-         * see on_screensaver_active_changed() */
+-        if (!presence->priv->screensaver_active)
+-                set_session_idle (presence, TRUE);
++        set_session_idle (presence, TRUE);
+ }
+ 
+ static void
+@@ -185,9 +182,7 @@ idle_became_active_cb (GnomeIdleMonitor *idle_monitor,
+                        gpointer          user_data)
+ {
+         GsmPresence *presence = user_data;
+-        /* We can only be non-idle if the screensaver is gone */
+-        if (!presence->priv->screensaver_active)
+-                set_session_idle (presence, FALSE);
++        set_session_idle (presence, FALSE);
+ }
+ 
+ static void
+-- 
+2.16.4
+

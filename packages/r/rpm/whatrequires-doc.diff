@@ -1,0 +1,14 @@
+--- ./doc/rpm.8.orig	2018-08-21 10:38:02.035078442 +0000
++++ ./doc/rpm.8	2018-10-16 09:21:26.948505637 +0000
+@@ -632,6 +632,11 @@ Query all packages that provide the \fIC
+ .TP
+ \fB--whatrequires \fICAPABILITY\fB\fR
+ Query all packages that require \fICAPABILITY\fR for proper functioning.
++.br
++Note that this does not return what requires a given package.
++A package usually provides multiple capabilities and file-names on which
++other packages may depend. To see the complete dependencies
++for a package, use \fB-e --test \fIPACKAGE_NAME\fB\fR
+ .TP
+ \fB--whatconflicts \fICAPABILITY\fB\fR
+ Query all packages that conflict with \fICAPABILITY\fR.

@@ -1,0 +1,9 @@
+<package name="linux32" project="openSUSE:Factory">
+  <title>32-Bit Emulation Utility for x86-64</title>
+  <description>This is a small tool for 32-bit emulation in Linux/x86-64. It allows
+you to execute programs that need a uname -m of i386 with uname
+emulation. The uname -m is inherited by all child programs, but does
+not affect the current shell or processes above it in the process
+hierarchy.</description>
+  <devel project="Base:System" package="linux32"/>
+</package>

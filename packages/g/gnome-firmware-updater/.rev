@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d2f26a8687c82b0653585ea3b675cfdc</srcmd5>
+    <version>0.0.1~git.20190830</version>
+    <time>1567581238</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>727919</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2f11c27b62427531ef2bd07d85b52f95</srcmd5>
+    <version>0.0.1~git.20190830</version>
+    <time>1568190946</time>
+    <user>dimstar_suse</user>
+    <comment>- Use noun phrase in summary. (forwarded request 729739 from jengelh)</comment>
+    <requestid>729797</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,21 @@
+commit c199dc320b4faa01c19df68a9f2566465f5afa2c
+Author: Gao,Yan <ygao@suse.com>
+Date:   Mon Jun 13 17:26:27 2016 +0200
+
+    Fix: controld: Prevent unwanted self-fencing if "stateful_merge_wait" state of dlm is not available
+
+Index: pacemaker-2.0.2+20190725.4b4fea3eb/extra/resources/controld
+===================================================================
+--- pacemaker-2.0.2+20190725.4b4fea3eb.orig/extra/resources/controld
++++ pacemaker-2.0.2+20190725.4b4fea3eb/extra/resources/controld
+@@ -226,10 +226,6 @@ controld_monitor() {
+          if [ -n "$smw" ] && [ $smw -eq 1 ]; then
+              ocf_log err "DLM status is: stateful_merge_wait"
+              CM_RC=$OCF_ERR_GENERIC
+-         elif [ -z "$smw" ] && dlm_tool ls | grep -q "wait fencing" && \
+-              ! stonith_admin -H '*' --output-as xml | grep -q "extended-status=\"pending\""; then
+-             ocf_log err "DLM status is: wait fencing"
+-             CM_RC=$OCF_ERR_GENERIC
+          else
+              CM_RC=$OCF_SUCCESS
+          fi

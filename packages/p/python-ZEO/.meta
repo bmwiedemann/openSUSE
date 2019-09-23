@@ -1,0 +1,5 @@
+<package name="python-ZEO" project="openSUSE:Factory">
+  <title>Client-Server storage implementation for ZODB</title>
+  <description>ZEO provides a client-server storage implementation for ZODB.</description>
+  <devel project="devel:languages:python" package="python-ZEO"/>
+</package>

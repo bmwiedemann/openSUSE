@@ -1,0 +1,10 @@
+<package name="upsm" project="openSUSE:Factory">
+  <title>Qt-based ups monitor (front-end for upsc from Network UPS Tools)</title>
+  <description>upsm is Qt-based ups monitor (front-end for upsc from Network UPS Tools).
+It sits at the tray and polls nut server using upsc, so you need to set
+up NUT first.
+
+</description>
+  <devel project="hardware" package="upsm"/>
+  <url>https://github.com/psemiletov/upsm</url>
+</package>

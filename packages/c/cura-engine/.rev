@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>81b8b7033d2272eb5cb38a9457e02a14</srcmd5>
+    <version>3.4.1</version>
+    <time>1533732747</time>
+    <user>dimstar_suse</user>
+    <comment>fix build in openSUSE:Factory:Staging:adi:50</comment>
+    <requestid>626424</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ea4f935a4f7de4eb1bcdb11f0e0364db</srcmd5>
+    <version>3.5.1</version>
+    <time>1540447962</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.5.1
+  https://ultimaker.com/en/products/ultimaker-cura-software/release-notes
+- replaced fix-build.patch with new need</comment>
+    <requestid>642562</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>50ba03795854c8286d3c2d9b4c2aee36</srcmd5>
+    <version>3.6.0</version>
+    <time>1542666646</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.6.0
+  https://ultimaker.com/en/products/ultimaker-cura-software/release-notes</comment>
+    <requestid>649581</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b8367e25c7040b0f9720d7ca97e0152f</srcmd5>
+    <version>3.6.0</version>
+    <time>1551113633</time>
+    <user>coolo</user>
+    <comment>
+for :adi:116
+
+- define version explicit for reporting in gcode files
+
+- fix build with stb in subdirectory
+  * obsoletes fix-build.patch</comment>
+    <requestid>678195</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d7e7299d8d40264b6720ee3db71c6c3f</srcmd5>
+    <version>4.1.0</version>
+    <time>1561557878</time>
+    <user>dimstar_suse</user>
+    <comment>version 4.1.0 update</comment>
+    <requestid>712064</requestid>
+  </revision>
+</revisionlist>

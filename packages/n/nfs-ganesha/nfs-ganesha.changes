@@ -1,0 +1,487 @@
+-------------------------------------------------------------------
+Tue Aug  6 21:04:20 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with CMake 3.15.1, https://github.com/nfs-ganesha/nfs-ganesha/issues/454
+  + add-missing-CheckSymbolExists-include.patch
+
+-------------------------------------------------------------------
+Mon May 13 11:27:11 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Version 2.8.dev.29+git.1557746732.251ace12d:
+  + FSAL_CEPH: fix length calculation in reclaim_reset (bsc#1134302)
+
+-------------------------------------------------------------------
+Thu May  9 10:48:19 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Version 2.8.dev.29+git.1557398426.e91b5c34d: 
+  + FSAL_CEPH: use a unique uuid string per export (bsc#1134302)
+  + Note to reviewer: compared to 2.8.dev.16, this version drops
+    the "nfs-ganesha-devel" subpackage (replaced by libntirpc-devel)
+
+-------------------------------------------------------------------
+Tue Apr  9 16:33:12 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- spec:
+  + Reduce scriptlets' hard dependency on systemd
+  + Add missing Requires from devel->library
+
+-------------------------------------------------------------------
+Tue Apr  9 08:30:54 UTC 2019 - ncutler@suse.com
+
+- spec: split off NTIRPC and NFSD shared libraries into subpackages
+
+-------------------------------------------------------------------
+Mon Apr  8 14:04:53 UTC 2019 - ncutler@suse.com
+
+- Version 2.8.dev.27+git.1554731117.4db414992:
+  + FSAL_CEPH: don't abort the connection if we're deleting the export
+    https://github.com/nfs-ganesha/nfs-ganesha/commit/0d62e92920730972351ab897e1ff2ed2f39fbf54
+  + spec:
+    * drop install command for ganesha-rados-grace as it is now installed by cmake
+    * build: ganesha_nfsd as a DSO, i.e. libganesha_nfsd.so
+    * build in UTF-8 environment
+
+-------------------------------------------------------------------
+Wed Feb 27 01:06:07 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Do a Release build to not include build host name (boo#1084909)
+
+-------------------------------------------------------------------
+Fri Feb 22 13:13:00 UTC 2019 - ncutler@suse.com
+
+- Version 2.8.dev.16+git.1550844464.79f319b6b:
+  + spec, cmake: fix packaging of config_samples directory
+
+-------------------------------------------------------------------
+Fri Feb 15 15:29:51 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- spec: update RPM groups and descriptions
+
+-------------------------------------------------------------------
+Thu Feb 14 12:56:19 UTC 2019 - ncutler@suse.com
+
+- spec:
+  + drop with_systemd macro and rip out non-systemd conditional blocks
+  + use %_docdir instead of %_defaultdocdir and list documentation files
+    explicitly
+  + stop building nfs-ganesha-utils (no longer needed; requires Python 2)
+  + use "BuildRequires: distribution-release" to avoid exposure to
+    rebuilds triggered by sles-release and openSUSE-release
+    (credits to dimstar for this improvement)
+  + drop "BuildRequires: systemd" for SUSE, since this is already
+    covered by pkgconfig(systemd)
+    (credits to dimstar for this improvement)
+
+-------------------------------------------------------------------
+Tue Feb 12 14:35:36 UTC 2019 - ncutler@suse.com
+
+- spec:
+  + use less obnoxious "NFS-Ganesha" form of software name
+  + use less acronyms in the descriptions (Reviewer note: the only FSALs
+    actually built are the ones for Ceph (CephFS and RGW) and XFS, so we don't
+    care about the others)
+  + fix the Group lines
+
+-------------------------------------------------------------------
+Tue Feb 12 12:53:24 UTC 2019 - rdias@suse.com
+
+- Version 2.8.dev.16
+  + spec: add liburcu-devel build dependency - from upstream commit message:
+
+    cmake: always build in liburcu
+    
+    There is some infrastructure in liburcu for handling things locklessly
+    that could be of great use to ganesha. That library is available on
+    both Linux and FreeBSD, so there should be no reason we can't use it
+    with ganesha.
+    
+    Change cmake to always search for liburcu and fail to configure if it
+    isn't present.
+
+-------------------------------------------------------------------
+Tue Nov 20 08:56:49 UTC 2018 - supriti.singh@suse.com
+
+- Version 2.7.1
+  + Spec file: fix ganesha-rados package installation
+
+-------------------------------------------------------------------
+Thu Nov 15 16:28:48 UTC 2018 - supriti.singh@suse.com
+
+- Version 2.7.1
+  + Upgrade to ntirpc version 1.7.1
+  + FSAL_CEPH: open file as root for COMMIT purposes 
+  + FSAL_CEPH: add an fallocate operation 
+  + FSAL_CEPH: enable the readdir_plus boolean 
+  + FSAL_CEPH: use ceph_ll_sync_inode to handle COMMIT call when available 
+  + FSAL_CEPH: abort the connection before shutdown if server will be restarting
+  + FSAL_CEPH: rename onto non+empty directory should return NFS4ERR_EXIST
+  + RADOS_URLS: enable them by default
+  + RADOS_URLS: permit pool and object names containing '.'
+  + FSAL_RGW:   support directory object as an export 
+  + Doc: Man page for ganesha+rados+tool and ganesha+cluster+design
+  + CMake: Add support to build with libasan
+  + specfile:  Allow packagers to remove dependency on rpcbind
+  + specfile: move ganesha+raods+grace into a separate package
+  + Async/vector API for read and write 
+  + Improvments in RecoveryBackend support
+  + Code cleanup and refactoring
+  + SAL: don't revoke delegations on export release 
+  + NLM_Share code fixes
+  + gtest support
+  + nfsd: handle rpcbind registration errors more gracefully 
+  + Avoid ABBA kind deadlock while IP release in grace period 
+  + Use temporary fd instead of global fd for getattr/setattr/LOCKT 
+  + Flex layout: Encode ff_layout4 and ff_device_addr4 
+  + ganesha_stats: event log for statistics activity
+  + FSAL_MDCACHE: always lookup newname from uncached 
+  + Disallow client to create dirents with an empty name 
+  + Coverity fixes
+  + Fix default config IPv6 connections 
+  + Log improvments 
+
+-------------------------------------------------------------------
+Mon Apr 30 13:06:38 UTC 2018 - supriti.singh@suse.com
+
+- Version 2.6.1
+  + Spec file: use ntirpc version 1.6.2
+  + Avoid double free of subhandle in mdcache_new_entry
+  + Reorder initialization sequence in nfs_Init
+  + Updated man page for RADOS_KV
+  + Fix fsid comparison to include fsid type
+  + Better debug print for FSAL module refcounting
+  + Don't double stack MDCACHE on FSAL_PSEUDO exports
+  + Fix leakage in netconfig entities
+  + Fix copyrights on FSAL_MEM
+  + NFS: fix delegation conflict check to open4_ex
+  + Fix dbus release
+  + RADOS_KV: do copy in rados_kv_get before releasing read op
+  + Libntirpc module: set the cmake module path correctly
+  + Make code python2 and 3 compatiable  
+
+-------------------------------------------------------------------
+Wed Jan 31 09:09:26 UTC 2018 - supriti.singh@suse.com
+
+- Version 2.6-rc4
+  + Spec file: use %_fillupdir macro
+  + DRC code cleanup
+  + NFSv3: Fix file descriptor leak
+  + Fix log level for FSAL cookie
+  + Fix new warning for gcc 7.2
+  + ntirpc pullup
+
+-------------------------------------------------------------------
+Wed Jan 24 13:46:41 UTC 2018 - astieger@suse.com
+
+- drop rpmlintrc file, no longer required, bsc#997880
+
+-------------------------------------------------------------------
+Mon Dec 18 15:39:21 UTC 2017 - supriti.singh@suse.com
+
+- Version 2.6-dev22
+  + Modularized recovery backend based on rados kv store
+    + New config option "rados_kv"
+  + NFSv4 delegation support
+  + Explicitly mount specified bucket in librgw
+  + New Reaper_Work_Per_Lane option
+  + NFSv4: Allow '.' and '..' as target path in symlink creation
+  + Fix root squashing for NFSv3
+  + RADOS_URL: load nfs-ganesha config from generic URL
+  + Stripped out FSAL ZFS
+  + Allow configuration of NFSv4 minor versions
+  + Ceph: wire up delegation requests and callbacks
+  + Gtest for FSAL lookup latency microbenchmark
+  + DBus interface to extract FSAL performance stats
+  + DBUS interface for purging idmapper cache
+  + Removal of support_ex
+  + Use 'v6disabled' flag to know if IPv6 is disabled 
+  + FSAL_CEPH: no need to set credentials
+
+-------------------------------------------------------------------
+Sat Nov 25 12:29:03 UTC 2017 - holgi@suse.com
+
+- Add BuildRequires: libnsl-devel - bsc#1069819
+
+-------------------------------------------------------------------
+Fri Sep 15 08:52:22 UTC 2017 - supriti.singh@suse.com
+
+- Version 2.5.2.0
+  + Add python-pyparsing for nfs-ganesha-utils 
+
+-------------------------------------------------------------------
+Fri Sep  1 14:31:47 UTC 2017 - ncutler@suse.com
+
+- Version 2.5.2.0
+  + update to upstream version 2.5.2
+
+-------------------------------------------------------------------
+Thu Aug  3 08:53:27 UTC 2017 - supriti.singh@suse.com
+
+- Version 2.5.1.1
+  + Add license GPL-3.0+ 
+  + bsc#997880:
+    + DBus: allow root users only 
+  + rgw: implement compute_readdir_cookie and dirent_cmp
+  + Fixes in hastable
+  + MDCACHE: Fix rename/getattrs deadlock
+  + Export: skip export entries that init_export_root fail
+  + MDCACHE: Debug mdcache enabled by default
+
+-------------------------------------------------------------------
+Thu Jul  6 14:36:46 UTC 2017 - supriti.singh@suse.com
+
+- Version 2.5.025
+  + RGW: Minor modification in config example and man page.
+  + Fix closing at termination and non-supported services
+  + MDCACHE: abort unlink on real error from the sub-FSAL.
+  + MDCACHE: Don't update attributes when they're invalid
+  + Let upcall events wait for initialization of general_fridge 
+  + Dirent/chunk LRU memory management 
+
+-------------------------------------------------------------------
+Fri Jun 23 13:50:37 UTC 2017 - supriti.singh@suse.com
+
+- Version 2.5.024
+  + Man page: Updated spec file for man page.
+  + NFS4: Add result to OP tracepoint
+  + bsc#102471:
+    + ceph-common required by nfs-ganesha-ceph 
+      and nfs-ganesha-rgw
+-------------------------------------------------------------------
+Fri Jun  9 11:15:16 UTC 2017 - supriti.singh@suse.com
+
+- Version 2.5.023
+- Upgrade to upstream version 2.5-final
+- Parital fix bsc#1031444
+  + Build with man page
+- Enable nfs-ganesha-utils package build
+- Disable gui_utils from nfs-ganesha-utils package
+
+-------------------------------------------------------------------
+Mon Jun  5 10:17:02 UTC 2017 - ricardo.dias@suse.com
+
+- Disabled gui_utils from nfs-ganesha-utils package
+
+-------------------------------------------------------------------
+Mon Jun  5 10:08:24 UTC 2017 - ricardo.dias@suse.com
+
+- Enabled nfs-ganesha-utils package build 
+
+-------------------------------------------------------------------
+Tue May 23 09:00:52 UTC 2017 - supriti.singh@suse.com
+
+- Version 2.5.022
+  + New config sample: rgw_bucket.conf
+  + Logs are now stored at /var/log/ganesha/
+  + Use "nfs-ganesha" instead of "ganesha" as
+    service file.  
+
+Thu Apr 27 02:58:00 UTC 2017 - alekshmanan@suse.com
+
+- Merge upstream v2.5-rc2
+- nfs-ganesha.spec: don't build fsal_mem
+
+-------------------------------------------------------------------
+Thu Apr  6 12:19:48 UTC 2017 - supriti.singh@suse.com
+
+- Merge upstream V2.5-dev-20:
+  + Add ganesha config editor 
+  + CMake: build against luminous librgw 
+- Fix bsc#1024711
+  + config_samples: Fix unknown parameters
+  + Use ceph.conf as default ganesha.conf 
+
+-------------------------------------------------------------------
+Fri Jan 13 10:30:14 UTC 2017 - supriti.singh@suse.com
+
+- Merge upstream V2.5-dev-7
+  + CephFS: add support to export subdirectories
+  + CephFS: config option for user credentials 
+
+-------------------------------------------------------------------
+Thu Nov 10 12:00:41 UTC 2016 - ncutler@suse.com
+
+- nfs-ganesha.spec: fix libntirpc.so version number 
+
+-------------------------------------------------------------------
+Thu Nov 10 11:43:49 UTC 2016 - ncutler@suse.com
+
+- nfs-ganesha.spec: disable PANFS VSAL
+
+-------------------------------------------------------------------
+Thu Nov 10 10:12:21 UTC 2016 - ncutler@suse.com
+
+- nfs-ganesha.spec: backport upstream changes that occurred between 
+  V2.3 and V2.4.1
+
+-------------------------------------------------------------------
+Thu Nov 10 09:51:32 UTC 2016 - ncutler@suse.com
+
+- nfs-ganesha.spec: add ExclusiveArch for SLE and openSUSE, to match what we
+  have in ceph.spec 
+
+-------------------------------------------------------------------
+Thu Nov 10 09:46:50 UTC 2016 - ncutler@suse.com
+
+- Merge upstream V2.4.1
+- CMakeLists.txt: handle openSUSE
+
+-------------------------------------------------------------------
+Wed Nov 09 15:53:28 UTC 2016 - ncutler@suse.com
+
+- Update to version 2.3.3+git.1478706663.6f1c7a4:
+  + RGW: failing to bind to librados should be caught
+
+-------------------------------------------------------------------
+Mon Sep 12 09:01:43 UTC 2016 - ncutler@suse.com
+
+- Fix bsc#997879
+  + nfs-ganesha.spec: fix license string/identifier
+  + nfs-ganesha.spec: install and package LICENSE.txt
+  + nfs-ganesha-rpmlintrc: drop setBadness('invalid-license', 0) 
+
+-------------------------------------------------------------------
+Wed Sep 07 08:12:00 UTC 2016 - ncutler@suse.com
+
+- add standard copyright header to spec file
+- Update to version 2.3.3+git.1472466979.bb9cf0a:
+  + nfs: Use option grace_period to determine grace timeout
+  + fsal_gluster: eliminate duplicate code in gluster2fsal_error()
+  + FSAL_GLUSTER : adding logrotate file for ganesha-gfapi.log
+  + [FSAL_GPFS] prevent negative values to be interpreted as read amount.
+  + RPCSEC_GSS: When using kerberos validate principals but not handles
+  + FSAL_GLUSTER: set default errno to EINVAL
+  + Avoid setting socket max buffers
+  + [nfs4_clientid.c] remove stale client_id reference from client_record
+  + Handle clientid and client record decoupling in nfs_release_v4_client()
+  + Stop MOUNT/NLM as additional services in NFSv4 only environments
+  + [fridgethr.c] Prevent infinite loop for timed out sync.
+  + FSAL_GLUSTER : symlink operation fails when acl is enabled
+  + Remove duplicate definition of posix2fsal_attributes
+  + NFSv3 SETATTR should NOT set ATTR_SPACEUSED when ATTR_SIZE is set
+  + Add ATTR_FSID to NFS v3 attributes
+  + [state_misc.c] Remove assert() for invalid owner type.
+  + Explicitly set privilegedport to false in default PseudoFS export
+  + FSAL_GLUSTER/Upcall: Change poll interval to 10us
+  + Chomp tailing slash from pseudopath
+  + Rescan /etc/mtab in GPFS and VFS FSALs one more time if
+    claim_posix_filesystems fails. Added init_complete variable to avoid
+    rescanning at start up time.
+  + This patch is to fix the bug that changes the owner always to root when
+    all_squash is turned on. The fix is to not change the owner if anon_uid
+    is 0.
+  + Clean up log setting functions
+  + Add COMPONENT_TIRPC for tracing libntirpc
+  + RGW: look for librgw.so in either lib or lib64
+  + idmapping: add only_numeric_owners option (off by default)
+  + Fix spurious compiler warning on some systems
+  + rgw: add 3 new config options
+  + Enables permission checks even when state is already present to prevent
+    READ and WRITE operation using stolen stateid
+  + find_package implementation for CEPH FSALs
+  + Tweak FindCephFS.cmake and FindRGW.cmake
+  + build: Fedora _hardened_build, fix compile errors
+  + 32-bit: fix warnings/errors w/ old compilers, e.g. RHEL6 32-bit
+  + Version V2.3.3
+
+-------------------------------------------------------------------
+Wed Aug  3 11:08:02 UTC 2016 - ncutler@suse.com
+
+- nfs-ganesha.spec: drop explicit ceph, rgw runtime dependencies 
+
+-------------------------------------------------------------------
+Tue Aug 02 15:04:00 UTC 2016 - ncutler@suse.com
+
+- Update to version 2.3.2+git.1470139165.7aca631:
+  + _service: migrate to SUSE/nfs-ganesha fork
+  + regenerate tarball
+
+-------------------------------------------------------------------
+Tue Aug  2 14:24:00 UTC 2016 - ncutler@suse.com
+
+- nfs-ganesha-rpmlintrc: 
+  + fix conditional in %post script
+  + add Requires(post): procps for pgrep
+
+-------------------------------------------------------------------
+Tue Aug  2 14:15:38 UTC 2016 - ncutler@suse.com
+
+- nfs-ganesha-rpmlintrc: disable invalid-license badness just to get
+  a testing build in IBS 
+
+-------------------------------------------------------------------
+Tue Aug  2 13:53:21 UTC 2016 - ncutler@suse.com
+
+- nfs-ganesha.spec: move ntirpc headers to a separate devel package 
+
+-------------------------------------------------------------------
+Tue Aug  2 13:44:45 UTC 2016 - ncutler@suse.com
+
+- nfs-ganesha-rpmlintrc: new file (to reduce badness)
+- nfs-ganesha.spec: refrain from packaging /var/run/ganesha (and
+  cut badness by another 10000) 
+
+-------------------------------------------------------------------
+Tue Aug  2 13:38:21 UTC 2016 - ncutler@suse.com
+
+- nfs-ganesha.spec: install sysconfig using %fillup_only (thereby
+  reducing RPMLINT badness by 10000)
+
+-------------------------------------------------------------------
+Tue Aug  2 12:57:39 UTC 2016 - ncutler@suse.com
+
+- nfs-ganesha.spec: make %post script idempotent (check for 
+  dbus-daemon processes before running killall on them)
+
+-------------------------------------------------------------------
+Tue Aug  2 12:49:23 UTC 2016 - ncutler@suse.com
+
+- nfs-ganesha.spec:
+  + install systemd service files with 444 permissions
+  + add %pre scriptlet to fix %post failure in OBS
+    /usr/sbin/systemd-sysv-convert: line 62:
+    /var/lib/systemd/sysv-convert/database: No such file or directory
+
+-------------------------------------------------------------------
+Tue Aug  2 12:35:16 UTC 2016 - ncutler@suse.com
+
+- nfs-ganesha.spec: Requires(post): psmisc for killall 
+
+-------------------------------------------------------------------
+Tue Aug  2 12:20:42 UTC 2016 - ncutler@suse.com
+
+- nfs-ganesha.spec:
+  + fix systemd-related build and runtime dependencies
+  + make /usr/lib64/ganesha be owned by a package
+
+-------------------------------------------------------------------
+Tue Aug 02 12:01:23 UTC 2016 - ncutler@suse.com
+
+- Update to version 2.3.2+git.1470139165.7aca631:
+  + Revert "CMakeLists.txt: source /etc/os-release to get NAME"
+  + CMakeLists.txt: source /etc/os-release to get NAME
+  + CMakeLists.txt: handle openSUSE
+- _service: build from smithfarm/nfs-ganesha fork (ses4 branch)
+- nfs-ganesha.spec:
+  + BuildRequires: openSUSE-release on openSUSE, sles-release on SLES
+  + enable ceph, rgw build
+  + use libcephfs-devel instead of deprecated ceph-devel
+  + use librgw-devel instead of deprecated rgw-devel
+  + install documentation properly
+
+-------------------------------------------------------------------
+Tue Aug  2 10:41:22 UTC 2016 - ncutler@suse.com
+
+- nfs-ganesha.spec: enable ceph, RGW build
+- nfs-ganesha.spec: create and package a documentation directory 
+
+-------------------------------------------------------------------
+Tue Aug  2 10:03:56 UTC 2016 - ncutler@suse.com
+
+- nfs-ganesha.spec: hack to get build to start 
+- _service: hack to get build to start 
+
+-------------------------------------------------------------------
+Tue Aug  2 09:24:55 UTC 2016 - ncutler@suse.com
+
+- Initial submission based on upstream V2.3.2 tag
+

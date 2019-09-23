@@ -1,0 +1,181 @@
+Index: ebcdic.h
+===================================================================
+--- ebcdic.h.orig	2008-03-21 13:04:22.000000000 +0100
++++ ebcdic.h	2010-05-21 14:07:51.000091055 +0200
+@@ -254,6 +254,25 @@ ZCONST uch Far iso2oem_850[] = {
+     0xD0, 0xA4, 0x95, 0xA2, 0x93, 0xE4, 0x94, 0xF6,  /* F0 - F7 */
+     0x9B, 0x97, 0xA3, 0x96, 0x81, 0xEC, 0xE7, 0x98   /* F8 - FF */
+ };
++
++ZCONST uch Far iso2oem_2[] = {
++    0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87,
++    0x88, 0x89, 0x8A, 0x8B, 0x8C, 0x8D, 0x8E, 0x8F,
++    0x90, 0x91, 0x92, 0x93, 0x94, 0x95, 0x96, 0x97,
++    0x98, 0x99, 0x9A, 0x9B, 0x9C, 0x9D, 0x9E, 0x9F,
++    0x20, 0xA4, 0xF4, 0x9D, 0xCF, 0x95, 0x97, 0xF5,
++    0xF9, 0xE6, 0xB8, 0x9B, 0x8D, 0x2D, 0xA6, 0xBD,
++    0x20, 0xA5, 0xF2, 0x88, 0xEF, 0x96, 0x98, 0xF3,
++    0xF7, 0xE7, 0xAD, 0x9C, 0xAB, 0xF1, 0xA7, 0xBE,
++    0xE8, 0xB5, 0xB6, 0xC6, 0x8E, 0x91, 0x8F, 0x80,
++    0xAC, 0x90, 0xA8, 0xD3, 0xB7, 0xD6, 0xD7, 0xD2,
++    0xD1, 0xE3, 0xD5, 0xE0, 0xE2, 0x8A, 0x99, 0x9E,
++    0xFC, 0xDE, 0xE9, 0xEB, 0x9A, 0xED, 0xDD, 0xE1,
++    0xEA, 0xA0, 0x83, 0xC7, 0x84, 0x92, 0x86, 0x87,
++    0x9F, 0x82, 0xA9, 0x89, 0xD8, 0xA1, 0x8C, 0xD4,
++    0xD0, 0xE4, 0xE5, 0xA2, 0x93, 0x8B, 0x94, 0xF6,
++    0xFD, 0x85, 0xA3, 0xFB, 0x81, 0xEC, 0xEE, 0xFA
++};
+ #endif /* IZ_ISO2OEM_ARRAY */
+ 
+ #ifdef IZ_OEM2ISO_ARRAY
+@@ -275,6 +294,25 @@ ZCONST uch Far oem2iso_850[] = {
+     0xAD, 0xB1, 0x3D, 0xBE, 0xB6, 0xA7, 0xF7, 0xB8,  /* F0 - F7 */
+     0xB0, 0xA8, 0xB7, 0xB9, 0xB3, 0xB2, 0xA6, 0xA0   /* F8 - FF */
+ };
++
++ZCONST uch Far oem2iso_2[] = {
++    0xC7, 0xFC, 0xE9, 0xE2, 0xE4, 0xF9, 0xE6, 0xE7,
++    0xB3, 0xEB, 0xD5, 0xF5, 0xEE, 0xAC, 0xC4, 0xC6,
++    0xC9, 0xC5, 0xE5, 0xF4, 0xF6, 0xA5, 0xB5, 0xA6,
++    0xB6, 0xD6, 0xDC, 0xAB, 0xBB, 0xA3, 0xD7, 0xE8,
++    0xE1, 0xED, 0xF3, 0xFA, 0xA1, 0xB1, 0xAE, 0xBE,
++    0xCA, 0xEA, 0xAA, 0xBC, 0xC8, 0xBA, 0x3C, 0x3E,
++    0xB0, 0xB1, 0xB2, 0xB3, 0xB4, 0xC1, 0xC2, 0xCC,
++    0xAA, 0xB9, 0xBA, 0xBB, 0xBC, 0xAF, 0xBF, 0xBF,
++    0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0xC3, 0xE3,
++    0xC8, 0xC9, 0xCA, 0xCB, 0xCC, 0xCD, 0xCE, 0xA4,
++    0xF0, 0xD0, 0xCF, 0xCB, 0xEF, 0xD2, 0xCD, 0xCE,
++    0xEC, 0xD9, 0xDA, 0xDB, 0xDC, 0xDE, 0xD9, 0xDF,
++    0xD3, 0xDF, 0xD4, 0xD1, 0xF1, 0xF2, 0xA9, 0xB9,
++    0xC0, 0xDA, 0xE0, 0xDB, 0xFD, 0xDD, 0xFE, 0xB4,
++    0xF0, 0xBD, 0xB2, 0xB7, 0xA2, 0xA7, 0xF7, 0xB8,
++    0xF8, 0xA8, 0xFF, 0xFB, 0xD8, 0xF8, 0xFE, 0xFF
++};
+ #endif /* IZ_OEM2ISO_ARRAY */
+ 
+ /* The following pointers to the OEM<-->ISO translation tables are used
+Index: man/unzip.1
+===================================================================
+--- man/unzip.1.orig	2009-04-20 02:33:10.000000000 +0200
++++ man/unzip.1	2010-05-21 14:23:25.824590928 +0200
+@@ -25,7 +25,7 @@
+ unzip \- list, test and extract compressed files in a ZIP archive
+ .PD
+ .SH SYNOPSIS
+-\fBunzip\fP [\fB\-Z\fP] [\fB\-cflptTuvz\fP[\fBabjnoqsCDKLMUVWX$/:^\fP]]
++\fBunzip\fP [\fB\-Z\fP] [\fB\-cflptTuvz\fP[\fBabjnoqsCDKLMOUVWX$/:^\fP]]
+ \fIfile\fP[\fI.zip\fP] [\fIfile(s)\fP\ .\|.\|.]
+ [\fB\-x\fP\ \fIxfile(s)\fP\ .\|.\|.] [\fB\-d\fP\ \fIexdir\fP]
+ .PD
+@@ -386,6 +386,9 @@ of \fIzip\fP(1L), which stores filenotes
+ overwrite existing files without prompting.  This is a dangerous option, so
+ use it with care.  (It is often used with \fB\-f\fP, however, and is the only
+ way to overwrite directory EAs under OS/2.)
++.TP
++.B \-O
+++file names will be converted to ISO8859-2 instead of to ISO8859-1
+ .IP \fB\-P\fP\ \fIpassword\fP
+ use \fIpassword\fP to decrypt encrypted zipfile entries (if any).  \fBTHIS IS
+ INSECURE!\fP  Many multi-user operating systems provide ways for any user to
+Index: unzip.c
+===================================================================
+--- unzip.c.orig	2009-04-16 20:26:52.000000000 +0200
++++ unzip.c	2010-05-21 14:23:25.824590928 +0200
+@@ -1592,6 +1592,12 @@ int uz_opts(__G__ pargc, pargv)
+                     } else
+                         ++uO.overwrite_all;
+                     break;
++                case ('O'):    /* spaces in filenames:  allow by default */
++                    if (negative)
++                        uO.iso8859_2 = FALSE, negative = 0;
++                    else
++                        uO.iso8859_2 = TRUE;
++                    break;
+                 case ('p'):    /* pipes:  extract to stdout, no messages */
+                     if (negative) {
+                         uO.cflag = FALSE;
+Index: unzip.h
+===================================================================
+--- unzip.h.orig	2009-02-15 19:12:54.000000000 +0100
++++ unzip.h	2010-05-21 14:23:25.824590928 +0200
+@@ -502,6 +502,7 @@ typedef struct _UzpOpts {
+     int K_flag;         /* -K: keep setuid/setgid/tacky permissions */
+ #endif
+     int lflag;          /* -12slmv: listing format (zipinfo) */
++    int iso8859_2;      /* -O: ISO8859-2 is used instead ISO8859-1 */
+     int L_flag;         /* -L: convert filenames from some OSes to lowercase */
+     int overwrite_none; /* -n: never overwrite files (no prompting) */
+ #ifdef AMIGA
+Index: unzpriv.h
+===================================================================
+--- unzpriv.h.orig	2009-04-20 01:59:26.000000000 +0200
++++ unzpriv.h	2010-05-21 14:24:02.641090783 +0200
+@@ -2899,8 +2899,15 @@ char    *GetLoadPath     OF((__GPRO));
+ #      define IZ_ISO2OEM_ARRAY
+ #    endif
+ #    define _ISO_INTERN(str1) if (iso2oem) {register uch *p;\
+-       for (p=(uch *)(str1); *p; p++)\
+-         *p = native((*p & 0x80) ? iso2oem[*p & 0x7f] : *p);}
++       if (uO.iso8859_2 == FALSE) { \
++         for (p=(uch *)(str1); *p; p++) \
++           *p = native((*p & 0x80) ? iso2oem[*p & 0x7f] : *p); \
++       } \
++       else { \
++         for (p=(uch *)(str1); *p; p++) \
++           *p = native((*p & 0x80) ? iso2oem_2[*p & 0x7f] : *p); \
++       }; \
++     }
+ #  else
+ #    define _ISO_INTERN(str1)   A_TO_N(str1)
+ #  endif
+@@ -2914,8 +2921,15 @@ char    *GetLoadPath     OF((__GPRO));
+ #      define IZ_OEM2ISO_ARRAY
+ #    endif
+ #    define _OEM_INTERN(str1) if (oem2iso) {register uch *p;\
+-       for (p=(uch *)(str1); *p; p++)\
+-         *p = native((*p & 0x80) ? oem2iso[*p & 0x7f] : *p);}
++       if (uO.iso8859_2 == FALSE) { \
++         for (p=(uch *)(str1); *p; p++) \
++           *p = native((*p & 0x80) ? oem2iso[*p & 0x7f] : *p); \
++       } \
++       else { \
++         for (p=(uch *)(str1); *p; p++) \
++           *p = native((*p & 0x80) ? oem2iso_2[*p & 0x7f] : *p); \
++       } \
++     }
+ #  endif
+ #endif
+ 
+@@ -2942,6 +2956,7 @@ char    *GetLoadPath     OF((__GPRO));
+      /* know: "ASCII" is "OEM" */
+ #    define ASCII2ISO(c) \
+        ((((c) & 0x80) && oem2iso) ? oem2iso[(c) & 0x7f] : (c))
++       (( ((c) & 0x80) ? ((uO.iso8859_2 == FALSE) ? (oem2iso ? oem2iso[(c) & 0x7f] : (c)) : oem2iso_2[(c) & 0x7f]) : (c))
+ #    if (defined(NEED_STR2ISO) && !defined(CRYP_USES_OEM2ISO))
+ #      define CRYP_USES_OEM2ISO
+ #    endif
+@@ -2957,8 +2972,9 @@ char    *GetLoadPath     OF((__GPRO));
+ #    define ASCII2OEM(c) (c)
+ #  else
+      /* assume: "ASCII" is "ISO-ANSI" */
+-#    define ASCII2OEM(c) \
+-       ((((c) & 0x80) && iso2oem) ? iso2oem[(c) & 0x7f] : (c))
++#    define ASCII2OEM(c) (((c) & 0x80) ? \
++       ((uO.iso8859_2 == FALSE) ? (iso2oem ? iso2oem[(c) & 0x7f] : (c)) : iso2oem_2[(c) & 0x7f]) : \
++       (c))
+ #    if (defined(NEED_STR2OEM) && !defined(CRYP_USES_ISO2OEM))
+ #      define CRYP_USES_ISO2OEM
+ #    endif
+@@ -3029,10 +3045,12 @@ char    *GetLoadPath     OF((__GPRO));
+ #endif
+ #ifdef IZ_ISO2OEM_ARRAY
+    extern ZCONST uch Far *iso2oem;
++   extern ZCONST uch Far iso2oem_2[];
+    extern ZCONST uch Far iso2oem_850[];
+ #endif
+ #ifdef IZ_OEM2ISO_ARRAY
+    extern ZCONST uch Far *oem2iso;
++   extern ZCONST uch Far oem2iso_2[];
+    extern ZCONST uch Far oem2iso_850[];
+ #endif
+ 

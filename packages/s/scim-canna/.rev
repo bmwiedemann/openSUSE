@@ -1,0 +1,151 @@
+<revisionlist>
+  <revision rev="1" vrev="6">
+    <srcmd5>3318d7c2ebffed69e5c1ddb4cfa9a0e9</srcmd5>
+    <version>1.0.0</version>
+    <time>1168904176</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="129">
+    <srcmd5>3949749a8e521b0c9dfc1fd914000731</srcmd5>
+    <version>1.0.0</version>
+    <time>1194650340</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="250">
+    <srcmd5>3949749a8e521b0c9dfc1fd914000731</srcmd5>
+    <version>1.0.0</version>
+    <time>1194650340</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="251">
+    <srcmd5>02f3f5c65645c65ea5564f19c1083da9</srcmd5>
+    <version>1.0.0</version>
+    <time>1245340193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="253">
+    <srcmd5>02f3f5c65645c65ea5564f19c1083da9</srcmd5>
+    <version>1.0.0</version>
+    <time>1245340193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="254">
+    <srcmd5>875255018945742dd7edea5147a2cce6</srcmd5>
+    <version>1.0.0</version>
+    <time>1266974819</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/scim-canna based on submit request 33084 from user coolo
+</comment>
+    <requestid>33084</requestid>
+  </revision>
+  <revision rev="7" vrev="255">
+    <srcmd5>e0120054fbf7ad32da86ee4b2c63860b</srcmd5>
+    <version>1.0.0</version>
+    <time>1268926091</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="257">
+    <srcmd5>e0120054fbf7ad32da86ee4b2c63860b</srcmd5>
+    <version>1.0.0</version>
+    <time>1278667388</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="258">
+    <srcmd5>e0120054fbf7ad32da86ee4b2c63860b</srcmd5>
+    <version>1.0.0</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="261">
+    <srcmd5>e0120054fbf7ad32da86ee4b2c63860b</srcmd5>
+    <version>1.0.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="263">
+    <srcmd5>e0120054fbf7ad32da86ee4b2c63860b</srcmd5>
+    <version>1.0.0</version>
+    <time>1319182453</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="264">
+    <srcmd5>f5f62c55e57db49b0c22b96d6fbcf4fd</srcmd5>
+    <version>1.0.0</version>
+    <time>1323194529</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="265">
+    <srcmd5>6e34ec01d8dadaae5544a4b9c909c7f8</srcmd5>
+    <version>1.0.0</version>
+    <time>1339587188</time>
+    <user>coolo</user>
+    <comment>fix for factory (forwarded request 124721 from MargueriteSu)</comment>
+    <requestid>124722</requestid>
+  </revision>
+  <revision rev="14" vrev="266">
+    <srcmd5>9199dcb41aa48c4f3194ae48e6b73aa1</srcmd5>
+    <version>1.0.0</version>
+    <time>1339761938</time>
+    <user>coolo</user>
+    <comment>- Remove locale;ja provides for avoding the automatic installation
+- Disable gtk3-migration patches temporarily (can be enabled by
+  defining scim_gtk3=1)</comment>
+    <requestid>124924</requestid>
+  </revision>
+  <revision rev="15" vrev="268">
+    <srcmd5>9199dcb41aa48c4f3194ae48e6b73aa1</srcmd5>
+    <version>1.0.0</version>
+    <time>1340184198</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="269">
+    <srcmd5>432e2a6db6732ae80b8fcf1a8c7812ab</srcmd5>
+    <version>1.0.0</version>
+    <time>1347487587</time>
+    <user>namtrac</user>
+    <comment> (forwarded request 133778 from hillwood)</comment>
+    <requestid>133779</requestid>
+  </revision>
+  <revision rev="17" vrev="271">
+    <srcmd5>432e2a6db6732ae80b8fcf1a8c7812ab</srcmd5>
+    <version>1.0.0</version>
+    <time>1359110383</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>cf3b28d8d79246b8e9e53af1a9a7dd78</srcmd5>
+    <version>1.0.1</version>
+    <time>1374702033</time>
+    <user>coolo</user>
+    <comment>update 1.0.1</comment>
+    <requestid>184217</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>cf3b28d8d79246b8e9e53af1a9a7dd78</srcmd5>
+    <version>1.0.1</version>
+    <time>1379664627</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>cf3b28d8d79246b8e9e53af1a9a7dd78</srcmd5>
+    <version>1.0.1</version>
+    <time>1409303331</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>1e30d68a28b4013896c15b00579b932e</srcmd5>
+    <version>1.0.1</version>
+    <time>1442638484</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>330795</requestid>
+  </revision>
+</revisionlist>

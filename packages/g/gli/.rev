@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>195706ef7a748e463a64c77054bfd377</srcmd5>
+    <version>0.8.2.0</version>
+    <time>1560970555</time>
+    <user>dimstar_suse</user>
+    <comment>Now that I have requested maintainership, please add this package to the openSUSE:Factory space.</comment>
+    <requestid>700158</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>27dbfb60252f3c4d5653caf4ebdb3da9</srcmd5>
+    <version>0.8.2.0</version>
+    <time>1566894282</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure neutrality of description. (forwarded request 726066 from jengelh)</comment>
+    <requestid>726085</requestid>
+  </revision>
+</revisionlist>

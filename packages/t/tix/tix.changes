@@ -1,0 +1,143 @@
+-------------------------------------------------------------------
+Mon Feb 19 19:22:57 UTC 2018 - crrodriguez@opensuse.org
+
+- Remove buildrequires on xorg-x11-devel 
+- apps linked to tcl/tk static stubs must %require_ge tcl tk
+
+-------------------------------------------------------------------
+Thu Jun 20 14:42:27 UTC 2013 - max@suse.com
+
+- Fix build with Tcl 8.6.0.
+- Cleanup spec file.
+
+-------------------------------------------------------------------
+Wed Dec 21 10:46:44 UTC 2011 - coolo@suse.com
+
+- tcl's license is BSD-3-Clause
+
+-------------------------------------------------------------------
+Wed Dec 21 10:45:53 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Apr  4 17:58:54 CEST 2008 - max@suse.de
+
+- New version 8.4.3, works with Tcl/Tk 8.5.
+
+-------------------------------------------------------------------
+Tue Jun  5 14:50:21 CEST 2007 - max@suse.de
+
+- New version: 8.4.0
+- Lots of cleanup and bugs fixed.
+- Better per-default compliance with rpmlint.
+- The 'tixwish' executable is gone.  Use tclsh or wish and load the
+  Tix package dynamically.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:12 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jul 29 11:55:53 CEST 2005 - max@suse.de
+
+- Moved script library to /usr/share/tcl .
+
+-------------------------------------------------------------------
+Thu Feb  5 15:09:57 CET 2004 - max@suse.de
+
+- Building as a shared lib again.
+- Added -fno-strict-aliasing to CFLAGS.
+
+-------------------------------------------------------------------
+Thu Jan 15 17:27:17 CET 2004 - max@suse.de
+
+- New version: 8.1.4
+
+-------------------------------------------------------------------
+Sat Jan 10 17:57:52 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Wed Jul 23 13:58:51 CEST 2003 - max@suse.de
+
+- Added tk-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Wed May 21 01:10:38 CEST 2003 - ro@suse.de
+
+- remove .cvsignore files 
+- fix filelist
+
+-------------------------------------------------------------------
+Mon Nov 11 23:49:55 CET 2002 - ro@suse.de
+
+- changed neededforbuild <xshared> to <x-devel-packages>
+- changed neededforbuild <xdevel> to <>
+
+-------------------------------------------------------------------
+Tue Jul  9 13:19:24 CEST 2002 - max@suse.de
+
+- Ready for Tcl/Tk 8.4.
+
+- Doesn't break on KDE3 anymore [Bug #16428].
+
+-------------------------------------------------------------------
+Wed Apr 10 13:19:23 CEST 2002 - max@suse.de
+
+- Fixed for new version of autobuild.
+
+-------------------------------------------------------------------
+Wed Feb 20 18:22:36 CET 2002 - max@suse.de
+
+- Fixed for lib64-s390x.
+
+-------------------------------------------------------------------
+Thu Jan 17 17:35:20 CET 2002 - max@suse.de
+
+- New version 8.1.3
+- Tix is a separate package again. The new version is able to build
+  without having the Tcl/Tk sources at hand.
+- Don't build static libs anymore.
+
+-------------------------------------------------------------------
+Tue Nov 24 18:24:43 MET 1998 - max@suse.de
+
+- merged spec-files into tcl_new.spec
+
+-------------------------------------------------------------------
+Mon Nov 23 17:24:49 MET 1998 - max@suse.de
+
+- building with new Tcl/Tk version: 8.0.4
+- tixwish is now dynamically linked to libtcl 
+
+-------------------------------------------------------------------
+Wed Sep 23 10:04:40 MEST 1998 - ro@suse.de
+
+- added to specfile: applx patch for tcl8.0
+
+-------------------------------------------------------------------
+Thu May 14 17:51:43 MEST 1998  - hf@suse.de
+
+- english and german README.SuSE
+
+-------------------------------------------------------------------
+Mon Feb 23 13:24:06 MET 1998 - hf@suse.de
+
+- changed README.SuSE
+
+----------------------------------------------------------------------
+Mon Feb 16 12:55:29 MET 1998 - hf@suse.de
+
+- changes in spec file
+
+
+----------------------------------------------------------------------
+Thu Feb  5 16:25:32 MET 1998 - hf@suse.de
+
+ new package Tix for Tcl/Tk 8.0
+ and new directorypath to tcl/tk in /usr/lib/tcltk
+
+ 

@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Tue Apr  2 15:30:22 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.1.4:
+  * No longer ignore files containing dot when reading cache file
+  * Remove trailing slash from command line argument
+
+-------------------------------------------------------------------
+Fri May 25 20:41:44 UTC 2018 - christophe@krop.fr
+
+- Update to 3.1.3. No changelog available.
+
+-------------------------------------------------------------------
+Sun Jan  8 10:09:49 UTC 2017 - axel.braun@gmx.de
+
+- make sure language packet gets installed as well
+
+-------------------------------------------------------------------
+Tue Nov 29 19:14:07 UTC 2016 - wbauer@tmo.at
+
+- Update to 3.1.2:
+  * Detailed changelog not available.
+
+-------------------------------------------------------------------
+Sat Sep 19 20:55:05 UTC 2015 - asterios.dramis@gmail.com
+
+- Update to 3.1:
+  * Package ported to KDE Framework 5.
+  * Detailed changelog not available.
+- Package ported to KF5. Updated build and runtime requirements to
+  the KF5 ones.
+
+-------------------------------------------------------------------
+Tue Nov 11 16:32:21 UTC 2014 - cgiboudeaux@gmx.com
+
+- Replace k4dirstat with the fork by Jerome Robert
+- Update to 2.7.8
+
+-------------------------------------------------------------------
+Fri Mar 25 22:11:50 UTC 2011 - asterios.dramis@gmail.com
+
+- Initial version (git.20101010)

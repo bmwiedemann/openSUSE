@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Mon Sep 11 12:01:30 UTC 2017 - jmatejek@suse.com
+
+- lua53.patch : add support for Lua 5.3 (upstream commit 1524b7c)
+- change requirement to lua53
+
+-------------------------------------------------------------------
+Mon Dec 26 02:59:03 UTC 2016 - mailaender@opensuse.org
+
+- Update to version 0.2
+- Add appdata.patch
+
+-------------------------------------------------------------------
+Sun Jun 19 20:04:33 UTC 2016 - nemysis@openSUSE.org
+
+- Remove check %if 0%{?suse_version}, because is only for openSUSE
+
+-------------------------------------------------------------------
+Sat Jan 23 11:29:00 UTC 2016 - nemysis@openSUSE.org
+
+- Recreate tarball, new GitHub commit
+  Please look 'git log' and announce message:
+
+  * Add bot.lua to dist
+
+  * Fixed some bot AI bugs
+  * Revamped networking code to add reliability
+  * Added the -R command line option to print resources path
+
+- license update: GPL-3.0+ No indication that this is GPL-3.0 (only)
+- Add BuildRequires for bitstream-vera-fonts
+- Add Requires for bitstream-vera-fonts, thanks dstoecker
+- Replace bundled font with a symlink to an identical system font
+- Remove COPYING.font from Documentation
+
+-------------------------------------------------------------------
+Fri Jan  1 12:04:44 UTC 2016 - rpm@fthiessen.de
+
+- Fixed lua dependencies so it will also build on openSUSE <= 13.2
+
+-------------------------------------------------------------------
+Fri Sep 25 16:51:53 UTC 2015 - nemysis@openSUSE.org
+
+- Recreate tarball, new GitHub commit
+  Please look 'git log'
+
+-------------------------------------------------------------------
+Thu Jul 30 10:54:23 UTC 2015 - dimstar@opensuse.org
+
+- BuildRequire lua52-devel on openSUSE > 13.2 (current Tumbleweed):
+  3omns has not been ported to LUA 5.3 yet.
+
+-------------------------------------------------------------------
+Mon Nov 24 17:56:03 UTC 2014 - nemysis@gmx.ch
+
+- Move hicolor-icon-theme to %if 0%{?suse_version}
+
+-------------------------------------------------------------------
+Tue Oct 28 13:17:00 UTC 2014 - nemysis@gmx.ch
+
+- Recreate tarball, new GitHub commit
+- Remove _service, download from GitHub and packed as tar.bz2
+- Remove BuildRequires for desktop-file-utils
+- Use BuildRequires pkgconfig(lua) instead of lua-devel
+
+-------------------------------------------------------------------
+Thu Oct 16 11:35:51 UTC 2014 - nemysis@gmx.ch
+
+- Change Group
+
+-------------------------------------------------------------------
+Wed Oct 15 20:20:36 UTC 2014 - nemysis@gmx.ch
+
+- Use check for openSUSE %if 0%{?suse_version}
+- Use BuildRequires pkgconfig(sdl2), pkgconfig(SDL2_image) and
+  pkgconfig(SDL2_ttf) instead of libSDL2-devel, libSDL2_image-devel
+  and SDL2_ttf-devel
+
+-------------------------------------------------------------------
+Tue Oct  7 18:00:13 UTC 2014 - nemysis@gmx.ch
+
+- Change Source0 to use Web URL
+- Remove BuildRequires for pkgconfig
+- Add _service and _service:download_url:3omns-0.1-84fda5d.tar.gz
+
+-------------------------------------------------------------------
+Sun Sep 28 10:19:14 UTC 2014 - nemysis@gmx.ch
+
+- Revert last commit
+
+-------------------------------------------------------------------
+Sun Sep 28 10:16:35 UTC 2014 - nemysis@gmx.ch
+
+- Added missing BuildRequires for openSUSE > 12.2
+
+-------------------------------------------------------------------
+Sun Sep 28 01:28:52 UTC 2014 - nemysis@gmx.ch
+
+- Use pkgconfig instead of pkgconfig(sdl)
+
+-------------------------------------------------------------------
+Sun Sep 28 01:24:22 UTC 2014 - nemysis@gmx.ch
+
+- Initial package creation
+

@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b914f16deaf0a48c92b48df285d1ea0e</srcmd5>
+    <version>0.18.2</version>
+    <time>1548062886</time>
+    <user>dimstar_suse</user>
+    <comment>New dependency for rabbitmq-server update SR 656762</comment>
+    <requestid>656779</requestid>
+  </revision>
+</revisionlist>

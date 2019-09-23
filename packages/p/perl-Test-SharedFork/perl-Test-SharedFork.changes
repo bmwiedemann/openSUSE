@@ -1,0 +1,125 @@
+-------------------------------------------------------------------
+Sat Dec 26 10:18:38 UTC 2015 - coolo@suse.com
+
+- updated to 0.35
+   see /usr/share/doc/packages/perl-Test-SharedFork/Changes
+
+-------------------------------------------------------------------
+Fri Oct  2 09:41:41 UTC 2015 - coolo@suse.com
+
+- updated to 0.34
+   see /usr/share/doc/packages/perl-Test-SharedFork/Changes
+
+  0.34 2015-09-29T14:57:22Z
+  
+      - Support upcoming Test::Stream changes
+
+-------------------------------------------------------------------
+Sun Jun  7 09:08:02 UTC 2015 - coolo@suse.com
+
+- updated to 0.33
+   see /usr/share/doc/packages/perl-Test-SharedFork/Changes
+
+  0.33 2015-06-06T03:36:58Z
+  
+      - Tell Test::Stream::IPC to poll for results
+  
+  0.32 2015-06-04T16:14:57Z
+  
+      - Update for newer Test::Stream
+      - REmove some old Test::Stream support
+
+-------------------------------------------------------------------
+Wed Apr 29 10:30:05 UTC 2015 - coolo@suse.com
+
+- updated to 0.31
+   see /usr/share/doc/packages/perl-Test-SharedFork/Changes
+
+-------------------------------------------------------------------
+Tue Apr 14 19:19:04 UTC 2015 - coolo@suse.com
+
+- updated to 0.29
+   see /usr/share/doc/packages/perl-Test-SharedFork/Changes
+
+  0.29 2014-09-20T04:21:14Z
+  
+  0.28 2014-07-04T07:37:50Z
+  
+      - Fixed minor testing issue on Win32.
+        (charsbar++)
+  
+  0.27 2014-07-03T05:37:00Z
+  
+      commit fa8821ff5fe7b44a2461ea58e537ea01221504ed
+      Author: Chad Granum <chad.granum@dreamhost.com>
+      Date:   Tue Jul 1 15:13:28 2014 -0700
+  
+          Fix another issue with Result_Stream branch of TB
+  
+  0.26 2014-06-27T04:20:47Z
+  
+      - Fix support for Result_Stream Test::Builder branch
+        (exodist)
+  
+  0.25 2014-06-24T01:34:10Z
+  
+      - Switch to EUMM
+  
+  0.24 2014-04-07T21:21:56Z
+  
+      - Cygwin 64-bit - allow tests to pass
+        (rwhitworth)
+
+-------------------------------------------------------------------
+Mon Mar 17 08:29:32 UTC 2014 - coolo@suse.com
+
+- updated to 0.23
+ - 06_fail_lineno.t fails on Windows due to path separator #9
+   (nanis)
+- remove outdated tests-need-help.patch
+
+-------------------------------------------------------------------
+Mon Dec 24 14:28:25 UTC 2012 - lars@linux-schulserver.de
+
+- update to 0.21:
+  + added --norc option for more portable testing
+- remove versioned dependency to Test::More as OBS currently 
+  breaks with this 
+
+-------------------------------------------------------------------
+Mon Feb 20 08:38:23 UTC 2012 - coolo@suse.com
+
+- updated to 0.20
+  - test_requires Time::HiRes for redhat.
+    (berekuk++)
+  - fixed TB2 support(tokuhirom)
+
+-------------------------------------------------------------------
+Fri Nov 18 14:51:52 UTC 2011 - coolo@suse.com
+
+- update to 0.18
+   - More fixes for failure locations(hoelzro)
+   - fixed test level(hoelzro)
+   - doc tweaks
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:51 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Sep 21 23:39:22 UTC 2010 - dbahi@novell.com
+
+- remove test t/06_ completely - don't understand it's point or failure on SLE11
+
+-------------------------------------------------------------------
+Tue Sep 21 20:29:31 UTC 2010 - dbahi@novell.com
+
+- modified tests test::builder->create and test::more done_testing()
+
+-------------------------------------------------------------------
+Tue Sep 21 03:20:14 UTC 2010 - dbahi@novell.com
+
+- initial package 0.15
+  * created by cpanspec 1.78
+

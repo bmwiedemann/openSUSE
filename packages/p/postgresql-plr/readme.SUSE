@@ -1,0 +1,49 @@
+Quick howto plr
+
+You can use plr.sql (which is created in contrib/plr) to create the language 
+and support functions in your database of choice:
+
+	psql -U <authorized user> -d <target database> -f /usr/share/postgresql/contrib/plr.sql
+   
+Alternatively you can create the language manually using SQL commands:
+
+	CREATE FUNCTION plr_call_handler()
+	RETURNS LANGUAGE_HANDLER
+	AS '$libdir/plr' LANGUAGE C;
+
+	CREATE LANGUAGE plr HANDLER plr_call_handler;
+   
+As of PostgreSQL 9.1 you can use the new CREATE EXTENSION command:
+
+    CREATE EXTENSION plr;
+   
+This is not only simple, it has the added advantage of tracking all PL/R 
+installed objects as dependent on the extension, and therefore they can be 
+removed just as easily if desired:
+
+    DROP EXTENSION plr;
+
+For upgrade, as the new version didn't add or remove function, installing the new
+plr.so extension, should provide directly the new version.
+This can be checked with select plr_version();
+  
+Tip: If a language is installed into template1, all subsequently created 
+databases will have the language installed automatically.
+
+Tip: In addition to the documentation, the plr.out.* files in
+plr/expected are a good source of usage examples.
+
+Tip: Additionally, libR must be findable by your runtime linker. On Linux, 
+this involves adding an entry in /etc/ld.so.conf for the location of libR 
+(typically $R_HOME/bin or $R_HOME/lib), and then running ldconfig. 
+Refer to man ldconfig or its equivalent for your system.
+
+Tip: R_HOME must be defined in the environment of the user under which PostgreSQL 
+is started, before the postmaster is started. Otherwise PL/R will refuse to load. 
+See plr_environ(), which allows examination of the environment available to the 
+PostgreSQL postmaster process.
+
+
+Testing you plr extension 
+	psql -d <target database> -c "select * from plr_environ();"
+

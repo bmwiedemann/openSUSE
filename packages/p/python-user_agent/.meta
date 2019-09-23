@@ -1,0 +1,7 @@
+<package name="python-user_agent" project="openSUSE:Factory">
+  <title>python-user_agent</title>
+  <description>
+  This module is for generating random, valid web user agents
+  </description>
+  <devel project="devel:languages:python" package="python-user_agent"/>
+</package>

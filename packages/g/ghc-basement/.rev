@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>618f60268d2f20520c2aa2347e22f3db</srcmd5>
+    <version>0.0.7</version>
+    <time>1527674415</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-basement to the latest version.</comment>
+    <requestid>607750</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>49899a744081f430b64e3e29f546ef41</srcmd5>
+    <version>0.0.8</version>
+    <time>1532445211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update basement to version 0.0.8.
+  Upstream does not provide a change log file.</comment>
+    <requestid>623726</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d01a0840799f458fb9ebe89e42cda0ea</srcmd5>
+    <version>0.0.8</version>
+    <time>1534774800</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Cabal build information to support pre-8.x compilers.</comment>
+    <requestid>630361</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>7a8c94fe55b0f8b161e6b55879362df0</srcmd5>
+    <version>0.0.8</version>
+    <time>1540448561</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643355</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>307cf0d5d96061d49fabd93cdd2204dd</srcmd5>
+    <version>0.0.10</version>
+    <time>1550402393</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>674295</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bba5c3b2417aafe155cc156757f60f6e</srcmd5>
+    <version>0.0.11</version>
+    <time>1564413961</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>715409</requestid>
+  </revision>
+</revisionlist>

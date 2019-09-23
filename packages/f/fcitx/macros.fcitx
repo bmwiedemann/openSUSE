@@ -1,0 +1,20 @@
+# RPM macros for fcitx
+%_fcitx_includedir	%{_includedir}/fcitx
+%_fcitx_moduleincdir	%{_fcitx_includedir}/module
+%_fcitx_libdir		%{_libdir}/fcitx
+%_fcitx_libexecdir	%{_fcitx_libdir}/libexec
+%_fcitx_datadir		%{_datadir}/fcitx
+%_fcitx_addondir	%{_fcitx_datadir}/addon
+%_fcitx_descdir		%{_fcitx_datadir}/configdesc
+%_fcitx_imicondir	%{_fcitx_datadir}/imicon
+%_fcitx_inputmethoddir	%{_fcitx_datadir}/inputmethod
+%_fcitx_skindir		%{_fcitx_datadir}/skin
+%_fcitx_autostartdir	%{_sysconfdir}/X11/xim.d
+%_fcitx_tabledir	%{_fcitx_datadir}/table
+
+%fcitx_requires	\
+Requires:	fcitx
+
+%fcitx_table_requires \
+Requires:	fcitx-table
+

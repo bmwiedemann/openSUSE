@@ -1,0 +1,335 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>71034da5b34a809c9402d9dd96a9b14a</srcmd5>
+    <version>0.7.0</version>
+    <time>1440658475</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>318396</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3dc5d24a74c4de9bad10b4ea2bfdfa6a</srcmd5>
+    <version>0.8.1</version>
+    <time>1446208944</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.1:
+  * Fixes file cache TypeError
+  * Fix functional tests job
+  * Replace ConfigParser with six.moves.configparser
+
+- update to 0.8.0:
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Added unit tests for command-line shell
+  * Also retry on connection refused
+  * Updated from global requirements
+  * Updated from global requirements
+  * Add provision_updated_at field to nodes
+  * Filtering nodes by provision state
+  * Replacing dict.iteritems() with dict.items()
+  * Updated from global requirements
+  * Fix version negotiation
+  * Updated from global requirements
+  * Allow specifying a set of fields of the Port and Chasis resources
+  * Revert: requirement files in alphabetical order
+  * Fix unittests due mock 1.1.0 release
+  * Allow specifying a set of fields of the Node resource
+  * Expose node's clean_step and bump default version
+  * Fix slow tests in RetriesTestCase
+  * Updated from global requirements
+  * Updated from global requirements
+  * Also retry on HTTP 503 (service unavailable)
+  * Cache negotiated api microversion for server
+  * Updated from global requirements</comment>
+    <requestid>337154</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>39c7a3884185de14d819de04f2cd8ac6</srcmd5>
+    <version>1.2.0</version>
+    <time>1463652873</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0:
+  * Remove leftover use of args.os_endpoint
+  * Updated from global requirements
+  * Add CLI support for RAID configuration
+  * Use keystoneauth instead of keystoneclient
+  * Don't ignore failures when delete nodes
+  * Use requests lib in HTTPClient
+  * Add a JSON option to the client
+  * Do not pass endpoint to constructor in OSC
+  * Fix Resource.__eq__ mismatch semantics of object equal
+  * Log SHA1 hash of X-Auth-Token value
+  * Stop ignoring _ as builtin in pep8
+  * Remove unused `anyjson`
+  * Add sanity tests for testing actions with Chassis
+  * Add 'node-set-provision-state &lt;node&gt; clean'
+  * continue to delete next node if failed with previous one
+  * Fix unit test 'Argument parse failed' error
+  * Replace HTTP 'magic numbers' with constants
+  * Add CLI to list nodes using the same driver
+  * Allow functional tests to work with Keystone v3
+  * Allow to initialize keystone v3 client
+  * Support all API versions up to 1.latest
+  * Put py34 first in the env order of tox
+  * Fix params order in assertEqual
+  * Remove openstack-common.conf
+  * Move ironicclient/common tests to their respective directory
+  * Do not log secrets
+  * Fix test cases of listing with provisioning state
+  * Replace assertTrue with explicit assertIsInstance
+  * Add first reno-based release note</comment>
+    <requestid>393974</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>79c865c285177763144aa5da4feb1ebd</srcmd5>
+    <version>1.7.0</version>
+    <time>1475242124</time>
+    <user>dimstar_suse</user>
+    <comment>OpenStack client update</comment>
+    <requestid>425251</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>0d972aa8032314894fb908d55c13bb3a</srcmd5>
+    <version>1.7.0</version>
+    <time>1477135329</time>
+    <user>dimstar_suse</user>
+    <comment>- sync descriptions with git</comment>
+    <requestid>434690</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1f45613c8f54c25b2fd65085704ecd1e</srcmd5>
+    <version>1.7.1</version>
+    <time>1480860523</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.1:
+  * 'ironic create' handles file args</comment>
+    <requestid>443620</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6da781d4df18396973b6eb0c0606b85f</srcmd5>
+    <version>1.11.0</version>
+    <time>1487681071</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.11.0:
+  - use utils.key_value_pairs_to_dict()
+  - Simplify heading capitalization.
+  - Avoid string interpolation in logging calls
+  - Fixed json response func tests
+  - Fix import of ironicclient and reformat docstring
+  - Support soft reboot and soft power off with timeout for OSC
+  - Refactor provision state so all actions can use inherited take_action
+  - Fix exception message creation in get_client()
+  - Fix node-inject-nmi to pass an empty body
+  - [trivial] Fix underline length under title in doc
+  - OSC plugin support microversions 1.21 &amp; 1.22
+  - Move duplicated info to new v1/utils.py
+  - List required arguments in '--help' message in Ironic Client.
+  - Enable release notes translation
+  - Add interface attach/detach support
+  - Set OSC default baremetal api version as in ironicclient
+  - Add docs for create command
+  - Add a new OSC command for Inject NMI
+  - Follow up nits in the patch &quot;ironic node-inject-nmi&quot;
+  - Use identity api version 3 for OSC plugin tests
+  - Use ConfigParser instead of SafeConfigParser in Python 3
+  - Update reno for stable/newton
+  - Add warning message for baremetal node set/unset commands
+  - Hide 'nodes' field from chassis OSC subcommands output
+  - Add test for ironic port-list command
+  - Simplify heading capitalization in shell's HelpFormatter.
+  - TrivialFix Remove white space between print and ()
+  - Show team and repo badges on README
+  - Raise on NodeManager get when invalid identifier provided</comment>
+    <requestid>456766</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e68000ccbafe90720e3e24be84e71d91</srcmd5>
+    <version>1.11.1</version>
+    <time>1491469306</time>
+    <user>maxlin_factory</user>
+    <comment>- update to version 1.11.1:
+  - Update UPPER_CONSTRAINTS_FILE for stable/ocata
+  - Bump the LAST_KNOWN_API_VERSION to 29 in OSC
+  - Update .gitreview for stable/ocata</comment>
+    <requestid>482822</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>80b15d509d5bb56a2efb1df958c324c3</srcmd5>
+    <version>1.16.0</version>
+    <time>1503927033</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.16.0
+  - Add --uuid option to OSC &quot;port create&quot; cmd
+  - Update OSC baremetal node set/unset supporting dynamic drivers
+  - Fix over-indent in  _validate_obj() functions
+  - Support i18n for baremetal chassis cmds
+  - Follow up to the API version warning patches
+  - Verify JSON response of chassis commands
+  - Add DRIVER_RESOURCE to remove duplicated strings
+  - Add physical network to port commands
+  - Replace http with https
+  - Fix ImportError when providing a meaningless API version.
+  - Fix cleanup of resources in OSC plugin functional tests
+  - Log warning when API version is not specified for the ironic tool
+  - Add basic tests for OSC plugin baremetal port commands
+  - Add args to CLI 'node-create' for selecting hardware interfaces
+  - Use same variable for --[no-]maintenance
+  - Follow up for OSC volume target commands
+  - Update reno for stable/ocata
+  - Remove support for py34.
+  - Add Ironic CLI commands for volume target
+  - switch from oslosphinx to openstackdocstheme
+  - Add missing 'autospec' statements to unit test mocks
+  - Add negative test-cases for openstack node create command
+  - Improve help text for --local-link-connection
+  - Add options for osc 'port set' command
+  - Do not show chassis_uuid field when it is not specified
+  - Follow-up release note revision
+  - OSC 'node list' recognizes all provision states
+  - Handle log message interpolation by the logger
+  - Adds --driver option to OSC &quot;node list&quot; command</comment>
+    <requestid>514886</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>74710f8e962a14f723afa041cb013367</srcmd5>
+    <version>1.17.0</version>
+    <time>1506195238</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.17.0
+  - Update .gitreview for stable/pike
+  - Updated from global requirements
+  - Update UPPER_CONSTRAINTS_FILE for stable/pike</comment>
+    <requestid>528065</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8aa58fa5808dab310743fe7ae379d7bb</srcmd5>
+    <version>2.1.0</version>
+    <time>1517424721</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.1.0
+  - Skip warning when changing target_raid_config
+  - Remove setting of version/release from releasenotes
+  - Mock filecache.CACHE in unit tests
+  - Clean up the release notes
+  - Avoid tox_install.sh for constraints support
+  - Cleanup test-requirements
+  - Add ability to provide configdrive when rebuilding with OSC
+  - Update release notes
+  - Do not depend on python-openstackclient
+  - Move legacy ironicclient jobs in-tree
+  - Accept None as a result of node validation in functional test
+  - Add basic tests for OSC plugin baremetal driver commands
+  - flake8: Enable some off-by-default checks
+  - Synchronize ironic and ironicclients list of boot devices
+  - Allow OS_BAREMETAL_API_VERSION=latest to work
+  - Update the documentation link for doc migration
+  - Use assertRegex instead of assertRegexpMatches
+  - zuul: centralize 'irrelevant-files' list
+  - Update README
+  - osc node power on &amp; off commands
+  - [reno] Prelude for release 2.0
+  - Allow re-negotiation of the latest version supplied by CLI
+  - Use generic user for both zuul v2 and v3
+  - Replace testr with stestr
+  - Pass missing arguments to session in SessionClient._make_session_request
+  - Make functional tests on JSON output debugable
+  - Deprecate the ironic CLI
+  - Use the tempest plugin from openstack/ironic-tempest-plugin
+  - Add test for set/unset node target_raid_config</comment>
+    <requestid>571132</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>aed360420c6da12b5f3367f519c35307</srcmd5>
+    <version>2.2.0</version>
+    <time>1521498880</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template
+
+- update to version 2.2.0 (bsc#1078607)
+  - Use StrictVersion to compare versions
+  - Facilitate latest Rest API use
+  - Allow API user to define list of versions
+  - Ignore .eggs from git
+  - Traits support
+  - Add release note for fix to bug 1745099
+  - Can not set portgroup mode as a number
+  - Accept port and portgroup as volume connector types
+  - Updated from global requirements</comment>
+    <requestid>583301</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cd2327ca2a29d8fbd0bbc21d29f22cf0</srcmd5>
+    <version>2.5.0</version>
+    <time>1536327444</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633072</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>38b75b1cc1b1c3557f6916f186503757</srcmd5>
+    <version>2.5.1</version>
+    <time>1551215929</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.5.1
+  - Update UPPER_CONSTRAINTS_FILE for stable/rocky
+  - Fix a LOG.warning which didn't work properly
+  - Update .gitreview for stable/rocky
+  - import zuul job settings from project-config</comment>
+    <requestid>672179</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ae61f534dd9c09ef31c38a7e110d0cbe</srcmd5>
+    <version>2.7.0</version>
+    <time>1556916048</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.7.0
+  - Follow-up to the configdrive change
+  - Fix a typo in the docstring
+  - pass endpoint interface to http client
+  - Update release notes
+  - Add node owner
+  - import zuul job settings from project-config
+  - Minor fixes to README.rst
+  - Change openstack-dev to openstack-discuss
+  - [Trivial] Allocation API: fix incorrect parameter description
+  - Update reno for stable/rocky
+  - Update min tox version to 2.0
+  - Deploy templates: client support
+  - add python 3.6 unit test job
+  - Support node description
+  - Add Python 3.6 classifier to setup.cfg
+  - Fix a LOG.warning which didn't work properly
+  - Add Events support
+  - Replace assertRaisesRegexp with assertRaisesRegex
+  - Allocation API: client API and CLI
+  - Add 'hostname' to port's local link connection
+  - switch documentation job to new PTI
+  - Replace mock.has_calls() with assert_has_calls
+  - Support passing a dictionary for configdrive
+  - Add is-smartnic port attribute to port command
+  - Support for conductors exposed from API
+  - Support for protected and protected_reason fields
+  - Add management of automated_clean field
+  - [Follow Up] Add 'hostname' to port's local link connection
+  - fix typo</comment>
+    <requestid>692829</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ccba86d301c9e867e1a678f1de0971b1</srcmd5>
+    <version>2.7.2</version>
+    <time>1560338164</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.7.2
+  - Update .gitreview for stable/stein
+  - Fix allocation tests
+  - Use endpoint_override in version negotiation
+  - Move to zuulv3
+  - Run jobs under python2 and python3
+  - Replace openstack.org git:// URLs with https://
+  - OpenDev Migration Patch
+  - Do not try to use /v1/v1 when endpoint_override is used
+  - Update UPPER_CONSTRAINTS_FILE for stable/stein</comment>
+    <requestid>709043</requestid>
+  </revision>
+</revisionlist>

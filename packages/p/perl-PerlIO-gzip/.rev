@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>717d0957b65b7ebb42398640b04d9efa</srcmd5>
+    <version>0.20</version>
+    <time>1560971013</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.20
+   see /usr/share/doc/packages/perl-PerlIO-gzip/Changes
+  
+  0.20  
+        Patch from Slaven to fix test skip count on Win32 (#76335)
+        Really this should have been in 0.19.
+- updated to 0.19
+   see /usr/share/doc/packages/perl-PerlIO-gzip/Changes
+- updated to 0.18
+   see /usr/share/doc/packages/perl-PerlIO-gzip/Changes
+- update cpanspec.yml to BuildRequire zlib-devel
+- updated to 0.19
+   see /usr/share/doc/packages/perl-PerlIO-gzip/Changes
+- updated to 0.18
+   see /usr/share/doc/packages/perl-PerlIO-gzip/Changes
+- switch to perl_requires macro
+- remove /var/adm/perl-modules
+- called spec2changelog
+- Build under buildservice
+- Build for SL10
+- Build for SL93
+- Update
+- Build for SL92
+- Build for SL91
+- Initial release
+</comment>
+    <requestid>707413</requestid>
+  </revision>
+</revisionlist>

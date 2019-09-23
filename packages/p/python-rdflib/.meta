@@ -1,0 +1,8 @@
+<package name="python-rdflib" project="openSUSE:Factory">
+  <title>A Python library for working with RDF</title>
+  <description>RDFLib is a Python library for working with RDF, a simple yet powerful
+language for representing information. The library contains an RDF/XML
+parser/serializer that conforms to the RDF/XML Syntax Specification (Revised).
+The library also contains both in-memory and persistent Graph backends.</description>
+  <devel project="devel:languages:python" package="python-rdflib"/>
+</package>

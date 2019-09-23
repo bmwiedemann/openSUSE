@@ -1,0 +1,278 @@
+Index: sample-configurations/basic.conf
+===================================================================
+--- sample-configurations/basic.conf.orig
++++ sample-configurations/basic.conf
+@@ -3,19 +3,29 @@
+ # and a single anonymous login.  It assumes that you have a user/group
+ # "nobody" and "ftp" for normal operation and anon.
+ 
+-ServerName			"ProFTPD Default Installation"
+-ServerType			standalone
+-DefaultServer			on
++ServerName		"ProFTPD"
++ServerType		standalone
++DefaultServer		on
+ 
+ # Port 21 is the standard FTP port.
+-Port				21
++Port			21
++
++# FireWall PortRange for PASV
++PassivePorts		40000 40999
++
++# Set DebugLevel to values between 0 and 9
++# default is 0
++DebugLevel		0
++
++# SystemLog -- Redirect syslogging to a file
++SystemLog		/var/log/proftpd/proftpd.log
+ 
+ # Don't use IPv6 support by default.
+-UseIPv6				off
++UseIPv6			off
+ 
+ # Umask 022 is a good standard umask to prevent new dirs and files
+ # from being group and world writable.
+-Umask				022
++Umask			022
+ 
+ # To prevent DoS attacks, set the maximum number of child processes
+ # to 30.  If you need to allow more than 30 concurrent connections
+@@ -23,43 +33,210 @@ Umask				022
+ # in standalone mode, in inetd mode you should use an inetd server
+ # that allows you to limit maximum number of processes per service
+ # (such as xinetd).
+-MaxInstances			30
++MaxInstances		30
+ 
+ # Set the user and group under which the server will run.
+-User				nobody
+-Group				nogroup
+-
+-# To cause every FTP user to be "jailed" (chrooted) into their home
+-# directory, uncomment this line.
+-#DefaultRoot ~
++User			ftp
++Group			ftp
+ 
+-# Normally, we want files to be overwriteable.
+-AllowOverwrite		on
++# Some logging formats
++LogFormat default	"%h %l %u %t \"%r\" %s %b"
++LogFormat auth		"%v [%P] %h %t \"%r\" %s"
++LogFormat write		"%h %l %u %t \"%r\" %s %b"
++
++# ------------------------------
++# Global Settings
++# ------------------------------
++<Global>
++
++  # ------------------------------
++  # Login
++  # ------------------------------
++
++	ServerIdent		on "FTP server ready"
++	DeferWelcome		on
++	#DisplayConnect		/etc/proftpd/msg
++
++	<IfModule mod_ident.c>
++	  IdentLookups		off
++	</IfModule>
++	UseFtpUsers		off
++	RequireValidShell	off
++
++	TimeoutLogin		60
++	MaxLoginAttempts	3
++	#MaxClientsPerHost	none
++	#MaxClientsPerUser	1 "Only one connection at a time."
++
++  # ------------------------------
++  # Authentication
++  # ------------------------------
++
++	### PAM Authentication
++	# AuthPAM: default: on
++	AuthPAM			off
++
++	# changed AuthPAMConfig file
++	AuthPAMConfig		proftpd
++	### PAM Authentication
++
++	AuthUserFile		/etc/proftpd/auth/passwd
++	AuthGroupFile		/etc/group
++
++	### order of auth modules
++	#AuthOrder		mod_auth_unix.c mod_auth_file.c
++	AuthOrder		mod_auth_file.c
++
++  # ------------------------------
++  # Post-Login
++  # ------------------------------
++
++	DisplayLogin		welcome.msg
++	DisplayChdir		.message
++	AllowOverride		off
++
++	TimeoutIdle		 600
++	TimeoutNoTransfer	 900
++	TimeoutStalled		 300
++	TimeoutSession		3600
++
++  # ------------------------------
++  # Session
++  # ------------------------------
++
++	# To cause every FTP user to be "jailed" (chrooted) into their home
++	# directory, uncomment this line.
++	DefaultRoot		~ web,!users
++
++	DenyFilter              \*.*/
++	ListOptions             "-A +R" strict
++	UseGlobbing             off
++
++	ShowSymlinks            on
++	TimesGMT                on
++
++  # ------------------------------
++  # Up- & Download
++  # ------------------------------
++
++	# having to delete before uploading is a pain ;)
++	AllowOverwrite		on
++	AllowRetrieveRestart	on
++	HiddenStores		on
++	DeleteAbortedStores	on
++	#AllowStoreRestart	off	# is contrary to "DeleteAbortedStores"
++
++  # ------------------------------
++  # Logging
++  # ------------------------------
++
++	WtmpLog			off
++	TransferLog		/var/log/proftpd/xferlog
++
++	# Record all logins
++	ExtendedLog		/var/log/proftpd/auth.log AUTH auth
++
++	# Logging file/dir access
++	ExtendedLog		/var/log/proftpd/access.log WRITE,READ write
++
++	# Paranoia logging level....
++	ExtendedLog		/var/log/proftpd/paranoid.log ALL default
++
++	# SQLLogFile
++	#SQLLogFile		/var/log/proftpd/SQL.log
++</Global>
+ 
+ # Bar use of SITE CHMOD by default
+ <Limit SITE_CHMOD>
+   DenyAll
+ </Limit>
+ 
++#####
++# Include other confs, e.g. tls.conf
++#Include			/etc/proftpd/conf.d/*.conf
++
++#####
++
++# ------------------------------
++# Anonymous Settings
++# ------------------------------
+ # A basic anonymous configuration, no upload directories.  If you do not
+ # want anonymous users, simply delete this entire <Anonymous> section.
+ <Anonymous ~ftp>
+-  User				ftp
+-  Group				ftp
+-
+-  # We want clients to be able to login with "anonymous" as well as "ftp"
+-  UserAlias			anonymous ftp
+-
+-  # Limit the maximum number of anonymous logins
+-  MaxClients			10
+-
+-  # We want 'welcome.msg' displayed at login, and '.message' displayed
+-  # in each newly chdired directory.
+-  DisplayLogin			welcome.msg
+-  DisplayChdir			.message
+-
+-  # Limit WRITE everywhere in the anonymous chroot
+-  <Limit WRITE>
+-    DenyAll
+-  </Limit>
++	# Limit LOGIN
++	#<Limit LOGIN>
++	#	Order Allow,Deny
++	#	Allow from .examples.net,113.141.114.1
++	#	Deny from All
++	#</Limit>
++
++	## or 'Include' a limit file with rules
++	## include one file and use more than once ;)
++	#<Limit LOGIN>
++	#	Order Allow,Deny
++	#	Include /etc/proftpd/includes/limit.conf
++	#	Deny from All
++	#</Limit>
++
++	# Limit WRITE everywhere in the anonymous chroot
++	<Limit WRITE>
++		DenyAll
++	</Limit>
++
++	# LoginPasswordPrompt -- Configure to display the passwort prompt or not
++	LoginPasswordPrompt off
++
++	# DirFakeMode -- Hide real file/directory permissions
++	DirFakeMode 0640
++
++	# DirFakeUser -- Hide real file/directory owner
++	DirFakeUser On
++
++	# DirFakeGroup -- Hide real file/directory group
++	DirFakeGroup On
++
++  	# We want clients to be able to login with "anonymous" as well as "ftp"
++	UserAlias		anonymous ftp
++
++	# Limit the maximum number of anonymous logins
++	MaxClients		10
++	#MaxRetrieveFileSize	512 Mb
++
++	# Limit Up/Downloads to 255 K/sec
++	#TransferRate APPE,RETR,STOR,STOU	255
++
++	# We want 'welcome.msg' displayed at login, and '.message' displayed
++	# in each newly chdired directory.
++	DisplayLogin		welcome.msg
++	DisplayChdir		.message
++
++	#<Directory pub>
++	#  <Limit ALL>
++	#	Order Allow,Deny
++	#	Allow from .examples.net,113.141.114.1
++	#	Deny from All
++	#  </Limit>
++	#</Directory>
++
++	## or 'Include' a limit file with rules
++	## include one file and use more than once ;)
++	#<Directory pub>
++	#  <Limit ALL>
++	#	Order Allow,Deny
++	#	Include /etc/proftpd/includes/limit.conf
++	#	Deny from All
++	#  </Limit>
++	#</Directory>
++
++	# An upload directory that allows storing files but not retrieving
++	# or creating directories.
++	#<Directory uploads/*>
++	#  <Limit READ>
++	#	DenyAll
++	#  </Limit>
++	#  <Limit STOR>
++	#	AllowAll
++	#  </Limit>
++	#</Directory>
+ </Anonymous>
++

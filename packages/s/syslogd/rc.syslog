@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+#
+# Author:
+#     Werner Fink <werner@suse.de>
+#     Marius Tomaschewski <mt@suse.de>
+#
+# Description:
+#     Compatibility script triggering a "systemctl <action> syslog.service"
+#     redirection using rc.status.
+#
+
+. /etc/rc.status
+
+echo "Usage: /sbin/rcsyslog {start|stop|status|try-restart|restart|force-reload|reload}"
+exit 1
+

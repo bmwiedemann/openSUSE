@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3498822f88e43c9b4fbc2168283f01c2</srcmd5>
+    <version>1.2.10</version>
+    <time>1429948347</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>298568</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9c63d97e58f029a06431ce25540440a2</srcmd5>
+    <version>1.2.24</version>
+    <time>1458120902</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369555</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7dc7398ffd2b238ac698e117c76d78fa</srcmd5>
+    <version>1.4.6</version>
+    <time>1495637421</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497352</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4eff6b172935151abdada24baaad5d6b</srcmd5>
+    <version>1.4.7</version>
+    <time>1510406254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539576</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9a65c0134e8479f12aacb516f6eed42f</srcmd5>
+    <version>1.4.7</version>
+    <time>1517824120</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix url for the project</comment>
+    <requestid>572031</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>49f6ed7f7f550b4a1bc02ff151389c1c</srcmd5>
+    <version>1.4.11</version>
+    <time>1535705193</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.4.11:
+  * Reading the version dynamically was causing import errors that caused error when installing package. Refs #144</comment>
+    <requestid>632155</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,7 @@
+<uwsgi>
+    <module>werkzeug.testapp:test_app</module>
+    <master/>
+    <processes>4</processes>
+    <socket>127.0.0.1:3031</socket>
+</uwsgi>
+

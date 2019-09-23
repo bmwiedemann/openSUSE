@@ -1,0 +1,11 @@
+<package name="azure-cli-monitor" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'Monitor' Command Module</title>
+  <description>Microsoft Azure CLI 'Monitor' Command Module
+
+This package is for the 'monitor' module.
+i.e. 'az monitor'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-monitor"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

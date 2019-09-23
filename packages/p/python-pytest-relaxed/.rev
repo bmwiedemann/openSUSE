@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7bbcaf4c4abde285d825e5b649d3eca5</srcmd5>
+    <version>1.0.0</version>
+    <time>1510837380</time>
+    <user>dimstar_suse</user>
+    <comment>Pytest-relaxed for test discovery/organization</comment>
+    <requestid>542123</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>11e08594aa96ffb1948d23e245d460f2</srcmd5>
+    <version>1.1.4</version>
+    <time>1553611019</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.4:
+  * Various tiny fixes in formating/metadata/etc.
+- Drop patch python3_fix.patch</comment>
+    <requestid>687591</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3e083b31a045fac20b7e647f9cf91186</srcmd5>
+    <version>1.1.5</version>
+    <time>1564484389</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.5:
+  * Fix compatibility with pytest versions 3.3 and above.</comment>
+    <requestid>710328</requestid>
+  </revision>
+</revisionlist>

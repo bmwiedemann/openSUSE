@@ -1,0 +1,7 @@
+<package name="perl-Package-DeprecationManager" project="openSUSE:Factory">
+  <title>Manage deprecation warnings for your distribution</title>
+  <description>This module allows you to manage a set of deprecations for one or
+more modules.</description>
+  <devel project="devel:languages:perl" package="perl-Package-DeprecationManager"/>
+  <url>http://search.cpan.org/dist/Package-DeprecationManager/</url>
+</package>

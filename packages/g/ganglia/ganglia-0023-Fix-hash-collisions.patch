@@ -1,0 +1,29 @@
+From: Junichi TANAKA <junsan45@gmail.com>
+Date: Wed, 31 Jan 2018 23:08:22 +0900
+Git-commit: 48dbbd380cfcb4c61a3910ae16ad56ad97d4cf0b
+References: bsc#1087487
+Subject: [PATCH] Fix hash collisions
+
+Acked-by: John Jolly <jjolly@suse.de>
+---
+ lib/hash.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/lib/hash.c b/lib/hash.c
+index a1d41e76..de922533 100644
+--- a/lib/hash.c
++++ b/lib/hash.c
+@@ -346,6 +346,10 @@ hash_delete (datum_t *key, hash_t * hash)
+   for (; bucket != NULL; last = bucket, bucket = bucket->next)
+     {
+       node_t tmp;
++      if (bucket->key && !hash_keycmp(hash, key, bucket->key))
++        {
++          continue;
++        }
+       if (bucket == &hash->node[i]) 
+         {
+           tmp.key = bucket->key;
+-- 
+2.13.6
+

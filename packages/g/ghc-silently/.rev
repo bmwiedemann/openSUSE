@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57cd3865f2cb091a56b4f4f051913f98</srcmd5>
+    <version>1.2.5</version>
+    <time>1448553787</time>
+    <user>dimstar_suse</user>
+    <comment>silently: Prevent or capture writing to stdout and other handles.</comment>
+    <requestid>345720</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>154e5c99bc4c5cfa6730327d2a8e0f13</srcmd5>
+    <version>1.2.5</version>
+    <time>1469628698</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412020</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>421b763fb719f6e10eb0a477bc39494e</srcmd5>
+    <version>1.2.5</version>
+    <time>1505506357</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525380</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0dd46e5e623f6a139f2b91e8932dd018</srcmd5>
+    <version>1.2.5</version>
+    <time>1527675638</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609818</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d8ead56085a05b342eee6e3052685aa2</srcmd5>
+    <version>1.2.5</version>
+    <time>1532445706</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623853</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>c0e1ec497c7fc51606548802e6de02d9</srcmd5>
+    <version>1.2.5</version>
+    <time>1540451088</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643457</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c648019943b1461e1cc93c74c8fd7906</srcmd5>
+    <version>1.2.5.1</version>
+    <time>1565694925</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>721036</requestid>
+  </revision>
+</revisionlist>

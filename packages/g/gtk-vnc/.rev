@@ -1,0 +1,418 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>15f94a103d6696a549aa81d2ecdf2829</srcmd5>
+    <version>0.2.0</version>
+    <time>1193715165</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>75f167d8c83fab894bf14c5785580136</srcmd5>
+    <version>0.3.2</version>
+    <time>1200618005</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>527b1362f3be43f0d5cf6369ef6fbae4</srcmd5>
+    <version>0.3.3</version>
+    <time>1203555229</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="36">
+    <srcmd5>193d1bdda6adbcedcc972cc5d033a2dd</srcmd5>
+    <version>0.3.3</version>
+    <time>1214185745</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5628c902a145c26b4a47ce188803bc87</srcmd5>
+    <version>0.3.6</version>
+    <time>1214250630</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="25">
+    <srcmd5>b67f00d90296284da8bdd9fbb4e09907</srcmd5>
+    <version>0.3.6</version>
+    <time>1218836733</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9666f0eb4cd5309d3ede0dbcdc8a424b</srcmd5>
+    <version>0.3.7</version>
+    <time>1221264137</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>e4e86ef0aeadf64c4950fcb6c498f322</srcmd5>
+    <version>0.3.7</version>
+    <time>1221494123</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>b0b5fc4ad92b184322da2a1b190f8dce</srcmd5>
+    <version>0.3.7</version>
+    <time>1227881459</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e6cd3d14b99a034cd311ab596d816283</srcmd5>
+    <version>0.3.8</version>
+    <time>1233948305</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>7e3639bad42c1afffecb4ddef413d14c</srcmd5>
+    <version>0.3.8</version>
+    <time>1238019781</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>adf281b4a7067bfbf27095ffe3f2edeb</srcmd5>
+    <version>0.3.9</version>
+    <time>1250514447</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk-vnc based on submit request 17880 from user vuntz
+</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>adf281b4a7067bfbf27095ffe3f2edeb</srcmd5>
+    <version>0.3.9</version>
+    <time>1250514447</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk-vnc based on submit request 17880 from user vuntz
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1a41cd38c2a535c1c2d86ba896251432</srcmd5>
+    <version>0.3.10</version>
+    <time>1260268389</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk-vnc based on submit request 25844 from user vuntz
+</comment>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c61f8e08e8173e895b93e4d09db0c916</srcmd5>
+    <version>0.3.10</version>
+    <time>1268923892</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>c61f8e08e8173e895b93e4d09db0c916</srcmd5>
+    <version>0.3.10</version>
+    <time>1278667349</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>c61f8e08e8173e895b93e4d09db0c916</srcmd5>
+    <version>0.3.10</version>
+    <time>1278678580</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c1e761d060f418c1d15d34b2477ed540</srcmd5>
+    <version>0.4.1</version>
+    <time>1281391987</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk-vnc based on submit request 45173 from user vuntz
+</comment>
+    <requestid>45173</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>54f6bc11eea06263073cfe3a6d19e6aa</srcmd5>
+    <version>0.4.1</version>
+    <time>1285596175</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gtk-vnc based on submit request 49229 from user vuntz
+</comment>
+    <requestid>49229</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d7e8e853f64780cb06d6a4d198f9c726</srcmd5>
+    <version>0.4.2</version>
+    <time>1290252047</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53487 from user vuntz
+</comment>
+    <requestid>53487</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>8964ffcaaf2c7abcb7768d8f7769cf6f</srcmd5>
+    <version>0.4.2</version>
+    <time>1297785266</time>
+    <user>darix</user>
+    <comment>Accepted submit request 61253 from user vuntz
+</comment>
+    <requestid>61253</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>18d7fbf4991bedd36f8dddb1e1a39cf2</srcmd5>
+    <version>0.4.2</version>
+    <time>1297785272</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 61253
+</comment>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>18d7fbf4991bedd36f8dddb1e1a39cf2</srcmd5>
+    <version>0.4.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>d1972b7950493616ac1a0cce2cfab9a0</srcmd5>
+    <version>0.4.2</version>
+    <time>1298029796</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61548 from user vuntz
+</comment>
+    <requestid>61548</requestid>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>b240b9229837387ed2111e02942df1d9</srcmd5>
+    <version>0.4.2</version>
+    <time>1298029811</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61548
+</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1bf374888127cb7835d901f1bafc6aac</srcmd5>
+    <version>0.4.3</version>
+    <time>1304423780</time>
+    <user>darix</user>
+    <comment>Pushing G:F (including GNOME3)</comment>
+    <requestid>69090</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>d1d5d39ed4870151d39db862a1e66fd3</srcmd5>
+    <version>0.4.3</version>
+    <time>1304423795</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 69090
+</comment>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>1dd56fc8463dce2c63249ad16b1c5c79</srcmd5>
+    <version>0.4.3</version>
+    <time>1314277447</time>
+    <user>saschpe</user>
+    <comment>Fix build on Factory</comment>
+    <requestid>79765</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>e1607b99ee18b8ff1a09290409b6d466</srcmd5>
+    <version>0.4.3</version>
+    <time>1314277459</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79765
+</comment>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>ea12bcee64aa31d40830d72e1aec1eaa</srcmd5>
+    <version>0.4.3</version>
+    <time>1318762077</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequire to avoid a hidden require from projconfig (forwarded request 87918 from coolo)</comment>
+    <requestid>87965</requestid>
+  </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>ea12bcee64aa31d40830d72e1aec1eaa</srcmd5>
+    <version>0.4.3</version>
+    <time>1319181949</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>add7e1580a813c7a203389839538f190</srcmd5>
+    <version>0.5.0</version>
+    <time>1326118661</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>99061</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>0f30ed963195b22730812ab89f8f4e81</srcmd5>
+    <version>0.5.0</version>
+    <time>1339352200</time>
+    <user>coolo</user>
+    <comment>Push G:F</comment>
+    <requestid>123646</requestid>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>0f30ed963195b22730812ab89f8f4e81</srcmd5>
+    <version>0.5.0</version>
+    <time>1340183418</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>6d25f8c5981a4e94cef026d39f7665be</srcmd5>
+    <version>0.5.0</version>
+    <time>1341316600</time>
+    <user>coolo</user>
+    <comment>for consideration to be included in 12.2: problems is bad.. not being able to get debug logs is even worse (forwarded request 126940 from vuntz)</comment>
+    <requestid>126955</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>532c93e24c37e97fe887abb0abaa8690</srcmd5>
+    <version>0.5.1</version>
+    <time>1342523324</time>
+    <user>coolo</user>
+    <comment>Update to 0.5.1</comment>
+    <requestid>128067</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>532c93e24c37e97fe887abb0abaa8690</srcmd5>
+    <version>0.5.1</version>
+    <time>1359109017</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>dbc35628c22fb9537a187e338c5e7007</srcmd5>
+    <version>0.5.2</version>
+    <time>1364651856</time>
+    <user>coolo</user>
+    <comment>license update: LGPL-2.1+
+Consolidate licenses (forwarded request 160578 from babelworx)</comment>
+    <requestid>160579</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>dbc35628c22fb9537a187e338c5e7007</srcmd5>
+    <version>0.5.2</version>
+    <time>1379662574</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>f9b9babfcd73817b47b6f67dfaa423f8</srcmd5>
+    <version>0.5.3</version>
+    <time>1380188726</time>
+    <user>coolo</user>
+    <comment>- Do not package translations when building for gtk2: the
+  translation files do not depend on the toolkit used.
+- Always recommend gtk-vnc-lang (%{_name}-lang) instead of
+  gtk-vnc(2)?-lang.
+
+- Do not package translations when building for gtk2: the
+  translation files do not depend on the toolkit used.
+- Always recommend gtk-vnc-lang (%{_name}-lang) instead of
+  gtk-vnc(2)?-lang. (forwarded request 200591 from RBrownCCB)</comment>
+    <requestid>200595</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>f9b9babfcd73817b47b6f67dfaa423f8</srcmd5>
+    <version>0.5.3</version>
+    <time>1409301122</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>95afdeebe60b7422e3e28e5011d8a8d5</srcmd5>
+    <version>0.5.4</version>
+    <time>1423918175</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285659</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>0206e0fbf87425676d6c5a77bd12df9e</srcmd5>
+    <version>0.5.4</version>
+    <time>1427735713</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME:Factory - without pcheck</comment>
+    <requestid>292017</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>a4b6c9a320f2bd06e1e94709b937a8df</srcmd5>
+    <version>0.5.4</version>
+    <time>1470217267</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415570</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>53b838485c72c38b49221beb19cdb4fd</srcmd5>
+    <version>0.6.0</version>
+    <time>1472473641</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>421344</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>abb502c1b78be648607e53b8bd01b9f4</srcmd5>
+    <version>0.7.0</version>
+    <time>1488125225</time>
+    <user>dimstar_suse</user>
+    <comment>Fixup license; the SPDX valid form using 'AND' is not accepted by rpmlint; bad bad bad</comment>
+    <requestid>459390</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>d7e72ce9aaad789e906a0f1d7ead40cc</srcmd5>
+    <version>0.7.0</version>
+    <time>1493455682</time>
+    <user>dimstar_suse</user>
+    <comment>- Add bsc# id for CVE-2017-5884 and CVE-2017-5885
+
+- Remove trailing whitespaces (forwarded request 484231 from zhangxiaofei)</comment>
+    <requestid>490185</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>7fd0949c232e2f8ba3742df42f66eeba</srcmd5>
+    <version>0.7.1</version>
+    <time>1496225705</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498968</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>95efb35c955b965aae2685368adc21a0</srcmd5>
+    <version>0.7.2</version>
+    <time>1523875576</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 592853 from dimstar)</comment>
+    <requestid>593153</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>db1f8ad2237704256000aab82cb05cce</srcmd5>
+    <version>0.9.0</version>
+    <time>1539757162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639834</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>f8036708e1440baa5c5773cab7e258bc</srcmd5>
+    <version>1.0.0</version>
+    <time>1565694700</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.0:
+  + Autotools build system replaced with meson.
+  + Support for GTK-2 is dropped. GTK-3 is mandatory.
+  + Support for libview is dropped in example program.
+  + Improvements to example demos.
+  + Use MAP_ANON if MAP_ANONYMOUS doesn't exist to help certain
+    macOS versions.
+  + Fix crash when connection attempt fails early.
+  + Initialize gcrypt early in auth process.
+  + Emit vnc-auth-failure signal when SASL auth fails.
+  + Emit vnc-error signal when authentication fails.
+  + Fix double free when failing to read certificates.
+  + Run unit tests in RPM build.
+  + Modernize RPM spec.
+  + Fix race condition in unit tests.
+  + Fix install of missing header for cairo framebuffer.
+  + Fix typo in gir package name.
+  + Add missing VncPixelFormat file to git data.
+- Add meson BuildRequires and macros.
+- Drop libtool BuildRequires: No longer needed.
+- Drop translation-update-upstream BuildRequires and macro, SUSE no
+  longer provides extra translations for gtk-vnc.
+- Replace gtk3-devel with pkgconfig(gtk+-3.0) BuildRequires: Align
+  with what meson checks for.
+- Add pkgconfig(gvnc-1.0) BuildRequires: New dependency.
+- Use sed hack to enable install of gncviewer.</comment>
+    <requestid>722098</requestid>
+  </revision>
+</revisionlist>

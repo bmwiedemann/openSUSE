@@ -1,0 +1,181 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>32ba6a9a56d81c71212e319f8d94829a</srcmd5>
+    <version>2.0.0</version>
+    <time>1386086116</time>
+    <user>coolo</user>
+    <comment>package resubmit after fixing as per https://build.opensuse.org/request/show/206852</comment>
+    <requestid>208753</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8c7d48a5d52bb502b57c3cea7e95ea6f</srcmd5>
+    <version>2.0.0</version>
+    <time>1392790894</time>
+    <user>coolo</user>
+    <comment>- add libopenjp2.pc (demand introduced by ImageMagick 6.8.8-5)</comment>
+    <requestid>222669</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fe88bc8819b48b1a9a6f2eb30445475f</srcmd5>
+    <version>2.0.1</version>
+    <time>1399755421</time>
+    <user>coolo</user>
+    <comment>- version 2.0.1
+  - New Features:
+    * Digital Cinema profiles have been fixed and updated
+    * New option to disable MCT if needed
+    * extended RAW support: it is now possible to input raw images
+      with subsampled color components (422, 420, etc)
+  - API/ABI modifications: (see abi_compat_report_2.0.1.html in dev-utils/scripts)
+    * No changes, API/ABI fully compatible with 2.0.0
+    
+  - Misc:
+    * OpenJPEG is now officialy conformant with JPEG 2000 Part-1
+      and will soon become official reference software at the 
+      JPEG committee.
+    * Huge amount of bug fixes. See CHANGES for details.
+- adjust library name (forwarded request 233094 from frispete)</comment>
+    <requestid>233257</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>08c249d158aea46b221914734c4c70e3</srcmd5>
+    <version>2.1.0</version>
+    <time>1402947801</time>
+    <user>coolo</user>
+    <comment>- pimp up the previous changelog
+
+New Features:
+    * Digital Cinema profiles have been fixed and updated
+        * New option to disable MCT if needed
+    * extended RAW support: it is now possible to input raw images
+          with subsampled color components (422, 420, etc)
+    * New way to deal with profiles
+API/ABI modifications: (see abi_compat_report in dev-utils/scripts)
+    * Removed deprecated functions
+            - opj_stream_create_default_file_stream(FILE*,...)
+        - opj_stream_create_file_stream(FILE*,...)
+        - opj_stream_set_user_data (opj_stream_t* p_stream, void * p_data)
+        * Added
+        - opj_stream_create_default_file_stream(char*,...)
+        - opj_stream_create_file_stream(char*,...)
+        - opj_stream_destroy(opj_stream_t*)
+        - opj_stream_set_user_data (opj_stream_t* p_stream, void * p_data,
+            ... opj_stream_free_user_data_fn p_function)
+        - JPEG 2000 profiles and Part-2 extensions defined through '#define'
+    * Changed
+        - 'alpha' field added to 'opj_image_comp' structure
+        - 'OPJ_CLRSPC_EYCC' added to enum COLOR_SPACE
+        - 'OPJ_CLRSPC_CMYK' added to enum COLOR_SPACE
+        - 'OPJ_CODEC_JPP' and 'OPJ_CODEC_JPX' added to CODEC_FORMAT
+          (not yet used in use)
+        - 'max_cs_size' and 'rsiz' fields added to opj_cparameters_t
+Misc:
+    * OpenJPEG is now officialy conformant with JPEG 2000 Part-1
+          and will soon become official reference software at the (forwarded request 235909 from coolo)</comment>
+    <requestid>235918</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>08c249d158aea46b221914734c4c70e3</srcmd5>
+    <version>2.1.0</version>
+    <time>1409302037</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>70dc38e0376ed57372c794439bbfeb9e</srcmd5>
+    <version>2.1.0</version>
+    <time>1441726656</time>
+    <user>dimstar_suse</user>
+    <comment>- Use cmake macro
+- Remove baselibs.conf (it was broken anyways for months)
+- Cleanup spec file with spec-cleaner (forwarded request 329105 from pluskalm)</comment>
+    <requestid>329158</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>64e36ccbc3b085942b070e7f292cbc05</srcmd5>
+    <version>2.1.0</version>
+    <time>1445705758</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>339795</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>149d569a39a84ad4532674dcfbd50e52</srcmd5>
+    <version>2.1.0</version>
+    <time>1450363958</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347933</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>556f34d87bc7ee3a2b87c8e7f143c80c</srcmd5>
+    <version>2.1.2</version>
+    <time>1482418800</time>
+    <user>lnussel_factory</user>
+    <comment>- update to version 2.1.2
+  Bug fixes including security fixes among which:
+  CVE-2016-8332 CVE-2016-7163
+  CVE-2016-5139 CVE-2016-5159
+  CVE-2016-5158 (not listed but solved different way)
+  Huge amount of critical bugfixes
+  Speed improvements
+  No API/ABI break compared to v2.1.1/v2.1
+- some doc files now have '.md' suffix (like README.md)
+- CVE-2016-5152 with new 0018-tcd_get_decoded_tile_size.patch</comment>
+    <requestid>447006</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6ee97dab384a8037d7f0227fb676c44d</srcmd5>
+    <version>2.1.2</version>
+    <time>1505502508</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>525881</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a1c5279e238f2ad0cf7cc15f4729a61f</srcmd5>
+    <version>2.3.0</version>
+    <time>1509723064</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0
+- Drop upstream patches:
+  * 0018-tcd_get_decoded_tile_size.patch
+  * openjpeg2-CVE-2016-10504.patch
+  * openjpeg2-CVE-2016-10505.patch
+  * openjpeg2-CVE-2016-10506.patch
+  * openjpeg2-CVE-2017-12982.patch
+  * openjpeg2-CVE-2017-14039.patch
+  * openjpeg2-CVE-2017-14040.patch
+  * openjpeg2-CVE-2017-14041.patch
+  * openjpeg2-CVE-2017-14151.patch
+  * openjpeg2-CVE-2017-14152.patch
+- Add install-fix.patch from upstream to fix library installation.</comment>
+    <requestid>536483</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>7e5cda3fbb50a4ee83cc6c5d1fc9b1da</srcmd5>
+    <version>2.3.0</version>
+    <time>1551037537</time>
+    <user>coolo</user>
+    <comment>- Change openjpeg2 Recommends in the devel package to Requires. (forwarded request 676598 from iznogood)</comment>
+    <requestid>676608</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e4703986ac18fb06289edcc0a3bfbaf9</srcmd5>
+    <version>2.3.1</version>
+    <time>1554458184</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.1:
+  * Fix CVE-2018-6616 (bsr#1079845)
+  * Fix CVE-2018-5785 (bsc#1076967)
+  * Fix CVE-2018-18088 (bsc#1111638)
+  * Fix CVE-2018-16375 (bsc#1106882)
+  * Fix CVE-2018-14423 (bsc#1102016)
+  * Fix CVE-2018-7648 (bsc#1083901)
+  * Fix CVE-2018-5727 (bsc#1076314)
+  * For full list see ChangeLog file
+- Remove install-fix.patch: upstreamed
+</comment>
+    <requestid>691318</requestid>
+  </revision>
+</revisionlist>

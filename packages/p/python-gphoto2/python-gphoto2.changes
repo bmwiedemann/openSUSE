@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Mon Apr 22 11:09:09 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.0.0
+  * COMPATIBILITY CHANGE: gp_log_add_func and use_python_logging
+    now return a Python object which must be stored until logging
+    is no longer needed.
+  * Added cam-conf-view-gui & wait-for-event examples. Thanks to
+    the users who contributed these.
+  * Various minor bug fixes and improvements.
+  version 1.9.0:
+  * Enabled use of context callback functions such as
+    gp_context_set_progress_funcs.
+  * Added a time lapse movie example script.
+  version 1.8.5:
+  * Fix memory leak in gp_camera_get_config.
+  version 1.8.4:
+  * Fix segfault if camera disconnected before calling
+    get_storageinfo.
+  version 1.8.3:
+  * Fix Qt5 usage in examples (thanks fatzh).
+  * Handle GP_EVENT_FILE_CHANGED (new in libgphoto2 2.5.17).
+  * Allow Python threads during gp_camera_init.
+
+-------------------------------------------------------------------
+Tue Jan 30 18:43:35 UTC 2018 - aloisio@gmx.com
+
+- Update to version 1.8.2
+  * Fix bug in v1.8.1 that caused installation problems on some
+    systems.
+  version 1.8.1:
+  * Logging callbacks now pass 'bytes' objects in Python3.
+  * Increased number of functions allow other Python threads to
+    run.
+  version 1.8.0:
+  * The 'context' parameter is now optional for most functions.
+  * Some deprecated functions have been removed.
+  * Improved documentation of many functions.
+  * Substantial rework of logging callback processing.
+
+-------------------------------------------------------------------
+Sun Aug 27 05:56:47 UTC 2017 - aloisio@gmx.com
+
+- Update to version 1.7.1
+  * Return string values from gp_camera_wait_for_event.
+
+-------------------------------------------------------------------
+Fri Jul  7 11:39:04 UTC 2017 - aloisio@gmx.com
+
+- Initial package (1.7.0)

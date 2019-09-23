@@ -1,0 +1,617 @@
+-------------------------------------------------------------------
+Thu Sep  5 14:01:16 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- Changes since 19.08.0:
+  * Include KDE* cmake macros before any others
+
+-------------------------------------------------------------------
+Fri Aug  9 08:32:13 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- No code change since 19.07.90
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:51 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- No code changes since 19.07.80
+
+-------------------------------------------------------------------
+Tue Jul 23 11:59:06 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * Remove unused includes
+  * When we use framework 5.59.0 we can use new logging file directory
+  * Fix key mapping based on summary column
+  * Fix double sig key select in newkeyapproval
+  * Filter out unusable keys in keyapproval dlg
+  * Fix / Improve handling of overrides in Keyapproval
+  * Add protocol specific defaultkeys to keyselectcb
+  * Print actual override format in debug output
+  * Extend keylistmodel with additional columns
+  * Bump required GPGME version to 1.11.1
+  * Mark Gpgmepp as required and print version
+  * Fix clazy warning
+  * Improve Display of UserID::Signatures
+  * It's already defined in FrameworkCompilerSettings
+
+-------------------------------------------------------------------
+Thu Jul 18 21:37:42 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use kf5_debugdir macro for specifying the logging categories location
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:38 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- No code changes since 19.04.2
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:56 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- No code changes since 19.04.1
+
+-------------------------------------------------------------------
+Fri May 10 05:37:18 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- No code changes since 19.04.0
+
+-------------------------------------------------------------------
+Sat Apr 20 06:51:58 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- No code changes since 19.03.90
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:44 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * Convert to camelcase include
+  * Port to for(...:...) here
+
+-------------------------------------------------------------------
+Wed Mar 27 06:41:09 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:24 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * No code changes since 18.12.2
+
+-------------------------------------------------------------------
+Sat Feb 09 08:25:25 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * No code changes since 18.12.1
+
+-------------------------------------------------------------------
+Fri Jan 11 05:42:41 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * No code changes since 18.12.0
+
+-------------------------------------------------------------------
+Fri Dec 14 06:09:19 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * Initialize default keyfilter mIsDeVs variable
+
+-------------------------------------------------------------------
+Mon Dec 03 20:56:14 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * Replace 10 year out of date ModelTest copy with QAIMTester
+
+-------------------------------------------------------------------
+Tue Nov 20 06:22:57 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:57:22 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 08 20:43:48 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * No code changes since 18.08.2
+
+-------------------------------------------------------------------
+Thu Oct 11 20:07:14 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 06 18:43:11 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Aug 16 22:07:31 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * None
+
+-------------------------------------------------------------------
+Thu Jul 26 13:01:00 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Fri Jul 13 04:50:16 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * None
+
+-------------------------------------------------------------------
+Fri Jun 08 05:07:01 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * None
+
+-------------------------------------------------------------------
+Fri May 11 05:18:17 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 18.04.0:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 18 07:49:54 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.0.php
+- Changes since 18.03.90:
+  * Fix reenable of keyselectioncombo after keylisting
+
+-------------------------------------------------------------------
+Fri Apr 06 07:10:09 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.03.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04-rc.php
+- Changes since 17.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Mar 08 23:52:22 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.3.php
+- Changes since 17.12.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Feb 07 08:48:59 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.2.php
+- Changes since 17.12.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Jan 11 23:41:22 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.1.php
+- Changes since 17.12.0:
+  * Fix sorting in KeyRearrangeColumnsProxyModel
+
+-------------------------------------------------------------------
+Sat Dec 09 14:59:09 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.0.php
+- Changes since 17.11.90:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 02 10:12:38 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-rc.php
+- Changes since 17.11.80:
+  * None
+
+-------------------------------------------------------------------
+Mon Nov 20 06:59:36 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-beta.php
+- Changes since 17.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 09 23:12:42 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 00:32:45 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 07 07:02:34 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * None
+
+-------------------------------------------------------------------
+Fri Aug 11 22:46:22 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Aug  5 18:19:25 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.08-rc.php
+
+
+-------------------------------------------------------------------
+Sat Jul 15 23:00:55 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Jun 07 17:43:01 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * Fix compilation with GCC 7
+- Drop upstreamed patches:
+  * fix-build-gcc7.patch
+
+-------------------------------------------------------------------
+Wed May 17 20:37:20 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * Fix filtering for S/MIME certificates (kde#378755)
+
+-------------------------------------------------------------------
+Wed May 17 14:59:35 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to fix build with GCC7:
+  * fix-build-gcc7.patch
+
+-------------------------------------------------------------------
+Sun Apr 16 10:45:18 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * Fix most numeric inputs in cryptoconfig
+
+-------------------------------------------------------------------
+Wed Apr 12 20:26:04 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * Fix compilation with GCC 7
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:50 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-beta.php
+- Changes since 16.12.3:
+  * Use QLatin1Char
+  * Port some foreach
+  * Port to for(..:..). use QList::reserve too
+  * Introduce Kleo::trustLevel()
+  * Properly declare old style private slot
+  * Start keylisting if not running in ensureCachePop
+  * Use old style connect for listAllKeysJob
+  * Use nullptr here
+  * Use nullptr
+  * Use QLatin1Char when possible
+  * increase cmake dependancy
+  * Add ECMCoverageOption
+
+-------------------------------------------------------------------
+Thu Mar  9 12:43:21 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * None
+
+-------------------------------------------------------------------
+Thu Feb  9 07:17:27 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Wed Feb  1 12:55:23 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Sat Jan 14 09:05:50 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+-------------------------------------------------------------------
+Fri Dec 16 06:07:25 UTC 2016 - lbeltrame@kde.org
+
+- Update descriptions to be a little more verbose
+- Adjust libKF5LibKleo dependencies
+
+-------------------------------------------------------------------
+Tue Dec 13 20:00:30 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Fri Dec  9 10:57:29 UTC 2016 - jengelh@inai.de
+
+- Fix summary and set rpm groups
+
+-------------------------------------------------------------------
+Sat Dec  3 16:44:30 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 12:41:10 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+
+-------------------------------------------------------------------
+Wed Nov  9 06:11:48 UTC 2016 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.08.3
+  * KDE Applications 16.08.3
+  * https://www.kde.org/announcements/announce-applications-16.08.3.php
+
+-------------------------------------------------------------------
+Tue Oct 11 20:48:37 UTC 2016 - lbeltrame@kde.org
+
+- KDE Applications 16.08.2
+https://www.kde.org/announcements/announce-applications-16.08.2.php
+
+-------------------------------------------------------------------
+Fri Sep  9 08:09:06 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.1
+   * KDE Applications 16.08.1
+   * https://www.kde.org/announcements/announce-applications-16.08.1.php
+
+
+-------------------------------------------------------------------
+Fri Aug 12 10:06:35 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.0
+   * KDE Applications 16.08.0
+   * https://www.kde.org/announcements/announce-applications-16.08.0.php
+
+
+-------------------------------------------------------------------
+Mon Aug  8 14:41:05 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.07.90
+   * KDE Applications 16.07.90 (16.08-RC)
+   * https://www.kde.org/announcements/announce-applications-16.08-rc.php
+
+
+-------------------------------------------------------------------
+Thu Jul 21 20:10:41 UTC 2016 - wbauer@tmo.at
+
+- Cleanup build requirements
+- Require gpgmepp5-devel in the devel package
+
+-------------------------------------------------------------------
+Thu Jul  7 23:28:09 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.3
+   * KDE Applications 16.04.3
+   * https://www.kde.org/announcements/announce-applications-16.04.3.php
+
+
+-------------------------------------------------------------------
+Fri Jun 10 17:49:23 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.2
+   * KDE Applications 16.04.2
+   * https://www.kde.org/announcements/announce-applications-16.04.2.php
+
+
+-------------------------------------------------------------------
+Tue May 17 18:41:57 UTC 2016 - lbeltrame@kde.org
+
+-  Update package groups
+
+-------------------------------------------------------------------
+Sat May  7 10:13:33 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.1
+   * KDE Applications 16.04.1
+   * https://www.kde.org/announcements/announce-applications-16.04.1.php
+
+
+-------------------------------------------------------------------
+Sun Apr 17 05:53:30 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.0
+   * KDE Applications 16.04.0
+   * https://www.kde.org/announcements/announce-applications-16.04.0.php
+
+
+-------------------------------------------------------------------
+Mon Apr 11 07:14:20 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.03.90
+   * KDE Applications 16.04.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.04-rc.php
+
+

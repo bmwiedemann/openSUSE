@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Thu Sep 12 14:47:41 MDT 2019 - dmulder@suse.com
+
+- Remove ldap module use of MOD_DELETE and MOD_ADD; (bsc#1150616);
+- 1.4.6
+
+-------------------------------------------------------------------
+Thu Sep 12 20:26:18 UTC 2019 - dmulder@suse.com
+
+- Ignore directory listing if directory doesn't exist; (bsc#1150614);
+- 1.4.5
+
+-------------------------------------------------------------------
+Thu Aug 22 19:31:25 UTC 2019 - dmulder@suse.com
+
+- SamDB interface now allows gpmc to use krb5 auth; (boo#1146898);
+- GPO Editor tree open immediate on navigate.
+- Enable user management settings.
+- Catch file not found on delete sysvol file.
+- Handle multiple links when parsing a gpLink.
+- 1.4.4
+
+-------------------------------------------------------------------
+Fri Jun  7 23:25:03 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Use new schema of desktop files (boo#1084864)
+- Clean up spec
+- Rename desktop files
+- 1.4.3
+
+-------------------------------------------------------------------
+Fri Mar 15 16:18:08 UTC 2019 - dmulder@suse.com
+
+- Use libsmb instead of the deprecated smb library
+
+-------------------------------------------------------------------
+Thu Mar 14 15:30:58 UTC 2019 - dmulder@suse.com
+
+- Update to 1.4.2:
+  + Move module to Network Services
+  + Use samba preg file pack/unpack (Requires samba 4.10)
+  + Unconfigured/Enable/Disable policy states
+  + Use common adcommon password prompt (Requires yast2-adcommon-python)
+  + Add a unified file/actions menu, instead of various buttons
+  + Allow switching domains
+
+-------------------------------------------------------------------
+Thu Nov  1 21:50:27 UTC 2018 - dmulder@suse.com
+
+- Disable experimental features in sle
+
+-------------------------------------------------------------------
+Tue Oct  9 21:14:26 UTC 2018 - dmulder@suse.com
+
+- v1.4.1: Switch package to py3
+
+-------------------------------------------------------------------
+Tue Aug  7 19:11:23 UTC 2018 - dmulder@suse.com
+
+- v1.4: Adds admx template support
+
+-------------------------------------------------------------------
+Tue May 29 20:12:50 UTC 2018 - dmulder@suse.com
+
+- v1.3.1: Lots of improvements and fixes, py3 compatability, etc.
+
+-------------------------------------------------------------------
+Fri Nov 17 15:09:11 UTC 2017 - dmulder@suse.com
+
+- v1.0
+

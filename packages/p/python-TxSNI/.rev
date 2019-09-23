@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e658aab26cd40d92882aa54878139d3f</srcmd5>
+    <version>0.1.9</version>
+    <time>1550151083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674356</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fd34648d0f84b6a923e517ce1284cacb</srcmd5>
+    <version>0.1.9</version>
+    <time>1560459682</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with new openssl:
+  * openssl111.patch</comment>
+    <requestid>707624</requestid>
+  </revision>
+</revisionlist>

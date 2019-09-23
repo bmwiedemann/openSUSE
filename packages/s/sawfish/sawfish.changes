@@ -1,0 +1,613 @@
+-------------------------------------------------------------------
+Tue Jun 11 19:30:16 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to version 1.12.90:
+  + make package build reproducible (boo#1084909, boo#1041090)
+  + FIXME add changes here
+- Drop upstream fix_desktop_files.patch
+
+-------------------------------------------------------------------
+Thu Nov 17 14:31:07 UTC 2016 - dimstar@opensuse.org
+
+- Add windowmanager provides (boo#981663).
+
+-------------------------------------------------------------------
+Sat Jan 31 19:31:40 UTC 2015 - sfalken@opensuse.org
+
+- Update to version 1.11:
+  + enable input-line in cabinet
+  + update Elberg-tabbed and gradient-tabbed for recent changes
+- Dropped:
+  + sawfish_1.10.99.tar.xz
+- Added: 
+  + fix_desktop_files.patch to correct Category and GenericName 
+    errors in post-build-checks
+-------------------------------------------------------------------
+Mon Sep  1 07:37:29 UTC 2014 - toganm@opensuse.org
+
+- Update to version 1.10.99 For more details see NEWS file
+
+  * tiling and tabbing work now much better together
+  * improved cabinet window switcher
+  * CTWM like interactive window placement
+  * faster StyleTab (default theme) 
+
+- Rebundle lisp sources and obsolete subpackage lisp
+-------------------------------------------------------------------
+Fri Sep 27 07:24:59 UTC 2013 - toganm@opensuse.org
+
+- Updated to 1.10 version. For more details see NEWS file
+
+  * bugfixes in tabs / SawfishConfig and more
+  * tiling. Thanks to the awesome work done by Jose A. Ortega Ruiz
+    Sawfish is now a stacking / tiling hybrid. The NEWS contains
+    example configuration.
+  * sawfish.wm.prg: integration of external applications into Sawfish
+    / SawfishConfig (trayer, xmobar, xmodmap, xsettingsd, xgamma,
+    fehlstart, pancake), see docs/AUTOSTART for more information
+    about them.
+  * compton integration. Thanks to fuchurs mind-reading
+    capatibilities the compton compositing manager now neatly
+    integrates with Sawfish /SawfishConfig, allowing you to 
+    change most options for compton directly from SawfishConfig. 
+
+- Spec file changes
+  * Create subpackage for the lisp sources 
+  * Change the Group tag for the package to User Interface/Desktop
+    as the System/GUI/Other is not valid anymore
+-------------------------------------------------------------------
+Fri Jun 28 07:10:34 UTC 2013 - toganm@opensuse.org
+
+- Add sawfish-pager to recommends as it eases window navigation 
+
+-------------------------------------------------------------------
+Wed May 15 20:29:20 UTC 2013 - toganm@opensuse.org
+
+- Updated to 1.9.91
+ * Bug Fixes
+   - Always rebuild the list of marked windows in tabs when closing
+     a marked window.  [fuchur]
+
+   - In 'sawfish-config' fix the 'make-choice-item' to properly
+     support settings for the 'Crux' theme.  [Vedat Hallac]
+
+ * Removed Features
+   - Removed 'sawfish.wm.ext.expose' in favour of much more
+     advanced tiling-functions.  [Christopher Bratusek] 
+ * Miscellaneous Changes
+   - Updated 'ru' and 'pt_BR' translations via transifex.
+
+-------------------------------------------------------------------
+Tue Jan  8 15:23:04 UTC 2013 - toganm@opensuse.org
+
+- Update to 1.9.90
+   * Updated or New dependencies
+        - PangoX: no longer required
+
+   * Bug Fixes
+        - Always rebuild the list of marked winows in tabs when closing
+          a marked window. [fuchur]
+
+        - Only allow a window to be tabbed, if the parent window's
+          framestyle has support for tabs.  (Note that in Sawfish
+          different windows can have diffrent framestyles) [fuchur]
+
+        - `window-ops-menu' was still calling
+          `resize-window-to-dimension' that didn't exist anymore since
+          Sawfish 1.7. Use `resize-window-prompt' instead. [Christopher
+          Bratusek]
+
+        - Make "Sawfish Rootmenu" label an insensitive menu-item, so
+          that clicking it while the root-menu pops-up doesn't make the
+          menu dissapear immediately. [Christopher Bratusek]
+
+        - In SawfishConfig you can select different cursor shapes for
+          different buttons. Some of the definitions have been wrong
+          and could crash Sawfish when choosing them. This is fixed
+          now. [fuchur]
+
+        - When a windows `max-width' or `max-height' would exceed 32767
+          (X11's maximum) it would result in odd window-behaviour (for
+          example: no maximization button), this is fixed by capping
+          the value at 32767. Originally reported with Firefox and
+          Thunderbird 17.0 [Michael Panteleit]
+
+        - Fixed grabbing key-bindings in SawfishConfig. [Christopher
+          Bratusek]
+
+   * New Features
+        - Tiling. [Jose A. Ortega Ruiz] [Christopher Bratusek]
+          Currently this module is under heavy testing (so you have
+          been warned!). `tall-tile' has been tested to properly work
+          (with some minor hickups), while `col-tile' is untested.
+          Example on how to test the new `tall-tile' module (for more
+          infos read `lisp/sawfish/wm/tile/readme.org':
+
+               ;; Tiling
+               (require 'sawfish.wm.tile.tile)
+               (tall-tiling 0 #:width 2 #:top 0 #:bottom 1 #:gap 1 #:max 3)
+               (bind-keys global-keymap
+                          "F11" 'tile-workspace
+               	   "C-S-KP_Add" 'increase-max-windows
+               	   "C-S-KP_Subtract" 'decrease-max-windows
+               	   "C-F11" 'next-tiling)
+
+        - Completeley revised `resize-window-prompt'. Now display
+          window's name and old width (respectively old height) when
+          prompt for new values. Shows an information, if one of the
+          given values is not actually a number. [Christopher Bratusek]
+
+        - External Application modules. Those modules allow handling,
+          setting-up external application during a sawfish session. See
+          `AUTOSTART' for additional notes on them.
+             ++ `trayer' module. Handles a `trayer' (a system-tray)
+               instance during a sawfish session.  [Christopher
+               Bratusek]
+
+             ++ `xmobar' module. Handles a `xmobar' (an on-screen, very
+               flexible bar, monitoring whatever you like) instance
+               during a sawfish session. [Christopher Bratusek]
+
+             ++ `xmodmap' module. Allows reading `~/.Xmodmap' on
+               startup of Sawfish. [Christopher Bratusek]
+
+             ++ `xsettingsd' module. Handles a `xsettingsd' (a daemon
+               implementing XSettings to provide GTK+ application with
+               information like what theme to use))instance during a
+               sawfish session. [Christopher Bratusek]
+
+             ++ `xgamma' module. Allows changing display's gamma
+               settings on startup of Sawfish. [Christopher Bratusek]
+
+             ++ `fehlstart' module. Handles a `fehlstart' (a simple,
+               but yet flexible application launcher) instance during a
+               sawfish session. [Christopher Bratusek]
+
+             ++ `pancake' module. Handles a `pancake' (a simple desktop
+               panel with pager, window-list, taskbar, tray) instance
+               during a sawfish session [Christopher Bratusek]
+
+   * Miscellaneous Changes
+        - Updated `Elberg-tabbed' and `gradient-tabbed' for tab-system
+          as of Sawfish 1.9.1 [fuchur]
+
+        - Wallpaper setter now has an option for setting wallpaper on
+          startup. Image widget is now more robust.  [Christopher
+          Bratusek]
+
+        - Improved default keymap for `titlebar' and `tabbar'. [fuchur]
+
+        - Revived `decorate-transients', `menus-include-shortcuts' and
+          `customize-show-symbols' defcustoms.  These options are now
+          adjustable from `sawfish-config' again. [Christopher Bratusek]
+
+        - Give the `root-window' the property `'WINDOW_MANAGER' on
+          startup with value `sawfish'.  [Christopher Bratusek]
+
+- Drop sawfish-1.9.0-no-pangox.patch since it is now upstream
+
+-------------------------------------------------------------------
+Sun Oct 28 13:54:15 UTC 2012 - toganm@opensuse.org
+
+- Added sawfish-1.9.1-remove-buildtime.patch inorder to avoid
+  unnecessary builds
+
+
+-------------------------------------------------------------------
+Mon Oct  8 10:03:43 UTC 2012 - toganm@opensuse.org
+
+- Add  sawfish-1.9.0-no-pangox.patch for > 1220 as pango x is not
+  supported
+
+-------------------------------------------------------------------
+Fri Sep 28 13:05:18 UTC 2012 - toganm@opensuse.org
+
+- Add rep-gtk to required and sawfish-sounds to recommends 
+
+-------------------------------------------------------------------
+Thu Sep 13 15:31:56 UTC 2012 - toganm@opensuse.org
+
+- add makeinfo to buildrequires 
+
+-------------------------------------------------------------------
+Sat Sep  1 08:59:49 UTC 2012 - toganm@opensuse.org
+
+- Update to 1.9.1 For full list of changes see NEWS
+  * Packaging related
+   - Remove the following patches as they are merged to upstream
+     0001-replace-gdk_pixbuf_undef-with-g_object_undef.patch
+     0001-fix-no-return-in-non-void-function.patch
+     0001-fix-incorrect-fsf-address.patch
+     0001-fix-dimensions-matcher.patch
+   - Include suse-start-sawfish.el for emacs easing editing sawfish
+     related configuration files
+  * Bug Fixes
+    + `dimension' window-matcher does now properly restore the
+    window's size [Robert Zenz]
+  * When destroying a window marked for tabbing, before
+    tabbing  was done, tabbing didn't work anymore until Sawfish
+    restarted. This is fixed now. [fuchur]
+  * In `Makedefs.in' source `$(repexecdir)/rules.mk' as
+    first, so that `--prefix' and co. from `configure' won't get
+    overwritten. [Allin Cottrell]
+  * In `tabs' some minor issues have been fixed, like correct
+    `raise' or `sticky' tabs, and some issue with `move-resize'
+    tabs. [fuchur]
+  * Only allow '_NET_WM_WINDOW_TYPE_NORMAL to be marked as a
+    tabbed window. [fuchur]
+  * New Features
+    + In tabbed-windowing it is now possible to add a whole
+      tab-group to another tab-group, or a single window. By
+      default the keybinding is `C-Button2-Off'. [fuchur]
+    + Tabs now support `viewport-sticky' and
+      `workspace-sticky'.  [fuchur]
+    + Tabs now support coloring the window-title in a different
+      color, for windows, which are marked for tabbing.Currently
+      only `StyleTab' uses this feature. [fuchur]
+  * Miscellaneous Changes
+    + In razor-qt integration module add `About Razor-Qt' help
+      entry [Christopher Bratusek]
+    + Replace `gdk_pixbuf_unref' by `g_object_unref' [Togan
+      Muftuoglu]
+    + Fix the address of FSF in all relevant files [Togan
+      Muftuoglu]
+    + Change cursor shape when working with tabs [fuchur]
+      - Removed `sawfish.wm.util.marks', now implemented in
+        `sawfish.wm.tabs.tab'. [fuchur]
+
+-------------------------------------------------------------------
+Mon Jul 30 07:10:41 UTC 2012 - toganm@opensuse.org
+
+- include sawfish mode for emacs
+
+-------------------------------------------------------------------
+Fri Jul  6 00:01:48 UTC 2012 - toganm@opensuse.org
+
+- backported the following patches from git
+  - 0001-fix-incorrect-fsf-address.patch
+  - 0001-fix-dimensions-matcher.patch Christopher Roy Bratusek
+    <nano@tuxfamily.org>
+  - reintroduced librep as required
+-------------------------------------------------------------------
+Mon Jul  2 16:13:01 UTC 2012 - toganm@opensuse.org
+
+- Update to 1.9.0 For a full list of changes since 1.8.2 see NEWS
+
+   * Bug Fixes
+        + When cursor-warping was enabled and user switched to a shaded
+          window, the cursor warped to the position of the unshaded
+          window. This is fixed now.  [Christopher Bratusek]
+
+        + When switching between tabbed themes from SawfishConfig, it
+          could happens that there were `gaps' in the frame. This is
+          fixed now. [Christopher Bratusek]
+
+        + In SawfishConfig one could only grab key-bindings, but not
+          mouse- or mixed mouse-key-bindings. This is fixed now. (Move
+          mouse 20 pixels to grab a `Move' event).  [Christopher
+          Bratusek]
+
+        + SawfishConfig became useless when Sawfish restarted. This is
+          now worked-around by simply restarting SawfishConfig when
+          Sawfish does. A new `before-restart-hook' has been added for
+          this purpose. [Christopher Bratusek]
+
+        + In EdgeActions `HotSpot', `HotMove' and `EdgeFlip', it was
+          possible to trigger the same event multiple times at a time.
+          This is fixed now.  [Jeremy Hankins]
+
+        + Fixed a bug in apps-menu, failing to generate the menu, if a
+          desktop-file contains both Categories and the (errorneous)
+          Category key, or only the later. [Matthew Love]
+
+        + Fixed a bug in window-manager selection handling. Set all
+          fields of the client message event. This prevents bugs, where
+          Sawfish sometimes isn't able to replace another
+          window-manager or aquiring the screen if no other WM is
+          running. [Timo Korvola]
+
+        + When making X request, we might receive and `select' will
+          stuck. This is fixed now [Michal Maruska]
+
+        + Avoid calling Xmap for gone windows. [Michal Maruska]
+
+        + Fixed a possible segmentation fault in `leave_notify' [Michal
+          Maruska]
+
+        + In SawfishConfig the `choice' widget didn't work when the
+          choices were numerical values. This is fixed now.
+          [Christopher Bratusek]
+
+  * spec cleanup
+    - BuildRequires xz if openSUSE 12.1 or older
+    - use pkgconfig if available
+    - replace-gdk_pixbuf_undef-with-g_object_undef.patch
+    - fix-no-return-in-non-void-function.patch so package builds
+    - separate sounds as a subpackage
+
+-------------------------------------------------------------------
+Wed Apr 11 10:51:31 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.8.2:
+  + For the full list of changes since 1.6.1 (especially bug fixes
+    and build fixes), see NEWS.
+  + Below is a summary of the important changes.
+- Changes from version 1.8.2:
+  + Bug fixes.
+- Changes from version 1.8.1:
+  + Bug fixes and miscellaneous changes.
+- Changes from version 1.8.0:
+  + Incompatible changes:
+    - Infinite-desktop and edge-flip needs updates.
+    - Renamed functions (see NEWS for details).
+    - Syntax-change in `jump-or-exec'.
+    - Apps-menu options `apps-menu-show-all' is deleted.
+    - User option `focus-ignore-pointer-events' is deleted.
+    - Animation related modules are renamed.
+  + Add support for Edge Actions
+  + New command line option `--replace'
+  + Toggle-Or-Exec wrapper added to Jump-Or-Exec
+  + `iconify-on-leave' window-matcher
+  + New function `report-commands'
+  + New tab-capable, highly configurable theme: "StyleTab"
+  + Application menu is fully customizable
+  + Per-window animation mode
+- Changes from version 1.7.0:
+  + Prompt API change
+  + Functions `maybe-raise-window' and `maybe-lower-window' are now
+    obsolete
+  + Improvements to desktop-environment integration (including new
+    support for XFCE)
+  + Applications menu improvements
+  + New window rules: `fixed-size', `never-delete'
+  + Update of emacs major mode `sawfish.el'
+  + New frame-parts `border-width' and `border-color'
+  + New commandline-option `--5-buttons'
+  + New `x-draw-text' function
+- Changes from version 1.6.3:
+  + XRandR events (eg resolution changes) call the new hook
+    `randr-changed-notify-hook'
+  + Tabbed windowing system improvements
+  + New command `display-window-position'
+  + New function `window-pid'
+  + Window instance name is now accessible
+  + Customizable lisp directory
+- Changes from version 1.6.2:
+  + New command `maximize-discard'
+  + New command `jump-or-exec'
+- Add explicit gdk-pixbuf-devel BuildRequires so it can be
+  versioned.
+- Add explicit pkgconfig() BuildRequires for xorg libraries, to
+  avoid issues after xorg packaging split: ice, sm, x11, xft,
+  xinerama, xrandr.
+- Add %icon_theme_cache_post(un) to %post/%postun because of new
+  icon.
+
+-------------------------------------------------------------------
+Mon Feb 14 01:01:29 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Fri Jan 15 12:25:31 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.6.1:
+  + Build and Installation
+    - Rename `--without-nine-mouse-buttons' configure option to
+      `--without-nine-mousebuttons'.
+    - Reworked configures help-message for better readability.
+    - Configure now uses `kde4-config --install data' rather than
+      `kde4-config --path data'.
+   -  Make $datadir/kde4/apps/ the fallback path, if KDE4 is not
+      installed.
+    - Majorly improved debian and rpm packaging scripts.
+    - The spec has been reworked to detect kde4/librep directories
+      while runtime, instead of hardcoding those paths from
+      configure, which makes it more portable.
+    - Remove own unused implementation of dlmalloc.
+    - Export the imageloader beeing used by sawfish in the .pc
+      file.
+    - Don't remove the .pot file upon `make distclean'.
+    - Install Sawfishs header files to $includedir/sawfish/.
+    - Autotools improvements (Makefile, autogen.sh & Co.)
+  + Bugfixes
+    - Fixed a bug where the gnome-panels pager gets confused about
+      the current viewport when displaying all workspaces.
+    - Fixed minor bugs in viewport.jl.
+  + Doc
+    - Fixed a small doc mistake (refered to window-set instead of
+      window-put).
+    - Fixed the docstrings of shrink and yank.
+  + Misc
+    - Last 3 instances of "sawmill" replaced by "sawfish".
+
+-------------------------------------------------------------------
+Sun Dec 27 18:29:39 CET 2009 - vuntz@opensuse.org
+
+- Update to version 1.6.0:
+  + See the announcement for all details.
+  + Incompatible user visible changes:
+    - Mouse buttons 6 - 9 support is now optional (and disabled by
+      default)
+    - sawfish-ui is renamed to sawfish-config
+    - Change of Infinite Desktop boundary behavior and option
+    - sawfish.wm.defaults is always loaded
+    - ~/.sawmillrc is now ignored
+    - "Matched Windows" group has been renamed to "Window Rules"
+    - Sound support now uses an external program (paplay by
+      default)
+    - GNOME integration updates
+  + New features:
+    - New application menu
+    - Add options to change the font color of window title
+    - Support theme-tarballs compressed with XZ
+    - Xinerama support for Grow/Pack
+    - Window rules can be set by lisp
+    - Keymap translation
+    - New window rules (fullscreen, full-xinerama, new-workspace,
+      new-viewport, window-name)
+    - New commands (double-window-size, halve-window-size,
+      move-window-center, resize-by-factor, browser)
+    - New function rename-window changes the window name.
+    - Dynamic Viewport-Boundary-Mode
+    - KDE4 integration module
+    - Poweroff from menu
+    - New Frame Classes
+  + Various improvements and bug fixes.
+- Remove audiofile-devel, libesd-devel BuildRequires.
+- Add pulseaudio-utils Recommends, for the sound support.
+
+-------------------------------------------------------------------
+Thu Dec  3 00:39:14 CET 2009 - vuntz@opensuse.org
+
+- Update to version 1.5.3:
+  + The 1.5.3 release has backports from 1.6.0 (HEAD)
+  + Bugs fixed:
+    - Prevents crashes for quick window destructions, especially
+      under high load
+
+-------------------------------------------------------------------
+Thu Oct  1 17:55:14 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 1.5.2:
+  + New/Updated requirements:
+    - rep-gtk 0.18.4 -> 0.90.0
+  + Bugs fixed:
+    - Actually build FAQ upon make
+    - Expand REP_ENVIRON in scripts/Makefile.in
+  + Widget Transistion:
+    - GtkButton + GtkPreview + GtkColorSelection trio replaced by
+      single GtkColorButton
+  + Other Changes:
+    - Inactive windows in Crux theme do now have black text for
+      better readability
+
+-------------------------------------------------------------------
+Thu Sep 10 00:29:40 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 1.5.1:
+  + The 1.5.1 release has backports from 1.6.0 (HEAD)
+  + Bugs fixed:
+    - Fix in SMlib check on x11r7
+    - Fix in libICE check on x11r7
+    - SpinButtons in Sawfish-UI are now connected to correct singal
+      (allows typing in the value manually)
+    - Fix cursor warping in Infinite-Desktop
+    - Fixed group of the stagger options
+  + Other changes:
+    - Sawfish does now appear in KDE4s WM Selector
+    - Fixed typos in the .desktop files and removed unneded entries
+    - Changing raise-tabs-on-hover takes effect immediately now
+    - Add -tag=CC to libtool where necessary, unbrakes compilation
+      on some arches
+    - Distclean rule for po/Makefile.in
+- Add update-desktop-files BuildRequires and call
+  suse_update_desktop_file on desktop files.
+- Add librep-devel and rep-gtk-devel Requires to devel package.
+
+-------------------------------------------------------------------
+Fri Jul 31 12:56:07 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.5.0:
+  + User visible changes:
+    - Fully renamed from "sawmill" to "sawfish"
+      If your `.sawfishrc' has a line `(require
+      'sawmill-defaults)', then change it to `(require
+      'sawfish-defaults)'.
+      If your configuration file is named `~/.sawmillrc', then
+      rename it to `~/.sawfish/rc' or `~/.sawfishrc'.
+    - Configurator GUI's default style is tree view of categories.
+      Configurator GUI (sawfish-ui) used to display categories in
+      flat row, but now arranges them in tree diagram.
+      To use the old style, put `(define-special-variable
+      customize-program "sawfish-ui --flatten")' in your
+      configuration file.
+  + Bugs fixed:
+    - Fixed an compilation-error caused by glib
+    - Make building with imlib1 instead of gdk-pixbuf work again
+    - Create src/build.h, since it has been missing before
+    - Fixed an "unknown remote error" that might appear
+    - Make "make uninstall" work again
+    - Fixed the issue that apps did not start iconified, even if
+      requested
+    - First create $datadir/applications, then install the desktop
+      file
+    - Fixed default animation outline coordinates
+    - Don't ignore datarootdir setting
+    - Make Sawfish more error-tolerant if an app has an icomplete
+      WM_CLASS
+    - Make sure we don't mix Super and Hyper
+    - Fixup the last incomplete AC_DEFINE
+    - Fixed a speed-issue with microGUI
+    - Make properly use of WM_NAME in Elberg-tabbed
+  + New features:
+    - UTF-8 Support in Windowmenus
+    - UTF-8 Support in GTK Widgets
+    - Tabbed Windowing Support
+    - Improved KDE3 Integration
+    - Replaced hardcoded focus logic by focus-revert function
+    - Tabbed Windowing Support: Raise Tabs on hover
+    - Warp cursor to cycled windows, if warp-cursor is enabled
+    - Warp cursor to unmaximied windows, if warp-cursor is enabled
+    - 3 New Window-Animators: cross, elliptical and draft
+    - Shrinking/Yanking Support
+    - Infinite Desktop Feature (make the virtual desktop bigger
+      than the physical)
+    - Make Viewport commands appear in Sawfish-UI
+    - Make Window History appear in Sawfish-UI
+    - Added cycle-among-groups(,-backwards) commands (cycle between
+      the most recently used window of groups)
+    - Interactive placement-mode now also for transients
+    - Improved prompt.jl (allows changing font, fg and bg color)
+    - Expose fixed-position, never-iconify, never-maximize in the
+      Window-Matcher UI
+  + Other changes:
+    - To build with XFree86/X.Org < 7.0 add -without-xorg-x11r7
+      flag
+    - To build without Pango add -without-pango flag
+    - To prevent installing translations add -without-nls flag
+    - Set RestartStyleHint to 2
+    - When matching window to alist try WM_NAME if WM_CLASS is
+      unset
+    - Major Documentation update
+    - New Sound Theme
+    - Added ebuild
+    - Added session desktop file
+    - rep.m4 has been dropped use librep.pc/rep-gtk.pc instead
+    - Added sawfish.pc
+    - Improved Makefile's distclean rule
+    - Updated .desktop files for gnome-session >=2.23
+    - Fixed autogen for libtool >2.2
+    - Major configure script rework
+    - Don't ship config.sub config.guess and install-sh in
+      $srcdir/etc
+    - Reworked Sawfish-UI
+    - Dropped libgnome|gnomeui|gnomecanvas widgets, use pure gtk
+      instead
+    - Merged changes from sawfish-pager
+    - Major update of the spec file
+    - Print usefull stuff at the end of configure
+    - Add distclean rule to all Makefiles
+    - Add KEYBINDINGS file, containing a list of all default
+      keybindings
+    - Updated OPTIONS for all new options
+    - Cleaned Up Makedefs.in
+    - Move 'avoid' window-matcher from placement to state
+    - Updated compat.jl
+    - Removed all old ChangeLog files
+    - Make move-cursor.jl export all functions described in the doc
+- Create a devel package.
+
+-------------------------------------------------------------------
+Sun Jun 14 19:20:57 CEST 2009 - vuntz@novell.com
+
+- Clean up package.
+- Update to 1.3.5.3.
+- Remove Obsoletes for sawmill and sawfish-gnome: it's been ages
+  since those were available.

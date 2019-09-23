@@ -1,0 +1,517 @@
+-------------------------------------------------------------------
+Fri Jan 18 19:44:17 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.28.1:
+  + system-prompter: Fix use of g_hash_table_lookup_extended.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 12 15:10:21 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Fix year 2038 workaround in ASN.1 decoder (bgo#787963).
+  + Fix test errors when ssh-keygen is not found.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar 11 09:16:50 UTC 2018 - dimstar@opensuse.org
+
+- Supplement the new gcr-ssh-askpass for gpg2 and gnome-shell:
+  GNOME users want to have this available to enter the ssh key
+  passwords.
+
+-------------------------------------------------------------------
+Fri Mar  9 16:42:27 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group. Update package summaries.
+
+-------------------------------------------------------------------
+Mon Mar  5 19:05:27 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Provide API for reliably calling ssh programs (bgo#735873).
+  + Updated translations.
+- Split new subpackage gcr-ssh-askpass, recommended by the main
+  library.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:25:51 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb 27 04:27:04 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.4:
+  + Fixes:
+    - Encoding of EC parameters (bgo#785234).
+    - Hang in certificate export dialog (bgo#789804).
+    - Failure case in gcr_secure_memory_try_realloc() (bgo#775685).
+  + Switch to using GLib resources.
+  + Build fixes: bgo#771052, bgo#775685, bgo#775966, bgo#774312,
+    bgo#774311, bgo#764562, bgo#764569.
+  + Updated translations.
+- Drop %desktop_database_*, %mime_database_*, %icon_theme_cache_*
+  and %glib2_gsettings_schema_* post/postun scriptlets and
+  %glib2_gsettings_schema_requires macro: they're no longer needed
+  since RPM File Triggers cover their functionality now.
+- Drop shared-mime-info BuildRequires: it's no longer needed now
+  that its macros are not used anymore.
+- Drop pkgconfig(libtasn1) BuildRequires: it's no longer needed nor
+  used anymore.
+- Adopt the use of %make_build macro rather than raw make command,
+  following the best practices.
+- Add gtk-doc BuildRequires and pass enable-gtk-doc to configure as
+  the API's documentation is desired.
+- Add pkgconfig(gtk+-x11-3.0) BuildRequires: it was being pulled
+  by gtk+-3.0 pkgconfig module and used already, since both of them
+  lives in gtk3-devel package.
+- Rebase gcr-bsc932232-use-libgcrypt-allocators.patch.
+
+-------------------------------------------------------------------
+Tue Feb 27 04:05:25 UTC 2018 - dimstar@opensuse.org
+
+- Use SPDX3.0 license tags and package COPYING as %license.
+
+-------------------------------------------------------------------
+Mon Feb 26 20:11:42 UTC 2018 - crrodriguez@opensuse.org
+
+- Add explicit pkgconfig(pango) and pkgconfig(cairo) BuildRequires:
+  closer alignment with what configure checks for.
+
+-------------------------------------------------------------------
+Wed Aug 31 08:09:34 UTC 2016 - fezhang@suse.com
+
+- Add openSUSE conditional macro and description tag for existing
+  patches in specfile.
+
+-------------------------------------------------------------------
+Fri Apr 15 20:21:06 CEST 2016 - hpj@suse.com
+
+- Update to GNOME 3.20 -- Fate#318572.
+
+-------------------------------------------------------------------
+Fri Mar 25 15:10:44 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.0:
+  + Build fixes (bgo#763488, bgo#766301).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 19 13:07:06 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.4:
+  + Build fixes (bgo#756235, bgo#755873).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 26 02:54:47 CET 2015 - hpj@suse.com
+
+- Add gcr-bsc932232-use-libgcrypt-allocators.patch (bsc#932232).
+
+-------------------------------------------------------------------
+Tue Sep 29 10:05:20 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  4 09:52:14 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.4:
+  + Bump up the GTK+ deps.
+  + Build fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 12 18:56:11 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.0:
+  + No changes from 3.15.92.
+
+-------------------------------------------------------------------
+Wed Mar 18 08:25:03 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Build fixes (bgo#745629).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 25 22:26:51 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Fix memory leaks (bgo#738508, bgo#739239).
+  + Build fixes (bgo#743201, bgo#739449, #bgo737622).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 09:26:33 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  9 18:42:06 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.91:
+  + Add support for parsing EC keys (bgo#672137).
+  + Add support for EC keys to key renderer.
+  + Parser support for PEM 'PUBLIC KEY' files.
+  + Parser support for parsing ECDSA OpenSSH keys.
+  + Fix use of libgcrypt 1.6+.
+  + Fix for deprecations in Gtk 3.13.x.
+  + Use g_debug() instead of our own debug wrappers.
+  + Bump required GLib version to 2.38.x.
+  + Don't include deprecated library in our pkg-config file
+    (bgo#732082).
+  + Don't use non-portable 'sed -i' shell command (bgo#728506).
+  + Change CVS to Git in error message (bgo#730340).
+  + Build fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 17 07:37:48 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr  3 20:02:05 UTC 2014 - dimstar@opensuse.org
+
+- Require typelib-1_0-Gck-1 by typelib-1_0-Gcr-3: this is a work-
+  around for upstreams broken files, which results in Gcr having
+  internally the version '3.broken' instead of '3' (bgo#725501).
+
+-------------------------------------------------------------------
+Sun Mar 23 09:24:21 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Use /usr/bin/env to find python (bgo#726909).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  7 08:12:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.91:
+  + Parallel tests, non-recursive Makefile, and TAP.
+  + Add gck_enumerator_set_object_type_full() function.
+  + Add an accessor for GckAttribute raw value data.
+  + Add gcr_certificate_get_markup() function.
+  + Store imported key filename in GcrParsed & GcrParser
+    (bg#705225).
+  + Allow using GBytes with GcrParser (bgo#708736).
+  + Lots of VAPI and GIR fixes (bgo#720504 and others).
+  + Deprecation fixes.
+- Add xsltproc BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Thu Oct 17 06:34:41 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 23 19:44:57 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.10.0:
+  + Fix annotations (bgo#705225).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  3 09:18:01 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.91:
+  + Bugs fixed: bgo#707077, bgo#707078.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 26 17:04:58 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + GcrCertificateWidget: inherit from GtkBin, not GtkWidget
+    (bgo#701048).
+  + Made gcr-certificate-renderer close the dialog when clicking
+    okay (bgo#699543).
+  + Port to new p11-kit managed style functions.
+  + Testing fixes (bgo#705139).
+  + Build fixes (bgo#695973).
+
+-------------------------------------------------------------------
+Wed May  1 08:16:19 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.1:
+  + Vapi bindings (bgo#689685).
+  + Don't import to 'xdg' module in the importer.
+  + Add appropriate icon for p11-kit trust module.
+  + Handle cases where no certificate data is available.
+  + Build fixes.
+- Add vala BuildRequires: new dependency for the vapi bindings.
+
+-------------------------------------------------------------------
+Tue Apr 16 08:40:13 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Fix erroneously cancelled prompts.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 25 11:40:54 UTC 2013 - dimstar@opensuse.org
+- Update to version 3.8.0:
+  + Fix crash when hashing an unsupported attributes (bgo#696305).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 18 08:40:41 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + Have the gcr-prompter replace the running prompter.
+  + Fix segfault when prompt is dismissed immediately.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 19:12:25 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.91:
+  + Bugs fixed: bgo#687980, bgo#692536, bgo#693440, bgo#693591.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  4 22:29:06 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + Separate the base and ui parts of the Gcr library more
+    thoroughly.
+  + Fix crasher in armor parsing code.
+  + Build fixes.
+  + Updated translations.
+- Create new sub-package typelib-1_0-GcrUi-3, following upstreams
+  split of the Ui part of the library.
+
+-------------------------------------------------------------------
+Wed Dec 26 23:14:21 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.7.2:
+  + Fix corner case in DER parsing.
+  + Fix crash when parsing invalid DER.
+  + More complete test coverage.
+  + Other minor fixes.
+  + Build fixes.
+
+-------------------------------------------------------------------
+Mon Dec 26 22:04:21 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.7.1:
+  + Allow system prompts to be cancelled while in 'checking' state.
+  + Cancel system prompts when the prompter goes away.
+  + Use gnome-common code coverage macros.
+  + Build fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Dec  9 14:38:06 UTC 2012 - dimstar@opensuse.org
+
+- Add baselibs.conf in order to provide these -32bit packages:
+  + libgck-1-0.
+  + libgck-devel.
+  + libgcr-3-1 (Needed by libgdata13-32bit).
+  + libgcr-devel.
+
+-------------------------------------------------------------------
+Tue Nov 13 12:07:41 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 15 21:37:26 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Clear and focus password entry in gcr-viewer when invalid
+    password.
+  + Keep enumerating if getting info about one slot fails.
+  + Testing fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 25 15:31:42 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 18 19:43:57 UTC 2012 - zaitor@opensuse.org
+
+- Enable parallel building again.
+
+-------------------------------------------------------------------
+Tue Sep 18 13:29:01 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 20 16:57:41 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Don't fail preconditions when pkcs11 isn't initialized in gcr.
+  + Fix regression in ASN.1 parsing.
+  + Build fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug  6 19:20:19 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.5:
+  + Use p11-kit/pkcs11.h instead of shipping a copy with gck.
+  + Documentation fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 18 08:11:52 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + Add debug output to GcrSecretExchange
+  + Fix invalid warning when sending a secret exchange
+  + Remove support code for old glib versions
+  + Documentation fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 25 19:49:50 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.3:
+  + Rework DER parsing so we can parse odd PKCS#12 files.
+  + Use GBytes, bump glib dependency.
+  + Enable gnome2 keyring storage.
+  + Documentation fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 17 05:59:13 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.1:
+  + Fix more issues disabling grabs during password prompts
+  + More debug messages to GcrSystemPrompter
+  + Fix up GCR_DEBUG and GCK_DEBUG environment variables
+  + Build fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 13:20:40 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Mon Mar 19 19:03:30 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.3.92:
+  + Fix up copyright headers.
+  + Build fix.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  1 16:44:43 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.90:
+  + Expose the secure memory API
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Fri Feb 10 17:01:44 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.5:
+  + Add way to specify button labels for a GcrPrompt.
+  + Reenable grabs for password prompts.
+
+-------------------------------------------------------------------
+Mon Jan 16 16:50:36 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.4:
+  + Display an appropriate title in gcr-viewer
+  + Include GcrPrompt documentation
+  + Add 'new-prompt' signal to GcrSystemPrompter for use with
+    javascript
+  + Fix build for glib 2.31 deprecations
+  + Build fixes
+
+-------------------------------------------------------------------
+Wed Dec 21 13:51:49 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.3.3.1:
+  + Fix build issues
+
+-------------------------------------------------------------------
+Mon Dec 19 12:39:15 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.3.3:
+  + Add support for parsing PKCS#10 and SPKAC formats in GcrParser
+  + Add support for viewing certificate requests in GcrViewer
+  + Support for dynamically loading private key data from PKCS#11
+  + Add GcrCertificateRequest class for requesting certificates
+  + Add function to retrieve basic constraints from a certificate
+  + Show import errors in an info bar under the viewer
+  + Don't show empty dates in gnupg key renderer
+  + Make secure memory pool shared across modules
+  + Add GckBuilder as a mutable attribute set
+  + Add floating references to GckAttributes
+  + Rename GckObjectAttributes to GckObjectCache
+  + Expose GcrSecureEntryBuffer as a public class
+  + Add system prompt and prompter
+  + Expose uri in GcrImporter
+  + Fix build for glib 2.31 deprecations
+  + Licensing fixes
+  + Build fixes, internal bug fixes, documentation, etc.
+- Add dbus-1 BuildRequires: needed for directory ownership.
+- Add pkgconfig(gio-unix-2.0) BuildRequires: new dependency.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Create a gcr-prompter subpackage for the new gcr-prompter binary.
+  As it is required by libgcr for some uses, add a Requires for it
+  to libgcr-3-1.
+- Add a gcr Provides to libgcr-3-1 to make the lang subpackage
+  installable.
+- Add a gck Provides to libgck-1-0, as a helper for gnome-keyring
+  where we want an explicit Requires on this library package.
+
+-------------------------------------------------------------------
+Thu Dec  8 11:29:40 UTC 2011 - dimstar@opensuse.org
+
+- Split typelib files into their own subpackages: typelib-1_0-Gcr-3
+  and typelib-1_0-Gck-1.
+- Add typelib-1_0-Gcr-3 Requires to libgcr-devel and
+  typelib-1_0-Gck-1 Requires to libgck-devel.
+
+-------------------------------------------------------------------
+Tue Nov 22 22:07:39 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.3.2.1:
+  + Fix build issues
+- Drop gcr-glib-includes.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Nov 21 13:39:59 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.3.2:
+  + Allow changing collection on a GcrCollectionModel, add
+    tree/list mode to GcrCollectionModel
+  + Allow chaining of GckEnumerator objects, so that when objects
+    from one is listed, then chained enumerator is enumerated.
+  + Integrate GTlsInteraction into libgck for logging in or key
+    auth.
+  + Refactor internal DER parsing to use reference counted memory
+    using the prototyped GBytes API.
+  + Build fixes, documentation fixes, testing fixes, memory leak
+    fixes.
+- Add gcr-glib-includes.patch: Don't include internal glib headers.
+- Re-add gobject-introspection-devel BuildRequires to re-enable
+  introspection support.
+- Add gpg2 BuildRequires as configure is looking for the binary.
+
+-------------------------------------------------------------------
+Thu Oct 27 12:58:03 UTC 2011 - dimstar@opensuse.org
+
+- Initial package, library has been split out of gnome-keyring.
+

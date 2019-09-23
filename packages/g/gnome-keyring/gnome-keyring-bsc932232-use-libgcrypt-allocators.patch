@@ -1,0 +1,27 @@
+commit e2d7f3e781ddf65e3ab915da1594ce2f594be2ef
+Author: Hans Petter Jansson <hpj@cl.no>
+Date:   Fri Apr 13 02:00:14 2018 +0200
+
+    Patch 3: gnome-keyring-bsc932232-use-libgcrypt-allocators.patch
+
+diff --git a/egg/egg-libgcrypt.c b/egg/egg-libgcrypt.c
+index 61fe115..443de73 100644
+--- a/egg/egg-libgcrypt.c
++++ b/egg/egg-libgcrypt.c
+@@ -76,11 +76,11 @@ egg_libgcrypt_initialize (void)
+ 			gcry_set_log_handler (log_handler, NULL);
+ 			gcry_set_outofcore_handler (no_mem_handler, NULL);
+ 			gcry_set_fatalerror_handler (fatal_handler, NULL);
+-			gcry_set_allocation_handler ((gcry_handler_alloc_t)g_malloc, 
+-			                             (gcry_handler_alloc_t)egg_secure_alloc, 
+-			                             egg_secure_check, 
+-			                             (gcry_handler_realloc_t)egg_secure_realloc, 
+-			                             egg_secure_free);
++
++			/* Enable GCRY_AUTO_EXPAND_SECMEM (backport in libgcrypt 1.8.2)
++			 * for bsc#1085983. */
++			gcry_control (78, 32768);
++
+ 			gcry_control (GCRYCTL_INITIALIZATION_FINISHED, 0);
+ 		}
+ 		

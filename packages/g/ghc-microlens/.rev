@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6f71fed66189b76b8f28e55e96429620</srcmd5>
+    <version>0.4.2.1</version>
+    <time>1462977444</time>
+    <user>dimstar_suse</user>
+    <comment>microlens -- future dep of stack</comment>
+    <requestid>393793</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6502c7e76af109ddac111b507726d7ca</srcmd5>
+    <version>0.4.4.0</version>
+    <time>1464690267</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.4.0
+* Added mapAccumLOf.
+
+- update to 0.4.3.0
+* Added ?~. (forwarded request 398233 from mimi_vx)</comment>
+    <requestid>398234</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e0cf363ea9974a185fa052c9b62d387e</srcmd5>
+    <version>0.4.4.3</version>
+    <time>1465938508</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.4.3 
+* Fixed markup in the .cabal file.
+* Added descriptions of other packages to Lens.Micro.
+
+- update to 0.4.4.2
+* More changes to make microlens-platform more prominent.
+
+- update to 0.4.4.1
+* Pointed to microlens-platform in the synopsis. (forwarded request 401645 from mimi_vx)</comment>
+    <requestid>401646</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f3413e574ae9d09de851a36f2b88a752</srcmd5>
+    <version>0.4.5.0</version>
+    <time>1467705155</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.5.0
+* Added &amp;lt;&amp;amp;&amp;gt; (which makes lens creation easier). (forwarded request 406339 from mimi_vx)</comment>
+    <requestid>406340</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a08ad117738ffef5042b4be348a486bf</srcmd5>
+    <version>0.4.5.0</version>
+    <time>1469081114</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411384</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f04b5761a8494bc4453985397a763b65</srcmd5>
+    <version>0.4.7.0</version>
+    <time>1473103219</time>
+    <user>dimstar_suse</user>
+    <comment>version update (forwarded request 421655 from psimons)</comment>
+    <requestid>421745</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>293603cbd2f922d72fb3ec7033b7a926</srcmd5>
+    <version>0.4.8.0</version>
+    <time>1492169900</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485141</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bef2323961ca056943e8e368d13547f0</srcmd5>
+    <version>0.4.9.1</version>
+    <time>1527675039</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-microlens to the latest version.</comment>
+    <requestid>607835</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e3426567ba03199c1aa93139fda997c8</srcmd5>
+    <version>0.4.9.1</version>
+    <time>1532161254</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 0.4.4.3</comment>
+    <requestid>623806</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>8021e4e56ee29d2397ed04b57bba785f</srcmd5>
+    <version>0.4.9.1</version>
+    <time>1540448827</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643418</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a34b40e1b51fc9564570c0d696cc6013</srcmd5>
+    <version>0.4.10</version>
+    <time>1541746354</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>646358</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c158c2235dbfbc01c3fb85c88e0bab0f</srcmd5>
+    <version>0.4.10</version>
+    <time>1545647849</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>658880</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fc78197d1e81d7e029ef1ce4ba13dd97</srcmd5>
+    <version>0.4.11.1</version>
+    <time>1561882896</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>712504</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fb5e70b9a658422d10351ba33afe7f67</srcmd5>
+    <version>0.4.11.2</version>
+    <time>1564413979</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>715414</requestid>
+  </revision>
+</revisionlist>

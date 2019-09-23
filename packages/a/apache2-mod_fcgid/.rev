@@ -1,0 +1,241 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5e994f72d02c35f77fcf2068d5112480</srcmd5>
+    <version>2.0</version>
+    <time>1168511872</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f36601e6c2e435c129f1b51f3e9167a3</srcmd5>
+    <version>2.1</version>
+    <time>1186086067</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3534d67dc6989ea7332c30ef2c516c34</srcmd5>
+    <version>2.1</version>
+    <time>1186674264</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ab1f73d9da60a03eba3e426208ca1963</srcmd5>
+    <version>2.2</version>
+    <time>1195762928</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="31">
+    <srcmd5>4a86b90d434e2e6aa55695d9a6002453</srcmd5>
+    <version>2.2</version>
+    <time>1205114022</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="95">
+    <srcmd5>4a86b90d434e2e6aa55695d9a6002453</srcmd5>
+    <version>2.2</version>
+    <time>1205114022</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="96">
+    <srcmd5>efd4264d0880cc6f18b0a476d2f9f1ac</srcmd5>
+    <version>2.2</version>
+    <time>1245336830</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="98">
+    <srcmd5>efd4264d0880cc6f18b0a476d2f9f1ac</srcmd5>
+    <version>2.2</version>
+    <time>1245336830</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="99">
+    <srcmd5>ec431db0d6b58689a8bdf5f85ca1f93f</srcmd5>
+    <version>2.2</version>
+    <time>1268922886</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="101">
+    <srcmd5>ec431db0d6b58689a8bdf5f85ca1f93f</srcmd5>
+    <version>2.2</version>
+    <time>1278667336</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="102">
+    <srcmd5>ec431db0d6b58689a8bdf5f85ca1f93f</srcmd5>
+    <version>2.2</version>
+    <time>1278678563</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2527ecc8aa5d07e3587d3ae064b304a3</srcmd5>
+    <version>2.3.5</version>
+    <time>1285576241</time>
+    <user>autobuild</user>
+    <comment>Copy from Apache:Modules/apache2-mod_fcgid based on submit request 49159 from user coolo
+</comment>
+    <requestid>49159</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2783679294c35bff67e06dabac56bccd</srcmd5>
+    <version>2.3.6</version>
+    <time>1291799460</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 54937 from user coolo
+</comment>
+    <requestid>54937</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>d69659c0786798013d57217d484e161f</srcmd5>
+    <version>2.3.6</version>
+    <time>1291799474</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 54937
+</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>d69659c0786798013d57217d484e161f</srcmd5>
+    <version>2.3.6</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>d69659c0786798013d57217d484e161f</srcmd5>
+    <version>2.3.6</version>
+    <time>1319181771</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>01e49ffe113c526bca7b5e638d741c1c</srcmd5>
+    <version>2.3.6</version>
+    <time>1329822881</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>106213</requestid>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>01e49ffe113c526bca7b5e638d741c1c</srcmd5>
+    <version>2.3.6</version>
+    <time>1340183175</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>01e49ffe113c526bca7b5e638d741c1c</srcmd5>
+    <version>2.3.6</version>
+    <time>1359108656</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="13">
+    <srcmd5>9dd0dc5202a49167d73f2d9c19436de7</srcmd5>
+    <version>2.3.6</version>
+    <time>1359457299</time>
+    <user>coolo</user>
+    <comment>- Fix build with apache 2.4: apxs2 moved from %{_sbindir} to
+  %{_bindir}. (forwarded request 150218 from dimstar)</comment>
+    <requestid>150220</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9585a3b09a931157dcc4f1c1702a83b1</srcmd5>
+    <version>2.3.7</version>
+    <time>1363124187</time>
+    <user>coolo</user>
+    <comment>Update to 2.3.7 - and really fix build with apache 2.4 in Factory (forwarded request 158721 from dimstar)</comment>
+    <requestid>158738</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>9585a3b09a931157dcc4f1c1702a83b1</srcmd5>
+    <version>2.3.7</version>
+    <time>1379661974</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>055ba9f000a02c21c9a3f8ff9134b5dc</srcmd5>
+    <version>2.3.9</version>
+    <time>1383809636</time>
+    <user>coolo</user>
+    <comment>- update to 2.3.9:
+  + obsoletes apache2-mod_fcgid-CVE-2013-4365-bnc844935.diff
+    and fixes CVE-2013-4365 [bnc#844935] (heap overflow).
+    The heap overflow discovery and fix was done by 
+    Robert Matthews &lt;rob tigertech.com&gt;.
+  + quoting and spaces parsing correction for FcgidWrapper directive
+    and commandline options.
+  + logging improvements for access controls
+  + remove redundant processing of Location headers when running in
+    FCGI_AUTHORIZER mode
+
+- Intermediate fix for openSUSE:Factory eg. openSUSE:13.1:
+  apache2-mod_fcgid-CVE-2013-4365-bnc844935.diff fixes a heap
+  overflow identified by CVE-2013-4365 [bnc#844935].
+  This patch will be obsoleted by the next version update (to
+  2.3.9 or higher).</comment>
+    <requestid>205966</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>055ba9f000a02c21c9a3f8ff9134b5dc</srcmd5>
+    <version>2.3.9</version>
+    <time>1409300499</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>6657dae23e11ca09a8e046451b97995b</srcmd5>
+    <version>2.3.9</version>
+    <time>1415748132</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260898</requestid>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>3eca1aebdcb9dc839c8a796ba85559f4</srcmd5>
+    <version>2.3.9</version>
+    <time>1437384079</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317185</requestid>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>fec4591e4deb59f10f2410c7ead71cba</srcmd5>
+    <version>2.3.9</version>
+    <time>1443068059</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>331889</requestid>
+  </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>14d33062f809ea69e83137307d4e8736</srcmd5>
+    <version>2.3.9</version>
+    <time>1469831306</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415605</requestid>
+  </revision>
+  <revision rev="29" vrev="8">
+    <srcmd5>c98f6614a3a26aa3c95098cff6b8dce1</srcmd5>
+    <version>2.3.9</version>
+    <time>1490318517</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>481666</requestid>
+  </revision>
+  <revision rev="30" vrev="9">
+    <srcmd5>102ba5e46773c109859e21effb8df6f0</srcmd5>
+    <version>2.3.9</version>
+    <time>1495268065</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>496536</requestid>
+  </revision>
+  <revision rev="31" vrev="10">
+    <srcmd5>1ce4546f9d0925067d8c5c82178aa552</srcmd5>
+    <version>2.3.9</version>
+    <time>1562247777</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>713070</requestid>
+  </revision>
+</revisionlist>

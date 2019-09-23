@@ -1,0 +1,5 @@
+<services>
+  <service name="set_version" mode="disabled">
+    <param name="basename">App-Dochazka-WWW</param>
+  </service>
+</services>

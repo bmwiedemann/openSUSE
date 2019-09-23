@@ -1,0 +1,5 @@
+<package name="python-qt3d-qt5" project="openSUSE:Factory">
+  <title>Python bindings for the Qt5 3D framework</title>
+  <description>PyQt3D is a set of Python bindings for the Qt 3D framework. The bindings sit on top of PyQt5 and are implemented as six separate modules corresponding to the different libraries that make up the framework.</description>
+  <devel project="KDE:Qt5" package="python-qt3d-qt5"/>
+</package>

@@ -1,0 +1,36 @@
+From: Egbert Eich <eich@suse.com>
+Date: Sat Nov 17 20:11:13 2018 +0100
+Subject: Disable phdf5 tests
+Patch-mainline: never
+Git-commit: 16d758d17d9c49ab9e34d510675929b9ccc8be5a
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+Index: hdf5-1.10.5/testpar/CMakeTests.cmake
+===================================================================
+--- hdf5-1.10.5.orig/testpar/CMakeTests.cmake
++++ hdf5-1.10.5/testpar/CMakeTests.cmake
+@@ -30,7 +30,7 @@ set (SKIP_testphdf5 "")
+ #  set (SKIP_testphdf5 "${SKIP_testphdf5};-x;ecdsetw")
+ #endif ()
+ 
+-add_test (NAME MPI_TEST_testphdf5 COMMAND ${MPIEXEC_EXECUTABLE} ${MPIEXEC_NUMPROC_FLAG} ${MPIEXEC_MAX_NUMPROCS} ${MPIEXEC_PREFLAGS} $<TARGET_FILE:testphdf5> ${MPIEXEC_POSTFLAGS} ${SKIP_testphdf5})
++## add_test (NAME MPI_TEST_testphdf5 COMMAND ${MPIEXEC_EXECUTABLE} ${MPIEXEC_NUMPROC_FLAG} ${MPIEXEC_MAX_NUMPROCS} ${MPIEXEC_PREFLAGS} $<TARGET_FILE:testphdf5> ${MPIEXEC_POSTFLAGS} ${SKIP_testphdf5})
+ set_tests_properties (MPI_TEST_testphdf5 PROPERTIES
+     FIXTURES_REQUIRED par_clear_testphdf5
+     ENVIRONMENT "HDF5_ALARM_SECONDS=3600;srcdir=${HDF5_TEST_PAR_BINARY_DIR}"
+Index: hdf5-1.10.5/testpar/Makefile.am
+===================================================================
+--- hdf5-1.10.5.orig/testpar/Makefile.am
++++ hdf5-1.10.5/testpar/Makefile.am
+@@ -30,7 +30,7 @@ check_SCRIPTS = $(TEST_SCRIPT_PARA)
+ 
+ # Test programs.  These are our main targets.
+ #
+-TEST_PROG_PARA=t_mpi t_bigio testphdf5 t_cache t_cache_image t_pread t_pshutdown t_prestart t_init_term t_shapesame t_filters_parallel
++TEST_PROG_PARA=t_mpi t_bigio t_cache t_cache_image t_pread t_pshutdown t_prestart t_init_term t_shapesame t_filters_parallel
+ 
+ # t_pflush1 and t_pflush2 are used by testpflush.sh
+ check_PROGRAMS = $(TEST_PROG_PARA) t_pflush1 t_pflush2

@@ -1,0 +1,743 @@
+-------------------------------------------------------------------
+Sat Sep  7 20:36:39 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * kdelibs4support: port away from deprecated KWindowSystem API
+- Replace foo-devel with cmake(KF5Foo) in build requirements
+
+-------------------------------------------------------------------
+Wed Aug  7 17:51:18 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Designer plugin: use consistently "KF5" in group names & texts 
+  * Remove explicit use of ECM_KDE_MODULE_DIR, is part of ECM_MODULE_PATH 
+  * Use non-deprecated suggestName 
+  * Don't advertise using KPassivePopup
+
+-------------------------------------------------------------------
+Fri Jul 19 11:40:03 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- No code changes since 5.59.0
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- Changes since 5.58.0:
+  * Remove QApplication::setColorSpec (empty method)
+  * Port some deprecated method
+
+-------------------------------------------------------------------
+Wed May 15 18:16:16 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- No code changes since 5.57.0
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:42 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Remove find modules provided by ECM
+  * port to std::sort
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:35 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * Port deprecated methods
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:05 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * autotests: disable failing KTabWidget test, not worth debugging
+  * autotests: tab reordering is done with LMB these days, not MMB
+  * Fix some country flags to use all the pixmap
+  * Remove Qt version check
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:45 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * No code changes since 5.53.0
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Remove qt prefix include
+  * Fix normalize signal/slot
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:04 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Remove unused check
+  * Use directly qEnvironmentVariableIntValue
+
+-------------------------------------------------------------------
+Tue Oct 16 08:02:02 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:52:24 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Remove deprecated method
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * Fix compilation without openssl headers
+
+-------------------------------------------------------------------
+Sun Aug 19 09:52:35 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Fix qtplugins in KStandardDirs
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:38 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * Set QT_USE_FAST_OPERATOR_PLUS ourselves
+  * Don't export kf5-config to the CMake config file
+  * Remove unused entry X-KDE-DBus-ModuleName from the kded plugin metadata
+  * Use override
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:03 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Use override
+
+-------------------------------------------------------------------
+Sun May 13 21:03:01 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * Fix file encoding
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:03 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * autotest: more debugging
+  * autotest: add info in case of CI failure (happens on FreeBSD)
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:41 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * autotests: detect executables as shared libraries too
+  * Do not leak symbols of pimpl classes, protect with Q_DECL_HIDDEN
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:08 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * autotests: attempt to repair kmimetypetest on CI
+  * Add Windows notes for network related test applications
+  * Refactor Solid::NetworkingPrivate to have a shared and platform specific implementation
+  * Fix mingw compile error "src/kdeui/kapplication_win.cpp:212:22: error: 'kill' was not declared in this scope"
+  * Fix kded dbus name in solid-networking howto
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:16 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+  * autotest: adapt to QUrl behaviour change
+  * Inform the user if the module can not be registered with org.kde.kded5 and exit with error
+  * Mingw32 compile fix
+  * Remove old check (we depend against qt5.7)
+  * Fix build with LibreSSL
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:48 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:14 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * full docu for disableSessionManagement() replacement
+  * Make kssl compile against OpenSSL 1.1.0 (kde#370223)
+  * Add .arcconfig
+- Remove patches, now upstream:
+  * 0001-Make-kssl-compile-against-OpenSSL-1.1.0.patch
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:39 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * doc: validation not available in QInputDialog::getText
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:17 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * Fix typo, sorry
+  * kstandarddirstest: Stabilize test on CI
+  * Fix a few CMake warnings
+
+-------------------------------------------------------------------
+Thu Aug 31 07:50:38 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to allow build with Qt5 built against openSSL 1.1 (boo#1055489):
+  * 0001-Make-kssl-compile-against-OpenSSL-1.1.0.patch
+
+-------------------------------------------------------------------
+Sun Aug 13 20:46:20 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * Fix 'Deprecated hint for KUrl::path() is wrong on Windows' (kde#382242)
+  * Update kdelibs4support to use the target based support provided by kdewin
+  * Mark constructors as deprecated too
+  * Sync KDE4Defaults.cmake from kdelibs
+
+
+-------------------------------------------------------------------
+Wed Jul 12 07:14:00 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * Search for KEmoticons, which is a dependency per the CMake config.cmake.in. (kde#381839)
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * Register is deprecated
+  * tests: use right QProcess API in kmimetypetest
+  * Same treatment for the configure_file part of that statement too
+  * Handle having spaces in the path to CMAKE_SOURCE_DIR
+
+-------------------------------------------------------------------
+Mon May 15 13:53:15 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * None
+- Use %find_lang %{name} --with-man --all-name
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:47 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * Upgrade KF5 version to 5.33.0.
+
+-------------------------------------------------------------------
+Fri Apr  7 11:16:04 UTC 2017 - wbauer@tmo.at
+
+- Drop use-setFallbackSessionManagementEnabled-API-with-5.5.1.patch
+  as we don't build against Qt 5.5.1 any more
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:31 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Commit translations from l10n-kf5
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Fix bug in kfiledialog.cpp that causes crashing when native widgets are used.
+  * Port [i] to .at(i) to avoid unwanted detaching.
+  * Upgrade KF5 version to 5.32.0.
+
+-------------------------------------------------------------------
+Thu Feb  9 09:25:59 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:39:49 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 01:57:42 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 20:31:29 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * Make the France flag actually use all the pixmap
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 12:52:31 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * Cleanup. Do not install includes that point to non-existing
+    includes and also remove those files
+  * Use more correct and with c++11 available std::remove_pointer
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:48:34 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * Fix Windows compilation error in kstyle.h
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:51:48 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:02:56 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * Remove KDETranslator class, there's no kdeqt.po anymore
+  * Document the replacement for use12Clock()
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:24:33 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * Warn about KDateTimeParser::parseDateUnicode not being implemented
+  * K4TimeZoneWidget: correct path for flag images
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:30:56 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * Provide a fallback MAXPATHLEN if not defined
+  * Fix KDateTime::isValid() for ClockTime values (kde#336738)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Wed Apr  6 08:42:28 UTC 2016 - alarrosa@suse.com
+
+- Don't apply use-setFallbackSessionManagementEnabled-API-with-5.5.1.patch
+  in SLE12 since Qt 5.5.1 in SLE12 is not patched to support the new
+  session management API from 5.6.0 .
+
+-------------------------------------------------------------------
+Mon Apr  4 14:19:48 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Fix obsolete link in kdebugdialog5 docbook
+  * Don't leak Qt5::Network as required lib for the rest of
+    the ConfigureChecks
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 09:56:08 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * Fix session management for KApplication based applications
+    (kde#354724, boo#955280)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+- Drop upstreamed fix-session-saving.patch
+
+-------------------------------------------------------------------
+Fri Feb 26 14:59:32 UTC 2016 - wbauer@tmo.at
+
+- Enable use-setFallbackSessionManagementEnabled-API-with-5.5.1.patch
+  unconditionally, the updated libqt5-qtbase is in Tumbleweed now
+
+-------------------------------------------------------------------
+Mon Feb 22 16:16:03 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Add and enable use-setFallbackSessionManagementEnabled-API-with-5.5.1.patch
+  on 42.1 Leap only, for now (kde#354724, boo#955280)
+
+-------------------------------------------------------------------
+Wed Feb 17 22:07:24 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added fix-session-saving.patch (kde#354724, boo#955280)
+
+-------------------------------------------------------------------
+Sat Feb  6 18:00:48 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:42:38 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * kdelibs4support requires kded (for kdedmodule.desktop)
+  * Fix CMP0064 warning by setting policy CMP0054 to NEW
+  * Don't export symbols that also exist in KWidgetsAddons
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:04:13 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * Fix some i18n calls.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 16:58:58 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * Don't try to store a QDateTime in mmap'ed memory
+  * Sync and adopt uriencode.cmake from kdoctools.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:37:10 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * Call newInstance from the child on first invocation
+  * Use kdewin defines.
+  * Don't try to find X11 on WIN32
+  * cmake: Fix taglib version check in FindTaglib.cmake.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:12:57 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * Port solid-networkstatus kded plugin to json metadata
+  * KPixmapCache: create dir if it doesn't exist
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:21 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * kconfig_compiler_kf5 moved to libexec, use kreadconfig5 instead
+    for the findExe test
+  * Document the (suboptimal) replacements for
+    KApplication::disableSessionManagement
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:44:56 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * Fix KMimeType::Ptr::isNull implementation.
+  * Reenable support for KDateTime streaming to kDebug/qDebug,
+    for more SC
+  * Load correct translation catalog for kdebugdialog
+  * Don't skip documenting deprecated methods, so that people can
+    read the porting hints
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:18 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * Use QTemporaryFile instead of hardcoding a temporary file.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:52:27 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sun Apr 19 15:56:20 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Add Requires on kded, which is a runtime requirement (needed for
+  Applications used outside Plasma 5, as it is not pulled in by
+  other packages in that case)
+
+-------------------------------------------------------------------
+Sat Apr  4 14:41:05 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+
+-------------------------------------------------------------------
+Mon Mar 16 11:52:05 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Add explicit kdbusaddons-devel and karchive-devel to
+  devel package requires
+
+-------------------------------------------------------------------
+Sat Mar  7 16:59:03 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+- Added perl-URI buildrequires
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:40 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:36 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * Add Lithuania to the list of Euro countries
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:55 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:47:52 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+- Added NetworkManager-devel BuildRequires in order to build
+  deprecated Solid's networkstatus kded module (for software that
+  didn't migrate to QNetworkConfigurationManager)
+
+-------------------------------------------------------------------
+Sat Oct  4 18:00:07 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:42 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:26 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+
+-------------------------------------------------------------------
+Fri Jul 11 09:48:40 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Define kf5_version within package
+
+-------------------------------------------------------------------
+Tue Jul  1 21:36:13 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:45 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Sun May  4 02:12:47 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+- Rename to kdelibs4support, per upstream change
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:28 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+- Added 0001-Remove-unused-dependencies.patch from upstream
+- Drop kbookmarks-devel, kdbusaddons-devel and kitemviews-devel
+  BuildRequires as per added patch
+
+-------------------------------------------------------------------
+Tue Mar  4 16:40:07 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Sat Feb  8 02:17:48 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init kde4support package

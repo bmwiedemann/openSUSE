@@ -1,0 +1,325 @@
+-------------------------------------------------------------------
+Wed Aug 21 11:48:22 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Enable tests on architectures with enough memory - boo#1146648
+  * disable imffuzztest as it takes to much resources
+
+-------------------------------------------------------------------
+Mon Jul 15 14:06:20 UTC 2019 - pgajdos@suse.com
+
+- security update
+- added patches
+  CVE-2017-14988 [bsc#1061305]
+  + openexr-CVE-2017-14988.patch
+
+-------------------------------------------------------------------
+Fri Jun 14 19:30:32 UTC 2019 - pgajdos@suse.com
+
+- security update
+- added patches
+  CVE-2017-9111 [bsc#1040109], CVE-2017-9113 [bsc#1040113], CVE-2017-9115 [bsc#1040115]
+  + openexr-CVE-2017-9111,9113,9115.patch
+
+-------------------------------------------------------------------
+Wed Nov  7 11:07:19 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Codify new ilmbase requirements.
+
+-------------------------------------------------------------------
+Wed Nov  7 09:42:59 UTC 2018 - Petr Gajdos <pgajdos@suse.com>
+
+- security update
+  * CVE-2018-18444 [bsc#1113455]
+    + openexr-CVE-2018-18444.patch
+
+-------------------------------------------------------------------
+Tue Nov  6 09:35:55 UTC 2018 - Petr Gajdos <pgajdos@suse.com>
+
+- asan_build: build ASAN included
+- debug_build: build more suitable for debugging
+
+-------------------------------------------------------------------
+Mon Nov  5 13:22:33 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove useless --with-pic.
+- Adjust RPM groups and repair sentence structure.
+
+-------------------------------------------------------------------
+Mon Nov  5 11:19:12 UTC 2018 - Petr Gajdos <pgajdos@suse.com>
+
+- updated to 2.3.0
+  * ThreadPool overhead improvements, enable custom thread pool
+    to be registered via ThreadPoolProvider class
+  * Fixes to enable custom namespaces for Iex, Imf
+  * Improve read performance for deep/zipped data, and
+    SIMD-accelerated uncompress support
+  * Added rawPixelDataToBuffer() function for access to
+    compressed scanlines
+  * Iex::BaseExc no longer derived from std::string.
+  * Imath throw() specifiers removed
+  * Initial Support for Python 3
+  * removed patch
+
+-------------------------------------------------------------------
+Mon Jan 15 05:19:19 UTC 2018 - avindra@opensuse.org
+
+- Update to 2.2.1
+  * Fix reported OpenEXR security vulnerabilities: CVE-2017-9110,
+    CVE-2017-9111, CVE-2017-9112, CVE-2017-9113, CVE-2017-9114,
+    CVE-2017-9115 and CVE-2017-9116
+- pgajdos@suse.com: but really seem to fix only:
+  CVE-2017-9110 [bsc#1040107], CVE-2017-9114 [bsc#1040114],
+  CVE-2017-9116 [bsc#1040116], CVE-2017-12596 [bsc#1052522]; for
+  the rest of issues see [bsc#1040109], [bsc#1040112],
+  [bsc#1040113], [bsc#1040114], [bsc#1040115], and [bsc#1061305]
+
+-------------------------------------------------------------------
+Wed Jul 12 09:22:22 UTC 2017 - tchvatal@suse.com
+
+- Cleanup a bit with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jan 29 09:50:21 UTC 2015 - mlin@suse.com
+
+- Update to 2.2.0
+  * DreamWorks Lossy Compression A new high quality, high performance lossy
+    compression codec contributed by DreamWorks Animation. This codec allows
+    control over variable lossiness to balance visual quality and file size.
+    This contribution also includes performance improvements that speed up
+    the PIZ codec.
+  * IlmImfUtil A new library intended to aid in development of image file
+    manipulation utilities that support the many types of OpenEXR images.
+  * This release also includes improvements to cross-platform build support
+    using CMake.
+- Bumped the soname, and now we have libIlmImf and libIlmImfUtil
+- Removed openexr-2.1.0-headers.patch
+- Updated openexr.keyring from the savannah project page.
+
+-------------------------------------------------------------------
+Tue Aug 26 11:21:47 UTC 2014 - fcrozat@suse.com
+
+- Add obsoletes to baselibs.conf.
+
+-------------------------------------------------------------------
+Thu Apr 24 09:54:12 UTC 2014 - dmueller@suse.com
+
+- remove dependency on gpg-offline (blocks rebuilds and
+  tarball integrity is checked by source-validator anyway)
+
+-------------------------------------------------------------------
+Thu Nov 28 10:22:05 UTC 2013 - toganm@opensuse.org
+
+- add openexr-2.1.0-headers.patch to install
+  ImfDeepImageStateAttribute.h header too
+
+-------------------------------------------------------------------
+Wed Nov 27 09:17:45 UTC 2013 - mvyskocil@suse.com
+
+- update to 2.1.0
+  This release includes a refactoring of the optimised read paths for RGBA
+  data, optimisations for some of the python bindings to Imath, improvements to
+  the cmake build environment as well as additional documentation describing
+  deep data in more detail.
+- make tests conditional, enable fuzz test and huge test
+
+-------------------------------------------------------------------
+Mon Jul 15 11:00:04 UTC 2013 - mvyskocil@suse.com
+
+- update to 2.0.1
+  This is a maintenance push that predominantly addresses edge case
+  failures in the optimisation code paths by temporarily disabling the
+  feature. For more details, please refer to the
+  /usr/share/doc/packages/openexr/ChangeLog
+- add gpg-offline based verification
+
+-------------------------------------------------------------------
+Sat Apr 20 20:29:35 UTC 2013 - coolo@suse.com
+
+- fix library deps
+
+-------------------------------------------------------------------
+Fri Apr 12 13:43:33 UTC 2013 - mvyskocil@suse.com
+
+- update to 2.0.0
+ * Deep Data support - Pixels can now store a variable-length list of samples.
+   The main rationale behind deep images is to enable the storage of multiple
+   values at different depths for each pixel. OpenEXR 2.0 supports both
+   hard-surface and volumetric representations for Deep Compositing workflows.
+ * Multi-part Image Files - With OpenEXR 2.0, files can now contain a number
+   of separate, but related, data parts in one file. Access to any part is
+   independent of the others, pixels from parts that are not required in the
+   current operation don't need to be accessed, resulting in quicker read
+   times when accessing only a subset of channels. The multipart interface
+   also incorporates support for Stereo images where views are stored in
+   separate parts. This makes stereo OpenEXR 2.0 files significantly faster to
+   work with than the previous multiview support in OpenEXR.
+ * Optimized pixel reading - decoding RGB(A) scanline images has been
+   accelerated on SSE processors providing a significant speedup when reading
+   both old and new format images, including multipart and multiview files.
+ * Namespacing - The library introduces versioned namespaces to avoid
+   conflicts between packages compiled with different versions of the library.
+- obsoleted
+    openexr-suse-docdir.patch (moved in install phase)
+    openexr-disable-tests.patch
+
+-------------------------------------------------------------------
+Thu Sep 27 14:51:27 UTC 2012 - cfarrell@suse.com
+
+- license update: BSD-3-Clause
+  No GPL licensed files found in the package
+
+-------------------------------------------------------------------
+Thu Sep 27 09:20:21 UTC 2012 - idonmez@suse.com
+
+- Update baselibs.conf
+
+-------------------------------------------------------------------
+Thu Aug  2 12:46:25 UTC 2012 - mvyskocil@suse.cz
+
+- Update to 1.7.1
+  * Updated the .so verison to 7.
+  * obsoletes openexr-includes.patch
+- require new ilmbase-devel for build
+- rename libopenexr-devel to openexr devel to be compatible
+  with renamed ilmbase package
+
+-------------------------------------------------------------------
+Tue Apr 24 13:26:54 UTC 2012 - mvyskocil@suse.cz
+
+- disable the test at all, as running them in OBS seems not to be
+  reliable
+
+-------------------------------------------------------------------
+Sun Jan 29 17:50:27 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+
+-------------------------------------------------------------------
+Mon Oct 31 14:28:37 UTC 2011 - mvyskocil@suse.cz
+
+- openexr-disable-tests.patch - disable broken tests prevents a build
+  in Factory
+
+-------------------------------------------------------------------
+Wed Jul 27 11:19:31 CEST 2011 - dmueller@suse.de
+
+- remove explicit libdrm buildrequires
+
+-------------------------------------------------------------------
+Tue Mar  8 20:51:54 UTC 2011 - jengelh@medozas.de
+
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Mon Aug  9 09:50:43 UTC 2010 - mvyskocil@suse.cz
+
+- Update to 1.7.0 - bugfix release, multiviewer support
+  * obsoletes CVE-2009-1720 support
+  * built with --enable-larget-stack and test
+- Renammed to be more comfortable with Shared Library policy
+  * openexr - main (source package) contains tools in bindir, it provides and
+    obsoletes the old OpenEXR symbol
+  * libIlmImf6 - contains the openexr library
+  * libopenexr-devel - contains the headers, Provides and Obsoletes the
+    OpenEXR-devel symbol
+  * openexr-doc - documentation
+
+-------------------------------------------------------------------
+Fri Dec 18 17:37:10 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Tue Aug  4 07:09:30 UTC 2009 - mvyskocil@suse.cz
+
+- fixed bnc#527539:  VUL-0: OpenEXR: [ MDVSA-2009:190 ] OpenEXR
+  used patches from Mandriva
+  * CVE-2009-1720
+  * CVE-2009-1721
+
+-------------------------------------------------------------------
+Mon Mar  2 05:41:46 CET 2009 - crrodriguez@suse.de
+
+- save 6.7MB by removing static libraries and "la" files
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Oct 31 18:07:10 CET 2007 - mvyskocil@suse.cz
+
+- update to 1.6.1
+- fix buid, add docu subpackage with documentation and examples
+
+-------------------------------------------------------------------
+Sat May 19 06:03:13 CEST 2007 - stbinner@suse.de
+
+- fix linking of new IlmThread lib versus libpthread
+
+-------------------------------------------------------------------
+Tue May 15 00:22:40 CEST 2007 - ltinkl@suse.cz
+
+- update to 1.4.6
+- fix build, fix packaging examples and doc
+- added missing Requires
+
+-------------------------------------------------------------------
+Tue Jan 16 10:44:14 CET 2007 - meissner@suse.de
+
+- fixed RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Mon Jun 12 15:40:26 CEST 2006 - dmueller@suse.de
+
+- fix shared lib dependencies
+- fix installed headers
+
+-------------------------------------------------------------------
+Wed Jan 25 21:33:52 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Nov  7 15:06:31 CET 2005 - sndirsch@suse.de
+
+- make use of mesa-devel-packages macro in neededforbuild
+
+-------------------------------------------------------------------
+Wed Nov  2 21:53:50 CET 2005 - dmueller@suse.de
+
+- don't build as root
+
+-------------------------------------------------------------------
+Wed May 25 14:49:41 CEST 2005 - adrian@suse.de
+
+- update to version 1.2.2
+
+-------------------------------------------------------------------
+Mon May 23 16:21:09 CEST 2005 - schwab@suse.de
+
+- Fix missing declaration.
+
+-------------------------------------------------------------------
+Thu Jan 13 14:30:26 CET 2005 - ro@suse.de
+
+- try to fix docu installation
+
+-------------------------------------------------------------------
+Mon Jun 28 13:59:35 CEST 2004 - adrian@suse.de
+
+- initial package of version 1.2.1
+

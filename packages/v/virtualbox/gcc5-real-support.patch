@@ -1,0 +1,20 @@
+Index: VirtualBox-5.2.0/configure
+===================================================================
+--- VirtualBox-5.2.0.orig/configure
++++ VirtualBox-5.2.0/configure
+@@ -429,8 +429,13 @@ check_gcc()
+         log_failure "cannot execute '$CXX -dumpversion'"
+         fail really
+       fi
+-      cc_maj=`echo $cc_ver|cut -d. -f1`
+-      cc_min=`echo $cc_ver|cut -d. -f2`
++      if echo $cc_ver | grep -q '\.'; then
++        cc_maj=`echo $cc_ver|cut -d. -f1`
++        cc_min=`echo $cc_ver|cut -d. -f2`
++      else
++        cc_maj=$cc_ver
++        cc_min=0
++      fi
+       if [ "x$cc_ver" != "x$cxx_ver" ]; then
+         log_failure "gcc version $cc_ver does not match g++ version $cxx_ver"
+         fail really

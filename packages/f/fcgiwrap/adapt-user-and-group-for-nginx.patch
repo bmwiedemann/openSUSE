@@ -1,0 +1,44 @@
+From 7b4487a18387a58188bf3ef0ba735c46d17dbf5a Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 5 Feb 2019 23:37:45 +0100
+Subject: [PATCH 2/2] adapt user and group for nginx
+
+---
+ systemd/fcgiwrap.service | 5 +++--
+ systemd/fcgiwrap.socket  | 3 +++
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/systemd/fcgiwrap.service b/systemd/fcgiwrap.service
+index 7b010c9..0b32e02 100644
+--- a/systemd/fcgiwrap.service
++++ b/systemd/fcgiwrap.service
+@@ -3,9 +3,10 @@ Description=Simple CGI Server
+ After=nss-user-lookup.target
+ 
+ [Service]
++Type=simple
+ ExecStart=/usr/sbin/fcgiwrap
+-User=http
+-Group=http
++User=nginx
++Group=nginx
+ 
+ [Install]
+ Also=fcgiwrap.socket
+diff --git a/systemd/fcgiwrap.socket b/systemd/fcgiwrap.socket
+index dc074f1..43d3197 100644
+--- a/systemd/fcgiwrap.socket
++++ b/systemd/fcgiwrap.socket
+@@ -2,6 +2,9 @@
+ Description=fcgiwrap Socket
+ 
+ [Socket]
++SocketUser=nginx
++SocketGroup=nginx
++SocketMode=0660
+ ListenStream=/run/fcgiwrap.sock
+ 
+ [Install]
+-- 
+2.20.1
+

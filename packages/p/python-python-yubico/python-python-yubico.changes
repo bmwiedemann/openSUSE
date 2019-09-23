@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Thu May  9 06:09:12 UTC 2019 - pgajdos@suse.com
+
+- do not package empty ChangeLog
+
+-------------------------------------------------------------------
+Tue May  7 13:31:02 UTC 2019 - pgajdos@suse.com
+
+- package renamed to python-python-yubico
+- turn on testsuite
+
+-------------------------------------------------------------------
+Thu Feb 28 13:00:33 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- Version 1.3.3 (released 2019-02-28)
+  - Fixes in Python 3 compatibility.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:56:22 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Nov 16 07:35:02 UTC 2017 - t.gruner@katodev.de
+
+- add multi-python support
+
+-------------------------------------------------------------------
+Tue Feb 23 11:48:24 UTC 2016 - michael@stroeder.com
+
+- update to 1.3.2
+  * yubico/yubikey_usb_hid.py: change logic for pgm seq if no
+    config is valid, seq 0 is ok
+  * yubico/yubikey_usb_hid.py: that the new sequence is 0 is also ok
+  * yubico/yubikey_frame.py: Added comments explaining debug data.
+  * Solved: Unlock code couldn't be set
+
+-------------------------------------------------------------------
+Tue Nov  3 09:26:46 UTC 2015 - t.gruner@katodev.de
+
+- Replaced this source code with Yubico's source code (version 1.3.1) 
+  The developer of the old package has changed the name to python-yubico-client
+
+-------------------------------------------------------------------
+Mon Jun  1 08:24:32 UTC 2015 - hguo@suse.com
+
+- New package.
+

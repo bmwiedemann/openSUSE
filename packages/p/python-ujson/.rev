@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d05a61e6fa046a2f0e74dd958dd42777</srcmd5>
+    <version>1.35</version>
+    <time>1484818977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>446679</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>93f9110791b8a22b5956becc79287759</srcmd5>
+    <version>1.35</version>
+    <time>1485682696</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>452615</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bdf11d3ca34db7469bb86bdf3cf9286a</srcmd5>
+    <version>1.35</version>
+    <time>1493363631</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491263</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e7322a8c24e49a385bec50d95a284b1a</srcmd5>
+    <version>1.35</version>
+    <time>1534100041</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not depend on unittest2 it is not needed:
+  * no-unittest2.patch
+- Really execute the tests</comment>
+    <requestid>628597</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b315cc9bdd640070e3581696dacff698</srcmd5>
+    <version>1.35</version>
+    <time>1557751952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702495</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,41 @@
+--- sitecopy-0.16.6.orig/lib/neon/ne_openssl.c
++++ sitecopy-0.16.6/lib/neon/ne_openssl.c
+@@ -615,6 +615,18 @@ void ne_ssl_context_destroy(ne_ssl_conte
+     ne_free(ctx);
+ }
+ 
++#if defined(OPENSSL_VERSION_NUMBER) \
++    && OPENSSL_VERSION_NUMBER > 0x10000000L
++/* OpenSSL 1.0 removed SSL_SESSION_cmp for no apparent reason - hoping
++ * it is reasonable to assume that comparing the session IDs is
++ * sufficient. */
++static int SSL_SESSION_cmp(SSL_SESSION *a, SSL_SESSION *b)
++{
++    return a->session_id_length == b->session_id_length
++        && memcmp(a->session_id, b->session_id, a->session_id_length) == 0;
++}
++#endif
++
+ /* For internal use only. */
+ int ne__negotiate_ssl(ne_session *sess)
+ {
+--- sitecopy-0.16.6.orig/configure
++++ sitecopy-0.16.6/configure
+@@ -8456,7 +8456,7 @@ fi
+ echo "${ECHO_T}$ne_cv_lib_neon" >&6; }
+     if test "$ne_cv_lib_neon" = "yes"; then
+        ne_cv_lib_neonver=no
+-       for v in 24 25 26 27 28; do
++       for v in 24 25 26 27 28 29 30 31; do
+           case $ne_libver in
+           0.$v.*) ne_cv_lib_neonver=yes ;;
+           esac
+@@ -9256,7 +9256,7 @@ fi
+ echo "${ECHO_T}$ne_cv_lib_neon" >&6; }
+     if test "$ne_cv_lib_neon" = "yes"; then
+        ne_cv_lib_neonver=no
+-       for v in 24 25 26 27 28; do
++       for v in 24 25 26 27 28 29 30 31; do
+           case $ne_libver in
+           0.$v.*) ne_cv_lib_neonver=yes ;;
+           esac

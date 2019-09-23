@@ -1,0 +1,12 @@
+diff --git a/ufraw.desktop b/ufraw.desktop
+index 2c276e0..f97a870 100644
+--- a/ufraw.desktop
++++ b/ufraw.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Name=UFRaw
+-GenericName=Raw image converter
++GenericName=Raw Image Converter
+ GenericName[ca]=Convertidor d'imatges Raw
+ GenericName[cs]=Konvertor raw snímků
+ GenericName[da]=Råbilledbehandler

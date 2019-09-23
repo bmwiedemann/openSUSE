@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c4af18fb3b417e613d6141c2ae5498e2</srcmd5>
+    <version>1.0.1</version>
+    <time>1367487970</time>
+    <user>coolo</user>
+    <comment>needed for rails 4</comment>
+    <requestid>173613</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2f192ceeafe0bc713a9e1435a211e30d</srcmd5>
+    <version>1.0.2</version>
+    <time>1367934177</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174664</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8426b726e0619da20507d6d774dde73b</srcmd5>
+    <version>1.0.3</version>
+    <time>1373984173</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>183096</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8426b726e0619da20507d6d774dde73b</srcmd5>
+    <version>1.0.3</version>
+    <time>1379664492</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8426b726e0619da20507d6d774dde73b</srcmd5>
+    <version>1.0.3</version>
+    <time>1409303213</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>7815b8f2a67b23ac2c9be073d715f060</srcmd5>
+    <version>1.0.3</version>
+    <time>1413263451</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255229</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c94bd3b4363f5e22f54a6403d8e74feb</srcmd5>
+    <version>1.0.4</version>
+    <time>1428652382</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>294929</requestid>
+  </revision>
+</revisionlist>

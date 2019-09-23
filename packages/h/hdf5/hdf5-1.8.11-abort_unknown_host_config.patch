@@ -1,0 +1,26 @@
+Index: configure
+===================================================================
+--- configure.orig
++++ configure
+@@ -4097,6 +4097,8 @@ done
+ if test "X$host_config" != "Xnone"; then
+   CC_BASENAME="`echo $CC | cut -f1 -d' ' | xargs basename 2>/dev/null`"
+   . $host_config
++else
++  as_fn_error $? "no usable host config found" "$LINENO" 5
+ fi
+ 
+ ## Source any special site-specific file
+Index: configure.ac
+===================================================================
+--- configure.ac.orig
++++ configure.ac
+@@ -263,6 +263,8 @@ done
+ if test "X$host_config" != "Xnone"; then
+   CC_BASENAME="`echo $CC | cut -f1 -d' ' | xargs basename 2>/dev/null`"
+   . $host_config
++else
++  AC_MSG_ERROR([no usable host config found])
+ fi
+ 
+ ## Source any special site-specific file

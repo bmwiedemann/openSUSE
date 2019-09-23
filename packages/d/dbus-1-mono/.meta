@@ -1,0 +1,5 @@
+<package name="dbus-1-mono" project="openSUSE:Factory">
+  <title>Mono Bindings for D-Bus</title>
+  <description>Mono bindings for D-Bus.</description>
+  <devel project="Base:System" package="dbus-1-mono"/>
+</package>

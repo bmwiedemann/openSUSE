@@ -1,0 +1,127 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>29c1b2d13804e3d2eaccac3fbd1de64d</srcmd5>
+    <version>0.4.3</version>
+    <time>1332416269</time>
+    <user>coolo</user>
+    <comment>#107665 was not meant to be superseded, anyway, this sr now supersede that</comment>
+    <requestid>110367</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1dcd9e470f119731334b8868110359a3</srcmd5>
+    <version>0.4.4</version>
+    <time>1334641657</time>
+    <user>coolo</user>
+    <comment>- update 0.4.4
+  - Change: Don't let the road works flash that much (issue #3395)
+  - Add: [Makefile] Introduce target 'clean-gfx' which deletes png files which can be re-built from source and allow 'maintainer-clean' to delete the opengfx.check.md5
+  - Add: More font sprites (issue #3578)
+  - Fix: Landing lights were inoperational for helipad and some broken at the heliport (issue #3709)
+  - Fix: German semaphore signals were not available anymore (issue #3429)
+  - Fix: Broken river borders at sea level (issue #3562)
+  - Fix: Add GridDesert to terrain.xcf and fix spelling of GridTropical (issue #3769)
+  - Fix: Wrong wanter pixels on some river and coast tiles (issue #3714)</comment>
+    <requestid>113850</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1dcd9e470f119731334b8868110359a3</srcmd5>
+    <version>0.4.4</version>
+    <time>1340183764</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e049160a2a0075ac7097b63177d22da2</srcmd5>
+    <version>0.4.5</version>
+    <time>1349673331</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137374</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aade42bb4ec8feba4cf6d0826d0b9cb0</srcmd5>
+    <version>0.4.6.1</version>
+    <time>1357576197</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>147200</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>aade42bb4ec8feba4cf6d0826d0b9cb0</srcmd5>
+    <version>0.4.6.1</version>
+    <time>1359109553</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>d88590784fb708cb3782f42d65ff22ba</srcmd5>
+    <version>0.4.6.1</version>
+    <time>1372687126</time>
+    <user>coolo</user>
+    <comment>- fix build with gcc 4.8
+  * openttd-opengfx-gcc48.patch (forwarded request 180882 from pgajdos)</comment>
+    <requestid>181565</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>d88590784fb708cb3782f42d65ff22ba</srcmd5>
+    <version>0.4.6.1</version>
+    <time>1379663444</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b83b0ea7e8eeb0f7d219942ac87bff2c</srcmd5>
+    <version>0.4.7</version>
+    <time>1386774972</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>210363</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d16b4c42e157d5ae7bc9b2d8bf6c2167</srcmd5>
+    <version>0.5.1</version>
+    <time>1403724004</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237405</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>d16b4c42e157d5ae7bc9b2d8bf6c2167</srcmd5>
+    <version>0.5.1</version>
+    <time>1409302069</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>e9025a1a4fc57259ad03aee1fc346bf5</srcmd5>
+    <version>0.5.1</version>
+    <time>1432281141</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308162</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>941b121439c3ce0734a861d91c1483ac</srcmd5>
+    <version>0.5.2</version>
+    <time>1433745015</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>310698</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9726f9c36736e55bc9ce3f75118c92f6</srcmd5>
+    <version>0.5.4</version>
+    <time>1516359132</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561249</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>53ef3795770068669668b14396997d3e</srcmd5>
+    <version>0.5.5</version>
+    <time>1561405895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707259</requestid>
+  </revision>
+</revisionlist>

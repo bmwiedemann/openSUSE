@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Mon Feb 19 05:31:27 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.7.1
+ see installed NEWS
+
+  2018-02-18 0.7.1
+    * Fix a bad bug in block_resize (Marius Rieder)
+    * Fix up some problems pointed out by clang
+    * Fix up the tests for small semantic differences in how libvirt works
+
+-------------------------------------------------------------------
+Fri Sep 23 04:48:51 UTC 2016 - coolo@suse.com
+
+- updated to version 0.7.0
+ see installed NEWS
+
+  2016-09-22 0.7.0
+    * Fix network lease API to allow arguments that libvirt allows
+    * Implement VIRT_STORAGE_POOL_CREATE flags
+    * Implement more VIR_STORAGE_VOL flags
+    * Implement VIR_DOMAIN_QEMU_AGENT_COMMAND_SHUTDOWN
+    * Implement virDomainDefineXMLFlags
+    * Implement virDomainRename
+    * Implement virDomainSetUserPassword
+    * Implement VIR_DOMAIN_TIME_SYNC
+    * Fix the return value from virStreamSourceFunc so volume upload works
+
+-------------------------------------------------------------------
+Sat Nov 21 05:43:27 UTC 2015 - coolo@suse.com
+
+- updated to version 0.6.0
+ see installed NEWS
+
+-------------------------------------------------------------------
+Sat Feb 22 06:25:41 UTC 2014 - coolo@suse.com
+
+- updated to version 0.5.2
+ * Fix to make sure we don't free more entires than retrieved
+
+-------------------------------------------------------------------
+Sun Feb 16 14:18:58 UTC 2014 - kkaempf@suse.com
+
+- use new macros
+- drop ruby-libvirt-0.5.0-compile.patch
+
+-------------------------------------------------------------------
+Sun Jan  5 14:39:51 UTC 2014 - coolo@suse.com
+
+- updated to version 0.5.1
+  * Fixes to compile against older libvirt
+  * Fixes to compile against ruby 1.8
+
+-------------------------------------------------------------------
+Tue Dec 10 10:02:13 UTC 2013 - dmacvicar@suse.de
+
+- update to 0.5.0
+
+-------------------------------------------------------------------
+Tue Mar 19 07:26:23 UTC 2013 - dmacvicar@suse.de
+
+- update to 0.4.0
+- add the rubygem- prefix to the spec file name
+
+-------------------------------------------------------------------
+Fri Jul 22 12:57:20 UTC 2011 - fcastelli@novell.com
+
+- Fix description for devel package.
+
+-------------------------------------------------------------------
+Tue Jul 12 09:34:32 UTC 2011 - fcastelli@novell.com
+
+- Fixed spec file
+- Upgraded to 0.3.0
+
+-------------------------------------------------------------------
+Wed Mar 10 09:14:03 UTC 2010 - Christian Hueller
+
+- Initial package
+

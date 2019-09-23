@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Thu Nov  8 17:22:21 UTC 2018 - alarrosa@suse.com
+
+- Removed unneeded Buildrequires
+- Add %license file and tag
+
+-------------------------------------------------------------------
+Wed Oct 31 11:28:53 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Wed Aug 22 16:11:13 UTC 2018 - badshah400@gmail.com
+
+- Initial package.

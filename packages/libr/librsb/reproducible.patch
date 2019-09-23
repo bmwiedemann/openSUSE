@@ -1,0 +1,39 @@
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Date: 2018-07-12
+
+When setting an explicit memory hierarchy at configure time,
+the autodetected one will never be used, so we do not need to store it.
+
+This allows for building identical librsb packages on different hosts.
+See https://reproducible-builds.org/ for why this is good.
+
+Index: librsb-1.2.0-rc7/configure
+===================================================================
+--- librsb-1.2.0-rc7.orig/configure
++++ librsb-1.2.0-rc7/configure
+@@ -22750,9 +22750,11 @@ cat >>confdefs.h <<_ACEOF
+ _ACEOF
+ 
+ 
++if test "x$memhinfo" = x; then
+ cat >>confdefs.h <<_ACEOF
+ #define RSB_DETECTED_MEM_HIERARCHY_INFO "$RSB_DETECTED_MEM_HIERARCHY_INFO"
+ _ACEOF
++fi
+ 
+ 
+ cat >>confdefs.h <<_ACEOF
+Index: librsb-1.2.0-rc7/configure.ac
+===================================================================
+--- librsb-1.2.0-rc7.orig/configure.ac
++++ librsb-1.2.0-rc7/configure.ac
+@@ -319,7 +319,9 @@ dnl
+ AC_ARG_WITH(memhinfo, AC_HELP_STRING([--with-memhinfo], [Compile with user specified memory hierarchy information, which can be overridden by runtime detection and runtime read of RSB_USER_SET_MEM_HIERARCHY_INFO environment variable.]),
+         [if test "x$withval" = xno; then memhinfo="" ; openmp_flags= ; else memhinfo="$withval" ; fi] , [memhinfo="";])
+ AC_SUBST([RSB_USER_SET_MEM_HIERARCHY_INFO],"${memhinfo}")
++if test "x$memhinfo" = x; then
+ AC_SUBST([RSB_DETECTED_MEM_HIERARCHY_INFO],"${detected_memhinfo}")
++fi
+ dnl AC_DEFINE([RSB_USER_SET_MEM_HIERARCHY_INFO],[$memhinfo],[If not null, the library will rely on this for memory hierarchy info.])
+ dnl
+ dnl

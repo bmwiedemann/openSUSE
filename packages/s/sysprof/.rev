@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>34b7db2d896e5791c418142a06152a23</srcmd5>
+    <version>3.21.91</version>
+    <time>1474623211</time>
+    <user>dimstar_suse</user>
+    <comment>New package for GNOME 3.22 - need to pass legal, dep to gnome builder</comment>
+    <requestid>427905</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>87ac2431cced2e827b9ffa85c24ca613</srcmd5>
+    <version>3.22.0</version>
+    <time>1474723713</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.22.0:
+  + Updated translations.</comment>
+    <requestid>429750</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>27cc8a62b22d4fbcfe94bbd366efd362</srcmd5>
+    <version>3.22.1</version>
+    <time>1476875663</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435899</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2e35a5bb52d4644942a6b7c2202be3f2</srcmd5>
+    <version>3.22.2</version>
+    <time>1478687998</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438608</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b28950523248e09ddc1fba6861581bc4</srcmd5>
+    <version>3.22.3</version>
+    <time>1481105514</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443617</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>db8885f4efc2258f9eefafbb03872a9e</srcmd5>
+    <version>3.24.0</version>
+    <time>1490220356</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 481255 from dimstar)</comment>
+    <requestid>481366</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6dd1bc5c8797c00666b6e3d4bc97cbd1</srcmd5>
+    <version>3.24.1</version>
+    <time>1495132632</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.24.1 (forwarded request 490984 from dimstar)</comment>
+    <requestid>494084</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8f7dc48a752db349e556887fd0675fae</srcmd5>
+    <version>3.25.92</version>
+    <time>1505331793</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.25.92 (forwarded request 521845 from dimstar)</comment>
+    <requestid>521934</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ad16014c916b6219a8244f2e5611acba</srcmd5>
+    <version>3.26.0</version>
+    <time>1505989863</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 526497 from Zaitor)</comment>
+    <requestid>526972</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c5ad07604e0ceabf2e4425b7d9ea736f</srcmd5>
+    <version>3.26.1</version>
+    <time>1507280555</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.26.1 (forwarded request 531731 from dimstar)</comment>
+    <requestid>531800</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d8cf90becbe6b13a1afcdb42ef0a1b39</srcmd5>
+    <version>3.28.0</version>
+    <time>1521052421</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.28.0 (forwarded request 586759 from dimstar)</comment>
+    <requestid>586770</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9563418ffd63a48625e5841f6131be3c</srcmd5>
+    <version>3.28.1</version>
+    <time>1524144360</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.28.1. (forwarded request 595821 from luc14n0)</comment>
+    <requestid>596959</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1c5d9837ec8654c47e2e81bbb18370bd</srcmd5>
+    <version>3.30.1</version>
+    <time>1539756924</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638509</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3cb17d9d8c11acb7a8d27d473350f13f</srcmd5>
+    <version>3.30.2</version>
+    <time>1541666804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.30.2:
+  + The profiler menu button more properly handles changes to the
+    toplevel window.
+  + Fixes for i18n/l10n intialization. (forwarded request 646113 from iznogood)</comment>
+    <requestid>647065</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c92bff43a6497c2d84712585b2d09efa</srcmd5>
+    <version>3.32.0</version>
+    <time>1554114648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689304</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>8cec118ab44794d15eb0eef7b4a85c25</srcmd5>
+    <version>3.32.0</version>
+    <time>1558426932</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702803</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>fab2293c95c40a5e1dc58e0aa875016b</srcmd5>
+    <version>3.32.0</version>
+    <time>1567677995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720596</requestid>
+  </revision>
+</revisionlist>

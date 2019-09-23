@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d0fadc2d9d03a879c1fbb3315a48372c</srcmd5>
+    <version>0.13.0</version>
+    <time>1566463780</time>
+    <user>dimstar_suse</user>
+    <comment>Submit latest version to Factory as new package</comment>
+    <requestid>723130</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>82bbfedac91c138c426ed05feb84e1bc</srcmd5>
+    <version>0.13.0</version>
+    <time>1566893964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725850</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2fa9955e1f0c28b3c194aec7b81ce693</srcmd5>
+    <version>0.13.0</version>
+    <time>1568720393</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731414</requestid>
+  </revision>
+</revisionlist>

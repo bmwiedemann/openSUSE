@@ -1,0 +1,43 @@
+--- src/parseinfo.c
++++ src/parseinfo.c
+@@ -249,7 +249,7 @@ readSizeT (const char *infopath, const c
+ 		       infopath, option, p[strlen(p)]);
+ 		return false;
+ 	}
+-	TRACE (TRACE_DATA, "readSizeT(): Found factor %u for %s",
++	TRACE (TRACE_DATA, "readSizeT(): Found factor %zu for %s",
+ 	       factor, option);
+     }
+ 
+@@ -273,9 +273,9 @@ readSizeT (const char *infopath, const c
+ 	/* Don't return an error, just max out.  */
+ 	num = SIZE_MAX;
+ 
+-    TRACE (TRACE_DATA, "readSizeT(): read number %u for %s", num, option);
++    TRACE (TRACE_DATA, "readSizeT(): read number %zu for %s", num, option);
+     *val = xtimes (strtoul (p, NULL, 10), factor);
+-    TRACE (TRACE_DATA, "readSizeT(): returnning %u for %s", *val, option);
++    TRACE (TRACE_DATA, "readSizeT(): returnning %zu for %s", *val, option);
+     return true;
+ }
+ 
+--- src/subr.c
++++ src/subr.c
+@@ -1336,7 +1336,7 @@ format_cmdline (const char *format, ...)
+ 	    		dellist(&pflist);
+ 	    		free(b);
+ 			error (1, 0,
+-"internal error:  unknown integer arg size (%d)",
++"internal error:  unknown integer arg size (%zu)",
+                                length);
+ 			break;
+ 		}
+@@ -1379,7 +1379,7 @@ format_cmdline (const char *format, ...)
+ 	    		dellist(&pflist);
+ 	    		free(b);
+ 			error (1, 0,
+-"internal error:  unknown floating point arg size (%d)",
++"internal error:  unknown floating point arg size (%zu)",
+                                length);
+ 			break;
+ 		}

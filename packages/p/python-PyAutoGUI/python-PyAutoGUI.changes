@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:51:55 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Mar  6 07:49:37 UTC 2018 - alarrosa@suse.com
+
+- Added missing requires python-python-xlib
+
+-------------------------------------------------------------------
+Mon Mar  5 19:30:23 UTC 2018 - jengelh@inai.de
+
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Mon Mar  5 18:15:55 UTC 2018 - alarrosa@suse.com
+
+- Initial release of python-PyAutoGUI 0.9.36

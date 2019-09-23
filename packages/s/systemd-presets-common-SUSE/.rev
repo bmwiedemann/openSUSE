@@ -1,0 +1,96 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ed2c42ccce6d6896d6352627d036573d</srcmd5>
+    <version>15</version>
+    <time>1520588153</time>
+    <user>dimstar_suse</user>
+    <comment>split out of the branding-presets</comment>
+    <requestid>581535</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3798fad059ab90c3cd6e8125cb846ed8</srcmd5>
+    <version>15</version>
+    <time>1534321762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627662</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ec222311c1aa93a639089aff8d7843f1</srcmd5>
+    <version>15</version>
+    <time>1537263630</time>
+    <user>maxlin_factory</user>
+    <comment>- enable machines.target for the systemd based containers (bsc#1107941)</comment>
+    <requestid>635211</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5b4579c76719abced722e153188e340c</srcmd5>
+    <version>15</version>
+    <time>1541514102</time>
+    <user>dimstar_suse</user>
+    <comment>- disable ca-certificates.service as it needlessly slows down boot
+  (boo#1088378). update-ca-certificates will still be triggered by
+  the path when there are actual changes. (forwarded request 645556 from lnussel)</comment>
+    <requestid>645569</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>cd2f153b03cd538e1fbf36fb3a482cce</srcmd5>
+    <version>15</version>
+    <time>1544441104</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653627</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>267809fc34667195f3eca53aabfdb7dc</srcmd5>
+    <version>15</version>
+    <time>1545376731</time>
+    <user>dimstar_suse</user>
+    <comment>- Eanble new mdadm timers mdcheck_start.timer and  mdmonitor-oneshot.timer
+  (bsc#1115407)
+
+I previously submitted this change to openSUSE-branding.  That was a mistake.
+It fits better in common-SUSE. I'll remove it from branding. (forwarded request 657725 from neilbrown)</comment>
+    <requestid>658954</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>c30eaa000d2cbe920b1b674d9d821546</srcmd5>
+    <version>15</version>
+    <time>1548769531</time>
+    <user>dimstar_suse</user>
+    <comment>Make sure mlocate is enabled by default. (forwarded request 667978 from psimons)</comment>
+    <requestid>668077</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>28a968cf060338cdece25c90625ae3e7</srcmd5>
+    <version>15</version>
+    <time>1557141472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699823</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>e57278db659462020d4d655901b881b0</srcmd5>
+    <version>15</version>
+    <time>1559580132</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704675</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>7537a86b5a42d80a789aa7a26a2b47ac</srcmd5>
+    <version>15</version>
+    <time>1561557640</time>
+    <user>dimstar_suse</user>
+    <comment>Allow OBS to pick better candidates to shorten rebuild queues (forwarded request 709483 from dimstar)</comment>
+    <requestid>709499</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>b2021f8e3e87528ff191d524c09e3f32</srcmd5>
+    <version>15</version>
+    <time>1563790532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713856</requestid>
+  </revision>
+</revisionlist>

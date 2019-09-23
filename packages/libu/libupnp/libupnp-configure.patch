@@ -1,0 +1,28 @@
+Index: libupnp-1.8.4/configure.ac
+===================================================================
+--- libupnp-1.8.4.orig/configure.ac
++++ libupnp-1.8.4/configure.ac
+@@ -7,7 +7,7 @@
+ # (C) Copyright 2005-2007 Rémi Turboult <r3mi@users.sourceforge.net>
+ #
+ 
+-AC_PREREQ(2.60)
++AC_PREREQ([2.60])
+ 
+ AC_INIT([libupnp], [1.8.4], [mroberto@users.sourceforge.net])
+ dnl ############################################################################
+@@ -546,10 +546,12 @@ RT_BOOL_ARG_ENABLE([samples], [yes], [co
+ #
+ # Checks for programs
+ #
+-AC_PROG_CC
++AC_PROG_CC_STDC
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
+ AM_PROG_CC_C_O
+ m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
+-AC_PROG_LIBTOOL
++LT_INIT
+ AC_PROG_INSTALL
+ AC_PROG_MAKE_SET
+ AC_PROG_EGREP

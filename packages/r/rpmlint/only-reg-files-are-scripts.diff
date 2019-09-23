@@ -1,0 +1,32 @@
+From: Some One <nobody@opensuse.org>
+Date: Thu, 9 Apr 2015 14:55:39 +0200
+Subject: [PATCH] only-reg-files-are-scripts.diff
+
+===================================================================
+---
+ InitScriptCheck.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+Index: rpmlint-rpmlint-1.11/InitScriptCheck.py
+===================================================================
+--- rpmlint-rpmlint-1.11.orig/InitScriptCheck.py
++++ rpmlint-rpmlint-1.11/InitScriptCheck.py
+@@ -17,7 +17,7 @@ import AbstractCheck
+ import Config
+ from Filter import addDetails, printError, printWarning
+ import Pkg
+-
++import stat
+ 
+ chkconfig_content_regex = re.compile(r'^\s*#\s*chkconfig:\s*([-0-9]+)\s+[-0-9]+\s+[-0-9]+')
+ subsys_regex = re.compile(r'/var/lock/subsys/([^/"\'\s;&|]+)', re.MULTILINE)
+@@ -49,6 +49,9 @@ class InitScriptCheck(AbstractCheck.Abst
+                     not fname.startswith('/etc/rc.d/init.d/'):
+                 continue
+ 
++            if not stat.S_ISREG(pkgfile.mode):
++                continue
++
+             basename = os.path.basename(fname)
+             initscript_list.append(basename)
+             if pkgfile.mode & 0o500 != 0o500:

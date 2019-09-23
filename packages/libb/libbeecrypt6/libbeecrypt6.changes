@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Sat Jan 12 19:14:16 UTC 2013 - coolo@suse.com
+
+- remove suse_update_config
+
+-------------------------------------------------------------------
+Sun Nov 13 14:06:37 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Sun Nov 13 09:13:39 UTC 2011 - coolo@suse.com
+
+- add libtool as explicit buildrequire to avoid implicit dependency from prjconf
+
+-------------------------------------------------------------------
+Thu Feb 11 01:37:29 UTC 2010 - jengelh@medozas.de
+
+- actually put libbeecrypt.so into libdir rather than libaltdir
+
+-------------------------------------------------------------------
+Wed Feb 10 23:27:07 UTC 2010 - jengelh@medozas.de
+
+- correctly have lib64 passed to configure
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Mon Apr  7 11:26:08 CEST 2008 - jblunck@suse.de
+
+- Initial package
+- Fixed the beecrypt headers

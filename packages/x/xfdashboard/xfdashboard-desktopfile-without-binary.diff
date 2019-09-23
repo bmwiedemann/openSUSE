@@ -1,0 +1,45 @@
+diff --git a/data/xfdashboard-autostart.desktop.in.in b/data/xfdashboard-autostart.desktop.in.in
+index 16b40aa..40db7f3 100644
+--- a/data/xfdashboard-autostart.desktop.in.in
++++ b/data/xfdashboard-autostart.desktop.in.in
+@@ -2,8 +2,8 @@
+ Type=Application
+ _Name=Xfdashboard
+ _Comment=Start xfdashboard as daemon in background
+-TryExec=@bindir@/xfdashboard
+-Exec=@bindir@/xfdashboard -d
++TryExec=xfdashboard
++Exec=xfdashboard -d
+ Icon=xfdashboard
+ NotShowIn=GNOME;KDE;Unity;
+ Terminal=false
+diff --git a/data/xfdashboard-settings.desktop.in.in b/data/xfdashboard-settings.desktop.in.in
+index 24f0ab8..9406a99 100644
+--- a/data/xfdashboard-settings.desktop.in.in
++++ b/data/xfdashboard-settings.desktop.in.in
+@@ -4,8 +4,8 @@ Type=Application
+ _Name=Xfdashboard settings
+ _Comment=Configure xfdashboard
+ GenericName=Xfdashboard settings
+-TryExec=@bindir@/xfdashboard-settings
+-Exec=@bindir@/xfdashboard-settings
++TryExec=xfdashboard-settings
++Exec=xfdashboard-settings
+ Icon=xfdashboard
+ Categories=XFCE;GTK;Settings;DesktopSettings;X-XFCE-SettingsDialog;X-XFCE-PersonalSettings;
+ NotShowIn=GNOME;KDE;Unity;
+diff --git a/data/xfdashboard.desktop.in.in b/data/xfdashboard.desktop.in.in
+index 577ecf3..a31f4e7 100644
+--- a/data/xfdashboard.desktop.in.in
++++ b/data/xfdashboard.desktop.in.in
+@@ -3,8 +3,8 @@ Type=Application
+ _Name=Xfdashboard
+ _Comment=Maybe a Gnome shell like dashboard for Xfce
+ GenericName=Xfdashboard
+-TryExec=@bindir@/xfdashboard
+-Exec=@bindir@/xfdashboard
++TryExec=xfdashboard
++Exec=xfdashboard
+ Icon=xfdashboard
+ Categories=System;Applet;
+ NotShowIn=GNOME;KDE;Unity;

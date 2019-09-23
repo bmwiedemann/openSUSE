@@ -1,0 +1,42 @@
+From 3a843374f200b80b7e155059cd4e73171597880d Mon Sep 17 00:00:00 2001
+From: Ivan Grokhotkov <igrokhotkov@gmail.com>
+Date: Wed, 20 Jan 2016 12:21:26 +0300
+Subject: [PATCH 07/19] c++: Handle C++11 noexcept
+
+Manual cherry-pick of https://github.com/geany/geany/commit/f60b31385e4da74d3b926c8e0c8f97c00a508d7b
+---
+ c.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/c.c b/c.c
+index 6bc8b76..0dd84d7 100644
+--- a/c.c
++++ b/c.c
+@@ -77,7 +77,7 @@ typedef enum eKeywordId {
+ 	KEYWORD_LOCAL, KEYWORD_LONG,
+ 	KEYWORD_M_BAD_STATE, KEYWORD_M_BAD_TRANS, KEYWORD_M_STATE, KEYWORD_M_TRANS,
+ 	KEYWORD_MUTABLE,
+-	KEYWORD_NAMESPACE, KEYWORD_NEW, KEYWORD_NEWCOV, KEYWORD_NATIVE,
++	KEYWORD_NAMESPACE, KEYWORD_NEW, KEYWORD_NEWCOV, KEYWORD_NATIVE, KEYWORD_NOEXCEPT,
+ 	KEYWORD_OPERATOR, KEYWORD_OUTPUT, KEYWORD_OVERLOAD, KEYWORD_OVERRIDE,
+ 	KEYWORD_PACKED, KEYWORD_PORT, KEYWORD_PACKAGE, KEYWORD_PRIVATE,
+ 	KEYWORD_PROGRAM, KEYWORD_PROTECTED, KEYWORD_PUBLIC,
+@@ -419,6 +419,7 @@ static const keywordDesc KeywordTable [] = {
+ 	{ "native",         KEYWORD_NATIVE,         { 0, 0, 0, 1, 0 } },
+ 	{ "new",            KEYWORD_NEW,            { 0, 1, 1, 1, 0 } },
+ 	{ "newcov",         KEYWORD_NEWCOV,         { 0, 0, 0, 0, 1 } },
++	{ "noexcept",       KEYWORD_NOEXCEPT,       { 0, 1, 0, 0, 0 } },
+ 	{ "operator",       KEYWORD_OPERATOR,       { 0, 1, 1, 0, 0 } },
+ 	{ "output",         KEYWORD_OUTPUT,         { 0, 0, 0, 0, 1 } },
+ 	{ "overload",       KEYWORD_OVERLOAD,       { 0, 1, 0, 0, 0 } },
+@@ -1967,6 +1968,7 @@ static boolean skipPostArgumentStuff (
+ 				case KEYWORD_NAMESPACE:
+ 				case KEYWORD_NEW:
+ 				case KEYWORD_NEWCOV:
++				case KEYWORD_NOEXCEPT:
+ 				case KEYWORD_OPERATOR:
+ 				case KEYWORD_OVERLOAD:
+ 				case KEYWORD_PRIVATE:
+-- 
+2.11.0
+

@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>89cc69c26e8627286900855b1b5c5c5f</srcmd5>
+    <version>1.2</version>
+    <time>1559375086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703205</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>24d2c65c93f8a5baeff635c17ea35bdc</srcmd5>
+    <version>1.3</version>
+    <time>1560800089</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3:
+  * Fixed a bug in the tmpfs.py and passthroughfs.py example file systems</comment>
+    <requestid>710356</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a79c9f011bc6fe4dac13c416ecc4b8d7</srcmd5>
+    <version>1.3.1</version>
+    <time>1563914265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.1:
+  *  Fixed a bug in the :file:`hello_asyncio.py` example.</comment>
+    <requestid>717803</requestid>
+  </revision>
+</revisionlist>

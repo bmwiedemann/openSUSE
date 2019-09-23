@@ -1,0 +1,123 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f5f640c392eb81e0e2c80c14c700639b</srcmd5>
+    <version>4.1.19</version>
+    <time>1518813911</time>
+    <user>dimstar_suse</user>
+    <comment>Remove non-systemd things, obsolete fillup usage and
+obsolete requirements. To Factory and Beyond! :D</comment>
+    <requestid>577170</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f895e3c3ada20e6e0d071c82a4785ad6</srcmd5>
+    <version>4.1.19</version>
+    <time>1519145694</time>
+    <user>dimstar_suse</user>
+    <comment>- Own missing ownership for %_tmpfilesdir</comment>
+    <requestid>577998</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cbe9b3c2b2127649bbfa78e3b7d20c0a</srcmd5>
+    <version>4.1.20</version>
+    <time>1519218842</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578670</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b93cff372b6856514d1a3c4709f4fb6c</srcmd5>
+    <version>4.1.22</version>
+    <time>1530653707</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream release 4.1.22:
+  - Features:
+    * refuse-any sends truncation (+TC) in reply to ANY queries
+    over UDP, and allows TCP queries like normal.
+    * Use accept4 to speed up answer of TCP queries
+  - Bug fixes:
+    * Fix nsec3 hash of parent and child co-hosted nsec3 enabled zones.
+    * Fix to use same condition for nsec3 hash allocation and free.
+- Changes in version 4.1.21:
+  - Features:
+    * --enable-memclean cleans up memory for use with memory checkers,
+      eg. valgrind.
+    * refuse-any nsd.conf option that refuses queries of type ANY.
+    * lower memory usage for tcp connections, so tcp-count can be
+      higher.
+  - Bug fixes:
+    * Fix spelling error in xfr-inspect.
+    * Fix buffer size warnings from compiler on filename lengths.</comment>
+    <requestid>620436</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>771e157c7274748c6ae4f1e24876d5a3</srcmd5>
+    <version>4.1.23</version>
+    <time>1533549239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627482</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0c1e840d877332cb6e50afef42153c03</srcmd5>
+    <version>4.1.24</version>
+    <time>1534322298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629193</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>13a67672607c8f4ea0f2409410e43242</srcmd5>
+    <version>4.1.25</version>
+    <time>1537964663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638271</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f1dffa458ccfe75a5cff52237858d282</srcmd5>
+    <version>4.1.26</version>
+    <time>1544095049</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655291</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6b5dfc7b09d05e751396dfa44ba8dcd5</srcmd5>
+    <version>4.1.27</version>
+    <time>1553611527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688579</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4a327b2de5a64362fa53e6e94b9f7ecf</srcmd5>
+    <version>4.2.0</version>
+    <time>1560338346</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 4.2.0:
+  * Implement TCP fast open
+  * Added DNS over TLS
+  * TLS OCSP stapling support with the tls-service-ocsp option
+  * New option hide-identity can be used in nsd.conf to stop NSD
+    from responding with the hostname for probe queries that
+    elicit the chaos class response, this is conform RFC4892
+  * Disable TLS1.0, TLS1.1 and weak ciphers, enable CIPHER_SERVER_PREFERENCE</comment>
+    <requestid>709251</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5bc242cc95454fa74b48d9867516e359</srcmd5>
+    <version>4.2.1</version>
+    <time>1563259261</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715234</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>378c95c8221fd9bb70a14f5d9db5a54c</srcmd5>
+    <version>4.2.2</version>
+    <time>1568191245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729937</requestid>
+  </revision>
+</revisionlist>

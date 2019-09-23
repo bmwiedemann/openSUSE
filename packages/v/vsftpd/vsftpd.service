@@ -1,0 +1,9 @@
+[Unit]
+Description=Vsftpd ftp daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/vsftpd /etc/vsftpd.conf
+
+[Install]
+WantedBy=multi-user.target

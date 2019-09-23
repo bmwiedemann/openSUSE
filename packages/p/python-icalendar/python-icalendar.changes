@@ -1,0 +1,374 @@
+-------------------------------------------------------------------
+Wed Aug 21 14:46:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes and pytest calls
+
+-------------------------------------------------------------------
+Thu Mar  7 15:59:41 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove no longer necessary pytest argument
+  -k 'not test_create_america_new_york'
+
+-------------------------------------------------------------------
+Thu Nov 22 10:28:12 UTC 2018 - Karol Babioch <kbabioch@suse.de>
+
+- Version update to 4.0.3
+  * Categories are comma separated not 1 per line #265.
+  * mark test with mixed timezoneaware and naive datetimes as an expected
+    failure.
+
+-------------------------------------------------------------------
+Wed Aug 29 10:38:43 UTC 2018 - tchvatal@suse.com
+
+- Explicitly require hypothesis as it is requested in setup.py
+
+-------------------------------------------------------------------
+Thu Aug 23 08:09:51 UTC 2018 - tchvatal@suse.com
+
+- Version update to 4.0.2:
+  * Update all pypi.python.org URLs to pypi.org
+  * Added rudimentary command line interface.
+  * Readme, setup and travis updates.
+  * Drop support for Python 2.6 and 3.3.
+  * Accept Windows timezone identifiers as valid. #242 
+  * Fix ResourceWarnings in setup.py when Python warnings are enabled. #244
+  * Fix invalid escape sequences in string and bytes literals. #245
+  * Include license file in the generated wheel package. #243
+  * Fix non-ASCII TZID and TZNAME parameter handling. #238
+  * Docs: update install instructions. #240
+  * added vUTCOffset.ignore_exceptions to allow surpressing of failed TZOFFSET parsing (for now this ignores the check for offsets > 24h) 
+  * Fix VTIMEZONEs including RDATEs #234.
+- Update URL to point to the repo rather than to docs
+- Use %license for license install
+
+-------------------------------------------------------------------
+Tue Jul  4 06:59:44 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.11.5
+  * added an assertion that VTIMEZONE sub-components' DTSTART must 
+    be of type DATETIME [geier]
+  * Fix handling of VTIMEZONEs with subcomponents with the same 
+    DTSTARTs and OFFSETs but which are of different types  [geier]
+  3.11.4:
+  * Don't break on parameter values which contain equal signs, 
+    e.g. base64 encoded binary data [geier]
+  * Fix handling of VTIMEZONEs with subcomponents with the same 
+    DTSTARTs. [geier]
+  3.11.3:
+  * Removed ``setuptools`` as a dependency as it was only required 
+    by setup.py and not by the package.
+  * Don't split content lines on the unicode ``LINE SEPARATOR`` 
+    character ``\u2028`` but only on ``CRLF`` or ``LF``.
+
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Wed Jan 18 13:59:19 UTC 2017 - dmueller@suse.com
+
+- correct source url
+
+-------------------------------------------------------------------
+Sat Jan 14 18:34:28 UTC 2017 - hpj@urpla.net
+
+- update to version 3.11.2 (2017-01-12)
+  - Run tests with python 3.5 and 3.6. [geier]
+  - Allow tests failing with pypy3 on travis.ci. [geier]
+
+- update to version 3.11.1 (2016-12-19)
+  - Encode error message before adding it to the stack of collected error
+     messages.
+
+- update to version 3.11 (2016-11-18)
+  - Successfully test with pypy and pypy3. [gforcada]
+  - Minor documentation update. [tpltnt]
+
+- update to version 3.10 (2016-05-26)
+  - Updated components description to better comply with RFC 5545. Refs #183.
+    [stlaz]
+  - Added PERIOD value type to date types. Also fixes incompatibilities
+    described in #184. Refs #189. [stlaz]
+  - Fix testsuite for use with dateutil>=2.5. Refs #195. [untitaker]
+  - Reintroduce cal.Component.is_broken that was removed with 3.9.2. Refs #185.
+    [geier]
+
+- update to version 3.9.2 (2016-02-05)
+  - Defined test_suite in setup.py. Now tests can be run via python setup.py
+    test. [geier]
+  - Fixed cal.Component.from_ical() representing an unknown component as one of
+    the known. [stlaz]
+  - Fixed possible IndexError exception during parsing of an ical string. [stlaz]
+  - When doing a boolean test on icalendar.cal.Component, always return True.
+    Before it was returning False due to CaselessDict, if it didn’t contain any
+    items. [stlaz]
+  - Fixed date-time being recognized as date or time during parsing. Added
+    better error handling to parsing from ical strings. [stlaz]
+  - Added __version__ attribute to init.py. [TomTry]
+  - Documentation fixes. [TomTry]
+  - Pep 8, UTF 8 headers, dict/list calls to literals. [thet]
+
+-------------------------------------------------------------------
+Tue Mar 29 22:32:54 UTC 2016 - dmueller@suse.com
+
+- adjust to python-python-dateutil renaming 
+
+-------------------------------------------------------------------
+Thu Oct 22 14:09:21 UTC 2015 - mcihar@suse.cz
+
+- Removed not needed run time dependency on unittest2
+
+-------------------------------------------------------------------
+Fri Sep 25 13:27:07 UTC 2015 - michael@stroeder.com
+
+- Update to 3.9.1:
+  - Fix vPeriod.__repr__. [spacekpe]
+  - Improve foldline() performance. This improves the foldline
+    performance, especially for large strings like base64-encoded
+    inline attachements. In some cases (1MB string) from 7 Minutes
+    to less than 20ms for ASCII data and 500ms for non-ASCII data.
+    Ref: #163. [emfree]
+
+-------------------------------------------------------------------
+Mon Jul 13 13:12:38 UTC 2015 - toddrme2178@gmail.com
+
+- Fix building on SLES 11
+
+-------------------------------------------------------------------
+Thu Apr 23 06:57:19 UTC 2015 - mcihar@suse.cz
+
+- Update to 3.9.0:
+  - Creating timezone objects from VTIMEZONE components.
+  - Make ``python-dateutil`` a dependency.
+  - Made RRULE tolerant of trailing semicolons.
+  - Documentation fixes.
+- Use .tar.gz as Source
+- Add missing dependency on pytz, dateutil
+- Run testsuite in %check and adjust build requires
+
+-------------------------------------------------------------------
+Wed Nov  5 10:14:04 UTC 2014 - seiler@b1-systems.de
+
+update to version 3.8.4 changelog from 3.5
+- 3.8.4 (2014-11-01)
+ * Add missing BYWEEKNO to recurrence rules. [russkel]
+- 3.8.3 (2014-08-26)
+ * PERCENT property in VTODO renamed to PERCENT-COMPLETE, according to RFC5545. [thomascube]
+- 3.8.2 (2014-07-22)
+ * Exclude editor backup files from egg distributions. Fixes #144. [thet]
+- 3.8.1 (2014-07-17)
+ * The representation of CaselessDicts in 3.8 changed the name attribute of Components and therefore broke the external API. This has been fixed. [untitaker]
+- 3.8 (2014-07-17)
+ * Allow dots in property names (Needed for vCard compatibility). Refs #143. [untitaker]
+ * Change class representation for CaselessDict objects to always include the class name or the class' name attribute, if available. Also show subcomponents for Component objects. [thet]
+ * Don't use data_encode for CaselessDict class representation but use dict's __repr__ method. [t-8ch]
+ * Handle parameters with multiple values, which is needed for vCard 3.0. Refs #142. [t-8ch]
+- 3.7 (2014-06-02)
+ * For components with ignore_exceptions set to True, mark unparseable lines as broken instead rising a ValueError. VEVENT components have ignore_exceptions set to True by default. Ref #131. Fixes #104. [jkiang13]
+ * Make python-dateutil a soft-dependency. [boltnev]
+ * Add optional sorted parameter to Component.to_ical. Setting it to false allows the user to preserve the original property and parameter order. Ref #136. Fixes #133. [untitaker]
+ * Fix tests for latest pytz. Don't set tzinfo directly on datetime objects, but use pytz's localize function. Ref #138. [untitaker, thet]
+ * Remove incorrect use of __all__. We don't encourage using from package import * imports. Fixes #129. [eric-wieser]
+- 3.6.2 (2014-04-05)
+ * Pep8 and cleanup. [lasudry]
+- 3.6.1 (2014-01-13)
+ * Open text files referenced by setup.py as utf-8, no matter what the locale settings are set to. Fixes #122. [sochotnicky]
+ * Add tox.ini to source tarball, which simplifies testing for in distributions. [sochotnicky]
+- 3.6 (2014-01-06)
+ * Python3 (3.3+) + Python 2 (2.6+) support [geier]
+ * Made sure to_ical() always returns bytes [geier]
+ * Support adding lists to a component property, which value already was a list and remove the Component.set method, which was only used by the add method. [thet]
+ * Remove ability to add property parameters via a value's params attribute when adding via cal.add (that was only possible for custom value objects and makes up a strange API), but support a parameter attribute on cal.add's method signature to pass a dictionary with property parameter key/value pairs. Fixes #116. [thet]
+ * Backport some of Regebro's changes from his regebro-refactor branch. [thet]
+ * Raise explicit error on another malformed content line case. [hajdbo]
+ * Correctly parse datetime component property values with timezone information when parsed from ical strings. [untitaker]
+
+-------------------------------------------------------------------
+Sat Nov  9 11:03:21 UTC 2013 - p.drouand@gmail.com
+
+- Use tarball from https://pypi.python.org/ 
+- Fix download link used as source
+
+-------------------------------------------------------------------
+Fri Nov  8 13:53:51 UTC 2013 - aj@ajaissle.de
+
+- New upstream release 3.5
+- Changelog for 3.5
+  * Let to_unicode be more graceful for non-unicode strings, as like CMFPlone’s safe_unicode does it. [thet] 
+- Changelog for 3.4
+  * Switch to unicode internally. This should fix all en/decoding errors. [thet]
+  * Support for non-ascii parameter values. Fixes #88. [warvariuc]
+  * Added functions to transform chars in string with ‘\’ + any of r’,;:’ chars into ‘%{:02X}’ form to avoid splitting on chars escaped with ‘\’. [warvariuc]
+  * Allow seconds in vUTCOffset properties. Fixes #55. [thet]
+  * Let Component.decode better handle vRecur and vDDDLists properties. Fixes #70. [thet]
+  * Don’t let Component.add re-encode already encoded values. This simplifies the API, since there is no need explicitly pass encode=False. Fixes #82. [thet]
+  * Rename tzinfo_from_dt to tzid_from_dt, which is what it does. [thet]
+  * More support for dateutil parsed tzinfo objects. Fixes #89. [leo-naeka]
+  * Remove python-dateutil version fix at all. Current python-dateutil has Py3 and Py2 compatibility. [thet]
+  * Declare the required python-dateutil dependency in setup.py. Fixes #90. [kleink]
+  * Raise test coverage. [thet]
+  * Remove interfaces module, as it is unused. [thet]
+  * Remove test_doctests.py, test suite already created properly in test_icalendar.py. [rnix]
+  * Transformed doctests into unittests, Test fixes and cleanup. [warvariuc]
+
+-------------------------------------------------------------------
+Thu Oct 24 11:06:45 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Sat Feb  9 15:46:49 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 3.3:
+  * Drop support for Python < 2.6.
+  * Allow vGeo to be instantiated with list and not only tuples of geo
+    coordinates. Fixes #83.
+  * Don't force to pass a list to vDDDLists and allow setting individual
+    RDATE and EXDATE values without having to wrap them in a list.
+  * Fix encoding function to allow setting RDATE and EXDATE values and not
+    to have bypass encoding with an icalendar property.
+  * Allow setting of timezone for vDDDLists and support timezone properties
+    for RDATE and EXDATE component properties.
+  * Move setting of TZID properties to vDDDTypes, where it belongs to.
+  * Use @staticmethod decorator instead of wrapper function.
+  * Extend quoting of parameter values to all of those characters: ",;: ’'".
+    This fixes an outlook incompatibility with some characters. Fixes: #79, Fixes: #81.
+  * Define VTIMETZONE subcomponents STANDARD and DAYLIGHT for RFC5545 compliance.
+- Remove the "Clean" section, useless.
+
+-------------------------------------------------------------------
+Wed Jan  2 19:44:41 UTC 2013 - toddrme2178@gmail.com
+
+- Fix building on SLES
+
+-------------------------------------------------------------------
+Sat Sep  8 19:38:36 UTC 2012 - os-dev@jacraig.com
+
+- Update to 3.1:
+  * Make sure parameters to certain properties propagate to the ical output.
+  * Re-include doctests.
+  * endure correct datatype at instance creation time in ``prop.vCalAddress``
+    and ``prop.vText``.
+  * Apply TZID parameter to datetimes parsed from RECURRENCE-ID
+  * Localize datetimes for timezones to avoid DST transition errors.
+  * Allow UTC-OFFSET property value data types in seconds, which follows
+    RFC5545 specification.
+  * Remove utctz and normalized_timezone methods to simplify the codebase. The
+    methods were too tiny to be useful and just used at one place.
+  * When using Component.add() to add icalendar properties, force a value
+    conversion to UTC for CREATED, DTSTART and LAST-MODIFIED. The RFC expects
+    UTC for those properties.
+  * Removed last occurrences of old API (from_string).
+  * Add 'recursive' argument to property_items() to switch recursive listing.
+    For example when parsing a text/calendar text including multiple
+    components (e.g. a VCALENDAR with 5 VEVENTs), the previous situation
+    required us to look over all properties in VEVENTs even if we just want
+    the properties under the VCALENDAR component (VERSION, PRODID, CALSCALE,
+    METHOD).
+  * All unit tests fixed.
+- Remove Sphinx dependency since HTML docs aren't generated anymore.
+- Don't rm .swp files anymore, they were removed upstream.
+
+-------------------------------------------------------------------
+Tue Jun 26 12:54:58 UTC 2012 - toddrme2178@gmail.com
+
+- Fix building on SLE 11
+- updated license to BSD-2-Clause
+- Note 1: The fork has taken over maintainership and is now the 
+  official version
+- Note 2: The previous package was a git version from what was the 
+  fork.  The git tarball had version number 3.0, but for 
+  completeness this changes entry includes changes since the last
+  official release, 2.2  
+- Update to 3.0.1b2
+  * For all TZID parameters in DATE-TIME properties, use timezone
+    identifiers (e.g. Europe/Vienna) instead of timezone names 
+    (e.g. CET), as required by RFC5545. Timezone names are used 
+    together with timezone identifiers in the Timezone components
+  * Timezone parsing, issues and test fixes.
+  * Since we use pytz for timezones, also use UTC tzinfo object 
+    from the pytz  library instead of own implementation.
+- Update to 3.0.1b1
+  * Update Release information.
+- Update to 3.0
+  * Add API for proper Timezone support. Allow creating ical 
+    DATE-TIME strings with timezone information from Python 
+    datetimes with pytz based timezone information and vice versa
+  * Unify API to only use to_ical and from_ical and remove string 
+    casting as a requirement for Python 3 compatibility:
+    * New: to_ical.
+    * Old: ical, string, as_string and string casting via __str__
+           and str.
+    * New: from_ical.
+    * Old: from_string.
+
+-------------------------------------------------------------------
+Thu Dec 15 10:34:22 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Thu Sep 22 14:26:58 UTC 2011 - Sascha.Manns@open-slx.de
+
+- fixed license issue
+- closed bug bnx#714664 
+
+-------------------------------------------------------------------
+Sun Aug 28 15:43:30 UTC 2011 - Sascha.Manns@open-slx.de
+
+- fixed fdupes issue 
+
+-------------------------------------------------------------------
+Sun Aug 28 15:24:58 UTC 2011 - Sascha.Manns@open-slx.de
+
+- updated Ownership
+- removed rpmlintrc 
+
+-------------------------------------------------------------------
+Sun Aug 28 10:09:54 CEST 2011 - hpj@urpla.net
+
+- updated to forked version 2.2
+
+-------------------------------------------------------------------
+Fri Dec 24 12:39:25 UTC 2010 - saigkill@opensuse.org
+
+- removed BuildArch: noarch 
+
+-------------------------------------------------------------------
+Mon Dec 14 18:07:59 UTC 2009 - saigkill@opensuse.org
+
+- updated to Version 2.1 
+
+-------------------------------------------------------------------
+Sun Aug  9 19:33:03 UTC 2009 - saigkill@opensuse.org
+
+- fixed some little Errors with the lib path 
+
+------------------------------------------------------------------
+Sat Apr 18 19:52:33 CEST 2009 - saigkill@opensuse.org
+
+- removed %%buildroot duplicate
+
+------------------------------------------------------------------
+Sat Apr 18 12:11:23 CEST 2009 - saigkill@opensuse.org
+
+- uses %%optflags, %%py_requires and 
+  Sourcepackage (from remote to local)
+
+------------------------------------------------------------------
+Sat Mar 14 23:00:41 CET 2009 - saigkill@opensuse.org
+
+- added rpmlintrc
+
+------------------------------------------------------------------
+Fri Jan 08 12:00:00 CET 2009 - saigkill@opensuse.org -
+
+- updated Specfile & Makros
+
+------------------------------------------------------------------
+Fri Jan 02 12:00:00 CET 2009 - saigkill@opensuse.org 
+
+- python Version 1.2 for openSUSE_11.0
+
+------------------------------------------------------------------
+Thu Jan 01 12:00:00 CET 2009 - saigkill@opensuse.org 
+
+- builded initial version iCalendar from SVN Version

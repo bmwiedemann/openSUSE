@@ -1,0 +1,226 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>efcf05d1140da8b2456232de6fd090c7</srcmd5>
+    <version>009</version>
+    <time>1201058884</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="13">
+    <srcmd5>b4c16dfde6200f2c37d53cf32e0486e3</srcmd5>
+    <version>009</version>
+    <time>1205693522</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>af097747ad148ca9a51489dd6f6f561e</srcmd5>
+    <version>011</version>
+    <time>1207858451</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b6c08ddf7b9fbb3af5f452246040268a</srcmd5>
+    <version>011</version>
+    <time>1208026557</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="36">
+    <srcmd5>b6c08ddf7b9fbb3af5f452246040268a</srcmd5>
+    <version>011</version>
+    <time>1208026557</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="37">
+    <srcmd5>51660d42931eb36e3543432bb1b1f4c3</srcmd5>
+    <version>011</version>
+    <time>1234198108</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c52e2be7f5078b3020f9331adcbf46d8</srcmd5>
+    <version>012</version>
+    <time>1249316694</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c52e2be7f5078b3020f9331adcbf46d8</srcmd5>
+    <version>012</version>
+    <time>1249316694</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>7ba1c210ff412622afb74b59e559887e</srcmd5>
+    <version>012</version>
+    <time>1264077177</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/b43-fwcutter based on submit request 29890 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>09d72ec75cf53ffd8401247a1fe895ad</srcmd5>
+    <version>012</version>
+    <time>1268922979</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>09d72ec75cf53ffd8401247a1fe895ad</srcmd5>
+    <version>012</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>09d72ec75cf53ffd8401247a1fe895ad</srcmd5>
+    <version>012</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>09d72ec75cf53ffd8401247a1fe895ad</srcmd5>
+    <version>012</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>fccc96deea21084f0a615ce09a99f062</srcmd5>
+    <version>012</version>
+    <time>1314022681</time>
+    <user>saschpe</user>
+    <comment>- Remove 2 files that require 300+ MB downloads
+- Add 5 new files with newest firmware (508.X, 644.1001, and 666.2)
+  * 802.11 cores through rev 22 are supported
+- the install_bcm43xx_firmware script now unloads and
+  reloads the driver so that it will work immediately
+- Removed firmware-IDs from fwcutter - they are not maintained in kernel
+- Updated to Revision 15</comment>
+    <requestid>79465</requestid>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>47e747c19f6963a270c8b4f9fcf1d16c</srcmd5>
+    <version>012</version>
+    <time>1314022691</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79465
+</comment>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>273a5fdb07cd449dd4636407e0ea98bc</srcmd5>
+    <version>012</version>
+    <time>1316449787</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 82879 from jengelh)</comment>
+    <requestid>82958</requestid>
+  </revision>
+  <revision rev="17" vrev="16">
+    <srcmd5>273a5fdb07cd449dd4636407e0ea98bc</srcmd5>
+    <version>012</version>
+    <time>1319181784</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="17">
+    <srcmd5>eb1ccd14851c1e3e3c074cfbd915c2e5</srcmd5>
+    <version>012</version>
+    <time>1323190814</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>eb1ccd14851c1e3e3c074cfbd915c2e5</srcmd5>
+    <version>012</version>
+    <time>1340183194</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>6609885691685814f0f0483ac9ee2b71</srcmd5>
+    <version>012</version>
+    <time>1345809066</time>
+    <user>namtrac</user>
+    <comment>license update: BSD-2-Clause
+Only BSD-2-Clause license found in the package (forwarded request 131388 from babelworx)</comment>
+    <requestid>131402</requestid>
+  </revision>
+  <revision rev="21" vrev="22">
+    <srcmd5>6609885691685814f0f0483ac9ee2b71</srcmd5>
+    <version>012</version>
+    <time>1359108689</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b0a97c165429e4268b787ee82c0e621f</srcmd5>
+    <version>017</version>
+    <time>1366213057</time>
+    <user>coolo</user>
+    <comment>- Update to v017
+- Update source URL for firmware
+
+Kernels &gt; 3.1 with newer Broadcom hardware require this. (forwarded request 171283 from jeff_mahoney)</comment>
+    <requestid>171286</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>ca30c8bff340169e7a8e047c74b6a2b1</srcmd5>
+    <version>017</version>
+    <time>1366722276</time>
+    <user>coolo</user>
+    <comment>Added bugid and name of the removed patch to the changes-file for the currently running update (forwarded request 172982 from BenniBrunner)</comment>
+    <requestid>172991</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>ba14f48ad70ca25970f46f3dadd802f0</srcmd5>
+    <version>017</version>
+    <time>1378748595</time>
+    <user>coolo</user>
+    <comment>- add Supplements for the rest of devices supported by the b43 
+  and b43legacy drivers. (forwarded request 197799 from elvigia)</comment>
+    <requestid>198002</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>ba14f48ad70ca25970f46f3dadd802f0</srcmd5>
+    <version>017</version>
+    <time>1379662020</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e6bea2854bd4712a6663bbc3aa995e5a</srcmd5>
+    <version>018</version>
+    <time>1385489826</time>
+    <user>coolo</user>
+    <comment>- Update to version 018 (no changelog) (forwarded request 208177 from elvigia)</comment>
+    <requestid>208555</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>e6bea2854bd4712a6663bbc3aa995e5a</srcmd5>
+    <version>018</version>
+    <time>1409300545</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>bb122b327dad20a66e2aaeea14d63f6a</srcmd5>
+    <version>019</version>
+    <time>1415866655</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260943</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>d3ee42e14f75a5f2b25f9bb364c8bcaf</srcmd5>
+    <version>019</version>
+    <time>1418737678</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264757</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>794474013bd91fecc7aefbd721525435</srcmd5>
+    <version>019</version>
+    <time>1452263014</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352399</requestid>
+  </revision>
+</revisionlist>

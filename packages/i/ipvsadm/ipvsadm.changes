@@ -1,0 +1,160 @@
+-------------------------------------------------------------------
+Thu Nov 23 13:46:06 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Thu Jan  5 15:02:55 UTC 2017 - p.drouand@gmail.com
+
+- Update to version 1.29
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Dec 20 09:01:21 UTC 2016 - mt@suse.de
+
+- fixed systemd service file to restore correct config file at
+  start (/etc/ipvsadm.rules) and do not break boot-time config
+  at stop (bsc#1013581).
+
+-------------------------------------------------------------------
+Tue Dec  1 14:16:43 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.28
+  * No changelog available
+- Update download Url
+- Remove obsolete patches
+  * 03_libnl-3-linking.patch 
+  * ipvsadm-1.26-ipvs_dests_parse_cb-memory-corruption.diff 
+  * ipvsadm-1.26-wrong-error-with--ops-option.bnc847005.diff 
+- Update ipvsadm-1.26-print_largenum.diff > ipvsadm-print_largenum.diff 
+
+-------------------------------------------------------------------
+Wed May 28 01:07:07 UTC 2014 - crrodriguez@opensuse.org
+
+- 03_libnl-3-linking.patch from debian, allow use of libnl3 
+ instead of libnl1
+
+-------------------------------------------------------------------
+Wed May 21 11:08:18 UTC 2014 - jsegitz@novell.com
+
+- added necessary macros for systemd files
+
+-------------------------------------------------------------------
+Thu Feb 13 10:33:04 UTC 2014 - mt@suse.de
+
+- Fix segfault when running 'ipvsadm -Ln' caused by buffer overrun
+  in ipvs_dests_parse_cb() function (bnc#775051), by Tim Serong.
+  [+ ipvsadm-1.26-ipvs_dests_parse_cb-memory-corruption.diff]
+- Fix wrong error message when using ipvsadm with option "--ops"
+  (bnc#847005), by Paul Zirnik.
+  [+ ipvsadm-1.26-wrong-error-with--ops-option.bnc847005.diff]
+
+-------------------------------------------------------------------
+Mon Oct 28 16:02:10 UTC 2013 - p.drouand@gmail.com
+
+- Add systemd support and drop sysvinit support
+- Remove AUTHORS section
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Fri Sep 16 12:02:37 UTC 2011 - jengelh@medozas.de
+
+- Select libnl-1_1-devel
+
+-------------------------------------------------------------------
+Tue Feb  8 19:30:56 UTC 2011 - mt@suse.de
+
+- Updated to ipvsadm-1.26 (for kernel 2.6.28-rc3 or later)
+  adding IPv6 support, netlink interface and code cleanups.
+- Adopted patches and spec file, switched to use new netlink
+  interface and popt (getopt support dropped).
+- Fixed rpmlint warnings in the init script and spec file.
+
+-------------------------------------------------------------------
+Mon Aug 25 18:32:58 CEST 2008 - mt@suse.de
+
+- init script: copy LSB *-Start tags to *-Stop
+
+-------------------------------------------------------------------
+Sat May 27 20:10:37 CEST 2006 - schwab@suse.de
+
+- Use RPM_OPT_FLAGS.
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:41 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct  5 14:21:32 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Wed Jan 28 12:55:37 CET 2004 - ro@suse.de
+
+- update to 1.24
+
+-------------------------------------------------------------------
+Sat Sep 13 01:41:59 CEST 2003 - ro@suse.de
+
+- configure kernel-source if needed 
+
+-------------------------------------------------------------------
+Tue Aug 19 14:32:18 CEST 2003 - mt@suse.de
+
+- added "ServiceRestart: ipvsadm" yast2 metadata
+  to sysconfig file
+
+-------------------------------------------------------------------
+Fri Jan 31 13:24:30 CET 2003 - mt@suse.de
+
+- added yast2 metadata variables to sysconfig file
+
+-------------------------------------------------------------------
+Wed Sep  4 15:35:54 CEST 2002 - mt@suse.de
+
+- fixed rpm group (Productivity/Networking/System)
+- changed failed to skipped if not configured
+- removed some echo prefixes and colons
+- added rpm dependency to grep
+
+-------------------------------------------------------------------
+Mon Aug 19 16:28:20 CEST 2002 - mmj@suse.de
+
+- Correct PreReq
+
+-------------------------------------------------------------------
+Mon Aug  5 12:53:18 CEST 2002 - ro@suse.de
+
+- update to 1.21 to compile with current kernel 
+
+-------------------------------------------------------------------
+Tue Jul 30 17:51:13 CEST 2002 - ro@suse.de
+
+- fix patch 
+
+-------------------------------------------------------------------
+Fri Jul 19 02:40:04 MEST 2002 - mt@suse.de
+
+- updated to ipvsadm-1.20
+- enabled getopt usage, since newer popt is needed
+
+-------------------------------------------------------------------
+Tue Jan 15 00:19:24 CET 2002 - ro@suse.de
+
+- removed START_IPVSADM 
+
+-------------------------------------------------------------------
+Fri Jul 27 16:15:53 MEST 2001 - mt@suse.de
+
+- fixed popt dependency
+- fixed init script to be LSB complaient
+
+-------------------------------------------------------------------
+Fri Apr 27 06:32:27 MEST 2001 - mge@suse.de
+
+- initial SuSE RPM
+

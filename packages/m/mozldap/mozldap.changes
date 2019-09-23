@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Fri Dec 22 08:14:37 UTC 2017 - dimstar@opensuse.org
+
+- Add mozldap-perl-5.24.patch: Fix build with perl 5.24.
+
+-------------------------------------------------------------------
+Thu Dec  7 11:14:17 UTC 2017 - dimstar@opensuse.org
+
+- Escape the usage of %{VERSION} when calling out to rpm.
+  RPM 4.14 has %{VERSION} defined as 'the main packages version'.
+
+-------------------------------------------------------------------
+Tue Feb 17 16:40:17 UTC 2015 - lars@linux-schulserver.de
+
+- rebased all patches to cleanly apply with fuzz=0
+
+-------------------------------------------------------------------
+Wed Dec 17 21:14:33 UTC 2014 - aj@ajaissle.de
+
+- Throw libraries into a sub package mozldap-libs (to not confuse users)
+
+- Add patch mozldap-6.0.7-support-tls1.1-and-later.patch
+  * Disable SSLv3
+  * Support TLS 1.1 and newer using the NSS Version Range APIs
+
+- Add patch mozldap-6.0.7-fix_typo.patch
+  * Fix a typo in libssldap
+
+- Add patch mozldap-6.0.7-replace_mktemp.patch
+  * Replace mktemp  with mkstemp to prevent race conditions
+
+-------------------------------------------------------------------
+Fri Dec 12 12:40:12 UTC 2014 - aj@ajaissle.de
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Mon Apr 11 06:50:42 UTC 2011 - wr@rosenauer.org
+
+- update to version 6.0.7
+- cleaned up License tags
+
+-------------------------------------------------------------------
+Fri Dec 25 14:35:24 CET 2009 - wr@rosenauer.org
+
+- initial openSUSE package
+

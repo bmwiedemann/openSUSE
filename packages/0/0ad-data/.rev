@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>79d35afe2502ac0516079ca224b2eb3e</srcmd5>
+    <version>0.0.20</version>
+    <time>1464204156</time>
+    <user>dimstar_suse</user>
+    <comment>linkfix</comment>
+    <requestid>395590</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>430b1f230551cb5ca6d284cfda8536d5</srcmd5>
+    <version>0.0.20</version>
+    <time>1466333592</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403377</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d024e4448fc40edc6e80484c7320bd78</srcmd5>
+    <version>0.0.21</version>
+    <time>1485250339</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>446509</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>75e68bd9e1d82fe2fc73a29cf0e0b4d4</srcmd5>
+    <version>0.0.22</version>
+    <time>1502366668</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512962</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>01e10ead841ad1a4859e50ef921b15b0</srcmd5>
+    <version>0.0.23</version>
+    <time>1527605303</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610439</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ef3c3448bf926b71d775dc7ae4da3111</srcmd5>
+    <version>0.0.23b</version>
+    <time>1545867017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661489</requestid>
+  </revision>
+</revisionlist>

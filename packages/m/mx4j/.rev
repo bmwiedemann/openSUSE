@@ -1,0 +1,217 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0184174be6cd26e4dbb16a8625e4eb43</srcmd5>
+    <version>3.0.1</version>
+    <time>1168614906</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="26">
+    <srcmd5>620eebd0d66c47a4754eb480fd63074b</srcmd5>
+    <version>3.0.1</version>
+    <time>1178225396</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="34">
+    <srcmd5>292cef6a14cccd11b0927aa719908634</srcmd5>
+    <version>3.0.1</version>
+    <time>1178647602</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="180">
+    <srcmd5>f4124969e48106b8defef1b2e6b1bfa4</srcmd5>
+    <version>3.0.1</version>
+    <time>1207769019</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="223">
+    <srcmd5>5ea2350b85d893c5e07f96dccd9cbf15</srcmd5>
+    <version>3.0.1</version>
+    <time>1216156563</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="272">
+    <srcmd5>693c28b37a205953715352fccc449882</srcmd5>
+    <version>3.0.1</version>
+    <time>1245365680</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="274">
+    <srcmd5>693c28b37a205953715352fccc449882</srcmd5>
+    <version>3.0.1</version>
+    <time>1245365680</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3ede5bef39a96eccda3bc0bbe0879213</srcmd5>
+    <version>3.0.2</version>
+    <time>1259156429</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/mx4j based on submit request 25027 from user mvyskocil
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1497695546d41be9a358e399c97e168c</srcmd5>
+    <version>3.0.2</version>
+    <time>1268925021</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>1497695546d41be9a358e399c97e168c</srcmd5>
+    <version>3.0.2</version>
+    <time>1278667369</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>1497695546d41be9a358e399c97e168c</srcmd5>
+    <version>3.0.2</version>
+    <time>1278678599</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>1497695546d41be9a358e399c97e168c</srcmd5>
+    <version>3.0.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>be1e192b4a71de240ba150e5041dbf5c</srcmd5>
+    <version>3.0.2</version>
+    <time>1316447731</time>
+    <user>lrupp</user>
+    <comment>- add openjdk do buildrequires allowing a build again</comment>
+    <requestid>83569</requestid>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>be1e192b4a71de240ba150e5041dbf5c</srcmd5>
+    <version>3.0.2</version>
+    <time>1319182190</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>093761502f310b6c6370cdc5352e4f80</srcmd5>
+    <version>3.0.2</version>
+    <time>1323192639</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>093761502f310b6c6370cdc5352e4f80</srcmd5>
+    <version>3.0.2</version>
+    <time>1340183717</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>5a3a4797dcfd4abbf3fa7187d2dc9e7a</srcmd5>
+    <version>3.0.2</version>
+    <time>1340733732</time>
+    <user>coolo</user>
+    <comment>- use java-devel &gt;= 1.6.0 to build after jdk6 drop</comment>
+    <requestid>126194</requestid>
+  </revision>
+  <revision rev="18" vrev="17">
+    <srcmd5>5a3a4797dcfd4abbf3fa7187d2dc9e7a</srcmd5>
+    <version>3.0.2</version>
+    <time>1359109472</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="18">
+    <srcmd5>857dc89d8340af7622512a733438280a</srcmd5>
+    <version>3.0.2</version>
+    <time>1378998275</time>
+    <user>scarabeus_factory</user>
+    <comment>jpackage-utils collison fix</comment>
+    <requestid>198698</requestid>
+  </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>857dc89d8340af7622512a733438280a</srcmd5>
+    <version>3.0.2</version>
+    <time>1379663327</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>e827ff81aaed92c3dd8e88e9da3f23e1</srcmd5>
+    <version>3.0.2</version>
+    <time>1404161406</time>
+    <user>coolo</user>
+    <comment>FWD Java:packages fixes</comment>
+    <requestid>238904</requestid>
+  </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>7631ce79a9abe3ce0010737c137b8a0b</srcmd5>
+    <version>3.0.2</version>
+    <time>1405522195</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240357</requestid>
+  </revision>
+  <revision rev="23" vrev="23">
+    <srcmd5>8179b05b6f4ba39fcf92ee3683e843de</srcmd5>
+    <version>3.0.2</version>
+    <time>1406914025</time>
+    <user>coolo</user>
+    <comment>- Cleanup with spec-cleaner and fixup update-alternatives code</comment>
+    <requestid>242669</requestid>
+  </revision>
+  <revision rev="24" vrev="25">
+    <srcmd5>8179b05b6f4ba39fcf92ee3683e843de</srcmd5>
+    <version>3.0.2</version>
+    <time>1409301944</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="26">
+    <srcmd5>9643fe46a7d2ecf49d43558f3d0ff90a</srcmd5>
+    <version>3.0.2</version>
+    <time>1495883558</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop dependency over jython, not needed
+- Remove unused conditional</comment>
+    <requestid>496842</requestid>
+  </revision>
+  <revision rev="26" vrev="27">
+    <srcmd5>9ce5bb2abd23cc7d956b7af77b9a4c8a</srcmd5>
+    <version>3.0.2</version>
+    <time>1505334493</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on system with java 9 being the default</comment>
+    <requestid>523678</requestid>
+  </revision>
+  <revision rev="27" vrev="28">
+    <srcmd5>7efbf8853944e358028261632fb81e60</srcmd5>
+    <version>3.0.2</version>
+    <time>1507628379</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>531545</requestid>
+  </revision>
+  <revision rev="28" vrev="29">
+    <srcmd5>3bca38882d0a75c8e25af289dff73438</srcmd5>
+    <version>3.0.2</version>
+    <time>1532446391</time>
+    <user>dimstar_suse</user>
+    <comment>BuildConflict with jdk11+</comment>
+    <requestid>623103</requestid>
+  </revision>
+  <revision rev="29" vrev="30">
+    <srcmd5>28dfaec7c5bcc8bce8be702ae24a4423</srcmd5>
+    <version>3.0.2</version>
+    <time>1544441006</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>656071</requestid>
+  </revision>
+  <revision rev="30" vrev="31">
+    <srcmd5>b973bfcf0d58a09d0ce80d8fa3cc944a</srcmd5>
+    <version>3.0.2</version>
+    <time>1549916253</time>
+    <user>dimstar_suse</user>
+    <comment>Clean up the build requires</comment>
+    <requestid>672372</requestid>
+  </revision>
+</revisionlist>

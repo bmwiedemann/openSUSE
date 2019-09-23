@@ -1,0 +1,8 @@
+<package name="submin" project="openSUSE:Factory">
+  <title>Web Adminstration Interface to Subversion</title>
+  <description> Submin provides a Web-based admin interface to your subversion repositories. Its features include user/group management, path permission management, and the ability to create svn repositories.
+
+It uses htpasswd/svn authz for authentication, so it can use the same login information as apache2/svn (and trac).</description>
+  <devel project="devel:tools:scm:svn" package="submin"/>
+  <url>http://supermind.nl/submin/</url>
+</package>

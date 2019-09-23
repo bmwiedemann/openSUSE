@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# Copyright (c) 2007 SuSE Linux Products GmbH, Nuernberg, Germany.
+#
+# Please submit bugfixes or comments via http://www.suse.de/feedback/
+#
+# Author: Klaus Singvogel, 2007
+#
+#
+
+#
+# paranoia settings
+#
+umask 022
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+export PATH
+
+#
+# get information from /etc/sysconfig
+#
+if [ -f /etc/sysconfig/sarg ] ; then
+    . /etc/sysconfig/sarg
+fi
+
+if [ -n "$RUN_SARGREPORT" -a "$RUN_SARGREPORT" = "yes" -a \
+     -x /usr/sbin/sarg-reports ]; then
+     /usr/sbin/sarg-reports monthly
+fi
+
+exit 0

@@ -1,0 +1,182 @@
+-------------------------------------------------------------------
+Tue Aug 13 14:53:11 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.8.5
+  * Mostly internal changes
+
+-------------------------------------------------------------------
+Mon Aug  5 15:46:19 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix name clash with raise() from signal.h, add
+  ft-lib_bcache-rename-raise-raise_.patch
+
+-------------------------------------------------------------------
+Wed May 29 15:00:34 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.8.3:
+  * Mostly internal changes
+
+-------------------------------------------------------------------
+Fri Aug 17 11:20:11 UTC 2018 - adam.majer@suse.de
+
+- boost_168.patch: fix build with Boost 1.68. This version of Boost
+  removes compatibility SHA1 header from Uuid library. (bsc#1105088)
+
+-------------------------------------------------------------------
+Thu May 31 13:57:20 UTC 2018 - mpluskal@suse.com
+
+- Update to version 0.7.6:
+  * Mostly internal changes
+
+-------------------------------------------------------------------
+Wed Mar 14 08:55:26 UTC 2018 - mpluskal@suse.com
+
+- Modernise spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Dec  6 15:51:27 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.7.5:
+  * Fix a bug that stopped cache_restore working with metadata
+    version 2.
+
+-------------------------------------------------------------------
+Tue Oct 17 10:37:52 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.7.4:
+  * No changes provided for this release
+
+-------------------------------------------------------------------
+Mon Oct  9 10:41:16 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.7.3:
+  * Misc internal changes
+  * Updates to tests
+
+-------------------------------------------------------------------
+Mon Oct  2 12:18:40 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.7.2:
+  * Misc internal changes
+  * Updated documentation and manpages
+
+-------------------------------------------------------------------
+Tue Sep  5 10:21:05 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.7.1:
+  * Misc internal changes
+- Enable development tools building
+
+-------------------------------------------------------------------
+Mon Aug 28 13:42:33 UTC 2017 - mmarek@suse.com
+
+- Depend on coreutils for initrd macros (bsc#1055492).
+
+-------------------------------------------------------------------
+Sun Jun 18 21:15:28 UTC 2017 - mpluskal@suse.com
+
+- Update dependencies of scriplets (boo#1044823)
+
+-------------------------------------------------------------------
+Mon Jun 12 07:39:22 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.7.0:
+  * boo#1043043 gh#jthornber/thin-provisioning-tools#79
+  * Needed for working with latest lvm2
+
+-------------------------------------------------------------------
+Thu Feb  2 15:07:13 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Thu Aug 18 14:46:59 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.6.3:
+  * Update documentation
+
+-------------------------------------------------------------------
+Sun Jul 10 14:10:36 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.6.2:
+  * Fix bug in thin_delta
+  * Fix recent regression in thin_repair.
+  * Force g++-98 dialect
+  * Fix bug in thin_trim
+
+-------------------------------------------------------------------
+Thu Feb 11 11:21:15 UTC 2016 - rguenther@suse.com
+
+- Explicitely build with -std=gnu++98 to avoid all sorts of
+  non-C++11 conforming code.
+
+-------------------------------------------------------------------
+Sat Feb  6 09:04:44 UTC 2016 - mpluskal@suse.com
+
+- Update to 0.6.1
+  * enable builds with static cxx library
+- Make building more verbose
+
+-------------------------------------------------------------------
+Fri Jan 29 09:55:49 UTC 2016 - mpluskal@suse.com
+
+- Conflict with device-mapper < 1.02.115 to avoid file conflicts
+
+-------------------------------------------------------------------
+Sun Jan 24 09:10:29 UTC 2016 - mpluskal@suse.com
+
+- Use optflags when building
+- Install to /usr/sbin
+- Do not strip installed binaries
+- Use scriplets for initrd regeneration
+
+-------------------------------------------------------------------
+Fri Jan 22 18:38:39 UTC 2016 - mpluskal@suse.com
+
+- Update to 0.6.0
+  * thin_ls
+
+-------------------------------------------------------------------
+Sun Sep 20 09:31:35 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.5.6
+  * era_invalidate may be run on live metadata if the 
+    --metadata-snap option is given.
+- Changes for 0.5.5
+  * You may now give the --metadata_snap option to thin_delta 
+    without specifying where the snap is.
+  * Update man pages to make it clearer that most tools shouldn't 
+    be run on live metadata.
+  * Fix some bugs in the metadata reference counting for 
+    thin_check.
+
+-------------------------------------------------------------------
+Tue Jul 28 08:32:56 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.5.3
+  * thin_delta, thin_trim
+  * --clear-needs-check flag for cache_check
+  * space map checking for thin check
+
+-------------------------------------------------------------------
+Thu Apr 23 09:25:05 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.4.1
+
+-------------------------------------------------------------------
+Wed Feb  6 13:29:41 UTC 2013 - martin@pluskal.org
+
+- Cleanup .spec
+
+-------------------------------------------------------------------
+Wed Feb  6 12:59:38 UTC 2013 - martin@pluskal.org
+
+- Add patch for ldflags - ldflags.patch
+
+-------------------------------------------------------------------
+Tue Jul 31 14:44:47 CEST 2012 - fehr@suse.de
+
+- Make initial version of package from version 0.1.5 of 
+  thin-provisioning-tools
+
+-------------------------------------------------------------------

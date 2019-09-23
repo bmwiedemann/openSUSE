@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1517aee700983ab08159a2ff19196a7f</srcmd5>
+    <version>2.0.1</version>
+    <time>1436734331</time>
+    <user>coolo</user>
+    <comment>Please add this package so that next openSUSE version has it. Thanks</comment>
+    <requestid>315204</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>528a5b2850004690cff1d6b7dace53f2</srcmd5>
+    <version>2.1.1</version>
+    <time>1442474511</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>331469</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>efb5b450712ac1e1d395e9eec12ffd69</srcmd5>
+    <version>2.1.1</version>
+    <time>1444130701</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>334976</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b988a9b534dc8c88743734699b6cb132</srcmd5>
+    <version>2.2.1</version>
+    <time>1452122677</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>351952</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cd19176450b92918376a72494d938515</srcmd5>
+    <version>2.3.0</version>
+    <time>1455701163</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359405</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>edea13c5a677295dd3fbe5a5911308bf</srcmd5>
+    <version>2.3.1</version>
+    <time>1458333758</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>374202</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f2709b84fdc253094d9ad4c0279ecbec</srcmd5>
+    <version>2.4.0</version>
+    <time>1461855334</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>391175</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0533b4feb8f40ef05b54d899f8a01026</srcmd5>
+    <version>2.4.1</version>
+    <time>1464484360</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>398087</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ef5e58d47a1233dc1b09bb620f66392c</srcmd5>
+    <version>2.5.0</version>
+    <time>1470413880</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416990</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>765631e2d4817f7545bdc1eed294cd92</srcmd5>
+    <version>2.6.0</version>
+    <time>1485250475</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451227</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>1610027a93b62340fcb40081cf8af2d0</srcmd5>
+    <version>2.6.0</version>
+    <time>1485862933</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453009</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b4ece058d3219efc99b806f04869ef13</srcmd5>
+    <version>2.6.1</version>
+    <time>1492170074</time>
+    <user>maxlin_factory</user>
+    <comment>- Updated to 2.6.1;
+  * Fix Forwarded header handling, revert use of X-Forwarded-Port
+  * Use driver Stat for registry health check</comment>
+    <requestid>487302</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>cda3ea73662875ed0dba49e42a763cbc</srcmd5>
+    <version>2.6.1</version>
+    <time>1497363011</time>
+    <user>dimstar_suse</user>
+    <comment>- Add SuSEfirewall2 service file for TCP port 5000. (forwarded request 503281 from abergmann)</comment>
+    <requestid>503350</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>41cab2d789060f890a2928da2e22c8e8</srcmd5>
+    <version>2.6.2</version>
+    <time>1500804847</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>511821</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>fd8c010ceeb6d0e1e521ad79685caf43</srcmd5>
+    <version>2.6.2</version>
+    <time>1520021431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581665</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>a7023bba827d7e71fbfa494294930db0</srcmd5>
+    <version>2.6.2</version>
+    <time>1529402313</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616514</requestid>
+  </revision>
+</revisionlist>

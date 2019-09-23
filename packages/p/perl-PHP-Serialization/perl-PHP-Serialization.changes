@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Fri Mar  4 18:42:14 UTC 2011 - chris@computersalat.de
+
+- update to 0.34
+ - Fix keys and values like '010' being serialized as strings as expected
+   rather than being turned into ints. (RT#48594)
+- 0.33  2009-07-14
+ - Added ability to store the order of the keys on decoding
+   PHP assoc array (Alexander Bassilov)
+ - Added ability to sort the keys on encoding HASHes (Alexander
+   Bassilov)
+- recreated by cpanspec 1.78.03
+  o noarch pkg
+- mv changelog to changes file
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:39 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sat Jul 25 19:41:23 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Sun Jun 21 03:04:11 CEST 2009 - chris@computersalat.de
+
+- update to 0.32
+  o 0.32
+   - Making finite state machine
+   - Fixed bug in arrays RT21218
+   - RT24441 is not a bug
+   - Croaks on incomplete strings. RT44700
+   - Fixed bug with float as index. RT42029
+   - Removed warning from POD
+   - Changed todo in POD
+   - BOLAV@cpan.org
+  o 0.31
+   - Add warning note to POD
+   - Take patch from RT#45024 to fix boolean deserialization bug.
+  o 0.30
+   - Significantly cleanup the code to be much prettier.
+   - Fix RT#42279, output sizes a bytes, not characters so that 
+     serializing multibyte data works correctly.
+  o 0.29
+   - Fix bug with negative numbers, RT#6402, patch from
+     <tom [...] eborcom.com>
+   - Add TODO test for RT21218
+   - Add TODO test for RT24441
+  o 0.28
+   - Serializing long integers comes out  as -1 on the PHP end 
+     as noted in RT#6112 patch from <kcivey [...] cpcug.org>.
+   - Add test for the issue above (t0m).
+   - Fix POD as noted in RT#6113 by MCMAHON.
+   - Only require perl 5.6 in Makefile.PL as noted in RT#17034
+     by <kcivey [...] cpcug.org>
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+
+-------------------------------------------------------------------
+Mon Aug 25 19:46:19 UTC 2008 - rpm@scorpio-it.net
+
+- initial Package 0.27
+

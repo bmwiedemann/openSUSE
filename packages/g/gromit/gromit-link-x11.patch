@@ -1,0 +1,10 @@
+Index: gromit-20041213/Makefile
+===================================================================
+--- gromit-20041213.orig/Makefile
++++ gromit-20041213/Makefile
+@@ -7,4 +7,4 @@ propertywatch: propertywatch.c
+ 	gcc -o propertywatch propertywatch.c `gtk-config --libs --cflags`
+ 
+ gromit: gromit.c Makefile
+-	gcc ${CFLAGS} -DGDK_MULTIHEAD_SAFE -DGTK_MULTIHEAD_SAFE -o gromit gromit.c -Wall `pkg-config --libs --cflags gtk+-2.0`
++	gcc ${CFLAGS} -DGDK_MULTIHEAD_SAFE -DGTK_MULTIHEAD_SAFE -o gromit gromit.c -Wall `pkg-config --libs --cflags gtk+-2.0 x11` -lm

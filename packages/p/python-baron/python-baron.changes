@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Wed Mar  6 13:42:26 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9:
+  * BREAKING CHANGE: annotations are now member of {def,list,dict}_argument to flatten the data structure
+  * add support for ... in from import by bram
+  * add support for return annotation by bram
+  * add support for exec function by bram
+  * add support for variable annotation #145 by scottbelden and additional work by bram
+  * add support for *var expressions in tuple assignment by bram
+  * add support for raise from #120 by odcinek with additional work by bram
+  * add support for arglist usage in class definition inheritence by bram
+  * bug fix by 91e839a kyleatmakrs
+
+-------------------------------------------------------------------
+Tue Dec  4 11:42:45 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Grammar fix.
+
+-------------------------------------------------------------------
+Fri Oct 20 16:13:40 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

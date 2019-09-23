@@ -1,0 +1,29 @@
+From: Andreas Stieger <andreas.stieger@gmx.de>
+Subject: openSUSE specific logrotate fixes
+Date: Sun, 18 May 2014 00:10:32 +0100
+Upstream: no
+References:
+
+* add su to logrotate config to fix W: suse-logrotate-user-writable-log-dir
+* use "service tor" instead of "/etc/init.d/tor" to reload after logrotate 
+  to fix logrotate on systemd-only setups without init script (by seife)
+
+---
+ contrib/operator-tools/tor.logrotate.in |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+Index: tor-0.2.5.10/contrib/operator-tools/tor.logrotate.in
+===================================================================
+--- tor-0.2.5.10.orig/contrib/operator-tools/tor.logrotate.in	2014-06-27 22:45:19.000000000 +0100
++++ tor-0.2.5.10/contrib/operator-tools/tor.logrotate.in	2014-10-24 20:22:54.000000000 +0100
+@@ -7,8 +7,9 @@
+ 	notifempty
+ 	# you may need to change the username/groupname below
+ 	create 0640 _tor _tor
++	su _tor _tor
+ 	sharedscripts
+ 	postrotate
+-		/etc/init.d/tor reload > /dev/null
++		/usr/sbin/service tor reload > /dev/null
+ 	endscript
+ }

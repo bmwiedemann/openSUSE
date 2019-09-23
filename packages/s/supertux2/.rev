@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3e4c12895edbbce5b44da57a2ad66b3e</srcmd5>
+    <version>0.4.0</version>
+    <time>1476350840</time>
+    <user>dimstar_suse</user>
+    <comment>reuploaded the source tarball</comment>
+    <requestid>417183</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a17bcee5e647ca62a674ce06f6aa5ab3</srcmd5>
+    <version>0.5.1</version>
+    <time>1480860493</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443589</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fd605db054f2ae5454d3f4d335ebb69e</srcmd5>
+    <version>0.5.1</version>
+    <time>1486391061</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454829</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c162d9e8358f3ef0d84e9d608a5e137b</srcmd5>
+    <version>0.5.1</version>
+    <time>1489653767</time>
+    <user>dimstar_suse</user>
+    <comment>Corrected docs handling, Correected the rights of /usr/share/supertux2/sounds/normalize.sh (forwarded request 479185 from worldcitizen)</comment>
+    <requestid>479437</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>4e475751cc9e9158b061b3b1304085f3</srcmd5>
+    <version>0.5.1</version>
+    <time>1494263072</time>
+    <user>dimstar_suse</user>
+    <comment>- disable global PIE support, untangling the static libs of the
+  squirrel compiler is too tricky. (forwarded request 493299 from msmeissn)</comment>
+    <requestid>493389</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ac2bb924284a73ef21335857aad4346d</srcmd5>
+    <version>0.6.0</version>
+    <time>1546946811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661992</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0d5856db16e89122b5b69dd225cd189f</srcmd5>
+    <version>0.6.0</version>
+    <time>1555488595</time>
+    <user>dimstar_suse</user>
+    <comment>Build SuperTux2 with libraqm support</comment>
+    <requestid>694791</requestid>
+  </revision>
+</revisionlist>

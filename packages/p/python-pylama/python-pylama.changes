@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Tue Sep 17 09:59:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip one test that relies on the number of errors found by
+  linters that differ based on the release we got
+
+-------------------------------------------------------------------
+Tue May  7 14:04:53 UTC 2019 - pgajdos@suse.com
+
+- version update to 7.7.1
+  * no upstream changelog
+- modified sources
+  % dummy.py
+
+-------------------------------------------------------------------
+Mon Feb 18 10:47:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to version 7.6.6:
+  * various async and tests fixes
+  * no actual upstream changelog updated since 7.4 release
+- Actually run tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:24 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed May  9 23:28:47 UTC 2018 - toddrme2178@gmail.com
+
+- Use license tag
+
+-------------------------------------------------------------------
+Wed Oct 18 16:46:03 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 7.4.3
+  * See changelog at https://github.com/klen/pylama/blob/7.4.3/Changelog
+
+-------------------------------------------------------------------
+Thu Jul 10 12:44:22 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 6.0.0
+  - No upstream changelog
+
+-------------------------------------------------------------------
+Mon Mar 24 13:08:43 UTC 2014 - toddrme2178@gmail.com
+
+- Initial version
+

@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2efd335d96bad8eb6452411eecf54ed1</srcmd5>
+    <version>0.7</version>
+    <time>1322481376</time>
+    <user>coolo</user>
+    <comment>Dependency for OpenStack packages.</comment>
+    <requestid>93459</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3b340a638ee9055eb1c53974fc113e50</srcmd5>
+    <version>0.7</version>
+    <time>1329391629</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103926</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3b340a638ee9055eb1c53974fc113e50</srcmd5>
+    <version>0.7</version>
+    <time>1340184048</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f9162aa243ee129c21b97f68bcf34088</srcmd5>
+    <version>0.8</version>
+    <time>1346691372</time>
+    <user>namtrac</user>
+    <comment>- update to 0.8
+    * Backend-based rewrite. See docs/upgrade.rst for details.
+    * Compatibility through Django 1.4. (forwarded request 132215 from Nijel)</comment>
+    <requestid>132221</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>f9162aa243ee129c21b97f68bcf34088</srcmd5>
+    <version>0.8</version>
+    <time>1359110021</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>f9162aa243ee129c21b97f68bcf34088</srcmd5>
+    <version>0.8</version>
+    <time>1379664163</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>40fc7bebe3330588e0b38824204e248c</srcmd5>
+    <version>1.0</version>
+    <time>1380608968</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 201291 from posophe)</comment>
+    <requestid>201423</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>40fc7bebe3330588e0b38824204e248c</srcmd5>
+    <version>1.0</version>
+    <time>1409302854</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f5add80b24ef81640209af31fbe4aa7b</srcmd5>
+    <version>2.0.4</version>
+    <time>1461855404</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391507</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>19516c05c0d9fdd00d21e2adc6aede54</srcmd5>
+    <version>2.2</version>
+    <time>1491469216</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>461308</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>846562629a86b9b24b3812d94d974d34</srcmd5>
+    <version>2.5.2</version>
+    <time>1536094605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632838</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4c7bb4319e718abae4e97ed3a21fb533</srcmd5>
+    <version>3.0</version>
+    <time>1551455219</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not trigger legaldb
+
+- Set Django version to 1.11
+- Update to 3.0, notable changes
+  * Installed module changed from registration to django_registration
+  * Python 3.7 support
+  * Minimum Django version is now 1.11
+  * Include tests and runner in source distribution
+  * Make it possible to distinguish different types of activation failures
+  * Add the ability to detect when the account has already been activated
+  * Remove RegistrationFormNoFreeEmail
+  * Clean up the weird ancient handling of
+    success_url/get_success_url()
+  * Make the one-step backend a little more robust with custom users
+  * Correct use of is_secure() in activation email context
+  * Template directory rename, and renamed activation email body template
+    and renamed activation failure template
+  * Made the HttpRequest available to activation email contexts
+  * Rename URL patterns
+  * Rename the HMAC backend
+  * Added a form class doing case-insensitive username uniqueness checks</comment>
+    <requestid>679269</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e879537f5dbebb4bdba80d35d682029c</srcmd5>
+    <version>3.0</version>
+    <time>1553084373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686316</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8276ee7216adc6cb9d580a5cdf20f023</srcmd5>
+    <version>3.0.1</version>
+    <time>1559029370</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>705619</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,156 @@
+<revisionlist>
+  <revision rev="1" vrev="20120726">
+    <srcmd5>7c2acb4b07c22d6ec0b13f79441c07f1</srcmd5>
+    <version>0.5</version>
+    <time>1344064625</time>
+    <user>coolo</user>
+    <comment>New package see http://lists.opensuse.org/opensuse-factory/2012-08/msg00012.html</comment>
+    <requestid>129710</requestid>
+  </revision>
+  <revision rev="2" vrev="20120811">
+    <srcmd5>d631922be208a06ab6ebcb579f1e3842</srcmd5>
+    <version>0.7</version>
+    <time>1344947199</time>
+    <user>namtrac</user>
+    <comment>- Update to upstream istgt-20120811.tar.gz release, which adds support for
+  VirtualBox VirtualDisks.
+- Japanese -&gt; English ChangeLog.jp via Google Translate:
+  + separated by a vbox for a shutdown function
+  + Modified to specify the mutex ADAPTIVE_NP to some of the
+  + Corresponding to the virtual drive using a shared library of VirtualBox
+- Add no_CMPXCHG_on_i386.patch.
+
+- Update to upstream istgt-20120807.tar.gz release.
+- Japanese -&gt; English ChangeLog.jp via Google Translate:
+  + Fix transfer locked position
+  + Add a task buffer allocation size
+  + Forgetting to fix error handling when
+  + Modified to log the number of leave to reload
+  + Modified so that it can continue with the error when reload
+  + EV_SET of NetBSD fix a warning
+  + add a function to get status of using the built-in functions since gcc4.1
+  + Organize and unnecessary variable function
+  + Fixed memory leak at the end of
+  + Change if there is more than one LUN queue to run twice in a loop
+  + Add (except during the connection) process of changing the LU
+  + Modified so as to keep the number of elements in the queue
+  + Reduce the time lock of the queue, so as not to fix in the PG SendTargets inaccessible
+  + Change does not come out of the loop as to when a configuration error PG
+  + Issue a stop request to accept loop when receiving SIGTERM / INT
+  + Issues a connection request to stop all threads at the end
+  + Change so as to perform without a lock at the end of the state
+  + Add a script for NetBSD
+  + Add syslogd mountlate: LOGIN, REQUIRE: BEFORE the startup script
+  + Fix configure.in / Makefile.in (forwarded request 130712 from dmdiss)</comment>
+    <requestid>130713</requestid>
+  </revision>
+  <revision rev="3" vrev="20120901">
+    <srcmd5>0ace99875b1f91db97b85a04cade1462</srcmd5>
+    <version>0.8</version>
+    <time>1347347293</time>
+    <user>coolo</user>
+    <comment>- Update to upstream istgt-20120901.tar.gz release.
+  + Remove linux init script patches, now upstream.
+- Japanese -&gt; English ChangeLog.jp via Google Translate:
+  + Changed to return INVALID FIELD IN CDB to MODE_SENSE unsupported
+  + Change so as to release resources after the end of the confirmation signal
+    thread
+  + Changed to not issue a malloc each time ATS
+  + Add (12) READ DEFECT DATA (10) / READ DEFECT DATA
+  + Add (12) (16) / ATA PASS-THROUGH ATA PASS-THROUGH dummy
+  + Add LOG_SELECT / LOG_SENSE of dummy
+  + Add the init scripts of Linux
+  + If you fail at reload of LU added the processing settings back
+  + Add qcow, qcow2, qed, an extension to handle vhdx
+  + 4.2.X VirtualBox support
+  + Add a poll to display when not in use kqueue
+  + Record usage of atomic functions at startup
+  + investigation gcc configure the built-in function
+  + Fix leak of mutex change
+  + Mistake correction of the error message
+  + Add a dummy signal function
+  + Change the position of the command loop termination
+  + Since the built-in function exclusion gcc gives an error on i386
+  + Fixed a warning will be issued in the gcc parts (forwarded request 132432 from dmdiss)</comment>
+    <requestid>132479</requestid>
+  </revision>
+  <revision rev="4" vrev="20121028">
+    <srcmd5>dc7cac93977352e422ba16ee16af8418</srcmd5>
+    <version>0.10</version>
+    <time>1352358299</time>
+    <user>coolo</user>
+    <comment>- Update to upstream istgt-20121028.tar.gz release.
+- Japanese -&gt; English ChangeLog.jp via Google Translate:
+  + Modified to return the (Changeable values) PC = 01b in MODE_SENSE
+    and modified to use NOTE_LOWAT SO_RCVLOWAT
+  + Fixed issue an error if you specify no authentication: istgtcontrol
+  + modified to abort initialization error: istgtcontrol
+  + Socket system displays an error
+  + Iqn Show at the PDU error
+  + Add a time-out error log
+  + Add the batch code using readv / writev (forwarded request 140341 from dmdiss)</comment>
+    <requestid>140342</requestid>
+  </revision>
+  <revision rev="5" vrev="20121030">
+    <srcmd5>dc7cac93977352e422ba16ee16af8418</srcmd5>
+    <version>0.10</version>
+    <time>1359109095</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="20121031">
+    <srcmd5>58dc430d81bc0a82abaffb071924ed70</srcmd5>
+    <version>0.10</version>
+    <time>1365791599</time>
+    <user>coolo</user>
+    <comment>- Move configure run to %build section
+
+This is needed so that the rpm hack to update config.sub works (forwarded request 163509 from Andreas_Schwab)</comment>
+    <requestid>163512</requestid>
+  </revision>
+  <revision rev="7" vrev="20121032">
+    <srcmd5>b30423978e4e14090f45aa61b693ccaa</srcmd5>
+    <version>0.10</version>
+    <time>1373874481</time>
+    <user>coolo</user>
+    <comment>resubmit with configure-at-%build change merged</comment>
+    <requestid>182941</requestid>
+  </revision>
+  <revision rev="8" vrev="20121034">
+    <srcmd5>b30423978e4e14090f45aa61b693ccaa</srcmd5>
+    <version>0.10</version>
+    <time>1379662689</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="20121035">
+    <srcmd5>e54fcfc3d60978323ae2c5d66a9e44ce</srcmd5>
+    <version>0.10</version>
+    <time>1391538107</time>
+    <user>coolo</user>
+    <comment>- Call systemd pre[un]/post[un] macros
+
+- Add systemd services file
+  + etc-add-systemd-service-file.patch
+  + build-use-systemd-init.patch
+  + build-regenerate-configure.patch
+- Add rcistgt symlink
+  + links to SysV init or systemd service path (forwarded request 220715 from dmdiss)</comment>
+    <requestid>220716</requestid>
+  </revision>
+  <revision rev="10" vrev="20121037">
+    <srcmd5>e54fcfc3d60978323ae2c5d66a9e44ce</srcmd5>
+    <version>0.10</version>
+    <time>1409301255</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1044e81b2d5b414ab81346353324b590</srcmd5>
+    <version>0.20</version>
+    <time>1419159872</time>
+    <user>coolo</user>
+    <comment>resubmit with less-intrusive fix for boo#910112</comment>
+    <requestid>265603</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d6921595ae145017c53719a4d0c85548</srcmd5>
+    <version>1.2.0</version>
+    <time>1462051879</time>
+    <user>dimstar_suse</user>
+    <comment>Please accept this new package</comment>
+    <requestid>391836</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>47e4589a196533e7f139dd4f3b56daa6</srcmd5>
+    <version>1.2.0</version>
+    <time>1462443143</time>
+    <user>dimstar_suse</user>
+    <comment>add bsc number in changelog</comment>
+    <requestid>393658</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>05634543ef9a6773bd2faf1eb546fcda</srcmd5>
+    <version>1.2.0</version>
+    <time>1471249882</time>
+    <user>dimstar_suse</user>
+    <comment>- enable gc-go for ppc64le</comment>
+    <requestid>418746</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b1212407bd218c1765cf305c1d7dec74</srcmd5>
+    <version>1.2.0</version>
+    <time>1495883659</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>491569</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1fe9fc414086d931aec4093fa28f8c70</srcmd5>
+    <version>2.0.0</version>
+    <time>1529402334</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616571</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>50351f7c310a105aa124f98628b5f747</srcmd5>
+    <version>2.0.0</version>
+    <time>1559375352</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705935</requestid>
+  </revision>
+</revisionlist>

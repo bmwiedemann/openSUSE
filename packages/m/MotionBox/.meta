@@ -1,0 +1,9 @@
+<package name="MotionBox" project="openSUSE:Factory">
+  <title>Qt based network video browser</title>
+  <description>A network video browser based on Qt.
+It streams Torrents, Youtube, Dailymotion, Vimeo and SoundCloud.
+
+</description>
+  <devel project="multimedia:apps" package="MotionBox"/>
+  <url>http://omega.gg/MotionBox</url>
+</package>

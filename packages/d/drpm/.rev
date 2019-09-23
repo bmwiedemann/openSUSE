@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6257683ad31d0a84978d50419d1b6cd4</srcmd5>
+    <version>0.4.1</version>
+    <time>1568379514</time>
+    <user>lnussel_factory</user>
+    <comment>Initial packaging for openSUSE</comment>
+    <requestid>730124</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4412874df768424a0a79680847541f31</srcmd5>
+    <version>0.4.1</version>
+    <time>1569235124</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable zstd for Leap 15.1 and lower due to broken zstd</comment>
+    <requestid>732265</requestid>
+  </revision>
+</revisionlist>

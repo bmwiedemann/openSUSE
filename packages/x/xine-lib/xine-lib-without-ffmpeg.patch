@@ -1,0 +1,57 @@
+Index: m4/decoders.m4
+===================================================================
+--- m4/decoders.m4.orig
++++ m4/decoders.m4
+@@ -85,9 +85,7 @@ AC_DEFUN([XINE_DECODER_PLUGINS], [
+     AM_CONDITIONAL([WITH_EXTERNAL_FAAD], [test x"$have_external_faad" = x"yes"])
+ 
+     dnl ffmpeg external version required
+-    PKG_CHECK_MODULES([FFMPEG], [libavcodec >= 51.68.0])
+     PKG_CHECK_MODULES([AVUTIL], [libavutil >= 49.6.0])
+-    PKG_CHECK_MODULES([FFMPEG_POSTPROC], [libpostproc])
+     AC_DEFINE([HAVE_FFMPEG], 1, [Define this if you have ffmpeg library])
+ 
+ 	dnl Check presence of ffmpeg/avutil.h to see if it's old or new
+Index: src/audio_dec/Makefile.am
+===================================================================
+--- src/audio_dec/Makefile.am.orig
++++ src/audio_dec/Makefile.am
+@@ -49,7 +49,6 @@ $(top_builddir)/contrib/gsm610/libgsm610
+ xineplug_LTLIBRARIES = \
+ 	xineplug_decode_gsm610.la \
+ 	xineplug_decode_lpcm.la \
+-	xineplug_decode_dvaudio.la \
+ 	$(musepack_module) \
+ 	$(dts_module) \
+ 	$(mad_module) \
+@@ -87,7 +86,3 @@ xineplug_decode_faad_la_SOURCES = xine_f
+ xineplug_decode_faad_la_DEPENDENCIES = $(FAAD_DEPS)
+ xineplug_decode_faad_la_LIBADD = $(XINE_LIB) $(LTLIBINTL) $(FAAD_LIBS) -lm
+ xineplug_decode_faad_la_CFLAGS = $(FAAD_CFLAGS)
+-
+-xineplug_decode_dvaudio_la_SOURCES  = ff_dvaudio_decoder.c
+-xineplug_decode_dvaudio_la_LIBADD   = $(XINE_LIB) $(LTLIBINTL)
+-xineplug_decode_dvaudio_la_CPPFLAGS = $(AM_CPPFLAGS) $(FFMPEG_CFLAGS)
+Index: src/combined/Makefile.am
+===================================================================
+--- src/combined/Makefile.am.orig
++++ src/combined/Makefile.am
+@@ -1,5 +1,5 @@
+ include $(top_srcdir)/misc/Makefile.quiet
+-SUBDIRS = ffmpeg
++#SUBDIRS = ffmpeg
+ 
+ include $(top_builddir)/misc/Makefile.plugins
+ include $(top_srcdir)/misc/Makefile.common
+Index: configure.ac
+===================================================================
+--- configure.ac.orig
++++ configure.ac
+@@ -1285,7 +1285,6 @@ src/Makefile
+ src/audio_out/Makefile
+ src/audio_dec/Makefile
+ src/combined/Makefile
+-src/combined/ffmpeg/Makefile
+ src/demuxers/Makefile
+ 
+ src/input/Makefile

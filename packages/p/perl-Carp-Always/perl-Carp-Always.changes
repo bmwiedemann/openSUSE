@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Tue Aug 14 05:07:20 UTC 2018 - coolo@suse.com
+
+- updated to 0.16
+   see /usr/share/doc/packages/perl-Carp-Always/Changes
+
+-------------------------------------------------------------------
+Mon Nov 25 07:35:53 UTC 2013 - coolo@suse.com
+
+- updated to 0.13
+   - Test::More and Test::Base go to TEST_REQUIRES
+   - Test::Pod and Test::Pod::Coverage as author tests
+     (solves RT#87423)
+
+-------------------------------------------------------------------
+Mon Jun  3 11:53:36 UTC 2013 - coolo@suse.com
+
+- updated to 0.12
+    - fix failing t/pod.t due to bad encoding (CPAN #77656)
+    - fix test failure with Carp 1.25+ RT#75320 [thanks ANDK and greeneg]
+    - Test::Base is required in BUILD (otherwise we haven't tested anything)
+
+-------------------------------------------------------------------
+Tue Oct 25 18:13:51 UTC 2011 - tabraham@novell.com
+
+- updated to 0.10
+  * fix typo in POD RT#68793 (also reported by Kai Moonbourn)
+  * Carp:Always ate part of errors like 'foo at bar' RT#57385
+    (fix borrowed from Carp::Always::Color)
+  * deal with non-string exceptions (borrowed from Carp:Always:Color
+    as well)
+
+
+-------------------------------------------------------------------
+Fri Jan 14 11:30:38 UTC 2011 - coolo@novell.com
+
+- initial package 0.09
+  * created by cpanspec 1.78.03
+

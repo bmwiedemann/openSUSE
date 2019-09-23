@@ -1,0 +1,10 @@
+--- librsrc/configure.in.~1~	1998-04-11 10:27:18.000000000 +0200
++++ librsrc/configure.in	2002-11-18 00:49:07.000000000 +0100
+@@ -54,7 +54,6 @@ AC_C_CONST
+ 
+ dnl Checks for library functions.
+ 
+-AC_SUBST(LIBOBJS)
+ AC_CHECK_FUNCS(mktime)
+ 
+ dnl Create output files.

@@ -1,0 +1,44 @@
+diff -uprN xsp-3.0.11.old/build/m4/shamrock/mono.m4 xsp-3.0.11.new/build/m4/shamrock/mono.m4
+--- xsp-3.0.11.old/build/m4/shamrock/mono.m4	2013-05-14 15:46:56.000000000 +0400
++++ xsp-3.0.11.new/build/m4/shamrock/mono.m4	2016-06-08 12:30:43.330749909 +0300
+@@ -74,21 +74,21 @@ AC_DEFUN([SHAMROCK_CHECK_MONO_1_0_GAC_AS
+ 
+ AC_DEFUN([SHAMROCK_CHECK_MONO_2_0_GAC_ASSEMBLIES],
+ [
+-	_SHAMROCK_CHECK_MONO_GAC_ASSEMBLIES(mono, 2.0, $*)
++	_SHAMROCK_CHECK_MONO_GAC_ASSEMBLIES(mono, 2.0-api, $*)
+ ])
+ 
+ AC_DEFUN([SHAMROCK_CHECK_MONO2_2_0_GAC_ASSEMBLIES],
+ [
+-	_SHAMROCK_CHECK_MONO_GAC_ASSEMBLIES(mono-2, 2.0, $*)
++	_SHAMROCK_CHECK_MONO_GAC_ASSEMBLIES(mono-2, 2.0-api, $*)
+ ])
+ 
+ AC_DEFUN([SHAMROCK_CHECK_MONO_4_0_GAC_ASSEMBLIES],
+ [
+-	_SHAMROCK_CHECK_MONO_GAC_ASSEMBLIES(mono, 4.0, $*)
++	_SHAMROCK_CHECK_MONO_GAC_ASSEMBLIES(mono, 4.0-api, $*)
+ ])
+ 
+ AC_DEFUN([SHAMROCK_CHECK_MONO2_4_0_GAC_ASSEMBLIES],
+ [
+-	_SHAMROCK_CHECK_MONO_GAC_ASSEMBLIES(mono-2, 4.0, $*)
++	_SHAMROCK_CHECK_MONO_GAC_ASSEMBLIES(mono-2, 4.0-api, $*)
+ ])
+ 
+diff -uprN xsp-3.0.11.old/configure.ac xsp-3.0.11.new/configure.ac
+--- xsp-3.0.11.old/configure.ac	2013-05-14 15:46:56.000000000 +0400
++++ xsp-3.0.11.new/configure.ac	2016-06-08 12:30:43.330749909 +0300
+@@ -76,8 +76,8 @@ if test "x$GMCS" = "xno" -a "x$DMCS" = "
+ fi
+ 
+ AC_MSG_CHECKING([for Mono 2.0 GAC for Mono.Data.Sqlite.dll])
+-if test -e "$($PKG_CONFIG --variable=libdir mono)/mono/2.0/Mono.Data.Sqlite.dll" -o \
+-        -e "$($PKG_CONFIG --variable=prefix mono)/lib/mono/2.0/Mono.Data.Sqlite.dll"; then
++if test -e "$($PKG_CONFIG --variable=libdir mono)/mono/2.0-api/Mono.Data.Sqlite.dll" -o \
++        -e "$($PKG_CONFIG --variable=prefix mono)/lib/mono/2.0-api/Mono.Data.Sqlite.dll"; then
+ 	AC_MSG_RESULT([found])
+ 	HAVE_MONO_SQLITE=yes
+ else
+

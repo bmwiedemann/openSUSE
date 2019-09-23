@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0ca418a711dedaff8d0fd98651d17b88</srcmd5>
+    <version>1.1</version>
+    <time>1426064308</time>
+    <user>dimstar_suse</user>
+    <comment>somehow interesting benchmark</comment>
+    <requestid>290058</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>994a38fb993fa79bb8ebf78f19c0306d</srcmd5>
+    <version>1.1</version>
+    <time>1551883669</time>
+    <user>dimstar_suse</user>
+    <comment>- Update project url
+- Modernise spec file</comment>
+    <requestid>681706</requestid>
+  </revision>
+</revisionlist>

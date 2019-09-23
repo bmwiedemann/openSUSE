@@ -1,0 +1,47 @@
+--- ctrl87.c.orig
++++ ctrl87.c
+@@ -11,11 +11,11 @@
+ 
+ 
+ /***** _control87 *****/
++#ifdef __GNUC__
++#ifdef __i386__
+ unsigned short _control87(unsigned short newcw, unsigned short mask)
+ {
+     unsigned short cw;
+-#ifdef __GNUC__
+-#ifdef __i386__
+ 
+     asm volatile ("                                                    \n\
+       wait                                                          \n\
+@@ -44,7 +44,7 @@ unsigned short _control87(unsigned short
+ 	);
+     }
+     return cw;
+-#endif
+-#endif
+ 
+ }				/* _control87 */
++#endif
++#endif
+--- main.c.orig
++++ main.c
+@@ -21,6 +21,9 @@
+  * 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++#include <stdlib.h>
++#include <string.h>
++#include <ctype.h>
+ #include <unistd.h>
+ #include "timers.h"
+ #include "bb.h"
+@@ -130,7 +133,7 @@ static struct table stable[] = { {DMODE_
+ 
+ int cont;
+ int srate;
+-int
++void
+ ptable ()
+ {
+   int i;

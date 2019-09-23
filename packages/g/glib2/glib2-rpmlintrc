@@ -1,0 +1,10 @@
+# Adding gio-branding for the following filter
+addFilter(".*shlib-fixed-dependency.*[glib2|gio\-branding].*")
+# Filter for non-conffile-in-etc warning for the following files
+# under /etc/profile.d/ and /etc/rpm/ directories, respectively:
+# zzz-glib2.csh and zzz-glib2.sh, and macros.glib2
+addFilter("glib2.*non-conffile-in-etc.*[zzz\-glib2.*|macros\.glib2]")
+# Filter for env-script-intepreter for the following files under
+# /usr/bin directory: gdbus-codegen, glib-genmarshal and glib-mkenums
+addFilter(".*env-script-interpreter.*/usr/bin/[gdbus\-codegen|glib\-.*].*")
+

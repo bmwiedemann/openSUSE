@@ -1,0 +1,27 @@
+--- integration/test.c.orig
++++ integration/test.c
+@@ -1754,7 +1754,11 @@ int main (void)
+         gsl_test_rel(w->rlist[i],r[i],1e-14,"qawc(f459) rlist") ;
+ 
+     for (i = 0; i < 6 ; i++) 
++#ifdef __i386__		/* x86 extra FPU precision hurts us here */
+         gsl_test_rel(w->elist[i],e[i],1e-4,"qawc(f459) elist") ;
++#else
++	gsl_test_rel(w->elist[i],e[i],1e-5,"qawc(f459) elist") ;
++#endif
+ 
+     for (i = 0; i < 6 ; i++) 
+         gsl_test_int((int)w->order[i],order[i]-1,"qawc(f459) order");
+--- configure.ac.orig
++++ configure.ac
+@@ -87,7 +87,9 @@ AC_CANONICAL_HOST
+ 
+ dnl Checks for programs.
+ AC_LANG(C)
+-AC_PROG_CC
++AC_PROG_CC_STDC
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
+ AC_PROG_CPP
+ AC_PROG_INSTALL
+ AC_PROG_LN_S

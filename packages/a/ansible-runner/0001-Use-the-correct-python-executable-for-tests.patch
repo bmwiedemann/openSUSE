@@ -1,0 +1,62 @@
+From b02acb4c089d5bcb5ff38b3f2e1d7540da72bf6e Mon Sep 17 00:00:00 2001
+From: Thomas Bechtold <tbechtold@suse.com>
+Date: Sat, 27 Apr 2019 15:00:38 +0200
+Subject: [PATCH] Use the correct python executable for tests
+
+Instead of using "python" which might point to python2, use the python
+that is used to run the tests itself (which is sys.executable).
+
+This fixes a build problem on openSUSE where ansible-runner is only
+build for python3. Due to that, no "python" executable is there.
+---
+ test/integration/test_runner.py | 3 ++-
+ test/unit/test_runner.py        | 9 +++++----
+ 2 files changed, 7 insertions(+), 5 deletions(-)
+
+Index: ansible-runner-1.3.3/test/unit/test_runner.py
+===================================================================
+--- ansible-runner-1.3.3.orig/test/unit/test_runner.py
++++ ansible-runner-1.3.3/test/unit/test_runner.py
+@@ -8,6 +8,7 @@ import mock
+ import pexpect
+ import pytest
+ import six
++import sys
+ 
+ from ansible_runner import Runner
+ from ansible_runner.exceptions import CallbackError
+@@ -59,7 +60,7 @@ def test_error_code(rc):
+ 
+ # TODO: matt does not like this test
+ def test_job_timeout(rc):
+-    rc.command = ['python', '-c', 'import time; time.sleep(5)']
++    rc.command = [sys.executable, '-c', 'import time; time.sleep(5)']
+     runner = Runner(config=rc)
+     status, exitcode = runner.run()
+     assert status == 'timeout'
+@@ -67,7 +68,7 @@ def test_job_timeout(rc):
+ 
+ 
+ def test_cancel_callback(rc):
+-    rc.command = ['python', '-c', 'print(input("Password: "))']
++    rc.command = [sys.executable, '-c', 'print(input("Password: "))']
+     status, exitcode = Runner(config=rc, cancel_callback=lambda: True).run()
+     assert status == 'canceled'
+ 
+@@ -76,14 +77,14 @@ def test_cancel_callback_error(rc):
+     def kaboom():
+         raise Exception('kaboom')
+ 
+-    rc.command = ['python', '-c', 'print(input("Password: "))']
++    rc.command = [sys.executable, '-c', 'print(input("Password: "))']
+     with pytest.raises(CallbackError):
+         Runner(config=rc, cancel_callback=kaboom).run()
+ 
+ 
+ @pytest.mark.parametrize('value', ['abc123', six.u('Iñtërnâtiônàlizætiøn')])
+ def test_env_vars(rc, value):
+-    rc.command = ['python', '-c', 'import os; print(os.getenv("X_MY_ENV"))']
++    rc.command = [sys.executable, '-c', 'import os; print(os.getenv("X_MY_ENV"))']
+     rc.env = {'X_MY_ENV': value}
+     status, exitcode = Runner(config=rc).run()
+     assert status == 'successful'

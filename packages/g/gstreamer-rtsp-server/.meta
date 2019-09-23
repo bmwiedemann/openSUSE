@@ -1,0 +1,5 @@
+<package name="gstreamer-rtsp-server" project="openSUSE:Factory">
+  <title>gstreamer-rtsp-server</title>
+  <description>RTSP server based on GStreamer</description>
+  <devel project="multimedia:libs" package="gstreamer-rtsp-server"/>
+</package>

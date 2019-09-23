@@ -1,0 +1,12 @@
+Index: pciutils-3.3.1/lib/libpci.pc.in
+===================================================================
+--- pciutils-3.3.1.orig/lib/libpci.pc.in
++++ pciutils-3.3.1/lib/libpci.pc.in
+@@ -6,6 +6,5 @@ idsdir=@IDSDIR@
+ Name: libpci
+ Description: libpci
+ Version: @VERSION@
+-Libs: -L${libdir} -lpci
++Libs: -lpci @LDLIBS@
+ Libs.private: @LDLIBS@
+-Cflags: -I${includedir}

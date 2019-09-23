@@ -1,0 +1,75 @@
+Index: Makefile
+===================================================================
+--- Makefile.orig
++++ Makefile
+@@ -13,14 +13,14 @@ wish = /usr/bin/wish
+ 
+ pgaccess: 
+ 	chmod a+x pgaccess.tcl
+-	mkdir -p $(libdir)/pgaccess
+-	cp -R * $(libdir)/pgaccess
+-	ln -sf $(libdir)/pgaccess/pgaccess.tcl $(bindir)/pgaccess
++	mkdir -p $(DESTDIR)$(libdir)/pgaccess $(DESTDIR)$(bindir)
++	cp -R pgaccess.tcl pgmonitor images lib $(DESTDIR)$(libdir)/pgaccess
++	ln -sf $(libdir)/pgaccess/pgaccess.tcl $(DESTDIR)$(bindir)/pgaccess
+ 
+ all: pgaccess
+ 
+ install: pgaccess
+ 
+ clean:
+-	rm -rf $(libdir)/pgaccess
+-	rm -rf $(bindir)/pgaccess
++	rm -rf $(DESTDIR)$(libdir)/pgaccess
++	rm -rf $(DESTDIR)$(bindir)/pgaccess
+Index: lib/plugins/pgmonitor.tcl
+===================================================================
+--- lib/plugins/pgmonitor.tcl.orig
++++ lib/plugins/pgmonitor.tcl
+@@ -1,3 +1,6 @@
++#!/usr/bin/tclsh
++package require Tk
++
+ #############################################################################
+ # Visual Tcl v1.11p1 Project
+ #
+Index: lib/widgets/tablelist3.3/scripts/tablelistWidget.tcl
+===================================================================
+--- lib/widgets/tablelist3.3/scripts/tablelistWidget.tcl.orig
++++ lib/widgets/tablelist3.3/scripts/tablelistWidget.tcl
+@@ -244,7 +244,7 @@ namespace eval tablelist {
+     #
+     # Use lists to facilitate the handling of miscellaneous options
+     #
+-    variable activeStyles	[list frame none underline]
++    variable activeStyles	[list dotbox frame none underline]
+     variable alignments		[list left right center]
+     variable arrowTypes		[list up down]
+     variable states		[list disabled normal]
+Index: pgaccess.tcl
+===================================================================
+--- pgaccess.tcl.orig
++++ pgaccess.tcl
+@@ -235,12 +235,16 @@ global PgAcVar CurrentDB
+ 
+ 	# the script's home dir
+ 	if {![info exists PgAcVar(PGACCESS_HOME)]} {
+-        set tmphome [info script]
+-        if {[file type $tmphome] == "link"} {
+-            set home [file dirname [file readlink $tmphome]]
+-        } else {
+-            set home [file dirname [info script]]
+-        }
++		set script [info script]
++		while {[file type $script] eq "link"} {
++		    set s [file readlink $script]
++		    if {[file pathtype $s] eq "relative"} {
++			    set script [file normalize [file join [file dirname $script] $s]]
++			} else {
++			    set script $s
++			}
++		}
++		set home [file dirname $script]
+ 		switch [file pathtype $home] {
+ 			absolute {set PgAcVar(PGACCESS_HOME) $home}
+ 			relative {set PgAcVar(PGACCESS_HOME) [file join [pwd] $home]}

@@ -1,0 +1,242 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>71d7df3cbf8748a7fa9f932f33de8976</srcmd5>
+    <version>0.0.5</version>
+    <time>1207708895</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>7f64ecb17aef8d10acbdb4f29bad9d3f</srcmd5>
+    <version>0.0.5</version>
+    <time>1217628137</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>d9044c7c49f460ec88c03fcce60be3eb</srcmd5>
+    <version>0.0.5</version>
+    <time>1224717415</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>7f5a2f0bfd215a761825459bd907141d</srcmd5>
+    <version>0.0.5</version>
+    <time>1227427650</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>f1380fba8ca8d9e6448107d18bcf8c64</srcmd5>
+    <version>0.0.5</version>
+    <time>1231722221</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>bb2e36300c9307fc135d51b6527df3cd</srcmd5>
+    <version>0.0.5</version>
+    <time>1235649388</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>45d1e5a2ed90187272eab26ff05fb180</srcmd5>
+    <version>0.0.8</version>
+    <time>1243205457</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>45d1e5a2ed90187272eab26ff05fb180</srcmd5>
+    <version>0.0.8</version>
+    <time>1243205457</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>354ce2ad7f2cf00b2b89da4a23323b09</srcmd5>
+    <version>0.0.8</version>
+    <time>1268924667</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>354ce2ad7f2cf00b2b89da4a23323b09</srcmd5>
+    <version>0.0.8</version>
+    <time>1278667361</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>354ce2ad7f2cf00b2b89da4a23323b09</srcmd5>
+    <version>0.0.8</version>
+    <time>1278678591</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>262bd164865e47f6bf107ac563384cde</srcmd5>
+    <version>0.0.8</version>
+    <time>1281312800</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libopenraw based on submit request 44939 from user vuntz
+</comment>
+    <requestid>44939</requestid>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>8ce637f184475fe95370ce7f23f04ce0</srcmd5>
+    <version>0.0.8</version>
+    <time>1287057733</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libopenraw based on submit request 50265 from user vuntz
+</comment>
+    <requestid>50265</requestid>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>8ce637f184475fe95370ce7f23f04ce0</srcmd5>
+    <version>0.0.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>e85e4e1efecb26c24f85c31068475c6b</srcmd5>
+    <version>0.0.8</version>
+    <time>1306742529</time>
+    <user>saschpe</user>
+    <comment>Fixed typos in libopenraw.spec summaries (forwarded request 71788 from aturrini)</comment>
+    <requestid>71792</requestid>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>0601ec5e49da4b2428c2160d71564337</srcmd5>
+    <version>0.0.8</version>
+    <time>1306742541</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71792
+</comment>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>4450a793d607b13665734e5ffd6e4371</srcmd5>
+    <version>0.0.8</version>
+    <time>1315233342</time>
+    <user>lrupp</user>
+    <comment>- Merge upstream patch libopenraw-detect-compressed-otf.patch to
+  avoid segfault while loading Olympus raw files (.orf)
+  bnc#561232, fdo#26618
+- Rebase and merge upstream patch libopenraw-orf-thumbnail.patch to
+  decompress otf bnc#699678
+- Add autoreconf to %build to refresh Makefiles
+- Remove the invalid link in Source0 (forwarded request 80859 from gary_lin)</comment>
+    <requestid>80860</requestid>
+  </revision>
+  <revision rev="18" vrev="16">
+    <srcmd5>06a53a62621d43564b77009afa7be058</srcmd5>
+    <version>0.0.8</version>
+    <time>1315233352</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80860
+</comment>
+  </revision>
+  <revision rev="19" vrev="18">
+    <srcmd5>06a53a62621d43564b77009afa7be058</srcmd5>
+    <version>0.0.8</version>
+    <time>1319182118</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>12202d5ec920cfb3a4a1bb1d7a5151b9</srcmd5>
+    <version>0.0.9</version>
+    <time>1321460358</time>
+    <user>coolo</user>
+    <comment>Update to 0.0.9 (forwarded request 91492 from vuntz)</comment>
+    <requestid>91538</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>7c6c518a5f1184ce3fa3881fa7504611</srcmd5>
+    <version>0.0.9</version>
+    <time>1323341444</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 95082 from coolo)</comment>
+    <requestid>95182</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>af86ae33cb751fb39a31cbadcde3df6c</srcmd5>
+    <version>0.0.9</version>
+    <time>1330434846</time>
+    <user>coolo</user>
+    <comment>- Build C++ code with -fvisibility-inlines-hidden shrinks 
+  the exported symbol table from 1844 to 1476 entries. (forwarded request 106839 from elvigia)</comment>
+    <requestid>106842</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>014259f68efca90a60f1eb34f462ae1a</srcmd5>
+    <version>0.0.9</version>
+    <time>1336653189</time>
+    <user>coolo</user>
+    <comment>- Run make check 
+- Do not use gcc -ansi flag
+- Ensure all C files include &quot;config.h&quot; (forwarded request 120539 from elvigia)</comment>
+    <requestid>120552</requestid>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>014259f68efca90a60f1eb34f462ae1a</srcmd5>
+    <version>0.0.9</version>
+    <time>1340183616</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>014259f68efca90a60f1eb34f462ae1a</srcmd5>
+    <version>0.0.9</version>
+    <time>1359109318</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="10">
+    <srcmd5>014259f68efca90a60f1eb34f462ae1a</srcmd5>
+    <version>0.0.9</version>
+    <time>1379663030</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="12">
+    <srcmd5>014259f68efca90a60f1eb34f462ae1a</srcmd5>
+    <version>0.0.9</version>
+    <time>1409301650</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="13">
+    <srcmd5>069031523bce3fa4eb6c279979fd18fb</srcmd5>
+    <version>0.0.9</version>
+    <time>1435171268</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312294</requestid>
+  </revision>
+  <revision rev="29" vrev="14">
+    <srcmd5>abcd91cbb0dab56716ae3aee15fe657b</srcmd5>
+    <version>0.0.9</version>
+    <time>1473409224</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>425188</requestid>
+  </revision>
+  <revision rev="30" vrev="15">
+    <srcmd5>88a04d411189abe54318fbd0a336ade3</srcmd5>
+    <version>0.0.9</version>
+    <time>1486388074</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454143</requestid>
+  </revision>
+  <revision rev="31" vrev="16">
+    <srcmd5>96da7c712d7f77a5710960119df5411b</srcmd5>
+    <version>0.0.9</version>
+    <time>1520021286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581525</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>94d1e52a8cfcfb531417b0f5b3bf66c8</srcmd5>
+    <version>0.1.3</version>
+    <time>1559375899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706613</requestid>
+  </revision>
+</revisionlist>

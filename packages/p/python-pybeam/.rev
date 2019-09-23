@@ -1,0 +1,116 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c8708e89527bbf59d57c943c88669dd9</srcmd5>
+    <version>0.2</version>
+    <time>1373397027</time>
+    <user>coolo</user>
+    <comment>
+[SR 2/2] Submit python-construct and python-pybeam
+
+New packages, see: http://lists.opensuse.org/opensuse-factory/2013-07/msg00135.html</comment>
+    <requestid>182599</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c8708e89527bbf59d57c943c88669dd9</srcmd5>
+    <version>0.2</version>
+    <time>1379664250</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3105d1ff1b241ec3e1ca68bc847b3f23</srcmd5>
+    <version>0.3</version>
+    <time>1393136179</time>
+    <user>coolo</user>
+    <comment>Version 0.3 (forwarded request 223262 from matwey)</comment>
+    <requestid>223380</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>45f59260fdac225ff0ad143384862768</srcmd5>
+    <version>0.3.1</version>
+    <time>1396709391</time>
+    <user>coolo</user>
+    <comment> (forwarded request 228203 from matwey)</comment>
+    <requestid>228263</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>10a13f5185760fea9310c2aeb7490369</srcmd5>
+    <version>0.3.2</version>
+    <time>1402227415</time>
+    <user>coolo</user>
+    <comment> (forwarded request 235922 from matwey)</comment>
+    <requestid>236019</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>10a13f5185760fea9310c2aeb7490369</srcmd5>
+    <version>0.3.2</version>
+    <time>1409302952</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b8b2e8d6f9c87fb4c68d8e30cd0fa23b</srcmd5>
+    <version>0.3.3</version>
+    <time>1485167355</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451083</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>18fe6ff79b8e7dd4a36b6001e2b0a923</srcmd5>
+    <version>0.4</version>
+    <time>1485597867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>452593</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9b811c5bd663de8e1f7ea09243c78648</srcmd5>
+    <version>0.4</version>
+    <time>1504814993</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520331</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>73f9cea688d9fe0bdbe0b2e698e78e6f</srcmd5>
+    <version>0.4.1</version>
+    <time>1522058172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588582</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>c551ddae0c5663d3ff1261491bf87c98</srcmd5>
+    <version>0.4.1</version>
+    <time>1523956722</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.4.1 (bsc#1089748):</comment>
+    <requestid>597185</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>cbca29e1031f2cdcaff1d97f7cc531ff</srcmd5>
+    <version>0.4.1</version>
+    <time>1545866866</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659577</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>de9bc5a3b87332cdf1bdc9b5a8c76516</srcmd5>
+    <version>0.5</version>
+    <time>1548704719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662304</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>4c1ad263a3ffd7e0a1424f8a261c3b28</srcmd5>
+    <version>0.5</version>
+    <time>1551215761</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call
+</comment>
+    <requestid>679053</requestid>
+  </revision>
+</revisionlist>

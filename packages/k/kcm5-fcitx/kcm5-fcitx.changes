@@ -1,0 +1,187 @@
+-------------------------------------------------------------------
+Mon Mar 12 08:57:16 UTC 2018 - werner@suse.de
+
+- Repair next removed dependency, that is add build require
+  pkgconfig(xkbfile)
+
+-------------------------------------------------------------------
+Sat Dec  2 05:51:36 UTC 2017 - i@marguerite.su
+
+- update version 0.5.5
+  * try qt5 wrapper before qt4 
+  * Use the correct dependency
+  * try best to fit text in the rect
+  * we don't listen to xkb event, why we would wother request it
+  * revive the layout viewer
+
+-------------------------------------------------------------------
+Sun Aug 20 22:56:31 UTC 2017 - zaitor@opensuse.org
+
+- Drop conditional libunique-devel and libunique1-devel
+  BuildRequires: Obsolete and unused.
+
+-------------------------------------------------------------------
+Sat Feb 11 23:04:16 UTC 2017 - i@marguerite.su
+
+- update version 0.5.4
+  * use gui wrapper instead of embed.
+
+-------------------------------------------------------------------
+Wed Dec 23 07:07:52 UTC 2015 - i@marguerite.su
+
+- update version 0.5.3
+  * revert to QTreeView implementation, KCategorizedView is buggy
+  * blindly make use of iso_639 for translation, fcitx uses it
+    anyway.
+- drop patch: 0001-kcm-revert-to-QTreeView-implementation-KCategorizedV.patch
+  upstreamed 
+
+-------------------------------------------------------------------
+Fri Dec 18 07:17:46 CET 2015 - tiwai@suse.de
+
+- Upstream fix for converting to QTreeView instead of broken
+  KCategorizedView; this fixes the still-existing crash at clicking
+  "Only Show Currnet Language" checkbox:
+    0001-kcm-revert-to-QTreeView-implementation-KCategorizedV.patch
+  obsoleting the old patch
+    kcm-fcitx-workaround-for-invalid-langcode.patch
+
+-------------------------------------------------------------------
+Thu Oct 22 18:28:11 CEST 2015 - tiwai@suse.de
+
+- Work around a crash at clicking "Only Show Current Language"
+  (boo#951609):
+  kcm-fcitx-workaround-for-invalid-langcode.patch
+
+-------------------------------------------------------------------
+Sun Oct 18 10:40:06 UTC 2015 - i@marguerite.su
+
+- update version 0.5.2
+  * A small bugfix relaese.
+  * Fixes some wrong dialog layout when porting to Qt5/KF5. 
+- changes in 0.5.1
+  * Fix some dialog handling
+  * Make kcm layout uniform w/ other kcms in system settings
+- rename fcitx-config-kde5 to kf5-kcm-fcitx
+
+-------------------------------------------------------------------
+Wed Jun 10 14:51:27 UTC 2015 - i@marguerite.su
+
+- don't rely on specific kf5 version
+
+-------------------------------------------------------------------
+Thu Apr  2 14:26:46 UTC 2015 - i@marguerite.su
+
+- package forked from kcm-fcitx
+- update version 0.5.0: first version w/ kf5 support.
+- add patch: kcm5-fcitx-po.patch
+  * rename po to kcm5_fcitx to avoid conflict w/ kcm_fcitx
+- update macros used in specfile to kf5 alternatives.
+- split a new subpackage: fcitx-config-kde5-icons
+  * avoid file conflicts when fcitx-config-kde4 is also installed
+  * icons may be different later, but for now they're the same
+
+-------------------------------------------------------------------
+Mon Jul  1 13:08:28 UTC 2013 - i@marguerite.su
+
+- update version 0.4.3
+  * Use new fcitx-qt widget to grab modifier only key.
+  * Translation Update
+
+-------------------------------------------------------------------
+Sat Jan 26 18:47:11 UTC 2013 - i@marguerite.su
+
+- update version 0.4.2
+  * Add support for new custom configuration ui.
+- kcm-fcitx-0.4.2-compat-qt474.patch
+  * fix build with qt 4.7.4 under 12.1 and below.
+  * remove next release
+
+-------------------------------------------------------------------
+Sat Sep 15 21:35:07 UTC 2012 - i@marguerite.su
+
+- update version 0.4.1
+  * Add support for hidden options
+  * Simplify access to current UI setting
+
+-------------------------------------------------------------------
+Sat Jul 21 21:35:11 UTC 2012 - i@marguerite.su
+
+- update version 0.4.0
+  * new implementation for key conversion
+  * add support for change “default layout”
+
+-------------------------------------------------------------------
+Mon Jun 25 11:32:59 UTC 2012 - i@marguerite.su
+
+- fix fedora builds.
+
+-------------------------------------------------------------------
+Thu Jun  7 13:41:00 UTC 2012 - i@marguerite.su
+
+- remove fix shebang line from spec file.
+  * now it has no shebang, this will remove good code
+    thus cause no configuration page under system settings - locale.
+
+-------------------------------------------------------------------
+Mon Jun  4 14:51:16 UTC 2012 - i@marguerite.su
+
+- update version 0.3.4
+  * configure input method from input method page
+
+-------------------------------------------------------------------
+Mon May 28 23:25:13 UTC 2012 - i@marguerite.su
+
+- bring it into DVD.
+
+-------------------------------------------------------------------
+Sun May  6 23:09:38 UTC 2012 - i@marguerite.su
+
+- update to 0.3.3
+  * add super support
+  * workaround a potential freeze bug
+
+-------------------------------------------------------------------
+Sun Apr  8 03:04:41 UTC 2012 - i@marguerite.su
+
+- update to 0.3.2
+  * Add more X key to Qt key conversion.
+
+-------------------------------------------------------------------
+Fri Mar 09 14:14:25 UTC+8 2012 - hillwood@linuxfans.org
+
+- update to 0.3.1
+  sync with head 
+  
+-------------------------------------------------------------------
+Wed Feb 29 21:00:33 UTC 2012 - i@marguerite.su
+
+- set _service disabled. update source from git.
+
+-------------------------------------------------------------------
+Thu Jan 26 18:50:46 UTC 2012 - i@marguerite.su
+
+- fix shebang warning
+
+-------------------------------------------------------------------
+Thu Jan 26 16:29:47 UTC 2012 - i@marguerite.su
+
+- update source from git. version 0.4.0
+
+-------------------------------------------------------------
+Mon Oct  3 18:05:41 UTC 2011 - stecue@gmail.com
+
+- Change the package name to fcitx-config-kde4 to avoid 
+  confusing.
+
+-------------------------------------------------------------
+Sun Oct  2 20:19:46 UTC 2011 - stecue@gmail.com
+
+- upstream version 0.2.1
+  * works with fcitx-4.1.2
+
+-------------------------------------------------------------
+Fri Sep  9 17:17:47 UTC 2011 - stecue@gmail.com
+
+- Initial build. Version 0.1.1
+

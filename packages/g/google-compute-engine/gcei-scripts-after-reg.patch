@@ -1,0 +1,11 @@
+diff -Nru compute-image-packages-20190801.orig/packages/google-compute-engine/src/lib/systemd/system/google-startup-scripts.service compute-image-packages-20190801/packages/google-compute-engine/src/lib/systemd/system/google-startup-scripts.service
+--- compute-image-packages-20190801.orig/packages/google-compute-engine/src/lib/systemd/system/google-startup-scripts.service	2019-08-02 01:32:44.000000000 +0200
++++ compute-image-packages-20190801/packages/google-compute-engine/src/lib/systemd/system/google-startup-scripts.service	2019-08-04 18:45:31.795657246 +0200
+@@ -2,6 +2,7 @@
+ Description=Google Compute Engine Startup Scripts
+ After=network-online.target network.target rsyslog.service
+ After=google-instance-setup.service google-network-daemon.service
++After=guestregister.service
+ 
+ [Service]
+ ExecStart=/usr/bin/google_metadata_script_runner --script-type startup

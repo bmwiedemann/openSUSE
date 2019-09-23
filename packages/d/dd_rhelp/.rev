@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a8eaa719294b2906f2bed428994ea99</srcmd5>
+    <version>0.1.2</version>
+    <time>1332763250</time>
+    <user>coolo</user>
+    <comment>New package submission: dd_rhelp - Submitting dd_rhelp to Factory since it became a separate package (splitted from dd_rescue)</comment>
+    <requestid>111002</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e04b15c043661a6d5168ad8f066eea21</srcmd5>
+    <version>0.3.0</version>
+    <time>1336468462</time>
+    <user>coolo</user>
+    <comment>Update to version 0.3.0, Removed all previous patches (since they are merged upstream or fixed otherwise) (forwarded request 115961 from adra)</comment>
+    <requestid>116335</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e04b15c043661a6d5168ad8f066eea21</srcmd5>
+    <version>0.3.0</version>
+    <time>1340183273</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e04b15c043661a6d5168ad8f066eea21</srcmd5>
+    <version>0.3.0</version>
+    <time>1359108803</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>4bc3ab411a805db8af27e15531974554</srcmd5>
+    <version>0.3.0</version>
+    <time>1360002603</time>
+    <user>coolo</user>
+    <comment>- Apply three fixes:
+  * dd_rhelp_EOF.diff: Be tolerant to error messages after EOF.
+  * dd_rhelp_Summary.diff: Avoid misparsing Summary line.
+  * dd_rhelp.test.diff: Don't misparse dd_rescue version number. (forwarded request 150906 from garloff)</comment>
+    <requestid>150921</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>4bc3ab411a805db8af27e15531974554</srcmd5>
+    <version>0.3.0</version>
+    <time>1379662212</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>9d66d40ea60e30780a01ab1c480022db</srcmd5>
+    <version>0.3.0</version>
+    <time>1394806552</time>
+    <user>coolo</user>
+    <comment>- Update dd_rhelp_EOF.diff to support dd_rescue-1.41+. (forwarded request 225177 from garloff)</comment>
+    <requestid>225489</requestid>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>9d66d40ea60e30780a01ab1c480022db</srcmd5>
+    <version>0.3.0</version>
+    <time>1409300748</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>2b91d1bc0322477672454584dfecfe9d</srcmd5>
+    <version>0.3.0</version>
+    <time>1521193344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586982</requestid>
+  </revision>
+</revisionlist>

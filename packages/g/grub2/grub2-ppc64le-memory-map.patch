@@ -1,0 +1,84 @@
+Index: grub-2.02~beta2/grub-core/kern/ieee1275/openfw.c
+===================================================================
+--- grub-2.02~beta2.orig/grub-core/kern/ieee1275/openfw.c
++++ grub-2.02~beta2/grub-core/kern/ieee1275/openfw.c
+@@ -302,6 +302,34 @@ grub_ieee1275_map (grub_addr_t phys, gru
+   return args.catch_result;
+ }
+ 
++/* Preallocate IEEE1275_MAX_MAP_RESOURCE map tracks to track the
++ * map regions allocated to us by the firmware. Cannot
++ * dynamically allocate them, since the heap is not set
++ * yet.
++ */
++struct grub_map_track  grub_map_track[IEEE1275_MAX_MAP_RESOURCE];
++int grub_map_track_index=0;
++
++void
++grub_releasemap ()
++{
++  int i=0;
++  for (i=grub_map_track_index-1; i >= 0; i--)
++   grub_ieee1275_release(grub_map_track[i].addr, grub_map_track[i].size);
++  grub_map_track_index = 0;
++  return;
++}
++
++static void
++grub_track_map (grub_addr_t addr, grub_size_t size)
++{
++  if (grub_map_track_index >= IEEE1275_MAX_MAP_RESOURCE)
++   return;
++  grub_map_track[grub_map_track_index].addr = addr;
++  grub_map_track[grub_map_track_index++].size = size;
++  return;
++}
++
+ grub_err_t
+ grub_claimmap (grub_addr_t addr, grub_size_t size)
+ {
+@@ -317,6 +345,7 @@ grub_claimmap (grub_addr_t addr, grub_si
+       return grub_errno;
+     }
+ 
++  grub_track_map (addr, size);
+   return GRUB_ERR_NONE;
+ }
+ 
+Index: grub-2.02~beta2/include/grub/ieee1275/ieee1275.h
+===================================================================
+--- grub-2.02~beta2.orig/include/grub/ieee1275/ieee1275.h
++++ grub-2.02~beta2/include/grub/ieee1275/ieee1275.h
+@@ -30,6 +30,12 @@ struct grub_ieee1275_mem_region
+   unsigned int size;
+ };
+ 
++#define IEEE1275_MAX_MAP_RESOURCE 10
++struct grub_map_track {
++  grub_addr_t addr;
++  grub_size_t size;
++};
++
+ #define IEEE1275_MAX_PROP_LEN	8192
+ #define IEEE1275_MAX_PATH_LEN	256
+ 
+@@ -214,6 +220,7 @@ int EXPORT_FUNC(grub_ieee1275_millisecon
+ 
+ 
+ grub_err_t EXPORT_FUNC(grub_claimmap) (grub_addr_t addr, grub_size_t size);
++void EXPORT_FUNC(grub_releasemap) (void);
+ 
+ int
+ EXPORT_FUNC(grub_ieee1275_map) (grub_addr_t phys, grub_addr_t virt,
+Index: grub-2.02~beta2/grub-core/kern/ieee1275/init.c
+===================================================================
+--- grub-2.02~beta2.orig/grub-core/kern/ieee1275/init.c
++++ grub-2.02~beta2/grub-core/kern/ieee1275/init.c
+@@ -62,6 +62,7 @@ grub_addr_t grub_ieee1275_original_stack
+ void
+ grub_exit (void)
+ {
++  grub_releasemap();
+   grub_ieee1275_exit ();
+ }
+ 

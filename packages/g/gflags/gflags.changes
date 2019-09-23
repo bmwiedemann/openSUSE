@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Tue Sep 10 20:23:51 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use -ffat-lto-objects when building static libraries.
+
+-------------------------------------------------------------------
+Tue Oct 30 10:29:06 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Add RPM groups. Fix wrong devel-static description.
+
+-------------------------------------------------------------------
+Tue Jul 11 17:41:43 UTC 2017 - aloisio@gmx.com
+
+- Update to version 2.2.1
+  * Link to online documentation in README
+  * Merged 194: Include utils by file instead of CMAKE_MODULE_PATH
+    search
+  * Merged 195: Remove unused program_name variable
+  * Merged 196: Enable language C for older CMake versions when
+    needed
+  * Merged 202: Changed include directory in bazel build
+  * Merged 207: Mark single argument constructors in mutex.h as
+    explicit
+  * Merged 215: Fix static initialization order fiasco caused by
+    global registry lock
+  * Merged 216: Fix use of ARGC in CMake macros
+  * Merged 222: Static code analyzer error regarding strncmp with
+    empty kRootDir
+
+- Renamed source file
+
+-------------------------------------------------------------------
+Tue Mar 21 06:15:05 UTC 2017 - miukumac@outlook.com
+
+- Initial 2.2.0 release

@@ -1,0 +1,16 @@
+Index: CMakeLists.txt
+===================================================================
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -111,6 +111,11 @@ if(MATH_LIBRARY)
+   list(APPEND EXTERNAL_LIBRARIES ${MATH_LIBRARY})
+ endif(MATH_LIBRARY)
+ 
++find_library(MATH_LIBRARY m)
++if(MATH_LIBRARY)
++  list(APPEND EXTERNAL_LIBRARIES ${MATH_LIBRARY})
++endif(MATH_LIBRARY)
++
+ include_directories(${EXTERNAL_INCLUDES})
+ 
+ if(OPENGL_FOUND)

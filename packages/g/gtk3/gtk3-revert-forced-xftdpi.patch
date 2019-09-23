@@ -1,0 +1,29 @@
+From: Guiseppe Bilotta
+Subject: Revert "Simplify Xft setting fallback"
+References: boo#1022830 fate#322401 fdo#98909 kde#367499 bmo#1269274
+
+This patch reverts part of commit bdf0820
+("Simplify Xft setting fallback") which forces the DPI to 96
+instead of querying the X server for the physical screen dimensions.
+This is needed for GTK applications to autodetect the DPI of
+monitors and not depend on manual configuration.
+
+Signed-off-by: Fabian Vogt <fvogt@suse.com>
+
+ gdk/x11/gdkxftdefaults.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+Index: gtk+-3.20.10/gdk/x11/gdkxftdefaults.c
+===================================================================
+--- gtk+-3.20.10.orig/gdk/x11/gdkxftdefaults.c
++++ gtk+-3.20.10/gdk/x11/gdkxftdefaults.c
+@@ -174,7 +174,8 @@ init_xft_settings (GdkScreen *screen)
+     x11_screen->xft_rgba = FC_RGBA_UNKNOWN;
+ 
+   if (!get_double_default (xdisplay, "dpi", &dpi_double))
+-    dpi_double = 96.0;
++    dpi_double = (DisplayHeight(xdisplay, x11_screen->screen_num)*25.4)/
++		    DisplayHeightMM(xdisplay, x11_screen->screen_num);
+ 
+   x11_screen->xft_dpi = (int)(0.5 + PANGO_SCALE * dpi_double);
+ }

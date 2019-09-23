@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Feb 21 22:30:29 UTC 2017 - olaf@aepfle.de
+
+- Update to version 0.2.2
+  see included CHANGES for details
+  remove obsolete libtimidity-0.1.0-missing-includes.patch
+
+-------------------------------------------------------------------
+Sun May  1 17:35:27 UTC 2011 - toddrme2178@gmail.com
+ 
+- Added 32bit compatibility libraries
+ 
+-------------------------------------------------------------------
+Mon Sep  6 19:26:52 UTC 2010 - dimstar@opensuse.org
+
+- Initial import of libtimidity, spec based on Fedora package.
+

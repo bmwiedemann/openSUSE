@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>vsftpd ports</short>
+  <description>vsftpd ports for both active and passive connections</description>
+  <port protocol="tcp" port="21"/> <!-- control connection port -->
+  <port protocol="tcp" port="30000-30100"/> <!-- passive mode port range -->
+</service>
+

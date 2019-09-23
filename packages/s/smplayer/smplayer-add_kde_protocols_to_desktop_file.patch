@@ -1,0 +1,10 @@
+--- a/smplayer.desktop
++++ b/smplayer.desktop
+@@ -8,6 +8,7 @@ MimeType=audio/ac3;audio/mp4;audio/mpeg;
+ Name=SMPlayer
+ Type=Application
+ X-KDE-StartupNotify=false
++X-KDE-Protocols=http,ftp,smb
+ 
+ # Translations
+ Comment[ar]=واجهة-طرفية ممتازة للمشغل MPlayer

@@ -1,0 +1,8 @@
+<package name="xfce4-appfinder" project="openSUSE:Factory">
+  <title>Application Finder for the Xfce Desktop Environment</title>
+  <description>xfce4-appfinder is an application finder for the Xfce desktop environment. It
+is a useful program that allows you to find applications on the system and
+launch them. It provides easy keyboard navigation and can be used as a
+replacement for xfrun4.</description>
+  <devel project="X11:xfce" package="xfce4-appfinder"/>
+</package>

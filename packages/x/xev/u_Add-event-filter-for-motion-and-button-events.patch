@@ -1,0 +1,53 @@
+From: Egbert Eich <eich@suse.de>
+Date: Tue Feb 11 18:25:35 2014 +0100
+Subject: [PATCH]Add event filter for motion and button events
+Patch-Mainline: to be upstreamed
+Git-commit: 68e9fe8c0b2c729b483d673855355b0d0c13b471
+Git-repo: 
+References: 
+Signed-off-by: Egbert Eich <eich@suse.com>
+
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ man/xev.man |    2 +-
+ xev.c       |    7 ++++++-
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+Index: xev-1.2.3/man/xev.man
+===================================================================
+--- xev-1.2.3.orig/man/xev.man
++++ xev-1.2.3/man/xev.man
+@@ -62,7 +62,7 @@ The
+ option can be specified multiple times to select multiple types of events.
+ When not specified, all events are selected.
+ Available event masks: keyboard mouse expose visibility structure substructure
+-focus property colormap owner_grab_button randr button
++focus property colormap owner_grab_button randr motion button
+ .TP 8
+ .B \-version
+ This option prints the program version and exits.
+Index: xev-1.2.3/xev.c
+===================================================================
+--- xev-1.2.3.orig/xev.c
++++ xev-1.2.3/xev.c
+@@ -1051,7 +1051,7 @@ usage(const char *errmsg)
+ "    -event event_mask                   select 'event_mask' events\n"
+ "           Supported event masks: keyboard mouse expose visibility structure\n"
+ "                                  substructure focus property colormap\n"
+-"                                  owner_grab_button randr button\n"
++"                                  owner_grab_button randr motion button\n"
+ "           This option can be specified multiple times to select multiple\n"
+ "           event masks.\n"
+ "    -version                            print version and exit\n"
+@@ -1100,6 +1100,11 @@ parse_event_mask(const char *s, long eve
+           LeaveWindowMask | PointerMotionMask | Button1MotionMask |
+           Button2MotionMask | Button3MotionMask | Button4MotionMask |
+           Button5MotionMask | ButtonMotionMask },
++        { "motion",
++          EVENT_MASK_INDEX_CORE,
++          PointerMotionMask | Button1MotionMask |
++          Button2MotionMask | Button3MotionMask | Button4MotionMask |
++          Button5MotionMask | ButtonMotionMask },
+         { "button",
+           EVENT_MASK_INDEX_CORE,
+           ButtonPressMask | ButtonReleaseMask },

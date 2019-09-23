@@ -1,0 +1,126 @@
+--- ./pppd/main.c.orig	2004-07-19 12:35:22.000000000 +0000
++++ ./pppd/main.c	2004-07-19 14:34:38.542120946 +0000
+@@ -124,7 +124,7 @@
+ static const char rcsid[] = RCSID;
+ 
+ /* interface vars */
+-char ifname[32];		/* Interface name */
++char ifname[MAXIFNAMELEN];	/* Interface name */
+ int ifunit;			/* Interface unit number */
+ 
+ struct channel *the_channel;
+@@ -298,13 +298,6 @@
+     NULL
+ };
+ 
+-/*
+- * If PPP_DRV_NAME is not defined, use the default "ppp" as the device name.
+- */
+-#if !defined(PPP_DRV_NAME)
+-#define PPP_DRV_NAME	"ppp"
+-#endif /* !defined(PPP_DRV_NAME) */
+-
+ int
+ main(argc, argv)
+     int argc;
+@@ -737,8 +730,11 @@
+ set_ifunit(iskey)
+     int iskey;
+ {
+-    info("Using interface %s%d", PPP_DRV_NAME, ifunit);
++    if (req_ifname[0] != '\0')
++	slprintf(ifname, sizeof(ifname), req_ifname);
++    else
+     slprintf(ifname, sizeof(ifname), "%s%d", PPP_DRV_NAME, ifunit);
++    info("Using interface %s", ifname);
+     script_setenv("IFNAME", ifname, iskey);
+     if (iskey) {
+ 	create_pidfile(getpid());	/* write pid to file */
+--- ./pppd/options.c.orig	2004-07-19 12:59:21.000000000 +0000
++++ ./pppd/options.c	2004-07-19 14:35:04.253865964 +0000
+@@ -114,6 +114,7 @@
+ bool	tune_kernel;		/* may alter kernel settings */
+ int	connect_delay = 1000;	/* wait this many ms after connect script */
+ int	req_unit = -1;		/* requested interface unit */
++char	req_ifname[MAXIFNAMELEN];	/* requested interface name */
+ bool	multilink = 0;		/* Enable multilink operation */
+ char	*bundle_name = NULL;	/* bundle name for multilink */
+ bool	dump_options;		/* print out option values */
+@@ -283,6 +284,10 @@
+       "PPP interface unit number to use if possible",
+       OPT_PRIO | OPT_LLIMIT, 0, 0 },
+ 
++    { "ifname", o_string, req_ifname,
++      "Set PPP interface name",
++      OPT_PRIO | OPT_PRIV | OPT_STATIC, NULL, MAXIFNAMELEN },
++
+     { "dump", o_bool, &dump_options,
+       "Print out option values after parsing all options", 1 },
+     { "dryrun", o_bool, &dryrun,
+--- ./pppd/pppd.8.orig	2004-07-19 14:39:06.639320497 +0000
++++ ./pppd/pppd.8	2004-07-19 15:00:37.339448432 +0000
+@@ -1085,7 +1085,12 @@
+ .TP
+ .B unit \fInum
+ Sets the ppp unit number (for a ppp0 or ppp1 etc interface name) for outbound
+-connections.
++connections.  If the unit is already in use a dynamically allocated will be
++used.
++.TP
++.B ifname \fIstring
++Set the ppp interface name for outbound connections.  A failure to set the
++name will terminate the pppd.
+ .TP
+ .B unset \fIname
+ Remove a variable from the environment variable for scripts that are
+--- ./pppd/pppd.h.orig	2004-07-19 12:59:16.000000000 +0000
++++ ./pppd/pppd.h	2004-07-19 15:02:08.792752747 +0000
+@@ -80,6 +80,16 @@
+ #define MAXARGS		1	/* max # args to a command */
+ #define MAXNAMELEN	256	/* max length of hostname or name for auth */
+ #define MAXSECRETLEN	256	/* max length of password or secret */
++#define MAXIFNAMELEN	32	/* max length of interface name; or use IFNAMSIZ, can we
++				   always include net/if.h? */
++
++/*
++ * If PPP_DRV_NAME is not defined, use the default "ppp" as the device name.
++ * Where should PPP_DRV_NAME come from? Do we include it here?
++ */
++#if !defined(PPP_DRV_NAME)
++#define PPP_DRV_NAME	"ppp"
++#endif /* !defined(PPP_DRV_NAME) */
+ 
+ /*
+  * Option descriptor structure.
+@@ -317,6 +327,7 @@
+ extern int	connect_delay;	/* Time to delay after connect script */
+ extern int	max_data_rate;	/* max bytes/sec through charshunt */
+ extern int	req_unit;	/* interface unit number to use */
++extern char	req_ifname[MAXIFNAMELEN];	/* interface name to use */
+ extern bool	multilink;	/* enable multilink operation */
+ extern bool	noendpoint;	/* don't send or accept endpt. discrim. */
+ extern char	*bundle_name;	/* bundle name for multilink */
+--- ./pppd/sys-linux.c.orig	2004-07-19 12:33:29.000000000 +0000
++++ ./pppd/sys-linux.c	2004-07-19 14:37:36.463754450 +0000
+@@ -638,6 +638,21 @@
+ 	}
+ 	if (x < 0)
+ 		error("Couldn't create new ppp unit: %m");
++
++	if (x == 0 && req_ifname[0] != '\0') {
++		struct ifreq ifr;
++		char t[MAXIFNAMELEN];
++		memset(&ifr, 0, sizeof(struct ifreq));
++		slprintf(t, sizeof(t), "%s%d", PPP_DRV_NAME, ifunit);
++		strncpy(ifr.ifr_name, t, IF_NAMESIZE);
++		strncpy(ifr.ifr_newname, req_ifname, IF_NAMESIZE);
++		x = ioctl(sock_fd, SIOCSIFNAME, &ifr);
++		if (x < 0)
++		    error("Couldn't rename interface %s to %s: %m", t, req_ifname);
++		else
++		    info("Renamed interface %s to %s", t, req_ifname);
++	}
++
+ 	return x;
+ }
+ 

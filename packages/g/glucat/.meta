@@ -1,0 +1,8 @@
+<package name="glucat" project="openSUSE:Factory">
+  <title>glucat</title>
+  <description>
+GluCat is a library of template classes which model the universal Clifford algebras over the field of real numbers, with arbitrary dimension and arbitrary signature. GluCat implements a model of each Clifford algebra corresponding to each non-degenerate quadratic form up to a maximum number of dimensions. 
+  </description>
+  <devel project="science" package="glucat"/>
+  <url>http://glucat.sourceforge.net/</url>
+</package>

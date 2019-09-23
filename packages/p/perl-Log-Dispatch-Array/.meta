@@ -1,0 +1,10 @@
+<package name="perl-Log-Dispatch-Array" project="openSUSE:Factory">
+  <title>Log events to an array</title>
+  <description>This provides a Log::Dispatch log output system that appends logged events
+to an array reference. This is probably only useful for testing the
+logging of your code.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Log-Dispatch-Array"/>
+  <url>http://search.cpan.org/dist/Log-Dispatch-Array</url>
+</package>

@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="534">
+    <srcmd5>1f89d1bbcf803a9e882d6cbd5398bdf3</srcmd5>
+    <version>4.0.6_20011017cvs</version>
+    <time>1168904321</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="848">
+    <srcmd5>1f89d1bbcf803a9e882d6cbd5398bdf3</srcmd5>
+    <version>4.0.6_20011017cvs</version>
+    <time>1168904321</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="849">
+    <srcmd5>00d8701b93ba185e9ce66988e868749f</srcmd5>
+    <version>4.0.6_20011017cvs</version>
+    <time>1245277606</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="851">
+    <srcmd5>00d8701b93ba185e9ce66988e868749f</srcmd5>
+    <version>4.0.6_20011017cvs</version>
+    <time>1245277606</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="852">
+    <srcmd5>e2ce425a49955c7d6a6918b186f8111c</srcmd5>
+    <version>4.0.6_20011017cvs</version>
+    <time>1268926292</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="854">
+    <srcmd5>e2ce425a49955c7d6a6918b186f8111c</srcmd5>
+    <version>4.0.6_20011017cvs</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="855">
+    <srcmd5>e2ce425a49955c7d6a6918b186f8111c</srcmd5>
+    <version>4.0.6_20011017cvs</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="858">
+    <srcmd5>e2ce425a49955c7d6a6918b186f8111c</srcmd5>
+    <version>4.0.6_20011017cvs</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="860">
+    <srcmd5>e2ce425a49955c7d6a6918b186f8111c</srcmd5>
+    <version>4.0.6_20011017cvs</version>
+    <time>1319182506</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="861">
+    <srcmd5>c29d158b5c3ec9c0678adff84a60e7fa</srcmd5>
+    <version>4.0.6_20011017cvs</version>
+    <time>1323194836</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="863">
+    <srcmd5>c29d158b5c3ec9c0678adff84a60e7fa</srcmd5>
+    <version>4.0.6_20011017cvs</version>
+    <time>1340184257</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="865">
+    <srcmd5>c29d158b5c3ec9c0678adff84a60e7fa</srcmd5>
+    <version>4.0.6_20011017cvs</version>
+    <time>1359110462</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7e3115a0afd2479db4ecc22a8b5d9089</srcmd5>
+    <version>4.0.6_20041122cvs</version>
+    <time>1378898412</time>
+    <user>coolo</user>
+    <comment>- Fix tamago.changes:
+  Fixed comment style .
+- Fix tamago.spec:
+  * fix commented-out macros: were changed to &quot;_&quot; .
+    Because rpmlint tells them warning messages .
+  * Source[234]'s URLs were dead, so I deleted URL .
+  * Changed egg_4.0.6+0.20041122cvs-19.diff.gz
+    to patch from source .
+  * I deleted Japanese EUC-JP encoding comments .
+  * I added a comment why am I import sources from Debian .
+    Because upstream http://www.m17n.org/tamago was dead .
+- Fix tamago-fix-access-to-fwnn.patch .
+  I forgot to change comm-accept-timeout from nil to 1000
+  in egg-com.el .
+  So insert it in tamago-fix-access-to-fwnn.patch .
+- Fix Version: tag in tamago.spec .
+  I changed version string to Debian format .
+  But its string was wrong, then fixed to openSUSE format .
+- Fix that tamago can not access to FreeWnn's jserver
+  (bnc#836138) .
+  * Update to egg_4.0.6_20041122cvs.orig.tar.gz:
+  * Imported source from http://packages.debian.org/wheezy/egg .
+    http://ftp.de.debian.org/debian/pool/main/e/egg/egg_4.0.6+0.20041122cvs-19.dsc
+    http://ftp.de.debian.org/debian/pool/main/e/egg/egg_4.0.6+0.20041122cvs.orig.tar.gz
+    http://ftp.de.debian.org/debian/pool/main/e/egg/egg_4.0.6+0.20041122cvs-19.diff.gz
+    Because upstream http://www.m17n.org/tamago wad dead,
+    and egg_4.0.6+0.20041122cvs-19.diff.gz was fixed bnc#836138 .
+  * Deleted source
+    http://cgi18.plala.or.jp/nyy/canna/egg-canna.el.bz2 .
+    Because this program can not run on Emacs-24.3-4.3 . (forwarded request 197943 from Mitsutoshi)</comment>
+    <requestid>197950</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>7e3115a0afd2479db4ecc22a8b5d9089</srcmd5>
+    <version>4.0.6_20041122cvs</version>
+    <time>1379664766</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>aed4641ec5f8cbea1e2583e9a75da180</srcmd5>
+    <version>4.0.6_20041122cvs</version>
+    <time>1401685250</time>
+    <user>coolo</user>
+    <comment>- Drop unused build-time requirements on libpng, libtiff, libgif (forwarded request 235968 from jengelh)</comment>
+    <requestid>235981</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>aed4641ec5f8cbea1e2583e9a75da180</srcmd5>
+    <version>4.0.6_20041122cvs</version>
+    <time>1409303450</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>6fa4ffc406515443a8fbfbb3f138f6c7</srcmd5>
+    <version>4.0.6_20041122cvs</version>
+    <time>1413739720</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257626</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9ce119bb755c60202471d3bfcfd8ed85</srcmd5>
+    <version>5.0.7.1</version>
+    <time>1423214572</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284194</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>274e901a7e6525079779c7414e9504c2</srcmd5>
+    <version>5.0.7.1</version>
+    <time>1423812931</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285819</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,28 @@
+<package name="clisp" project="openSUSE:Factory">
+  <title>A Common Lisp Interpreter</title>
+  <description>Common Lisp is a high-level, all-purpose programming language. CLISP is
+an implementation of Common Lisp that closely follows the book &quot;Common
+Lisp - The Language&quot; by Guy L. Steele Jr. This package includes an
+interactive programming environment with an interpreter, a compiler,
+and a debugger.  Start this environment with the command 'clisp'.
+
+CLISP documentation is placed in the following directories:
+
+/usr/share/doc/packages/clisp/
+
+/usr/share/doc/packages/clisp/doc/
+
+As well as the conventional CLISP, this package also includes CLX, an
+extension of CLISP for the X Window System. The X Window System must be
+installed before running the clx command. The description of this CLX
+version (new-clx) is placed in
+
+/usr/share/doc/packages/clisp/clx/
+
+with the file README. The subdirectory
+
+/usr/share/doc/packages/clisp/clx/demos/
+
+contains two nice applications.</description>
+  <devel project="devel:languages:misc" package="clisp"/>
+</package>

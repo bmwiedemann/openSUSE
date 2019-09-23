@@ -1,0 +1,6 @@
+<package name="virt-manager" project="openSUSE:Factory">
+  <title>Virtual Machine Manager</title>
+  <description>Virtual Machine Manager provides a graphical tool for administering
+virtual machines.</description>
+  <devel project="Virtualization" package="virt-manager"/>
+</package>

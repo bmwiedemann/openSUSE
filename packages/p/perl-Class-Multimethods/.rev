@@ -1,0 +1,159 @@
+<revisionlist>
+  <revision rev="1" vrev="436">
+    <srcmd5>c0dc021f12f9f5a44525f52340d555bf</srcmd5>
+    <version>1.70</version>
+    <time>1168903800</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="567">
+    <srcmd5>c0dc021f12f9f5a44525f52340d555bf</srcmd5>
+    <version>1.70</version>
+    <time>1168903800</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="568">
+    <srcmd5>480f594bdf165194b4ac261a5ffed57d</srcmd5>
+    <version>1.70</version>
+    <time>1245337186</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="570">
+    <srcmd5>480f594bdf165194b4ac261a5ffed57d</srcmd5>
+    <version>1.70</version>
+    <time>1245337186</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="571">
+    <srcmd5>5b720f70f5bb1ef57735881d8feeae21</srcmd5>
+    <version>1.70</version>
+    <time>1263295369</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Class-Multimethods based on submit request 29284 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="572">
+    <srcmd5>d51492d70601d06af7df4141fa072005</srcmd5>
+    <version>1.70</version>
+    <time>1268925388</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="574">
+    <srcmd5>d51492d70601d06af7df4141fa072005</srcmd5>
+    <version>1.70</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="575">
+    <srcmd5>d51492d70601d06af7df4141fa072005</srcmd5>
+    <version>1.70</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="576">
+    <srcmd5>c3c620c16e9e6c70db0701684ce3b9db</srcmd5>
+    <version>1.70</version>
+    <time>1287485338</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50957 from user coolo
+</comment>
+    <requestid>50957</requestid>
+  </revision>
+  <revision rev="10" vrev="577">
+    <srcmd5>c759c563bd5a4f1d4fa0cacc1334f04e</srcmd5>
+    <version>1.70</version>
+    <time>1287485342</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 50957
+</comment>
+  </revision>
+  <revision rev="11" vrev="578">
+    <srcmd5>24fa7504b6473ba2f434a7afba662e26</srcmd5>
+    <version>1.70</version>
+    <time>1291581648</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54739 from user coolo
+</comment>
+    <requestid>54739</requestid>
+  </revision>
+  <revision rev="12" vrev="579">
+    <srcmd5>3bddcb4cc72c1fd27904df71325f6292</srcmd5>
+    <version>1.70</version>
+    <time>1291581657</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54739
+</comment>
+  </revision>
+  <revision rev="13" vrev="582">
+    <srcmd5>3bddcb4cc72c1fd27904df71325f6292</srcmd5>
+    <version>1.70</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="584">
+    <srcmd5>3bddcb4cc72c1fd27904df71325f6292</srcmd5>
+    <version>1.70</version>
+    <time>1319182248</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="585">
+    <srcmd5>ab9049a76abe2d53eb956b8b8a2199bb</srcmd5>
+    <version>1.70</version>
+    <time>1321875384</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92211</requestid>
+  </revision>
+  <revision rev="16" vrev="586">
+    <srcmd5>f996f65240d516e527770e4a02c73b6f</srcmd5>
+    <version>1.70</version>
+    <time>1323193130</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="588">
+    <srcmd5>f996f65240d516e527770e4a02c73b6f</srcmd5>
+    <version>1.70</version>
+    <time>1340183809</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="590">
+    <srcmd5>f996f65240d516e527770e4a02c73b6f</srcmd5>
+    <version>1.70</version>
+    <time>1359109619</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="592">
+    <srcmd5>f996f65240d516e527770e4a02c73b6f</srcmd5>
+    <version>1.70</version>
+    <time>1379663586</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="594">
+    <srcmd5>f996f65240d516e527770e4a02c73b6f</srcmd5>
+    <version>1.70</version>
+    <time>1409302203</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>617c2a6ba2fb156fa229d06d72e0a833</srcmd5>
+    <version>1.701</version>
+    <time>1507571202</time>
+    <user>dimstar_suse</user>
+    <comment>- regenerate spec file with cpanspec
+
+- update to 1.701
+  - Added handler registration code to clean up installation
+     (thanks Robert)
+  - Changed demo shebang lines for Debian compatibility
+     (thanks Florian and Jay)
+- obsoleting Class-Multimethods-1.70.diff</comment>
+    <requestid>532604</requestid>
+  </revision>
+</revisionlist>

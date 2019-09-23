@@ -1,0 +1,164 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f5f21a64ef15f6bc42abba84504340a5</srcmd5>
+    <version>1.69</version>
+    <time>1346179668</time>
+    <user>coolo</user>
+    <comment>This is replacement for liblept2 pacage. Library major version changed. The package is updated and renamed.</comment>
+    <requestid>131823</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f5f21a64ef15f6bc42abba84504340a5</srcmd5>
+    <version>1.69</version>
+    <time>1359109224</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>2b0a9a7d52cc1fe1b008d565f53afcee</srcmd5>
+    <version>1.69</version>
+    <time>1363586824</time>
+    <user>coolo</user>
+    <comment>fix build with giflib-5.x, leptonica-1.69-giflib5.patch (forwarded request 158803 from seife)</comment>
+    <requestid>159207</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>2b0a9a7d52cc1fe1b008d565f53afcee</srcmd5>
+    <version>1.69</version>
+    <time>1379662868</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7162a4409c6f47b0183399e26cab1a45</srcmd5>
+    <version>1.70</version>
+    <time>1391077687</time>
+    <user>coolo</user>
+    <comment>update to 1.70</comment>
+    <requestid>215276</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>7162a4409c6f47b0183399e26cab1a45</srcmd5>
+    <version>1.70</version>
+    <time>1409301471</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>45909b0a72e20499193c476e4097d1ee</srcmd5>
+    <version>1.71</version>
+    <time>1412252022</time>
+    <user>coolo</user>
+    <comment>update to 1.71</comment>
+    <requestid>253225</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2e908eca1bb0ebb8560a32d26c6d8608</srcmd5>
+    <version>1.72</version>
+    <time>1443585179</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>334357</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>96eda4144f4bba6606a62ad60e083651</srcmd5>
+    <version>1.73</version>
+    <time>1455190691</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>358638</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>52ea241995f2713a9329900b388e06ef</srcmd5>
+    <version>1.74.1</version>
+    <time>1487462624</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.74.1
+  Version 1.74.1 4 Jan 17
+  
+  * Configuration changes to support the patch number in the
+    version (major.minor.patch).
+  * Removed all remaining pixDisplayWrite() calls in prog/.
+  * Cleaned up and/or promoted about 15 programs to full regression
+    tests.  There are now 95 tests in the regression set.
+  * Over half the initial coverity scan warnings have been removed.
+  Version 1.74.0 10 Dec 16
+  * Leptonica development was moved to github.  The master is at:
+    github.com/danbloomberg/leptonica
+  * New modes for RGB --&gt; gray conversion.
+  * New functions added for displaying a pix from a pixa.
+  * Split out sort/hash/set/map functions for dna, sarray and pta.
+  * More robust horizontal deskew on multi-column page images.
+  * Improve webpio_reg test.
+  * Remove X11 display for gplot; it is no longer supported.
+  * Remove most sleep calls, which were put in for gplot; no longer needed.
+  * Removed use of gthumb in library.
+  * Removed use of pixDisplayWrite() in the library; still in some progs.
+  * Improved test for endianness in makefile.static; no longer requires
+    any local files or building and running a program.
+  * Modified all files for doxygen output (spearheaded by Jurgen Buchmuller)
+  * Improved plotting of the boxes in a boxa.
+  * Replaced the slow point hash function with a simple fast one.
+  * Added pam (4 component) format writing to pnmio.c (Jurgen Buchmuller)
+  * Improved rendering of pixa in side/by/sides.
+  * Better utilities for pixa and pixacomp.
+  * Add read/write serialization functions from/to memory for all</comment>
+    <requestid>458696</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f1f4012a62a8a7f75e3f2dae1da530a8</srcmd5>
+    <version>1.74.4</version>
+    <time>1513110179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556082</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d52eb2f111239b3e6fb367ef11eb38c8</srcmd5>
+    <version>1.75.1</version>
+    <time>1517824364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>572362</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>65dee776c279bad828452473ac8f3815</srcmd5>
+    <version>1.75.1</version>
+    <time>1517932103</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>572561</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e29825882a87bf284f959bc6259c5896</srcmd5>
+    <version>1.75.3</version>
+    <time>1519145817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578295</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>09adc3f86a29ef3de4bc74d268c352f1</srcmd5>
+    <version>1.76.0</version>
+    <time>1526220302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605279</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>016420bb47a6c420282d07ed4cdfc815</srcmd5>
+    <version>1.77.0</version>
+    <time>1545141579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658973</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>06b5e13a6c7718fce5ea31918c8c1de4</srcmd5>
+    <version>1.78.0</version>
+    <time>1554372397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690805</requestid>
+  </revision>
+</revisionlist>

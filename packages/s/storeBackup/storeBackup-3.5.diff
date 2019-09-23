@@ -1,0 +1,13 @@
+Index: storeBackup/cron-storebackup
+===================================================================
+--- storeBackup.orig/cron-storebackup
++++ storeBackup/cron-storebackup
+@@ -10,7 +10,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin
+ 
+ [ -x /usr/bin/storeBackup ] || exit 0
+ 
+-configs=`run-parts --list /etc/storebackup.d/`
++configs=$(find /etc/storebackup.d/ -type f \( ! -iname "*~" ! -iname "*.swp" ! -iname "*.udf" \))
+ delayed_error=''
+ 
+ if [ "$configs" ]; then

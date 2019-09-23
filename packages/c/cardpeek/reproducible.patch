@@ -1,0 +1,27 @@
+https://github.com/L1L1/cardpeek/pull/97
+
+commit 75b1c44dd7b0b2c7a98abd01a785edded7865a96
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Wed Jun 13 06:51:21 2018 +0200
+
+    Create tar.gz in a reproducible way
+    
+    by sorting entries, overriding UID, mtime
+    and using gzip -n to not add a timestamp
+    
+    See https://reproducible-builds.org/ for why this is good.
+
+Index: cardpeek-0.8.4/Makefile.in
+===================================================================
+--- cardpeek-0.8.4.orig/Makefile.in
++++ cardpeek-0.8.4/Makefile.in
+@@ -1186,7 +1186,7 @@ dist-hook:
+ 
+ dot_cardpeek.tar.gz:    dot_cardpeek_dir	
+ 			@echo "  TAR      $<"
+-			$(AM_V_at)tar -c -z -f dot_cardpeek.tar.gz --directory $(srcdir)/dot_cardpeek_dir --exclude=.svn --exclude='\._*' .
++			$(AM_V_at)tar --help|grep -q sort= && taropts="--sort=name --clamp-mtime --format=gnu --owner=0 --group=0" ; tar -c $$taropts --directory $(srcdir)/dot_cardpeek_dir --exclude=.svn --exclude='\._*' . | gzip -cn9 > dot_cardpeek.tar.gz
+ 
+ cardpeek_resources.$(OBJEXT):	dot_cardpeek.tar.gz $(ICONS) AUTHORS COPYING cardpeek_resources.gresource.xml
+ 			@echo "  GLIB_COMPILE_RESOURCES cardpeek_resources.gresource.xml"
+

@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Sat Aug 24 04:36:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable static libs (standard openSUSE behavior)
+
+-------------------------------------------------------------------
+Wed Aug 14 08:21:58 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Remove installed .cvsignore file
+- Don't create already created directory
+
+-------------------------------------------------------------------
+Fri Aug  9 15:52:02 UTC 2019 - Michal Suchanek <msuchanek@suse.com>
+
+- Don't install duplicate headers
+
+-------------------------------------------------------------------
+Mon Jul  8 09:59:35 UTC 2019 - Michal Suchanek <msuchanek@suse.com>
+
+- Remove .la files
+
+-------------------------------------------------------------------
+Thu Jul  4 16:51:35 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to v1047 (FATE#327307, jsc#SLE-6593, jsc#SLE-9179).
+  - now supports autotools
+  - supports library versioning
+  - installs tools with program prefx
+ - remove binary tool wrapper
+ - remove makefile.patch
+
+-------------------------------------------------------------------
+Tue May 22 10:18:35 UTC 2018 - msuchanek@suse.com
+
+- Add post/postun ldconfig call
+
+-------------------------------------------------------------------
+Fri May 18 21:55:16 UTC 2018 - jengelh@inai.de
+
+- Fix RPM groups
+
+-------------------------------------------------------------------
+Thu May 17 13:12:22 UTC 2018 - msuchanek@suse.com
+
+- Split off library, spec-clean (bsc#1093612)
+
+-------------------------------------------------------------------
+Thu Jan 18 08:34:51 UTC 2018 - msuchanek@suse.com
+
+- Enable test on BE
+
+-------------------------------------------------------------------
+Wed Nov  8 15:35:53 UTC 2017 - msuchanek@suse.com
+
+- Update to upstream version 1045 - works with OpenSSL 1.1 (bsc#1066914)
+
+-------------------------------------------------------------------
+Thu Mar  2 12:28:23 UTC 2017 - msuchanek@suse.com
+
+- fix description of -devel package
+
+-------------------------------------------------------------------
+Wed Mar  1 17:06:55 UTC 2017 - meissner@suse.com
+
+- update to v755 (FATE#321601)
+  - This is the version prefered by IBM.
+
+-------------------------------------------------------------------
+Wed Feb  8 09:33:13 UTC 2017 - jengelh@inai.de
+
+- Wrap description and spell out TSS.
+- Move package description up before any build recipes,
+  this is the more usual layout.
+- Drop unusable "return" command; %build already executes with
+  sh -e.
+
+-------------------------------------------------------------------
+Fri Jan 27 11:44:04 UTC 2017 - msuchanek@suse.com
+
+- Import v713 (FATE#321601)
+- Move to libdir and add wrapper script.
+- repack source without makefile-beam which has incompatible
+  license and is not used in build anyway

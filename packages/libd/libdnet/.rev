@@ -1,0 +1,157 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6a14b8c5cb46e41da7d6e6786ec9d0d6</srcmd5>
+    <version>1.11</version>
+    <time>1168903297</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="87">
+    <srcmd5>d1ad60468f7dd5c3c873daf38aed6261</srcmd5>
+    <version>1.11</version>
+    <time>1192061035</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="89">
+    <srcmd5>d1ad60468f7dd5c3c873daf38aed6261</srcmd5>
+    <version>1.11</version>
+    <time>1192061035</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="90">
+    <srcmd5>3f62902be20432ac83e0da255a01e750</srcmd5>
+    <version>1.11</version>
+    <time>1245365853</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="92">
+    <srcmd5>3f62902be20432ac83e0da255a01e750</srcmd5>
+    <version>1.11</version>
+    <time>1245365853</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>62add58d43e86b1996ae3ac9eac5ef35</srcmd5>
+    <version>1.12</version>
+    <time>1258383100</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libdnet based on submit request 24449 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2bcbaf87736ec88dfde1c0d7b33961ed</srcmd5>
+    <version>1.12</version>
+    <time>1260198134</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libdnet based on submit request 25597 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>6f28ac42532142c5ff571115f09f952f</srcmd5>
+    <version>1.12</version>
+    <time>1268924540</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>6f28ac42532142c5ff571115f09f952f</srcmd5>
+    <version>1.12</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>6f28ac42532142c5ff571115f09f952f</srcmd5>
+    <version>1.12</version>
+    <time>1278678589</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>6f28ac42532142c5ff571115f09f952f</srcmd5>
+    <version>1.12</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>6f28ac42532142c5ff571115f09f952f</srcmd5>
+    <version>1.12</version>
+    <time>1319182084</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>ecaa7f741d97d5c5cde55fe3dd23d71f</srcmd5>
+    <version>1.12</version>
+    <time>1321268437</time>
+    <user>coolo</user>
+    <comment>add buildrequire libtool (forwarded request 91144 from coolo)</comment>
+    <requestid>91176</requestid>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>32a3cd2b082beb63e606b5cd1121e8aa</srcmd5>
+    <version>1.12</version>
+    <time>1321886756</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>92855</requestid>
+  </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>5a1d10d62f37034749125ca6f8d7f059</srcmd5>
+    <version>1.12</version>
+    <time>1323192190</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>5a1d10d62f37034749125ca6f8d7f059</srcmd5>
+    <version>1.12</version>
+    <time>1340183576</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="18">
+    <srcmd5>5a1d10d62f37034749125ca6f8d7f059</srcmd5>
+    <version>1.12</version>
+    <time>1359109259</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="20">
+    <srcmd5>5a1d10d62f37034749125ca6f8d7f059</srcmd5>
+    <version>1.12</version>
+    <time>1379662930</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="22">
+    <srcmd5>5a1d10d62f37034749125ca6f8d7f059</srcmd5>
+    <version>1.12</version>
+    <time>1409301539</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="23">
+    <srcmd5>ec530c7ab1b96b42c46e0b8146948054</srcmd5>
+    <version>1.12</version>
+    <time>1426680251</time>
+    <user>dimstar_suse</user>
+    <comment>- Reorder bit with spec cleaner
+- Make the descriptions bit smaller</comment>
+    <requestid>290652</requestid>
+  </revision>
+  <revision rev="21" vrev="24">
+    <srcmd5>1f0e73ebdaf02e03be508e7d9d999f5c</srcmd5>
+    <version>1.12</version>
+    <time>1502366639</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512432</requestid>
+  </revision>
+  <revision rev="22" vrev="25">
+    <srcmd5>f00cd8278a719f6a5d48a257b1a4101b</srcmd5>
+    <version>1.12</version>
+    <time>1533292532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626807</requestid>
+  </revision>
+</revisionlist>

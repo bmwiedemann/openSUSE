@@ -1,0 +1,5 @@
+<package name="aseprite" project="openSUSE:Factory">
+  <title>Animated sprite editor &amp; pixel art tool</title>
+  <description>Program to create animated sprites and pixel art for games and websites.</description>
+  <devel project="games:tools" package="aseprite"/>
+</package>

@@ -1,0 +1,267 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e82e6e4389d541954bfd9405706f7831</srcmd5>
+    <version>1.34.0</version>
+    <time>1488479311</time>
+    <user>dimstar_suse</user>
+    <comment>Initial package creation.</comment>
+    <requestid>459568</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a094464a4a32b57d9fbdbb627226b984</srcmd5>
+    <version>1.34.0</version>
+    <time>1490786399</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>478024</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f6063cc874d7ef03775a7a4af7fd0a4d</srcmd5>
+    <version>1.34.0</version>
+    <time>1493819495</time>
+    <user>dimstar_suse</user>
+    <comment>Due to the change to qclib packaging, change BuildRequires from qclib-devel to qclib-devel-static.</comment>
+    <requestid>489189</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4a2eab80a65890b4af79027a6d34954d</srcmd5>
+    <version>1.34.0</version>
+    <time>1495283374</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495132</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>0390b8ec51f4d4babc31ecd21eb52abd</srcmd5>
+    <version>1.34.0</version>
+    <time>1496533701</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1038255 and general improvements to the zpxe.rexx script.</comment>
+    <requestid>500277</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>9f18b4c037bfc00a5fa179490742ee7e</srcmd5>
+    <version>1.34.0</version>
+    <time>1499754779</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507931</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>5cff83142ebe4a6e7ff05ccf048c56b3</srcmd5>
+    <version>1.34.0</version>
+    <time>1505237976</time>
+    <user>dimstar_suse</user>
+    <comment>Bug fixes for SLE15</comment>
+    <requestid>522151</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>09effd431f88630987ad8dc57e6bc477</srcmd5>
+    <version>2.1.0</version>
+    <time>1507896194</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to version 2.1.0 per Fate#323291.</comment>
+    <requestid>531962</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>822b477fab08797bca280d4c64608c29</srcmd5>
+    <version>2.1.0</version>
+    <time>1508503150</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535009</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>e2d4df894bb520ec60121b25d6d38836</srcmd5>
+    <version>2.1.0</version>
+    <time>1508946267</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536228</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>0fd57af24b7d15a78832e4b0782f54f1</srcmd5>
+    <version>2.1.0</version>
+    <time>1509722500</time>
+    <user>dimstar_suse</user>
+    <comment>- Modified s390-tools-sles15-Format-devices-in-parallel.patch to
+  reset the rc variable before using it again (bsc#1063393).
+- Reverted the changes to the *_configure scripts until
+  bsc#1064791 is fixed.
+</comment>
+    <requestid>537235</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>f7bc01c6df01d0dabad1de9f3fe73f4b</srcmd5>
+    <version>2.1.0</version>
+    <time>1510659723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541729</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>a00fbe0fcc4a62059cbd58b002e1ca53</srcmd5>
+    <version>2.1.0</version>
+    <time>1510837192</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541904</requestid>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>adcea36fbfefb2e3ca3c79dac14340a0</srcmd5>
+    <version>2.1.0</version>
+    <time>1511949098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545112</requestid>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>6043fe84cd823119b6d3fa79c206ffa0</srcmd5>
+    <version>2.1.0</version>
+    <time>1513109948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555142</requestid>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>23992ca3d17dd4949661780efac5b87f</srcmd5>
+    <version>2.1.0</version>
+    <time>1516091984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563490</requestid>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>b6abe7a6de6793cea75d9db3a3d61381</srcmd5>
+    <version>2.1.0</version>
+    <time>1522060346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590431</requestid>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>897231c1866fbfa6ef6f39a1bd9dede6</srcmd5>
+    <version>2.1.0</version>
+    <time>1523346777</time>
+    <user>maxlin_factory</user>
+    <comment>- Added s390-tools-sles15-hmcdrvfs-fix-parsing-of-link-count.patch
+  (bsc#1087452)
+  * hmcdrvfs: fix parsing of link count &gt;= 1000
+</comment>
+    <requestid>594083</requestid>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>f945e98137b2391dbc49776dffc6dcaf</srcmd5>
+    <version>2.1.0</version>
+    <time>1531469733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621201</requestid>
+  </revision>
+  <revision rev="20" vrev="13">
+    <srcmd5>3a9a54f064c095256124a36daad05854</srcmd5>
+    <version>2.1.0</version>
+    <time>1537436231</time>
+    <user>maxlin_factory</user>
+    <comment>- Added the following patch for bsc#1094354
+  * customize-zdev-root-update-script.patch
+- Modified ctc_configure to not pass a &quot;protcol=&quot; parameter when
+  configuring LCS devices. (bsc#1096520)
+- Added the following patches for bsc#1098069
+  * s390-tools-sles15-dbginfo-add-data-for-ps-cpprot.patch
+  * s390-tools-sles15-mon_procd-fix-parsing-of-proc-pid-stat.patch
+  * s390-tools-sles15-1-lstape-fix-output-with-SCSI-lin_tape-and-multiple-pa.patch
+  * s390-tools-sles15-2-lstape-fix-to-prefer-sysfs-to-find-lin_tape-device-n.patch
+  * s390-tools-sles15-3-lstape-fix-output-without-SCSI-generic-sg.patch
+  * s390-tools-sles15-4-lsluns-fix-to-prevent-error-messages-if-there-are-no.patch
+  * s390-tools-sles15-5-lstape-fix-to-prevent-error-messages-if-there-are-no.patch
+  * s390-tools-sles15-6-lstape-fix-description-of-type-and-devbusid-filter-f.patch
+  * s390-tools-sles15-7-lstape-fix-SCSI-output-description-in-man-page.patch
+  * s390-tools-sles15-8-lstape-fix-SCSI-HBA-CCW-device-bus-ID-e.g.-for-virti.patch
+- dasd_reload: Fixed several syntax errors. Changed the script to
+  ensure that the DASD volume are actually activated in device
+  number order. If an old 51-dasd-&lt;ccw&gt;.rules file is found,
+  rename it to obsolete-51-dasd-&lt;ccw&gt;.rules, and use chzdev to
+  generate a new rules file. (bsc#1103407)
+- dasd_reload: Check for 41-dasd-&lt;type&gt;-&lt;ccw&gt;.rules in addition
+  to the original 51-dasd-&lt;ccw&gt;.rules (bsc#1103407)
+- Removed s390 from the ExclusiveArch parameter (bsc#1102906)
+</comment>
+    <requestid>635597</requestid>
+  </revision>
+  <revision rev="21" vrev="14">
+    <srcmd5>e4c53b97471392aa80c98c4acd05fdc8</srcmd5>
+    <version>2.1.0</version>
+    <time>1542579752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648784</requestid>
+  </revision>
+  <revision rev="22" vrev="15">
+    <srcmd5>9f4225907c9afd72d55806c45f470696</srcmd5>
+    <version>2.1.0</version>
+    <time>1543828023</time>
+    <user>dimstar_suse</user>
+    <comment>Re-ordered the patch numbers to match IBM's recommendation.
+
+- Added the following patches for Fate#326862 (bsc#1113328)
+  zcrypt DD: introduce APQN tags to support deterministic driver binding
+  * s390-tools-sles15sp1-01-chzcrypt-Corrections-at-the-chzcrypt-man-page.patch
+  * s390-tools-sles15sp1-02-lszcrypt-support-for-alternate-zcrypt-device-drivers.patch
+- Added the following patches for Fate#326804 (bsc#1113330)
+  Extended access controls for AP queue
+  * s390-tools-sles15sp1-01-zcryptctl-new-tool-zcryptctl-for-multiple-zcrypt-node.patch</comment>
+    <requestid>653162</requestid>
+  </revision>
+  <revision rev="23" vrev="16">
+    <srcmd5>6176b5fe3d76601474dfb365d2b41d08</srcmd5>
+    <version>2.1.0</version>
+    <time>1544440967</time>
+    <user>dimstar_suse</user>
+    <comment>- Added the following patches for Fate#326825 (bsc#1113329)
+  I/O device pre-configuration
+  * s390-tools-sles15sp1-01-zdev-use-libutil-provided-path-functions.patch
+  * s390-tools-sles15sp1-02-zdev-Prepare-for-firmware-configuration-file-support.patch
+  * s390-tools-sles15sp1-03-zdev-Add-support-for-reading-firmware-configuration-.patch
+  * s390-tools-sles15sp1-04-zdev-Implement-no-settle.patch
+  * s390-tools-sles15sp1-05-zdev-Write-zfcp-lun-udev-rules-to-separate-files.patch
+  * s390-tools-sles15sp1-06-zdev-Add-support-for-handling-auto-configuration-dat.patch
+  * s390-tools-sles15sp1-07-zdev-Integrate-firmware-auto-configuration-with-drac.patch
+  * s390-tools-sles15sp1-08-zdev-Integrate-firmware-auto-configuration-with-init.patch
+  * s390-tools-sles15sp1-09-zdev-Implement-internal-device-attributes.patch
+  * s390-tools-sles15sp1-10-zdev-Implement-support-for-early-device-configuratio.patch
+  * s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.patch
+- Removed the obsolete customize-zdev-root-update-script.patch
+- Replaced s390-tools-sles15-zdev-fix-qeth-BridgePort-and-VNICC-conflict-checking.patch
+  with s390-tools-sles15sp1-zdev-fix-qeth-BridgePort-and-VNICC-conflict-checking.patch
+  to fit the current version (bsc#1118618).
+</comment>
+    <requestid>655912</requestid>
+  </revision>
+  <revision rev="24" vrev="17">
+    <srcmd5>01d68a71638325c5d8e99ce5f00f9fbe</srcmd5>
+    <version>2.1.0</version>
+    <time>1548769554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669358</requestid>
+  </revision>
+  <revision rev="25" vrev="18">
+    <srcmd5>7b2b1cf111c3f851883a96d5e7e4f9ca</srcmd5>
+    <version>2.1.0</version>
+    <time>1551215626</time>
+    <user>dimstar_suse</user>
+    <comment>- Now that IBM has the package on github, use a full source URL.
+- Change Pre-Req to Requires(pre) and (post), and remove dracut.
+- Changed the group for the hmcdrvfs package from Base:System to
+  Base/Filesystems
+- Institute the %autosetup macro.
+- Remove erroneous %dir entry for %_unitdir
+- Change bash-specific &quot;==&quot; tests in scriptlets with a more
+  generic &quot;=&quot;.
+- Modified the spec file to add a group named cpacfstats
+  (bsc#1123730)
+</comment>
+    <requestid>678097</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,144 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fa36071c7dcae47cd6ce26e846d2b3cc</srcmd5>
+    <version>5.0.0</version>
+    <time>1475242346</time>
+    <user>dimstar_suse</user>
+    <comment>Further tightening of conflicts</comment>
+    <requestid>430417</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9197b86a07954e196392746582bea3cf</srcmd5>
+    <version>5.0.1</version>
+    <time>1475750737</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove translations that are no longer there 
+
+- Add BuildRequires to QtConcurrent to fix build
+
+- New upstream release 5.0.1
+  * Fix a crash in the PHP plugin when editing text in the line 
+    after a &quot;TODO&quot;.</comment>
+    <requestid>433236</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4f3ddb7cc071df1f4175ce8927c67b5d</srcmd5>
+    <version>5.0.2</version>
+    <time>1479383034</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440600</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ceaedc51b169ad674a08b3bbec34f0ec</srcmd5>
+    <version>5.0.3</version>
+    <time>1481390852</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443240</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e1a6edd633fbe51d2c99b60498d718ed</srcmd5>
+    <version>5.0.4</version>
+    <time>1489345321</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477270</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b1ac00c538ee0f6bcb7f2cf95db6e412</srcmd5>
+    <version>5.1.0</version>
+    <time>1490965695</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 5.1.0 (forwarded request 482312 from wolfi323)</comment>
+    <requestid>482360</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c39e35ed77f730d8688fae01b93d6d78</srcmd5>
+    <version>5.1.1</version>
+    <time>1496392384</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.1.1</comment>
+    <requestid>498703</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c25ec106e3c13bdf8c1f88aeda3b0952</srcmd5>
+    <version>5.1.2</version>
+    <time>1505334538</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519558</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>95e3893a49b890349662a2dab7185d32</srcmd5>
+    <version>5.2.3</version>
+    <time>1527934100</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612538</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7ba77fb1194036f58db16c6933c237ab</srcmd5>
+    <version>5.2.4</version>
+    <time>1534940469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630786</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>096d80c9e4230b8388759ba0666b7bc3</srcmd5>
+    <version>5.3.0</version>
+    <time>1543224084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648964</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a3f8fc8b860c5930b3a842d527218951</srcmd5>
+    <version>5.3.1</version>
+    <time>1547540141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660854</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3a91674dd63c8a573b5ed22f8b55ff2e</srcmd5>
+    <version>5.3.2</version>
+    <time>1552207157</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682722</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1a9665fc05cd8b387b5017d3aeeb9ecf</srcmd5>
+    <version>5.3.3</version>
+    <time>1564155305</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718895</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>136735f85acf21f8f4702b19a38f238a</srcmd5>
+    <version>5.4.0</version>
+    <time>1565267003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721506</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>845f54152ae29d20135be1d73ba74b2d</srcmd5>
+    <version>5.4.1</version>
+    <time>1565695677</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.4.1</comment>
+    <requestid>723022</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d90075f7e036a904a267865758161e3b</srcmd5>
+    <version>5.4.2</version>
+    <time>1567679716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728066</requestid>
+  </revision>
+</revisionlist>

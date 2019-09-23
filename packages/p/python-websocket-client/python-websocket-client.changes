@@ -1,0 +1,271 @@
+-------------------------------------------------------------------
+Tue Apr 16 11:14:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.56.0:
+  * Don't retry sockets with timeout set to 0(#536)
+  * Add response headers in WebSocketBadStatusException (#501)
+  * Manually assigning WebSocket-Version (#506)
+  * SSL socket handling fix (#474)
+  * Let setup.py use the same license as LICENSE file (#517)
+  * Ensure that "timeout" is passed down, when calling WebSocket.connect() (#513)
+  * Retry connect on "Interrupted system call" (#528)
+
+-------------------------------------------------------------------
+Wed Mar  6 19:47:18 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.54.0:
+  * many fixes all around, see ChangeLog file
+- Drop merged use_system_cabundle.patch
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:59 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Jan 18 09:55:12 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 0.46.0 (shortened):
+  - fixed invalid character (#379)
+- update to version 0.45.0 (shortened):
+  - change license to LGP v2.1
+  - allow reuse of WebsocketApp.run_forever (#365)
+  - Parse close frame response correctly when reason present (#354)
+  - Wrap socket.gaierror with subclass of WebsocketException (#352)
+  - Resolve a proxy issue and a connection error (#345)
+  - Allow empty Host header value (#369)
+  - Fix undefined variable (#347)
+  - fix: getting a value with the key 'ca_certs' in sslopt dict (#326)
+- Add use_system_cabundle.patch to use systems ca bundle file by default (bnc#1076519)
+
+-------------------------------------------------------------------
+Tue Sep  5 07:57:36 UTC 2017 - dmueller@suse.com
+
+- properly provide/obsolete python3-websocket-client-test
+
+-------------------------------------------------------------------
+Mon Aug 28 16:25:44 UTC 2017 - tbechtold@suse.com
+
+- Fix build for Leap 42.3
+
+-------------------------------------------------------------------
+Tue Aug 15 15:10:45 UTC 2017 - toddrme2178@gmail.com
+
+- Update license to LGPL 3
+- Fix rpmlint issues
+
+-------------------------------------------------------------------
+Mon Jul 24 23:55:01 UTC 2017 - jengelh@inai.de
+
+- Grammatical/Typographic corrections to the description.
+
+-------------------------------------------------------------------
+Fri Jul 21 17:46:23 UTC 2017 - toddrme2178@gmail.com
+
+- Fix singlespec macro usage
+- Fix source URL.
+
+-------------------------------------------------------------------
+Wed Jul  5 05:10:45 UTC 2017 - tbechtold@suse.com
+
+- update to 0.44.0:
+  -renames key in sslopt dict (#326)
+  - Unkown kwarg 'ca_cert' when calling ssl wrap_socket() (#326)
+  - Race condition in WebSocket ping/pong (#327)
+  - Implement simple cookie jar(#292)
+  - fix: when using pppoe redial will block.(#301)
+  - Fix insecure_pythons list in setup.py(#304)
+  - Support WEBSOCKET_CLIENT_CA_BUNDLE being directory(#307)
+  - WebSocketPayloadException under high traffic and limited network connection(#306)
+  - Not working --nocert parameter in wsdump.py(#315)
+  - Avoid the app to block on close on certain systems (#320)
+  - Fix warning is not defined. (#323)
+  - move to repository to https://github.com/websocket-client/websocket-client.git
+  - _send_ping warning fails due to missing reference in _logging.__all__ (#294)
+  - Fix opcode -> op_code (#286)
+  - Shuffled around example code (#256)
+  - _send_ping graceful error handling (#262)
+  - Allow closing WebSocketApp with status/reason/timeout (#265)
+  - Support universal wheels (#267)
+  - _url: Added subnet IP address matching in no_proxy host detection (#270)
+  - fixed Incorrect encoding in continued messages python3 (#261)
+  - Pass headers for websocket handshake (#271)
+  - setup.py: Import `logging` before calling it. (#272)
+  - Implemented close code 1014 (#273)
+  - Support CA bundle specified by environment variable (#279)
+  - Response header values should not be converted to lower case (#264)
+  - Exclude port 443 from host http header (#248)
+  - Cleanup code (#249)
+  - Modify a code block directive in README (#250)
+  - fixed ping/pong timeouet (#253)
+- convert to singlespec
+- merge -test package
+
+-------------------------------------------------------------------
+Tue Nov 15 13:11:34 UTC 2016 - dmueller@suse.com
+
+- update to 0.37.0:
+  - fixed fialer that `websocket.create_connection` does not accept `origin` as a parameter (#246 )
+  - added support for using custom connection class (#235)
+  - use Named logger (#238)
+  - implement ping/pong timeout (#241)
+  - Corrects the syntax highlight code (#243)
+  - fixed failure to join thread before it is started (#242)
+  - Prints timings in console (#217)
+  - use inspect.getfullargspec with Python 3.x (#219)
+  - Check that exception message is actually a string before trying for substring check (#224)
+  - Use pre-initialized stream socket (#226)
+  - fixed TypeError: cafile, capath and cadata cannot be all omitted (#227)
+  - Change import style (#203)
+  - fix attribute error on the older python. (#215)
+  - fixed timeout+ssl error handling bug  on python 2.7.10 (#190)
+  - add proxy support to wsdump.py (#194)
+  - use wsaccel if available (#193)
+  - add support for ssl cert chains to support client certs (#195)
+  - fix string formatting in exception (#196)
+  - fix typo in README.rst (#197)
+  - introduce on_data callback to pass data type. (#198)
+  - WebSocketBadStatusException for Handshake error (#199)
+  - set close timeout (#192)
+  - Map dict to headers list (#204)
+  - support client certification (#207)
+  - security improvement during handshake (#211)
+  - improve logging of error from callback (#212)
+
+-------------------------------------------------------------------
+Tue Apr 12 07:57:30 UTC 2016 - andrea@opensuse.org
+
+- added update-alternatives to allow the python3 version to be installed
+
+-------------------------------------------------------------------
+Wed Oct 21 16:56:55 UTC 2015 - dmueller@suse.com
+
+- update to 0.32.0 (bsc#954486):
+  - fix http proxy bug (#189)
+  - Avoid deprecated BaseException.message (#180)
+  - Add travis builds (#182)
+  - fixed wsdump to work with piped input (#183)
+  - fixed output of wsdump.py with python3 (#185)
+  - add raw mode to wsdump.py (#186)
+
+-------------------------------------------------------------------
+Fri Jul 24 08:12:07 UTC 2015 - seife+obs@b1-systems.com
+
+- fix dependencies for RHEL/CentOS 7: they provide their own
+  python-backports-ssl_match_hostname
+
+-------------------------------------------------------------------
+Thu May 14 13:30:06 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.30.0:
+  * fixed if client is behind proxy (#169)
+  * support SNI for python 2.7.9+ and 3.2+ (#172)
+  * update Host HTTP header by user. (#171)
+  * fix typo for isEnabledFor (#173)
+  * can set verify_mode to CERT_NONE when check_hostname is
+    enabled.(#175)
+  * make websockets iterable (#178)
+- additional changes from version 0.29.0
+  * fixed ssl socket bug
+- additional changes from version 0.28.0
+  * Fix erroneous argument shadowing(#168)
+- additional changes from version 0.27.0
+  * remove unittest2 requirements for python 2.6 (#156)
+  * fixed subprotocol case during header validation (#158)
+  * get response status and headers (#160)
+  * fix out-of-memory due to fragmentation when recieving a very
+    large frame(#163)
+  * fix error if the payload data is nothing.(#166)
+  * refactoring.
+- additional changes from version 0.26.0
+  * all WebSocketException provide message string (#152)
+  * fixed tests fail when not connected to the network (#155)
+  * Add command line options and handle closed socket to wsdump.py
+    (#153)
+- additional changes from version 0.25.0
+  * fixed for Python 2.6(#151)
+- additional changes from version 0.24.0
+  * Supporting http-basic auth in WebSocketApp (#143)
+  * fix failer of test.testInternalRecvStrict(#141)
+  * skip utf8 validation by skip_utf8_validation argument (#137)
+  * WebsocketProxyException will be raised if we got error about
+    proxy.(#138)
+- drop fixTestTimeoutIssue.patch: fixed upstream
+- point the source URL to pypi
+- add new dependency python-backports.ssl_match_hostname
+- fix archive name when calling %setup
+
+-------------------------------------------------------------------
+Wed Feb 11 15:57:53 UTC 2015 - rjschwei@suse.com
+
+- Update fixTestTimeoutIssue.patch to handle different behavior between
+  python 2.7.x versions
+
+-------------------------------------------------------------------
+Tue Feb 10 13:20:34 UTC 2015 - rjschwei@suse.com
+
+- Add fixTestTimeoutIssue.patch
+  + fixes test case in factory
+
+-------------------------------------------------------------------
+Sun Feb  8 13:24:49 UTC 2015 - rjschwei@suse.com
+
+- Update to version 0.23.0
+  - Remove spurious print statement. (#135)
+  - Fix not thread-safe of Websocket.close() (#120)
+  - Try to get proxy info from environment if not explicitly provided (#124)
+  - support proxy basic authenticaiton. (#125)
+  - Fix NoneType exception at WebsocketApp.send (#126)
+  - not use proxy for localhost (#132)
+  - Check for socket before attempting to close (#115)
+  - Enable turning off SSL verification in wsdump.py(#116)
+  - Enable to set subprotocol(#118)
+  - Better support for Autobahn test suite (http://autobahn.ws/testsuite) (#117)  - suppress close event message(#107)
+  - detect socket connection state(#109)
+  - support for code and reason in on_close callback(#111)
+  - continuation frame handling seems suspicious(#113)
+
+-------------------------------------------------------------------
+Thu Oct  2 15:56:51 UTC 2014 - toddrme2178@gmail.com
+
+- Update to version 0.18.0
+  -  allow override of match_hostname usage on ssl (#105)
+- Update to version 0.17.0
+  - can't set timeout on a standing websocket connection (#102)
+  - fixed local variable 'error' referenced before assignment (#102, #98)
+- Update to version 0.16.0
+  - lock some method for multithread. (#92)
+  - disable cert verification. (#89)
+- Remove upstreamed webSoc_useSystemCert.patch
+
+-------------------------------------------------------------------
+Mon Jun 23 22:01:20 UTC 2014 - rschweikert@suse.com
+
+- Simplify conditionals in spec file
+- Fix patch webSoc_useSystemCert.patch, eliminate tab use spaces
+
+-------------------------------------------------------------------
+Mon Jun 16 21:21:11 UTC 2014 - rschweikert@suse.com
+
+- Clean up spec file 
+
+-------------------------------------------------------------------
+Sat Jun  7 10:21:38 UTC 2014 - rschweikert@suse.com
+
+- Add Group to sub package, fixes build for SLE 11
+
+-------------------------------------------------------------------
+Fri Jun  6 11:58:30 UTC 2014 - rschweikert@suse.com
+
+- Include in SLE 12 (FATE #316168)
+
+-------------------------------------------------------------------
+Thu Jun  5 16:07:15 UTC 2014 - rschweikert@suse.com
+
+- Fix upstream URL, point to github (development) rather than pypy
+
+-------------------------------------------------------------------
+Thu Jun  5 15:34:01 UTC 2014 - rschweikert@suse.com
+
+- Initial build
+

@@ -1,0 +1,13 @@
+Index: cronie-1.4.4/src/pathnames.h
+===================================================================
+--- cronie-1.4.4.orig/src/pathnames.h
++++ cronie-1.4.4/src/pathnames.h
+@@ -41,7 +41,7 @@
+ #else
+ # define PIDDIR SYSCONFDIR "/"
+ #endif
+-#define PIDFILE		"crond.pid"
++#define PIDFILE		"cron.pid"
+ #define _PATH_CRON_PID	PIDDIR PIDFILE
+ #define REBOOT_LOCK     PIDDIR "cron.reboot"
+ 

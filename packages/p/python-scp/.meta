@@ -1,0 +1,10 @@
+<package name="python-scp" project="openSUSE:Factory">
+  <title>SSH scp module for paramiko</title>
+  <description>The scp.py module uses a paramiko transport to send and receive files via the
+scp protocol. This is the protocol as referenced from the openssh scp program,
+and has only been tested with this implementation.
+
+</description>
+  <devel project="devel:languages:python" package="python-scp"/>
+  <url>https://github.com/jbardin/scp.py</url>
+</package>

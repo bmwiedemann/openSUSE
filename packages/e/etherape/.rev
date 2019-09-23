@@ -1,0 +1,255 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7d81337c135dfb506b67ca46ed1a715d</srcmd5>
+    <version>0.9.7</version>
+    <time>1168902706</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="79">
+    <srcmd5>29c308f1fc67f892a609c63ec8385c3a</srcmd5>
+    <version>0.9.7</version>
+    <time>1185492253</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="168">
+    <srcmd5>d3e3d1ab5d72ccd3ad54ba9c5c13a7cb</srcmd5>
+    <version>0.9.7</version>
+    <time>1203955650</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="248">
+    <srcmd5>d3e3d1ab5d72ccd3ad54ba9c5c13a7cb</srcmd5>
+    <version>0.9.7</version>
+    <time>1203955650</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="249">
+    <srcmd5>eaedad4a667745eaea1c6fe87834e1f5</srcmd5>
+    <version>0.9.7</version>
+    <time>1245338315</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="251">
+    <srcmd5>eaedad4a667745eaea1c6fe87834e1f5</srcmd5>
+    <version>0.9.7</version>
+    <time>1245338315</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="252">
+    <srcmd5>46966f1e619c24829114fe705c26ca96</srcmd5>
+    <version>0.9.7</version>
+    <time>1258542228</time>
+    <user>autobuild</user>
+    <comment>Copy from security/etherape based on submit request 24562 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0ce712fe1925f58e4c9ece2519a697f2</srcmd5>
+    <version>0.9.9</version>
+    <time>1267787542</time>
+    <user>autobuild</user>
+    <comment>Copy from security/etherape based on submit request 33636 from user prusnak
+</comment>
+    <requestid>33636</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e053dfe63418a615db74d66c597e4b8c</srcmd5>
+    <version>0.9.9</version>
+    <time>1268923483</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>e053dfe63418a615db74d66c597e4b8c</srcmd5>
+    <version>0.9.9</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>e053dfe63418a615db74d66c597e4b8c</srcmd5>
+    <version>0.9.9</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>19e43c7f90296aa7e018fc68e860698f</srcmd5>
+    <version>0.9.9</version>
+    <time>1294405053</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57112 from user elvigia
+</comment>
+    <requestid>57112</requestid>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>100dce2f40f3dd8be8e3d08f87e8d179</srcmd5>
+    <version>0.9.9</version>
+    <time>1294405068</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57112
+</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>361c2360e185015704582c6287782ba7</srcmd5>
+    <version>0.9.10</version>
+    <time>1297119417</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60263 from user msmeissn
+</comment>
+    <requestid>60263</requestid>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>82c7dfa73669c3d3f5d9de0b970b5e57</srcmd5>
+    <version>0.9.10</version>
+    <time>1297119429</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60263
+</comment>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>c6cbbba0fa94585e7513a35dc0f68a8c</srcmd5>
+    <version>0.9.10</version>
+    <time>1297386067</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60299 from user msmeissn
+</comment>
+    <requestid>60299</requestid>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>8dedbe73dd4da650723b0d5e1c5654e1</srcmd5>
+    <version>0.9.10</version>
+    <time>1297386075</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60299
+</comment>
+  </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>8dedbe73dd4da650723b0d5e1c5654e1</srcmd5>
+    <version>0.9.10</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>5513e69d9806a582d91c4749a804e2ce</srcmd5>
+    <version>0.9.12</version>
+    <time>1316461026</time>
+    <user>lrupp</user>
+    <comment>0.9.12 update</comment>
+    <requestid>83647</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>5513e69d9806a582d91c4749a804e2ce</srcmd5>
+    <version>0.9.12</version>
+    <time>1319181869</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>d528779268430692751296c2102288c7</srcmd5>
+    <version>0.9.12</version>
+    <time>1323191310</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>d528779268430692751296c2102288c7</srcmd5>
+    <version>0.9.12</version>
+    <time>1340183311</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="9">
+    <srcmd5>d528779268430692751296c2102288c7</srcmd5>
+    <version>0.9.12</version>
+    <time>1359108857</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>d528779268430692751296c2102288c7</srcmd5>
+    <version>0.9.12</version>
+    <time>1379662307</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="12">
+    <srcmd5>f8700d24aafec1db331ab898f19efc7a</srcmd5>
+    <version>0.9.12</version>
+    <time>1380607878</time>
+    <user>coolo</user>
+    <comment>Add scrollkeeps BuildRequires, needed now due to changes made in gnome-doc-utils-devel. Fixes build in factory. (forwarded request 201413 from Zaitor)</comment>
+    <requestid>201443</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>30760ac534082fb0cc01c828808c807d</srcmd5>
+    <version>0.9.13</version>
+    <time>1388480626</time>
+    <user>coolo</user>
+    <comment>Together with the latest rarian-scrollkeeper-compat fixes
+submitted to Factory, this will fix etherape build on Factory
+completely;
+
+Apologies for the delay in fixing it. (forwarded request 212315 from dimstar)</comment>
+    <requestid>212317</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>30760ac534082fb0cc01c828808c807d</srcmd5>
+    <version>0.9.13</version>
+    <time>1409300842</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>4e518fed8b36bb90e8756c5987ec15ef</srcmd5>
+    <version>0.9.15</version>
+    <time>1489345268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.15 (boo#1028009): (forwarded request 476987 from pluskalm)</comment>
+    <requestid>477078</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>09bf090800676cb277118a4f2ef49cc3</srcmd5>
+    <version>0.9.15</version>
+    <time>1490965685</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482313</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4d157c3c0270d55ad96fe05ee61981c1</srcmd5>
+    <version>0.9.17</version>
+    <time>1527582734</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.17:
+  * EtherApe now requires Gtk 2.24.
+  * Fixed a bug making libglade load gnome2 libraries.
+  * Sometimes node/links windows were freezing.
+- Changes from version 0.9.16:
+  * Require only gnome-canvas, not gnome-ui.
+  * Migrate from deprecated gnome-doc-utils to yelp-tools.
+  * Updated translations.
+- Following upstream changes:
+  * Drop scrollkeeper, pkgconfig(gnome-doc-utils) and
+    pkgconfig(libgnomeui-2.0) BuildRequires.
+  * Add yelp-tools, pkgconfig(glib-2.0), pkgconfig(popt) and
+    pkgconfig(libgnomecanvas-2.0) BuildRequires.
+  * Drop usage of sed to fix doc/C/etherape.xml, file no longer
+    exists.
+  * No longer pass --disable-scrollkeeper to configure, not needed.
+- Rebase etherape-0.9.12-desktop.patch.
+- Add conditional for desktop_database_post(un) post(un) handling,
+  no longer needed on modern releases of openSUSE. (forwarded request 610493 from iznogood)</comment>
+    <requestid>610515</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5df909b8e83e149e5ca71212cedf0f26</srcmd5>
+    <version>0.9.18</version>
+    <time>1562056771</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.18:
+  * EtherApe now is a pure GTK 3 application.
+- Changes from version 0.9.17:
+  * Replaced gnome-canvas with canvas supplied by GooCanvas. (forwarded request 712888 from wfrisch)</comment>
+    <requestid>712931</requestid>
+  </revision>
+</revisionlist>

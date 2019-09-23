@@ -1,0 +1,77 @@
+## Path:        System/Security/rkhunter
+## Type:        yesno
+## Default:     yes
+#
+# The START_RKHUNTER variable controls whether the rkhunter 
+# check scripts should be run automatically every night.
+# Set to "no" to disable
+#
+START_RKHUNTER="yes"
+
+## Type:        yesno
+## Default:     yes
+#
+# Run SuSEconfig script via YaST? 
+# If you install software via YaST, the SuSEconfig script will 
+# update your rkhunter database afterwards automatically.
+# You should run 'rkhunter --propupd' manually if you disable 
+# this value.
+# 
+RUN_SUSECONFIG="yes"
+
+## Type:        yesno
+## Default:     no
+#
+# Update the databases of rkhunter via cronjob once a day.
+# This is only done if the START_RKHUNTER variable is enabled.
+# Needs internet access.
+#
+CRON_DB_UPDATE="no"
+
+## Type:        yesno
+## Default:     no
+#
+# Update the file properties database.
+# One of the checks rkhunter performs is to compare various current 
+# file properties of various commands, against those it has previously 
+# stored. 
+# This command  option causes rkhunter to update its data file of stored 
+# values with the current values.
+# If you've installed or updated new software, this tag should be set 
+# to "yes" - but don't forget to disable it afterwards!
+#
+PRO_UPDATE="no"
+
+## Type:        integer(-20:19)
+## Default:     0
+#
+# Renice the rkhunter process when running as cronjob.
+# Possible values: -20 up to 19
+#
+NICE="0"
+
+## Type:        string
+## Default:     "/var/log/rkhunter.log"
+#
+# Path to the logfile for rkhunter messages.
+# Leave it empty means: create no logfile.
+#
+# Be shure that rkhunter can write to this log.
+#
+LOGFILE="/var/log/rkhunter.log"
+
+## Type:        string
+## Default:     "root"
+#
+# Send report mails to the following account.
+# Use a system account or a valid email-address
+# here.
+#
+REPORT_EMAIL="root"
+
+## Type:        string
+## Default:     "--cronjob --report-warnings-only --append-log --pkgmgr RPM"
+#
+# Additional options (see rkhunter --help) for rkhunter.
+#
+OPTIONS="--no-mail-on-warning --cronjob --report-warnings-only --append-log --pkgmgr RPM"

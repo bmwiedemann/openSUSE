@@ -1,0 +1,38 @@
+--- ./perl_inc_macro.h.orig	2018-09-22 22:08:14.492755509 +0200
++++ ./perl_inc_macro.h	2018-09-22 22:07:36.049972877 +0200
+@@ -83,10 +83,12 @@
+ #	define INCPUSH_PRIVLIB_EXP S_incpush_use_sep(aTHX_ STR_WITH_LEN(PRIVLIB_EXP), INCPUSH_CAN_RELOCATE);
+ #endif
+ 
++#if 0
+ #ifdef PERL_OTHERLIBDIRS
+ #	define INCPUSH_PERL_OTHERLIBDIRS S_incpush_use_sep(aTHX_ STR_WITH_LEN(PERL_OTHERLIBDIRS), \
+ 		      INCPUSH_ADD_VERSIONED_SUB_DIRS|INCPUSH_NOT_BASEDIR|INCPUSH_CAN_RELOCATE);
+ #endif
++#endif
+ 
+ 
+ /* submacros for INCPUSH_PERL5LIB */
+@@ -133,19 +135,19 @@
+ #if defined(SITELIB_STEM) && defined(PERL_INC_VERSION_LIST)
+     /* Search for version-specific dirs below here */
+ #	define INCPUSH_SITELIB_STEM   S_incpush_use_sep(aTHX_ STR_WITH_LEN(SITELIB_STEM), \
+-		      INCPUSH_ADD_OLD_VERS|INCPUSH_CAN_RELOCATE);
++		      INCPUSH_ADD_OLD_VERS|INCPUSH_NOT_BASEDIR|INCPUSH_CAN_RELOCATE);
+ #endif
+ 
+ 
+ #if defined(PERL_VENDORLIB_STEM) && defined(PERL_INC_VERSION_LIST)
+     /* Search for version-specific dirs below here */
+ #	define INCPUSH_PERL_VENDORLIB_STEM    S_incpush_use_sep(aTHX_ STR_WITH_LEN(PERL_VENDORLIB_STEM), \
+-		      INCPUSH_ADD_OLD_VERS|INCPUSH_CAN_RELOCATE);
++		      INCPUSH_ADD_OLD_VERS|INCPUSH_NOT_BASEDIR|INCPUSH_CAN_RELOCATE);
+ #endif
+ 
+ #ifdef PERL_OTHERLIBDIRS
+ #	define INCPUSH_PERL_OTHERLIBDIRS_ARCHONLY  S_incpush_use_sep(aTHX_ STR_WITH_LEN(PERL_OTHERLIBDIRS), \
+-		      INCPUSH_ADD_OLD_VERS|INCPUSH_ADD_ARCHONLY_SUB_DIRS|INCPUSH_CAN_RELOCATE);
++		      INCPUSH_CAN_RELOCATE);
+ #endif
+ 
+ 

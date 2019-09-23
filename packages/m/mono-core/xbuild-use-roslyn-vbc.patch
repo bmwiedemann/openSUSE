@@ -1,0 +1,48 @@
+diff -uprN mono-5.10.1.25.old/mcs/class/Microsoft.Build.Tasks/Microsoft.Build.Tasks/Vbc.cs mono-5.10.1.25/mcs/class/Microsoft.Build.Tasks/Microsoft.Build.Tasks/Vbc.cs
+--- mono-5.10.1.25.old/mcs/class/Microsoft.Build.Tasks/Microsoft.Build.Tasks/Vbc.cs	2018-03-30 10:46:30.000000000 +0300
++++ mono-5.10.1.25/mcs/class/Microsoft.Build.Tasks/Microsoft.Build.Tasks/Vbc.cs	2018-03-30 18:18:16.455961999 +0300
+@@ -326,7 +326,7 @@ namespace Microsoft.Build.Tasks {
+ 		[MonoTODO]
+ 		protected override string ToolName {
+ 			get {
+-				return MSBuildUtils.RunningOnWindows ? "vbnc.bat" : "vbnc";
++				return MSBuildUtils.RunningOnWindows ? "vbc.bat" : "vbc";
+ 			}
+ 		}
+ 
+diff -uprN mono-5.10.1.25.old/mcs/class/System/System/MonoToolsLocator.cs mono-5.10.1.25/mcs/class/System/System/MonoToolsLocator.cs
+--- mono-5.10.1.25.old/mcs/class/System/System/MonoToolsLocator.cs	2018-03-30 10:46:33.000000000 +0300
++++ mono-5.10.1.25/mcs/class/System/System/MonoToolsLocator.cs	2018-03-30 18:16:25.336430000 +0300
+@@ -55,7 +55,7 @@ namespace System {
+ 				//if (!File.Exists (CSharpCompiler))
+ 				//	throw new FileNotFoundException ("C# compiler not found at " + CSharpCompiler);
+ 
+-				VBCompiler = Path.Combine (GacPath,  "4.5\\vbnc.exe");
++				VBCompiler = Path.Combine (GacPath,  "4.5\\vbc.exe");
+ 				AssemblyLinker = Path.Combine (GacPath, "4.5\\al.exe");
+ 
+ 				if (!File.Exists (AssemblyLinker)) {
+@@ -73,9 +73,9 @@ namespace System {
+ 				if (!File.Exists (McsCSharpCompiler))
+ 					McsCSharpCompiler = "mcs";
+ 
+-				VBCompiler = Path.GetFullPath (Path.Combine (mscorlibPath, "..", "..", "..", "..", "bin", "vbnc"));
++				VBCompiler = Path.GetFullPath (Path.Combine (mscorlibPath, "..", "..", "..", "..", "bin", "vbc"));
+ 				if (!File.Exists (VBCompiler))
+-					VBCompiler = "vbnc";
++					VBCompiler = "vbc";
+ 
+ 				AssemblyLinker = Path.GetFullPath (Path.Combine (mscorlibPath, "..", "..", "..", "..", "bin", "al"));
+ 				if (!File.Exists (AssemblyLinker))
+diff -uprN mono-5.10.1.25.old/mcs/tools/xbuild/data/Microsoft.VisualBasic.targets mono-5.10.1.25/mcs/tools/xbuild/data/Microsoft.VisualBasic.targets
+--- mono-5.10.1.25.old/mcs/tools/xbuild/data/Microsoft.VisualBasic.targets	2018-03-30 10:46:35.000000000 +0300
++++ mono-5.10.1.25/mcs/tools/xbuild/data/Microsoft.VisualBasic.targets	2018-03-30 18:19:02.595020000 +0300
+@@ -114,7 +114,7 @@
+ 	<Import Project="Microsoft.Common.targets" />
+ 
+ 	<PropertyGroup>
+-		<VbcToolExe Condition="'$(VbcToolExe)' == ''">vbnc.exe</VbcToolExe>
++		<VbcToolExe Condition="'$(VbcToolExe)' == ''">vbc.exe</VbcToolExe>
+ 	</PropertyGroup>
+ 
+ </Project>

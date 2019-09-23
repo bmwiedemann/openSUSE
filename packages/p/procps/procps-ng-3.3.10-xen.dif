@@ -1,0 +1,29 @@
+--- vmstat.c
++++ vmstat.c	2015-01-27 14:57:19.467491788 +0000
+@@ -292,7 +292,7 @@ static void new_format(void)
+ 	unsigned int intr[2], ctxt[2];
+ 	unsigned int sleep_half;
+ 	unsigned long kb_per_page = sysconf(_SC_PAGESIZE) / 1024ul;
+-	int debt = 0;		/* handle idle ticks running backwards */
++	long long debt = 0;		/* handle idle ticks running backwards */
+ 	struct tm *tm_ptr;
+ 	time_t the_time;
+ 	char timebuf[32];
+@@ -375,12 +375,12 @@ static void new_format(void)
+ 
+ 		/* idle can run backwards for a moment -- kernel "feature" */
+ 		if (debt) {
+-			didl = (int)didl + debt;
+-			debt = 0;
++			didl = (long long)didl + debt;
++			debt = 0LL;
+ 		}
+-		if ((int)didl < 0) {
+-			debt = (int)didl;
+-			didl = 0;
++		if ((long long)didl < 0) {
++			debt = (long long)didl;
++			didl = 0ULL;
+ 		}
+ 
+ 		Div = duse + dsys + didl + diow + dstl;

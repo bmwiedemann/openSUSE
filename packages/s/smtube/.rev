@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>974636287c6286e39f0e8319245e85c4</srcmd5>
+    <version>15.9.0</version>
+    <time>1443770612</time>
+    <user>dimstar_suse</user>
+    <comment>15.9.0 with suggesting instead of recommending and description updated.</comment>
+    <requestid>334601</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>06832a076019f0e0ad500a0a916a61ec</srcmd5>
+    <version>15.11.0</version>
+    <time>1451674072</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350964</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8f0df09b0e78cb59146b56ad419a83bd</srcmd5>
+    <version>16.3.0</version>
+    <time>1458228839</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369231</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6e33052e874c08d94e1dc44e72558e51</srcmd5>
+    <version>16.6.0</version>
+    <time>1465336142</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400197</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>83a746fe39fc6898b3a793a656ef12c1</srcmd5>
+    <version>16.7.2</version>
+    <time>1469081505</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>411586</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2f880d6bccf3575227ca2d81ceae75ed</srcmd5>
+    <version>17.1.0</version>
+    <time>1486135835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>454401</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b8c4050c052a156b1776143a5975a22e</srcmd5>
+    <version>17.5.0</version>
+    <time>1494442405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>494034</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>22a2c38544bda1ec087d677d3c63119c</srcmd5>
+    <version>18.3.0</version>
+    <time>1527582473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606852</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>37d1fb45d8ddc586d6729e4f9f23c9c8</srcmd5>
+    <version>18.9.0</version>
+    <time>1537971045</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 18.9.0.
+</comment>
+    <requestid>636243</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d9fae5889fb71147909efc1d65954792</srcmd5>
+    <version>18.11.0</version>
+    <time>1543224193</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649881</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4517b1a85935567550b2f495622b4224</srcmd5>
+    <version>19.6.0</version>
+    <time>1564994273</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720239</requestid>
+  </revision>
+</revisionlist>

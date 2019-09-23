@@ -1,0 +1,5 @@
+<package name="R-RCurl" project="openSUSE:Factory">
+  <title></title>
+  <description>General network (HTTP/FTP/...) client interface for R</description>
+  <devel project="devel:languages:R:released" package="R-RCurl"/>
+</package>

@@ -1,0 +1,170 @@
+From 00b72ec3c6b43b4ae4695dd59c649d0f0c4021a4 Mon Sep 17 00:00:00 2001
+From: Rishabh Kumar <kris.kr296@gmail.com>
+Date: Tue, 15 Jan 2019 23:28:56 +0530
+Subject: [PATCH] Upgrade gabime/spdlog dependency to 1.3.0 (#5604)
+
+Signed-off-by: rishabhkumar296 <kris.kr296@gmail.com>
+---
+ bazel/repository_locations.bzl             |  6 +++---
+ source/common/common/logger.cc             |  2 +-
+ source/common/common/logger.h              |  4 +++-
+ source/server/http/admin.cc                |  8 ++++----
+ source/server/options_impl.cc              | 20 ++++++++++----------
+ test/exe/main_common_test.cc               |  2 +-
+ test/integration/integration_admin_test.cc |  2 +-
+ 7 files changed, 23 insertions(+), 21 deletions(-)
+
+diff --git a/bazel/repository_locations.bzl b/bazel/repository_locations.bzl
+index fb2b58dd0..e6863079f 100644
+--- a/bazel/repository_locations.bzl
++++ b/bazel/repository_locations.bzl
+@@ -48,9 +48,9 @@ REPOSITORY_LOCATIONS = dict(
+         urls = ["https://github.com/fmtlib/fmt/releases/download/5.2.1/fmt-5.2.1.zip"],
+     ),
+     com_github_gabime_spdlog = dict(
+-        sha256 = "867a4b7cedf9805e6f76d3ca41889679054f7e5a3b67722fe6d0eae41852a767",
+-        strip_prefix = "spdlog-1.2.1",
+-        urls = ["https://github.com/gabime/spdlog/archive/v1.2.1.tar.gz"],
++        sha256 = "78786c641ca278388107e30f1f0fa0307e7e98e1c5279c3d29f71a143f9176b6",
++        strip_prefix = "spdlog-1.3.0",
++        urls = ["https://github.com/gabime/spdlog/archive/v1.3.0.tar.gz"],
+     ),
+     com_github_gcovr_gcovr = dict(
+         sha256 = "8a60ba6242d67a58320e9e16630d80448ef6d5284fda5fb3eff927b63c8b04a2",
+diff --git a/source/common/common/logger.cc b/source/common/common/logger.cc
+index 9c8675486..33ad15dbe 100644
+--- a/source/common/common/logger.cc
++++ b/source/common/common/logger.cc
+@@ -50,7 +50,7 @@ void StderrSinkDelegate::flush() {
+ 
+ void DelegatingLogSink::log(const spdlog::details::log_msg& msg) {
+   if (!formatter_) {
+-    sink_->log(fmt::to_string(msg.raw));
++    sink_->log(absl::string_view(msg.payload.data(), msg.payload.size()));
+     return;
+   }
+ 
+diff --git a/source/common/common/logger.h b/source/common/common/logger.h
+index d07a21654..f91a59c5b 100644
+--- a/source/common/common/logger.h
++++ b/source/common/common/logger.h
+@@ -76,7 +76,9 @@ public:
+     off = spdlog::level::off
+   } levels;
+ 
+-  std::string levelString() const { return spdlog::level::level_names[logger_->level()]; }
++  spdlog::string_view_t levelString() const {
++    return spdlog::level::level_string_views[logger_->level()];
++  }
+   std::string name() const { return logger_->name(); }
+   void setLevel(spdlog::level::level_enum level) { logger_->set_level(level); }
+   spdlog::level::level_enum level() const { return logger_->level(); }
+diff --git a/source/server/http/admin.cc b/source/server/http/admin.cc
+index 819c1cb97..5018f8625 100644
+--- a/source/server/http/admin.cc
++++ b/source/server/http/admin.cc
+@@ -208,8 +208,8 @@ bool AdminImpl::changeLogLevel(const Http::Utility::QueryParams& params) {
+ 
+   // First see if the level is valid.
+   size_t level_to_use = std::numeric_limits<size_t>::max();
+-  for (size_t i = 0; i < ARRAY_SIZE(spdlog::level::level_names); i++) {
+-    if (level == spdlog::level::level_names[i]) {
++  for (size_t i = 0; i < ARRAY_SIZE(spdlog::level::level_string_views); i++) {
++    if (level == spdlog::level::level_string_views[i]) {
+       level_to_use = i;
+       break;
+     }
+@@ -482,8 +482,8 @@ Http::Code AdminImpl::handlerLogging(absl::string_view url, Http::HeaderMap&,
+     response.add("usage: /logging?<name>=<level> (change single level)\n");
+     response.add("usage: /logging?level=<level> (change all levels)\n");
+     response.add("levels: ");
+-    for (size_t i = 0; i < ARRAY_SIZE(spdlog::level::level_names); i++) {
+-      response.add(fmt::format("{} ", spdlog::level::level_names[i]));
++    for (size_t i = 0; i < ARRAY_SIZE(spdlog::level::level_string_views); i++) {
++      response.add(fmt::format("{} ", spdlog::level::level_string_views[i]));
+     }
+ 
+     response.add("\n");
+diff --git a/source/server/options_impl.cc b/source/server/options_impl.cc
+index 5ef70dfd6..d116bde72 100644
+--- a/source/server/options_impl.cc
++++ b/source/server/options_impl.cc
+@@ -37,11 +37,11 @@ OptionsImpl::OptionsImpl(int argc, const char* const* argv,
+                          spdlog::level::level_enum default_log_level)
+     : v2_config_only_(true), signal_handling_enabled_(true) {
+   std::string log_levels_string = "Log levels: ";
+-  for (size_t i = 0; i < ARRAY_SIZE(spdlog::level::level_names); i++) {
+-    log_levels_string += fmt::format("[{}]", spdlog::level::level_names[i]);
++  for (size_t i = 0; i < ARRAY_SIZE(spdlog::level::level_string_views); i++) {
++    log_levels_string += fmt::format("[{}]", spdlog::level::level_string_views[i]);
+   }
+   log_levels_string +=
+-      fmt::format("\nDefault is [{}]", spdlog::level::level_names[default_log_level]);
++      fmt::format("\nDefault is [{}]", spdlog::level::level_string_views[default_log_level]);
+ 
+   const std::string component_log_level_string =
+       "Comma separated list of component log levels. For example upstream:debug,config:trace";
+@@ -75,9 +75,9 @@ OptionsImpl::OptionsImpl(int argc, const char* const* argv,
+                                                         "The local "
+                                                         "IP address version (v4 or v6).",
+                                                         false, "v4", "string", cmd);
+-  TCLAP::ValueArg<std::string> log_level("l", "log-level", log_levels_string, false,
+-                                         spdlog::level::level_names[default_log_level], "string",
+-                                         cmd);
++  TCLAP::ValueArg<std::string> log_level(
++      "l", "log-level", log_levels_string, false,
++      spdlog::level::level_string_views[default_log_level].data(), "string", cmd);
+   TCLAP::ValueArg<std::string> component_log_level(
+       "", "component-log-level", component_log_level_string, false, "", "string", cmd);
+   TCLAP::ValueArg<std::string> log_format("", "log-format", log_format_string, false,
+@@ -154,8 +154,8 @@ OptionsImpl::OptionsImpl(int argc, const char* const* argv,
+   hot_restart_disabled_ = disable_hot_restart.getValue();
+ 
+   log_level_ = default_log_level;
+-  for (size_t i = 0; i < ARRAY_SIZE(spdlog::level::level_names); i++) {
+-    if (log_level.getValue() == spdlog::level::level_names[i]) {
++  for (size_t i = 0; i < ARRAY_SIZE(spdlog::level::level_string_views); i++) {
++    if (log_level.getValue() == spdlog::level::level_string_views[i]) {
+       log_level_ = static_cast<spdlog::level::level_enum>(i);
+     }
+   }
+@@ -227,8 +227,8 @@ void OptionsImpl::parseComponentLogLevels(const std::string& component_log_level
+     std::string log_name = log_name_level[0];
+     std::string log_level = log_name_level[1];
+     size_t level_to_use = std::numeric_limits<size_t>::max();
+-    for (size_t i = 0; i < ARRAY_SIZE(spdlog::level::level_names); i++) {
+-      if (log_level == spdlog::level::level_names[i]) {
++    for (size_t i = 0; i < ARRAY_SIZE(spdlog::level::level_string_views); i++) {
++      if (log_level == spdlog::level::level_string_views[i]) {
+         level_to_use = i;
+         break;
+       }
+diff --git a/test/exe/main_common_test.cc b/test/exe/main_common_test.cc
+index 03daf0511..8c9fa44cd 100644
+--- a/test/exe/main_common_test.cc
++++ b/test/exe/main_common_test.cc
+@@ -310,7 +310,7 @@ TEST_P(MainCommonTest, ConstructDestructLogger) {
+   VERBOSE_EXPECT_NO_THROW(MainCommon main_common(argc(), argv()));
+ 
+   const std::string logger_name = "logger";
+-  spdlog::details::log_msg log_msg(&logger_name, spdlog::level::level_enum::err);
++  spdlog::details::log_msg log_msg(&logger_name, spdlog::level::level_enum::err, "error");
+   Logger::Registry::getSink()->log(log_msg);
+ }
+ 
+diff --git a/test/integration/integration_admin_test.cc b/test/integration/integration_admin_test.cc
+index 639098fa7..cfb4a1c96 100644
+--- a/test/integration/integration_admin_test.cc
++++ b/test/integration/integration_admin_test.cc
+@@ -93,7 +93,7 @@ TEST_P(IntegrationAdminTest, AdminLogging) {
+   EXPECT_STREQ("200", response->headers().Status()->value().c_str());
+   EXPECT_EQ(spdlog::level::trace, Logger::Registry::getLog(Logger::Id::assert).level());
+ 
+-  const char* level_name = spdlog::level::level_names[default_log_level_];
++  spdlog::string_view_t level_name = spdlog::level::level_string_views[default_log_level_];
+   response = IntegrationUtil::makeSingleRequest(lookupPort("admin"), "POST",
+                                                 fmt::format("/logging?level={}", level_name), "",
+                                                 downstreamProtocol(), version_);
+-- 
+2.20.1
+

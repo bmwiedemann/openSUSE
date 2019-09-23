@@ -1,0 +1,84 @@
+#!/usr/bin/perl -w
+#
+# authored by Jan Engelhardt, 2011-03-24
+# released into the Public Domain
+#
+use Archive::Zip qw(:ERROR_CODES :CONSTANTS);
+use XML::Simple;
+&main();
+
+sub get_rdf
+{
+	my $file = shift @_;
+
+	if ($file eq "install.rdf") {
+		return XMLin($file);
+	}
+	if (substr($file, -4, 4) eq ".xpi") {
+		my $zip = Archive::Zip->new();
+		if ($zip->read($file) != AZ_OK) {
+			die "zip file read error\n";
+		}
+		my $data = $zip->contents("install.rdf");
+		die "missing install.rdf in $file\n" unless $data;
+		return XMLin($data);
+	}
+	die "unsupported file format\n";
+}
+
+sub get_desc
+{
+	my $xml = shift @_;
+	my $desc;
+	foreach my $tag (keys %$xml) {
+		if ($tag !~ m{^(\w+:)?Description$}) {
+			next;
+		}
+		if (ref($xml->{$tag}) eq "ARRAY") {
+			return $xml->{$tag};
+		}
+		return [$xml->{$tag}];
+	}
+}
+
+sub get_id
+{
+	my $desc = shift @_;
+	my $id;
+
+	foreach (qw(id em:id)) {
+		if (exists($desc->{$_})) {
+			$id = $desc->{$_};
+			last;
+		}
+	}
+	return $id;
+}
+
+sub main
+{
+	my $file = shift @ARGV;
+	if (!defined($file)) {
+		print "Usage: $0 {install.rdf|something.xpi}\n";
+		exit 1;
+	}
+	my $xml = get_rdf($file);
+	if (!defined($xml)) {
+		die "xml: $!\n";
+	}
+	my $desc_list = &get_desc($xml);
+	my $id;
+	foreach my $one_desc (@$desc_list) {
+		my $value = &get_id($one_desc);
+		if ($value =~ /\@|{[[:xdigit:]]+-/) {
+			if (defined($id)) {
+				print STDERR "Warning: multiple IDs/UUIDs!\n";
+			}
+			$id = $value;
+		}
+	}
+	if (!defined($id)) {
+		exit 1;
+	}
+	print "$id\n";
+}

@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8752a0baca1c0f47b2df389b66201b40</srcmd5>
+    <version>1.6.2</version>
+    <time>1315863086</time>
+    <user>lrupp</user>
+    <comment>I want to add sword (http://www.crosswire.org/sword/) package into Factory (Fedora and other distributions already have it in their official repositories). This package is going to be maintained in Education project</comment>
+    <requestid>81625</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>8752a0baca1c0f47b2df389b66201b40</srcmd5>
+    <version>1.6.2</version>
+    <time>1319182500</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ea72562181e156598e4b5d03bd1aa996</srcmd5>
+    <version>1.6.2</version>
+    <time>1323194806</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8fc9cb24dd6c9091b6e6f562a4567e4e</srcmd5>
+    <version>1.6.2+svn2679</version>
+    <time>1332241915</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 109751 from dimstar)</comment>
+    <requestid>110084</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>8fc9cb24dd6c9091b6e6f562a4567e4e</srcmd5>
+    <version>1.6.2+svn2679</version>
+    <time>1340184250</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>8fc9cb24dd6c9091b6e6f562a4567e4e</srcmd5>
+    <version>1.6.2+svn2679</version>
+    <time>1359110454</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>8fc9cb24dd6c9091b6e6f562a4567e4e</srcmd5>
+    <version>1.6.2+svn2679</version>
+    <time>1379664752</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c726561dbbc95e0eb1ef6531b580c9e4</srcmd5>
+    <version>1.7.1</version>
+    <time>1389334592</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>213055</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9cd76683c8634d4f05b7acb33b4a06ff</srcmd5>
+    <version>1.7.3</version>
+    <time>1403724015</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238623</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>9cd76683c8634d4f05b7acb33b4a06ff</srcmd5>
+    <version>1.7.3</version>
+    <time>1409303436</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3edf7510afe428a35a94ac52f1695664</srcmd5>
+    <version>1.7.4</version>
+    <time>1429346331</time>
+    <user>dimstar_suse</user>
+    <comment>Submit the update, as bibletime is being linked in the devel prj against the updated version</comment>
+    <requestid>295792</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>1355230ec15b74e99b61d1fe34b68134</srcmd5>
+    <version>1.7.4</version>
+    <time>1457353446</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>363845</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2f7fa546468447c86708ca3dec9a7f91</srcmd5>
+    <version>1.7.5~a1</version>
+    <time>1468482634</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408311</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>4b20df954e1d5a4fdaae72085563e3b7</srcmd5>
+    <version>1.7.5~a1</version>
+    <time>1515342221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562201</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0d28c548bb7a1d08ad42bc44a4e62581</srcmd5>
+    <version>1.8.1</version>
+    <time>1532681690</time>
+    <user>dimstar_suse</user>
+    <comment>- add Apache-2.0 to the license tag
+- update to 1.8.1:
+  + Added bindings: Android and cordova
+  + Added French mapping data
+  + Added --with-icuregex option to use ICU regex engine
+- remove sword-gcc6-ftemplate-depth.patch as fixed upstream 
+- add -DU_USING_ICU_NAMESPACE=1 to fix boo#1095666
+</comment>
+    <requestid>624008</requestid>
+  </revision>
+</revisionlist>

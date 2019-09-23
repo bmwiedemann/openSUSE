@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>06c1fdba5d36f820455c3bec35e5e64d</srcmd5>
+    <version>12.0.0</version>
+    <time>1519902456</time>
+    <user>dimstar_suse</user>
+    <comment>dependency needed for vagrant 2.0.x</comment>
+    <requestid>580868</requestid>
+  </revision>
+</revisionlist>

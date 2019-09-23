@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Thu Jan  3 11:08:27 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
+
+- Use the shipped manpages instead of building them with xmlto
+  in order to avoid a build cycle (fipscheck, xmlto, libxslt, libgcrypt)
+  * add fipscheck-dont_generate_manpages.patch
+- fix build on older distributions
+
+-------------------------------------------------------------------
+Thu Sep 20 17:16:11 UTC 2018 - Jason Sikes <jsikes@suse.de>
+
+- Changed source back to http now that current release folder
+  has current tarball.
+
+-------------------------------------------------------------------
+Tue Sep 11 23:51:42 UTC 2018 - Jason Sikes <jsikes@suse.de>
+
+- Updated fipscheck to 1.5.0
+  * Changed source to local file since latest official release
+    is not in the official releases directory.
+  * Downgraded libopenssl-devel to libopenssl-1_0_0-devel because
+    1.0.2 supports FIPS.
+
+-------------------------------------------------------------------
+Mon Jun 12 14:21:41 UTC 2017 - daniel.molkentin@suse.com
+
+- Port to OpenSSL 1.1 (bsc#1042649)
+  Adds openssl-1_1-port.patch
+
+-------------------------------------------------------------------
+Mon Apr 13 08:50:02 UTC 2015 - jengelh@inai.de
+
+- Set RPM groups anew. Drop implicit cleaning parts.
+
+-------------------------------------------------------------------
+Mon Jun  2 10:01:01 UTC 2014 - meissner@suse.com
+
+- add baselibs.conf
+
+-------------------------------------------------------------------
+Tue May 27 14:13:38 UTC 2014 - meissner@suse.com
+
+- updated to 1.4.1
+  - added manpages
+  - fipscheck/fipshmac: Add -s option to specify the hmac suffix
+  - fipshmac: Add '-d' option to specify where to put the .hmac files
+  - various bugfixes
+
+-------------------------------------------------------------------
+Tue Jan 21 14:21:27 UTC 2014 - cfarrell@suse.com
+
+- license update: BSD-2-Clause
+  See LICENSE
+
+-------------------------------------------------------------------
+Mon Jan 20 09:37:18 UTC 2014 - meissner@suse.com
+
+- imported a generic fips helper to verify fips modules, linked
+  to openssl.
+

@@ -1,0 +1,391 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>39d2a873875c6e4bd62e062e809106c7</srcmd5>
+    <version>1.6</version>
+    <time>1302779235</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67239 from user babelworx
+</comment>
+    <requestid>67239</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b5a0011f02517a14517fe9cb071651fe</srcmd5>
+    <version>1.6</version>
+    <time>1302779249</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67239
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>258c1ba5cd4e749e4b13cea092429d6e</srcmd5>
+    <version>1.6.3</version>
+    <time>1311081573</time>
+    <user>darix</user>
+    <comment>Update to 1.6.3. (forwarded request 76338 from aledr)</comment>
+    <requestid>76381</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2e1695652071856c919b4ecd81bba9ce</srcmd5>
+    <version>1.6.3</version>
+    <time>1311149254</time>
+    <user>azouhr</user>
+    <comment>- Spec file cleanup:
+  * Remove she-bang line from non-executable script (rpmlint warning)
+  * Remove in-tree libraries (setuptools, pip &amp; distribute)
+  * Don't package PKG-INFO but AUTHORS.txt and LICENSE.txt</comment>
+    <requestid>76511</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>b3422d05ea1481d6d06954dd50389ef0</srcmd5>
+    <version>1.6.3</version>
+    <time>1311149269</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 76511
+</comment>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>6f5d987dd828d486859adf677fba94eb</srcmd5>
+    <version>1.6.4</version>
+    <time>1311607794</time>
+    <user>darix</user>
+    <comment>Update to 1.6.4. (forwarded request 76681 from aledr)</comment>
+    <requestid>76690</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>1906e067323d517a9a30d04785d62bba</srcmd5>
+    <version>1.6.4</version>
+    <time>1311607805</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 76690
+</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>1906e067323d517a9a30d04785d62bba</srcmd5>
+    <version>1.6.4</version>
+    <time>1319182408</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>87ae65d9de12eaba8d40bdd908552141</srcmd5>
+    <version>1.7</version>
+    <time>1329242803</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103947</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b224ef3d9f88696dc9794095d18ffa1a</srcmd5>
+    <version>1.7.1.2</version>
+    <time>1330062843</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>106725</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b224ef3d9f88696dc9794095d18ffa1a</srcmd5>
+    <version>1.7.1.2</version>
+    <time>1340184098</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>75f5829603ecdf2b5f01f707a1696343</srcmd5>
+    <version>1.7.2</version>
+    <time>1340726598</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>126139</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>56e5ce0fd810cc943620342fd0fe848c</srcmd5>
+    <version>1.8.2</version>
+    <time>1348562814</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>135565</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b7d9dff2171b1fc9ba2a0daaacef4865</srcmd5>
+    <version>1.8.4</version>
+    <time>1354712790</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>144040</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>b7d9dff2171b1fc9ba2a0daaacef4865</srcmd5>
+    <version>1.8.4</version>
+    <time>1359110140</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7b78eed4b9251c2596ddde184ad9f16d</srcmd5>
+    <version>1.9.1</version>
+    <time>1363511269</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>159592</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fd018b102f6c569113278339a69f06fd</srcmd5>
+    <version>1.10</version>
+    <time>1375125119</time>
+    <user>coolo</user>
+    <comment>- Don't drop shipped setuptools / pip, they've been fetched from the
+  interwebs previously. It doesn't make sense to use the (currently
+  matching) system equivalents, it's meant to be self-contained
+
+- Use update-alternatives for parallel-installability with Python3 version
+
+- Update to version 1.10:
+  + BACKWARDS INCOMPATIBLE Dropped support for Python 2.5. The minimum supported
+    Python version is now Python 2.6.
+  + BACKWARDS INCOMPATIBLE Using virtualenv.py as an isolated script (i.e.
+    without an associated virtualenv_support directory) is no longer supported
+    for security reasons and will fail with an error.
+  + Along with this, --never-download is now always pinned to True, and is only
+    being maintained in the short term for backward compatibility (Pull #412).
+  + IMPORTANT Switched to the new setuptools (v0.9.7) which has been merged with
+    Distribute again and works for Python 2 and 3 with one codebase. The 
+    --distribute and --setuptools options are now no-op.
+  + Updated to pip 1.4.
+  + Added support for PyPy3k
+  + Added the option to use a version number with the -p option to get the system
+    copy of that Python version (Windows only)
+  + Removed embedded ez_setup.py, distribute_setup.py and distribute_from_egg.py
+    files as part of switching to merged setuptools.
+  + Fixed --relocatable to work better on Windows.
+  + Fixed issue with readline on Windows.
+- Spec clean:
+  + Depend on setuptools instead of distribute again
+  + Package README.rst
+  + Build HTML documentation and install it (instead of sources)</comment>
+    <requestid>184868</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>fd018b102f6c569113278339a69f06fd</srcmd5>
+    <version>1.10</version>
+    <time>1379664307</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ea55375ec087102343c066e9ce8695ec</srcmd5>
+    <version>1.10.1</version>
+    <time>1381492166</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 1.10.1:
+  + **New Signing Key** Release 1.10.1 is using a different key than normal with
+    fingerprint: 7C6B 7C5D 5E2B 6356 A926 F04F 6E3C BCE9 3372 DCFA
+  + Upgraded pip to v1.4.1
+  + Upgraded setuptools to v0.9.8</comment>
+    <requestid>202945</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bd3191b2afe7020c8591b368c1185193</srcmd5>
+    <version>1.11</version>
+    <time>1389279244</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.11:
+  + BACKWARDS INCOMPATIBLE Switched to using wheels for the bundled
+    copies of setuptools and pip. Using sdists is no longer supported
+  + BACKWARDS INCOMPATIBLE Modified the handling of --extra-search-dirs.
+    This option now works like pip’s --find-links option, in that it
+    adds extra directories to search for compatible wheels for pip and
+    setuptools. The actual wheel selected is chosen based on version
+    and compatibility, using the same algorithm as pip install setuptools.
+  + Upgraded pip to v1.5
+  + Upgraded setuptools to v1.4
+- Symlink /usr/bin/virtualenv in buildroot (u-a warning) and ghost
+  alternatives link on 12.3 or newer</comment>
+    <requestid>213140</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9581607ff8b5d499f90bf43f6c59d25e</srcmd5>
+    <version>1.11.2</version>
+    <time>1392300244</time>
+    <user>coolo</user>
+    <comment>- update to 1.11.2:
+ * Fixed easy_install installed virtualenvs by updated pip to 1.5.2
+ * Fixed an issue where pip and setuptools were not getting installed when using
+   the ``--system-site-packages`` flag.
+ * Updated setuptools to fix an issue when installed with easy_install
+ * Fixed an issue with Python 3.4 and sys.stdout encoding being set to ascii (forwarded request 221797 from dirkmueller)</comment>
+    <requestid>221980</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e0e6b0242f26f1dfa7da3f4922c6afd3</srcmd5>
+    <version>1.11.4</version>
+    <time>1396291461</time>
+    <user>coolo</user>
+    <comment>update to 1.11.4 (forwarded request 228206 from TheBlackCat)</comment>
+    <requestid>228207</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>e0e6b0242f26f1dfa7da3f4922c6afd3</srcmd5>
+    <version>1.11.4</version>
+    <time>1409303017</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>283805f6b0be74a38208fe31492e8a96</srcmd5>
+    <version>1.11.6</version>
+    <time>1410967623</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249862</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>23421af7b7af59446a1ecfeaeac1bfdc</srcmd5>
+    <version>1.11.6</version>
+    <time>1416347124</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261688</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2c043cabd4d39b0f10f8c9e6d0bc4cfd</srcmd5>
+    <version>12.0.7</version>
+    <time>1428192244</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294337</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>9d6b40ba8da637abd81f73940a614f8e</srcmd5>
+    <version>12.0.7</version>
+    <time>1438899661</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319410</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>18bc9aa19494c2a7e528de02ff3c086b</srcmd5>
+    <version>13.1.2</version>
+    <time>1443071781</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>331692</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2d9dc00eb9c6eaca133a4c2bc69217c4</srcmd5>
+    <version>15.0.0</version>
+    <time>1473409002</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>425186</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>aca7a4ccd89bea3601edba9c689e5d6b</srcmd5>
+    <version>15.1.0</version>
+    <time>1492617843</time>
+    <user>dimstar_suse</user>
+    <comment>- do not generate HTML documentation for packages that are indirect
+  dependencies of Sphinx
+  (see docs at https://virtualenv.readthedocs.org/ )
+- move uninstall_alternatives to %postun
+
+- Merge python-virtualenv-doc.spec into python-virtualenv.spec
+
+- update to 15.1.0:
+  * Support Python 3.6.
+  * Upgrade setuptools to 28.0.0.
+  * Upgrade pip to 9.0.1.
+  * Don't install pre-release versions of pip, setuptools, or wheel from PyPI.
+- Switch to singlespec approach</comment>
+    <requestid>482903</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>6351b9d525ecb26adaf7356894cc46a9</srcmd5>
+    <version>15.1.0</version>
+    <time>1519307884</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing Requires for python (bsc#1081707)</comment>
+    <requestid>578617</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>45ddcb6c2a65ed762a9ed7d1ee8f515d</srcmd5>
+    <version>15.1.0</version>
+    <time>1532361536</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable tests, skip upstream failing one
+
+- Fix failure of virtualenv --always-copy (bsc#1102096):
+  * pypa-virtualenv-1189.patch</comment>
+    <requestid>624537</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>b983b2bb1678008ba64e8fd03b55a1bf</srcmd5>
+    <version>15.1.0</version>
+    <time>1533732318</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627455</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>1d7940376cef02cd99aeb3b3dfa5858d</srcmd5>
+    <version>16.1.0</version>
+    <time>1551687083</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 16.1.0:
+  * Fixed documentation to use pypi.org and correct curl options; :issue:`1042`
+  * bug fix: ensure prefix is absolute when creating a new virtual
+    environment :issue:`1208`
+  * upgrade setuptools from ``39.1.0`` to ``40.5.0``
+  * upgrade wheel from ``0.31.1`` to ``0.32.2``
+  * upgrade pip from ``10.0.1`` to ``18.1``
+  * ``activate.csh`` does not use basename and handles newlines :issue:`1200`
+  * fix failure to copy on platforms that use lib64 :issue:`1189`
+  * enable tab-completion in the interactive interpreter by default,
+    thanks to a new ``sys.__interactivehook__`` on Python 3 :issue:`967`
+  * suppress warning of usage of the deprecated ``imp`` module :issue:`1238`
+  * Drop support for Python 2.6.
+  * Upgrade pip to 10.0.1.
+  * Upgrade setuptools to 39.1.0.
+  * Upgrade wheel to 0.31.1.
+- Removed patch
+  - pypa-virtualenv-1189.patch
+
+- Add requires: python-setuptools (bsc#1127328)</comment>
+    <requestid>680531</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0f9b265e07ae141a59eee84854a9f08a</srcmd5>
+    <version>16.7.5</version>
+    <time>1569233973</time>
+    <user>dimstar_suse</user>
+    <comment>- Use multibuild to avoid cycles with pytest
+
+- Update to 16.7.5:
+  * fix powershell activation when sourced (#1398)
+  * fix regression - sh activation script not working under sh (only bash) (#1396)
+  * activate.ps1 syntax and style updated to follow PSStyleAnalyzer rules (#1371)
+  * Allow creating virtual environments for 3.xy. (#1385)
+  * Report error when running activate scripts directly
+  * Extend the LICENSE search paths list by lib64/pythonX.Y to support Linux vendors who install their Python to /usr/lib64/pythonX.Y
+  * Raise an error if the target path contains the operating systems path separator (using this would break our activation scripts)
+  * Drop Jython support
+  * Add tests covering prompt manipulation during activation/deactivation, and harmonize behavior of all supported shells
+
+- Update to 16.4.3:
+  * Revert the symlink fix, causing debian packaging issues. (#1390)
+  * Fix license() builtin by copying the LICENSE file into the virtualenv - by asottile. (#1317)
+  * fixes the scenario where the python base install is symlinked with relative symlinks (#490)
+  * Use importlib over imp in virtualenv.py for python &gt;= 3.4 - by Anthony Sottile (#1293)
+  * Copy or link PyPy header files instead of include directory itself (#1302)
+  * Allow virtualenv creation with older pip not having config command correspondingly disabling configuration related features (such as pip cert setting) in this case. (#1303)
+  * Use importlib over deprecated imp` in ``distutils/__init__.py for python 3 - by Anthony Sottile (#955)
+  * Preserve cert option defined in pip.conf or environment variable. (#1273)
+  * fixed a ResourceWarning: unclosed file in call_subprocess() - by Mickaël Schoentgen (#1277)
+  * pre-import some built-in modules in site.py on PyPy according to PyPy's site.py - by microdog (#1281)
+  * Copy files from sys.exec_prefix only if it is really different path than used prefix, bugfix for #1270 (#1282)
+  * copyfile handles relative symlinks and symlinks to symlinks, avoiding problems when Python was installed using stow or homebrew. (#268)
+  * Fix preserving of original path when using fish and a subshell. (#904)
+  * Drop the source layout of the project, going back to how the source was laid out before 16.1.0. (#1241)
+  * Fix bootstrap script generation broken with 16.0.0. Support now both CPython, pypy, jython. (#1244)
+  * lib64 symlink is again relative (as was with &lt; 16.1.0). (#1248)</comment>
+    <requestid>731579</requestid>
+  </revision>
+</revisionlist>

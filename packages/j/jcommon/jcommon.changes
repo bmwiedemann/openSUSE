@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Mon Sep 18 22:25:43 UTC 2017 - fstrba@suse.com
+
+- Specify java source and target 1.6 in order to allow building
+  with jdk9
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:58 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Mon Aug 11 15:05:15 CEST 2008 - mvyskocil@suse.cz
+
+- Inital packaging of the 0.9.6 (from JPP1.7) 
+

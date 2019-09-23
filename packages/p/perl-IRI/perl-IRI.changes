@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Fri Aug 30 18:45:09 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Remove outdated patch fix-package.diff (also not needed anymore)
+  Remove manual fix for inc::Module::Install
+
+-------------------------------------------------------------------
+Wed Apr  3 07:04:10 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.009
+   see /usr/share/doc/packages/perl-IRI/Changes
+
+  0.009  2018-10-30
+  
+   - (Update) Reduce Minimum Perl Version to 5.10 (#12 from @tehmoth).
+  
+  0.008  2017-08-06
+  
+   - (Update) Fix typo in regex rule causing problems parsing codepoints
+     beyond BMP (#11).
+  
+  0.007  2017-04-03
+  
+   - (Addition) Add query_form accessor and set_query_param constructor (#4).
+   - (Update) Updated Makefile.PL for perl 5.26.
+
+-------------------------------------------------------------------
+Tue Oct  3 07:28:41 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Thu Jul 21 05:28:55 UTC 2016 - coolo@suse.com
+
+- updated to 0.006
+   see /usr/share/doc/packages/perl-IRI/Changes
+
+  0.006  2016-07-19
+  
+   - (Update) Fix regular expression use of quantifiers (#8 from Karl
+     Williamson).
+
+-------------------------------------------------------------------
+Tue Apr 19 16:04:56 UTC 2016 - opensuse@dstoecker.de
+
+- update to version 0.0005
+ - (Addition) Add ability to lazily parse IRI components.
+ - (Addition) Add cpanfile, with Module::Install deps (#5 from Alberto
+   Simões).
+ - (Addition) Added Try::Tiny to list of build requirements (github issue
+   #3).
+ - (Update) Improve performance of IRI component parsing.
+ - (Update) Update POD coverage test to ignore private attributes (#6 from
+   Alberto Simões).
+ - (Update) Updated required version of Type::Tiny to 0.008 to support use
+   of InstanceOf (#7 from Alexandr Ciornii).
+
+-------------------------------------------------------------------
+Wed Mar 25 14:11:51 UTC 2015 - coolo@suse.com
+
+- initial package 0.004
+    * created by cpanspec 1.78.08
+- add fix-package.diff to get perl(IRI) from rpm
+

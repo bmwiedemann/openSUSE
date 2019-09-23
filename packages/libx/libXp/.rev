@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f070470d146e623fd3de1b955b79675f</srcmd5>
+    <version>1.0.0</version>
+    <time>1329476659</time>
+    <user>coolo</user>
+    <comment>- Rename xorg-x11-libXext to libXext and utilize shlib policy</comment>
+    <requestid>105463</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6228e0cc4e346d10ca747f61a81e1f47</srcmd5>
+    <version>1.0.1</version>
+    <time>1336471071</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115357</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6228e0cc4e346d10ca747f61a81e1f47</srcmd5>
+    <version>1.0.1</version>
+    <time>1340183558</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>6228e0cc4e346d10ca747f61a81e1f47</srcmd5>
+    <version>1.0.1</version>
+    <time>1359109234</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>f9f629add987fbf5aa358e2bfeaa0751</srcmd5>
+    <version>1.0.1</version>
+    <time>1363949855</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160098</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>da62dda65a6b816d35422847b517b8e5</srcmd5>
+    <version>1.0.2</version>
+    <time>1370426218</time>
+    <user>coolo</user>
+    <comment>update to version 1.0.2 (forwarded request 177136 from tobijk)</comment>
+    <requestid>177152</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>da62dda65a6b816d35422847b517b8e5</srcmd5>
+    <version>1.0.2</version>
+    <time>1379662887</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>da62dda65a6b816d35422847b517b8e5</srcmd5>
+    <version>1.0.2</version>
+    <time>1409301489</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>62a2c074d1c8db37ce00015ffb7e8acb</srcmd5>
+    <version>1.0.3</version>
+    <time>1426495008</time>
+    <user>dimstar_suse</user>
+    <comment>- added baselibs.conf as source to specfile in order to make
+  factory checkin policy happy ...
+
+- Update to version 1.0.3:
+  + autogen.sh: Honor NOCONFIGURE=1.
+  + configure: Drop AM_MAINTAINER_MODE.
+  + Remove fallback for _XEatDataWords, require libX11 1.6 for it.</comment>
+    <requestid>290002</requestid>
+  </revision>
+</revisionlist>

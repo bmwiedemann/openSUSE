@@ -1,0 +1,1096 @@
+-------------------------------------------------------------------
+Tue Jun 11 12:30:17 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Tue May 28 14:04:52 CEST 2019 - tiwai@suse.de
+
+- Add systemd service to load OSS and sequencer modules
+  (bsc#1136562)
+
+-------------------------------------------------------------------
+Fri May 10 11:56:14 CEST 2019 - tiwai@suse.de
+
+- Update to alsa-utils 1.1.9:
+  alasctl, axfer, alsaloop, alsamixer and amixer fixes, see
+    https://www.alsa-project.org/wiki/Changes_v1.1.8_v1.1.9
+  for details
+
+-------------------------------------------------------------------
+Tue Jan 22 12:27:31 CET 2019 - tiwai@suse.de
+
+- Remove the ugly conditionals to build for (too) old distros
+- Drop alsaconf script that rather brings the inconsistent setup
+  on modern systems
+- Move alsabat-test.sh into alsabat package, too
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jan  8 12:23:11 CET 2019 - tiwai@suse.de
+
+- Update to alsa-utils 1.1.8:
+  * Core:
+    Makefile.am: add README.md to EXTRA_DIST 
+    axfer: add support for libffado transmission backend 
+    axfer: add unit test for container interface 
+    axfer: add an entry point for this command 
+    initial version of .travis.yml 
+    rename and update README.md 
+  * Audio Transfer utility:
+    axfer: add an explanation about advantages/issues of Timer-based scheduling model 
+    axfer: add an explanation about Timer-based scheduling model 
+    axfer: add an explanation about IRQ-based scheduling model 
+    axfer: add text for compatibility loss of sw parameter in libasound backend 
+    axfer: fulfill manual section for libasound backend 
+    axfer: print help for libasound backend 
+    axfer: fulfill manual section for libffado backend 
+    axfer: print help for libffado backend 
+    axfer: correct description about signal handling 
+    axfer: fix typo in axfer(1) manual 
+    axfer: fix no return statement in print_help() function 
+    axfer: enable each backend to print own help 
+    axfer: print help text of transfer subcommand just for common options 
+    axfer: print help text of list subcommand 
+    axfer: print help text of command entry 
+    axfer: add a section about design of transfer subcommand 
+    axfer: add a section to describe compatibility to aplay(1) 
+    axfer: add a manual for transfer subcommand 
+    axfer: add a manual for list subcommand 
+    axfer: add a manual for entry point 
+    axfer: check whether a terminal is referred for stdio 
+    axfer: truncate parsed arguments before operating subcommand 
+    axfer: use transfer subcommand as a default for compatibility mode to aplay(1) 
+    axfer: use second argument in command line for transmission direction 
+    axfer: apply refactoring in list subcommand for new command system 
+    axfer: apply refactoring to list subcommand for backward compatibility to aplay(1) 
+    axfer: add support for libffado transmission backend 
+    axfer: obsolete some unimplemented options 
+    axfer: add support for timer-based scheduling model with MMAP operation 
+    axfer: add an implementation of waiter for epoll(7) 
+    axfer: add an implementation of waiter for select(2) 
+    axfer: add an implementation of waiter for poll(2) 
+    axfer: add an option for waiter type 
+    axfer: add a common interface of waiter for I/O event notification 
+    axfer: add options for plugins in alsa-lib 
+    axfer: add options for software parameters of PCM substream 
+    axfer: add options for buffer arrangement 
+    axfer: add an option to suppress event waiting 
+    axfer: add support for MMAP PCM operation 
+    axfer: add support for non-blocking operation 
+    axfer: add an option to finish transmission at XRUN 
+    axfer: add options related to duration and obsolete '--max-file-size' option 
+    axfer: add an option to dump available hardware parameters 
+    axfer: add informative output and an option to suppress it 
+    axfer: add a sub-command to transfer data frames 
+    axfer: add support for blocking data transmission operation of alsa-lib PCM API 
+    axfer: add support to transfer data frames by alsa-lib PCM APIs 
+    axfer: add a parser for command-line options 
+    axfer: add a common interface to transfer data frames 
+    axfer: add a unit test for mapper interface 
+    axfer: add support for a mapper for multiple target 
+    axfer: add support for a mapper for single target 
+    axfer: add a common interface to align data frames on different layout 
+    axfer: add unit test for container interface 
+    axfer: add support for a container of raw data 
+    axfer: add support for a container of Creative Tech. voice format 
+    axfer: add support for a container of Sparc AU format 
+    axfer: add support for a container of Microsoft/IBM RIFF/Wave format 
+    axfer: add a common interface to handle a file with audio-specific data format 
+    axfer: add a sub-command to print list of PCMs/devices 
+    axfer: add an entry point for this command 
+  * alsaloop:
+    alsaloop: more avail_min cleanups 
+  * alsatplg (topology):
+    topology/topology.c: drop unneeded <dlfcn.h> include 
+  * aplay/arecord:
+    aplay: improve available conditions for '--samples' and '--duration' options 
+    aplay: add a paragraph for '--samples' ('-s') option to aplay manual 
+    aplay: delete paragraph for obsoleted '--sleep-min' ('-s') option from aplay manual 
+
+-------------------------------------------------------------------
+Mon Oct 22 11:24:10 UTC 2018 - Christian Boltz <suse-beta@cboltz.de>
+
+- remove "Obsoletes: bat <= 0.1.0" - it triggers uninstall of the unrelated
+  "bat" (cat clone) package
+
+-------------------------------------------------------------------
+Wed Oct 17 11:33:25 CEST 2018 - tiwai@suse.de
+
+- Updated to alsa-utils 1.1.7:
+  * aplay: Fix invalid file size check for non-regular files
+  * speaker-test: Support S24_3LE sample format
+  * speaker-test: Allow sampling rates up to 768000
+  * alsabat: Allow custom sample format for round trip latency test
+  * alsaucm: add alsa-ucm udev rules for PAZ00 (Toshiba AC100/Dynabook AZ)
+  * alsatplg: add man file
+  * alsactl: improved disconnection handling
+  * compile warning fixes
+  * aplay: add missing block brackets
+- Prepare a patch to allow build with old automake for old distros
+  (not applied yet, though):
+  alsa-utils-configure-version-revert.patch
+
+-------------------------------------------------------------------
+Wed Apr  4 14:57:35 CEST 2018 - tiwai@suse.de
+
+- Avoid %license tag for old distros to fix builds
+
+-------------------------------------------------------------------
+Wed Apr  4 08:39:33 CEST 2018 - tiwai@suse.de
+
+- Updated to alsa-utils 1.1.6:
+  * Change FSF address (Franklin Street)
+  * aplay: Adjust sample rate limits to support newer hardware
+  * alsactl: Only start restore service when asoundrc file exists
+  * alsaloop: fix a typo in the comparison
+  * speaker-test: Refactor the tone-generator codes
+  * aplay: Fix wav file not being split on 32 bit platforms
+  * bat: alsa.c - move the thread cleanup pop before goto exit3
+- Remove obsoleted patches:
+  0001-aplay-Adjust-sample-rate-limits-to-support-newer-har.patch
+  0002-alsactl-Only-start-restore-service-when-asoundrc-fil.patch
+- Use %license file tag
+
+-------------------------------------------------------------------
+Mon Dec 18 17:33:17 CET 2017 - tiwai@suse.de
+
+- Get rid of superfluous patch for ancient distros:
+  alsa-utils-gettext-version-removal.diff
+- Remove superfluous file override, which is already included in
+  the 1.1.5 tarball:
+  alsaucm.rst
+- Backport upstream fixes:
+  0001-aplay-Adjust-sample-rate-limits-to-support-newer-har.patch
+  0002-alsactl-Only-start-restore-service-when-asoundrc-fil.patch
+- Cleanup specfile to rip off the too old kludges
+
+-------------------------------------------------------------------
+Tue Nov 14 15:03:33 CET 2017 - tiwai@suse.de
+
+- Update to alsa-utils 1.1.5:
+  * alsactl: Move systemd unit start-up from basic.target to
+    sound.target 
+  * alsatplg: fix topology compiler long option parsing 
+  * topology: delete output file if parsing fails. 
+  * aplay: Fix playback for small raw files 
+  * aplay: Refactor playback code 
+  * aplay: Add samples argument for playing/recording a given
+    number of samples 
+  * aplay: interrupt streaming via signal in voc_pcm_write 
+  * aplay: Fix --max-file-time option 32 bits overflow 
+  * alsabat: fix one uninitialized warning issue 
+- Fix filelist for the 1.1.5 update
+
+-------------------------------------------------------------------
+Mon Nov  6 17:19:02 UTC 2017 - jmatejek@suse.com
+
+- drop unused requirement for python-docutils
+
+-------------------------------------------------------------------
+Tue May 16 15:35:57 CEST 2017 - tiwai@suse.de
+
+- Update to alsa-utils 1.1.4:
+  * alsactl: Remove standard output definition in systemd unit
+  * alsa-info: provide more DMI information
+  * alsa-info: add ACPI device status
+  * amidi: optarg might be NULL, fix 't' argument parsing
+  * aplay: Introduce and use xwrite helper
+
+-------------------------------------------------------------------
+Wed Dec 28 16:38:57 CET 2016 - tiwai@suse.de
+
+- Really bump the version number to 1.1.3 (sorry, forgot to change
+  in Version tag).
+
+-------------------------------------------------------------------
+Wed Dec 28 12:51:53 CET 2016 - tiwai@suse.de
+
+- Update to alsa-utils 1.1.3:
+  * a couple of amidi fixes
+  * a few alsabat extensions
+  * alsaloop cpu hog fix,
+  * a fix for suspend/resume with aplay
+  * fix chmap selection in speaker-test WAV mode
+  * alsaucm man pages, 
+  * fix potential NULL dereferences in alsactl daemon mode
+- Add python-docutils to build dependency (for rst2man)
+- Fix missing alsaucm man page file in the 1.1.3 tarball
+
+-------------------------------------------------------------------
+Wed Aug  3 11:23:36 CEST 2016 - tiwai@suse.de
+
+- Update to alsa-utils 1.1.2:
+  * aplay: fix lurking capture file overwrite bug
+  * alsabat: a few bug fixes, add noise detection, etc
+
+-------------------------------------------------------------------
+Thu Mar 31 15:24:55 CEST 2016 - tiwai@suse.de
+
+- Update to alsa-utils 1.1.1:
+  including previous fixes, more enhancements / fixes of alsabat,
+  fix in aplay for parsing parameter values
+- Delete obsoleted patches:
+   0001-bat-Avoid-local-signal.h-file.patch
+   0002-bat-Don-t-pass-incompatible-function-pointers-to-pth.patch
+   0003-alsa-info.sh-add-man-page.patch
+   0004-amixer-skip-showing-asoc-tlv-byte-controls.patch
+   0005-alsabat-rename-to-avoid-naming-conflict.patch
+
+-------------------------------------------------------------------
+Wed Feb  3 18:04:00 CET 2016 - tiwai@suse.de
+
+- Backport upstream fixes: add alsa-info manpage, fix TLV output of
+  amixer for ASoC ext ctls, and rename from bat to alsabat
+  0003-alsa-info.sh-add-man-page.patch
+  0004-amixer-skip-showing-asoc-tlv-byte-controls.patch
+  0005-alsabat-rename-to-avoid-naming-conflict.patch
+- Rename subpackage from bat to alsabat due to the name conflicts
+  with other projects
+
+-------------------------------------------------------------------
+Mon Nov  9 11:45:30 CET 2015 - tiwai@suse.de
+
+- Update to alsa-utils 1.1.0:
+  including all previous fixes, update of topology tool, addition
+  of BAT (Basic Audio Tool)
+- Split bat subpackage containing BAT
+- Fix build of bat with old gcc & glibc on SLE11
+  0001-bat-Avoid-local-signal.h-file.patch
+  0002-bat-Don-t-pass-incompatible-function-pointers-to-pth.patch
+- Dropped patches:
+  0001-amixer-Don-t-set-only-the-first-item-in-sset_enum.patch
+  0002-amixer-expand-local-storage-for-item-name-according-.patch
+  0003-alsa-info-Don-t-try-update-when-wget-isn-t-available.patch
+  0004-aplay-Fix-type-for-signal-flag.patch
+  0005-aplay-Fix-uninterruptible-aplay.patch
+  0006-alsactl-terminate-readlink-result-string.patch
+  0007-speaker-test-Add-option-to-specify-signal-scale.patch
+  0008-topology-Add-command-line-topology-tool-to-build-top.patch
+  0009-alsactl-Add-path-condition-to-alsa-store-and-alsa-re.patch
+  0010-speaker-test-fix-option-ordering.patch
+  0011-arecord-Remove-only-regular-files.patch
+  0012-aplay-fix-VU-meter-for-S24_LE-etc-formats.patch
+  0013-alsactl-Manage-both-save-and-restore-in-a-single-uni.patch
+
+-------------------------------------------------------------------
+Tue Sep 29 17:30:30 CEST 2015 - tiwai@suse.de
+
+- Backport upstream fixes: particularly fixing the inconsistent
+  mixer state after service reload (bnc#929619):
+  0010-speaker-test-fix-option-ordering.patch
+  0011-arecord-Remove-only-regular-files.patch
+  0012-aplay-fix-VU-meter-for-S24_LE-etc-formats.patch
+  0013-alsactl-Manage-both-save-and-restore-in-a-single-uni.patch
+
+-------------------------------------------------------------------
+Mon Aug 10 15:05:45 CEST 2015 - tiwai@suse.de
+
+- Suppress alsactl invocation on systems without sound cards
+  (bsc#940950):
+  0009-alsactl-Add-path-condition-to-alsa-store-and-alsa-re.patch
+
+-------------------------------------------------------------------
+Tue Aug  4 17:48:44 CEST 2015 - tiwai@suse.de
+
+- Upstream patch to add -S option to speaker-test
+  0007-speaker-test-Add-option-to-specify-signal-scale.patch
+- Upstream patch to add alsatplg parser program
+  0008-topology-Add-command-line-topology-tool-to-build-top.patch
+- Reenable autoreconf call to regenerate after patching
+
+-------------------------------------------------------------------
+Fri Jul 31 07:40:12 UTC 2015 - dimstar@opensuse.org
+
+- Change libudev-devel BuildRequires to pkgconfig(udev): makes us
+  less prone to packaging changes, and in the end udev.pc is
+  exactly what we need to define _udevdir.
+
+-------------------------------------------------------------------
+Mon Jul 13 16:41:51 CEST 2015 - tiwai@suse.de
+
+- Backport upstream fixes for aplay signal handling and alsactl
+  possible buffer overflow of readlink():
+  0004-aplay-Fix-type-for-signal-flag.patch
+  0005-aplay-Fix-uninterruptible-aplay.patch
+  0006-alsactl-terminate-readlink-result-string.patch
+
+-------------------------------------------------------------------
+Mon Apr 27 21:41:13 CEST 2015 - tiwai@suse.de
+
+- Backport upstream fixes, including the fix for alsa-info
+  (boo#928394):
+  0001-amixer-Don-t-set-only-the-first-item-in-sset_enum.patch
+  0002-amixer-expand-local-storage-for-item-name-according-.patch
+  0003-alsa-info-Don-t-try-update-when-wget-isn-t-available.patch
+
+-------------------------------------------------------------------
+Thu Feb 26 17:26:56 CET 2015 - tiwai@suse.de
+
+- Update to alsa-utils 1.0.29:
+  just a version bump including previous fixes
+- Drop obsoleted patches:
+  0001-alsactl-save-state-do-not-call-rename-for-stdio.patch
+  0002-alsamixer-include-missing-mixer_controls.h.patch
+  0003-Add-alsa-info.sh-to-alsa-utils-repo.patch
+  0004-Add-missing-alsa-info-entry-to-the-root-Makefile.am.patch
+  0005-alsa-info-Make-sure-all-full-script-is-run-even-with.patch
+  0006-alsa-info-Refactor-withall-logic.patch
+  0007-speaker-test-Add-missing-draining-at-the-end.patch
+  0008-alsactl-Fix-the-file-locking-routines-for-the-state-.patch
+  0009-alsactl-aded-missing-monitor-prototype.patch
+  0010-speaker-text-fix-simple-signess-assignment-warning.patch
+  0011-monitor-fix-clang-warning-Declared-variable-length-a.patch
+  0012-alsactl-coverity-missing_va_end-va_end-was-not-calle.patch
+  0013-Revert-aplay-fix-pcm_read-return-value.patch
+  0014-amixer-Make-dB-case-insensitive-in-set-commands.patch
+  0015-amixer-Parse-the-value-more-strictly.patch
+  0016-alsactl-add-missing-state_unlock-call.patch
+  0017-alsactl-init-Change-the-basic-rules-description.patch
+  0018-alsactl-init-Add-Line-Out-to-list-of-outputs-to-init.patch
+  0019-configure-allow-contitional-compilation-of-alsaucm.patch
+
+-------------------------------------------------------------------
+Mon Jan 26 15:52:24 CET 2015 - tiwai@suse.de
+
+- Backport upstream fixes: fix missing unlock for the error path
+  in alsactl, more alsactl init entries, alsaucm build fix
+  0016-alsactl-add-missing-state_unlock-call.patch
+  0017-alsactl-init-Change-the-basic-rules-description.patch
+  0018-alsactl-init-Add-Line-Out-to-list-of-outputs-to-init.patch
+  0019-configure-allow-contitional-compilation-of-alsaucm.patch
+
+-------------------------------------------------------------------
+Fri Dec  5 16:54:03 CET 2014 - tiwai@suse.de
+
+- Backport upstream fixes: rubustify dB value handling in amixer
+  0014-amixer-Make-dB-case-insensitive-in-set-commands.patch
+  0015-amixer-Parse-the-value-more-strictly.patch
+
+-------------------------------------------------------------------
+Fri Oct 17 11:58:05 CEST 2014 - tiwai@suse.de
+
+- Backport upstream fixes: a few speaker-test fixes, minor alsactl
+  fixes and a revert of a wrong fix for aplay.
+  0007-speaker-test-Add-missing-draining-at-the-end.patch
+  0008-alsactl-Fix-the-file-locking-routines-for-the-state-.patch
+  0009-alsactl-aded-missing-monitor-prototype.patch
+  0010-speaker-text-fix-simple-signess-assignment-warning.patch
+  0011-monitor-fix-clang-warning-Declared-variable-length-a.patch
+  0012-alsactl-coverity-missing_va_end-va_end-was-not-calle.patch
+  0013-Revert-aplay-fix-pcm_read-return-value.patch
+
+-------------------------------------------------------------------
+Tue Aug 26 12:46:20 CEST 2014 - tiwai@suse.de
+
+- alsa-info.sh updates to 0.4.64: run withall also when --output
+  is given
+  0005-alsa-info-Make-sure-all-full-script-is-run-even-with.patch
+  0006-alsa-info-Refactor-withall-logic.patch
+
+-------------------------------------------------------------------
+Tue Aug 12 16:07:04 CEST 2014 - tiwai@suse.de
+
+- Move alsa-info.sh to alsa-utils:
+  0003-Add-alsa-info.sh-to-alsa-utils-repo.patch
+  0004-Add-missing-alsa-info-entry-to-the-root-Makefile.am.patch
+
+-------------------------------------------------------------------
+Tue Jul  1 16:42:31 CEST 2014 - tiwai@suse.de
+
+- Remove obsoleted *.po files
+- Backport upstream fixes:
+  0001-alsactl-save-state-do-not-call-rename-for-stdio.patch
+  0002-alsamixer-include-missing-mixer_controls.h.patch
+
+-------------------------------------------------------------------
+Wed Jun 18 13:10:03 CEST 2014 - tiwai@suse.de
+
+- Updated to alsa-utils 1.0.28:
+  All pervious fix patches are obsoleted:
+  0001-alsactl-alsa-state.service-fix-typo-rkill-kill.patch
+  0002-alsaloop-fix-wrong-alias-for-signal.h.patch
+  0003-aplay-fix-two-off-by-one-errors.patch
+  0004-alsaloop-add-z-syslog-option-to-use-syslog-for-error.patch
+  0005-amixer-actually-print-all-TLVs-in-a-container-TLV.patch
+  0006-amixer-fix-indentation-when-printing-container-TLV-c.patch
+  0007-alsaloop-pcmjob.c-use-portable-way-to-initialize-rec.patch
+  0008-speaker-test-Fix-chmapped-channel-selection-without-.patch
+  0009-speaker-test-Always-show-chmap-channel-names-if-avai.patch
+  0010-speaker-test-Show-out-of-chmap-channels-as-Unknown.patch
+  0011-alsaconf-support-newer-m-i-t-and-kmod.patch
+  0012-alsaconf-update-gentoo-to-use-modprobe.d-method-as-e.patch
+  0013-configure-detect-udevdir-via-pkg-config-fallback-to-.patch
+  0014-alsactl-Add-monitor-command.patch
+  0015-alsactl-Fix-REMOVE-event-handling-in-monitor-command.patch
+  0016-alsactl-monitor-all-cards-as-default.patch
+  0017-alsactl-Fix-the-va_list-initialization-in-cerror_-an.patch
+  0018-aplay-fix-pcm_read-return-value.patch
+  0019-alsa-restore.rules-refer-to-correct-attr.patch
+  0020-aplay-fix-timespec-to-msec-conversion.patch
+  0021-speaker-test-add-force-frequency-option-to-allow-hz-.patch
+  0022-speaker-test-update-man-page-for-new-X-arg-also-cons.patch
+
+-------------------------------------------------------------------
+Tue Mar 11 10:55:31 CET 2014 - tiwai@suse.de
+
+- Upstream backports: Add --force-frequency option to speaker-test
+  0021-speaker-test-add-force-frequency-option-to-allow-hz-.patch
+  0022-speaker-test-update-man-page-for-new-X-arg-also-cons.patch
+- Temporarily add the raw *.po files for properly patching
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Fri Jan 31 12:13:49 CET 2014 - tiwai@suse.de
+
+- Backport minor fix patches for alsactl and aplay from upstream:
+  0017-alsactl-Fix-the-va_list-initialization-in-cerror_-an.patch
+  0018-aplay-fix-pcm_read-return-value.patch
+  0019-alsa-restore.rules-refer-to-correct-attr.patch
+  0020-aplay-fix-timespec-to-msec-conversion.patch
+
+-------------------------------------------------------------------
+Wed Nov 27 09:54:23 CET 2013 - tiwai@suse.de
+
+- Backport upstream fixes: a few fixes for chmap support, alsaconf
+  updates, a new monitor command for alsactl, etc:
+  0006-amixer-fix-indentation-when-printing-container-TLV-c.patch
+  0007-alsaloop-pcmjob.c-use-portable-way-to-initialize-rec.patch
+  0008-speaker-test-Fix-chmapped-channel-selection-without-.patch
+  0009-speaker-test-Always-show-chmap-channel-names-if-avai.patch
+  0010-speaker-test-Show-out-of-chmap-channels-as-Unknown.patch
+  0011-alsaconf-support-newer-m-i-t-and-kmod.patch
+  0012-alsaconf-update-gentoo-to-use-modprobe.d-method-as-e.patch
+  0013-configure-detect-udevdir-via-pkg-config-fallback-to-.patch
+  0014-alsactl-Add-monitor-command.patch
+  0015-alsactl-Fix-REMOVE-event-handling-in-monitor-command.patch
+  0016-alsactl-monitor-all-cards-as-default.patch
+
+-------------------------------------------------------------------
+Tue Oct  1 12:30:28 CEST 2013 - tiwai@suse.de
+
+- Upstream fixes: addition of -z option to alsaloop, and a fix for
+  amixer TLV parser
+  0004-alsaloop-add-z-syslog-option-to-use-syslog-for-error.patch
+  0005-amixer-actually-print-all-TLVs-in-a-container-TLV.patch
+
+-------------------------------------------------------------------
+Mon Sep  9 14:16:52 CEST 2013 - tiwai@suse.de
+
+- Upstream fix:
+  0003-aplay-fix-two-off-by-one-errors.patch
+
+-------------------------------------------------------------------
+Fri Sep  6 10:02:34 CEST 2013 - tiwai@suse.de
+
+- Upstream fix:
+  0002-alsaloop-fix-wrong-alias-for-signal.h.patch
+
+-------------------------------------------------------------------
+Fri Jul 19 15:23:41 CEST 2013 - tiwai@suse.de
+
+- remove superfluous ca0106 file (now included in 1.0.27.2)
+
+-------------------------------------------------------------------
+Fri Jul 19 15:13:27 CEST 2013 - tiwai@suse.de
+
+- updated to version 1.0.27.2
+  including all previous fixes
+- fix a typo in alsa-state.service:
+  0001-alsactl-alsa-state.service-fix-typo-rkill-kill.patch
+
+-------------------------------------------------------------------
+Mon Jun 17 10:14:18 CEST 2013 - tiwai@suse.de
+
+- Backport upstream fixes wrt chmap handling:
+  0006-amixer-Print-TLV-of-channel-map-controls.patch
+  0007-speaker-test-Fix-wrong-wave-file-played-back-in-chma.patch
+
+-------------------------------------------------------------------
+Wed May 29 11:03:43 CEST 2013 - tiwai@suse.de
+
+- Backport upstream fixes wrt amixer:
+  0004-amixer-Fix-the-hctl-elem-search-bug.patch
+  0005-amixer-fix-print_dB-for-0.99-.-0.01-range.patch
+
+-------------------------------------------------------------------
+Mon May 27 09:42:39 CEST 2013 - tiwai@suse.de
+
+- Backport upstream fixes:
+  0002-alsactl-init-ca0106-file-was-omitted.patch 
+  0003-alsactl-return-back-the-udevrules_DATA-rule-for-90-a.patch 
+- Add missing ca0106 alsactl init file
+- Revert the udev file drop in the previous commit
+
+-------------------------------------------------------------------
+Thu May 23 15:44:23 CEST 2013 - tiwai@suse.de
+
+- Bump to version 1.0.27.1, including previous fixes
+- Removed requirement of libudev-devel, as the superfluous rules
+  file is dropped in 1.0.27.1.
+- Backport upstream fix:
+  0001-Release-v1.0.27.1.patch
+
+-------------------------------------------------------------------
+Thu Apr 18 18:39:38 CEST 2013 - tiwai@suse.de
+
+- Upstream fix: arecord: add a missing break to the capture loop
+  0003-arecord-add-a-missing-break-to-the-capture-loop.patch
+
+-------------------------------------------------------------------
+Mon Apr 15 18:31:29 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added patch from upstream, which fixes buffer overflow,
+  0002-alsactl-Fix-the-string-size-for-the-lock-file-contents.patch
+
+-------------------------------------------------------------------
+Mon Apr 15 11:26:41 CEST 2013 - tiwai@suse.de
+
+- Replace the previous fix with the upstream patch
+
+-------------------------------------------------------------------
+Sat Apr 13 15:39:49 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added service_typo.patch, fixes alsa-restore service not starting
+
+-------------------------------------------------------------------
+Fri Apr 12 15:28:31 CEST 2013 - tiwai@suse.de
+
+- Update to version 1.0.27:
+  including all previous fixes; all 00*-* patches dropped
+  * Add support for alsactl daemon mode
+  * Add snd_pcm_abort() support in aplay
+
+-------------------------------------------------------------------
+Fri Feb  1 08:04:39 CET 2013 - tiwai@suse.de
+
+- Backport a few fix patches from upstream git tree:
+  0012-aplay-Add-the-support-for-big-endian-WAV-format-RIFX.patch
+  0013-configure-Fix-obsolete-AM_CONFIG_HEADER-macro.patch
+  0014-speaker-test-increase-the-maximum-supported-rate-to-.patch
+  0015-amixer-Fix-dB-value-outputs-in-amixer-contents.patch
+
+-------------------------------------------------------------------
+Sat Dec  1 11:14:26 CET 2012 - tiwai@suse.de
+
+- Add libsamplerate-devel to buildrequires for alsaloop
+  (bnc#792173)
+
+-------------------------------------------------------------------
+Fri Nov 30 14:38:07 CET 2012 - tiwai@suse.de
+
+- Build with libsamplerate for aloop (bnc#792173)
+- Add a patch to handle alsaloop properly without libsamplerate
+  (bnc#792173):
+  0010-alsaloop-Make-alsaloop-working-without-libsamplerate.patch
+  0011-alsaloop-Fix-missing-endif.patch
+
+-------------------------------------------------------------------
+Thu Nov 29 18:41:34 CET 2012 - tiwai@suse.de
+
+- Backport fixes from upstream
+  0006-alsamixer-fix-handling-of-removed-controls.patch
+  0007-aplay-Show-usage-if-no-parameter-is-passed.patch
+  0008-amixer-fix-rounding-of-relative-changes.patch
+  0009-amixer-Fix-parsing-container-TLV-entries.patch
+
+-------------------------------------------------------------------
+Mon Nov 12 16:37:20 CET 2012 - tiwai@suse.de
+
+- Fix build breakage on 11.4
+- Correct udev rules path (the recent udev places /usr/lib/udev)
+
+-------------------------------------------------------------------
+Sat Nov  3 17:18:45 UTC 2012 - crrodriguez@opensuse.org
+
+- Fix systemd units location in factory. 
+
+-------------------------------------------------------------------
+Wed Oct 17 10:10:38 CEST 2012 - tiwai@suse.de
+
+- backport from upstream tree:
+  * add support for the new chmap API
+
+-------------------------------------------------------------------
+Mon Sep 10 15:24:42 CEST 2012 - tiwai@suse.de
+
+- Updated to version 1.0.26; including previous fixes
+
+-------------------------------------------------------------------
+Wed Jun 20 18:19:21 CEST 2012 - tiwai@suse.de
+
+- Fix the installation of postinit rules
+- Add (empty) preinit directory for alsactl init as a placeholder
+
+-------------------------------------------------------------------
+Fri Jun 15 15:41:10 CEST 2012 - tiwai@suse.de
+
+- Make beep silent as default (bnc#767270)
+- Backport fixes for alsactl init
+- Fix invalid .LO entry in man page
+
+-------------------------------------------------------------------
+Tue May 29 11:25:14 CEST 2012 - tiwai@suse.de
+
+- backport fix patches from upstream:
+  * Some document fixes
+  * Improve xrun_sync in alsaloop
+  * Add option to dump HW parameters to aplay
+  * Add the support for mapped volumes to amixer
+  * Add option to tread any xrun as fatal to aplay/arecord
+  * configure.in fixes
+  * alsactl: Don't access other cards than specified
+  * aplay prints Vu-meter to stderr now
+  * fix the avail_min setup in alsaloop
+
+-------------------------------------------------------------------
+Wed Jan 25 11:12:10 CET 2012 - tiwai@suse.de
+
+- updated to version 1.0.25; including all previous fixes
+
+-------------------------------------------------------------------
+Thu Dec 22 16:22:19 UTC 2011 - crrodriguez@opensuse.org
+
+- alsa-utils is of no use without alsa, add requires 
+
+-------------------------------------------------------------------
+Fri Dec  2 06:22:42 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Nov  4 17:27:05 CET 2011 - tiwai@suse.de
+
+- Fix missing initialization of Surround, etc, as well as Front
+  Speaker, etc mixer elements in alsactl init
+
+-------------------------------------------------------------------
+Wed Nov  2 17:38:32 CET 2011 - tiwai@suse.de
+
+- Backport upstream fix:
+  - fix a crash of alsamixer with pulse plugin
+
+-------------------------------------------------------------------
+Tue Sep 20 09:47:45 CEST 2011 - tiwai@suse.de
+
+- Backport upstream fixes
+  - Increase the max channels of aplay to 256.
+  - Fix sed usage in Makefile.am
+
+-------------------------------------------------------------------
+Sat Sep 17 10:58:04 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Jun 28 15:53:16 CEST 2011 - tiwai@suse.de
+
+- Improved speaker-test man page
+- Fix DB_RANGE TLV type handling in amixer
+
+-------------------------------------------------------------------
+Fri Jun  3 14:50:00 CEST 2011 - tiwai@suse.de
+
+- Backport alsa-utils fixes from upstream:
+  0001-alsamixer-fix-display-of-active-inactive-controls.patch
+  0002-alsaloop-libsamplerate-requires-specific-formats-for.patch
+  0003-alsaloop-another-try-to-force-correct-formats-for-li.patch
+  0004-alsamixer-fix-build-on-uClibc.patch
+  0005-alsactl-init-Mute-CD-Playback-volume-by-default.patch
+  0006-Revert-alsactl-Display-help-for-names-command.patch
+  0007-alsaucm-Add-list1-command-for-non-tuple-lists.patch
+  0008-alsaucm-Don-t-double-free-empty-lists.patch
+  0009-aplay-Add-i-option-for-interactive-mode.patch
+  0010-aplay-Avoid-recursive-signal-handling.patch
+  0012-alsaloop-Use-AM_CFLAGS-in-Makefile.am.patch
+  0013-Updated-COPYING-with-the-recent-FSF-address.patch
+  0014-alsamixer-Fix-64bit-issues.patch
+  0015-aplay-Add-include-files-for-mkdir.patch
+  0016-aplay-Use-standard-endian-convesions.patch
+
+-------------------------------------------------------------------
+Mon Jan 31 17:21:52 CET 2011 - tiwai@suse.de
+
+- updated to version 1.0.24.2:
+  * including previous fixes
+  * add UCM support
+
+-------------------------------------------------------------------
+Thu Dec  9 14:03:18 CET 2010 - tiwai@suse.de
+
+- Use cubic scale for alsamixer volume bars for better usability
+- Misc fixes from upstream
+
+-------------------------------------------------------------------
+Tue Nov 30 08:42:50 CET 2010 - tiwai@suse.de
+
+- Add the missing /var/lib/alsa to filelist
+
+-------------------------------------------------------------------
+Fri Nov 26 09:58:58 CET 2010 - tiwai@suse.de
+
+- add /lib/systemd/service/alsasound.service to make systemd
+  skipping old sysv script
+
+-------------------------------------------------------------------
+Fri Nov 26 09:21:16 CET 2010 - tiwai@suse.de
+
+- drop explicit buildrequires on systemd
+
+-------------------------------------------------------------------
+Fri Nov 26 09:05:03 CET 2010 - tiwai@suse.de
+
+- backport GIT PATCHES:
+  * A few alsactl init fix patches:
+    0014-alsactl-init-Handle-Capture-Source-and-Mic-Boost-in-.patch
+    0015-alsactl-init-Initialize-also-Master-Front-Playback-V.patch
+  * amixer control-id parse fix
+    0016-amixer-fix-parsing-of-control-ID-name.patch
+  * new aloop utility
+    0017-Introduce-alsaloop-utility.patch
+    0018-alsaloop-Fix-loopbacks-pointer-initialization-and-al.patch
+    0019-alsaloop-Fix-thread-handling.patch
+    0020-alsaloop-fix-a-option-and-slave-mode-processing.patch
+    0021-alsaloop-fix-resample-argument-parsing.patch
+    0022-alsaloop-added-resampling-for-unsupported-soundcard-.patch
+    0023-alsaloop-Add-OSS-mixer-redirection-support.patch
+    0024-alsaloop-Fix-command-line-parsing-and-pollfd-initial.patch
+    0025-alsaloop-Fixes-and-added-workaround-option.patch
+    0026-alsaloop-add-pctl-and-cctl-options.patch
+    0027-alsaloop-add-pctl-and-cctl-options-to-man-page.patch
+    0028-alsaloop-added-xrun-profiling-support-U-xrun-added-S.patch
+    0029-alsaloop-add-U-xrun-to-alsaloop.1-man-page.patch
+    0030-alsaloop-fixes-added-W-wake-option.patch
+    0031-alsaloop-Fix-latency-print.patch
+    0033-alsaloop-Delay-the-restart-a-bit-to-handle-snd-aloop.patch
+    0034-alsaloop-rework-the-ctl-event-handling-routine.patch
+  * robusitfy speaker-test 
+    0032-speaker-test-Don-t-retry-after-fatal-errors.patch
+  * misc clean up, translation updates
+    0035-alsamixer-remove-obsolete-e-mail.patch
+    0036-update-German-translations.patch
+  * systemd integration
+    0037-alsactl-systemd-and-udev-hookup.patch
+    0038-alsactl-Move-asound.state-location-to-var-lib-alsa.patch
+    0039-configure.in-Fix-variable-name.patch
+- Use systemd for openSUSE 11.4
+- Put udev rules into this package instead of alsa.rpm
+
+-------------------------------------------------------------------
+Thu Sep  2 16:06:17 CEST 2010 - tiwai@suse.de
+
+- backported GIT patches:
+  * 0001-alsactl-use-snd_config_imake-functions.patch
+  * 0002-alsactl-move-alloca-out-of-loop.patch
+  * 0003-alsactl-remove-open-coded-search.patch
+  * 0004-alsactl-correctly-restore-dB-values-of-controls-with.patch
+  * 0005-alsactl-change-format-of-comment-node-in-state-file.patch
+  * 0006-Revert-wrong-parts-of-alsactl-use-snd_config_imake-f.patch
+  * 0007-aplay-arecord-Added-hardware-pause-support-press-SPA.patch
+  * 0008-aplay-fix-termio-settings-return-back-old-c_flag-val.patch
+  * 0009-speaker-test-add-test-pattern-for-PCM-layer-debuggin.patch
+  * 0010-aplay-arecord-term_c_lflag-variable-might-be-unitial.patch
+  * 0011-alsactl-init-Use-Found-hardware-instead-Unknown-hard.patch
+  * 0012-alsactl-init-use-generic-method-instead-guess-method.patch
+  * 0013-alsactl-Change-handling-of-inactive-controls.patch
+
+-------------------------------------------------------------------
+Mon Apr 19 10:39:35 CEST 2010 - tiwai@suse.de
+
+- updated to version 1.0.23:
+  * including previous fixes
+  * aconnect -x: Do not update index after removal of connection.
+
+-------------------------------------------------------------------
+Mon Mar  8 14:35:52 CET 2010 - tiwai@suse.de
+
+- Backport upstream fixes:
+ * aplay: Dump PCM state on xrun when verbose mode is active
+ * aplay - add option --process-id-file
+ * aplay -- add features for audio surveilance
+ * aplay -- update the man file
+ * amidi: fix port listing
+ * speaker-test: add fflush(stdout) to write_loop
+ * amixer: fix display of unreadable control elements
+ * amixer: add support for TLV dB minmax types
+ * alsactl: Fix return code
+ * alsamixer: fix division by zero
+ * alsamixer: handle out-of-range volume values
+ * alsactl: improve -d to get warnings and store exitcode to runstate file
+ * alsactl: add more debug prints to state.c
+ * alsactl: update debug prints in state.c
+
+-------------------------------------------------------------------
+Fri Dec 18 17:37:24 CET 2009 - tiwai@suse.de
+
+- set AUTOMAKE_JOBS for parallel automake
+
+-------------------------------------------------------------------
+Fri Dec 18 17:20:34 CET 2009 - tiwai@suse.de
+
+- updated to version 1.0.22:
+  * including previous fixes
+
+-------------------------------------------------------------------
+Wed Sep  2 14:52:56 CEST 2009 - tiwai@suse.de
+
+- fix build with older distros; removed an obsolete patch
+- fix alsactl init syntax errors in the default config
+
+-------------------------------------------------------------------
+Mon Aug 31 17:27:36 CEST 2009 - tiwai@suse.de
+
+- updated to version 1.0.21:
+  just a version bump including previous fixes
+
+-------------------------------------------------------------------
+Wed Aug 12 12:52:16 CEST 2009 - tiwai@suse.de
+
+- fix alsactl init Speaker volume setup
+
+-------------------------------------------------------------------
+Fri Jun 19 16:12:04 CEST 2009 - tiwai@suse.de
+
+- tricolorize alsamixer volumes
+- fix alsactl init values
+
+-------------------------------------------------------------------
+Tue Jun  2 16:40:29 CEST 2009 - tiwai@suse.de
+
+- fix alsamixer man page about capture elements
+
+-------------------------------------------------------------------
+Fri May 29 14:45:13 CEST 2009 - tiwai@suse.de
+
+- sync with the upstream:
+  * alsamixer code rewrite
+  * more alsactl init fixes
+  * translations updates
+
+-------------------------------------------------------------------
+Wed May 20 10:33:27 CEST 2009 - tiwai@suse.de
+
+- speaker-test minor clean-ups
+- fix alsactl init headphone volume setup
+
+-------------------------------------------------------------------
+Wed May  6 18:07:23 CEST 2009 - tiwai@suse.de
+
+- updated to version 1.0.20:
+  * including previous patches
+  * a few more fixes about alsactl init command
+
+-------------------------------------------------------------------
+Thu Apr 23 15:11:25 CEST 2009 - tiwai@suse.de
+
+- updated as of 2009.04.23:
+  * Added vi-like key bindings to alsamixer
+  * alsactl/init: Fix CTL{value} assigning - make it relevant to
+    documentation
+  * aplay/arecord: improve suspicious buffer detection and add
+    --test-coef parameter
+  * aplay/arecord: remove debug printfs introduced by previous
+    patch
+  * aplay/arecord: fix underrun/overrun time calculation for
+    monotonic clock
+
+-------------------------------------------------------------------
+Wed Mar 18 12:19:29 CET 2009 - tiwai@suse.de
+
+- add missing -I option for alsactl
+- prefer /etc/modprobe.d/50-sound.conf for new module-init-tools
+
+-------------------------------------------------------------------
+Mon Feb 16 14:33:14 CET 2009 - tiwai@suse.de
+
+- alsactl: init - modify default rule to better support some HDA
+  codecs
+- Fix build with partially-installed alsa-lib
+
+-------------------------------------------------------------------
+Thu Jan 22 14:00:31 CET 2009 - tiwai@suse.de
+
+- updated to version 1.0.19
+- use ANSI-C functions instead of index()
+
+-------------------------------------------------------------------
+Wed Nov 26 14:31:40 CET 2008 - tiwai@suse.de
+
+- fix division-by-zero error in speaker-test program
+
+-------------------------------------------------------------------
+Wed Oct 29 14:32:47 CET 2008 - tiwai@suse.de
+
+- updated to version 1.0.18-final;
+  just including all previous fixes
+
+-------------------------------------------------------------------
+Thu Oct 23 16:29:12 CEST 2008 - tiwai@suse.de
+
+- added --test-position in aplay/arecord for debugging
+- can disable the build of alsaconf in configure
+- alsactl -g option to ignore 'no soundcards' error
+
+-------------------------------------------------------------------
+Thu Sep 11 14:21:15 CEST 2008 - tiwai@suse.de
+
+- fix possible segfaults during parsing in alsactl
+
+-------------------------------------------------------------------
+Wed Sep 10 17:58:04 CEST 2008 - tiwai@suse.de
+
+- updated to 1.0.18rc3:
+  * more alsactl init implementations
+
+-------------------------------------------------------------------
+Wed Aug  6 16:07:41 CEST 2008 - tiwai@suse.de
+
+- alsactl init implementation (still non-working status, though)
+- iecset utility updates for new IEC958 status bits
+
+-------------------------------------------------------------------
+Tue Jul 15 18:29:08 CEST 2008 - tiwai@suse.de
+
+- updated to 1.0.17-final:
+  * just a version bump
+
+-------------------------------------------------------------------
+Wed Jun 18 14:50:45 CEST 2008 - tiwai@suse.de
+
+- updated to 1.0.17rc2:
+  * including last fixes
+
+-------------------------------------------------------------------
+Wed Apr 16 14:44:32 CEST 2008 - tiwai@suse.de
+
+- HG snapshot 20080416:
+  * fix a cast warning in aplay
+  * use ncurses*-config in configure
+
+-------------------------------------------------------------------
+Fri Mar 14 14:13:53 CET 2008 - tiwai@suse.de
+
+- HG snapshot 20080314:
+  * stereo VU-meter support in aplay
+
+-------------------------------------------------------------------
+Mon Mar 10 13:20:29 CET 2008 - tiwai@suse.de
+
+- HG snapshot 20080309:
+  * support extensible WAV format in aplay
+  * flush output in aseqdump
+  * fix poll timeout in seq/* utils
+  * clean up configure
+
+-------------------------------------------------------------------
+Wed Feb 13 12:52:06 CET 2008 - tiwai@suse.de
+
+- clean up configure script
+- add support of IEEE float in aplay/arecord
+
+-------------------------------------------------------------------
+Fri Feb  8 12:17:24 CET 2008 - tiwai@suse.de
+
+- updated to version 1.0.16-final:
+  * just a version bump
+
+-------------------------------------------------------------------
+Tue Jan 22 14:48:54 CET 2008 - tiwai@suse.de
+
+- updated to version 1.0.16-rc1:
+  * just a version bump
+
+-------------------------------------------------------------------
+Wed Jan  9 17:37:04 CET 2008 - tiwai@suse.de
+
+- updated to HG 2008.01.09 version:
+  * alsact: skip inactive controls
+  * alsamixer: add 8-channel support
+  * aplay, speaker-test: remove obsolete APIs
+
+-------------------------------------------------------------------
+Fri Dec 14 15:38:02 CET 2007 - tiwai@suse.de
+
+- updated to HG 2007.12.14 version:
+  * merged previous patches
+  * fix blocking mode around snd_pcm_drain() calls in aplay
+
+-------------------------------------------------------------------
+Fri Nov 30 17:55:38 CET 2007 - tiwai@suse.de
+
+- Merge upstream fixes:
+  * make -F option as default for alsactl
+  * fix iecset index range
+  * fix a bug in alsactl restore that restores wrong values
+
+-------------------------------------------------------------------
+Mon Nov 12 17:28:30 CET 2007 - tiwai@suse.de
+
+- fix double entries of comment.tlv in alsactl (#340516)
+
+-------------------------------------------------------------------
+Mon Nov  5 18:33:20 CET 2007 - tiwai@suse.de
+
+- fix speaker-test with pulse plugin output
+- use stderr for error message from speaker-test
+
+-------------------------------------------------------------------
+Mon Oct 29 11:27:18 CET 2007 - tiwai@suse.de
+
+- make alsactl more robust
+  * restore the volume values with channel changes
+  * restore from dB level if available
+
+-------------------------------------------------------------------
+Tue Oct 16 15:02:20 CEST 2007 - tiwai@suse.de
+
+- updated to version 1.0.15-final
+  * including all previous patches
+
+-------------------------------------------------------------------
+Mon Sep 17 16:13:15 CEST 2007 - tiwai@suse.de
+
+- fix the handling of capture enum elements in alsamixer (#325677)
+
+-------------------------------------------------------------------
+Tue Aug 14 16:31:30 CEST 2007 - tiwai@suse.de
+
+- amixer - Allow to pass enum item string for cset, too
+- aplay - Include missing time.h for time()
+
+-------------------------------------------------------------------
+Mon Jul 30 19:01:41 CEST 2007 - tiwai@suse.de
+
+- HG fixes (as of 2007.07.28)
+  * don't install hwcfg file for openSUSE 10.3 in alsaconf
+  * fix the handling of enum channels in amixer
+  * fix VU meter of aplay
+  * fix possible infinite loop with signal handler in aplay
+
+-------------------------------------------------------------------
+Thu May 31 12:26:10 CEST 2007 - tiwai@suse.de
+
+- updated to version 1.0.14-final
+  including previous HG fixes
+
+-------------------------------------------------------------------
+Thu May 24 12:57:23 CEST 2007 - tiwai@suse.de
+
+- HG patch as of 2007.05.24:
+  * more error verbose messages in alsactl
+  * fix duplicated mixer elements in alsamixer
+- Use find_lang
+
+-------------------------------------------------------------------
+Wed May  2 12:32:52 CEST 2007 - tiwai@suse.de
+
+- updated to version 1.0.14rc4
+  including HG fixes
+
+-------------------------------------------------------------------
+Mon Apr 16 14:15:05 CEST 2007 - tiwai@suse.de
+
+- split from alsa package
+

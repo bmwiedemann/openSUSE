@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>acae24ff5ffa0310b62e80047636bfcc</srcmd5>
+    <version>1.000004</version>
+    <time>1411461743</time>
+    <user>coolo</user>
+    <comment>needed fo GnuPG::interface</comment>
+    <requestid>250009</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b188f04ffc1232b216fb9dc1e3092a9c</srcmd5>
+    <version>1.000005</version>
+    <time>1429108043</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296708</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8907ef61f3a9630aed537e7d920c2896</srcmd5>
+    <version>1.000006</version>
+    <time>1487261114</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457031</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cf57a1d4c578cf3f0268fd70f7a38a93</srcmd5>
+    <version>1.002000</version>
+    <time>1497016705</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502486</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>daf334f62b3e99fe521593a2458f7fc5</srcmd5>
+    <version>1.002001</version>
+    <time>1498046233</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504923</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a1c34c7ec30b1672c6830f671ccc3eae</srcmd5>
+    <version>1.002002</version>
+    <time>1524643256</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599325</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6ff06ea4e03355ff43374a37f62710cc</srcmd5>
+    <version>1.004002</version>
+    <time>1535705061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631786</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8eaebace7194107c5827252c01a532fd</srcmd5>
+    <version>1.004004</version>
+    <time>1548064480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666109</requestid>
+  </revision>
+</revisionlist>

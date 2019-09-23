@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Tue Jul 23 17:24:26 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 2.2.3
+  *  fix: set the success flag to False on exceptions 
+  *  fix: add optional strip_whitespace_from_strings kwarg to disable stripping whitespace from string type data
+- Update to 2.2.2
+  * Fix for datasets which have unicode headers. 
+  * note how to install 
+  * suggest use of 'skip_header' 
+  * add documentation around getting column information 
+  * use more descriptive variable name for SAS7BDAT instance in README 
+
+-------------------------------------------------------------------
+Sat Dec 22 05:24:22 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to 2.2.1
+  * note how to install
+  * suggest use of 'skip_header'
+  * add documentation around getting column information
+  * use more descriptive variable name for SAS7BDAT instance in README
+  * bump version to fix pypi documentation formatting
+  * revert setup.py
+  * use long_description_content_type
+  * rewrite RDCDecompressor
+  * Add the ability to use file handles, in addition to supplying a path. If the file being accessed is not within the file system (for example, if it is compressed into a zip or tar file) it cannot be opened from the supplied path. This change adds the ability to supply a file handle, and for the module to use that, rather than opening the file itself.
+  * fix dist
+  * add encoding argument to convert_file()
+  * add license; update build script 
+
+-------------------------------------------------------------------
+Sun Jul 29 13:26:42 UTC 2018 - jengelh@inai.de
+
+- Trim first person reporting from description.
+
+-------------------------------------------------------------------
+Thu May 24 17:42:48 UTC 2018 - toddrme2178@gmail.com
+
+- Add license file
+
+-------------------------------------------------------------------
+Wed Aug 16 01:52:07 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

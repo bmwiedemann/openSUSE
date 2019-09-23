@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Tue Feb  5 14:11:03 UTC 2019 - mvetter@suse.com
+
+- Update to 1.4.2:
+  * Do not do channel binding without TLS
+  * Add default timeout of 120s for IQs (prevent slowdowns)
+  * Fix CVE-2019-1000021 (bsc#1124322)
+  * Do not query vcard avatars unconditionnally
+  * Fix GSSAPI (Jelmer Vernooĳ)
+
+-------------------------------------------------------------------
+Fri Jan 11 13:59:04 UTC 2019 - mvetter@suse.com
+
+- Change source URL from GH to https://lab.louiz.org as requested
+
+-------------------------------------------------------------------
+Fri Jan 11 12:29:15 UTC 2019 - mvetter@suse.com
+
+- Update 1.4.1:
+  * jid: Make property aliases proper aliases. 
+  * stanzabase: Remove python2 legacy. 
+  * fixing uncaught async exceptions due to missing await 
+  * XEP-0363: Add a domain argument to discover an upload service
+  * XEP-0363: Also check for disco#info’s feature
+  * XEP-0030: Don’t call the timeout_callback on each domain
+  * Decode bytes in GSSAPI handling, as expected by the kerberos module API
+- Update source URL
+- Add requires python3-aiohttp: was needed for XEP-0363 since 1.4.0
+
+-------------------------------------------------------------------
+Tue Aug 14 19:41:39 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.4.0:
+  * No changelog available.
+- Use python-rpm-macros.
+
+-------------------------------------------------------------------
+Fri Jul 20 11:22:06 UTC 2018 - mcepl@suse.com
+
+- Use python3 -munittest discover -v -s tests instead of run_tests.py
+
+-------------------------------------------------------------------
+Thu Jul 19 16:41:35 UTC 2018 - mcepl@suse.com
+
+- Clean SPEC file
+
+-------------------------------------------------------------------
+Sun Feb 11 11:41:32 UTC 2018 - jengelh@inai.de
+
+- Trim future goals from description, say what it does now.
+
+-------------------------------------------------------------------
+Sat Jan 20 21:14:18 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.3.0:
+  * Implement XEP-0300: Use of Cryptographic Hash Functions in XMPP.
+  * Return a Future on clientxmpp.get_roster().
+  * Fix custom stanza examples.
+  * Fix the HTTP over XMPP and GTalk examples.
+  * xmlstream: Warn when the parser is None when data is received.
+  * Add an XMPP classifier to setup.py.
+  * sasl: Merge two bytes instead of concatenating them at runtime.
+  * Fix the port being set to 0 when connecting via hostname.
+  * Pass SSL context to plain TLS connections.
+  * xmlstream: Remove pygments dumping.
+  * XEP-0319: Use the correct timezone.
+  * Update RSM for asyncio.
+  * Update the MAM plugin for asyncio and the new namespace.
+    And add an example.
+  * XEP-0054: Fix parsing the BINVAL element.
+  * Record the current connection attempt in a future and allow
+    cancellation.
+  * Add a Markup plugin.
+- Add the missing requirement of GnuPG.
+- Enable tests.
+
+-------------------------------------------------------------------
+Sat Feb 11 23:12:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.2.4:
+  * Test more things before trying to build our stringprep module.
+  * XMLStream: Break a long line to make it more readable.
+  * Check for XML parsing errors and disconnect in that case.
+  * Add missing asyncio.coroutine decorators.
+  * Fix a partially-merged Google plugin from the commit acc52fd.
+  * Fix an issue with carbons (CVE-2017-5589, bsc#1024690).
+
+-------------------------------------------------------------------
+Sat Dec 10 09:12:08 UTC 2016 - sor.alexei@meowr.ru
+
+- Initial package.

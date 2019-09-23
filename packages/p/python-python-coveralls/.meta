@@ -1,0 +1,6 @@
+<package name="python-python-coveralls" project="openSUSE:Factory">
+  <title></title>
+  <description>Python interface to coveralls.io API
+This package provides a module to interface with the https://coveralls.io API.</description>
+  <devel project="devel:languages:python" package="python-python-coveralls"/>
+</package>

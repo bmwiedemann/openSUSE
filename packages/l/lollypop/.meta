@@ -1,0 +1,24 @@
+<package name="lollypop" project="openSUSE:Factory">
+  <title>Lollypop - A music player for GNOME</title>
+  <description>
+  Lollypop is a modern music player for GNOME. It has the following features:
+  - mp3/4, ogg and flac
+  - Genre/Cover browsing
+  - Genre/Artist/Cover browsing
+  - Search
+  - Main playlist (called queue in other apps)
+  - Party mode
+  - Replay gain
+  - Cover art downloader
+  - Context artist view
+  - MTP sync
+  - Fullscreen view
+  - Radios support
+  - Last.fm support
+  - Auto install codecs
+  - HiDPI support
+  - Tunein support
+  </description>
+  <devel project="multimedia:apps" package="lollypop"/>
+  <url>http://gnumdk.github.io/lollypop-web</url>
+</package>

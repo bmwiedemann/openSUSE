@@ -1,0 +1,130 @@
+-------------------------------------------------------------------
+Fri Aug 16 12:31:39 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Tue Aug 13 18:02:57 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 2.6.2
+  * Translation updates
+- Dropped obsolete patch missing_sysmacros.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Tue Jul 16 14:35:26 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Package renamed to follow upstream name xfce4-foo-plugin
+- Use lang subpackage for manual edits instead of %lang_package macro 
+- Cleaned up spec file
+- Added bcond for git master builds
+- Only add NEWS and omit Changelog 
+
+-------------------------------------------------------------------
+Sun Feb 17 16:38:14 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+-  Added patch missing_sysmacros.patch
+   sys/sysmacros.h required for glibc-2.25+ (bxo#13940) and (boo#1125650)
+
+-------------------------------------------------------------------
+Wed Apr 19 20:18:37 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 2.6.1 (2017-02-25)
+  * stop always showing activity (bxo#12942)
+  * fix sizing issues and GtkCssProvider lifecycle
+  * fix linux for devices with major > 255 (bxo#13281)
+
+-------------------------------------------------------------------
+Sun Nov 27 12:34:19 UTC 2016 - seife+obs@b1-systems.com
+
+- update to version 2.6.0
+  - port to gtk+3/libxfce4ui-2/libxfce4panel-2.0
+
+-------------------------------------------------------------------
+Tue Mar  3 21:20:17 UTC 2015 - gber@opensuse.org
+
+- update to version 2.5.5
+  - use the new GtkTooltip API
+  - fix a memory leak in the FreeBSD codepath (bxo#11153)
+  - add support for FreeBSD (bxo#10350)
+  - updated translations
+
+-------------------------------------------------------------------
+Sun Jul  1 07:44:07 UTC 2012 - gber@opensuse.org
+
+- update to version 2.5.4
+  - better compliance with panel plugin HIG
+  - use double values for progress bars
+  - facilitate bringing up the configuration dialog
+  - fix transparency
+
+-------------------------------------------------------------------
+Mon May 14 11:04:31 UTC 2012 - gber@opensuse.org
+
+- update to version 2.5.3
+  - use newer tooltip API
+  - make tooltip strings translatable and MB->MiB string updates
+  - always update progress bars even if stats are unavailable
+  - improve multirow panel support
+
+-------------------------------------------------------------------
+Sun Apr 29 21:53:43 UTC 2012 - gber@opensuse.org
+
+- update to version 2.5.2
+  - gracefully handle device that are not present and show
+    statistics only when the device is plugged
+
+-------------------------------------------------------------------
+Fri Apr 20 10:07:23 UTC 2012 - gber@opensuse.org
+
+- added documentation files
+
+-------------------------------------------------------------------
+Tue Apr 17 19:37:04 UTC 2012 - gber@opensuse.org
+
+- corrected source URL
+
+-------------------------------------------------------------------
+Sat Apr 14 12:02:31 UTC 2012 - gber@opensuse.org
+
+- update to version 2.5.1
+  - translation updates
+
+-------------------------------------------------------------------
+Tue Apr 10 10:24:22 UTC 2012 - gber@opensuse.org
+
+- update to version 2.5.0
+  - build the plugin as a module, loadable by Xfce4's panel wrapper
+  - use an icon name compliant to the spec
+
+-------------------------------------------------------------------
+Tue Apr  3 14:49:47 UTC 2012 - gber@opensuse.org
+
+- update to version 2.4.0
+  - port to libxfce4ui
+  - Port to panel 4.9
+  - Fix translations
+  - explicitely link with libm
+- drop obsolete xfce4-diskperf-plugin-fix-libm-underlinking.patch
+  and xfce4-panel-plugin-diskperf-fix-transparency-colors.patch
+- specfile cleanup
+- correct dependencies
+
+-------------------------------------------------------------------
+Mon Sep 19 12:35:50 UTC 2011 - gber@opensuse.org
+
+- removed unrelated autoconf from the underlinking patch which
+  broke the build on older releases
+- added xfce4-panel-plugin-diskperf-fix-transparency-colors.patch
+  which fixes transparency and bar colors (backported from upstream
+  git)
+
+-------------------------------------------------------------------
+Sun Sep 18 21:10:27 UTC 2011 - crrodriguez@opensuse.org
+
+- Link with libm as well. 
+
+-------------------------------------------------------------------
+Wed Mar  9 11:00:00 UTC 2011 - gber@opensuse.org
+
+- new package (split off from xfce4-panel-plugins)
+

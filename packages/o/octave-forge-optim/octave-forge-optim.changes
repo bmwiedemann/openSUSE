@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Tue Jul 16 12:12:34 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.6.0:
+  * Build fixes for Octave 5.1 and some bug fixes.
+  * With Octave from version 5.1 on, a parallel cluster established
+    with package `parallel' can be used for computation of gradients
+    with option `parallel_net'.
+  * Compatibility frontend `fmincon' has been added.
+  * `lsqnonlin' and `lsqcurvefit' now accept a problem structure as
+    single argument for compatibility.
+  * LinearRegression:
+    - Corrected errors in computing variances of data and
+      parameters.
+    - Erroneous documentation of the 2nd output (`e_var',
+      variances of data) has been fixed.
+    - The 5th output (previously `y_var'), which was erroneously
+      documented as the variances of dependent variables, has been
+      replaced by `fit_var', the variances of computed function
+      values.
+  * Removed deprecated function `samin'. The functionality is
+    available with the `samin' backend of function `nonlin_min'.
+- Drop add_missing_iostream_include.patch: fixed in upstream
+  sources.
+
+-------------------------------------------------------------------
+Fri Mar 15 21:01:08 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix compilation error due to missing iostream.h include
+  Add add_missing_iostream_include.patch
+- Corrected Url: tag
+
+-------------------------------------------------------------------
+Fri Aug 17 11:14:20 UTC 2018 - badshah400@gmail.com
+
+- Update to version 1.5.3:
+  * Added dependency on statistics package.
+  * Some bug fixes and build fixes for Octave 4.4.
+  * Unit test for nlinfit is now reproducible.
+  * Added unit tests in nonlin_residmin and nonlin_curvefit.
+  * Default algorithm of `nonlin_min' is now more robust.
+  * Standalone function `samin' is deprecated. The functionality
+    has been moved into a `samin' backend of function
+    `nonlin_min'.
+- Drop optim-gcc-warnings.patch: incorporated upstream.
+
+-------------------------------------------------------------------
+Mon Oct 31 20:57:46 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 1.5.2
+  * Builds with Octave 4.2.
+  * Links to core Octave documentation work now in html version of
+    package documentation.
+  * Fixed treatment of one-parameter-functions in `jacobs'.
+  * The sign of `lambda' returned for equality constraints by
+    `quadprog' has been changed for compatibility with Matlab.
+  * Deprecated `nmsmax' -- the same code is in `fminsearch' in core
+    Octave, with a slightly different interface.
+  * Fixed bug which could break building oct-files.
+- Fix GCC warnings
+  * optim-gcc-warnings.patch
+
+-------------------------------------------------------------------
+Fri Jun 10 16:00:01 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 1.5.0
+  * Compatible with Octaves new exception-based error
+    handling.
+  * New compatibility wrapper functions 'lsqnonlin' and 'lsqcurvefit',
+    calling the more general functions 'nonlin_residmin' and
+    'nonlin_curvefit' iternally.
+  * New compatibility wrapper function 'nlinfit', calling
+    'nonlin_curvefit' and 'curvefit_stat' internally. New functions
+    'statset' and 'statget' for compatibility in handling options of
+    'nlinfit'.
+  * New common frontend option 'TypicalX'. Additional common frontend
+    options 'FinDiffRelStep' and 'FinDiffType', to match usual option
+    names. 'diffp' and 'diff_onesided' are still available and can now
+    also be specified as scalars.
+  * nonlin_residmin and nonlin_curvefit return determined Lagrange
+    multipliers of any constaints
+  * New interface function 'quadprog', similar to Octaves 'qp'.
+  * New function 'lsqlin'.
+  * Removed deprecated functions 'minimize', 'd2_min', and
+    'fmin'. Removed obsolete documentation 'optim-mini-howto-2'.
+- Drop obsolete:
+  * optim-gcc-errors.patch
+  * optim-no-doc-rebuild.patch
+
+-------------------------------------------------------------------
+Fri Mar 13 17:46:57 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 1.4.1
+  * Made compatible with Octave 4.0.
+  * Fixed bug #43699.
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 1.4.0
+- Fix no-return-in-nonvoid-function
+  * optim-gcc-errors.patch
+- Disable documentation rebuild
+  * optim-no-doc-rebuild.patch
+

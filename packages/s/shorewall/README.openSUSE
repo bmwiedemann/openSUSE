@@ -1,0 +1,31 @@
+WARNING
+========
+
+Some openSUSE packages include a service file for ease of the 
+SuSEfirewall2 or firewalld configuration, opening the necessary ports.
+
+You have to open the required ports yourself using the Shorewall
+configuration files.
+
+SuSEfirewall2, firewalld are integrated with Yast so configuration
+can be done via a GUI. 
+This is not the case for Shorewall.
+
+Enabling Firewall in /etc/sysconfig/network/config or in individual
+ifcfg-xxx files is not enough. /etc/sysconfig/shorewall-init should be  
+configured.
+
+As the shorewall web page states
+
+"Shorewall is not the easiest to use of the available iptables
+configuration tools but I believe that it is the most flexible
+and powerful. So if you are looking for a simple point-and-click
+set-and-forget Linux firewall solution that requires a minimum of
+networking knowledge, check out alternatives."
+
+On each version upgrade Major and or Major,Minor you have to
+upgrade your configuration with the shorewall update -a 
+command.
+
+Now that you are warned, remember to have fun !
+

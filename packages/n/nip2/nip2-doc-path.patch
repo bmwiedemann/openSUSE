@@ -1,0 +1,14 @@
+--- nip2-7.30.1.orig/src/ip.h	2012-08-07 17:12:45.000000000 +0400
++++ nip2-7.30.1/src/ip.h	2012-09-11 13:36:43.492500144 +0400
+@@ -192,9 +192,9 @@
+ #define VIPS_HOMEPAGE "http://www.vips.ecs.soton.ac.uk"
+ #define IP_NAME PACKAGE "-" VERSION
+ #define NIP_DOCPATH "$VIPSHOME" G_DIR_SEPARATOR_S "share" G_DIR_SEPARATOR_S \
+-        "doc" G_DIR_SEPARATOR_S PACKAGE G_DIR_SEPARATOR_S "html"
++        "doc" G_DIR_SEPARATOR_S "packages" G_DIR_SEPARATOR_S PACKAGE G_DIR_SEPARATOR_S "html"
+ #define VIPS_DOCPATH "$VIPSHOME" G_DIR_SEPARATOR_S "share" G_DIR_SEPARATOR_S \
+-	"doc" G_DIR_SEPARATOR_S "vips" G_DIR_SEPARATOR_S "html"
++	"doc" G_DIR_SEPARATOR_S "packages" G_DIR_SEPARATOR_S "vips-doc" G_DIR_SEPARATOR_S "html"
+ #define IP_NAME PACKAGE "-" VERSION
+ #define NAMESPACE VIPS_HOMEPAGE "/" "nip" 
+ 				/* XML namespace ... note, not nip2! */

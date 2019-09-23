@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>08ad98affb10224844435fdd1c3265dc</srcmd5>
+    <version>0.9.9</version>
+    <time>1512547141</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain lldpd in Factory</comment>
+    <requestid>548211</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d29ed1c8688dcfcd75db0ad3a64670fc</srcmd5>
+    <version>0.9.9</version>
+    <time>1513245511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556057</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>17c1d9722ad52c609a771f4e1c377225</srcmd5>
+    <version>0.9.9</version>
+    <time>1513677550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558118</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2ca658652a2f7a49b36a3e29d676cc3d</srcmd5>
+    <version>1.0.1</version>
+    <time>1524237982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595110</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>413cc28a6943a04f091917fe818f191e</srcmd5>
+    <version>1.0.1</version>
+    <time>1533214751</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust sysconfig
+
+- Update to version 1.0.1 (boo#1103351)</comment>
+    <requestid>626838</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f3a337f9721618e1da61ea56ca9becb2</srcmd5>
+    <version>1.0.2</version>
+    <time>1543953469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653773</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eb192841f397879ae803e275203b812d</srcmd5>
+    <version>1.0.3</version>
+    <time>1550221380</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.3:
+  * Fix creation of chroot directory.
+- Simplify spec file</comment>
+    <requestid>676157</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>52ae13396467063842af2b1a16a83d95</srcmd5>
+    <version>1.0.4</version>
+    <time>1560760498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710239</requestid>
+  </revision>
+</revisionlist>

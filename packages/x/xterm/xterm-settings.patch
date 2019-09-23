@@ -1,0 +1,286 @@
+# HG changeset patch
+# Parent  c7753810ca3026190c5da0536ecf86e9b13800d3
+# various distribution configuration tweaks
+
+diff --git a/UXTerm.ad b/UXTerm.ad
+--- a/UXTerm.ad
++++ b/UXTerm.ad
+@@ -30,21 +30,31 @@
+ ! sale, use or other dealings in this Software without prior written
+ ! authorization.
+ ! -----------------------------------------------------------------------------
+ ! Use
+ !	xterm -class UXTerm
+ ! to set resources for UTF-8 mode with corresponding fonts.
+ ! See the uxterm script for an example.
+ 
++! You need to have efont-unicode.rpm installed in order to use the
++! efont-fixed fonts!
+ #include "XTerm"
+ 
+ *fontMenu.Label:  Unicode Fonts
+ *VT100.utf8:	1
+ 
++! always use iso10646-1 fonts and luit for non-UTF-8 locales:
++*locale: true
++
++! don't use the compiled in default of "*" for ximFont because this
++! leads to very slow startup times for zh_CN.UTF-8 and zh_HK.UTF-8 locales
++! (For details see https://bugzilla.novell.com/show_bug.cgi?id=464930):
++*ximFont: fixed
++
+ ! This includes "XTerm-color" which includes "XTerm", which defines fonts.
+ ! Why set them here?
+ !
+ ! Here is a simple description.  A technically precise one would be very long.
+ ! When xterm starts up, it uses the
+ !
+ !	*VT100.font
+ !
+@@ -55,22 +65,39 @@
+ !
+ ! to obtain a wide font.  A "wide" font has more than 256 glyphs.  Typical
+ ! wide fonts have 10,000 glyphs.  If the original "*VT100.font" is not wide,
+ ! and xterm can load the *VT100.utf8Fonts.font, it will use that.
+ !
+ ! Making the wide fonts associated with *VT100.font in this file allows uxterm
+ ! to skip that step.  It will use the fonts that the XTerm file gives for the
+ ! *VT100.uft8Fonts.font pattern.
+-*VT100.font2:	-misc-fixed-medium-r-normal--8-80-75-75-c-50-iso10646-1
+-*VT100.font:	-misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
+-*VT100.font3:	-misc-fixed-medium-r-normal--14-130-75-75-c-70-iso10646-1
+-*VT100.font4:	-misc-fixed-medium-r-normal--13-120-75-75-c-80-iso10646-1
+-*VT100.font5:	-misc-fixed-medium-r-normal--18-120-100-100-c-90-iso10646-1
+-*VT100.font6:	-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso10646-1
++
++*VT100.fontMenu*fontdefault*Label: Default
++*VT100.font:     -misc-fixed-medium-r-normal-*-18-120-100-100-c-90-iso10646-1
++*VT100.wideFont: -misc-fixed-medium-r-normal-*-18-120-100-100-c-180-iso10646-1
++ 
++*fontMenu*font1.Label: efont 10 pixel
++*VT100.font1:     -efont-fixed-medium-r-normal--10-100-75-75-c-50-iso10646-1
++*VT100.wideFont1: -efont-fixed-medium-r-normal--10-100-75-75-c-100-iso10646-1
++*fontMenu*font2.Label: efont 12 pixel
++*VT100.font2:     -efont-fixed-medium-r-normal-*-12-120-75-75-c-60-iso10646-1
++*VT100.wideFont2: -efont-fixed-medium-r-normal-*-12-120-75-75-c-120-iso10646-1
++*fontMenu*font3.Label: efont 14 pixel
++*VT100.font3:     -efont-fixed-medium-r-normal-*-14-140-75-75-c-70-iso10646-1
++*VT100.wideFont3: -efont-fixed-medium-r-normal-*-14-140-75-75-c-140-iso10646-1
++*fontMenu*font4.Label: efont 16 pixel
++*VT100.font4:     -efont-fixed-medium-r-normal-*-16-160-75-75-c-80-iso10646-1
++*VT100.wideFont4: -efont-fixed-medium-r-normal-*-16-160-75-75-c-160-iso10646-1
++*fontMenu*font5.Label: misc  18 pixel
++*VT100.font5:     -misc-fixed-medium-r-normal-*-18-120-100-100-c-90-iso10646-1
++*VT100.wideFont5: -misc-fixed-medium-r-normal-*-18-120-100-100-c-180-iso10646-1
++*fontMenu*font6.Label: efont 24 pixel
++*VT100.font6:     -efont-fixed-medium-r-normal-*-24-240-75-75-c-120-iso10646-1
++*VT100.wideFont6: -efont-fixed-medium-r-normal-*-24-240-75-75-c-240-iso10646-1
+ 
+ ! Here is an alternate set of fonts with better support for bold:
+ !*VT100.font2:	-efont-biwidth-medium-r-normal--10-100-75-75-p-50-iso10646-1
+ !*VT100.font:	-efont-biwidth-medium-r-normal--10-100-75-75-p-50-iso10646-1
+ !*VT100.font3:	-efont-biwidth-medium-r-normal--12-120-75-75-p-60-iso10646-1
+ !*VT100.font4:	-efont-biwidth-medium-r-normal--14-140-75-75-p-70-iso10646-1
+ !*VT100.font5:	-efont-biwidth-medium-r-normal--16-160-75-75-p-80-iso10646-1
+ !*VT100.font6:	-efont-biwidth-medium-r-normal--24-240-75-75-p-120-iso10646-1
+diff --git a/XTerm-col.ad b/XTerm-col.ad
+--- a/XTerm-col.ad
++++ b/XTerm-col.ad
+@@ -71,25 +71,25 @@
+ 
+ ! These are the 8 ANSI colors and their bright equivalents.  Depending on
+ ! other resource settings, xterm may use the bright colors when displaying
+ ! bold text (see the boldColors resource).
+ *VT100*color0: black
+ *VT100*color1: red3
+ *VT100*color2: green3
+ *VT100*color3: yellow3
+-*VT100*color4: blue2
++*VT100*color4: blue3
+ *VT100*color5: magenta3
+ *VT100*color6: cyan3
+ *VT100*color7: gray90
+-*VT100*color8: gray50
++*VT100*color8: gray30
+ *VT100*color9: red
+ *VT100*color10: green
+ *VT100*color11: yellow
+-*VT100*color12: rgb:5c/5c/ff
++*VT100*color12: blue
+ *VT100*color13: magenta
+ *VT100*color14: cyan
+ *VT100*color15: white
+ 
+ ! Disclaimer: there are no standard colors used in terminal emulation.
+ !
+ ! The choice for color4 and color12 is a tradeoff between contrast, depending
+ ! on whether they are used for text or backgrounds.  Note that either color4 or
+diff --git a/XTerm.ad b/XTerm.ad
+--- a/XTerm.ad
++++ b/XTerm.ad
+@@ -100,31 +100,57 @@
+ *vtMenu*clearsavedlines*Label:  Reset and Clear Saved Lines
+ *vtMenu*tekshow*Label:  Show Tek Window
+ *vtMenu*tekmode*Label:  Switch to Tek Mode
+ *vtMenu*vthide*Label:  Hide VT Window
+ *vtMenu*altscreen*Label:  Show Alternate Screen
+ *vtMenu*sixelScrolling*Label:  Sixel Scrolling
+ *vtMenu*privateColorRegisters*Label:  Private Color Registers
+ 
++! always use iso10646-1 fonts and luit for non-UTF-8 locales:
++*locale: checkfont
++*localeFilter: /usr/bin/luitx
++
++! don't use the compiled in default of "*" for ximFont because this
++! leads to very slow startup times for zh_CN.UTF-8 and zh_HK.UTF-8 locales
++! (For details see https://bugzilla.novell.com/show_bug.cgi?id=464930):
++*ximFont: fixed
++
+ *fontMenu.Label:  VT Fonts
+ *fontMenu*fontdefault*Label:	Default
+-*fontMenu*font1*Label:	Unreadable
+-*VT100.font1:		nil2
++*VT100.font:		-misc-fixed-medium-r-semicondensed-*-13-120-75-75-c-60-iso10646-1
++*VT100.wideFont:	-misc-fixed-medium-r-normal-*-13-120-75-75-c-120-iso10646-1
++*VT100.wideBoldFont:	-misc-fixed-medium-r-normal-*-13-120-75-75-c-120-iso10646-1
++
++*fontMenu*font1*Label:	Unicode Best
++*VT100.font1:		-misc-fixed-medium-r-normal-*-18-120-100-100-c-90-iso10646-1
++*VT100.wideFont1:	-misc-fixed-medium-r-normal-*-18-120-100-100-c-180-iso10646-1
++!*VT100.font1:		nil2
++!*VT100.wideFont1:
+ *IconFont:		nil2
+ *fontMenu*font2*Label:	Tiny
+-*VT100.font2:		5x7
++!*VT100.font2:		5x7
++*VT100.font2:		-misc-fixed-medium-r-normal--7-70-75-75-c-50-iso10646-1
++!*VT100.widefont2:
+ *fontMenu*font3*Label:	Small
+-*VT100.font3:		6x10
++!*VT100.font3:		6x10
++*VT100.font3:		-misc-fixed-medium-r-normal--10-100-75-75-c-60-iso10646-1
++!*VT100.wideFont3:
+ *fontMenu*font4*Label:	Medium
+-*VT100.font4:		7x13
++!*VT100.font4:		7x13
++*VT100.font4:		-misc-fixed-medium-r-semicondensed-*-13-120-75-75-c-60-iso10646-1
++*VT100.wideFont4:	-misc-fixed-medium-r-normal-*-13-120-75-75-c-120-iso10646-1
+ *fontMenu*font5*Label:	Large
+-*VT100.font5:		9x15
++!*VT100.font5:		9x15
++*VT100.font5:		-misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1
++!*VT100.wideFont5:
+ *fontMenu*font6*Label:	Huge
+-*VT100.font6:		10x20
++!*VT100.font6:		10x20
++*VT100.font6:		-misc-fixed-medium-r-normal-*-20-200-75-75-c-100-iso10646-1
++*VT100.wideFont6:	-misc-fixed-medium-r-normal-*-20-200-75-75-c-200-iso10646-1
+ *fontMenu*fontescape*Label:	Escape Sequence
+ *fontMenu*fontsel*Label:	Selection
+ !fontescape and fontsel overridden by application
+ *fontMenu*allow-bold-fonts*Label:  Bold Fonts
+ *fontMenu*font-linedrawing*Label:  Line-Drawing Characters
+ *fontMenu*font-doublesize*Label: Doublesized Characters
+ *fontMenu*font-loadable*Label:	VT220 Soft Fonts
+ *fontMenu*font-packed*Label:	Packed Font
+@@ -237,16 +263,70 @@
+ !*faceSize: 8
+ 
+ ! Here is a pattern that is useful for double-clicking on a URL:
+ !*charClass: 33:48,35:48,37-38:48,43-47:48,58:48,61:48,63-64:48,95:48,126:48
+ !
+ ! Alternatively,
+ !*on2Clicks: regex [[:alpha:]]+://([[:alnum:]!#+,./=?@_~-]|(%[[:xdigit:]][[:xdigit:]]))+
+ 
++!! We want a 8bit clean xterm
++*eightBitInput:        true
++*eightBitOutput:       true
++
++!! Default Settings
++*termName:             xterm
++*pointerShape:         top_left_arrow
++*scrollKey:            true
++
++!! Newer XTerms can guess the value of the BackarrowKey by
++!! reading the terminfo or the pty initial value.
++!! We use the terminfo value.
++*backarrowKeyIsErase:  true
++*ptyInitialErase:      true
++*deleteIsDEL:          false
++
++!! To be compatible with the original X Consortium XTerm.
++!! *oldXtermFKeys:             true
++
++!! Some symbol mappings of the keyboard for foreign Motif.  Some of these
++!! mappings are virtual osfKeySym's.  Extend this list if necessary,
++!! more information in VirtualBindings(3) and /usr/include/Xm/XmStrDefs.h.
++*defaultVirtualBindings: #override \
++   Help    : osfHelp\n\
++   DRemove : osfCut\n\
++   Prior   : osfPageUp\n\
++   Next    : osfPageDown\n\
++   Select  : osfSelect\n\
++   Insert  : osfPaste\
++
++!! If Alt is not Meta use it for emacs line editing of e.g. bash,
++!! define Pause key, and ignore DRemove on foreign displays.
++*altIsNotMeta:     true
++*altSendsEscape:   true
++*metaSendsEscape:  true
++*VT100.Translations: #override \
++   <Key>Pause:   string("\033[P") \n\
++   <Key>DRemove: ignore()
++
++*multiScroll:      on
++*jumpScroll:       on
++*ScrollBar:        on
++*Scrollbar*width:      16
++*Scrollbar*height:     16
++*Scrollbar*shadowWidth:    2
++*Scrollbar*borderWidth:    3
++*SaveLines:        2000
++
++!! Fix broken charClass, the doubleclick separators
++*charClass:  33:48,37:48,43:48,45-47:48,64:48,126:48,95:48
++!! Bug #52655
++*utf8Title: true
++
++
+ ! VT100s and similar terminals recognize escape sequences and control
+ ! characters to which they reply to the host with other escape sequences,
+ ! to provide information.  The "resize" program uses this feature.
+ !
+ ! In addition, xterm recognizes several escape sequences which can be used to
+ ! set fonts, window properties, return settings via escape sequences.  Some
+ ! find these useful; others are concerned with the possibility of unexpected
+ ! inputs.
+diff --git a/xterm.man b/xterm.man
+--- a/xterm.man
++++ b/xterm.man
+@@ -4815,19 +4815,23 @@ This option specifies the font to be use
+ in the \*(``OverTheSpot\*('' input method.
+ .IP
+ In \*(``OverTheSpot\*('' preedit type, the preedit (preconversion)
+ string is displayed at the position of the cursor.
+ It is the XIM server's responsibility to display the preedit string.
+ The XIM client must inform the XIM server of the cursor position.
+ For best results, the preedit string must be displayed with a proper font.
+ Therefore, \fI\*n\fP informs the XIM server of the proper font.
+-The font is be supplied by a "fontset", whose default value is \*(``*\*(''.
+-This matches every font, the X library automatically chooses fonts with
+-proper charsets.
++The font is to be supplied by a "fontset", whose default value is
++"fixed" on openSUSE. The upstream default value is \*(``*\*(''
++which matches every font, the X library automatically chooses fonts with
++proper charsets. But this can be extremely slow in some locales and
++at least for the XIM servers "scim" and "kinput2" it doesn't improve
++anything, it just slows down the startup time of xterm.
++
+ The \fBximFont\fP resource is provided to override this default font setting.
+ .\"
+ .SS Tek4014 Widget Resources
+ .PP
+ The following resources are specified
+ as part of the \fItek4014\fP widget (class \fITek4014\fP).
+ These are specified by patterns
+ such as \*(``\fB__default_class__.tek4014.\fP\fINAME\fP\*('':

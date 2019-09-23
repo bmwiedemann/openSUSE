@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2c8da607472a8be2af2d91f39af86e7a</srcmd5>
+    <version>1.0</version>
+    <time>1357632839</time>
+    <user>coolo</user>
+    <comment>traditional touchscreen library
+
+- usefull for framebuffer applications
+- optional dependency for EFL libraries
+
+Changes since last time:
+- reorganized to follow Shared library packaging policy
+- separated plugins into own subpackage
+- instead of two identical pkgconfig profiles
+  provide one file and one symlink
+- license updates by babelworx (thanks!)</comment>
+    <requestid>146930</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2c8da607472a8be2af2d91f39af86e7a</srcmd5>
+    <version>1.0</version>
+    <time>1359110507</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1a0c8942c6c3aa0abe60763e959872a2</srcmd5>
+    <version>1.0</version>
+    <time>1376310506</time>
+    <user>scarabeus_factory</user>
+    <comment>* Add baselibs.conf (needed to use tslib with directfb)
+* Update to git e2e03ef719 (forwarded request 186715 from Guillaume_G)</comment>
+    <requestid>186716</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>1a0c8942c6c3aa0abe60763e959872a2</srcmd5>
+    <version>1.0</version>
+    <time>1379664848</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>15a129e1010c5ebab625c466628633fc</srcmd5>
+    <version>1.0</version>
+    <time>1384519161</time>
+    <user>coolo</user>
+    <comment>I found the description of libts-1_0-0 in openSUSE 13.1 to be
+quite lacking, and here is a fix. (forwarded request 206702 from jengelh)</comment>
+    <requestid>206722</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1d8b79c49d54ff0067273ae0da07852e</srcmd5>
+    <version>1.1</version>
+    <time>1395146299</time>
+    <user>coolo</user>
+    <comment>Update to 1.1 (forwarded request 225736 from Guillaume_G)</comment>
+    <requestid>225737</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>1d8b79c49d54ff0067273ae0da07852e</srcmd5>
+    <version>1.1</version>
+    <time>1409303532</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>58ceb564a8133d38e969059d937e254e</srcmd5>
+    <version>1.1</version>
+    <time>1425377643</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288430</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c1ebb6d909966f4bbe7dd6070ae9fcf4</srcmd5>
+    <version>1.9</version>
+    <time>1495267804</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495206</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3decdac8343e019854c372e3e516009b</srcmd5>
+    <version>1.11</version>
+    <time>1497949196</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504015</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>68e8b82bd07cbddbfd838d281828e70c</srcmd5>
+    <version>1.13</version>
+    <time>1510664784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539816</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>098581660cd919543d24a65aa440f5d9</srcmd5>
+    <version>1.15</version>
+    <time>1520415103</time>
+    <user>dimstar_suse</user>
+    <comment>- Update tslib.keyring with latest key
+- Update to version 1.15:
+  * This release includes libts version 0.9.0 and the following changes:            
+    - New ts_get_eventpath() API to learn the opened device file path               
+    - ts_test_mt shows the number of supported concurrent touch contacts            
+    - New filter module &quot;invert&quot;                                                    
+    - ts_uinput: fallback to fb0 and new option --nofb
+  * Bugfixes
+- Changes for version 1.14:
+  * This release includes libts version 0.8.1 and the following changes:            
+    - The following modules are now disabled in the default configuration run:      
+      `module_raw arctic2`                                                         
+      `module_raw corgi`                                                           
+      `module_raw collie`                                                          
+      `module_raw dmc`                                                             
+      `module_raw h3600`                                                           
+      `module_raw mk712`                                                           
+      `module_raw ucb1x00`                                                         
+      Users of those modules must enable them, like `./configure --enable-arctic2`   
+    - Automatic touchscreen device detection for Linux (if not defined by the user) 
+    - New filter plugin &quot;lowpass&quot;                                                   
+    - SPDX license identifiers in all C source files
+  * Bugfixes
+</comment>
+    <requestid>582590</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>16a699752fa2dcbd9e30b19c168f139b</srcmd5>
+    <version>1.16</version>
+    <time>1527277048</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611867</requestid>
+  </revision>
+</revisionlist>

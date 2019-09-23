@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>03e24659c1df8829f0777246828b85b1</srcmd5>
+    <version>7.2.0</version>
+    <time>1505139461</time>
+    <user>dimstar_suse</user>
+    <comment>will be needed for FreeCAD v0.17 and will obsolete hopefully the
+forked oce package.
+
+New version following share lib policy and the new name package name
+includes also opencascade</comment>
+    <requestid>521586</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b6698db555cc2ed5a0791aca46ca231e</srcmd5>
+    <version>7.3.0</version>
+    <time>1531135728</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 7.3.0
+  https://www.opencascade.com/sites/default/files/documents/release_notes_7.3.0.pdf
+- split out documentation as noarch package
+
+- fix cmake rules, OCCT_INSTALL_BIN_LETTER was not set</comment>
+    <requestid>621213</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5b42950d261d7e2de8d54f80dd74f252</srcmd5>
+    <version>7.3.0</version>
+    <time>1549624443</time>
+    <user>coolo</user>
+    <comment>- disable the exception disablement (boo#1121972)
+  (enable-exceptions.patch)
+- avoid remote mathjax resource (use-local-mathjax.patch)</comment>
+    <requestid>672432</requestid>
+  </revision>
+</revisionlist>

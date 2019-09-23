@@ -1,0 +1,12 @@
+[Unit]
+Description=Hiawatha Web Server
+After=network.target
+
+[Service]
+Type=simple
+SyslogIdentifier=hiawatha
+ExecStartPre=/usr/sbin/wigwam ; /usr/sbin/hiawatha -k
+ExecStart=/usr/sbin/hiawatha -d
+
+[Install]
+WantedBy=multi-user.target

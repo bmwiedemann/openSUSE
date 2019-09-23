@@ -1,0 +1,276 @@
+-------------------------------------------------------------------
+Sun Dec  2 21:06:18 UTC 2018 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Update to version 3.9:
+  * Modifiers (Alt, etc.) not working with -text option in the
+    recent releases (deb#891082). This bug is now fixed.
+
+-------------------------------------------------------------------
+Fri Jul  7 19:15:27 UTC 2017 - asterios.dramis@gmail.com
+
+- Update to version 3.8:
+  * When lower-case letters of xvkbd window are clicked while Caps
+    Lock on the physical keyboard is on, by temporary toggling the
+    Caps Lock status, xvkbd now try to generate lower-case letters
+    rather than upper-case letters.
+  * If keyboard layout other than Default is selected, text
+    assigned to function keys would be lost. This bug is now fixed.
+  * When German keymap is selected, after Shift key on the physical
+    keyboard is pressed, xvkbd would generate "y" instead of "z"
+    (and so on). A workaround for this problem is now implemented.
+  * xvkbd sometimes caused an error "X Error of failed request:
+    BadValue (integer parameter out of range for operation) / Major
+    opcode of failed request: 12 (X_ConfigureWindow)" and failed to
+    start. A workaround for this problem is now implemented. 
+- Rebased xvkbd-3.0-compilerwarnings.diff to apply cleanly.
+
+-------------------------------------------------------------------
+Sat Sep 26 20:34:14 UTC 2015 - asterios.dramis@gmail.com
+
+- Update to version 3.7:
+  * Right click capability was broken in the recent releases. This
+    bug is now fixed.
+  From version 3.6:
+  * New -utf16 option - when used with -file option, make xvkbd to
+    accept UTF16 characters in the file.
+  * Keyboard layout selected with "Change Keyboard Layout..." will
+    be kept when xvkbd is used next time.
+  * Caps Lock now works better for some of the keyboard layouts
+    containing non-ASCII keys.
+  * Improved Hebrew keyboard layout (Thanks Genghis Khan).
+
+-------------------------------------------------------------------
+Sat Jul 27 21:31:46 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to version 3.5:
+  * Mode_switch and ISO_Level3_Shift should now work better even without XTEST
+    extension.
+  * Fixed a problem that "Always on Top" not work at startup.
+- Added a fix for rpmlint warning "file-contains-current-date".
+
+-------------------------------------------------------------------
+Sun May 26 19:39:26 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to version 3.4a:
+  * I hope code to manipulate keys assigned in AlgrGr and Shift-AltGr positions
+    are now fixed. (Thanks, Paul)
+  * Default value of xvkbd.textDelay is now set to 10, as it seems delay of 0
+    caused problems in some situations.
+  * ISO_Left_Tab is assigned to the shifted position of the Tab key on the
+    xvkbd window, so that Shift-Tab can be simulated.
+  * New option -no-resize to disable resize of xvkbd window.
+- Dropped support for openSUSE < 10.2.
+- Updated xorg build requirements for openSUSE > 12.1 (imake, libX11-devel,
+  libXaw-devel, libXmu-devel, libXt-devel and libXtst-devel instead of
+  xorg-x11-devel).
+- Removed xaw3d build requirement (not needed).
+- Use desktop-file-utils instead of update-desktop-files for openSUSE > 12.1.
+- Updated xvkbd.desktop file (Name and Categories entries).
+
+-------------------------------------------------------------------
+Sun Sep 23 17:54:27 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 3.3:
+  + -text can now accept \{keysym} so that the specified key can
+    be processed in more primitive manner, and so that modofier
+    keys such as Control_L, Meta_L, etc. can also be simulated.
+    Also, \{+keysym} and \{+keysym} will now simulate press and
+    release of the key, respectively.
+  + New option -remote-display to make xvkbd connect to the
+    specified display when startup.
+  + Bug fixed: KP_0 now works.
+- Escape %{version} macro in line 41
+
+-------------------------------------------------------------------
+Thu Feb 23 11:25:14 UTC 2012 - coolo@suse.com
+
+- fix build on factory
+
+-------------------------------------------------------------------
+Wed Mar 17 18:07:22 UTC 2010 - pascal.bleser@opensuse.org
+
+- fixed build on SLES_9 and SLE_10 by using the prefix /usr/X11R6
+  as well as /usr/X11R6/lib/X11/app-defaults instead of /usr and
+  /usr/share/X11/app-defaults, respectively
+
+- removed bogus and insecure rm -rf $RPM_BUILD_ROOT at the
+  beginning of the %install section
+
+- use install + suse_update_desktop_file -r instead of
+  suse_update_desktop_file -i to fix the bogus rpmlint warning
+  message about untranslated desktop entries
+
+-------------------------------------------------------------------
+Sun Mar 14 15:36:25 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 3.2:
+  + the "Behave as Toolbar Window?" option was added to the
+    Property panel, which may make xvkbd work better with some
+    kinds of window managers, such as Matchbox
+  + "Always on Top" will work better with window managers that
+    support the extended window manager hint _NET_WM_STATE_ABOVE
+  + the -window option can now find the window whose title matches
+    the specified string, and the string may now include the
+    wildcard characters "*" and "?"
+
+-------------------------------------------------------------------
+Mon Feb 15 16:18:01 CET 2010 - dimstar@opensuse.org
+
+- Update to version 3.1:
+  + Changed the default setting for automatic click to OFF, which
+    was set ON in the previous release in error and caused
+    confusion.
+  + The keypad is now customizable, too (see XVkbd-strip.ad for the
+    example).
+  + Up to 25x25 keys can now be supported both for the main
+    keyboard and the keypad.
+  + Able to open the keypad panel when startup, by setting
+    `xvkbd.keypad: false' and `xvkbd.keypadOnly: true'.
+  + Fixed errors in some keyboard layout files (Korean, Slovene,
+    UK).
+  + A new sample layout file XVkbd-strip.ad. 
+
+-------------------------------------------------------------------
+Fri Dec  4 15:04:04 CET 2009 - seife@opensuse.org
+
+- de-fuzz the compilerwarnings patch
+
+-------------------------------------------------------------------
+Thu Dec 18 17:55:33 CET 2008 - dkukawka@suse.de
+
+- added default config file with 'Automatic Click' disabled  to be 
+  able to start xvkbd in the login manager (see bnc#441873) with 
+  this option.
+
+-------------------------------------------------------------------
+Wed Jun  4 18:56:17 CEST 2008 - dkukawka@suse.de
+
+- enable build on SLE10
+
+-------------------------------------------------------------------
+Wed Jun  4 16:49:25 CEST 2008 - dkukawka@suse.de
+
+- updated to new version 3.0:
+  - New Property panel.
+  - New automatic click feature.
+  - Key-click sounds when key is pressed.
+
+-------------------------------------------------------------------
+Fri Apr 11 12:59:38 CEST 2008 - dkukawka@suse.de
+
+- updated to new version 2.9:
+  - Russian (Cyrillic) keyboard layout supported. (thanks, Victor)
+  - New -delay option.
+  - \D special sequence in -text can be used to put a delay in spe-
+    cific position.
+  - -text can now simulate mouse operation via \x, \y and \m
+    special sequences.
+
+-------------------------------------------------------------------
+Fri Jun  1 12:26:58 CEST 2007 - dkukawka@suse.de
+
+- added xaw3d-devel to BuildRequires
+- added patch:
+  - xvkbd-2.8-fix-compilerwarnings.diff: to avoid warnings with
+    warn_unused_result
+
+-------------------------------------------------------------------
+Mon Sep 11 12:26:35 CEST 2006 - tpatzig@suse.de
+
+- update to version 2.8 which
+  o fix some bugs
+  o includes some patches
+
+-------------------------------------------------------------------
+Wed Sep  6 15:47:22 CEST 2006 - mskibbe@suse.de
+
+- fix bug #191532 - xvkbd: with german keyboard layout "Alt Gr"
+  + X combinations not working 
+
+-------------------------------------------------------------------
+Fri Aug 11 11:08:20 CEST 2006 - mskibbe@suse.de
+
+- fix paths for xorg7 
+
+-------------------------------------------------------------------
+Mon Aug  7 11:26:13 CEST 2006 - mskibbe@suse.de
+
+- change X paths 
+
+-------------------------------------------------------------------
+Thu Jul 13 12:55:32 CEST 2006 - mskibbe@suse.de
+
+- add patch for compiler warnings 
+
+-------------------------------------------------------------------
+Sat Mar 11 09:06:32 CET 2006 - coolo@suse.de
+
+- Fix Menu-description 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:31 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jul  2 15:43:16 CEST 2005 - hvogel@suse.de
+
+- use optflags
+
+-------------------------------------------------------------------
+Mon May  9 16:59:24 CEST 2005 - hvogel@suse.de
+
+- updated to version 2.7a 
+
+-------------------------------------------------------------------
+Thu Aug  5 17:24:54 CEST 2004 - tiwai@suse.de
+
+- updated to version 2.6.
+
+-------------------------------------------------------------------
+Wed Mar 31 09:25:40 CEST 2004 - adrian@suse.de
+
+- add Utility Category
+
+-------------------------------------------------------------------
+Tue Jan 13 19:51:22 CET 2004 - tiwai@suse.de
+
+- build as non-root.
+
+-------------------------------------------------------------------
+Mon Sep 15 19:51:22 CEST 2003 - tiwai@suse.de
+
+- added desktop icon.
+
+-------------------------------------------------------------------
+Sun Sep  7 14:37:06 CEST 2003 - adrian@suse.de
+
+- add Accessibility Category
+
+-------------------------------------------------------------------
+Mon Aug 18 14:13:10 CEST 2003 - tiwai@suse.de
+
+- updated to version 2.5a.
+- added desktop file.
+
+-------------------------------------------------------------------
+Mon Nov 25 15:05:26 CET 2002 - tiwai@suse.de
+
+- updated to version 2.5.
+
+-------------------------------------------------------------------
+Mon Nov 11 23:49:53 CET 2002 - ro@suse.de
+
+- changed neededforbuild <xshared> to <x-devel-packages>
+- changed neededforbuild <xdevel> to <>
+
+-------------------------------------------------------------------
+Tue Aug  6 10:33:18 CEST 2002 - tiwai@suse.de
+
+- updated to version 2.3.
+
+-------------------------------------------------------------------
+Wed Jan 16 12:29:47 CET 2002 - tiwai@suse.de
+
+- initial version: 0.2.
+

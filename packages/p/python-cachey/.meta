@@ -1,0 +1,5 @@
+<package name="python-cachey" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-cachey"/>
+</package>

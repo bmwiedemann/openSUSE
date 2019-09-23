@@ -1,0 +1,13 @@
+Index: libotf-0.9.13/configure.ac
+===================================================================
+--- libotf-0.9.13.orig/configure.ac
++++ libotf-0.9.13/configure.ac
+@@ -25,7 +25,7 @@ dnl 330, Boston, MA 02111-1307, USA.
+ 
+ AC_INIT(libotf, 0.9.13, handa@m17n.org)
+ AM_INIT_AUTOMAKE(libotf, 0.9.13)
+-AM_CONFIG_HEADER(src/config.h)
++AC_CONFIG_HEADERS(src/config.h)
+ 
+ # Checks for programs.
+ AC_PROG_CC

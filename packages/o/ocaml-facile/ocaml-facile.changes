@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Tue Jul 25 13:04:54 UTC 2017 - ohering@suse.de
+
+- Use Group: Development/Languages/OCaml
+
+-------------------------------------------------------------------
+Wed May 31 07:07:33 UTC 2017 - olaf@aepfle.de
+
+- Replace tabs with spaces in generated _oasis file
+
+-------------------------------------------------------------------
+Tue May 16 11:14:08 UTC 2017 - olaf@aepfle.de
+
+- Build with oasis
+
+-------------------------------------------------------------------
+Mon May 23 20:22:49 UTC 2016 - olaf@aepfle.de
+
+- Apply ocaml4 patch unconditionally for d:l:o
+
+-------------------------------------------------------------------
+Sat Apr  6 22:01:36 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added ocaml-4.patch, fixes build with ocaml 4
+- Add Source URL
+- Clean the spec file
+
+-------------------------------------------------------------------
+Tue Nov 20 17:23:54 UTC 2012 - nico.kruber@gmail.com
+
+- Fix the SLES build (%make_install is not expanded on SLES)
+
+-------------------------------------------------------------------
+Mon Jun  4 18:17:44 CEST 2007 - dmueller@suse.de
+
+- Initial package (1.1)
+

@@ -1,0 +1,13 @@
+Index: libkexiv2-17.04.2/CMakeLists.txt
+===================================================================
+--- libkexiv2-17.04.2.orig/CMakeLists.txt
++++ libkexiv2-17.04.2/CMakeLists.txt
+@@ -12,7 +12,7 @@ message(STATUS "Starting CMake configura
+ set(CMAKE_MIN_VERSION   "2.8.12")
+ set(ECM_MIN_VERSION     "1.1.0")
+ set(REQUIRED_QT_VERSION "5.2.0")
+-set(EXIV2_MIN_VERSION   "0.25")
++set(EXIV2_MIN_VERSION   "0.23")
+ 
+ cmake_minimum_required(VERSION ${CMAKE_MIN_VERSION})
+ 

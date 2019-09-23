@@ -1,0 +1,117 @@
+-------------------------------------------------------------------
+Fri May 18 12:39:21 UTC 2018 - jengelh@inai.de
+
+- Remove filler wording from description.
+
+-------------------------------------------------------------------
+Wed May 16 13:29:54 UTC 2018 - tchvatal@suse.com
+
+- Use new spdx license tag too
+
+-------------------------------------------------------------------
+Tue May 15 02:57:51 UTC 2018 - toddrme2178@gmail.com
+
+- Use license tag
+- Provide full download url for source
+
+-------------------------------------------------------------------
+Fri Mar 24 13:46:00 UTC 2017 - mpluskal@suse.com
+
+- Packaging changes:
+  * Use qmake macros
+  * Split lib and devel subpackages
+  * Use pkgconfig style dependencies
+
+-------------------------------------------------------------------
+Thu Mar 23 16:28:13 UTC 2017 - saigkill@opensuse.org
+
+- Added patch wkhtmltopdf-0.12.4-unpatched-qt.patch
+This patch should'nt be needed in future versions.
+
+-------------------------------------------------------------------
+Wed Mar 22 21:11:32 UTC 2017 - saigkill@opensuse.org
+
+- Changes in Spec:
+  * Changed Builddependency libQtWebKit to libQt5WebKit5-devel
+  * Added BuildRequires:  libqt5-qtsvg-devel
+  * Added BuildRequires:  libqt5-qtxmlpatterns-devel
+  * Added BuildRequires:  libQt5WebKitWidgets-devel
+  * Added BuildRequires:  libQt5PrintSupport-devel
+  * Added BuildRequires:  libqt5-qtbase-common-devel
+- Updated to 0.12.4:
+  * added support for building with VS2015
+  * update OpenSSL to 1.0.2j and libpng to 1.6.26
+  * [qt] change screen size in headless mode to a more sane value (1366x768)
+  * [qt] allow screen size in headless mode to be overriden via environment variables
+  * [qt] fix compilation failure on OS X 10.11 due to usage of deprecated APIs
+  * #1768: allow using long argument list (without hardcoded limits)
+  * #2004: [qt] fix rendering of form fields in PDF output
+  * #2353: [qt] context.setLineDash doesn't work in Canvas
+  * #2416: make background transparent by default for headers/footers
+  * #2463: [qt] standardize rendering DPI to 96
+  * #2673: fail immediately in the build script if the Qt source is not available
+  * #2684: [qt] fix crash in WebKit (RenderBlock::removeFloatingObjectsBelow)
+  * #2885: enforce UTF-8 encoding for input strings in the API
+  * #2887: improve docs to make examples of header/footer variables more explicit
+  * #3077: use correct install path for man pages
+
+- Updated to 0.12.3:
+  * [qt] upgrade the patched Qt to the last Qt 4.8 commit
+  * removed support for CentOS 5 builds
+  * update OpenSSL to 1.0.2e and xz to 5.2.2 and libjpeg to 9b
+  * downgrade libpng to 1.2.56
+  * #1843: add --keep-relative-links and --resolve-relative-links to resolve relative links
+  * #1981: fix temporary PDF files not being removed when writing to stdout
+  * #2104: renamed COPYING to LICENSE
+  * #2183: apply --javascript-delay settings for non-main resource loaders
+  * #2190: do not depend on ICU even if it is already installed
+  * #2194: [qt] fix debugging of Qt/WebKit due to missing debug information
+  * #2214: [qt] fix broken rendering of transparent images when converting to PDF
+  * #2252: fix ownership of /usr/local being changed during installation on OS X
+  * #2280: do not allow data URIs for --header-html or --footer-html
+  * #2322: fix broken debug builds with MSVC
+  * #2355: add support for proxy bypass for specific hosts with --bypass-proxy-for
+  * #2418: fix build error on OS X
+  * #2560: allow using email address as proxy username
+  * #2572: fix incorrect version detection when building distro-specific packages
+
+-------------------------------------------------------------------
+Fri Nov  6 23:20:28 UTC 2015 - jacobwinski@gmail.com
+
+- Update to 0.12.2.1:
+  * update OpenSSL to 1.0.1l
+  * [qt] make background transparent by default when rendering to PDF
+  * fix wkhtmltoimage ignoring --javascript-delay and --window-status
+  * [qt] fix PDFs rendering without embedded fonts on 64-bit Cocoa build
+- Update to 0.12.2:
+  * external libraries updated: OpenSSL to 1.0.1k, libpng to 1.5.21 and xz to 5.2.0
+  * fix build failure with unpatched Qt >= 5.3
+  * [qt] using OpenType fonts now results in selectable text on Windows
+  * [qt] fix incorrect rendering of JPEG images on Windows Server 2008 x64
+  * block access to local files on Windows when an invalid URL is used
+  * [qt] make table page-break logic opt-in via CSS at the row level
+  * do not allow overriding the header/footer settings for cover pages
+  * set page margins correctly via computed header/footer heights for multiple URLs
+  * fix corrupt image when output is specified as - in wkhtmltoimage on Windows
+  * [qt] fix broken hyphenation with soft-hyphens
+  * fixed unicode URLs in links
+  * added variable 'isodate' for substitution in headers/footers
+  * fix handling of temporary files during PDF conversion via API
+  * fix [sitepage] and [sitepages] not working without HTML headers/footers
+  * fix handling of non-ASCII characters in command-line arguments
+  * [qt] blank page or crash with low DPI on Windows
+  * --window-status causes endless loop with --header-html
+  * fix wrong comparison when parsing list parameters
+  * [breaking change] fix the reflection subsystem to fix the non-functional API
+  * fix generation of tarball in the posix-local build
+  * installer does not work on 32-bit OS X (10.6.x or 10.7.x)
+  * add explicit dependency on minimal font packages for all linux targets
+  * fix footer spacing being ignored (and header spacing being used instead)
+  * add support for CentOS 7 target
+  * [qt] rendering of Thai symbols is very slow
+
+-------------------------------------------------------------------
+Wed Jul 16 11:58:49 UTC 2014 - hot123tea123@gmail.com
+
+- Initial package building
+

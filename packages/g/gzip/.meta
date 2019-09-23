@@ -1,0 +1,8 @@
+<package name="gzip" project="openSUSE:Factory">
+  <title>GNU Zip Compression Utilities</title>
+  <description>Gzip reduces the size of the named files using Lempel-Ziv coding LZ77. 
+Whenever possible, each file is replaced by one with the extension .gz,
+while keeping the same ownership modes and access and modification
+times.</description>
+  <devel project="Base:System" package="gzip"/>
+</package>

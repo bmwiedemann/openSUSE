@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Wed Jul 30 10:16:18 UTC 2014 - lars@linux-schulserver.de
+
+- renamed the package to monitoring-plugins-rsync
+- fix COPYING file to include GPL-2.0+ as mentioned in source
+
+-------------------------------------------------------------------
+Mon Jul  2 15:23:22 UTC 2012 - lars@linux-schulserver.de
+
+- added monitoring-plugins-rsync-hidden_modules.patch to allow hidden
+  rsync modules to be tested
+- use nagios-rpm-macros in specfile
+- Fix license: it's GPL 2 or newer
+
+-------------------------------------------------------------------
+Tue May  3 10:44:06 UTC 2011 - lars@linux-schulserver.de
+
+- add a patch to use the timeouts present in rsync itself
+  ( monitoring-plugins-rsync-timeout.patch ) 
+
+-------------------------------------------------------------------
+Fri Apr  1 05:24:22 UTC 2011 - coolo@novell.com
+
+- licenses package is no more and upstream wants GPLv3, so adding
+  COPYING
+
+-------------------------------------------------------------------
+Thu Nov 27 16:34:42 CET 2008 - lrupp@suse.de
+
+- require licenses package (solves bnc #449756)
+
+-------------------------------------------------------------------
+Wed Nov 19 12:42:08 CET 2008 - lrupp@suse.de
+
+- update to 1.02:
+  + Kill rsync process on ALRM timeouts 
+    (Avoids leaving stale rsync processes behind) 
+  + More verbose Rsync errors 
+  + Commas in the password field should work 
+
+-------------------------------------------------------------------
+Fri Jul 18 12:25:12 CEST 2008 - lrupp@suse.de
+
+- initial version 1.01
+

@@ -1,0 +1,48 @@
+Index: gnome-initial-setup-3.31.90/gnome-initial-setup/pages/keyboard/cc-input-chooser.c
+===================================================================
+--- gnome-initial-setup-3.31.90.orig/gnome-initial-setup/pages/keyboard/cc-input-chooser.c	2019-02-04 23:16:02.000000000 +0100
++++ gnome-initial-setup-3.31.90/gnome-initial-setup/pages/keyboard/cc-input-chooser.c	2019-02-20 13:26:23.074350247 +0100
+@@ -273,6 +273,14 @@ sync_checkmark (GtkWidget *row,
+ 		should_be_visible = FALSE;
+ 	else
+ 	        should_be_visible = g_strcmp0 (widget->id, priv->id) == 0 && g_strcmp0 (widget->type, priv->type) == 0;
++
++        if ((g_strcmp0 (widget->id, "jp") == 0) && 
++           (g_strcmp0 (priv->id, "jp") == 0))
++                should_be_visible = FALSE;
++
++        if (g_strcmp0 (widget->id, "mozc-jp") == 0)
++                should_be_visible = TRUE;
++
+         gtk_widget_set_opacity (widget->checkmark, should_be_visible ? 1.0 : 0.0);
+ 
+         if (widget->is_extra && should_be_visible)
+@@ -451,6 +459,13 @@ input_visible (GtkListBoxRow *row,
+ 
+         widget = get_input_widget (child);
+ 
++        if((g_strcmp0 (widget->id, "mozc-jp") == 0) ||
++           (g_strcmp0 (widget->id, "anthy") == 0))
++                return TRUE;
++
++        if(g_strcmp0 (widget->id, "Japanese (Mozc)") == 0)
++                return FALSE;
++
+         if (!priv->showing_extra && widget->is_extra)
+                 return FALSE;
+ 
+@@ -478,6 +493,14 @@ sort_inputs (GtkListBoxRow *a,
+         if (lb == NULL)
+                 return -1;
+ 
++        if (g_strcmp0 (la->id, "mozc-jp") == 0 ||
++            g_strcmp0 (la->id, "anthy")   == 0)
++                return -1;
++
++        if (g_strcmp0 (lb->id, "mozc-jp") == 0 ||
++            g_strcmp0 (lb->id, "anthy")   == 0)
++                return 1;
++
+         if (la->is_extra && !lb->is_extra)
+                 return 1;
+ 

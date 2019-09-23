@@ -1,0 +1,31 @@
+Index: syncthing-gtk-0.9.4.2/syncthing_gtk/configuration.py
+===================================================================
+--- syncthing-gtk-0.9.4.2.orig/syncthing_gtk/configuration.py
++++ syncthing-gtk-0.9.4.2/syncthing_gtk/configuration.py
+@@ -63,7 +63,7 @@ class _Configuration(object):
+ 			self.load()
+ 		except Exception as e:
+ 			log.warning("Failed to load configuration; Creating new one.")
+-			log.warning("Reason: %s", (e,))
++			log.warning(b"Reason: %s", e)
+ 			self.create()
+ 		
+ 		# Convert objects serialized as string back to object
+Index: syncthing-gtk-0.9.4.2/syncthing_gtk/daemon.py
+===================================================================
+--- syncthing-gtk-0.9.4.2.orig/syncthing_gtk/daemon.py
++++ syncthing-gtk-0.9.4.2/syncthing_gtk/daemon.py
+@@ -334,11 +334,11 @@ class Daemon(GObject.GObject, TimerManag
+ 			with open(self._configxml, "r") as f:
+ 				config = f.read()
+ 		except Exception as e:
+-			raise InvalidConfigurationException("Failed to read daemon configuration: %s" % e)
++			raise InvalidConfigurationException(b"Failed to read daemon configuration: %s" % e)
+ 		try:
+ 			xml = minidom.parseString(config)
+ 		except Exception as e:
+-			raise InvalidConfigurationException("Failed to parse daemon configuration: %s" % e)
++			raise InvalidConfigurationException(b"Failed to parse daemon configuration: %s" % e)
+ 		tls = "false"
+ 		try:
+ 			tls = xml.getElementsByTagName("configuration")[0] \

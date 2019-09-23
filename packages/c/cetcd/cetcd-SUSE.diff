@@ -1,0 +1,72 @@
+diff --git a/.gitignore b/.gitignore
+index 7624ce3..d0e39d5 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -4,4 +4,5 @@ sds-test
+ *.swp
+ *.so
+ *.a
++*.so.0
+ third-party
+diff --git a/Makefile b/Makefile
+index c1766b6..75f8006 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,5 @@
+-CFLAGS= -Wall -Wextra -fPIC -I third-party/build/include
+-LDFLAGS=-lcurl -lpthread
++CFLAGS= -Wall -Wextra -fPIC
++LDFLAGS=-lyajl -lcurl -lpthread
+ prefix=/usr/local
+ 
+ release:CFLAGS += -O3
+@@ -14,16 +14,17 @@ clean:
+ distclean:
+ 	rm -rf libcetcd.so *.o sds/*.o third-party/*
+ install:all
+-	install -D libcetcd.so $(prefix)/lib/libcetcd.so
+-	install -D cetcd.h $(prefix)/include/cetcd.h
+-	install -D cetcd_array.h $(prefix)/include/cetcd_array.h
+-	install -D sds/sds.h $(prefix)/include/sds/sds.h
++	install -D -m 644 libcetcd.so $(prefix)/lib/libcetcd.so
++	install -D -m 755 libcetcd.so.0 $(prefix)/lib/libcetcd.so.0
++	install -D -m 644 cetcd.h $(prefix)/include/cetcd.h
++	install -D -m 644 cetcd_array.h $(prefix)/include/cetcd_array.h
+ 
+ libcetcd.so: cetcd_array.o sds/sds.o cetcd.o
+-	$(CC) $(LDFLAGS) -shared -o libcetcd.so cetcd_array.o sds/sds.o cetcd.o third-party/build/*.o
++	$(CC) -shared -Wl,-soname,libcetcd.so.0 -o libcetcd.so.0 cetcd_array.o sds/sds.o cetcd.o $(LDFLAGS)
++	ln -sf libcetcd.so.0 libcetcd.so
+ sds/sds.o:sds/sds.c sds/sds.h
+ cetcd_array.o:cetcd_array.c cetcd_array.h
+-cetcd.o:cetcd.c cetcd.h cetcd_json_parser.h third-party/build/include/yajl/*.h third-party/build/*.o
++cetcd.o:cetcd.c cetcd.h cetcd_json_parser.h
+ 
+ # Processing third-party projects
+ third-party:third-party/yajl-2.1.0
+diff --git a/cetcd.c b/cetcd.c
+index 71264f9..bceb403 100644
+--- a/cetcd.c
++++ b/cetcd.c
+@@ -1,4 +1,6 @@
+ #include "cetcd.h"
++#include "sds/sds.h"
++typedef sds cetcd_string;
+ #include "cetcd_json_parser.h"
+ 
+ #include <string.h>
+diff --git a/cetcd.h b/cetcd.h
+index c19856f..3ca1489 100644
+--- a/cetcd.h
++++ b/cetcd.h
+@@ -8,10 +8,8 @@ extern "C" {
+ #include <curl/curl.h>
+ #include <pthread.h>
+ #include <stdint.h>
+-#include "sds/sds.h"
+ #include "cetcd_array.h"
+ #define CETCD_VERSION release-v0.0.5
+-typedef sds cetcd_string;
+ typedef pthread_t cetcd_watch_id;
+ 
+ enum HTTP_METHOD {

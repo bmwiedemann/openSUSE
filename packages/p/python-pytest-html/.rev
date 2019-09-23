@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ae8fcb3b5e829982bc6cae68bddd4502</srcmd5>
+    <version>1.19.0</version>
+    <time>1543528698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651084</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c776c582bcddf8a4695824f72513e91c</srcmd5>
+    <version>1.20.0</version>
+    <time>1551276605</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo in the ansi2html Requires
+
+- Update to 1.20.0:
+  * Tests running with Pytest 4.0 and Python 3.7
+  * Stop filtering out falsy environment values (#175)
+  * Removed extraneous space from anchor tag (@chardbury)
+  * Always define __version__ even if get_distribution() fails (@nicoddemus)
+  * Refactor css config code (@crazymerlyn)</comment>
+    <requestid>679737</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ad8b4ce5876b956a8868b54df74aab5e</srcmd5>
+    <version>1.21.1</version>
+    <time>1562159700</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.21.1:
+  * Fix issue with assets filenames being too long.
+  * Allow opening generated html report in browser (@ssbarnea)
+  * Handle when report title is stored as an environment variable (@BeyondEvil)
+  * Change assets naming method (@SunInJuly)</comment>
+    <requestid>713053</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3046677b4764c2389f8815221718f8a5</srcmd5>
+    <version>1.22.0</version>
+    <time>1565695630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.22.0:
+  * Refactor asset naming to be OS safe</comment>
+    <requestid>722841</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>cd0a15225c4961a14e765b308ed0e6bb</srcmd5>
+    <version>1.22.0</version>
+    <time>1568805080</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731175</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,459 @@
+-------------------------------------------------------------------
+Mon Mar 18 09:10:46 UTC 2019 -  <gunreben@t-online.de>
+
+- Enable build for s390x on openSUSE
+
+-------------------------------------------------------------------
+Thu Jan 31 05:58:57 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to umoci v0.4.4.
+  * Added full-stack verification of blob hashes and descriptors for all
+    operations (improving our hardening against bad images).
+  * For details, see CHANGELOG.md in the package.
+
+-------------------------------------------------------------------
+Sun Nov 11 08:49:20 UTC 2018 - asarai@suse.com
+
+- Update to umoci v0.4.3.
+  * Added --no-history to all commands with --history.* flags.
+    Should only be used for umoci-config(1).
+  * Added `umoci insert --tag` to allow non-destructive modifications.
+  * For details, see packaged /usr/share/doc/packages/umoci/CHANGELOG.md.
+
+-------------------------------------------------------------------
+Tue Sep 11 02:47:16 UTC 2018 - asarai@suse.com
+
+- Update to umoci v0.4.2.
+  * umoci now has an exposed Go API
+  * Added `umoci unpack --keep-dirlinks`
+  * `umoci insert` now supports whiteouts two ways.
+  * For details, see CHANGELOG.md in the package.
+
+-------------------------------------------------------------------
+Thu Aug 16 03:39:22 UTC 2018 - asarai@suse.com
+
+- Update to umoci v0.4.1.
+  * Support more tags (the valid set of characters in tags has expanded).
+  * Add 'umoci insert' and 'umoci raw unpack'.
+  * 'umoci unpack' correctly handles out-of-order whiteouts now.
+  * 'umoci unpack' and 'umoci repack' make sure of a more optimised gzip
+	implementation now -- in some benchmarks 'umoci repack' can have a speedup
+	of up to 3x.
+  * For details, see CHANGELOG.md in the package.
+
+-------------------------------------------------------------------
+Wed Jun 13 13:06:39 UTC 2018 - dcassany@suse.com
+
+- Make use of %license macro.
+
+-------------------------------------------------------------------
+Sat Mar 10 08:10:42 UTC 2018 - asarai@suse.com
+
+- Update to umoci v0.4.0. Upstream changelog:
+	+ `umoci repack` now supports `--refresh-bundle` which will update the
+	  OCI bundle's metadata (mtree and umoci-specific manifests) after packing
+	  the image tag. This means that the bundle can be used as a base layer for
+	  future diffs without needing to unpack the image again.
+	  openSUSE/umoci#196
+	+ Added a website, and reworked the documentation to be better structured.
+	  You can visit the website at [`umo.ci`][umo.ci]. openSUSE/umoci#188
+	+ Added support for the `user.rootlesscontainers` specification, which
+	  allows for persistent on-disk emulation of `chown(2)` inside rootless
+	  containers. This implementation is interoperable with [@AkihiroSuda's
+	  `PRoot` fork][as-proot-fork] (though we do not test its interoperability
+	  at the moment) as both tools use [the same protobuf
+	  specification][rootlesscontainers-proto]. openSUSE/umoci#227
+	+ `umoci unpack` now has support for opaque whiteouts (whiteouts which
+	  remove all children of a directory in the lower layer), though `umoci
+	  repack` does not currently have support for generating them. While this
+	  is technically a spec requirement, through testing we've never
+	  encountered an actual user of these whiteouts. openSUSE/umoci#224
+	  openSUSE/umoci#229
+	+ `umoci unpack` will now use some rootless tricks inside user namespaces
+	  for operations that are known to fail (such as `mknod(2)`) while other
+	  operations will be carried out as normal (such as `lchown(2)`). It should
+	  be noted that the `/proc/self/uid_map` checking we do can be tricked into
+	  not detecting user namespaces, but you would need to be trying to break
+	  it on purpose. openSUSE/umoci#171 openSUSE/umoci#230
+	* Fix a bug in our "parent directory restore" code, which is responsible
+	  for ensuring that the mtime and other similar properties of a directory
+	  are not modified by extraction inside said directory. The bug would
+	  manifest as xattrs not being restored properly in certain edge-cases
+	  (which we incidentally hit in a test-case). openSUSE/umoci#161
+	  openSUSE/umoci#162
+	* `umoci unpack` will now "clean up" the bundle generated if an error
+	  occurs during unpacking. Previously this didn't happen, which made
+	  cleaning up the responsibility of the caller (which was quite difficult
+	  if you were unprivileged). This is a breaking change, but is in the error
+	  path so it's not critical. openSUSE/umoci#174 openSUSE/umoci#187
+	* `umoci gc` now will no longer remove unknown files and directories that
+	  aren't `flock(2)`ed, thus ensuring that any possible OCI image-spec
+	  extensions or other users of an image being operated on will no longer
+	  break. openSUSE/umoci#198
+	* `umoci unpack --rootless` will now correctly handle regular file
+	  unpacking when overwriting a file that `umoci` doesn't have write access
+	  to. In addition, the semantics of pre-existing hardlinks to a clobbered
+	  file are clarified (the hard-links will not refer to the new layer's
+	  inode). openSUSE/umoci#222 openSUSE/umoci#223
+
+	[as-proot-fork]: https://github.com/AkihiroSuda/runrootless
+	[rootlesscontainers-proto]: https://rootlesscontaine.rs/proto/rootlesscontainers.proto
+	[umo.ci]: https://umo.ci/
+
+-------------------------------------------------------------------
+Thu Feb  1 16:58:09 CET 2018 - ro@suse.de
+
+- do not build on s390, only on s390x (no go on s390)
+
+-------------------------------------------------------------------
+Wed Oct  4 02:52:51 UTC 2017 - asarai@suse.com
+
+- Update to umoci v0.3.1. Upstream changelog:
+	- Fix several minor bugs in `hack/release.sh` that caused the release artefacts
+	  to not match the intended style, as well as making it more generic so other
+	  projects can use it. openSUSE/umoci#155 openSUSE/umoci#163
+	- A recent configuration issue caused `go vet` and `go lint` to not run as part
+	  of our CI jobs. This means that some of the information submitted as part of
+	  [CII best practices badging][cii] was not accurate. This has been corrected,
+	  and after review we concluded that only stylistic issues were discovered by
+	  static analysis. openSUSE/umoci#158
+	- 32-bit unit test builds were broken in a refactor in [0.3.0]. This has been
+	  fixed, and we've added tests to our CI to ensure that something like this
+	  won't go unnoticed in the future. openSUSE/umoci#157
+	- `umoci unpack` would not correctly preserve set{uid,gid} bits. While this
+	  would not cause issues when building an image (as we only create a manifest
+	  of the final extracted rootfs), it would cause issues for other users of
+	  `umoci`. openSUSE/umoci#166 openSUSE/umoci#169
+	- Updated to [v0.4.1 of `go-mtree`][gomtree-v0.4.1], which fixes several minor
+	  bugs with manifest generation. openSUSE/umoci#176
+	- `umoci unpack` would not handle "weird" tar archive layers previously (it
+	  would error out with DiffID errors). While this wouldn't cause issues for
+	  layers generated using Go's `archive/tar` implementation, it would cause
+	  issues for GNU gzip and other such tools.
+	- `umoci unpack`'s mapping options (`--uid-map` and `--gid-map`) have had an
+	  interface change, to better match the [`user_namespaces(7)`][user_namespaces]
+	  interfaces. Note that this is a **breaking change**, but the workaround is to
+	  switch to the trivially different (but now more consistent) format.
+	  openSUSE/umoci#167
+	- `umoci unpack` used to create the bundle and rootfs with world
+	  read-and-execute permissions by default. This could potentially result in an
+	  unsafe rootfs (containing dangerous setuid binaries for instance) being
+	  accessible by an unprivileged user. This has been fixed by always setting the
+	  mode of the bundle to `0700`, which requires a user to explicitly work around
+	  this basic protection. This scenario was documented in our security
+	  documentation previously, but has now been fixed. openSUSE/umoci#181
+	  openSUSE/umoci#182
+
+	[cii]: https://bestpractices.coreinfrastructure.org/projects/1084
+	[gomtree-v0.4.1]: https://github.com/vbatts/go-mtree/releases/tag/v0.4.1
+	[user_namespaces]: http://man7.org/linux/man-pages/man7/user_namespaces.7.html
+- Remove patch that has been applied upstream.
+  - i586-0001-fix-mis-usage-of-time.Unix.patch
+
+-------------------------------------------------------------------
+Tue Jul 25 10:42:54 UTC 2017 - asarai@suse.com
+
+- Add backport of https://github.com/openSUSE/umoci/pull/157, to fix i586
+  builds.
+    + i586-0001-fix-mis-usage-of-time.Unix.patch
+
+-------------------------------------------------------------------
+Sat Jul 22 15:57:44 UTC 2017 - asarai@suse.com
+
+- Update to umoci v0.3.0. Upstream changelog:
+	- `umoci` now passes all of the requirements for the [CII best practices bading
+	  program][cii]. openSUSE/umoci#134
+	- `umoci` also now has more extensive architecture, quick-start and roadmap
+	  documentation. openSUSE/umoci#134
+	- `umoci` now supports [`1.0.0` of the OCI image
+	  specification][ispec-v1.0.0] and [`1.0.0` of the OCI runtime
+	  specification][rspec-v1.0.0], which are the first milestone release. Note
+	  that there are still some remaining UX issues with `--image` and other parts
+	  of `umoci` which may be subject to change in future versions. In particular,
+	  this update of the specification now means that images may have ambiguous
+	  tags. `umoci` will warn you if an operation may have an ambiguous result, but
+	  we plan to improve this functionality far more in the future.
+	  openSUSE/umoci#133 openSUSE/umoci#142
+	- `umoci` also now supports more complicated descriptor walk structures, and
+	  also handles mutation of such structures more sanely. At the moment, this
+	  functionality has not been used "in the wild" and `umoci` doesn't have the UX
+	  to create such structures (yet) but these will be implemented in future
+	  versions. openSUSE/umoci#145
+	- `umoci repack` now supports `--mask-path` to ignore changes in the rootfs
+	  that are in a child of at least one of the provided masks when generating new
+	  layers. openSUSE/umoci#127
+	- Error messages from `github.com/openSUSE/umoci/oci/cas/drivers/dir` actually
+	  make sense now. openSUSE/umoci#121
+	- `umoci unpack` now generates `config.json` blobs according to the [still
+	  proposed][ispec-pr492] OCI image specification conversion document.
+	  openSUSE/umoci#120
+	- `umoci repack` also now automatically adding `Config.Volumes` from the image
+	  configuration to the set of masked paths.  This matches recently added
+	  [recommendations by the spec][ispec-pr694], but is a backwards-incompatible
+	  change because the new default is that `Config.Volumes` **will** be masked.
+	  If you wish to retain the old semantics, use `--no-mask-volumes` (though make
+	  sure to be aware of the reasoning behind `Config.Volume` masking).
+	  openSUSE/umoci#127
+	- `umoci` now uses [`SecureJoin`][securejoin] rather than a patched version of
+	  `FollowSymlinkInScope`. The two implementations are roughly equivalent, but
+	  `SecureJoin` has a nicer API and is maintained as a separate project.
+	- Switched to using `golang.org/x/sys/unix` over `syscall` where possible,
+	  which makes the codebase significantly cleaner. openSUSE/umoci#141
+
+	[cii]: https://bestpractices.coreinfrastructure.org/projects/1084
+	[rspec-v1.0.0]: https://github.com/opencontainers/runtime-spec/releases/tag/v1.0.0
+	[ispec-v1.0.0]: https://github.com/opencontainers/image-spec/releases/tag/v1.0.0
+	[ispec-pr492]: https://github.com/opencontainers/image-spec/pull/492
+	[ispec-pr694]: https://github.com/opencontainers/image-spec/pull/694
+	[securejoin]: https://github.com/cyphar/filepath-securejoin
+
+-------------------------------------------------------------------
+Wed Apr 12 09:46:18 UTC 2017 - jmassaguerpla@suse.com
+
+- remove the go_arches macro because we are using go1.7 which
+  is available in all archs
+
+-------------------------------------------------------------------
+Wed Apr 12 01:05:12 UTC 2017 - asarai@suse.com
+
+- Update to umoci v0.2.1. Upstream changelog:
+	* `hack/release.sh` automates the process of generating all of the published
+	  artefacts for releases. The new script also generates signed source code
+	  archives. openSUSE/umoci#116
+	* `umoci` now outputs configurations that are compliant with [`v1.0.0-rc5` of
+	  the OCI runtime-spec][rspec-v1.0.0-rc5]. This means that now you can use runc
+	  v1.0.0-rc3 with `umoci` (and rootless containers should work out of the box
+	  if you use a development build of runc). openSUSE/umoci#114
+	* `umoci unpack` no longer adds a dummy linux.seccomp entry, and instead just
+	  sets it to null. openSUSE/umoci#114
+
+	[rspec-v1.0.0-rc5]: https://github.com/opencontainers/runtime-spec/releases/tag/v1.0.0-rc5
+- Add umoci.keyring to check signed archives on check-in and submission.
+
+-------------------------------------------------------------------
+Mon Apr 10 14:49:35 UTC 2017 - asarai@suse.com
+
+- Update to umoci v0.2.0. Upstream changelog:
+	* `umoci` now has some automated scripts for generated RPMs that are used in
+	  openSUSE to automatically submit packages to OBS. openSUSE/umoci#101
+
+	* `--clear=config.{cmd,entrypoint}` is now supported. While this interface is a
+	  bit weird (`cmd` and `entrypoint` aren't treated atomically) this makes the
+	  UX more consistent while we come up with a better `cmd` and `entrypoint` UX.
+	  openSUSE/umoci#107
+
+	* New subcommand: `umoci raw runtime-config`. It generates the runtime-spec
+	  config.json for a particular image without also unpacking the root
+	  filesystem, allowing for users of `umoci` that are regularly parsing
+	  `config.json` without caring about the root filesystem to be more efficient.
+	  However, a downside of this approach is that some image-spec fields
+	  (`Config.User`) require a root filesystem in order to make sense, which is
+	  why this command is hidden under the `umoci-raw(1)` subcommand (to make sure
+	  only users that understand what they're doing use it). openSUSE/umoci#110
+
+	* `umoci`'s `oci/cas` and `oci/config` libraries have been massively refactored
+	  and rewritten, to allow for third-parties to use the OCI libraries. The plan
+	  is for these to eventually become part of an OCI project. openSUSE/umoci#90
+
+	* The `oci/cas` interface has been modifed to switch from `*ispec.Descriptor`
+	  to `ispec.Descriptor`. This is a breaking, but fairly insignificant, change.
+	  openSUSE/umoci#89
+
+	* `umoci` now uses an updated version of `go-mtree`, which has a complete
+	  rewrite of `Vis` and `Unvis`. The rewrite ensures that unicode handling is
+	  handled in a far more consistent and sane way. openSUSE/umoci#88
+
+	* `umoci` used to set `process.user.additionalGids` to the "normal value" when
+	  unpacking an image in rootless mode, causing issues when trying to actually
+	  run said bundle with runC. openSUSE/umoci#109
+
+-------------------------------------------------------------------
+Fri Feb 10 18:03:27 UTC 2017 - asarai@suse.com
+
+- Update to umoci v0.1.0. Upstream changelog:
+	* `CHANGELOG.md` has now been added. openSUSE/umoci#76
+
+	* `umoci` now supports `v1.0.0-rc4` images, which has made fairly minimal
+	  changes to the schema (mainly related to `mediaType`s). While this change
+	  **is** backwards compatible (several fields were removed from the schema, but
+	  the specification allows for "additional fields"), tools using older versions
+	  of the specification may fail to operate on newer OCI images. There was no UX
+	  change associated with this update.
+
+	* `umoci tag` would fail to clobber existing tags, which was in contrast to how
+	  the rest of the tag clobbering commands operated. This has been fixed and is
+	  now consistent with the other commands. openSUSE/umoci#78
+
+	* `umoci repack` now can correctly handle unicode-encoded filenames, allowing
+	  the creation of containers that have oddly named files. This required fixes
+	  to go-mtree (where the issue was). openSUSE/umoci#80
+
+-------------------------------------------------------------------
+Tue Feb  7 22:25:56 UTC 2017 - jengelh@inai.de
+
+- Trim irrelevant parts from description.
+  Replace %__macros by their simpler commands.
+  fdupes should respect partition boundaries.
+
+-------------------------------------------------------------------
+Mon Feb  6 17:06:05 UTC 2017 - asarai@suse.com
+
+- Switch upstream channel to openSUSE's GitHub (where the project has been
+  moved).
+- Update to umoci v0.0.0. Upstream changelog:
+	This is the first beta release of umoci, and it includes very few
+	changes from v0.0.0-rc3. However, at this point the UX is effectively
+	stable and umoci is properly tested. The (small) list of changes in this
+	release from -rc3 is:
+
+	* Static compilation now works properly. openSUSE/umoci#64
+
+	* 32-bit builds have been fixed, and now umoci works on 32-bit
+	  architectures. openSUSE/umoci#70
+
+	* The unit tests can now be run inside the %check section of an rpmbuild
+	  script, allowing for proper testing of packages when they are built on
+	  openSUSE (and Fedora). openSUSE/umoci#65
+
+	* Unit tests have been massively expanded, as have the integration
+	  tests. In addition, full coverage profiles (both unit and integration)
+	  are generated to fully understand how much of the code is properly
+	  tested. Currently it is at ~80%. openSUSE/umoci#68 openSUSE/umoci#69
+
+	* The logging output has been cleaned up to be much better for end-users
+	  to read. It's also a lot less chatty now. openSUSE/umoci#73
+
+	* This project has now been moved to become an openSUSE project.
+	  openSUSE/umoci#75
+
+-------------------------------------------------------------------
+Fri Dec 30 14:56:38 UTC 2016 - asarai@suse.com
+
+- Remove patch already merged upstream.
+  - make-local-unit-tests-work-as-non-root.patch
+- Switch to running hack/test-unit.sh in %check.
+
+-------------------------------------------------------------------
+Tue Dec 20 08:10:00 UTC 2016 - asarai@suse.com
+
+- Add patch to allow running upstream's unit tests in a %check section. This
+  has already been merged upstream, this is just a backport. cyphar/umoci#65
+  + make-local-unit-tests-work-as-non-root.patch
+- Run upstream's unit tests in a %check section.
+
+-------------------------------------------------------------------
+Mon Dec 19 12:57:31 UTC 2016 - asarai@suse.com
+
+- Update to umoci 0.0.0~rc3. Upstream changelog:
+	umoci has now gone a large amount of cleanup, and included the addition
+	of a few previously missing features. The main thing blocking a full
+	release is that manifest lists are still unsupported, and there are some
+	upstream PRs that define some of umoci's operations that need to be
+	merged before umoci can be considered a compliant implementation. In
+	addition, the logging library needs to be swapped (and the amount of
+	output reduced).
+
+	Here's a short list of features added:
+
+	* xattr support for both packing and unpacking was added, in particular
+	  this code also handles the issue of security.selinux. More policy
+	  decisions need to be added, but those are being discussed upstream.
+	  cyphar/umoci#52 cyphar/umoci#49
+
+	* Ensure that environment variables have no duplicates. This ensures
+	  that umoci won't duplicate environment variables in either Config.Env
+	  or the extracted process.env. cyphar/umoci#30
+
+	* Add support for read-only CAS operations with a read-only filesystem.
+	  Previously, attempting to open an OCI image on a read-only filesystem
+	  would fail miserably, now you can do read-only operations without
+	  issue. cyphar/umoci#47
+
+	* Garbage collection now also garbage collects old tmpdirs, and other
+	  garbage from inside an image layout. cyphar/umoci#17
+
+	* Output a helpful comment about --rootless if you're getting EPERMs.
+
+	* Enable stack traces from an error if the --debug flag was applied to
+	  umoci. This is a feature that hopefully will be added to pkg/errors
+	  upstream.
+
+	* Cleanups to vendoring of go-mtree so that it's much more
+	  upstream-friendly.
+
+-------------------------------------------------------------------
+Tue Dec 13 09:20:10 UTC 2016 - asarai@suse.com
+
+- Add support for building on s390x and similar architectures, by conditionally
+  compiling man pages. In the case where a platform won't get man pages, we
+  include the Markdown documentation so at least they get _some_ information.
+
+-------------------------------------------------------------------
+Sun Dec 11 13:42:08 UTC 2016 - asarai@suse.com
+
+- Update to umoci 0.0.0-rc2. Upstream changelog:
+	umoci now has a stable UX, as well as proper documentation for the UX in
+	the form of generated man pages. Here's the full list of cool features:
+
+	* umoci v0.0.0-rc2 has support for rootless unpacking and repacking!
+	  cyphar/umoci#26
+
+	* It also has support for regular UID and GID mapping! cyphar/umoci#26
+
+	* Symlinks and other similarly tricky unpacking problems have been
+	  resolved. All symlink path components are resolved inside the root
+	  filesystem of the container during unpacking. cyphar/umoci#27
+
+	* Tag modification commands (such as umoci-tag(1), umoci-rm(1),
+	  umoci-ls(1)) have been implemented. cyphar/umoci#6 cyphar/umoci#40
+
+	* umoci-stat(1) has been implemented. Currently it only outputs history
+	  information, but this will change in the future. It has stable JSON
+	  output. cyphar/umoci#38
+
+	* umoci-init(1) and umoci-new(1) have been implemented, allowing for the
+	  creation of entirely new images from scratch. cyphar/umoci#5
+	  cyphar/umoci#42
+
+	* umoci-repack(1) and umoci-config(1) now automatically generate history
+	  entries (since the history is actually used by tooling like skopeo). In
+	  addition, the history mutation from umoci-config(1) has been removed
+	  because it was just unsafe. In order for users to be able to configure
+	  history entries' values, --history.* flags have been introduced.
+	  cyphar/umoci#
+
+	* umoci-unpack(1) now saves all of the important argument metadata
+	  provided to it inside the generated bundle. These saved arguments are
+	  loaded by umoci-repack(1) to make the workflow much more sane.
+
+	* --image and --from arguments have been combined into skopeo-style
+	  <path>[:<tag>] arguments to --image. cyphar/umoci#39
+
+	* Errors encountered during generation of a delta layer now are
+	  correctly propagated. cyphar/umoci#33
+
+	* Hardlinks are now correctly unpacked as bone-fide hardlinks.
+	  cyphar/umoci#25
+
+	* Support for unpacking and configuring annotations (which is a
+	  v1.0.0-rc3 feature of the OCI image specification). There's still some
+	  work to be done upstream in making the unpacking procedure specified
+	  but this is as good as you're going to get for a while.
+	  cyphar/umoci#43
+
+	* umoci has full integration and unit testing. cyphar/umoci#12
+
+	* umoci now has validation integration tests to ensure that at every
+	  stage of a test we could stop and still have a completely valid OCI
+	  image and that every extracted bundle is a valid OCI runtime bundle.
+
+-------------------------------------------------------------------
+Sun Dec 11 12:43:30 UTC 2016 - asarai@suse.com
+
+- Update to a45b47efb370469642a478ae687da8c9b015e537.
+
+-------------------------------------------------------------------
+Wed Nov  9 17:51:28 UTC 2016 - asarai@suse.com
+
+- Initial import of omoci 0.0.0-rc1 (proof of concept).
+

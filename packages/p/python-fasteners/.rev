@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd3aaa555d4e308646c556cbfe07e32d</srcmd5>
+    <version>0.12.0</version>
+    <time>1438615260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>317628</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9be5c11c58c2fd487e6e7d2097d2c47d</srcmd5>
+    <version>0.13.0</version>
+    <time>1444130860</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>336456</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d69f4ca2bd2940acdd7e6db4b5b5499c</srcmd5>
+    <version>0.14.1</version>
+    <time>1451674101</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351196</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b2d0c077cdaca4dfb592d17fd358ce50</srcmd5>
+    <version>0.14.1</version>
+    <time>1494345826</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493457</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>8cfdba583d729341fb58000d90d1641a</srcmd5>
+    <version>0.14.1</version>
+    <time>1544726657</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654048</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>895fec3ea50670c9b9a6b5107af272b4</srcmd5>
+    <version>0.15</version>
+    <time>1560457911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708374</requestid>
+  </revision>
+</revisionlist>

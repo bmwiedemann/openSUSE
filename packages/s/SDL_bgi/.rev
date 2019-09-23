@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>034c80457ae2b068f7e1029b22f962d7</srcmd5>
+    <version>2.0.0</version>
+    <time>1432888654</time>
+    <user>dimstar_suse</user>
+    <comment>offending was removed in new version if I look correctly</comment>
+    <requestid>306264</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5910b5baf3fbefd7ea5e7532908422be</srcmd5>
+    <version>2.0.1</version>
+    <time>1432982037</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>309141</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>33a71fe575ab4110666339658dace386</srcmd5>
+    <version>2.0.2</version>
+    <time>1433745053</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.0.2</comment>
+    <requestid>310854</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9fdfa41a68e1e729604a75613572ef14</srcmd5>
+    <version>2.0.3</version>
+    <time>1445288050</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>339951</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>50df79d95fcfddfdfcffb096397e919f</srcmd5>
+    <version>2.0.5</version>
+    <time>1450955849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.0.5</comment>
+    <requestid>350515</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1acc73ce16b4ff8858ca6f599bc4e8b4</srcmd5>
+    <version>2.0.6</version>
+    <time>1458120933</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>370185</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b0fd4a80328d41e6dcdd96a1af1fd345</srcmd5>
+    <version>2.0.8</version>
+    <time>1479299617</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.0.8</comment>
+    <requestid>440532</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d87186993627bbc61cb4c32cc2a03b91</srcmd5>
+    <version>2.1.0</version>
+    <time>1515623649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.1.0</comment>
+    <requestid>561851</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0f252f59e79b99256942dfa5a0f0e431</srcmd5>
+    <version>2.1.2</version>
+    <time>1529402068</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to new upstream release 2.1.2</comment>
+    <requestid>615776</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ebe2d2f362df362d5518daeb62e34c5f</srcmd5>
+    <version>2.2.0</version>
+    <time>1533292714</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>627108</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>dd888cd1fc8eccca47e813f91d5eb942</srcmd5>
+    <version>2.2.1</version>
+    <time>1534543361</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.2.1</comment>
+    <requestid>629390</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0a14aebaaf1735a50b59f799263d75ce</srcmd5>
+    <version>2.2.2</version>
+    <time>1536679268</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to new upstream release 2.2.2</comment>
+    <requestid>634949</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>78cd34efe0c762d48a1e1d43dd7dedf2</srcmd5>
+    <version>2.2.3</version>
+    <time>1537436559</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to new upstream release 2.2.3</comment>
+    <requestid>636649</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7d1fcad61b78793c579e832b52665ed4</srcmd5>
+    <version>2.2.4</version>
+    <time>1542666787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.2.4</comment>
+    <requestid>650129</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c9436e66f51d3435e5acc3008f4b914e</srcmd5>
+    <version>2.3.0</version>
+    <time>1566464007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.3.0</comment>
+    <requestid>724880</requestid>
+  </revision>
+</revisionlist>

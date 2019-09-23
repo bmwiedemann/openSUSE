@@ -1,0 +1,15 @@
+
+
+= systemd service activation =
+
+With the advent of systemd socket activation of nrpe is possible.
+To enable this method, run the command
+
+systemctl enable nrpe.socket
+
+instead of enabling and starting the nrpe service via xinetd ori
+systemd directly.
+
+
+
+Have a lot of fun!

@@ -1,0 +1,79 @@
+#
+# spec file for package python-django_compressor
+#
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define mod_name django_compressor
+Name:           python-%{mod_name}
+Version:        2.3
+Release:        0
+Summary:        Python module to compress linked/inline JavaScript/CSS to cached files
+License:        MIT AND BSD-3-Clause AND Apache-2.0
+Group:          Development/Languages/Python
+URL:            https://github.com/django-compressor/django-compressor
+Source:         https://files.pythonhosted.org/packages/source/d/%{mod_name}/%{mod_name}-%{version}.tar.gz
+Patch0:         pr_956.patch
+BuildRequires:  %{python_module Brotli >= 1.0.6}
+BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module csscompressor}
+BuildRequires:  %{python_module django-appconf >= 1.0}
+BuildRequires:  %{python_module django-sekizai >= 0.9.0}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module rcssmin >= 1.0.6}
+BuildRequires:  %{python_module rjsmin >= 1.1.0}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-Django >= 1.11
+Requires:       python-Jinja2
+Requires:       python-beautifulsoup4
+Requires:       python-csscompressor
+Requires:       python-django-appconf >= 1.0
+Requires:       python-rcssmin >= 1.0.6
+Requires:       python-rjsmin >= 1.1.0
+Recommends:     python-Brotli >= 1.0.6
+Suggests:       python-django-sekizai >= 0.9.0
+BuildArch:      noarch
+%python_subpackages
+
+%description
+Django Compressor combines and compresses linked and inline Javascript or CSS
+in a Django templates into cacheable static files by using the "compress"
+template tag.
+
+%prep
+%setup -q -n %{mod_name}-%{version}
+%patch0 -p1
+
+%build
+%python_build
+
+%install
+%python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%python_expand %{_bindir}/django-admin.py-%{$python_bin_suffix} test --settings=compressor.test_settings compressor --pythonpath=`pwd`
+
+%files %{python_files}
+%license LICENSE
+%doc AUTHORS README.rst
+%{python_sitelib}/*
+
+%changelog

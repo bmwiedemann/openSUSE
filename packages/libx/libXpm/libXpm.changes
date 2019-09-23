@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Sun Jan  1 21:31:52 UTC 2017 - sndirsch@suse.com
+
+- added baselibs.conf as source in specfile 
+
+-------------------------------------------------------------------
+Sun Jan  1 20:44:12 UTC 2017 - sndirsch@suse.com
+
+- Update to version 3.5.12:
+  * Fix abs() usage.
+  * Fix out out boundary read on unknown colors
+  * Gracefully handle EOF while parsing files.
+  * Avoid OOB write when handling malicious XPM files.
+  * Handle size_t in file/buffer length
+
+-------------------------------------------------------------------
+Thu Sep 12 18:38:52 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.5.11:
+  + Fix typo in COPYING (matches src/amigax.h).
+  + Add noreturn attributes suggested by gcc.
+  + Doclifter can't handle more than one dash in a name line.
+  + Fix libXpm build with NO_ZPIPE.
+  + Added 'const' attribute to all filename arguments in the API.
+  + Added 'const' qualifier to the filename argument to internal
+    functions.
+  + Close fd if fdopen() or xpmPipeThrough() fails in
+    OpenWriteFile().
+  + autogen.sh: Implement GNOME Build API.
+  + configure: Remove AM_MAINTAINER_MODE.
+  + Define NO_ZPIPE when building for MinGW.
+
+-------------------------------------------------------------------
+Sun Feb 17 17:21:53 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+
+-------------------------------------------------------------------
+Wed Apr 11 15:42:59 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.5.10:
+  + Compiler warning fixes
+  + Janitorial cleanups
+  + Build configuration improvements
+
+-------------------------------------------------------------------
+Sun Feb 12 01:08:12 UTC 2012 - jengelh@medozas.de
+
+- Rename xorg-x11-libXpm to libXpm and utilize shlib policy
+
+-------------------------------------------------------------------
+Tue Dec 21 02:46:24 UTC 2010 - sndirsch@novell.com
+
+- bumped version number to 7.6 
+
+-------------------------------------------------------------------
+Sat Oct 30 15:45:53 UTC 2010 - sndirsch@novell.com
+
+- libXpm 3.5.9
+  * This minor maintenance release provides a large collection of
+    build configuration improvements and other janitorial 
+    cleanups.
+
+-------------------------------------------------------------------
+Sun Apr  4 15:45:51 CEST 2010 - sndirsch@suse.de
+
+- libXpm 3.5.8
+- bumped version number to 7.5 
+
+-------------------------------------------------------------------
+Mon Dec 14 23:59:15 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Sat May  2 14:42:17 CEST 2009 - eich@suse.de
+
+- revert static library and .la file removal
+  for SUSE versions <= 11.1.
+
+-------------------------------------------------------------------
+Tue Apr 21 19:46:35 CEST 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files
+- run ldconfig in postun 
+
+-------------------------------------------------------------------
+Thu Sep 11 14:21:54 CEST 2008 - sndirsch@suse.de
+
+- bumped release number to 7.4 
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Sat Sep 29 12:23:40 CEST 2007 - sndirsch@suse.de
+
+- bumped version to 7.3 
+
+-------------------------------------------------------------------
+Fri Aug 24 15:49:55 CEST 2007 - sndirsch@suse.de
+
+- libXpm 3.5.7
+  * Sun bug 4486226: Xpm is not internationalized
+  * Use AM_CFLAGS & AM_CPPFLAGS to replace per-program and obsolete macros
+  * Include comment/copyright/license for AC_DEFINE_DIR in acinclude.m4
+  * Replace index/rindex with C89 standard strchr/strrchr
+  * Use srcdir in paths passed to xgettext when making .po files
+  * Replace strcpy with strncpy to match previous code block
+  * X.Org Bug #11863: Build libXpm on MS Windows (with MinGW)
+
+-------------------------------------------------------------------
+Sat Oct 14 06:16:47 CEST 2006 - sndirsch@suse.de
+
+- updated to X.Org 7.2RC1 
+
+-------------------------------------------------------------------
+Wed Aug  2 16:12:23 CEST 2006 - sndirsch@suse.de
+
+- fix setup line 
+
+-------------------------------------------------------------------
+Fri Jul 28 14:44:42 CEST 2006 - sndirsch@suse.de
+
+- use "-fno-strict-aliasing" 
+
+-------------------------------------------------------------------
+Thu Jul 27 11:47:25 CEST 2006 - sndirsch@suse.de
+
+- use $RPM_OPT_FLAGS
+- remove existing /usr/include/X11 symlink in %pre 
+
+-------------------------------------------------------------------
+Fri Jun 23 16:51:11 CEST 2006 - sndirsch@suse.de
+
+- created package 
+

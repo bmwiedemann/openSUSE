@@ -1,0 +1,619 @@
+-------------------------------------------------------------------
+Mon Aug  5 23:28:16 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Convert to _multibuild, to avoid doc dependencies when building
+  the main package.
+
+-------------------------------------------------------------------
+Wed Jul 24 15:48:27 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Clean up spec file:
+  * Correct License tag, some included algorithms are LGPL-2.1-only
+  * Remove conditionals for obsolete distributions (which were failing
+    or unresolvable anyway)
+  * Remove defattr, use license macro
+  * Hide GL/GLUT/GLEW BuildRequires behind tests bcond, as tests are
+    not build currently
+  * Add missing BuildRequires tex(newunicodechar.sty), group doc dependencies
+
+-------------------------------------------------------------------
+Tue Feb 26 19:32:49 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop doc tgz that contained duplicated files
+  to make the package build reproducible (boo#1047218)
+
+-------------------------------------------------------------------
+Sat Dec 29 00:22:34 UTC 2018 - Christoph Junghans <junghans@votca.org>
+
+- Update to version 3.3.7:
+  + Changes since 3.3.6: Fix compilation with GCC>=6 and compiler optimization turned off.
+- Added eigen3-3.3.1-fixcmake.patch
+
+-------------------------------------------------------------------
+Tue Nov  7 13:30:09 UTC 2017 - alarrosa@suse.com
+
+- Remove libqt4 from BuildRequires since it's actually only required
+  by some demos and tests which are simply not built when it's not
+  available (except on Leap, where libqt4 is required)
+
+-------------------------------------------------------------------
+Sat Aug 12 16:10:58 UTC 2017 - jengelh@inai.de
+
+- Use right RPM group.
+
+-------------------------------------------------------------------
+Wed Jul 18 03:00:00 UTC 2017 - cfeck@kde.org
+
+- Split documentation into its own -doc package due to size.
+
+-------------------------------------------------------------------
+Wed Jul  5 20:26:17 UTC 2017 - asterios.dramis@gmail.com
+
+- Update to version 3.3.4:
+  General:
+  * Improve speed of Jacobi rotation when mixing complex and real
+    types.
+  * Bug 1405: enable StrictlyLower/StrictlyUpper triangularView as
+    the destination of matrix*matrix products.
+  * UmfPack support: enable changes in the control settings and add
+    report functions.
+  * Bug 1423: fix LSCG's Jacobi preconditioner for row-major
+    matrices.
+  * Bug 1424: fix compilation issue with abs and unsigned integers
+    as scalar type.
+  * Bug 1410: fix lvalue propagation of Array/Matrix-Wrapper with a
+    const nested expression.
+  * Bug 1403: fix several implicit scalar type conversion making
+    SVD decompositions compatible with ceres::Jet.
+  * Fix some real-to-scalar-to-real useless conversions in
+    ColPivHouseholderQR.
+  Regressions:
+  * Fix dense * sparse-selfadjoint-view product.
+  * Bug 1417: make LinSpace compatible with std::complex.
+  * Bug 1400: fix stableNorm alignment issue with
+    EIGEN_DONT_ALIGN_STATICALLY.
+  * Bug 1411: fix alignment issue in Quaternion.
+  * Fix compilation of operations between nested Arrays.
+  * Bug 1435: fix aliasing issue in expressions like: A = C - B*A.
+  Others:
+  * Fix compilation with gcc 4.3 and ARM NEON.
+  * Fix prefetches on ARM64 and ARM32.
+  * Fix out-of-bounds check in COLAMD.
+  * Few minor fixes regarding nvcc/CUDA support, including bug
+    1396.
+  * Improve cmake scripts for Pastix and BLAS detection.
+  * Bug 1401: fix compilation of "cond ? x : -x" with x an
+    AutoDiffScalar
+  * Fix compilation of matrix log with Map as input.
+  * Add specializations of std::numeric_limits for Eigen::half and
+    and AutoDiffScalar
+  * Fix compilation of streaming nested Array, i.e.,
+    cout << Array<Array<>>
+
+-------------------------------------------------------------------
+Tue Mar  7 21:57:13 UTC 2017 - asterios.dramis@gmail.com
+
+- Update to version 3.3.3:
+  * Lots of changes. See
+    http://eigen.tuxfamily.org/index.php?title=ChangeLog#Eigen_3.3.3
+    for details.
+- Added new build requirements libboost_headers-devel for
+  Tumbleweed and boost-devel for openSUSE <= 13.2.
+- Rebased 0001-Disable-Altivec-for-ppc64le.patch and
+  0001-Do-stack-allignment-on-ppc.patch to apply cleanly.
+
+-------------------------------------------------------------------
+Wed Jan  4 08:49:33 UTC 2017 - olaf@aepfle.de
+
+- Require texlive-dvips during build
+
+-------------------------------------------------------------------
+Sun Aug  7 20:31:43 UTC 2016 - asterios.dramis@gmail.com
+
+- Update to version 3.2.9:
+  Main fixes and improvements:
+  * Improve numerical robustness of JacobiSVD (backported from 3.3)
+  * Bug 1017: prevents underflows in makeHouseholder
+  * Fix numerical accuracy issue in the extraction of complex
+    eigenvalue pairs in real generalized eigenvalue problems.
+  * Fix support for vector.homogeneous().asDiagonal()
+  * Bug 1238: fix SparseMatrix::sum() overload for un-compressed
+    mode
+  * Bug 1213: workaround gcc linking issue with anonymous enums.
+  * Bug 1236: fix possible integer overflow in sparse-sparse
+    product
+  * Improve detection of identical matrices when applying a
+    permutation (e.g., mat = perm * mat)
+  * Fix usage of nesting type in blas_traits. In practice, this
+    fixes compilation of expressions such as A*(A*A)^T
+  * CMake: fixes support of Ninja generator
+  * Add a StorageIndex typedef to sparse matrices and expressions
+    to ease porting code to 3.3
+    (see http://eigen.tuxfamily.org/index.php?title=3.3#Index_typedef)
+  * Bug 1200: make aligned_allocator c++11 compatible (backported
+    from 3.3)
+  * Bug 1182: improve generality of abs2 (backported from 3.3)
+  * Bug 537: fix compilation of Quaternion with Apples's compiler
+  * Bug 1176: allow products between compatible scalar types
+  * Bug 1172: make valuePtr and innerIndexPtr properly return null
+    for empty sparse matrices.
+  * Bug 1170: skip calls to memcpy/memmove for empty inputs.
+  Others:
+  * Bug 1242: fix comma initializer with empty matrices.
+  * Improves support for MKL's PARDISO solver.
+  * Fix a compilation issue with Pastix solver.
+  * Add some missing explicit scalar conversions
+  * Fix a compilation issue with matrix exponential (unsupported
+    MatrixFunctions module).
+  * Bug 734: fix a storage order issue in unsupported Spline module
+  * Bug 1222: fix a compilation issue in AutoDiffScalar
+  * Bug 1221: shutdown some GCC6's warnings.
+  * Bug 1175: fix index type conversion warnings in sparse to dense
+    conversion.
+- Removed build requirements gnu-free-fonts and texlive-amsfonts
+  (not needed anymore).
+
+-------------------------------------------------------------------
+Thu Jun 30 20:46:12 UTC 2016 - asterios.dramis@gmail.com
+
+- Update to version 3.2.8:
+  Main fixes and improvements:
+   * Make FullPivLU::solve use rank() instead of nonzeroPivots().
+   * Add EIGEN_MAPBASE_PLUGIN
+   * Bug 1166: fix issue in matrix-vector products when the
+     destination is not a vector at compile-time.
+   * Bug 1100: Improve cmake/pkg-config support.
+   * Bug 1113: fix name conflict with C99's "I".
+   * Add missing delete operator overloads in
+     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+   * Fix (A*B).maxCoeff(i) and similar.
+   * Workaround an ICE with VC2015 Update1 x64.
+   * Bug 1156: fix several function declarations whose arguments
+     were passed by value instead of being passed by reference
+   * Bug 1164: fix std::list and std::deque specializations such
+     that our aligned allocator is automatically activatived only
+     when the user did not specified an allocator (or specified the
+     default std::allocator).
+  Others:
+   * Fix BLAS backend (aka MKL) for empty matrix products.
+   * Bug 1134: fix JacobiSVD pre-allocation.
+   * Bug 1111: fix infinite recursion in
+     sparse-column-major.row(i).nonZeros() (it now produces a
+     compilation error)
+   * Bug 1106: workaround a compilation issue in Sparse module for
+     msvc-icc combo
+   * Bug 1153: remove the usage of __GXX_EXPERIMENTAL_CXX0X__ to
+     detect C++11 support
+   * Bug 1143: work-around gcc bug in COLAMD
+   * Improve support for matrix products with empty factors.
+   * Fix and clarify documentation of Transform wrt
+     operator*(MatrixBase)
+   * Add a matrix-free conjugate gradient example.
+   * Fix cost computation in CwiseUnaryView (internal)
+   * Remove custom unaligned loads for SSE.
+   * Some warning fixes.
+   * Several other documentation clarifications.
+- Updated build requirement superlu to superlu-devel.
+- Added a patch "eigen_pkgconfig.patch" to fix pkg-config file
+  includedir (taken from Fedora).
+- Added a patch "01_install_FindEigen3.patch" to install
+  FindEigen3.cmake (taken from Fedora).
+
+-------------------------------------------------------------------
+Fri Nov 27 13:31:47 UTC 2015 - Rene.vanPaassen@gmail.com
+
+- Specify eigen header install dir; otherwise the pkgconfig file 
+  defaults to -Iinclude/eigen3 
+
+-------------------------------------------------------------------
+Mon Nov 16 13:14:52 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.2.7
+  * Add support for dense.cwiseProduct(sparse).
+  * Fix a regression regarding (dense*sparse).diagonal().
+  * Make the IterativeLinearSolvers module compatible with MPL2-only
+    mode by defaulting to COLAMDOrdering and NaturalOrdering for ILUT
+    and ILLT respectively.
+  * Bug 266: backport support for c++11 move semantic
+  * operator/=(Scalar) now performs a true division (instead of mat*(1/s))
+  * Improve numerical accuracy in LLT and triangular solve by using 
+    true scalar divisions (instead of mat * (1/s))
+  * Bug 1092: fix iterative solver constructors for expressions as input
+  * Bug 1088: fix setIdenity for non-compressed sparse-matrix
+  * Bug 1086: add support for recent SuiteSparse versions
+  * Add overloads for real-scalar times SparseMatrix<complex> operations.
+    This avoids real to complex conversions, and also fixes a compilation
+    issue with MSVC.
+  * Use explicit Scalar types for AngleAxis initialization
+  * Fix several shortcomings in cost computation (avoid multiple 
+    re-evaluation in some very rare cases).
+  * Bug 1090: fix a shortcoming in redux logic for which 
+    slice-vectorization plus unrolling might happen.
+  * Fix compilation issue with MSVC by backporting 
+    DenseStorage::operator= from devel branch.
+  * Bug 1063: fix nesting of unsupported/AutoDiffScalar to prevent 
+    dead references when computing second-order derivatives
+  * Bug 1100: remove explicit CMAKE_INSTALL_PREFIX prefix to conform 
+    to cmake install's DESTINATION parameter.
+  * unsupported/ArpackSupport is now properly installed by make install.
+  * Bug 1080: warning fixes
+- Changes from version 3.2.6
+  * fix some compilation issues with MSVC 2013, including bugs 1000 and 1057
+  * SparseLU: fixes to support EIGEN_DEFAULT_TO_ROW_MAJOR (bug 1053), and
+    for empty (bug 1026) and some structurally rank deficient matrices (bug 792)
+  * Bug 1075: fix AlignedBox::sample() for Dynamic dimension
+  * fix regression in AMD ordering when a column has only one off-diagonal
+    non-zero (used in sparse Cholesky)
+  * fix Jacobi preconditioner with zero diagonal entries
+  * fix Quaternion identity initialization for non-implicitly convertible types
+  * Bug 1059: fix predux_max<Packet4i> for NEON
+  * Bug 1039: fix some issues when redefining EIGEN_DEFAULT_DENSE_INDEX_TYPE
+  * Bug 1062: fix SelfAdjointEigenSolver for RowMajor matrices
+  * MKL: fix support for the 11.2 version, and fix a naming conflict (bug 1067)
+  * Bug 1033: explicit type conversion from 0 to RealScalar
+- 
+
+-------------------------------------------------------------------
+Sat Sep  5 08:10:52 UTC 2015 - mpluskal@suse.com
+
+- Update to 3.2.5
+  * Changes with main impact:
+    + Improve robustness of SimplicialLDLT to semidefinite problems 
+      by correctly handling structural zeros in AMD reordering
+    + Re-enable supernodes in SparseLU (fix a performance 
+      regression in SparseLU)
+    + Use zero guess in ConjugateGradients::solve
+    + Add PermutationMatrix::determinant method
+    + Fix SparseLU::signDeterminant() method, and add a 
+      SparseLU::determinant() method
+    + Allows Lower|Upper as a template argument of CG and MINRES: 
+      in this case the full matrix will be considered
+    + Bug 872: remove usage of std::bind* functions (deprecated in 
+      c++11)
+  * Numerical robustness improvements:
+    + Bug 1014: improve numerical robustness of the 3x3 direct 
+      eigenvalue solver
+    + Bug 1013: fix 2x2 direct eigenvalue solver for identical 
+      eigenvalues
+    + Bug 824: improve accuracy of Quaternion::angularDistance
+    + Bug 941: fix an accuracy issue in ColPivHouseholderQR by 
+      continuing the decomposition on a small pivot
+    + Bug 933: improve numerical robustness in RealSchur
+    + Fix default threshold value in SPQR
+  * Other changes:
+    + Fix usage of EIGEN_NO_AUTOMATIC_RESIZING
+    + Improved support for custom scalar types in SparseLU
+    + Improve cygwin compatibility
+    + Bug 650: fix an issue with sparse-dense product and 
+      rowmajor matrices
+    + Bug 704: fix MKL support (HouseholderQR)
+    + Bug 705: fix handling of Lapack potrf return code (LLT)
+    + Bug 714: fix matrix product with OpenMP support
+    + Bug 949: add static assertions for incompatible scalar 
+      types in many of the dense decompositions
+    + Bugs 957, 1000: workaround MSVC/ICC compilation issues when 
+      using sparse blocks
+    + Bug 969: fix ambiguous calls to Ref
+    + Bugs 972, 986: add support for coefficient-based product 
+      with 0 depth
+    + Bug 980: fix taking a row (resp. column) of a column-major 
+      (resp. row-major) sparse matrix
+    + Bug 983: fix an alignement issue in Quaternion
+    + Bug 985: fix RealQZ when either matrix had zero rows or 
+      columns
+    + Bug 987: fix alignement guess in diagonal product
+    + Bug 993: fix a pitfall with matrix.inverse()
+    + Bugs 996, 1016: fix scalar conversions
+    + Bug 1003: fix handling of pointers non aligned on scalar 
+      boundary in slice-vectorization
+    + Bug 1010: fix member initialization in IncompleteLUT
+    + Bug 1012: enable alloca on Mac OS or if alloca is defined 
+      as macro
+    + Doc and build system: 733, 914, 952, 961, 999
+- Use cmake macros
+- Use url for source
+- Cleanup spec file with spec-cleaner
+- Remove conditional buildrequires for releases which did not 
+  build anyway
+
+-------------------------------------------------------------------
+Wed Apr 22 20:41:28 UTC 2015 - asterios.dramis@gmail.com
+
+- Update to version 3.2.4:
+  * Fix compilation regression in Rotation2D
+  * Bug 920: fix compilation issue with MSVC 2015.
+  * Bug 921: fix utilization of bitwise operation on enums in
+    first_aligned.
+  * Fix compilation with NEON on some platforms.
+  From version 3.2.3:
+  Core:
+   * Enable Mx0 * 0xN matrix products.
+   * Bug 859: fix returned values for vectorized versions of
+     exp(NaN), log(NaN), sqrt(NaN) and sqrt(-1).
+   * Bug 879: tri1 = mat * tri2 was compiling and running
+     incorrectly if tri2 was not numerically triangular. Workaround
+     the issue by evaluating mat*tri2 into a temporary.
+   * Bug 854: fix numerical issue in
+     SelfAdjointEigenSolver::computeDirect for 3x3 matrices.
+   * Bug 884: make sure there no call to malloc for zero-sized
+     matrices or for a Ref<> without temporaries.
+   * Bug 890: fix aliasing detection when applying a permutation.
+   * Bug 898: MSVC optimization by adding inline hint to
+     const_cast_ptr.
+   * Bug 853: remove enable_if<> in Ref<> ctor.
+  Dense solvers:
+   * Bug 894: fix the sign returned by LDLT for multiple calls to
+     compute().
+   * Fix JacobiSVD wrt underflow and overflow.
+   * Bug 791: fix infinite loop in JacobiSVD in the presence of
+     NaN.
+  Sparse:
+   * Fix out-of-bounds memory write when the product of two sparse
+     matrices is completely dense and performed using pruning.
+   * UmfPack support: fix redundant evaluation/copies when calling
+     compute(), add support for generic expressions as input, and
+     fix extraction of the L and U factors (Bug 911).
+   * Improve SparseMatrix::block for const matrices (the generic
+     path was used).
+   * Fix memory pre-allocation when permuting inner vectors of a
+     sparse matrix.
+   * Fix SparseQR::rank for a completely empty matrix.
+   * Fix SparseQR for row-major inputs.
+   * Fix SparseLU::absDeterminant and add respective unit test.
+   * BiCGSTAB: make sure that good initial guesses are not
+     destroyed by a bad preconditioner.
+  Geometry:
+   * Fix Hyperplane::Through(a,b,c) when points are aligned or
+     identical.
+   * Fix linking issues in OpenGLSupport.
+  OS, build system and doc:
+   * Various compilation fixes including: bug 821, bug 822,
+     bug 857, bug 871, bug 873.
+   * Fix many compilation warnings produced by recent compilers
+     including: bug 909.
+   * Bug 861: enable posix_memalign with PGI.
+   * Fix BiCGSTAB doc example.
+
+-------------------------------------------------------------------
+Sat Aug  9 21:02:38 UTC 2014 - asterios.dramis@gmail.com
+
+- Update to version 3.2.2:
+  Core:
+   * Relax Ref such that Ref<MatrixXf> accepts a RowVectorXf which can be seen
+     as a degenerate MatrixXf(1,N)
+   * Fix performance regression for the vectorization of sub columns/rows of
+     matrices.
+   * EIGEN_STACK_ALLOCATION_LIMIT: Raise its default value to 128KB, make use
+     of it to assert on maximal fixed size object, and allows it to be 0 to
+     mean "no limit".
+   * Bug 839: Fix 1x1 triangular matrix-vector product.
+   * Bug 755: CommaInitializer produced wrong assertions in absence of
+     Return-Value-Optimization.
+  Dense solvers:
+   * Add a rank() method with threshold control to JacobiSVD, and make solve
+     uses it to return the minimal norm solution for rank-deficient problems.
+   * Various numerical fixes in JacobiSVD, including:bug 843, and the move from
+     Lapack to Matlab strategy for the default threshold.
+   * Various numerical fixes in LDLT, including the case of semi-definite
+     complex matrices.
+   * Fix ColPivHouseholderQR::rank().
+   * Bug 222: Make temporary matrix column-major independently of
+     EIGEN_DEFAULT_TO_ROW_MAJOR in BlockHouseholder.
+  Sparse:
+   * http://eigen.tuxfamily.org/bz/show_bug.cgi?id=838 Bug 838]: Fix dense
+     * sparse and sparse * dense outer products and detect outer products from
+     either the lhs or rhs.
+   * Make the ordering method of SimplicialL[D]LT configurable.
+   * Fix regression in the restart mechanism of BiCGSTAB.
+   * Bug 836: extend SparseQR to support more columns than rows.
+   * Bug 808: Use double instead of float for the increasing size ratio in
+     CompressedStorage::resize, fix implicit conversions from int/longint to
+     float/double, and fix set_from_triplets temporary matrix type.
+   * Bug 647: Use smart_copy instead of bitwise memcpy in CompressedStorage.
+   * GMRES: Initialize essential Householder vector with correct dimension.
+  Geometry:
+   * Bug 807: Missing scalar type cast in umeyama()
+   * Bug 806: Missing scalar type cast in Quaternion::setFromTwoVectors()
+   * Bug 759: Removed hard-coded double-math from Quaternion::angularDistance.
+  OS, build system and doc:
+   * Fix compilation with Windows CE.
+   * Fix some ICEs with VC11.
+   * Check IMKL version for compatibility with Eigen
+   * Bug 754: Only inserted (!defined(_WIN32_WCE)) analog to alloc and free
+     implementation.
+   * Bug 803: Avoid char* to int* conversion.
+   * Bug 819: Include path of details.h file.
+   * Bug 738: Use the "current" version of cmake project directories to ease
+     the inclusion of Eigen within other projects.
+   * Bug 815: Fix doc of FullPivLU wrt permutation matrices.
+   * Bug 632: doc: Note that dm2 = sm1 + dm1 is not possible
+   * Extend AsciiQuickReference (real, imag, conjugate, rot90)
+- Added metis-devel build requirement for openSUSE > 13.1.
+
+-------------------------------------------------------------------
+Thu Jul 31 12:52:18 UTC 2014 - dvaleev@suse.com
+
+- Allign the stack on powerpc
+
+- added patches:
+  * 0001-Do-stack-allignment-on-ppc.patch 
+-------------------------------------------------------------------
+Wed Jul 30 15:55:52 UTC 2014 - dvaleev@suse.com
+
+- Disable altivec on ppc64le. eigen3 have no LE altivec inplemented
+  yet.
+
+- added patches:
+  * 0001-Disable-Altivec-for-ppc64le.patch
+-------------------------------------------------------------------
+Thu Apr 10 21:05:43 UTC 2014 - asterios.dramis@gmail.com
+
+- Update to version 3.2.1:
+  * Eigen2 support is now deprecated and will be removed in version 3.3.
+  Core:
+   * Bug fix for Ref object containing a temporary matrix.
+   * Bug 654: Allow construction of row vector from 1D array.
+   * Bug 679: Support cwiseMin() and cwiseMax() on maps.
+   * Support conservativeResize() on vectors.
+   * Improve performance of vectorwise and replicate expressions.
+   * Bug 642: Add vectorization of sqrt for doubles, and make sqrt really safe
+     if EIGEN_FAST_MATH is disabled.
+   * Bug 616: Try harder to align columns when printing matrices and arrays.
+   * Bug 579: Add optional run-time parameter to fixed-size block methods.
+   * Implement .all() and .any() for zero-sized objects
+   * Bug 708: Add placement new and delete for arrays.
+   * Bug 503: Better C++11 support.
+  Dense linear algebra:
+   * Bug 689: Speed up some matrix-vector products by using aligned loads if
+     possible.
+   * Make solve in FullPivHouseholderQR return least-square solution if there
+     is no exact solution.
+   * Bug 678: Fix fullPivHouseholderQR for rectangular matrices.
+   * Fix a 0/0 issue in JacobiSVD.
+   * Bug 736: Wrong result in LDLT::isPositiveDefinite() for semi-definite
+     matrices.
+   * Bug 740: Fix overflow issue in stableNorm().
+   * Make pivoting HouseholderQR compatible with custom scalar types.
+  Geometry:
+   * Fix compilation of Transform * UniformScaling
+  Sparse matrices:
+   * Fix elimination tree and SparseQR for fat rectangular matrices.
+   * Bug 635: add isCompressed to MappedSparseMatrix for compatibility.
+   * Bug 664: Support iterators without operator< in setFromTriplets().
+   * Fixes in SparseLU: infinite loop, aliasing issue when solving, overflow in
+     memory allocation, use exceptions only if enabled (bug 672).
+   * Fixes in SparseQR: reduce explicit zero, assigning result to map, assert
+     catching non-conforming sizes, memory leak.
+   * Bug 681: Uninitialized value in CholmodSupport which may lead to incorrect
+     results.
+   * Fix some issues when using a non-standard index type (bug 665 and more)
+   * Update constrained CG (unsupported module) to Eigen3.
+  OS and build system:
+   * MacOS put OpenGL header files somewhere else from where we expected it.
+   * Do not assume that alloca() is 16-byte aligned on Windows.
+   * Compilation fixes when using ICC with Visual Studio.
+   * Fix Fortran compiler detection in CMake files.
+  * Fix some of our tests (bugs 744 and 748 and more).
+  * Fix a few compiler warnings (bug 317 and more).
+  * Documentation fixes (bugs 609, 638 and 739 and more).
+- Renamed the package from libeigen3-devel to eigen3. Added eigen3-devel
+  subpackage with the necessary Provides/Obsoletes entries for libeigen3-devel.
+
+-------------------------------------------------------------------
+Mon Aug 12 21:23:59 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to version 3.2.0:
+  * See http://eigen.tuxfamily.org/index.php?title=ChangeLog#Eigen_3.2.0 for
+    changes.
+- Removed eigen-3.1.2-remove-include-of-removed-header-file.patch (fixed
+  upstream).
+
+-------------------------------------------------------------------
+Sun May 19 17:53:45 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to version 3.1.3:
+  * Bug 526 - Fix linear vectorized transversal in linspace.
+  * Bug 551 - Fix compilation issue when using EIGEN_DEFAULT_DENSE_INDEX_TYPE.
+  * Bug 533 - Fix some missing const qualifiers in Transpose
+  * Fix a compilation with CGAL::Gmpq by adding explicit internal:: namespace
+    when calling abs().
+  * Fix computation of outer-stride when calling .real() or .imag().
+  * Fix handmade_aligned_realloc (affected conservativeResize()).
+  * Fix sparse vector assignment from a sparse matrix.
+  * Fix log(0) with SSE.
+  * Fix bug in aligned_free with windows CE.
+  * Fix traits of Map<Quaternion.
+  * Fix a few warnings (507, 535, 581).
+  * Enable SSE with ICC even when it mimics a gcc version lower than 4.2
+  * Workaround gcc-4.7 bug #53900 (too aggressive optimization in our alignment
+    check).
+
+-------------------------------------------------------------------
+Tue Feb 12 17:34:58 UTC 2013 - spencerandrewjackson@yahoo.com
+
+- Add eigen-3.1.2-remove-include-of-removed-header-file.patch
+  * Backport 6f233061d009cdb9e79a5201e02599a72ec249c1 from upstream
+  * Allow SparseCore to be included without compiler error
+
+-------------------------------------------------------------------
+Sun Nov 25 17:11:45 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 3.1.2:
+  * Bug 524 - Pardiso's parameter array does not have to be aligned!
+  * Bug 521 - Disable __cpuidex on architectures different that x86 or x86-64
+    with MSVC.
+  * Bug 519 - AlignedBox::dim() was wrong for dynamic dimensions.
+  * Bug 515 - Fix missing explicit scalar conversion.
+  * Bug 511 - Fix pretty printers on windows.
+  * Bug 509 - Fix warnings with gcc 4.7
+  * Bug 501 - Remove aggressive mat/scalar optimization (was replaced by
+    mat*(1/scalar) for non integer types).
+  * Bug 479 - Use EISPACK's strategy re max number of iters in Schur
+    decomposition.
+  * Add support for scalar multiple of diagonal matrices.
+  * Forward resize() function from Array/Matrix wrappers to the nested
+    expression such that mat.array().resize(a,b) is now allowed.
+  * Windows CE: fix the lack of the aligned_malloc function on this platform.
+  * Fix comma initializer when inserting empty matrices.
+  * Fix dense=sparse*diagonal products.
+  * Fix compilation with m.array().min(scalar) and m.array().max(scalar).
+  * Fix out-of-range memory access in GEMV (the memory was not used for the
+    computation, only to assemble unaligned packets from aligned packet loads).
+  * Fix various regressions with MKL support.
+  * Fix aliasing issue in sparse matrix assignment.
+  * Remove stupid assert in blue norm.
+  * Workaround a weird compilation error with MSVC.
+- Added sparsehash-devel as build requirement for openSUSE > 12.2.
+
+-------------------------------------------------------------------
+Fri Oct  5 19:13:06 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 3.1.1:
+  * Relicense to MPL2
+  * Add a EIGEN_MPL2_ONLY build option to generate compiler errors when
+    including non-MPL2 modules
+  * Remove dynamic allocation for triangular matrix-matrix products of fixed
+    size objects
+  * Fix possible underflow issues in SelfAdjointEigenSolver
+  * Fix issues with fixed-size Diagonal (sub/super diagonal size computation
+    was wrong)
+  * Bug 487 - Geometry module: isometry * scaling compilation error
+  * Bug 486 - MKL support: fixed multiple-references linker errors with various
+    decompositions
+  * Bug 480 - work around compilation error on Android NDK due to isfinite
+    being defined as a macro
+  * Bug 485 - IterativeLinearSolvers: conflict between a typedef and template
+    type parameter
+  * Bug 479 - Eigenvalues/Schur: Adjust max iterations count to matrix size
+  * Fixed Geometry module compilation under MSVC
+  * Fixed Sparse module compilation under MSVC 2005
+- Updated the package license to "MPL-2.0 and LGPL-2.1+ and BSD-3-Clause".
+- Use pkgconfig(gl) instead of Mesa-libGL-devel as build requirement.
+- Added texlive-amsfonts build requirement for openSUSE > 12.2 to fix some
+  errors during documentation building.
+
+-------------------------------------------------------------------
+Sun Jul 22 12:42:03 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 3.1.0:
+  * See http://eigen.tuxfamily.org/index.php?title=ChangeLog#Eigen_3.1.0 for
+    changes.
+- Added new build requirements freeglut-devel, glew-devel and for
+  openSUSE > 12.1 suitesparse-devel.
+
+-------------------------------------------------------------------
+Sun May 20 16:43:44 UTC 2012 - asterios.dramis@gmail.com
+
+- Added gnu-free-fonts as build requirement in order to fix compilation of the
+  development documentation.
+
+-------------------------------------------------------------------
+Sun Apr  1 14:54:02 UTC 2012 - asterios.dramis@gmail.com
+
+- Don't build development documentation for openSUSE 11.4 (fails to build).
+- Fix rpmlint warning "zero-length".
+
+-------------------------------------------------------------------
+Tue Mar 27 20:21:10 UTC 2012 - asterios.dramis@gmail.com
+
+- Initial release (version 3.0.5).

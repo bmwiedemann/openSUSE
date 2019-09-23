@@ -1,0 +1,30 @@
+From 53b00c2bfe12c19b2228489c2f4b27b08dcaf53f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Wed, 27 Dec 2017 08:34:52 +0100
+Subject: [PATCH 4/6] Add correct instruction about Octave and MATLAB packages
+
+---
+ README | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/README b/README
+index fdfd1372acf5..85ec5ecc6c91 100644
+--- a/README
++++ b/README
+@@ -12,8 +12,11 @@ Forum:     http://openems.de/forum/
+ Tutorials: http://openems.de/index.php/Tutorials
+ 
+ 
+-To use openEMS from Matlab or Octave, you need to include the <openEMS-install-folder>/matlab folder in the respective environment:
+-> addpath( '<openEMS-install-folder>/matlab' );
++To use openEMS from Octave, you need to load openEMS package:
++> pkg load openems;
++
++To use openEMS from Matlab, you need to include the </usr/share/openEMS/matlab folder in the respective environment:
++> addpath( '/usr/share/openEMS/matlab' );
+ 
+ To verify the correct installation follow the instructions at:
+ http://openems.de/index.php/Tutorial:_First_Steps
+-- 
+2.15.1
+

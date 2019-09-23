@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Sat Apr 21 15:54:27 UTC 2018 - badshah400@gmail.com
+
+- Add Requires: wordnet, since the program is basically useless
+  without it.
+- Trim description in specfile of unnecessary sentences.
+
+-------------------------------------------------------------------
+Thu Jan 31 16:40:56 UTC 2013 - badshah400@gmail.com
+
+- Update to version 1.0.3:
+  + Auto completion of wordnet terms implmented
+  + Wordnet terms load and auto completion list populate made idle
+    exec. functions
+  + Lookup history made persistant; can be cleared or saved when
+    required
+  + Invisible mode made optional; show window on startup made
+    optional
+  + Polysemy count display now made optional; can be toggled via
+    the toolbutton
+  + Status/tray icon now made optional; can be toggled via the
+    toolbutton
+  + Added Member Of, Substance Of and Part Of classification to
+    Holo and Meronyms
+  + "farcry" search should now fetch "far cry" correctly for both
+    normal and notify lookup
+  + Added accelerators Ctrl + W and Ctrl + Q support
+  + Fixed issues in finding libnotify.so across distributions
+  + Fixed relative tab names by removing Similar for Nouns and
+    Verbs (WNI)
+  + Fixed 671084 - Back button skips Wildmat search results
+  + Bumped min GTK+ version to 2.24 to remove deprecated
+    GtkComboBoxEntry there by adding GtkComboBox with "has-entry"
+    set to TRUE
+  + Bumped min GLib version to 2.22
+  + Lot of code clean-ups and minor fixes 
+- Add artha-fix-gio-linking.patch to fix a linking issue with
+  libgio-2.0 that broke build; this requires doing autoreconf
+  during build, accordingly require libtool, automake and
+  autoconf
+- Add artha-only-use-AM_PROG_AR-if-defined.patch to fix build
+  errors with openSUSE <= 12.1 when autoreconf is used.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:44:23 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sat Sep 17 12:18:04 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Fri Aug  5 22:56:12 UTC 2011 - badshah400@gmail.com
+
+- Minor spec file cleanup
+
+-------------------------------------------------------------------
+Thu Jul 28 23:30:52 UTC 2011 - badshah400@gmail.com
+
+- Initial package (version 1.0.2)
+

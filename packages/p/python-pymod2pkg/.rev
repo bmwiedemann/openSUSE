@@ -1,0 +1,253 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>93cba84b86d2dc013bd94f440b887265</srcmd5>
+    <version>0.7.0</version>
+    <time>1487680684</time>
+    <user>dimstar_suse</user>
+    <comment>New pkg</comment>
+    <requestid>447509</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c8b620721843f47621856f613dd3c823</srcmd5>
+    <version>0.7.5</version>
+    <time>1492714496</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.7.5
+  - Change horizon mapping for RDO
+
+- update to version 0.7.4:
+  - Correctly translate horizon for SUSE
+  - Add RDO mapping rules for dnspython and xattr
+  - Support horizon ui/dashboard plugins on SUSE
+  - Translate python-glareclient for SUSE correctly
+  - Add monasca projects as OpenStack projects
+  - Updated from global requirements
+  - Fix RDO mapping for pyScss
+  - Add RDO mappings for pyscss, XStatic-term.js and nosexcover
+
+- update to version 0.7.2:
+  - Fix mapping of pystache for RDO
+  - Add RDO mapping for bandit
+  - Add RDO rule for PyPi package ovs
+
+- update to version 0.7.1:
+  - Add RDO mapping for supervisor
+  - Add upstream rule for XStatic-smart-table
+  - Add support for Ubuntu
+  - Fix RDO mistral mapping
+  - Add Constraints support</comment>
+    <requestid>487825</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cca9fd070179f58a4f93456012023343</srcmd5>
+    <version>0.7.6</version>
+    <time>1493235882</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.7.6
+  - Add mappings for masakari
+  - Updated from global requirements</comment>
+    <requestid>491226</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f6aad0d7e736ce0ea61a1df4cf055045</srcmd5>
+    <version>0.8.1</version>
+    <time>1501067184</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.8.1
+  - Fix SUSE mapping for libvirt-python
+  - Add SUSE naming exception for ansible
+  - Updated from global requirements
+
+- update to version 0.7.8
+  - Drop py34 and add py35 in setup.cfg tox.ini
+  - Add murano-dashboard rule
+  - Updated from global requirements
+  - Add mappings for networking-vsphere
+  - Add rule for GitPython in RDO
+
+- update to version 0.7.7:
+  - Add mappings for libvirt-python</comment>
+    <requestid>512588</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>db04c90a51e4960f0eb031e2c5e34a46</srcmd5>
+    <version>0.8.2</version>
+    <time>1501311700</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.8.2
+  - Add RDO and SUSE mappings for karbor
+  - Update home-page according to doc migration</comment>
+    <requestid>512779</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>725dcd0a7f285de0885f1231d6c70610</srcmd5>
+    <version>0.8.3</version>
+    <time>1501666070</time>
+    <user>maxlin_factory</user>
+    <comment>- update to version 0.8.3
+  - Add mappings for monasca-transform and monasca-ceilometer</comment>
+    <requestid>513721</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8e5baac699b29a2e7eaa67eac52ae3f8</srcmd5>
+    <version>0.9.0</version>
+    <time>1505239095</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.9.0
+  - Added name conversion support for tempest-plugin
+  - Support FWaaS/VPNaaS horizon ui/dashboard plugins on SUSE
+  - Add mapping of PyJWT for RDO
+  - Add mapping of tempest-horizon for RDO
+  - Add support for python3 packages
+  - Updated from global requirements</comment>
+    <requestid>523713</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e1ea52bd6da03a20259353ca15ad3735</srcmd5>
+    <version>0.10.0</version>
+    <time>1505335090</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.10.0
+  - Add SUSE exception for python-devel
+  - Add mapping for unversioned names</comment>
+    <requestid>525860</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a6103665ccebfc19e2f502c8d211f9e9</srcmd5>
+    <version>0.10.1</version>
+    <time>1507897083</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.10.1
+  - Fix mappings for os-brick and mock
+  - Add tripleo-common for RDO openstack- packages
+  - add a number of simple mappings for RDO</comment>
+    <requestid>533292</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8cef344d46ac8b09549181783fd698e7</srcmd5>
+    <version>0.11.0</version>
+    <time>1514907308</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.11.0
+  - Change default translation for py2 in RDO
+  - Add RDO mapping for sysv_ipc
+  - Switch to newer flake8 / python 3.x version
+  - Avoid tox_install.sh for constraints support
+  - Add freezer for SUSE and RDO
+  - Updated from global requirements</comment>
+    <requestid>561061</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6aaff1fa5ef9cc1b346fe8c02d13e36b</srcmd5>
+    <version>0.13.0</version>
+    <time>1518187575</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.13.0
+  - Add packages needed for freezer
+  - Add freezer-api and freezer-dr services
+  - Updated from global requirements</comment>
+    <requestid>573799</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cc694dfb4972493b5cae722d584cbc54</srcmd5>
+    <version>0.13.1</version>
+    <time>1519308141</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.13.1
+  - Fix the name for freezer-web-ui
+  - Add RDO mapping for APScheduler</comment>
+    <requestid>578802</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c8ee5087ff35875787bff7aad304709e</srcmd5>
+    <version>0.14.0</version>
+    <time>1537964568</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.14.0
+  - Add RDO mapping for rtslib-fb
+  - Add RDO mapping for sphinx_rtd_theme, remove unneeded dot
+  - Update links in README
+  - Translate ironic-python-agent for SUSE correctly
+  - Add RDO mapping for ansible
+  - Change RDO mapping for PyYAML, pyparsing and pytz
+  - Updated from global requirements
+  - add lower-constraints job
+  - Added cyborg for SUSE and RDO mappings</comment>
+    <requestid>634901</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>255e30d3923d4fdeb0f6d56811ee60ee</srcmd5>
+    <version>0.17.0</version>
+    <time>1545141390</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.17.0
+  - Add entry for python-octaviaclient
+  - Add zun to the client/services list
+  - fix tox python3 overrides
+  - Change openstack-dev to openstack-discuss
+  - added regex rule for horizon dashboard packages for suse
+
+- update to version 0.16.0
+  - Add qinling client
+  - Switch to stestr and remove flake8 from the list of dependencies
+  - switch documentation job to new PTI
+  - add python 3.6 unit test job
+  - Add watcher service
+  - import zuul job settings from project-config</comment>
+    <requestid>658027</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cbf99bf9e0a93742a2a0e6df49df5395</srcmd5>
+    <version>0.18.0</version>
+    <time>1551785192</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.18.0
+  - flake8: update to 3.6.x
+  - Fix zunclient mapping for SUSE
+  - Add heat-cfntools translation for RDO
+  - Add RDO/SUSE rule for heat-agents
+  - Tighten the horizon plugin rule a bit more
+  - Change openstack-dev to openstack-discuss
+  - Use template for lower-constraints
+  - Fix regression in neutron-fwaas-dashboard mapping</comment>
+    <requestid>681649</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3540af3f4037b2f596fbe5b5d137da47</srcmd5>
+    <version>0.20.0</version>
+    <time>1566893903</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.20.0
+  - Unify services list between rdo and suse
+  - Add openstack-placement mapping
+  - update git.openstack.org to opendev
+  - Use sphinx-build for building the documentation
+  - Add RDO mapping for semantic_version
+
+- update to version 0.19.0:
+  * Add aodh and barbican rule for SUSE
+  * Add networking-l2gw translation for RDO &amp; SUSE
+  * Add Python 3 Train unit tests
+  * Switch to openstackdocstheme
+  * OpenDev Migration Patch</comment>
+    <requestid>725501</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a4e84f23182df4397c6f49d1da2e0d91</srcmd5>
+    <version>0.20.1</version>
+    <time>1567010275</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.20.1
+  - Add openstack-placement rule for SUSE and RDO</comment>
+    <requestid>726705</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4cde600ec308a234708c004b8dedc424</srcmd5>
+    <version>0.21.0</version>
+    <time>1567680169</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.21.0
+  - Translate tempest to openstack-tempest</comment>
+    <requestid>728153</requestid>
+  </revision>
+</revisionlist>

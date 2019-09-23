@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Tue Nov 22 09:37:29 UTC 2016 - schwab@suse.de
+
+- Fix dependencies
+
+-------------------------------------------------------------------
+Sat Nov 19 11:44:17 UTC 2016 - jengelh@inai.de
+
+- Update descriptions with some more useful info
+
+-------------------------------------------------------------------
+Fri Aug 26 10:23:19 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.2.1:
+  * [dsp] Call appropriate NEON butterfly functions in
+    NE10_fft_int32.neon.c
+  * [dsp] Prevent overflow by moving scaling in front of butterfly
+  * [dsp] Link stdc++ for static build
+  * [all] Switch to intrinsic on iOS
+  * [dsp] Fix NE10_INLINE_ASM_OPT for RFFT
+  * [math] Limit the range of input to avoid the failed tests in
+    math module
+  * [dsp] Fix test_suite_fft_int32.c fails under armv7
+  * For 4-point and 8-point FFTs, we fall back to VFP because they
+    are too short for NEON optimizations
+  * [all] Main fuction in tests return 0 if all tests pass
+  * [all] Enable neon code on ARM32 in physics, dsp and image
+    modules
+  * [dsp] Improve data layout in RFFT float32
+
+-------------------------------------------------------------------
+Wed May  1 18:54:31 UTC 2013 - dmueller@suse.com
+
+- fix package version
+- split -devel package
+- install headers
+- various build fixes
+
+-------------------------------------------------------------------
+Wed Apr 17 06:21:12 UTC 2013 - awafaa@opensuse.org
+
+- Split binary to reflect lib
+
+-------------------------------------------------------------------
+Tue Apr 16 16:00:31 UTC 2013 - awafaa@opensuse.org
+
+- Update license to BSD-3-Clause 
+
+-------------------------------------------------------------------
+Tue Apr 16 15:56:36 UTC 2013 - awafaa@opensuse.org
+
+- Clean spec file and add fdupes requirement
+
+-------------------------------------------------------------------
+Wed Mar 27 10:09:24 UTC 2013 - awafaa@opensuse.org
+
+- Initial import for openSUSE version 20130327

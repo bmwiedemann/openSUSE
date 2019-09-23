@@ -1,0 +1,177 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4303f7add78565ee20839e26f7f89751</srcmd5>
+    <version>3.2.0</version>
+    <time>1309786283</time>
+    <user>darix</user>
+    <comment>Please add, replaces python-cherrypy.</comment>
+    <requestid>75249</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>94fda85ffc747ca6ff43610eaf60c226</srcmd5>
+    <version>3.2.0</version>
+    <time>1309786296</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 75249
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>94fda85ffc747ca6ff43610eaf60c226</srcmd5>
+    <version>3.2.0</version>
+    <time>1319182377</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>fd81efb255cc0b71da54cc329b27472e</srcmd5>
+    <version>3.2.0</version>
+    <time>1323194097</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>46ea3af09a91f6cda42d1ceb2e7d4926</srcmd5>
+    <version>3.2.2</version>
+    <time>1338280503</time>
+    <user>coolo</user>
+    <comment>- Fix building on openSUSE 11.4
+- spec file cleanups (forwarded request 122297 from TheBlackCat) (forwarded request 122299 from TheBlackCat)</comment>
+    <requestid>122300</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>46ea3af09a91f6cda42d1ceb2e7d4926</srcmd5>
+    <version>3.2.2</version>
+    <time>1340184027</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>5b3e0f39f2b11f0b610485ac2966110a</srcmd5>
+    <version>3.2.2</version>
+    <time>1353601231</time>
+    <user>coolo</user>
+    <comment>Remove openSUSE 11.4 spec file workarounds (forwarded request 142386 from TheBlackCat) (forwarded request 142387 from TheBlackCat)</comment>
+    <requestid>142388</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>5b3e0f39f2b11f0b610485ac2966110a</srcmd5>
+    <version>3.2.2</version>
+    <time>1359109972</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>e26d88b8ba7c0680a28881c22c3f031d</srcmd5>
+    <version>3.2.2</version>
+    <time>1371651622</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179670</requestid>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>e26d88b8ba7c0680a28881c22c3f031d</srcmd5>
+    <version>3.2.2</version>
+    <time>1379664096</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a112170780cbc8f7d4f9998efb14b3b1</srcmd5>
+    <version>3.2.4</version>
+    <time>1380297540</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 201006 from posophe)</comment>
+    <requestid>201027</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>310ee6170e88e1f752ecdde58fa6e8ae</srcmd5>
+    <version>3.3.0</version>
+    <time>1400682130</time>
+    <user>coolo</user>
+    <comment>Update to version 3.3.0 (forwarded request 234840 from TheBlackCat)</comment>
+    <requestid>234841</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>310ee6170e88e1f752ecdde58fa6e8ae</srcmd5>
+    <version>3.3.0</version>
+    <time>1409302783</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f79bd6dd95f0bf7bbc1c5ff7b4ec3950</srcmd5>
+    <version>3.6.0</version>
+    <time>1425031658</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287335</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>52c6352ff3c1ce265fed8a6dfff7b35b</srcmd5>
+    <version>10.2.1</version>
+    <time>1493368732</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>487857</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>1165da0a8c6dbcd62e0330ef2c7662ee</srcmd5>
+    <version>10.2.1</version>
+    <time>1516091711</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561649</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>77f722f9f37c381745497b7b1e8a333a</srcmd5>
+    <version>10.2.1</version>
+    <time>1518513894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574711</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>529c30120f3e8e3fc70c163e2fcf0866</srcmd5>
+    <version>18.1.1</version>
+    <time>1553888331</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 18.1.1:
+  * Revert bus behavior change from 18.1.0 as the former behavior
+    was intentional
+
+- Update to 18.1.0:
+  * too many changes to iterate, see CHANGES.rst
+  * Dropped support for python2
+- Make sure tests are run</comment>
+    <requestid>689368</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>48accd25d1d15c1433791896f070f9a1</srcmd5>
+    <version>18.1.1</version>
+    <time>1558340810</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703516</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>53248f70bbe7298a0a869b9ece28dfff</srcmd5>
+    <version>18.1.1</version>
+    <time>1560861888</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1136862: ignore StaticTest.test_null_bytes test case, which
+  fails due to Python 3 fixes for CVE-2019-9740. (gh#cherrypy/cherrypy#1781) (forwarded request 706705 from mcepl)</comment>
+    <requestid>706706</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d768742c052d1ee72f0046906eaee038</srcmd5>
+    <version>18.1.2</version>
+    <time>1564484578</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to work with pytest5, from upstream:
+  * pytest5.patch
+
+- Update to 18.1.2:
+  * Fixed :issue:`1377` via :pr:`1785`: Restore a native WSGI-less HTTP server support.
+  * :pr:`1769`: Reduce log level for non-error events in win32.py</comment>
+    <requestid>717078</requestid>
+  </revision>
+</revisionlist>

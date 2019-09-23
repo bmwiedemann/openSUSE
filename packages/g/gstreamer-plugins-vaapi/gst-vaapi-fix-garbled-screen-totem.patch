@@ -1,0 +1,50 @@
+From 838045b9e2d3b14e4dc95270ba8e86025f5cf3f9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?V=C3=ADctor=20Manuel=20J=C3=A1quez=20Leal?=
+ <vjaquez@igalia.com>
+Date: Thu, 2 May 2019 16:00:57 +0200
+Subject: [PATCH] vaapipostproc: don't do any color conversion when
+ GL_TEXTURE_UPLOAD
+
+https://bugzilla.gnome.org/show_bug.cgi?id=748184 has resurrected
+with commit 3e992d8a
+
+Since gst_vaapi_find_preferred_caps_feature() returns a color format
+from caps negotiation, different from the default one (NV12), the
+postproc enables the color transformation. But when GL_TEXTURE_UPLOAD
+feature is negotiated, no color transformation shall be done.
+
+Nonetheless, with commit 3e992d8a the requested format changes
+firstly, because there's no video sink yet, so ANY caps are
+negotiated; but later, when there's a video sink and a caps
+renegotiation, the GL_TEXTURE_UPLOAD is negotiated though the color
+format conversion still ongoing. It is required to reset that
+conversion.
+
+This patch force default color format when GL_TEXTURE_UPLOAD is
+selected as preferred, thus avoiding the color conversion.
+
+Fixes: #157
+---
+ gst/vaapi/gstvaapipostprocutil.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/gst/vaapi/gstvaapipostprocutil.c b/gst/vaapi/gstvaapipostprocutil.c
+index 1cdc5c49..2b34196b 100644
+--- a/gst/vaapi/gstvaapipostprocutil.c
++++ b/gst/vaapi/gstvaapipostprocutil.c
+@@ -709,9 +709,11 @@ _get_preferred_caps (GstVaapiPostproc * postproc, GstVideoInfo * vinfo,
+ 
+   /* we don't need to do format conversion if GL_TEXTURE_UPLOAD_META
+    * is negotiated */
+-  if (f != GST_VAAPI_CAPS_FEATURE_GL_TEXTURE_UPLOAD_META
+-      && postproc->format != format)
++  if (f == GST_VAAPI_CAPS_FEATURE_GL_TEXTURE_UPLOAD_META) {
++    postproc->format = DEFAULT_FORMAT;
++  } else if (postproc->format != format) {
+     postproc->format = format;
++  }
+ 
+   return outcaps;
+ 
+-- 
+2.21.0

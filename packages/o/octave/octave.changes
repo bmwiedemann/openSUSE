@@ -1,0 +1,987 @@
+-------------------------------------------------------------------
+Fri Jul 05 12:14:16 2019 UTC - Markus Ebner <hiwatari.seiji@gmail.com>
+
+- Backport fix: Cursor misplaced when entering newline in editor with tabs indentation
+  behavior (bug #56533)
+  * Added octave-bug-56533-Cursor_misplaced_when_entering_newline_in_editor_with_tabs_indentation-part1.patch
+  * Added octave-bug-56533-Cursor_misplaced_when_entering_newline_in_editor_with_tabs_indentation-part2.patch
+
+-------------------------------------------------------------------
+Mon May 13 22:23:39 UTC 2019 - Duncan Mac-Vicar <dmacvicar@suse.de>
+
+- Backport fix: pause and kbhit with glibc 2.28 end-of-file state
+  behavior (bug #55029)
+  * Added octave-bug-55029-fix_pause_and_kbhit_with_glibc_2_28.patch
+
+-------------------------------------------------------------------
+Mon Mar  4 19:18:26 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.1.0
+  * Long list of changes: see
+    https://www.gnu.org/software/octave/NEWS-5.1.html
+    https://www.gnu.org/software/octave/news/release/2019/03/01/octave-5.1-released.html
+- Rebase octave_tools_pie.patch
+- Add conditional building with blas instead of openBLAS. Allows building
+  for architectures like RISC-V where openBLAS is not available (and probably
+  never will, RISC-V vector instructions do not fit the openBLAS model).
+
+-------------------------------------------------------------------
+Fri Feb 15 08:52:02 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add %limit_build to avoid build failures
+
+-------------------------------------------------------------------
+Thu Jan 10 23:57:29 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Only set -fpie for octave executables, as LDFLAGS is set as link flag
+  in mkoctfile as default flags, leading to failing module builds.
+  Add octave_tools_pie.patch
+
+-------------------------------------------------------------------
+Thu Jan  3 02:39:29 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.4.1
+  * Long list of changes: see
+    https://www.gnu.org/software/octave/news/release/2018/08/09/octave-4.4.1-released.html
+- Drop obsolete Fix-build-with-Qt-511.patch
+- Fix build with Qt 5.12, use qhelpgenerator for qcollectiongenerator
+- Stop messing with upstream appdata/desktop files
+- Use %bcond_with/%bcond_without
+- Fix unit tests by increasing JVM stack limit, see https://savannah.gnu.org/bugs/index.php?55395
+
+-------------------------------------------------------------------
+Fri Jun 22 21:18:56 UTC 2018 - dmitry_r@opensuse.org
+
+- Qt5 GUI package requires libQt5Sql5-sqlite [boo#1095605]
+
+-------------------------------------------------------------------
+Mon Jun  4 12:26:52 UTC 2018 - christophe@krop.fr
+
+- Add Fix-build-with-Qt-511.patch.
+- Use %license for license files
+
+-------------------------------------------------------------------
+Wed May 16 19:57:17 UTC 2018 - dmitry_r@opensuse.org
+
+- Update to version 4.4.0
+  See https://www.gnu.org/software/octave/NEWS-4.4.html for details
+- Drop octave-java-use-source-target-1_6.patch
+- Drop SLE11 support (already broken)
+- Drop update-alternatives usage
+
+-------------------------------------------------------------------
+Mon Mar 19 14:37:36 UTC 2018 - badshah400@gmail.com
+
+- Update to version 4.2.2:
+  * Long list of changes: see
+    https://www.gnu.org/software/octave/news/release/2018/03/13/octave-4.2.2-released.html
+- Drop octave-also-check-for-qscintilla2_qt5.patch: incorporated
+  upstream.
+
+-------------------------------------------------------------------
+Mon Oct  2 09:06:34 UTC 2017 - badshah400@gmail.com
+
+- Add octave-java-use-source-target-1_6.patch: Switch
+  source/target to 1.6 from 1.3, to get octave building with java
+  9 (for openSUSE > 1320); patch taken from upstream mercurial
+  repository [https://savannah.gnu.org/bugs/?51803].
+
+-------------------------------------------------------------------
+Wed Aug 23 15:54:46 UTC 2017 - dmitry_r@opensuse.org
+
+- Fix octave-devel package requirements
+- Add %octave_blas macros
+
+-------------------------------------------------------------------
+Mon Aug 21 11:26:32 UTC 2017 - dmitry_r@opensuse.org
+
+- Move mkoctfile binary to octave-devel package
+
+-------------------------------------------------------------------
+Thu Aug 10 07:53:51 UTC 2017 - dmitry_r@opensuse.org
+
+- Reenable sparce matrix support
+- Build with openBLAS library by default, except i*86 architectures
+  due to tests failures
+
+-------------------------------------------------------------------
+Mon Jul 10 22:09:11 UTC 2017 - badshah400@gmail.com
+
+- Edit _constraints file to require at least 2GB physical memory,
+  builds on 32-bit systems fail otherwise; see
+  https://savannah.gnu.org/bugs/index.php?51436; fixes build
+  failures on i586 for openSUSE > 1320. 
+- Drop suitesparse-devel BuildRequires; this pulls in openblas,
+  which is not recommended by upstream. See comment #2 in
+  https://savannah.gnu.org/bugs/index.php?51436.
+
+-------------------------------------------------------------------
+Mon Jun 26 14:12:29 UTC 2017 - badshah400@gmail.com
+
+- Add octave-also-check-for-qscintilla2_qt5.patch: When checking
+  for the availibility of QT5 bindings for scintilla, also check
+  for qscintilla2_qt5 (which is the shlib name used by openSUSE),
+  otherwise this causes the in-built editor to be disabled; patch
+  taken from upstream. Since patch modifies m4 files, regenerate
+  configure before executing it (add BuildRequires on automake,
+  autoconf and libtool). All changes applied conditionally only
+  when building against Qt5.
+
+-------------------------------------------------------------------
+Tue Feb 28 14:42:03 UTC 2017 - dmitry_r@opensuse.org
+
+- Update to version 4.2.1
+  * See icluded NEWS file for details
+
+-------------------------------------------------------------------
+Tue Nov 15 20:17:03 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 4.2.0
+  * See icluded NEWS file for details
+
+-------------------------------------------------------------------
+Thu Nov 10 08:08:08 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 4.2.0-rc4
+  * See icluded NEWS file for details
+
+-------------------------------------------------------------------
+Mon Oct 31 17:01:37 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 4.2.0-rc3
+  * See icluded NEWS file for details
+  * Drop octave-gui-info-links.patch, octave-gui-utf8.patch
+
+-------------------------------------------------------------------
+Thu Oct 27 15:32:47 UTC 2016 - dmitry_r@opensuse.org
+
+- Fix Qt5-based GUI documentation links
+  * octave-gui-info-links.patch
+- Fix Qt4-based GUI text encoding [boo#1005431]
+  * octave-gui-utf8.patch
+
+-------------------------------------------------------------------
+Wed Oct 19 07:12:08 UTC 2016 - dmitry_r@opensuse.org
+
+- Build Qt5-based GUI for openSUSE Tumbleweed
+- Clean build requires
+- Move pkg-config file to octave-devel package
+
+-------------------------------------------------------------------
+Tue Oct 18 13:25:54 UTC 2016 - badshah400@gmail.com
+
+- Run %desktop_database_post(un) and %icon_theme_cache_post(un)
+  for %post(un) to update the icon theme cache (required whenever
+  application installs icons to the hicolor icon dir) and desktop
+  database (required whenever application installs a .desktop
+  file) when building with GUI enabled.
+
+-------------------------------------------------------------------
+Fri Sep 23 20:33:21 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 4.2.0~rc2
+  * See icluded NEWS file for details
+- Drop obsolete ocatve-evalc.patch
+
+-------------------------------------------------------------------
+Sat Sep 17 13:43:12 UTC 2016 - dmitry_r@opensuse.org
+
+- Fix evalc crash
+  * ocatve-evalc.patch
+
+-------------------------------------------------------------------
+Sun Sep 11 08:20:25 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 4.2.0~rc1
+  * See icluded NEWS file for details
+- Drop obsolete octave-gcc6.patch
+- Temporary set MALLOC_PERTURB_=0 for tests
+
+-------------------------------------------------------------------
+Fri Aug 26 21:26:33 UTC 2016 - dmitry_r@opensuse.org
+
+- Fix suse-alternative-link-missing [boo#994253]
+
+-------------------------------------------------------------------
+Fri Jul 29 06:10:33 UTC 2016 - dmitry_r@opensuse.org
+
+- Use original appdata file
+- Fix SLE12 build
+
+-------------------------------------------------------------------
+Thu Jul 28 05:40:50 UTC 2016 - badshah400@gmail.com
+
+- Update to version 4.0.3:
+  * Bug fix release, see
+    http://www.gnu.org/software/octave/fixes-4-0-3.html for a full
+    list of fixes.
+- Add appdata file as source, and install it to
+  /usr/share/appdata; this makes octave appear on appstores like
+  gnome-software and KDE Discover.
+- Rebase octave-gcc6.patch for current version.
+
+-------------------------------------------------------------------
+Sat Jun 18 16:52:58 UTC 2016 - dmitry_r@opensuse.org
+
+- Fix build with GCC6 [boo#985363]
+  * octave-gcc6.patch
+
+-------------------------------------------------------------------
+Tue Jun  7 20:05:42 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 4.0.2
+  * Bugfix release
+- Fix SLE12 config
+- Use update-alternatives mechanism for octave binary
+
+-------------------------------------------------------------------
+Tue Mar 22 08:07:58 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 4.0.1
+  * Bugfix release
+
+-------------------------------------------------------------------
+Tue Feb 23 18:24:57 CET 2016 - ro@suse.de
+
+- vendor is ibm on s390, not suse 
+
+-------------------------------------------------------------------
+Fri Oct 23 12:13:59 UTC 2015 - dvaleev@suse.com
+
+- Add disk constraints. Some workers might have enabled build in
+  tmpfs. Where the space is limited.
+
+-------------------------------------------------------------------
+Sun Sep 13 20:07:51 UTC 2015 - dmitry_r@opensuse.org
+
+- Fix desktop menu category
+
+-------------------------------------------------------------------
+Thu Jul 23 08:19:59 UTC 2015 - dmitry_r@opensuse.org
+
+- Add build config for openSUSE:42
+
+-------------------------------------------------------------------
+Fri May 29 22:08:34 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 4.0.0
+  * See icluded NEWS file for details
+- Drop obsolete patches:
+  * octave-3.8.0-llvm-3.4.patch
+  * octave-suitesparse-4.4.patch
+  * octave-unzip-info-in-gui.patch
+- Add RPM macros to octave-devel package
+  * octave.macros
+
+-------------------------------------------------------------------
+Mon Feb 23 20:30:07 UTC 2015 - dmitry_r@opensuse.org
+
+- Fix unzipping compressed info files when running the gui [boo#918942]
+  * octave-unzip-info-in-gui.patch
+- Disable JIT compilation by default
+- Set build settings for SLE11
+
+-------------------------------------------------------------------
+Wed Nov 12 13:31:29 UTC 2014 - dmitry_r@opensuse.org
+
+- Set build settings for SLE12
+
+-------------------------------------------------------------------
+Fri Oct 31 21:36:28 UTC 2014 - dmitry_r@opensuse.org
+
+- Fix build with latest SuiteSparse library
+  * octave-suitesparse-4.4.patch
+- Restore SuiteSparse linking hack for openSUSE <= 13.1
+
+-------------------------------------------------------------------
+Sat Oct 11 08:13:46 UTC 2014 - dmueller@suse.com
+
+- fix filelist on armv6/7hl: triplet is gnueabi, not gnu 
+
+-------------------------------------------------------------------
+Fri Aug 22 19:11:44 UTC 2014 - dmitry_r@opensuse.org
+
+- Move GUI localization files to octave-gui package
+
+-------------------------------------------------------------------
+Fri Aug 15 13:58:40 UTC 2014 - dmitry_r@opensuse.org
+
+- Fix runtime dependencies: makeinfo instead of texinfo [bnc#892123]
+
+-------------------------------------------------------------------
+Wed Aug 13 17:06:32 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 3.8.2
+  * Bugfix release, see included ChangeLog file for details
+- Drop suitesparse linking hack [bnc#883683]
+
+-------------------------------------------------------------------
+Thu Jun 19 19:45:09 UTC 2014 - dmitry_r@opensuse.org
+
+- Build with FFTW3 multi-threading support
+
+-------------------------------------------------------------------
+Tue Apr 22 16:36:32 UTC 2014 - dmitry_r@opensuse.org
+
+- Enable OpenMP support
+
+-------------------------------------------------------------------
+Fri Mar  7 19:54:29 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 3.8.1
+  * Bugfix release, see included ChangeLog file for details
+  * removed obsolete octave-3.8.0-gzip-compressed-info.patch
+- Disable JIT support for non-x86 architectures
+
+-------------------------------------------------------------------
+Sat Feb  1 08:34:46 UTC 2014 - dmitry_r@opensuse.org
+
+- Fix build with LLVM-3.4
+  * octave-3.8.0-llvm-3.4.patch
+
+-------------------------------------------------------------------
+Thu Jan  2 08:47:14 UTC 2014 - dmitry_r@opensuse.org
+
+- Fix loading gzip-compressed info files [bnc#857130]
+  * octave-3.8.0-gzip-compressed-info.patch
+
+-------------------------------------------------------------------
+Mon Dec 30 07:59:12 UTC 2013 - dmitry_r@opensuse.org
+
+- Add octave-gui as recommended dependence
+- Build with jit support
+
+-------------------------------------------------------------------
+Sat Dec 28 20:34:15 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 3.8.0
+  * See included NEWS and ChangeLog files for details
+- Removed obsolete octave-gcc48-mex_remove_externc.patch
+
+-------------------------------------------------------------------
+Sun Jul 28 01:01:01 UTC 2013 - klaussfreire@gmail.com
+
+- Added octave-gcc48-mex_remove_externc, fixes an issue when
+  building packages that include mex.h in gcc 4.8
+-------------------------------------------------------------------
+Wed May  1 15:59:29 UTC 2013 - dmitry_r@opensuse.org
+
+- Cleanup recommended packages
+
+-------------------------------------------------------------------
+Sat Mar 30 15:08:01 UTC 2013 - dmitry_r@opensuse.org
+
+- Move documentation to octave-doc package
+
+-------------------------------------------------------------------
+Thu Mar 14 08:47:02 UTC 2013 - pgajdos@suse.com
+
+- minor spec file adjustment
+
+-------------------------------------------------------------------
+Fri Mar  8 17:25:49 UTC 2013 - dmitry_r@opensuse.org
+
+- Fix native graphics support for openSUSE 12.3 [bnc#808530]
+
+-------------------------------------------------------------------
+Thu Feb 28 17:50:30 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 3.6.4
+  * See included ChangeLog file for details
+- Enable post build tests
+- Enable paralell build
+
+-------------------------------------------------------------------
+Thu Feb  7 07:54:22 UTC 2013 - dmitry_r@opensuse.org
+
+- Enable native graphics
+
+-------------------------------------------------------------------
+Wed Dec 12 11:42:32 UTC 2012 - pgajdos@suse.com
+
+- install octave.pc file [bnc#793682]
+  + source octave.pc.in
+
+-------------------------------------------------------------------
+Mon Dec  3 12:44:38 UTC 2012 - pgajdos@suse.com
+
+- local rc file into /etc (Dieter Jurzitza) [bnc#792507]
+
+-------------------------------------------------------------------
+Mon Oct 30 12:48:58 UTC 2012 - dieter.jurzitza@t-online.de
+
+- add makeinfo to BuildRequires
+
+-------------------------------------------------------------------
+Fri Oct 26 13:24:37 UTC 2012 - badshah400@gmail.com
+
+- Update to version 3.6.3:
+  + Too many bug-fixes to list, see installed CHANGELOG file for a
+    list.
+- Drop octave-gets.patch, incorporated upstream.
+
+-------------------------------------------------------------------
+Tue Sep 18 20:12:09 UTC 2012 - idonmez@suse.com
+
+- Add BuildRequires on texinfo (instead of makeinfo) and texlive-dvips
+
+-------------------------------------------------------------------
+Tue Sep 11 12:24:07 UTC 2012 - pgajdos@suse.com
+
+- fix /etc/ld.so.conf.d/octave.conf [bnc#779072]
+
+-------------------------------------------------------------------
+Sat Sep  8 11:09:25 UTC 2012 - idonmez@suse.com
+
+- Add explicit build dependency on makeinfo 
+
+-------------------------------------------------------------------
+Tue Aug 21 14:58:30 UTC 2012 - dmitry@roshchin.org
+
+- Change packages directories owner
+
+-------------------------------------------------------------------
+Sun Aug 19 13:54:31 UTC 2012 - scorot@free.fr
+
+- fix umfpack and cholmod linking according to recent suitesparse
+  update
+- enable arpack support
+
+-------------------------------------------------------------------
+Sun Jul 29 19:08:14 UTC 2012 - aj@suse.de
+
+- Fix build with missing gets declaration (glibc 2.16)
+
+-------------------------------------------------------------------
+Fri Jun  1 07:45:00 UTC 2012 - pgajdos@suse.com
+
+- updated to 3.6.2:
+  * fix bad two-arg call of randperm
+  * perform convolution properly independently of matrix orientation
+  * implement proper op() indexing for diagonal matrices
+  * poissrnd should return zero when lambda = 0
+  * ensure isargout is not sticky
+  * etc., see ChangeLog
+
+-------------------------------------------------------------------
+Fri May 11 05:34:53 UTC 2012 - scorot@free.fr
+
+- remove conditional BuildRequires for blas and lapack since
+  recent lapack now build correctly for all suse version
+- recommends blas -> blas-devel 
+
+-------------------------------------------------------------------
+Mon Apr 30 09:47:27 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  See COPYING - octave is GPL-3.0+ licensed, not GPL-2.0+
+
+-------------------------------------------------------------------
+Mon Apr 16 07:54:18 UTC 2012 - badshah400@gmail.com
+
+- Spec file cleanup: remove Authors from description, remove
+  conditionals referring to obsolete suse_versions.
+
+-------------------------------------------------------------------
+Fri Apr 13 03:32:53 UTC 2012 - badshah400@gmail.com
+
+- Modify BuildRequires to match recent name changes of lapack and
+  blas in project.
+
+-------------------------------------------------------------------
+Tue Feb 28 10:12:38 UTC 2012 - pgajdos@suse.com
+
+- build against fltk (native graphics)
+- build against arpack
+
+-------------------------------------------------------------------
+Mon Feb 27 12:28:24 UTC 2012 - pgajdos@suse.com
+
+- updated to 3.6.1:
+  * removed qhull.patch
+
+-------------------------------------------------------------------
+Mon Jan 30 13:01:00 UTC 2012 - pgajdos@suse.com
+
+- build against 2012.1
+
+-------------------------------------------------------------------
+Mon Jan  9 08:11:27 UTC 2012 - pgajdos@suse.com
+
+- thanks to Martin Helm: remove octave-umfpack.patch and
+  use --with-umfpack configure switch instead
+
+-------------------------------------------------------------------
+Thu Dec  1 12:48:12 UTC 2011 - pgajdos@suse.com
+
+- again build against hdf5
+
+-------------------------------------------------------------------
+Tue Nov 15 14:54:24 UTC 2011 - pgajdos@suse.com
+
+- don't build against hdf5 for now, hdf5 is not building against 
+  12.1 and Factory
+
+-------------------------------------------------------------------
+Mon Oct 24 13:55:37 UTC 2011 - pgajdos@suse.com
+
+- updated to 3.4.3:
+  * removed unneeded tar-cond.patch
+
+-------------------------------------------------------------------
+Wed Oct 12 10:44:27 UTC 2011 - pgajdos@suse.com
+
+- build against Mesa-devel and fltk-devel conditional, use gnuplot 
+  rather
+
+-------------------------------------------------------------------
+Fri Oct  7 09:10:08 UTC 2011 - pgajdos@suse.com
+
+- fixed tar(), see
+  http://trac.imagemagick.org/changeset/5359
+  * tar-cond.patch
+
+-------------------------------------------------------------------
+Wed Oct  5 12:15:02 UTC 2011 - pgajdos@suse.com
+
+- build against Mesa-devel, fltk-devel -> native graphics
+- really build against cxsparse
+- build against qrupdate
+
+-------------------------------------------------------------------
+Mon Oct  3 09:04:41 UTC 2011 - pgajdos@suse.com
+
+- really build against umfpack
+
+-------------------------------------------------------------------
+Sat Oct  1 20:52:02 UTC 2011 - pgajdos@suse.com
+
+- build against suitesparse-devel instead of umfpack-devel (umfpack
+  is part of suitesparse package from now on)
+
+-------------------------------------------------------------------
+Tue Sep 20 10:29:19 UTC 2011 - pgajdos@suse.com
+
+- build against qhull 
+
+-------------------------------------------------------------------
+Tue Aug 16 15:20:56 UTC 2011 - pgajdos@novell.com
+
+- linked against umfpack (thanks to Christof Kauffman for 
+  notification)
+
+-------------------------------------------------------------------
+Tue Jul 26 13:41:33 UTC 2011 - pgajdos@novell.com
+
+- updated to 3.4.2
+
+-------------------------------------------------------------------
+Thu Jun 16 11:32:16 UTC 2011 - pgajdos@novell.com
+
+- updated to 3.4.1
+  * no-return-in-nonvoid.patch
+
+-------------------------------------------------------------------
+Sun May 29 13:30:00 CET 2011 - werner.ho@gmx.de
+
+- fixed hdf5-devel package name
+
+-------------------------------------------------------------------
+Tue Feb 15 17:26:36 CET 2011 - pgajdos@suse.cz
+
+- updated to 3.4.0
+
+-------------------------------------------------------------------
+Thu Jan 13 17:34:51 CET 2011 - pgajdos@suse.cz
+
+- downgrade back to 3.2.4 stable
+
+-------------------------------------------------------------------
+Fri Jan  7 15:40:36 CET 2011 - pgajdos@suse.cz
+
+- build against GraphicsMagick
+- updated to 3.3.54
+
+-------------------------------------------------------------------
+Mon Feb 15 15:22:53 CET 2010 - pgajdos@suse.cz
+
+- updated to 3.2.4 (see NEWS and ChangeLog)
+
+-------------------------------------------------------------------
+Mon Nov 23 09:53:02 CET 2009 - pgajdos@suse.cz
+
+- better handling of library path in the specfile [bnc#557340]
+
+-------------------------------------------------------------------
+Wed Nov 11 09:30:52 CET 2009 - pgajdos@suse.cz
+
+- updated to 3.2.3 (see NEWS and ChangeLog)
+- fixed [bnc#552978]
+
+-------------------------------------------------------------------
+Thu Aug  6 12:36:04 CEST 2009 - pgajdos@suse.cz
+
+- updated to 3.2.2
+  - bugfix release 
+
+-------------------------------------------------------------------
+Mon Jun 22 14:37:18 CEST 2009 - pgajdos@suse.cz
+
+- updated to version 3.2.0 (see NEWS)
+
+-------------------------------------------------------------------
+Tue Apr 14 19:02:57 CEST 2009 - pgajdos@suse.cz
+
+- updated to 3.0.5:
+  * last bug-fixing-release
+
+-------------------------------------------------------------------
+Thu Mar 19 11:56:36 CET 2009 - pgajdos@suse.cz
+
+- removed octave-3.0.3.patch completely [bnc#480571]
+
+-------------------------------------------------------------------
+Wed Mar 18 13:43:43 CET 2009 - pgajdos@suse.cz
+
+- cstring -> string.h in patch [bnc#480571]
+
+-------------------------------------------------------------------
+Thu Feb 26 13:29:32 CET 2009 - pgajdos@suse.cz
+
+- added texinfo to the Requires [bnc#285607]
+
+-------------------------------------------------------------------
+Mon Jan 26 13:50:21 CET 2009 - pgajdos@suse.cz
+
+- added some packages to Recommends [bnc#468395]
+
+-------------------------------------------------------------------
+Tue Jan 13 11:31:46 CET 2009 - pgajdos@suse.cz
+
+- updated to 3.0.3:
+  * next bug-fixing release
+
+-------------------------------------------------------------------
+Mon Sep  8 18:45:05 CEST 2008 - pgajdos@suse.cz
+
+- updated to 3.0.2:
+  * next bug-fixing release
+
+-------------------------------------------------------------------
+Wed Jul  2 09:43:21 CEST 2008 - pgajdos@suse.cz
+
+- build againist hdf5 1.8.1 -- using compatibility -DH5_USE_16_API
+
+-------------------------------------------------------------------
+Mon Jun 23 18:06:03 CEST 2008 - pgajdos@suse.cz
+
+- new version 3.0.1:
+  * bug-fixing release
+
+-------------------------------------------------------------------
+Tue Mar 25 11:52:55 CET 2008 - pgajdos@suse.cz
+
+- new version 3.0.0 moved from OBS, project science
+  * improved compatibility with Matlab (tm)
+  * bugfixes
+- newly linked optional libraries: curl, hdf5, glpk
+
+-------------------------------------------------------------------
+Mon Nov 19 11:05:32 CET 2007 - pgajdos@suse.cz
+
+- %{_datadir}/octave/site/m/startup/octaverc linked to /etc/octave
+  and marked as %config(noreplace)
+- several minor spec file cleanups
+
+-------------------------------------------------------------------
+Wed Oct 17 10:51:06 CEST 2007 - pgajdos@suse.cz
+
+- fixed build with new gcc -- added missing includes
+  * missing-includes.patch 
+
+-------------------------------------------------------------------
+Wed Jul 25 15:56:52 CEST 2007 - pgajdos@suse.cz
+
+- supressed paralell building which fails at least on some 
+  architectures 
+
+-------------------------------------------------------------------
+Wed Jul 11 13:18:15 CEST 2007 - pgajdos@suse.cz
+
+- updated to 2.9.12 and removed randlib [#279883]
+- without-randlib.patch
+
+-------------------------------------------------------------------
+Thu Jun 21 15:22:34 CEST 2007 - pgajdos@suse.cz
+
+- added texinfo to Requires 
+
+-------------------------------------------------------------------
+Fri May 25 12:56:18 CEST 2007 - pgajdos@suse.cz
+
+- made subpackage octave-devel
+
+-------------------------------------------------------------------
+Sat Apr 21 15:22:44 CEST 2007 - aj@suse.de
+
+- Use texlive.
+
+-------------------------------------------------------------------
+Thu Jun 22 18:16:32 CEST 2006 - ro@suse.de
+
+- remove selfprovides 
+
+-------------------------------------------------------------------
+Wed May 24 10:45:41 CEST 2006 - anicka@suse.cz
+
+- update to 2.1.73
+  - bugfix release 
+
+-------------------------------------------------------------------
+Mon Feb 13 15:19:19 CET 2006 - anicka@suse.cz
+
+- require gcc-fortran (fixes #150047) 
+
+-------------------------------------------------------------------
+Wed Feb  1 18:49:29 CET 2006 - anicka@suse.cz
+
+- add -Os to FFLAGS (fixes #136787)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:55 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 14 18:43:02 CET 2006 - kukuk@suse.de
+
+- Add gmp-devel to nfb
+
+-------------------------------------------------------------------
+Thu Jan  5 16:06:12 CET 2006 - anicka@suse.cz
+
+- update to 2.1.72 
+
+-------------------------------------------------------------------
+Mon Nov 14 20:35:39 CET 2005 - anicka@suse.cz
+
+- fix build (gcc 4.1) 
+
+-------------------------------------------------------------------
+Tue Nov  1 13:47:36 CET 2005 - anicka@suse.cz
+
+- fix build (move code around in CMatrix.cc) 
+
+-------------------------------------------------------------------
+Tue Jun 28 17:52:45 CEST 2005 - anicka@suse.cz
+
+- update to 2.1.71
+
+-------------------------------------------------------------------
+Wed May 11 15:36:11 CEST 2005 - ro@suse.de
+
+- fix build with gcc4 
+
+-------------------------------------------------------------------
+Mon Apr 18 12:24:29 CEST 2005 - mcihar@suse.de
+
+- GNU Fortran 77 compiler now requires gmp, let's add it
+- still doesn't compile, because GCC: TODO: Functions with alternate entry points
+
+-------------------------------------------------------------------
+Tue Dec 21 20:18:28 CET 2004 - mcihar@suse.cz
+
+- update to 2.1.64
+- do not include info pages, as they are out of date
+- string patching was not needed for long time, so drop the patch
+
+-------------------------------------------------------------------
+Thu Nov 11 12:55:16 CET 2004 - ro@suse.de
+
+- fixed file list
+
+-------------------------------------------------------------------
+Wed Aug 04 15:24:46 CEST 2004 - mcihar@suse.cz
+
+- update to 2.1.57
+
+-------------------------------------------------------------------
+Fri Mar 05 17:23:14 CET 2004 - mcihar@suse.cz
+
+- really compile with -fno-strict-aliasing
+- doesn't need f2c at all
+
+-------------------------------------------------------------------
+Fri Mar 05 09:39:53 CET 2004 - mcihar@suse.cz
+
+- update to 2.1.55
+- fix info pages installation
+- add some docs
+- use -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Fri Jan  9 17:35:37 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Fri Aug 29 19:35:16 CEST 2003 - mcihar@suse.cz
+
+- info pages should not be executable
+
+-------------------------------------------------------------------
+Wed Aug 13 16:06:20 CEST 2003 - ro@suse.de
+
+- fix info page installation again (thanks to DJurzitza) 
+
+-------------------------------------------------------------------
+Wed Jul 30 16:40:38 CEST 2003 - ro@suse.de
+
+- install more info pages 
+
+-------------------------------------------------------------------
+Thu Jun 26 18:44:48 CEST 2003 - ro@suse.de
+
+- remove traces of buildroot from installed files 
+
+-------------------------------------------------------------------
+Wed Jun 11 10:04:02 CEST 2003 - ltinkl@suse.cz
+
+- updated sources to version 2.1.49
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Mon Mar  3 13:52:48 CET 2003 - ro@suse.de
+
+- added info dir entries 
+
+-------------------------------------------------------------------
+Tue Feb 25 10:50:33 CET 2003 - mcihar@suse.cz
+
+- removed -mminimal-toc as it is now part of RPM_OPT_FLAGS for ppc64
+- added gnuplot to requires
+
+-------------------------------------------------------------------
+Mon Feb 10 13:50:38 CET 2003 - mcihar@suse.cz
+
+- used %install_info macro (fixes bug #23443)
+
+-------------------------------------------------------------------
+Wed Feb 05 13:42:46 CET 2003 - mcihar@suse.cz
+
+- removed RPM_OPT_FLAGS="$RPM_OPT_FLAGS -mminimal-toc" for ppc64
+  (fixes bug #23266)
+- updated to 2.1.44
+
+-------------------------------------------------------------------
+Fri Nov 22 17:42:25 CET 2002 - mcihar@suse.cz
+
+- updated to 2.1.40, mostly only configure and automake fixes, it
+  also fixes sstream and some other smaller issues with gcc 3.3
+- fixed multiline string
+
+-------------------------------------------------------------------
+Tue Aug  6 13:40:03 MEST 2002 - mcihar@suse.cz
+
+- updated to 2.1.36
+
+-------------------------------------------------------------------
+Sat Jun 29 21:25:54 CEST 2002 - olh@suse.de
+
+- build with -mminimal-toc on ppc64, use RPM_OPT_FLAGS for CFLAGS
+
+-------------------------------------------------------------------
+Tue May 21 18:22:00 CEST 2002 - ro@suse.de
+
+- call suse_update_config also for kpathsea subdir
+
+-------------------------------------------------------------------
+Wed May  8 17:58:59 CEST 2002 - ro@suse.de
+
+- fix for latest gcc-snapshot 
+
+-------------------------------------------------------------------
+Fri Apr 19 16:20:43 MEST 2002 - coolo@suse.de
+
+- updating to octave 2.1.35 as octave 2.0.1[67] were hopeless
+  with gcc 3.1 (gave up after 2 days of work)
+
+-------------------------------------------------------------------
+Tue May  8 11:50:50 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Fri May  5 09:55:12 CEST 2000 - bubnikv@suse.cz
+
+- added buildroot
+- /usr/execlib/octave moved to /usr/lib/octave according to FHS 2.1
+
+-------------------------------------------------------------------
+Mon Feb 21 17:41:03 CET 2000 - ro@suse.de
+
+- update to 2.0.16 
+
+-------------------------------------------------------------------
+Tue Jan 25 17:40:48 CET 2000 - ro@suse.de
+
+- update to 2.0.15
+- man,info to /usr/share using macro 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Jul 14 01:53:12 MEST 1999 - ro@suse.de
+
+- update to 2.0.14
+
+-------------------------------------------------------------------
+Thu May 20 13:55:09 MEST 1999 - ro@suse.de
+
+- use CFLAGS="-D_GNU_SOURCE"
+
+-------------------------------------------------------------------
+Mon Nov 23 18:25:25 MET 1998 - ro@suse.de
+
+- update to 2.0.13 / builds with glibc
+
+-------------------------------------------------------------------
+Wed Oct  7 01:39:57 MEST 1998 - ro@suse.de
+
+- BETA: added f2c to neededforbuild
+
+-------------------------------------------------------------------
+Wed Jan 28 13:59:01 MET 1998 - ro@suse.de
+
+- removed libhistory.so & libreadline.so as well and link static
+  to these
+
+-------------------------------------------------------------------
+Mon Nov 17 17:01:13 MET 1997 - bs@suse.de
+
+- removed libhistory.a & libreadline.a from file list.
+
+-------------------------------------------------------------------
+Wed Nov 12 09:35:26 MET 1997 - ro@suse.de
+
+- minor changes in specfile
+  setting host to ARCH-suse-linux
+
+-------------------------------------------------------------------
+Mon Nov 10 22:32:55 MET 1997 - ro@suse.de
+
+- new version 2.0.9
+
+----------------------------------------------------------------------------
+Tue Oct  7 11:00:38 CEST 1997 - ro@suse.de
+
+- prepared spec file
+- added README-GCC-2.7.? patches

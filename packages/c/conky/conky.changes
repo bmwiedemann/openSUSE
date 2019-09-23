@@ -1,0 +1,492 @@
+-------------------------------------------------------------------
+Tue Aug 20 07:10:49 UTC 2019 - mvetter@suse.com
+
+- Update to 1.11.5:
+  * Fix graph leak and the uninitialized values (#858) 
+  * Fix `link_qual_max` getting updated with bad value 
+  * Fix heap use-after-free with setlocale 
+  * Refactorings and cleanups
+  * For details see:
+    https://github.com/brndnmtthws/conky/compare/v1.11.4...v1.11.5
+- Remove conky-memory-leak-fix.patch: upstreamed
+
+-------------------------------------------------------------------
+Fri Jun 28 09:31:44 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Add conky-memory-leak-fix.patch Fixes a memory leak in Conky 
+
+-------------------------------------------------------------------
+Mon Jun 24 06:07:34 UTC 2019 - mvetter@suse.com
+
+- Update to 1.11.4:
+  * Added option to disable redraw on desktop change 
+  * Synchronize access to kstat 
+  * Fix various issues
+  * For details see:
+    https://github.com/brndnmtthws/conky/compare/v1.11.3...v1.11.4
+
+-------------------------------------------------------------------
+Tue May 28 08:41:38 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- Clean up cmake macro's and paramaters further
+- Drop unneeded conky-1.10.4-ncurses.patch
+
+-------------------------------------------------------------------
+Tue May 28 06:33:42 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use %cmake macro to resolve FIXMEs.
+- Trim bias from descriptions.
+
+-------------------------------------------------------------------
+Mon May 27 11:37:12 UTC 2019 - mvetter@suse.com
+
+- Update to 1.11.3:
+  * Allow hwmon command to accept hwmon device name
+  * For details see:
+    https://github.com/brndnmtthws/conky/compare/v1.11.2...v1.11.3
+- Update conky.timestamp.patch and conky-1.10.1-avoid-git.patch
+- Remove libical3.patch: upstreamed
+- Use lua 5.3
+- Install desktop file
+
+-------------------------------------------------------------------
+Mon Mar  5 08:46:59 UTC 2018 - adam.majer@suse.de
+
+- New upstream version 1.10.8
+  + fixed segfault when HOME is unset
+  + Fix segfault when kernel reports non-sequential SMP CPU indices
+  + Provide support to query active port on PulseAudio's default sink
+  + enable persistent view of irc messages
+  + Fix SEGV in a CPU hotplug environment
+  + GPLv3 is the default license
+  + Support multiple include paths for libbircclient
+- conky-1.10.4-ncurses.patch: comment out - doesn't seem to be needed
+- conky-1.10.0-libircclient.patch: removed, upstreamed.
+- conky.luamm.patch: removed, upstreamed.
+- libical3.patch: adds support for libical 3.x
+
+-------------------------------------------------------------------
+Sat Mar  3 11:55:29 UTC 2018 - jengelh@inai.de
+
+- Explicitly request old libical
+
+-------------------------------------------------------------------
+Tue Dec 12 09:29:41 UTC 2017 - pgajdos@suse.com
+
+- fix build for SLE 15: buildrequire also Xdamage
+- make more clear when xmms2 support is compiled in
+- use pkgconfig()-style buildrequires for X libraries, package
+  is build for suse_version >= 1315, so they are defined
+- fix 0%{is_opensuse} to 0%{?is_opensuse} on one placeand remove 
+  is_opensuse definition, which is in my opinion useless afterwards
+
+-------------------------------------------------------------------
+Sun Dec 10 13:21:35 UTC 2017 - i@marguerite.su
+
+- use modular Xorg libaries if possible
+- make suse is_opensuse is defined
+
+-------------------------------------------------------------------
+Wed Nov 29 13:24:16 UTC 2017 - pgajdos@suse.com
+
+- build with SLE 15
+
+-------------------------------------------------------------------
+Wed Nov 15 11:59:18 UTC 2017 - pgajdos@suse.com
+
+- change default system configuration
+- add /usr/bin/conkyconf
+- add README.SUSE
+- require fontawesome-fonts for icons
+- fate: #323638
+
+-------------------------------------------------------------------
+Thu Jul 27 19:49:23 UTC 2017 - joerg.lorenzen@ki.tng.de
+
+- BuildRequires libtolua++-5_1-devel on Leap.
+
+-------------------------------------------------------------------
+Tue Jun 20 09:18:31 UTC 2017 - olaf@aepfle.de
+
+- Fix build with conky.luamm.patch
+
+-------------------------------------------------------------------
+Tue Mar 21 11:48:43 UTC 2017 - olaf@aepfle.de
+
+- Remove more timestamps from binaries
+
+-------------------------------------------------------------------
+Thu Mar  2 08:28:06 UTC 2017 - olaf@aepfle.de
+
+- Add buildconditional for audacious, cmus, libXNVCtrl, xmms2
+- Remove unused BuildRequires, convert to pkgconfig()
+
+-------------------------------------------------------------------
+Wed Jan  4 13:16:57 UTC 2017 - olaf@aepfle.de
+
+- Remove timestamp from binaries
+- add conky.timestamp.patch
+
+-------------------------------------------------------------------
+Sat Dec 17 16:51:28 UTC 2016 - i@marguerite.su
+
+- update version 1.10.6
+  * try more than one sysctl to get CPU temperature
+  * cached versions of get_nvidia_value and get_nvidia_string_value
+- changes in 1.10.5
+  * check st_ctime to work with mutt MUA
+  * update uri to get NOAA METAR data
+
+-------------------------------------------------------------------
+Sat Sep 24 11:52:54 UTC 2016 - aloisio@gmx.com
+
+- Update to version 1.10.4
+- Enabled pulseaudio
+- Added conky-1.10.4-ncurses.patch
+
+-------------------------------------------------------------------
+Mon May 23 14:44:45 UTC 2016 - ronisbr@gmail.com
+
+- Update version 1.10.2.
+  * Bugfix release.
+- Drop patches already applied by upstream:
+  * conky-libdir.patch
+  * conky-1.10.1-check_include_file.patch
+
+-------------------------------------------------------------------
+Thu Jan  7 06:21:15 UTC 2016 - i@marguerite.su
+
+- update version 1.10.1
+  * bugfix release
+  * If BUILD_IPV6=ON (default), but the user has disabled ipv6
+    support in the kernel using the parameter ipv6.disable=1,
+    then conky fails to open /proc/net/if_inet6. This leads to
+    a segfault when conky calls fclose(file) regardless. This
+    fix simply moves the fclose call into the preceding if
+    statement. (boo#958897)
+- drop patch: conky-1.10.0-libdir.patch
+- add patch: conky-libdir.patch
+- add patch: conky-1.10.1-avoid-git.patch
+- add patch: conky-1.10.1-check_include_file.patch
+  * fix check_include_file not found
+- enable builds for sles 12
+
+-------------------------------------------------------------------
+Thu Jan  7 00:54:33 UTC 2016 - normand@linux.vnet.ibm.com
+
+- for suse_version after 1320
+  add BuildRequires:	libtolua++-5_1-devel
+
+-------------------------------------------------------------------
+Fri Dec 18 07:44:47 UTC 2015 - simon@simotek.net
+
+- Add conky-1.10.0-fix-upstream-issue-187-IPV6-crash.patch fixing
+  upstream issue #187 and (boo#958897) patch taken from upstream
+  https://github.com/brndnmtthws/conky/commit/ee08a9e1b045e8d2f4f13a0e60c2f603b66b0d69?diff=unified
+
+-------------------------------------------------------------------
+Sat Nov 21 13:23:07 UTC 2015 - olaf@aepfle.de
+
+- Its always /usr/bin/lua5.1
+
+-------------------------------------------------------------------
+Thu Oct 29 08:22:28 UTC 2015 - dimstar@opensuse.org
+
+- Also use /usr/bin/lua5.1 on Leap 42.1 (boo#952599).
+
+-------------------------------------------------------------------
+Sat Oct  3 07:51:50 UTC 2015 - i@marguerite.su
+
+- fix /usr/bin/lua51, it's now /usr/bin/lua5.1 in TW.
+
+-------------------------------------------------------------------
+Sat Aug 29 15:33:16 UTC 2015 - i@marguerite.su
+
+- update version 1.10.0  
+  * Partial rewrite in C++ (from C)
+  * New Lua-based config system
+  * New CMake-based build system
+  * Support for newer GCC versions
+- drop patch: conky-1.9.0-libiw_with_libm.patch
+  * upstream changed from autotools to cmake
+- drop patch: fix-CVE-2011-3616.patch, upstreamed
+- drop patch: fix-apcupsd.patch.
+  * problematic, invalid conversion from void* to int*
+- add patch: conky-1.10.0-libircclient.patch
+  * fix includedir
+- add patch: conky-1.10.0-libdir.patch
+  * respect LIB_INSTALL_DIR
+- remove old-time conditional checks:
+  * lua/imlib2 are always enabled
+- drop conky-cairo/imlib2 sub-packages
+  * they're always enabled, no need to split
+  * add Provides/Obsoletes in main package
+- rename conky-vim/nano sub-packages to vim/nano-plugin-conky
+- remove pseudo sub-packages:
+  * there are more "features" now, we can not create more and more
+    dummy packages
+  * keeping packages from being switched among repositories should
+    be done by users via package management system, not this way
+  * add Provides/Obsoletes in main package
+- drop conky-rpmlintrc
+  * the error it filtered doesn't exist anymore
+- drop conky.desktop
+  * conky is not a desktop application. a desktop file is useless
+
+-------------------------------------------------------------------
+Tue May 26 08:01:26 UTC 2015 - dgutu@suse.com
+
+- Removed conky-libiw_with_libm.patch because it's not used anywhere 
+
+-------------------------------------------------------------------
+Fri Jan 16 17:31:43 UTC 2015 - aloisio@gmx.com
+
+- Merged back changes for the packman section
+
+-------------------------------------------------------------------
+Fri Nov  9 08:06:23 UTC 2012 - i@marguerite.su
+
+- merged PMBS changes here. enabled more options.(OBS compatible)
+- add dependency imlib2-loaders for conky-imlib2.
+  or conky will keep warning can't load images.
+- add two patches from debian which also confirmed by user
+  please_try_again.
+  * fix-apcupsd.patch, revert broken apcupsd code to previous
+    working version.
+  * fix-CVE-2011-3616.patch. avoid rewriting an arbitrary user file
+    already upstreamed. but not in 1.9.0. remove next release.
+
+-------------------------------------------------------------------
+Sun Oct 21 00:31:29 UTC 2012 - pascal.bleser@opensuse.org
+
+- merged back with my changes for SLES build compatibility
+
+-------------------------------------------------------------------
+Thu Jun 21 09:23:47 UTC 2012 - toganm@opensuse.org
+
+- Update to 1.9.0 for changes please see
+  http://conky.sourceforge.net/changelog.html
+  * reworked conky-libiw_with_libm.patch as conky-1.9.0-libiw_with_libm.patch
+  * removed conky-fix-curl-FTBFS.patch as fixed by upstream  
+
+-------------------------------------------------------------------
+Wed Feb 29 08:55:12 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  See the COPYING file
+
+-------------------------------------------------------------------
+Mon Jan 30 08:47:15 UTC 2012 - coolo@suse.com
+
+- use lua51 on factory
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:32 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Thu Sep 29 05:15:35 UTC 2011 - pascal.bleser@opensuse.org
+
+- add cairo and imlib support where tolua++ is available,
+  built as subpackages (conky-cairo and conky-imlib2)
+
+- add patch to add -lm when linking against libiw, which is required by some
+  more recent versions of libiw
+
+-------------------------------------------------------------------
+Mon Sep 26 08:10:40 UTC 2011 - pascal.bleser@opensuse.org
+
+- fix build issue with files in conky-doc
+
+-------------------------------------------------------------------
+Mon Sep 26 00:42:04 UTC 2011 - nmarques@opensuse.org
+
+- Add conky-fix-curl-FTBFS.patch: remove deprecated curl/types.h
+  to fix FTBFS with newer versions of curl.
+  Upstream: http://tinyurl.com/4x76bbx
+
+-------------------------------------------------------------------
+Fri Oct  8 20:44:31 UTC 2010 - pascal.bleser@opensuse.org
+
+- dropped conky-getaddrinfo.patch, was merged upstream
+  (PATCH-FIX-OPENSUSE conky-getaddrinfo.patch fix-for-opensuse-specific-things.patch sf#3045085 pascal.bleser@opensuse.org)
+
+- update to 1.8.1:
+  * allow method to pass execgraph arguments containing spaces
+  * abort curl transfers if they drop below 1000B/s for more than 60s
+  * fix short_units for below kilo values
+  * when we have a failure in mail thread, sleep for a bit
+  * improve failure handling in mail threads
+  * when we have a failure in the mail thread, lookup the hostname again in
+    case the failure is due odd to DNS changes, or some other madness
+  * fix segfault in ccurl_thread.c
+  * fix crash in mail stuff due to bad free()
+  * fix segfault in i8k (sf.net #3007167)
+  * use getaddrinfo instead of gethostbyname: patches conky to use getaddrinfo
+    instead of gethostbyname everywhere. gethostbyname is rather flawed and
+    doesn't support IPv6 properly. Patch contributed by Pascal Bleser.
+  * fix 'nvidia with ncurses segfaults' (sf.net #3006233)
+  * make $fs_used_perc and $fs_bar report used space correctly; they reported
+    fs->size - fs->avail, which is not correct if fs has super-user reserved
+    blocks; note that now $fs_used_perc and $fs_free_perc need not add up to
+    100%, but that is consistent with what $fs_used and $fs_free do
+  * fix buffer overflows in eve.c (sf.net #3034056)
+  * fix bug where IMAP doesn't refresh counts after IDLE timeout
+  * fix segfault in mail folder (SF: 3007493)
+  * fix alignment ($align[rc]) issue for exec & lua objects
+  * small build fix & zero playtime and progress bars when XMMS2 playback is stopped
+  * fix tiny memleak when $top is used wrong
+  * ${top}, ${top_mem} and ${top_time} are now recognized as variables; the
+    parts of code doing this were in a #ifdef __linux__; the total CPU time of
+    processes (${top} with "time" argument) is now printable, and ${top_time}
+    works
+  * fix battery_bar not parsing arguments correctly (sf: #2998034, lp: #569195)
+  * bugfix: RSS interval was in secs instead of mins
+  * bugfix: $alignr only worked on the first line of $execp, $execpi, $lua and $lua_parse
+  * bugfix: memory and thread-deleting problems
+  * bugfix: read_tcp treated a succesfull connection as failed and vice versa
+  * add $nodename_short
+  * bugfix: adding/removing use_xft in the config had no effect unless you
+    restarted conky, reloading the config was not enough
+  * fix building with Audacious >= 2.3
+  * bugfix: mixerbar showed wrong values
+  * bugfix: ac-adapter is sometimes called ADP1 in sysfs instead of AC
+  * bugfix: battery_bar should also work without argument
+  * bugfix: When the first line behind TEXT was a comment, the start of the
+    second line wasn't parsed
+  * fix X error when border_width is <1
+  * fix device name parsing for diskio variables
+  * fix bug in $if_existing
+
+-------------------------------------------------------------------
+Sun Jul  4 10:46:16 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.8.0
+- split out -doc subpackage
+- package vim and nano syntax highlighting configuration files into subpackages
+  (instead of packaging them under the docdir)
+
+-------------------------------------------------------------------
+Wed Sep 30 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.7.2:
+  * fixed minor memleak in pop3/imap code on config reload
+  * fix crash when using $if_match with objects that may return a null pointer
+    (like $rss, $weather, or $curl before data is available)
+  * removed alias config option due to brokenness
+  * changed xoap parsing method to xpath, in preparation to include forecast
+    data
+  * update MPD elapsed/progress when stopped (sf.net #2792113)
+  * overhauled RSS and weather, added $curl
+  * added support for X alignment across multi-lined objects (i.e., using
+    $alignr with $exec)
+  * www.weather.com can now be used as well as a source of weather dataµ
+  * added support for $desktop, $desktop_number and $desktop_name (sf.net
+    #2040528)
+  * added support for $swapfree
+  * improved Lua API (lua_read_parse has been removed in favour of the
+    conky_parse() Lua API call)
+  * introduced new Lua Cairo and Imlib2 bindings
+  * added support for $weather (experimental)
+  * remove newline with comment only lines in TEXT
+  * improved parsing of graph arguments, removed "log"|"normal" arguments in
+    favour of -l switch
+  * fix escaping of comments in TEXT (sf.net #2813390)
+  * fix segfault in to_real_path, it's sometimes called with the same source
+    and dest without checking the length, causing a segfault
+  * use the internal process list for if_running on Linux
+
+
+-------------------------------------------------------------------
+Sat Jun 13 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.7.1.1:
+  * fixed a regression which causes fonts to not be rendered properly with
+    certain types of windows
+  * fix bug in comments within TEXT (where the line contains just '#') (sf.net
+    #2803586)
+  * fix bug in $mails (sf.net #2802529)
+
+
+-------------------------------------------------------------------
+Tue Jun  9 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.7.1
+
+
+-------------------------------------------------------------------
+Sun May  3 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.7.0
+
+
+-------------------------------------------------------------------
+Tue Oct  7 00:00:00 UTC 2008 - bwalle@suse.de
+
+- fix build on Factory
+
+
+-------------------------------------------------------------------
+Wed Sep 17 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 1.6.1
+
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Sun Mar 23 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Thu Dec  6 00:00:00 UTC 2007 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Wed Oct  3 00:00:00 UTC 2007 - guru@unixtech.be
+
+- update to 1.4.7
+- moved to openSUSE Build Service
+
+
+-------------------------------------------------------------------
+Wed Jan  3 00:00:00 UTC 2007 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Sat Sep  2 00:00:00 UTC 2006 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Wed Feb 15 00:00:00 UTC 2006 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Mon Jan  2 00:00:00 UTC 2006 - guru@unixtech.be
+
+- removed cairo flags, as removed from conky codebase
+- new upstream version
+- rewrote spec file
+
+
+-------------------------------------------------------------------
+Tue Nov  1 00:00:00 UTC 2005 - guru@unixtech.be
+
+- new package
+
+

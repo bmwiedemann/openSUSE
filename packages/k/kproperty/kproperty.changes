@@ -1,0 +1,153 @@
+-------------------------------------------------------------------
+Sat Aug 24 08:39:04 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the pkg-config files from the -devel package. Both files
+  contain incorrect entries.
+
+-------------------------------------------------------------------
+Thu Apr 11 12:04:34 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.2.0
+  * New features / APIs
+    + Allow to override behavior of URL editors
+      * added KPropertyEditorItemEvent and
+        KPropertyEditorView::handlePropertyEditorItemEvent()
+    + Add support for relative URL types and classes
+      KPropertyComposedUrl, KPropertyComposedUrlEditor
+      * Added ComposedUrl type
+  * Bug fixes
+    + Bool editor: do not display None for 2-state mode
+    + Adjust size hint of the property name column to fix bold text
+    + Remove infinite loop while resizing double spin box editor
+  * Improvements
+    + Update docs for 3State option
+  * Buildsystem
+    + Fix data install dir for Windows, make icons installed
+      relative to that, make icons coinstallable
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Mar 20 10:53:52 UTC 2018 - wbauer@tmo.at
+
+- Update to 3.1.0:
+  * General
+    + Bump soname for the libraries to separate from incompatible
+      3.0.x versions
+    + Remove FileURL, PictureFileURL, DirectoryURL types
+  * New features
+    + Added support for property groups, add API to show/hide groups
+    + Replace "unit" property option with "suffix"; add "prefix",
+      support in double/integer/composed types
+    + Add toolTipsVisible feature to KPropertyEditorView, if enabled
+      tooltips are visible for property editor items
+  * API changes
+    + See https://community.kde.org/Kexi/Releases/3.1.0_Changes for
+      details
+  * Bug fixes
+    + Do nothing in KProperty::resetValue() if there are no changes
+    + Editor view: emit delegete's commitData() once (extra safety)
+    + Fix painting grid over scroll areas
+    + Fix background of multiline editor
+    + Fix background color for multiline editor when alternate color
+      is needed or is in readonly mode
+    + Try to locate icon rcc files in PATH subdirs too, useful for
+      running apps from the build dir, without installing
+    + Color editor: display hex color code also when the editor is
+      active
+    + Combo box icon provider: fix possible memory issue with
+      assigning KPropertyComboBoxEditorOptions values
+    + Add translations missing in 3.0.x
+    + Properly update properties with subproperties in the view when
+      value or the "modify" flag changes
+    + Do not display unclear "None" text when point/size/rect values
+      are null
+    + Fix displaying minimum values for types having minimum value
+      defined but no minValueText value
+    + Translations: split kproperty_qt into kpropertycore_qt &
+      kpropertywidgets_qt
+    + Int/double spin boxes: do not allow to set values out of range,
+      fix invalid ranges
+    + List .pot files explicitly, this allows releaseme l10n
+      detection to work, used in KDE neon
+    + Fix handling values in the URL editor
+    + Improve commit changes for the URL editor only; fixup paths
+  * Docs and examples
+    + Enable creation of API docs QCH file during the build
+    + Resize first column of the property view to contents in
+      KPropertyExample
+- Drop kproperty-translations.tar.xz, the translations are included
+- Split out translations into a separate lang subpackage
+- Add fix-build-with-gcc48.patch to make it compile on Leap 42
+
+-------------------------------------------------------------------
+Sat Aug 12 13:07:31 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.0.2:
+  * General
+    - Fix comparing double values: use "precision" option instead
+      of "step" option
+    - Improve checking for validity of min/max/step/precision
+      options for date/time/double types
+    - Fix strikeout/underline font option not available in font
+      dialogs. These options are missing in font dialogs on
+      non-Plasma, non-Windows desktops, e.g. XFCE which has too
+      simplified dialog. The solution is to force using Qt's own
+      dialog (kde#379190).
+    - Pixmap editor: fix display preview of pixmap value on mouse
+      click
+    - Pixmap editor: improve size of the (...) button
+    - Pixmap editor: don't display taskbar entry on Windows for
+      the popup, use Tooltip palette
+  * Buildsystem
+    - Do not check for Sailfish OS since its version 2.1
+  * Tests
+    - Fix HeadersTest for paths containing spaces
+
+-------------------------------------------------------------------
+Tue Apr  4 17:56:56 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.0.1:
+  * General
+    - Make standard icon location a list of unique paths
+    - Try to find private icons resource in a dir relative to local 
+      bin/
+    - Try to locate rcc files in PATH subdirs too, useful for
+      running apps from the build dir, without installing
+    - There is only one translation catalog currently, load with
+      kpropertycore
+    - Add PainterSaver and use it to avoid problems with missing
+      QPainter::restore()
+    - Fix painting grid over scroll areas
+    - Fix crash when while removing property that has non-lowercase
+      character in its name
+  * Examples
+    - Fix KPropertyExample when KF5 is not in use
+    - Make property editor read-only if property or property set is
+      read-only
+    - Add all PROJECT_STABLE* constants
+  * Buildsystem
+    - macro kproperty_add_icons_rcc_file: generate rcc icons in the
+      builddir/bin/data/icons/ dir so it can be used within the
+      builddir
+    - Keep apps in the same bin dir so resources that are kept
+      relative to this dir can be found without installing
+    - Use ecm_install_po_files_as_qm macro for Qt Translation
+      catalogs
+    - Fix finding KProperty configs - use
+      ecm_configure_package_config_file macro
+- Add kproperty-translations.tar.xz as source, containing the
+  translations from 3.0.0 (they are missing in this release)
+- Replace KF5I18n BuildRequires with Qt5LinguistTools, that is used
+  now for installing the translations
+- Fix RPM group for the libKPropertyWidgets3-3 sub package too
+
+-------------------------------------------------------------------
+Wed Jan 11 09:56:01 UTC 2017 - jengelh@inai.de
+
+- RPM group fix
+
+-------------------------------------------------------------------
+Sun Jan  8 11:12:53 UTC 2017 - tittiatcoke@gmail.com
+
+- Initial package based on version 3.0.0
+

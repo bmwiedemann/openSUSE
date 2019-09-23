@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# plantuml script
+# JPackage Project <http://www.jpackage.org/>
+
+. /usr/share/java-utils/java-functions
+
+# MAIN_CLASS=
+
+# Add user definied config config file:
+if [ -e $HOME/.plantuml.cfg ]; then
+  $BASE_OPTIONS=-config "$HOME/.plantuml.cfg"
+fi
+
+# Set other parameters
+set_javacmd
+
+# Let's start
+# run $args "$@"
+$JAVACMD $BASE_FLAGS -jar /usr/share/java/plantuml.jar $BASE_OPTIONS  "$@"

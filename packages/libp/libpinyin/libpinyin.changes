@@ -1,0 +1,256 @@
+-------------------------------------------------------------------
+Mon Mar 25 09:08:53 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.3.0
+  * Update pinyin data 
+- Drop libpinyin-avoid_download_at_buildtime.patch, merged by upstream.
+
+-------------------------------------------------------------------
+Thu Feb 14 05:55:13 UTC 2019 - hillwood@opensuse.org
+
+- Update version to 2.2.2
+  * minor fixes
+
+-------------------------------------------------------------------
+Thu Oct 11 12:42:32 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 2.2.1
+  * Fix predicted candidates
+
+-------------------------------------------------------------------
+Mon May 14 03:35:51 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 2.2.0
+  * Bug fixes
+- Drop libpinyin-fix_double_pinyin.patch. Fixed with other way by upstream.
+
+-------------------------------------------------------------------
+Mon Mar  5 03:04:09 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 2.1.91
+  * Fix zhuyin parsers
+  * Use model15.
+
+-------------------------------------------------------------------
+Sun Oct  8 14:11:38 UTC 2017 - jengelh@inai.de
+
+- Move documentation to libpinyin-devel. Manpages do not belong
+  into libpinyin13 (SLPP guideline).
+- Avoid running fdupes across partition boundaries.
+
+-------------------------------------------------------------------
+Tue Aug 29 02:36:31 UTC 2017 - hillwood@opensuse.org
+
+- Update to 2.1.0
+  * support sort option in pinyin_guess_candidates function
+
+-------------------------------------------------------------------
+Tue Aug 22 07:54:57 UTC 2017 - hillwood@opensuse.org
+
+- Enable zhuyin support. 
+
+-------------------------------------------------------------------
+Tue Aug 22 02:19:33 UTC 2017 - hillwood@opensuse.org
+
+- Update to 2.0.92
+  * reduce memory consumption after imported user dictionary;
+  * merge libzhuyin code;
+  * fixes autoconf;
+  * multiple sentence candidates;
+
+-------------------------------------------------------------------
+Thu Jun 22 10:14:11 UTC 2017 - tchvatal@suse.com
+
+- Switch to kyotocabinet from libdb so it could be removed
+- Enable tests
+- Remove needless buildrequires
+
+-------------------------------------------------------------------
+Thu Feb  2 02:11:05 UTC 2017 - jengelh@inai.de
+
+- Trim descriptions and ensure fdupes does not run across
+  potential partitions.
+- Rename %soname to %sover to better reflect its use.
+
+-------------------------------------------------------------------
+Tue Jan 31 14:30:52 UTC 2017 - i@marguerite.su
+
+- add libpinyin-1.7.0-no-AX_CXX_COMPILE_STDCXX_11.patch
+  * AX_CXX_COMPILE_STDCXX([11]) breaks build on Leap 42.1 while
+    no actual use
+
+-------------------------------------------------------------------
+Tue Jan 31 13:15:19 UTC 2017 - i@marguerite.su
+
+- update version 1.7.0
+  * fixes build on FreeBSD;
+  * update cmake files;
+- changes in version 1.6.91
+  * change license to GPLv3+;
+  * import open-gram dictionary and remove pinyin tones;
+  * add some checks when load data from file;
+
+-------------------------------------------------------------------
+Thu Sep  8 08:31:51 UTC 2016 - hillwood@opensuse.org
+
+- Update to 1.6.0
+  * fixes https://github.com/libpinyin/ibus-libpinyin/issues/56
+  * fixes pinyin_remember_user_input function
+  * fixes pinyin_get_character_offset function
+  * fixes compute_pronunciation_possibility function
+  * fixes pinyin_get_character_offset function 
+
+-------------------------------------------------------------------
+Wed Aug 10 01:52:53 UTC 2016 - hillwood@opensuse.org
+
+- Update to 1.5.92
+  * use model12.text.tar.gz
+  * fixes pinyin_get_character_offset function
+  * fixes _get_char_offset_recur function
+  * fixes _pre_compute_tokens function
+  * fixes fill_matrix function
+  * fixes pinyin_get_right_pinyin_offset function
+  * fixes fill_matrix function
+  * clean up FullPinyinParser2  
+- Update libpinyin-avoid_download_at_buildtime.patch
+- Update baselibs.conf
+- Add libpinyin-fix_double_pinyin.patch
+  * fix mapper for double pinyin
+
+-------------------------------------------------------------------
+Thu Dec 24 16:06:09 UTC 2015 - i@marguerite.su
+
+- Update to version 1.3.0+git20151204.7b790c9:
+  * support force tone in pinyin parsers
+  * support fallback tables in double pinyin
+  * many bugfixes and refactors
+- drop patch: libpinyin-1.2.0-avoid_download_at_buildtime.patch
+- add patch: libpinyin-avoid_download_at_buildtime.patch
+
+-------------------------------------------------------------------
+Tue Aug 25 01:13:52 UTC 2015 - i@marguerite.su
+
+- Update to version 1.2.0+git20150731.958c597:
+  * fixes Kyoto Cabinet bug
+  * Resolve NULL used in arithmetic
+  * Resolve ambiguos usage of log(3)
+  * bump version 1.2.0
+- add patch: libpinyin-1.2.0-avoid_download_at_buildtime.patch
+- remove patch: libpinyin-1.0.99.20150212-avoid_download_at_buildtime.patch
+
+-------------------------------------------------------------------
+Wed Apr  8 02:53:04 UTC 2015 - hillwood@linuxfans.org
+
+- Update to 1.1.0
+  * support to export user phrases. 
+
+-------------------------------------------------------------------
+Sun Feb 15 04:13:47 UTC 2015 - hillwood@linuxfans.org
+
+- Update to 1.0.99.20150212
+  * fixes pinyin_get_pinyin_key_rest_offset method
+  * fixes pinyin_iterator_get_next_phrase method
+- Update patch file:
+  remove old: libpinyin-1.0.0-avoid_download_at_buildtime.patch
+  add new: libpinyin-1.0.99.20150212-avoid_download_at_buildtime.patch
+
+-------------------------------------------------------------------
+Sat Jul 26 15:30:05 UTC 2014 - i@marguerite.su
+
+- add libpinyin-tools to libpinyin-devel requirement
+- fix factory builds for fcitx-libpinyin
+
+-------------------------------------------------------------------
+Wed Jul 16 15:40:30 UTC 2014 - i@marguerite.su
+
+- use update-alternatives to resolve conflicts with libzhuyin
+
+-------------------------------------------------------------------
+Fri Feb 28 10:53:33 CST 2014 - hillwood@linuxfans.org
+
+- update to 1.0.0
+  * bug fixes
+  * added some pinyins, such as "陆 liu4", "单 shan4".
+- update patch file.
+ 
+-------------------------------------------------------------------
+Wed Jun 26 15:59:08 UTC 2013 - i@marguerite.su
+
+- update version 0.9.93
+  * see commit log for collective updates.
+  * https://github.com/libpinyin/libpinyin/commits/master
+- add patch: libpinyin-0.9.0-avoid_download_at_buildtime.patch
+
+-------------------------------------------------------------------
+Wed Dec 19 00:10:21 CST 2012 - hillwood@linuxfans.org
+
+- update 0.8.0. 
+  bug fixes
+
+-------------------------------------------------------------------
+Thu Oct 11 14:27:59 UTC 2012 - i@marguerite.su
+
+- update 0.7.91
+  * a code refator release
+
+-------------------------------------------------------------------
+Sun Sep 16 15:42:25 UTC 2012 - i@marguerite.su
+
+- use upstream standard source.
+
+-------------------------------------------------------------------
+Fri Sep 14 03:56:30 UTC 2012 - i@marguerite.su
+
+- fix fedora builds.
+
+-------------------------------------------------------------------
+Sun Sep  9 22:38:03 CST 2012 - hillwood@linuxfans.org
+
+- update to 0.7.1
+  more changelog please visit http://goo.gl/9bsJj ,only Chinese.
+  
+-------------------------------------------------------------------
+Mon Aug  6 19:20:30 UTC 2012 - aj@suse.de
+
+- Remove obsoletes/provides, they are not correct.
+
+-------------------------------------------------------------------
+Tue Jul 31 18:37:36 UTC 2012 - i@marguerite.su
+
+- fix Obsoltes/Provides as AJ suggested.
+
+-------------------------------------------------------------------
+Sun Jul 29 12:02:11 CST 2012 - hillwood@linuxfans.org
+
+- update to 0.7.0
+  * fixes cmake
+
+-------------------------------------------------------------------
+Mon Jul 16 00:03:12 CST 2012 - hillwood@linuxfans.org
+
+- update to 0.6.92
+  * update test_pinyin
+  * update utils
+
+-------------------------------------------------------------------
+Tue Jun 21 21:42:12 CST 2012 - hillwood@linuxfans.org
+
+- update to 0.6.91
+- add cmake scripts
+- fixes jv,ju in ABC and more
+
+-------------------------------------------------------------------
+Sat Jun  2 13:32:06 UTC 2012 - i@marguerite.su
+
+- fix sles builds.
+
+-------------------------------------------------------------------
+Sun Jan 29 12:04:41 UTC 2012 - i@marguerite.su
+
+- fix Factory libtool build error.
+
+-------------------------------------------------------------------
+Sat Jan 28 13:09:37 UTC 2012 - i@marguerite.su
+
+- Initial package from libpinyin git, version 0.5
+

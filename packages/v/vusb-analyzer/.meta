@@ -1,0 +1,8 @@
+<package name="vusb-analyzer" project="openSUSE:Factory">
+  <title>A tool for viewing USB trace files from usbmon and other usb dump formats</title>
+  <description>The Virtual USB Analyzer is a free and open source tool for visualizing
+logs of USB packets, from hardware or software USB sniffer tools.  The
+Virtual USB Analyzer is not itself a USB sniffer tool. It is just a user
+interface for visualizing logs.</description>
+  <devel project="devel:tools" package="vusb-analyzer"/>
+</package>

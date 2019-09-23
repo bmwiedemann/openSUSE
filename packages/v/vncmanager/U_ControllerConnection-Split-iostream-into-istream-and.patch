@@ -1,0 +1,118 @@
+From 4bef799592eab400b0e050988ff61fa21935d86c Mon Sep 17 00:00:00 2001
+From: Michal Srb <msrb@suse.com>
+Date: Thu, 15 Feb 2018 14:38:04 +0100
+Subject: [PATCH] ControllerConnection: Split iostream into istream and
+ ostream.
+
+The boost::iostreams::file_descriptor is seekable by default, but seeking is
+not possible on unix socket. Unfortunatelly there does not seem to be a way to
+turn it into (non seekable) bidirectional, so lets split it into separate input
+and output.
+---
+ ControllerConnection.cpp | 24 +++++++++++++-----------
+ ControllerConnection.h   |  7 +++++--
+ 2 files changed, 18 insertions(+), 13 deletions(-)
+
+diff --git a/ControllerConnection.cpp b/ControllerConnection.cpp
+index 17822e6..a1b4739 100644
+--- a/ControllerConnection.cpp
++++ b/ControllerConnection.cpp
+@@ -38,8 +38,10 @@
+ ControllerConnection::ControllerConnection(XvncManager &vncManager, int fd)
+     : m_vncManager(vncManager)
+     , m_fd(fd)
+-    , m_controllerStreamBuffer(boost::iostreams::file_descriptor(fd, boost::iostreams::close_handle))
+-    , m_controllerStream(&m_controllerStreamBuffer)
++    , m_controllerStreamBufferIn(boost::iostreams::file_descriptor(fd, boost::iostreams::close_handle))
++    , m_controllerStreamBufferOut(boost::iostreams::file_descriptor(fd, boost::iostreams::never_close_handle))
++    , m_controllerStreamIn(&m_controllerStreamBufferIn)
++    , m_controllerStreamOut(&m_controllerStreamBufferOut)
+ {}
+ 
+ void ControllerConnection::start()
+@@ -48,7 +50,7 @@ void ControllerConnection::start()
+ 
+     try {
+         if (initialize()) {
+-            while (m_controllerStream.good()) {
++            while (m_controllerStreamIn.good()) {
+                 receive();
+             }
+         }
+@@ -64,19 +66,19 @@ void ControllerConnection::start()
+ bool ControllerConnection::initialize()
+ {
+     int displayNumber;
+-    m_controllerStream >> displayNumber;
++    m_controllerStreamIn >> displayNumber;
+ 
+     m_xvnc = m_vncManager.getSessionByDisplayNumber(displayNumber);
+     if (m_xvnc) {
+-        m_controllerStream << "OK" << std::endl;
+-        m_controllerStream.flush();
++        m_controllerStreamOut << "OK" << std::endl;
++        m_controllerStreamOut.flush();
+     } else {
+         Log::notice() << "Controller " << (intptr_t)this << " asked for display number " << displayNumber << " which is not managed by vncmanager." << std::endl;
+         return false;
+     }
+ 
+     std::string key;
+-    m_controllerStream >> key;
++    m_controllerStreamIn >> key;
+ 
+     for (int tries = 0; ; tries++) {
+         if (m_xvnc->isKeyApproved(key)) {
+@@ -91,8 +93,8 @@ bool ControllerConnection::initialize()
+         std::this_thread::sleep_for(std::chrono::milliseconds(100)); // TODO: Tune
+     }
+ 
+-    m_controllerStream << "OK" << std::endl;
+-    m_controllerStream.flush();
++    m_controllerStreamOut << "OK" << std::endl;
++    m_controllerStreamOut.flush();
+ 
+     struct ucred ucred;
+     socklen_t len = sizeof(struct ucred);
+@@ -111,11 +113,11 @@ bool ControllerConnection::initialize()
+ void ControllerConnection::receive()
+ {
+     std::string cmd;
+-    m_controllerStream >> cmd;
++    m_controllerStreamIn >> cmd;
+ 
+     if (cmd == "VISIBLE") {
+         bool yes;
+-        m_controllerStream >> yes;
++        m_controllerStreamIn >> yes;
+         m_xvnc->markVisible(yes);
+         return;
+     }
+diff --git a/ControllerConnection.h b/ControllerConnection.h
+index 997c2a6..207357b 100644
+--- a/ControllerConnection.h
++++ b/ControllerConnection.h
+@@ -29,6 +29,7 @@
+ 
+ #include <memory>
+ 
++#include <boost/iostreams/categories.hpp>
+ #include <boost/iostreams/device/file_descriptor.hpp>
+ #include <boost/iostreams/stream.hpp>
+ 
+@@ -78,8 +79,10 @@ private:
+     std::shared_ptr<Xvnc> m_xvnc;
+ 
+     int m_fd;
+-    boost::iostreams::stream_buffer<boost::iostreams::file_descriptor> m_controllerStreamBuffer;
+-    std::iostream m_controllerStream;
++    boost::iostreams::stream_buffer<boost::iostreams::file_descriptor, std::char_traits<char>, std::allocator<char>, boost::iostreams::input> m_controllerStreamBufferIn;
++    boost::iostreams::stream_buffer<boost::iostreams::file_descriptor, std::char_traits<char>, std::allocator<char>, boost::iostreams::output> m_controllerStreamBufferOut;
++    std::istream m_controllerStreamIn;
++    std::ostream m_controllerStreamOut;
+ };
+ 
+ #endif // CONTROLLERCONNECTION_H
+-- 
+2.13.6
+

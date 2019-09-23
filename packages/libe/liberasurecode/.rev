@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a9aa8885c3324cf08adbb3cb0386e849</srcmd5>
+    <version>1.4.0</version>
+    <time>1486046441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>449084</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d4a3306bdb07b14ff0723e533591357b</srcmd5>
+    <version>1.4.0</version>
+    <time>1487029419</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>455782</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>06b1293ea3f0363e88505399c07ac330</srcmd5>
+    <version>1.4.0</version>
+    <time>1496225940</time>
+    <user>dimstar_suse</user>
+    <comment>- Update RPM group and summaries (bsc#1041161)</comment>
+    <requestid>498876</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f7feee9e5e14ffd2e374e433ca8f62ca</srcmd5>
+    <version>1.5.0</version>
+    <time>1508946437</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0:
+  * Added support for Phazr.IO libphazr library
+  * memory leak fixes
+  * avoid Galois Field multiplication tables to be calculated repeatedly
+- remove partial-disable-simd.patch: replaced by --disable-mmi</comment>
+    <requestid>536274</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0721612746db4cc4b28d6b1f4b86ac40</srcmd5>
+    <version>1.6.1</version>
+    <time>1565097135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721253</requestid>
+  </revision>
+</revisionlist>

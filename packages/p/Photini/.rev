@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>56e1dadb371384ff598cca21a10243ac</srcmd5>
+    <version>2017.5.0</version>
+    <time>1497362892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>493048</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7434e8c1b9cbd618c8636d91632860dd</srcmd5>
+    <version>2017.6.0</version>
+    <time>1498046277</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>505102</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5ce4e774b8c90b52988ab2126659a06b</srcmd5>
+    <version>2017.8.0</version>
+    <time>1502366781</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>515430</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>690843f9146e04b26934cef16f351eae</srcmd5>
+    <version>2017.8.1</version>
+    <time>1503132985</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2017.08.1
+</comment>
+    <requestid>517592</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7374cb7b7bc9c31f7a149f5d63382a4d</srcmd5>
+    <version>2017.10.0</version>
+    <time>1507197556</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530991</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d282ac174158092daae4e49f7fba6743</srcmd5>
+    <version>2017.12.0</version>
+    <time>1512140066</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547045</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c0d188117fd8876850af50a2d1f840d0</srcmd5>
+    <version>2018.2.0</version>
+    <time>1518282016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575204</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e11773cac7d71837d38fe1ae223d0670</srcmd5>
+    <version>2018.2.0</version>
+    <time>1524742729</time>
+    <user>dimstar_suse</user>
+    <comment>- Added Photini-Bing-map.patch
+- Added Photini-PyQt5-libGL.patch
+</comment>
+    <requestid>601043</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3f12ac8eddd8311c1e70554771947d73</srcmd5>
+    <version>2018.5.0</version>
+    <time>1525210936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602816</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cd81b9d60dad07b86bcb8b3a688c6f9e</srcmd5>
+    <version>2018.8.0</version>
+    <time>1533732778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627828</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8bdb6da7fab649f5efc4de1baaae0513</srcmd5>
+    <version>2019.5.0</version>
+    <time>1560970670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704431</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0f7059b06c981762660843e6059ec7dd</srcmd5>
+    <version>2019.8.0</version>
+    <time>1566463894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724744</requestid>
+  </revision>
+</revisionlist>

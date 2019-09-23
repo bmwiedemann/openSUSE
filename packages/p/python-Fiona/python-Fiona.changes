@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Wed Jun 12 20:55:22 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix dependencies.
+- Enable unit tests
+- Ran spec-cleaner
+
+-------------------------------------------------------------------
+Mon Apr  1 15:30:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Split executable into own module to avoid conflicts with fio.
+  fio is a Linux Kernel project so we probably don't want to make
+  fiona conflict with it completely.
+
+-------------------------------------------------------------------
+Fri Mar 29 08:26:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description. Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Mar 28 18:34:55 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to last version 1.8.6
+  * The advertisement for JSON driver enablement in 1.8.5 was false (#176), but
+    in this release they are ready for use.
+- Update to last version 1.8.5
+  * GDAL seems to work best if GDAL_DATA is set as early as possible. Ideally it
+    is set when building the library or in the environment before importing
+    Fiona, but for wheels we patch GDAL_DATA into os.environ when fiona.env
+    is imported. This resolves #731.
+  * A combination of bugs which allowed .cpg files to be overlooked has been
+    fixed (#726).
+  * On entering a collection context (Collection.__enter__) a new anonymous GDAL
+    environment is created if needed and entered. This makes `with
+    fiona.open(...) as collection:` roughly equivalent to `with fiona.open(...)
+    as collection, Env():`. This helps prevent bugs when Collections are created
+    and then used later or in different scopes.
+  * Missing GDAL support for TopoJSON, GeoJSONSeq, and ESRIJSON has been enabled
+    (#721).
+  * A regression in handling of polygons with M values (#724) has been fixed.
+  * Per-feature debug logging calls in OGRFeatureBuilder methods have been
+    eliminated to improve feature writing performance (#718).
+  * Native support for datasets in Google Cloud Storage identified by "gs"
+    resource names has been added (#709).
+  * Support has been added for triangle, polyhedral surface, and TIN geometry
+    types (#679).
+  * Notes about using the MemoryFile and ZipMemoryFile classes has been added to
+    the manual (#674).
+
+-------------------------------------------------------------------
+Wed Mar  6 13:08:31 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Rename package to python-Fiona
+- Install license and documentation
+
+-------------------------------------------------------------------
+Wed Mar  6 09:05:08 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to last version 1.8.4
+  + There are no known breaking changes in 1.8.0. Python warnings 
+    should be expected in several cases of class and method 
+    deprecation.
+  + The fiona.drivers() context manager is being replaced by 
+    fiona.Env(), which also registers format drivers and has the 
+    same properties as the GDAL configuration manager in Rasterio.
+  + Collection slicing will be disallowed in a future version of 
+    Fiona to remove the confusion between mapping and list semantics
+    for Collection objects. Code such as 
+    fiona.open(“example.shp”)[1:10] 
+    should be changed to list(fiona.open(“example.shp”))[1:10].
+- Packaging: Minimal spec-cleaner
+  + Remove unneeded requires: python
+
+-------------------------------------------------------------------
+Sun Oct 21 09:24:33 UTC 2018 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to last version 1.7.13
+  Including fix for boo#1107387
+- Packaging:
+  + redone spec with py2pac singlespec
+  + package is not noarch
+  + /usr/bin/fio is distributed only for python3
+
+-------------------------------------------------------------------
+Tue Jun 09 11:00:00 UTC 2015 - Angelos Tzotsos <tzotsos@opensuse.org>
+
+- initial packaging (1.5.1)
+

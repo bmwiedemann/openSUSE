@@ -1,0 +1,12 @@
+diff -ur iprutils-2.4.17.1/configure.ac iprutils-2.4.17.1.mod/configure.ac
+--- iprutils-2.4.17.1/configure.ac	2018-10-30 15:16:14.000000000 +0100
++++ iprutils-2.4.17.1.mod/configure.ac	2018-10-31 16:07:31.459599362 +0100
+@@ -140,7 +140,7 @@
+ fi
+ 
+ if test -n ${ncurses_config}; then
+-  ncurses_include=$(${ncurses_config} --cflags)
++  ncurses_include="$(${ncurses_config} --cflags)"
+ 
+   if test -n "${ncurses_include}"; then
+     CFLAGS="${CFLAGS} ${ncurses_include}"

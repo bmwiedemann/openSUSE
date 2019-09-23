@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Tue May 16 21:07:23 UTC 2017 - dimstar@opensuse.org
+
+- Clean out AUTHORS from description.
+- Own /{usr,var}/lib/news.
+- Don't package INSTALL (the user just installed an RPM).
+
+-------------------------------------------------------------------
+Fri Mar 31 18:36:19 UTC 2017 - meissner@suse.com
+
+- require system user and group "news" on newer openSUSE
+
+-------------------------------------------------------------------
+Wed Oct  8 19:03:36 UTC 2014 - jengelh@inai.de
+
+- Remove old specfile tags and sections
+
+-------------------------------------------------------------------
+Fri Sep  4 12:01:14 CEST 2009 - mls@suse.de
+
+- fix fd leak [bnc#525333]
+
+-------------------------------------------------------------------
+Thu Jan 24 11:14:32 CET 2008 - coolo@suse.de
+
+- fix open call
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:23 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 14:44:22 CET 2006 - schwab@suse.de
+
+- Use RPM_OPT_FLAGS.
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Sun Jan 11 12:43:27 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Mon Jun 23 15:03:19 CEST 2003 - mls@suse.de
+
+- remove /var/lib/news from filelist, it's in filesystem.rpm
+
+-------------------------------------------------------------------
+Tue May 27 09:26:19 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue Dec 11 11:10:48 CET 2001 - ma@suse.de
+
+- taged /var/lib/news/gup/{config,gupconfig} as config files.
+
+-------------------------------------------------------------------
+Tue Oct 31 16:53:43 CET 2000 - ma@suse.de
+
+- removed group unsorted
+
+-------------------------------------------------------------------
+Tue May 30 14:52:26 CEST 2000 - ro@suse.de
+
+- doc relocation 
+
+-------------------------------------------------------------------
+Thu Mar  2 18:36:48 CET 2000 - ma@suse.de
+
+- use %{_mandir}
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Sun Sep 20 18:43:58 MEST 1998 - ro@suse.de
+
+- dont redeclare sys_errlist for glibc
+- move initialisation of log_fp into main-function 
+
+----------------------------------------------------------------------------
+Tue May 27 20:03:59 MEST 1997 - florian@suse.de
+
+
+- add working support scripts for INN
+
+

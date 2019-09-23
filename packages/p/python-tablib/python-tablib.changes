@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Sat Apr  6 15:07:34 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove egg-info requires.txt entry for backports.csv as it isnt
+  a dependency on Python 3.
+- Remove build and runtime dependency on unicodecsv, which was
+  replaced with backports.csv in the last release.
+
+-------------------------------------------------------------------
+Tue Mar 26 10:26:24 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.13.0
+  * no upstream changelog (HISTORY.rst outdated), see git log
+- deleted patches
+  - openpyxl-usage-fix.patch (upstreamed)
+
+-------------------------------------------------------------------
+Thu Mar  7 06:40:43 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add openpyxl-usage-fix.patch to workaround incompatibility with
+  current releases of openpyxl
+- Add HISTORY.rst to %doc
+- Add minimum versions of dependencies from upstream
+- Use %license
+- Update to v0.12.1
+  - Add Pandas DataFrame support
+
+-------------------------------------------------------------------
+Thu Aug 24 05:12:52 UTC 2017 - tbechtold@suse.com
+
+- update to 0.11.5:
+  - Use ``yaml.safe_load`` for importing yaml.
+  - Use built-in `json` package if available
+  - Support Python 3.5+ in classifiers
+  - Fixed textual representation for Dataset with no headers
+  - Handle decimal types
+  - Release fix.
+  - Fix export only formats.
+  - Fix for xlsx output.
+  - Fixed packaging error on Python 3.
+  - Added LaTeX table export format (``Dataset.latex``).
+  - Support for dBase (DBF) files (``Dataset.dbf``).
+  - New import/export interface (``Dataset.export()``, ``Dataset.load()``).
+  - CSV custom delimiter support (``Dataset.export('csv', delimiter='$')``).
+  - Adding ability to remove duplicates to all rows in a dataset (``Dataset.remove_duplicates()``).
+  - Added a mechanism to avoid ``datetime.datetime`` issues when serializing data.
+  - New ``detect_format()`` function (mostly for internal use).
+  - Update the vendored unicodecsv to fix ``None`` handling.
+  - Only freeze the headers row, not the headers columns (xls).
+  - ``detect()`` function removed.
+  - Fix XLSX import.
+  - Bugfix for ``Dataset.transpose().transpose()``.
+- convert to singlespec
+
+-------------------------------------------------------------------
+Fri Jul 24 21:47:30 UTC 2015 - seife+obs@b1-systems.com
+
+- fix RHEL build by ignoring bytecompile-errors
+
+-------------------------------------------------------------------
+Thu May 14 09:25:23 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.10.0:
+  * Unicode Column Headers
+  * ALL the bugfixes!
+- add fdupes as BuildRequires and call it after install
+- remove shebang in every python files
+- remove useless CFLAGS declaration
+- run the tests during build with test_tablib.py
+
+-------------------------------------------------------------------
+Thu Oct 24 11:15:40 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Fri Jul 27 10:36:10 UTC 2012 - saschpe@suse.de
+
+- Initial version
+

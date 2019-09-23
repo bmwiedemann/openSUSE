@@ -1,0 +1,40 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Thu, 7 Mar 2019 11:51:51 +0100
+Subject: libxl: prepare environment for domcreate_stream_done
+References: bsc#1126325
+
+The function domcreate_bootloader_done may branch early to
+domcreate_stream_done, in case some error occoured. Here srs->dcs will be
+NULL, which leads to a crash.
+
+It is unclear what the purpose of that backpointer is. Perhaps it can be
+removed, and domcreate_stream_done could use CONTAINER_OF.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ tools/libxl/libxl_create.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/tools/libxl/libxl_create.c b/tools/libxl/libxl_create.c
+index a4e74a5cd2..989ce6d5bd 100644
+--- a/tools/libxl/libxl_create.c
++++ b/tools/libxl/libxl_create.c
+@@ -1093,6 +1093,10 @@ static void domcreate_bootloader_done(libxl__egc *egc,
+         return;
+     }
+ 
++    /* Prepare environment for domcreate_stream_done */
++    if (!dcs->srs.dcs)
++        dcs->srs.dcs = dcs;
++
+     /* Restore */
+     callbacks->restore_results = libxl__srm_callout_callback_restore_results;
+ 
+@@ -1116,7 +1120,6 @@ static void domcreate_bootloader_done(libxl__egc *egc,
+         goto out;
+ 
+     dcs->srs.ao = ao;
+-    dcs->srs.dcs = dcs;
+     dcs->srs.fd = restore_fd;
+     dcs->srs.legacy = (dcs->restore_params.stream_version == 1);
+     dcs->srs.back_channel = false;

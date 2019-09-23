@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Sat Apr  1 22:37:21 UTC 2017 - afaerber@suse.de
+
+- Build fixes (backports)
+  xf86-video-freedreno-abi-23.patch
+  xf86-video-freedreno-notifyfd.patch
+  xf86-video-freedreno-notifyfd-more.patch
+
+-------------------------------------------------------------------
+Sat Feb 13 12:16:43 UTC 2016 - afaerber@suse.de
+
+- Updated to v1.4.0:
+* Couple bug fixes
+* Add output name for DSI (so doesn't show up as "Unknown")
+- Don't package .la file
+- Use %x11_abi_videodrv_req macro
+
+-------------------------------------------------------------------
+Tue Apr 28 02:58:31 UTC 2015 - afaerber@suse.de
+
+- Updated to v1.3.0:
+* fix problems with multiple displays and display resolutions
+  which are not multiple of 32
+* server managed fd fixes
+* fix problem with black screen after server regeneration
+  (ScreenClose)
+* fix possible segfault on dri2 client disconnect
+
+-------------------------------------------------------------------
+Sat Aug 23 12:52:43 UTC 2014 - afaerber@suse.de
+
+- Updated to v1.2.0:
+* support for server managed fd's (ie. running xserver as non-root)
+* platform-probe and autoconfig support, so no .conf file needed
+  with xserver 1.16+
+* bump libdrm requirement, and misc fixes
+
+-------------------------------------------------------------------
+Sun May 25 13:01:02 UTC 2014 - afaerber@suse.de
+
+- Updated to v1.1.0:
+* XA state tracker support for 2D accel using 3D core on devices
+  without a z180/2d core. (Ie. anything recent.)
+* Updates for cursor ABI changes in latest xserver
+* Lots of bug fixes
+* Now has a man page which actually documents conf file options
+* Obsoletes U_drop-drm_mode-include.patch and
+  U_kms-fb-fix-load_cursor_argb-for-the-new-Xorg-ABI.patch
+* Require libdrm 2.4.54
+* Package new man page
+
+-------------------------------------------------------------------
+Tue Apr 29 21:42:38 UTC 2014 - afaerber@suse.de
+
+- Fix build with recent X.org versions
+  U_kms-fb-fix-load_cursor_argb-for-the-new-Xorg-ABI.patch
+
+-------------------------------------------------------------------
+Sat Jan 18 08:21:36 UTC 2014 - afaerber@suse.de
+
+- Code uses not only MIT license but also BSD-3-Clause
+
+-------------------------------------------------------------------
+Wed Jan 15 20:08:51 UTC 2014 - afaerber@suse.de
+
+- Replaced temporary drm_mode.diff build fix with proper
+  U_drop-drm_mode-include.patch after upstreaming
+- Drop explicit -mfpu=neon (copied from omap) until proven needed
+
+-------------------------------------------------------------------
+Wed Jan 15 02:41:02 UTC 2014 - afaerber@suse.de
+
+- Initial import
+* drm_mode.diff: Build fix - drop drm/drm_mode.h include

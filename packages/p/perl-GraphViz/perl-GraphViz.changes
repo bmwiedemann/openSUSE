@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Fri Oct 13 09:31:04 UTC 2017 - coolo@suse.com
+
+- updated to 2.24
+        - Test with Test::More V 1.001002 rather than V 1.302019, and all tests still pass.
+                See RT#115236. Thanx to Kent Fredric for again (sorry!) prompting me over this.
+                Lowering the version of Test::More in Makefile.PL is the only change in this version.
+
+        - Add no_xxe to XML::Twig instantiation. See RT#118972. Many thanx to Lisa Hare for a
+                very well-crafted set of patches provided via github.
+
+        - Revert change so we use Test::More instead of Test2::Bundle::Extended.
+                See RT#115236. Thanx to ribasushi for this report, and my apologies for not acting sooner.
+
+        - Escape a '{' in a regexp in t/foo.t. See RT#114551. Thanx to Slaven Rezic.
+        - Fix a typo in a comment, as provided by Gregor Herrmann in RT#111385.
+        - See http://savage.net.au/Ron/html/My.Workflow.for.Building.Distros.html for notes on the
+                modernization of the repo.
+                This includes updating Makefile.PL and removing Build.PL, MANIFEST and *META.*.
+        - Bail out cleanly if 'dot' is not installed. See RT#105575. Thanx Karen Etheridge.
+        - Update docs to point to a copy of the Perl licence.
+        - Update docs in GraphViz.pm to point to the github repo.
+        - Move t/pod.t into xt/author/.
+
+        - Merge patch from ntyni via github. This concerned use of defined(@some_array). With thanx.
+
+        - Accept pull request from Patrice Clement to add the x_deprecated flag to both META.json and
+                META.yml. The docs already had various references to 'deprecated', including directing users
+                to GraphViz2, so no change is needed there. Thanx Patrice.
+        - Add .gitignore to MANIFEST.SKIP.
+
+        - All patches to this version are from chrony, via a github pull request. With thanx.
+        - Use File::Which on Windows to detect if Graphviz is present.
+        - Clean up the code, including Build.PL and Makefile.PL.
+
+-------------------------------------------------------------------
+Mon May 12 08:09:52 UTC 2014 - vcizek@suse.com
+
+- update to 2.15
+  * fixes build on Factory
+  * changes:
+    - Fix double-quote escaping bug in GraphViz's _attributes() method. See RT#90528.
+    - Patch t/foo.t to not assume text appears on specific lines of the output test files.
+    - Re-package distro because users get errors during testing. See RT#80709.
+    - For pre-reqs such as strict, warnings, etc, which ship with Perl, set the version # to 0.
+	Reported as RT#80663 by Father Chrysostomos for Tree::DAG_Node.
+    - Add VDX as an output format.
+    - Accept a patch kindly supplied by Alexander Kriegisch, to change handling of the rankdir attribute.
+    - Patch this file to replace BST with GMT, since both DateTime::Format::HTTP and DateTime::Format::Strptime
+
+-------------------------------------------------------------------
+Fri Nov 18 11:28:01 UTC 2011 - coolo@suse.com
+
+- update to 2.08
+    - Wind back pre-reqs for various modules to match what was shipped with Perl V 5.8.1.
+      Many thanx to Brian Cassidy for the error report: https://rt.cpan.org/Ticket/Display.html?id=72068.
+
+    - Rewrite Build.PL and Makefile.PL to try loading File::Which rather than assuming it is installed.
+      This avoids the chicken-and-egg problem whereby these 2 programs need File::Which::which to find 'dot'.
+      Many thanx to Richard Clamp for the error report: https://rt.cpan.org/Public/Bug/Display.html?id=71971.
+
+    - Add File::Which to the pre-reqs in Build.PL and Makefile.PL.
+
+    - Add 'Deprecated. See GraphViz2' to the docs.
+    - Add Build.PL.
+    - Add ability to set ORIENTATION. Thanx to Christian Lackas for the patch. See RT#71787.
+    - Add Changelog.ini.
+    - Add META.json, MYMETA.json and MYMETA.yml.
+    - Add MANIFEST.SKIP.
+    - Ensure all modules contain a version number.
+    - Update the docs regarding the list of modules shipped in this distro.
+    - Remove examples/remote.pl because GraphViz::Remote is no longer shipped.
+    - Clean up examples/clusters2.pl.
+    - Clean up Makefile.PL.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:41 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Oct 13 00:03:14 UTC 2010 - jw@novell.com
+
+- graphviz-gnome is required so that dot -Tpng works.
+
+-------------------------------------------------------------------
+Fri Jul 30 11:49:57 UTC 2010 - kai.blin@biotech.uni-tuebingen.de
+
+- initial package 2.04
+  * created by cpanspec 1.78
+

@@ -1,0 +1,31 @@
+---
+ common-src/Makefile.am |    2 +-
+ common-src/Makefile.in |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+Index: amanda-3.5/common-src/Makefile.am
+===================================================================
+--- amanda-3.5.orig/common-src/Makefile.am
++++ amanda-3.5/common-src/Makefile.am
+@@ -171,7 +171,7 @@ genversion.$(OBJEXT): $(genversion_SOURC
+ genversion.h ../perl/Amanda/Constants.pm.in: $(top_builddir)/config.status
+ 	-rm -f genversion.h genversion.h.new
+ 	echo '#define CC "$(CC)"' > genversion.h.new
+-	GENDATE=`date`; \
++	GENDATE="today"; \
+ 	echo '#define BUILT_DATE "'$$GENDATE'"' >> genversion.h.new; \
+ 	echo '#define BUILT_MACH "$(target)"' >> genversion.h.new; \
+ 	mv genversion.h.new genversion.h; \
+Index: amanda-3.5/common-src/Makefile.in
+===================================================================
+--- amanda-3.5.orig/common-src/Makefile.in
++++ amanda-3.5/common-src/Makefile.in
+@@ -3204,7 +3204,7 @@ genversion.$(OBJEXT): $(genversion_SOURC
+ genversion.h ../perl/Amanda/Constants.pm.in: $(top_builddir)/config.status
+ 	-rm -f genversion.h genversion.h.new
+ 	echo '#define CC "$(CC)"' > genversion.h.new
+-	GENDATE=`date`; \
++	GENDATE="today"; \
+ 	echo '#define BUILT_DATE "'$$GENDATE'"' >> genversion.h.new; \
+ 	echo '#define BUILT_MACH "$(target)"' >> genversion.h.new; \
+ 	mv genversion.h.new genversion.h; \

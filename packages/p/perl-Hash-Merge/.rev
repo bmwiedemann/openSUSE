@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>458be208da79adaabfc07dbf1bbba4e8</srcmd5>
+    <version>0.12</version>
+    <time>1326378371</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>99771</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>458be208da79adaabfc07dbf1bbba4e8</srcmd5>
+    <version>0.12</version>
+    <time>1340183856</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>458be208da79adaabfc07dbf1bbba4e8</srcmd5>
+    <version>0.12</version>
+    <time>1359109700</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>458be208da79adaabfc07dbf1bbba4e8</srcmd5>
+    <version>0.12</version>
+    <time>1379663707</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>90453b68c015402ecf6c6b74ebbc4c0a</srcmd5>
+    <version>0.200</version>
+    <time>1386063086</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208457</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>90453b68c015402ecf6c6b74ebbc4c0a</srcmd5>
+    <version>0.200</version>
+    <time>1409302329</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>80080e59cf5528e157ecb6a40c36d42a</srcmd5>
+    <version>0.300</version>
+    <time>1539342648</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>641264</requestid>
+  </revision>
+</revisionlist>

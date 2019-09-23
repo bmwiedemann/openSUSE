@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Sun Sep  3 19:07:47 UTC 2017 - astieger@suse.com
+
+- update to 1.11:
+  *  Compress ABI dumps by default
+  *  Added new target 'compress' to compress existing ABI dumps
+  *  Added -clean-unused option to remove unused files (reports,
+     ABI dumps, etc.)
+  *  Fixed graph of ABI symbols
+  *  Changed graph format from PNG to SVG
+  *  Added NoCompress option of the profile
+
+-------------------------------------------------------------------
+Wed Jul  5 15:48:43 UTC 2017 - astieger@suse.com
+
+- update to 1.10:
+  * Add IncludeDefined option
+  * Add CtagsDef option
+  * Add option to generate RSS feed
+  * Add -regen-dump option to regenerate old ABI dumps if comparing
+    them with new ones
+  * Add GraphFewXTics option of the profile
+  * Add Input module to handle input data
+  * Add Utils module with basic functions
+  * Add Source compatibility reports (SourceCompat option)
+  * Fix mapping of old and new shared objectsd
+  * Fix style of report
+  * Add LambdaSupport optoin
+
+-------------------------------------------------------------------
+Sat May 20 17:31:07 UTC 2017 - astieger@suse.com
+
+- initial package (1.9)

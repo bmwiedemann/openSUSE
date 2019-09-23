@@ -1,0 +1,23 @@
+Index: iterm/lib/src/unix/tty/ttyio.c
+===================================================================
+--- iterm.orig/lib/src/unix/tty/ttyio.c
++++ iterm/lib/src/unix/tty/ttyio.c
+@@ -7,6 +7,8 @@
+    Further information about Common Public License Version 0.5 is obtained
+    from url http://oss.software.ibm.com/developer/opensource/license-cpl.html
+ */
++#define _XOPEN_SOURCE 700
++
+ #include "../../../config.h"
+ 
+ #include "iterm/unix/ttyio.h"
+@@ -18,9 +20,7 @@
+ #include <sys/stat.h>
+ #include <sys/wait.h>
+ #include <fcntl.h>
+-#define __USE_XOPEN
+ #include <stdlib.h>
+-#undef __USE_XOPEN
+ #include <unistd.h>
+ #include <stropts.h>
+ 

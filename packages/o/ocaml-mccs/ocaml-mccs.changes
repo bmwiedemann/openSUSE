@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Tue Feb 19 02:03:41 UTC 2019 - andy@onthewings.net
+
+- Install missing file (libmccs_stubs.a). 
+
+-------------------------------------------------------------------
+Mon Feb 18 13:08:53 UTC 2019 - andy@onthewings.net
+
+- Update to version 1.1+9:
+  * No changelog provided.
+- Fix license to be proper SPDX.
+- Replace jbuilder references to dune.  
+
+-------------------------------------------------------------------
+Fri Jun  1 18:53:45 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 1.1+8:
+  * No changelog provided.
+- Add _service file to retrieve sources.
+
+-------------------------------------------------------------------
+Mon Mar  5 01:37:32 UTC 2018 - andy@onthewings.net
+
+- Use %license. 
+
+-------------------------------------------------------------------
+Wed Jan 31 21:06:03 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 1.1~5:
+  * No changelog provided.
+
+-------------------------------------------------------------------
+Wed Dec  6 17:23:03 UTC 2017 - antoine.belvire@opensuse.org
+
+- Initial package: ocaml-mccs 1.1~4.
+

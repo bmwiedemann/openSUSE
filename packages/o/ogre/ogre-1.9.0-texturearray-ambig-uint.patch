@@ -1,0 +1,21 @@
+From: Rene van Paassen <Rene.vanPaassen@gmail.com>
+Date: 2014-03-11 16:34:05 +0100
+Subject: uint in Texturearray.h is seen as ambiguous for gcc 4.3
+References: 
+Upstream: no
+
+SLES-specific, explicitly give uint namespace
+
+Index: sinbad-ogre-dd30349ea667/Samples/TextureArray/include/TextureArray.h
+===================================================================
+--- sinbad-ogre-dd30349ea667.orig/Samples/TextureArray/include/TextureArray.h
++++ sinbad-ogre-dd30349ea667/Samples/TextureArray/include/TextureArray.h
+@@ -87,7 +87,7 @@ protected:
+         TexturePtr tex = TextureManager::getSingleton().createManual("TextureArrayTex", 
+             ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, 
+             TEX_TYPE_2D_ARRAY, 
+-            512, 512, (uint)texNames.size(),
++	    512, 512, (Ogre::uint)texNames.size(),
+             0, 
+             PF_X8R8G8B8 );
+ 

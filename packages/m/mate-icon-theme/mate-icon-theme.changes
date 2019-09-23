@@ -1,0 +1,230 @@
+-------------------------------------------------------------------
+Wed Jul 17 13:16:47 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 1.23.1 (changes since 1.22.1):
+  * tx: sync with transifex
+  * add missing preferences-system-time icon
+  * Change url project's website
+  * use folder icon as example
+  * rename mate logo
+  * Translations update
+  * Display the volume status with a better contrast in panels
+  * Upgrade svg source files to Inkscape 0.92.4
+  * Gen png icons from source - Mate theme
+  * Gen png icons from source. Mate: apps, categories & devices
+  * Update terminal icons for mate theme 
+
+-------------------------------------------------------------------
+Sun May 12 18:13:56 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.22.1:
+  * Display the volume status with a better contrast in panels.
+  * Upgrade svg source files to Inkscape 0.92.4.
+  * Gen png icons from source - mate theme.
+  * Gen png icons from source. mate: apps, categories & devices.
+  * Update terminal icons for mate theme.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Sat Dec 22 20:48:48 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.3 (changes since 1.20.1):
+  * Add video single and joined display symbolic svg icons.
+  * Symlink input-touchpad.svg icon.
+  * Add a symlink for bluetooth icon.
+  * Add icons for touchpad.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Jun 16 15:48:41 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1:
+  * mate: Add audio-volume-off.
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.0 (changes since 1.18.1):
+  * Fix some broken iso flag images.
+  * Update translations.
+
+-------------------------------------------------------------------
+Mon Apr  3 11:46:25 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.1:
+  * Add SVG ISO flags.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * Add missing mate.svg.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0.
+
+-------------------------------------------------------------------
+Mon Jan 25 19:56:45 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.0:
+  * Add system-config-keyboard icons.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0.
+
+-------------------------------------------------------------------
+Fri Oct  9 05:49:34 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11.0:
+  * Do not build a pkgconfig file.
+
+-------------------------------------------------------------------
+Thu Aug 27 19:10:43 UTC 2015 - sor.alexei@meowr.ru
+
+- Generate icon cache.
+
+-------------------------------------------------------------------
+Tue Jun  9 10:47:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.1:
+  * Add more regular icons.
+  * Update symbolic icons.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Wed Apr 15 12:44:57 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.10.0
+  * No changes since version 1.9.1
+
+-------------------------------------------------------------------
+Thu Jan 22 10:10:13 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.9.1 (unstable)
+  * Add symbolic icons for GTK3 compatibility
+
+-------------------------------------------------------------------
+Sun Oct 26 14:39:52 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.0 (unstable)
+  + no changes since version 1.8.0
+
+-------------------------------------------------------------------
+Wed Mar  5 10:19:51 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  + no changes since version 1.7.90
+
+-------------------------------------------------------------------
+Wed Feb 19 15:53:12 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.90
+  + Menta: Add avatar default icons for new lightdm
+  + add bluetooth icons for bluedevil
+- Remove useless xz requirement
+
+-------------------------------------------------------------------
+Mon Feb 10 14:37:05 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.1
+  + Mate: fix scalable directories in index.theme
+  + fix typo in makefile
+    Closes #10 (https://github.com/mate-desktop/mate-icon-theme/issues/10)
+  + mate: add bluetooth icons for using bluedevil 
+  + Many changes in Menta
+    - fix Inherits in index.theme
+    - remove symbolic icons
+
+-------------------------------------------------------------------
+Wed Jan  1 19:58:07 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.6.3
+  + Menta: remove symbolic icons
+  + Menta: fix Inherits in index.theme
+  + mate: add bluetooth icons for using bluedevil
+  + Fix typo in makefile
+    Closes #10 (https://github.com/mate-desktop/mate-icon-theme/issues/10)
+  + Mate: fix scalable directories in index.theme
+
+-------------------------------------------------------------------
+Tue Sep  3 12:34:42 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.2
+  + add avatar-default icons for new lightdm in Menta
+  + add sympolic icons to mate icon theme
+  + fix scalable directories in index.theme
+  + add make file
+
+-------------------------------------------------------------------
+Tue Jun 25 16:48:01 UTC 2013 - johann.luce@wanadoo.fr
+
+- Update to version 1.6.1
+  + On make install, the Makefile will now copy .icon files into the pack
+    age dir too, allowing for text-x-preview.icon (a requirement for text
+    file preview) to be included in the package.
+  + Merge pull request #7 from iFrag/master Text preview .icon file now
+    included in package
+  + add + and - icons for Menta icon theme
+  + add scalable symbolic icons to Menta theme
+  + Merge pull request #8 from NiceandGently/master add scalable symbolic
+    icons to Menta theme
+  + Create xz tarball
+  + Add missing uninstall hooks
+
+-------------------------------------------------------------------
+Wed Apr  3 14:06:33 UTC 2013 - johann.luce@wanadoo.fr
+
+- Update to version 1.6.0
+  + add some mimetypes icons
+  + fix index.theme in Menta
+
+-------------------------------------------------------------------
+Sat Mar 23 09:10:45 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.5.1
+  + Add Menta icon set
+  + Enable text preview in text-x-preview icon
+    This update fixes bug with plain-text thumbnails in Caja. Without
+    this fix text from plain-text files do not displayed on thumbnails
+
+-------------------------------------------------------------------
+Wed Oct 10 13:51:20 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.0
+  + bump version, no changes
+
+-------------------------------------------------------------------
+Sat Sep  8 00:45:54 UTC 2012 - nmo.marques@gmail.com
+
+- copypac to X11:MATE
+  + minor cosmetic fixes
+  + fix license entries
+
+-------------------------------------------------------------------
+Fri Aug  3 23:32:40 CST 2012 - hillwood@linuxfans.org
+
+- Update to version 1.4.0 
+
+-------------------------------------------------------------------
+Fri Dec 30 21:30:23 UTC 2011 - nmarques@opensuse.org
+
+- Initial package from version 1.2.0
+

@@ -1,0 +1,36 @@
+commit 1ceab365d83ad618948fa06ed4b56ec5b0d2c90a
+Author: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+Date:   Mon Nov 20 17:59:37 2017 +0100
+
+    libpsm2: use_RPM_OPT_FLAGS
+    
+    Add RPM_OPT_FLAGS to CFLAGS
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+
+diff --git buildflags.mak buildflags.mak
+index 67593f5..4c7d43e 100644
+--- buildflags.mak
++++ buildflags.mak
+@@ -80,7 +80,7 @@ else
+ 	anerr := $(error Unknown Fortran compiler arch: ${FCARCH})
+ endif # gfortran
+ 
+-BASECFLAGS += $(BASE_FLAGS) -pthread
++BASECFLAGS += $(BASE_FLAGS) -pthread $(RPM_OPT_FLAGS)
+ LDFLAGS += $(BASE_FLAGS)
+ ASFLAGS += $(BASE_FLAGS)
+ 
+diff --git compat/buildflags.mak compat/buildflags.mak
+index c677989..2674b87 100644
+--- compat/buildflags.mak
++++ compat/buildflags.mak
+@@ -71,7 +71,7 @@ else
+ 	endif # gcc4
+ endif # gcc
+ 
+-BASECFLAGS += $(BASE_FLAGS)
++BASECFLAGS += $(BASE_FLAGS) $(RPM_OPT_FLAGS)
+ LDFLAGS += $(BASE_FLAGS)
+ ASFLAGS += $(BASE_FLAGS)
+ 

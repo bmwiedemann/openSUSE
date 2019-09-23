@@ -1,0 +1,146 @@
+-------------------------------------------------------------------
+Tue Jul 30 21:55:31 UTC 2019 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 1.2.1 (included changes of unreleased v1.2)
+	version 1.2 new features:
+	* Generate EVM signatures based on the specified hash algorithm
+	* include "security.apparmor" in EVM signature
+	* Add support for writing & verifying "user.xxxx" xattrs for testing
+	* Support Strebog/Gost hash functions
+	* Add OpenSSL engine support
+	* Use of EVP_PKEY OpenSSL API to generate/verify v2 signatures
+	* Support verifying multiple signatures at once
+	* Support new template "buf" field and warn about other unknown fields
+	* Improve OpenSSL error reporting
+	* Support reading TPM 2.0 PCRs using tsspcrread
+
+	Bug fixes and code cleanup:
+	* Update manpage stylesheet detection
+	* Fix xattr.h include file
+	* On error when reading TPM PCRs, don't log gargabe
+	* Properly return keyid string to calc_keyid_v1/v2 callers, caused by
+	  limiting keyid output to verbose mode
+	* Fix hash buffer overflow caused by EVM support for larger hashes,
+	  defined MAX_DIGEST_SIZE and MAX_SIGNATURE_SIZE, and added "asserts".
+	* Linked with libcrypto instead of OpenSSL
+	* Updated Autotools, replacing INCLUDES with AM_CPPFLAGS
+	* Include new "hash-info.gen" in tar
+	* Log the hash algorithm, not just the hash value
+	* Fixed memory leaks in: EV_MD_CTX, init_public_keys
+	* Fixed other warnings/bugs discovered by clang, coverity
+	* Remove indirect calls in verify_hash() to improve code readability
+	* Don't fallback to using sha1
+	* Namespace some too generic object names
+	* Make functions/arrays static if possible
+
+- Upstream bumped soname to 1.0.0 in v1.2
+- Drop ima-evm-utils-xattr.patch and ima-evm-utils-fix-docbook-xsl-directory.patch (included in v1.2)
+
+-------------------------------------------------------------------
+Wed Sep 12 06:03:41 UTC 2018 - meissner@suse.com
+
+- ima-evm-utils-xattr.patch: xattr.h is now libattr.h
+
+-------------------------------------------------------------------
+Fri Mar 16 09:23:01 UTC 2018 - pvorel@suse.cz
+
+- Update to version 1.1
+  * Support the new openssl 1.1 api
+  * Support for validating multiple pcrs
+  * Verify the measurement list signature based on the list digest
+  * Verify the "ima-sig" measurement list using multiple keys
+  * Fixed parsing the measurement template data field length
+  * Portable & immutable EVM signatures (new format)
+  * Multiple fixes that have been lingering in the next branch. Some
+    are for experimental features that are not yet supported in the
+    kernel.
+- Drop ima-evm-utils-openssl1.patch (not needed any more as IMA got
+  backward compatible support for openssl 1.1).
+
+-------------------------------------------------------------------
+Tue Nov 21 08:42:47 UTC 2017 - mpluskal@suse.com
+
+- Small spec file cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Nov  8 12:31:07 UTC 2017 - meissner@suse.com
+
+- ima-evm-utils-openssl1.patch: allow building against openssl 1.1 (bsc#1066947)
+
+-------------------------------------------------------------------
+Mon Oct 23 09:25:38 UTC 2017 - matthias.gerstner@suse.com
+
+- added openssl-devel dependency to ima-evm-utils-devel. otherwise the ima
+  header can't be included if the openssl headers are missing
+
+-------------------------------------------------------------------
+Sat Oct 14 22:48:40 UTC 2017 - jengelh@inai.de
+
+- No need to remove .a files which don't exist.
+- Drop extraneous ldconfig call on preun.
+- Update RPM groups and descriptions.
+
+-------------------------------------------------------------------
+Fri Oct 13 14:09:08 UTC 2017 - matthias.gerstner@suse.com
+
+- ima-evm-utils-fix-docbook-xsl-directory.patch: adjusted to refer to the
+  "current" version of stylesheet to make the build work again
+- adjusted spec file to apply stylesheet patch to SLE12 as well
+
+-------------------------------------------------------------------
+Mon May  8 12:48:44 UTC 2017 - meissner@suse.com
+
+- Add ima-evm-utils to SLES. (FATE#321603)
+
+-------------------------------------------------------------------
+Tue Jan 19 09:32:33 UTC 2016 - meissner@suse.com
+
+- ima-evm-utils-fix-docbook-xsl-directory.patch: 
+  fixed the nwalsh docbook directory again
+
+-------------------------------------------------------------------
+Wed Dec  2 13:44:58 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.0
+  * Recursive hashing
+  * Immutable EVM signatures (experimental)
+  * Command 'ima_clear' to remove xattrs
+  * Support for passing password to the library
+  * Support for asking password safely from the user
+
+-------------------------------------------------------------------
+Wed Jan 21 17:39:08 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.9
+  * Updated README
+  * man page generated and added to the package
+  * Use additional SMACK xattrs for EVM signature generation
+  * Signing functions moved to libimaevm for external use (RPM)
+  * Fixed setting of correct hash header
+- Add additional requirements; asciidoc, docbook-xsl-stylesheets,
+  libattr-devel and libxslt-tools
+- Remove COPYING from sources; upstream provides one now
+- Remove automake.patch; "test" directory isn't provided by upstream
+  anymore
+- Remove ima-evm-utils-xattr.patch; libimaevm0 does link against
+  libattr now
+- Split package in three subpackage
+  * libimaevm0: contains shared library
+  * -devel: contains header and examples files
+  * evmctl: the kernel signing tool
+- Add ima-evm-utils-fix-docbook-xsl-directory.patch; fix path
+  where Make is looking for docbook.xsl
+
+-------------------------------------------------------------------
+Sun Oct 12 15:03:26 UTC 2014 - crrodriguez@opensuse.org
+
+- ima-evm-utils-xattr.patch: libattr is never linked, things
+ still work because glibc provides the same interface, switch
+ the includes to the glibc headers and remove the build dependency.
+
+-------------------------------------------------------------------
+Tue Aug 13 08:52:35 UTC 2013 - meissner@suse.com
+
+- Initial packaging of IMA EVM tool.
+- automake.patch: fix for newer automake
+- supply COPYING for LGPL-2.1+, as package only has an empty one.

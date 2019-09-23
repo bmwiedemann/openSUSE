@@ -1,0 +1,393 @@
+-------------------------------------------------------------------
+Wed Feb  8 00:13:19 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups again. Drop useless %clean section.
+  Update descriptions.
+
+-------------------------------------------------------------------
+Fri Jan 27 19:48:54 UTC 2017 - ctrippe@opensuse.org
+
+- update to 0.10.0
+  for all relevant changes see 
+  https://sourceforge.net/projects/getdata/files/getdata/0.10.0/
+  * This release introduces a new Dirfile Standards Version (also numbered
+    10), which adds three new field types (INDIR, SARRAY, SINDIR), and also
+    field namespaces.  This is the first update to the Dirfile Standards
+    since 2012.
+- Added BuildRequires libbz2-devel and flac-devel to support the
+  corresponding encodings 
+
+-------------------------------------------------------------------
+Thu Sep  8 20:33:08 UTC 2016 - ctrippe@opensuse.org
+
+- update to 0.9.4
+  for all relevant changes see
+  https://sourceforge.net/projects/getdata/files/getdata/0.9.4/
+  * BUG FIX: Arbitrarily-long reads of FLAC-encoded files now work.
+    Previously, each FLAC frame was written to the start of the 
+    output buffer, overwriting the previous frame, and leaving most
+    of the buffer uninitialised. Reported by S. J. Benton. 
+  * BUG FIX: Data read from FLAC-encoded 1-byte types are now correct.
+    Previously, although all data requested was read, only the first
+    half would be returned, encoded as 16-bit data (i.e., with a 
+    zero-byte between every sample).
+
+-------------------------------------------------------------------
+Sun Jul 24 18:27:35 UTC 2016 - ctrippe@opensuse.org
+
+- update to 0.9.3
+  for all relevant changes see
+  https://sourceforge.net/projects/getdata/files/getdata/0.9.3/
+  API Changes: 
+  * gd_verbose_prefix() can now be used on invalid dirfiles. Previously,
+    this function would return GD_E_BAD_DIRFILE when passed an invalid 
+    DIRFILE pointer. 
+  * BUG FIX: When trying to access a LINTERP table file in a non-existent
+    directory, GetData now reports the correct error (No such file or 
+    directory). Reported by Johanna Nagy. 
+
+  Library Changes: 
+  * GetData can now read SIE files containing the optional nine-byte 
+    header (which can be created by daisie). When read by GetData, 
+    information in the header is completely ignored (because the GetData
+    metadata contains all the necessary information). GetData never 
+    writes the header, but calls to gd_putdata() will preserve an 
+    existing header. Calls which re-code the file (like gd_alter_endianness(), 
+    gd_alter_raw(), &c.) will result in an existing header being deleted.
+  * BUG FIX: Filenames and line numbers appearing in GD_E_FORMAT 
+    error strings returned by gd_error_string() are correct again.
+    This bug also affected parser metadata sent to a registered parser 
+    callback.
+  * BUG FIX: On platforms where char is signed, the library no longer
+    rejects field names containing bytes with the top bit set.
+- remove patch fix_test_alter_entry_scalar3r.diff included in this
+  version
+
+-------------------------------------------------------------------
+Sun Mar 27 16:10:39 UTC 2016 - ctrippe@opensuse.org
+
+- added patch fix_test_alter_entry_scalar3r.diff to fix the test
+  alter_entry_scalar3r on 32 bit
+
+-------------------------------------------------------------------
+Thu Mar 24 01:50:54 UTC 2016 - dvaleev@suse.com
+
+- update to 0.9.2
+ * BUG FIX: When using a FLAC-encoded reference field, gd_nframes() 
+    no longer leaks file descriptors. 
+ * BUG FIX: A segfault in gd_entry_list() introduced in 0.9.1 
+    has been fixed. Reported by Christian Trippe. 
+ * BUG FIX: A descriptor leak on error has been plugged 
+    in gd_desync(). 
+ * BUG FIX: A segfault triggered by encountering an I/O error 
+    while writing metadata has been fixed. 
+ * BUG FIX: Memory leaks in the FLAC and ZZIP encodings, plus 
+    single-byte leaks in gd_add_string() and gd_madd_string() have been plugged. 
+ * BUG FIX: gd_alter_entry() and gd_[m]alter_spec() no longer 
+    mangle the values of entry parameters when asked to remove scalar field codes. Reported by Dan Horák.
+ * PYTHON BUG FIX: Fixed a potential segfault in dirfile.get_carray() 
+    on platforms where sizeof size_t != sizeof int. Reported by Dan Horák. 
+ * PHP BUG FIX: Calling gd_discard or gd_close on a persistent 
+    dirfile now does nothing, instead of closing the Dirfile and corrupting the persistent resource.  
+
+-------------------------------------------------------------------
+Fri Feb 19 20:52:18 UTC 2016 - ctrippe@opensuse.org
+
+- update 0.9.1
+  * Use perl-ExtUtils-MakeMaker instead of perl-Modul-Build at 
+    build time. Relevant BuildRequries where therefore changed.
+  for all relevant changes see 
+  https://sourceforge.net/projects/getdata/files/getdata/0.9.1/
+
+-------------------------------------------------------------------
+Mon Oct 19 04:59:28 UTC 2015 - ctrippe@opensuse.org
+
+- update to 0.9.0
+  * the legacy (pre-0.3) API is no longer built by default
+  for all relevant changes see 
+  http://sourceforge.net/projects/getdata/files/getdata/0.9.0/
+
+-------------------------------------------------------------------
+Wed Sep  2 06:47:41 UTC 2015 - cgiboudeaux@gmx.com
+
+- Explicitly require Perl-Module-Build at build time.
+  Fixes the Tumbleweed build
+
+-------------------------------------------------------------------
+Mon Aug 10 18:32:38 UTC 2015 - ctrippe@opensuse.org
+
+- update 0.8.9
+  * BUG FIX: The metadata writer now correctly stores bytes in the range
+    0x01 through 0x1F to the format files (encoded as hex escape sequences:
+    \x##).
+  * BUG FIX: A number of memory leaks associated with error returns from
+    libary functions have been fixed.
+  * BUG FIX: Attempting to create a new field or alias with the name of
+    an existing dangling alias now fails with error GD_E_DUPLICATE, as it
+    should.  Reported by Alexandra Rahlin.
+  * BUG FIX: Random-access reads on a RAW field with a frame offset no
+    longer result in mispositioning of the field's I/O pointer, which
+    previously would result in returning data from the wrong part of a
+    field.  Reported by S. J. Benton.
+  * BUG FIX: The return value of gd_nframes() is now correct when using a
+    sample-index encoded field as the reference field.
+  * BUG FIX: The sample-index encoding no longer creates sequential records
+    with the same value.
+  * F77 and F95 BUG FIX: Passing zero as the field code length (F77) to
+    GDFLSH GDSYNC GDRCLO, or, equivalently, an empty string as the field
+    code to fgd_flush, fgd_sync, fgd_raw_close now causes operation on all
+    fields, as with passing NULL to the corresponding C API functions does.
+    This is what the documentation said these functions did all along.
+  * PYTHON BUG FIX: Accessing the prefix or suffix member of fragment
+    objects no longer leaks memory if the other affix is non-NULL.
+
+-------------------------------------------------------------------
+Fri May 15 18:35:43 UTC 2015 - ctrippe@opensuse.org
+
+- update to 0.8.8
+  * Fixes build on 32bit
+- update to 0.8.7
+  * BUG FIX: Opening a Dirfile read-write (GD_RDWR) no longer fails if
+    /INCLUDEd fragments are read-only.  Reported by Alexandra Rahlin.
+  * BUG FIX: Several fixes have been made to the sample index encoding
+    (SIE) engine, which should now produce properly encoded data when
+    performing random writes.
+  * F95 BUG FIX: Passing the empty string to fgd_reference() now returns
+    the current reference field without modifying it, instead of crashing.
+  * PYTHON BUG FIX: Querying dirfile.reference no longer causes a crash on
+    an empty dirfile.  Reported by Alexandra Rahlin.
+  * PYTHON BUG FIX: Memory leaks have been fixed in functions returning
+    lists of field names or other metadata lists.  Reported by Alexandra
+    Rahlin.
+  * PYTHON BUG FIX: On error, dirfile.get_string() no longer segfaults or
+    leaks memory.
+
+-------------------------------------------------------------------
+Mon Dec  8 20:56:13 UTC 2014 - ctrippe@opensuse.org
+
+- update to 0.8.6
+  * BUG FIX: Computation of LINCOMs with complex valued input fields now
+    correctly happens in the complex plane.  As a side effect, gd_native_type()
+    now also correctly reports such LINCOM fields to be complex valued.
+  * BUG FIX: The gd_[m]add() functions now ignore zero-length scalar strings.
+    Previously they would store these invalid field codes, causing problems
+    later.
+  * BUG FIX: Returning complex-valued CARRAYs as purely real now works.
+    Previously only the first element requested would be returned, the remaining
+    output buffer containing uninitialised data.
+  * BUG FIX: Entry members spf, bitnum, numbits, and period are now completely
+    ignored by gd_[m]add() when corresponding named scalars are specified.
+    Previously, an invalid value in these members would result in the entry
+    being rejected, even though the rest of GetData ignored the invalid, unsued
+    value.
+  * BUG FIX: The parsing of the \x and \u escape sequences is now correct.
+  * BUG FIX: A scalar field code specified for the last factor in a POLYNOM
+    entry is no longer ignored by gd_[m]add().
+  * BUG FIX: gd_[m]add() no longer rejects MPLEX fields with negative count_val.
+  * BUG FIX: DIVIDE fields with complex-valued divisors are now properly
+    computed.
+  * BUG FIX: Complex-valued POLYNOM and RECIP fields are now computed properly
+    when the library is built in ANSI C mode.
+  * BUG FIX: gd_alter_entry() no longer corrupts the DIRFILE when modifying
+    named scalars of MPLEX fields.
+  * BUG FIX: Writing complex-valued MPLEX fields no longer corrupts the stored
+    data.
+  * BUG FIX: gd_bof() now returns the correct number (i.e.: zero) when reporting
+    the beginning of field of derived fields shifted to before the start of the
+    dirfile.  Previously, this function incorrectly returned values ranging from
+    zero to one less than the samples-per-frame of the requested field.
+  * BUG FIX: gd_flush(), gd_sync(), gd_raw_close() no longer segfault when
+    operating on a LINCOM with only one input field.
+  * BUG FIX: gd_seek() now works correctly on PHASE fields; previously, the
+    sign of the PHASE shift was flipped.
+  * BUG FIX: gd_seek() now correctly positions the virtual I/O pointer of the
+    INDEX field.
+  * BUG FIX: gd_framenum_subset() now returns the correct value when passed a
+    field_end which is beyond the end of field, and then is required to
+    extrapolate outside of the specified frame range.
+  * BUG FIX: gd_error_string() now produces the correct string when reporting
+    an out-of-range poly_ord encountered by gd_add_polynom() and similar.
+  * BUG FIX: gd_[m]alter_spec() no longer ignore co-efficients specified for
+    POLYNOM entries.
+  * BUG FIX: gd_alter_encoding() now deletes the internal cache of RAW filenames
+    of the affected fragment; previously, these old, cached filenames could lead
+    to I/O errors when reading and writing the re-encoded RAW data files.
+  * BUG FIX: Calling the Legacy API function GetFormat() on a Dirfile with MPLEX
+    or WINDOW fields no longer results in a segmentation fault.
+  * BUG FIX: Attempts to read past the EOF of a gzipped field no longer results
+    in an I/O error, but successfully returns no data.
+  * BUG FIX: The internal recursion counter wasn't being properly reset on
+    certain error conditions, leading to spurious GD_E_RECURSE_LEVEL errors
+    being returned from valid calls.
+
+-------------------------------------------------------------------
+Sat Sep  7 08:04:10 UTC 2013 - ctrippe@opensuse.org
+
+- update to 0.8.5
+  * A spurious debugging statement has been removed from the Python
+    bindings.
+  * The zzslim encoding framework, indadvertantly broken in 0.8.4,
+    should once again work.
+
+-------------------------------------------------------------------
+Mon Jul  1 17:26:49 UTC 2013 - ctrippe@opensuse.org
+
+- update to 0.8.4
+  see http://sourceforge.net/projects/getdata/files/getdata/0.8.4/
+  for a complete list of features. This includes
+  * seeking to a negative sample number with gd_seek now properly fails
+  * reading sample zero of a gzipped RAW field now always works
+  * /REFERENCE directives in subdirfiles are no longer corrupted on write
+  * NumPy arrays returned by the Python dirfile.getdata() method are now
+    the correct length
+- enable build of perl-bindings
+
+-------------------------------------------------------------------
+Fri Mar 29 21:51:04 UTC 2013 - ctrippe@opensuse.org
+
+- update to 0.8.3
+  * BUG FIX: Several bugs on big-ended systems have been fixed.  Reported by
+    Dinar Valeev.
+  * BUG FIX: Adding an entry via gd_[m]add() with a negative CARRAY scalar index
+    no longer results in an internal error or worse when the added field is later
+    read.
+  * BUG FIX: Changing a CONST field to a real floating point type using
+    gd_alter_const() (or similar) no longer results in the value of the field
+    being corrupted.
+  * BUG FIX: A bug in the parser's tokeniser has been fixed to prevent spurious
+    "unterminated token" syntax errors.  Typically this would only be seen when
+    using gd_strtok() to tokenise an (apparently innocuous) user-supplied string,
+    but a carefully crafted format file could also be made to get gd_open() to
+    produce it.
+- dropped patches getdata-ppc64.patch, getdata-bigendian.patch and 
+  getdata-arm.patch which were included upstream 
+
+-------------------------------------------------------------------
+Mon Feb  4 14:09:51 UTC 2013 - dvaleev@suse.com
+
+- sset gd_unaligned_ok for ARM (getdata-arm.patch) 
+
+-------------------------------------------------------------------
+Thu Jan 31 20:44:02 UTC 2013 - dvaleev@suse.com
+
+- set gd_unaligned_ok on ppc64 too (getdata-ppc64.patch)
+- fix getdata on bigendian (getdata-bigendian.patch) 
+
+-------------------------------------------------------------------
+Thu Dec 13 19:29:26 UTC 2012 - ctrippe@opensuse.org
+
+- update to 0.8.2
+  * BUG FIX: trailink symlinks in paths no longer confuse the library
+  * BUG FIX: reading the first sample of an MPLEX mo longer causes
+    an internal error 
+
+-------------------------------------------------------------------
+Thu Aug 23 18:57:57 UTC 2012 - ctrippe@opensuse.org
+
+- update to 0.8.1
+  see http://sourceforge.net/projects/getdata/files/getdata/0.8.1/
+  for a complete list of changes. This includes:
+  * BUG FIX: A segfault when negotiating symbolic links in file 
+    paths, typically manifesting in gd_open calls, has been fixed.
+  * BUG FIX: gd_strtok now saves a copy of the string passed to it,
+    as the documentation suggests it should.  Previously it cached
+    the pointer itself.
+  * BUG FIX: A number of minor memory leaks, mostly occurring when
+    the library encounters an error, have been fixed.
+
+-------------------------------------------------------------------
+Fri Jul  6 17:28:53 UTC 2012 - ctrippe@opensuse.org
+
+- update to 0.8.0
+  see http://sourceforge.net/projects/getdata/files/getdata/0.8.0/ 
+  for a complete list of changes. This includes:
+  * Dirfile Standards Version 9 has been released.  It adds two new field
+    types: MPLEX, which allows multiplexing multiple low-rate channels in
+    one high-rate one, and WINDOW, which extracts a portion of a field
+    based on the value of a second field.  
+
+-------------------------------------------------------------------
+Sat Dec  3 18:38:41 UTC 2011 - ctrippe@opensuse.org
+
+- BuildRequire libtool
+- Correct the License to be LGPL-2.1+
+
+-------------------------------------------------------------------
+Mon Aug  9 14:28:45 UTC 2011 - toddrme2178@gmail.com
+ 
+- Moved documentation to -doc package (fox for RPMLINT warning)
+- Cleaned up spec file formatting
+
+-------------------------------------------------------------------
+Sat Apr  9 19:01:28 UTC 2011 - ctrippe@opensuse.org
+
+- update to 0.7.3
+  see http://sourceforge.net/projects/getdata/files/getdata/0.7.3/
+  * BUG FIX: Passing a zero dividend to alter_crecip() and alter_recip() now
+    results in the dividend not changing, per documentation.
+  * BUG FIX: GetData wasn't properly computing the module directory, causing
+    encodings using external modules to fail with GD_E_UNSUPPORTED.
+  * BUG FIX: Metafield records are now properly stored in the format file for
+    Standards Version 8.
+  * BUG FIX: gd_raw_filename() wasn't clearing the Dirfile error before
+    operation, resulting in it failing erroneously in certain situations.
+  * BUG FIX: A potential segmentation fault has been patched in dirfile2ascii.
+
+-------------------------------------------------------------------
+Sat Apr  9 18:55:16 UTC 2011 - ctrippe@opensuse.org
+
+- update to 0.7.2
+  see http://sourceforge.net/projects/getdata/files/getdata/0.7.2/
+  for all details. This includes:
+  * If built with modules, the plugin shared objects will now be 
+    installed in a separate directory.
+  * BUG FIX: When using modules, a missing plugin no longer results 
+    in a lock up the second time an attempt is made to find it.
+  * BUG FIX: GetData now properly processes /INCLUDE directives with
+    absolute paths, as the documentation insists it should.
+  * BUG FIX: gd_add()ing the first raw field in a dirfile to a sub-
+    fragment no longer results in memory corruption when calling 
+    gd_close().
+  * If called with GD_CREAT but no encoding specified, gd_include()
+    now will duplicate the encoding of the parent fragment (if any).
+
+-------------------------------------------------------------------
+Wed Dec  8 18:41:28 UTC 2010 - ctrippe@gmx.net
+
+- update to 0.7.1
+  see http://sourceforge.net/projects/getdata/files/getdata/0.7.1/
+  for all details. This includes:
+  * BUG FIX: When the parser fails in a gd_include() call, the
+    internal list of conformant Standards Versions for the loaded 
+    dirfile is no longer corrupted.
+  * BUG FIX Performing two consecutive reads of the same field in
+    an ASCII encoded datasources no longer confuses GetData.
+  * BUG FIX: Numerous memory leaks have been patched (mostly 
+    pin-holes, although there are a few, rare but egregious ones).
+
+-------------------------------------------------------------------
+Thu Nov 25 20:54:44 UTC 2010 - ctrippe@gmx.net
+
+- update to 0.7.0
+  see http://sourceforge.net/projects/getdata/files/getdata/0.7.0/RELEASE_NOTES-0.7.0/view
+  for all details. This includes:
+  * Dirfile Standards Version 8 has been released.  It adds three 
+    new field types: DIVIDE, which computes X/Y for vectors X and Y,
+    and RECIP, which computes A/X for vector X and scalar A, and 
+    CARRAY, which is an array of CONST scalars.
+  * Like CONST fields, CARRAY elements can be used as parametersin
+    the definition of other fields.  Syntax is 'field<n>', where 
+    'field' is the field name and 'n' the element index in the 
+    CARRAY (and the angle brackets are literal angle brackets). If 
+    the '<n>' is omitted, the first element (numbered 0) is assumed.
+  * Slashes on reserved words are now mandatory, allowing fields 
+    with reserved words as names.
+  * The long-deprecated single character data type codes have been 
+    removed from Standards Version 8. (They are still accepted by 
+    GetData, which handles all previous Standards Versions as well.)
+
+-------------------------------------------------------------------
+Thu Sep  9 14:13:41 UTC 2010 - ctrippe@gmx.net
+
+- initial build of getdata-0.6.3 
+

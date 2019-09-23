@@ -1,0 +1,11 @@
+--- src/subr.c
++++ src/subr.c
+@@ -1109,7 +1109,7 @@
+ #endif /* SUPPORT_OLD_INFO_FMT_STRINGS */
+ 
+ #ifdef SUPPORT_OLD_INFO_FMT_STRINGS
+-    if (oldway && !warned_of_deprecation)
++    if (0 && oldway && !warned_of_deprecation)
+     {
+ 	/* warn the user that we don't like his kind 'round these parts */
+ 	warned_of_deprecation = 1;

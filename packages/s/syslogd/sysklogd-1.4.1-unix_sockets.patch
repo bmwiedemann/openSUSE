@@ -1,0 +1,147 @@
+--- syslog.conf.5
++++ syslog.conf.5	2004-09-16 20:21:07.144284248 +0000
+@@ -159,6 +159,16 @@ command  before
+ .BR syslogd (8)
+ is started.
+ 
++.SS Unix Socket (UDP)
++This version of
++.BR syslogd (8)
++has support for logging output to named sockets (UDP UNIX domain sockets).
++A named socket can be used as a destination for log messages by prepending
++a double at-sign symbol (``@@'') to the pathname of the socket file. This
++feature is useful for applications that need to process all logged messages.
++All they need to do is open the named socket for reading and then process
++the messages as they are received.
++
+ .SS Terminal and Console
+ If the file you specified is a tty, special tty-handling is done, same
+ with
+--- syslogd.c
++++ syslogd.c	2004-09-16 20:21:07.150143661 +0000
+@@ -633,6 +633,10 @@ struct filed {
+ 			struct sockaddr_in	f_addr;
+ #endif
+ 		} f_forw;		/* forwarding address */
++		struct {
++			struct sockaddr_un su_addr;	/* destination address */
++			int su_addrlen;			/* address len */
++		} f_usock;			/* UNIX domain socket address */
+ 		char	f_fname[MAXFNAME];
+ 	} f_un;
+ 	char	f_prevline[MAXSVLINE];		/* last message logged */
+@@ -644,6 +648,8 @@ struct filed {
+ 	int	f_repeatcount;			/* number of "repeated" msgs */
+ 	int	f_flags;			/* store some additional flags */
+ };
++#define fus_su  f_un.f_usock.su_addr
++#define fus_sal f_un.f_usock.su_addrlen
+ 
+ /*
+  * Intervals at which we flush out "message repeated" messages,
+@@ -674,10 +680,11 @@ int	repeatinterval[] = { 30, 60 };	/* #
+ #define F_FORW_SUSP	7		/* suspended host forwarding */
+ #define F_FORW_UNKN	8		/* unknown host forwarding */
+ #define F_PIPE		9		/* named pipe */
++#define F_USOCK	10  		/* UNIX domain UDP socket */
+ char	*TypeNames[] = {
+ 	"UNUSED",	"FILE",		"TTY",		"CONSOLE",
+ 	"FORW",		"USERS",	"WALL",		"FORW(SUSPENDED)",
+-	"FORW(UNKNOWN)", "PIPE"
++	"FORW(UNKNOWN)", "PIPE",	"USOCK"
+ };
+ 
+ struct	filed *Files = (struct filed *) 0;
+@@ -1941,6 +1948,32 @@ void fprintlog(f, from, flags, msg)
+ 			(void) fsync(f->f_file);
+ 		break;
+ 
++	case F_USOCK:
++		f->f_time = now;
++		dprintf(" %s\n", f->fus_su.sun_path[0] ? f->fus_su.sun_path : "<undefined>");
++		if (f->f_file != -1) {
++			int l;
++			char line[MAXLINE +1];
++
++			int chunk_len,dstbuf_size = 0;
++			for (l = 0;l < 5;l++) {
++				if( (chunk_len = iov[l].iov_len) > (sizeof(line) - dstbuf_size))
++					chunk_len = sizeof(line) - dstbuf_size;
++				if(chunk_len > 0) {
++					memcpy(&line[dstbuf_size],iov[l].iov_base,chunk_len);
++					dstbuf_size += chunk_len;
++				}
++			}
++			if ((l = dstbuf_size) > MAXLINE) l = MAXLINE;
++	    		line[l] = 0;
++			if (sendto(f->f_file, line, l, MSG_DONTWAIT, 
++					(struct sockaddr*) &f->fus_su, f->fus_sal) != l) {
++				dprintf("sendto error - \"%s\"\n",strerror(errno));
++				/* sendto error must be ignored */
++			}
++		}
++		break;
++
+ 	case F_USERS:
+ 	case F_WALL:
+ 		f->f_time = now;
+@@ -2347,6 +2380,7 @@ void init()
+ 				case F_PIPE:
+ 				case F_TTY:
+ 				case F_CONSOLE:
++				case F_USOCK:
+ 					(void) close(f->f_file);
+ 				break;
+ 			}
+@@ -2499,7 +2533,11 @@ void init()
+ 				case F_PIPE:
+ 				case F_TTY:
+ 				case F_CONSOLE:
+-					printf("%s", f->f_un.f_fname);
++				case F_USOCK:
++					if(f->f_type == F_USOCK)
++						printf("%s", f->fus_su.sun_path[0] ? f->fus_su.sun_path : "<undefined>");
++					else
++						printf("%s", f->f_un.f_fname);
+ 					if (f->f_file == -1)
+ 						printf(" (unused)");
+ 					break;
+@@ -2717,8 +2755,37 @@ void cfline(line, f)
+ 	switch (*p)
+ 	{
+ 	case '@':
++		if(*(++p) == '@') {
++			/* We need to set up for output to a named socket...
++			 */
++			memset((char *)&f->fus_su, 0, sizeof(f->fus_su));
++			(void)strncpy(f->fus_su.sun_path, ++p,
++				sizeof(f->fus_su.sun_path)-1);
++			f->fus_su.sun_path[sizeof(f->fus_su.sun_path)-1] = 0;
++			dprintf ("unix socket filename: %s\n",
++				f->fus_su.sun_path);
++			f->fus_su.sun_family = AF_UNIX;
++			if( (f->f_file = socket(PF_UNIX, SOCK_DGRAM, 0)) < 0) {
++				dprintf("Can't create unix socket\n");
++				logerror("Can't create unix socket");
++				break;
++			}
++			f->fus_sal = strlen(f->fus_su.sun_path) +
++				sizeof(f->fus_su.sun_family);
++			f->f_type = F_USOCK;
++
++			/* Make sure that pathname exists...
++			 */
++			if (bind(f->f_file, (struct sockaddr *)&f->fus_su, f->fus_sal) < 0 ||
++					(chmod(f->fus_su.sun_path, 0666) < 0)) {
++				dprintf("Can't bind unix socket to name\n");
++				logerror("Can't bind unix unix socket to name");
++				break;                        
++			}                                     
++			break;
++		}
+ #ifdef SYSLOG_INET
+-		(void) strcpy(f->f_un.f_forw.f_hname, ++p);
++		(void) strcpy(f->f_un.f_forw.f_hname, p);
+ 		dprintf("forwarding host: %s\n", p);	/*ASP*/
+ #ifdef INET6
+ 		f->f_type = F_FORW_UNKN;

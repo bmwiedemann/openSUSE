@@ -1,0 +1,960 @@
+---
+ afm/fontsmap            |   40 ++++++++++++++++++++++++++++++++++++++++
+ afm/pcrb.afm            |    3 ++-
+ afm/pcrbo.afm           |    3 ++-
+ afm/pcrr.afm            |    3 ++-
+ afm/pcrro.afm           |    3 ++-
+ afm/phvb.afm            |    3 ++-
+ afm/phvbo.afm           |    3 ++-
+ afm/phvr.afm            |    3 ++-
+ afm/phvro.afm           |    3 ++-
+ afm/ptmb.afm            |    3 ++-
+ afm/ptmbi.afm           |    3 ++-
+ afm/ptmi.afm            |    3 ++-
+ afm/ptmr.afm            |    3 ++-
+ configure               |    5 +++--
+ configure.in            |    5 +++--
+ contrib/emacs/a2ps.el   |    2 +-
+ doc/Makefile.in         |    2 +-
+ encoding/encoding.map   |    4 ++++
+ etc/Makefile.in         |    2 +-
+ etc/a2ps_cfg.in         |   40 +++++++++++++++++++++++++++++++++++++---
+ lib/jobs.c              |   10 +++++++++-
+ lib/metaseq.c           |    2 +-
+ lib/options.c           |   23 ++++++++++++++++++++++-
+ lib/path-concat.c       |    9 ++++-----
+ lib/xstrrpl.c           |    1 +
+ man/a2ps.x              |    2 +-
+ man/card.x              |    2 +-
+ man/fixps.x             |    2 +-
+ man/pdiff.x             |    2 +-
+ man/psmandup.x          |    2 +-
+ man/psset.x             |    2 +-
+ ogonkify/Makefile.in    |    2 +-
+ ogonkify/ogonkify.in.in |    2 +-
+ ogonkify/pcrb-o.afm     |    3 ++-
+ ogonkify/pcrbo-o.afm    |    3 ++-
+ ogonkify/pcrr-o.afm     |    3 ++-
+ ogonkify/pcrro-o.afm    |    3 ++-
+ ogonkify/phvb-o.afm     |    3 ++-
+ ogonkify/phvbo-o.afm    |    3 ++-
+ ogonkify/phvr-o.afm     |    3 ++-
+ ogonkify/phvro-o.afm    |    3 ++-
+ ogonkify/ptmb-o.afm     |    3 ++-
+ ogonkify/ptmbi-o.afm    |    3 ++-
+ ogonkify/ptmr-o.afm     |    3 ++-
+ ogonkify/ptmri-o.afm    |    3 ++-
+ src/main.c              |   14 +++++++++++++-
+ 46 files changed, 196 insertions(+), 51 deletions(-)
+
+--- afm/fontsmap
++++ afm/fontsmap	2018-10-17 06:43:16.495744482 +0000
+@@ -47,6 +47,14 @@ Bookman-Demi                  pbkd
+ Bookman-DemiItalic            pbkdi
+ Bookman-Light                 pbkl
+ Bookman-LightItalic           pbkli
++CenturySchL-Bold              c059016l
++CenturySchL-BoldItal          c059036l
++CenturySchL-Ital              c059033l
++CenturySchL-Roma              c059013l
++CharterBT-Bold                bchb
++CharterBT-BoldItalic          bchbi
++CharterBT-Italic              bchri
++CharterBT-Roman               bchr
+ Courier                       pcrr
+ Courier-Bold                  pcrb
+ Courier-Bold-Ogonki           pcrb-o
+@@ -55,6 +63,9 @@ Courier-BoldOblique-Ogonki    pcrbo-o
+ Courier-Oblique               pcrro
+ Courier-Oblique-Ogonki        pcrro-o
+ Courier-Ogonki                pcrr-o
++Cyrillic                      fcyr
++Cyrillic-Italic               fcyri
++Dingbats                      d050000l
+ Helvetica                     phvr
+ Helvetica-Bold                phvb
+ Helvetica-Bold-Ogonki         phvb-o
+@@ -71,11 +82,25 @@ NewCenturySchlbk-Bold         pncb
+ NewCenturySchlbk-BoldItalic   pncbi
+ NewCenturySchlbk-Italic       pncri
+ NewCenturySchlbk-Roman        pncr
++NimbusMonL-Bold               n022004l
++NimbusMonL-BoldObli           n022024l
++NimbusMonL-Regu               n022003l
++NimbusMonL-ReguObli           n022023l
++NimbusRomNo                   n021003l
++NimbusSanL-Bold               n019004l
++NimbusSanL-BoldCond           n019044l
++NimbusSanL-BoldCondItal       n019064l
++NimbusSanL-BoldItal           n019024l
++NimbusSanL-Regu               n019003l
++NimbusSanL-ReguCond           n019043l
++NimbusSanL-ReguCondItal       n019063l
++NimbusSanL-ReguItal           n019023l
+ PCFont                        pcfont
+ Palatino-Bold                 pplb
+ Palatino-BoldItalic           pplbi
+ Palatino-Italic               pplri
+ Palatino-Roman                pplr
++StandardSymL                  s050000l
+ Symbol                        psyr
+ Times-Bold                    ptmb
+ Times-Bold-Ogonki             ptmb-o
+@@ -85,5 +110,20 @@ Times-Italic                  ptmi
+ Times-Italic-Ogonki           ptmri-o
+ Times-Roman                   ptmr
+ Times-Roman-Ogonki            ptmr-o
++URWAntiquaT-RegularCondensed  u003043t
++URWBookmanL-DemiBold          b018015l
++URWBookmanL-DemiBoldItal      b018035l
++URWBookmanL-Ligh              b018012l
++URWBookmanL-LighItal          b018032l
++URWChanceryL-MediItal         z003034l
++URWGothicL-Book               a010013l
++URWGothicL-BookObli           a010033l
++URWGothicL-Demi               a010015l
++URWGothicL-DemiObli           a010035l
++URWGroteskT-Bold              u004006t
++URWPalladioL-Bold             p052004l
++URWPalladioL-BoldItal         p052024l
++URWPalladioL-Ital             p052023l
++URWPalladioL-Roma             p052003l
+ ZapfChancery-MediumItalic     pzcmi
+ ZapfDingbats                  pzdr
+--- afm/pcrb.afm
++++ afm/pcrb.afm	2018-10-17 06:43:16.495744482 +0000
+@@ -21,7 +21,7 @@ Ascender 629
+ Descender -157
+ StdHW 84
+ StdVW 106
+-StartCharMetrics 314
++StartCharMetrics 315
+ C 32 ; WX 600 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 600 ; N exclam ; B 202 -15 398 572 ;
+ C 34 ; WX 600 ; N quotedbl ; B 135 277 465 562 ;
+@@ -312,6 +312,7 @@ C -1 ; WX 600 ; N Dcaron ; B 30 0 594 79
+ C -1 ; WX 600 ; N rcommaaccent ; B 47 -250 580 454 ;
+ C -1 ; WX 600 ; N Ntilde ; B 8 -12 610 759 ;
+ C -1 ; WX 600 ; N otilde ; B 30 -15 570 636 ;
++C -1 ; WX 600 ; N Euro ; B -69 -50 673 633 ;
+ C -1 ; WX 600 ; N Rcommaaccent ; B 24 -250 599 562 ;
+ C -1 ; WX 600 ; N Lcommaaccent ; B 39 -250 578 562 ;
+ C -1 ; WX 600 ; N Atilde ; B -9 0 609 759 ;
+--- afm/pcrbo.afm
++++ afm/pcrbo.afm	2018-10-17 06:43:16.495744482 +0000
+@@ -21,7 +21,7 @@ Ascender 629
+ Descender -157
+ StdHW 84
+ StdVW 106
+-StartCharMetrics 314
++StartCharMetrics 315
+ C 32 ; WX 600 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 600 ; N exclam ; B 215 -15 495 572 ;
+ C 34 ; WX 600 ; N quotedbl ; B 211 277 585 562 ;
+@@ -312,6 +312,7 @@ C -1 ; WX 600 ; N Dcaron ; B 30 0 664 79
+ C -1 ; WX 600 ; N rcommaaccent ; B 47 -250 655 454 ;
+ C -1 ; WX 600 ; N Ntilde ; B 8 -12 730 759 ;
+ C -1 ; WX 600 ; N otilde ; B 71 -15 643 636 ;
++C -1 ; WX 600 ; N Euro ; B -58 -50 776 633 ;
+ C -1 ; WX 600 ; N Rcommaaccent ; B 24 -250 617 562 ;
+ C -1 ; WX 600 ; N Lcommaaccent ; B 39 -250 636 562 ;
+ C -1 ; WX 600 ; N Atilde ; B -9 0 669 759 ;
+--- afm/pcrr.afm
++++ afm/pcrr.afm	2018-10-17 06:43:16.495744482 +0000
+@@ -21,7 +21,7 @@ Ascender 629
+ Descender -157
+ StdHW 51
+ StdVW 51
+-StartCharMetrics 314
++StartCharMetrics 315
+ C 32 ; WX 600 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 600 ; N exclam ; B 236 -15 364 572 ;
+ C 34 ; WX 600 ; N quotedbl ; B 187 328 413 562 ;
+@@ -312,6 +312,7 @@ C -1 ; WX 600 ; N Dcaron ; B 43 0 574 80
+ C -1 ; WX 600 ; N rcommaaccent ; B 60 -250 559 441 ;
+ C -1 ; WX 600 ; N Ntilde ; B 7 -13 593 729 ;
+ C -1 ; WX 600 ; N otilde ; B 62 -15 538 606 ;
++C -1 ; WX 600 ; N Euro ; B -9 -20 613 583 ;
+ C -1 ; WX 600 ; N Rcommaaccent ; B 38 -250 588 562 ;
+ C -1 ; WX 600 ; N Lcommaaccent ; B 47 -250 554 562 ;
+ C -1 ; WX 600 ; N Atilde ; B 3 0 597 729 ;
+--- afm/pcrro.afm
++++ afm/pcrro.afm	2018-10-17 06:43:16.495744482 +0000
+@@ -21,7 +21,7 @@ Ascender 629
+ Descender -157
+ StdHW 51
+ StdVW 51
+-StartCharMetrics 314
++StartCharMetrics 315
+ C 32 ; WX 600 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 600 ; N exclam ; B 243 -15 464 572 ;
+ C 34 ; WX 600 ; N quotedbl ; B 273 328 532 562 ;
+@@ -312,6 +312,7 @@ C -1 ; WX 600 ; N Dcaron ; B 43 0 645 80
+ C -1 ; WX 600 ; N rcommaaccent ; B 60 -250 636 441 ;
+ C -1 ; WX 600 ; N Ntilde ; B 7 -13 712 729 ;
+ C -1 ; WX 600 ; N otilde ; B 102 -15 629 606 ;
++C -1 ; WX 600 ; N Euro ; B -5 -20 718 583 ;
+ C -1 ; WX 600 ; N Rcommaaccent ; B 38 -250 598 562 ;
+ C -1 ; WX 600 ; N Lcommaaccent ; B 47 -250 607 562 ;
+ C -1 ; WX 600 ; N Atilde ; B 3 0 655 729 ;
+--- afm/phvb.afm
++++ afm/phvb.afm	2018-10-17 06:43:16.495744482 +0000
+@@ -21,7 +21,7 @@ Ascender 718
+ Descender -207
+ StdHW 118
+ StdVW 140
+-StartCharMetrics 314
++StartCharMetrics 315
+ C 32 ; WX 278 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 333 ; N exclam ; B 90 0 244 718 ;
+ C 34 ; WX 474 ; N quotedbl ; B 98 447 376 718 ;
+@@ -312,6 +312,7 @@ C -1 ; WX 722 ; N Dcaron ; B 76 0 685 93
+ C -1 ; WX 389 ; N rcommaaccent ; B 64 -228 373 546 ;
+ C -1 ; WX 722 ; N Ntilde ; B 69 0 654 923 ;
+ C -1 ; WX 611 ; N otilde ; B 34 -14 578 737 ;
++C -1 ; WX 883 ; N Euro ; B 66 0 776 729 ;
+ C -1 ; WX 722 ; N Rcommaaccent ; B 76 -228 677 718 ;
+ C -1 ; WX 611 ; N Lcommaaccent ; B 76 -228 583 718 ;
+ C -1 ; WX 722 ; N Atilde ; B 20 0 702 923 ;
+--- afm/phvbo.afm
++++ afm/phvbo.afm	2018-10-17 06:43:16.495744482 +0000
+@@ -21,7 +21,7 @@ Ascender 718
+ Descender -207
+ StdHW 118
+ StdVW 140
+-StartCharMetrics 314
++StartCharMetrics 315
+ C 32 ; WX 278 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 333 ; N exclam ; B 94 0 397 718 ;
+ C 34 ; WX 474 ; N quotedbl ; B 193 447 529 718 ;
+@@ -312,6 +312,7 @@ C -1 ; WX 722 ; N Dcaron ; B 76 0 777 93
+ C -1 ; WX 389 ; N rcommaaccent ; B 26 -228 489 546 ;
+ C -1 ; WX 722 ; N Ntilde ; B 69 0 807 923 ;
+ C -1 ; WX 611 ; N otilde ; B 82 -14 646 737 ;
++C -1 ; WX 833 ; N Euro ; B 66 0 931 729 ;
+ C -1 ; WX 722 ; N Rcommaaccent ; B 76 -228 778 718 ;
+ C -1 ; WX 611 ; N Lcommaaccent ; B 76 -228 611 718 ;
+ C -1 ; WX 722 ; N Atilde ; B 20 0 741 923 ;
+--- afm/phvr.afm
++++ afm/phvr.afm	2018-10-17 06:43:16.499744407 +0000
+@@ -21,7 +21,7 @@ Ascender 718
+ Descender -207
+ StdHW 76
+ StdVW 88
+-StartCharMetrics 314
++StartCharMetrics 315
+ C 32 ; WX 278 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 278 ; N exclam ; B 90 0 187 718 ;
+ C 34 ; WX 355 ; N quotedbl ; B 70 463 285 718 ;
+@@ -312,6 +312,7 @@ C -1 ; WX 722 ; N Dcaron ; B 81 0 674 92
+ C -1 ; WX 333 ; N rcommaaccent ; B 77 -225 332 538 ;
+ C -1 ; WX 722 ; N Ntilde ; B 76 0 646 917 ;
+ C -1 ; WX 556 ; N otilde ; B 35 -14 521 722 ;
++C -1 ; WX 833 ; N Euro ; B 75 0 761 729 ;
+ C -1 ; WX 722 ; N Rcommaaccent ; B 88 -225 684 718 ;
+ C -1 ; WX 556 ; N Lcommaaccent ; B 76 -225 537 718 ;
+ C -1 ; WX 667 ; N Atilde ; B 14 0 654 917 ;
+--- afm/phvro.afm
++++ afm/phvro.afm	2018-10-17 06:43:16.499744407 +0000
+@@ -21,7 +21,7 @@ Ascender 718
+ Descender -207
+ StdHW 76
+ StdVW 88
+-StartCharMetrics 314
++StartCharMetrics 315
+ C 32 ; WX 278 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 278 ; N exclam ; B 90 0 340 718 ;
+ C 34 ; WX 355 ; N quotedbl ; B 168 463 438 718 ;
+@@ -312,6 +312,7 @@ C -1 ; WX 722 ; N Dcaron ; B 81 0 764 92
+ C -1 ; WX 333 ; N rcommaaccent ; B 30 -225 446 538 ;
+ C -1 ; WX 722 ; N Ntilde ; B 76 0 799 917 ;
+ C -1 ; WX 556 ; N otilde ; B 83 -14 602 722 ;
++C -1 ; WX 833 ; N Euro ; B 75 0 916 729 ;
+ C -1 ; WX 722 ; N Rcommaaccent ; B 88 -225 773 718 ;
+ C -1 ; WX 556 ; N Lcommaaccent ; B 76 -225 555 718 ;
+ C -1 ; WX 667 ; N Atilde ; B 14 0 699 917 ;
+--- afm/ptmb.afm
++++ afm/ptmb.afm	2018-10-17 06:43:16.499744407 +0000
+@@ -21,7 +21,7 @@ Ascender 683
+ Descender -217
+ StdHW 44
+ StdVW 139
+-StartCharMetrics 314
++StartCharMetrics 315
+ C 32 ; WX 250 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 333 ; N exclam ; B 81 -13 251 691 ;
+ C 34 ; WX 555 ; N quotedbl ; B 83 404 472 691 ;
+@@ -312,6 +312,7 @@ C -1 ; WX 722 ; N Dcaron ; B 14 0 690 91
+ C -1 ; WX 444 ; N rcommaaccent ; B 29 -218 434 473 ;
+ C -1 ; WX 722 ; N Ntilde ; B 16 -18 701 884 ;
+ C -1 ; WX 500 ; N otilde ; B 25 -14 476 674 ;
++C -1 ; WX 944 ; N Euro ; B 21 0 914 681 ;
+ C -1 ; WX 722 ; N Rcommaaccent ; B 26 -218 715 676 ;
+ C -1 ; WX 667 ; N Lcommaaccent ; B 19 -218 638 676 ;
+ C -1 ; WX 722 ; N Atilde ; B 9 0 689 884 ;
+--- afm/ptmbi.afm
++++ afm/ptmbi.afm	2018-10-17 06:43:16.499744407 +0000
+@@ -21,7 +21,7 @@ Ascender 683
+ Descender -217
+ StdHW 42
+ StdVW 121
+-StartCharMetrics 314
++StartCharMetrics 315
+ C 32 ; WX 250 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 389 ; N exclam ; B 67 -13 370 684 ;
+ C 34 ; WX 555 ; N quotedbl ; B 136 398 536 685 ;
+@@ -312,6 +312,7 @@ C -1 ; WX 722 ; N Dcaron ; B -46 0 685 8
+ C -1 ; WX 389 ; N rcommaaccent ; B -67 -218 389 462 ;
+ C -1 ; WX 722 ; N Ntilde ; B -27 -15 748 862 ;
+ C -1 ; WX 500 ; N otilde ; B -3 -13 491 655 ;
++C -1 ; WX 889 ; N Euro ; B -29 -12 907 662 ;
+ C -1 ; WX 667 ; N Rcommaaccent ; B -29 -218 623 669 ;
+ C -1 ; WX 611 ; N Lcommaaccent ; B -22 -218 590 669 ;
+ C -1 ; WX 667 ; N Atilde ; B -67 0 593 862 ;
+--- afm/ptmi.afm
++++ afm/ptmi.afm	2018-10-17 06:43:16.499744407 +0000
+@@ -21,7 +21,7 @@ Ascender 683
+ Descender -217
+ StdHW 32
+ StdVW 76
+-StartCharMetrics 314
++StartCharMetrics 315
+ C 32 ; WX 250 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 333 ; N exclam ; B 39 -11 302 667 ;
+ C 34 ; WX 420 ; N quotedbl ; B 144 421 432 666 ;
+@@ -312,6 +312,7 @@ C -1 ; WX 722 ; N Dcaron ; B -8 0 700 87
+ C -1 ; WX 389 ; N rcommaaccent ; B -3 -217 412 441 ;
+ C -1 ; WX 667 ; N Ntilde ; B -20 -15 727 836 ;
+ C -1 ; WX 500 ; N otilde ; B 27 -11 496 624 ;
++C -1 ; WX 833 ; N Euro ; B -24 0 850 660 ;
+ C -1 ; WX 611 ; N Rcommaaccent ; B -13 -187 588 653 ;
+ C -1 ; WX 556 ; N Lcommaaccent ; B -8 -217 559 653 ;
+ C -1 ; WX 611 ; N Atilde ; B -51 0 566 836 ;
+--- afm/ptmr.afm
++++ afm/ptmr.afm	2018-10-17 06:43:16.499744407 +0000
+@@ -21,7 +21,7 @@ Ascender 683
+ Descender -217
+ StdHW 28
+ StdVW 84
+-StartCharMetrics 314
++StartCharMetrics 315
+ C 32 ; WX 250 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 333 ; N exclam ; B 130 -9 238 676 ;
+ C 34 ; WX 408 ; N quotedbl ; B 77 431 331 676 ;
+@@ -312,6 +312,7 @@ C -1 ; WX 722 ; N Dcaron ; B 16 0 685 88
+ C -1 ; WX 333 ; N rcommaaccent ; B 5 -218 335 460 ;
+ C -1 ; WX 722 ; N Ntilde ; B 12 -11 707 850 ;
+ C -1 ; WX 500 ; N otilde ; B 29 -10 470 638 ;
++C -1 ; WX 889 ; N Euro ; B 19 0 871 662 ;
+ C -1 ; WX 667 ; N Rcommaaccent ; B 17 -198 659 662 ;
+ C -1 ; WX 611 ; N Lcommaaccent ; B 12 -218 598 662 ;
+ C -1 ; WX 722 ; N Atilde ; B 15 0 706 850 ;
+--- configure.in
++++ configure.in	2018-10-17 06:43:16.499744407 +0000
+@@ -207,8 +207,9 @@ AC_MSG_CHECKING(for PostScript fonts pat
+ # Try to find some PostScript fonts.
+ # Find out if ghostscript is installed
+ ac_psfont_path=
+-for ac_dir in /usr/local/ghostscript/fonts \
+-  /usr/local/share/ghostscript/fonts;
++for ac_dir in usr/share/ghostscript/fonts \
++  /usr/X11R6/lib/X11/fonts/Type1/          \
++  /usr/X11R6/lib/X11/fonts/latin2/Type1/   ;
+ do
+   if test "cd $ac_dir 2>/dev/null && echo *.afm"; then
+     ac_psfont_path="$ac_psfont_path:$ac_dir";
+--- configure
++++ configure	2018-10-17 06:43:16.503744334 +0000
+@@ -30759,8 +30759,9 @@ echo $ECHO_N "checking for PostScript fo
+ # Try to find some PostScript fonts.
+ # Find out if ghostscript is installed
+ ac_psfont_path=
+-for ac_dir in /usr/local/ghostscript/fonts \
+-  /usr/local/share/ghostscript/fonts;
++for ac_dir in /usr/share/ghostscript/fonts \
++  /usr/X11R6/lib/X11/fonts/Type1/ \
++  /usr/X11R6/lib/X11/fonts/latin2/Typle1/ ;
+ do
+   if test "cd $ac_dir 2>/dev/null && echo *.afm"; then
+     ac_psfont_path="$ac_psfont_path:$ac_dir";
+--- contrib/emacs/a2ps.el
++++ contrib/emacs/a2ps.el	2018-10-17 06:43:16.503744334 +0000
+@@ -44,7 +44,7 @@
+ ;; a2ps-compile-regexp
+ 
+ ;;path to the a2ps program
+-(defvar a2ps-program "/usr/local/bin/a2ps")
++(defvar a2ps-program "/usr/bin/a2ps")
+ 
+ ;;thank god for make-regexp.el!
+ (defvar a2ps-font-lock-keywords
+--- doc/Makefile.in
++++ doc/Makefile.in	2018-10-17 06:43:16.503744334 +0000
+@@ -146,7 +146,7 @@ GNU_PACKAGE = @GNU_PACKAGE@
+ GPERF = @GPERF@
+ GREP = @GREP@
+ INSTALL_DATA = @INSTALL_DATA@
+-INSTALL_PROGRAM = @INSTALL_PROGRAM@
++INSTALL_PROGRAM = @INSTALL_PROGRAM@ $(AM_INSTALL_PROGRAM_FLAGS)
+ INSTALL_SCRIPT = @INSTALL_SCRIPT@
+ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+ INTLLIBS = @INTLLIBS@
+--- encoding/encoding.map
++++ encoding/encoding.map	2018-10-17 06:43:16.503744334 +0000
+@@ -84,6 +84,10 @@ iso15			iso15
+ latin9			iso15
+ latin0			iso15
+ iso-8859-15		iso15
++# Handle ASCII as simple ISO 8859-1
++ansi_x3.4-1968          iso15
++# Workaround which may help for UTF-8
++utf-8                   iso15
+ 
+ ########################################################################
+ # Other encodings
+--- etc/Makefile.in
++++ etc/Makefile.in	2018-10-17 06:43:16.503744334 +0000
+@@ -475,7 +475,7 @@ uninstall-local:
+ 
+ # Building the correct a2ps.cfg
+ a2ps.cfg: a2ps_cfg Makefile
+-	sed "s!@libpath@!$(libpath)!" a2ps_cfg > a2ps.cfg
++	sed "s!@libpath@!$(libpath)!;s!@psfontpath@!$(PSFONT_PATH)!" a2ps_cfg > a2ps.cfg
+ 
+ # Building a time stamp to know the version.
+ README: README.in Makefile
+--- etc/a2ps_cfg.in
++++ etc/a2ps_cfg.in	2018-10-17 06:43:16.503744334 +0000
+@@ -58,6 +58,39 @@ Medium: Folio	    612     936
+ Medium: Quarto	    610     780
+ Medium: 10x14	    720    1008
+ 
++# Define ghostscript page names and their sizes
++Medium: letter		 612	 792
++Medium: note		 540	 720
++Medium: legal		 612	1008
++Medium: a0		2380	3368
++Medium: a1		1684	2380
++Medium: a2		1190	1684
++Medium: a3		 842	1190
++Medium: a4		 595	 842
++Medium: a5		 421	 595
++Medium: a6		 297	 421
++Medium: a7		 210	 297
++Medium: a8		 148	 210
++Medium: a9		 105	 148
++Medium: a10		  74	 105
++Medium: b0		2836	4008
++Medium: b1		2004	2836
++Medium: b2		1418	2004
++Medium: b3		1002	1418
++Medium: b4		 709	1002
++Medium: b5		 501	 709
++Medium: archE		2592	3456
++Medium: archD		1728	2592
++Medium: archC		1296	1728
++Medium: archB		 864	1296
++Medium: archA		 648	 864
++Medium: flsa		 612	 936
++Medium: flse		 612	 936
++Medium: halfletter	 396	 612
++Medium: 11x17		 792	1224
++Medium: ledger		1224	 792
++
++
+ # Desk Jet users: bigger margins
+ Medium: A4dj		595	842	24	50	571	792
+ Medium: Letterdj	612	792	24	40	588	752
+@@ -72,7 +105,7 @@ LibraryPath: @libpath@
+ 
+ # It may be useful to extend it so that a2ps can see some
+ # TeX or X11 resources: it likes AFM files and PF[AB] files.
+-#AppendLibraryPath: foo
++AppendLibraryPath: @psfontpath@ 
+ 
+ 
+ #################################################################
+@@ -182,8 +215,9 @@ Variable: del.imagick @convert@ -page #w
+ # Either GV (prefered) or Ghostview will be used as the "display" printer
+ # We give -dNOPLATFONTS so that real fonts are used
+ # (Strange results appear with Ogonkify's fonts for instance).
+-@COM_ghostview@Variable: ghostview @ghostview@ --arguments=-dNOPLATFONTS
+-@COM_gv@Variable: ghostview @gv@ -antialias --arguments=-dNOPLATFONTS
++##@COM_ghostview@Variable: ghostview @ghostview@ --arguments=-dNOPLATFONTS
++#@COM_gv@Variable: ghostview @gv@ -antialias --arguments=-dNOPLATFONTS
++Variable: ghostview a2ps-open
+ 
+ # Used for the `pdf' printer.
+ # Use as `#{ps2pdf} INPUT OUTPUT'.
+--- lib/jobs.c
++++ lib/jobs.c	2018-10-17 06:43:16.503744334 +0000
+@@ -135,10 +135,18 @@ a2ps_job_new (void)
+ 
+   /* Set the NLS on */
+   setlocale (LC_TIME, "");
+-#ifdef HAVE_LC_MESSAGES
++#ifdef LC_MESSAGES
+   setlocale (LC_MESSAGES, "");
+ #endif
+   setlocale (LC_CTYPE, "");
++#ifdef LC_PAPER
++  setlocale (LC_PAPER, "");
++#endif
++
++#ifdef LC_NUMERIC
++  /* We use international numbering format for e.g. --font-size and writing PostScript code */
++  setlocale (LC_NUMERIC, "POSIX");
++#endif
+ 
+   bindtextdomain (PACKAGE, LOCALEDIR);
+   textdomain (PACKAGE);
+--- lib/metaseq.c
++++ lib/metaseq.c	2018-10-17 06:43:16.503744334 +0000
+@@ -205,7 +205,7 @@ grow_user_string_obstack (struct obstack
+   int justification = 1;
+ 
+   /* Format string. */
+-  for (i = 0; str[i] != '\0'; i++)
++  for (i = 0; str != NULL && str[i] != '\0'; i++)
+     {
+       int type;
+ 
+--- lib/options.c
++++ lib/options.c	2018-10-17 06:43:16.503744334 +0000
+@@ -54,11 +54,14 @@
+ #include "argv.h"
+ #include "quotearg.h"
+ #include "filalign.h"
++#include <locale.h>
++#include <langinfo.h>
+ 
+ #define MAN_LINES               66	/* no lines for a man */
+ extern char *program_name;
++#ifndef _GNU_SOURCE
+ extern const char *program_invocation_name;
+-
++#endif
+ /*
+  * Hooks used
+  */
+@@ -539,6 +542,16 @@ a2ps_handle_options (a2ps_job * job, int
+ 	break;
+ 
+       case 'M':                 		/* select a medium */
++#ifdef LC_PAPER
++  if (!strcasecmp("LC_PAPER", optarg))
++    {
++      unsigned int paperheight = (unsigned int)nl_langinfo(_NL_PAPER_HEIGHT);
++      if (paperheight && paperheight == 279)
++        optarg = xstrdup("letter");
++      else
++	optarg = xstrdup("a4");
++    }
++#endif
+ 	xstrcpy (job->medium_request, optarg);
+ 	break;
+ 
+@@ -641,6 +654,14 @@ a2ps_handle_options (a2ps_job * job, int
+ 	break;
+ 
+       case 'X': 			/* change the encoding scheme */
++	if (!strcasecmp("LC_CTYPE", optarg))
++	    {
++	      char * codeset = nl_langinfo(_NL_CTYPE_CODESET_NAME);
++	      if (codeset && !strncasecmp(codeset, "iso", 3))
++		optarg = xstrdup(codeset);
++	      else
++	        optarg = xstrdup("ISO-8859-15");
++	    }
+ 	/* Since there can be -X in the config files, and because
+ 	 * the encoding.map has not been read yet (because to read
+ 	 * encoding.map, one has to know the lib path, and to know
+--- lib/path-concat.c
++++ lib/path-concat.c	2018-10-17 06:45:09.369668677 +0000
+@@ -21,10 +21,6 @@
+ # include <config.h>
+ #endif
+ 
+-#ifndef HAVE_MEMPCPY
+-# define mempcpy(D, S, N) ((void *) ((char *) memcpy (D, S, N) + (N)))
+-#endif
+-
+ #include <stdio.h>
+ #if HAVE_STRING_H
+ # include <string.h>
+@@ -32,6 +28,9 @@
+ #include <sys/types.h>
+ 
+ /* char *malloc (); */
++#if !defined(HAVE_MEMPCPY) && !defined(mempcpy)
++# define mempcpy(D, S, N) ((void *) ((char *) memcpy ((D), (S), (N)) + (N)))
++#endif
+ 
+ #ifndef DIRECTORY_SEPARATOR
+ # define DIRECTORY_SEPARATOR '/'
+@@ -78,7 +77,7 @@ path_concat (const char *dir, const char
+   dir_len = strlen (dir);
+ 
+   /* This cast is a kludge for SGI IRIX with C89 */
+-  p_concat = (char *) malloc (dir_len + base_len + 2);
++  p_concat = (char *) xmalloc (dir_len + base_len + 2);
+   if (!p_concat)
+     return 0;
+ 
+--- lib/xstrrpl.c
++++ lib/xstrrpl.c	2018-10-17 06:43:16.503744334 +0000
+@@ -22,6 +22,7 @@
+ #include <assert.h>
+ #include "xstrrpl.h"
+ 
++#undef stpcpy
+ extern char * stpcpy();
+ 
+ /* Perform subsitutions in string.  Result is malloc'd
+--- man/a2ps.x
++++ man/a2ps.x	2018-10-17 06:43:16.503744334 +0000
+@@ -2,4 +2,4 @@
+ a2ps \- format files for printing on a PostScript printer
+ 
+ [DESCRIPTION]
+-." Add any additional description here
++.\" Add any additional description here
+--- man/card.x
++++ man/card.x	2018-10-17 06:43:16.503744334 +0000
+@@ -2,4 +2,4 @@
+ card \- print reference card of program options
+ 
+ [DESCRIPTION]
+-." Add any additional description here
++.\" Add any additional description here
+--- man/fixps.x
++++ man/fixps.x	2018-10-17 06:43:16.503744334 +0000
+@@ -2,4 +2,4 @@
+ fixps \- sanitize PostScript files
+ 
+ [DESCRIPTION]
+-." Add any additional description here
++.\" Add any additional description here
+--- man/pdiff.x
++++ man/pdiff.x	2018-10-17 06:43:16.503744334 +0000
+@@ -2,4 +2,4 @@
+ pdiff \- produce a pretty comparison between files
+ 
+ [DESCRIPTION]
+-." Add any additional description here
++.\" Add any additional description here
+--- man/psmandup.x
++++ man/psmandup.x	2018-10-17 06:43:16.503744334 +0000
+@@ -2,4 +2,4 @@
+ psmandup \- print duplex on non duplex printers
+ 
+ [DESCRIPTION]
+-." Add any additional description here
++.\" Add any additional description here
+--- man/psset.x
++++ man/psset.x	2018-10-17 06:43:16.503744334 +0000
+@@ -2,4 +2,4 @@
+ psset \- insert page device request in PostScript files
+ 
+ [DESCRIPTION]
+-." Add any additional description here
++.\" Add any additional description here
+--- ogonkify/Makefile.in
++++ ogonkify/Makefile.in	2018-10-17 06:43:16.503744334 +0000
+@@ -223,7 +223,7 @@ PSPROGS = allchars.ps compose.ps helper.
+ #
+ @EXTENSIONS_TRUE@bin_SCRIPTS = ogonkify composeglyphs
+ @EXTENSIONS_TRUE@ogonkify_DATA = $(ENCODINGS_VECTORS) $(CREATED_FONTS) $(PSPROGS) README
+-@EXTENSIONS_TRUE@afm_DATA = $(CREATED_AFMS)
++@EXTENSIONS_TRUE@afm_DATA = $(CREATED_AFMS) $(ORIGINAL_COMP_FONTS_AFMS)
+ @EXTENSIONS_TRUE@fonts_DATA = $(CREATED_PFAS)
+ 
+ #
+--- ogonkify/ogonkify.in.in
++++ ogonkify/ogonkify.in.in	2018-10-17 06:43:16.503744334 +0000
+@@ -38,7 +38,7 @@ $encoding='L2';
+                'ibmpc','IBMPCEncoding', 'mac','MacintoshEncoding',
+                'HP','HPRomanEncoding');
+ @standardFont=
+-  ('Courier', 'Courier-Oblique', 'Courier-Bold', 'Courier-BoldItalic',
++  ('Courier', 'Courier-Oblique', 'Courier-Bold', 'Courier-BoldOblique',
+    'Times-Roman', 'Times-Italic', 'Times-Bold', 'Times-BoldItalic',
+    'Helvetica', 'Helvetica-Oblique', 'Helvetica-Bold',
+    'Helvetica-BoldOblique');
+--- ogonkify/pcrb-o.afm
++++ ogonkify/pcrb-o.afm	2018-10-17 06:43:16.503744334 +0000
+@@ -5,7 +5,7 @@ FontName Courier-Bold-Ogonki
+ EncodingScheme StandardEncoding
+ FullName Courier-Bold-Ogonki Composite font
+ FontBBox -113 -250 749 801
+-StartCharMetrics 315
++StartCharMetrics 316
+ C 32 ; WX 600 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 600 ; N exclam ; B 202 -15 398 572 ;
+ C 34 ; WX 600 ; N quotedbl ; B 135 277 465 562 ;
+@@ -204,6 +204,7 @@ C -1 ; WX 600 ; N Igrave ; B 77 0 523 78
+ C -1 ; WX 600 ; N brokenbar ; B 255 -175 345 675 ;
+ C -1 ; WX 600 ; N Oacute ; B 22 -18 578 784 ;
+ C -1 ; WX 600 ; N otilde ; B 30 -15 570 636 ;
++C -1 ; WX 600 ; N Euro ; B -2 0 721 562 ;
+ C -1 ; WX 600 ; N Yacute ; B 12 0 589 784 ;
+ C -1 ; WX 600 ; N Icircumflex ; B 77 0 523 780 ;
+ C -1 ; WX 600 ; N Atilde ; B -9 0 609 759 ;
+--- ogonkify/pcrbo-o.afm
++++ ogonkify/pcrbo-o.afm	2018-10-17 06:43:16.503744334 +0000
+@@ -5,7 +5,7 @@ FontName Courier-BoldOblique-Ogonki
+ EncodingScheme StandardEncoding
+ FullName Courier-BoldOblique-Ogonki Composite font
+ FontBBox -56 -250 868 801
+-StartCharMetrics 315
++StartCharMetrics 316
+ C 32 ; WX 600 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 600 ; N exclam ; B 216 -15 495 572 ;
+ C 34 ; WX 600 ; N quotedbl ; B 212 277 584 562 ;
+@@ -204,6 +204,7 @@ C -1 ; WX 600 ; N Igrave ; B 77 0 642 78
+ C -1 ; WX 600 ; N brokenbar ; B 218 -175 488 675 ;
+ C -1 ; WX 600 ; N Oacute ; B 74 -18 645 784 ;
+ C -1 ; WX 600 ; N otilde ; B 71 -15 642 636 ;
++C -1 ; WX 600 ; N Euro ; B -2 0 721 562 ;
+ C -1 ; WX 600 ; N Yacute ; B 109 0 708 784 ;
+ C -1 ; WX 600 ; N Icircumflex ; B 77 0 642 780 ;
+ C -1 ; WX 600 ; N Atilde ; B -9 0 638 759 ;
+--- ogonkify/pcrr-o.afm
++++ ogonkify/pcrr-o.afm	2018-10-17 06:43:16.503744334 +0000
+@@ -5,7 +5,7 @@ FontName Courier-Ogonki
+ EncodingScheme StandardEncoding
+ FullName Courier-Ogonki Composite font
+ FontBBox -28 -250 628 805
+-StartCharMetrics 315
++StartCharMetrics 316
+ C 32 ; WX 600 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 600 ; N exclam ; B 236 -15 364 572 ;
+ C 34 ; WX 600 ; N quotedbl ; B 187 328 413 562 ;
+@@ -204,6 +204,7 @@ C -1 ; WX 600 ; N Igrave ; B 96 0 504 79
+ C -1 ; WX 600 ; N brokenbar ; B 275 -175 326 675 ;
+ C -1 ; WX 600 ; N Oacute ; B 43 -18 557 793 ;
+ C -1 ; WX 600 ; N otilde ; B 62 -15 538 606 ;
++C -1 ; WX 600 ; N Euro ; B 4 0 596 562 ;
+ C -1 ; WX 600 ; N Yacute ; B 24 0 576 793 ;
+ C -1 ; WX 600 ; N Icircumflex ; B 96 0 504 775 ;
+ C -1 ; WX 600 ; N Atilde ; B 3 0 597 732 ;
+--- ogonkify/pcrro-o.afm
++++ ogonkify/pcrro-o.afm	2018-10-17 06:43:16.503744334 +0000
+@@ -5,7 +5,7 @@ FontName Courier-Oblique-Ogonki
+ EncodingScheme StandardEncoding
+ FullName Courier-Oblique-Ogonki Composite font
+ FontBBox -28 -250 742 805
+-StartCharMetrics 315
++StartCharMetrics 316
+ C 32 ; WX 600 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 600 ; N exclam ; B 243 -15 464 572 ;
+ C 34 ; WX 600 ; N quotedbl ; B 273 328 532 562 ;
+@@ -204,6 +204,7 @@ C -1 ; WX 600 ; N Igrave ; B 96 0 623 79
+ C -1 ; WX 600 ; N brokenbar ; B 238 -175 469 675 ;
+ C -1 ; WX 600 ; N Oacute ; B 94 -18 638 793 ;
+ C -1 ; WX 600 ; N otilde ; B 102 -15 629 606 ;
++C -1 ; WX 600 ; N Euro ; B 4 0 715 562 ;
+ C -1 ; WX 600 ; N Yacute ; B 133 0 695 793 ;
+ C -1 ; WX 600 ; N Icircumflex ; B 96 0 623 775 ;
+ C -1 ; WX 600 ; N Atilde ; B 3 0 656 732 ;
+--- ogonkify/phvb-o.afm
++++ ogonkify/phvb-o.afm	2018-10-17 06:43:16.503744334 +0000
+@@ -5,7 +5,7 @@ FontName Helvetica-Bold-Ogonki
+ EncodingScheme StandardEncoding
+ FullName Helvetica-Bold-Ogonki Composite font
+ FontBBox -173 -221 1003 936
+-StartCharMetrics 285
++StartCharMetrics 286
+ C 32 ; WX 278 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 333 ; N exclam ; B 112 0 262 729 ;
+ C 34 ; WX 474 ; N quotedbl ; B 50 470 424 729 ;
+@@ -219,6 +219,7 @@ C -1 ; WX 834 ; N onehalf ; B 30 -20 803
+ C -1 ; WX 834 ; N onequarter ; B 30 -20 804 715 ;
+ C -1 ; WX 333 ; N onesuperior ; B 46 284 247 709 ;
+ C -1 ; WX 611 ; N otilde ; B 35 -23 569 729 ;
++C -1 ; WX 833 ; N Euro ; B 66 0 776 729 ;
+ C -1 ; WX 584 ; N plusminus ; B 40 0 544 674 ;
+ C -1 ; WX 737 ; N registered ; B -14 -20 751 745 ;
+ C -1 ; WX 556 ; N scaron ; B 29 -23 520 745 ;
+--- ogonkify/phvbo-o.afm
++++ ogonkify/phvbo-o.afm	2018-10-17 06:43:16.503744334 +0000
+@@ -5,7 +5,7 @@ FontName Helvetica-BoldOblique-Ogonki
+ EncodingScheme StandardEncoding
+ FullName Helvetica-BoldOblique-Ogonki Composite font
+ FontBBox -177 -221 1107 936
+-StartCharMetrics 285
++StartCharMetrics 286
+ C 32 ; WX 278 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 333 ; N exclam ; B 112 0 417 729 ;
+ C 34 ; WX 474 ; N quotedbl ; B 177 470 579 729 ;
+@@ -219,6 +219,7 @@ C -1 ; WX 834 ; N onehalf ; B 120 -20 87
+ C -1 ; WX 834 ; N onequarter ; B 151 -20 846 715 ;
+ C -1 ; WX 333 ; N onesuperior ; B 169 284 398 709 ;
+ C -1 ; WX 611 ; N otilde ; B 82 -23 639 729 ;
++C -1 ; WX 833 ; N Euro ; B 66 0 931 729 ;
+ C -1 ; WX 584 ; N plusminus ; B 40 0 639 674 ;
+ C -1 ; WX 737 ; N registered ; B 55 -20 837 745 ;
+ C -1 ; WX 556 ; N scaron ; B 60 -23 597 745 ;
+--- ogonkify/phvr-o.afm
++++ ogonkify/phvr-o.afm	2018-10-17 06:43:16.503744334 +0000
+@@ -5,7 +5,7 @@ FontName Helvetica-Ogonki
+ EncodingScheme StandardEncoding
+ FullName Helvetica-Ogonki Composite font
+ FontBBox -174 -220 1001 944
+-StartCharMetrics 285
++StartCharMetrics 286
+ C 32 ; WX 278 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 278 ; N exclam ; B 124 0 208 729 ;
+ C 34 ; WX 355 ; N quotedbl ; B 52 462 305 708 ;
+@@ -219,6 +219,7 @@ C -1 ; WX 834 ; N onehalf ; B 30 -21 804
+ C -1 ; WX 834 ; N onequarter ; B 30 -21 804 709 ;
+ C -1 ; WX 333 ; N onesuperior ; B 60 284 219 709 ;
+ C -1 ; WX 556 ; N otilde ; B 36 -23 510 716 ;
++C -1 ; WX 833 ; N Euro ; B 75 0 761 729 ;
+ C -1 ; WX 584 ; N plusminus ; B 40 0 544 618 ;
+ C -1 ; WX 737 ; N registered ; B -13 -23 751 741 ;
+ C -1 ; WX 500 ; N scaron ; B 34 -24 459 740 ;
+--- ogonkify/phvro-o.afm
++++ ogonkify/phvro-o.afm	2018-10-17 06:43:16.503744334 +0000
+@@ -5,7 +5,7 @@ FontName Helvetica-Oblique-Ogonki
+ EncodingScheme StandardEncoding
+ FullName Helvetica-Oblique-Ogonki Composite font
+ FontBBox -178 -220 1108 944
+-StartCharMetrics 285
++StartCharMetrics 286
+ C 32 ; WX 278 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 278 ; N exclam ; B 124 0 363 729 ;
+ C 34 ; WX 355 ; N quotedbl ; B 177 462 455 708 ;
+@@ -219,6 +219,7 @@ C -1 ; WX 834 ; N onehalf ; B 116 -21 86
+ C -1 ; WX 834 ; N onequarter ; B 147 -21 836 709 ;
+ C -1 ; WX 333 ; N onesuperior ; B 184 284 370 709 ;
+ C -1 ; WX 556 ; N otilde ; B 80 -23 582 716 ;
++C -1 ; WX 833 ; N Euro ; B 75 0 916 729 ;
+ C -1 ; WX 584 ; N plusminus ; B 40 0 621 618 ;
+ C -1 ; WX 737 ; N registered ; B 55 -23 836 741 ;
+ C -1 ; WX 500 ; N scaron ; B 61 -24 547 740 ;
+--- ogonkify/ptmb-o.afm
++++ ogonkify/ptmb-o.afm	2018-10-17 06:43:16.503744334 +0000
+@@ -5,7 +5,7 @@ FontName Times-Bold-Ogonki
+ EncodingScheme StandardEncoding
+ FullName Times-Bold-Ogonki Composite font
+ FontBBox -172 -256 1008 965
+-StartCharMetrics 285
++StartCharMetrics 286
+ C 32 ; WX 250 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 333 ; N exclam ; B 84 -18 248 690 ;
+ C 34 ; WX 555 ; N quotedbl ; B 67 371 425 690 ;
+@@ -219,6 +219,7 @@ C -1 ; WX 750 ; N onehalf ; B 30 -18 720
+ C -1 ; WX 750 ; N onequarter ; B 30 -18 720 690 ;
+ C -1 ; WX 300 ; N onesuperior ; B 24 276 275 690 ;
+ C -1 ; WX 500 ; N otilde ; B 25 -18 473 671 ;
++C -1 ; WX 944 ; N Euro ; B 21 0 914 681 ;
+ C -1 ; WX 570 ; N plusminus ; B 50 0 520 600 ;
+ C -1 ; WX 747 ; N registered ; B 16 -17 730 690 ;
+ C -1 ; WX 389 ; N scaron ; B 29 -17 359 690 ;
+--- ogonkify/ptmbi-o.afm
++++ ogonkify/ptmbi-o.afm	2018-10-17 06:43:16.503744334 +0000
+@@ -5,7 +5,7 @@ FontName Times-BoldItalic-Ogonki
+ EncodingScheme StandardEncoding
+ FullName Times-BoldItalic-Ogonki Composite font
+ FontBBox -168 -232 1014 894
+-StartCharMetrics 285
++StartCharMetrics 286
+ C 32 ; WX 250 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 389 ; N exclam ; B 66 -13 367 676 ;
+ C 34 ; WX 555 ; N quotedbl ; B 142 367 549 693 ;
+@@ -219,6 +219,7 @@ C -1 ; WX 750 ; N onehalf ; B 30 0 720 6
+ C -1 ; WX 750 ; N onequarter ; B 30 0 720 676 ;
+ C -1 ; WX 300 ; N onesuperior ; B 17 270 283 676 ;
+ C -1 ; WX 500 ; N otilde ; B 27 -13 507 648 ;
++C -1 ; WX 889 ; N Euro ; B -29 -12 907 662 ;
+ C -1 ; WX 570 ; N plusminus ; B 33 0 537 665 ;
+ C -1 ; WX 747 ; N registered ; B 23 -18 723 676 ;
+ C -1 ; WX 389 ; N scaron ; B 16 -13 465 683 ;
+--- ogonkify/ptmr-o.afm
++++ ogonkify/ptmr-o.afm	2018-10-17 06:43:16.507744261 +0000
+@@ -5,7 +5,7 @@ FontName Times-Roman-Ogonki
+ EncodingScheme StandardEncoding
+ FullName Times-Roman-Ogonki Composite font
+ FontBBox -168 -218 1000 898
+-StartCharMetrics 285
++StartCharMetrics 286
+ C 32 ; WX 250 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 333 ; N exclam ; B 130 -9 238 676 ;
+ C 34 ; WX 408 ; N quotedbl ; B 77 431 331 676 ;
+@@ -167,6 +167,7 @@ C -1 ; WX 444 ; N egrave ; B 25 -10 424
+ C -1 ; WX 300 ; N twosuperior ; B 1 270 296 676 ;
+ C -1 ; WX 444 ; N eacute ; B 25 -10 424 678 ;
+ C -1 ; WX 500 ; N otilde ; B 29 -10 470 638 ;
++C -1 ; WX 889 ; N Euro ; B 12 0 863 662 ;
+ C -1 ; WX 722 ; N Aacute ; B 15 0 706 890 ;
+ C -1 ; WX 500 ; N ocircumflex ; B 29 -10 470 674 ;
+ C -1 ; WX 500 ; N yacute ; B 14 -218 475 678 ;
+--- ogonkify/ptmri-o.afm
++++ ogonkify/ptmri-o.afm	2018-10-17 06:43:16.507744261 +0000
+@@ -5,7 +5,7 @@ FontName Times-Italic-Ogonki
+ EncodingScheme StandardEncoding
+ FullName Times-Italic-Ogonki Composite font
+ FontBBox -169 -217 1010 883
+-StartCharMetrics 285
++StartCharMetrics 286
+ C 32 ; WX 250 ; N space ; B 0 0 0 0 ;
+ C 33 ; WX 333 ; N exclam ; B 39 -11 302 667 ;
+ C 34 ; WX 420 ; N quotedbl ; B 144 421 432 666 ;
+@@ -167,6 +167,7 @@ C -1 ; WX 444 ; N egrave ; B 31 -11 412
+ C -1 ; WX 300 ; N twosuperior ; B 33 271 324 676 ;
+ C -1 ; WX 444 ; N eacute ; B 31 -11 459 664 ;
+ C -1 ; WX 500 ; N otilde ; B 27 -11 496 624 ;
++C -1 ; WX 833 ; N Euro ; B -18 0 873 653 ;
+ C -1 ; WX 611 ; N Aacute ; B -51 0 564 876 ;
+ C -1 ; WX 500 ; N ocircumflex ; B 27 -11 468 661 ;
+ C -1 ; WX 444 ; N yacute ; B -24 -206 459 664 ;
+--- src/main.c
++++ src/main.c	2018-10-17 06:43:16.507744261 +0000
+@@ -57,6 +57,7 @@
+ #include "signame.h"
+ #include "long-options.h"
+ #include "version-etc.h"
++#include <string.h>
+ #include <locale.h>
+ 
+ /* From basename.c */
+@@ -104,7 +105,9 @@ enum behavior behavior = b_ps;
+    defined twice, see lib/confg.gperf, handling of `Options:'. */
+ 
+ char *program_name;
++#ifndef _GNU_SOURCE
+ const char *program_invocation_name;
++#endif
+ 
+ /* Stores the data of liba2ps.  */
+ 
+@@ -929,6 +932,7 @@ int
+ main (int argc, char *argv[])
+ {
+   int argn;
++  char *locale;
+ 
+   /* Architecture specific initialization. */
+ #ifdef __EMX__
+@@ -946,11 +950,19 @@ Copyright (c) 2007- Akim Demaille, Migue
+ 
+   /* Set the NLS on */
+   setlocale (LC_TIME, "");
+-#ifdef HAVE_LC_MESSAGES
++#ifdef LC_MESSAGES
+   setlocale (LC_MESSAGES, "");
+ #endif
+   setlocale (LC_CTYPE, "");
++#ifdef LC_PAPER
++  setlocale (LC_PAPER, "");
++#endif
++  locale = setlocale (LC_ALL, "");
+ 
++#ifdef LC_NUMERIC
++  /* We use international numbering format for e.g. --font-size and writing PostScript code */
++  setlocale (LC_NUMERIC, "POSIX");
++#endif
+   bindtextdomain (PACKAGE, LOCALEDIR);
+   textdomain (PACKAGE);
+ 

@@ -1,0 +1,192 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1ebc516232ca90570e172c78b6b11f72</srcmd5>
+    <version>3.2.3</version>
+    <time>1318428962</time>
+    <user>lrupp</user>
+    <comment>I addressed the specfile issues in the last reject.  I'm pretty comfortable with that.
+
+But I moved the old change log to *.changes.  I'm so sure about that.  If there is a *.changes file cleaner that might be needed.</comment>
+    <requestid>87118</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1ebc516232ca90570e172c78b6b11f72</srcmd5>
+    <version>3.2.3</version>
+    <time>1319182474</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>56f15eb8d90ee6c66a42c5e46c78cdd4</srcmd5>
+    <version>3.2.3</version>
+    <time>1331900738</time>
+    <user>coolo</user>
+    <comment>Minor specfile clean up, SPDX license update, and add:
+
+BuildRequires:  afflib-devel
+BuildRequires:  libewf-devel
+
+This adds support for aff image and ewf image formats.
+</comment>
+    <requestid>107813</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>dfa07330017a1b33a6bbed8f1687cb01</srcmd5>
+    <version>3.2.3</version>
+    <time>1334217121</time>
+    <user>coolo</user>
+    <comment>Fix build - fix buffer overflow (forwarded request 113218 from dimstar)</comment>
+    <requestid>113226</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>dfa07330017a1b33a6bbed8f1687cb01</srcmd5>
+    <version>3.2.3</version>
+    <time>1340184220</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>37a618ccea04b35a61543d1be2e4ba9d</srcmd5>
+    <version>4.0.0b1</version>
+    <time>1347426795</time>
+    <user>coolo</user>
+    <comment>remove patch mentioned in the changelog as removed (forwarded request 133653 from coolo)</comment>
+    <requestid>133654</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f86f48cb4d3ab8b877c5cab5474b26a1</srcmd5>
+    <version>4.0.0</version>
+    <time>1349721383</time>
+    <user>coolo</user>
+    <comment>Update from 4.0.0 beta to general release</comment>
+    <requestid>137279</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f86f48cb4d3ab8b877c5cab5474b26a1</srcmd5>
+    <version>4.0.0</version>
+    <time>1359110413</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4e97ffba01aae5cdc154c2c6fb8ea0ad</srcmd5>
+    <version>4.0.2</version>
+    <time>1360872839</time>
+    <user>coolo</user>
+    <comment>Here we go, Greg. Hopefully, everything is fine.. (forwarded request 155372 from frispete)</comment>
+    <requestid>155375</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>609fff6b9941c5ebf6e250a936577b41</srcmd5>
+    <version>4.0.2</version>
+    <time>1362903178</time>
+    <user>coolo</user>
+    <comment>fix a couple issues found in testing, not relevant to 12.3</comment>
+    <requestid>158080</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>149780d5e3d4c9fea18e984a0ab532d3</srcmd5>
+    <version>4.1.0</version>
+    <time>1372138754</time>
+    <user>coolo</user>
+    <comment>This is fairly large update.  It is the first 4.x release officially supported for linux by upstream.  Fixes BNC#815061 (forwarded request 180778 from gregfreemyer)</comment>
+    <requestid>180779</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>06595caf9d5c7164d1b6ca9d19b39ee5</srcmd5>
+    <version>4.1.0</version>
+    <time>1376383697</time>
+    <user>scarabeus_factory</user>
+    <comment>Testing of sleuthkit-devel shows it has significant API changes that require changes in dependent apps.  Per &quot;osc whatdependson&quot; no packages in security or factory yet depend on sleuthkit, but I wanted to get the changes file updated to highlight this potential breakage for users who may build against sleutkit-devel. (forwarded request 186267 from gregfreemyer)
+
+Also fixed changes file format</comment>
+    <requestid>186736</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>06595caf9d5c7164d1b6ca9d19b39ee5</srcmd5>
+    <version>4.1.0</version>
+    <time>1379664691</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>5cf4bf5f6fc7938413a5fe6dee1e1978</srcmd5>
+    <version>4.1.0</version>
+    <time>1382012893</time>
+    <user>scarabeus_factory</user>
+    <comment>libaff is about to be dropped from factory.  It is recommended by upstream that it be replaced by libewf. (forwarded request 203446 from gregfreemyer)</comment>
+    <requestid>203447</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f06012a1122da23ba110d00dd23f559a</srcmd5>
+    <version>4.1.3</version>
+    <time>1408021095</time>
+    <user>lnussel</user>
+    <comment>Update to v4.1.3 : Re-submitting with a small patch</comment>
+    <requestid>244639</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>f06012a1122da23ba110d00dd23f559a</srcmd5>
+    <version>4.1.3</version>
+    <time>1409303377</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>81081d5e36454183cd2dcc89503ed55f</srcmd5>
+    <version>4.2.0</version>
+    <time>1455701135</time>
+    <user>dimstar_suse</user>
+    <comment>update to v4.2.0</comment>
+    <requestid>359282</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e22a879661d3ba1d59e9d9e358ccf089</srcmd5>
+    <version>4.3.0</version>
+    <time>1470773689</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>417198</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1c22bcd83eb64e3626c7279571583282</srcmd5>
+    <version>4.4.0</version>
+    <time>1488479739</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v4.4.0</comment>
+    <requestid>460453</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bcc2842d74469b22ef290e13d1f9f70e</srcmd5>
+    <version>4.4.2</version>
+    <time>1505507484</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.2
+
+There are a couple known attacker inducible crashes identified in 4.4.2.  Upstream has been committing patches as recently as today and hopefully will get out a 4.4.3 security release soon. </comment>
+    <requestid>526237</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1b9cdb6f81ae1c058cf3f8c207308732</srcmd5>
+    <version>4.6.4</version>
+    <time>1546946891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662941</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4cd7f34cb79ede660075e8f698c50535</srcmd5>
+    <version>4.6.5</version>
+    <time>1548065257</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667309</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>43f111ce260ced71ee8e3903467ba994</srcmd5>
+    <version>4.6.7</version>
+    <time>1566243706</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to v4.6.7</comment>
+    <requestid>724426</requestid>
+  </revision>
+</revisionlist>

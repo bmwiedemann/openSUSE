@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Thu Aug 27 11:05:06 UTC 2015 - hsk@imb-jena.de
+
+- add "BuildRequires: CGI" to .spec file so "make test" succeeds
+  with perl-5.22
+
+-------------------------------------------------------------------
+Mon Jul 25 09:52:06 UTC 2011 - vcizek@novell.com
+
+- update to 4.48
+    Test changes
+    * INTERNAL: quit using "use diagnostics;" to avert some test failures
+
+-------------------------------------------------------------------
+Tue Jul 12 09:06:27 UTC 2011 - vcizek@novell.com
+
+- licence correction (same as Perl)
+
+-------------------------------------------------------------------
+Mon Jul 11 14:15:40 UTC 2011 - vcizek@novell.com
+
+- update to 4.47
+    * DOCS: minor POD fixes (Rene Mayorga and Nicholas Bamber)
+    * INTERNAL: More packaging fixes.
+    * INTERNAL: Fix packaging problem with 4.44.
+    * FIX: Fix 5.14 compatibility issue (Walt Arstingstall)
+    * DOCS: Clarify docs for static ID generator (oalders)   
+
+-------------------------------------------------------------------
+Thu Jan 20 10:37:04 UTC 2011 - vcizek@novell.com
+
+- update to 4.43
+  * FIX: Avoid deleting unmatched sessions when calling find() when ip_match is enabled.
+        Closes RT#47795. Thanks to m-uchino, Ron Savage, and Mark Stosberg
+
+    * NEW: new public ip_match() method is available, primarily for use with find(). (Ron Savage, Mark Stosberg)
+
+    * DOCS: UTF8 related documentation was updated. 
+
+    * INTERNAL: Don't add _SESSION_EXPIRE_LIST to internal hash unless we need to. 
+                RT#51192, Thanks to Pavel V. Rochnyack, Ron Savage, Mark Stosberg
+    * INTERNAL: Avoid calling sprintf() in CGI::Session::ErrorHandler, fixing RT#48733
+        Solves taint error for Perl V 5.10.0. All well-written code will have
+        been using errstr() to retrieve errors anyway so this change will not 
+        affect any code which obeys the API. (Peter Kaminsk, Ron Savage, Mark Stosberg)
+    * INTERNAL: The undocumented 4th parameter to load() has changed its meaning.  
+        * INTERNAL: Test suite improvements. (Ron Savage, Mark Stosberg)
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:32 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Aug 27 14:17:31 CEST 2009 - lars@linux-schulserver.de
+
+- update to 4.42:
+ * Fix broken links in documentation and tests. (RT##49020)
+- add perl-DBD-SQLite, perl(CGI::Simple) and perl(FreezeThaw) to
+  BuildRequires to run more tests (DBI tests needing a running 
+  database and are skipped so far)
+- follow perl packaging rules in specfile
+
+-------------------------------------------------------------------
+Mon Mar 23 17:09:40 CET 2009 - anicka@suse.cz
+
+- update to 4.41
+ * FIX: RT#43290. In CGI::Session::Driver::sqlite, ensure database
+   handle is still defined in DESTROY() before calling ping().
+ * DOCUMENTATION: Add comments about using the header() method 
+   to set the charset to 'utf-8'.
+
+-------------------------------------------------------------------
+Tue Jan 20 15:54:13 CET 2009 - anicka@suse.cz
+
+- update to 4.40
+ * many fixes, improved documentation
+
+-------------------------------------------------------------------
+Fri Jul 18 11:18:38 CEST 2008 - anicka@suse.cz
+
+- update to 4.35 (bnc#410259)
+  * FIX: Fix the bug fix for error propagation from 4.34
+  * FIX: Reset errors when creating a new object. Previously,
+    errors from a previous object could show up in the current object. 
+  * INTERNAL - Patch Build.PL and Makefile.PL to run
+    Module::Metadata::Changes's ini.report.pl, if available, to 
+    regenerate Changelog.ini from this file (Changes), when creating 
+    a makefile.
+  * SECURITY: Patch CGI::Session::Driver::file to stop \ and / 
+    characters being used in session ids and hence in file names. 
+    These characters, possibly combined with '..', could have been
+    used to access files outside the designated session file directory.
+  * FIX: Patch CGI::Session to propagate error upwards when
+    _load_pluggables() fails.
+  * INTERNAL: Ship a machine-readable version of this file under 
+    the name Changelog.ini.
+  * FIX: Patch CGI::Session::Driver::mysql to replace 
+    'REPLACE INTO ...' with 'INSERT INTO ... ON DUPLICATE KEY UPDATE ...'.
+  * FIX: t/mysql.t used to test setting the global variable
+    $CGI::Session::MySQL::TABLE_NAME.
+
+-------------------------------------------------------------------
+Wed Jun 25 15:29:47 CEST 2008 - anicka@suse.cz
+
+- package created (version 4.32) 
+

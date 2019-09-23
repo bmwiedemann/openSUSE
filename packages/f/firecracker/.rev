@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9fe58152f4678f13f84f8e92f220f95a</srcmd5>
+    <version>0.17.0</version>
+    <time>1568191238</time>
+    <user>dimstar_suse</user>
+    <comment>Firecracker is an open source virtualization technology that is purpose-built for creating and managing secure, multi-tenant container and function-based services.</comment>
+    <requestid>729927</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ce774c478ada920cb5804fd2e3061887</srcmd5>
+    <version>0.17.0</version>
+    <time>1569234714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>730766</requestid>
+  </revision>
+</revisionlist>

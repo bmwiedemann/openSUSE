@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Sun Jun  2 19:15:36 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20181227
+    * Worked on mount tool
+    * Added a new API call "is_locked"
+
+-------------------------------------------------------------------
+Wed Jan 10 23:50:28 UTC 2018 - Greg.Freemyer@gmail.com
+
+- fix upgrade issue caused by rename python-* to python2-*
+
+-------------------------------------------------------------------
+Wed Oct  4 20:50:16 UTC 2017 - Greg.Freemyer@gmail.com
+
+- remove unversioned Provides: pyqcow, 
+	depend on python{23}-libqcow instead
+
+-------------------------------------------------------------------
+Sat Feb 25 17:50:19 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to v0~20170222
+- change RPM Group to Development/Languages/Python
+- review and update libyal dependencies
+- add python3 binding sub-package
+- fix Summary and Description fields which had wrong info in them
+
+-------------------------------------------------------------------
+Wed Jan 27 22:52:05 UTC 2016 - Greg.Freemyer@gmail.com
+
+- update to v0~20160123
+	* worked on fallback inflate implementation
+	* Changes to Python bindings
+	* fixes for rpmbuild
+	* 2016 update
+	* Changes to Python bindings
+	* worked on tests
+
+-------------------------------------------------------------------
+Fri Jan  9 00:23:49 UTC 2015 - Greg.Freemyer@gmail.com
+
+- update to v0~20150105
+    * 2015 update
+    * worked on Python 3 support
+    * worked on tests
+    * worked on test scripts
+    * worked on multi-threading support
+    * code clean up
+    * worked on version 3 support
+    * removed deprecated functions:
+      - libqcow_file_read_random
+      - pyqcow file.read_random
+    * bug fix in Python-bindings
+- update URL to the new github site
+- replace Source: field with fully defined URL
+- remove DL-URL comment
+- start using libcstring from OBS, not internal version
+- start using libcsystem from OBS, not internal version
+- start using libfcache from OBS, not internal version
+- start using libfdata from OBS, not internal version
+
+-------------------------------------------------------------------
+Mon Aug 25 17:37:00 UTC 2014 - Greg.Freemyer@gmail.com
+
+- add BuildRequires for fuse, openssl, and zlib.  Allows parsing of more complex containers.
+- move %doc statement after %attr statement in python sub-package
+- add Requires: %lname = %version to python section to make sure they stay in sync
+
+-------------------------------------------------------------------
+Wed Aug 20 15:51:07 UTC 2014 - Greg.Freemyer@gmail.com
+
+- add %doc line to python sub-package
+
+-------------------------------------------------------------------
+Wed Aug 20 01:55:52 UTC 2014 - Greg.Freemyer@gmail.com
+
+- initial package in OBS (v0~20140729)
+

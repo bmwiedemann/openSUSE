@@ -1,0 +1,13 @@
+Index: dante-1.4.1/libscompat.m4
+===================================================================
+--- dante-1.4.1.orig/libscompat.m4
++++ dante-1.4.1/libscompat.m4
+@@ -345,7 +345,7 @@ main(void)
+ 
+ 	return 0;
+ }], [AC_MSG_RESULT(yes)
+-     AC_DEFINE(HAVE_SENDBUF_IOCTL, TIOCOUTQ, [send buffer data])
++     AC_DEFINE(HAVE_SENDBUF_IOCTL, 1, [send buffer data])
+      AC_DEFINE(SENDBUF_IOCTLVAL, TIOCOUTQ, [send buffer ioctl])],
+     [AC_MSG_RESULT(no)])],
+     [dnl assume no when cross-compiling

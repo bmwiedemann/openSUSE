@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6e467ab2f1d9b377810fd933bec7aa65</srcmd5>
+    <version>1.0.4</version>
+    <time>1438899836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>320705</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c1cb7837f3266d58efc2f4b262adc1cb</srcmd5>
+    <version>2.1</version>
+    <time>1499754320</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508498</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0bb3f5b77690b05de9a42d3fb86e1dfb</srcmd5>
+    <version>2.1</version>
+    <time>1500456169</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511236</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>85f3e25b69e26caa280c7dbefc281092</srcmd5>
+    <version>2.1</version>
+    <time>1507755388</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526385</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eead5bfdaac0bc6d25195ce103a047a2</srcmd5>
+    <version>2.2</version>
+    <time>1552571973</time>
+    <user>dimstar_suse</user>
+    <comment>- Simplify a bit
+- Update to 2.2:
+  * see doc/changelog.rst</comment>
+    <requestid>684679</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9170269372885327942aeaa0323f20ef</srcmd5>
+    <version>2.2.post1</version>
+    <time>1569233025</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2post1:
+  * see doc/changelog.rst</comment>
+    <requestid>729750</requestid>
+  </revision>
+</revisionlist>

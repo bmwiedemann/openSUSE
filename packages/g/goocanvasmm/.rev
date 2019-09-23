@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>12805b6b1a4e2bc8548520eac52e0bce</srcmd5>
+    <version>1.90.8</version>
+    <time>1326962539</time>
+    <user>coolo</user>
+    <comment>New package, moving from Contrib: C++ bindings for goocanvas, used by some apps</comment>
+    <requestid>100397</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>12805b6b1a4e2bc8548520eac52e0bce</srcmd5>
+    <version>1.90.8</version>
+    <time>1340183404</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>12805b6b1a4e2bc8548520eac52e0bce</srcmd5>
+    <version>1.90.8</version>
+    <time>1359108987</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>f76385c2a915354eeef49d26a62faab7</srcmd5>
+    <version>1.90.8</version>
+    <time>1364927438</time>
+    <user>coolo</user>
+    <comment>spec cleanup</comment>
+    <requestid>162176</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b5f7be642d58be76eb0cdca8c0b0c209</srcmd5>
+    <version>1.90.9</version>
+    <time>1368694762</time>
+    <user>coolo</user>
+    <comment>Update to 1.90.9</comment>
+    <requestid>175707</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b5f7be642d58be76eb0cdca8c0b0c209</srcmd5>
+    <version>1.90.9</version>
+    <time>1379662534</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>b5f7be642d58be76eb0cdca8c0b0c209</srcmd5>
+    <version>1.90.9</version>
+    <time>1409301075</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cf0e455320cb3df3387c77b0ed697e5e</srcmd5>
+    <version>1.90.11</version>
+    <time>1459254377</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>364394</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>54b7bd482c608ce58fcd303cec90edf4</srcmd5>
+    <version>1.90.11</version>
+    <time>1520588350</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581131 from dimstar)</comment>
+    <requestid>582758</requestid>
+  </revision>
+</revisionlist>

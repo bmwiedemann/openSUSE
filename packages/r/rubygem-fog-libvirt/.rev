@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c1165a6d97d77b6857a1546b023a1bca</srcmd5>
+    <version>0.6.0</version>
+    <time>1562056665</time>
+    <user>dimstar_suse</user>
+    <comment>I'd like to submit rubygem-fog-libvirt to Factory, as I need it as a dependency for vagrant-libvirt.</comment>
+    <requestid>709213</requestid>
+  </revision>
+</revisionlist>

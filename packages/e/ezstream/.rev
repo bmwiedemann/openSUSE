@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1a868c61a01b877b92912e879f642378</srcmd5>
+    <version>0.6.0</version>
+    <time>1517932035</time>
+    <user>dimstar_suse</user>
+    <comment>- Set correct license (GPL-2.0)
+- Spec cleanup
+- update to 0.6.0
+- Remove date references from binaries to help build-compare
+- initial version (0.5.6)
+</comment>
+    <requestid>572212</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ee46d566b8dfe2a7312e6a6ca1e3a03c</srcmd5>
+    <version>0.6.0</version>
+    <time>1518426938</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>575373</requestid>
+  </revision>
+</revisionlist>

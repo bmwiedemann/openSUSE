@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Fri Dec 28 17:08:05 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim history and filler wording from descriptions.
+
+-------------------------------------------------------------------
+Thu Dec 20 19:17:53 UTC 2018 - mailaender@opensuse.org
+
+- Update to 1.6
+
+-------------------------------------------------------------------
+Wed Mar 28 16:14:43 UTC 2018 - darin@darins.net
+
+- added gcc-c++ build dependency
+
+-------------------------------------------------------------------
+Fri Oct  6 00:48:20 UTC 2017 - flyos@mailoo.org
+
+- Update to 1.5
+- Rebased spec using R2spec
+
+-------------------------------------------------------------------
+Thu Oct  9 15:15:17 UTC 2014 - darin@darins.net
+
+- fix packaging
+
+-------------------------------------------------------------------
+Wed Apr 16 22:53:54 UTC 2014 - darin@darins.net
+
+- initial packaging
+

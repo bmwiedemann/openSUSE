@@ -1,0 +1,1537 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3a8d6f54a450897fa055c154ac1a3bfc</srcmd5>
+    <version>0.1_200809171509</version>
+    <time>1222269829</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>671e28f4c45bcf161e6bd28b880ceab7</srcmd5>
+    <version>0.1_200809171509</version>
+    <time>1223388577</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a880067d9209e8d913eb4a456c3b2e2d</srcmd5>
+    <version>0.1_200810241325</version>
+    <time>1224854737</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>567da482e54586ee6695e2bde40d379f</srcmd5>
+    <version>0.1_200810270947</version>
+    <time>1225123755</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7af0513158886246b49bd63eafd829a4</srcmd5>
+    <version>0.1_200810281440</version>
+    <time>1225214102</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>71e1155be0bf0a5ed6b587cc0f12fa84</srcmd5>
+    <version>0.1_200811041704</version>
+    <time>1225817532</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6b6025e4a9b41882715d35c13e5e3958</srcmd5>
+    <version>0.1_200811201214</version>
+    <time>1227194138</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f6b6abd5738a52d144125beaba2c8437</srcmd5>
+    <version>0.1_200811250855</version>
+    <time>1227624913</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7e13e9d19f581713ff50c96179d404d6</srcmd5>
+    <version>0.1_200812111413</version>
+    <time>1229349826</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7064c25ffd4097f25dff9e4c5f81604b</srcmd5>
+    <version>0.1_200812111413</version>
+    <time>1233269401</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>801414eeaf9ff6727186c6b6bb330df4</srcmd5>
+    <version>0.1_200908281259</version>
+    <time>1251489711</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit-default-privs based on submit request 19121 from user lnussel
+</comment>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>50d0c565a35356612e23434007ff3761</srcmd5>
+    <version>0.1_200908281259</version>
+    <time>1253733392</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit-default-privs based on submit request 20915 from user lnussel
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a5b832321b889efc7f1ee045356def15</srcmd5>
+    <version>0.1_200910061635</version>
+    <time>1254963384</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit-default-privs based on submit request 21926 from user lnussel
+</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>a5b832321b889efc7f1ee045356def15</srcmd5>
+    <version>0.1_200910061635</version>
+    <time>1254963384</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit-default-privs based on submit request 21926 from user lnussel
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3284a759a2696ea948ad2d10e7b8e0b3</srcmd5>
+    <version>0.1_200910221256</version>
+    <time>1256303310</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit-default-privs based on submit request 22863 from user lnussel
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f7bac6a5254554ee05f24e05ceb74cbe</srcmd5>
+    <version>0.1_201002251515</version>
+    <time>1267182351</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit-default-privs based on submit request 33528 from user lnussel
+</comment>
+    <requestid>33528</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>a374afe4ed94dcd2cbb7a7a8e482a2ef</srcmd5>
+    <version>0.1_201002251515</version>
+    <time>1268925737</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3e02503f60cfc4a90dfcc0a158d28796</srcmd5>
+    <version>0.1_201003260921</version>
+    <time>1269618171</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit-default-privs based on submit request 35766 from user lnussel
+</comment>
+    <requestid>35766</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e39a4108d3014ea651b389048a5827bf</srcmd5>
+    <version>0.1_201004011526</version>
+    <time>1270131298</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit-default-privs based on submit request 36584 from user lnussel
+</comment>
+    <requestid>36584</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fc24b94187e612eda59408dbcecaa3a2</srcmd5>
+    <version>0.1_201004061042</version>
+    <time>1270586179</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit-default-privs based on submit request 37031 from user lnussel
+</comment>
+    <requestid>37031</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a8b23f63aa2805c6bc618da41252bb1d</srcmd5>
+    <version>0.1_201006171648</version>
+    <time>1276834303</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit-default-privs based on submit request 41671 from user lnussel
+</comment>
+    <requestid>41671</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>a8b23f63aa2805c6bc618da41252bb1d</srcmd5>
+    <version>0.1_201006171648</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>a8b23f63aa2805c6bc618da41252bb1d</srcmd5>
+    <version>0.1_201006171648</version>
+    <time>1278678611</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ad7919013c1e39e9c77293f3c9d20881</srcmd5>
+    <version>0.1_201008061458</version>
+    <time>1281313369</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit-default-privs based on submit request 44726 from user lnussel
+</comment>
+    <requestid>44726</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5d9c05d66fbe5c768128c8bbafa8e058</srcmd5>
+    <version>0.1_201009211651</version>
+    <time>1285085922</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit-default-privs based on submit request 48692 from user lnussel
+</comment>
+    <requestid>48692</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b1445d943914481927c9ebe19dcebc5a</srcmd5>
+    <version>0.1_201010191557</version>
+    <time>1287505894</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51050 from user lnussel
+</comment>
+    <requestid>51050</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>33d431dfd34ebdd5796377bfc86c7982</srcmd5>
+    <version>0.1_201010191557</version>
+    <time>1287505899</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51050
+</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>108fed656e126c77b3e0bda3032dffcd</srcmd5>
+    <version>0.1_201011241040</version>
+    <time>1290592352</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53859 from user lnussel
+</comment>
+    <requestid>53859</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>cc3087b43fd61ef44479cebc794056f5</srcmd5>
+    <version>0.1_201011241040</version>
+    <time>1290592359</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 53859
+</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>80f0236d9d0e149246708e5fd4751faa</srcmd5>
+    <version>0.1_201012150927</version>
+    <time>1292852066</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 56028 from user lnussel
+</comment>
+    <requestid>56028</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>92f3191d7c4dc6745d6897fff684086a</srcmd5>
+    <version>0.1_201012150927</version>
+    <time>1292852099</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 56028
+</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>450cbd98725a15c5cfa57579e137943c</srcmd5>
+    <version>0.1_201101211308</version>
+    <time>1295947079</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 58958 from user lnussel
+</comment>
+    <requestid>58958</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>6ef056c7b01e4d8fcbd8b446af2021e8</srcmd5>
+    <version>0.1_201101211308</version>
+    <time>1295947087</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 58958
+</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>fe365d740365a36a0ef2a6c4e93e34b8</srcmd5>
+    <version>0.1_201101261456</version>
+    <time>1296608112</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59156 from user lnussel
+</comment>
+    <requestid>59156</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b3cd98be95e1665a66f102e86f36509b</srcmd5>
+    <version>0.1_201102091103</version>
+    <time>1297384874</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60393 from user lnussel
+</comment>
+    <requestid>60393</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3f9ca60cae9859513c8db76baa40a15f</srcmd5>
+    <version>0.1_201102141547</version>
+    <time>1297776957</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61173 from user lnussel
+</comment>
+    <requestid>61173</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f24c4892279422da2bfb6a386148f907</srcmd5>
+    <version>0.1_201102151611</version>
+    <time>1297790294</time>
+    <user>darix</user>
+    <comment>Accepted submit request 61337 from user lnussel
+</comment>
+    <requestid>61337</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>f24c4892279422da2bfb6a386148f907</srcmd5>
+    <version>0.1_201102151611</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1b8dc0117e77d59bc43ed242a50aca1d</srcmd5>
+    <version>0.1_201102151742</version>
+    <time>1298031202</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61431 from user lnussel
+</comment>
+    <requestid>61431</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>623de2195b6d52f34a344c8499cc4cec</srcmd5>
+    <version>0.1_201103161420</version>
+    <time>1300439995</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64311 from user lnussel
+</comment>
+    <requestid>64311</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3264ed7b34ef3b7c05541c1b09906c80</srcmd5>
+    <version>0.1_201104261334</version>
+    <time>1303891398</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 68372 from user coolo
+</comment>
+    <requestid>68372</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>ef70fdbab7461357af614efb98a76759</srcmd5>
+    <version>0.1_201104281141</version>
+    <time>1304061046</time>
+    <user>saschpe</user>
+    <comment>- new gnome-settings-daemon settings (bnc#690496)</comment>
+    <requestid>68655</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>cb01f4ba0784a7d6179ff2a87b55f4b6</srcmd5>
+    <version>0.1_201105021611</version>
+    <time>1304350349</time>
+    <user>darix</user>
+    <comment>- add NetworkManager.settings.modify.hostname (bnc#680140)
+- add account services (bnc#676638)
+- add org.opensuse.cupspkhelper.mechanism.all-edit (bnc#691014)</comment>
+    <requestid>69227</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>418e6ddab37f376d0955800776c700c6</srcmd5>
+    <version>0.1_201105051551</version>
+    <time>1304606389</time>
+    <user>saschpe</user>
+    <comment>- add org.freedesktop.ModemManager.USSD (bnc#691896)
+- more systemd stuff (bnc#641924)</comment>
+    <requestid>69710</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>f8ec34200aa28cf4962f1717b3a52319</srcmd5>
+    <version>0.1_201105161158</version>
+    <time>1305627554</time>
+    <user>saschpe</user>
+    <comment>- webyast shutdown privs (bnc#687807)</comment>
+    <requestid>70325</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>0a09fa76fb8d4b9b38fee511fb8ae95e</srcmd5>
+    <version>0.1_201106161730</version>
+    <time>1308299130</time>
+    <user>saschpe</user>
+    <comment> - add colord (bnc#698250)</comment>
+    <requestid>73880</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>e7865d9030da2c30d4b111a44e0f34dc</srcmd5>
+    <version>0.1_201106161730</version>
+    <time>1308299140</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73880
+</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>ef659d1da2b7419b4a2815d4c95dbb50</srcmd5>
+    <version>0.1_201107071412</version>
+    <time>1310122336</time>
+    <user>saschpe</user>
+    <comment>- set org.gnome.gconf.defaults.* to auth_admin_keep (bnc#703582)</comment>
+    <requestid>75821</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>31f3aa6924b61324e314c36f16826021</srcmd5>
+    <version>0.1_201107141114</version>
+    <time>1310640870</time>
+    <user>saschpe</user>
+    <comment> - add more systemd privileges (bnc#705677)</comment>
+    <requestid>76235</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>322c31c1003c5ebf0556d1739369f35f</srcmd5>
+    <version>12.1</version>
+    <time>1311318161</time>
+    <user>saschpe</user>
+    <comment>- change version to 12.1 to show that the package is tied to the
+  distro
+- set org.freedesktop.accounts.user-administration to auth_admin_keep</comment>
+    <requestid>76582</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>6d1e4754231206129e08ab7b5339ee1e</srcmd5>
+    <version>12.1</version>
+    <time>1311776308</time>
+    <user>saschpe</user>
+    <comment>- change inactive backlight helper privileges to 'no' (bnc#708639)
+- remove hal privileges</comment>
+    <requestid>77215</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>d14fc375366580a48fbfe624d7846cb7</srcmd5>
+    <version>12.1</version>
+    <time>1311776320</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77215
+</comment>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>1b73def1e621e1758ca161ffe9a49849</srcmd5>
+    <version>12.1</version>
+    <time>1311864704</time>
+    <user>saschpe</user>
+    <comment>- set NetworkManager.settings.modify.{own,system} to auth_admin_keep
+  so it's less annoying (bnc#680140)
+- silence %post  (bnc#679336)
+
+- more sytemd/logind privileges (bnc#641924)</comment>
+    <requestid>77347</requestid>
+  </revision>
+  <revision rev="54" vrev="5">
+    <srcmd5>736349de8f0a7925ab78b6f35a46ac1c</srcmd5>
+    <version>12.1</version>
+    <time>1311864714</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77347
+</comment>
+  </revision>
+  <revision rev="55" vrev="6">
+    <srcmd5>b874ea8f108603aad600bfe23bd8a2b6</srcmd5>
+    <version>12.1</version>
+    <time>1312736455</time>
+    <user>saschpe</user>
+    <comment>- add org.kde.kalarmrtcwake.settimer (bnc#707723)</comment>
+    <requestid>78105</requestid>
+  </revision>
+  <revision rev="56" vrev="7">
+    <srcmd5>541fdacc134b7af2e6183c380284e332</srcmd5>
+    <version>12.1</version>
+    <time>1312736464</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78105
+</comment>
+  </revision>
+  <revision rev="57" vrev="8">
+    <srcmd5>34ae4b5d5bbabe1f893e5ed238a96b4c</srcmd5>
+    <version>12.1</version>
+    <time>1314089976</time>
+    <user>saschpe</user>
+    <comment>- rename gnome backlight-helper privilege (bnc#712841)</comment>
+    <requestid>79524</requestid>
+  </revision>
+  <revision rev="58" vrev="9">
+    <srcmd5>058c537f8a367ae9c1c89f59abefbeee</srcmd5>
+    <version>12.1</version>
+    <time>1314089987</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79524
+</comment>
+  </revision>
+  <revision rev="59" vrev="11">
+    <srcmd5>058c537f8a367ae9c1c89f59abefbeee</srcmd5>
+    <version>12.1</version>
+    <time>1319182363</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="60" vrev="12">
+    <srcmd5>cfeff259ff3da6aae46eb5c766cdeace</srcmd5>
+    <version>12.1</version>
+    <time>1319635952</time>
+    <user>coolo</user>
+    <comment>- set org.freedesktop.accounts.change-own-user-data to yes (bnc#676638)</comment>
+    <requestid>89366</requestid>
+  </revision>
+  <revision rev="61" vrev="13">
+    <srcmd5>71039cf5ea2f69160358c04318f5166b</srcmd5>
+    <version>12.1</version>
+    <time>1319823690</time>
+    <user>coolo</user>
+    <comment>- fix logind privileges to be consistend with consolekit (bnc#726969)</comment>
+    <requestid>89613</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>bb0e330167d40bb32e125047f4bf3fa7</srcmd5>
+    <version>12.2</version>
+    <time>1322757508</time>
+    <user>coolo</user>
+    <comment>- add org.opensuse.yast.system.terminal.read
+
+- set version to 12.2
+- remove obsolete moblin privileges
+- allow org.freedesktop.ModemManager.Device.Control (bnc#732358)
+- allow setting the system's time zone (bnc#731812)
+
+- change NetworkManager policies (bnc#716291)</comment>
+    <requestid>94704</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>36bd6435e88a30dab8f9c063784ff683</srcmd5>
+    <version>12.2</version>
+    <time>1323193944</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>f886049261cea72b4231aa8734515c22</srcmd5>
+    <version>12.2</version>
+    <time>1327500158</time>
+    <user>coolo</user>
+    <comment>- add org.freedesktop.packagekit.repair-system (bnc#742024)
+- fix FSF address
+- remove old obsoletes</comment>
+    <requestid>100535</requestid>
+  </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>513e725680cd91dc98fd5b63f62bfa6b</srcmd5>
+    <version>12.2</version>
+    <time>1330619156</time>
+    <user>coolo</user>
+    <comment>- add smb4k (bnc#749065)
+- add udisks2 (bnc#742751)</comment>
+    <requestid>107558</requestid>
+  </revision>
+  <revision rev="66" vrev="5">
+    <srcmd5>84f0d7ebfb8ac0eeddb42fabad58d3ac</srcmd5>
+    <version>12.2</version>
+    <time>1333026235</time>
+    <user>coolo</user>
+    <comment>- add org.kde.recorditnow.helper.watch (bnc#753908)
+- add org.gnome.settings-daemon.plugins.wacom.wacom-led-helper (bnc#750795)</comment>
+    <requestid>111840</requestid>
+  </revision>
+  <revision rev="67" vrev="6">
+    <srcmd5>3906c3840df9693c3a61a363a29b6b7a</srcmd5>
+    <version>12.2</version>
+    <time>1337195352</time>
+    <user>coolo</user>
+    <comment>- add more udisks2 privileges (bnc#761872)</comment>
+    <requestid>121067</requestid>
+  </revision>
+  <revision rev="68" vrev="7">
+    <srcmd5>65ef85ea2c27ff3518d47c8a8260cf79</srcmd5>
+    <version>12.2</version>
+    <time>1338991756</time>
+    <user>coolo</user>
+    <comment>- fix script name in sysconfig file (bnc#765227)</comment>
+    <requestid>123680</requestid>
+  </revision>
+  <revision rev="69" vrev="9">
+    <srcmd5>65ef85ea2c27ff3518d47c8a8260cf79</srcmd5>
+    <version>12.2</version>
+    <time>1340184009</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="70" vrev="10">
+    <srcmd5>a79e3f191b37cb3f01feced3f305de0d</srcmd5>
+    <version>12.2</version>
+    <time>1341560741</time>
+    <user>coolo</user>
+    <comment>- relax colord after auditing (bnc#698250) (forwarded request 127200 from msmeissn)</comment>
+    <requestid>127202</requestid>
+  </revision>
+  <revision rev="71" vrev="11">
+    <srcmd5>e49edbc5b08b1da38b98f3e5e0d1fea8</srcmd5>
+    <version>12.2</version>
+    <time>1342172033</time>
+    <user>namtrac</user>
+    <comment>- allow logged in users to update the system via online updates. bnc#771189 (forwarded request 127753 from msmeissn)</comment>
+    <requestid>127810</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>7c719aaae83f5de9caf975ef42b38365</srcmd5>
+    <version>12.3</version>
+    <time>1350590542</time>
+    <user>coolo</user>
+    <comment>- 12.3 is next opensuse
+
+- allow realtimekit at desktop permission (bnc#753849)
+- fixed typo (forwarded request 138397 from msmeissn)</comment>
+    <requestid>138469</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>d1846c90df522504f026f4111e22db88</srcmd5>
+    <version>12.3</version>
+    <time>1351092070</time>
+    <user>coolo</user>
+    <comment>- added new udisks2 policykit privileges at lowest setting bnc#779404 (forwarded request 139155 from msmeissn)</comment>
+    <requestid>139158</requestid>
+  </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>80bb6cc355fbbd2d15c41d695298ac04</srcmd5>
+    <version>12.3</version>
+    <time>1351159913</time>
+    <user>namtrac</user>
+    <comment>- added polkit default privs for GNOME control-center (bnc#779938) (forwarded request 139169 from msmeissn)</comment>
+    <requestid>139186</requestid>
+  </revision>
+  <revision rev="75" vrev="4">
+    <srcmd5>2a51cfd17d45abe64b6b88171563b11c</srcmd5>
+    <version>12.3</version>
+    <time>1351866026</time>
+    <user>coolo</user>
+    <comment>- new systemd privileges, mostly allowing applications to inhibit system actions (bnc#783897) (forwarded request 139972 from msmeissn)</comment>
+    <requestid>139973</requestid>
+  </revision>
+  <revision rev="76" vrev="5">
+    <srcmd5>8f76b7b257f5c0801872261e6dbeb6c2</srcmd5>
+    <version>12.3</version>
+    <time>1351884134</time>
+    <user>coolo</user>
+    <comment>just a hotfix</comment>
+  </revision>
+  <revision rev="77" vrev="7">
+    <srcmd5>8f76b7b257f5c0801872261e6dbeb6c2</srcmd5>
+    <version>12.3</version>
+    <time>1359109937</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="78" vrev="8">
+    <srcmd5>a56d73537d0c5623985bd9d476430f5d</srcmd5>
+    <version>12.3</version>
+    <time>1361439845</time>
+    <user>coolo</user>
+    <comment>- whitelist PackageKit / systemd offline update permissions, currently admin only
+- more systemd allows to make rpmlint happier bnc#783897 (forwarded request 155832 from msmeissn)</comment>
+    <requestid>155919</requestid>
+  </revision>
+  <revision rev="79" vrev="9">
+    <srcmd5>20169dde87baba20276ce755fddda362</srcmd5>
+    <version>12.3</version>
+    <time>1361548647</time>
+    <user>coolo</user>
+    <comment>- fix restrictive privileges
+- generate javascript files for new polkit (bnc#804376)
+- implement check for overrides</comment>
+    <requestid>156061</requestid>
+  </revision>
+  <revision rev="80" vrev="10">
+    <srcmd5>4205144b8a2f2b020406094a0af481cb</srcmd5>
+    <version>12.3</version>
+    <time>1361821201</time>
+    <user>coolo</user>
+    <comment>- do not own the polkit directories (with different user, creating
+  conflict), but buildrequire polkit (forwarded request 156165 from coolo)</comment>
+    <requestid>156225</requestid>
+  </revision>
+  <revision rev="81" vrev="11">
+    <srcmd5>5ed728a42828bd98629f6c8bf8b45942</srcmd5>
+    <version>12.3</version>
+    <time>1362120359</time>
+    <user>coolo</user>
+    <comment>- add /etc/polkit-1/rules.d/50-default-privs.rules as ghost so it
+  gets associated with the package
+
+- require ibmozjs185-1_0 as polkit won't apply the policy without it
+  (bnc#804376)
+
+- set logind inhibit policies to upstream defaults (bnc#804376)
+- more elaborate --check-override option
+
+- add some debugging capabilities in generated code</comment>
+    <requestid>156711</requestid>
+  </revision>
+  <revision rev="82" vrev="12">
+    <srcmd5>33b16ee5a55eab9321996f0fbd459c72</srcmd5>
+    <version>12.3</version>
+    <time>1362486755</time>
+    <user>coolo</user>
+    <comment>- move default rules to '90', bnc#807097
+
+for 12.3</comment>
+    <requestid>157350</requestid>
+  </revision>
+  <revision rev="83" vrev="13">
+    <srcmd5>e5b0389824b4f4ad4f89b277040f255c</srcmd5>
+    <version>12.3</version>
+    <time>1363083257</time>
+    <user>coolo</user>
+    <comment>Default rules are moved to '90', so own them as '90' instead '50' (forwarded request 158206 from sumski)</comment>
+    <requestid>158247</requestid>
+  </revision>
+  <revision rev="84" vrev="14">
+    <srcmd5>b695d9c1c1ee47d31220c183b9d496ac</srcmd5>
+    <version>12.3</version>
+    <time>1365025591</time>
+    <user>coolo</user>
+    <comment>- allow org.freedesktop.packagekit.trigger-offline-update and org.freedesktop.packagekit.clear-offline-update in standard same way as normal patch update (bnc#798885 bnc#812504)
+
+- added new udisks2 privileges (bnc#809277)
+
+- add org.opensuse.policykit.gparted auth_admin (bnc#810888) (forwarded request 162488 from msmeissn)</comment>
+    <requestid>162489</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>77f68ead4efe48364e1f61ec12ef4862</srcmd5>
+    <version>13.1</version>
+    <time>1366087346</time>
+    <user>coolo</user>
+    <comment>- ModemManager 0.8 with org.freedesktop.ModemManager1 interface added (a bit more relaxed than the old interface) bnc#798273
+- 13.1 is next opensuse
+
+- bump version for next openSUSE release. (forwarded request 170927 from msmeissn)</comment>
+    <requestid>170985</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>d2b22a203fdafcb4df4b171fbd47d88d</srcmd5>
+    <version>13.1</version>
+    <time>1370430464</time>
+    <user>coolo</user>
+    <comment>- allow fprintd polkit privileges (bnc#792095) (forwarded request 177393 from msmeissn)</comment>
+    <requestid>177394</requestid>
+  </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>d9cce72b2504db6480c0dd42901966c1</srcmd5>
+    <version>13.1</version>
+    <time>1371149806</time>
+    <user>coolo</user>
+    <comment>- added lightdm-kde-greeter (bnc#794705) (forwarded request 178536 from msmeissn)</comment>
+    <requestid>178537</requestid>
+  </revision>
+  <revision rev="88" vrev="4">
+    <srcmd5>0ec1e3a18a38750c1dfc8c22837d1e5c</srcmd5>
+    <version>13.1</version>
+    <time>1371544510</time>
+    <user>coolo</user>
+    <comment>- track nepomuk rights (bnc#825262)
+
+- gnome-system-monitor: track its permissions as they are found (bnc#822011) (forwarded request 179329 from msmeissn)</comment>
+    <requestid>179331</requestid>
+  </revision>
+  <revision rev="89" vrev="5">
+    <srcmd5>d9bda98d0c0fe1ad1864e7ad8e2429a6</srcmd5>
+    <version>13.1</version>
+    <time>1372509019</time>
+    <user>coolo</user>
+    <comment>- Added gnome-settings-daemon new policy
+  org.gnome.settings-daemon.plugins.wacom.wacom-oled-helper (bnc#822405) (forwarded request 181337 from msmeissn)</comment>
+    <requestid>181338</requestid>
+  </revision>
+  <revision rev="90" vrev="6">
+    <srcmd5>256648cab75b111c092b735aac8c7314</srcmd5>
+    <version>13.1</version>
+    <time>1372953923</time>
+    <user>coolo</user>
+    <comment>- temporary whitelist powerdevil (bnc#825256) (forwarded request 182135 from msmeissn)</comment>
+    <requestid>182136</requestid>
+  </revision>
+  <revision rev="91" vrev="7">
+    <srcmd5>fba21ec7b3c1168b2deb4d6dcb7dde5d</srcmd5>
+    <version>13.1</version>
+    <time>1373228565</time>
+    <user>coolo</user>
+    <comment>- Only require libmozjs185-1_0 on openSUSE up to 12.3:
+  + On openSUSE 13.1, we use libmozjs-17_0
+  + Since polkit 0.111, the mozjs library parser is no longer
+    optional. For this reason, we also do not have to worry to
+    Require the correct library in this case anymore. (forwarded request 182310 from dimstar)</comment>
+    <requestid>182321</requestid>
+  </revision>
+  <revision rev="92" vrev="8">
+    <srcmd5>987145baccd4f6c64e58ad3de1eb518e</srcmd5>
+    <version>13.1</version>
+    <time>1373491564</time>
+    <user>coolo</user>
+    <comment>- added polkit-default-privs temporary permissions until audited bnc#827644
+
+- added powerdevil privs (bnc#825256) (forwarded request 182735 from msmeissn)</comment>
+    <requestid>182736</requestid>
+  </revision>
+  <revision rev="93" vrev="9">
+    <srcmd5>a0ae01ff8666492caf70741d75872667</srcmd5>
+    <version>13.1</version>
+    <time>1377856000</time>
+    <user>coolo</user>
+    <comment>- allow org.mate.power.backlight-helper on standard (bnc#831404)
+- track gufw
+- add org.mate.randr.install-system-wide auth_admin_keep (bnc#831404)
+- track mate-settings-daemons privileges (bnc#831404) (forwarded request 196696 from msmeissn)</comment>
+    <requestid>196697</requestid>
+  </revision>
+  <revision rev="94" vrev="11">
+    <srcmd5>a0ae01ff8666492caf70741d75872667</srcmd5>
+    <version>13.1</version>
+    <time>1379664045</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="95" vrev="12">
+    <srcmd5>5cd655d52e631d3a660053e07716a86c</srcmd5>
+    <version>13.1</version>
+    <time>1382549124</time>
+    <user>scarabeus_factory</user>
+    <comment>- disable system source refresh on inactive console to avoid annoying popups bnc#834165 (forwarded request 204431 from msmeissn)</comment>
+    <requestid>204432</requestid>
+  </revision>
+  <revision rev="96" vrev="13">
+    <srcmd5>6d19d5c8eb64d5c810802da82c0c2374</srcmd5>
+    <version>13.1</version>
+    <time>1383810213</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>205827</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>552c1964cd2cfa025082dda8551e4daf</srcmd5>
+    <version>13.2</version>
+    <time>1385043970</time>
+    <user>coolo</user>
+    <comment>- - Adding kwallet polkit rules (bnc#849739) (forwarded request 207760 from msmeissn)</comment>
+    <requestid>207761</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>862dc7c0697166bc7623171e17c37c1b</srcmd5>
+    <version>13.2</version>
+    <time>1395146294</time>
+    <user>coolo</user>
+    <comment>- backlight helpers: relaxing rules in restrictive mode,
+  otherwise we get popups requesting LED state changes
+  bnc#866806
+
+- Adding kwallet polkit rules (bnc#849739) (forwarded request 225705 from msmeissn)</comment>
+    <requestid>225713</requestid>
+  </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>4cc3dcd952af850ae8f92a5e00bc17b9</srcmd5>
+    <version>13.2</version>
+    <time>1395750392</time>
+    <user>coolo</user>
+    <comment>- polkit-default-privs: relaxing
+  org.freedesktop.color-manager.create-device   and
+  org.freedesktop.color-manager.delete-device, its basically just a DB
+  operation and colord checks the owner of delete id is the same as
+  the creator (bnc#861076) (forwarded request 227287 from msmeissn)</comment>
+    <requestid>227288</requestid>
+  </revision>
+  <revision rev="100" vrev="4">
+    <srcmd5>e32b3593b81488b58d8835d612a9ae63</srcmd5>
+    <version>13.2</version>
+    <time>1401167377</time>
+    <user>coolo</user>
+    <comment>- tentatively allow new org.selinux helper interfaces in policycoreutils (bnc#878631)
+- polkit-default-privs: adding pcsc-lite rules (bnc#864178)
+
+- change org.kde.fontinst.manage to auth_admin_keep (bnc#704805)
+
+- adding org.kde.baloo.filewatch.raiselimit action (bnc#866131) (forwarded request 234734 from msmeissn)</comment>
+    <requestid>234735</requestid>
+  </revision>
+  <revision rev="101" vrev="5">
+    <srcmd5>1511486acf04c01bfc7b3d8c70f3b747</srcmd5>
+    <version>13.2</version>
+    <time>1405521394</time>
+    <user>coolo</user>
+    <comment>- relaxing fprintd rules (bnc#850807)
+
+- replace SuSEconfig mentioning by correct script name (bnc#886809)</comment>
+    <requestid>241022</requestid>
+  </revision>
+  <revision rev="102" vrev="6">
+    <srcmd5>d7760d5d1d1d62cda0cf9598c05c5705</srcmd5>
+    <version>13.2</version>
+    <time>1407485409</time>
+    <user>lnussel</user>
+    <comment>- polkit-defaultprivs: relaxing rules for SLE12 create-profile in colord (bnc#887511) (forwarded request 243747 from krahmer)</comment>
+    <requestid>243748</requestid>
+  </revision>
+  <revision rev="103" vrev="8">
+    <srcmd5>d7760d5d1d1d62cda0cf9598c05c5705</srcmd5>
+    <version>13.2</version>
+    <time>1409302723</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="104" vrev="9">
+    <srcmd5>653a36d05781605f93e9dbfe54da18f1</srcmd5>
+    <version>13.2</version>
+    <time>1412142007</time>
+    <user>coolo</user>
+    <comment>- polkit-default-privs: Addings missing rules for restrictive mode (bnc#898001) (forwarded request 253060 from msmeissn)</comment>
+    <requestid>253062</requestid>
+  </revision>
+  <revision rev="105" vrev="10">
+    <srcmd5>f68a69df4846a420e41e0073ff44fc7f</srcmd5>
+    <version>13.2</version>
+    <time>1415953112</time>
+    <user>dimstar_suse</user>
+    <comment>- Add org.kde.kcontrol.kcmsddm.save (bsc#904313) (forwarded request 260238 from msmeissn)</comment>
+    <requestid>260243</requestid>
+  </revision>
+  <revision rev="106" vrev="11">
+    <srcmd5>8121229c1334781d6d61e5d74f51a483</srcmd5>
+    <version>13.2</version>
+    <time>1417643477</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: adding _keep to ModemManager rules (bnc#900813) (forwarded request 263374 from msmeissn)</comment>
+    <requestid>263375</requestid>
+  </revision>
+  <revision rev="107" vrev="12">
+    <srcmd5>3180081a55605f9602821ee8b65f1801</srcmd5>
+    <version>13.2</version>
+    <time>1418840275</time>
+    <user>dimstar_suse</user>
+    <comment>- added firewalld (bnc#907625) polkit actions (forwarded request 264675 from msmeissn)</comment>
+    <requestid>264676</requestid>
+  </revision>
+  <revision rev="108" vrev="13">
+    <srcmd5>2949192e40de3da9cb4b947c97a91574</srcmd5>
+    <version>13.2</version>
+    <time>1421753167</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281256</requestid>
+  </revision>
+  <revision rev="109" vrev="14">
+    <srcmd5>a3959e2ea3a8ce466a803c6231d86b4e</srcmd5>
+    <version>13.2</version>
+    <time>1423917837</time>
+    <user>dimstar_suse</user>
+    <comment>- adding storaged rules (bnc#915770) (forwarded request 285625 from krahmer)</comment>
+    <requestid>285626</requestid>
+  </revision>
+  <revision rev="110" vrev="15">
+    <srcmd5>b6f43c8d3e6dafd5983f71a342502ff8</srcmd5>
+    <version>13.2</version>
+    <time>1428652074</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: add urfkill (bnc#926288) polkit action (forwarded request 294981 from krahmer)</comment>
+    <requestid>294982</requestid>
+  </revision>
+  <revision rev="111" vrev="16">
+    <srcmd5>e9c2db1140e353b2df89dd73f0cb18f8</srcmd5>
+    <version>13.2</version>
+    <time>1429658171</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: rename of powerdevil action-names (bnc#927275) (forwarded request 298125 from krahmer)</comment>
+    <requestid>298132</requestid>
+  </revision>
+  <revision rev="112" vrev="17">
+    <srcmd5>742bf3ae20524b32af6127486ec5e8ab</srcmd5>
+    <version>13.2</version>
+    <time>1429973182</time>
+    <user>coolo</user>
+    <comment>- polkit-default-privs: adding gnome-control-center actions (bnc#927508)
+                        adding realmd actions (bnc#916767) (forwarded request 298571 from krahmer)</comment>
+    <requestid>298572</requestid>
+  </revision>
+  <revision rev="113" vrev="18">
+    <srcmd5>99181624b73da076b91f0a25f0e562f6</srcmd5>
+    <version>13.2</version>
+    <time>1432378263</time>
+    <user>dimstar_suse</user>
+    <comment>- instead of auth-admin, disallow colord management for inactive and
+  other users, so they do not get root password popups bsc#918594 (forwarded request 308356 from msmeissn)</comment>
+    <requestid>308357</requestid>
+  </revision>
+  <revision rev="114" vrev="19">
+    <srcmd5>61d1c9ee20a7739f97808554941c7eaa</srcmd5>
+    <version>13.2</version>
+    <time>1433845466</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: adding netvisix rules (bsc#930195) (forwarded request 311118 from krahmer)</comment>
+    <requestid>311119</requestid>
+  </revision>
+  <revision rev="115" vrev="20">
+    <srcmd5>e0cc0a6f67455eb4ac1f5a05515abd4e</srcmd5>
+    <version>13.2</version>
+    <time>1435869913</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: PackageKit (bnc#929212) (forwarded request 313262 from krahmer)</comment>
+    <requestid>313263</requestid>
+  </revision>
+  <revision rev="116" vrev="21">
+    <srcmd5>557ffc3f30270054023ae21a808ab2b1</srcmd5>
+    <version>13.2</version>
+    <time>1447353462</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: adding rules for cinnamon settings-daemon (bsc#951830)
+- polkit-default-privs: relaxing some ModemManager rules to avoid typing password after screenlock/hibernate (bsc#948728) (forwarded request 343179 from krahmer)</comment>
+    <requestid>343182</requestid>
+  </revision>
+  <revision rev="117" vrev="22">
+    <srcmd5>c8dbaddaddae1cfb63f5f84aae46c970</srcmd5>
+    <version>13.2</version>
+    <time>1450084394</time>
+    <user>coolo</user>
+    <comment>- polkit-default-privs: Adding new systemd actions (bsc#955626)
+- polkit-default-privs: create files with consistent permissions</comment>
+    <requestid>347168</requestid>
+  </revision>
+  <revision rev="118" vrev="23">
+    <srcmd5>fb61a3ec2e1bae308bfad29f18fb2ee1</srcmd5>
+    <version>13.2</version>
+    <time>1452263954</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352077</requestid>
+  </revision>
+  <revision rev="119" vrev="24">
+    <srcmd5>521efbd937ad14ffa22a353bd1044acc</srcmd5>
+    <version>13.2</version>
+    <time>1461868161</time>
+    <user>dimstar_suse</user>
+    <comment>- added brltty (bsc#967436) (forwarded request 388467 from krahmer)</comment>
+    <requestid>388470</requestid>
+  </revision>
+  <revision rev="120" vrev="25">
+    <srcmd5>386eff17aae017fd9a4c991b5bed0fbd</srcmd5>
+    <version>13.2</version>
+    <time>1467359459</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: adding ModemManager (bsc#976945)</comment>
+    <requestid>401587</requestid>
+  </revision>
+  <revision rev="121" vrev="26">
+    <srcmd5>a10d980422f177b1cb5570390edc420e</srcmd5>
+    <version>13.2</version>
+    <time>1474475423</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: cleanups as per discussion with Ludwig
+- polkit-default-privs: adding rules for sysprof (bsc#996111) and networkmanager (bsc#996110) (forwarded request 427023 from krahmer)</comment>
+    <requestid>427025</requestid>
+  </revision>
+  <revision rev="122" vrev="27">
+    <srcmd5>315ab6e3b4a47f1565ac791bba0e4f3a</srcmd5>
+    <version>13.2</version>
+    <time>1476350792</time>
+    <user>dimstar_suse</user>
+    <comment>- add flatpak privileges, but currently auth_admin currently (bsc#984817) (forwarded request 434310 from msmeissn)</comment>
+    <requestid>434312</requestid>
+  </revision>
+  <revision rev="123" vrev="28">
+    <srcmd5>5b9c07fabea7b85b17f19a3bdfc9a8ec</srcmd5>
+    <version>13.2</version>
+    <time>1481153272</time>
+    <user>dimstar_suse</user>
+    <comment>- adding org.freedesktop.login1.set-self-linger (bsc#1009468) (forwarded request 444076 from krahmer)</comment>
+    <requestid>444084</requestid>
+  </revision>
+  <revision rev="124" vrev="29">
+    <srcmd5>56f00fec21bfde1911fe7858f83549c1</srcmd5>
+    <version>13.2</version>
+    <time>1485861982</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453384</requestid>
+  </revision>
+  <revision rev="125" vrev="30">
+    <srcmd5>7524beadde496fa874d4da25bef544c1</srcmd5>
+    <version>13.2</version>
+    <time>1486773074</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: adding blueman actions (bsc#987141) (forwarded request 455035 from krahmer)</comment>
+    <requestid>455043</requestid>
+  </revision>
+  <revision rev="126" vrev="31">
+    <srcmd5>779af11585e1d6852b179e8ed58938fa</srcmd5>
+    <version>13.2</version>
+    <time>1493455645</time>
+    <user>dimstar_suse</user>
+    <comment>- added polkit rules for renamed kcmwallet -&amp;gt; kcmwallet5 (bsc#1033296)
+- added polkit rules for tuned (bsc#1007279) (forwarded request 487553 from mgerstner)</comment>
+    <requestid>487559</requestid>
+  </revision>
+  <revision rev="127" vrev="32">
+    <srcmd5>43824a4191579d36b1d135bf7a7e4c08</srcmd5>
+    <version>13.2</version>
+    <time>1494087896</time>
+    <user>dimstar_suse</user>
+    <comment>- added polkit rules for backintime (bnc#1007723, bnc#1032717)
+- relaxing powerdevil rules (bsc#1026038) (forwarded request 492614 from mgerstner)</comment>
+    <requestid>492617</requestid>
+  </revision>
+  <revision rev="128" vrev="33">
+    <srcmd5>c772aa2f9de625539893c9cea591d584</srcmd5>
+    <version>13.2</version>
+    <time>1498120516</time>
+    <user>dimstar_suse</user>
+    <comment>- relaxing action &quot;org.opensuse.cupspkhelper.mechanism.job-edit&quot; (bsc#827331) (forwarded request 505040 from krahmer)</comment>
+    <requestid>505041</requestid>
+  </revision>
+  <revision rev="129" vrev="34">
+    <srcmd5>803c8d382146862a62fe9b2c54439620</srcmd5>
+    <version>13.2</version>
+    <time>1499677234</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: adjusting brltty (bsc#967436) (forwarded request 507787 from krahmer)</comment>
+    <requestid>507788</requestid>
+  </revision>
+  <revision rev="130" vrev="35">
+    <srcmd5>3c9ad9812726f84a45630618a9b0cb7e</srcmd5>
+    <version>13.2</version>
+    <time>1500892212</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511404</requestid>
+  </revision>
+  <revision rev="131" vrev="36">
+    <srcmd5>3995b687c0e0e966973f6b0444a7622b</srcmd5>
+    <version>13.2</version>
+    <time>1501227776</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512293</requestid>
+  </revision>
+  <revision rev="132" vrev="37">
+    <srcmd5>bc340c39678c94cbf7321cc5af31d41c</srcmd5>
+    <version>13.2</version>
+    <time>1503591548</time>
+    <user>dimstar_suse</user>
+    <comment>- adding more flatpak rules (bsc#1012961) (forwarded request 518376 from krahmer)</comment>
+    <requestid>518380</requestid>
+  </revision>
+  <revision rev="133" vrev="38">
+    <srcmd5>46dfa41d3b5eca01aa5d8d59d7bc2bde</srcmd5>
+    <version>13.2</version>
+    <time>1505331216</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: adding fwupd (bsc#932807) (forwarded request 521693 from krahmer)</comment>
+    <requestid>521696</requestid>
+  </revision>
+  <revision rev="134" vrev="39">
+    <srcmd5>42627c474c19477551cc22eef569184a</srcmd5>
+    <version>13.2</version>
+    <time>1508610000</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: adding deja-dup (bsc#1058935) (forwarded request 533392 from krahmer)</comment>
+    <requestid>533394</requestid>
+  </revision>
+  <revision rev="135" vrev="40">
+    <srcmd5>97b9c4976a50c7b00dfa82ef1a0cc103</srcmd5>
+    <version>13.2</version>
+    <time>1509104827</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: adding flatpak (bsc#1064011)
+- polkit-default-privs: adding connman (bsc#1057697) (forwarded request 536519 from krahmer)</comment>
+    <requestid>536520</requestid>
+  </revision>
+  <revision rev="136" vrev="41">
+    <srcmd5>a520856076f958da3089526f1323595a</srcmd5>
+    <version>13.2</version>
+    <time>1512041924</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: adding new sddm kcm actions (bsc#1065563) (forwarded request 546384 from krahmer)</comment>
+    <requestid>546396</requestid>
+  </revision>
+  <revision rev="137" vrev="42">
+    <srcmd5>0518a2b27531be37419224cd5bdf7d39</srcmd5>
+    <version>13.2</version>
+    <time>1513852004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558348</requestid>
+  </revision>
+  <revision rev="138" vrev="43">
+    <srcmd5>6ddaa27eb37361b736ff8f9db212549e</srcmd5>
+    <version>13.2</version>
+    <time>1516358968</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: adding new udisks2 rules (bsc#1073216) (forwarded request 566620 from krahmer)</comment>
+    <requestid>566621</requestid>
+  </revision>
+  <revision rev="139" vrev="44">
+    <srcmd5>d346bc2ffb77978bc67e7579b3c05898</srcmd5>
+    <version>13.2</version>
+    <time>1517824194</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: adding more NM actions (bsc#1077504) (forwarded request 571429 from krahmer)</comment>
+    <requestid>571470</requestid>
+  </revision>
+  <revision rev="140" vrev="45">
+    <srcmd5>682e1a31ae982ab92d0962a067430325</srcmd5>
+    <version>13.2</version>
+    <time>1521498610</time>
+    <user>dimstar_suse</user>
+    <comment>Please handle together with sr#579618
+
+- polkit-default-privs: mass amnesty whitelisting of untracked privileges. See
+  https://lists.opensuse.org/opensuse-factory/2018-02/msg01044.html for
+  rationale. This allows existing packages in Factory to continue building
+  after the tighter rpmlint-Factory checks become effective. Following
+  packages are affected:
+	- blueman (bsc#1083066)
+	- cinnamon settings-daemon (bnc#1083067)
+	- connman (bsc#1083069)
+	- flatpak (bsc#984817)
+	- fwupd (bsc#1083022)
+	- gsmartcontrol (bsc#1084693)
+	- gvfs (bsc#1073214)
+	- laptop-mode-tools (bsc#1084695)
+	- mate-system-monitor (bsc#1084701)
+	- nemo (bsc#1084702)
+	- nemo-extensions (bsc#1084703)
+	- PackageKit (bnc#993505)
+	- pantheon-files (bsc#1084704)
+	- scap-workbench (bsc#1084706)
+	- spice-gtk (bsc#1083025)
+	- sysprof (bsc#1083055) (forwarded request 585855 from mgerstner)</comment>
+    <requestid>585867</requestid>
+  </revision>
+  <revision rev="141" vrev="46">
+    <srcmd5>d9835f04054d6312950f5bfebde35f46</srcmd5>
+    <version>13.2</version>
+    <time>1522503364</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: some more amnesty whitelisting of untracked
+  privileges. Two more packages are affected:
+	- bleachbit (bsc#1087326)
+	- systemd, systemd-mini (bsc#1087328) (forwarded request 592085 from mgerstner)</comment>
+    <requestid>592087</requestid>
+  </revision>
+  <revision rev="142" vrev="47">
+    <srcmd5>fa4713184b07611aecd958799813fc7e</srcmd5>
+    <version>13.2</version>
+    <time>1523956347</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: additional tuned rules (bnc#1088648) (forwarded request 595561 from mgerstner)</comment>
+    <requestid>595599</requestid>
+  </revision>
+  <revision rev="143" vrev="48">
+    <srcmd5>a5977879e5a2e634ff1f5c78b5f519cc</srcmd5>
+    <version>13.2</version>
+    <time>1524837552</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: whitelisting renamed kalarm polkit actions (bnc#1087714) (forwarded request 600645 from mgerstner)</comment>
+    <requestid>600674</requestid>
+  </revision>
+  <revision rev="144" vrev="49">
+    <srcmd5>855ab4048a2157aa22b22da9fbb69226</srcmd5>
+    <version>13.2</version>
+    <time>1529402024</time>
+    <user>maxlin_factory</user>
+    <comment>- polkit-default-privs: added liblxqt backlight action (bnc#1092192)
+
+- polkit-default-privs: whitelisting new resolve1 action of systemd (bnc#1096907)
+- polkit-default-privs: harmonized systemd comments a bit
+
+- polkit-default-privs: new action change-own-password for accountsservice (bnc#1088780)</comment>
+    <requestid>616621</requestid>
+  </revision>
+  <revision rev="145" vrev="50">
+    <srcmd5>9f9c0f445e22e300c4082f673116f1ad</srcmd5>
+    <version>13.2</version>
+    <time>1529919299</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: add cinnamon-control-center datetime action (bnc#1090371) (forwarded request 618493 from mgerstner)</comment>
+    <requestid>618495</requestid>
+  </revision>
+  <revision rev="146" vrev="51">
+    <srcmd5>265fd98256400dfe1f7d121447148eca</srcmd5>
+    <version>13.2</version>
+    <time>1531379862</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: whitelist incremental libvirt actions (bnc#1100328)
+- polkit-default-privs: group together the large blocks of libvirt rules
+
+- polkit-default-privs: whitelist switchboard-plug-* (bsc#1088472) (forwarded request 621352 from mgerstner)</comment>
+    <requestid>621429</requestid>
+  </revision>
+  <revision rev="147" vrev="52">
+    <srcmd5>53d8f4cf50b4a421b958ea62909f0a7b</srcmd5>
+    <version>13.2</version>
+    <time>1533214258</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: whitelist gamemode pkexec action (bsc#1093979) (forwarded request 626507 from mgerstner)</comment>
+    <requestid>626509</requestid>
+  </revision>
+  <revision rev="148" vrev="53">
+    <srcmd5>bd118fc55aed592fc58653fea72d8e87</srcmd5>
+    <version>13.2</version>
+    <time>1533887157</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: add meson install action (bsc#1103811)
+
+- polkit-default-privs: fix syntax error in gamemode whitelisting (bsc#1104135)</comment>
+    <requestid>628367</requestid>
+  </revision>
+  <revision rev="149" vrev="54">
+    <srcmd5>9c17c7886512d8bb741beed4602d27f2</srcmd5>
+    <version>13.2</version>
+    <time>1536327287</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-default-privs: add renamed libvirt rules (bsc#1106813)</comment>
+    <requestid>633286</requestid>
+  </revision>
+  <revision rev="150" vrev="55">
+    <srcmd5>f38b35813b6738ac90119af90e1adbf4</srcmd5>
+    <version>13.2</version>
+    <time>1543223850</time>
+    <user>dimstar_suse</user>
+    <comment>- spice-gtk: relax lowlevelusbaccess requirements (bsc#1083025). Users already
+  need to be in the kvm group to access the setuid binary anyways.
+
+- blueman: relax standard profile rules, drop unneeded bluez.config rule (bsc#1083066)</comment>
+    <requestid>649334</requestid>
+  </revision>
+  <revision rev="151" vrev="56">
+    <srcmd5>4928a0525b73274bf40636bd23e833c0</srcmd5>
+    <version>13.2</version>
+    <time>1543827877</time>
+    <user>dimstar_suse</user>
+    <comment>- chkstat: adjust DO NOT EDIT banner in generated rules file (bsc#1099754)</comment>
+    <requestid>652137</requestid>
+  </revision>
+  <revision rev="152" vrev="57">
+    <srcmd5>81af26a7529e92dc2132fe6ba526da64</srcmd5>
+    <version>13.2</version>
+    <time>1545123414</time>
+    <user>dimstar_suse</user>
+    <comment>- tuned: add new logging actions (bsc#1118117)</comment>
+    <requestid>657130</requestid>
+  </revision>
+  <revision rev="153" vrev="58">
+    <srcmd5>d0e30d6d7fd52fd10e4ede19af954126</srcmd5>
+    <version>13.2</version>
+    <time>1545996668</time>
+    <user>dimstar_suse</user>
+    <comment>- boltd: initial whitelisting of polkit actions (bsc#1119975)</comment>
+    <requestid>660577</requestid>
+  </revision>
+  <revision rev="154" vrev="59">
+    <srcmd5>c583dfce37fd9e9827aadb0e92702112</srcmd5>
+    <version>13.2</version>
+    <time>1546946128</time>
+    <user>dimstar_suse</user>
+    <comment>- luckybackup: initial whitelisting of polkit pkexec action (bsc#1120403)</comment>
+    <requestid>662701</requestid>
+  </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>419fff7cef1d237f85165db5e8256c7b</srcmd5>
+    <version>13.2+20190128.da9c3c6</version>
+    <time>1548769549</time>
+    <user>dimstar_suse</user>
+    <comment>- whitelist newly introduced network manager wifi-scan action (bsc#1122262)
+
+- Be explicit in service file about master branch is the one in use
+  for tarball generation via revision parameter.
+
+- introduce service file for pulling new releases from git upstream instead of
+  using the old mkchanges script from the git repo (bsc#1121841). This changes
+  the version number of the package but nothing else.</comment>
+    <requestid>669129</requestid>
+  </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>4d0cab4b64829fdd5eb97f01545103fd</srcmd5>
+    <version>13.2+20190130.b2262b2</version>
+    <time>1549458294</time>
+    <user>coolo</user>
+    <comment>- Update to version 13.2+20190130.b2262b2:
+  * Whitelist additional Flatpak action metadata-update (bsc#1123653)
+  * soften authentication requirements for flatpak's appstream-update (bsc#1122116)</comment>
+    <requestid>670181</requestid>
+  </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>ee3c0b47ea181b894b1dc71db112dfdc</srcmd5>
+    <version>13.2+20190207.4d86620</version>
+    <time>1549630127</time>
+    <user>coolo</user>
+    <comment>- Update to version 13.2+20190207.4d86620:
+  * add manage-vdo privilege of udisks2 (bsc#1123747)
+  * further improve documentation in /etc/polkit-default-privs.local
+  * sort the output rules in /etc/polkit-1/rules.d/90-default-privs to
+    make the runs reproducible. (https://github.com/openSUSE/polkit-default-privs/issues/3)
+
+- Update to version 13.2+20190207.9bb8655:
+  * man pages: extend documentation to better describe syntax and profiles
+  * install README.md as part of package documentation
+  * set_polkit_default_privs: add warning about unknown profiles
+  * introduce a new polkit-default-privs easy profile</comment>
+    <requestid>672425</requestid>
+  </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>87fa5e100b27acce5843d87279de29ca</srcmd5>
+    <version>13.2+20190213.2f39f9b</version>
+    <time>1551024396</time>
+    <user>coolo</user>
+    <comment>- Update to version 13.2+20190213.2f39f9b:
+  * add whitelisting file for files installed in polkit-1/rules.d * (bsc#1125314)
+  * the new whitelisting is packaged in a separate subpackage, because it is
+    not needed for normal operation, only during OBS build time for rpmlint to
+    find it.</comment>
+    <requestid>674600</requestid>
+  </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>6f6795bcd3694d90e66e47a874c92f13</srcmd5>
+    <version>13.2+20190226.f884108</version>
+    <time>1551784524</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.2+20190226.f884108:
+  * polkit-rules-whitelist: adjust format to better support follow-up audits
+    (bsc#1125314)
+
+- Update to version 13.2+20190225.0ef150d:
+  * relax change-own-user-data action in the restrictive profile (bsc#1125110)</comment>
+    <requestid>679204</requestid>
+  </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>153a0ac0893edce42487c93c88c009be</srcmd5>
+    <version>13.2+20190306.b56445c</version>
+    <time>1552464404</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.2+20190306.b56445c:
+  * whitelisting: systemd org.freedesktop.hostname1.get-product-uuid</comment>
+    <requestid>682139</requestid>
+  </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>3e72f5e7e40e2d431dfe3d958c031003</srcmd5>
+    <version>13.2+20190315.3da47ba</version>
+    <time>1552901694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.2+20190315.3da47ba:
+  * rules.d whitelist: add systemd-network (bsc#1125438) and flatpak entries (bsc#984817)
+
+- Update to version 13.2+20190315.b904805:
+  * polkit privs whitelisting: add renamed wifi-scan -&gt; wifi.scan action (bsc#1128560)</comment>
+    <requestid>685391</requestid>
+  </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>f2e7b31f6180ff2c3136460de8e8909b</srcmd5>
+    <version>13.2+20190411.5775d58</version>
+    <time>1555488269</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.2+20190411.5775d58:
+  * gamemode: additional polkit action for gpuclockctl (bsc#1129967)
+  * NetworkManager: remove wrongly named wifi-scan rule (bsc#1128560)</comment>
+    <requestid>693130</requestid>
+  </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>4307da0179b18cc2ae05d6470eb1c623</srcmd5>
+    <version>13.2+20190503.00651e7</version>
+    <time>1557141596</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.2+20190503.00651e7:
+  * tuned: add new plugin doc actions (bsc#1131858)
+
+- Update to version 13.2+20190502.37ad64c:
+  * fwupd: add incrementally added polkit actions (bsc#1133082)
+
+- Update to version 13.2+20190430.a4836d6:
+  * backintime: add renamed gui pkexec action (bsc#1133680)
+  * backintime: add restrictive config, too</comment>
+    <requestid>700385</requestid>
+  </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>8fbe9472f0ca3a857bb92b17c4295b54</srcmd5>
+    <version>13.2+20190507.75c6d67</version>
+    <time>1557404843</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.2+20190507.75c6d67:
+  * fwupd: add one more follow-up rules for bsc#1133082</comment>
+    <requestid>701290</requestid>
+  </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>be4d4d5e9c7ace87f4c42c75ac5cec0f</srcmd5>
+    <version>13.2+20190520.a67a2af</version>
+    <time>1558515325</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.2+20190520.a67a2af:
+  * polkit rules: whitelist libvirt (bsc#1125314)
+  * rules for systemd org.freedesktop.login1.set-reboot* (bsc#1133843)</comment>
+    <requestid>704265</requestid>
+  </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>d5b914fa7372a832f865b9255700c43d</srcmd5>
+    <version>13.2+20190523.efe368f</version>
+    <time>1558938943</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.2+20190523.efe368f:
+  * polkit profiles: whitelist lightdm-gtk-greeter-settings (bsc#1135695)</comment>
+    <requestid>704959</requestid>
+  </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>4853932e7c95f9dfaaef61475440b530</srcmd5>
+    <version>13.2+20190527.64d9813</version>
+    <time>1559374916</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.2+20190527.64d9813:
+  * polkit-rules-whitelist.json: fix syntax error</comment>
+    <requestid>705593</requestid>
+  </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>a9ff32d7850cbdfcd56ad31a8e190d60</srcmd5>
+    <version>13.2+20190704.dfb36ad</version>
+    <time>1562591048</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.2+20190704.dfb36ad:
+  * libvirt rules: fix whitelisting (bsc#1125314)
+
+- Update to version 13.2+20190703.9a076dc:
+  * libvirt polkit actions: whitelisting of incremental no:no:no actions (bsc#1140151)
+  * backintime-qt: removal of old rule name (bsc#1133680)</comment>
+    <requestid>713358</requestid>
+  </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>1a85d84c2710b14d53413052e0ddf54a</srcmd5>
+    <version>13.2+20190711.953db4f</version>
+    <time>1563259071</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.2+20190711.953db4f:
+  * libvirt: add a couple of additional polkit actions (bsc#1140151)</comment>
+    <requestid>714654</requestid>
+  </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>9b91a328c74f6dbfd4e5f3d8ea6d4e81</srcmd5>
+    <version>13.2+20190806.841a06b</version>
+    <time>1565179199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721250</requestid>
+  </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>304c2fe06e3b9c8a499d15ce2d71e3f6</srcmd5>
+    <version>13.2+20190905.0016c47</version>
+    <time>1568189850</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.2+20190905.0016c47:
+  * whitelist new systemd-resolved actions (bnc#1149216)
+
+- Update to version 13.2+20190827.0cc2a82:
+  * make new systemd rules more restrictive (boo#1146300,
+    boo#1145639)
+
+- Update to version 13.2+20190823.a5f89c3:
+  * systemd-networkd (boo#1146300)
+  * systemd-portabled (boo#1145639)</comment>
+    <requestid>728566</requestid>
+  </revision>
+</revisionlist>

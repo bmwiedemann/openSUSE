@@ -1,0 +1,276 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>729520c74ef30be7edfbefdb75718349</srcmd5>
+    <version>0.120+r1</version>
+    <time>1304513694</time>
+    <user>saschpe</user>
+    <comment>Please add q4wine. The package was maintained in openSUSE:Factory:Contrib</comment>
+    <requestid>68140</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5921b1ca50e7ef92c22196cdd6f1d29c</srcmd5>
+    <version>0.120+r1</version>
+    <time>1304513708</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68140
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b0855fe8a7e824c53468f2981a801d3e</srcmd5>
+    <version>0.121</version>
+    <time>1307431902</time>
+    <user>saschpe</user>
+    <comment>update to 0.121; more verbose rpm changelog</comment>
+    <requestid>72839</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c456da774b2359d772bfdcefd4608976</srcmd5>
+    <version>0.121</version>
+    <time>1307431917</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72839
+</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>c456da774b2359d772bfdcefd4608976</srcmd5>
+    <version>0.121</version>
+    <time>1319182413</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>5943df6542925a9eedf92d1ad051f069</srcmd5>
+    <version>0.121</version>
+    <time>1324458203</time>
+    <user>coolo</user>
+    <comment>clean up spec</comment>
+    <requestid>96850</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>d132db69740b53b87d681ff54ce37f7d</srcmd5>
+    <version>0.121</version>
+    <time>1332752741</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 110923 from dimstar)</comment>
+    <requestid>110932</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d4bd2c2e68d9d2fca0136d63fd0e4ad1</srcmd5>
+    <version>0.999.rc7</version>
+    <time>1340033669</time>
+    <user>coolo</user>
+    <comment>update to 0.999-rc7</comment>
+    <requestid>125240</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>d4bd2c2e68d9d2fca0136d63fd0e4ad1</srcmd5>
+    <version>0.999.rc7</version>
+    <time>1340184122</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7dc379354b4a07bcadbd5e8ec2125509</srcmd5>
+    <version>0.999.rc8</version>
+    <time>1340894660</time>
+    <user>coolo</user>
+    <comment>update to 0.999-rc8</comment>
+    <requestid>126377</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>7dc379354b4a07bcadbd5e8ec2125509</srcmd5>
+    <version>0.999.rc8</version>
+    <time>1359110254</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>08f691da1e7cf255e031d20038e0d0f9</srcmd5>
+    <version>1.0+r1</version>
+    <time>1362341304</time>
+    <user>coolo</user>
+    <comment>update to 1.0+r1</comment>
+    <requestid>157078</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ef5761d3f8051c07e6a5fc36cc74dd84</srcmd5>
+    <version>1.0+r2</version>
+    <time>1363340888</time>
+    <user>coolo</user>
+    <comment>update to 1.0+r2</comment>
+    <requestid>159274</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b137bbe0ab9a5f15c3d8a1e5cea9bbc0</srcmd5>
+    <version>1.0+r3</version>
+    <time>1367934112</time>
+    <user>coolo</user>
+    <comment>update to 1.0+r3</comment>
+    <requestid>174652</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>8e79d853c4067182e0f51c103aaaef9a</srcmd5>
+    <version>1.0+r3</version>
+    <time>1375901644</time>
+    <user>coolo</user>
+    <comment>fix build with updated cmake</comment>
+    <requestid>186118</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>8e79d853c4067182e0f51c103aaaef9a</srcmd5>
+    <version>1.0+r3</version>
+    <time>1379664404</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>74a9c098c5ff8e2b6f2305e264986fcd</srcmd5>
+    <version>1.1</version>
+    <time>1384501154</time>
+    <user>scarabeus_factory</user>
+    <comment>update to 1.1</comment>
+    <requestid>206938</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f5082b5de8d4f96540b951cb99afa268</srcmd5>
+    <version>1.1+r1</version>
+    <time>1386528559</time>
+    <user>coolo</user>
+    <comment>update to 1.1+r1</comment>
+    <requestid>209657</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e78ade6ef2ebe12d3a0be36a8909d4bb</srcmd5>
+    <version>1.1+r2</version>
+    <time>1388396293</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>212419</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>e78ade6ef2ebe12d3a0be36a8909d4bb</srcmd5>
+    <version>1.1+r2</version>
+    <time>1409303125</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>c9a71a32dffb9f0c2593571d7b2221e8</srcmd5>
+    <version>1.1+r2</version>
+    <time>1429346476</time>
+    <user>dimstar_suse</user>
+    <comment>add q4wine-fix-documentation-url.patch</comment>
+    <requestid>297854</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ddc31a82f85cd060235fe88c2634d803</srcmd5>
+    <version>1.2+r1</version>
+    <time>1452611568</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.2+r1</comment>
+    <requestid>352765</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>60a2ff24dc87f2179c1385e856805e20</srcmd5>
+    <version>1.2+r2</version>
+    <time>1453799706</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>355472</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9fdc6bad381acceafd4fba1765534c55</srcmd5>
+    <version>1.3</version>
+    <time>1457533049</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.3</comment>
+    <requestid>367797</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>00d09934849f9612cff73970bf0ce884</srcmd5>
+    <version>1.3</version>
+    <time>1458228975</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>373887</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b150636b29cf325691a26e3b73a2469f</srcmd5>
+    <version>1.3.1</version>
+    <time>1470217465</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415991</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e189d4f8ee01345799b2e5330470b579</srcmd5>
+    <version>1.3.2</version>
+    <time>1473103369</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424519</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>7794b09aaab353b748ae9599406231d4</srcmd5>
+    <version>1.3.3</version>
+    <time>1476351128</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434376</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4217f4b9c8cf9e53cc27539288900be6</srcmd5>
+    <version>1.3.4</version>
+    <time>1484041696</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448842</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ad6f244cf3b11a4078c3b8cf25238dcf</srcmd5>
+    <version>1.3.5</version>
+    <time>1495034321</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494780</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c089851919db2ac229a9e68de459c17e</srcmd5>
+    <version>1.3.6</version>
+    <time>1512386179</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>547616</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>85963a61149dc6c69d920adc47e45956</srcmd5>
+    <version>1.3.7</version>
+    <time>1525256326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602601</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>2a4e5709bc3f340393bca5b6f1e41458</srcmd5>
+    <version>1.3.7</version>
+    <time>1529919545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618381</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>fc18f4f0e4b392b2133d3f213ffadd2b</srcmd5>
+    <version>1.3.10</version>
+    <time>1538502476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639366</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3db33c9937d3ee8848ece22da06fa960</srcmd5>
+    <version>1.3.11</version>
+    <time>1546946925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663182</requestid>
+  </revision>
+</revisionlist>

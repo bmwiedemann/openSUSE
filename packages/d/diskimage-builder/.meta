@@ -1,0 +1,5 @@
+<package name="diskimage-builder" project="openSUSE:Factory">
+  <title>Image building tools for OpenStack http://openstack.org</title>
+  <description>diskimage-builder is a flexible suite of components for building a wide-range of disk images, filesystem images and ramdisk images for use with OpenStack.</description>
+  <devel project="devel:languages:python" package="diskimage-builder"/>
+</package>

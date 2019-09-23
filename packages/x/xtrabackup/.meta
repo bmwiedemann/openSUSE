@@ -1,0 +1,8 @@
+<package name="xtrabackup" project="openSUSE:Factory">
+  <title>Online backup for MySQL / InnoDB</title>
+  <description>Percona XtraBackup is an online (non-blocking) backup solution for InnoDB engines. It features uninterrupted transaction processing during backups for InnoDB, but can also backup MyISAM tables.
+
+</description>
+  <devel project="server:database" package="xtrabackup"/>
+  <url>http://www.percona.com/software/percona-xtrabackup/</url>
+</package>

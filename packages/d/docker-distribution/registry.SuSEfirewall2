@@ -1,0 +1,5 @@
+## Name: Docker Registry
+## Description: Open port for Docker Registry
+
+# space separated list of allowed TCP ports
+TCP="5000"

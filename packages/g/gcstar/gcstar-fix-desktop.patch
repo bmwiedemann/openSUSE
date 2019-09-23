@@ -1,0 +1,16 @@
+Index: gcstar/share/applications/gcstar.desktop
+===================================================================
+--- gcstar.orig/share/applications/gcstar.desktop
++++ gcstar/share/applications/gcstar.desktop
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+ Version=1.0
+-Name=GCstar Collections Manager
+-Name[es]=Gestor de colecciones GCstar
+-Name[fr]=GCstar gestionnaire de collections
++Name=GCstar
++Name[es]=GCstar
++Name[fr]=GCstar
+ GenericName=Personal Collections Manager
+ Comment=Manage your collections of movies, games, books, music and more
+ Comment[en]=Manage your collections of movies, games, books, music and more

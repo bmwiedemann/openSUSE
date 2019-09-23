@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Mon Dec  4 20:14:02 UTC 2017 - crrodriguez@opensuse.org
+
+- BuildRequire pkgconfig(x11) and pkgconfig(xmu), not
+  xorg-x11-devel.
+
+-------------------------------------------------------------------
+Thu Dec  1 16:05:58 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Mar 13 17:41:35 CET 2009 - crrodriguez@suse.de
+
+- import patches from debian, fixes 64 issues [bnc#480034] 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:50 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Feb 16 15:22:30 CET 2005 - hvogel@suse.de
+
+- update to version 1.07
+
+-------------------------------------------------------------------
+Tue Jan 11 15:10:54 CET 2005 - hvogel@suse.de
+
+- update to version 1.06 which includes
+   - mmj's patch
+   - support for WM_CLASS
+   - ability to address the currently active window
+
+-------------------------------------------------------------------
+Mon Feb 23 19:46:23 CET 2004 - mmj@suse.de
+
+- sizeof(Window) != 4 on all archs ...
+
+-------------------------------------------------------------------
+Mon Feb 23 12:27:08 CET 2004 - mmj@suse.de
+
+- Update to wmctrl-1.05
+
+-------------------------------------------------------------------
+Fri Nov  7 14:36:21 CET 2003 - mmj@suse.de
+
+- Initial version, wmctrl-1.0.4
+
+-------------------------------------------------------------------

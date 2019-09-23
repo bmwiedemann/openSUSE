@@ -1,0 +1,23 @@
+From 86b4fbedfb6919fab4e3ffe21536c5df2633c57b Mon Sep 17 00:00:00 2001
+From: "Christopher J. Markiewicz" <markiewicz@stanford.edu>
+Date: Sat, 15 Jun 2019 14:28:04 +0200
+Subject: [PATCH] FIX/TEST: Numpy casting rules have gotten more strict, raise
+ different exception
+
+---
+ nibabel/tests/test_volumeutils.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/nibabel/tests/test_volumeutils.py b/nibabel/tests/test_volumeutils.py
+index 06df9eb6a..fcdc5c271 100644
+--- a/nibabel/tests/test_volumeutils.py
++++ b/nibabel/tests/test_volumeutils.py
+@@ -700,7 +700,7 @@ def test_a2f_non_numeric():
+     # Some versions of numpy can cast structured types to float, others not
+     try:
+         arr.astype(float)
+-    except ValueError:
++    except (TypeError, ValueError):
+         pass
+     else:
+         back_arr = write_return(arr, fobj, float)

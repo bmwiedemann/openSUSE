@@ -1,0 +1,22 @@
+--- a/xl/main.py
++++ b/xl/main.py
+@@ -393,7 +393,7 @@ class Exaile(object):
+         splash = None
+ 
+         if self.options.StartGui:
+-            if settings.get_option('gui/use_splash', True):
++            if settings.get_option('gui/use_splash', False):
+                 from xlgui.widgets.info import Splash
+ 
+                 splash = Splash()
+--- a/xlgui/preferences/appearance.py
++++ b/xlgui/preferences/appearance.py
+@@ -47,7 +47,7 @@ class ShowInfoAreaCoversPreference(widge
+ 
+ 
+ class SplashPreference(widgets.CheckPreference):
+-    default = True
++    default = False
+     name = 'gui/use_splash'
+ 
+ 

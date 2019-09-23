@@ -1,0 +1,22 @@
+#!/bin/bash
+CFG="/etc/tayga.conf"
+IP4_SET="$(   sed -n 's|[[:blank:]]*dynamic-pool[[:blank:]]\+\([0-9./]\+\)[[:blank:]]*|\1|p'    ${CFG} | sed 's|#.*||')"
+IP6_SET="$(   sed -n 's|[[:blank:]]*prefix[[:blank:]]\+\([0-9a-fA-F:/]\+\)[[:blank:]]*|\1|p'    ${CFG} | sed 's|#.*||')"
+IP4="$(       sed -n 's|[[:blank:]]*ipv4-addr[[:blank:]]\+\([0-9.]\+\)[[:blank:]]*|\1|p'        ${CFG} | sed 's|#.*||')"
+IP6="$(       sed -n 's|[[:blank:]]*ipv6-addr[[:blank:]]\+\([0-9:a-fA-F]\+\)[[:blank:]]*|\1|p'  ${CFG} | sed 's|#.*||')"
+IF="$(        sed -n 's|[[:blank:]]*tun-device[[:blank:]]\+\([0-9a-zA-Z/]\+\)[[:blank:]]*|\1|p' ${CFG} | sed 's|#.*||')"
+OUT="$(ip r | sed -n 's|default.*dev[[:blank:]]\([0-9a-zA-Z/]\+\)|\1|p')"
+
+tayga --mktun --config ${CFG}
+ip link set ${IF} up
+ip addr add ${IP4} dev ${IF}                       # local endpoint of the tunnel
+[ -z "${IP6}" ] || ip addr add ${IP6} dev ${IF}    # local IPv6
+ip route add ${IP4_SET} dev ${IF}                  # our IPv4
+ip route add ${IP6_SET} dev ${IF}                  # our IPv6
+
+# Setup NAT
+iptables -t nat -I POSTROUTING -s ${IP4_SET} -o ${OUT} -j MASQUERADE
+iptables -I FORWARD -i ${OUT} -o ${IF} -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -I FORWARD -i ${IF} -o ${OUT} -j ACCEPT
+ip6tables -I FORWARD -s ${IP6_SET} -j ACCEPT
+ip6tables -I INPUT -s ${IP6_SET} -j ACCEPT

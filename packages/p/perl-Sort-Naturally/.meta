@@ -1,0 +1,9 @@
+<package name="perl-Sort-Naturally" project="openSUSE:Factory">
+  <title>Sort lexically, but sort numeral parts numerically</title>
+  <description>This module exports two functions, nsort and ncmp; they are used in
+implementing my idea of a &quot;natural sorting&quot; algorithm. Under natural
+sorting, numeric substrings are compared numerically, and other word-
+characters are compared lexically.</description>
+  <devel project="devel:languages:perl" package="perl-Sort-Naturally"/>
+  <url>http://search.cpan.org/dist/Sort-Naturally/</url>
+</package>

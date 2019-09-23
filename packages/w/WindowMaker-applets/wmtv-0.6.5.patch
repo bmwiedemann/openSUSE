@@ -1,0 +1,45 @@
+--- Makefile
++++ Makefile
+@@ -4,11 +4,12 @@
+ INCDIR	=	-I/usr/X11R6/include
+ LIBDIR	=	-L/usr/X11R6/lib
+ LIBS	=	-lXpm -lXext -lX11 -lXxf86dga -lXxf86vm
++CFLAGS	=	-O2 -Wall
+ OBJS	=	src/wmtv.o \
+ 			src/wmgeneral/wmgeneral.o \
+ 
+ .c.o:
+-	cc -c -O2 -Wall -D$(shell echo `uname -s`) $< -o $*.o $(INCDIR)
++	cc -c $(CFLAGS) -D$(shell echo `uname -s`) $< -o $*.o $(INCDIR)
+ 
+ all: wmtv
+ 
+--- src/wmtv.c
++++ src/wmtv.c
+@@ -987,7 +987,7 @@
+ 	int		key = 0;
+ 
+ 	if ((fp = fopen(filename, "r")) == NULL) {
+-		fprintf(stderr, "wmtv: %s\n", strerror(errno));
++		fprintf(stderr, "wmtv: %s: %s\n", filename, strerror(errno));
+ 		norcfile = 1;
+ 		return;
+ 	}
+@@ -1025,7 +1025,7 @@
+ 	int i = 0;
+ 
+ 	if ((fp = fopen(filename, "r")) == NULL) {
+-		fprintf(stderr, "wmtv: %s\n", strerror(errno));
++		fprintf(stderr, "wmtv: %s: %s\n", filename, strerror(errno));
+ 		norcfile = 1;
+ 		return;
+ 	}
+@@ -1083,7 +1083,7 @@
+ 	FILE *fp;
+ 
+ 	if ((fp = fopen(filename, "r+")) == NULL) {
+-		fprintf(stderr, "wmtv: %s\n", strerror(errno));
++		fprintf(stderr, "wmtv: %s: %s\n", filename, strerror(errno));
+ 		return;
+ 	}
+ 

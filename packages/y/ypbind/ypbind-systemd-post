@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# ypbind-domain
+#
+# description: This is part of former ypbind init script, which is used 
+#              to fix problems with the init scripts continuing even when 
+#              we are really not bound yet to a server, and then things
+#              that need NIS fail.
+#	       Relax this test a little, wait some time, but don't abort
+#              if we don't find a server, maybe it works later.
+#
+
+# Only check if we don't use NetworkManager
+if [ "$YPBIND_DBUS" = "no" ]; then
+   notfound=1
+   for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15; do
+      ypwhich &>/dev/null && { notfound=0 ; break; };
+      echo -n " ."
+      sleep 1;
+   done
+   if [ $notfound -eq 1 ]; then
+      echo -n " ${warn}No NIS server found${norm}";
+   fi
+fi
+exit 0

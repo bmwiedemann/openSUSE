@@ -1,0 +1,81 @@
+% deco-marks.fmt
+
+% This file provides position marks
+
+% == PostScript routines ==
+
+% -- write big letters (position marks) above the staff
+% (from Guido Gonzato)
+postscript /bigl{     % usage: str x y bigl
+postscript	/Times-Roman 18 selectfont
+postscript	4 add M cshow gsave
+postscript	0.7 setlinewidth 1 -2 RM 
+postscript	0 16 RL -16 0 RL
+postscript	0 -16 RL 16 0 RL
+postscript	stroke grestore}!
+% (from Jonas Petersson)
+postscript /biglc {   % usage: str x y biglc
+postscript    2 copy 5 2 roll /Times-Bold 22 selectfont
+postscript    6 add M cshow gsave
+postscript    1 setlinewidth 13 add newpath
+postscript    12 0 360 arc
+postscript    stroke grestore}!
+
+% == Decoration definitions ==
+
+% -- big letters in a square
+deco a 3 bigl 20 0 0 A
+deco b 3 bigl 20 0 0 B
+deco c 3 bigl 20 0 0 C
+deco d 3 bigl 20 0 0 D
+deco e 3 bigl 20 0 0 E
+deco f 3 bigl 20 0 0 F
+deco g 3 bigl 20 0 0 G
+deco h 3 bigl 20 0 0 H
+deco i 3 bigl 20 0 0 I
+deco j 3 bigl 20 0 0 J
+deco k 3 bigl 20 0 0 K
+deco l 3 bigl 20 0 0 L
+deco m 3 bigl 20 0 0 M
+deco n 3 bigl 20 0 0 N
+deco o 3 bigl 20 0 0 O
+deco p 3 bigl 20 0 0 P
+deco q 3 bigl 20 0 0 Q
+deco r 3 bigl 20 0 0 R
+deco s 3 bigl 20 0 0 S
+deco t 3 bigl 20 0 0 T
+deco u 3 bigl 20 0 0 U
+deco v 3 bigl 20 0 0 V
+deco w 3 bigl 20 0 0 W
+deco x 3 bigl 20 0 0 X
+deco y 3 bigl 20 0 0 Y
+deco z 3 bigl 20 0 0 Z
+% -- big letters in a circle
+deco ac 3 biglc 20 0 0 A
+deco bc 3 biglc 20 0 0 B
+deco cc 3 biglc 20 0 0 C
+deco dc 3 biglc 20 0 0 D
+deco ec 3 biglc 20 0 0 E
+deco fc 3 biglc 20 0 0 F
+deco gc 3 biglc 20 0 0 G
+deco hc 3 biglc 20 0 0 H
+deco ic 3 biglc 20 0 0 I
+deco jc 3 biglc 20 0 0 J
+deco kc 3 biglc 20 0 0 K
+deco lc 3 biglc 20 0 0 L
+deco mc 3 biglc 20 0 0 M
+deco nc 3 biglc 20 0 0 N
+deco oc 3 biglc 20 0 0 O
+deco pc 3 biglc 20 0 0 P
+deco qc 3 biglc 20 0 0 Q
+deco rc 3 biglc 20 0 0 R
+deco sc 3 biglc 20 0 0 S
+deco tc 3 biglc 20 0 0 T
+deco uc 3 biglc 20 0 0 U
+deco vc 3 biglc 20 0 0 V
+deco wc 3 biglc 20 0 0 W
+deco xc 3 biglc 20 0 0 X
+deco yc 3 biglc 20 0 0 Y
+deco zc 3 biglc 20 0 0 Z
+
+% -- End of file deco-marks.fmt

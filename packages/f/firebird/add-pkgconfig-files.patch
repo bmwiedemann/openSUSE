@@ -1,0 +1,41 @@
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Tue, 12 Jun 2012 14:32:44 +0200
+Subject: add pkgconfig files
+
+---
+ builds/install/arch-specific/linux/misc/fbclient.pc.in | 10 ++++++++++
+ configure.ac                                           |  1 +
+ 2 files changed, 11 insertions(+)
+ create mode 100644 builds/install/arch-specific/linux/misc/fbclient.pc.in
+
+diff --git a/builds/install/arch-specific/linux/misc/fbclient.pc.in b/builds/install/arch-specific/linux/misc/fbclient.pc.in
+new file mode 100644
+index 000000000000..d49fdc5821c5
+--- /dev/null
++++ b/builds/install/arch-specific/linux/misc/fbclient.pc.in
+@@ -0,0 +1,10 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@FB_LIBDIR@
++includedir=@FB_INCDIR@
++
++Name: fbclient
++Description: Firebird client library
++Version: @FIREBIRD_VERSION@
++Cflags: -I${includedir}/firebird
++Libs: -L${libdir} -lfbclient
+diff --git a/configure.ac b/configure.ac
+index 3e65f10d2a34..c7abfa06d468 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1215,6 +1215,7 @@ case "$PLATFORM" in
+         gen/install/misc/firebird.init.d.gentoo:builds/install/arch-specific/linux/firebird.init.d.gentoo.in
+         gen/install/misc/firebird.init.d.slackware:builds/install/arch-specific/linux/firebird.init.d.slackware.in
+         gen/install/misc/rc.config.firebird:builds/install/arch-specific/linux/rc.config.firebird.in
++        gen/install/misc/fbclient.pc:builds/install/arch-specific/linux/misc/fbclient.pc.in
+         gen/Release/firebird/bin/linuxLibrary.sh:builds/install/arch-specific/linux/linuxLibrary.sh.in
+         gen/install/misc/firebird-classic@.service:builds/install/arch-specific/linux/firebird-classic.service.in
+         gen/install/misc/firebird-classic.socket:builds/install/arch-specific/linux/firebird-classic.socket.in
+-- 
+2.8.1
+

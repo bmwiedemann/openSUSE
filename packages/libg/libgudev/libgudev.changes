@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Sat Aug  3 18:38:01 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 233:
+  + Require glib 2.38.
+  + Small documentation updates.
+  + Remove gnome-common build dependency.
+- Use modern macros.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:35:11 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Sep  1 10:35:17 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 232:
+  + Fix crash on plenty of architectures in the test suite.
+  + Add g_autoptr automatic clean up for libgudev objects.
+- Tweak package description a bit.
+
+-------------------------------------------------------------------
+Mon Feb 13 18:44:18 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 231:
+  + Fix a bug in the enumerator to ensure that client subsystems
+    are implicitly matched.
+  + Require a newer GLib to simplify some code.
+- Add disabled pkgconfig(umockdev-1.0) BuildRequires, new
+  optional dependency, that is enabled by default upstream, but
+  unfortunatly not yet available in openSUSE.
+- Following the above: pass --disable-umockdev to configure.
+
+-------------------------------------------------------------------
+Tue Mar 22 14:42:48 UTC 2016 - fbui@suse.com
+
+- Import libgudev from Factory to SLE (fate#320658):
+  new versions of systemd doesn't ship libgudev anymore and a
+  dedicated package has been created and should be used instead.
+
+-------------------------------------------------------------------
+Fri Sep 25 08:38:43 UTC 2015 - dimstar@suse.com
+
+- Enable build (dummy change for repo_checker, as libgudev was
+  wrongly already checked in to openSUSE:Factory, but has since
+  been disabled). With this, we can activate the Staging properly.
+
+-------------------------------------------------------------------
+Fri Jun 19 19:52:24 UTC 2015 - jengelh@inai.de
+
+- Transplant baselibs.conf from systemd.spec. Update package
+  metadata.
+
+-------------------------------------------------------------------
+Tue Jun  2 11:04:22 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 230:
+  + Bump version number so the package will supercede any gudev
+    sub-packages provided via systemd. We intend to drop gudev from
+    systemd-221, but lets be safe and just bump it to 230 now.
+
+-------------------------------------------------------------------
+Tue May 19 16:02:57 UTC 2015 - crrodriguez@opensuse.org
+
+- Split from systemd/udev.
+

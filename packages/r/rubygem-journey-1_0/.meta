@@ -1,0 +1,5 @@
+<package name="rubygem-journey-1_0" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-journey-1_0"/>
+</package>

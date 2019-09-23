@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>294f5fb2cc6c0685c4653afd857ddd90</srcmd5>
+    <version>1.2.19</version>
+    <time>1391604393</time>
+    <user>coolo</user>
+    <comment>Libreoffice-4.2 unbundling</comment>
+    <requestid>214271</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>294f5fb2cc6c0685c4653afd857ddd90</srcmd5>
+    <version>1.2.19</version>
+    <time>1409303780</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c24f4c0cac29f08ef464b2d8fadce5fb</srcmd5>
+    <version>1.2.20</version>
+    <time>1441726756</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328802</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5ac5e0cf04e369e6d533ef7ccb7e4184</srcmd5>
+    <version>1.2.22</version>
+    <time>1464484353</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.2.22:
+  * see the ChangeLog for most detailed output
+  * openssl 1.1 support
+  * Few features from libreoffice for integrated
+  * Run the testsuite</comment>
+    <requestid>397925</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>77cfbae5f83e62de93198bdac402eeaf</srcmd5>
+    <version>1.2.22</version>
+    <time>1467205819</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>404493</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5e22956873b6d207f98aa69d34754d55</srcmd5>
+    <version>1.2.23</version>
+    <time>1480342272</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.2.23:
+  * Full support for OpenSSL 1.1.0
+  * Several other small fixes</comment>
+    <requestid>442324</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>13ffcc07fddd192a7eebeff50f678e2a</srcmd5>
+    <version>1.2.23</version>
+    <time>1491469234</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482526</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>46da73a341144b4e7f208134abae6adf</srcmd5>
+    <version>1.2.24</version>
+    <time>1495637187</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489757</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ef4e82530fce3608938bdd89b880339a</srcmd5>
+    <version>1.2.25</version>
+    <time>1512291969</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.2.25:
+  * Various small fixes
+  * Coverity cleanups
+  * Removed support for old openssl</comment>
+    <requestid>546664</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>61e2aaa9ff900c5611cea2840249c16b</srcmd5>
+    <version>1.2.26</version>
+    <time>1530740850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614381</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>05699611478857a6afaf41743e3d1f45</srcmd5>
+    <version>1.2.26</version>
+    <time>1535370394</time>
+    <user>dimstar_suse</user>
+    <comment>- Add rplintrc to avoid bogus errors:
+  * xmlsec1-rpmlintrc
+
+- Fixed (bsc#1104876).  Added: Requires: %{libname} = %{version} to each module
+  in the spec file. This will ensure that when one of the modules is installed
+  the corresponding version of libxmlsec1-1 will also be installed/upgraded.</comment>
+    <requestid>629534</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>59dbf324b012947f39e968521f478b7c</srcmd5>
+    <version>1.2.28</version>
+    <time>1556621752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.28:
+  * Added BoringSSL support (chenbd).
+  * Added gnutls-3.6.x support (alonbl).
+  * Added DSA and ECDSA key size getter for MSCNG (vmiklos).
+  * Added --enable-mans configuration option (alonbl).
+  * Added coninuous build integration for MacOSX (vmiklos).
+  * Several other small fixes (more details).
+
+- Make sure to recommend at least one backend when you install
+  just xmlsec1
+
+- Drop the gnutls backend as based on the tests it is quite borked:
+  * We still have nss and openssl backend for people to use
+
+- Version update to 1.2.27:
+  * Added AES-GCM support for OpenSSL and MSCNG (snargit).
+  * Added DSA-SHA256 and ECDSA-SHA384 support for NSS (vmiklos).
+  * Added RSA-OAEP support for MSCNG (vmiklos).
+  * Continuous build integration in Travis and Appveyor.
+  * Several other small fixes (more details).</comment>
+    <requestid>697800</requestid>
+  </revision>
+</revisionlist>

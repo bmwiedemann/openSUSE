@@ -1,0 +1,6 @@
+<package name="meterbridge" project="openSUSE:Factory">
+  <title>A Meterbridge for the JACK Audio System</title>
+  <description>Meterbridge is a JACK (JACK Audio Connection Kit) client for
+visualizing audio signals.</description>
+  <devel project="multimedia:apps" package="meterbridge"/>
+</package>

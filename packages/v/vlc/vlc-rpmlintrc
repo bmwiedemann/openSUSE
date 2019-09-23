@@ -1,0 +1,6 @@
+# according to the developers this is a false positive
+addFilter("libvlccore.* shared-lib-calls-exit")
+
+# there's a good reason for packaging vlc and vlc.desktop separately
+addFilter("desktopfile-without-binary")
+

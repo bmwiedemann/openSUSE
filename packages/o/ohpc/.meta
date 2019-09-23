@@ -1,0 +1,7 @@
+<package name="ohpc" project="openSUSE:Factory">
+  <title>OpenHPC Compatibility Project</title>
+  <description>Provide files which are required for compatibility with 
+  the OpenHPC project</description>
+  <devel project="network:cluster:ohpc" package="ohpc"/>
+  <url>https://openhpc.community</url>
+</package>

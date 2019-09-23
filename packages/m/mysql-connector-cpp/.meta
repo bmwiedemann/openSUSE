@@ -1,0 +1,20 @@
+<package name="mysql-connector-cpp" project="openSUSE:Factory">
+  <title>MySQL Connector/C++: Standardized database driver for C++ development</title>
+  <description>MySQL Connector/C++ is a MySQL database connector for C++ development. The
+MySQL driver for C++ can be used to connect to MySQL from C++ applications. The
+driver mimics the JDBC 4.0 API. It implements a significant subset of JDBC 4.0. 
+
+The Driver for C++ is designed to work best with MySQL 5.1 or later. Note - its
+full functionality is not available when connecting to MySQL 5.0. You cannot
+connect to MySQL 4.1 or earlier.
+
+Using MySQL Connector/C++ instead of the MySQL C API (MySQL Client Library)
+offers the following advantages for C++ users:
+
+    * Convenience of pure C++ - no C function calls
+    * Support of a well designed API - JDBC 4.0
+    * Support of a commonly known and well documented API - JDBC 4.0
+    * Support of the object oriented programming paradigma
+    * Shorter development times </description>
+  <devel project="server:database" package="mysql-connector-cpp"/>
+</package>

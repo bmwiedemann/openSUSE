@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/golang/protobuf</param>
+              <param name="changesrevision">aa810b61a9c79d51363740d207bb46cf8e620ed5</param></service></servicedata>

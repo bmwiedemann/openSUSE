@@ -1,0 +1,211 @@
+-------------------------------------------------------------------
+Sun May 19 10:48:23 UTC 2019 - wbauer@tmo.at
+
+- Update to 1.8.1:
+  * Fix enabling of delta movement (kde#407562)
+
+-------------------------------------------------------------------
+Tue May 14 10:22:41 UTC 2019 - wbauer@tmo.at
+
+- Update to 1.8:
+  * Ported to Qt5/KDE Frameworks 5
+  * Bugfix: Show Identical files setting not applied after rescan
+  * Change parameter errors to use dialog on Linux as well as
+    console output
+  * Don't sort twice when sorting in reverse order
+  * Fix memory leak introduced in 0.9.91
+  * Implement Cut/Paste
+  * Don't enable "Choose C for Everything" on two way merge
+  * Cleanup code
+- Update package summary and description
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Dec  8 19:58:01 UTC 2016 - fabian@ritter-vogt.de
+
+- Revert kde4_runtime_requires change
+
+-------------------------------------------------------------------
+Tue Nov 29 07:20:36 UTC 2016 - olaf@aepfle.de
+
+- Expand macro kde4_runtime_requires only when its available
+  to fix quilt setup
+
+-------------------------------------------------------------------
+Wed Jun 24 08:08:27 UTC 2015 - wbauer@tmo.at
+
+- update to 0.9.98:
+  * Text rendering now with QTextLayout fixes the following issues
+    + Correct handling for variable width fonts.
+    + Corrected display of highlighted text with Qt4.8.x on Ubuntu and Mac.
+    + Improved handling of texts with both right to left and left to right languages (mixed Arabic and western texts).
+    + Improved handling of Chinese and Japanese.
+    + Whitespace characters are now shown as dots for spaces and arrows for tabs, and not only in differences.
+  * Bugfixes.
+- removed kdiff3-fix-save-relative-path.patch (included upstream)
+
+-------------------------------------------------------------------
+Fri Jul 26 01:08:57 UTC 2013 - hrvoje.senjan@gmail.com
+
+- BuildRequire only libkde4-devel, instead of kdebase4-workspace-devel
+
+-------------------------------------------------------------------
+Thu May  2 12:47:34 BST 2013 - aspiers@suse.com
+
+- Add kdiff3-fix-save-relative-path.patch: fix saving merged
+  files.  Patch is from: https://bugs.archlinux.org/task/31813
+  and is already upstream.
+
+-------------------------------------------------------------------
+Tue Nov 20 16:10:19 UTC 2012 - nico.kruber@gmail.com
+
+- Fix the SLES build (%make_install is not expanded on SLES)
+
+-------------------------------------------------------------------
+Tue Nov 20 16:08:20 UTC 2012 - nico.kruber@gmail.com
+
+- update to 0.9.97:
+  * Memory usage optimized for comparison of large directories.
+  * In overview for two way diff show if only one side contains text.
+  * If text is selected in either input or output window use that in Find dialog.
+  * Command line option --cs doesn't change the config value permanently anymore.
+  * Windows 64 bit specific installer.
+  * Bugfixes.
+- removed libkdiff3part.so (not build anymore)
+
+-------------------------------------------------------------------
+Wed Oct 12 00:28:44 CEST 2011 - dmueller@suse.de
+
+- update to 0.9.96:
+  * KDiff3FileItemActionPlugin : Context menu that also works in dolphin (for KDE>=4
+  * Parser for preprocessor commands. (Allows single apostrophs ')
+  * Fix crash on A/B-overview (infinite recursion)
+  * Fix clearcase temp files not deleted problem on windows
+  * KDiff3 plugin: When launching KDiff3 konqueror isn't blocked anymore
+  * String corrections (Frederik Schwarzer)
+  * Fixed writing to KIO.
+  * Fixed white space merge default options
+
+------------------------------------------------------------------- 
+Sat Sep 17 21:04:19 UTC 2011 - toddrme2178@gmail.com
+
+- Removed checks for obsolete openSUSE versions (fix for RPMLINT warnings)
+- Added check for duplicate files (fix for RPMLINT warning)
+- Cleaned up spec file formatting
+
+-------------------------------------------------------------------
+Tue Aug 10 09:34:13 UTC 2010 - beineri@opensuse.org
+
+- updated tarball to fix build
+
+-------------------------------------------------------------------
+Mon Mar  8 10:10:17 UTC 2010 - coolo@novell.com
+
+- do not package docs in both subpackages
+
+-------------------------------------------------------------------
+Wed May 20 12:08:02 CEST 2009 - beineri@opensuse.org
+
+- require kdiff3-lang
+
+-------------------------------------------------------------------
+Fri Mar  6 12:15:12 CET 2009 - wstephenson@suse.de
+
+- update to 0.9.95:
+  * Show line end style for each file
+  * Translation update
+  * Bugfixes
+
+-------------------------------------------------------------------
+Fri Feb 20 18:29:46 CET 2009 - dmueller@suse.de
+
+- update to 0.9.94:
+  * ported to KDE4
+  * various smaller fixes
+
+-------------------------------------------------------------------
+Sat Feb 14 12:34:47 CET 2009 - coolo@suse.de
+
+- call kde_post_install
+
+-------------------------------------------------------------------
+Mon Nov 17 09:58:09 CET 2008 - stbinner@suse.de
+
+- install translations for kdiff3 menu plugin (bnc#442527)
+
+-------------------------------------------------------------------
+Wed Jun 13 23:36:35 CEST 2007 - stbinner@suse.de
+
+- running fdupes makes kdiff3.rpm 348KB smaller
+
+-------------------------------------------------------------------
+Sun Apr 15 22:51:34 CEST 2007 - stbinner@suse.de
+
+- update to version 0.9.92:
+   * KDE-Konqueror plugin: Launch KDiff3 from Konqueror.
+   * Temp file names use process id in file name for several instances.
+   * New File comparison mode: Trust the size and date, but use
+     binary comparison if date doesn't match (unsafe)
+   * Open dialog also shows current dirs in directory comparison mode.
+   * New option for history merge: Max number of history entries
+   * New option "Auto save and quit on merge without conflicts"
+   * Several Bugfixes
+
+-------------------------------------------------------------------
+Sun Nov  5 10:20:48 CET 2006 - stbinner@suse.de
+
+- update to version 0.9.91:
+   * Unicode autodetection based on byte-order-mark.
+   * Fix for crash after double click below last line
+   * Saving of maximized window-state (Patch by Robert Vock)
+   * Separated Merge-options in own tab
+   * When pasting multiple lines into openfile dialog only first
+     line is kept
+   * Drawing in directory view fixed.
+   * When specifying a separate output dir then for equal files a 
+     copy operation will also be offered.
+
+-------------------------------------------------------------------
+Wed May 24 18:57:23 CEST 2006 - adrian@suse.de
+
+- fix build for < 10.1
+
+-------------------------------------------------------------------
+Tue May 16 09:22:18 CEST 2006 - stbinner@suse.de
+
+- update to version 0.9.90
+   * Fixed KIO-problems of type "File exists" with tempfiles.
+   * Fix for manual alignment with 3 files which caused crash.
+   * Preserve executable bit when overwriting an existing file.
+   * Documentation and translations updated.
+
+-------------------------------------------------------------------
+Mon Apr 10 11:00:58 CEST 2006 - stbinner@suse.de
+
+- update to version 0.9.89
+
+-------------------------------------------------------------------
+Wed Jan 25 21:28:12 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct 25 18:29:02 CEST 2005 - stbinner@suse.de
+
+- update to version 0.9.88 (unicode support)
+
+-------------------------------------------------------------------
+Thu Feb 17 13:36:38 CET 2005 - adrian@suse.de
+
+- menu entry moved to xdg dir
+
+-------------------------------------------------------------------
+Sat Sep  4 11:44:47 CEST 2004 - coolo@suse.de
+
+- fixing Makefile problems
+
+-------------------------------------------------------------------
+Sat Aug 28 18:15:11 CEST 2004 - adrian@suse.de
+
+- initial package of version 0.9.86
+

@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>68d008dc6f4a9fc329d94b34c8084e23</srcmd5>
+    <version>0.0.5</version>
+    <time>1391375982</time>
+    <user>coolo</user>
+    <comment>New package, just split from ladspa</comment>
+    <requestid>211732</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9b0de890899b7ad3942ea2527590892e</srcmd5>
+    <version>0.0.5</version>
+    <time>1393936791</time>
+    <user>coolo</user>
+    <comment>- Run spec-cleaner
+- Remove obsoleted autoreq/autoprov tags
+- Patch carried from the original ladspa package:
+  vcf-Makefile.dif</comment>
+    <requestid>224431</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>9b0de890899b7ad3942ea2527590892e</srcmd5>
+    <version>0.0.5</version>
+    <time>1409301456</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

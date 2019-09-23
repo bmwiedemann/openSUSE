@@ -1,0 +1,351 @@
+-------------------------------------------------------------------
+Tue Feb 26 01:20:30 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Build with (preferred) shaderc now that it’s packaged in TW
+- Update to version 1.18.0
+  The major changes of this release include a new and completely
+  overhauled HDR tone mapping algorithm, support for importing
+  backing memory for textures and buffers (such as via dmabuf fds),
+  as well as a swapchain resizing API that, among other benefits,
+  allows libplacebo to function properly on Wayland.
+
+  There is also now support for generating CPU-backed "dummy
+  resources" for things like lookup tables or convolution kernels,
+  for users who prefer managing their own GPU resources.
+  This allows pl_shader-level API users to access the full host of
+  libplacebo shaders without being restricted the lack of a pl_gpu.
+
+  Additions:
+
+  * pl_color_space now has a sig_scale field, which allows
+    modifying the signal range without affecting the transfer
+    function's shape. (Effectively, by "stretching" it).
+    This can be useful when dealing with HDR material encoded in a
+    non-HDR curve such as linear light.
+  * Add support for importing handles (including pl_sync objects
+    and pl_shared_mem). Currently, only memory can be imported.
+  * Add partial support for dmabuf fd interop. Currently does not
+    support dma layout modifiers, so the usefulness of this feature
+    is limited.
+  * Allow importing external memory when creating textures.
+  * Add a way to overexpose HDR material to bring its brightness up
+    to more easily viewable levels.
+  * Add pl_var_int to go alongside the other gpu.h helpers.
+  * Add a way to create CPU-backed "dummy" instances of pl_gpu.
+    These are not capable of compiling or executing any shaders,
+    so they're only useful for users who want to generate and
+    compile their own shaders.
+    All GPU resources (textures, buffers) are backed by malloc.
+  * Add a new field to pl_tex/buf_params allowing users to attach
+    arbitrary references (void*) that libplacebo will ignore.
+  * Add a function for changing the pl_context_params after
+    creation.
+  * Add a new API function for dealing with swapchain resize
+    events. This function can be used to both query and update
+    the swapchain size, based on the usage.
+    Not all platforms support all operations.
+  * Add new demo/skeleton based on GLFW.
+
+  Changes:
+
+  * Remove the hdr_simulation field from pl_color_map_params.
+    Use signal_scale on the target color space instead.
+  * Subdivide handle capabilities based on object type
+    (texture vs buffer).
+  * Completely redesign the HDR tone mapping algorithm.
+    Most members of pl_tone_mapping_params have been updated,
+    in particular the options related to desaturation and peak
+    detection.
+  * Split up the HDR peak detection API into a "detection" and
+    "application" stage, which can run independently. This avoids
+    the one-frame delay inherent with the previous API, and thus
+    allows tone mapping to be frame perfect.
+  * Remove superfluous field from pl_shader_reset left behind
+    from a previous version of the API.
+
+  Fixes and performance improvements:
+
+  * Correctly apply the OOTF before performing linear colorspace
+    operations on scene-referred content.
+  * Avoid clipping when tone-mapping out of gamut content by tone
+    mapping before gamut mapping.
+  * Correctly reset the peak detection buffer state when running
+    pl_renderer_flush_cache.
+  * Correctly use the image's original color space as the reference
+    space when the content is prelinearized by the renderer.
+    Fixes some cases where libplacebo could end up defaulting
+    PL_COLOR_TRC_AUTO to a suboptimal curve.
+  * Correctly track the lifetime and ownership of individual vulkan
+    buffer objects. Fixes some synchronization issues when
+    attempting to use the same buffer from multiple different
+    queue families.
+  * Fix integer overflow on implementations with very large
+    texture size limits.
+  * Fix building against static libshaderc.
+
+-------------------------------------------------------------------
+Sun Dec 16 14:50:22 UTC 2018 - Martin Herkt <9+suse@cirno.systems>
+
+- Remove baselibs.conf since nothing needs it
+- Fix build due to missing shaderc, which is optional
+- Switch to new upstream URL
+- Update to version 1.7.0
+  This release marks the first major release of libplacebo, in tune
+  with the release of VLC 4, which will be the first major project
+  using it. Apart from API stability going forwards, this release
+  brings with it a new AV1 film grain shader, better
+  interoperability between libplacebo and external APIs like CUDA
+  (via shared buffers and shared textures), and ICtCp support.
+
+  While not strictly part of libplacebo, one of the highlights
+  since the previous release includes the existence of a new
+  example file demos/video-filtering.c which illustrates how one
+  would use libplacebo to do GPU-based image filtering in something
+  like FFmpeg or mpv.
+
+Additions:
+
+  * Add a new function pl_gpu_finish which blocks until all
+    oustanding rendering on this pl_gpu is finished.
+  * Add new functions pl_tex_recreate and pl_buf_recreate, which
+    work like pl_tex/buf_create but take a pointer to an existing
+    tex/buf that will get destroyed + recreated only when necessary
+  * Add a new function pl_shader_is_failed which will return true
+    if a given shader is in a "failed" state. Shaders will be
+    marked as failed on any internal/usage error, rather than them
+    being silently ignored.
+  * Add a new enum pl_channel to clarify and encode friendly names
+    for the often-referenced "canonical channel order".
+  * Add a new header libplacebo/shaders/av1.h which currently
+    contains a function pl_shader_av1_grain for applying AV1 film
+    grain on the GPU.
+  * Add a new concept of an "exportable" object (buffers and
+    textures). Exportable objects can be exported using a handle
+    and imported into other foreign APIs such as CUDA.
+    The new functions pl_buf_export and pl_tex_export must be used
+    to correctly synchronize access to the object. This also adds
+    new fields uuid and handle_caps to pl_gpu.
+  * Supporting the previous feature, add a new field memory_type
+    to pl_buf_params which can be used to influence what type of
+    memory to allocate a buffer from. Currently only works for
+    texture transfer buffers, since allocating uniform/storage
+    buffers from non-VRAM makes little sense.
+  * Add a new synchronization primitive wrapper, pl_sync, which
+    wraps a semaphore pair and must be used to synchronize access
+    to textures with external, asynchronous APIs.
+  * Implement the ITU-R BT.2100 ICtCp color system. Since the
+    libplacebo color systems are not strictly tied to any
+    particular transfer function, we must explicitly mark which
+    flavor of ICtCp is meant.
+  * Add a new field instance_params which can be used to influence
+    the parameters used when pl_vulkan_create ends up creating an
+    internal instance.
+  * Add a new function pl_vulkan_unwrap which allows users to
+    unwrap a vulkan-baed pl_tex to expose the internal VkImage,
+    allowing simultaneous use (via pl_vulkan_hold/release) similar
+    to wrapped external images.
+  * Add new generic helper functions pl_std430_layout and
+    pl_std140_layout which replace the old pl_buf_uniform_layout,
+    pl_buf_storage_layout and pl_push_constant_layout.
+
+Changes:
+
+  * Empty device names ("") can now be passed to pl_vulkan_create.
+    They will be treated as if NULL was passed.
+  * The out_plane parameter of pl_upload_plane is now optional.
+  * Clarify/Relax the restrictions on pl_buf usage and polling.
+    Users are technically free to use pl_buf for multiple
+    simultaneous libplacebo operations. Buffer polling is only
+    needed for accesses by the host.
+  * pl_vulkan_hold now returns a bool indicating success.
+  * pl_buffer_var has been moved from gpu.h's pl_desc to
+    shaders.h's pl_shader_desc. Describing the individual variables
+    of a descriptor binding had zero practical application.
+  * pl_buf_uniform_layout, pl_buf_storage_layout and
+    pl_push_constant_layout are now macros for pl_std140_layout
+    and pl_std430_layout (respectively).
+    This changed the signature to drop the pl_gpu parameter.
+  * The buf_offset parameter to pl_tex_transfer no longer needs to
+    be strictly aligned to a multiple of 4. The minimum alignment
+    is now 1, however users are strongly recommended to stick to
+    the multiple-of-4 alignment (or ideally align_tex_xfer_offset)
+    for performance reasons.
+  * The chromatic adaptation method in pl_get_color_mapping_matrix
+    has been adjusted. We now use an LMS model derived from
+    CIECAM97's revised linear Bradford matrix, rather than the
+    non-linear matrix that was being used previously (incorrectly
+    so, due to the lack of the required nonlinearity).
+  * The order of fields in pl_rect3d has been changed for
+    consistency with the other rect types.
+
+Fixes and performance improvements:
+
+  * Fix std140/std430 packing errors for vec3.
+  * Skip unnecessary flush in pl_buf_poll noop cases.
+  * Fix variable collision in sh_prng.
+  * Don't leak glslang internal symbols on supported platforms.
+  * Fix an issue where pl_pass_run was stricter than intended about
+    compatibility with between target and target_dummy.
+  * Fix an issue where pl_dispatch could sometimes try dispatching
+    shaders with an incompatible target.
+  * Fix an error in the heuristic for choosing the optimal image
+    layout for vulkan render passes.
+  * Improved debugging messages in several places.
+  * Slightly speed up lookups from texture LUTs.
+  * Fix the addressing of shader LUTs in some hypothetical cases.
+  * Correctly flush the contents of host-readable buffers after
+    modifications made by the GPU.
+  * Fix synchronization on pl_buf_write with non-mapped buffers.
+  * Fix undefined behavior when using push descriptors.
+  * Slightly speed up some texture recreate operations by
+    invalidating re-used textures.
+  * Fix an issue when trying to update large (>64k) VRAM-resident
+    buffers.
+  * Fix two address calculation bugs in pl_tex_blit.
+  * Fix an over-read bug when the size of the vertex data changed
+    for otherwise identical passes.
+  * Fix a misalignment that could theoretically happen with some
+    combinations of (odd) texel sizes and device alignment
+    requirements.
+  * Fix UB when creating "useless" images (without any usage flags)
+  * Fix a vulkan device memory leak when destroying large textures.
+  * Fix an alignment issue that could happen sometimes with
+    pl_buf_write for odd write sizes.
+  * Fix an alignment bug when uploading partial textures when async
+    transfer is enabled on some devices.
+  * Fix crash in pl_color_primaries_is_wide_gamut on DISPLAY_P3.
+  * Fix an error when re-using shader objects between polar and
+    non-polar samplers. This is now safe to do.
+
+-------------------------------------------------------------------
+Fri Sep 28 11:18:38 UTC 2018 - Martin Herkt <9+suse@cirno.systems>
+
+- Add C/C++ compilers, glslang and lcms2 to BuildRequires
+- Update to version 0.6.0
+  This release brings with it a number of minor fixes and changes,
+  as well as a new feature for simulating, and partially
+  counteracting, various forms of color blindness. For more
+  information see the new pl_cone_params structure and
+  pl_get_cone_matrix function.
+
+  Additions:
+  * VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR is now supported, and gets
+    treated as PL_ALPHA_UNKNOWN.
+  * Add a new feature for simulating various forms of color
+    blindness (based on the LMS color model).
+
+  Changes:
+  * Setting pl_render_params.upscaler/downscaler to NULL no longer
+    allows automatically choosing bicubic, since this breaks
+    various other optimizations that are only possible when using
+    the built-in GPU sampling. This now only chooses
+    bilinear/nearest depending on the texture/hardware capabilities
+  * The public API of pl_shader_alloc was changed:
+    the uint8_t ident field was removed. This makes no real sense
+    to expose publicly, since users had no legitimate use for it
+    other than setting it to 0.
+
+  Fixes and performance improvements:
+  * The pl_dither_params.lut_size now gets correctly defaulted to 6
+  * Fixed some use-after-scope bugs in the renderer
+  * Fixed colorspace selection when using user-specified swapchain
+    formats
+  * Peak detection is now correctly disabled if the buffer size is
+    set to 0. (Before, it would default back to 63 in that case)
+  * Fix the out-of-gamut warning feature. This previously stopped
+    working for out-of-range tone mapped values.
+
+
+-------------------------------------------------------------------
+Sun Jul 29 11:30:28 UTC 2018 - jengelh@inai.de
+
+- Fix RPM groups.
+
+-------------------------------------------------------------------
+Sat Jun  9 15:43:18 UTC 2018 - 9+suse@cirno.systems
+
+- Update to 0.5.0
+  This release brings with it greatly improved support for HDR (including
+  HDR-in-SDR emulation, native HDR passthrough and improvements to the
+  HDR->SDR tone mapping algorithm), as well as support for ICC profiles
+  and external VkImage interop (needed for e.g. hardware decoding).
+
+  Additions:
+  * Add support for treating an SDR curve as an HDR curve by
+    overriding/providing the true target peak. This essentially allows you
+    to calibrate a true HDR device to a typical SDR curve and use it to
+    display HDR media, at the cost of bit precision
+  * Add more values to enum pl_chroma_location
+  * Add a scale factor to struct pl_sample_src, which is useful for e.g.
+    debanding on bit-shifted inputs
+  * Add a new function to infer/guess unknown pl_color_space fields
+  * Add support for 3DLUTs / ICC profiles (via LittleCMS), including
+    support for assigning ICC profiles to the `pl_render_image` and
+    `pl_render_target` structs
+  * Allow enabling optional extra vulkan device/instance extensions, as
+    well as listing what extensions were actually loaded
+  * Add an API for VkImage interop with user code, e.g. to wrap mapped
+    hardware decoding planes into `pl_tex`, plus all synchronization code
+    and extra metadata necessary to make this interop safe
+  * Implement support for native HDR output on supported platforms
+
+  Changes:
+  * Separate the texture from the plane data struct in `pl_upload_plane`
+  * Swapchain FBOs are now guaranteed to be blittable (e.g. pl_tex_clear)
+  * Tone mapping is no longer done for desaturation steps. Users wanting
+    high quality desaturation should use ICC profiles
+  * Change the types of various fields in struct pl_gpu_limits
+  * Slightly relax the sizing requirements of pl_tex_transfer
+  * Change the default value for pl_tex_transfer_params.stride_w/h.
+    Instead of defaulting to the image size, they now default to the rect to
+    be transferred
+  * Texture transfer buffer offsets must (now) be aligned to the texel
+    size, in addition to being a multiple of 4
+  * Change the API of `pl_color_space_equal` to be consistent with the
+    rest of the colorspace APIs
+  * Allow the `pl_upload_plane` helpers to upload from buffers as well
+  * Switch the type of mapped buffer pointers from char* to uint8_t*
+  * Rename DCI_P3 to Display_P3, and add DCI_P3 (using the actual DCI white
+    point)
+
+  Fixes and performance improvements:
+  * Fix some compatibility issues with GLSL 120
+  * Prevent desaturation from exploding when tone mapping to HDR, or when
+    tone mapping a very bright HDR scene to SDR
+  * Implement the fully parametrized BT.2100 (HLG) OOTF in both
+    directions, based on the tagged/inferred signal peak
+  * Fix an issue preventing the out-of-gamut feature from working
+    correctly on HDR displays
+  * Fix a segfault that occurs when instance creation fails
+  * Fix an issue where `peak_detect_frames` was sometimes too low
+  * Allow debanding to take care of implicit bilinear sampling in cases
+    where no other scaler is requested, thus avoiding an unnecessary FBO
+    indirection
+  * Only run the debanding algorithm on the parts of the image we will
+    actually be displaying. This is relevant when cropping
+  * Fix an issue where PL_TONE_MAPPINg_MOBIUS could fail in certain
+    (unrealistic) scenarios involving HDR-in-SDR emulation
+  * Fix an issue where vulkan could sometimes modify commands after
+    submitting them, when recreating vertex buffers
+  * Make an effort to reuse the same vertex buffer when the contents don't
+    change from the previous invocation
+  * Fix the glslang locale work-arounds on windows
+  * Fix an issue where trying to upload from a too-large texel buffer
+    results in an assertion failure rather than a clean error
+  * Fix an issue where the usage of VkEvents prevented libplacebo from
+    working on platforms where they were unsupported (e.g. MoltenVK)
+  * Support and use vulkan push descriptors where supported. This avoids
+    having to maintain, update and synchronize descriptor sets
+  * Correctly disable signal linearization on low-bit depth FBOs
+  * Prevent a crash on the (pathological) case of a shader with no
+    descriptors
+  * Fix a bug in the size limit calculations for 2D/3D LUTs
+  * Use optimization level "performance" instead of "size" for shader
+    compilation
+  * Fix an abort() when trying to render to a non-storable FBO when using
+    a final pass that requires compute shaders (e.g. HDR peak detection)
+
+-------------------------------------------------------------------
+Fri Jun  1 19:22:50 UTC 2018 - 9+suse@cirno.systems
+
+- Init, 0.4.0

@@ -1,0 +1,5 @@
+<package name="hex2bin" project="openSUSE:Factory">
+  <title>Converts Motorola and Intel hex files to binary</title>
+  <description></description>
+  <devel project="electronics" package="hex2bin"/>
+</package>

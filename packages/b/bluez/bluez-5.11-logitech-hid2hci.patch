@@ -1,0 +1,23 @@
+Apparently some Logitech devices need different rules.
+https://bugzilla.novell.com/show_bug.cgi?id=681049
+https://bugzilla.novell.com/show_bug.cgi?id=850478
+
+Index: b/tools/hid2hci.rules
+===================================================================
+--- a/tools/hid2hci.rules
++++ b/tools/hid2hci.rules
+@@ -9,11 +9,13 @@ SUBSYSTEM!="usb*", GOTO="hid2hci_end"
+ ATTR{bInterfaceClass}=="03", ATTR{bInterfaceSubClass}=="01", ATTR{bInterfaceProtocol}=="02", \
+   ATTRS{bDeviceClass}=="00", ATTRS{idVendor}=="413c", ATTRS{bmAttributes}=="e0", \
+   RUN+="hid2hci --method=dell --devpath=%p", ENV{HID2HCI_SWITCH}="1"
+ 
+ # Logitech devices
+-KERNEL=="hiddev*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c70[345abce]|c71[34bc]", \
++KERNEL=="hiddev*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c70[5e]", \
++  RUN+="hid2hci --method=logitech-hid --devpath=%p"
++KERNEL=="hidraw*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c70[34abc]|c71[34bc]", \
+   RUN+="hid2hci --method=logitech-hid --devpath=%p"
+ 
+ ENV{DEVTYPE}!="usb_device", GOTO="hid2hci_end"
+ 
+ # When a Dell device recovers from S3, the mouse child needs to be repoked

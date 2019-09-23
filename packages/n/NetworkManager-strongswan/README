@@ -1,0 +1,29 @@
+NetworkManager allows configuration and control of VPN daemons through
+a plugin interface.
+We provide such a plugin for NetworkManager to configure road warrior
+clients for the most common setups.
+
+NetworkManager uses DBUS to communicate with a plugin loaded by the
+IKEv2 charon daemon.
+
+The plugin uses a certificate for gateway authentication and supports
+EAP and RSA authentication for client authentication.
+PSK is not supported, as it is considered insecure if the secrets are
+not strong enough.
+
+You can use any password based EAP method supported by strongSwan
+(MD5/GTC/MSCHAPv2) or private key authentication. Private keys are
+either stored in a file or accessed through your ready-to-use ssh-agent.
+You'll need a certificate matching that key.
+Starting with strongSwan 4.4.2 / NetworkManager-strongswan 1.2.0,
+private keys and certificates on a smartcard can be used.
+
+If you configure the gateway certificate directly on the clients, there
+are no requirements to the certificate. If you deploy CA certificates
+(supported in 4.3.1+), the gateway certificate will need a subjectAltName
+including the Hostname of the gateway (the same you enter in the clients
+configuration). Starting with version 4.3.5, you can also use preinstalled
+root CA certificates of your distribution, using the --with-nm-ca-dir
+configure option. Just don't specify any gateway/CA certificate to use
+preinstalled root certificates.
+CA certificates on a smartcard are automatically used.

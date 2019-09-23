@@ -1,0 +1,10 @@
+<package name="ketchup" project="openSUSE:Factory">
+  <title>Tool for downloading and updating Linux kernel source trees</title>
+  <description>This tool synchronises a local kernel tree with a desired kernel ver-
+sion and patch set from a kernel.org mirror. The default requires a GPG
+key on your keyring, to verify the identity of the patches and source
+archives. Entire kernel images are not downloaded unless necessary, so
+bandwidth is saved. Patches are applied and removed as necessary to
+attain the requested version.</description>
+  <devel project="devel:tools" package="ketchup"/>
+</package>

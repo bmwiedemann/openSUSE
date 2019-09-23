@@ -1,0 +1,5 @@
+<package name="dpdk" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network" package="dpdk"/>
+</package>

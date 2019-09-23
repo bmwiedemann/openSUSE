@@ -1,0 +1,207 @@
+<revisionlist>
+  <revision rev="1" vrev="270">
+    <srcmd5>be26d4f97899cdd980d5cbf83b76e74a</srcmd5>
+    <version>0.0.20011101</version>
+    <time>1168902395</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="544">
+    <srcmd5>be26d4f97899cdd980d5cbf83b76e74a</srcmd5>
+    <version>0.0.20011101</version>
+    <time>1168902395</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="545">
+    <srcmd5>7e70a278132f07c788f2e67e9cf205fa</srcmd5>
+    <version>0.0.20011101</version>
+    <time>1245259046</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="547">
+    <srcmd5>7e70a278132f07c788f2e67e9cf205fa</srcmd5>
+    <version>0.0.20011101</version>
+    <time>1245259046</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="548">
+    <srcmd5>cc6a5ea15f0d60d86daa61641b033c62</srcmd5>
+    <version>0.0.20011101</version>
+    <time>1268923148</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="550">
+    <srcmd5>cc6a5ea15f0d60d86daa61641b033c62</srcmd5>
+    <version>0.0.20011101</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="551">
+    <srcmd5>cc6a5ea15f0d60d86daa61641b033c62</srcmd5>
+    <version>0.0.20011101</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="554">
+    <srcmd5>cc6a5ea15f0d60d86daa61641b033c62</srcmd5>
+    <version>0.0.20011101</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="556">
+    <srcmd5>cc6a5ea15f0d60d86daa61641b033c62</srcmd5>
+    <version>0.0.20011101</version>
+    <time>1319181803</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="557">
+    <srcmd5>8dc0647a7f05a9fd0cdd49d4b15b6e25</srcmd5>
+    <version>0.0.20011101</version>
+    <time>1323190952</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="559">
+    <srcmd5>8dc0647a7f05a9fd0cdd49d4b15b6e25</srcmd5>
+    <version>0.0.20011101</version>
+    <time>1340183227</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="561">
+    <srcmd5>8dc0647a7f05a9fd0cdd49d4b15b6e25</srcmd5>
+    <version>0.0.20011101</version>
+    <time>1359108732</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="562">
+    <srcmd5>b20edc351794ff8967ba6564e13dbf28</srcmd5>
+    <version>0.0.20011101</version>
+    <time>1362730077</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 157048 from coolo)</comment>
+    <requestid>157065</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d7f306574085e7d742c3886f8870a8a4</srcmd5>
+    <version>0.0.20011101_20130830dat</version>
+    <time>1378293441</time>
+    <user>coolo</user>
+    <comment>- Add ken_all.zip and jigyosyo.zip: 2013-08-30 ver.
+  Source0 tarball's csv data are too old (2001-11-01) . 
+  So I added  2013-08-30 version .
+  Please see also:
+  http://www.post.japanpost.jp/zipcode/dl/kogaki-zip.html
+  http://www.post.japanpost.jp/zipcode/dl/jigyosyo/index-zip.html
+  And I added code for replacing csv data in spec file .
+- Update canna-yubin.spec:
+  * fixed Source0's URL to tarball's filename .
+    Because The URL was dead already .
+  * added a code for replacing csv data .
+  * added BuildRequires: unzip .
+  * added BuildRequires: nkf .
+    The iconv ended in a convert error .
+    So I replaced from iconv to nkf . (forwarded request 196956 from Mitsutoshi)</comment>
+    <requestid>196958</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>d7f306574085e7d742c3886f8870a8a4</srcmd5>
+    <version>0.0.20011101_20130830dat</version>
+    <time>1379662085</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4846050cf3287480e08eb9c7815bf269</srcmd5>
+    <version>0.0.20011101_20130930dat</version>
+    <time>1380696477</time>
+    <user>coolo</user>
+    <comment>- update ken_all.zip and jigyosyo.zip: 2013-09-30 ver.
+- update canna-yubin.spec:
+  * update description longer .
+    Because rpmlint tells a warning message .
+  * add -q option to setup macro .
+    Reason:
+    http://en.opensuse.org/openSUSE:Specfile_guidelines#Quiet_.25setup
+  * rename from setup0 to setup
+  * delete Authors information from description .
+    See also:
+    http://en.opensuse.org/openSUSE:Specfile_guidelines#Description
+  * add &quot;Conflicts: update-canna-yubin&quot; .
+    The update-canna-yubin is not released yet .
+    But it conflicts with canna-yubin .
+    See also:
+    https://build.opensuse.org/package/show/home:Mitsutoshi:M17N/update-canna-yubin
+  * add a comment about Source0's URL .
+  * replace a macro in comments to &quot;_&quot; .
+    Because rpmlint tells a warning message .
+  * add &quot;BuildArch: noarch&quot; . (forwarded request 201605 from Mitsutoshi)</comment>
+    <requestid>201628</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8121981a62f7d426f6f96648ebefac4d</srcmd5>
+    <version>0.1.1.20140731.3</version>
+    <time>1407744438</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>243984</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>8121981a62f7d426f6f96648ebefac4d</srcmd5>
+    <version>0.1.1.20140731.3</version>
+    <time>1409300614</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>99c59cef7e9364c142bb6edc360498a1</srcmd5>
+    <version>0.3.1.20150227.0</version>
+    <time>1427109552</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292276</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>70bf636da5fbebd283ecf0568f54499f</srcmd5>
+    <version>0.3.1.20150831.1</version>
+    <time>1443068074</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>332083</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>16f584b9936113e4b017fbd1b478dcee</srcmd5>
+    <version>0.3.1.20160831.0</version>
+    <time>1473103389</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424634</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b9b0d4d00a7d4fe541231aa24a3b7ee1</srcmd5>
+    <version>0.3.1.20170428.0</version>
+    <time>1495268083</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496871</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d22acb8c5b6fbd25513312d1c2ff7440</srcmd5>
+    <version>0.3.1.20180131.0</version>
+    <time>1517668972</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>572210</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>571d60aa115e9c6510672a79bb492894</srcmd5>
+    <version>0.4.0.20190228.0</version>
+    <time>1552902170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685756</requestid>
+  </revision>
+</revisionlist>

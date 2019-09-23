@@ -1,0 +1,57 @@
+From e88acb4c8971992bbde1a2e22b04353b0deef0ea Mon Sep 17 00:00:00 2001
+From: Hrvoje Senjan <hrvoje.senjan@gmail.com>
+Date: Sat, 2 Sep 2017 11:09:51 +0200
+Subject: [PATCH] Write the daemon's PID to a file on startup
+
+openSUSE's generic display-manager service doesn't know what to do
+without a pid file. drop the patch as soon as that sick dinosaur is killed.
+
+---
+ src/common/Constants.h.in |  1 +
+ src/daemon/DaemonApp.cpp  | 11 +++++++++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/src/common/Constants.h.in b/src/common/Constants.h.in
+index 7500a49..09b80a7 100644
+--- a/src/common/Constants.h.in
++++ b/src/common/Constants.h.in
+@@ -37,6 +37,7 @@
+ #define SYSTEM_CONFIG_DIR           "@SYSTEM_CONFIG_DIR@"
+ 
+ #define LOG_FILE                    "@LOG_FILE@"
++#define PID_FILE                    "@PID_FILE@"
+ #define MINIMUM_VT                  @MINIMUM_VT@
+ 
+ #define UID_MIN                     @UID_MIN@
+diff --git a/src/daemon/DaemonApp.cpp b/src/daemon/DaemonApp.cpp
+index b5c8d49..c38e5a4 100644
+--- a/src/daemon/DaemonApp.cpp
++++ b/src/daemon/DaemonApp.cpp
+@@ -31,6 +31,7 @@
+ #include <QDebug>
+ #include <QHostInfo>
+ #include <QTimer>
++#include <QFile>
+ 
+ #include <iostream>
+ 
+@@ -46,6 +47,16 @@ namespace SDDM {
+         // log message
+         qDebug() << "Initializing...";
+ 
++        // Write PID File
++        if ( ! QString(QStringLiteral(PID_FILE)).isEmpty() ) {
++            QFile pidFile(QStringLiteral(PID_FILE));
++            QString pid = QString::number(QCoreApplication::applicationPid());
++            if ( pidFile.open(QIODevice::WriteOnly | QIODevice::Text) ) {
++                pidFile.write(pid.toLatin1().data(), qstrlen(pid.toLatin1().data()));
++                pidFile.close();
++            }
++        }
++
+         // set testing parameter
+         m_testing = (arguments().indexOf(QStringLiteral("--test-mode")) != -1);
+ 
+-- 
+2.14.1
+

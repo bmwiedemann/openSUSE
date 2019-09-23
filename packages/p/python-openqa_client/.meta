@@ -1,0 +1,7 @@
+<package name="python-openqa_client" project="openSUSE:Factory">
+  <title>Python openQA client library</title>
+  <description>This is a client for the openQA API, based on requests.
+
+</description>
+  <devel project="devel:languages:python" package="python-openqa_client"/>
+</package>

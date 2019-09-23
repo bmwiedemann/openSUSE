@@ -1,0 +1,7 @@
+<package name="ytalk" project="openSUSE:Factory">
+  <title>Multi-User replacement for Unix talk client</title>
+  <description>YTalk is, in essence, a multiuser chat program. It works almost exactly
+like the UNIX talk program and even communicates with the same talk
+daemons, but YTalk allows for multiple connections.</description>
+  <devel project="network" package="ytalk"/>
+</package>

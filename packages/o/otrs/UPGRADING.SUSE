@@ -1,0 +1,130 @@
+Upgrading OTRS from 5 to 6
+==========================
+
+Warning
+-------
+You cannot update from OTRS 4 or earlier directly to OTRS 6. Full updates to all
+available minor versions have to be made sequentially instead. For example, if
+you come from OTRS 3.0, you first have to perform a full update to OTRS 3.1,
+then to 3.2, 3.3, 4, 5 and finally to OTRS 6.
+
+These instructions are for people upgrading OTRS from 5 to 6 or from a 6
+to a later patchlevel release 6 and applies both for RPM and source code (tarball) upgrades.
+
+If you are running a lower version of OTRS you have to follow the upgrade path to 5 first
+(1.1->1.2->1.3->2.0->2.1->2.2->2.3->2.4->3.0->3.1->3.2->3.3->4->5)! You need to perform a full
+upgrade to every version in between, including database changes and the upgrading Perl script.
+
+Please note that if you upgrade from OTRS 2.2 or earlier, you have to take an extra step.
+
+Within a single minor version you can skip patch level releases if you want to upgrade.
+For instance you can upgrade directly from OTRS 6 patchlevel 2 to version 6 patchlevel 14.
+
+It is highly recommended to perform a test update on a separate testing machine first.
+It is highly recommended to have a backup of your database first.
+
+
+1. Stop all relevant services
+-----------------------------
+
+e. g. (depends on used services):
+
+    shell> rcotrs stop
+    shell> rcpostfix stop
+    shell> rcapache2 stop
+
+2. Backup everything below @OTRS_ROOT@ (default: OTRS_ROOT=@OTRS_ROOT@)
+---------------------------------------------------------------------
+
+- Kernel/Config.pm
+- Kernel/Config/Files/ZZZAuto.pm
+- var/*
+- as well as the database
+
+
+3. Make sure that you have backed up everything ;-)
+---------------------------------------------------
+
+
+4. Install the new release (RPM)
+--------------------------------
+
+    shell> zypper -n up otrs
+if are also using ITSM, then also
+    shell> zypper -n up otrs-itsm
+
+The RPM-update will keep the old configuration files.
+
+- Kernel/Config.pm
+- Kernel/Config/Files/ZZZAuto.pm (will be overwritten by itsm)
+
+You must use the new files *.rpmnew
+
+- Kernel/Config.pm.rpmnew
+
+    shell> cp -a Kernel/Config.pm Kernel/Config.pm.backup
+    shell> mv Kernel/Config.pm.rpmnew Kernel/Config.pm
+
+Then modify Kernel/Config.pm to adapt your settings (e.g. DB connection)
+
+
+5. Check needed Perl modules
+----------------------------
+
+    shell> @OTRS_ROOT@/bin/otrs.CheckModules.pl
+
+
+6. Apply the database changes
+-----------------------------
+
+     shell> cd @OTRS_ROOT@
+
+  Note:
+    If you have any custom Perl or XML configuration files in
+    Kernel/Config/Files, these need to be converted to the new formats supported
+    by OTRS 6 before running the migration script.
+
+    You should convert the config files to the new XML format.
+
+    shell> bin/otrs.Console.pl Dev::Tools::Migrate::ConfigXMLStructure --source-directory Kernel/Config/Files
+
+
+### DATABASE MIGRATION SCRIPT
+
+ Run the migration script (as user `otrs`, NOT as `root`):
+
+    shell> scripts/DBUpdate-to-6.pl
+
+ Do not continue the upgrading process if this script did not work properly for you.
+ Otherwise data loss may occur.
+
+
+7. Refresh the configuration cache and delete caches
+-----------------------------------------------------
+
+Please run (as user `otrs`, NOT as `root`):
+
+    shell> cd /opt/otrs/
+    shell> bin/otrs.Console.pl Maint::Config::Rebuild
+    shell> bin/otrs.Console.pl Maint::Cache::Delete
+
+
+8 Update installed packages
+---------------------------
+
+Please run (as user `otrs`, NOT as `root`):
+
+    shell> bin/otrs.Console.pl Admin::Package::UpgradeAll
+
+
+9. Restart your services
+------------------------
+
+e. g. (depends on used services):
+
+    shell> rcapache2 start
+    shell> rcpostfix start
+    shell> rcotrs start
+
+Now you can log into your system.
+

@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Wed Feb 28 20:21:25 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb  4 18:58:12 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.10:
+  + Use new location for GTK+ bookmarks file.
+
+-------------------------------------------------------------------
+Wed Apr  4 07:44:32 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.9:
+  + Port to Gtk 3
+  + Add Unity and LXDE to desktop file OnlyShowIn
+  + Faster startup by only initializing Gtk when needed
+  + Updated ranslations.
+- Drop xdg-user-dirs-gtk-LXDE-autostart.patch: fixed upstream.
+- Rebase xdg-user-dirs-gtk-XFCE-autostart.patch.
+- Remove perl-XML-Parser BuildRequires: it was only needed when it
+  was not required by intltool.
+- Change gtk2-devel BuildRequires to gtk3-devel, following port to
+  GTK+ 3.
+
+-------------------------------------------------------------------
+Sun Feb 27 13:43:27 UTC 2011 - aj@suse.de
+
+- Change lang package Requires to Recommends since it is not
+  mandatory at runtime.
+
+-------------------------------------------------------------------
+Wed Dec 29 15:08:03 UTC 2010 - gber@opensuse.org
+
+- Add xdg-user-dirs-gtk-XFCE-autostart.patch in order to
+  start in Xfce sessions as well.
+
+-------------------------------------------------------------------
+Tue Feb  9 18:15:10 UTC 2010 - andrea@opensuse.org
+
+- Add xdg-user-dirs-gtk-LXDE-autostart.patch to also autostart
+  xdg-user-dirs in LXDE.
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Thu Dec 11 15:31:37 CET 2008 - coolo@suse.de
+
+- require the translations
+
+-------------------------------------------------------------------
+Wed Sep 10 16:30:10 EDT 2008 - jpr@suse.de
+
+- Update to version 0.8:
+  + Translation updates
+
+-------------------------------------------------------------------
+Fri Mar 21 00:20:32 CET 2008 - jpr@suse.de
+
+- Initial check of xdg-user-dirs-gtk, to manager updating xdg user
+  dirs on login
+

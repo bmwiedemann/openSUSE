@@ -1,0 +1,6 @@
+<package name="libyui-ncurses-pkg-doc" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="libyui-ncurses-pkg"/>
+  <bcntsynctag>libyui-ncurses-pkg</bcntsynctag>
+</package>

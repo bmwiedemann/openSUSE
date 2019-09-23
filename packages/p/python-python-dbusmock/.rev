@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7bc86b28039154f89a5a52f7e6494214</srcmd5>
+    <version>0.18.1</version>
+    <time>1548064031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663326</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>85253ef9771492d958a5e1dec65c0d6f</srcmd5>
+    <version>0.18.1</version>
+    <time>1549017863</time>
+    <user>dimstar_suse</user>
+    <comment>- Use noun phrase in summary. Trim description, it is not a manual.
+- Update URL to new home:
+  * https://github.com/martinpitt/python-dbusmock
+</comment>
+    <requestid>668147</requestid>
+  </revision>
+</revisionlist>

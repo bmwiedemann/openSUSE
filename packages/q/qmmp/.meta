@@ -1,0 +1,9 @@
+<package name="qmmp" project="openSUSE:Factory">
+  <title>XMMS-like audio player</title>
+  <description>This program is an audio-player, written with help of Qt library. The program
+has user interface, similar winamp or xmms.
+
+</description>
+  <devel project="multimedia:apps" package="qmmp"/>
+  <url>http://qmmp.ylsoftware.com/</url>
+</package>

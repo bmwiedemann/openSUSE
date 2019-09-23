@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Tue Sep 10 11:51:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.2:
+  * minor bugfixes
+
+-------------------------------------------------------------------
+Thu May 16 22:25:00 UTC 2019 - Hardik Italia <hitalia@suse.com>
+
+- Update to vetison 0.7:
+  * Drop support for Python <= 2.7
+  * Fix: Make sure the builder objects can be used to parse box files
+    even if Tesseract is not installed.
+  * PyOCR version is now automatically set in the module by setuptools_scm
+    instead of PyOCR's Makefile (except on Windows)
+  * Tesseract: optim: keep the get_version() in memory instead of calling
+    Tesseract everytime (get_version() by psm_parameter() which is called each
+    time a box file is parsed ...)
+- Update project url and source to gitlab 
+
+-------------------------------------------------------------------
+Tue Dec 26 15:53:23 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.5:
+  * Tesseract/Libtesseract + LineBoxBuilder: Add confidence scores
+    to every word boxes and to hOCR files (thanks to Adriano Pagano)
+  * Tesseract 4 (shell): Add '--oem 0' to specify legacy model when
+    doing orientation detection as orientation detection does not
+    work yet with Tesseract 4 (thanks to Adriano Pagano)
+  * Libtesseract: Fix multi-language support
+  * Tesseract (shell) + Windows: Never let the cmd window appear
+  * Libtesseract: Implements image_to_pdf() (thanks to Marian Skrip)
+  * Libtesseract: Hide debug messages (thanks to Ashish Kulkarni)
+- Update project url and use github sources
+
+-------------------------------------------------------------------
+Fri Dec 15 11:09:17 UTC 2017 - mvetter@suse.com
+
+- Use python singlespec
+
+-------------------------------------------------------------------
+Wed Oct  5 03:17:47 UTC 2016 - mailaender@opensuse.org
+
+- update to version 0.4.1
+
+-------------------------------------------------------------------
+Sun Aug 10 20:32:13 UTC 2014 - jw@owncloud.com
+
+- v0.2.3 initial pull from pypi
+

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c0e006bdddcbc7cfbc92e821e0c4061a</srcmd5>
+    <version>0.9.0</version>
+    <time>1485511666</time>
+    <user>dimstar_suse</user>
+    <comment>Good package for Factory.</comment>
+    <requestid>449280</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7be52e6302c18109d38b4e0ebae2bd76</srcmd5>
+    <version>0.9.3</version>
+    <time>1492170119</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>487671</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1e530c9dd99de75cbe08c7252117eef0</srcmd5>
+    <version>0.9.4</version>
+    <time>1497109898</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502646</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>949c562e61ba67b2ae40ad0ffdca66af</srcmd5>
+    <version>0.9.5</version>
+    <time>1505920103</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526944</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>127b17b8515e3d1d78991cc1949f523a</srcmd5>
+    <version>0.9.6</version>
+    <time>1548065252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667307</requestid>
+  </revision>
+</revisionlist>

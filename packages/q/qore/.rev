@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5a61c856259839e907e9c363e0d6be80</srcmd5>
+    <version>0.8.11</version>
+    <time>1405253177</time>
+    <user>coolo</user>
+    <comment>New package as described in http://lists.opensuse.org/opensuse-factory/2013-01/msg00105.html
+
+changes related to request: 238211
+
+ - spec-cleaner used
+ - spec file uses only opensuse related parts, rest has been removed
+ - fdupes macro used correctly to reduce duplicated files in docs
+ - 6 packages and 0 specfiles checked; 0 errors, 3 warnings.
+   - warnings about missing man pages has been addressed upstream to the qore development
+   - warning about missing-call-to-setgroups-before-setuid is false positive here (IMHO). libqore.so contains qore low level wrappers around libc functions (1:1) so it's up to application developer to use it correctly.</comment>
+    <requestid>240455</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>830469961310bc43da174c32fcb045bb</srcmd5>
+    <version>0.8.11</version>
+    <time>1405520376</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240871</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>830469961310bc43da174c32fcb045bb</srcmd5>
+    <version>0.8.11</version>
+    <time>1409303134</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>6fe4d36ced7131d9c19d9e04a6e4ec65</srcmd5>
+    <version>0.8.11</version>
+    <time>1434133918</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311776</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>60a7652b34309698120b2b6daa400a76</srcmd5>
+    <version>0.8.13</version>
+    <time>1508434340</time>
+    <user>dimstar_suse</user>
+    <comment>added more descriptive changelog into qore.changes as requested by Jan Engelhardt
+
+- Rework scriptlets for ldconfig. Adjust RPM groups.
+  Avoid double-shipping of files. Use %configure.
+- updated to 0.8.13
+- Input/Output stream APIs
+- Vastly improved type system with complex type support
+  Improved operators; list, string, binary slice operators,
+  the &quot;..&quot; range operator, improved new, cast&lt;&gt;, and
+  instanceof operators, lazy evaluation of functional and
+  list operators, more
+- Improved encryption support including AES encryption,
+  encryption/decryption streams, support for AAD and MACs
+  Improved HTTPS and SSL security support with addition
+  X.509 certificate support including automatic certificate
+  verification in client and server contexts
+- Universal connection API
+- Support for binding output placeholder buffers for result
+  sets that return an SQLStatement object for more efficient
+  piecewise processing of DB stored procedure/function calls
+  that return very large result sets
+- Strong encapsulation support (ex: private:internal)
+- Deterministic garbage collection performance improvements
+  with large cycles
+- Debugging support and APIs including remote network debugging
+- Language Server Protocol support for Qore in the new astparser
+  module for rich language support in IDEs such as the Visual 
+  studio Code Qore Extension
+- much more
+- rpm: /usr/bin user programs are part of qore-misc-tools package
+  now as it was suggested by advanced packagers on IRC
+- rpm: updated qore-libtool-2.4.6.patch for new release
+- updated to 0.8.12.1
+- removed un-applicable patches: configure.patch
+</comment>
+    <requestid>534128</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>349e4829f99a25f0588bfc4a5a5eafb2</srcmd5>
+    <version>0.8.13</version>
+    <time>1531470155</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622359</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>4cc83ad4bd040698124a8532f291c943</srcmd5>
+    <version>0.8.13</version>
+    <time>1565695403</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722648</requestid>
+  </revision>
+</revisionlist>

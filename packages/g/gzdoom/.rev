@@ -59,4 +59,12 @@ and that one is GPL3.</comment>
 - Turn off LTO, it is broken. [boo#1142267]</comment>
     <requestid>725602</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bcf8a3e222c6da62e88f8718647bcbb1</srcmd5>
+    <version>4.2.1</version>
+    <time>1569235092</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>732152</requestid>
+  </revision>
 </revisionlist>

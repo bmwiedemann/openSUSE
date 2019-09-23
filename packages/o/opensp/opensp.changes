@@ -1,0 +1,217 @@
+-------------------------------------------------------------------
+Tue Nov 22 16:28:04 UTC 2011 - coolo@suse.com
+
+- fix source link
+
+-------------------------------------------------------------------
+Sun Nov 20 06:51:03 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Dec 18 16:58:45 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- use AC_SYS_LARGEFILE, off mismatch between dependant libraries  
+
+-------------------------------------------------------------------
+Mon Dec 14 20:50:38 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Fri Nov 14 16:19:40 CET 2008 - mrueckert@suse.de
+
+- sync opensp.spec and opensp-doc.spec
+
+-------------------------------------------------------------------
+Thu Dec 20 03:19:53 CET 2007 - crrodriguez@suse.de
+
+- add missing ldconfig calls
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Thu May 17 19:25:49 CEST 2007 - ro@suse.de
+
+- remove xmlto from buildrequires this causes tons of cycles 
+- split off opensp-doc package in it's own specfile
+
+-------------------------------------------------------------------
+Wed May 16 16:39:17 CEST 2007 - ke@suse.de
+
+- Update to version 1.5.2 (bug fix release); proposed by Sierk
+  Bornemann [# 273561].
+- Remove obsolete GCC patches.
+- Disable NLS.
+- Build manpages using xmlto.
+- Apply opensp-nodeids.patch from the Fedora opensp-1.5.2-4.fc7.src.rpm
+  package.
+
+-------------------------------------------------------------------
+Sun Oct 29 13:14:26 CET 2006 - meissner@suse.de
+
+- use RPM_OPT_FLAGS also for the C snippets.
+
+-------------------------------------------------------------------
+Thu May  4 13:28:39 CEST 2006 - sbrabec@suse.cz
+
+- Fixed devel dependencies.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:40 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct 11 09:34:54 CEST 2005 - meissner@suse.de
+
+- fixed C++ problem in gcc4.1.
+
+-------------------------------------------------------------------
+Wed Apr 21 10:39:59 CEST 2004 - meissner@suse.de
+
+- removed warnings by adding 2 missing returns.
+
+-------------------------------------------------------------------
+Tue Jan 13 08:54:47 CET 2004 - meissner@suse.de
+
+- Fixed gcc3.4 build.
+
+-------------------------------------------------------------------
+Sat Jan 10 22:15:30 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Oct 13 15:38:44 CEST 2003 - ke@suse.de
+
+- Update to version 1.5.1; from NEWS:
+  * With SP_MESSAGE_FORMAT environment variable enable run time
+    selection of message format (XML, NONE, TRADITIONAL).
+  * Add support for restricted files option to generic API.
+  * Add support for http redirection.
+  * Add support for specifying the user agent at run time with the
+    SP_HTTP_USER_AGENT environment variable.
+  * Add support for specifying Accept: headers with the SP_HTTP_ACCEPT
+    environment variable.
+  * Enhancements to osx. Preserve case option, security fixes,
+- Recreate auto* files on SL > 8.0 only.
+- Add 'tr' and update 'de' translation file from IRO.UMontreal.CA.
+
+-------------------------------------------------------------------
+Mon Oct  6 10:37:56 CEST 2003 - kukuk@suse.de
+
+- Remove sgml-skel from needed for build
+- Add /var/lib/sgml to filelist
+
+-------------------------------------------------------------------
+Thu Sep  4 15:58:56 CEST 2003 - kukuk@suse.de
+
+- opensp-devel should not Obsolete openjade
+
+-------------------------------------------------------------------
+Wed Jun  4 13:19:36 CEST 2003 - kukuk@suse.de
+
+- Fix syntax error in postinstall script
+
+-------------------------------------------------------------------
+Mon May 26 16:30:48 CEST 2003 - ke@suse.de
+
+- Cleanup $RPM_BUILD_ROOT.
+
+-------------------------------------------------------------------
+Wed May 21 10:32:27 CEST 2003 - ke@suse.de
+
+- Use %postun instead of %preun and don't run it while updating;
+  reported by Ruediger Oertel.
+- Don't install .cvsignore file.
+
+-------------------------------------------------------------------
+Mon May 19 14:27:20 CEST 2003 - ro@suse.de
+
+- remove wrong obsoletes for jade_dsl 
+
+-------------------------------------------------------------------
+Tue May  6 01:16:45 CEST 2003 - ro@suse.de
+
+- move AttributeValue class declaration to the top of Attribute.h 
+
+-------------------------------------------------------------------
+Thu Jan 30 13:37:35 CET 2003 - ke@suse.de
+
+- Add osx to the %files list; reported by Togan Muftuoglu.
+
+-------------------------------------------------------------------
+Thu Jan 23 10:24:34 CET 2003 - coolo@suse.de
+
+- fixing script syntax
+
+-------------------------------------------------------------------
+Mon Dec 16 11:36:29 CET 2002 - ke@suse.de
+
+- Comment out SGMLDECL statements in CATALOG.opensp; thus the builtin
+  SGML declaration will be used.
+
+-------------------------------------------------------------------
+Mon Nov 25 17:01:58 CET 2002 - ke@suse.de
+
+- Update to version 1.5; from NEWS:
+  * Support for "-restricted" option to restrict parsing of web based
+    documents to local files only.
+  * New spcat cmdline interface to the catalog manager.
+  * The multibyte version of OpenSP now uses 32bit chars and supports
+    the full UTF-16 range 0x0000-0x10ffff.
+  * Support for the koi8-r (RFC 1489) encoding.
+  * DTDDECL in SGML Open Catalogs is supported.
+  * New options -n and -x to see message numbers/relevant clauses with
+    messages.
+  * New -output options: comment, omitted, tagomit and attromit; this
+    shows comments and implied elements and/or attributes.
+  * The architecture engine supports #MAPTOKEN.
+  * More of Annex K supported: SGML declarations on subdocs, DATA
+    declared value for attributes, DTD data entities and DTD notations
+    for doctypes, complete IMPLYDEF support, ENTITIES REF constraints,
+    URN parsing. Many new -w flags.
+  * More of Annex K supported: Common data attributes can now be
+    specified in external entity declarations.
+  * Added support for the PI-based architecture use declaration syntax
+    defined by Amendment 1 to ISO/IEC 10744:1997 (HyTime).  This makes
+    it possible to specify architectural support attributes when using
+    architectures with XML, and is generally simpler than the original
+    syntax.  See http://www.ornl.gov/sgml/wg8/document/1985.htm for
+    details.
+  * Adds the architecture public id to the information passed to
+    implementations of ArcDirector.  This is especially important when
+    using the PI-based architecture use declaration syntax, since there
+    may be no Notation object from which to get the information.
+  * Add a HTTP/1.0 Host header to HTTP requests. Necessary to fetch DTDs
+    specified in SYSTEM identifiers when the DTD resides on a name-based
+    "Virtual Host".
+  * Enhancements to osx.
+  * Add -x command line option to osx, which allows users to say whether
+    they want sdata entities transformed into PIs or treated like normal
+    entities (the default is the latter, which is how osx always behaved
+    before this change).
+  * Minor documentation improvements.
+  * Update translations: de, fr (new), ja (new)
+
+  * Option to produce error messages formatted as XML
+    enable with ./configure --enable-xml-messages
+
+- Register /etc/sgml/opensp.cat using sgml-register-catalog.
+- Default catalogs are now: CATALOG, /etc/sgml/catalog, and
+  /usr/share/sgml/CATALOG (in this order); /etc/sgml/catalog is new.
+- Make it a package on its own (separated from openjade).
+
+-------------------------------------------------------------------
+Sat Nov 23 16:03:23 CET 2002 - olh@suse.de
+
+- do not fail in pre/postinstall scripts
+
+-------------------------------------------------------------------
+Tue Nov 19 12:57:31 CET 2002 - ke@suse.de
+
+- Update to version 1.5pre9:
+- Make it a package on its own (separated from openjade).
+
+
+

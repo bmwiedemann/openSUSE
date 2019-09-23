@@ -1,0 +1,468 @@
+-------------------------------------------------------------------
+Thu Jun 07 10:22:19 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.2.2+git.20180603:
+  * Drop deprecated qt5_use_modules macro
+  * Use QTextStream for clipboard stuff
+  * Exporting symbols: add clipboard as an additional destination
+
+-------------------------------------------------------------------
+Sun Feb 18 10:34:17 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.2.1.git1518712461.78b6e38:
+  * Use the correct unit for symbol rate
+  * Enforce minimum export decimation of 1
+  * Don't try to draw an empty traceplot
+
+-------------------------------------------------------------------
+Tue Nov 28 19:57:24 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.2.git1511892427.0e86f24:
+  * added QMessageBox dialog on failure to open file
+  * support win32 application (graphical no console)
+  * replace off_t with size_t to match system pointer size
+  * Remove mmap dependencies with QFile
+  * move new definitions and mman include into msvc specific if/else
+  * changes to build under msvc and fftw find package
+  * added missing include for std::bind usage
+
+-------------------------------------------------------------------
+Sun Nov 12 18:31:09 UTC 2017 - mardnh@gmx.de
+
+- Simplify spec file by using only the scm source service
+
+-------------------------------------------------------------------
+Sat Nov 11 21:14:21 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.2.git1509919460.75b5bc6:
+  * Use a DC offset of 127.4 to match the RTL-SDR.
+  * fixes this zooming bug: when you try to zoom in/out after the
+    middle point of the sample buffer the display jumps to the end
+    of the buffer
+
+-------------------------------------------------------------------
+Sun Jul  9 14:00:11 UTC 2017 - mardnh@gmx.de
+
+- Add .desktop file
+
+-------------------------------------------------------------------
+Mon Jul 03 20:28:04 UTC 2017 - mardnh@gmx.de
+
+- Use git-version
+- Update to version 0.2.git1496240924.a89d133:
+  * Make ctrl+scroll zoom in and out of cursor point, rather than center
+  * Make scroll wheel zoom less jumpy on fractional-scroll devices like touchpads
+  * Rework plotview to scroll by column not by sample
+  * Factor out calculations between samples/columns
+  * Rename samplesPerLine -> samplesPerColumn
+  * Switch plotview to QGraphicsView for canvas dragging
+  * Make sure cursors/tuner interactions block canvas dragging
+  * Widened FFT size range
+  * Prevent tuner deviation becoming zero
+  * Qt requires that all used modules are set as required in CMake
+
+-------------------------------------------------------------------
+Thu Apr 13 19:16:32 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.2 (tagged release)
+  - specfile cleanup
+
+-------------------------------------------------------------------
+Fri Feb 03 15:48:26 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.2.git1486135270.87d52d5:
+  * Enable movement of both cursors by dragging between them
+  * Don't trap all mouse events in Cursors handler
+  * Ability to export raw samples from other plots
+  * Use 'Save' dialog for exporting samples
+  * Try to keep tuner at same spot when changing fft size
+  * Process cursor mouse events last
+  * Allow removing plots
+  * Pass plot height to tuner
+  * Limit tuner deviation
+  * Limit tuner edges to within plot area
+  * Limit tuner to within plot area on move
+  * Update README for liquid version
+  * Stop eventFilter stealing mouse events from scrollbars
+  * Fix file types in open dialog
+  * Don't export filtered samples when the filter isn't visible
+  * Move subscription stuff to AbstractSampleSource
+  * Make all plots subscribe to their sources
+  * Add missing file
+  * Display file-type when exporting samples
+  * Phase plot
+  * Update README
+  * Clarify current symbol extraction behaviour
+  * README tweak
+  * Add more pixmap cache
+  * Handle zoom events before parent to prevent normal scrolling
+
+-------------------------------------------------------------------
+Sat Dec 24 20:12:34 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.1.1.git1482165500.90e45fb:
+  * Move "All files" in Open Dialog to default Prevents macOS bug where only certain files are selectable by default (though not all file formats Inspectrum supports)
+  * Remove dead code. Fix some compiler warnings.
+  * Fix infinite loop when exporitng samples
+  * Fix memory leak
+  * Fixing use-after-free resulting in heap corruption
+  * Merge 86b0ee
+  * Better fix for export infinite loop
+  * Cosmetics
+  * Add missing header
+  * Save sample rate in settings
+  * Remember state of "Open File" dialog
+  * Save rest of settings in spectogram controls
+  * Fix FFT/Zoom setting saving
+  * Cleanup settings saving with individual slots
+  * Force fft/zoom change signal to setup initial state
+
+-------------------------------------------------------------------
+Sun Oct 30 09:50:47 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.1.1.git1477473872.5c4af0e:
+  * Plot amplitude between -1 and +1 so that the threshold plot works on it
+  * feat(export): Initial sample export support
+  * fix(plotviw): Do not crash on large full file exports
+  * feat(plotview): Recommend a decimation based on the tuner BW
+  * fix(spectrogramplot): Initialize the tuner transform as passthrough
+  * fix(plotview): check return value of getSamples for export
+  * fix(inputsource): Fix off-by-one in getSamples()
+  * Case-insensitive file extension comparison.
+  * Add extension support for 8.3 filenames (c16, c8).
+  * Add many missing filename extensions to file-open options.
+  * Add liquid-dsp to platform specific build instructions
+  * fixes the qt5 issues reported in #40 and #60
+  * feat(spectrogramplot): Draw a frequency scale
+  * Set better bounds on viewRange
+  * Fix mac build
+  * Check for reasonable duration in paintTimeScale
+  * Slow down mouse zoom speed
+
+-------------------------------------------------------------------
+Sun Aug 14 11:45:09 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.1.1.git1471032750.2c83e4e:
+  * Include headers to make build pass on OS X
+  * Update screenshot
+  * Update README
+  * Have travis build for OS X.
+  * Exclude building against GCC on OS X, since it's actually clang
+  * reorder compilers so builds for linux/clang and osx/clang are adjacent in the list
+  * feat(spectrogramplot): Draw a time axis at the top
+  * added time scale toggle checkbox
+  * refact(plotview): Move the time scale into PlotView
+  * Fix times/rates not changing when sample rate changes
+  * Clear spectrogram caches & repaint on src invalidate
+  * Use SI prefixes in labels
+  * Add missing file
+  * Only pass mouse events to cursors if they're enabled
+  * Display drag/move mouse pointer when dragging cursors
+  * feat(mainwindow): Parse sample rate from osmocom_fft filenames
+  * fix(main): Give command line options precedence
+
+-------------------------------------------------------------------
+Sun Jul 03 20:43:17 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.1.1.git1467575767.266c493:
+  * Link to liquid-dsp
+  * tuner: Use liquid for filter design
+  * tuner: Port to liquid
+  * Delete rotator
+  * plots: Don't use GR for amplitude demod
+  * plots: Port frequency demod to liquid
+  * plots: Don't use GR for threshold
+  * Remove GR
+  * Update README prereqs
+  * Add Travis CI file for Liquid DSP branch
+  * Cut down apt-get installed package list
+  * Run bootstrap before configure
+  * Add alternative apt repository
+  * Experiment with removing deps
+  * Try trusty
+  * Re-add qt packages
+  * Do a local liquid install to fix paths
+
+-------------------------------------------------------------------
+Sat Jun 04 17:47:41 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.1.1.git1465053890.4504736:
+  * spectrogram: Speed up FFT iterator a bit more
+  * spectrogram: Pull out constants from pixmap tile loop
+  * spectrogram: Use image.scanLine for more speedup
+
+-------------------------------------------------------------------
+Sat Jun 04 13:59:36 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.1.1.git1465048597.7ad2423:
+  * feat(inputsource): Add cs16 file format.
+  * feat(inputsource.cpp): Recognize more file suffixes
+  * input: Default to cf32 file type if extension is unknown
+  * Fix README rendering
+  * cmake: add boost include dirs
+  * Fix README file type section & add cs16
+  * cursors: Fix up naming of values derived from segmented cursors
+  * cursors: Split out mouse dragging logic into Cursor class
+  * cursor: Add option for horizontal cursors
+  * tuner: Add tuner overlay
+  * Revert "plotview: Disable time-domain plots for now"
+  * tuner: Hook up tuner overlay to modify Xlating FIR filter taps/centre
+  * tuner: Remove debug message
+  * tuner: Add missing include
+  * traceplot: Clean up trace plotting
+  * traceplot: Use QPainterPath
+  * traceplot: Antialiasing
+  * traceplot: Tidy up plotTrace a bit
+  * plot: Plot to QImage then draw
+  * plot: Split traceplot drawing into fixed-width tiles
+  * traceplot: Fix plotting of first sample in painter path
+  * plot: Cache tile pixmaps
+  * samplebuffer: Acquire lock during work function
+  * plot: Draw plot tiles in background thread
+  * plotview: Cleanup plot creation a bit
+  * plotview: Pass mouse events to individual plots
+  * plotview: Drop eventFilters and just pass mouse events to things
+  * plot: Add sample output interface
+  * tuner: Move Tuner intro SpectrogramPlot
+  * spectrogramplot: Cleanup a bunch of dead code
+  * plot: Don't steal all mouse events
+  * tuner: Draw relative to QRect, not absolute
+  * tuner: Prioritise movement over resize when dragging
+  * samplesource: Expose sample type
+  * plots: Push plot definition out of PlotView
+  * plots: Keep multimap of plots keyed by input sample type
+  * util: Add helper function for pair -> iter range
+  * plotview: Context menu for adding plots
+  * plotview: Use selected plot when right clicking
+  * plots: Add plot names
+  * samples: Support float -> float
+  * plots: Add threshold plot
+  * plotview: Remove hardcoded default plots
+  * plotview: Move derived plot actions to sub-menu
+  * input: Print fopen error
+  * plotview: Basic symbol extraction
+  * samplebuffer: Process some samples before requested block
+  * samplesource: Expose subscriber count
+  * spectrogram: Disable tuner when nothing subscribes to sample output
+  * spectrogram: Scale output samples based on power max slider
+  * plots: Add amplitude plot
+  * tuner: Switch from freq xlating fir filter to rotator + fir filter
+  * tuner: Re-implement rotator_cc
+  * rotator: Set the correct phase at the start of a block
+  * samplebuffer: Make the history stuff actually work
+  * cmake: Add PMT component
+  * plotview: Fix symbol extraction
+  * cursors: Only emit cursorsMoved after dragging (not on view updates)
+  * cursors: Move cursors to keep a constant symbol rate when changing symbol count
+  * Explicitly cast to an `off_t`
+  * spectrogram: Speed up getLine by removing mod operator
+  * spectrogram: Use log2f to avoid double conversions
+  * spectrogram: Simplify a bit
+  * spectrogram: Pull some constants out of the loop
+  * spectrogram: Drop the unnecessary sqrt
+  * spectrogram: Plot log power instead of magnitude
+
+-------------------------------------------------------------------
+Fri Mar 18 18:58:12 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.1.1.git1458327242.3f5a036:
+  + fixed crash when QFileDialog is closed without selecting a file
+  + plotview: Use range_t for viewRange
+  + plotview: Zoom relative to centre of view
+  + controls: Add zoomIn/zoomOut slots & signals
+  + plotview: Zoom in/out on ctrl + mouse wheel
+  + spectrogram: Fix bug with tile ID calculation that was causing lots of cache misses
+  + spectrogram: Fix scrolling bug when zoomed in
+  + SampleAdapter virtual class
+  + SampleAdapter classes for CF32, CS8, CU8.
+  + UI for file type selection, mapping to SampleAdapters.
+  + Access samples, sample size through SampleAdapter.
+  + Update README with supported file types
+
+-------------------------------------------------------------------
+Mon Mar 07 19:15:34 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.1.1.git1457360757.8a8b800:
+  + WIP
+  + Add generic SampleSource interface
+  + Convert InputSource to SampleSource interface
+  + Add generic sample buffer class
+  + waveform: Use SampleSource
+  + Require GNURadio (and boost)
+  + Add memory source/sink
+  + Add GNURadio sample buffer
+  + WIP waveformview use grsamplebuffer
+  + Use signals/slots to update waveform view
+  + Update waveform view on scroll
+  + waveform: Factor out plot function
+  + Refactor getSamples to return a unique_ptr
+  + Template SampleSource
+  + waveform: Support single-channel waveforms
+  + waveform: Pass in QRect to specify plot area
+  + waveform: Support plotting multiple waveforms
+  + waveform: Plot instantaneous frequency
+  + feature: Call external program on snippet
+  + Style fixup
+  + Move clamp from spectrogram to util
+  + selection: Store spectrogram selection
+  + selection: Clear selection if too small
+  + selection: Emit signals
+  + WIP Style
+  + waveform: Fix erroneous shared_ptr
+  + waveform: Setup freq_xlating_fir_filter based on selection
+  + Rename WaveformView -> PlotView
+  + Added cursors
+  + added dragless cursor delta measurement
+  + plot: Fix inverted y-axis
+  + util: Make util header-only
+  + util: Borrow range_t from @sharebrained
+  + util: Add length to range_t
+  + plot: Move trace plotting out of PlotView
+  + Style
+  + Remove old selection stuff
+  + plot: Add height()
+  + plot: Port Spectrogram to Plot interface
+  + Rename Spectrogram to SpectrogramPlot
+  + plot: Move PlotView to mainwindow central widget
+  + plot: Remove dead colormap code from PlotView
+  + main: Expand PlotView to fill ScrollArea
+  + plot: Draw centre-line
+  + spectrogram: Rotate view & draw first tile
+  + spectrogram: Take input source as argument
+  + spectrogram: Plot some more tiles
+  + main: Rip out a bunch of old signals etc.
+  + plot: Convert PlotView to derive from QAbstractScrollArea
+  + plot: Tweak default height
+  + plot: Scrolling again!
+  + plotview: Hook up setFFTSize
+  + plotview: Hook up zoomLevel & fix up scrolling
+  + plotview: Tweak scrolling
+  + controls: Remove time scale checkbox
+  + controls: Add enable cursors checkbox
+  + cursors: Add cursors widget (for time selection)
+  + plotview: Connect up cursors
+  + controls: Reorgnise controls
+  + plotview: Store view range
+  + spectrogram: Remove some dead code (ruler, old paintEvent)
+  + samplesource: Add subscription functionality
+  + spectrogram: Remove more dead code (openFile)
+  + input: Start refactoring InputSource to be able to open/close files
+  + input: Hook up file opening & invalidationEvent
+  + samplebuffer: Fix invalidateEvent typos
+  + plotview: Don't recreate the plots all the time
+  + samplebuffer: Add some nullptr checks to fix crashyness
+  + mainwindow: Reconnect open file button
+  + controls: Set defaults after making connections
+  + spectrogram: Hook up power min/max again
+  + spectrogram: Fix caching/tileIDs
+  + plot: Add default impl of all paint* functions
+  + spectrogram: Fix inverted spectrogram
+  + samplebuffer: Unsubscribe from src on destruct
+  + samplesource: Add sample rate property
+  + Style
+  + cursors: Reimplement Cursors as QObject and implement dragging
+  + plotview: Abstract out coord -> sample calculation
+  + cursors: Connect cursors to time/freq display on dock
+  + controls: Clean up selection labels a bit
+  + plotview: Remove old selection slots
+  + plotview: coordToSample -> samplesPerLine
+  + plotview: Store time selection
+  + cursors: Re-position cursors on view change
+  + cursors: Split cursors into n segments to align with multiple bits
+  + main: Re-add command-line sample rate setting
+  + cursors: Set more reasonable bit-count limits
+  + plotview: Setup default fftSize/zoomLevel to prevent divide-by-zero during load
+  + spectrogram: Workaround crash on final partial tile
+  + spectrogram: Cleanup dead code
+  + spectrogram: Don't delete inputSource - doesn't own it anymore
+  + spectrogram: Use unique_ptr for fft
+  + plotview: Add vertical scrolling
+  + controls: Remove pointer info
+  + controls: Clear cursor labels when disabled
+  + cursors: Update cursor labels when changing bit count
+  + plotview: Disable time-domain plots for now
+  + controls: Update FFT size and zoom level in one operation
+  + controls: Emit zoomLevel final multiplier (not a power)
+  + controls: Clamp zoomLevel to fftSize
+
+-------------------------------------------------------------------
+Sat Feb 20 13:46:20 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.1.1.git1450644862.0e80859:
+  + Adding macports build instructions.
+  + cmake: Specify fftw include/link directories to fix OSX build
+  + Specify correct OSX Macports fftw dep
+  + Remove unnecessary CFLAGS from Macports build instructions
+  + cmake: Fix OSX build - don't clear RPATH
+  + added time scale toggle checkbox
+
+-------------------------------------------------------------------
+Sat Nov 21 19:50:24 UTC 2015 - mardnh@gmx.de
+
+- Update to version 0.1.1.git1444066177.6287ae4:
+  + fix(spectrogram, inputsource): Use off_t where necessary
+  + Add GPLv3+ headers to everything
+  + allow user to override optimization level
+  + Set default CXXFLAGS if none are set
+
+-------------------------------------------------------------------
+Sat Oct 03 19:26:47 UTC 2015 - mardnh@gmx.de
+
+- Update to version 0.1.0.git1443893102.338fa68:
+  + Clear cache on file change
+  + Update screenshot
+  + Remove paint debug message
+
+-------------------------------------------------------------------
+Sun Sep 20 15:45:07 UTC 2015 - mardnh@gmx.de
+
+- Update to version 0.0.0.git1442762148.f6a408f:
+  + Remove status paragraph
+  + Clarify fftw dep
+  + Add cmake install target and update dependencies in readme
+  + Add uninstall target to remove inspectrum
+  + Fix wildcard for all files in file picker
+  + Use Qt's built-in HSV conversion
+  + Move file picker to SpectrogramControls
+  + Open file from command-line
+  + Pre-calculate color map
+  + Cache FFT result
+  + Index tiles by sample id and fft size
+  + Use QCache to cache FFT results
+  + Fix tile ID calculation
+  + Use custom class to index tiles by fftSize, zoomLevel and sample number
+  + Cache spectrogram pixmaps
+  + Increase tile size
+  + Ludicrous speed
+  + Remove stray sample files
+  + cmake: check for and use mman-win32 if building for windows
+  + Make sample rate settable from the commandline
+  + Add current filename to window title
+  + cmdline: Use toDouble when parsing rate for scientific notation support
+  + Fix window title not changing when opening a new file
+- removed patch inspectrum-cmake-mingw.diff (included upstream)
+
+-------------------------------------------------------------------
+Mon Aug 24 18:31:25 UTC 2015 - mardnh@gmx.de
+
+- Update to version 0.0.0.git1440435628.87fd35b:
+  + Remove unnecessary CMake modules
+  + Switch to cmake
+  + Add extra prereqs to OSX build instructions
+  + Add license
+
+-------------------------------------------------------------------
+Fri Aug 21 22:06:55 UTC 2015 - mardnh@gmx.de
+
+- Update to version 0.0.0.git1440112138.90fa88e:
+  + Fix missing includes
+  + Add CMakeLists
+  + Add OSX instructions
+  + Fix FFTW include cmake variable
+  + modify CMakeLists.txt to build with cmake 2.8.0
+
+-------------------------------------------------------------------
+Sun Aug 16 13:51:54 UTC 2015 - mardnh@gmx.de
+
+- initial package
+

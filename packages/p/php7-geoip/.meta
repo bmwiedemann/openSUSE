@@ -1,0 +1,8 @@
+<package name="php7-geoip" project="openSUSE:Factory">
+  <title>php5-geoip</title>
+  <description>This PHP extension allows you to find the location of an IP address - City, State,
+Country, Longitude, Latitude, and other information as all, such as ISP and connection type.
+For more info, please visit Maxmind's website.</description>
+  <devel project="server:php:extensions:php7" package="php7-geoip"/>
+  <url>https://pecl.php.net/geoip</url>
+</package>

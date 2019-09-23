@@ -1,0 +1,90 @@
+From 845e4c8b75ecaa5ef1b0ac4866df639640d3c13b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 7 Mar 2019 13:48:51 +0100
+Subject: [PATCH 1/2] CmplxGSVD, dbleGSVD: replace include config.h with
+ octave/oct.h.
+
+* CmplxGSVD.cc, CmplxGSVD.h, dbleGSVD.cc, dbleGSVD.h: we shouldn't be
+including Octave's config.h (Octave shouldn't even be making available
+and indeed it will not work anymore with Octave 4.2). Therefore, no
+need for -DHAVE_CONFIG_H.
+---
+ linear-algebra/src/CmplxGSVD.cc | 4 ----
+ linear-algebra/src/CmplxGSVD.h  | 2 ++
+ linear-algebra/src/Makefile     | 2 +-
+ linear-algebra/src/dbleGSVD.cc  | 4 ----
+ linear-algebra/src/dbleGSVD.h   | 2 ++
+ 5 files changed, 5 insertions(+), 9 deletions(-)
+
+diff --git a/linear-algebra/src/CmplxGSVD.cc b/linear-algebra/src/CmplxGSVD.cc
+index 26f5ae7..5ab63eb 100644
+--- a/linear-algebra/src/CmplxGSVD.cc
++++ b/linear-algebra/src/CmplxGSVD.cc
+@@ -14,10 +14,6 @@
+ // You should have received a copy of the GNU General Public License along with
+ // this program; if not, see <http://www.gnu.org/licenses/>.
+ 
+-#ifdef HAVE_CONFIG_H
+-#include <config.h>
+-#endif
+-
+ #include <iostream>
+ 
+ #include "CmplxGSVD.h"
+diff --git a/linear-algebra/src/CmplxGSVD.h b/linear-algebra/src/CmplxGSVD.h
+index 9cb91be..d34c005 100644
+--- a/linear-algebra/src/CmplxGSVD.h
++++ b/linear-algebra/src/CmplxGSVD.h
+@@ -19,6 +19,8 @@
+ 
+ #include <iostream>
+ 
++#include <octave/oct.h>
++
+ #include "dDiagMatrix.h"
+ #include "CMatrix.h"
+ #include "dbleGSVD.h"
+diff --git a/linear-algebra/src/Makefile b/linear-algebra/src/Makefile
+index b261f44..79faabe 100644
+--- a/linear-algebra/src/Makefile
++++ b/linear-algebra/src/Makefile
+@@ -13,7 +13,7 @@ endif
+ LFLAGS := $(shell $(MKOCTFILE) -p LFLAGS) $(LAPACK_LIBS) $(BLAS_LIBS)
+ export LFLAGS
+ 
+-DEFINES = -DHAVE_CONFIG_H -Wall
++DEFINES = -Wall
+ GSVD_OBJECTS = gsvd.o dbleGSVD.o CmplxGSVD.o 
+ GSVD_TARGET = gsvd.oct
+ GSVD_TEST = gsvd
+diff --git a/linear-algebra/src/dbleGSVD.cc b/linear-algebra/src/dbleGSVD.cc
+index f948da6..0b58aa3 100644
+--- a/linear-algebra/src/dbleGSVD.cc
++++ b/linear-algebra/src/dbleGSVD.cc
+@@ -14,10 +14,6 @@
+ // You should have received a copy of the GNU General Public License along with
+ // this program; if not, see <http://www.gnu.org/licenses/>.
+ 
+-#ifdef HAVE_CONFIG_H
+-#include <config.h>
+-#endif
+-
+ #include <iostream>
+ 
+ #include "dbleGSVD.h"
+diff --git a/linear-algebra/src/dbleGSVD.h b/linear-algebra/src/dbleGSVD.h
+index 6a040eb..0cb9d65 100644
+--- a/linear-algebra/src/dbleGSVD.h
++++ b/linear-algebra/src/dbleGSVD.h
+@@ -19,6 +19,8 @@
+ 
+ #include <iostream>
+ 
++#include <octave/oct.h>
++
+ #include "dDiagMatrix.h"
+ #include "dMatrix.h"
+ 
+-- 
+2.20.1
+

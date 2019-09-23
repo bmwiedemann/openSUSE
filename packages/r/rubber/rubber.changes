@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Mon Jul 18 11:21:45 UTC 2016 - badshah400@gmail.com
+
+- Add rubber-makeinfo-unsupported-option.patch to fix building
+  on openSUSE <= 13.2, where makeinfo does not support the
+  "--info" option.
+
+-------------------------------------------------------------------
+Mon Jul 18 11:00:15 UTC 2016 - badshah400@gmail.com
+
+- Update to version 1.4:
+  + New distutils-based build & install scripts by Nicolas.
+  + Report BibTeX / Biber errors more reliably.
+  + We have support for embedding R code via knitr.
+    http://yihui.name/knitr/
+    Closes: https://bugs.launchpad.net/rubber/+bug/1422759
+    Note that since R can run arbitrary external code, --unsafe
+    must be given at the command line:
+      rubber -d --unsafe paper.Rtex
+    creates beautifully typeset PDF from your R script.
+  + Support for PythonTeX package.  Also requires --unsafe if
+    you want Rubber to invoke pythontex.
+  + Rubber will no longer attempt to use jpeg2ps on its own, which
+    has been superseded by sam2p.  (You can add it back by
+    providing your own rules.ini.)
+  + More refactoring, reducing the number of code paths to test and
+    maintain.
+  + Bugs fixed: lp#628150, lp#975376, lp#1090115.
+- Also package HTML and PDF documentation in main package
+  (documentation files are rather small and do not warrant a
+  separate doc pkg).
+- Drop conditionals and macro definitions for ancient distro
+  versions.
+- Add BuildRequires: texinfo, required for building PDF
+  documentation.
+
+-------------------------------------------------------------------
+Sat Oct 27 11:50:55 UTC 2012 - coolo@suse.com
+
+- we also need to require info for %post scripts
+
+-------------------------------------------------------------------
+Fri Sep  7 13:19:36 UTC 2012 - coolo@suse.com
+
+- add explicit buildrequire makeinfo
+
+-------------------------------------------------------------------
+Sat Sep 25 20:44:38 UTC 2010 - badshah400@gmail.com
+
+- Remove texlive texlive-bin texlive-bin-latex from Requires,
+  texlive automatically pulls them in 
+- Lots of miscellaneous cleanup in the spec file
+
+-------------------------------------------------------------------
+Mon Aug  2 00:11:40 UTC 2010 - badshah400@gmail.com
+
+- spec file cleanup
+
+-------------------------------------------------------------------
+Sun Aug  1 06:48:33 UTC 2010 - badshah400@gmail.com
+
+- Intital package from upstream (development snapshot 
+  v20090819)
+

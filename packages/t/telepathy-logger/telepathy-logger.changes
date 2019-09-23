@@ -1,0 +1,261 @@
+-------------------------------------------------------------------
+Thu Aug 15 10:28:48 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libtpl-extensions-dependencies.patch: Fix dependencies of
+  tpl-extensions.pc: LIBTPL_MODULES have been dropped a while back.
+
+-------------------------------------------------------------------
+Mon Mar  5 15:16:42 UTC 2018 - jengelh@inai.de
+
+- Update summaries, fix RPM groups.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:40:13 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Nov  1 15:54:03 UTC 2017 - mpluskal@suse.com
+
+- Explicitly require python2-variant of packages: python2-devel and
+  python2-xml instead of python-devel and python.xml.
+- Cleanup with spec-clener.
+
+-------------------------------------------------------------------
+Tue Jul 26 18:30:11 UTC 2016 - zaitor@opensuse.org
+
+- Add telepathy-logger-tests-Rename-function.patch: Fix build,
+  patch from upstream git.
+
+-------------------------------------------------------------------
+Fri May 15 07:55:24 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.8.2:
+  + Ask libxml2 to recover from errors, if possible (fdo#40675).
+  + Fix crash when logs are corrupted or invalid XML (fdo#89595).
+
+-------------------------------------------------------------------
+Mon Aug 25 15:24:50 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.8.1:
+  + Fixes: Fix a leak in log-store-xml (fdo#54814).
+
+-------------------------------------------------------------------
+Tue Feb 19 15:05:24 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.8.0:
+  + GLib 2.28 is now required.
+  + New TplLogWalker API for iterating over logs (fdo#41772).
+  + Filter out duplicate dates in get_dates (fdo#53345).
+
+-------------------------------------------------------------------
+Wed Oct 31 19:31:26 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.6.0:
+  + Multiple introspection problems have been fixed (fdo#50361).
+  + Streamed Media channel support has been removed.
+  + telepathy-glib 0.19.2 is now required and deprecated
+    telepathy-glib usage has been removed.
+- Rename libtpl-extensions2 to libtpl-extensions3 and
+  libtpl-logger2 to libtpl-logger3, following upstreams soname
+  bumps.
+
+-------------------------------------------------------------------
+Wed Apr  4 07:44:22 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.4.0:
+  + No changes.
+- Changes from version 0.2.13:
+  + Support Call1.
+- Remove --enable-call from configure call: the option is gone.
+
+-------------------------------------------------------------------
+Thu Dec  8 23:20:54 UTC 2011 - dimstar@opensuse.org
+
+- Split typelib file into typelib-1_0-TelepathyLogger-0_2
+  subpackage.
+- Add typelib-1_0-TelepathyLogger-0_2 Requires to devel subpackage.
+
+-------------------------------------------------------------------
+Tue Nov 29 21:31:46 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.2.12:
+  + This bug fix release correct the accidental so-name bump.
+    Distributions should use this release instead of 0.2.11.
+- Changes from version 0.2.11:
+  + Fixes:
+    - Fix crash caused by used after free
+    - Fix crash wen call sender or actor is not set
+    - Fix missing alias feature when receiving messages
+    - Remove use of deprecated g_thread_init()
+    - Improve silent build rules
+    - Improve introspection annotation
+- Pass --enable-call to configure: this is experimental but useful.
+- Pass --enable-public-extensions to configure: this is in order to
+  allow building of 3rd party plugins, which is a feature used in
+  KDE.
+
+-------------------------------------------------------------------
+Sun Jul 31 21:05:48 CEST 2011 - vuntz@opensuse.org
+
+- Fix typo that was disabling parallel build (_smp_mflags, and not
+  _smp_flag).
+
+-------------------------------------------------------------------
+Fri May 27 10:00:03 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.2.10:
+  + Add support for text message edits
+  + Fix events ordering and merging speed
+  + Fix destroy function for get_entities_async
+  + Fix crash in pidgin log store.
+
+-------------------------------------------------------------------
+Wed May 18 17:35:40 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.2.9:
+  + Work around GLib TimeZone cache bug [bgo#646435]
+  + Fix client file to effectively observe Call.DRAFT channels
+  + Downgraded autotools requirement to 2.65
+  + Fix SQL syntax error and pending message order
+  + Store Calls log in separate file (e.g 20110505.call.log), to
+    fix performance issues.
+  + Make Pidgin store robust to empty file
+  + And more unit tests.
+
+-------------------------------------------------------------------
+Mon Apr  4 16:06:25 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.2.8:
+  + Fix incorrect soname bump introduced in 0.2.7
+- Changes from version 0.2.7:
+  + Readd AM_PATH_PYTHON back to configure.ac, required for
+    codegen.
+  + Add support for call logging (experimental, use --enable-call
+    to enable).
+  + Search using GRegex to prevent matching XML tags
+  + Improve test coverage
+  + Avoid using g_list_append() for performance reason
+  + Fixed infinite loop in pending message cache logic
+- Add gobject-introspection-devel BuildRequires.
+- Fix license tag to be LGPLv2.1+ instead of GPLv2.
+
+-------------------------------------------------------------------
+Wed Mar 23 10:16:51 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.2.6:
+  + Ported all internal time manipulation to GDateTime
+  + Observers now cache TplEntity object instead of TpContact to
+    reduce number memory allocations.
+  + Removed generated log_id
+  + Removed unused twisted test framework
+  + Port observer to TpTextChannel
+  + Reimplemnent pending message cache
+  + Update Telepathy GLib requirement to 0.14.0.
+
+-------------------------------------------------------------------
+Wed Mar  9 09:51:26 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.2.5:
+  + Fixes:
+    - Fix another 32 vs 64bits bug
+- Changes from version 0.2.4:
+  - Fixes:
+    - Add output annotations in TplLogManager
+    - Make the introspection files be 0.2 instead of 1.0
+    - Fix use of uninitialised variable
+    - Remove reference to Gnome in configure.ac
+    - Remove GPL warning in README, Logger is now fully LGPL
+    - Move observer and SQlite tests with dbus enabled tests
+    - Update valgrind suppressions.
+    - Fix XML store test crash on 32bit computer.
+- Changes from version 0.2.3:
+  - Fixes:
+    - Convert timestamp from uint to int64 on sent message
+    - Set an error if text event body is empty or NULL (fdo#31121)
+- Changes from version 0.2.2:
+  + Fixes:
+    - Start work on introspection support
+    - Fix TplEvent::get_target() logic so room event are stored
+      correctly.
+    - Fix room check when XML log store reads events
+    - Free GDate with g_date_free() instead of g_free ()
+    - Fix log_store_xml_get_filtered_events() to return no more
+      than num_events.
+    - Add an XML log store test for log_store_xml_add_event().
+
+-------------------------------------------------------------------
+Fri Feb 25 18:03:05 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.2.1:
+  + This bug fix release fixes memory corruption in GList
+    manipulation.
+  + Fixes:
+    - Use g_list_alloc() instead of g_new0() to allocate list
+    - Use _async() TplLogManager methods in unit test
+    - Do not ignore system() return value in unit test
+- Changes from version 0.2:
+  + This version is a large API refactoring that enables
+    abstraction of the logged event type and clarifies the methods.
+    Alongside this large refactoring some new features like ability
+    to clear logs (see D-Bus API) and read-only Pidgin log store
+    can be found. While it remains compatible on the storage side,
+    the API is not.
+- Rename libtelepathy-logger1 to libtelepathy-logger2, following
+  library soversion change.
+
+-------------------------------------------------------------------
+Sat Dec 11 11:38:35 CET 2010 - vuntz@opensuse.org
+
+- Own /usr/share/telepathy and /usr/share/telepathy/clients to fix
+  the build.
+
+-------------------------------------------------------------------
+Tue Dec  7 11:41:20 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.1.7:
+  + Stop using tp_get_bus().
+  + Loads of memory leaks fixed.
+  + Don't crash by trying to use the sqlite log store after it has
+    been disposed.
+
+-------------------------------------------------------------------
+Wed Oct 13 22:55:50 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.1.6:
+  + Fixes:
+    - Running the test suite no longer accesses your session's
+      GSettings.
+    - Out-of-tree builds now work.
+    - A CM crashing with open text channels no longer causes
+      conversations not to be logged, and to take 25 seconds to be
+      displayed. (fdo#30824)
+
+-------------------------------------------------------------------
+Thu Aug 12 09:41:27 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.1.5:
+  + Enhancements:
+    - fdo#28602: The logger uses GSettings instead of GConf for
+      preferences.
+    - The ignore-accounts key has been removed for now as it was
+      unused and broken.
+  + Fix:
+    - fdo#29058: Make sure that TplLogSearchHit always contains the
+      account if known.
+- Remove pkgconfig(gconf-2.0) BuildRequires and the various gconf
+  macros
+- Add intltool BuildRequires
+- Add gsettings macros to post/postun
+
+-------------------------------------------------------------------
+Thu Aug  5 23:23:52 CEST 2010 - vuntz@opensuse.org
+
+- Cleanup before inclusion in Factory.
+
+-------------------------------------------------------------------
+Fri Jul  9 21:24:54 UTC 2010 - dimstar@opensuse.org
+
+- Initial package of telepathy-logger, required by recent version
+  of Empathy.
+

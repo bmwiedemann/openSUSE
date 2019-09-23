@@ -1,0 +1,28 @@
+linking libcdio_cdda to ffmpeg requires -ltr in 11.4 and SLE_11
+---
+ libcdio_cdda.pc.in     |    2 +-
+ libcdio_paranoia.pc.in |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+Index: libcdio-paranoia-10.2+0.93+1/libcdio_cdda.pc.in
+===================================================================
+--- libcdio-paranoia-10.2+0.93+1.orig/libcdio_cdda.pc.in
++++ libcdio-paranoia-10.2+0.93+1/libcdio_cdda.pc.in
+@@ -7,5 +7,5 @@ Name: libcdio_cdda
+ Description: CD paranoia CD-DA library from libcdio
+ Version: @PACKAGE_VERSION@
+ Requires: libcdio
+-Libs: -L${libdir} -lcdio_cdda -lcdio @COS_LIB@
++Libs: -L${libdir} -lcdio_cdda -lcdio @LIBS@
+ Cflags: -I${includedir}
+Index: libcdio-paranoia-10.2+0.93+1/libcdio_paranoia.pc.in
+===================================================================
+--- libcdio-paranoia-10.2+0.93+1.orig/libcdio_paranoia.pc.in
++++ libcdio-paranoia-10.2+0.93+1/libcdio_paranoia.pc.in
+@@ -7,5 +7,5 @@ Name: libcdio_paranoia
+ Description: CD paranoia library from libcdio
+ Version: @PACKAGE_VERSION@
+ Requires: libcdio
+-Libs: -L${libdir} -lcdio_paranoia -lcdio_cdda -lcdio
++Libs: -L${libdir} -lcdio_paranoia -lcdio_cdda -lcdio @LIBS@
+ Cflags: -I${includedir}

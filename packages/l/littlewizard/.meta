@@ -1,0 +1,9 @@
+<package name="littlewizard" project="openSUSE:Factory">
+  <title>Development Environment for Children</title>
+  <description>Little Wizard is created especially for primary school children. It allows to
+learn using main elements of present computer languages, including: variables,
+expressions, loops, conditions, logical blocks. Every element of language is
+represented by an intuitive icon. It allows program Little Wizard without
+using keyboard, only mouse.</description>
+  <devel project="Education" package="littlewizard"/>
+</package>

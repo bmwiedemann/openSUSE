@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Tue Apr 10 23:18:06 UTC 2018 - jengelh@inai.de
+
+- Drop version from Provides: unrar
+
+-------------------------------------------------------------------
+Thu Mar 29 10:37:17 UTC 2018 - kstreitova@suse.com
+
+- remove python3-devel BuildRequires that is not needed 
+- fix license
+
+-------------------------------------------------------------------
+Mon Mar 19 12:14:30 UTC 2018 - kstreitova@suse.com
+
+- initial commit [fate#323896]

@@ -1,0 +1,16 @@
+call gzip -n to not store timestamps in .gz file header
+to make package build fully reproducible
+
+Index: efont-unicode-bdf-0.4.2-src/Makefile.in
+===================================================================
+--- efont-unicode-bdf-0.4.2-src.orig/Makefile.in
++++ efont-unicode-bdf-0.4.2-src/Makefile.in
+@@ -270,7 +270,7 @@ f10.hex: f10_source.hex f10_add.hex
+ ########################################################################
+ 
+ %.pcf.gz: %.bdf
+-	bdftopcf $< | gzip -9c > $@.tmp && \
++	bdftopcf $< | gzip -9nc > $@.tmp && \
+ 	mv $@.tmp $@
+ %_b.bdf: %.bdf
+ 	tools/mkbold -l $< > $@.tmp && \

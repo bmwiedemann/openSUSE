@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9b5057513ef8555da4798a1c44a6b6ef</srcmd5>
+    <version>0.2.0</version>
+    <time>1540451535</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-Flask-Paranoid, required by pgadmin4</comment>
+    <requestid>644258</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a5d8b0263b58717cf581a0355cff82a3</srcmd5>
+    <version>0.2.0</version>
+    <time>1540544968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644501</requestid>
+  </revision>
+</revisionlist>

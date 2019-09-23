@@ -1,0 +1,11 @@
+--- groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/runtime/SwingGroovyMethods.java	2013-02-15 09:42:29.000000000 +0100
++++ groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/runtime/SwingGroovyMethods.java	2018-12-18 11:28:02.474773520 +0100
+@@ -673,7 +673,7 @@
+      */
+     @SuppressWarnings("unchecked")
+     public static Iterator<TreeNode> iterator(TreeNode self) {
+-        return DefaultGroovyMethods.iterator(self.children());
++        return (Iterator<TreeNode>) DefaultGroovyMethods.iterator(self.children());
+     }
+ 
+     /**

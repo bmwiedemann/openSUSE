@@ -1,0 +1,7 @@
+<package name="wxWidgets-3_0-nostl" project="openSUSE:Factory">
+  <title>C++ Library for Cross-Platform Development</title>
+  <description>wxWidgets is a free C++ library for cross-platform GUI. With wxWidgets, you can create applications for different GUIs (GTK+, Motif, MS Windows, MacOS X, Windows CE, GPE) from the same source code.</description>
+  <devel project="openSUSE:Factory" package="wxWidgets-3_0"/>
+  <url>http://www.wxwidgets.org/</url>
+  <bcntsynctag>wxWidgets-3_0</bcntsynctag>
+</package>

@@ -1,0 +1,22 @@
+Index: misc/ext.d/doc.sh.in
+===================================================================
+--- misc/ext.d/doc.sh.in.orig
++++ misc/ext.d/doc.sh.in
+@@ -52,7 +52,7 @@ do_view_action() {
+         fi
+         ;;
+     msdoc)
+-        if wvHtml >/dev/null 2>&1; then
++        if wvHtml >/dev/null 2>&1 && which elinks >/dev/null 2>&1; then
+             tmp=`mktemp -d ${TMPDIR:-/tmp}/%p.XXXXXX`
+             wvHtml "${MC_EXT_FILENAME}" --targetdir="$tmp" page.html
+             elinks -dump "$tmp/page.html"
+@@ -68,7 +68,7 @@ do_view_action() {
+         fi
+         ;;
+     msxls)
+-        if xlhtml >/dev/null 2>&1; then
++        if xlhtml >/dev/null 2>&1 && which elinks >/dev/null 2>&1; then
+             tmp=`mktemp -d ${TMPDIR:-/tmp}/%p.XXXXXX`
+             xlhtml -a "${MC_EXT_FILENAME}" > "$tmp/page.html"
+             elinks -dump "$tmp/page.html"

@@ -1,0 +1,177 @@
+-------------------------------------------------------------------
+Sun Nov 11 00:00:00 UTC 2018 - fwdsbs.to.11df@xoxy.net
+
+- Update to version 4.7:
+- Remove use-roslyn-vbc.patch:
+  * Never roslyn-vbc is unable to properly bootstrap vbnc binary with provided obsolete bootstrap-libraries
+- Remove roslyn-conditional build from spec file:
+  * Bootstrap\build routine provided with package now works as intended with mono 5.16 and up
+
+-------------------------------------------------------------------
+Fri Mar 30 00:00:00 UTC 2018 - fwdsbs.to.11df@xoxy.net
+
+- Add fix-vbnc-debug-portable-cmdline.patch to fix VBNC2019 error when ivoking vbnc.exe with unsupported "/debug:portable" cmdline parameter:
+  * Silently ignore incorrect surplus "/debug:portable" command line parameter when invoking vbnc
+  * Set debug to "full" mode if this is the only "/debug" parameter at vbnc's cmdline
+
+-------------------------------------------------------------------
+Fri Mar 23 21:00:00 UTC 2018 - fwdsbs.to.11df@xoxy.net
+
+- Add use-roslyn-vbc.patch:
+  * Use roslyn's vbc compiler (when available) instead of deprecated vbnc in order to fix build error with mono 5.10 and up
+
+-------------------------------------------------------------------
+Sat Aug 19 15:00:00 UTC 2017 - fwdsbs.to.11df@xoxy.net
+
+- update version 4.6
+
+-------------------------------------------------------------------
+Thu May 28 19:00:00 UTC 2015 - fwdsbs.to.11df@xoxy.net
+
+- update version 4.0.1
+
+-------------------------------------------------------------------
+Thu Apr 30 00:00:00 UTC 2015 - fwdsbs.to.11df@xoxy.net
+
+- update version 4.0
+  * support for upcoming Mono 4.0
+  * see commits: github.com/mono/mono-basic
+
+-------------------------------------------------------------------
+Thu Oct 30 17:32:14 UTC 2014 - mailaender@opensuse.org
+
+- http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Tue Oct 28 14:50:07 UTC 2014 - i@marguerite.su
+
+- update version 3.8
+  * see commits: github.com/mono/mono-basic
+
+-------------------------------------------------------------------
+Tue Feb 22 17:11:40 UTC 2011 - ajorgensen@novell.com
+
+- Update to 2.10
+  * http://www.go-mono.com/archive/2.10
+
+-------------------------------------------------------------------
+Tue Oct 12 17:50:06 UTC 2010 - ajorgensen@novell.com
+
+- Update to 2.8
+  * http://www.go-mono.com/archive/2.8
+
+-------------------------------------------------------------------
+Tue Mar 16 16:37:37 UTC 2010 - ajorgensen@novell.com
+
+- Update to 2.6.2
+  * http://www.mono-project.com/Release_Notes_Mono_2.6.3
+
+-------------------------------------------------------------------
+Tue Jan 26 22:27:23 UTC 2010 - ajorgensen@novell.com
+
+- Update to 2.6
+  * http://www.mono-project.com/Release_Notes_Mono_2.6
+
+-------------------------------------------------------------------
+Tue Aug 11 16:11:54 UTC 2009 - ajorgensen@novell.com
+
+- Update to 2.4.2
+  * http://www.mono-project.com/Release_Notes_Mono_2.4.2
+
+-------------------------------------------------------------------
+Tue Mar 31 13:36:29 MDT 2009 - ajorgensen@novell.com
+
+- Update to 2.4
+  * http://www.mono-project.com/Release_Notes_Mono_2.4
+
+-------------------------------------------------------------------
+Wed Sep  3 14:02:10 MDT 2008 - ajorgensen@novell.com
+
+- Update to 2.0 RC1
+- Use the windows .zip for 1.0 runtime rather than our RPM
+
+-------------------------------------------------------------------
+Tue Aug 26 09:33:09 MDT 2008 - ajorgensen@novell.com
+
+- Update to 2.0
+  * Better handling of error conditions
+  * Fixes for bnc#325331, bnc#324807, bnc#361412
+
+-------------------------------------------------------------------
+Tue Mar 25 15:37:32 MST 2008 - wberrier@suse.de
+
+- Automatically pick the correct file for the prebuilt vb runtime
+- Update to 1.9
+ -More support in the IO classes for Visual Basic
+
+-------------------------------------------------------------------
+Mon Jan 14 15:37:32 MST 2008 - wberrier@suse.de
+
+- Update to 1.2.6
+ -Updated internal version to work with versions of .net > 2.0
+ -Several bug fixes in the vb runtime
+
+-------------------------------------------------------------------
+Fri Aug  3 19:07:32 CEST 2007 - wberrier@suse.de
+
+- Update to 1.2.5
+ -support for late binding in vbnc (Option Strict Off and Option
+  Explicit Off).
+ -several bugfixes in vbnc, and vbruntime
+ -error reporting is somewhat better now (now possible to get line
+  numbers in stack traces)
+
+-------------------------------------------------------------------
+Tue Jun  5 17:18:53 MST 2007 - wberrier@novell.com
+
+- Build vbnc instead of shipping from binary
+- Update to 1.2.4
+ -fixes to enable vb.net in asp.net
+ -'My' namespace support in vbnc
+
+-------------------------------------------------------------------
+Fri Apr 13 19:18:53 CET 2007 - wberrier@novell.com
+
+- add %debug_package so debug packages get created
+
+-------------------------------------------------------------------
+Wed Apr 11 16:16:25 CET 2007 - wberrier@novell.com
+
+- Add mono dep/req for older distros
+
+-------------------------------------------------------------------
+Wed Mar 14 18:21:36 CET 2007 - wberrier@suse.de
+
+- Ship prebuilt binaries for now.  Some runtime fixes are needed
+  before vbnc will compile on all archs
+
+-------------------------------------------------------------------
+Sat Mar 10 00:24:19 CET 2007 - wberrier@suse.de
+
+- Update to 1.2.3.1
+ -Includes vbnc compiler (which is self hosting, but we still
+  ship the vbruntime built with with ms.net because vbnc doesn't
+  support 1.0 assemblies yet)
+
+-------------------------------------------------------------------
+Sat Dec  2 21:45:38 CET 2006 - wberrier@suse.de
+
+- Update to 1.2.2 (Fate #301111)
+ -Testsuite updates
+ -Runtime fixes and updates
+
+-------------------------------------------------------------------
+Sat Oct 21 02:30:05 CEST 2006 - wberrier@suse.de
+
+- Update to 1.1.18
+ -many fixes to the basic runtime
+
+-------------------------------------------------------------------
+Wed Aug 30 16:26:26 CEST 2006 - ro@suse.de
+
+- remove ExclusiveArch from noarch package
+
+-------------------------------------------------------------------
+Tue Aug 29 22:43:43 CEST 2006 - wberrier@suse.de
+
+- Initial package

@@ -1,0 +1,189 @@
+-------------------------------------------------------------------
+Tue Jan  9 12:10:42 UTC 2018 - bwiedemann@suse.com
+
+- Add libsamplerate-0.1.9-reproducible.patch to disable throughput
+  test to make builds reproducible in spite of Profile Guided Optimizations
+
+-------------------------------------------------------------------
+Sat Sep 30 23:47:42 UTC 2017 - jengelh@inai.de
+
+- Rectify RPM groups.
+
+-------------------------------------------------------------------
+Mon Apr 24 10:35:03 CEST 2017 - tiwai@suse.de
+
+- Add missing provides/obsoletes for the old libsamplerate package
+
+-------------------------------------------------------------------
+Tue Oct 25 19:12:46 UTC 2016 - tom.mbrt@googlemail.com
+
+- update to version 0.1.9 (2016-09-23)
+  * Relicense under 2 clause BSD license.
+  * Minor bug fixes and upates.
+- remove 0001-src-src_sinc.c-Fix-a-read-beyond-end-of-coefficent-a.patch
+  since it was fixed upstream
+
+-------------------------------------------------------------------
+Mon Feb 23 14:17:04 UTC 2015 - rguenther@suse.com
+
+- Avoid running configure twice and using -fprofile-generate or
+  -fprofile-use for compiling configure tests when profiling.
+
+-------------------------------------------------------------------
+Tue Aug 26 12:14:15 UTC 2014 - fcrozat@suse.com
+
+- Add obsoletes/provides to baselibs.conf.
+
+-------------------------------------------------------------------
+Sat May 18 07:22:28 UTC 2013 - dmueller@suse.com
+
+- disable profiling also on aarch64 
+
+-------------------------------------------------------------------
+Tue Apr 16 02:37:15 UTC 2013 - crrodriguez@opensuse.org
+
+- 0001-src-src_sinc.c-Fix-a-read-beyond-end-of-coefficent-a.patch 
+  from upstream, fix off-by-one bug found by gcc 4.8 address sanitizer.
+
+-------------------------------------------------------------------
+Wed Aug  1 06:54:11 UTC 2012 - adrian@suse.de
+
+- disable profiling on arm
+
+-------------------------------------------------------------------
+Sat May  5 14:58:55 UTC 2012 - crrodriguez@opensuse.org
+
+- build with profiling rnabled 
+
+-------------------------------------------------------------------
+Tue Mar  6 11:17:23 UTC 2012 - saschpe@suse.de
+
+- Adhere to shared library packaging policy
+
+-------------------------------------------------------------------
+Sun Mar  4 23:14:45 UTC 2012 - reddwarf@opensuse.org
+
+- update to version 0.1.8
+  * Minor bug fixes and updates.
+- drop all patches, not needed in new upstream version
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 22 10:19:16 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Aug  6 17:47:41 CEST 2011 - meissner@suse.de
+
+- disable quilt usage, as it extends the build chain quite some
+
+-------------------------------------------------------------------
+Wed Dec  8 16:23:18 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Import debian fixes, this fix:
+* The test suite so we can run make check
+* src_simple() causes a crash with certain inputs 
+
+-------------------------------------------------------------------
+Sun Jun  6 16:54:13 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- update to version 0.1.7
+  * Fix a segfault which occurs when memcpy is passed a bad length parameter.
+  * Minor bug fix in test suite (account for rounding error on x86_64).
+  * Optimisation resulting dramatic throughput improvements.
+
+-------------------------------------------------------------------
+Fri Dec 18 13:17:46 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:28 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Thu Apr 23 17:17:27 CEST 2009 - tiwai@suse.de
+
+- added progs sub-packabe (bnc#443543)
+
+-------------------------------------------------------------------
+Wed Nov 12 12:43:22 CET 2008 - tiwai@suse.de
+
+- fixed misc build errors: remove unnecessary Makefiles in doc and
+  fixed package summary
+
+-------------------------------------------------------------------
+Tue Nov 11 19:51:00 CET 2008 - dominique-rpm@leuenberger.net
+
+- Update to version 0.1.4:
+  * Fix buffer overrrun bug at extreme low conversion ratios. 
+  Thanks to Russell O'Connor for the report.
+  (bnc# 443794 / CVE-2008-5008 )
+
+-------------------------------------------------------------------
+Wed Jun 18 16:53:55 CEST 2008 - tiwai@suse.de
+
+- updated to version 0.1.3:
+  * Huge quality improvements to two best SINC based converters
+- fix post and postun scripts
+
+-------------------------------------------------------------------
+Thu Jun  5 01:31:44 CEST 2008 - ro@suse.de
+
+- added baselibs.conf (for alsa-plugins-samplerate) 
+
+-------------------------------------------------------------------
+Mon Apr 16 14:58:54 CEST 2007 - tiwai@suse.de
+
+- follow library package policy
+  * move docs to devel package
+  * remove static library
+
+-------------------------------------------------------------------
+Mon Apr 16 11:22:12 CEST 2007 - schwab@suse.de
+
+- Fix quoting in autoconf macros.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:43 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 21 16:43:42 CET 2005 - tiwai@suse.de
+
+- updated to version 0.1.2.
+
+-------------------------------------------------------------------
+Thu Aug  5 12:15:16 CEST 2004 - tiwai@suse.de
+
+- updated to version 0.1.1.
+
+-------------------------------------------------------------------
+Tue Jan 13 20:21:27 CET 2004 - tiwai@suse.de
+
+- build as non-root.
+
+-------------------------------------------------------------------
+Fri Jun  6 15:17:40 CEST 2003 - tiwai@suse.de
+
+- updated to version 0.0.15.
+- fixed the file list.
+
+-------------------------------------------------------------------
+Thu Mar 27 15:47:04 CET 2003 - tiwai@suse.de
+
+- added the missing src_set_ratio in version list.
+
+-------------------------------------------------------------------
+Fri Jan 17 16:01:42 CET 2003 - tiwai@suse.de
+
+- added %run_ldconfig to %post.
+
+-------------------------------------------------------------------
+Thu Jan 16 13:14:09 CET 2003 - tiwai@suse.de
+
+- initial version: 0.0.14.
+

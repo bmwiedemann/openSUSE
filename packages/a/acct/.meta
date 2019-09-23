@@ -1,0 +1,6 @@
+<package name="acct" project="openSUSE:Factory">
+  <title>User-Specific Process Accounting</title>
+  <description>This package contains the programs necessary for user-specific process
+accounting: sa, accton, and lastcomm.</description>
+  <devel project="Base:System" package="acct"/>
+</package>

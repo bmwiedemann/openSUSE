@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aeca234716c78637bae74e93b8a90533</srcmd5>
+    <version>0.4.3</version>
+    <time>1447146111</time>
+    <user>dimstar_suse</user>
+    <comment>This is a MATE panel applet to notify when software updates are available.
+
+The notification is displayed in two ways:
+  1) by changing the icon of the applet.
+  2) by sending a notification to the notification-daemon.
+
+The information is obtained from PackageKit.</comment>
+    <requestid>339628</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>76027b684225bf7983f663538a306c1f</srcmd5>
+    <version>0.4.5</version>
+    <time>1485383344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>451382</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f6e0aacc281e6618ac2819758bd7ad80</srcmd5>
+    <version>0.4.5</version>
+    <time>1490026290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>481122</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d7242f1e88c78c18d42d022564b121e2</srcmd5>
+    <version>0.4.6</version>
+    <time>1495267961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>494379</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2ea807805b2e83fb62bf2edca039934f</srcmd5>
+    <version>0.4.7</version>
+    <time>1521579401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586537</requestid>
+  </revision>
+</revisionlist>

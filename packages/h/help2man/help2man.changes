@@ -1,0 +1,426 @@
+-------------------------------------------------------------------
+Tue Aug 27 06:32:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Aug 13 18:36:31 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- help2man 1.47.11:
+  * Set document language for localised info pages
+  * Add French and Spanish translation of info documentation
+  * Add Spanish and Danish translations
+  * Add support for reproducible builds by using $SOURCE_DATE_EPOCH
+    as the date for the generated pages
+
+-------------------------------------------------------------------
+Tue Jul  9 07:53:10 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Add correct gpg keyring
+
+-------------------------------------------------------------------
+Wed Jun 26 08:00:49 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.47.10:
+  * Change maintainer sanity check in debian/rules to use the
+    contents of README rather than the mtime, which may be have
+    been modified by dpkg-source (closes: #925136).
+- Changes for version 1.47.9:
+  * Add Tamil translation (thanks to Arun Isaac).
+- Changes for version help2man 1.47.8:
+  * Use $(DEB_VERSION) from pkg-info.mk [lintian].
+  * Fix git repository link in generated README.
+  * Update debian/copyright to machine readable format [lintian].
+  * Update standards version to 4.2.1 (no changes).
+- Split lang subpackage
+- Use signature to verify sources
+
+-------------------------------------------------------------------
+Sat Sep 29 10:04:24 UTC 2018 - astieger@suse.com
+
+- update to 1.47.7:
+  * Add Swedish translation of info page
+- includes changes from 1.47.6:
+  * Add Brazilian Portuguese translation of info page
+  * Update Hungarian translation
+  * Update Brazilian Portuguese translation
+
+-------------------------------------------------------------------
+Thu Oct  5 11:53:39 UTC 2017 - riafarov@suse.com
+
+- Update to 1.47.5
+  * Refresh Brazilian Portuguese translation from translation project
+    copy (trivial date change).
+  * Update Swedish translation (thanks to Sebastian Rasmussen).
+  * Use POSIX compliant TZ when setting UTC (thanks to Paul Eggert).
+  * Update copyright years.
+
+-------------------------------------------------------------------
+Tue May 10 15:43:45 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.47.4
+  * Update Serbian translation (thanks to Мирослав Николић).
+  * Add Chinese (simplified) translation of info page (thanks to
+    Mingye Wang).
+  * Update Brazilian Portuguese translation (thanks to Rafael
+    Fontenelle).
+  * Reduce the minimum translation to 60% for info files.
+  * Extract version from dpkg-parsechangelog using the new flag,
+    rather than sed.
+  * Add hardening flags via DEB_BUILD_MAINT_OPTIONS.
+  * Use secure VCS URIs.
+  * Update standards version to 3.9.8.
+
+-------------------------------------------------------------------
+Thu Nov 19 15:39:09 UTC 2015 - astieger@suse.com
+
+- update to 1.47.3:
+  * Filter more untranslatable strings from help2man-texi.pot
+  * Add note to translators about translation of cross-references.
+
+-------------------------------------------------------------------
+Fri Sep 11 19:55:20 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.47.2
+  * Update Esperanto translation (thanks to Felipe Castro).
+  * Add Chinese (simplified) translation (thanks to Mingye Wang).
+
+-------------------------------------------------------------------
+Mon Jun 15 20:50:19 UTC 2015 - astieger@suse.com
+
+- update to 1.47.1:
+  * Set document language for localised info pages.
+  * Add French and Spanish translation of info documentation.
+  * Add Spanish and Danish translations.
+  * Add support for reproducible builds by using
+    $SOURCE_DATE_EPOCH as the date for the generated pages.
+
+-------------------------------------------------------------------
+Mon May 11 12:08:32 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.46.6
+  * Add German, Ukranian and Polish translations of info
+    documentation.
+  * Add Hungarian and Norwegian Bokmaal translations.
+
+-------------------------------------------------------------------
+Sat Jan 31 10:05:43 UTC 2015 - andreas.stieger@gmx.de
+
+- help2man 1.46.5:
+  * Fix a problem with LC_ALL being imported twice with different
+    prototypes from POSIX and Locale::gettext
+  * Update copyright years.
+
+-------------------------------------------------------------------
+Mon Oct 13 20:18:49 UTC 2014 - andreas.stieger@gmx.de
+
+- help2man 1.46.4:
+  * Include architecture.mk and buildflags.mk into rules to replace
+    the multiple calls to dpkg-architecture and to pick up the
+    correct hardening flags.
+  * Add $(LDFLAGS) when building preload to pick up -z relro (see
+    https://wiki.debian.org/Hardening).
+  * Minor correction to Norwegian Bokmaal translation.
+  * Minor correction to Brazilian Portuguese translation.
+  * Escape dashes in --name flag for groff (see lintian tag:
+    hyphen-used-as-minus-sign).
+  * Fix example using AM_MISSING_PROG in documentation: this macro no
+    longer requires the third argument.
+
+-------------------------------------------------------------------
+Sun Oct  5 22:10:44 UTC 2014 - andreas.stieger@gmx.de
+
+- help2man 1.46.3:
+  * Update Serbian translation
+  * Add Spanish translation
+- includes changes from 1.46.2:
+  * Update French translation, and add translation of info page
+- verify source signature
+
+-------------------------------------------------------------------
+Sat Aug 16 20:01:03 UTC 2014 - mardnh@gmx.de
+
+- Update to version 1.46.1:
+  * Update translations.
+  * Apply texinfo patch from Mario Blätterman.
+  * Rename aclocal macros with LOCAL_ prefix.
+  * Include "missing" program from automake in distribution.
+  * Add LOCAL_PROG_OR_MISSING macro.
+  * Change reference to standards to avoid spurious comma.
+    to Yuri Chornoivan).
+    Jakub Bogusz).
+  * Move automake helper scripts into a build-aux sub-directory.
+  * Add a helper script to locate files in $VPATH.
+    + fixup-tex-pot: remove entries from template which should not be
+        translated.
+    + fixup-texi-trans: add the correct path for install-info and correct the
+        alignment of the main menu.
+  From 1.45.1:
+  * Skip additional blank lines following sections, and provide an
+    explicit method of adding sections (thanks to Mischa Williamson).
+  * Improve handling of tagged paragraphs when the body is on a following
+    line (thanks to Brian Campbell).
+  * Add escapes to adjust spacing of italic text at roman/italic
+    boundaries (thanks to Bjarni Ingi Gislason, closes: #742289)
+  From: 1.44.1:
+  * Perform shell word splitting on option lines in include files.
+  * Update translations.
+  * Update copyright years.
+  * Change distribution filename in README to help2man-VERSION.tar.xz
+  * Fix gitweb URL in README.
+
+-------------------------------------------------------------------
+Tue Jul  9 18:16:52 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to version 1.43.3:
+  * Update translations.
+  From 1.43.2:
+  * Use the generic term "section" in the documentation rather than "name",
+    which could be confused to mean only the literal "NAME" section.
+  From 1.43.1:
+  * Add explicit include syntax for prepending, replacing or appending to
+    generated output for a section (thanks to Daniil Baturin for the idea).
+  * Update translations.
+  From 1.42.1:
+  * Update translations.
+  * Consistently strip path and/or libtool "lt-" prefix from any instance
+    of $program derived from --help or --version (thanks to Eric Shattow
+    for identifying the issue).
+  From 1.41.2:
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar 26 21:06:39 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to version 1.41.1:
+  * Rename configure.in to .ac, and revise use of AC_INIT/AC_OUTPUT macros
+    to meet current autoconf guidelines.
+  * Add copyright headers to supporting files (GNU All-Permissive License).
+  * Fix section name comparisons ($sect is localised).
+  * Set filenames in italics.
+  * Suppress option/filename handling in EXAMPLES section.
+  From 1.40.13:
+  * Debian build fixes.
+
+-------------------------------------------------------------------
+Sat Oct  6 19:42:25 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 1.40.12:
+  * Update Croatian translation.
+  * Fix updating of help2man.pot to occur only when help2man.PL is changed, not
+    help2man generated.
+  From 1.40.11:
+  * Add Croatian translation.
+
+-------------------------------------------------------------------
+Wed Jun  6 18:02:02 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 1.40.10:
+  * Update Greek translation.
+  * Update Serbian translation.
+  * Update German translation.
+- Enabled support for generating localised pages.
+
+-------------------------------------------------------------------
+Wed May 23 21:21:38 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 1.40.9:
+  * Update Japanese translation.
+  * Update Esperanto translation.
+  * Update Vietnamese translation.
+  * Update German translation.
+  From 1.40.8:
+  * Update French translation.
+  * Update Italian translation.
+  * Update Polish translation.
+  * Update Russian translation.
+  * Update Ukranian translation.
+  * Modify self-extracting scripts to output to a temporary file.
+  * Ensure that help2man exists before building manual pages.
+- Removed "-ggdb" from CFLAGS and CXXFLAGS (no reference was found why this is
+  needed).
+
+-------------------------------------------------------------------
+Sun Mar 25 13:09:36 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 1.40.7:
+  * Update Greek translation.
+  From 1.40.6:
+  * Fix FSF address in comments.
+
+-------------------------------------------------------------------
+Sun Jan  8 18:00:20 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 1.40.5:
+  * Clean up some lintian warnings: build-targets, source format and standards
+    version.
+  * Add Serbian translation.
+  * Fix trivial translation changes due to additional copyright year.
+  * Minor fix to Italian translation.
+
+-------------------------------------------------------------------
+Wed Aug  3 20:36:17 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 1.40.4:
+  * Update Brazilian Portuguese translation.
+  From 1.40.3:
+  * Update Esperanto translation.
+  * Update links to git repository.
+  From 1.40.2:
+  * Remove a superfluous period from texinfo doc.
+  * Change footnote about supported languages to a simple paragraph.
+  * Update Italian translation.
+  * Update Ukrainian translation.
+  * Update French translation.
+  * Update Japanese translation.
+  * Update Russian translation.
+  * Update Polish translation.
+- Minor spec file updates.
+
+-------------------------------------------------------------------
+Sat Jun  4 18:32:27 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 1.40.1:
+  * Update texinfo docs.
+  * Document --libtool option.
+  * Allow date format to be localised.
+  * Add Japanese translation.
+  * Update Italian translation.
+
+-------------------------------------------------------------------
+Tue May  3 18:55:02 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 1.39.3:
+  * Add --libtool option to remove `lt-' prefix for libtool programs.
+  * Add Italian, Greek, Ukranian, Esperanto translations.
+  * Update French, German, Russian, Polish, Finnish translations.
+  * Fix Brazilian, Russian and Italian translations.
+- Spec file updates:
+  * Changes based on rpmdevtools templates and spec-cleaner run.
+  * Changed License: to GPLv3+.
+  * bindtextdomain.so is now installed correctly.
+  * Minor other updates.
+
+-------------------------------------------------------------------
+Mon Nov  8 11:19:08 UTC 2010 - davejplater@gmail.com
+
+- Added "Requires: perl-gettext" after using help2man in build
+  service blender build to generate a man page for blenderplayer.
+
+-------------------------------------------------------------------
+Sat Nov  6 22:22:48 UTC 2010 - davejplater@gmail.com
+
+- Update to version 1.38.2
+- Upstream changes :
+  *Support ENVIRONMENT and FILES sections.
+  *Move all translated text into .po files (previously .h2m include
+   files were handled seperately).
+  *Submit package to the Translation Project (translationproject.org).
+  *Add Vietnamese translation.
+  *Add some comments for translators.
+  *Update GPL to v3.
+  *Add --version-string option.
+  *Add --no-discard-stderr option.
+  *Add line breaks into bug reporting section.
+  *Add Brazilian Portuguese and German translations.
+  *Select a reasonable configure default for --enable-nls.
+  *Revise preload mechanism to not require preloadable libintl.
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Mon Sep 21 20:23:54 CEST 2009 - crrodriguez@suse.de
+
+- tag localized man pages correctly
+
+-------------------------------------------------------------------
+Mon May 15 15:35:36 CEST 2006 - schwab@suse.de
+
+- Update to help2man 1.36.4.
+  * Add sv translation from Daniel Nylander (closes: #349568).
+  * Updated fr translation from Denis Barbier (closes: #338995).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:23 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov  2 14:56:43 CET 2005 - schwab@suse.de
+
+- Update to help2man 1.36.2.
+
+-------------------------------------------------------------------
+Mon Oct 17 11:23:10 CEST 2005 - schwab@suse.de
+
+- Update to help2man 1.36.1.
+
+-------------------------------------------------------------------
+Wed Oct  5 10:01:18 CEST 2005 - schwab@suse.de
+
+- Update to help2man 1.35.2.
+
+-------------------------------------------------------------------
+Thu Sep 29 03:15:08 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Fri Nov 26 00:10:26 CET 2004 - schwab@suse.de
+
+- Update to help2man 1.35.1.
+
+-------------------------------------------------------------------
+Wed Nov 24 10:30:36 CET 2004 - schwab@suse.de
+
+- Update to help2man 1.34.2.
+
+-------------------------------------------------------------------
+Mon Jul 21 13:22:54 CEST 2003 - schwab@suse.de
+
+- Update to help2man 1.33.1.
+
+-------------------------------------------------------------------
+Thu Jul 10 18:59:40 CEST 2003 - schwab@suse.de
+
+- Compile shared library with -fPIC.
+
+-------------------------------------------------------------------
+Thu Jul 10 11:22:58 CEST 2003 - schwab@suse.de
+
+- Update to help2man 1.31.1.
+- Not noarch any more.
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Mon Apr  7 13:11:50 CEST 2003 - schwab@suse.de
+
+- Only delete info entries when removing last version.
+
+-------------------------------------------------------------------
+Thu Feb  6 17:48:58 CET 2003 - schwab@suse.de
+
+- Use %install_info.
+
+-------------------------------------------------------------------
+Tue Sep 17 17:12:27 CEST 2002 - schwab@suse.de
+
+- Update to help2man 1.29.
+
+-------------------------------------------------------------------
+Tue Jun  4 10:20:15 CEST 2002 - schwab@suse.de
+
+- Update to version 1.28.
+  * New option --info-page.
+
+-------------------------------------------------------------------
+Mon Mar 11 00:16:51 CET 2002 - schwab@suse.de
+
+- Initial version 1.27.

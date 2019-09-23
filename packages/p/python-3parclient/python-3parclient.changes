@@ -1,0 +1,197 @@
+-------------------------------------------------------------------
+Thu Feb 15 08:18:25 UTC 2018 - tbechtold@suse.com
+
+- Rename to python-3parclient. That is the new pypi name
+- update to 4.2.5:
+  * Fix getvfs in Manila client
+  * Disorder in exceptions invocation in http.py
+  * Update copyVolume to remove destCPG offline copy
+  * 3PAR OS 3.3.1 (Real Madrid) Support
+  * Fix FLSK latest ver support issue
+  * Changes need to dist 4.2.3 version of python-3parclient on pypi.python.org
+  * Bump version to 4.1.0
+  * Fix docs and README for 4.0.1 release
+  * Fix createVLUN when LUN ID is 0
+  * Add fancy pypi images
+  * Adds API to retrieve a volumes snapshots
+  * Revert "Updating Documentation"
+  * Fixed setQOSRule in 3parclient
+  * Allow suppressing of SSL log warnings
+  * Unit test of python-3parclient
+  * Implement remote copy client calls
+  * Changes exception's isinstance str to basestring
+  * Fix docs and README of the 4.0.1 release
+  * Adding additional checks to stopOnlinePhysicalCopy
+  * This patch fixes a bug when ssh client is created with a private key
+  * Updating Documentation
+  * Add retries for certain exceptions
+  * Fix README to render pypi image correctly
+  * Revert "Fix docs and README for 4.0.1 release"
+  * Adding disktype while creating the CPG. The value of this parameter is ssd for C8K array.
+  * Rebranding the hp3parclient
+  * Allows suppressing SSL warnings on client create
+  * Fixed bug where get_description() needs to be invoked on exceptions
+
+-------------------------------------------------------------------
+Wed Feb 14 08:00:18 UTC 2018 - tbechtold@suse.com
+
+- update to 3.3.2:
+  * Use a simpler random hostname for findHost
+  * Fix issue #5: SSH session never renewed if lost
+  * Safely access hostname in VLUN
+  * Adding unit tests for the Exception class
+  * Update copyVolume to remove destCPG offline copy
+  * Improve list handling in File Persona get commands
+  * Less nargs/more shlex to fix fake SSH usage error
+  * Replaces httplib2 with Python Requests support
+  * Fix createVLUN with LUN ID 0 issue
+  * Adding more descriptive debug messages to client __init__
+  * Adds API to retrieve a volumes snapshots
+  * Unity test fix to allow bondMode 6
+  * Fixing client initialization error when ex_desc is None
+  * Allow suppressing of SSL log warnings
+  * Changes exception's isinstance str to basestring
+  * Fix file client for 3.2.1 MU3.
+  * Fix logging to allow diagnosis of multi-line-stripper errors
+  * Adding support for VLUN queries in getVLUN and getHostVLUNs
+  * Add retries for certain exceptions
+  * Fix intermitent failures get_all_volume_metadata
+  * Making the client Python3.4+ Compliant
+  * Adding support for calling srstatld with a given interval and history
+  * Fix JSON parsing using Python3
+  * Fix inconsistent Unity unit tests
+  * Enable Unity unit tests with the paramiko test server
+  * Fixes documenation errors for 3.2.2 release
+  * Removing 'active' VLUN check from getVLUN call
+  * Adding Volume Set Snapshot Capabilities to Client
+  * Update findHost to use a random hostname
+  * Adding support for calling srstatld
+  * Add -ca option for create/set fshare (SMB)
+  * Added exceptions to API docs for deleteVolume
+  * Fixed bug in setSSHOptions File Persona example.
+  * Skip flash cache tests on backends without it
+- Fix Source url
+
+-------------------------------------------------------------------
+Wed May  6 14:39:48 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 3.2.0:
+  * Added File Persona Client: getfs, createfpg, growfpg, getfpg,
+    setfpg, removefpg, createvfs, getvfs, setvfs, removevfs,
+    createfsip, setfsip, getfsip, removefsip, createfsgroup,
+    setfsgroup, removefsgroup, createfsuser, setfsuser,
+    removefsuser, createfstore, getfstore, setfstore, removefstore,
+    createfshare, setfshare, getfshare, removefshare, createfsnap,
+    getfsnap, removefsnap, startfsnapclean, getfsnapclean,
+    stopfsnapclean, setfsquota, getfsquota, gettpdinterface
+  * Added paramiko SSH simulator initially supporting just a few
+    test cases.
+  * Fixed PEP8 violations.
+  * Change GitHub account reference from WaltHP to hp-storage.
+  * Modify the steps in the Installing from Source section to
+    ensure correct installation of dependencies and ordering.
+  * Added support for flash cache policy set on a virtual volume
+    set.
+  * Added tox environments to run tests with code coverage and to
+    generate the documentation
+  * Consolidated the test/README.rst into the top level README.rst
+    and added clarifications
+- additional changes from version 3.1.3:
+  * Added ‘paramiko’ and ‘eventlet’ requirements to setup.py.
+    Running a standard python setup.py install should install these
+    modules now if they are missing.
+  * Use static loggers to fix duplicate logging problem.
+  * Update unit tests to better support more backend configurations
+    and versions.
+  * Made corrections to the API documentation.
+- additional changes from version 3.1.2:
+  * Added API: findAllVolumeSets, getCPGAvailableSpace,
+    getOverallSystemCapacity
+  * Revised unit tests to use asserts instead of try/catch/except
+    blocks.
+  * Removed SSH call from the findVolumeSet method and replaced it
+    with REST.
+  * Improved findVolumeSet documentation.
+  * Changed SSH connections to now only get created when an SSH
+    command needs to be executed.
+  * Added closing of an SSH connection during logout if one is
+    active.
+  * Changed SSH connections to no longer use keep-alive packets to
+    stay active.
+  * Removed an unneeded print statement output that was occuring
+    when an SSH connection was closed.
+- additional changes from version 3.1.1:
+  * Added known_host_file and missing_key_policy parameters to: -
+    HP3ParClient.setSSHOptions - HP3PARSSHClient
+  * Fixed an issue with building the ClientException when body of
+    the response was empty.
+  * Fixed spelling error in urllib import for Python 3.0 or greater
+    environments.
+- additional changes from version 3.1.0:
+  * Added APIs: setVolumeMetaData, getVolumeMetaData,
+    getAllVolumeMetaData, removeVolumeMetaData, findVolumeMetaData
+  * Added two new enumerations for CHAP initiator and target.
+  * Converted existing metadata functions to use REST API calls
+    instead of SSH.
+  * Updated the minimum required HP 3PAR build version to be
+    3.1.3.230. This corresponds to 3.1.3 MU1 firmware.
+  * Added support for volume metadata REST API calls in the flask
+    server.
+  * Numerous API documentation improvements
+  * Fixed 2 enumerations: PORT_TYPE_RCIP changed to 7,
+    PORT_TYPE_ISCSI changed to 8
+  * Numerous Enumerations added: Port Type, Port Protocol, Task
+    Type, VLUN Type, CPG RAID, CPG HA, CPG Chunklet, CPG Disk Type,
+    Host Persona
+  * Added host set API: findHostSet, getHostSets, getHostSet,
+    createHostSet, deleteHostSet, modifyHostSet, addHostToHostSet,
+    removeHostFromHostSet, removeHostFromItsHostSet
+  * Added showpatch API: getPatch, getPatches
+  * Fixed missing tearDown() to improve flask server shutdown.
+  * Added VLUN and host set check before allowing deleteHost.
+  * Fixed some flask error codes and error messages to match array.
+  * Removed the ‘test_’ prefix from classes that don’t contain
+    tests.
+  * Reduced volume sizes used in tests.
+  * Made domain and cpg_ldlayout_ha configurable.
+  * Added more tests.
+  * Fixed an incorrect exception message for getHostVLUNs.
+- add python-eventlet and python-paramiko as BuildRequires
+  to guarantee their availability
+- update description: now requires 3.1.3 version MU1 of the 3PAR
+  firmware
+
+-------------------------------------------------------------------
+Thu Feb 13 18:33:01 UTC 2014 - dmueller@suse.com
+
+- update to 3.0.0:
+  * Requires the 3.1.3 3PAR Firmware or greater.
+  * Added new 3.1.3 firmware APIs.
+  * Added support for QOS and Virtual Volume sets
+  * Added query host by wwns or iqns
+  * Added APIs for getTasks, stopOfflinePhysicalCopy, modifyVolume
+  * Changes in Version 2.9.2
+  * Removed the ssh pooling to fix an issue with timeouts
+  * Changes in Version 2.9.1
+  * Renamed stopPhysicalCopy to stopOnlinePhysicalCopy
+  * Changes in Version 2.9.0
+  * Added SSH interface
+  * Added stopPhysicalCopy
+  * updated doc string to fix some pylint
+
+-------------------------------------------------------------------
+Wed Sep  4 13:19:01 UTC 2013 - speilicke@suse.com
+
+- Update to version 2.0.0:
+  + Upstream provides no changelog
+- Changes from Version 1.1.0:
+  + Added support for hosts and ports
+- Changes from Version 1.0.1:
+  + The unit tests now work when running nosetest from the top level dir 
+    and from the test dir
+
+-------------------------------------------------------------------
+Mon Jan 14 12:17:42 UTC 2013 - saschpe@suse.de
+
+- Initial version
+

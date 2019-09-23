@@ -1,0 +1,1248 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-rhbz795424-bitpos-23of25.patch
+
+;; Fix `GDB cannot access struct member whose offset is larger than 256MB'
+;; (RH BZ 795424).
+;;=push
+
+http://sourceware.org/ml/gdb-patches/2012-09/msg00630.html
+
+--MP_/X_WjDOvz/B_fvlsrmCwRdxe
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+Hi,
+
+This is the last part of the bitpos change.  This patch does the same
+thing that patch 1/4 does, except that it does so in the *-tdep files
+wherever necessary.  I separated these changes mainly because they are
+related and can be reviewed independently.  Tested on Fedora 16 x86_64.
+
+Regards,
+Siddhesh
+
+--MP_/X_WjDOvz/B_fvlsrmCwRdxe
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment; filename=ChangeLog-tdep
+
+gdb/ChangeLog
+
+	* alpha-tdep.c (alpha_push_dummy_call): Expand ACCUMULATE_SIZE,
+	REQUIRED_ARG_REGS, OFFSET, LEN, TLEN to ssize_t.
+	(struct alpha_arg): Expand members LEN, OFFSET to ssize_t.
+	* amd64-tdep.c (amd64_push_arguments): Expand NUM_ELEMENTS,
+	ELEMENT and LEN to LONGEST.
+	(amd64_return_value): Expand LEN to LONGEST.
+	* amd64-windows-tdep.c (amd64_windows_return_value): Expand LEN
+	to LONGEST.
+	* arm-tdep.c (arm_vfp_cprc_sub_candidate): Return LONGEST.
+	Expand COUNT, SUB_COUNT to LONGEST.
+	(arm_vfp_call_candidate): Expand C to LONGEST.
+	(arm_push_dummy_call): Expand LEN to LONGEST.
+	* avr-tdep.c (struct stack_item): Expand member LEN to ssize_t.
+	(push_stack_item): Expand parameter LEN to ssize_t.
+	(avr_push_dummy_call): Expand LAST_REGNUM, J, LEN to ssize_t.
+	* bfin-tdep.c (bfin_push_dummy_call): Expand TOTAL_LEN,
+	CONTAINER_LEN to ssize_t.
+	* cris-tdep.c (struct stack_item): Expand member LEN to ssize_t.
+	(push_stack_item): Expand parameter LEN to ssize_t.
+	(cris_push_dummy_call): Expand LEN, REG_DEMAND, I to ssize_t.
+	* h8300-tdep.c (h8300_push_dummy_call): Expand STACK_ALLOC,
+	STACK_OFFSET to LONGEST.  Expand LEN, PADDED_LEN, OFFSET to
+	ssize_t.
+	* hppa-tdep.c (hppa64_push_dummy_call): Expand LEN to LONGEST.
+	(hppa64_return_value): Likewise.
+	* i386-darwin-tdep.c (i386_darwin_push_dummy_call): Expand
+	ARGS_SPACE to LONGEST.
+	* i386-tdep.c (i386_push_dummy_call): Expand ARG_SPACE,
+	ARG_SPACE_USED, LEN to LONGEST.
+	(i386_reg_struct_return_p): Expand LEN to LONGEST.
+	(i386_convert_register_p): Likewise.
+	(i386_register_to_value): Likewise.
+	(i386_value_to_register): Likewise.
+	* ia64-tdep.c (ia64_push_dummy_call): Expand ARGOFFSET, LEN,
+	NSLOTS, MEMSLOTS to LONGEST.
+	* iq2000-tdep.c (iq2000_push_dummy_call): Expand TYPELEN,
+	STACKSPACE to LONGEST.
+	* m32r-tdep.c (m32r_push_dummy_call): Expand LEN to LONGEST.
+	* m68k-tdep.c (m68k_reg_struct_return_p): Expand LEN to LONGEST.
+	(m68k_push_dummy_call): Expand LEN, CONTAINER_LEN, OFFSET to
+	LONGEST.
+	* m88k-tdep.c (m88k_store_arguments): Expand NUM_STACK_WORDS,
+	LEN, STACK_WORD to LONGEST.
+	* mep-tdep.c (push_large_arguments): Expand ARG_LEN to ULONGEST.
+	* microblaze-tdep.c (microblaze_store_return_value): Expand LEN to
+	LONGEST.
+	* mips-tdep.c (mips_xfer_register): Expand parameter BUF_OFFSET to
+	LONGEST.  Use plongest to format print BUF_OFFSET.
+	(mips_eabi_push_dummy_call): Expand LEN to LONGEST.  Use plongest
+	to format print LEN.
+	(mips_n32n64_fp_arg_chunk_p): Expand parameter OFFSET to LONGEST.
+	Expand POS to LONGEST.
+	(mips_n32n64_push_dummy_call): Expand LEN to LONGEST.
+	(mips_n32n64_return_value): Expand OFFSET to LONGEST.  Use
+	plongest to format print OFFSET.
+	(mips_o32_push_dummy_call): Expand LEN to LONGEST.  Use plongest
+	to format print LEN.
+	(mips_o64_push_dummy_call): Expand LEN, STACK_OFFSET to LONGEST.
+	Use plongest to format print LEN.
+	* mn10300-tdep.c (mn10300_push_dummy_call): Expand LEN to
+	LONGEST.
+	* mt-tdep.c (mt_push_dummy_call): Expand STACK_DEST, TYPELEN to
+	LONGEST.
+	* ppc-sysv-tdep.c (ppc_sysv_abi_push_dummy_call): Expand
+	ARGSPACE, ARGOFFSET, STRUCTOFFSET, LEN, to LONGEST.
+	(ppc64_sysv_abi_push_dummy_call): Expand BYTE, LEN to ssize_t.
+	* rl78-tdep.c (rl78_push_dummy_call): Expand LEN, CONTAINER_LEN
+	to LONGEST.
+	* rs6000-aix-tdep.c (rs6000_push_dummy_call): Expand ARGBYTES,
+	LEN to LONGEST.
+	(ran_out_of_registers_for_arguments): Expand SPACE, JJ to
+	LONGEST.
+	* s390-linux-tdep.c (s390_value_from_register): Expand LEN to LONGEST.
+	(is_power_of_two): Expand parameter N to ULONGEST.
+	(s390_push_dummy_call): Expand LENGTH to ULONGEST.
+	* score-tdep.c (score_push_dummy_call): Expand ARGLEN to
+	LONGEST.
+	* sh-tdep.c (sh_use_struct_convention) Expand len to LONGEST.
+	(sh_justify_value_in_reg): Expand parameter LEN to LONGEST.
+	(sh_push_dummy_call_fpu): Expand LEN to LONGEST.  Expand REG_SIZE
+	to ssize_t.
+	(sh_push_dummy_call_nofpu): Likewise.
+	* sh64-tdep.c (sh64_push_dummy_call): Expand STACK_OFFSET,
+	STACK_ALLOC, LEN to LONGEST.
+	* sparc-tdep.c (sparc32_store_arguments): Expand LEN to LONGEST.
+	* sparc64-tdep.c (sparc64_store_floating_fields): Expand
+	parameter BITPOS to LONGEST.  Expand SUBPOS to LONGEST.
+	(sparc64_extract_floating_fields): Likewise.
+	(sparc64_store_arguments): Expand LEN to LONGEST.
+	* spu-tdep.c (spu_push_dummy_call): Expand N_REGS, LEN to LONGEST.
+	(spu_value_from_register): Expand LEN to LONGEST.
+	* tic6x-tdep.c (tic6x_push_dummy_call): Expand REFERENCES_OFFST,
+	LEN to LONGEST.  Expand LEN to ssize_t.  Use plongest to format
+	print LEN.
+	* tilegx-tdep.c (tilegx_push_dummy_call): Expand TYPELEN,
+	SLACKLEN, ALIGNLEN to LONGEST.
+	* v850-tdep.c (v850_push_dummy_call): Expand LEN to LONGEST.
+	* vax-tdep.c (vax_store_arguments): Expand COUNT, LEN to LONGEST.
+	(vax_return_value): Expand LEN to LONGEST.
+	* xstormy16-tdep.c (xstormy16_push_dummy_call): Expand J, TYPELEN
+	to LONGEST.
+	* xtensa-tdep.c (xtensa_store_return_value): Print LEN instead of
+	TYPE_LENGTH..
+	(struct argument_info): Expoand member LENGTH to ssize_t.
+	(struct argument_info.u): Expand member OFFSET to ssize_t.
+	(xtensa_push_dummy_call): Expand SIZE, ONSTACK_SIZE to LONGEST.
+	Expand N to ssize_t.  Use pulongest to format print TYPE_LENGTH.
+
+--MP_/X_WjDOvz/B_fvlsrmCwRdxe
+Content-Type: text/x-patch
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename=bitpos-tdep.patch
+
+diff --git a/gdb/alpha-tdep.c b/gdb/alpha-tdep.c
+--- a/gdb/alpha-tdep.c
++++ b/gdb/alpha-tdep.c
+@@ -300,17 +300,17 @@ alpha_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+ {
+   enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+   int i;
+-  int accumulate_size = (return_method == return_method_struct) ? 8 : 0;
++  ssize_t accumulate_size = (return_method == return_method_struct) ? 8 : 0;
+   struct alpha_arg
+     {
+       const gdb_byte *contents;
+-      int len;
+-      int offset;
++      ssize_t len;
++      ssize_t offset;
+     };
+   struct alpha_arg *alpha_args = XALLOCAVEC (struct alpha_arg, nargs);
+   struct alpha_arg *m_arg;
+   gdb_byte arg_reg_buffer[ALPHA_REGISTER_SIZE * ALPHA_NUM_ARG_REGS];
+-  int required_arg_regs;
++  ssize_t required_arg_regs;
+   CORE_ADDR func_addr = find_function_addr (function, NULL);
+ 
+   /* The ABI places the address of the called function in T12.  */
+@@ -430,8 +430,8 @@ alpha_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+   for (i = nargs; m_arg--, --i >= 0;)
+     {
+       const gdb_byte *contents = m_arg->contents;
+-      int offset = m_arg->offset;
+-      int len = m_arg->len;
++      ssize_t offset = m_arg->offset;
++      ssize_t len = m_arg->len;
+ 
+       /* Copy the bytes destined for registers into arg_reg_buffer.  */
+       if (offset < sizeof(arg_reg_buffer))
+@@ -443,7 +443,7 @@ alpha_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+ 	    }
+ 	  else
+ 	    {
+-	      int tlen = sizeof(arg_reg_buffer) - offset;
++	      ssize_t tlen = sizeof(arg_reg_buffer) - offset;
+ 	      memcpy (arg_reg_buffer + offset, contents, tlen);
+ 	      offset += tlen;
+ 	      contents += tlen;
+diff --git a/gdb/amd64-tdep.c b/gdb/amd64-tdep.c
+--- a/gdb/amd64-tdep.c
++++ b/gdb/amd64-tdep.c
+@@ -883,8 +883,8 @@ amd64_push_arguments (struct regcache *regcache, int nargs, struct value **args,
+   };
+   struct value **stack_args = XALLOCAVEC (struct value *, nargs);
+   int num_stack_args = 0;
+-  int num_elements = 0;
+-  int element = 0;
++  LONGEST num_elements = 0;
++  LONGEST element = 0;
+   int integer_reg = 0;
+   int sse_reg = 0;
+   int i;
+@@ -896,7 +896,7 @@ if (return_method == return_method_struct)
+   for (i = 0; i < nargs; i++)
+     {
+       struct type *type = value_type (args[i]);
+-      int len = TYPE_LENGTH (type);
++      LONGEST len = TYPE_LENGTH (type);
+       enum amd64_reg_class theclass[2];
+       int needed_integer_regs = 0;
+       int needed_sse_regs = 0;
+@@ -960,7 +960,7 @@ if (return_method == return_method_struct)
+ 
+ 	      gdb_assert (regnum != -1);
+ 	      memset (buf, 0, sizeof buf);
+-	      memcpy (buf, valbuf + j * 8, std::min (len, 8));
++	      memcpy (buf, valbuf + j * 8, std::min (len, (LONGEST) 8));
+ 	      regcache->raw_write_part (regnum, offset, 8, buf);
+ 	    }
+ 	}
+diff --git a/gdb/amd64-windows-tdep.c b/gdb/amd64-windows-tdep.c
+--- a/gdb/amd64-windows-tdep.c
++++ b/gdb/amd64-windows-tdep.c
+@@ -291,7 +291,7 @@ amd64_windows_return_value (struct gdbarch *gdbarch, struct value *function,
+ 			    struct type *type, struct regcache *regcache,
+ 			    gdb_byte *readbuf, const gdb_byte *writebuf)
+ {
+-  int len = TYPE_LENGTH (type);
++  LONGEST len = TYPE_LENGTH (type);
+   int regnum = -1;
+ 
+   /* See if our value is returned through a register.  If it is, then
+diff --git a/gdb/arm-tdep.c b/gdb/arm-tdep.c
+--- a/gdb/arm-tdep.c
++++ b/gdb/arm-tdep.c
+@@ -3472,7 +3472,7 @@ arm_vfp_cprc_reg_char (enum arm_vfp_cprc_base_type b)
+    array).  Vector types are not currently supported, matching the
+    generic AAPCS support.  */
+ 
+-static int
++static LONGEST
+ arm_vfp_cprc_sub_candidate (struct type *t,
+ 			    enum arm_vfp_cprc_base_type *base_type)
+ {
+@@ -3555,7 +3555,7 @@ arm_vfp_cprc_sub_candidate (struct type *t,
+ 	  }
+ 	else
+ 	  {
+-	    int count;
++	    LONGEST count;
+ 	    unsigned unitlen;
+ 
+ 	    count = arm_vfp_cprc_sub_candidate (TYPE_TARGET_TYPE (t),
+@@ -3578,12 +3578,12 @@ arm_vfp_cprc_sub_candidate (struct type *t,
+ 
+     case TYPE_CODE_STRUCT:
+       {
+-	int count = 0;
++	LONGEST count = 0;
+ 	unsigned unitlen;
+ 	int i;
+ 	for (i = 0; i < TYPE_NFIELDS (t); i++)
+ 	  {
+-	    int sub_count = 0;
++	    LONGEST sub_count = 0;
+ 
+ 	    if (!field_is_static (&TYPE_FIELD (t, i)))
+ 	      sub_count = arm_vfp_cprc_sub_candidate (TYPE_FIELD_TYPE (t, i),
+@@ -3607,13 +3607,15 @@ arm_vfp_cprc_sub_candidate (struct type *t,
+ 
+     case TYPE_CODE_UNION:
+       {
+-	int count = 0;
++	LONGEST count = 0;
+ 	unsigned unitlen;
+ 	int i;
+ 	for (i = 0; i < TYPE_NFIELDS (t); i++)
+ 	  {
+-	    int sub_count = arm_vfp_cprc_sub_candidate (TYPE_FIELD_TYPE (t, i),
+-							base_type);
++	    LONGEST sub_count;
++
++	    sub_count = arm_vfp_cprc_sub_candidate (TYPE_FIELD_TYPE (t, i),
++						    base_type);
+ 	    if (sub_count == -1)
+ 	      return -1;
+ 	    count = (count > sub_count ? count : sub_count);
+@@ -3649,7 +3651,7 @@ arm_vfp_call_candidate (struct type *t, enum arm_vfp_cprc_base_type *base_type,
+ 			int *count)
+ {
+   enum arm_vfp_cprc_base_type b = VFP_CPRC_UNKNOWN;
+-  int c = arm_vfp_cprc_sub_candidate (t, &b);
++  LONGEST c = arm_vfp_cprc_sub_candidate (t, &b);
+   if (c <= 0 || c > 4)
+     return 0;
+   *base_type = b;
+@@ -3731,7 +3733,7 @@ arm_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+ 
+   for (argnum = 0; argnum < nargs; argnum++)
+     {
+-      int len;
++      LONGEST len;
+       struct type *arg_type;
+       struct type *target_type;
+       enum type_code typecode;
+diff --git a/gdb/avr-tdep.c b/gdb/avr-tdep.c
+--- a/gdb/avr-tdep.c
++++ b/gdb/avr-tdep.c
+@@ -1192,13 +1192,13 @@ avr_dummy_id (struct gdbarch *gdbarch, struct frame_info *this_frame)
+ 
+ struct stack_item
+ {
+-  int len;
++  ssize_t len;
+   struct stack_item *prev;
+   gdb_byte *data;
+ };
+ 
+ static struct stack_item *
+-push_stack_item (struct stack_item *prev, const bfd_byte *contents, int len)
++push_stack_item (struct stack_item *prev, const bfd_byte *contents, ssize_t len)
+ {
+   struct stack_item *si;
+   si = XNEW (struct stack_item);
+@@ -1287,12 +1287,12 @@ avr_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+ 
+   for (i = 0; i < nargs; i++)
+     {
+-      int last_regnum;
+-      int j;
++      ssize_t last_regnum;
++      ssize_t j;
+       struct value *arg = args[i];
+       struct type *type = check_typedef (value_type (arg));
+       const bfd_byte *contents = value_contents (arg);
+-      int len = TYPE_LENGTH (type);
++      ssize_t len = TYPE_LENGTH (type);
+ 
+       /* Calculate the potential last register needed.
+          E.g. For length 2, registers regnum and regnum-1 (say 25 and 24)
+diff --git a/gdb/bfin-tdep.c b/gdb/bfin-tdep.c
+--- a/gdb/bfin-tdep.c
++++ b/gdb/bfin-tdep.c
+@@ -504,7 +504,7 @@ bfin_push_dummy_call (struct gdbarch *gdbarch,
+   enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+   int i;
+   long reg_r0, reg_r1, reg_r2;
+-  int total_len = 0;
++  ssize_t total_len = 0;
+ 
+   for (i = nargs - 1; i >= 0; i--)
+     {
+@@ -526,7 +526,7 @@ bfin_push_dummy_call (struct gdbarch *gdbarch,
+     {
+       struct type *value_type = value_enclosing_type (args[i]);
+       struct type *arg_type = check_typedef (value_type);
+-      int container_len = (TYPE_LENGTH (arg_type) + 3) & ~3;
++      ssize_t container_len = (TYPE_LENGTH (arg_type) + 3) & ~3;
+ 
+       sp -= container_len;
+       write_memory (sp, value_contents (args[i]), container_len);
+diff --git a/gdb/cris-tdep.c b/gdb/cris-tdep.c
+--- a/gdb/cris-tdep.c
++++ b/gdb/cris-tdep.c
+@@ -663,13 +663,13 @@ static CORE_ADDR cris_unwind_sp (struct gdbarch *gdbarch,
+ 
+ struct stack_item
+ {
+-  int len;
++  ssize_t len;
+   struct stack_item *prev;
+   gdb_byte *data;
+ };
+ 
+ static struct stack_item *
+-push_stack_item (struct stack_item *prev, const gdb_byte *contents, int len)
++push_stack_item (struct stack_item *prev, const gdb_byte *contents, ssize_t len)
+ {
+   struct stack_item *si = XNEW (struct stack_item);
+   si->data = (gdb_byte *) xmalloc (len);
+@@ -832,13 +832,13 @@ cris_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+ 
+   for (argnum = 0; argnum < nargs; argnum++)
+     {
+-      int len;
++      ssize_t len;
+       const gdb_byte *val;
+-      int reg_demand;
+-      int i;
++      ssize_t reg_demand;
++      ssize_t i;
+       
+-      len = TYPE_LENGTH (value_type (args[argnum]));
+       val = value_contents (args[argnum]);
++      len = TYPE_LENGTH (value_type (args[argnum]));
+       
+       /* How may registers worth of storage do we need for this argument?  */
+       reg_demand = (len / 4) + (len % 4 != 0 ? 1 : 0);
+diff --git a/gdb/h8300-tdep.c b/gdb/h8300-tdep.c
+--- a/gdb/h8300-tdep.c
++++ b/gdb/h8300-tdep.c
+@@ -638,7 +638,7 @@ h8300_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+ 		       CORE_ADDR struct_addr)
+ {
+   enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+-  int stack_alloc = 0, stack_offset = 0;
++  LONGEST stack_alloc = 0, stack_offset = 0;
+   int wordsize = BINWORD (gdbarch);
+   int reg = E_ARG0_REGNUM;
+   int argument;
+@@ -664,11 +664,11 @@ h8300_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+   for (argument = 0; argument < nargs; argument++)
+     {
+       struct type *type = value_type (args[argument]);
+-      int len = TYPE_LENGTH (type);
++      ssize_t len = TYPE_LENGTH (type);
+       char *contents = (char *) value_contents (args[argument]);
+ 
+       /* Pad the argument appropriately.  */
+-      int padded_len = align_up (len, wordsize);
++      ssize_t padded_len = align_up (len, wordsize);
+       /* Use std::vector here to get zero initialization.  */
+       std::vector<gdb_byte> padded (padded_len);
+ 
+@@ -697,7 +697,7 @@ h8300_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+ 	      /* Heavens to Betsy --- it's really going in registers!
+ 	         Note that on the h8/300s, there are gaps between the
+ 	         registers in the register file.  */
+-	      int offset;
++	      ssize_t offset;
+ 
+ 	      for (offset = 0; offset < padded_len; offset += wordsize)
+ 		{
+diff --git a/gdb/hppa-tdep.c b/gdb/hppa-tdep.c
+--- a/gdb/hppa-tdep.c
++++ b/gdb/hppa-tdep.c
+@@ -985,7 +985,7 @@ hppa64_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+     {
+       struct value *arg = args[i];
+       struct type *type = value_type (arg);
+-      int len = TYPE_LENGTH (type);
++      LONGEST len = TYPE_LENGTH (type);
+       const bfd_byte *valbuf;
+       bfd_byte fptrbuf[8];
+       int regnum;
+@@ -1178,7 +1178,7 @@ hppa64_return_value (struct gdbarch *gdbarch, struct value *function,
+ 		     struct type *type, struct regcache *regcache,
+ 		     gdb_byte *readbuf, const gdb_byte *writebuf)
+ {
+-  int len = TYPE_LENGTH (type);
++  LONGEST len = TYPE_LENGTH (type);
+   int regnum, offset;
+ 
+   if (len > 16)
+diff --git a/gdb/i386-darwin-tdep.c b/gdb/i386-darwin-tdep.c
+--- a/gdb/i386-darwin-tdep.c
++++ b/gdb/i386-darwin-tdep.c
+@@ -167,7 +167,7 @@ i386_darwin_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+ 
+   for (write_pass = 0; write_pass < 2; write_pass++)
+     {
+-      int args_space = 0;
++      LONGEST args_space = 0;
+       int num_m128 = 0;
+ 
+       if (return_method == return_method_struct)
+diff --git a/gdb/i386-tdep.c b/gdb/i386-tdep.c
+--- a/gdb/i386-tdep.c
++++ b/gdb/i386-tdep.c
+@@ -2679,7 +2679,7 @@ i386_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+   gdb_byte buf[4];
+   int i;
+   int write_pass;
+-  int args_space = 0;
++  LONGEST args_space = 0;
+ 
+   /* BND registers can be in arbitrary values at the moment of the
+      inferior call.  This can cause boundary violations that are not
+@@ -2694,7 +2694,7 @@ i386_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+ 
+   for (write_pass = 0; write_pass < 2; write_pass++)
+     {
+-      int args_space_used = 0;
++      LONGEST args_space_used = 0;
+ 
+       if (return_method == return_method_struct)
+ 	{
+@@ -2711,7 +2711,7 @@ i386_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+ 
+       for (i = 0; i < nargs; i++)
+ 	{
+-	  int len = TYPE_LENGTH (value_enclosing_type (args[i]));
++	  LONGEST len = TYPE_LENGTH (value_enclosing_type (args[i]));
+ 
+ 	  if (write_pass)
+ 	    {
+@@ -2918,7 +2918,7 @@ i386_reg_struct_return_p (struct gdbarch *gdbarch, struct type *type)
+ {
+   struct gdbarch_tdep *tdep = gdbarch_tdep (gdbarch);
+   enum type_code code = TYPE_CODE (type);
+-  int len = TYPE_LENGTH (type);
++  LONGEST len = TYPE_LENGTH (type);
+ 
+   gdb_assert (code == TYPE_CODE_STRUCT
+               || code == TYPE_CODE_UNION
+@@ -3704,7 +3704,7 @@ static int
+ i386_convert_register_p (struct gdbarch *gdbarch,
+ 			 int regnum, struct type *type)
+ {
+-  int len = TYPE_LENGTH (type);
++  LONGEST len = TYPE_LENGTH (type);
+ 
+   /* Values may be spread across multiple registers.  Most debugging
+      formats aren't expressive enough to specify the locations, so
+@@ -3737,7 +3737,7 @@ i386_register_to_value (struct frame_info *frame, int regnum,
+ 			int *optimizedp, int *unavailablep)
+ {
+   struct gdbarch *gdbarch = get_frame_arch (frame);
+-  int len = TYPE_LENGTH (type);
++  LONGEST len = TYPE_LENGTH (type);
+ 
+   if (i386_fp_regnum_p (gdbarch, regnum))
+     return i387_register_to_value (frame, regnum, type, to,
+@@ -3773,7 +3773,7 @@ static void
+ i386_value_to_register (struct frame_info *frame, int regnum,
+ 			struct type *type, const gdb_byte *from)
+ {
+-  int len = TYPE_LENGTH (type);
++  LONGEST len = TYPE_LENGTH (type);
+ 
+   if (i386_fp_regnum_p (get_frame_arch (frame), regnum))
+     {
+diff --git a/gdb/iq2000-tdep.c b/gdb/iq2000-tdep.c
+--- a/gdb/iq2000-tdep.c
++++ b/gdb/iq2000-tdep.c
+@@ -652,8 +652,9 @@ iq2000_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+   const bfd_byte *val;
+   bfd_byte buf[4];
+   struct type *type;
+-  int i, argreg, typelen, slacklen;
+-  int stackspace = 0;
++  int i, argreg, slacklen;
++  LONGEST typelen;
++  LONGEST stackspace = 0;
+   /* Used to copy struct arguments into the stack.  */
+   CORE_ADDR struct_ptr;
+ 
+diff --git a/gdb/m32r-tdep.c b/gdb/m32r-tdep.c
+--- a/gdb/m32r-tdep.c
++++ b/gdb/m32r-tdep.c
+@@ -671,7 +671,7 @@ m32r_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+   CORE_ADDR regval;
+   gdb_byte *val;
+   gdb_byte valbuf[M32R_ARG_REGISTER_SIZE];
+-  int len;
++  LONGEST len;
+ 
+   /* First force sp to a 4-byte alignment.  */
+   sp = sp & ~3;
+diff --git a/gdb/m68k-tdep.c b/gdb/m68k-tdep.c
+--- a/gdb/m68k-tdep.c
++++ b/gdb/m68k-tdep.c
+@@ -372,7 +372,7 @@ m68k_reg_struct_return_p (struct gdbarch *gdbarch, struct type *type)
+ {
+   struct gdbarch_tdep *tdep = gdbarch_tdep (gdbarch);
+   enum type_code code = TYPE_CODE (type);
+-  int len = TYPE_LENGTH (type);
++  LONGEST len = TYPE_LENGTH (type);
+ 
+   gdb_assert (code == TYPE_CODE_STRUCT || code == TYPE_CODE_UNION
+ 	      || code == TYPE_CODE_COMPLEX);
+@@ -505,9 +505,9 @@ m68k_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+   for (i = nargs - 1; i >= 0; i--)
+     {
+       struct type *value_type = value_enclosing_type (args[i]);
+-      int len = TYPE_LENGTH (value_type);
+-      int container_len = (len + 3) & ~3;
+-      int offset;
++      LONGEST len = TYPE_LENGTH (value_type);
++      LONGEST container_len = (len + 3) & ~3;
++      LONGEST offset;
+ 
+       /* Non-scalars bigger than 4 bytes are left aligned, others are
+ 	 right aligned.  */
+diff --git a/gdb/mep-tdep.c b/gdb/mep-tdep.c
+--- a/gdb/mep-tdep.c
++++ b/gdb/mep-tdep.c
+@@ -2238,7 +2238,7 @@ push_large_arguments (CORE_ADDR sp, int argc, struct value **argv,
+ 
+   for (i = 0; i < argc; i++)
+     {
+-      unsigned arg_len = TYPE_LENGTH (value_type (argv[i]));
++      ULONGEST arg_len = TYPE_LENGTH (value_type (argv[i]));
+ 
+       if (arg_len > MEP_GPR_SIZE)
+         {
+diff --git a/gdb/mips-tdep.c b/gdb/mips-tdep.c
+--- a/gdb/mips-tdep.c
++++ b/gdb/mips-tdep.c
+@@ -489,7 +489,7 @@ static void
+ mips_xfer_register (struct gdbarch *gdbarch, struct regcache *regcache,
+ 		    int reg_num, int length,
+ 		    enum bfd_endian endian, gdb_byte *in,
+-		    const gdb_byte *out, int buf_offset)
++		    const gdb_byte *out, LONGEST buf_offset)
+ {
+   int reg_offset = 0;
+ 
+@@ -512,8 +512,8 @@ mips_xfer_register (struct gdbarch *gdbarch, struct regcache *regcache,
+     }
+   if (mips_debug)
+     fprintf_unfiltered (gdb_stderr,
+-			"xfer $%d, reg offset %d, buf offset %d, length %d, ",
+-			reg_num, reg_offset, buf_offset, length);
++			"xfer $%d, reg offset %d, buf offset %s, length %d, ",
++			reg_num, reg_offset, plongest (buf_offset), length);
+   if (mips_debug && out != NULL)
+     {
+       int i;
+@@ -4563,13 +4563,13 @@ mips_eabi_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+       gdb_byte ref_valbuf[MAX_MIPS_ABI_REGSIZE];
+       struct value *arg = args[argnum];
+       struct type *arg_type = check_typedef (value_type (arg));
+-      int len = TYPE_LENGTH (arg_type);
++      LONGEST len = TYPE_LENGTH (arg_type);
+       enum type_code typecode = TYPE_CODE (arg_type);
+ 
+       if (mips_debug)
+ 	fprintf_unfiltered (gdb_stdlog,
+-			    "mips_eabi_push_dummy_call: %d len=%d type=%d",
+-			    argnum + 1, len, (int) typecode);
++			    "mips_eabi_push_dummy_call: %d len=%s type=%d",
++			    argnum + 1, plongest (len), (int) typecode);
+ 
+       /* The EABI passes structures that do not fit in a register by
+          reference.  */
+@@ -4839,7 +4839,7 @@ mips_eabi_return_value (struct gdbarch *gdbarch, struct value *function,
+ 
+ static int
+ mips_n32n64_fp_arg_chunk_p (struct gdbarch *gdbarch, struct type *arg_type,
+-			    int offset)
++			    LONGEST offset)
+ {
+   int i;
+ 
+@@ -4854,7 +4854,7 @@ mips_n32n64_fp_arg_chunk_p (struct gdbarch *gdbarch, struct type *arg_type,
+ 
+   for (i = 0; i < TYPE_NFIELDS (arg_type); i++)
+     {
+-      int pos;
++      LONGEST pos;
+       struct type *field_type;
+ 
+       /* We're only looking at normal fields.  */
+@@ -4897,7 +4897,8 @@ mips_n32n64_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+   int argreg;
+   int float_argreg;
+   int argnum;
+-  int arg_space = 0;
++  ULONGEST arg_space = 0;
++  LONGEST len = 0;
+   int stack_offset = 0;
+   enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+   CORE_ADDR func_addr = find_function_addr (function, NULL);
+@@ -4926,9 +4927,9 @@ mips_n32n64_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+ 
+   if (mips_debug)
+     fprintf_unfiltered (gdb_stdlog,
+-			"mips_n32n64_push_dummy_call: sp=%s allocated %ld\n",
++			"mips_n32n64_push_dummy_call: sp=%s allocated %s\n",
+ 			paddress (gdbarch, sp),
+-			(long) align_up (arg_space, 16));
++			pulongest (align_up (arg_space, 16)));
+ 
+   /* Initialize the integer and float register pointers.  */
+   argreg = MIPS_A0_REGNUM;
+@@ -5249,11 +5250,11 @@ mips_n32n64_return_value (struct gdbarch *gdbarch, struct value *function,
+ 				: MIPS_V0_REGNUM);
+ 	   field < TYPE_NFIELDS (type); field++, regnum += 2)
+ 	{
+-	  int offset = (FIELD_BITPOS (TYPE_FIELDS (type)[field])
+-			/ TARGET_CHAR_BIT);
++	  LONGEST offset = (FIELD_BITPOS (TYPE_FIELDS (type)[field])
++			    / TARGET_CHAR_BIT);
+ 	  if (mips_debug)
+-	    fprintf_unfiltered (gdb_stderr, "Return float struct+%d\n",
+-				offset);
++	    fprintf_unfiltered (gdb_stderr, "Return float struct+%s\n",
++				plongest (offset));
+ 	  if (TYPE_LENGTH (TYPE_FIELD_TYPE (type, field)) == 16)
+ 	    {
+ 	      /* A 16-byte long double field goes in two consecutive
+@@ -5295,8 +5296,8 @@ mips_n32n64_return_value (struct gdbarch *gdbarch, struct value *function,
+ 	  if (offset + xfer > TYPE_LENGTH (type))
+ 	    xfer = TYPE_LENGTH (type) - offset;
+ 	  if (mips_debug)
+-	    fprintf_unfiltered (gdb_stderr, "Return struct+%d:%d in $%d\n",
+-				offset, xfer, regnum);
++	    fprintf_unfiltered (gdb_stderr, "Return struct+%s:%d in $%d\n",
++				plongest (offset), xfer, regnum);
+ 	  mips_xfer_register (gdbarch, regcache,
+ 			      gdbarch_num_regs (gdbarch) + regnum,
+ 			      xfer, BFD_ENDIAN_UNKNOWN, readbuf, writebuf,
+@@ -5355,7 +5356,8 @@ mips_o32_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+   int argreg;
+   int float_argreg;
+   int argnum;
+-  int arg_space = 0;
++  ULONGEST arg_space = 0;
++  LONGEST len = 0;
+   int stack_offset = 0;
+   enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+   CORE_ADDR func_addr = find_function_addr (function, NULL);
+@@ -5392,9 +5394,9 @@ mips_o32_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+ 
+   if (mips_debug)
+     fprintf_unfiltered (gdb_stdlog,
+-			"mips_o32_push_dummy_call: sp=%s allocated %ld\n",
++			"mips_o32_push_dummy_call: sp=%s allocated %s\n",
+ 			paddress (gdbarch, sp),
+-			(long) align_up (arg_space, 16));
++			pulongest (align_up (arg_space, 16)));
+ 
+   /* Initialize the integer and float register pointers.  */
+   argreg = MIPS_A0_REGNUM;
+@@ -5420,13 +5422,13 @@ mips_o32_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+       const gdb_byte *val;
+       struct value *arg = args[argnum];
+       struct type *arg_type = check_typedef (value_type (arg));
+-      int len = TYPE_LENGTH (arg_type);
++      LONGEST len = TYPE_LENGTH (arg_type);
+       enum type_code typecode = TYPE_CODE (arg_type);
+ 
+       if (mips_debug)
+ 	fprintf_unfiltered (gdb_stdlog,
+-			    "mips_o32_push_dummy_call: %d len=%d type=%d",
+-			    argnum + 1, len, (int) typecode);
++			    "mips_o32_push_dummy_call: %d len=%s type=%d",
++			    argnum + 1, plongest (len), (int) typecode);
+ 
+       val = value_contents (arg);
+ 
+@@ -5880,8 +5882,8 @@ mips_o64_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+   int argreg;
+   int float_argreg;
+   int argnum;
+-  int arg_space = 0;
+-  int stack_offset = 0;
++  ULONGEST arg_space = 0;
++  LONGEST stack_offset = 0;
+   enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+   CORE_ADDR func_addr = find_function_addr (function, NULL);
+ 
+@@ -5914,9 +5916,9 @@ mips_o64_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+ 
+   if (mips_debug)
+     fprintf_unfiltered (gdb_stdlog,
+-			"mips_o64_push_dummy_call: sp=%s allocated %ld\n",
++			"mips_o64_push_dummy_call: sp=%s allocated %s\n",
+ 			paddress (gdbarch, sp),
+-			(long) align_up (arg_space, 16));
++			pulongest (align_up (arg_space, 16)));
+ 
+   /* Initialize the integer and float register pointers.  */
+   argreg = MIPS_A0_REGNUM;
+@@ -5942,13 +5944,13 @@ mips_o64_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+       const gdb_byte *val;
+       struct value *arg = args[argnum];
+       struct type *arg_type = check_typedef (value_type (arg));
+-      int len = TYPE_LENGTH (arg_type);
++      LONGEST len = TYPE_LENGTH (arg_type);
+       enum type_code typecode = TYPE_CODE (arg_type);
+ 
+       if (mips_debug)
+ 	fprintf_unfiltered (gdb_stdlog,
+-			    "mips_o64_push_dummy_call: %d len=%d type=%d",
+-			    argnum + 1, len, (int) typecode);
++			    "mips_o64_push_dummy_call: %d len=%s type=%d",
++			    argnum + 1, plongest (len), (int) typecode);
+ 
+       val = value_contents (arg);
+ 
+diff --git a/gdb/mn10300-tdep.c b/gdb/mn10300-tdep.c
+--- a/gdb/mn10300-tdep.c
++++ b/gdb/mn10300-tdep.c
+@@ -1197,7 +1197,7 @@ mn10300_push_dummy_call (struct gdbarch *gdbarch,
+   enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+   const int push_size = register_size (gdbarch, E_PC_REGNUM);
+   int regs_used;
+-  int len, arg_len; 
++  LONGEST len, arg_len; 
+   int stack_offset = 0;
+   int argnum;
+   const gdb_byte *val;
+diff --git a/gdb/ppc-sysv-tdep.c b/gdb/ppc-sysv-tdep.c
+--- a/gdb/ppc-sysv-tdep.c
++++ b/gdb/ppc-sysv-tdep.c
+@@ -69,7 +69,7 @@ ppc_sysv_abi_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+   enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+   int opencl_abi = ppc_sysv_use_opencl_abi (value_type (function));
+   ULONGEST saved_sp;
+-  int argspace = 0;		/* 0 is an initial wrong guess.  */
++  LONGEST argspace = 0;		/* 0 is an initial wrong guess.  */
+   int write_pass;
+ 
+   gdb_assert (tdep->wordsize == 4);
+@@ -100,9 +100,9 @@ ppc_sysv_abi_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+       /* Next available vector register for vector arguments.  */
+       int vreg = 2;
+       /* Arguments start above the "LR save word" and "Back chain".  */
+-      int argoffset = 2 * tdep->wordsize;
++      LONGEST argoffset = 2 * tdep->wordsize;
+       /* Structures start after the arguments.  */
+-      int structoffset = argoffset + argspace;
++      LONGEST structoffset = argoffset + argspace;
+ 
+       /* If the function is returning a `struct', then the first word
+          (which will be passed in r3) is used for struct return
+@@ -121,7 +121,7 @@ ppc_sysv_abi_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+ 	{
+ 	  struct value *arg = args[argno];
+ 	  struct type *type = check_typedef (value_type (arg));
+-	  int len = TYPE_LENGTH (type);
++	  ssize_t len = TYPE_LENGTH (type);
+ 	  const bfd_byte *val = value_contents (arg);
+ 
+ 	  if (TYPE_CODE (type) == TYPE_CODE_FLT && len <= 8
+@@ -1247,11 +1247,11 @@ struct ppc64_sysv_argpos
+ 
+ static void
+ ppc64_sysv_abi_push_val (struct gdbarch *gdbarch,
+-			 const bfd_byte *val, int len, int align,
++			 const bfd_byte *val, ssize_t len, int align,
+ 			 struct ppc64_sysv_argpos *argpos)
+ {
+   struct gdbarch_tdep *tdep = gdbarch_tdep (gdbarch);
+-  int offset = 0;
++  LONGEST offset = 0;
+ 
+   /* Enforce alignment of stack location, if requested.  */
+   if (align > tdep->wordsize)
+@@ -1288,7 +1288,7 @@ ppc64_sysv_abi_push_val (struct gdbarch *gdbarch,
+     {
+       if (argpos->regcache && argpos->greg <= 10)
+ 	argpos->regcache->cooked_write_part
+-	  (tdep->ppc_gp0_regnum + argpos->greg, offset, len, val);
++	  (tdep->ppc_gp0_regnum + argpos->greg, offset, (LONGEST) len, val);
+       argpos->greg++;
+     }
+ }
+@@ -1347,7 +1347,7 @@ ppc64_sysv_abi_push_freg (struct gdbarch *gdbarch,
+       if (argpos->regcache && argpos->freg <= 13)
+ 	{
+ 	  int regnum = tdep->ppc_fp0_regnum + argpos->freg;
+-	  int offset = 0;
++	  LONGEST offset = 0;
+ 
+ 	  if (gdbarch_byte_order (gdbarch) == BFD_ENDIAN_BIG)
+ 	    offset = 8 - TYPE_LENGTH (type);
+@@ -1797,7 +1797,7 @@ ppc64_sysv_abi_return_value_base (struct gdbarch *gdbarch, struct type *valtype,
+       && TYPE_CODE (valtype) == TYPE_CODE_DECFLOAT)
+     {
+       int regnum = tdep->ppc_fp0_regnum + 1 + index;
+-      int offset = 0;
++      LONGEST offset = 0;
+ 
+       if (gdbarch_byte_order (gdbarch) == BFD_ENDIAN_BIG)
+ 	offset = 8 - TYPE_LENGTH (valtype);
+@@ -1873,7 +1873,7 @@ ppc64_sysv_abi_return_value_base (struct gdbarch *gdbarch, struct type *valtype,
+       && TYPE_CODE (valtype) == TYPE_CODE_ARRAY && TYPE_VECTOR (valtype))
+     {
+       int regnum = tdep->ppc_gp0_regnum + 3 + index;
+-      int offset = 0;
++      LONGEST offset = 0;
+ 
+       if (gdbarch_byte_order (gdbarch) == BFD_ENDIAN_BIG)
+ 	offset = 8 - TYPE_LENGTH (valtype);
+@@ -1981,7 +1981,8 @@ ppc64_sysv_abi_return_value (struct gdbarch *gdbarch, struct value *function,
+       && TYPE_LENGTH (TYPE_TARGET_TYPE (valtype)) == 1)
+     {
+       int regnum = tdep->ppc_gp0_regnum + 3;
+-      int offset = (register_size (gdbarch, regnum) - TYPE_LENGTH (valtype));
++      LONGEST offset
++	= (register_size (gdbarch, regnum) - TYPE_LENGTH (valtype));
+ 
+       if (writebuf != NULL)
+ 	regcache->cooked_write_part (regnum, offset, TYPE_LENGTH (valtype),
+diff --git a/gdb/rl78-tdep.c b/gdb/rl78-tdep.c
+--- a/gdb/rl78-tdep.c
++++ b/gdb/rl78-tdep.c
+@@ -1347,8 +1347,8 @@ rl78_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+   for (i = nargs - 1; i >= 0; i--)
+     {
+       struct type *value_type = value_enclosing_type (args[i]);
+-      int len = TYPE_LENGTH (value_type);
+-      int container_len = (len + 1) & ~1;
++      LONGEST len = TYPE_LENGTH (value_type);
++      LONGEST container_len = (len + 1) & ~1;
+ 
+       sp -= container_len;
+       write_memory (rl78_make_data_address (sp),
+diff --git a/gdb/rs6000-aix-tdep.c b/gdb/rs6000-aix-tdep.c
+--- a/gdb/rs6000-aix-tdep.c
++++ b/gdb/rs6000-aix-tdep.c
+@@ -291,9 +291,9 @@ rs6000_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+   struct gdbarch_tdep *tdep = gdbarch_tdep (gdbarch);
+   enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+   int ii;
+-  int len = 0;
++  LONGEST len = 0;
+   int argno;			/* current argument number */
+-  int argbytes;			/* current argument byte */
++  LONGEST argbytes;		/* current argument byte */
+   gdb_byte tmp_buffer[50];
+   int f_argno = 0;		/* current floating point argno */
+   int wordsize = gdbarch_tdep (gdbarch)->wordsize;
+@@ -421,7 +421,7 @@ ran_out_of_registers_for_arguments:
+ 
+   if ((argno < nargs) || argbytes)
+     {
+-      int space = 0, jj;
++      LONGEST space = 0, jj;
+ 
+       if (argbytes)
+ 	{
+diff --git a/gdb/score-tdep.c b/gdb/score-tdep.c
+--- a/gdb/score-tdep.c
++++ b/gdb/score-tdep.c
+@@ -517,7 +517,7 @@ score_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+   enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+   int argnum;
+   int argreg;
+-  int arglen = 0;
++  LONGEST arglen = 0;
+   CORE_ADDR stack_offset = 0;
+   CORE_ADDR addr = 0;
+ 
+diff --git a/gdb/sh-tdep.c b/gdb/sh-tdep.c
+--- a/gdb/sh-tdep.c
++++ b/gdb/sh-tdep.c
+@@ -812,7 +812,7 @@ sh_skip_prologue (struct gdbarch *gdbarch, CORE_ADDR pc)
+ static int
+ sh_use_struct_convention (int renesas_abi, struct type *type)
+ {
+-  int len = TYPE_LENGTH (type);
++  LONGEST len = TYPE_LENGTH (type);
+   int nelem = TYPE_NFIELDS (type);
+ 
+   /* The Renesas ABI returns aggregate types always on stack.  */
+@@ -914,7 +914,7 @@ sh_frame_align (struct gdbarch *ignore, CORE_ADDR sp)
+ 
+ /* Helper function to justify value in register according to endianess.  */
+ static const gdb_byte *
+-sh_justify_value_in_reg (struct gdbarch *gdbarch, struct value *val, int len)
++sh_justify_value_in_reg (struct gdbarch *gdbarch, struct value *val, LONGEST len)
+ {
+   static gdb_byte valbuf[4];
+ 
+@@ -1074,7 +1074,8 @@ sh_push_dummy_call_fpu (struct gdbarch *gdbarch,
+   struct type *type;
+   CORE_ADDR regval;
+   const gdb_byte *val;
+-  int len, reg_size = 0;
++  LONGEST len;
++  int reg_size = 0;
+   int pass_on_stack = 0;
+   int treat_as_flt;
+   int last_reg_arg = INT_MAX;
+@@ -1216,7 +1217,8 @@ sh_push_dummy_call_nofpu (struct gdbarch *gdbarch,
+   struct type *type;
+   CORE_ADDR regval;
+   const gdb_byte *val;
+-  int len, reg_size = 0;
++  LONGEST len;
++  int reg_size = 0;
+   int pass_on_stack = 0;
+   int last_reg_arg = INT_MAX;
+ 
+diff --git a/gdb/sparc64-tdep.c b/gdb/sparc64-tdep.c
+--- a/gdb/sparc64-tdep.c
++++ b/gdb/sparc64-tdep.c
+@@ -1206,7 +1206,7 @@ sparc64_16_byte_align_p (struct type *type)
+ 
+ static void
+ sparc64_store_floating_fields (struct regcache *regcache, struct type *type,
+-			       const gdb_byte *valbuf, int element, int bitpos)
++			       const gdb_byte *valbuf, int element, LONGEST bitpos)
+ {
+   struct gdbarch *gdbarch = regcache->arch ();
+   int len = TYPE_LENGTH (type);
+@@ -1266,7 +1266,7 @@ sparc64_store_floating_fields (struct regcache *regcache, struct type *type,
+       for (i = 0; i < TYPE_NFIELDS (type); i++)
+ 	{
+ 	  struct type *subtype = check_typedef (TYPE_FIELD_TYPE (type, i));
+-	  int subpos = bitpos + TYPE_FIELD_BITPOS (type, i);
++	  LONGEST subpos = bitpos + TYPE_FIELD_BITPOS (type, i);
+ 
+ 	  sparc64_store_floating_fields (regcache, subtype, valbuf,
+ 					 element, subpos);
+@@ -1298,7 +1298,7 @@ sparc64_store_floating_fields (struct regcache *regcache, struct type *type,
+ 
+ static void
+ sparc64_extract_floating_fields (struct regcache *regcache, struct type *type,
+-				 gdb_byte *valbuf, int bitpos)
++				 gdb_byte *valbuf, LONGEST bitpos)
+ {
+   struct gdbarch *gdbarch = regcache->arch ();
+ 
+@@ -1354,7 +1354,7 @@ sparc64_extract_floating_fields (struct regcache *regcache, struct type *type,
+       for (i = 0; i < TYPE_NFIELDS (type); i++)
+ 	{
+ 	  struct type *subtype = check_typedef (TYPE_FIELD_TYPE (type, i));
+-	  int subpos = bitpos + TYPE_FIELD_BITPOS (type, i);
++	  LONGEST subpos = bitpos + TYPE_FIELD_BITPOS (type, i);
+ 
+ 	  sparc64_extract_floating_fields (regcache, subtype, valbuf, subpos);
+ 	}
+@@ -1388,7 +1388,7 @@ sparc64_store_arguments (struct regcache *regcache, int nargs,
+   for (i = 0; i < nargs; i++)
+     {
+       struct type *type = value_type (args[i]);
+-      int len = TYPE_LENGTH (type);
++      LONGEST len = TYPE_LENGTH (type);
+ 
+       if (sparc64_structure_or_union_p (type)
+ 	  || (sparc64_complex_floating_p (type) && len == 32))
+@@ -1488,7 +1488,7 @@ sparc64_store_arguments (struct regcache *regcache, int nargs,
+     {
+       const gdb_byte *valbuf = value_contents (args[i]);
+       struct type *type = value_type (args[i]);
+-      int len = TYPE_LENGTH (type);
++      LONGEST len = TYPE_LENGTH (type);
+       int regnum = -1;
+       gdb_byte buf[16];
+ 
+diff --git a/gdb/spu-tdep.c b/gdb/spu-tdep.c
+--- a/gdb/spu-tdep.c
++++ b/gdb/spu-tdep.c
+@@ -1432,7 +1432,7 @@ spu_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+       struct value *arg = args[i];
+       struct type *type = check_typedef (value_type (arg));
+       const gdb_byte *contents = value_contents (arg);
+-      int n_regs = align_up (TYPE_LENGTH (type), 16) / 16;
++      LONGEST n_regs = align_up (TYPE_LENGTH (type), 16) / 16;
+ 
+       /* If the argument doesn't wholly fit into registers, it and
+ 	 all subsequent arguments go to the stack.  */
+@@ -1464,7 +1464,7 @@ spu_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+ 	{
+ 	  struct value *arg = args[i];
+ 	  struct type *type = check_typedef (value_type (arg));
+-	  int len = TYPE_LENGTH (type);
++	  LONGEST len = TYPE_LENGTH (type);
+ 	  int preferred_slot;
+ 	  
+ 	  if (spu_scalar_value_p (type))
+diff --git a/gdb/tic6x-tdep.c b/gdb/tic6x-tdep.c
+--- a/gdb/tic6x-tdep.c
++++ b/gdb/tic6x-tdep.c
+@@ -881,7 +881,7 @@ tic6x_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+   int argreg = 0;
+   int argnum;
+   int stack_offset = 4;
+-  int references_offset = 4;
++  LONGEST references_offset = 4;
+   enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+   struct type *func_type = value_type (function);
+   /* The first arg passed on stack.  Mostly the first 10 args are passed by
+@@ -914,7 +914,7 @@ tic6x_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+   /* Now make space on the stack for the args.  */
+   for (argnum = 0; argnum < nargs; argnum++)
+     {
+-      int len = align_up (TYPE_LENGTH (value_type (args[argnum])), 4);
++      LONGEST len = align_up (TYPE_LENGTH (value_type (args[argnum])), 4);
+       if (argnum >= 10 - argreg)
+ 	references_offset += len;
+       stack_offset += len;
+@@ -933,7 +933,7 @@ tic6x_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+       const gdb_byte *val;
+       struct value *arg = args[argnum];
+       struct type *arg_type = check_typedef (value_type (arg));
+-      int len = TYPE_LENGTH (arg_type);
++      ssize_t len = TYPE_LENGTH (arg_type);
+       enum type_code typecode = TYPE_CODE (arg_type);
+ 
+       val = value_contents (arg);
+@@ -1088,7 +1088,8 @@ tic6x_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+ 	    }
+ 	  else
+ 	    internal_error (__FILE__, __LINE__,
+-			    _("unexpected length %d of arg %d"), len, argnum);
++			    _("unexpected length %s of arg %d"),
++			    plongest (len), argnum);
+ 
+ 	  addr = sp + stack_offset;
+ 	  write_memory (addr, val, len);
+diff --git a/gdb/tilegx-tdep.c b/gdb/tilegx-tdep.c
+--- a/gdb/tilegx-tdep.c
++++ b/gdb/tilegx-tdep.c
+@@ -288,7 +288,7 @@ tilegx_push_dummy_call (struct gdbarch *gdbarch,
+   CORE_ADDR stack_dest = sp;
+   int argreg = TILEGX_R0_REGNUM;
+   int i, j;
+-  int typelen, slacklen;
++  LONGEST typelen, slacklen;
+   static const gdb_byte four_zero_words[16] = { 0 };
+ 
+   /* If struct_return is 1, then the struct return address will
+diff --git a/gdb/v850-tdep.c b/gdb/v850-tdep.c
+--- a/gdb/v850-tdep.c
++++ b/gdb/v850-tdep.c
+@@ -1019,7 +1019,8 @@ v850_push_dummy_call (struct gdbarch *gdbarch,
+   enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+   int argreg;
+   int argnum;
+-  int arg_space = 0;
++  ULONGEST arg_space = 0;
++  LONGEST len = 0;
+   int stack_offset;
+ 
+   if (gdbarch_tdep (gdbarch)->abi == V850_ABI_RH850)
+@@ -1047,7 +1048,7 @@ v850_push_dummy_call (struct gdbarch *gdbarch,
+      in four registers available.  Loop thru args from first to last.  */
+   for (argnum = 0; argnum < nargs; argnum++)
+     {
+-      int len;
++      LONGEST len;
+       gdb_byte *val;
+       gdb_byte valbuf[v850_reg_size];
+ 
+diff --git a/gdb/vax-tdep.c b/gdb/vax-tdep.c
+--- a/gdb/vax-tdep.c
++++ b/gdb/vax-tdep.c
+@@ -110,7 +110,7 @@ vax_store_arguments (struct regcache *regcache, int nargs,
+   struct gdbarch *gdbarch = regcache->arch ();
+   enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+   gdb_byte buf[4];
+-  int count = 0;
++  LONGEST count = 0;
+   int i;
+ 
+   /* We create an argument list on the stack, and make the argument
+@@ -119,7 +119,7 @@ vax_store_arguments (struct regcache *regcache, int nargs,
+   /* Push arguments in reverse order.  */
+   for (i = nargs - 1; i >= 0; i--)
+     {
+-      int len = TYPE_LENGTH (value_enclosing_type (args[i]));
++      LONGEST len = TYPE_LENGTH (value_enclosing_type (args[i]));
+ 
+       sp -= (len + 3) & ~3;
+       count += (len + 3) / 4;
+diff --git a/gdb/xstormy16-tdep.c b/gdb/xstormy16-tdep.c
+--- a/gdb/xstormy16-tdep.c
++++ b/gdb/xstormy16-tdep.c
+@@ -233,8 +233,10 @@ xstormy16_push_dummy_call (struct gdbarch *gdbarch,
+   enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+   CORE_ADDR stack_dest = sp;
+   int argreg = E_1ST_ARG_REGNUM;
+-  int i, j;
+-  int typelen, slacklen;
++  int i, slacklen;
++  LONGEST j;
++  LONGEST typelen;
++  const gdb_byte *val;
+   gdb_byte buf[xstormy16_pc_size];
+ 
+   /* If returning a struct using target ABI method, then the struct return
+diff --git a/gdb/xtensa-tdep.c b/gdb/xtensa-tdep.c
+--- a/gdb/xtensa-tdep.c
++++ b/gdb/xtensa-tdep.c
+@@ -1615,8 +1615,7 @@ xtensa_store_return_value (struct type *type,
+ 
+       if (len > (callsize > 8 ? 8 : 16))
+ 	internal_error (__FILE__, __LINE__,
+-			_("unimplemented for this length: %d"),
+-			TYPE_LENGTH (type));
++			_("unimplemented for this length: %d"), len);
+       areg = arreg_number (gdbarch,
+ 			   gdbarch_tdep (gdbarch)->a0_base + 2 + callsize, wb);
+ 
+@@ -1689,18 +1688,19 @@ xtensa_push_dummy_call (struct gdbarch *gdbarch,
+ 			CORE_ADDR struct_addr)
+ {
+   enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+-  int size, onstack_size;
++  int i;
++  LONGEST size, onstack_size;
+   gdb_byte *buf = (gdb_byte *) alloca (16);
+   CORE_ADDR ra, ps;
+   struct argument_info
+   {
+     const bfd_byte *contents;
+-    int length;
++    ssize_t length;
+     int onstack;		/* onstack == 0 => in reg */
+     int align;			/* alignment */
+     union
+     {
+-      int offset;		/* stack offset if on stack.  */
++      ssize_t offset;		/* stack offset if on stack.  */
+       int regno;		/* regno if in register.  */
+     } u;
+   };
+@@ -1723,9 +1723,10 @@ xtensa_push_dummy_call (struct gdbarch *gdbarch,
+         {
+ 	  struct value *arg = args[i];
+ 	  struct type *arg_type = check_typedef (value_type (arg));
+-	  fprintf_unfiltered (gdb_stdlog, "%2d: %s %3d ", i,
+-			      host_address_to_string (arg),
+-			      TYPE_LENGTH (arg_type));
++	  const char *arg_type_len_s = pulongest (TYPE_LENGTH (arg_type));
++
++	  fprintf_unfiltered (gdb_stdlog, "%2d: %s %s ", i,
++			      host_address_to_string (arg), arg_type_len_s);
+ 	  switch (TYPE_CODE (arg_type))
+ 	    {
+ 	    case TYPE_CODE_INT:
+@@ -1794,8 +1795,8 @@ xtensa_push_dummy_call (struct gdbarch *gdbarch,
+ 	  info->align = TYPE_LENGTH (builtin_type (gdbarch)->builtin_long);
+ 	  break;
+ 	}
+-      info->length = TYPE_LENGTH (arg_type);
+       info->contents = value_contents (arg);
++      info->length = TYPE_LENGTH (arg_type);
+ 
+       /* Align size and onstack_size.  */
+       size = (size + info->align - 1) & ~(info->align - 1);
+@@ -1840,7 +1841,7 @@ xtensa_push_dummy_call (struct gdbarch *gdbarch,
+ 
+       if (info->onstack)
+ 	{
+-	  int n = info->length;
++	  ssize_t n = info->length;
+ 	  CORE_ADDR offset = sp + info->u.offset;
+ 
+ 	  /* Odd-sized structs are aligned to the lower side of a memory
+@@ -1856,7 +1857,7 @@ xtensa_push_dummy_call (struct gdbarch *gdbarch,
+ 	}
+       else
+ 	{
+-	  int n = info->length;
++	  ssize_t n = info->length;
+ 	  const bfd_byte *cp = info->contents;
+ 	  int r = info->u.regno;
+ 

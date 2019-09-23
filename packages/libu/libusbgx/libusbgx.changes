@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Wed Sep 18 07:13:21 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Use %license
+- Use %sover instead of %lname, match .so.%sover only
+- Use #PATCH-FIX-UPSTREAM
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Fri Aug 23 06:32:10 UTC 2019 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Update to release 0.2.0
+- Remove unneeded patches
+  - cleanup-return-void.patch
+  - stdio-include.patch
+  - link-correct-library.patch
+
+- Add patches from github master to make this compile with newer Glibc
+  - 0001-libusbgx-Fix-out-of-tree-compilation.patch
+  - 0002-libusbgx-Fix-doc-build-with-new-doxygen-version.patch
+  - 0003-libusbgx-fix-build-with-glibc-2.28-since-sys-sysmacr.patch
+  - 0004-libusbgx-fix-without-libconfig-build-against-glibc-2.patch
+
+-------------------------------------------------------------------
+Sat Dec  3 12:19:13 UTC 2016 - fvogt@suse.com
+
+- Add Conflicts: libusbg-tools to libusbgx-tools
+
+-------------------------------------------------------------------
+Fri Dec  2 10:39:29 UTC 2016 - fvogt@suse.com
+
+- Initial package, based on libusbg
+- Add patches to make rpmlint happy:
+  - cleanup-return-void.patch
+  - stdio-include.patch
+- Add patch to fix pkgconfig file:
+  - link-correct-library.patch
+
+

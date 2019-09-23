@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c953c12623c3fcfbed87ee6fe853866</srcmd5>
+    <version>0.14</version>
+    <time>1350590386</time>
+    <user>coolo</user>
+    <comment>optional dependency of dpkg, see SR #137900</comment>
+    <requestid>137901</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0c953c12623c3fcfbed87ee6fe853866</srcmd5>
+    <version>0.14</version>
+    <time>1359109662</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>0c953c12623c3fcfbed87ee6fe853866</srcmd5>
+    <version>0.14</version>
+    <time>1379663671</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e55e2735a805770df1bb62e3a469fe9e</srcmd5>
+    <version>0.20</version>
+    <time>1406360527</time>
+    <user>coolo</user>
+    <comment>- updated to 0.20
+     - Problem on GNU Hurd hopefully fixed and some cosmetic changes.
+ 
+ 0.19  Tue May 27 2014
+     - Builds failed on 32-bit systems due to missing CFLAGS derived
+       from the Perl installation.
+ 
+ 0.18  Mon May 26 2014
+     - CPAN didn't find the version number in FcntlLock.pm which
+       was derived from that of Core.pm:-(
+ 
+ 0.17  Mon May 26 2014
+     - CPAN testing showed that there are 32-bit systems where the
+       off_t member of the flock struct is a 64-bit integer but Perl
+       doesn't support the 'q' format for pack() and unpack(). On these
+       systems there seem to be no good way of assembling a flock
+       structure useing &quot;pure Perl&quot; and thus the File::FcntlLock::Pure
+        and File::FcntlLock::Inline modules won't get installed.
+ 
+ 0.16  Sun May 25 2014
+     - Missing file in 0.15, Pure.pm, in MANIFEST added.
+ 
+ 0.15  Thu May 20 2014
+     - Module rewritten as three modules, one working
+       exactly as before, and two new ones that instead of
+       being XS-based use Perl code. For the first one the
+       Perl code for packing/unpacking the C flock struct is
+       generated when 'perl Makefile.PL' is run. For the other
+       a C program is created, compiled and run each time the
+       module gets loaded. This is in response to some concerns</comment>
+    <requestid>242342</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e55e2735a805770df1bb62e3a469fe9e</srcmd5>
+    <version>0.20</version>
+    <time>1409302287</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3ded7ca293ad5ea51765dfb2283640f3</srcmd5>
+    <version>0.22</version>
+    <time>1429107926</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296632</requestid>
+  </revision>
+</revisionlist>

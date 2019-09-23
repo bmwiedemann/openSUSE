@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Thu May 23 12:14:36 UTC 2019 - pgajdos@suse.com
+
+- version update to 2.6.8
+  - Fix double border in QtabWidget for pyqt5
+  - Fix widgets border in QTabWidget as QLabel  #141, #123, #126
+  - Fix QTab scroller buttons background #136
+  - Update color from images, fix #127
+  - Add retina resolution @2x, fix #140
+  - Intermediate version before merge PR #142 adding scripts
+  - Fix combobox indicator and padding #132
+  - Fix PyQtGraph plot axes covered by padding #134
+  - Update authors
+  - Fix tabbed bordeless frames and add more examples, #123, #126
+  - Add feedback to pressed buttons, #133
+  - Change future warning to pending deprecation for developers, #125 in v2.x
+  - Fix hover in qtabwidget, #128
+
+-------------------------------------------------------------------
+Tue Jan 29 15:58:37 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use version from git and enable tests (just for python3 since
+  pyside2 is not available for python2 and just qt5 bindings
+  because qt4 doesn't support painting offscreen and thus needs
+  an X server).
+
+-------------------------------------------------------------------
+Sun Jan 27 17:26:22 UTC 2019 - alarrosa@suse.com
+
+- Initial release of python-QDarkStyle 2.6.5

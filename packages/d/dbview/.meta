@@ -1,0 +1,6 @@
+<package name="dbview" project="openSUSE:Factory">
+  <title>Viewer for dBase III and dBase IV Files</title>
+  <description>dbview is a little tool that displays dBase III and IV files. You can
+also use it to convert your old .dbf files for further use with Unix.</description>
+  <devel project="server:database" package="dbview"/>
+</package>

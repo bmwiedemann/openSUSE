@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Wed Jun  5 11:59:17 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2019.0
+  * Add optional spvc, libshaderc_spvc as wrapper around
+    SPIRV-Cross.
+  * Support NV extensions for shader stages.
+  * spvc: Added option to specify source environment. Spvc will
+    transform from source to target environment if they are
+    different. This only works for WebGPU0 and Vulkan 1.1.
+
+
+-------------------------------------------------------------------
+Fri Dec 14 23:08:14 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2018.0
+  * Support -fhlsl_functionality1 (also -fhlsl-functionality1)
+  * Support NVIDIA Turing extensions. Requires updated Glslang
+    and SPIRV-Tools.
+  * Use SPIR-V optimization and HLSL legalization recipes from
+    SPIRV-Tools.
+  * Pass target environment into SPIRV-Tools code, e.g. from
+    --target-env vulkan1.1 .
+
+-------------------------------------------------------------------
+Sat Mar 31 16:32:38 UTC 2018 - 9+suse@cirno.systems
+
+- Update to version 20180329.g2a0f3a3:
+  * Use standard SPIRV-Tools transformation recipes
+  * Locate clang for Linux buildbots. (#446)
+  * Support setting target environment version, e.g. Vulkan 1.1
+  * Re-enable the Windows continuous Debug builds. (#444)
+  * Add build result badges to README. (#439)
+  * Glslang generator version 6
+  * Glslang generator version 5
+  * Update glslc README for -fauto-map-locations
+  * Add glslc tests for -fauto-map-locations
+  * Fix setting of debug DLL name for AppVeyor
+  * Adding kokoro build configurations. (#429)
+  * AppVeyor packaging: debug DLL name no longer has extra "d"
+  * Start v2018.0-dev
+  * Finalize v2017.2
+  * copyright check: Skip auto-generated CMakeFiles
+  * Update CHANGES for -fauto-map-locations
+  * Glslang now requires bindings on resources
+  * Add -fauto-map-locations option
+
+-------------------------------------------------------------------
+Fri Feb 23 02:20:35 UTC 2018 - 9+suse@cirno.systems
+
+- Update to version 20180207.g563bc6e:
+  * Add a virtual destructor, otherwise Clang 6.0complains about delete being called on an abstract class.
+  * Skip Debug builds for VS 2013 and VS 2015
+  * Glslang updated its generator version number to 4
+  * Android.mk: add glslang/MachineIndependent/attribute.cpp
+  * Make tests resilient to better SPIR-V optimizations
+  * Travis CI: install pip and set clone depth to 1
+  * Adapt to Glslang codegen version update
+
+-------------------------------------------------------------------
+Thu Nov 23 21:57:06 UTC 2017 - 9@cirno.systems
+
+- Update to version 20171030.g98ab88b:
+  * glslc tests: Relax version word check
+  * Avoid -fPIC for MinGW builds
+  * Allow override of SPVTOOLS_LOCAL_PATH
+  * Move spirv-tools build from third_party/Android.mk
+  * Update CHANGES
+  * Adapt to Glslang generator version number change
+  * Travis CI: use make to build
+  * Add HLSL legalization passes to compiler.cc
+  * Add SPIRV-Tools optimizer files for linker
+  * Added more opt passes to PassId enum
+
+-------------------------------------------------------------------
+Wed Nov 22 14:00:28 UTC 2017 - 9@cirno.systems
+
+- Re-add explicit version dependencies
+
+-------------------------------------------------------------------
+Mon Nov 20 22:21:12 UTC 2017 - 9@cirno.systems
+
+- Drop explicit version dependency on spirv-tools
+
+-------------------------------------------------------------------
+Fri Nov  3 13:01:32 UTC 2017 - 9@cirno.systems
+
+- init

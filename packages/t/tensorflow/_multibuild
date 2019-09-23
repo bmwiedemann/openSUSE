@@ -1,0 +1,18 @@
+<multibuild>
+  <package>standard</package>
+  <package>lite</package>
+  <package>hpc</package>
+  <package>hpc-openmpi2</package>
+  <package>hpc-mvapich2</package>
+  <package>hpc-avx2</package>
+  <package>hpc-avx2-openmpi2</package>
+  <package>hpc-avx2-mvapich2</package>
+  <!--
+  <package>hpc-avx2-openmpi3</package>
+  <package>cuda-9.0</package>
+  <package>opencl</package>
+  <package>hpc-opencl</package>
+  <package>cuda-9.0</package>
+  <package>hpc-cuda-9.0</package>cuda-9.0</package>
+  -->
+</multibuild>

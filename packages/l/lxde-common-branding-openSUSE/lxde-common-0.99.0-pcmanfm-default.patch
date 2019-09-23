@@ -1,0 +1,27 @@
+--- lxde-common-0.99.0/pcmanfm/pcmanfm.conf.in	2014-10-23 16:08:00.000000000 +0200
++++ lxde-common-0.99.0-new/pcmanfm/pcmanfm.conf.in	2014-10-24 20:09:17.743019479 +0200
+@@ -2,12 +2,18 @@
+ bm_open_method=0
+ su_cmd=xdg-su -c '%s'
+ 
++[volume]
++mount_on_startup=1
++mount_removable=1
++autorun=1
++
+ [desktop]
+ wallpaper_mode=1
+-wallpaper=@prefix@/share/lxde/wallpapers/lxde_blue.jpg
++wallpaper=@prefix@/share/wallpapers/openSUSEdefault/contents/images/1920x1200.jpg
+ desktop_bg=#000000
+ desktop_fg=#ffffff
+ desktop_shadow=#000000
++show_wm_menu=0
+ 
+ [ui]
+ always_show_tabs=0
+@@ -18,3 +24,4 @@
+ show_hidden=0
+ sort_type=0
+ sort_by=2
++pathbar_mode_buttons=1

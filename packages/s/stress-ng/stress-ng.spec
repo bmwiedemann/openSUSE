@@ -1,0 +1,80 @@
+#
+# spec file for package stress-ng
+#
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2015, Martin Hauke <mardnh@gmx.de>
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+Name:           stress-ng
+Version:        0.10.05
+Release:        0
+Summary:        Tool to load and stress a computer
+License:        GPL-2.0-only
+Group:          System/Benchmark
+URL:            https://kernel.ubuntu.com/~cking/stress-ng/
+Source:         https://kernel.ubuntu.com/~cking/tarballs/%{name}/%{name}-%{version}.tar.xz
+BuildRequires:  keyutils-devel
+BuildRequires:  libaio-devel
+BuildRequires:  libattr-devel
+BuildRequires:  libbsd-devel
+BuildRequires:  libcap-devel
+BuildRequires:  libseccomp-devel
+BuildRequires:  lksctp-tools-devel
+BuildRequires:  zlib-devel
+
+%description
+stress-ng can stress various subsystems of a computer. It can stress load CPU,
+cache, disk, memory, socket and pipe I/O, scheduling and much more. stress-ng
+is a re-write of the original stress tool by Amos Waterland but has many
+additional features such as specifying the number of bogo operations to run,
+execution metrics, a stress verification on memory and compute operations and
+considerably more stress mechanisms.
+
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Benchmark
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    packageand(stress-ng:bash)
+BuildArch:      noarch
+
+%description bash-completion
+Bash completion script for stress-ng.
+
+%prep
+%setup -q
+
+%build
+export CFLAGS="%{optflags}"
+make %{?_smp_mflags}
+
+%install
+install -D -p -m 0755 stress-ng   \
+  %{buildroot}%{_bindir}/stress-ng
+install -D -p -m 0644 stress-ng.1 \
+  %{buildroot}%{_mandir}/man1/stress-ng.1
+install -D -p -m 0644 bash-completion/stress-ng \
+  %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+
+%files
+%license COPYING
+%doc README
+%{_bindir}/stress-ng
+%{_mandir}/man1/stress-ng.1%{ext_man}
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/%{name}
+
+%changelog

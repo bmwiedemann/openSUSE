@@ -1,0 +1,5 @@
+addFilter(".*files-duplicate.*")
+addFilter(".*shared-lib-calls-exit.*")
+addFilter(".*non-etc-or-var-file-marked-as-conffile.*")
+addFilter(".*macro-in-comment.*jobs.*")
+addFilter(".*W:.*no-version-in-last-changelog.*")

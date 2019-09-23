@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>07e06f156144caec07db5816f043a4f4</srcmd5>
+    <version>0.1.1.1</version>
+    <time>1527675136</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-resolv to the latest version.</comment>
+    <requestid>607871</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>42410306afaaa2b0a9fceb4eff155bf4</srcmd5>
+    <version>0.1.1.1</version>
+    <time>1532161363</time>
+    <user>dimstar_suse</user>
+    <comment>- Add resolv at version 0.1.1.1.</comment>
+    <requestid>623843</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fee4ac3da06844b7c944db1054bb3aaa</srcmd5>
+    <version>0.1.1.1</version>
+    <time>1540448479</time>
+    <user>dimstar_suse</user>
+    <comment>trivial version update</comment>
+    <requestid>643200</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>40b6b1e9a1827687e1927cd3ae3290ee</srcmd5>
+    <version>0.1.1.2</version>
+    <time>1541865563</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>646362</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,38 @@
+--- a/sleekxmpp/clientxmpp.py
++++ b/sleekxmpp/clientxmpp.py
+@@ -16,6 +16,7 @@ from __future__ import absolute_import,
+ 
+ import logging
+ 
++from sleekxmpp.jid import JID
+ from sleekxmpp.stanza import StreamFeatures
+ from sleekxmpp.basexmpp import BaseXMPP
+ from sleekxmpp.exceptions import XMPPError
+@@ -99,7 +100,17 @@ class ClientXMPP(BaseXMPP):
+         self.add_event_handler('roster_update', self._handle_roster)
+ 
+         self.register_stanza(StreamFeatures)
+-
++        def roster_push_filter(iq):
++            from_ = iq['from']
++            if from_ and from_ != JID('') and from_ != self.boundjid.bare:
++                reply = iq.reply()
++                reply['type'] = 'error'
++                reply['error']['type'] = 'cancel'
++                reply['error']['code'] = 503
++                reply['error']['condition'] = 'service-unavailable'
++                reply.send()
++                return
++            self.event('roster_update', iq)
+         self.register_handler(
+                 Callback('Stream Features',
+                          MatchXPath('{%s}features' % self.stream_ns),
+@@ -107,7 +118,7 @@ class ClientXMPP(BaseXMPP):
+         self.register_handler(
+                 Callback('Roster Update',
+                          StanzaPath('iq@type=set/roster'),
+-                         lambda iq: self.event('roster_update', iq)))
++                         roster_push_filter))
+ 
+         # Setup default stream features
+         self.register_plugin('feature_starttls')

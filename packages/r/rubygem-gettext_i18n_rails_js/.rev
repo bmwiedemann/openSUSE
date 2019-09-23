@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c16eb4c35af532ffa66be4d2c2b87c44</srcmd5>
+    <version>1.0.0</version>
+    <time>1424827068</time>
+    <user>dimstar_suse</user>
+    <comment>This will be a dependency for the upcoming new hawk version.</comment>
+    <requestid>287491</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9f43ee097c5cc996ca698571cd62eca6</srcmd5>
+    <version>1.0.1</version>
+    <time>1425031168</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287661</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2fd99d10ae158b172e1c7df3d523633d</srcmd5>
+    <version>1.0.2</version>
+    <time>1428790268</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>295370</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>71118b0265e730b6260694f1cda41b67</srcmd5>
+    <version>1.0.3</version>
+    <time>1449145801</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342462</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fb42144b6be15ad29b347c598959f97c</srcmd5>
+    <version>1.0.4</version>
+    <time>1465750473</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399586</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a103ec93593804eb38749bd56a553c58</srcmd5>
+    <version>1.1.0</version>
+    <time>1466326101</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401544</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a4acdb48e8a28224714a0df7f2c68fe0</srcmd5>
+    <version>1.2.0</version>
+    <time>1478517800</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>437608</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>09dc72ce6c71cd3598342c7b952438a7</srcmd5>
+    <version>1.3.0</version>
+    <time>1492011103</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>481720</requestid>
+  </revision>
+</revisionlist>

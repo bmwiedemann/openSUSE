@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Wed Nov  2 10:38:17 UTC 2016 - sndirsch@suse.com
+
+- tagged baselibs.conf as source in specfile
+
+-------------------------------------------------------------------
+Sat Oct 29 00:00:07 UTC 2016 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.2.3:
+  + Remove fallback for _XEatDataWords, require libX11 1.6 for it
+  + Out of boundary access and endless loop in libXtst
+
+-------------------------------------------------------------------
+Sat Jun  1 20:11:00 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.2.2:
+  This release provides the fix for the recently announced security issue
+  CVE-2013-2063, along with a number of fixes to the build configuration.
+- Packaging changes:
+  + Remove Patch0: u_libXtst_Added-missing-xi-requires-to-pkconfig-file.patch
+    Superseded by another upstreamed version
+-------------------------------------------------------------------
+Sun Feb 17 17:21:53 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+- Avoid calling fdupes outside of /usr
+
+-------------------------------------------------------------------
+Wed Apr 11 15:23:43 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.2.1:
+  + Fix for gcc warning
+  + Improvements to documentation
+  + Build configuration improvements
+
+-------------------------------------------------------------------
+Fri Feb 24 11:29:37 UTC 2012 - sndirsch@suse.com
+
+- Added missing "xi" requires to pkconfig file (bnc#748808)
+
+-------------------------------------------------------------------
+Tue Feb  7 22:17:49 UTC 2012 - jengelh@medozas.de
+
+- Split xorg-x11-libs into separate packages

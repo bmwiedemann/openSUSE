@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b6d2e9661986e1061b40ae5758d350fb</srcmd5>
+    <version>0.28</version>
+    <time>1326104198</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>98365</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b6d2e9661986e1061b40ae5758d350fb</srcmd5>
+    <version>0.28</version>
+    <time>1340183924</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>b6d2e9661986e1061b40ae5758d350fb</srcmd5>
+    <version>0.28</version>
+    <time>1359109805</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>b6d2e9661986e1061b40ae5758d350fb</srcmd5>
+    <version>0.28</version>
+    <time>1379663855</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bc941aa39a18ca735b6ef5110e2af17b</srcmd5>
+    <version>0.35</version>
+    <time>1393253518</time>
+    <user>coolo</user>
+    <comment>- updated to 0.35
+           - updated recommendations for Async, CLI, ModuleDev, Scalability,
+             WebDev
+ 
+ 0.34004   2014-01-22 (TRIAL RELEASE)
+           - still more pod and metadata tweaks
+ 
+ 0.34003   2014-01-22 (TRIAL RELEASE)
+           - more pod and metadata tweaks
+ 
+ 0.34002   2014-01-21 (TRIAL RELEASE)
+           - fix mangled abstract in META.*
+           - fixed missing list of recommendations in Task::Kensho pod
+ 
+ 0.34001   2014-01-21 (TRIAL RELEASE)
+           - fix munging of ::Hackery preamble into stopwords
+           - fixed bugtracker metadata (now indicating github issues)
+           - distributions split apart again, with new! and enhanced!
+             Dist::Zilla generation magic
+ 
+ 0.34      2013-08-20 01:27:07Z (TRIAL RELEASE)
+           - distributions reunified under Task-Kensho, and now auto-generated
+             from a master YAML file using Dist::Zilla
+ 
+ 0.33      2012-06-24
+           - Task::Kensho::Testing:
+             - Retired Test::Exception and replaced with Test::Fatal
+             - added Test::Deep, Test::Requires and Test::NoWarnings
+           - Task::Kensho::WebDev: added Plack</comment>
+    <requestid>223621</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>bc941aa39a18ca735b6ef5110e2af17b</srcmd5>
+    <version>0.35</version>
+    <time>1409302499</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a7676cae30a798fec7fd0a1b70bd804f</srcmd5>
+    <version>0.38</version>
+    <time>1423596167</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>284813</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>da05154c21f2a96ed3bdb7c0f528218d</srcmd5>
+    <version>0.39</version>
+    <time>1464204559</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397841</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ea6c57589086caece927d1485d5c9de5</srcmd5>
+    <version>0.40</version>
+    <time>1544632044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655825</requestid>
+  </revision>
+</revisionlist>

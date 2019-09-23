@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Fri Sep  6 16:53:49 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add merged_pr_63.patch to fix incompatibility with pytest 5.1
+- Add pr_37.patch to remove numpy dependency
+
+-------------------------------------------------------------------
+Fri Mar  8 11:10:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.3.0:
+  * Honor the collect_ignore option used in conftest.py. [#36]
+  * Make use of doctest_optionflags settings. [#39]
+  * Make it possible to set FLOAT_CMP globally in setup.cfg. [#40]
+  * Drop support for pytest versions earlier than 3.0. [#46]
+  * Extend doctest-skip, doctest-skip-all, and doctest-requires directives to work in TeX files. [#43]
+
+-------------------------------------------------------------------
+Thu Feb 14 12:22:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.2.0:
+  * Add doctest-plus-atol and doctest-plus-rtol options for setting the numerical tolerance. [#21]
+  * Update behavior of --doctest-modules option when plugin is installed. [#26]
+- Switch to github tarball to obtain tests
+- Enable tests using _multibuild
+
+-------------------------------------------------------------------
+Tue Aug 14 20:03:23 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

@@ -1,0 +1,569 @@
+-------------------------------------------------------------------
+Sat Sep  7 20:36:24 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Remove unused includes
+
+-------------------------------------------------------------------
+Wed Aug  7 17:51:01 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Fix crash due to the q pointer never being initialized. 
+  * Don't include bluezqt_dbustypes.h from installed headers 
+  * Fix compiler warnings
+
+-------------------------------------------------------------------
+Fri Jul 19 11:37:37 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:36 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * Add MediaTransport API
+  * Install in new logging directory when we use kf5 5.59.0
+  * Add LE Advertising and GATT APIs
+  * Minor change to prevent force push removed commits from returning
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:10 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- Changes since 5.58.0:
+  * Add Bluez API to DBus XML parser/generator
+
+-------------------------------------------------------------------
+Wed May 15 18:16:15 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- No code changes since 5.57.0
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:41 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * It compiles fine without foreach
+  * Replace Q_FOREACH with C++11 for
+  * Move Media interface into Adapter
+  * Manager: Don't require Media1 interface for initialization (kde#405478)
+  * Device: Check object path in interfaces removed slot (kde#403289)
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:34 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * No code changes since 5.55.0
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:02:58 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * Fix fall-through warning
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:41 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * No code changes since 5.53.0
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:42 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Remove qt prefix include
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:02 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Add Media and MediaEndpoint API header generation
+  * Fix new syntax
+
+-------------------------------------------------------------------
+Mon Oct 22 17:15:56 UTC 2018 - wbauer@tmo.at
+
+- Use %{_udevrulesdir} macro to specify the install directory for
+  udev rules instead of a hard-coded path
+
+-------------------------------------------------------------------
+Fri Oct 19 18:08:33 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix install directory for udev rules (boo#1112598)
+
+-------------------------------------------------------------------
+Tue Oct 16 08:01:43 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:51:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Implement Media and MediaEndpoint API
+  * Make sure to compile with strict compile flags
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * None
+
+-------------------------------------------------------------------
+Sun Aug 19 09:18:41 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:33 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * Update D-Bus xml files to use "Out*" for signal type Qt annotations
+  * Add signal for devices's address changing
+
+-------------------------------------------------------------------
+Tue Jun 12 21:35:06 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Add missing override
+  * Use override
+
+-------------------------------------------------------------------
+Sun May 13 21:02:59 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:01 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:40 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:06 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * No need to initialize m_usableAdapterwith nullptr
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:13 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+  * Autogenerate debug file
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:47 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * Do not leak rfkill file descriptors. (kde#386886)
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:13 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:36 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:16 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * autotests: remove now unnecessary compat code
+  * autotests: fix failure to find fakebluez in the bin dir.
+  * Autotests: Fix finding fakebluez binary (kde#383453)
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:13 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * Autotests: repair finding helper binary in current setup
+  * autotests: fix running with CTEST_PARALLEL_LEVEL=8
+  * autotests: prepare for CMAKE_RUNTIME_OUTPUT_DIRECTORY being set
+
+-------------------------------------------------------------------
+Wed Jul 12 07:13:58 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * API dox: note CamelCase includes by @class tag
+  * API dox: add namespace to classes named in README.md
+  * [FEATURE] Option to build & install QCH file with the public API dox
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * Pass an explicit list of arguments. This prevents QProcess from trying to handle our space containing path through a shell
+  * Fix property changes being missed immediately after an obejct is added (kde#377405)
+
+-------------------------------------------------------------------
+Mon May 15 13:53:16 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * Add .arcconfig
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:41 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * Provide device type for Low Energy devices
+  * Upgrade KF5 version to 5.33.0.
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:12 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Upgrade KF5 version to 5.32.0.
+
+-------------------------------------------------------------------
+Thu Feb  9 09:21:23 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:37:11 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 01:54:38 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Mon Nov 14 16:03:02 UTC 2016 - hrvoje.senjan@gmail.com
+
+- (Build)Require udev so udevrulesdir gets owned
+
+-------------------------------------------------------------------
+Mon Nov 14 12:54:19 UTC 2016 - alarrosa@suse.com
+
+- Specify the file to be included in bluez-qt-udev instead of
+  owning the /lib/udev/ directory.
+
+-------------------------------------------------------------------
+Sat Nov  5 20:05:12 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 12:48:33 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * Fix crash when trying to add device to unknown adapter (kde#364416)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:45:56 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * Fix include dir in pri file
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:49:32 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:01:23 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:22:40 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:29:32 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:18:19 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * ObexManager: Split error messages for missing objects
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 09:53:32 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 17:58:01 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:41:23 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:01:48 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 16:56:57 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * isBluetoothOperational now also depends on unblocked rfkill
+  * Fix determining global state of rfkill switch
+  * QML API: Mark properties without notify signal as constants
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:36:57 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * Fix fakebluez crash in obexmanagertest with ASAN
+  * Forward declare all exported classes in types.h
+  * ObexTransfer: Set error when transfer session is removed
+  * Utils: Hold pointers to managers instances
+  * ObexTransfer: Set error when org.bluez.obex crashes
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:12:25 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * Don't forward deviceChanged signal after device was removed
+    (kde#351051)
+  * Respect -DBUILD_TESTING=OFF
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:09 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:44:43 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * Remove all devices from adapter before removing the adapter
+    (kde#349363)
+  * Update links in README.md
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:06 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Fri May 22 15:29:20 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.1.php
+
+-------------------------------------------------------------------
+Thu Apr 23 13:27:16 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3 Final:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.0.php
+
+-------------------------------------------------------------------
+Sat Apr 11 18:53:30 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.95 aka 5.3 beta:
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.95.php
+- Update required Qt version to 5.4.0
+
+-------------------------------------------------------------------
+Fri Apr 10 01:04:03 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Initial package
+

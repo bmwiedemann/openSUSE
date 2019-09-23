@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Sun Sep 22 10:52:23 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Use tbb-devel BuildRequires instead of cmake(TBB), the latter is not
+  available in Leap 15.x
+
+-------------------------------------------------------------------
+Fri Aug 23 20:06:00 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid forcing SSE/SSE2 on %ix86, it is not guaranteed to exist.
+- Trim bias and redundancies from descriptions.
+- RPM group/category fixes.
+
+-------------------------------------------------------------------
+Wed Jul 10 16:15:50 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- version 3.4.0: initial build

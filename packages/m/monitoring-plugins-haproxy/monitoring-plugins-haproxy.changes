@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Wed Jul 30 19:16:39 UTC 2014 - lars@linux-schulserver.de
+
+- Renamed package to monitoring-plugins-haproxy
+
+-------------------------------------------------------------------
+Sun Apr 27 14:46:23 UTC 2014 - lars@linux-schulserver.de
+
+- specfile cleanup
+- package LICENSE file as required by GPL-2.0+
+- require the needed Perl modules
+
+-------------------------------------------------------------------
+Wed Apr 16 20:02:13 UTC 2014 - mardnh@gmx.de
+
+- initial package
+

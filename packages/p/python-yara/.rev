@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fe92f0dc4ef0a3156c01b49f48eab6ab</srcmd5>
+    <version>3.5.0</version>
+    <time>1478952037</time>
+    <user>dimstar_suse</user>
+    <comment>I removed the offending line in the %files section.  No idea what it was doing in there.</comment>
+    <requestid>434243</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9fdce0f9f6f514593721cf1133e3320b</srcmd5>
+    <version>3.6.1</version>
+    <time>1500669898</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501386</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>227523deb63009208d8cf22d7e879ea9</srcmd5>
+    <version>3.7.0</version>
+    <time>1527605530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612690</requestid>
+  </revision>
+</revisionlist>

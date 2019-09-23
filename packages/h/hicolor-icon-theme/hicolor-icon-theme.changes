@@ -1,0 +1,161 @@
+-------------------------------------------------------------------
+Wed May  8 09:29:55 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move RPM macros to %_rpmmacrodir.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:33:24 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Sep  7 15:01:50 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.17:
+  + Fix 256x256@2/animations name in index.theme.
+- Changes from version 0.16:
+  + Add hidpi icon directories (e.g. 48x48@2) with scale=2.
+
+-------------------------------------------------------------------
+Tue Jun 27 12:29:12 UTC 2017 - dimstar@opensuse.org
+
+- Migrate %icon_theme_cache_post/postun macro from
+  hicolor-icon-theme to gtk2-tools and gtk3-tools file triggers.
+  The macros are defined to be nop, in order to not break all spec
+  files for now.
+
+-------------------------------------------------------------------
+Thu May 26 14:01:13 UTC 2016 - tchvatal@suse.com
+
+- Update url to point to some existing location.
+- Run over with spec-cleaner: Update macros and remove obsolete
+  clean section.
+
+-------------------------------------------------------------------
+Mon Oct 26 00:08:46 UTC 2015 - zaitor@opensuse.org
+
+- Drop hicolor-scalable-sizes.patch: It breaks builder icons, and
+  default icons on desktops like MATE. It has never been taken
+  upstream, nor is any other distro using it, so lets align with
+  everyone else.
+
+-------------------------------------------------------------------
+Tue Mar 24 21:52:20 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.15:
+  + Add symbolic/apps directory for symbolic app icons.
+
+-------------------------------------------------------------------
+Tue Dec 16 10:52:27 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.14:
+  + Use automake to generate VPATH-compatible makefiles.
+
+-------------------------------------------------------------------
+Tue Dec 24 19:45:10 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.13:
+  + Icon-theme-spec: Add icon scale support.
+  + Support 512x512 bitmaps for high density display age.
+- Rebase hicolor-scalable-sizes.patch.
+
+-------------------------------------------------------------------
+Thu Mar 28 08:41:09 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Fri Mar  1 12:44:32 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Fri Jan  7 17:25:40 CET 2011 - vuntz@opensuse.org
+
+- Update macros.hicolor after upstream GTK+ decided to use the same
+  name for the gtk-update-icon-cache tool in both gtk2 and gtk3: we
+  use alternatives to handle the two versions of the tools. This
+  means we can always assume that the tool name is
+  gtk-update-icon-cache; so no need to check for
+  gtk-update-icon-cache-3.0.
+
+-------------------------------------------------------------------
+Thu Oct  7 14:51:55 CEST 2010 - vuntz@opensuse.org
+
+- Reformat macros.hicolor so that the generated scriptlet looks a
+  bit nicer.
+
+-------------------------------------------------------------------
+Wed Aug 25 15:06:12 CEST 2010 - vuntz@opensuse.org
+
+- Add rpm macros to update icon themes.
+- Add a %ghost file for the hicolor icon cache, but since this
+  package actually doesn't contain any icon, do not do anything in
+  %post/%postun: this will be done by packages installing icons in
+  the hicolor icon theme.
+- Add a rpmlintrc file to suppress the ghost-files-without-postin
+  warning which is wrong in this specific case.
+
+-------------------------------------------------------------------
+Thu Jan 14 05:22:00 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 0.12:
+  + Fix details with 256x256 icons
+- Remove hicolor-256.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Fri Dec  4 17:10:24 CET 2009 - vuntz@opensuse.org
+
+- Update to version 0.11:
+  + Added 256x256 size. (fdo#15231)
+  + Build system updates.
+- Remove call to suse_update_config macro, it's not needed.
+- Update hicolor-256.patch to handle the missing parts, not done by
+  the upstream fix.
+- Update hicolor-scalable-sizes.patch to not added useless
+  contexts.
+- Drop hicolor-kde-bits.patch: it should not be needed, since the
+  hicolor theme cannot be selected by the user (confirmed by some
+  usptream KDE people).
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:20 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Mon Apr  6 11:31:06 CEST 2009 - vuntz@novell.com
+
+- Respin hicolor-kde-bits.patch that doesn't apply with new patch
+  package.
+
+-------------------------------------------------------------------
+Wed Oct 15 14:51:43 CEST 2008 - vuntz@novell.com
+
+- Add hicolor-256.patch to add 256x256 directories. Needed to fix
+  alacarte build.
+
+-------------------------------------------------------------------
+Fri Jul 18 16:38:06 CEST 2008 - jpr@suse.de
+
+- Tag patches
+
+-------------------------------------------------------------------
+Tue Mar 25 15:38:21 CET 2008 - lrupp@suse.de
+
+- beautify specfile
+- fix executable bit for doc
+
+-------------------------------------------------------------------
+Wed Feb 21 16:51:25 CET 2007 - dobey@suse.de
+
+- Import hicolor-icon-theme 0.10 with appropriate patches for KDE
+  and GNOME
+  Fixes https://bugzilla.novell.com/show_bug.cgi?id=247278
+

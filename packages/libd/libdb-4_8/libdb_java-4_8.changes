@@ -1,0 +1,133 @@
+-------------------------------------------------------------------
+Mon Aug 19 06:59:04 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove the getpatches as it does not work at all, oracle
+  removed the pages
+- Use spec-cleaner
+- Fix stripped debuginfo to make sure we can debug with libdb
+
+-------------------------------------------------------------------
+Mon Apr  9 05:32:56 UTC 2018 - fstrba@suse.com
+
+- Changed libdb_java-4_8-fix-java10-comp.patch to acount for Java
+  10 properly and for following Java versions in a generic way.
+
+-------------------------------------------------------------------
+Tue Mar 13 08:59:56 UTC 2018 - rguenther@suse.com
+
+- Add libdb-fix-atomic.patch to fix __atomic_compare_exchange clash
+  with GCCs builtin.  Fixes build with GCC8 which now rejects this.
+
+-------------------------------------------------------------------
+Tue Jan  9 13:26:27 UTC 2018 - pmonrealgonzalez@suse.com
+
+- Added libdb_java-4_8-fix-java10-comp.patch to fix the build with
+  Java 10 (10-internal)
+
+-------------------------------------------------------------------
+Wed Oct 18 07:00:16 UTC 2017 - jayvdb@gmail.com
+
+- Remove unnecessary dependency on update-alternatives
+
+-------------------------------------------------------------------
+Mon Oct  2 09:23:07 UTC 2017 - fstrba@suse.com
+
+- Specify java target and soure level 1.6 to allow building with
+  jdk9
+
+-------------------------------------------------------------------
+Thu Mar 31 09:50:54 UTC 2016 - tchvatal@suse.com
+
+- Use upstream tarball
+- Cleanup with spec-cleaner
+- remove unused script check-build.sh
+
+-------------------------------------------------------------------
+Mon May 12 08:52:48 UTC 2014 - schwab@suse.de
+
+- remove generation of unused tarball
+- remove setting of unused variable
+
+-------------------------------------------------------------------
+Thu Jun 13 23:11:33 UTC 2013 - jengelh@inai.de
+
+- Add conflict markers against libdb-4_5 (overlapping files)
+
+-------------------------------------------------------------------
+Mon Jan  9 12:08:54 UTC 2012 - aj@suse.de
+
+- Do not use build date as version string.
+
+-------------------------------------------------------------------
+Thu Dec 22 01:11:58 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Tue Sep 27 16:39:58 UTC 2011 - prusnak@opensuse.org
+
+- spec cleanup
+
+-------------------------------------------------------------------
+Sat Aug 13 03:50:05 UTC 2011 - crrodriguez@opensuse.org
+
+- Disable static libraries 
+
+-------------------------------------------------------------------
+Wed Sep 22 12:08:25 UTC 2010 - rhafer@novell.com
+
+- Updated to db-4.8.30. Important changes since 4.7:
+  * Improved scalability and throughput when using BTree databases
+    especially when running with multiple threads that equal or
+    exceed the number of available CPUs.
+  * Berkeley DB has added database partitioning. BTree or Hash
+    databases may now be partitioned across multiple directories.
+    Partitioned databases can be used to increase concurrency and to
+    improve performance by spreading access across disk subsystems.
+  * Berkeley DB now supports bulk insertion and deletion of data.
+    Similar to the bulk get interface, the bulk put and bulk delete
+    allow the developer to populate a buffer of key-value pairs and
+    then pass it to the BDB library with a single API call.
+  * Berkeley DB now supports compression when using BTree.
+  * Berkeley DB introduces a new utility named db_sql which replaces
+    db_codegen. Similar to db_codegen, db_sql accepts an input file
+    with DDL statements and generates a Berkeley DB application
+    using the C API that creates and performs CRUD operations on
+    the defined tables. The developer can then use that code as a
+    basis for further application development.
+  * The Replication Manager now supports shared access to the Master
+    database environment from multiple processes. In earlier
+    versions, multiple process support on the Master required use
+    of the Base Replication API.
+  * Foreign Key Support has been added to Berkeley DB.
+  * for a more detailed changelog see the changelog_4_8.html file
+    in db-doc package.
+- Removed db-utils-doc subpackage the utils documentation is now
+  integrated with the API documentation.
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Fri Nov 21 16:39:20 CET 2008 - ro@suse.de
+
+- update check-build.sh
+
+-------------------------------------------------------------------
+Thu Jul 31 00:12:53 CEST 2008 - ro@suse.de
+
+- changed buildreq to use any java > 1.5 
+
+-------------------------------------------------------------------
+Thu Jul  5 14:51:30 CEST 2007 - dbornkessel@suse.de
+
+- corrected file list
+- added update-alternatives to work around a ia64 problem 
+
+-------------------------------------------------------------------
+Mon Jun 11 18:55:03 CEST 2007 - dbornkessel@suse.de
+
+- first version 
+

@@ -1,0 +1,44 @@
+commit 9cd24b04be34ee153bc1811bbba41b861b6c8c62
+Author: Tatyana Nikolova <tatyana.e.nikolova@intel.com>
+Date:   Tue Apr 10 15:59:34 2018 -0500
+
+    Add Intel devices to the perftest device list
+    
+    Intel X722 isn't recognized by perftest and UNKNOWN devices
+    aren't allowed to use the inline data option.
+    There is no reason to disable inline data for Intel devices,
+    because the inline support is decided later, based on the
+    QP capabilities.
+    
+    Add Intel devices based on vendor id to the perftest
+    list of known devices.
+    
+    Signed-off-by: Tatyana Nikolova <tatyana.e.nikolova@intel.com>
+
+diff --git src/perftest_parameters.c src/perftest_parameters.c
+index 1536c03d937a..9b0ca46e0445 100755
+--- src/perftest_parameters.c
++++ src/perftest_parameters.c
+@@ -1495,6 +1495,8 @@ enum ctx_device ib_dev_name(struct ibv_context *context)
+ 		/* Assuming it's Mellanox HCA or unknown.
+ 		If you want Inline support in other vendor devices, please send patch to gilr@dev.mellanox.co.il
+ 		*/
++	} else if (attr.vendor_id == 0x8086) {
++		dev_fname = INTEL_ALL;
+ 	} else {
+ 
+ 		switch (attr.vendor_part_id) {
+diff --git src/perftest_parameters.h src/perftest_parameters.h
+index d413273df37a..a8c46103ea7b 100755
+--- src/perftest_parameters.h
++++ src/perftest_parameters.h
+@@ -290,7 +290,8 @@ enum ctx_device {
+ 	CONNECTX5		= 15,
+ 	CONNECTX5EX		= 16,
+ 	CONNECTX6		= 17,
+-	BLUEFIELD		= 18
++	BLUEFIELD		= 18,
++	INTEL_ALL		= 19
+ };
+ 
+ /* Units for rate limiter */

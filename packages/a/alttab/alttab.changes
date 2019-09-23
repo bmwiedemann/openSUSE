@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Tue Jun 18 07:35:47 UTC 2019 - mvetter@suse.com
+
+- Use rubygem(ronn) instead of hardcoded ruby version
+
+-------------------------------------------------------------------
+Thu May 23 05:31:46 UTC 2019 - mvetter@suse.com
+
+- Initial package in version 1.4.0 for openSUSE

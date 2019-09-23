@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Mon Feb 18 14:28:57 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.5.5:
+  * Fix crash with Qt 5.12 and QtWebEngine
+  * Translations improved (da, sk, zh_TW)
+
+-------------------------------------------------------------------
+Thu Jan 10 15:00:31 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.5.4:
+  * Update of "Marked" source copy to latest release v0.6.0
+  * Installation of KParts plugin to kf5/parts subdir
+  * JSON metadata now inserted into KParts plugin binary, next to
+    desktop file
+  * Translations improved (pt_BR, ru)
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jun  7 12:04:11 UTC 2018 - wbauer@tmo.at
+
+- Update to 0.5.3:
+  * Update of "Marked" source copy to latest release v0.4.0
+  * Translations added for a language (gl)
+
+-------------------------------------------------------------------
+Tue Apr  3 13:42:41 UTC 2018 - wbauer@tmo.at
+
+- Update to 0.5.2:
+  * Update of "Marked" source copy to latest release v0.3.18
+  * Translations updated for some languages (nn, sl)
+
+-------------------------------------------------------------------
+Tue Feb 13 11:16:21 UTC 2018 - wbauer@tmo.at
+
+- Update to 0.5.1:
+  * Fixed version shown in UI
+  Changes in 0.5.0:
+  * Update of "marked" source copy to latest release v0.3.12
+  * Translations updated for some languages (fi, fr, sl)
+
+-------------------------------------------------------------------
+Fri Dec 29 09:29:18 UTC 2017 - wbauer@tmo.at
+
+- Update to 0.4.0:
+  * New feature in KParts plugin: show hovered link in status bar
+  * Fix: KParts plugin appstream metadata had wrong type
+  * Translations updated for some languages
+
+-------------------------------------------------------------------
+Wed Nov  1 13:49:35 UTC 2017 - wbauer@tmo.at
+
+- Update to 0.3.0:
+  *  New feature in KParts plugin: text search
+  *  Fix: Unbreak navigation to local anchors in QWebKit variant
+
+-------------------------------------------------------------------
+Sun Sep 24 07:17:59 UTC 2017 - lbeltrame@kde.org
+
+- Initial package

@@ -1,0 +1,261 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:40:09 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jan  5 19:36:33 UTC 2016 - zaitor@opensuse.org
+
+- Replace *-devel BuildRequires for their pkgconfig counterparts:
+  + libpurple-devel for pkgconfig(purple).
+  + libxslt-devel for pkgconfig(libxslt).
+  + telepathy-glib-devel for pkgconfig(telepathy-glib).
+- Add pkgconfig(gobject-2.0), pkgconfig(glib-2.0),
+  pkgconfig(gio-2.0), pkgconfig(dbus-glib-1) and  python-Twisted
+  BuildRequires: Align with what configure looks for.
+- Add th_contact_list_dont_crash_contact_in_roster.patch:
+  contact-list: Don't crash if a contact is already in the roster.
+  Patch from upstream git (fdo#47005).
+
+-------------------------------------------------------------------
+Tue Jan  5 18:37:33 UTC 2016 - sor.alexei@meowr.ru
+
+- Add telepathy-haze-pidgin-2.10.12-compat.patch: fix compatibility
+  with recent versions of Pidgin.
+
+-------------------------------------------------------------------
+Wed Oct  2 20:42:55 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.8.0:
+  + Report contacts with unknown presence as 'unknown' rather than
+    raising an error, and don't crash if libpurple reports a
+    "primitive status" that we don't understand (fdo#69474).
+  + Fix a memory leak when IM channels are closed (fdo#31723).
+  + Fix ContactGroups.SetContactGroups() implementation so it
+    removes the contact from groups if desired (fdo#49389).
+
+-------------------------------------------------------------------
+Tue Sep 17 18:22:50 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.7.1:
+  + This is a release candidate for telepathy-haze 0.8, recommended
+    for use with GNOME 3.10.
+  + Deprecations: This will be the last branch with StreamedMedia
+    support. Anyone relying on Haze for audio/video calling is
+    invited to port it to Call1.
+  + Enhancements: Support interactive password prompting for
+    protocols like SIPE that have an optional password (fdo#63326).
+  + Fixes:
+    - Adapt to Sametime accounts getting a "usersplit" in libpurple
+      2.10.1 (fdo#44631).
+    - Regression test improvements (fdo#69269, fdo#65290,
+      fdo#65296, fdo#63119).
+- Drop telepathy-haze-handle-purple_account_request_password.patch,
+  fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jul 15 13:48:51 UTC 2013 - fcrozat@suse.com
+
+- Add telepathy-haze-handle-purple_account_request_password.patch:
+  handle account_request_password query from libpurple.
+
+-------------------------------------------------------------------
+Sat Dec 22 22:09:39 UTC 2012 - alinm.elena@gmail.com
+
+- Update to version 0.7.0
+  + Add skype-x11 to known protocols, rename the other one to
+    skype-dbus.
+  + Expose third party skype prpl as 'skype' (fdo#57201).
+
+-------------------------------------------------------------------
+Thu Apr  5 11:19:29 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.6.0:
+  + The ContactBlocking interface has been implemented.
+
+-------------------------------------------------------------------
+Tue Aug 30 19:43:52 UTC 2011 - andrea.turrini@gmail.com
+
+- Fix typo in description.
+
+-------------------------------------------------------------------
+Sat Jul  9 18:38:25 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.5.0:
+  + Enhancements:
+    - fdo#19902: use TpBaseContactList to implement
+      Conn.I.ContactList, Conn.I.ContactGroups, and the stored list
+    - fdo#37933: implement contact blocking
+    - fdo#13124: support setting your own alias
+    - The Telepathy API to allow the user not to save their
+      password is now implemented.
+  + Fixes:
+    - haze no longer ships with a manager file.
+    - Map PURPLE_CONNECTION_ERROR_OTHER_ERROR to
+      AuthenticationFailed, since it's used for errors like being
+      temporarily banned from the ICQ server, which should result
+      in Mission Control not trying to reconnect.
+    - fdo#31846: translate the Jabber connection_security parameter
+      in newer libpurple versions into two booleans, old-ssl and
+      require-encryption.
+    - fdo#26155: make telepathy-glib criticals fatal by default
+    - fdo#30594: don't claim that ICQ (and other) contacts support
+      audio calls when they aren't even supported at all by
+      libpurple on the protocol.
+
+-------------------------------------------------------------------
+Fri Aug  6 04:15:22 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.4.0:
+  + Fixes:
+    - fdo#23702: use uint16 for port numbers, and be permissive
+      about minor type variations in what we're actually given
+
+-------------------------------------------------------------------
+Fri Jul 23 08:36:51 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.3.6:
+  + Fixes:
+    - Removing a group no longer removes all the contacts in that
+      group from your contact list; instead, they're placed in a
+      default group. (fdo#21294).
+
+-------------------------------------------------------------------
+Mon Jul  5 17:06:52 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.3.5:
+  + Enhancements:
+    - The Capabilities interface is now supported even when media
+      is disabled, so contacts get text caps.
+    - The properties on the Avatars interface, added all the way
+      back in spec 0.17.22, are now implemented.
+    - fdo#28469: The “sipe” username is now correctly exposed as
+      two parameters, “account” and “login”, rather than the user
+      being required to combine the two with a comma in one field.
+  + Fixes:
+    - fdo#23542: The default character set is no longer forced to
+      UTF-8; libpurple's default is respected. This works out
+      better on ICQ, where most people who haven't thought about it
+      use ISO-8859-1.
+
+-------------------------------------------------------------------
+Sat Mar  6 11:56:17 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.3.4:
+  + Fixes:
+    - Use the well-known Telepathy names for hidden and xa statuses
+      to fix interoperability with Empathy, in particular the
+      ability to be invisible on Haze accounts
+    - Report the "loubserp-mxit" prpl as "mxit".
+    - Rename prpl-simple to the standard Telepathy protocol name
+      'sip'.
+    - Be sure to link to glib and gobject, and fix typo when
+      linking to dbus-glib, to ensure. Fixes fd.o#25124.
+  + Enhancements:
+    - Implement the new draft mail notification spec
+    - Implement streamed media. Fixes fd.o#24385. (Maiku)
+- BuildRequire libxslt-devel
+
+-------------------------------------------------------------------
+Tue Jan 26 17:32:44 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.3.3:
+  + Fixes:
+    - The secret connection parameters are now exposed as being
+      secret in the manager file and also when the CM is
+      introspected. This fixes fdo#24067.
+    - Fix bug report URL for current bugzilla layout.
+    - Fix circular channel creation.
+  + Enhancements:
+    - Start outputting debug messages on the Telepathy Debug
+      interface by using telepathy-glib's TpDebugSender.
+    - Stop using shave and allow use of automake 1.11's silent
+      rules feature.
+
+-------------------------------------------------------------------
+Wed Aug 26 10:27:52 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.3.2:
+  + Fixes:
+    - Yahoo! Japan-specific parameters are no longer listed for the
+      'yahoo' protocol in haze.manager. This fixes bgo#591381. If
+      you're using libpurple 2.6.0 or later, 'yahoojp' will be
+      available as a separate protocol.
+    - The "busy" status is exposed as Busy rather than as Away.
+      This fixes fdo#23441.
+    - Haze now fails gracefully rather than asserting if you try to
+      connect to MSN and your libpurple was built without SSL
+      support. Fixes fdo#22800.
+  + Enhancements:
+    - The Facebook protocol plugin is now special-cased to have a
+      sensible name in the Telepathy API. It seems to work with
+      Empathy 2.27.91 if you delete haze.manager (which will no
+      longer be shipped in a future release when stable releases of
+      clients support it being absent).
+
+-------------------------------------------------------------------
+Mon Jul 20 09:40:41 CEST 2009 - vuntz@novell.com
+
+- Use libexecdir instead of libdir in the file list to fix build.
+
+-------------------------------------------------------------------
+Tue Jun  9 14:09:06 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.3.1:
+  + Enhancements:
+    - Shaved `make` output.
+    - haze.manager has been updated for more recent libpurples.
+      Fixes fdo#17709.
+  + Fixes:
+    - Connection.GetInterfaces() now includes Requests. Fixes
+      fdo#21800.
+
+-------------------------------------------------------------------
+Sun Apr  5 13:31:56 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.3.0:
+  + Dependencies:
+    - telepathy-glib >= 0.7.21 is now required.
+  + Enhancements:
+    - Connections implement the Requests, SimplePresence and
+      Contacts interfaces.
+    - Text channels implement the Messages and Destroyable
+      interfaces.
+    - Add a test suite.
+  + Fixes:
+    - Text channels closed with pending messages now respawn.
+      (fdo#17842)
+    - Compiles without warnings on AMD64. (fdo#18513)
+    - No longer asserts if you try to set the alias for someone not
+      on your contact list. (fdo#17382)
+    - Doesn't crash if you try to open a second connection to the
+      same account. (fdo#18361)
+- Don't setup CFLAGS and CXXFLAGS to default values.
+- Use makeinstall.
+
+-------------------------------------------------------------------
+Sun Oct 19 11:53:40 EST 2008 - mboman@suse.de
+
+- Update to version 0.2.1:
+  + A publish channel now exists, which allows you to accept or decline
+    incoming subscription requests (but nothing else yet; it's not possible
+    to later remove someone from the list, for instance).
+  + Add support for setting your avatar (fdo#13123).
+  + Stop your accounts auto-awaying themselves (fdo#14335).
+  + Don't crash when the UI passes an empty or otherwise invalid host name
+    as the server parameter for a new connection (fdo#14445).
+  + Don't sporadically crash on connection errors, such as an incorrect
+    password (fdo#14933).
+  + Debugging output from Haze and libpurple is now silenced unless you set
+    HAZE_DEBUG appropriately ("haze" and "purple", respectively).
+
+-------------------------------------------------------------------
+Mon Apr 21 18:55:27 EDT 2008 - hfiguiere@suse.de
+
+- Sanitize the dependencies.
+- Fix a few warnings in the spec file
+
+-------------------------------------------------------------------
+Sat Apr 12 11:26:17 EDT 2008 - hfiguiere@suse.de
+
+- Initial checkin

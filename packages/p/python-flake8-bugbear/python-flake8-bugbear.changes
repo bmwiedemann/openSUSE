@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Fri Sep 13 07:31:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 19.8.0:
+  * Fix .travis.yml syntax + add Python 3.8 + nightly tests
+  * Fix black formatting + enforce via CI
+  * Make B901 not apply to __await__ methods
+
+-------------------------------------------------------------------
+Mon Apr  1 13:29:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 19.3.0:
+  * allow 'mcs' for metaclass classmethod first arg (PyCharm default)
+  * Introduce B011
+  * Introduce B009 and B010
+  * Exclude immutable calls like tuple() and frozenset() from B008
+  * For B902, the first argument for metaclass class methods can be "mcs", matching the name preferred by PyCharm.
+
+-------------------------------------------------------------------
+Fri Nov  2 21:34:53 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Update to 18.8.0:
+    * Exclude immutable calls like tuple() and frozenset() from B008
+    * Examine kw-only args for mutable defaults
+    * Black all the .py files - Like one should (#48) 
+    * Add testing and document support for the Python 3.7 release
+    * Avoid adding the visitor as an __init__ parameter (Fixes #39)
+      (#40)
+    * Add trove classifier 'Programming Language :: Python :: 3 :: Only'
+    * Fix pathlib link in readme (#36) 
+
+-------------------------------------------------------------------
+Wed Jul 18 11:36:14 UTC 2018 - tchvatal@suse.com
+
+- This module requires py3.5+ thus restrict the build
+
+-------------------------------------------------------------------
+Tue Jul 10 12:59:04 UTC 2018 - dmueller@suse.com
+
+- Initial package (18.2)

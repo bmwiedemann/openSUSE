@@ -1,0 +1,12 @@
+<package name="google-inconsolata-fonts" project="openSUSE:Factory">
+  <title>Monospace Font Designed for Printed Code Listings</title>
+  <description>Inconsolata Bold is a Unicode typeface family that supports
+languages that use the Latin script and its variants, and
+could be expanded to support other scripts.
+
+Designer: Raph Levien
+
+</description>
+  <devel project="M17N:fonts" package="google-inconsolata-fonts"/>
+  <url>http://code.google.com/webfonts/family?family=Inconsolata</url>
+</package>

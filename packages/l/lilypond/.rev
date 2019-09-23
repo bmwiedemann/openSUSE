@@ -1,0 +1,280 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b8634191e518a0a32fd8fb7941c6c669</srcmd5>
+    <version>2.15.40</version>
+    <time>1341316740</time>
+    <user>coolo</user>
+    <comment>Please readd lilypond into Factory.</comment>
+    <requestid>126951</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>339477d11233b3050d71f9d1bdb9db03</srcmd5>
+    <version>2.15.40</version>
+    <time>1343162571</time>
+    <user>namtrac</user>
+    <comment>- Make if build with latest TeXLive 2012 (forwarded request 128833 from WernerFink)</comment>
+    <requestid>128864</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e04d37416285b041bef739d119188dd2</srcmd5>
+    <version>2.15.42</version>
+    <time>1344369016</time>
+    <user>namtrac</user>
+    <comment>- updated to 2.15.42:
+   * Support for Kievan square notation:
+          \new KievanVoice {
+            \cadenzaOn
+            c d e f g a bes
+            \bar &quot;kievan&quot;
+          }
+           [image of music]
+   * Augmentation dots now avoid the other voice in two-voice polyphony
+     so that users can move the `Dot_column_engraver' to set dots
+     independently for each `Voice'.
+          [image of music]
+   * A Scheme function to adjust the control points of curves such as
+     slurs and ties, developed by several users, is now included in
+     LilyPond.
+          g8-&gt;( bes,-.) d4
+          \shape Slur #'((-0.5 . 1.5) (-3 . 0) (0 . 0) (0 . 0))
+          g8-&gt;( bes,!-.) d4
+           [image of music]
+   * etc., see NEWS.txt</comment>
+    <requestid>130333</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ca5a1d1fc62e2ee397576b89ed34c101</srcmd5>
+    <version>2.16.0</version>
+    <time>1346488338</time>
+    <user>namtrac</user>
+    <comment>Removed services and doc linked build added</comment>
+    <requestid>132070</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>78478009529e5b3ae892eb207c80257e</srcmd5>
+    <version>2.16.1</version>
+    <time>1354712346</time>
+    <user>namtrac</user>
+    <comment>Update to 2.16.1 and fix changes files</comment>
+    <requestid>144024</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b6f538d5dcdc29fb9a242d8d89c92e38</srcmd5>
+    <version>2.16.1</version>
+    <time>1356211053</time>
+    <user>coolo</user>
+    <comment>- remove unnecessary (and conflicting) buildrequires on libicu (forwarded request 146198 from dirkmueller)</comment>
+    <requestid>146243</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>b6f538d5dcdc29fb9a242d8d89c92e38</srcmd5>
+    <version>2.16.1</version>
+    <time>1359109396</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c1c79abb225fe6d934cbdeb971dd7c1b</srcmd5>
+    <version>2.17.24</version>
+    <time>1377248862</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195948</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c0d1a54b7e40395c60ae29dcf4f8d1ae</srcmd5>
+    <version>2.17.26</version>
+    <time>1378894818</time>
+    <user>coolo</user>
+    <comment>- updated to 2.17.26:
+   * Decimal numbers can now be written directly in music, without a
+     hash sign.  Together with the previous change in the way object
+     properties are specified, the code to change the length of stems
+     has changed from this:
+          \override Stem #'length = #5.6
+          e' f' g' a'
+     to this:
+          \override Stem.length = 5.6
+          e' f' g' a'
+     One has to write a digit on both sides of the dot - values like
+     `4.' or `-.3' are not allowed.
+     Decimal fractions are also not accepted in `\chordmode'.
+   * A number of shorthands like `(', `)', `|', `[', `]', `~', `\(',
+     `\)' and others can now freely be redefined like normal commands.
+     An example would be
+          &quot;\\{&quot; = (
+          &quot;\\}&quot; = )
+          &quot;(&quot; = \melisma
+          &quot;)&quot; = \melismaEnd
+          \new Staff &lt;&lt;
+            \relative c' {
+              c8 \{ d e f \} % slurred
+              g ( a b c ) % no slur, but with melisma
+              c,1 \bar &quot;|.&quot;
+             }
+             \addlyrics { Li -- ly -- pond. }
+          &gt;&gt;
+           [image of music]
+   * The articulation shorthand for `\staccatissimo' has been renamed</comment>
+    <requestid>198046</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>c0d1a54b7e40395c60ae29dcf4f8d1ae</srcmd5>
+    <version>2.17.26</version>
+    <time>1379663162</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>52ccd0bd10a9a4cfb945bae07fa14733</srcmd5>
+    <version>2.17.96</version>
+    <time>1385489947</time>
+    <user>coolo</user>
+    <comment>-  updated to 2.17.96:
+  * beta phase to 2.18
+  * bugfixes
+
+- updated to 2.17.96:
+  * beta phase to 2.18
+  * bugfixes</comment>
+    <requestid>208497</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>1987b53c6eca8ca856e69f61fafcaadf</srcmd5>
+    <version>2.17.96</version>
+    <time>1386932307</time>
+    <user>coolo</user>
+    <comment>Added use-recommended-freetype-include.patch -- needed for freetype2 2.5.1 (forwarded request 210601 from sumski)</comment>
+    <requestid>210635</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9f8aad796592966757f93a95b2ea5a4c</srcmd5>
+    <version>2.17.97</version>
+    <time>1387453697</time>
+    <user>coolo</user>
+    <comment>- updated to 2.17.97:
+  * beta phase to 2.18
+  * bugfixes
+
+- updated to 2.17.97:
+  * beta phase to 2.18
+  * bugfixes</comment>
+    <requestid>211413</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>603042a685fa6690ba8f2df5384ea558</srcmd5>
+    <version>2.18.0</version>
+    <time>1388756945</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 2.18.0:
+  * final release, see changelogs for beta versions
+- dropped use-recommended-freetype-include.patch (upstreamed)
+
+- updated to 2.18.0:
+  * final release, see changelogs for beta versions
+- dropped use-recommended-freetype-include.patch (upstreamed)</comment>
+    <requestid>212639</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b746c3d85b17fe19ff3d2a9b6df35e0a</srcmd5>
+    <version>2.18.2</version>
+    <time>1396452269</time>
+    <user>coolo</user>
+    <comment>- updated to 2.18.2: This version provides a number of updates to 
+  2.18.0, including updated manuals.  We recommend all users to 
+  upgrade to this version.
+
+- updated to 2.18.2: This version provides a number of updates to 
+  2.18.0, including updated manuals.  We recommend all users to 
+  upgrade to this version.</comment>
+    <requestid>228292</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>b746c3d85b17fe19ff3d2a9b6df35e0a</srcmd5>
+    <version>2.18.2</version>
+    <time>1409301795</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>2f4d6c1b3df885010753dd428b2fbd32</srcmd5>
+    <version>2.18.2</version>
+    <time>1417438849</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263328</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>1ec69f29eeea87f7578da6755db28547</srcmd5>
+    <version>2.18.2</version>
+    <time>1418737760</time>
+    <user>dimstar_suse</user>
+    <comment>- split lilypond-doc [bnc#908078]</comment>
+    <requestid>265346</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>2871abd8b40520037f78dc9e677fddda</srcmd5>
+    <version>2.18.2</version>
+    <time>1438615297</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>319762</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>f350d08998f26b81a48fae7bee3aba24</srcmd5>
+    <version>2.18.2</version>
+    <time>1489345371</time>
+    <user>dimstar_suse</user>
+    <comment>fixups</comment>
+    <requestid>477519</requestid>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>08ea10dabfebd86d650c72121b68ef9b</srcmd5>
+    <version>2.18.2</version>
+    <time>1496822124</time>
+    <user>dimstar_suse</user>
+    <comment>fix typo in email</comment>
+    <requestid>501190</requestid>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>ea4d4bdd8d742dcfe6ae4e7a14e48f4e</srcmd5>
+    <version>2.18.2</version>
+    <time>1526463722</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607525</requestid>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>dfc9d16e310908da10f9519aa2b55d0c</srcmd5>
+    <version>2.18.2</version>
+    <time>1539589456</time>
+    <user>dimstar_suse</user>
+    <comment>Fix Factory build by requiring missing fonts and texlive packages directly.</comment>
+    <requestid>641811</requestid>
+  </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>aedbbe8025d8351afa8dc7e4ae851dcb</srcmd5>
+    <version>2.18.2</version>
+    <time>1540988395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645519</requestid>
+  </revision>
+  <revision rev="25" vrev="12">
+    <srcmd5>1b170f67e076ff171c7b21b9a77d4a79</srcmd5>
+    <version>2.18.2</version>
+    <time>1552901900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685264</requestid>
+  </revision>
+  <revision rev="26" vrev="13">
+    <srcmd5>7a0d4c3370e7fcad8206cb8bfcb9c6e3</srcmd5>
+    <version>2.18.2</version>
+    <time>1557834208</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build against glib2 &gt;= 2.60.2 by manually adding:
+  -lglib-2.0 -lgobject-2.0 to the linker flags.</comment>
+    <requestid>702667</requestid>
+  </revision>
+</revisionlist>

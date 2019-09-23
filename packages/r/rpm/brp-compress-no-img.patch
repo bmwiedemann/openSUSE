@@ -1,0 +1,10 @@
+--- scripts/brp-compress	2013-09-02 19:00:09.000000000 +0200
++++ scripts/brp-compress	2013-09-02 19:03:12.000000000 +0200
+@@ -47,6 +47,7 @@ do
+     find $d -type f ! -name dir | while read f
+     do
+         [ -f "$f" ] || continue
++	case $(file "$f") in *"image data"*) continue;; esac
+ 
+ 	case "$f" in
+ 	 *.gz|*.Z)    gunzip  "$f" || check_for_hard_link $d "$f"; b=`echo $f | sed -e 's/\.\(gz\|Z\)$//'`;;

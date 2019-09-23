@@ -1,0 +1,6 @@
+<package name="perl-Parse-RecDescent" project="openSUSE:Factory">
+  <title>Generate Recursive-Descent Parsers</title>
+  <description>RecDescent incrementally generates top-down recursive-descent text
+parsers from simple yacc-like grammar specifications.</description>
+  <devel project="devel:languages:perl" package="perl-Parse-RecDescent"/>
+</package>

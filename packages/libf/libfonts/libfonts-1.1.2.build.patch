@@ -1,0 +1,16 @@
+--- libfonts-1.1.3/build.properties	2009-11-17 15:56:39.000000000 +0000
++++ libfonts-1.1.3/build.properties	2009-11-17 15:57:29.000000000 +0000
+@@ -1,8 +1,10 @@
+-project.revision=TRUNK-SNAPSHOT
++project.revision=1.1.3
+ ivy.artifact.group=pentaho-library
+ ivy.artifact.id=libfonts
+ impl.title=LibFonts
+ impl.productID=libfonts
+ src.dir=${basedir}/source
+ dependency.libloader.revision=1.1.3
+-testsrc.dir=${basedir}/test
+\ No newline at end of file
++testsrc.dir=${basedir}/test
++antcontrib.available=true
++build.cache.dir=lib

@@ -1,0 +1,1501 @@
+-------------------------------------------------------------------
+Fri Feb 15 15:01:18 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Fri Feb 15 09:41:52 UTC 2019 - lnussel@suse.de
+
+- New version 2.1.0
+  * The default size of the LUKS2 header is increased to 16 MB.
+    It includes metadata and the area used for binary keyslots;
+    it means that LUKS header backup is now 16MB in size.
+  * Cryptsetup now doubles LUKS default key size if XTS mode is used
+    (XTS mode uses two internal keys). This does not apply if key size
+    is explicitly specified on the command line and it does not apply
+    for the plain mode.
+    This fixes a confusion with AES and 256bit key in XTS mode where
+    code used AES128 and not AES256 as often expected.
+  * Default cryptographic backend used for LUKS header processing is now
+    OpenSSL. For years, OpenSSL provided better performance for PBKDF.
+
+  * The Python bindings are no longer supported and the code was removed
+    from cryptsetup distribution. Please use the libblockdev project
+    that already covers most of the libcryptsetup functionality
+    including LUKS2.
+  * Cryptsetup now allows using --offset option also for luksFormat.
+  * Cryptsetup now supports new refresh action (that is the alias for
+    "open --refresh").
+  * Integritysetup now supports mode with detached data device through
+    new --data-device option.
+- 2.1.0 would use LUKS2 as default, we stay with LUKS1 for now until
+  someone has time to evaluate the fallout from switching to LUKS2.
+
+-------------------------------------------------------------------
+Tue Oct 30 10:10:35 UTC 2018 - lnussel@suse.de
+
+- Suggest hmac package (boo#1090768)
+- remove old upgrade hack for upgrades from 12.1
+- New version 2.0.5
+
+  Changes since version 2.0.4
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  * Wipe full header areas (including unused) during LUKS format.
+
+    Since this version, the whole area up to the data offset is zeroed,
+    and subsequently, all keyslots areas are wiped with random data.
+    This ensures that no remaining old data remains in the LUKS header
+    areas, but it could slow down format operation on some devices.
+    Previously only first 4k (or 32k for LUKS2) and the used keyslot
+    was overwritten in the format operation.
+
+  * Several fixes to error messages that were unintentionally replaced
+    in previous versions with a silent exit code.
+    More descriptive error messages were added, including error
+    messages if
+     - a device is unusable (not a block device, no access, etc.),
+     - a LUKS device is not detected,
+     - LUKS header load code detects unsupported version,
+     - a keyslot decryption fails (also happens in the cipher check),
+     - converting an inactive keyslot.
+
+  * Device activation fails if data area overlaps with LUKS header.
+
+  * Code now uses explicit_bzero to wipe memory if available
+    (instead of own implementation).
+
+  * Additional VeraCrypt modes are now supported, including Camellia
+    and Kuznyechik symmetric ciphers (and cipher chains) and Streebog
+    hash function. These were introduced in a recent VeraCrypt upstream.
+
+    Note that Kuznyechik requires out-of-tree kernel module and
+    Streebog hash function is available only with the gcrypt cryptographic
+    backend for now.
+
+  * Fixes static build for integritysetup if the pwquality library is used.
+
+  * Allows passphrase change for unbound keyslots.
+
+  * Fixes removed keyslot number in verbose message for luksKillSlot,
+    luksRemoveKey and erase command.
+
+  * Adds blkid scan when attempting to open a plain device and warn the user
+    about existing device signatures in a ciphertext device.
+
+  * Remove LUKS header signature if luksFormat fails to add the first keyslot.
+
+  * Remove O_SYNC from device open and use fsync() to speed up
+    wipe operation considerably.
+
+  * Create --master-key-file in luksDump and fail if the file already exists.
+
+  * Fixes a bug when LUKS2 authenticated encryption with a detached header
+    wiped the header device instead of dm-integrity data device area (causing
+    unnecessary LUKS2 header auto recovery).
+
+-------------------------------------------------------------------
+Tue Oct 30 09:55:50 UTC 2018 - lnussel@suse.de
+
+- make parallell installable version for SLE12
+
+-------------------------------------------------------------------
+Tue Aug 21 07:40:54 UTC 2018 - lnussel@suse.de
+
+- New version 2.0.4
+
+  Changes since version 2.0.3
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  * Use the libblkid (blockid) library to detect foreign signatures
+    on a device before LUKS format and LUKS2 auto-recovery.
+    This change fixes an unexpected recovery using the secondary
+    LUKS2 header after a device was already overwritten with
+    another format (filesystem or LVM physical volume).
+    LUKS2 will not recreate a primary header if it detects a valid
+    foreign signature. In this situation, a user must always
+    use cryptsetup repair command for the recovery.
+    Note that libcryptsetup and utilities are now linked to libblkid
+    as a new dependence.
+    To compile code without blockid support (strongly discouraged),
+    use --disable-blkid configure switch.
+  * Add prompt for format and repair actions in cryptsetup and
+    integritysetup if foreign signatures are detected on the device
+    through the blockid library.
+    After the confirmation, all known signatures are then wiped as
+    part of the format or repair procedure.
+  * Print consistent verbose message about keyslot and token numbers.
+    For keyslot actions: Key slot <number> unlocked/created/removed.
+    For token actions: Token <number> created/removed.
+  * Print error, if a non-existent token is tried to be removed.
+  * Add support for LUKS2 token definition export and import.
+    The token command now can export/import customized token JSON file
+    directly from command line. See the man page for more details.
+  * Add support for new dm-integrity superblock version 2.
+  * Add an error message when nothing was read from a key file.
+  * Update cryptsetup man pages, including --type option usage.
+  * Add a snapshot of LUKS2 format specification to documentation
+    and accordingly fix supported secondary header offsets.
+  * Add bundled optimized Argon2 SSE (X86_64 platform) code.
+    If the bundled Argon2 code is used and the new configure switch
+    --enable-internal-sse-argon2 option is present, and compiler flags
+    support required optimization, the code will try to use optimized
+    and faster variant.
+    Always use the shared library (--enable-libargon2) if possible.
+    This option was added because an enterprise distribution
+    rejected to support the shared Argon2 library and native support
+    in generic cryptographic libraries is not ready yet.
+  * Fix compilation with crypto backend for LibreSSL >= 2.7.0.
+    LibreSSL introduced OpenSSL 1.1.x API functions, so compatibility
+    wrapper must be commented out.
+  * Fix on-disk header size calculation for LUKS2 format if a specific
+    data alignment is requested. Until now, the code used default size
+    that could be wrong for converted devices.
+
+  Changes since version 2.0.2
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  * Expose interface to unbound LUKS2 keyslots.
+    Unbound LUKS2 keyslot allows storing a key material that is independent
+    of master volume key (it is not bound to encrypted data segment).
+  * New API extensions for unbound keyslots (LUKS2 only)
+    crypt_keyslot_get_key_size() and crypt_volume_key_get()
+    These functions allow to get key and key size for unbound keyslots.
+  * New enum value CRYPT_SLOT_UNBOUND for keyslot status (LUKS2 only).
+  * Add --unbound keyslot option to the cryptsetup luksAddKey command.
+  * Add crypt_get_active_integrity_failures() call to get integrity
+    failure count for dm-integrity devices.
+  * Add crypt_get_pbkdf_default() function to get per-type PBKDF default
+    setting.
+  * Add new flag to crypt_keyslot_add_by_key() to force update device
+    volume key. This call is mainly intended for a wrapped key change.
+  * Allow volume key store in a file with cryptsetup.
+    The --dump-master-key together with --master-key-file allows cryptsetup
+    to store the binary volume key to a file instead of standard output.
+  * Add support detached header for cryptsetup-reencrypt command.
+  * Fix VeraCrypt PIM handling - use proper iterations count formula
+    for PBKDF2-SHA512 and PBKDF2-Whirlpool used in system volumes.
+  * Fix cryptsetup tcryptDump for VeraCrypt PIM (support --veracrypt-pim).
+  * Add --with-default-luks-format configure time option.
+    (Option to override default LUKS format version.)
+  * Fix LUKS version conversion for detached (and trimmed) LUKS headers.
+  * Add luksConvertKey cryptsetup command that converts specific keyslot
+    from one PBKDF to another.
+  * Do not allow conversion to LUKS2 if LUKSMETA (external tool metadata)
+    header is detected.
+  * More cleanup and hardening of LUKS2 keyslot specific validation options.
+    Add more checks for cipher validity before writing metadata on-disk.
+  * Do not allow LUKS1 version downconversion if the header contains tokens.
+  * Add "paes" family ciphers (AES wrapped key scheme for mainframes)
+    to allowed ciphers.
+    Specific wrapped ley configuration logic must be done by 3rd party tool,
+    LUKS2 stores only keyslot material and allow activation of the device.
+  * Add support for --check-at-most-once option (kernel 4.17) to veritysetup.
+    This flag can be dangerous; if you can control underlying device
+    (you can change its content after it was verified) it will no longer
+    prevent reading tampered data and also it does not prevent silent
+    data corruptions that appear after the block was once read.
+  * Fix return code (EPERM instead of EINVAL) and retry count for bad
+    passphrase on non-tty input.
+  * Enable support for FEC decoding in veritysetup to check dm-verity devices
+    with additional Reed-Solomon code in userspace (verify command).
+
+  Changes since version 2.0.1
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  * Fix a regression in early detection of inactive keyslot for luksKillSlot.
+    It tried to ask for passphrase even for already erased keyslot.
+  * Fix a regression in loopaesOpen processing for keyfile on standard input.
+    Use of "-" argument was not working properly.
+  * Add LUKS2 specific options for cryptsetup-reencrypt.
+    Tokens and persistent flags are now transferred during reencryption;
+    change of PBKDF keyslot parameters is now supported and allows
+    to set precalculated values (no benchmarks).
+  * Do not allow LUKS2 --persistent and --test-passphrase cryptsetup flags
+    combination. Persistent flags are now stored only if the device was
+    successfully activated with the specified flags.
+  * Fix integritysetup format after recent Linux kernel changes that
+    requires to setup key for HMAC in all cases.
+    Previously integritysetup allowed HMAC with zero key that behaves
+    like a plain hash.
+  * Fix VeraCrypt PIM handling that modified internal iteration counts
+    even for subsequent activations. The PIM count is no longer printed
+    in debug log as it is sensitive information.
+    Also, the code now skips legacy TrueCrypt algorithms if a PIM
+    is specified (they cannot be used with PIM anyway).
+  * PBKDF values cannot be set (even with force parameters) below
+    hardcoded minimums. For PBKDF2 is it 1000 iterations, for Argon2
+    it is 4 iterations and 32 KiB of memory cost.
+  * Introduce new crypt_token_is_assigned() API function for reporting
+    the binding between token and keyslots.
+  * Allow crypt_token_json_set() API function to create internal token types.
+    Do not allow unknown fields in internal token objects.
+  * Print message in cryptsetup that about was aborted if a user did not
+    answer YES in a query.
+
+-------------------------------------------------------------------
+Tue Jan 30 12:26:48 UTC 2018 - astieger@suse.com
+
+- update to 2.0.1:
+  * To store volume key into kernel keyring, kernel 4.15 with
+    dm-crypt 1.18.1 is required
+  * Increase maximum allowed PBKDF memory-cost limit to 4 GiB
+  * Use /run/cryptsetup as default for cryptsetup locking dir
+  * Introduce new 64-bit byte-offset *keyfile_device_offset functions.
+  * New set of fucntions that allows 64-bit offsets even on 32bit systems
+    are now availeble:
+     - crypt_resume_by_keyfile_device_offset
+     - crypt_keyslot_add_by_keyfile_device_offset
+     - crypt_activate_by_keyfile_device_offset
+     - crypt_keyfile_device_read
+    The new functions have added the _device_ in name.
+    Old functions are just internal wrappers around these.
+  * Also cryptsetup --keyfile-offset and --new-keyfile-offset now
+    allows 64-bit offsets as parameters.
+  * Add error hint for wrongly formatted cipher strings in LUKS1 and
+    properly fail in luksFormat if cipher format is missing required IV.
+
+-------------------------------------------------------------------
+Fri Dec 22 16:16:10 UTC 2017 - archie.cobbs@gmail.com
+
+- Update to version 2.0.0:
+  * Add support for new on-disk LUKS2 format
+  * Enable to use system libargon2 instead of bundled version
+  * Install tmpfiles.d configuration for LUKS2 locking directory
+  * New command integritysetup: support for the new dm-integrity kernel target
+  * Support for larger sector sizes for crypt devices
+  * Miscellaneous fixes and improvements
+
+-------------------------------------------------------------------
+Sat Apr 29 11:52:58 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.7.5:
+  * Fixes to luksFormat to properly support recent kernel running
+    in FIPS mode (bsc#1031998).
+  * Fixes accesses to unaligned hidden legacy TrueCrypt header.
+  * Fixes to optional dracut ramdisk scripts for offline
+    re-encryption on initial boot.
+
+-------------------------------------------------------------------
+Fri Mar 17 19:24:14 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.7.4:
+  * Allow to specify LUKS1 hash algorithm in Python luksFormat
+    wrapper.
+  * Use LUKS1 compiled-in defaults also in Python wrapper.
+  * OpenSSL backend: Fix OpenSSL 1.1.0 support without backward
+    compatible API.
+  * OpenSSL backend: Fix LibreSSL compatibility.
+  * Check for data device and hash device area overlap in
+    veritysetup.
+  * Fix a possible race while allocating a free loop device.
+  * Fix possible file descriptor leaks if libcryptsetup is run from
+    a forked process.
+  * Fix missing same_cpu_crypt flag in status command.
+  * Various updates to FAQ and man pages.
+- Changes for version 1.7.3:
+  * Fix device access to hash offsets located beyond the 2GB device
+    boundary in veritysetup.
+  * Set configured (compile-time) default iteration time for
+    devices created directly through libcryptsetup
+  * Fix PBKDF2 benchmark to not double iteration count for specific
+    corner case.
+  * Verify passphrase in cryptsetup-reencrypt when encrypting a new
+    drive.
+  * OpenSSL backend: fix memory leak if hash context was repeatedly
+    reused.
+  * OpenSSL backend: add support for OpenSSL 1.1.0.
+  * Fix several minor spelling errors.
+  * Properly check maximal buffer size when parsing UUID from
+    /dev/disk/.
+
+-------------------------------------------------------------------
+Thu Aug 25 15:15:15 UTC 2016 - alexander_naumov@opensuse.org
+
+- Update to version 1.7.2:
+
+  * Update LUKS documentation format.
+    Clarify fixed sector size and keyslots alignment.
+
+  * Support activation options for error handling modes in
+    Linux kernel dm-verity module:
+      --ignore-corruption - dm-verity just logs detected corruption
+
+      --restart-on-corruption - dm-verity restarts the kernel if
+        corruption is detected
+      If the options above are not specified, default behavior for
+      dm-verity remains. Default is that I/O operation fails with
+      I/O error if corrupted block is detected.
+
+      --ignore-zero-blocks - Instructs dm-verity to not verify
+      blocks that are expected to contain zeroes and always
+      return zeroes directly instead.
+      NOTE that these options could have security or functional
+      impacts, do not use them without assessing the risks!
+
+  * Fix help text for cipher benchmark specification
+    (mention --cipher option).
+
+  * Fix off-by-one error in maximum keyfile size.
+    Allow keyfiles up to compiled-in default and not that value
+    minus one.
+
+  * Support resume of interrupted decryption in cryptsetup-reencrypt
+    utility. To resume decryption, LUKS device UUID (--uuid option)
+    option must be used.
+
+  * Do not use direct-io for LUKS header with unaligned keyslots.
+    Such headers were used only by the first cryptsetup-luks-1.0.0
+    release (2005).
+  * Fix device block size detection to properly work on particular
+
+    file-based containers over underlying devices with 4k sectors.
+
+- Update to version 1.7.1:
+
+  * Code now uses kernel crypto API backend according to new
+    changes introduced in mainline kernel
+    While mainline kernel should contain backward compatible
+    changes, some stable series kernels do not contain fully
+    backported compatibility patches.
+    Without these patches  most of cryptsetup operations
+    (like unlocking device) fail.
+    This change in cryptsetup ensures that all operations using
+    kernel crypto API works even on these kernels.
+
+  * The cryptsetup-reencrypt utility now properly detects removal
+    of underlying link to block device and does not remove
+    ongoing re-encryption log.
+    This allows proper recovery (resume) of reencrypt operation later.
+    NOTE: Never use /dev/disk/by-uuid/ path for reencryption utility,
+    this link disappears once the device metadata is temporarily
+    removed from device.
+
+  * Cryptsetup now allows special "-" (standard input) keyfile handling
+    even for TCRYPT (TrueCrypt and VeraCrypt compatible) devices.
+
+  * Cryptsetup now fails if there are more keyfiles specified
+    for non-TCRYPT device.
+
+  * The luksKillSlot command now does not suppress provided password
+    in batch mode (if password is wrong slot is not destroyed).
+    Note that not providing password in batch mode means that keyslot
+    is destroyed unconditionally.
+
+-------------------------------------------------------------------
+Sat Jan  9 12:12:06 UTC 2016 - benoit.monin@gmx.fr
+
+- update to 1.7.0:
+  * The cryptsetup 1.7 release changes defaults for LUKS,
+    there are no API changes.
+  * Default hash function is now SHA256 (used in key derivation
+    function and anti-forensic splitter).
+  * Default iteration time for PBKDF2 is now 2 seconds.
+  * Fix PBKDF2 iteration benchmark for longer key sizes.
+  * Remove experimental warning for reencrypt tool.
+  * Add optional libpasswdqc support for new LUKS passwords.
+  * Update FAQ document.
+
+-------------------------------------------------------------------
+Thu Dec 10 16:05:57 CET 2015 - tiwai@suse.de
+
+- Fix missing dependency on coreutils for initrd macros (boo#958562)
+- Call missing initrd macro at postun (boo#958562)
+
+-------------------------------------------------------------------
+Tue Sep  8 20:19:34 UTC 2015 - asterios.dramis@gmail.com
+
+- Update to 1.6.8
+  * If the null cipher (no encryption) is used, allow only empty
+    password for LUKS. (Previously cryptsetup accepted any password
+    in this case.)
+    The null cipher can be used only for testing and it is used
+    temporarily during offline encrypting not yet encrypted device
+    (cryptsetup-reencrypt tool).
+    Accepting only empty password prevents situation when someone
+    adds another LUKS device using the same UUID (UUID of existing
+    LUKS device) with faked header containing null cipher.
+    This could force user to use different LUKS device (with no
+    encryption) without noticing.
+    (IOW it prevents situation when attacker intentionally forces
+    user to boot into different system just by LUKS header
+    manipulation.)
+    Properly configured systems should have an additional integrity
+    protection in place here (LUKS here provides only
+    confidentiality) but it is better to not allow this situation
+    in the first place.
+    (For more info see QubesOS Security Bulletin QSB-019-2015.)
+  * Properly support stdin "-" handling for luksAddKey for both new
+    and old keyfile parameters.
+  * If encrypted device is file-backed (it uses underlying loop
+    device), cryptsetup resize will try to resize underlying loop
+    device as well. (It can be used to grow up file-backed device
+    in one step.)
+  * Cryptsetup now allows to use empty password through stdin pipe.
+    (Intended only for testing in scripts.)
+
+-------------------------------------------------------------------
+Sun Apr 12 18:45:26 UTC 2015 - crrodriguez@opensuse.org
+
+- Enable verbose build log. 
+
+-------------------------------------------------------------------
+Sun Apr 12 18:41:39 UTC 2015 - crrodriguez@opensuse.org
+
+- regenerate the initrd if cryptsetup tool changes
+  (wanted by 90crypt dracut module)
+
+-------------------------------------------------------------------
+Thu Apr  2 12:05:47 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.6.7
+  * Cryptsetup TCRYPT mode now supports VeraCrypt devices 
+    (TrueCrypt extension)
+  * Support keyfile-offset and keyfile-size options even for plain 
+    volumes.
+  * Support keyfile option for luksAddKey if the master key is 
+    specified.
+  * For historic reasons, hashing in the plain mode is not used if 
+    keyfile is specified (with exception of --key-file=-). Print 
+    a warning if these parameters are ignored.
+  * Support permanent device decryption for cryptsetup-reencrypt. 
+    To remove LUKS encryption from a device, you can now use 
+    --decrypt option.
+  * Allow to use --header option in all LUKS commands. The 
+    --header always takes precedence over positional device argument.
+  * Allow luksSuspend without need to specify a detached header.
+  * Detect if O_DIRECT is usable on a device allocation. There are 
+    some strange storage stack configurations which wrongly allows 
+    to open devices with direct-io but fails on all IO operations later.
+  * Add low-level performance options tuning for dmcrypt (for 
+    Linux 4.0 and later).
+  * Get rid of libfipscheck library.
+    (Note that this option was used only for Red Hat and derived 
+    distributions.) With recent FIPS changes we do not need to 
+    link to this FIPS monster anymore. Also drop some no longer 
+    needed FIPS mode checks.
+  * Many fixes and clarifications to man pages.
+  * Prevent compiler to optimize-out zeroing of buffers for on-stack 
+    variables.
+  * Fix a crash if non-GNU strerror_r is used.
+
+-------------------------------------------------------------------
+Sun Sep 14 21:50:33 UTC 2014 - asterios.dramis@gmail.com
+
+- version 1.6.6
+  * LUKS: Fix keyslot device access for devices which
+    do not support direct IO operations. (Regression in 1.6.5.)
+  * LUKS: Fallback to old temporary keyslot device mapping method
+    if hash (for ESSIV) is not supported by userspace crypto
+    library. (Regression in 1.6.5.)
+  * Properly activate device with discard (TRIM for SSDs)
+    if requested even if dm_crypt module is not yet loaded.
+    Only if discard is not supported by the old kernel then
+    the discard option is ignored.
+  * Fix some static analysis build warnings (scan-build).
+  * Report crypto lib version only once (and always add kernel
+    version) in debug output.
+
+-------------------------------------------------------------------
+Fri Aug 22 12:02:56 UTC 2014 - meissner@suse.com
+
+- Use --enable-gcrypt-pbkdf2 to use the PBKDFv2 method from libgcrypt.
+
+-------------------------------------------------------------------
+Tue Aug 12 16:34:04 UTC 2014 - asterios.dramis@gmail.com
+
+- version 1.6.5
+  * Allow LUKS header operation handling without requiring root privilege.
+    It means that you can manipulate with keyslots as a regular user, only
+    write access to device (or image) is required.
+  * Fix internal PBKDF2 key derivation function implementation for alternative
+    crypto backends (kernel, NSS) which do not support PBKDF2 directly and have
+    issues with longer HMAC keys.
+  * Support for Python3 for simple Python binding.
+    Python >= 2.6 is now required. You can set Python compiled version by setting
+    --with-python_version configure option (together with --enable-python).
+  * Use internal PBKDF2 in Nettle library for Nettle crypto backend.
+    Cryptsetup compilation requires Nettle >= 2.6 (if using Nettle crypto backend).
+  * Allow simple status of crypt device without providing metadata header.
+    The command "cryptsetup status" will print basic info, even if you
+    do not provide detached header argument.
+  * Allow to specify ECB mode in cryptsetup benchmark.
+  * Add some LUKS images for regression testing.
+    Note that if image with Whirlpool fails, the most probable cause is that
+    you have old gcrypt library with flawed whirlpool hash.
+    Read FAQ section 8.3 for more info.
+- Removed e2fsprogs-devel and libtool build requirements (not needed).
+- Added libpwquality-devel and libuuid-devel build requirements.
+
+-------------------------------------------------------------------
+Mon Aug 11 15:21:03 UTC 2014 - meissner@suse.com
+
+- libcryptsetup4-hmac split off contain the hmac for FIPS certification
+
+-------------------------------------------------------------------
+Tue May 27 14:38:57 UTC 2014 - meissner@suse.com
+
+- version 1.6.4
+  - new tarball / signature location
+  * Implement new erase (with alias luksErase) command.
+  * Add internal "whirlpool_gcryptbug hash" for accessing flawed
+    Whirlpool hash in gcrypt (requires gcrypt 1.6.1 or above).
+  * Allow to use --disable-gcrypt-pbkdf2 during configuration
+    to force use internal PBKDF2 code.
+  * Require gcrypt 1.6.1 for imported implementation of PBKDF2
+    (PBKDF2 in gcrypt 1.6.0 is too slow).
+  * Add --keep-key to cryptsetup-reencrypt.
+  * By default verify new passphrase in luksChangeKey and luksAddKey
+    commands (if input is from terminal).
+  * Fix memory leak in Nettle crypto backend.
+  * Support --tries option even for TCRYPT devices in cryptsetup.
+  * Support --allow-discards option even for TCRYPT devices.
+    (Note that this could destroy hidden volume and it is not suggested
+    by original TrueCrypt security model.)
+  * Link against -lrt for clock_gettime to fix undefined reference
+    to clock_gettime error (introduced in 1.6.2).
+  * Fix misleading error message when some algorithms are not available.
+  * Count system time in PBKDF2 benchmark if kernel returns no self
+    usage info.
+
+-------------------------------------------------------------------
+Wed Apr 23 16:08:09 UTC 2014 - dmueller@suse.com
+
+- remove dependency on gpg-offline (source_validator already
+  checks for gpg integrity)
+
+-------------------------------------------------------------------
+Sun Dec 15 20:04:00 UTC 2013 - crrodriguez@opensuse.org
+
+- version 1.6.3 
+* Fix cryptsetup reencryption tool to work properly 
+  with devices using 4kB sectors.
+* Rewrite cipher benchmark loop which was unreliable on very fast machines.
+* Support activation of old TrueCrypt containers (requires kernel 3.13)
+* Other bugfixes.
+
+-------------------------------------------------------------------
+Sun Aug  4 20:54:31 UTC 2013 - crrodriguez@opensuse.org
+
+- cryptsetup 1.6.2
+* Print error and fail if more device arguments 
+  are present for isLuks command.
+* Fix cipher specification string parsing 
+(found by gcc -fsanitize=address option).
+* Try to map TCRYPT system encryption through partitions
+* Workaround for some recent changes in automake
+
+-------------------------------------------------------------------
+Tue Jul  2 18:53:21 UTC 2013 - crrodriguez@opensuse.org
+
+- cryptsetup 1.6.1
+ * Fix loop-AES keyfile parsing.
+ * Fix passphrase pool overflow for too long TCRYPT passphrase.
+ * Fix deactivation of device when failed underlying node disappeared.
+
+- There is a bug in the released tarball, due to HAVE_BYTESWAP_H
+  and HAVE_ENDIAN_H not properly handled by the buildsystem. A
+  patch with permanent solution was sent and accepted upstream
+  and will appear in the next release, for now an spec file workaround
+  is in place, remove in the next update.
+
+-------------------------------------------------------------------
+Sun Mar 24 19:17:47 UTC 2013 - jengelh@inai.de
+
+- Remove excessive dependencies of libcryptsetup-devel
+  (it does not require any of these)
+
+-------------------------------------------------------------------
+Tue Jan 15 13:17:57 UTC 2013 - lnussel@suse.de
+
+- version 1.6.0
+ * Change LUKS default cipher to to use XTS encryption mode,
+   aes-xts-plain64 (i.e. using AES128-XTS).
+ * license change to GPL-2.0+ from GPL-1.0
+ * new unified command open and close.
+ * direct support for TCRYPT (TrueCrypt and compatible tc-play) on-disk format
+ * new benchmark command
+
+-------------------------------------------------------------------
+Thu Dec 13 10:46:43 UTC 2012 - lnussel@suse.de
+
+- version 1.5.1:
+  * Added keyslot checker
+  * Add crypt_keyslot_area() API call.
+  * Optimize seek to keyfile-offset (Issue #135, thx to dreisner).
+  * Fix luksHeaderBackup for very old v1.0 unaligned LUKS headers.
+  * Allocate loop device late (only when real block device needed).
+  * Rework underlying device/file access functions.
+  * Create hash image if doesn't exist in veritysetup format.
+  * Provide better error message if running as non-root user (device-mapper, loop).
+
+-------------------------------------------------------------------
+Wed Dec 12 16:00:29 UTC 2012 - lnussel@suse.de
+
+- split off hashalot and boot.crypto
+- move to /usr
+
+-------------------------------------------------------------------
+Tue Nov 20 18:41:11 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signature.
+
+-------------------------------------------------------------------
+Tue Sep 25 11:40:07 UTC 2012 - fcrozat@suse.com
+
+- Remove crypttab manpage, it is now provided by systemd.
+
+-------------------------------------------------------------------
+Wed Aug  1 13:37:04 UTC 2012 - lnussel@suse.de
+
+- version 1.5.0:
+  * Add --device-size option for reencryption tool.
+  * Switch to use unit suffix for --reduce-device-size option.
+  * Remove open device debugging feature (no longer needed).
+  * Introduce cryptsetup-reencrypt - experimental offline LUKS reencryption tool.
+  * Fix luks-header-from-active script (do not use LUKS header on-disk, add UUID).
+  * Add --test-passphrase option for luksOpen (check passphrase only).
+  * Introduce veritysetup for dm-verity target management.
+  * Both data and header device can now be a file.
+  * Loop is automatically allocated in crypt_set_data_device().
+  * Require only up to last keyslot area for header device (ignore data offset).
+  * Fix header backup and restore to work on files with large data offset.
+  * Fix readonly activation if underlying device is readonly (1.4.0).
+  * Fix keyslot removal (wipe keyslot) for device with 4k hw block (1.4.0).
+  * Allow empty cipher (cipher_null) for testing.
+  * Fix loop mapping on readonly file.
+  * Relax --shared test, allow mapping even for overlapping segments.
+  * Support shared flag for LUKS devices (dangerous).
+  * Switch on retry on device remove for libdevmapper.
+  * Allow "private" activation (skip some udev global rules) flag.
+
+-------------------------------------------------------------------
+Mon Jul  9 09:37:43 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-GPL-2.0-with-openssl-exception and LGPL-2.0+
+  cryptsetup developers use a special exception to link against openSSL
+
+-------------------------------------------------------------------
+Fri Jun 15 12:41:00 UTC 2012 - lnussel@suse.de
+
+- boot.crypto:
+  * update man page to mention systemd and wiki article
+  * sanitize dm target names (bnc#716240)
+
+-------------------------------------------------------------------
+Tue Apr 17 13:03:28 UTC 2012 - lnussel@suse.de
+
+- boot.crypto:
+  * prefer physdev from crypttab
+  * fix non-plymouth use
+
+-------------------------------------------------------------------
+Mon Apr 16 12:08:30 UTC 2012 - lnussel@suse.de
+
+- new version 1.4.2
+  * Fix header check to support old (cryptsetup 1.0.0) header alignment. (1.4.0)
+  * Add --keyfile-offset and --new-keyfile-offset parameters to API and CLI.
+  * Add repair command and crypt_repair() for known LUKS metadata problems repair.
+  * Allow to specify --align-payload only for luksFormat.
+  * Unify password verification option.
+  * Support password verification with quiet flag if possible. (1.2.0)
+  * Fix retry if entered passphrases (with verify option) do not match.
+  * Support UUID=<LUKS_UUID> format for device specification.
+  * Add --master-key-file option to luksOpen (open using volume key).
+  * Fix use of empty keyfile.
+  * Fix error message for luksClose and detached LUKS header.
+  * Allow --header for status command to get full info with detached header.
+
+-------------------------------------------------------------------
+Mon Apr 16 09:56:40 UTC 2012 - lnussel@suse.de
+
+- boot.crypto:
+  * avoid warning about module 'kernel' (bnc#741468)
+  * incorporate plymouth support
+
+-------------------------------------------------------------------
+Fri Dec 16 13:06:18 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 1.4.1
+* support for trim/discard
+* The on-disk LUKS header can now be detached (e.g. placed on
+  separate device or in file)
+* Support key-slot option for luksOpen (use only explicit keyslot)
+* API: Removal of deprecated API from libcryptsetup (all functions
+  using struct crypt_options)
+
+-------------------------------------------------------------------
+Thu Oct 27 15:53:20 UTC 2011 - lnussel@suse.de
+
+- on update convert noauto to nofail and turn on fsck (bnc#724113)
+
+-------------------------------------------------------------------
+Mon Oct 10 00:18:10 UTC 2011 - jeffm@suse.com
+
+- cryptsetup-boot: Rescan LVM volumes after opening crypto (bnc#722916).
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:51 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sun Sep 18 18:42:07 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Fri May 27 13:20:27 UTC 2011 - lnussel@suse.de
+
+- boot.crypto:
+  * don't hard require boot.device-mapper in boot.crypto
+
+-------------------------------------------------------------------
+Wed May 25 06:42:03 UTC 2011 - lnussel@suse.de
+
+- new version 1.3.1:
+ * Fix keyfile=- processing in create command (regression in 1.3.0).
+ * Simplify device path status check (use /sys and do not scan /dev).
+ * Do not ignore device size argument for create command (regression in 1.2.0).
+ * Fix error paths in blockwise code and lseek_write call.
+
+-------------------------------------------------------------------
+Mon Apr 11 14:04:11 UTC 2011 - lnussel@suse.de
+
+- new version 1.3.0:
+ * userspace crypto backends support
+ * Cryptsetup now automatically allocates loopback device
+   if device argument is file and not plain device.
+ * luksChangeKey command
+ * loopaesOpen command for loop-AES compatibility
+
+-------------------------------------------------------------------
+Thu Feb 17 07:53:34 UTC 2011 - lnussel@suse.de
+
+- boot.crypto:
+  * also fix exit code in boot.crypto.functions (bnc#671822)
+
+-------------------------------------------------------------------
+Mon Jan 31 15:32:57 UTC 2011 - lnussel@suse.de
+
+- boot.crypto:
+  * don't fail if loop module is not loaded
+  * adapt to new crypsetup exit codes (bnc#667931)
+
+-------------------------------------------------------------------
+Mon Dec 20 13:01:54 UTC 2010 - lnussel@suse.de
+
+- new version 1.2.0
+  * Add selection of random/urandom number generator for luksFormat
+ (option --use-random and --use-urandom).
+
+ * Fix luksRemoveKey to not ask for remaining keyslot passphrase,
+ only for removed one.
+
+ * No longer support luksDelKey (replaced with luksKillSlot).
+  * if you want to remove particular passphrase, use luksKeyRemove
+  * if you want to remove particular keyslot, use luksKillSlot
+
+ Note that in batch mode luksKillSlot allows removing of any keyslot
+ without question, in normal mode requires passphrase or keyfile from
+ other keyslot.
+
+ * Default alignment for device (if not overridden by topology info)
+ is now (multiple of) *1MiB*.
+ This reflects trends in storage technologies and aligns to the same
+ defaults for partitions and volume management.
+
+ * Allow explicit UUID setting in luksFormat and allow change it later
+ in luksUUID (--uuid parameter).
+
+ * All commands using key file now allows limited read from keyfile using
+ --keyfile-size and --new-keyfile-size parameters (in bytes).
+
+ This change also disallows overloading of --key-size parameter which
+ is now exclusively used for key size specification (in bits.)
+
+ * luksFormat using pre-generated master key now properly allows
+ using key file (only passphrase was allowed prior to this update).
+
+ * Add --dump-master-key option for luksDump to perform volume (master)
+ key dump. Note that printed information allows accessing device without
+ passphrase so it must be stored encrypted.
+
+ This operation is useful for simple Key Escrow function (volume key and
+ encryption parameters printed on paper on safe place).
+
+ This operation requires passphrase or key file.
+
+ * The reload command is no longer supported.
+ (Use dmsetup reload instead if needed. There is no real use for this
+ function except explicit data corruption:-)
+
+ * Cryptsetup now properly checks if underlying device is in use and
+ disallows *luksFormat*, luksOpen and create commands on open
+ (e.g. already mapped or mounted) device.
+
+ * Option --non-exclusive (already deprecated) is removed.
+
+Libcryptsetup API additions:
+
+ * new functions
+  * crypt_get_type() - explicit query to crypt device context type
+  * crypt_resize() - new resize command using context
+  * crypt_keyslot_max() - helper to get number of supported keyslots
+  * crypt_get_active_device() - get active device info
+  * crypt_set/get_rng_type() - random/urandom RNG setting
+  * crypt_set_uuid() - explicit UUID change of existing device
+  * crypt_get_device_name() - get underlying device name
+
+ * Fix optional password callback handling.
+
+ * Allow to activate by internally cached volume key immediately after
+ crypt_format() without active slot (for temporary devices with
+ on-disk metadata)
+
+ * libcryptsetup is binary compatible with 1.1.x release and still
+ supports legacy API calls
+
+ * cryptsetup binary now uses only new API calls.
+
+ * Static compilation of both library (--enable-static) and cryptsetup
+ binary (--enable-static-cryptsetup) is now properly implemented by common
+ libtool logic.
+
+ Prior to this it produced miscompiled dynamic cryptsetup binary with
+ statically linked libcryptsetup.
+
+ The static binary is compiled as src/cryptsetup.static in parallel
+ with dynamic build if requested.
+
+-------------------------------------------------------------------
+Tue Nov 30 14:16:07 UTC 2010 - lnussel@suse.de
+
+- boot.crypto:
+  * drop cryptotab support
+
+-------------------------------------------------------------------
+Tue Nov 16 14:05:47 UTC 2010 - lnussel@suse.de
+
+- boot.crypto:
+  * add a few tweaks for systemd (bnc#652767)
+
+-------------------------------------------------------------------
+Wed Jul  7 14:38:11 UTC 2010 - lnussel@suse.de
+
+- new version 1.1.3
+  * Fix device alignment ioctl calls parameters. (Device alignment
+    code was not working properly on some architectures like ppc64.)
+  * Fix activate_by_* API calls to handle NULL device name as
+    documented. (To enable check of passphrase/keyfile using
+    libcryptsetup without activating the device.)
+  * Fix udev support for old libdevmapper with not compatible definition.
+  * Added Polish translation file.
+
+-------------------------------------------------------------------
+Thu Jul  1 14:27:12 UTC 2010 - lnussel@suse.de
+
+- skip temporary mappings in early stage as chmod needs to be called
+  on the mounted file systems (bnc#591704) 
+
+-------------------------------------------------------------------
+Sat Jun 26 10:07:24 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Mon May 31 09:42:27 UTC 2010 - lnussel@suse.de
+
+- new version 1.1.2 fixes keyfile regression introduced by 1.1.1
+ * Fix luksFormat/luksOpen reading passphrase from stdin and "-" keyfile.
+ * Support --key-file/-d option for luksFormat.
+ * Fix description of --key-file and add --verbose and --debug options to man page.
+ * Add verbose log level and move unlocking message there.
+ * Remove device even if underlying device disappeared (remove, luksClose).
+ * Fix (deprecated) reload device command to accept new device argument.
+
+-------------------------------------------------------------------
+Tue May 25 08:11:30 UTC 2010 - lnussel@suse.de
+
+- new version 1.1.1
+  * Detects and use device-mapper udev support if available.
+  * Supports device topology detection for data alignment.
+  * Fix luksOpen reading of passphrase on stdin (if "-" keyfile specified).
+  * Fix isLuks to initialise crypto backend (blkid instead is suggested anyway).
+  * Properly initialise crypto backend in header backup/restore commands.
+  * Do not verify unlocking passphrase in luksAddKey command.
+  * Allow no hash specification in plain device constructor - user can provide volume key directly.
+  * Try to use pkgconfig for device mapper library in configuration script.
+  * Add some compatibility checks and disable LUKS suspend/resume if not supported.
+  * Rearrange tests, "make check" now run all available test for package.
+  * Avoid class C++ keyword in library header.
+
+-------------------------------------------------------------------
+Tue Mar  9 10:50:00 UTC 2010 - lnussel@suse.de
+
+- boot.crypto:
+  * turn off splash only if needed to avoid flicker
+
+-------------------------------------------------------------------
+Tue Mar  2 12:02:50 UTC 2010 - lnussel@suse.de
+
+- boot.crypto:
+  * restore splash screen state after initrd prompt (bnc#559053)
+  * use highlighted prompt in initrd too
+  * fix adding volumes with initrd option (bnc#558891)
+
+-------------------------------------------------------------------
+Tue Feb  2 12:21:44 UTC 2010 - lnussel@suse.de
+
+- boot.crypto:
+  * document the stages of the boot process
+  * show status message in boot.cypto-early
+  * don't perform some checks if the device is skipped anyways
+  * seed random number generator (bnc#575139)
+
+-------------------------------------------------------------------
+Mon Jan 18 12:18:32 UTC 2010 - lnussel@suse.de
+
+- cryptsetup 1.1.0:
+
+ * IMPORTANT: the default compiled-in cipher parameters changed
+	plain mode: aes-cbc-essiv:sha256 (default is backward incompatible!).
+	LUKS mode: aes-cbc-essiv:sha256 (only key size increased)
+	In both modes is now default key size 256bits.
+
+	 * Default compiled-in parameters are now configurable through configure options:
+	   --with-plain-* / --with-luks1-* (see configure --help)
+
+	 * If you need backward compatible defaults for distribution use
+	   configure --with-plain-mode=cbc-plain --with-luks1-keybits=128
+
+	 Default compiled-in modes are printed in "cryptsetup --help" output.
+
+ * Change in iterations count (LUKS):
+	The slot and key digest iteration minimum count is now 1000.
+	The key digest iteration count is calculated from iteration time (approx 1/8 of req. time).
+	For more info about above items see discussion here: http://tinyurl.com/yaug97y
+
+ * New libcryptsetup API (documented in libcryptsetup.h).
+
+	The old API (using crypt_options struct) is still available but will remain
+	frozen and not used for new functions.
+	Soname of library changed to libcryptsetup.so.1.0.0.
+	(But only recompilation should be needed for old programs.)
+
+	The new API provides much more flexible operation over LUKS device for
+	applications, it is preferred that new applications will use libcryptsetup
+	and not wrapper around cryptsetup binary.
+
+ * New luksHeaderBackup and luksHeaderRestore commands.
+
+	These commands allows binary backup of LUKS header.
+	Please read man page about possible security issues with backup files.
+
+ * New luksSuspend (freeze device and wipe key) and luksResume (with provided passphrase).
+
+	luksSuspend wipe encryption key in kernel memory and set device to suspend
+	(blocking all IO) state. This option can be used for situations when you need
+	temporary wipe encryption key (like suspend to RAM etc.)
+	Please read man page for more information.
+
+ * New --master-key-file option for luksFormat and luksAddKey.
+
+	User can now specify pre-generated master key in file, which allows regenerating
+	LUKS header or add key with only master key knowledge.
+
+ * Uses libgcrypt and enables all gcrypt hash algorithms for LUKS through -h luksFormat option.
+
+	Please note that using different hash for LUKS header make device incompatible with
+	old cryptsetup releases.
+
+ * Introduces --debug parameter.
+
+	Use when reporting bugs (just run cryptsetup with --debug and attach output
+	to issue report.) Sensitive data are never printed to this log.
+
+ * Moves command successful messages to verbose level.
+
+ * Requires device-mapper library and libgcrypt to build.
+
+ * Uses dm-uuid for all crypt devices, contains device type and name now.
+
+ * Removes support for dangerous non-exclusive option
+	(it is ignored now, LUKS device must be always opened exclusive)
+
+- boot.crypto:
+  * don't use dirty prompt override hack anymore
+  * wait for volume groups if resume volume is on lvm (bnc#556895)
+  * dynamically determine whether the cryptomgr module is neeeded
+
+-------------------------------------------------------------------
+Mon Oct 19 14:33:57 UTC 2009 - lnussel@suse.de
+
+- add luks script in volumemanager stage too, this way some side
+  effects are avoided (bnc#547612)
+
+-------------------------------------------------------------------
+Wed Oct  7 12:37:24 UTC 2009 - lnussel@suse.de
+
+- boot.crypto:
+  * /lib/udev/vol_id no longer exists, use blkid instead
+  * add space at end of password prompt in initrd
+  * fix autodetetection of root on LVM on LUKS (bnc#528474)
+
+-------------------------------------------------------------------
+Tue Oct  6 11:43:15 UTC 2009 - lnussel@suse.de
+
+- boot.crypto: more changes as agreed with the Debian maintainer:
+    * rename keyscript variable CRYPTTAB_DEVICE to CRYPTTAB_SOURCE
+    * export list of options in CRYPTTAB_OPTIONS
+
+-------------------------------------------------------------------
+Tue Sep 29 11:25:58 UTC 2009 - lnussel@suse.de
+
+- replace patch that quits on EOF with upstream version
+
+-------------------------------------------------------------------
+Fri Sep 25 12:42:23 UTC 2009 - lnussel@suse.de
+
+- actually hash=plain can be used to get raw keyscript output so
+  remove keyscript_raw again
+
+-------------------------------------------------------------------
+Thu Sep 24 13:36:52 UTC 2009 - lnussel@suse.de
+
+- boot.crypto:
+  * don't use hashalot if keyfile is specified
+  * to comply with Debian, keyscripts must only output the password.
+    In order to allow keyscript to use different methods to retrieve
+    a key, add a keyscript_rawkey option.
+- cryptsetup:
+  * When reading no single byte for the key abort.
+
+-------------------------------------------------------------------
+Mon Sep 21 08:51:40 UTC 2009 - lnussel@suse.de
+
+- boot.crypto:
+  * fix test for keyfile (bnc#540363)
+
+-------------------------------------------------------------------
+Wed Sep 16 12:49:07 UTC 2009 - lnussel@suse.de
+
+- boot.crypto:
+  * 2.6.31 requires the cryptomgr module in the initrd (bnc#535013)
+
+-------------------------------------------------------------------
+Tue Sep 15 13:20:59 UTC 2009 - lnussel@suse.de
+
+- boot.crypto:
+  * uppercase variables exported to keyscript in anticipation of
+    Debian adopting the implementation
+
+-------------------------------------------------------------------
+Fri Sep  4 10:04:05 UTC 2009 - lnussel@suse.de
+
+- boot.crypto:
+  * fix setting options without parameter
+  * infinite retries in initrd
+  * tries=0 means infinite tries
+  * implement retries in the script to make it work with keyscripts and non-luks volumes
+  * keyscript support (fate#302628)
+  * remove the option to fsck the fs as it actually never worked
+  * fix initrd option parsing
+
+-------------------------------------------------------------------
+Thu Aug 27 06:59:55 UTC 2009 - lnussel@suse.de
+
+- new cryptsetup version 1.0.7
+  * Allow removal of last slot in luksRemoveKey and luksKillSlot.
+  * Reject unsupported --offset and --skip options for luksFormat and update man page.
+  * Various man page fixes.
+  * Set UUID in device-mapper for LUKS devices.
+  * Retain readahead of underlying device.
+  * Display device name when asking for password.
+  * Check device size when loading LUKS header. Remove misleading error message later.
+  * Add error hint if dm-crypt mapping failed.
+  * Use better error messages if device doesn't exist or is already used by other mapping.
+  * Fix make distcheck.
+  * Check if all slots are full during luksAddKey.
+  * Fix segfault in set_error.
+  * Code cleanups, remove precompiled pot files, remove unnecessary files from po directory
+  * Fix uninitialized return value variable in setup.c.
+  * Code cleanups. (thanks to Ivan Stankovic)
+  * Fix wrong output for remaining key at key deletion.
+  * Allow deletion of key slot while other keys have the same key information.
+  * Add missing AM_PROG_CC_C_O to configure.in
+  * Remove duplicate sentence in man page.
+  * Wipe start of device (possible fs signature) before LUKS-formatting.
+  * Do not process configure.in in hidden directories.
+  * Return more descriptive error in case of IO or header format error.
+  * Use remapping to error target instead of calling udevsettle for temporary crypt device.
+  * Check device mapper communication and warn user if device-mapper support missing in kernel.
+  * Fix signal handler to properly close device.
+  * write_lseek_blockwise: declare innerCount outside the if block.
+  * add -Wall to the default CFLAGS. fix some signedness issues.
+  * Error handling improvement.
+  * Add non-exclusive override to interface definition.
+  * Refactor key slot selection into keyslot_from_option.
+
+-------------------------------------------------------------------
+Wed Aug 19 14:08:40 CEST 2009 - lnussel@suse.de
+
+- boot.crypto:
+  * set infinite timeout during 2nd stage (bnc#456004)
+
+-------------------------------------------------------------------
+Mon Jul 13 08:56:56 UTC 2009 - lnussel@suse.de
+
+- boot.crypto:
+  * wait for device before calling luksOpen (bnc#521446)
+
+-------------------------------------------------------------------
+Wed Jun 17 11:30:08 CEST 2009 - coolo@novell.com
+
+- fix link order
+
+-------------------------------------------------------------------
+Thu Jun 11 21:36:28 CEST 2009 - coolo@novell.com
+
+- fix compile with glibc 2.10
+
+-------------------------------------------------------------------
+Thu Apr  2 09:33:22 CEST 2009 - lnussel@suse.de
+
+- boot.crypto:
+  * resolve symlinks when searching for loop devices (bnc#490170)
+  * add extra man page tags to avoid FIXME output of docbook
+  * don't pipe password if there's only one device to open
+  * update copyright information
+  * fix spelling and actually stop in pre_stop_hook
+  * introduce initrd option in crypttab (bnc#465711)
+
+-------------------------------------------------------------------
+Fri Mar  6 13:01:44 CET 2009 - lnussel@suse.de
+
+- boot.crypto:
+  * print dm name instead of physdev (bnc#456664)
+  * make prompt work with infinite timeout (bnc#466405)
+  * implement pre-stop hook (bnc#481870)
+  * remove hardcoded loop device number limit (bnc#481872)
+  * Warn if using a non-absolute path for physdev in crypttab
+- hashalot: compute hash of empty passphrase if not interactive
+  (bnc#475135)
+
+-------------------------------------------------------------------
+Tue Mar  3 16:27:23 CET 2009 - lnussel@suse.de
+
+- fix boot.crypto doesn't care on tries flag in crypttab (bnc#480741)
+- mkinitrd scripts now included in boot.crypto git
+
+-------------------------------------------------------------------
+Thu Feb 26 15:34:06 CET 2009 - mhopf@suse.de
+
+- Fix segfault with oversized hashes (bnc #476290).
+
+-------------------------------------------------------------------
+Wed Feb 25 13:47:43 CET 2009 - jsmeix@suse.de
+
+- Fixed initrd LUKS password annoyance in mkinitrd-boot.sh and
+  mkinitrd-setup.sh when the same password is used for all
+  partitions. In this case the password is now only asked
+  once (bnc#465711).
+
+-------------------------------------------------------------------
+Sun Dec 14 12:27:34 CET 2008 - bwalle@suse.de
+
+- Fix LUKS root partition residing on a soft raid (bnc#358341)
+
+-------------------------------------------------------------------
+Mon Nov  3 14:03:33 CET 2008 - mkoenig@suse.de
+
+- boot.crypto-early: explicitly start before boot.localfs 
+
+-------------------------------------------------------------------
+Fri Sep 12 16:40:03 CEST 2008 - mkoenig@suse.de
+
+- branch off shlib to subpackage libcryptsetup0
+- rename cryptsetup-devel to libcryptsetup-devel 
+
+-------------------------------------------------------------------
+Wed Sep  3 11:09:34 CEST 2008 - hare@suse.de
+
+- Call mkinitrd_setup during %post and %postun (bnc#413709)
+
+-------------------------------------------------------------------
+Wed Aug 20 15:20:06 CEST 2008 - mkoenig@suse.de
+
+- enable SELinux support (fate#303662)
+
+-------------------------------------------------------------------
+Wed Aug 13 11:21:14 CEST 2008 - mkoenig@suse.de
+
+- boot.crypto:
+  * Fix init script tags
+
+-------------------------------------------------------------------
+Fri Aug  8 11:42:10 CEST 2008 - mkoenig@suse.de
+
+- boot.crypto:
+  * Provide some reasonable exit status (bnc#409502)
+
+-------------------------------------------------------------------
+Wed Jul 23 15:44:31 CEST 2008 - hare@suse.de
+
+- Include mkinitrd scriptlets.
+
+-------------------------------------------------------------------
+Wed Jul 23 13:05:20 CEST 2008 - mkoenig@suse.de
+
+- use /sbin/udevadm settle instead of /sbin/udevsettle (bnc#404875)
+
+-------------------------------------------------------------------
+Tue May  6 12:36:49 CEST 2008 - mkoenig@suse.de
+
+- load loop module in boot.crypto-early as it might be needed.
+  It is previously initially loaded by boot.localfs.
+
+-------------------------------------------------------------------
+Wed Apr  9 15:59:09 CEST 2008 - mkoenig@suse.de
+
+- add support for boot.crypto-early (bnc#355824)
+  needed to encrypt block devices for usage with LVM or MD
+  adds a new option 'noearly' for crypttab, which will skip
+  the device in boot.crypto-early.
+
+-------------------------------------------------------------------
+Wed Feb 27 12:10:32 CET 2008 - mkoenig@suse.de
+
+- update to svn revision 46:
+  * fix out of bound for key index in delKey (bnc#360041)
+  * Add typo fixes to the cryptsetup.8 manpage
+  * Add key-slot patch
+  * Remove O_EXCL requirement for certain LUKS operations
+  * mention luksKillSlot in the manpage
+
+-------------------------------------------------------------------
+Mon Feb  4 16:22:42 CET 2008 - lnussel@suse.de
+
+- boot.crypto:
+  * check for columns of terminal (bnc#337614)
+  * enhance crypttab manpage (bnc#351061)
+  * check for fs_passno (bnc#345339)
+
+-------------------------------------------------------------------
+Wed Jan  9 12:07:14 CET 2008 - lnussel@suse.de
+
+- upgrade to svn revision 42 which includes previous patches
+- boot.crypto:
+  * don't mount read-only as safety check (bnc#345338)
+  * implement precheck scripts
+  * allow restarting of single volumes (bnc#345605)
+  * status query of individual devices (bnc#345605)
+  * add vol_id check script
+  * maintain boot.crypto stuff in revision control and use tarball
+    snapshots of it
+
+-------------------------------------------------------------------
+Thu Nov 29 13:47:24 CET 2007 - lnussel@suse.de
+
+- upgrade to svn revision 38
+
+-------------------------------------------------------------------
+Wed Nov  7 12:40:02 CET 2007 - mkoenig@suse.de
+
+- add %fillup_prereq and %insserv_prereq to PreReq 
+
+-------------------------------------------------------------------
+Tue Oct 16 10:38:35 CEST 2007 - lnussel@suse.de
+
+- upgrade to svn revision 31
+  * Rename luksDelKey into luksKillSlot
+  * Add luksRemoveKey that queries a given key before removal
+  * Fix segfault in luksOpen.
+  * Add LUKS_device_ready check for most LUKS calls, so that
+    cryptsetup dies before password querying in case a blockdev is
+    unavailable
+  * For LUKS key material access require exclusive access to the
+    underlying device. This will prevent multiple mappings onto a
+    single LUKS device. dm*crypt doesn't feature any syncing
+    capabilities, hence there is no real application for this as it
+    will likely lead to disk corruption.
+  * Add signal handler to keyencryption to free the temporary
+    mapping in case the user hits ctrl-c.
+
+-------------------------------------------------------------------
+Mon Aug 27 16:25:54 CEST 2007 - lnussel@suse.de
+
+- remove /var/run/keymap from previous boot to make /etc/init.d/kbd
+  work (#296409)
+
+-------------------------------------------------------------------
+Mon Aug 27 10:42:32 CEST 2007 - lnussel@suse.de
+
+- run fsck with progressbar (#304750)
+
+-------------------------------------------------------------------
+Thu Jun 21 16:06:53 CEST 2007 - mkoenig@suse.de
+
+- run udevsettle to avoid problems with busy temporary
+  device mapper devices [#285478]
+
+-------------------------------------------------------------------
+Mon Jun 11 09:23:24 CEST 2007 - lnussel@suse.de
+
+- rephrase error message (#279169)
+
+-------------------------------------------------------------------
+Fri Jun  1 10:07:14 CEST 2007 - lnussel@suse.de
+
+- rename util-linux-crypto to cryptsetup
+- remove dmconvert
+- replace svn snapshot with official 1.0.5 release
+- don't enable boot.crypto by default
+
+-------------------------------------------------------------------
+Tue May 29 15:58:44 CEST 2007 - lnussel@suse.de
+
+- fix segfault when trying to open a non existing device
+- fix gcc warnings
+- add Short-Description to boot.crypto
+- use %find_lang
+
+-------------------------------------------------------------------
+Wed May  9 14:52:00 CEST 2007 - lnussel@suse.de
+
+- boot.crypto: implement 'status'
+- boot.crypto: accept argument to start/stop single devices
+
+-------------------------------------------------------------------
+Wed May  9 10:40:28 CEST 2007 - lnussel@suse.de
+
+- hashalot: add timeout option
+
+-------------------------------------------------------------------
+Wed May  9 09:40:42 CEST 2007 - lnussel@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Tue May  8 15:16:41 CEST 2007 - lnussel@suse.de
+
+- boot.crypto: switch off splash screen only when needed
+- boot.crypto: report status for individual volumes instead of using one global
+  exit status
+- hashalot: exit unsucessfully on empty passphrase
+
+-------------------------------------------------------------------
+Tue May  8 10:43:24 CEST 2007 - lnussel@suse.de
+
+- boot.crypto: sleep a bit longer before overwriting the prompt
+- boot.crypto: add support for pseed and itercountk options
+- boot.crypto: skip entries with unsupported/unknown options
+- hashalot: add support for itercountk
+
+-------------------------------------------------------------------
+Fri May  4 16:38:11 CEST 2007 - lnussel@suse.de
+
+- upgrade cryptsetup to current svn revision 30 which includes
+  previous patches.
+- fix background prompt process not getting killed on ctrl-d in
+  boot.crypto
+
+-------------------------------------------------------------------
+Fri Apr 27 15:46:05 CEST 2007 - lnussel@suse.de
+
+- upgrade cryptsetup to current svn revision 26. Does no longer hang
+  when a file is specified instead of a device.
+- remove obsolete cryptsetup.sh script
+- boot.crypto:
+  * drop support for cryptoloop, use cryptsetup also for cryptotab
+  * refactor code and create reusable components for use in cryptotab
+    and crypttab code path
+  * run sulogin only during boot if fsck failed
+  * support crypttab's 'tries' option
+- add crypttab manpage based on Debian one
+
+-------------------------------------------------------------------
+Tue Apr 24 17:38:40 CEST 2007 - lnussel@suse.de
+
+- add boot.crypto (#257884)
+- add crypttab and cryptotab as %ghost to filelist
+
+-------------------------------------------------------------------
+Tue Mar 27 10:22:48 CEST 2007 - mkoenig@suse.de
+
+- move devel .so link to %{libdir}
+- run ldconfig, since we have now a shared lib installed
+
+-------------------------------------------------------------------
+Fri Mar 23 16:18:12 CET 2007 - dmueller@suse.de
+
+- cryptsetup can now link shared since libpopt is
+  no longer under /usr
+
+-------------------------------------------------------------------
+Fri Mar  9 12:06:53 CET 2007 - lnussel@suse.de
+
+- add patch to support old loop_fish2 key hash method
+
+-------------------------------------------------------------------
+Thu Dec  7 18:33:01 CET 2006 - mkoenig@suse.de
+
+- update cryptsetup to version 1.0.4:
+  * added terminal timeout rewrite
+  * allow user selection of key slot
+  * reading binary keys from stdin using the "-" as key file
+  * fix 64 bit compiler warning issues.
+  * fix getline problem for 64-bit archs.
+
+-------------------------------------------------------------------
+Fri Oct 13 11:30:19 CEST 2006 - mkoenig@suse.de
+
+- fix build failure due to missing pthreads
+
+-------------------------------------------------------------------
+Wed Sep 13 12:39:27 CEST 2006 - hvogel@suse.de
+
+- use the LUKS version of cryptsetup
+- split -devel subpackage for libcryptsetup
+- remove patches because they are in the new cryptsetup
+  * cryptsetup-0.1-static.patch
+  * cryptsetup-0.1-retval.patch
+  * cryptsetup-0.1-dmi.exists.patch
+  * cryptsetup-0.1-timeout.patch
+- use man page from the new cryptsetup
+
+-------------------------------------------------------------------
+Tue May 16 11:03:08 CEST 2006 - hvogel@suse.de
+
+- Fix cryptsetup to work when the device does not exist yet
+  [#175931]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:28 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec 19 14:46:30 CET 2005 - mmj@suse.de
+
+- Remove symlinks to hashalot we don't want
+
+-------------------------------------------------------------------
+Thu Oct 13 15:04:29 CEST 2005 - hvogel@suse.de
+
+- Fix uninitialized var in dmconvert. Add
+  * dmconvert-0.2-uninitialized.patch
+- Fix return value in cryptsetup. Add
+  * cryptsetup-0.1-retval.patch
+
+-------------------------------------------------------------------
+Wed Jun 29 14:28:32 CEST 2005 - hvogel@suse.de
+
+- Link cryptsetup static so it can be in /sbin and you can get
+  /usr over nfs or even crypted
+
+-------------------------------------------------------------------
+Mon May  9 17:23:39 CEST 2005 - hvogel@suse.de
+
+- New package, Version 2.12q
+

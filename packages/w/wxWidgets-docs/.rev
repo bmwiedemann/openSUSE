@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d908a36179c5c269c63aa66dc1936b80</srcmd5>
+    <version>2.8.11</version>
+    <time>1295149964</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>d908a36179c5c269c63aa66dc1936b80</srcmd5>
+    <version>2.8.11</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5c203bf9f2b609dc5d4fc08fcb864b27</srcmd5>
+    <version>2.8.12</version>
+    <time>1305809801</time>
+    <user>saschpe</user>
+    <comment>- Updated to version 2.8.12:
+  * Documents version 2.8.12.</comment>
+    <requestid>67119</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a73a30db65ab214a0258a702474a880e</srcmd5>
+    <version>2.8.12</version>
+    <time>1305809810</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67119
+</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>a73a30db65ab214a0258a702474a880e</srcmd5>
+    <version>2.8.12</version>
+    <time>1319182575</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>b511260020b2c05b0d4c12653f1c0c7d</srcmd5>
+    <version>2.8.12</version>
+    <time>1329400999</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104577 from coolo)</comment>
+    <requestid>105255</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>b511260020b2c05b0d4c12653f1c0c7d</srcmd5>
+    <version>2.8.12</version>
+    <time>1340184329</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>b511260020b2c05b0d4c12653f1c0c7d</srcmd5>
+    <version>2.8.12</version>
+    <time>1359110583</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>b511260020b2c05b0d4c12653f1c0c7d</srcmd5>
+    <version>2.8.12</version>
+    <time>1379664979</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>408e99e180e7d57c01c901d93403a680</srcmd5>
+    <version>2.8.12</version>
+    <time>1406869687</time>
+    <user>coolo</user>
+    <comment>Rename rpmlintrc as per pkg guideline to %{name}-rpmlintrc (forwarded request 243178 from dimstar)</comment>
+    <requestid>243276</requestid>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>408e99e180e7d57c01c901d93403a680</srcmd5>
+    <version>2.8.12</version>
+    <time>1409303657</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

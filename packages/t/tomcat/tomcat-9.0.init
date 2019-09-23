@@ -1,0 +1,386 @@
+#!/bin/bash
+# Copyright (c) 2008 SuSE Linux AG Nuernberg, Germany.
+#
+# - originally written by Henri Gomez, Keith Irwin, and Nicolas Mailhot
+# - heavily rewritten by Deepak Bhole and Jason Corley
+# - merged with previous SUSE's rctomcat55 by Petr Mladek and jpackage.org
+#   original by Michal Vyskocil
+#
+# /etc/init.d/tomcat
+#
+#   and its symbolic link
+#
+# /usr/sbin/rctomcat
+#
+# System startup script for the Tomcat servlet container
+#
+### BEGIN INIT INFO
+# Provides: tomcat
+# Required-Start: $network $syslog $remote_fs
+# Should-Start: $named $syslog $time
+# Required-Stop: $network $syslog $remote_fs
+# Should-Stop: $named $syslog $time
+# Default-Start:  3 5
+# Default-Stop:   0 1 2 6
+# Short-Description: Tomcat Servlet Container
+# Description:    Start and Stop Apache Tomcat
+### END INIT INFO
+ 
+# set a minimalist PATH
+PATH="/bin:/sbin:/usr/bin:/usr/sbin"
+ 
+# Source LSB function library.
+if [ -r /lib/lsb/init-functions ]; then
+    . /lib/lsb/init-functions
+else
+    exit 1
+fi
+DISTRIB_ID=`lsb_release -i -s 2>/dev/null`
+ 
+NAME="$(basename $0)"
+unset ISBOOT
+if [ "${NAME:0:1}" = "S" -o "${NAME:0:1}" = "K" ]; then
+    NAME="${NAME:3}"
+    ISBOOT="1"
+fi
+ 
+# remove SUSE's rc name
+if [ "${NAME:0:2}" = "rc" ]; then
+    NAME="${NAME:2}"
+fi
+ 
+# For SELinux we need to use 'runuser' not 'su'
+if [ -x "/sbin/runuser" ]; then
+    SU="/sbin/runuser"
+else
+    SU="/bin/su"
+fi
+ 
+# Get the tomcat config (use this for environment specific settings)
+TOMCAT_CFG="/etc/tomcat/tomcat.conf"
+if [ -r "$TOMCAT_CFG" ]; then
+    . $TOMCAT_CFG
+fi
+ 
+# Define which connector port to use
+CONNECTOR_PORT="${CONNECTOR_PORT:-8080}"
+ 
+# Path to the tomcat launch script
+TOMCAT_SCRIPT="/usr/sbin/dtomcat"
+ 
+# Tomcat program name
+TOMCAT_PROG="${NAME}"
+         
+# Define the tomcat username
+TOMCAT_USER="${TOMCAT_USER:-tomcat}"
+ 
+# Define the tomcat log file
+TOMCAT_LOG="${TOMCAT_LOG:-${CATALINA_HOME}/logs/${NAME}-initd.log}"
+# Define the tomcat pid file
+export CATALINA_PID="/var/run/${NAME}.pid"
+ 
+RETVAL="0"
+ 
+# pulled from RHEL4 /etc/rc.d/init.d/functions
+function checkpid() {
+    local i
+    for i in $* ; do
+        if [ -d "/proc/${i}" ]; then
+            return 0
+        fi
+    done
+    return 1
+}
+ 
+# Shell functions sourced from /etc/rc.status:
+#      rc_check         check and set local and overall rc status
+#      rc_status        check and set local and overall rc status
+#      rc_status -v     ditto but be verbose in local rc status
+#      rc_status -v -r  ditto and clear the local rc status
+#      rc_failed        set local and overall rc status to failed
+#      rc_failed <num>  set local and overall rc status to <num><num>
+#      rc_reset         clear local rc status (overall remains)
+#      rc_exit          exit appropriate to overall rc status
+. /etc/rc.status
+ 
+# First reset status of this service
+rc_reset
+ 
+# Return values acc. to LSB for all commands but status:
+# 0 - success
+# 1 - generic or unspecified error
+# 2 - invalid or excess argument(s)
+# 3 - unimplemented feature (e.g. "reload")
+# 4 - insufficient privilege
+# 5 - program is not installed
+# 6 - program is not configured
+# 7 - program is not running
+#
+# Note that starting an already running service, stopping
+# or restarting a not-running service as well as the restart
+# with force-reload (in case signalling is not supported) are
+# considered a success.
+ 
+# Look for open ports, as the function name might imply
+function findFreePorts() {
+    local isSet1="false"
+    local isSet2="false"
+    local isSet3="false"
+    local lower="8000"
+    randomPort1="0"
+    randomPort2="0"
+    randomPort3="0"
+    local -a listeners="( $(
+                        netstat -ntl | \
+                        awk '/^tcp/ {gsub("(.)*:", "", $4); print $4}'
+                    ) )"
+    while [ "$isSet1" = "false" ] || \
+          [ "$isSet2" = "false" ] || \
+          [ "$isSet3" = "false" ]; do
+        let port="${lower}+${RANDOM:0:4}"
+        if [ -z `expr " ${listeners[*]} " : ".*\( $port \).*"` ]; then
+            if [ "$isSet1" = "false" ]; then
+                export randomPort1="$port"
+                isSet1="true"
+            elif [ "$isSet2" = "false" ]; then
+                export randomPort2="$port"
+                isSet2="true"
+            elif [ "$isSet3" = "false" ]; then
+                export randomPort3="$port"
+                isSet3="true"
+            fi
+        fi
+    done
+}
+ 
+function makeHomeDir() {
+    if [ ! -d "$CATALINA_HOME" ]; then
+        echo "$CATALINA_HOME does not exist, creating"
+        if [ ! -d "/usr/share/${NAME}" ]; then
+            mkdir /usr/share/${NAME}
+            cp -pLR /usr/share/tomcat/* /usr/share/${NAME}
+        fi
+        mkdir -p /var/log/${NAME} \
+                 /var/cache/${NAME} \
+                 /var/tmp/${NAME}
+        ln -fs /var/cache/${NAME} ${CATALINA_HOME}/work
+        ln -fs /var/tmp/${NAME} ${CATALINA_HOME}/temp
+        cp -pLR /usr/share/${NAME}/bin $CATALINA_HOME
+        cp -pLR /usr/share/${NAME}/conf $CATALINA_HOME
+        ln -fs /usr/share/java/tomcat ${CATALINA_HOME}/lib
+        ln -fs /usr/share/tomcat/webapps ${CATALINA_HOME}/webapps
+        chown --no-dereference ${TOMCAT_USER}:${TOMCAT_USER} /var/log/${NAME}
+    fi
+}
+ 
+function parseOptions() {
+    options=""
+    options="$options $(
+                 awk '!/^#/ && !/^$/ { ORS=" "; print "export ", $0, ";" }' \
+                 $TOMCAT_CFG
+             )"
+#    if [ -r "/etc/sysconfig/${NAME}" ]; then
+#        options="$options $(
+#                     awk '!/^#/ && !/^$/ { ORS=" ";
+#                                           print "export ", $0, ";" }' \
+#                     /etc/sysconfig/${NAME}
+#                 )"
+#    fi
+    TOMCAT_SCRIPT="$options ${TOMCAT_SCRIPT}"
+}
+ 
+# See how we were called.
+function start() {
+    echo -n "Starting Tomcat ($CATALINA_BASE)"
+    if [ -f "/var/run/rc${NAME}" ] ; then
+        if [ -f "/var/run/${NAME}.pid" ]; then
+            read kpid < /var/run/${NAME}.pid
+                if checkpid $kpid 2>&1; then
+                    echo "$NAME process already running"
+                        rc_failed 0
+                    else
+                        echo -n "lock file found but no process running for pid $kpid, continuing"
+                        rc_failed 7
+                fi
+        fi
+    fi
+    # fix permissions on the log and pid files
+    export CATALINA_PID="/var/run/${NAME}.pid"
+    touch $CATALINA_PID
+    chown --no-dereference ${TOMCAT_USER}:${TOMCAT_USER} $CATALINA_PID
+    touch $TOMCAT_LOG
+    chown --no-dereference ${TOMCAT_USER}:${TOMCAT_USER} $TOMCAT_LOG
+    if [ "$CATALINA_HOME" != "/usr/share/tomcat" ]; then
+        # Create a tomcat directory if it doesn't exist
+        makeHomeDir
+        # If CATALINA_HOME doesn't exist modify port number so that
+        # multiple instances don't interfere with each other
+        findFreePorts
+        sed -i -e "s/8005/${randomPort1}/g" -e "s/8080/${CONNECTOR_PORT}/g" \
+            -e "s/8009/${randomPort2}/g" -e "s/8443/${randomPort3}/g" \
+            ${CATALINA_HOME}/conf/server.xml
+    fi
+    parseOptions
+    if [ "$SECURITY_MANAGER" = "true" ]; then
+        $SU - $TOMCAT_USER -c "${TOMCAT_SCRIPT} start-security" \
+            >> $TOMCAT_LOG 2>&1
+    else
+        $SU - $TOMCAT_USER -c "${TOMCAT_SCRIPT} start" >> $TOMCAT_LOG 2>&1
+    fi
+    RETVAL="$?"
+    if [ "$RETVAL" -eq 0 ]; then
+        rc_failed 0
+        touch /var/run/rc${NAME}
+    else
+        rc_failed 7
+    fi
+    rc_status -v
+}
+ 
+## Check status with checkproc(8), if process is running
+## checkproc will return with exit status 0.
+ 
+# Status has a slightly different for the status command:
+# 0 - service running
+# 1 - service dead, but /var/run/  pid  file exists
+# 2 - service dead, but /var/lock/ lock file exists
+# 3 - service not running
+ 
+# NOTE: checkproc returns LSB compliant status values.
+function status() {
+    echo -n "Checking for Tomcat ($CATALINA_BASE)"
+    if [ -f "/var/run/${NAME}.pid" ]; then
+        read kpid < /var/run/${NAME}.pid
+        if checkpid $kpid 2>&1; then
+            rc_failed 0
+        else
+            rc_failed 2
+        fi
+    else
+        #don't be dependent on procps
+        #pid="$(/usr/bin/pgrep -u tomcat java)"
+        pid="$(ps U tomcat o pid,cmd | grep java | grep -v 'grep java')"
+        if [ -n "$pid" ]; then
+            echo "$0 running (${pid}) but no PID file exists"
+            rc_failed 0
+        else
+            rc_failed 3
+        fi
+    fi
+    rc_status -v
+}
+ 
+function stop() {
+    echo -n "Shutting down Tomcat ($CATALINA_BASE)"
+    if [ -f "/var/run/rc${NAME}" ]; then
+        parseOptions
+        $SU - $TOMCAT_USER -c "${TOMCAT_SCRIPT} stop" >> $TOMCAT_LOG 2>&1
+        RETVAL="$?"
+        if [ "$RETVAL" -eq "0" ]; then
+            count="0"
+            if [ -f "/var/run/${NAME}.pid" ]; then
+                read kpid < /var/run/${NAME}.pid
+                until [ "$(ps --pid $kpid | grep -c $kpid)" -eq "0" ] || \
+                      [ "$count" -gt "$SHUTDOWN_WAIT" ]; do
+                    if [ "$SHUTDOWN_VERBOSE" = "true" ]; then
+                        echo "waiting for processes $kpid to exit"
+                    fi
+                    sleep 1
+                    let count="${count}+1"
+                done
+                if [ "$count" -gt "$SHUTDOWN_WAIT" ]; then
+                    if [ "$SHUTDOWN_VERBOSE" = "true" ]; then
+                        echo "killing processes which didn't stop after $SHUTDOWN_WAIT seconds"
+                        echo -n -e "after "
+                        echo -n "$SHUTDOWN_WAIT seconds"
+                    fi
+                    kill -9 $kpid
+                fi
+                rc_failed 0
+                if [ "$count" -gt "0" ]; then
+                    echo -n -e "\n"
+                fi
+            fi
+            rm -f /var/run/rc${NAME} /var/run/${NAME}.pid
+            if [ "${CLEAR_WORK}" = "true" ]; then
+                echo -n "Cleaning work directory: "
+                find ${CATALINA_HOME}/work/{Catalina,temp} -mindepth 2 -type d -print0 | xargs -0 rm -rf
+                if [ "$?" -eq "0" ]; then
+                        log_success_msg
+                        echo -n -e "\n"
+                fi
+             fi
+ 
+        else
+            rc_failed 1
+        fi
+    fi
+    rc_status -v
+}
+ 
+ 
+# See how we were called.
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    try-restart)
+    ## Stop the service and if this succeeds (i.e. the
+    ## service was running before), start it again.
+        ## Note: try-restart is not (yet) part of LSB (as of 0.7.5)
+        $0 status >/dev/null &&  $0 restart
+     
+    # Remember status and be quiet
+    rc_status
+    ;;
+    restart)
+        stop
+        sleep 2   
+        start
+        rc_status
+        ;;
+    force-reload)
+    ## Signal the daemon to reload its config. Most daemons
+    ## do this on signal 1 (SIGHUP).
+    ## If it does not support it, restart.
+ 
+    echo -n "Reload service Tomcat ($CATALINA_BASE)"
+    ## if it supports it:
+    #killproc -HUP $TOMCAT_BIN
+    #touch /var/run/FOO.pid
+    #rc_status -v
+ 
+    ## Otherwise:
+    $0 stop  &&  $0 start
+    rc_status
+    ;;
+    reload)
+    ## Like force-reload, but if daemon does not support
+    ## signalling, do nothing (!)
+ 
+    # If it supports signalling:
+    #echo -n "Reload service FOO"
+    #killproc -HUP $TOMCAT_BIN
+    #touch /var/run/FOO.pid
+    #rc_status -v
+     
+    ## Otherwise if it does not support reload:
+    rc_failed 3
+    rc_status -v
+    ;;
+    status)
+        status
+        ;;
+    probe)
+        ## Optional: Probe for the necessity of a reload,
+        ## give out the argument which is required for a reload.
+        ;;
+    *)
+    echo "Usage: $0 {start|stop|status|try-restart|restart|force-reload|reload|probe}"
+    exit 1
+    ;;
+esac
+rc_exit

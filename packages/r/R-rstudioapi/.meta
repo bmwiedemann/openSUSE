@@ -1,0 +1,5 @@
+<package name="R-rstudioapi" project="openSUSE:Factory">
+  <title></title>
+  <description>Safely access the RStudio API</description>
+  <devel project="devel:languages:R:released" package="R-rstudioapi"/>
+</package>

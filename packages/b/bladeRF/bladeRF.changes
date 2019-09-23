@@ -1,0 +1,153 @@
+-------------------------------------------------------------------
+Tue Aug 27 05:20:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update summaries and RPM category groups.
+
+-------------------------------------------------------------------
+Tue Aug 27 00:42:21 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix download url
+- Small packaging enhancements
+
+-------------------------------------------------------------------
+Sat Aug 17 19:30:59 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2019.07
+  libbladeRF
+  * Gain mode setting default is now manual
+  * Tuning mode setting default is now host
+  * Add OTP command support
+  * Fix metadata related arithmetic
+  bladeRF-cli:
+  * Add RFIC fitler selection
+  * Add tuning_mode
+  * Display more useful warning and error messages
+- libbladeRF doc files (HTML) in separate package
+
+-------------------------------------------------------------------
+Fri Sep  7 12:05:23 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Clarify license status
+
+-------------------------------------------------------------------
+Wed Sep  5 19:10:47 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2018.08
+  libbladeRF
+  * Added support for Automatic Gain Control
+  * Added bladeRF.conf config option file
+  * Refactor to support for multiple product lines
+  * Add support for the bladeRF Micro product
+  * API: replace bladerf_module with bladerf_channel, a reverse-compatible
+  * change to handle products with multiple independent RF paths in the same
+  * direction
+  * API: BREAKING CHANGE - on bladerf_set_frequency, et al, the frequency
+  * parameter is now uint64_t instead of unsigned int
+  * Add typedefs for common param types, e.g. bladerf_frequency -> uint64_t
+  bladeRF-cli
+
+  * Added support for Automatic Gain Control
+  * No longer initializes the bladeRF before loading a new FPGA image, to
+  * avoid potential catch-22 problems
+  * bladeRF 2.0 Micro support
+  * Support for MIMO RX and TX using "channel=" parameter on rx/tx config
+  * Various code quality fixups
+
+- Remove patches: (fixed upstream)
+  * bladeRF-add-cflag-Wno-format-truncation.patch
+  * bladeRF-cmake_syntax.patch
+
+-------------------------------------------------------------------
+Tue Sep  5 08:36:54 UTC 2017 - mpluskal@suse.com
+
+- Fix cmake syntax error:
+  * bladeRF-cmake_syntax.patch
+
+-------------------------------------------------------------------
+Thu Jun  1 06:47:30 UTC 2017 - mardnh@gmx.de
+
+- Add patch:
+  * bladeRF-add-cflag-Wno-format-truncation.patch (boo#1041192)
+
+-------------------------------------------------------------------
+Wed Apr 26 18:15:47 UTC 2017 - mardnh@gmx.de
+
+- build with support for libtecla
+
+-------------------------------------------------------------------
+Sun Apr 23 19:27:32 UTC 2017 - mardnh@gmx.de
+
+- Update group handling
+
+-------------------------------------------------------------------
+Thu Apr 20 11:46:42 UTC 2017 - mpluskal@suse.com
+
+- Update group handling
+
+-------------------------------------------------------------------
+Sat Apr 15 22:22:28 UTC 2017 - mardnh@gmx.de
+
+- Workaround for generating manpages/documentation on
+  systems emulated via qemu (arm, ppc,...) not longer needed
+
+-------------------------------------------------------------------
+Sat Apr 15 17:12:59 UTC 2017 - mardnh@gmx.de
+
+- Adjust Source-URL
+- Use proper cmake options
+- Use group bladerf in the udev-rules
+
+-------------------------------------------------------------------
+Thu Mar 30 13:35:57 UTC 2017 - wk@ire.pw.edu.pl
+
+- fixed libbladeRF version to 1.7.2
+
+-------------------------------------------------------------------
+Thu Mar 23 16:50:22 UTC 2017 - jengelh@inai.de
+
+- Rename %soname to %sover to better reflect its use.
+- RPM group fix.
+
+-------------------------------------------------------------------
+Thu Mar  9 09:10:30 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.4.0
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Feb 19 12:20:13 UTC 2016 - dl8fcl@t-online.de
+
+- udev_rules_update added for openSUSE
+
+-------------------------------------------------------------------
+Sat Aug  1 22:29:59 UTC 2015 - wk@ire.pw.edu.pl
+
+- updated to release 2015.07
+- libbladeRF version 1.4.3
+- bladeRF-cli version 1.2.1
+
+-------------------------------------------------------------------
+Tue Mar  3 10:33:18 UTC 2015 - wk@ire.pw.edu.pl
+
+- fixed build on armv7l (openSUSE 13.2)
+
+-------------------------------------------------------------------
+Sun Mar  1 19:02:15 UTC 2015 - wk@ire.pw.edu.pl
+
+- updated to release 2015.02
+- libbladeRF version 1.2.1
+- bladeRF-cli version 1.1.2
+
+-------------------------------------------------------------------
+Sun Aug  3 20:52:44 UTC 2014 - wk@ire.pw.edu.pl
+
+- updated to git 20140803
+
+-------------------------------------------------------------------
+Fri Jul 25 20:24:30 UTC 2014 - wk@ire.pw.edu.pl
+
+- version 0.16.2 git20140725
+
+* Sun Oct 6 2013 Wojciech Kazubski <wk@ire.pw.edu.pl> - 0.0.20130915-1.1
+- git 20130915
+- initial spec file.

@@ -1,0 +1,70 @@
+---
+ po/de.po        |    6 ++----
+ po/ja.po        |    4 ++--
+ src/conf.c      |    4 ++--
+ src/constants.h |    4 ++--
+ 4 files changed, 8 insertions(+), 10 deletions(-)
+
+Index: gjiten-2.6/po/de.po
+===================================================================
+--- gjiten-2.6.orig/po/de.po
++++ gjiten-2.6/po/de.po
+@@ -132,10 +132,8 @@ msgid "WordDic"
+ msgstr "Wörterbuch"
+ 
+ #: ../data/gjiten-settings.glade.h:28
+-msgid "_Antialiasing   [GDK__USE__XFT=1]  (might not work with Japanese)"
+-msgstr ""
+-"_Anti-Aliasing   [GDK__USE__XFT=1](funktioniert möglicherweise nicht mit "
+-"japanischen Schriften)"
++msgid "_Antialiasing   [GDK__USE__XFT=1]"
++msgstr "_Anti-Aliasing   [GDK__USE__XFT=1]"
+ 
+ #: ../data/gjiten-settings.glade.h:29
+ msgid "_English interface [LANGUAGE=C]"
+Index: gjiten-2.6/po/ja.po
+===================================================================
+--- gjiten-2.6.orig/po/ja.po
++++ gjiten-2.6/po/ja.po
+@@ -137,9 +137,9 @@ msgid "WordDic"
+ msgstr "単語辞典"
+ 
+ #: ../data/gjiten-settings.glade.h:28
+-msgid "_Antialiasing   [GDK__USE__XFT=1]  (might not work with Japanese)"
++msgid "_Antialiasing   [GDK__USE__XFT=1]"
+ msgstr ""
+-"アンチエイリアスを掛ける(_A) [GDK__USE__XFT=1] (文字化けの可能性があります)"
++"アンチエイリアスを掛ける(_A) [GDK__USE__XFT=1]"
+ 
+ #: ../data/gjiten-settings.glade.h:29
+ msgid "_English interface [LANGUAGE=C]"
+Index: gjiten-2.6/src/conf.c
+===================================================================
+--- gjiten-2.6.orig/src/conf.c
++++ gjiten-2.6/src/conf.c
+@@ -64,8 +64,8 @@ GjitenConfig *conf_load() {
+     conf->kdiccfg[CREF] = TRUE;
+ 		conf->toolbar = TRUE;
+     conf->menubar = TRUE;
+-    conf->force_ja_JP = TRUE;
+-    conf->force_language_c = TRUE;
++    conf->force_ja_JP = FALSE;
++    conf->force_language_c = FALSE;
+ 		if (conf->kanjidic == NULL) conf->kanjidic = g_new0(GjitenDicfile, 1);
+ 		conf->kanjidic->path = GJITEN_DICDIR"/kanjidic";
+     conf->dictpath = GJITEN_DICDIR;
+Index: gjiten-2.6/src/constants.h
+===================================================================
+--- gjiten-2.6.orig/src/constants.h
++++ gjiten-2.6/src/constants.h
+@@ -1,8 +1,8 @@
+ #ifndef __CONSTANTS_H__
+ #define __CONSTANTS_H__
+ 
+-#define DEFWORDFONTNAME "-*-fixed-medium-r-normal-*-14-*-*-*-*-*-jisx0208.1983-0"
+-#define DEFBIGFONTNAME "-*-fixed-medium-r-normal-*-24-*-*-*-*-*-jisx0208.1983-0";
++#define DEFWORDFONTNAME "-*-fixed-medium-r-normal-*-16-*-*-*-*-*-jisx0208.1983-0"
++#define DEFBIGFONTNAME "-*-fixed-medium-r-normal-*-24-*-*-*-*-*-jisx0208.1983-0"
+ #define DEFMAXWORDMATCHES 100
+ #define MAXDICFILES 100
+ 

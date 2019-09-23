@@ -1,0 +1,21 @@
+Index: dkimproxy-1.4.1/lib/MSDW/SMTP/Client.pm
+===================================================================
+--- dkimproxy-1.4.1.orig/lib/MSDW/SMTP/Client.pm	2009-07-30 03:01:50.000000000 +0200
++++ dkimproxy-1.4.1/lib/MSDW/SMTP/Client.pm	2012-06-11 11:38:27.824695351 +0200
+@@ -11,15 +11,7 @@
+ # Written by Bennett Todd <bet@rahul.net>
+ 
+ #enable support for IPv6, if available
+-eval "require IO::Socket::INET6";
+-if ($@ && $@ =~ /^Can't locate/)
+-{
+-	# a dummy INET6 module that falls back on IO::Socket::INET
+-	eval q|
+-		package IO::Socket::INET6;
+-		use base "IO::Socket::INET";
+-		|;
+-}
++require IO::Socket::INET6;
+ 
+ package MSDW::SMTP::Client;
+ use IO::Socket;

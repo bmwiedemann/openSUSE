@@ -1,0 +1,5 @@
+<package name="yast2-xml" project="openSUSE:Factory">
+  <title>YaST2 - XML Agent</title>
+  <description>The YaST2 XML agent</description>
+  <devel project="YaST:Head" package="yast2-xml"/>
+</package>

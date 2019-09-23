@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Wed Dec  7 17:14:57 CET 2016 - tiwai@suse.de
+
+- Fix source URL to point to the right version number
+- Fix the build with older distros; take all files including
+  appdata subdirectory itself
+
+-------------------------------------------------------------------
+Fri Dec  2 00:46:45 UTC 2016 - kamikazow@opensuse.org
+
+- Update to version 2.135
+- Using date-based version number because openSUSE insists on it
+  (yyyymmddd.realVersion)
+
+-------------------------------------------------------------------
+Sat Sep 17 00:51:06 UTC 2016 - kamikazow@opensuse.org
+
+- Update to version 2.134
+- As of this version, Google recommends the hinted font variant only for Windows
+- Appdata files from David Tardon <dtardon@redhat.com>
+
+-------------------------------------------------------------------
+Sun Feb  7 17:15:14 UTC 2016 - qzhao@suse.com
+
+- Update to add LICENSE file
+
+-------------------------------------------------------------------
+Mon Oct 12 14:54:42 UTC 2015 - fcrozat@suse.com
+
+- Update main font to Roboto 2.0 (snapshot 2015/08/20)
+- Update url.
+
+-------------------------------------------------------------------
+Wed Sep 25 13:37:12 UTC 2013 - sknorr@suse.de
+
+- update Roboto & Roboto Condensed (from hg)
+- add Roboto Slab (from hg)
+- add archive with documentation (from homepage URL)
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Fri Jun 29 19:33:13 UTC 2012 - toms@opensuse.org
+
+- First initial version checked out from Mercurial repository,
+  dated 20120626 
+

@@ -1,0 +1,425 @@
+-------------------------------------------------------------------
+Thu Jul 19 03:04:12 UTC 2018 - jeffm@suse.com
+
+- xfsdump: rename READ/WRITE macros in rmtlib (bsc#1093014).
+  * Added xfsdump-rename-READ-WRITE-macros-in-rmtlib.patch.
+
+-------------------------------------------------------------------
+Wed Jul 18 21:54:04 UTC 2018 - jeffm@suse.com
+
+- Updated source location and keyring to kernel.org archives
+  - Requires dependency on xz for SLE11
+- Update to version 3.1.8:
+  - common/main.c: Include <locale.h>
+  - common/types.h: explicitly define NBBY (bits per byte)
+  - cleanup: Kill __[u]int*_t types
+  - dump/var.c: Include <limits.h> for PATH_MAX
+  - librmt/rmtopen: Prefer <signal.h> over <sys/signal.h>
+  - common/main.c: Replace nonstandard SIGCLD by SIGCHLD
+  - dump/content.c: Include <linux/limits.h> for XATTR_LIST_MAX
+  - invutil/invidx: include <fcntl.h> for O_CREAT
+- Update to version 3.1.7:
+  - xfsdump: fix race condition between lseek() and read()/write()
+  - xfsdump: Fix memory leak
+  - fix build on 32-bit platforms
+    * Removed xfsdump-fix-build-on-32-bit-platforms.patch
+  - xfsdump: handle bind mount targets
+
+-------------------------------------------------------------------
+Wed May 31 19:29:27 UTC 2017 - jeffm@suse.com
+
+- Fix building on 32-bit architectures with updated xfsprogs.
+  - Added xfsdump-fix-build-on-32-bit-platforms.patch
+
+-------------------------------------------------------------------
+Thu Nov 19 18:42:47 UTC 2015 - jeffm@suse.com
+
+- Update to version 3.1.6:
+  - fix build issues against xfsprogs 4.2.0 headers
+  - clean up worst of libhandle API abuse
+  - remove all unnecessary build dependencies on xfsprogs headers
+  - __psint_t no longer available
+  - restore: fix 2GB directory dump limitation
+  - restore: fix uuid check for incremental restore
+  - dump: fix crash adding inode groups
+
+-------------------------------------------------------------------
+Thu Mar 19 13:40:08 UTC 2015 - mpluskal@suse.com
+
+- Update url
+
+-------------------------------------------------------------------
+Thu Mar 19 13:09:17 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Oct  4 00:21:44 CEST 2014 - dsterba@suse.cz
+
+- Update to version 3.1.4:
+  - fix partial region segfault and debug code
+  - dump wholly sparse files correctly
+  - restore capabilities correctly
+  - memory leak fixes
+  - sys_getdents modernisation
+  - Error message fixes
+  - Updated polish translation
+  - debian package build updates
+- Removed patch: getdents.diff
+- minor spec update
+
+-------------------------------------------------------------------
+Mon Jun  2 11:34:10 UTC 2014 - jack@suse.cz
+
+- Update to version 3.1.3:
+   - Unconditionally add checksums to various dump headers in
+     xfsdump.
+   - Verify dump header checksums if present in xfsrestore.
+   - Convert to using the POSIX signal API.
+   - Remove restriction of 8 options in dialogs.
+   - Various refactoring and internal cleanups to xfsdump and xfsrestore.
+   - Build system fixes, thanks to Ted Ts'o.
+   - Fix metadata restore on split files.
+   - Add a -D option to skip a recursive scan of the filesystem when dumping.
+   - Fix a 1 byte overflow with empty lists, thanks to Mike Frysinger.
+   - Enable multi-stream support on Linux using pthreads.
+   - Fix handling of Ctrl-D in prompts.
+   - Obsolete SGI_XFSDUMP_SKIP_FILE extended attribute for excluding
+     files from dump.
+   - Fix restoration of extended attributes on the root directory.
+   - Use the full 32-bit inode generation number instead of 12-bit
+     generation number.  Bump the dump format version to 3.
+   - Do not create parent directories for orphaned files during
+     list-only (-t option) restore.
+   - Save and restore 32 bit project ids correctly.
+   - Fix a segfault in xfsrestore when a path name is too long,
+     thanks to Nigel Tamplin.
+   - Fix a backward compatibility problem.  Dumps created with
+     version 3.1.2 where extended attributes are in use failed
+     to restore with v3.1.0 due to file header checksum errors.
+     Thanks to Fugazzi for reporting.
+   - Refactored release scripts to conform to using git archive.
+   - Changed the build process so that 'make deb' uses the same
+     process of creating a source tree as the release script.
+- Removed xfsdump-3.0.1-fix-bufferoverflow.diff, upstream fixed the problem
+  differently
+
+-------------------------------------------------------------------
+Sat Mar  9 19:09:21 UTC 2013 - schwab@suse.de
+
+- getdents.diff: Handle platforms without getents syscall
+
+-------------------------------------------------------------------
+Sat May 26 08:46:48 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+
+-------------------------------------------------------------------
+Thu Mar  1 00:42:18 UTC 2012 - rschweikert@suse.com
+
+- really place the binaries in /usr (UsrMerge project)
+  The configure and Makefiles do not respect the user settings to
+  configure for certain binaries. This lead to circular linkage on package
+  build and improper linkage on package install.
+
+-------------------------------------------------------------------
+Mon Feb  6 22:27:49 UTC 2012 - rschweikert@suse.com
+
+- use %configure
+
+-------------------------------------------------------------------
+Thu Feb  2 18:41:51 UTC 2012 - rschweikert@suse.com
+
+- place binaries in /usr tree (UsrMerge project)
+
+-------------------------------------------------------------------
+Mon Jun 20 11:28:11 UTC 2011 - mmarek@novell.com
+
+- updated to 3.0.5
+  - Release tags will now be digitally signed
+  - Quota files will now be dumped, regardless of the maxsize
+    setting
+  - The new "-s sessid" flag allows inventory sessions to be pruned
+    by their session ID.
+  - Fixed a bug in handling long dump filenames, and dropped
+    (undocumented) support for encoding certain parameters within
+    the dump filename
+  - NODECHK is now off by default, meaning xfsrestore will now
+    support 16 times more directory entries (4 billion)
+  - nrh_t is now 64 bits wide, allowing xfsrestore to support dumps
+    with up to 4 billion directory entries
+  - nix_t is no longer useful, and has been eliminated
+  - Memory use in xfsrestore is better managed now.  Segments of
+    nodes are now power-of-2 sized, and allocated nodes are no
+    longer needlessly zeroed and linked into the free list.
+  - Pathname resolution in xfsrestore has a number of performance
+    improvements
+  - Better checking has been implemented for compatibility when
+    resuming a cumulative restore
+  - Build system output has been cleaned up considerably
+  - Dead "namreg" code has been removed
+  - Build dependencies are now determined automatically
+  - Other miscellaneous build system improvements, as well bug
+    fixes thanks to Mike Frysinger and Arkadiusz Miśkiewicz.
+  - Improve xfsinvutil man page and argument processing.
+  - Fix timestamp handling on 64-bit architectures in xfsinvutil.
+  - Various build system improvements.
+
+-------------------------------------------------------------------
+Mon Feb 22 23:28:43 CET 2010 - seife@opensuse.org
+
+- fix buffer overflow (detected by gcc-4.5)
+
+-------------------------------------------------------------------
+Tue Jun 23 12:13:33 CEST 2009 - mmarek@suse.cz
+
+- updated to 3.0.1
+  - Bump major package version number to signify changed
+    dependencies and moved binaries (xfs_fsr and estimate
+    have moved into xfsprogs).
+  - xfsdump should no longer make use of internal XFS
+    headers and libraries, in particular no use of libxfs
+    is permitted in this package anymore (such detailed
+    on-disk format knowledge is the realm of xfsprogs).
+
+-------------------------------------------------------------------
+Mon Jan 12 15:25:37 CET 2009 - mmarek@suse.cz
+
+- fixed xfsdump on ia64 with 64k page size (bnc#450668)
+
+-------------------------------------------------------------------
+Tue Jan  6 14:24:40 CET 2009 - mmarek@suse.cz
+
+- fixed two pointer comparison errors in librmt (bnc#433393)
+
+-------------------------------------------------------------------
+Thu Mar 20 10:09:09 CET 2008 - mmarek@suse.cz
+
+- updated to 2.2.48
+  * Prune dump sessions with 0 media files even when using -m.
+  * Correctly detect whether a tape device is in variable or
+    fixed block mode when using the TS tape driver.
+
+-------------------------------------------------------------------
+Tue Oct 23 15:02:21 CEST 2007 - mmarek@suse.cz
+
+- updated to 2.2.46
+  * includes last fix
+
+-------------------------------------------------------------------
+Fri Aug 31 14:21:14 CEST 2007 - mmarek@suse.cz
+
+- fixed missing mode arguments to open()
+
+-------------------------------------------------------------------
+Fri Jun 22 17:39:04 CEST 2007 - mmarek@suse.cz
+
+- updated to 2.2.45
+  * Change fsr's temp directory mode to 0700 to deny full access.
+  * Update fsr's usage text.
+  * Fix use of getopt's optopt variable. Thanks to Kouta Ooizumi.
+  * Initialize xfsdump's logging facility earlier. Thanks to
+    Kouta Ooizumi.
+  * Log a message for each quota file restored, not just the first.
+  * When using -z, check a file's size against the max dump file
+    size just before dumping the file, rather than only during the
+    initial scan, to account for changes during the dump.
+  * A sync needs to be issued before the first inode scan to avoid
+    potentially skipping modified files in an incremental dump.
+  * Change the inode scans to seek to the next inode of
+    interest, rather than always doing a full scan. Useful
+    for dumps that contain only a subset of the inodes
+    in a filesystem (incrementals, subtree dumps, etc.).
+  * Produce a more accurate dump size estimate when
+    it is worthwhile to do so (when using multiple dump
+    streams or when skipping files based on size).
+- specfile cleanup
+
+-------------------------------------------------------------------
+Thu Mar 29 11:07:44 CEST 2007 - mmarek@suse.de
+
+- added ncurses-devel to BuildRequires (needed for xfsinvutil)
+
+-------------------------------------------------------------------
+Fri Oct 20 19:01:10 CEST 2006 - mjancar@suse.cz
+
+- update to 2.2.42
+  * Rework code to remove the DMAPI build and run-time dependency.
+  * Fix issues with makedepend on libtool libraries.
+  * Fix annoying "ignores datarootdir" warning from configure.
+  * Fix issues with makedepend build infrastructure.
+  * Fix for parallel compiles, thanks to Robin H. Johnson.
+
+-------------------------------------------------------------------
+Thu Jul 27 16:26:09 CEST 2006 - mjancar@suse.cz
+
+- update to 2.2.38
+  * Performance improvements for dumping subtrees.
+  * Fix xfs_fsr memory and file descriptor leaks.
+  * Fix xfs_fsr handling some of the extended inode flags
+   and fields (like project IDs, extsize, realtime, etc).
+  * Fix Debian packaging for libc-dev build dependency.
+  * Fix up auto lib64 install detection for x86_64 platforms.
+  * Use -O2 optimisation by default now like everywhere else.
+  * Default to using a single media file for each strategy.
+    Multiple media files can be enabled on tape strategies
+    by using the -d option.
+  * Fix a bug in restoring multiple links to files with the
+    immutable bit set.
+  * Fix a regression that caused xfsrestore to fail when
+    restoring files that were changing during the dump.
+  * Remove some overhead in restoring files that were dumped
+    in multiple extent groups (> 16 MiB).
+  * Add simple interface to HSM-specific code in xfsrestore,
+    similar to that already in xfsdump.
+  * Fix fsr mishandling directories given as arguments.
+  * Fix build dependency on recent xfsprogs header files.
+  * Minor man page fixups with respect to hyphenation.
+  * Optimizations to increase the performance of xfsdump and
+    xfsrestore, especially on filesystems with millions of inodes.
+    Many small changes were made to minimize the number of system
+    calls required per inode.
+  * Significant changes to xfsdump:
+    o Cache the gen number of each inode during the initial inode
+      scan so that a bulkstat single does not need to be done for
+      each inode when dumping directories.
+    o No longer retrieve the DMF attribute when estimating the dump
+      size of a file. Use information from the bulkstat instead.
+    o Retrieve DMF attribute by handle instead of doing
+      open/attr_getf/close.
+    o In determining where to split multi-stream dumps, take into
+      consideration the number of files and not just the file size.
+      This allows filesystems with large amounts of inodes but
+      relatively little data (DMF filesystem) to be split correctly.
+  * Significant changes to xfsrestore:
+    o Buffer writes to the namreg file to eliminate 2 very small
+      write system calls per directory entry.
+    o Buffer writes to dirattr file to eliminate a small write system
+      call per directory.
+    o Speedup the check to see if a particular window of the tree
+      file is mapped. This allows xfsrestore to use more, smaller
+      windows which is beneficial if we can't fit them all in memory
+      and have to start unmapping them. This also makes the -w
+      option obsolete so that option now has no effect.
+    o Change the hash function to give a better distribution among
+      the hash buckets.
+    o Do not make an unnecessary unlink call if the file being
+      restored does not already exist.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:07 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 19:07:42 CET 2006 - mjancar@suse.cz
+
+- update to 2.2.33
+
+-------------------------------------------------------------------
+Thu Sep 29 02:58:14 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Tue Aug  2 20:35:46 CEST 2005 - mjancar@suse.cz
+
+- update to 2.2.30
+
+-------------------------------------------------------------------
+Wed Jun 22 16:09:24 CEST 2005 - agruen@suse.de
+
+- xfs-restore-lazy-alloc.diff: Fix for ENOSPC errors on write
+  (91036).
+
+-------------------------------------------------------------------
+Tue Apr  5 15:19:35 CEST 2005 - mmj@suse.de
+
+- static char *progname -> char *progname
+
+-------------------------------------------------------------------
+Mon Feb  7 20:40:35 CET 2005 - mjancar@suse.cz
+
+- update to 2.2.25
+
+-------------------------------------------------------------------
+Fri Oct 01 12:25:54 CEST 2004 - mjancar@suse.cz
+
+- link dynamicaly aganist libuuid (#44531)
+
+-------------------------------------------------------------------
+Fri Aug 13 18:10:10 CEST 2004 - mjancar@suse.cz
+
+- update to 2.2.21
+
+-------------------------------------------------------------------
+Thu Feb 26 14:46:00 CET 2004 - mjancar@suse.cz
+
+- update to 2.2.16
+
+-------------------------------------------------------------------
+Fri Aug 08 13:03:23 CEST 2003 - ja@suse.cz
+
+- Updated to 2.2.13.
+- fix ST/TS tape driver compatibility issues in drive_scsitape.
+- fix multiple backups to a single tape (TS AND ST).
+
+-------------------------------------------------------------------
+Fri Jun 20 15:46:47 CEST 2003 - ja@suse.cz
+
+- Upgrade to version 2.2.12.
+
+-------------------------------------------------------------------
+Tue Apr 29 12:19:04 CEST 2003 - jderfina@suse.cz
+
+- update to version 2.2.10
+- switch from using mktemp to using mkstemp for xfs_copy log.
+- use a FHS compliant name for the xfs_copy log file.
+- add initial support for TS tape driver.
+- fix xfsdump -I option to set correct fsid.
+
+-------------------------------------------------------------------
+Wed Feb 12 12:45:40 CET 2003 - jderfina@suse.cz
+
+- update to version 2.2.6
+- add initial internationalisation support.
+- fix build fallout from macro changes in XFS headers.
+
+-------------------------------------------------------------------
+Fri Dec 13 12:37:17 CET 2002 - jderfina@suse.cz
+
+- upgrade to version 2.2.4
+
+-------------------------------------------------------------------
+Thu Oct 10 11:59:56 CEST 2002 - jderfina@suse.cz
+
+- upgrade to version 2.2.1
+
+-------------------------------------------------------------------
+Tue Aug 20 13:19:00 CEST 2002 - mge@suse.de
+
+- update to 2.1.3
+
+-------------------------------------------------------------------
+Sun Apr 21 15:53:17 CEST 2002 - kukuk@suse.de
+
+- Make compile on architectures with lib64
+
+-------------------------------------------------------------------
+Tue Feb 26 00:55:51 CET 2002 - ro@suse.de
+
+- update to 2.0.0 
+
+-------------------------------------------------------------------
+Tue Aug 21 16:34:07 CEST 2001 - ro@suse.de
+
+- added xfsprogs attr attr-devel to neededforbuild
+
+-------------------------------------------------------------------
+Tue Aug 21 11:24:37 CEST 2001 - adostal@suse.cz
+
+- split xfsdump-1.0.9 from package xfsprogs
+- use DESTDIR from %install (...destdir.patch)
+- create  ...dirs.patch

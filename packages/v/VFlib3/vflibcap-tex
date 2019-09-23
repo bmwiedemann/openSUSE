@@ -1,0 +1,339 @@
+;;; -*-Lisp-*-
+
+;;
+;; 'vflibcap' for TeX fonts
+;; by h.kakugawa@computer.org
+;;
+
+;; adapted for SUSE:
+;;
+;; - use "xgdvi"
+;; - add "jis" and "jisg" to '((ascii-jtex-kanji "%f.jtex")'
+;;   font-mapping these fonts are used for example by the
+;;   new Japanese document classes from the jsclasses package.
+;; - add entry for TrueType fonts
+;; - add option to make missing pk fonts (make-missing-glyph "yes")
+;;
+;; Sat Aug 11 01:18:11 2001  Mike Fabian  <mfabian@suse.de>
+
+;;
+;; This vflibcap file provides a TeX fonts "F.Xpk" and "X.pk", where
+;; F is a font name (e.g., cmr10) and X is a resolution (e.g., 300).
+;; All fonts are implemented by implicit fonts.
+;;
+;; The TeX font mapping font driver ("TeX") is invoked to open a font
+;; by extension-hists capability. The TeX font mapping driver maps
+;; the requested font name and invokes another font driver to open
+;; the mapped font.
+;; 
+;; Note: The TrueType "BaKoMa" font set cannot be used, since it has 
+;;       different font encoding schemes. 
+;;       Type 1 format fonts of the Computer Modern fonts with the same
+;;       encoding scheme can found at CTAN site, directory
+;;       CTAN/fonts/cm/ps-type1/pfm/. Probably, it is installed 
+;;       in your /usr/local/shared/texmf/fonts/type1//
+;;
+
+;; -----------------------------------------------------------------
+;;   VFlib Default
+;; -----------------------------------------------------------------
+(define-default VFlib
+  ;;(extension-hints   ("pk" TeX))
+  (extension-hints ("pk" TeX) ("gf" gf) (".vf" vf) (".ofm" tfm) (".ovf" vf)
+		   (".d24" ekanji))
+  (implicit-font-classes)
+  (uncompression-programs  (".Z" "zcat") (".gz" "gzip -cd"))
+  (variable-values  (TeX_USE_KPATHSEA      "Yes")
+		    (TeX_DPI               "300")  ;; or "600"
+		    (TeX_KPATHSEA_MODE     "cx")   ;; or "ljfour"
+		    (TeX_KPATHSEA_PROGRAM  "xgdvi"))
+  (use-kpathsea           $TeX_USE_KPATHSEA)
+  (kpathsea-mode          $TeX_KPATHSEA_MODE)
+  (kpathsea-dpi           $TeX_DPI)
+  (kpathsea-program-name  $TeX_KPATHSEA_PROGRAM)
+  (code-conversion-files  
+   "iso8859-1_unicode.ccv" "iso8859-2_unicode.ccv" "iso8859-3_unicode.ccv"
+   "iso8859-4_unicode.ccv" "iso8859-5_unicode.ccv" "iso8859-6_unicode.ccv"
+   "iso8859-7_unicode.ccv" "iso8859-8_unicode.ccv" "iso8859-9_unicode.ccv"
+   "iso8859-10_unicode.ccv" "iso8859-13_unicode.ccv" 
+   "iso8859-14_unicode.ccv" "iso8859-15_unicode.ccv"
+   "jisx0208_unicode.ccv" "jisx0208sjis_unicode.ccv" 
+   "jisx0201_unicode.ccv" "jisx0212_unicode.ccv" 
+   "ksc5601_unicode.ccv" "ksx1001_unicode.ccv"
+   "gb12345_unicode.ccv" "gb2312_unicode.ccv"
+   "big5_unicode.ccv" "cns11643-1_unicode.ccv" "cns11643-2_unicode.ccv"
+   "iso8859-5_koi8-r.ccv" "koi8-r_iso8859-5.ccv" "koi8-r_unicode.ccv"))
+
+
+;; -----------------------------------------------------------------
+;;   TeX-related Font Class Default and TeX Font Mapper
+;; -----------------------------------------------------------------
+(define-default  TeX
+  (tfm-directories  "TEXMF")
+  (tfm-filename-extensions  ".tfm" ".ofm")
+  (font-mapping
+   ;; Japanese Kanji fonts
+   ((ascii-jtex-kanji "%f.jtex")
+    "min*" "goth*" "tmin*" "tgoth*" 
+    "fj*" "tfj*" "df*" "tdf*" "rc*" "trc*"
+    "ekan*" "tekan*" "jis" "jisg")
+   ;; PK fonts
+   ((pk "%f.%dpk") *)
+   ;; Type 1 fonts (probably found in /usr/local/share/texmf/fonts/type1/ )
+   ((type1 "%f.pfb" point-size-from-tfm (magnification-adjustment 1.0)) *)
+   ((truetype "%f.ttf" point-size-from-tfm (magnification-adjustment 1.0)) *)
+   ;; GF fonts
+   ((gf "%f.%dgf") *)
+   ;; VF fonts
+   ((vf "%f.vf") *)
+   ;; If everything fails, use "black square" as substitue of request fonts
+   ((tfm "%f.%dtfm") *)   )
+  (resolution-accuracy 0.02)
+  (resolution-corrections
+   (240  ;; epson, canonlbp
+    240  263  288  312  346  415  498  597)
+   (300  ;; cx
+    300  329  360  432  518  622  746  896 1075 1290  240 270)
+   (400  ;; sparcptr
+    400  438  480  576  691  829  995 1194 1433 1720  320 360)
+   (600  ;; ljfour
+    600  657  720  864 1037 1244 1493 1792 2150 2580  480 540))
+  (dpi $TeX_DPI))
+
+;; -----------------------------------------------------------------
+;;   GF Font Class Default
+;; -----------------------------------------------------------------
+(define-default gf
+  (font-directories  "." "TEXMF"))
+
+;; -----------------------------------------------------------------
+;;   PK Font Class Default
+;; -----------------------------------------------------------------
+(define-default pk
+  (make-missing-glyph "yes")
+  (font-directories  "." "TEXMF"))
+
+;; -----------------------------------------------------------------
+;;   VF Font Class Default
+;; -----------------------------------------------------------------
+(define-default vf
+  ;;(debug "fs")
+  (font-directories  "." "TEXMF")
+  (filename-extensions  ".vf" ".ovf")
+  (font-mapping
+   ((* "%f.%dpk") (type1 "%f.pfb" point-size-from-tfm)  *)
+   ((* "%f.%dpk") (pk    "%f.pk"  point-size-from-tfm)  *) )
+  (open-style "try")     ;; "none", "try", or "require"
+  (glyph-style "fill"))  ;; "fill", or "empty"
+
+;; -----------------------------------------------------------------
+;;   TFM Font Class Default
+;; -----------------------------------------------------------------
+(define-default tfm
+  (filename-extensions  ".tfm" ".ofm")
+  (glyph-style  "fill"))
+
+;; -----------------------------------------------------------------
+;;   ASCII-jTeX Kanji fonts
+;; -----------------------------------------------------------------
+(define-default  ascii-jtex-kanji
+  (tfm-directories  "TEXMF")
+  (tfm-filename-extensions ".tfm")
+  (implicit-font-mapping-suffix ".jtex"))
+
+;; -----------------------------------------------------------------
+;; Type1 Font Class Default
+;; -----------------------------------------------------------------
+(define-default type1
+  ;;(debug "fm")
+  (font-directories  "TEXMF")
+  (afm-directories   "TEXMF")
+  (log-level "none")
+  (dpi $TeX_DPI))
+
+;; -----------------------------------------------------------------
+;; TrueType Font Class Default
+;; -----------------------------------------------------------------
+(define-default truetype
+  (font-directories "TEXMF")
+  (platform-id "microsoft")
+  (dpi $TeX_DPI))
+  
+;; -----------------------------------------------------------------
+;;   PCF Font Class Default
+;; -----------------------------------------------------------------
+(define-default  pcf
+  (font-directories  "/usr/X11R6/lib/X11/fonts//"
+		     "/usr/local/X11R6/lib/X11/fonts//"
+		     "/usr/openwin/lib/X11/fonts//"
+		     "/usr/X386/lib/X11/fonts//"
+		     "/usr/XFree86/lib/X11/fonts//"
+		     "/usr/X11/lib/X11/fonts//"
+		     "/usr/local/lib/X11/fonts//"
+		     "/usr/X11R5/lib/X11/fonts//"
+		     "/usr/local/X11R5/lib/X11/fonts//"
+		     "/usr/local/share/emacs/fonts//"
+		     "/usr/local/share/fonts/X11//")
+  (compression-extensions ".gz" ".Z")
+  (dpi $TeX_DPI))
+
+;; -----------------------------------------------------------------
+;;   eKanji Font Class Default 
+;;   See also http://www.zinbun.kyoto-u.ac.jp/~ekanji/
+;; -----------------------------------------------------------------
+(define-default  ekanji
+  ;; font directories
+  (font-directories "/usr/local/share/fonts/eKanji"
+		    "/usr/local/share/fonts/ekanji"
+		    "/usr/share/fonts/eKanji"
+		    "/usr/share/fonts/ekanji" )
+  ;; dot size of font files
+  (font-dot-size  24)
+  ;; pixel size
+  (pixel-size  24)
+  ;; point size, dpi
+  (point-size  10) (dpi 72.27)
+  ;; writing direction
+  (writing-direction  horizontal)
+  ;; debug
+  ;;(debug "cCf")
+  ;; properties for all fonts of this font class
+  (properties  ("FONT_CLASS" "EKANJI")))
+
+
+
+;; -----------------------------------------------------------------
+;;  Japanese Kanji fonts using standard X11 PCF fonts
+
+(define-font jtex-min    
+  (font-class pcf) (font-file "jiskan24.pcf" "jiskan16.pcf" "k14.pcf"))
+(define-font jtex-goth 
+  (font-class pcf) (font-file "jiskan24.pcf" "jiskan16.pcf" "k14.pcf"))
+(define-font jtex-tmin
+  (font-class pcf) (font-file "jiskan24.pcf" "jiskan16.pcf" "k14.pcf"))
+(define-font jtex-tgoth
+  (font-class pcf) (font-file "jiskan24.pcf" "jiskan16.pcf" "k14.pcf"))
+(define-macro min-common
+  (font-class ascii-jtex-kanji) (kanji-font jtex-min)
+  (kanji-font-magnification 0.85) (metric-adjustment-file "jiskan24.adj"))
+(define-macro goth-common
+  (font-class ascii-jtex-kanji) (kanji-font jtex-goth)
+  (kanji-font-magnification 0.85) (metric-adjustment-file "jiskan24.adj"))
+(define-macro tmin-common
+  (font-class ascii-jtex-kanji) (kanji-font jtex-tmin)
+  (kanji-font-magnification 0.85) (metric-adjustment-file "tjiskan24.adj"))
+(define-macro tgoth-common
+  (font-class ascii-jtex-kanji) (kanji-font jtex-tgoth)
+  (kanji-font-magnification 0.85) (metric-adjustment-file "tjiskan24.adj"))
+
+(define-font min5.jtex     (kanji-font-point-size  5)  min-common)
+(define-font min6.jtex     (kanji-font-point-size  6)  min-common)
+(define-font min7.jtex     (kanji-font-point-size  7)  min-common)
+(define-font min8.jtex     (kanji-font-point-size  8)  min-common)
+(define-font min9.jtex     (kanji-font-point-size  9)  min-common)
+(define-font min10.jtex    (kanji-font-point-size 10)  min-common)
+(define-font goth5.jtex    (kanji-font-point-size  5)  goth-common)
+(define-font goth6.jtex    (kanji-font-point-size  6)  goth-common)
+(define-font goth7.jtex    (kanji-font-point-size  7)  goth-common)
+(define-font goth8.jtex    (kanji-font-point-size  8)  goth-common)
+(define-font goth9.jtex    (kanji-font-point-size  9)  goth-common)
+(define-font goth10.jtex   (kanji-font-point-size 10)  goth-common)
+(define-font tmin5.jtex    (kanji-font-point-size  5)  tmin-common)
+(define-font tmin6.jtex    (kanji-font-point-size  6)  tmin-common)
+(define-font tmin7.jtex    (kanji-font-point-size  7)  tmin-common)
+(define-font tmin8.jtex    (kanji-font-point-size  8)  tmin-common)
+(define-font tmin9.jtex    (kanji-font-point-size  9)  tmin-common)
+(define-font tmin10.jtex   (kanji-font-point-size 10)  tmin-common)
+(define-font tgoth5.jtex   (kanji-font-point-size  5)  tgoth-common)
+(define-font tgoth6.jtex   (kanji-font-point-size  6)  tgoth-common)
+(define-font tgoth7.jtex   (kanji-font-point-size  7)  tgoth-common)
+(define-font tgoth8.jtex   (kanji-font-point-size  8)  tgoth-common)
+(define-font tgoth9.jtex   (kanji-font-point-size  9)  tgoth-common)
+(define-font tgoth10.jtex  (kanji-font-point-size 10)  tgoth-common)
+(define-font jis.jtex      (kanji-font-point-size 10)  min-common)
+(define-font jisg.jtex     (kanji-font-point-size 10)  goth-common)
+
+;; -----------------------------------------------------------------
+;; Hojo Kanji (JISX0212) Fonts
+(define-font jtex-min-hojo   (font-class pcf) (font-file "jisksp40.pcf"))
+(define-font jtex-goth-hojo  (font-class pcf) (font-file "jisksp40.pcf"))
+(define-font jtex-tmin-hojo  (font-class pcf) (font-file "jisksp40.pcf"))
+(define-font jtex-tgoth-hojo (font-class pcf) (font-file "jisksp40.pcf"))
+(define-macro min-hojo-common
+  (font-class ascii-jtex-kanji) (kanji-font jtex-min-hojo) 
+  (kanji-font-magnification 0.85) (metric-adjustment-file "jiskan24.adj"))
+(define-macro goth-hojo-common
+  (font-class ascii-jtex-kanji) (kanji-font jtex-goth-hojo) 
+  (kanji-font-magnification 0.85) (metric-adjustment-file "jiskan24.adj"))
+(define-macro tmin-hojo-common
+  (font-class ascii-jtex-kanji) (kanji-font jtex-tmin-hojo) 
+  (kanji-font-magnification 0.85) (metric-adjustment-file "tjiskan24.adj"))
+(define-macro tgoth-hojo-common
+  (font-class ascii-jtex-kanji) (kanji-font jtex-tgoth-hojo) 
+  (kanji-font-magnification 0.85) (metric-adjustment-file "tjiskan24.adj"))
+(define-font minh5.jtex    (kanji-font-point-size  5)  min-hojo-common)
+(define-font minh6.jtex    (kanji-font-point-size  6)  min-hojo-common)
+(define-font minh7.jtex    (kanji-font-point-size  7)  min-hojo-common)
+(define-font minh8.jtex    (kanji-font-point-size  8)  min-hojo-common)
+(define-font minh9.jtex    (kanji-font-point-size  9)  min-hojo-common)
+(define-font minh10.jtex   (kanji-font-point-size 10)  min-hojo-common)
+(define-font gothh5.jtex   (kanji-font-point-size  5)  goth-hojo-common)
+(define-font gothh6.jtex   (kanji-font-point-size  6)  goth-hojo-common)
+(define-font gothh7.jtex   (kanji-font-point-size  7)  goth-hojo-common)
+(define-font gothh8.jtex   (kanji-font-point-size  8)  goth-hojo-common)
+(define-font gothh9.jtex   (kanji-font-point-size  9)  goth-hojo-common)
+(define-font gothh10.jtex  (kanji-font-point-size 10)  goth-hojo-common)
+(define-font tminh5.jtex   (kanji-font-point-size  5)  tmin-hojo-common)
+(define-font tminh6.jtex   (kanji-font-point-size  6)  tmin-hojo-common)
+(define-font tminh7.jtex   (kanji-font-point-size  7)  tmin-hojo-common)
+(define-font tminh8.jtex   (kanji-font-point-size  8)  tmin-hojo-common)
+(define-font tminh9.jtex   (kanji-font-point-size  9)  tmin-hojo-common)
+(define-font tminh10.jtex  (kanji-font-point-size 10)  tmin-hojo-common)
+(define-font tgothh5.jtex  (kanji-font-point-size  5)  tgoth-hojo-common)
+(define-font tgothh6.jtex  (kanji-font-point-size  6)  tgoth-hojo-common)
+(define-font tgothh7.jtex  (kanji-font-point-size  7)  tgoth-hojo-common)
+(define-font tgothh8.jtex  (kanji-font-point-size  8)  tgoth-hojo-common)
+(define-font tgothh9.jtex  (kanji-font-point-size  9)  tgoth-hojo-common)
+(define-font tgothh10.jtex (kanji-font-point-size 10)  tgoth-hojo-common)
+
+
+;; -----------------------------------------------------------------
+;; for testing...
+(define-font  CMR10.300PK
+  (font-class pk)
+  (font-file "cmr10.300pk"))
+
+(define-font  CMR10.A
+  (font-class pk)
+  (font-file "cmr10.400pk"))
+
+(define-font  CMR10.B
+  (font-class pk)
+  (font-file "cmr10.300pk")  
+  (dpi 300))
+
+(define-font  CMR10.C
+  (font-class pk)
+  (font-file "cmr10.300pk")  
+  (magnification 1.2))
+
+(define-font  CMR10.D
+  (font-class pk)
+  (font-file "cmr10.400pk")
+  (magnification 1.2)
+  (dpi 300))
+
+(define-font  CMR10A.TFM
+  (font-class tfm)
+  (glyph-style fill)
+  (font-file "cmr10.tfm")
+  (dpi 300))
+
+(define-font  CMR10B.TFM
+  (font-class tfm)
+  (glyph-style empty)
+  (font-file "cmr10.tfm")
+  (dpi 300))
+
+;; -----------------------------------------------------------------
+;EOF

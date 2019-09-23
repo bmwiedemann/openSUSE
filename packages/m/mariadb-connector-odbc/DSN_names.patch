@@ -1,0 +1,123 @@
+Author: Adam Majer <amajer@suse.de>
+Date: Wed Mar 29 14:40:07 CEST 2017
+Summary: DSN options and sample odbc.ini entries
+
+The purpose of ma_dsn.c patch is to make sure that nothing
+changes in available options between ODBC driver versions.
+
+The sample DSN config file is manually maintained based on
+these options.
+
+Index: mariadb-connector-odbc-3.1.1-ga-src/ma_dsn.c
+===================================================================
+--- mariadb-connector-odbc-3.1.1-ga-src.orig/ma_dsn.c
++++ mariadb-connector-odbc-3.1.1-ga-src/ma_dsn.c
+@@ -27,58 +27,58 @@
+ #define DSNKEY_UID_INDEX       8
+ #define DSNKEY_PWD_INDEX       9
+ #define DSNKEY_DATABASE_INDEX 10
++ 
++ MADB_DsnKey DsnKeys[]=
++ {
++   {"DSN",            offsetof(MADB_Dsn, DSNName),           DSN_TYPE_STRING, 0, 0}, /* 0 */
++   {"DESCRIPTION",    offsetof(MADB_Dsn, Description),       DSN_TYPE_STRING, 0, 0},
++   {"DRIVER",         offsetof(MADB_Dsn, Driver),            DSN_TYPE_STRING, 0, 0},
++   /* OPTIONS should go above all DSN_TYPE_OPTION. They are not saved in DSN separately, and then DSN is read, corresponding
++      properties are filled from OPTIONS. Also putting its alias here - it should not appear on Windows(unless somebody edits
++      registry manually), but on *nix we can expect everything. Array index used in some places to decide if the key is OPTIONS */
++   {"OPTIONS",        offsetof(MADB_Dsn, Options),           DSN_TYPE_INT,    0, 0}, /* DSNKEY_OPTIONS_INDEX */
++   {"OPTION",         DSNKEY_OPTIONS_INDEX,                  DSN_TYPE_INT,    0, 1}, /* DSNKEY_OPTION_INDEX  */
+ 
+-MADB_DsnKey DsnKeys[]=
+-{
+-  {"DSN",            offsetof(MADB_Dsn, DSNName),           DSN_TYPE_STRING, 0, 0}, /* 0 */
+-  {"DESCRIPTION",    offsetof(MADB_Dsn, Description),       DSN_TYPE_STRING, 0, 0},
+-  {"DRIVER",         offsetof(MADB_Dsn, Driver),            DSN_TYPE_STRING, 0, 0},
+-  /* OPTIONS should go above all DSN_TYPE_OPTION. They are not saved in DSN separately, and then DSN is read, corresponding
+-     properties are filled from OPTIONS. Also putting its alias here - it should not appear on Windows(unless somebody edits
+-     registry manually), but on *nix we can expect everything. Array index used in some places to decide if the key is OPTIONS */
+-  {"OPTIONS",        offsetof(MADB_Dsn, Options),           DSN_TYPE_INT,    0, 0}, /* DSNKEY_OPTIONS_INDEX */
+-  {"OPTION",         DSNKEY_OPTIONS_INDEX,                  DSN_TYPE_INT,    0, 1}, /* DSNKEY_OPTION_INDEX  */
+-
+-  {"NamedPipe",      offsetof(MADB_Dsn, IsNamedPipe),       DSN_TYPE_OPTION, MADB_OPT_FLAG_NAMED_PIPE, 0}, /* MADB_DSNKEY_NAMEDPIPE_INDEX */
+-  {"TCPIP",          offsetof(MADB_Dsn, IsTcpIp),           DSN_TYPE_BOOL,   0, 0}, /* DSNKEY_TCPIP_INDEX */
+-  {"SERVER",         offsetof(MADB_Dsn, ServerName),        DSN_TYPE_STRING, 0, 0}, /* DSNKEY_SERVER_INDEX     */
+-  {"UID",            offsetof(MADB_Dsn, UserName),          DSN_TYPE_STRING, 0, 0}, /* DSNKEY_UID_INDEX        */
+-  {"PWD",            offsetof(MADB_Dsn, Password),          DSN_TYPE_STRING, 0, 0}, /* DSNKEY_PWD_INDEX        */
+-  {"DATABASE",       offsetof(MADB_Dsn, Catalog),           DSN_TYPE_COMBO,  0, 0}, /* 10 DSNKEY_DATABASE_INDEX */
+-  {"PORT",           offsetof(MADB_Dsn, Port),              DSN_TYPE_INT,    0, 0},
+-  {"INITSTMT",       offsetof(MADB_Dsn, InitCommand),       DSN_TYPE_STRING, 0, 0},
+-  {"CONN_TIMEOUT",   offsetof(MADB_Dsn, ConnectionTimeout), DSN_TYPE_INT,    0, 0},
+-  {"AUTO_RECONNECT", offsetof(MADB_Dsn, Reconnect),         DSN_TYPE_OPTION, MADB_OPT_FLAG_AUTO_RECONNECT,0},
+-  {"NO_PROMPT",      offsetof(MADB_Dsn, ConnectPrompt),     DSN_TYPE_OPTION, MADB_OPT_FLAG_NO_PROMPT,0},
+-  {"CHARSET",        offsetof(MADB_Dsn, CharacterSet),      DSN_TYPE_COMBO,  0, 0},
+-  {"TRACE",          offsetof(MADB_Dsn, TraceFile),         DSN_TYPE_STRING, 0, 0},
+-  {"PLUGIN_DIR",     offsetof(MADB_Dsn, ConnCPluginsDir),   DSN_TYPE_STRING, 0, 0},
+-  /* SSL */
+-  {"SSLKEY",         offsetof(MADB_Dsn, SslKey),            DSN_TYPE_STRING, 0, 0},
+-  {"SSLCERT",        offsetof(MADB_Dsn, SslCert),           DSN_TYPE_STRING, 0, 0}, /* 20 */
+-  {"SSLCA",          offsetof(MADB_Dsn, SslCa),             DSN_TYPE_STRING, 0, 0},
+-  {"SSLCAPATH",      offsetof(MADB_Dsn, SslCaPath),         DSN_TYPE_STRING, 0, 0},
+-  {"SSLCIPHER",      offsetof(MADB_Dsn, SslCipher),         DSN_TYPE_STRING, 0, 0},
+-  {"SSLVERIFY",      offsetof(MADB_Dsn, SslVerify),         DSN_TYPE_BOOL,   0, 0},
+-  {"SSLFP",          offsetof(MADB_Dsn, SslFp),             DSN_TYPE_STRING, 0, 0},
+-  {"SSLFPLIST",      offsetof(MADB_Dsn, SslFpList),         DSN_TYPE_STRING, 0, 0},
+-  {"SSLCRL",         offsetof(MADB_Dsn, SslCrl),            DSN_TYPE_STRING, 0, 0},
+-  {"SSLCRLPATH",     offsetof(MADB_Dsn, SslCrlPath),        DSN_TYPE_STRING, 0, 0},
+-  {"SOCKET",         offsetof(MADB_Dsn, Socket),            DSN_TYPE_STRING, 0, 0},
+-  {"SAVEFILE",       offsetof(MADB_Dsn, SaveFile),          DSN_TYPE_STRING, 0, 0}, /* 30 */
+-  {"USE_MYCNF",      offsetof(MADB_Dsn, ReadMycnf),         DSN_TYPE_OPTION, MADB_OPT_FLAG_USE_CNF, 0},
+-  {"TLSVERSION",     offsetof(MADB_Dsn, TlsVersion),        DSN_TYPE_CBOXGROUP, 0, 0},
+-  {"FORCETLS",       offsetof(MADB_Dsn, ForceTls),          DSN_TYPE_BOOL,   0, 0},
+-  /* Aliases. Here offset is index of aliased key */
+-  {"SERVERNAME",     DSNKEY_SERVER_INDEX,                   DSN_TYPE_STRING, 0, 1},
+-  {"USER",           DSNKEY_UID_INDEX,                      DSN_TYPE_STRING, 0, 1},
+-  {"PASSWORD",       DSNKEY_PWD_INDEX,                      DSN_TYPE_STRING, 0, 1},
+-  {"DB",             DSNKEY_DATABASE_INDEX,                 DSN_TYPE_COMBO,  0, 1},
+-
+-  /* Terminating Null */
+-  {NULL, 0, DSN_TYPE_BOOL,0,0}
+-};
++   {"NamedPipe",      offsetof(MADB_Dsn, IsNamedPipe),       DSN_TYPE_OPTION, MADB_OPT_FLAG_NAMED_PIPE, 0}, /* MADB_DSNKEY_NAMEDPIPE_INDEX */
++   {"TCPIP",          offsetof(MADB_Dsn, IsTcpIp),           DSN_TYPE_BOOL,   0, 0}, /* DSNKEY_TCPIP_INDEX */
++   {"SERVER",         offsetof(MADB_Dsn, ServerName),        DSN_TYPE_STRING, 0, 0}, /* DSNKEY_SERVER_INDEX     */
++   {"UID",            offsetof(MADB_Dsn, UserName),          DSN_TYPE_STRING, 0, 0}, /* DSNKEY_UID_INDEX        */
++   {"PWD",            offsetof(MADB_Dsn, Password),          DSN_TYPE_STRING, 0, 0}, /* DSNKEY_PWD_INDEX        */
++   {"DATABASE",       offsetof(MADB_Dsn, Catalog),           DSN_TYPE_COMBO,  0, 0}, /* 10 DSNKEY_DATABASE_INDEX */
++   {"PORT",           offsetof(MADB_Dsn, Port),              DSN_TYPE_INT,    0, 0},
++   {"INITSTMT",       offsetof(MADB_Dsn, InitCommand),       DSN_TYPE_STRING, 0, 0},
++   {"CONN_TIMEOUT",   offsetof(MADB_Dsn, ConnectionTimeout), DSN_TYPE_INT,    0, 0},
++   {"AUTO_RECONNECT", offsetof(MADB_Dsn, Reconnect),         DSN_TYPE_OPTION, MADB_OPT_FLAG_AUTO_RECONNECT,0},
++   {"NO_PROMPT",      offsetof(MADB_Dsn, ConnectPrompt),     DSN_TYPE_OPTION, MADB_OPT_FLAG_NO_PROMPT,0},
++   {"CHARSET",        offsetof(MADB_Dsn, CharacterSet),      DSN_TYPE_COMBO,  0, 0},
++   {"TRACE",          offsetof(MADB_Dsn, TraceFile),         DSN_TYPE_STRING, 0, 0},
++   {"PLUGIN_DIR",     offsetof(MADB_Dsn, ConnCPluginsDir),   DSN_TYPE_STRING, 0, 0},
++   /* SSL */
++   {"SSLKEY",         offsetof(MADB_Dsn, SslKey),            DSN_TYPE_STRING, 0, 0},
++   {"SSLCERT",        offsetof(MADB_Dsn, SslCert),           DSN_TYPE_STRING, 0, 0}, /* 20 */
++   {"SSLCA",          offsetof(MADB_Dsn, SslCa),             DSN_TYPE_STRING, 0, 0},
++   {"SSLCAPATH",      offsetof(MADB_Dsn, SslCaPath),         DSN_TYPE_STRING, 0, 0},
++   {"SSLCIPHER",      offsetof(MADB_Dsn, SslCipher),         DSN_TYPE_STRING, 0, 0},
++   {"SSLVERIFY",      offsetof(MADB_Dsn, SslVerify),         DSN_TYPE_BOOL,   0, 0},
++   {"SSLFP",          offsetof(MADB_Dsn, SslFp),             DSN_TYPE_STRING, 0, 0},
++   {"SSLFPLIST",      offsetof(MADB_Dsn, SslFpList),         DSN_TYPE_STRING, 0, 0},
++   {"SSLCRL",         offsetof(MADB_Dsn, SslCrl),            DSN_TYPE_STRING, 0, 0},
++   {"SSLCRLPATH",     offsetof(MADB_Dsn, SslCrlPath),        DSN_TYPE_STRING, 0, 0},
++   {"SOCKET",         offsetof(MADB_Dsn, Socket),            DSN_TYPE_STRING, 0, 0},
++   {"SAVEFILE",       offsetof(MADB_Dsn, SaveFile),          DSN_TYPE_STRING, 0, 0}, /* 30 */
++   {"USE_MYCNF",      offsetof(MADB_Dsn, ReadMycnf),         DSN_TYPE_OPTION, MADB_OPT_FLAG_USE_CNF, 0},
++   {"TLSVERSION",     offsetof(MADB_Dsn, TlsVersion),        DSN_TYPE_CBOXGROUP, 0, 0},
++   {"FORCETLS",       offsetof(MADB_Dsn, ForceTls),          DSN_TYPE_BOOL,   0, 0},
++   /* Aliases. Here offset is index of aliased key */
++   {"SERVERNAME",     DSNKEY_SERVER_INDEX,                   DSN_TYPE_STRING, 0, 1},
++   {"USER",           DSNKEY_UID_INDEX,                      DSN_TYPE_STRING, 0, 1},
++   {"PASSWORD",       DSNKEY_PWD_INDEX,                      DSN_TYPE_STRING, 0, 1},
++   {"DB",             DSNKEY_DATABASE_INDEX,                 DSN_TYPE_COMBO,  0, 1},
+ 
++   /* Terminating Null */
++   {NULL, 0, DSN_TYPE_BOOL,0,0}
++ };
++ 
+ /* TODO: Shouln't 2nd be DSNKEY_OPTIONS_INDEX? But I seemed to remember it was removed for a reason... */
+ #define IS_OPTIONS_BITMAP(key_index) (key_index == DSNKEY_OPTIONS_INDEX || key_index == DSNKEY_OPTIONS_INDEX)
+ 

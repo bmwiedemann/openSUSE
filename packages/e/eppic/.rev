@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6270b477df45ae34c3ea0f25e726f8a7</srcmd5>
+    <version>3.99.20130402gitc2a2564</version>
+    <time>1365159903</time>
+    <user>coolo</user>
+    <comment>New package, originally embedded in the crash package under the name sial. The eppic library is required to build the forthcoming new versions of:
+
+- crash
+- makedumpfile
+</comment>
+    <requestid>162388</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6270b477df45ae34c3ea0f25e726f8a7</srcmd5>
+    <version>3.99.20130402gitc2a2564</version>
+    <time>1379662301</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c2ed1a12cc190f7f8916739fe585e7bc</srcmd5>
+    <version>3.99.20130904git09e8b97</version>
+    <time>1385817657</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208875</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c2ed1a12cc190f7f8916739fe585e7bc</srcmd5>
+    <version>3.99.20130904git09e8b97</version>
+    <time>1409300836</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>565818670ae7b3af8dd8fdd2046abfbb</srcmd5>
+    <version>3.99.20140619git5391d3d</version>
+    <time>1463124265</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>395047</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>cb28906e6a1bd1aef2cabd3b630f493f</srcmd5>
+    <version>3.99.20140619git5391d3d</version>
+    <time>1471008923</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417745</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>b070638205b5682d39fa5fa358a8a879</srcmd5>
+    <version>3.99.20140619git5391d3d</version>
+    <time>1518513956</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing reference to FATE (bsc#1041538):
+  o support for ARM64 (FATE#320844).
+</comment>
+    <requestid>574776</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>eb31ed21e037cc093348c98ead2ad381</srcmd5>
+    <version>3.99.20140619git5391d3d</version>
+    <time>1567678175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721569</requestid>
+  </revision>
+</revisionlist>

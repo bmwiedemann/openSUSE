@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Sep 10 11:31:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.4.3:
+  * Fixing propagation of box options when adding a new list via setdefault (thanks to Stretch)
+  * Fixing update does not keep box_intact_types (thanks to pwwang)
+  * Fixing update to operate the same way as a normal dictionary (thanks to Craig Quiter)
+  * Fixing deepcopy not copying box options (thanks to Nikolay Stanishev)
+
+-------------------------------------------------------------------
+Mon Jul 22 13:23:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.4.2:
+  * Adding license, changes and authors files to source distribution
+
+-------------------------------------------------------------------
+Wed Jun 19 11:39:32 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Initial packaging (version 3.4.1)

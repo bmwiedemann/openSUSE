@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1fe0a55264c2b3b127e35787a1a9d274</srcmd5>
+    <version>5</version>
+    <time>1484132217</time>
+    <user>dimstar_suse</user>
+    <comment>rename from update-test-trival (SR#449488)</comment>
+    <requestid>449489</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2127355051c9097091dddca9d7d940d5</srcmd5>
+    <version>5</version>
+    <time>1515623737</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562893</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1704e2f99aa9cc9ea2c4f8d44280404d</srcmd5>
+    <version>5</version>
+    <time>1518950585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577279</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>aca50bf77ee29a121ffc70fa2d7e70d5</srcmd5>
+    <version>5</version>
+    <time>1521806187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590623</requestid>
+  </revision>
+</revisionlist>

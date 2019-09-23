@@ -1,0 +1,224 @@
+-------------------------------------------------------------------
+Tue Mar 26 08:17:44 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 8.6.1
+  * AppImage now properly show the icon (issue #94).
+  * Use correct subdir for manpage (issue #170, thanks Luigi
+    Baldoni!).
+- Dropped webcamoid-mandir.patch (merged upstream)
+
+-------------------------------------------------------------------
+Mon Mar 25 19:34:01 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop the qimageblitz dependency. Unused since 5.0.0.
+- Drop the Frei0r dependency. Unused since 5.1.0.
+- Fix the old description 'KDE' is the community, 'plasmoid' is no longer used.
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Tue Mar  5 19:38:42 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 8.6.0
+  * Now webcam settings are saved.
+  * Enabled secondary plugins, and fixed segfaults and  memleaks
+    in GStreamer.
+  * Fixed segfaults and memory leaks in MacOS.
+  * Fixed GIF playback in FFmpeg.
+  * Build now support MSYS2.
+  * Added static analysis with Codacy.
+  * Fixed manpage install.
+  * Install paths now follow Qt install paths structure.
+
+- Added webcamoid-mandir.patch
+
+-------------------------------------------------------------------
+Tue Jan 22 10:08:00 UTC 2019 - aloisio@gmx.com
+
+- Update to version 8.5.0
+  * UI ported to QtQuick Controls 2.
+  * Reworked virtual camera for GNU/Linux, Mac and Windows.
+  * Qt 5.9.0 as minimum requirement.
+  * Faster build and smaller binaries.
+  * Added build info.
+  * Fixed crash and many other bugs in FreeBSD.
+  * Added support for Microsoft Media Foundation capture.
+  * Fixed shadow build.
+  * Added support for FFmpeg 4.0.
+  * Fixed bug when reading/setting webcam controls.
+  * Added support for akvcam, default in-house virtual camera
+    solution for GNU/Linux.
+  * Fixed rendering problems in Mac.
+  * Added support for FreeBSD in deploy scripts.
+  * Fixed many bugs when recording audio and video.
+  * Default recording video bitrate is now 1.5Mbps.
+  * Fixed audio support in Windows.
+  * Removed 'su' and 'sudo' as root method when installing the
+    virtual camera in GNU/Linux.
+  * Removed Syphon support for Mac.
+  * Improved translations.
+
+- Dropped webcamoid-8.1.0-ffmpeg4.patch (no longer necessary)
+
+-------------------------------------------------------------------
+Sun Jul  8 14:24:32 UTC 2018 - aloisio@gmx.com
+
+- Added webcamoid-8.1.0-ffmpeg4.patch to support ffmpeg4 and
+  changed requirements accordingly
+
+-------------------------------------------------------------------
+Fri May  4 14:03:47 UTC 2018 - olaf@aepfle.de
+
+- Use ffmpeg3 versions of pkgconfig(libav*)
+
+-------------------------------------------------------------------
+Wed Dec 13 07:52:11 UTC 2017 - aloisio@gmx.com
+
+- Added frei0r-plugins-opencv as runtime requirement to account
+  for (boo#1068792)
+
+-------------------------------------------------------------------
+Tue Oct 10 13:59:52 UTC 2017 - aloisio@gmx.com
+
+- Update to version 8.1.0
+  * Improved startup time.
+  * Deadlock when audio recording is enabled my be solved now.
+    Audio recording enabled by default again.
+  * Hopefully, fixed many segfaults in many platforms.
+
+- Dropped webcamoid-fix_man.patch (merged upstream)
+
+-------------------------------------------------------------------
+Sat Jun 17 08:46:04 UTC 2017 - aloisio@gmx.com
+
+- Update to version 8.0.0
+  * Added support for Mac and FreeBSD (virtual camera is not
+    supported  * yet).
+  * Added new masks to the FaceDetect plugin.
+  * Now is possible to Switch between FFmpeg and GStreamer on
+    runtime.
+  * Added support for ALSA, OSS, JACK and QAudio.
+  * Added support for libuvc.
+  * Now is possible to select the desired input and output device,
+    and  * configure playback and capture formats.
+  * More translations updates.
+  * Added options for configuring plugins search paths and
+    blacklist  * in GUI.
+  * Added options for configuring the desired frameworks and
+    libraries.
+  * Added formats and codecs config in recording options.
+  * FFmpeg >= 3.1 required.
+  * Added support for MSVC2013 and MSVC2015 build.
+  * Added option for configure FPS in DesktopCapture plugin.
+  * Added updates options.
+  * AppImage support.
+
+- Added webcamoid-fix_man.patch to address build problem on
+  Tumbleweed
+
+-------------------------------------------------------------------
+Fri May 12 08:19:04 UTC 2017 - aloisio@gmx.com
+
+- Update to version 7.2.1
+  * Added alternative root method (VirtualCamera). See ROOT_METHOD 
+    on project wiki.
+  * C++11 support enabled by default.
+  * Using new algorithm for Cartoon plugin.
+  version 7.2.0:
+  * Fixed problems when recording.
+  * Added timer and flash when taking photos.
+  * Better virtual camera management.
+  * Added Virtual camera support for Windows.
+  * Added GIF recording support (FFmpeg only).
+  * Improved webcam format selection.
+  * UI improvements.
+  * Added play on start option.
+  * Added C++11 support for Clang build.
+
+- Renamed package to webcamoid
+
+-------------------------------------------------------------------
+Fri Apr 29 12:45:27 UTC 2016 - aloisio@gmx.com
+
+- Update to version 7.1.0
+  * Reworked audio system.
+  * Added support for compressed formats in webcams.
+  * No more lags in the UI when capturing from webcam.
+  * Added Windows installer.
+  7.0.0:
+  * Windows port finally working! EXPERIMENTAL!
+  * Reworked recording options. More user friendly.
+  * Removed unnecessary dependencies.
+  * Many effects reworked and bugfixed.
+  * Added GStreamer support, EXPERIMENTAL!
+  * Fixed SEGFAULT when switching the effects.
+  * Added virtual camera support (GNU/Linux only).
+  * Added command line options for controlling plugins search.
+  6.2.0:
+  * Reworked Cartoonify plugin.
+  * Some improvements in FaceDetect plugin.
+  * Added Canny mode for Edge detection plugin.
+  * Improved Blur and Denoise plugins.
+  * Fixed QDataStream missing header.
+  6.1.0:
+  * Removed OpenCV as dependency (yes, again).
+  * Fixed Denoise plugin SEGFAULT.
+  * Translations updated.
+  6.0.0:
+  * New Qml UI, more user friendly.
+  * Now, the effects can be customized.
+  * A lot of bug fixes.
+  5.1.0:
+  * From now on, Webcamoid will be developed using Qt5.
+  * Removed Frei0r from dependencies.
+  * Added OpenCV as dependency (Face detection).
+  * Removed plasmoid build since Qt5 plugins aren't compatible
+    with Qt4/KDE4.
+  * Now, Webcamoid can be compiled using MinGW.
+  * Added webcam capture support through DirectShow.
+  * There are still some patches needed to make it fully work
+    in Windows.
+  5.0.0:
+  * Modified the effects preview for reducing resources usage.
+  * Fixed stream flush on recording stop.
+  * Enhanced webm video recording.
+  5.0.0rc1:
+  * Release Candidate version.
+  * Ported to Qt5 (without the plasmoid).
+  * Removed KDElibs as dependency, but still required for
+    Qt4 build.
+  * Removed QImageBlitz as dependency.
+  * Added more effects.
+  * Fixed video sync.
+  * Initial port to Windows (help needed).
+
+- Switched to Qt5
+
+- Switched to ffmpeg 3.0
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Tue Sep 22 08:47:31 UTC 2015 - olaf@aepfle.de
+
+- Use pkgconfig for ffmpeg BuildRequires
+
+-------------------------------------------------------------------
+Mon Feb 10 10:47:10 UTC 2014 - mailaender@opensuse.org
+
+- Update to version 5.0.0b2
+
+-------------------------------------------------------------------
+Fri May  3 23:01:15 UTC 2013 - fa0sck@gmail.com
+
+- spec for openSUSE build changes:
+  + Installpath all lowercase (patch)
+  + Install under kde4_appsdir
+  + generate help file
+  + refresh translations
+  + actually register plasmoid inside kde4_servicesdir 
+  + fix categories for desktop file
+
+-------------------------------------------------------------------
+Sun Oct 14 14:00:56 UTC 2012 - mailaender@opensuse.org
+
+- initial packaging

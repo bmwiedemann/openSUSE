@@ -1,0 +1,155 @@
+# Training files
+#
+training_albanian_SQ.txt sq
+training_basque_ES.txt eu
+training_bengali_BD.txt bn
+training_canna_JP.txt ja
+training_czechC_CS.txt cs
+training_czech_CS.txt cs
+training_danish_DK.txt da
+training_dutch_NL.txt nl
+training_english_GB.txt en
+training_englishLC_GB.txt en
+training_finnish_FI.txt fi
+training_frenchC_FR.txt fr
+training_french_FR.txt fr
+training_german_DE.txt de
+training_greek_GR.txt el
+training_hebrew_IL.txt he
+training_hiragana60_JP.txt ja
+training_hiragana83_JP.txt ja
+training_hungarian_HU.txt hu
+training_italianC_IT.txt it
+training_italian_IT.txt it
+training_mongolian_MN.txt mn
+training_persian_IR.txt fa
+training_polish_PL.txt pl
+training_portuguese_BR.txt pt
+training_portugueseC_BR.txt pt
+training_russian_RU.txt ru
+training_spanishC_ES.txt es
+training_spanish_ES.txt es
+training_spyDict.txt zh
+training_swahili_KE.txt sw
+training_swedish_SE.txt sv
+training_turkish_TR.txt tr
+training_welsh_GB.txt cy
+
+# Alphabet files
+# Note: if the file mentions a training file, then the map will be done with
+# the training file if possible. (This is why some files are missing from the
+# list below)
+#
+alphabet.AfaanOromo.xml om
+alphabet.Armenian.xml hy
+alphabet.Assamese.xml as
+alphabet.Austen.xml en
+alphabet.Azerbaijani.xml az
+alphabet.Belarusian.xml be
+alphabet.Bulgarian.xml bg
+alphabet.Esperanto.xml eo
+alphabet.Estonian.xml et
+alphabet.Filipino.xml tl
+alphabet.Gujarati.xml gu
+alphabet.Hawaiian.xml haw
+alphabet.Hindi.xml hi
+alphabet.Icelandic.xml is
+alphabet.Igbo.xml ig
+alphabet.Indonesian.xml id
+alphabet.IrishGaelic.xml gd
+alphabet.Kannada.xml kn
+alphabet.Katakana.xml ja
+alphabet.Malay.xml ms
+alphabet.Malayalam.xml ml
+alphabet.Marathi.xml mr
+alphabet.Moldavian.xml ro
+alphabet.Ndebele.xml nr
+alphabet.Oriya.xml or
+alphabet.Punjabi.xml pa
+alphabet.Romanian.xml ro
+alphabet.Sami.xml se
+alphabet.ScotsGaelic.xml gd
+alphabet.Sepedi.xml nso
+alphabet.Sesotho.xml st
+alphabet.Sinhala.xml si
+alphabet.Slovak.xml sk
+alphabet.Slovenian.xml sl
+alphabet.Swati.xml ss
+alphabet.Tajik.xml tg
+alphabet.Tamil.xml ta
+alphabet.Telugu.xml te
+alphabet.Thai.xml th
+alphabet.Thai2.xml th
+alphabet.Tsonga.xml ts
+alphabet.Tswana.xml tn
+alphabet.Urdu.xml ur
+alphabet.Vietnamese.xml vi
+alphabet.Xhosa.xml xh
+alphabet.Yoruba.xml yo
+alphabet.Zulu.xml zu
+# musical language
+#alphabet.abc.xml
+alphabet.adangbe.xml ada
+alphabet.afrikaans.xml af
+alphabet.akan.xml ak
+alphabet.amharic.xml am
+alphabet.arabic.xml ar
+alphabet.bopomofo.xml zh
+alphabet.bosnian.xml bs
+alphabet.breton.xml br
+alphabet.catalan.xml ca
+alphabet.cherokee.xml chr
+alphabet.chinese.xml zh
+alphabet.chineseRuby.xml zh
+alphabet.corsican.xml co
+alphabet.croatian.xml hr
+alphabet.czech.xml cs
+alphabet.ethiopic.xml gez
+alphabet.ewe.xml ee
+alphabet.faroese.xml fo
+alphabet.ga.xml gaa
+alphabet.galician.xml gl
+alphabet.georgian.xml ka
+alphabet.hausa.xml ha
+# international phonetic alphabet
+#alphabet.ipa.xml
+alphabet.kazakh.xml kk
+alphabet.kirghiz.xml ky
+alphabet.kirundi.xml rn
+# klingon
+#alphabet.klingon.xml
+alphabet.korean.xml ko
+alphabet.koreanNested.xml ko
+alphabet.kurdish.xml ku
+alphabet.lao.xml lo
+alphabet.latex.xml en
+alphabet.latin.xml la
+alphabet.latvian.xml lv
+alphabet.lithuanian.xml lt
+alphabet.luxembourgish.xml lb
+alphabet.macedonian.xml mk
+alphabet.maltese.xml mt
+alphabet.myanmar.xml my
+alphabet.nepali.xml ne
+alphabet.norwegian.xml no
+alphabet.occitan.xml oc
+# early medieval alphabet
+#alphabet.ogham.xml
+alphabet.pashto.xml ps
+# perl language
+#alphabet.perl.xml
+alphabet.pinyin.xml zh
+alphabet.pinyin2.xml zh
+alphabet.polish.xml pl
+alphabet.romansch.xml rm
+# runic
+#alphabet.runic.xml
+alphabet.sanskrit.xml sa
+alphabet.serbian.xml sr
+alphabet.somali.xml so
+alphabet.thaana.xml dv
+alphabet.tigrinya.xml ti
+alphabet.turkmen.xml tk
+alphabet.ukrainian.xml uk
+alphabet.uzbek.xml uz
+alphabet.venda.xml ve

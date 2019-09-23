@@ -1,0 +1,36 @@
+From aff6614f03590301f29cd670947cfd8116fccf00 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Tue, 14 May 2019 11:53:01 +0200
+Subject: [PATCH] Work around QTBUG-75797 for openQA
+
+---
+ src/main.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/main.cpp b/src/main.cpp
+index c8ce816d60..55b7df022f 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -29,6 +29,7 @@
+ 
+ #include <QCommandLineParser>
+ #include <QStandardPaths>
++#include <QSurfaceFormat>
+ #include <QtGlobal>
+ 
+ #ifdef WITH_QT_WEBENGINE
+@@ -47,6 +48,11 @@ AMAROK_EXPORT OcsData ocsData;
+ 
+ int main( int argc, char *argv[] )
+ {
++    QSurfaceFormat fmt = QSurfaceFormat::defaultFormat();
++    if(fmt.redBufferSize() < 8)
++        fmt.setRedBufferSize(8);
++    QSurfaceFormat::setDefaultFormat(fmt);
++
+     App app(argc, argv);
+ 
+ #ifdef WITH_QT_WEBENGINE
+-- 
+2.21.0
+

@@ -1,0 +1,9 @@
+<package name="soapy-uhd" project="openSUSE:Factory">
+  <title>Soapy SDR plugins for UHD supported SDR devices</title>
+  <description>Soapy UHD - Soapy SDR devices for UHD.
+A UHD module that supports Soapy devices within the UHD API.
+
+</description>
+  <devel project="hardware:sdr" package="soapy-uhd"/>
+  <url>https://github.com/pothosware/SoapyUHD/wiki</url>
+</package>

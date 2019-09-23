@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Wed May  8 05:14:29 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.24
+   see /usr/share/doc/packages/perl-Mojo-Redis/Changes
+
+  3.24 2019-05-07T22:25:50+0700
+   - Fix PubSub->keyspace_listen() #42
+
+-------------------------------------------------------------------
+Sun May  5 05:18:11 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.23
+   see /usr/share/doc/packages/perl-Mojo-Redis/Changes
+
+  3.23 2019-05-04T21:12:25+0700
+   - Fix compatibility with Mojolicious 8.15 #46
+
+-------------------------------------------------------------------
+Thu Apr 25 05:16:45 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.22
+   see /usr/share/doc/packages/perl-Mojo-Redis/Changes
+
+  3.22 2019-04-24T12:32:18+0700
+   - Forgot to update protocol parser for Mojo::Redis::Cache after 3.21 #43
+   - Fix broken link in Mojo::Redis::Connection #44
+     Contributor: Mohammad S Anwar
+
+-------------------------------------------------------------------
+Tue Apr 16 05:15:50 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.21
+   see /usr/share/doc/packages/perl-Mojo-Redis/Changes
+
+  3.21 2019-04-16T09:58:44+0700
+   - Changed default protocol parser to Protocol::Redis::XS #43
+
+-------------------------------------------------------------------
+Thu Apr  4 05:14:51 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.20
+   see /usr/share/doc/packages/perl-Mojo-Redis/Changes
+
+  3.20 2019-04-04T10:31:03+0700
+   - Use Protocol::Redis::Faster instead of Protocol::Redis #38
+   - Only decode data from bulk string responses #40
+   - Fix allowing custom URL object with userinfo in constructor #41
+
+-------------------------------------------------------------------
+Thu Jan 31 06:16:20 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.19
+   see /usr/share/doc/packages/perl-Mojo-Redis/Changes
+
+  3.19 2019-01-31T13:03:11+0900
+   - Add support for encoding and decoding of JSON messages in Mojo::Redis::PubSub
+  
+  3.18 2019-01-31T12:39:46+0900
+   - Add reconnect logic for Mojo::Redis::PubSub #37
+   - Add CAVEATS for Protocol::Redis::XS #38
+   - Changed default protocol to Protocol::Redis #38
+   - Updated documentation to use nicer variable names
+
+-------------------------------------------------------------------
+Tue Jan 29 15:30:00 CET 2019 - sriedel@suse.de
+
+- initial version (3.17)
+

@@ -1,0 +1,35 @@
+diff -urN uim-1.8.1.orig/gtk2/candwin/gtk.c uim-1.8.1/gtk2/candwin/gtk.c
+--- uim-1.8.1.orig/gtk2/candwin/gtk.c	2012-07-02 12:16:36.478239165 +0800
++++ uim-1.8.1/gtk2/candwin/gtk.c	2012-07-02 12:23:32.987032088 +0800
+@@ -186,7 +186,7 @@
+ GType
+ candidate_window_get_type(void)
+ {
+-  if (!candidate_window_type)
++  //if (!candidate_window_type)
+     candidate_window_type = g_type_register_static(GTK_TYPE_WINDOW,
+ 		    "UIMCandWinGtk", &object_info, (GTypeFlags)0);
+   return candidate_window_type;
+diff -urN uim-1.8.1.orig/gtk2/candwin/tbl-gtk.c uim-1.8.1/gtk2/candwin/tbl-gtk.c
+--- uim-1.8.1.orig/gtk2/candwin/tbl-gtk.c	2012-07-02 12:16:36.478239165 +0800
++++ uim-1.8.1/gtk2/candwin/tbl-gtk.c	2012-07-02 12:24:03.652648716 +0800
+@@ -223,7 +223,7 @@
+ GType
+ candidate_window_get_type(void)
+ {
+-  if (!candidate_window_type)
++  //if (!candidate_window_type)
+     candidate_window_type = g_type_register_static(GTK_TYPE_WINDOW,
+ 		    "UIMCandWinTblGtk", &object_info, (GTypeFlags)0);
+   return candidate_window_type;
+diff -urN uim-1.8.1.orig/gtk2/immodule/compose.c uim-1.8.1/gtk2/immodule/compose.c
+--- uim-1.8.1.orig/gtk2/immodule/compose.c	2012-07-02 12:16:36.476239191 +0800
++++ uim-1.8.1/gtk2/immodule/compose.c	2012-07-02 12:21:29.620574380 +0800
+@@ -770,6 +770,7 @@
+ im_uim_release_compose_tree()
+ {
+     FreeComposeTree(g_tree);
++    g_tree = NULL;
+ }
+ 
+ static int

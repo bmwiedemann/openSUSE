@@ -1,0 +1,6 @@
+<package name="python-tri.struct" project="openSUSE:Factory">
+  <title>python-tri.struct</title>
+  <description>tri.struct supplies classes that can be used like dictionaries and as objects with attribute access at the same time.
+</description>
+  <devel project="devel:languages:python" package="python-tri.struct"/>
+</package>

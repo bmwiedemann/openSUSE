@@ -1,0 +1,648 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>aab0a3f711841d4ffbbddd6d98b6a1d1</srcmd5>
+    <version>2.8.0</version>
+    <time>1380607983</time>
+    <user>coolo</user>
+    <comment>Updated package</comment>
+    <requestid>197854</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a1a98420a7109314b677aeeacab6016f</srcmd5>
+    <version>2.8.1</version>
+    <time>1380887516</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 2.8.1, resubmitted due to factory-repo-checker bug</comment>
+    <requestid>201947</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f57d377bd7ae4cceccda79f33f5a2149</srcmd5>
+    <version>2.8.1</version>
+    <time>1381222552</time>
+    <user>scarabeus_factory</user>
+    <comment>Added pkgconfig(Qt5X11Extras) BuildRequires, it is needed for raising the main window.
+
+This would be quite noticed that it doesn't work, so please forward to 13.1 also</comment>
+    <requestid>202456</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0943b1f789c3cdcdf96b7c46efbf5ade</srcmd5>
+    <version>2.8.1</version>
+    <time>1381399382</time>
+    <user>scarabeus_factory</user>
+    <comment>Manually install desktop file. Also added mimetypes, to emulate Qt4 creator behaviour.
+
+Please checkin to 13.1, as i already got verbal report about no mimetype handling</comment>
+    <requestid>202750</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f5e39063348e5dbd85c3a73034a6393c</srcmd5>
+    <version>3.0.0~beta</version>
+    <time>1383912134</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.0.0 beta. Resolved issues mentioned in sr#206051</comment>
+    <requestid>206230</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8b0977179015e7b9c59e8203fbc7cdc4</srcmd5>
+    <version>3.0.0~rc1</version>
+    <time>1386066293</time>
+    <user>coolo</user>
+    <comment>Update to 5.2.0 rc1</comment>
+    <requestid>209077</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>50f2a4c026f36b52b0dfc1c2d67a9061</srcmd5>
+    <version>3.0.0</version>
+    <time>1387259532</time>
+    <user>coolo</user>
+    <comment>Update to 5.2.0 final</comment>
+    <requestid>210875</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>cb7f67402bbaf00e3175152ea054a1fd</srcmd5>
+    <version>3.0.0</version>
+    <time>1387453266</time>
+    <user>coolo</user>
+    <comment>Move away from pkgconfig(...) BuildRequires and just use libqt5-$upstreammodulename-(devel|private-headers-devel)
+
+
+
+No hurry to checkin ;-) but it is needed for QtLocation</comment>
+    <requestid>211342</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6d9fc908b71db8e5f7a6111afdc8f746</srcmd5>
+    <version>3.0.1</version>
+    <time>1392736641</time>
+    <user>coolo</user>
+    <comment>Update to 3.0.1</comment>
+    <requestid>221469</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>767d49bf67f229ce60e5cc72fc0f8ce2</srcmd5>
+    <version>3.1.0~beta</version>
+    <time>1395908978</time>
+    <user>coolo</user>
+    <comment>Update to 3.1.0 beta</comment>
+    <requestid>227518</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>99e18e05d6f7e774163a303570961034</srcmd5>
+    <version>3.1.0~rc1</version>
+    <time>1396709231</time>
+    <user>coolo</user>
+    <comment>- Update to 3.1.0 rc1
+  * For more details see:
+    http://blog.qt.digia.com/blog/2014/04/03/qt-creator-3-1-rc1-released/
+- Only enable clang plugins on arches where clang is available
+- Move the creator back to standard location
+- Added conflict with Qt4 version
+- Drop plugin_path.diff
+- Build qbs plugin
+- Added qbs-path.diff (imported from Qt4 version), so qbs plugin gets installed to correct location
+- Removed unused, and not needed sed workarounds from spec
+- Improve logic for required libQt5Designer package</comment>
+    <requestid>229071</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6fb2bfb21f3ba1a1bee5221a9045cab3</srcmd5>
+    <version>3.1.0</version>
+    <time>1397736663</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.1.0 final</comment>
+    <requestid>230365</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4418efe78fb95ef1c41cc55e2a249dfe</srcmd5>
+    <version>3.1.1</version>
+    <time>1400733506</time>
+    <user>coolo</user>
+    <comment>Update to 3.1.1</comment>
+    <requestid>234806</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4d4bee962bf2070ad8db486c7f93f19a</srcmd5>
+    <version>3.1.2</version>
+    <time>1404157460</time>
+    <user>coolo</user>
+    <comment>- Update to 3.1.2
+  * Bugfix release, for more details please see:
+    http://blog.qt.digia.com/blog/2014/06/25/qt-5-3-1-released/</comment>
+    <requestid>238712</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>4d4bee962bf2070ad8db486c7f93f19a</srcmd5>
+    <version>3.1.2</version>
+    <time>1409301676</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>74d2d87c586e82db9dda00ca47da5587</srcmd5>
+    <version>3.2.0</version>
+    <time>1410204520</time>
+    <user>coolo</user>
+    <comment>Update to 3.2.0
+  * Block selections in text editors now allow you to do “column editing”, meaning that all selected lines are edited simultaneously (Qt Creator Manual)
+  * Context help can now be configured to open in an external window (without disabling Help mode)
+  * Support for C99 designated initializers and concatenated strings was added to the C++ code model, as well as improvements to encoding handling and lambda  support and many other things
+  * More panes are now searchable with Ctrl+F, for example the project tree
+  * The QML profiler received many performance and stability improvements again
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/08/19/qt-creator-3-2-0-released/</comment>
+    <requestid>247865</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>52df752e20547d6ad9899f2f35f542c4</srcmd5>
+    <version>3.2.1</version>
+    <time>1411019822</time>
+    <user>coolo</user>
+    <comment>Update to 3.2.1</comment>
+    <requestid>249674</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>7f9e5e73612c7b2e45aac99eddce790e</srcmd5>
+    <version>3.2.1</version>
+    <time>1412155340</time>
+    <user>coolo</user>
+    <comment>- Explicitly require latest libQt5Script5 (needed by plugins). Qt Creator crashes with old versions.</comment>
+    <requestid>252299</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b22a1cd0a9445e5913e0394c5b4add3e</srcmd5>
+    <version>3.2.2</version>
+    <time>1415118536</time>
+    <user>coolo</user>
+    <comment>- Update to 3.2.2
+  * Bugfix release
+    * Editing
+      * Fixed crash with Toggle Comment Selection
+        (QTCREATORBUG-12987)
+      * Fixed that Select All set the cursor to top of document
+        (QTCREATORBUG-12860)
+    * Help
+      * Fixed crash with help index locator filter
+    * Managing and Building Projects
+      * Fixed that closing Qt Creator while Projects mode
+        is active lost all session data (QTCREATORBUG-13098)
+    * CMake Projects
+      * Fixed crash when selecting make target
+        (QTCREATORBUG-13129)
+    * Generic Projects
+      * Fixed that include paths were not updated when
+        files are added (QTCREATORBUG-12873)
+    * Version Control Systems
+      * ClearCase
+      * Fixed that reserved checkout was performed even when
+        unchecking the checkbox (QTCREATORBUG-12847)
+- Added explicit libQt5Sql5-sqlite BuildRequires</comment>
+    <requestid>259301</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2c26242d16d70fd93321415bd4f0bda8</srcmd5>
+    <version>3.3.0</version>
+    <time>1419159441</time>
+    <user>coolo</user>
+    <comment>Update to 5.4.0</comment>
+    <requestid>264853</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>a59b9e752ad21a3604959a77e2360b87</srcmd5>
+    <version>3.3.0</version>
+    <time>1423130414</time>
+    <user>dimstar_suse</user>
+    <comment>- Add make-qt-creator-build-with-Werror=date-time.patch:
+  don't embedded date &amp; time into qtcreator binary &amp; plugins
+- Extend rpmlintrc file to avoid duplicates warnings, we don't wont
+  to use fdupes due to unpredictable symlinking</comment>
+    <requestid>283958</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ef91d811c8cee7f81084151e47859c20</srcmd5>
+    <version>3.3.1</version>
+    <time>1425220059</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.3.1</comment>
+    <requestid>287929</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ea5630f2becc642304afcb0b8915f57d</srcmd5>
+    <version>3.4.0~rc1</version>
+    <time>1429186366</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.4. rc1</comment>
+    <requestid>296818</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>76bf7fa29d1c4516b1b86662ccf8eec3</srcmd5>
+    <version>3.4.0</version>
+    <time>1432799709</time>
+    <user>dimstar_suse</user>
+    <comment>BuildRequire libQt5WebKitWidgets-deve to make help pages show like Qt assistant</comment>
+    <requestid>308875</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6638201acdec8e7587d2d6f6ed632f97</srcmd5>
+    <version>3.4.1</version>
+    <time>1433577175</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.4.1</comment>
+    <requestid>310423</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>40ca92db2d887c7a45f56358a96f8772</srcmd5>
+    <version>3.5.0</version>
+    <time>1443335907</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>329772</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>57a39d34e364dee99b164417b7c46475</srcmd5>
+    <version>3.5.0</version>
+    <time>1444130716</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>335039</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d4684c74f5dc4176f3d2f8a1b5cb845e</srcmd5>
+    <version>3.5.1</version>
+    <time>1446049863</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>341221</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>ea3d296d433b9753cc49e058824eacc2</srcmd5>
+    <version>3.5.1</version>
+    <time>1446209032</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341532</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>5caad333d93b8c389c47f286386cbc1c</srcmd5>
+    <version>3.5.1</version>
+    <time>1449687119</time>
+    <user>dimstar_suse</user>
+    <comment>Fix boo#957185</comment>
+    <requestid>347646</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8016a782edef08acbe3cc14143489e01</srcmd5>
+    <version>3.6.0</version>
+    <time>1452721563</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.6.0</comment>
+    <requestid>353261</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>35112fa1e3178064d6b33383add85557</srcmd5>
+    <version>3.6.0</version>
+    <time>1453508199</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for boo#962650 + preparation for the qt-creator (Qt4 variant) removal from O:F.
+</comment>
+    <requestid>355212</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>aa91cb27e38e00f16a09b5a588612acb</srcmd5>
+    <version>3.6.0</version>
+    <time>1460740326</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>389558</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a3870593873b54a8765480a66d0b8283</srcmd5>
+    <version>4.0.0</version>
+    <time>1464014358</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397046</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>b0115ec882aeecc6abbd8fd67833306e</srcmd5>
+    <version>4.0.0</version>
+    <time>1464594972</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398284</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>e3abb50ab207a2b0340be35390a92761</srcmd5>
+    <version>4.0.0</version>
+    <time>1464690312</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398925</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>544d00985c7c04ca4c88169682a4747c</srcmd5>
+    <version>4.0.1</version>
+    <time>1468579543</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.1
+  * For more details see:
+    https://blog.qt.io/blog/2016/06/08/qt-creator-4-0-1-released/</comment>
+    <requestid>401321</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>03ee5bbee5ae38d1cb015bfbe6fd8b76</srcmd5>
+    <version>4.1.0</version>
+    <time>1479837552</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.1.0
+* For more details see:
+  http://blog.qt.io/blog/2016/08/25/qt-creator-4-1-0-released/</comment>
+    <requestid>441309</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>331e01623c7dcfa2d45a053728b4ca06</srcmd5>
+    <version>4.2.0</version>
+    <time>1483554985</time>
+    <user>lnussel_factory</user>
+    <comment></comment>
+    <requestid>448046</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>93f2fc664836d781265b253516d15628</srcmd5>
+    <version>4.2.0</version>
+    <time>1484914058</time>
+    <user>dimstar_suse</user>
+    <comment>This should enable the clang plugin again.</comment>
+    <requestid>450005</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>718b0ff85cb1715d48a2186d7dbd8a82</srcmd5>
+    <version>4.2.0</version>
+    <time>1485168025</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451721</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>0837039d232ed90ccbf4b6fc98701727</srcmd5>
+    <version>4.2.1</version>
+    <time>1489536419</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479223</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>b17ddeb6893043dc5f6eae76d4720656</srcmd5>
+    <version>4.2.1</version>
+    <time>1493103523</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489971</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b69fe4a906e21e6ac2789cfbbf6fe9ca</srcmd5>
+    <version>4.3.0</version>
+    <time>1495883958</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.3.0
+  * For more details see:
+    https://blog.qt.io/blog/2017/05/24/qt-creator-4-3-0-released/
+
+- Update to 4.3.0 RC1
+  * For more details see:
+    http://blog.qt.io/blog/2017/05/09/qt-creator-4-3-rc1-released/
+- Remove qtcreator.desktop, file now upstream
+- Add patch to fix build failure:
+  * disable_failing_cxxflags.diff
+
+- Update to 4.2.2
+  * For more details see:
+    https://blog.qt.io/blog/2017/04/21/qt-creator-4-2-2-released/</comment>
+    <requestid>498337</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a18db4577897b19e354438b0bc593b59</srcmd5>
+    <version>4.3.1</version>
+    <time>1499510029</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.3.1
+  * Fixes for crashes and other annoyances
+  * Changelog available on
+    https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.3.1.md?h=4.3</comment>
+    <requestid>507660</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>956135cf7e3933e476295b2b052b8843</srcmd5>
+    <version>4.4.0</version>
+    <time>1504981530</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521655</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>fb63d651a80d198ae132fc2bd5576335</srcmd5>
+    <version>4.4.0</version>
+    <time>1506340795</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building of the QmlDesigner plugin by adding libqt5-qtquickcontrols
+  BuildReq (and matching runtime Requires)</comment>
+    <requestid>528534</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>331981b5345cf2fe9ea81889171622bd</srcmd5>
+    <version>4.5.0</version>
+    <time>1516359028</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560254</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>b517c23d46ef6c24125354698c9dd063</srcmd5>
+    <version>4.5.0</version>
+    <time>1517668968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>572202</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>69496598e791c2bd549e19b61f2b4e71</srcmd5>
+    <version>4.5.0</version>
+    <time>1520021492</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581737</requestid>
+  </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>48d6df27aa50b8a94eb4f35e93ef3773</srcmd5>
+    <version>4.5.0</version>
+    <time>1523875946</time>
+    <user>dimstar_suse</user>
+    <comment>Add patch headers to fix-application-output.patch (forwarded request 596502 from javierllorente)</comment>
+    <requestid>596889</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>53ca2dd43bed9e6ec3cb15d180920121</srcmd5>
+    <version>4.6.0</version>
+    <time>1524238088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597127</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>5f40568f92e85d4f3c3a4a80a48cc32d</srcmd5>
+    <version>4.6.0</version>
+    <time>1524838182</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix plugin-devel subpackage
+  * Add *.hpp files
+  * Add 3rd party license files</comment>
+    <requestid>601832</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>8f2bfc333e8354f59fe77cde70b95b45</srcmd5>
+    <version>4.6.1</version>
+    <time>1525611754</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>604515</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>7959a537dd5b14226ab89321a9d2c283</srcmd5>
+    <version>4.6.1</version>
+    <time>1527583509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612368</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>0ee4e30367873cf96b0f12f5c48e67b6</srcmd5>
+    <version>4.7.0</version>
+    <time>1536833426</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>632762</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>e03f7c45e4138c2f0b69137755e807ad</srcmd5>
+    <version>4.7.1</version>
+    <time>1539589576</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.7.1
+  * Fixed that generic highlighting could use unreadable colors
+  (QTCREATORBUG-20919)
+  * Fixed jumping text cursor when editing custom executable path
+  * Fixed C++ version passed to code model (QTCREATORBUG-20909)
+  * Fixed include order for Clang headers
+  * Fixed that comments could break reformatting (QTCREATORBUG-21036)
+  * Fixed remote debugging command line argument (QTCREATORBUG-20928)
+  * Fixed environment for `Start and Debug External Application`
+  (QTCREATORBUG-20185)
+  * Fixed GDB built-in pretty printer handling (QTCREATORBUG-20770)
+  * Fixed pretty printing of enums
+  * Fixed re-enabling breakpoints (QTCREATORBUG-20795)
+  * Fixed `Attach to QML Port` (QTCREATORBUG-20168)
+  * Switched SSH support to use Botan 2 (QTCREATORBUG-18802)
+- Removed 0001-Build-with-Botan-2.patch (merged upstream) / updated spec</comment>
+    <requestid>641940</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>8aae3b176c1d32618e5dffb7cb5908c2</srcmd5>
+    <version>4.8.0~beta1</version>
+    <time>1542282038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648962</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>e03f7c45e4138c2f0b69137755e807ad</srcmd5>
+    <version>4.7.1</version>
+    <time>1543224877</time>
+    <user>dimstar_suse</user>
+    <comment>The beta was not meant for TW.</comment>
+    <requestid>651675</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>78b5553945ff3ad8fe012de1afde5838</srcmd5>
+    <version>4.8.0~rc1</version>
+    <time>1544189923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655885</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>8ce2713b11d2ebae4e3869220685416b</srcmd5>
+    <version>4.8.0</version>
+    <time>1545306870</time>
+    <user>dimstar_suse</user>
+    <comment>- Set Version correctly</comment>
+    <requestid>660018</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>43a4307b7b5df35fc7ed934d34a81a2c</srcmd5>
+    <version>4.8.1</version>
+    <time>1549458638</time>
+    <user>coolo</user>
+    <comment>- Make use_system_botan conditional, and build without it on Leap
+  42.3 to fix build (forwarded request 672041 from wolfi323)</comment>
+    <requestid>672060</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>b1f03b0ae28a6b2b674f2f89ed242582</srcmd5>
+    <version>4.8.1</version>
+    <time>1550151067</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable clangcodemodel for Leap 15.1+ as well
+
+- Work around QTCREATORBUG-21972 by requiring a specific clang version</comment>
+    <requestid>673371</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>96978e61c59ac30c647115df5188dfdd</srcmd5>
+    <version>4.8.2</version>
+    <time>1551687789</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680972</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>72714f94795bcc03187c3889c16d7630</srcmd5>
+    <version>4.9.1</version>
+    <time>1560971046</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the 'License:' tag.
+- Update to 4.9.1</comment>
+    <requestid>707766</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>8e93ab9cbcdbf45c1a451585bc48a9e2</srcmd5>
+    <version>4.9.2</version>
+    <time>1561970672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712678</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>567af9dda8dad73f920c41bff0328452</srcmd5>
+    <version>4.10.0</version>
+    <time>1567849999</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728631</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>4979c9d4514d32186455fad232cce4ae</srcmd5>
+    <version>4.10.0</version>
+    <time>1568191228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729918</requestid>
+  </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>620fbe387afdf8819b9e6e2c3c7b880a</srcmd5>
+    <version>4.10.0</version>
+    <time>1569235070</time>
+    <user>dimstar_suse</user>
+    <comment>Add new pri files to plugin-devel subpackage, which are neccessary for build 3rd part plugins. (forwarded request 732098 from hgraeber)</comment>
+    <requestid>732111</requestid>
+  </revision>
+</revisionlist>

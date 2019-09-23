@@ -1,0 +1,42 @@
+--- configure.in
++++ configure.in
+@@ -60,7 +60,7 @@
+ 
+ if test "x$warnings" = "xyes"; then
+   if test "x$ac_cv_prog_gxx" = "xyes"; then
+-    CXXFLAGS="-ansi -pedantic $CXXFLAGS -Wall -Werror"
++    CXXFLAGS="-ansi -pedantic $CXXFLAGS -Wall"
+   fi
+ fi
+ 
+--- libpalm/Block.h
++++ libpalm/Block.h
+@@ -176,7 +176,7 @@
+ 	size_type m_size;
+     };
+ 
+-};
++}
+ 
+ bool operator == (const PalmLib::Block& lhs, const PalmLib::Block& rhs);
+ 
+--- libpalm/File.h
++++ libpalm/File.h
+@@ -89,6 +89,6 @@
+ 	uid_map_t m_uid_map;
+     };
+ 
+-};
++}
+ 
+ #endif
+--- libsupport/csvfile.cpp
++++ libsupport/csvfile.cpp
+@@ -4,6 +4,7 @@
+ #include <fstream>
+ #include <sstream>
+ #include <string>
++#include <cstring>
+ #include <stdexcept>
+ #include <utility>
+ 

@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Fri Apr 17 08:39:35 UTC 2015 - coolo@suse.com
+
+- updated to 0.34
+   see /usr/share/doc/packages/perl-aliased/Changes
+
+  0.34  2015-01-03 20:39:44Z
+        - re-release to fix problematic $VERSION declaration (RT#101095)
+
+-------------------------------------------------------------------
+Sat Dec 27 22:45:29 UTC 2014 - lars@linux-schulserver.de
+
+- update to 0.33:
+  + fix warnings on perl 5.21.6 and up (RT#100359; thanks, Father
+    Chrysostomos!)
+  + Don't inherit from Exporter (via Olivier Mengué)
+  + Fix docs issues (via Grzegorz Rożniecki)
+
+-------------------------------------------------------------------
+Wed Jul  3 08:33:19 UTC 2013 - coolo@suse.com
+
+- updated to 0.31
+      Added prefix() function. [rt#48289]
+      Moved Test::More to build_requires [rt#48926]
+      Moved author tests to xt/author
+
+-------------------------------------------------------------------
+Thu Nov 17 12:47:33 UTC 2011 - coolo@suse.com
+
+- regnerate with cpanspec 1.78.05
+
+-------------------------------------------------------------------
+Wed Dec  1 09:44:28 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sat Dec 26 20:37:17 UTC 2009 - lars@linux-schulserver.de
+
+- initial version 0.30
+

@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>37c44869b4168597613e9232fe17dcad</srcmd5>
+    <version>0.3.1</version>
+    <time>1425892111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>288286</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>978c8244eaa3b55ff1339cdfd7037ae6</srcmd5>
+    <version>0.3.1</version>
+    <time>1428391767</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-build-resolve-compiler-warnings.patch</comment>
+    <requestid>294344</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6cc09c2a98167d8b2b305112d719ff95</srcmd5>
+    <version>0.3.2.3</version>
+    <time>1451674129</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>351379</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d2782ebc379b03bf53000cb9444b5e93</srcmd5>
+    <version>0.3.2.3</version>
+    <time>1454352934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>355541</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>de60cf551d35a772c8fde0aca1f3f306</srcmd5>
+    <version>0.3.2.24</version>
+    <time>1478871231</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream snapshot 0.3.2.24
+fix build with ortp 0.27</comment>
+    <requestid>432152</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0224492c9f969088813297ae78f1ea33</srcmd5>
+    <version>0.4.0.2</version>
+    <time>1507570885</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream snapshot 0.4.0.2</comment>
+    <requestid>530612</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c3d65a26dba793faa5ce30847711d3f5</srcmd5>
+    <version>0.4.0.2</version>
+    <time>1530866810</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621089</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>933825f17d9abc7d76921e267e3025c8</srcmd5>
+    <version>0.5.1</version>
+    <time>1546695701</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.5.1</comment>
+    <requestid>657186</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d8e3d9f5f02bda8937ac5d7bb34662ac</srcmd5>
+    <version>0.6.0</version>
+    <time>1549017891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669394</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>15899f625865d90dce6dabcaa2e586b5</srcmd5>
+    <version>0.7.0</version>
+    <time>1566463790</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.7.0</comment>
+    <requestid>723411</requestid>
+  </revision>
+</revisionlist>

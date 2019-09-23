@@ -1,0 +1,40 @@
+From 3632ab223d320ac2f486363d6edd3c68fbdebe1b Mon Sep 17 00:00:00 2001
+From: boombatower <jimmy@boombatower.com>
+Date: Fri, 9 Sep 2016 21:41:28 -0500
+Subject: [PATCH] Handle no-return-in-nonvoid-function.
+
+---
+ toonz/sources/image/ffmpeg/tiio_ffmpeg.cpp | 4 ++--
+ toonz/sources/tnztools/trackertool.cpp     | 1 +
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/toonz/sources/image/ffmpeg/tiio_ffmpeg.cpp b/toonz/sources/image/ffmpeg/tiio_ffmpeg.cpp
+index 3f35abe..baa3c84 100644
+--- a/toonz/sources/image/ffmpeg/tiio_ffmpeg.cpp
++++ b/toonz/sources/image/ffmpeg/tiio_ffmpeg.cpp
+@@ -289,8 +289,8 @@ TRasterImageP Ffmpeg::getImage(int frameIndex) {
+       ret->yMirror();
+       return TRasterImageP(ret);
+     }
+-  } else
+-    return TRasterImageP();
++  }
++  return TRasterImageP();
+ }
+ 
+ double Ffmpeg::getFrameRate() {
+diff --git a/toonz/sources/tnztools/trackertool.cpp b/toonz/sources/tnztools/trackertool.cpp
+index 33d8202..c36ac77 100644
+--- a/toonz/sources/tnztools/trackertool.cpp
++++ b/toonz/sources/tnztools/trackertool.cpp
+@@ -112,6 +112,7 @@ hook->setAPos(fid, hook->getBPos(fid));
+ }
+     makeCurrent();
+ return TDataP(); */
++    return TDataP();
+   }
+ 
+   TDataP pasteData(const TDataP &data) { return TDataP(); }
+-- 
+2.9.3
+

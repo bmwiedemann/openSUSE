@@ -1,0 +1,9 @@
+<package name="almanah" project="openSUSE:Factory">
+  <title>almanah</title>
+  <description>
+Almanah is a small GTK+ application to allow you to keep a diary of your life.
+
+  </description>
+  <devel project="devel:openSUSE:Factory:Apps" package="almanah"/>
+  <url>https://live.gnome.org/Almanah_Diary</url>
+</package>

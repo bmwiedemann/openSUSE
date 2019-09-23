@@ -1,0 +1,24 @@
+<package name="python-SecretStorage" project="openSUSE:Factory">
+  <title>Python bindings to FreeDesktoporg Secret Service API</title>
+  <description>This module provides a way for securely storing passwords and other secrets.
+
+It uses D-Bus `Secret Service`_ API that is supported by GNOME Keyring
+(since version 2.30) and KSecretsService.
+
+The main classes provided are ``secretstorage.Item``, representing a secret
+item (that has a *label*, a *secret* and some *attributes*) and
+``secretstorage.Collection``, a place items are stored in.
+
+SecretStorage supports most of the functions provided by Secret Service,
+including creating and deleting items and collections, editing items,
+locking and unlocking collections (asynchronous unlocking is also supported).
+
+The documentation can be found on `pythonhosted.org`_.
+
+.. _`Secret Service`: https://specifications.freedesktop.org/secret-service/
+.. _`pythonhosted.org`: https://pythonhosted.org/SecretStorage/
+
+</description>
+  <devel project="devel:languages:python" package="python-SecretStorage"/>
+  <url>https://github.com/mitya57/secretstorage</url>
+</package>

@@ -1,0 +1,5 @@
+addFilter(".*name-repeated-in-summary.*")
+addFilter(".*binary-or-shlib-calls-gethostbyname.*")
+addFilter(".*systemd-service-without-service_.*uucp@.service.*")
+addFilter(".*hidden-file-or-dir.*/etc/uucp/.bashrc.*")
+addFilter(".*tmpfile-not-in-filelist.*/run/.*")

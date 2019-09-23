@@ -1,0 +1,32 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Subject: Allow to override the tinfo library used for eppic
+Upstream: never; only needed for compatibility with older ncurses
+
+Allow to override the "-ltinfo" linker option with a make variable.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ Makefile |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+--- a/Makefile
++++ b/Makefile
+@@ -66,6 +66,8 @@ LIBS := -lsnappy $(LIBS)
+ CFLAGS += -DUSESNAPPY
+ endif
+ 
++TINFOLIB = -ltinfo
++
+ LIBS := -lpthread $(LIBS)
+ 
+ try-run = $(shell set -e;		\
+@@ -101,7 +103,7 @@ makedumpfile: $(SRC_BASE) $(OBJ_PART) $(
+ 	gzip -c ./makedumpfile.conf.5 > ./makedumpfile.conf.5.gz
+ 
+ eppic_makedumpfile.so: extension_eppic.c
+-	$(CC) $(CFLAGS) $(LDFLAGS) -shared -rdynamic -o $@ extension_eppic.c -fPIC -leppic -ltinfo
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared -rdynamic -o $@ extension_eppic.c -fPIC -leppic ${TINFOLIB}
+ 
+ clean:
+ 	rm -f $(OBJ) $(OBJ_PART) $(OBJ_ARCH) makedumpfile makedumpfile.8.gz makedumpfile.conf.5.gz

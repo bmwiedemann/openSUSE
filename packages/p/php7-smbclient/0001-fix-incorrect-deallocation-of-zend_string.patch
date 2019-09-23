@@ -1,0 +1,36 @@
+From 8945cd9d07069af37aedd42593638cf6b49c815f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Cristian=20Rodr=C3=ADguez?= <crodriguez@owncloud.com>
+Date: Fri, 11 Jan 2019 10:24:50 -0300
+Subject: [PATCH] fix incorrect deallocation of zend_string
+
+zend_strings are to be zend_string_release'd and emalloc'ed
+memory efree'd.
+---
+ smbclient.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/smbclient.c b/smbclient.c
+index 81ebd5a..bae1d54 100644
+--- a/smbclient.c
++++ b/smbclient.c
+@@ -1345,15 +1345,16 @@ PHP_FUNCTION(smbclient_read)
+ 
+ 	if ((ZSTR_LEN(buf) = smbc_read(state->ctx, file, ZSTR_VAL(buf), count)) >= 0) {
+ 		RETURN_STR(buf);
++		zend_string_release(buf);
+ #else
+ 	void *buf = emalloc(count);
+ 	ssize_t nbytes;
+ 
+ 	if ((nbytes = smbc_read(state->ctx, file, buf, count)) >= 0) {
+ 		RETURN_STRINGL(buf, nbytes, 0);
++		efree(buf);
+ #endif
+ 	}
+-	efree(buf);
+ 	switch (state->err = errno) {
+ 		case EISDIR: php_error(E_WARNING, "Read error: Is a directory"); break;
+ 		case EBADF: php_error(E_WARNING, "Read error: Not a valid file resource or not open for reading"); break;
+-- 
+2.20.1
+

@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>342f14f2effad048a3fdfe08bc41c932</srcmd5>
+    <version>2.2.3</version>
+    <time>1537971083</time>
+    <user>dimstar_suse</user>
+    <comment>- Create python2-only version.  Starting with matplotlib 3.0, Python 2 support has been dropped.</comment>
+    <requestid>636482</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>42c41899738c69f6b4d46466d0c67788</srcmd5>
+    <version>2.2.3</version>
+    <time>1539013716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640484</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d4d04fb0cb322f460fd686c74ef1de35</srcmd5>
+    <version>2.2.3</version>
+    <time>1551298338</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>679812</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>837b1bed0952d562e6c5413c9c6d6e92</srcmd5>
+    <version>2.2.3</version>
+    <time>1565096943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720050</requestid>
+  </revision>
+</revisionlist>

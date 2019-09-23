@@ -1,0 +1,8 @@
+<package name="python-oauth2" project="openSUSE:Factory">
+  <title>Python Library to create OAuth Clients and Servers</title>
+  <description>A library for Python to create OAuth clients and servers.
+
+</description>
+  <devel project="devel:languages:python" package="python-oauth2"/>
+  <url>https://github.com/simplegeo/python-oauth2</url>
+</package>

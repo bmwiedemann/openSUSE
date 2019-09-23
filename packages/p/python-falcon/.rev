@@ -1,0 +1,113 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>debe709fbe59d8a71e1c6b5a6a04bf56</srcmd5>
+    <version>0.1.7</version>
+    <time>1380608999</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>201504</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>debe709fbe59d8a71e1c6b5a6a04bf56</srcmd5>
+    <version>0.1.7</version>
+    <time>1409302869</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>076395f0dbb127e082dd18b7dfff7771</srcmd5>
+    <version>0.2</version>
+    <time>1430983359</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305662</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>66de9a09d218a3b7280eee605ab6eaff</srcmd5>
+    <version>0.2</version>
+    <time>1454352973</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356711</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>84365f7c6e9bded741d8dad2579980e7</srcmd5>
+    <version>0.3.0</version>
+    <time>1458333607</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>367884</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4b6341d8b31ef13d1261aa5e11c4111d</srcmd5>
+    <version>1.0.0</version>
+    <time>1485382976</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>445255</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0e2a29a890585961573d3c8ed2005f0d</srcmd5>
+    <version>1.0.0</version>
+    <time>1488560165</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>462020</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cdb322107b5c78e773d651490d1b0cbc</srcmd5>
+    <version>1.2.0</version>
+    <time>1506453246</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520562</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>41b1eb1825b1bf2899478aa6c3c30c65</srcmd5>
+    <version>1.3.0</version>
+    <time>1507755425</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>531783</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7db7d072161fa7d3f6e6652b350f92ac</srcmd5>
+    <version>1.4.1</version>
+    <time>1521579340</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583416</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>113ffe9e80ff48da58fd0dcb4246dff3</srcmd5>
+    <version>1.4.1</version>
+    <time>1524238305</time>
+    <user>dimstar_suse</user>
+    <comment>- use %license macro (forwarded request 598821 from mimi_vx)</comment>
+    <requestid>598822</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>60ca505fb4834a8f1dc0ba5ec8c2aba2</srcmd5>
+    <version>2.0.0</version>
+    <time>1560338235</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop python-mujson BuildRequires
+
+- Drop %patch1 which is no longer available
+- Drop python-rapidjson dependency again
+
+- Add dependency over the rapidjson and remove patch:
+  * python-falcon-no-rapidjson.patch
+
+- version update to 2.0.0
+  * many changes, see CHANGES.rst
+- deleted patches
+  - remove_failing_test.patch (not needed)
+- added patches
+  rapidjson implementation python binding not available.
+  + python-falcon-no-rapidjson.patch
+  github pygments style is not available
+  + python-falcon-sphinx-pygments-style.patch</comment>
+    <requestid>709105</requestid>
+  </revision>
+</revisionlist>

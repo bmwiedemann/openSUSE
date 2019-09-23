@@ -1,0 +1,10 @@
+<package name="shibboleth-sp" project="openSUSE:Factory">
+  <title>Open source system for attribute-based Web SSO</title>
+  <description>Shibboleth is a Web Single Sign-On implementations based on OpenSAML
+that supports multiple protocols, federated identity, and the extensible
+exchange of rich attributes subject to privacy controls.
+
+This package contains the Shibboleth Service Provider runtime libraries,
+daemon, default plugins, and Apache module(s).</description>
+  <devel project="Apache:Shibboleth" package="shibboleth-sp"/>
+</package>

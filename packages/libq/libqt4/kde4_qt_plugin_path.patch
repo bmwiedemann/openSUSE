@@ -1,0 +1,16 @@
+--- qt-everywhere-opensource-src-4.8.6.orig/src/corelib/kernel/qcoreapplication.cpp	2014-04-10 20:37:11.000000000 +0200
++++ qt-everywhere-opensource-src-4.8.6/src/corelib/kernel/qcoreapplication.cpp	2014-09-07 22:13:03.603316728 +0200
+@@ -2529,6 +2529,13 @@ QStringList QCoreApplication::libraryPat
+             if (!app_libpaths->contains(installPathPlugins))
+                 app_libpaths->append(installPathPlugins);
+         }
++
++        // make kde4 plugins known to QtLibrariesPaths
++        QString kde4PathPlugins = QLibraryInfo::location(QLibraryInfo::LibrariesPath) + QLatin1String("/kde4/plugins");
++        if (QFile::exists(kde4PathPlugins)) {
++            if (!app_libpaths->contains(kde4PathPlugins))
++                app_libpaths->append(kde4PathPlugins);
++        }
+ #endif
+ 
+         // If QCoreApplication is not yet instantiated,

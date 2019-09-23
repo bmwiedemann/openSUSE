@@ -1,0 +1,165 @@
+-------------------------------------------------------------------
+Fri May 17 05:15:40 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 6.19
+   see /usr/share/doc/packages/perl-Net-HTTP/Changes
+
+  6.19      2019-05-16 19:16:59Z
+      - partially skip live-https.t if there's no keep-alive connection (GH#58) (Slaven Rezić)
+      - set "x_static_install" : 1 in META files
+
+-------------------------------------------------------------------
+Thu May 10 05:39:52 UTC 2018 - coolo@suse.com
+
+- updated to 6.18
+   see /usr/share/doc/packages/perl-Net-HTTP/Changes
+
+  6.18      2018-05-09 14:55:43Z
+      - Move test that relies on http://httpbin.org to author tests
+
+-------------------------------------------------------------------
+Sat Sep  2 05:57:22 UTC 2017 - coolo@suse.com
+
+- updated to 6.17
+   see /usr/share/doc/packages/perl-Net-HTTP/Changes
+
+  6.17      2017-09-01 15:30:20Z
+      - Fix test which relied on cpan.org speaking plain HTTP GH#54 (Chase
+        Whitener)
+
+-------------------------------------------------------------------
+Tue May 30 06:15:25 UTC 2017 - coolo@suse.com
+
+- updated to 6.16
+   see /usr/share/doc/packages/perl-Net-HTTP/Changes
+
+  6.16      2017-05-29 10:46:24-04:00 America/Toronto
+      - Bump IO::Socket::SSL version from 1.38 to 2.012
+
+-------------------------------------------------------------------
+Tue May 16 06:16:57 UTC 2017 - coolo@suse.com
+
+- updated to 6.15
+   see /usr/share/doc/packages/perl-Net-HTTP/Changes
+
+  6.15      2017-05-12 14:57:02+02:00 Europe/Paris
+      - Fix t/rt-112313.t (Shoichi Kaji)
+
+-------------------------------------------------------------------
+Tue Apr 25 06:15:59 UTC 2017 - coolo@suse.com
+
+- updated to 6.14
+   see /usr/share/doc/packages/perl-Net-HTTP/Changes
+
+  6.14      2017-04-24 11:27:26-04:00 America/Toronto
+      - Improvements to live tests (Shoichi Kaji and Kent Fredric)
+      - Fix a bug where downloading files is sometimes very slow GH#44 (Shoichi
+        Kaji)
+
+-------------------------------------------------------------------
+Mon Feb 20 07:03:48 UTC 2017 - coolo@suse.com
+
+- updated to 6.13
+   see /usr/share/doc/packages/perl-Net-HTTP/Changes
+
+  6.13      2017-02-19 21:40:54-05:00 America/Toronto
+      - use EWOULDBLOCK as well on all places where EAGAIN is used (GH PR#24)
+
+-------------------------------------------------------------------
+Fri Jan  6 06:48:24 UTC 2017 - coolo@suse.com
+
+- updated to 6.12
+   see /usr/share/doc/packages/perl-Net-HTTP/Changes
+
+  6.12      2017-01-04 23:32:54-05:00 America/Toronto
+      - Fix prereqs
+
+-------------------------------------------------------------------
+Thu May 21 08:44:45 UTC 2015 - coolo@suse.com
+
+- updated to 6.09
+   see /usr/share/doc/packages/perl-Net-HTTP/Changes
+
+  Release history for Net-HTTP
+  
+  
+  _______________________________________________________________________________
+  2015-05-20 Net-HTTP 6.09
+  
+  Karen Etheridge (1):
+        No changes since 6.08_002
+  
+  
+  
+  _______________________________________________________________________________
+  2015-05-02 Net-HTTP 6.08_002
+  
+  Karen Etheridge (1):
+        fix foolish $VERSION error in 6.08_001
+  
+  
+  
+  _______________________________________________________________________________
+  2015-05-01 Net-HTTP 6.08_001
+  
+  Mark Overmeer (1):
+        resolve issues with SSL by reading bytes still waiting to be read after
+        the initial 1024 bytes [RT#104122]
+  
+  
+  
+  _______________________________________________________________________________
+
+-------------------------------------------------------------------
+Mon Sep 15 12:52:31 UTC 2014 - coolo@suse.com
+
+- updated to 6.07
+ Jason Fesler (1):
+     Opportunistically use IO::Socket::IP or IO::Socket::INET6.
+     Properly parse IPv6 literal addreses with optional port numbers. [RT#75618]
+
+-------------------------------------------------------------------
+Wed Jun  5 19:17:49 UTC 2013 - coolo@suse.com
+
+- updated to 6.06
+      IO::Socket::SSL doesn't play well with select() [RT#81237]
+      Convert to Test::More style and disable test on Windows [RT#81090]
+
+-------------------------------------------------------------------
+Fri Feb 17 08:44:42 UTC 2012 - coolo@suse.com
+
+- updated to 6.03
+  Restore blocking override for Net::SSL [RT#72790]
+  Restore perl-5.6 compatiblity.
+
+-------------------------------------------------------------------
+Mon Feb 13 14:08:41 UTC 2012 - coolo@suse.com
+
+- updated to 6.02
+ * Don't disable blocking method [RT#72580]
+ * Don't stop on unrecognized Makefile.PL arguments [RT#68337]
+ * Document Net:HTTPS [RT#71599]
+
+-------------------------------------------------------------------
+Mon Aug 29 14:29:41 UTC 2011 - chris@computersalat.de
+
+- update to 6.01
+  * Don't run live test by default.
+    Run 'perl Makefile.PL --live-tests' to enable.
+  * More relaxed apache test; should pass even if proxies has added headers.
+- fix build for CentOS
+  * Unknown tag: Recommends:
+
+-------------------------------------------------------------------
+Wed Mar 16 23:49:33 UTC 2011 - chris@computersalat.de
+
+- fix deps
+  o add perl(Compress::Raw::Zlib), perl(IO::Compress::Gzip)
+  o Recommends: perl(IO::Socket::SSL) >= 1.38
+
+-------------------------------------------------------------------
+Mon Mar 14 12:59:01 UTC 2011 - vcizek@novell.com
+
+- initial package 6.00
+  * created by cpanspec 1.78.03
+

@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Tue Jun  4 14:43:08 CEST 2019 - kukuk@suse.de
+
+- remove mozilla-nss-certs
+
+-------------------------------------------------------------------
+Wed May 29 15:41:25 CEST 2019 - kukuk@suse.de
+
+- Fix registry path
+
+-------------------------------------------------------------------
+Wed May 29 13:05:56 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Fix description
+- Fix labels
+- Fix image name
+
+-------------------------------------------------------------------
+Thu May 23 14:16:38 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial container

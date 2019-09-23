@@ -1,0 +1,220 @@
+diff -U 6 -H -d -r -N -- a/tryton/plugins/crypto/__init__.py b/tryton/plugins/crypto/__init__.py
+--- a/tryton/plugins/crypto/__init__.py	1970-01-01 01:00:00.000000000 +0100
++++ b/tryton/plugins/crypto/__init__.py	2014-07-15 10:33:53.000000000 +0200
+@@ -0,0 +1,179 @@
++# -*- coding: utf-8 -*-
++##############################################################################
++#
++#    GNU Health: The Free Health and Hospital Information System
++#    Copyright (C) 2008-2014 Luis Falcon <lfalcon@gnusolidario.org>
++#    Copyright (C) 2011-2014 GNU Solidario <health@gnusolidario.org>
++#
++#
++#    This program is free software: you can redistribute it and/or modify
++#    it under the terms of the GNU General Public License as published by
++#    the Free Software Foundation, either version 3 of the License, or
++#    (at your option) any later version.
++#
++#    This program is distributed in the hope that it will be useful,
++#    but WITHOUT ANY WARRANTY; without even the implied warranty of
++#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#    GNU General Public License for more details.
++#
++#    You should have received a copy of the GNU General Public License
++#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++##############################################################################
++
++import tryton.rpc as rpc
++from tryton.common import RPCExecute, warning, message
++from tryton.gui.window.form import Form
++import gettext
++
++try: 
++    import gnupg
++except:
++    warning(
++        ('Document Encryption / Signing disabled'
++         '\nPlease install the gnupg library '),
++        ('No GNU Privacy Guard library found !'),
++    )
++    
++    
++_ = gettext.gettext
++
++def sign_document(data):
++    """ Retrieve the hash value of the serialized document and
++        generates a clearsign signature using the user's private key
++        on the client side via GNU Privacy Guard - GPG -"""
++
++    gpg = gnupg.GPG()
++
++    document_model = data['model']
++
++    """ Don't allow signing more than one document at a time
++        To avoid signing unwanted / unread documents
++    """
++
++    if (len(data['ids']) > 1):
++        warning(
++            _('For security reasons, Please sign one document at a time'),
++            _('Multiple records selected !'),
++        )
++        return
++
++    """ Verify that the document handles digital signatures """
++
++    try:
++        record_vals = rpc.execute(
++            'model', document_model, 'read',
++            data['ids'],
++            ['document_digest', 'digital_signature'], rpc.CONTEXT)
++
++    except:
++        warning(
++            _('Please enable the model for digital signature'),
++            _('No Digest or Digital Signature fields found !'),
++        )
++        return
++
++    digest = record_vals[0]['document_digest']
++
++    """ Check that the document hasn't been signed already """
++
++    if record_vals[0]['digital_signature']:
++        warning(
++            _('Document already signed'),
++            _('This record has been already signed'),
++        )
++        return
++
++    try:
++        gpg_signature = gpg.sign(digest, clearsign=True)
++
++    except:
++        warning(
++            _('Error when signing the document'),
++            _('Please check your encryption settings'),
++        )
++
++    """
++    Set the clearsigned digest
++    """
++    try:
++        RPCExecute(
++            'model', document_model, 'set_signature',
++            data, str(gpg_signature))
++
++    except:
++        warning(
++            _('Error when saving the digital signature'),
++            _('The signature was generated but NOT saved !'),
++        )
++
++    else:
++        message(_('Document digitally signed'))
++
++        # TODO
++        # Reload the record view after storing the digital signature
++        # sig_reload or other method to check.
++        # a = Form(document_model, data['ids'])
++        # a.sig_reload()
++        # a.message_info(_('Document digitally signed'), color='blue')
++
++
++def verify_document(data):
++    """ Verify the digital signature of the document """
++
++    gpg = gnupg.GPG()
++
++    document_model = data['model']
++
++    """ Verify that the document handles digital signatures """
++
++    try:
++        record_vals = rpc.execute(
++            'model', document_model, 'read',
++            data['ids'],
++            ['document_digest', 'digital_signature'], rpc.CONTEXT)
++
++    except:
++        warning(
++            _('Please enable the model for digital signature'),
++            _('No Digest or Digital Signature fields found !'),
++        )
++        return
++
++
++    """ Verify signature """
++    digital_signature = record_vals[0]['digital_signature']
++
++    """ Check that the document has been signed """
++    if not digital_signature:
++        warning(
++            _('Unsigned document'),
++            _('This document has not been signed yet'),
++            )
++        return
++    
++    try:
++        verify_signature = gpg.verify(digital_signature)
++
++    except:
++        warning(
++            _('Error when verifying Digital Signature'),
++            _('Please check your GNU Privacy Guard Settings'),
++        )
++
++    else:
++        """ Show message of warning boxes depending on the verification """
++        if (verify_signature.valid):
++            message(_("Valid Signature !\n\n" + verify_signature.stderr))
++        else:
++            warning(
++                _(str(verify_signature.stderr)),
++                _(str("Error !")),
++            )
++
++
++def get_plugins(model):
++    return [
++        (_('Digitally Sign Document'), sign_document),
++        (_('Verify Digital Signature'), verify_document),
++    ]
+diff -U 6 -H -d -r -N -- a/tryton/plugins/crypto/doc/index.rst b/tryton/plugins/crypto/doc/index.rst
+--- a/tryton/plugins/crypto/doc/index.rst	1970-01-01 01:00:00.000000000 +0100
++++ b/tryton/plugins/crypto/doc/index.rst	2014-07-15 10:33:53.000000000 +0200
+@@ -0,0 +1,33 @@
++Tryton Crytpo Plugin
++####################
++
++This plugin has been developed as part of GNU Health [1], but you should 
++be able to use it with any model in Tryton[2]
++
++Functionality :
++The Tryton crypto plugin interacts with GNU Privacy Guard [3] to digitally
++sign and encrypt documents.
++
++OS Requirements:
++
++Model attributes :
++The plugin requires - as a minimum - the following attributes on the model
++in order to be able to sign the document. 
++
++    "document_digest" of type fields.Char
++    "digital_signature" of type fields.Text 
++
++
++In real life, you will need others to make it meaningful. Please take a look
++at the Prescription model on the health_crypto module for an example and
++other fields used.
++
++
++
++Usage:
++
++References:
++
++1.- GNU Health : http://health.gnu.org
++2.- Tryton : http://www.tryton.org
++3.- GNU Privacy Guard : http://www.gnupg.org

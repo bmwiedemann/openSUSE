@@ -1,0 +1,8 @@
+<package name="librsync" project="openSUSE:Factory">
+  <title>A Library for Generating Network Deltas</title>
+  <description>librsync implements the &quot;rsync&quot; algorithm, which allows remote
+differencing of binary files.  librsync computes a delta relative to a
+file's checksum, so the two files need not both be present to generate
+a delta.</description>
+  <devel project="devel:libraries:c_c++" package="librsync"/>
+</package>

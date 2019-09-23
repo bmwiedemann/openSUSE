@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Thu Jan 23 13:36:52 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 364
+* In this release, getpixel() was rewritten for higher speed and
+  floodfill() asw fixed and made much faster.
+- Add xbgi-sequence.diff, xbgi-grapherrormsg.diff
+
+-------------------------------------------------------------------
+Thu Sep 12 17:41:53 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 363
+* In addition to minor bugfixes, this release implements
+  user-defined line patterns, setallpalette(), and more mouse
+  functions.
+
+-------------------------------------------------------------------
+Tue Apr 30 14:33:30 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 362) for build.opensuse.org.
+  Add xbgi-automake.diff, xbgi-getpixel.diff.

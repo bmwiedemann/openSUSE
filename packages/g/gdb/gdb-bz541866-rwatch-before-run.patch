@@ -1,0 +1,175 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-bz541866-rwatch-before-run.patch
+
+;; Fix i386+x86_64 rwatch+awatch before run, regression against 6.8 (BZ 541866).
+;; Fix i386 rwatch+awatch before run (BZ 688788, on top of BZ 541866).
+;;=push+jan: It should be fixed properly instead.
+
+diff --git a/gdb/breakpoint.c b/gdb/breakpoint.c
+--- a/gdb/breakpoint.c
++++ b/gdb/breakpoint.c
+@@ -8773,7 +8773,7 @@ init_breakpoint_sal (struct breakpoint *b, struct gdbarch *gdbarch,
+ 		     int enabled, int internal, unsigned flags,
+ 		     int display_canonical)
+ {
+-  int i;
++  int i ATTRIBUTE_UNUSED;
+ 
+   if (type == bp_hardware_breakpoint)
+     {
+@@ -14271,7 +14271,7 @@ enable_breakpoint_disp (struct breakpoint *bpt, enum bpdisp disposition,
+ 
+   if (bpt->type == bp_hardware_breakpoint)
+     {
+-      int i;
++      int i ATTRIBUTE_UNUSED;
+       i = hw_breakpoint_used_count ();
+       target_resources_ok = 
+ 	target_can_use_hardware_watchpoint (bp_hardware_breakpoint, 
+diff --git a/gdb/config/i386/nm-linux.h b/gdb/config/i386/nm-linux.h
+new file mode 100644
+--- /dev/null
++++ b/gdb/config/i386/nm-linux.h
+@@ -0,0 +1,28 @@
++/* Native support for GNU/Linux i386.
++
++   Copyright 2010 Free Software Foundation, Inc.
++
++   This file is part of GDB.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++#ifndef NM_LINUX_H
++#define NM_LINUX_H
++
++#include "config/nm-linux.h"
++
++/* Red Hat backward compatibility with gdb-6.8.  */
++#define target_can_use_hardware_watchpoint(type, cnt, ot) 1
++
++#endif /* NM_LINUX64_H */
+diff --git a/gdb/config/i386/nm-linux64.h b/gdb/config/i386/nm-linux64.h
+new file mode 100644
+--- /dev/null
++++ b/gdb/config/i386/nm-linux64.h
+@@ -0,0 +1,28 @@
++/* Native support for GNU/Linux amd64.
++
++   Copyright 2010 Free Software Foundation, Inc.
++
++   This file is part of GDB.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++#ifndef NM_LINUX64_H
++#define NM_LINUX64_H
++
++#include "config/nm-linux.h"
++
++/* Red Hat backward compatibility with gdb-6.8.  */
++#define target_can_use_hardware_watchpoint(type, cnt, ot) 1
++
++#endif /* NM_LINUX64_H */
+diff --git a/gdb/configure.nat b/gdb/configure.nat
+--- a/gdb/configure.nat
++++ b/gdb/configure.nat
+@@ -245,6 +245,7 @@ case ${gdb_host} in
+ 		;;
+ 	    i386)
+ 		# Host: Intel 386 running GNU/Linux.
++		NAT_FILE="${srcdir}/config/${gdb_host_cpu}/nm-linux.h"
+ 		NATDEPFILES="${NATDEPFILES} x86-nat.o nat/x86-dregs.o \
+ 		i386-linux-nat.o x86-linux-nat.o nat/linux-btrace.o \
+ 		nat/x86-linux.o nat/x86-linux-dregs.o"
+@@ -301,6 +302,7 @@ case ${gdb_host} in
+ 	case ${gdb_host_cpu} in
+ 	    i386)
+ 		# Host: GNU/Linux x86-64
++		NAT_FILE="${srcdir}/config/${gdb_host_cpu}/nm-linux64.h"
+ 		NATDEPFILES="${NATDEPFILES} x86-nat.o nat/x86-dregs.o \
+ 		amd64-nat.o amd64-linux-nat.o x86-linux-nat.o \
+ 		nat/linux-btrace.o \
+diff --git a/gdb/target.h b/gdb/target.h
+--- a/gdb/target.h
++++ b/gdb/target.h
+@@ -1971,9 +1971,11 @@ extern struct thread_info *target_thread_handle_to_thread_info
+    one.  OTHERTYPE is the number of watchpoints of other types than
+    this one used so far.  */
+ 
++#ifndef target_can_use_hardware_watchpoint
+ #define target_can_use_hardware_watchpoint(TYPE,CNT,OTHERTYPE) \
+  (current_top_target ()->can_use_hw_breakpoint) ( \
+ 					     TYPE, CNT, OTHERTYPE)
++#endif
+ 
+ /* Returns the number of debug registers needed to watch the given
+    memory region, or zero if not supported.  */
+diff --git a/gdb/testsuite/gdb.base/watchpoint-hw-before-run.exp b/gdb/testsuite/gdb.base/watchpoint-hw-before-run.exp
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/watchpoint-hw-before-run.exp
+@@ -0,0 +1,40 @@
++# Copyright 2009, 2010 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Arch not supporting hw watchpoints does not imply no_hardware_watchpoints set.
++if {(![istarget "i?86-*-*"] && ![istarget "x86_64-*-*"]
++     && ![istarget "ia64-*-*"])
++    || [target_info exists gdb,no_hardware_watchpoints]} then {
++    verbose "Skipping watchpoint-hw-before-run test."
++    return
++}
++
++set test watchpoint-hw-before-run
++set srcfile watchpoint-hw-hit-once.c
++if { [prepare_for_testing ${test}.exp ${test} ${srcfile}] } {
++    return -1
++}
++
++gdb_test "rwatch watchee" "ardware read watchpoint 1: watchee"
++
++# `runto_main' or `runto main' would delete the watchpoint created above.
++
++if { [gdb_start_cmd] < 0 } {
++    untested start
++    return -1
++}
++gdb_test "" "main .* at .*" "start"
++
++gdb_test "continue" "Continuing.\r\n\r\nHardware read watchpoint \[0-9\]+: watchee\r\n\r\nValue = 0\r\n.*"

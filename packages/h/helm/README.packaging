@@ -1,0 +1,17 @@
+Updating the vendor.tar.xz taball
+---------------------------------
+
+helm is using glide so you need a working glide binary.
+Then updating the vendor.tar.xz tarball is done via:
+
+$ cd $GOPATH
+$ mkdir -p src/helm.sh
+$ cd src/helm.sh
+$ git clone https://github.com/helm/helm.git
+$ cd helm
+# $VERSION is the version you want to package
+git checkout $VERSION
+# make bootstrap will create the vendor/ directory
+$ make bootstrap build
+# now create the vendor tarball and use that in the package
+$ tar cJf vendor.tar.xz vendor

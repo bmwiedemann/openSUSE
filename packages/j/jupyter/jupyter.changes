@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Rename to to match jupyter package naming guidelines.
+
+-------------------------------------------------------------------
+Tue Feb 13 19:47:23 UTC 2018 - toddrme2178@gmail.com
+
+- Update url
+
+-------------------------------------------------------------------
+Wed Apr 26 21:18:33 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Fri Apr  7 18:26:26 UTC 2017 - toddrme2178@gmail.com
+
+- Remove jupyter.py since it is now provided by python3-jupyter_core.
+- Clean up documentation building.
+
+-------------------------------------------------------------------
+Thu Mar 16 14:31:41 UTC 2017 - jmatejek@suse.com
+
+- do not Recommend jupyter_nbconvert (which pulls in texlive)
+
+-------------------------------------------------------------------
+Wed Oct 21 10:06:44 UTC 2015 - toddrme2178@gmail.com
+
+- No longer provide or obsolete IPython.
+  This is provided and obsoleted by python-jupyter_ipython.
+
+-------------------------------------------------------------------
+Mon Oct  5 16:41:50 UTC 2015 - toddrme2178@gmail.com
+
+- Build documentation
+
+-------------------------------------------------------------------
+Fri Aug 28 18:36:39 UTC 2015 - toddrme2178@gmail.com
+
+- Fix provides again.
+
+-------------------------------------------------------------------
+Fri Aug 28 08:19:18 UTC 2015 - toddrme2178@gmail.com
+
+- Fix provides and obsoletes
+
+-------------------------------------------------------------------
+Fri Aug 28 07:37:42 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+

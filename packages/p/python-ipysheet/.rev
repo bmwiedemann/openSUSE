@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>61c41f8afd9dc6d56c2a7f37cb59ae58</srcmd5>
+    <version>0.3.4</version>
+    <time>1558516140</time>
+    <user>dimstar_suse</user>
+    <comment>Spreadsheet widget for the Jupyter notebook</comment>
+    <requestid>699786</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>311651886eacebf6b353006b4db9826a</srcmd5>
+    <version>0.4.2</version>
+    <time>1560459863</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709565</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>40174edf22b83a29cd04dc63d1f25c11</srcmd5>
+    <version>0.4.3</version>
+    <time>1564483115</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719677</requestid>
+  </revision>
+</revisionlist>

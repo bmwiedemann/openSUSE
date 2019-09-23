@@ -1,0 +1,13 @@
+<services>
+  <service name="download_url" mode="disabled">
+    <param name="protocol">https</param>
+    <param name="host">github.com</param>
+    <param name="path">/vodik/envoy/archive/v14.tar.gz</param>
+    <param name="filename">envoy-14.tar.gz</param>
+  </service>
+  <service name="verify_file" mode="disabled">
+    <param name="file">envoy-14.tar.gz</param>
+    <param name="verifier">sha256</param>
+    <param name="checksum">4932710b084466b47a7234b6f6258ac81dcc8f0a8ddfc7e2c2629f0d8f6bb2ce</param>
+  </service>
+</services>

@@ -1,0 +1,70 @@
+Fix version 1 arc header reading
+
+The code for v1 hdr reading was reading the packed header directly into an
+unpacked struct.
+
+Use the same read to dummy array, then manual unpack to header struct as
+used for v2 headers for v1 headers too.
+
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+diff -ur arc-5.21p/arcio.c arc-5.21p.new/arcio.c
+--- arc-5.21p/arcio.c	2010-08-07 15:06:42.000000000 +0200
++++ arc-5.21p.new/arcio.c	2015-01-16 12:59:43.203289118 +0100
+@@ -37,6 +37,7 @@
+ #endif
+ 	char            name[FNLEN];	/* filename buffer */
+ 	int             try = 0;/* retry counter */
++	int             hdrlen;
+ 	static int      first = 1;	/* true only on first read */
+ 
+ 	if (!f)			/* if archive didn't open */
+@@ -92,23 +93,19 @@
+ 		printf("I think you need a newer version of ARC.\n");
+ 		exit(1);
+ 	}
++
+ 	/* amount to read depends on header type */
++	if (hdrver == 1) {
++		hdrlen = 23; /* old style is shorter */
++	} else {
++		hdrlen = 27;
++	}
+ 
+-	if (hdrver == 1) {	/* old style is shorter */
+-		if (fread(hdr, sizeof(struct heads) - sizeof(long int), 1, f) != 1)
+-			arcdie("%s was truncated", arcname);
+-		hdrver = 2;	/* convert header to new format */
+-		hdr->length = hdr->size;	/* size is same when not
+-						 * packed */
+-	} else
+-#if	MSDOS
+-		if (fread(hdr, sizeof(struct heads), 1, f) != 1)
+-			arcdie("%s was truncated", arcname);
+-#else
+-		if (fread(dummy, 27, 1, f) != 1)
+-			arcdie("%s was truncated", arcname);
++	if (fread(dummy, hdrlen, 1, f) != 1)
++		arcdie("%s was truncated", arcname);
+ 
+ 	for (i = 0; i < FNLEN; hdr->name[i] = dummy[i], i++);
++	hdr->name[FNLEN - 1] = 0; /* ensure 0 termination */
+ #if	_MTS
+ 	(void) atoe(hdr->name, strlen(hdr->name));
+ #endif
+@@ -116,8 +113,14 @@
+ 	hdr->date = (short) ((dummy[18] << 8) + dummy[17]);
+ 	hdr->time = (short) ((dummy[20] << 8) + dummy[19]);
+ 	hdr->crc = (short) ((dummy[22] << 8) + dummy[21]);
+-	for (i = 0, hdr->length=0; i<4; hdr->length<<=8, hdr->length += dummy[26-i], i++);
+-#endif
++
++	if (hdrver == 1) {
++		hdrver = 2;	/* convert header to new format */
++		hdr->length = hdr->size;	/* size is same when not
++						 * packed */
++	} else {
++		for (i = 0, hdr->length=0; i<4; hdr->length<<=8, hdr->length += dummy[26-i], i++);
++	}
+ 
+ 	if (hdr->date > olddate
+ 	    || (hdr->date == olddate && hdr->time > oldtime)) {

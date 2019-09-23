@@ -1,0 +1,148 @@
+Index: grub-2.02/grub-core/Makefile.core.def
+===================================================================
+--- grub-2.02.orig/grub-core/Makefile.core.def
++++ grub-2.02/grub-core/Makefile.core.def
+@@ -451,6 +451,20 @@ image = {
+ };
+ 
+ image = {
++  name = diskboot_tpm;
++  i386_pc = boot/i386/pc/diskboot.S;
++
++  cppflags = '-DTPM=1';
++
++  i386_pc_ldflags = '$(TARGET_IMG_LDFLAGS)';
++  i386_pc_ldflags = '$(TARGET_IMG_BASE_LDOPT),0x8000';
++
++  objcopyflags = '-O binary';
++
++  enable = i386_pc;
++};
++
++image = {
+   name = lnxboot;
+   i386_pc = boot/i386/pc/lnxboot.S;
+ 
+Index: grub-2.02/grub-core/boot/i386/pc/diskboot.S
+===================================================================
+--- grub-2.02.orig/grub-core/boot/i386/pc/diskboot.S
++++ grub-2.02/grub-core/boot/i386/pc/diskboot.S
+@@ -19,8 +19,6 @@
+ #include <grub/symbol.h>
+ #include <grub/machine/boot.h>
+ 
+-#define TPM 1
+-
+ /*
+  *  defines for the code go here
+  */
+Index: grub-2.02/include/grub/util/mkimage.h
+===================================================================
+--- grub-2.02.orig/include/grub/util/mkimage.h
++++ grub-2.02/include/grub/util/mkimage.h
+@@ -71,7 +71,8 @@ struct grub_install_image_target_desc
+     IMAGE_I386_IEEE1275,
+     IMAGE_LOONGSON_ELF, IMAGE_QEMU, IMAGE_PPC, IMAGE_YEELOONG_FLASH,
+     IMAGE_FULOONG2F_FLASH, IMAGE_I386_PC_PXE, IMAGE_MIPS_ARC,
+-    IMAGE_QEMU_MIPS_FLASH, IMAGE_UBOOT, IMAGE_XEN, IMAGE_I386_PC_ELTORITO
++    IMAGE_QEMU_MIPS_FLASH, IMAGE_UBOOT, IMAGE_XEN, IMAGE_I386_PC_ELTORITO,
++    IMAGE_I386_PC_TPM
+   } id;
+   enum
+     {
+Index: grub-2.02/util/grub-install.c
+===================================================================
+--- grub-2.02.orig/util/grub-install.c
++++ grub-2.02/util/grub-install.c
+@@ -1660,6 +1660,16 @@ main (int argc, char *argv[])
+ 
+ 
+     case GRUB_INSTALL_PLATFORM_I386_PC:
++      if (suse_enable_tpm)
++	{
++	  snprintf (mkimage_target, sizeof (mkimage_target),
++		    "%s-%s-tpm",
++		    grub_install_get_platform_cpu (platform),
++		    grub_install_get_platform_platform (platform));
++	  core_name = "core.img";
++	  break;
++	}
++      /* FALLTHROUGH */
+     case GRUB_INSTALL_PLATFORM_MIPSEL_ARC:
+     case GRUB_INSTALL_PLATFORM_MIPS_ARC:
+     case GRUB_INSTALL_PLATFORM_ARM_UBOOT:
+Index: grub-2.02/util/mkimage.c
+===================================================================
+--- grub-2.02.orig/util/mkimage.c
++++ grub-2.02/util/mkimage.c
+@@ -165,6 +165,22 @@ static const struct grub_install_image_t
+       .default_compression = GRUB_COMPRESSION_LZMA
+     },
+     {
++      .dirname = "i386-pc",
++      .names = { "i386-pc-tpm", NULL },
++      .voidp_sizeof = 4,
++      .bigendian = 0,
++      .id = IMAGE_I386_PC_TPM,
++      .flags = PLATFORM_FLAGS_DECOMPRESSORS,
++      .total_module_size = TARGET_NO_FIELD,
++      .decompressor_compressed_size = GRUB_DECOMPRESSOR_I386_PC_COMPRESSED_SIZE,
++      .decompressor_uncompressed_size = GRUB_DECOMPRESSOR_I386_PC_UNCOMPRESSED_SIZE,
++      .decompressor_uncompressed_addr = TARGET_NO_FIELD,
++      .section_align = 1,
++      .vaddr_offset = 0,
++      .link_addr = GRUB_KERNEL_I386_PC_LINK_ADDR,
++      .default_compression = GRUB_COMPRESSION_LZMA
++    },
++    {
+       .dirname = "i386-efi",
+       .names = { "i386-efi", NULL },
+       .voidp_sizeof = 4,
+@@ -756,7 +772,8 @@ grub_install_generate_image (const char
+ 
+   if (image_target->id == IMAGE_I386_PC
+       || image_target->id == IMAGE_I386_PC_PXE
+-      || image_target->id == IMAGE_I386_PC_ELTORITO)
++      || image_target->id == IMAGE_I386_PC_ELTORITO
++      || image_target->id == IMAGE_I386_PC_TPM)
+     comp = GRUB_COMPRESSION_LZMA;
+ 
+   path_list = grub_util_resolve_dependencies (dir, "moddep.lst", mods);
+@@ -980,7 +997,8 @@ grub_install_generate_image (const char
+ 
+       if ((image_target->id == IMAGE_I386_PC
+ 	   || image_target->id == IMAGE_I386_PC_PXE
+-	   || image_target->id == IMAGE_I386_PC_ELTORITO)
++	   || image_target->id == IMAGE_I386_PC_ELTORITO
++	   || image_target->id == IMAGE_I386_PC_TPM)
+ 	  && decompress_size > GRUB_KERNEL_I386_PC_LINK_ADDR - 0x8200)
+ 	grub_util_error ("%s", _("Decompressor is too big"));
+ 
+@@ -1023,6 +1041,7 @@ grub_install_generate_image (const char
+     case IMAGE_I386_PC:
+     case IMAGE_I386_PC_PXE:
+     case IMAGE_I386_PC_ELTORITO:
++    case IMAGE_I386_PC_TPM:
+ 	if (GRUB_KERNEL_I386_PC_LINK_ADDR + core_size > 0x78000
+ 	    || (core_size > (0xffff << GRUB_DISK_SECTOR_BITS))
+ 	    || (layout.kernel_size + layout.bss_size
+@@ -1061,6 +1080,7 @@ grub_install_generate_image (const char
+     case IMAGE_I386_PC:
+     case IMAGE_I386_PC_PXE:
+     case IMAGE_I386_PC_ELTORITO:
++    case IMAGE_I386_PC_TPM:
+       {
+ 	unsigned num;
+ 	char *boot_path, *boot_img;
+@@ -1110,7 +1130,10 @@ grub_install_generate_image (const char
+ 	    free (eltorito_path);
+ 	  }
+ 
+-	boot_path = grub_util_get_path (dir, "diskboot.img");
++	if (image_target->id == IMAGE_I386_PC_TPM)
++	  boot_path = grub_util_get_path (dir, "diskboot_tpm.img");
++	else
++	  boot_path = grub_util_get_path (dir, "diskboot.img");
+ 	boot_size = grub_util_get_image_size (boot_path);
+ 	if (boot_size != GRUB_DISK_SECTOR_SIZE)
+ 	  grub_util_error (_("diskboot.img size must be %u bytes"),

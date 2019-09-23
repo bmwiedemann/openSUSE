@@ -1,0 +1,487 @@
+-------------------------------------------------------------------
+Fri Sep  6 08:04:41 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.13.1:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwayland.git/plain/dist/changes-5.13.1/?h=v5.13.1
+- Drop patches, now upstream:
+  * 0001-Don-t-crash-if-we-start-a-drag-without-dragFocus.patch
+  * 0002-Client-Fix-stuttering-when-the-GUI-thread-is-busy.patch
+  * 0005-Client-Reset-frame-callback-timer-when-hiding-a-wind.patch
+  * 0001-Fix-use-of-private-dependency.patch
+
+-------------------------------------------------------------------
+Thu Aug 15 11:30:28 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix deps in Qt5WaylandClient.pc and .cmake:
+  * 0001-Fix-use-of-private-dependency.patch
+
+-------------------------------------------------------------------
+Wed Jul  3 08:50:36 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch from upstream 5.13 branch to fix crashes:
+  * 0001-Don-t-crash-if-we-start-a-drag-without-dragFocus.patch
+- Add patch from upstream 5.12 branch to improve performance:
+  * 0002-Client-Fix-stuttering-when-the-GUI-thread-is-busy.patch
+- Add patches from upstream code reviews to fix various issues:
+  * 0003-Client-Don-t-send-fake-SurfaceCreated-Destroyed-even.patch
+  * 0004-Client-Make-handleUpdate-aware-of-exposure-changes.patch
+  * 0005-Client-Reset-frame-callback-timer-when-hiding-a-wind.patch
+
+-------------------------------------------------------------------
+Wed Jun 19 11:24:47 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0:
+  * New bugfix release
+  * No changelog available
+  * For more details about Qt 5.13 please see:
+  * http://code.qt.io/cgit/qt/qtwayland.git/plain/dist/changes-5.13.0/?h=5.13
+
+-------------------------------------------------------------------
+Tue Jun  4 07:25:17 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0-rc:
+  * New bugfix release
+  * No changelog available
+- Drop patches, bug fixed upstream:
+  * 0001-Revert-Fix-compilation-with-QT_NO_WARNING_OUTPUT.patch
+  * 0002-Revert-Client-Don-t-send-illegal-wl_pointer.set_curs.patch
+  * 0003-Revert-Client-tests-Add-convenience-for-getting-curs.patch
+  * 0004-Revert-Client-Decrease-buffer_scale-for-small-cursor.patch
+  * 0005-Revert-Client-Refactor-cursors-and-fix-various-bugs.patch
+
+-------------------------------------------------------------------
+Sat May 18 13:48:39 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Revert upstream commits to hopefully fix kscreenlocker crash (kde#407653):
+  * 0001-Revert-Fix-compilation-with-QT_NO_WARNING_OUTPUT.patch
+  * 0002-Revert-Client-Don-t-send-illegal-wl_pointer.set_curs.patch
+  * 0003-Revert-Client-tests-Add-convenience-for-getting-curs.patch
+  * 0004-Revert-Client-Decrease-buffer_scale-for-small-cursor.patch
+  * 0005-Revert-Client-Refactor-cursors-and-fix-various-bugs.patch
+
+-------------------------------------------------------------------
+Mon Apr 29 09:17:05 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Thu Apr 18 07:27:40 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.3:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwayland.git/plain/dist/changes-5.12.3/?h=v5.12.3
+
+-------------------------------------------------------------------
+Thu Mar 21 10:26:27 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0-beta1:
+  * New feature release
+  * For more details about Qt 5.13 please see:
+  * http://code.qt.io/cgit/qt/qtwayland.git/plain/dist/changes-5.13.0/?h=5.13
+
+-------------------------------------------------------------------
+Thu Mar 14 08:52:00 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.2:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwayland.git/plain/dist/changes-5.12.2/?h=5.12.2
+
+-------------------------------------------------------------------
+Fri Feb  1 08:40:24 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.1:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwayland.git/plain/dist/changes-5.12.1/?h=v5.12.1
+
+-------------------------------------------------------------------
+Thu Dec  6 13:37:14 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0:
+  * New feature release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwayland.git/plain/dist/changes-5.12.0/?h=v5.12.0
+
+-------------------------------------------------------------------
+Mon Dec  3 08:17:17 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-rc2:
+  * New bugfix release
+  * Only important bugfixes
+- Changelog for Qt 5.12.0:
+  * http://code.qt.io/cgit/qt/qtwayland.git/plain/dist/changes-5.12.0/?h=5.12.0
+
+-------------------------------------------------------------------
+Thu Nov 22 13:39:54 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-rc:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Thu Nov  8 15:25:34 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta4:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Fri Oct 26 07:21:11 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta3:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Oct 17 08:23:55 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta2:
+  * New bugfix release
+  * No changelog available
+- Remove patches, now upstream:
+  * 0001-Avoid-spurious-move-events-after-configure-call.patch
+
+-------------------------------------------------------------------
+Mon Oct  8 07:51:58 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patch to fix window geometry in specific situations:
+  * 0001-Avoid-spurious-move-events-after-configure-call.patch
+
+-------------------------------------------------------------------
+Fri Oct  5 19:25:46 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta1:
+  * New bugfix release
+  * No changelog available
+- Remove patches, now upstream:
+  * fix-deadlock.patch
+
+-------------------------------------------------------------------
+Tue Oct  2 07:34:28 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-alpha:
+  * New feature release
+  * For more details please see:
+  * http://wiki.qt.io/New_Features_in_Qt_5.12
+- Add patch to fix deadlock when calling makeCurrent before exposing:
+  * fix-deadlock.patch
+
+-------------------------------------------------------------------
+Fri Sep 21 07:59:49 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwayland.git/plain/dist/changes-5.11.2/?h=v5.11.2
+
+-------------------------------------------------------------------
+Sat Jul  7 12:30:44 UTC 2018 - fabian@ritter-vogt.de
+
+- Remove patch as it causes a regression with resizing windows:
+  * 0001-Handle-maximize-minimize-fullscreen-xdgshellv6.patch
+
+-------------------------------------------------------------------
+Tue Jun 19 10:51:25 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwayland.git/plain/dist/changes-5.11.1/?h=v5.11.1
+
+-------------------------------------------------------------------
+Tue May 22 16:16:49 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwayland.git/plain/dist/changes-5.11.0/?h=v5.11.0
+
+-------------------------------------------------------------------
+Tue May  8 11:01:44 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-rc
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Mon Apr 23 08:58:08 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta4
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Apr 11 09:15:05 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta3
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Mar 28 09:17:53 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta2
+  * New bugfix release
+  * No changelog available
+- Refresh 0001-Handle-maximize-minimize-fullscreen-xdgshellv6.patch
+
+-------------------------------------------------------------------
+Tue Mar 13 13:40:51 UTC 2018 - christophe@krop.fr
+
+- Fix the license tag.
+
+-------------------------------------------------------------------
+Thu Mar  1 09:55:54 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta1
+  * New feature release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwayland.git/plain/dist/changes-5.11.0-beta1/?h=v5.11.0-beta1
+
+-------------------------------------------------------------------
+Tue Feb 20 14:29:57 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-alpha
+  * New feature release
+  * For more details please see:
+  * https://wiki.qt.io/New_Features_in_Qt_5.11
+- Remove patches, now upstream:
+  * 0001-Implement-basic-key-composition-support.patch
+  * 0002-Automatically-change-scale-when-entering-a-new-outpu.patch
+
+-------------------------------------------------------------------
+Wed Feb 14 15:47:14 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwayland.git/plain/dist/changes-5.10.1/?h=v5.10.1
+- Drop patches, now upstream:
+  * Dont-recreate-hidden-egl-surfaces.patch
+
+-------------------------------------------------------------------
+Sat Feb 10 21:11:54 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patch (pending upstream) to implement fullscreen windows for
+  xdg-shell v6 (boo#1080447):
+  * 0001-Handle-maximize-minimize-fullscreen-xdgshellv6.patch
+
+-------------------------------------------------------------------
+Tue Jan  9 14:39:26 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patch (pending upstream) to fix destruction of hidden surfaces (kde#381630):
+  * Dont-recreate-hidden-egl-surfaces.patch
+- Keep workaround-null-object.patch as it can in theory prevent
+  crashes and has no effect otherwise
+
+-------------------------------------------------------------------
+Mon Jan  1 01:03:04 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patch from upstream dev branch for compose key support:
+  * 0001-Implement-basic-key-composition-support.patch
+- Add fix from upstream dev branch:
+  * 0002-Automatically-change-scale-when-entering-a-new-outpu.patch
+
+-------------------------------------------------------------------
+Fri Dec  8 23:14:19 UTC 2017 - christophe@krop.fr
+
+- Update the license tag (boo#967696)
+
+-------------------------------------------------------------------
+Thu Dec  7 12:18:16 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 final
+  * New bugfix release
+
+-------------------------------------------------------------------
+Sun Dec  3 14:13:02 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 RC 2
+  * New bugfix release
+
+-------------------------------------------------------------------
+Thu Nov 30 09:47:21 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 RC 1
+  * New bugfix release
+
+-------------------------------------------------------------------
+Sat Nov 25 12:46:49 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.3
+  * New bugfix release
+  * For more details, see:
+    http://code.qt.io/cgit/qt/qtwayland.git/tree/dist/changes-5.9.3/?h=v5.9.3
+
+-------------------------------------------------------------------
+Wed Nov 15 11:41:55 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 4
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Thu Nov  2 07:22:56 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 3
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Mon Oct 30 16:19:43 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 2
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Mon Oct  9 16:17:43 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 1
+- For more information visit:
+    https://blog.qt.io/blog/2017/10/09/qt-5-10-beta-released/
+
+-------------------------------------------------------------------
+Sun Oct  8 14:11:39 UTC 2017 - lbeltrame@kde.org
+
+- Update to 5.9.2
+  * For more details please see:
+    https://blog.qt.io/blog/2017/10/06/qt-5-9-2-released/
+
+-------------------------------------------------------------------
+Mon Sep 25 14:42:37 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Alpha 1
+- For more information visit:
+    https://blog.qt.io/blog/2017/09/13/qt-5-10-alpha-released/
+
+-------------------------------------------------------------------
+Thu Sep 14 07:16:03 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to workaround crash due to nullptr deref (kde#381630):
+  * workaround-null-object.patch
+
+-------------------------------------------------------------------
+Sat Jul  1 08:15:32 UTC 2017 - lbeltrame@kde.org
+
+- Update to 5.9.1
+  * For more details please see:
+    http://blog.qt.io/blog/2017/06/30/qt-5-9-1-released/
+
+-------------------------------------------------------------------
+Wed May 31 07:05:29 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0 final
+
+-------------------------------------------------------------------
+Wed May 24 19:16:41 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0 RC:
+  * For more details please see: 
+    http://lists.qt-project.org/pipermail/announce/2017-May/000115.html
+    and https://wiki.qt.io/New_Features_in_Qt_5.9
+
+-------------------------------------------------------------------
+Wed Dec 14 16:06:00 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.1
+  * For more details please see:
+    https://blog.qt.io/blog/2016/12/14/qt-5-7-1-released/
+    and https://www.qt.io/qt5-7/
+
+-------------------------------------------------------------------
+Sat Sep 24 18:39:09 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * For more details please see:
+    https://www.qt.io/qt5-7/
+- Drop dead 0001-partially-revert-505c373.diff
+
+-------------------------------------------------------------------
+Wed Jun  8 14:15:22 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * For more details please see:
+    http://blog.qt.io/blog/2016/06/08/qt-5-6-1-released/
+
+-------------------------------------------------------------------
+Fri Mar 18 19:03:29 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    http://blog.qt.io/blog/2016/03/16/qt-5-6-released/
+    and https://wiki.qt.io/New_Features_in_Qt_5.6
+- Drop adjust_api.diff, we don't need nor want to support Qt 5.3
+- Added 0001-partially-revert-505c373.diff: use pkgconfig to gather
+  wayland includes
+
+-------------------------------------------------------------------
+Fri Oct 16 20:22:38 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.1
+  * For more details please see:
+    http://blog.qt.io/blog/2015/10/15/qt-5-5-1-released/
+
+-------------------------------------------------------------------
+Sun Aug 16 08:32:09 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * For more details please see:
+    http://blog.qt.io/blog/2015/07/01/qt-5-5-released/
+    and https://wiki.qt.io/New_Features_in_Qt_5.5
+
+-------------------------------------------------------------------
+Wed Jun  3 22:56:34 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.2
+  * Bugfix release, for more details please see:
+    http://blog.qt.io/blog/2015/06/02/qt-5-4-2-released/
+- Drop Run-eventDispatcher-in-QWaylandDisplayforceRoundTrip.patch,
+  merged upstream
+
+-------------------------------------------------------------------
+Sat May  9 21:01:05 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added Run-eventDispatcher-in-QWaylandDisplayforceRoundTrip.patch
+
+-------------------------------------------------------------------
+Tue Feb 24 16:10:32 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.1
+  * For more details please see:
+    http://blog.qt.io/blog/2015/02/24/qt-5-4-1-released/
+
+-------------------------------------------------------------------
+Wed Dec 10 11:00:13 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4 Final
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/12/10/qt-5-4-released/
+    and http://qt-project.org/wiki/New-Features-in-Qt-5.4
+
+-------------------------------------------------------------------
+Thu Nov 27 15:58:49 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4 RC
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/11/27/qt-5-4-release-candidate-available/
+    and http://qt-project.org/wiki/New-Features-in-Qt-5.4
+
+-------------------------------------------------------------------
+Fri Oct 17 09:35:32 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0 beta
+  * New feature release, please see
+  http://blog.qt.digia.com/blog/2014/10/17/qt-5-4-beta-available/
+  and http://qt-project.org/wiki/New-Features-in-Qt-5.4
+- Added adjust_api.diff, to guard QPA usage found in 5.3 and 5.4
+
+-------------------------------------------------------------------
+Mon Sep  8 20:15:30 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0 alpha:
+   * Part of the official Qt release
+

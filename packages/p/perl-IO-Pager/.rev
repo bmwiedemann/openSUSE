@@ -1,0 +1,207 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9506f974ba0db4592bedc628ed499de9</srcmd5>
+    <version>0.06</version>
+    <time>1187750405</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="69">
+    <srcmd5>9506f974ba0db4592bedc628ed499de9</srcmd5>
+    <version>0.06</version>
+    <time>1187750405</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="70">
+    <srcmd5>6bc31b7cc1716cc96ad52e1ba06e8217</srcmd5>
+    <version>0.06</version>
+    <time>1245337624</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="72">
+    <srcmd5>6bc31b7cc1716cc96ad52e1ba06e8217</srcmd5>
+    <version>0.06</version>
+    <time>1245337624</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="73">
+    <srcmd5>b606a78661cb4ec302d48a6f89005212</srcmd5>
+    <version>0.06</version>
+    <time>1263300548</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-IO-Pager based on submit request 28982 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="74">
+    <srcmd5>2a1621278232c77652678ee717bff61d</srcmd5>
+    <version>0.06</version>
+    <time>1268925497</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="76">
+    <srcmd5>2a1621278232c77652678ee717bff61d</srcmd5>
+    <version>0.06</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="77">
+    <srcmd5>2a1621278232c77652678ee717bff61d</srcmd5>
+    <version>0.06</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="78">
+    <srcmd5>e9ff6b8913e67c7e68ae935b6067d8a3</srcmd5>
+    <version>0.06</version>
+    <time>1287486483</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50998 from user coolo
+</comment>
+    <requestid>50998</requestid>
+  </revision>
+  <revision rev="10" vrev="79">
+    <srcmd5>56ba659f7aff8e28a31a25247cb2e1e1</srcmd5>
+    <version>0.06</version>
+    <time>1287486488</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 50998
+</comment>
+  </revision>
+  <revision rev="11" vrev="80">
+    <srcmd5>1519e95d2fddc7b0a9a6f3cf0b51c462</srcmd5>
+    <version>0.06</version>
+    <time>1291770925</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54947 from user coolo
+</comment>
+    <requestid>54947</requestid>
+  </revision>
+  <revision rev="12" vrev="81">
+    <srcmd5>6b43b96711d81a3fe54f04e9220316b8</srcmd5>
+    <version>0.06</version>
+    <time>1291770943</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54947
+</comment>
+  </revision>
+  <revision rev="13" vrev="84">
+    <srcmd5>6b43b96711d81a3fe54f04e9220316b8</srcmd5>
+    <version>0.06</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="86">
+    <srcmd5>6b43b96711d81a3fe54f04e9220316b8</srcmd5>
+    <version>0.06</version>
+    <time>1319182278</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3873a880fc5299ea6920f015fb054478</srcmd5>
+    <version>0.24</version>
+    <time>1331324732</time>
+    <user>coolo</user>
+    <comment>- updated to 0.24
+ * Fixed bug #74691, tests fail if CPANTS folk don't have a perl in PATH!</comment>
+    <requestid>108084</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>3873a880fc5299ea6920f015fb054478</srcmd5>
+    <version>0.24</version>
+    <time>1340183859</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>3873a880fc5299ea6920f015fb054478</srcmd5>
+    <version>0.24</version>
+    <time>1359109705</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>374a9aeeeb0bda054238915e5718256e</srcmd5>
+    <version>0.31</version>
+    <time>1370514045</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 177653 from coolo)</comment>
+    <requestid>177684</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>374a9aeeeb0bda054238915e5718256e</srcmd5>
+    <version>0.31</version>
+    <time>1379663712</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>374a9aeeeb0bda054238915e5718256e</srcmd5>
+    <version>0.31</version>
+    <time>1409302334</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>76b97ce8a895818959944a43001b40af</srcmd5>
+    <version>0.34</version>
+    <time>1429186457</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297091</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a3eebf354f20656c2988e421ccd858b4</srcmd5>
+    <version>0.39</version>
+    <time>1507571164</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.39
+   see /usr/share/doc/packages/perl-IO-Pager/CHANGES
+  0.39	Sat May 13 2017
+  	Rename t.pl to test.pl and alter behavior to address RT#120618
+  	i.e; MakeMaker's &quot;helpfulness&quot;; alternative is explicitly list
+  	all PM in module.
+  
+  	More bloody RT#121450
+  
+  0.38	Tue May 11 2017
+  0.37	Tue Apr 25 2017
+  	Fix tests for Perl 5.26 removal of . from @INC RT#121450
+  	(Patching for unreleased perl is a PITA)
+  
+  
+  0.36	Mon Feb 29 2016
+  	Fix Use of uninitialized value at IO/Pager.pm line 98
+  
+  	Remove dubgging statement.
+  
+  	Add some additional reporting to interactive tests.
+  
+  	Specify minimum Test::More version.
+  
+  0.35    Fri Jan 01 2016
+  
+  	Update test 11 for Windows; okay in CMD, PowerShell and MSYS
+  	but tcsh and win-bash both fail.
+  
+  	Add .travis.yml</comment>
+    <requestid>532535</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f78f8716dedb2e199db12e138f67639c</srcmd5>
+    <version>0.40</version>
+    <time>1542012069</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647378</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f413447c0384e2096fc0b3a03c87e82d</srcmd5>
+    <version>0.42</version>
+    <time>1568025385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729256</requestid>
+  </revision>
+</revisionlist>

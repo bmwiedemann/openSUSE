@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c415d5983cab2dedc432459d0040fd00</srcmd5>
+    <version>0.21</version>
+    <time>1270757646</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Net-CIDR-Lite based on submit request 37300 from user computersalat
+</comment>
+    <requestid>37300</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c415d5983cab2dedc432459d0040fd00</srcmd5>
+    <version>0.21</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c415d5983cab2dedc432459d0040fd00</srcmd5>
+    <version>0.21</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>792af04543b43015d7f8ebd316c6fcea</srcmd5>
+    <version>0.21</version>
+    <time>1291583181</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54598 from user coolo
+</comment>
+    <requestid>54598</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>1b728328fdb9a92fd95799a6bc4d4714</srcmd5>
+    <version>0.21</version>
+    <time>1291583188</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54598
+</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>1b728328fdb9a92fd95799a6bc4d4714</srcmd5>
+    <version>0.21</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>1b728328fdb9a92fd95799a6bc4d4714</srcmd5>
+    <version>0.21</version>
+    <time>1319182290</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>5abffec829a26d73787bfe03454efa01</srcmd5>
+    <version>0.21</version>
+    <time>1323193496</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>5abffec829a26d73787bfe03454efa01</srcmd5>
+    <version>0.21</version>
+    <time>1340183888</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>5abffec829a26d73787bfe03454efa01</srcmd5>
+    <version>0.21</version>
+    <time>1359109757</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>4487e7c78b072a362b49aa0c607b151a</srcmd5>
+    <version>0.21</version>
+    <time>1364898996</time>
+    <user>coolo</user>
+    <comment>fails to build on openSUSE &amp;gt;= 12.2, because perl-macros is deprecated there. Change documented. (forwarded request 161442 from rusjako)</comment>
+    <requestid>161451</requestid>
+  </revision>
+  <revision rev="12" vrev="18">
+    <srcmd5>4487e7c78b072a362b49aa0c607b151a</srcmd5>
+    <version>0.21</version>
+    <time>1379663781</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>4487e7c78b072a362b49aa0c607b151a</srcmd5>
+    <version>0.21</version>
+    <time>1409302420</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

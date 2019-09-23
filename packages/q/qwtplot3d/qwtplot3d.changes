@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Sat Apr 27 12:59:02 UTC 2019 - christophe@krop.fr
+
+- Update to version 0.2.7+git20190410.a6d0890d
+  Switch to a git snapshot. This version supports Qt5 which is
+  required to build scidavis 1.25.
+- Drop glu_include.patch
+- Drop qwtplot3d-gcc43.patch
+- Add build_a_shared_lib.patch to build shared library.
+
+-------------------------------------------------------------------
+Thu Aug 17 22:01:14 UTC 2017 - jengelh@inai.de
+
+- Remove redundant license notices in %description.
+- RPM group fix. Use find with {} +.
+
+-------------------------------------------------------------------
+Mon Mar 25 12:16:03 UTC 2013 - joop.boonen@opensuse.org
+
+- Added BuildRequires: glu-devel as it's not a BuildRequirement
+  for Mesa-devel anymore for openSUSE > 12.2
+- Cleaned the spec file up
+- Corrected the package names 
+
+-------------------------------------------------------------------
+Wed Mar 17 00:00:00 UTC 2010 - coyoteuser@gmail.com
+
+- initial package for OBS based on packman version
+

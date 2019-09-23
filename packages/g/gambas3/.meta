@@ -1,0 +1,20 @@
+<package name="gambas3" project="openSUSE:Factory">
+  <title>Basic interpreter under Linux, Version 3</title>
+  <description>Gambas is a free development environment based on a Basic interpreter
+with object extensions, like Visual Basic(tm) (but it is NOT a clone!).
+With Gambas, you can quickly design your program GUI, access MySQL or
+PostgreSQL databases, control KDE applications with DCOP, translate
+your program into many languages, create network applications easily,
+build RPMs of your apps automatically, and so on... You have to install
+the necessary components
+
+Gambas is still in development, but already useful for smaller projects.
+The IDE itself is written in Gambas-BASIC. The source can be used reviewed
+as an example application in the /usr/share/gambas/examples directory.
+Documentation is also in that directory.
+
+
+</description>
+  <devel project="Education" package="gambas3"/>
+  <url>http://gambas.sourceforge.net/</url>
+</package>

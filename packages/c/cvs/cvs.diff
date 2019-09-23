@@ -1,0 +1,105 @@
+--- Makefile.am
++++ Makefile.am
+@@ -19,8 +19,7 @@
+ # This is a legacy variable from b4 Automake
+ USOURCE_SUBDIRS = lib $(ZLIB_SUBDIRS) diff src
+ # All other subdirs:
+-SUBDIRS = $(USOURCE_SUBDIRS) man doc contrib tools \
+-	windows-NT os2 emx vms maint-aux
++SUBDIRS = $(USOURCE_SUBDIRS) man doc contrib tools maint-aux
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
+--- Makefile.in
++++ Makefile.in
+@@ -286,8 +286,7 @@
+ # This is a legacy variable from b4 Automake
+ USOURCE_SUBDIRS = lib $(ZLIB_SUBDIRS) diff src
+ # All other subdirs:
+-SUBDIRS = $(USOURCE_SUBDIRS) man doc contrib tools \
+-	windows-NT os2 emx vms maint-aux
++SUBDIRS = $(USOURCE_SUBDIRS) man doc contrib tools maint-aux
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ EXTRA_DIST = \
+--- contrib/rcs-to-cvs.sh
++++ contrib/rcs-to-cvs.sh
+@@ -32,7 +32,17 @@
+ usage="Usage: rcs-to-cvs [-v] [-m message] [-f message_file] repository"
+ vbose=0
+ message=""
+-if [ -d /var/tmp ]; then message_file=/var/tmp/checkin.$$; else message_file=/usr/tmp/checkin.$$; fi
++if [ -d /var/tmp ]; then
++     message_file=/var/tmp/checkin.$$
++else
++     message_file=/usr/tmp/checkin.$$
++fi
++rm -f $message_file
++if [ -n "`type -p mktemp`" ] ; then
++     message_file="`mktemp ${message_file}.XXXXXX`" || exit 1
++fi
++trap 'test $got_one -eq 1 && rm -f $message_file' 0 1 2 3 7 13 15
++
+ got_one=0
+ 
+ if [ $# -lt 1 ]; then
+--- contrib/rcs2sccs.sh
++++ contrib/rcs2sccs.sh
+@@ -9,14 +9,14 @@
+     mkdir SCCS
+ fi
+ 
+-logfile=/tmp/rcs2sccs_$$_log
++logfile=rcs2sccs.log
+ rm -f $logfile
+ tmpfile=/tmp/rcs2sccs_$$_tmp
+ rm -f $tmpfile
+ emptyfile=/tmp/rcs2sccs_$$_empty
+-echo -n "" > $emptyfile
++rm -f $emptyfile
+ initialfile=/tmp/rcs2sccs_$$_init
+-echo "Initial revision" > $initialfile
++rm -f $initialfile
+ sedfile=/tmp/rcs2sccs_$$_sed
+ rm -f $sedfile
+ revfile=/tmp/rcs2sccs_$$_rev
+@@ -24,6 +24,19 @@
+ commentfile=/tmp/rcs2sccs_$$_comment
+ rm -f $commentfile
+ 
++if [ -n "`type -p mktemp`" ] ; then
++           logfile="`mktemp ${logfile}.XXXXXX`"     || exit 1
++           tmpfile="`mktemp ${tmpfile}.XXXXXX`"     || exit 1
++         emptyfile="`mktemp ${emptyfile}.XXXXXX`"   || exit 1
++       initialfile="`mktemp ${initialfile}.XXXXXX`" || exit 1
++           sedfile="`mktemp ${sedfile}.XXXXXX`"     || exit 1
++           revfile="`mktemp ${revfile}.XXXXXX`"     || exit 1
++       commentfile="`mktemp ${commentfile}.XXXXXX`" || exit 1
++fi
++echo -n "" > $emptyfile
++echo "Initial revision" > $initialfile
++trap "rm -f $tmpfile $emptyfile $initialfile $sedfile $revfile $commentfile" 1 2 3 7 13 15
++
+ # create the sed script
+ cat > $sedfile << EOF
+ s,;Id;,%Z%%M% %I% %E%,g
+@@ -137,7 +150,7 @@
+ # Clean up
+ #
+ echo cleaning up...
+-rm -f $tmpfile $emptyfile $initialfile $sedfile $commentfile
++rm -f $tmpfile $emptyfile $initialfile $sedfile $revfile $commentfile
+ echo ===================================================
+ echo "       Conversion Completed Successfully"
+ echo ===================================================
+--- src/logmsg.c
++++ src/logmsg.c
+@@ -266,7 +266,7 @@
+     }
+ 
+     (void) fprintf (fp,
+-  "%s----------------------------------------------------------------------\n",
++  "\n%s----------------------------------------------------------------------\n",
+ 		    CVSEDITPREFIX);
+     (void) fprintf (fp,
+   "%sEnter Log.  Lines beginning with `%.*s' are removed automatically\n%s\n",

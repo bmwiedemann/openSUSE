@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b28252fe1a44befe0af8abcec5277d3e</srcmd5>
+    <version>6.2.2</version>
+    <time>1509820165</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>538617</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7d335fd043e1859c4f44b9c9a9b79287</srcmd5>
+    <version>6.2.2</version>
+    <time>1510837353</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies</comment>
+    <requestid>542089</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>95bab948c86ad341e54087b3086d0ac1</srcmd5>
+    <version>6.3.0</version>
+    <time>1520588792</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.3.0:</comment>
+    <requestid>584471</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>717fee94eec569848b4ffc4e30279bd7</srcmd5>
+    <version>6.4.0</version>
+    <time>1552985876</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.4.0:
+  * version bump
+  * FIXED: Fix token length in OPML
+  * UPDATED: Allow '\' to preserve line break in metadata.  (Addresses #86)
+  * FIXED: Prevent potential null dereference
+  * Avoid potential error with stack_free
+  * FIXED: Use Setext headers when necessary to convert from OPML to text (fixes #138)
+  * UPDATED: Apply astyle
+  * ADDED: Add opml option to read for MultiMarkdown OPML files
+  * UPDATED: Adjust metadata for test files
+  * FIXED: Trim single remaining whitespace when exporting headers</comment>
+    <requestid>682070</requestid>
+  </revision>
+</revisionlist>

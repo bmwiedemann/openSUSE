@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Mon Mar 10 06:34:22 UTC 2014 - coolo@suse.com
+
+- updated to 0.101343
+ documentation patch for Identifiers
+
+-------------------------------------------------------------------
+Sun Oct  6 12:17:18 UTC 2013 - coolo@suse.com
+
+- updated to 0.101342
+  update bugtracker and repo
+
+-------------------------------------------------------------------
+Fri Feb 17 11:22:35 UTC 2012 - coolo@suse.com
+
+- updated to 0.101341
+  * forbid non-ASCII in pkg, dist, module
+
+-------------------------------------------------------------------
+Mon Jan 17 16:17:35 UTC 2011 - coolo@novell.com
+
+- initial package 0.101340
+  * created by cpanspec 1.78.03
+

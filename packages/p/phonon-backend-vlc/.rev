@@ -1,0 +1,218 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7347ee3c5d3153a2fd4f3b937418fc2a</srcmd5>
+    <version>0.6.2</version>
+    <time>1374506451</time>
+    <user>coolo</user>
+    <comment>The new VLC backend for Phonon. As that VLC is in Factory, we can now also deliver the VLC backend as that Phonon doesn't support gstreamer 1.0 yet</comment>
+    <requestid>183467</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a173cf0bf5f474954a985d3f1a979442</srcmd5>
+    <version>0.6.80~git20130915</version>
+    <time>1379318932</time>
+    <user>coolo</user>
+    <comment>Update to 0.6.80~git20130915
+  * Snapshot of soon to be released 0.7 version
+  * Various improvements, bugfixes, API aditions, documentation fixes
+  * Qt5 support
+
+Final 0.7 should be out in time for 13.1 (even if not, we should be able to push it as an update) (forwarded request 199148 from sumski)</comment>
+    <requestid>199151</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7e910fc3d7d4e10d2e62995a16afce24</srcmd5>
+    <version>0.6.80~git20130915</version>
+    <time>1379343981</time>
+    <user>coolo</user>
+    <comment>Explicitly require current libphonon4 version (4.6.80~git20130915)</comment>
+    <requestid>199268</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7e910fc3d7d4e10d2e62995a16afce24</srcmd5>
+    <version>0.6.80~git20130915</version>
+    <time>1379663947</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4e2823942d4d249e937677f254e01ae7</srcmd5>
+    <version>0.6.80~git20130930</version>
+    <time>1380608594</time>
+    <user>coolo</user>
+    <comment>Update to 4.6.80~git20130930 - target is 13.1 (forwarded request 201520 from sumski)</comment>
+    <requestid>201526</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>27c730d4a2085f16c132ca89b56ee08c</srcmd5>
+    <version>0.6.80~git20130930</version>
+    <time>1381223091</time>
+    <user>scarabeus_factory</user>
+    <comment>Make phonon-backend-vlc require exact vlc-noX package version as vlc version it was compiled against.
+Issue has been detected in Felix Miata's openSUSE-KDE ML thread.
+
+Very good candidate for 13.1 (forwarded request 202430 from sumski)</comment>
+    <requestid>202505</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3ca57bf1c34f7fd866baa84912e3d328</srcmd5>
+    <version>0.7.0~git20131104</version>
+    <time>1383577839</time>
+    <user>coolo</user>
+    <comment>Update to 0.7.0~git20131104</comment>
+    <requestid>205707</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>61308d21e892536b0a910abce1decf00</srcmd5>
+    <version>0.7.0</version>
+    <time>1383732110</time>
+    <user>coolo</user>
+    <comment>Update to 0.7.0 final</comment>
+    <requestid>205816</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>161cff8cd0e76d7c6b8f0c5665e4ab14</srcmd5>
+    <version>0.7.0</version>
+    <time>1384942636</time>
+    <user>coolo</user>
+    <comment> Relax vlc-noX requirement, for making it easier to install VLC from alternative repositories (bnc#851063)</comment>
+    <requestid>207619</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>31626e606a62ff9469647ca5c08c7dc2</srcmd5>
+    <version>0.7.1</version>
+    <time>1386569772</time>
+    <user>coolo</user>
+    <comment>Update to 0.7.1</comment>
+    <requestid>209671</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e0a16e43839adc44d9c81b9c255ae537</srcmd5>
+    <version>0.7.2</version>
+    <time>1403508250</time>
+    <user>coolo</user>
+    <comment>Update to 0.7.2</comment>
+    <requestid>238206</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>665087619a6863a949e837eff83f5dfc</srcmd5>
+    <version>0.7.80</version>
+    <time>1408353830</time>
+    <user>lnussel</user>
+    <comment>- Update to 0.7.80
+   * 0.8 beta: PA interaction improvements, documentation fixes and standard bugfixes
+- Bump phonon (Build)Requires to 4.7.80</comment>
+    <requestid>244475</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>665087619a6863a949e837eff83f5dfc</srcmd5>
+    <version>0.7.80</version>
+    <time>1409302604</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d79eca8d1565797f5a4132236c7f6784</srcmd5>
+    <version>0.8.0</version>
+    <time>1414613359</time>
+    <user>coolo</user>
+    <comment>Update to 0.8.0</comment>
+    <requestid>257679</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>82bd5011d48826316c2f4d508e3fdb0c</srcmd5>
+    <version>0.8.0</version>
+    <time>1414776468</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259092</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d735e613038bbe615eb59bdd7f947503</srcmd5>
+    <version>0.8.2</version>
+    <time>1441726991</time>
+    <user>dimstar_suse</user>
+    <comment>Forward SR#327803 : Update to 0.8.2</comment>
+    <requestid>329254</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>d010671c1a9cfd18edef3666f37a7865</srcmd5>
+    <version>0.8.2</version>
+    <time>1460358854</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>384183</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>83a21f190ef4e9e07aad5da7d836ad0c</srcmd5>
+    <version>0.9.0</version>
+    <time>1462051755</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove now unused automoc4 BuildRequires (forwarded request 391375 from wolfi323)</comment>
+    <requestid>391379</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>29f85bbfa3e1ee0a9c53436d3866f26e</srcmd5>
+    <version>0.9.0</version>
+    <time>1463124244</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394943</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>4880988254cd388787126aef038b7d91</srcmd5>
+    <version>0.9.0</version>
+    <time>1464853136</time>
+    <user>dimstar_suse</user>
+    <comment>- Require VLC 2.1.0 at least for building, support for 2.0.x has been removed upstream (forwarded request 399188 from wolfi323)</comment>
+    <requestid>399204</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>0dba7d5688a2a2d337e8cd72a20e31d2</srcmd5>
+    <version>0.9.0</version>
+    <time>1512734526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555112</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fcfa5c83c0b885ae1f849b062ecbd038</srcmd5>
+    <version>0.9.1</version>
+    <time>1519041790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577899</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e2c83a3436dd1c25da96eda1ff6007aa</srcmd5>
+    <version>0.10.0</version>
+    <time>1519486774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579680</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3ef60cdceb9585df9c14f5495e0b0622</srcmd5>
+    <version>0.10.1</version>
+    <time>1519747202</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580551</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2ad1b8795b65117040e5b18f0debe8fc</srcmd5>
+    <version>0.10.2</version>
+    <time>1548064584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666295</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8613ff78b1f767a758b69d53699e033d</srcmd5>
+    <version>0.10.3</version>
+    <time>1563808723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717515</requestid>
+  </revision>
+</revisionlist>

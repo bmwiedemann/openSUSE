@@ -1,0 +1,191 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a6a374d4b4a61e3b972309fce6e19e87</srcmd5>
+    <version>1.8.27</version>
+    <time>1168903012</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="171">
+    <srcmd5>a6a374d4b4a61e3b972309fce6e19e87</srcmd5>
+    <version>1.8.27</version>
+    <time>1168903012</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="172">
+    <srcmd5>3e5a9c174e58dc27e6f334473b3550ee</srcmd5>
+    <version>1.8.27</version>
+    <time>1245260306</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="174">
+    <srcmd5>3e5a9c174e58dc27e6f334473b3550ee</srcmd5>
+    <version>1.8.27</version>
+    <time>1245260306</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="175">
+    <srcmd5>c4d436954b3bcc468500c82c45dddc6a</srcmd5>
+    <version>1.8.27</version>
+    <time>1264075321</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/htmldoc based on submit request 29904 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="176">
+    <srcmd5>5801bc0ebdbb42c779397f0551cf20be</srcmd5>
+    <version>1.8.27</version>
+    <time>1266502308</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/htmldoc based on submit request 32582 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="177">
+    <srcmd5>51e9ffd5fa99e61509851f23c9fa7264</srcmd5>
+    <version>1.8.27</version>
+    <time>1268923956</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="179">
+    <srcmd5>51e9ffd5fa99e61509851f23c9fa7264</srcmd5>
+    <version>1.8.27</version>
+    <time>1278667350</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="180">
+    <srcmd5>51e9ffd5fa99e61509851f23c9fa7264</srcmd5>
+    <version>1.8.27</version>
+    <time>1278678582</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="183">
+    <srcmd5>51e9ffd5fa99e61509851f23c9fa7264</srcmd5>
+    <version>1.8.27</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="185">
+    <srcmd5>51e9ffd5fa99e61509851f23c9fa7264</srcmd5>
+    <version>1.8.27</version>
+    <time>1319181974</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="186">
+    <srcmd5>fc3934d5de9b71f78991125506588004</srcmd5>
+    <version>1.8.27</version>
+    <time>1323191909</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="187">
+    <srcmd5>d9f4014301cb3089d7f18c556d65f6f8</srcmd5>
+    <version>1.8.27</version>
+    <time>1327403918</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>100910</requestid>
+  </revision>
+  <revision rev="14" vrev="189">
+    <srcmd5>d9f4014301cb3089d7f18c556d65f6f8</srcmd5>
+    <version>1.8.27</version>
+    <time>1340183442</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="190">
+    <srcmd5>2bede540cfb84d7e1b476de050cde1cb</srcmd5>
+    <version>1.8.27</version>
+    <time>1347618364</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134007</requestid>
+  </revision>
+  <revision rev="16" vrev="192">
+    <srcmd5>2bede540cfb84d7e1b476de050cde1cb</srcmd5>
+    <version>1.8.27</version>
+    <time>1359109055</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="193">
+    <srcmd5>8b46a6fc0b31d2ee9c98c848f69b7400</srcmd5>
+    <version>1.8.27</version>
+    <time>1366632403</time>
+    <user>coolo</user>
+    <comment>Link to libX11 - fixes build in Factory... (forwarded request 172601 from dimstar)</comment>
+    <requestid>172665</requestid>
+  </revision>
+  <revision rev="18" vrev="195">
+    <srcmd5>8b46a6fc0b31d2ee9c98c848f69b7400</srcmd5>
+    <version>1.8.27</version>
+    <time>1379662625</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="197">
+    <srcmd5>8b46a6fc0b31d2ee9c98c848f69b7400</srcmd5>
+    <version>1.8.27</version>
+    <time>1409301182</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fb839f2bcb918c336e29ee5a714c6ed4</srcmd5>
+    <version>1.8.28</version>
+    <time>1425377730</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288486</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>8625d8ded9c181b477649fa29fe9b1ec</srcmd5>
+    <version>1.8.28</version>
+    <time>1462697121</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393337</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>5e594cf724eb3c6c46763063fc9c306d</srcmd5>
+    <version>1.8.28</version>
+    <time>1489345521</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478621</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>673c0d72ecca32af867473588d64706a</srcmd5>
+    <version>1.9.1</version>
+    <time>1513941490</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new version 1.9.1:
+  * Fixed monospace font size issue
+  * Added support for reproducible builds
+  * Added limited support for the HTML 4.0 SPAN element
+  * Added (extremely limited) UTF-8 support for input files
+  * Fixed buffer underflow for (invalid) short HTML comments
+  * Now indent PRE text, by popular request.
+  * EPUB output now makes sure that &lt;element property&gt; is written
+    as &lt;element property=&quot;property&quot;&gt;.
+  * Now support both NAME and ID for table-of-contents targets.
+  * Added support for repeating a single header row for tables that
+    span multiple pages
+  * Added support for embedding the current filename/URL in the
+    header or footer
+  * Added EPUB support
+  * Added Markdown support
+  * Fixed a regression in header/footer image scaling
+  * Documentation updates
+  * Compiler fixes
+  * Fixed a bug when running HTMLDOC as a macOS application.
+  * Updated the bundled libpng to v1.6.29.
+  * And many more
+- Drop upstreamed htmldoc-cups_rand.patch and no longer needed
+  htmldoc-docpath.diff
+- Lots of spec file cleaning
+- Use gnutls/gcrypt for crypto support as openssl support is gone</comment>
+    <requestid>548024</requestid>
+  </revision>
+</revisionlist>

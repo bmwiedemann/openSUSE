@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Sat Feb 23 01:59:12 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 4.0.3 (no changelog)
+
+-------------------------------------------------------------------
+Wed Jun 13 22:11:05 UTC 2018 - 9+suse@cirno.systems
+
+- Add baselibs.conf
+- Update to version 4.0.0
+  1. Version 4 now uses int types from <stdint.h> internally and for
+     the arguments of all member funcions.
+  2. The set_density() function has been removed, and the matrix
+     density hint is now an additional argument to configure().
+
+  If your application does not use impdata_update(), then (1)
+  and (2) are the only relevant changes.
+
+  3. The way impdata_update() works has changed.
+     This function is used to modify IR data while the convolver is
+     actually running. It does not use any memory allocation nor
+     modify internal data structures, and only data in already
+     existing partitions can be modified this way.
+     In versions <= 3, this function would *overwrite* any existing
+     data. From version 4, impdata_update() *adds* to existing IR
+     data, just as impdata_create() does. So in order to replace an
+     existing IR, you first need to clear it using the new function
+     impdata_clear(). This will clear (but not delete) all IR data
+     for a given input, output pair.
+
+-------------------------------------------------------------------
+Thu Jun  7 21:12:24 UTC 2018 - jengelh@inai.de
+
+- Replace %soname by %sover to better reflect its use.
+- Drop bias from description.
+- Add Group: line for shared library subpackage.
+
+-------------------------------------------------------------------
+Fri Feb 23 00:56:31 UTC 2018 - 9+suse@cirno.systems
+
+- init, 3.1.0

@@ -1,0 +1,5 @@
+addFilter("W: files-duplicate /etc/tuned/realtime-virtual-host-variables.conf /etc/tuned/realtime-virtual-guest-variables.conf")
+addFilter("W: zero-length /etc/tuned/active_profile")
+addFilter("W: zero-length /etc/tuned/profile_mode")
+addFilter("W: obsolete-not-provided pm-profiler")
+addFilter("W: files-duplicate /etc/tuned/realtime-virtual-guest-variables.conf /etc/tuned/realtime-virtual-host-variables.conf")

@@ -1,0 +1,183 @@
+From e1b2b9bf1d1cb3b411b5ae45046e4002091f6f5f Mon Sep 17 00:00:00 2001
+From: Vladimir Serbinenko <phcoder@gmail.com>
+Date: Thu, 31 Dec 2015 15:29:28 +0100
+Subject: [PATCH] module-verifier: Check range-limited relative relocations.
+
+Check that they point to the same module, so will end up in the same
+chunk of memory.
+---
+ include/grub/module_verifier.h |  1 +
+ util/grub-module-verifier.c    | 19 ++++++++++---
+ util/grub-module-verifierXX.c  | 62 ++++++++++++++++++++++++++++++++++--------
+ 3 files changed, 67 insertions(+), 15 deletions(-)
+
+Index: trustedgrub2-1.4.0/include/grub/module_verifier.h
+===================================================================
+--- trustedgrub2-1.4.0.orig/include/grub/module_verifier.h
++++ trustedgrub2-1.4.0/include/grub/module_verifier.h
+@@ -13,6 +13,7 @@ struct grub_module_verifier_arch {
+   int machine;
+   int flags;
+   const int *supported_relocations;
++  const int *short_relocations;
+ };
+ 
+ void grub_module_verify64(void *module_img, size_t module_size, const struct grub_module_verifier_arch *arch);
+Index: trustedgrub2-1.4.0/util/grub-module-verifier.c
+===================================================================
+--- trustedgrub2-1.4.0.orig/util/grub-module-verifier.c
++++ trustedgrub2-1.4.0/util/grub-module-verifier.c
+@@ -15,9 +15,13 @@ struct grub_module_verifier_arch archs[]
+   { "x86_64", 8, 0, EM_X86_64, GRUB_MODULE_VERIFY_SUPPORTS_RELA, (int[]){
+       R_X86_64_64,
+       R_X86_64_PC64,
+-      /* R_X86_64_32, R_X86_64_32S, R_X86_64_PC32 are supported but shouldn't be used because of their limited range.  */
++      /* R_X86_64_32, R_X86_64_32S are supported but shouldn't be used because of their limited range.  */
+       -1
+-    } },
++    }, (int[]){
++      R_X86_64_PC32,
++      -1
++    }
++  },
+   { "powerpc", 4, 1, EM_PPC, GRUB_MODULE_VERIFY_SUPPORTS_RELA, (int[]){
+       GRUB_ELF_R_PPC_ADDR16_LO,
+       GRUB_ELF_R_PPC_REL24, /* It has limited range but GRUB adds trampolines when necessarry.  */
+@@ -39,17 +43,24 @@ struct grub_module_verifier_arch archs[]
+     } },
+   { "ia64", 8, 0, EM_IA_64, GRUB_MODULE_VERIFY_SUPPORTS_RELA, (int[]){
+       R_IA64_PCREL21B, /* We should verify that it's pointing either
+-			  to a function or to a section in the same module.  */
++			  to a function or to a section in the same module.
++			  Checking that external symbol is a function is
++			  non-trivial and I have never seen this relocation used
++			  for anything else, so assume that it always points to a
++			  function.
++		       */
+       R_IA64_SEGREL64LSB,
+       R_IA64_FPTR64LSB,
+       R_IA64_DIR64LSB,
+       R_IA64_PCREL64LSB,
+-      R_IA64_GPREL22,  /* We should verify that it's pointing  to a section in the same module.  */
+       R_IA64_LTOFF22X,
+       R_IA64_LTOFF22,
+       R_IA64_LTOFF_FPTR22,
+       R_IA64_LDXMOV,
+       -1
++    }, (int[]){
++      R_IA64_GPREL22,
++      -1
+     } },
+   { "mipsel", 4, 0, EM_MIPS, GRUB_MODULE_VERIFY_SUPPORTS_REL | GRUB_MODULE_VERIFY_SUPPORTS_RELA, (int[]){
+       R_MIPS_HI16,
+Index: trustedgrub2-1.4.0/util/grub-module-verifierXX.c
+===================================================================
+--- trustedgrub2-1.4.0.orig/util/grub-module-verifierXX.c
++++ trustedgrub2-1.4.0/util/grub-module-verifierXX.c
+@@ -161,14 +161,12 @@ check_license (const struct grub_module_
+   grub_util_error ("incompatible license");
+ }
+ 
+-static void
+-check_symbols (const struct grub_module_verifier_arch *arch, Elf_Ehdr *e)
++static Elf_Sym *
++get_symtab (const struct grub_module_verifier_arch *arch, Elf_Ehdr *e, Elf_Word *size, Elf_Word *entsize)
+ {
+   unsigned i;
+   Elf_Shdr *s, *sections;
+   Elf_Sym *sym;
+-  const char *str;
+-  Elf_Word size, entsize;
+ 
+   sections = (Elf_Shdr *) ((char *) e + grub_target_to_host (e->e_shoff));
+   for (i = 0, s = sections;
+@@ -181,11 +179,19 @@ check_symbols (const struct grub_module_
+     grub_util_error ("no symbol table");
+ 
+   sym = (Elf_Sym *) ((char *) e + grub_target_to_host (s->sh_offset));
+-  size = grub_target_to_host (s->sh_size);
+-  entsize = grub_target_to_host (s->sh_entsize);
++  *size = grub_target_to_host (s->sh_size);
++  *entsize = grub_target_to_host (s->sh_entsize);
++  return sym;
++}
++
++static void
++check_symbols (const struct grub_module_verifier_arch *arch, Elf_Ehdr *e)
++{
++  Elf_Sym *sym;
++  Elf_Word size, entsize;
++  unsigned i;
+ 
+-  s = (Elf_Shdr *) ((char *) sections + grub_target_to_host16 (e->e_shentsize) * grub_target_to_host32 (s->sh_link));
+-  str = (char *) e + grub_target_to_host (s->sh_offset);
++  sym = get_symtab (arch, e, &size, &entsize);
+ 
+   for (i = 0;
+        i < size / entsize;
+@@ -208,19 +214,41 @@ check_symbols (const struct grub_module_
+     }
+ }
+ 
+-/* Relocate symbols.  */
++static int
++is_symbol_local(Elf_Sym *sym)
++{
++  switch (ELF_ST_TYPE (sym->st_info))
++    {
++    case STT_NOTYPE:
++    case STT_OBJECT:
++      if (sym->st_name != 0 && sym->st_shndx == 0)
++	return 0;
++      return 1;
++
++    case STT_FUNC:
++    case STT_SECTION:
++      return 1;
++
++    default:
++      return 0;
++    }
++}
++
+ static void
+ section_check_relocations (const struct grub_module_verifier_arch *arch, void *ehdr,
+ 			   Elf_Shdr *s, size_t target_seg_size)
+ {
+   Elf_Rel *rel, *max;
++  Elf_Sym *symtab;
++  Elf_Word symtabsize, symtabentsize;
++
++  symtab = get_symtab (arch, ehdr, &symtabsize, &symtabentsize);
+ 
+   for (rel = (Elf_Rel *) ((char *) ehdr + grub_target_to_host (s->sh_offset)),
+ 	 max = (Elf_Rel *) ((char *) rel + grub_target_to_host (s->sh_size));
+        rel < max;
+        rel = (Elf_Rel *) ((char *) rel + grub_target_to_host (s->sh_entsize)))
+     {
+-      Elf_Word *addr;
+       Elf_Sym *sym;
+       unsigned i;
+ 
+@@ -235,8 +263,20 @@ section_check_relocations (const struct
+       for (i = 0; arch->supported_relocations[i] != -1; i++)
+ 	if (type == arch->supported_relocations[i])
+ 	  break;
+-      if (arch->supported_relocations[i] == -1)
++      if (arch->supported_relocations[i] != -1)
++	continue;
++      if (!arch->short_relocations)
+ 	grub_util_error ("unsupported relocation 0x%x", type);
++      for (i = 0; arch->short_relocations[i] != -1; i++)
++	if (type == arch->short_relocations[i])
++	  break;
++      if (arch->short_relocations[i] == -1)
++	grub_util_error ("unsupported relocation 0x%x", type);
++      sym = (Elf_Sym *) ((char *) symtab + symtabentsize * ELF_R_SYM (grub_target_to_host (rel->r_info)));
++
++      if (is_symbol_local (sym))
++	continue;
++      grub_util_error ("relocation 0x%x is not module-local", type);
+     }
+ }
+ 

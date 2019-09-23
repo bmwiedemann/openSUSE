@@ -1,0 +1,11 @@
+[Unit]
+Description=Miredo - Teredo IPv6 Tunneling Client For Unix
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/miredo.pid
+ExecStart=/usr/sbin/miredo
+
+[Install]
+WantedBy=multi-user.target

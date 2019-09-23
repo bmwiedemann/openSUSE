@@ -1,0 +1,92 @@
+--- a/nemo-gtkhash/src/hash/hash-lib-crypto.c	2019-02-08 16:11:14.000000000 +0600
++++ b/nemo-gtkhash/src/hash/hash-lib-crypto.c	2019-04-26 16:38:09.666130133 +0600
+@@ -34,7 +34,7 @@
+ #define LIB_DATA ((struct hash_lib_crypto_s *)func->lib_data)
+ 
+ struct hash_lib_crypto_s {
+-	EVP_MD_CTX ctx;
++	EVP_MD_CTX *ctx;
+ };
+ 
+ static const EVP_MD *gtkhash_hash_lib_crypto_get_md(const enum hash_func_e id)
+@@ -44,8 +44,10 @@
+ 			return EVP_md4();
+ 		case HASH_FUNC_MD5:
+ 			return EVP_md5();
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+ 		case HASH_FUNC_SHA0:
+ 			return EVP_sha();
++#endif
+ 		case HASH_FUNC_SHA1:
+ 			return EVP_sha1();
+ 		case HASH_FUNC_RIPEMD160:
+@@ -69,9 +71,13 @@
+ 	if (!(md = gtkhash_hash_lib_crypto_get_md(id)))
+ 		return false;
+ 
+-	EVP_MD_CTX_init(&data.ctx);
+-	bool ret = (EVP_DigestInit_ex(&data.ctx, md, NULL) == 1);
+-	EVP_MD_CTX_cleanup(&data.ctx);
++	data.ctx = EVP_MD_CTX_init(&data.ctx);
++	bool ret = (EVP_DigestInit_ex(data.ctx, md, NULL) == 1);
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
++	EVP_MD_CTX_destroy(data.ctx);
++#else
++	EVP_MD_CTX_cleanup(data.ctx);
++#endif
+ 
+ 	return ret;
+ }
+@@ -84,37 +90,45 @@
+ 	if (!(md = gtkhash_hash_lib_crypto_get_md(func->id)))
+ 		g_assert_not_reached();
+ 
+-	EVP_MD_CTX_init(&LIB_DATA->ctx);
++	LIB_DATA->ctx = EVP_MD_CTX_create();
+ 
+-	if (EVP_DigestInit_ex(&LIB_DATA->ctx, md, NULL) != 1)
++	if (EVP_DigestInit_ex(LIB_DATA->ctx, md, NULL) != 1)
+ 		g_assert_not_reached();
+ }
+ 
+ void gtkhash_hash_lib_crypto_update(struct hash_func_s *func,
+ 	const uint8_t *buffer, const size_t size)
+ {
+-	EVP_DigestUpdate(&LIB_DATA->ctx, buffer, size);
++	EVP_DigestUpdate(LIB_DATA->ctx, buffer, size);
+ }
+ 
+ void gtkhash_hash_lib_crypto_stop(struct hash_func_s *func)
+ {
+-	EVP_MD_CTX_cleanup(&LIB_DATA->ctx);
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
++	EVP_MD_CTX_destroy(LIB_DATA->ctx);
++#else
++	EVP_MD_CTX_cleanup(LIB_DATA->ctx);
++#endif
+ 	g_free(LIB_DATA);
+ }
+ 
+ uint8_t *gtkhash_hash_lib_crypto_finish(struct hash_func_s *func, size_t *size)
+ {
+-	*size = EVP_MD_CTX_size(&LIB_DATA->ctx);
++	*size = EVP_MD_CTX_size(LIB_DATA->ctx);
+ 	g_assert(*size > 0);
+ 
+ 	uint8_t *digest = g_malloc0(*size);
+ 
+ 	unsigned int len;
+-	if (EVP_DigestFinal_ex(&LIB_DATA->ctx, digest, &len) != 1)
++	if (EVP_DigestFinal_ex(LIB_DATA->ctx, digest, &len) != 1)
+ 		g_assert_not_reached();
+ 	g_assert(*size == len);
+ 
+-	EVP_MD_CTX_cleanup(&LIB_DATA->ctx);
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
++	EVP_MD_CTX_destroy(LIB_DATA->ctx);
++#else
++	EVP_MD_CTX_cleanup(LIB_DATA->ctx);
++#endif
+ 	g_free(LIB_DATA);
+ 
+ 	return digest;

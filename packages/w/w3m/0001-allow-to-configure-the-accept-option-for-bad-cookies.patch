@@ -1,0 +1,40 @@
+From 9b0095164cec0d01ac3f08cf1d0f6c3fc0290a84 Mon Sep 17 00:00:00 2001
+From: Thomas Blume <Thomas.Blume@suse.com>
+Date: Thu, 24 Nov 2016 14:13:36 +0100
+Subject: [PATCH] allow to configure the "accept" option for bad cookies
+
+port of: w3m-disable-cookie-special-domain-check.patch
+---
+ fm.h | 2 +-
+ rc.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/fm.h b/fm.h
+index 96d3ab3..2227ec4 100644
+--- a/fm.h
++++ b/fm.h
+@@ -748,7 +748,7 @@ struct cookie {
+ 						/* version 1' refers to the Internet draft to obsolete RFC 2109 */
+ #define COO_EINTERNAL	(1)	/* unknown error; probably forgot to convert "return 1" in cookie.c */
+ #define COO_ETAIL	(2 | COO_OVERRIDE_OK)	/* tail match failed (version 0) */
+-#define COO_ESPECIAL	(3)	/* special domain check failed (version 0) */
++#define COO_ESPECIAL	(3 | COO_OVERRIDE_OK)	/* special domain check failed (version 0) */
+ #define COO_EPATH	(4)	/* Path attribute mismatch (version 1 case 1) */
+ #define COO_ENODOT	(5 | COO_OVERRIDE_OK)	/* no embedded dots in Domain (version 1 case 2.1) */
+ #define COO_ENOTV1DOM	(6 | COO_OVERRIDE_OK)	/* Domain does not start with a dot (version 1 case 2.2) */
+diff --git a/rc.c b/rc.c
+index 7de87b8..aa872c2 100644
+--- a/rc.c
++++ b/rc.c
+@@ -326,7 +326,7 @@ static struct sel_c dnsorders[] = {
+ #ifdef USE_COOKIE
+ static struct sel_c badcookiestr[] = {
+     {N_S(ACCEPT_BAD_COOKIE_DISCARD), N_("discard")},
+-#if 0
++#if 1
+     {N_S(ACCEPT_BAD_COOKIE_ACCEPT), N_("accept")},
+ #endif
+     {N_S(ACCEPT_BAD_COOKIE_ASK), N_("ask")},
+-- 
+2.6.6
+

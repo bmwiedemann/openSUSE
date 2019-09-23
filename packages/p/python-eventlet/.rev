@@ -1,0 +1,381 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e948d75e53165d9ee1b7c87c9a1d937</srcmd5>
+    <version>0.9.16</version>
+    <time>1315235019</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>80656</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>95ab17bfad8b41963b71c5d1cbbaef8e</srcmd5>
+    <version>0.9.16</version>
+    <time>1315235031</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80656
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>95ab17bfad8b41963b71c5d1cbbaef8e</srcmd5>
+    <version>0.9.16</version>
+    <time>1319182389</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>8692a3e68a2433e086331471399a1dbc</srcmd5>
+    <version>0.9.16</version>
+    <time>1323194134</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>8692a3e68a2433e086331471399a1dbc</srcmd5>
+    <version>0.9.16</version>
+    <time>1340184052</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c9483c63bc1a61737b286de6b87c9a0c</srcmd5>
+    <version>0.9.17</version>
+    <time>1353846624</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.9.17:
+  + ZeroMQ support calling send and recv from multiple greenthreads
+  + SSL: unwrap() sends data, and so it needs trampolining
+  + hubs.epolls: Fix imports for exception handler
+  + db_pool: Fix .clear() when min_size &gt; 0
+  + db_pool: Add MySQL's insert_id() method
+  + db_pool: Close connections after timeout, fix get-after-close race
+    condition with using TpooledConnectionPool
+  + threading monkey patch fixes
+  + pools: Better accounting of current_size in pools.Pool
+  + wsgi: environ['RAW_PATH_INFO'] with request path as received from client
+  + wsgi: log_output flag
+  + wsgi: Limit HTTP header size
+  + wsgi: Configurable maximum URL length
+
+  + SO_REUSEADDR now correctly set.</comment>
+    <requestid>142566</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f3fb9267d155d445537ea0ca114564ea</srcmd5>
+    <version>0.11.0</version>
+    <time>1358666178</time>
+    <user>coolo</user>
+    <comment>Update to latest (forwarded request 148657 from posophe)</comment>
+    <requestid>148824</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f3fb9267d155d445537ea0ca114564ea</srcmd5>
+    <version>0.11.0</version>
+    <time>1359110028</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>caa3fe7ed33f332862cbe07f388e3f81</srcmd5>
+    <version>0.12.1</version>
+    <time>1360331045</time>
+    <user>coolo</user>
+    <comment>Update to 1.12.1 (forwarded request 154901 from posophe)</comment>
+    <requestid>154902</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b8b63d2394c100c80835e6cdb13e67d7</srcmd5>
+    <version>0.13.0</version>
+    <time>1372925660</time>
+    <user>coolo</user>
+    <comment>- update to 0.13.1:
+ * hubs: kqueue support! Thanks to YAMAMOTO Takashi, Edward George
+ * greenio: Fix AttributeError on MacOSX; Bitbucket #136; Thanks to Derk Tegeler
+ * green: subprocess: Fix subprocess.communicate() block on Python 2.7; Thanks to Edward George
+ * green: select: ensure that hub can .wait() at least once before timeout; Thanks to YAMAMOTO Takashi
+ * tpool: single request queue to avoid deadlocks; Bitbucket pull request 31,32; Thanks to Edward George
+ * zmq: pyzmq 13.x compatibility; Thanks to Edward George
+ * green: subprocess: Popen.wait() accepts new `timeout` kwarg; Python 3.3 and RHEL 6.1 compatibility
+ * hubs: EVENTLET_HUB can point to external modules; Thanks to Edward George
+ * semaphore: support timeout for acquire(); Thanks to Justin Patrin
+ * support: do not clear sys.exc_info if can be preserved (greenlet &gt;= 0.3.2); Thanks to Edward George
+ * Travis continous integration; Thanks to Thomas Grainger, Jakub Stasiak
+ * wsgi: minimum_chunk_size of last Server altered all previous (global variable); Thanks to Jakub Stasiak
+ * doc: hubs: Point to the correct function in exception message; Thanks to Floris Bruynooghe (forwarded request 181901 from dirkmueller)</comment>
+    <requestid>181915</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0e2380e7d0deeed0e98193d7f89ec842</srcmd5>
+    <version>0.14.0</version>
+    <time>1379427512</time>
+    <user>coolo</user>
+    <comment>- update to 0.14.0:
+  * wsgi: handle connection socket timeouts; Thanks to Paul Oppenheim
+  * wsgi: close timed out client connections
+  * greenio: socket pypy compatibility; Thanks to Alex Gaynor
+  * wsgi: env['wsgi.input'] was returning 1 byte strings; Thanks to Eric Urban
+  * green.ssl: fix NameError; Github #17; Thanks to Jakub Stasiak
+  * websocket: allow &quot;websocket&quot; in lowercase in Upgrade header; Compatibility with current Google Chrome; Thanks to Dmitry Orlov
+  * wsgi: allow minimum_chunk_size to be overriden on a per request basis; Thanks to David Goetz
+  * wsgi: configurable socket_timeout (forwarded request 199367 from dirkmueller)</comment>
+    <requestid>199370</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>0e2380e7d0deeed0e98193d7f89ec842</srcmd5>
+    <version>0.14.0</version>
+    <time>1379664174</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>731a794d7a04f8911fccf6a4daee638a</srcmd5>
+    <version>0.14.0</version>
+    <time>1382692528</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204557</requestid>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>731a794d7a04f8911fccf6a4daee638a</srcmd5>
+    <version>0.14.0</version>
+    <time>1409302867</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1b46508cb1c808ae8d04d24c3441c550</srcmd5>
+    <version>0.15.2</version>
+    <time>1412799238</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254669</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>872f20bccbd01c16b0a7d442fb899b7e</srcmd5>
+    <version>0.16.0</version>
+    <time>1420833033</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280444</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>62557388ecb32f93add89c8bfde1eb88</srcmd5>
+    <version>0.16.1</version>
+    <time>1422960027</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283734</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6183d153a6ac62ec62ad4cf9f363aaff</srcmd5>
+    <version>0.17.0</version>
+    <time>1424827090</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287543</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1b332779979a233d198c8b1e07d903c4</srcmd5>
+    <version>0.17.3</version>
+    <time>1429769097</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298602</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d02a7df8527509d8e5125d3ba431e6dd</srcmd5>
+    <version>0.17.4</version>
+    <time>1435171799</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313184</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3effddfb131f974be18ade9911781202</srcmd5>
+    <version>0.18.4</version>
+    <time>1457353408</time>
+    <user>dimstar_suse</user>
+    <comment>-  update to 0.18.4:
+  * wsgi: change TCP_NODELAY to TCP_QUICKACK, ignore socket error when not available
+  * wsgi: Use buffered writes - fixes partial socket.send without custom
+    writelines(); Github issue #295
+  * wsgi: TCP_NODELAY enabled by default
+  * wsgi: Fix data loss on partial writes (socket.send); Thanks to Jakub Stasiak
+  * IMPORTANT: do not use Eventlet 0.18.0 and 0.18.1
+  * patcher: Fix AttributeError in subprocess communicate()
+  * greenio: Fix &quot;TypeError: an integer is required&quot; in sendto()
+  * IMPORTANT: do not use Eventlet 0.18.0 and 0.18.1
+  * greenio: Fixed a bug that could cause send() to start an endless loop on
+    ENOTCONN; Thanks to Seyeong Kim
+  * wsgi: Fixed UNIX socket address being trimmed in &quot;wsgi starting&quot; log; Thanks
+    to Ihar Hrachyshka
+  * ssl: Ported eventlet.green.OpenSSL to Python 3; Thanks to Victor Stinner
+  * greenio: Made read() support buflen=-1 and added readall() (Python 3);
+    Thanks to David Szotten
+  * wsgi: Made the error raised in case of chunk read failures more precise (this
+    should be backwards compatible as the new exception class,
+    wsgi.ChunkReadError, is a subclass of ValueError which was being used there
+    before); Thanks to Samuel Merritt
+  * greenio: Fixed socket.recv() sometimes returning str instead of bytes on
+    Python 3; Thanks to Janusz Harkot
+  * wsgi: Improved request body discarding
+  * websocket: Fixed TypeError on empty websocket message (Python 3); Thanks to
+    Fukuchi Daisuke
+  * subprocess: Fixed universal_newlines support
+  * wsgi: Output of 0-byte chunks is now suppressed; Thanks to Samuel Merritt
+  * Improved the documentation; Thanks to Ramakrishnan G, ashutosh-mishra and
+    Azhar Hussain</comment>
+    <requestid>361982</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9af3f0ce2a55c2b9ee2d04390d9464bc</srcmd5>
+    <version>0.19.0</version>
+    <time>1480860532</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.19.0:
+  * ssl: IMPORTANT DoS FIX do_handshake_connect=False in server accept();
+  * green.urllib2: missing patched ssl module;
+  * wsgi: environ[headers_raw] tuple of unmodified name: value pairs
+  * test against modern pyopenssl 16.0.0 for Python 2.7+;
+  * wsgi: document compatibility with python `logging`
+  * Minor grammatical improvements and typo fixes to the docs</comment>
+    <requestid>443621</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ba3345203459f49f6aeadf15db826ca1</srcmd5>
+    <version>0.20.1</version>
+    <time>1504815370</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521614</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>58e8859dd77e5ae1a66461db101b0250</srcmd5>
+    <version>0.21.0</version>
+    <time>1507391447</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532111</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>f6605b0ad4cad96261f0e7819210097c</srcmd5>
+    <version>0.20.1</version>
+    <time>1511817464</time>
+    <user>dimstar_suse</user>
+    <comment>- go back to a working version: downgrade to 0.20.1
+- add  0001-Fix-SSL-connection-reset-errors.patch to fix
+  hangs on SSL connections</comment>
+    <requestid>545726</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6cfa3087bdc94fa38960cf08357d3ebf</srcmd5>
+    <version>0.20.0</version>
+    <time>1513677384</time>
+    <user>dimstar_suse</user>
+    <comment>- fix enum-compat removal
+
+- go back to a working version: downgrade to 0.20.0</comment>
+    <requestid>556955</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>880ec5421db777fde6219b22416c1df2</srcmd5>
+    <version>0.20.0</version>
+    <time>1515876529</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PR-459.patch.
+  Hostname in /etc/hosts are not case-sensitive, this fixes
+  HostsResolver() accordingly.</comment>
+    <requestid>563841</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>59e8cf97d9ee57e0464e0c81ffd01b59</srcmd5>
+    <version>0.20.0</version>
+    <time>1516092204</time>
+    <user>dimstar_suse</user>
+    <comment>- add netcfg package to list of requirements</comment>
+    <requestid>565830</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>97584e2b20070b238182c5c561e4ca40</srcmd5>
+    <version>0.24.1</version>
+    <time>1544726891</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.24.1:
+  * greendns: don't contact nameservers if one entry is returned from hosts file; Thanks to Daniel Alvarez
+  * greendns: Fix infinite loop when UDP source address mismatch; Thanks to Lon Hohberger
+  * greendns: Fix bad ipv6 comparison; Thanks to Lon Hohberger
+  * wsgi: Use byte strings on py2 and unicode strings on py3; Thanks to Tim Burke
+  * pools: put to empty pool would block sometimes; Thanks to Sam Merritt
+  * greendns: resolving over TCP produced ValueError; Thanks to Jaume Marhuenda
+  * support.greendns: ImportError when dns.rdtypes was imported before eventlet; Thanks to Jaume Marhuenda
+  * greendns: full comment lines were not skipped; Thanks to nat-goodspeed
+  * Drop support for Python3.3; Python2.6 and python-epoll package
+  * external dependencies for six, monotonic, dnspython; Thanks to nat-goodspeed
+  * wsgi: Don't strip all Unicode whitespace from headers on py3; Thanks to Tim Burke
+  * green.threading: current_thread() did not see new monkey-patched threads; Thanks to Jake Tesler
+  * tpool: exception in tpool-ed call leaked memory via backtrace
+  * wsgi: latin-1 encoding dance for environ[PATH_INFO]
+  * Fixed issue installing excess enum34 on Python3.4+ (rebuild with updated setuptools)
+  * event: Event.wait() timeout=None argument to be compatible with upstream CPython
+  * greendns: Treat /etc/hosts entries case-insensitive; Thanks to Ralf Haferkamp
+  * convenience: (SO_REUSEPORT) socket.error is not OSError on Python 2; Thanks to JacoFourie@github
+  * convenience: SO_REUSEPORT is not available on WSL platform (Linux on Windows)
+  * convenience: skip SO_REUSEPORT for bind on random port (0)
+  * dns: reading /etc/hosts raised DeprecationWarning for universal lines on Python 3.4+; Thanks to Chris Kerr
+  * green.openssl: Drop OpenSSL.rand support; Thanks to Haikel Guemar
+  * green.subprocess: keep CalledProcessError identity; Thanks to Linbing@github
+  * greendns: be explicit about expecting bytes from sock.recv; Thanks to Matt Bennett
+  * greendns: early socket.timeout was breaking IO retry loops
+  * GreenSocket.accept does not notify_open; Thanks to orishoshan
+  * patcher: set locked RLocks' owner only when patching existing locks; Thanks to Quan Tian
+  * patcher: workaround for monotonic &quot;no suitable implementation&quot;; Thanks to Geoffrey Thomas
+  * queue: empty except was catching too much</comment>
+    <requestid>655972</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>1f4dbe5215e615bf9d0066d4e53a7c74</srcmd5>
+    <version>0.24.1</version>
+    <time>1557083895</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0001-ssl-connect-used-non-monotonic-time.time-for-timeout.patch
+- add 0002-Fix-for-Python-3.7-506.patch and
+  add 0003-Fix-compatibility-with-Python-3.7-ssl.SSLSocket-531.patch
+  Both needed for python 3.7 compatibility
+
+- add 0001-IMPORTANT-late-import-in-use_hub-thread-race-caused-.patch
+  Fixes a problem during tests runs with python 2.7:
+  RuntimeError: no suitable implementation for this system: \
+    AttributeError(&quot;'module' object has no attribute 'epolls'&quot;,)</comment>
+    <requestid>699142</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e2b9ceccceb2024ca409d9af2bbc6bd4</srcmd5>
+    <version>0.25.0</version>
+    <time>1560457863</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not generate sphinx docu, it is online and now we have only
+  python3 Sphinx anyway
+- Update to 0.25.0:
+  * Support for new python and ssl
+- Remove patches that are in upstream release:
+  * 0001-IMPORTANT-late-import-in-use_hub-thread-race-caused-.patch
+  * 0001-ssl-connect-used-non-monotonic-time.time-for-timeout.patch
+  * 0002-Fix-for-Python-3.7-506.patch
+  * 0003-Fix-compatibility-with-Python-3.7-ssl.SSLSocket-531.patch</comment>
+    <requestid>708354</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>7751f981308f73080876f5feb5848f25</srcmd5>
+    <version>0.25.0</version>
+    <time>1561882455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711674</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ff7aa5ba99a127c2173d133af79886f0</srcmd5>
+    <version>0.25.1</version>
+    <time>1569233114</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729871</requestid>
+  </revision>
+</revisionlist>

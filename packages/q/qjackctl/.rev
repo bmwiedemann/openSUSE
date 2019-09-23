@@ -1,0 +1,264 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f86f77d4cfd11a595ab0d0e7b6b1edf8</srcmd5>
+    <version>0.2.21</version>
+    <time>1168904083</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f1f7c9258de1da5c970ceed5025aa70c</srcmd5>
+    <version>0.2.22</version>
+    <time>1175629516</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0e562472e0fdac11236ccb1946dd3254</srcmd5>
+    <version>0.2.23</version>
+    <time>1183468996</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>be0dfb2218ec879d0da6505f64bbd001</srcmd5>
+    <version>0.3.0</version>
+    <time>1184149717</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>59aba4e6886223ce394b2d90fdb66f2d</srcmd5>
+    <version>0.3.1a</version>
+    <time>1185034019</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>71b3c9c054a3caa94926fed0f9348f1d</srcmd5>
+    <version>0.3.2</version>
+    <time>1198239247</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>be080549333bfa9fd240346299cd41ba</srcmd5>
+    <version>0.3.3</version>
+    <time>1214425787</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>207d3e4118cfe473f5d2f9c192285556</srcmd5>
+    <version>0.3.4</version>
+    <time>1232410565</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>3bebdf8142a2c862e50cfcdcdc5c13e6</srcmd5>
+    <version>0.3.4</version>
+    <time>1251748778</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/qjackctl based on submit request 19330 from user tiwai
+</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>3bebdf8142a2c862e50cfcdcdc5c13e6</srcmd5>
+    <version>0.3.4</version>
+    <time>1251748778</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/qjackctl based on submit request 19330 from user tiwai
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bbd5997e15527a72a8fe44279aa61dd6</srcmd5>
+    <version>0.3.5</version>
+    <time>1258724045</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/qjackctl based on submit request 24766 from user mseben
+</comment>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>ad64308be9a5b6f9921fe91fa343d7af</srcmd5>
+    <version>0.3.5</version>
+    <time>1268925918</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8c02a8cd2c3b980239f7e7fdf677b69a</srcmd5>
+    <version>0.3.6</version>
+    <time>1270668616</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/qjackctl based on submit request 37202 from user plater
+</comment>
+    <requestid>37202</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>8c02a8cd2c3b980239f7e7fdf677b69a</srcmd5>
+    <version>0.3.6</version>
+    <time>1278667386</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>8c02a8cd2c3b980239f7e7fdf677b69a</srcmd5>
+    <version>0.3.6</version>
+    <time>1278678615</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ddf4069f58578f5b24c7070c965c74c3</srcmd5>
+    <version>0.3.7</version>
+    <time>1291587890</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54396 from user mseben
+</comment>
+    <requestid>54396</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>2c11a6c216bcf813b5a8a3bb1e2dd1f1</srcmd5>
+    <version>0.3.7</version>
+    <time>1291587897</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54396
+</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>2c11a6c216bcf813b5a8a3bb1e2dd1f1</srcmd5>
+    <version>0.3.7</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a08dfa3643af05b30c4900c19b003ad1</srcmd5>
+    <version>0.3.8</version>
+    <time>1312810210</time>
+    <user>saschpe</user>
+    <comment>update to 0.3.8</comment>
+    <requestid>78228</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>1537420113499e196be247975aa72ae1</srcmd5>
+    <version>0.3.8</version>
+    <time>1312810218</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78228
+</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>1537420113499e196be247975aa72ae1</srcmd5>
+    <version>0.3.8</version>
+    <time>1319182415</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>68fb3d74e35b8b79553084480f62c05d</srcmd5>
+    <version>0.3.8</version>
+    <time>1323194320</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e2b807e93695fc58ff7f282608e180a8</srcmd5>
+    <version>0.3.9</version>
+    <time>1337667517</time>
+    <user>coolo</user>
+    <comment>update to 0.3.9 + enable portaudio support + build with optflags + spec file tidying</comment>
+    <requestid>121497</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>e2b807e93695fc58ff7f282608e180a8</srcmd5>
+    <version>0.3.9</version>
+    <time>1340184126</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>e2b807e93695fc58ff7f282608e180a8</srcmd5>
+    <version>0.3.9</version>
+    <time>1359110260</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7960c4636c927ed2b6319990d3408df4</srcmd5>
+    <version>0.3.10</version>
+    <time>1365618498</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>163360</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>7960c4636c927ed2b6319990d3408df4</srcmd5>
+    <version>0.3.10</version>
+    <time>1379664411</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>44e0e178e0f39647873feacb0d6110e2</srcmd5>
+    <version>0.3.11</version>
+    <time>1396538128</time>
+    <user>coolo</user>
+    <comment>mentioned in qjackctl-remove_absolute_path_from_exec_in_desktop-file.patch .changes (forwarded request 228759 from cyberiad)</comment>
+    <requestid>228763</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>44e0e178e0f39647873feacb0d6110e2</srcmd5>
+    <version>0.3.11</version>
+    <time>1409303132</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>163d3eed08785f4954bac305823de88e</srcmd5>
+    <version>0.3.12</version>
+    <time>1426680277</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290837</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>bc128cbd6e1e6983ad656e3e6fde0c05</srcmd5>
+    <version>0.4.0</version>
+    <time>1439385337</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322055</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6aa3a753d29d784dcf364bfaf9398ab2</srcmd5>
+    <version>0.4.2</version>
+    <time>1473241565</time>
+    <user>dimstar_suse</user>
+    <comment>Changes fixed</comment>
+    <requestid>424522</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>aa87b9b8af33c1ce242c451ae3cd34af</srcmd5>
+    <version>0.4.3</version>
+    <time>1476109494</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433991</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>572256333171ba4d53a1c62b696b446a</srcmd5>
+    <version>0.5.4</version>
+    <time>1539251303</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639141</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>5e890a46cd7bf90911f0b735ace62b45</srcmd5>
+    <version>0.5.5</version>
+    <time>1543224914</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651952</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>adbe1fa5266647bb5f22a6170e9cec71</srcmd5>
+    <version>0.5.7</version>
+    <time>1555237419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693906</requestid>
+  </revision>
+</revisionlist>

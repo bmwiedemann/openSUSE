@@ -1,0 +1,418 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c804fa65aa740bbee969f14cf3b9d92d</srcmd5>
+    <version>1.0</version>
+    <time>1386275511</time>
+    <user>coolo</user>
+    <comment>This is a new package, CRIU, checkpoint/restore in user-space.</comment>
+    <requestid>209410</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fe81cb1d1f13e558a08243d764e311f2</srcmd5>
+    <version>1.0.99.1</version>
+    <time>1389888311</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>214018</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>77f5105c5958764c958bcbb0749436ab</srcmd5>
+    <version>1.1</version>
+    <time>1390919879</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1: BUGs fixed,
+  * Errors from memory dumping are not handled resulting in
+    corrupted dumps
+  * EOF detection in stacked images is done with error
+  * Stacked images don't work on non-shared FS (missing pagemap-s) (forwarded request 215372 from tiwai)</comment>
+    <requestid>215373</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>965a1df293bc0c85e0b0f1261f475a8e</srcmd5>
+    <version>1.2</version>
+    <time>1393609890</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.2:
+  New features:
+  * Performance improvements
+  * Library versioning
+  * RPC API got closer to CLI
+  * New &quot;post-restore&quot; call in action scripts
+  * Logrotate rules file
+  * Default log file for service when starting via systemd 
+  Bug fixes:
+  * A lot for ARM cross-compile
+  * Fsnotifies dumping didn't work on NFS
+  * Images auto-deduplication only worked one level up
+  * Packet socket ID was treated as file-descriptor and close()-d
+  * Badly counted pages stats on restore
+  * Linked remap name conflict when dump and restore on NFS
+  * Sporadic failures in memory draining due to huge pipes used
+  * Broken criu show of repeated fields
+  * Failure to open mountpoint in foreign pid namespace
+  * Unlinked bound unix socket dump error
+  * Small memory leak when writing to incremental image(s)
+  * Restoring fsnotify for links results in ELOOP
+  * Host's PATH is not suitable when execv-ing tar/ip/iptable to restore namespace (workaround, proper fix will be in 1.3)
+  * Using subdirs in log file name via RPC breaks security 
+- New subpackages: libcriu1 and criu-devel
+- Remove obsoleted always-define-ptrace_peeksiginfo_args.diff (forwarded request 223976 from tiwai)</comment>
+    <requestid>223977</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c79618f4757c347fe510926f9555b21a</srcmd5>
+    <version>1.2</version>
+    <time>1394385710</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>225141</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>c79618f4757c347fe510926f9555b21a</srcmd5>
+    <version>1.2</version>
+    <time>1409300683</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bf2cdc36397086e63e3a8f038f1c31c8</srcmd5>
+    <version>1.3</version>
+    <time>1409761386</time>
+    <user>coolo</user>
+    <comment>- update to version 1.3:
+  * Docker and LXC support, lots of bug fixes
+- cleanup spec file, fix rpmlint warnings
+
+- Update to version 1.3-rc2:
+  * external bind mounts and tasks-to-cgroups bindings
+  * many bugfixes in memory restore and mounpoints dump
+
+- Update to version 1.3-rc1:
+  New features:
+  * AArch64
+  * Multiple mount namespaces
+  * FPU state restore control
+        Restore old FPU state on newer CPUs
+        Ability to ignore FPU restoration 
+  * Support stopped multi-threaded tasks
+  * CRIU now can execv() other binary right after restore is complete
+  * Inode-revese mapping can be enforced to allow live-migration with FS copying
+  * Gold linker can now be used to compile CRIU
+  * &quot;Berserker&quot; test to check CRIU scalability
+  * Punch pages from mem images on restore (optimizes live-migration) 
+ Optimizations:
+  * Batched deduplication of memory images
+  * Packed rlimits into core image
+  * Packed timers into core image 
+ Fixes:
+  * Bad checks for kcmp() ret codes resulted in errors in file sharing detection
+  * Multiple mmap-s of same files with different flags blocked the restore
+  * Integer overflow in huge mapping restore caused restoration failure
+  * Devpts's newinstance option was lost during dump (forwarded request 247175 from tiwai)</comment>
+    <requestid>247176</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e2e4d034f407873bb08cc73c613ea7cb</srcmd5>
+    <version>1.3.1</version>
+    <time>1411127772</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250059</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>67dfbe8eb160da9ad1b56dd4f57cafa4</srcmd5>
+    <version>1.4</version>
+    <time>1417643283</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263712</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>df85fd29c1f74d8da4e7543210c09d88</srcmd5>
+    <version>1.5</version>
+    <time>1426495333</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290690</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2c48a9c4e031188bb14651787b25b557</srcmd5>
+    <version>1.5.1</version>
+    <time>1428652303</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294783</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>efb13613bdbe7309fa24d6e3ddea434b</srcmd5>
+    <version>1.5.2</version>
+    <time>1430387447</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304414</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>13360e39f06759ce0e3d72924134b1cd</srcmd5>
+    <version>1.6</version>
+    <time>1433232692</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309631</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>f46966b8031e969837e1760616c96688</srcmd5>
+    <version>1.6</version>
+    <time>1438421953</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319715</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6507daf79d076ebac757d3b7915a101b</srcmd5>
+    <version>1.7</version>
+    <time>1442130315</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330525</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ab5d158d2e95eaa69b0da99185218497</srcmd5>
+    <version>1.7.2</version>
+    <time>1448186455</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345399</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4194b3b8fd0ab2a3bc54269eb0e96c3f</srcmd5>
+    <version>1.8</version>
+    <time>1449687248</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347909</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a5bb2444687f66d09a67a42eaa5ca743</srcmd5>
+    <version>2.0</version>
+    <time>1458120885</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369471</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c72ae63f90d12ffdb7642c1c1ad4bae7</srcmd5>
+    <version>2.1</version>
+    <time>1460740335</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>389897</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ec4f422919b209abe2a7c32609544aa5</srcmd5>
+    <version>2.2</version>
+    <time>1463652901</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396193</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d418d8f6e6e1e3dbc4d20b16bbcb8127</srcmd5>
+    <version>2.3</version>
+    <time>1466326174</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402690</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a4418b5852862d20d2d61d4e1c2a395f</srcmd5>
+    <version>2.4</version>
+    <time>1468482574</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407892</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8782e0fb9246f0a1dd7273936baeda4c</srcmd5>
+    <version>2.5</version>
+    <time>1472026158</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>421402</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>53f7872c606b4beec204b325434278d2</srcmd5>
+    <version>2.6</version>
+    <time>1474116034</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428096</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>179e0fe509caa5d6f2928c7d8d3be54e</srcmd5>
+    <version>2.7</version>
+    <time>1476875694</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435994</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7d4d783e9486aada90cd46e33d3b5655</srcmd5>
+    <version>2.8</version>
+    <time>1479229298</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440285</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d8dc02aa5e3b0085fc7bea88e212f932</srcmd5>
+    <version>2.9</version>
+    <time>1481654085</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>445539</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>27d08607b53384311f77cf1680281fc1</srcmd5>
+    <version>2.10</version>
+    <time>1485512189</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452451</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>644eb44d64f4dc7d7da42ed281bd4159</srcmd5>
+    <version>2.11.1</version>
+    <time>1488479926</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460904</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5e42efba81ea05dccf15507a786c7895</srcmd5>
+    <version>2.12</version>
+    <time>1490221100</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>481939</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9100832387b1cee3e056ed51e13211b8</srcmd5>
+    <version>2.12.1</version>
+    <time>1491210323</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>484227</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ae075c1df91ee783b7153ae2b009e755</srcmd5>
+    <version>3.0</version>
+    <time>1494088068</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491206</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>987db755a77a90af02df88528ee4c69b</srcmd5>
+    <version>3.2</version>
+    <time>1498120837</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505508</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f9fd15df409dbd8500a899f846398dfb</srcmd5>
+    <version>3.2.1</version>
+    <time>1498840986</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507279</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2158cb99df80a4259c23e205413f210f</srcmd5>
+    <version>3.3</version>
+    <time>1500670158</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511406</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3b733ac893ec281c7a28959833629af5</srcmd5>
+    <version>3.4</version>
+    <time>1503593727</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518343</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>ef58b8014d689b58b88fc01ac32d6ccc</srcmd5>
+    <version>3.6</version>
+    <time>1510045487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539335</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>958a690db9fcea63e9e46a207b16e590</srcmd5>
+    <version>3.6</version>
+    <time>1510660732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541321</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>6babfdd50c82cca0029f1c72ab4ba6d8</srcmd5>
+    <version>3.7</version>
+    <time>1514569840</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559980</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>25d216e32d3bb5271555dcec382abc03</srcmd5>
+    <version>3.8</version>
+    <time>1521579631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588741</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b40d6995854423ba93cd05772e87444d</srcmd5>
+    <version>3.8.1</version>
+    <time>1523029724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593896</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f046ffb6bb15a2f3d5a04ef041ed44f3</srcmd5>
+    <version>3.9</version>
+    <time>1527605558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612800</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>200e51f55921cabdb615741581fb4c77</srcmd5>
+    <version>3.11</version>
+    <time>1542750228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650359</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>39db35f5515a56b762d86566765546e4</srcmd5>
+    <version>3.12</version>
+    <time>1557263958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701213</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>34215684c901240362bb7d2da8ab8ff1</srcmd5>
+    <version>3.12</version>
+    <time>1567680419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728430</requestid>
+  </revision>
+</revisionlist>

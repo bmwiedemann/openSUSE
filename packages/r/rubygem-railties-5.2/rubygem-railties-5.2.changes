@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Fri Mar 29 06:13:35 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 5.2.3
+ see installed CHANGELOG.md
+
+  ## Rails 5.2.3 (March 27, 2019) ##
+  
+  *   Seed database with inline ActiveJob job adapter.
+  
+      *Gannon McGibbon*
+  
+  *   Fix boolean interaction in scaffold system tests.
+  
+      *Gannon McGibbon*
+
+-------------------------------------------------------------------
+Thu Mar 14 03:44:52 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to version 5.2.2.1:
+  https://weblog.rubyonrails.org/2019/3/13/Rails-4-2-5-1-5-1-6-2-have-been-released/
+  CVE-2019-5418 CVE-2019-5419 CVE-2019-5420
+
+-------------------------------------------------------------------
+Sat Jan 19 19:51:40 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- rb_build_ruby_abi needs to be rb_build_ruby_abis
+
+-------------------------------------------------------------------
+Fri Jan 18 16:25:12 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- limit to ruby 2.5 and above for 42.3/sle12
+
+-------------------------------------------------------------------
+Sat Dec  8 16:29:36 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 5.2.2
+ see installed CHANGELOG.md
+
+  ## Rails 5.2.2 (December 04, 2018) ##
+  
+  *   Disable content security policy for mailer previews.
+  
+      *Dylan Reile*
+  
+  *   Log the remote IP address of clients behind a proxy.
+  
+      *Atul Bhosale*
+
+-------------------------------------------------------------------
+Mon Dec  3 06:35:22 UTC 2018 - mschnitzer@suse.com
+ 
+- updated to version 5.2.1.1 (boo#1118076)
+
+  * No changes / Just a version bump to match with Rails 5.2.1.1
+
+-------------------------------------------------------------------
+Wed Aug  8 15:06:46 UTC 2018 - mschnitzer@suse.com
+
+- updated to version 5.2.1 (boo#1104209)
+
+  * Respect `NODE_ENV` when running `rails yarn:install`.
+    (Max Melentiev)
+
+  * Don't generate unused files in `app:update` task
+    Skip the assets' initializer when sprockets isn't loaded.
+    Skip `config/spring.rb` when spring isn't loaded.
+    (Tsukuru Tanimichi)
+
+  * Don't include `bootsnap` by default in apps generated under JRuby.
+    Fixes #32641.
+    (Guillermo Iguaran)
+
+  * Create the `.ruby-version` file compatible with MRI/JRuby by default.
+    Fixes #32639.
+    (Guillermo Iguaran)
+
+  * Make the master.key file read-only for the owner upon generation on
+    POSIX-compliant systems.
+
+    Previously:
+
+        $ ls -l config/master.key
+        -rw-r--r--   1 owner  group      32 Jan 1 00:00 master.key
+
+    Now:
+
+        $ ls -l config/master.key
+        -rw-------   1 owner  group      32 Jan 1 00:00 master.key
+
+    Fixes #32604.
+
+    (Jose Luis Duran)
+
+  * Allow use of `minitest-rails` gem with Rails test runner.
+    Fixes #31324.
+    (Yuji Yaginuma)
+
+-------------------------------------------------------------------
+Mon Apr 16 12:22:26 UTC 2018 - mschnitzer@suse.com
+
+- initialize package
+
+  see changelog: https://github.com/rails/rails/blob/v5.2.0/railties/CHANGELOG.md

@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>17327da5e252d19f53aeb090f4f87ba5</srcmd5>
+    <version>0.05</version>
+    <time>1424117630</time>
+    <user>coolo</user>
+    <comment>needed for dbix</comment>
+    <requestid>285755</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>318671e26f3cc11bb468b9dfe93ff2bd</srcmd5>
+    <version>0.09</version>
+    <time>1429948331</time>
+    <user>coolo</user>
+    <comment>- set license to GPL-3.0+
+
+- updated to 0.09
+   see /usr/share/doc/packages/perl-Test-MockModule/Changes
+  v0.08 2015-03-15
+      - Ensure LICENSE autogenerates for distribution, fixed license issues in Build.PL
+  
+  v0.08 2015-03-14
+      - Updated README with correct instructions now that we use Build.PL
+  
+  v0.07 2015-03-14
+      - Updated docs for more clarity when handling objects of mocked classes.
+  
+  v0.06 2015-03-07
+      - unmock() on inherited subroutines will dispatch to the parent module,
+        rather than replace the local subroutine with the parent's subroutine
+        from the time of mocking (RT77439)</comment>
+    <requestid>297276</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4ce4798ca81dab61688d81589bd88855</srcmd5>
+    <version>0.10</version>
+    <time>1433845501</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311226</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0b5ac9ca1ddacadf4f12a72ad1437338</srcmd5>
+    <version>0.11</version>
+    <time>1446209012</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341431</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e3ba3a1251607fb5fc769b52f62da9ae</srcmd5>
+    <version>0.12</version>
+    <time>1500669449</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510428</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ad991c3ac0ff60fa12ace0394f262691</srcmd5>
+    <version>0.13</version>
+    <time>1507755304</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532515</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8d5831b91912919ed915c691c64f3cc6</srcmd5>
+    <version>0.14</version>
+    <time>1526737155</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610499</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4399a7e71ea4d34f7fc3f9f9470a7043</srcmd5>
+    <version>0.15</version>
+    <time>1527933000</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.15
+   see /usr/share/doc/packages/perl-Test-MockModule/Changes
+  v0.15
+      - Fixes a minor bug in the release tarball
+</comment>
+    <requestid>610761</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>32dceb3fc75a5c0be023273bd8a563e9</srcmd5>
+    <version>0.170.0</version>
+    <time>1538374487</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.170.0
+   see /usr/share/doc/packages/perl-Test-MockModule/Changes
+  v0.170.0
+  - 182d066 Fix versioning for semver conversion + PAUSE - Geoff Franks
+  - 4afeedf release v0.17.0 - CI Bot
+  - 9df8ac4 Add CI pipeline for releasing to cpan - Geoff Franks
+  - 577350e Pod - provide a code snippet for original usage - Nicolas R
+  - 3e4ec72 Add missing pod entries - Geoff Franks
+  
+  v0.16
+      - Fixes an issue where warnings were thrown for mismatched prototypes,
+        when mocking a prototyped function.
+  
+        Thanks @toddr for the fix!
+</comment>
+    <requestid>638964</requestid>
+  </revision>
+</revisionlist>

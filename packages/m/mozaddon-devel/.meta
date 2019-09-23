@@ -1,0 +1,5 @@
+<package name="mozaddon-devel" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="mozilla:addons" package="mozaddon-devel"/>
+</package>

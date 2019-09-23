@@ -1,0 +1,27 @@
+#!/bin/sh -e
+
+DAEMON=${BASE}/sbin/xrdp
+SDAEMON=${BASE}/sbin/xrdp-sesman
+PIDDIR=/var/run/xrdp/
+
+force_stop() {
+
+DELAY=1
+PROCLIST="xrdp-sesman xrdp-sessvc xrdp-chansrv X11rdp Xvnc"
+
+    for p in $PROCLIST; do
+      pgrep -x $p >/dev/null && pkill  -x $p
+      sleep $DELAY
+      pgrep -x $p >/dev/null && pkill -9 -x $p
+    done
+    # let's not kill ourselves - the init script is called xrdp as well
+    pgrep -fx $DAEMON  >/dev/null && pkill -fx $DAEMON
+    sleep $DELAY
+    pgrep -fx $DAEMON  >/dev/null && pkill -9 -fx $DAEMON
+
+   rm -f $PIDDIR/xrdp*.pid
+}
+
+$0 stop
+# because it doesn't allways die the right way
+force_stop

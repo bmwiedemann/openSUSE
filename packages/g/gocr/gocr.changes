@@ -1,0 +1,303 @@
+-------------------------------------------------------------------
+Sun Aug  2 09:08:29 UTC 2015 - mpluskal@suse.com
+
+- Update desktop file macros
+- Cleanup spec file with spec-cleaner
+- Add changelog as source since it is used during build
+
+-------------------------------------------------------------------
+Sun Mar 31 20:46:39 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to version 0.50:
+  * just release it to avoid questiions to old problems, give a life sign ;)
+  * fix 4 parfait problems against 0.48
+  * adding qrcode detection and decoding (no error correction, no skewing)
+  * spacing slightly improved
+  * context correction of hex codes (p.e. hex fingerprints)
+  * some threshold value adaptions (not finished)
+  * try to fix double output of XML code <...> and removed additional \n
+  * improved quotation detection ,, ''
+  * improved monospaced spacing (video text)
+
+-------------------------------------------------------------------
+Fri Sep 28 19:22:26 UTC 2012 - asterios.dramis@gmail.com
+
+- Added "CPPFLAGS=-I%{_includedir}/netpbm" to fix compilation with netpbm
+  support in Factory (the netpbm headers where moved from /usr/include to
+  /usr/include/netpbm).
+- Removed "make doc" (doesn't do anything).
+- Use desktop-file-install to install the desktop file in openSUSE > 12.1
+  (added desktop-file-utils as build requirement for this).
+- Spec file cleanup.
+- Removed no-build-date.patch and added a fix inside the spec file for the
+  rpmlint warning "file-contains-current-date".
+- Update gocr.desktop to be xdg compatible (added "Scanning" category).
+
+-------------------------------------------------------------------
+Thu Feb 17 22:07:48 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 0.49:
+  + fix dot handling for ':' and ';' (vector code)
+  + fix '@' for 7x9 and 5x8 fonts
+  + fix double counting of subboxes (affects "0" (zero) with dot in it)
+  + character "l" of width 1 improved
+  + bug fix gluing chars ij of width=1
+  + bug fix thresholding (small gray images)
+  + return error code -1 on ERROR pnm.c unexpected EOF
+  + fix conflicts with unicode_defs.h TRUE definition on gcc/alphaev7-osf/3.4
+  + further fixes for lib by D. Katsubo
+  + fix #3039007 "struct list" in list.h conflicts with STL (ocr_object_list)
+  + fix #3039006 INFINITY macro in unicode.h conflicts with math.h
+  + bugfix barcode 128, switch from mode mC to mA (":1")
+  + bugfix: MultiPNM + database  - ID: 2957140
+  + improved barcode recognition - ID: 2859644 (bars wider than spaces)
+  + quality test-script bin/gocr_chk.sh added
+  + initial datamatrix support (ASCII + ASCII numeric only, no ErrCorrection)
+- Spec file updates:
+  + Changes based on rpmdevtools templates and spec-cleaner run.
+  + Updates in Summary:, Url:, Buildrequires:, %build and %install sections.
+  + Added needed packages in Requires: section.
+- Fix doc files path of man file.
+- Added a patch to fix an rpmlint warning (file-contains-current-date).
+- Updated gocr.desktop file.
+
+-------------------------------------------------------------------
+Thu Jan  7 12:37:11 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.48:
+  + fix buffer overflow introduced in 0.46 for filenames
+  + add codabar barcode
+  + fix bug, removing melted serifs
+  + i25 barcode recognition + modifications
+  + fix some false positive numbers "34" (video, gas meter)
+  + fix problems with 2zZ4 for 10x10 screen font
+  + better debug output for :;,.
+  + remove examples, doc and libs part from configure
+  + remove doc and examples from the (make install) part to reduce
+    dependencies
+- Changes from version 0.47:
+  + fix database recognition for certainty 100 (-a 100)
+  + insert spaces with certainty 100 (old: 99) to let -a 100 work
+  + new option -u string for unrecognized chars
+  + fix: No contrast in image causes division by zero
+  + reduced false positive recognition of scanned "a496"
+  + "d as a"
+  + add "Windows Pipe Fix"
+  + improve 7x10, sample 0811qemu1.png
+  + change black:white from &gt;4:1 to &gt;3.5:1 as criteria of
+    inversion
+  + reintroduce static library libPgm2asc.a (make libs)
+  + add dynamic library (make libs), unused but may help other
+    projects
+- Changes from version 0.46:
+  + improved context correction (especially helvetica "Il")
+  + improved recognition of tiny chars "$1", fat "s", "rw" ","
+  + fix blank spaces problem in filenames
+  + fix possible problem with database and UTF8 input
+  + fix hidden bug in pitch/spacing initialization
+  + reactivate code for output of glued chars and strings
+  + fix wrong close() call
+  + remove creation of pgm2asc.a for simplicity
+- Changes from version 0.45:
+  + minor corrections for c and k
+  + minus sign is filtered by option -C "--" now, ("\-" was parsed
+    badly)
+  + clean up old unused code for simplicity (api, frontend)
+  + fix problem with low height barcodes and barcode removing
+  + fix problem with readpgm (for multiple images) and database
+  + PACKAGE_VERSION defined by configure.in AC_INIT + gocr.spec
+- Changes from version 0.44:
+  + add volume to boxes (negative means white areas inside black
+    areas)
+  + Fix overflow in despeckling routine
+  + reactivate composed chars, fix merge_boxes
+  + fix problems with uncertain line detection and not recognized
+    "7"
+  + option -a has an effect now for the output
+  + adaptions to MICR E13-B font
+  + fix num_boxes in merge_boxes (affects line detection)
+  + reduce 2 prompts to one per char in database mode
+  + fix problem with smaller headlines
+  + fix problems with tall font
+  + fix includes for non-linux-platforms
+- Changes from version 0.43:
+  + fix problem with dark frame around image
+  + support multiple images, ex: giftopnm -image=all a.gif | gocr -
+  + invert if obviously white on black
+  + improve thresholding for discrete histograms
+  + speedup for big boxes (especially dark background)
+  + fix memory leak
+  + fix uninitialized variables after insert spaces
+  + fix frame_vector for single pixels
+- Changes from version 0.42:
+  + further parts of recognition engine relaced by vector version
+  + changed colored debug output for out??.png
+  + division of glued chars replaced (slower but more accurate)
+  + fix framing of small font
+  + fix problem with uninitialized pnm_readpaminit call
+  + better progress output, new image debug output
+  + switch to the new improved rotation detection
+- Drop gocr-0.41.dif: gnome frontend has been removed.
+- Drop gocr-overflow.patch: gnome frontend has been removed.
+- Drop gocr-0.41-pgm.patch: fixed upstream.
+- Drop gocr-asneeded.patch: fixed upstream.
+- Remove gtk1-compat-devel BuildRequires: there's no GTK+
+  dependency anymore.
+- Split gocr.tcl in a gocr-gui subpackage, so we don't have to
+  depend on tcl/tk for the command line tool.
+- Do not ship library and header: they're not used by anything
+  else, and the header is not even installed anymore by default.
+- Improve summary and description of the package.
+- Update gocr.desktop to launch gocr.tcl.
+- Clean up packaging.
+
+-------------------------------------------------------------------
+Mon Aug  3 10:45:14 CEST 2009 - meissner@suse.de
+
+- fixed as-needed build issue
+- spec file cleanup
+
+-------------------------------------------------------------------
+Thu Oct 18 13:50:44 CEST 2007 - meissner@suse.de
+
+- fixed 1 byte buffer overflow due to bug
+
+-------------------------------------------------------------------
+Fri Aug 10 01:51:26 CEST 2007 - ro@suse.de
+
+- added libnetpbm-devel to the buildreq
+
+-------------------------------------------------------------------
+Sun Apr 22 17:09:13 CEST 2007 - aj@suse.de
+
+- Remove unneeded build requires.
+
+-------------------------------------------------------------------
+Tue Nov  7 01:05:39 CET 2006 - ro@suse.de
+
+- fix man-page permissions 
+
+-------------------------------------------------------------------
+Mon Oct 23 11:45:43 CEST 2006 - freitag@suse.de
+
+- update to version 0.41:
+       otsu.c concentrates now only on high contrast regions
+       fix pnm reads for 2 byte pixels (--with-libpbm=no)
+       update man-page (mail me your suggestions)
+       fix g++ warnings, float-OPs replaced by int-OPs
+       spacing reviewed; make distance() more sensitive
+       xml-objects (barcode, melted chars) now also handled with weights
+       fix division by zero bug for vertical positioned characters
+       default output is UTF8 now, UTF-encoding bug fixed
+       added certainty option
+       added uninstall to Makefile
+       debug image format changed to png (using pipe) or ppm (fall-back)
+       much better word spacing (line-by-line based)
+       better DOT_ABOVE recognition
+       fix output of char groups or strings stored in database, utf8 input
+       fix buffer overflow in barcode decode39
+       fix lost comma on end of line
+       internal vector format added for future use (faster, scalable, rotable)
+       line detection extended
+       internal list management rewritten to fix memory leaks and segfaults
+ 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:17 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Sep 26 15:56:18 CEST 2005 - sbrabec@suse.cz
+
+- Force gtk2 using gtk1-compat-devel.
+
+-------------------------------------------------------------------
+Wed Jul  6 11:50:54 CEST 2005 - max@suse.de
+
+- Added missing includes to allow lightweight buffer overflow
+  checking.
+
+-------------------------------------------------------------------
+Thu Mar 24 16:57:28 CET 2005 - max@suse.de
+
+- update to version 0.40
+
+-------------------------------------------------------------------
+Wed Jan 28 13:11:42 CET 2004 - freitag@suse.de
+
+- update to version 0.38 
+
+-------------------------------------------------------------------
+Sat Jan 10 17:17:12 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Sat Aug 16 23:00:25 CEST 2003 - adrian@suse.de
+
+- install desktop file
+
+-------------------------------------------------------------------
+Fri Feb 21 13:54:21 CET 2003 - freitag@suse.de
+
+- update to version 0.37 that brings better ocr results, 0.3.5. was
+  very outdated. 
+  Removed the patch of sbrabec since it found the way upstream :)
+
+-------------------------------------------------------------------
+Tue Sep 24 14:44:41 CEST 2002 - sbrabec@suse.cz
+
+- Added rudimentary support to recognize Czech and Slovak characters.
+
+-------------------------------------------------------------------
+Sun Aug 18 02:28:01 CEST 2002 - ro@suse.de
+
+- added ghostscript-x11-packages to neededforbuild (for gs)
+
+-------------------------------------------------------------------
+Tue Jul 30 13:50:49 CEST 2002 - freitag@suse.de
+
+- removed senseless patches from specfile 
+
+-------------------------------------------------------------------
+Thu Jul 25 10:11:16 CEST 2002 - freitag@suse.de
+
+- update to 0.3.5, bugfixes and new frontends, speed improvements 
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:10 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Thu Jan 31 22:50:28 CET 2002 - ro@suse.de
+
+- added libgimpprint to neededforbuild 
+
+-------------------------------------------------------------------
+Mon Dec  3 12:30:42 CET 2001 - freitag@suse.de
+
+- update to version 0.3.4, small improvements. 
+
+-------------------------------------------------------------------
+Fri Jul 27 08:55:13 CEST 2001 - kukuk@suse.de
+
+- Add glib to neededforbuild
+
+-------------------------------------------------------------------
+Fri Jul 20 12:06:42 CEST 2001 - kukuk@suse.de
+
+- changed neededforbuild <gs_lib> to <ghostscript-library>
+- changed neededforbuild <gs_x11> to <ghostscript-x11>
+
+-------------------------------------------------------------------
+Thu Mar  8 13:26:58 CET 2001 - freitag@suse.de
+
+- update to version 0.3.1 and added xf86 to requires. 
+
+-------------------------------------------------------------------
+Fri Dec 15 10:27:05 CET 2000 - freitag@suse.de
+
+- first version 0.3.0 
+

@@ -1,0 +1,131 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ccbfa06df675ad3d7ad8f7ecab913831</srcmd5>
+    <version>2.3.1</version>
+    <time>1336471425</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115446</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ccbfa06df675ad3d7ad8f7ecab913831</srcmd5>
+    <version>2.3.1</version>
+    <time>1340184351</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9236d2288f70fd8fbd7a4d35e8e30e7e</srcmd5>
+    <version>2.3.2</version>
+    <time>1347969741</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.3.2:
+  + Add api 13 compat layer.
+  + Convert to new screen conversion APIs.
+  + Add missing compat-api header.</comment>
+    <requestid>134626</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>9236d2288f70fd8fbd7a4d35e8e30e7e</srcmd5>
+    <version>2.3.2</version>
+    <time>1359110618</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>138ca18dd47859600c64c7439101b244</srcmd5>
+    <version>2.3.2</version>
+    <time>1363770151</time>
+    <user>coolo</user>
+    <comment>- Add mibstore.patch, fixes build with xorg-server 1.14</comment>
+    <requestid>159989</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>1d284b45e9c926bbe53c1407ba23a0d0</srcmd5>
+    <version>2.3.2</version>
+    <time>1377249005</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195923</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>903244c08bdf0c72954e3840d65bade5</srcmd5>
+    <version>2.3.3</version>
+    <time>1378962617</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.3.3:
+  A few cleanups, and a build fix for xserver 1.14.
+  + Remove Upstreamed Patch1: U_mibstore.patch
+  + Adapt Patch0: u_Enable-DefaultRefresh-by-default.patch (formerly
+    known as xf86-video-vesa_DefaultRefresh.diff) to work with
+    version 2.3.3</comment>
+    <requestid>198558</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>903244c08bdf0c72954e3840d65bade5</srcmd5>
+    <version>2.3.3</version>
+    <time>1379665034</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>8a19374f6dc070dff4ee7f7203c9982c</srcmd5>
+    <version>2.3.3</version>
+    <time>1401641761</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>235755</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>8a19374f6dc070dff4ee7f7203c9982c</srcmd5>
+    <version>2.3.3</version>
+    <time>1409303717</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2590a38359a9cdd68f08069044b65757</srcmd5>
+    <version>2.3.4</version>
+    <time>1436111784</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>312677</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>70c31b93936ba8b7dc526e65d8896807</srcmd5>
+    <version>2.3.4</version>
+    <time>1443896997</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>334131</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>b9602ecd4683cbd8cfcb0cbd3a5525f9</srcmd5>
+    <version>2.3.4</version>
+    <time>1468482111</time>
+    <user>dimstar_suse</user>
+    <comment>- u_DPMS-Check-for-broken-DPMSGet.patch
+  Check for broken DPMSGet (bsc#986974).</comment>
+    <requestid>406708</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>fa94040a47c85f1003044a04fb449cfb</srcmd5>
+    <version>2.3.4</version>
+    <time>1496533538</time>
+    <user>dimstar_suse</user>
+    <comment>- includes everything needed for missing sle issue entries:
+  fate #315643-315645, 319159-319161, 319618 (bsc#1041379)</comment>
+    <requestid>499424</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2167bb6f9aac22f4f52711a6bd4f5934</srcmd5>
+    <version>2.4.0</version>
+    <time>1519145620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0
+  * Nothing terribly exciting, but enough bug fixes to justify a
+    release.
+- supersedes u_Enable-DefaultRefresh-by-default.patch</comment>
+    <requestid>577290</requestid>
+  </revision>
+</revisionlist>

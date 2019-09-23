@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f415db454265beb3b19b97fb41d3dc55</srcmd5>
+    <version>0.3.1</version>
+    <time>1536876072</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635371</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cf1d18635766de0c5bc6b0164252fd91</srcmd5>
+    <version>0.3.1</version>
+    <time>1545224034</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659400</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f77cca305ac67e5c75afbcb984df0ffc</srcmd5>
+    <version>0.3.2</version>
+    <time>1552985911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.2:
+  * Using str instead of repr for multipart boundary.
+  * Making requests a strict dependency for the requests subpackage.
+- Really run tests</comment>
+    <requestid>685343</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>43262152d8ce00020239058645ff118d</srcmd5>
+    <version>0.4.0</version>
+    <time>1568804958</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.4.0:
+  * Require 200 response for initial resumable upload request. (#95)
+  * Use response as variable for object returned from http_request. (#98)
+  * Further DRY request dependency pins. (#96)
+  * Finish download on seeing 416 response with zero byte range. (#86)
+  * Always use raw response data. (#87)</comment>
+    <requestid>730356</requestid>
+  </revision>
+</revisionlist>

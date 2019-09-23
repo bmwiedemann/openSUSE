@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Wed Jul 24 10:42:00 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 9.0.1
+  * libutils/mipmap.c: Fixed possible memory leak
+  * pkgconfig: Include -I path for glu itself
+  * Remove all uses of the register keyword.
+  * Add -D(N)DEBUG to CFLAGS dependent on --enable-debug
+  * libutil: Include stddef.h for NULL
+  * glu: initialize PriorityQ::order field to NULL in pqNewPriorityQ()
+- supersedes U_Add-D-N-DEBUG-to-CFLAGS-dependent-on-enable-debug.patch
+
+-------------------------------------------------------------------
+Mon May 29 14:36:30 UTC 2017 - sndirsch@suse.com
+
+- includes everything needed for missing sle issue entries:
+  fate #315643-315645, 319159-319161, 319618 (bsc#1041327)
+
+-------------------------------------------------------------------
+Tue Jul 12 06:17:18 UTC 2016 - eich@suse.com
+
+- U_Add-D-N-DEBUG-to-CFLAGS-dependent-on-enable-debug.patch
+  u_autoconf-Don-t-modify-CFLAGS-in-configure-scripts.patch
+  Avoid debug messages being printed out at runtime (bsc#988411).
+
+-------------------------------------------------------------------
+Mon Oct 27 08:44:08 UTC 2014 - sndirsch@suse.com
+
+- fixed buildrequires: pkgconfig(dri) -> pkgconfig(gl) 
+- added baselibs.conf as source to specfile
+
+-------------------------------------------------------------------
+Sun Feb 17 17:21:53 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+
+-------------------------------------------------------------------
+Sat Oct 20 21:33:12 UTC 2012 - jengelh@inai.de
+
+- Add Obsoletes/Provides for Mesa-libGLU1
+- Avoid running configure twice
+
+-------------------------------------------------------------------
+Fri Sep 21 09:36:54 UTC 2012 - sndirsch@suse.com
+
+- fixed and simplified BuildRequires 
+
+-------------------------------------------------------------------
+Tue Sep 18 09:10:00 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-SGI-FreeB-2.0
+  SGI-FreeB-2.0 is MIT with an advertising clause at the bottom
+
+-------------------------------------------------------------------
+Tue Sep 18 09:02:58 UTC 2012 - coolo@suse.com
+
+- rename to glu and use "official" git snapshot
+
+-------------------------------------------------------------------
+Mon Sep  3 09:38:51 UTC 2012 - sndirsch@suse.com
+
+- created package (since GLU has been split out from Mesa) 
+

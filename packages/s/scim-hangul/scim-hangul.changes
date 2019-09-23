@@ -1,0 +1,171 @@
+-------------------------------------------------------------------
+Sun Sep 13 16:55:14 UTC 2015 - i@marguerite.su
+
+- update to 0.4.0+git20140408.ee1d084
+  * include unistd.h explicitly for access(2)
+  * free symbol table resource on destroy
+  * add 'auto reorder' option
+  * fix memory leak when HangulInstance is destroyed
+- new upstream: https://github.com/choehwanjin/scim-hangul
+- use macros from macros.scim
+- drop patch: scim-hangul-gcc47.patch, upstreamed
+
+-------------------------------------------------------------------
+Thu Jan 17 05:45:08 UTC 2013 - swyear@gmail.com
+
+- Update to 0.4.0
+- Support GTK+ 3.0
+- Remove skim related codes 
+- Remove sub-package skim-scim-hangul (upstream remove skim related code)
+- Remove build-fix.patch (no skim support)
+- Remove gtk-2.12+-gtktooltips-migration.patch missing-includes.patch mkinstalldirs.patch (upstream had fixed them)
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Wed Sep 12 20:51:13 CST 2012 - hillwood@linuxfans.org
+
+- enable gtk3 build
+
+-------------------------------------------------------------------
+Tue Jun 12 16:33:29 CEST 2012 - tiwai@suse.de
+
+- Remove locale provides for avoiding automatic installation
+- Disable gtk3-migration patches temporarily (can be enabled by
+  defining scim_gtk3=1)
+
+-------------------------------------------------------------------
+Wed Jun  6 13:33:26 UTC 2012 - i@marguerite.su
+
+- fix openSUSE builds.
+  * migration gtktooltips to gtk 2.12+ version.
+
+-------------------------------------------------------------------
+Sat Mar 24 14:16:03 UTC 2012 - dimstar@opensuse.org
+
+- Add scim-hangul-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Tue Apr 20 12:33:43 CEST 2010 - tiwai@suse.de
+
+- disable skim build for openSUSE-11.3
+
+-------------------------------------------------------------------
+Tue Feb 23 09:36:27 UTC 2010 - coolo@novell.com
+
+- do not rely on unmaintained unsermake
+
+-------------------------------------------------------------------
+Thu Jan 03 18:08:20 CET 2008 - mfabian@suse.de
+
+- update to 0.3.2.
+  • add symbol input feature
+  • add dutch translation from Ronald Stroethoff
+    <stroet43 (at) zonnet.nl>
+
+-------------------------------------------------------------------
+Thu Nov 08 16:26:28 CET 2007 - mfabian@suse.de
+
+- add missing includes to fix build with gcc 4.3.0.
+
+-------------------------------------------------------------------
+Tue Apr 24 11:46:21 CEST 2007 - mfabian@suse.de
+
+- add "BuildRequires: unsermake" for SUSE Linux 10.0.
+
+-------------------------------------------------------------------
+Tue Apr 17 13:13:59 CEST 2007 - mfabian@suse.de
+
+- Fix typo in .spec file.
+
+-------------------------------------------------------------------
+Mon Apr 16 17:24:48 CEST 2007 - mfabian@suse.de
+
+- update to 0.3.1.
+  • use libhangul 0.0.4
+  • Fixed some small bugs
+
+-------------------------------------------------------------------
+Sat Oct 28 23:39:31 CEST 2006 - meissner@suse.de
+
+- use optflags
+
+-------------------------------------------------------------------
+Thu Oct 12 10:57:22 CEST 2006 - mfabian@suse.de
+
+- fix to build with scim 1.4.5.
+
+-------------------------------------------------------------------
+Mon Aug 14 11:08:00 CEST 2006 - mfabian@suse.de
+
+- use "install -d" for mkinstalldirs to fix the build with
+  gettext 0.15.
+
+-------------------------------------------------------------------
+Wed Jul 05 14:51:11 CEST 2006 - mfabian@suse.de
+
+- update to 0.2.2.
+  + Fixed 3 beolsik keypad problem
+  + Fixed capslock problem
+  + Fixed installation problem on KDE
+  + Changed dvorak behavior
+    (see http://sourceforge.net/tracker/index.php?func=detail&aid=1425895&group_id=108454&atid=650539)
+- fix build for autoconf 2.60.
+
+-------------------------------------------------------------------
+Wed Mar 15 13:04:31 CET 2006 - mfabian@suse.de
+
+- Bugzilla #158170: add "Provides: locale(skim:ko)" to
+  scim-hangul-skim sub-package.
+
+-------------------------------------------------------------------
+Thu Feb 23 16:35:22 CET 2006 - mfabian@suse.de
+
+- add "Provides:     locale(scim:ko)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:26 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 13:25:04 CET 2006 - zsu@suse.de
+
+- update to 0.2.1
+- create subpackage scim-hangul-skim 
+
+-------------------------------------------------------------------
+Thu Aug 04 17:50:10 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #97962: add configure option "--enable-debug" to
+  the .spec file.
+
+-------------------------------------------------------------------
+Tue Aug  2 11:40:19 CEST 2005 - aj@suse.de
+
+-  Adjust neededforbuild.
+
+-------------------------------------------------------------------
+Mon Feb 28 19:34:18 CET 2005 - mfabian@suse.de
+
+- update to 0.2.0.
+
+-------------------------------------------------------------------
+Mon Sep 20 19:33:18 CEST 2004 - mfabian@suse.de
+
+- add patch received from author (Zhe Su) which adds a reset()
+  to HangulInstance::focus_out ().
+
+-------------------------------------------------------------------
+Fri Sep  3 21:46:00 CEST 2004 - mfabian@suse.de
+
+- update to 0.1.2.
+
+-------------------------------------------------------------------
+Mon Aug 16 21:07:18 CEST 2004 - mfabian@suse.de
+
+- update to 0.1.0.
+
+-------------------------------------------------------------------
+Fri Aug 13 19:25:38 CEST 2004 - mfabian@suse.de
+
+- new package: scim-hangul, version 0.0.3.

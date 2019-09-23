@@ -1,0 +1,21 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2017-09-14 20:25:36.486876745 +0200
+
+build: make build reproducible
+---
+ bliss.cc |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: bliss-0.73/bliss.cc
+===================================================================
+--- bliss-0.73.orig/bliss.cc
++++ bliss-0.73/bliss.cc
+@@ -59,7 +59,7 @@ usage(FILE* const fp, const char* argv0)
+   else program_name = argv0;  
+   if(!program_name or *program_name == 0) program_name = "bliss";
+ 
+-  fprintf(fp, "bliss version %s (compiled "__DATE__")\n", bliss::version);
++  fprintf(fp, "bliss version %s\n", bliss::version);
+   fprintf(fp, "Copyright 2003-2015 Tommi Junttila\n");
+   fprintf(fp,
+ "\n"

@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9428c84d7c6eefc65a91ea4b0600daf1</srcmd5>
+    <version>2.4.3.2</version>
+    <time>1489345181</time>
+    <user>dimstar_suse</user>
+    <comment>add to factory</comment>
+    <requestid>462057</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>33dbe318743c97197bbc647fab9ac77f</srcmd5>
+    <version>2.4.3.2</version>
+    <time>1491896417</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>484793</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b34804799c60ea9cd5d00bf1f0f0fa71</srcmd5>
+    <version>2.4.3.7</version>
+    <time>1560862564</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706062</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>535bb68f16b0de6e1c884d28c49e66bd</srcmd5>
+    <version>2.4.3.7</version>
+    <time>1564137900</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix bug Bug 1096636 - tripwire looks for the configuration file in
+  /etc instead of /etc/tripwire. Now tw.cfg will really appead in /etc/tripwire
+  * add patch 'tripwire-2.4.3.7-config-dir-location.patch'
+    which update config dir to /etc/tripwire.
+  * add build require libtool (which pulls automake and autoconf)
+  * add 'autoreconf -a -i' to make sure automake is overwritten
+  * Move /etc/tw.cfg to /etc/tripwire/tw.cfg in %post as make transition smoother (forwarded request 718750 from illuusio)</comment>
+    <requestid>718777</requestid>
+  </revision>
+</revisionlist>

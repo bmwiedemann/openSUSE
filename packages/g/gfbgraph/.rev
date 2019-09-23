@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb0470de34f8fad8391d17ed0015558a</srcmd5>
+    <version>0.2.1</version>
+    <time>1387270888</time>
+    <user>coolo</user>
+    <comment>New addition - Allows future gnome-photos (and others?) to access facebook images</comment>
+    <requestid>210943</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c348ee35abc33de771eea70b28d8cd00</srcmd5>
+    <version>0.2.2</version>
+    <time>1390380069</time>
+    <user>coolo</user>
+    <comment>Update to 0.2.2 (forwarded request 214515 from Zaitor)</comment>
+    <requestid>214627</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c348ee35abc33de771eea70b28d8cd00</srcmd5>
+    <version>0.2.2</version>
+    <time>1409300950</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fccc57be41edc9ed07671b78a222adc5</srcmd5>
+    <version>0.2.3</version>
+    <time>1439818485</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322398</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>51795ad53c0444efa70bce1c4cd0f4b0</srcmd5>
+    <version>0.2.3</version>
+    <time>1444140590</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>330146</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>5e945a41e3bde6c443259e8b851b9a15</srcmd5>
+    <version>0.2.3</version>
+    <time>1520502769</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix SRPM group. Update summaries. (forwarded request 583073 from jengelh)</comment>
+    <requestid>583074</requestid>
+  </revision>
+</revisionlist>

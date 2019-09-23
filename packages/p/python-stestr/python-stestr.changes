@@ -1,0 +1,164 @@
+-------------------------------------------------------------------
+Tue Sep 10 09:51:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.5.1:
+  * documentation updates
+  * various bugfixes
+
+-------------------------------------------------------------------
+Mon Jul 22 12:47:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.4.0:
+  * Discover python executable when discover is not used
+  * various bugfixes
+- Remove merged patch pyyaml5.patch
+
+-------------------------------------------------------------------
+Sun Mar 17 15:17:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to work with PyYAML 5.x series:
+  * pyyaml5.patch
+
+-------------------------------------------------------------------
+Wed Mar 13 12:40:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.3.1:
+  * tests expansion
+  * metadata updates
+  * minor bugfixes
+- Enable and run tests
+
+-------------------------------------------------------------------
+Wed Jan  9 22:49:20 UTC 2019 - Jonathan Brownell <jbrownell@suse.com>
+
+- Fallback in case "Suggests:" keyword is not supported
+
+-------------------------------------------------------------------
+Fri Dec  7 13:41:42 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 2.2.0:
+  * Change title of project in readme
+  * Add a better description to README Overview section
+  * Fix discovery import error formatting on py3
+  * Cleanup unused parameters in \_run\_tests
+  * Enable doc8
+  * Add all stream to repo even if some tests fail
+  * Extract loading case code to \_load\_case() function
+  * Make test running serially when just loading
+  * Fix time measurement for load command too
+  * Use reported times instead of wall time in subunit-trace
+  * Add support for test class and method by path on no-discover
+
+-------------------------------------------------------------------
+Tue Nov  6 19:49:46 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 2.1.1
+  * Add support for python 3.7
+  * Fix handling of unexpected success results
+  * Allow stestr to be called as a module (#185)
+  * Add error handling for invalid input regexes
+  * Cleanup the manpage section on dealing with failed tests
+  * Cleanup argument help text on load command
+  * Fix description for the stestr run command
+
+-------------------------------------------------------------------
+Fri Aug 24 09:29:20 UTC 2018 - comurphy@suse.com
+
+- Add python3-dbm dependency
+  * Required for python3: https://github.com/mtreinish/stestr/blob/2.1.1/stestr/subunit_trace.py#L34-L39
+
+-------------------------------------------------------------------
+Tue Aug  7 20:19:38 UTC 2018 - dmueller@suse.com
+
+- fixtypo in last change
+
+-------------------------------------------------------------------
+Mon Aug  6 11:06:07 UTC 2018 - tchvatal@suse.com
+
+- Update the Requires/BuildRequires to reflect requirements.txt
+
+-------------------------------------------------------------------
+Mon Aug  6 09:04:49 UTC 2018 - dmueller@suse.com
+
+- update to 2.1.0:
+  * Uncap pbr
+  * Revert "Cap pip version in windows ci"
+  * Revert "Uncap pbr"
+  * Uncap pbr
+  * Clarify docs on group\_regex
+  * Remove Python 2.6 code
+  * Switch python doc reference from 2 to 3
+  * Cleanup manual section on configuration
+  * Fix abbreviate option in run subcommand
+  * Ignore errors on cleanup in test\_return\_codes
+  * Cap pip version in windows ci
+  * Add docs and helper script for building man page
+  * Add documentation for --suppress-attachments option
+  * Add option to suppress attachment printing on successful tests
+  * Add unit tests for return code from functions
+  * Remove windows skips for old subunit versions
+  * Cap PBR<4.0.0
+  * Fixed manual page description
+  * Fix manpage generation
+  * Add issue description in template
+  * Add an issue template to project
+  * Add usage to manual docs page
+  * Fix the manual docs link in README
+  * Add alt texts for badges in README
+  * Use flat-square design badges on README
+  * Fix typos about whitelist/blacklist option in manual
+  * Fix a small mistake in manual about test selection
+  * Update the package summary in setup.cfg metadata
+  * Add functional tests for user config file
+  * Fix no attribute 'repo\_type' error when running w/ --slowest option
+  * Add support for a user config file
+  * Fix warning message about missing worker tags in subunit-trace
+  * Add badge for Appveyor status
+  * Remove unnecessary shebang and execution bit from subunit\_trace
+  * Fix typos in docs
+  * Fix pep8 violations
+  * Add --slowest option to test runs
+  * Handle zero and negative times in stestr slowest
+  * list: Deal with [] instead of 'None' for filters
+  * Fix docs nits
+  * Update doc for using cliff for CLI layer
+  * Use cliff for CLI layer
+  * Implement quiet option for run and load commands
+  * Deprecate the partial flag
+  * Allow both group\_regex and group-regex as an optional argument
+  * Remove pyc files before running stestr in tox
+  * Update travis job config
+
+-------------------------------------------------------------------
+Mon Feb 26 06:42:11 UTC 2018 - tbechtold@suse.com
+
+* Pass output to output.make\_result() in stestr load
+* Remove 32bit windows testing CI config
+* Add functional test for analyze-isolation flag
+* Fetch the data from last run earlier
+* Fix the stestr run --analyze-isolation flag
+* Remove contributor docs for using reno
+* Fix stestr load from stdin
+* Add test\_return\_codes check for valid subunit output
+* Respect all selection mechanisms for discovery check
+* Fix .testr.conf parsing: test path follows discover
+* Fix if logic on output types in stestr load
+* Add a --abbreviate flag to stestr run and load
+* Add missing run command to stestr manual
+* Print just error message when no stestr repo
+* Fix whitelist arg usage in stestr run
+* Drop reno
+* Add missing home-page
+* Fix: pass the top\_dir parameter to the 'list' command
+* Fix: pass the test\_path parameter to the 'list' command
+* Update MANUAL.rst
+* Update the trove classifiers
+* Use context managers for file open()
+* Ensure we always close files in file repository
+* Create a Code of Conduct for the project
+* Fix coveralls collection
+
+-------------------------------------------------------------------
+Thu Sep 14 07:53:51 UTC 2017 - tbechtold@suse.com
+
+- initial packaging (version 1.0.0)

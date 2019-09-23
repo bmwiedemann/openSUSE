@@ -1,0 +1,9 @@
+[Unit]
+Description=Update GeoIP databases
+Documentation=man:geoipupdate(1) man:GeoIP.conf(5)
+
+[Service]
+Type=oneshot
+WorkingDirectory=/var/lib/GeoIP
+
+ExecStart=/usr/bin/geoipupdate

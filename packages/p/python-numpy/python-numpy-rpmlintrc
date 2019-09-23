@@ -1,0 +1,2 @@
+# This file is required for testing
+addFilter("devel-file-in-non-devel-package.*/usr/lib.*/python.*/site-packages/numpy/f2py/tests/src/array_from_pyobj/wrapmodule.c")

@@ -1,0 +1,154 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6fa9197de060a205e4fc7a212b39af7b</srcmd5>
+    <version>6.02</version>
+    <time>1301916759</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65864 from user babelworx
+</comment>
+    <requestid>65864</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1ca0ce47948ac958f7added84a1be927</srcmd5>
+    <version>6.02</version>
+    <time>1301916772</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65864
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1ca0ce47948ac958f7added84a1be927</srcmd5>
+    <version>6.02</version>
+    <time>1319182282</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e06acd205770560740d679322fbf1778</srcmd5>
+    <version>6.02</version>
+    <time>1323193435</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>feea181c4e8835272a6af014edd3ebff</srcmd5>
+    <version>6.03</version>
+    <time>1330619094</time>
+    <user>coolo</user>
+    <comment>- updated to 6.03
+  * Skip test if offline [RT#74163]
+  * Typo fixes
+  * Restore perl-5.8.1 compatibility.</comment>
+    <requestid>106295</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>feea181c4e8835272a6af014edd3ebff</srcmd5>
+    <version>6.03</version>
+    <time>1340183865</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>feea181c4e8835272a6af014edd3ebff</srcmd5>
+    <version>6.03</version>
+    <time>1359109714</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b2deac43181670a926f9faa37270464e</srcmd5>
+    <version>6.04</version>
+    <time>1372953910</time>
+    <user>coolo</user>
+    <comment>- Version 6.04
+  * Fix IO::Socket::SSL warnings when not verifying hostname.
+  * Doc spelling fix.
+- Remove usage of Mozilla::CA entirely. IO::Socket::SSL will do the
+  right thing instead. (forwarded request 182139 from lnussel)</comment>
+    <requestid>182146</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b2deac43181670a926f9faa37270464e</srcmd5>
+    <version>6.04</version>
+    <time>1379663725</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>20d5e08d0a27bbd6514a5c92b261c257</srcmd5>
+    <version>6.04</version>
+    <time>1399056741</time>
+    <user>coolo</user>
+    <comment>Remove old tarball. (forwarded request 232256 from leonardocf)</comment>
+    <requestid>232267</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>9a529a8e9f409d4a0ad65c196eeb53b4</srcmd5>
+    <version>6.04</version>
+    <time>1400301783</time>
+    <user>coolo</user>
+    <comment>- fix for CVE-2014-3230 (bnc#876862)
+  * perl-LWP-Protocol-https: Environment variables HTTPS_CA_DIR or
+    HTTPS_CA_FILE disable hostname verification
+  * added CVE-2014-3230.patch (forwarded request 234145 from vitezslav_cizek)</comment>
+    <requestid>234175</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>9a529a8e9f409d4a0ad65c196eeb53b4</srcmd5>
+    <version>6.04</version>
+    <time>1409302349</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>840dde08d1fe43e8ee5597908eec6bf3</srcmd5>
+    <version>6.06</version>
+    <time>1429973209</time>
+    <user>coolo</user>
+    <comment>- updated to 6.06
+   see /usr/share/doc/packages/perl-LWP-Protocol-https/Changes
+  2014-04-18 LWP-Protocol-https 6.06
+  
+  Mike Schilli (3):
+        Merge pull request #12 from drieux/subjectAltName
+        Merge pull request #9 from chorny/master
+        Updated libwww requirement to 6.06 to fix failing t/proxy.t test cases.
+  
+  Gisle Aas (2):
+        Getopt::Long isn't actually used
+        Merge pull request #7 from noxxi/master
+  
+  Alexandr Ciornii (1):
+        better diagnostics in case of failures in apache.t
+  
+  Karen Etheridge (1):
+        Merge pull request #8 from cpansprout/patch-1
+  
+  Steffen Ullrich (1):
+        correct behavior for https_proxy, this goes together with change to 
+        libwww-perl cb80c2ddb7, new method _upgrade_sock in LWP::Protocol::https
+  
+  cpansprout (1):
+        Typo fix: envirionment =~ s/io/o/
+  
+  drieux (1):
+        support for subjectAltName</comment>
+    <requestid>298707</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>31552e8b66337423ec8ec68712358bb3</srcmd5>
+    <version>6.07</version>
+    <time>1537970357</time>
+    <user>dimstar_suse</user>
+    <comment>- 6.07      2017-02-19
+    - Cleaned up the Changes log
+    - Explicitly add hostname for SNI to start_SSL (GH PR#17)
+    - Fix the license name
+    - Update some documentation on SSL args
+    - Fix bug when checking for Mozilla::CA (GH PR#29)
+ 
+- Refreshed patch LWP-Protocol-https-6.04-systemca.diff
+- Cleaned spec file with spec-cleaner
+</comment>
+    <requestid>635681</requestid>
+  </revision>
+</revisionlist>

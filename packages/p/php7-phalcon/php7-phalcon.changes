@@ -1,0 +1,402 @@
+-------------------------------------------------------------------
+Sun Mar  3 22:51:40 UTC 2019 - Mariusz Fik <fisiu@opensuse.org>
+
+- Update to 3.4.3:
+  * Provided PHP 7.3 support
+
+-------------------------------------------------------------------
+Wed Jan  2 19:39:46 UTC 2019 - fisiu@opensuse.org
+
+- Update to 3.4.2:
+  * Added missing Volt tags to array helper in
+    Phalcon\Mvc\View\Engine\Volt\Compiler::functionCall
+  * Added the ability to explicitly define nullable columns (especially timestamp ones)
+  * Refactored Phalcon\Db\Adapter\Pdo::query to use PDO's prepare and execute
+    and Phalcon\Db\Adapter::fetchAll to use PDO's fetchAll
+  * Fixed Phalcon\Validation\Validator\Numericality to accept float numbers
+    on locales with comma decimal point
+  * Fixed Phalcon\Tag so it unsets parameters before passing options array to
+    self::renderAttributes
+  * Fixed Phalcon\Http\Response::setFileToSend filename; when file downloaded
+    it had an extra _
+  * Fixed Phalcon\Mvc\Model\Query::execute to properly bind parameters to sub queries
+  * Fixed Phalcon\Http\Request::getJsonRawBody #13501. It will now return
+    false when the body content is empty, as well as when it encounters an
+    error whilst decoding the JSON content
+  * Fixed Phalcon\Validation::preChecking to allow use Phalcon\Db\RawValue as
+    an empty container for isAllowEmpty option
+  * Fixed object binding and placeholder creation in Phalcon\Db\Adapter::insert
+    and Phalcon\Db\Adapter::update
+  * Fixed Phalcon\Config\Adapter\Ini not building config objects properly for
+    numerical keys
+  * Fixed incorrect scope of view variables
+  * Fixed Phalcon\Config::_merge not merging config with numeric properties properly
+
+-------------------------------------------------------------------
+Wed Sep 26 19:06:22 UTC 2018 - fisiu@opensuse.org
+
+- Update to 3.4.1:
+  * Changed Phalcon\Cache\Backend\Redis to support connection timeout parameter
+  * Fixed Phalcon\Validaiton\Validator\Uniqueness::isUniquenessModel to properly
+    get value of primary key when it has different name in column map
+  * Fixed bad performance for repeated Phalcon\Mvc\Router::getRouteByName and
+    Phalcon\Mvc\Router::getRouteById calls for applications with many routes
+  * Fixed incorrect tinyblob bind type in Phalcon\Db\Adapter\Pdo\Mysql::describeColumns
+  * Fixed Phalcon\Http\Request::getPut to provide json content-type support
+
+-------------------------------------------------------------------
+Sat Jul 21 21:55:27 UTC 2018 - fisiu@opensuse.org
+
+- Update to 3.4.0:
+  * Added Phalcon\Mvc\Router::attach to add Route object directly into Router
+  * Added the ability to listen request:beforeAuthorizationResolve and
+    request:afterAuthorizationResolve events
+  * Added call event afterFetch in Phalcon\Mvc\Model:refresh
+  * Added Phalcon\Http\Response::getReasonPhrase to retrieve the reason phrase from the Status header
+  * Added Phalcon\Loader::setFileCheckingCallback to set internal file existence resolver
+  * Added ability to pass aggregation options for Phalcon\Mvc\Collection::aggregate
+  * Added Phalcon\Crypt::setHashAlgo, Phalcon\Crypt::getHashAlgo, Phalcon\Crypt::useSigning
+    and Phalcon\Crypt::getAvailableHashAlgos
+  * Added Phalcon\Crypt::__construct so now the cipher can be set at object
+    construction and the calculating message digest can be enabled without the
+    need to call setCipher or useSigning explicitly
+  * Added Phalcon\Crypt\Mismatch. Exceptions thrown in Phalcon\Crypt will use this class
+  * Added Phalcon\Http\Cookie::setSignKey to set sign key used to generate a message
+    authentication code (eg. message digest)
+  * Added Phalcon\Http\Response\Cookies::setSignKey to set sign key used to
+    generate a message authentication code (eg. message digest)
+  * Changed Phalcon\Crypt::setCipher so that IV length will be reconfigured
+    during setting the cipher algorithm
+  * Changed Phalcon\Crypt::setCipher so that method will throw Phalcon\Crypt\Exception if a cipher is unavailable
+  * Fixed regression for Phalcon\Debug\Dump::output to correctly work with detailed mode
+  * Fixed Phalcon\Mvc\Model\Query\Builder::having and Phalcon\Mvc\Model\Query\Builder::where
+    to correctly merge the bind types
+  * Fixed Phalcon\Mvc\Model::setSnapshotData to properly sets the old snapshot
+  * Do not throw Exception when superglobal does not exist
+
+-------------------------------------------------------------------
+Fri Mar 30 20:58:06 UTC 2018 - fisiu@opensuse.org
+
+- Update to 3.3.2:
+  * Fixed Phalcon\Db\Dialect\Mysql::modifyColumn to produce valid SQL for
+    renaming the column
+  * Fixed Phalcon\Forms\Form::getMessages to return back previous behaviour
+  * Fixed Phalcon\Mvc\Model\Behavior\SoftDelete::notify to solve
+    the exception that soft deletion renamed model
+  * Fixed E_DEPRECATED error for each() in Phalcon\Debug\Dump
+
+-------------------------------------------------------------------
+Tue Jan 16 21:33:46 UTC 2018 - fisiu@opensuse.org
+
+- Update to 3.3.1:
+  * Added support of PHP 7.2 and initial support of PHP 7.3
+  * Added support for switch/case syntax to the Volt Engine
+  * Added Phalcon\Logger\Adapter\Blackhole
+  * Added Phalcon\Http\Request::hasHeader to check if certain header exists
+  * Added support of 103 (Early Hint) HTTP status code
+  * Added router:beforeMount event to Router::mount
+  * Added ability to use PDO option aliases on database connect
+  * Added Phalcon\Mvc\Model\MetaData\Apcu
+  * Added ability to use string(file path) as a argument in Phalcon\Config\Factory::load()
+  * Changed Phalcon\Mvc\Model to allow to pass a transaction within the query context
+  * Many other fixes and improvements.
+
+-------------------------------------------------------------------
+Mon Oct 23 21:27:58 UTC 2017 - fisiu@opensuse.org
+
+- Update to 3.2.4:
+  * Fix regression by removing injection of dispatcher's parameters.
+
+-------------------------------------------------------------------
+Fri Oct 20 17:16:14 UTC 2017 - fisiu@opensuse.org
+
+- Update to 3.2.3:
+  * Minor fixes arround Mvc\Model, View and Query.
+
+-------------------------------------------------------------------
+Wed Oct 11 15:12:36 UTC 2017 - fisiu@opensuse.org
+
+- Don't generate c from zephir. Use c code provided by upstream.
+- Drop zephir-0.9.11.tar.gz.
+
+-------------------------------------------------------------------
+Fri Aug 18 20:44:41 UTC 2017 - fisiu@opensuse.org
+
+- Update Phalcon to 3.2.2 and use zephir 0.9.11:
+  * Bug fix release.
+
+-------------------------------------------------------------------
+Wed Aug  2 11:32:27 UTC 2017 - tchvatal@suse.com
+
+- Drop the php5 part to keep only php7 due to the php5 removal
+
+-------------------------------------------------------------------
+Wed Jul 12 18:39:29 UTC 2017 - fisiu@opensuse.org
+
+- Update version to 3.2.1:
+  * Added Phalcon\Db\Dialect\Mysql::getForeignKeyChecks to generate a SQL to
+    check the foreign key settings
+  * Many bugfixes.
+
+-------------------------------------------------------------------
+Fri Jun 23 20:08:32 UTC 2017 - fisiu@opensuse.org
+
+- Update version to 3.2.0 and build with zephir 0.9.9.
+
+-------------------------------------------------------------------
+Mon Apr 10 20:27:01 UTC 2017 - fisiu@opensuse.org
+
+- Update Phalcon to 3.1.2 and use zephir 0.9.7.
+
+-------------------------------------------------------------------
+Tue Dec 20 22:05:37 UTC 2016 - fisiu@opensuse.org
+
+- Update Phalcon to 3.0.2 and use zephir 0.9.5.
+
+-------------------------------------------------------------------
+Wed Aug 24 21:21:51 UTC 2016 - fisiu@opensuse.org
+
+- Update Phalcon to 3.0.1.
+
+-------------------------------------------------------------------
+Wed Aug 17 21:29:37 UTC 2016 - fisiu@opensuse.org
+
+- Compile phalcon-3.0.0 with zephir 0.9.4.
+
+-------------------------------------------------------------------
+Sat Jul 30 00:54:04 UTC 2016 - fisiu@opensuse.org
+
+- Update Phalcon to 3.0.0. Package built with zephir-0.9.3.
+
+-------------------------------------------------------------------
+Thu Mar 24 21:46:28 UTC 2016 - fisiu@opensuse.org
+
+- Phalcon 2.1.0 RC1.
+
+-------------------------------------------------------------------
+Thu Mar 10 22:22:46 UTC 2016 - fisiu@opensuse.org
+
+- Phalcon 2.1.0 beta 2.
+
+-------------------------------------------------------------------
+Sun Nov 29 15:57:31 UTC 2015 - mruz@poczta.onet.pl
+
+- Phalcon 2.0.9
+ + Improved overall support of SQL for migrations
+ + Fixed bug that double serializes data using Redis adapter
+ + Added console:boot event to allow the developer to perform initialization actions
+ + Added implementation options allowEmpty for Phalcon\Mvc\Model\Validator\Ip
+ + Fixed SQLite bug[#10997] related to setting of index type
+ + Added Phalcon\Db\Dialect\Sqlite::listIndexesSql - to generate the SQL to get query list of indexes
+ + Fixed MySQL bug[#11036] related to setting of index type
+ + Added missed RouteInterface::setHostname, RouteInterface::getHostname
+ + Added strict option for ExclusionIn validator
+ + Added Phalcon\Text::underscore - to make a phrase underscored instead of spaced
+ + Added Phalcon\Text::humanize - to make an underscored or dashed phrase human-readable
+ + Added ability to change document class to be returned in ODM through class option
+
+-------------------------------------------------------------------
+Sat Sep 26 10:26:38 UTC 2015 - mruz@poczta.onet.pl
+
+- Phalcon 2.0.8
+ + Added Phalcon\Security\Random::base58 - to generate a random base58 string
+ + Added Phalcon\Logger\Adapter::isTransaction() to check whether the logger is currently in transaction mode or not (Phalcon 1.3 behavior)
+ + Phalcon\Session\Adapter now closes the session when the adapter is destroyed (Phalcon 1.3 behavior)
+ + Fixed fetching of data in modes FETCH_CLASS, FETCH_INTO and FETCH_FUNC in Phalcon\Db
+ + Added missing code property in Phalcon\Validation\Message available in Phalcon 1.3.x
+ + Added Phalcon\Db\Column::TYPE_TIMESTAMP to allow migrations on these kind of columns
+ + Added Phalcon\Db\ColumnInterface::hasDefault to check if a column has a default value declared in its database column definition
+ + Fixed determining of default value for column in Phalcon\Db\Dialect\MySQL, Phalcon\Db\Dialect\Sqlite and Phalcon\Db\Dialect\Postgresql classes
+ + Now Phalcon\Mvc\Model::__call invokes finders as in __callStatic
+ + Fixed Phalcon\Db\Dialect\Postgresql::getColumnDefinition for BIGINT and BOOLEAN data types
+ + Fixed BOOLEAN default value in Phalcon\Db\Dialect\Postgresql
+ + Added Phalcon\Validation\Validator\CreditCard - validation credit card number using luhn algorithm
+
+-------------------------------------------------------------------
+Tue Aug 18 07:06:32 UTC 2015 - mruz@poczta.onet.pl
+
+- Phalcon 2.0.7
+ + Image\Adapter\Gd::save() no longer fails if the method or the instance is created with a filename without an extension
+ + Fixed segfault and implementation of Image\Adapter\Imagick::text()
+ + Exceptions thrown in Volt compiler are now Phalcon\Mvc\View\Engine\Exception
+ + Now you can import macros from other files using {% include "file.volt" %}
+ + Undefined function calls fall back to macro calls in Volt templates
+ + Automatic bound parameters in Mvc\Model\Criteria now uses a different prefix
+ + than Mvc\Model\Query\Builder to avoid collisions
+ + Added Cache\Multiple::flush() to flush the cache backends added to the multiple system
+ + Fixed Session\Bag::remove()
+ + Session\Bag::destroy() eliminates any temporary data in the variables bag
+ + afterCreate/afterUpdate are only called if saving related records was successful
+ + Added an optional parameter removeData to Session\Adapter::remove() to remove any data in $_SESSION that belongs to the uniqueId or the whole session data
+ + Now session variables making use of unique prefixes use # as internal separator
+ + Added parameter that changes the default operator for conditions in method Mvc\Model\Criteria::fromImput() #10749
+ + Added \Phalcon\Queue\Beanstalk::listTubes() to get list of a tubes
+ + Added a fix to avoid that a table present in many sub-queries causes invalid SQL generation
+ + Add CookieInterface, update Cookie and Cookies to use this interface - Decoupling Cookies and Cookie - Check Session state before using it in Cookie. #10789
+ + Fixed merge of two Phalcon\Config instances that contains object values different than Phalcon\Config compatible instances
+ + When creating tables in Postgres, inline PRIMARY keys are now escaped properly#10797
+ + Fixed incorrect generation of SELECT COUNT(*) causing unexpected exceptions when phqlLiterals is disabled
+ + Added Phalcon\Security\Random - secure random number generator class. Provides secure random number generator which is suitable for generating session key in HTTP cookies, etc
+
+-------------------------------------------------------------------
+Wed Jul 22 16:05:42 UTC 2015 - mruz@poczta.onet.pl
+
+- Phalcon 2.0.6
+ + Builds in TravisCI now uses Docker to perform faster builds
+ + Added Http\Response::setCache() to easily set cache headers.
+ + When a beanstalkd connection is closed the adapter does not produce a notice anymore
+ + Default separator in Text::increment is now _ (underscore)
+ + Using tel_field in Volt now generates correct PHP code
+ + SQL generated by PostgreSQL dialect in dropTable and dropView is now correct
+ + Errors generated in Cache\Backend\Memcached now shows the result code to easily debug problems
+ + Fixed LIMIT/OFFSET SQL generation in Mvc\Model\Query\Builder
+ + Fixed Logger\Formatter\Line to match 1.3.x behavior
+ + Fixed warning when castOnHydrate' is true #10648
+ + Added name before int/float/numeric/string/bool/null/other variables in Debug\Dump::output
+ + Now Validation\Validator\Identical allows both 'accepted' and 'value' as value to keep backwards compatibility
+ + Added \Phalcon\Mvc\Model\MetaData\Redis adapter.
+ + Added Redis Session adapter
+ + Fixed bug in Mvc\Model\Criteria::fromInput unallowing it to use renamed columns
+ + Fixed bug in Http\Request getRawBody()/getPut() clears input buffer #10694
+
+- Phalcon 2.0.5
+ + Fixed a bug that makes that attaching an events manager to an Mvc\Application causes view->render() not being called
+ + Fixed bug that makes generated SQL statements using FOR UPDATE not being parsed correctly
+ + The email filter now no longer removes the ' character #10603
+ + When an array is bound the cached representation in PHQL makes the SQL being incorrectly generated the second time.
+ + Added \Phalcon\Mvc\Model\MetaData\Memcache and \Phalcon\Mvc\Model\MetaData\Libmemcached adapters
+ + Fixed a bug that makes macro can't be called recursively in Volt
+
+-------------------------------------------------------------------
+Wed Jul  8 05:36:01 UTC 2015 - mruz@poczta.onet.pl
+
+- Phalcon 2.0.4
+ + Fixed bug in Phalcon\Mvc\Model::update() that mistakenly throws an exception when the record does exist
+ + Now links in Phalcon\Debug point to https://api.phalconphp.com instead of http://docs.phalconphp.com
+ + Implemented a more versatile way to assign variables in Volt allowing to assign properties and array indexes
+ + Improved generation of macros in Volt using anonymous functions instead of plain PHP functions, this allow to bind the adapter object and inject services within them
+ + Fixed generation and validation of default parameters in Volt's macros
+ + Added Phalcon\Assets\Manager::getCollections() to return all collections registered #2488
+ + Now Phalcon\Mvc\Url::getStatic() generates URLs from routes
+ + Introduced Phalcon\Mvc\EntityInterface to allow parameters receive both Phalcon\Mvc\Model and Phalcon\Mvc\Collection instances. This interface allow Mvc\Model\Validators being used in Mvc\Collection
+ + Added Phalcon\Session\Adapter::setName() to change the session name
+ + Added BIGINT column type support in Phalcon\Db
+ + Added new types Phalcon\Db\Column::BLOB and Phalcon\Db\Column::DOUBLE #10506
+ + Automatic binding of Large Object data (LOB) in the ORM
+ + Support for BIT types in MySQL with binding as booleans
+ + Added Phalcon\Flash\Direct::output() allowing to place flash messages in a specific place of the view #629
+ + Added 'autoescape' option that allows to globally enable autoescape in any Volt template
+ + Added readAttribute/writeAttribute to Phalcon\Mvc\Collection\Document
+ + Added toArray to Phalcon\Mvc\Collection\Document
+ + Global setting db.force_casting now forces casting bound parameters to specified bind types
+ + Introduced new placeholders in PHQL enclosed in brackets that allow to set the type: {name:str} or {names:array}
+ + Now you can bind arrays in bound parameters in PHQL
+ + Global setting orm.cast_on_hydrate allow to cast hydrated attributes to the original types in the mapped tables instead of using strings
+ + Values in LIMIT/OFFSET clause are now passed using bound parameters in PHQL
+ + Allowing late state binding in both Simple/Complex results to allow override Mvc\Model::cloneResultMap
+ + Added method distinct() in Phalcon\Mvc\Model\Criteria #10536
+ + Added global setting orm.ignore_unknown_columns to ignore unexpected columns when hydrating instances in the ORM This fixes extra auxiliar columns used in Db\Adapter\Pdo\Oracle
+ + Added support for afterFetch in Mvc\Collection
+ + Added 'beforeMatch' parameter in @Route annotation of Mvc\Router\Annotations
+ + Added groupBy/getGroupBy/having/getHaving to Mvc\Model\Criteria
+ + Phalcon\Mvc\Model::count() now return values as integer
+ + Removed __construct from Phalcon\Mvc\View\EngineInterface
+ + Added Phalcon\Debug\Dump::toJson() to return an JSON string of information about a single variable
+ + Now instances in Phalcon\Di are built using internal optimizers instead of \ReflectionClass (PHP 5.6)
+ + Added Phalcon\Mvc\Model\Validator\IP from incubator
+ + Added parameter return defaultValue in Phalcon\Mvc\Model\Validator::getOption()
+
+-------------------------------------------------------------------
+Thu Jun 11 07:09:33 UTC 2015 - mruz@poczta.onet.pl
+
+- Phalcon 2.0.3
+
+-------------------------------------------------------------------
+Tue May 26 06:18:47 UTC 2015 - mruz@poczta.onet.pl
+
+- Phalcon 2.0.2
+
+-------------------------------------------------------------------
+Tue Oct 28 11:00:08 UTC 2014 - mruz@poczta.onet.pl
+
+- Phalcon 1.3.4 release
+
+-------------------------------------------------------------------
+Sun Sep 28 11:40:31 UTC 2014 - mruz@poczta.onet.pl
+
+- Phalcon 1.3.3 release
+
+-------------------------------------------------------------------
+Tue Jul  8 11:57:49 UTC 2014 - mruz@poczta.onet.pl
+
+- Phaclcon 1.3.2 rebuild
+
+-------------------------------------------------------------------
+Thu Jun  5 12:22:09 UTC 2014 - mruz@poczta.onet.pl
+
+- Phalcon 1.3.2 release
+
+-------------------------------------------------------------------
+Fri Mar 28 07:17:40 UTC 2014 - mruz@poczta.onet.pl
+
+- Phalcon 1.3.1 release
+
+-------------------------------------------------------------------
+Tue Mar 18 06:10:23 UTC 2014 - mruz@poczta.onet.pl
+
+- Phalcon 1.3.0 release
+
+-------------------------------------------------------------------
+Tue Mar 11 06:07:53 UTC 2014 - mruz@poczta.onet.pl
+
+- Phalcon 1.3.0 build 11032014
+
+-------------------------------------------------------------------
+Mon Mar  3 14:00:36 UTC 2014 - mruz@poczta.onet.pl
+
+- Phalcon 1.3.0 build 03032014
+
+-------------------------------------------------------------------
+Wed Feb 12 14:44:26 UTC 2014 - mruz@poczta.onet.pl
+
+- Phalcon 1.3.0 build 12022014
+
+-------------------------------------------------------------------
+Thu Dec 12 08:04:33 UTC 2013 - mruz@poczta.onet.pl
+
+- Phalcon 1.3.0 beta 1 release
+
+-------------------------------------------------------------------
+Mon Oct 21 16:52:48 UTC 2013 - mruz@poczta.onet.pl
+
+- Phalcon 1.2.4 release
+
+-------------------------------------------------------------------
+Mon Aug 26 17:53:05 UTC 2013 - mruz@poczta.onet.pl
+
+- Phalcon 1.2.3 release
+
+-------------------------------------------------------------------
+Fri Aug  9 19:16:56 UTC 2013 - mruz@poczta.onet.pl
+
+- Phalcon 1.2.2 release
+
+-------------------------------------------------------------------
+Thu Jul 25 21:24:42 UTC 2013 - mruz@poczta.onet.pl
+
+- Phalcon 1.2.1 release
+
+-------------------------------------------------------------------
+Wed Jul 10 08:30:41 UTC 2013 - mruz@poczta.onet.pl
+
+- Phalcon 1.2.0 release
+
+-------------------------------------------------------------------
+Wed Jun 19 08:06:12 UTC 2013 - mruz@poczta.onet.pl
+
+- Phalcon 1.2 beta 1 release
+
+-------------------------------------------------------------------
+Sat Jun  1 18:09:01 UTC 2013 - mruz@poczta.onet.pl
+
+- PhalconPHP release 1.1.0

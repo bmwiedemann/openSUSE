@@ -1,0 +1,81 @@
+From 6d1bdaa5174056ceaba1178cec7d0e25fea57302 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Thu, 9 May 2019 23:09:38 +0200
+Subject: [PATCH 07/18] drop convenience.js
+
+This functionality is provided by ExtensionUtils in GNOME 3.32.
+---
+ Makefile               | 5 +----
+ extension/extension.js | 5 ++---
+ extension/prefs.js     | 3 +--
+ 3 files changed, 4 insertions(+), 9 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index cbc0eaa..e2b52b4 100644
+--- a/Makefile
++++ b/Makefile
+@@ -55,10 +55,7 @@ clean-test-docs:
+ $(BUILDDIR):
+ 	mkdir -p $@
+ 
+-$(BUILDDIR)/convenience.js:	$(BUILDDIR)
+-	wget https://gitlab.gnome.org/GNOME/gnome-shell-extensions/raw/gnome-3-30/lib/convenience.js -O $@
+-
+-collect:	$(BUILDDIR)/convenience.js
++collect:
+ 	cp -R extension/* $(BUILDDIR)
+ 	cp -R data/* $(BUILDDIR)
+ 
+diff --git a/extension/extension.js b/extension/extension.js
+index 65ac623..532f19b 100644
+--- a/extension/extension.js
++++ b/extension/extension.js
+@@ -33,7 +33,6 @@ const _ = Gettext.gettext;
+ 
+ const ExtensionUtils = imports.misc.extensionUtils;
+ const Me = ExtensionUtils.getCurrentExtension();
+-const Convenience = Me.imports.convenience;
+ const PanelWidget = Me.imports.widgets.panelWidget.PanelWidget;
+ 
+ // dbus-send --session --type=method_call --print-reply --dest=org.gnome.Hamster /org/gnome/Hamster org.freedesktop.DBus.Introspectable.Introspect
+@@ -139,7 +138,7 @@ function Controller(extensionMeta) {
+             if (!this.shouldEnable || !this.apiProxy || !this.windowsProxy)
+                 return;
+ 
+-            this.settings = Convenience.getSettings();
++            this.settings = ExtensionUtils.getSettings();
+             this.panelWidget = new PanelWidget(this);
+             this.placement = this.settings.get_int("panel-placement");
+ 
+@@ -274,6 +273,6 @@ function Controller(extensionMeta) {
+ 
+ 
+ function init(extensionMeta) {
+-    Convenience.initTranslations();
++    ExtensionUtils.initTranslations();
+     return new Controller(extensionMeta);
+ }
+diff --git a/extension/prefs.js b/extension/prefs.js
+index dc4bc23..93ab15e 100644
+--- a/extension/prefs.js
++++ b/extension/prefs.js
+@@ -30,7 +30,6 @@ const Lang = imports.lang;
+ 
+ const ExtensionUtils = imports.misc.extensionUtils;
+ const Me = ExtensionUtils.getCurrentExtension();
+-const Convenience = Me.imports.convenience;
+ 
+ const HamsterSettingsWidget = new GObject.Class({
+     Name: 'ProjectHamster.Prefs.HamsterSettingsWidget',
+@@ -41,7 +40,7 @@ const HamsterSettingsWidget = new GObject.Class({
+         this.parent(params);
+         this.margin = 10;
+ 
+-        this._settings = Convenience.getSettings();
++        this._settings = ExtensionUtils.getSettings();
+ 
+         let vbox, label;
+ 
+-- 
+2.21.0
+

@@ -1,0 +1,516 @@
+-------------------------------------------------------------------
+Fri Nov 23 14:16:04 UTC 2018 - mvetter@suse.com
+
+- Update to version 0.36.0:
+  + Add tests for (a)rgb floating point formats
+  + Add support for argb/xrgb float formats, v5
+  + Fix stride calculation in stress-test
+  + Adjust for clang's removal of __builtin_shuffle
+  + Fix vector loads on ppc64le
+  + Promote unsigned short to unsigned int explicitly
+  + pixman-filter: Made Gaussian a bit wider
+  + pixman-filter: Nested polynomial for cubic
+  + pixman-filter: Fix several issues related to normalization
+  + pixman-filter: Speed up BOX/BOX filter
+  + pixman-filter: integral splitting is only needed for triangle
+    filterdd
+  + pixman-filter: Correct Simpsons integration
+  + pixman-filter: reduce amount of malloc/free/memcpy to generate
+    filter
+  + pixman-image: Added enable-gnuplot config to view filters in
+    gnuplot
+  + pixman-fast-path.c: Pick NEAREST affine fast paths before
+    BILINEAR ones
+  + pixman-private: include <float.h> only in C code
+- Remove pixman-private-correct-include.patch: upstreamed
+
+-------------------------------------------------------------------
+Mon Mar  5 15:33:13 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group. Update summaries.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:38:27 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Apr 15 21:23:20 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Mon Apr  4 16:11:45 UTC 2016 - zaitor@opensuse.org
+
+- Add pixman-private-correct-include.patch: pixman-private: include
+  <float.h> only in C code, patch from upstream git.
+
+-------------------------------------------------------------------
+Mon Feb  1 21:14:02 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.34.0:
+  + No changes from last version, stable version release only.
+
+-------------------------------------------------------------------
+Sat Jan  2 13:25:53 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.33.6:
+  + configura.ac: fix test for SSE2 & SSSE3 assembler support.
+  + mmx: Improve detection of support for "K" constraint.
+  + Revert "mmx: Use MMX2 intrinsics from xmmintrin.h directly".
+
+-------------------------------------------------------------------
+Tue Oct 27 21:11:27 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.33.4:
+  + Important security fix to prevent stack buffer overflow.
+  + POWER: New fast-paths and optimizations to existing fast-paths.
+  + ARMv6: New fast-path.
+  + Tests: New cover and fence-image-self tests.
+  + Remove redundant corrections in various calculations for
+    COVER-CLIP and COVER analysis.
+
+-------------------------------------------------------------------
+Sat Aug 22 17:04:50 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.33.2:
+  + ARMv6 - Many fast paths implementations were added.
+  + PPC64/PPC64LE - Fix all outstanding bugs and add many fast
+    paths implementations using vmx.
+  + Major enhancements to lowlevel-blt-bench utility.
+  + A couple of fixes and enhancements to mmx code.
+
+-------------------------------------------------------------------
+Thu Jul 10 20:09:28 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.32.6:
+  + MIPS: Fix exported symbols in public API.
+  + build: Check if the compiler supports GCC vector extensions.
+  + Bugs fixed: rh#972647, fdo#69014.
+
+-------------------------------------------------------------------
+Fri Jun  6 20:26:14 CEST 2014 - fcrozat@suse.com
+
+- RENDER extension hotfix: Add --disable-vmx for PPC64LE.
+  This makes the RENDER extension work for the time being.
+  Proper fix for vmx will come later (bnc#876757) (from Egbert
+  Eich).
+-------------------------------------------------------------------
+Mon Nov 18 19:41:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.32.4:
+  + Fix the SSSE3 CPUID detection.
+- Changes from version 0.32.2:
+  + Build fixes.
+- Changes from version 0.32.0:
+  + This release contains performance improvements to bilinear
+    scaling, and a large number of bug fixes.
+
+-------------------------------------------------------------------
+Sat Oct 19 11:25:39 UTC 2013 - dmueller@suse.com
+
+- Disable neon on all %arm platforms.
+
+-------------------------------------------------------------------
+Wed Aug  7 21:44:44 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.30.2:
+  + Require GTK+ version >= 2.16.
+  + Use AC_LINK_IFELSE to check if the Loongson MMI code can link.
+  + configure.ac: Don't use '+=' since it's not POSIX.
+  + test:
+    - Fix build on MSVC.
+    - fix matrix-test on big endian systems.
+  + Fix broken build when HAVE_CONFIG_H is undefined, e.g. on
+    Win32.
+
+-------------------------------------------------------------------
+Thu May  9 13:59:20 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.30.0:
+  + Support for high-quality image downscaling.
+  + Much improved ARMv6 assembly.
+  + Improved rendering quality for gradients.
+  + Improvements to the SSE2 backend.
+  + Improvements to MIPS DSPr2 backend.
+  + Improvements to test suite.
+
+-------------------------------------------------------------------
+Tue Dec 11 08:55:29 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.28.2:
+  + Fixes for 64 bit Windows, clang, and PowerPC on MacOS and
+    OpenBSD.
+
+-------------------------------------------------------------------
+Fri Nov  9 21:31:01 UTC 2012 - hrvoje.senjan@gmail.com
+
+- Update to version 0.28.0:
+  + Support for sRGB coded images.
+  + New API for fast glyph rendering.
+  + Faster bilinear scaling on iwMMX, Loongson and MMX.
+  + More fast paths in the MIPS DSPr2 backend.
+  + Faster scaling in general and on SSE2 in particular.
+
+-------------------------------------------------------------------
+Sat Jul 21 15:35:43 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.26.2:
+  + Some bug fixes.
+  + Custom build rules for ARM/iwMMXt.
+  + An important bug fix for MMX/x86.
+
+-------------------------------------------------------------------
+Thu Jun 21 11:55:21 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.26.0:
+  + New support for MIPS DSPr2 ASE.
+  + Improved performance with the iwMMXt instruction set.
+  + New support for the  Loongson SIMD instruction set.
+  + Several bugs fixed.
+  + Cleanups.
+  + Performance improvements.
+
+-------------------------------------------------------------------
+Sat Jun  9 19:07:16 UTC 2012 - guillaume@opensuse.org
+
+- Fix ARM build:
+  + Disable iwmmxt since our ARM SoC does not support it.
+  + Add new armv7hl to armv7*
+
+-------------------------------------------------------------------
+Thu Mar 22 14:24:37 UTC 2012 - jengelh@medozas.de
+
+- Parallel build with %_smp_mflags; remove redundant sections
+
+-------------------------------------------------------------------
+Thu Feb  9 08:51:13 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.24.4:
+  + Trapezoids that have gaps between the edges and the top/bottom
+    lines are no longer considered invalid.
+  + Basic support for using the NEON acceleration on iOS.
+
+-------------------------------------------------------------------
+Thu Jan 19 06:35:02 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.24.2:
+  + Runtime detection of ARM NEON on Android
+  + MMX build fix for Solaris
+  + Fix for broken gradients with repeat mode NONE
+  + Misc. other bug fixes.
+
+-------------------------------------------------------------------
+Mon Nov  7 19:33:55 UTC 2011 - johannesobermayr@gmx.de
+
+- Update to version 0.24.0:
+  + Faster bilinear scaling on SSE2 and ARM NEON
+  + Several new fast paths for ARM NEON
+  + Support for the iwMMXt vector instruction set
+  + Improved support for building with MSVC
+  + Large number of other optimizations, bug fixes, and internal
+    cleanups.
+
+-------------------------------------------------------------------
+Tue May  3 09:56:06 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.22.0:
+  + New r8g8b8a8 and r8g8b8x8 image formats
+  + Much faster image scaling on ARM and x86
+  + Faster 90/270 degree image rotation
+  + More comprehensive support for compositing triangles and
+    trapezoids
+  + Large number of other performance improvements, bug and
+    portability fixes, and improvements to the test suite.
+
+-------------------------------------------------------------------
+Fri Feb 11 16:42:19 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.20.2:
+  + Fix opacity check
+  + Improve handling of tangent circles
+  + Various bug fixes.
+  + Build fixes.
+
+-------------------------------------------------------------------
+Fri Oct 29 10:30:06 UTC 2010 - mrdocs@opensuse.org
+
+- Update to 0.20.0
+  *http://lists.freedesktop.org/archives/pixman/2010-October/000694.html
+  * Gradient improvements
+   Radial gradients follow the PDF specification [Andrea Canciani]
+   Large linear gradients are rendered much more accurately [Andrea]
+   Conical gradients now work much better [Søren Sandmann Pedersen]
+
+  * Performance improvements
+   Faster image scaling [Siarhei Siamashka]
+   Faster affine transformations [Søren]
+   Improvements to the ARM NEON [Siarhei]
+   Improvements to the SSE2 backend [Siarhei, Søren]
+   *Plus a large number of bug and portability fixes
+     and improvements to the test suite.
+
+-------------------------------------------------------------------
+Tue Aug 17 10:46:16 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.18.4:
+  + Fix memory leak in the pthreads thread local storage code
+  + When storing a g1 pixel, store the lowest bit, rather than
+    comparing with 0.
+  + If we bail out of do_composite, make sure to undo any
+    workarounds.
+  + Check for read accessors before taking the bilinear fast path
+
+-------------------------------------------------------------------
+Mon Jun 21 12:49:20 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.18.2:
+  + Add missing HAVE_CONFIG_H guards for config.h inclusion.
+  + Fix uninitialized cache when pthreads are used.
+  + Fixes for pthread thread local storage.
+  + [mmx] Fix mask creation bugs.
+
+-------------------------------------------------------------------
+Thu Apr  1 15:10:46 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.18.0:
+  + No code change, just a version bump for a stable release.
+
+-------------------------------------------------------------------
+Wed Mar 24 05:51:35 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.17.14:
+  + Fixes for older ARM CPUs.
+
+-------------------------------------------------------------------
+Thu Mar 18 09:43:16 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.17.12:
+  + Optimizations for rescaling with a nearest filter
+  + Overhead reduction by caching fast paths
+  + Constant time operator strength reduction
+  + Misc. bug fixes
+
+-------------------------------------------------------------------
+Sat Mar  6 16:54:39 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.17.10:
+  + ARM: added 'neon_composite_over_n_8888_8888_ca' fast path
+  + ARM: added 'neon_composite_src_x888_8888' fast path
+  + ARM: added 'neon_composite_over_reverse_n_8888' fast path
+  + Compute the image flags at validation time instead of composite
+    time
+  + Add new FAST_PATH_SIMPLE_REPEAT flag
+  + Move computation of extended format code to validate.
+  + Eliminate _pixman_image_is_solid()
+  + Eliminate _pixman_image_is_opaque() in favor of a new
+    FAST_PATH_IS_OPAQUE
+  + Turn need_workaround into another flag.
+  + Move workaround code to pixman-image.c
+  + Restructure the flags computation in compute_image_info().
+  + test: Remove obsolete comment
+  + Move __force_align_arg_pointer workaround before composite32()
+
+
+-------------------------------------------------------------------
+Thu Feb 25 22:01:04 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 0.17.8:
+  + Once unrolled version of fast_path_composite_nearest_scaled()
+  + Generalize and optimize fast_composite_src_scaled_nearest()
+  + Merge branch 'bitmasks'
+  + Makefile.am: Remove 'check' from release-check
+  + Turn off asserts in development snapshots (fdo#26314)
+  + ARM: Remove any use of environment variables for cpu features
+    detection
+  + Add pixman_image_get_destroy_data()
+  + Add extern "C" guards for c++
+  + Move checks for src/mask repeat right before walking the
+    region
+  + Compute src, mask, dest flags and base fast path decisions on
+    them
+  + Add src_, mask_, and dest_flags fields to fast path arrays
+  + Move calls to source_is_fastpathable() into
+    get_source_format()
+  + Fold get_fast_path() into _pixman_run_fast_path()
+  + Consolidate the source and mask sanity checks in a function
+  + Move pixbuf checks after src_format and mask_format have been
+    computed
+  + Move the sanity checks for src, mask and destination into
+    get_fast_path()
+  + Turn some uint16_t variables to int32_t in the fast paths
+  + Implement get_scanline_64() correctly for solid fill images
+  + Make pixman_image_fill_rectangles() call
+    pixman_image_fill_boxes()
+  + Add pixman_image_fill_boxes() API
+  + Add pixman_image_composite32()
+  + Make region argument to pixman_region(32)_init_rects() const
+  + Fix typo
+  + Fix some warnings
+
+-------------------------------------------------------------------
+Sun Feb 14 13:35:21 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.17.6:
+  + Asserts are always turned off, so X server crashes in the
+    region code should be gone (fdo#26314).
+  + 32 bit versions of some existing API:
+    - pixman_fill_boxes32()
+    - pixman_image_composite_32()
+  + Add accessor for the destroy data:
+    pixman_image_get_destroy_data()
+  + Optimizations for scaled images
+  + Some reorganisation of the fast path tables
+  + Bug fix for ARM NEON detection
+  + See http://cgit.freedesktop.org/pixman/log/?id=pixman-0.17.6
+    for full list of changes
+
+-------------------------------------------------------------------
+Mon Jan 18 21:21:46 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.17.4:
+  + Major performance improvements for ARM NEON
+  + Test suite improvements [Marvin Schmidt]
+  + Bug fixes
+  + See http://cgit.freedesktop.org/pixman/log/?id=pixman-0.17.4
+    for full list of changes
+
+-------------------------------------------------------------------
+Mon Dec 14 23:12:04 CET 2009 - jengelh@medozas.de
+
+- Add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Sun Dec  6 21:18:26 CET 2009 - dimstar@opensuse.org
+
+- Update to version 0.17.2:
+  + Faster bilinear image scaling
+  + Substantially improved ARM NEON fast paths
+  + Various other optimizations
+  + Improved test suite
+  + See http://cgit.freedesktop.org/pixman/log/?id=pixman-0.17.2
+    for full list of changes
+
+-------------------------------------------------------------------
+Fri Nov 13 17:38:11 CET 2009 - vuntz@opensuse.org
+
+- Update to version 0.16.2:
+  + See http://cgit.freedesktop.org/pixman/log/?id=pixman-0.16.2
+    for changes
+
+-------------------------------------------------------------------
+Fri Aug 28 19:01:16 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.16.0:
+  + See http://cgit.freedesktop.org/pixman/log/?id=pixman-0.16.0
+    for changes
+- Summary of the important changes since 0.14.0:
+  + Support for PDF blend modes
+  + A number of fast paths for ARM NEON
+  + Support for PIXMAN_REPEAT_REFLECT for images
+  + New image formats:
+    - a2r10g10b10, x2r10g10b10
+    - b8g8r8a8, b8g8r8x8
+  + Support for MMX and SSE2 on Sun compilers and Solaris
+  + Support for SSE2 on Windows x64
+  + A reorganisation of pixman's internals to make future
+    development and maintenance easier
+  + A substantial expansion of pixman's test suite
+
+-------------------------------------------------------------------
+Wed Aug 12 03:56:04 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.15.20:
+  + See http://cgit.freedesktop.org/pixman/log/?id=pixman-0.15.20
+    for changes
+
+-------------------------------------------------------------------
+Thu Aug  6 16:26:03 UTC 2009 - jansimon.moeller@opensuse.org
+
+- Add separate ifarch for armv5 and armv7 to be able to switch
+  neon on v7 lateron.
+
+-------------------------------------------------------------------
+Sun Aug  2 10:11:42 UTC 2009 - jansimon.moeller@opensuse.org
+
+- add ifarch's for ARM, disabling neon usage atm for both v5 and v7.
+
+-------------------------------------------------------------------
+Sat Jul 25 00:25:34 CEST 2009 - captain.magnus@opensuse.org
+
+- Update to version 0.15.18:
+  + See http://cgit.freedesktop.org/pixman/log/?id=pixman-0.15.18
+    for changes
+
+-------------------------------------------------------------------
+Mon Jul 20 10:21:08 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.15.16:
+  + See http://cgit.freedesktop.org/pixman/log/?id=pixman-0.15.16
+    for changes
+
+-------------------------------------------------------------------
+Sat Jun 27 23:45:35 CEST 2009 - captain.magnus@opensuse.org
+
+- Update to version 0.15.14:
+  + See http://cgit.freedesktop.org/pixman/log/?id=pixman-0.15.14
+    for changes
+
+-------------------------------------------------------------------
+Tue Jun 16 22:10:56 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.15.12:
+  + See http://cgit.freedesktop.org/pixman/log/?id=pixman-0.15.12
+    for changes
+
+-------------------------------------------------------------------
+Tue Jun  9 14:35:48 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.15.10:
+  + See http://cgit.freedesktop.org/pixman/log/ for changes
+
+-------------------------------------------------------------------
+Tue Jun  2 17:22:21 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.15.8:
+  + See http://cgit.freedesktop.org/pixman/log/ for changes
+
+-------------------------------------------------------------------
+Sat May 23 14:07:02 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.15.6:
+  + See http://cgit.freedesktop.org/pixman/log/ for changes
+  + Mainly code cleanup, splitting code in various files.
+
+-------------------------------------------------------------------
+Sun May 17 07:36:52 CEST 2009 - mboman@suse.de
+
+- Update to version 0.15.4:
+  + See http://cgit.freedesktop.org/pixman/log/ for changes
+
+-------------------------------------------------------------------
+Sat Apr 11 01:09:13 CEST 2009 - mboman@suse.de
+
+- Update to version 0.15.2:
+  + Reinstate SrcScaledNearest optimization
+  + Implement PIXMAN_REPEAT_REFLECT for images
+  + Add license and copyright holders to COPYING
+  + Check for allocation errors during pixman_op()
+  + Propagate the error returns from pixman_rect_alloc()
+  + Check for failure when intersecting regions
+  + Add support for BGRA and BGRx formats
+  + Set srcRepeat = False when using fbCompositeSrcScaleNearest
+  + Fix pixbuf_from_argb32() to take premultiplied alpha into
+    account
+  + Replace custom type ullong with standard uint64_t in
+    pixman-mmx.c
+  + Fix search and replace issue
+- Remove custom CFLAGS
+- Add %{version} to Requires in -devel package
+
+-------------------------------------------------------------------
+Tue Feb 10 13:38:44 CET 2009 - mboman@suse.de
+
+- Initial package, split out from xorg-x11-libs
+  + Drop pixman-0.12.0.diff. See bnc#444639/rh#435771 and fdo#17293
+

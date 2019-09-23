@@ -1,0 +1,142 @@
+-------------------------------------------------------------------
+Thu Jun 11 13:15:26 UTC 2015 - dimstar@opensuse.org
+
+- Fix build with mono 4.0 (sed hacks borrowed from Fedora).
+
+-------------------------------------------------------------------
+Tue May 19 13:16:57 UTC 2015 - mailaender@opensuse.org
+
+- enable checks
+
+-------------------------------------------------------------------
+Wed Mar  4 10:28:52 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.6:
+  * New Features / Improvements:
+    + Redesigned shape tools (demo video):
+      - The Line tool now supports drawing curves and arrows.
+      - Shapes remain editable after being drawn.
+      - All shape tools now support drawing dashed lines.
+    + All selection tools now support the Union, Exclude, Xor, and
+      Intersection modes.
+    + New community add-in repository - add-ins can be installed
+      through the Add-in Manager dialog (via the Add-ins menu).
+    + Redesigned New Image dialog, which includes presets,
+      orientation and background options, and a thumbnail preview
+      of the image.
+    + The toolbox and color palette now have a flexible layout and
+      can expand horizontally, making them significantly more
+      usable on small screens.
+    + When launching Pinta from the command line, the standard
+      --version and --help options are now supported.
+  * Bug Fixes:
+    + Fix a number of issues with the text tool’s support for
+      Unicode text.
+    + Fix a number of issues with undoing selections.
+    + Fix a number of untranslatable strings throughout Pinta, and
+      the zoom toolbar’s percentages are now formatted using the
+      current locale.
+    + The text tool now supports the standard shortcuts for
+      toggling bold (Ctrl+B), italic (Ctrl+I), and underline
+      (Ctrl+U), and all of the text can be selected with Ctrl+A.
+    + Fix a potential crash after undoing a text action.
+    + Fix a crash when holding both the left and right mouse
+      buttons with the Pencil tool.
+    + Fix issues with zooming in very far on large images.
+    + Fix a potential crash when exiting Pinta.
+    + Fix issues with the toolbar’s state (hidden vs. visible) not
+      being preserved after re-opening Pinta.
+    + Fix several bugs where undo did not work correctly for the
+      Freeform Shape tool.
+    + Fix a bug where resizing a selection allowed the selection to
+      grow beyond the edge of the canvas.
+    + The selection handles are now larger and easier to click.
+    + Fix bugs where using the Recolor tool after the Line/Curve
+      tool resulted in odd behavior.
+    + The error dialog now includes a link to the bug tracker.
+    + Improve the error message when opening an unsupported file
+      format.
+    + Fix an issue where cancelling the saving of a jpg image made
+      it appear that the image had actually been saved.
+    + Auto-hiding now works correctly for the history and open
+      images pads.
+    + Auto Crop now works correctly if there is an active selection.
+    + The progress dialog is now modal.
+    + The Backspace and Delete keys are now usable when editing
+      text fields in the toolbar.
+    + Improve the readability of the text cursor against dark
+      backgrounds.
+- Spec cleanup.
+- Add pinta-lang package.
+
+-------------------------------------------------------------------
+Mon May 26 19:28:55 UTC 2014 - develop7@develop7.info
+
+- update to v1.5
+  * see https://github.com/PintaProject/Pinta/releases/tag/1.5
+
+-------------------------------------------------------------------
+Sat Apr 12 09:13:48 UTC 2014 - mailaender@opensuse.org
+
+- added %post macros
+
+-------------------------------------------------------------------
+Thu Sep 27 14:50:38 UTC 2012 - i@marguerite.su
+
+- update to 1.4
+  * http://pinta-project.com/Releases.Release%201-4.ashx
+
+-------------------------------------------------------------------
+Wed Jun 13 04:50:23 UTC 2012 - mailaender@opensuse.org
+
+- Update to 1.3
+  * http://pinta-project.com/Releases.1-3.ashx
+
+-------------------------------------------------------------------
+Wed Apr 18 08:11:17 UTC 2012 - i@marguerite.su
+
+- update to 1.1
+  * http://pinta-project.com/Releases.1-1.ashx
+
+-------------------------------------------------------------------
+Thu Apr 28 19:01:21 UTC 2011 - ajorgensen@novell.com
+
+- Update to 1.0
+  * http://pinta-project.com/Release-Notes-1-0.ashx
+
+-------------------------------------------------------------------
+Fri Jan 14 03:28:40 UTC 2011 - malcolmlewis@opensuse.org
+
+- Add missing Url tag 
+
+-------------------------------------------------------------------
+Wed Jan 12 19:33:08 UTC 2011 - malcolmlewis@opensuse.org
+
+- Update to 0.6
+  http://pinta-project.com/release/0.6
+- Spec file cleanup
+- Desktop patch dropped 
+
+-------------------------------------------------------------------
+Fri Jul  9 17:58:04 UTC 2010 - ajorgensen@novell.com
+
+- Update to 0.4
+  http://pinta-project.com/release/0.4
+
+-------------------------------------------------------------------
+Mon May 24 21:58:24 UTC 2010 - ajorgensen@novell.com
+
+- Update to 0.3
+  http://pinta-project.com/release/0.3
+
+-------------------------------------------------------------------
+Mon Mar 15 16:43:23 UTC 2010 - ajorgensen@novell.com
+
+- Update to 0.2
+  http://www.pinta-project.com/release/0.2
+
+-------------------------------------------------------------------
+Mon Mar  8 23:21:23 UTC 2010 - ajorgensen@novell.com
+
+- First version (0.1)
+

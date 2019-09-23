@@ -1,0 +1,50 @@
+--- main.c
++++ main.c	2011-05-13 09:28:48.052426589 +0000
+@@ -186,6 +186,25 @@ main(int argc, char *argv[])
+ 	subject = NULL;
+ 	replyto = NULL;
+ 
++	if (*argv) {
++		/*
++		 * Be compatible with broken mail behaviour, which use direct
++		 * sendmail options for sending mails if getopt is skiped
++		 * by first argument which is non option like a mail address.
++		 */
++		char **opt = argv;
++		while (*(++opt) && (**opt) && (**opt != '-')) {
++			char *cp;
++			while ((cp = strrchr(*opt, ','))) {
++				*cp++ = '\0';
++				if (cp && *cp)
++					to = checkaddrs(cat(to, nalloc(cp, GTO)));
++			}
++			to = checkaddrs(cat(to, nalloc(*opt, GTO)));
++			argc--, argv++;
++		}
++	}
++
+ 	while ((i = getopt(argc, argv, optstr)) != EOF) {
+ 		switch (i) {
+ 		case 'V':
+@@ -380,8 +399,19 @@ usage:
+ 			ef = argv[optind];
+ 		}
+ 	} else {
+-		for (i = optind; argv[i]; i++)
+-			to = checkaddrs(cat(to, extract(argv[i], GTO|GFULL)));
++		for (i = optind; (argv[i]) && (*argv[i] != '-'); i++) {
++			char *cp;
++			while ((cp = strrchr(argv[i], ','))) {
++				*cp++ = '\0';
++				if (cp && *cp)
++					to = checkaddrs(cat(to, nalloc(cp, GTO|GFULL)));
++			}
++			to = checkaddrs(cat(to, nalloc(argv[i], GTO|GFULL)));
++		}
++		if (argv[i] && (strcmp(argv[i], "--") == 0))
++			i++;
++		for (; argv[i]; i++)
++			smopts = cat(smopts, nalloc(argv[i], 0));
+ 	}
+ 	/*
+ 	 * Check for inconsistent arguments.

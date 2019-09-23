@@ -1,0 +1,5 @@
+<package name="cf-cli" project="openSUSE:Factory">
+  <title>cf-cli</title>
+  <description>This is the official command line client for Cloud Foundry.</description>
+  <devel project="Cloud:Tools" package="cf-cli"/>
+</package>

@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Wed Mar  6 09:27:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to work properly with py2:
+  * python2.patch
+
+-------------------------------------------------------------------
+Wed Mar  6 09:25:04 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.12:
+  * No upstream chagelog provided
+- Remove merged fix_python2_urllib.patch
+- Sort with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:22 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Sep 22 14:07:07 UTC 2017 - toddrme2178@gmail.com
+
+- Only use litmus-0.13.tar.gz test file in %check section due to
+  license issues
+
+-------------------------------------------------------------------
+Thu Sep 21 18:26:06 UTC 2017 - toddrme2178@gmail.com
+
+- Get unit tests working.
+
+-------------------------------------------------------------------
+Mon Sep 18 17:01:39 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version
+- Include fix_unicode_issues.patch 
+  Upstream fix, should be in next release.
+  https://github.com/andrewleech/PyWebDAV3/commit/68c5fb9428e8d08f2bad4a1988a8d2d0baf357bc
+- Include fix_python2_urllib.patch
+  Upstream fix, should be in next release.
+  https://github.com/andrewleech/PyWebDAV3/commit/62e67e5523b6f8a3d47e1406d045c9e2abb9e8ba
+  https://github.com/andrewleech/PyWebDAV3/commit/eb4017d8894242ab4453cc1c2d432ebd299c13a0

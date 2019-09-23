@@ -1,0 +1,8 @@
+[Unit]
+Description=Very Secure FTP Daemon
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/vsftpd /etc/vsftpd.conf -obackground=NO -olisten=NO -olisten_ipv6=NO
+StandardInput=socket
+SuccessExitStatus=2

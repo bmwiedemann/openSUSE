@@ -1,0 +1,113 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Tue, 28 May 2019 10:57:15 +0200
+Subject: fix build with gcc 9
+Patch-mainline: submitted
+References: build fix
+
+These symbols were reported as multiply defined with gcc9 and LTO.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ librecad/src/actions/rs_actiondrawcircletan1_2p.cpp | 2 +-
+ librecad/src/actions/rs_actiondrawcircletan2.cpp    | 2 +-
+ librecad/src/actions/rs_actiondrawcircletan2_1p.cpp | 2 +-
+ librecad/src/actions/rs_actiondrawcircletan3.cpp    | 2 +-
+ librecad/src/actions/rs_actiondrawlinerelangle.cpp  | 2 +-
+ librecad/src/actions/rs_actiondrawlinetangent1.cpp  | 2 +-
+ librecad/src/actions/rs_actiondrawlinetangent2.cpp  | 2 +-
+ 7 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/librecad/src/actions/rs_actiondrawcircletan1_2p.cpp b/librecad/src/actions/rs_actiondrawcircletan1_2p.cpp
+index c14da00e4897..c1a0e23d0fac 100644
+--- a/librecad/src/actions/rs_actiondrawcircletan1_2p.cpp
++++ b/librecad/src/actions/rs_actiondrawcircletan1_2p.cpp
+@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ 
+ namespace{
+ //list of entity types supported by current action
+-auto enTypeList={RS2::EntityLine, RS2::EntityArc, RS2::EntityCircle};
++static auto enTypeList={RS2::EntityLine, RS2::EntityArc, RS2::EntityCircle};
+ }
+ 
+ struct RS_ActionDrawCircleTan1_2P::Points {
+diff --git a/librecad/src/actions/rs_actiondrawcircletan2.cpp b/librecad/src/actions/rs_actiondrawcircletan2.cpp
+index d0558f05b746..0446003ea443 100644
+--- a/librecad/src/actions/rs_actiondrawcircletan2.cpp
++++ b/librecad/src/actions/rs_actiondrawcircletan2.cpp
+@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ #include "rs_debug.h"
+ 
+ namespace {
+-auto enTypeList={RS2::EntityLine, RS2::EntityArc, RS2::EntityCircle};
++static auto enTypeList={RS2::EntityLine, RS2::EntityArc, RS2::EntityCircle};
+ }
+ 
+ struct RS_ActionDrawCircleTan2::Points {
+diff --git a/librecad/src/actions/rs_actiondrawcircletan2_1p.cpp b/librecad/src/actions/rs_actiondrawcircletan2_1p.cpp
+index 324c166862d4..2ece493490d7 100644
+--- a/librecad/src/actions/rs_actiondrawcircletan2_1p.cpp
++++ b/librecad/src/actions/rs_actiondrawcircletan2_1p.cpp
+@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ #include "rs_debug.h"
+ 
+ namespace {
+-auto enTypeList={RS2::EntityLine, RS2::EntityArc, RS2::EntityCircle};
++static auto enTypeList={RS2::EntityLine, RS2::EntityArc, RS2::EntityCircle};
+ }
+ 
+ struct RS_ActionDrawCircleTan2_1P::Points {
+diff --git a/librecad/src/actions/rs_actiondrawcircletan3.cpp b/librecad/src/actions/rs_actiondrawcircletan3.cpp
+index 026ed30e5c20..92679c75f5bf 100644
+--- a/librecad/src/actions/rs_actiondrawcircletan3.cpp
++++ b/librecad/src/actions/rs_actiondrawcircletan3.cpp
+@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ #include "rs_debug.h"
+ 
+ namespace {
+-auto enTypeList={RS2::EntityArc, RS2::EntityCircle, RS2::EntityLine, RS2::EntityPoint};
++static auto enTypeList={RS2::EntityArc, RS2::EntityCircle, RS2::EntityLine, RS2::EntityPoint};
+ }
+ 
+ struct RS_ActionDrawCircleTan3::Points {
+diff --git a/librecad/src/actions/rs_actiondrawlinerelangle.cpp b/librecad/src/actions/rs_actiondrawlinerelangle.cpp
+index 8415dd604d5a..dfc6660aa6c2 100644
+--- a/librecad/src/actions/rs_actiondrawlinerelangle.cpp
++++ b/librecad/src/actions/rs_actiondrawlinerelangle.cpp
+@@ -39,7 +39,7 @@
+ #include "rs_debug.h"
+ 
+ namespace {
+-auto enTypeList={RS2::EntityLine, RS2::EntityArc, RS2::EntityCircle,
++static auto enTypeList={RS2::EntityLine, RS2::EntityArc, RS2::EntityCircle,
+ 				 RS2::EntityEllipse};
+ }
+ 
+diff --git a/librecad/src/actions/rs_actiondrawlinetangent1.cpp b/librecad/src/actions/rs_actiondrawlinetangent1.cpp
+index 197b0cb6c849..335e0d03ba55 100644
+--- a/librecad/src/actions/rs_actiondrawlinetangent1.cpp
++++ b/librecad/src/actions/rs_actiondrawlinetangent1.cpp
+@@ -37,7 +37,7 @@
+ #include "rs_debug.h"
+ 
+ namespace{
+-auto circleType={RS2::EntityArc, RS2::EntityCircle,
++static auto circleType={RS2::EntityArc, RS2::EntityCircle,
+ 				 RS2::EntityEllipse, RS2::EntitySplinePoints
+ 				};
+ }
+diff --git a/librecad/src/actions/rs_actiondrawlinetangent2.cpp b/librecad/src/actions/rs_actiondrawlinetangent2.cpp
+index fed3545e0d14..3c4f6019c00e 100644
+--- a/librecad/src/actions/rs_actiondrawlinetangent2.cpp
++++ b/librecad/src/actions/rs_actiondrawlinetangent2.cpp
+@@ -36,7 +36,7 @@
+ #include "rs_debug.h"
+ 
+ namespace{
+-auto circleType={RS2::EntityArc, RS2::EntityCircle, RS2::EntityEllipse};
++static auto circleType={RS2::EntityArc, RS2::EntityCircle, RS2::EntityEllipse};
+ }
+ 
+ RS_ActionDrawLineTangent2::RS_ActionDrawLineTangent2(
+-- 
+2.21.0
+

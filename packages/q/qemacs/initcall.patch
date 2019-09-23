@@ -1,0 +1,33 @@
+--- qe.c
++++ qe.c
+@@ -6174,14 +6174,14 @@
+ static inline void init_all_modules(void)
+ {
+     int (*initcall)(void);
+-    void **ptr;
++    int (**ptr)(void);
+     
+-    ptr = (void **)&__initcall_first;
++    ptr = &__initcall_first;
+     for(;;) {
+         /* NOTE: if bound checking is on, a '\0' is inserted between
+            each initialized 'void *' */
+ #if defined(__BOUNDS_CHECKING_ON)
+-        ptr = (void **)((long)ptr + (2 * sizeof(void *)));
++        ptr += 2;
+ #else
+         ptr++;
+ #endif
+--- qe.h
++++ qe.h
+@@ -578,8 +578,8 @@
+ #undef __attribute__ 
+ 
+ /* same method as the linux kernel... */
+-#define __init_call	__attribute__ ((unused,__section__ (".initcall.init")))
+-#define __exit_call	__attribute__ ((unused,__section__ (".exitcall.exit")))
++#define __init_call	__attribute__ ((used,__section__ (".initcall.init")))
++#define __exit_call	__attribute__ ((used,__section__ (".exitcall.exit")))
+ 
+ #define qe_module_init(fn) \
+ 	static int (*__initcall_##fn)(void) __init_call = fn

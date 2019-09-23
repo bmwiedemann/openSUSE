@@ -1,0 +1,157 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e27f370c87bf653dc24b8087b2ccb7c</srcmd5>
+    <version>0.9.2</version>
+    <time>1295947215</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 57779 from user thomas-schraitle
+</comment>
+    <requestid>57779</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9d530f9bccb9faa5d2a3a07e3e98d3aa</srcmd5>
+    <version>0.9.2</version>
+    <time>1295947222</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 57779
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>9d530f9bccb9faa5d2a3a07e3e98d3aa</srcmd5>
+    <version>0.9.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ac339b56a8d1a4b544e2bbc12bc82103</srcmd5>
+    <version>0.9.3</version>
+    <time>1299578308</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 63278 from user saschpe
+</comment>
+    <requestid>63278</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>461a619bdd16057057a81de7dea8deb0</srcmd5>
+    <version>0.9.3</version>
+    <time>1299578316</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 63278
+</comment>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>48bcadb7afc5accdda950467e3fbdce2</srcmd5>
+    <version>0.9.3</version>
+    <time>1302785376</time>
+    <user>darix</user>
+    <comment>Accepted submit request 66928 from user coolo
+</comment>
+    <requestid>66928</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>a36a33f669773ec91da809c895337fd0</srcmd5>
+    <version>0.9.3</version>
+    <time>1302785385</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 66928
+</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>2599179d918262389e33e988e83f3326</srcmd5>
+    <version>0.9.3</version>
+    <time>1317025008</time>
+    <user>saschpe</user>
+    <comment>- Fix non-executable scripts
+- Removed %clean section and CFLAGS, not needed</comment>
+    <requestid>84196</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>2599179d918262389e33e988e83f3326</srcmd5>
+    <version>0.9.3</version>
+    <time>1319182398</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>2599179d918262389e33e988e83f3326</srcmd5>
+    <version>0.9.3</version>
+    <time>1340184073</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>ad93051be29ab86a620b46c910f82af0</srcmd5>
+    <version>0.9.3</version>
+    <time>1349783648</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0+ and Apache-2.0
+See setup.py (forwarded request 137513 from babelworx)</comment>
+    <requestid>137555</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>ad93051be29ab86a620b46c910f82af0</srcmd5>
+    <version>0.9.3</version>
+    <time>1359110082</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b997f75fa6dde05d9f37a294c65ffa1e</srcmd5>
+    <version>0.9.6</version>
+    <time>1379328364</time>
+    <user>coolo</user>
+    <comment>Update to 0.9.6 and spec cleanup (forwarded request 198988 from poorboywilly)</comment>
+    <requestid>199185</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>b997f75fa6dde05d9f37a294c65ffa1e</srcmd5>
+    <version>0.9.6</version>
+    <time>1379664233</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>b997f75fa6dde05d9f37a294c65ffa1e</srcmd5>
+    <version>0.9.6</version>
+    <time>1409302932</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d1815b3de4f1c2cfd3a50d6014fd1f60</srcmd5>
+    <version>1.3.5</version>
+    <time>1503926002</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.5
+- convert to singlespec (forwarded request 518467 from tbechtold)</comment>
+    <requestid>518468</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3618818a3d0709bfede499ddfa246506</srcmd5>
+    <version>1.3.6</version>
+    <time>1530304045</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean SPEC file
+- Switched on tests
+- Update to 1.3.6
+    - Various bugfixes
+</comment>
+    <requestid>617158</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>eec14819372c31e677b43ddd0f90bc6f</srcmd5>
+    <version>1.3.6</version>
+    <time>1535705157</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure to install license files</comment>
+    <requestid>632135</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3017ef824c00187a96ac8afb8091bf0f</srcmd5>
+    <version>1.4.0</version>
+    <time>1551284937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>678216</requestid>
+  </revision>
+</revisionlist>

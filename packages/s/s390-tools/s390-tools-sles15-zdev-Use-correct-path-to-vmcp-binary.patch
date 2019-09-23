@@ -1,0 +1,67 @@
+From a060dc22db06fb14274b72984ae8db51f00a21cd Mon Sep 17 00:00:00 2001
+From: Peter Oberparleiter <oberpar@linux.vnet.ibm.com>
+Date: Mon, 13 Nov 2017 12:50:32 +0100
+Subject: [PATCH] zdev: Use correct path to vmcp binary
+
+The zdev tools use a hard-coded path to locate the vmcp binary. Since
+this path may differ between distributions, the vmcp binary may not be
+successfully located in all cases. Fix this by using the BINDIR macro
+to determine the correct path. This macro is also used during
+installation of the vmcp binary itself.
+
+Reviewed-by: Michael Holzheu <holzheu@linux.vnet.ibm.com>
+Signed-off-by: Peter Oberparleiter <oberpar@linux.vnet.ibm.com>
+Signed-off-by: Michael Holzheu <holzheu@linux.vnet.ibm.com>
+---
+ common.mak              | 2 ++
+ include/lib/zt_common.h | 1 +
+ zdev/include/path.h     | 2 +-
+ 3 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/common.mak b/common.mak
+index b9a9f54..bb6cdf0 100644
+--- a/common.mak
++++ b/common.mak
+@@ -193,12 +193,14 @@ ALL_CFLAGS	= -DS390_TOOLS_RELEASE=$(S390_TOOLS_RELEASE) \
+ 			-DS390_TOOLS_LIBDIR=$(TOOLS_LIBDIR) \
+ 			-DS390_TOOLS_DATADIR=$(TOOLS_DATADIR) \
+ 			-DS390_TOOLS_SYSCONFDIR=$(SYSCONFDIR) \
++			-DS390_TOOLS_BINDIR=$(BINDIR) \
+ 			$(CFLAGS)
+ CXXFLAGS	?= $(DEFAULT_CFLAGS) $(OPT_FLAGS)
+ ALL_CXXFLAGS	= -DS390_TOOLS_RELEASE=$(S390_TOOLS_RELEASE) \
+ 			-DS390_TOOLS_LIBDIR=$(TOOLS_LIBDIR) \
+ 			-DS390_TOOLS_DATADIR=$(TOOLS_DATADIR) \
+ 			-DS390_TOOLS_SYSCONFDIR=$(SYSCONFDIR) \
++			-DS390_TOOLS_BINDIR=$(BINDIR) \
+ 			$(CXXFLAGS)
+ ALL_CPPFLAGS	= -I $(rootdir)include $(CPPFLAGS)
+ ALL_LDFLAGS	= $(LDFLAGS)
+diff --git a/include/lib/zt_common.h b/include/lib/zt_common.h
+index e27b7b0..c486428 100644
+--- a/include/lib/zt_common.h
++++ b/include/lib/zt_common.h
+@@ -25,6 +25,7 @@
+ #define RELEASE_STRING	STRINGIFY (S390_TOOLS_RELEASE)
+ #define TOOLS_LIBDIR	STRINGIFY (S390_TOOLS_LIBDIR)
+ #define TOOLS_SYSCONFDIR STRINGIFY (S390_TOOLS_SYSCONFDIR)
++#define TOOLS_BINDIR	STRINGIFY (S390_TOOLS_BINDIR)
+ 
+ #define __noreturn __attribute__((noreturn))
+ #define __packed __attribute__((packed))
+diff --git a/zdev/include/path.h b/zdev/include/path.h
+index 5252bcf..536ca06 100644
+--- a/zdev/include/path.h
++++ b/zdev/include/path.h
+@@ -27,7 +27,7 @@
+ #define	PATH_PROC		"/proc"
+ 
+ #define PATH_UDEVADM		"udevadm"
+-#define PATH_VMCP		"/usr/sbin/vmcp"
++#define PATH_VMCP		TOOLS_BINDIR "/vmcp"
+ #define PATH_IP			"ip"
+ 
+ #define PATH_ROOT		"/"
+-- 
+2.13.6
+

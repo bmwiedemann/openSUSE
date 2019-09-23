@@ -1,0 +1,6 @@
+<package name="libgnomesu" project="openSUSE:Factory">
+  <title>GNOME su Library</title>
+  <description>Libgnomesu is a library for providing superuser privileges to GNOME
+applications. It supports sudo, consolehelper, PAM, and su.</description>
+  <devel project="GNOME:Factory" package="libgnomesu"/>
+</package>

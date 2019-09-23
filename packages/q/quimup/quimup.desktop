@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Quimup
+Comment=Qt User Interface for the Music Player Daemon
+Exec=quimup
+Terminal=false
+Type=Application
+Icon=quimup.png
+Categories=AudioVideo;Player;
+StartupNotify=true
+Encoding=UTF-8

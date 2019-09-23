@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b9235f14189a3c3766211f8e47e5ca8d</srcmd5>
+    <version>1.0.0</version>
+    <time>1308062046</time>
+    <user>saschpe</user>
+    <comment>New package: gtk2 version of goocanvas; goocanvas source package will move to gtk3</comment>
+    <requestid>72586</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b9235f14189a3c3766211f8e47e5ca8d</srcmd5>
+    <version>1.0.0</version>
+    <time>1319181937</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e1667177f7d33175a933138da9b088df</srcmd5>
+    <version>1.0.0</version>
+    <time>1323191738</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>e1667177f7d33175a933138da9b088df</srcmd5>
+    <version>1.0.0</version>
+    <time>1340183404</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>e1667177f7d33175a933138da9b088df</srcmd5>
+    <version>1.0.0</version>
+    <time>1359108987</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>7cc077a72fb1ebf8c32a59bc78e62549</srcmd5>
+    <version>1.0.0</version>
+    <time>1364896129</time>
+    <user>coolo</user>
+    <comment>spec cleanup</comment>
+    <requestid>162035</requestid>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>7cc077a72fb1ebf8c32a59bc78e62549</srcmd5>
+    <version>1.0.0</version>
+    <time>1379662534</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>d549e0814f97286e7fab389a1c255f7e</srcmd5>
+    <version>1.0.0</version>
+    <time>1379941607</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>200138</requestid>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>d549e0814f97286e7fab389a1c255f7e</srcmd5>
+    <version>1.0.0</version>
+    <time>1409301075</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>e581efff95f81ae145d9c50c134e57b0</srcmd5>
+    <version>1.0.0</version>
+    <time>1520588348</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581130 from dimstar)</comment>
+    <requestid>582757</requestid>
+  </revision>
+</revisionlist>

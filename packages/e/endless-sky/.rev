@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d9d97600b68a4b10f00fe30812994a76</srcmd5>
+    <version>0.9.4</version>
+    <time>1485382787</time>
+    <user>dimstar_suse</user>
+    <comment>Changes compared to SR#432477: New upstream release</comment>
+    <requestid>440994</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>60bbaf33be462d833ef010095bd45cb9</srcmd5>
+    <version>0.9.6</version>
+    <time>1517606543</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571984</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>18c7191305f4a8e44f03f4d90eef9d65</srcmd5>
+    <version>0.9.6</version>
+    <time>1545141571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658967</requestid>
+  </revision>
+</revisionlist>

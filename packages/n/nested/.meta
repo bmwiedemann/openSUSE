@@ -1,0 +1,9 @@
+<package name="nested" project="openSUSE:Factory">
+  <title>Specialized editor for structured documents</title>
+  <description>
+
+	  Nested is a specialized editor focused on creating structured documents such as reports, publications, presentations, books, etc. It is designed to help the user concentrate on writing content without been distracted by format or markup. It offers a rich WYSIWYM interface where the user writes plain text with a lightweight markup language.       
+  
+  </description>
+  <devel project="editors" package="nested"/>
+</package>

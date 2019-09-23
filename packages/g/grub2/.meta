@@ -1,0 +1,14 @@
+<package name="grub2" project="openSUSE:Factory">
+  <title>Bootloader with support for Linux, Multiboot and more</title>
+  <description>This is the second version of the GRUB (Grand Unified Bootloader),
+a highly configurable and customizable bootloader with modular
+architecture.  It support rich scale of kernel formats, file systems,
+computer architectures and hardware devices.
+
+PLEASE NOTE: This is a development snapshot, and as such will not
+replace grub if you install it, but will be merely added as another
+kernel to your existing GRUB menu. Do not replace GRUB (grub package)
+with it unless you know what are you doing. Refer to README.openSUSE
+file that is part of this package's documentation for more information.</description>
+  <devel project="Base:System" package="grub2"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="krusader" project="openSUSE:Factory">
+  <title>A File Manager</title>
+  <description>An advanced twin panel (commander style) file manager for KDE.</description>
+  <devel project="KDE:Extra" package="krusader"/>
+</package>

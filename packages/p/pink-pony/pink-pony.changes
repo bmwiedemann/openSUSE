@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Thu Mar 12 11:50:00 UTC 2015 - lnussel@suse.de
+
+- go back to using libglfw2
+- fix download url
+- use %optflags (pink-pony-1.4.1.diff)
+
+-------------------------------------------------------------------
+Tue Jan 27 12:04:11 UTC 2015 - lnussel@suse.de
+
+- new version 1.4.1
+  * mainly build changes
+  * remove obsolete (pink-pony-glx.diff)
+
+-------------------------------------------------------------------
+Wed Dec 18 16:33:23 UTC 2013 - lnussel@suse.de
+
+- fix build with newer Mesa which lacks definition of GLXContextID
+  pink-pony-glx.diff
+
+-------------------------------------------------------------------
+Tue Sep 17 20:09:14 UTC 2013 - lnussel@suse.de
+
+- initial package version 1.3.1 with inspiration from Debian.
+  Includes datadir.patch, script.patch.
+

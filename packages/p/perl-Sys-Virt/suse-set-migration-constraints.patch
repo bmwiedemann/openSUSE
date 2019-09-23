@@ -1,0 +1,115 @@
+Add migration constraint parameters to libvirt perl bindings
+
+References: fate#316614, bsc#859868
+
+Index: Sys-Virt-v5.7.0/lib/Sys/Virt/Domain.pm
+===================================================================
+--- Sys-Virt-v5.7.0.orig/lib/Sys/Virt/Domain.pm
++++ Sys-Virt-v5.7.0/lib/Sys/Virt/Domain.pm
+@@ -1141,6 +1141,22 @@ progress is not made
+ 
+ The number of connections used during parallel migration.
+ 
++=item C<Sys::Virt::Domain::MIGRATE_PARAM_SUSE_MAX_ITERS>
++
++The the maximum number of iterations before final suspend
++
++=item C<Sys::Virt::Domain::MIGRATE_PARAM_SUSE_MAX_FACTOR>
++
++The maximum amount of memory to transfer before final suspend
++
++=item C<Sys::Virt::Domain::MIGRATE_PARAM_SUSE_MIN_REMAINING>
++
++The number of dirty pages before final suspend
++
++=item C<Sys::Virt::Domain::MIGRATE_PARAM_SUSE_ABORT_IF_BUSY>
++
++Abort the migration instead of doing the final suspend for VMs with busy workloads
++
+ =back
+ 
+ =item $ddom = $dom->migrate(destcon, flags=0, dname=undef, uri=undef, bandwidth=0)
+Index: Sys-Virt-v5.7.0/lib/Sys/Virt.xs
+===================================================================
+--- Sys-Virt-v5.7.0.orig/lib/Sys/Virt.xs
++++ Sys-Virt-v5.7.0/lib/Sys/Virt.xs
+@@ -5355,7 +5355,7 @@ _migrate(dom, destcon, newparams, flags=
+      virTypedParameterPtr params;
+      int nparams;
+     CODE:
+-     nparams = 16;
++     nparams = 20;
+      Newx(params, nparams, virTypedParameter);
+ 
+      strncpy(params[0].field, VIR_MIGRATE_PARAM_URI,
+@@ -5422,6 +5422,22 @@ _migrate(dom, destcon, newparams, flags=
+              VIR_TYPED_PARAM_FIELD_LENGTH);
+      params[15].type = VIR_TYPED_PARAM_ULLONG;
+ 
++     strncpy(params[16].field, VIR_MIGRATE_PARAM_SUSE_MAX_ITERS,
++             VIR_TYPED_PARAM_FIELD_LENGTH);
++     params[16].type = VIR_TYPED_PARAM_UINT;
++
++     strncpy(params[17].field, VIR_MIGRATE_PARAM_SUSE_MAX_FACTOR,
++             VIR_TYPED_PARAM_FIELD_LENGTH);
++     params[17].type = VIR_TYPED_PARAM_UINT;
++
++     strncpy(params[18].field, VIR_MIGRATE_PARAM_SUSE_MIN_REMAINING,
++             VIR_TYPED_PARAM_FIELD_LENGTH);
++     params[18].type = VIR_TYPED_PARAM_UINT;
++
++     strncpy(params[19].field, VIR_MIGRATE_PARAM_SUSE_ABORT_IF_BUSY,
++             VIR_TYPED_PARAM_FIELD_LENGTH);
++     params[19].type = VIR_TYPED_PARAM_UINT;
++
+      nparams = vir_typed_param_from_hv(newparams, params, nparams);
+ 
+      vir_typed_param_add_string_list_from_hv(newparams, &params, &nparams,
+@@ -5450,7 +5466,7 @@ _migrate_to_uri(dom, desturi, newparams,
+      virTypedParameterPtr params;
+      int nparams;
+   PPCODE:
+-     nparams = 16;
++     nparams = 20;
+      Newx(params, nparams, virTypedParameter);
+ 
+      strncpy(params[0].field, VIR_MIGRATE_PARAM_URI,
+@@ -5513,10 +5529,26 @@ _migrate_to_uri(dom, desturi, newparams,
+              VIR_TYPED_PARAM_FIELD_LENGTH);
+      params[14].type = VIR_TYPED_PARAM_INT;
+ 
+-     strncpy(params[14].field, VIR_MIGRATE_PARAM_BANDWIDTH_POSTCOPY,
++     strncpy(params[15].field, VIR_MIGRATE_PARAM_BANDWIDTH_POSTCOPY,
+              VIR_TYPED_PARAM_FIELD_LENGTH);
+      params[15].type = VIR_TYPED_PARAM_ULLONG;
+ 
++     strncpy(params[16].field, VIR_MIGRATE_PARAM_SUSE_MAX_ITERS,
++             VIR_TYPED_PARAM_FIELD_LENGTH);
++     params[16].type = VIR_TYPED_PARAM_UINT;
++
++     strncpy(params[17].field, VIR_MIGRATE_PARAM_SUSE_MAX_FACTOR,
++             VIR_TYPED_PARAM_FIELD_LENGTH);
++     params[17].type = VIR_TYPED_PARAM_UINT;
++
++     strncpy(params[18].field, VIR_MIGRATE_PARAM_SUSE_MIN_REMAINING,
++             VIR_TYPED_PARAM_FIELD_LENGTH);
++     params[18].type = VIR_TYPED_PARAM_UINT;
++
++     strncpy(params[19].field, VIR_MIGRATE_PARAM_SUSE_ABORT_IF_BUSY,
++             VIR_TYPED_PARAM_FIELD_LENGTH);
++     params[19].type = VIR_TYPED_PARAM_UINT;
++
+      nparams = vir_typed_param_from_hv(newparams, params, nparams);
+ 
+      vir_typed_param_add_string_list_from_hv(newparams, &params, &nparams,
+@@ -9172,6 +9204,10 @@ BOOT:
+       REGISTER_CONSTANT_STR(VIR_MIGRATE_PARAM_PARALLEL_CONNECTIONS, MIGRATE_PARAM_PARALLEL_CONNECTIONS);
+ 
+       REGISTER_CONSTANT(VIR_DOMAIN_MIGRATE_MAX_SPEED_POSTCOPY, MIGRATE_MAX_SPEED_POSTCOPY);
++      REGISTER_CONSTANT_STR(VIR_MIGRATE_PARAM_SUSE_MAX_ITERS, MIGRATE_PARAM_SUSE_MAX_ITERS);
++      REGISTER_CONSTANT_STR(VIR_MIGRATE_PARAM_SUSE_MAX_FACTOR, MIGRATE_PARAM_SUSE_MAX_FACTOR);
++      REGISTER_CONSTANT_STR(VIR_MIGRATE_PARAM_SUSE_MIN_REMAINING, MIGRATE_PARAM_SUSE_MIN_REMAINING);
++      REGISTER_CONSTANT_STR(VIR_MIGRATE_PARAM_SUSE_ABORT_IF_BUSY, MIGRATE_PARAM_SUSE_ABORT_IF_BUSY);
+ 
+       REGISTER_CONSTANT(VIR_DOMAIN_XML_SECURE, XML_SECURE);
+       REGISTER_CONSTANT(VIR_DOMAIN_XML_INACTIVE, XML_INACTIVE);

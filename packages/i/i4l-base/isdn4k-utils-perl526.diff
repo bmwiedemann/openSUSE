@@ -1,0 +1,12 @@
+Index: isdn4k-utils/isdnlog/tools/dest/makedest
+===================================================================
+--- isdn4k-utils.orig/isdnlog/tools/dest/makedest
++++ isdn4k-utils/isdnlog/tools/dest/makedest
+@@ -30,6 +30,7 @@
+ package main;
+ # perl 5.8.0 could use UTF-8 as default encoding, which has to be prevented.
+ eval q( use open ':encoding(iso-8859-1)' );
++use lib '.';
+ use wld;
+ BEGIN {
+   if ( (! exists $ENV{DBEXT} or $ENV{DBEXT} eq ".cdb") and

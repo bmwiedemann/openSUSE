@@ -1,0 +1,55 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5329a6c4faa509546172e5d8f6b9c56e</srcmd5>
+    <version>0.3.2</version>
+    <time>1350936317</time>
+    <user>coolo</user>
+    <comment>a dependency of librime.</comment>
+    <requestid>138298</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>5329a6c4faa509546172e5d8f6b9c56e</srcmd5>
+    <version>0.3.2</version>
+    <time>1359108989</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0282a9744c9ce45a31f88cf561055d32</srcmd5>
+    <version>0.3.3</version>
+    <time>1372760666</time>
+    <user>coolo</user>
+    <comment>update version 0.3.3 (forwarded request 181456 from MargueriteSu)</comment>
+    <requestid>181457</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0282a9744c9ce45a31f88cf561055d32</srcmd5>
+    <version>0.3.3</version>
+    <time>1379662538</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>0282a9744c9ce45a31f88cf561055d32</srcmd5>
+    <version>0.3.3</version>
+    <time>1409301081</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>eac22d96b7b75ed05fac6d2e5d3f6ee4</srcmd5>
+    <version>0.3.3</version>
+    <time>1461334997</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>378555</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>57cdb9c3b29c64691c78cf35bb6205a3</srcmd5>
+    <version>0.3.5</version>
+    <time>1496822107</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500916</requestid>
+  </revision>
+</revisionlist>

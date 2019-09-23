@@ -1,0 +1,380 @@
+<revisionlist>
+  <revision rev="1" vrev="19">
+    <srcmd5>dcf5c2790f16c167a3032c3949dc8d82</srcmd5>
+    <version>0.9.120061023</version>
+    <time>1168904400</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="32">
+    <srcmd5>b43b31e769b5a1bb6d239564ec6f9619</srcmd5>
+    <version>0.9.120061023</version>
+    <time>1168935873</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>43bc6f1449b2c27c0cd1f71168bd9c12</srcmd5>
+    <version>0.10</version>
+    <time>1170980370</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ef34b261680b9e78a0c22e234c7756e3</srcmd5>
+    <version>0.11</version>
+    <time>1173744165</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="27">
+    <srcmd5>8fd792d9174a2e3c43e2f2f85f421ca7</srcmd5>
+    <version>0.11</version>
+    <time>1180388295</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="35">
+    <srcmd5>a83dd1a6ffa8963b76115f0f0c50c8cb</srcmd5>
+    <version>0.11</version>
+    <time>1181255218</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="53">
+    <srcmd5>5da25ab636546711fa6e4b8f01b48891</srcmd5>
+    <version>0.11</version>
+    <time>1186096261</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f8390b52f71d85f7bac6b4e0ef88e37f</srcmd5>
+    <version>0.12</version>
+    <time>1186435135</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>d6d9db0f4c68fb3b0b968e2687525ad9</srcmd5>
+    <version>0.12</version>
+    <time>1187053753</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>aa68c3947cd8678666d1d931d5f4c509</srcmd5>
+    <version>0.12</version>
+    <time>1187914113</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f6514e92ea354e075c6140a56d2d5dd2</srcmd5>
+    <version>0.13</version>
+    <time>1203555780</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="103">
+    <srcmd5>f6514e92ea354e075c6140a56d2d5dd2</srcmd5>
+    <version>0.13</version>
+    <time>1203555780</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>666ec978609a28d680a7a8aab104ea8d</srcmd5>
+    <version>0.15</version>
+    <time>1235084417</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b393e247e43c0ad25caa3d2d26485aba</srcmd5>
+    <version>0.15</version>
+    <time>1235390530</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>cf4b7c196e9e45d68f404e46d9a40694</srcmd5>
+    <version>0.15</version>
+    <time>1244240479</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>980d0fc4567d36e35a756274d99b0c1e</srcmd5>
+    <version>0.15</version>
+    <time>1249921819</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>3117e5d52cf542f2124233633c127868</srcmd5>
+    <version>0.15</version>
+    <time>1251495505</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ufraw based on submit request 19056 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>9d742f933c0a5b70bb26285f76da7139</srcmd5>
+    <version>0.15</version>
+    <time>1251838703</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ufraw based on submit request 19382 from user coolo
+</comment>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>9d742f933c0a5b70bb26285f76da7139</srcmd5>
+    <version>0.15</version>
+    <time>1251838703</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ufraw based on submit request 19382 from user coolo
+</comment>
+  </revision>
+  <revision rev="20" vrev="9">
+    <srcmd5>b222155e94b70c64d4705821e5cd7da4</srcmd5>
+    <version>0.15</version>
+    <time>1268926402</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d517ff5c1d56b745172a6e8669c7482b</srcmd5>
+    <version>0.17</version>
+    <time>1273093567</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ufraw based on submit request 39409 from user bruclik
+</comment>
+    <requestid>39409</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>d517ff5c1d56b745172a6e8669c7482b</srcmd5>
+    <version>0.17</version>
+    <time>1278667393</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>d517ff5c1d56b745172a6e8669c7482b</srcmd5>
+    <version>0.17</version>
+    <time>1278678623</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>16905e5b00810e18e7bedbfeb46d0229</srcmd5>
+    <version>unknown</version>
+    <time>1283790782</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/ufraw based on submit request 47158 from user adrianSuSE
+</comment>
+    <requestid>47158</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>502fd8665d4bd3ae9b5aef365a71680d</srcmd5>
+    <version>0.17</version>
+    <time>1294048563</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 56955 from user adrianSuSE
+</comment>
+    <requestid>56955</requestid>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>f8863c74656ee3ca544f3b6118e3a31e</srcmd5>
+    <version>0.17</version>
+    <time>1294048574</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 56955
+</comment>
+  </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>f8863c74656ee3ca544f3b6118e3a31e</srcmd5>
+    <version>0.17</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>b39e0174ff1498f4beb63b3727c000be</srcmd5>
+    <version>0.18</version>
+    <time>1302165066</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66404 from user coolo
+</comment>
+    <requestid>66404</requestid>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>bc562a9174084478191a54dc5610a0bb</srcmd5>
+    <version>0.18</version>
+    <time>1302165075</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66404
+</comment>
+  </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>bc562a9174084478191a54dc5610a0bb</srcmd5>
+    <version>0.18</version>
+    <time>1319182535</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="31" vrev="9">
+    <srcmd5>9fc6b952b73f52bbf1fb3b1febebfc8f</srcmd5>
+    <version>0.18</version>
+    <time>1323195006</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="32" vrev="11">
+    <srcmd5>9fc6b952b73f52bbf1fb3b1febebfc8f</srcmd5>
+    <version>0.18</version>
+    <time>1340184293</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="33" vrev="12">
+    <srcmd5>aeb39b116ee75b9f89f332d4f5de38c5</srcmd5>
+    <version>0.18</version>
+    <time>1357827757</time>
+    <user>coolo</user>
+    <comment>Support for JPEG format added for openSUSE &gt;= 12.2 (it was broken). (forwarded request 147856 from sergeyopensuse)</comment>
+    <requestid>147857</requestid>
+  </revision>
+  <revision rev="34" vrev="14">
+    <srcmd5>aeb39b116ee75b9f89f332d4f5de38c5</srcmd5>
+    <version>0.18</version>
+    <time>1359110519</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8d3c578d3a7c2e726882bad2dfc18e9e</srcmd5>
+    <version>0.19.1</version>
+    <time>1362773882</time>
+    <user>coolo</user>
+    <comment>Update to version 0.19.1 (forwarded request 157965 from sergeyopensuse)</comment>
+    <requestid>157968</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>fb390811c0cf217ff0c8f69187d2fa64</srcmd5>
+    <version>0.19.1</version>
+    <time>1363067962</time>
+    <user>coolo</user>
+    <comment>- use Source URL.</comment>
+    <requestid>158523</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c55e38876d78397990d0618e954ff421</srcmd5>
+    <version>0.19.2</version>
+    <time>1364277937</time>
+    <user>coolo</user>
+    <comment>Update to version 0.19.2. (forwarded request 160964 from sergeyopensuse)</comment>
+    <requestid>160965</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>c55e38876d78397990d0618e954ff421</srcmd5>
+    <version>0.19.2</version>
+    <time>1379664877</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>c55e38876d78397990d0618e954ff421</srcmd5>
+    <version>0.19.2</version>
+    <time>1409303563</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="6">
+    <srcmd5>3bbc1454c31d5450c7e62c306e704fe8</srcmd5>
+    <version>0.19.2</version>
+    <time>1413616147</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257312</requestid>
+  </revision>
+  <revision rev="41" vrev="7">
+    <srcmd5>9284d48c06267d557c615accc0921508</srcmd5>
+    <version>0.19.2</version>
+    <time>1425217800</time>
+    <user>dimstar_suse</user>
+    <comment>- Ignore broken autogen.sh script and call autoreconf directly.
+- Remove old specfile macros. Enable parallel build.
+- dropped now unused ufraw-automake-1.14.patch</comment>
+    <requestid>288298</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>0fbce41765075727c6a8df6f6f86c6fa</srcmd5>
+    <version>0.21</version>
+    <time>1425377719</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288446</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>91452d8f42eb6709400e8aae0595ffa3</srcmd5>
+    <version>0.22</version>
+    <time>1440135685</time>
+    <user>dimstar_suse</user>
+    <comment>- Add conflicts with dcraw 
+
+- Added configuration options 
+  * --enable-dst-correction 
+  * --enable-extras 
+
+- Updated to version 0.22
+- Added FITS support</comment>
+    <requestid>324379</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>cf02e6fc5fb939a37b083a17431cfdab</srcmd5>
+    <version>0.22</version>
+    <time>1456821965</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't pass --enable-extras to configure, its for code testing
+  only and not for distribution (boo#968652)
+- Remove conflicts with dcraw.</comment>
+    <requestid>363098</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>f8213d5cad4eb002c054d6c1014c7f77</srcmd5>
+    <version>0.22</version>
+    <time>1471009430</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418755</requestid>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>ea028d671719e08cf1515ec9ba21e334</srcmd5>
+    <version>0.22</version>
+    <time>1497362924</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503059</requestid>
+  </revision>
+  <revision rev="47" vrev="5">
+    <srcmd5>49efc74c2417ca07ef5f3198407a99fe</srcmd5>
+    <version>0.22</version>
+    <time>1550048762</time>
+    <user>dimstar_suse</user>
+    <comment>- added some gentoo/debian patches:
+  * ufraw-0.22-jpeg9.patch
+  * ufraw-0.22-exiv2-0.27.patch
+  * 01_no-gimp-remote.patch
+  * 02_CVE-2015-8366.patch (bsc#1006704)
+  * 04_fix-abs-gcc-7.patch
+  * 05_CVE-2018-19655.patch (bsc#1117896)
+  * 06_lensfun_destroy_cleanup.patch</comment>
+    <requestid>673630</requestid>
+  </revision>
+  <revision rev="48" vrev="6">
+    <srcmd5>aa86a98358f963a27f3763ae77a625e2</srcmd5>
+    <version>0.22</version>
+    <time>1559376878</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706748</requestid>
+  </revision>
+  <revision rev="49" vrev="7">
+    <srcmd5>2861cb1b45520571ee5abcf49766043f</srcmd5>
+    <version>0.22</version>
+    <time>1559581093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707184</requestid>
+  </revision>
+  <revision rev="50" vrev="8">
+    <srcmd5>d50313f517d23683c49d06a6c2ad2560</srcmd5>
+    <version>0.22</version>
+    <time>1568025413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729263</requestid>
+  </revision>
+</revisionlist>

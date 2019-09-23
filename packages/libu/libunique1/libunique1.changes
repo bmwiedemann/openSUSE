@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Mon Mar  5 15:37:12 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group. Update descriptions.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:36:36 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb  8 20:24:07 UTC 2012 - dimstar@opensuse.org
+
+- Pss --disable-maintainer-flags to configure to allow building
+  despite the use of deprecated API of glib 2.31.14+.
+- Change dbus-1-glib-devel and gtk2-devel BuildRequires to their
+  pkgconfig() replacements: dbus-glib-1, gtk+-2.0.
+- Drop gtk2-devel Requires from -devel package: it will be added
+  automatically the pkgconfig() way.
+
+-------------------------------------------------------------------
+Thu Dec  8 21:04:40 UTC 2011 - dimstar@opensuse.org
+
+- Split typelib file into typelib-1_0-Unique-1_0 subpackage.
+- Add typelib-1_0-Unique-1_0 Requires to devel subpackage.
+
+-------------------------------------------------------------------
+Fri Jun 17 10:57:55 UTC 2011 - dimstar@opensuse.org
+
+- Add libunique1-no_g_const_return.patch: Use const instead of
+  G_CONST_RETURN. This is needed because of the G_CONST_RETURN
+  deprecation in recent glib 2.29.x.
+
+-------------------------------------------------------------------
+Thu May 19 16:20:02 UTC 2011 - dimstar@opensuse.org
+
+- Add libunique1-gcc46.patch: Fix build with gcc 4.6. Patch taken
+  from master branch. Applies cleanly on unique-1.1 branch.
+
+-------------------------------------------------------------------
+Fri Apr 22 11:22:58 CEST 2011 - vuntz@opensuse.org
+
+- Copy libunique source package to libunique1 as libunique moves to
+  3.0 version.
+
+-------------------------------------------------------------------
+Thu Jan 13 16:55:54 CST 2011 - gburt@suse.de
+
+- Explicitly enable D-Bus support (bnc#640615):
+  + Add dbus-1-glib-devel BuildRequires to build the D-Bus backend.
+  + Pass --enable-dbus=yes to configure.
+
+-------------------------------------------------------------------
+Sun Sep 19 00:53:46 CEST 2010 - vuntz@opensuse.org
+
+- Move gir files to devel subpackage.
+
+-------------------------------------------------------------------
+Wed Dec 23 12:02:07 CET 2009 - vuntz@opensuse.org
+
+- Drop gir-repository BuildRequires: it's not needed with recent
+  gtk2 that have introspection data.
+
+-------------------------------------------------------------------
+Sat Nov 14 02:18:48 CET 2009 - vuntz@opensuse.org
+
+- Update to version 1.1.6:
+  + Fix linker flags
+- Changes from version 1.1.4:
+  + Fix last usage of GDK X11 API without guards
+  + Fix UNIQUE_CHECK_VERSION macro
+  + Documentation fixes
+  + Update the build environment
+  + Fix introspection annotation for
+    unique_message_data_[sg]et_uris()
+  + Allow building only the D-Bus backend
+- Add gir-repository and gobject-introspection-devel BuildRequires.
+- Fix rpmlint warnings about self-obsoletion.
+
+-------------------------------------------------------------------
+Tue Aug 25 13:48:49 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.1.2:
+  + Follow GTK+'s single header include policy
+  + Remove a weak reference on the watched window
+  + Rework the build environment:
+    - use a recent syntax for the configure.ac
+    - use AS_COMPILER_FLAGS to ensure portability
+    - use Shave to clean up the build output
+  + Allow compiling out the Unix Domain Socket backend (bacon)
+  + Use the D-Bus backend by default
+  + Use GTK-Doc >= 1.11 to generate a proper Index
+  + Use X11-specific API only if we have support for it
+
+-------------------------------------------------------------------
+Sun May  3 00:49:49 CEST 2009 - mboman@suse.de
+
+- Update to version 1.0.8:
+  + Use the right environment variables
+  + Rework the maintainer compiler flags
+  + Remove the GPL notice from the test
+  + Update AC_INIT parameters
+  + Update the ChangeLog generation rule
+  + Eliminate newline in the version XML template
+  + Rename SGML to XML
+  + Remove mentions of unique_command_register()
+  + Use gnome-autogen instead of autoreconf
+  + Support suncc
+  + Chmod the socket file to 0700
+  + Unbreak subclassing of UniqueApp
+  + Do not attempt to convert UTF-8 data
+- Merge -doc into -devel since it only contains gtk-doc
+- Use %makeinstall instead of make install DESTDIR=%{buildroot}
+- Rename package from unique to libunique
+- %define _libversion and use it instead of specifying the version
+  everywhere
+- Add obsoletes/requires for unique
+
+-------------------------------------------------------------------
+Tue Feb 10 18:13:22 CET 2009 - vuntz@novell.com
+
+- Use post -p /sbin/ldconfig.
+
+-------------------------------------------------------------------
+Mon Jan 26 13:38:44 CET 2009 - vuntz@novell.com
+
+- devel package requires gtk2-devel package.
+- Simplify file list.
+- Fix Group.
+- doc and devel packages are not versioned.
+
+-------------------------------------------------------------------
+Sat Jan 03 11:23:12 CET 2009 - mboman@suse.de
+
+- New package
+

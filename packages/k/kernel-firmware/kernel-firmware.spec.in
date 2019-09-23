@@ -1,0 +1,151 @@
+#
+# spec file for package kernel-firmware
+#
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%define __ksyms_path ^/lib/firmware
+%define version_unconverted @@VERSION@@
+
+Name:           kernel-firmware
+Version:        @@VERSION@@
+Release:        0
+Summary:        Linux kernel firmware files
+License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
+Group:          System/Kernel
+URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
+# Created with umask 022; cd /_tmp
+# After git clone https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+# cd linux-firmware
+# git archive --format=tar --prefix=kernel-firmware-$version/ -v master ./ | xz -9 -M 4G --check=crc32 -T 4 > /tmp/kernel-firmware-$version.tar.xz
+#
+Source0:        kernel-firmware-%{version}.tar.xz
+Source1:        extrawhence
+Source2:        ast_dp501_fw.bin
+Source8:        ql2600_fw.bin
+Source9:        ql2700_fw.bin
+Source10:       ql8300_fw.bin
+Source99:       %{name}-rpmlintrc
+# install / build infrastructure
+Source1001:     install-split.sh
+Source1002:     list-license.sh
+Source1003:     get_supplements.sh
+Source1004:     topics.list
+Source1005:     licenses.list
+Source1006:     aliases.list
+Source1007:     topicdefs
+Source1008:     topicprovs
+Source1009:     kernel-firmware.spec.in
+Source1010:     makespec.sh
+Source1011:     fwtopics.py
+Source1012:     check-topic.py
+Source1013:     update-aliases.py
+Source1014:     README.build
+BuildRequires:  fdupes
+BuildRequires:  suse-module-tools
+Requires(post): coreutils
+Requires(postun): coreutils
+BuildArch:      noarch
+@@ALLPROVS@@
+Provides:       compat-wireless-firmware = 4.4
+Obsoletes:      compat-wireless-firmware < 4.4
+
+%description
+This package contains the raw uncompressed firmware files for Linux kernel
+drivers.  This package is provided only for compatibility with older kernels
+that do not support the compressed format.
+
+%package -n ucode-amd
+Summary:        Microcode updates for AMD CPUs
+Group:          System/Kernel
+Requires(post): coreutils
+Requires(postun): coreutils
+# new style (after 3.12 kernel somewhen)
+Supplements:    modalias(cpu:type%%3Ax86*ven0002*)
+# old style (before 3.16 kernel)
+Supplements:    modalias(x86cpu:vendor%%3A0002%%3Afamily%%3A*%%3Amodel%%3A*%%3Afeature%%3A*)
+
+%description -n ucode-amd
+This package contains the microcode files used by AMD CPUs.
+
+%package all
+Summary:        Compatibility metapackage for kernel firmware files
+Group:          System/Kernel
+Requires(post): coreutils
+Requires(postun): coreutils
+Provides:       kernel-firmware = %{version}
+Obsoletes:      kernel-firmware <= %{version}
+Conflicts:      kernel < 5.3
+Provides:       compat-wireless-firmware = 4.4
+Obsoletes:      compat-wireless-firmware < 4.4
+@@SUBPKGLIST@@
+
+%description all
+This package is a catch-all compatibility metapackage for providing
+all files that have been provided by kernel-firmware package.
+
+@@SUBPACKAGES@@
+
+%prep
+%setup -q
+# additional firmwares
+cat %{SOURCE1} >> WHENCE
+cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
+
+%build
+# nothing to do
+
+%install
+mkdir -p %{buildroot}/lib/firmware
+%if "%flavor" != "compressed"
+sh ./copy-firmware.sh %{buildroot}/lib/firmware
+%else
+sh %{_sourcedir}/install-split.sh %{_sourcedir}/topics.list %{buildroot} < WHENCE
+sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
+%endif
+%fdupes %{buildroot}
+
+%if "%flavor" != "compressed"
+@@POST@@
+@@POST@@ -n ucode-amd
+%else
+@@POST@@ all
+@@SUBPKGPOSTS@@
+%endif
+
+%if "%flavor" != "compressed"
+%files
+%doc WHENCE README
+%license GPL-2 GPL-3 LICEN[CS]E.*
+/lib/firmware
+%exclude /lib/firmware/amd-ucode
+%exclude /lib/firmware/amd-ucode/*
+
+%files -n ucode-amd
+%license LICENSE.amd-ucode
+%dir /lib/firmware
+/lib/firmware/amd-ucode
+%endif
+
+%if "%flavor" == "compressed"
+%files all
+%doc WHENCE README
+
+@@SUBPKGFILES@@
+%endif
+
+%changelog

@@ -1,0 +1,25 @@
+Index: src/headers/message.h
+===================================================================
+--- src/headers/message.h.orig	2010-09-08 16:43:48.924334502 +0200
++++ src/headers/message.h	2010-09-08 16:43:49.456294395 +0200
+@@ -146,6 +146,7 @@
+ #define GPM_MESS_SETSID_FAILED      "Setsid failed"
+ #define GPM_MESS_CHDIR_FAILED       "change directory failed"
+ #define GPM_MESS_FORK_FAILED        "Fork failed."
++#define GPM_MESS_DAEMON_FAILED      "Change to run in background failed."
+ #define GPM_MESS_VCCHECK            "Failed on virtual console check."
+ #define GPM_MESS_PROT_ERR           "Error in protocol"
+ #define GPM_MESS_ROOT               "You should be root to run gpm!"
+Index: src/daemon/startup.c
+===================================================================
+--- src/daemon/startup.c.orig	2010-09-08 16:43:49.328304044 +0200
++++ src/daemon/startup.c	2010-09-08 16:46:36.665526251 +0200
+@@ -126,7 +126,7 @@ void startup(int argc, char **argv)
+ 
+    if (option.run_status == GPM_RUN_STARTUP ) { /* else is debugging */
+       if (daemon(0,0))
+-         gpm_report(GPM_PR_OOPS,GPM_MESS_FORK_FAILED);   /* error  */
++         gpm_report(GPM_PR_OOPS,GPM_MESS_DAEMON_FAILED);   /* error  */
+ 
+       option.run_status = GPM_RUN_DAEMON; /* child  */
+    }

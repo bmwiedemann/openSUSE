@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Mon Jun 10 05:46:29 UTC 2019 - pgajdos@suse.com
+
+- version update to 2.1.0
+  * added: Type information
+  * fixed: Inconsistent return behavior
+- deleted sources
+  - BitTorrent-1.1.txt (not needed)
+
+-------------------------------------------------------------------
+Tue Jun  4 07:01:19 UTC 2019 - pgajdos@suse.com
+
+- version update to 2.0.0
+  * Support for bytes
+  * File read/write functions: bread(fp), bwrite(data, fp)
+  * Improved support for unicode strings
+- added sources
+  https://github.com/fuzeman/bencode.py/issues/12
+  + BitTorrent-1.1.txt
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:04 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue May  2 20:54:08 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to match bencode v1.2.0
+	* See bencode v.2.0 for history.  This package is a simple fork of the metadata decode logic.
+- add buildrequires: python-pbr which is used to provide reasonable defaults python's setup tool
+- convert to python singlespec
+
+-------------------------------------------------------------------
+Sat Aug 23 19:27:37 UTC 2014 - mardnh@gmx.de
+
+- Initial package release, version 1.0
+

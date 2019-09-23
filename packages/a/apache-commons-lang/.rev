@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1bdea16f3a0a028eca05b2c93769f7cb</srcmd5>
+    <version>2.6</version>
+    <time>1378899588</time>
+    <user>coolo</user>
+    <comment>add apache-commons-langs, will replace jakarta- package</comment>
+    <requestid>197549</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1bdea16f3a0a028eca05b2c93769f7cb</srcmd5>
+    <version>2.6</version>
+    <time>1379661970</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>52992f0f966ea8fcb87068e6499e8021</srcmd5>
+    <version>2.6</version>
+    <time>1405522165</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240323</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>52992f0f966ea8fcb87068e6499e8021</srcmd5>
+    <version>2.6</version>
+    <time>1409300494</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>84d69fbb53db570fd1080e9566dfd90f</srcmd5>
+    <version>2.6</version>
+    <time>1427982780</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292598</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>4d820ddf062704a287f18cd672cb9afa</srcmd5>
+    <version>2.6</version>
+    <time>1496230149</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496570</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>a1a3e280da9addfc936453a0e0dc8498</srcmd5>
+    <version>2.6</version>
+    <time>1505334094</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on systems when jdk9 is default java</comment>
+    <requestid>522860</requestid>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>693f27c90d7d49826a941985d2791a9b</srcmd5>
+    <version>2.6</version>
+    <time>1508508722</time>
+    <user>dimstar_suse</user>
+    <comment>Use BuildConflicts instead of requiring unique java version</comment>
+    <requestid>533049</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>a18d553dd19921f8329881b62ff4dad4</srcmd5>
+    <version>2.6</version>
+    <time>1521716675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589218</requestid>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>674289ea79bed7d0c696521f675383da</srcmd5>
+    <version>2.6</version>
+    <time>1549458412</time>
+    <user>coolo</user>
+    <comment>Clean-up the spec file</comment>
+    <requestid>671845</requestid>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>c1e23cf62745e71a348e10e5d5420cdf</srcmd5>
+    <version>2.6</version>
+    <time>1553700152</time>
+    <user>dimstar_suse</user>
+    <comment>Disregard the pom parent</comment>
+    <requestid>689050</requestid>
+  </revision>
+</revisionlist>

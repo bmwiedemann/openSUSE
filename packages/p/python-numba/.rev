@@ -1,0 +1,147 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eeaca56a7f6fc3bd8420a2a4594e6a8b</srcmd5>
+    <version>0.32.0</version>
+    <time>1495883675</time>
+    <user>dimstar_suse</user>
+    <comment>replaces python3-numba</comment>
+    <requestid>492720</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1e0b82418fd9e6fa5dec41a021ecbec9</srcmd5>
+    <version>0.35.0</version>
+    <time>1507570991</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>531381</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>af51fc274163530702119a6f628b270b</srcmd5>
+    <version>0.36.1</version>
+    <time>1513245304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555395</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>67d8bac74da5362789ad1ff0c78cecd8</srcmd5>
+    <version>0.36.2</version>
+    <time>1515505903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561310</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f2fe286ae82170a537f56c0e6194ebb1</srcmd5>
+    <version>0.36.2</version>
+    <time>1515876491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563677</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>055145e3f313707f9ca367fa44129f97</srcmd5>
+    <version>0.37.0</version>
+    <time>1520253892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582528</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e8ac341946903ca93c9d3e7f62b5bc62</srcmd5>
+    <version>0.37.0</version>
+    <time>1524576839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600094</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>86376b30505445d20e94c00827c4d7be</srcmd5>
+    <version>0.38.0</version>
+    <time>1526463575</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606683</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9a6d7c9d785670d670b2965cac6d935c</srcmd5>
+    <version>0.38.0</version>
+    <time>1527582591</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dependencies to match reality
+- Add more items to make python2 build</comment>
+    <requestid>610271</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5be4c64dc0fd04e12132a9b5b4d01107</srcmd5>
+    <version>0.38.1</version>
+    <time>1529919772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618811</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f268c0abafb1bb681233f43192e6b32a</srcmd5>
+    <version>0.39.0</version>
+    <time>1531470086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622244</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>7bbdd02a80443669e3df24a805ecded6</srcmd5>
+    <version>0.39.0</version>
+    <time>1532161528</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>624240</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>b9eadc006110c12c70cc769b3be4b0b6</srcmd5>
+    <version>0.39.0</version>
+    <time>1532774733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625840</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>22275b1c311198b5c305526ad736f8d7</srcmd5>
+    <version>0.40.1</version>
+    <time>1540819345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644977</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ff831b81d4cb172f9c5d354c228eca83</srcmd5>
+    <version>0.41.0</version>
+    <time>1543828336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653423</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c1435d80ca2b87e5ad9a4e91287efacd</srcmd5>
+    <version>0.42.0</version>
+    <time>1551024589</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>668985</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>00fabeac149632598697b425ef759d1a</srcmd5>
+    <version>0.43.0</version>
+    <time>1553084551</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686900</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7cd84aab09a0d836648d2fe95d3f4768</srcmd5>
+    <version>0.43.1</version>
+    <time>1555053454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693357</requestid>
+  </revision>
+</revisionlist>

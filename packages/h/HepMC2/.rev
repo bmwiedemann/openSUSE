@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e7de5d4fb5de6efa01a677ecda94e3eb</srcmd5>
+    <version>2.06.09</version>
+    <time>1504815283</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix shared lib Group, should be System/Libraries.
+- Add explicit Conflicts between HepMC2-devel and HepMC-devel &gt; 3,
+  make HepMC2-devel provide HepMC-devel = %{version}.
+- Adapt to using HepMC2 as package name.
+- Initial version (copy from HepMC = 2.06.09).
+</comment>
+    <requestid>521141</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8008cbd68f8a1eb3cc3e3b439b55d732</srcmd5>
+    <version>2.06.09</version>
+    <time>1505238844</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522370</requestid>
+  </revision>
+</revisionlist>

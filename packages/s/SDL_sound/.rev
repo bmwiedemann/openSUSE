@@ -1,0 +1,177 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>280d9c043bb714400b3042b5ac9c6808</srcmd5>
+    <version>1.0.1</version>
+    <time>1195183553</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="46">
+    <srcmd5>86cc0c6163063b598804da102af1779b</srcmd5>
+    <version>1.0.1</version>
+    <time>1208909142</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>710e2b4f1980700e352d83509ea28e7f</srcmd5>
+    <version>1.0.3</version>
+    <time>1209134709</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="12">
+    <srcmd5>2533b40114ae0ed235b7ad337347f3a0</srcmd5>
+    <version>1.0.3</version>
+    <time>1211423564</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="66">
+    <srcmd5>2533b40114ae0ed235b7ad337347f3a0</srcmd5>
+    <version>1.0.3</version>
+    <time>1211423564</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="67">
+    <srcmd5>56d04c841df8ab33d7d548c29a483e27</srcmd5>
+    <version>1.0.3</version>
+    <time>1243551494</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="68">
+    <srcmd5>20f28959ad7c517f9d55003ae9338c85</srcmd5>
+    <version>1.0.3</version>
+    <time>1254963089</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_sound based on submit request 22004 from user prusnak
+</comment>
+  </revision>
+  <revision rev="8" vrev="70">
+    <srcmd5>20f28959ad7c517f9d55003ae9338c85</srcmd5>
+    <version>1.0.3</version>
+    <time>1254963089</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_sound based on submit request 22004 from user prusnak
+</comment>
+  </revision>
+  <revision rev="9" vrev="71">
+    <srcmd5>72c197a981fae24e1e6b79ec06d6c7cf</srcmd5>
+    <version>1.0.3</version>
+    <time>1264783433</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_sound based on submit request 30807 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="72">
+    <srcmd5>987d766dd1ec08b2e932c15f67433e56</srcmd5>
+    <version>1.0.3</version>
+    <time>1268922823</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="74">
+    <srcmd5>987d766dd1ec08b2e932c15f67433e56</srcmd5>
+    <version>1.0.3</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="75">
+    <srcmd5>987d766dd1ec08b2e932c15f67433e56</srcmd5>
+    <version>1.0.3</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="78">
+    <srcmd5>987d766dd1ec08b2e932c15f67433e56</srcmd5>
+    <version>1.0.3</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="79">
+    <srcmd5>c1bd04cc99fac6462b4b1888213f883c</srcmd5>
+    <version>1.0.3</version>
+    <time>1316438996</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+
+- Update baselibs.conf to also ship libSDL_sound-devel-32bit
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)</comment>
+    <requestid>83187</requestid>
+  </revision>
+  <revision rev="15" vrev="81">
+    <srcmd5>c1bd04cc99fac6462b4b1888213f883c</srcmd5>
+    <version>1.0.3</version>
+    <time>1319181757</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="82">
+    <srcmd5>d2844ca67a0e3adea2da25090d258567</srcmd5>
+    <version>1.0.3</version>
+    <time>1323194583</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="84">
+    <srcmd5>d2844ca67a0e3adea2da25090d258567</srcmd5>
+    <version>1.0.3</version>
+    <time>1340183157</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="85">
+    <srcmd5>3cb19f6c54c9285330fa909f2fd677ff</srcmd5>
+    <version>1.0.3</version>
+    <time>1357653595</time>
+    <user>coolo</user>
+    <comment>- BuildRequire pkgconfig(libmodplug) (forwarded request 146876 from elvigia)</comment>
+    <requestid>147401</requestid>
+  </revision>
+  <revision rev="19" vrev="87">
+    <srcmd5>3cb19f6c54c9285330fa909f2fd677ff</srcmd5>
+    <version>1.0.3</version>
+    <time>1359108628</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="89">
+    <srcmd5>3cb19f6c54c9285330fa909f2fd677ff</srcmd5>
+    <version>1.0.3</version>
+    <time>1379661928</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="90">
+    <srcmd5>5be2cdd1a84ed99bb5da2e99b6019221</srcmd5>
+    <version>1.0.3</version>
+    <time>1384266188</time>
+    <user>coolo</user>
+    <comment>- Set RPM groups</comment>
+    <requestid>206547</requestid>
+  </revision>
+  <revision rev="22" vrev="92">
+    <srcmd5>5be2cdd1a84ed99bb5da2e99b6019221</srcmd5>
+    <version>1.0.3</version>
+    <time>1409300448</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="93">
+    <srcmd5>056c8bf0cb09aa04fd0685597c4a5ef8</srcmd5>
+    <version>1.0.3</version>
+    <time>1420754599</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve package summary and description. Drop --with-pic which
+  is enabled implicitly anyway.</comment>
+    <requestid>280335</requestid>
+  </revision>
+  <revision rev="24" vrev="94">
+    <srcmd5>aa854b68a1b78753e845c0e7e55066a7</srcmd5>
+    <version>1.0.3</version>
+    <time>1548064771</time>
+    <user>dimstar_suse</user>
+    <comment>- Deactivate physfs support. SDL_sound only supports physfs &lt; 3.x,
+  and the distro moved on.</comment>
+    <requestid>666844</requestid>
+  </revision>
+</revisionlist>

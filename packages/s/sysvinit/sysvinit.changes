@@ -1,0 +1,2422 @@
+-------------------------------------------------------------------
+Fri Jun 21 07:20:38 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Remove logsave as well as the manual page as those as part of
+  package e2fsprogs already 
+
+-------------------------------------------------------------------
+Mon Jun 17 13:54:35 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to sysvinit 2.95
+  * new logsave helper
+- Update to startpar-0.63
+  * move startpar from /sbin to /bin
+- Port our patches
+  * startpar-0.58.dif
+  * sysvinit-2.88dsf-suse.patch
+  * sysvinit-2.90-no-kill.patch
+  * sysvinit-2.90.dif
+
+-------------------------------------------------------------------
+Tue Apr  9 13:13:42 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch killproc-mntinf-optional.patch to handle various optional
+  fields of /proc/<pid>/mountinfo on the entry/ies before the hypen
+  (bsc#1131982)
+
+-------------------------------------------------------------------
+Mon Aug  6 13:21:20 UTC 2018 - werner@suse.de
+
+- Update to sysvinit 2.90 
+- Remove now upstream patches
+  * sysvinit-2.88+dsf-dostat.patch
+  * sysvinit-2.88+dsf-sulogin.diff
+  * sysvinit-2.88+dsf.tar.bz2
+  * sysvinit-2.88dsf-scripts2.patch
+- Port our patches
+  sysvinit-2.88dsf-no-kill.patch becomes sysvinit-2.90-no-kill.patch
+  sysvinit-2.88+dsf.dif becomes sysvinit-2.90.dif
+
+-------------------------------------------------------------------
+Wed Aug  1 14:50:54 UTC 2018 - schwab@suse.de
+
+- killproc-sysmacros.patch, startpar-sysmacros.patch: Include
+  <sys/sysmacros.h> for makedev
+
+-------------------------------------------------------------------
+Thu May 24 10:30:28 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Tue Oct  4 13:31:43 UTC 2016 - werner@suse.de
+
+- Avoid spurious waring on a not existin session of a not existing
+  process (boo#1002492)
+
+-------------------------------------------------------------------
+Tue Jan 26 10:24:25 UTC 2016 - sweet_f_a@gmx.de
+
+- remove unused /etc/pam.d/init
+- remove notify-pam-dead.patch
+
+-------------------------------------------------------------------
+Mon Jan 25 15:46:22 UTC 2016 - werner@suse.de
+
+- Use libblogger of package blog-devel now 
+
+-------------------------------------------------------------------
+Thu Jan 21 11:35:01 UTC 2016 - werner@suse.de
+
+- Split off showconsole as its separate package called blog 
+  Moved also the patches: showconsole-1.16.dif, showconsole-1.16-deadlock.diff,
+  showconsole-1.16-glibc.dif
+
+
+-------------------------------------------------------------------
+Fri Dec  4 15:24:01 UTC 2015 - sweet_f_a@gmx.de
+
+- cleanup package:
+  * don't build binaries which are not installed
+  * remove unused sources
+  * remove patches (or parts of patches) which modify unused files
+  * remove old build conditions (sysvinit, util-linux, mkinitrd)
+  * remove unused dependencies
+- this cleanup does not change the resulting binaries (except some
+  package dependencies) 
+- list of removed patches:
+  * sysvinit-2.82-startstop.patch
+  * sysvinit-2.88+dsf-blowfish.dif
+  * sysvinit-2.88+dsf-crypt.patch
+  * sysvinit-2.88+dsf-env.patch
+  * sysvinit-2.88dsf-multiple-sulogin.patch
+  * sysvinit-2.88+dsf-run.diff
+  * sysvinit-2.88+dsf-xen.patch
+- list of modified patches:
+  * notify-pam-dead.patch
+  * sysvinit-2.88+dsf.dif
+  * sysvinit-2.88+dsf-sulogin.diff
+  * sysvinit-2.88dsf-suse.patch
+
+-------------------------------------------------------------------
+Tue Dec  1 10:48:20 UTC 2015 - sweet_f_a@gmx.de
+
+- don't install last, we will take it from util-linux 
+
+-------------------------------------------------------------------
+Mon Feb 23 09:30:00 UTC 2015 - rguenther@suse.com
+
+- Build with -std=gnu89 to deal with GCC 5 defaulting to -std=gnu11
+
+-------------------------------------------------------------------
+Mon Sep  8 10:31:48 UTC 2014 - werner@suse.de
+
+- For systemd distributions and products do not build the package
+  sysvinit anymore 
+
+-------------------------------------------------------------------
+Thu Aug 21 11:38:06 UTC 2014 - lnussel@suse.de
+
+- use systemd-rpm-macros instead of systemd-devel to avoid build
+  dependency on systemd and it's deps in turn
+- don't install mkinitrd stuff on > 131 anymore
+
+-------------------------------------------------------------------
+Wed May 28 07:11:58 UTC 2014 - werner@suse.de
+
+- The former entry adds the patch killproc-2.18-open_flags.dif (bnc#863518)
+
+-------------------------------------------------------------------
+Wed May 21 13:49:37 CEST 2014 - draht@suse.de
+
+- open("/dev/tty", ...) should use O_RDWR, not O_WRONLY. Otherwise,
+  after dup2(fd, 0);, a process cannot read from stdin. [bnc#863518]
+
+-------------------------------------------------------------------
+Fri Feb  7 15:42:34 UTC 2014 - werner@suse.de
+
+- Add patch sysvinit-2.88+dsf-xen.patch to enable sulogin to find
+  suitable console device even if first is not usable (bnc#862078)
+
+-------------------------------------------------------------------
+Tue Jan 14 12:31:53 UTC 2014 - werner@suse.de
+
+- Add patch sysvinit-2.88+dsf-sulogin.diff from upstream to handle
+  e.g. strange names of executables in killall5
+
+-------------------------------------------------------------------
+Tue Jan 14 11:04:52 UTC 2014 - werner@suse.de
+
+- Split off powerd from sysvinit
+- Make powerd work together with systemd
+- Modify patch powerd-2.0.2.dif to remove sysvinit features
+- Adding the systemd unit file powerd.service
+
+-------------------------------------------------------------------
+Tue Jul 23 11:58:05 CEST 2013 - ohering@suse.de
+
+- Remove usage of absolute paths
+- List all needed binaries in programs tag
+
+-------------------------------------------------------------------
+Fri Jun  7 10:30:04 UTC 2013 - werner@suse.de
+
+- Skip binaries now part of util-linux
+
+-------------------------------------------------------------------
+Wed Apr 24 08:49:40 UTC 2013 - werner@suse.de
+
+- Add sanity check for /etc/inittab to avoid reload on systemd
+  systems (bnc#813510)
+
+-------------------------------------------------------------------
+Mon Mar  4 16:16:45 UTC 2013 - coolo@suse.com
+
+- move mkinitrd scripts of blogs to sysvinit-init, it's breaking
+  systemd/plymouth (bnc#804458)
+
+-------------------------------------------------------------------
+Fri Aug 17 11:48:35 UTC 2012 - werner@suse.de
+
+- Added patch from Roger Leigh to correct the manual page of startpar 
+
+-------------------------------------------------------------------
+Fri Aug 10 12:44:29 UTC 2012 - werner@suse.de
+
+- Increase daemon detection time in startproc to give started
+  process the time to daemonize (bnc#757643)
+
+-------------------------------------------------------------------
+Thu Aug  2 13:58:11 UTC 2012 - werner@suse.de
+
+- Add fix/workaround in blogd for new glibc internal pthread API to
+  avoid an glibc nptl assert report in bnc#772055
+
+-------------------------------------------------------------------
+Thu Jun 21 07:16:05 UTC 2012 - lnussel@suse.de
+
+- fix deadlock in blogd that happens on shutdown (bnc#730193)
+
+-------------------------------------------------------------------
+Wed May 23 10:45:13 UTC 2012 - werner@suse.de
+
+- Fix parameter turner in fscanf to really detect the file system
+  type in startproc/checkproc/killproc (bnc#762489)
+
+-------------------------------------------------------------------
+Fri May  4 12:47:47 UTC 2012 - werner@suse.de
+
+- Add two patch from upstream
+  + Avoid crash for exported environment for processes init spawns
+- Fix typo as the script for powerd (bnc#758920)
+
+-------------------------------------------------------------------
+Mon Apr 16 08:18:25 UTC 2012 - mvyskocil@suse.cz
+
+- add mingetty to Requires
+  * remove it as dependency from aaa_base ad it's needed for sysvinit only
+
+-------------------------------------------------------------------
+Fri Mar 16 16:51:33 UTC 2012 - werner@suse.de
+
+- Add two patch from upstream
+  + Handle deleted binaries in pidof (was upstream bug #34992)
+  + Allow init to delte extra environment variables (was upstream
+    bug #35858)
+  + Avoid that init double environment variables for its childs
+    (was upstream bug #35855)
+
+-------------------------------------------------------------------
+Wed Feb  8 12:35:24 UTC 2012 - werner@suse.de
+
+- Work around dully check script of obs 
+
+-------------------------------------------------------------------
+Wed Feb  1 12:01:05 UTC 2012 - werner@suse.de
+
+- Avoid useless check for runlevel as access(2) now works on
+  kernel 3.0 and above, this fixes bnc#744538 
+
+-------------------------------------------------------------------
+Tue Jan 31 16:40:18 UTC 2012 - werner@suse.de
+
+- New killproc-2.21 which includes the last bug fixes as well as
+  new features like support for ionice with startproc
+- New showconsole-1.16 which includes the last bug fixes
+- New startpar-0.58 which includes the last bug fixes as well as
+  the patches from Debian
+- Make rpmlint happy
+
+-------------------------------------------------------------------
+Mon Dec 19 18:13:19 UTC 2011 - werner@suse.de
+
+- Avoid trouble with indirect console names (bnc#731563)
+- Unmount proc file system if initial not mounted (bnc#718385) 
+
+-------------------------------------------------------------------
+Thu Oct 20 12:31:09 UTC 2011 - werner@suse.de
+
+- Use pipe to synch parent with child in startproc (bnc#713342) 
+
+-------------------------------------------------------------------
+Tue Oct 18 09:30:36 UTC 2011 - werner@suse.de
+
+- Add option -x to be able to identify scripts overwriting their
+  command line (bnc#723708) 
+
+-------------------------------------------------------------------
+Mon Oct 17 09:08:36 UTC 2011 - werner@suse.de
+
+- There was never a version 1.16 for showconsole 
+- Add some code to be able to detect programs even as user with
+  kernel 3.0 and above (bnc#723072)
+
+-------------------------------------------------------------------
+Tue Oct 11 13:46:46 UTC 2011 - coolo@suse.com
+
+- do not telinit u if /sbin/init is not sysvinit
+
+-------------------------------------------------------------------
+Tue Oct 11 11:04:56 UTC 2011 - coolo@suse.com
+
+- split out the symlink /sbin/init into a special subpackage,
+  which does _NOT_ do a split provide. systemd-sysvinit will 
+  provide this, so you need to do extra work if you want to stay
+  on sysvinit
+
+-------------------------------------------------------------------
+Tue Oct 11 10:16:45 UTC 2011 - coolo@suse.com
+
+- remove unused files
+
+-------------------------------------------------------------------
+Tue Oct  4 08:51:19 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc, %configure macros
+
+-------------------------------------------------------------------
+Thu Sep  8 15:20:30 UTC 2011 - giecrilj@stegny.2a.pl
+
+- update to showconsole-1.16 (manual page syntax)
+
+-------------------------------------------------------------------
+Fri Sep  2 15:43:20 UTC 2011 - werner@suse.de
+
+- Update to killproc-2.20 
+- Update to showconsole-1.15
+- Clean spec file
+
+-------------------------------------------------------------------
+Sat Aug 13 01:23:40 UTC 2011 - giecrilj@stegny.2a.pl
+
+- added documentation (including mandatory COPYING)
+- corrected errors in manual pages
+- incorporated showconsole-1.14.dif into showconsole-1.15
+
+-------------------------------------------------------------------
+Mon Aug  1 14:25:56 UTC 2011 - werner@suse.de
+
+- libblogger: check for SIGPIPE and block SIGPIPE during write, this
+  also does help startpar not to die on SIGPIPE (bnc#679671)
+- blogd: add a further check for nsigsys in writelog() (bnc#679671)
+
+-------------------------------------------------------------------
+Wed Jul 27 13:11:31 UTC 2011 - werner@suse.de
+
+- Add workaround for blowfish signedness bug (CVE-2011-2483)
+
+-------------------------------------------------------------------
+Wed Jul 27 10:41:27 UTC 2011 - werner@suse.de
+
+- Sulogin: respect byte order that is do not mix chars and ints
+  (bnc#707724)
+
+-------------------------------------------------------------------
+Tue Jul 26 12:13:18 UTC 2011 - werner@suse.de
+
+- Sulogin: enforce reconnection of stdin/stdout/stderr if a device
+  was specified.
+- Sulogin: if zero is read at reading the passwd guess it's done.
+
+-------------------------------------------------------------------
+Tue Jun 28 08:36:54 UTC 2011 - aj@suse.de
+
+- Fix build without libcrypt.a (without static glibc), added
+  patch sysvinit-2.88+dsf-crypt.patch.
+
+-------------------------------------------------------------------
+Wed Jun  1 12:57:08 UTC 2011 - lnussel@suse.de
+
+- use /run for utmp as that's already mounted by the initrd
+
+------------------------------------------------------------------
+Thu May 19 12:53:51 CEST 2011 - werner@suse.de
+
+- Add latest change for sulogin multiple console devices support
+
+------------------------------------------------------------------
+Wed Apr 20 13:14:43 CEST 2011 - werner@suse.de
+
+- Aoid possible trouble due raw pts/ptmx terminal line in both
+  blogd and startpar
+- Block SIGTTOU during tcsetattr(3) library call in both blogd
+  and startpar
+- Replace select(2) with pselect(2) in blogd and ensure that
+  the timeout structure will be reseted after a timeout
+
+------------------------------------------------------------------
+Tue Apr 19 15:51:23 CEST 2011 - werner@suse.de
+
+- Correct shutdown messages of startpar send via blogd
+
+------------------------------------------------------------------
+Tue Apr 19 14:08:04 CEST 2011 - werner@suse.de
+
+- Avoid possible races which can be happen if blogd sees a signal
+  and will exit then (related to bnc#642289)
+
+------------------------------------------------------------------
+Fri Apr 15 16:47:43 CEST 2011 - werner@suse.de
+
+- Fix exit code of checkproc in case of an existing pid file
+  without running process (bnc#687547)
+
+------------------------------------------------------------------
+Wed Apr  6 15:22:20 CEST 2011 - werner@suse.de
+
+- Fix bug in killproc that is do not stop searching for a match if
+  a mountpoint does not match, reported by Friedrich Haubensak.
+
+------------------------------------------------------------------
+Fri Apr  1 15:00:19 CEST 2011 - werner@suse.de
+
+- Let sulogin respect device on the command line as well as the
+  standard input
+- Let sulogin initialize serial terminals
+
+------------------------------------------------------------------
+Thu Mar 31 16:14:55 CEST 2011 - werner@suse.de
+
+- Remove debug code from showconsole/blogd
+- Make serial console tc init work even with blogd
+- sulogin: add support for multiple console devices
+
+------------------------------------------------------------------
+Fri Mar 25 18:59:05 CET 2011 - werner@suse.de
+
+- New showconsole verion 1.14
+  * Use sysfs file as fallback if possible
+  * Add more sanity checks to avoid looping on tty0
+
+-------------------------------------------------------------------
+Fri Mar 25 12:13:30 CET 2011 - werner@suse.de
+
+- Fix triggered endless loop in blogd (bnc#642289)
+  * Writing on tty0 caused blogd to re-read its own messages
+  * The usage of ttyname(3) on /dev/console can fail
+
+-------------------------------------------------------------------
+Tue Mar 15 16:01:22 CET 2011 - werner@suse.de
+
+- Update to current SVN version of sysvinit 2.88dsf:
+  * Fix counting message lines in wall. Patch from Petr Lautrbach.
+  * Fix bad printf conversion specifier in wall. Patch from Sébastien Luttringer.
+  * Add patches from Openwall project. Thanks goes to Solar Designer.
+  * Add code to detect the system consoles with the help of the
+    new /proc/consoles files of linux kernel 2.6.38+
+  * Try to make utmpdump IPv6 valid, change based on suggestion from
+    Navdeep Bhatia (see local bug #32429)
+  * Fix signal and alarm handling based on the patch from Florent Viard.
+    (was local bug #32304)
+  * Add fix for Redhat bug #573346: last incorrectly displays IPv6
+    addresses (was local bug #29497)
+  * Correct fix for Debian bug #547073: use IUTF8 flag if defined
+    and if already set to make sure the utf-8 flag is not cleared
+    from the tty. Patch from Samuel Thibault.
+  * Include limits.h in killall.c to enforce definition of PATH_MAX
+  * Fix sysvinit bug #29758 Linker invocation should not contain
+    headers. Change based on patch from Elias Pipping.
+  * Add fix for Debian bug #580272: use return value 1 of
+    is_selinux_enabled() to determine if SELinux is enabled,
+    otherwise initialize SELinux and load the policy. Patch from
+    Petter Reinholdtsen.
+  * Make quotes visible in example of the manual page of fstab-decode
+  * Add #ifdef in bootlogd.c to avoid gcc warnings about unused
+    variable on non-linux platforms.
+  * Only set the VSWTC field for termios in init if it is available,
+    to get the source building on FreeBSD.
+
+-------------------------------------------------------------------
+Fri Mar 11 17:05:55 CET 2011 - werner@suse.de
+
+- startpar: fix location of consoles under /proc
+- startpar: ignore errors from system console not being a tty
+
+-------------------------------------------------------------------
+Thu Mar 10 15:15:33 CET 2011 - werner@suse.de
+
+- Make blogd work together with kernel from 11.4 even on a
+  serial system console (bnc#672450)
+
+-------------------------------------------------------------------
+Thu Mar  3 14:54:10 CET 2011 - werner@suse.de
+
+- Make option -k for killproc utilities work for normal users even
+  if the exe link of an own process remains to root (bnc#664941)
+
+-------------------------------------------------------------------
+Tue Feb 15 15:44:33 CET 2011 - werner@suse.de
+
+- New killproc version 2.19: bug fix update
+
+-------------------------------------------------------------------
+Thu Feb 10 14:01:35 CET 2011 - werner@suse.de
+
+- Support the socket forwarding of systemd (bnc#656104)
+
+-------------------------------------------------------------------
+Tue Feb  8 18:55:21 UTC 2011 - werner@suse.de
+
+- Make real device comparision in killproc/checkproc to fix bnc#644171
+- Also make ignore mode in checkproc work
+- Enhance mkill to work on root fs and ignore kernel threads
+
+-------------------------------------------------------------------
+Mon Feb  7 13:26:19 CET 2011 - werner@novell.com
+
+- New killproc version 2.18
+
+-------------------------------------------------------------------
+Fri Feb  4 15:02:22 CET 2011 - werner@novell.com
+
+- Killproc:
+  * Add new program rvmtab to write out the current content of
+    /proc/mounts in the reverse mount order determined with the
+    help of /proc/self/mountinfo
+  * Use faster pointer list implementation
+
+-------------------------------------------------------------------
+Thu Jan 27 13:00:09 UTC 2011 - werner@novell.com
+
+- Killproc: Sort mount info pointers in the reverse order of the
+  directory depth to become the string compare of the readed link
+  name of the exe link more safely.
+
+-------------------------------------------------------------------
+Fri Jan 21 19:26:44 CET 2011 - werner@suse.de
+
+- Killproc: Do not be fooled if a device is mounted several times
+
+-------------------------------------------------------------------
+Tue Nov  9 16:30:56 CET 2010 - werner@suse.de
+
+- Change showconsole to use newest /proc/tty/consoles API
+
+-------------------------------------------------------------------
+Fri Oct 29 17:20:56 CEST 2010 - werner@suse.de
+
+- Add newline after blogger message
+
+-------------------------------------------------------------------
+Wed Oct 27 12:46:16 CEST 2010 - werner@suse.de
+
+- Fix cast&past error in killproc/checkproc
+
+-------------------------------------------------------------------
+Thu Oct 21 12:00:26 CEST 2010 - werner@suse.de
+
+- New killproc version 2.17
+  * Use /proc/self/mountinfo to avoid system call stat(2) on
+    running binaries not located on the mount point of the
+    current handled program
+  * Avoid to be detect sub (shadow) mounts on NFS mounts
+- New showconsole 1.13
+- Correct position of string pointer in NFS struct used in
+  killall5/pidof
+
+-------------------------------------------------------------------
+Tue Oct 12 18:21:44 CEST 2010 - werner@suse.de
+
+- libblogger: set O_CLOEXEC for named FIFO  /dev/blog (bnc#645793)
+
+-------------------------------------------------------------------
+Mon Oct  4 16:46:53 CEST 2010 - werner@suse.de
+
+- Add exit code exception for checkproc for the case of a not
+  installed program, use exit code 4 (bnc#643433)
+
+-------------------------------------------------------------------
+Fri Oct  1 15:43:16 CEST 2010 - werner@suse.de
+
+- blogd: correct order of setting back termios and termios locks
+- startpar: avoid EIO in do_forward if do_forward becomes a 
+  background process
+- Make sure that after installation of /sbin/init the init
+  process does re-execute that is split %post into one for
+  the tools sub package and one of the main package
+
+-------------------------------------------------------------------
+Wed Sep 22 14:38:37 CEST 2010 - werner@suse.de
+
+- New showconsole version 1.12
+  * Use /proc/tty/consoles if ioctl TIOCGDEV does not exist
+  * Make pseudo terminal raw as it is not show anything
+- New startpar 0.57
+  * Set raw pseudo terminals only once
+  * Set SIGTTIN to default before executing child
+  * Ignore error on reading termios
+
+-------------------------------------------------------------------
+Mon Aug 23 17:40:12 CEST 2010 - werner@suse.de
+
+- New showconsole version 1.11
+  * Handle more than two console devices
+  * Speed up used pts/tty pair by enabling raw mode
+  * Implement termios locking scheme but disable it as it may
+    interfere with sulogin and others using the old console
+- Enabling full raw mode for pty/tty pairs of startpar
+
+-------------------------------------------------------------------
+Thu Jul 29 18:15:34 CEST 2010 - werner@suse.de
+
+- New startpar version 0.56
+  * Handle processes within signal handler
+  * Make first process loop more readable
+  * Use pselect(2) to wait on SIGCHLD without using a pipe
+
+-------------------------------------------------------------------
+Tue Jul 27 10:56:47 CEST 2010 - werner@suse.de
+
+- Fix typo that is use "cmdline" instead of "cmd" (bnc#623766)
+
+-------------------------------------------------------------------
+Tue Jul 20 11:43:58 CEST 2010 - werner@suse.de
+
+- Enforce killproc to wait even if the SIGTERM has been specified
+  on the command line.  This should avoid the in most cases that
+  the daemon has not finished its response on SIGTERM, see bug
+  bnc#623460 and bug bnc#595796. 
+
+-------------------------------------------------------------------
+Fri Jul 16 17:22:27 CEST 2010 - werner@suse.de
+
+- Newer killproc sends only SIGTERM as required by LSB if -TERM is
+  specified on the command line.  Use the default which is SIGTERM
+  followed by SIGKILL if the timeout of 5 seconds is reached.
+
+-------------------------------------------------------------------
+Wed Jun  2 15:01:00 UTC 2010 - coolo@novell.com
+
+- prereq does not fix bnc#610628, the real problem is the cycle
+  of sysvinit->sysvinit-tools->mkinitrd <--, which is broken up by
+  simply ignoring one requirement. If this requirement is the one
+  between sysvinit->sysvinit-tools, we get in deep trouble. Way 
+  deeper trouble than missing mkinitrd_setup in sysvinit-tools's
+  %post
+
+-------------------------------------------------------------------
+Tue Jun  1 14:56:02 UTC 2010 - coolo@novell.com
+
+- Use Prereq instead of normal Requires to force an early installation
+  of sysvinit-tools (bnc#610628)
+
+-------------------------------------------------------------------
+Fri May 28 16:33:40 CEST 2010 - werner@suse.de
+
+- Implemenation of a workaround of missing console messages in
+  blogd (bnc#593957)
+
+-------------------------------------------------------------------
+Fri May 21 16:24:50 CEST 2010 - werner@suse.de
+
+- Avoid crash due changed common-session-pc (bnc#605681)
+
+-------------------------------------------------------------------
+Mon May 17 11:34:05 CEST 2010 - werner@suse.de
+
+- Add patch from Thomas for moving powerd from using gethostbyname()
+  to getaddrinfo()
+- Add upstream patch for correct using SELinux API
+
+-------------------------------------------------------------------
+Wed May 12 11:28:31 UTC 2010 - pth@ssue.de
+
+- Apply sysvinit-2.88dsf-utf8.dif without -p2.
+- Fix sysvinit-2.88dsf-utf8.dif (Changelog patch didn't apply).
+
+-------------------------------------------------------------------
+Thu Apr 29 13:00:25 CEST 2010 - werner@suse.de
+
+- Add URL of upstream location
+
+-------------------------------------------------------------------
+Tue Apr 27 14:36:43 CEST 2010 - werner@suse.de
+
+- Do not overwrite UTF8 input terminal setting as this may cause
+  trouble on system consoles forwarded to a foreign serial console
+
+-------------------------------------------------------------------
+Tue Apr 13 18:27:02 CEST 2010 - werner@suse.de
+
+- Add patch to make last(1) knowing latest IPv6 specs
+
+-------------------------------------------------------------------
+Mon Apr 12 17:49:46 CEST 2010 - werner@suse.de
+
+- Be LSB compliant with killproc (bnc#595796, bnc#578246)
+
+-------------------------------------------------------------------
+Fri Apr  9 15:45:51 CEST 2010 - werner@suse.de
+
+- Correct Pre-Requires to reflect package split
+- Update to sysvinit (2.88dsf) world; urgency=low
+
+  * Mention new home on Savannah in README.
+  * Revert change from Fedora/RedHat where the now obsolete command
+    INIT_CMD_CHANGECONS was introduced.  Based on feedback and patch
+    from Bill Nottingham.
+  * Adjust makefile to make sure the install directories are created
+    before files are copied into them.
+  * Simplify build rules, based on patch from Mike Frysinger and Gentoo.
+  * Fix minor bug in optimizing of argument parsing.  Based on
+    report from jakemus on freshmeat.
+  * Add casts to get rid of compiler warning about signed/unsigned issues.
+  * Change tty handling in init to make sure the UTF-8 flag is not cleared
+    on boot.  Patch from Samuel Thibault.
+  * Add Makefile in toplevel directory.
+  * Print usage information when shutdown is used by non-root user.
+    Patch from Mike Frysinger and Gentoo.
+  * Sync shutdown manual page and usage information.  Patch from Mike
+    Frysinger and Gentoo.
+  * Fix race condition in utmp writing.  Patch from Gil Kloepfer via
+    Mike Frysinger and Gentoo.
+  * Rewrite findtty() in bootlogd to recursively search /dev/ for the
+    correct device, to handle terminal devices for example in /dev/pty/.
+    Patch from Debian.
+  * Make sure bootlogd findpty() returns an error value when it fails to
+    find a usable pty.  Patch from Rob Leslie via Debian.
+  * Make sure bootlogd fflush() every line, even if asked not to flush
+    to disk using fdatasync().  Patch from Scott Gifford via Debian.
+  * Add compatibility code to handle old path "/etc/powerstatus" for a
+    while.
+  * Incude definition for MNT_DETACH which is missing in older GNU libc
+    headers.
+  * Do not strip binaries before installing them, to make it easier to
+    get binaries with debug information installed.
+  * Add the comment from Andrea Arcangeli about the correct
+    place of setting the default childhandler within spawn().
+  * Make sure that newline is printed out for last(1) even
+    if an utmp record entry is truncated.
+  * Check if utmp not only exists but also is writable and delay
+    writing out of the utmp runlevel record if utmp is not writable.
+  * Be able to find libcrypt also on 64 bit based architectures.
+  * Add option -w to the last command to display the full user and
+    domain names in the output.  Patch from Petr Lautrbach.
+  * Add a manual page for utmpdump as this tool is sometimes
+    very useful even if not intended for normal use.
+  * Use paths.h macros for wall
+  * Change path "/etc/powerstatus" to "/var/run/powerstatus"
+  * Detected also removable block devices at halt/reboot to be able
+    to flush data and send them the ATA standby command.  This should
+    avoid data loss on USB sticks and other removable block devices.
+  * Flush block devices on halt/reboot if not done by the kernel.
+  * Set SHELL to /bin/sh in the environmant of shutdown.
+  * Retry to write out shutdown messages if interrupted.
+  * pidof/killall5 - make omit pid list a dynamic one.
+  * pidof - provide '-n' to skip stat(2) syscall on network based FS.
+  * init - avoid compiler warnings
+  * init - initialize console by using the macros from ttydefaults.h
+  * init - add the possiblity to ignore further interrupts from keyboard
+  * init - add the possiblity to set sane terminal line settings
+  * sulogin - add the possibility to reset the terminal io
+  * Fix some minor problems
+  * init - enable is_selinux_enabled() to detect selinuxfs
+  * Add fix for Debian bug #536574 -- Can be enabled by -DACCTON_OFF
+  * Add helper program fstab-decode to make it easier to handle
+    /etc/mtab content. Patch by Miloslav Trmac and Fedora.
+  * Add fix for Debian bug #335023 - Make sure TERM is set on FreeBSD.
+  * Add fix for Debian bug #374038 - Make it clear that shutdown -c can
+    only cancel a waiting shutdown, not an active one.
+  * Add note to pidof manual page about the use of readlink(2). Patch by
+    Bill Nottingham and Fedora.
+  * Add PAM patch contrib/notify-pam-dead.patch based on Debian bug
+    #68621, which will add PAM support for programs spawned by init on
+    the console like sulogin. Based on patch by Topi Miettinen.  This
+    patch is not applied by default yet while we review its
+    usefullness.  It is only helpful for session handling, as sulogin
+    do not use and will not use a PAM conv() function.  The current
+    sulogin is able to handle DES as well as MD5, SHA, and Blowfish
+    encrypted passwords due using getpwnam(3).
+  * Move utmp/wtmp before the execvp() in spawn() to be sure to
+    use the correct pid even on a controlling tty
+  * Remaining problem is that the pid of the second fork() for
+    getting a controlling tty isn't that reported by spawn()
+  * Re-enable writting utmp/wtmp for boot scripts
+  * Extend sulogin to support additional encryption algorithms
+  * Re-enable maintenance message of sulogin
+  * Enable the sulogin fallback password check to handle  MD5, SHA, and
+    Blowfish encrypted passwords in case of getpwnam(3) fails.
+  * sulogin picking the SELinux context was broken. Patch by Daniel Walsh
+
+-------------------------------------------------------------------
+Fri Apr  9 14:30:08 CEST 2010 - werner@suse.de
+
+- Start the service sshd as early as possible (bnc#594223)
+
+-------------------------------------------------------------------
+Tue Mar 23 17:21:06 CET 2010 - werner@suse.de
+
+- Test out sysvinit (2.88dsf) UNRELEASED; urgency=low
+- Update to sysvinit (2.87dsf) world; urgency=low
+
+ * Document -e and -t options for telinit in init(8).
+ * Document in halt(8) that -n might not disable all syncing.
+   Patch by Bill Nottingham and Fedora
+ * Adjust output from "last -x".  In reboot lines, print endpoint
+   of uptime too.  In shutdown lines print downtimes rather than
+   the time between downs.  Fix typo in string compare in last.c.
+   Patch by Thomas Hood.
+ * Improve handling of IPv6 addresses in last.  Patch from Fedora.
+ * Add new option -F to last, to output full date string instead
+   of the short form provided by default.  Patch from Olaf Dabrunz
+   and SuSe.
+ * Fix utmp/wtmp updating on 64-bit platforms.  Patch by Bill
+   Nottingham and Fedora.
+ * Avoid unchecked return value from malloc() in utmpdump.
+   Patch from Christian 'Dr. Disk' Hechelmann and Fedora.
+ * Make sure to use execle and no execl when passing environment to
+   the new process.  Patch from RedHat.
+ * Correct init to make sure the waiting status is preserved across
+   re-exec.  Patch from RedHat.
+ * Correct init to avoid race condition when starting programs during
+   boot.  Patch from SuSe.
+ * Allow 'telinit u' in runlevels 0 and 6.  Patch from Thomas Hood.
+ * Improve error message from init if fork() fail.  Patch found in Suse.
+ * Add support for SE Linux capability handling.  Patch from Manoj
+   Srivastava, adjusted to avoid aborting if SE policy was loaded in
+   the initrd with patch from Bill Nottingham and Fedora.
+ * Add -c option to pidof for only matching processes with the same
+   process root.  Ignore -c when not running as root.  Patch from
+   Thomas Woerner and Fedora.
+ * Add usleep in killall5 after killing processes, to force the kernel
+   to reschedule.  Patch from SuSe.
+ * Modify pidof to not print empty line if no pid was found.
+ * Modify init and sulogin to fix emergency mode's tty, making sure ^C
+   and ^Z work when booting with 'emergency' kernel option.  Patch from
+   Samuel Thibault.
+ * Modify init to allow some time for failed opens to resolve themselves.
+   Patch from Bill Nottingham and Fedora.
+ * Modify init to shut down IDE, SCSI and SATA disks properly.  Patches
+   from Sebastian Reichelt, Werner Fink and SuSe.
+ * Modify wall to use UT_LINESIZE from <utmp.h> instead of hardcoded
+   string lengths.  Patch from SuSe.
+ * Change wall to make halt include hostname in output.
+ * Change killall to avoid killing init by mistake.  Patch from SuSe.
+ * Change killall5 to use the exit value to report if it found any
+   processes to kill.  Patch from Debian.
+ * Add option -o opmitpid to killall5, to make it possible to skip
+   some pids during shutdown.  Based on patch from Colin Watson and
+   Ubuntu.
+ * Modify killall to work better with user space file system, by
+   changing cwd to /proc when stopping and killing processes, and
+   avoiding stat() when the value isn't used.  Also, lock process
+   pages in memory to avoid paging when user processes are stopped.
+   Patch from Debian and Goswin von Brederlow with changes by Kel
+   Modderman.
+ * Change shutdown to only accept flags -H and -P with the -h flag,
+   and document this requirement in the manual page.
+ * Change reboot/halt to work properly when used as a login shell.
+   Patch by Dale R. Worley and Fedora.
+ * Let sulogin fall back to the staticly linked /bin/sash if both roots
+   shell and /bin/sh fail to execute.
+
+-------------------------------------------------------------------
+Wed Mar  3 13:22:11 UTC 2010 - coolo@novell.com
+
+- provide sbin_init (so external packages can require either sysvinit
+  or upstart)
+
+-------------------------------------------------------------------
+Thu Feb 11 13:36:19 UTC 2010 - coolo@novell.com
+
+- Split out tools not specific to System V into a tool subpackage
+  to support alternative init implementations (fate#305690)
+
+-------------------------------------------------------------------
+Mon Feb  8 15:58:56 CET 2010 - werner@suse.de
+
+- Add a manual page for utmpdump (bnc#576967)
+
+-------------------------------------------------------------------
+Fri Jan 29 14:30:44 CET 2010 - werner@suse.de
+
+- Remove start-stop-daemon binary (bnc#568950)
+
+-------------------------------------------------------------------
+Mon Dec 21 16:16:13 CET 2009 - werner@suse.de
+
+- Write pid file if /var is mounted rw (bnc#565620)
+
+-------------------------------------------------------------------
+Tue Dec  8 00:27:49 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Mon Dec  7 16:25:38 CET 2009 - werner@suse.de
+
+- The same procedure for killproc.c its self (caused by bnc#559534)
+
+-------------------------------------------------------------------
+Thu Dec  3 18:01:10 CET 2009 - werner@suse.de
+
+- Add missed line to startproc.c and also make manual page more
+  clear how startproc works (caused by bnc#559534)
+
+-------------------------------------------------------------------
+Sun Nov 15 14:01:30 CET 2009 - meissner@suse.de
+
+- refresh all patches with fuzz=0
+
+-------------------------------------------------------------------
+Mon Nov  2 17:10:48 CET 2009 - mmarek@suse.cz
+
+- fixed killproc-2.16.dif.
+
+-------------------------------------------------------------------
+Thu Oct 29 22:39:27 CET 2009 - mmarek@suse.cz
+
+- killall5: do not kill /sbin/mdmon (fate#306823).
+
+-------------------------------------------------------------------
+Wed Oct 28 10:47:42 CET 2009 - werner@suse.de
+
+- Avoid message on terminated process during reading its /proc files
+
+-------------------------------------------------------------------
+Tue Sep 29 10:48:03 CEST 2009 - werner@suse.de
+
+- Make killproc utils more stable in case that during read(2) a proc
+  file the corresponding process has already terminated (bnc#542717)
+
+-------------------------------------------------------------------
+Thu Aug 20 14:17:32 CEST 2009 - werner@suse.de
+
+- Make a new showconsole version 1.10
+  * Add time stamps to blogger API (fate #305596)
+  * Add newline before writing out blogger fifo content
+- Make a new startpar version 0.52
+  * Use blogd API (fate #305596)
+- Make a new killproc version 2.16
+
+-------------------------------------------------------------------
+Tue Jul 28 16:48:09 CEST 2009 - werner@suse.de
+
+- Do not loop around in the forwarder of startpar
+
+-------------------------------------------------------------------
+Tue Jun 30 16:32:50 CEST 2009 - werner@suse.de
+
+- Add patch from Olaf Kirch to avoid using mutex locking for every
+  character (from Moblin:Factory)
+
+-------------------------------------------------------------------
+Mon Jun 29 13:46:44 CEST 2009 - werner@suse.de
+
+- Start boot scripts with their symlinks name
+
+-------------------------------------------------------------------
+Wed May 27 13:26:50 CEST 2009 - werner@suse.de
+
+- Increase hash size for runtime linker of often used tools
+
+-------------------------------------------------------------------
+Mon May 11 10:27:43 CEST 2009 - werner@suse.de
+
+- Make it build
+
+-------------------------------------------------------------------
+Thu May  7 12:47:36 CEST 2009 - werner@suse.de
+
+- Reorder last patch in spec file
+
+-------------------------------------------------------------------
+Wed May  6 21:36:13 CEST 2009 - crrodriguez@suse.de
+
+- link /sbin/init dynamically, tested in 11.1, also
+  all other distros work just fine this way. 
+
+-------------------------------------------------------------------
+Mon May  4 12:22:55 CEST 2009 - werner@suse.de
+
+- Blogd: shorten minimal timeout at the end and hold all pages
+  in physical RAM
+
+-------------------------------------------------------------------
+Thu Apr 30 11:42:34 CEST 2009 - werner@suse.de
+
+- For usleep(8) use nanosleep(2) instead of obsolete usleep(3)
+
+-------------------------------------------------------------------
+Wed Apr 29 12:59:06 CEST 2009 - werner@suse.de
+
+- mkill: Do not remove all pid's from list for one fuse process
+
+-------------------------------------------------------------------
+Tue Apr 28 12:49:42 CEST 2009 - werner@suse.de
+
+- Disable blogd on fastboot or quiet boot
+
+-------------------------------------------------------------------
+Tue Apr 21 18:40:42 CEST 2009 - werner@suse.de
+
+- Make initrd script for blogd depend on initrd script clock
+
+-------------------------------------------------------------------
+Fri Mar 27 13:08:59 CET 2009 - werner@suse.de
+
+- Update to killproc 2.15
+  * New option -w for making startproc waiting on daemons parent
+    process (bnc#489473, bnc#482096 comment#21 ff)
+  * New option -W for making startproc waiting on files created
+    by the daemon (bnc#482096 comment#24 ff)
+- Merge changes for preload code of startpar into one patch
+- nfs4pidof: avoid nfs code for process which are on shadow mounts
+  points of NFS mounts
+
+-------------------------------------------------------------------
+Wed Mar 25 21:32:51 CET 2009 - coolo@suse.de
+
+- exec one more time so that the preload part does not appear
+  under the name of the init script in bootcharts
+
+-------------------------------------------------------------------
+Wed Mar 25 18:06:13 CET 2009 - coolo@suse.de
+
+- fix the preload functionality in telling the parent process through
+  SIGUSR1 and SIGUSR2 about preload's presence
+
+-------------------------------------------------------------------
+Fri Mar 13 17:58:53 CET 2009 - werner@suse.de
+
+- mkill: avoid signaling process which are on shadow mounts points
+  that is e.g. processes on /dev/pts while running mkill on /dev
+
+-------------------------------------------------------------------
+Fri Mar 13 15:03:13 CET 2009 - werner@suse.de
+
+- Do not overwrite SUSE define
+
+-------------------------------------------------------------------
+Fri Mar 13 13:34:05 CET 2009 - werner@suse.de
+
+- startpar: fix file descriptor leak (bnc#485112)
+
+-------------------------------------------------------------------
+Wed Mar 11 14:24:06 CET 2009 - werner@suse.de
+
+- nfs4pidof: make sure not to stumble on short named mount points
+  to avoid to terminate processes on wrong mount points
+
+-------------------------------------------------------------------
+Tue Mar 10 13:12:16 CET 2009 - werner@suse.de
+
+- mkill: make sure not to stumble on short named mount points to
+  avoid to terminate processes on wrong mount points (bnc#466484)
+
+-------------------------------------------------------------------
+Mon Mar  9 13:54:55 CET 2009 - werner@suse.de
+
+- Add patch from Debian people to startpar and mode to version 0.53
+  
+-------------------------------------------------------------------
+Thu Mar  5 17:27:33 CET 2009 - werner@suse.de
+
+- Update to killproc 2.14 to include most of our patches and to
+  use openat(2), readlinkat(2), and opendirat(2) system calls.
+- Remove /dev/initctl from file list, do not create blogd pipe
+  /dev/blogd (bnc#475580)
+
+-------------------------------------------------------------------
+Fri Feb 20 16:08:33 CET 2009 - werner@suse.de
+
+- make sure that newline is printed out for last(1) (bnc#471386)
+
+-------------------------------------------------------------------
+Thu Feb 12 14:53:14 CET 2009 - coolo@suse.de
+
+- support preload in its job in giving it the init scripts to preload
+- don't wait 0.3s when we need only 0.03
+
+-------------------------------------------------------------------
+Fri Feb  6 00:36:27 CET 2009 - ro@suse.de
+
+- fix build (move static int loop before first usage) 
+
+-------------------------------------------------------------------
+Tue Jan 27 16:00:03 CET 2009 - werner@suse.de
+
+- Do not terminate udevd with mkill(8)
+- Do not terminate udevd with killall5(8)
+- Avoid chrashing startpar due recursion caused by loops
+
+-------------------------------------------------------------------
+Mon Jan 26 12:02:43 CET 2009 - werner@suse.de
+
+- Do not kill fuse user space processes with mkill(8) (bnc#466484)
+- Minimize fuse patch for killall5(8) by using readlinkat(2)
+
+-------------------------------------------------------------------
+Wed Dec 10 14:27:34 CET 2008 - werner@suse.de
+
+- Mkill(8): add the option -0 for debugging and wait upto 3 seconds
+  if a signal was send.
+
+-------------------------------------------------------------------
+Fri Dec  5 16:46:55 CET 2008 - werner@suse.de
+
+- New tool in killproc source tree: mkill(8) for sending all
+  processes making a active mount busy a signal, this avoid fuser.
+
+-------------------------------------------------------------------
+Fri Dec  5 11:55:13 CET 2008 - werner@suse.de
+
+- New tool in killproc source tree: vhangup(8) for hanging up
+  programs on terminal and sending SIGHUP, this avoids fuser.
+
+-------------------------------------------------------------------
+Wed Nov 19 14:07:33 CET 2008 - werner@suse.de
+
+- Avoid error messages if blogd is closed premature
+
+-------------------------------------------------------------------
+Tue Nov 18 18:44:25 CET 2008 - werner@suse.de
+
+- Mount devpts in initrd (bnc#442891)
+
+-------------------------------------------------------------------
+Wed Oct  1 18:08:36 CEST 2008 - werner@suse.de
+
+- Minimize fuse patch
+
+-------------------------------------------------------------------
+Wed Oct  1 17:43:52 CEST 2008 - ro@suse.de
+
+- fix fuse_kill patch so that it does not break pidof 
+
+-------------------------------------------------------------------
+Wed Oct  1 16:39:27 CEST 2008 - werner@suse.de
+
+- Avoid stat(2) for all network based file systems (bnc#409011)
+
+-------------------------------------------------------------------
+Wed Sep 17 14:06:04 CEST 2008 - uli@suse.de
+
+- killall5: don't kill FUSE filesystems (Debian bug #476698)
+
+-------------------------------------------------------------------
+Mon Sep 15 12:23:36 CEST 2008 - ro@suse.de
+
+- add detection for OBS build environment 
+
+-------------------------------------------------------------------
+Wed Sep  3 11:09:34 CEST 2008 - hare@suse.de
+
+- Call mkinitrd_setup during %post and %postun (bnc#413709)
+
+-------------------------------------------------------------------
+Mon Aug 25 14:46:12 CEST 2008 - prusnak@suse.cz
+
+- enabled SELinux support [Fate#303662]
+
+-------------------------------------------------------------------
+Wed Aug 13 16:40:49 CEST 2008 - werner@suse.de
+
+- Startpar: give posix_fadvise a try on boot scripts even if most
+  of them are very small
+
+-------------------------------------------------------------------
+Mon Aug  4 19:36:29 CEST 2008 - werner@suse.de
+
+- Imake chroot detections to handle inodes and devices (bnc#408959)
+
+-------------------------------------------------------------------
+Wed Jul 23 16:02:19 CEST 2008 - hare@suse.de
+
+- Include mkinitrd scriptlets.
+
+-------------------------------------------------------------------
+Fri Jul 18 17:15:48 CEST 2008 - werner@suse.de
+
+- Make a new startpar version 0.52
+  * Should know about .depend.halt of new insserv
+
+-------------------------------------------------------------------
+Fri Jul  4 16:03:15 CEST 2008 - werner@suse.de
+
+- Fix a long standing bug in startpar introduced by implementing
+  the make like behaviour (bnc#394926)
+- Make a new startpar version 0.51
+
+-------------------------------------------------------------------
+Fri Jun 13 13:41:43 CEST 2008 - werner@suse.de
+
+- Let blogd detect changes of screen size, set new size pty pair,
+  and if process group is not init send a SIGWINCH (bnc#259577)
+- In startpar use a signal handler on SIGWINCH (bnc#259577)
+
+-------------------------------------------------------------------
+Wed Jun 11 14:58:49 CEST 2008 - werner@suse.de
+
+- Startpar: try to reduce race if kbd change tty size (bnc#259577)
+
+-------------------------------------------------------------------
+Tue May 20 14:31:14 CEST 2008 - werner@suse.de
+
+- On halt flush not only unmanged disk but also removable devices
+  like usb sticks (bnc#386487 related to bnc#229210)
+
+-------------------------------------------------------------------
+Thu Mar 13 17:27:50 CET 2008 - werner@suse.de
+
+- Avoid race in blogd due sheduling priority which may raise EIO
+  otherwise and do not free name of second tty needed for reconnect
+  (bnc#370328)
+
+-------------------------------------------------------------------
+Thu Jan 10 10:49:52 CET 2008 - werner@suse.de
+
+- Make it build with new glibc headers
+
+-------------------------------------------------------------------
+Mon Jan  7 15:45:23 CET 2008 - werner@suse.de
+
+- Add cosmetic patch for startpar from the Debian people
+
+-------------------------------------------------------------------
+Fri Nov 30 14:00:20 CET 2007 - werner@suse.de
+
+- New version 2.13 of killproc
+  * Add support for more than one ignore pid file (bug #343227)
+  * Close existing file descriptors on execve even if not a tty
+  * Do not fork if startpar is used as start_daemon
+  * Clean up the manual pages
+
+-------------------------------------------------------------------
+Wed Oct 31 18:37:58 CET 2007 - werner@suse.de
+
+- startpar: make iorate a double
+
+-------------------------------------------------------------------
+Wed Oct 31 17:20:49 CET 2007 - werner@suse.de
+
+- startproc: add option -T sec to finish waiting if parent exits
+
+-------------------------------------------------------------------
+Wed Jun 20 15:35:09 CEST 2007 - coolo@suse.de
+
+- startpar: mark started processes as running
+
+-------------------------------------------------------------------
+Mon Jun 18 15:49:13 CEST 2007 - werner@suse.de
+
+- Add importance for some scripts within startpar
+- Handle I/O blocked process very heavy in startpar
+- Add new user space program fsync(1) which use fsync(2) for
+  updating the in-core state with the hard disk
+
+-------------------------------------------------------------------
+Wed Jun 13 13:09:35 CEST 2007 - werner@suse.de
+
+- bug #229210: avoid HDIO_DRIVE_CM ioctl for real SCSI disks.
+
+-------------------------------------------------------------------
+Tue Jun 12 11:42:43 CEST 2007 - werner@suse.de
+
+- bug #229210: check for the FLUSH CACHE EXT capability for large
+               disks and use this capability if available.
+
+-------------------------------------------------------------------
+Wed Jun  6 15:56:46 CEST 2007 - werner@suse.de
+
+- For bug #229210: skip real SCSI disks, also flush disk cache for
+  SATA and ATA disks.
+
+-------------------------------------------------------------------
+Wed Jun  6 13:01:25 CEST 2007 - werner@suse.de
+
+- More on bug #229210: do not shutdown allready managed disks
+
+-------------------------------------------------------------------
+Tue Jun  5 14:45:21 CEST 2007 - werner@suse.de
+
+- /sbin/halt: list and powerdown all disks even SATA/SCSI
+  (bug #229210)
+
+-------------------------------------------------------------------
+Fri May 11 12:10:18 CEST 2007 - werner@suse.de
+
+- startpar: Try to start more processes even on high loaded systems
+- startpar: Detect endless loops on broken systems (no SIGCHILD)
+
+-------------------------------------------------------------------
+Thu Apr 19 13:45:46 CEST 2007 - werner@suse.de
+
+- Correct exit status of checkproc n case of using a pid file,
+  thanks to Alessandro Soraruf
+
+-------------------------------------------------------------------
+Wed Feb 14 15:53:00 CET 2007 - werner@suse.de
+
+- Remove swap supend patch because this is done now by powersave
+  calling hal (bug #241204)
+
+-------------------------------------------------------------------
+Thu Dec 14 13:43:12 CET 2006 - werner@suse.de
+
+- New killproc 2.12 with new option -N better handling for NFS
+  based programs which is not to stat(2) the binary with -N
+- Make killall5 and pidof not to stat(2) binaries which are
+  loacted on NFS partitions (#224563)
+
+-------------------------------------------------------------------
+Tue Aug 22 15:49:48 CEST 2006 - werner@suse.de
+
+- More on delayed utmp write: redo the write on telinit q (#148038)
+
+-------------------------------------------------------------------
+Mon Aug 21 12:55:24 CEST 2006 - werner@suse.de
+
+- Make installation work even within chroot and new kernel 2.6.18+
+
+-------------------------------------------------------------------
+Fri Aug 18 14:52:19 CEST 2006 - werner@suse.de
+
+- Check if utmp not only exists but is writable (#199412, #148038)
+- Delay of utmp runlevel record if utmp is not writable (#148038)
+
+-------------------------------------------------------------------
+Thu Aug 10 18:57:12 CEST 2006 - werner@suse.de
+
+- Enable showconsole to provide the major and minor device number
+  instead of the device file name.
+ 
+-------------------------------------------------------------------
+Fri Jun  9 17:19:21 CEST 2006 - werner@suse.de
+
+- killproc: Allow relocated binary paths and several hard links
+            on binaries (bug #183251)
+
+-------------------------------------------------------------------
+Tue May 16 18:12:08 CEST 2006 - werner@suse.de
+
+- Reduce buffer usage for reading /proc/stat
+
+-------------------------------------------------------------------
+Mon May 15 19:00:25 CEST 2006 - werner@suse.de
+
+- Double buffer for /proc/stat for super large systems (#175385)
+
+-------------------------------------------------------------------
+Fri May 12 18:03:34 CEST 2006 - olh@suse.de
+
+- do not strip startpar and start-stop-daemon binaries
+
+-------------------------------------------------------------------
+Thu Mar 16 16:36:02 CET 2006 - werner@suse.de
+
+- Do not rely on timeout after EINTR of select()
+
+-------------------------------------------------------------------
+Mon Mar  6 15:01:23 CET 2006 - werner@suse.de
+
+- Handle a second system console from kernel command line (#155292)
+- Handle interrupted fifo writes even in shutdown
+
+-------------------------------------------------------------------
+Wed Feb  8 12:16:54 CET 2006 - werner@suse.de
+
+- Close high file descriptors even for single jobs (bug #148668)
+
+-------------------------------------------------------------------
+Tue Feb  7 17:44:21 CET 2006 - werner@suse.de
+
+- Add boot script for powerd (bug #147660)
+- Make powerd handling a pid file
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:59 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Dec 21 17:13:24 CET 2005 - werner@suse.de
+
+- Remove not needed binaries on s390
+
+-------------------------------------------------------------------
+Mon Dec  5 19:00:37 CET 2005 - od@suse.de
+
+- Created/added patch for option -F (full time) (bug #136978)
+
+-------------------------------------------------------------------
+Mon Dec  5 18:59:44 CET 2005 - od@suse.de
+
+- Added options -a, -d and -i to usage message
+
+-------------------------------------------------------------------
+Tue Nov  8 11:56:11 CET 2005 - werner@suse.de
+
+- Move version of killproc to 2.11
+  * Allow to set a prefix and to disable usleep
+
+-------------------------------------------------------------------
+Wed Nov  2 22:17:05 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Wed Nov  2 16:50:39 CET 2005 - werner@suse.de
+
+- Move version of killporc to 2.10
+  * Let checkproc really work like killproc if -k is specified.
+    This is that if the pid file provided with option -p does
+    not fit to a running process checkproc returns 7 for program
+    is not running.
+    
+-------------------------------------------------------------------
+Wed Oct 19 13:56:29 CEST 2005 - werner@suse.de
+
+- Update to sysvinit 2.86
+
+-------------------------------------------------------------------
+Tue Sep 20 16:10:14 CEST 2005 - werner@suse.de
+
+- Make it build even on s390 
+
+-------------------------------------------------------------------
+Thu Sep 15 17:28:38 CEST 2005 - werner@suse.de
+
+- Bounce version of killporc to 2.09
+- Add patch of Petter Reinholdtsen for startpar
+- Move version of startpar to 0.49
+
+-------------------------------------------------------------------
+Thu Sep  1 16:04:41 CEST 2005 - mls@suse.de
+
+- do not leak stdout fd to splash process (bug #105999)
+
+-------------------------------------------------------------------
+Thu Aug 25 16:20:00 CEST 2005 - werner@suse.de
+
+- Apply the new LSB rule for optional pid files only (bug #105845)
+
+-------------------------------------------------------------------
+Tue Aug 23 13:21:11 CEST 2005 - werner@suse.de
+
+- Enable patch for killproc
+
+-------------------------------------------------------------------
+Mon Aug 22 16:00:11 CEST 2005 - werner@suse.de
+
+- Avoid zombie processes using startpar to get the next free
+  process slot as fast as possible.
+- Make killproc be compliant with the newest LSB specs in case if
+  the specified pid file does not exist that the daemon is not
+  running (bug #105845).
+- Add the possibility of using pid numbers instead of a pid file.
+  
+-------------------------------------------------------------------
+Tue Jun 28 23:14:36 CEST 2005 - schwab@suse.de
+
+- Fix typo.
+
+-------------------------------------------------------------------
+Wed May 25 17:05:18 CEST 2005 - werner@suse.de
+
+- Bounce showconsole to version 1.08
+- Bounce killproc to version 2.08
+- Avoid signess warning of gcc4
+- Use sysv_log() instead of log() to avoid builtin log() of gcc4
+
+-------------------------------------------------------------------
+Mon May 23 14:35:14 CEST 2005 - werner@suse.de
+
+- Make blogd work even with new root file system behaviour
+
+-------------------------------------------------------------------
+Thu May 19 17:47:24 CEST 2005 - werner@suse.de
+
+- More fixes for startpar: do not forget active jobs and correct
+  exit status handling for the case of stopping jobs.
+
+-------------------------------------------------------------------
+Mon Apr 25 13:37:22 CEST 2005 - werner@suse.de
+
+- Showconsole: more names no belonging to terminals (bug #80304)
+
+-------------------------------------------------------------------
+Tue Apr  5 16:39:22 CEST 2005 - werner@suse.de
+
+- startpar: fix endless loop and race condition (bug #74256)
+
+-------------------------------------------------------------------
+Sun Apr  3 12:57:28 CEST 2005 - aj@suse.de
+
+- Further fixes for GCC4.
+
+-------------------------------------------------------------------
+Thu Mar 24 16:16:32 CET 2005 - uli@suse.de
+
+- fixed to build with GCC4
+
+-------------------------------------------------------------------
+Wed Mar  9 16:58:59 CET 2005 - mls@suse.de
+
+- startpar: fix splash progress bar if "make" mode is enabled
+
+-------------------------------------------------------------------
+Thu Jan 27 18:38:32 CET 2005 - coolo@suse.de
+
+- catch the case the clock moves back in time during boot
+
+-------------------------------------------------------------------
+Tue Jan 18 13:03:10 CET 2005 - coolo@suse.de
+
+- adding patch by Takashi to sort the services before inserting them
+  in the queue to allow predictable boot orders
+- adding patch by me to update the limit more often in case the load
+  is too high (30s is just too long)
+
+-------------------------------------------------------------------
+Mon Dec 13 17:08:30 CET 2004 - werner@suse.de
+
+- Update to killproc 2.07 which includes the new ignore file
+  feature which works like a pid file but the pid found therein
+  will be used to ignore all processes and session with that id.
+  
+-------------------------------------------------------------------
+Fri Dec 10 17:27:45 CET 2004 - werner@suse.de
+
+- Fix bottle neck in startpar calculation of number of parallel
+  processes. Now the number of really active processes are used.
+
+-------------------------------------------------------------------
+Wed Oct 13 15:55:17 CEST 2004 - werner@suse.de
+
+- Do the real fix for the busy loop problem
+- Add a dynamic load balance based on the current process load
+  and the current memory usage (bug #45191).
+
+-------------------------------------------------------------------
+Mon Oct  4 16:42:56 CEST 2004 - mls@suse.de
+
+- don't call /sbin/splash if proc was unmounted
+
+-------------------------------------------------------------------
+Thu Sep 23 11:40:15 CEST 2004 - mls@suse.de
+
+- call splash with $pos:$delta for animated progress bar
+- serialize calls to splash program
+
+-------------------------------------------------------------------
+Mon Sep 20 20:10:17 CEST 2004 - mls@suse.de
+
+- change bootsplash 'S' option handling to new bootsplash design
+- also set progressbar on the fly
+
+-------------------------------------------------------------------
+Mon Sep 20 16:15:25 CEST 2004 - werner@suse.de
+
+- Add some more information about the new make like scheme of
+  startpar into its own manual page.
+
+-------------------------------------------------------------------
+Thu Sep  9 15:33:54 CEST 2004 - werner@suse.de
+
+- startproc: get wait status of already terminated parents on very
+  fast systems with high load during boot.
+
+-------------------------------------------------------------------
+Thu Sep  2 19:10:49 CEST 2004 - werner@suse.de
+
+- Switch to Takashi's startpar version which is fully compatible
+  to previous version.
+- Fix startpar to not to loop around if global timeout is expired.
+- Fix struct timeval asignment in startpar for big endian.
+- Add simple loadavg and memory check in startpar to make it
+  compatible with UP system with less memory.
+
+-------------------------------------------------------------------
+Tue Jun  1 17:19:56 CEST 2004 - werner@suse.de
+
+- Remove any other workaround for hanging write
+
+-------------------------------------------------------------------
+Tue Jun  1 15:45:05 CEST 2004 - werner@suse.de
+
+- Remove ioctl workaround in blogd due it does not work
+
+-------------------------------------------------------------------
+Tue Jun  1 15:17:58 CEST 2004 - werner@suse.de
+
+- Change signal behaviour of blogd (try to fix bug #40474)
+- Add ioctl workaround to blogd for IA64 serial console
+- Do not overwrite environment of /sbin/init with comandline
+
+-------------------------------------------------------------------
+Fri May 14 16:16:50 CEST 2004 - werner@suse.de
+
+- Catch negative return values of safein which may fix bug #34840
+
+-------------------------------------------------------------------
+Thu Mar 25 14:08:08 CET 2004 - werner@suse.de
+
+- showconsole:
+  * Do not trap into recursive symlink pointers (bug #36918)
+  * Do not scan directories in /dev/ with no terminals
+
+-------------------------------------------------------------------
+Mon Mar 22 17:48:49 CET 2004 - werner@suse.de
+
+- Fix cut&paste error
+
+-------------------------------------------------------------------
+Mon Mar 22 16:52:57 CET 2004 - werner@suse.de
+
+- Support udev within blogd
+
+-------------------------------------------------------------------
+Wed Mar 17 17:10:35 CET 2004 - werner@suse.de
+
+- Make clear descritption of -k option of checkproc and fix
+  LSB behaviour of killproc (bug #35851)
+
+-------------------------------------------------------------------
+Fri Mar 12 14:06:32 CET 2004 - werner@suse.de
+
+- Update of sysvinit 2.85 due better support of kernel 2.6
+- Ensure that startpar close the allocated pty's (bug #35763)
+
+-------------------------------------------------------------------
+Thu Mar  4 18:52:46 CET 2004 - werner@suse.de
+
+- Command back: use unsigned int for device numbers which works
+  on both 32 and 64bit architectures and with old kernels
+
+-------------------------------------------------------------------
+Wed Mar  3 18:55:48 CET 2004 - werner@suse.de
+
+- Use largest int type for device numbers
+
+-------------------------------------------------------------------
+Fri Feb 27 16:42:48 CET 2004 - werner@suse.de
+
+- Be sure not to fail if startproc is called on fast systems
+
+-------------------------------------------------------------------
+Thu Feb 26 14:39:01 CET 2004 - werner@suse.de
+
+- Add waiting routine on inode/dev compare of startproc binary
+  and the forked off service (may fix bug #35008)
+
+-------------------------------------------------------------------
+Mon Feb 23 14:44:51 CET 2004 - werner@suse.de
+
+- Wait on write if kernel returns with EAGAIN
+
+-------------------------------------------------------------------
+Sun Feb 22 16:31:42 CET 2004 - schwab@suse.de
+
+- Fix use of uninitialized variable.
+
+-------------------------------------------------------------------
+Tue Jan 13 12:07:22 CET 2004 - werner@suse.de
+
+- Update to showconsole 1.07 now with warn message if /var is ro
+- Fix bug #33798: remove group write flag from package docs
+
+-------------------------------------------------------------------
+Sat Oct 18 08:50:07 CEST 2003 - kukuk@suse.de
+
+- Move mingetty in extra package
+
+-------------------------------------------------------------------
+Wed Oct  8 19:32:47 CEST 2003 - werner@suse.de
+
+- Use struct ut_tv on 64 bit also for utmp and not only for wtmp
+
+-------------------------------------------------------------------
+Wed Oct  8 11:27:19 CEST 2003 - werner@suse.de
+
+- Redo the rename of barrier define to mem_barrier.
+
+-------------------------------------------------------------------
+Tue Oct  7 16:17:55 CEST 2003 - werner@suse.de
+
+- Use the not document struct ut_tv on 64 bit for utmp (bug #32086)
+- blogd: Small optimization at ring buffer handling
+
+-------------------------------------------------------------------
+Tue Sep 30 10:34:48 CEST 2003 - kukuk@suse.de
+
+- Rename barrier define to mem_barrier (to avoid clash with kernel
+  headers)
+
+-------------------------------------------------------------------
+Tue Sep  9 13:57:36 CEST 2003 - werner@suse.de
+
+- Reenable fdatasync in blogd because linuxpthreads are fixed now
+
+-------------------------------------------------------------------
+Mon Sep  8 16:12:01 CEST 2003 - werner@suse.de
+
+- blogd: Be sure that _REENTRANT is defined for libconsole.c
+
+-------------------------------------------------------------------
+Mon Sep  8 13:58:14 CEST 2003 - werner@suse.de
+
+- blogd: Simply use locking information on broadcast lock, use
+  thread join lock only if the writing thread is going to sleep.
+
+-------------------------------------------------------------------
+Fri Sep  5 15:28:26 CEST 2003 - werner@suse.de
+
+- Add simple program to check for serial lines on /dev/console to
+  replace the wrong serial check during boot with newer kernels
+
+-------------------------------------------------------------------
+Tue Sep  2 16:59:53 CEST 2003 - werner@suse.de
+
+- Add workaround for blogd crash on x86_64 (bug #29750,29249,29545)
+  * Be paranoid and use SysV signal handling to ensure restart
+  * Be paranoid and check always the value of FILE pointer flog
+
+-------------------------------------------------------------------
+Wed Aug  6 15:16:42 CEST 2003 - werner@suse.de
+
+- Change detection of serial versus terminal lines (bug #28490)
+
+-------------------------------------------------------------------
+Thu Jul 24 11:38:21 CEST 2003 - uli@suse.de
+
+- fixed to build on s390x
+
+-------------------------------------------------------------------
+Thu Jul  3 16:26:26 CEST 2003 - werner@suse.de
+
+- Make flags transparent in startproc.c
+
+-------------------------------------------------------------------
+Thu Jul  3 14:41:13 CEST 2003 - werner@suse.de
+
+- Make killproc compliant with newest LSB spec (bug #24909)
+
+-------------------------------------------------------------------
+Tue Jun 24 13:14:47 CEST 2003 - werner@suse.de
+
+- Ditto
+
+-------------------------------------------------------------------
+Mon Jun 23 19:00:27 CEST 2003 - werner@suse.de
+
+- Make it build even on s390/s390x
+
+-------------------------------------------------------------------
+Mon Jun 23 10:57:56 CEST 2003 - kukuk@suse.de
+
+- Remove not packaged files from buildroot.
+
+-------------------------------------------------------------------
+Mon Jun 23 09:26:25 CEST 2003 - kukuk@suse.de
+
+- Remove compat link for old SPARC kernel
+
+-------------------------------------------------------------------
+Tue Jun 17 15:55:04 CEST 2003 - werner@suse.de
+
+- Use BuildRoot
+- Add startproc (0.42), thanks to Michael
+- showconsole: check for environment variable NOTIOCGDEV
+
+-------------------------------------------------------------------
+Fri Jun  6 14:35:51 CEST 2003 - mfabian@suse.de
+
+- also set the scroll region to the full window (ESC [ r) when
+  --noclear is not set.
+
+-------------------------------------------------------------------
+Thu Jun  5 17:33:52 CEST 2003 - mfabian@suse.de
+
+- if the option "--noclear" is not set, don't write a full reset
+  because this leaves the unicode mode again if the terminal was in
+  unicode mode and it also undos the ESC sequences in CONSOLE_MAGIC
+  which are needed for some languages/console-fonts.
+  Just put the cursor the home position (ESC [ H) and erase
+  everything below the cursor (ESC [ J).
+
+-------------------------------------------------------------------
+Thu May 15 18:31:14 CEST 2003 - werner@suse.de
+
+- New showconsole/blogd version 1.06
+  * Threaded I/O stuff
+
+-------------------------------------------------------------------
+Tue Apr 29 17:49:16 CEST 2003 - werner@suse.de
+
+- New showconsole/blogd version 1.05
+  * Do not overwrite ring buffer memory in case of the fifo
+  * Avoid not needed new line in case of carriage return.
+  * Read at least 3 seconds at blogd close and flush all I/O
+ 
+-------------------------------------------------------------------
+Mon Apr 14 17:42:46 CEST 2003 - werner@suse.de
+
+- Fix script handling of killproc for several kernel versions
+  (bug #25767)
+
+-------------------------------------------------------------------
+Tue Mar  4 18:08:25 CET 2003 - werner@suse.de
+
+- Correct exit codes of killproc and update manual page about this
+
+-------------------------------------------------------------------
+Fri Nov 22 19:38:39 CET 2002 - werner@suse.de
+
+- Be less memory consuming with showconsole 1.04
+
+-------------------------------------------------------------------
+Thu Nov 21 14:49:37 CET 2002 - werner@suse.de
+
+- New showconsole 1.03
+  * be able to scan dirs under /dev/ in fallback case
+
+-------------------------------------------------------------------
+Thu Nov 14 14:06:19 CET 2002 - werner@suse.de
+
+- Update to mingetty 0.9.6s
+  * Be sure to get controlling tty
+  * Avoid overruns in string handling
+
+-------------------------------------------------------------------
+Wed Nov 13 18:29:10 CET 2002 - werner@suse.de
+
+- Update to showconsole 1.02 (a cleanup version)
+- Update to mingetty 0.9.5s (s stand for SuSE)
+  * New old option for avoiding vcs/vcsa hangup, terminal
+    reset, and the usage of the glibc for updating wtmp.
+  * Now the default terminal type can be set at compile
+    time as an make option.
+
+-------------------------------------------------------------------
+Wed Nov 13 14:41:15 CET 2002 - werner@suse.de
+
+- Update to killproc 2.05:
+  * Change usleep which now calls sched_yield() for 0 microseconds
+
+-------------------------------------------------------------------
+Tue Nov 12 16:06:30 CET 2002 - werner@suse.de
+
+- Update to killproc 2.04:
+  * Better symlink handling
+  * New dialog prompt handling for services
+  * New chroot option.
+
+-------------------------------------------------------------------
+Mon Nov 11 00:30:06 CET 2002 - ro@suse.de
+
+- fixed deprecated multiline string literal 
+
+-------------------------------------------------------------------
+Mon Nov  4 19:12:03 CET 2002 - werner@suse.de
+
+- Use usleep(1) in startproc/killproc/killall5 to force the
+  kernel to run the scheduler.
+
+-------------------------------------------------------------------
+Fri Aug 16 14:20:27 CEST 2002 - werner@suse.de
+
+- Add PreReq (bug #18005)
+- Not only blogger and blogd but also set and showconsole together
+  with their manual pages.
+
+-------------------------------------------------------------------
+Thu Aug  8 13:48:46 CEST 2002 - ihno@suse.de
+
+- adding blogger and blogd to s390/s390x
+
+-------------------------------------------------------------------
+Fri Aug  2 13:01:11 CEST 2002 - froh@suse.de
+
+- removed blogger from s390&s390x package lists
+- changed 'ifarch s390' and 'ifarch s390x' to 'ifarch s390 s390x'
+
+-------------------------------------------------------------------
+Tue Jul 16 16:07:19 CEST 2002 - werner@suse.de
+
+- Expand possible pid string length from 22 to 255
+
+-------------------------------------------------------------------
+Fri Jul  5 14:09:36 CEST 2002 - werner@suse.de
+
+- Re-enable SIGINT in case or re-reading inittab (bug #16469)
+
+-------------------------------------------------------------------
+Thu Jul  4 17:58:41 CEST 2002 - werner@suse.de
+
+- Update to killproc 2.03
+- Fix pointer for ioctl in libconsole of showconsole
+
+-------------------------------------------------------------------
+Tue Apr 30 13:37:48 CEST 2002 - werner@suse.de
+
+- Even if no blogd is used on S390x, the libblogger is required
+
+-------------------------------------------------------------------
+Mon Apr 29 18:35:14 CEST 2002 - werner@suse.de
+
+- Avoid trouble with stupid gcc 3.1 parser and inlined macros.
+
+-------------------------------------------------------------------
+Thu Apr 25 18:57:56 CEST 2002 - werner@suse.de
+
+- changes on mingetty (new version 0.9.4c)
+  * Add support for other TTY devices than virtual console
+  * Add nohost patch from Anders ??
+
+-------------------------------------------------------------------
+Mon Apr 22 15:20:08 CEST 2002 - sf@suse.de
+
+- changed path to libcrypt in Makefile to also compile 
+  on lib64-archs
+
+-------------------------------------------------------------------
+Tue Feb 12 02:11:38 CET 2002 - ro@suse.de
+
+- fix owner/group 
+
+-------------------------------------------------------------------
+Tue Jan 15 12:25:25 CET 2002 - werner@suse.de
+
+- Different usage messages for startproc and start_daemon (#12692)
+
+-------------------------------------------------------------------
+Fri Dec 14 18:37:33 CET 2001 - werner@suse.de
+
+- Skip spinner of fsck/e2fsck in boot logging file
+
+-------------------------------------------------------------------
+Mon Oct  1 19:31:43 CEST 2001 - werner@suse.de
+
+- Build and install utmpdump
+
+-------------------------------------------------------------------
+Mon Oct  1 18:26:05 CEST 2001 - werner@suse.de
+
+- Move to SysVinit 2.82 and migrate our patches to 2.82
+
+-------------------------------------------------------------------
+Tue Sep 25 17:50:22 CEST 2001 - werner@suse.de
+
+- Fix race on waiting on console I/O: just try open log file first
+
+-------------------------------------------------------------------
+Thu Sep 20 14:54:27 CEST 2001 - werner@suse.de
+
+- Ignore interrupted waitpid(2) calls
+
+-------------------------------------------------------------------
+Wed Sep 19 19:47:16 CEST 2001 - werner@suse.de
+
+- Add forgotten configuration of powerd
+
+-------------------------------------------------------------------
+Wed Sep 19 14:19:53 CEST 2001 - werner@suse.de
+
+- Update to powerd 2.0.2 because this version initialize the
+  serial interface which seems to be required for kernel 2.4.x
+
+-------------------------------------------------------------------
+Fri Sep  7 17:29:01 CEST 2001 - werner@suse.de
+
+- startproc: close boot logging FIFO before executing a daemon.
+
+-------------------------------------------------------------------
+Wed Sep  5 13:34:07 CEST 2001 - werner@suse.de
+
+- blogd: really read the console a half second (bug #9899)
+
+-------------------------------------------------------------------
+Tue Sep  4 12:51:04 CEST 2001 - werner@suse.de
+
+- Add waitpid() loop nodead lock patch of Andrea
+- Add a check in the waitpid() loop to exit on failure
+
+-------------------------------------------------------------------
+Thu Aug 30 16:16:35 CEST 2001 - werner@suse.de
+
+- Make blogd/showconsole more robustly against errors
+- Add some fixes of bug #9898
+
+-------------------------------------------------------------------
+Fri Aug 24 18:04:27 CEST 2001 - werner@suse.de
+
+- Activate 64 bit file handling interface (large file support)
+
+-------------------------------------------------------------------
+Thu Aug 23 14:01:03 CEST 2001 - werner@suse.de
+
+- Do not reset terminal device of /dev/console if on a serial line
+
+-------------------------------------------------------------------
+Tue Jun 26 12:35:39 CEST 2001 - cstein@suse.de
+
+- added a patch for the shutdown messages (see bug #8076)
+  (also changed some other strings in shutdown.c)
+
+-------------------------------------------------------------------
+Mon Jun 25 17:25:39 CEST 2001 - bk@suse.de
+
+- back out read return 0 patch and don't build showconsole on s390x
+
+-------------------------------------------------------------------
+Mon Jun 25 14:38:13 CEST 2001 - bk@suse.de
+
+- don't include showconsole programs in filelist on s390x
+
+-------------------------------------------------------------------
+Fri Jun 22 13:47:07 CEST 2001 - bk@suse.de
+
+- blogd: when read return 0, this means EOF - don't loop in this case.
+
+-------------------------------------------------------------------
+Tue Jun 12 13:04:48 EDT 2001 - bk@suse.de
+
+- don't try to build showconsole on s390x(not supported by kernel)
+
+-------------------------------------------------------------------
+Wed May 23 16:10:59 CEST 2001 - werner@suse.de
+
+- Do not eat up argv and environ at boot logging in startproc
+
+-------------------------------------------------------------------
+Wed May 23 12:04:04 CEST 2001 - werner@suse.de
+
+- New killproc version 2.01: now we're able again to find deamons
+  based on scripts.
+- Make fifo /dev/blog after installation if not exist.
+
+-------------------------------------------------------------------
+Tue May  8 15:31:17 CEST 2001 - werner@suse.de
+
+- Remove previous barrier() calls but use them on empty loops.
+
+-------------------------------------------------------------------
+Wed May  2 19:21:37 CEST 2001 - werner@suse.de
+
+- Call umask only once for all init processes (pid 1 and others)
+- Add some barrier() against officious compiler
+- Rename cpp macro TEST to SYSVINIT_TEST
+
+-------------------------------------------------------------------
+Tue Apr 24 16:43:19 CEST 2001 - werner@suse.de
+
+- Add default umask 022 at boot time
+
+-------------------------------------------------------------------
+Tue Apr 17 17:58:59 CEST 2001 - werner@suse.de
+
+- Few minor changes to killproc and co.
+
+-------------------------------------------------------------------
+Thu Apr 12 16:57:53 CEST 2001 - werner@suse.de
+
+- Disable boot logging and boot message redirection at common
+  runlevels if TIOCGDEV is missed.
+
+-------------------------------------------------------------------
+Wed Apr 11 14:39:25 CEST 2001 - werner@suse.de
+
+- blogd: complain about missing ioctl TIOCGDEV at compile
+  and run time
+
+-------------------------------------------------------------------
+Wed Apr  4 18:07:57 CEST 2001 - werner@suse.de
+
+- After fork reset signal handling of startproc to default for
+  common signals 
+
+-------------------------------------------------------------------
+Thu Mar 22 15:55:13 CET 2001 - werner@suse.de
+
+- Startproc/killproc: handle by RPM moved and deleted exe links
+
+-------------------------------------------------------------------
+Wed Mar 21 18:41:12 CET 2001 - werner@suse.de
+
+- Add patch for rlstat() of schowconsole (Andreas Schwab)
+
+-------------------------------------------------------------------
+Mon Mar 19 14:49:25 CET 2001 - werner@suse.de
+
+- Startproc/killproc: handle deleted exe links
+
+-------------------------------------------------------------------
+Fri Mar  9 11:57:22 CET 2001 - werner@suse.de
+
+- Add forgotten usleep to file list
+
+-------------------------------------------------------------------
+Wed Feb 14 16:58:04 CET 2001 - werner@suse.de
+
+- Use sysvinit 2.78.4
+- Spilt dif into several patches
+- Use static on the most functions of init.c
+- Integrate showconsole
+- bzip tar's
+
+-------------------------------------------------------------------
+Mon Feb  5 18:27:03 CET 2001 - werner@suse.de
+
+- Update of killproc to version 2.00
+  * LSB conform exit values
+  * Use boot logging provided by showconsole-0.9.tar.gz of aaa_base
+  * New program usleep
+
+-------------------------------------------------------------------
+Mon Jan 15 18:07:07 CET 2001 - werner@suse.de
+
+- Make strncmp of exe link and fullname working upto MAXNAMLEN
+
+-------------------------------------------------------------------
+Tue Jan  9 15:02:17 CET 2001 - werner@suse.de
+
+- Use int instead of kdev_t in bootlogd.c
+
+-------------------------------------------------------------------
+Wed Nov 29 18:10:29 CET 2000 - werner@suse.de
+
+- Make tty settings for sulogin working, and enable job control.
+- Workaround vor sigfholder (may kernel bug)
+
+-------------------------------------------------------------------
+Tue Nov 28 18:57:43 CET 2000 - werner@suse.de
+
+- New and fixed killproc version 1.17
+- Change some man pages of sysvinit to fit our new boot scheme
+- Enable tty settings for sulogin, should be checked on
+  serial console (BTW: SHOULD we DO that?).
+
+-------------------------------------------------------------------
+Thu Nov 16 08:56:05 CET 2000 - ro@suse.de
+
+- fixed install for killproc 
+
+-------------------------------------------------------------------
+Wed Nov 15 16:54:01 CET 2000 - werner@suse.de
+
+- New killproc version (1.16)
+  * base name allowed
+  * protected the parent of the parent
+  * provide pidofproc (a link to checkproc for a verbose checkproc)
+  * provide stat_daemon (a link to statproc)
+
+-------------------------------------------------------------------
+Mon Oct 23 14:56:30 CEST 2000 - werner@suse.de
+
+- changes on mingetty (new version 0.9.4b)
+  * On ro files systems chmod/chown shouldn't force an exit.
+  * Therefore we need a warn message.
+  * Due to the lack of a revoke system call we signal
+    all file holders including the mmaping processes.
+
+-------------------------------------------------------------------
+Wed Jun 28 09:42:32 CEST 2000 - bk@suse.de
+
+- enabled reboot on s390
+
+-------------------------------------------------------------------
+Sun Jun 25 23:36:30 CEST 2000 - bk@suse.de
+
+- removed some not needed files on s390
+
+-------------------------------------------------------------------
+Tue May 30 15:28:25 CEST 2000 - werner@suse.de
+
+- Correct path of powerstatus (/var/run/powerstatus) of powerd
+
+-------------------------------------------------------------------
+Wed May 24 14:54:41 CEST 2000 - garloff@suse.de
+
+- Added minimal docu for swsusp.
+
+-------------------------------------------------------------------
+Tue May 23 18:55:02 CEST 2000 - werner@suse.de
+
+- New killproc version 1.15 reading exe link for kernel 2.2
+
+-------------------------------------------------------------------
+Wed May 17 20:24:56 CEST 2000 - garloff@suse.de
+
+- Added software-suspend support to init.
+- login option of mingetty limits logname to 42 chars.
+
+-------------------------------------------------------------------
+Wed May 10 23:29:56 CEST 2000 - garloff@suse.de
+
+- Working patch for mingetty to support devfs.
+
+-------------------------------------------------------------------
+Wed May 10 17:29:30 CEST 2000 - garloff@suse.de
+
+- Preliminary patch for devfs.
+
+-------------------------------------------------------------------
+Wed May 10 16:31:21 CEST 2000 - garloff@suse.de
+
+- Make it more secure by passing the logname as one arg and by
+  checking for a leading '-'. The manpage tells the sysadmin
+  about possible risks now.
+
+-------------------------------------------------------------------
+Tue May  9 23:35:29 CEST 2000 - garloff@suse.de
+
+- Added new options --login and --logopts to mingetty, so you may
+  create an inittab entry using ssh for login or similar
+
+-------------------------------------------------------------------
+Tue Mar  7 20:59:43 CET 2000 - werner@suse.de
+
+- Ignore SIGTERM for syslogd because this daemon use that signal
+  to control the parent process.
+- Make read/write of /etc/ioctrl.save EINTR safe
+- Use defined special character given from <termios.h>
+- No flow control (-ixon), ignore break (ignbrk), and make nl/cr
+  more usable (sane).
+- Set the terminal line immediately
+
+-------------------------------------------------------------------
+Mon Mar  6 14:14:52 CET 2000 - werner@suse.de
+
+- Avoid script handling for kernel threads
+
+-------------------------------------------------------------------
+Sun Mar  5 22:53:25 CET 2000 - werner@suse.de
+
+- If open fails -1 is returned (close bug #2200)
+
+-------------------------------------------------------------------
+Fri Mar  3 15:49:51 CET 2000 - kukuk@suse.de
+
+- Create /usr/bin/shutdown link for UltraSPARC kernel
+
+-------------------------------------------------------------------
+Mon Feb 21 21:19:14 CET 2000 - werner@suse.de
+
+- New version of killproc (1.1.4): fix of script handling
+- New version of sysvinit (2.78) with some bug fixes
+
+-------------------------------------------------------------------
+Thu Dec 16 16:10:24 CET 1999 - werner@suse.de
+
+- New version of killproc 1.13
+  * Bug fix in handling hard links for daemons using pid files
+  * Bug fix: PROC pointers should not be volatile
+  * Shorten nonsleeps for none daemon programs
+  
+-------------------------------------------------------------------
+Tue Nov  9 17:03:46 CET 1999 - werner@suse.de
+
+- Avoid trouble with hard links of binaries
+
+-------------------------------------------------------------------
+Sun Nov  7 17:20:32 MET 1999 - kukuk@suse.de
+
+- mingetty: Add 1900 to tm_year, it contains the years since 1900.
+
+-------------------------------------------------------------------
+Wed Nov  3 23:33:08 CET 1999 - werner@suse.de
+
+- New killproc 1.12
+  * Fix option -q of startproc
+  * Fix Bug in wait4 handling of startproc
+  * Fix script detection: do not handle startproc, killproc, and
+    checkproc as script interpreters
+
+-------------------------------------------------------------------
+Mon Nov  1 23:21:26 MET 1999 - werner@suse.de
+
+- Add a patch from Marius
+
+-------------------------------------------------------------------
+Fri Oct 29 16:52:55 CEST 1999 - werner@suse.de
+
+- powerd should tell init if status is OK again
+
+-------------------------------------------------------------------
+Thu Sep 30 21:36:42 CEST 1999 - werner@suse.de
+
+- New killproc version 1.11
+  * Some small speedups
+  * Minor spell correction in the manual pages
+  * Allow login onto tty's
+- Use RPM_OPT_FLAGS throughout
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Sep  7 23:01:34 CEST 1999 - werner@suse.de
+
+- Enable mingetty resetting the terminal
+
+-------------------------------------------------------------------
+Fri Aug  6 22:27:24 CEST 1999 - werner@suse.de
+
+- New killproc-1.10
+  * startproc which is able to sleep
+  * better zombie handling
+     - killproc doesn't ignore zombies
+     - checkproc ignores zombies without `-z' by default
+     - startproc checks zombie state of child while sleeping
+
+-------------------------------------------------------------------
+Tue Jul  6 16:34:37 CEST 1999 - werner@suse.de
+
+- Fix pts problem of shutdown (dowall.c)
+
+-------------------------------------------------------------------
+Thu Jun 24 19:09:15 CEST 1999 - werner@suse.de
+
+- Add lastb and its manual page
+
+-------------------------------------------------------------------
+Wed Jun 23 18:37:56 CEST 1999 - werner@suse.de
+
+- Integrate newest mingetty patch of jurix
+- Update killproc version 1.9
+  * be more sufficient in setting user and/or group id
+- Update to sysvinit 2.76
+  * Integrate newest sysvinit patch of jurix into
+    our patch. The command last is part of sysvinit.
+
+-------------------------------------------------------------------
+Tue Jun 22 23:37:14 CEST 1999 - werner@suse.de
+
+- Update to new killproc version 1.8
+  * startproc knows about setsid to set up a new process session
+    for the new task (option -s)
+  * startproc can change the effective uid and/or gid for a process
+    (option -u uid and/or -g gid)
+- Make spec file more handy for newer versions.
+
+-------------------------------------------------------------------
+Mon May  3 18:17:22 CEST 1999 - werner@suse.de
+
+- Enable killproc-1.7.dif in specs file
+
+-------------------------------------------------------------------
+Mon May  3 18:11:58 CEST 1999 - werner@suse.de
+
+- killproc shouldn't complain a disappeared job/thread
+
+-------------------------------------------------------------------
+Mon Apr 19 17:11:01 CEST 1999 - werner@suse.de
+
+- mingetty: reset not only /dev/tty<line> but /dev/vcs<line> and
+  /dev/vcsa<line> also
+
+-------------------------------------------------------------------
+Fri Feb 26 14:59:28 MET 1999 - werner@suse.de
+
+- New killproc vesion 1.7
+  * read of /proc/ is secure against EINTR
+  * handle script names ala `bash -x /usr/bin/myscript -y'
+
+-------------------------------------------------------------------
+Mon Jan 18 21:34:02 MET 1999 - werner@suse.de
+
+- Make killproc more smart, e.g. faster
+- Make startproc alpah compatible
+
+-------------------------------------------------------------------
+Thu Dec 10 18:31:42 MET 1998 - ro@suse.de
+
+- added last manpage 
+- link init static
+
+-------------------------------------------------------------------
+Tue Dec  8 15:42:07 MET 1998 - ro@suse.de
+
+- use last from sysvinit-2.75
+
+-------------------------------------------------------------------
+Mon Nov 30 18:34:45 MET 1998 - werner@suse.de
+
+- Close some races, unknowns, and difficulties in killproc tools
+
+-------------------------------------------------------------------
+Tue Nov 24 20:40:28 MET 1998 - werner@suse.de
+
+- Don't blame boot script with killproc having same name as the
+  controlled daemon ... new kernel doesn't need this.
+
+-------------------------------------------------------------------
+Mon Nov 16 14:20:48 MET 1998 - ro@suse.de
+
+- install man-page for powerd
+
+-------------------------------------------------------------------
+Fri Nov 13 16:42:37 MET 1998 - werner@suse.de
+
+- Integrate powerd-2.0 for a replacment of the obsolate old one
+
+-------------------------------------------------------------------
+Mon Nov  2 09:40:18 MET 1998 - ro@suse.de
+
+- update to killproc-1.6
+
+-------------------------------------------------------------------
+Thu Oct 22 00:50:09 MEST 1998 - ro@suse.de
+
+- update to killproc-1.5  (take 2)
+
+-------------------------------------------------------------------
+Thu Oct  8 17:30:47 MEST 1998 - ro@suse.de
+
+- killproc: libinit.c output of "can't open pid file" only "#if DEBUG"
+
+-------------------------------------------------------------------
+Tue Oct  6 23:45:29 MEST 1998 - ro@suse.de
+
+- updated killproc to get rid of a memleak
+
+-------------------------------------------------------------------
+Mon Oct  5 13:03:46 MEST 1998 - ro@suse.de
+
+- new version: killproc-1.4
+
+-------------------------------------------------------------------
+Fri Jul  3 13:59:12 MET DST 1998 - werner@suse.de
+
+- added killproc-1.2, a replacement of the old killproc
+
+-------------------------------------------------------------------
+Wed May  6 12:38:42 MEST 1998 - florian@suse.de
+
+- added an option to killproc to also kill process groups:
+  killproc [-SIG] [-g] prog
+
+-------------------------------------------------------------------
+Tue Nov  4 17:17:21 MET 1997 - mantel@suse.de
+
+- creation of dev/initctl fixed
+
+-------------------------------------------------------------------
+Thu Oct 23 13:17:32 MEST 1997 - ro@suse.de
+
+- ready for autobuild
+
+

@@ -1,0 +1,37 @@
+From 98abe3b337e69371678859c4cfd19df61aebb0d9 Mon Sep 17 00:00:00 2001
+From: Olaf Hering <olaf@aepfle.de>
+Date: Sun, 2 Feb 2014 20:42:42 +0100
+Subject: aarch64: rename PSR_MODE_ELxx to match linux headers
+
+https://bugs.launchpad.net/linaro-aarch64/+bug/1169164
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ xen/include/public/arch-arm.h | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+Index: xen-4.10.0-testing/xen/include/public/arch-arm.h
+===================================================================
+--- xen-4.10.0-testing.orig/xen/include/public/arch-arm.h
++++ xen-4.10.0-testing/xen/include/public/arch-arm.h
+@@ -363,13 +363,13 @@ typedef uint64_t xen_callback_t;
+ 
+ /* 64 bit modes */
+ #define PSR_MODE_BIT  0x10 /* Set iff AArch32 */
+-#define PSR_MODE_EL3h 0x0d
+-#define PSR_MODE_EL3t 0x0c
+-#define PSR_MODE_EL2h 0x09
+-#define PSR_MODE_EL2t 0x08
+-#define PSR_MODE_EL1h 0x05
+-#define PSR_MODE_EL1t 0x04
+-#define PSR_MODE_EL0t 0x00
++#define PSR_MODE_EL3h 0x0000000d
++#define PSR_MODE_EL3t 0x0000000c
++#define PSR_MODE_EL2h 0x00000009
++#define PSR_MODE_EL2t 0x00000008
++#define PSR_MODE_EL1h 0x00000005
++#define PSR_MODE_EL1t 0x00000004
++#define PSR_MODE_EL0t 0x00000000
+ 
+ #define PSR_GUEST32_INIT  (PSR_ABT_MASK|PSR_FIQ_MASK|PSR_IRQ_MASK|PSR_MODE_SVC)
+ #define PSR_GUEST64_INIT (PSR_ABT_MASK|PSR_FIQ_MASK|PSR_IRQ_MASK|PSR_MODE_EL1h)

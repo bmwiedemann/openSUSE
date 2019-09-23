@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Mon Jun 19 14:45:31 UTC 2017 - mvetter@suse.com
+
+- Update to version 0.9:
+  * Add new color scheme: lucius (Thanks francogonzaga)
+  * Add new color scheme: SemiDarkDesert (Thanks clausED)
+  * Add new color scheme: near-default (Thanks xaizek)
+  * Clean up info in README
+
+-------------------------------------------------------------------
+Tue Aug 23 17:46:33 UTC 2016 - mvetter@suse.com
+
+- Update to version 0.8.2:
+  * Add GPL-2 license file
+  * Add new color scheme: ph (Thanks pihao)
+  * Add new color scheme: reicheltd-light (Thanks reicheltd)
+
+-------------------------------------------------------------------
+Fri Jul  1 16:58:38 UTC 2016 - toddrme2178@gmail.com
+
+- Make Group tag consistent with other packages.
+
+-------------------------------------------------------------------
+Fri Aug 14 13:34:01 UTC 2015 - mvetter@suse.com
+
+- Creating package for version 0.8
+

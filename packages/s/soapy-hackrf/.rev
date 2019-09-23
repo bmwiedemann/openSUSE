@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ea1a057441bc6f5911e2c2471212d9f9</srcmd5>
+    <version>0.3.1</version>
+    <time>1510150165</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain soapy-hackrf in Factory</comment>
+    <requestid>535901</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>32029806a80d07ff2a8f1ead12461a9c</srcmd5>
+    <version>0.3.2</version>
+    <time>1511274866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544077</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>934c45d694679c40a2956b46a5c65a4a</srcmd5>
+    <version>0.3.3</version>
+    <time>1526372073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606788</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d03bda94149e44f2cc369d3f9a1e6813</srcmd5>
+    <version>0.3.3</version>
+    <time>1542012263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648170</requestid>
+  </revision>
+</revisionlist>

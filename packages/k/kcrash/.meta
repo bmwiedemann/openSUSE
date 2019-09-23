@@ -1,0 +1,5 @@
+<package name="kcrash" project="openSUSE:Factory">
+  <title>kcrash</title>
+  <description>KCrash</description>
+  <devel project="KDE:Frameworks5" package="kcrash"/>
+</package>

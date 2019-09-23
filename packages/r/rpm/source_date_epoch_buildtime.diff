@@ -1,0 +1,11 @@
+--- ./build/pack.c.orig	2018-03-27 12:21:03.036841297 +0000
++++ ./build/pack.c	2018-03-27 12:29:56.050400820 +0000
+@@ -161,7 +161,7 @@ static rpm_time_t * getBuildTime(void)
+ 
+     if (buildTime[0] == 0) {
+         srcdate = getenv("SOURCE_DATE_EPOCH");
+-        if (srcdate) {
++        if (srcdate && rpmExpandNumeric("%{?use_source_date_epoch_as_buildtime}")) {
+             errno = 0;
+             epoch = strtol(srcdate, &endptr, 10);
+             if (srcdate == endptr || *endptr || errno != 0)

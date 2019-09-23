@@ -1,0 +1,98 @@
+-------------------------------------------------------------------
+Sat Feb 23 00:41:14 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+- Update to v0.10.0
+  * Changes see https://github.com/uiri/toml/compare/0.9.4...0.10.0
+  * Includes tests not previously included in source tarball
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:22 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue May 15 16:56:14 UTC 2018 - bruno@ioda-net.ch
+
+- Update to version 0.9.4
+  + Changes see https://github.com/uiri/toml/compare/0.9.3...0.9.4
+  + Contain again test which are run
+- Packaging 
+  + spec-cleaner minimal (date, license)
+  + Resurection to be included in d:l:p and Factory to be used 
+  by Cloud people and others
+
+-------------------------------------------------------------------
+Thu Dec 14 08:36:36 UTC 2017 - bruno@ioda-net.ch
+
+- Update to version 0.9.3.1 (no real changelog)
+  Changes see https://github.com/uiri/toml/compare/0.9.2...0.9.3
+- Packaging hardcode version in setup (tarball has only 0.9.3) 
+  + Add comment about test. None are executed, upstream has removed
+    them from tarball (Work in progress)
+
+-------------------------------------------------------------------
+Thu Oct 26 10:15:18 UTC 2017 - dmueller@suse.com
+
+- remove python-coverage runtime requires
+
+-------------------------------------------------------------------
+Fri Jul 28 14:13:34 UTC 2017 - bruno@ioda-net.ch
+
+- Fix define line for build on Leap 
+
+-------------------------------------------------------------------
+Wed Jun  7 13:13:50 UTC 2017 - bruno@ioda-net.ch
+
+- Move to singlespec packaging
+- Update copyright year
+- Add fdupes 
+
+-------------------------------------------------------------------
+Tue Sep 20 06:02:55 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 0.9.2:
+  * Use xrange (_range) in Python 2.
+  * Prefix internal object/function names with an underscore.
+  * Fix candidate groups handling.
+  * Fix digit matching.
+  * Fix usage of isdigit.
+  * Optimize use of regexps (precompile, single-regexp substitution)
+  * Fix code style.
+  * Peephole optimizations.
+  * Merge #51: Do not raise base Exception.
+  * Remove dead code.
+  * Fix inadvertently broken long integer test
+  * s.decode should assign its result to s.
+  * Remove unnecessary indent level/else branches
+  * Fix #43 by adding Z timezone. tzinfos don't do DST
+  * Fix UTC offsets specified as hours and minutes
+  * update test command
+  * add travis testing
+  * Update copyright notice. Update toml-test repo in README
+  * Close #42 and simplify. Manual testing shows this works.
+  * Support } whithin string in inline objects within arrays
+  * Remove test toml files
+  * Clean load_inline_objects
+  * fix for array in inlinetable
+  * Handle commas inside strings within inline objects
+  * Fix multiline-string and raw-multiline-string tests
+  * Fix key-equals-nospace test
+  * Add support for inline objects inside arrays
+  * Add support for inline objects
+
+-------------------------------------------------------------------
+Sun May  8 07:13:17 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * changed to https for source url
+  * updated source url to files.pythonhosted.org
+
+-------------------------------------------------------------------
+Wed Aug 19 19:55:19 UTC 2015 - bruno@ioda-net.ch
+
+- Initial packaging on obs for python3
+  changes are stored in README.rst

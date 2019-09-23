@@ -1,0 +1,79 @@
+From 95316628378f3802f091a69a715a179e210fd1d8 Mon Sep 17 00:00:00 2001
+From: Alexander Kyte <alexmkyte@gmail.com>
+Date: Mon, 11 Feb 2019 09:11:11 -0500
+Subject: [PATCH] [crash] Use safer invalid-free test (#12864)
+
+When using the previous test, some memory unsafety was
+observed. It's rather unrecoverable memory unsafety, as
+it corrupts heap memory used by the sequence points, registered MERP
+paths, jit info internals, and output string.
+
+Crashes seen here: https://github.com/mono/mono/pull/12387 reproduce
+with less than 100 iterations of this malloc test run as the stress
+test.
+
+```
+(MonoJitInfoTable) $2 = {
+  domain = 0x5050505050505050
+  num_chunks = 1347440720
+  num_valid = 1347440720
+  chunks = {}
+}
+```
+
+with
+
+```
+(lldb) p/x 1347440720
+(int) $0 = 0x50505050
+```
+
+And sometimes the mono crash
+
+```
+(lldb) p *it
+(SeqPointIterator) $3 = {
+  seq_point = (il_offset = 0, native_offset = 0, flags = 0, next_offset = 0, next_len = 0)
+  ptr = 0x5050505050505050 <no value available>
+  begin = 0x5050505050505050 <no value available>
+  end = 0x5050505050505064 <no value available>
+  has_debug_data = 0
+}
+```
+
+===
+
+These do not reproduce when doing a double free of legally allocated
+memory.
+
+I think that the crash reporting tests aren't the place to check if the
+OS allows for wild heap corruption when doing these things. I don't
+think it's currently in scope for the runtime to do crash reporting
+after it's internal metadata tables have been corrupted. They're the
+source of truth for symbolication. We don't have many options to
+validate and reparse them, unless we want to make this all very
+heavyweight.
+---
+ mono/tests/libtest.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/mono/tests/libtest.c b/mono/tests/libtest.c
+index ace5bab7c9bf..8688c3a76b5c 100644
+--- a/mono/tests/libtest.c
++++ b/mono/tests/libtest.c
+@@ -7705,10 +7705,11 @@ mono_test_MerpCrashDladdr (void)
+ LIBTEST_API void STDCALL
+ mono_test_MerpCrashMalloc (void)
+ {
+-	void *mem = malloc (sizeof (char) * 10);
+-	memset (mem, sizeof (mem) * 10, 'A');
+-	int x = 100;
+-	g_free (&x);
++	gpointer x = g_malloc (sizeof(gpointer));
++	g_free (x);
++
++	// Double free
++	g_free (x);
+ }
+ 
+ LIBTEST_API void STDCALL

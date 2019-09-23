@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Tue Mar  5 09:30:50 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.4
+  * Removed smpeg support for mp3 music, now that it's replaced
+    by libmpg123.
+  * Fixed mp3 mad decoder to skip tags, which otherwise would lead
+    to crashes.
+  * Added support for Opus music playback using opusfile library.
+- Update to version 2.0.3
+  * Fixed regression where Mix_Init() would return 0 for available
+    music formats.
+- Remove patch:
+  * SDL2_mixer-only-load-required-interfaces.patch (fixed by upstream)
+
+-------------------------------------------------------------------
+Sat Dec 23 04:21:51 UTC 2017 - 9@cirno.systems
+
+- update to version 2.0.2
+
+  * 24-bit and surround sound support for FLAC audio files
+  * Updated for SDL 2.0.6 and newer
+  * Support for MP3 playback using mpg123
+  * Added Mix_OpenAudioDevice() to specify the audio device to open
+- Add SDL2_mixer-only-load-required-interfaces.patch
+  Prevents initializing decoders unnecessarily.
+  Fixes an issue with applications that use the API incorrectly
+  (due to misleading documentation).
+- Build with libmpg123 where available
+- Fix fluidsynth linking
+
+-------------------------------------------------------------------
+Sun Jan 10 17:06:57 UTC 2016 - mailaender@opensuse.org
+
+- update to version 2.0.1
+  * Added support for 'smpl' format loop points in music WAV files
+  * Fixed floating point exception in Mix_Volume()
+  * Added support for loading MP3 files as sound chunks
+
+-------------------------------------------------------------------
+Thu Jan  8 09:33:53 UTC 2015 - jengelh@inai.de
+
+- Improve package summary and description. Drop --with-pic which
+  is enabled implicitly anyway, remove redundant Requires.
+
+-------------------------------------------------------------------
+Wed Aug 28 18:34:49 UTC 2013 - jengelh@inai.de
+
+- Abstain from providing playmus and playwave in SDL2_mixer
+  (they are already available through SDL(1)_mixer)
+
+-------------------------------------------------------------------
+Tue Aug 13 12:04:26 UTC 2013 - jengelh@inai.de
+
+- Some metadata spruce-up: add current URLs, softer wildcarding
+  in the files list
+
+-------------------------------------------------------------------
+Tue Aug 13 11:27:54 UTC 2013 - prusnak@opensuse.org
+
+- created package (version 2.0.0) - based on SDL_mixer package
+

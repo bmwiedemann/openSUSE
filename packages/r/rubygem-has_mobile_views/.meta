@@ -1,0 +1,8 @@
+<package name="rubygem-has_mobile_views" project="openSUSE:Factory">
+  <title>A Rails plugin which allows for rendering special templates for mobile devices</title>
+  <description>    This Rails plugin allows for rendering special templates for mobile devices, using the existing views and partials as a fallback.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-has_mobile_views"/>
+  <url>http://github.com/aduffeck/has_mobile_views</url>
+</package>

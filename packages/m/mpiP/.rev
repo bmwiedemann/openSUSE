@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6bcc1bbf5732cc79256595f3da732055</srcmd5>
+    <version>3.4.1</version>
+    <time>1508434322</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure neutrality of descriptions and trim subpackages.
+- Fix permissions in the doc and static package.
+- Initial package creation (FATE#321721).
+- mpip.unwinder.patch:
+  Fix AARCH64.
+</comment>
+    <requestid>534275</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0da15f04af603e440d385dd6ee2a4049</srcmd5>
+    <version>3.4.1</version>
+    <time>1508503664</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable the openmpi build since the HPC build for openmpi
+  is now available in Factory.</comment>
+    <requestid>535431</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1c79f80538164e4be07937510b8cbcdb</srcmd5>
+    <version>3.4.1</version>
+    <time>1510578262</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix environment module file. (forwarded request 541137 from eeich)</comment>
+    <requestid>541140</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c08e402267d09fec946b0bcee7126947</srcmd5>
+    <version>3.4.1</version>
+    <time>1510660742</time>
+    <user>dimstar_suse</user>
+    <comment>- Require HPC devel packages.</comment>
+    <requestid>541324</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8c490e726f1728b4c925c0ebf08edac5</srcmd5>
+    <version>3.4.1</version>
+    <time>1515623701</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc7 as additional compiler flavor for HPC on SLES.
+- Add support for mpich and openmpi3 for HPC. (forwarded request 562827 from eeich)</comment>
+    <requestid>562829</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>93c8e06ceb84d519bdfad0175965cae9</srcmd5>
+    <version>3.4.1</version>
+    <time>1515876560</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable the openmpi3 flavor in some products. (forwarded request 563895 from eeich)</comment>
+    <requestid>563900</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>621487bd3d7fd938f3a108951e30da29</srcmd5>
+    <version>3.4.1</version>
+    <time>1518281947</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for openmpi2 for HPC (FATE#325089).
+
+- Fix summary in module files (bnc#1080259).</comment>
+    <requestid>574837</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>25e3b9041512570a8121a6a8c8a3d63c</srcmd5>
+    <version>3.4.1</version>
+    <time>1521405883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587811</requestid>
+  </revision>
+</revisionlist>

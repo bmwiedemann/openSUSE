@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b60f2672107470f6595030bfc4bc4e8b</srcmd5>
+    <version>0.002</version>
+    <time>1326141822</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>99463</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b60f2672107470f6595030bfc4bc4e8b</srcmd5>
+    <version>0.002</version>
+    <time>1340183882</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>b60f2672107470f6595030bfc4bc4e8b</srcmd5>
+    <version>0.002</version>
+    <time>1359109749</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ded2b04a862a3cf172d28ebc009fdc6a</srcmd5>
+    <version>0.003</version>
+    <time>1370581542</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 177817 from coolo)</comment>
+    <requestid>177852</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ded2b04a862a3cf172d28ebc009fdc6a</srcmd5>
+    <version>0.003</version>
+    <time>1379663766</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>36627e91f9e9cbfaeff4c66152146e45</srcmd5>
+    <version>0.004</version>
+    <time>1381063006</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 0.004
+  update repo and bugtracker metadata</comment>
+    <requestid>202413</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>36627e91f9e9cbfaeff4c66152146e45</srcmd5>
+    <version>0.004</version>
+    <time>1409302404</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>200c80a3787405bfe17d3962ffbf4118</srcmd5>
+    <version>0.005</version>
+    <time>1437384150</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317470</requestid>
+  </revision>
+</revisionlist>

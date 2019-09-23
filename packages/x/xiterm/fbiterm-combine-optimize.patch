@@ -1,0 +1,348 @@
+--- unix/fbiterm/src/fb_true16.c
++++ unix/fbiterm/src/fb_true16.c
+@@ -92,23 +92,27 @@
+   return;
+ }
+ 
++extern char* iterm_bold;
++
+ void
+ fb_true16_draw_char (unsigned char *dst, int offset,
+ 		    unsigned char *bits, int cell_width,
+ 		    const xCharInfo *info,
+-		    const TermFont *base)
++		    const TermFont *base, int blank)
+ {
+   int x, y;
+   int height;
+   unsigned short *dst16;
+ 
+   height = (int)base->ascent - (int)info->ascent;
++#if 0 /* redundant */
+   for (y = 0; y < height; y++) {
+     dst16 = (unsigned short *) (dst + offset);
+     for (x = 0; x < cell_width; x++)
+       *dst16++ = bgcmap;
+     dst += pIterm->fb->line_length;
+   }
++#endif
+ 
+   height = (int)info->ascent + (int)info->descent;
+   for (y = 0; y < height; y++)
+@@ -121,7 +125,8 @@
+       c = cc = (c1 << 24) + (c2 << 16) + (c3 << 8) + c4;
+       dst16 = (unsigned short *) (dst + offset);
+       for (x = 0; x < info->leftSideBearing; x++) {
+-	*dst16++ = bgcmap;
++	if(blank) *dst16 = bgcmap;
++	dst16++;
+       }
+       for (; x < info->rightSideBearing; x++, dst16++)
+ 	{
+@@ -135,7 +140,7 @@
+ 		    *(dst16) = boldcmap;
+ 		  else
+ 		    {
+-		      if (getenv ("ITERM_BOLD") != NULL)
++		      if (iterm_bold)
+ 			*(dst16) = boldcmap;
+ 		      else
+ 			*(dst16) = fgcmap;
+@@ -143,17 +148,18 @@
+ 		}
+ 	      else
+ 		{
+-		  *(dst16) = bgcmap;
++		  if(blank) *(dst16) = bgcmap;
+ 		}
+ 	    }
+ 	  c <<= 1;
+ 	}
+-      for (; x < cell_width; x++)
+-	*dst16++ = bgcmap;
++      for (; x < cell_width; x++, dst16++)
++	if(blank) *dst16 = bgcmap;
++      
+       dst += pIterm->fb->line_length;
+     }
+   height = (int)base->descent - (int)info->descent;
+-  for (y = 0; y < height; y++) {
++  if(blank) for (y = 0; y < height; y++) {
+     dst16 = (unsigned short *) (dst + offset);
+     for (x = 0; x < cell_width; x++)
+       *dst16++ = bgcmap;
+@@ -172,6 +178,7 @@
+   mbstate_t ps;
+   const xCharInfo *cinfo;
+   const TermFont *base;
++  int blank;
+ 
+   if (pIterm->lock)
+     return;
+@@ -199,6 +206,7 @@
+       wchar_t wc;
+       int wlen;
+ 
++      blank = 1;
+       if (i >= length)
+ 	break;
+ 
+@@ -220,14 +228,20 @@
+ 	      bits = get_glyph2 (pIterm->mb_font, wc, &height, &cinfo);
+ 	      wlen = wcwidth (wc);
+ 	      w = pIterm->asc_font->cell_width * (wlen > 0 ? wlen : 1);
++	      if(wlen == 0 && startx >= 2 * w) {
++	        startx -= (2 * w);
++	        blank = 0;
++              }
+ 	    }
+ 	}
+       else
+ 	      break;
+ 
++      //printf("%s: w %d wcwidth %d blank %d bits %x\n",__FUNCTION__,w,wcwidth(wc),blank,(unsigned int*)bits);
++      
+       i += len;
+       dst = (char *) (pIterm->fb->buf + starty);
+-      fb_true16_draw_char (dst, startx, bits, w, cinfo, base);
++      fb_true16_draw_char (dst, startx, bits, w, cinfo, base, blank);
+       startx += (2 * w);
+     }
+   return;
+--- unix/fbiterm/src/fb_true24.c
++++ unix/fbiterm/src/fb_true24.c
+@@ -93,11 +93,13 @@
+   return;
+ }
+ 
++extern char* iterm_bold;
++
+ void
+ fb_true24_draw_char (unsigned char *dst, int offset,
+ 		     unsigned char *bits, int cell_width,
+ 		     const xCharInfo *info,
+-		     const TermFont *base)
++		     const TermFont *base, int blank)
+ {
+   int x, y;
+   int height;
+@@ -107,6 +109,7 @@
+    * this shouldn't work on some architectures because of word boundary!!
+    */
+ 
++#if 0 /* redundant */
+   height = (int)base->ascent - (int)info->ascent;
+   for (y = 0; y < height; y++) {
+     for (x = 0; x < cell_width; x++) {
+@@ -115,6 +118,7 @@
+     }
+     dst += pIterm->fb->line_length;
+   }
++#endif
+ 
+   height = info->ascent + info->descent;
+   for (y = 0; y < height; y++)
+@@ -127,7 +131,7 @@
+       c = cc = (c1 << 24) + (c2 << 16) + (c3 << 8) + c4;
+       for (x = 0; x < info->leftSideBearing; x++) {
+ 	dst24 = (unsigned int *) (dst + offset + 3 * x);
+-	*dst24 = bgcmap;
++	if(blank) *dst24 = bgcmap;
+       }
+       for (; x < info->rightSideBearing; x++)
+ 	{
+@@ -143,7 +147,7 @@
+ 		    *(dst24) = boldcmap;
+ 		  else
+ 		    {
+-		      if (getenv ("ITERM_BOLD") != NULL)
++		      if (iterm_bold)
+ 			*(dst24) = boldcmap;
+ 		      else
+ 			*(dst24) = fgcmap;
+@@ -151,19 +155,19 @@
+ 		}
+ 	      else
+ 		{
+-		  *(dst24) = bgcmap;
++		  if(blank) *(dst24) = bgcmap;
+ 		}
+ 	    }
+ 	  c <<= 1;
+ 	}
+       for (; x < cell_width; x++) {
+ 	dst24 = (unsigned int *) (dst + offset + 3 * x);
+-	*dst24 = bgcmap;
++	if(blank) *dst24 = bgcmap;
+       }
+       dst += pIterm->fb->line_length;
+     }
+   height = base->descent - info->descent;
+-  for (y = 0; y < height; y++) {
++  if(blank) for (y = 0; y < height; y++) {
+     for (x = 0; x < cell_width; x++) {
+       dst24 = (unsigned int *) (dst + offset + 3 * x);
+       *dst24 = bgcmap;
+@@ -183,6 +187,7 @@
+   mbstate_t ps;
+   const xCharInfo *cinfo;
+   const TermFont *base;
++  int blank;
+ 
+   if (pIterm->lock)
+     return;
+@@ -210,6 +215,7 @@
+       wchar_t wc;
+       int wlen;
+ 
++      blank = 1;
+       if (i >= length)
+ 	break;
+ 
+@@ -231,6 +237,10 @@
+ 	      bits = get_glyph2 (pIterm->mb_font, wc, &height, &cinfo);
+ 	      wlen = wcwidth (wc);
+ 	      w = pIterm->asc_font->cell_width * (wlen > 0 ? wlen : 1);
++	      if(wlen == 0 && startx >= 3 * w) {
++	        startx -= (3 * w);
++	        blank = 0;
++              }
+ 	    }
+ 	}
+       else
+@@ -238,7 +248,7 @@
+ 
+       i += len;
+       dst = (char *) (pIterm->fb->buf + starty);
+-      fb_true24_draw_char (dst, startx, bits, w, cinfo, base);
++      fb_true24_draw_char (dst, startx, bits, w, cinfo, base, blank);
+       startx += (3 * w);
+     }
+   return;
+--- unix/fbiterm/src/fb_true8.c
++++ unix/fbiterm/src/fb_true8.c
+@@ -82,23 +82,27 @@
+   return;
+ }
+ 
++extern char* iterm_bold;
++
+ void
+ fb_true8_draw_char (unsigned char *dst, int offset,
+ 		    unsigned char *bits, int cell_width,
+ 		    const xCharInfo *info,
+-		    const TermFont *base)
++		    const TermFont *base, int blank)
+ {
+   int x, y;
+   int height;
+   unsigned char *dst8;
+ 
+   height = (int)base->ascent - (int)info->ascent;
++#if 0 /* redundant */
+   for (y = 0; y < height; y++) {
+     dst8 = (unsigned char *) (dst + offset);
+     for (x = 0; x < cell_width; x++)
+       *dst8++ = (char) bgcmap;
+     dst += pIterm->fb->line_length;
+   }
++#endif
+ 
+   height = info->ascent + info->descent;
+   for (y = 0; y < height; y++)
+@@ -111,7 +115,8 @@
+       c = cc = (c1 << 24) + (c2 << 16) + (c3 << 8) + c4;
+       dst8 = (unsigned char *) (dst + offset);
+       for (x = 0; x < info->leftSideBearing; x++) {
+-	*dst8++ = (char) bgcmap;
++	if(blank) *dst8 = (char) bgcmap;
++	dst8++;
+       }
+       for (; x < info->rightSideBearing; x++, dst8++)
+ 	{
+@@ -125,23 +130,24 @@
+ 		    *(dst8) = (char) fgcmap | 0x08;
+ 		  else
+ 		    {
+-		      if (getenv ("ITERM_BOLD") != NULL)
++		      if (iterm_bold)
+ 			*(dst8) = (char) fgcmap | 0x08;
+ 		      else
+ 			*(dst8) = (char) fgcmap;
+ 		    }
+ 		}
+ 	      else
+-		*(dst8) = (char) bgcmap;
++		if(blank) *(dst8) = (char) bgcmap;
+ 	    }
+ 	  c <<= 1;
+ 	}
+-      for (; x < cell_width; x++)
+-	*dst8++ = (char) bgcmap;
++      for (; x < cell_width; x++, dst8++)
++	if(blank) *dst8 = (char) bgcmap;
++      
+       dst += pIterm->fb->line_length;
+     }
+   height = base->descent - info->descent;
+-  for (y = 0; y < height; y++) {
++  if(blank) for (y = 0; y < height; y++) {
+     dst8 = (unsigned char *) (dst + offset);
+     for (x = 0; x < cell_width; x++)
+       *dst8++ = (char) bgcmap;
+@@ -160,6 +166,7 @@
+   mbstate_t ps;
+   const xCharInfo *cinfo;
+   const TermFont *base;
++  int blank;
+ 
+   if (pIterm->lock)
+     return;
+@@ -187,6 +194,7 @@
+       wchar_t wc;
+       int wlen;
+ 
++      blank = 1;
+       if (i >= length)
+ 	break;
+ 
+@@ -208,6 +216,10 @@
+ 	      bits = get_glyph2 (pIterm->mb_font, wc, &height, &cinfo);
+ 	      wlen = wcwidth (wc);
+ 	      w = pIterm->asc_font->cell_width * (wlen > 0 ? wlen : 1);
++	      if(wlen == 0 && startx >= w) {
++	        startx -= w;
++	        blank = 0;
++              }
+ 	    }
+ 	}
+       else
+@@ -215,7 +227,7 @@
+ 
+       i += len;
+       dst = (char *) (pIterm->fb->buf + starty);
+-      fb_true8_draw_char (dst, startx, bits, w, cinfo, base);
++      fb_true8_draw_char (dst, startx, bits, w, cinfo, base, blank);
+       startx += w;
+     }
+   return;
+--- unix/fbiterm/src/fbiterm.c
++++ unix/fbiterm/src/fbiterm.c
+@@ -63,6 +63,8 @@
+   exit (0);
+ }
+ 
++char* iterm_bold = 0;
++
+ int
+ main (int argc, char *argv[])
+ {
+@@ -71,6 +73,8 @@
+   int fontsize = 0;
+   char **prog_args;
+ 
++  iterm_bold = getenv("ITERM_BOLD");
++  
+   setlocale (LC_ALL, "");
+ 
+   /* allocate memory for Iterm structure */

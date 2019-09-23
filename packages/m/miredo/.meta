@@ -1,0 +1,13 @@
+<package name="miredo" project="openSUSE:Factory">
+  <title>miredo</title>
+  <description>Miredo is an implementation of the &quot;Teredo: Tunneling IPv6 over UDP
+through NATs&quot; proposed Internet standard (RFC4380). It can serve
+either as a Teredo client, a stand-alone Teredo relay, or a Teredo
+server, please install the miredo-server or miredo-client aproprietly.
+It is meant to provide IPv6 connectivity to hosts behind NAT
+devices, most of which do not support IPv6, and not even
+IPv6-over-IPv4 (including 6to4).
+Project homepage: http://www.remlab.net/miredo/</description>
+  <devel project="network" package="miredo"/>
+  <url>http://www.remlab.net/miredo/</url>
+</package>

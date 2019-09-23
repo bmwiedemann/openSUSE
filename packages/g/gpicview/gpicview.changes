@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Sun Dec 25 12:50:21 UTC 2016 - trcs@gmx.com
+
+- new upstream version 0.2.5
+  * Fix 'make distcheck' adding missing gpicview.desktop into dist
+  * Beautify GtkBuilder UI file without modification
+  * Some fixes for GTK+ 3
+  * Set default size for scale widgets
+  * Translations updates
+
+-------------------------------------------------------------------
+Wed Nov 12 09:36:34 UTC 2014 - andrea@opensuse.org
+
+- added gpicview-0.2.4_fix_boo_904558.patch to fix boo#904558
+
+-------------------------------------------------------------------
+Fri Sep 19 22:28:30 UTC 2014 - trcs@gmx.com
+
+- split lang package
+- removed unnecessary BuildRequires in spec file
+
+-------------------------------------------------------------------
+Wed Aug 27 09:41:59 UTC 2014 - trcs@gmx.com
+
+- applied spec-cleaner
+
+-------------------------------------------------------------------
+Sun Jan  5 11:06:58 UTC 2014 - trcs@gmx.com
+
+- new upstream version 0.2.4
+ * GTK3, minor refactoring and some updates to the infrastructure 
+   for building
+ * Complete changelog in http://blog.lxde.org/?p=1064
+
+-------------------------------------------------------------------
+Wed Dec 19 10:47:45 UTC 2012 - andrea@opensuse.org
+
+- new upstream version 0.2.3
+ * Correction to the PATH_MAX problems for GNU/Hurd.
+ * fixed link with latest ld 
+- removed gpicview-0.2.2-ld_fix.patch now in upsteam code
+
+-------------------------------------------------------------------
+Thu Sep 29 08:11:15 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typos in gpicview.spec
+
+-------------------------------------------------------------------
+Sun Sep 18 06:48:35 UTC 2011 - andrea@opensuse.org
+
+- added gpicview-0.2.2-ld_fix.patch to fix build with latest ld 
+
+-------------------------------------------------------------------
+Sun Jul 24 10:58:26 UTC 2011 - andrea@opensuse.org
+
+- new upstream version 0.2.2
+  * translations updates
+  * basic gtk3 support
+  * many bug fixes
+- removed patches now in upstream code 
+
+-------------------------------------------------------------------
+Mon Mar 14 14:17:19 UTC 2011 - gber@opensuse.org
+
+- call %desktop_database_post/un
+
+-------------------------------------------------------------------
+Fri Feb 18 08:45:04 UTC 2011 - coolo@novell.com
+
+- run find_lang first - it may remove unsupported locales
+
+-------------------------------------------------------------------
+Wed Dec 29 22:26:29 UTC 2010 - gber@opensuse.org
+
+- removed desktop-category.diff
+- corrected menu categories
+- added gpicview-add-mime-types.patch in order to claim support for
+  additional MIME types
+
+-------------------------------------------------------------------
+Tue Apr  6 08:50:40 UTC 2010 - andrea@opensuse.org
+
+- removed unsopported locales
+
+-------------------------------------------------------------------
+Thu Dec 10 09:59:30 UTC 2009 - andrea@opensuse.org
+
+- Clean up spec file
+- bzipped source code
+
+-------------------------------------------------------------------
+Thu Jul 14 09:56:44 UTC 2009 - andrea@opensuse.org
+
+- fixed post build gcc checks
+
+-------------------------------------------------------------------
+Wed Jul 08 09:56:01 UTC 2009 - andrea@opensuse.org
+
+- New upstream version 0.2.1
+
+-------------------------------------------------------------------
+Thu May 21 09:56:01 UTC 2009 - andrea@opensuse.org
+
+- new package

@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ce9914e0b1be87dfef1bbac996dfd115</srcmd5>
+    <version>0.6.1</version>
+    <time>1529402299</time>
+    <user>maxlin_factory</user>
+    <comment>Ropes (&quot;heavyweight strings&quot;) are a scalable string implementation.
+
+It is a dependency of the next version of Haxe(4.0.0).</comment>
+    <requestid>616479</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f556e5be142db28d92ef6f6154ed4adc</srcmd5>
+    <version>0.6.1</version>
+    <time>1550668375</time>
+    <user>maxlin_factory</user>
+    <comment>Fix build with ocaml-dune 1.7.1. Use spdx OCaml-LGPL-linking-exception in License. 
+</comment>
+    <requestid>677430</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d836fba8121930c9d221096a6c4d518f</srcmd5>
+    <version>0.6.2</version>
+    <time>1553084521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.2:
+  * Improve documentation.
+  * Upgrade to OPAM 2.
+</comment>
+    <requestid>686861</requestid>
+  </revision>
+</revisionlist>

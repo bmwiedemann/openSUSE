@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Sun May  5 02:01:31 UTC 2019 - psimons@suse.com
+
+- Update hslua-module-text to version 0.2.1.
+  ## 0.2.1 -- 2019-05-04
+
+  - Require at least HsLua v1.0.3: that version has better support
+    for modules.
+
+  - Rename `pushModuleText` to `pushModule`. The old name is keeped
+    as an alias for now.
+
+-------------------------------------------------------------------
+Wed Oct 10 02:02:34 UTC 2018 - psimons@suse.com
+
+- Update hslua-module-text to version 0.2.0.
+  ## 0.2.0 -- 2018-09-24
+
+  - Use hslua 1.0.
+
+  ## 0.1.2.2  -- 2018-03-09
+
+  - Relax upper bound for base.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Add hslua-module-text at version 0.1.2.1.

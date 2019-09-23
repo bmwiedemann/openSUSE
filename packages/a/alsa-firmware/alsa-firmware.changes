@@ -1,0 +1,247 @@
+-------------------------------------------------------------------
+Tue May 28 19:57:17 CEST 2019 - tiwai@suse.de
+
+- Install missing firmware files for CA0132 codec (bsc#1136638)
+
+-------------------------------------------------------------------
+Thu Feb 26 17:34:19 CET 2015 - tiwai@suse.de
+
+- Update to alsa-firmware 1.0.29:
+  update asihpi firmware to version 4.14
+
+-------------------------------------------------------------------
+Wed Jun 18 13:19:24 CEST 2014 - tiwai@suse.de
+
+- Updated to alsa-firmware 1.0.28:
+  Removed obsoleted patch
+  0001-Add-cs46xx-entry-to-the-main-configure-and-Makefile..patch:
+
+-------------------------------------------------------------------
+Thu Feb  6 15:31:02 CET 2014 - tiwai@suse.de
+
+- 0001-Add-cs46xx-entry-to-the-main-configure-and-Makefile..patch:
+  Add firmware files for cs46xx that have been cut since 3.13
+  kernel
+
+-------------------------------------------------------------------
+Fri Apr 12 15:31:37 CEST 2013 - tiwai@suse.de
+
+- Updated to version 1.0.27:
+  add firmware files for CA0132 HD-audio codec
+- Fix macros for udev rules installation path
+
+-------------------------------------------------------------------
+Wed Jan 25 11:13:28 CET 2012 - tiwai@suse.de
+
+- updated to version 1.0.25; Update asihpi firmware to 4.10.05
+
+-------------------------------------------------------------------
+Thu Dec 22 18:31:48 UTC 2011 - crrodriguez@opensuse.org
+
+- alsa firmware is of no use without alsa 
+
+-------------------------------------------------------------------
+Fri Dec  2 06:22:19 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Sep 17 10:55:33 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Mon Jan 31 17:27:41 CET 2011 - tiwai@suse.de
+
+- Updated to version 1.0.24.1:
+  * including previous fixes
+  * Add firmware for HDSP RPM
+
+-------------------------------------------------------------------
+Mon Apr 19 11:00:52 CEST 2010 - tiwai@suse.de
+
+- updated to version 1.0.23:
+  * update asihpi firmware version 40304
+
+-------------------------------------------------------------------
+Wed Feb 24 20:18:05 UTC 2010 - aj@suse.de
+
+- Use ATTR instead of SYSFS for udev rules.
+
+-------------------------------------------------------------------
+Mon Oct  5 17:28:25 CEST 2009 - tiwai@suse.de
+
+- really exclude firmware files in kernel-firmware package
+
+-------------------------------------------------------------------
+Wed May  6 18:11:28 CEST 2009 - tiwai@suse.de
+
+- updated to version 1.0.20:
+  * just a version number bump
+
+-------------------------------------------------------------------
+Tue May  5 12:40:03 CEST 2009 - tiwai@suse.de
+
+- exclude some firmware files already contained in kernel-firmware
+  package
+
+-------------------------------------------------------------------
+Thu Mar  5 15:34:43 CET 2009 - ro@suse.de
+
+- fix build 
+
+-------------------------------------------------------------------
+Thu Jan 22 14:29:46 CET 2009 - tiwai@suse.de
+
+- updated to version 1.0.19:
+  * updated PCXHR firmwares
+
+-------------------------------------------------------------------
+Tue Jul 15 18:31:44 CEST 2008 - tiwai@suse.de
+
+- updated to version 1.0.17:
+  * just a version bump
+
+-------------------------------------------------------------------
+Thu Jun 26 18:57:18 CEST 2008 - tiwai@suse.de
+
+- updated to version 1.0.17-rc2:
+  * update asihpi firmwares
+
+-------------------------------------------------------------------
+Fri Feb  8 12:18:21 CET 2008 - tiwai@suse.de
+
+- updated to version 1.0.16-final:
+  * just a version bump
+
+-------------------------------------------------------------------
+Mon Jan 28 11:40:09 CET 2008 - tiwai@suse.de
+
+- changed the package version number to 1.0.16 to match with
+  alsa-tools.
+
+-------------------------------------------------------------------
+Tue Jan 22 14:49:50 CET 2008 - tiwai@suse.de
+
+- updated to version 1.0.16rc1:
+  * updated asihpi firmware data
+
+-------------------------------------------------------------------
+Tue Oct 16 15:09:01 CEST 2007 - tiwai@suse.de
+
+- updated to version 1.0.15-final:
+  * including all previous fixes
+
+-------------------------------------------------------------------
+Mon Jul 30 16:14:57 CEST 2007 - tiwai@suse.de
+
+- updated to firmware version (as of HG 2007.07.27)
+  including the latest ASIHPI binaries
+- fixed udev rules for the recent 10.3 kernel.
+  keep the old config for older kernels.
+
+-------------------------------------------------------------------
+Tue Jun  5 18:26:23 CEST 2007 - tiwai@suse.de
+
+- removed alsa from BuildRequires
+- fixed filelist to be independent from alsa.rpm
+
+-------------------------------------------------------------------
+Thu May 31 12:22:37 CEST 2007 - tiwai@suse.de
+
+- updated to version 1.0.14-final:
+  * aica firmware
+
+-------------------------------------------------------------------
+Wed May  2 14:39:36 CEST 2007 - tiwai@suse.de
+
+- updated to version 1.0.14rc4
+  * emu micro_dock firmware
+
+-------------------------------------------------------------------
+Sun Mar 18 11:23:13 CET 2007 - aj@suse.de
+
+- /lib/firmware is now in filesystem package.
+
+-------------------------------------------------------------------
+Wed Mar 14 16:58:27 CET 2007 - tiwai@suse.de
+
+- updated to version 1.0.14rc3:
+  * updated asihpi firmwares
+  * added msnd-pinnacle firmwares
+  * fix usx2yaudio udev rules to call with proper -m option
+
+-------------------------------------------------------------------
+Wed Dec 20 11:15:37 CET 2006 - tiwai@suse.de
+
+- updated to version 1.0.14rc1:
+  * added ymfpci, maestro3, korg1212 firmwares
+  * added wavefront and sb16 firmwares
+  * added emi26/emi62 firmwares
+
+-------------------------------------------------------------------
+Thu Oct  5 16:40:30 CEST 2006 - tiwai@suse.de
+
+- updated to version 1.0.13-final:
+  * no real change since rc2
+
+-------------------------------------------------------------------
+Fri Sep 22 16:13:21 CEST 2006 - tiwai@suse.de
+
+- updated to version 1.0.13rc2:
+  * echoaduio firmware fixes
+
+-------------------------------------------------------------------
+Wed Aug 16 11:38:47 CEST 2006 - tiwai@suse.de
+
+- moved firmware-specific udev rules for usx2yaudio from alsa
+  package.
+
+-------------------------------------------------------------------
+Tue Jul  4 16:58:39 CEST 2006 - tiwai@suse.de
+
+- updated to version 1.0.12rc1:
+  * new firmwares for asihpi driver
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:42 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct 12 14:10:20 CEST 2005 - tiwai@suse.de
+
+- updated to version 1.0.10rc2.
+
+-------------------------------------------------------------------
+Sat Aug 20 15:29:18 CEST 2005 - schwab@suse.de
+
+- Don't require hotplug.
+
+-------------------------------------------------------------------
+Thu Jun  2 15:15:19 CEST 2005 - tiwai@suse.de
+
+- updated to version 1.0.9-final.
+
+-------------------------------------------------------------------
+Tue May 24 17:11:33 CEST 2005 - tiwai@suse.de
+
+- updated to version 1.0.9rc4.
+- enable loaders, use symlinks for identical files.
+
+-------------------------------------------------------------------
+Thu Jan 13 15:28:45 CET 2005 - tiwai@suse.de
+
+- updated to version 1.0.8-final.
+
+-------------------------------------------------------------------
+Fri Jan  7 12:18:15 CET 2005 - tiwai@suse.de
+
+- added alsa to neededforpackage for $(datadir)/alsa ownership.
+
+-------------------------------------------------------------------
+Wed Jan  5 15:33:55 CET 2005 - tiwai@suse.de
+
+- split from alsa-tools: version 1.0.8rc2.
+

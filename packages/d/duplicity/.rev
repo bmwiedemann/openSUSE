@@ -1,0 +1,418 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>23a8be229092c7b23be17d34c3f781cd</srcmd5>
+    <version>0.6.08b</version>
+    <time>1285283553</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving:Backup/duplicity based on submit request 48819 from user lmedinas
+</comment>
+    <requestid>48819</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1b5c57df7ed09a1f8808128410f7bed8</srcmd5>
+    <version>0.6.10</version>
+    <time>1288023428</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51346 from user lmedinas
+</comment>
+    <requestid>51346</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>81052da381266b1d2f77ad475b52392d</srcmd5>
+    <version>0.6.11</version>
+    <time>1294974310</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57920 from user pbleser
+</comment>
+    <requestid>57920</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6cb02e8e5be13ad5dd4b79bbbb6b63a9</srcmd5>
+    <version>0.6.11</version>
+    <time>1294974317</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57920
+</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>6cb02e8e5be13ad5dd4b79bbbb6b63a9</srcmd5>
+    <version>0.6.11</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cd0492c8ccd62cafae81d0dc34cab72a</srcmd5>
+    <version>0.6.13</version>
+    <time>1308902306</time>
+    <user>saschpe</user>
+    <comment>update to 0.6.13 (forwarded request 74230 from wrosenauer)</comment>
+    <requestid>74436</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bc019e4a2ea5cc0ccc6a236623cb3d75</srcmd5>
+    <version>0.6.15</version>
+    <time>1317542263</time>
+    <user>lrupp</user>
+    <comment>Update to 0.6.15... Required for current version of deja-dup in Factory.. so please forward (forwarded request 85896 from dimstar)</comment>
+    <requestid>85897</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>bc019e4a2ea5cc0ccc6a236623cb3d75</srcmd5>
+    <version>0.6.15</version>
+    <time>1319181857</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>6915a3626e1fd945563e1c1b3a38b13d</srcmd5>
+    <version>0.6.15</version>
+    <time>1323191236</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bb694334ecfb9041d930471ec202a166</srcmd5>
+    <version>0.6.17</version>
+    <time>1329221127</time>
+    <user>coolo</user>
+    <comment> (forwarded request 103444 from wrosenauer)</comment>
+    <requestid>103823</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>ba7716e1a4d90f53de9334dbeca2a069</srcmd5>
+    <version>0.6.17</version>
+    <time>1329823069</time>
+    <user>coolo</user>
+    <comment>- factory has split librsync into devel and lib package (forwarded request 106109 from coolo)</comment>
+    <requestid>106110</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6df6bcaa7ee5e4616a374ba0b99f02e9</srcmd5>
+    <version>0.6.18</version>
+    <time>1331579519</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.6.18:
+  * Added option to not compress the backup, when no encryption
+     is selected
+  * Adding --file-prefix option so different sets of backups can
+    be stored in the same bucket
+  * more bugfixes (forwarded request 107953 from wrosenauer)</comment>
+    <requestid>108866</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>6df6bcaa7ee5e4616a374ba0b99f02e9</srcmd5>
+    <version>0.6.18</version>
+    <time>1340183293</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4f2f6650569970e1456ab7a05e9b183a</srcmd5>
+    <version>0.6.19</version>
+    <time>1340619894</time>
+    <user>coolo</user>
+    <comment> (forwarded request 125258 from wrosenauer)</comment>
+    <requestid>125259</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0c5fc4307f4e8015f111d015e4e1baf1</srcmd5>
+    <version>0.6.20</version>
+    <time>1352700171</time>
+    <user>coolo</user>
+    <comment> (forwarded request 140821 from wrosenauer)</comment>
+    <requestid>140824</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>0c5fc4307f4e8015f111d015e4e1baf1</srcmd5>
+    <version>0.6.20</version>
+    <time>1359108830</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>41fe2913c6d960de5c15405e7a96c6b0</srcmd5>
+    <version>0.6.21</version>
+    <time>1360303636</time>
+    <user>coolo</user>
+    <comment> (forwarded request 151609 from wrosenauer)</comment>
+    <requestid>151610</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ada4dfd398af510684bcdfe82aa2c2c2</srcmd5>
+    <version>0.6.22</version>
+    <time>1379327745</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.6.22:
+  * see details here
+    http://duplicity.nongnu.org/CHANGELOG
+    some highlights_
+    - Add Dropbox backend
+      Install Dropbox Python SDK first
+    - Add support for Swift, the OpenStack Object Storage service
+    - Add support for Google Cloud Storage via the boto backend
+    - Add support for Mega (mega.co.nz) backend (forwarded request 199161 from wrosenauer)</comment>
+    <requestid>199162</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>ada4dfd398af510684bcdfe82aa2c2c2</srcmd5>
+    <version>0.6.22</version>
+    <time>1379662259</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>61a1f6fdc415da1edf82e3b6dd83d38b</srcmd5>
+    <version>0.6.23</version>
+    <time>1391323825</time>
+    <user>coolo</user>
+    <comment> (forwarded request 220575 from wrosenauer)</comment>
+    <requestid>220576</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>cc6216d9e979632f96bc00a2b40911bd</srcmd5>
+    <version>0.6.24</version>
+    <time>1405658422</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>241286</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>cc6216d9e979632f96bc00a2b40911bd</srcmd5>
+    <version>0.6.24</version>
+    <time>1409300797</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>353ab4827f69acdcb44f5c68b46dde27</srcmd5>
+    <version>0.7.0</version>
+    <time>1416824256</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>262107</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d25d82b3fe68c83f86d456326efe0021</srcmd5>
+    <version>0.7.01</version>
+    <time>1425377657</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.7.01:
+  http://duplicity.nongnu.org/CHANGELOG
+- Clean-up with spec-cleaner</comment>
+    <requestid>287784</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>faf80dfcf80f7eb3eb5579a86c198599</srcmd5>
+    <version>0.7.01</version>
+    <time>1426495271</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289630</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>16782f6db542f92713c143e7477261dd</srcmd5>
+    <version>0.7.02</version>
+    <time>1427653066</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293323</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>27e61958009231ad891ecf823838e0e6</srcmd5>
+    <version>0.7.05</version>
+    <time>1443896993</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>333921</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b24ac62f891726c28375097b2059000f</srcmd5>
+    <version>0.7.06</version>
+    <time>1450363928</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348399</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>24db79850298d50aaf2db2110397d1ab</srcmd5>
+    <version>0.7.07.1</version>
+    <time>1467205786</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402059</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2910e379ff3a7c5a90de22108fe89ea3</srcmd5>
+    <version>0.7.08</version>
+    <time>1468869735</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407586</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>46b50623e13f297a9460d7bcb2fd7336</srcmd5>
+    <version>0.7.09</version>
+    <time>1471345365</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.09
+  * Fixed bug #1600692 with patch from Wolfgang Rohdewald
+    - Allow symlink to have optional trailing slash during verify.
+  * Merged in lp:~aaron-whitehouse/duplicity/07-fix_deja_dup_error_on_locked_files
+    - Revert log.Error to log.Warn, as it was prior to the merge in rev 1224,
+      as this was affecting other applications (e.g. deja dup; Bug #1605939).
+  * Merged in lp:~duplicity-team/duplicity/po-updates</comment>
+    <requestid>417242</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>68aff139c5d2b294fe6404254ffb8cbd</srcmd5>
+    <version>0.7.10</version>
+    <time>1472246054</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>421211</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>2c529bff7d34c75ec651948bd3f80414</srcmd5>
+    <version>0.7.11</version>
+    <time>1484132026</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449162</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c8ffa2e426791307180f24cddb2a9380</srcmd5>
+    <version>0.7.12</version>
+    <time>1492417270</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>484349</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0f0bdd5d9ecb2dd8915473b7e3cff876</srcmd5>
+    <version>0.7.13.1</version>
+    <time>1498840859</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506126</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>ff2839db1288df962dc61f166adb55a5</srcmd5>
+    <version>0.7.13.1</version>
+    <time>1499509579</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508217</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>6fc1d3e0fcefc594a3186105c9a49de9</srcmd5>
+    <version>0.7.14</version>
+    <time>1504815024</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520502</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>7a00542f2ebeee2c1fad3ee1df11a5c6</srcmd5>
+    <version>0.7.15</version>
+    <time>1513676804</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557188</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>f7a312b0d6b12d942117af79727f85d4</srcmd5>
+    <version>0.7.16</version>
+    <time>1516443860</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>564427</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0a6007b8eb7a69f627df5c273e156a57</srcmd5>
+    <version>0.7.17</version>
+    <time>1520415207</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582175</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>cb720d616a2732980ed99000505e139a</srcmd5>
+    <version>0.7.18</version>
+    <time>1535123463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631089</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>cc18c4861be27ca37beb398e36cdd873</srcmd5>
+    <version>0.7.18.1</version>
+    <time>1535538428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632078</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>d968917bc3238202da41d0ea10ab37c3</srcmd5>
+    <version>0.7.18.2</version>
+    <time>1540200246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643178</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>025184bd16c3a6d953510907bee7701f</srcmd5>
+    <version>0.7.19</version>
+    <time>1556817568</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699772</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>26d15905072ffb34e7e7848e61235c12</srcmd5>
+    <version>0.7.19</version>
+    <time>1558427945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704208</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>477bb0ecec65afadd69ba3f14921baf9</srcmd5>
+    <version>0.8.01</version>
+    <time>1563362412</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715607</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>034185f7d44abde7af64d5258a02506f</srcmd5>
+    <version>0.8.01</version>
+    <time>1563701713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717188</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>eee07459095d4ecea081f0564716de6e</srcmd5>
+    <version>0.8.02</version>
+    <time>1564137839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718737</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>14a43a30753eb2a55123baa5d0d8bcc9</srcmd5>
+    <version>0.8.03</version>
+    <time>1565695655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722928</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>fb08f6782e7dd4da3299f53160320bac</srcmd5>
+    <version>0.8.04</version>
+    <time>1568025453</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729276</requestid>
+  </revision>
+</revisionlist>

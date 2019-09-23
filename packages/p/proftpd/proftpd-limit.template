@@ -1,0 +1,6 @@
+### when you use spaces as separator then you can use it also with apache ;)
+### just some examples
+    Allow from localhost 127.0.0.1 ::1
+    Allow from 1.2.3.4 5.6.7.8
+    Allow from .example.com .test.org
+    Allow from 2.3.4.5 11:22:33:44::/64

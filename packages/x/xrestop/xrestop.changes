@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue May  8 12:43:33 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  See COPYING and xrestop.c
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - mgorse@opensuse.org
+
+- Split xrestop from xorg-x11. Initial version: 0.4.
+

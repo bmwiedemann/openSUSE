@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>97669e4bdab9643bda6ec6a27c6bf7c1</srcmd5>
+    <version>20091231</version>
+    <time>1357651939</time>
+    <user>coolo</user>
+    <comment>required for fontforge update</comment>
+    <requestid>147154</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>97669e4bdab9643bda6ec6a27c6bf7c1</srcmd5>
+    <version>20091231</version>
+    <time>1359109367</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>97669e4bdab9643bda6ec6a27c6bf7c1</srcmd5>
+    <version>20091231</version>
+    <time>1379663117</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>97669e4bdab9643bda6ec6a27c6bf7c1</srcmd5>
+    <version>20091231</version>
+    <time>1409301743</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d476b278f5c72092f665779b29aeb5cd</srcmd5>
+    <version>20140731</version>
+    <time>1424693858</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286888</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>eb78be22a07e218206bb52c1d87b534d</srcmd5>
+    <version>20140731</version>
+    <time>1510837229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541929</requestid>
+  </revision>
+</revisionlist>

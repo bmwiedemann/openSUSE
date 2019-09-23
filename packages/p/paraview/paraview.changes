@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 20 06:14:35 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.6.2:
+  * Fixes a trackpad interaction bug on macOS.
+
+-------------------------------------------------------------------
+Fri Sep 20 05:46:33 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Pass -ffat-lto-objects for static libs.
+
+-------------------------------------------------------------------
 Fri Aug 16 14:26:00 CEST 2019 - Mark.Olesen@esi-group.com
 
 - Update to version 5.6.1

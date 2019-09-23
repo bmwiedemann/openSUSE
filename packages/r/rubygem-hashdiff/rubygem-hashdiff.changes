@@ -1,0 +1,98 @@
+-------------------------------------------------------------------
+Fri Jul 19 09:16:41 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.0.0
+ see installed changelog.md
+
+  ## v1.0.0 2019-06-06
+  
+  * Fix typo in readme (#72 @koic)
+  * Fix Rubocop offence (#73 @koic)
+  * Bumps version to v1.0.0 (#74 @jfelchner)
+  
+  ## v1.0.0.beta1 2019-06-06
+  
+  * fix warnings in ci (#69 @y-yagi)
+  * drop warnings of the constant change (#70 @jfelchner)
+  
+  ## v0.4.0 2019-05-28
+  
+  * refactoring (#56 #57 #59 #61 krzysiek1507)
+  * fix typo in README (#64 @pboling)
+  * change HashDiff to Hashdiff (#65 @jfelchner)
+
+-------------------------------------------------------------------
+Sun May  5 09:30:22 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.3.9
+ see installed changelog.md
+
+  ## v0.3.9 2019-04-22
+  
+  * Performance tweak (thanks @krzysiek1507: #51 #52 #53)
+
+-------------------------------------------------------------------
+Mon Jan 14 13:43:04 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.3.8
+ see installed changelog.md
+
+  ## v0.3.8 2018-12-30
+  
+  * Add Rubocop and drops Ruby 1.9 support #47
+
+-------------------------------------------------------------------
+Mon Oct  9 07:01:34 UTC 2017 - mschnitzer@suse.com
+
+- updated to version 0.3.7
+  * remove 1.8.7 support from gemspec #39
+
+-------------------------------------------------------------------
+Sun Sep  3 09:04:56 UTC 2017 - coolo@suse.com
+
+- updated to version 0.3.6
+ see installed changelog.md
+
+  ## v0.3.6 2017-08-22
+  
+  * add option `use_lcs` #35
+  
+  ## v0.3.5 2017-08-06
+  
+  * add option `array_path` #34
+
+-------------------------------------------------------------------
+Tue May 23 09:58:16 UTC 2017 - coolo@suse.com
+
+- updated to version 0.3.4
+ see installed changelog.md
+
+  ## v0.3.4 2017-05-01
+  
+  * performance improvement of HashDiff#similar? #31
+
+-------------------------------------------------------------------
+Wed Dec 28 05:33:09 UTC 2016 - coolo@suse.com
+
+- updated to version 0.3.2
+ see installed changelog.md
+
+  ## v0.3.2 2016-12-27
+  
+  * replace `Fixnum` by `Integer` #28
+
+-------------------------------------------------------------------
+Fri Nov 25 05:31:37 UTC 2016 - coolo@suse.com
+
+- updated to version 0.3.1
+ see installed changelog.md
+
+  ## v0.3.1 2016-11-24
+  
+  * fix an error when a hash has mixed types #26
+
+-------------------------------------------------------------------
+Thu Jun 23 19:25:09 UTC 2016 - coolo@suse.com
+
+- initial package
+

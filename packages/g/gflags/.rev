@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a5e4527ef54aef9af190e0814dfbe88b</srcmd5>
+    <version>2.2.1</version>
+    <time>1540988259</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for caffe.
+
+- Add RPM groups. Fix wrong devel-static description.
+- Update to version 2.2.1
+  * Link to online documentation in README
+  * Merged 194: Include utils by file instead of CMAKE_MODULE_PATH
+    search
+  * Merged 195: Remove unused program_name variable
+  * Merged 196: Enable language C for older CMake versions when
+    needed
+  * Merged 202: Changed include directory in bazel build
+  * Merged 207: Mark single argument constructors in mutex.h as
+    explicit
+  * Merged 215: Fix static initialization order fiasco caused by
+    global registry lock
+  * Merged 216: Fix use of ARGC in CMake macros
+  * Merged 222: Static code analyzer error regarding strncmp with
+    empty kRootDir
+- Renamed source file
+- Initial 2.2.0 release
+</comment>
+    <requestid>645503</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fe5c968354be9d34a2295b94450b6f59</srcmd5>
+    <version>2.2.1</version>
+    <time>1568623998</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731054</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,95 @@
+From e802c612af3311f2b290c98cc175b236d8b013d4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 27 Mar 2018 02:10:18 +0200
+Subject: [PATCH] Fix build error due to ambigous overload of isnan/isinf
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In case the code is build with -std=c++11, there may be conflicting
+definitions of isnan/isinf vs std::isnan/std::isinf, due to the using
+namespace std directive.
+This happens for glibc versions 2.25 and older, see
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=48891 for details.
+
+Signed-off-by: Stefan Brüns <stefan.bruens@rwth-aachen.de>
+---
+ Common/processmodematch.cpp           | 2 +-
+ FDTD/extensions/operator_ext_tfsf.cpp | 2 +-
+ FDTD/operator.cpp                     | 6 +++---
+ tools/sar_calculation.cpp             | 2 +-
+ 4 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/Common/processmodematch.cpp b/Common/processmodematch.cpp
+index 620257d..85d2d58 100644
+--- a/Common/processmodematch.cpp
++++ b/Common/processmodematch.cpp
+@@ -174,7 +174,7 @@ void ProcessModeMatch::InitProcess()
+ 			for (int n=0; n<2; ++n)
+ 			{
+ 				m_ModeDist[n][posP][posPP] = m_ModeParser[n]->Eval(var); //calc mode template
+-				if ((isnan(m_ModeDist[n][posP][posPP])) || (isinf(m_ModeDist[n][posP][posPP])))
++				if ((std::isnan(m_ModeDist[n][posP][posPP])) || (std::isinf(m_ModeDist[n][posP][posPP])))
+ 					m_ModeDist[n][posP][posPP] = 0.0;
+ 				norm += pow(m_ModeDist[n][posP][posPP],2) * area;
+ 			}
+diff --git a/FDTD/extensions/operator_ext_tfsf.cpp b/FDTD/extensions/operator_ext_tfsf.cpp
+index 663dc1f..62fd580 100644
+--- a/FDTD/extensions/operator_ext_tfsf.cpp
++++ b/FDTD/extensions/operator_ext_tfsf.cpp
+@@ -159,7 +159,7 @@ bool Operator_Ext_TFSF::BuildExtension()
+ 		else
+ 			m_PhVel=m_Op->CalcNumericPhaseVelocity(m_Start,m_Stop,m_PropDir,m_Frequency);
+ 
+-		if ((m_PhVel<0) || (m_PhVel>__C0__/ref_index) || isnan(m_PhVel))
++		if ((m_PhVel<0) || (m_PhVel>__C0__/ref_index) || std::isnan(m_PhVel))
+ 		{
+ 			cerr << "Operator_Ext_TFSF::BuildExtension: Warning, invalid phase velocity found, resetting to c0! " << endl;
+ 			m_PhVel = __C0__/ref_index;
+diff --git a/FDTD/operator.cpp b/FDTD/operator.cpp
+index a7582aa..259b1fb 100644
+--- a/FDTD/operator.cpp
++++ b/FDTD/operator.cpp
+@@ -1395,7 +1395,7 @@ bool Operator::AverageMatCellCenter(int ny, const unsigned int* pos, double* Eff
+ 	if (EffMat[3]) EffMat[3]=length / EffMat[3];
+ 
+ 	for (int n=0; n<4; ++n)
+-		if (isnan(EffMat[n]) || isinf(EffMat[n]))
++		if (std::isnan(EffMat[n]) || std::isinf(EffMat[n]))
+ 		{
+ 			cerr << "Operator::" << __func__ << ": Error, an effective material parameter is not a valid result, this should NOT have happend... exit..." << endl;
+ 			cerr << ny << "@" << n << " : " << pos[0] << "," << pos[1] << ","  << pos[2] << endl;
+@@ -1508,7 +1508,7 @@ bool Operator::AverageMatQuarterCell(int ny, const unsigned int* pos, double* Ef
+ 	if (EffMat[3]) EffMat[3]=length / EffMat[3];
+ 
+ 	for (int n=0; n<4; ++n)
+-		if (isnan(EffMat[n]) || isinf(EffMat[n]))
++		if (std::isnan(EffMat[n]) || std::isinf(EffMat[n]))
+ 		{
+ 			cerr << "Operator::" << __func__ << ": Error, An effective material parameter is not a valid result, this should NOT have happend... exit..." << endl;
+ 			cerr << ny << "@" << n << " : " << pos[0] << "," << pos[1] << ","  << pos[2] << endl;
+@@ -1555,7 +1555,7 @@ bool Operator::Calc_LumpedElements()
+ 				if (R<0)
+ 					R = NAN;
+ 
+-				if ((isnan(R)) && (isnan(C)))
++				if ((std::isnan(R)) && (std::isnan(C)))
+ 				{
+ 					cerr << "Operator::Calc_LumpedElements(): Warning: Lumped Element R or C not specified! skipping. "
+ 							<< " ID: " << prims.at(bn)->GetID() << " @ Property: " << PLE->GetName() << endl;
+diff --git a/tools/sar_calculation.cpp b/tools/sar_calculation.cpp
+index 343aa07..e135aca 100644
+--- a/tools/sar_calculation.cpp
++++ b/tools/sar_calculation.cpp
+@@ -292,7 +292,7 @@ int SAR_Calculation::FindFittingCubicalMass(unsigned int pos[3], float box_size,
+ bool SAR_Calculation::GetCubicalMass(unsigned int pos[3], double box_size, unsigned int start[3], unsigned int stop[3],
+ 									 float partial_start[3], float partial_stop[3], double &mass, double &volume, double &bg_ratio, int disabledFace)
+ {
+-	if ((box_size<=0) || isnan(box_size) || isinf(box_size))
++	if ((box_size<=0) || std::isnan(box_size) || std::isinf(box_size))
+ 	{
+ 		cerr << "SAR_Calculation::GetCubicalMass: critical error: invalid averaging box size!! EXIT" << endl;
+ 		exit(-1);
+-- 
+2.16.2
+

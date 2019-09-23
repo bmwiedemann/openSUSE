@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1998efae6484ed367029d80af455cc9f</srcmd5>
+    <version>2.110000</version>
+    <time>1441727108</time>
+    <user>dimstar_suse</user>
+    <comment>needed for Log4Perl</comment>
+    <requestid>329541</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e459bb43d827f7061e401c1964b70620</srcmd5>
+    <version>2.120000</version>
+    <time>1445287761</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>337595</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f44d9b1e1118ee1f00c9d246c9b75e6f</srcmd5>
+    <version>2.140000</version>
+    <time>1498551656</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.14
+   see /usr/share/doc/packages/perl-File-Path/Changes
+  2.14 2017-06-07
+      - When creating subdirectories for testing underneath
+        File::Spec::Functions::tmpdir(), use randomly generated strings.
+      - No change in functionality from 2.13.
+
+- updated to 2.13
+   see /usr/share/doc/packages/perl-File-Path/Changes
+  2.13 2017-05-31
+      - Document security vulnerability reported as CVE-2017-6512.
+  
+  2.12_008 2017-05-07
+      - Patch from John Lightsey.
+  
+  2.12_007 2017-04-22
+      - Skip tests where filesystem doesn't support permissions (RT 121248).
+      - Add AppVeyor configuration; thanks to Charlie Gonzalez and Hayo Baan.
+  
+  2.12_006 2017-04-21
+      - Modernize README, Makefile.PL, updating of version number
+        and release date in documentation.
+  
+  2.12_005 2017-04-21
+      - Recommend use of 'safe =&gt; 1' in remove_tree() and rmtree().
+      - Warn if mkpath() or make_path() is passed implausible options on
+        Windows.
+      - Corrections to errors in previous release.
+  
+  2.12_004 2017-04-18</comment>
+    <requestid>506102</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>10e214e4d3d72407986eb0510e308a18</srcmd5>
+    <version>2.150000</version>
+    <time>1502011497</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514085</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b10161a1dd72acca50cbd31acc5416e8</srcmd5>
+    <version>2.160000</version>
+    <time>1536327280</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.16
+   see /usr/share/doc/packages/perl-File-Path/Changes
+  2.16 2018-08-31
+      - Correct inadequate method of generating names for dummy users
+        and groups during testing (RTC 121967).  No change in
+        functionality from 2.15.
+</comment>
+    <requestid>633281</requestid>
+  </revision>
+</revisionlist>

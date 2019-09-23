@@ -1,0 +1,854 @@
+-------------------------------------------------------------------
+Tue Sep  3 23:02:38 UTC 2019 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 3.11.1 (Fate#327837)
+  Bug fixes.
+- Dropped obsolete ocki-3.11-Fix-target_list-passing-for-EP11-session.patch
+
+-------------------------------------------------------------------
+Fri Feb 15 05:22:55 UTC 2019 - mpost@suse.com
+
+- Added ocki-3.11-Fix-target_list-passing-for-EP11-session.patch
+  (bsc#1123988)
+
+-------------------------------------------------------------------
+Fri Nov 30 00:04:41 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Do not ignore errors from groupadd. If groupadd fails,
+  installation ought not to proceed because files would have the
+  wrong ownership.
+
+-------------------------------------------------------------------
+Thu Nov 29 22:45:36 UTC 2018 - mpost@suse.com
+
+- Don't hide error messages from the groupadd command. To eliminate
+  a potentially common one, check to see if the pkcs11 group is
+  already defined before trying to add it.
+- Update the summary for the -devel package.
+- Changed several PreReq entries to Requires(pre) as a result of
+  the output from spec-cleaner. Removed a couple of obsolete lines.
+- Removed obsolete check for whether systemd is in use or not.
+
+-------------------------------------------------------------------
+Fri Nov 16 15:00:52 UTC 2018 - mpost@suse.com
+
+- Upgraded to version 3.11.0 (Fate#325685)
+  * opencryptoki 3.11.0
+    EP11 enhancements
+    A lot of bug fixes
+- Reworked the ocki-3.1-remove-make-install-chgrp.patch to apply
+  properly to 3.11, and renamed it to
+  ocki-3.11-remove-make-install-chgrp.patch
+- Removed obsolete patch ocki-3.5-icsf-coverity-memoryleakfix.patch
+
+-------------------------------------------------------------------
+Thu Nov 15 22:01:51 UTC 2018 - mpost@suse.com
+
+- Upgraded to version 3.10.0 (Fate#325685)
+  * opencryptoki 3.10.0
+    Add support to ECC on ICA token and to common code.
+    Add SHA224 support to SOFT token.
+    Improve pkcsslotd logging.
+    Fix sha512_hmac_sign and rsa_x509_verify for ICA token.
+    Fix tracing of session id.
+    Fix and improve testcases.
+    Fix spec file permission for log directory.
+    Fix build warnings.
+  * opencryptoki 3.9.0
+    Fix token reinitialization
+    Fix conditional man pages
+    EP11 enhancements
+    EP11 EC Key import
+    Increase RSA max key length
+    Fix broken links on documentation
+    Define CK_FALSE and CK_TRUE macros
+    Improve build flags
+- Dropped obsolete patch ocki-3.8.2-Fix-Hardware-Feature-Object-validation-and-tests.patch
+- Made multiple changes to the spec file based on spec-cleaner output.
+- Added an rpmlintrc file to squelch warnings about adding ghost
+  entries for files under /var/lock/opencryptoki/
+
+-------------------------------------------------------------------
+Tue Apr 17 22:56:43 UTC 2018 - mpost@suse.com
+
+- Added ocki-3.8.2-Fix-Hardware-Feature-Object-validation-and-tests.patch
+  (bsc#1086678)
+
+-------------------------------------------------------------------
+Fri Mar  9 19:25:51 UTC 2018 - mpost@suse.com
+
+- Re-enabled ARM architectures now that gcc6 is in SLE15. (bsc#1084617)
+
+-------------------------------------------------------------------
+Thu Nov 30 23:36:39 UTC 2017 - mpost@suse.com
+
+- Upgraded to version 3.8.2 (fate#323295, bsc#1066412)
+  * v3.8.2
+    Update man pages.
+    Improve ock_tests for parallel execution.
+    Fix FindObjectsInit for hidden HW-feature.
+    Fix to allow vendor defined hardware features.
+    Fix unresolved symbols.
+    Fix tracing.
+    Code/project cleanup.
+  * v3.8.1
+    Fix TPM data-structure reset function.
+    Fix error message when dlsym fails.
+    Update configure.ac
+    Update travis.
+  * v3.8.0
+    Multi token instance feature.
+    Added possibility to run opencryptoki with transactional memory or locks
+      (--enable-locks on configure step).
+    Updated documentation.
+    Fix segfault on ec_test.
+    Bunch of small fixes.
+
+-------------------------------------------------------------------
+Wed May 31 19:54:31 UTC 2017 - mpost@suse.com
+
+- Removed ARM architectures from the build list until gcc6 becomes
+  available for SLES. (bsc#1039510).
+
+-------------------------------------------------------------------
+Fri May 12 08:46:14 UTC 2017 - mpost@suse.com
+
+- Updated to version 3.7.0 (Fate#321451) (bsc#1036640)
+  - Update example spec file
+  - Performance improvement. Moving from mutexes to transactional memory.
+  - Add ECDSA SHA2 support for EP11 and CCA.
+  - Fix declaration of inline functions.
+  - Fix wrong testcase and ber en/decoding for integers.
+  - Check for 'flex' and 'YACC' on configure.
+  - EP11 config file rework.
+  - Add enable-debug on travis build.
+  - Add testcase for C_GetOperationState/C_SetOperationState.
+  - Upgrade License to CPL-1.0
+  - Ica token: fix openssh/ibmpkcs11 engine/libica crash.
+  - Fix segfault and logic in hardware feature test.
+  - Fix spelling of documentation and manuals.
+  - Fix the retrieval of p from a generated rsa key.
+  - Coverity scan fixes - incompatible pointer type and unused variables.
+
+-------------------------------------------------------------------
+Tue Apr 11 17:59:42 UTC 2017 - mpost@suse.com
+
+- Added libica-tools to the BuildRequires due to repackaging of libica.
+
+-------------------------------------------------------------------
+Mon Mar 20 21:51:54 UTC 2017 - mpost@suse.com
+
+- Modified the spec file
+  - Changed libca3-devel BuildRequires to just libica-devel
+  - Check for systemd in the 32bit postun scriptlet.
+
+-------------------------------------------------------------------
+Mon Feb 20 19:48:33 UTC 2017 - mpost@suse.com
+
+- Upgraded to version 3.6.2 (fate#321451)
+  - Support OpenSSL-1.1.
+  - Add Travis CI support.
+  - Update autotools scripts and documentation.
+  - Fix SegFault when a invalid session handle is passed in
+    SC_EncryptUpdate and SC_DecryptUpdate.
+- Updated spec file to use libica3-devel instead of libica2-devel.
+
+-------------------------------------------------------------------
+Tue Jan 17 17:12:30 UTC 2017 - mpost@suse.com
+
+- Upgraded to version 3.6.1 (fate#321451)
+  - opencryptoki 3.6.1
+    - Fix SOFT token implementation of digest functions.
+    - Replace deprecated OpenSSL interfaces.
+
+  - opencryptoki 3.6
+    - Replace deprecated libica interfaces.
+    - Performance improvement for ICA.
+    - Improvement in documentation on system resources.
+    - Improvement in testcases.
+    - Added support for rc=8, reasoncode=2028 in icsf token.
+    - Fix for session handle not set in session issue.
+    - Multiple fixes for lock and log directories.
+    - Downgraded a syslog error to warning.
+    - Multiple fixes based on coverity scan results.
+    - Added pkcs11 mapping for icsf reason code 72 for return code 8.
+
+  - opencryptoki 3.5.1
+    - Fix Illegal Intruction on pkcscca tool.
+
+  - Removed the following obsolete patches:
+    - ocki-3.5-sanity-checking.patch
+    - ocki-3.5-icsf-reasoncode72-support.patch
+    - ocki-3.5-downgrade-syslogerror.patch
+    - ocki-3.5-icsf-sessionhandle-missing-fix.patch
+    - ocki-3.5-icsf-reasoncode-2028-added.patch
+    - ocki-3.5-added-NULLreturn-check.patch
+    - ocki-3.5-create-missing-tpm-token-lock-directory.patch
+    - ocki-3.5-fix-pkcscca-calls.patch
+
+-------------------------------------------------------------------
+Mon Oct 31 14:19:17 UTC 2016 - jjolly@suse.com
+
+- Removed reference to pkcs1_startup from pkcsslotd (bsc#1007081)
+
+-------------------------------------------------------------------
+Thu Sep  1 17:06:45 UTC 2016 - mpost@suse.com
+
+- Added ocki-3.5-fix-pkcscca-calls.patch (bsc#996867).
+
+-------------------------------------------------------------------
+Fri Jul 29 17:32:24 UTC 2016 - mpost@suse.com
+
+- Added %doc FAQ to the spec file (bsc#991168).
+
+-------------------------------------------------------------------
+Tue Jul 19 17:07:16 UTC 2016 - mpost@suse.com
+
+- Added ocki-3.5-create-missing-tpm-token-lock-directory.patch
+  (bsc#989602).
+
+-------------------------------------------------------------------
+Fri Jul  8 18:06:42 UTC 2016 - mpost@suse.com
+
+- Added the following patches (bsc#986854)
+  - ocki-3.5-icsf-reasoncode72-support.patch
+  - ocki-3.5-icsf-coverity-memoryleakfix.patch
+  - ocki-3.5-downgrade-syslogerror.patch
+  - ocki-3.5-icsf-sessionhandle-missing-fix.patch
+  - ocki-3.5-icsf-reasoncode-2028-added.patch
+  - ocki-3.5-added-NULLreturn-check.patch
+
+-------------------------------------------------------------------
+Mon Jun 13 20:17:04 UTC 2016 - mpost@suse.com
+
+- Added ocki-3.5-sanity-checking.patch (bsc#983496).
+- Added %dir entry for %{_localstatedir}/log/opencryptoki/
+  (bsc#983990)
+
+-------------------------------------------------------------------
+Wed May 25 21:23:29 UTC 2016 - mpost@suse.com
+
+- Upgraded to openCryptoki 3.5 (bsc#978005).
+  - Full Coverity scan fixes.
+  - Fixes for compiler warnings.
+  - Added support for C_GetObjectSize in icsf token.
+  - Various bug fixes and memory leak fixes.
+  - Removed global read permissions from token files
+  - Added missing PKCS#11v2.2 constants.
+  - Fix for symbol resolution issue seen in Fedora 22 and 23 for
+    ep11 and cca tokens.
+  - Improvements in socket read operation when a token comes up.
+  - Replaced 32 bit CCA API declarations with latest header from
+    version 5.0 libsculcca rpm.
+
+-------------------------------------------------------------------
+Thu Apr 14 01:47:08 UTC 2016 - mpost@suse.com
+
+- Upgraded to openCryptoki v3.4.1 (Fate#319576, 319585, 319592, 319938).
+- Changed BuildRequires for libica_2_3_0-devel to libica2-devel.
+- Changed BuildRequires for openssl-devel to specify >= 1.0
+  Contrary to what the README says, version 0.9.7 isn't
+  sufficient.
+- Removed the redundant DESTDIR= parameter from the %make_install
+- Removed the following obsolete patches
+  opencryptoki-run-lock.patch (/var/lock and run/lock are actually the
+    same place) Also reverted the changed to openCryptoki-tmp.conf to match.
+  ocki-3.1_10_0001-ica-sha-update-empty-msg.patch
+  ocki-3.1-fix-implicit-decl.patch
+  ocki-3.1-fix-init_d-path.patch
+  ocki-3.1-fix-libica-link.patch
+  ocki-3.2_01_fix-return-type-error.patch
+  ocki-3.2_02_ep11-token-incorrectly-copied-the-public-key-object-.patch
+  ocki-3.2_03_ICSF-Token-C_SignUpdate-was-sometimes-segfaulting-an.patch
+  ocki-3.2_04_CKA_EC_POINT-is-not-required-in-the-ECDSA-private-ke.patch
+  ocki-3.2_05_icsf_ldap_handles.patch
+  ocki-3.2_06_icsf_sign_verify.patch
+
+- renamed: ocki-3.1-remove-make-install-chgrp-chmod.patch to
+  ocki-3.1-remove-make-install-chgrp.patch
+
+-------------------------------------------------------------------
+Fri Nov  6 14:00:42 UTC 2015 - jjolly@suse.com
+
+- Get a new ldap handle for each session opened in the icsf token,
+    once the user has authenticated. (bsc#953347,LTC#130078)
+  - ocki-3.2_05_icsf_ldap_handles.patch
+  - ocki-3.2_06_icsf_sign_verify.patch
+
+-------------------------------------------------------------------
+Fri Oct  2 04:05:45 UTC 2015 - jjolly@suse.com
+
+- Added /var/lib/opencryptoki/lite/TOK_OBJ token directory (bsc#943070)
+- Added ocki-3.2_02_ep11-token-incorrectly-copied-the-public-key-object-.patch
+  - Fixed two public key object inclusion in EP11 token (bsc#946808)
+- Added ocki-3.2_03_ICSF-Token-C_SignUpdate-was-sometimes-segfaulting-an.patch
+  - Fixed GPF when calling C_SignUpdate using ICFS toekn (bsc#946172)
+- Added ocki-3.2_04_CKA_EC_POINT-is-not-required-in-the-ECDSA-private-ke.patch
+  - Fixed failure to import ECDSA because of lack of attribute (bsc#948114)
+
+-------------------------------------------------------------------
+Thu Aug 20 00:49:21 UTC 2015 - jjolly@suse.com
+
+- Fixed BuildRequires: libica2-devel
+- Added ocki-3.2_01_fix-return-type-error.patch
+- Changing doc/README.ep11_stdll to unix-style EOL
+  - Added BuildRequires: dos2unix
+- Removed globbing in %files and specified libraries to include (bsc#942162)
+
+-------------------------------------------------------------------
+Tue Aug 18 02:50:08 UTC 2015 - jjolly@suse.com
+
+- Updated to openCryptoki v3.2 (FATE#318240)
+- Removed unnecessary patches:
+  - ocki-3.1_01_ep11_makefile.patch
+  - ocki-3.1_02_ep11_m_init.patch
+  - ocki-3.1_03_ock_obj_mgr.patch
+  - ocki-3.1_04_ep11_opaque2blob_error_handl.patch
+  - ocki-3.1_05_ep11_readme_update.patch
+  - ocki-3.1_06_0001-print_mechanism-ignored-bad-returncodes-from-the-cal.patch
+  - ocki-3.1_06_0002-Fix-failure-when-confname-is-not-given-use-default-e.patch
+  - ocki-3.1_06_0003-Configure-was-checking-for-the-ep11-lib-and-the-m_in.patch
+  - ocki-3.1_06_0004-The-asm-zcrypt.h-header-file-uses-some-std-int-types.patch
+  - ocki-3.1_06_0005-Small-reworks.patch
+  - ocki-3.1_06_0006-The-31-bit-build-on-s390-showed-an-build-error-at-in.patch
+  - ocki-3.1_06_0007-ep11-is-not-building-because-not-setting-with_zcrypt.patch
+  - ocki-3.1_07_0001-Man-page-corrections.patch
+  - ocki-3.1_08_0001-Add-a-pkcscca-tool-to-help-migrate-cca-private-token.patch
+  - ocki-3.1_08_0002-Add-documentation-pkcscca-manpage-and-README.cca_std.patch
+  - ocki-3.1_09_0001-Fix-EOL-encoding-in-README.patch
+
+-------------------------------------------------------------------
+Tue Apr  7 21:22:57 UTC 2015 - crrodriguez@opensuse.org
+
+- Also create parent directory /run/lock/opencryptoki in 
+  tmpfiles snippet if it does not exists.
+
+-------------------------------------------------------------------
+Tue Apr  7 21:19:43 UTC 2015 - crrodriguez@opensuse.org
+
+- spec: do not use -D__USE_BSD, a glibc-internal macro
+  which no longer has any meaning.
+
+-------------------------------------------------------------------
+Tue Apr  7 21:18:21 UTC 2015 - crrodriguez@opensuse.org
+
+- spec: use %{_unitdir}  %{_tmpfilesdir)
+- spec: call tmpfiles_create macro, if defined in %post
+- opencryptoki-run-lock.patch, openCryptoki-tmp.conf: use
+  /run/lock instead of /var/lock.
+
+-------------------------------------------------------------------
+Wed Dec 17 10:42:43 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 3.2
+  +New pkcscca tool. Currently it assists in migrating cca private token
+   objects from opencryptoki version 2 to the clear key encryption method 
+   used in opencryptoki version 3. Includes a manpage for pkcscca tool.
+   Changes to README.cca_stdll to assist in using the CCA token and
+   migrating the private token objects.
+  + Support for CKM_RSA_PKCS_OAEP and CKM_RSA_PKCS_PSS algorithms.
+  + Various bugfixes.
+  + New testcases for various crypto algorithms.
+- Only depend on insserv if builded with sysvinit support
+- Remove obsolete patches; merged on upstream release
+  + ocki-3.1_01_ep11_makefile.patch
+  + ocki-3.1_02_ep11_m_init.patch
+  + ocki-3.1_03_ock_obj_mgr.patch
+  + ocki-3.1_04_ep11_opaque2blob_error_handl.patch
+  + ocki-3.1_05_ep11_readme_update.patch
+  + ocki-3.1_06_0001-print_mechanism-ignored-bad-returncodes-from-the-cal.patch
+  + ocki-3.1_06_0002-Fix-failure-when-confname-is-not-given-use-default-e.patch
+  + ocki-3.1_06_0003-Configure-was-checking-for-the-ep11-lib-and-the-m_in.patch
+  + ocki-3.1_06_0004-The-asm-zcrypt.h-header-file-uses-some-std-int-types.patch
+  + ocki-3.1_06_0005-Small-reworks.patch
+  + ocki-3.1_06_0006-The-31-bit-build-on-s390-showed-an-build-error-at-in.patch
+  + ocki-3.1_06_0007-ep11-is-not-building-because-not-setting-with_zcrypt.patch
+  + ocki-3.1_07_0001-Man-page-corrections.patch
+  + ocki-3.1_08_0001-Add-a-pkcscca-tool-to-help-migrate-cca-private-token.patch
+  + ocki-3.1_08_0002-Add-documentation-pkcscca-manpage-and-README.cca_std.patch
+  + ocki-3.1_09_0001-Fix-EOL-encoding-in-README.patch
+  + ocki-3.1_10_0001-ica-sha-update-empty-msg.patch
+- Project is now hosted on sourceforge; fix the Url
+- Remove cvs related stuff; tarball is produced by upstream
+- Use %configure macro instead of manually defined options
+- Build with parallel support; use %{?_smp_mflags} macro
+
+-------------------------------------------------------------------
+Fri Sep  5 15:30:59 UTC 2014 - jjolly@suse.com
+
+- Fixed ica token's SHA update function when passing zero message
+  size (bnc#892644)
+- Added patch ocki-3.1_10_0001-ica-sha-update-empty-msg.patch
+
+-------------------------------------------------------------------
+Fri Sep  5 04:05:02 UTC 2014 - jjolly@suse.com
+
+- Fixed README.ep11_stdll to have Unix-style EOL characters.
+- Added patch ocki-3.1_09_0001-Fix-EOL-encoding-in-README.patch
+
+-------------------------------------------------------------------
+Thu Sep  4 21:51:32 UTC 2014 - jjolly@suse.com
+
+- Added all files from %src/doc as rpm %doc (bnc#894780)
+
+-------------------------------------------------------------------
+Thu Sep  4 21:17:04 UTC 2014 - jjolly@suse.com
+
+- Added pkcscca utility and documentation to convert private
+  token objects from v2 to v3. (bnc#893757)
+- Added patches:
+  - ocki-3.1_08_0001-Add-a-pkcscca-tool-to-help-migrate-cca-private-token.patch
+  - ocki-3.1_08_0002-Add-documentation-pkcscca-manpage-and-README.cca_std.patch
+
+-------------------------------------------------------------------
+Thu Sep  4 20:35:01 UTC 2014 - jjolly@suse.com
+
+- Fixed pkcsslotd and opencryptoki.conf man pages (bnc#889183)
+- Added patch ocki-3.1_07_0001-Man-page-corrections.patch
+
+-------------------------------------------------------------------
+Fri Aug 15 02:14:21 UTC 2014 - sfalken@opensuse.org
+
+- Specfile Cleanup, Added directory macros in appropriate places 
+
+-------------------------------------------------------------------
+Thu Jun 26 06:55:03 UTC 2014 - jjolly@suse.com
+
+- Several package changes as per bnc#880217
+  - Added openCryptoki-tmp.conf for lock directory management
+  - Added 'lite' token support
+  - Changed from init.d daemon to systemd service
+    - Updated macros in %pre %post %preun and %postun sections
+  - Added missing icsf and ep11tok directories to %files section
+    ocki-3.1_01_ep11_makefile.patch
+    ocki-3.1_02_ep11_m_init.patch
+
+- Patches added:
+  ocki-3.1-fix-libica-link.patch
+  ocki-3.1_03_ock_obj_mgr.patch
+  ocki-3.1_04_ep11_opaque2blob_error_handl.patch
+  ocki-3.1_05_ep11_readme_update.patch
+  ocki-3.1_06_0001-print_mechanism-ignored-bad-returncodes-from-the-cal.patch
+  ocki-3.1_06_0002-Fix-failure-when-confname-is-not-given-use-default-e.patch
+  ocki-3.1_06_0003-Configure-was-checking-for-the-ep11-lib-and-the-m_in.patch
+  ocki-3.1_06_0004-The-asm-zcrypt.h-header-file-uses-some-std-int-types.patch
+  ocki-3.1_06_0005-Small-reworks.patch
+  ocki-3.1_06_0006-The-31-bit-build-on-s390-showed-an-build-error-at-in.patch
+  ocki-3.1_06_0007-ep11-is-not-building-because-not-setting-with_zcrypt.patch
+
+-------------------------------------------------------------------
+Thu Jun  5 13:28:29 UTC 2014 - jjolly@suse.com
+
+- Moved libpkcs11_icsf 32-bit out of s390-specific files
+
+-------------------------------------------------------------------
+Thu Jun  5 13:00:31 UTC 2014 - jjolly@suse.com
+
+- Made ep11tok.conf and pkcsep11_migrate specific to s390/s390x
+- Added libpkcs11_ep11.so and libpkcs11_icsf.so to 32-bit s390/s390x
+
+-------------------------------------------------------------------
+Thu Jun  5 05:06:34 UTC 2014 - jjolly@suse.com
+
+- EP11 token available in the opencryptoki V3.1 package  (bnc#879303)
+  - Specfile changed to include ep11tok.conf
+  - Specfile changed to include pkcsep11_migrate and pkcsicsf tools
+  - Specfile changed to BuildRequires openldap2-devel
+  - ocki-3.1_06_0001-print_mechanism-ignored-bad-returncodes-from-the-cal.patch
+    - print_mechanism() ignored bad returncodes from the called
+      function token_specific_get_mechanism_list()
+  - ocki-3.1_06_0002-Fix-failure-when-confname-is-not-given-use-default-e.patch
+    - Fix failure when confname is not given, use default
+      ep11tok.conf instead
+  - ocki-3.1_06_0003-Configure-was-checking-for-the-ep11-lib-and-the-m_in.patch
+    - Removed check for ep11 lib at configure
+  - ocki-3.1_06_0004-The-asm-zcrypt.h-header-file-uses-some-std-int-types.patch
+    - Move stdint.h before zcrypt.h to resolve dependencies
+  - ocki-3.1_06_0005-Small-reworks.patch
+    - testcase fixes and file permission changes
+  - ocki-3.1_06_0006-The-31-bit-build-on-s390-showed-an-build-error-at-in.patch
+    - Fix for s390 31-bit build error
+  - ocki-3.1_06_0007-ep11-is-not-building-because-not-setting-with_zcrypt.patch
+    - zcrypt library included in build by default
+
+-------------------------------------------------------------------
+Fri Mar  7 19:03:59 UTC 2014 - jjolly@suse.com
+
+- Patches applied (bnc#865549)
+  - Fixed Makefile to complement common code dependencies
+  - switched to official m_init() function based on library change
+  - checking the global token object count
+  - catch the return code from object_mgr_find_in_map1
+  - some README updates about usage and restrictions
+
+-------------------------------------------------------------------
+Wed Mar  5 17:58:21 CET 2014 - ro@suse.de
+
+- fix build on x86 (add CCA and TPM to filelist) 
+- fix libica detection on s390/s390x to get ICA module built
+
+-------------------------------------------------------------------
+Mon Feb  4 17:16:25 UTC 2014 - jjolly@suse.com
+
+- Updated to openCryptoki v3.1: See ChangeLog for complete details
+  (FATE#315426)
+  - opencryptoki-3.1
+    - New ep11 token to support IBM Crypto Express adpaters
+      (starting with Crypto Express 4S adapters) configured with
+      Enterprise PKCS#11(EP11) firmware. (FATE#315330)
+  - opencryptoki-3.0
+    - New opencryptoki.conf file to replace pk_config_data and
+      pkcs11_starup.  The opencryptoki.conf contains slot entry
+      information for tokens.
+    - Removed pkcs_slot and pkcs11_startup shell scripts.
+    - ICA token supports CKM_DES_OFB64, CKM_DES_CFB8, CKM_DES_CFB6
+      mechanisms using 3DES keys. (FATE#315323)
+    - ICA token supports CKM_DES3_MAC and CKM_DES3_MAC_GENERAL
+      mechanisms. (FATE#315323)
+    - ICA token supports CKM_AES_OFB, CKM_AES_CFB8, CKM_AES_CFB64,
+      CKM_AES_CFB128, CKM_AES_MAC, and CKM_AES_MAC_GENERAL
+      mechanisms. (FATE#315323)
+  - opencryptoki-2.4.1 (21 Feb 2012)
+    - SHA256 support added for CCA token (FATE#315289)
+- Using insserv macros in %post, %preun and %postun sections
+- Cleaned up spec file
+- removed patches:
+  - ocki-2.2.6-PIN-backspace.patch
+- added patches:
+  - ocki-3.1-fix-implicit-decl.patch
+  - ocki-3.1-remove-make-install-chgrp-chmod.patch
+  - ocki-3.1-fix-init_d-path.patch
+
+-------------------------------------------------------------------
+Tue Feb  4 13:22:49 CET 2014 - ro@suse.de
+
+- add aarch64 to 64bit archs 
+
+-------------------------------------------------------------------
+Tue Dec 10 19:25:44 UTC 2013 - dvaleev@suse.com
+
+- enable ppc64le 
+
+-------------------------------------------------------------------
+Sat Dec  8 18:51:31 UTC 2012 - meissner@suse.com
+
+- remove -o from groupadd
+- fixed sed script to not a grouplist with leading ,
+
+-------------------------------------------------------------------
+Sun Nov 27 06:59:49 UTC 2011 - coolo@suse.com
+
+- don't package man pages twice
+
+-------------------------------------------------------------------
+Sun Nov 27 06:52:25 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Sep 27 08:02:22 CEST 2010 - meissner@suse.de
+
+- enable TPM support (bnc#641919)
+
+-------------------------------------------------------------------
+Fri Feb 20 06:01:56 CET 2009 - jjolly@suse.de
+
+- pkcsslotd: Updated to use new pidfile location (bnc#475800)
+
+-------------------------------------------------------------------
+Fri Jan 23 23:02:19 CET 2009 - jjolly@suse.de
+
+- Added fix to allow backspacing during PIN entry (bnc#448089)
+
+-------------------------------------------------------------------
+Fri Jan 23 07:42:59 CET 2009 - olh@suse.de
+
+- run ldconfig in postinstall [bnc#417925]
+
+-------------------------------------------------------------------
+Tue Dec  9 14:16:37 CET 2008 - kukuk@suse.de
+
+- Enable build on x86_64 [bnc#417925]
+
+-------------------------------------------------------------------
+Thu Nov  6 06:25:48 CET 2008 - jjolly@suse.de
+
+- Overhaul of the specfile.  All platforms build the base package
+  and each architecture builds the appropriate 32 or 64 bit package
+
+-------------------------------------------------------------------
+Fri Sep 12 06:55:17 CEST 2008 - jjolly@suse.de
+
+- Updated to openCryptoki v2.2.6
+
+-------------------------------------------------------------------
+Thu Aug 28 18:21:26 CEST 2008 - ro@suse.de
+
+- fix init script 
+
+-------------------------------------------------------------------
+Fri Mar 30 01:29:49 CEST 2007 - ro@suse.de
+
+- added pwdutils to buildreq 
+
+-------------------------------------------------------------------
+Fri Oct 20 02:25:46 CEST 2006 - ro@suse.de
+
+- fix missing return values from non-void funcs 
+
+-------------------------------------------------------------------
+Fri Apr 21 13:06:00 CEST 2006 - uli@suse.de
+
+- pkcsslotd: create PID file in the right place, delete it on
+  exit (bug #164664)
+
+-------------------------------------------------------------------
+Tue Apr 11 13:29:07 CEST 2006 - uli@suse.de
+
+- added 64-bit patches from IBM (bug #145666)
+
+-------------------------------------------------------------------
+Mon Apr 10 13:30:50 CEST 2006 - uli@suse.de
+
+- added small change missing from patch for bug #156651 
+
+-------------------------------------------------------------------
+Mon Apr  3 13:57:52 CEST 2006 - uli@suse.de
+
+- fixed location of pkcs11_startup in init script (bug #162372)
+
+-------------------------------------------------------------------
+Mon Mar 13 15:05:17 CET 2006 - uli@suse.de
+
+- fixed proc_t structure mixup (bug #156651) 
+
+-------------------------------------------------------------------
+Thu Mar  9 17:18:33 CET 2006 - uli@suse.de
+
+- initialize head pointer (bug #156229)
+
+-------------------------------------------------------------------
+Mon Mar  6 13:20:21 CET 2006 - uli@suse.de
+
+- %ghost symlinks that are generated in %post (bug #154961)
+
+-------------------------------------------------------------------
+Thu Feb  2 13:15:13 CET 2006 - uli@suse.de
+
+- stuffed memleak (patch by IBM, bug #147036)
+
+-------------------------------------------------------------------
+Wed Feb  1 13:31:05 CET 2006 - uli@suse.de
+
+- changed RPM layout to meet IBM's demands (based on patch by IBM,
+  bug #145666)
+- removed mmap, per-user data store support (patch by IBM, bug
+  #145666)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:59 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 10:25:37 CET 2006 - hare@suse.de
+
+- Update to 2.2.2-rc2
+
+-------------------------------------------------------------------
+Wed Jan 11 17:11:58 CET 2006 - hare@suse.de
+
+- Update to 2.2.1-rc2
+- Fixed build errors
+- Cleaned up spec file.
+
+-------------------------------------------------------------------
+Wed Dec 14 01:32:20 CET 2005 - ro@suse.de
+
+- copy TFAQ to build directory (fix build) 
+
+-------------------------------------------------------------------
+Mon Dec 12 15:35:22 CET 2005 - hare@suse.de
+
+- Update to 2.1.6-rc5.
+- Port fixes from SLES9 SP3.
+
+-------------------------------------------------------------------
+Tue Nov 15 18:03:22 CET 2005 - uli@suse.de
+
+- enabled for ARM
+
+-------------------------------------------------------------------
+Thu Feb 17 12:58:00 CET 2005 - od@suse.de
+
+- fix #50050:
+  - ./configure.in: wrong test against $host makes ppc(64) miss
+    -DPKCS64 in CFLAGS
+  - corrected: S390 flag was set for ppc in this conditional
+
+-------------------------------------------------------------------
+Mon Aug 16 12:52:01 CEST 2004 - ro@suse.de
+
+- run full autoreconf / simplify specfile a little
+
+-------------------------------------------------------------------
+Tue Apr 27 08:26:46 CEST 2004 - hare@suse.de
+
+- Print correct error message (#37427 again).
+
+-------------------------------------------------------------------
+Fri Apr 23 08:18:14 CEST 2004 - hare@suse.de
+
+- Check for the correct module on startup (#37427)
+
+-------------------------------------------------------------------
+Sun Apr 18 17:57:30 CEST 2004 - olh@suse.de
+
+- update to openCryptoki-2.1.5, ppc64 version (#39026)
+
+-------------------------------------------------------------------
+Wed Feb 18 01:29:07 CET 2004 - ro@suse.de
+
+- adapt filelist on ppc
+
+-------------------------------------------------------------------
+Thu Feb 12 14:27:08 CET 2004 - kukuk@suse.de
+
+- Fix owner/group of files/directories
+
+-------------------------------------------------------------------
+Fri Dec  5 12:28:30 CET 2003 - ro@suse.de
+
+- no need to specify "root" as supplementary group for root,
+  it's already primary
+
+-------------------------------------------------------------------
+Wed Jul 30 18:12:32 CEST 2003 - hare@suse.de
+
+- Update to openCryptoki-2.1.3
+- Fixed configure errors.
+
+-------------------------------------------------------------------
+Mon Jun 23 02:12:34 CEST 2003 - ro@suse.de
+
+- added directories to filelist 
+
+-------------------------------------------------------------------
+Wed Jun  4 00:31:28 CEST 2003 - ro@suse.de
+
+- remove CVS subdirs
+- remove unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Thu Nov 21 01:34:11 CET 2002 - ro@suse.de
+
+- removed duplicates from configure.in 
+
+-------------------------------------------------------------------
+Tue Oct  1 10:51:18 CEST 2002 - froh@suse.de
+
+- exclude ppc64 from the architectures, the package is built for.
+  64bit mode is not supported by IBM yet; dlopen wrappers are also
+  missing 64bit filename handling. (#20380)
+- actually compress the openCryptoki-1.4*.tar.bz2
+
+-------------------------------------------------------------------
+Tue Sep 24 20:18:36 CEST 2002 - ro@suse.de
+
+- make it even build ... 
+
+-------------------------------------------------------------------
+Tue Sep 24 14:25:51 CEST 2002 - froh@suse.de
+
+- make openCryptoki-XXbit PreReq: openCryptoki to enforce pkcs11 group
+  creation before package installation (#20079)
+- correct version number (the patch actiually lifts openCryptoki to 1.5)
+- fix groupadd call to no longer silently ignore errors in all cases
+  using (hopefully) posix exit codes.  alternative would be to use
+  undocumented '-f' option of groupadd.
+
+-------------------------------------------------------------------
+Fri Sep 20 13:37:22 CEST 2002 - froh@suse.de
+
+- add user root to group pkcs11 to enable root to administrate the
+  crypto hardware support (#19566)
+
+-------------------------------------------------------------------
+Mon Aug 26 17:24:21 CEST 2002 - okir@suse.de
+
+- misc security fixes (#18377)
+
+-------------------------------------------------------------------
+Fri Aug 23 17:14:45 CEST 2002 - froh@suse.de
+
+- replaced openCryptoki-tools with openCryptoki-32bit and
+  openCryptoki-64bit
+
+-------------------------------------------------------------------
+Thu Aug 22 10:45:35 CEST 2002 - froh@suse.de
+
+- moved dlopen objects that are available for non-x86 out of the
+  ifarch ix86
+- moved postun to tools subpackge (which contains the daemon)
+- removed include files.  no development support for now.
+- replaced %%ix86, etc by appropriate generic %%openCryptoki_tools_arch
+  and %%openCryptoki_no_tools_arch
+
+-------------------------------------------------------------------
+Wed Aug 21 12:06:21 CEST 2002 - ro@suse.de
+
+- replaced all i386 occurrences with %ix86 
+- changed filelist to what's really built
+
+-------------------------------------------------------------------
+Tue Aug 20 12:24:50 CEST 2002 - froh@suse.de
+
+- split package to openCryptoki and openCryptoki-tools to allow
+  parallel installation of 32bit tools with 64bit dlopen objects for
+  foreign middleware.
+- removed automatical insserv on install, because the package needs
+  manual configuration (#18031)
+
+-------------------------------------------------------------------
+Mon Aug 12 11:01:37 CEST 2002 - froh@suse.de
+
+- added missing %post before insserv (Bug #17600)
+
+-------------------------------------------------------------------
+Fri Aug  9 13:03:05 CEST 2002 - kukuk@suse.de
+
+- Fix path in PreReq.
+
+-------------------------------------------------------------------
+Wed Aug  7 12:36:09 CEST 2002 - froh@suse.de
+
+- add groupadd pkcs11 in %pre install
+
+-------------------------------------------------------------------
+Mon Jul 29 17:21:49 CEST 2002 - froh@suse.de
+
+- updated to current version
+- removed old START_ variable
+
+-------------------------------------------------------------------
+Fri Jun 14 00:07:03 CEST 2002 - ro@suse.de
+
+- always use macros when calling insserv
+ 
+-------------------------------------------------------------------
+Tue Apr  9 21:06:49 CEST 2002 - bk@suse.de
+
+- add lib64 support
+
+-------------------------------------------------------------------
+Tue Feb  5 11:01:16 CET 2002 - froh@suse.de
+
+- Added openssl to #neededforbuild, which is needed in addition to
+  openssl-devel
+
+-------------------------------------------------------------------
+Wed Jan 30 16:20:48 CET 2002 - froh@suse.de
+
+- initial version
+
+-------------------------------------------------------------------

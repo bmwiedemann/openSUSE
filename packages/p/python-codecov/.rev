@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>406c8bc05ccb3ded7e6237944a3b7ee5</srcmd5>
+    <version>2.0.15</version>
+    <time>1528492374</time>
+    <user>dimstar_suse</user>
+    <comment>Required by python-coala</comment>
+    <requestid>613313</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>710d0eb98f82e36df025b58c414e83aa</srcmd5>
+    <version>2.0.15</version>
+    <time>1535123053</time>
+    <user>dimstar_suse</user>
+    <comment>Remove dependency on unittest2
+(tests are not run at all, because they depend on network)</comment>
+    <requestid>629005</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>18001c3e3f815e26735556e7007b17f5</srcmd5>
+    <version>2.0.15</version>
+    <time>1544726485</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653977</requestid>
+  </revision>
+</revisionlist>

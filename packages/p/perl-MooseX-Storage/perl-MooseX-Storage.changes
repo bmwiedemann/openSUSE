@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Sat Oct  8 16:23:18 UTC 2016 - coolo@suse.com
+
+- updated to 0.52
+   see /usr/share/doc/packages/perl-MooseX-Storage/Changes
+
+  0.52      2016-06-22 03:22:12Z
+    - when looking for a serializer for a type constraint, always use the
+      user-defined type handler first, before recursing into parent types
+  
+  0.51      2016-02-10 20:06:41Z (TRIAL RELEASE)
+    - support serialization of "maybe" types created by MooseX::Types (PR#12)
+  
+  0.50      2015-05-05 20:09:42Z
+    - revert changes in 0.49 for deeply-nested objects (see RT#104106)
+
+-------------------------------------------------------------------
+Tue Apr 14 18:16:10 UTC 2015 - coolo@suse.com
+
+- updated to 0.49
+   see /usr/share/doc/packages/perl-MooseX-Storage/Changes
+
+  0.49      2015-03-29 00:24:43Z
+    - now handling more deeply-nested objects (PR#7, RT#81236, thanks Dmitry
+      Latin!)
+    - fix error in DateTime example (PR#8, thanks sillitoe!)
+  
+  0.48      2014-10-12 02:01:31Z
+    - switched the JSON serializer from JSON::Any to JSON::MaybeXS
+    - interactive prompting at install time is now back!
+  
+  0.47      2014-08-23 22:34:21Z
+    - report the versions of all JSON and YAML backends during tests, in an
+      attempt to track down an elusive bug
+    - now properly serializing attributes that are set to the undefined value
+      (github #6, thanks, Jason Pope!)
+    - fix compatibility problem with MooseX::Role::Parameterized 1.03+ and
+      MooseX::Storage::Format::JSONpm (some internal details changed that we
+      were relying on)
+  
+  0.46      2014-03-23 18:26:44Z
+    - numerous small documentation clarifications and fixes
+
+-------------------------------------------------------------------
+Sat Mar 15 13:01:41 UTC 2014 - coolo@suse.com
+
+- updated to 0.45
+   - re-release to fix compile test
+   - removed use of deprecated Class::MOP::load_class
+   - all features are now configured as x_default => 1 in metadata (not yet
+     supported by any cpan clients), signalling to automatically add to prereqs
+     when installing non-interactively
+   - re-release with properly encoded META.yml
+   - re-release with updated Dist::Zilla plugins to clear the dynamic_config
+     flag in metadata
+   - repository has moved to the GitHub Moose organization
+   - replaced last use of Best (held over since 2010!) to YAML::Any
+   - fixed another test making use of optional features
+   - re-release with new compile test, which properly declares all its prerequisites
+   - fixed compile tests so that modules using optional features are skipped
+     (from 0.36-TRIAL)
+   - convert to Dist::Zilla, with new optional prereq handling
+
+-------------------------------------------------------------------
+Sun Dec 25 18:15:14 UTC 2011 - coolo@suse.com
+
+- update to 0.30
+  * Make Makefile.PL features work again. RT#67170
+  * Remove use of Test::TempDir in favor of File::Temp (gphat)
+  * Make the engine_traits parameter be able to use a '+My::Trait::Name'
+    prefix to specify a trait name which isn't in the
+    MooseX::Storage::Engine::Trait namespace
+  * Misc POD and test cleanups.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:54 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:39 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jul 25 07:22:42 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.27)
+

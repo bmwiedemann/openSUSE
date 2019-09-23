@@ -1,0 +1,5 @@
+<package name="python-django-oidc-provider" project="openSUSE:Factory">
+  <title></title>
+  <description>OpenID Connect Provider implementation for Django</description>
+  <devel project="devel:languages:python:django" package="python-django-oidc-provider"/>
+</package>

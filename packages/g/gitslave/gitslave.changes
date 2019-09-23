@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Wed Sep 14 20:36:00 UTC 2016 - robert.munteanu@gmail.com
+
+- Added 0004-fix-deprecation-warnings.patch, fixes deprecation 
+  warnings caused by an unescaped left brace in a regex
+
+-------------------------------------------------------------------
+Mon Jul 18 11:15:00 UTC 2016 - robert.munteanu@gmail.com
+
+- Added 0003-fix-pod2man-invocation.patch, fixing build on TW
+
+-------------------------------------------------------------------
+Tue Mar  3 13:05:22 UTC 2015 - robert.munteanu@gmail.com
+
+- Added 0002-fix-gits-unexpected-status.patch , fixing 'gits status'
+  invocation on versions of git >= 1.8.5
+
+-------------------------------------------------------------------
+Tue Jul  2 09:28:26 UTC 2013 - robert.munteanu@gmail.com
+
+- Added 0001-fix-inappropriate-REPO-substitution.patch, 
+  cherry-picked from upstream 
+
+-------------------------------------------------------------------
+Sun Jun 16 11:39:29 UTC 2013 - robert.munteanu@gmail.com
+
+- Initial packaging of version 2.0.2 
+

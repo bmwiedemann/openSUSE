@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e1ef887bd520c9802f175ccfab57d92</srcmd5>
+    <version>1.1.g15</version>
+    <time>1467205772</time>
+    <user>dimstar_suse</user>
+    <comment>prerequisite for updated vulkan package</comment>
+    <requestid>401619</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f01740909a959df3f122146562afdde9</srcmd5>
+    <version>1.1.g29</version>
+    <time>1486465466</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 1.1.g29</comment>
+    <requestid>454707</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c58a236e6fd39bed03f7d3a9c7577597</srcmd5>
+    <version>1.1.g32</version>
+    <time>1488479248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 1.1.g31</comment>
+    <requestid>459300</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e35b97c43c3e9e9c4112d95e5d844ff9</srcmd5>
+    <version>1.1.g44</version>
+    <time>1501067109</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>512462</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3e6ceedc167c752be808f53cfb597ca8</srcmd5>
+    <version>1.1.g46</version>
+    <time>1502186379</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to new snapshot 1.1.g46</comment>
+    <requestid>515069</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>22acdf9ad88ede55ffd05bd29e3b87b0</srcmd5>
+    <version>1.2.g13</version>
+    <time>1511817339</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>545211</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>efd593d87d5bbee885a6fe6bf991226e</srcmd5>
+    <version>1.2.g22</version>
+    <time>1518281684</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 1.2.g22</comment>
+    <requestid>573918</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1537bda8034b0ea5226d7b4f30cfed72</srcmd5>
+    <version>1.3.g0</version>
+    <time>1520852839</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 1.3.g0</comment>
+    <requestid>584121</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3469a1f3cd1299d60cbc57c6c8d7a82b</srcmd5>
+    <version>1.3.g34</version>
+    <time>1536678686</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to new snapshot 1.3.g34</comment>
+    <requestid>631741</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>797ddeaa3d141b87e05b5171e42bff08</srcmd5>
+    <version>1.3.g44</version>
+    <time>1542011713</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 1.3.g44</comment>
+    <requestid>648152</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1f7313824dafb56860cd4326445fde8a</srcmd5>
+    <version>1.3.g50</version>
+    <time>1545866692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 1.3.g50</comment>
+    <requestid>658216</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a342f95bfe2dc6138149c82adf613184</srcmd5>
+    <version>1.3.g60</version>
+    <time>1547554446</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshto 1.3.g60</comment>
+    <requestid>663458</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d60a7af0831e643ba3989210f717dff6</srcmd5>
+    <version>1.3.7</version>
+    <time>1553699439</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.3.7</comment>
+    <requestid>685790</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>747bfb279a270821fbeb18a65a5a9cd6</srcmd5>
+    <version>1.4.1.g17</version>
+    <time>1560458083</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 1.4.1.g17</comment>
+    <requestid>707922</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>aaaf71480ec5d970495ca001981d0eec</srcmd5>
+    <version>1.4.1.g36</version>
+    <time>1566664917</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 1.4.1.g36</comment>
+    <requestid>724960</requestid>
+  </revision>
+</revisionlist>

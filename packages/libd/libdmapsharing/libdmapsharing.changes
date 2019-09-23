@@ -1,0 +1,241 @@
+-------------------------------------------------------------------
+Tue Sep 10 18:48:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add missing pkgconfig(avahi-client) and pkgconfig(gtk+-2.0)
+  BuildRequires previously pulled in by avahi.
+
+-------------------------------------------------------------------
+Fri Apr 19 06:48:39 UTC 2019 - Max Lin <mlin@suse.com>
+
+- Fix build with vala >= 0.43
+  * Add new_vala_build.patch carry from
+    https://gitlab.gnome.org/GNOME/libdmapsharing/issues/7
+
+-------------------------------------------------------------------
+Thu Jun 22 15:28:34 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.9.38:
+  + After failing to get preferred port, try both IPV4 and IPV6.
+  + Fix bad error handling on soup_server_get_uris (Clang
+    scan-build).
+
+-------------------------------------------------------------------
+Thu Feb 23 01:56:00 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.9.37:
+  + Use g_new0 (bgo#773400).
+  + Do not use literal "VERSION"; use VERSION macro (bgo#773480).
+  + Remove memory failure check (bgo#755210).
+- Changes from version 2.9.36:
+  + Allow explicit disable of libcheck at configure time.
+- Changes from version 2.9.35:
+  + tests: Fix compilation due to wrong formats.
+
+-------------------------------------------------------------------
+Mon Feb 29 21:39:41 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.9.34:
+  + Move g_object_unref of server inside conditional.
+  + Remove extra g_object_unref in dacp-share.c.
+  + Initialize the share_bitwise_t share member.
+- Changes from version 2.9.33:
+  + Use soup_session_new() instead of deprecated
+    soup_session_new_async().
+  + Always set base URI path.
+  + Use new SoupServer API to create DMAPShare server.
+  + Require libsoup 2.48.0.
+  + Add to dmap-mdns-browser-dnssd.c the ability to lookup host
+    name using mDNS.
+  + Fix compile error.
+  + First pass cleaning up dmap-mdns-browser-dnssd.c.
+  + dns-sd browser: extract name out of, e.g.,
+    Foo\032Bar._daap._tcp.local.
+  + Set GError when DNSServiceBrowse fails.
+
+-------------------------------------------------------------------
+Mon Dec  7 20:40:05 UTC 2015 - jengelh@inai.de
+
+- Summary and RPM group update
+
+-------------------------------------------------------------------
+Mon Nov 23 20:16:03 UTC 2015 - mpluskal@suse.com
+
+- Update to 2.9.32
+  * Small fix for dmap_mdns_browser_start
+- Make building more verbose
+
+-------------------------------------------------------------------
+Fri Jul 10 19:42:33 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.9.31:
+  + Update some Vala-related files.
+  + Fix two errors identified by Coverity (bgo#749886).
+  + Update libdmapsharing-3.0-docs.xml.
+  + Use --pkg gio-2.0, not --pkg glib-2.0 for Vala.
+- Replace pkgconfig(glib-2.0) for pkgconfig(gio-2.0) BuildRequires
+  following upstream changes.
+
+-------------------------------------------------------------------
+Sat Mar 21 11:13:06 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Update to 2.9.30
+  * DNSSD backend: Always send TXT record Password=true or false, 
+    as iTunes 12.1.0.50 requires this
+
+-------------------------------------------------------------------
+Fri Feb  6 11:51:02 UTC 2015 - dimstar@opensuse.org
+
+- Add baselibs.conf to source list.
+
+-------------------------------------------------------------------
+Thu Feb  5 14:41:24 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.9.29
+  * Make building tests optional
+- Add pkgconfig(gee-0.8) and vala build require; new upstream dependencies
+
+-------------------------------------------------------------------
+Sat Dec 21 18:51:01 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 2.9.24:
+  + Fix clang warning (bgo#711063).
+  + Avoid OOB read with buggy servers (bgo#711063).
+  + Use strlen() instead of hard-coding string length (bgo#711063).
+- Changes from version 2.9.23:
+  + Replace some assertions in dmap-gst-*-input-stream.c with error
+    handling.
+  + Fix daap-share.c:should_transcode().
+
+-------------------------------------------------------------------
+Tue Aug 13 09:46:55 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.9.22:
+  + Fix memory leak in transcoding code.
+  + Remove double "end_time = ".
+- Changes from version 2.9.21:
+  + Add hash to DMAP records.
+  + Split out dmap_hash_progressive_to_string function.
+  + Add progressive MD5 hash function
+- Changes from version 2.9.20:
+  + Modify use of DNS_SD_CFLAGS in configure.ac.
+- Changes from version 2.9.19:
+  + Require GLib2 >= 2.36 and fix some compile warnings in tests.
+  + Fix up dmap.h and dmap-utils.h.
+  + Get to compile without warnings.
+  + Fix serving large videos.
+  + Fix handling of pre-transcoded video; now works with iTunes
+- Changes from version 2.9.18:
+  + Export dmap_mime_to_format.
+  + Update transcoders and add (still broken) QuickTime transcoder.
+
+-------------------------------------------------------------------
+Wed May 15 18:20:54 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.9.17:
+  + Recompile Vala code with libgee-0.8.
+- Changes from version 2.9.16:
+  + Port to GStreamer 1.0
+  + Use libgee 0.8
+- Replace pkgconfig(gstreamer-plugins-base-0.10) BuildRequires with
+  pkgconfig(gstreamer-plugins-base-1.0) and add explicit
+  pkgconfig(gstreamer-app-1.0) BuildRequires.
+
+-------------------------------------------------------------------
+Wed Apr 11 08:20:43 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.9.15:
+  + Change "Ignoring local service..." message from g_warning to
+    g_debug
+  + Use pkg-config's uninstalled feature with vapigen
+
+-------------------------------------------------------------------
+Wed Jan 18 07:06:28 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.9.14:
+  + Use single include for glib.
+
+-------------------------------------------------------------------
+Tue Nov 15 16:46:49 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 2.9.13:
+  + Use decodebin2 instead of decodebin.
+  + Make Apple dns_sd DMAPMdnsBrowser work with multiple shares.
+  + Several small bug fixes.
+  + Plug memory leaks.
+  + Code cleanups.
+  + Build fixes.
+- Drop libdmapsharing-missing-header.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jul  4 10:07:31 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 2.9.12. This is a summary of the changes in the
+  2.9.x branch:
+  + Various API changes.
+  + Attempt to serve on IPv6.
+  + Fix authentication.
+  + Add support for Remote version 2.
+  + Add client-side DNS-SD.
+  + Declare support for raop on mDNS (used by AirPortExpress).
+  + Make library useful without GStreamer.
+  + Vala-related clean up.
+  + Several compatibility fixes.
+  + Several bug fixes.
+  + Code cleanups.
+- Summary of changes introduced in the 2.1.x branches:
+  + Add DACP support.
+  + Fix serving to iTunes 10.
+  + Allow two DMAP sub-protocols (e.g., DAAP and DPAP) in one
+    process.
+  + Several bug fixes.
+- Change libsoup-devel BuildRequires to pkgconfig(libsoup-2.4).
+- Add missing pkgconfig(gdk-pixbuf-2.0) BuildRequires, needed for
+  cover art features.
+- Remove pkgconfig(avahi-compat-libdns_sd) BuildRequires: we know
+  it will not be used for dns-sd, as the standard avahi API will be
+  used.
+- Add libdmapsharing-missing-header.patch to fix build: add a
+  missing include.
+- Rename libdmapsharing2 to libdmapsharing-3_0-2 after library name
+  change.
+- Update descriptions.
+- Stop using source service to download the tarball, as Factory
+  will move away from this.
+
+-------------------------------------------------------------------
+Sun May 22 16:11:40 UTC 2011 - davejplater@gmail.com
+
+- Update to stable version 2.1.9 added mDNSResponder capability.
+
+-------------------------------------------------------------------
+Sun May  1 17:35:27 UTC 2011 - toddrme2178@gmail.com
+ 
+- Added 32bit compatibility libraries
+- Added Url (fix for RPMLINT warning)
+ 
+-------------------------------------------------------------------
+Fri Sep 10 15:39:56 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.0.4:
+  + Fix SO_VERSION and bump version number
+- Changes from version 2.0.3:
+  + Add DMAPMediaKind enum
+- Changes from version 2.0.2:
+  + Fix serving to iTunes 10
+
+-------------------------------------------------------------------
+Mon Sep  6 12:20:23 UTC 2010 - dimstar@opensuse.org
+
+- Go back to version 2.0.1 (stable branch):
+  + 2.1.0 is considered unstable and should not be used yet
+  + Fixes the license headers in various source files, making clear
+    that LGPLv2.1+ is the right license.
+- Rename the shlib package to libdmapsharing1, according the soname
+  of this version.
+
+-------------------------------------------------------------------
+Tue Aug 31 10:26:57 UTC 2010 - dimstar@opensuse.org
+
+- Initial package, version 2.1.0
+

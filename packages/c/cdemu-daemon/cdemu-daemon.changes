@@ -1,0 +1,157 @@
+-------------------------------------------------------------------
+Wed Jul  3 11:44:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 3.2.1
+  * Added initial support for BluRay profile
+  * Added initial support for BluRay writing
+  * Extended READ DISC STRUCTURE for BluRay support
+  * Moved the fabrication of disc structures from libMirage
+    to cdemu-daemon.
+  * Implemented READ DISC STRUCTURE format 0xFF (list of
+    supported structures).
+  * Removed the "dvd-report-css" flag as parser parameter and
+    implemented it as device option.
+  * Improved GET PERFORMANCE implementation: better argument
+    checking, updated descriptors, and added BluRay support.
+
+-------------------------------------------------------------------
+Wed Apr 25 11:36:28 UTC 2018 - p.seiler@linuxmail.org
+
+- Changed vhba-kmp package from recommend to require for /dev/vhba_ctl
+  * cdemu is not working if vhba kernel module is not installed
+
+-------------------------------------------------------------------
+Thu Nov 23 13:44:48 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Mon Aug  7 19:29:16 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.1.0
+  * Added no-op implementation of RESERVE TRACK for all
+    recording modes.
+  * Added infrastructure for localization support.
+  * Added Slovenian and Russian translations.
+
+-------------------------------------------------------------------
+Mon Feb  6 19:51:31 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.0.5
+  * Only updates for other distros
+- New udev rules using the "uaccess" method
+
+-------------------------------------------------------------------
+Fri Jan 22 18:48:26 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 3.0.4
+* Ensure "disc_closed" variable is set accordingly
+
+-------------------------------------------------------------------
+Mon Jan  4 22:41:27 UTC 2016 - jengelh@inai.de
+
+- Recommend vhba-kmp package for /dev/vhba_ctl [boo#960464]
+
+-------------------------------------------------------------------
+Mon Nov 23 22:21:26 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 3.0.3
+* fixed a copy-and-paste error in feature initialization code
+* daemon: device: signal the Media Eject Request event only when
+  device unload is requested via D-Bus API
+- Run %fillup and populate /etc/sysconfig/cdemu-daemon
+- Drop cdemu_daemon_typo_in_mmc_packet_commands_h.patch (merged)
+
+-------------------------------------------------------------------
+Thu Feb 26 12:44:38 UTC 2015 - normand@linux.vnet.ibm.com
+
+- new cdemu_daemon_typo_in_mmc_packet_commands_h.patch
+  to avoid ppc/ppc64 build failure
+  related to upstream ticket https://sourceforge.net/p/cdemu/patches/22/
+
+-------------------------------------------------------------------
+Thu Oct  2 13:49:10 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.0.2
+* properly report last session lead-in address as 0xFFFFFFFF on
+  closed and non-recordable discs. Fixes "Used capacity" in K3B's
+  Medium Information right after writing an image to the virtual
+  disc.
+* fixed a typo that prevented CD-TEXT being recorded on any
+  recording attempt beyond the first one
+
+-------------------------------------------------------------------
+Mon Sep 22 22:32:54 UTC 2014 - jengelh@inai.de
+
+- Request matching libmirage version for build
+
+-------------------------------------------------------------------
+Sun Jul 13 08:48:46 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to new upstream release 3.0.0
+* The CDEmu daemon now has experimental emulation of CD-R and
+  DVD+R disc recording, and daemon/client protocol was extended
+  to allow transmission of image writer parameters descriptions
+  from daemon to client and parameters' values back from client
+  to daemon.
+- Remove logfile.diff patch
+- Add /dev/vhba_ctl read-write access udev rule
+
+-------------------------------------------------------------------
+Sun Nov 24 11:23:28 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 2.1.1
+* allow bad sector verification to be turned off (which is now
+  default) in order to increase device throughput
+* DPM emulation is now turned off by default as well
+* make sure that EDC and subchannel verification is never performed
+  for generated data
+
+-------------------------------------------------------------------
+Sun Jun  9 14:37:29 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 2.1.0
+* Use non-blocking I/O on VHBA control device, implemented device
+  restart on kernel/userspace I/O errors
+* Added support for device addition/removal. To preserve device
+  numbering, devices can only be appended, and only the last device
+  can be removed.
+* Auto-started daemon now creates only a single device by default.
+* Fixed device ID reported by INQUIRY, where last letters were
+  missing
+* Session autostart script now uses "default" instead of "pulse"
+  for audio driver.
+* If audio device initialization fails, fallback to "null" instead
+  of just stopping the playback thread.
+
+-------------------------------------------------------------------
+Sat Apr 13 21:03:26 UTC 2013 - jengelh@inai.de
+
+- Resolve build failure with glib 2.36 by allowing deprecated
+  functions for the time being (-UG_DISABLE_DEPRECATED)
+
+-------------------------------------------------------------------
+Sat Dec 22 08:23:15 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 2.0.0 (up from 1.5.0)
+* Support for ISZ, CSO, DMG, GBI, ECM, gzip and xz formats
+* Partial support for 1-track MDX
+- Resolves a problem with autostarting cdemu-daemon
+  (bnc#809181, bnc#809862)
+
+-------------------------------------------------------------------
+Mon Nov 19 20:02:02 UTC 2012 - jengelh@inai.de
+
+- Remove cdemud-launch helper, this caused too much confusion.
+
+-------------------------------------------------------------------
+Tue May 29 08:47:19 UTC 2012 - jengelh@inai.de
+
+- Remove dbus autostart and systemd unit file for system-bus mode.
+  Place system logfile in proper place (bnc#764063)
+
+-------------------------------------------------------------------
+Tue May  8 22:39:47 UTC 2012 - jengelh@inai.de
+
+- Initial package for build.opensuse.org

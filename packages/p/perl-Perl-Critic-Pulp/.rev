@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>72a7ccff061aa9472d485ba8a96df9f9</srcmd5>
+    <version>92</version>
+    <time>1488322227</time>
+    <user>dimstar_suse</user>
+    <comment>new policies</comment>
+    <requestid>458775</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d2d76f4c77c2f00e4e1c0d396eb6c34d</srcmd5>
+    <version>93</version>
+    <time>1494938015</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489028</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>75a7da0f524eda9fc4cc644753933abb</srcmd5>
+    <version>94</version>
+    <time>1498741525</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504918</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>345e2224efef5af231fe9ba988a84854</srcmd5>
+    <version>95</version>
+    <time>1507628604</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532926</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7b382cb7a4241bcd12668d164131805b</srcmd5>
+    <version>96</version>
+    <time>1518187639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573961</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>aa35d682808b8e1c4430e98707155c5f</srcmd5>
+    <version>96</version>
+    <time>1554281497</time>
+    <user>dimstar_suse</user>
+    <comment>- add avoid-wrong-provides.diff to avoid wrong provides</comment>
+    <requestid>690874</requestid>
+  </revision>
+</revisionlist>

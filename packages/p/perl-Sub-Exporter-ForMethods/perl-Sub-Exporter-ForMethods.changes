@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Sat Jul 18 09:09:31 UTC 2015 - coolo@suse.com
+
+- updated to 0.100052
+   see /usr/share/doc/packages/perl-Sub-Exporter-ForMethods/Changes
+
+  0.100052  2015-07-17 19:27:36-04:00 America/New_York
+          - add the ability to bless the wrapper into the wrapped sub's class,
+            if requested
+
+-------------------------------------------------------------------
+Mon Nov 25 07:36:02 UTC 2013 - coolo@suse.com
+
+- updated to 0.100051
+  update bugtracker and repo metadata
+- new cpanspec template
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:53 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Sat Jan 22 19:47:45 UTC 2011 - coolo@novell.com
+
+- initial package 0.100050
+  * created by cpanspec 1.78.03
+

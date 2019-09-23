@@ -1,0 +1,336 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:33:11 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jun 21 17:30:47 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.10.5:
+  + Fix AAC ISO formats with recent GStreamer.
+
+-------------------------------------------------------------------
+Fri Apr 15 22:35:28 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Tue Feb  9 08:44:22 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.10.4:
+  + Call setlocale in commandline tools.
+  + Include VAPI in tarball.
+  + Bugs fixed: bgo#760431.
+
+-------------------------------------------------------------------
+Sat Jan  2 16:08:04 UTC 2016 - zaitor@opensuse.org
+
+- Replace *-devel for their pkgconfig counterparts:
+  + gobject-introspection-devel for
+    pkgconfig(gobject-introspection-1.0).
+  + gstreamer-devel for pkgconfig(gstreamer-1.0).
+  + gstreamer-plugins-base-devel for
+    pkgconfig(gstreamer-pbutils-1.0).
+  + libxml2-devel for pkgconfig(libxml-2.0).
+- Explicitly list already pulled in pkgconfig(glib-2.0),
+  pkgconfig(gmodule-2.0) and pkgconfig(gobject-2.0) BuildRequires
+  that configure looks for.
+- Add pkgconfig(vapigen) BuildRequires: Build vala bindings.
+
+-------------------------------------------------------------------
+Wed Jul  1 11:35:51 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.10.3:
+  + Fix potential crash if gupnp_dlna_value_list_new failed.
+  + Fix hang if no meta-data back-end is available.
+  + Remove use of gnome-common, add compiler warnings and fix const
+    correctness.
+  + Fix memory leak in gst-audio-information.
+  + Fix unit tests for new automake
+  + Make it possible to override the DLNA profile dir using
+    GUPNP_DLNA_PROFILE_DIR environment variable.
+  + Fix discoverer testsuite to run completely uninstalled.
+  + Fix gupnp-dlna-info -a to be stuck if profile guesser does not
+    work.
+  + Bugs fixed: bgo#704096, bgo#707909, bgo#750929, bgo#751295,
+    bgo#751634.
+
+-------------------------------------------------------------------
+Fri May 31 19:08:31 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.10.2:
+  + Fix vapi generation with GObject-introspection >= 1.36.
+  + Minor build clean-up.
+  + Check the XML profiles against their schema on make
+    check-profiles.
+  + Re-enable some of the old tests on make check.
+  + Fix format detection for ADTS audio streams.
+  + Fix WMA bitrate detection.
+  + Fix gtk-doc warnings.
+  + Profiles:
+    - Fix MPEG_TS_*_EU audio profiles to include proper bitrates
+      and audio formats.
+    - Remove depth matching in PNG profiles.
+    - Fix AAC level for MULT5 AAC.
+    - Add MPEG_TS_{SD,HD}_{EU,NA} profiles.
+    - Add MPEG_PS_{NTSC,PAL} profiles.
+
+-------------------------------------------------------------------
+Tue Apr  9 19:08:42 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.10.1:
+  + Add functionality to let the meta-data back-end provide a
+    profile on its own.
+
+-------------------------------------------------------------------
+Wed Feb 20 20:26:44 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.10.0:
+  + Various fixes for the GStreamer 0.10 meta-data back-end.
+
+-------------------------------------------------------------------
+Tue Feb 12 16:24:52 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.5:
+  + Add --disable-maintainer-mode option.
+  + Add a GStreamer 0.10 meta-data back-end.
+
+-------------------------------------------------------------------
+Mon Feb  4 22:58:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.4:
+  + Introduce new API to guess a DLNA profile from existing
+    GUPnPDLNAInformation.
+  + Introduce a new library to create GUPnPDLNAInformation from
+    GstDiscovererInfo.
+  + Fix an issue with GValue conversion.
+  + Get rid of the old profile backend and move most of it to the
+    library itself.
+  + Introduce single-include header file.
+
+-------------------------------------------------------------------
+Sun Jan 13 09:55:27 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.3:
+  + Fix underlinking of gstreamer plug-in.
+  + Fix out-of-srcdir build with --enable-gtk-doc.
+  + Fix signal G-I annotation.
+  + Link meta-data back-end as a plug-in.
+- Changes from version 0.9.2:
+  + Remove the old gupnp-dlna-1.1.pc.in file.
+  + Remove gupnp and gstreamer-* dependencies from VAPI file
+    generation.
+  + Lower vapigen requirements.
+- Changes from version 0.9.1:
+  + Fix a potential crash in profile guessing.
+  + Fix issues from static code check.
+  + Lower GLib dependency to 2.32.
+  + Bugs fixed: bgo#689596, bgo#689598, bgo#689612, bgo#689615,
+    bgo#689616.
+- Changes from version 0.9.0:
+  + Make DLNA profile handling independant from GStreamer.
+  + Add plugin architecture to support different meta-data
+    extraction back-ends.
+  + Make GStreamer default implementation of meta-data extraction
+    back-end.
+  + Split API docs into users and back-end implementers API.
+  + Updated translations.
+- Create new sub-package libgupnp-dlna-backend-gstreamer, with a
+  generic provides libgupnp-dlna-backend.
+- Require libgupnp-dlna-backend from the main library package.
+  There can potentially be different backends and we only require
+  one.
+
+-------------------------------------------------------------------
+Wed Dec 26 10:57:37 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.8.0:
+  + Relax PNG depth requirements to work around a GStreamer issue.
+
+-------------------------------------------------------------------
+Sun Nov 25 19:06:48 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.7.0:
+  + Port to GStreamer 1.0.
+  + Add parallel installability with gstreamer-0.10-based
+    gupnp-dlna.
+- Drop gupnp-dlna-GSTPort.patch: fixed upstream.
+- Remove gnome-common BuildRequires and call to gnome-autogen.sh,
+  as we no longer carry patches.
+- Rename typelib-1_0-GUPnPDLNA-1_0 subpackage to
+  typelib-1_0-GUPnPDLNA-1_1, followin upstream.
+- Rename libgupnp-dlna-1_0-2 subpackage to libgupnp-dlna-1_1-3,
+  following upstreams soname change.
+
+-------------------------------------------------------------------
+Fri Aug 31 14:51:19 UTC 2012 - dimstar@opensuse.org
+
+- Port to GStreamer 1.0:
+  + Add gupnp-dlna-GSTPort.patch: Port to GStreamer 1.0 API
+  + Replace gstreamer-0_10*-devel BuildRequires with
+    gstreamer*-devel equivalents
+  + Add gnome-common BuildRequires and call gnome-autogen.sh in
+    build section, as gupnp-dlna-GSTPort.patch touches the build
+    system.
+
+-------------------------------------------------------------------
+Sat Mar 17 16:02:51 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.6.6:
+  + Fix minor issues found by static code analysis.
+  + Add MKV profiles.
+  + Add AVC_MP4_*_EAC3 profiles from Harmattan.
+
+-------------------------------------------------------------------
+Wed Feb 15 07:51:01 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.6.5:
+  + Update autotools integration.
+  + Add missing functions to documentation.
+  + Fix warnings during GIR generation.
+  + Fix GIR namespace to not clash with GUPnP's.
+- Rename typelib-1_0-GUPnP-DLNA-1_0 subpackage to
+  typelib-1_0-GUPnPDLNA-1_0, following typelib name change. There
+  is no Provides/Obsoletes, as this should work like SLPP packages.
+
+-------------------------------------------------------------------
+Fri Dec 23 10:42:30 UTC 2011 - vuntz@opensuse.org
+
+- Split typelib file into typelib-1_0-GUPnP-DLNA-1_0 subpackage.
+- Add typelib-1_0-GUPnP-DLNA-1_0 Requires to libgupnp-dlna-devel
+  subpackage.
+
+-------------------------------------------------------------------
+Thu Oct 20 09:53:12 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.6.4:
+  + Add profile for MPEG4_P2_MP4_SP_L5_AAC.
+  + Fix ADTS profiles
+  + Fix MPEG4_P2_MP4_SP_L6_AAC
+
+-------------------------------------------------------------------
+Tue Aug 30 17:04:08 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.6.3:
+  + Add profile for MPEG4_P2_MP4_SP_L6_AAC.
+  + Respect ACLOCAL_FLAGS environment variable
+  + Bugs fixed: bgo#655504.
+
+-------------------------------------------------------------------
+Thu Jul  7 13:40:13 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.6.2:
+  + Fix mime types for AAC_* profiles.
+  + Fix AAC_ADTS_* profiles to be matchable in strict mode.
+  + Initial GObject-introspection support
+- Add gobject-introspection-devel BuildRequires to build
+  introspection support.
+- Stop using source service to download the tarball, as Factory
+  will move away from this.
+
+-------------------------------------------------------------------
+Fri Apr 29 14:19:07 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.6.1:
+  + A micro release to really bump the SONAME this time.
+- Changes from version 0.6.0:
+  + Add 'MPEG_TS_SD_EU_ISO' profile.
+  + Relax some video restrictions for MPEG TS profile.
+  + Fix profile parsing logic for images.
+  + Drop fourcc format restrictions.
+  + Only initialize thread system once.
+  + Improve/fix external and internal documentation.
+  + Get rid of nasty warnings when building docs.
+  + Improved handling of GstCaps.
+  + Remove redundant initializations.
+  + Fix some leaks.
+  + Hilight test failures by use of red color.
+  + Mark constant return values as such.
+  + Clear the (obsolete) ChangeLog file.
+  + Test media moved to gitorious.
+  + Many non-functional improvements.
+- Changes from version 0.5.1:
+  + Use encoding-profile from gst-plugins-base.
+  + Drop internalized copy of gst-convenience.
+  + Explicitly link gupnp-dlna-info against gstreamer-pbutils.
+  + GUPnPDLNAProfile exposes related GstEncodingProfile as a
+    property.
+- Changes from version 0.5.0:
+  + Use GstDiscoverer from gst-plugins-base and remove internal
+    copy of discoverer.
+  + Minor bug fixes.
+- Use source services: download_url, recompress and set_version.
+
+-------------------------------------------------------------------
+Tue Dec 14 15:04:51 CET 2010 - vuntz@opensuse.org
+
+- Own /usr/share/vala and /usr/share/vala/vapi to fix build.
+
+-------------------------------------------------------------------
+Fri Oct 15 09:24:54 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.4.2:
+  + Remove internal discoverer namespace changes (fixes API
+    breakage)
+  + Skip discoverer tests if media is missing
+- Changes from version 0.4.1:
+  + Allow gupnp-dlna to coexist with soon-to-be-released
+    gst-plugins-base (0.10.31). Still can't link applications
+    against both, though.
+  + Some build fixes
+
+-------------------------------------------------------------------
+Tue Sep 28 00:42:32 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.4.0:
+  + Don't link against pbutils to avoid conflicts with internal
+    gstdiscoverer
+  + Add library versioning
+  + Minor test harness change
+
+-------------------------------------------------------------------
+Wed Sep  1 12:20:15 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.3.1:
+  + Update license from LGPL 2.0 to 2.1
+  + Implement a "relaxed mode" so that we can match more media
+    (while not being strictly conformant to the DLNA spec.)
+  + Modify several audio and video profiles to allow for relaxed
+    matching
+  + Implement support for "extended profiles" so that we can add
+    custom profiles for popular formats no supported but the DLNA
+    spec.
+  + Add extended and relaxed modes to gupnp-dlna-info and
+    gupnp-dlna-ls-profiles
+  + Minor fixes and profile updates
+- Update License tags to "LGPL v2.1 or later".
+
+-------------------------------------------------------------------
+Thu Aug 26 11:14:36 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.3.0:
+  + New API and tool (gupnp-dlna-ls-profiles) to list all supported
+    profiles
+  + Move API to get a profile to the DLNADiscoverer namespace
+  + Make GUPnPDLNAProfile opaque, add to API documentation
+  + Add support for several AVC_MP4_MP profiles
+  + Print stream topology instead of a simple list in
+    gupnp-dlna-info
+  + Add debug output controlled by an environment variable for
+    eaesier debugging
+  + Beginnings of an automated testing infrastructure
+  + Add relaxed/extended mode properties
+  + Use 'bitrate' instead of 'maximum-bitrate' while matching
+    streams
+  + Various bug fixes
+
+-------------------------------------------------------------------
+Wed Aug 25 10:41:23 CEST 2010 - vuntz@opensuse.org
+
+- Move the DLNA profiles to libgupnp-dlna-1_0-2, since they're
+  needed by the library.
+
+-------------------------------------------------------------------
+Thu Aug 12 13:01:17 CEST 2010 - lmedinas@opensuse.org
+
+- Initial import based on Fedora package.

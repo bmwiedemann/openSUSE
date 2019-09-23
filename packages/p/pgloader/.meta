@@ -1,0 +1,7 @@
+<package name="pgloader" project="openSUSE:Factory">
+  <title>pgloader</title>
+  <description>The PostgreSQL Loader project is a fast data loader for PostgreSQL,
+with the ability to generate files of rejected rows. It currently
+requires Python and Psycopg (version 1 or version 2, latter preferred).</description>
+  <devel project="server:database:postgresql" package="pgloader"/>
+</package>

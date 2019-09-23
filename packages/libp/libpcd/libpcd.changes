@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Tue May  8 11:43:23 UTC 2012 - idonmez@suse.com
+
+- spec file cleanup 
+
+-------------------------------------------------------------------
+Fri Jun  3 13:23:44 UTC 2011 - prusnak@opensuse.org
+
+- spec cleanup
+
+-------------------------------------------------------------------
+Thu Jan 22 19:38:04 CET 2009 - pgajdos@suse.cz
+
+- package renamed to libpcd2
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:40 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan 11 12:13:16 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Tue Jul 22 12:20:46 CEST 2003 - kraxel@suse.de
+
+- update to version 1.0.1 (64bit fixes).
+
+-------------------------------------------------------------------
+Mon Aug 12 10:29:19 CEST 2002 - kraxel@suse.de
+
+- fixwed Requires: for the -devel package.
+
+-------------------------------------------------------------------
+Tue Apr 16 15:09:16 CEST 2002 - kraxel@suse.de
+
+- initial package (version 1.0)
+

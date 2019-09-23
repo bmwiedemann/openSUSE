@@ -1,0 +1,608 @@
+-------------------------------------------------------------------
+Wed Aug 14 13:12:57 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 2.087.1 
+  - Runtime changes:
+    * Add all missing symbols to core.sys.darwin.mach.loader
+  - DMD Compiler regressions:
+    * ICE when taking address of member function passed as template parameter
+    * [REG] modification of member of a manifest constant that's also a struct is allowed
+    * POSIX: extern(C++, namespace) does not apply namespace to enum
+    * DMD Segfault in 2.087
+    * compiler segfaults on passing templates expression to lazy val
+    * [REG2.086] foreach no longer works on range with alias front
+  - DMD Compiler bugs:
+    * Templates inside templates used as mixins
+    * DMD segfault with circular template constraints
+    * [ICE] Internal error: ddmd/backend/cgcs.c 352 - CTFE appending to an array on a struct from a template
+    * Unable to remove a tuple from associative array.
+    * Can't use __traits(getAttributes, ...)[...] as a type
+    * access violation at compile time, possibly via template constraint and alias interaction
+    * Symbol not found: _dyld_enumerate_tlv_storage on macOS 10.15
+    * alias this combined with a copy constructor seems to lead to undefined behaviour.
+    * [ICE] Segmentation fault in ExpressionPrettyPrintVisitor::visit(IntegerExp*) at dmd/hdrgen.d:1775
+    * ICE from double template instantiation with getMember of overload of class and template function
+    * __vector CTFE crashes the compiler
+    * Compiler crash when using an opaque struct as template parameter
+    * bogus error: "integer constant expression expected instead of (uint).sizeof"
+    * [Windows] Program segfaults when running tests
+    * ICE in func literal used in __traits(compiles)
+    * SIMD 32 bytes causes obscure segfault
+    * [2.087.0] Mixin templates: no property somevar for type some.Type, did you mean some.Type.__anonymous.somevar
+  - DMD Compiler enhancements:
+    * Empty AliasSeq can't be used to form compiletime array literal
+  - Phobos bugs:
+    * std.variant.VariantN does not work with a class that inherits from a template instantiation
+    * ReplaceType replaces type with the type forwarding using alias this
+    * ReplaceType fails to compile for self-referential inheritance chains
+    * someAllocator.make!T doesn't compile if T is a shared value type
+    * [2.087.0] std.conv.toImpl matches two functions when using static arrays as inout( T )
+  - Phobos enhancements:
+    * RefCounted fails to instantiate due to pureness of moveEmplace
+    * Tuple.rename doesn't work with const
+  - Druntime bugs:
+    * retrying while pthread_cond_signal/pthread_cond_broadcast return EAGAIN
+    * object.destroy doesn't propagate attributes
+- Add missing provides/obsoletes to the versioned phobos shared library package.
+
+-------------------------------------------------------------------
+Sat Apr 13 10:01:13 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 2.085.1
+  - DMD Compiler regressions:
+    * DMD generates wrong code for some circular dependencies
+    * D compiler fails to resolve circular module dependency when modules are compiled separately
+    * D compiler fails to resolve circular module dependency when modules are compiled together
+    * ICE on null default value for struct parameter in constructor
+    * DMD 2.085 changes to gsroa make DCD crashing
+    * Regression: wrong order of linker arguments, again: -L-l before -L--start-group
+    * if (auto x) {} isn't properly rejected
+    * DMD fails to compile some circular dependencies spiced with is (T == super) condition
+    * [Reg v2.070.2] DMD fails with some circular module refs with Template/Mixin instances
+  - DMD Compiler bugs:
+    * wrong codegen for destructor call of unnamed struct instance on 64 bit environments
+    * case of undetected circular reference in function parameter
+    * ICE with multiple mixin templates containing conflicting ctor declarations
+    * Segfault when types are used in array literals
+    * DMD crash due to circular reference in function return type
+    * -checkaction=context not working with attributes
+    * [2.085.0-beta.2] Obj-C wrong code overloading selectors and extern(D)
+    * case of segfault due to undetected forward reference
+    * Compiler crash
+    * crash on invalid initializer at CTFE
+    * ICE on invalid code
+  - Phobos regressions:
+    * VariantN has unittests that are compiled into user modules
+  - Phobos bugs:
+    * std.algorithm.searching.findAmong doesn't save like it should
+  - Druntime bugs:
+    * wrong time values in GC.profileStats
+
+-------------------------------------------------------------------
+Sun Mar 17 15:50:10 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 2.085.0 
+  - Compiler changes:
+    * Add support for Objective-C classes
+    * Add support for Objective-C instance variable
+    * Add support for Objective-C super calls
+    * Deprecate Objective-C interfaces
+    * Context-aware assertion error messages
+    * Avoid calling the struct constructor from const-casts
+    * dmd now supports expressive diagnostic error messages with -verrors=context
+    * memcmp() compares are no longer performed for struct equality tests, memberwise comparisons are done instead, per the spec
+    * OSX 32-bit is no longer supported
+    * -preview and -revert command line switches have been introduced
+    * Transition to C++11 character types
+  - Runtime changes:
+    * Added GC.profileStats() to core.memory
+    * Added core.stdcpp.new_
+    * Added core.sys.linux.sched.CPU_COUNT.
+    * Added core.sys.linux.sched.CPU_ISSET.
+    * Moved std.conv.emplace, std.algorithm.mutation.move, std.algorithm.mutation.moveEmplace, and std.functional.forward to core/lifetime.d
+    * GC cleanup can now be configured as a DRT GC option
+    * A garbage collector with precise heap scanning can now be selected
+    * GC.realloc is now more consistent and robust
+    * User supplied garbage collectors can now be linked with the runtime
+    * Added core.stdcpp.allocator
+    * char/wchar fields in most D runtime (core.* and rt.*) structs are now zero-initialized
+
+-------------------------------------------------------------------
+Sat Feb 16 19:19:18 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 2.084.1 
+  - Compiler bugs
+    * -check=in=off doesn't work
+    * corrupt ELF library when using pragma(crt_constructor)
+  - Compiler enhancements
+    * Shared object "libstdc++.so.6" not found, required by "dmd"
+
+-----  --------------------------------------------------------------
+Sat Jan  5 18:56:40 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 2.084.0
+  - Compiler changes
+    * Aliases can be created directly from a __trait.
+    * Added -check switch to turn on and off each category of runtime checks.
+    * Add -checkaction=D|C|halt compiler switch.
+    * -color and -color=on will now always output colorized console output
+    * The code generated by mixin statements can now be saved with -mixin
+    * Deprecate invalid binary literals
+    * Deprecated extern(Pascal) linkage
+    * The deprecation phase for fully qualified names that bypassed private imports is finished
+    * Templates are now mangled correctly on POSIX
+    * Added __c_wchar_t as a correct mangling type for C's wchar_t
+  - Runtime changes
+    * Added core.stdcpp.array.
+    * Add D header file core.sys.darwin.crt_externs for libc/crt_externs.h on Darwin.
+    * Added initialize template argument to object.destroy().
+    * Added core.stdcpp.string_view.
+  - Library changes
+    * Add overload std.random.unpredictableSeed!UIntType
+
+-------------------------------------------------------------------
+Wed Dec  5 21:38:53 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 2.083.0
+  - Compiler changes
+	* Add CppRuntime_* version identifiers
+	* Deprecated CLI switch -gc have been removed
+	* Expose __traits(isZeroInit, T)
+	* Implement new C++ mangling syntax
+	* Add pragma(linkerDirective), to emit linker directives into object files
+	* fix Issue 14246 - RAII - proper destruction of partially constructed objects
+	* Add __traits(getTargetInfo, "key") to query details about the compilation target
+  - Library changes
+    * std.algorithm.iteration.each is now capable of early-stopping
+	* toHash function has been added to std.experimental.checkedint.Checked
+
+-------------------------------------------------------------------
+Sun Oct 14 14:14:28 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to 2.082.1
+  - DMD Compiler regressions
+    * Could not CTFE with std.math.exp from 2.082.0
+	* [REG 2.081] Can no longer override pragma(lib) with -L switch
+	* Some source files names are no longer accepted
+  - Phobos regressions
+    * Templated format with variable width allocates 2GB of RAM per call.
+  - Phobos bugs
+    * std.net.curl.post cannot be used with !ubyte
+	* std.algorithm.subsitute wrong results for single subrange substitution
+
+-------------------------------------------------------------------
+Sun Sep  9 14:42:27 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to 2.082.0
+  - Compiler changes
+    * Support for comparing arrays of unsigned byte-sized types and structs has been added to -betterC
+    * Added D_ModuleInfo, D_Exceptions, and D_TypeInfo version identifiers
+    * Deprecate conditional expression followed by an assign expression
+    * Unsafe code can now be used in debug blocks
+    * Deprecate usage of opDot
+    * D now supports deprecated, @disable and user-defined attributes on enum members
+    * Deprecated C-style array declarations will now result in a compilation error
+    * Mangling of extern(C++) template on Windows now correctly mangles const non-pointer template parameters.
+    * .offsetof and .tupleof for fields of Objective-C classes have now been disabled
+    * 64-bit OS X: Revert C++ mangling of long to pre-2.079 to restore size_t interop
+    * UDAs on function parameters are now supported
+  - Runtime changes
+    * Exception trapping can now be disabled via --DRT-trapExceptions=0
+    * Additional functions for associative arrays
+    * TypeInfo.getHash now uses core.internal.hash.hashOf functions for hash computing
+    * core.sys.posix.utsname.update renamed to version_
+  - Library changes
+    * Single- and double-precision implementations for (a)tan and exp function families
+    * std.algorithm.iteration.each is now capable of early-stopping
+    * std.algorithm.iteration.joiner can now be used for bidirectional ranges
+    * std.algorithm.searching.skipOver can now handle variadic arguments
+    * Added staticArray to construct a static array from array / input range. Includes a length-inferring compile-time variant.
+    * Deprecated functions for getting the timezone have been removed.
+
+-------------------------------------------------------------------
+Sat Aug 18 21:58:23 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 2.081.2
+  - DMD Compiler regressions
+    * [REG 2.080] SIGSEGV in el_ptr (s=0x15) at dmd/backend/el.c:1760
+    * dmd 2.081 crashed by getVirtualFunctions for a interface extended interface
+  - DMD Compiler bugs
+    * Associative array opIn with static array key fails with dynamic array
+  - Phobos bugs
+    * Cannot inline "...Slides.numberOfFullFrames", "...Slides.gap"
+  - Druntime bugs
+    * __delete doesn't work with immutable
+- Changes in 2.081.1
+  - DMD Compiler regressions
+    * [REG2.081] getOverloads traits returns empty tuples for void functions
+    * [REG 2.080.1] Error: const(Object) is used as a type with structs that have symbol named Object
+
+-------------------------------------------------------------------
+Sat Jul  7 11:29:06 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 2.081.0
+  - Compiler changes
+    * Deprecate allowing a constructor declaration in a static block
+	* Deprecate usage of this and super as types
+	* Implement DIP 1009 - Add Expression-Based Contract Syntax
+	* extern (C++) construction, destruction, operators and other mangling improvements
+	* Support for iterating template overloads
+	* __traits(getLinkage, ...) now works on structs, classes, and interfaces.
+	* Implicit catch statements will now result in an error
+	* Implicit comparison of different enums will now result in an error
+	* Implicit string concatenation will now result in an error
+	* IRETQ is now supported in inline assembler.
+	* Interfaces and classes can be used without the runtime if only static fields are utilized
+	* Specifying redundant storage classes will now result in a compiler error
+  - Runtime changes
+    * Filenames and line numbers have been added to stacktraces on macOS
+	* object.destroy() supports extern(C++) classes.
+	* Add missing declarations to core.sys.darwin.mach.getsect
+  - Library changes
+    * The deprecated std.c package has been removed.
+	* The performance of std.algorithm.iteration.joiner has been improved
+	* std.algorithm.mutation.remove now only accepts integral values or pair of integral values as offset
+	* Changed semantics of std.math.{fmin,fmax} wrt. NaNs.
+- Use same auto_bootstrap define for all builds.
+
+-------------------------------------------------------------------
+Fri Jun  8 18:58:38 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 2.080.1
+  - DMD Compiler regressions
+    * [REG 2.073] object initializer omitted when it should be included.
+    * [REG2.078-b1] case where && is not shortcut anymore in CTFE
+    * DMD segfault when doing unsafe operation outside of any function
+  - DMD Compiler bugs
+    * static foreach segfaults on __traits(allMembers)
+    * Access violation when generating JSON on static foreach
+    * DMD compilation crash
+    * -lib crashes on static libraries in the command line
+  - Phobos regressions
+    * [REG 2.080.0] Compiling byGrapheme Fails
+    * DMD "illegal hardware instruction" crash
+    * getSymbolsByUDA fails on AliasSeq members
+  - Druntime bugs
+    * core.internal.string has issues with radix
+
+-------------------------------------------------------------------
+Mon May  7 21:57:22 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 2.080.0
+  See the full changelog here:
+  https://dlang.org/changelog/2.080.0.html
+- Refresh dmd_use_tarball_bootstrap.diff
+
+-------------------------------------------------------------------
+Mon Apr 16 19:59:33 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 2.079.1
+  - DMD Compiler regressions
+    * [REG 2.073] [DIP1000] Error on bad interplay of 'auto ref' and 'return' attribute deduction.
+    * DMD segmentation fault
+  - DMD Compiler bugs
+    * Enums are evaluated differently in global scope
+    * compiler segfault if new on a union type with dip1000
+  - DMD Compiler enhancements
+    * Use of delete should be allowed without a deprecation in a deprecated scope
+  - Phobos regressions
+    * std.regex Captures opAssign returns void since v2.079.0
+    * getSymbolsByUDA produces wrong result if one of the symbols having the UDA is a function
+    * assigning a std.regex.Captures with 3 or more groups causes double free
+  - Phobos bugs
+    * [2.079] std.format ignores templated toString if another toString is not a template
+  - Phobos enhancements
+    * Document the type of std.stdio.stdin and friends
+  - Druntime regressions
+    * [Reg 2.079] src/rt/tracegc.d(43): Deprecation: The delete keyword has been deprecated
+
+-------------------------------------------------------------------
+Tue Apr 10 18:44:15 UTC 2018 - matthias.eliasson@gmail.com
+
+- Enable auto_bootstrap for Tumbleweed to get successful builds
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Fri Mar 30 11:45:28 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Build only for %ix86 and x86_64 since other arch cannot be boostrapped
+
+-------------------------------------------------------------------
+Mon Mar  5 21:07:47 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 2.079.0
+  * Full changelog: https://dlang.org/changelog/2.079.0.html
+- spec-cleaner was run
+- use %config(noreplace) for dmd.conf
+  Make sure we don't replace if users modify this config.
+
+-------------------------------------------------------------------
+Thu Mar  1 22:10:30 UTC 2018 - matthias.eliasson@gmail.com
+
+- Enable auto_bootrap for Leap 15.0
+- Add !buildignore gcc-PIE for i586 arch since it will not compile on i586 with PIE enabled
+
+-------------------------------------------------------------------
+Sun Feb 18 19:26:49 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 2.078.3
+  - DMD Compiler regressions
+    * [REG2.078.2] Access violation when dmd tries to print highlighted code
+  - DMD Compiler bugs
+    * Switch skips over declaration issued for explicitly uninitialized variables
+
+-------------------------------------------------------------------
+Sun Feb 11 15:03:55 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 2.078.2
+  - DMD Compiler regressions
+    * [REG 2.078] dmd can't generate 64-bit binaries on Windows 10 with VS 2015
+    * [Reg 2.078] Building fails with VC 2015 Build Tools
+  - DMD Compiler bugs
+    * wrong code for int.min > 0
+  - Druntime regressions
+    * [Reg 2.078] comparison of arrays of associative arrays no longer compiles
+    
+-------------------------------------------------------------------
+Wed Jan 24 20:19:25 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 2.078.1
+  - DMD Compiler regressions
+    * [REG2.060] DMD hang in semantic3 on alias this
+  - DMD Compiler bugs
+    * undefined reference to __coverage
+	* unittests get different names depending on how the files are passed to dmd
+	* building with -m64 doesn't work with sc.ini from the zip distribution and VS2017
+  - Phobos bugs
+    * std.array.replace throws a range violation if the from range is longer than the array
+	* Generic functions in std.math cannot be overloaded
+  - Druntime regressions
+    * module config is in file 'rt/config.d' which cannot be read
+
+-------------------------------------------------------------------
+Sat Jan 13 22:45:17 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 2.078.0
+- Update auto_bootstrap version to 2.078.0
+- Remove bootrap option for ldc since we have working bootstraping with dmd
+- Did some more clean-up in spec of build flags that was wrong and redundant
+- Update default dmd.conf with more accurate includes
+
+-------------------------------------------------------------------
+Mon Jan  1 22:24:59 UTC 2018 - matthias.eliasson@gmail.com
+
+- Enable PIC and set Model=32 for i586 builds
+- Disable auto_bootstrap
+
+-------------------------------------------------------------------
+Tue Dec 12 21:39:28 UTC 2017 - matthias.eliasson@gmail.com
+
+- Enable auto_bootstrap to make it build on i586. 
+
+-------------------------------------------------------------------
+Sat Dec  9 22:57:27 UTC 2017 - matthias.eliasson@gmail.com
+
+- Update to 2.077.1
+  * [REG2.068] compile-time string concatenation fails with CTFE and char[] literal involved
+  * compiler segfault in DsymbolSemanticVisitor::visit(UnittestDeclaration*)
+  * [REG 2.077.0] dmd 2.077.0 crashes when computing mangling symbol for simple program
+  * [Reg 2.077] don't build libphobos2.a with PIC for i386
+  * [Reg 2.075] Fibers guard page uses a lot more memory mappings
+- Add "-fPIC" to DFLAGS in dmd.conf for 32bit so we can compile D programs for i586. 
+
+
+-------------------------------------------------------------------
+Fri Nov 17 15:05:32 UTC 2017 - joop.boonen@opensuse.org
+
+- Added missing LICENSE.txt to docs
+- Improved the spec file
+
+-------------------------------------------------------------------
+Sun Nov  5 23:26:15 UTC 2017 - matthias.eliasson@gmail.com
+
+- Update to 2.077.0
+  * Mangled Symbols now back reference types and identifiers
+  * Removed prelude assert for constructors & destructors
+  * DMD builds are now reproducible
+  * core.atomic.atomicLoad's returns types have changed for aggregate types that have indirections
+  * Vectorized array operations are now templated
+- Build with AUTO_BOOTSTRAP disabled
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Oct 26 11:52:06 UTC 2017 - joop.boonen@opensuse.org
+
+- Update to 2.076.1
+  * fix Issue 16997 - Integral promotion rules not being followed for unary + - ~ operators
+  * Mangled Symbols now back reference types and identifiers.
+  * Removed prelude assert for constructors & destructors
+  * DMD builds are now reproducible
+- Build with AUTO_BOOTSTRAP
+
+-------------------------------------------------------------------
+Fri Jun  9 08:57:27 UTC 2017 - jengelh@inai.de
+
+- Rework description
+
+-------------------------------------------------------------------
+Fri May 26 19:50:14 UTC 2017 - mailaender@opensuse.org
+
+- Update to 2.073.2
+- https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Sat Mar 11 08:33:31 UTC 2017 - matthias.eliasson@gmail.com
+
+- Update to 2.073.1
+
+-------------------------------------------------------------------
+Thu Apr  7 10:44:55 UTC 2016 - schuetzm@gmx.net
+
+- Update to 2.071.0
+
+Compiler Changes
+
+- Import access checks for fully qualified names were fixed.
+- Protection for selective and renamed imports were fixed.
+
+Language Changes
+
+- Imports no longer hide locals declared in outer scopes.
+- Private symbols are no longer visible in other modules.
+- Manifest constant can now be used for deprecation message.
+
+Library Changes
+
+- A clear method has been added to associative arrays to remove all elements.
+- The GC now uses a spinlock instead of a recursive mutex.
+- Calls to GC.free are now ignored during finalization instead of throwing an InvalidMemoryOperationError, see Bugzilla 15353.
+- GC.addRoot and GC.addRange now use a separate lock.
+- GCAllocator.goodAllocSize was added.
+- High-level API of std.net.curl now uses Appender for received content. Which generally makes all calls slightly faster. Up to 200ms for large amounts of data.
+- Repeat was added to obtain a repeating AliasSeq consisting of template arguments.
+- fold was added as an alternative to reduce with argument order swapped.
+- Added nextPow2 and truncPow2 to std.math.
+- bsf, bsr, and popcnt now work with ulongs on 32 bit systems.
+- topN is now 5% - 7% faster.
+- Unary overloads of startsWith and endsWith were added.
+- maxCount and maxPos were added.
+- Range support for the convenience wrapper redBlackTree was added.
+
+See the full changelog here:
+http://dlang.org/changelog/2.071.0.html
+
+-------------------------------------------------------------------
+Fri Mar  4 13:36:02 UTC 2016 - schuetzm@gmx.net
+
+- Update to 2.070.2
+
+This is a bugfix release, please refer to the changelog for details:
+http://dlang.org/changelog/2.070.2.html
+
+-------------------------------------------------------------------
+Sun Feb 28 12:59:37 UTC 2016 - schuetzm@gmx.net
+
+- Update to 2.070.1
+
+This is a bugfix release, see the changelog for details:
+http://dlang.org/changelog/2.070.1.html
+
+-------------------------------------------------------------------
+Thu Jan 28 18:58:37 UTC 2016 - schuetzm@gmx.net
+
+Update to 2.070.0
+
+Language Changes
+
+- Add syntactic support to make an alias to a function literal.
+
+Library Changes
+
+- The package std.experimental.ndslice was added. It is also available as part of the Mir library.
+- The core.sys.windows package has been greatly expanded.
+- TypeInfo.init has been renamed to TypeInfo.initializer.
+- std.json encodes string control characters.
+- Default LogLevel of FileLogger was changed to LogLevel.all.
+- Access to the internal ptr and len fields of BitArray was deprecated.
+
+See the full changelog here:
+http://dlang.org/changelog/2.070.0.html
+
+-------------------------------------------------------------------
+Thu Dec  3 12:31:48 UTC 2015 - schuetzm@gmx.net
+
+Update to 2.069.2
+
+This is a bugfix release, see the changelog for details:
+http://dlang.org/changelog/2.069.2.html
+
+-------------------------------------------------------------------
+Thu Nov  5 10:02:51 UTC 2015 - schuetzm@gmx.net
+
+Update to 2.069
+
+This is the first release with a self-hosted dmd compiler and comes
+with even more rangified phobos functions,
+std.experimental.allocator, and many other improvements.
+
+See the changelog for more details.
+http://dlang.org/changelog/2.069.0.html
+
+-------------------------------------------------------------------
+Thu Sep 24 11:09:55 UTC 2015 - schuetzm@gmx.net
+
+- update 2.068.2
+- This point release fixes a few regressions 2.068.1, see the
+  changelog for more details:
+  http://dlang.org/changelog/2.068.2.html
+
+-------------------------------------------------------------------
+Mon Sep  7 17:28:50 UTC 2015 - schuetzm@gmx.net
+
+- update to 2.068.1
+- Fixes bugs and regressions in 2.068.0
+
+-------------------------------------------------------------------
+Mon Aug 10 13:10:13 UTC 2015 - schuetzm@gmx.net
+
+- update to 2.068.0
+
+Notable changes:
+- many rangified phobos functions
+- 2 new GC profilers
+- a new AA implementation
+- countless further improvements and fixes
+
+-------------------------------------------------------------------
+Sun Jun  7 12:41:55 UTC 2015 - schuetzm@gmx.net
+
+- update to 2.067.1
+
+-------------------------------------------------------------------
+Wed Mar 25 12:47:15 UTC 2015 - schuetzm@gmx.net
+
+- update to 2.067.0
+
+-------------------------------------------------------------------
+Tue Nov 25 14:53:57 UTC 2014 - pastas4@gmail.com
+
+- add a valid dmd.conf file (from upstream)
+- recommend phobos-devel
+
+-------------------------------------------------------------------
+Sun Nov 16 09:49:39 UTC 2014 - mailaender@opensuse.org
+
+- use https://en.opensuse.org/SourceUrls
+- new project URL
+- split libphobos as discussed in bos#905648
+- add Artistic license
+- deprecate dmd-fix-build.patch
+- deprecate dmd-rpmlintrc
+
+-------------------------------------------------------------------
+Sun Nov 16 07:45:00 UTC 2014 - pastas4@gmail.com
+
+- update to 2.066.1
+
+-------------------------------------------------------------------
+Sun Jun 30 15:15:43 UTC 2013 - seife+obs@b1-systems.com
+
+- fix license tag, Boost -> BSL-1.0
+
+-------------------------------------------------------------------
+Sat May 19 20:34:56 UTC 2012 - opensuse@dstoecker.de
+
+- add config file for include paths
+- update to 2.059
+
+-------------------------------------------------------------------
+Fri Mar 23 01:47:21 UTC 2012 - jengelh@medozas.de
+
+- Parallel build with %_smp_mflags; strip redundant sections/tags
+- SPDX license field
+
+-------------------------------------------------------------------
+Thu May 19 13:28:37 UTC 2011 - prusnak@opensuse.org
+
+- created package (version 2.053)
+

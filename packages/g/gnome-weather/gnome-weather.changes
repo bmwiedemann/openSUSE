@@ -1,0 +1,550 @@
+-------------------------------------------------------------------
+Mon Apr 22 16:30:40 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.2:
+  + Bugs fixed: Logged warning about non-standard use of
+    `array.toString() on a Uint8Array instance`.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr  5 18:43:51 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Bugs fixed: The app is not translated.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 11 20:35:10 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Migrate app menu to primary menu.
+  + New icon.
+  + Show tomorrow's forecasts at the end of the day.
+
+-------------------------------------------------------------------
+Tue Mar  5 05:58:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Bugs fixed: 3.31.90 no longer installs a binary in the path.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 17 07:11:50 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Port from Autotools to Meson.
+  + Show tomorrow's forecasts at the end of the day.
+  + Unify App ID.
+  + Updated translations.
+- Add meson BuildRequires and macros following upstreams port to
+  meson buildsystem.
+
+-------------------------------------------------------------------
+Mon Feb  4 15:39:30 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Stop using arch-specific libdir (boo#1109687)
+
+-------------------------------------------------------------------
+Fri Jan  4 22:50:12 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.3:
+  + Migrate app menu to primary menu.
+  + New icon.
+  + Update GJS dependency.
+  + Updated translations.
+- Drop upstream fixed patches:
+  + gnome-weather-fix-gettext-domain.patch.
+  + gnome-weather-fix-clicking-rows-places-popover.patch.
+- Drop unneeded gjs BuildRequires, we have the pkgconfig variant
+  already.
+- Drop glib2_gsettings_schema_requires, no longer needed.
+
+-------------------------------------------------------------------
+Sat Mar 17 22:12:01 UTC 2018 - bjorn.lie@gmail.com
+
+- Add gnome-weather-fix-clicking-rows-places-popover.patch: Fix
+  clicking on rows in the places popover. With recent gjs, the
+  access to row._info fails after the row has been removed from the
+  listbox.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:30:23 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat Dec  2 21:59:18 UTC 2017 - zaitor@opensuse.org
+
+- Add gnome-weather-fix-gettext-domain.patch: gschema: Fix
+  gettext-domain.
+- Drop post(un) handling of glib2_gsettings_schema_post(un),
+  desktop_database_post(un) and icon_theme_cache_post(un), we have
+  file-triggers taking care of this now.
+- Modernize spec, run spec-cleaner, use autosetup and make_build
+  macros.
+
+-------------------------------------------------------------------
+Mon Sep 11 16:34:26 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  6 23:07:06 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug 20 18:09:45 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.91:
+  + Weather can now be tiled on sufficiently large monitors
+    (bgo#725407).
+  + Fixed compatibility with mozjs52, and improved code to take
+    advantage of the new JavaScript features.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 20 09:13:00 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.0:
+  + Updates for the new version of gjs (bgo#778641).
+  + Improvements to the build system for GNOME Builder.
+  + Updated translations.
+- Drop gnome-weather-work-with-new-gjs.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Feb 27 17:31:42 UTC 2017 - zaitor@opensuse.org
+
+- Add gnome-weather-work-with-new-gjs.patch: No longer crash on
+  launch when using gjs 1.48 or newer (bgo#778641).
+
+-------------------------------------------------------------------
+Tue Aug 16 15:48:09 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + Minor bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri May 27 12:04:21 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20.2 FATE#318572
+
+-------------------------------------------------------------------
+Mon May  9 20:09:01 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Build system fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 22 09:55:57 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 15 10:31:00 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 09:49:16 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.90:
+  + Fix missing items in forecast (bgo#757186).
+  + Add support for Geoclue agent dialog (bgo#762102).
+  + Add missing tags to Appdata.
+  + Build system updates and xdg-app support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 24 02:03:12 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.1:
+  + Convert from DBus API to libgeoclue (bgo#756647).
+- Add pkgconfig(libgeoclue-2.0) BuildRequires: New dependency
+  following upstreams convert.
+
+-------------------------------------------------------------------
+Mon Oct 12 15:53:47 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 21 06:28:06 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 12 08:30:39 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.92:
+  + Improved background for licensing and legibility (bgo#703150,
+    bgo#754892).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 28 09:49:37 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.1:
+  + Fix initial application state when geolocation is disabled.
+  + Fix temperature unit shown in the menu when not explicitly
+    configured.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 27 21:37:17 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2.1:
+  + Provide a symbolic variant of the app icon (bgo#747189).
+
+-------------------------------------------------------------------
+Mon Apr 27 09:25:09 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Honor 12/24 time format in city view (bgo#741533).
+
+-------------------------------------------------------------------
+Wed Apr 15 07:17:31 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + Fixed the missing attribution to the weather data sources in
+    the About dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 23 08:58:02 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 08:26:24 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Launching search from the overview (clicking on the weather
+    icon next to results) is now supported.
+  + The weekly forecast sidebar now includes tomorrow and uses
+    2pm as the representative forecast (bgo#741532).
+  + Misc bug fixes to the search provider and to the world popup.
+  + Build system fixes (bgo#745581).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 12:27:51 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + Build system fixes (bgo#740414).
+  + Fixed opening the app on a specific location (eg when launched
+    from gnome-maps) (bgo#740414).
+  + Fixed showing the world popover on a second window
+    (bgo#740414).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 16 13:16:50 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Fix history handling (bgo#741837).
+  + Fixed crash when Geoclue is not available (bgo#742460).
+  + Improved the forecast for the current location.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 29 01:08:59 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.15.1:
+  + Added keywords to the desktop file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 13 17:38:06 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.1:
+  + Fixed compatibility with gtk+ 3.14 (bgo#737818).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 22 17:08:15 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 16 10:42:29 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  1 22:48:35 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.91:
+  + Added high contrast icon (bgo#707286).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 19 14:32:29 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Completely redesign the application (bgo#733236).
+  + Remove libgd submodule and make the application noarch.
+  + Disable the search provider by default (bgo#734048).
+  + Updated translations.
+- Change BuildArch to noarch, following upstreams advise.
+
+-------------------------------------------------------------------
+Tue Jul 22 13:02:42 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.4:
+  + We now use package.js from gjs upstream.
+  + Fixed search-provider (bgo#732344).
+  + Misc fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 12 18:06:58 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.3:
+  + Updates to the appstream metadata, and new screenshots
+    (requires a new version of libappstream-glib, or building
+    with --disable-appstream-util).
+  + Various miscellaneous fixes and updates.
+  + Updated translations.
+- Changes from version 3.13.2:
+  + Appdata metadata was updated to the new specification.
+  + The installation folder for the application was renamed to
+    $(datadir)/org.gnome.Weather, removing the final .Application
+    part.
+  + The search provider was split into a background service, to
+    avoid triggering geolocation without the user consent (only the
+    frontend application does it now).
+- Changes from version 3.13.1:
+  + Show local time in city view (bgo#705050).
+  + Add geolocation support (automatically add the current location
+    to the world view) (bgo#704268).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 17 14:32:34 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 26 19:39:33 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 19 12:32:05 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Fix alignment of placeholder text for first run (bgo#721732).
+  + Build fixes (bgo#725942).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  4 19:43:42 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.91:
+  + Fix problem loading the app without network connectivity.
+  + Fix running tests with a11y disabled (bgo#725152).
+  + Fix running tests against old pygobject+glib (bgo#725398).
+  + Fix automake requirement (bgo#725427).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 19 12:24:04 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Fixed a crash at shutdown, caused by a destroy vfunc.
+  + Added coverage reports for tests.
+  + Updated for unstable GTK+ API changes (GtkActionBox).
+  + Fixed the sensitivity of Add in new location dialog
+    (bgo#724416).
+  + Once again, changes to the build and deployment infrastructure.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  3 17:47:19 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.5:
+  + JS sources are now loaded from a GResource, which should
+    improve startup times as it requires fewer seeks on disk.
+  + All dialogs were converted to use a header bar.
+  + A new infrastructure for application tests exists, and
+    minimal automated testing for the world view is included.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 13 21:32:37 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + Fixes for RTL layouts (bgo#721123).
+  + Updates to the packaging system.
+  + Added the ability to build an RPM from the upstream tarball.
+  + Replaced GtkHeaderBar with GtkActionBar (and gtk+ dependency
+    raised).
+  + Fixed the .desktop file for legacy environments (not using GIO
+    to launch the application).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec 18 13:53:32 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Always show a title in the header bar (bgo#720322).
+  + CityView is now consistent with other apps wrt the back button
+    (bgo#720321).
+  + We now follow the HIGs for standard items in the app menu.
+  + The sidebar can show forecast for today and tomorrow at all
+    times.
+  + We no longer show the night before the day, which was reported
+    as confusing.
+  + Updated translations.
+- Create new subpackage gnome-shell-search-provider-gnome-weather,
+  containing the GNOME Shell search provider.
+
+-------------------------------------------------------------------
+Tue Oct 15 18:08:41 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 24 13:46:10 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 16 18:08:38 UTC 2013 - firebird209@gmail.com
+
+- Update to version 3.9.92:
+  + Delay showing the window until the view is fully loaded.
+  + Make use of the spinner next to the app menu when refreshing 
+    the forecasts.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  3 06:44:00 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.91:
+  + Further update the UI to match the selection mode mockups.
+  + Add an AppData file to be used by gnome-software.
+  + Add a shell search provider to show weather for configured
+    locations.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 19 19:48:35 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + All publicly visible IDs for the application (including the
+    .desktop file name and installation folder) now follow the
+    reverse DNS notation convention, that is, they are
+    "org.gnome.Weather.Application".
+  + The application is now DBus activated, and only ships a shim
+    launcher in $bindir.
+  + In city view, the side bar is now overlaid on the rest of the
+    content rather than pushing it.
+  + We use now GTK+ support for the close button in the header.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 15 07:39:22 UTC 2013 - dimstar@opensuse.org
+
+- Do not package *.la files (even in private libdir).
+
+-------------------------------------------------------------------
+Tue Jul 30 16:28:48 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.5:
+  + Fixed selection mode to latest mockups.
+  + Enabled OpenWeatherMap backend.
+  + Updated for libgweather API changes.
+  + Updated translations.
+- Add new BuildRequires, as verified by configure:
+  + pkgconfig(gdk-3.0), pkgconfig(glib-2.0),
+    pkgconfig(gobject-2.0), pkgconfig(gweather-3.0).
+
+-------------------------------------------------------------------
+Fri Jun 21 15:21:34 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.3:
+  + Fixed icon handling in GWeatherLocationEntry due to the ABI
+    change in libgweather.
+  + Replaced most of libgd with Gtk types (still using GdMainView
+    only).
+  + Now using the header bar as a titlebar (fixes the close button
+    when maximized).
+  + Includes a new application icon, designed specifically for
+    gnome-weather.
+  + Once again fixed launching the application in certain
+    "looks-like-source-tree" cases.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 28 15:11:36 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.2:
+  + Updated libgd, but mostly replaced with Gtk types.
+  + Added a welcome screen for the first launch.
+  + The app menu now offers a choice for the temperature unit.
+  + Implements the new selection pattern, with a separate selection
+    toolbar and rubberbanding.
+  + Improved the libgweather usage to support disk caching.
+
+-------------------------------------------------------------------
+Mon May 13 21:07:44 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.2:
+  + Update libgd to master.
+  + Fix detection of source trees at startup.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 16 20:47:31 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Update libgd to master.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 26 09:04:48 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 18 19:30:42 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + First release to follow GNOME versioning.
+  + Application completely rewritten in JS + gtk + libgd.
+  + Features a full GNOME 3 layout (header bar, content view,
+    selection toolbar, application menu).
+  + Includes the ability to show multiple cities at once.
+  + Uses dark theme and symbolic icons.
+  + Includes pretty backgrounds matching the current conditions.
+  + Many many bugfixes and translation fixes.
+- Replace python BuildRequires with gjs, following upstreams port
+  to JavaScript.
+- Drop pkgconfig(clutter-1.0) and pkgconfig(gweather-3.0)
+  BuildRequires: no longer needed.
+- Add glib2_gsettings_schema and desktop_database macros to post
+  and postun.
+
+-------------------------------------------------------------------
+Wed Mar  6 20:38:21 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 0.2.
+

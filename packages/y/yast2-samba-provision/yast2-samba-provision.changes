@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Wed Jul 10 08:59:29 UTC 2019 - Samuel Cabrero <scabrero@suse.de>
+
+- Catch and show internal python exceptions; (bsc#1140548);
+- 1.0.4
+
+-------------------------------------------------------------------
+Fri May 31 12:40:00 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 1.0.3
+
+-------------------------------------------------------------------
+Wed May 22 14:54:28 UTC 2019 - Samuel Cabrero <scabrero@suse.de>
+
+- Call samba python API using yast python binding; (bsc#1117597);
+  (CVE-2018-17956)
+- Show a dialog with provision details or errors; (bsc#1132676);
+- Enable and start services after provision
+- 1.0.2
+
+-------------------------------------------------------------------
+Wed Nov  7 17:34:23 UTC 2018 - jengelh@inai.de
+
+- Remove TM mark.
+
+-------------------------------------------------------------------
+Wed Oct 31 17:17:35 UTC 2018 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix required packages after samba-kdc renamed to samba-ad-dc
+- 1.0.1
+
+-------------------------------------------------------------------
+Wed Sep 13 10:00:05 UTC 2017 - scabrero@suse.com
+
+- Hide credentials widget when creating a new forest
+- Check for non existent included files and create them empty
+- Fix network config not being updated after provision
+- Hide samba and kerberos progress on write
+- 1.0.0
+
+-------------------------------------------------------------------
+Mon Sep 11 06:46:09 UTC 2017 - scabrero@suse.com
+
+- Initial version

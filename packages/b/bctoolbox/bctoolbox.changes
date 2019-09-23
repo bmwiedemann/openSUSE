@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Tue Apr 30 08:17:53 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add gcc9-stringop-bogus-warning.patch in order to fix a misleading
+  warning by GCC 9 (boo#1121200).
+
+-------------------------------------------------------------------
+Wed Aug 15 14:36:31 UTC 2018 - sor.alexei@meowr.ru
+
+- Remove bctoolbox-fix-no-git.patch: it is better to fix the issue
+  in packages where it occurs.
+
+-------------------------------------------------------------------
+Thu Jul 20 11:20:31 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.6.0:
+  * Add API to escape/unescape strings (SIP, VCARD).
+  * Bug fixes.
+- Add bctoolbox-fix-pkgconfig.patch instead of requiring
+  pkgconfig(bcunit) and pkgconfig(zlib).
+- Add bctoolbox-fix-no-git.patch sor.alexei@meowr.ru: Fix building
+  of dependent applications out-of-git.
+
+-------------------------------------------------------------------
+Wed Jun 21 09:32:51 UTC 2017 - mpluskal@suse.com
+
+- Update baselibs
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed May 17 15:00:49 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.5.1:
+  * security bugfix: TLS session could be successfully established
+    whereas the common name did not match the server name.
+  * "const char * to void *" map feature.
+- Remove bctoolbox-pkgconfig_1.patch and
+  bctoolbox-pkgconfig_2.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Aug 27 14:34:12 UTC 2016 - jengelh@inai.de
+
+- Remove extraneous pkgconfig require
+
+-------------------------------------------------------------------
+Sat Aug 27 11:03:49 UTC 2016 - mpluskal@suse.com
+
+- Merge changes from home:X0F:HSF
+- Fix generation of pkgconfig files
+  * bctoolbox-pkgconfig_1.patch
+  * bctoolbox-pkgconfig_2.patch
+
+-------------------------------------------------------------------
+Mon Aug 15 13:03:17 UTC 2016 - jengelh@inai.de
+
+- Update summary and rpm groups
+
+-------------------------------------------------------------------
+Fri Aug 12 07:55:56 UTC 2016 - mpluskal@suse.com
+
+- Initial package for version 0.2.0
+

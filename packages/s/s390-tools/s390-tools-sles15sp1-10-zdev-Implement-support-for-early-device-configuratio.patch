@@ -1,0 +1,505 @@
+Subject: zdev: Implement support for early device configuration
+From: Peter Oberparleiter <oberpar@linux.ibm.com>
+
+Summary:     zdev: Add support for handling I/O configuration data
+Description: LPARs that are running in IBM Dynamic Partition Manager (DPM) mode
+             can access a firmware-generated I/O configuration data file that
+             contains s390-specific information about available I/O devices
+             such as qeth device numbers and parameters, and FCP device IDs.
+
+             This data file is intended to remove the need for users to
+             manually enter the corresponding device data during installation.
+
+             Linux kernels with the corresponding support make the I/O
+             configuration data available at the following location:
+
+               /sys/firmware/sclp_sd/config/data
+
+             This patch set adds support for handling this data file using the
+             chzdev and lszdev tools:
+
+               - I/O configuration data can be applied using chzdev's --import
+                 option
+               - Initial RAM-Disk scripts automatically apply the
+                 I/O configuration data to the system configuration
+               - lszdev can be used to display the applied auto-configuration
+                 data
+               - chzdev can be used to manually override the
+                 auto-configuration data
+
+Upstream-ID: 156450f359bb13776fac2130a1cac00a48c2deda
+Problem-ID:  LS1604
+
+Upstream-Description:
+
+             zdev: Implement support for early device configuration
+
+             Enable user to specify that a device should be configured early, that is
+             during the initial RAM-disk boot phase. This may be necessary, e.g. to
+             override auto-configuration for a device which is also applied during
+             that boot phase. It may also be used to manually specify devices that
+             are required to access the root file system, such as networking devices.
+
+             Users can mark devices as requiring early configuration by specifying
+             a value of 1 for the newly added internal attribute zdev:early:
+
+              # chzdev dasd-eckd 0.0.1234 -p zdev:early=1
+
+             This can be changed back by removing the attribute setting, or by
+             setting the attribute value to 0:
+
+              # chzdev dasd-eckd 0.0.1234 -p -r zdev:early
+
+             or
+
+              # chzdev dasd-eckd 0.0.1234 -p zdev:early=0
+
+             Signed-off-by: Peter Oberparleiter <oberpar@linux.vnet.ibm.com>
+             Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Peter Oberparleiter <oberpar@linux.ibm.com>
+---
+ zdev/dracut/95zdev/module-setup.sh |   21 +------
+ zdev/include/internal.h            |    5 +
+ zdev/initramfs/hooks/zdev          |   19 ++++++
+ zdev/man/chzdev.8                  |   29 ++++++++++
+ zdev/src/chzdev.c                  |    4 -
+ zdev/src/ctc.c                     |    2 
+ zdev/src/dasd.c                    |    3 +
+ zdev/src/generic_ccw.c             |    2 
+ zdev/src/internal.c                |   13 ++++
+ zdev/src/lcs.c                     |    2 
+ zdev/src/qeth.c                    |    2 
+ zdev/src/root.c                    |   82 ++++++++++++++++++++++-------
+ zdev/src/zfcp_host.c               |    2 
+ zdev/src/zfcp_lun.c                |    2 
+ 14 files changed, 152 insertions(+), 36 deletions(-)
+
+--- a/zdev/dracut/95zdev/module-setup.sh
++++ b/zdev/dracut/95zdev/module-setup.sh
+@@ -45,23 +45,12 @@ install() {
+     # Hook to parse zdev kernel parameter
+     inst_hook cmdline 95 "$moddir/parse-zdev.sh"
+ 
+-    # Obtain root device configuration
+-
+-    # Exit early if root device type is unknown
+-    if ! lszdev --by-path / >/dev/null 2>&1 ; then
+-        return 0
+-    fi
+-
++    # Obtain early + root device configuration
+     _tempfile=$(mktemp --tmpdir dracut-zdev.XXXXXX)
+-
+-    if chzdev --export - --persistent --by-path / >/dev/null 2>&1 ; then
+-        # Use persistent configuration
+-        chzdev --export "$_tempfile" --persistent --by-path / --quiet --type
+-    else
+-        # Use active configuration
+-        chzdev --export "$_tempfile" --active --by-path / --quiet --type
+-        sed -i -e 's/active/persistent/g' "$_tempfile"
+-    fi
++    chzdev --export "$_tempfile" --persistent --by-path / --quiet \
++	   --type 2>/dev/null
++    chzdev --export - --persistent --by-attrib "zdev:early=1" --quiet \
++	   --type 2>/dev/null >> "$_tempfile"
+ 
+     # Apply via --import to prevent other devices from being configured
+     chzdev --import "$_tempfile" --persistent --base "/etc=$initdir/etc" \
+--- a/zdev/include/internal.h
++++ b/zdev/include/internal.h
+@@ -12,7 +12,12 @@
+ 
+ #include <stdbool.h>
+ 
++#include "attrib.h"
++
+ #define INTERNAL_ATTR_PREFIX	"zdev:"
++#define	INTERNAL_ATTR_EARLY	INTERNAL_ATTR_PREFIX "early"
++
++extern struct attrib internal_attr_early;
+ 
+ const char *internal_get_name(const char *name);
+ bool internal_by_name(const char *name);
+--- a/zdev/initramfs/hooks/zdev
++++ b/zdev/initramfs/hooks/zdev
+@@ -10,7 +10,8 @@
+ #   configuration data during boot.
+ #
+ 
+-PREREQ=""
++# Needs to run after udev or resulting udev rules could be overwritten
++PREREQ="udev"
+ 
+ prereqs()
+ {
+@@ -37,3 +38,19 @@ done
+ copy_exec /sbin/chzdev
+ copy_exec /sbin/lszdev
+ copy_exec /sbin/vmcp
++
++_tempfile=$(mktemp --tmpdir initramfs-zdev.XXXXXX)
++
++# Obtain early + root device configuration
++chzdev --export "$_tempfile" --persistent --by-path / \
++       --by-attrib "zdev:early=1" --quiet --type 2>/dev/null
++
++# Apply via --import to prevent other devices from being configured.
++# Rename the resulting cio-ignore rule to ensure that it does not override
++# the one copied by the initramfs udev hook to /lib/udev.
++chzdev --import "$_tempfile" --persistent \
++       --base "/etc/udev/rules.d/41-cio-ignore.rules=$DESTDIR/etc/udev/rules.d/41-cio-ignore-root.rules" \
++       --base "/etc=$DESTDIR/etc" --yes --quiet --no-root-update --force \
++       >/dev/null
++
++rm -f "$_tempfile"
+--- a/zdev/man/chzdev.8
++++ b/zdev/man/chzdev.8
+@@ -334,6 +334,35 @@ a specific attribute.
+ .PP
+ .
+ .
++.SS "Special settings"
++The following special settings affect how devices are handled by chzdev:
++.PP
++.
++.BR zdev:early =0|1
++.RS 4
++Control in which stage of the boot process a device is activated:
++.TP 4
++.B 0
++Device is activated normally during boot (default).
++.PP
++.TP 4
++.B 1
++Device is activated early in the boot process, by the initial RAM-disk.
++.PP
++Specify a value of 1 for this attribute in any of the following situations:
++.TP 4
++\(bu
++To ensure that your settings override auto-configuration settings.
++.PP
++.TP 4
++\(bu
++To ensure that a device required to access the root file system is correctly
++enabled during boot. An example would be a networking device, or a device that
++is intended to extend a logical volume that provides the root file system.
++.PP
++.RE
++.
++.
+ .SH ACTIONS
+ You can use one of the action options listed below to specify the
+ .B main tool action
+--- a/zdev/src/chzdev.c
++++ b/zdev/src/chzdev.c
+@@ -3025,8 +3025,8 @@ int main(int argc, char *argv[])
+ 
+ 	if ((pers_mod_devs || pers_mod_devtypes) && !opts.no_root_check &&
+ 	    !dryrun) {
+-		/* If the root device/device type has been modified, additional
+-		 * work might be necessary. */
++		/* If the root device/device type or early devices have been
++		 * modified, additional work might be necessary. */
+ 		rc = root_check();
+ 		if (rc && !drc)
+ 			drc = rc;
+--- a/zdev/src/ctc.c
++++ b/zdev/src/ctc.c
+@@ -17,6 +17,7 @@
+ #include "ctc_auto.h"
+ #include "device.h"
+ #include "devtype.h"
++#include "internal.h"
+ #include "misc.h"
+ #include "namespace.h"
+ #include "path.h"
+@@ -425,6 +426,7 @@ static struct subtype ctc_subtype = {
+ 		&ccw_attr_online,
+ 		&ctc_attr_buffer,
+ 		&ctc_attr_protocol,
++		&internal_attr_early,
+ 	),
+ 	.unknown_dev_attribs	= 1,
+ 	.support_definable	= 1,
+--- a/zdev/src/dasd.c
++++ b/zdev/src/dasd.c
+@@ -16,6 +16,7 @@
+ #include "dasd.h"
+ #include "device.h"
+ #include "devtype.h"
++#include "internal.h"
+ #include "misc.h"
+ #include "modprobe.h"
+ #include "module.h"
+@@ -616,6 +617,7 @@ struct subtype dasd_subtype_eckd = {
+ 		&dasd_attr_reservation_policy,
+ 		&dasd_attr_last_known_reservation_state,
+ 		&dasd_attr_safe_offline,
++		&internal_attr_early,
+ 	),
+ 	.unknown_dev_attribs	= 1,
+ 
+@@ -651,6 +653,7 @@ struct subtype dasd_subtype_fba = {
+ 		&dasd_attr_reservation_policy,
+ 		&dasd_attr_last_known_reservation_state,
+ 		&dasd_attr_safe_offline,
++		&internal_attr_early,
+ 	),
+ 	.unknown_dev_attribs	= 1,
+ 
+--- a/zdev/src/generic_ccw.c
++++ b/zdev/src/generic_ccw.c
+@@ -17,6 +17,7 @@
+ #include "devnode.h"
+ #include "devtype.h"
+ #include "generic_ccw.h"
++#include "internal.h"
+ #include "namespace.h"
+ #include "path.h"
+ #include "subtype.h"
+@@ -182,6 +183,7 @@ static struct subtype generic_ccw_subtyp
+ 	.dev_attribs = ATTRIB_ARRAY(
+ 		&ccw_attr_online,
+ 		&ccw_attr_cmb_enable,
++		&internal_attr_early,
+ 	),
+ 	.unknown_dev_attribs	= 1,
+ 	.generic		= 1,
+--- a/zdev/src/internal.c
++++ b/zdev/src/internal.c
+@@ -9,9 +9,22 @@
+ 
+ #include <stdbool.h>
+ 
++#include "attrib.h"
+ #include "internal.h"
+ #include "misc.h"
+ 
++struct attrib internal_attr_early = {
++	.name = INTERNAL_ATTR_EARLY,
++	.title = "Activate device early during boot",
++	.desc = "Control the time of activation of a device:\n"
++		"  0: Device is activated normally during boot\n"
++		"  1: Device is activated early in the boot process, by the\n"
++		"     initial RAM-disk\n",
++	.defval = "0",
++	.accept = ACCEPT_ARRAY(ACCEPT_RANGE(0, 1)),
++	.internal = 1,
++};
++
+ /* Return identifier of internal attribute with specified @name. */
+ const char *internal_get_name(const char *name)
+ {
+--- a/zdev/src/lcs.c
++++ b/zdev/src/lcs.c
+@@ -15,6 +15,7 @@
+ #include "ccwgroup.h"
+ #include "device.h"
+ #include "devtype.h"
++#include "internal.h"
+ #include "lcs.h"
+ #include "lcs_auto.h"
+ #include "misc.h"
+@@ -362,6 +363,7 @@ static struct subtype lcs_subtype = {
+ 		&ccw_attr_online,
+ 		&lcs_attr_lancmd_timeout,
+ 		&lcs_attr_recover,
++		&internal_attr_early,
+ 	),
+ 	.unknown_dev_attribs	= 1,
+ 	.support_definable	= 1,
+--- a/zdev/src/qeth.c
++++ b/zdev/src/qeth.c
+@@ -15,6 +15,7 @@
+ #include "ccwgroup.h"
+ #include "device.h"
+ #include "devtype.h"
++#include "internal.h"
+ #include "misc.h"
+ #include "namespace.h"
+ #include "nic.h"
+@@ -1445,6 +1446,7 @@ struct subtype qeth_subtype_qeth = {
+ 		&qeth_attr_vnicc_takeover_learning,
+ 		&qeth_attr_vnicc_bridge_invisible,
+ 		&qeth_attr_vnicc_rx_bcast,
++		&internal_attr_early,
+ 	),
+ 	.unknown_dev_attribs	= 1,
+ 	.support_definable	= 1,
+--- a/zdev/src/root.c
++++ b/zdev/src/root.c
+@@ -8,11 +8,13 @@
+  */
+ 
+ #include <stdlib.h>
++#include <string.h>
+ 
+ #include "lib/util_path.h"
+ 
+ #include "device.h"
+ #include "devtype.h"
++#include "internal.h"
+ #include "misc.h"
+ #include "path.h"
+ #include "root.h"
+@@ -20,31 +22,78 @@
+ #include "setting.h"
+ #include "subtype.h"
+ 
+-/* Determine if the root device was modified. If it was modified, run the
+- * corresponding root-install scripts. */
++static bool is_early_removed(struct device *dev)
++{
++	struct setting *s;
++
++	s = setting_list_find(dev->persistent.settings,
++			      internal_attr_early.name);
++	if (!s || !s->modified)
++		return false;
++	if (!s->actual_value || strcmp(s->actual_value, "1") != 0)
++		return false;
++	if (s->removed || strcmp(s->value, "0") == 0)
++		return true;
++	return false;
++}
++
++static void add_early_removed(struct util_list *selected)
++{
++	int i, j;
++	struct devtype *dt;
++	struct subtype *st;
++	struct device *dev;
++
++	for (i = 0; devtypes[i]; i++) {
++		dt = devtypes[i];
++		for (j = 0; dt->subtypes[j]; j++) {
++			st = dt->subtypes[j];
++			util_list_iterate(&st->devices->hash.list, dev) {
++				if (is_early_removed(dev)) {
++					selected_dev_list_add(selected, dt, st,
++						dev->id, NULL, EXIT_OK);
++				}
++			}
++		}
++	}
++}
++
++/* Determine if initial RAM-disk needs updating. If so, run the corresponding
++ * scripts if available. */
+ exit_code_t root_check(void)
+ {
+ 	struct util_list *selected, *params, *mod = NULL;
+ 	struct selected_dev_node *sel;
+ 	struct device *dev;
+ 	char *params_str;
+-	exit_code_t rc;
++	exit_code_t rc = EXIT_OK;
+ 	struct strlist_node *s;
+ 	struct devtype *dt;
++	struct select_opts *select;
+ 
+-	debug("Checking for modified root device configuration\n");
++	debug("Checking for required initial RAM-disk update\n");
+ 
+-	/* Get list of devices that provide the root device. */
++	/* Get list of devices that provide the root device or require
++	 * early configuration. */
+ 	selected = selected_dev_list_new();
+-	rc = select_by_path(NULL, selected, config_active, scope_mandatory,
+-			    NULL, NULL, PATH_ROOT, err_ignore);
+-	if (rc) {
++	/* First add devices that had zdev:early removed or changed to 0.
++	 * The subsequent call to select_devices() will filter out any
++	 * duplicates. */
++	add_early_removed(selected);
++	/* Now add devices required for root file system. */
++	if (select_by_path(NULL, selected, config_active, scope_mandatory,
++			   NULL, NULL, PATH_ROOT, err_ignore)) {
+ 		/* Running from an unknown root device is not an error. */
+ 		verb("Note: Could not determine if root device configuration "
+ 		     "needs to be updated\n");
+-		rc = 0;
+-		goto out;
+ 	}
++	/* Finally add devices with zdev:early=1. */
++	select = select_opts_new();
++	strlist_add(&select->by_attr, "%s=1", INTERNAL_ATTR_EARLY);
++	select_devices(select, selected, 1, 0, 0,
++		       config_active | config_persistent, scope_mandatory,
++		       err_ignore);
++	select_opts_free(select);
+ 
+ 	/* Determine if any of the devices or device types has been modified. */
+ 	mod = strlist_new();
+@@ -68,19 +117,18 @@ exit_code_t root_check(void)
+ 
+ 	if (util_list_is_empty(mod))
+ 		goto out;
+-	info("Note: Some of the changes affect devices providing the root "
+-	     "file system:\n");
++	info("Note: The initial RAM-disk must be updated for these changes to take effect:\n");
+ 	util_list_iterate(mod, s)
+ 		info("       - %s\n", s->str);
+-	info("      Additional steps such as rebuilding the RAM-disk might be "
+-	     "required.\n");
+ 
+ 	/* Check if script is available. */
+-	if (!util_path_is_reg_file(PATH_ROOT_SCRIPT))
++	if (!util_path_is_reg_file(PATH_ROOT_SCRIPT)) {
++		warn("A manual update of the initial RAM-disk is required.\n");
+ 		goto out;
++	}
+ 
+ 	/* Ask for confirmation. */
+-	if (!confirm("Update persistent root device configuration now?")) {
++	if (!confirm("Update initial RAM-disk now?")) {
+ 		rc = EXIT_ABORTED;
+ 		goto out;
+ 	}
+@@ -97,7 +145,7 @@ exit_code_t root_check(void)
+ 	/* Run update command. */
+ 	if (misc_system(err_delayed_print, "%s %s", PATH_ROOT_SCRIPT,
+ 			params_str) != 0) {
+-		error("Failure while updating root device configuration\n");
++		error("Failure while updating initial RAM-disk\n");
+ 		delayed_print(DELAY_INDENT);
+ 		rc = EXIT_RUNTIME_ERROR;
+ 	}
+--- a/zdev/src/zfcp_host.c
++++ b/zdev/src/zfcp_host.c
+@@ -17,6 +17,7 @@
+ #include "ccw.h"
+ #include "device.h"
+ #include "devtype.h"
++#include "internal.h"
+ #include "misc.h"
+ #include "path.h"
+ #include "setting.h"
+@@ -247,6 +248,7 @@ struct subtype zfcp_host_subtype = {
+ 		&zfcp_host_attr_failed,
+ 		&zfcp_host_attr_port_remove,
+ 		&zfcp_host_attr_port_rescan,
++		&internal_attr_early,
+ 	),
+ 	.unknown_dev_attribs	= 1,
+ 
+--- a/zdev/src/zfcp_lun.c
++++ b/zdev/src/zfcp_lun.c
+@@ -21,6 +21,7 @@
+ #include "devnode.h"
+ #include "devtype.h"
+ #include "misc.h"
++#include "internal.h"
+ #include "namespace.h"
+ #include "path.h"
+ #include "scsi.h"
+@@ -1097,6 +1098,7 @@ struct subtype zfcp_lun_subtype = {
+ 		&zfcp_lun_attr_scsi_timeout,
+ 		&zfcp_lun_attr_scsi_state,
+ 		&zfcp_lun_attr_scsi_delete,
++		&internal_attr_early,
+ 	),
+ 	.prefixes = STRING_ARRAY(SCSI_ATTR_PREFIX),
+ 	.unknown_dev_attribs	= 1,

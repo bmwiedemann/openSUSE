@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Mon Jun 16 08:53:33 UTC 2014 - sndirsch@suse.com
+
+- update to release 0.3.9
+  * Mark DEPTH_MASK as Unsigned int
+  * Add autogen.sh to EXTRA_DIST.
+  * Follow changes in m4 submodule.
+  * config: add bug URL to AC_INIT
+  * config: replace deprecated use of AC_OUTPUT with AC_CONFIG_FILES
+  * config: use AC_CONFIG_HEADERS to create a config.h file
+  * config: remove old dead code for documentation
+  * config: add missing COPYING file
+  * make: use AM_CPPFLAGS rather than per-target libxcb_render_util_la_CPPFLAGS
+  * make: using EXTRA_DIST for xcb-renderutil.pc.in is redundant
+  * make: there should be no attempt to remove any Makefile.in file
+  * make: compile the library with standard xorg warning flags
+  * Fix compilation and linking issues with C++
+  * Check submodules before running autoconf.
+
+-------------------------------------------------------------------
+Sun Feb 17 17:21:53 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+
+-------------------------------------------------------------------
+Wed Mar 21 10:37:26 UTC 2012 - jengelh@medozas.de
+
+- Initial package for build.opensuse.org

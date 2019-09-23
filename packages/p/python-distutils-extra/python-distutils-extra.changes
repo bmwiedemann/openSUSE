@@ -1,0 +1,176 @@
+-------------------------------------------------------------------
+Wed Mar 13 09:00:35 UTC 2019 - qzheng <qzheng@suse.com>
+
+- Make use of %license macro and get ready for submitting this
+  package (the dependency of onboard) to SLE-15 
+  (fate#326794, bsc#1082318).
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:19 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Aug 24 13:36:16 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Sun Sep  8 20:45:19 UTC 2013 - os-dev@jacraig.com
+
+- Update to 2.38:
+  * Use yelp-tools style help installation.
+
+-------------------------------------------------------------------
+Sat Sep 29 19:48:14 UTC 2012 - os-dev@jacraig.com
+
+- Update to 2.37:
+  * Handle Glade .ui files correctly when generating the copyright file. Also
+    ignore backup files.
+  * auto.py: Recognize manpages which have comments before the initial .TH
+    comment.
+
+-------------------------------------------------------------------
+Wed Sep 12 03:20:46 UTC 2012 - os-dev@jacraig.com
+
+- Update to version 2.36:
+  * Use python 2.6 friendly sys.version_info test.
+  * Do not call decode() with an "errors" keyword, as this does not
+    yet work with Python 2.6.
+- No changelog provided for 2.35.
+- Changes from 2.34:
+  * Fix *.ui detection to be robust for non-ASCII files.
+  * Fix a regression with python2 if files have some utf-8 directives.
+- Changes from 2.33:
+  * Fix crash when encountering binary files with Python 3.
+  * Fix crash when encountering an UTF-8 Python source code file.
+
+-------------------------------------------------------------------
+Wed Mar 14 11:02:40 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.32. Summary of changes since 2.23:
+  + Port code to be fully Python 3 compatible.
+  + Rename "check" command to "pylint".
+  + Add support for installing GSettings schema files.
+  + Properly support GI repository module detection.
+  + Remove pykdeuic4 integration.
+  + Drop support for the long-obsolete PolicyKit (pre polkit 1.0
+    API).
+  + Several bug fixes.
+
+-------------------------------------------------------------------
+Thu Jan 12 11:31:12 UTC 2012 - saschpe@suse.de
+
+- Specfile cleanup:
+  * SPDX-style license (GPL-2.0)
+  * Remove %clean section (sane default)
+  * Simpler macro usage
+  * No authors in description
+
+-------------------------------------------------------------------
+Sat Dec 11 16:51:38 UTC 2010 - rwobben@hotmail.com
+
+- Update to 2.23
+  According to this page https://launchpad.net/python-distutils-extra/trunk/2.23) this release has no changelog  
+
+-------------------------------------------------------------------
+Sat Oct 30 08:22:11 UTC 2010 - rwobben@hotmail.com
+
+- Update to version 2.22 ( 2.6 is not the latest one)
+
+
+Changelog to 2.22
+
+* setup.py: Drop import of "commands"; unused, and does not exist in
+    python3.
+  * DistUtilsExtra/command/build_extra.py: Use "in" operator instead of
+    has_key(). It's more elegant and Python 3 compatible.
+  * test/auto.py: Use Python3 compatible octal constant.
+  * test/auto.py: Decode stdout/stderr result from subprocess from bytes to
+    str, to work with Python3.
+  * test/auto.py: Use whichever Python interpreter we got invoked with (using
+    /proc/self/exe) instead of hardcoding "python". With that we can run the
+    tests through python3 as well.
+  * DistUtilsExtra/auto.py: Port from deprecated "compiler" module to current
+    "ast" module.
+  * test/auto.py: Only set PYTHONPATH if it isn't set already, so that we can
+    override it from outside.
+  * test/auto.py: Do not require that "setup.py clean -a" doesn't print
+    anything to stderr; with Python 3.1 it now sends out warnings about
+    nonexisting directories.
+  * test/auto.py: Changed print statements to work with both Python 2 and 3.
+  * DistUtilsExtra/command/build_extra.py: Drop unnecessary hashbang line.
+  * test/auto.py: Filter out bogus errors about missing files which current
+    Python 3 distutils spews out.
+  * test/auto.py, Use python{,3}-{pkg-resources,httplib2} as
+    external test modules instead of -xdg and -dateutil, since the latter are
+    not available for Python 3 yet.
+
+Changelog to 2.20 
+
+ [Didier Roche ]
+ * build_i18n.py: add support for LINGUAS (Siegfried Gevatter) (LP: #510957)
+
+[ Martin Pitt ]
+* debian/local/python-mkdebian: Make langpack.mk include optional, as it
+  only exists in Ubuntu, not Debian. (Closes: #589802)
+* debian/local/python-mkdebian: If we are on Debian, set upload target to
+  "unstable". (Closes: #589794)
+
+changelog to 2.19
+
+  * auto.py: Also recognize Qt .ui files if they start with an "<?xml..."
+  first line. (LP: #543707)
+* test/auto.py: Check that automatic translation extraction also works for
+  extensionless files and single quotation marks. (Side discussion in
+  LP #533565)
+* test/auto.py: Check that scripts explicitly mentioned in "data_files" and
+  "scripts" are covered by the automatic POTFILES.in generation. This
+  reproduces LP #533565.
+* auto.py: Include scripts in setup.py's data_files into potential
+  POTFILES.in candidates. (LP: #533565)
+* debian/control: Swap maintainer (me) and uploaders (Sebastian), since I'm
+  the de-facto maintainer now.
+* debian/control: Replace python-all-dev build dependency with python-all,
+  which is enough. Also wrap build dependencies.
+* Add debian/source/format: 3.0 (native).
+* setup.py: Grab version from DistUtilsExtra/auto.py instead of duplicating
+  and hardcoding it.
+* python_mkdebian: Add --version option.
+* Move primary __version__ definition to DistUtilsExtra/__init__.py, where
+  it makes more sense than just in the auto module.
+* Add debian/local/python-mkdebian.1. (Closes: #546266)
+* Add debian/python-distutils-extra.manpages to install the new manpage.
+
+
+-------------------------------------------------------------------
+Fri Oct 29 10:25:13 UTC 2010 - rwobben@hotmail.com
+
+- Update to version 2.6
+
+-------------------------------------------------------------------
+Fri Oct 29 09:55:56 UTC 2010 - rwobben@hotmail.com
+
+- Update to version 2.22
+
+-------------------------------------------------------------------
+Fri Apr  2 03:40:21 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.18.
+
+-------------------------------------------------------------------
+Tue Sep 22 15:34:54 CEST 2009 - jblunck@suse.de
+
+- Update to python-distuils-extra 2.10
+
+-------------------------------------------------------------------
+Tue Aug 25 12:28:09 UTC 2009 - jfunk@funktronics.ca
+
+- Build as noarch on 11.2
+
+-------------------------------------------------------------------
+Fri Aug 14 12:15:09 UTC 2009 - jfunk@funktronics.ca
+
+- Cleanup for Factory submission
+
+

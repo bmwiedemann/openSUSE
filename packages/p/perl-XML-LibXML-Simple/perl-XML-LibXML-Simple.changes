@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Tue Dec 12 07:04:56 UTC 2017 - coolo@suse.com
+
+- updated to 0.99
+   see /usr/share/doc/packages/perl-XML-LibXML-Simple/ChangeLog
+
+  version 0.99: Mon 11 Dec 12:53:14 CET 2017
+  
+  	Changes:
+  	- support SuppressEmpty.
+  
+  	Improvements:
+  	- typo
+  	  rt.cpan.org#123618 [Gregor Herrmann, Debian]
+
+-------------------------------------------------------------------
+Thu Nov  9 07:03:26 UTC 2017 - coolo@suse.com
+
+- updated to 0.98
+   see /usr/share/doc/packages/perl-XML-LibXML-Simple/ChangeLog
+
+  version 0.98: Wed  8 Nov 10:38:35 CET 2017
+  
+  	Improvements:
+  	- warn about the dwimmery of the code
+  	  rt.cpan.org#114021 [David Schmidt, Slaven Rezic]
+  	- typo
+  	  rt.cpan.org#114211 [Gregor Herrmann, Debian]
+  	- remove dependency on File::Slurp::Tiny, never used it
+  	  rt.cpan.org#123537 [Dan Book]
+
+-------------------------------------------------------------------
+Thu May  5 10:29:09 UTC 2016 - coolo@suse.com
+
+- updated to 0.97
+   see /usr/share/doc/packages/perl-XML-LibXML-Simple/ChangeLog
+
+  version 0.97: Tue 12 Apr 15:12:21 CEST 2016
+  
+  	Fixes:
+  	- HookNodes parameter was not allowed. [Kit Peters]
+
+-------------------------------------------------------------------
+Sun Mar 13 10:46:13 UTC 2016 - coolo@suse.com
+
+- updated to 0.96
+   see /usr/share/doc/packages/perl-XML-LibXML-Simple/ChangeLog
+
+  version 0.96: Fri 11 Mar 15:09:43 CET 2016
+  
+  	Improvements:
+  	- deprecate XML input from 'undef'
+  	- rewrite UNIVERSAL::isa into blessed ->isa
+  	- implement hooks on nodes
+
+-------------------------------------------------------------------
+Tue Apr 14 20:37:53 UTC 2015 - coolo@suse.com
+
+- updated to 0.95
+   see /usr/share/doc/packages/perl-XML-LibXML-Simple/ChangeLog
+
+  version 0.95: Mon Dec 22 08:19:53 CET 2014
+  
+  	Fixes:
+  	- content-key collapse did not work with any key value of 0.
+  
+  	Improvements:
+  	- doc: be clear that an XML::LibXML node can be used as source
+  	  for XMLin as well [Salve J. Nilsen]
+  	- doc: cleaner SYNOPSIS, minor reorganisation.
+
+-------------------------------------------------------------------
+Mon Jul 28 05:30:42 UTC 2014 - coolo@suse.com
+
+- updated to 0.94
+       Improvements:
+       - change documentation style.
+       - replace File::Slurp by File::Slurp::Tiny [Caleb Cushing]
+
+-------------------------------------------------------------------
+Tue Jun  4 17:01:50 UTC 2013 - coolo@suse.com
+
+- updated to 0.93
+       - move pod-test to xt/
+       - fix warning produced by Pod::Checker
+       - include license in the manuals.
+
+-------------------------------------------------------------------
+Fri May 25 15:17:07 UTC 2012 - werner@suse.de
+
+- Do version update to 0.91 
+
+-------------------------------------------------------------------
+Wed May 23 20:27:29 UTC 2012 - cfarrell@suse.com
+
+- license update: Artistic-1.0 or GPL-1.0+
+  Perl license in SPDX format
+
+-------------------------------------------------------------------
+Tue May 22 13:12:35 UTC 2012 - werner@suse.de
+
+- run osc service localrun format_spec_file 
+
+-------------------------------------------------------------------
+Sat Apr 30 00:11:53 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.15)
+

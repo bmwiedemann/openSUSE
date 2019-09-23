@@ -1,0 +1,2 @@
+# More than a thousand warnings about doxygen generated html doc files
+addFilter("cadabra2-doc.* file-contains-date-and-time")

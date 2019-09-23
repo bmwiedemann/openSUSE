@@ -1,0 +1,17 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/UltraStar-Deluxe/USDX.git</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="revision">master</param>
+  </service>
+  <service mode="disabled" name="tar"/>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>
+

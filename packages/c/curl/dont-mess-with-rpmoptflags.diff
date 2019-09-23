@@ -1,0 +1,15 @@
+Index: configure.ac
+===================================================================
+--- configure.ac.orig	2013-02-07 11:55:15.150276599 +0100
++++ configure.ac	2013-02-07 11:55:15.167277116 +0100
+@@ -288,10 +288,6 @@ dnl platform/compiler/architecture speci
+ dnl **********************************************************************
+ 
+ CURL_CHECK_COMPILER
+-CURL_SET_COMPILER_BASIC_OPTS
+-CURL_SET_COMPILER_DEBUG_OPTS
+-CURL_SET_COMPILER_OPTIMIZE_OPTS
+-CURL_SET_COMPILER_WARNING_OPTS
+ 
+ if test "$compiler_id" = "INTEL_UNIX_C"; then
+   #

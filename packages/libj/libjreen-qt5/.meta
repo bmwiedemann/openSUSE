@@ -1,0 +1,5 @@
+<package name="libjreen-qt5" project="openSUSE:Factory">
+  <title>Qt Jabber/XMPP library </title>
+  <description>Qt Jabber/XMPP extensible library </description>
+  <devel project="KDE:Qt5" package="libjreen-qt5"/>
+</package>

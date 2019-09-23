@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>53749a5209df97fb5128bffff4c92e07</srcmd5>
+    <version>1.6.1</version>
+    <time>1527605261</time>
+    <user>dimstar_suse</user>
+    <comment>Data analysis library for python</comment>
+    <requestid>605895</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>115317bc3e6cabebb576c90cc46dd682</srcmd5>
+    <version>1.6.1</version>
+    <time>1551276617</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable tests
+- Remove devel dependency
+- Switch to github tarball to get test fixtures and data</comment>
+    <requestid>679760</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f9a70e6f6c209930f267821c82c37529</srcmd5>
+    <version>1.6.1</version>
+    <time>1551687766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680792</requestid>
+  </revision>
+</revisionlist>

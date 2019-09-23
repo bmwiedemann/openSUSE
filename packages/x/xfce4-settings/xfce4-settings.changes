@@ -1,0 +1,579 @@
+-------------------------------------------------------------------
+Thu Aug 22 09:07:28 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.14.1
+  * display: Fix profile matching in xfsettingsd
+  * display: Assure correct gchar** (bxo#15816)
+  * color: Conditionally hide info button in add-profile dialog
+  * color: Add tooltip to profile info buttons
+  * keyboard: Add mnemonics to add-command dialog (bxo#10495)
+  * keyboard: Improve layout of add-command dialog
+  * Translation Updates
+
+-------------------------------------------------------------------
+Fri Aug 16 12:57:52 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Mon Aug 12 14:13:16 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Enable colord support
+
+-------------------------------------------------------------------
+Mon Aug 12 08:11:46 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.14.0
+  * a11y: Replace GtkStock buttons
+  * appearance: Replace GtkStock buttons
+  * color: Replace GtkStock buttons
+  * display: Don't warn on deleting last profile
+  * display: Fix settings retention (bxo#15437)
+  * display: Remove debug statement breaking profiles (bxo#15769)
+  * display: Use proper icon name
+  * keyboard: Replace GtkStock buttons
+  * Make strings translatable
+  * mouse: Replace GtkStock buttons
+  * settings-editor: Fix buttons declaration
+  * settings-editor: Replace GtkStock buttons
+  * Translation Updates 
+
+-------------------------------------------------------------------
+Sun Jul 28 14:28:22 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.13.7
+  * display: Sync display when applying config
+  * display: Use current display
+  * xsettings: Grab and sync XServer on startup (bxo#15725)
+  * xfsettingsd: Start settings prior to complete startup (bxo#15725)
+  * Update copyright years
+  * Translation updates
+
+-------------------------------------------------------------------
+Sun Jun 30 22:04:54 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.13.7
+  * color:
+    - Fix crash when launching gcm in plugged dialog (bxo#15426)
+    - Set correct icon in color dialogs
+  * display:
+    - Replace deprecated icon (bxo#15416)
+    - Add mnemonics to minimal dialog buttons (bxo#15449)
+    - Disable auto-enabling profiles by default
+  * settings-manager: Fix missing icons on resize/add/remove
+    (bxo#15428, bxo#15613)
+  * xfsettingsd: Fix numlock state restoration (bxo#15642)
+  * Translation updates
+
+-------------------------------------------------------------------
+Wed Jun  5 04:58:17 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Added OBS service file to enable only for GIT Master aka RAT
+
+-------------------------------------------------------------------
+Fri May 17 22:42:33 UTC 2019 - Vinzenz Vietzke <vinz@vinzv.de>
+
+- Update to version 4.13.6
+  * New Feature: Add color-settings (colord frontend)
+  * New Feature: Add display profile support to the daemon
+  * Bugfixes and other smaller changes:
+    - display:
+      - Track and highlight active profile
+      - Ask user to update profile when closing with unsaved
+        changes
+      - Add interactive information about primary display setting
+      - Improve profile-create popover
+      - Improve profile-delete dialog
+      - UI alignment improvements
+      - Reduce complexity of the code and speedup
+        display_settings_get_profiles
+      - Replace deprecated GtkStock
+      - Re-introduce display numbering
+      - Ensure the settomgs dialog gets properly destroyed
+      - Verify unique profile names
+      - Drop connector name from profile matching
+      - Correctly fall back to previous profile on cancel
+      - Fix alignment of buttons in minimal dialog
+      - Only show profiles which match *all* connected displays
+      - Update profile list on screen changes
+      - Fix crash when no RRMode is available (bxo#12607)
+      - Correctly hide primary setting with 1 display
+      - Fix calculation of offset
+      - Always show the 'primary display' option
+      - Make primary indicator a star icon
+      - Throw warning when monitors exceed max screen size
+    - color: Always select first device on startup (bxo#15266)
+    - xfsettingsd: Increase startup priority
+    - Fix scrolling in embedded settings dialogs (bxo#14285,
+      lp#1653448)
+    - Fix search change clearing and hiding sections (bxo#14792)
+    - Resolved g_type_class_add_private deprecations (GObject 2.58)
+    - Fix incremental sending from the clipboard manager (bxo#13537)
+    - Fix WindowScalingFactory property type
+    - Fix code spacing
+    - Fix memory leaks
+    - Fix CID 337242: Null pointer dereferences (REVERSE_INULL)
+    - Fix compiler warnings
+    - Fix icon names
+    - Update configure.ac.in
+    - Update .gitignore
+    - Set yes as the default debxolevel
+  * Translation Updates
+
+-------------------------------------------------------------------
+Tue Apr 30 13:11:38 UTC 2019 - Vinzenz Vietzke <vinz@vinzv.de>
+
+- Update to version 4.13.5
+  - New: Add display profiles feature
+    - Allows for saving/restoring display configurations
+    - Profiles can be auto-applied when new displays are connected
+  - Drop the Gtk Theme previews
+  - Various UI improvements to the settings dialogs
+  - New icons for the minimal display dialog
+  - Fix: Fix broken hover effect in the settings manager (bxo#14539)
+  - Fix: Add default mnemonics back to dialog buttons
+  - Fix: Add DBUS_GLIB_CFLAGS for Settings Editor (bxo#14385)
+  - Fix: Force using a period as a decimal separator in xfsettingsd (bxo#11906)
+  - Translation updates
+- Changes from 4.13.4
+  - Fix: Redefinition of DISTCLEANFILES
+  - Fix: Typo, "PRECISON" to "PRECISION"
+  - Replaced "AC_CONFIG_MACRO_DIR" usage with "AC_CONFIG_MACRO_DIRS"
+  - Translation updates
+- Changes from 4.13.3
+  - Fix: Uninitialized scalar variables (CID #292062, #292063)
+  - Fix: -Wcast-function-type (GCC 8)
+  - Ported from dbus-glib to gdbus (bxo#14426)
+  - Added support for xrandr display scaling (via Xfconf)
+  - Improved display manufucturer name recognition:
+    - Refreshed PNP IDs from hwdata
+    - Added support for VBX (VirtualBox)
+    - Standardized and shortened manufacturer names
+    - Updated laptop detection to include eDP in XfceRandr
+  - Updated --help copyright information to 2018
+  - Translation updates
+- Changes from 4.13.2
+  - New: Show location of the mouse pointer on keypress
+  - Fix: syncdaemon not starting with certain locales
+  - Fix: division by 0 crash from gdk_screen_height_mm()
+  - Fix: Remove existing socket from socket viewport (bxo#13847)
+  - Fix: Use transient notifications for improved logging
+  - Fix: Do not expand event sounds section so font scaling is correctly
+	  positioned
+  - Improvements for multimonitor support:
+    - Visualize all three display configuration states
+    - Visually note if two displays overlap (mirrored) but are not cloned
+    - Always draw active display last so it's on top
+    - Fix: Correctly position monitors in extended mode
+    - Fix: Race condition with monitor connect and disconnect
+    - Fix: Segfault on monitor reconnect
+    - Fix: Leave monitors where they were if possible (bxo#14096)
+  - Deprecations:
+    - Resolved GTK+ 3.22 deprecations (bxo#14273)
+  - Translation updates
+- Changes from 4.13.1
+  - This release now requires xfconf 4.13+
+  - New: Default monospace font option in the Appearance dialog
+  - New: Improved support for embedded DisplayPort connectors
+  - Fix: Display dialog drawing of displays
+  - Fix: Display dialog DND usability issue introduced in 4.13.0
+  - Fix: Make minimal dialog single instance (bxo#11169)
+  - Fix: Linking to dbus-glib with xfconf 4.13+ (bxo#13633)
+  - Deprecations:
+    - Resolved gtk_menu_popup deprecation
+    - Resolved gdk_error_trap_pop deprecation
+    - Ignoring GdkScreen and GdkCairo deprecations in the display settings
+		until GNOME or others find a resolution in their display management
+  - Code Quality:
+    - Several indentation fixes
+    - Drop duplicate drawing code
+  - Translation updates
+- Changes from 4.13.0
+  - Initial port to GTK+ 3
+  - Known issues:
+    - The display dialog does not always build correctly. The offending
+		code exists in the port to GdkSeat. When alternating between the
+		old and new versions of this code, both versions do work, so there
+		seems to be some strangeness at build time.
+	  - See dialogs/display-settings/scrollarea.c#n513
+  - Translation updates
+- Clean up spec file:
+  - Added conditional %bcond_with git for easier maintanance when using
+    git master branch
+  - Updated URL
+
+-------------------------------------------------------------------
+Mon Apr 29 10:42:18 UTC 2019 - Vinzenz Vietzke <vinz@vinzv.de>
+
+- Clean up spec file:
+  - Added conditional %bcond_with git for easier maintanance when using
+    git master branch
+  - Updated URL
+
+-------------------------------------------------------------------
+Fri Jun 22 17:36:17 UTC 2018 - seife+obs@b1-systems.com
+
+- update to 4.12.4:
+  * Fix: --replace did not replace old daemon (bxo#14381)
+  * Fix: Uninitialized scalar variables (CID #292062, #292063)
+  * Fix: -Wcast-function-type (GCC 8)
+  * Improved display manufucturer name recognition:
+    - Refreshed PNP IDs from hwdata
+    - Added support for VBX (VirtualBox)
+    - Standardized and shortened manufacturer names
+    - Updated laptop detection to include eDP in XfceRandr
+  * Translation updates
+
+-------------------------------------------------------------------
+Sat Mar 24 11:02:40 UTC 2018 - seife+obs@b1-systems.com
+
+- update to version 4.12.3:
+  * Improvements for multimonitor support:
+    - Visualize all three display configuration states
+    - Visually note if two displays overlap (mirrored) but are not
+      cloned
+    - Always draw active display last so it's on top
+    - Fix: Correctly position monitors in extended mode
+    - Fix: Race condition with monitor connect and disconnect
+    - Fix: Segfault on monitor reconnect
+  * Translation updates
+
+-------------------------------------------------------------------
+Fri Mar  2 13:07:00 UTC 2018 - seife+obs@b1-systems.com
+
+- update to version 4.12.2:
+  - Fix: Leave monitors where they were if possible (bxo#14096)
+  - Fix: syncdaemon not starting with certain locales
+  - Fix: division by 0 crash from gdk_screen_height_mm()
+  - New: Default monospace font option in the Appearance dialog
+  - New: Improved support for embedded DisplayPort connectors
+  - New: Show location of the mouse pointer on keypress
+  - Translation updates
+
+-------------------------------------------------------------------
+Sun Feb 26 10:12:13 CET 2017 - tiwai@suse.de
+
+- Fix buildreq for libinput stuff; it's xorg-libinput (boo#1026976)
+- Enable libinput support for Leap, too (boo#1026976)
+
+-------------------------------------------------------------------
+Sat Nov 26 12:40:04 UTC 2016 - seife+obs@b1-systems.com
+
+- update to version 4.12.1:
+  - fix color scheme preview on low bit depth displays
+  - fix: Segfault in convert_xfce_output_info
+  - fix: /Xft/Hinting is never set
+  - fix memory leak in xfce4-appearance-settings
+  - fix: xfsettingsd resets TV mode to NULL on power cycle
+  - translation updates
+
+-------------------------------------------------------------------
+Sun May 10 19:48:26 UTC 2015 - zaitor@opensuse.org
+
+- Only BuildRequire libinput for 13.3 and newer, it's optional, and
+  the version in 13.2 is too old anyway.
+
+-------------------------------------------------------------------
+Sat Feb 28 21:21:58 UTC 2015 - gber@opensuse.org
+
+- update to version 4.12.0
+  - do not change properties on disabled libinput devices
+  - increased required automake and libtool versions
+  - fix crashes for missing icons (bxo#11568)
+  - fix warnings during configure
+  - fix primary checkbox expansion in the display settings
+  - translation updates
+
+-------------------------------------------------------------------
+Tue Feb 17 07:37:30 UTC 2015 - gber@opensuse.org
+
+- update to version 4.11.4
+  - add touchpad support with libinput
+  - add previews for icon themes in appearance settings
+  - add Gtk+ theme palettes in the appearance dialog
+  - add support for versioned help documentation
+  - add support for libinput Xorg driver (bxo#11469)
+  - add option to set the primary display (bxo#8328)
+  - add helper to synchronize CSD layout to xfwm4
+  - support stat command flags on BSD systems (bxo#11531)
+  - show more information in icon-theme list (bxo#9130)
+  - width of display dialog is no longer hard-coded
+  - update display PNP IDs from hwdata
+  - update mimeapps.list location for glib >= 2.41 (bxo#11293)
+  - use 1/10 Hz precision for displays (bxo#10661)
+  - fix segmentation fault when renaming workspaces (bxo#11229)
+  - fix --display argument being fatal (bxo#11188)
+  - fix alignment of the sound settings
+  - fix issues found with cppcheck (bxo#10879) and other
+    scanning utilities
+  - do not try to reencode libxklavier descriptions (bxo#11317)
+  - prevent invalid characters from breaking display name
+    (bxo#11423)
+  - translation updates
+- drop obsolete xfce4-settings-fork-before-gtk-dbus-init.patch
+
+-------------------------------------------------------------------
+Mon Aug 25 12:34:37 UTC 2014 - gber@opensuse.org
+
+- add xfce4-settings-fork-before-gtk-dbus-init.patch in order to
+  fix problems due to forking after gtk/dbus init (bxo#11045)
+
+-------------------------------------------------------------------
+Mon Aug 25 11:48:31 UTC 2014 - gber@opensuse.org
+
+- update to version 4.11.3
+  - reapply settings when external keyboard connects
+  - new display settings dialog
+  - update the settings editor to match xfconf
+  - fix overlap variable shadowing a global function
+  - fork before gtk/dbus init
+  - add support for upower 0.99
+  - translation updates
+
+-------------------------------------------------------------------
+Thu May  1 08:09:14 UTC 2014 - gber@opensuse.org
+
+- update to version 4.11.2
+  - increase double click time to 400ms (bxo#10562)
+  - show/hide display popups with focus
+  - add hotplug checkbox to plug dialog
+  - identify Displays button
+  - fix display mirroring
+  - make mirror button insensitive if not possible
+  - automatically re-enable Laptop-displays if all other displays
+    get disconnected
+  - add option to automatically show minimal-display dialog when
+    new display gets connected
+  - fix bugs with mnemonic accelerators (bxo#9302 and bxo#9308)
+  - rework accelerators (bxo#9302 and box#9308)
+  - autotools updates
+  - make touchpad type delay configurable (bxo#8948)
+  - mention no cache file for icon themes
+  - support circular scrolling in the synaptics settings
+  - make sure AccessXKeys control is disabled by default
+  - lots of improvements in XKB code
+  - xsettingsd: Unset input method properties (bxo#5437)
+  - appearance: Fix gtk3 theme detection in install script
+    (bxo#9272)
+  - show Strv arrays in the xfconf settings editor renderer
+  - lot of improvements in the display code: support extended
+    desktop
+    mode for 2 monitors, improve minimal dialog
+  - xfsettingsd: Check for NoSuchExtension (bxo#9390)
+  - translation updates
+
+-------------------------------------------------------------------
+Sun May  5 19:13:59 UTC 2013 - gber@opensuse.org
+
+- update to version 4.10.1
+  - autotools updates
+  - xsettingsd: Unset input method properties
+  - appearance: Fix gtk3 theme detection in install script
+  - xfsettingsd: Check service name of NameOwnerChanged
+  - translation updates
+
+-------------------------------------------------------------------
+Sun Apr 29 08:59:10 UTC 2012 - gber@opensuse.org
+
+- update to version 4.10.0
+  - use the more generic application-x-executable icon for MIME
+    editor
+  - Xsettings: fix an alignment problem seen on PPC
+  - translation updates
+
+-------------------------------------------------------------------
+Sat Apr 14 09:46:55 UTC 2012 - gber@opensuse.org
+
+- update to version 4.9.5
+  - fix display rate matching
+  - bump package dependency versions
+  - fix missing : in Xft.hintstyle
+  - set Xcursor resources too
+  - fix typo in appearance error
+  - add hardcoded fallback if menu is not found
+  - translation updates
+
+-------------------------------------------------------------------
+Fri Apr 13 14:21:51 UTC 2012 - gber@opensuse.org
+
+- add back X-XFCE category to all desktop files until XFCE is
+  supported by %suse_update_desktop_file
+- fix non-existent icon name in xfce4-mime-settings.desktop
+
+-------------------------------------------------------------------
+Sun Apr  8 13:39:11 UTC 2012 - gber@opensuse.org
+
+- update to version 4.9.4
+  - fix compilation without device property support
+  - Xfsettingsd: don't set large dpi in xrdb
+  - include xscreensaver in the manager dialog
+  - complete theme installation script
+  - Settings editor: set sensitivity of save button on init
+  - Xfsettingsd: properly round display refresh rate to find match
+  - add mime icons in the mime-editor treeview
+  - store window and column sizes in xfconf
+  - add cateogry based settings manager
+  - re-add support for pluggable dialogs and enable them always
+  - rework settings editor
+  - clear out keyboard shortcuts before resetting to defaults
+  - use daemon() for xfsettingsd if available
+  - hide the xfconfd-already running message completely
+  - excluded items with NoDisplay=true in the settings dialog
+  - remove duplicated accelerators
+  - add theme dnd-installation by dropping in a treeview
+  - drop AC_LIBTOOL in favor of LT_PREREQ and LT_INIT
+  - wait for the window manager before setting workspace names
+  - add option to disable numlock restoring
+  - add Help button and make existing buttons work with wiki
+  - add new MIME Type editor
+  - depend on Gtk+ 2.20 and Glib 2.24
+  - merge xfce4-settings-helper into xfsettingsd
+  - add support to xfsettingsd for pointing device properties
+  - rework the mouse dialog and add support for basic synaptics
+    and wacom settings
+  - add option to enable assistive technologies during login
+  - add fontconfig monitoring
+  - improved debugging with XFSETTINGSD_DEBUG=1
+  - updated translation
+- dropped obsolete
+  xfce4-settings-fix-keyboard-shortcut-settings.patch
+
+-------------------------------------------------------------------
+Fri Mar 30 14:47:33 UTC 2012 - gber@opensuse.org
+
+- specfile cleanup
+- correct dependencies
+- added xfce4-settings-fix-keyboard-shortcut-settings.patch in
+  order to clear out all old entries in the list of shortcuts when
+  resetting the keyboard shortcuts in order to prevent duplicates
+  (bxo#8138)
+
+-------------------------------------------------------------------
+Fri Sep 23 07:32:14 UTC 2011 - gber@opensuse.org
+
+- update to version 4.8.3
+  - do not use freed memory
+  - translation updates
+
+-------------------------------------------------------------------
+Wed Sep 21 20:33:42 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typos in xfce4-settings.spec
+
+-------------------------------------------------------------------
+Mon Sep 19 14:29:27 UTC 2011 - gber@opensuse.org
+
+- update to version 4.8.2
+  - set sensitivity of custom dpi spinner
+  - remove unused code and variables.
+  - bugfixes
+  - translation updates
+
+-------------------------------------------------------------------
+Fri Feb 18 00:17:53 UTC 2011 - gber@opensuse.org
+
+- call %desktop_database_post/un
+
+-------------------------------------------------------------------
+Thu Feb  3 19:04:54 UTC 2011 - gber@opensuse.org
+
+- update to version 4.8.1
+  - bugfixes
+  - tanslation updates
+
+-------------------------------------------------------------------
+Mon Jan 17 12:11:51 UTC 2011 - gber@opensuse.org
+
+- update to version 4.8.0
+  - bugfixes
+
+-------------------------------------------------------------------
+Sat Jan 15 01:14:43 UTC 2011 - gber@opensuse.org
+
+- fixed typo
+
+-------------------------------------------------------------------
+Sat Jan 15 00:11:58 UTC 2011 - gber@opensuse.org
+
+- do not require but recommend -lang subpackage
+
+-------------------------------------------------------------------
+Tue Jan 11 16:25:07 UTC 2011 - gber@opensuse.org
+
+- removed dependency on xfconf
+
+-------------------------------------------------------------------
+Wed Jan  5 14:27:40 UTC 2011 - gber@opensuse.org
+
+- use consistent wording for the branding package
+
+-------------------------------------------------------------------
+Mon Dec 27 16:19:49 UTC 2010 - gber@opensuse.org
+
+- corrected URL
+- corrected license
+- improved summaries/descriptions
+- added proper BRAND comment
+- handle desktop files with %%suse_update_desktop_file
+- mark configurations files as such
+- split off -lang subpackage
+- remove unsupported locales
+- removed empty README
+- show compiler output
+- enable sound settings
+- enable pluggable dialogs
+
+-------------------------------------------------------------------
+Sun Dec  5 22:09:40 UTC 2010 - prusnak@opensuse.org
+
+- updated to 4.7.6
+  - Add checks for API change in libnotify 0.7.0.
+- updated to 4.7.5
+  - Use xfconf_channel_get instead of xfconf_channel_new.
+  - Don't activate numlock on first launch.
+  - Fix wrong capitalizations of Xfce.
+  - Fix compiler warnings.
+  - Drop Xfce from the settings manager .desktop name.
+  - Fix free of invalid memory (bug #6909).
+  - Translations updates (hu, zh_CN, he, pt, gl).
+
+
+-------------------------------------------------------------------
+Wed Dec  1 18:09:31 UTC 2010 - prusnak@opensuse.org
+
+- use pkgconfig symbol in BuildRequires
+
+-------------------------------------------------------------------
+Fri Nov 26 14:45:58 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 4.7.4
+
+-------------------------------------------------------------------
+Wed Jan 13 12:34:44 UTC 2010 - prusnak@suse.cz
+
+-  updated to 4.6.4
+  - Fix /Net/CursorBlinkTime property typo (bug #5488).
+  - Improve error handling when setting the button map (part of bug #5004).
+  - Fix the check for Xi so it does not fail with Xi2 (bug #4929).
+  - Translation updates (ru, ja).
+
+-------------------------------------------------------------------
+Wed Nov 11 15:43:01 CET 2009 - prusnak@suse.cz
+
+- updated to 4.6.3
+
+-------------------------------------------------------------------
+Tue Apr 21 14:10:49 CEST 2009 - prusnak@suse.cz
+
+- updated to 4.6.1
+
+-------------------------------------------------------------------
+Fri Feb 27 14:15:49 CET 2009 - prusnak@suse.cz
+
+- updated to 4.6.0 (Xfce 4.6.0 release)
+
+-------------------------------------------------------------------
+Mon Aug 18 10:57:38 CEST 2008 - prusnak@suse.cz
+
+- created package (version 4.5.80)
+

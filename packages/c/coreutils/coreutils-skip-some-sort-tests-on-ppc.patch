@@ -1,0 +1,52 @@
+Subject: tests: skip some valgrind-ed tests of sort on ppc/ppc64
+
+Valgrind diagnoses problems in 'mkstemp64' deep down in glibc on PowerPC:
+
+  Conditional jump or move depends on uninitialised value(s)
+  at 0xFDB37DC: __udivmoddi4 (in /lib/libc-2.18.90.so)
+  by 0xFDB3DD7: __umoddi3@GLIBC_2.0 (in /lib/libc-2.18.90.so)
+  by 0xFDFDF9F: __gen_tempname (in /lib/libc-2.18.90.so)
+  by 0xFE77563: mkstemp64 (in /lib/libc-2.18.90.so)
+  by 0x100135D3: mkstemp_safer (mkstemp-safer.c:33)
+  by 0x10006ECF: create_temp_file (sort.c:942)
+  by 0x1000A427: maybe_create_temp (sort.c:1176)
+  by 0x100031BF: main (sort.c:1223)
+
+* tests/misc/sort-stale-thread-mem.sh: Skip on ppc/ppc64.
+* tests/misc/sort-u-FMR.sh: Likewise.  
+
+---
+ tests/misc/sort-stale-thread-mem.sh |    4 ++++
+ tests/misc/sort-u-FMR.sh            |    4 ++++
+ 2 files changed, 8 insertions(+)
+
+Index: tests/misc/sort-stale-thread-mem.sh
+===================================================================
+--- tests/misc/sort-stale-thread-mem.sh.orig
++++ tests/misc/sort-stale-thread-mem.sh
+@@ -27,6 +27,10 @@ require_valgrind_
+ grep '^#define HAVE_PTHREAD_T 1' "$CONFIG_HEADER" > /dev/null ||
+   skip_ 'requires pthreads'
+ 
++case "$( uname -m )" in
++  ppc | ppc64) skip_ "SUSE: disabled for now on ppc/ppc64";;
++esac
++
+ # gensort output seems to trigger the failure more often,
+ # so prefer gensort if it is available.
+ (gensort -a 10000 in) 2>/dev/null ||
+Index: tests/misc/sort-u-FMR.sh
+===================================================================
+--- tests/misc/sort-u-FMR.sh.orig
++++ tests/misc/sort-u-FMR.sh
+@@ -20,6 +20,10 @@
+ print_ver_ sort
+ require_valgrind_
+ 
++case "$( uname -m )" in
++  ppc | ppc64) skip_ "SUSE: disabled for now on ppc/ppc64";;
++esac
++
+ { echo 0; printf '%0900d\n' 1; } > in || framework_failure_
+ 
+ valgrind --error-exitcode=1 sort --p=1 -S32b -u in > out || fail=1

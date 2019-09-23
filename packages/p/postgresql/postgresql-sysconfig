@@ -1,0 +1,51 @@
+## Path:	   Applications/PostgreSQL
+## Description:    The PostgreSQL Database System
+## Type:	   string()
+## Default:	   "~postgres/data"
+## ServiceRestart: postgresql
+#
+# In which directory should the PostgreSQL database reside?
+#
+POSTGRES_DATADIR="~postgres/data"
+
+## Path:	   Applications/PostgreSQL
+## Description:    The PostgreSQL Database System
+## Type:	   string()
+## Default:        ""
+## ServiceRestart: postgresql
+#
+# The options that are given to the PostgreSQL master daemon on startup.
+# See the manual pages for postmaster and postgres for valid options.
+#
+# Don't put "-D datadir" here since it is set by the startup script
+# based on the variable POSTGRES_DATADIR above.
+#
+POSTGRES_OPTIONS=""
+
+
+## Path:           Applications/PostgreSQL
+## Description:    The PostgreSQL Database System
+## Type:           string()
+## Default:        "600"
+## ServiceRestart: postgresql
+#
+# This value controls how many seconds the pg_ctl helper program waits
+# for the startup or shutdown of the PostgreSQL server to complete.
+#
+POSTGRES_TIMEOUT="600"
+
+## Path:	   Applications/PostgreSQL
+## Description:    The PostgreSQL Database System
+## Type:           string()
+## Default:        "C"
+## ServiceRestart: ""
+#
+# Specifies the locale under which the PostgreSQL database location
+# should be initialized and run. If needed, it has to be changed
+# before PostgreSQL is started for the first time. To change the
+# locale of an existsing PostgreSQL database location, it must be
+# dumped, removed and initialized from scratch using the new locale.
+#
+# If unset or empty $RC_LANG from /etc/sysconfig/language is used.
+#
+POSTGRES_LANG=""

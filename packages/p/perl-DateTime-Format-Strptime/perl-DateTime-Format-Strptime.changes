@@ -1,0 +1,372 @@
+-------------------------------------------------------------------
+Fri Feb  8 06:06:46 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.76
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+
+  1.76     2019-02-07
+  
+  [BACKWARDS INCOMPATIBILITIES]
+  
+  * The ability to set the pattern, time_zone, and locale via accessor methods
+    has been removed. This was deprecated over three years ago in version
+    1.60. It also turns out that the setting was actually broken for a long time
+    but no one seemed to notice, so I think it's afe to remove this feature.
+
+-------------------------------------------------------------------
+Wed Feb  7 16:22:23 UTC 2018 - coolo@suse.com
+
+- updated to 1.75
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+
+  1.75     2017-12-24
+  
+  - Fixed tests to pass with blead Perl. Reported by James Keenan. GH #19.
+
+-------------------------------------------------------------------
+Fri Aug  4 05:25:12 UTC 2017 - coolo@suse.com
+
+- updated to 1.74
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+
+  1.74     2017-08-03
+  
+  - Fix text to not rely on a very specific exception message from Specio. This
+    was broken in 0.39. Reported by Slaven Rezić. GH #18.
+
+-------------------------------------------------------------------
+Thu May 25 07:51:17 UTC 2017 - coolo@suse.com
+
+- updated to 1.73
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+
+  1.73     2017-01-31
+  
+  - The format_datetime now checks that the object it is given isa DateTime
+    object. Implemented by Mohammad S Anwar. GitHub #17.
+  
+  
+  1.72     2017-01-24
+  
+  - Require DateTime::Locale 1.05. This fixes some test failures seen on CPAN
+    Testers. Also require DateTime::TimeZone 2.09 because you should really
+    update this on a regular basis.
+  
+  - Require Specio 0.33 to fix other test failures seen on CPAN (I hope).
+  
+  
+  1.71     2017-01-24
+  
+  - By default, the word boundary checks added in 1.69 are now off. You can
+    enable them by passing "strict => 1" to the constructor. This was reported
+    as an issue by Toby Corkindale as GitHub #15.
+  
+  - Switched from Params::Validate to Params::ValidationCompiler.
+
+-------------------------------------------------------------------
+Mon Dec 12 06:22:16 UTC 2016 - coolo@suse.com
+
+- updated to 1.70
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+
+  1.70     2016-12-10
+  
+  - Altered the conversion specifier %z to accept ±HH, ±HHMM, ±HH:MM and Z.
+    Previously only ±HHMM where accepted. PR from Christian Hansen, GitHub #13.
+  
+  
+  1.69     2016-12-04 (TRIAL RELEASE)
+  
+  - The word boundary check supposedly added in 1.67 didn't really work
+    properly, and still matched too much. For example, the pattern "%d-%m-%y"
+    would match "2016-11-30" and turn it into November 16, 2030. This also had
+    problems at the end of strings, so that the same pattern would improperly
+    match "30-11-2016" as November 30, 2020. Reported by Erik Huelsmann. GitHub
+    #11.
+  
+  - Added docs for several formats which had long been supported but not
+    documented. These are %P, %c, %x, and %X. Reported by Alexander
+    Hartmaier. GH #10.
+
+-------------------------------------------------------------------
+Sat Dec  3 02:15:19 UTC 2016 - chris@computersalat.de
+
+- fix deps
+  * perl(DateTime::Locale) >= 0.45 (not 0.450000)
+
+-------------------------------------------------------------------
+Mon May 23 11:41:25 UTC 2016 - coolo@suse.com
+
+- updated to 1.68
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+
+  1.68     2016-05-08
+  
+  - Author tests are no longer in t/. This makes running tests for non-authors
+    much faster. Requested by Kent Fredric. RT #114237.
+
+-------------------------------------------------------------------
+Mon Apr  4 09:33:20 UTC 2016 - coolo@suse.com
+
+- updated to 1.67
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+
+  1.67     2016-03-31
+  
+  - Fixed a regression introduced in 1.60. Older versions of this library would
+    match dates pretty match anywhere in a string, so "%Y-%m-%d" would match a
+    string like "abcd1234-12-30efgh". This is probably _too_ permissive, but we
+    definitely want to match on word boundaries so that we match
+    "log.2016-03-31". Based on a PR from YASUTAKE Kiyoshi. GitHub #3.
+  
+  
+  1.66     2016-03-27
+  
+  - Added a zone_map constructor argument. This lets you supply a mapping for
+    ambiguous time zone abbreviations. Based on a patch from Douglas Wilson. RT
+    #74762.
+
+-------------------------------------------------------------------
+Tue Mar 22 10:06:45 UTC 2016 - coolo@suse.com
+
+- updated to 1.65
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+
+  1.65     2016-03-15
+  
+  - Updated zone short name parsing to handle names like "+07", which were
+    introduced in the latest IANA time zone database release.
+
+-------------------------------------------------------------------
+Tue Mar  8 10:08:06 UTC 2016 - coolo@suse.com
+
+- updated to 1.64
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+
+  1.64     2016-02-21
+  
+  - Changed how a string that contains separate epoch and nanosecond fields is
+    turned into a DateTime object in order to deal with changes coming in the
+    next DateTime release.
+
+-------------------------------------------------------------------
+Thu Jan 14 09:56:02 UTC 2016 - coolo@suse.com
+
+- updated to 1.63
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+
+  1.63     2016-01-13
+  
+  [BUG FIXES]
+  
+  - The behaviour of silently ignoring text after the matching part was
+    lost in the rewrite. This has been restored. Patch by Dagfinn Ilmari
+    Mannsåker. RT #111155.
+
+-------------------------------------------------------------------
+Sat Dec 26 09:41:05 UTC 2015 - coolo@suse.com
+
+- updated to 1.62
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+
+  1.62     2015-12-19
+  
+  [BUG FIXES]
+  
+  - When on_error was set to something that did not die (including the default
+    error handling), calling ->parse_datetime with some bad inputs could cause
+    the module to error out internally by trying to call methods on an undefined
+    value instead of returning undef. Reported by Mike Dorman. RT #110247.
+
+-------------------------------------------------------------------
+Sun Nov 15 09:37:57 UTC 2015 - coolo@suse.com
+
+- updated to 1.61
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+
+  1.61     2015-11-13
+  
+  [BUG FIXES]
+  
+  - If you loaded this module with warnings globally enabled ("perl -w", which
+    you should never do), then you'd get a warning about the import subroutine
+    being redefined. This broke the Package::DeprecationManager API for turning
+    off deprecation warnings. This has been fixed in
+    Package::DeprecationManager 0.15. Reported by Martin. RT #108871.
+
+-------------------------------------------------------------------
+Mon Nov  9 09:39:47 UTC 2015 - coolo@suse.com
+
+- updated to 1.60
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+
+  1.60     2015-11-07
+  
+  - This release is identical to the prior trial release. The changes for the
+    trial releases are reproduced below for convenience.
+  
+  [BACKWARDS INCOMPATIBILITIES]
+  
+  - The error messages for various types of failures have changed.
+  
+  - The never-documented diagnostic parameter for the constructor has been
+    removed.
+  
+  - The never-documented feature to allow you to use arbitrary DateTime.pm
+    methods in the parsing pattern has been removed. This never made much sense
+    anyway, since most DateTime.pm methods are not constructor params, but they
+    were used that way.
+  
+  - Using the pattern, locale, and time_zone to set the respective attribute is
+    now deprecated. Make a new object instead of changing one of these values.
+  
+  [BUG FIXES]
+  
+  - Fixed a warning from the tests with newer Perl versions. RT #107620.
+  
+  - Clarified docs to note that %Y and %G require 4-digit years. Reported by
+    Karen Etheridge. RT #103147.
+  
+  - Using the 24-hour token (%H) with an AM/PM specifier (%p) now leads to an
+    error if you try to parse something like "23:01 AM". Reported by Ric
+    Signes. RT #92445.
+  
+  
+  1.59     2015-10-25 (TRIAL RELEASE)
+  
+  - The previous release accidentally included an old version of Strptime.pm in
+    the root dir, causing all sorts of chaos and test failures.
+  
+  
+  1.58     2015-10-18 (TRIAL RELEASE)
+  
+  - This release is a substantial rewrite. Please test it and file bugs for any
+    unintentional breakage.
+  
+  * The error messages for various types of failures have changed.
+  
+  * The never-documented diagnostic parameter for the constructor has been
+    removed.
+  
+  * The never-documented feature to allow you to use arbitrary DateTime.pm
+    methods in the parsing pattern has been removed. This never made much sense
+    anyway, since most DateTime.pm methods are not constructor params, but they
+    were used that way.
+  
+  * Using the pattern, locale, and time_zone to set the respective attribute is
+    now deprecated. Make a new object instead of changing one of these values.
+  
+  - Fixed a warning from the tests with newer Perl versions. RT #107620.
+  
+  - Clarified docs to note that %Y and %G require 4-digit years. Reported by
+    Karen Etheridge. RT #103147.
+
+-------------------------------------------------------------------
+Mon Oct  5 08:32:24 UTC 2015 - coolo@suse.com
+
+- updated to 1.57
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+
+  1.57     2015-10-04
+  
+  - Make all tests pass with both the current DateTime::Locale and the upcoming
+    new version (currently still in trial releases).
+
+-------------------------------------------------------------------
+Thu Sep 18 17:20:22 UTC 2014 - Greg.Freemyer@gmail.com
+
+- update to v1.56
+  - Recent DateTime::TimeZone changes broke the tests.
+  - Fixed Latin-1 content in test code. It's now UTF-8.
+- change %doc to pull README.md instead of README.  README is no longer in tarball.
+
+-------------------------------------------------------------------
+Mon Jun 10 15:46:45 UTC 2013 - coolo@suse.com
+
+- updated to 1.54
+  - Require DateTime.pm 1.00 because without it tests will break.
+  - A fix in DateTime.pm 1.00 broke a test in this distro. Reported by Anthony J
+     Lucas. RT #84371.
+  - Shut up "unescaped braces in regex" warning from 5.17.0. RT #77514. Patch by
+    Zefram.
+  - Packaging cleanup, including listing Test::More as a test prereq, not a
+    runtime prereq. RT #76128.
+- removed obsolete DateTime-Format-Strptime-1.5000-deps.patch
+
+-------------------------------------------------------------------
+Fri Nov 18 11:07:09 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:47 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sun Oct 17 16:54:30 UTC 2010 - chris@computersalat.de
+
+- update to 1.5000
+  - This module did not recognize UTC as a valid time zone. RT #59209.
+- added deps patch
+
+-------------------------------------------------------------------
+Fri Jul  2 15:00:46 UTC 2010 - chris@computersalat.de
+
+- update to 1.4000
+  - Actually update $VERSION in module file. Reported by David Wheeler.
+- 1.3000 2010-06-26
+  - Specifiers which allowed for leading space before a number (like %e)
+    would cause DateTime.pm to throw an error if the date being parsed
+    actually contained leading space. Patch by Alex Vandiver. RT #58459.
+  - License is now Artistic 2.0
+- 1.2000 2010-03-19
+  - Updated to use non-deprecated DateTime::Locale API
+- 1.1000 2009-07-13 -- Regex Pattern
+  - If the pattern you pass in is a regular expression, that will be honored.
+  - Changed the locale tests to use require the latest version of Locale
+    until the target stops moving.
+- spec created by cpanspec 1.78
+  - noarch
+
+-------------------------------------------------------------------
+Sat Jul 25 19:36:40 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Mon Jun 22 13:38:05 CEST 2009 - chris@computersalat.de
+
+- fixed Summary
+
+-------------------------------------------------------------------
+Sun Jun 21 17:29:33 CEST 2009 - chris@computersalat.de
+
+- update to 1.0901
+  - 1.0901 2009-05-16 -- Official release of above
+  - 1.0900_01 2009-04-18 -- DEVELOPER RELEASE ONLY
+	- Makefile.PL changes for Windows users as per issue #16
+  - 1.0900 2009-02-22
+	- Another pile-o-bugs
+		- It seems that I also wasn't seeing notifications from RT
+		  (please don't use it, use the Gooogle project) so all the
+		  following are fixed:
+			36672	Started failing mid May
+			23313	Bug handling time zones like America/New_York
+			25555	Module dies even when on_error is 'undef'
+			23768	Olson timezone handling incorrect
+			22450	locale test failing with bleadperl
+			20487	nmake test_more fail (with patch); incorrect
+					META.yml
+			12071	format_datetime uses datetime locale rather than
+					format locale
+			11863	bug in DateTime::Format::Strptime 1.0601 when using %s
+		- And a couple from Google:
+		    #8		Add DateTime::Locale to documentation
+		    #10		Parsing bug -- can't detect word boundry after month abbr
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- spec mods
+  o fixed deps

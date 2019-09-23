@@ -1,0 +1,5 @@
+<package name="qore-yaml-module" project="openSUSE:Factory">
+  <title>Qore YAML Module</title>
+  <description>The Qore YAML module provides functions that enable Qore data in the Qore programming language to be serialized and deserialized to and from YAML strings and Qore data structures.</description>
+  <devel project="devel:languages:misc" package="qore-yaml-module"/>
+</package>

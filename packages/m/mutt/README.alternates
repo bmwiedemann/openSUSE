@@ -1,0 +1,8 @@
+Since Mutt version 1.5.6 there's changes with regards to the $alternates
+variable. It's no longer a variable, but a command.
+
+When it before was: set alternates=foo@bar.org
+It's now:           alternates foo@bar.org
+
+It's elaborated in the alternates section of the manpage muttrc.5
+

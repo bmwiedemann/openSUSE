@@ -1,0 +1,47 @@
+--- configure.ac
++++ configure.ac	2011-11-22 14:21:37.303146192 +0000
+@@ -4946,15 +4946,30 @@ if test "$with_tty" = "yes"  ; then
+   AC_DEFINE(HAVE_TTY)
+ 
+   dnl Autodetect ncurses.
++  cf_tgetent=""
+   if test -z "$with_ncurses"; then
+-    AC_CHECK_LIB(ncurses, tgetent, with_ncurses=yes, with_ncurses=no)
++    with_ncurses=no;
++    for lib in tinfo ncurses ncursesw ; do
++	AC_CHECK_LIB($lib, tgetent, [with_ncurses=yes; cf_tgetent="$lib"; break])
++    done
+   fi
+   if test "$with_ncurses" = "yes"; then
++    if test x$cf_tgetent = x ; then
++      for lib in tinfo ncurses ncursesw ; do
++	AC_CHECK_LIB($lib, tgetent, [cf_tgetent="$lib"; break])
++      done
++    fi
+     AC_DEFINE(HAVE_NCURSES)
+-    AC_CHECK_HEADER(ncurses/curses.h, curses_h_file=ncurses/curses.h)
+-    AC_CHECK_HEADER(ncurses/term.h, term_h_file=ncurses/term.h)
++    if test "$cf_tgetent" = ncursesw; then
++      AC_DEFINE(HAVE_NCURSESW)
++      AC_CHECK_HEADER(ncursesw/curses.h, curses_h_file=ncursesw/curses.h)
++      AC_CHECK_HEADER(ncursesw/term.h, term_h_file=ncursesw/term.h)
++    else
++      AC_CHECK_HEADER(ncurses/curses.h, curses_h_file=ncurses/curses.h)
++      AC_CHECK_HEADER(ncurses/term.h, term_h_file=ncurses/term.h)
++    fi
+     XE_ADD_OBJS(terminfo.o)
+-    XE_PREPEND(-lncurses, LIBS)
++    XE_PREPEND(-l$cf_tgetent, LIBS)
+ 
+     if test "$ac_cv_header_ncurses_curses_h" != "yes" ; then
+       dnl Try again, and check for the bogus ncurses/ include bug.
+--- src/config.h.in
++++ src/config.h.in	2011-11-22 14:21:50.939646812 +0000
+@@ -580,6 +580,7 @@ things are arranged in config.h.in.  In
+ 
+ /* Compile in support for ncurses?  */
+ #undef HAVE_NCURSES
++#undef HAVE_NCURSESW
+ /* Full #include file paths for ncurses' curses.h and term.h. */
+ #undef CURSES_H_FILE
+ #undef TERM_H_FILE

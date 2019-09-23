@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Fri Dec  7 07:30:16 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Build against xml-commons-apis instead of xerces-j2-xml-apis
+
+-------------------------------------------------------------------
+Mon Sep 18 14:47:56 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * poi-encoding.patch
+    + specify encoding ISO-8859-1 and fix jdk9 build
+
+-------------------------------------------------------------------
+Tue Jul  8 10:44:12 UTC 2014 - tchvatal@suse.com
+
+- Do not depend on ant-trax
+
+-------------------------------------------------------------------
+Mon Jul  7 12:08:15 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Drop patch jakarta-poi-2.5.1_escher-test.patch which was never
+  applied
+
+-------------------------------------------------------------------
+Mon Jul  7 12:04:55 UTC 2014 - tchvatal@suse.com
+
+- Fix build with new xerces-j2-xml-apis
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:49 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Mon Dec 26 09:29:09 UTC 2011 - coolo@suse.com
+
+- do not package LICENSE twice
+
+-------------------------------------------------------------------
+Thu Aug  7 17:48:49 CEST 2008 - mvyskocil@suse.cz
+
+- First release of version 2.5.1 in Suse (based on spec from jpackage.org 1.7)
+

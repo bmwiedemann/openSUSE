@@ -1,0 +1,12 @@
+<package name="editorconfig-core-c" project="openSUSE:Factory">
+  <title>EditorConfig core library written in C</title>
+  <description>EditorConfig makes it easy to maintain the correct coding style when switching
+between different text editors and between different projects. The EditorConfig
+project maintains a file format and plugins for various text editors which allow
+this file format to be read and used by those editors. For information on the
+file format and supported text editors, see the EditorConfig website.
+
+</description>
+  <devel project="editors" package="editorconfig-core-c"/>
+  <url>http://editorconfig.org/</url>
+</package>

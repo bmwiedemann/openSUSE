@@ -1,0 +1,11 @@
+diff -Nru azure-mgmt-media-1.1.0.orig/setup.py azure-mgmt-media-1.1.0/setup.py
+--- azure-mgmt-media-1.1.0.orig/setup.py	2019-03-28 12:33:59.056787601 +0100
++++ azure-mgmt-media-1.1.0/setup.py	2019-03-28 12:35:13.901485386 +0100
+@@ -81,7 +81,4 @@
+         'msrestazure>=0.4.32,<2.0.0',
+         'azure-common>=1.1',
+     ],
+-    extras_require={
+-        ":python_version<'3.0'": ['azure-mgmt-nspkg'],
+-    }
+ )

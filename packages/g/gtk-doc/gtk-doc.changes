@@ -1,0 +1,575 @@
+-------------------------------------------------------------------
+Mon Sep  2 18:59:35 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove openjade BuildRequires/Requires, SGML support was removed
+  in gtk-doc 1.25.
+
+-------------------------------------------------------------------
+Tue Aug 28 23:41:17 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.29:
+  + GTK-Doc now requires python-3.X. It does not requires
+    python-six anymore.
+  + Note that this is a nonmaintainer release and that tests are
+    known to be broken.
+  + Bugs fixed: bgo#674163, bgo#795744, bgo#796011, bgo#796012.
+- Drop python3-six Requires following upstream changes.
+- Use autosetup macro.
+
+-------------------------------------------------------------------
+Sat Mar 24 20:25:56 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.28:
+  + Bugs fixed: bgo#791928, bgo#792148, bgo#792661, bgo#793599,
+    bgo#794051, bgo#794182.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:32:31 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat Dec  9 18:26:11 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.27:
+  + Finetune the python port.
+  + Bugs fixed: bgo#773879, bgo#786174, bgo#787495, bgo#787768,
+    bgo#787862, bgo#788473, bgo#789531, bgo#790022, bgo#791131.
+- Drop upstream fixed patches:
+  + gtk-doc-fixxref-logging.patch.
+  + gtk-doc-Generate-main-sgml.patch.
+  + gtk-doc-open-docs-as-utf8.patch.
+- Following the above, no longer pass autoreconf, not needed as we
+  do not carry any patches.
+
+-------------------------------------------------------------------
+Sat Dec  2 15:17:35 UTC 2017 - dimstar@opensuse.org
+
+- Add gtk-doc-fixxref-logging.patch: Use logging infrastructure for
+  LogWarning (bgo#791131).
+
+-------------------------------------------------------------------
+Tue Oct 24 14:40:59 UTC 2017 - dimstar@opensuse.org
+
+- Switch to python3: add PYTHON=%{_bindir}/python3 to configure.
+- Add: gtk-doc-open-docs-as-utf8.patch: Always open files using
+  utf-8. In python3, strings are differently represented
+  internally.
+
+-------------------------------------------------------------------
+Fri Oct 20 09:08:01 UTC 2017 - dimstar@opensuse.org
+
+- Do not build as noarch:
+  /usr/share/gtk-doc/python/gtkdoc/config.py contains a full path
+  reference to $arch-pkg-config.
+
+-------------------------------------------------------------------
+Tue Oct 10 22:00:57 UTC 2017 - zaitor@opensuse.org
+
+- Add gtk-doc-Generate-main-sgml.patch: Generate main sgml file by
+  waiting on mkdb. Fix first time parallel builds (bgo#786174).
+- Following the above, add libtool BuildRequires and pass
+  autoreconf as the above patch touches the buildsystem.
+- No longer pass --disable-scrollkeeper to configure, no longer
+  needed, nor recognized by configure.
+
+-------------------------------------------------------------------
+Mon Sep  4 12:44:28 UTC 2017 - dimstar@opensuse.org
+
+- Add glib2-devel Requires: the various gtk-doc generation programs
+  call pkg-config --variables glib-2.0 in various cases.
+
+-------------------------------------------------------------------
+Tue Aug 15 06:34:21 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.26:
+  + Remove tmpl support (gtkdoc-mktmpl).
+  + Port all tools from bash/perl to python.
+  + Bugs fixed: bgo#773879, bgo#780789, bgo#752126, bgo#753052,
+    bgo#758137, bgo#764407, bgo#764543, bgo#768675, bgo#769125,
+    bgo#769341, bgo#771255, bgo#773151, bgo#774168, bgo#774812,
+    bgo#778144, bgo#779566, bgo#784177.
+- Drop reproducible.patch, fixed upstream.
+- Add python-six and python3-six Requires, needed after upstreams
+  port to python.
+
+-------------------------------------------------------------------
+Thu Jun 29 08:14:06 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort input file lists
+  to fix indeterminism in gstreamer and vte html docs (bgo#784177).
+
+-------------------------------------------------------------------
+Wed Jun  1 16:53:10 UTC 2016 - jengelh@inai.de
+
+- Switch from libxslt to xsltproc (Requires and BuildRequires).
+
+-------------------------------------------------------------------
+Thu Apr 14 11:48:01 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Tue Mar 22 09:56:42 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.25:
+  + Bugs fixed: bgo#742404, bgo#743182, bgo#744061, bgo#751479,
+    bgo#751777, bgo#751783, bgo#751906, bgo#752795, bgo#753145,
+    bgo#753348, bgo#756297, bgo#756368, bgo#756519, bgo#756684,
+    bgo#756998, bgo#758996, bgo#759017, bgo#763465.
+
+-------------------------------------------------------------------
+Sat May 30 10:42:47 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.24:
+  + This is another quick bugfix release for a regression, see
+    bgo#749591.
+  + gtk-doc 1.23 no longer includes xml namespace in .devhelp2
+    files (bgo#749591).
+  + .gitignore files should not be under version control
+    (bgo#749706).
+  + Support syntax highlighting of different languages
+    (bgo#749816).
+  + Strip common indent when highlighting with vim (bgo#749901).
+
+-------------------------------------------------------------------
+Sun May 17 09:30:57 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.23:
+  + Bugs fixed: bgo#749142, bgo#749210.
+- Changes from version 1.22:
+  + Bugs fixed: bgo#727778, bgo#729911, bgo#732689, bgo#734689,
+    bgo#736073, bgo#736725, bgo#741305, bgo#741763, bgo#741941,
+    bgo#743879, bgo#743967, bgo#744075, bgo#744368, bgo#746118,
+    bgo#746120, bgo#746121, bgo#747207, bgo#747298, bgo#748456.
+- Drop gtk-doc-reproducible-html.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Feb  3 16:54:32 UTC 2015 - coolo@suse.com
+
+- Add gtk-doc-reproducible-html.patch from the debian
+  reproducible builds project to make output reproducible.
+
+-------------------------------------------------------------------
+Thu Jul 17 19:13:43 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.21:
+  + Important notice - starting with the next release these long
+    deprecated features will be removed.
+  + gtkdoc-mktmpl - please move all the comments into the sources.
+  + generating html via sgml tools (jade/openjade), using xsltproc
+    and docbook-xslt is pretty common and preferred since version
+    1.6.
+  + Bugs fixed: bgo#170860, bgo#644111, bgo#657444, bgo#671519,
+    bgo#678094, bgo#722621, bgo#724739, bgo#725505, bgo#725663,
+    bgo#730658, bgo#730777.
+
+-------------------------------------------------------------------
+Wed May 21 13:14:42 UTC 2014 - rsalevsky@suse.com
+
+- remove the docbook-dsssl-stylesheets require
+
+-------------------------------------------------------------------
+Sun Feb 16 09:18:58 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.20:
+  + Bugs fixed: bgo#605537, bgo#624001, bgo#662424, bgo#665926,
+    bgo#666509, bgo#669417, bgo#671519, bgo#692367, bgo#696570,
+    bgo#697940, bgo#701259, bgo#701638, bgo#706404, bgo#706438,
+    bgo#707426, bgo#707717, bgo#708268, bgo#710478, bgo#711111,
+    bgo#711598, bgo#719644, bgo#719645, bgo#720061, bgo#721228,
+    bgo#722479, bgo#723118, bgo#723288, bgo#723417, bgo#723696,
+    bgo#723812, bgo#723913, bgo#723991, bgo#724002.
+
+-------------------------------------------------------------------
+Fri Jun 21 18:04:11 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.19:
+  + Bugs fixed: bgo#652740, bgo#660436, bgo#661853, bgo#668228,
+    bgo#670724, bgo#670767, bgo#670796, bgo#671519, bgo#671960,
+    bgo#672710, bgo#676685, bgo#685365, bgo#686148, bgo#687685,
+    bgo#688204, bgo#688423, bgo#689209, bgo#690438, bgo#696930,
+    bgo#700981.
+- Replace gnome-doc-utils-devel BuildRequires with yelp-tools,
+  following upstreams port to the new documentation infrastructure.
+- Split out -lang package.
+
+-------------------------------------------------------------------
+Sat Feb 25 12:57:32 UTC 2012 - coolo@suse.com
+
+- Add libxml2-tools BuildRequires for xmlcatalog, now that libxml2
+  got split.
+- Change python BuildRequires to python-base as the full python
+  isn't needed.
+- Change libxml2 Requires to libxml2-tools for the same reason.
+
+-------------------------------------------------------------------
+Thu Dec 22 09:38:31 UTC 2011 - vuntz@opensuse.org
+
+- Own %{_datadir}/aclocal to fix build without automake/autoconf.
+- Add Url tag.
+
+-------------------------------------------------------------------
+Fri Sep 16 07:47:50 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 1.18:
+  + Add support for a subset of markdown (headings and lists).
+  + Do not generate old devhelp files any more.
+  + Changes for out-of-source dir build caused breakage for
+    projects using DOC_SOURCE_DIR with a relative path (to
+    builddir). It is recommended to use
+    DOC_SOURCE_DIR=$(top_srcdir)/src/xxx.
+  + Bugs fixed: bgo#590927, bgo#617121, bgo#627758, bgo#639145,
+    bgo#644291, bgo#646870, bgo#648289, bgo#648331, bgo#649269,
+    bgo#650407, bgo#652746, bgo#652764, bgo#655711, bgo#656453,
+    bgo#656658, bgo#656773, bgo#656946, bgo#657377.
+
+-------------------------------------------------------------------
+Thu Mar  3 15:05:24 UTC 2011 - fcrozat@novell.com
+
+- Update to version 1.17:
+  + bgo#127049: building reference documentation fails when
+    builddir != srcdir
+  + bgo#640241: non-srcdir builds busted
+- Changes from version 1.16:
+  + gtkdoc-check can do more checks, one might need to update
+    Makefile.am from the examples/Makefile.am
+  + Various bug fixes: bgo#625776, bgo#627269, bgo#467488,
+    bgo#481811, bgo#501107, bgo#512565, bgo#518427, bgo#597937,
+    bgo#612028, bgo#617478, bgo#618379, bgo#620249, bgo#621931,
+    bgo#622971, bgo#623777, bgo#623968, bgo#624199, bgo#624200,
+    bgo#627223, bgo#627920, bgo#628611, bgo#628794, bgo#630288,
+    bgo#631336, bgo#632587, bgo#638330, bgo#638831.
+
+-------------------------------------------------------------------
+Sun Feb 20 09:36:03 CET 2011 - vuntz@opensuse.org
+
+- Run spec-cleaner.
+- Add source-highlight Recommends: it's useful to produce better
+  output for code examples.
+
+-------------------------------------------------------------------
+Thu Jul  8 02:19:12 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.15:
+  + bgo#614496: Support for multiple DOC_SOURCE_DIR directories
+  + bgo#615550: gtk-doc fails to recognize (scope ...) and (skip)
+    annotations.
+
+-------------------------------------------------------------------
+Mon Mar 29 11:13:18 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 1.14:
+  + bgo#599514: sane support for per-page images
+  + bgo#613611: parameter descriptions with annotations truncated
+    at first \n
+  + bgo#115531: add short description to index entries
+  + bgo#165425: gtk-doc fails to parse unions
+  + bgo#512155: gets confused by multiline typedef
+  + bgo#568711: undocumented enum values are not reported
+  + bgo#590625: $(DOC_MODULE)-overrides.txt is required by "make
+    dist"
+  + bgo#604992: gtkdoc-fixxref broken link warning is broken for
+    functions
+  + bgo#607445: gtk-doc does not support long double as returned
+    value type
+  + bgo#609194: sort interface implementers
+  + Other misc. bugs fixed: bgo#593282, bgo#604892, bgo#590602,
+    bgo#591975, bgo#604885, bgo#604995, bgo#604998, bgo#605052,
+    bgo#605211, bgo#605281, bgo#605285, bgo#605289, bgo#605452,
+    bgo#605564, bgo#606661, bgo#607531, bgo#609062, bgo#610255,
+    bgo#610257, bgo#611848
+- Drop gtk-doc-fixxref-module.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Dec 22 13:12:34 CET 2009 - vuntz@opensuse.org
+
+- Add gtk-doc-fixxref-module.patch to fix build for various
+  packages that do not call gtkdoc-fixxref the right way.
+
+-------------------------------------------------------------------
+Mon Dec 21 11:24:40 CET 2009 - vuntz@opensuse.org
+
+- Update to version 1.13:
+  + bgo#604891 : gtk-doc tarball does not build
+- Use makeinstall macro.
+
+-------------------------------------------------------------------
+Fri Dec 18 11:13:06 CET 2009 - dimstar@opensuse.org
+
+- Update to version 1.12:
+  + Bugs fixed: bgo#591450, bgo#466535, bgo#502191, bgo#532395
+    bgo#536928, bgo#562064, bgo#562310, bgo#562655, bgo#565126
+    bgo#565835, bgo#566911, bgo#567132, bgo#568702, bgo#568706
+    bgo#568708, bgo#568714, bgo#568732, bgo#568734, bgo#569339
+    bgo#572396, bgo#572612, bgo#572967, bgo#574654, bgo#575574
+    bgo#575623, bgo#575711, bgo#576313, bgo#577059, bgo#577774
+    bgo#580206, bgo#580300, bgo#580622, bgo#581237, bgo#584952
+    bgo#587103, bgo#587196, bgo#589426, bgo#591789, bgo#594224
+    bgo#596730, bgo#596731, bgo#602026, bgo#602518, bgo#604798 
+
+-------------------------------------------------------------------
+Fri Jan 23 01:19:35 CET 2009 - vuntz@novell.com
+
+- Clean up file list in the spec file.
+
+-------------------------------------------------------------------
+Mon Dec 29 09:55:27 EST 2008 - mboman@suse.de
+
+- Update to version 1.11:
+  + Bugs fixed: bgo#531572, bgo#448879, bgo#311857, bgo#335239, bgo#460753,
+    bgo#473342, bgo#487727, bgo#523669, bgo#530758, bgo#533262, bgo#534627,
+    bgo#542137, bgo#543855, bgo#544172, bgo#552822, bgo#553407, bgo#554718,
+    bgo#554833, bgo#558082, bgo#559281
+
+-------------------------------------------------------------------
+Wed Apr  2 18:38:44 CEST 2008 - maw@suse.de
+
+- Add a note for future packagers.
+
+-------------------------------------------------------------------
+Tue Apr  1 17:41:14 CEST 2008 - rodrigo@suse.de
+
+- Update to version 1.10:
+  - http://mail.gnome.org/archives/gtk-doc-list/2008-March/msg00001.html
+- Added python as a build dependency 
+
+-------------------------------------------------------------------
+Fri Nov 23 11:17:20 CST 2007 - maw@suse.de
+
+- Update to version 1.9
+- Bugs (bugzilla.gnome.org) fixed: #419308, #449618, #453717,
+  #457173, #465920, #467773, #141869, #156643, #322035, #323938,
+  #324535, #355352, #379466, #380824, #383456, #411739, #415388,
+  #418027, #419997, #428596, #434134, #436565, #445596, #445693,
+  #450338, #454916, #457077, #459225, #459725, #460127, #465365,
+  #466559, #471014, #477532, #479913, and #479923.
+
+-------------------------------------------------------------------
+Wed Mar 21 13:08:19 CST 2007 - maw@suse.de
+
+- Update to version 1.8
+- Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Sep  1 15:04:46 CEST 2006 - sbrabec@suse.cz
+
+- Package renamed to gtk-doc.
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Thu Aug 17 23:16:13 CEST 2006 - jhargadon@suse.de
+
+- update to version 1.7
+-  Fixed bug that resulted in empty "@:" lines in the templates.
+- Fixed a few bugs with the XSL code.
+- Supported a few more variations of C syntax.
+- Remove the internally-used '-struct' suffix from links to widget 
+  structs. 
+- Fixed a few missing build dependencies.
+- Added a new "C-x4s" binding to the emacs lisp code, to insert a blank
+   section header in the source code.
+- Fixed bug that ignored inline section header docs with '-' in 
+  their names.
+- Added a 'make docs' target that can be used to build the docs even 
+  when gtk-doc has been disabled at configure time.
+
+-------------------------------------------------------------------
+Fri Jul 21 21:50:38 CEST 2006 - gekker@suse.de
+
+- Update to version 1.6
+  o Removed the hard dependancy on openjade or jade, since XML is used mainly
+    now rather than SGML.
+  o Install the .pc file in $(datadir) rather than $(libdir) since gtk-doc is
+    architecture-independant.
+  o Added "--ignore-decorators" option to ignore a list of declarators in
+    function declarations.
+  o Support '#Object::signal'/'#Object:property' to link to signals/properties
+  o Fixed missing index terms.
+
+- Update to version 1.5
+  o Output the new version of devhelp2 information, but still generate the old
+    devhelp files so older versions of DevHelp still work OK.
+  o Fixed the initial creation of the *-sections.txt file so the object
+    hierarchy, signals and properties all work automatically.
+  o Show information about signal flags (run first/last).
+  o Support a --source-suffixes argument specifying which source files to scan.
+  o Support other root object types besides GObject and GInterface.
+  o Use a fixed navigation bar for the generated documentation.
+  o New documentation from Stefan Kost.
+  o Handle more variations of C syntax.
+
+-------------------------------------------------------------------
+Tue Mar 14 19:18:13 CET 2006 - gekker@suse.de
+
+- Require docbook-dsssl-stylesheets for SGML output (#152467)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:16 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jul 21 19:09:56 CEST 2005 - gekker@suse.de
+
+- Update to version 1.4. 
+
+-------------------------------------------------------------------
+Tue May 17 15:43:32 CEST 2005 - sbrabec@suse.cz
+
+- Added noarch and moved pkgconfig file to datadir (#83201).
+
+-------------------------------------------------------------------
+Wed May 11 12:22:41 CEST 2005 - sbrabec@suse.cz
+
+- Removed noarch (#83201).
+
+-------------------------------------------------------------------
+Mon Jan 17 11:57:00 CET 2005 - clahey@suse.de
+
+- Updated to version 1.3.
+
+-------------------------------------------------------------------
+Tue Feb 24 11:13:15 CET 2004 - hmacht@suse.de
+
+- building as non-root
+
+-------------------------------------------------------------------
+Thu Feb 19 14:16:02 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 1.2.
+
+-------------------------------------------------------------------
+Tue Jul 15 11:59:24 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Tue Jun 17 13:54:08 CEST 2003 - sbrabec@suse.cz
+
+- Fixed head usage for new coreutils.
+- Fixed neededforbuild.
+
+-------------------------------------------------------------------
+Tue Jun 17 12:01:51 CEST 2003 - coolo@suse.de
+
+- package directories
+
+-------------------------------------------------------------------
+Wed May 28 16:35:16 CEST 2003 - ke@suse.de
+
+- Use DESTDIR
+- Add sgml-skel to #neededforbuild.
+
+-------------------------------------------------------------------
+Mon May 26 15:41:43 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 1.1.
+- Package marked as noarch.
+- Fixed Requires.
+
+-------------------------------------------------------------------
+Fri Jan 17 17:10:43 CET 2003 - sbrabec@suse.cz
+
+- Fixed %clean.
+
+-------------------------------------------------------------------
+Thu Jan 16 16:52:48 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 0.10.
+
+-------------------------------------------------------------------
+Tue Jan 14 17:18:59 CET 2003 - ro@suse.de
+
+- fix newlines printed from perl-code generating gconf-scan 
+
+-------------------------------------------------------------------
+Mon Nov 11 11:29:49 CET 2002 - ro@suse.de
+
+- adapted requires 
+
+-------------------------------------------------------------------
+Mon Nov 11 11:26:13 CET 2002 - ro@suse.de
+
+- changed neededforbuild <jade_dsl> to <openjade>
+- changed neededforbuild <sp> to <opensp>
+- changed neededforbuild <sp-devel> to <>
+
+-------------------------------------------------------------------
+Sun Aug 18 10:51:55 CEST 2002 - ro@suse.de
+
+- don't overwrite READMEs with each other
+
+-------------------------------------------------------------------
+Fri Nov 30 15:08:32 CET 2001 - ro@suse.de
+
+- changed neededforbuild <docbktls> to <docbook-toys>
+
+-------------------------------------------------------------------
+Mon Nov 26 13:59:42 CET 2001 - hhetter@suse.de
+
+- fixed filelist 
+
+-------------------------------------------------------------------
+Mon Aug 13 15:51:56 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <sp_libs> to <sp-devel>
+
+-------------------------------------------------------------------
+Wed Aug  8 15:13:52 CEST 2001 - hhetter@suse.de
+
+- updated to version 0.7 
+
+-------------------------------------------------------------------
+Tue Mar 27 12:08:52 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <docbkdsl> to <docbook-dsssl-stylesheets>
+
+-------------------------------------------------------------------
+Tue Mar 13 01:12:28 CET 2001 - ro@suse.de
+
+- changed neededforbuild <docbk30> to <docbook_3>
+
+-------------------------------------------------------------------
+Mon Jan  1 18:22:32 MET 2001 - egger@suse.de
+
+- Updated to the real 0.4 instead of using a CVS snapshot.
+- Fixed specfile and use BuildRoot.
+- Cleaned up neededforbuild.
+- Recompressed with bzip2.
+- Added proper group tag. 
+
+-------------------------------------------------------------------
+Wed Nov  1 01:21:05 MET 2000 - egger@suse.de
+
+- Updated specfile to new long packagenames.
+- Reworked specfile.
+- Probably needs some more work; I'm taking care of that. 
+
+-------------------------------------------------------------------
+Thu Jun  8 19:46:01 CEST 2000 - egger@suse.de
+
+- Try whether an additional gtk_signal_init() solves our
+  misterious problems. 
+
+-------------------------------------------------------------------
+Wed May 10 15:04:02 CEST 2000 - egger@suse.de
+
+- Changed version on request of bk@suse.de. 
+
+-------------------------------------------------------------------
+Mon Apr 10 15:02:02 CEST 2000 - egger@suse.de
+
+- Reenabled the package.
+  Please note due to general confusion: This is != gtkref! 
+
+-------------------------------------------------------------------
+Thu Mar 30 18:22:38 CEST 2000 - egger@suse.de
+
+- Renamed also the dir to gtkdoc.
+ 
+-------------------------------------------------------------------
+Thu Mar 23 22:25:10 CET 2000 - egger@suse.de
+
+- Inital version.

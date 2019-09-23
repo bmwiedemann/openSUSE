@@ -1,0 +1,11 @@
+--- src/Makefile.am	2008-08-06 17:15:25.000000000 -0600
++++ src/Makefile.am	2008-08-06 17:15:41.000000000 -0600
+@@ -4,7 +4,7 @@
+ ASSEMBLY=$(ASSEMBLY_NAME).dll
+ SNK=$(ASSEMBLY_NAME).snk
+ 
+-pkgconfigdir=$(libdir)/pkgconfig
++pkgconfigdir=$(datadir)/pkgconfig
+ CSFLAGS += -debug+ -debug:full -nologo -r:Mono.Posix.dll
+ 
+ pkgconfig_DATA = gnome-keyring-sharp-1.0.pc

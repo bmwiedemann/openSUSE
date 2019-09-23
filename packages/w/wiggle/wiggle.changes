@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Thu Aug  9 21:39:57 UTC 2018 - rpm@fthiessen.de
+
+- Update to 1.1:
+  * Fix endian checks as per austin group definitions of endian.h
+  * Minor man page fixes
+
+-------------------------------------------------------------------
+Sun Jul  3 16:19:12 UTC 2016 - mpluskal@suse.com
+
+- Some spec file cleanups with spec-cleaner
+- Enable parallel building
+- Install COPYING (as package should contain its license)
+
+-------------------------------------------------------------------
+Fri Aug 23 06:56:02 UTC 2013 - nfbrown@suse.com
+
+- New upstream release 1.0
+  Substatial improvements to --browser mode including
+  ability to edit the resulting merge.
+  New --ignore-blanks flag.
+  Improved git integration.
+
+-------------------------------------------------------------------
+Tue May 15 03:15:27 UTC 2012 - nfbrown@suse.com
+
+- New upstream release 0.9.
+  Numerous bugfixes for edge cases,
+  lots of improvements to --browser mode which
+  is now documented
+  new --show-wiggle flag to make it easier to
+  see what wiggle is trying to do
+
+-------------------------------------------------------------------
+Mon Feb 13 10:57:38 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Thu Sep 15 14:06:52 UTC 2011 - andrea.turrini@gmail.com
+
+- Fixed typo in wiggle.spec
+
+------------------------------------------------------------------
+Thu Apr 22 08:01:14 UTC 2010 - aj@suse.de
+
+- Fix buffer overflow.
+
+-------------------------------------------------------------------
+Wed Mar 24 09:53:25 UTC 2010 - nfbrown@novell.com
+
+- Update to new upstream release 0.8 which makes all
+  patches redundant and resolves bnc#473776
+
+-------------------------------------------------------------------
+Mon Feb 13 15:58:54 CET 2006 - nfbrown@novell.com
+
+- remap-segfault.diff: Fix a segmentation fault in function remap
+  (147977).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:49 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Oct 31 12:59:23 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Sat Mar 20 22:02:49 CET 2004 - agruen@suse.de
+
+- Add fix from Chris Mason.
+
+-------------------------------------------------------------------
+Mon Jul 14 17:36:39 CEST 2003 - agruen@suse.de
+
+- Initial version.

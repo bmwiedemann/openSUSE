@@ -1,0 +1,6 @@
+addFilter("qclib.* no-binary")
+addFilter("libqclib1.* shlib-policy-missing-lib")
+addFilter("file-contains-date-and-time /usr/share/doc/packages/qclib/*")
+addFilter("files-duplicate /usr/share/doc/packages/qclib/html/ftv2*")
+addFilter("files-duplicate /usr/share/doc/packages/qclib/html/search/all_[0-4].js")
+addFilter("files-duplicate /usr/share/doc/packages/qclib/html/search/classes_[0-4].js")

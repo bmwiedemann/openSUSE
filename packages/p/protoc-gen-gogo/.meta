@@ -1,0 +1,6 @@
+<package name="protoc-gen-gogo" project="openSUSE:Factory">
+  <title>protoc-gen-gogo</title>
+  <description>Fork of protoc-gen-gogo - Go support for Google's protocol buffers</description>
+  <devel project="devel:languages:go" package="protoc-gen-gogo"/>
+  <url>https://github.com/gogo/protobuf</url>
+</package>

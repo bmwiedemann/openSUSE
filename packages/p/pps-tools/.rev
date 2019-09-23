@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5006781b9e484de71bd25c1d770229c5</srcmd5>
+    <version>0.0.0+git.20120407</version>
+    <time>1463652885</time>
+    <user>dimstar_suse</user>
+    <comment>New package, future dependency of ntpd</comment>
+    <requestid>394916</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5efe6ff8d4b1c7ce552426644dfd8d14</srcmd5>
+    <version>0.0.0+git.20120407</version>
+    <time>1471008970</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417842</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>be365ff3ea487a40e1c9a7d633c78af1</srcmd5>
+    <version>0.0.0+git.20181203</version>
+    <time>1545866652</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.0+git.20181203:
+  * Makefile: fix installation to empty DESTDIR
+  * ppsfind: Use /bin/sh, fix possible issues.
+  * ppswatch: Fix quitting after signal
+  * Fix linking under -Wl,--as-needed
+  * Add ppsldisc from LKML patch by Rodolfo Giometti.
+  * Makefile: Cleanup CFLAGS: remove -I. add -fPIC.
+  * Removes OFFSETASSERT requirement from ppstest and ppsctl.
+  * ppsfind: Add licence to the file header.
+  * Remove debian directory.
+  * ppswatch: Add useful stats output.</comment>
+    <requestid>658016</requestid>
+  </revision>
+</revisionlist>

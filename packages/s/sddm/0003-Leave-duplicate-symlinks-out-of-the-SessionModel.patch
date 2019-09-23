@@ -1,0 +1,57 @@
+From 793feb3a90f9ff97ebfcc5f77bc6168b32cd5810 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Mon, 15 May 2017 11:33:46 +0200
+Subject: [PATCH] Leave duplicate symlinks out of the SessionModel
+
+Used for autologin, default.desktop with update-alternatives.
+
+"explicit" needed to be removed from the constructor due to GCC bug 58255
+---
+ src/common/Session.h         | 2 +-
+ src/greeter/SessionModel.cpp | 9 ++++++++-
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+Index: sddm-0.17.0/src/common/Session.h
+===================================================================
+--- sddm-0.17.0.orig/src/common/Session.h
++++ sddm-0.17.0/src/common/Session.h
+@@ -35,7 +35,7 @@ namespace SDDM {
+             WaylandSession
+         };
+ 
+-        explicit Session();
++        Session();
+         Session(Type type, const QString &fileName);
+ 
+         bool isValid() const;
+Index: sddm-0.17.0/src/greeter/SessionModel.cpp
+===================================================================
+--- sddm-0.17.0.orig/src/greeter/SessionModel.cpp
++++ sddm-0.17.0/src/greeter/SessionModel.cpp
+@@ -122,6 +122,12 @@ namespace SDDM {
+             if (!dir.exists(session))
+                 continue;
+ 
++             // Skip symlinks that point to the same directory,
++             // they will be visited under the real name
++             QFileInfo fi_link(dir, session);
++             if (fi_link.isSymLink() && dir.canonicalPath() == fi_link.canonicalPath())
++                 continue;
++
+             Session *si = new Session(type, session);
+             bool execAllowed = true;
+             QFileInfo fi(si->tryExec());
+@@ -149,8 +155,12 @@ namespace SDDM {
+                 delete si;
+         }
+         // find out index of the last session
++        QString canonicalLastSession = QFileInfo(stateConfig.Last.Session.get()).canonicalFilePath();
+         for (int i = 0; i < d->sessions.size(); ++i) {
+-            if (d->sessions.at(i)->fileName() == stateConfig.Last.Session.get()) {
++            QString sessionPath = d->sessions.at(i)->directory().absoluteFilePath(d->sessions.at(i)->fileName());
++            QString canonicalSession = QFileInfo(sessionPath).canonicalFilePath();
++
++            if (canonicalSession == canonicalLastSession) {
+                 d->lastIndex = i;
+                 break;
+             }

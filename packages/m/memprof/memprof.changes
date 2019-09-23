@@ -1,0 +1,214 @@
+-------------------------------------------------------------------
+Mon Sep 21 06:42:40 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Nov 15 14:05:21 UTC 2012 - dimstar@opensuse.org
+
+- Add memprof-bfd-headers.patch: binutils newly forces the
+  inclusion of config.h.
+
+-------------------------------------------------------------------
+Mon Jul 30 12:03:59 UTC 2012 - dvaleev@suse.com
+
+- As memprof uses x86 instruction sets, add exclusive arch for
+  x86 types (%{ix86} x86_64).
+
+-------------------------------------------------------------------
+Mon Feb 13 10:50:17 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sun Oct 30 18:36:52 UTC 2011 - rcoe@wi.rr.com
+
+- Add memprof-arch-neutral.patch: Fix build error making
+  stack-frame.h arch neutral based on word size and not arch name.
+
+-------------------------------------------------------------------
+Sat Feb 12 19:31:32 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Tue Aug 10 00:33:15 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.6.2:
+  + Do not open /proc/self/perfctr with O_CREAT.
+  + Provide a GtkFileChooseButton to select the executable.
+  + Add a detail window.
+  + Cleanup code to avoid #ifdef depending on the arch.
+  + Fix crashes.
+- Changes from version 0.6.1:
+  + Port to Goption.
+  + Improve default window size.
+  + Add support to save the memory profile to a file.
+  + Remove follow-fork/follow-exec/preferences menu items.
+  + Use some code from sysprof.
+  + UI tweaks.
+  + Code cleanups and build fixes.
+  + Remove dependencies on gconf, libbfd, libiberty, libgnome,
+    libgnomecanvas, libgnomeui, popt.
+  + Updated translations.
+- Remove libgnomeui-devel, perl-XML-Parser BuildRequires.
+- Add explicit gtk2-devel BuildRequires.
+- Drop memprof.diff: fixed upstream.
+- Drop memprof-0.5.1-protos.patch: it doesn't apply anymore, and it
+  looks like it could be fixed.
+- Drop memprof-build-error.patch: fixed upstream.
+- Drop memprof-0.6-nonx86.patch: it doesn't apply anymore, and it
+  looks like it could be fixed.
+- Drop memprof-0.6-bfd.patch: not needed anymore.
+- Do not call %suse_update_config, intltoolize and autoreconf.
+- Remove gconf schema handling, since there's no gconf schema
+  anymore.
+- Use %configure and %makeinstall macros.
+- Remove .la files.
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Sat Jan 31 20:54:45 CET 2009 - vuntz@novell.com
+
+- Use sr@latin instead of sr@Latn.
+
+-------------------------------------------------------------------
+Mon Jul 14 18:21:05 CEST 2008 - schwab@suse.de
+
+- Fix check for libbfd.
+
+-------------------------------------------------------------------
+Tue Jan 22 10:26:42 CET 2008 - aj@suse.de
+
+- Fix open call.
+
+-------------------------------------------------------------------
+Tue Aug  7 23:52:52 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage
+- s#%run_ldconfig#/sbin/ldconfig/ in %post and %postun.
+
+-------------------------------------------------------------------
+Wed Mar 28 02:51:54 CEST 2007 - maw@suse.de
+
+- Add the magic gconf schemas stuff.
+
+-------------------------------------------------------------------
+Mon Jan 22 22:27:33 CET 2007 - aj@suse.de
+
+- Move to /usr.
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Thu Jan 11 11:28:32 CET 2007 - schwab@suse.de
+
+- Add binutils-devel to BuildRequires.
+
+-------------------------------------------------------------------
+Mon Oct 16 00:59:11 CEST 2006 - ro@suse.de
+
+- try to fix build for non-x86 
+
+-------------------------------------------------------------------
+Fri Oct 13 22:50:50 CEST 2006 - danw@suse.de
+
+- Remove dead patch
+
+-------------------------------------------------------------------
+Tue Sep 26 00:29:11 CEST 2006 - jhargadon@suse.de
+
+- update to version 0.6
+- Rewritten profiling module that handles recursion better
+- Display the call tree of functions
+- Many bug fixes
+- New and updated translations 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:28 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov  3 02:06:34 CET 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Thu Aug  5 01:58:27 CEST 2004 - ro@suse.de
+
+- make it build with current binutils
+- recode desktop file to utf-8
+
+-------------------------------------------------------------------
+Fri Jul  9 17:06:15 CEST 2004 - uli@suse.de
+
+- fixed to build on non-x86 systems
+
+-------------------------------------------------------------------
+Thu May 13 00:03:37 CEST 2004 - clahey@suse.de
+
+- Disable gconf makefile install rule.
+
+-------------------------------------------------------------------
+Sat Jan 10 21:15:47 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Dec 19 16:26:40 CET 2003 - pthomas@suse.de
+
+- Refresh configury via autoreconf.
+- Require intltool and run intltoolize.
+- Disable building the unneeded static version of libmemintercept
+  and explicitly package the dynamic one.
+- Call find_lang in specfile.
+
+-------------------------------------------------------------------
+Sat Aug 16 12:37:41 CEST 2003 - adrian@suse.de
+
+- update to version 0.5.1 (Gnome 2 based)
+- hopefully correct fixed for non-ix86
+- add Categories
+
+-------------------------------------------------------------------
+Fri Sep 27 14:35:09 CEST 2002 - ro@suse.de
+
+- Added alsa alsa-devel to neededforbuild (esound)
+
+-------------------------------------------------------------------
+Fri Jul 26 23:16:58 CEST 2002 - adrian@suse.de
+
+- fix neededforbuild
+
+-------------------------------------------------------------------
+Fri May 31 12:23:16 CEST 2002 - ro@suse.de
+
+- fix build on lib64 platforms 
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:07 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Wed Mar 14 09:51:40 CET 2001 - ro@suse.de
+
+- added xf86 to neededforbuild
+
+-------------------------------------------------------------------
+Tue Mar  6 02:11:00 MET 2001 - egger@suse.de
+
+- Initial SuSE version. 
+

@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>10142b9ad4bca363312206f3d98b7b0c</srcmd5>
+    <version>0.105</version>
+    <time>1327404021</time>
+    <user>coolo</user>
+    <comment>new perl package needed for Contextual logging</comment>
+    <requestid>99407</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>10142b9ad4bca363312206f3d98b7b0c</srcmd5>
+    <version>0.105</version>
+    <time>1340183836</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>10142b9ad4bca363312206f3d98b7b0c</srcmd5>
+    <version>0.105</version>
+    <time>1359109658</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e4cd79a39b9e4c5dff51696db7e7d527</srcmd5>
+    <version>0.113</version>
+    <time>1373986933</time>
+    <user>coolo</user>
+    <comment>- updated to 0.113
+ * Fix broken inheritance, better fix for UNIVERAL::can sillyness                                                                                                                                                                           
+ * Fixed 'can() used as function' warning that sometimes happens                                                                                                                                                                            
+ * Fixed brocken magic.t unit test</comment>
+    <requestid>183224</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e4cd79a39b9e4c5dff51696db7e7d527</srcmd5>
+    <version>0.113</version>
+    <time>1379663664</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>e4cd79a39b9e4c5dff51696db7e7d527</srcmd5>
+    <version>0.113</version>
+    <time>1409302275</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>04b0d9a9f5effb13e948b79fc783203a</srcmd5>
+    <version>0.114</version>
+    <time>1435652298</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314122</requestid>
+  </revision>
+</revisionlist>

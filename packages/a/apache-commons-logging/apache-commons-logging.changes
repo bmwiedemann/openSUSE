@@ -1,0 +1,184 @@
+-------------------------------------------------------------------
+Mon Mar 25 17:45:27 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove pom parent, since we don't use it when not building with
+  maven
+- Use the pom.xml distributed with the package instead of
+  downloading the same file as a separate source
+
+-------------------------------------------------------------------
+Wed Feb  6 06:47:05 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build against glassfish-servlet-api
+
+-------------------------------------------------------------------
+Mon Jan 28 12:43:50 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * commons-logging-manifests.patch
+    + Different Bundle-SymbolicName for different jars
+
+-------------------------------------------------------------------
+Fri Oct 19 20:35:40 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Cleanup of maven pom files installation
+
+-------------------------------------------------------------------
+Tue May 15 10:56:40 UTC 2018 - fstrba@suse.com
+
+- Modified patch:
+  * commons-logging-1.2-sourcetarget.patch
+    + Build with source and target 8 to prepare for a possible
+      removal of 1.6 compatibility
+
+-------------------------------------------------------------------
+Thu Sep  7 12:07:36 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * commons-logging-1.2-sourcetarget.patch
+    - set java source and target versions to 1.6 in order to allow
+      build with jdk9
+
+-------------------------------------------------------------------
+Fri May 19 11:03:15 UTC 2017 - tchvatal@suse.com
+
+- Remove bootstrap conditional
+
+-------------------------------------------------------------------
+Fri May 19 10:51:10 UTC 2017 - pcervinka@suse.com
+
+- New build dependency: javapackages-local 
+- Fixed requires
+
+-------------------------------------------------------------------
+Sun Jan 24 13:55:36 UTC 2016 - p.drouand@gmail.com
+
+- Update to version 1.2
+  see http://commons.apache.org/proper/commons-logging/changes-report.html
+  or RELEASE-NOTES.txt for details
+
+-------------------------------------------------------------------
+Wed Mar 25 09:20:20 UTC 2015 - tchvatal@suse.com
+
+- Drop maven conditionals that were never triggered.
+
+-------------------------------------------------------------------
+Wed Mar 25 09:16:56 UTC 2015 - tchvatal@suse.com
+
+- Drop gpg offline and rely on service
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:00 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Wed Mar  4 10:31:13 UTC 2015 - tchvatal@suse.com
+
+- Use log4j-mini to hopefully avoid build-cycle
+
+-------------------------------------------------------------------
+Fri Feb 20 15:14:30 UTC 2015 - dmacvicar@suse.de
+
+- add the log4j adapter to commons-logging-adapters
+  (bnc#918852)
+
+-------------------------------------------------------------------
+Tue Aug 12 11:10:06 UTC 2014 - lnussel@suse.de
+
+- add bcond java_bootstrap to build without unit tests
+  (commons-logging-1.1.3-src-junit.diff)
+
+-------------------------------------------------------------------
+Fri Jun 27 13:22:19 UTC 2014 - tchvatal@suse.com
+
+- Provides obsoletes to be versioned
+
+-------------------------------------------------------------------
+Mon Sep  9 11:04:11 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Tue Aug 27 08:51:35 UTC 2013 - mvyskocil@suse.com
+
+- update to 1.1.3 (bugfix release)
+  see http://commons.apache.org/proper/commons-logging/changes-report.html
+  or RELEASE-NOTES.txt for details
+- add gpg verification
+- use new add_maven_depmap from javapackages-tools
+- dropped unecessary patches/sources
+  * build.xml.patch
+  * commons-logging-eclipse-manifest.patch
+  * commons-logging-maven-release-plugin.patch
+  * and commons-logging.depmap
+
+-------------------------------------------------------------------
+Mon Apr  2 13:39:00 UTC 2012 - mvyskocil@suse.cz
+
+- provide commons-logging 
+
+-------------------------------------------------------------------
+Tue Feb 28 13:50:53 UTC 2012 - mvyskocil@suse.cz
+
+- fix build cycle, do not require avalon-* for build and use servletapi5
+  instead of tomcat6 package
+
+-------------------------------------------------------------------
+Wed Feb  8 14:16:04 UTC 2012 - mvyskocil@suse.cz
+
+- rename to apache-commons-logging to follow jpackage and Fedora
+- update to 1.1.1 (bugfix release)
+  * usable under security policy (catches SecurityException)
+  * show content of chained exceptions
+  * fix unit tests on linux an java6
+  * provide maven2 pom file
+  * fix thread-safety bug
+
+-------------------------------------------------------------------
+Sat Aug 27 20:32:52 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typos in jakarta-commons-logging.spec
+
+-------------------------------------------------------------------
+Wed Jul 16 13:01:14 CEST 2008 - coolo@suse.de
+
+- trying to reduce build requires
+
+-------------------------------------------------------------------
+Tue May  8 16:43:03 CEST 2007 - kesselborn@suse.de
+
+- remove avalon references ... avalon is dropped and support for it hence not needed 
+
+-------------------------------------------------------------------
+Mon Sep 25 13:26:40 CEST 2006 - skh@suse.de
+
+- fix BuildRequires
+- don't use icecream
+- use source="1.4" and target="1.4" for build with java 1.5
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:38 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jul 27 17:00:36 CEST 2005 - jsmeix@suse.de
+
+- Adjustments in the spec file.
+
+-------------------------------------------------------------------
+Mon Jul 18 16:23:44 CEST 2005 - jsmeix@suse.de
+
+- Current version 1.0.4 from JPackage.org
+
+-------------------------------------------------------------------
+Thu Sep 16 14:43:22 CEST 2004 - skh@suse.de
+
+- Fix prerequires of javadoc subpackage
+
+-------------------------------------------------------------------
+Sun Sep  5 20:21:48 CEST 2004 - skh@suse.de
+
+- Initial package created with version 1.0.4 (JPackage 1.5)
+

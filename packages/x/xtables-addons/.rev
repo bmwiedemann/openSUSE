@@ -1,0 +1,533 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8850bb0cefaa982d294cfd541ece706e</srcmd5>
+    <version>1.21</version>
+    <time>1262861564</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/xtables-addons based on submit request 28070 from user jengelh
+</comment>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>55e8a1ad04892b08bfc660bbbf44089e</srcmd5>
+    <version>1.22</version>
+    <time>1265750386</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/xtables-addons based on submit request 31770 from user coolo
+</comment>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2c5a985e229ee2ff7a47ce4656d0bb2b</srcmd5>
+    <version>1.22</version>
+    <time>1265932025</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>1ceee40ec7f6c2f144b6901ce7bc9876</srcmd5>
+    <version>1.22</version>
+    <time>1268926699</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>08d3d8adff03f60748d584a327322277</srcmd5>
+    <version>1.23</version>
+    <time>1268988999</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/xtables-addons based on submit request 35122 from user coolo
+</comment>
+    <requestid>35122</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6ab6986d11282222b644931663e73b61</srcmd5>
+    <version>1.24</version>
+    <time>1270136887</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/xtables-addons based on submit request 36525 from user coolo
+</comment>
+    <requestid>36525</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>500baea16e3d1e0339ecc89494924410</srcmd5>
+    <version>1.25</version>
+    <time>1272318496</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/xtables-addons based on submit request 38835 from user jengelh
+</comment>
+    <requestid>38835</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5e3d5bec56f5e45777c1f2f615dcb979</srcmd5>
+    <version>1.26</version>
+    <time>1272921660</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/xtables-addons based on submit request 39244 from user jengelh
+</comment>
+    <requestid>39244</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7137ec2537ed1481fc2ebd2a3fcd7e6b</srcmd5>
+    <version>1.27</version>
+    <time>1277830844</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/xtables-addons based on submit request 42244 from user jengelh
+</comment>
+    <requestid>42244</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7137ec2537ed1481fc2ebd2a3fcd7e6b</srcmd5>
+    <version>1.27</version>
+    <time>1278667397</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>7137ec2537ed1481fc2ebd2a3fcd7e6b</srcmd5>
+    <version>1.27</version>
+    <time>1278678631</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>15ef59d4d7e4079127327e932a99a930</srcmd5>
+    <version>1.30</version>
+    <time>1286138131</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/xtables-addons based on submit request 49678 from user jengelh
+</comment>
+    <requestid>49678</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>047480116c999a0d0289e8658e1cacef</srcmd5>
+    <version>1.31</version>
+    <time>1289224648</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52264 from user jengelh
+</comment>
+    <requestid>52264</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>79804bf6baf3b409c2cd6c0a24335f74</srcmd5>
+    <version>1.31</version>
+    <time>1289224659</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52264
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b3df6754dcf9157ea7830f6be43f3eae</srcmd5>
+    <version>1.33</version>
+    <time>1296624240</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 59732 from user jengelh
+</comment>
+    <requestid>59732</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>1528c2349828867429766e21d5135dfe</srcmd5>
+    <version>1.33</version>
+    <time>1296624250</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 59732
+</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>1528c2349828867429766e21d5135dfe</srcmd5>
+    <version>1.33</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>42ed59072c00bc9fb2651ef4f81221e9</srcmd5>
+    <version>1.34</version>
+    <time>1302510328</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66567 from user licensedigger
+</comment>
+    <requestid>66567</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>243d862802a6169f64a38245b45a11b1</srcmd5>
+    <version>1.34</version>
+    <time>1302510338</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66567
+</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>51166dd90cb2496a618297c0c4bc097b</srcmd5>
+    <version>1.35</version>
+    <time>1303116563</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67676 from user coolo
+</comment>
+    <requestid>67676</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8870340104298c42d8d567ea33c2f85f</srcmd5>
+    <version>1.36</version>
+    <time>1307354421</time>
+    <user>saschpe</user>
+    <comment>- update to new upstream release 1.36
+* update to ipset 6.7
+* xt_TARPIT has gained the &quot;honeypot&quot; and &quot;reset&quot; modes</comment>
+    <requestid>72676</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>b69b30a5106bc2698eaa9de1c59f287e</srcmd5>
+    <version>1.36</version>
+    <time>1307354435</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72676
+</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d5393d17afc21468bc571b60ee530faa</srcmd5>
+    <version>1.37</version>
+    <time>1309165705</time>
+    <user>saschpe</user>
+    <comment>- update to new upstream release 1.37
+* xt_SYSRQ: make IPv6 trigger work again
+* xt_SYSRQ: improve security: include host address in digest
+* xt_TARPIT: fix a kernel oops in --reset mode</comment>
+    <requestid>74507</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9fe35e0018e61b6a15f8bacc1d8fe3c4</srcmd5>
+    <version>1.38</version>
+    <time>1314021885</time>
+    <user>saschpe</user>
+    <comment>- update to new upstream release 1.38
+* Restore UDP functionality for xt_psd
+* UDPLITE support for xt_SYSRQ, xt_ipp2p, xt_pknock, xt_psd
+* Provides ipset 6.8</comment>
+    <requestid>79430</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>46bba4c64c84193ebf7c98c428e6e6df</srcmd5>
+    <version>1.38</version>
+    <time>1314021894</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79430
+</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>fded77e1ce73b76118d0087946fa331a</srcmd5>
+    <version>1.39</version>
+    <time>1316681615</time>
+    <user>saschpe</user>
+    <comment>- update to new upstream release 1.39
+* update to ipset 6.9.1
+* resolve compilation errors due to missing libxtables_CFLAGS</comment>
+    <requestid>84301</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>fded77e1ce73b76118d0087946fa331a</srcmd5>
+    <version>1.39</version>
+    <time>1319182617</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>97a92d10fb45d87084b0d6d199aa173b</srcmd5>
+    <version>1.40</version>
+    <time>1323085599</time>
+    <user>coolo</user>
+    <comment>- update to new upstream release 1.40
+* xt_ECHO: fix kernel warning about RTAX_HOPLIMIT being used
+* xt_ipv4options: fix an infinite loop
+* Provides ipset 6.10: ICMP/ICMPv6 type/code parser bug fixed;
+  fix lookup of tcp port names</comment>
+    <requestid>95346</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>f82fb8bdb45219a6176c0203d66c3da0</srcmd5>
+    <version>1.40</version>
+    <time>1323195494</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2f08d3a6b789b20f1ab0bb3b468539b5</srcmd5>
+    <version>1.41</version>
+    <time>1326104240</time>
+    <user>coolo</user>
+    <comment>- update to new upstream release 1.41
+* support for Linux 3.2
+
+- We have now a few of kernel versions that ipset can be compiled
+  against, so ipset has been separated out into a new RPM package,
+  and ipset-genl from xtables-addons is hereby subsequently
+  disabled.</comment>
+    <requestid>98811</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>7f43b6349f0953c8ad99d02dba342d67</srcmd5>
+    <version>1.41</version>
+    <time>1330966966</time>
+    <user>coolo</user>
+    <comment>- patch license to follow spdx.org standard</comment>
+    <requestid>105181</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c8c8deb0ae9d2435719eafa2aa37e4e0</srcmd5>
+    <version>1.42</version>
+    <time>1334641850</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113796</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>c8c8deb0ae9d2435719eafa2aa37e4e0</srcmd5>
+    <version>1.42</version>
+    <time>1340184387</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>467e5d64da964f39e27091236053243c</srcmd5>
+    <version>1.46</version>
+    <time>1345809196</time>
+    <user>namtrac</user>
+    <comment>- Update to new upstream release 1.46
+* Support for Linux 3.4--3.6</comment>
+    <requestid>131431</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>7c6a1c63545f887770876cd45a401f39</srcmd5>
+    <version>1.47.1</version>
+    <time>1351663472</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>139040</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>1a4fc8477b2e1a1b7e152ed72729237e</srcmd5>
+    <version>2.0</version>
+    <time>1356731518</time>
+    <user>namtrac</user>
+    <comment>- Always ship all source tarballs to make osc validator happy
+- Enable version 2.0 for openSUSE:Factory which now has kernel 3.7
+- Add 0001-xt_DNETMAP-fix-compile-error-with-Linux-3.7.patch</comment>
+    <requestid>146265</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>51130260bb1892982eb19142482502e9</srcmd5>
+    <version>2.1</version>
+    <time>1357217374</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146890</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>51130260bb1892982eb19142482502e9</srcmd5>
+    <version>2.1</version>
+    <time>1359110699</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>bced7d1fd7c5c8633010a87cd2eec54d</srcmd5>
+    <version>2.1</version>
+    <time>1363900574</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157819</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>9dbbc8ccbda48a53424c6a5647fb8d81</srcmd5>
+    <version>2.2</version>
+    <time>1364987385</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.2
+* support for Linux 3.9
+* avoid iptaccount being optimized away (bnc#807155)</comment>
+    <requestid>161933</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3d204a67688c02eba410416386c84b16</srcmd5>
+    <version>2.3</version>
+    <time>1371756470</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.10</comment>
+    <requestid>180068</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>3d204a67688c02eba410416386c84b16</srcmd5>
+    <version>2.3</version>
+    <time>1379665124</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>4cb8dcc165db09bad4cf2e5f8702ac78</srcmd5>
+    <version>2.4</version>
+    <time>1389956540</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.4</comment>
+    <requestid>214158</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f8acd91512b72a53119ecb665795d4da</srcmd5>
+    <version>2.5</version>
+    <time>1401108271</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>231472</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>f8acd91512b72a53119ecb665795d4da</srcmd5>
+    <version>2.5</version>
+    <time>1409303811</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e8667daf0dc37cebbed714c430ab82e3</srcmd5>
+    <version>2.6</version>
+    <time>1412098823</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.6</comment>
+    <requestid>252764</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>b647e10f0870f2d120db0779fcb95dec</srcmd5>
+    <version>2.7</version>
+    <time>1436888680</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.7</comment>
+    <requestid>316349</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>8dbd858f17e7847515e89aacea0f0798</srcmd5>
+    <version>2.8</version>
+    <time>1440135681</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.8
+* Support for Linux 4.2
+* Enable xt_ECHO</comment>
+    <requestid>324280</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>92e583351546cf84e19d7d7e3542e148</srcmd5>
+    <version>2.9</version>
+    <time>1445288045</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>339943</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>80973f77bb7475f16918377b4adcc1b1</srcmd5>
+    <version>2.10</version>
+    <time>1448553701</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.10</comment>
+    <requestid>345506</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>ed513851c245d6880ff2228a7344a2cf</srcmd5>
+    <version>2.11</version>
+    <time>1464484414</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>398407</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>f823b64daa243d9e8403169811ebf929</srcmd5>
+    <version>2.12</version>
+    <time>1484132740</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.12</comment>
+    <requestid>449604</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>201b153f9040d0fbd6ab89875004b963</srcmd5>
+    <version>2.13</version>
+    <time>1503926122</time>
+    <user>dimstar_suse</user>
+    <comment>- Bundle LICENSE file in BRPM</comment>
+    <requestid>518601</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>2083a282e7a6e82b91964312213aa621</srcmd5>
+    <version>2.14</version>
+    <time>1511426683</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.14
+  * Support for Linux 4.14 [boo#1068098]
+  * DNETMAP buffer overflow fix</comment>
+    <requestid>544464</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>4c6a8819d66ec4750c8e606fe8bb889d</srcmd5>
+    <version>2.14</version>
+    <time>1517932177</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport from upstream
+  * Support for Linux 4.15 (add init_timer.patch)</comment>
+    <requestid>573172</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>984f0c1b0d681385add7a007eef56e91</srcmd5>
+    <version>3.0</version>
+    <time>1518514292</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 3.0</comment>
+    <requestid>575806</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>9a88dea172a9203b4aadef5a17c0e3f2</srcmd5>
+    <version>3.0</version>
+    <time>1529501646</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617864</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>2863374caa680f664a2d00ff17b0a19c</srcmd5>
+    <version>3.1</version>
+    <time>1534322313</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 3.1 [boo#1104749]</comment>
+    <requestid>629221</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>4efd8ffd45fd1c24e80942dbea687350</srcmd5>
+    <version>3.1</version>
+    <time>1536148193</time>
+    <user>dimstar_suse</user>
+    <comment>- Add perl dependencies</comment>
+    <requestid>633269</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>d4165f51ace7eb8475255de0ed5e64b5</srcmd5>
+    <version>3.2</version>
+    <time>1537018498</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to new upstream release 3.2</comment>
+    <requestid>634239</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>f33eea6456a6803a26392886c6cc29f3</srcmd5>
+    <version>3.3</version>
+    <time>1552206787</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.3
+  * Support for Linux 5.0 [boo#1127790]</comment>
+    <requestid>682376</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>bebce6827c46fde08ee13a80b7a67d07</srcmd5>
+    <version>3.3</version>
+    <time>1566894069</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>725943</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>2a709ad9f64a68c9069153a1e987374f</srcmd5>
+    <version>3.5</version>
+    <time>1568190889</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.5</comment>
+    <requestid>729732</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,114 @@
+-------------------------------------------------------------------
+Sat Dec 23 07:00:12 UTC 2017 - avindra@opensuse.org
+
+- updated to 0.28
+  * aclocal.m4 (IPv6_CHECK_INET_NTOP): inet_ntop(3) may returns
+    IPv4-compatible IPv6 address. [cpan #113950]
+- includes fix from 0.27
+  * t/use.t: We still support an environment where AF_INET6 is
+    not defined
+- includes changes from 0.26
+  * Makefile.PL: Make Socket6 buildable on Android. [cpan #98181]
+  * system inet_ntop broken in darwin. [cpan #113005]
+  * gailookup.pl.in: Add -r option to do reverse lookup
+  * gailookup.pl.in: Add awareness of AI_ALL and AI_V4MAPPED
+  * gailookup.pl.in: Add -P option to ease to specify port number
+- cleanup spec file with spec-cleaner
+- split tests into %check section
+
+-------------------------------------------------------------------
+Mon Dec  9 11:17:36 UTC 2013 - coolo@suse.com
+
+- updated to 0.25
+      * Makefile.PL: Install manpage. [cpan #66811]
+      * Socket6.pm: Fix typo. [cpan #86346]
+      * Socket6.pm: Fix typo. [cpan #71617]
+      * Makefile.PL: Fixed [cpan #77665] pass perl cc and ccflags to
+      configure
+      * Makefile.PL (configure_mswin32): Fixed [cpan #65710]
+      undefined ref to inet_ntop,inet_pton on Windows XP.
+      * t/use.t: Fixed [cpan #75211] test redefinition warnings
+
+-------------------------------------------------------------------
+Thu Jan 12 14:25:53 UTC 2012 - jw@suse.com
+
+- license update: BSD-3-Clause
+  was plain wrong for years.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:55 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:43 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:04 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:39:05 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Mon Feb  8 12:34:10 UTC 2010 - coolo@novell.com
+
+* update to version 0.23.
+   * Socket6.pm: Added @EXPORT_OK to export AF_INET6 and PF_INET6 if
+     requested.  This allows the use of the Socke6 module without
+     having to perform the same conditional check that was added to
+     avoid conflicts with the Socket module default exports (i.e. use
+     Socket6 qw(AF_INET6 inet_pton inet_ntop); )
+
+   * Socket6.pm (AUTOLOAD): Explicitly set $! = 0 before calling
+      constant().  This should not be required since errno was being set
+      to 0 in the C function, but Perl 5.10.0 Win32 Vista needed this to
+      be done or all constants reported unsupported.
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Oct 29 17:10:39 CET 2008 - mls@suse.de
+
+- update to Socket6-0.22, fixes bnc#426256
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:57 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jul 29 14:48:32 CEST 2005 - mls@suse.de
+
+- Update to Socket6-0.18
+
+-------------------------------------------------------------------
+Mon Aug 16 12:21:25 CEST 2004 - garloff@suse.de
+
+- Update to Socket6-0.17:
+  * Build fixes Solaris and Win32.
+  * Minor bugfixes (compiler warnings, etc.).
+
+-------------------------------------------------------------------
+Mon Feb 16 22:43:44 CET 2004 - garloff@suse.de
+
+- Update to Socket6-0.14.
+
+-------------------------------------------------------------------
+Fri Aug 22 15:44:42 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Tue Jul 15 20:50:00 CEST 2003 - garloff@suse.de
+
+- Initial creation of package.
+

@@ -1,0 +1,25 @@
+<package name="devscripts" project="openSUSE:Factory">
+  <title>Scripts to make the life of a Debian Package maintainer easier</title>
+  <description>Collection of scripts for working on Debian packages.
+Examples:
+ - bts: a command-line tool for manipulating the Debian Bug
+   Tracking System
+ - checkbashisms: check whether a /bin/sh script contains any
+   common bash-specific contructs
+ - dcontrol: remotely query package and source control files
+   for all Debian distributions
+ - debchange/dch: automagically add entries to
+   debian/changelog files
+ - debsign, debrsign: sign a .changes/.dsc pair without
+   needing any of the rest of the package to be present;
+   can sign the pair remotely or fetch the pair from a
+   remote machine for signing
+ - diff2patches: extract patches from a .diff.gz file
+   placing them under debian/ or, if present, debian/patches
+ - licensecheck: attempt to determine the license of source
+   files
+ - uscan: scan upstream sites for new releases of packages
+
+</description>
+  <devel project="system:packagemanager" package="devscripts"/>
+</package>

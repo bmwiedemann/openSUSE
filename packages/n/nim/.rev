@@ -1,0 +1,103 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8458111f7f8032ddb89da469949cb518</srcmd5>
+    <version>0.15.2</version>
+    <time>1486389844</time>
+    <user>dimstar_suse</user>
+    <comment>new package, interesting language</comment>
+    <requestid>453136</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>20a67d3b21e9b8fc7521a9ab4924ef87</srcmd5>
+    <version>0.16.0</version>
+    <time>1487681459</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459183</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c846da35a0f21c55933e352dd574456b</srcmd5>
+    <version>0.16.0</version>
+    <time>1488560070</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>461864</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>77a0e61f081cd5e85105a7d8cc12102b</srcmd5>
+    <version>0.16.0</version>
+    <time>1489345523</time>
+    <user>dimstar_suse</user>
+    <comment>- Update list of files to fix building on Factory</comment>
+    <requestid>478622</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4dc647c09322ccdd02bd92be26d58b9c</srcmd5>
+    <version>0.17.0</version>
+    <time>1496681419</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.17.0:
+  * https://nim-lang.org/blog/2017/05/17/version-0170-released.html</comment>
+    <requestid>500922</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>058dcae8e363a029ccbcca35ac023019</srcmd5>
+    <version>0.17.2</version>
+    <time>1515261083</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.17.2:
+  * Bugfix release
+  * For details see:
+    https://nim-lang.org/blog/2017/09/07/version-0172-released.html</comment>
+    <requestid>561886</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9084da1033ab2e1c7cb402df5828dabb</srcmd5>
+    <version>0.18.0</version>
+    <time>1520253769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582181</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8fa967884302077b0e3ce18916f4be27</srcmd5>
+    <version>0.19.0</version>
+    <time>1540451344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643902</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>64489d6d698f6848bda1a68200fbf589</srcmd5>
+    <version>0.19.2</version>
+    <time>1546946836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662374</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>54c3e43783750beb4e0b5acc81af1c40</srcmd5>
+    <version>0.19.6</version>
+    <time>1558520413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704672</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d6e75ff96f0bfde3d5fe542d2c55dde3</srcmd5>
+    <version>0.19.6</version>
+    <time>1559375918</time>
+    <user>dimstar_suse</user>
+    <comment>- Force more optflags usage
+- Fix location of config files (boo#1137006)</comment>
+    <requestid>706734</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>daaea34304939df231c61931d7c5e14e</srcmd5>
+    <version>0.19.6</version>
+    <time>1559581084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707171</requestid>
+  </revision>
+</revisionlist>

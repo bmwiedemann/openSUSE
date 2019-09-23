@@ -1,0 +1,1664 @@
+-------------------------------------------------------------------
+Mon Aug 26 20:51:34 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.08
+  - Greek translation files updated by Haris SV1GRB
+  - xmlrpc <vector>
+    . This reverts commit d681ab54b31100878e16bf2c8c2b9a96ceb2de23.
+    . avoid sizing a zero length vector; use resize(size, n) for
+      non empty return vector
+    - Documentation
+      . Add missing deadman timer documentation
+    - Raster init values
+      . Raster::resize() was being called with a negative
+        width or height due to bad state being stored in the
+        config.  This resulted in fldigi crashing before the
+        UI was displayed.
+      . submitted by Stephen Hurd <shurd@FreeBSD.org>
+    - Image transmit docs
+      . Correct manual for thor, mfsk, ifkp and fsk image transfer.
+
+-------------------------------------------------------------------
+Thu Aug  8 18:43:31 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 4.1.07
+  * FL_LOCK
+  * wf mods
+
+-------------------------------------------------------------------
+Tue Jul 23 19:44:19 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 4.1.06
+  * nanoIO
+  * FD server disconnect
+  * Calendar
+  * Warnings etal
+
+-------------------------------------------------------------------
+Wed Jul  3 19:30:39 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 4.1.05
+  * LoTW fllog
+  * Modem macro
+  * Close Logbook
+  * eQSL
+
+-------------------------------------------------------------------
+Wed Jun 19 20:33:59 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.04
+  * add debug statements to track access to remote log server
+    xmlrpc <vector>
+  * fix for zero length byte vector instantiation on Fedora global
+    build LoTW delivery
+  * Change to testing for LoTW delivery status Apple kill button
+  * force coordinated shutdown for command-Q, red-X decoration button,
+    or File/Exit process main dialog title
+  * force Windows to update window title when connecting to ACL
+    Contestia/Olivia
+  * Add contestia submodes to contestia modem type - needed to
+    enable rsid contestia submode detection
+  * Add missing submodes to Olivia Warnings
+  * correct warnings discovered by newer 64 bit compiler Log reports
+  * correct output formatting of text and csv reports Documentation
+    update
+  * update contest section 7qp multi
+  * Parse multi state/county report strings n3fjp
+  * restore named digital modes to MODE entry passed to loggers.
+  * restore ALC compatible controls CALL, FREQ, BAND, MODE, NAME,
+    QTH, STATE/PROVINCE, COUNTRY, GRID, POWER, COMMENTS, DATE,
+    TIME-ON, TIME-OFF wfonly controls
+  * correct control positioning
+  * allow visibility of Rev, Store, Lock controls Read log debugging
+  * Added event logging statements to the read log file function.
+  * Add wait for modem change to the execute method pMODEM(...)
+    DE QSO Party
+  * Add Delawre QSO party to configurable contests
+
+-------------------------------------------------------------------
+Sun Jun 16 09:29:57 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.1.03
+  * correct wf update loop
+  * Disable WinKey serial echo for emulators like K3NB Arduino sketch.
+  * modify default CQ macro to include RsID on/off
+  * Add code to correctly recognize OLIVIA submodes
+- Update to version 4.1.02
+  * change to allow concurrent timed dialogs
+  * insure that multiple dialogs do not overlie each other on UI
+  * remove multiple goto's on RsID detection notification dialog
+  * correct resizeing of timed dialog
+  * separate eQSL / LoTW alert dialogs instances - allows both to
+    be visible concurrently
+  * ignore multiple RsID notifications when notifier dialog is
+    visible
+  * display eQSL notifier when operating with external fllog
+  * deprecate the xmlrpc rig control tab
+  * add event log to waterfall only UI
+  * add VERBOSE events to all xmlrpc calls
+  * change waterfall redraw processing to timed updates,
+    independent of trx thread timing
+  * Language update: add pl.po changes
+  * Documentation update
+  * Add "N3FJP Amateur Contact Log" to title bar when
+    connected to external logger
+  * CQzone: add to xmlrpc add_record method
+  * trx_xmit_wfall_draw: change thread test to TRX_THREAD
+    vice MAIN_THREAD
+  * Log rotation
+  * Secure METAR
+  * lgbook File: add code to populate the logbook dialog widget
+    txtLogFile "File:"
+  * remove C style memory functions from qzlib implementation
+  * add limits testing on get_word method to prevent
+    stack corruption
+  * add MY_CALL, OP_CALL, MY_QTH and MY_LOCATOR fields to ADIF
+    xmlrpc record
+  * QTE-QRB: Make hover over Rx panel CALL text work with 
+    external fllog
+  * Update globals entries for OLIVIA modes / submodes
+  * add logbook backups
+  * ARQ server: correct logic for testing loss of client
+  * Update log dates when fldigi submits either eQSL or LoTW
+  * XmlRpc Log Dup Check: Change for tri-state return from
+    xmlrpc duplicate test
+  * change flrig ptt keys modem default to false in configuration.h
+  * DxCluster/N3FJP i/o: changed method calls to agree with socket
+    class changes
+  * corrected multiple "connection refused" dxcc connect attempts
+  * only submit eQSL / LoTW if set in configuration
+  * update submit date eQSL
+  * modify build.m4 and src/Makefile.am to suppress bogus
+    -fvisibility-inlines-hidden warnings during cc compilation
+     of mbedtls source.
+  * changes to isolate notify_dialog from invoking thread
+  * MODE export: allow log database to export non-fldigi modes 
+    such as FT8
+  * add flarq_socket.cxx - insulate flarq build from fldigi includes
+  * Add eQSL field to export data
+  * Add timed eQSL delivery status message dialog
+  * Add sub mode export if valid ADIF entry
+  * tod clock start move to after debug init
+  * ARQ socket i/o: Increase debug text size to accommodate large
+      arq texts from flamp.
+  * ARQ socket i/o: Insure that data streams are always bound to
+      data blocks
+  * ARQ socket i/o:   prevent receive socket buffer overruns
+  * ARQ socket i/o: correct TOD clock
+  * analysis mode: add signal amplitude to output csv file
+
+-------------------------------------------------------------------
+Tue Feb 19 19:19:22 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.01
+  * CW h/w ptt
+  * nanoIO
+  * NAVTEX abort
+  * dup-check
+  * ADIF submode
+  * WF only bug fix
+  * LotW
+  * Pedantic warnings
+  * SD counties
+  * QRZ.com
+  * SV1GRB test report
+
+-------------------------------------------------------------------
+Tue Jan 29 15:13:23 UTC 2019 - mardnh@gmx.de
+
+- Update to version 4.1.00
+  * po update
+  * WWV doc
+  * Winkeyer FSK
+  * Contests
+  * arq-override
+  * flmsg-dir
+  * contest-docs
+  * fldigi_def.xml
+  * socket_mods
+  * Fltk 1.4 mod
+  * wefax
+  * nanoIO
+  * CW SOM table
+  * flrig: macro
+  * Audio adjust docs
+  * feldhell
+  * C-11 fixes
+  * nano FSK
+  * Mint-19/Mate
+  * Signal Browser documentation
+  * flrig seg fault
+
+-------------------------------------------------------------------
+Sat Aug 18 17:55:39 UTC 2018 - mardnh@gmx.de
+
+- Update to version 4.0.18
+  * CPS testing
+  * ipv6 addressing
+  * MT63 centering
+  * fsq mods
+  * IFKP/THOR greyscale image
+  * Hamlib bug fix
+  * Tooltip
+  * nanoIO
+  * THROB adif
+  * RigCAT dialog
+
+-------------------------------------------------------------------
+Wed Jun 13 06:17:01 UTC 2018 - mardnh@gmx.de
+
+- Update to version 4.0.17
+  * flarq idtimer
+  * Greek language update
+  * tmpfile
+  * xmlrpc cat string
+  * Modem start frequency
+  * Serial port discovery
+  * Log entries
+  * flarq appdir
+  * rx/tx
+  * RTTY Quick pick
+  * quick pick rtty baud
+  * Documentation Update
+  * CW/FSK I/O on start
+  * WinKey PTT
+  * Navigator
+  * nanoIO
+  * Default Lighted Button
+  * ST/PR macro tags
+  * K2/K3/KX3 data modes
+  * Logbook read
+  * 8pskF
+  * fsq/ifkp audit logs
+  * RTTY browser decode
+
+-------------------------------------------------------------------
+Sun Feb 11 13:47:48 UTC 2018 - mardnh@gmx.de
+
+- Update to version 4.0.16
+  * wo seg fault
+  * 8psk lockup problem
+  * Miscellaneous menu
+  * pskrep autostart
+  * Grid Square Contest
+  * Logbook Export
+
+-------------------------------------------------------------------
+Sat Jan 20 11:53:11 UTC 2018 - mardnh@gmx.de
+
+- Update to version 4.0.15
+  * ARQ server
+  * Signal gain
+
+-------------------------------------------------------------------
+Tue Jan 16 14:58:21 UTC 2018 - mardnh@gmx.de
+
+- Update to version 4.0.14
+  * linux shutdown
+  * remote logbook
+  * ARQ exit seg fault
+  * WEFAX auto center behavior
+  * WEFAX phasing change button
+  * RTTY configure initializers
+  * File aging
+  * PSK IMD
+  * Spectrum Display
+  * Warnings in sound.cxx
+
+-------------------------------------------------------------------
+Sat Dec 30 13:50:09 UTC 2017 - mardnh@gmx.de
+
+- Update to version 4.0.13
+  * Language Translation
+  * cw t/r - doc update
+  * Spectrum Analyzer
+  * TS990 tune feedback
+  * OS X CW
+  * FSQ/IFKP clear tx panel
+  * deadman
+  * Image transmit
+  * flrig race
+  * CW Sweepstakes
+  * CW no tx char
+  * timeops
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Dec 11 15:19:41 UTC 2017 - mpluskal@suse.com
+
+- Small package cleanup
+- Do not use scriplets on Factory where they are not needed anymore
+- Run tests during build
+
+-------------------------------------------------------------------
+Mon Dec 11 15:01:19 UTC 2017 - crrodriguez@opensuse.org
+
+- BuildRequire pkgconfig(x11) not xorg-x11-devel 
+
+-------------------------------------------------------------------
+Wed Nov  1 19:42:08 UTC 2017 - mardnh@gmx.de
+
+- Update to version 4.0.12
+  * Farnsworth timing
+  * PSK sinc filter
+  * ACL interface
+  * Text capture
+  * OSX start process
+
+-------------------------------------------------------------------
+Sun Oct 15 19:10:12 UTC 2017 - mardnh@gmx.de
+
+- Update to version 4.0.11
+  * Text Capture
+  * FreeBSD mod
+  * Documentation update
+  * PSK filter
+  * Audio Stream
+  * printf cleanup
+  * CW Multichannel
+  * QSY multi
+
+-------------------------------------------------------------------
+Sun Oct  1 14:37:47 UTC 2017 - mardnh@gmx.de
+
+- Update to version 4.0.10
+  * WX HamQth bug fix
+  * win7 mingw build fixes
+  * wefax ui mods
+  * wefax_map
+  * auto start
+
+- Update to version 4.0.9
+  * doc update
+  * clock_gettime
+  * spectrum display
+  * Test Signal Dialog
+  * dxcluster fonts
+  * smod
+  * Spot buffer
+  * Winkeyer clones
+  * PSK s/n imd
+  * RX Text capture
+  * PSK viewer
+
+-------------------------------------------------------------------
+Sun Aug  6 04:48:54 UTC 2017 - bwiedemann@suse.com
+
+- Override build date, user, hostname to fix build-compare (boo#1047218)
+
+-------------------------------------------------------------------
+Sat Jul 22 09:14:14 UTC 2017 - mardnh@gmx.de
+
+- Update to version 4.0.8
+  * Fix OS X path name to executable when SPACE chars are in path name
+  * Fix Flex serial interface problem
+  * rigCAT metering
+    Change to allow multiple scale points in both Smeter and Power
+    meter OS X autostart Fix crash if autostart file name points
+    to a non existent folder
+  * RigCAT i/o
+    - Fix missing mutex's on sendCommand
+    - Modified SCU-17 stop bit fix; DCB.stopbits must be 0 on 2nd port
+  * XMLRPC rx stream
+    - Correct missing CW rx stream characters to xmlrpc rx.get_data call
+  * RX text paste
+    -  Add code to disallow pasting text into the Rx text widget
+  * FSQ triggers add mycall test for FSQ triggers FSQ image
+    - fix fsq tone deafness after receiving image
+
+-------------------------------------------------------------------
+Sun Jul  9 13:37:20 UTC 2017 - mardnh@gmx.de
+
+- Update to version 4.0.7:
+  * Add SCU-17 select for separate serial port PTT.
+    SCU-17 second COM port requires stop bits to be set
+    to ZERO, or the Windows driver fails to give access
+    to the DTR / RTS controls.
+  * bindUDP
+  * Issue with bindUDP using IPv6 calls
+
+-------------------------------------------------------------------
+Mon Jun 26 12:49:09 UTC 2017 - mardnh@gmx.de
+
+- Update to version 4.0.6:
+  * flmsg alert - added enabled test
+  * Time Macros - Corrected <LT> format string
+  * Require PortAudio - fail compilation if portaudio not detected
+  * documentation update
+
+-------------------------------------------------------------------
+Wed Jun 21 11:38:18 UTC 2017 - mardnh@gmx.de
+
+- Update to version 4.0.5:
+  * Change to support IPv6 sockets
+  * PTT selectable on N3FJP interface 
+  * Selection of full/half duplex audio interface
+  * Macro and audio alerts enabled for FSQ modem
+  * Audio alerts for pre and user defined events
+  * Added warning dialog to Restore configuration button
+  * CW user selectable squelch attack/decay
+  * CW Extended UTF-8 Morse characters
+- Remove patch:
+  - fldigi-license.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Tue Jun 13 10:38:54 UTC 2017 - mpluskal@suse.com
+
+- Update to version 4.0.4:
+  * cw scanner
+    + adds multi signal scanner / browser
+    + Sound Card
+      + keep input and output sound card devices open for duration
+        of fldigi execution
+      + Corrected tune output device
+    + Changed tune, wfid, video and cw-id to use tx offset
+  * CW QSY
+    + Correct QSY when transceiver in CW and CW-R type modes
+  * CALL field size
+    + Increased CALL, OP_CALL, STA_CALL from 15 to 30 chars
+  * LOG area controls
+    + Resize controls to add County entry control.  Allow user
+      to select which extra qso field is displayed; country or
+      county.
+
+-------------------------------------------------------------------
+Tue Jun 13 10:06:51 UTC 2017 - mpluskal@suse.com
+
+- Add fldigi-license.patch to fix obvious typo in license
+
+-------------------------------------------------------------------
+Sun May  7 23:34:07 UTC 2017 - jengelh@inai.de
+
+- Strip redundant parts from description.
+
+-------------------------------------------------------------------
+Wed May  3 19:04:34 UTC 2017 - mardnh@gmx.de
+
+- Update to version 4.0.3
+  + OS X Wizard
+  + cw decoder
+  + CW wait
+
+-------------------------------------------------------------------
+Mon Apr 24 13:48:28 UTC 2017 - mpluskal@suse.com
+
+- Split lang subpackage
+- Add dekstop file scriplets
+
+-------------------------------------------------------------------
+Sun Apr 16 15:19:11 UTC 2017 - mardnh@gmx.de
+
+- Fix Url
+- Use pkgconfig-style for BuildRequires
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Sat Apr 15 07:38:48 UTC 2017 - dl8fcl@darc.de
+
+- update to version 4.0.2
+  see readme.txt
+
+-------------------------------------------------------------------
+Tue Mar 28 17:21:51 UTC 2017 - dl8fcl@darc.de
+
+- update to version 4.0.1
+  see readme.txt
+
+-------------------------------------------------------------------
+Mon Jan 30 21:25:59 UTC 2017 - dl8fcl@darc.de
+
+- update to version 3.23.21 - Maintenance release
+  see readme.txt
+
+-------------------------------------------------------------------
+Tue Jan 10 23:08:30 UTC 2017 - dl8fcl@darc.de
+
+- update to version 3.23.20 - Maintenance release
+  see readme.txt
+
+-------------------------------------------------------------------
+Sat Dec 24 21:23:48 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 3.23.19 - Maintenance release
+  see readme.txt
+
+-------------------------------------------------------------------
+Tue Dec 13 16:07:30 UTC 2016 - dl8fcl@darc.de
+
+- update to version 3.23.18 - Maintenance release
+  see readme.txt
+
+-------------------------------------------------------------------
+Thu Dec  8 16:53:26 UTC 2016 - dl8fcl@darc.de
+
+- update to version 3.23.17 - Maintenance release
+  see readme.txt
+
+-------------------------------------------------------------------
+Mon Nov  7 22:56:16 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 3.23.15 - Maintenance release
+  see readme.txt
+
+-------------------------------------------------------------------
+Sun Sep 18 17:47:37 UTC 2016 - dl8fcl@darc.de
+
+- update to version 3.23.14 - Maintenance release
+  see readme.txt
+
+-------------------------------------------------------------------
+Sun Aug  7 12:04:56 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 3.23.13 - Maintenance release
+  see readme.txt
+
+-------------------------------------------------------------------
+Sat Jun 25 07:53:46 UTC 2016 - dl8fcl@darc.de
+
+- update to version 3.23.12 - Maintenance release
+  update to Polish translation file, pl.po
+  xmlrpc add_tx
+    * restored original text.add_tx
+    * added text.add_tx_queu to add text to hidden
+      transmit queu ... used with flmsg arq
+  mfsk xmt filter
+    * disabled mfsk xmt filter
+  FSQ msg append
+    * Add configuration item to allow user to select
+      "always append" when saving a # directive message
+  FSQ IFKP heard lists
+    * Correct FSQ rxtext parsing for heard discovery
+    * Change management of heard list for both FSQ and IFKP
+  waterfall group
+    * remove +2 from waterfall group height
+  thor image
+    * repaired send image button function
+  RxID button
+    * set startup color
+-------------------------------------------------------------------
+Mon Jun 13 08:56:04 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 3.23.11 - Maintenance release
+  A lot of bug fixes and improvements - see ChangeLog
+
+-------------------------------------------------------------------
+Tue May 31 22:38:13 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 3.23.10 - Maintenance release
+  A lot of bug fixes and improvements - see ChangeLog
+  
+-------------------------------------------------------------------
+Mon Apr  4 19:27:48 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 3.23.09 - Maintenance release
+  FSQ variable Rx
+    * Enable FSQ variable RX
+    * Enable allcall(#) menu item for sending file to allcall
+  Export ADIF_NAME
+    * added FLDIGI_MODEM_ADIF_NAME export variable to environment exports.
+  WF only
+    * correct for missing reference to power level control
+  DnD Image
+    * Add Dnd Image to TX panel
+      - applies to MFSK, IFKP and THOR image transfers
+      - allows operator to insert image processing into TX text stream
+      - drag-drop image from system file viewer to TX text panel
+      - updated specific modem documentation
+  Documentation
+    * Correct 'M>' to 'Store' in description of the Store button
+    * Amend help file for the frequencies list usage
+  Frequencies2 use string
+    * added use descriptor string to frequencies2 list
+  About
+    * update developer list
+  View noise
+    * send signal / noise composite audio to waterfall during transmit
+      - valid when using --noise command line parameter
+  Sanitize tile_x, tile_y startup values
+    * Fixes: LP: #1478358
+      - https://bugs.launchpad.net/ubuntu/+source/fldigi/+bug/1478358
+        "fldigi 3.22.13 crashes on start-up when tile_x is large"
+      - also applies to 3.23.xx branch
+      - this fix prevents a user from editing the fldigi.prefs file
+        with out of range values.
+  NAVTEX update
+    * change the distance between early, prompt, and
+      late accumulators to be an integer number of samples.
+    * noise and QSB processing
+      - average the accumulator values over a longer time period
+      - tighten bit tracking feedback loop
+        .signal lock takes a little longer
+    * make the AFC window a little wider to deal with some signals.
+    * instead of requiring 5 consecutive correct characters
+      to start decoding, store a stream of bit confidence values and
+      require 9 good ones out of 14 total. FEC can take care of the rest.
+    * add FEC calculations to do single bit permutations on
+      bad characters, flipping the bit with the lowest confidence value.
+    * code cleanup - remove unused variables.
+  RxID enhancement
+    * Add right click pop-up menu
+      - PASSBAND - check box ON/OFF
+    * Color code ON illumination for
+      PASSBAND ON/OFF
+  TX timer
+    * Added TX timer display to the menu bar
+  rigcat mod
+    * Add min, max settings for pwr control
+    * Add testing mode if no xcvr serial port available
+    * Made opMODE and opBW combo controls readonly
+      - pull down values can only be added and not inserted
+    * Added debugging tags to xml definitions:
+      - <NOSERIAL>true/false</NOSERIAL> - default false
+        suppress all serial port i/o
+      - <ASCII>true/false</ASCII> - default false
+        if true, print all CAT i/o events as ASCII strings
+        if false, print all CAT i/o events as HEX sequences
+    * Added polling for pwr level query
+  PSK IMD
+    * add IMD generator
+    * modified IMD computation for continuous operation
+      vice only during DCD
+
+-------------------------------------------------------------------
+Thu Feb 25 19:40:03 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 3.23.08 - Maintenance release
+
+  NAVTEX update
+    * low pass mark & space individually
+    * Use ATC and fft-filters adapted from RTTY modem
+    * Correct display metric
+    * Widen afc filter for 'jump 90 Hz' code
+    * Use exact bit length
+    * Calculated sync modification
+    * see src/navtex/navtex.cxx for design analysis
+
+  Save Logbook
+    * Change system dialog invoked when saving logbook to
+      system save-as vice save.
+
+  Analysis mode
+    * Restore <CSV:on, <CSV:off, <CSV:t(oggle)
+
+  flrig PTT
+    * All user to select whether flrig PTT change triggers
+      RX/TX change in modem stata
+
+  flrig waiting
+    * Changed event recording level for
+      "Waiting for flrig" from INFO to VERBOSE
+
+  COM port close
+    * change effects the Windows COM port close process
+      - rigCAT startup process no longer dependent on order, xcvr
+        can be started before or after fldigi is running.  Tested
+        by Haris, SV1GRB.
+
+  Mac Logger
+    * Added UDP interface to read data exported by MacLogger
+      - UDP data stream on socket 255.255.255.255 / 9932
+      - User configurable items:
+        . enable/disable UDP socket reads
+        . Capture and use UDP Radio Report data
+        . Capture and use UDP Spot Tune data
+        . Capture and use UDP Spot Report data
+        . Capture and use UDP Log Report data
+        . Capture and use UDP Lookup Report data
+        . Enable UDP string capture to file
+          file in fldigi files/temp folder
+          filename: maclogger_udp_strings.txt
+    * Added <signal.h> to threads.h to avoid missing reference
+      to sigemptyset in some gcc installs
+
+  fsq repeat last
+    * test for empty list of previous command
+
+  GCC 6 build
+    * GCC 6 defaults to -std=gnu++14, and attempting to build fldigi fails
+      with a number of errors. One is that C++11 added std::next and so
+      because of the "using namespace std" in src/fsq/fsq.cxx the global
+      variable 'next' and std::next are ambiguous. That can be easily solved
+      by qualifying ::next or adding using ::next at function scope.
+    * The other errors are due to the different return type for
+      std::complex<T>::real() and std::complex<T>::imag() in C++11 and
+      later.
+
+  CALL capture
+    * add copy call to clipboard when capturing from Rx text
+
+  Scope View
+    * Corrected saved position/size status values
+
+  RigCAT modifications
+    * Separated no xcvr functions from rigcat loop operation
+    * Corrected hamlib start/stop process to prevent
+      lockup when xcvr is not responding to CAT commands
+      - hamlib still creates a zombie process when trying to access
+        a bogus serial interface such as a bell modem
+    * Added string / hex data LOG view
+      <LOGSTR>true/false</LOGSTR>
+    * Added variable loop timing
+      <POLLINT>100...20000</POLLINT>
+      default 100 msec
+    * Corrected use of BW-REPLY and MODE-REPLY in xml def file
+    * Added ability to read and display Smeter and Pwr meter
+    * Added debugging statements to exit functions
+    * Fixed aberrant save frequencies2.txt file behavior
+    * Added manual notch read/write using waterfall
+      notch filter interface
+    * Added power level control for xcvrs with that CAT command
+      - set power level also used for logging
+    * Updated tutorial on transceiver xml definition file structure.
+    * Added <VERBOSE>bool</VERBOSE> specifier
+      - use during development of an xml file
+
+-------------------------------------------------------------------
+Sat Feb  6 19:47:28 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 3.23.07 - Maintenance release
+    Exit delays
+      * thread shut down processes to provide additional logging info
+      * speed up shut down process
+
+    Contest fields
+      * Adjust width of exchange in logging field
+
+    OS-X start_process
+      * Add App recognition
+
+    LOG RECORD exports
+      * Added these log entry variables to the export environment list
+        - FLDIGI_LOG_STATE
+        - FLDIGI_LOG_COUNTRY
+        - FLDIGI_LOG_SERNO_IN
+        - FLDIGI_LOG_SERNO_OUT
+        - FLDIGI_XCHG_IN
+        - FLDIGI_XCHG_OUT
+        - FLDIGI_VE_PROV
+      * Added LOGBOOK log entry variables to the export environment list
+        - FLDIGI_LOGBOOK_CALL
+        - FLDIGI_LOGBOOK_NAME
+        - FLDIGI_LOGBOOK_DATE
+        - FLDIGI_LOGBOOK_TIME_ON
+        - FLDIGI_LOGBOOK_DATE_OFF
+        - FLDIGI_LOGBOOK_TIME_OFF
+        - FLDIGI_LOGBOOK_RST_IN
+        - FLDIGI_LOGBOOK_RST_OUT
+        - FLDIGI_LOGBOOK_FREQUENCY
+        - FLDIGI_LOGBOOK_MODE
+        - FLDIGI_LOGBOOK_STATE
+        - FLDIGI_LOGBOOK_VE_PROV
+        - FLDIGI_LOGBOOK_COUNTRY
+        - FLDIGI_LOGBOOK_SERNO_IN
+        - FLDIGI_LOGBOOK_SERNO_OUT
+        - FLDIGI_LOGBOOK_XCHG_IN
+        - FLDIGI_LOGBOOK_XCHG_OUT
+        - FLDIGI_LOGBOOK_QTH
+        - FLDIGI_LOGBOOK_LOCATOR
+        - FLDIGI_LOGBOOK_QSL_R
+        - FLDIGI_LOGBOOK_QSL_S
+        - FLDIGI_LOGBOOK_NOTES
+        - FLDIGI_LOGBOOK_TX_PWR
+        - FLDIGI_LOGBOOK_COUNTY
+        - FLDIGI_LOGBOOK_IOTA
+        - FLDIGI_LOGBOOK_DXCC
+        - FLDIGI_LOGBOOK_QSL_VIA
+        - FLDIGI_LOGBOOK_CONTINENT
+        - FLDIGI_LOGBOOK_CQZ
+        - FLDIGI_LOGBOOK_ITUZ
+      * Enable temp/log.adif for all OS, was just WIN and OS X
+
+    HAMLIB CW RTTY
+      * provide selectable sideband sense selection for CW and RTTY
+
+    PSKR metric
+      * Fixed erroneous metric computation when received signal is zero
+        - error apparant when testing with CODEC that has no applied audio
+        - bug report by Per Crusfalk, SM0RWO
+
+    PSKR/8
+      * Fix segfault if starting pskbrowser in any of the pskr or 8psk modes
+
+    Audio adjust
+      * Added Tx/Rx audio adjustment details
+
+    WEB query
+      * Moved URL strings for various web call sign queries to progdefaults
+        configuration.
+        - updated hamqth to https address for browser lookup
+
+    Mode Set
+      * Changed mode_set logic to use std::string vice null terminated C string
+      * Changed modes to size NUM_MODES vice NUM_RXTX_MODES.
+
+    Tab key docs
+      * Added illustration and emended text describing Tab key operation
+        in the Tx text buffer.
+
+    hamlib PTT_ON_DATA
+      * changed PTT_ON to PTT_ON_DATA in call rig_set_ptt
+
+    Macro Tool Bar
+      * Correct edit / launch behavior of 4 row toolbar
+        - removed dependency on 2 bar selection of alternate
+          macro set
+
+    XmlRpc client update
+      * Corrected passing hi/lo cutoff values for supported transceivers
+        such as the TS2000.
+      * Added macro tags <RIGLO:nnnn>  <RIGHI:nnnn> which make flrig requests
+        to respectively set the lo-cut and hi-cut transceiver DSP filter settings.
+      * Added get_sideband xmlrpc call to modified flrig
+
+    Log Notes
+      * Added control for user selection of clearing/retaining data in
+        notes field after remote database query.
+
+    Misc Updates
+      * correct WF hesitation when processing post Tx macros
+      * remove xmlrpc_rig ptt transition waiting from main loop
+      * correct WF hesitation when transmitting MT63 start tones
+      * added CTRL-nnn numeric sequence character entry to Fl_Input2
+        class.  Allows direct entry of characters such as ñ in
+        QSO fields, macro editor, etc.
+      * added new menu items to FTextEdit and Fl_Input2 widgets
+        - allow user to select UTF-8 special characters from
+          pop-up menu (right click in widget).  This effects
+          TX text widgets and all data entry controls which use
+          the Fl_Input2 widget.
+
+    Set Frequency
+      * Added code to update waterfall when changing vfo frequency
+        from fldigi / flrig
+
+    Rx SaveAs
+      * correct Rx panel "Save text as..." end-of-line sequence
+-------------------------------------------------------------------
+Fri Dec 11 09:35:42 UTC 2015 - dl8fcl@darc.de
+
+- update to version 3.23.06
+  * give priority to flrig xmlrpc support independent of any other
+    configuration setting for rig control - dependent on fldigi
+    detecting an flrig compatible xmlrpc
+  * add test for xcvr response loop to set_ptt
+  * added XMLRPC_DEBUG with time signature Waterfall only
+  * fix segmentation fault introduced by addition of 4x12 macro matrix
+  * Added resize methods to both classes; corrects displaced smeter
+    and power meter
+  * update of documentation 
+
+-------------------------------------------------------------------
+Mon Nov 23 23:27:55 UTC 2015 - dl8fcl@t-online.de
+
+- update to version 3.23.05
+  * disabled kml services unless user enables on kml configuration
+    tab. default is ON
+  * add dockable macros in a 4x12 matrix
+    - provides access to all 48 macros.
+    - group of 48 can be dragged to/from it's default position
+      just below the main menu bar
+  * change vertical raster height to 20 vice 60
+    - decreased minimum vertical main dialog dimension for small
+      netbook screens
+  * update to documentation
+  * Add code to allow on the fly correction of corrupt ADIF records
+    during file read.
+  * Added gpio support for PTT.
+    - used primarily by Pi experimenters
+    - submitted by Lior, KK6KWA
+  * suppress info messages during prog start
+    - prodigiuous use of LOG_INFO increases difficulty of
+      debugging other aspects of fldigi
+    - enable the INFO messages for debugging or to observe
+      program flow by setting command line flag
+      -more-info ; case is significant
+  * Lowered CPU requirements to allow for use on Android/Netbook devices:
+    - Added modes 125FL and 250FL with constraint length 13 FEC
+    - Adjusted maximum traceback memory for viterbi decoder
+    - Set traceback to an optimally-high value in viterbi.cxx constructor
+    - 8PSK - 500F 1000F & 1200F now use only 1 viterbi decoder without voting
+    - Assigned secondary RsID codes to 125FL and 250FL.
+
+-------------------------------------------------------------------
+Thu Oct 15 19:58:20 UTC 2015 - dl8fcl@darc.de
+
+- update to version 3.23.04 - Maintenance release
+  * Corrected implementation of CW filter bandwidth
+  * add image transfer to thor based on IFKP image processing
+    - supported by THOR-11, THOR-16 and THOR-22
+    - image modes are identical to IFKP images, fixed sizes and avatar
+  * change update check location to Source Forge
+  * change merge behavior when parsing unknown field name
+
+-------------------------------------------------------------------
+Thu Oct  1 09:14:46 UTC 2015 - dl8fcl@darc.de
+
+- update to version 3.23.03 - Maintenance release
+  * Fix for FSQ trigger decode bug introduced by multiple
+    directed station parsing
+
+-------------------------------------------------------------------
+Sun Sep 27 21:16:35 UTC 2015 - dl8fcl@darc.de
+
+- update to version 3.23.02 - Maintenance release
+  FSQ updates
+      * added cqcqcq button
+        - casual users do not know to send cqcqcq vice
+          cq cq cq
+      * Updated on-line help
+      * Increased allowable intervals for both sounder
+        and heard-aging
+      * Corrected repeated sounder to re-enable retries
+        after a successful sounding.
+        - sounder will wait until rx/tx state is RX
+        - if Rx squelch is open then sounder will retry
+          in 10 seconds.  Retry is repeated 10x before
+          sounding is rescheduled for next interval.
+      * Corrected text parser to accept multiple directed calls
+        - w1hkj:efk2lbm w3fqn ka2cbc good morning all
+          will now correctly accept k2lbm, w3fqn and ka2cbc as
+          directed and display correctly in Rx text panel
+  Other updates
+      *  Add definable delay to allow serial devices based
+         on Arduino to not lock up in programming mode.
+      * Run asciidoc with TZ=0 to make the footer datestamp independent of
+        the build machine's timezone (for reproducible builds).
+
+-------------------------------------------------------------------
+Tue Sep 22 22:14:10 UTC 2015 - dl8fcl@darc.de
+
+- update to version 3.23.01 - Maintenance release
+      * WX configure: corrected inchs mercury to Hg vice Mg
+      * fixes for wfall-only operation (N1MM)
+      * ifkp avatar: Added code to support variable image depth
+        in png source file
+      * correct bug in slant correction code of ifkp
+      * Change read log routine
+        - file read a line at a time vice entire image into RAM
+
+-------------------------------------------------------------------
+Sun Sep 20 21:00:06 UTC 2015 - dl8fcl@darc.de
+
+update to version 3.23 - Major revison release
+      * clear entire Tx panel when executing a ^r or ^R sequence.
+      * add ability to disable start/stop tones in Olivia and
+        Contestia
+      * fix timer seg fault when Tx contains trash text
+      * Incremental Frequency Keyed + modem
+        - wide band, moderate speed differential MFSK signal
+          with offset +1.
+        - sample rate 16000
+        - symbol length 4096
+        - 33 tones spaced 3xSR/symlen apart approximately 398 Hz
+          bandwidth.
+        - multiple image transfer formats similar to FSQ
+          . Avatar (59x74 WxH pixel) image transfers
+        - tunable modem subcarrier (center freq)
+          . may be configured fixed at 1500 Hz or
+          . set to Psk sweet spot
+        - raw data received written to audit log - if enabled
+        - heard list entries written to heard log - if enbled
+        - assigned fldigi secondary RSID code, (56, 1171)
+      * Added @WAIT macro
+      * Added disable macro timer when changing modems
+      * WEFAX rx becomes unresponsive when writing to INFO log
+      * code changes for update to mxe suite
+      * Changed qsorec data store to an arrary of string pointers
+        vice an array of strings.
+        - new mxe implementation string handler changes from standard
+      * change to "rb" for correct reading of logbook file
+        - do not allow M$ to make changes to CR/LF counts
+      * Add recognition of flrig LSB modes
+        - adjust waterfall for LSB
+        - correct logging frequency for LSB
+    FSQ updates
+      * Fix copy all on heard list
+      * change default color scheme as requested by ZL1BPU
+        - added user configuration items for RX text colors
+      * remove "MONITOR" text from RX panel as requested by ZL1BPU
+      * added fsq tx text queue to handle case when user
+        tries to force a second transmit sequence when modem
+        is already in TX state.
+      * last_command updated to include both queued and transmitted
+        text string.
+        - allows recall of queued command even if transmit timed out
+      * last_command changed to a stack of commands
+        - allows recall of up to last 10 commands
+        - each press of F2 recalls one deeper in stack
+        - rotates back to beginning after recall of most ancient
+      * add call to logbook using right click on heard entry
+      * Fix erroneous date in audit log when fsq is default
+        modem during program start
+        - change format of date entry to make it easier to
+          find when reviewing the log.
+      * Added video text at beginning of transmit
+        - also adds ability to transmit pretone
+          for amplifier carrier detect
+          for FM repeater operation
+      * Add code to force center frequency to 1500
+        when switching from another modem
+      * Fix to avoid time out errors
+      * Macintosh OSX thread management
+        - submitted by KK5VD
+        - Ensure FSQ TX routines are called in the main thread.
+
+-------------------------------------------------------------------
+Tue Jul 21 21:27:29 UTC 2015 - dl8fcl@darc.de
+
+- update to version 3.22.13 - maintenance/bug-fix release
+  FSQ bug fixs
+  * Fixed error in parsing returned heard list
+  * Fixed save filename for # trigger
+    - filename was not being saved with the .txt extension
+    - append existing file
+  * Changed time out processing of delayed response
+    - added user configuration item for time out duration
+  XMLRPC commands
+  * Corrected interface values for
+    - main.get_char_timing
+    - main.get_tx_timing
+  * Added following to xmlrpc struct
+    - log.set_rst_in
+    - log.set_rst_out
+  * Added rig.get_frequency (d:n)
+  * Deprecated main.get_frequency
+
+-------------------------------------------------------------------
+Sat Jul 18 14:28:01 UTC 2015 - dl8fcl@darc.de
+
+- update to version 3.22.12 - maintenance/bug-fix release
+  FSQ heard parser, added more restrictive discovery of heard callsign
+  - must pass crc8 comparison
+  - must pass regular expression test for callsign
+
+-------------------------------------------------------------------
+Thu Jul 16 23:33:19 UTC 2015 - dl8fcl@darc.de
+
+- update to version 3.22.11 - maintenance/bug-fix release
+  * added FSQCALL(US) compatible modem
+  * corrected code-page 1250 Latin-1 extended character keyboard
+    entry to UTF-8 strings
+  * fix raise window problem when mouse passes over the freq
+    control
+  * fixed bug in exit procedure.  program failed to exit gracefully
+    if TRX_STATE was RECEIVE
+  * update to the interface for flrig control/query via xmlrpc
+
+-------------------------------------------------------------------
+Mon Jun  1 21:02:22 UTC 2015 - dl8fcl@darc.de
+
+- update to version 3.22.10 - maintenance/bug-fix release
+  FTextView styles bug - Corrected order of calling reset_styles
+  to prevent calling resize with an improperly initialized styles
+  table
+
+-------------------------------------------------------------------
+Sat May 30 23:20:19 UTC 2015 - dl8fcl@darc.de
+
+- update to version 3.22.09 - maintenance/bug-fix release
+  Fl_Text_Display, Avoid calling resize() too early
+
+-------------------------------------------------------------------
+Tue Apr 28 00:33:53 UTC 2015 - dl8fcl@darc.de
+
+- update to version 3.22.08 - maintenance release
+  requires libflxmlrpc
+
+-------------------------------------------------------------------
+Fri Apr  3 09:40:08 UTC 2015 - dl8fcl@darc.de
+
+- update to version 3.22.07 - maintenance release
+
+-------------------------------------------------------------------
+Tue Mar 24 20:46:32 UTC 2015 - dl8fcl@darc.de
+
+- update to version 3.22.06 - maintenance release
+
+-------------------------------------------------------------------
+Sat Jan 10 21:02:39 UTC 2015 - dl8fcl@darc.de
+
+- update to version 3.22.05 - maintenance release
+
+-------------------------------------------------------------------
+Fri Dec 26 20:03:31 UTC 2014 - dl8fcl@darc.de
+
+- update to version 3.22.04 - bugfix realease
+
+-------------------------------------------------------------------
+Wed Dec 10 23:31:19 UTC 2014 - dl8fcl@darc.de
+
+- update to version 3.22.02 - bugfix realease
+
+-------------------------------------------------------------------
+Tue Oct 21 07:24:27 UTC 2014 - dl8fcl@darc.de
+
+- update to version 3.22.01 - bugfix realease
+
+-------------------------------------------------------------------
+Thu Oct 16 07:50:59 UTC 2014 - dl8fcl@darc.de
+
+- update to version 3.22.00 - major update
+
+-------------------------------------------------------------------
+Mon Jun 30 18:50:58 UTC 2014 - dl8fcl@darc.de
+
+- update to version 3.21.83, Maintenance release
+      * Add user and programmer documentation
+      * send STX, 0x02, signal when ARQ command to
+        change modem is completed.
+      * Added /opt/vttySn usage for Linux
+        - create a linked name to a virtual port (socat)
+          with link defined as /opt/vttyS0 ...
+      * Changed defaults for new user to force
+        - confirm exit, save configuration & macros on first use
+        - prompt dialogs thereafter until user changes
+          configuration dialog selections
+        - added UI configuration to new install Wizard
+
+-------------------------------------------------------------------
+Thu May  1 23:43:30 UTC 2014 - dl8fcl@darc.de
+
+- update to version 3.21.82, Maintenance release
+  hash-fix
+    * fix compile warning on gcc post 4.5
+  RnA Analysis
+    * Change signal analysis mode to use DFT processing
+      to determine best estimate of signal frequency
+    * Moved freqanalysis.csv file to temp
+      - changed name to analysis.csv
+    * Resetting the WF frequency cursor deletes the analysis.csv
+      file and restarts recording
+    * Added macro control tag <CSV:on|off|t>
+      - off - deletes file analysis.csv
+      - on  - starts recording of analysis.csv
+      - t (toggle) - changes on/off state of recording
+  Phase accumulator
+    * Corrected phase accumulator limits in cw, feld,
+      dominoex and thor modems.
+  Base Directories
+    * Added FL_APPS directory recognition for placement
+      of fldigi.files, NBEMS.files.
+      - Linux : Changed from .fldigi to fldigi.files
+      - Linux : Changed from .nbems to NBEMS.files
+        includes programmatic change of existing directory
+        names.
+  WF Height/Speed
+    * Increase max height to 500 pixels
+    * Added control to select the SLOW drop speed
+      factor.
+    * Modified startup / resize code to avoid out-of-range
+      resizing of critical widgets.
+  RX Only
+    * Added new xmlrpc commands
+      - main.rx_only : Disables Tx.
+      - main.rx_tx : Enables normal Rx/Tx operation
+    * Added command line parameter --read-only; --ro
+  RTTY mem leak
+    * Closed minor memory leak in rtty.cxx, memory leak
+      occured when
+      - application closed or
+      - baud rate / shift was changed
+  Olivia/Contestia custom
+    * Fixed indexing error in
+      - set_olivia_bw, set_olivia_tones
+      - set_contestia_bw, set_contestia_tones
+      effects setting custom tones/bw from either
+      macro or xmlrpc command string
+  ARQ abort
+    * Correct mutex deadlock during <cmd>abort</cmd> processing
+  RTTY Custom Shift
+    * Fixed custom shift selection
+
+-------------------------------------------------------------------
+Mon Mar 31 08:28:49 UTC 2014 - dl8fcl@darc.de
+
+- update to version 3.21.81, Maintenance release
+    Spotter seg fault
+      * bug fix to pskrep
+    TX monitor
+      * change default state of Tx Monitor to TRUE
+      * change default level of Tx Monitor to 0.2
+    Audio selectors for PORTAUDIO
+      * correct ListBox offset in configuration panel
+    M4 tr1 detect
+      * add hash.m4 and supporting source code
+    ttyACMxx identification
+      * Added ttyACMxx USB serial port identification to serial
+        port search.
+    Olivia critical section
+      * added critical section coding to protect encode/decode
+        processing
+    MT63 critical section
+      * re-entrancy issue
+        - must guard against changing processing parameters
+          during encode/decode
+    Logbook fields
+      * Modified ordering of fields to prevent wrong
+        lookup of fields associated with STX_STRING and
+        SRX_STRING, the contest exchange fields
+    Hamlib selector
+      * Change from Combobox to Listbox
+    Combobox
+      * add to list when user enters a value
+    RTTY macro
+      * corrected width/baud/bits setting from macro tag 
+
+-------------------------------------------------------------------
+Fri Mar 21 20:33:45 UTC 2014 - dl8fcl@darc.de
+
+- update to version 3.21.80, Maintenance release 
+    clang compatibility
+      * correct istream return value
+      * move tr1 to std
+    FreeBSD nitems
+      * Collision between Fltk-3.0 and FreeBSD system corrected
+       in associated fluid definition file.
+    Cabrillo time off
+      * Limit to HHMM.  Logbook records to HHMMSS
+    Change Fl_ListBox
+      * Change to Fl_ComboBox for various controls
+        which may require user entry.
+    Restore Fl_Choice
+      * Sound card device selection
+    Olivia select fix
+    fluid update
+      * Prepare confdialog.fl for KISS implementation
+    ComboBox
+      * remove readonly attribute for input contol
+
+-------------------------------------------------------------------
+Tue Mar 11 20:34:53 UTC 2014 - dl8fcl@darc.de
+
+- update to version 3.21.79, Maintenance release
+    RigCAT initialize
+      * Add additional wait delays to accomodate transceivers
+        and virtual serial devices that measure baudrate
+      * Fixed flmsg/flnet correspondence bug
+    Modem cleanup
+      * Fixed a/d range issue with tx attenuator
+    Choice-->ListBox
+      * Changed all instances of Fl_Choice and Fl_Input_Choice
+        to Fl_ListBox.
+        - old Fl_Choice objects renamed to listbox_xxx
+        - old Fl_Input_Choice objects renamed to i_listbox_xxx
+        - Note that i_listbox_xxx objects need indexing offset
+          to maintain compatability with progdefaults definitions.
+        - New objects should use listbox_xxx naming convention.
+        - This removes a rather ugly Fltk widget.  Fltk does not
+          have a native ComboBox or ListBox widget.
+    combobox-listbox
+      * Update to combobox, Fl_ComboBox
+      * Addition of listbox, Fl_ListBox
+    RTTY normalize
+      * Added code to normalize generated RTTY signal to
+        maximum allowable signal amplitude
+      * Added code to hard limit output signal to range of
+        +/- 1.0
+    Portaudio ring buffer
+      * Increased size of portaudio ring buffer.
+        Problem reported by Simon Gander, "I recently found
+        out that the THROB1 and THROBX1 modes don't work
+        correctly under certain circumstances. The pulses are
+        too short and get cut off at the end, which in turn also
+        causes the baudrate to be too high. I found out that I
+        could fix the problem by increasing the size of the ring
+        buffer in the SoundPort class.
+    Portaudio error reporting
+      * added code to provide addition details for
+        portaudio failures
+
+-------------------------------------------------------------------
+Tue Feb  4 19:18:46 UTC 2014 - dl8fcl@darc.de
+
+- update to version 3.21.78, Maintenance release 
+
+-------------------------------------------------------------------
+Wed Oct 30 20:44:03 UTC 2013 - dl8fcl@darc.de
+
+- update to version 3.21.77, Maintenance release
+
+-------------------------------------------------------------------
+Sat Sep 14 19:59:50 UTC 2013 - dl8fcl@darc.de
+
+- update to version 3.21.76, Maintenance release
+
+-------------------------------------------------------------------
+Tue Sep  3 07:02:17 UTC 2013 - dl8fcl@darc.de
+
+- update to version 3.21.75, Maintenance release
+  Important update to RSID detector
+
+-------------------------------------------------------------------
+Sun Aug 18 09:30:01 UTC 2013 - dl8fcl@darc.de
+
+- update to version 3.21.74, Maintenance release
+
+-------------------------------------------------------------------
+Mon Jul 29 22:09:43 UTC 2013 - dl8fcl@darc.de
+
+- update to version 3.21.73, Maintenance release 
+
+-------------------------------------------------------------------
+Fri May 17 20:28:14 UTC 2013 - dl8fcl@darc.de
+
+- update to version 3.21.72, Maintenance release
+  changes in PSKMAIL, RsID Timeout, Colors/Fonts Dialog
+
+-------------------------------------------------------------------
+Thu May  9 05:09:02 UTC 2013 - dl8fcl@darc.de
+
+- update to version 3.21.71, Maintenance release
+  Changed ARQ server / client management.
+  Wavefile generate, MT63 mode selection,
+  Signal Browser Colors, QRZ query, Rigsupport,
+  eQSL url, PSKMAIL
+  xmlrpc-c replaced by embedded xmlprcpp
+  PO file update
+  
+-------------------------------------------------------------------
+Sun Apr 14 20:08:05 UTC 2013 - dl8fcl@darc.de
+
+- update to version 3.21.70
+  Contestia/Olivia
+  * Quick change / custom dialog
+  * Corrected Contestia callback in confdialog.fl
+  * Corrected resetOLIVIA function  
+
+-------------------------------------------------------------------
+Sat Feb  9 20:18:21 UTC 2013 - dl8fcl@darc.de
+
+- update to version 3.21.68, bug fix 
+
+-------------------------------------------------------------------
+Fri Feb  1 19:44:47 UTC 2013 - dl8fcl@darc.de
+
+- update to version 3.21.67, Maintenance release
+  RTTY FSK modem improved 
+
+-------------------------------------------------------------------
+Sun Jan 13 23:11:20 UTC 2013 - dl8fcl@darc.de
+
+- update to version 3.21.66, Maintenance release
+
+-------------------------------------------------------------------
+Tue Jan  1 15:41:44 UTC 2013 - dl8fcl@darc.de
+
+- update to version 3.21.65
+  New high speed and multi carrier modems added
+  Separate modem initialization for Olivia 
+  tone / bandwidth pairs added
+
+-------------------------------------------------------------------
+Wed Dec 26 19:09:36 UTC 2012 - dl8fcl@darc.de
+
+- update to version 3.21.64, Maintenance release 
+
+-------------------------------------------------------------------
+Wed Dec 12 21:24:39 UTC 2012 - dl8fcl@darc.de
+
+- update to version 3.21.63, Maintenance release 
+
+-------------------------------------------------------------------
+Mon Nov 26 21:39:48 UTC 2012 - dl8fcl@darc.de
+
+- update to version 3.21.62, Maintenance release 
+
+-------------------------------------------------------------------
+Sun Nov 18 23:24:19 UTC 2012 - dl8fcl@darc.de
+
+- update to version 3.21.61, Maintenance release 
+
+-------------------------------------------------------------------
+Mon Nov  5 21:55:15 UTC 2012 - dl8fcl@darc.de
+
+- update to version 3.21.60, Maintenance release 
+
+-------------------------------------------------------------------
+Wed Oct 31 23:48:46 UTC 2012 - dl8fcl@darc.de
+
+- update to version 3.21.59, Maintenance release 
+
+-------------------------------------------------------------------
+Tue Oct 23 20:11:44 UTC 2012 - dl8fcl@darc.de
+
+- update to version 3.21.58, Maintenance release 
+
+-------------------------------------------------------------------
+Sun Sep 23 16:52:06 UTC 2012 - dl8fcl@darc.de
+
+- update to version 3.21.52, Maintenance release 
+
+-------------------------------------------------------------------
+Mon Aug  6 21:19:49 UTC 2012 - dl8fcl@darc.de
+
+- update to version 3.21.50, Maintenance release 
+
+-------------------------------------------------------------------
+Sun Jul  8 19:07:13 UTC 2012 - dl8fcl@darc.de
+
+- update to version 3.21.49, Maintenance release
+
+-------------------------------------------------------------------
+Sat Jul  7 20:22:52 UTC 2012 - dl8fcl@darc.de
+
+- update to version 3.21.48, Maintenance release 
+
+-------------------------------------------------------------------
+Sat Jun 16 19:44:51 UTC 2012 - dl8fcl@darc.de
+
+- update to version 3.21.43, Maintenance release 
+
+-------------------------------------------------------------------
+Thu May 31 11:51:01 UTC 2012 - dl8fcl@darc.de
+
+- update to version 3.21.43 
+
+-------------------------------------------------------------------
+Tue Mar 27 21:47:27 UTC 2012 - dl8fcl@darc.de
+
+- update to version 3.21.41, Maintenance release 
+
+-------------------------------------------------------------------
+Sun Mar  4 17:26:12 UTC 2012 - dl8fcl@darc.de
+
+- update to version 3.21.40, Maintenance release 
+
+-------------------------------------------------------------------
+Fri Feb  3 21:36:31 UTC 2012 - dl8fcl@darc.de
+
+- update to version 3.21.38 
+
+-------------------------------------------------------------------
+Sun Jan 29 19:46:50 UTC 2012 - dl8fcl@darc.de
+
+- update to version 3.21.37, Maintenance release 
+
+-------------------------------------------------------------------
+Tue Jan 24 09:27:31 UTC 2012 - dl8fcl@darc.de
+
+- update to version 3.21.36, build with fltk-1.1.10 and fltk-1.3.0 
+
+-------------------------------------------------------------------
+Wed Dec 14 22:32:52 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.33 
+
+-------------------------------------------------------------------
+Wed Nov 30 08:05:48 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.30, log merging bug fixed 
+
+-------------------------------------------------------------------
+Wed Nov 23 22:37:50 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.28 
+
+-------------------------------------------------------------------
+Sun Nov 20 19:18:17 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.27 
+
+-------------------------------------------------------------------
+Tue Nov 15 06:30:17 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.26 
+
+-------------------------------------------------------------------
+Fri Nov 11 19:34:23 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.24 
+
+-------------------------------------------------------------------
+Thu Nov  3 19:31:15 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.23 
+
+-------------------------------------------------------------------
+Sat Oct 29 15:33:39 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.22 
+
+-------------------------------------------------------------------
+Mon Sep 26 10:27:17 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.15 
+
+-------------------------------------------------------------------
+Sun Sep  4 21:20:46 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.14 
+
+-------------------------------------------------------------------
+Mon Aug 22 12:01:59 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.13 
+
+-------------------------------------------------------------------
+Tue Jun 28 19:16:02 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.12 
+
+-------------------------------------------------------------------
+Wed Jun 15 21:55:27 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.11 
+
+-------------------------------------------------------------------
+Sat Jun  4 13:43:00 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.10 
+
+-------------------------------------------------------------------
+Wed Apr 20 17:44:09 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.9 
+
+-------------------------------------------------------------------
+Wed Apr  6 17:39:52 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.8 
+
+-------------------------------------------------------------------
+Mon Mar 21 07:31:50 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.7
+
+-------------------------------------------------------------------
+Wed Mar  9 22:37:53 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.5 
+
+-------------------------------------------------------------------
+Thu Mar  3 10:31:36 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.4 
+
+-------------------------------------------------------------------
+Tue Feb 22 05:30:05 UTC 2011 - dl8fcl@darc.de
+
+- update to version 3.21.3 
+
+-------------------------------------------------------------------
+Tue Dec 28 22:50:11 UTC 2010 - dl8fcl@darc.de
+
+- update to version 3.20.34 
+
+-------------------------------------------------------------------
+Sat Dec 25 09:39:49 UTC 2010 - dl8fcl@darc.de
+
+- update to version 3.20.33 
+
+-------------------------------------------------------------------
+Wed Dec  1 00:09:05 UTC 2010 - dl8fcl@darc.de
+
+- update to version 3.20.32 
+
+-------------------------------------------------------------------
+Fri Nov 26 22:28:35 UTC 2010 - dl8fcl@darc.de
+
+- update to version 3.20.30 
+
+-------------------------------------------------------------------
+Mon Nov  8 20:13:35 UTC 2010 - dl8fcl@darc.de
+
+- update to version 3.20.29 
+
+-------------------------------------------------------------------
+Tue Sep  7 15:43:48 UTC 2010 - dl8fcl@darc.de
+
+- update to version 3.20.28 
+
+-------------------------------------------------------------------
+Fri Sep  3 22:46:08 UTC 2010 - dl8fcl@darc.de
+
+- update to version 3.20.27 
+
+-------------------------------------------------------------------
+Tue Aug 31 16:06:54 UTC 2010 - dl8fcl@darc.de
+
+- update to version 3.20.26 
+
+-------------------------------------------------------------------
+Sat Aug 14 22:02:57 UTC 2010 - dl8fcl@darc.de
+
+- update to version 3.20.23 
+
+-------------------------------------------------------------------
+Thu Aug  5 15:06:27 UTC 2010 - dl8fcl@darc.de
+
+- update to version 3.20.22 
+
+-------------------------------------------------------------------
+Wed Jul 28 15:25:43 UTC 2010 - walter.fey@web.de
+
+- update to version 3.20.21 
+
+-------------------------------------------------------------------
+Sun Jul  4 20:44:21 UTC 2010 - dl8fcl@darc.de
+
+- update to version 3.20.19 
+
+-------------------------------------------------------------------
+Tue Jun 29 21:43:31 UTC 2010 - dl8fcl@darc.de
+
+- update to version 3.20.18
+
+-------------------------------------------------------------------
+Tue Jun 22 15:39:14 UTC 2010 - dl8fcl@darc.de
+
+- update to version 3.20.17 
+
+-------------------------------------------------------------------
+Wed Jun 16 13:12:44 UTC 2010 - dl8fcl@darc.de
+
+- update to version 3.20.16 
+
+-------------------------------------------------------------------
+Sun Jun 13 11:37:37 UTC 2010 - dl8fcl@darc.de
+
+- update to version 3.20.15 
+
+-------------------------------------------------------------------
+Mon Jun  7 14:14:04 UTC 2010 - dl8fcl@darc.de
+
+- update to version 3.20.13
+-------------------------------------------------------------------
+* Wed May 19 2010 - dl8fcl@darc.de
+- update to version 3.20.12
+* Mon May 3 2010 - dl8fcl@darc.de
+- update to version 3.20.11
+* Sun Nov 08 2009 - dl8fcl@darc.de
+- update to version 3.12.5
+* Mon Aug 17 2009 - dl8fcl@darc.de
+- update to version 3.12.4
+* Thu Jul 30 2009 - dl8fcl@darc.de
+- update to version 3.12.3
+* Fri Jul 24 2009 - dl8fcl@darc.de
+- update to version 3.12
+* Wed Jul 8 2009 - dl8fcl@darc.de
+- update to version 3.11.6
+* Sun Jun 14 2009 - dl8fcl@darc.de
+- update to version 3.11.5
+* Sun May 10 2009 - dl8fcl@darc.de
+- update to version 3.11.4
+* Tue May 5 2009 - dl8fcl@darc.de
+- update to version 3.11.3
+* Wed Apr 22 2009 - dl8fcl@darc.de
+- update to version 3.11.1
+* Wed Apr 15 2009 - dl8fcl@darc.de
+- update to version 3.11
+* Sat Jan 17 2009 - dl8fcl@darc.de
+- update to version 3.10
+* Thu Sep 15 2008 - dl8fcl@darc.de
+- updated to version 3.03
+* Thu Aug 26 2008 - dl8fcl@darc.de
+- updated to version 3.02
+* Thu Aug 24 2008 - dl8fcl@darc.de
+- updated to version 3.01
+* Wed Aug 16 2008 - dl8fcl@darc.de
+- updated to version 3.0
+* Wed Jun 4 2008 - dg7gt@online.de
+- updated to version 2.10.3
+* Sun Mar 18 2007 - dl9pf@gmx.de
+- import into buildservice
+

@@ -1,0 +1,9 @@
+<package name="rfcat" project="openSUSE:Factory">
+  <title>The swiss army knife of subGHz</title>
+  <description>RfCat allows you to control the wireless transceiver from an interactive
+Python shell or your own program running on your computer.
+
+</description>
+  <devel project="hardware:sdr" package="rfcat"/>
+  <url>https://bitbucket.org/atlas0fd00m/rfcat</url>
+</package>

@@ -1,0 +1,432 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e801cb17366b2699679370569ed3db3d</srcmd5>
+    <version>2.0.9</version>
+    <time>1350936196</time>
+    <user>coolo</user>
+    <comment>New package.
+Newly in use by xfstests which is part of openQA.
+Resolves license issue (bnc#783876)</comment>
+    <requestid>138436</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eaf9c63e0c3d563386770f73e8f4f01f</srcmd5>
+    <version>2.0.10</version>
+    <time>1351020265</time>
+    <user>coolo</user>
+    <comment>Version update</comment>
+    <requestid>139046</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>eaf9c63e0c3d563386770f73e8f4f01f</srcmd5>
+    <version>2.0.10</version>
+    <time>1359108879</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>67b51b15b625a5448095b94be9a58532</srcmd5>
+    <version>2.0.13</version>
+    <time>1360059190</time>
+    <user>coolo</user>
+    <comment>Version update. It's a leaf package.  The update is not needed in 12.3.  Low priority.</comment>
+    <requestid>151190</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a897a4cc2ad06315d5fa8e4e98638c75</srcmd5>
+    <version>2.0.14</version>
+    <time>1364986210</time>
+    <user>coolo</user>
+    <comment>Update to latest release.  Add a patch to correct new configure logic upstream added with this release. (forwarded request 161743 from gregfreemyer)</comment>
+    <requestid>162258</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c0c90c9991c3eef45c7498c93e68340c</srcmd5>
+    <version>2.0.15</version>
+    <time>1365618097</time>
+    <user>coolo</user>
+    <comment>Update to latest release.  Remove the patch required to get v2.0.14 to build.  Fixed in upstream. (forwarded request 163213 from gregfreemyer)</comment>
+    <requestid>163214</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c0c90c9991c3eef45c7498c93e68340c</srcmd5>
+    <version>2.0.15</version>
+    <time>1365618098</time>
+    <user>coolo</user>
+    <comment>Update to latest release.  Remove the patch required to get v2.0.14 to build.  Fixed in upstream. (forwarded request 163213 from gregfreemyer)</comment>
+    <requestid>163214</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>14fabef3578957786177f882c407cfda</srcmd5>
+    <version>2.1</version>
+    <time>1370425868</time>
+    <user>coolo</user>
+    <comment>Update to v2.1 
+This is the first openSUSE version to include gfio. gfio is in it's own package. No manual or docs were found in the tarball that cover gfio. (forwarded request 176461 from gregfreemyer)</comment>
+    <requestid>176619</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d72835ddf7e2618bbc548f830a2fb4d7</srcmd5>
+    <version>2.1.2</version>
+    <time>1377248826</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195936</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>d72835ddf7e2618bbc548f830a2fb4d7</srcmd5>
+    <version>2.1.2</version>
+    <time>1379662343</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4c85ad7cf8c93bfe83278de598a9a95e</srcmd5>
+    <version>2.1.4</version>
+    <time>1386326720</time>
+    <user>coolo</user>
+    <comment>Update to 2.1.4 (forwarded request 209556 from termim)</comment>
+    <requestid>209558</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>4ee71f9533ea1243ff0380f69d0c1b7b</srcmd5>
+    <version>2.1.4</version>
+    <time>1388435247</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>212470</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8caec992dab69d8f53ff65e7c937ca7b</srcmd5>
+    <version>2.1.6.1</version>
+    <time>1394631959</time>
+    <user>coolo</user>
+    <comment> (forwarded request 225532 from dbahi)</comment>
+    <requestid>225533</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0e0f9e369d8640e4cfd3392f46d3227b</srcmd5>
+    <version>2.1.11</version>
+    <time>1406785308</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242985</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>0e0f9e369d8640e4cfd3392f46d3227b</srcmd5>
+    <version>2.1.11</version>
+    <time>1409300878</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>56744a54417184f2423cfdfe3ea52364</srcmd5>
+    <version>2.1.12</version>
+    <time>1410795661</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249022</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>139ca1e0f1d3a93aef8cf3bdcc4b0a9a</srcmd5>
+    <version>2.1.13</version>
+    <time>1412625888</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253872</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6d650cd8f23d15c782c4104d2136af06</srcmd5>
+    <version>2.1.14</version>
+    <time>1416823737</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262548</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8bea6b68aba09a11de0b43345f2ed298</srcmd5>
+    <version>2.2.5</version>
+    <time>1422612029</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283364</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2e12233f50245e6b0dbb9decb877f1af</srcmd5>
+    <version>2.2.6</version>
+    <time>1428192266</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294502</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>01a4d97f169bcca73c81810b76b27652</srcmd5>
+    <version>2.2.9</version>
+    <time>1436734335</time>
+    <user>coolo</user>
+    <comment>- Update to 2.2.9
+  * see http://brick.kernel.dk/snaps/fio-2.2.9.shortlog.txt</comment>
+    <requestid>315238</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ae28554323237c3e9e0a3bd02faa6648</srcmd5>
+    <version>2.2.10</version>
+    <time>1443068081</time>
+    <user>coolo</user>
+    <comment>- Update to 2.2.10
+  * no changelog available</comment>
+    <requestid>332240</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3901a146de002542d4c2721a9fd4e319</srcmd5>
+    <version>2.2.12</version>
+    <time>1449687123</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.12
+  * no changelog available</comment>
+    <requestid>347656</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5a57e214e4f8d01ed5611e205eed1b33</srcmd5>
+    <version>2.2.13</version>
+    <time>1452027299</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.13
+  * no changelog available</comment>
+    <requestid>351804</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>09840819bb255986e6afef4fd4ff8a30</srcmd5>
+    <version>2.6</version>
+    <time>1455190689</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6</comment>
+    <requestid>358622</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e6fa796225dfdd3274de4a41a0669c40</srcmd5>
+    <version>2.8</version>
+    <time>1458333706</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.8</comment>
+    <requestid>373689</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>802f6ae00b30b9694014fb64dc88126e</srcmd5>
+    <version>2.8</version>
+    <time>1460482798</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>387669</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>241bbd35bbb573d3f91505f46ede869b</srcmd5>
+    <version>2.10</version>
+    <time>1464014392</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10:
+  * No changelog available</comment>
+    <requestid>397317</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a580f757eac64e29949a8c9a76f1ff74</srcmd5>
+    <version>2.11</version>
+    <time>1464484412</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.11:
+  * No changelog available</comment>
+    <requestid>398404</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7a0547cca0517ad2dc65c8a29a965c29</srcmd5>
+    <version>2.12</version>
+    <time>1466326198</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.12:
+  * No changelog available</comment>
+    <requestid>402741</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>db8528d039eb1f2c21711e4d36baf756</srcmd5>
+    <version>2.12</version>
+    <time>1468999069</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable support for RBD</comment>
+    <requestid>409081</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>634302f2fef6fc825ce3932161019e68</srcmd5>
+    <version>2.13</version>
+    <time>1472478262</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.13:</comment>
+    <requestid>423527</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>fbcae92bffc8173cacb6478b4c409970</srcmd5>
+    <version>2.15</version>
+    <time>1478289654</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.15:
+  * See http://brick.kernel.dk/snaps/fio-2.15.shortlog.txt</comment>
+    <requestid>438501</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e0623d9d7ab075586541bbcb2ef1821f</srcmd5>
+    <version>2.16</version>
+    <time>1484041777</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.16:
+  * See http://brick.kernel.dk/snaps/fio-2.16.shortlog.txt
+- Add gpg signature</comment>
+    <requestid>449002</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>5145fadef8692caec32ae2c70da52a7c</srcmd5>
+    <version>2.18</version>
+    <time>1490965746</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 2.18</comment>
+    <requestid>482571</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3bccec9061c1b1e2e9c1da785f4e827e</srcmd5>
+    <version>2.19</version>
+    <time>1491896935</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 2.19:
+  * See http://brick.kernel.dk/snaps/fio-2.19.shortlog.txt</comment>
+    <requestid>486977</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>ef9857a41fb5a36d7361720bee88de18</srcmd5>
+    <version>2.20</version>
+    <time>1496089191</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498782</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>8c9ed6d31dcfd0173d61627b6ca2df9d</srcmd5>
+    <version>2.21</version>
+    <time>1498742517</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507004</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d70ecb6d1474577ca21c0b2fac600ab6</srcmd5>
+    <version>2.99</version>
+    <time>1501311723</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.99
+  * No changelog available</comment>
+    <requestid>512901</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>56eba591ea1381eaecc110d8d2aef928</srcmd5>
+    <version>2.99</version>
+    <time>1504521247</time>
+    <user>dimstar_suse</user>
+    <comment>- Update describtion and provide more documents
+</comment>
+    <requestid>520108</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f61701c5115957a7703b576e28751c5e</srcmd5>
+    <version>3.2</version>
+    <time>1510578464</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct bash location in genfio
+
+- Update to version 3.2:
+  * no upstream changelog available</comment>
+    <requestid>541207</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>5d5628a72474407cf5365111ce9f0cc4</srcmd5>
+    <version>3.3</version>
+    <time>1515623684</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3:
+  * For detailed list of changes see:
+    http://brick.kernel.dk/snaps/fio-3.3.shortlog.txt</comment>
+    <requestid>562549</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>d05585268d1001651154d6284740e6ee</srcmd5>
+    <version>3.4</version>
+    <time>1519145712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578033</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>2ac3ad1725d74d1ef7f32eef3668fb5d</srcmd5>
+    <version>3.4</version>
+    <time>1520588736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584394</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>4960fcc9651b8e61279c86a34a3960b4</srcmd5>
+    <version>3.4</version>
+    <time>1522503443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592671</requestid>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>b9a53a9e581db583065df90c436dd7ea</srcmd5>
+    <version>3.4</version>
+    <time>1527583766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612643</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>a2db4e58ffaa6b41ed67c184341b246f</srcmd5>
+    <version>3.10</version>
+    <time>1537787562</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use libressl
+
+- Remove duplication from build macros
+- Disable building for native host to avoid illegal instruction crashes
+
+- Update to version 3.10
+  * For detailed list of changes see:
+    http://brick.kernel.dk/snaps/fio-3.10.shortlog.txt
+- Switch to building with openssl
+
+- Update to version 3.9
+  * For detailed list of changes see:
+    http://brick.kernel.dk/snaps/fio-3.9.shortlog.txt</comment>
+    <requestid>636993</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>1c0a15e487a1f33305fbd5828fc42548</srcmd5>
+    <version>3.12</version>
+    <time>1543224051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648930</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>84ae319c7b81ff2313d22cecaba84191</srcmd5>
+    <version>3.13</version>
+    <time>1551113807</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678647</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>5086ebef69c11105cdf00637fd3163e6</srcmd5>
+    <version>3.14</version>
+    <time>1562247850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713293</requestid>
+  </revision>
+</revisionlist>

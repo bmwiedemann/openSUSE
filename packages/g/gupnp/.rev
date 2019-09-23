@@ -1,0 +1,501 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>0aca155745a68f22e2a29898979d8db1</srcmd5>
+    <version>0.12.8</version>
+    <time>1247020637</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e5c5cb1cbe5c9739c843c8fd4fb68601</srcmd5>
+    <version>0.13.0</version>
+    <time>1254782562</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gupnp based on submit request 21793 from user vuntz
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e5c5cb1cbe5c9739c843c8fd4fb68601</srcmd5>
+    <version>0.13.0</version>
+    <time>1254782562</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gupnp based on submit request 21793 from user vuntz
+</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5a6265d7a54ad95c6ee6dec9cad1bde7</srcmd5>
+    <version>0.13.2</version>
+    <time>1260268664</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gupnp based on submit request 25852 from user vuntz
+</comment>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d1a089499fbe5591754e026853b1abce</srcmd5>
+    <version>0.13.2</version>
+    <time>1268923915</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>52e47eb7453a4503e49291f5fa68791a</srcmd5>
+    <version>0.13.3</version>
+    <time>1273789932</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gupnp based on submit request 39962 from user dimstar
+</comment>
+    <requestid>39962</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>52e47eb7453a4503e49291f5fa68791a</srcmd5>
+    <version>0.13.3</version>
+    <time>1278667349</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>52e47eb7453a4503e49291f5fa68791a</srcmd5>
+    <version>0.13.3</version>
+    <time>1278678581</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1d0aad27156ce98031ef3c542f6c3604</srcmd5>
+    <version>0.13.4</version>
+    <time>1281385993</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gupnp based on submit request 45099 from user vuntz
+</comment>
+    <requestid>45099</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c0a4da7d4191d9f0b6020b28bc3589ea</srcmd5>
+    <version>0.13.5</version>
+    <time>1282939419</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gupnp based on submit request 46471 from user vuntz
+</comment>
+    <requestid>46471</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>2c2ee17e90be865b082c6046c68b4cd3</srcmd5>
+    <version>unknown</version>
+    <time>1284372502</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gupnp based on submit request 47771 from user vuntz
+</comment>
+    <requestid>47771</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>4e3be98be03ab17816936ca558a231b0</srcmd5>
+    <version>0.14.0</version>
+    <time>1285280389</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gupnp based on submit request 48932 from user vuntz
+</comment>
+    <requestid>48932</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>62fadeef8509c31f8cda7e88451b2fcc</srcmd5>
+    <version>0.14.1</version>
+    <time>1291994963</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55404 from user vuntz
+</comment>
+    <requestid>55404</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>904e0512f3c3ae7fae3a6ae8b00f0491</srcmd5>
+    <version>0.14.1</version>
+    <time>1291994971</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55404
+</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>904e0512f3c3ae7fae3a6ae8b00f0491</srcmd5>
+    <version>0.14.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a715cb7569e8175031569443a496fcd8</srcmd5>
+    <version>0.16.0</version>
+    <time>1304406960</time>
+    <user>saschpe</user>
+    <comment>Update to 0.16.0 (forwarded request 68828 from dimstar)</comment>
+    <requestid>69274</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>79c0aea069edbd55ef3b2451a63e81dc</srcmd5>
+    <version>0.16.0</version>
+    <time>1304406970</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69274
+</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3e3800997ba6f264d0f506f714448422</srcmd5>
+    <version>0.16.1</version>
+    <time>1304596365</time>
+    <user>saschpe</user>
+    <comment>Update to 0.16.1 (forwarded request 69637 from vuntz)</comment>
+    <requestid>69639</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>84c8557d031648545307e27263dab6f1</srcmd5>
+    <version>0.16.1</version>
+    <time>1304596378</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69639
+</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>efd49c0902f77413bce2430614124074</srcmd5>
+    <version>0.17.1</version>
+    <time>1310130032</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F, including GNOME 3.1.3</comment>
+    <requestid>75766</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>276cf2f006a19bf27cd8644fd03a444e</srcmd5>
+    <version>0.17.2</version>
+    <time>1313135021</time>
+    <user>saschpe</user>
+    <comment>Update to 0.17.2 (forwarded request 78146 from dimstar)</comment>
+    <requestid>78574</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ce80dee9aee4e213b28b71a3c422e6f9</srcmd5>
+    <version>0.18.0</version>
+    <time>1315560346</time>
+    <user>saschpe</user>
+    <comment>Pushing most of G:F</comment>
+    <requestid>81510</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>ce80dee9aee4e213b28b71a3c422e6f9</srcmd5>
+    <version>0.18.0</version>
+    <time>1319181959</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>f7fbaf2365cbb4b006ddc255e7ee7a97</srcmd5>
+    <version>0.18.0</version>
+    <time>1323191856</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>be60bc0963041084fa5730622b209c5f</srcmd5>
+    <version>0.18.1</version>
+    <time>1326120130</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>99077</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0a0afb5890ce0739a9d5b2afcb1a5bf0</srcmd5>
+    <version>0.18.2</version>
+    <time>1333022354</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111749</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a1a2d2d823c0b001d10d65706aa105a1</srcmd5>
+    <version>0.18.3</version>
+    <time>1337674223</time>
+    <user>coolo</user>
+    <comment>push G:F</comment>
+    <requestid>121448</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>a1a2d2d823c0b001d10d65706aa105a1</srcmd5>
+    <version>0.18.3</version>
+    <time>1340183428</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b1444a7faf7acdea5b7316b3a50a0e8c</srcmd5>
+    <version>0.18.4</version>
+    <time>1349242544</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136726</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>b1444a7faf7acdea5b7316b3a50a0e8c</srcmd5>
+    <version>0.18.4</version>
+    <time>1359109032</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c5611b2ba34f58c940b472aeaf4a70d5</srcmd5>
+    <version>0.20.1</version>
+    <time>1364896290</time>
+    <user>coolo</user>
+    <comment>Update to 0.20.1</comment>
+    <requestid>161961</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a460b621991c501ba0f6693aaf5a01a4</srcmd5>
+    <version>0.20.2</version>
+    <time>1365496032</time>
+    <user>coolo</user>
+    <comment>Update to 0.20.2 (forwarded request 163021 from Zaitor)</comment>
+    <requestid>163111</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>50a7fdf0537d88f4a7dd1537da16681c</srcmd5>
+    <version>0.20.3</version>
+    <time>1372527742</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.3, as announced</comment>
+    <requestid>181295</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>8d2adece1250bf73be7f5025f6b5f380</srcmd5>
+    <version>0.20.4</version>
+    <time>1376649192</time>
+    <user>scarabeus_factory</user>
+    <comment>push GNOME:Factory</comment>
+    <requestid>186894</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>fc7a6fffe5a070935c93c700dde9a67d</srcmd5>
+    <version>0.20.5</version>
+    <time>1377873131</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.90</comment>
+    <requestid>196259</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5c82a03d8d735dfcc5e0ecd3fb1c0faf</srcmd5>
+    <version>0.20.6</version>
+    <time>1378894254</time>
+    <user>coolo</user>
+    <comment>Update to 0.20.6</comment>
+    <requestid>198093</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>5c82a03d8d735dfcc5e0ecd3fb1c0faf</srcmd5>
+    <version>0.20.6</version>
+    <time>1379662595</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>62b1045b64c002da69099bbc505aea1c</srcmd5>
+    <version>0.20.7</version>
+    <time>1382012093</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 0.20.7 - Part of GNOME Stable 3.10.1 branch. (forwarded request 203488 from Zaitor)</comment>
+    <requestid>203509</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>88da1fa7e975ebe98f0a4725f5d2b608</srcmd5>
+    <version>0.20.8</version>
+    <time>1385290632</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory</comment>
+    <requestid>207685</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>4095102c132beb904b16bd801d7dce6d</srcmd5>
+    <version>0.20.9</version>
+    <time>1387207676</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.20.9:
+  + Enforce HTTP 1.1 for device description requests.
+  + Add libuuid to Requires.private of pkg-config file.
+  + Deprecate gupnp_service_proxy_{begin,send}_action_hash as they
+    cannot guarantee the argument order.
+  + Add gupnp_service_info_get_introspection_async_full() that
+    makes it possible to cancel an introspcetion request using
+    GCancellable.
+  + Fix a crash when running with GSSDP &lt; 0.14.6.
+  + Bugs fixed: bgo#704867, bgo#710491, bgo#711027, bgo#711167,
+    bgo#720369, bgo#720372. (forwarded request 210897 from Zaitor)</comment>
+    <requestid>210934</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>5f9f5975f424ae954ff415bcde6cfd37</srcmd5>
+    <version>0.20.10</version>
+    <time>1391665684</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.20.10:
+  + Make sure ResourceFactory creates proxies with the correct
+    GType.
+  + Make it possible to unsubscribe from a service proxy during a
+    call-back.
+  + Disable managed RootDevices on WL change in addition to
+    ControlPoints.
+  + Bugs fixed: bgo#678701, bgo#690400, bgo#711332. (forwarded request 220749 from Zaitor)</comment>
+    <requestid>220875</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>5fa66e0b0ff1d2e47045c46a79e8827f</srcmd5>
+    <version>0.20.11</version>
+    <time>1399810587</time>
+    <user>coolo</user>
+    <comment>Update to ver 0.20.11 (forwarded request 232592 from Zaitor)</comment>
+    <requestid>233371</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>73532479d457f66403aedc495d5549b7</srcmd5>
+    <version>0.20.12</version>
+    <time>1404679943</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239028</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>73532479d457f66403aedc495d5549b7</srcmd5>
+    <version>0.20.12</version>
+    <time>1409301143</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>29f0b7f84c0d43641d522c02a6e95eb8</srcmd5>
+    <version>0.20.12</version>
+    <time>1413739653</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257293</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>17561e44f39d800deaba3c53b3d8599e</srcmd5>
+    <version>0.20.13</version>
+    <time>1420754747</time>
+    <user>dimstar_suse</user>
+    <comment>Update</comment>
+    <requestid>280060</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>24dde99bc4e060357c22c5295b1181e5</srcmd5>
+    <version>0.20.14</version>
+    <time>1431676479</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306337</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>f9313e3439ce323a35d09b1c5a71f0c6</srcmd5>
+    <version>0.20.15</version>
+    <time>1452377561</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352087</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>4e8a517c3cf3334012216b15012a03e9</srcmd5>
+    <version>0.20.16</version>
+    <time>1455789966</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358592</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>4d0416f2a3a0d6fea2b6455cd20197a7</srcmd5>
+    <version>0.20.17</version>
+    <time>1462443083</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>392440</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>765a7479935cfba4b7558a0f58b972fb</srcmd5>
+    <version>0.20.17</version>
+    <time>1464964269</time>
+    <user>dimstar_suse</user>
+    <comment>Sync package with SLE12SP2 - just for easier tracking (forwarded request 399210 from dimstar)</comment>
+    <requestid>399417</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>0c44d44f754e8393330d03daa257f2a7</srcmd5>
+    <version>0.20.18</version>
+    <time>1467359606</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404174</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>d6a998ef559421a486e5b118917836ca</srcmd5>
+    <version>1.0.0</version>
+    <time>1474475885</time>
+    <user>dimstar_suse</user>
+    <comment>New stable (forwarded request 428805 from Zaitor)</comment>
+    <requestid>429115</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>a24357e963a0b94166648d4950af9782</srcmd5>
+    <version>1.0.1</version>
+    <time>1480073189</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441545</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>23d4174c2595eb3f07946bad6ba8b1e9</srcmd5>
+    <version>1.0.2</version>
+    <time>1490220486</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.0.2 (forwarded request 481345 from dimstar)</comment>
+    <requestid>481415</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>c017d3d7c363bc71b1fec2ae1de3c7ce</srcmd5>
+    <version>1.0.2</version>
+    <time>1520502441</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581229 from dimstar)</comment>
+    <requestid>582816</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>9193db1d3f9a52900cb15166392d66ab</srcmd5>
+    <version>1.0.2</version>
+    <time>1528492790</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop NetworkManager recommends from libgupn-1_0-4: There is no
+  reason to pollute a system with NM just because something pulls
+  in libgupnp (boo#1082090). (forwarded request 613984 from dimstar)</comment>
+    <requestid>613985</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>f1f5155dd506f5557b88d051b2455ee6</srcmd5>
+    <version>1.0.3</version>
+    <time>1533627678</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.3:
+  + Avoid a crash in gupnp_root_device_constructor.
+  + Propagage User-Agent from Cache.
+  + Fix potential issue with boolean vs. bitwise evaluation.
+  + Fix a crash in GUPnPServiceProxy::subscription_expire.
+  + Accept broken Action header without the &quot;.
+  + Fix issue with strcpy destination buffer size in linux context
+    manager.
+  + Bugs fixed: bgo#780640, bgo#780715, bgo#793955. (forwarded request 626752 from iznogood)</comment>
+    <requestid>627096</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>ed0f3bae5cadfad285ce93e1d72266b0</srcmd5>
+    <version>1.0.4</version>
+    <time>1559481280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706722</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>49ac5873c725e7d33f90bb61431d82a5</srcmd5>
+    <version>1.2.1</version>
+    <time>1561405673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709080</requestid>
+  </revision>
+</revisionlist>

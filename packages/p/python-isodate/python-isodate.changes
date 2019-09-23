@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:49:23 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed May  2 12:53:11 UTC 2018 - adrian.glaubitz@suse.com
+
+- update to version 0.6.0:
+  - Support incomplete month date (Fabien Loffredo)
+  - Rely on duck typing when doing duration maths
+  - Support ':' as separator in fractional time zones (usrenmae)
+
+-------------------------------------------------------------------
+Wed May  3 17:04:31 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+- Fix source URL.
+
+-------------------------------------------------------------------
+Mon Jan 30 07:47:24 UTC 2017 - tbechtold@suse.com
+
+- update to 0.5.4:
+  - Fix parsing of Periods (Fabien Bochu)
+  - Make Duration objects hashable (Geoffrey Fairchild)
+  - Add multiplication to duration (Reinoud Elhorst)
+- Use pypi.io as Source url
+
+-------------------------------------------------------------------
+Wed May  6 15:54:47 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.5.1:
+  * fixed pickling of Duration objects
+  * raise ISO8601Error when there is no 'T' separator in datetime
+    strings
+- additional changes from version 0.5.0:
+  * ISO8601Error are subclasses of ValueError now
+  * improve compatibility across various python variants and
+    versions
+  * raise exceptions when using fractional years and months in date
+    maths with durations
+  * renamed method todatetime on Duraction objects to totimedelta
+- pass -q to test to avoid spamming the build log
+- rename README.txt to README.rst: changed upstream
+
+-------------------------------------------------------------------
+Thu Oct 24 11:07:11 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Wed Apr 17 14:08:25 UTC 2013 - toddrme2178@gmail.com
+
+- Re-add python-2to3.  It is needed for OpenSUSE <= 12.2
+
+-------------------------------------------------------------------
+Tue Apr 16 19:21:24 UTC 2013 - p.drouand@gmail.com
+
+- Remove BuildRequires: python-2to3, useless since included in main 
+  python devel package
+- Add Requires: python3; fix build for OpenSUSE <= 12.2
+
+-------------------------------------------------------------------
+Sun Jan 13 15:14:28 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Fri Nov 23 11:07:12 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.4.9:
+  + support pickling FixedOffset instances
+  + make sure parsed fractional seconds are in microseconds
+  + add leading zeros when formattig microseconds (Jarom Loveridge)
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Fri May 18 00:22:57 UTC 2012 - jfunk@funktronics.ca
+
+- Initial release
+

@@ -1,0 +1,158 @@
+-------------------------------------------------------------------
+Mon Sep  9 18:48:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.203 matching debian
+- Remove patch verbose-numeric-port.patch
+- Refresh patches:
+  * broadcast-support.patch
+  * build-without-TLS-support.patch
+  * connect-timeout.patch
+  * dccp-support.patch
+  * destination-port-list.patch
+  * get-sev-by-name.patch
+  * misc-failures-and-features.patch
+  * port-to-linux-with-libsd.patch
+  * quit-timer.patch
+  * send-crlf.patch
+  * serialized-handling-multiple-clients.patch
+  * set-TCP-MD5SIG-correctly-for-client-connections.patch
+  * udp-scan-timeout.patch
+  * use-flags-to-specify-listen-address.patch
+
+-------------------------------------------------------------------
+Wed Nov 14 13:12:29 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.195 release matching with debian
+- Added new patches:
+  * broadcast-support.patch
+  * build-without-TLS-support.patch
+  * destination-port-list.patch
+  * use-flags-to-specify-listen-address.patch
+- Refreshed patches:
+  * connect-timeout.patch
+  * dccp-support.patch
+  * get-sev-by-name.patch
+  * misc-failures-and-features.patch
+  * port-to-linux-with-libsd.patch
+  * quit-timer.patch
+  * send-crlf.patch
+  * serialized-handling-multiple-clients.patch
+  * set-TCP-MD5SIG-correctly-for-client-connections.patch
+  * udp-scan-timeout.patch
+  * verbose-numeric-port.patch
+- Drop patch compile-without-TLS-support.patch, renamed
+
+-------------------------------------------------------------------
+Mon Jul 17 13:11:34 UTC 2017 - tchvatal@suse.com
+
+- Drop all patches that were never upstreamed:
+  * connect-timeout.patch
+  * dccp.patch
+  * gcc-warnings.patch
+  * getservbyname.patch
+  * glib-strlcpy.patch
+  * help-version-exit.patch
+  * nc-1.84-udp_stop.patch
+  * netcat-info.patch
+  * netcat-openbsd-debian.patch
+  * netcat-openbsd-examples.patch
+  * netcat-openbsd-openbsd-compat.patch
+  * no-strtonum.patch
+  * pollhup.patch
+  * quit-timer.patch
+  * reuseaddr.patch
+  * send-crlf.patch
+  * silence-z.patch
+  * socks-b64-prototype.patch
+  * udp-scan-timeout.patch
+  * verbose-message-to-stderr.patch
+  * verbose-numeric-port.patch
+- Switch to debian package to not waste resources on doing exactly
+  the same.
+- Switches URL for debian package
+- Apply patches already prepared for debian package
+  * port-to-linux-with-libsd.patch
+  * compile-without-TLS-support.patch
+  * connect-timeout.patch
+  * get-sev-by-name.patch
+  * send-crlf.patch
+  * quit-timer.patch
+  * udp-scan-timeout.patch
+  * verbose-numeric-port.patch
+  * dccp-support.patch
+  * serialized-handling-multiple-clients.patch
+  * set-TCP-MD5SIG-correctly-for-client-connections.patch
+  * misc-failures-and-features.patch
+- Do not use hand provided CMakeLists.txt but rely on upstream makefile
+
+-------------------------------------------------------------------
+Fri Jan 17 23:36:07 UTC 2014 - crrodriguez@opensuse.org
+
+- drop dependency on glib, strlcpy can be implemented with 
+  snprintf with glibc/linux
+- drop "quilt" from buildrequires, no longer used.
+- Use fvisibiliy=hidden to build, this is a program not
+  a library and no symbols should be exported.
+
+- modified patches:
+  * glib-strlcpy.patch
+-------------------------------------------------------------------
+Mon Sep  2 20:12:17 CEST 2013 - pth@suse.de
+
+- Split up the huge ubuntu patch into a debian specific patch,
+  a patch that creates the examples, a patch with the openbasd-compat
+  stuff and single files for each of the patches in debian/patches.
+  This hugely eases maintainabilty:
+
+  connect-timeout.patch, dccp.patch, gcc-warnings.patch,
+  getservbyname.patch, glib-strlcpy.patch, help-version-exit.patch,
+  nc-1.84-udp_stop.patch, netcat-info.patch, netcat-openbsd-debian.patch,
+  netcat-openbsd-examples.patch, netcat-openbsd-openbsd-compat.patch,
+  no-strtonum.patch, pollhup.patch, quit-timer.patch, reuseaddr.patch,
+  send-crlf.patch, silence-z.patch, socks-b64-prototype.patch,
+  udp-scan-timeout.patch, verbose-message-to-stderr.patch,
+  verbose-numeric-port.patch.
+
+-------------------------------------------------------------------
+Sat Dec 10 17:46:07 UTC 2011 - crrodriguez@opensuse.org
+
+- Update xbuntu patches.
+- Ensure we have large file support in 32 bit builds
+- Fix rpmlint warnings
+
+-------------------------------------------------------------------
+Sat Jul 16 13:34:18 UTC 2011 - andrea.turrini@gmail.com
+
+- Fixed typos in description of netcat-openbsd.spec
+
+-------------------------------------------------------------------
+Fri Jun 25 16:55:06 UTC 2010 - lmuelle@suse.de
+
+- Use update-alternatives to set netcat symbolic links for compatibility.
+- Provides and obsoltes netcat.
+
+-------------------------------------------------------------------
+Fri May 28 16:27:34 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Obsolete nc6 
+
+-------------------------------------------------------------------
+Tue May 18 18:10:16 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- sync recent bugfixes from Ubuntu 
+
+-------------------------------------------------------------------
+Fri Feb 20 15:19:28 CET 2009 - crrodriguez@suse.de
+
+- sync most recent bugfixes from debian/Ubuntu 
+
+-------------------------------------------------------------------
+Sat Jul  5 19:30:39 CEST 2008 - crrodriguez@suse.de
+
+-  netcat-openbsd conflicts with netcat but it should not [BNC#406581] 
+
+-------------------------------------------------------------------
+Sun Apr 13 05:08:48 CEST 2008 - crrodriguez@suse.de
+
+- initial version for the OBS 
+

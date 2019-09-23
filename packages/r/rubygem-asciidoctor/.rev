@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec70a1d6673194975b836f4bb0c3f42b</srcmd5>
+    <version>1.5.6.1</version>
+    <time>1518095457</time>
+    <user>dimstar_suse</user>
+    <comment>Needed as potential replacement of py2 only asciidoc</comment>
+    <requestid>563832</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>df2af6abc6652e0fd914b6db10e96c76</srcmd5>
+    <version>1.5.7.1</version>
+    <time>1531469615</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620986</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>00c4260cf774ff5ab9e8f7fc8a401d99</srcmd5>
+    <version>1.5.8</version>
+    <time>1543223550</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 1.5.8
+ see installed CHANGELOG.adoc
+  == 1.5.8 (2018-10-28) - @mojavelinux
+  
+  Enhancements::
+  
+    * if set, add value of part-signifier and chapter-signifier attributes to part and chapter titles (#2738)
+    * allow position (float) and alignment (align) to be set on video block (#2425)
+    * substitute attribute references in attrlist of include directive (#2761)
+    * add Document#set_header_attribute method for adding method directly to document header during parsing (#2820)
+    * add helper method to extension processor classes to create lists and list items
+    * allow ordered and unordered lists to be nested to an arbitrary / unlimited depth (#2854)
+    * add `prefer` DSL method to extension registry and document processor to flag extension as preferred (#2848)
+    * allow manname and manpurpose to be set using document attributes; don't look for NAME section in this case (#2810)
+    * substitute attribute references in target of custom block macro (honoring attribute-missing setting) (#2839)
+    * interpret `&lt;.&gt;` as an auto-numbered callout in verbatim blocks and callout lists (#2871)
+    * require marker for items in callout list to have circumfix brackets (e.g., `&lt;1&gt;` instead of `1&gt;`) (#2871)
+    * preserve comment guard in front of callout number in verbatim block if icons is not enabled (#1360)
+    * add more conventional styles to quote block when it has the excerpt role (#2092)
+    * colspecs can be separated by semi-colon instead of comma (#2798)
+    * change AbstractBlock#find_by to respond to StopIteration exception; stop traversal after matching ID (#2900)
+    * change AbstractBlock#find_by to honor return values :skip and :skip_children from filter block to skip node and its descendants or just its descendants, respectively (#2067)
+    * add API to retrieve authors as array; use API in converters (#1042) (*@mogztter*)
+    * add support for start attribute on source block to set starting line number when converting to DocBook (#2915)
+    * track imagesdir for image on node and in catalog (#2779)
+    * allow starting line number to be set using start attribute when highighting source block with Pygments or CodeRay (#1742)
+    * upgrade highlight.js to 9.13.1
+  
+  Fixes::</comment>
+    <requestid>648465</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0b815aba7e98fd9f1ae60293c4c22d2f</srcmd5>
+    <version>2.0.9</version>
+    <time>1557915861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700776</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bfb373bb4a54b1e748fd2a78f761a9cd</srcmd5>
+    <version>2.0.10</version>
+    <time>1564996678</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>717286</requestid>
+  </revision>
+</revisionlist>

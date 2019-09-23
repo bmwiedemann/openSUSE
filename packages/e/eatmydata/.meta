@@ -1,0 +1,8 @@
+<package name="eatmydata" project="openSUSE:Factory">
+  <title>A library to disable fsync calls</title>
+  <description>libeatmydata is a small LD_PRELOAD library designed to (transparently) disable fsync (and friends, like open(O_SYNC)). This has two side-effects: making software that writes data safely to disk a lot quicker and making this software no longer crash safe.
+
+</description>
+  <devel project="devel:tools" package="eatmydata"/>
+  <url>http://www.flamingspork.com/projects/libeatmydata/</url>
+</package>

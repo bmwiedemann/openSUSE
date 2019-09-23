@@ -1,0 +1,71 @@
+Index: src/gui/kernel/qguiplatformplugin.cpp
+===================================================================
+--- src/gui/kernel/qguiplatformplugin.cpp.orig
++++ src/gui/kernel/qguiplatformplugin.cpp
+@@ -92,6 +92,7 @@ QGuiPlatformPlugin *qt_guiPlatformPlugin
+                 break;
+             default:
+                 key = QString::fromLocal8Bit(qgetenv("DESKTOP_SESSION"));
++                key.replace(QLatin1String("kde-plasma"), QLatin1String("kde"));
+                 break;
+             }
+         }
+@@ -180,7 +181,15 @@ QString QGuiPlatformPlugin::styleName()
+         stylename = QLatin1String("cde");
+         break;
+     default:
+-        // Don't do anything
++        if (X11->use_xrender) {
++            QStringList availableStyles = QStyleFactory::keys();
++            QString kdeStyleKey = QLatin1String("Oxygen");
++            if (availableStyles.contains(kdeStyleKey))
++               stylename = kdeStyleKey;
++            else
++               stylename =  QLatin1String("Plastique");
++        } else
++            stylename =  QLatin1String("windows");
+         break;
+     }
+     return stylename;
+Index: src/gui/kernel/qapplication_x11.cpp
+===================================================================
+--- src/gui/kernel/qapplication_x11.cpp.orig
++++ src/gui/kernel/qapplication_x11.cpp
+@@ -2323,12 +2323,23 @@ void qt_init(QApplicationPrivate *priv,
+         int rc;
+ 
+         do {
+-            if (!qgetenv("KDE_FULL_SESSION").isEmpty()) {
++            if (!qgetenv("KDE_SESSION_VERSION").isEmpty()) {
+                 X11->desktopEnvironment = DE_KDE;
+                 X11->desktopVersion = qgetenv("KDE_SESSION_VERSION").toInt();
+                 break;
+             }
+ 
++            rc = XGetWindowProperty(X11->display, QX11Info::appRootWindow(), ATOM(KDE_FULL_SESSION),
++                                    0, 2, False, XA_STRING, &type, &format, &length,
++                                    &after, &data);
++            if (rc == Success && length) {
++                X11->desktopEnvironment = DE_KDE;
++                // We got the property but it wasn't xfce4. Free data before it gets overwritten.
++                XFree(data);
++                data = 0;
++                break;
++            }
++
+             if (qgetenv("DESKTOP_SESSION") == "gnome") {
+                 X11->desktopEnvironment = DE_GNOME;
+                 break;
+Index: src/gui/kernel/qt_x11_p.h
+===================================================================
+--- src/gui/kernel/qt_x11_p.h.orig
++++ src/gui/kernel/qt_x11_p.h
+@@ -690,6 +690,8 @@ struct QX11Data
+         XTabletEraser,
+         XTablet,
+ 
++	KDE_FULL_SESSION,
++
+         NPredefinedAtoms,
+ 
+         _QT_SETTINGS_TIMESTAMP = NPredefinedAtoms,

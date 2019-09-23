@@ -1,0 +1,313 @@
+-------------------------------------------------------------------
+Tue Jul 31 16:08:33 UTC 2018 - crrodriguez@opensuse.org
+
+- Remove insserv_prereq, not needed for package to work. 
+
+-------------------------------------------------------------------
+Fri Jul 21 14:08:42 CEST 2017 - sbrabec@suse.com
+
+- Set version tag for beta version lower than 5.1.0.
+
+-------------------------------------------------------------------
+Tue May 30 21:36:18 UTC 2017 - nico.kruber@gmail.com
+
+- Update to version 5.1.0beta:
+  + support ZKA cards for home banking (by Holger Magnussen)
+
+-------------------------------------------------------------------
+Wed Apr  6 11:03:21 UTC 2016 - nico.kruber@gmail.com
+
+- Update to version 5.0.4:
+  + change build system to support newer distributions
+- Update to version 5.0.3beta:
+  + remove special handling for the cyberJack reader
+    (it was unclear whether this was actually needed)
+  + now, cyberJack readers get the same commands as any other
+    reader (this hopefully fixes some problems with them)
+  + if problems with cyberJack continue, please contact the
+    Reiner SCT support
+
+-------------------------------------------------------------------
+Sun Feb 23 19:45:27 UTC 2014 - zaitor@opensuse.org
+
+- Own dirs to fix build for 13.2 and newer.
+
+-------------------------------------------------------------------
+Sat Jun 11 21:36:33 UTC 2011 - Nico.Laus.2001@gmx.de
+
+- Update to version 5.0.2
+  + now works with the newest pcsclite
+  + 'kvkcard read' works again with card readers understanding the
+    "RAW" protocol
+
+-------------------------------------------------------------------
+Fri Jan  7 15:34:23 CET 2011 - sbrabec@suse.cz
+
+- Ported to pcsc-lite-1.6.
+
+-------------------------------------------------------------------
+Sun Sep 12 16:58:20 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 5.0.0
+  + First stable release of the 5.x series
+  + Do not create an own service anymore. Instead, depend on pc/sc
+    service. Old versions did conflict, which caused a lot of
+    problems.
+  + Require gwenhywfar 4
+- Rename base package to libchipcard (avoid the need to rename it
+  with the next major release again)
+- Drop shlib subpackages libchipcardc2 and libchipcard_ctapi0
+- Add new subpackage libchipcard6
+- Clean BuildRequires: Remove libusb-devel, opensc-devel, hal,
+  hal-devel,  pkg-config, xorg-x11-fonts
+- Add zlib-devel BuildRequires.
+- As there is no longer an init script, stop it in preun in case
+  it still exists from a previous version.
+
+-------------------------------------------------------------------
+Tue Jan  5 17:23:34 CET 2010 - sbrabec@suse.cz
+
+- Use ">=" in shared library version requirements.
+
+-------------------------------------------------------------------
+Sun Jan  3 02:04:24 UTC 2010 - Nico.Laus.2001@gmx.de
+
+- Updated to 4.2.9:
+  + fixes some issues of the chipcard daemons with HAL
+  + removed SysFS code
+- added a source archive which does not include the sources twice
+
+-------------------------------------------------------------------
+Mon Dec 21 07:45:17 UTC 2009 - Nico.Laus.2001@gmx.de
+
+- made compile with openSUSE 11.1
+- added correct source URL
+- adapted package to the new structure of the gwenhywfar package
+
+-------------------------------------------------------------------
+Fri Aug 14 15:19:07 CEST 2009 - sbrabec@suse.cz
+
+- Split according to shared library packaging policy.
+- Link init script.
+- Do not call fillup.
+
+-------------------------------------------------------------------
+Tue Aug  4 16:21:01 CEST 2009 - mkudlvasr@suse.cz
+
+- fix build, some paths have changed
+
+-------------------------------------------------------------------
+Tue Jun 30 14:50:57 CEST 2009 - mkudlvasr@suse.cz
+
+- update to 4.2.8
+
+-------------------------------------------------------------------
+Mon May 12 19:37:42 CEST 2008 - coolo@suse.de
+
+- fix update of 10.1
+
+-------------------------------------------------------------------
+Tue Apr 15 17:31:50 CEST 2008 - schwab@suse.de
+
+- Fix configure script.
+
+-------------------------------------------------------------------
+Fri Nov  9 05:00:07 CET 2007 - crrodriguez@suse.de
+
+- fix build adding missing prereq insserv_prereq fillup_prereq
+- update to version 3.0.4
+- added reader description for new Cyberjack readers
+- remove static libraries and "la" files
+
+-------------------------------------------------------------------
+Fri Aug  3 08:56:11 CEST 2007 - aj@suse.de
+
+- Add gcc-c++ to build requires.
+
+-------------------------------------------------------------------
+Mon Jul 30 19:13:48 CEST 2007 - sbrabec@suse.cz
+
+- Package branched to libchipcard3.
+- Updated to version 3.0.3:
+  * Design changes.
+  * New API.
+  * See NEWS for details.
+- Build and install apidoc.
+
+-------------------------------------------------------------------
+Wed May 16 21:32:29 CEST 2007 - olh@suse.de
+
+- Buildrequires libusb -> libusb-devel
+
+-------------------------------------------------------------------
+Wed Sep 27 12:03:36 CEST 2006 - stbinner@suse.de
+
+- Update to version 2.1.9:
+  * remove an annoying log message on no-PCMCIA systems
+  * work with the latest generic CCID driver
+  * fix a bug which prevented autodetecting of PCMCIA devices
+  * this version now works with OpenSC 0.11.x as well
+
+-------------------------------------------------------------------
+Mon Jul 17 08:26:42 CEST 2006 - stbinner@suse.de
+
+- Update to version 2.1.7:
+   * allows readers without a keyboard to verify the pin of a
+     chipcard again.
+   * fixes a problem with newer GeldKarte cards
+   * now uses LibSysFS primarily to detect /dev/ttyUSB devices
+
+-------------------------------------------------------------------
+Tue Jun 20 08:59:23 CEST 2006 - stbinner@suse.de
+
+- Update to version 2.1.6:
+   * no longer requires the kernel sources to provide support for 
+     PCMCIA autoconfiguration
+   * no longer needs a specially compiled version of libccid to
+     work with that driver; the normal binary packages suffice.
+
+-------------------------------------------------------------------
+Tue May 16 16:27:33 CEST 2006 - sbrabec@suse.cz
+
+- Fixed BuildRequires.
+
+-------------------------------------------------------------------
+Mon May 15 19:28:24 CEST 2006 - sbrabec@suse.cz
+
+- Obsolete libchipcard-tools.
+
+-------------------------------------------------------------------
+Tue May  9 19:45:36 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 2.1.4 (libchipcard2).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:24 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 11 21:22:05 CET 2006 - stbinner@suse.de
+
+- fix nfb
+
+-------------------------------------------------------------------
+Mon Dec 19 17:38:27 CET 2005 - dmueller@suse.de
+
+- fix file list 
+
+-------------------------------------------------------------------
+Tue Aug  2 00:34:59 CEST 2005 - dmueller@suse.de
+
+- fix m4 quoting warning 
+
+-------------------------------------------------------------------
+Mon Apr 11 11:12:11 CEST 2005 - coolo@suse.de
+
+- fix one 64bit problem with gcc4
+
+-------------------------------------------------------------------
+Thu Feb 17 01:11:10 CET 2005 - ro@suse.de
+
+- fixed file list 
+
+-------------------------------------------------------------------
+Sat Jan 22 01:40:04 CET 2005 - ro@suse.de
+
+- fix build after pcsc-lite update 
+
+-------------------------------------------------------------------
+Fri Nov 19 09:58:45 CET 2004 - coolo@suse.de
+
+- cleaning up desktop files
+
+-------------------------------------------------------------------
+Wed Aug  4 10:45:34 CEST 2004 - coolo@suse.de
+
+- libtoolize so the tools are in sync
+
+-------------------------------------------------------------------
+Fri Apr 16 09:05:42 CEST 2004 - coolo@suse.de
+
+- build without unsermake
+
+-------------------------------------------------------------------
+Sat Mar 13 16:56:23 CET 2004 - coolo@suse.de
+
+- fixing encoding of the desktop file
+
+-------------------------------------------------------------------
+Tue Mar  2 12:31:36 CET 2004 - ro@suse.de
+
+- fix build on s390,s390x
+
+-------------------------------------------------------------------
+Thu Oct 30 14:12:52 CET 2003 - ro@suse.de
+
+- fix build libchipcard-kde (include local m4 macros) 
+
+-------------------------------------------------------------------
+Wed Sep 10 08:23:25 CEST 2003 - coolo@suse.de
+
+- add restart|stop calls to the %p* scripts (#29025)
+
+-------------------------------------------------------------------
+Tue Aug 12 16:09:59 CEST 2003 - ro@suse.de
+
+- fix patch/build for lib64 
+
+-------------------------------------------------------------------
+Sat Aug  9 17:02:43 CEST 2003 - adrian@suse.de
+
+- add Categories
+- update to version 0.9.1
+
+-------------------------------------------------------------------
+Thu Jul 31 16:15:46 CEST 2003 - meissner@suse.de
+
+- do not leave -L/usr/lib references on lib64 systems, to 
+  avoid confusion on biarch systems.
+
+-------------------------------------------------------------------
+Tue Jul 22 16:48:26 CEST 2003 - coolo@suse.de
+
+- don't give libtool a chance to leave build root traces 
+
+-------------------------------------------------------------------
+Thu Jun 12 07:56:34 CEST 2003 - coolo@suse.de
+
+- running ldconfig
+- packaging directories
+- adding require on lib package
+- putting translations into %lang
+
+-------------------------------------------------------------------
+Fri May 16 09:31:46 CEST 2003 - coolo@suse.de
+
+- giving Mads reasons
+
+-------------------------------------------------------------------
+Thu Apr 10 13:25:55 CEST 2003 - coolo@suse.de
+
+- updating to 0.8.2 and fixing file list
+
+-------------------------------------------------------------------
+Tue Feb 18 10:10:13 CET 2003 - coolo@suse.de
+
+- fixing build on lib64
+
+-------------------------------------------------------------------
+Tue Feb 18 02:19:50 CET 2003 - ro@suse.de
+
+- move all config-files in place
+
+-------------------------------------------------------------------
+Mon Feb 17 17:43:24 CET 2003 - ro@suse.de
+
+- fixed specfile 
+
+-------------------------------------------------------------------
+Mon Feb 17 15:26:47 CET 2003 - coolo@suse.de
+
+- initial package
+

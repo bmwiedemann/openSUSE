@@ -1,0 +1,762 @@
+-------------------------------------------------------------------
+Sat Sep  7 20:37:20 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Add option to build Qt Designer plugin (BUILD_DESIGNERPLUGIN, default ON)
+  * Fix build: include QJsonArray for voikkodict.cpp needed with Qt 5.13
+  * MSVC++ needs QVector it seems.
+  * Remove unused includes
+
+-------------------------------------------------------------------
+Wed Aug  7 17:51:59 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Remove explicit use of ECM_KDE_MODULE_DIR, is part of ECM_MODULE_PATH
+
+-------------------------------------------------------------------
+Fri Jul 19 11:49:38 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:40 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * Install in new logging directory when we use kf5 5.59.0
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:14 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- No code changes since 5.58.0
+
+-------------------------------------------------------------------
+Wed May 15 18:16:19 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- No code changes since 5.57.0
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:45 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Sonnet compiles fine without foreach support
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:38 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * It compiles fine with qt5.13
+  * Port deprecated methods
+  * Handle the case if createSpeller is passed an unavailable language
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:25 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * Ignore files
+  * Avoid using trimmed method
+  * Don't call this code if we have only space
+  * GuessLanguage: Delete copy constructor and assignment operator
+  * delete copy constructor and assignment operator of some internal classes
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:56 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * Add method to BackgroundChecker to add word to session
+  * Avoid Q_FOREACH
+  * DictionaryComboBox: Keep user preferred dictionaries on top
+  * Loader: Avoid Q_FOREACH
+  * Dialog: Use DictionaryComboBox instead of plain QComboBox
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:46 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * DictionaryComboBoxTest: Add stretch to avoid expanding Dump button
+  * Use new syntax
+  * Remove virtual keyword
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:09 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Use reserve() on QStringList
+  * Fix breakage of language guessing
+  * Another 0 -> nullptr
+
+-------------------------------------------------------------------
+Tue Oct 16 08:02:52 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:50:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Fix breakage of language guessing
+  * Fix compile failure on Windows targets
+  * Prevent highlighter from erasing selected text (kde#398661)
+  * Avoid potential detach on range-loops with non-const Qt containers
+  * Make sure to build with strict compile flags
+  * Fix minor typos
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:47 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * hunspell: Restore build with hunspell <=v1.5.0
+  * Include hunspell headers as system includes
+  * Fix a typo
+- Dropped patches, superseded by upstream changes:
+  * Fix_Leap_42_3_build.patch
+
+-------------------------------------------------------------------
+Sun Aug 19 09:19:38 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Sonnet: setLanguage should schedule a rehighlight if highlight is enabled
+  * Use the current hunspell API
+- Add Fix_Leap_42_3_build.patch to use the old hunspell api in leap 42.3.
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:50 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:10 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Warning--
+  * Use override
+
+-------------------------------------------------------------------
+Sun May 13 21:03:13 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * Clean up
+  * Fix remove enable/disable button
+  * Fix enable/disable add button
+  * Look into subdirectories for dictionaries
+  * Warning--
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:09 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Don't impose using the default client
+  * Remove deprecated cmake code
+  * Remove not necessary QtCore and co
+  * NSSpellChecker plugin cleanup
+  * Include replacement strings in the suggestion list
+  * implement NSSpellCheckerDict::addPersonal()
+  * NSSpellCheckerDict::suggest() returns a list of suggestions
+  * initialise NSSpellChecker language in NSSpellCheckerDict ctor
+  * implement NSSpellChecker logging category
+  * NSSpellChecker requires AppKit
+  * Move NSSpellCheckerClient::reliability() out of line
+  * use the preferred Mac platform token
+  * Use correct directory to lookup trigrams in windows build dir
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:43 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * Use Locale::name() instead of Locale::bcp47Name()
+  * Find libhunspell build by msvc
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:13 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * Find Aspell dictionaries on Windows
+  * Fix compilation of just the UI-less host tools
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:24 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * autotests: replace duplication with for loop
+  * Remove obsolete reviewboardrc file
+  * Don't export internal helper executables
+  * Sonnet: fix wrong language for suggestions in mixed-language texts
+  * Sonnet: honour Settings::defaultClient(), useful for unittests
+  * autotests: skip if "en" not available with aspell (to fix the FreeBSD CI, hopefully)
+  * autotests: use QTEST_GUILESS_MAIN
+  * autotests: fix compilation with Qt 5.7
+  * autotests: enable QStandardPaths test mode
+  * autotests: turn test_suggest into a real automated test, checking for suggestions from aspell
+  * autotests: fix old TODO, GUILESS since QApp is not needed
+  * Remove anchient and broken workaround
+  * Don't cause circular linking on Windows
+  * Fix coding style. Const'ify, fix typo
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:50 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * Cache value before loop
+  * Make it compile with strict flags
+  * Fix generate debug file
+  * Clean up. Initialize value. Remove qt check
+  * Autogenerate debug category files
+  * Modernize code. Use new connect api. Assign directly parent etc.
+  * Make it possible to crosscompile sonnet
+  * If dictionnary is already set, return true;
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:18 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * Add assignByDictionnary method
+  * Signal if we are able to assign dictionnary
+  * Remove extra ';'. Add explicit keyword
+  * Make sure that all value is initialized
+  * Be sure that it's not null
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:48 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:19 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * Do not leak symbols of pimpl classes, protect with Q_DECL_HIDDEN
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:44 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * Allow to build Sonnet without Qt5Widgets
+  * cmake: rewrite FindHUNSPELL.cmake to use pkg-config
+  * Use more nullptr
+
+-------------------------------------------------------------------
+Wed Jul 12 14:51:10 UTC 2017 - wbauer@tmo.at
+
+- Move unversioned files to the new sonnet package to be more
+  compliant with the SLPP
+
+-------------------------------------------------------------------
+Wed Jul 12 07:14:05 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * add debug categories index, for kdebugsettings
+  * [FEATURE] Option to build & install QCH file with the public API dox
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:44 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * None
+
+-------------------------------------------------------------------
+Mon May 15 13:53:14 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:59 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * Upgrade KF5 version to 5.33.0.
+
+-------------------------------------------------------------------
+Sun Mar 19 14:51:17 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Commit translations from l10n-kf5
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Upgrade KF5 version to 5.32.0.
+
+-------------------------------------------------------------------
+Thu Feb  9 10:20:41 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Mon Jan  9 00:00:45 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+- Remove patch, now upstream:
+  * look-for-hunspell-1.6-as-well.patch
+
+-------------------------------------------------------------------
+Sun Jan  8 16:57:22 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Add look-for-hunspell-1.6-as-well.patch
+
+-------------------------------------------------------------------
+Sun Dec  4 02:06:48 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * Also search for hunspell-1.5
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 22:25:56 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 13:13:42 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 21:15:19 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * Don't lowercase the language names in trigram parsing
+  * Fix immediate crash on startup due to null plugin pointer
+  * Handle dictionaries without correct names
+  * Replace hand-curated list of script-language mappings, use
+    proper names for languages
+  * Add tool to generate trigrams
+  * Unbreak language detection a bit
+  * Use selected language as suggestion for detection
+  * Use cached spellers in language detection,
+    improve performance a bit
+  * Improve language detection
+  * Filter list of suggestions against available dictionaries,
+    remove dupes
+  * Remember to add the last trigram match
+  * Check if any of the trigrams actually matched
+  * Handle multiple languages with same score in trigram matcher
+  * Don't check for minimum size twice
+  * Prune list of languages against available languages
+  * Use same minimum length everywhere in langdet
+  * Sanity check that the loaded model has the correct amount of
+    trigrams for each language
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 22:17:54 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * hunspell: Clean up code for searching for dictionaries,
+    add XDG dirs (kde#361409)
+  * Try to fix language filter usage of language detection a bit
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:07:44 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * Mark helper exe as non-gui app
+  * Allow nsspellcheck to be compiled on mac per default
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:45:42 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:46:48 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * Install parsetrigrams tool for cross compiling
+  * hunspell: Load/Store a personal dictionary
+  * Support hunspell 1.4
+  * configwidget: notify about changed config when ignored
+    words updated
+  * settings: don't immediately save the config when
+    updating ignore list
+  * configwidget: fix saving when ignore words updated
+  * Fix failed to save ignore word issue (kde#355973)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+- Drop upstreamed sonnet-hunspell-1.4.patch
+
+-------------------------------------------------------------------
+Mon May  2 14:04:16 UTC 2016 - dimstar@opensuse.org
+
+- Add sonnet-hunspell-1.4.patch: detect hunspell 1.4.x.
+
+-------------------------------------------------------------------
+Mon Apr  4 14:31:48 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 10:05:07 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * Don't disable language detection just because a language is set
+  * Disable automatic disabling of automatic spelling by default
+  * Fix TextBreaks
+  * Fix Hunspell dictionary search paths missing '/' (kde#359866)
+  * Add <app dir>/../share/hunspell to dictionary search path
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 18:10:16 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:46:29 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:13:09 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 17:07:05 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:37:48 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * Fix hunspell plugin ID for proper loading
+  * Support static compilation on windows, add windows libreoffice
+    hunspell dict path
+  * Do not assume UTF-8 encoded Hunspell dictionaries. (kde#353133)
+  * Fix Highlighter::setCurrentLanguage() for the case when
+    previous language was invalid (kde#349151)
+  * Support /usr/share/hunspell as dict location
+  * NSSpellChecker-based plugin
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+- Drop dictionary-locations.patch, no longer needed
+- Add myspell-dictionaries BuildRequires
+
+-------------------------------------------------------------------
+Tue Sep  8 17:13:45 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:54 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * Add in CMake bits to enable building of Voikko plugin.
+  * Implement Sonnet::Client factory for Voikko spell chekers.
+  * Implement Voikko based spell checker (Sonnet::SpellerPlugin)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:45:32 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * Allow to use highlight spellchecking in a QPainTextEdit
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:08:03 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * Use one central cache for the SpellerPlugins.
+  * Reduce temporary allocations.
+  * Optimize: Do not wipe dict cache when copying speller objects.
+  * Optimise away save() calls by calling it once at the end if needed.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:50:00 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * Don't try to highlight if there is no spell checker found.
+    This would lead to an infinite loop with rehighlighRequest
+    timer firing constanty.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:57 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:57 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+- Comment out aspell-devel BuildRequires, myspell/hunspell plugin
+  is prefered
+- Added dictionary-locations.patch: find dictionaries in openSUSE
+  locations
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:34 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:30 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:51 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:47:40 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:58 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:38 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:21 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+- Harden required Qt5 libs versions
+- Pass the location of lconvert executable
+
+-------------------------------------------------------------------
+Tue Jul  1 21:36:08 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:39 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Added libqt5-linguist-devel BuildRequires
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Sun May  4 01:41:29 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:56 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+
+-------------------------------------------------------------------
+Tue Mar  4 16:39:34 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Sat Feb  8 02:20:16 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init sonnet package
+

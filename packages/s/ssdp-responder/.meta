@@ -1,0 +1,15 @@
+<package name="ssdp-responder" project="openSUSE:Factory">
+  <title>SSDP responder for Linux</title>
+  <description>Simple Service Discovery Protocol daemon (SSDP) for networked Linux
+devices. Useful for small and embedded systems that want to announce
+themselves to systems running Windows.
+
+ssdpd is a stand-alone UNIX daemon with no external dependencies but
+the standard C library. It has a built-in web server for serving the
+UPnP XML description which Windows use to present the icon, by default
+an InternetGatewayDevice is announced.
+
+</description>
+  <devel project="network" package="ssdp-responder"/>
+  <url>https://github.com/troglobit/ssdp-responder</url>
+</package>

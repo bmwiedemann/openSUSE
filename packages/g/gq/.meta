@@ -1,0 +1,5 @@
+<package name="gq" project="openSUSE:Factory">
+  <title>An LDAP Client for GTK</title>
+  <description>An LDAP client for GTK.</description>
+  <devel project="GNOME:Apps" package="gq"/>
+</package>

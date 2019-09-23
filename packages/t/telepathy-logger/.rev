@@ -1,0 +1,201 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aaeca65a74b12cc1b36845cb2602d2d6</srcmd5>
+    <version>0.1.5</version>
+    <time>1282577930</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/telepathy-logger based on submit request 45486 from user vuntz
+</comment>
+    <requestid>45486</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5a055cce776b5ed7109a8944905cf851</srcmd5>
+    <version>0.1.6</version>
+    <time>1287154355</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/telepathy-logger based on submit request 50785 from user vuntz
+</comment>
+    <requestid>50785</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>054dfea7eef2fea867888016f2250dbd</srcmd5>
+    <version>0.1.7</version>
+    <time>1291998946</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55416 from user vuntz
+</comment>
+    <requestid>55416</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>21e35edd7771d42c03bec23644c4152a</srcmd5>
+    <version>0.1.7</version>
+    <time>1292241585</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55665 from user vuntz
+</comment>
+    <requestid>55665</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>44e5949bde4429f8d12cdd15009adc61</srcmd5>
+    <version>0.1.7</version>
+    <time>1292241593</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55665
+</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>44e5949bde4429f8d12cdd15009adc61</srcmd5>
+    <version>0.1.7</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>589a076bbd094fbcd1dfd0cb2cd1753e</srcmd5>
+    <version>0.2.8</version>
+    <time>1305550467</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F (including GNOME3)</comment>
+    <requestid>69150</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>103d63e31f84be31388e905b8625db9c</srcmd5>
+    <version>0.2.10</version>
+    <time>1306852559</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F</comment>
+    <requestid>72018</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>44403728d73e6032c13071c2a1174739</srcmd5>
+    <version>0.2.10</version>
+    <time>1312200426</time>
+    <user>saschpe</user>
+    <comment>Fix typo for parallel build (forwarded request 77523 from vuntz)</comment>
+    <requestid>77541</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>935a59905d01cd9ba036aa6c79302a01</srcmd5>
+    <version>0.2.10</version>
+    <time>1312200434</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77541
+</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>935a59905d01cd9ba036aa6c79302a01</srcmd5>
+    <version>0.2.10</version>
+    <time>1319182512</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a365f87400c354c0b1d45b156f4d5780</srcmd5>
+    <version>0.2.12</version>
+    <time>1326118924</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>99134</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f548ed664237fd2556237f96cbdef177</srcmd5>
+    <version>0.4.0</version>
+    <time>1334217227</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>113202</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>f548ed664237fd2556237f96cbdef177</srcmd5>
+    <version>0.4.0</version>
+    <time>1340184265</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5c16c32739027f1d48ddf4d260ceba5b</srcmd5>
+    <version>0.6.0</version>
+    <time>1352408054</time>
+    <user>namtrac</user>
+    <comment>Update to 0.6.0 (forwarded request 139887 from Zaitor)</comment>
+    <requestid>140236</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>5c16c32739027f1d48ddf4d260ceba5b</srcmd5>
+    <version>0.6.0</version>
+    <time>1359110471</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b1b0366a25e21b8c08c1b630edb509ef</srcmd5>
+    <version>0.8.0</version>
+    <time>1364902082</time>
+    <user>coolo</user>
+    <comment>Update to 0.8.0</comment>
+    <requestid>161998</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>b1b0366a25e21b8c08c1b630edb509ef</srcmd5>
+    <version>0.8.0</version>
+    <time>1379664785</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>b1b0366a25e21b8c08c1b630edb509ef</srcmd5>
+    <version>0.8.0</version>
+    <time>1409303465</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b894a7a66550c5e0612358b84e830ce8</srcmd5>
+    <version>0.8.1</version>
+    <time>1410795630</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246415</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>58b32c6942aad11e8c75a0010116af61</srcmd5>
+    <version>0.8.2</version>
+    <time>1431753237</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307257</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>cd30c4d7dc63c3063e86700f8d0187a5</srcmd5>
+    <version>0.8.2</version>
+    <time>1474475331</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>426742</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>5bdc5094f00b76cc943ff9bc0de3e97f</srcmd5>
+    <version>0.8.2</version>
+    <time>1509732382</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly require python2-variant of packages: python2-devel and
+  python2-xml instead of python-devel and python.xml.
+- Cleanup with spec-clener.</comment>
+    <requestid>538144</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>abe3c3c0b67b3c4e139036fedeb3e81c</srcmd5>
+    <version>0.8.2</version>
+    <time>1520502703</time>
+    <user>dimstar_suse</user>
+    <comment>- Update summaries, fix RPM groups. (forwarded request 583003 from jengelh)</comment>
+    <requestid>583030</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>8880f5d43b3eaf458d82b83de07ab4e1</srcmd5>
+    <version>0.8.2</version>
+    <time>1566240406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723513</requestid>
+  </revision>
+</revisionlist>

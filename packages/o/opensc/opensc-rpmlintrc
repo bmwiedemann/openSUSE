@@ -1,0 +1,5 @@
+# Private library don't need to be in a separate package.
+addFilter("shlib-policy-missing-suffix")
+# There is no devel package any more.
+addFilter("obsolete-not-provided")
+addFilter("devel-file-in-non-devel-package")

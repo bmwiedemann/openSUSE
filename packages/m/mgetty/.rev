@@ -1,0 +1,261 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>39b37e70a43f87f52c9e26fa56d24601</srcmd5>
+    <version>1.1.35</version>
+    <time>1167927946</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="13">
+    <srcmd5>0fd75a7b908e61ad4dea017938c9f4b7</srcmd5>
+    <version>1.1.35</version>
+    <time>1175265037</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="16">
+    <srcmd5>b84c026b39a5c6e170234fa518c7a18c</srcmd5>
+    <version>1.1.35</version>
+    <time>1177196380</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="41">
+    <srcmd5>463f5df29ddeff4642e1a7580261b562</srcmd5>
+    <version>1.1.35</version>
+    <time>1184086943</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b9bcdc1893cad7264fc858bb9a2e0b81</srcmd5>
+    <version>1.1.36</version>
+    <time>1218154285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="25">
+    <srcmd5>9f66cd9a9053fadbbf84fd5aed3ae2c3</srcmd5>
+    <version>1.1.36</version>
+    <time>1223546732</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="26">
+    <srcmd5>5327ff66bf8d814a2b697e7a2cffc321</srcmd5>
+    <version>1.1.36</version>
+    <time>1226067901</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="28">
+    <srcmd5>5327ff66bf8d814a2b697e7a2cffc321</srcmd5>
+    <version>1.1.36</version>
+    <time>1226067901</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="29">
+    <srcmd5>d5b1c202f721b7c37b3fe429ebd118ec</srcmd5>
+    <version>1.1.36</version>
+    <time>1268924935</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="31">
+    <srcmd5>d5b1c202f721b7c37b3fe429ebd118ec</srcmd5>
+    <version>1.1.36</version>
+    <time>1278667367</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="32">
+    <srcmd5>d5b1c202f721b7c37b3fe429ebd118ec</srcmd5>
+    <version>1.1.36</version>
+    <time>1278678597</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="33">
+    <srcmd5>d49f7901d5960eb7c357afc2065eccb0</srcmd5>
+    <version>1.1.36</version>
+    <time>1283164145</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mgetty based on submit request 46606 from user elvigia
+</comment>
+    <requestid>46606</requestid>
+  </revision>
+  <revision rev="13" vrev="36">
+    <srcmd5>d49f7901d5960eb7c357afc2065eccb0</srcmd5>
+    <version>1.1.36</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="37">
+    <srcmd5>9876aa6c7d6dbbc3030bb458abec2630</srcmd5>
+    <version>1.1.36</version>
+    <time>1305539017</time>
+    <user>saschpe</user>
+    <comment>fix bug#646280, adjust faxspool to use gs directly, do not use acroreader (forwarded request 70158 from gjhe)</comment>
+    <requestid>70218</requestid>
+  </revision>
+  <revision rev="15" vrev="38">
+    <srcmd5>f1f7571ec92e0a40a1dd693e9ee71676</srcmd5>
+    <version>1.1.36</version>
+    <time>1305539025</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70218
+</comment>
+  </revision>
+  <revision rev="16" vrev="39">
+    <srcmd5>2effc9e0f901ae4fb29e1b5d7371c407</srcmd5>
+    <version>1.1.36</version>
+    <time>1317744813</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86415 from uli_suse)</comment>
+    <requestid>86449</requestid>
+  </revision>
+  <revision rev="17" vrev="41">
+    <srcmd5>2effc9e0f901ae4fb29e1b5d7371c407</srcmd5>
+    <version>1.1.36</version>
+    <time>1319182177</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="42">
+    <srcmd5>76ccd9fe510e5fdd65cde1ccdfbebf8c</srcmd5>
+    <version>1.1.36</version>
+    <time>1323192538</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="43">
+    <srcmd5>d071507c410d4b2787b6d1f96e85420b</srcmd5>
+    <version>1.1.36</version>
+    <time>1324913336</time>
+    <user>coolo</user>
+    <comment>- don't package files twice</comment>
+    <requestid>98215</requestid>
+  </revision>
+  <revision rev="20" vrev="44">
+    <srcmd5>245e2d595af2e94339d17aebc88dac08</srcmd5>
+    <version>1.1.36</version>
+    <time>1327500137</time>
+    <user>coolo</user>
+    <comment>- build with PIE [bnc#743151] (forwarded request 101395 from prusnak)</comment>
+    <requestid>101399</requestid>
+  </revision>
+  <revision rev="21" vrev="45">
+    <srcmd5>944edb1ce4694e2173a0153e6b7cec0d</srcmd5>
+    <version>1.1.36</version>
+    <time>1331492665</time>
+    <user>coolo</user>
+    <comment>- fixpie.patch: Use LDFLAGS instead of CFLAGS to make building with 
+  PIE work properly (forwarded request 108609 from mweckbecker)</comment>
+    <requestid>108701</requestid>
+  </revision>
+  <revision rev="22" vrev="47">
+    <srcmd5>944edb1ce4694e2173a0153e6b7cec0d</srcmd5>
+    <version>1.1.36</version>
+    <time>1340183698</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="48">
+    <srcmd5>ed7edc9a146a2f7554abfc4ac908d4b2</srcmd5>
+    <version>1.1.36</version>
+    <time>1347426750</time>
+    <user>coolo</user>
+    <comment>- add makeinfo as explicit buildrequire (forwarded request 133625 from coolo)</comment>
+    <requestid>133635</requestid>
+  </revision>
+  <revision rev="24" vrev="49">
+    <srcmd5>a5c4a3aec062f22e40fb4584258a0cf3</srcmd5>
+    <version>1.1.36</version>
+    <time>1357893311</time>
+    <user>coolo</user>
+    <comment>- replace run_permissions call with set_permissions (bnc#764113)</comment>
+    <requestid>147939</requestid>
+  </revision>
+  <revision rev="25" vrev="51">
+    <srcmd5>a5c4a3aec062f22e40fb4584258a0cf3</srcmd5>
+    <version>1.1.36</version>
+    <time>1359109443</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="52">
+    <srcmd5>c94900327c6ba677abcebc6611123671</srcmd5>
+    <version>1.1.36</version>
+    <time>1362983095</time>
+    <user>coolo</user>
+    <comment>- lp64.patch: Add support for future LP64 platforms (forwarded request 157421 from Andreas_Schwab)</comment>
+    <requestid>158179</requestid>
+  </revision>
+  <revision rev="27" vrev="54">
+    <srcmd5>c94900327c6ba677abcebc6611123671</srcmd5>
+    <version>1.1.36</version>
+    <time>1379663286</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="56">
+    <srcmd5>c94900327c6ba677abcebc6611123671</srcmd5>
+    <version>1.1.36</version>
+    <time>1409301893</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="57">
+    <srcmd5>7dd6ecc2631b1a07bbf21ee9d46ac8fa</srcmd5>
+    <version>1.1.36</version>
+    <time>1418737683</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264762</requestid>
+  </revision>
+  <revision rev="30" vrev="58">
+    <srcmd5>7f3699b058a260e5cff0ab775ea0d1b0</srcmd5>
+    <version>1.1.36</version>
+    <time>1422521817</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283111</requestid>
+  </revision>
+  <revision rev="31" vrev="59">
+    <srcmd5>84b379a0e7d045ee29a9017c31297963</srcmd5>
+    <version>1.1.36</version>
+    <time>1457353612</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>365147</requestid>
+  </revision>
+  <revision rev="32" vrev="60">
+    <srcmd5>fe8636bfe3775932aaacb7a5224d4511</srcmd5>
+    <version>1.1.36</version>
+    <time>1489345473</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477903</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0d411a5b7f3194ae215f7ff7a3f03be4</srcmd5>
+    <version>1.1.37</version>
+    <time>1497274461</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.37:
+ * faxspool: implement &quot;-t hh:mm-hh:mm&quot; time-range syntax, add
+   @DATE +&lt;format&gt;@ to faxheader processing
+ * faxq: properly display queued jobs with time-range field
+ * faxrunqd: correctly handle jobs running out of the end of their
+   sent-time window.
+   INCOMPATIBLE CHANGE: Changes handling of &quot;-t hh:mm&quot; to
+   &quot;from hh:mm to midnight&quot;
+ * microcom: improve read-from-device exception handling
+ * sendfax: send NSF frame on reception,
+   new option reset-after-fail
+ * faxrunqd: enhance and clarify per-modem statistics
+- New build fixes (mgetty-noroot.patch, mgetty-mkdir-p.patch).
+- Update patches
+  (mgetty-1.1.36-callback.patch -&gt; mgetty-1.1.37-callback.patch,
+   mgetty-1.1.36-makefile.patch -&gt; mgetty-1.1.37-makefile.patch).
+
+- Cleanup a bit with spec-cleaner
+- Remove few rpmlint warnings and reduce the deps to contain only
+  what is needed
+- Add patch to build with gcc7 0001-Fix-build-failure-with-gcc-7.patch
+  bsc#1041290</comment>
+    <requestid>502806</requestid>
+  </revision>
+</revisionlist>

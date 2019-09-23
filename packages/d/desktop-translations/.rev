@@ -1,0 +1,1064 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5d3dbba1ee668d87250eb39e84e0431a</srcmd5>
+    <version>11.1</version>
+    <time>1225670351</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cb74b2815179c62d9468180c019fcb1d</srcmd5>
+    <version>11.1</version>
+    <time>1226005379</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>57818af752f9a0d323f8056b2bfcf8d0</srcmd5>
+    <version>11.1</version>
+    <time>1226066753</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>20752580864e647c261830dff72e8da5</srcmd5>
+    <version>11.1</version>
+    <time>1226167863</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>4ef446ac6f817c6fc69176202654fba6</srcmd5>
+    <version>11.1</version>
+    <time>1226936751</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>fe48530b218e3fcefe544dd8d9dab980</srcmd5>
+    <version>11.1</version>
+    <time>1227997007</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>8d98b5c8fcd3c510eefd3a3d99e56948</srcmd5>
+    <version>11.1</version>
+    <time>1229350990</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a36003fc2f448810cb6d88bcb6f9d138</srcmd5>
+    <version>11.2</version>
+    <time>1235739663</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7e15b3aad689a55f7622d329e1db0e1e</srcmd5>
+    <version>11.2</version>
+    <time>1235953989</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>bffbb3c6f358e61defd9f5d88b4e411b</srcmd5>
+    <version>11.2</version>
+    <time>1237576634</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>7737bc14dbef39eed19f2bd3290ad456</srcmd5>
+    <version>11.2</version>
+    <time>1242424530</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>21d30a1ac43e96c8309244ea06d331d5</srcmd5>
+    <version>11.2</version>
+    <time>1245162656</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>dcf467779c913a787061d68005607a18</srcmd5>
+    <version>11.2</version>
+    <time>1249939135</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>cbb15efeca56005f92d36eb93302093d</srcmd5>
+    <version>11.2</version>
+    <time>1251292760</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-translations based on submit request 31 from user Beineri
+</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>0c19dd49bda86ebb2e36fe60a18e4ee5</srcmd5>
+    <version>11.2</version>
+    <time>1253559567</time>
+    <user>autobuild</user>
+    <comment>Copy from home:keichwa:branches:openSUSE:Factory/desktop-translations based on submit request 20572 from user keichwa
+</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>d546873f85c2cf9cea9baae129eacc36</srcmd5>
+    <version>11.2</version>
+    <time>1253829774</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-translations based on submit request 21011 from user keichwa
+</comment>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>b89c75736e080af3f43524f408dfd9ae</srcmd5>
+    <version>11.2</version>
+    <time>1255347237</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-translations based on submit request 22146 from user keichwa
+</comment>
+  </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>b89c75736e080af3f43524f408dfd9ae</srcmd5>
+    <version>11.2</version>
+    <time>1255347237</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-translations based on submit request 22146 from user keichwa
+</comment>
+  </revision>
+  <revision rev="19" vrev="13">
+    <srcmd5>44a644ee5dc6908ca8157768414e4e30</srcmd5>
+    <version>11.2</version>
+    <time>1256209821</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-translations based on submit request 22757 from user keichwa
+</comment>
+  </revision>
+  <revision rev="20" vrev="14">
+    <srcmd5>fc6ffe04fe9d5a17b51fba87b5c775af</srcmd5>
+    <version>11.2</version>
+    <time>1256918018</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-translations based on submit request 23374 from user keichwa
+</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3b9db08cee6ff55d5de9b1f351df4014</srcmd5>
+    <version>11.3</version>
+    <time>1263489801</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-translations based on submit request 29580 from user keichwa
+</comment>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>61e1abf9bba6232b777a127890332fe3</srcmd5>
+    <version>11.3</version>
+    <time>1264695507</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-translations based on submit request 30667 from user keichwa
+</comment>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>1c350e57eff2c2b92edd38b4da46f3c4</srcmd5>
+    <version>11.3</version>
+    <time>1268923320</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>579cf3cf4588b6f9e8824f0972c89791</srcmd5>
+    <version>11.3</version>
+    <time>1269013235</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-translations based on submit request 35369 from user keichwa
+</comment>
+    <requestid>35369</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>18bccae0e24cbf03668f399dab64b195</srcmd5>
+    <version>11.3</version>
+    <time>1271435074</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-translations based on submit request 38062 from user keichwa
+</comment>
+    <requestid>38062</requestid>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>93a1f099e27f3e2663e551892379096e</srcmd5>
+    <version>11.3</version>
+    <time>1273240758</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-translations based on submit request 39644 from user keichwa
+</comment>
+    <requestid>39644</requestid>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>3d033b3bc4cc06c4eb9f6acb4c21a0bf</srcmd5>
+    <version>11.3</version>
+    <time>1273876433</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-translations based on submit request 40029 from user keichwa
+</comment>
+    <requestid>40029</requestid>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>705d0e5dff33d2431ab772ee6781c4b8</srcmd5>
+    <version>11.3</version>
+    <time>1275064189</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-translations based on submit request 40796 from user keichwa
+</comment>
+    <requestid>40796</requestid>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>c08827bbc5ef0d45b1c26df32fd7629c</srcmd5>
+    <version>11.3</version>
+    <time>1276245211</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-translations based on submit request 41340 from user keichwa
+</comment>
+    <requestid>41340</requestid>
+  </revision>
+  <revision rev="30" vrev="10">
+    <srcmd5>4b483317c7384f43941c86c0b5c6485a</srcmd5>
+    <version>11.3</version>
+    <time>1278336136</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-translations based on submit request 42466 from user keichwa
+</comment>
+    <requestid>42466</requestid>
+  </revision>
+  <revision rev="31" vrev="12">
+    <srcmd5>4b483317c7384f43941c86c0b5c6485a</srcmd5>
+    <version>11.3</version>
+    <time>1278667342</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="32" vrev="13">
+    <srcmd5>4b483317c7384f43941c86c0b5c6485a</srcmd5>
+    <version>11.3</version>
+    <time>1278678571</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="33" vrev="14">
+    <srcmd5>7f4c616e53295d2267020fae4d712133</srcmd5>
+    <version>11.3</version>
+    <time>1285975516</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-translations based on submit request 49571 from user keichwa
+</comment>
+    <requestid>49571</requestid>
+  </revision>
+  <revision rev="34" vrev="15">
+    <srcmd5>56acbd53f602c457a4a53c0bbb2ec0d1</srcmd5>
+    <version>11.3</version>
+    <time>1286802688</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/desktop-translations based on submit request 50114 from user keichwa
+</comment>
+    <requestid>50114</requestid>
+  </revision>
+  <revision rev="35" vrev="16">
+    <srcmd5>024aa912d6f2f9dc5b55def74d7eb94e</srcmd5>
+    <version>11.3</version>
+    <time>1288701445</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51649 from user keichwa
+</comment>
+    <requestid>51649</requestid>
+  </revision>
+  <revision rev="36" vrev="17">
+    <srcmd5>fbd14d00ec1cc2d7d3c54dda2b930d99</srcmd5>
+    <version>11.3</version>
+    <time>1288701450</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51649
+</comment>
+  </revision>
+  <revision rev="37" vrev="18">
+    <srcmd5>dd81cbf250266ed5871339ff1bb7652e</srcmd5>
+    <version>11.3</version>
+    <time>1290252336</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53528 from user keichwa
+</comment>
+    <requestid>53528</requestid>
+  </revision>
+  <revision rev="38" vrev="19">
+    <srcmd5>04485df2664e24dcbbaea26b64564b87</srcmd5>
+    <version>11.3</version>
+    <time>1290252341</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53528
+</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e923f8462e15b2ed5b8b7541579315ba</srcmd5>
+    <version>11.4</version>
+    <time>1294677113</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57692 from user keichwa
+</comment>
+    <requestid>57692</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>ef3b04f1ab624209844e635e9a779bd4</srcmd5>
+    <version>11.4</version>
+    <time>1294677180</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57692
+</comment>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>78e72cecec96bd757859dc5c9574244e</srcmd5>
+    <version>11.4</version>
+    <time>1296607909</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59321 from user coolo
+</comment>
+    <requestid>59321</requestid>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>47cebfe7793be7e8a9d01d62a025fea3</srcmd5>
+    <version>11.4</version>
+    <time>1296607916</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59321
+</comment>
+  </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>61450b350c9ed486f281742005edb8af</srcmd5>
+    <version>11.4</version>
+    <time>1297507545</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60559 from user keichwa
+</comment>
+    <requestid>60559</requestid>
+  </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>e7b37cb6acff16719cf01b2b7192c2c9</srcmd5>
+    <version>11.4</version>
+    <time>1297507560</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60559
+</comment>
+  </revision>
+  <revision rev="45" vrev="9">
+    <srcmd5>e7b37cb6acff16719cf01b2b7192c2c9</srcmd5>
+    <version>11.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="46" vrev="10">
+    <srcmd5>934e72b834d8efd5acb6d90f1c6aa599</srcmd5>
+    <version>11.4</version>
+    <time>1298030615</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61606 from user keichwa
+</comment>
+    <requestid>61606</requestid>
+  </revision>
+  <revision rev="47" vrev="11">
+    <srcmd5>fad88cfb698ca2e60dacd54a40003c7e</srcmd5>
+    <version>11.4</version>
+    <time>1298030621</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61606
+</comment>
+  </revision>
+  <revision rev="48" vrev="12">
+    <srcmd5>5a05b1d14cfddf81b4f73844d0180fbb</srcmd5>
+    <version>11.4</version>
+    <time>1298643403</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 62783 from user keichwa
+</comment>
+    <requestid>62783</requestid>
+  </revision>
+  <revision rev="49" vrev="13">
+    <srcmd5>c67e267f3ca851e4ba83a5cfcdc04198</srcmd5>
+    <version>11.4</version>
+    <time>1298643414</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 62783
+</comment>
+  </revision>
+  <revision rev="50" vrev="14">
+    <srcmd5>9fa55394780f3c42c120305dc75491eb</srcmd5>
+    <version>11.4</version>
+    <time>1306490261</time>
+    <user>saschpe</user>
+    <comment>update</comment>
+    <requestid>71634</requestid>
+  </revision>
+  <revision rev="51" vrev="15">
+    <srcmd5>e22d12c370b533ab39f5ca3721a82e7f</srcmd5>
+    <version>11.4</version>
+    <time>1306490271</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71634
+</comment>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>4faebfef858a8d8af13a7c9083099be7</srcmd5>
+    <version>12.1</version>
+    <time>1314364498</time>
+    <user>saschpe</user>
+    <comment>update</comment>
+    <requestid>79866</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>d428b5812472346fe9b1f29601255348</srcmd5>
+    <version>12.1</version>
+    <time>1314364508</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79866
+</comment>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>3e40fbcd28bfded42410ea0aa11fb483</srcmd5>
+    <version>12.1</version>
+    <time>1316440800</time>
+    <user>lrupp</user>
+    <comment>update</comment>
+    <requestid>82478</requestid>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>fd0e8e7091350ce6d5a22c97f5a3941c</srcmd5>
+    <version>12.1</version>
+    <time>1317542181</time>
+    <user>lrupp</user>
+    <comment>Pushing X11:common:Factory changes</comment>
+    <requestid>85526</requestid>
+  </revision>
+  <revision rev="56" vrev="5">
+    <srcmd5>699782e945c920ad21d25bb717de5b9e</srcmd5>
+    <version>12.1</version>
+    <time>1317996419</time>
+    <user>lrupp</user>
+    <comment>update</comment>
+    <requestid>87046</requestid>
+  </revision>
+  <revision rev="57" vrev="6">
+    <srcmd5>f25f0d083670a7b981646cc4ebfe7d0a</srcmd5>
+    <version>12.1</version>
+    <time>1318515375</time>
+    <user>lrupp</user>
+    <comment>update</comment>
+    <requestid>87677</requestid>
+  </revision>
+  <revision rev="58" vrev="7">
+    <srcmd5>9c9840273024d3a7e71f2cdfab19e829</srcmd5>
+    <version>12.1</version>
+    <time>1319025371</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>88672</requestid>
+  </revision>
+  <revision rev="59" vrev="9">
+    <srcmd5>9c9840273024d3a7e71f2cdfab19e829</srcmd5>
+    <version>12.1</version>
+    <time>1319181846</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="60" vrev="10">
+    <srcmd5>b8ee9385bfe75b31f8d550ad97d07b71</srcmd5>
+    <version>12.1</version>
+    <time>1319636568</time>
+    <user>coolo</user>
+    <comment>trans update</comment>
+    <requestid>89383</requestid>
+  </revision>
+  <revision rev="61" vrev="11">
+    <srcmd5>c13754e8ae2444c65aa81fde6289bfe6</srcmd5>
+    <version>12.1</version>
+    <time>1319822382</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>89674</requestid>
+  </revision>
+  <revision rev="62" vrev="12">
+    <srcmd5>a4493b2949c5a30d74fddc32f289d359</srcmd5>
+    <version>12.1</version>
+    <time>1320486939</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>90108</requestid>
+  </revision>
+  <revision rev="63" vrev="13">
+    <srcmd5>6b1b5db1631f07aa01513ac8c213bd79</srcmd5>
+    <version>12.1</version>
+    <time>1323191149</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>d3b255b5c02c351fc5c8e08886a35bab</srcmd5>
+    <version>12.2</version>
+    <time>1335165144</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>114858</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>9f5a80a316af0eab6575b7c6d7dcff0c</srcmd5>
+    <version>12.2</version>
+    <time>1336423487</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>116652</requestid>
+  </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>a611356f7f2c32d839379997a383ca6d</srcmd5>
+    <version>12.2</version>
+    <time>1337195194</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>121147</requestid>
+  </revision>
+  <revision rev="67" vrev="4">
+    <srcmd5>e888ba51d85bfff67871f9150932cf8b</srcmd5>
+    <version>12.2</version>
+    <time>1337955288</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>121941</requestid>
+  </revision>
+  <revision rev="68" vrev="5">
+    <srcmd5>609582e83c22d0c5832a9cb95370a988</srcmd5>
+    <version>12.2</version>
+    <time>1338582638</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>123217</requestid>
+  </revision>
+  <revision rev="69" vrev="6">
+    <srcmd5>0e8e60ebf2206b2c967cac144236e025</srcmd5>
+    <version>12.2</version>
+    <time>1339352105</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>124212</requestid>
+  </revision>
+  <revision rev="70" vrev="8">
+    <srcmd5>0e8e60ebf2206b2c967cac144236e025</srcmd5>
+    <version>12.2</version>
+    <time>1340183277</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="71" vrev="9">
+    <srcmd5>1f1f13b375c2341a7b0a611fdd0a8668</srcmd5>
+    <version>12.2</version>
+    <time>1340628024</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>125756</requestid>
+  </revision>
+  <revision rev="72" vrev="10">
+    <srcmd5>236cac691762edb73765bd2990459b44</srcmd5>
+    <version>12.2</version>
+    <time>1341813369</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>127285</requestid>
+  </revision>
+  <revision rev="73" vrev="11">
+    <srcmd5>d8da167e7f878d56a8db2afc2a37b40e</srcmd5>
+    <version>12.2</version>
+    <time>1344064204</time>
+    <user>coolo</user>
+    <comment>update for 12.2</comment>
+    <requestid>129772</requestid>
+  </revision>
+  <revision rev="74" vrev="12">
+    <srcmd5>e914279a55717965b865e4144ed8f6ce</srcmd5>
+    <version>12.2</version>
+    <time>1344861767</time>
+    <user>namtrac</user>
+    <comment>update translations</comment>
+    <requestid>130705</requestid>
+  </revision>
+  <revision rev="75" vrev="13">
+    <srcmd5>eb6e0f7cb937548c5f9aa279937accd7</srcmd5>
+    <version>12.2</version>
+    <time>1345630317</time>
+    <user>namtrac</user>
+    <comment>update</comment>
+    <requestid>131293</requestid>
+  </revision>
+  <revision rev="76" vrev="14">
+    <srcmd5>c2efa0bdc791ea0ff331e6750d124a29</srcmd5>
+    <version>12.2</version>
+    <time>1345809076</time>
+    <user>namtrac</user>
+    <comment>update for 12.2</comment>
+    <requestid>131501</requestid>
+  </revision>
+  <revision rev="77" vrev="16">
+    <srcmd5>c2efa0bdc791ea0ff331e6750d124a29</srcmd5>
+    <version>12.2</version>
+    <time>1359108808</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>32e128136991db313e10157e5646694f</srcmd5>
+    <version>12.3</version>
+    <time>1359639802</time>
+    <user>coolo</user>
+    <comment>translation update also for 12.3</comment>
+    <requestid>150539</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>62fabf10a78943a5a8aefd5cf413d4b2</srcmd5>
+    <version>12.3</version>
+    <time>1360008508</time>
+    <user>coolo</user>
+    <comment>update for 12.3</comment>
+    <requestid>151149</requestid>
+  </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>98a2d88516dcf459092c399264dacabe</srcmd5>
+    <version>12.3</version>
+    <time>1360870468</time>
+    <user>coolo</user>
+    <comment>update; also for 12.3</comment>
+    <requestid>155398</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>d78f5ef79496d460b1de2f9d8154e894</srcmd5>
+    <version>13.1</version>
+    <time>1378906505</time>
+    <user>coolo</user>
+    <comment>13.1</comment>
+    <requestid>198494</requestid>
+  </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>d78f5ef79496d460b1de2f9d8154e894</srcmd5>
+    <version>13.1</version>
+    <time>1379662220</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="83" vrev="4">
+    <srcmd5>efdc3a34d086988247ea2f8838e6008b</srcmd5>
+    <version>13.1</version>
+    <time>1379919076</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>199636</requestid>
+  </revision>
+  <revision rev="84" vrev="5">
+    <srcmd5>d25f5b0cb6284e7813849c150327e1ab</srcmd5>
+    <version>13.1</version>
+    <time>1380294519</time>
+    <user>coolo</user>
+    <comment>update translations; for 13.1</comment>
+    <requestid>200840</requestid>
+  </revision>
+  <revision rev="85" vrev="6">
+    <srcmd5>0b602d385a5dea47bb01e7a037bd54a7</srcmd5>
+    <version>13.1</version>
+    <time>1380607793</time>
+    <user>coolo</user>
+    <comment>update translations; for 13.1; bnc#841090.</comment>
+    <requestid>201457</requestid>
+  </revision>
+  <revision rev="86" vrev="7">
+    <srcmd5>be0bc9ca3824749eec2dd2a2edbf3e56</srcmd5>
+    <version>13.1</version>
+    <time>1381222073</time>
+    <user>scarabeus_factory</user>
+    <comment>update; for 13.1</comment>
+    <requestid>202529</requestid>
+  </revision>
+  <revision rev="87" vrev="8">
+    <srcmd5>ccafe7a5b8061b076f8ec1a3ef3c87bf</srcmd5>
+    <version>13.1</version>
+    <time>1382022185</time>
+    <user>scarabeus_factory</user>
+    <comment>for 13.1</comment>
+    <requestid>203623</requestid>
+  </revision>
+  <revision rev="88" vrev="9">
+    <srcmd5>6696b3affd42747aee8a1c4a86914f9a</srcmd5>
+    <version>13.1</version>
+    <time>1382698730</time>
+    <user>scarabeus_factory</user>
+    <comment>update for 13.1</comment>
+    <requestid>204622</requestid>
+  </revision>
+  <revision rev="89" vrev="10">
+    <srcmd5>7e9ac07e7d22f53019a58d734391b6ee</srcmd5>
+    <version>13.1</version>
+    <time>1383205984</time>
+    <user>coolo</user>
+    <comment>Update tranlations.  Also for 13.1.</comment>
+    <requestid>205251</requestid>
+  </revision>
+  <revision rev="90" vrev="12">
+    <srcmd5>7e9ac07e7d22f53019a58d734391b6ee</srcmd5>
+    <version>13.1</version>
+    <time>1409300757</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="91" vrev="13">
+    <srcmd5>4305ffe96338cd2dfe30b3d980e466b2</srcmd5>
+    <version>13.1</version>
+    <time>1412799253</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>254719</requestid>
+  </revision>
+  <revision rev="92" vrev="14">
+    <srcmd5>e073c99f4ac3c22adadaa5199974cd14</srcmd5>
+    <version>13.1</version>
+    <time>1413355905</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>256271</requestid>
+  </revision>
+  <revision rev="93" vrev="15">
+    <srcmd5>6f6d2db59785bcde8a62767baf9b5d27</srcmd5>
+    <version>13.1</version>
+    <time>1414613425</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>258678</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>098a7ec0ae625f9ddb71896eb7607577</srcmd5>
+    <version>13.2</version>
+    <time>1438421667</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>317026</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>01f8b99e15640d3b462a5c25f765bcf1</srcmd5>
+    <version>20151007</version>
+    <time>1444285581</time>
+    <user>coolo</user>
+    <comment>- update from SVN</comment>
+    <requestid>337009</requestid>
+  </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>86954129747579e8bfb5d6916f41e80b</srcmd5>
+    <version>20151007</version>
+    <time>1476351153</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>434501</requestid>
+  </revision>
+  <revision rev="97" vrev="3">
+    <srcmd5>6d62cf7fd651a7de83cb9200e7c1b669</srcmd5>
+    <version>20151007</version>
+    <time>1477481379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>437302</requestid>
+  </revision>
+  <revision rev="98" vrev="4">
+    <srcmd5>d169d4cdd7ce8aa5348364fc0c67f1d4</srcmd5>
+    <version>20151007</version>
+    <time>1478626070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>439015</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>2352e13e878b21ede1d9734bd2d41821</srcmd5>
+    <version>84.87.20170202.0c8d823</version>
+    <time>1487260945</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456816</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>b8ac6a5f10c5efa51b2e0632ef68b1f9</srcmd5>
+    <version>84.87.20170618.be69114</version>
+    <time>1498551681</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>504641</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>f62cd7a62942fdefb3dfa26fd2c09c8a</srcmd5>
+    <version>84.87.20170713.beab045</version>
+    <time>1500275430</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20170713.beab045:
+  * Translated using a text editor + git
+
+- Update to version 84.87.20170713.f60fae5:
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (German)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Ukrainian)
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Put YaST2.desktop back into update-desktop-files-apps
+  * Update POT files after YaST change, sync PO files
+
+- Update to version 84.87.20170705.7bdbb1d:
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (German)</comment>
+    <requestid>510085</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>35301d0f85cc54cde784c6de0cc763d5</srcmd5>
+    <version>84.87.20170719.98170d3</version>
+    <time>1500670186</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20170719.98170d3:
+  * Regenerate PO/POT after &quot;Desktop Action *&quot; section change in tar2po
+  * tar2po: Handle &quot;Desktop Action *&quot; sections like &quot;Desktop Entry&quot; (boo#1049021)
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (German)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Russian)</comment>
+    <requestid>511445</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>12ce210cedb873bd06996dd1888ef139</srcmd5>
+    <version>84.87.20180301.7046b3d</version>
+    <time>1520021579</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20180301.7046b3d:
+  * Update to 42.3 final
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (French)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Galician)
+  * Translated using Weblate (Greek)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Danish)</comment>
+    <requestid>581940</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>6921a4f5dada65fe9eaeb737222a3cec</srcmd5>
+    <version>84.87.20180308.779a35a</version>
+    <time>1520588676</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20180308.779a35a:
+  * Revert &quot;Translated using Weblate (English (United Kingdom))&quot; (bsc#1084392)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Hungarian)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (French)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Korean)</comment>
+    <requestid>584209</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>92d71a9824f39e06ba6f358efa657884</srcmd5>
+    <version>84.87.20180321.47fa9a4e</version>
+    <time>1521716812</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20180321.47fa9a4e:
+  * Strip whitespace from xml extracted strings
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (French)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Hungarian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Swedish)
+
+- Update to version 84.87.20180319.d4e87748:
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (French)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Hungarian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Japanese)</comment>
+    <requestid>589705</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>42582ed7c64b657b7e363a59797dcaea</srcmd5>
+    <version>84.87.20180416.e6c83e49</version>
+    <time>1523956631</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20180416.e6c83e49:
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (French)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Hungarian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Lithuanian)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Swedish)
+
+- Update to version 84.87.20180321.c5ff1117:
+  * Merge polkitactions-freedesktop into polkitaction
+  * install polkitaction with name used by polkit
+  * Don't install unused appstream and mimeinfo files</comment>
+    <requestid>596988</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>10221235f02a9f1819ea35c19d292807</srcmd5>
+    <version>84.87.20180423.2e342f3a</version>
+    <time>1524576915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600379</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>7047f3053a7ac0b7f5ecd5057c8ec7f8</srcmd5>
+    <version>84.87.20180507.9a26f9e2</version>
+    <time>1525960161</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20180507.9a26f9e2:
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Greek)
+  * Translated using Weblate (Hindi)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Slovak)</comment>
+    <requestid>605393</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>c4123c8868fa188edd6e1d7cbeea4d5e</srcmd5>
+    <version>84.87.20190131.bc9de591</version>
+    <time>1550048644</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20190131.bc9de591:
+  * update desktop file data
+  * adjust for 15.1
+  * Also translate X-SuSE-YaST-Keywords entries in .desktop files
+  * Consistently use LF line ending
+  * Run generation with new enabled keys
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Galician)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Kabyle)
+  * Translated using Weblate (Persian)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Romanian)
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Turkish)
+  * Update appstreamdata.po
+  * Update mimeinfo.po (forwarded request 673372 from keichwa)</comment>
+    <requestid>673548</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>6c72ad6c266d54b267868b7cb502227b</srcmd5>
+    <version>84.87.20190314.58da68e1</version>
+    <time>1553611457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688149</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>1173180b1161c824f2da33dca02703ce</srcmd5>
+    <version>84.87.20190409.048e157e</version>
+    <time>1554978009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693116</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>988ed4835ff7704dc97526aca798ee30</srcmd5>
+    <version>84.87.20190504.726deb37</version>
+    <time>1557142129</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700989</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>b96a599a76798b98842b6e99ca58b939</srcmd5>
+    <version>84.87.20190508.853b49d2</version>
+    <time>1557751979</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702603</requestid>
+  </revision>
+</revisionlist>

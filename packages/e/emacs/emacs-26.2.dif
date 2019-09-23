@@ -1,0 +1,771 @@
+---
+ Makefile.in                     |    7 +-
+ configure                       |    6 --
+ configure.ac                    |    6 --
+ doc/man/etags.1                 |   20 ++++----
+ lib-src/Makefile.in             |    6 +-
+ lib-src/pop.c                   |    1 
+ lib/Makefile.in                 |    2 
+ lisp/cmuscheme.el               |    3 -
+ lisp/international/mule-cmds.el |    1 
+ lisp/net/ange-ftp.el            |    8 +--
+ lisp/site-load.el               |   41 ++++++++++++++++
+ lisp/speedbar.el                |    1 
+ lisp/textmodes/ispell.el        |   85 ++++++++++++++++++++++++++++++++---
+ site-lisp/term/func-keys.el     |   33 +++++++++++++
+ site-lisp/term/gnome.el         |   97 ++++++++++++++++++++++++++++++++++++++++
+ site-lisp/term/kvt.el           |   97 ++++++++++++++++++++++++++++++++++++++++
+ site-lisp/term/linux.el         |   79 ++++++++++++++++++++++++++++++++
+ site-lisp/term/locale.el        |   13 +++++
+ 18 files changed, 473 insertions(+), 33 deletions(-)
+
+--- Makefile.in
++++ Makefile.in	2019-04-15 12:04:25.158945850 +0000
+@@ -490,8 +490,8 @@ install-arch-dep: src install-arch-indep
+ 	umask 022; ${MKDIR_P} "$(DESTDIR)${bindir}"
+ 	$(MAKE) -C lib-src install
+ ifeq (${ns_self_contained},no)
+-	${INSTALL_PROGRAM} $(INSTALL_STRIP) src/emacs${EXEEXT} "$(DESTDIR)${bindir}/$(EMACSFULL)"
+-	-chmod 755 "$(DESTDIR)${bindir}/$(EMACSFULL)"
++	${INSTALL_PROGRAM} $(INSTALL_STRIP) src/emacs${EXEEXT} "$(DESTDIR)${bindir}/$(EMACS)"
++	-chmod 755 "$(DESTDIR)${bindir}/$(EMACS)"
+ ifndef NO_BIN_LINK
+ 	rm -f "$(DESTDIR)${bindir}/$(EMACS)"
+ 	cd "$(DESTDIR)${bindir}" && $(LN_S_FILEONLY) "$(EMACSFULL)" "$(EMACS)"
+@@ -682,6 +682,7 @@ install-man:
+ 	umask 022; ${MKDIR_P} "$(DESTDIR)${man1dir}"
+ 	thisdir=`/bin/pwd`; \
+ 	cd ${mansrcdir}; \
++	cp ctags.1 gnuctags.1; \
+ 	for page in *.1; do \
+ 	  test "$$page" = ChangeLog.1 && continue; \
+ 	  dest=`echo "$${page}" | sed -e 's/\.1$$//' -e '$(TRANSFORM)'`.1; \
+@@ -780,7 +781,7 @@ uninstall: uninstall-$(NTDIR) uninstall-
+ 	   for page in *.1; do \
+ 	     rm -f "$(DESTDIR)${man1dir}"/`echo "$${page}" | sed -e 's/\.1$$//' -e '$(TRANSFORM)'`.1$$ext; done; \
+ 	 fi)
+-	rm -f "$(DESTDIR)${bindir}/$(EMACS)" "$(DESTDIR)${bindir}/$(EMACSFULL)"
++	rm -f "$(DESTDIR)${bindir}/$(EMACS)"
+ 	(if cd "$(DESTDIR)${icondir}"; then \
+ 	   rm -f hicolor/*x*/apps/"${EMACS_NAME}.png" \
+ 	     "hicolor/scalable/apps/${EMACS_NAME}.svg" \
+--- configure
++++ configure	2019-04-15 12:04:25.158945850 +0000
+@@ -10465,10 +10465,8 @@ fi
+ LD_SWITCH_X_SITE_RPATH=
+ if test "${x_libraries}" != NONE; then
+   if test -n "${x_libraries}"; then
+-    LD_SWITCH_X_SITE=-L`$as_echo "$x_libraries" | sed -e 's/:/ -L/g'`
+-    LD_SWITCH_X_SITE_RPATH=-Wl,-rpath,`
+-      $as_echo "$x_libraries" | sed -e 's/:/ -Wl,-rpath,/g'
+-    `
++    LD_SWITCH_X_SITE="-L ${x_libraries%%:*}"
++    LD_SWITCH_X_SITE_RPATH="-Wl,-rpath-link,${x_libraries%%:*}"
+   fi
+   x_default_search_path=""
+   x_search_path=${x_libraries}
+--- configure.ac
++++ configure.ac	2019-04-15 12:04:25.162945775 +0000
+@@ -1806,10 +1806,8 @@ fi
+ LD_SWITCH_X_SITE_RPATH=
+ if test "${x_libraries}" != NONE; then
+   if test -n "${x_libraries}"; then
+-    LD_SWITCH_X_SITE=-L`AS_ECHO(["$x_libraries"]) | sed -e 's/:/ -L/g'`
+-    LD_SWITCH_X_SITE_RPATH=-Wl,-rpath,`
+-      AS_ECHO(["$x_libraries"]) | sed -e 's/:/ -Wl,-rpath,/g'
+-    `
++    LD_SWITCH_X_SITE="-L ${x_libraries%%:*}"
++    LD_SWITCH_X_SITE_RPATH="-Wl,-rpath-link,${x_libraries%%:*}"
+   fi
+   x_default_search_path=""
+   x_search_path=${x_libraries}
+--- doc/man/etags.1
++++ doc/man/etags.1	2019-04-15 12:04:25.162945775 +0000
+@@ -7,7 +7,7 @@
+ ..
+ 
+ .SH NAME
+-etags, ctags \- generate tag file for Emacs, vi
++etags, gnuctags \- generate tag file for Emacs, vi
+ .SH SYNOPSIS
+ .hy 0
+ .na
+@@ -25,7 +25,7 @@ etags, ctags \- generate tag file for Em
+ [\|\-\-help\|] [\|\-\-version\|]
+ \fIfile\fP .\|.\|.
+ 
+-\fBctags\fP [\|\-aCdgIQRVh\|] [\|\-BtTuvwx\|] [\|\-l \fIlanguage\fP\|]
++\fBgnuctag\fP [\|\-aCdgIQRVh\|] [\|\-BtTuvwx\|] [\|\-l \fIlanguage\fP\|]
+ .if n .br
+ [\|\-o \fItagfile\fP\|] [\|\-r \fIregexp\fP\|]
+ [\|\-\-parse\-stdin=\fIfile\fP\|]
+@@ -45,7 +45,7 @@ etags, ctags \- generate tag file for Em
+ The \|\fBetags\fP\| program is used to create a tag table file, in a format
+ understood by
+ .BR emacs ( 1 )\c
+-\&; the \|\fBctags\fP\| program is used to create a similar table in a
++\&; the \|\fBgnuctags\fP\| program is used to create a similar table in a
+ format understood by
+ .BR vi ( 1 )\c
+ \&.  Both forms of the program understand
+@@ -55,7 +55,7 @@ Ruby, PHP, PostScript, Python, Prolog, S
+ most assembler\-like syntaxes.
+ Both forms read the files specified on the command line, and write a tag
+ table (defaults: \fBTAGS\fP for \fBetags\fP, \fBtags\fP for
+-\fBctags\fP) in the current working directory.
++\fBgnuctags\fP) in the current working directory.
+ Files specified with relative file names will be recorded in the tag
+ table with file names relative to the directory where the tag table
+ resides.  If the tag table is in /dev or is the standard output,
+@@ -71,7 +71,7 @@ parsing of the file names following the
+ language, overriding guesses based on filename extensions.
+ .SH OPTIONS
+ Some options make sense only for the \fBvi\fP style tag files produced
+-by ctags;
++by gnuctags;
+ \fBetags\fP does not recognize them.
+ The programs accept unambiguous abbreviations for long option names.
+ .TP
+@@ -85,7 +85,7 @@ expression search instructions; the \fB\
+ the delimiter "\|\fB?\fP\|", to search \fIbackwards\fP through files.
+ The default is to use the delimiter "\|\fB/\fP\|", to search \fIforwards\fP
+ through files.
+-Only \fBctags\fP accepts this option.
++Only \fBgnuctag\fP accepts this option.
+ .TP
+ .B \-\-declarations
+ In C and derived languages, create tags for function declarations,
+@@ -174,7 +174,7 @@ the previous ones.  The regexps are of o
+ where \fItagregexp\fP is used to match the tag.  It should not match
+ useless characters.  If the match is such that more characters than
+ needed are unavoidably matched by \fItagregexp\fP, it may be useful to
+-add a \fInameregexp\fP, to narrow down the tag scope.  \fBctags\fP
++add a \fInameregexp\fP, to narrow down the tag scope.  \fBgnuctags\fP
+ ignores regexps without a \fInameregexp\fP.  The syntax of regexps is
+ the same as in emacs.  The following character escape sequences are
+ supported: \\a, \\b, \\d, \\e, \\f, \\n, \\r, \\t, \\v, which
+@@ -253,15 +253,15 @@ tag entries for other files in place.  C
+ by deleting the existing entries for the given files and then
+ rewriting the new entries at the end of the tags file.  It is often
+ faster to simply rebuild the entire tag file than to use this.
+-Only \fBctags\fP accepts this option.
++Only \fBgnuctags\fP accepts this option.
+ .TP
+ .B \-v, \-\-vgrind
+ Instead of generating a tag file, write index (in \fBvgrind\fP format)
+-to standard output.  Only \fBctags\fP accepts this option.
++to standard output.  Only \fBgnuctags\fP accepts this option.
+ .TP
+ .B \-x, \-\-cxref
+ Instead of generating a tag file, write a cross reference (in
+-\fBcxref\fP format) to standard output.  Only \fBctags\fP accepts this option.
++\fBcxref\fP format) to standard output.  Only \fBgnuctags\fP accepts this option.
+ .TP
+ .B \-h, \-H, \-\-help
+ Print usage information.  Followed by one or more \-\-language=LANG
+--- lib-src/Makefile.in
++++ lib-src/Makefile.in	2019-04-15 12:04:25.162945775 +0000
+@@ -30,6 +30,8 @@ CC=@CC@
+ CFLAGS=@CFLAGS@
+ CPPFLAGS = @CPPFLAGS@
+ LDFLAGS = @LDFLAGS@
++override CFLAGS := $(CFLAGS:-fno-PIE=-g) -fPIE
++override LDFLAGS += -pie
+ 
+ version=@version@
+ ## Used in $archlibdir.
+@@ -158,7 +160,7 @@ MKDIR_P = @MKDIR_P@
+ CLIENTW = @CLIENTW@
+ 
+ # Things that a user might actually run, which should be installed in bindir.
+-INSTALLABLES = etags${EXEEXT} ctags${EXEEXT} emacsclient${EXEEXT} $(CLIENTW) \
++INSTALLABLES = etags${EXEEXT} gnuctags${EXEEXT} emacsclient${EXEEXT} $(CLIENTW) \
+                ebrowse${EXEEXT}
+ 
+ # Things that Emacs runs internally, or during the build process,
+@@ -376,7 +378,7 @@ etags${EXEEXT}: ${etags_deps}
+ ## etags.o files on top of each other.
+ ## FIXME?
+ ## Can't we use a wrapper that calls 'etags --ctags'?
+-ctags${EXEEXT}: ${srcdir}/ctags.c ${etags_deps}
++gnuctags${EXEEXT}: ${srcdir}/ctags.c ${etags_deps}
+ 	$(AM_V_CCLD)$(CC) ${ALL_CFLAGS} $(etags_cflags) $< $(etags_libs)
+ 
+ ebrowse${EXEEXT}: ${srcdir}/ebrowse.c ${srcdir}/../lib/min-max.h $(NTLIB) \
+--- lib-src/pop.c
++++ lib-src/pop.c	2019-04-15 12:04:25.242944251 +0000
+@@ -26,6 +26,7 @@ along with GNU Emacs.  If not, see <http
+ #ifdef MAIL_USE_POP
+ 
+ #include <sys/types.h>
++#include <ctype.h>
+ #ifdef WINDOWSNT
+ #include "ntlib.h"
+ #undef _WIN32_WINNT
+--- lib/Makefile.in
++++ lib/Makefile.in	2019-04-15 12:04:25.242944251 +0000
+@@ -50,6 +50,8 @@ am__v_at_ = $(am__v_at_@AM_DEFAULT_V@)
+ am__v_at_0 = @
+ am__v_at_1 =
+ 
++override CFLAGS := $(CFLAGS) -fPIC
++
+ ALL_CFLAGS= \
+   $(C_SWITCH_SYSTEM) $(C_SWITCH_MACHINE) $(DEPFLAGS) \
+   $(GNULIB_WARN_CFLAGS) $(WERROR_CFLAGS) $(PROFILING_CFLAGS) $(CFLAGS) \
+--- lisp/cmuscheme.el
++++ lisp/cmuscheme.el	2019-04-15 12:04:25.242944251 +0000
+@@ -241,7 +241,8 @@ is run).
+ 			 (read-string "Run Scheme: " scheme-program-name)
+ 			 scheme-program-name)))
+   (if (not (comint-check-proc "*scheme*"))
+-      (let ((cmdlist (split-string-and-unquote cmd)))
++      (let ((cmdlist (split-string-and-unquote cmd))
++	    process-connection-type)
+ 	(set-buffer (apply 'make-comint "scheme" (car cmdlist)
+ 			   (scheme-start-file (car cmdlist)) (cdr cmdlist)))
+ 	(inferior-scheme-mode)))
+--- lisp/international/mule-cmds.el
++++ lisp/international/mule-cmds.el	2019-04-15 12:04:25.242944251 +0000
+@@ -39,6 +39,7 @@
+ 
+ (defvar mule-keymap
+   (let ((map (make-sparse-keymap)))
++    (define-key map "m" 'toggle-enable-multibyte-characters)
+     (define-key map "f" 'set-buffer-file-coding-system)
+     (define-key map "r" 'revert-buffer-with-coding-system)
+     (define-key map "F" 'set-file-name-coding-system)
+--- lisp/net/ange-ftp.el
++++ lisp/net/ange-ftp.el	2019-04-15 12:04:25.242944251 +0000
+@@ -4971,7 +4971,7 @@ NEWNAME should be the name to give the n
+ ;  "If a host matches this regexp then it is assumed to be running VOS.")
+ ;
+ ;(defun ange-ftp-vos-host (host)
+-;  (and ange-ftp-vos-host-regexp
++;  (and host ange-ftp-vos-host-regexp
+ ;       (save-match-data
+ ;	 (string-match ange-ftp-vos-host-regexp host))))
+ ;
+@@ -5086,7 +5086,7 @@ NEWNAME should be the name to give the n
+ 
+ ;; Return non-nil if HOST is running VMS.
+ (defun ange-ftp-vms-host (host)
+-  (and ange-ftp-vms-host-regexp
++  (and host ange-ftp-vms-host-regexp
+        (string-match-p ange-ftp-vms-host-regexp host)))
+ 
+ ;; Because some VMS ftp servers convert filenames to lower case
+@@ -5594,7 +5594,7 @@ Other orders of $ and _ seem to all work
+ 
+ ;; Return non-nil if HOST is running MTS.
+ (defun ange-ftp-mts-host (host)
+-  (and ange-ftp-mts-host-regexp
++  (and host ange-ftp-mts-host-regexp
+        (string-match-p ange-ftp-mts-host-regexp host)))
+ 
+ ;; Parse the current buffer which is assumed to be in mts ftp dir format.
+@@ -5792,7 +5792,7 @@ Other orders of $ and _ seem to all work
+ 
+ ;; Return non-nil if HOST is running CMS.
+ (defun ange-ftp-cms-host (host)
+-  (and ange-ftp-cms-host-regexp
++  (and host ange-ftp-cms-host-regexp
+        (string-match-p ange-ftp-cms-host-regexp host)))
+ 
+ (defun ange-ftp-add-cms-host (host)
+--- lisp/site-load.el
++++ lisp/site-load.el	2019-04-15 12:04:25.246944174 +0000
+@@ -0,0 +1,41 @@
++;;;;
++;;; emacs20.xx/lisp/site-load.el
++;;; Copyright (c) 1995,96,98,99 SuSE Gmbh Nuernberg, Germany.  All rights reserved.
++;;;
++;;; Autor: Werner Fink  <werner@suse.de>, No warranty of any kind
++;;;;
++;; CONFIGURATION (under bash):
++;; (export CC=gcc; \
++;;  export CFLAGS="-O2 $(arch dependent flags) -pipe \
++;;          -DSYSTEM_PURESIZE_EXTRA=25000 -DSITELOAD_PURESIZE_EXTRA=10000" ; \
++;;  ./configure $(arch)-suse-linux --with-x --with-x-toolkit=lucid \
++;;              --with-gcc --with-pop --with-system-malloc --prefix=/usr \
++;;		--exec-prefix=/usr \
++;;              --x-includes=/usr/X11R6/include --x-libraries=/usr/X11R6/lib )
++;;
++;; include bug fixes you have
++;;
++;; MAKE:
++;;   make LDFLAGS=-s CC=gcc CFLAGS="-O2 $(arch dependent flags) -pipe \
++;;    -DSYSTEM_PURESIZE_EXTRA=25000 -DSITELOAD_PURESIZE_EXTRA=10000"
++;;
++;; DOC:
++;;   lisp/delsel.elc lisp/lpr.elc added to src/Makefile.in for DOCumentation
++;;
++;;;;
++(garbage-collect)
++
++(load "lpr")
++(setq lpr-headers-switches (list "-h"))
++(setq lpr-add-switches t)
++(garbage-collect)
++
++;; Overwrite `load delsel'
++;; Choose `t' in your ~/.emacs
++(custom-set-variables '(delete-selection-mode nil))
++(garbage-collect)
++
++(setq gnus-default-nntp-server "news")
++(garbage-collect)
++
++;;; site-load.el ends here
+--- lisp/speedbar.el
++++ lisp/speedbar.el	2019-04-15 12:04:25.246944174 +0000
+@@ -794,6 +794,7 @@ If you want to change this while speedba
+ 
+     ;; Navigation.
+     (define-key map "n" 'speedbar-next)
++    (define-key map [tab] 'speedbar-next)
+     (define-key map "p" 'speedbar-prev)
+     (define-key map "\M-n" 'speedbar-restricted-next)
+     (define-key map "\M-p" 'speedbar-restricted-prev)
+--- lisp/textmodes/ispell.el
++++ lisp/textmodes/ispell.el	2019-04-15 12:04:25.246944174 +0000
+@@ -202,10 +202,12 @@ Must be greater than 1."
+ ;; cause an error; and one of the other spelling engines below is
+ ;; almost certainly installed in any case, for enchant to use.
+ (defcustom ispell-program-name
+-  (or (executable-find "aspell")
+-      (executable-find "ispell")
+-      (executable-find "hunspell")
+-      "ispell")
++  (if (functionp 'append-ispell-dict-alist)
++	"ispell"
++    (or (executable-find "aspell")
++	(executable-find "ispell")
++	(executable-find "hunspell")
++	"ispell"))
+   "Program invoked by \\[ispell-word] and \\[ispell-region] commands."
+   :type 'string
+   :set (lambda (symbol value)
+@@ -1194,7 +1196,8 @@ dictionary from that list was found."
+     (setq hunspell-default-dict (or hunspell-multi-dict
+ 				    (car hunspell-default-dict)))
+     (setq hunspell-default-dict-entry
+-	  (ispell-parse-hunspell-affix-file hunspell-default-dict))
++	  (if hunspell-default-dict
++	      (ispell-parse-hunspell-affix-file hunspell-default-dict) nil))
+     ;; Create an alist of found dicts with only names, except for default dict.
+     (setq ispell-hunspell-dictionary-alist
+ 	  (list (cons nil (cdr hunspell-default-dict-entry))))
+@@ -1430,6 +1433,78 @@ The variable `ispell-library-directory'
+ (if ispell-menu-map-needed
+     (progn
+       (setq ispell-menu-map (make-sparse-keymap "Spell"))
++      ;; Begin adding list for ispell dictonaries installed on SuSE
++      (if (and (functionp 'append-ispell-dict-alist)
++	       (symbolp 'ispell-program-name)
++	       (string-match "ispell" ispell-program-name))
++	(let ((dicts (reverse (cons (cons "default" nil)
++		       (append ispell-local-dictionary-alist ispell-dictionary-alist))))
++	      (path (and (boundp 'ispell-library-path) ispell-library-path))
++	      name load-dict)
++	  (dolist (dict dicts)
++	    (setq name (car dict)
++		  load-dict (car (cdr (member "-d" (nth 5 dict)))))
++	    (cond ((not (stringp name))
++		   (define-key ispell-menu-map (vector 'default)
++		     (cons "Select Default Dict"
++			   (cons "Dictionary for which Ispell was configured"
++				 (list 'lambda () '(interactive)
++				       (list 'ispell-change-dictionary "default"))))))
++		  ((or (not path)           ; load all if library dir not defined
++		       (file-exists-p (concat path "/" name ".hash"))
++		       (file-exists-p (concat path "/" name ".has"))
++		       (and load-dict
++			    (or (file-exists-p(concat path "/" load-dict ".hash"))
++				(file-exists-p(concat path "/" load-dict ".has")))))
++		   (define-key ispell-menu-map (vector (intern name))
++		     (cons (concat "Select " (capitalize name) " Dict")
++			   (list 'lambda () '(interactive)
++				 (list 'ispell-change-dictionary name))))))))
++	 (if (and (functionp 'ispell-find-aspell-dictionaries)
++		  (symbolp 'ispell-program-name)
++		  (string-match "aspell" ispell-program-name))
++	     (progn
++	       (ispell-find-aspell-dictionaries)
++	       (let ((dicts (reverse (cons (cons "default" nil)
++			      (append ispell-local-dictionary-alist ispell-dictionary-alist))))
++		     name load-dict)
++		 (dolist (dict dicts)
++		   (setq name (car dict))
++		   (cond ((not (stringp name))
++			  (define-key ispell-menu-map (vector 'default)
++			    (cons "Select Default Dict"
++				  (cons "Dictionary for which Aspell was configured"
++					(list 'lambda () '(interactive)
++					      (list 'ispell-change-dictionary "default"))))))
++			 ((and (stringp name)
++			       (ispell-aspell-find-dictionary name))
++			  (define-key ispell-menu-map (vector (intern name))
++			    (cons (concat "Select " (capitalize name) " Dict")
++				  (list 'lambda () '(interactive)
++					(list 'ispell-change-dictionary name)))))))))
++	  (if (and (functionp 'ispell-find-hunspell-dictionaries)
++		   (symbolp 'ispell-program-name)
++		   (string-match "hunspell" ispell-program-name))
++              (progn
++		(ispell-find-hunspell-dictionaries)
++                (let ((dicts (reverse (cons (cons "default" nil)
++                               (append ispell-local-dictionary-alist ispell-hunspell-dictionary-alist))))
++                      name load-dict)
++                  (dolist (dict dicts)
++                    (setq name (car dict))
++                    (cond ((not (stringp name))
++                           (define-key ispell-menu-map (vector 'default)
++                             (cons "Select Default Dict"
++                                   (cons "Dictionary for which Hunspell was configured"
++                                         (list 'lambda () '(interactive)
++                                               (list 'ispell-change-dictionary "default"))))))
++                           ((stringp name)
++                            (define-key ispell-menu-map (vector (intern name))
++                              (cons (concat "Select " (capitalize name) " Dict")
++                                    (list 'lambda () '(interactive)
++                                          (list 'ispell-change-dictionary name)
++                                          )))))))))))
++      ;; End adding list for ispell dictonaries installed on SuSE
+       (define-key ispell-menu-map [ispell-change-dictionary]
+ 	`(menu-item ,(purecopy "Change Dictionary...") ispell-change-dictionary
+ 		    :help ,(purecopy "Supply explicit dictionary file name")))
+--- site-lisp/term/func-keys.el
++++ site-lisp/term/func-keys.el	2019-04-15 12:04:25.246944174 +0000
+@@ -0,0 +1,33 @@
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++;;; term/func-keys.el for site-lisp path
++;;; Copyright (c) 1996-2001 SuSE Gmbh Nuernberg, Germany.
++;;;
++;;; Author: Werner Fink  <werner@suse.de>, No warranty of any kind
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++;; num block
++;; kp_f1 .. kp_f4 and kp_tab not found on MF-102
++  (global-set-key [kp-f1]   esc-map) ; Escape
++  (global-set-key [kp-f2]  'undo) ; Undo
++  (global-set-key [kp-f3]  'isearch-forward) ; Search
++  (global-set-key [kp-f4]  'kill-line) ; Kill-Line
++;;
++;; Backspace, Delete and any thing else
++;;
++(if (not window-system)
++      ; Do nothing within terminals because they know about
++      nil
++  (if (fboundp 'normal-erase-is-backspace-mode)
++     (normal-erase-is-backspace-mode 1)
++    (global-set-key   [delete]      'delete-char))
++ ;(global-set-key   [delete]      '[127])
++ ;(global-unset-key [backspace])
++ ;(global-set-key   [backspace]   '[127])
++)
++;;
++;; Wheel mouse support
++;;
++(if (fboundp 'mouse-wheel-mode)
++  (mouse-wheel-mode 1)
++)
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++;; Ende von func-keys.el
+--- site-lisp/term/gnome.el
++++ site-lisp/term/gnome.el	2019-04-15 12:04:25.246944174 +0000
+@@ -0,0 +1,97 @@
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++;;; term/gnomw.el for site-lisp path
++;;; Copyright (c) 2000 SuSE Gmbh Nuernberg, Germany.  All rights reserved.
++;;;
++;;; Author: Werner Fink  <werner@suse.de>, No warranty of any kind
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++; (define-key function-key-map "\e[1~" [find])
++; (define-key function-key-map "\eOH"  [home])
++  (define-key function-key-map "\e[1~" [home])
++  (define-key function-key-map "\e[2~" [insertchar])
++  (define-key function-key-map "\e[3~" [deletechar])
++; (define-key function-key-map "\e[4~" [select])
++; (define-key function-key-map "\eOF"  [end])
++  (define-key function-key-map "\e[4~" [end])
++  (define-key function-key-map "\e[5~" [prior])
++  (define-key function-key-map "\e[6~" [next])
++  (define-key function-key-map "\e[OP" [f1])
++  (define-key function-key-map "\e[OQ" [f2])
++  (define-key function-key-map "\e[OR" [f3])
++  (define-key function-key-map "\e[OS" [f4])
++  (define-key function-key-map "\e[15~" [f5])
++  (define-key function-key-map "\e[17~" [f6])
++  (define-key function-key-map "\e[18~" [f7])
++  (define-key function-key-map "\e[19~" [f8])
++  (define-key function-key-map "\e[20~" [f9])
++  (define-key function-key-map "\e[21~" [f10])
++  (define-key function-key-map "\e[23~" [f11])
++  (define-key function-key-map "\e[24~" [f12])
++  (define-key function-key-map "\e[25~" [f13])
++  (define-key function-key-map "\e[26~" [f14])
++  (define-key function-key-map "\e[28~" [help])
++  (define-key function-key-map "\e[29~" [menu])
++  (define-key function-key-map "\e?\e[28~" [M-help])
++  (define-key function-key-map "\e?\e[29~" [M-menu])
++  (define-key function-key-map "\e[31~" [f17])
++  (define-key function-key-map "\e[32~" [f18])
++  (define-key function-key-map "\e[33~" [f19])
++  (define-key function-key-map "\e[34~" [f20])
++;;
++;; num block
++;; [home] and [end] found in num block
++; (define-key function-key-map "\eOH" [home])
++; (define-key function-key-map "\eOF" [end])
++  (define-key function-key-map "\e[1~" [home])
++  (define-key function-key-map "\e[4~" [end])
++;;
++;; Locked num block
++  (define-key function-key-map "\eOI" [kp-tab])
++  (define-key function-key-map "\eOj" [kp-multiply])
++  (define-key function-key-map "\eOk" [kp-add])
++  (define-key function-key-map "\eOl" [kp-separator])
++  (define-key function-key-map "\eOM" [kp-enter])
++  (define-key function-key-map "\eOm" [kp-subtract])
++  (define-key function-key-map "\eOn" [kp-decimal])
++; (define-key function-key-map "\eOn" [kp-period]) ; [kp-decimal]
++  (define-key function-key-map "\eOo" [kp-divide])
++  (define-key function-key-map "\eOp" [kp-0])
++  (define-key function-key-map "\eOq" [kp-1])
++  (define-key function-key-map "\eOr" [kp-2])
++  (define-key function-key-map "\eOs" [kp-3])
++  (define-key function-key-map "\eOt" [kp-4])
++  (define-key function-key-map "\eOu" [kp-5])
++  (define-key function-key-map "\eOv" [kp-6])
++  (define-key function-key-map "\eOw" [kp-7])
++  (define-key function-key-map "\eOx" [kp-8])
++  (define-key function-key-map "\eOy" [kp-9])
++;;
++;; Undefine some ESC ESC behavior --- for later use
++  (global-unset-key "\e\e")
++  (define-key esc-map "\e" nil)
++;;
++  (define-key function-key-map  "\eOD" [left])
++  (define-key function-key-map  "\eOC" [right])
++  (define-key function-key-map  "\eOA" [up])
++  (define-key function-key-map  "\eOB" [down])
++;;
++  (define-key function-key-map  "\e\eOD" [M-left])
++  (define-key function-key-map  "\e\eOC" [M-right])
++  (define-key function-key-map  "\e\eOA" [M-up])
++  (define-key function-key-map  "\e\eOB" [M-down])
++;;
++;; Not in Use?
++  (define-key function-key-map "\C-?\eOD" [C-left])
++  (define-key function-key-map "\C-?\eOC" [C-right])
++  (define-key function-key-map "\C-?\eOA" [C-up])
++  (define-key function-key-map "\C-?\eOB" [C-down])
++;;
++;; Backspace, Delete and any thing else
++;;
++  (global-unset-key [insertchar])
++  (global-set-key   [insertchar]  'overwrite-mode)
++  (global-unset-key [deletechar])
++  (global-set-key   [deletechar]  'delete-char)
++;;
++(load "term/func-keys"  nil t)
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++;; Ende von gnomw.el
+--- site-lisp/term/kvt.el
++++ site-lisp/term/kvt.el	2019-04-15 12:04:25.246944174 +0000
+@@ -0,0 +1,97 @@
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++;;; term/kvt.el for site-lisp path
++;;; Copyright (c) 2000 SuSE Gmbh Nuernberg, Germany.  All rights reserved.
++;;;
++;;; Author: Werner Fink  <werner@suse.de>, No warranty of any kind
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++  (define-key function-key-map "\e[1~" [find])
++  (define-key function-key-map "\eOH"  [home])
++  (define-key function-key-map "\e[2~" [insertchar])
++  (define-key function-key-map "\e[3~" [deletechar])
++  (define-key function-key-map "\e[4~" [select])
++  (define-key function-key-map "\eOF"  [end])
++  (define-key function-key-map "\e[5~" [prior])
++  (define-key function-key-map "\e[6~" [next])
++  (define-key function-key-map "\e[11~" [f1])
++  (define-key function-key-map "\e[12~" [f2])
++  (define-key function-key-map "\e[13~" [f3])
++  (define-key function-key-map "\e[14~" [f4])
++  (define-key function-key-map "\e[15~" [f5])
++  (define-key function-key-map "\e[17~" [f6])
++  (define-key function-key-map "\e[18~" [f7])
++  (define-key function-key-map "\e[19~" [f8])
++  (define-key function-key-map "\e[20~" [f9])
++  (define-key function-key-map "\e[21~" [f10])
++  (define-key function-key-map "\e[23~" [f11])
++  (define-key function-key-map "\e[24~" [f12])
++  (define-key function-key-map "\e[25~" [f13])
++  (define-key function-key-map "\e[26~" [f14])
++  (define-key function-key-map "\e[28~" [help])
++  (define-key function-key-map "\e[29~" [menu])
++  (define-key function-key-map "\e?\e[28~" [M-help])
++  (define-key function-key-map "\e?\e[29~" [M-menu])
++  (define-key function-key-map "\e[31~" [f17])
++  (define-key function-key-map "\e[32~" [f18])
++  (define-key function-key-map "\e[33~" [f19])
++  (define-key function-key-map "\e[34~" [f20])
++;;
++;; num block
++;; [home] and [end] found in num block
++  (define-key function-key-map "\eOH" [home])
++  (define-key function-key-map "\eOF" [end])
++;;
++;; Locked num block
++  (define-key function-key-map "\eOP" [kp-f1])
++  (define-key function-key-map "\eOQ" [kp-f2])
++  (define-key function-key-map "\eOR" [kp-f3])
++  (define-key function-key-map "\eOS" [kp-f4])
++  (define-key function-key-map "\eOI" [kp-tab])
++  (define-key function-key-map "\eOj" [kp-multiply])
++  (define-key function-key-map "\eOk" [kp-add])
++  (define-key function-key-map "\eOl" [kp-separator])
++  (define-key function-key-map "\eOM" [kp-enter])
++  (define-key function-key-map "\eOm" [kp-subtract])
++  (define-key function-key-map "\eOn" [kp-decimal])
++; (define-key function-key-map "\eOn" [kp-period]) ; [kp-decimal]
++  (define-key function-key-map "\eOo" [kp-divide])
++  (define-key function-key-map "\eOp" [kp-0])
++  (define-key function-key-map "\eOq" [kp-1])
++  (define-key function-key-map "\eOr" [kp-2])
++  (define-key function-key-map "\eOs" [kp-3])
++  (define-key function-key-map "\eOt" [kp-4])
++  (define-key function-key-map "\eOu" [kp-5])
++  (define-key function-key-map "\eOv" [kp-6])
++  (define-key function-key-map "\eOw" [kp-7])
++  (define-key function-key-map "\eOx" [kp-8])
++  (define-key function-key-map "\eOy" [kp-9])
++;;
++;; Undefine some ESC ESC behavior --- for later use
++  (global-unset-key "\e\e")
++  (define-key esc-map "\e" nil)
++;;
++  (define-key function-key-map  "\eOD" [left])
++  (define-key function-key-map  "\eOC" [right])
++  (define-key function-key-map  "\eOA" [up])
++  (define-key function-key-map  "\eOB" [down])
++;;
++  (define-key function-key-map  "\e\eOD" [M-left])
++  (define-key function-key-map  "\e\eOC" [M-right])
++  (define-key function-key-map  "\e\eOA" [M-up])
++  (define-key function-key-map  "\e\eOB" [M-down])
++;;
++;; Not in Use?
++  (define-key function-key-map "\C-?\eOD" [C-left])
++  (define-key function-key-map "\C-?\eOC" [C-right])
++  (define-key function-key-map "\C-?\eOA" [C-up])
++  (define-key function-key-map "\C-?\eOB" [C-down])
++;;
++;; Backspace, Delete and any thing else
++;;
++  (global-unset-key [insertchar])
++  (global-set-key   [insertchar]  'overwrite-mode)
++  (global-unset-key [deletechar])
++  (global-set-key   [deletechar]  'delete-char)
++;;
++(load "term/func-keys"  nil t)
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++;; Ende von kvt.el
+--- site-lisp/term/linux.el
++++ site-lisp/term/linux.el	2019-04-15 12:04:25.246944174 +0000
+@@ -0,0 +1,79 @@
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++;;; term/linux.el for site-lisp path
++;;; Copyright (c) 1996 SuSE Gmbh Nuernberg, Germany.  All rights reserved.
++;;;
++;;; Author: Werner Fink  <werner@suse.de>, No warranty of any kind
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++  (define-key function-key-map "\e[1~" [home])
++  (define-key function-key-map "\e[2~" [insertchar])
++  (define-key function-key-map "\e[3~" [deletechar])
++  (define-key function-key-map "\e[4~" [end])
++  (define-key function-key-map "\e[5~" [prior])
++  (define-key function-key-map "\e[6~" [next])
++  (define-key function-key-map "\e[[A" [f1])
++  (define-key function-key-map "\e[[B" [f2])
++  (define-key function-key-map "\e[[C" [f3])
++  (define-key function-key-map "\e[[D" [f4])
++  (define-key function-key-map "\e[[E" [f5])
++  (define-key function-key-map "\e[17~" [f6])
++  (define-key function-key-map "\e[18~" [f7])
++  (define-key function-key-map "\e[19~" [f8])
++  (define-key function-key-map "\e[20~" [f9])
++  (define-key function-key-map "\e[21~" [f10])
++  (define-key function-key-map "\e[23~" [f11])
++  (define-key function-key-map "\e[24~" [f12])
++  (define-key function-key-map "\e[25~" [f13])
++  (define-key function-key-map "\e[26~" [f14])
++  (define-key function-key-map "\e[28~" [help])
++  (define-key function-key-map "\e[29~" [menu])
++  (define-key function-key-map "\e?\e[28~" [M-help])
++  (define-key function-key-map "\e?\e[29~" [M-menu])
++  (define-key function-key-map "\e[31~" [f17])
++  (define-key function-key-map "\e[32~" [f18])
++  (define-key function-key-map "\e[33~" [f19])
++  (define-key function-key-map "\e[34~" [f20])
++;;
++;; Not in Use?
++;; ----------------------------------
++;; Console-Setting for Linux ???
++  (define-key function-key-map "\e[H"  [M-up])
++  (define-key function-key-map "\e[Y"  [M-down])
++  (define-key function-key-map "\e[M"  [menu])
++  (define-key function-key-map "\e?\e[M"  [M-menu])
++  (define-key function-key-map "\e[P"  [pause])
++;;
++;; num block
++  (define-key function-key-map "\e[G" [begin])
++;;
++;; Locked num block Nothing to do :-)
++;;
++;; Undefine some ESC ESC behavior --- for later use
++  (global-unset-key "\e\e")
++  (define-key esc-map "\e" nil)
++;;
++  (define-key function-key-map "\e[D" [left])
++  (define-key function-key-map "\e[C" [right])
++  (define-key function-key-map "\e[A" [up])
++  (define-key function-key-map "\e[B" [down])
++;;
++  (define-key function-key-map "\e\e[D" [M-left])
++  (define-key function-key-map "\e\e[C" [M-right])
++  (define-key function-key-map "\e\e[A" [M-up])
++  (define-key function-key-map "\e\e[B" [M-down])
++;;
++;; Not in Use?
++  (define-key function-key-map "\C-?\e[D" [C-left])
++  (define-key function-key-map "\C-?\e[C" [C-right])
++  (define-key function-key-map "\C-?\e[A" [C-up])
++  (define-key function-key-map "\C-?\e[B" [C-down])
++;;
++;; Backspace, Delete and any thing else
++;;
++  (global-unset-key [insertchar])
++  (global-set-key   [insertchar]  'overwrite-mode)
++  (global-unset-key [deletechar])
++  (global-set-key   [deletechar]  'delete-char)
++;;
++(load "term/func-keys" nil t)
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++;; Ende von linux.el
+--- site-lisp/term/locale.el
++++ site-lisp/term/locale.el	2019-04-15 12:04:25.246944174 +0000
+@@ -0,0 +1,13 @@
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++;;; term/locale.el for site-lisp path
++;;; Copyright (c) 1996-2003 SuSE Linux AG Nuernberg, Germany.
++;;; Copyright (c) 2007 SuSE LINUX Products GmbH Nuernberg, Germany.
++;;;
++;;; Author: Werner Fink  <werner@suse.de>, No warranty of any kind
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++
++(add-hook 'term-setup-hook (function (lambda ()
++				       (load "term/func-keys" t t))))
++;;
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++;; Ende von locale.el

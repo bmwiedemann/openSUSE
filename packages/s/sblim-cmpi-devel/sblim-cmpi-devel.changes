@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Mon Apr  1 18:08:21 UTC 2013 - kkaempf@suse.com
+
+- fix includes to compile with older gcc versions
+
+-------------------------------------------------------------------
+Wed Aug  1 09:55:11 UTC 2012 - kkaempf@suse.com
+
+- Update to 2.0.3
+  Bugs Fixed:
+  - 3531598 several CmpiObjectPath methods leak memory
+  - 3531599 replace CMGetCharPtr with CMGetCharsPtr
+  - 3531597 returnData with char type fails
+  - 3531596 CmpiData uses wrong union for unsigned data
+
+  New Features:
+  - 3531601 add CmpiString constructor for char data
+  - 3531603 no way to determine internal type of CmpiData
+    (add getType function)
+
+-------------------------------------------------------------------
+Tue Feb 28 17:34:35 UTC 2012 - kkaempf@suse.com
+
+- Conflict only with pre-2.11 versions of tog-pegasus
+
+-------------------------------------------------------------------
+Wed Dec 14 12:36:59 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Sun Nov 27 07:02:41 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Jul 14 06:58:48 UTC 2011 - kkaempf@novell.com
+
+- update to 2.0.2
+  Bugfix release:
+  * 2688794 Fixed typo in cmpi/cmpidt.h
+  * 2817255 CmpiData constructor for CmpiString argument produce garbage
+  * 3005546 cmpi thread key typed defined wrong on s390x
+
+-------------------------------------------------------------------
+Wed Jan 13 11:32:25 UTC 2010 - kkaempf@novell.com
+
+- Fix _docdir for Mandriva
+
+-------------------------------------------------------------------
+Wed Jan 13 10:53:55 UTC 2010 - kkaempf@novell.com
+
+- Fix _docdir for Fedora/RHEL
+
+-------------------------------------------------------------------
+Thu Nov 19 13:25:23 CET 2009 - kukuk@suse.de
+
+- Fix filelist (wrong usage of %dir)
+
+-------------------------------------------------------------------
+Wed Nov 18 16:19:17 CET 2009 - ro@suse.de
+
+- fix filelist (missing defattr) 
+
+-------------------------------------------------------------------
+Mon Nov  9 21:58:35 CET 2009 - bwhiteley@suse.de
+
+- Split c++ wrapper headers and devel lib into separate package.
+  (fate#306414)
+
+-------------------------------------------------------------------
+Wed Oct 14 15:50:37 CEST 2009 - mhrusecky@suse.cz
+
+- sending current development version to SLE11 SP1 (fate#307089)
+
+-------------------------------------------------------------------
+Mon May 11 14:13:22 CEST 2009 - mhrusecky@suse.cz
+
+- fixed typo in cmpidt.h
+- adding conflict with tog-pegasus to spec file
+
+-------------------------------------------------------------------
+Fri May  8 11:30:06 CEST 2009 - mc@suse.de
+
+- fix CmpiString
+- add Doxygen file and create autodocs
+- build and package c++ wrapper library 
+
+-------------------------------------------------------------------
+Tue Mar 10 01:59:36 CET 2009 - ro@suse.de
+
+- fix filelist 
+
+-------------------------------------------------------------------
+Fri Mar  6 11:51:28 CET 2009 - kkaempf@suse.de
+
+- Update to 2.0.1
+- Don't run ldconfig
+- Fix docdir
+
+-------------------------------------------------------------------
+Sun May 18 11:48:13 CEST 2008 - aj@suse.de
+
+- Do not clean build root in install section.
+
+-------------------------------------------------------------------
+Fri May  2 14:53:03 MDT 2008 - bwhiteley@suse.de
+
+- First checkin
+

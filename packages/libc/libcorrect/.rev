@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aebc2c6e3837e568918897db2c5f2157</srcmd5>
+    <version>0.0.0+git.20180109</version>
+    <time>1552299456</time>
+    <user>dimstar_suse</user>
+    <comment>dependency of other sdr package</comment>
+    <requestid>683702</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a77beaab68075d55531aff979155fdb7</srcmd5>
+    <version>0.0.0+git.20180109</version>
+    <time>1552643564</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685260</requestid>
+  </revision>
+</revisionlist>

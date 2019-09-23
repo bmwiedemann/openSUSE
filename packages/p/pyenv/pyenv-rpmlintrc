@@ -1,0 +1,4 @@
+# interpreter is correct, that's the nature of this package
+# so filtering this "error" message
+addFilter("wrong-script-interpreter .* /usr/bin/env")
+

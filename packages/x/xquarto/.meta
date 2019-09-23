@@ -1,0 +1,16 @@
+<package name="xquarto" project="openSUSE:Factory">
+  <title>Xquarto is a board game designed for the X windows environment</title>
+  <description>The game is a two-player game. Player 1 chooses one of the 16 pieces.
+Player 2 then places this piece on one of the 16 squares of the board
+and chooses a piece out of the remaining 15 pieces which he gives to
+player 1, who places this piece on one of the remaining 15 squares on
+the board, etc...
+
+Xquarto supports three different player combinations: human vs
+computer, computer vs human and human vs human (possibly through the
+local network in the latter case). The default combination is human vs
+computer, i.e. the human player starts the game against the computer.
+This can be changed by clicking on the &quot;Actions&quot; menu (see below for
+more details).</description>
+  <devel project="X11:Utilities" package="xquarto"/>
+</package>

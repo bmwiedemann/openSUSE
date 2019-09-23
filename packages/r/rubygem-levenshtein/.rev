@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b6eaaa12a6bd75f6367b10151c336fb4</srcmd5>
+    <version>0.2.2</version>
+    <time>1356731297</time>
+    <user>namtrac</user>
+    <comment>needed for gettext gem</comment>
+    <requestid>146256</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b6eaaa12a6bd75f6367b10151c336fb4</srcmd5>
+    <version>0.2.2</version>
+    <time>1359110325</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>b6eaaa12a6bd75f6367b10151c336fb4</srcmd5>
+    <version>0.2.2</version>
+    <time>1379664538</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>dfc49753a1d243e843313f058f6f885d</srcmd5>
+    <version>0.2.2</version>
+    <time>1392325295</time>
+    <user>coolo</user>
+    <comment>- use new macros</comment>
+    <requestid>222132</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>dfc49753a1d243e843313f058f6f885d</srcmd5>
+    <version>0.2.2</version>
+    <time>1409303244</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>2f8680a5e72d66a642ab95697541b477</srcmd5>
+    <version>0.2.2</version>
+    <time>1413616112</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255837</requestid>
+  </revision>
+</revisionlist>

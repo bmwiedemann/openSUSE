@@ -1,0 +1,21 @@
+SUBSYSTEM != "tty", GOTO="gpsd_end"
+
+ACTION != "remove", GOTO="gpsd_add"
+KERNEL=="ttyUSB*", RUN="gpsd.sh"
+
+LABEL="gpsd_add"
+ACTION != "add", GOTO="gpsd_end"
+
+# "Prolific Technology 2303 (commonly in tandem with SiRF chips)"
+KERNEL=="ttyUSB*", ATTR{idVendor}=="067b", ATTR{idProduct}=="2303", RUN="gpsd.sh"
+# "FTDI 8U232AM"
+KERNEL=="ttyUSB*", ATTR{idVendor}=="0403", ATTR{idProduct}=="6001", RUN="gpsd.sh"
+# "Cypress M8/CY7C64013 (DeLorme uses these)"
+KERNEL=="ttyUSB*", ATTR{idVendor}=="1163", ATTR{idProduct}=="0100", RUN="gpsd.sh"
+KERNEL=="ttyUSB*", ATTR{idVendor}=="1163", ATTR{idProduct}=="0200", RUN="gpsd.sh"
+# "PS-360 OEM (Microsoft GPS sold with Street and Trips 2005)"
+KERNEL=="ttyUSB*", ATTR{idVendor}=="067b", ATTR{idProduct}=="aaa0", RUN="gpsd.sh"
+# SiRF Star III 20ch Gmouse GPS (a.k.a Cygnal Integrated Products, Inc.)
+KERNEL=="ttyUSB*", ATTR{idVendor}=="10c4", ATTR{idProduct}=="ea60", RUN="gpsd.sh"
+
+LABEL="gpsd_end"

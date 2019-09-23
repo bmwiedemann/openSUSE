@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Thu Jul 30 11:31:31 UTC 2015 - dimstar@opensuse.org
+
+- Add imgvtopgm-lib-cleanup.patch: cleanup usage of libraries after
+  netpbm has been changed to no loner provide all compatibility
+  names (due to conflicts with openpgm).
+
+-------------------------------------------------------------------
+Sun Oct  5 20:41:13 UTC 2014 - jengelh@inai.de
+
+- Update homepage URL, remove ancient/redundant sections from
+  specfile, use modern macros.
+
+-------------------------------------------------------------------
+Fri Aug 10 01:11:15 CEST 2007 - ro@suse.de
+
+- added libnetpbm-devel to buildreq
+
+-------------------------------------------------------------------
+Wed May 24 21:35:12 CEST 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:36 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Aug  2 01:08:08 CEST 2005 - ro@suse.de
+
+- add -lm to help configure with netpbm 
+
+-------------------------------------------------------------------
+Thu Jun 23 10:05:05 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS, fixed all implicit warnings.
+
+-------------------------------------------------------------------
+Mon Apr 26 12:02:52 CEST 2004 - postadal@suse.cz
+
+- fixed gcc warnings
+
+-------------------------------------------------------------------
+Sun Jan 11 11:01:50 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue Nov 13 11:36:27 CEST 2001 - tcrhak@suse.cz
+
+- removed aclocal, autoconf and automake
+
+-------------------------------------------------------------------
+Mon Jul 30 19:36:56 CEST 2001 - adostal@suse.cz
+
+- change gz to bz2 
+
+-------------------------------------------------------------------
+Tue Feb 13 11:34:34 CET 2001 - pblaha@suse.cz
+
+- create this package for view images on Palm 
+

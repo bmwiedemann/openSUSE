@@ -1,0 +1,10 @@
+--- ./test/testhdf5.c.orig	2012-05-09 17:05:49.000000000 +0200
++++ ./test/testhdf5.c	2012-06-20 19:22:33.332532223 +0200
+@@ -57,7 +57,6 @@ main(int argc, char *argv[])
+     AddTest("coords",  test_coords,  cleanup_coords,  "Dataspace coordinates", NULL);
+     AddTest("sohm", test_sohm, cleanup_sohm,  "Shared Object Header Messages", NULL);
+     AddTest("attr", test_attr, cleanup_attr,  "Attributes", NULL);
+-    AddTest("select", test_select, cleanup_select,  "Selections", NULL);
+     AddTest("time", test_time, cleanup_time,  "Time Datatypes", NULL);
+     AddTest("reference", test_reference, cleanup_reference,  "References", NULL);
+     AddTest("vltypes", test_vltypes, cleanup_vltypes,  "Variable-Length Datatypes", NULL);

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>33dbba540b096796d3c549100eda0430</srcmd5>
+    <version>0.2.3</version>
+    <time>1473798241</time>
+    <user>dimstar_suse</user>
+    <comment>Python 2 version of python3-py-cpuinfo.  Needed by python-tables.  Both are already in openSUSE:Factory.</comment>
+    <requestid>419648</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c362d2f876a5f3634aadf7f8e9440777</srcmd5>
+    <version>3.1.0</version>
+    <time>1493819667</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489378</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2411d85142bb634d5a1d161ba034c2a4</srcmd5>
+    <version>3.1.0</version>
+    <time>1545648388</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659834</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>a45e4c77be3b70724310c45c77c56f9f</srcmd5>
+    <version>3.1.0</version>
+    <time>1549630062</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671966</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3297342bbe7dc6fa3d0fe26da61e19fa</srcmd5>
+    <version>5.0.0</version>
+    <time>1558938967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704967</requestid>
+  </revision>
+</revisionlist>

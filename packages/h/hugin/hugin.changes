@@ -1,0 +1,694 @@
+-------------------------------------------------------------------
+Sun Jul 14 16:12:38 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to version 2019.0.0
+  * Added raw import: It converts the RAW images to TIFF using a
+    raw converter. This can be done by dcraw (requires additional
+    exiftool), RawTherapee or darktable. These programs needs to be
+    installed externally.
+  * Fixes for align_image_stack with EXR images.
+  * Added option for range compression. Can be helpful for LDR
+    panoramas to brighten the shadows before merging, because at this
+    stage the blender has some more information which can be helpful.
+  * New hotkeys for mask editor (change zoom level with 0, 1 and 2).
+  * Expression parser (pto_var and "manipulate image variables" in
+    GUI) can now read also all image variables.
+  * line_find: Ignore lines with low distance to each other to get
+    better coverage. Also use only central part of the panorama for
+    searching for line control points (ignoring zenit/nadir near areas).
+  * pano_modify: Added new switch --projection-parameter to set
+    projection parameters.
+  * Store program settings according to XDG base dir specification
+    (Linux only, needs to compile with wxWidgets 3.1.1 or later).
+- Enable parallel build, use memory-constraints
+- Replace hugin-exiv2-0.27.patch with upstream patch,
+  0001-Unified-inclusion-of-exiv2-library-1828925.patch
+- Cleanup spec file:
+  * Drop obsolete SDL and freeglut BuildRequires
+  * Remove obsolete references to SVN (hugin uses mercurial)
+  * Minor cleanups, remove obsolete comments etc.
+
+-------------------------------------------------------------------
+Wed Mar 13 10:55:00 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Add missing build require on libboost_system (bsc#1129031)
+
+-------------------------------------------------------------------
+Wed Feb 20 19:55:18 CET 2019 - sbrabec@suse.com
+
+- Don't skip rpath (bsc#1125178).
+
+-------------------------------------------------------------------
+Wed Jan 30 19:17:03 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- spec file cleanup (%license, %defattr)
+- add HSI (Hugin Scripting Interface) bcond, correct -DBUILD_HSI
+  option syntax for cmake
+
+-------------------------------------------------------------------
+Tue Jan 29 09:23:42 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add hugin-exiv2-0.27.patch: Fix build against exiv 0.27
+  (boo#1123401).
+
+-------------------------------------------------------------------
+Tue Feb  6 08:16:56 UTC 2018 - adrian@suse.de
+
+- update to version 2018.0.0
+  The version 2018.0 is mainly a bug fix release and introduce some minor new features.
+
+  Several improvements for optimizer tabs:
+  * mark deselected images
+  * allow changing optimizer variables for all selected images at once
+  * option to ignore line cp
+  * hugin_stacker: New tool to stack overlapping images with several
+    averaging modes (e.g. mean, median).
+  * Hugin: Added option to disable auto-rotation of images in control
+    point and mask editor.
+  * Nona, verdandi and hugin_stacker can now write BigTIFF images
+  * Added expression parser to GUI: This allows to manipulate several
+    image variables at once. (This is the same as running pto_var
+    --set from the command line.) This can be used e.g. to prealigns
+    the images in a given setup and then run cpfind --prealigned to
+    search control points only in overlapping images.
+  * Add user-defined assistant and expose it in the GUI. It allows
+    to set up different assistant strategies without the need to
+    recompiling. Provide also some examples (scanned images,
+    multi-row panoramas with orphaned images, single-shot panorama
+    cameras).
+- drop python dependencies
+
+-------------------------------------------------------------------
+Thu Feb  1 09:37:01 UTC 2018 - dimstar@opensuse.org
+
+- Pass -DPYTHON_EXECUTABLE=/usr/bin/python2 to CMake, ensuring we
+  use the python2 interpreter.
+
+-------------------------------------------------------------------
+Sun Dec 24 15:14:30 UTC 2017 - adrian@suse.de
+
+- update to final version 2017.0.0
+
+-------------------------------------------------------------------
+Mon May 22 18:57:38 UTC 2017 - adrian@suse.de
+
+- update to version 2017.0 snapshot from today
+
+-------------------------------------------------------------------
+Wed Feb  1 11:24:46 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Sun Sep 18 12:41:12 UTC 2016 - salsergey@gmail.com
+
+- Updated to version 2016.2.0
+  * Allow reading of image positions from Papywizard XML files: First add the image to a new project and then select File, Import settings from Papywizard XML file... This will read the lens settings, the image positions and also, if applicable, the bracket settings. After this, the usual workflow is to run cpfind with --prealigned switch and then geocpset to connect orphanded images.
+  * The internal blender and verdandi got the possibility to blend seams as alternative to current hard seam: For each seam the color of second image is adapted to the match the color of the first seam. For this blender, the blender order changes according to the overlap. The blending starts with the exposure anchor and blends then all overlapping images. This blending mode is not suited if there are bigger misalignments or bigger parallax errors.
+  * The display of the control point error (after optimizing and in fast preview window) and the control point list window can now limited to take only control points in active images into account (menu Edit, Optimize only active images, connected with the setting on the optimizer tab).
+  * Improvements to mask tab in Hugin (edit crop of all images of the same lens at once) and find panorama dialog in PTBatcherGUI (remove images from found panoramas, split found panorama into two).
+  * Fixes several issues with fast preview window which could result in random crashes (uninitialized variables, memory leaks).
+
+-------------------------------------------------------------------
+Tue Jun 28 19:36:41 UTC 2016 - jengelh@inai.de
+
+- Build with wxWidgets 3
+
+-------------------------------------------------------------------
+Sun Mar 20 14:13:31 UTC 2016 - salsergey@gmail.com
+
+- Updated to version 2016.0.0
+  * Added user defined output. The user can define own output sequences to implement new use cases, e.g. zero noise output.
+  * Added --clip-exposure switch to nona to automatically mask over and under exposed areas in input images.
+  * Color management
+    ** GUI tools (Hugin, calibrate_lens_gui) take ICC profiles in files and monitor color profile into account to display images.
+    ** celeste and cpfind converts internal image to sRGB before working.
+  * Some buttons got a context menu for easier access to some function
+    ** Show all in fast preview window to allow better interaction with stacked projects
+    ** Celeste in cp tab: the button can now create cp or clean cp  
+  * Updated internal levmar library to version 2.6
+  * The identify tool in the fast preview window shows now also the image numbers on top of the images. (This can be suppressed by pressing the alt button).
+  * Fixes internal image format for GPU remapping. This should fix the "unsupported framebufferformat" error.
+  * Use own code for OpenGL intialization. Now freeglut is not needed anymore. (This should prevent the appearing of window when running "nona -g". Linux/Window only)
+  * Control point and mask editor retain viewpoint when changing zoom factor.
+  * PTBatcherGUI: Minimize to tray is now user configurable.
+  * Fixes a bug in photometric optimizer and merge projects with line control points.
+- Hugin is built in "build" subdirectory (in-source builds are not allowed now).
+
+-------------------------------------------------------------------
+Tue Feb  2 17:04:05 UTC 2016 - davejplater@gmail.com
+
+- Added hugin.appdata.patch to fix appdata.xml and desktop file
+  consistency. see boo#952324 and boo#962214
+- Added find-hugin-provides.prov to enable hugin to provide 
+  appdata.xml and desktop files to fix installation system problems.
+  hugin didn't provide them due to the internal dependency generator
+  having to be disabled to deal with complex wxWidget requires.
+
+-------------------------------------------------------------------
+Sun Jan 17 18:54:02 UTC 2016 - p.drouand@gmail.com
+
+- Remove useless tclap dependency
+
+-------------------------------------------------------------------
+Sun Aug 30 09:07:36 UTC 2015 - salsergey@gmail.com
+
+- Updated to version 2015.0.0
+  * The makefile based stitching engine has been replaced with direct calls to the underlying programs.
+  * Hugin now has it's own blender, verdandi, based on a watershed algorithm, which has been included in 'nona'.
+  * The lensfun library has been removed as it did not fulfill our expectations. It has been replaced with our own camera and lens database which uses a data mining approach and operates automatically without user intervention.
+  * The fast preview window has a new tool to add or remove control points to selected areas in the output projection.
+  * Automatic exposure stack detection is now applied when loading images, and an option has been added to unlink image position when adding stacks.
+  * The fine-tune and auto-estimate functions in the control point tab have been made projection aware.
+  * PTBatcherGUI has more choice for the end of the process: depending on the operating system the PTBatcherGUI can be closed, the computer can be shut down or send to the hibernate mode.
+  * PTBatcherGUI now shows the thumbnails when searching for images in directories.
+  * Many of the underlying tools in hugin are now able to use available cpu cores.
+  * New command line tools for CLI processing: verdandi, hugin_executor, hugin_lensdb
+  * Many more improvements and bug fixes.
+- Removed hugin-boost-1.56.0.patch (included upstream).
+- Removed hugin-lensfun-0.3.patch (support for lensfun has been dropped).
+
+-------------------------------------------------------------------
+Mon Mar  2 14:20:27 UTC 2015 - dimstar@opensuse.org
+
+- Add hugin-lensfun-0.3.patch: Fix build with Lensfun 0.3.
+
+-------------------------------------------------------------------
+Fri Dec  5 10:36:30 UTC 2014 - dimstar@opensuse.org
+
+- Add hugin-boost-1.56.0.patch: Fix build with Boost 1.56.0. Patch
+  taken from upstream.
+
+-------------------------------------------------------------------
+Fri Oct 10 11:39:33 NOVT 2014 - salsergey@gmail.com
+
+- Updated to version 2014.0.0
+  * inherit many of the libpano improvements (of version 2.9.19)
+  * the translation plane variables Tpy and Tpp have been added to the GUI
+  * improvement of the GPU remapping code
+  * better support for line control point in Control points tab
+  * obsolete programs matchpoint, nona_gui and PTBatcher have been removed
+  * outdated translations have been removed from the default install
+  * initialize the colour balance values during loading with EXIF values
+  * improved the assistant
+  * allow customization of exiftool command used to copy metadata to output images
+  * New command line tools for CLI processing: pto_mask, pto_template, pto_move
+  * Many more improvements and bug fixes.
+
+-------------------------------------------------------------------
+Thu Apr 24 09:12:00 UTC 2014 - fcrozat@suse.com
+
+- Add make as requires (needed for photo stiching) (bnc#822775).
+
+-------------------------------------------------------------------
+Mon Oct 28 06:05:31 UTC 2013 - salsergey@gmail.com
+
+- Updated to version 2013.0.0:
+  * Redesign of the (Graphical) User Interface (GUI). The user interface now consists of three modes: Simple, Advanced and Expert.
+  * New tool pto_var ( change image variables inside pto files).
+  * New tool pto_lensstack (modify assigned lenses and stack in pto files).
+  * New tool geocpset  (set/add geometric constraints for multirow panorama with featureless images).
+  * Many more improvements and bug fixes.
+- Removed hugin-perl-5.18.patch (included upstream).
+
+-------------------------------------------------------------------
+Fri Oct 25 17:36:26 CEST 2013 - sbrabec@suse.cz
+
+- Work around missing RPATH (bnc#846944).
+
+-------------------------------------------------------------------
+Sat Aug 10 09:33:02 UTC 2013 - tchvatal@suse.com
+
+- Fix build on factory with new cmake.
+
+-------------------------------------------------------------------
+Fri Jul 26 09:39:25 UTC 2013 - tchvatal@suse.com
+
+- Fix build with perl 5.18 by adding hugin-perl-5.18.patch
+- Remove old opensuse version conditionals as the package anyway
+  builds only on 12.3 and later, unresolvable on older ones.
+
+-------------------------------------------------------------------
+Mon Apr 22 20:34:16 UTC 2013 - dimstar@opensuse.org
+
+- Add libXi-devel and libXmu-devel BuildRequires: cmake checks for
+  their presence.
+
+-------------------------------------------------------------------
+Tue Jan 15 18:55:20 CET 2013 - sbrabec@suse.cz
+
+- Update to version 2012.0.0 (bnc#800803):
+  * integrated lensfun library
+  * new tool pto_gen
+  * improvements to cpfind
+  * option to keep exposure fused stacks
+  * pano_modify: Added HDR autocrop option
+  * translations updated
+  * more improvements and bug fixes
+- Turn on HSI (Python Hugin Scripting Interface).
+
+-------------------------------------------------------------------
+Mon Mar 19 17:30:17 UTC 2012 - alinm.elena@gmail.com
+
+- added patch to fix gcc 4.7 failure (gcc47.diff)
+- added fdupes 
+
+-------------------------------------------------------------------
+Tue Jan 10 16:55:03 UTC 2012 - crrodriguez@opensuse.org
+
+- Add missing explicit buildrequires on libjpeg-devel and 
+  libtiff-devel, fixes factory build
+
+-------------------------------------------------------------------
+Thu Dec 22 06:39:12 UTC 2011 - mrdocs@opensuse.org
+
+-Updated to version 2011.4.0:
+ * numerous translation updates
+ * bug fixes
+ * new pto-gen tool
+ * build system fixes
+
+-------------------------------------------------------------------
+Fri Oct 21 04:40:46 UTC 2011 - tony@daylessday.org
+
+- Fixed build on openSUSE 11.3.
+
+-------------------------------------------------------------------
+Thu Oct 20 14:05:44 UTC 2011 - tony@daylessday.org
+
+- Updated to version 2011.2.0:
+  * New Python scripting interface.
+  * New lens calibration tool
+  * A critical bug affecting a significant number of Mac users has been fixed.
+  * Many general improvements have been made.
+
+-------------------------------------------------------------------
+Tue Oct  4 18:27:07 UTC 2011 - coolo@suse.com
+
+- disable parallel build and enable verbose compilne
+
+-------------------------------------------------------------------
+Tue May 31 16:34:47 CEST 2011 - sbrabec@suse.cz
+
+- Updated to version 2011.0.0:
+  * Improved Built-in Control Points Generator.
+  * CPFind's detection ability has been significantly improved.
+  * Improved Fast Preview.
+  * Overview pane has been added to the Fast Preview window.
+  * It is now possible to drag individual images or arbitrary
+    groups of images on the panosphere in the fast preview.
+  * A new gray point picker for visual white balance correction.
+  * Additional functionality for the registration of stereo images.
+  * New Thoby projection modeling 10.5mm Nikkor fisheye lens.
+  * Improved support for some keyboard shortcuts.
+  * New Preferences: output file format (LDR only).
+  * Bugfixes and adds minor features.
+  * Many translations updated.
+
+-------------------------------------------------------------------
+Tue Apr 26 19:34:14 CEST 2011 - sbrabec@suse.cz
+
+- Updated to version 2010.4.0:
+  * Built-in points generator - no third party software for control
+    points needed.
+  * Improved Unattended Operation.
+  * Improved Interaction and Functionality.
+  * New Command-Line Tools.
+  * New Visuals.
+  * Updated translations.
+  * Other improvements.
+
+-------------------------------------------------------------------
+Mon Mar 22 08:12:00 UTC 2011 - idoenmez@novell.com
+
+- Add hugin-fix-gcc46.patch: fix gcc 4.6 compilation
+
+-------------------------------------------------------------------
+Mon Mar 21 16:51:59 UTC 2011 - coolo@novell.com
+
+- licenses package is about to die
+
+-------------------------------------------------------------------
+Tue Dec 28 17:18:26 CET 2010 - sbrabec@suse.cz
+
+- Compile with wxWidgets (STL variant).
+
+-------------------------------------------------------------------
+Wed Apr 28 13:43:02 CEST 2010 - pgajdos@suse.cz
+
+- added make to Requires [bnc#596664]
+
+-------------------------------------------------------------------
+Tue Apr  20 10:13:59 CEST 2010 - davejplater@gmail.com
+
+- Change build requirement from fftw to fftw3
+
+-------------------------------------------------------------------
+Thu Apr  8 11:46:35 CEST 2010 - pgajdos@suse.cz
+
+- Fixed build with libpng14.
+- Updated to version 2010.0.0:
+  * Fix storage of image cache upperbound.
+  * Set response type to linear when adding hdr images.
+  * Set blender and fusion options to default value when user
+    entered an empty string.
+  * Fixes update of preview window when projection parameter
+    changed.
+  * etc. see ChangeLog.
+
+-------------------------------------------------------------------
+Mon Feb 15 22:05:25 UTC 2010 - Nico.Laus.2001@gmx.de
+
+- removed LAPACK compile option (caused SIGSEVs - may be different
+  for newer libraries)
+
+-------------------------------------------------------------------
+Mon Jan 11 08:10:38 UTC 2010 - Nico.Laus.2001@gmx.de
+
+- added liblapack3 and lapack dependencies
+
+-------------------------------------------------------------------
+Sun Jan 10 13:13:08 UTC 2010 - Nico.Laus.2001@gmx.de
+
+- updated to 2009.4.0:
+  (from http://hugin.sourceforge.net/releases/2009.4.0/)
+  * Automatic lens calibration
+  * Control point cleaning
+  * Translation updates (20 languages)
+  * other improvements
+  changes between 0.8.0 and 2009.2.0:
+  (from http://hugin.sourceforge.net/releases/2009.2.0/)
+  * GPU accelerated stitching
+  * Improved Preferences panel (Control Point Detectors)
+  * Improved control of stitching process (Stitcher tab)
+  * Fast Preview shows control points connected with lines
+  * lots of bugfixes, lots of new bugs
+- split off -devel sub-package
+
+-------------------------------------------------------------------
+Wed Aug  5 18:35:32 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 0.8.0:
+  * fast preview window using OpenGL
+  * Celeste sky identification
+  * new panorama projections
+  * batch processor
+  * help updated
+  * translation updates
+  * other improvements
+
+-------------------------------------------------------------------
+Tue Jun  9 11:56:59 CEST 2009 - coolo@novell.com
+
+- continue the previous work
+
+-------------------------------------------------------------------
+Wed May 27 02:07:54 CEST 2009 - ro@suse.de
+
+- fix build with gcc-4.4
+
+-------------------------------------------------------------------
+Tue Oct  7 17:42:37 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 0.7.0:
+  * disabled incomplete features
+  * more robust align button algorithm
+  * minor fixes and improvements
+  * reorganized documentation files
+  * translation updates
+
+-------------------------------------------------------------------
+Mon Jul 28 16:52:39 CEST 2008 - sbrabec@suse.cz
+
+- Updated to SVN snapshot 0.7.0.3238:
+  * Bug fixes and improvements (enfuse, HDR images and other).
+  * Documentation and translation update.
+- Improved dummy svn script to allow compilation with old svn.
+
+-------------------------------------------------------------------
+Thu Apr 24 17:31:32 CEST 2008 - sbrabec@suse.cz
+
+- Added dummy svn command to prevent build failure if svn log fails
+  (network is not available).
+
+-------------------------------------------------------------------
+Wed Apr 23 16:44:45 CEST 2008 - sbrabec@suse.cz
+
+- Updated to SVN snapshot 0.7.0.3032:
+  * Support for HDR images.
+  * Large reorganization of the code.
+  * Build moved to cmake.
+  * Many code and algorithm fixes.
+  * Many crash fixes.
+  * Uses exiv2.
+  * OpenGL support.
+
+-------------------------------------------------------------------
+Mon Apr  7 16:50:59 CEST 2008 - sbrabec@suse.cz
+
+- Recommend optional packages providing additional functionality.
+- Package README_JP.
+
+-------------------------------------------------------------------
+Wed Dec 12 14:41:20 CET 2007 - nadvornik@suse.cz
+
+- accept gettext 0.17 - 0.19
+- more missing includes added to includes.patch
+
+-------------------------------------------------------------------
+Mon Nov 12 10:25:37 CET 2007 - prusnak@suse.cz
+
+- fix missing includes (includes.patch)
+
+-------------------------------------------------------------------
+Tue Oct 30 11:54:51 CET 2007 - prusnak@suse.cz
+
+- renamed optim_file.patch to CVE-2007-5200 (after CVE assigned)
+- fixed tempfile creation also in AutoCtrlPointCreator
+
+-------------------------------------------------------------------
+Thu Oct  4 15:44:11 CEST 2007 - prusnak@suse.cz
+
+- totally removed creation of fixed-name file in /tmp from last patch
+
+-------------------------------------------------------------------
+Wed Sep 27 14:28:38 CEST 2007 - prusnak@suse.cz
+
+- fixed creation of fixed-name file in /tmp [#307684]
+  (optim_file.patch)
+
+-------------------------------------------------------------------
+Mon Jul 16 18:48:54 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 0.7_beta4.
+  * update panotools to latest version
+  * Albers equal area conic and Miller cylindrical projection
+  * Support for straight line control points
+  * Fixed running of Autopano-SIFT integration on windows
+  * work around bugs in wxWidgets (fixes double deletion of control
+    points when pressing the Del key)
+  * Force even values for width for 360 degree equirectangular
+    panoramas.
+  * Assistant panel, enables 3 click stitching (well, almost ;-)
+  * Center and rotate panorama by mouse clicks in preview window.
+    Also added a numerical transform dialog
+  * automatic straighten
+  * support for Lambert and Lambert Azimuthal projections
+  * separate crop tab replaces buggy crop dialog
+  * crop is saved in lens .ini files
+  * Rotated display of images in control point selector, depending
+    on the roll value
+  * allow images with and without alpha channels in the same
+    project
+  * option to open final panorama in image editor after stitching
+  * present output of command line utils in nice window
+  * many small bugfixes
+  * removed image center dialog
+
+-------------------------------------------------------------------
+Wed May  9 16:59:33 CEST 2007 - pgajdos@suse.cz
+
+- removed gnome-icon-theme from BuildRequires [#247450]
+
+-------------------------------------------------------------------
+Tue Jan 30 14:03:16 CET 2007 - sbrabec@suse.cz
+
+- Removed references to /opt/gnome.
+
+-------------------------------------------------------------------
+Fri Jan 26 01:45:26 CET 2007 - ro@suse.de
+
+- accept gettext 0.16 ...
+
+-------------------------------------------------------------------
+Sat Oct 21 13:21:34 CEST 2006 - schwab@suse.de
+
+- Fix bogus version check.
+
+-------------------------------------------------------------------
+Wed Aug 23 12:47:12 CEST 2006 - postadal@suse.cz
+
+- updated to version 0.6.1
+  * suport for HDR file (log or gamma mapping)
+  * reduced memory usage, better image caching strategy
+  * fixed crashes and hangs when using the preview auto update
+  * vignetting correction estimation speed up
+  * projection can be changed in preview
+
+-------------------------------------------------------------------
+Thu Aug 17 19:10:04 CEST 2006 - postadal@suse.cz
+
+- updated to version 0.6
+  * copy ICC profiles from input images to output
+  * added vignetting correction and brighness correction during stitching
+    by addition or division with a flatfield image or an radial polynomial
+  * estimate the vignetting polynomial directly from the overlapping images
+    (experimental)
+  * multithreaded remapping for hugin and nona
+  * support for dcraw 16 bit .ppm files
+  * disabled PTOptimizer progress display on OSX
+  * added tool fulla (see man pages), for distortion, TCA and vignetting
+    correction (can use old version PTLens database)
+  * added Czech translation
+- removed obsoleted patches: hugin-xqual.patch, filedialog-close-crash.patch
+- added zip to Buildrequires
+-------------------------------------------------------------------
+Mon Aug  7 23:24:15 CEST 2006 - cthiel@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Tue Jul  4 08:02:23 CEST 2006 - cthiel@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Mon Mar 20 16:10:18 CET 2006 - sbrabec@suse.cz
+
+- Fixed add images close dialog crash (#156487).
+
+-------------------------------------------------------------------
+Thu Mar  9 18:23:47 CET 2006 - bk@suse.de
+
+- Use explicit gcc-c++ in BuildRequires (was implicit by SDL-devel)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:30 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 19 16:40:44 CET 2006 - sbrabec@suse.cz
+
+- Removed obsolete pywxrc patch (#143258).
+
+-------------------------------------------------------------------
+Thu Jan 12 13:02:13 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 0.5.
+
+-------------------------------------------------------------------
+Tue Nov  8 01:58:09 CET 2005 - ro@suse.de
+
+- remove some extra qualifications to fix build with gcc-4.1
+
+-------------------------------------------------------------------
+Tue Oct 25 15:37:15 CEST 2005 - yxu@suse.de
+
+- fixed missing part of function
+
+-------------------------------------------------------------------
+Thu Sep 22 16:11:32 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 0.5-rc2.
+
+-------------------------------------------------------------------
+Wed Aug 17 16:49:24 CEST 2005 - sbrabec@suse.cz
+
+- Work without binfmt mono bindings (#93498).
+
+-------------------------------------------------------------------
+Fri Aug  5 14:51:18 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 0.5.cvs050602.
+
+-------------------------------------------------------------------
+Thu Jul 21 16:21:54 CEST 2005 - nadvornik@suse.cz
+
+- added libpano-devel to nfb
+
+-------------------------------------------------------------------
+Wed May 25 14:30:27 CEST 2005 - mcihar@suse.cz
+
+- fix build on lib64 systems
+
+-------------------------------------------------------------------
+Fri May 20 10:18:19 CEST 2005 - mcihar@suse.cz
+
+- update to 0.5-rc1
+
+-------------------------------------------------------------------
+Mon Apr 18 11:39:21 CEST 2005 - mcihar@suse.de
+
+- add missing build dependencies on SDL (due to wxGTK)
+
+-------------------------------------------------------------------
+Thu Apr 14 16:21:09 CEST 2005 - mcihar@suse.cz
+
+- cvs update
+- fix compilation
+
+-------------------------------------------------------------------
+Thu Feb 17 16:29:26 CET 2005 - mcihar@suse.cz
+
+- cvs update
+
+-------------------------------------------------------------------
+Fri Feb  4 13:01:59 CET 2005 - mcihar@suse.cz
+
+- cvs update
+
+-------------------------------------------------------------------
+Tue Jan 04 12:58:40 CET 2005 - mcihar@suse.cz
+
+- fix build on lib64 arches
+
+-------------------------------------------------------------------
+Wed Dec 22 17:05:40 CET 2004 - mcihar@suse.cz
+
+- cvs update and patches reorganisation
+
+-------------------------------------------------------------------
+Mon Nov 22 17:39:14 CET 2004 - ro@suse.de
+
+- fix build with current wxGTK
+
+-------------------------------------------------------------------
+Thu Sep 30 12:48:14 CEST 2004 - mcihar@suse.cz
+
+- removed also SIFT header files and license from tarball (bug #46504)
+
+-------------------------------------------------------------------
+Tue Sep 21 17:10:43 CEST 2004 - mskibbe@suse.de
+
+- change desktopfile
+
+-------------------------------------------------------------------
+Wed Aug 11 11:29:07 CEST 2004 - mcihar@suse.cz
+
+- removed keypoints, since it uses patented SIFT code
+- fixed compilation on x86_64
+- reorganised patches
+- no more patching for wx-config, use wrapper instead
+
+-------------------------------------------------------------------
+Mon Aug 02 17:24:15 CEST 2004 - mcihar@suse.cz
+
+- update to latest released snapshot
+- make nona default stitcher as we can not ship PTStitcher
+
+-------------------------------------------------------------------
+Fri Jul 30 10:57:47 CEST 2004 - mcihar@suse.cz
+
+- initial packaging
+

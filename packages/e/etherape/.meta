@@ -1,0 +1,10 @@
+<package name="etherape" project="openSUSE:Factory">
+  <title>A Graphical Network Monitor</title>
+  <description>EtherApe is a graphical network monitor for Unix, modeled after
+etherman. Featuring link layer, IP, and TCP modes, it displays network
+activity graphically. Hosts and links change in size with traffic.
+Various protocols are color coded in the display. It supports ethernet,
+FDDI, token ring, ISDN, PPP, and SLIP devices. It can filter traffic to
+show and can read traffic from a file as well as live from the network.</description>
+  <devel project="security" package="etherape"/>
+</package>

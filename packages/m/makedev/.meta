@@ -1,0 +1,9 @@
+<package name="makedev" project="openSUSE:Factory">
+  <title>Script for Creating Device Files in /dev</title>
+  <description>This package contains the MAKEDEV script, which makes it easy to create
+and maintain the files in the /dev directory.
+
+You do not need this script on SUSE Linux, but it is needed for FHS
+2.1.</description>
+  <devel project="Base:System" package="makedev"/>
+</package>

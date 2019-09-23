@@ -1,0 +1,74 @@
+#
+# spec file for package google-noto-fonts
+#
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+%define hyear     2017
+%define hmonth    09
+%define hday      19
+%define src_name  NotoFonts
+
+# DO NOT EDIT THIS SPECFILE DIRECTLY, edit google-noto-fonts.spec.in and run generate-specfile.sh script
+
+Name:           google-noto-fonts
+Version:        %{hyear}%{hmonth}%{hday}
+Release:        0
+Summary:        Noto Font Families
+License:        OFL-1.1
+Group:          System/X11/Fonts
+Url:            https://github.com/googlei18n/noto-fonts
+Source0:        https://noto-website-2.storage.googleapis.com/pkgs/Noto-hinted.zip
+Source1:        generate-specfile.sh
+BuildRequires:  fontpackages-devel
+BuildRequires:  unzip
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildArch:      noarch
+
+%description
+Noto's design goal is to achieve visual harmonization (e.g., compatible heights and stroke 
+thicknesses) across languages. 
+
+%package doc
+Summary:        Noto Font Families License
+Group:          Documentation/Other
+
+%description doc
+License for Google's Noto fonts.
+
+@SUBPACKAGE_HEADERS@
+
+%prep
+%setup -q -c -n %{name}-%{version}
+# remove cjk
+rm -rf *CJK*.?tf
+# remove emoji
+rm -rf *Emoji*.ttf
+
+%build
+
+%install
+mkdir -p %{buildroot}%{_ttfontsdir}
+cp *.?tf   %{buildroot}%{_ttfontsdir}/
+
+@SUBPACKAGE_SCRIPTLETS@
+
+%files doc
+%defattr(0644,root,root,755)
+%doc LICENSE*.txt
+
+@SUBPACKAGE_FILELISTS@
+
+%changelog

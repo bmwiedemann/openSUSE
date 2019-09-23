@@ -1,0 +1,144 @@
+-------------------------------------------------------------------
+Fri Mar 29 05:49:58 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 5.2.3
+ see installed CHANGELOG.md
+
+  ## Rails 5.2.3 (March 27, 2019) ##
+  
+  *   Allow using combine the Cache Control `public` and `no-cache` headers.
+  
+      Before this change, even if `public` was specified for Cache Control header,
+      it was excluded when `no-cache` was included. This fixed to keep `public`
+      header as is.
+  
+      Fixes #34780.
+  
+      *Yuji Yaginuma*
+  
+  *   Allow `nil` params for `ActionController::TestCase`.
+  
+      *Ryo Nakamura*
+
+-------------------------------------------------------------------
+Thu Mar 14 03:44:21 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to version 5.2.2.1:
+  https://weblog.rubyonrails.org/2019/3/13/Rails-4-2-5-1-5-1-6-2-have-been-released/
+  CVE-2019-5418 CVE-2019-5419 CVE-2019-5420
+
+-------------------------------------------------------------------
+Sat Jan 19 19:50:56 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- rb_build_ruby_abi needs to be rb_build_ruby_abis
+
+-------------------------------------------------------------------
+Fri Jan 18 16:24:32 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- limit to ruby 2.5 and above for 42.3/sle12
+
+-------------------------------------------------------------------
+Sat Dec  8 16:12:29 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 5.2.2
+ see installed CHANGELOG.md
+
+  ## Rails 5.2.2 (December 04, 2018) ##
+  
+  *   Reset Capybara sessions if failed system test screenshot raising an exception.
+  
+      Reset Capybara sessions if `take_failed_screenshot` raise exception
+      in system test `after_teardown`.
+  
+      *Maxim Perepelitsa*
+  
+  *   Use request object for context if there's no controller
+  
+      There is no controller instance when using a redirect route or a
+      mounted rack application so pass the request object as the context
+      when resolving dynamic CSP sources in this scenario.
+  
+      Fixes #34200.
+  
+      *Andrew White*
+  
+  *   Apply mapping to symbols returned from dynamic CSP sources
+  
+      Previously if a dynamic source returned a symbol such as :self it
+      would be converted to a string implicity, e.g:
+  
+          policy.default_src -> { :self }
+  
+      would generate the header:
+  
+          Content-Security-Policy: default-src self
+  
+      and now it generates:
+  
+          Content-Security-Policy: default-src 'self'
+  
+      *Andrew White*
+  
+  *   Fix `rails routes -c` for controller name consists of multiple word.
+  
+      *Yoshiyuki Kinjo*
+  
+  *   Call the `#redirect_to` block in controller context.
+  
+      *Steven Peckins*
+
+-------------------------------------------------------------------
+Mon Dec  3 06:18:31 UTC 2018 - mschnitzer@suse.com
+
+- updated to version 5.2.1.1 (boo#1118076)
+
+  * No changes / Just a version bump to match with Rails 5.2.1.1
+
+-------------------------------------------------------------------
+Wed Aug  8 14:44:15 UTC 2018 - mschnitzer@suse.com
+
+- updated to version 5.2.1 (boo#1104209)
+
+  * Prevent `?null=` being passed on JSON encoded test requests.
+
+    `RequestEncoder#encode_params` won't attempt to parse params if
+    there are none.
+
+    So call like this will no longer append a `?null=` query param.
+
+        get foos_url, as: :json
+
+    (Alireza Bashiri)
+  * Ensure `ActionController::Parameters#transform_values` and
+    `ActionController::Parameters#transform_values!` converts hashes into
+    parameters.
+    (Kevin Sjöberg)
+  * Fix strong parameters `permit!` with nested arrays.
+
+    Given:
+    ```
+    params = ActionController::Parameters.new(nested_arrays: [[{ x: 2, y: 3 }, { x: 21, y: 42 }]])
+    params.permit!
+    ```
+
+    `params[:nested_arrays][0][0].permitted?` will now return `true` instead of `false`.
+    (Steve Hull)
+  * Reset `RAW_POST_DATA` and `CONTENT_LENGTH` request environment between test requests in
+    `ActionController::TestCase` subclasses.
+    (Eugene Kenny)
+  * Output only one Content-Security-Policy nonce header value per request.
+    Fixes #32597.
+    (Andrey Novikov, Andrew White)
+  * Only disable GPUs for headless Chrome on Windows.
+    It is not necessary anymore for Linux and macOS machines.
+    https://bugs.chromium.org/p/chromium/issues/detail?id=737678#c1
+    (Stefan Wrobel)
+  * Fix system tests transactions not closed between examples.
+    (Sergey Tarasov)
+
+-------------------------------------------------------------------
+Mon Apr 16 12:05:02 UTC 2018 - mschnitzer@suse.com
+
+- initialize package
+  
+  see changelog: https://github.com/rails/rails/blob/v5.2.0/actionpack/CHANGELOG.md

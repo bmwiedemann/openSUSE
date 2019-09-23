@@ -1,0 +1,121 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>093b42d0901bec22820150834694add6</srcmd5>
+    <version>1.11</version>
+    <time>1309953712</time>
+    <user>saschpe</user>
+    <comment>new perl depdency</comment>
+    <requestid>74169</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2763dda2199429f24db65f2c766cae25</srcmd5>
+    <version>1.11</version>
+    <time>1309953731</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74169
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5d62705c32d6d587b7218871ecce4540</srcmd5>
+    <version>1.12</version>
+    <time>1316459752</time>
+    <user>lrupp</user>
+    <comment>- updated to 1.12
+  - Reclaim compatibility with the most recent versions of
+    ExtUtils::ParseXS.
+  - Explicit tests for wrong-type invocants.
+
+- updated to 1.11</comment>
+    <requestid>83618</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5d62705c32d6d587b7218871ecce4540</srcmd5>
+    <version>1.12</version>
+    <time>1319182249</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>c6e957906a7f28cbd7dc304d07c13514</srcmd5>
+    <version>1.12</version>
+    <time>1323193138</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2e9d00d7c6d6cba040fd960dec849bfe</srcmd5>
+    <version>1.13</version>
+    <time>1330618961</time>
+    <user>coolo</user>
+    <comment>- updated to 1.13
+  - Removes the cached read-only and read-write accessors
+    for the time being. (These were only available from another
+    development releasse.
+  - Much more brutal thread-safety testing.
+  - Fixed thread-safety problem with the global hashkey storage.
+  - Lots of refactoring in the C code.
+  - Instead of storing an index in the CV, we store a pointer to
+    the hashkey struct.
+  - Implements cached read-only and read-write accessors.
+    Details on what that means are in the documentation.</comment>
+    <requestid>107115</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>2e9d00d7c6d6cba040fd960dec849bfe</srcmd5>
+    <version>1.13</version>
+    <time>1340183811</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>2e9d00d7c6d6cba040fd960dec849bfe</srcmd5>
+    <version>1.13</version>
+    <time>1359109621</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9eb7aa282661e6e6cd20e7447244c199</srcmd5>
+    <version>1.16</version>
+    <time>1370447335</time>
+    <user>coolo</user>
+    <comment>- updated to 1.16
+   - Drop erroneous MYMETA files from distribution.
+ 
+   - Support for hash keys with NUL (\0) characters. Previously,
+     these were truncated.
+ 
+   - Skip some failing tests on old debugging perls. Guys, please
+     upgrade your perl! (forwarded request 177286 from coolo)</comment>
+    <requestid>177364</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>98354d3c0ac94d3f80100cf6c9ff9ed3</srcmd5>
+    <version>1.18</version>
+    <time>1375195044</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184822</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>98354d3c0ac94d3f80100cf6c9ff9ed3</srcmd5>
+    <version>1.18</version>
+    <time>1379663590</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d2d26ed1d4a686e7933b641ed25ebdd2</srcmd5>
+    <version>1.19</version>
+    <time>1385490274</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208452</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>d2d26ed1d4a686e7933b641ed25ebdd2</srcmd5>
+    <version>1.19</version>
+    <time>1409302209</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

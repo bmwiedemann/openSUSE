@@ -1,0 +1,13 @@
+diff --git a/Modules/about-distro/src/Module.cpp b/Modules/about-distro/src/Module.cpp
+index bec3a36..b78ede7 100644
+--- a/Modules/about-distro/src/Module.cpp
++++ b/Modules/about-distro/src/Module.cpp
+@@ -190,7 +190,7 @@ void Module::defaults()
+ QString Module::plasmaVersion() const
+ {
+     const QStringList &filePaths = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation,
+-                                                             QStringLiteral("xsessions/plasma.desktop"));
++                                                             QStringLiteral("xsessions/plasma5.desktop"));
+ 
+     if (filePaths.length() < 1) {
+         return QString();

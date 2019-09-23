@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Wed Sep 18 17:22:07 UTC 2019 - Simon Puchert <simonpuchert@alice.de>
+
+- Add swig4.patch: Remove flags that are not supported with swig 4.
+
+-------------------------------------------------------------------
+Tue Feb 19 09:10:10 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints file to avoid build failures
+
+-------------------------------------------------------------------
+Sun Feb  3 19:17:56 UTC 2019 - Matthias Bach <marix@marix.org>
+
+- Add missing runtime dependency to python3-futures.
+
+-------------------------------------------------------------------
+Sun Jan 13 14:46:31 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Sun Jan 13 14:16:35 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Enable building share library again (also fixes build)
+- Remove project.diff and move content into changes file
+
+-------------------------------------------------------------------
+Sun Jan 13 02:50:40 UTC 2019 - marix@marix.org
+
+- Update to fifengine 0.4.2
+  * Compatiblity with fifechan 0.1.5
+  * Python bindings are now provided for Python 3
+  * Joystick and Gamepad support
+- Ship both, Python 3 and Python 2 bindings to not instantly break
+  all downstream packages.
+- Dropped installation-directories.patch which has been integrated
+  upstream.
+- Dropped install-rocket-header.patch which has been integrated
+  upstream.
+- Dropped link-cegui.patch which has been integrated
+  upstream.
+
+-------------------------------------------------------------------
+Wed Feb 22 11:17:47 UTC 2017 - rpm@fthiessen.de
+
+- Update to version 0.4.1
+- Now build with cmake instead of scons
+- Added patches from upstream: install-rocket-header.patch,
+  installation-directories.patch and link-cegui.patch
+
+-------------------------------------------------------------------
+Sun Jan 11 17:48:27 UTC 2015 - mailaender@opensuse.org
+
+- FIFE is incompatible with swig version 3

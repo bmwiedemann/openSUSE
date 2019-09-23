@@ -1,0 +1,26 @@
+Index: armagetronad-0.2.8.3.3/src/doc/html.m4.in
+===================================================================
+--- armagetronad-0.2.8.3.3.orig/src/doc/html.m4.in
++++ armagetronad-0.2.8.3.3/src/doc/html.m4.in
+@@ -6,7 +6,7 @@ define(HEADSTART,dnl
+ <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ changequote([,])dnl
+-   <meta name="date" content="esyscmd(echo -n [`date +%Y-%m-%dT%H:%M:%S+01:00`])">
++   <meta name="date" content="esyscmd(echo -n [`date -r index.html.m4 +%Y-%m-%dT%H:%M:%S+01:00`])">
+ 
+    <meta name="author" content="Manuel Moos">
+    <title>$1</title>)dnl
+Index: armagetronad-0.2.8.3.3/src/doc/net/sig.m4
+===================================================================
+--- armagetronad-0.2.8.3.3.orig/src/doc/net/sig.m4
++++ armagetronad-0.2.8.3.3/src/doc/net/sig.m4
+@@ -3,7 +3,7 @@
+ Manuel Moos(MAILMANGLE( z-man, users, sf.net )).
+ 
+ <p align=center>
+-Last modification: esyscmd(date)
++Last modification: esyscmd(date -r index.html.m4)
+ </p>
+ 
+ 

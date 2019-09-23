@@ -1,0 +1,18 @@
+<package name="leafpad" project="openSUSE:Factory">
+  <title>Lightweight Text Editor and Notepad Clone</title>
+  <description>Leafpad is a simple GTK+ based text editor. The user interface is
+similar to &quot;notepad&quot;, and it aims to be lighter than GEdit and KWrite
+and to be as useful as them.
+
+Following features are intended...
+- Minimum requirement: for portability
+- Minimal menu item: to make full use of features and to learn easily
+- No toolbar: to maximize area to view text
+- Single document interface (SDI): to set out windows to view at a
+  time
+- Character coding auto detection: to open file quickly without
+  multi-codeset problem
+
+Leafpad is released under the GNU General Public License (GPL).</description>
+  <devel project="X11:lxde" package="leafpad"/>
+</package>

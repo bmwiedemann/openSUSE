@@ -1,0 +1,149 @@
+Index: mycroft-skills-manager-0.8.0/msm/skill_entry.py
+===================================================================
+--- mycroft-skills-manager-0.8.0.orig/msm/skill_entry.py
++++ mycroft-skills-manager-0.8.0/msm/skill_entry.py
+@@ -45,6 +45,8 @@ from msm.exceptions import PipRequiremen
+     SystemRequirementsException, AlreadyInstalled, SkillModified, \
+     AlreadyRemoved, RemoveException, CloneException, NotInstalled, GitException
+ from msm.util import cached_property, Git
++from msm.local_patches_utils import apply_skill_patch, \
++    reverse_skill_patch, remove_applied_skill_patch
+ 
+ LOG = logging.getLogger(__name__)
+ 
+@@ -430,6 +432,7 @@ class SkillEntry(object):
+             raise AlreadyRemoved(self.name)
+         try:
+             rmtree(self.path)
++            remove_applied_skill_patch(self.name)
+             self.is_local = False
+         except OSError as e:
+             raise RemoveException(str(e))
+@@ -457,6 +460,7 @@ class SkillEntry(object):
+         try:
+             move(tmp_location, self.path)
+ 
++            apply_skill_patch(self.name, self.path)
+             if self.msm:
+                 self.run_skill_requirements()
+             self.install_system_deps()
+@@ -494,6 +498,7 @@ class SkillEntry(object):
+         with git_to_msm_exceptions():
+             sha_before = git.rev_parse('HEAD')
+ 
++            reverse_skill_patch(self.name, self.path)
+             modified_files = git.status(porcelain=True, untracked='no')
+             if modified_files != '':
+                 raise SkillModified('Uncommitted changes:\n' + modified_files)
+@@ -505,6 +510,7 @@ class SkillEntry(object):
+                 git.checkout(self._find_sha_branch())
+ 
+             git.merge(self.sha or 'origin/HEAD', ff_only=True)
++            apply_skill_patch(self.name, self.path)
+ 
+         sha_after = git.rev_parse('HEAD')
+ 
+Index: mycroft-skills-manager-0.8.0/msm/local_patches_utils.py
+===================================================================
+--- /dev/null
++++ mycroft-skills-manager-0.8.0/msm/local_patches_utils.py
+@@ -0,0 +1,99 @@
++# Copyright (c) 2018 Mycroft AI, Inc.
++#
++# This file is part of Mycroft Light
++# (see https://github.com/MatthewScholefield/mycroft-light).
++#
++# Licensed to the Apache Software Foundation (ASF) under one
++# or more contributor license agreements.  See the NOTICE file
++# distributed with this work for additional information
++# regarding copyright ownership.  The ASF licenses this file
++# to you under the Apache License, Version 2.0 (the
++# "License"); you may not use this file except in compliance
++# with the License.  You may obtain a copy of the License at
++#
++#   http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing,
++# software distributed under the License is distributed on an
++# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++# KIND, either express or implied.  See the License for the
++# specific language governing permissions and limitations
++# under the License.
++import logging
++import os
++from os.path import join, expanduser, isfile, isdir
++import subprocess
++import shutil
++
++
++LOG = logging.getLogger(__name__)
++
++
++skill_patches_folder = '/usr/share/mycroft-core/skill-patches/'
++applied_patch_folder = join(expanduser('~'), '.mycroft/applied-skill-patches')
++
++
++def apply_skill_patch(name, path='.'):
++    patchfile=join(skill_patches_folder, name + '.patch')
++
++    if not isfile(patchfile):
++        return
++
++    if not isdir(applied_patch_folder):
++        os.makedirs(applied_patch_folder)
++
++    LOG.info("Applying %s" % (patchfile))
++    try:
++        subprocess.run(["patch", "-f", "-p1", "-i", patchfile],
++                       stdout=subprocess.PIPE, stderr=subprocess.PIPE,
++                       check=True, cwd=path)
++    except subprocess.CalledProcessError as e:
++        LOG.error("Couldn't apply patch %s" % patchfile)
++        LOG.error(e)
++        LOG.error(e.stdout)
++        LOG.error(e.stderr)
++    else:
++        try:
++            shutil.copy(patchfile, applied_patch_folder)
++        except OSError as e:
++            LOG.error("Couldn't copy %s to applied patch folder %s" %
++                      (patchfile, applied_patch_folder))
++            LOG.error(e)
++
++
++def reverse_skill_patch(name, path='.'):
++    patchfile=join(applied_patch_folder, name + '.patch')
++
++    if not isfile(patchfile):
++        return
++
++    LOG.info("Reversing %s" % (patchfile))
++    try:
++        subprocess.run(["patch", "-f", "-p1", "-R", "-i", patchfile],
++                       stdout=subprocess.PIPE, stderr=subprocess.PIPE,
++                       check=True, cwd=path)
++    except subprocess.CalledProcessError as e:
++        LOG.error("Couldn't reverse patch %s" % patchfile)
++        LOG.error(e)
++        LOG.error(e.stdout)
++        LOG.error(e.stderr)
++    else:
++        try:
++            os.unlink(patchfile)
++        except OSError as e:
++            LOG.error("Couldn't remove %s" % patchfile)
++            LOG.error(e)
++
++
++def remove_applied_skill_patch(name):
++    patchfile=join(applied_patch_folder, name + '.patch')
++
++    if not isfile(patchfile):
++        return
++
++    LOG.info("Removing %s" % (patchfile))
++    try:
++        os.unlink(patchfile)
++    except OSError as e:
++        LOG.error("Couldn't remove %s" % patchfile)
++        LOG.error(e)

@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Thu Sep 19 16:37:47 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use pkgconfig(py3cairo) to specify pycairo dependency, package got
+  renamed between Leap 15.x and TW, and pkgconfig(py3cairo) fits both.
+- Add log4cpp-devel to -devel Requires, always required by gr-runtime.
+
+-------------------------------------------------------------------
+Wed Sep 18 20:16:50 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Use correct shared library name
+
+-------------------------------------------------------------------
+Thu Sep 12 16:49:33 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 3.8.0.0:
+  * Changed on Project Scope
+    + C++11
+    + merged the wholeness of the next branch
+    + Dependency version bumps: CMake, GCC, MSVC, Swig, Boost
+    + New dependencies: MPIR/GMP, Qt5, gsm, codec2
+    + Removed dependencies: libusb, Qt4, CppUnit
+    + Python: Python 2 & Python 3 compatible. 3.8 will be the last Py2k-compatible
+    + release series
+    + gengen was replaced by templates (if you don't know gengen, don't do any
+    + research; save yourself that sorrow)
+    + Modern CMake (as far as feasible at this point)
+    + VOLK version updated to v2.0.0
+    + .clang-format file now dictates coding style
+    + clang-format'ed the whole tree.
+    + installed CMake files now tell about configuration
+  * gnuradio-runtime 
+    + reworked fractional tag time handling, especially in the context of resamplers
+  * GRC
+    + C++ generation as option
+    + YAML instead of XML
+    + removed blks2
+    + much better canvas tooling
+    + consistent gobject usage
+    + ROUNDED ARROWS
+  * gr-qtgui
+    + moving from Qt4 to Qt5
+  * gr-utils 
+    + gr_modtool now vastly improved
+  * gr-vocoder
+    + improved versatility
+    + removed in-tree libgsm, libcodec2, use system-wide libs
+  * Removed
+    + Project Scope: Modules gr-comedi, gr-fcd and gr-wxgui are gone
+    + gr-comedi: nobody could remember who used this, or for what. It has seen 0
+      active code contributions in the 3.7 lifecycle
+    + gr-digital: python-based packet_encoder and related tools: Bugs that were
+      sporadic and never fixed, so after long deprecation, we're removing it
+    + gr-fcd: since it's currently untestable by the CI, it's being removed, as
+      there was no code contributions. Generally, we strive to include all
+      batteries with GNU Radio. Re-integration within a more general SDR interface
+      would be desirable.
+    + gr-utils: removed PyQwt (dead) based tools
+    + gr-wxgui: Unmaintained, breaks on increasingly many systems, always was slower than
+      Qtgui. We've been starting to tell people to migrate to Qt since at
+      least 2015. Now, we're finally removing it.
+- Packaging changes:
+  * Use system libvolk, now packaged separately
+  * Cleanup spec file, mostly Qt4 and WxWidgets related
+  * Use Python3
+  * Patches:
+    - rebased missing_libraries.patch
+    - Drop obsolete qt5-maint-0001-CMake-Update-required-minimum-version-to-2.8.12.patch
+    - Drop obsolete qt5-maint-0002-CMake-FindQwt-Find-the-Qt5-version-of-QWT-instead-of.patch
+    - Drop obsolete qt5-maint-0003-gr-qtgui-update-for-Qt5.patch
+    - Drop obsolete qt5-maint-0004-grc-Generate-Python-scripts-that-use-PyQt5.patch
+    - Drop obsolete qt5-maint-0005-gr-qtgui-Add-a-workaround-for-an-upstream-bug-of-uic.patch
+    - Drop obsolete qt5-maint-0006-qtgui-fixed-examples-for-Qt5-compatibility.patch
+    - Drop obsolete qt5-maint-0007-qtgui-Fixes-for-edit_box_msg-to-work-with-QT5.patch
+    - Drop obsolete qt5-maint-0008-gr-qtgui-Allow-build-with-Qt4-or-Qt5-default.patch
+    - Drop obsolete qt5-maint-0009-gr-qtgui-Fix-PyQt-4-5-include-in-XMLs-for-GRC.patch
+    - Drop obsolete qt5-maint-0010-gr-qtgui-Fix-range.py-to-work-with-both-Qt4-and-Qt5.patch
+    - Drop obsolete qt5-maint-0011-gr-qtgui-Re-introduce-some-Qt4-specific-code.patch
+    - Drop obsolete qt5-maint-0012-grc-Fix-generation-of-Python-code-for-Qt4-and-Qt5.patch
+    - Drop obsolete qt5-maint-0013-grc-replace-templated-xml-files-with-search-and-repl.patch
+    - Drop obsolete qt5-maint-0014-qtgui-replace-templated-xml-files-with-search-and-re.patch
+    - Drop obsolete qt5-maint-0017-qtgui-fix-stylesheet-for-qt5.patch
+    - Drop obsolete qt5-maint-0019-qtgui-fixed-apps-for-Qt5-compatibility.patch
+    - Drop obsolete qt5-maint-0021-gnuradio-runtime-ctrlport-qt5.patch
+    - Drop obsolete qt5-maint-0022-gr-uhd-qt5.patch
+    - Drop obsolete qt5-maint-0023-gr-qtgui-util.patch
+    - Drop obsolete qt5-maint-0024-gr-qtgui-restoreGeometry.patch
+    - Drop obsolete 0001-Add-the-include-path-used-by-the-openSUSE-package.patch
+
+-------------------------------------------------------------------
 Mon Apr 29 11:35:24 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add some missing optional dependencies: libgsm and codec2.

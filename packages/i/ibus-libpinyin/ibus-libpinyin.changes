@@ -1,0 +1,241 @@
+-------------------------------------------------------------------
+Fri May 31 03:02:42 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.11.1
+  * Use gettext
+  * Add emoji-candidate option (boo#1112998)
+  * Fix SuggestionEditor
+
+-------------------------------------------------------------------
+Thu Feb 14 06:04:44 UTC 2019 - hillwood@opensuse.org
+
+- Update version to 1.11.0
+  * Fix keypad decimal
+  * Fix emoji candidates
+  * Support configurable opencc config
+- Drop ibus-libpinyin-fix-build-fault.patch, merged by upstream.
+
+-------------------------------------------------------------------
+Fri Nov 30 13:22:56 UTC 2018 - qzhao@suse.com
+
+- Update ibus-libpinyin.spec: To adapt to tumbleweed's update to 
+  python3.
+
+-------------------------------------------------------------------
+Mon Nov 19 10:03:37 UTC 2018 - qzhao@suse.com
+
+- Modify ibus-libpinyin.spec: Add python3 compile condition to 
+  avoid ibus-libpinyin-setup crash in Tumbleweed's mixed 
+  environment(boo#1116485).
+
+-------------------------------------------------------------------
+Sat Nov 17 04:11:20 UTC 2018 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.10.92
+  * Fixes Enter handling
+
+-------------------------------------------------------------------
+Tue Nov 13 12:21:36 UTC 2018 - qzhao@suse.com
+
+- Add ibus-libpinyin-fix-build-fault.patch: fix build error for 
+  edition 1.10 in openSUSE-Leap-15(boo#1115778).
+
+-------------------------------------------------------------------
+Fri Oct 12 13:46:43 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 1.10.91
+  * Support ime.register_trigger in lua extension
+  * Support predicted candidates
+  * Support emoji input
+
+-------------------------------------------------------------------
+Mon May 21 14:29:10 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 1.10.0
+  * bug fixes
+
+-------------------------------------------------------------------
+Wed Mar 14 12:40:44 UTC 2018 - hillwood@opensuse.org
+
+- Drop ibus-libpinyin-build_lua_5.2.patch, merged by upstream.
+
+-------------------------------------------------------------------
+Mon Mar  5 03:10:34 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 1.9.3
+  * Translate input method name in ibus menu
+  * Remove phrases.txt
+
+-------------------------------------------------------------------
+Thu Sep 28 13:13:38 UTC 2017 - hillwood@opensuse.org
+
+- Update to 1.9.2 
+  * fixes pinyin and bopomofo config
+
+-------------------------------------------------------------------
+Tue Aug 29 02:34:10 UTC 2017 - hillwood@opensuse.org
+
+- Update to 1.9.1
+  * add sort candidate option to setup dialog
+
+-------------------------------------------------------------------
+Tue Aug 22 02:43:03 UTC 2017 - hillwood@opensuse.org
+
+- Update to 1.9.0
+  * change dconf key name to lower case
+  * use libpinyin 1.9.91
+  * fixes config in setup dialog
+
+-------------------------------------------------------------------
+Fri Sep  9 06:49:04 UTC 2016 - hillwood@opensuse.org
+
+- Update to 1.8.0
+  * use libpinyin 1.6.0 
+
+-------------------------------------------------------------------
+Thu Aug 11 03:15:16 UTC 2016 - hillwood@opensuse.org
+
+- Fix lua build on openSUSE leap. 
+  * add ibus-libpinyin-build_lua_5.2.patch
+
+-------------------------------------------------------------------
+Wed Aug 10 02:16:13 UTC 2016 - hillwood@opensuse.org
+
+- Update to 1.7.92
+  * use ibus 1.5.11
+  * use libpinyin 1.5.92
+  * work around getLookupCursor 
+
+-------------------------------------------------------------------
+Fri Dec 25 05:55:45 UTC 2015 - i@marguerite.su
+
+- update version 1.7.4
+  * use pinyin_in_chewing_keyboard method
+  * fixes m_bopomofo_keyboard_mapping option
+- changes in version 1.7.3
+  * use libpinyin 1.2.91
+  * add Catalan
+  * fix for lua 5.2 API change (luaL_register is deprecated)
+  * update clearPinyinUserData method
+  * update m_dictionaries
+  * use pinyin_load_addon_phrase_library function
+  * update setup dialog
+
+-------------------------------------------------------------------
+Wed Sep 30 14:35:54 UTC 2015 - hillwood@opensuse.org
+
+- Update tp 1.7.2
+  * Fix for Lua 5.2 API change (luaL_register is deprecated)
+  * update po files
+  * update clearPinyinUserData method
+  * update m_dictionaries
+  * use pinyin_load_addon_phrase_library function
+  * update setup dialog
+  * fixes a typo
+  * add libpinyin.appdata.xml 
+- Fix boo#947676
+
+-------------------------------------------------------------------
+Wed Apr  8 02:55:56 UTC 2015 - hillwood@linuxfans.org
+
+- Update to 1.7.1
+  * select the first item in shortcut editor
+  * fixes shortcut keys in setup dialog
+  * fixes default values 
+
+-------------------------------------------------------------------
+Fri Feb 20 06:56:23 UTC 2015 - hillwood@linuxfans.org
+
+- Fix Requires error.
+
+-------------------------------------------------------------------
+Sun Feb 15 04:06:20 UTC 2015 - hillwood@linuxfans.org
+
+- Update to 1.6.99.20150203
+  * update class LibPinyinConfig to support export user phrases
+  * update setup dialog UI
+  * write exportPinyinDictionary method
+  * use opencc 1.0 
+
+-------------------------------------------------------------------
+Fri Feb 28 11:06:16 CST 2014 - hillwood@linuxfans.org
+
+- update to 1.6.92
+  * minor bug fixes
+
+-------------------------------------------------------------------
+Wed Oct 30 00:00:37 CST 2013 - hillwood@linuxfans.org
+
+- add python-xdg as Requires
+
+-------------------------------------------------------------------
+Fri Jul 12 11:49:38 CST 2013 - hillwood@linuxfans.org
+
+- enable lua support
+- bring it as default in DVD, add Provides tag
+
+-------------------------------------------------------------------
+Mon Jul 8  09:44:27 CST 2013 - hillwood@linuxfans.org
+
+- update to 1.6.91
+  * update libpinyin requires
+
+-------------------------------------------------------------------
+Sun Apr 28 14:48:13 CST 2013 - hillwood@linuxfans.org
+
+- update to 1.5.92
+  * fixes setup dialog
+  * change config key name
+  * add using namespace pinyin
+  * remove special phrases
+  * re-factor ExtEditor
+  * update base.lua
+  * fixes download url in bus-libpinyin.spec.in
+  * fixes getLookupCursor
+  * update main2.py
+  * update po files
+  * polish UI
+  * and more ..
+
+-------------------------------------------------------------------
+Sat Jan 26 20:20:31 CST 2013 - hillwood@linuxfans.org
+
+- update to 1.4.93.
+  * detect libpinyin datadir
+  * fixes bopomofo icon
+  * fixes ';' in double pinyin
+  * add symbol to libpinyin.xml.in.in
+  * add libpinyin depends
+  * fixes automake
+
+-------------------------------------------------------------------
+Sun Jul 15 23:23:51 CST 2012 - hillwood@linuxfans.org
+
+- update to 1.4.91，the first release of 1.5.x series. 
+- Add new options to setup dialog
+  
+-------------------------------------------------------------------
+Sun Jul 15 23:23:51 CST 2012 - hillwood@linuxfans.org
+
+- update to 1.4.1
+  * fixes fillLookupTableByPage
+  
+-------------------------------------------------------------------
+Wed Jul  4 21:31:27 CST 2012 - hillwood@linuxfans.org
+
+- add a requires package, opencc is needed by ibus-libpinyin
+
+-------------------------------------------------------------------
+Mon Jul  1 09:44:31 CET 2012 - hillwood@linuxfans.org
+
+- add a .desktop file
+
+-------------------------------------------------------------------
+Sat Jun 30 21:34:13 CST 2012 - hillwood@linuxfans.org
+
+- enable opencc support 
+
+-------------------------------------------------------------------
+Tue Jun 21 23:55:13 CST 2012 - hillwood@linuxfans.org
+
+- Initial package from ibus-libpinyin git, version 1.4.0.20120612

@@ -1,0 +1,414 @@
+-------------------------------------------------------------------
+Fri Aug 30 16:53:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add cdrdao-drop-gconf-dep.patch: Drop dependency on gconf2.
+  Patch taken from debian.
+- Following the above, drop gconf2-devel BuildRequires.
+- Refresh patches with quilt.
+- Run spec-cleaner, use modern macros.
+
+-------------------------------------------------------------------
+Sun Jun  2 21:14:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+- Remove redundant %clean section.
+
+-------------------------------------------------------------------
+Wed Apr 24 13:18:33 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Run autoreconf to fix build with LTO (bsc#1133112)
+
+-------------------------------------------------------------------
+Fri Aug 25 06:19:49 UTC 2017 - olaf@aepfle.de
+
+- Remove conditionals for lame and mad
+
+-------------------------------------------------------------------
+Tue May 24 15:47:54 UTC 2016 - dimstar@opensuse.org
+
+- Add cdrdao-gcc6-fixes.patch: Fix build with gcc6.
+
+-------------------------------------------------------------------
+Tue Apr 16 18:24:07 UTC 2013 - dimstar@opensuse.org
+
+- Drop gcdmaster: gcdmaster depends on no longer maintained GUI
+  libraries from GNOME 2.
+  + Obsolete gcdmaster from cdrdao.
+  + Drop gtkmm2-devel, libgnomeuimm-devel and update-desktop-files
+    BuildRequires: they were only needed for gcdmaster.
+  + Drop cdrdao-1.2.2-desktop.patch: we won't install the .desktop
+    file, so we don't need to fix it.
+
+-------------------------------------------------------------------
+Sat Sep  3 19:41:50 UTC 2011 - asterios.dramis@gmail.com
+
+- update to 1.2.3:
+  * By default, cdrdao tries to build with a native SCSI interface.
+  * Complete rewrite of native Linux SG driver.
+  * Added support for new FIRST_TRACK_NO keyword to allow a CD to start with a
+    track number other than 1.
+  * Added native interfaces for Irix, Mac OSX and NetBSD.
+  * Fixed old pregap length off-by-one error, see bug #604751.
+  * Fixed bug in Toc file parser track length computation.
+  * Man page typo fixes.
+  * Cygwin compilation fixes. Other various compilation warning fixes.
+  * Some scsilib fixes for FreeBSD, 32-bit and 64-bit SPARC.
+  * Some makefile changes to avoid conflict with installed system libs.
+  * Added patch to fix ARM and MIPS scsilib compile.
+  * Added man pages for toc2cue and toc2cddb, from Debian.
+  * Move privilege drop earlier in main flow.
+  * Commited Gentoo patch for CD-TEXT track check fix.
+  GCDMaster changes:
+  * Preferences now stored in GConf, exports schema file.
+  * Added simple Preferences dialog to change temporary file directory.
+  * Fixed GCC 4.3 compilation issues.
+- Spec file updates:
+  * Changed License: to GPL-2.0+.
+  * Added description for the patches based on openSUSE Patches Guidelines.
+  * Added gtkmm2-devel, libsigc++2-devel, pkg-config in BuildRequires:.
+  * Removed wodim-devel from BuildRequires: (the package now uses a native SCSI
+    interface).
+  * Added mimeinfo scriptlet for the mime file installed by the package.
+  * Minor other updates.
+- Rebased cdrdao-build.patch, cdrdao-1.2.2-scan.patch and cdrdao-fixes.patch to
+  apply cleanly.
+- Removed cdrdao-1.2.2-include.patch, cdrdao-1.2.2-sigc.patch and
+  cdrdao-1.2.2-libnsl.patch (fixed upstream).
+- Removed cdrdao-1.2.2-usal.patch (the package now uses a native SCSI
+  interface).
+- Added cdrdao-1.2.3-stat.patch (taken from Fedora) to fix missing includes
+  that cause failure build.
+- Added cdrdao-1.2.2-desktop.patch (taken from Fedora) to make the desktop file
+  XDG compatible and add MimeType entries.
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Fri Jun 26 15:10:49 CEST 2009 - nadvornik@suse.cz
+
+- fixed various problems with the code [bnc#491043, bnc#424635]
+
+-------------------------------------------------------------------
+Mon Apr 28 17:18:24 CEST 2008 - nadvornik@suse.cz
+
+- removed unneeded library dependency (libnsl.patch) [bnc#384164]
+
+-------------------------------------------------------------------
+Tue Apr  8 10:29:00 CEST 2008 - nadvornik@suse.cz
+
+- fixed to compile (sigc.patch)
+
+-------------------------------------------------------------------
+Wed Oct 24 10:59:52 CEST 2007 - nadvornik@suse.cz
+
+- include missing string.h
+
+-------------------------------------------------------------------
+Wed Jan 31 19:35:11 CET 2007 - sbrabec@suse.cz
+
+- Prefix of gcdmaster changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Tue Jan 23 11:48:31 CET 2007 - nadvornik@suse.cz
+
+- build with libusal from cdrkit
+
+-------------------------------------------------------------------
+Thu Oct  5 17:56:01 CEST 2006 - nadvornik@suse.cz
+
+- update to 1.2.2:
+  * bugfixes, compilation fixes
+  * updaed driver table
+- dropped unneeded patches, including resmgr patch
+
+-------------------------------------------------------------------
+Sun Feb 19 17:53:04 CET 2006 - aj@suse.de
+
+- Reduce BuildRequires.
+
+-------------------------------------------------------------------
+Tue Jan 31 09:20:51 CET 2006 - nadvornik@suse.cz
+
+- do not scan old ATAPI interface [#144861]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:54 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 24 14:50:31 CET 2006 - nadvornik@suse.cz
+
+- fixed detection of libgnomeuimm
+
+-------------------------------------------------------------------
+Wed Dec 14 01:23:08 CET 2005 - ro@suse.de
+
+- removed /usr/share/mime directory from filelist
+  (in filesystem package now) 
+
+-------------------------------------------------------------------
+Tue Nov  1 16:14:01 CET 2005 - nadvornik@suse.cz
+
+- updated to 1.2.0
+
+-------------------------------------------------------------------
+Sun Aug  7 22:00:13 CEST 2005 - ro@suse.de
+
+- update to cvs to fix build of gcdmaster with gnome-2.6 
+
+-------------------------------------------------------------------
+Sun Aug  7 11:18:37 CEST 2005 - ro@suse.de
+
+- find new libgnomeuimm 
+
+-------------------------------------------------------------------
+Wed Apr 20 16:14:43 CEST 2005 - nadvornik@suse.de
+
+- fixed to compile with gcc4
+
+-------------------------------------------------------------------
+Fri Feb 11 01:44:16 CET 2005 - ro@suse.de
+
+- change neededforbuild to libsigc++12 
+
+-------------------------------------------------------------------
+Thu Sep 23 17:33:14 CEST 2004 - nadvornik@suse.cz
+
+- built with internal pccts [#45343]
+
+-------------------------------------------------------------------
+Thu Jul 01 16:00:04 CEST 2004 - nadvornik@suse.cz
+
+- updated to 1.1.9
+- MMC-driver auto-detection in mainstream, corresponding SUSE patch dropped
+- fixed [#42615]
+
+-------------------------------------------------------------------
+Mon Apr 19 15:04:28 CEST 2004 - ro@suse.de
+
+- fix warning: control reaches end of non-void function 
+
+-------------------------------------------------------------------
+Fri Apr 02 16:42:21 CEST 2004 - nadvornik@suse.cz
+
+- fixed sound in gcdmaster [#33948]
+
+-------------------------------------------------------------------
+Mon Mar 29 11:59:40 CEST 2004 - nadvornik@suse.cz
+
+- fixed bug in dynamic menus [#36638]
+
+-------------------------------------------------------------------
+Fri Feb 20 10:47:52 CET 2004 - nadvornik@suse.cz
+
+- scan for ATA devices
+
+-------------------------------------------------------------------
+Wed Feb 18 15:57:43 CET 2004 - nadvornik@suse.cz
+
+- updated to 1.1.8
+  - ported to gnome2
+
+-------------------------------------------------------------------
+Mon Feb 02 15:25:43 CET 2004 - nadvornik@suse.cz
+
+- fixed a crash caused by wrong assert [#32701]
+- fixed the fallback driver patch [#33646]
+
+-------------------------------------------------------------------
+Sat Jan 10 11:22:21 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Tue Sep 16 16:55:02 CEST 2003 - nadvornik@suse.cz
+
+- added fallback to generic-mmc if no other driver is detected [#31044]
+
+-------------------------------------------------------------------
+Sun Sep  7 16:12:12 CEST 2003 - adrian@suse.de
+
+- add Categories
+
+-------------------------------------------------------------------
+Mon Sep  1 00:57:16 CEST 2003 - ro@suse.de
+
+- change version string to 1.1.7-suse
+- use current libscg from cdrecord
+- backport "drive-info" command from cvs
+- backport libscg interface changes from cvs
+
+-------------------------------------------------------------------
+Thu Aug 14 10:37:20 CEST 2003 - nadvornik@suse.cz
+
+- added GDR8160B to driver list [#26860]
+
+-------------------------------------------------------------------
+Thu Jul 24 11:03:47 CEST 2003 - uli@suse.de
+
+- fixed to build on s390x
+
+-------------------------------------------------------------------
+Fri Mar  7 13:47:26 CET 2003 - meissner@suse.de
+
+- added resmgr support, rerun autoconf to bring in new 
+  resmgr checks.
+
+-------------------------------------------------------------------
+Tue Feb 11 17:10:32 CET 2003 - nadvornik@suse.cz
+
+- updated to 1.1.7
+
+-------------------------------------------------------------------
+Mon Jan 27 00:22:04 CET 2003 - ro@suse.de
+
+- fix gcc-3.3 build 
+
+-------------------------------------------------------------------
+Mon Jan 20 01:14:28 CET 2003 - ro@suse.de
+
+- fix multiline-string issue in code 
+
+-------------------------------------------------------------------
+Fri Sep 27 14:36:04 CEST 2002 - ro@suse.de
+
+- Added alsa alsa-devel to neededforbuild (esound)
+
+-------------------------------------------------------------------
+Mon Aug 05 14:37:43 CEST 2002 - nadvornik@suse.cz
+
+- updated driver table
+
+-------------------------------------------------------------------
+Tue Jul 23 18:13:59 CEST 2002 - nadvornik@suse.cz
+
+- installed toc2cue (bug #17144)
+
+-------------------------------------------------------------------
+Mon Jun 17 16:19:08 CEST 2002 - meissner@suse.de
+
+- use ppc config file for ppc64 too.
+
+-------------------------------------------------------------------
+Tue May 14 15:34:46 CEST 2002 - ro@suse.de
+
+- fix to build on x86_64 and with pccts includes in lib64 
+
+-------------------------------------------------------------------
+Fri Apr 26 02:11:56 CEST 2002 - ro@suse.de
+
+- fix build with latest gcc 
+
+-------------------------------------------------------------------
+Mon Apr 22 13:03:34 CEST 2002 - ro@suse.de
+
+- make it build with gcc-3.1 
+
+-------------------------------------------------------------------
+Fri Sep  7 13:49:25 CEST 2001 - nadvornik@suse.cz
+
+- added /usr/share/cdrdao to filelist
+
+-------------------------------------------------------------------
+Wed Aug 29 14:23:53 CEST 2001 - schwab@suse.de
+
+- Add %suse_update_config.
+- Fix configuration problem.
+
+-------------------------------------------------------------------
+Fri Aug  3 10:10:05 CEST 2001 - uli@suse.de
+
+- added rules for s390
+
+-------------------------------------------------------------------
+Wed Jun 20 16:35:57 CEST 2001 - nadvornik@suse.cz
+
+- created subpackage "gcdmaster"
+
+-------------------------------------------------------------------
+Thu May 31 01:36:53 MEST 2001 - egger@suse.de
+
+- Updated to version 1.1.5.
+- Fixed specfile.
+- Enabled GNOME frontend (to be moved into subpackage).
+- Completed #neededforbuild. 
+
+-------------------------------------------------------------------
+Wed May  9 23:28:42 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Tue Feb 20 15:19:18 CET 2001 - sf@suse.de
+
+- added ia64 to RULES
+- added ia64 to btorder.h
+- added <string.h> for gcc-2.96 
+
+-------------------------------------------------------------------
+Fri Feb  9 14:29:45 CET 2001 - ro@suse.de
+
+- fixed to compile
+- sigc++, sigc++-devel need to be added to neededforbuild,
+  but xdao does not compile with current gtk anyway
+
+-------------------------------------------------------------------
+Sun Nov  5 18:35:46 CET 2000 - ro@suse.de
+
+- fixed neededforbuild 
+
+-------------------------------------------------------------------
+Thu Jul  6 12:30:10 CEST 2000 - kukuk@suse.de
+
+- Add patch for SPARC
+
+-------------------------------------------------------------------
+Fri May 19 10:33:35 CEST 2000 - smid@suse.cz
+
+- man pages fixed 
+
+-------------------------------------------------------------------
+Thu Apr  6 13:34:18 CEST 2000 - smid@suse.cz
+
+- buildroot added
+
+-------------------------------------------------------------------
+Mon Jan 17 18:00:46 CET 2000 - ro@suse.de
+
+- man to usr/share/man 
+
+-------------------------------------------------------------------
+Tue Nov  9 00:53:06 CET 1999 - ro@suse.de
+
+- update to 1.1.3 (added xcdrdao, gtk-frontend) 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Aug  3 15:03:14 MEST 1999 - uli@suse.de
+
+- update -> 1.1.2
+
+-------------------------------------------------------------------
+Fri Apr 16 13:01:02 MEST 1999 - ro@suse.de
+
+- update to 1.1.0
+
+-------------------------------------------------------------------
+Tue Dec  1 11:21:39 MET 1998 - ro@suse.de
+
+- update to 1.09
+
+-------------------------------------------------------------------
+Mon Sep 14 10:10:11 MEST 1998 - ro@suse.de
+
+- initial suse package, development version 1.06
+

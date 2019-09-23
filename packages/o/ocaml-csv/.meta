@@ -1,0 +1,13 @@
+<package name="ocaml-csv" project="openSUSE:Factory">
+  <title>OCaml library for reading and writing CSV files</title>
+  <description>This OCaml library can read and write CSV files, including all
+extensions used by Excel - eg. quotes, newlines, 8 bit characters in
+fields, quote-0 etc.
+
+The library comes with a handy command line tool called csvtool for
+handling CSV files from shell scripts.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-csv"/>
+  <url>https://forge.ocamlcore.org/projects/csv/</url>
+</package>

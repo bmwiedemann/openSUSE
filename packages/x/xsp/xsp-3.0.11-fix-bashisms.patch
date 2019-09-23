@@ -1,0 +1,12 @@
+diff -Ndur xsp-3.0.11/packaging/opensuse/xsp2.init xsp-3.0.11-fix-bashisms/packaging/opensuse/xsp2.init
+--- xsp-3.0.11/packaging/opensuse/xsp2.init	2013-05-14 14:46:56.000000000 +0300
++++ xsp-3.0.11-fix-bashisms/packaging/opensuse/xsp2.init	2015-05-10 03:56:25.303773185 +0300
+@@ -195,7 +195,7 @@
+ 	## the return value is set appropriately by startproc.
+ 	export MONO_OPTIONS
+ 	
+-	if [ -f "$XSP_PIDFILE" ] && [ "$(readlink /proc/$(cat $XSP_PIDFILE)/exe)" == "$MONO_BIN" ]; then
++	if [ -f "$XSP_PIDFILE" ] && [ "$(readlink /proc/$(cat $XSP_PIDFILE)/exe)" = "$MONO_BIN" ]; then
+ 		rc_check 0
+ 	else
+ 		/sbin/startproc -p $XSP_PIDFILE -l /var/log/xsp2.log -u $XSP_USER -g $XSP_GROUP $XSP2_WRAPPER $XSP_OPTIONS --pidfile $XSP_PIDFILE

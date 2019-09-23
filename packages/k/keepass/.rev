@@ -1,0 +1,177 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>21b5597a23a0148b19855e279d43a55e</srcmd5>
+    <version>2.35</version>
+    <time>1485042519</time>
+    <user>dimstar_suse</user>
+    <comment>KeePass is a secure password manager.</comment>
+    <requestid>449377</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d76987a68385cfabfb53f214303ff317</srcmd5>
+    <version>2.35</version>
+    <time>1495268070</time>
+    <user>dimstar_suse</user>
+    <comment>- Depend on mono-devel instead of monodevelop</comment>
+    <requestid>496587</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>518ff4d3890dbad274e60d132de95092</srcmd5>
+    <version>2.35</version>
+    <time>1496822119</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix install with Mono 5.0 (mdb files are not built anymore.)</comment>
+    <requestid>501085</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0753d5fb88906038040a5c446e29db79</srcmd5>
+    <version>2.36</version>
+    <time>1497274458</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>502804</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f6fb11be83ecc19bcb3253f3023353dd</srcmd5>
+    <version>2.37</version>
+    <time>1507897182</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.37
+  New features:
+  * When creating a new database, KeePass now offers to print a
+    KeePass emergency sheet (which can then be filled out and
+    stored in a secure location, where only the user and possibly
+    a few other people that the user trusts have access to);
+    an emergency sheet can also be created via 
+    'Tools' -&gt; 'Database Tools' -&gt; 'Print Emergency Sheet'.
+  * Added database file information dialog that is displayed
+    when creating a new database.
+  * Added function to search similar password clusters
+   ('Edit' -&gt; 'Show Entries' -&gt; 'Find Similar Passwords (Clusters)').
+  * On Unix-like systems: if the library 'libgcrypt.so.20' is
+    available, KeePass uses it for AES-KDF transformations.
+  * Added workaround for .NET/Windows column header drawing bug
+    when switching to TAN-only entry list mode.
+  * Added workaround for Mono tab switching bug.
+  * Added workaround for Mono '}' character RTF encoding bug.
+  * TrlUtil: added support for .NET 4.*.
+  
+  Improvements:
+  * Improved dialog for changing the master key
+  * KeePass now directly offers to save the database after
+    changing the master key, and it asks whether to print a
+    new emergency sheet.
+  * Various improvements in the translation selection dialog
+  * KeePass now refuses to attach files that are larger than
+    512 MB (as larger files can result in serialization problems).
+  * Increased default number of AES-KDF rounds.
+  * On Unix-like systems, KeePass now uses the CSP implementation</comment>
+    <requestid>533684</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f355f91bbecc3bf31dd538d5253b8472</srcmd5>
+    <version>2.38</version>
+    <time>1515623950</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.38
+  New features:
+  * Added button 'Open Folder' in the language selection dialog,
+    which opens the 'Languages' folder.
+  * Added button 'Open Folder' in the plugins dialog,
+    which opens the 'Plugins' folder.
+  * Added option 'Icon' and an option for specifying the placeholder
+    behavior (replace or not, or both forms) in the 'Print' / HTML
+    export dialog.
+  * Printing / HTML export: the notes of a group are now displayed
+    below the group name.
+  * Enhanced the Password Exporter import module to support XML
+    files created by version 1.3.4.
+  * Added workaround for Mono list view item deletion bug.
+  * Added workaround for Mono command line argument encoding bug.
+  Improvements:
+  * Password quality estimation: improved compatibility with
+    process memory protection.
+  * Improved UI scaling when using KeePass on multiple systems
+    with different DPI values.
+  * Printing / HTML export: improved embedding of CSS.
+  * Printing / HTML export: spaces in passwords are now encoded
+    as non-breaking spaces.
+  * Improved UI updating in the 'Print' / HTML export dialog.
+  * Enhanced KDE system font detection.
+  * Improved fatal error handling.
+  * Various improvements in the language selection dialog.
+  * Various code optimizations.
+  * Minor other improvements.
+  Bugfixes:</comment>
+    <requestid>563337</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f303e59d5d01432eb397605d9b043f4e</srcmd5>
+    <version>2.39</version>
+    <time>1526042098</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.39
+  New features
+  * KeePass now uses Transactional NTFS (TxF) for writing database
+    and configuration files, if possible; this improves the
+    compatibility with other programs that are watching these
+    files (e.g. file synchronization services).
+  * Added command 'Edit' → 'Show Entries' → 'Large Entries'.
+  * Added command 'Edit' → 'Show Entries' → 'Last Modified Entries'.
+  * Added option 'Automatically save after modifying an entry
+    using the entry editing dialog' (turned off by default).
+  * Added option 'Minimize main window after performing auto-type'
+    (turned off by default).
+  * Added option 'Show lines between nodes in tree views'
+    (turned off by default).
+  * Added support for importing Google Chrome 66 password CSV files.
+  * Added trigger event 'Time - Periodic', which is raised at
+    user-defined intervals.
+  * Links in the entry string editing dialog are clickable now.
+  * Added UIFlags bit for disabling the 'XML Replace' menu item.
+  * Added UIFlags bit for hiding auto-type obfuscation
+    compatibility information dialogs.
+  * Added workaround for .NET 'urtf' RTF round-trip bug.
+  * Secure edit controls are now extensible by plugins.
+  * KPScript: the 'AddEntry' command now supports the
+    '-setx-Expires' and '-setx-ExpiryTime' parameters.
+ 
+  Improvements
+  * In printouts and HTML exports, expired entries now have a red
+    'X' icon (if the option 'Icon' is turned on).
+  * Improved string normalization in the entry and string editing dialogs.</comment>
+    <requestid>605069</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3dd3cb409037ec458bff2a89d99c67aa</srcmd5>
+    <version>2.40</version>
+    <time>1537882915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637412</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b627b535196138691722000ce6c33c4c</srcmd5>
+    <version>2.41</version>
+    <time>1548452726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668542</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>833c157f8e657d27c3aed8a4b3cd255f</srcmd5>
+    <version>2.41</version>
+    <time>1560971580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710668</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>462a7c08b5e6f27b1ba896491e9bbc3d</srcmd5>
+    <version>2.42.1</version>
+    <time>1567581109</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727724</requestid>
+  </revision>
+</revisionlist>

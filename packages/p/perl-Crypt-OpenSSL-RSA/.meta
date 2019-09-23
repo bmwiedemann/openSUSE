@@ -1,0 +1,7 @@
+<package name="perl-Crypt-OpenSSL-RSA" project="openSUSE:Factory">
+  <title>RSA encoding and decoding, using the openSSL libraries</title>
+  <description>Crypt::OpenSSL::RSA is an XS perl module designed to provide basic RSA
+functionality.  It does this by providing a glue to the RSA functions
+in the OpenSSL library.</description>
+  <devel project="devel:languages:perl" package="perl-Crypt-OpenSSL-RSA"/>
+</package>

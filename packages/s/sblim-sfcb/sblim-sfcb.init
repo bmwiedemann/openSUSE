@@ -1,0 +1,119 @@
+#!/bin/bash
+#
+# $Id: sfcb.init-suse.in,v 1.3 2005/07/28 08:09:38 mihajlov Exp $
+#
+### BEGIN INIT INFO
+# Provides:          sfcb
+# Required-Start:    $syslog $remote_fs
+# Required-Stop:     $syslog $remote_fs
+# Default-Start:     3 5
+# Default-Stop:      0 1 2 6
+# Short-Description: Small Footprint CIM Broker Service
+# Description:       Manage the sfcb Service
+### END INIT INFO
+
+# Source function library.
+. /etc/rc.status
+
+function preload_pam_misc_so()
+{
+    for dir in /lib64 /lib;
+    do if test -e $dir/libpam_misc.so.0; then
+        export LD_PRELOAD=$dir/libpam_misc.so.0
+        break;
+    fi;
+    done;
+}
+
+echo $PATH | grep -q /usr/sbin ||PATH=/usr/sbin:$PATH
+
+if [ -z "$LD_LIBRARY_PATH" ] || echo $LD_LIBRARY_PATH | grep -qv /usr/lib
+then
+    LD_LIBRARY_PATH=/usr/lib:$LD_LIBRARY_PATH
+    export LD_LIBRARY_PATH
+fi
+
+
+start() {
+	echo -n "Starting sfcb: "
+
+    preload_pam_misc_so
+    
+    # generate certificate
+    if [ ! -f "/etc/sfcb/server.pem" ]; then
+        if [ -f "/etc/ssl/servercerts/servercert.pem" \
+                -a -f "/etc/ssl/servercerts/serverkey.pem" ]; then
+            echo "Using common server certificate /etc/ssl/servercerts/servercert.pem"
+            ln -s /etc/ssl/servercerts/servercert.pem /etc/sfcb/server.pem
+            ln -s /etc/ssl/servercerts/servercert.pem /etc/sfcb/client.pem
+            ln -s /etc/ssl/servercerts/serverkey.pem /etc/sfcb/file.pem
+        else
+            echo "Generating SFCB server public certificate and private key"
+            FQDN=`hostname --fqdn`
+            if [ "x${FQDN}" = "x" ]; then
+                FQDN=localhost.localdomain
+            fi
+            /usr/share/sfcb/genSslCert.sh /etc/sfcb
+#cat << EOF | sh /usr/share/sfcb/genSslCert.sh /etc/sfcb > /dev/null 2>&1
+#--
+#SomeState
+#SomeCity
+#SomeOrganization
+#SomeOrganizationalUnit
+#${FQDN}
+#root@${FQDN}
+#EOF
+        fi
+    fi
+    # end generate certificate
+
+	startproc /usr/sbin/sfcbd -d
+	rc_status -v
+}	
+
+stop() {
+	echo -n "Shutting down sfcb: "
+	killproc sfcbd
+	rc_status -v
+}
+
+reload() {
+	echo -n "Reloading sfcb configuration: "
+	killproc -HUP sfcbd
+	rc_status -v
+}
+
+case "$1" in
+    start)
+	start
+	;;
+    stop)
+	stop
+	;;
+    status)
+	echo -n "Checking for Small Footprint CIM Broker (SFCB): "
+	checkproc sfcbd
+	rc_status -v
+	;;
+    restart)
+    	stop
+	start
+	;;
+    reload)
+	reload
+	;;
+    try-restart|condrestart)
+	$0 status
+	if test $? = 0; then
+		$0 restart
+	else
+		rc_reset
+	fi
+	rc_status
+	;;
+    *)
+	echo "Usage: sfcb {start|stop|status|reload|restart|condrestart}"
+	exit 1
+	;;
+esac
+exit $?

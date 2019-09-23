@@ -1,0 +1,14 @@
+<package name="apache-ivy" project="openSUSE:Factory">
+  <title>Java-based dependency manager</title>
+  <description>Apache Ivy is a tool for managing (recording, tracking, resolving and
+reporting) project dependencies.  It is designed as process agnostic and is
+not tied to any methodology or structure. while available as a standalone
+tool, Apache Ivy works particularly well with Apache Ant providing a number
+of powerful Ant tasks ranging from dependency resolution to dependency
+reporting and publication.
+
+
+</description>
+  <devel project="Java:packages" package="apache-ivy"/>
+  <url>http://ant.apache.org/ivy/</url>
+</package>

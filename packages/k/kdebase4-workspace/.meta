@@ -1,0 +1,6 @@
+<package name="kdebase4-workspace" project="openSUSE:Factory">
+  <title>The KDE Workspace Components</title>
+  <description>This package contains the basic packages for a K Desktop Environment
+workspace.</description>
+  <devel project="KDE:Distro:Factory" package="kdebase4-workspace"/>
+</package>

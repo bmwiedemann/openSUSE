@@ -1,0 +1,185 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ddacdfac1151b337ecb8ebafd57856b6</srcmd5>
+    <version>1.10</version>
+    <time>1168902474</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>54b7af95c89f8c2984f79a5eea424472</srcmd5>
+    <version>1.12</version>
+    <time>1201892492</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="46">
+    <srcmd5>54b7af95c89f8c2984f79a5eea424472</srcmd5>
+    <version>1.12</version>
+    <time>1201892492</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="47">
+    <srcmd5>dfa9268343cd7973d3f9967acb40885a</srcmd5>
+    <version>1.12</version>
+    <time>1245337521</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c04cbe6bfe86e6b93d5ca8e6214e3fad</srcmd5>
+    <version>1.14</version>
+    <time>1248729556</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>c04cbe6bfe86e6b93d5ca8e6214e3fad</srcmd5>
+    <version>1.14</version>
+    <time>1248729556</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>6727e7d6cb149cdca76fcde5cad20810</srcmd5>
+    <version>1.14</version>
+    <time>1268923237</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>6727e7d6cb149cdca76fcde5cad20810</srcmd5>
+    <version>1.14</version>
+    <time>1278667340</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>6727e7d6cb149cdca76fcde5cad20810</srcmd5>
+    <version>1.14</version>
+    <time>1278678568</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>6727e7d6cb149cdca76fcde5cad20810</srcmd5>
+    <version>1.14</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e9b14d1816d409eb21b49b4f72f5dee8</srcmd5>
+    <version>1.15</version>
+    <time>1314188213</time>
+    <user>saschpe</user>
+    <comment>- updated to version 1.15:
+  add --dump-options; fix a bug in case-insensitive filesystems;
+  see Changes file for details</comment>
+    <requestid>79594</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>8113d6469900fee4b9a2f176c70015d6</srcmd5>
+    <version>1.15</version>
+    <time>1314188223</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79594
+</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>8113d6469900fee4b9a2f176c70015d6</srcmd5>
+    <version>1.15</version>
+    <time>1319181822</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>2a5fa3bde63c774e118e8284501348d2</srcmd5>
+    <version>1.15</version>
+    <time>1323191049</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>2a5fa3bde63c774e118e8284501348d2</srcmd5>
+    <version>1.15</version>
+    <time>1340183248</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>2a5fa3bde63c774e118e8284501348d2</srcmd5>
+    <version>1.15</version>
+    <time>1359108767</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>2a5fa3bde63c774e118e8284501348d2</srcmd5>
+    <version>1.15</version>
+    <time>1379662145</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="13">
+    <srcmd5>2a5fa3bde63c774e118e8284501348d2</srcmd5>
+    <version>1.15</version>
+    <time>1409300674</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="14">
+    <srcmd5>cdb08e2511454b324f52b1ee087ee3b6</srcmd5>
+    <version>1.15</version>
+    <time>1412690438</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254476</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a905f4bbae9031b7934626a9ac42fbf4</srcmd5>
+    <version>2.0</version>
+    <time>1450364091</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.0:
+  * fix checks for NFD conversion, where convmv could run into a 
+    &quot;resulting filename is ... bytes long (max: 255) error message 
+    for no obvious reason.
+  * the --preserve-mtimes option is the default now
+  * fix a bug where mtimes might not be restored in some cases
+  * add --map option to support additional character mappings like 
+    to mapping Microsoft's illegal NTFS characters
+  * issue warning if we cannot traverse a directory in recursive 
+    mode</comment>
+    <requestid>349174</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7e6e7aa43bfd28cf110deff91049657d</srcmd5>
+    <version>2.01</version>
+    <time>1498202314</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505687</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>65d51bf81e735a6a4a4bc347095ce87f</srcmd5>
+    <version>2.04</version>
+    <time>1511817485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545782</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b781c18e85458a81c79e612abf3f8e2d</srcmd5>
+    <version>2.05</version>
+    <time>1546946803</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.05:
+  * allow NFC/NFD conversion on APFS volumes, add man page section
+    for that filesystem
+  * use case- and normalization-insensitivity workarounds also for
+    parsable mode</comment>
+    <requestid>661857</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>6d4acbc21867e0d9f8cc00093c6b96f5</srcmd5>
+    <version>2.05</version>
+    <time>1547540187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664647</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Sat Oct 20 11:31:06 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:11 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Jul 17 19:31:03 UTC 2018 - psimons@suse.com
+
+- Update SDL-image to version 0.6.2.0.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Wed May 16 13:06:52 UTC 2018 - psimons@suse.com
+
+- Prefer the new %license attribute over %doc.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:23:59 UTC 2016 - psimons@suse.com
+
+- Update to version 0.6.1.2 revision 1 with cabal2obs.
+  This update obsoletes ghc-SDL-image-pc.patch.
+
+-------------------------------------------------------------------
+Fri May 15 13:00:20 UTC 2015 - dap.darkness@gmail.com
+
+- Added ghc-SDL-image-pc.patch to resolve "linking error:
+  (Image.o):(.text+0x85): undefined reference to IMG_*",
+  see more at https://github.com/styx/Raincat/issues/3
+
+-------------------------------------------------------------------
+Mon Oct 28 19:09:40 UTC 2013 - sbahling@suse.com
+
+- Update spec file.
+  * Use new cabal-rpm template
+  * Builds for SUSE Linux Enterpise 11
+
+-------------------------------------------------------------------
+Sun Aug  4 17:10:14 UTC 2013 - dap.darkness@gmail.com
+
+- Fixed for Haskell Platform 2013.2.
+
+-------------------------------------------------------------------
+Mon Jun 17 17:07:50 UTC 2013 - dap.darkness@gmail.com
+
+- Initial build.

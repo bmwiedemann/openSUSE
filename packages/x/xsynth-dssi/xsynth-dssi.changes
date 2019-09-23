@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Sun Oct  5 08:55:38 UTC 2014 - davejplater@gmail.com
+
+- Require dssi
+
+-------------------------------------------------------------------
+Wed Dec 21 10:31:56 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Fri Nov 26 10:15:41 UTC 2010 - davejplater@gmail.com
+
+- Update to version 0.9.4
+- Upstream changes :
+  * Don't link against alsa-lib (or libdssialsacompat): all we need
+    are the ALSA headers.
+  * In recent glibc, thread-specific locale functions now need
+    '#define _XOPEN_SOURCE 700'.
+
+-------------------------------------------------------------------
+Wed Sep 22 08:24:28 UTC 2010 - davejplater@gmail.com
+
+- Update to version 0.9.3
+- Upstream changes :
+  * Updated about_bitmap.xpm for 2010.
+  * Fixed spurious flags on LADSPA_HINT_TOGGLED ports.
+  * Cleaned up exported symbols.
+  * GUI knobs now use cairo when available.
+  * Fixed patch handling to more gracefully deal with locales: accept
+    both native and "C" locales, but emit only "C" (thanks to Martin
+    Tarenskeen for the bug report.)
+
+-------------------------------------------------------------------
+Sun Feb 21 07:39:48 UTC 2010 - davejplater@gmail.com
+
+- Created xsynth-dssi-0.9.2
+
+

@@ -1,0 +1,506 @@
+--- jss-4.5.0/coreconf/Linux.mk
++++ jss-4.5.0/coreconf/Linux.mk
+@@ -127,7 +127,7 @@ endif
+ # Place -ansi and *_SOURCE before $(DSO_CFLAGS) so DSO_CFLAGS can override
+ # -ansi on platforms like Android where the system headers are C99 and do
+ # not build with -ansi.
+-STANDARDS_CFLAGS	= -D_POSIX_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE
++STANDARDS_CFLAGS	= -D_POSIX_SOURCE -D_DEFAULT_SOURCE -D_XOPEN_SOURCE
+ OS_CFLAGS		= $(STANDARDS_CFLAGS) $(DSO_CFLAGS) $(OS_REL_CFLAGS) $(ARCHFLAG) -Wall -Werror-implicit-function-declaration -Wno-switch -pipe -DLINUX -Dlinux -DHAVE_STRERROR
+ OS_LIBS			= $(OS_PTHREAD) -ldl -lc
+ 
+--- jss-4.5.0/org/mozilla/jss/CryptoManager.java
++++ jss-4.5.0/org/mozilla/jss/CryptoManager.java
+@@ -1082,6 +1082,7 @@ public final class CryptoManager implements TokenSupplier
+      *      with the given nickname.
+      * @deprecated Use verifyCertificate() instead
+      */
++    @Deprecated
+     public boolean isCertValid(String nickname, boolean checkSig,
+             CertificateUsage certificateUsage)
+         throws ObjectNotFoundException, InvalidNicknameException
+--- jss-4.5.0/org/mozilla/jss/crypto/Algorithm.java
++++ jss-4.5.0/org/mozilla/jss/crypto/Algorithm.java
+@@ -84,6 +84,7 @@ public class Algorithm {
+      * @return Parameter type.
+      * @deprecated Call <tt>getParameterClasses()</tt> instead.
+      */
++    @Deprecated
+     public Class<?> getParameterClass() {
+         if( parameterClasses.length == 0) {
+             return null;
+--- jss-4.5.0/org/mozilla/jss/crypto/BadPaddingException.java
++++ jss-4.5.0/org/mozilla/jss/crypto/BadPaddingException.java
+@@ -6,6 +6,7 @@ package org.mozilla.jss.crypto;
+ /**
+  * @deprecated Use javax.crypto.BadPaddingException.
+  */
++@Deprecated
+ public class BadPaddingException extends javax.crypto.BadPaddingException {
+     private static final long serialVersionUID = 1L;
+     public BadPaddingException() {
+--- jss-4.5.0/org/mozilla/jss/crypto/EncryptionAlgorithm.java
++++ jss-4.5.0/org/mozilla/jss/crypto/EncryptionAlgorithm.java
+@@ -226,6 +226,7 @@ public class EncryptionAlgorithm extends Algorithm {
+      *  don't contain key length, which is necessary to distinguish between
+      *  AES algorithms.
+      */
++    @Deprecated
+     public static EncryptionAlgorithm fromString(String name)
+         throws NoSuchAlgorithmException
+     {
+@@ -276,6 +277,7 @@ public class EncryptionAlgorithm extends Algorithm {
+      * @return <code>true</code> if this algorithm performs padding.
+      * @deprecated Call <tt>getPaddingType()</tt> instead.
+      */
++    @Deprecated
+     public boolean isPadded() {
+         return ! Padding.NONE.equals(padding);
+     }
+--- jss-4.5.0/org/mozilla/jss/crypto/PrivateKey.java
++++ jss-4.5.0/org/mozilla/jss/crypto/PrivateKey.java
+@@ -37,6 +37,7 @@ public interface PrivateKey extends java.security.PrivateKey
+      *      another way, such as a function that directly matches a cert and
+      *      key.
+      */
++    @Deprecated
+     public byte[] getUniqueID() throws TokenException;
+ 
+     /**
+--- jss-4.5.0/org/mozilla/jss/crypto/TokenCertificate.java
++++ jss-4.5.0/org/mozilla/jss/crypto/TokenCertificate.java
+@@ -22,6 +22,7 @@ public interface TokenCertificate extends X509Certificate {
+      *      another way, such as a function that directly matches a cert and
+      *      key.
+      */
++    @Deprecated
+     public abstract byte[] getUniqueID();
+ 
+     /**
+--- jss-4.5.0/org/mozilla/jss/netscape/security/acl/AclEntryImpl.java
++++ jss-4.5.0/org/mozilla/jss/netscape/security/acl/AclEntryImpl.java
+@@ -138,7 +138,10 @@ public class AclEntryImpl implements AclEntry {
+ 
+     /**
+      * Return a string representation of the contents of the ACL entry.
++     *
++     * @deprecated Group and Permission in java.security.acl have been deprecated and marked for removal
+      */
++    @Deprecated
+     public String toString() {
+         StringBuffer s = new StringBuffer();
+         if (negative)
+@@ -152,7 +155,7 @@ public class AclEntryImpl implements AclEntry {
+         s.append(user + "=");
+         Enumeration<Permission> e = permissions();
+         while (e.hasMoreElements()) {
+-            Permission p = e.nextElement();
++            @Deprecated Permission p = e.nextElement();
+             s.append(p);
+             if (e.hasMoreElements())
+                 s.append(",");
+--- jss-4.5.0/org/mozilla/jss/netscape/security/acl/AclImpl.java
++++ jss-4.5.0/org/mozilla/jss/netscape/security/acl/AclImpl.java
+@@ -32,7 +32,11 @@ import java.util.Vector;
+  * An Access Control List (ACL) is encapsulated by this class.
+  *
+  * @author Satish Dharmaraj
++ *
++ * @deprecated Owner in java.security.acl has been deprecated and marked for removal
++ *
+  */
++@Deprecated
+ public class AclImpl extends OwnerImpl implements Acl {
+     //
+     // Maintain four tables. one each for positive and negative
+@@ -165,7 +169,9 @@ public class AclImpl extends OwnerImpl implements Acl {
+      *
+      * @param user the principal for which the ACL entry is returned.
+      * @return The resulting permission set that the principal is allowed.
++     * @deprecated Permission in java.security.acl has been deprecated and marked for removal
+      */
++    @Deprecated
+     public synchronized Enumeration<Permission> getPermissions(Principal user) {
+ 
+         Enumeration<Permission> individualPositive;
+@@ -313,6 +319,10 @@ public class AclImpl extends OwnerImpl implements Acl {
+         return v.elements();
+     }
+ 
++    /**
++     * @deprecated Permission in java.security.acl has been deprecated and marked for removal
++     */
++    @Deprecated
+     private Enumeration<Permission> getGroupPositive(Principal user) {
+         Enumeration<Permission> groupPositive = zeroSet.elements();
+         Enumeration<Principal> e = allowedGroupsTable.keys();
+@@ -326,6 +336,10 @@ public class AclImpl extends OwnerImpl implements Acl {
+         return groupPositive;
+     }
+ 
++    /**
++     * @deprecated Permission in java.security.acl has been deprecated and marked for removal
++     */
++    @Deprecated
+     private Enumeration<Permission> getGroupNegative(Principal user) {
+         Enumeration<Permission> groupNegative = zeroSet.elements();
+         Enumeration<Principal> e = deniedGroupsTable.keys();
+@@ -339,6 +353,10 @@ public class AclImpl extends OwnerImpl implements Acl {
+         return groupNegative;
+     }
+ 
++    /**
++     * @deprecated Permission in java.security.acl has been deprecated and marked for removal
++     */
++    @Deprecated
+     private Enumeration<Permission> getIndividualPositive(Principal user) {
+         Enumeration<Permission> individualPositive = zeroSet.elements();
+         AclEntry ae = allowedUsersTable.get(user);
+@@ -347,6 +365,10 @@ public class AclImpl extends OwnerImpl implements Acl {
+         return individualPositive;
+     }
+ 
++    /**
++     * @deprecated Permission in java.security.acl has been deprecated and marked for removal
++     */
++    @Deprecated
+     private Enumeration<Permission> getIndividualNegative(Principal user) {
+         Enumeration<Permission> individualNegative = zeroSet.elements();
+         AclEntry ae = deniedUsersTable.get(user);
+@@ -356,10 +378,21 @@ public class AclImpl extends OwnerImpl implements Acl {
+     }
+ }
+ 
++/**
++ *
++ * @deprecated Acl in java.security.acl has been deprecated and marked for removal
++ * @deprecated AclEntry in java.security.acl has been deprecated and marked for removal
++ */
++@Deprecated
+ final class AclEnumerator implements Enumeration<AclEntry> {
+-    Acl acl;
++    @Deprecated Acl acl;
+     Enumeration<AclEntry> u1, u2, g1, g2;
+ 
++    /**
++     * @deprecated AclEntry in java.security.acl has been deprecated and marked for removal
++     * @deprecated Acl in java.security.acl has been deprecated and marked for removal
++     */
++    @Deprecated
+     AclEnumerator(Acl acl, Hashtable<Principal, AclEntry> u1, Hashtable<Principal, AclEntry> g1,
+             Hashtable<Principal, AclEntry> u2, Hashtable<Principal, AclEntry> g2) {
+         this.acl = acl;
+--- jss-4.5.0/org/mozilla/jss/netscape/security/acl/GroupImpl.java
++++ jss-4.5.0/org/mozilla/jss/netscape/security/acl/GroupImpl.java
+@@ -26,7 +26,9 @@ import java.util.Vector;
+  * This class implements a group of principals.
+  *
+  * @author Satish Dharmaraj
++ * @deprecated Group in java.security.acl has been deprecated and marked for removal
+  */
++@Deprecated
+ public class GroupImpl implements Group {
+     private Vector<Principal> groupMembers = new Vector<Principal>(50, 100);
+     private String group;
+@@ -107,7 +109,9 @@ public class GroupImpl implements Group {
+      * @param member The principal whose membership must be checked for.
+      * @return true if the principal is a member of this group,
+      *         false otherwise
++     * @deprecated Group in java.security.acl has been deprecated and marked for removal
+      */
++    @Deprecated
+     public boolean isMember(Principal member) {
+ 
+         //
+@@ -136,6 +140,10 @@ public class GroupImpl implements Group {
+     // a vector of already seen groups. Only new groups are considered,
+     // thereby avoiding loops.
+     //
++    /**
++     * @deprecated Group in java.security.acl has been deprecated and marked for removal
++     */
++    @Deprecated
+     boolean isMemberRecurse(Principal member, Vector<Group> alreadySeen) {
+         Enumeration<Principal> e = members();
+         while (e.hasMoreElements()) {
+@@ -155,12 +163,12 @@ public class GroupImpl implements Group {
+                 // case rather than clutter the interface by forcing the
+                 // implementation of this method.)
+                 //
+-                GroupImpl g = (GroupImpl) p;
++                @Deprecated GroupImpl g = (GroupImpl) p;
+                 alreadySeen.addElement(this);
+                 if (!alreadySeen.contains(g))
+                     mem = g.isMemberRecurse(member, alreadySeen);
+             } else if (p instanceof Group) {
+-                Group g = (Group) p;
++                @Deprecated Group g = (Group) p;
+                 if (!alreadySeen.contains(g))
+                     mem = g.isMember(member);
+             }
+--- jss-4.5.0/org/mozilla/jss/netscape/security/acl/OwnerImpl.java
++++ jss-4.5.0/org/mozilla/jss/netscape/security/acl/OwnerImpl.java
+@@ -30,9 +30,11 @@ import java.util.Enumeration;
+  * part of the constructor.
+  *
+  * @author Satish Dharmaraj
++ * @deprecated Owner in java.security.acl has been deprecated and marked for removal
+  */
++@Deprecated
+ public class OwnerImpl implements Owner {
+-    private Group ownerGroup;
++    @Deprecated private Group ownerGroup;
+ 
+     public OwnerImpl(Principal owner) {
+         ownerGroup = new GroupImpl("AclOwners");
+@@ -51,7 +53,9 @@ public class OwnerImpl implements Owner {
+      * @return true if success, false if already an owner.
+      * @exception NotOwnerException if the caller principal is not on
+      *                the owners list of the Acl.
++     * @deprecated LastOwnerException in java.security.acl has been deprecated and marked for removal
+      */
++    @Deprecated
+     public synchronized boolean addOwner(Principal caller, Principal owner)
+             throws NotOwnerException {
+         if (!isOwner(caller))
+@@ -75,7 +79,9 @@ public class OwnerImpl implements Owner {
+      *                the owners list of the Acl.
+      * @exception LastOwnerException if there is only one owner left in the group, then
+      *                deleteOwner would leave the ACL owner-less. This exception is raised in such a case.
++     * @deprecated LastOwnerException in java.security.acl has been deprecated and marked for removal
+      */
++    @Deprecated
+     public synchronized boolean deleteOwner(Principal caller, Principal owner)
+             throws NotOwnerException, LastOwnerException {
+         if (!isOwner(caller))
+@@ -89,8 +95,7 @@ public class OwnerImpl implements Owner {
+         if (e.hasMoreElements())
+             return ownerGroup.removeMember(owner);
+         else
+-            throw new LastOwnerException();
+-
++           throw new LastOwnerException();
+     }
+ 
+     /**
+--- jss-4.5.0/org/mozilla/jss/netscape/security/provider/DSA.java
++++ jss-4.5.0/org/mozilla/jss/netscape/security/provider/DSA.java
+@@ -437,6 +437,7 @@ public final class DSA extends Signature {
+      *
+      * @deprecated
+      */
++    @Deprecated
+     protected void engineSetParameter(String key, Object param) {
+ 
+         if (key.equals("KSEED")) {
+@@ -469,8 +470,6 @@ public final class DSA extends Signature {
+      * </dl>
+      *
+      * @return the value of the requested parameter.
+-     *
+-     * @deprecated
+      */
+     protected Object engineGetParameter(String key) {
+         if (key.equals("KSEED")) {
+--- jss-4.5.0/org/mozilla/jss/netscape/security/x509/AlgorithmId.java
++++ jss-4.5.0/org/mozilla/jss/netscape/security/x509/AlgorithmId.java
+@@ -190,6 +190,7 @@ public class AlgorithmId implements Serializable, DerEncoder {
+      *
+      * @deprecated use one of the other constructors.
+      */
++    @Deprecated
+     public AlgorithmId() {
+     }
+ 
+--- jss-4.5.0/org/mozilla/jss/netscape/security/x509/CertAndKeyGen.java
++++ jss-4.5.0/org/mozilla/jss/netscape/security/x509/CertAndKeyGen.java
+@@ -86,6 +86,7 @@ public final class CertAndKeyGen {
+      *
+      * @deprecated All random numbers come from PKCS #11 now.
+      */
++    @Deprecated
+     public void setRandom(SecureRandom generator) {
+     }
+ 
+@@ -166,6 +167,7 @@ public final class CertAndKeyGen {
+      * @param myname X.500 name of the subject (who is also the issuer)
+      * @param validity how long the certificate should be valid, in seconds
+      */
++    @Deprecated
+     public X509Cert getSelfCert(X500Name myname, long validity)
+             throws InvalidKeyException, SignatureException, NoSuchAlgorithmException {
+         X509Certificate cert;
+--- jss-4.5.0/org/mozilla/jss/netscape/security/x509/X509Cert.java
++++ jss-4.5.0/org/mozilla/jss/netscape/security/x509/X509Cert.java
+@@ -46,6 +46,7 @@ import org.mozilla.jss.netscape.security.util.DerValue;
+  * @deprecated Use the new X509Certificate class.
+  *             This class is only restored for backwards compatibility.
+  */
++@Deprecated
+ public class X509Cert implements Certificate, Serializable {
+ 
+     /**
+--- jss-4.5.0/org/mozilla/jss/pkcs11/KeyType.java
++++ jss-4.5.0/org/mozilla/jss/pkcs11/KeyType.java
+@@ -151,6 +151,7 @@ public final class KeyType {
+      * @deprecated As of NSS 3.11, FORTEZZA is no longer supported.
+      * This is just a placeholder for backward compatibility.
+      */
++    @Deprecated
+     static public final KeyType
+     FORTEZZA = new KeyType(new Algorithm[0], "FORTEZZA");
+ 
+--- jss-4.5.0/org/mozilla/jss/pkcs11/PK11PubKey.java
++++ jss-4.5.0/org/mozilla/jss/pkcs11/PK11PubKey.java
+@@ -45,6 +45,7 @@ public class PK11PubKey extends org.mozilla.jss.pkcs11.PK11Key
+      *      fromSPKI() instead.
+      * @see #fromSPKI(byte[])
+      */
++    @Deprecated
+     public static PK11PubKey fromRaw(PrivateKey.Type type, byte[] rawKey)
+         throws InvalidKeyFormatException
+     {
+--- jss-4.5.0/org/mozilla/jss/pkix/cmc/RevokeRequest.java
++++ jss-4.5.0/org/mozilla/jss/pkix/cmc/RevokeRequest.java
+@@ -218,6 +218,7 @@ public class RevokeRequest implements ASN1Value {
+      * @param comment The <code>comment</code> field.  This field is optional,
+      *      so <code>null</code> may be used.
+      */
++    @Deprecated
+     public RevokeRequest(ANY issuerName, INTEGER serialNumber,
+                     ENUMERATED reason, OCTET_STRING passphrase,
+                     UTF8String comment)
+--- jss-4.5.0/org/mozilla/jss/pkix/cmmf/RevRequest.java
++++ jss-4.5.0/org/mozilla/jss/pkix/cmmf/RevRequest.java
+@@ -154,6 +154,7 @@ public class RevRequest implements ASN1Value {
+      * @deprecated The <tt>passphrase</tt> field has been renamed
+      *  <tt>sharedSecret</tt>. Call <tt>getSharedSecret</tt> instead.
+      */
++    @Deprecated
+     public OCTET_STRING getPassphrase() {
+         return sharedSecret;
+     }
+@@ -194,6 +195,7 @@ public class RevRequest implements ASN1Value {
+      * @param comment The <code>comment</code> field.  This field is optional,
+      *      so <code>null</code> may be used.
+      */
++    @Deprecated
+     public RevRequest(ANY issuerName, INTEGER serialNumber,
+                     ENUMERATED reason, OCTET_STRING sharedSecret,
+                     UTF8String comment)
+--- jss-4.5.0/org/mozilla/jss/provider/javax/crypto/JSSKeyGeneratorSpi.java
++++ jss-4.5.0/org/mozilla/jss/provider/javax/crypto/JSSKeyGeneratorSpi.java
+@@ -105,6 +105,7 @@ class JSSKeyGeneratorSpi extends javax.crypto.KeyGeneratorSpi {
+      * is used for generating Password-Based Authentication keys
+      * for use with HmacSHA1. Use PBAHmacSHA1 instead.
+      */
++    @Deprecated
+     public static class HmacSHA1 extends JSSKeyGeneratorSpi {
+         public HmacSHA1() {
+             super(KeyGenAlgorithm.PBA_SHA1_HMAC);
+--- jss-4.5.0/org/mozilla/jss/provider/javax/crypto/JSSSecretKeyFactorySpi.java
++++ jss-4.5.0/org/mozilla/jss/provider/javax/crypto/JSSSecretKeyFactorySpi.java
+@@ -403,6 +403,7 @@ class JSSSecretKeyFactorySpi extends SecretKeyFactorySpi {
+      * is used for generating Password-Based Authentication keys
+      * for use with HmacSHA1. Use PBAHmacSHA1 instead.
+      */
++    @Deprecated
+     public static class HmacSHA1 extends JSSSecretKeyFactorySpi {
+         public HmacSHA1() {
+             super(KeyGenAlgorithm.PBA_SHA1_HMAC);
+--- jss-4.5.0/org/mozilla/jss/ssl/SSLSecurityStatus.java
++++ jss-4.5.0/org/mozilla/jss/ssl/SSLSecurityStatus.java
+@@ -28,6 +28,7 @@ public class SSLSecurityStatus {
+      * @deprecated As of NSS 3.11, FORTEZZA is no longer supported.
+      * STATUS_FORTEZZA is a placeholder for backward compatibility.
+      */
++    @Deprecated
+     final public int STATUS_FORTEZZA = 3;
+ 
+ 	/**
+--- jss-4.5.0/org/mozilla/jss/ssl/SSLServerSocket.java
++++ jss-4.5.0/org/mozilla/jss/ssl/SSLServerSocket.java
+@@ -303,6 +303,7 @@ public class SSLServerSocket extends java.net.ServerSocket {
+      * @deprecated As of JSS 3.0. This method is misnamed. Use
+      *  <code>requestClientAuth</code> instead.
+      */
++    @Deprecated
+     public void setNeedClientAuth(boolean b) throws SocketException {
+         base.requestClientAuth(b);
+     }
+@@ -324,6 +325,7 @@ public class SSLServerSocket extends java.net.ServerSocket {
+      * @deprecated As of JSS 3.0. This method is misnamed. Use
+      *  <code>requestClientAuthNoExpiryCheck</code> instead.
+      */
++    @Deprecated
+     public void setNeedClientAuthNoExpiryCheck(boolean b)
+         throws SocketException
+     {
+@@ -477,6 +479,7 @@ public class SSLServerSocket extends java.net.ServerSocket {
+      *  it.
+      * @deprecated use requireClientAuth(int)
+      */
++    @Deprecated
+     public void requireClientAuth(boolean require, boolean onRedo)
+             throws SocketException
+     {
+--- jss-4.5.0/org/mozilla/jss/ssl/SSLSocket.java
++++ jss-4.5.0/org/mozilla/jss/ssl/SSLSocket.java
+@@ -480,6 +480,7 @@ public class SSLSocket extends java.net.Socket {
+      * @deprecated As of JSS 3.0. The stream parameter is ignored, because
+      *      only stream sockets are supported.
+      */
++    @Deprecated
+     public SSLSocket(InetAddress address, int port, InetAddress localAddr,
+         int localPort, boolean stream,
+         SSLCertificateApprovalCallback certApprovalCallback,
+@@ -1168,6 +1169,7 @@ public class SSLSocket extends java.net.Socket {
+      *  it.
+      * @deprecated use requireClientAuth(int)
+      */
++    @Deprecated
+     public void requireClientAuth(boolean require, boolean onRedo)
+             throws SocketException
+     {
+@@ -1203,6 +1205,7 @@ public class SSLSocket extends java.net.Socket {
+      *  All subsequently created sockets will use this default setting.
+      * @deprecated use requireClientAuthDefault(int)
+      */
++    @Deprecated
+     public void requireClientAuthDefault(boolean require, boolean onRedo)
+             throws SocketException
+     {
+@@ -1311,6 +1314,7 @@ public class SSLSocket extends java.net.Socket {
+      * @deprecated As of JSS 3.0. This method is misnamed. Use
+      *  <code>requestClientAuth</code> instead.
+      */
++    @Deprecated
+     public void setNeedClientAuth(boolean b) throws SocketException {
+         base.requestClientAuth(b);
+     }
+@@ -1332,6 +1336,7 @@ public class SSLSocket extends java.net.Socket {
+      * @deprecated As of JSS 3.0. This method is misnamed. Use
+      *  <code>requestClientAuthNoExpiryCheck</code> instead.
+      */
++    @Deprecated
+     public void setNeedClientAuthNoExpiryCheck(boolean b)
+         throws SocketException
+     {
+--- jss-4.5.0/org/mozilla/jss/util/NativeErrcodes.java
++++ jss-4.5.0/org/mozilla/jss/util/NativeErrcodes.java
+@@ -111,6 +111,7 @@ public class NativeErrcodes {
+      * SSL_ERROR_FORTEZZA_PQG is a placeholder for backward
+      * compatibility.
+      */
++    @Deprecated
+     public static final int SSL_ERROR_FORTEZZA_PQG = 97;
+     public static final int SSL_ERROR_UNKNOWN_CIPHER_SUITE = 98;
+     public static final int SSL_ERROR_NO_CIPHERS_SUPPORTED = 99;
+@@ -310,6 +311,7 @@ public class NativeErrcodes {
+      * SEC_ERROR_NOT_FORTEZZA_ISSUER is a placeholder for backward
+      * compatibility.
+      */
++    @Deprecated
+     public static final int SEC_ERROR_NOT_FORTEZZA_ISSUER = 283;
+     public static final int SEC_ERROR_CANNOT_MOVE_SENSITIVE_KEY = 284;
+     public static final int SEC_ERROR_JS_INVALID_MODULE_NAME = 285;

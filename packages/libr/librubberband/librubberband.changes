@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Thu Jul 16 14:44:18 UTC 2015 - olaf@aepfle.de
+
+- Fix build in SLE_11 by disabling usage of help2man
+
+-------------------------------------------------------------------
+Mon Feb 16 15:34:47 UTC 2015 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Remove conditional for < 11.4
+- Add baselibs.conf to spec as source
+
+-------------------------------------------------------------------
+Thu Feb 12 21:43:16 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.8.1
+  * Fix a crash in formant-preserving pitch shift for some build targets
+- Remove COPYING file from sources; upstreamed
+- Remove fix-cstdio.patch; fixed on upstream release
+- Use download Url as source
+
+-------------------------------------------------------------------
+Sun May 22 11:36:18 UTC 2011 - davejplater@gmail.com
+
+- Fix README eol encoding with dos2unix.
+- Added rubberband help2man man page generator to spec.
+- Downloaded GPLv2 license to replace incorrect COPYING.
+
+-------------------------------------------------------------------
+Thu May 19 07:33:31 UTC 2011 - mseben@gmail.com
+
+- updated to 1.6
+ * Add Smoothing option.  This uses a window-presum FFT, introducing
+   time-domain aliasing which is then smoothed using a sinc window.
+   This can be used in combination with any of the existing processing
+   control options.  This will soften transients but the result may
+   still be more pleasant for some material that is not very amenable
+   to being time stretched.
+ * Fix silent channel of output when processing with band-limited
+   transients option
+ * Include libresample support
+- added fix-cstdio.patch to fix build
+
+-------------------------------------------------------------------
+Sun May  1 17:35:27 UTC 2011 - toddrme2178@gmail.com
+ 
+- Added 32bit compatibility libraries
+ 
+-------------------------------------------------------------------
+Wed Oct 20 09:13:01 UTC 2010 - mseben@gmail.com
+
+- updated to 1.5
+ * Add a more reliable transient detection mode, and make the mode
+   selectable using OptionDetectorXXX flags -- the new method is
+   the default
+ * Band-limit transient detectors to avoid being distracted by
+   inaudible garbage
+ * Add a key-frame mapping facility for variable stretch ratio
+   management during offline stretches
+- changes in Rubber Band v1.4 
+ * Fix a hang when faced with some very peculiar stretch factors
+ * Fix some incorrect threading condition usage
+ * Some code rearrangement
+ * Fix build on Solaris
+- dopped rubberband-gcc44.patch
+
+-------------------------------------------------------------------
+Fri Jul 17 08:14:06 CEST 2009 - mseben@suse.cz
+
+- add missing COPYING file with GPLv2 (bnc#522202)
+
+-------------------------------------------------------------------
+Tue Jul  7 22:21:50 CEST 2009 - mseben@suse.cz
+
+- initial package for openSUSE
+
+-------------------------------------------------------------------

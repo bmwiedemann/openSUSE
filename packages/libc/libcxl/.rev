@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a265b1a2362bbe765137b6f58a540279</srcmd5>
+    <version>1.3</version>
+    <time>1455701002</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>355360</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e3f35a31efdca8b72c8193295079c781</srcmd5>
+    <version>1.3</version>
+    <time>1456434398</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop Fedora parts (no build targets exist). Drop Debian dots
+  from description. Add missing requires. (forwarded request 360760 from jengelh)</comment>
+    <requestid>360767</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f07348c4e1c49bd6c88eb65c44b91dbc</srcmd5>
+    <version>1.3</version>
+    <time>1458120803</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>365541</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>18d3b659ba430463a8f831125b073511</srcmd5>
+    <version>1.3</version>
+    <time>1459238410</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>379185</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3d751d6cdfb99f10fbaf343974b03232</srcmd5>
+    <version>1.4</version>
+    <time>1465847730</time>
+    <user>dimstar_suse</user>
+    <comment>- Update v1.4
+  * New API function cxl_get_psl_timebase_synced.
+  * Simplify implementation of OUT_OF_RANGE macro
+  * libcxl add install target
+  * use LDFLAGS from the env
+  * libcxl set default soname and interface version
+  * Add extern &quot;C&quot; to libcxl.h for compatibility with C++ projects
+  * typo error in 3 man pages
+  * Add SONAME support in Makefile
+- remove embeded patches:
+  libcxl_typo_correction_man_pages.patch
+  libcxl_add_soname_in_Makefile.patch
+- new libcxl_create_soname_link.patch</comment>
+    <requestid>399356</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>88cc9c2db1e216410e2bb0c141e5f094</srcmd5>
+    <version>1.5</version>
+    <time>1497518654</time>
+    <user>dimstar_suse</user>
+    <comment>Update libcxl v1.5</comment>
+    <requestid>502641</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6cd514b085e15d45efee37fa603e538c</srcmd5>
+    <version>1.7</version>
+    <time>1527934242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613088</requestid>
+  </revision>
+</revisionlist>

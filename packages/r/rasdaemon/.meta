@@ -1,0 +1,6 @@
+<package name="rasdaemon" project="openSUSE:Factory">
+  <title>rasdaemon</title>
+  <description>Those tools provide a way to get Platform Reliability, Availability
+and Serviceability (RAS) reports made via the Kernel tracing events.</description>
+  <devel project="hardware" package="rasdaemon"/>
+</package>

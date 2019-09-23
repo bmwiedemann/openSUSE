@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Wed Nov  7 17:50:04 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase. Use %make_install again.
+
+-------------------------------------------------------------------
+Thu Oct 25 13:27:37 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to stable version 1.6 (no changelog supplied)
+- Spec cleanup
+
+-------------------------------------------------------------------
+Tue Nov 28 14:33:08 UTC 2017 - crrodriguez@opensuse.org
+
+- Respect %optflags 
+- Remove buildrequires on xorg-x11-devel metapackage.
+
+-------------------------------------------------------------------
+Thu May 28 07:48:02 UTC 2015 - jkeil@suse.de
+
+- Include files explicitely
+
+-------------------------------------------------------------------
+Wed May 27 15:19:42 UTC 2015 - jkeil@suse.com
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed May 27 15:13:24 UTC 2015 - jkeil@suse.com
+
+- Add source tarball and _service file
+
+-------------------------------------------------------------------
+Wed May 27 15:03:42 UTC 2015 - jkeil@suse.com
+
+- Initial package for xbanish
+

@@ -1,0 +1,149 @@
+-------------------------------------------------------------------
+Wed Jul 17 22:35:24 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable LTO to prevent resulting build failure.
+
+-------------------------------------------------------------------
+Thu May  2 05:21:07 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 7.1.5:
+  * Add option of producing partons on physically mass shell after
+    the parton shower to allow the string model to be used to
+    hadronize events
+  * Fixes for template issues and compiler warnings for gcc8,9,
+    icc and clang
+  * Fixes to the calculation of W, Z and h widths if decay modes
+    removed
+  * Fix typo in FI g to gg dipole.
+  * Fix to allow 1 parameter to specify the mass of more than one
+    particle in the UFO converter
+  * Fix to partial width calculation of VSS decays
+  * Fix the PDF assignment for DIS processes with Matchbox
+  * Fix for undecayed W bosons in internal POWHEG gauge boson pair
+    code
+  * Update boost detection in configure script
+- Changes from version 7.1.4:
+  * More matrix elements and better handling of BSM physics
+  * Fix for spin correlations in angular-ordered shower, effects
+    top decays
+  * Allow fixed target collisions
+  * various minor fixes
+
+-------------------------------------------------------------------
+Mon Apr 30 21:39:50 UTC 2018 - badshah400@gmail.com
+
+- Update to version 7.1.3:
+  * Dipole Shower
+    - Changed default phase space limits
+    - g -> gg splitting function asymmetrized
+    - Initial retune supplied, given the visible changes 
+      to LEP observables
+  * Added new Baryonic colour reconnection model (arXiv
+    1710:10906)
+  * Added Schuler-Sjostrand Photon PDFs
+  * Handling of massless taus from external sources
+  * various minor fixes
+  * use std::array<> where possible
+
+-------------------------------------------------------------------
+Thu Apr 19 07:12:11 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Build Herwig only on x86_64 since other archs are not supported
+
+-------------------------------------------------------------------
+Sun Nov  5 17:28:53 UTC 2017 - badshah400@gmail.com
+
+- Update to version 7.1.2:
+  * Reduction of the default pt cut for QED radiation off leptons.
+  * Inputfile changes due to new read mode in ThePEG.  ThePEG
+    remains in current repo dir when reading input-file/snippet. 
+  * Fix for shower scale variations in qtilde shower. 
+  * All standard input files now use the tuned intrinsic pt.
+  * Remove obsolete input files for various tunes.
+  * Fix for Madgraph interface for NLO corrections with recent
+    version.
+  * Run file size reduction for processes using madgraph/openloops.
+  * Fix in jacobian for massive dipole kinematics.
+  * General improvements for UFO model handling.
+- Fix env based hashbangs (/usr/bin/env python -> /usr/bin/python,
+  etc.).
+
+-------------------------------------------------------------------
+Wed Oct 11 13:39:37 UTC 2017 - badshah400@gmail.com
+
+- Use more fine-grained BuildRequires on boost* libraries for
+  openSUSE > 1320.
+
+-------------------------------------------------------------------
+Sat Sep  2 12:19:55 UTC 2017 - badshah400@gmail.com
+
+- Build with HepMC2-devel, since Rivet does not compile with
+  HepMC-devel >= 3 yet.
+
+-------------------------------------------------------------------
+Wed Aug  2 05:33:56 UTC 2017 - badshah400@gmail.com
+
+- Update to version 7.1.1:
+  * Snippets are now all installed
+  * Fixed broken ufo2herwig output and LHC-MB.in
+  * UFO improvements
+    - More robust SLHA file handling
+    - option of creating diagonal mixing matrices, needed for
+      ATLAS simplfied models
+    - Improved warnings about resetting standard model particles
+    - Fixed certain cases where the wrong lorentz structure was
+      picked in VVS vertices
+  * Improved error message for unhandled beam particles
+  * Fix for Dipole Shower chain selection
+  * Fixed crash in double diffractive delta resonances
+- Changes from version 7.1.0:
+  * For a more detailed overview and further references please see
+    the release note arXiv:1705.06919
+  * NLO multijet merging with the dipole shower
+  * A new soft model
+  * An interface to EvtGen
+  * Improved calculation of mass effects in the dipole shower
+  * Top decays in the dipole shower, and NLO corrections to the
+    decay
+  * An implementation of the KrkNLO method for simple processes
+  * Major restructuring and cleanup of default input files
+  * C++11 is now mandatory and heavily used in the code
+  * Many smaller bugfixes and improvements
+- Update filelist for new and dropped binaries.
+- Disable for %{ix86}: no longer supported.
+- Rebase Herwig-disable-repo-install.patch for update.
+
+-------------------------------------------------------------------
+Mon Feb 13 17:51:39 UTC 2017 - jengelh@inai.de
+
+- Rename from libHerWig1 to Herwig-libs as the package does not
+  satisfy the SLPP guideline: there are a number of non-.so.1
+  files.
+
+-------------------------------------------------------------------
+Wed Nov 16 09:28:43 UTC 2016 - jengelh@inai.de
+
+- Trim history lesson from description
+
+-------------------------------------------------------------------
+Tue Nov 15 03:15:10 UTC 2016 - badshah400@gmail.com
+
+- Rename shared library, adding the so number from
+  libHerwigAPI.so; the so numbers of the other shared libraries
+  are expected to be incremented by upstream in step with this.
+- Move config file to -devel pkg in keeping with shlib packaging
+  policy.
+- Added obsoletes/provides for Herwig++ which will now be dropped
+  from Factory.
+
+-------------------------------------------------------------------
+Fri Nov 11 11:49:19 UTC 2016 - badshah400@gmail.com
+
+- Initial package.
+- Add Herwig-disable-repo-install.patch: Disable post-install
+  hooks intended to set up the Herwig repo, this doesn't work
+  inside the build script because of missing LHAPDF data that
+  needs to be installed by the user; the install-hook doesn't
+  serve any purpose while building the rpm and users can easily
+  set this up on their own.
+

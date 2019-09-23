@@ -1,0 +1,25 @@
+# HG changeset patch
+# User Wolfgang Rosenauer <wr@rosenauer.org>
+# Parent  e96e9b3997ea31024687aaa1e9aa5ccf78bc0ee9
+
+diff --git a/config/config.mk b/config/config.mk
+--- a/config/config.mk
++++ b/config/config.mk
+@@ -653,17 +653,16 @@ ifeq ($(MOZ_WIDGET_TOOLKIT),android)
+ # of the linker command line), if libmozglue.so ends up after libc.so, all
+ # hell breaks loose, so better safe than sorry, and check it's actually the
+ # case.
+ CHECK_MOZGLUE_ORDER = @$(TOOLCHAIN_PREFIX)readelf -d $(1) | grep NEEDED | awk '{ libs[$$NF] = ++n } END { if (libs["[libmozglue.so]"] && libs["[libc.so]"] < libs["[libmozglue.so]"]) { print "libmozglue.so must be linked before libc.so"; exit 1 } }'
+ endif
+ 
+ define CHECK_BINARY
+ $(call CHECK_GLIBC,$(1))
+-$(call CHECK_STDCXX,$(1))
+ $(call CHECK_TEXTREL,$(1))
+ $(call LOCAL_CHECKS,$(1))
+ $(call CHECK_MOZGLUE_ORDER,$(1))
+ endef
+ 
+ # autoconf.mk sets OBJ_SUFFIX to an error to avoid use before including
+ # this file
+ OBJ_SUFFIX := $(_OBJ_SUFFIX)

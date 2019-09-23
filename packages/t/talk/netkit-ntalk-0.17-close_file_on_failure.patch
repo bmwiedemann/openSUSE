@@ -1,0 +1,16 @@
+Index: talkd/announce.c
+===================================================================
+--- talkd/announce.c.orig
++++ talkd/announce.c
+@@ -169,9 +169,11 @@ announce_proc(CTL_MSG *request, const ch
+ 		return (PERMISSION_DENIED);
+ 	}
+ 	if (fstat(fd, &stbuf) < 0) {
++	        close(fd);
+ 		return (PERMISSION_DENIED);
+ 	}
+ 	if ((stbuf.st_mode&020) == 0) {
++	        close(fd);
+ 		return (PERMISSION_DENIED);
+ 	}
+ 	print_mesg(fd, request, remote_machine);

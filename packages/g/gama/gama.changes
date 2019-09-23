@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Fri Sep  6 17:00:34 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.07:
+  * Fixed some bugs in AcordPolar and AcordTraverse classes
+  * More algorithms in Acord2 class
+
+-------------------------------------------------------------------
+Thu Aug  1 21:49:41 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.06:
+  * Acord2 for more robust handling of data
+
+-------------------------------------------------------------------
+Wed Feb 20 21:33:31 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.03:
+  * The new attribute "extern" was added both to the gama-local xml
+    input and adjustment results xml output to be conformant with
+    an external database project. Information supplied in "extern"
+    attributes of observations are not processed in any way in
+    gama-local and are only passively transfered to XML adjustement
+    output.
+
+-------------------------------------------------------------------
+Fri Dec 21 17:31:19 UTC 2018 - astieger@suse.com
+
+- update to 2.02:
+  * Improve Hungarian translation
+
+-------------------------------------------------------------------
+Mon Oct  8 14:37:34 UTC 2018 - astieger@suse.com
+
+- update to 2.01:
+  * Conditional build for gama-g3 enabled implicitly
+  * XML schema definition for gama-g3 adjustment results with
+    new xmllint testsuite
+
+-------------------------------------------------------------------
+Fri May 25 18:23:25 UTC 2018 - astieger@suse.com
+
+- update to 2.00:
+  * Kolmogorov-Smirnov test removed - available only as conditional
+    compile
+  * various code level fixes
+
+-------------------------------------------------------------------
+Fri Mar 30 15:38:40 UTC 2018 - astieger@suse.com
+
+- update to 1.22:
+  * code clean-up and various developer visible changes
+
+-------------------------------------------------------------------
+Wed Nov 15 13:09:12 UTC 2017 - astieger@suse.com
+
+- update to 1.20:
+  * New test suite for matvec classes and support for valgrind
+    memory leak tests for tests/matvec and tests/gama-local.
+  * This release is a preperation phase for the next release in
+    which the base matvec memory handling class (MemRep) will
+    reimplemented with C++11 move constructor and move assignemnt
+    operator.
+
+-------------------------------------------------------------------
+Mon Sep 18 14:03:37 UTC 2017 - astieger@suse.com
+
+- update to 1.19:
+  Fix implicit value of covariance band in XML adjustment output
+  being -1 (full bandwidth)
+
+-------------------------------------------------------------------
+Thu Jan 19 22:05:21 UTC 2017 - astieger@suse.com
+
+- update to 1.18:
+  * fixed a formatting bug in outlaying terms (due to c++11)
+  * fixed a bug in HTML parser test
+  * simplified class LocalPoint
+  * fixed a bug in sql export
+  * added @documentencoding UTF-8 into gama.texi
+
+-------------------------------------------------------------------
+Mon Nov  9 16:46:24 UTC 2015 - astieger@suse.com
+
+- update to 1.17:
+  * minor fixes in documentation
+  * fixed a bug in SQL schema
+  * new export of XML network definition
+  * C++11 features enabled (-std=c++11 for g++ compiler)
+  * fixed several minor bugs
+
+-------------------------------------------------------------------
+Sat Aug 22 14:41:37 UTC 2015 - astieger@suse.com
+
+- initial package
+

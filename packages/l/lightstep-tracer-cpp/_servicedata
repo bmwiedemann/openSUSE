@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/lightstep/lightstep-tracer-cpp.git</param>
+              <param name="changesrevision">798dbca30c70f454d53ad55af5a18d7cf312ee3f</param></service></servicedata>

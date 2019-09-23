@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b71f1fcba08ea4bbe894afb2d62acb80</srcmd5>
+    <version>1.19</version>
+    <time>1387382108</time>
+    <user>coolo</user>
+    <comment>fork of pyPdf, maintained and working
+Possible drop-in replacement</comment>
+    <requestid>209380</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b71f1fcba08ea4bbe894afb2d62acb80</srcmd5>
+    <version>1.19</version>
+    <time>1409302800</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a9ea9be9d7e1c439b2b0e44a1c8b22b5</srcmd5>
+    <version>1.24</version>
+    <time>1431795707</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307471</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7441062ef753e487ec8246cdce9ede5c</srcmd5>
+    <version>1.26.0</version>
+    <time>1493020180</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489795</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f512299cacdf86d512dca2bf669c623d</srcmd5>
+    <version>1.26.0</version>
+    <time>1526372126</time>
+    <user>dimstar_suse</user>
+    <comment>- Use license macro</comment>
+    <requestid>606992</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>3f53cab3e4d9a316af470b4f49ba0cbd</srcmd5>
+    <version>1.26.0</version>
+    <time>1544189711</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call
+
+- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>655667</requestid>
+  </revision>
+</revisionlist>

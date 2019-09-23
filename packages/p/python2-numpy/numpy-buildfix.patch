@@ -1,0 +1,23 @@
+--- a/numpy/distutils/command/autodist.py
++++ b/numpy/distutils/command/autodist.py
+@@ -49,7 +49,7 @@
+     """Return True if the C compiler is GCC 4.x."""
+     cmd._check_compiler()
+     body = """
+-int
++void
+ main()
+ {
+ #if (! defined __GNUC__) || (__GNUC__ < 4)
+
+--- a/numpy/distutils/command/install.py
++++ b/numpy/distutils/command/install.py
+@@ -69,7 +69,7 @@
+             need_rewrite = False
+             for l in f:
+                 l = l.rstrip()
+-                if ' ' in l:
++                if ' ' in l and '%dir ' not in l:
+                     need_rewrite = True
+                     l = '"%s"' % (l)
+                 lines.append(l)

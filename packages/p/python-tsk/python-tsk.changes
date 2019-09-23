@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Tue Oct  3 23:20:10 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to v0~20170802
+- implement python singlespec syntax
+- add LGPL-3.0+ for the included talloc library
+
+-------------------------------------------------------------------
+Sat Feb 25 20:05:57 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to v0~20170128
+	* Syncs up with recent Sleuthkit versions
+	* required by python-plaso 1.5.1 support of Sleuthkit 4.4.0
+	* fails to build with Leap 42.1 and older
+	* the only known consumer of python-tsk v0~20170128 is python-plaso v1.5.1
+	* both python-tsk v0~20170128 and python-plaso v1.5.1 will only be supported on Leap 42.2 and newer
+- add a patch to keep setup.py from attempting to build internal talloc lib
+- prepare to add python3 support
+- add Provides pytsk3 as used by python-plaso 1.5.1
+
+-------------------------------------------------------------------
+Fri Aug 15 23:05:21 UTC 2014 - Greg.Freemyer@gmail.com
+
+- add "Provides: pytsk"  -  pytsk is now in use by upstream dependencies
+
+-------------------------------------------------------------------
+Wed Aug 13 22:07:23 UTC 2014 - Greg.Freemyer@gmail.com
+
+- update to v0~20140506
+   * This is just a wrapper for libtsk10, upstream did not provide any release notes
+
+-------------------------------------------------------------------
+Wed Sep 11 02:57:48 UTC 2013 - Greg.Freemyer@gmail.com
+
+- Address legal issues raised in BNC#839248
+- update to latest version in source repo (as of 9/10/2013)
+   * now uses libtalloc shared library if available
+   * remaining GPL licenses changed to Apache-2.0 with permission of relevant copyright holder
+- added BuildRequires libtalloc-devel to allow shared library to be used
+- added rm -rf talloc and talloc.new to highlight they are not used in the build
+
+-------------------------------------------------------------------
+Thu Aug 22 12:59:47 UTC 2013 - Greg.Freemyer@gmail.com
+
+- fix BuildRequires
+  * remove spurious pcre-devel
+  * add gcc-c++
+
+-------------------------------------------------------------------
+Sat Aug 17 04:47:01 UTC 2013 - Greg.Freemyer@gmail.com
+
+- update to latest version in source repo
+- per author, sleuthkit-devel 4.1 compatibility is only in the source repo 
+- change version from 0.0.0~ to 0~
+
+-------------------------------------------------------------------
+Wed Mar 27 17:47:31 UTC 2013 - Greg.Freemyer@gmail.com
+
+- initial package
+

@@ -1,0 +1,5 @@
+<package name="ceph-csi-image" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="filesystems:ceph" package="ceph-csi-image"/>
+</package>

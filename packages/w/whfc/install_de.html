@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-8">
+
+	<TITLE>Schritt f&uuml;r Schritt-Anleitung f&uuml;r eine
+	  HylaFAX-Installation auf dem SuSE Linux Standard Server</TITLE>
+</HEAD>
+<BODY LANG="en-US">
+<H2>SuSE Fax-Komponente - Windows-Client-Installation</H2>
+<P>Der Installationsvorgang besteht aus zwei Schritten. Zun&auml;chst werden
+  Sie den Windows-Client installieren, das Programm, mit dem Sie Fax-Jobs im
+  Postscript-Format verschicken und die Ausführung der Jobs steuern können. Als
+  Nächstes wird ein Faxdrucker auf dem Windows-System installiert, mit dem Sie
+  Faxe aus jeder Applikation senden können, mit der auch gedruckt werden kann. 
+</P>
+<H3>Installation des Windows-Clients</H4>
+Der Name der Windows-Client-Applikation ist Windows HylaFAX Client. In diesem
+Dokument wird es vielfach mit WHFC abgek&uuml;rzt.
+&Uuml;berpr&uuml;fen Sie vor dem Starten der Installation, ob Ihr System
+die folgenden Anforderungen erf&uuml;llt.
+<h4>Anforderungen</h4>
+<ul>
+<li>
+Falls Sie den Client unter <b>Windows 95</b> betreiben wollen m&uuml;ssen Sie
+m&ouml;glicherweise
+<a href="http://www.microsoft.com/windows95/downloads/contents/wuadmintools/s_wunetworkingtools/w95sockets2/default.asp">
+Winsock 2.0</a> von Microsofts WWW-Seiten herunterladen und installieren.
+F&uuml; neuere Microsoft Windows Versionen ist dies nicht erforderlich.
+<li>
+<P STYLE="margin-bottom: 0cm">Aktuelle <a
+					  href="http://msdn.microsoft.com/library/default.asp?url=/downloads/list/dataaccess.asp">ODBC-Treiber</a>. Auf
+  dem Windows-System muss die Bibliothek ODBC32.dll vorhanden sein. Sehen Sie
+  in Ihrem System nach (dr&uuml;cken Sie z.B. im Windows Explorer F3 und suchen
+  Sie in Ihrem Windows-Verzeichnis nach der Datei odbc32.dll). Ist sie nicht
+  vorhanden, dann laden Sie die Treiber mithilfe des bereitgestellten Links von
+  den Microsoft WWW-Seiten herunter. Beachten Sie, dass die Treiber
+  mittlerweile MDAC hei&szlig;en k&ouml;nnen. Auf der bereitgestellten Seite
+  m&uuml;ssen Sie die passenden MDAC-Treiber f&uuml;r Ihr System w&auml;hlen
+  (f&uuml;r die einzelnen Windows-Systeme gibt es unterschiedliche
+  Treiber). F&uuml;hren Sie nach dem Herunterladen die ausf&uuml;hrbare
+  Datei aus. Die Treiber werden daraufhin installiert. M&ouml;glicherweise
+  m&uuml;ssen Sie Ihr System neu starten. 
+</P>
+</ul>
+<h4>Installation des Windows-Clients (WHFC)</h4>
+<ol>
+<LI><P STYLE="margin-bottom: 0cm">F&uuml;hren Sie das zur Verf&uuml;gung
+    stehende Setup (<a href="/usr/share/whfc/whfc-1.2.3_setup.exe">
+	 whfc-1.2.3_setup.exe</a>) aus. Best&auml;tigen Sie den Namen des
+	 Verzeichnisses, in dem die tempor&auml;ren Dateien entpackt werden sollen
+	 (falls das Verzeichnis nicht existiert, wird es angelegt). Nach dem
+	 Entpacken wird das Setup automatisch ausgef&uuml;hrt. 
+	</P>
+<LI><P STYLE="margin-bottom: 0cm">Geben Sie das Verzeichnis an, in dem das
+    Programm installiert werden soll und w&auml;hlen Sie die Standardinstallation. 
+	</P>
+<LI><P STYLE="margin-bottom: 0cm">WHFC aus dem Windows-Startmen&uuml; ausf&uuml;hren.
+	</P>
+<LI><P>Gehen Sie im Faxmen&uuml; zu dem Punkt <a
+						 href="systemsettings.png">Systemeinstellungen</a>
+    und legen Sie den Haupt-Hostnamen fest. Dies ist der komplette Domainname
+    (z.B. faxserver.example.com) oder die IP-Adresse (z.B. 192.0.2.46) Ihres
+    Fax-Servers (diese erhalten Sie vom Administrator Ihres Fax-Servers). Dann
+    k&ouml;nnen Sie den kompletten Pfad zum Verzeichnis, in dem Nachrichten im
+    Offline-Modus gespoolt werden, angeben (Textbox 'Spool-Verzeichnis f&uuml;r
+    Offline-Modus) oder die Standardwerte &uuml;bernehmen. Sie k&ouml;nnen
+    ebenso den Pfad zu einem Programm angeben, das zum Betrachten von
+    eingegangenen Faxnachrichten verwendet wird. Beispiel: 
+</P>
+<PRE STYLE="margin-bottom: 0.5cm">kodakimg \\192.0.2.46\Fax Queue\%s</PRE><P>
+"kodakimg" ist ein ausf&uuml;hrbares Programm, das standardm&auml;&szlig;ig in
+Windows 98/2000 enthalten ist und zum Anzeigen von eingehenden Faxnachrichten
+verwendet werden kann. Unter Windows XP k&ouml;nnen Sie f&uuml;r diesen Zweck
+mspaint verwenden. "192.0.2.46" entspricht dem Hostnamen in der oberen linken Textbox. "Fax Queue" ist der Name des gemeinsamen Verzeichnisses mit den
+eingehenden Facsimiles auf Ihrem Faxserver. "%s" ist ein zwingendes Argument
+f&uuml;r das eingegebene Kommando.
+<p><b>Hinweis:</b><br>
+Anstelle von kodakimg oder mspaint k&ouml;nnen Sie hier einen Pfad zu einem
+beliebigen Programm angeben, das Tiff-Formate anzeigen kann, z.B. ACDSee, falls
+dies auf Ihrem System installiert ist:
+</P>
+	<PRE STYLE="margin-bottom: 0.5cm">c:\Program Files\ACDSee32\ACDSee32.exe \\192.0.2.46\Fax Queue\%s</PRE>
+<li><p>
+Im rechten Teil der Systemeinstellungen gibt es einige Checkboxen, von denen
+lediglich zwei wichtig sind. Die erste ist "In Taskbar bleiben". Ist diese
+aktiviert, k&ouml;nnen Sie die WHFC-Applikation auf ein Icon im System-Tray
+minimieren. Die zweite ist "Im Offline-Modus arbeiten". Ist diese aktiviert,
+k&ouml;nnen Sie die zu faxenden Dokumente verschicken, auch wenn der Faxserver
+nicht l&auml;uft. Die verschickten Dokumente kommen in die Warteschlange und
+werden nacheinander gesendet, sobald der Faxserver l&auml;uft.
+	
+<LI><P STYLE="margin-bottom: 0cm">W&auml;hlen Sie im Faxmen&uuml; (siehe <a
+									    href="usersettings.png">Benutzereinstellungen</a>. Sie
+    k&ouml;nnen nun die Spracheinstellungen &auml;ndern (=Pop-up-Men&uuml;
+    'Sprache'). Danach werden Sie m&ouml;glicherweise das Programm neu starten
+    m&uuml;ssen, um die &Auml;nderungen zu aktivieren. Geben Sie dann Ihren
+    Namen ein (Textbox 'Name'). Standardm&auml;&szlig;ig basiert der Zugriff
+    auf den Faxserver auf der IP-Adresse des Clients. In diesem Fall kann die
+    Textbox 'Login' leer sein.
+<p>
+<b>Hinweis:</b><br>
+Falls die Zugriffskonfiguration manuell durch den Administrator Ihres SuSE
+Linux Standard Servers ge&auml;ndert wird, dann werden Sie m&ouml;glicherweise
+gezwungen, auch die Textbox 'Login' und m&ouml;glicherweise die Textbox
+'Passwort' f&uuml;r den Zugriff auf den Faxserver auszuf&uuml;llen (diese
+Angaben werden danach mit der Datei /var/spool/etc/hosts.hfaxd auf dem Server abgeglichen). 
+<li><p>
+Geben Sie eine E-Mail-Adresse ein, die vom Faxsystem zum Informieren von
+Benutzern &uuml;ber die Verarbeitung von bestimmten Fax-Jobs, geschickt vom
+WHFC, verwendet wird). Sie k&ouml;nnen auch eine Datei w&auml;hlen, die mit
+jedem Fax als Faxcover verschickt werden kann. Falls Sie dies nicht tun,
+erhalten Sie einen Hinweis, den Sie jedoch ignorieren k&ouml;nnen. 
+</P>
+
+</OL>
+<H4>Fax-Drucker-Installation</H4>
+Ihr Windows kann so konfiguriert werden, dass jedes druckbare Dokument
+transparent von Ihrem System durch Ihren Faxserver zu dem entfernten
+Faxger&auml;t geschickt wird.<p>
+Zum Aktivieren dieser Funktion, fahren Sie wie folgt fort:
+<OL>
+<LI><P STYLE="margin-bottom: 0cm">Gehen Sie zum Druckerordner und klicken Sie
+    auf &quot;Drucker hinzuf&uuml;gen&quot. W&auml;hlen Sie einen lokalen
+    Drucker (Sie m&uuml;ssen keinen Drucker an Ihrem Rechner angeschlossen
+    haben; Sie m&uuml;ssen nur einige Postscript-Treiber installieren. Der
+    Faxdrucker ist komplett unabh&auml;ngig von anderen im System installierten
+    Druckern).
+<p>
+Beachten Sie bitte, dass die Wahl eines Postscript-Treibers unerl&auml;sslich
+ist (verwenden Sie z.B. HP LaserJet 5P). 
+</P>
+<li>Beim Kopieren der Treiberdateien auf Ihr System werden Sie
+  m&ouml;glicherweise aufgefordert, Ihre Windows-Installations-CD einzulegen).
+
+<LI><P>Klicken Sie auf den Reiter 'Details' in den 'Eigenschaften' des Druckers
+    und w&auml;hlen Sie einen Fax-Port f&uuml;r den Drucker (der Port wird nach
+    der Registrierung mit regmon.exe dort sichtbar - dies geschieht
+    normalerweise automatisch innerhalb des laufenden WHFC-Setups). Klicken Sie
+    dann auf 'Port konfigurieren' und w&auml;hlen Sie ein Verzeichnis f&uuml;r
+    die tempor&auml;ren Spool-Dateien (oder best&auml;tigen Sie einfach den
+    Vorschlag). W&auml;hlen Sie als Ausgabeformat im Reiter 'Postscript' 'Encapsulated Postscript
+    (EPS)'  und best&auml;tigen Sie die Einstellungen mit 'Ok'. 
+</P>
+</OL>
+<P>Nun sollten Sie in der Lage sein, Faxe aus beliebigen Windows-Applikationen
+  zu versenden, aus denen gedruckt werden kann. Wollen Sie ein Dokument aus einer
+  solchen Applikation senden, dann &quot;drucken&quot; Sie das Dokument einfach
+  auf die &uuml;bliche Weise (z.B. mit Ctrl+P in MS Word) und w&auml;hlen Sie
+  dann den Postscript-Drucker, der zusammen mit dem Fax-Port verwendet wird. <p>
+</p>
+<b>Hinweis:</b><br>
+Zum Verwenden dieses Features muss WHFC laufen, da dieser zum Verarbeiten der
+Fax-Jobs verwendet wird und auch in der Tat zum Faxen des "gedruckten"
+Dokuments verwendet wird.
+</P>
+
+<H3>Weiterführende Dokumentation</H3>
+Die Originaldokumentation zu WHFC in englischer Sprache finden Sie als lokale
+Kopie <a href=docu/index.html>hier</a> oder online auf den Seiten des
+<a href=http://www.uli-eckhardt.de/whfc/1.2/docu/>Projektes</a>.
+</p>
+
+</BODY>
+</HTML>

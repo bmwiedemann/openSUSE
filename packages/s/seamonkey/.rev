@@ -1,0 +1,1786 @@
+<revisionlist>
+  <revision rev="1" vrev="19">
+    <srcmd5>88dde70b35767e6e7c2835625d8079db</srcmd5>
+    <version>1.0.99</version>
+    <time>1166643268</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="27">
+    <srcmd5>d252f93fc194fe0eed9c54fc9448ce1a</srcmd5>
+    <version>1.0.99</version>
+    <time>1178229663</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="28">
+    <srcmd5>b6197fbc42adb862155e92777952780b</srcmd5>
+    <version>1.0.99</version>
+    <time>1181254885</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>add6f497777847686169796a0316e0c2</srcmd5>
+    <version>1.1.2</version>
+    <time>1182294886</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b810b895f51d279d4403391c719c351e</srcmd5>
+    <version>1.1.2</version>
+    <time>1182360171</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d0977862ac7747a7573ea50474d4a230</srcmd5>
+    <version>1.1.2</version>
+    <time>1182464028</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="20">
+    <srcmd5>d3116101d98f570a5aca49baadb50239</srcmd5>
+    <version>1.1.2</version>
+    <time>1187203004</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6972fa6f9f536d506b7c786d319831d8</srcmd5>
+    <version>1.1.4</version>
+    <time>1188227641</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>94e1f81ba620a5d9277af1c10bd9aeb7</srcmd5>
+    <version>1.1.4</version>
+    <time>1188854556</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>00927fea40cc5f3e2e2877a6092b0b46</srcmd5>
+    <version>1.1.4</version>
+    <time>1189672513</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>0129c2d321a686008b7b43759d1a9088</srcmd5>
+    <version>1.1.4</version>
+    <time>1189702712</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3bf58a9d8965f60b0a71b0c42bcf6cb5</srcmd5>
+    <version>1.1.5</version>
+    <time>1193357000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>959aa05eb2765fc7d1e38b121af9876a</srcmd5>
+    <version>1.1.5</version>
+    <time>1194985951</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="27">
+    <srcmd5>0d2acbdd0970ca89ff83abee0912b183</srcmd5>
+    <version>1.1.5</version>
+    <time>1200614114</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1d2fd881689b1d5481165359d318dc79</srcmd5>
+    <version>1.1.8</version>
+    <time>1203036395</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="17">
+    <srcmd5>162ff193168b485fb5d2761d59c36ecd</srcmd5>
+    <version>1.1.8</version>
+    <time>1206676897</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0ed595f5897b8639cfddfcb0f585bfd7</srcmd5>
+    <version>1.1.9</version>
+    <time>1207213134</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>d0eb62b558efd76e8acbb742a3172d7a</srcmd5>
+    <version>1.1.9</version>
+    <time>1207777325</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>90a5c68a828cfe9e2635f980271900ff</srcmd5>
+    <version>1.1.9</version>
+    <time>1210985507</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1b284571f6be746ceff3aa7c7de8c5d0</srcmd5>
+    <version>1.1.11</version>
+    <time>1220890459</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>1b284571f6be746ceff3aa7c7de8c5d0</srcmd5>
+    <version>1.1.11</version>
+    <time>1220890459</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>717d556b1fb3f57e2faa943191c49072</srcmd5>
+    <version>1.1.12</version>
+    <time>1224795190</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4952374bd69393cba1117f1cb446fd04</srcmd5>
+    <version>1.1.13</version>
+    <time>1227194651</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3c9c10a55e053c74e39a141f70a68e41</srcmd5>
+    <version>1.1.14</version>
+    <time>1229611056</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>74f5fcf4b636dff2d5760a4c96a75070</srcmd5>
+    <version>1.1.16</version>
+    <time>1239808009</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3707b46bd7e605b84ff7d147b06f67b4</srcmd5>
+    <version>2.0a3</version>
+    <time>1247327605</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>cf6d3bed5ccc3f0b426cd62fd1a829f4</srcmd5>
+    <version>2.0b1</version>
+    <time>1248367026</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>3622e1df46e91391fb1e980de3f7ca13</srcmd5>
+    <version>2.0b1</version>
+    <time>1248822594</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>369f0c3ee746cd973680a8e9fcf18305</srcmd5>
+    <version>2.0b1</version>
+    <time>1250873370</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/seamonkey based on submit request 18346 from user wrosenauer
+</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>357ec174719bb8390426c1ab6c3c8b1a</srcmd5>
+    <version>2.0b2</version>
+    <time>1253145201</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/seamonkey based on submit request 20449 from user wrosenauer
+</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>60a43d787eea5f6771aa1e28e4383609</srcmd5>
+    <version>2.0rc1</version>
+    <time>1255355482</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/seamonkey based on submit request 22139 from user wrosenauer
+</comment>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>60a43d787eea5f6771aa1e28e4383609</srcmd5>
+    <version>2.0rc1</version>
+    <time>1255355482</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/seamonkey based on submit request 22139 from user wrosenauer
+</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>55702e31173275b64420c0c72174cac3</srcmd5>
+    <version>2.0.0</version>
+    <time>1256082752</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/seamonkey based on submit request 22585 from user wrosenauer
+</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0954560c63713636beeca8ef7462a82b</srcmd5>
+    <version>2.0.1</version>
+    <time>1260972917</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/seamonkey based on submit request 26724 from user wrosenauer
+</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0669cc846e689e75aa113702e3da6d18</srcmd5>
+    <version>2.0.2</version>
+    <time>1263296312</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/seamonkey based on submit request 29318 from user wrosenauer
+</comment>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>168298c781ce0966390cdaffda58854d</srcmd5>
+    <version>2.0.2</version>
+    <time>1264074164</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/seamonkey based on submit request 29990 from user wrosenauer
+</comment>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>df58001a6cee524444528dc816d6da41</srcmd5>
+    <version>2.0.3</version>
+    <time>1266508690</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/seamonkey based on submit request 32821 from user wrosenauer
+</comment>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>3745dc03f1acdfa484e1ff56bd8d1513</srcmd5>
+    <version>2.0.3</version>
+    <time>1267061632</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/seamonkey based on submit request 33404 from user wrosenauer
+</comment>
+    <requestid>33404</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>ce4158e6507c108c29c496c0ef13fca8</srcmd5>
+    <version>2.0.3</version>
+    <time>1268926131</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>80882058cd331013e105acdbd94193ad</srcmd5>
+    <version>2.0.4</version>
+    <time>1270332600</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/seamonkey based on submit request 36866 from user wrosenauer
+</comment>
+    <requestid>36866</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>eea72d6f3c510261ce71aae3c021d0eb</srcmd5>
+    <version>2.0.5</version>
+    <time>1277719935</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/seamonkey based on submit request 41983 from user wrosenauer
+</comment>
+    <requestid>41983</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>eea72d6f3c510261ce71aae3c021d0eb</srcmd5>
+    <version>2.0.5</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>eea72d6f3c510261ce71aae3c021d0eb</srcmd5>
+    <version>2.0.5</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>d09ad14bb7d68818c60bb35b52743ea5</srcmd5>
+    <version>2.0.6</version>
+    <time>1280676137</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/seamonkey based on submit request 43575 from user wrosenauer
+</comment>
+    <requestid>43575</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>3919f6b5937735eb84b2851ccf8ef674</srcmd5>
+    <version>2.0.8</version>
+    <time>1284766710</time>
+    <user>autobuild</user>
+    <comment>Copy from mozilla:Factory/seamonkey based on submit request 48364 from user wrosenauer
+</comment>
+    <requestid>48364</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b12fc8a9d91037787c19f4545bcfd987</srcmd5>
+    <version>2.0.9</version>
+    <time>1287677928</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51187 from user wrosenauer
+</comment>
+    <requestid>51187</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>b0e178cce64bf5375e418b3a84d4c56c</srcmd5>
+    <version>2.0.10</version>
+    <time>1288702719</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51635 from user wrosenauer
+</comment>
+    <requestid>51635</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a604268dcd21edde7e340177883156f7</srcmd5>
+    <version>2.0.11</version>
+    <time>1292242979</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55775 from user wrosenauer
+</comment>
+    <requestid>55775</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>d9dae4e6eb82f0c9265d4945053f08d7</srcmd5>
+    <version>2.0.11</version>
+    <time>1294668216</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57635 from user wrosenauer
+</comment>
+    <requestid>57635</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>e91936c5f5aab4049172d0b5b2aff212</srcmd5>
+    <version>2.0.11</version>
+    <time>1294668223</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57635
+</comment>
+  </revision>
+  <revision rev="51" vrev="6">
+    <srcmd5>e91936c5f5aab4049172d0b5b2aff212</srcmd5>
+    <version>2.0.11</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>a0291e6cf61fb38dcd4a1d7c3a1c839e</srcmd5>
+    <version>2.0.12</version>
+    <time>1299591165</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63615 from user wrosenauer
+</comment>
+    <requestid>63615</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>0e6696321639d01dac67b5689921ae17</srcmd5>
+    <version>2.0.12</version>
+    <time>1299591174</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63615
+</comment>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>e2eb69ed42476eafc3580c4904580b48</srcmd5>
+    <version>2.0.13</version>
+    <time>1300984651</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65086 from user licensedigger
+</comment>
+    <requestid>65086</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>6dc2829e030af6ee5697c943ebd02f4c</srcmd5>
+    <version>2.2</version>
+    <time>1310391980</time>
+    <user>saschpe</user>
+    <comment>update to 2.2</comment>
+    <requestid>75944</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>8f2536d60be6b249b0140fd5682a73e8</srcmd5>
+    <version>2.2</version>
+    <time>1310392000</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75944
+</comment>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>14f1b472ef45bb7be1c1fda7db5bf05b</srcmd5>
+    <version>2.3</version>
+    <time>1313497725</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>79014</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>df6c7f96ab14c257039c637640eb676b</srcmd5>
+    <version>2.3</version>
+    <time>1313497742</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79014
+</comment>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>72af1f3b3634ef7808c590a75c48f271</srcmd5>
+    <version>2.3.2</version>
+    <time>1315235680</time>
+    <user>lrupp</user>
+    <comment>security update - bnc#714931</comment>
+    <requestid>80741</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>38d49d6d8fec0cccf1afb38dfd0376e5</srcmd5>
+    <version>2.3.3</version>
+    <time>1315563955</time>
+    <user>saschpe</user>
+    <comment>security update to SeaMonkey 2.3.3 - bnc#714931</comment>
+    <requestid>81391</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>1b7b26bfb9b41b8bca5dba6abec48c33</srcmd5>
+    <version>2.3.3</version>
+    <time>1316088873</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>82118</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>d7c0c1abf5716d0abef3504f1fa3fc90</srcmd5>
+    <version>2.3.3</version>
+    <time>1316088881</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82118
+</comment>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>5332fe205d19656af65cfba198783823</srcmd5>
+    <version>2.4</version>
+    <time>1317213648</time>
+    <user>saschpe</user>
+    <comment>- update to 2.4 (bnc#720264)
+- removed obsolete mozilla-cairo-lcd.patch
+- rebased patches
+- removed XLIB_SKIP_ARGB_VISUALS=1 from environment in
+  mozilla.sh.in (bnc#680758)</comment>
+    <requestid>85279</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>befe648f12f23de73e78ee1bcfb2ae36</srcmd5>
+    <version>2.4.1</version>
+    <time>1317740499</time>
+    <user>oertel</user>
+    <comment></comment>
+    <requestid>86285</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>befe648f12f23de73e78ee1bcfb2ae36</srcmd5>
+    <version>2.4.1</version>
+    <time>1319182459</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>26ab65cf949e73293451793495e91c56</srcmd5>
+    <version>2.5</version>
+    <time>1322232764</time>
+    <user>coolo</user>
+    <comment>- update to 2.5 (bnc#728520)
+  * MFSA 2011-47/CVE-2011-3648 (bmo#690225)
+    Potential XSS against sites using Shift-JIS
+  * MFSA 2011-48/CVE-2011-3651/CVE-2011-3652/CVE-2011-3654
+    Miscellaneous memory safety hazards
+  * MFSA 2011-49/CVE-2011-3650 (bmo#674776)
+    Memory corruption while profiling using Firebug
+  * MFSA 2011-52/CVE-2011-3655 (bmo#672182)
+    Code execution via NoWaiverWrapper</comment>
+    <requestid>93568</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>843739c745d21fd4ed8d980015eae6ca</srcmd5>
+    <version>2.5</version>
+    <time>1323194591</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>fd0e6a9982a4504e2ae1e85d8b49e529</srcmd5>
+    <version>2.6.1</version>
+    <time>1324831277</time>
+    <user>coolo</user>
+    <comment>- update to Seamonkey 2.6.1
+  * (strongparent) parentNode of element gets lost (bmo#335998)
+
+- update to 2.6 (bnc#737533)
+  * MFSA 2011-53/CVE-2011-3660
+    Miscellaneous memory safety hazards (rv:9.0)
+  * MFSA 2011-54/CVE-2011-3661 (bmo#691299)
+    Potentially exploitable crash in the YARR regular expression
+    library
+  * MFSA 2011-55/CVE-2011-3658 (bmo#708186)
+    nsSVGValue out-of-bounds access
+  * MFSA 2011-56/CVE-2011-3663 (bmo#704482)
+    Key detection without JavaScript via SVG animation
+  * MFSA 2011-58/VE-2011-3665 (bmo#701259)
+    Crash scaling &lt;video&gt; to extreme sizes</comment>
+    <requestid>98125</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>ddb47493537dec502ddcfe801aede470</srcmd5>
+    <version>2.7</version>
+    <time>1328202033</time>
+    <user>coolo</user>
+    <comment>- update to Seamonkey 2.7 (bnc#744275)
+  * MFSA 2012-01/CVE-2012-0442/CVE-2012-0443
+    Miscellaneous memory safety hazards
+  * MFSA 2012-03/CVE-2012-0445 (bmo#701071)
+    &lt;iframe&gt; element exposed across domains via name attribute
+  * MFSA 2012-04/CVE-2011-3659 (bmo#708198)
+    Child nodes from nsDOMAttribute still accessible after removal
+    of nodes
+  * MFSA 2012-05/CVE-2012-0446 (bmo#705651)
+    Frame scripts calling into untrusted objects bypass security
+    checks
+  * MFSA 2012-06/CVE-2012-0447 (bmo#710079)
+    Uninitialized memory appended when encoding icon images may
+    cause information disclosure
+  * MFSA 2012-07/CVE-2012-0444 (bmo#719612)
+    Potential Memory Corruption When Decoding Ogg Vorbis files
+  * MFSA 2012-08/CVE-2012-0449 (bmo#701806, bmo#702466)
+    Crash with malformed embedded XSLT stylesheets</comment>
+    <requestid>102408</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>e971e560b188c872d73768186bc0f77a</srcmd5>
+    <version>2.7.1</version>
+    <time>1329242886</time>
+    <user>coolo</user>
+    <comment>- update to Seamonkey 2.7.1 (bnc#746616)
+  * MFSA 2012-10/CVE-2012-0452 (bmo#724284)
+    use after free in nsXBLDocumentInfo::ReadPrototypeBindings
+- Use YARR interpreter instead of PCRE on platforms where YARR JIT
+  is not supported, since PCRE doesnt build (bmo#691898)
+- fix ppc64 build (bmo#703534)</comment>
+    <requestid>104189</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>b8fe1e8c3d07c4c1ebe82474abf71b47</srcmd5>
+    <version>2.7.2</version>
+    <time>1329477019</time>
+    <user>coolo</user>
+    <comment>- update to Seamonkey 2.7.2 (bnc#747328)
+  * CVE-2011-3026 (bmo#727401)
+    libpng: integer overflow leading to heap-buffer overflow</comment>
+    <requestid>105564</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>f87afa989e501e25b09a57aba128fa66</srcmd5>
+    <version>2.8</version>
+    <time>1331900710</time>
+    <user>coolo</user>
+    <comment>- update to Seamonkey 2.8 (bnc#750044)
+  * MFSA 2012-13/CVE-2012-0455 (bmo#704354)
+    XSS with Drag and Drop and Javascript: URL
+  * MFSA 2012-14/CVE-2012-0456/CVE-2012-0457 (bmo#711653, #720103)
+    SVG issues found with Address Sanitizer
+  * MFSA 2012-15/CVE-2012-0451 (bmo#717511)
+    XSS with multiple Content Security Policy headers
+  * MFSA 2012-16/CVE-2012-0458
+    Escalation of privilege with Javascript: URL as home page
+  * MFSA 2012-17/CVE-2012-0459 (bmo#723446)
+    Crash when accessing keyframe cssText after dynamic modification
+  * MFSA 2012-18/CVE-2012-0460 (bmo#727303)
+    window.fullScreen writeable by untrusted content
+  * MFSA 2012-19/CVE-2012-0461/CVE-2012-0462/CVE-2012-0464/
+    CVE-2012-0463
+    Miscellaneous memory safety hazards
+- explicitely build-require X libs</comment>
+    <requestid>109226</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>96da6a6d48ce2c52e895e0d7f36b4c86</srcmd5>
+    <version>2.8.99</version>
+    <time>1335190397</time>
+    <user>coolo</user>
+    <comment>- update to 2.9b4
+- added mozilla-sle11.patch and add exceptions to be able to build
+  for SLE11/11.1
+- exclude broken gl locale from build
+- fixed build on 11.2-x86_64 by adding mozilla-revert_621446.patch
+- added mozilla-gcc47.patch and mailnews-literals.patch to fix
+  compilation issues with recent gcc 4.7</comment>
+    <requestid>114921</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>b7fb3d165608642ce2a26f90592795a3</srcmd5>
+    <version>2.9.1</version>
+    <time>1336423935</time>
+    <user>coolo</user>
+    <comment>- update to Seamonkey 2.9.1
+  * fix regressions
+    - POP3 filters (bmo#748090)
+    - Message Body not loaded when using &quot;Fetch Headers Only&quot;
+      (bmo#748865)
+    - Received messages contain parts of other messages with
+      movemail account (bmo#748726)
+    - New mail notification issue (bmo#748997)
+    - crash in nsMsgDatabase::MatchDbName (bmo#748432)
+
+- fixed build with gcc 4.7
+
+- update to Seamonkey 2.9 (bnc#758408)
+  * MFSA 2012-20/CVE-2012-0467/CVE-2012-0468
+    Miscellaneous memory safety hazards
+  * MFSA 2012-22/CVE-2012-0469 (bmo#738985)
+    use-after-free in IDBKeyRange
+  * MFSA 2012-23/CVE-2012-0470 (bmo#734288)
+    Invalid frees causes heap corruption in gfxImageSurface
+  * MFSA 2012-24/CVE-2012-0471 (bmo#715319)
+    Potential XSS via multibyte content processing errors
+  * MFSA 2012-25/CVE-2012-0472 (bmo#744480)
+    Potential memory corruption during font rendering using cairo-dwrite
+  * MFSA 2012-26/CVE-2012-0473 (bmo#743475)
+    WebGL.drawElements may read illegal video memory due to
+    FindMaxUshortElement error
+  * MFSA 2012-27/CVE-2012-0474 (bmo#687745, bmo#737307)
+    Page load short-circuit can lead to XSS
+  * MFSA 2012-28/CVE-2012-0475 (bmo#694576)
+    Ambiguous IPv6 in Origin headers may bypass webserver access</comment>
+    <requestid>116004</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>0c2696b7da02ad625dcd75a7a10fd36a</srcmd5>
+    <version>2.10</version>
+    <time>1338991798</time>
+    <user>coolo</user>
+    <comment>- update to Seamonkey 2.10 (bnc#765204)
+  * MFSA 2012-34/CVE-2012-1938/CVE-2012-1937/CVE-2011-3101
+    Miscellaneous memory safety hazards
+  * MFSA 2012-36/CVE-2012-1944 (bmo#751422)
+    Content Security Policy inline-script bypass
+  * MFSA 2012-37/CVE-2012-1945 (bmo#670514)
+    Information disclosure though Windows file shares and shortcut
+    files
+  * MFSA 2012-38/CVE-2012-1946 (bmo#750109)
+    Use-after-free while replacing/inserting a node in a document
+  * MFSA 2012-40/CVE-2012-1947/CVE-2012-1940/CVE-2012-1941
+    Buffer overflow and use-after-free issues found using Address
+    Sanitizer
+- requires NSS 3.13.4
+  * MFSA 2012-39/CVE-2012-0441 (bmo#715073)</comment>
+    <requestid>123739</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>4dbae653bd44c443be1332e7be953ea8</srcmd5>
+    <version>2.10.1</version>
+    <time>1340033498</time>
+    <user>coolo</user>
+    <comment>- update to Seamonkey 2.10.1</comment>
+    <requestid>125188</requestid>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>4dbae653bd44c443be1332e7be953ea8</srcmd5>
+    <version>2.10.1</version>
+    <time>1340184205</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>f18a63f5f9b5a953f3fbcd7517692748</srcmd5>
+    <version>2.11</version>
+    <time>1342963557</time>
+    <user>coolo</user>
+    <comment>- update to Seamonkey 2.11 (bnc#771583)
+  * MFSA 2012-42/CVE-2012-1949/CVE-2012-1948
+    Miscellaneous memory safety hazards
+  * MFSA 2012-44/CVE-2012-1951/CVE-2012-1954/CVE-2012-1953/CVE-2012-1952
+    Gecko memory corruption
+  * MFSA 2012-45/CVE-2012-1955 (bmo#757376)
+    Spoofing issue with location
+  * MFSA 2012-47/CVE-2012-1957 (bmo#750096)
+    Improper filtering of javascript in HTML feed-view
+  * MFSA 2012-48/CVE-2012-1958 (bmo#750820)
+    use-after-free in nsGlobalWindow::PageHidden
+  * MFSA 2012-49/CVE-2012-1959 (bmo#754044, bmo#737559)
+    Same-compartment Security Wrappers can be bypassed
+  * MFSA 2012-50/CVE-2012-1960 (bmo#761014)
+    Out of bounds read in QCMS
+  * MFSA 2012-51/CVE-2012-1961 (bmo#761655)
+    X-Frame-Options header ignored when duplicated
+  * MFSA 2012-52/CVE-2012-1962 (bmo#764296)
+    JSDependentString::undepend string conversion results in memory
+    corruption
+  * MFSA 2012-53/CVE-2012-1963 (bmo#767778)
+    Content Security Policy 1.0 implementation errors cause data
+    leakage
+  * MFSA 2012-56/CVE-2012-1967 (bmo#758344)
+    Code execution through javascript: URLs
+  * relicensed to MPL-2.0
+- updated/removed patches
+- requires NSS 3.13.5</comment>
+    <requestid>128284</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>40baebbae5ea543c58b90819970d837c</srcmd5>
+    <version>2.11</version>
+    <time>1343639926</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>129240</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>db9c4326882f514fbad1b9005bd9ba72</srcmd5>
+    <version>2.12</version>
+    <time>1346400079</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.12 (bnc#777588)
+  * MFSA 2012-57/CVE-2012-1970
+    Miscellaneous memory safety hazards
+  * MFSA 2012-58/CVE-2012-1972/CVE-2012-1973/CVE-2012-1974/CVE-2012-1975
+    CVE-2012-1976/CVE-2012-3956/CVE-2012-3957/CVE-2012-3958/CVE-2012-3959
+    CVE-2012-3960/CVE-2012-3961/CVE-2012-3962/CVE-2012-3963/CVE-2012-3964
+    Use-after-free issues found using Address Sanitizer
+  * MFSA 2012-59/CVE-2012-1956 (bmo#756719)
+    Location object can be shadowed using Object.defineProperty
+  * MFSA 2012-61/CVE-2012-3966 (bmo#775794, bmo#775793)
+    Memory corruption with bitmap format images with negative height
+  * MFSA 2012-62/CVE-2012-3967/CVE-2012-3968
+    WebGL use-after-free and memory corruption
+  * MFSA 2012-63/CVE-2012-3969/CVE-2012-3970
+    SVG buffer overflow and use-after-free issues
+  * MFSA 2012-64/CVE-2012-3971
+    Graphite 2 memory corruption
+  * MFSA 2012-65/CVE-2012-3972 (bmo#746855)
+    Out-of-bounds read in format-number in XSLT
+  * MFSA 2012-68/CVE-2012-3975 (bmo#770684)
+    DOMParser loads linked resources in extensions when parsing
+    text/html
+  * MFSA 2012-69/CVE-2012-3976 (bmo#768568)
+    Incorrect site SSL certificate data display
+  * MFSA 2012-70/CVE-2012-3978 (bmo#770429)
+    Location object security checks bypassed by chrome code
+- enable GStreamer for 12.1 and higher
+- use internal libjpeg</comment>
+    <requestid>131907</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>c3a72c656c639e717f8b5df65e00ecab</srcmd5>
+    <version>2.12.1</version>
+    <time>1347487620</time>
+    <user>namtrac</user>
+    <comment>- update to SeaMonkey 2.12.1 (bnc#779936)
+  * Sites visited while in Private Browsing mode could be found
+    through manual browser cache inspection (bmo#787743)</comment>
+    <requestid>133774</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>c2b15ee574b8edd49622fb1c5a3f30b3</srcmd5>
+    <version>2.13</version>
+    <time>1349947621</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.13 (bnc#783533)
+  * MFSA 2012-74/CVE-2012-3982/CVE-2012-3983
+    Miscellaneous memory safety hazards
+  * MFSA 2012-75/CVE-2012-3984 (bmo#575294)
+    select element persistance allows for attacks
+  * MFSA 2012-76/CVE-2012-3985 (bmo#655649)
+    Continued access to initial origin after setting document.domain
+  * MFSA 2012-77/CVE-2012-3986 (bmo#775868)
+    Some DOMWindowUtils methods bypass security checks
+  * MFSA 2012-79/CVE-2012-3988 (bmo#725770)
+    DOS and crash with full screen and history navigation
+  * MFSA 2012-80/CVE-2012-3989 (bmo#783867)
+    Crash with invalid cast when using instanceof operator
+  * MFSA 2012-81/CVE-2012-3991 (bmo#783260)
+    GetProperty function can bypass security checks
+  * MFSA 2012-82/CVE-2012-3994 (bmo#765527)
+    top object and location property accessible by plugins
+  * MFSA 2012-83/CVE-2012-3993/CVE-2012-4184 (bmo#768101, bmo#780370)
+    Chrome Object Wrapper (COW) does not disallow acces to privileged
+    functions or properties
+  * MFSA 2012-84/CVE-2012-3992 (bmo#775009)
+    Spoofing and script injection through location.hash
+  * MFSA 2012-85/CVE-2012-3995/CVE-2012-4179/CVE-2012-4180/
+    CVE-2012-4181/CVE-2012-4182/CVE-2012-4183
+    Use-after-free, buffer overflow, and out of bounds read issues
+    found using Address Sanitizer
+  * MFSA 2012-86/CVE-2012-4185/CVE-2012-4186/CVE-2012-4187/
+    CVE-2012-4188
+    Heap memory corruption issues found using Address Sanitizer
+  * MFSA 2012-87/CVE-2012-3990 (bmo#787704)</comment>
+    <requestid>137676</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>82240e786562124baa7c94e079429d11</srcmd5>
+    <version>2.13.1</version>
+    <time>1350152659</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.13.1 (bnc#783533)
+  * MFSA 2012-88/CVE-2012-4191 (bmo#798045)
+    Miscellaneous memory safety hazards
+  * MFSA 2012-89/CVE-2012-4192/CVE-2012-4193 (bmo#799952, bmo#720619)
+    defaultValue security checks not applied</comment>
+    <requestid>137951</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>9302e295dab7ece2a10cdd0de329e311</srcmd5>
+    <version>2.13.2</version>
+    <time>1351537966</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.13.2 (bnc#786522)
+  * MFSA 2012-90/CVE-2012-4194/CVE-2012-4195/CVE-2012-4196
+    (bmo#800666, bmo#793121, bmo#802557)
+    Fixes for Location object issues</comment>
+    <requestid>139554</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>36d1afd67f755891098541d6f5fbb2cd</srcmd5>
+    <version>2.14</version>
+    <time>1353601414</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.14 (bnc#790140)
+  * MFSA 2012-91/CVE-2012-5842/CVE-2012-5843
+    Miscellaneous memory safety hazards
+  * MFSA 2012-92/CVE-2012-4202 (bmo#758200)
+    Buffer overflow while rendering GIF images
+  * MFSA 2012-93/CVE-2012-4201 (bmo#747607)
+    evalInSanbox location context incorrectly applied
+  * MFSA 2012-94/CVE-2012-5836 (bmo#792857)
+    Crash when combining SVG text on path with CSS
+  * MFSA 2012-96/CVE-2012-4204 (bmo#778603)
+    Memory corruption in str_unescape
+  * MFSA 2012-97/CVE-2012-4205 (bmo#779821)
+    XMLHttpRequest inherits incorrect principal within sandbox
+  * MFSA 2012-99/CVE-2012-4208 (bmo#798264)
+    XrayWrappers exposes chrome-only properties when not in chrome
+    compartment
+  * MFSA 2012-100/CVE-2012-5841 (bmo#805807)
+    Improper security filtering for cross-origin wrappers
+  * MFSA 2012-101/CVE-2012-4207 (bmo#801681)
+    Improper character decoding in HZ-GB-2312 charset
+  * MFSA 2012-103/CVE-2012-4209 (bmo#792405)
+    Frames can shadow top.location
+  * MFSA 2012-105/CVE-2012-4214/CVE-2012-4215/CVE-2012-4216/
+    CVE-2012-5829/CVE-2012-5839/CVE-2012-5840/CVE-2012-4212/
+    CVE-2012-4213/CVE-2012-4217/CVE-2012-4218
+    Use-after-free and buffer overflow issues found using Address
+    Sanitizer
+  * MFSA 2012-106/CVE-2012-5830/CVE-2012-5833/CVE-2012-5835/CVE-2012-5838
+    Use-after-free, buffer overflow, and memory corruption issues
+    found using Address Sanitizer</comment>
+    <requestid>142216</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>86db2c5cdc5766082d04fa8b7e95cd12</srcmd5>
+    <version>2.15</version>
+    <time>1358153334</time>
+    <user>coolo</user>
+    <comment>- backed out restartless language packs as it broke multi-locale
+  setup (bmo#677092, bmo#818468)
+
+- update to SeaMonkey 2.15 /(bnc#796895)
+  * MFSA 2013-01/CVE-2013-0749/CVE-2013-0769/CVE-2013-0770
+    Miscellaneous memory safety hazards
+  * MFSA 2013-02/CVE-2013-0760/CVE-2013-0762/CVE-2013-0766/CVE-2013-0767
+    CVE-2013-0761/CVE-2013-0763/CVE-2013-0771/CVE-2012-5829
+    Use-after-free and buffer overflow issues found using Address Sanitizer
+  * MFSA 2013-03/CVE-2013-0768 (bmo#815795)
+    Buffer Overflow in Canvas
+  * MFSA 2013-04/CVE-2012-0759 (bmo#802026)
+    URL spoofing in addressbar during page loads
+  * MFSA 2013-05/CVE-2013-0744 (bmo#814713)
+    Use-after-free when displaying table with many columns and column groups
+  * MFSA 2013-06/CVE-2013-0751 (bmo#790454)
+    Touch events are shared across iframes
+  * MFSA 2013-07/CVE-2013-0764 (bmo#804237)
+    Crash due to handling of SSL on threads
+  * MFSA 2013-08/CVE-2013-0745 (bmo#794158)
+    AutoWrapperChanger fails to keep objects alive during garbage collection
+  * MFSA 2013-09/CVE-2013-0746 (bmo#816842)
+    Compartment mismatch with quickstubs returned values
+  * MFSA 2013-10/CVE-2013-0747 (bmo#733305)
+    Event manipulation in plugin handler to bypass same-origin policy
+  * MFSA 2013-11/CVE-2013-0748 (bmo#806031)
+    Address space layout leaked in XBL objects
+  * MFSA 2013-12/CVE-2013-0750 (bmo#805121)
+    Buffer overflow in Javascript string concatenation
+  * MFSA 2013-13/CVE-2013-0752 (bmo#805024)</comment>
+    <requestid>148336</requestid>
+  </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>86db2c5cdc5766082d04fa8b7e95cd12</srcmd5>
+    <version>2.15</version>
+    <time>1359110391</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>6a0853d88f98da47ed19044f970bb51f</srcmd5>
+    <version>2.15.1</version>
+    <time>1359438514</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.15.1
+  * backed out bmo#677092 (removed patch)
+  * fixed problems involving HTTP proxy transactions</comment>
+    <requestid>149305</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>be2f4680c740942c4135051d6745e059</srcmd5>
+    <version>2.15.2</version>
+    <time>1360401377</time>
+    <user>coolo</user>
+    <comment>minor bugfixes; could be added for 12.3 but SM 2.16 is scheduled in 10 days and is needed for security reasons anyway</comment>
+    <requestid>154953</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>3ea1c0292621286ddd37f34455d3b354</srcmd5>
+    <version>2.16</version>
+    <time>1361349357</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.16 (bnc#804248)
+  * MFSA 2013-21/CVE-2013-0783/2013-0784
+    Miscellaneous memory safety hazards
+  * MFSA 2013-22/CVE-2013-0772 (bmo#801366)
+    Out-of-bounds read in image rendering
+  * MFSA 2013-23/CVE-2013-0765 (bmo#830614)
+    Wrapped WebIDL objects can be wrapped again
+  * MFSA 2013-24/CVE-2013-0773 (bmo#809652)
+    Web content bypass of COW and SOW security wrappers
+  * MFSA 2013-25/CVE-2013-0774 (bmo#827193)
+    Privacy leak in JavaScript Workers
+  * MFSA 2013-26/CVE-2013-0775 (bmo#831095)
+    Use-after-free in nsImageLoadingContent
+  * MFSA 2013-27/CVE-2013-0776 (bmo#796475)
+    Phishing on HTTPS connection through malicious proxy
+  * MFSA 2013-28/CVE-2013-0780/CVE-2013-0782/CVE-2013-0777/
+    CVE-2013-0778/CVE-2013-0779/CVE-2013-0781
+    Use-after-free, out of bounds read, and buffer overflow issues
+    found using Address Sanitizer
+- removed obsolete patches
+  * mozilla-webrtc.patch
+  * mozilla-gstreamer-803287.patch
+
+- update to SeaMonkey 2.15 (bnc#796895)</comment>
+    <requestid>155867</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>557170a1c338a6a936259d7435e50b97</srcmd5>
+    <version>2.16.1</version>
+    <time>1362901161</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.16.1 (bnc#808243)
+  * MFSA 2013-29/CVE-2013-0787 (bmo#848644)
+    Use-after-free in HTML Editor</comment>
+    <requestid>158116</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>2e5cd2a02a13ce25a04c83269dcfec03</srcmd5>
+    <version>2.16.2</version>
+    <time>1364158664</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160641</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>fd7e4f2be216eefd8622f0e630d2b47d</srcmd5>
+    <version>2.17</version>
+    <time>1365337589</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.17 (bnc#813026)
+  * requires NSPR 4.9.5 and NSS 3.14.3
+  * mozilla-webrtc-ppc.patch included upstream
+  * MFSA 2013-30/CVE-2013-0788/CVE-2013-0789
+    Miscellaneous memory safety hazards
+  * MFSA 2013-31/CVE-2013-0800 (bmo#825721)
+    Out-of-bounds write in Cairo library
+  * MFSA 2013-35/CVE-2013-0796 (bmo#827106)
+    WebGL crash with Mesa graphics driver on Linux
+  * MFSA 2013-36/CVE-2013-0795 (bmo#825697)
+    Bypass of SOW protections allows cloning of protected nodes
+  * MFSA 2013-37/CVE-2013-0794 (bmo#626775)
+    Bypass of tab-modal dialog origin disclosure
+  * MFSA 2013-38/CVE-2013-0793 (bmo#803870)
+    Cross-site scripting (XSS) using timed history navigations
+  * MFSA 2013-39/CVE-2013-0792 (bmo#722831)
+    Memory corruption while rendering grayscale PNG images
+- use GStreamer 1.0 starting with 12.3 (mozilla-gstreamer-1.patch)</comment>
+    <requestid>162343</requestid>
+  </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>7fe10513d66dc4f34152e1dd343a16c8</srcmd5>
+    <version>2.17</version>
+    <time>1365792183</time>
+    <user>coolo</user>
+    <comment>- revert to use GStreamer 0.10 on 12.3 (bnc#814101)
+  (remove mozilla-gstreamer-1.patch)</comment>
+    <requestid>163448</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>d82c883d25fb91db5cad668e210719a6</srcmd5>
+    <version>2.19</version>
+    <time>1373087027</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.19 (bnc#825935)
+  * removed obsolete patches
+    + mozilla-gstreamer-760140.patch
+  * GStreamer support does not build on 12.1 anymore (build only
+    on 12.2 and later)
+  * MFSA 2013-49/CVE-2013-1682/CVE-2013-1683
+    Miscellaneous memory safety hazards
+  * MFSA 2013-50/CVE-2013-1684/CVE-2013-1685/CVE-2013-1686
+    Memory corruption found using Address Sanitizer
+  * MFSA 2013-51/CVE-2013-1687 (bmo#863933, bmo#866823)
+    Privileged content access and execution via XBL
+  * MFSA 2013-52/CVE-2013-1688 (bmo#873966)
+    Arbitrary code execution within Profiler
+  * MFSA 2013-53/CVE-2013-1690 (bmo#857883)
+    Execution of unmapped memory through onreadystatechange event
+  * MFSA 2013-54/CVE-2013-1692 (bmo#866915)
+    Data in the body of XHR HEAD requests leads to CSRF attacks
+  * MFSA 2013-55/CVE-2013-1693 (bmo#711043)
+    SVG filters can lead to information disclosure
+  * MFSA 2013-56/CVE-2013-1694 (bmo#848535)
+    PreserveWrapper has inconsistent behavior
+  * MFSA 2013-57/CVE-2013-1695 (bmo#849791)
+    Sandbox restrictions not applied to nested frame elements
+  * MFSA 2013-58/CVE-2013-1696 (bmo#761667)
+    X-Frame-Options ignored when using server push with multi-part
+    responses
+  * MFSA 2013-59/CVE-2013-1697 (bmo#858101)
+    XrayWrappers can be bypassed to run user defined methods in a
+    privileged context
+  * MFSA 2013-60/CVE-2013-1698 (bmo#876044)</comment>
+    <requestid>181951</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>81f07c575d0d16d548e2cbeb8b3a06c6</srcmd5>
+    <version>2.20</version>
+    <time>1376212864</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to SeaMonkey 2.20 (bnc#833389)
+  * MFSA 2013-63/CVE-2013-1701/CVE-2013-1702
+    Miscellaneous memory safety hazards
+  * MFSA 2013-64/CVE-2013-1704 (bmo#883313)
+    Use after free mutating DOM during SetBody
+  * MFSA 2013-65/CVE-2013-1705 (bmo#882865)
+    Buffer underflow when generating CRMF requests
+  * MFSA 2013-67/CVE-2013-1708 (bmo#879924)
+    Crash during WAV audio file decoding
+  * MFSA 2013-68/CVE-2013-1709 (bmo#838253)
+    Document URI misrepresentation and masquerading
+  * MFSA 2013-69/CVE-2013-1710 (bmo#871368)
+    CRMF requests allow for code execution and XSS attacks
+  * MFSA 2013-70/CVE-2013-1711 (bmo#843829)
+    Bypass of XrayWrappers using XBL Scopes
+  * MFSA 2013-72/CVE-2013-1713 (bmo#887098)
+    Wrong principal used for validating URI for some Javascript
+    components
+  * MFSA 2013-73/CVE-2013-1714 (bmo#879787)
+    Same-origin bypass with web workers and XMLHttpRequest
+  * MFSA 2013-75/CVE-2013-1717 (bmo#406541, bmo#738397)
+    Local Java applets may read contents of local file system
+- requires NSPR 4.10 and NSS 3.15
+- removed obsolete seamonkey-shared-nss-db.patch</comment>
+    <requestid>186313</requestid>
+  </revision>
+  <revision rev="97" vrev="3">
+    <srcmd5>81f07c575d0d16d548e2cbeb8b3a06c6</srcmd5>
+    <version>2.20</version>
+    <time>1379664642</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>e8621f027d6166f60d64ab5f33bc4aa0</srcmd5>
+    <version>2.21</version>
+    <time>1379926944</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.21 (bnc#840485)
+  * MFSA 2013-76/CVE-2013-1718/CVE-2013-1719
+    Miscellaneous memory safety hazards
+  * MFSA 2013-77/CVE-2013-1720 (bmo#888820)
+    Improper state in HTML5 Tree Builder with templates
+  * MFSA 2013-78/CVE-2013-1721 (bmo#890277)
+    Integer overflow in ANGLE library
+  * MFSA 2013-79/CVE-2013-1722 (bmo#893308)
+    Use-after-free in Animation Manager during stylesheet cloning
+  * MFSA 2013-80/CVE-2013-1723 (bmo#891292)
+    NativeKey continues handling key messages after widget is destroyed
+  * MFSA 2013-81/CVE-2013-1724 (bmo#894137)
+    Use-after-free with select element
+  * MFSA 2013-82/CVE-2013-1725 (bmo#876762)
+    Calling scope for new Javascript objects can lead to memory corruption
+  * MFSA 2013-85/CVE-2013-1728 (bmo#883686)
+    Uninitialized data in IonMonkey
+  * MFSA 2013-88/CVE-2013-1730 (bmo#851353)
+    Compartment mismatch re-attaching XBL-backed nodes
+  * MFSA 2013-89/CVE-2013-1732 (bmo#883514)
+    Buffer overflow with multi-column, lists, and floats
+  * MFSA 2013-90/CVE-2013-1735/CVE-2013-1736 (bmo#898871, bmo#906301)
+    Memory corruption involving scrolling
+  * MFSA 2013-91/CVE-2013-1737 (bmo#907727)
+    User-defined properties on DOM proxies get the wrong &quot;this&quot; object
+  * MFSA 2013-92/CVE-2013-1738 (bmo#887334, bmo#882897)
+    GC hazard with default compartments and frame chain restoration
+- requires NSS 3.15.1</comment>
+    <requestid>199664</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>fd0fd9cf79be2bb2765af1bafcb768fb</srcmd5>
+    <version>2.22</version>
+    <time>1383551440</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.22 (bnc#847708)
+  * rebased patches
+  * requires NSS 3.15.2 or higher
+  * MFSA 2013-93/CVE-2013-5590/CVE-2013-5591/CVE-2013-5592
+    Miscellaneous memory safety hazards
+  * MFSA 2013-94/CVE-2013-5593 (bmo#868327)
+    Spoofing addressbar through SELECT element
+  * MFSA 2013-95/CVE-2013-5604 (bmo#914017)
+    Access violation with XSLT and uninitialized data
+  * MFSA 2013-96/CVE-2013-5595 (bmo#916580)
+    Improperly initialized memory and overflows in some JavaScript
+    functions
+  * MFSA 2013-97/CVE-2013-5596 (bmo#910881)
+    Writing to cycle collected object during image decoding
+  * MFSA 2013-98/CVE-2013-5597 (bmo#918864)
+    Use-after-free when updating offline cache
+  * MFSA 2013-99/CVE-2013-5598 (bmo#920515)
+    Security bypass of PDF.js checks using iframes
+  * MFSA 2013-100/CVE-2013-5599/CVE-2013-5600/CVE-2013-5601
+    (bmo#915210, bmo#915576, bmo#916685)
+    Miscellaneous use-after-free issues found through ASAN fuzzing
+  * MFSA 2013-101/CVE-2013-5602 (bmo#897678)
+    Memory corruption in workers
+  * MFSA 2013-102/CVE-2013-5603 (bmo#916404)
+    Use-after-free in HTML document templates</comment>
+    <requestid>205494</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>b4bc6636bedd10e97727726ef112c4f7</srcmd5>
+    <version>2.23</version>
+    <time>1386936685</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.23 (bnc#854367, bnc#854370))
+  * requires NSPR 4.10.2 and NSS 3.15.3.1
+  * MFSA 2013-104/CVE-2013-5609/CVE-2013-5610
+    Miscellaneous memory safety hazards
+  * MFSA 2013-105/CVE-2013-5611 (bmo#771294)
+    Application Installation doorhanger persists on navigation
+  * MFSA 2013-106/CVE-2013-5612 (bmo#871161)
+    Character encoding cross-origin XSS attack
+  * MFSA 2013-107/CVE-2013-5614 (bmo#886262)
+    Sandbox restrictions not applied to nested object elements
+  * MFSA 2013-108/CVE-2013-5616 (bmo#938341)
+    Use-after-free in event listeners
+  * MFSA 2013-109/CVE-2013-5618 (bmo#926361)
+    Use-after-free during Table Editing
+  * MFSA 2013-110/CVE-2013-5619 (bmo#917841)
+    Potential overflow in JavaScript binary search algorithms
+  * MFSA 2013-111/CVE-2013-6671 (bmo#930281)
+    Segmentation violation when replacing ordered list elements
+  * MFSA 2013-112/CVE-2013-6672 (bmo#894736)
+    Linux clipboard information disclosure though selection paste
+  * MFSA 2013-113/CVE-2013-6673 (bmo#970380)
+    Trust settings for built-in roots ignored during EV certificate
+    validation
+  * MFSA 2013-114/CVE-2013-5613 (bmo#930381, bmo#932449)
+    Use-after-free in synthetic mouse movement
+  * MFSA 2013-115/CVE-2013-5615 (bmo#929261)
+    GetElementIC typed array stubs can be generated outside observed
+    typesets
+  * MFSA 2013-116/CVE-2013-6629/CVE-2013-6630 (bmo#891693)
+    JPEG information leak</comment>
+    <requestid>210723</requestid>
+  </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>65243c9beab4a1be6e0998894ca7835a</srcmd5>
+    <version>2.23</version>
+    <time>1389424199</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>213383</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>5892830129207184865fabbfe4fecc6c</srcmd5>
+    <version>2.24</version>
+    <time>1391614498</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.24 (bnc#861847)
+  * MFSA 2014-01/CVE-2014-1477/CVE-2014-1478
+    Miscellaneous memory safety hazards (rv:27.0 / rv:24.3)
+  * MFSA 2014-02/CVE-2014-1479 (bmo#911864)
+    Clone protected content with XBL scopes
+  * MFSA 2014-03/CVE-2014-1480 (bmo#916726)
+    UI selection timeout missing on download prompts
+  * MFSA 2014-04/CVE-2014-1482 (bmo#943803)
+    Incorrect use of discarded images by RasterImage
+  * MFSA 2014-05/CVE-2014-1483 (bmo#950427)
+    Information disclosure with *FromPoint on iframes
+  * MFSA 2014-07/CVE-2014-1485 (bmo#910139)
+    XSLT stylesheets treated as styles in Content Security Policy
+  * MFSA 2014-08/CVE-2014-1486 (bmo#942164)
+    Use-after-free with imgRequestProxy and image proccessing
+  * MFSA 2014-09/CVE-2014-1487 (bmo#947592)
+    Cross-origin information leak through web workers
+  * MFSA 2014-11/CVE-2014-1488 (bmo#950604)
+    Crash when using web workers with asm.js
+  * MFSA 2014-12/CVE-2014-1490/CVE-2014-1491
+    (bmo#934545, bmo#930874, bmo#930857)
+    NSS ticket handling issues
+  * MFSA 2014-13/CVE-2014-1481(bmo#936056)
+    Inconsistent JavaScript handling of access to Window objects
+- requires NSS 3.15.4
+- removed obsolete mozilla-bug929439.patch</comment>
+    <requestid>220934</requestid>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>6ede1aefc0a7bd46a52a81812dabc27a</srcmd5>
+    <version>2.24</version>
+    <time>1392111930</time>
+    <user>coolo</user>
+    <comment>- replaced locale source archive because the old one was broken
+  by wrong upstream tagging (bnc#862831)</comment>
+    <requestid>221429</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>ce0e3c3596843d7047b7e179827bd691</srcmd5>
+    <version>2.25</version>
+    <time>1395406285</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.25 (bnc#868603)
+  * MFSA 2014-15/CVE-2014-1493/CVE-2014-1494
+    Miscellaneous memory safety hazards
+  * MFSA 2014-17/CVE-2014-1497 (bmo#966311)
+    Out of bounds read during WAV file decoding
+  * MFSA 2014-18/CVE-2014-1498 (bmo#935618)
+    crypto.generateCRMFRequest does not validate type of key
+  * MFSA 2014-19/CVE-2014-1499 (bmo#961512)
+    Spoofing attack on WebRTC permission prompt
+  * MFSA 2014-20/CVE-2014-1500 (bmo#956524)
+    onbeforeunload and Javascript navigation DOS
+  * MFSA 2014-22/CVE-2014-1502 (bmo#972622)
+    WebGL content injection from one domain to rendering in another
+  * MFSA 2014-23/CVE-2014-1504 (bmo#911547)
+    Content Security Policy for data: documents not preserved by
+    session restore
+  * MFSA 2014-26/CVE-2014-1508 (bmo#963198)
+    Information disclosure through polygon rendering in MathML
+  * MFSA 2014-27/CVE-2014-1509 (bmo#966021)
+    Memory corruption in Cairo during PDF font rendering
+  * MFSA 2014-28/CVE-2014-1505 (bmo#941887)
+    SVG filters information disclosure through feDisplacementMap
+  * MFSA 2014-29/CVE-2014-1510/CVE-2014-1511 (bmo#982906, bmo#982909)
+    Privilege escalation using WebIDL-implemented APIs
+  * MFSA 2014-30/CVE-2014-1512 (bmo#982957)
+    Use-after-free in TypeObject
+  * MFSA 2014-31/CVE-2014-1513 (bmo#982974)
+    Out-of-bounds read/write through neutering ArrayBuffer objects
+  * MFSA 2014-32/CVE-2014-1514 (bmo#983344)
+    Out-of-bounds write through TypedArrayObject after neutering</comment>
+    <requestid>226812</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>7432ef60de409c87a95c43ef6a74cbe8</srcmd5>
+    <version>2.26</version>
+    <time>1398923544</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.26 (bnc#875378)
+  * MFSA 2014-34/CVE-2014-1518/CVE-2014-1519
+    Miscellaneous memory safety hazards
+  * MFSA 2014-36/CVE-2014-1522 (bmo#995289)
+    Web Audio memory corruption issues
+  * MFSA 2014-37/CVE-2014-1523 (bmo#969226)
+    Out of bounds read while decoding JPG images
+  * MFSA 2014-38/CVE-2014-1524 (bmo#989183)
+    Buffer overflow when using non-XBL object as XBL
+  * MFSA 2014-39/CVE-2014-1525 (bmo#989210)
+    Use-after-free in the Text Track Manager for HTML video
+  * MFSA 2014-41/CVE-2014-1528 (bmo#963962)
+    Out-of-bounds write in Cairo
+  * MFSA 2014-42/CVE-2014-1529 (bmo#987003)
+    Privilege escalation through Web Notification API
+  * MFSA 2014-43/CVE-2014-1530 (bmo#895557)
+    Cross-site scripting (XSS) using history navigations
+  * MFSA 2014-44/CVE-2014-1531 (bmo#987140)
+    Use-after-free in imgLoader while resizing images
+  * MFSA 2014-45/CVE-2014-1492 (bmo#903885)
+    Incorrect IDNA domain name matching for wildcard certificates
+    (fixed by NSS 3.16)
+  * MFSA 2014-46/CVE-2014-1532 (bmo#966006)
+    Use-after-free in nsHostResolver
+  * MFSA 2014-47/CVE-2014-1526 (bmo#988106)
+    Debugger can bypass XrayWrappers with JavaScript
+- rebased patches
+- added aarch64 porting patches
+  * mozilla-aarch64-bmo-810631.patch
+  * mozilla-aarch64-bmo-962488.patch</comment>
+    <requestid>232135</requestid>
+  </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>608cc280351281ba7f563f8e7f303991</srcmd5>
+    <version>2.26</version>
+    <time>1400057145</time>
+    <user>coolo</user>
+    <comment>- fix translations packaging (bnc#877263)</comment>
+    <requestid>233742</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>05db51ecf72ebd410adfa51e5b8a3789</srcmd5>
+    <version>2.26.1</version>
+    <time>1402996982</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.26.1 (bnc#881874)
+  * MFSA 2014-48/CVE-2014-1533/CVE-2014-1534
+    (bmo#921622, bmo#967354, bmo#969517, bmo#969549, bmo#973874,
+     bmo#978652, bmo#978811, bmo#988719, bmo#990868, bmo#991981,
+     bmo#992274, bmo#994907, bmo#995679, bmo#995816, bmo#995817,
+     bmo#996536, bmo#996715, bmo#999651, bmo#1000598,
+     bmo#1000960, bmo#1002340, bmo#1005578, bmo#1007223,
+     bmo#1009952, bmo#1011007)
+    Miscellaneous memory safety hazards (rv:30.0)
+  * MFSA 2014-49/CVE-2014-1536/CVE-2014-1537/CVE-2014-1538
+    (bmo#989994, bmo#999274, bmo#1005584)
+    Use-after-free and out of bounds issues found using Address
+    Sanitizer
+  * MFSA 2014-50/CVE-2014-1539 (bmo#995603)
+    Clickjacking through cursor invisability after Flash interaction
+  * MFSA 2014-51/CVE-2014-1540 (bmo#978862)
+    Use-after-free in Event Listener Manager
+  * MFSA 2014-52/CVE-2014-1541 (bmo#1000185)
+    Use-after-free with SMIL Animation Controller
+  * MFSA 2014-53/CVE-2014-1542 (bmo#991533)
+    Buffer overflow in Web Audio Speex resampler
+  * MFSA 2014-54/CVE-2014-1543 (bmo#1011859)
+    Buffer overflow in Gamepad API
+  * MFSA 2014-55/CVE-2014-1545 (bmo#1018783)
+    Out of bounds write in NSPR
+- requires NSPR 4.10.6
+- build require makeinfo</comment>
+    <requestid>237584</requestid>
+  </revision>
+  <revision rev="108" vrev="3">
+    <srcmd5>05db51ecf72ebd410adfa51e5b8a3789</srcmd5>
+    <version>2.26.1</version>
+    <time>1409303344</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>93e1b2c0f610cc09dc333c28778eb8a5</srcmd5>
+    <version>2.29</version>
+    <time>1411461765</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.29 (bmo#894370)
+  * based on Gecko 32.0 including all security fixes outlined here
+    https://www.mozilla.org/security/known-vulnerabilities/
+  * removed obsolete patches
+    mozilla-aarch64-bmo-810631.patch, mozilla-aarch64-bmo-962488.patch,
+    mozilla-aarch64-bmo-963023.patch, mozilla-aarch64-bmo-963024.patch,
+    mozilla-aarch64-bmo-963027.patch
+    mozilla-ppc64le-build.patch, mozilla-ppc64le-javascript.patch,
+    mozilla-ppc64le-libffi.patch, mozilla-ppc64le-mfbt.patch,
+    mozilla-ppc64le-webrtc.patch, mozilla-ppc64le-xpcom.patch
+  * rebased patches
+- requires NSS 3.16.4
+- build with --disable-optimize for 13.1 and above for i586 to
+  workaround miscompilations (bnc#896624)</comment>
+    <requestid>250744</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>9f2a3d03000f422284f9532cdc15314c</srcmd5>
+    <version>2.30</version>
+    <time>1416823756</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>262666</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>4e1fb6f6825801c104d7eca7c446d2cb</srcmd5>
+    <version>2.31</version>
+    <time>1417809881</time>
+    <user>dimstar_suse</user>
+    <comment>- update to SeaMonkey 2.31 (bnc#908009)
+  * requires NSS 3.17.2
+  * MFSA 2014-83/CVE-2014-1587/CVE-2014-1588
+    Miscellaneous memory safety hazards
+  * MFSA 2014-84/CVE-2014-1589 (bmo#1043787)
+    XBL bindings accessible via improper CSS declarations
+  * MFSA 2014-85/CVE-2014-1590 (bmo#1087633)
+    XMLHttpRequest crashes with some input streams
+  * MFSA 2014-86/CVE-2014-1591 (bmo#1069762)
+    CSP leaks redirect data via violation reports
+  * MFSA 2014-87/CVE-2014-1592 (bmo#1088635)
+    Use-after-free during HTML5 parsing
+  * MFSA 2014-88/CVE-2014-1593 (bmo#1085175)
+    Buffer overflow while parsing media content
+  * MFSA 2014-89/CVE-2014-1594 (bmo#1074280)
+    Bad casting from the BasicThebesLayer to BasicContainerLayer
+- rebased patches</comment>
+    <requestid>264046</requestid>
+  </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>f77d9b942c9939aedb52e2226fe25828</srcmd5>
+    <version>2.31</version>
+    <time>1420531603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>267034</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>28da3b43a7e6a844199e341c991da0c8</srcmd5>
+    <version>2.32</version>
+    <time>1421753767</time>
+    <user>dimstar_suse</user>
+    <comment>- update to SeaMonkey 2.32 (bnc#910669)
+  * MFSA 2015-01/CVE-2014-8634/CVE-2014-8635
+    Miscellaneous memory safety hazards
+  * MFSA 2015-02/CVE-2014-8637 (bmo#1094536)
+    Uninitialized memory use during bitmap rendering
+  * MFSA 2015-03/CVE-2014-8638 (bmo#1080987)
+    sendBeacon requests lack an Origin header
+  * MFSA 2015-04/CVE-2014-8639 (bmo#1095859)
+    Cookie injection through Proxy Authenticate responses
+  * MFSA 2015-05/CVE-2014-8640 (bmo#1100409)
+    Read of uninitialized memory in Web Audio
+  * MFSA 2015-06/CVE-2014-8641 (bmo#1108455)
+    Read-after-free in WebRTC
+  * MFSA 2015-07/CVE-2014-8643 (bmo#1114170) (Windows-only)
+    Gecko Media Plugin sandbox escape
+  * MFSA 2015-08/CVE-2014-8642 (bmo#1079658)
+    Delegated OCSP responder certificates failure with
+    id-pkix-ocsp-nocheck extension
+  * MFSA 2015-09/CVE-2014-8636 (bmo#987794)
+    XrayWrapper bypass through DOM objects
+- rebased patches
+- removed obsolete mozilla-seamonkey-sdk.patch
+- added mozilla-openaes-decl.patch to fix implicit declarations</comment>
+    <requestid>281949</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>aaa533f6ffd8fea0ba2f8a4c944ce011</srcmd5>
+    <version>2.33</version>
+    <time>1426680410</time>
+    <user>dimstar_suse</user>
+    <comment>- update to SeaMonkey 2.33 (bnc#917597)
+  * MFSA 2015-11/CVE-2015-0835/CVE-2015-0836
+    Miscellaneous memory safety hazards
+  * MFSA 2015-12/CVE-2015-0833 (bmo#945192)
+    Invoking Mozilla updater will load locally stored DLL files
+    (Windows only)
+  * MFSA 2015-13/CVE-2015-0832 (bmo#1065909)
+    Appended period to hostnames can bypass HPKP and HSTS protections
+  * MFSA 2015-14/CVE-2015-0830 (bmo#1110488)
+    Malicious WebGL content crash when writing strings
+  * MFSA 2015-15/CVE-2015-0834 (bmo#1098314)
+    TLS TURN and STUN connections silently fail to simple TCP connections
+  * MFSA 2015-16/CVE-2015-0831 (bmo#1130514)
+    Use-after-free in IndexedDB
+  * MFSA 2015-17/CVE-2015-0829 (bmo#1128939)
+    Buffer overflow in libstagefright during MP4 video playback
+  * MFSA 2015-18/CVE-2015-0828 (bmo#1030667, bmo#988675)
+    Double-free when using non-default memory allocators with a
+    zero-length XHR
+  * MFSA 2015-19/CVE-2015-0827 (bmo#1117304)
+    Out-of-bounds read and write while rendering SVG content
+  * MFSA 2015-20/CVE-2015-0826 (bmo#1092363)
+    Buffer overflow during CSS restyling
+  * MFSA 2015-21/CVE-2015-0825 (bmo#1092370)
+    Buffer underflow during MP3 playback
+  * MFSA 2015-22/CVE-2015-0824 (bmo#1095925)
+    Crash using DrawTarget in Cairo graphics library
+  * MFSA 2015-23/CVE-2015-0823 (bmo#1098497)
+    Use-after-free in Developer Console date with OpenType Sanitiser
+  * MFSA 2015-24/CVE-2015-0822 (bmo#1110557)</comment>
+    <requestid>291108</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>0abd5cab1716ae80667a4fa4de454a15</srcmd5>
+    <version>2.33.1</version>
+    <time>1427109561</time>
+    <user>dimstar_suse</user>
+    <comment>- update to SeaMonkey 2.33.1 (bnc#923534)
+  * MFSA 2015-28/CVE-2015-0818 (bmo#1144988)
+    Privilege escalation through SVG navigation
+  * MFSA 2015-29/CVE-2015-0817 (bmo#1145255)
+    Code execution through incorrect JavaScript bounds checking
+    elimination</comment>
+    <requestid>292315</requestid>
+  </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>0ade5df8cfa20f8ec05937c0b7c9afc6</srcmd5>
+    <version>2.33.1</version>
+    <time>1435653760</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314458</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>718b2352a4caf7215fc301814e0221c4</srcmd5>
+    <version>2.35</version>
+    <time>1441727014</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>329325</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>4ab3111134f925bfc4bc8bb976aa10ac</srcmd5>
+    <version>2.38</version>
+    <time>1443897018</time>
+    <user>coolo</user>
+    <comment>- update to SeaMonkey 2.38 (bnc#947003)
+  * based on 41.0.1
+  * MFSA 2015-96/CVE-2015-4500/CVE-2015-4501
+    Miscellaneous memory safety hazards
+  * MFSA 2015-97/CVE-2015-4503 (bmo#994337)
+    Memory leak in mozTCPSocket to servers
+  * MFSA 2015-98/CVE-2015-4504 (bmo#1132467)
+    Out of bounds read in QCMS library with ICC V4 profile attributes
+  * MFSA 2015-100/CVE-2015-4505 (bmo#1177861) (Windows only)
+    Arbitrary file manipulation by local user through Mozilla updater
+  * MFSA 2015-101/CVE-2015-4506 (bmo#1192226)
+    Buffer overflow in libvpx while parsing vp9 format video
+  * MFSA 2015-102/CVE-2015-4507 (bmo#1192401)
+    Crash when using debugger with SavedStacks in JavaScript
+  * MFSA 2015-104/CVE-2015-4510 (bmo#1200004)
+    Use-after-free with shared workers and IndexedDB
+  * MFSA 2015-105/CVE-2015-4511 (bmo#1200148)
+    Buffer overflow while decoding WebM video
+  * MFSA 2015-106/CVE-2015-4509 (bmo#1198435)
+    Use-after-free while manipulating HTML media content
+  * MFSA 2015-107/CVE-2015-4512 (bmo#1170390)
+    Out-of-bounds read during 2D canvas display on Linux 16-bit
+    color depth systems
+  * MFSA 2015-108/CVE-2015-4502 (bmo#1105045)
+    Scripted proxies can access inner window
+  * MFSA 2015-109/CVE-2015-4516 (bmo#904886)
+    JavaScript immutable property enforcement can be bypassed
+  * MFSA 2015-110/CVE-2015-4519 (bmo#1189814)
+    Dragging and dropping images exposes final URL after redirects
+  * MFSA 2015-111/CVE-2015-4520 (bmo#1200856, bmo#1200869)</comment>
+    <requestid>335658</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>e1e1c698098a92b70a084446b051d59f</srcmd5>
+    <version>2.39</version>
+    <time>1446989761</time>
+    <user>dimstar_suse</user>
+    <comment>- update to Seamonkey 2.39 (bnc#952810)
+  * MFSA 2015-116/CVE-2015-4513/CVE-2015-4514
+    Miscellaneous memory safety hazards
+  * MFSA 2015-117/CVE-2015-4515 (bmo#1046421)
+    Information disclosure through NTLM authentication
+  * MFSA 2015-118/CVE-2015-4518 (bmo#1182778, bmo#1136692)
+    CSP bypass due to permissive Reader mode whitelist
+  * MFSA 2015-119/CVE-2015-7185 (bmo#1149000) (Android only)
+    Firefox for Android addressbar can be removed after fullscreen mode
+  * MFSA 2015-120/CVE-2015-7186 (bmo#1193027) (Android only)
+    Reading sensitive profile files through local HTML file on Android
+  * MFSA 2015-121/CVE-2015-7187 (bmo#1195735)
+    disabling scripts in Add-on SDK panels has no effect
+  * MFSA 2015-122/CVE-2015-7188 (bmo#1199430)
+    Trailing whitespace in IP address hostnames can bypass same-origin policy
+  * MFSA 2015-123/CVE-2015-7189 (bmo#1205900)
+    Buffer overflow during image interactions in canvas
+  * MFSA 2015-124/CVE-2015-7190 (bmo#1208520) (Android only)
+    Android intents can be used on Firefox for Android to open privileged files
+  * MFSA 2015-125/CVE-2015-7191 (bmo#1208956) (Android only)
+    XSS attack through intents on Firefox for Android
+  * MFSA 2015-126/CVE-2015-7192 (bmo#1210023) (OS X only)
+    Crash when accessing HTML tables with accessibility tools on OS X
+  * MFSA 2015-127/CVE-2015-7193 (bmo#1210302)
+    CORS preflight is bypassed when non-standard Content-Type headers
+    are received
+  * MFSA 2015-128/CVE-2015-7194 (bmo#1211262)
+    Memory corruption in libjar through zip files
+  * MFSA 2015-129/CVE-2015-7195 (bmo#1211871)
+    Certain escaped characters in host of Location-header are being</comment>
+    <requestid>342684</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>92dc3b021f8e6a52a6ec8620d858836d</srcmd5>
+    <version>2.40</version>
+    <time>1454352948</time>
+    <user>dimstar_suse</user>
+    <comment>- update to Seamonkey 2.40 (bnc#959277)
+  * requires NSS 3.20.2 to fix
+    MFSA 2015-150/CVE-2015-7575 (bmo#1158489)
+    MD5 signatures accepted within TLS 1.2 ServerKeyExchange in
+    server signature
+  * MFSA 2015-134/CVE-2015-7201/CVE-2015-7202
+    Miscellaneous memory safety hazards
+  * MFSA 2015-135/CVE-2015-7204 (bmo#1216130)
+    Crash with JavaScript variable assignment with unboxed objects
+  * MFSA 2015-136/CVE-2015-7207 (bmo#1185256)
+    Same-origin policy violation using perfomance.getEntries and
+    history navigation
+  * MFSA 2015-137/CVE-2015-7208 (bmo#1191423)
+    Firefox allows for control characters to be set in cookies
+  * MFSA 2015-138/CVE-2015-7210 (bmo#1218326)
+    Use-after-free in WebRTC when datachannel is used after being
+    destroyed
+  * MFSA 2015-139/CVE-2015-7212 (bmo#1222809)
+    Integer overflow allocating extremely large textures
+  * MFSA 2015-140/CVE-2015-7215 (bmo#1160890)
+    Cross-origin information leak through web workers error events
+  * MFSA 2015-141/CVE-2015-7211 (bmo#1221444)
+    Hash in data URI is incorrectly parsed
+  * MFSA 2015-142/CVE-2015-7218/CVE-2015-7219 (bmo#1194818, bmo#1194820)
+    DOS due to malformed frames in HTTP/2
+  * MFSA 2015-143/CVE-2015-7216/CVE-2015-7217 (bmo#1197059, bmo#1203078)
+    Linux file chooser crashes on malformed images due to flaws in
+    Jasper library
+  * MFSA 2015-144/CVE-2015-7203/CVE-2015-7220/CVE-2015-7221
+    (bmo#1201183, bmo#1178033, bmo#1199400)</comment>
+    <requestid>356143</requestid>
+  </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>79a84312091e9fbe73e071eb96d64cdd</srcmd5>
+    <version>2.40</version>
+    <time>1469081889</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412266</requestid>
+  </revision>
+  <revision rev="122" vrev="3">
+    <srcmd5>92790ea8a0e88890dc244d4f2edb5ead</srcmd5>
+    <version>2.40</version>
+    <time>1470217420</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415774</requestid>
+  </revision>
+  <revision rev="123" vrev="4">
+    <srcmd5>6589c21348822c3f4910bf2a5a8d9449</srcmd5>
+    <version>2.40</version>
+    <time>1470773737</time>
+    <user>dimstar_suse</user>
+    <comment>- build with -fno-delete-null-pointer-checks for Tumbleweed/gcc6
+  as long as underlying issues have been addressed upstream
+  (boo#991027)
+
+- Fix for possible buffer overrun (bsc#990856)
+  CVE-2016-6354 (bmo#1292534)
+  [mozilla-flex_buffer_overrun.patch]</comment>
+    <requestid>417437</requestid>
+  </revision>
+  <revision rev="124" vrev="5">
+    <srcmd5>fe35587dc5708039696b76201fc4754b</srcmd5>
+    <version>2.40</version>
+    <time>1472026130</time>
+    <user>dimstar_suse</user>
+    <comment>- Build also with fno-lifetime-dse and fno-schedule-insns2 for GCC6
+  (still boo#991027)
+- Check compiler version instead of openSUSE version for this</comment>
+    <requestid>421048</requestid>
+  </revision>
+  <revision rev="125" vrev="6">
+    <srcmd5>00db5350c1cd0fcb08f8e574a32b55e4</srcmd5>
+    <version>2.40</version>
+    <time>1476875617</time>
+    <user>dimstar_suse</user>
+    <comment>- mozilla-binutils-visibility.patch to fix build issues with
+  gcc/binutils combination used in Leap 42.2 (boo#984637)</comment>
+    <requestid>435717</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>b0742b5ffc888b25d6507950fc715eb2</srcmd5>
+    <version>2.46</version>
+    <time>1484041814</time>
+    <user>dimstar_suse</user>
+    <comment>- update to Seamonkey 2.46
+  * based on Gecko 49.0.2
+  * Chatzilla and DOM Inspector were removed/disabled and therefore
+    those subpackages are not available at this moment
+- requires NSPR 4.12 and NSS 3.25
+- removed obsolete patches
+  * mozilla-libproxy.patch
+  * mozilla-gcc6.patch
+  * mozilla-openaes-decl.patch
+- rebased patches
+- added patches imported from Firefox 49:
+  * mozilla-check_return.patch
+  * mozilla-flex_buffer_overrun.patch
+  * mozilla-skia-overflow.patch</comment>
+    <requestid>449156</requestid>
+  </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>dd5449d3546afb0719ac18ba37d14ed1</srcmd5>
+    <version>2.46</version>
+    <time>1485512161</time>
+    <user>dimstar_suse</user>
+    <comment>- improve recognition of LANGUAGE env variable (boo#1017174)
+- update minimum keybits in H2 so it allows a smaller value
+  (e.g. for curve25519 as supported with NSS 3.28) (bmo#1290037)
+  (boo#1021636) (mozilla-http2-ecdh-keybits.patch)</comment>
+    <requestid>452437</requestid>
+  </revision>
+  <revision rev="128" vrev="3">
+    <srcmd5>22803b724989cfc078a160aa27484458</srcmd5>
+    <version>2.46</version>
+    <time>1487149587</time>
+    <user>dimstar_suse</user>
+    <comment>- fix configure with for sed &gt;= 4.3 (boo#1020631) (mozilla-sed43.patch)</comment>
+    <requestid>456542</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>145024d3ad33aeb4198465c12eb71591</srcmd5>
+    <version>2.48</version>
+    <time>1503593322</time>
+    <user>dimstar_suse</user>
+    <comment>- update to Seamonkey 2.48
+  * based on Gecko 51.0.3
+  * requires NSPR 4.13.1 and NSS 3.28.5 (aligned with 52ESR)
+- removed obsolete (upstreamed) patches
+  * mozilla-http2-ecdh-keybits.patch
+  * mozilla-sed43.patch
+  * mozilla-flex_buffer_overrun.patch
+  * mozilla-shared-nss-db.patch (feature dropped from SM due to
+    maintenance costs vs. usefulness)
+- rebased patches</comment>
+    <requestid>515285</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>3edb8ca38cfbcfc5d04c28d7e38a8329</srcmd5>
+    <version>2.49.1</version>
+    <time>1515876378</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly buildrequires python2-xml: The build system relies on
+  it. We wrongly relied on other packages pulling it in for us.
+- use parallel compression in create-tar if available
+- use XZ instead of BZ2 for source archives
+- import upstream patch mozilla-bmo1338655.patch to fix failing
+  build
+
+- Escape the usage of %{VERSION} when calling out to rpm.
+  RPM 4.14 has %{VERSION} defined as 'the main packages version'.
+
+- Drop obsolete libgnomeui-devel BuildRequires: No longer needed.
+- Following the above, add explicit pkgconfig(gconf-2.0),
+  pkgconfig(gobject-2.0)pkgconfig(gdk-x11-2.0), pkgconfig(gtk+-2.0)
+  and pkgconfig(gtk+-unix-print-2.0) BuildRequires: previously
+  pulled in by libgnomeui-devel, and is what configure really
+  checks for.
+
+  * mozilla-binutils-visibility.patch
+  * mozilla-check_return.patch
+  * mozilla-skia-overflow.patch</comment>
+    <requestid>562873</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>487400f7f8b7ed1c85eea23dedf8901f</srcmd5>
+    <version>2.49.2</version>
+    <time>1530866739</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621071</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>f1c66f54acc22d3295f8217059c32d8e</srcmd5>
+    <version>2.49.4</version>
+    <time>1532161542</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>624275</requestid>
+  </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>806e391ca95ce6e86f5cc629d63fadfa</srcmd5>
+    <version>2.49.4</version>
+    <time>1550574093</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677125</requestid>
+  </revision>
+</revisionlist>

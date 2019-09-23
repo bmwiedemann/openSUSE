@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Mon Sep 14 08:44:22 UTC 2015 - coolo@suse.com
+
+- updated to 0.32
+   see /usr/share/doc/packages/perl-MooseX-App-Cmd/Changes
+
+  0.32      2015-09-12 01:10:11Z
+      - fix incompatibility with App::Cmd 0.328 by calling its
+        constructor (via MooseX::NonMoose) (RT#107025)
+
+-------------------------------------------------------------------
+Sun Jun  7 08:45:34 UTC 2015 - coolo@suse.com
+
+- updated to 0.31
+   see /usr/share/doc/packages/perl-MooseX-App-Cmd/Changes
+
+  0.31      2015-05-23 03:40:01Z
+      - fix test failures on MSWin32 (see RT#96863)
+
+-------------------------------------------------------------------
+Sat Feb  7 16:23:04 UTC 2015 - coolo@suse.com
+
+- updated to 0.30
+     - MouseX::App::Cmd has been split off into its own distribution;
+       now this dist uses Moose unconditionally, rather than Any::Moose
+     - Be more intelligent about determining Moose or Mouse requirements at
+       build time.
+- obsolete 61f086b1fe03fab5a96a999f7b21768504d7089c.patch
+
+-------------------------------------------------------------------
+Mon Sep 15 14:38:31 UTC 2014 - coolo@suse.com
+
+- add https://github.com/mjgardner/moosex-app-cmd/commit/61f086b1fe03fab5a96a999f7b21768504d7089c.patch
+  as 61f086b1fe03fab5a96a999f7b21768504d7089c.patch to fix build
+
+-------------------------------------------------------------------
+Mon Mar 10 06:15:08 UTC 2014 - coolo@suse.com
+
+- updated to 0.27
+     - update developer and Dist::Zilla author dependencies
+     - better reporting of skipped Moose/Mouse tests
+     - add release test to check changelog for new content
+     - test for Mo(o|u)seX::Getopt before running Mo(o|u)se-specific tests
+     - add requirements, recommendations and provides to meta files
+     - fixes to Moose/Mouse tests
+     - forgot to update changelog last time, no code changes
+     - do a better job of not requiring Moose for build/install
+     - use Any::Moose for Moose and Mouse compatibility in the same package
+
+-------------------------------------------------------------------
+Mon Nov 25 07:38:32 UTC 2013 - coolo@suse.com
+
+- updated to 0.11
+    - gh#6: document --configfile option added in 0.03 (reported by abraxxa)
+    - gh#8: fix missing commands in test files (ubermichael)
+
+-------------------------------------------------------------------
+Sat Jul 27 11:58:35 UTC 2013 - coolo@suse.com
+
+- updated to 0.10
+     - RT#84437: fix missing parameter in call to default function
+       (chips, ouftete)
+     - gh#3: fix failing test introduced by MooseX::ConfigFromFile 0.08
+       (ouftete)
+     - point perlcritic author test to the correct perltidy config
+     - add author dependencies to Dist::Zilla dist.ini file
+     - RT#74668: can use a sub {} for configfile default (yanick)
+     - RT#75446: add all necessary metadata as part of conversion
+       to Dist::Zilla (mjgardner)
+     - RT#75447: require correct version of Getopt::Long::Descriptive so
+       basic and configfile tests can pass (mjgardner)
+     - lots of code and documentation cleanup, driven by
+       release tests (mjgardner)
+     - no code changes, just repackaging distribution archive with
+       correct root (mjgardner)
+     - fix tests that started failing due to dependency error
+       string change (offerk)
+
+-------------------------------------------------------------------
+Tue Mar  6 08:01:24 UTC 2012 - coolo@suse.com
+
+- update to 0.07
+  - fix tests that started failing due to dependency error string change (offerk)
+
+-------------------------------------------------------------------
+Thu Dec 30 00:39:21 CET 2010 - pascal.bleser@opensuse.org
+
+- initial version (0.06)
+

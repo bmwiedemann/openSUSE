@@ -1,0 +1,12 @@
+--- wumpus.c.orig	2015-04-04 12:31:47.000000000 +0200
++++ wumpus.c	2015-06-08 18:43:34.738979482 +0200
+@@ -30,6 +30,9 @@
+ #include <stdio.h>
+ #include <ctype.h>
+ #include <stdlib.h>
++#include <string.h>
++#include <unistd.h>
++#include <sys/socket.h>
+ 
+ /* 5 REM *** HUNT THE WUMPUS ***					*/
+ 

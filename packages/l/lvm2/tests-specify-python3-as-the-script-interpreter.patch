@@ -1,0 +1,27 @@
+From 3f768d29ceb5427b6e8de4fe35e2c1001409d750 Mon Sep 17 00:00:00 2001
+From: Gang He <ghe@suse.com>
+Date: Wed, 20 Jun 2018 14:04:52 +0800
+Subject: [PATCH] tests: specify python3 as the script interpreter
+
+specify /usr/bin/python3 as the script interpreter in
+python_lvm_unit.py.in file, otherwise, there will be a building
+error in OBS.
+
+Signed-off-by: Gang He <ghe@suse.com>
+---
+ test/api/python_lvm_unit.py.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/api/python_lvm_unit.py.in b/test/api/python_lvm_unit.py.in
+index 78ced7e31..c6a7c9905 100755
+--- a/test/api/python_lvm_unit.py.in
++++ b/test/api/python_lvm_unit.py.in
+@@ -1,4 +1,4 @@
+-#!@PYTHON@
++#!/usr/bin/python3
+ 
+ # Copyright (C) 2012-2013 Red Hat, Inc. All rights reserved.
+ #
+-- 
+2.12.3
+

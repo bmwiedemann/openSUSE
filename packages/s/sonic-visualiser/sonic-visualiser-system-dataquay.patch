@@ -1,0 +1,44 @@
+diff -ru sonic-visualiser-3.2.1.orig/base.pri sonic-visualiser-3.2.1/base.pri
+--- sonic-visualiser-3.2.1.orig/base.pri	2019-01-08 23:32:16.000000000 +1000
++++ sonic-visualiser-3.2.1/base.pri	2019-01-29 16:54:56.629040014 +1000
+@@ -10,8 +10,6 @@
+ 	piper-vamp-cpp \
+ 	checker \
+ 	checker/checker \
+-	dataquay \
+-	dataquay/dataquay \
+ 	svcore \
+ 	svcore/data \
+ 	svcore/plugin/api/alsa \
+@@ -37,5 +35,7 @@
+ linux*:   DEFINES += USE_PTHREADS
+ macx*:    DEFINES += USE_PTHREADS
+ 
+-CONFIG += qt thread warn_on stl rtti exceptions
++CONFIG += qt thread warn_on stl rtti exceptions link_pkgconfig
++PKGCONFIG += dataquay
++
+ 
+diff -ru sonic-visualiser-3.2.1.orig/base.pro sonic-visualiser-3.2.1/base.pro
+--- sonic-visualiser-3.2.1.orig/base.pro	2019-01-08 23:32:16.000000000 +1000
++++ sonic-visualiser-3.2.1/base.pro	2019-01-29 16:55:41.372963481 +1000
+@@ -29,9 +29,6 @@
+ include(svcore/files.pri)
+ include(capnp-regen.pri)
+ 
+-DATAQUAY_SOURCES=$$fromfile(dataquay/lib.pro, SOURCES)
+-DATAQUAY_HEADERS=$$fromfile(dataquay/lib.pro, HEADERS)
+-
+ CHECKER_SOURCES=$$fromfile(checker/checker.pri, SOURCES)
+ CHECKER_HEADERS=$$fromfile(checker/checker.pri, HEADERS)
+                  
+@@ -43,9 +40,6 @@
+ for (file, VAMP_SOURCES)     { SOURCES += $$file }
+ for (file, VAMP_HEADERS)     { HEADERS += $$file }
+ 
+-for (file, DATAQUAY_SOURCES) { SOURCES += $$sprintf("dataquay/%1", $$file) }
+-for (file, DATAQUAY_HEADERS) { HEADERS += $$sprintf("dataquay/%1", $$file) }
+-
+ for (file, CHECKER_SOURCES)  { SOURCES += $$sprintf("checker/%1",  $$file) }
+ for (file, CHECKER_HEADERS)  { HEADERS += $$sprintf("checker/%1",  $$file) }
+ 

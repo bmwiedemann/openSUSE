@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Sun Aug 11 01:46:53 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Merge everything into one spec file to simplify maintenance.
+
+-------------------------------------------------------------------
+Fri May 17 18:09:29 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Move executable to python package to avoid conflicts with old
+  naming scheme.  It should be moved back with the next release.
+
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Rename to to match python package naming guidelines.
+- Split jupyter components into own subpackage.
+- Rename doc package to match jupyter package name.
+
+-------------------------------------------------------------------
+Tue Feb 13 19:47:23 UTC 2018 - toddrme2178@gmail.com
+
+- Update url
+
+-------------------------------------------------------------------
+Tue Sep 19 20:52:35 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 4.4.0
+  * Explicitly state that metadata fields can be ignored.
+  * Introduce official jupyter namespace inside metadata (``metadata.jupyter``).
+  * Introduce ``source_hidden`` and ``outputs_hidden`` as official front-end
+    metadata fields to indicate hiding source and outputs areas. **NB**: These
+    fields should not be used to hide elements in exported formats.
+  * Fix ending the redundant storage of signatures in the signature database. 
+  * :func:`nbformat.validate` can be set to not raise a ValidationError if
+    additional properties are included. 
+  * Fix for errors with connecting and backing up the signature database.
+  * Dict-like objects added to NotebookNode attributes are now transformed to be
+    NotebookNode objects; transformation also works for `.update()`.
+
+-------------------------------------------------------------------
+Wed Apr 26 19:44:12 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Fri Apr  7 19:13:59 UTC 2017 - toddrme2178@gmail.com
+
+- Clean up update-alternatives usage.
+
+-------------------------------------------------------------------
+Thu Mar 30 19:45:04 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 4.3.0
+  * A new pluggable ``SignatureStore`` class allows specifying different ways to
+    record the signatures of trusted notebooks. The default is still an SQLite
+    database. See :ref:`pluggable_signature_store` for more information.
+  * :func:`nbformat.read` and :func:`nbformat.write` accept file paths as bytes
+    as well as unicode.
+  * Fix for calling :func:`nbformat.validate` on an empty dictionary.
+  * Fix for running the tests where the locale makes ASCII the default encoding.
+- Update to 4.2.0
+  * Update nbformat spec version to 4.2, allowing JSON outputs to have any JSONable type,  not just ``object``,
+    and mime-types of the form ``application/anything+json``.
+  * Define basics of ``authors`` in notebook metadata.
+    ``nb.metadata.authors`` shall be a list of objects with the property ``name``, a string of each author's full name.
+  * Update use of traitlets API to require traitlets 4.1.
+  * Support trusting notebooks on stdin with ``cat notebook | jupyter trust``
+- Update to 4.1.0
+  * Update nbformat spec version to 4.1, adding support for attachments on markdown and raw cells.
+  * Catch errors opening trust database, falling back on ``:memory:`` if the database cannot be opened.
+- Create doc subpackage
+
+-------------------------------------------------------------------
+Mon Oct 12 13:43:06 UTC 2015 - toddrme2178@gmail.com
+
+- update to version 4.0.1:
+  * setuptools entrypoint
+  * Add label to format docs for cross referencing
+  * ensure `--version` output has actual version
+  
+-------------------------------------------------------------------
+Mon Oct  5 10:01:17 UTC 2015 - toddrme2178@gmail.com
+
+- Build documentation
+
+-------------------------------------------------------------------
+Thu Aug 13 12:11:46 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+

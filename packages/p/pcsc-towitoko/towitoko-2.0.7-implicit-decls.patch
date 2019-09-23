@@ -1,0 +1,13 @@
+Index: src/driver/tlv_object.c
+===================================================================
+--- src/driver/tlv_object.c.orig	2002-02-15 21:59:29.000000000 +0100
++++ src/driver/tlv_object.c	2009-11-24 22:32:16.152561000 +0100
+@@ -21,7 +21,7 @@
+ */
+ 
+ #include <stdio.h>
+-
++#include <string.h>
+ #include <stdlib.h>
+ #include "defines.h"
+ #include "tlv_object.h"

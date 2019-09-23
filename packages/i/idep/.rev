@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7f0fad56b2e30f3972c2ef73a00941a2</srcmd5>
+    <version>0.5</version>
+    <time>1168903030</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="78">
+    <srcmd5>faa37b17d4fef8818d29ddd0cb539ff7</srcmd5>
+    <version>0.5</version>
+    <time>1193669239</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="107">
+    <srcmd5>bd338c3f1666817a8aaf842f5054562d</srcmd5>
+    <version>0.5</version>
+    <time>1208265861</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="139">
+    <srcmd5>bd338c3f1666817a8aaf842f5054562d</srcmd5>
+    <version>0.5</version>
+    <time>1208265861</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="140">
+    <srcmd5>f2db0e61b9bb2cc09ec2ad93270d1890</srcmd5>
+    <version>0.5</version>
+    <time>1245364084</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="141">
+    <srcmd5>28bb3bfafbbbf31304e982ac72eadf40</srcmd5>
+    <version>0.5</version>
+    <time>1251297409</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/idep based on submit request 18796 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="7" vrev="143">
+    <srcmd5>28bb3bfafbbbf31304e982ac72eadf40</srcmd5>
+    <version>0.5</version>
+    <time>1251297409</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/idep based on submit request 18796 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="8" vrev="144">
+    <srcmd5>0010c19546961fe0e69f4e8be54fafa8</srcmd5>
+    <version>0.5</version>
+    <time>1268923996</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="146">
+    <srcmd5>0010c19546961fe0e69f4e8be54fafa8</srcmd5>
+    <version>0.5</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="147">
+    <srcmd5>0010c19546961fe0e69f4e8be54fafa8</srcmd5>
+    <version>0.5</version>
+    <time>1278678583</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="150">
+    <srcmd5>0010c19546961fe0e69f4e8be54fafa8</srcmd5>
+    <version>0.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="151">
+    <srcmd5>01d6df0ef2ca2c392db42f080c452848</srcmd5>
+    <version>0.5</version>
+    <time>1318939837</time>
+    <user>saschpe</user>
+    <comment>add libtool as buildrequire to avoid a hidden require from projconfig (forwarded request 87954 from coolo)</comment>
+    <requestid>88161</requestid>
+  </revision>
+  <revision rev="13" vrev="153">
+    <srcmd5>01d6df0ef2ca2c392db42f080c452848</srcmd5>
+    <version>0.5</version>
+    <time>1319181984</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="154">
+    <srcmd5>b08fc12a74b4ec2f8fc8f4b837150733</srcmd5>
+    <version>0.5</version>
+    <time>1323191945</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="156">
+    <srcmd5>b08fc12a74b4ec2f8fc8f4b837150733</srcmd5>
+    <version>0.5</version>
+    <time>1340183456</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="158">
+    <srcmd5>b08fc12a74b4ec2f8fc8f4b837150733</srcmd5>
+    <version>0.5</version>
+    <time>1359109073</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="160">
+    <srcmd5>b08fc12a74b4ec2f8fc8f4b837150733</srcmd5>
+    <version>0.5</version>
+    <time>1379662658</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="162">
+    <srcmd5>b08fc12a74b4ec2f8fc8f4b837150733</srcmd5>
+    <version>0.5</version>
+    <time>1409301214</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="163">
+    <srcmd5>1fc825851006d1aa1a02dce0545ab054</srcmd5>
+    <version>0.5</version>
+    <time>1430903966</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305464</requestid>
+  </revision>
+</revisionlist>

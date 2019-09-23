@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Sat Apr 13 19:43:51 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20180724
+        * Changes to represent EAGAIN in error messages
+        * Changes to represent EDEADLK in error messages 
+        * Code clean up
+
+-------------------------------------------------------------------
+Wed Feb 15 19:24:43 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to v0~2017
+	* added value free callback function to queue free
+	* applied updates
+	* code clean up
+	* corrections in include header
+	* fixed values array not being freed after join of thread pool
+	* fixes for race in of thread pool helper threads
+	* moved libcstring macros to common
+	* updated common
+	* update man page: libcthreads.3
+	* worked on queue sorted push
+	* worked on tests
+	* worked on thread pool sorted push
+	* worked on TP_POOL support
+
+-------------------------------------------------------------------
+Mon Jan  5 22:53:19 UTC 2015 - Greg.Freemyer@gmail.com
+
+- update to v0~20150101
+	* 2015 update - minimal changes
+- update URL to the new github site
+- replace Source: field with fully defined URL
+- remove DL-URL comment
+- start using libcstring from OBS, not internal version
+
+-------------------------------------------------------------------
+Thu Aug 14 12:45:42 UTC 2014 - Greg.Freemyer@gmail.com
+
+- updated to v0~20140105
+	* updated dependencies
+	* 2014 update
+	* updated man pages
+	* Bug fixes for RW lock XP version, with thanks to Phillip Hellewell
+
+-------------------------------------------------------------------
+Thu Oct  3 02:39:48 UTC 2013 - Greg.Freemyer@gmail.com
+
+- initial package (v0~20130723)
+

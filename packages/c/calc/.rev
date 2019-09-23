@@ -1,0 +1,162 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>950e563f739e3bf84d85b6ceeb41ea7f</srcmd5>
+    <version>2.12.4.3</version>
+    <time>1346913853</time>
+    <user>coolo</user>
+    <comment>New package - calc is command line tool for doing arithmetic.  It has been around for years and is fairly stable.</comment>
+    <requestid>132579</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ded74f587848649cd3605612d314949c</srcmd5>
+    <version>2.12.4.3</version>
+    <time>1356702959</time>
+    <user>namtrac</user>
+    <comment>- build with -DHAVE_NO_FPOS. Don't use fgetpos() and fsetpos() but 
+  use fseek() and ftell() instead. The code that generates 
+  fposval.h is completely broken. It tries to detect the size of 
+  fpos_t but fails on ppc. (forwarded request 146469 from k0da)</comment>
+    <requestid>146495</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ded74f587848649cd3605612d314949c</srcmd5>
+    <version>2.12.4.3</version>
+    <time>1359108729</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3320e288e48b8b637e665f5d80174c75</srcmd5>
+    <version>2.12.4.8</version>
+    <time>1369640566</time>
+    <user>coolo</user>
+    <comment>Update to 2.12.4.8 (forwarded request 176458 from gregfreemyer)</comment>
+    <requestid>176459</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3320e288e48b8b637e665f5d80174c75</srcmd5>
+    <version>2.12.4.8</version>
+    <time>1379662082</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>239c1a73424549f51f1a30db4f92c5ad</srcmd5>
+    <version>2.12.4.13</version>
+    <time>1380738569</time>
+    <user>scarabeus_factory</user>
+    <comment>update to v2.12.4.13.  Cleanup specfile.  No major bug fixes / enhancements.</comment>
+    <requestid>201903</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>239c1a73424549f51f1a30db4f92c5ad</srcmd5>
+    <version>2.12.4.13</version>
+    <time>1409300611</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>adc54043c86126684e0693949c9e5a76</srcmd5>
+    <version>2.12.5.0</version>
+    <time>1419809414</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266409</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>44d20899b8f7c5bbc49b4f9a02e2535a</srcmd5>
+    <version>2.12.5.0</version>
+    <time>1438615329</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320049</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a8500f7beebdc93d6ca5600ef8ff5c41</srcmd5>
+    <version>2.12.5.3</version>
+    <time>1455701185</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.15.5 - cleanup spec file - get rid or rpmlint complaints</comment>
+    <requestid>359546</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>671ce882decacd93cfac0e9ec7134df8</srcmd5>
+    <version>2.12.5.4</version>
+    <time>1463652913</time>
+    <user>dimstar_suse</user>
+    <comment>Trivial update to keep tarball 100% in sync with upstream.</comment>
+    <requestid>396527</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>de28980fc9dda7ffb942661f906d825a</srcmd5>
+    <version>2.12.6.1</version>
+    <time>1501572304</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512977</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>3ee3b44eed9e18b26588b64a33c72352</srcmd5>
+    <version>2.12.6.1</version>
+    <time>1502366705</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514226</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>78d49e53ad59fb5cd642e4537741223b</srcmd5>
+    <version>2.12.6.4</version>
+    <time>1516444047</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.12.6.4
+   + Fixed a man page warning about ./myfile
+   + Improved gen_v1(h,n) in lucas.cal for cases where h is not a multiple of 3. 
+   + Optimized the search for v(1) when h is a multiple of 3.
+- update to 2.12.6.3
+   + Improved gen_v1(h,n) in lucas.cal to use an even faster search method
+   + Improved checking in lucas.cal
+   + Fixed an C code indenting issue in zfunc.c
+</comment>
+    <requestid>567517</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fa664e30d45c30c38bf89dea93a4d6f3</srcmd5>
+    <version>2.12.6.7</version>
+    <time>1523447802</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594242</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ab8c458987cc11f3d912054a4dfb7b32</srcmd5>
+    <version>2.12.6.8</version>
+    <time>1539251718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640828</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1161d6eae8430ed3773f57ee2c91197a</srcmd5>
+    <version>2.12.6.9</version>
+    <time>1539869964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642800</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d6abf47fa82918a528505ed9fd1f85c0</srcmd5>
+    <version>2.12.7.0</version>
+    <time>1541511532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646389</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>aa9ff884962eb5243de2361d7104bb6a</srcmd5>
+    <version>2.12.7.2</version>
+    <time>1543591938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652603</requestid>
+  </revision>
+</revisionlist>

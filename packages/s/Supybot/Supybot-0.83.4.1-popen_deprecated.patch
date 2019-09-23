@@ -1,0 +1,48 @@
+# see https://bugzilla.novell.com/show_bug.cgi?id=567384 for 
+# details
+Index: scripts/supybot-botchk
+===================================================================
+--- scripts/supybot-botchk.orig
++++ scripts/supybot-botchk
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ 
+ ###
+ # Copyright (c) 2005, Jeremiah Fincher
+@@ -59,7 +59,7 @@ if __name__ == '__main__':
+     # import supybot.conf as conf
+     import os
+     import sys
+-    import popen2
++    import subprocess
+     import optparse
+ 
+     parser = optparse.OptionParser(usage='Usage: %prog [options]')
+@@ -120,18 +120,20 @@ if __name__ == '__main__':
+             sys.exit(-1)
+         debug('Bot not found, starting.')
+         home = os.environ['HOME']
+-        inst = popen2.Popen4('sh')
++	inst = subprocess.Popen("sh", shell=True, 
++          stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, close_fds=True)
++
+         for filename in ('.login', '.bash_profile', '.profile', '.bashrc'):
+             filename = os.path.join(home, filename)
+             if os.path.exists(filename):
+                 debug('Found %s, sourcing.' % filename)
+-                inst.tochild.write('source %s' % filename + os.linesep)
++                inst.stdin.write('source %s' % filename + os.linesep)
+         cmdline = "%s --daemon %s" % (options.supybot, options.conffile)
+         debug('Sending cmdline to sh process.')
+-        inst.tochild.write(cmdline + os.linesep)
+-        inst.tochild.close()
+-        debug('Received from sh process: %r' % inst.fromchild.read())
+-        ret = inst.wait()
++        inst.stdin.write(cmdline + os.linesep)
++        inst.stdin.close()
++        debug('Received from sh process: %r' % inst.stdout.read())
++        ret = inst.stdout.wait()
+         debug('Bot started, command line %r returned %s.' % (cmdline, ret))
+         sys.exit(ret)
+     else:

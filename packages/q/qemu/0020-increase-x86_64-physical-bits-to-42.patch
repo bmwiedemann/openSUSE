@@ -1,0 +1,32 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Fri, 17 May 2013 16:49:58 -0600
+Subject: increase x86_64 physical bits to 42
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Allow for guests with higher amounts of ram. The current thought
+is that 2TB specified on qemu commandline would be an appropriate
+limit. Note that this requires the next higher bit value since
+the highest address is actually more than 2TB due to the pci
+memory hole.
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+Signed-off-by: Andreas Färber <afaerber@suse.de>
+---
+ target/i386/cpu.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index 83fb522554..572290c3d6 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -1708,7 +1708,7 @@ uint64_t cpu_get_tsc(CPUX86State *env);
+ /* XXX: This value should match the one returned by CPUID
+  * and in exec.c */
+ # if defined(TARGET_X86_64)
+-# define TCG_PHYS_ADDR_BITS 40
++# define TCG_PHYS_ADDR_BITS 42
+ # else
+ # define TCG_PHYS_ADDR_BITS 36
+ # endif

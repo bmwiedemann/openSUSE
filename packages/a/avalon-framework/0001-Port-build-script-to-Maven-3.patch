@@ -1,0 +1,178 @@
+From fe5bf9cd9a3395574ad5d96596dcbcd235b53040 Mon Sep 17 00:00:00 2001
+From: Mikolaj Izdebski <mizdebsk@redhat.com>
+Date: Tue, 14 Jun 2016 14:21:15 +0200
+Subject: [PATCH] Port build script to Maven 3
+
+---
+ avalon-framework-api-4.3/project.xml  | 19 +++++++--
+ avalon-framework-impl-4.3/project.xml | 73 +++++++++++------------------------
+ pom.xml                               | 11 ++++++
+ 3 files changed, 50 insertions(+), 53 deletions(-)
+ create mode 100644 pom.xml
+
+diff --git a/avalon-framework-api-4.3/project.xml b/avalon-framework-api-4.3/project.xml
+index e64d251..e36b6ac 100644
+--- a/avalon-framework-api-4.3/project.xml
++++ b/avalon-framework-api-4.3/project.xml
+@@ -16,12 +16,13 @@
+  limitations under the License.
+ -->
+ <project>
+-    <extend>${basedir}/../project-common.xml</extend>
++    <modelVersion>4.0.0</modelVersion>
+     
+     <name>Avalon Framework API</name>
++    <groupId>avalon-framework</groupId>
+     <artifactId>avalon-framework-api</artifactId>
+-    <shortDescription>Avalon Framework API</shortDescription>
+-    <package>org.apache.avalon.framework</package>
++    <description>Avalon Framework API</description>
++    <version>4.3</version>
+     
+     <dependencies>
+         <dependency>
+@@ -29,5 +30,17 @@
+             <artifactId>avalon-logkit</artifactId>
+             <version>2.1</version>
+         </dependency>
++
++        <dependency>
++            <groupId>junit</groupId>
++            <artifactId>junit</artifactId>
++            <version>3.8.1</version>
++            <scope>test</scope>
++        </dependency>
+     </dependencies>
++
++    <build>
++        <sourceDirectory>src/java</sourceDirectory>
++        <testSourceDirectory>src/test</testSourceDirectory>
++    </build>
+ </project>
+diff --git a/avalon-framework-impl-4.3/project.xml b/avalon-framework-impl-4.3/project.xml
+index d72efba..4022b4f 100644
+--- a/avalon-framework-impl-4.3/project.xml
++++ b/avalon-framework-impl-4.3/project.xml
+@@ -17,11 +17,13 @@
+ -->
+ <project>
+     
+-    <extend>${basedir}/../project-common.xml</extend>
++    <modelVersion>4.0.0</modelVersion>
+     
+     <name>Avalon Framework Implementation</name>
++    <groupId>avalon-framework</groupId>
+     <artifactId>avalon-framework-impl</artifactId>
+-    <shortDescription>Avalon Framework Implementation</shortDescription>
++    <version>4.3</version>
++    <description>Avalon Framework Implementation</description>
+     
+     <dependencies>
+         <dependency>
+@@ -31,48 +33,16 @@
+         </dependency>
+         
+         <dependency>
+-            <id>xml-apis</id>
+-            <version>2.0.2</version>
+-            <properties note="Only required if not provided by JVM.">
+-                <optional>true</optional>
+-            </properties>
+-        </dependency>
+-        <dependency>
+-            <groupId>xml-apis</groupId>
+-            <artifactId>xmlParserAPIs</artifactId>
+-            <version>2.0.2</version>
+-            <properties note="Only required if not provided by JVM.">
+-                <optional>true</optional>
+-            </properties>
+-        </dependency>
+-        <dependency>
+-            <id>xerces</id>
+-            <version>2.4.0</version>
+-            <properties note="Only required if not provided by JVM.">
+-                <optional>true</optional>
+-            </properties>
+-        </dependency>
+-        <dependency>
+-            <id>xalan</id>
+-            <version>2.6.0</version>
+-            <properties note="Only required if not provided by JVM.">
+-                <optional>true</optional>
+-            </properties>
+-        </dependency>
+-        
+-        <dependency>
+-            <id>log4j</id>
++            <groupId>log4j</groupId>
++            <artifactId>log4j</artifactId>
+             <version>1.2.11</version>
+-            <properties note="Only required if log4j features are used.">
+-                <optional>true</optional>
+-            </properties>
++            <optional>true</optional>
+         </dependency>
+-		<dependency>
+-            <id>commons-logging</id>
++        <dependency>
++            <groupId>commons-logging</groupId>
++            <artifactId>commons-logging</artifactId>
+             <version>1.0.4</version>
+-            <properties note="Only required if commons-logging features are used.">
+-                <optional>true</optional>
+-            </properties>
++            <optional>true</optional>
+         </dependency>
+         <dependency>
+             <groupId>avalon-logkit</groupId>
+@@ -80,18 +50,21 @@
+             <version>2.1</version>
+         </dependency>
+         <dependency>
+-            <id>junit</id>
++            <groupId>junit</groupId>
++            <artifactId>junit</artifactId>
+             <version>3.8.1</version>
+-            <properties note="Only required by tests.">
+-                <build>true</build>
+-            </properties>
++            <scope>test</scope>
+         </dependency>
+         <dependency> 
+-            <id>jmock</id> 
+-            <version>1.0.1</version> 
+-            <properties note="Only required by tests."> 
+-                <build>true</build> 
+-            </properties> 
++            <groupId>jmock</groupId>
++            <artifactId>jmock</artifactId>
++            <version>1.0.1</version>
++            <scope>test</scope>
+         </dependency> 
+     </dependencies>
++
++    <build>
++        <sourceDirectory>src/java</sourceDirectory>
++        <testSourceDirectory>src/test</testSourceDirectory>
++    </build>
+ </project>
+diff --git a/pom.xml b/pom.xml
+new file mode 100644
+index 0000000..a36ec55
+--- /dev/null
++++ b/pom.xml
+@@ -0,0 +1,11 @@
++<project>
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>placeholder</groupId>
++  <artifactId>aggregator</artifactId>
++  <version>1</version>
++  <packaging>pom</packaging>
++  <modules>
++    <module>avalon-framework-api-4.3/project.xml</module>
++    <module>avalon-framework-impl-4.3/project.xml</module>
++  </modules>
++</project>
+-- 
+2.5.5
+

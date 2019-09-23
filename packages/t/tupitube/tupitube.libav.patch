@@ -1,0 +1,10 @@
+--- a/configure.tests/libav/main.cpp
++++ b/configure.tests/libav/main.cpp
+@@ -41,7 +41,6 @@ extern "C" {
+ }
+ #endif
+ 
+-#include <iostream>
+ 
+ int main()
+ {

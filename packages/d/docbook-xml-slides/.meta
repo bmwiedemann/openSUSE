@@ -1,0 +1,5 @@
+<package name="docbook-xml-slides" project="openSUSE:Factory">
+  <title>DocBook XML Slides</title>
+  <description>A framework for writing slides using the DocBook DTD.</description>
+  <devel project="Publishing" package="docbook-xml-slides"/>
+</package>

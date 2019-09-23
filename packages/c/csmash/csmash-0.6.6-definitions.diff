@@ -1,0 +1,28 @@
+Index: MultiPlay.cpp
+===================================================================
+--- MultiPlay.cpp.orig
++++ MultiPlay.cpp
+@@ -43,7 +43,9 @@ typedef int socklen_t;		/* mimic Penguin
+ 
+ #else	/* ! WIN32 */
+ 
++#ifndef closesocket        /* see included ttincl.h */
+ #define closesocket(FD) close(FD)
++#endif
+ 
+ #endif
+ 
+Index: Network.cpp
+===================================================================
+--- Network.cpp.orig
++++ Network.cpp
+@@ -42,7 +42,9 @@ typedef int socklen_t;		/* mimic Penguin
+ 
+ #else	/* ! WIN32 */
+ 
++#ifndef closesocket        /* see included ttincl.h */
+ #define closesocket(FD) close(FD)
++#endif
+ 
+ #endif
+ 

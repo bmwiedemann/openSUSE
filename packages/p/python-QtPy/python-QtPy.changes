@@ -1,0 +1,209 @@
+-------------------------------------------------------------------
+Mon Jul 29 07:57:44 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.9.0
+  * Add the FORCE_QT_API environment variable to keep using the Qt
+    bindings selected with the QT_API variable and avoid switching
+    to the currently imported bindings. This allows to have
+    applications that import PySide and PyQt bindings at the same
+    time (which is possible if both bindings are compiled for the
+    same Qt version).
+  * Errors in the Qt3D modules with PySide2 5.12.4+ and Python 2
+  * Binding Selection Logic
+  * PR: Don't load Qt3D modules for buggy versions of PySide2
+  * PR: Add FORCE_QT_API environment variable
+
+-------------------------------------------------------------------
+Mon Jul 22 16:56:02 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.8.0
+  * Add support for several Qt 3D modules.
+
+-------------------------------------------------------------------
+Thu May 23 10:34:57 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.7.1
+  * Skip testing PyQt4 and PySide in Python 3.5
+  * Trivial maintenance tweaks
+  * Avoid deprecated "from collections import MutableMapping"
+
+-------------------------------------------------------------------
+Tue Mar 19 14:33:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.7.0:
+  * Add support for QtCharts.
+
+-------------------------------------------------------------------
+Wed Mar  6 10:25:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.6.0:
+  * Add support for QtQuickWidgets
+  * Issue 178 - Error when import QtCore.version in PySide2
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:28 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Nov  8 17:02:01 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to Version 1.5.2
+  * Fix tests
+  * Add support for PySide2.QtOpenGL 
+- Update to Version 1.5.1
+  * Make PythonQtError inherit from RuntimeError to be easily
+    catchable
+- Update to Version 1.5
+  + New features 
+    * Add support for QtLocation, QtMultimediaWidgets, QtQml,
+      QtQuick, QtWebChannel, QtWebSockets and QtXmlPatterns.
+    * Raise an error when trying to use the wrong combination of
+      macOS and Qt versions. 
+  + Issues Closed 
+    * Issue 155 - Add warnings for Qt 5.9 in macOS 10.9 and
+      Qt 5.11 and macOS 10.11 (PR 168)
+    * Issue 153 - Shim PyQt5 ToPyDateTime for compatibility with
+      PySide2 (PR 169)
+    * Issue 123 - Wrap QWebChannel module (PR 157) 
+  + Pull Requests Merged 
+    * PR 169 - Shim PyQt5 QDateTime.toPyDateTime to
+      QDateTime.toPython for compatibility with PySide2 (153)
+    * PR 168 - Raise error when trying to use the wrong
+      combination of macOS and Qt versions (155)
+    * PR 167 - Migrate to CircleCI 2.0
+    * PR 163 - Add QtLocation
+    * PR 162 - Update readme to remove funding appeal, harmonize
+      with other readmes and minor fixes
+    * PR 161 - Fix pyside2 wheels install
+    * PR 157 - Add more Qt modules (123) 
+
+-------------------------------------------------------------------
+Thu May 31 15:38:45 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 1.4.2
+  + Issues Closed
+    * Issue 150 - PySide2-5.11 alpha2 compatibility (PR 151)
+    * Issue 144 - ValueError: API 'QString' has already been set to version 1 at line 141 in init.py file. (PR 152)
+  + Pull Requests Merged
+    * PR 152 - PR: Catch ValueError when trying to set sip API (144)
+    * PR 151 - PR: Add a preventive change for PySide-5.11a2 (150)
+    * PR 149 - PR: Use Qt official wheels to run tests for PySide2
+    * PR 148 - PR: Remove internal conda recipe
+
+-------------------------------------------------------------------
+Sat Apr 28 19:47:37 UTC 2018 - toddrme2178@gmail.com
+
+- Update to Version 1.4.1
+  + New features
+    * Show a warning when QT_API is changed automatically by qtpy.
+  + Issues Closed
+    * Raise a warning if QT_API value is changed automatically
+    * On OSX qtpy applications are forcing discrete graphics
+  + Pull Requests Merged
+    * Add better compatibility with PySide2
+    * Add a warning if API is changed automatically
+    * Avoid using PyQt5.Qt, which imports unneeded stuff and forces
+      discrete GPU on OSX
+- Update to Version 1.4 (2018-03-11)
+  + New features
+    * Add support for QtHelp
+    * Add support for QtSql
+    * Use already imported bindings
+  + Issues Closed
+    * If one binding has already been imported,
+      then qtpy should just use it
+    * Add Wrapper for QtSql
+    * Methods missing from QStandardPaths when QT_API=pyqt4
+    * Add Wrapper for QtHelp
+  + Pull Requests Merged
+    * Pin PyQt5 to 5.9.2 in CircleCI because 5.10 is generating segfaults
+    * If a Qt binding is already imported, then use it.
+    * Add QtSql wrapper (incl. test)
+    * Changes to QDesktop split 
+    * Add QtHelp Wrapper
+
+-------------------------------------------------------------------
+Mon Aug 28 16:05:01 UTC 2017 - toddrme2178@gmail.com
+
+- Update to Version 1.3.1
+  + Bugs fixed
+    * Spurious cache files in PyPI tarball
+    * Importing qtpy should not raise exceptions
+    * No cache files included in the release tarball
+    * Remove Quantified Code badge because the service doesn't exist anymore
+    * Warn if QHeaderView deprecated methods are used
+- Update to Version 1.3
+  + New features
+    * Add support for PySide2
+    * Add support for QtMultimedia
+    * Add support for PyQt 4.6
+  + Bugs fixed
+    * Typo in readme title
+    * Update Readme for 1.3 release
+    * Add tests for untested modules
+    * Missing: QtOpenGL Module
+    * QDesktopServices split into QDesktopServices and QStandardPaths
+    * qInstallMessageHandler <-> qInstallMsgHandler
+    * Feature Request: PySide2 support
+    * Fix typo in Readme.
+    * Add compatibility for the rename of qInstallMsgHandler to qInstallMessageHandler
+    * Update Readme to reflect that we actually use the PySide2 layout
+    * Update Readme to mention that we now support PySide2.
+    * Add tests for Qtdesigner, QtNetwork, QtPrintSupport, QtSvg and QtTest.
+    * Follow QStandardPaths location in Qt5 for PyQt4/PySide
+    * Add a coveragerc file
+    * Add support for PyQt 4.6
+    * Add a new QtOpenGL module
+    * Add PySide2 support
+
+-------------------------------------------------------------------
+Fri Apr 28 01:58:21 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Thu Feb 16 09:13:41 UTC 2017 - joerg.lorenzen@ki.tng.de
+
+- Update to version 1.2.1
+  - Bugs fixed:
+    Pull requests
+    + PR 98 - PR: Don't use Travis to test macOS because it slows
+      down the entire spyder-ide organization
+    + PR 97 - PR: Update Appveyor badge in Readme because of moving
+      to an org account
+    + PR 94 - PR: Include test suite in sdist
+
+- Version 1.2
+  - New features:
+    + Add support for QtMultimedia
+    + Use relative imports so its vendored more easily
+  - Bugs fixed:
+    Issues
+    + Issue 83 - Include core doc files in PyPi releases
+    + Issue 78 - Request for a new bugfix release
+    + Issue 75 - Missing copyright headers
+    + Issue 67 - uic.loadUiType is missing
+    + Issue 64 - QHeaderView.setSectionResizeMode
+    + Issue 49 - QtMultimedia support
+    Pull requests
+    + PR 93 - Restore uic full namespace for PyQt5 and PyQt4
+    + PR 92 - Add missing copyright header in _patch/qheaderview.py
+    + PR 91 - Use star imports in QtSvg again instead of direct
+      ones (reverts PR #55)
+    + PR 88 - PR: Add manifest
+    + PR 74 - Move QStringListModel to QtCore
+    + PR 71 - PR: Use relative imports so its vendored more easily
+    + PR 65 - Introduce renamed methods of QHeaderView in PyQt4 and
+      PySide
+    + PR 59 - Don't install qtpy as a conda package in CircleCI
+    + PR 58 - Remove reference to how qtpy is pronounced in README
+    + PR 55 - PR: Add explicit imports to QtSvg module
+    + PR 50 - Add support for QtMultimedia
+- Removed source file LICENSE.txt, fixed upstream.
+
+-------------------------------------------------------------------
+Thu Oct 13 18:58:01 UTC 2016 - toddrme2178@gmail.com
+
+- Initial version
+

@@ -1,0 +1,10 @@
+<package name="perl-Class-Accessor" project="openSUSE:Factory">
+  <title>Automated accessor generation</title>
+  <description>This module automatically generates accessor/mutators for your class. Most of
+the time, writing accessors is an exercise in cutting and pasting. 
+
+If you make your module a subclass of Class::Accessor and declare your accessor
+fields with mk_accessors() then you'll find yourself with a set of
+automatically generated accessors which can even be customized!</description>
+  <devel project="devel:languages:perl" package="perl-Class-Accessor"/>
+</package>

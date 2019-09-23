@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>465308790c7669404c820d29a51a8d85</srcmd5>
+    <version>0.4.1</version>
+    <time>1414613388</time>
+    <user>coolo</user>
+    <comment>lit is a small testing facility used by llvm and related projects</comment>
+    <requestid>258437</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>13788379111959148997b1f3e25bb106</srcmd5>
+    <version>0.4.1</version>
+    <time>1436888710</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316463</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e56f0f096d3af61bdd5cf2945f2fd29d</srcmd5>
+    <version>0.5.1</version>
+    <time>1514569969</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>560509</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>917a5247d783e625b3dd1a9f54576dde</srcmd5>
+    <version>0.6.0</version>
+    <time>1528897104</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615227</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e46b3fcfa3c32c82bd82d4e75c65edce</srcmd5>
+    <version>0.6.0</version>
+    <time>1537882936</time>
+    <user>dimstar_suse</user>
+    <comment>- Use singlespec correctly
+- Provide lit by python3 package</comment>
+    <requestid>637428</requestid>
+  </revision>
+</revisionlist>

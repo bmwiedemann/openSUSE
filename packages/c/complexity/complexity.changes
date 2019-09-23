@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Wed Aug  8 15:23:32 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary. Reduce description hype.
+
+-------------------------------------------------------------------
+Tue Jul 31 10:57:56 UTC 2018 - mpluskal@suse.com
+
+- Add gpg signature
+- Run tests during build
+
+-------------------------------------------------------------------
+Tue Jul 31 08:54:21 UTC 2018 - schwab@suse.de
+
+- Require pkgconfig(autoopts) for building
+
+-------------------------------------------------------------------
+Fri Nov  3 19:56:58 UTC 2017 - astieger@suse.com
+
+- GNU complexity 1.10

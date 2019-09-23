@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>59659777a397e578fa2ddee6b79e3a92</srcmd5>
+    <version>2.1.2</version>
+    <time>1429606269</time>
+    <user>dimstar_suse</user>
+    <comment>New, somehow usefull package</comment>
+    <requestid>296812</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>580827797c39241a51062883c4b064bb</srcmd5>
+    <version>2.1.2</version>
+    <time>1454921273</time>
+    <user>dimstar_suse</user>
+    <comment>- Use optflags when building</comment>
+    <requestid>357794</requestid>
+  </revision>
+</revisionlist>

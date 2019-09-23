@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Thu Nov 22 05:00:06 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.4.4
+ see installed ChangeLog.rdoc
+
+  == Version 2.4.4 (2018-10-03)
+  
+  * Display a hint when endian is omitted.  Requested by Tails.
+  * Add thread safety to Integer/BitField creation.  Requested by jbpeirce.
+  * Ensure windows sockets are unseekable.  Thanks to Brent Cook.
+
+-------------------------------------------------------------------
+Tue Mar 20 10:05:11 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.4.3
+ see installed ChangeLog.rdoc
+
+  == Version 2.4.3 (2018-03-10)
+  
+  * Add Uint8Arrays.  Requested by masarakki.
+
+-------------------------------------------------------------------
+Thu Feb  8 05:54:05 UTC 2018 - coolo@suse.com
+
+- updated to version 2.4.2
+ see installed ChangeLog.rdoc
+
+  == Version 2.4.2 (2018-01-31)
+  
+  * Allow boolean values as parameters.  Requested by Patrik Wenger.
+
+-------------------------------------------------------------------
+Sun Sep  3 08:55:50 UTC 2017 - coolo@suse.com
+
+- updated to version 2.4.1
+ see installed ChangeLog.rdoc
+
+  == Version 2.4.1 (2017-08-30)
+  
+  * Fix crash with String :length invoking :rel_offset.  Reported by Claudius
+    Coenen.
+
+-------------------------------------------------------------------
+Mon Apr 10 04:30:09 UTC 2017 - coolo@suse.com
+
+- updated to version 2.4.0
+ see installed NEWS.rdoc
+
+  = 2.4.0
+  
+  This release changes the internal API for sanitizing parameters.  This only
+  affects those that implement the `#sanitize_parameters` method.
+  
+  = 2.3.x
+  
+      if params.needs_sanitizing?(:type)
+        el_type, el_params = params[:type]
+        params[:type] = params.create_sanitized_object_prototype(el_type, el_params)
+      end
+  
+  = 2.4.0
+  
+      params.sanitize_object_prototype(:type)
+
+-------------------------------------------------------------------
+Fri Jan 20 05:28:59 UTC 2017 - coolo@suse.com
+
+- updated to version 2.3.5
+ see installed NEWS.rdoc
+
+-------------------------------------------------------------------
+Tue Oct 18 04:29:24 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.4
+ see installed NEWS.rdoc
+
+-------------------------------------------------------------------
+Wed Sep  7 04:30:22 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.3
+ see installed NEWS.rdoc
+
+-------------------------------------------------------------------
+Sat Sep  3 04:30:36 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.2
+ see installed NEWS.rdoc
+
+-------------------------------------------------------------------
+Sat Jun 18 04:29:22 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.1
+ see installed NEWS.rdoc
+
+-------------------------------------------------------------------
+Wed Apr  6 06:12:52 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.0
+ see installed NEWS.rdoc
+
+  = 2.3.0
+  
+  This release adds I/O features.
+  
+  Seeking forward to an arbitrary offset is achieved with Skip's :to_abs_offset
+  parameter.
+  
+  Multi pass I/O has been added.  BinData performs I/O in a single pass.  See
+  DelayedIO to perform multi pass (backwards seeking) I/O.
+  
+  The experimental :adjust_offset feature has been removed.  If you have existing
+  code that uses this feature, you need to explicitly require 'bindata/offset' to
+  retain this functionality.
+
+-------------------------------------------------------------------
+Sun Jan 31 05:28:37 UTC 2016 - coolo@suse.com
+
+- updated to version 2.2.0
+ see installed NEWS.rdoc
+
+-------------------------------------------------------------------
+Tue Apr  7 21:15:18 UTC 2015 - astieger@suse.com
+
+- initial package of rubygem-bindata generated using gem2rpm
+

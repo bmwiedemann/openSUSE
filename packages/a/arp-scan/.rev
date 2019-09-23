@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51a06d5c15b3c502b6974b0eb7831880</srcmd5>
+    <version>1.9</version>
+    <time>1431668570</time>
+    <user>coolo</user>
+    <comment>Cool new package</comment>
+    <requestid>305836</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5025b1eda603e2db007216003fb6d4d7</srcmd5>
+    <version>1.9</version>
+    <time>1455701158</time>
+    <user>dimstar_suse</user>
+    <comment>- Update project and download url</comment>
+    <requestid>359365</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d0fed9df58f30b64682c60bdb7e65659</srcmd5>
+    <version>1.9</version>
+    <time>1463038433</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394764</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>71dfe6d28a110418c79384613cd37ce2</srcmd5>
+    <version>1.9</version>
+    <time>1527583032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610986</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ef9cb492997dec50f8e0e5e94fb5788f</srcmd5>
+    <version>1.9.5</version>
+    <time>1553611145</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.5:
+  * Updated IEEE OUI and IAB MAC/Vendor files.
+  * Added new --plain (-x) option to surpress printing of header
+    and footer text, and only display one output line for each
+    responding host.
+  * Use LWP::UserAgent instead of LWP::Simple in get-oui and
+    get-iab to enable the raw content to be obtained, which avoids
+    Unicode/UTF-8 issues.
+  * Added arp-finherprint patterns for WIZnet W5100 and Cisco IOS
+    15.0.
+- Drop no longer needed arp-scan-avoid-crash.patch</comment>
+    <requestid>681692</requestid>
+  </revision>
+</revisionlist>

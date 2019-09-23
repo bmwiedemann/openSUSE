@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c5500e92e0d366ccf460a1e654dc083a</srcmd5>
+    <version>19.04.3</version>
+    <time>1563914068</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename kdenetwork4-filesharing to kdenetwork-filesharing, it is
+  a KF5 plugin (bnc#1032585).
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- Changes since 19.04.2:
+  * Drop unused KF5DocTools, add missing KF5Completion
+</comment>
+    <requestid>715007</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c5e99bba446a895d403c995395f50847</srcmd5>
+    <version>19.08.0</version>
+    <time>1566243033</time>
+    <user>dimstar_suse</user>
+    <comment>Applications 19.08.0 (forwarded request 723532 from cgiboudeaux)</comment>
+    <requestid>723629</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f6fb7b822491086486761be500f9cac7</srcmd5>
+    <version>19.08.1</version>
+    <time>1568190473</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.08.1 (forwarded request 728705 from luca_b)</comment>
+    <requestid>728806</requestid>
+  </revision>
+</revisionlist>

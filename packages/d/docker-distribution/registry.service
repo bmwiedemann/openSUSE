@@ -1,0 +1,11 @@
+[Unit]
+Description=Docker Registry Server
+Documentation=https://github.com/docker/distribution
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/registry serve /etc/registry/config.yml
+
+[Install]
+WantedBy=multi-user.target
+

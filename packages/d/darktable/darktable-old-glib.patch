@@ -1,0 +1,30 @@
+Index: darktable-2.4.0rc2~git33.5175e5ed8/src/common/exif.cc
+===================================================================
+--- darktable-2.4.0rc2~git33.5175e5ed8.orig/src/common/exif.cc
++++ darktable-2.4.0rc2~git33.5175e5ed8/src/common/exif.cc
+@@ -175,6 +175,13 @@ static bool dt_exif_read_xmp_tag(Exiv2::
+ }
+ #define FIND_XMP_TAG(key) dt_exif_read_xmp_tag(xmpData, &pos, key)
+ 
++#if ! GLIB_CHECK_VERSION(2,40,0)
++static gboolean _str_is_ascii(const char *str)
++{
++  while(*str) if((guchar)*str++ >= 0x80) return FALSE;
++  return TRUE;
++}
++#endif
+ 
+ // FIXME: according to http://www.exiv2.org/doc/classExiv2_1_1Metadatum.html#63c2b87249ba96679c29e01218169124
+ // there is no need to pass xmpData
+@@ -1294,7 +1301,11 @@ int dt_exif_read_blob(uint8_t **buf, con
+       if(res != NULL)
+       {
+         char *desc = (char *)res->data;
++#if GLIB_CHECK_VERSION(2,40,0)
+         if(g_str_is_ascii(desc))
++#else
++        if(_str_is_ascii(desc))
++#endif
+           exifData["Exif.Image.ImageDescription"] = desc;
+         else
+           exifData["Exif.Photo.UserComment"] = desc;

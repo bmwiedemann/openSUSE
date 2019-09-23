@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4f4002aa7ff341ed009970631ab55b6d</srcmd5>
+    <version>1.3</version>
+    <time>1507279992</time>
+    <user>dimstar_suse</user>
+    <comment>Re-introduce</comment>
+    <requestid>528509</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d8fa79aa69eb834bc199a6e47f1368f9</srcmd5>
+    <version>3.0</version>
+    <time>1517424579</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0
+  - get ride of GLIBC_PRIVATE symbols</comment>
+    <requestid>569500</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ccbe3c1a571ec2a0dc8ab2a170568d8b</srcmd5>
+    <version>3.0</version>
+    <time>1519396301</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license [bsc#1082318]</comment>
+    <requestid>579342</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c867d780e5a791f48e24f886b8a1c177</srcmd5>
+    <version>3.1</version>
+    <time>1564576096</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1
+  - fix compiling with glibc 2.30</comment>
+    <requestid>719812</requestid>
+  </revision>
+</revisionlist>

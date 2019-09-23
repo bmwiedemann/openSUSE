@@ -1,0 +1,425 @@
+-------------------------------------------------------------------
+Tue Nov 13 10:45:38 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.12.11:
+  + Fix memory leak in GUPnPAVXMLDoc.
+  + Fix parsing of storageUsed.
+  + Fix name clash of internal XML utility functions.
+  + Fix multiple compiler warnings with recent GCC.
+  + Remove deprecated g_type_class_add_private.
+  + Bugs fixed: bgo#770174, bgo#778396, bgo#784511.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:33:09 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat Oct 15 13:06:38 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.12.10:
+  + Remove unneeded dependency on GSSDP-1.0.gir.
+
+-------------------------------------------------------------------
+Mon Oct 10 19:28:59 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.12.9:
+  + Drop dependency on GUPnP.
+- Drop pkgconfig(gupnp-1.0) BuildRequires following upstreams
+  changes.
+- Add explicit pkgconfig(gobject-2.0) and pkgconfig(libxml-2.0)
+  BuildRequires, previously pulled in by gupnp.
+
+-------------------------------------------------------------------
+Tue Feb  9 08:42:53 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.12.8:
+  + Remove gnome-common.
+  + Use -Wno-unused-parameter.
+  + Make DIDL-Lite check less restrictive.
+  + Distribute VAPI file.
+  + Bugs fixed: bgo#740266, bgo#751102, bgo#753382.
+
+-------------------------------------------------------------------
+Mon Jan  5 15:37:55 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.12.7:
+  + Remove use of deprecated INCLUDES.
+  + Fix GUPnPDIDLLiteObject namespace getters.
+  + Avoid warnings on missing protocol info.
+  + Require vapigen 0.22 to avoid endless loop on VAPI generation.
+  + Bugs fixed: bgo#740265, bgo#741103, bgo#741555, bgo#740365.
+
+-------------------------------------------------------------------
+Mon Jun 30 20:48:13 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.12.6:
+  + Fix some coverity issues.
+  + lazy-create XML namespaces so only used-ones are declared.
+  + Bugs fixed: bgo#705564, bgo#730590, bgo#730591, bgo#731033.
+
+-------------------------------------------------------------------
+Mon Feb  3 17:55:36 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.12.5:
+  + Fix name of cleartext-size property.
+  + Fix creation of pv namespace in DIDLLite parser.
+  + Check for empty mandatory tags in UpdateObject.
+  + Bugs fixed: bgo#705522, bgo#719377.
+
+-------------------------------------------------------------------
+Tue Nov 19 20:17:33 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.12.4:
+  + Add support for pv:subtitleFileUri and pv:subtitleFileType.
+  + Bugs fixed: bgo#695990.
+
+-------------------------------------------------------------------
+Wed Oct 16 13:49:25 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.12.3:
+  + Add support for link protection DLNA flags.
+  + Fix DLNA.ORG_PS generation.
+  + Add res@dlna:cleartextSize attribute.
+  + Only use DLNA XML namespace when it's actually used.
+  + Add res@dlna:trackTotal attribute.
+  + Bugs fixed: bgo#705564, bgo#707495, bgo#702557, bgo#706926,
+    bgo#706928.
+
+-------------------------------------------------------------------
+Fri May 31 19:08:02 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.12.2:
+  + Fix VAPI generation if GObject-introspection version is >=
+    1.36.
+  + Fix vala bindings for LastChangeParser.parse_last_change.
+  + Small improvement to resource matching.
+  + Fix DIDLLiteContainer.get_total_deleted_child_count return
+    value.
+  + Fix compiling with -Wall -Werror.
+  + Fix gtk-doc warnings.
+
+-------------------------------------------------------------------
+Tue Mar 19 10:11:11 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.12.1:
+  + Fix compiler warnings.
+  + Update .gitignore.
+
+-------------------------------------------------------------------
+Wed Feb 20 20:26:20 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.12.0:
+  + Fix implicit dependency on glib 2.32.
+  + Explicitly call AM_MAINTAINER_MODE([enable]).
+
+-------------------------------------------------------------------
+Wed Dec 26 10:50:08 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.11.6:
+  + Fix an unitialized variable.
+  + Fix a wrong use of BAD_CAST.
+  + Fix handling of updateID in the CDS LastChange parser.
+  + Fix CDS LastChange test.
+  + Bugs fixed: bgo#689701, bgo#689808.
+- Changes from version 0.11.4:
+  + Fix API definition in gupnp-cds-last-change-parser.h
+  + Set items in a media collection to "restricted" by default.
+  + Bugs fixed: bgo#689517.
+- Changes from version 0.11.3:
+  + Fix DIDL_S parsing issues in GUPnPMediaCollection.
+  + Fix reference count issues in GUPnPMediaCollection.
+  + Add more tests for GUPnPMediaCollection.
+  + Add test for LastChange parser.
+  + Fix LD_LIBRARAY_PATH handling on make check.
+  + Silence XSD validation errors on make check.
+  + Silence makefile portability warnings.
+  + Some gtk-doc fixes.
+  + Add LastChange parser for LastChange in ContentDirectory:3
+    including tests.
+  + Bugs fixed: bgo#689094, bgo#689141, bgo#689276.
+
+-------------------------------------------------------------------
+Sun Nov 25 20:01:02 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.3:
+  + Fix documentation generation for recently added functionality.
+  + Tweak XSD files to make the validation shut up completely.
+  + Fix an issue in the DIDL-Lite filtering.
+  + Add new class GUPnPMediaCollection for parsing and creation of
+    DIDL_S playlists.
+  + Bugs fixed: bgo#687462.
+
+-------------------------------------------------------------------
+Tue Oct 30 20:01:13 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.2:
+  + Implement fragment handling and verification in DIDLLiteObject.
+  + Don't error out if vapigen cannot be found.
+  + Updated translations.
+- Require gupnp-av >= %{version} from the library package, as there
+  are now some data files packaged. We require '>=' in order to
+  allow multiple library versions in parallel, assuming the data
+  format stays compatible.
+
+-------------------------------------------------------------------
+Wed Oct 24 22:08:03 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11.1:
+  + Add m4 vapigen detection macro.
+  + Fix introspection install dirs.
+  + Fix objectUpdateID setter.
+  + Add a FeatureList parser.
+  + Add some XML fragment getters for DIDLLiteObject.
+  + Lower G-I requirements.
+  + Enable introspection during distcheck.
+  + Undeprecate single-value _{get|set}_creator methods.
+  + Bugs fixed: bgo#685963, bgo#686464.
+
+-------------------------------------------------------------------
+Sun Oct  7 10:24:17 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.11.0:
+  + Add support for properties needed to implement MediaServer:3
+    "Track changes" functionality.
+  + Add proper upnp:createClass support.
+  + Clean-up pkg-config files and link to the correct libraries
+    instead of relying on gupnp leaking the right ones.
+  + Generate vapi from GIR files.
+  + Bugs fixed: bgo#684297, bgo#685477.
+- Replace gobject-introspection-devel, libgupnp-devel BuildRequires
+  for their pkgconfig counterparts, gobject-introspection-1.0 and
+  gupnp-1.0.
+- Add pkgconfig(vapigen) BuildRequires, needed to build the new
+  vala bindings.
+
+-------------------------------------------------------------------
+Sun Aug 19 21:57:50 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.10.3:
+  + Ignore case when parsing DIDLLite and LastChange.
+  + Fix gupnp_didl_lite_container_get_{create|search}_classes.
+  + Fix a potential memory corruption in parse_additional_info.
+  + Bugs fixed: bgo#674322, bgo#676372, bgo#678784.
+
+-------------------------------------------------------------------
+Mon Apr 23 11:38:21 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.10.2:
+  + Update Autotools integration.
+  + Several fixes from static code analysis.
+  + Fix an endless loop on really large {Source,Sink}ProtocolInfo
+    strings.
+  + Fix a crash in gupnp_didl_lite_contributor_get_name.
+  + Fix documentation for gupnp_didl_lite_object_get_parent_id.
+  + Fix a memory leak in resolution parsing.
+  + Allow OP, CI and PS params without DLNA profile.
+  + Bugs fixed: bgo#653894, bgo#671246, bgo#674319, bgo#674324,
+    bgo#674325.
+
+-------------------------------------------------------------------
+Wed Dec 21 00:23:18 UTC 2011 - vuntz@opensuse.org
+
+- Remove libgupnp-devel Requires from devel subpackage: it will
+  automatically be added the pkgconfig() way.
+
+-------------------------------------------------------------------
+Thu Dec  8 21:11:59 UTC 2011 - dimstar@opensuse.org
+
+- Split typelib file into typelib-1_0-GUPnPAV-1_0 subpackage.
+- Add typelib-1_0-GUPnPAV-1_0 Requires to devel subpackage.
+
+-------------------------------------------------------------------
+Mon Sep  5 16:31:57 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.10.1:
+  + Bump minimum dependency of GUPnP to 0.17.0.
+
+-------------------------------------------------------------------
+Tue Aug 30 17:04:04 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.10.0:
+  + Verify passed date in DIDL. Not a full verification but a small
+    sanity check.
+
+-------------------------------------------------------------------
+Fri Jun 17 00:50:24 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.9.1:
+  + Wrong validation of boolean arguments led to DIDL parsing
+    regressions in control points
+- Changes from version 0.9.0:
+  + Wrong XML namespace for dlna attributes.
+  + Add a sanity check for @restricted.
+  + Update gobject-introspection annotations.
+  + Add upnp:searchClass to containers.
+  + Make upnp:createClass@includeDerived mandatory.
+  + Add unpn:storageUsed property and make it mandatory for
+    object.container.storageFolder.
+- Stop using source service to download the tarball, as Factory
+  will move away from this.
+
+-------------------------------------------------------------------
+Fri Apr 29 14:04:56 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.8.0:
+  + XML node names for 'artist' and 'author'.
+  + Explicitly link test programs. This should fix the DSO build
+    issue on Fedora.
+  + Use LDADD rather than LDFLAGS in Makefile.am.
+- Changes from version 0.7.1:
+  + Merge fixes from version 0.6.3
+- Changes from version 0.7.0:
+  + Add API to set/get dlna:dlnaManaged attribute.
+  + Add API to add/list createClass elements to/of DIDL-Lite
+    containers.
+  + Declare/create the DLNA namespace only once at the start of the
+    DIDL-Lite document (just like upnp and dc namespaces) and pass
+    that to each object in that document.
+  + Correct minor typo/c&p mistakes in docs.
+  + Use correct function to set XML attributes.
+  + Minor coding-style fixes to doc comments.
+- Use source services: download_url, recompress and set_version.
+
+-------------------------------------------------------------------
+Tue Dec  7 12:59:49 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.6.3:
+  + Fix filtering of top-level DIDL-Lite attributes.
+  + Correctly handle namespace of DIDL-Lite attributes and their
+    parent nodes when filtering. Together with previous change,
+    this allows us to pass DLNA CTT testcases 7.3.63.1-5.
+  + 'profileID' attribute of 'albumArtURI' element isn't a standard
+    property so it must be filtered out unless its explicitly
+    white-listed by the application.
+  + Use correct function to set XML attributes.
+  + Correct minor C&P mistakes in API documentation.
+
+-------------------------------------------------------------------
+Fri Oct 22 16:43:13 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.6.2:
+  + Bump g-i requirement to 0.9.5
+- Drop gupnp-av-fix-introspection-build.patch: fixed upstream.
+  Remove autoreconf call, which is no longer needed.
+- Remove SUSE_ASNEEDED=0.
+
+-------------------------------------------------------------------
+Fri Oct  1 17:24:46 CEST 2010 - vuntz@opensuse.org
+
+- Add gupnp-av-fix-introspection-build.patch to fix build with
+  recent gobject-introspection. Add autoreconf call needed for this
+  patch.
+
+-------------------------------------------------------------------
+Wed Sep 29 14:07:29 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.6.1:
+  + Fix introspection build.
+- Add gobject-introspection-devel BuildRequires to build
+  introspection data.
+- Use SUSE_ASNEEDED=0 to fix the build.
+
+-------------------------------------------------------------------
+Fri Sep 17 09:33:35 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.6.0:
+  + Add mising symbols to docs.
+  + Remove redundant entries from doc sections.
+  + Doc system should ignore all private headers.
+  + Don't use deprecated gobject API.
+  + "genre" is in the upnp namespace, not dc.
+
+-------------------------------------------------------------------
+Wed Aug 11 02:44:02 CEST 2010 - lmedinas@opensuse.org
+- Update to version 0.5.9:
+  + Add 64bit size property to allow resources to be bigger than
+    2-GB.
+  + Mircoseconds part of duration in resources needs to be a
+    3-digit number as per DLNA requirement.
+  + Don't  set the operation parameter if no operations are
+    supported as per DLNA requirement.
+- Update to version 0.5.8:
+  + Fix crashes in DIDLLiteContributor API.
+  + Remove incomplete and broken DLNA guessing code. Applications
+    should use gupnp-dlna now for all their DLNA needs.
+  + Do set the 'dlna:profileID' property of 'albumArtURI' node and
+    treat it as mandatory as per DLNA guidelines.
+  + Prefer non-transcoded resources over transcoded ones when
+    choosing compatible resources for a particular MediaRenderer.
+  + Minor correction to DIDL filtering code.
+  + Some other minor improvements/fixes.
+
+-------------------------------------------------------------------
+Tue Jul  6 00:03:22 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.5.7:
+  + Make namespace properties on GUPnPDIDLLiteObject readable and
+    provide getter functions for them.
+  + Improve performance of DIDL-Lite parsing by moving namespace
+    lookups to GUPnPDIDLLiteParser.
+
+-------------------------------------------------------------------
+Mon Jun 21 12:48:45 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.5.6:
+  + Optimize namespace handling in DIDL-Lite handling code.
+  + Hide internal function gupnp_didl_lite_object_new_from_xml().
+  + Remove new redundant gupnp_didl_lite_container_new_from_xml().
+  + Free the array allocated by xmlGetNsList().
+
+-------------------------------------------------------------------
+Fri May 14 11:38:18 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.5.5:
+  + Provide gobject-introspection GIR and typelib.
+  + Provide microseconds in 'duration' to satisfy XBox.
+  + Fix data type of GUPnPDIDLLiteContainer:child-count
+  + Fix build issues in jhbuild environment.
+  + Enable silent build rules if they are available.
+
+-------------------------------------------------------------------
+Sun Jan 31 23:46:54 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.5.4:
+  + Gracefully handle empty or no 'res' node.
+  + Function to get the list of descriptors from DIDL-Lite objects.
+  + More complete comparison for LPCM mime types.
+  + Fix incorrect type conversion of DLNA flags.
+  + DLNA flags should not default to a specific DLNA version.
+  + New APIs to deal with contributor-related properties in
+    DIDL-Lite objects.
+  + Remove redundant construction methods.
+  + Add forgotten header to the meta-header file.
+  + Add and fix gobject-introspection annotations.
+  + Lots of documentation fixes.
+  + Many minor non-functional fixes/improvements.
+
+-------------------------------------------------------------------
+Mon Nov 30 20:12:58 CET 2009 - dimstar@opensuse.org
+
+- Update to version 0.5.2:
+  + Add a missing NULL check
+  + Fix a potential leak of xmlDoc
+  + Register a (g)type for GUPnPSearchCriteriaOp for better gtk-doc
+    and vala-gen-introspect support
+  + Fix docs for GUPnPSearchCriteriaParser::expression
+  + Fix parsing of SearchCriteria strings: Closing paranthesis
+    doesn't imply end of SearchCriteria expression.
+
+-------------------------------------------------------------------
+Thu Oct  1 15:01:14 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 0.5.1:
+  + New completely object-oriented, much simpler and consistent API
+    See NEWS file for more details.
+  + New Error domain for protocol related errors
+  + Workaround for broken printf() implementations
+  + Bitrate is in bytes/second and not bits/second
+- soNUM changed to 2, follow this by renaming the lib subpackage.
+
+-------------------------------------------------------------------
+Sat Jun 13 23:36:52 CEST 2009 - vuntz@novell.com
+
+- Initial package.
+

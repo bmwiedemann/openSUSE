@@ -1,0 +1,13 @@
+if ! type -p scim > /dev/null 2>&1 ; then
+    echo "scim is not available."
+    return 1
+fi
+
+export XMODIFIERS="@im=SCIM"
+export GTK_IM_MODULE="scim-bridge:scim:xim"
+export QT_IM_SWITCHER=imsw-multi
+export QT_IM_MODULE=scim-bridge
+scim -d
+
+# success:
+return 0

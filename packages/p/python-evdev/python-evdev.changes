@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Tue May 14 07:09:23 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.2.0
+  * Add UInput support for the resolution parameter in AbsInfo
+  * Vendor and product identifiers can be greater or equal to 0x8000
+
+-------------------------------------------------------------------
+Fri Mar  1 11:01:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.1.2:
+  * Fix handling of absinfo capabilities
+  * Fix invalid example
+  * Check if FF_MAX_EFFECTS is defined
+
+-------------------------------------------------------------------
+Tue Aug 28 08:00:44 UTC 2018 - marix@marix.org
+
+- Update to version 1.1.0
+  * Add support for handling force-feedback effect uploads.
+  * Fix typo preventing force-feedback effects that need left
+    coefficients from working.
+- Add _service file to fetch source from Git.
+
+-------------------------------------------------------------------
+Tue Jun  5 20:06:40 UTC 2018 - marix@marix.org
+
+- Run tests during packaging.
+  * This runs only those tests which do not require /dev/uinput.
+- Changed to source taken directly from Git instead of PyPI.
+
+-------------------------------------------------------------------
+Mon Jun  4 20:07:15 UTC 2018 - marix@marix.org
+
+- Update to version 1.0.0
+  * Fixed asyncio support in Python 3.5+.
+  * Fixed handling of missing data.
+  * Fixed device comparison.
+  * Deprecated the InputDevice.fn attribute in favour of
+    InputDevice.path
+  * Add a context manager for grabbing access to a device -
+    InputDevice.grab_context.
+  * Add the InputDevice.uniq attribute, which contains the unique
+    identifier of the device.
+
+-------------------------------------------------------------------
+Mon Jan 29 15:33:32 UTC 2018 - jengelh@inai.de
+
+- Initial package for openSUSE distro

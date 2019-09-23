@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b26dc3de0924c3f1a947128ff1e5698c</srcmd5>
+    <version>1.03</version>
+    <time>1372413130</time>
+    <user>coolo</user>
+    <comment>one more for Class::DBI</comment>
+    <requestid>181057</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b26dc3de0924c3f1a947128ff1e5698c</srcmd5>
+    <version>1.03</version>
+    <time>1379663615</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>b26dc3de0924c3f1a947128ff1e5698c</srcmd5>
+    <version>1.03</version>
+    <time>1409302235</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

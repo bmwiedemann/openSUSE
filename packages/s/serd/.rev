@@ -1,0 +1,143 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>47531125a31c0dec1c86df39689bd8de</srcmd5>
+    <version>0.14.0</version>
+    <time>1344861936</time>
+    <user>namtrac</user>
+    <comment>Needed by lilv</comment>
+    <requestid>130638</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cb5581a080ef6ec63328947a69686fe9</srcmd5>
+    <version>0.18.0</version>
+    <time>1346079406</time>
+    <user>coolo</user>
+    <comment>- Update to 0.18.0
+  * Support digits at start of local names as per new Turtle
+    grammar
+  * Add incremental read interface suitable for reading from
+    infinite streams
+  * Add -e option to serdi to use incremental reading
+  * Add error callback to reader and writer for custom error
+    reporting
+  * Add -q option to serdi to suppress all non-data
+    output, e.g. errors
+  * Reset indent when finishing a write
+  * Report write size correctly when invalid UTF-8 is encountered
+    and a replacement character is written
+  * Strip down API documentation to a single clean page
+  * Fix various hyper-strict warnings
+  * Do not require a C++ compiler to build
+  * Add option to build utilities as static binaries
+  * Upgrade to waf 1.7.2
+- Add serd-0.18.0-build_compare.patch to make build reproducible</comment>
+    <requestid>131721</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6171d6f019be8322dbbf13494d03b9df</srcmd5>
+    <version>0.18.2</version>
+    <time>1357659829</time>
+    <user>coolo</user>
+    <comment>- Update to 0.18.2
+  * Fix crash when serd_node_new_decimal is called with infinity or NaN
+  * Fix crash when resolving against non-standard base URIs
+  * Fix bug that caused &quot;a&quot; abbreviation in non-predicate position
+  * Disable timestamps in HTML documentation for reproducible build
+  * Fix clashing symbol &quot;error&quot; in amalgamation build
+  * Update to waf 1.7.8 and autowaf r90 (install docs to versioned directory)
+- Remove serd-0.18.0-build_compare.patch. Applied upstream.</comment>
+    <requestid>147501</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>6171d6f019be8322dbbf13494d03b9df</srcmd5>
+    <version>0.18.2</version>
+    <time>1359110396</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>6171d6f019be8322dbbf13494d03b9df</srcmd5>
+    <version>0.18.2</version>
+    <time>1379664649</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>6171d6f019be8322dbbf13494d03b9df</srcmd5>
+    <version>0.18.2</version>
+    <time>1409303351</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>615838ca9058dac6468af593d3acfff6</srcmd5>
+    <version>0.20.0</version>
+    <time>1427274065</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292521</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>158f6cb4ca34e2e514686f88ee45af02</srcmd5>
+    <version>0.22.0</version>
+    <time>1448553876</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346349</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>73ce358714ae04bce74ec955df48fd00</srcmd5>
+    <version>0.22.0</version>
+    <time>1450955846</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>350488</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>5dbdec911261f95193c53001a6200a4c</srcmd5>
+    <version>0.22.0</version>
+    <time>1486045665</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453548</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>10b2c7faa6be72f064b4e46956a17d6a</srcmd5>
+    <version>0.28.0</version>
+    <time>1510231144</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538328</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>20e15b7369ff247d3f08de5e17db1aae</srcmd5>
+    <version>0.28.0</version>
+    <time>1516091160</time>
+    <user>dimstar_suse</user>
+    <comment>- Tweak a bit more py3 dep to not pull whole python but just base
+- Fix group on one of the subpkgs
+- Remove python-base dependency and change headers in python scripts
+  to python3
+</comment>
+    <requestid>562463</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>aea7129a645dbb5e93393941dd5f3305</srcmd5>
+    <version>0.30.0</version>
+    <time>1536678624</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.30.0:
+  * Update bundled waf to 2.0.9
+  * Fix various typos in comments
+  * Various fixes in the testsuite</comment>
+    <requestid>631386</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>4378fea999a3f7f1960914d2502475ec</srcmd5>
+    <version>0.30.0</version>
+    <time>1538377543</time>
+    <user>dimstar_suse</user>
+    <comment>- Use -std=gnu99 to fix compilation of bogus C code</comment>
+    <requestid>637393</requestid>
+  </revision>
+</revisionlist>

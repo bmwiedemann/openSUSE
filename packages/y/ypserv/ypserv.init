@@ -1,0 +1,89 @@
+#! /bin/bash
+# Copyright (c) 2002, 2004 SuSE Linux AG
+# Copyright (c) 2000, 2001 SuSE GmbH
+#
+# Author: Thorsten Kukuk <feedback@suse.de>
+#
+# /etc/init.d/ypserv
+#
+#   and its symbolic link
+#
+# /usr/sbin/rcypserv
+#
+# System startup script for the NIS daemon
+#
+### BEGIN INIT INFO
+# Provides: ypserv
+# Required-Start: $remote_fs $portmap
+# Should-Start: slpd
+# Should-Stop: $null
+# Required-Stop: $remote_fs $portmap
+# Default-Start: 3 5
+# Default-Stop: 0 1 2 6
+# Short-Description: Start ypserv daemon
+# Description: Start ypserv to distribute NIS maps
+### END INIT INFO
+
+YPSERV_BIN=/usr/sbin/ypserv
+test -x $YPSERV_BIN || { echo "$YPSERV_BIN not installed";
+	if [ "$1" = "stop" ]; then exit 0; else exit 5; fi; }
+
+. /etc/rc.status
+
+# First reset status of this service
+rc_reset
+
+case "$1" in
+    start)
+	echo -n "Starting ypserv"
+	startproc $YPSERV_BIN
+	rc_status -v
+	;;
+    stop)
+	echo -n "Shutting down ypserv"
+	killproc -TERM $YPSERV_BIN
+	rc_status -v
+	;;
+    try-restart|condrestart)
+        ## RH has a similar command named condrestart.
+        if test "$1" = "condrestart"; then
+                echo "${attn} Use try-restart ${done}(LSB)${attn} rather than condrestart ${warn}(RH)${norm}"
+        fi
+        $0 status
+        if test $? = 0; then
+                $0 restart
+        else
+                rc_reset        # Not running is not a failure.
+        fi
+        rc_status
+        ;;
+    restart)
+	$0 stop
+	$0 start
+	rc_status
+	;;
+    force-reload)
+	$0 stop
+	$0 start
+	rc_status
+	;;
+    reload)
+	echo -n "Reload service ypserv"
+	rc_failed 3
+	rc_status -v
+	;;
+    status)
+	echo -n "Checking for ypserv: "
+	checkproc $YPSERV_BIN
+	rc_status -v
+	;;
+    probe)
+	test /etc/ypserv.conf -nt /var/run/ypserv.pid && echo reload
+	test /var/run/securenets -nt /var/run/ypserv.pid && echo reload
+	;;
+    *)
+	echo "Usage: $0 {start|stop|status|try-restart|restart|force-reload|reload|probe}"
+	exit 1
+	;;
+esac
+rc_exit

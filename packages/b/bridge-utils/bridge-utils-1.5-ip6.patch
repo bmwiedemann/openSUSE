@@ -1,0 +1,24 @@
+Index: libbridge/libbridge.h
+===================================================================
+--- libbridge/libbridge.h.orig
++++ libbridge/libbridge.h
+@@ -23,6 +23,7 @@
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <linux/if.h>
++#include <linux/in6.h>
+ #include <linux/if_bridge.h>
+ 
+ /* defined in net/if.h but that conflicts with linux/if.h... */
+Index: libbridge/libbridge_private.h
+===================================================================
+--- libbridge/libbridge_private.h.orig
++++ libbridge/libbridge_private.h
+@@ -24,6 +24,7 @@
+ #include <linux/sockios.h>
+ #include <sys/time.h>
+ #include <sys/ioctl.h>
++#include <linux/in6.h>
+ #include <linux/if_bridge.h>
+ 
+ #define MAX_BRIDGES	1024

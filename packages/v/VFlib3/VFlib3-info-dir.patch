@@ -1,0 +1,35 @@
+diff -ru VFlib3-3.6.13.orig/doc/VFlib-36.info VFlib3-3.6.13/doc/VFlib-36.info
+--- VFlib3-3.6.13.orig/doc/VFlib-36.info	2001-10-31 03:19:46.000000000 +0100
++++ VFlib3-3.6.13/doc/VFlib-36.info	2003-02-14 19:38:38.000000000 +0100
+@@ -4,9 +4,9 @@
+ using `texinfmt.el' version 2.38 of 3 July 1998.
+ 
+ 
+-
+-
+-
++START-INFO-DIR-ENTRY
++* VFlib: (VFlib-36).                  A font library VFlib version 3.6.14
++END-INFO-DIR-ENTRY
+  
+ 
+ 
+diff -ru VFlib3-3.6.13.orig/doc/VFlib-36.texi VFlib3-3.6.13/doc/VFlib-36.texi
+--- VFlib3-3.6.13.orig/doc/VFlib-36.texi	2001-11-30 01:23:00.000000000 +0100
++++ VFlib3-3.6.13/doc/VFlib-36.texi	2003-02-14 19:36:31.000000000 +0100
+@@ -7,10 +7,10 @@
+ @iftex
+ @afourpaper
+ @end iftex
+-@c @dircategory Miscellaneous
+-@c @direntry
+-@c * VFlib: (VFlib-36.info).            A font library VFlib version 3.6.14
+-@c @end direntry
++@dircategory Miscellaneous
++@direntry
++* VFlib: (VFlib-36.info).            A font library VFlib version 3.6.14
++@end direntry
+ @c %**end of header
+ @c ------------------------------------------------------------------------
+ 
+

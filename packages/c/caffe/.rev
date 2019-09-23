@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51af09a60a94b5670c9d05777350ce28</srcmd5>
+    <version>1.0</version>
+    <time>1542750162</time>
+    <user>dimstar_suse</user>
+    <comment>- Add caffe 1.0 to os:Factory</comment>
+    <requestid>650140</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>880f12560232248973281f1b86677b03</srcmd5>
+    <version>1.0</version>
+    <time>1559837973</time>
+    <user>dimstar_suse</user>
+    <comment>- Add _constraints to avoid OOM (forwarded request 708118 from Guillaume_G)</comment>
+    <requestid>708133</requestid>
+  </revision>
+</revisionlist>

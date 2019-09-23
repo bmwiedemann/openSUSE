@@ -1,0 +1,623 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>771a5139fc318981d0bfc20490ee7b4a</srcmd5>
+    <version>2.26.0</version>
+    <time>1295307010</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58494 from user vuntz
+</comment>
+    <requestid>58494</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9dc4a16045e2a463869fa3d9760c35f1</srcmd5>
+    <version>2.26.0</version>
+    <time>1295307018</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58494
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1b906988135edb6206984836297c4093</srcmd5>
+    <version>2.26.0</version>
+    <time>1297386630</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60446 from user matejcik
+</comment>
+    <requestid>60446</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d57322fa54d7c73edf751d1e3d771159</srcmd5>
+    <version>2.26.0</version>
+    <time>1297386638</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60446
+</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>d57322fa54d7c73edf751d1e3d771159</srcmd5>
+    <version>2.26.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5102cc00998370e41bf744a4c136740d</srcmd5>
+    <version>2.28.4</version>
+    <time>1305190551</time>
+    <user>azouhr</user>
+    <comment>Update to 2.28.4 (forwarded request 69605 from dimstar)</comment>
+    <requestid>69632</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c3547615074eb0e4c5671aaeff515fdd</srcmd5>
+    <version>2.28.6</version>
+    <time>1308300835</time>
+    <user>saschpe</user>
+    <comment>Update to 2.28.6</comment>
+    <requestid>73937</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fa4159b18a07f633b02914545a0ce9ba</srcmd5>
+    <version>2.28.6</version>
+    <time>1308905451</time>
+    <user>saschpe</user>
+    <comment>Create python3-gobject source package, sharing the same original .spec to build python3 module. Please add a python-gobject3 link in devel:languages:python</comment>
+    <requestid>74061</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>cdb0ea415983cce10080d6bbe0578d94</srcmd5>
+    <version>2.28.6</version>
+    <time>1308905466</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74061
+</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>af35bef1de0367894cb33228c05d2a8b</srcmd5>
+    <version>2.90.2</version>
+    <time>1313760118</time>
+    <user>darix</user>
+    <comment>Update to 2.90.2 - Please forward this and also python-gobject2 to Factory (forwarded request 79274 from dimstar)</comment>
+    <requestid>79291</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9fa741f8736c2631ad5711a50cccc2dc</srcmd5>
+    <version>2.90.2</version>
+    <time>1313760128</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 79291
+</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>89426114b19da2ca27981dae1f7d9e8c</srcmd5>
+    <version>2.90.2</version>
+    <time>1314088967</time>
+    <user>azouhr</user>
+    <comment>Do not distribute the gtk2 parts here... fixes the remaining file conflict with python-gobject2&quot;
+ (forwarded request 79491 from dimstar)</comment>
+    <requestid>79492</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>ba0bbde1f8e8abd58180be8c9dc954e9</srcmd5>
+    <version>2.90.2</version>
+    <time>1314088976</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 79492
+</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>dbc319befaf49a7cfa83a096bda91e48</srcmd5>
+    <version>2.90.2</version>
+    <time>1314260624</time>
+    <user>saschpe</user>
+    <comment>Fixed files section... I wonder how my previous one built before submit (forwarded request 79682 from dimstar)</comment>
+    <requestid>79714</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>59d0a3925df914cdca0e3c39ff78aa8b</srcmd5>
+    <version>2.90.2</version>
+    <time>1314260635</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79714
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>043d7d2212bb6754d965b33d49ed7cd4</srcmd5>
+    <version>2.90.3</version>
+    <time>1314951573</time>
+    <user>saschpe</user>
+    <comment>Update to 2.90.3</comment>
+    <requestid>80587</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>e59984f31c25b0b9ed4d80e67dc5b52f</srcmd5>
+    <version>2.90.3</version>
+    <time>1314951586</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80587
+</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>db0b31e9589e81ecad015ede355e72b2</srcmd5>
+    <version>2.90.4</version>
+    <time>1316618376</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>83893</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a3b1d7f27bfdf68831b249ff8e44b57e</srcmd5>
+    <version>3.0.0</version>
+    <time>1317024922</time>
+    <user>saschpe</user>
+    <comment>Update to 3.0.0 (forwarded request 84395 from vuntz)</comment>
+    <requestid>84409</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>bb335765020402d029e0c826311e181a</srcmd5>
+    <version>3.0.0</version>
+    <time>1317543983</time>
+    <user>lrupp</user>
+    <comment>Small tweak to python3-gobject packaging</comment>
+    <requestid>85757</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3fc0999edb8316380dc0da14bdd4a38a</srcmd5>
+    <version>3.0.1</version>
+    <time>1317626699</time>
+    <user>lrupp</user>
+    <comment>Update to 3.0.1 (forwarded request 85889 from dimstar)</comment>
+    <requestid>86069</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>3fc0999edb8316380dc0da14bdd4a38a</srcmd5>
+    <version>3.0.1</version>
+    <time>1319182391</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9a57d9d9006c08d1168f53f58dfa978b</srcmd5>
+    <version>3.0.2</version>
+    <time>1321460467</time>
+    <user>coolo</user>
+    <comment>Update to 3.0.2</comment>
+    <requestid>91593</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>f1c1b640177b8f63b9246abf1cc13174</srcmd5>
+    <version>3.0.2</version>
+    <time>1323194143</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>caa3ffb829c0340385b86bbb1538139f</srcmd5>
+    <version>3.0.2</version>
+    <time>1323194144</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8f76739d9801810691e14c818f0a1ef8</srcmd5>
+    <version>3.0.3</version>
+    <time>1324475902</time>
+    <user>coolo</user>
+    <comment>Update to 3.0.3 (forwarded request 97245 from vuntz)</comment>
+    <requestid>97247</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e1b39efa3c40672a2de231a3c48326b3</srcmd5>
+    <version>3.1.0</version>
+    <time>1328890743</time>
+    <user>coolo</user>
+    <comment>Update to 3.1.0 (forwarded request 103055 from vuntz)</comment>
+    <requestid>103353</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>fbcfaa7830271d073bdb288171e4cca1</srcmd5>
+    <version>3.1.1</version>
+    <time>1329934333</time>
+    <user>coolo</user>
+    <comment>Update to 3.1.1 (forwarded request 106273 from vuntz)</comment>
+    <requestid>106289</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d06e68bd25b203963999f9c459bbde4a</srcmd5>
+    <version>3.1.93</version>
+    <time>1332752711</time>
+    <user>coolo</user>
+    <comment>Update to 3.1.93, yet another pygobject update :-) (forwarded request 110679 from vuntz)</comment>
+    <requestid>110691</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c20f79c217c2270dc437f5d58670f62f</srcmd5>
+    <version>3.2.0</version>
+    <time>1332831474</time>
+    <user>coolo</user>
+    <comment>Update to 3.2.0 (forwarded request 111129 from vuntz)</comment>
+    <requestid>111151</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c1eded6936fd2e3b60fab75b18e8fcd8</srcmd5>
+    <version>3.2.2</version>
+    <time>1337588873</time>
+    <user>coolo</user>
+    <comment>Update to 3.2.2 (forwarded request 121023 from vuntz)</comment>
+    <requestid>121139</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>c1eded6936fd2e3b60fab75b18e8fcd8</srcmd5>
+    <version>3.2.2</version>
+    <time>1340184056</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>4918a4dfdda0e722a9fa4e140b30432d</srcmd5>
+    <version>3.4.1.1</version>
+    <time>1350629452</time>
+    <user>coolo</user>
+    <comment>Update to 3.4.1.1 (forwarded request 138665 from dimstar)</comment>
+    <requestid>138769</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d7aeb289b53d284602e64f5730e61a68</srcmd5>
+    <version>3.4.2</version>
+    <time>1353404674</time>
+    <user>coolo</user>
+    <comment>Update to 3.4.2 (forwarded request 141545 from Zaitor)</comment>
+    <requestid>141746</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>d7aeb289b53d284602e64f5730e61a68</srcmd5>
+    <version>3.4.2</version>
+    <time>1359110040</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>fc9bfe52da314d968d66ad521f84d88d</srcmd5>
+    <version>3.8.0</version>
+    <time>1365139883</time>
+    <user>coolo</user>
+    <comment>Submit 3.8.0 to Factory...</comment>
+    <requestid>162512</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>689d69ea1f776080cb1f28437a31fb19</srcmd5>
+    <version>3.8.1</version>
+    <time>1366358518</time>
+    <user>coolo</user>
+    <comment>Update to 3.8.1 - Copy to G:S:3.8 when checking in (forwarded request 170923 from RBrownCCB)</comment>
+    <requestid>172354</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0190c95cb0aeadc3ec12fd767d07be3b</srcmd5>
+    <version>3.9.1</version>
+    <time>1370430509</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.1 - been running it for a while now.</comment>
+    <requestid>176671</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>97dd3ad84e379ae136304fcd90ca5789</srcmd5>
+    <version>3.9.2</version>
+    <time>1372438614</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.3, as announced</comment>
+    <requestid>181308</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>7e85bf4e7f99f568228683d9e570d3d1</srcmd5>
+    <version>3.9.5</version>
+    <time>1376648524</time>
+    <user>scarabeus_factory</user>
+    <comment>push GNOME:Factory</comment>
+    <requestid>186908</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>8e27a33b21f6a94fbe8fcda0a3bebe56</srcmd5>
+    <version>3.9.90</version>
+    <time>1376991533</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.9.90 (forwarded request 195620 from Zaitor)</comment>
+    <requestid>195627</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>76e8b1200944a005e84ae401d7d954cd</srcmd5>
+    <version>3.9.91</version>
+    <time>1378997179</time>
+    <user>scarabeus_factory</user>
+    <comment>No more pygtkcompat.. useless </comment>
+    <requestid>198641</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>76e8b1200944a005e84ae401d7d954cd</srcmd5>
+    <version>3.9.91</version>
+    <time>1379664187</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>9397a3a6b074f3857748b64efc96ac61</srcmd5>
+    <version>3.9.92</version>
+    <time>1379926575</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.92</comment>
+    <requestid>200038</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>950bff29f12fe1d42a4a5f36e3e24978</srcmd5>
+    <version>3.10.0</version>
+    <time>1380297688</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.10.0</comment>
+    <requestid>200975</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>3c79331183cef489b532814cf2ff9862</srcmd5>
+    <version>3.10.1</version>
+    <time>1381826639</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.10.1 - Stable branch - Bugfixes only (forwarded request 203216 from Zaitor)</comment>
+    <requestid>203270</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>b9c9ce41a79ff661e193131a1a3771f9</srcmd5>
+    <version>3.10.2</version>
+    <time>1385297047</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory</comment>
+    <requestid>207692</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>9657b31172beab2218e63b65d26d4382</srcmd5>
+    <version>3.10.2</version>
+    <time>1393136178</time>
+    <user>coolo</user>
+    <comment>- Add pycompile-searchpath.patch: clean up search path in
+  py-compile script (fixes build on py3.4).
+
+- Add pycompile-searchpath.patch: clean up search path in
+  py-compile script (fixes build on py3.4).</comment>
+    <requestid>223298</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>77aa847eb36d87e68b8d7f61fa9658c5</srcmd5>
+    <version>3.12.1</version>
+    <time>1399317412</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231788</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>2fc5ee8ed29db6501b85546d329667d4</srcmd5>
+    <version>3.12.2</version>
+    <time>1405931686</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241443</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>2fc5ee8ed29db6501b85546d329667d4</srcmd5>
+    <version>3.12.2</version>
+    <time>1409302879</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>525bd5e53478b520761700d7ea72bc3d</srcmd5>
+    <version>3.14.0</version>
+    <time>1412098649</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.14.0 (forwarded request 251952 from Zaitor)</comment>
+    <requestid>252048</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>ae307d7ccef2dd3f6e825475edc520ab</srcmd5>
+    <version>3.16.0</version>
+    <time>1427736093</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 292787 from dimstar)</comment>
+    <requestid>292978</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>af3d6cf56ebc3838ee4628af54f93a9e</srcmd5>
+    <version>3.16.1</version>
+    <time>1429768741</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>298439</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>e7ddb92d0605043f35519dd798058fd2</srcmd5>
+    <version>3.16.2</version>
+    <time>1434456297</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>312090</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>22743ed9246feb673a87bd21b39456fc</srcmd5>
+    <version>3.18.0</version>
+    <time>1444142001</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.18.0 (forwarded request 332842 from dimstar)</comment>
+    <requestid>332926</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>285d27a558163ec1e28b477ac9583f23</srcmd5>
+    <version>3.18.2</version>
+    <time>1446049737</time>
+    <user>dimstar_suse</user>
+    <comment>Fixup my doh... (forwarded request 340943 from Zaitor)</comment>
+    <requestid>340952</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>f4e3fc3cfc19f5a14a8d6d5d0b647a9b</srcmd5>
+    <version>3.18.2</version>
+    <time>1446238317</time>
+    <user>coolo</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>341441</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>08178446b294a3168fbe034945b11220</srcmd5>
+    <version>3.20.0</version>
+    <time>1459255384</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.20.0 (forwarded request 377232 from dimstar)</comment>
+    <requestid>377421</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>07a4fe47b84f16e63eece0193228dcaa</srcmd5>
+    <version>3.20.0</version>
+    <time>1460739919</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390154</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>e6346bcdcb718709dd4d8668e9e69c21</srcmd5>
+    <version>3.20.0</version>
+    <time>1461854985</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not package GIMarshallingTests: it's only used by the test
+  suite and is useless on an installed system (the corresponding
+  typelibs and libraries are also not installed).
+
+Fix needed for the new gobject-introspection scanner logic in order to
+not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
+    <requestid>390578</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>a4b41203ce5438af06b2ee73505495e9</srcmd5>
+    <version>3.20.1</version>
+    <time>1462443135</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393518</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>ae8f586a38f73a3694c81dcb40840b95</srcmd5>
+    <version>3.20.1</version>
+    <time>1472594689</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423545</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>056f60a57be8f0deca656bc39c449487</srcmd5>
+    <version>3.22.0</version>
+    <time>1474475680</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.22.0 (forwarded request 428727 from dimstar)</comment>
+    <requestid>429079</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>a11299e43cd46e3118c0527beeeea8cb</srcmd5>
+    <version>3.24.0</version>
+    <time>1490220493</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.24.0 (forwarded request 481402 from dimstar)</comment>
+    <requestid>481420</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>9b5aad280a321ad0b258c8f9ffd1581c</srcmd5>
+    <version>3.24.1</version>
+    <time>1495132646</time>
+    <user>dimstar_suse</user>
+    <comment>Forward single-spec setup.... G:N no longer shows any signs or errors (forwarded request 491572 from dimstar)</comment>
+    <requestid>494087</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>7daeb2214a6e8eeeb55dfef4219ea63c</srcmd5>
+    <version>3.24.1</version>
+    <time>1496225624</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496418</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>952252bf23f16ebb296651d6d5e3094a</srcmd5>
+    <version>3.26.0</version>
+    <time>1505332497</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.26.0 (forwarded request 523622 from dimstar)</comment>
+    <requestid>523664</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>3fd0aec8c12921ccb6729bf5dcd78778</srcmd5>
+    <version>3.26.1</version>
+    <time>1509732421</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 537605 from dimstar)</comment>
+    <requestid>538375</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>cb20066d1edb46a5ec4b1ee979379c40</srcmd5>
+    <version>3.28.0</version>
+    <time>1521052087</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.28.0 (forwarded request 585962 from dimstar)</comment>
+    <requestid>586200</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>af5ef1016887457e630e463adc58ec01</srcmd5>
+    <version>3.28.1</version>
+    <time>1521904192</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.28.1:
+  + Fix a GValue leak (regression) (glgo#GNOME/pygobject#176).
+  + Various fixes for Python 3.7 (glgo#GNOME/pygobject#170). (forwarded request 588562 from dimstar)</comment>
+    <requestid>590344</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>98ae85c7b99cae64b1d1e7171ccc8a47</srcmd5>
+    <version>3.28.2</version>
+    <time>1522403836</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 592043 from dimstar)</comment>
+    <requestid>592272</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>e1b514e40c4e92ea69e3e96c6798a57e</srcmd5>
+    <version>3.28.3</version>
+    <time>1528195892</time>
+    <user>dimstar_suse</user>
+    <comment>New stable (forwarded request 613659 from iznogood)</comment>
+    <requestid>613925</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>ba2e7c8d1f6d801c830c8dbc3d3a2f5a</srcmd5>
+    <version>3.30.1</version>
+    <time>1539757043</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 638553 from iznogood)</comment>
+    <requestid>638693</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>b557038d9e9a8322f2dda8d28540fa4d</srcmd5>
+    <version>3.30.4</version>
+    <time>1543999118</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653520</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>738e4acecbf36173b6877c47d2f45905</srcmd5>
+    <version>3.32.1</version>
+    <time>1556914684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>696524</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>7e3820517b80cda3f526b10148594140</srcmd5>
+    <version>3.32.2</version>
+    <time>1561882655</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 711646 from iznogood)</comment>
+    <requestid>711805</requestid>
+  </revision>
+</revisionlist>

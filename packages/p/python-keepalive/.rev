@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>efc6cef4a137a561fc744592f29ba9d3</srcmd5>
+    <version>0.5</version>
+    <time>1505831388</time>
+    <user>dimstar_suse</user>
+    <comment>singlespec version of python3-keepalive</comment>
+    <requestid>522375</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a90c2e9c833b2f7426a81bb60f3fb541</srcmd5>
+    <version>0.5</version>
+    <time>1545647937</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659463</requestid>
+  </revision>
+</revisionlist>

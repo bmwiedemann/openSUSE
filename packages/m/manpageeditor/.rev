@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>008c6e20c8fee9c1148e6b9c476d2586</srcmd5>
+    <version>0.1.0</version>
+    <time>1465335950</time>
+    <user>dimstar_suse</user>
+    <comment>A really simple manual pages editor.
+ML: https://lists.opensuse.org/opensuse-factory/2016-05/msg00230.html</comment>
+    <requestid>396069</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0e4565db474be60659eb986a3ae11f5a</srcmd5>
+    <version>0.1.1</version>
+    <time>1465847755</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400879</requestid>
+  </revision>
+</revisionlist>

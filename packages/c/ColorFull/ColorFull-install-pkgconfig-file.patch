@@ -1,0 +1,49 @@
+Index: ColorFull-1.1/ColorFull.pc.in
+===================================================================
+--- /dev/null
++++ ColorFull-1.1/ColorFull.pc.in
+@@ -0,0 +1,10 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@/ColorFull
++includedir=@includedir@
++
++Name: ColorFull
++Description: C++ program for color summed calculations in QCD color space
++Version: @VERSION@
++Libs: -L${libdir} -lColorFull
++Cflags: -I${includedir}/ColorFull
+Index: ColorFull-1.1/Makefile.am
+===================================================================
+--- ColorFull-1.1.orig/Makefile.am
++++ ColorFull-1.1/Makefile.am
+@@ -4,5 +4,10 @@ Core \
+ Test \
+ Examples
+ 
++pkgconfigdir = $(libdir)/pkgconfig
++pkgconfig_DATA= ColorFull.pc
++
++EXTRA_DIST = ColorFull.pc.in
++
+ ACLOCAL_AMFLAGS = -I m4
+ 
+Index: ColorFull-1.1/configure.ac
+===================================================================
+--- ColorFull-1.1.orig/configure.ac
++++ ColorFull-1.1/configure.ac
+@@ -25,11 +25,13 @@ AC_PROG_LIBTOOL
+ 
+ AM_CPPFLAGS="-I\$(top_builddir)/include"
+ AC_SUBST(AM_CPPFLAGS)
++PKG_PROG_PKG_CONFIG([0.28])
+ 
+ AC_CONFIG_FILES([Core/Makefile
+ 		 Examples/Makefile
+ 		 Test/Makefile
+ 		 include/Makefile
+-		 Makefile])
++		 Makefile
++		 ColorFull.pc:ColorFull.pc.in])
+ 
+ AC_OUTPUT

@@ -1,0 +1,69 @@
+Index: mlterm-3.8.6/inputmethod/canna/im_canna.c
+===================================================================
+--- mlterm-3.8.6.orig/inputmethod/canna/im_canna.c	2018-06-12 15:52:01.000000000 +0200
++++ mlterm-3.8.6/inputmethod/canna/im_canna.c	2018-08-24 11:30:32.422504971 +0200
+@@ -305,7 +305,7 @@ static int switch_mode(ui_im_t *im) {
+ 
+   if ((canna->is_enabled = (!canna->is_enabled))) {
+     preedit(canna, NULL, 0, 0, canna->key_status.mode);
+-    jrKanjiControl(0, KC_SETWIDTH, 60);
++    jrKanjiControl(0, KC_SETWIDTH, (char*)60);
+   } else {
+     preedit(canna, "", 0, 0, "");
+   }
+Index: mlterm-3.8.6/uitoolkit/libtype/ui_window_cairo.c
+===================================================================
+--- mlterm-3.8.6.orig/uitoolkit/libtype/ui_window_cairo.c	2018-06-12 15:52:00.000000000 +0200
++++ mlterm-3.8.6/uitoolkit/libtype/ui_window_cairo.c	2018-08-24 11:34:10.895619792 +0200
+@@ -54,9 +54,9 @@ static void adjust_glyphs(ui_font_t *fon
+ 
+ static void flush_glyphs(cairo_t *cr) {
+   if (num_glyph_buf > 0) {
+-    u_long pixel = cairo_get_user_data(cr, 2);
++    u_long pixel = cairo_get_user_data(cr, (cairo_user_data_key_t*)2);
+ 
+-    cairo_set_scaled_font(cr, cairo_get_user_data(cr, 1));
++    cairo_set_scaled_font(cr, cairo_get_user_data(cr, (cairo_user_data_key_t*)1));
+     cairo_set_source_rgba(cr,
+                           (double)((pixel >> 16) & 0xff) / 255.0,
+                           (double)((pixel >> 8) & 0xff) / 255.0,
+@@ -96,7 +96,7 @@ static int show_text(cairo_t *cr, cairo_
+ #endif
+ 
+ #if CAIRO_VERSION_ENCODE(1, 4, 0) <= CAIRO_VERSION
+-  if (cairo_get_user_data(cr, 1) != xfont)
++  if (cairo_get_user_data(cr, (cairo_user_data_key_t*)1) != xfont)
+ #endif
+   {
+ #if CAIRO_VERSION_ENCODE(1, 8, 0) > CAIRO_VERSION
+@@ -105,7 +105,7 @@ static int show_text(cairo_t *cr, cairo_
+     flush_glyphs(cr);
+ #endif
+ #if CAIRO_VERSION_ENCODE(1, 4, 0) <= CAIRO_VERSION
+-    cairo_set_user_data(cr, 1, xfont, NULL);
++    cairo_set_user_data(cr, (cairo_user_data_key_t*)1, xfont, NULL);
+ #endif
+   }
+ 
+@@ -115,7 +115,7 @@ static int show_text(cairo_t *cr, cairo_
+    * default one
+    * (black == 0).
+    */
+-  if ((u_long)cairo_get_user_data(cr, 2) !=
++  if ((u_long)cairo_get_user_data(cr, (cairo_user_data_key_t*)2) !=
+       (u_long)((fg_color->red << 16) | (fg_color->green << 8) |
+                (fg_color->blue) | (fg_color->alpha << 24)))
+ #endif
+@@ -128,9 +128,9 @@ static int show_text(cairo_t *cr, cairo_
+ #endif
+ 
+ #if CAIRO_VERSION_ENCODE(1, 4, 0) <= CAIRO_VERSION
+-    cairo_set_user_data(cr, 2,
+-                        (u_long)((fg_color->red << 16) | (fg_color->green << 8) |
+-                                 (fg_color->blue) | (fg_color->alpha << 24)),
++    cairo_set_user_data(cr, (cairo_user_data_key_t*)2,
++                        (void*)((fg_color->red << 16) | (fg_color->green << 8) |
++                                (fg_color->blue) | (fg_color->alpha << 24)),
+                         NULL);
+ #endif
+   }

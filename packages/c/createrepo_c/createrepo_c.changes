@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Mon Feb  4 12:09:27 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Backport fixes from upstream
+  * 0001-zck_end_chunk-returns-number-of-bytes-written-or-1-f.patch
+  * 0002-Add-missing-sentinal.patch
+  * 0003-Fix-misc-test.patch
+
+-------------------------------------------------------------------
+Mon Feb  4 00:01:56 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.12.0
+  + Add basic support for zchunk metadata
+  + Add support for building wheels to upload to PyPI
+- Drop Python 2 subpackage
+- Enable drpm support
+- Enable zchunk for openSUSE Leap 15.1+ and Tumbleweed
+- Adjust changes entries to use full author identities
+
+-------------------------------------------------------------------
+Wed Aug  1 12:06:35 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.11.1
+  + Add support for RPMs with large files
+  + Identify Requires(missingok) as Recommends correctly
+  + Enable legacy tags by default
+  + Fix missing packages in mergerepo_c with multiple VR of same name
+  + Add mergerepo_c --repo-prefix-search and --repo-prefix-replace
+  + Build against Python 3 by default for bindings
+- Drop snapshot source service and snapshot tarball
+- Use license macro for license file
+- Drop trailing whitespace
+- Fix comment about drpm support
+
+-------------------------------------------------------------------
+Thu Apr  5 15:50:28 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- fix spelling of old weakdeps feature switch (bsc#1088328)
+
+-------------------------------------------------------------------
+Wed Feb 21 15:58:06 UTC 2018 - Frank Schreiner <FSchreiner@suse.com>
+
+- [bnc#1075670] changed to provide createrepo as update-alternative
+  because createrepo_c will replace createrepo because of switch to
+  python3
+- also provide createrepo-implementation
+
+-------------------------------------------------------------------
+Tue Feb 13 11:53:58 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable tests on SLE12 due to the python-nose requirements
+
+-------------------------------------------------------------------
+Mon Jan 22 11:58:46 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to singlespec buidling of python bindings
+- Make sure to use cmake macros to have it easier to gork what is
+  happending by overriding %__builddir
+- Sort out with spec-cleaner
+- Fix embedding of date and time to documentation
+
+-------------------------------------------------------------------
+Sun Feb 19 12:57:21 UTC 2017 - Neal Gompa <ngompa13@gmail.com>
+
+- Enable Python bindings for openSUSE Leap.
+
+-------------------------------------------------------------------
+Sun Feb 19 02:27:30 UTC 2017 - Neal Gompa <ngompa13@gmail.com>
+
+- Enable Python bindings for openSUSE Tumbleweed.
+
+-------------------------------------------------------------------
+Wed Feb  8 17:42:57 UTC 2017 - Neal Gompa <ngompa13@gmail.com>
+
+- Updated upstream sources
+- Removed patch 000-Ensure_that_provides-requires_versions_are_factored_into_dep_filtering.diff
+  (upstream included equal patch)
+- Added missing copyright statements
+- Fixed license tag and other misc cleanups
+
+-------------------------------------------------------------------
+Mon Oct 31 13:19:23 UTC 2016 - Frank Schreiner <FSchreiner@suse.com>
+
+- updated upstream sources
+- Added patch 000-Ensure_that_provides-requires_versions_are_factored_into_dep_filtering.diff
+
+-------------------------------------------------------------------
+Tue Jul  5 11:03:23 UTC 2016 - Jan Engelhardt <jengelh@inai.de>
+
+- Run fdupes to eliminate duplicate .js files
+
+-------------------------------------------------------------------
+Mon Feb  1 04:49:43 UTC 2016 - Neal Gompa <ngompa13@gmail.com>
+
+- Disable Python 3 bindings for SLE
+
+-------------------------------------------------------------------
+Mon Feb  1 04:40:40 UTC 2016 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.10.0, add Python 3 bindings
+
+-------------------------------------------------------------------
+Thu Oct 29 14:48:00 UTC 2015 - Neal Gompa <ngompa13@gmail.com>
+
+- Initial package based on Mageia package
+

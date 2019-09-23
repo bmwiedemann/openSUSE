@@ -1,0 +1,5 @@
+<package name="pg_comparator" project="openSUSE:Factory">
+  <title>pg_comparator</title>
+  <description>pgComparator is a tool to compare possibly very big tables in different locations and report differences, with a network and time-efficient approach.</description>
+  <devel project="server:database" package="pg_comparator"/>
+</package>

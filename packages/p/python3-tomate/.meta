@@ -1,0 +1,8 @@
+<package name="python3-tomate" project="openSUSE:Factory">
+  <title>A pomodoro timer</title>
+  <description>Provides the library for tomate, a Pomodoro timer.
+
+</description>
+  <devel project="devel:languages:python" package="python3-tomate"/>
+  <url>https://github.com/eliostvs/tomate</url>
+</package>

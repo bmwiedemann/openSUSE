@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Thu Feb  4 20:58:46 UTC 2016 - mpluskal@suse.com
+
+- Use optflags when building
+
+-------------------------------------------------------------------
+Wed Apr 15 11:25:48 UTC 2015 - jhura@suse.com
+
+- changed sed command in spec file
+
+-------------------------------------------------------------------
+Wed Apr 15 07:22:24 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+
+-------------------------------------------------------------------
+Tue Apr 14 12:44:41 UTC 2015 - jhura@suse.com
+
+- initial package for version 2.1.2
+

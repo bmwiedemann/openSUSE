@@ -1,0 +1,8 @@
+<package name="rubygem-tilt-1_1" project="openSUSE:Factory">
+  <title>rubygem-tilt-1_1</title>
+  <description>
+    Generic interface to multiple Ruby template engines
+  </description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-tilt-1_1"/>
+  <url>http://github.com/rtomayko/tilt/</url>
+</package>

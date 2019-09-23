@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6f8cdbfe99bfe806aaaf1d93b5462ed3</srcmd5>
+    <version>1.0.4</version>
+    <time>1336471644</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115497</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6f8cdbfe99bfe806aaaf1d93b5462ed3</srcmd5>
+    <version>1.0.4</version>
+    <time>1340184383</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>6f8cdbfe99bfe806aaaf1d93b5462ed3</srcmd5>
+    <version>1.0.4</version>
+    <time>1359110688</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3765ad9da82f8a410bbe5f7fe5cdf61b</srcmd5>
+    <version>1.0.5</version>
+    <time>1372138745</time>
+    <user>coolo</user>
+    <comment>Update to version 1.0.5 (forwarded request 180675 from Zaitor)</comment>
+    <requestid>180707</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3765ad9da82f8a410bbe5f7fe5cdf61b</srcmd5>
+    <version>1.0.5</version>
+    <time>1379665114</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>3765ad9da82f8a410bbe5f7fe5cdf61b</srcmd5>
+    <version>1.0.5</version>
+    <time>1409303801</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>54ff30afca619df50769c53fe78fd6a1</srcmd5>
+    <version>1.0.6</version>
+    <time>1523127007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.6
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Print which option was in error along with usage message
+  * Add -version option to print program version
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>593604</requestid>
+  </revision>
+</revisionlist>

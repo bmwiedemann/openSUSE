@@ -1,0 +1,152 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2018-01-10 23:56:12.245827883 +0100
+
+Scrape the SDL announcements since 2.0.3 (version in Leap 42.3) and add
+some symvers so that zypper knows when to upgrade SDL.
+---
+ Makefile.in |    2 
+ sdl2.sym    |  124 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 125 insertions(+), 1 deletion(-)
+
+Index: SDL2-2.0.10/Makefile.in
+===================================================================
+--- SDL2-2.0.10.orig/Makefile.in
++++ SDL2-2.0.10/Makefile.in
+@@ -125,7 +125,7 @@ LT_AGE      = @LT_AGE@
+ LT_CURRENT  = @LT_CURRENT@
+ LT_RELEASE  = @LT_RELEASE@
+ LT_REVISION = @LT_REVISION@
+-LT_LDFLAGS  = -no-undefined -rpath $(libdir) -release $(LT_RELEASE) -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
++LT_LDFLAGS  = -no-undefined -rpath $(libdir) -release $(LT_RELEASE) -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) -Wl,--version-script=sdl2.sym
+ 
+ all: $(srcdir)/configure Makefile $(objects)/$(TARGET) $(objects)/$(SDLMAIN_TARGET) $(objects)/$(SDLTEST_TARGET)
+ 
+Index: SDL2-2.0.10/sdl2.sym
+===================================================================
+--- /dev/null
++++ SDL2-2.0.10/sdl2.sym
+@@ -0,0 +1,124 @@
++SUSE_2.0.5 {
++global:
++	SDL_DequeueAudio;
++	SDL_GetHintBoolean;
++	SDL_RenderSetIntegerScale;
++	SDL_CreateRGBSurfaceWithFormat;
++	SDL_CreateRGBSurfaceWithFormatFrom;
++	SDL_GetDisplayUsableBounds;
++	SDL_GetWindowBordersSize;
++	SDL_SetWindowResizable;
++	SDL_SetWindowOpacity;
++	SDL_SetWindowModalFor;
++};
++SUSE_2.0.6 {
++global:
++	SDL_Vulkan_LoadLibrary;
++	SDL_Vulkan_GetVkGetInstanceProcAddr;
++	SDL_Vulkan_GetInstanceExtensions;
++	SDL_Vulkan_CreateSurface;
++	SDL_Vulkan_GetDrawableSize;
++	SDL_Vulkan_UnloadLibrary;
++	SDL_ComposeCustomBlendMode;
++	SDL_HasNEON;
++	SDL_JoystickGetDeviceVendor;
++	SDL_JoystickGetDeviceProduct;
++	SDL_JoystickGetDeviceProductVersion;
++	SDL_JoystickGetDeviceType;
++	SDL_JoystickGetDeviceInstanceID;
++	SDL_JoystickGetVendor;
++	SDL_JoystickGetProduct;
++	SDL_JoystickGetProductVersion;
++	SDL_JoystickGetType;
++	SDL_JoystickGetAxisInitialState;
++	SDL_GameControllerGetVendor;
++	SDL_GameControllerGetProduct;
++	SDL_GameControllerGetProductVersion;
++	SDL_GameControllerNumMappings;
++	SDL_GameControllerMappingForIndex;
++	SDL_LoadFile;
++	SDL_LoadFile_RW;
++	SDL_DuplicateSurface;
++} SUSE_2.0.5;
++SUSE_2.0.7 {
++global:
++	SDL_NewAudioStream;
++	SDL_AudioStreamPut;
++	SDL_AudioStreamGet;
++	SDL_AudioStreamAvailable;
++	SDL_AudioStreamFlush;
++	SDL_AudioStreamClear;
++	SDL_FreeAudioStream;
++	SDL_GetMemoryFunctions;
++	SDL_SetMemoryFunctions;
++	SDL_GetNumAllocations;
++	SDL_LockJoystick;
++	SDL_UnlockJoystick;
++	SDL_SetEventFilter;
++	SDL_GetEventFilter;
++	SDL_AddEventWatch;
++	SDL_DelEventWatch;
++} SUSE_2.0.6;
++SUSE_2.0.8 {
++global:
++	SDL_fmod;
++	SDL_log10;
++	SDL_SetYUVConversionMode;
++	SDL_GetYUVConversionMode;
++} SUSE_2.0.7;
++SUSE_2.0.9 {
++global:
++	SDL_CreateThreadWithStackSize;
++	SDL_GameControllerGetPlayerIndex;
++	SDL_GameControllerMappingForDeviceIndex;
++	SDL_GameControllerRumble;
++	SDL_GetDisplayOrientation;
++	SDL_HasAVX512F;
++	SDL_HasColorKey;
++	SDL_IsTablet;
++	SDL_JoystickGetDevicePlayerIndex;
++	SDL_JoystickGetPlayerIndex;
++	SDL_JoystickRumble;
++	SDL_LinuxSetThreadPriority;
++	SDL_NumSensors;
++	SDL_SensorClose;
++	SDL_SensorFromInstanceID;
++	SDL_SensorGetData;
++	SDL_SensorGetDeviceInstanceID;
++	SDL_SensorGetDeviceName;
++	SDL_SensorGetDeviceNonPortableType;
++	SDL_SensorGetDeviceType;
++	SDL_SensorGetInstanceID;
++	SDL_SensorGetName;
++	SDL_SensorGetNonPortableType;
++	SDL_SensorGetType;
++	SDL_SensorOpen;
++	SDL_SensorUpdate;
++	SDL_exp;
++	SDL_expf;
++	SDL_wcsdup;
++} SUSE_2.0.8;
++SUSE_2.0.10 {
++global:
++	SDL_GetTouchDeviceType;
++	SDL_RWclose;
++	SDL_RWread;
++	SDL_RWseek;
++	SDL_RWsize;
++	SDL_RWtell;
++	SDL_RWwrite;
++	SDL_RenderCopyExF;
++	SDL_RenderCopyF;
++	SDL_RenderDrawLineF;
++	SDL_RenderDrawLinesF;
++	SDL_RenderDrawPointF;
++	SDL_RenderDrawPointsF;
++	SDL_RenderDrawRectF;
++	SDL_RenderDrawRectsF;
++	SDL_RenderFillRectF;
++	SDL_RenderFillRectsF;
++	SDL_RenderFlush;
++	SDL_SIMDAlloc;
++	SDL_SIMDFree;
++	SDL_SIMDGetAlignment;
++} SUSE_2.0.9;

@@ -1,0 +1,8 @@
+<package name="picard" project="openSUSE:Factory">
+  <title>The Next Generation MusicBrainz Tagger</title>
+  <description>MusicBrainz Picard is a cross-platform MusicBrainz tag editor written in
+Python. Picard Tagger is intended to be the next generation of tagger for
+MusicBrainz, with a focus on album oriented tagging as opposed to track based
+tagging and cross platform compatibility.</description>
+  <devel project="multimedia:apps" package="picard"/>
+</package>

@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0ebbf49871276f22e73cca37b266d2cc</srcmd5>
+    <version>0.1.1d</version>
+    <time>1563018523</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial package version
+</comment>
+    <requestid>714079</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>51cad1083ebf381f596ac0ba50ca4f54</srcmd5>
+    <version>0.1.1f</version>
+    <time>1568191265</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with LTO, update</comment>
+    <requestid>729952</requestid>
+  </revision>
+</revisionlist>

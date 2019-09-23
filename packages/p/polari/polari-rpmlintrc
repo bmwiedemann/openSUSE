@@ -1,0 +1,2 @@
+addFilter(".*devel-file-in-non-devel-package.*/usr/share/polari/gir-1.0/Polari-1.0.gir")
+addFilter(".*desktopfile-without-binary.*/usr/share/applications/org.gnome.Polari.desktop gapplication")

@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Fri Feb 22 13:58:18 UTC 2019 - jmassaguerpla@suse.com
+
+- Set version to 1.0.0. This package is used for building the k8s
+  pause container 1.0.0. However, since the container now has the
+  version of the main package (this), we need this package to be
+  1.0.0. The only purpose of this package is to build the image,
+  so there is no harm on promoting it to 1.0.0 version.
+
+-------------------------------------------------------------------
+Mon Jan 29 12:32:53 UTC 2018 - jmassaguerpla@suse.com
+
+- Rename kubernetes-node-image-pause.rpmlintrc to
+  kubernetes-node-image-pause-rpmlintrc as per package conventions
+
+-------------------------------------------------------------------
+Fri Jan 26 11:25:54 UTC 2018 - jmassaguerpla@suse.com
+
+- Add kubernetes-node-image-pause.rpmlintrc as source 
+
+-------------------------------------------------------------------
+Tue Sep 20 15:34:57 UTC 2016 - msabate@suse.com
+
+- Initial commit
+

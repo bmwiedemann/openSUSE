@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>60a124150242c9dee2ec0cea400cda9b</srcmd5>
+    <version>5.1.0</version>
+    <time>1505334817</time>
+    <user>dimstar_suse</user>
+    <comment>rename from libfplll</comment>
+    <requestid>523381</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9bdcca7df13aa73b03e3623f04bc20da</srcmd5>
+    <version>5.2.0</version>
+    <time>1516711625</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 5.2.0</comment>
+    <requestid>559896</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e68272d745270ca500dbba702d900614</srcmd5>
+    <version>5.2.1</version>
+    <time>1540200343</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 5.2.1</comment>
+    <requestid>643480</requestid>
+  </revision>
+</revisionlist>

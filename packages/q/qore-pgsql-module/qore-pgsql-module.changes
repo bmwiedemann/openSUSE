@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Mon Aug  4 23:04:38 UTC 2014 - dvaleev@suse.com
+
+- Extend 64Bit architecture list 
+
+- added patches:
+  * 0001-Extend-64bit-architecure-list.patch
+-------------------------------------------------------------------
+Tue Jul 30 14:20:50 UTC 2014 - petr@yarpen.cz
+
+- migrated to OBS file layout
+

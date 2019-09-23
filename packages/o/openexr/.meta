@@ -1,0 +1,15 @@
+<package name="openexr" project="openSUSE:Factory">
+  <title>Utilities for work with HDR images in OpenEXR format</title>
+  <description>OpenEXR is a high dynamic-range (HDR) image file format developed by
+Industrial Light &amp; Magic for use in computer imaging applications. This package
+contains a set of utilities to work with this format.
+
+* exrheader, a utility for dumping header information
+* exrstdattr, a utility for modifying OpenEXR standard attributes
+* exrmaketiled, for generating tiled and rip/mipmapped images
+* exrenvmap, for creating OpenEXR environment maps
+* exrmakepreview, for creating preview images for OpenEXR files
+* exr2aces, converter to ACES format
+* exrmultiview, combine two or more images into one multi-view</description>
+  <devel project="graphics" package="openexr"/>
+</package>

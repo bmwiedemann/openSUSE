@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>99ed7cadcfa43b583a06885da418a084</srcmd5>
+    <version>1.0.0</version>
+    <time>1558515944</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename to to match jupyter package naming guidelines.
+- Update url
+- Implement single-spec version.
+- Remove jupyter.py since it is now provided by python3-jupyter_core.
+- Clean up documentation building.
+- do not Recommend jupyter_nbconvert (which pulls in texlive)
+- No longer provide or obsolete IPython.
+  This is provided and obsoleted by python-jupyter_ipython.
+- Build documentation
+- Fix provides again.
+- Fix provides and obsoletes
+- Initial version
+</comment>
+    <requestid>698315</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>65a4400b73a3604b98fb28476747b2a8</srcmd5>
+    <version>1.0.0</version>
+    <time>1558784111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705102</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d8392254750d3a0040635529c68ff533</srcmd5>
+    <version>1.0.0</version>
+    <time>1566665280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725689</requestid>
+  </revision>
+</revisionlist>

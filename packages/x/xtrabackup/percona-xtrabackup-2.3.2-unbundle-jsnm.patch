@@ -1,0 +1,12 @@
+Index: percona-xtrabackup-2.4.10/storage/innobase/xtrabackup/src/CMakeLists.txt
+===================================================================
+--- percona-xtrabackup-2.4.10.orig/storage/innobase/xtrabackup/src/CMakeLists.txt
++++ percona-xtrabackup-2.4.10/storage/innobase/xtrabackup/src/CMakeLists.txt
+@@ -21,7 +21,6 @@ INCLUDE(${MYSQL_CMAKE_SCRIPT_DIR}/compil
+ 
+ ADD_SUBDIRECTORY(libarchive)
+ ADD_SUBDIRECTORY(crc)
+-ADD_SUBDIRECTORY(jsmn)
+ 
+ SET(WITH_CURL "system" CACHE STRING "Using system curl by default")
+ FIND_GCRYPT()

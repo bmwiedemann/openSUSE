@@ -1,0 +1,12 @@
+Index: rssguard-3.5.2/src/services/gmail/network/gmailnetworkfactory.cpp
+===================================================================
+--- rssguard-3.5.2.orig/src/services/gmail/network/gmailnetworkfactory.cpp
++++ rssguard-3.5.2/src/services/gmail/network/gmailnetworkfactory.cpp
+@@ -372,6 +372,7 @@ bool GmailNetworkFactory::obtainAndDecod
+   else {
+     return false;
+   }
++  return 0;
+ }
+ 
+ QList<Message> GmailNetworkFactory::decodeLiteMessages(const QString& messages_json_data, const QString& stream_id,

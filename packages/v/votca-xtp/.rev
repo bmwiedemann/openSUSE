@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a453a1f79d9c5038a8375e54ee859a9</srcmd5>
+    <version>1.5</version>
+    <time>1551386305</time>
+    <user>coolo</user>
+    <comment>- Upgrade to 1.5
+  * fix parallel build of manual
+  * fix usage on inkscape on arm arch
+  * clean up namespace in header
+  * optimized GW-BSE code and integral engine
+  * added closed shell DFT code which supports hybrid functionals
+  * removed ctp dependency
+  * atm no support for site energy calculation
+  * CHELPG fit for ground and excited states
+  * merged igwbse and idft into one calculator
+  * added unit and integration test
+  * improved geometry optimiser
+  * replaced ublas with Eigen3
+  * replaced boost serialisation with hdf5 files
+  * Details: https://github.com/votca/xtp/blob/stable/CHANGELOG.md
+- Drop 55.patch, merged upstream
+- Add 55.patch to fix compile with gcc-7
+- split boost-devel into libboost-* (bug #1062801)
+- Upgrade to 1.4.1
+  * fix pkg-config file
+  * Details: https://github.com/votca/xtp/blob/master/CHANGELOG.md
+- Implemeted suggestions from Request #437970
+- Update summaries and descriptions
+- Upgrade to 1.4
+  * dropped merged patch, for cmake underlinking and boost-1.62
+  * fixed a bug in gwbse
+  * Details: https://github.com/votca/xtp/blob/master/CHANGELOG.md
+- Added patch from upstream to support boost-1.62
+- Initial import of version 1.4_rc1
+</comment>
+    <requestid>670460</requestid>
+  </revision>
+</revisionlist>

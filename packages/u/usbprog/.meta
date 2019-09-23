@@ -1,0 +1,9 @@
+<package name="usbprog" project="openSUSE:Factory">
+  <title>Programmer for the USBprog hardware</title>
+  <description>USBprog is a programmer for the USBprog hardware.
+
+Author
+------
+        Bernhard Walle &lt;bernhard@bwalle.de&gt;</description>
+  <devel project="hardware" package="usbprog"/>
+</package>

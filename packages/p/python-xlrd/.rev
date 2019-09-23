@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3af057de35f6bdb36d9fb32fcf86ffce</srcmd5>
+    <version>0.8.0</version>
+    <time>1356731284</time>
+    <user>namtrac</user>
+    <comment>Useful for reading Excel files.</comment>
+    <requestid>145018</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3af057de35f6bdb36d9fb32fcf86ffce</srcmd5>
+    <version>0.8.0</version>
+    <time>1359110147</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>13fb2b1fb33b498b73fdf92aafaa2507</srcmd5>
+    <version>0.9.2</version>
+    <time>1367487925</time>
+    <user>coolo</user>
+    <comment>- Remove unnecessary .py extension from executable
+- Fix python2/python3 executable name conflict (forwarded request 173945 from TheBlackCat)</comment>
+    <requestid>173946</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2adb480d0b9f24d279161d2d50bb08d7</srcmd5>
+    <version>0.9.2</version>
+    <time>1372064705</time>
+    <user>coolo</user>
+    <comment>remove duplicated spec file</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>2adb480d0b9f24d279161d2d50bb08d7</srcmd5>
+    <version>0.9.2</version>
+    <time>1379664319</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>2adb480d0b9f24d279161d2d50bb08d7</srcmd5>
+    <version>0.9.2</version>
+    <time>1409303026</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>61a0bc5644bb1f2529ccd5a50cc34eb4</srcmd5>
+    <version>0.9.4</version>
+    <time>1446647573</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341609</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7a90ccf54d43437d2d6b23497865b0e9</srcmd5>
+    <version>1.0.0</version>
+    <time>1495011051</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492684</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>67331497ccad70e059753013a204d221</srcmd5>
+    <version>1.1.0</version>
+    <time>1529402362</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616585</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>240e80f006248e9492c25c6fe9deb697</srcmd5>
+    <version>1.1.0</version>
+    <time>1533887381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628221</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fb4f8a3805b03557ad99879b10441691</srcmd5>
+    <version>1.2.0</version>
+    <time>1545648479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660757</requestid>
+  </revision>
+</revisionlist>

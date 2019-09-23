@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Tue Apr  9 22:02:51 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add fix-build-with-recent-glibc.patch
+
+-------------------------------------------------------------------
+Fri Jun  9 13:59:00 UTC 2017 - ptesarik@suse.com
+
+- Use the correct RPM Group for Python packages.
+
+-------------------------------------------------------------------
+Mon May 15 11:01:56 UTC 2017 - ptesarik@suse.com
+
+- upgrade to libkdumpfile-0.3.0
+  * API and ABI changed (see NEWS)
+  * Address translation routines moved into `libaddrxlat` (can be
+    used without a dump file).
+  * Python bindings.
+  * Comprehensive test suite for `libaddrxlat`.
+  * Caching.
+  * ...and more!
+
+-------------------------------------------------------------------
+Mon Feb  1 14:18:33 UTC 2016 - ptesarik@suse.com
+
+- upgrade to libkdumpfile-0.2.0
+  * API and ABI changed (see NEWS)
+  * differentiation of Xen dump types (attribute "xen.type")
+  * support for opening dumps in Xen hypervisor mode
+  * many other Xen improvements
+  * fix reading LKCD dump files
+
+-------------------------------------------------------------------
+Tue Dec  8 16:15:17 UTC 2015 - ptesarik@suse.com
+
+- upgrade to libkdumpfile-0.1.7
+  * metadata is stored as hierarchical attributes which can be enumerated
+- libkdumpfile-add-EM_AARCH64.patch: Dropped (now upstream).
+- libkdumpfile-remove-ARCH_PPC64LE.patch: Dropped (now upstream).
+- libkdumpfile-fallback-for-old-zlib.patch: Dropped (now upstream).
+
+-------------------------------------------------------------------
+Thu Nov 26 09:54:56 UTC 2015 - ptesarik@suse.com
+
+- Remove autoreconf invocation (fix build on SLE10).
+
+-------------------------------------------------------------------
+Wed Nov 25 13:29:56 UTC 2015 - ptesarik@suse.com
+
+- Add pkg-config to BuildRequires (adds back zlib support).
+- libkdumpfile-fallback-for-old-zlib.patch: Fall back to
+  AC_SEARCH_LIBS if there is no pkg-config file for zlib.
+
+-------------------------------------------------------------------
+Wed Nov 25 12:50:16 UTC 2015 - ptesarik@suse.cz
+
+- upgrade to libkdumpfile-0.1.5
+  * Improved support of Xen dumpcore files.
+  * Basic support for MIPS architecture.
+  * Fix support for LKCD dumps on s390x.
+- Add libkdumpfile.pc pkg-config file to -devel package.
+- libkdumpfile-remove-ARCH_PPC64LE.patch: Fix build on ppc64le.
+
+-------------------------------------------------------------------
+Sat Aug 22 19:23:05 UTC 2015 - jengelh@inai.de
+
+- Set RPM group per standard practices. Update license field to
+  actual conditions. Use original source URL.
+
+-------------------------------------------------------------------
+Fri Dec  5 17:09:10 UTC 2014 - ptesarik@suse.cz
+
+- upgrade to libkdumpfile-0.1.4
+  * Improved error reporting.
+  * Support of 32-bit x86 file format.
+
+-------------------------------------------------------------------
+Fri Nov  7 13:39:17 UTC 2014 - ptesarik@suse.cz
+
+- upgrade to libkdumpfile-0.1.3
+  * Support of z/Architecture and S390 Dump file format.
+
+-------------------------------------------------------------------
+Mon Nov  3 12:35:20 UTC 2014 - ptesarik@suse.cz
+
+- Do not build static libraries.
+
+-------------------------------------------------------------------
+Sun Nov  2 21:08:29 UTC 2014 - ptesarik@suse.cz
+
+- Fix devel package dependencies.
+
+-------------------------------------------------------------------
+Sun Nov  2 14:40:50 UTC 2014 - ptesarik@suse.cz
+
+- Define %make_install if not yet defined. This allows building
+  the package on very old products (SLES10).
+
+-------------------------------------------------------------------
+Sat Nov  1 21:03:49 UTC 2014 - ptesarik@suse.cz
+
+- libkdumpfile-add-EM_AARCH64.patch: Add definition of EM_AARCH64
+  if missing.
+
+-------------------------------------------------------------------
+Fri Oct 31 16:29:13 UTC 2014 - ptesarik@suse.cz
+
+- Make snappy support optional (fix build on products that do not
+  have that library).
+
+-------------------------------------------------------------------
+Fri Oct 31 16:27:30 UTC 2014 - ptesarik@suse.cz
+
+- upgrade to libkdumpfile-0.1.2
+- Drop libkdumpfile-fix-kdump_phys_base.patch: Upstream. 
+
+-------------------------------------------------------------------
+Wed Oct 29 20:55:08 UTC 2014 - ptesarik@suse.cz
+
+- libkdumpfile-fix-kdump_phys_base.patch: Fix return type of
+  kdump_phys_base() in definition.
+
+-------------------------------------------------------------------
+Wed Oct 29 20:35:59 UTC 2014 - ptesarik@suse.cz
+
+- Initial import.
+

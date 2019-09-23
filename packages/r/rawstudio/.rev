@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6e5d6095281c0e4d99b54c706865e8f9</srcmd5>
+    <version>2.1git.20150227</version>
+    <time>1425566590</time>
+    <user>dimstar_suse</user>
+    <comment>please add to factory</comment>
+    <requestid>288866</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>020426da50a135e598ccf719f8b41f3a</srcmd5>
+    <version>1456433636.6643b14</version>
+    <time>1467705140</time>
+    <user>dimstar_suse</user>
+    <comment>update and fix build</comment>
+    <requestid>406250</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>33df0da1345aa34b4153e522c81a2726</srcmd5>
+    <version>2.0+git20170413.003dd4f3</version>
+    <time>1501406818</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512974</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2611a6642845dfbc241ce13a9f44739c</srcmd5>
+    <version>2.0+git20170413.003dd4f3</version>
+    <time>1505416792</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526107</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e03a3b33fd97db063d7510cc3628ead1</srcmd5>
+    <version>2.0+git20170413.003dd4f3</version>
+    <time>1554833918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692473</requestid>
+  </revision>
+</revisionlist>

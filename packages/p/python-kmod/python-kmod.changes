@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Thu Mar 22 13:21:16 UTC 2018 - jthumshirn@suse.com
+
+- Re-enable python3 build (bsc#1082208).
+
+-------------------------------------------------------------------
+Wed Nov 30 08:15:07 UTC 2016 - jthumshirn@suse.com
+
+- Don't build python3 modules.
+
+-------------------------------------------------------------------
+Thu Jun  9 11:24:07 UTC 2016 - jthumshirn@suse.com
+
+- Fix build on openSUSE Leap 42.1
+  + fix-build-kmod-17.patch
+
+-------------------------------------------------------------------
+Thu Jun  9 11:07:29 UTC 2016 - jthumshirn@suse.com
+
+-  Build python3-version of the module as well.
+
+-------------------------------------------------------------------
+Wed Jun  8 13:31:19 UTC 2016 - jthumshirn@suse.com
+
+- Initial packaging for openSUSE (FATE#321732)
+  + fix-build.patch

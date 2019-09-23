@@ -1,0 +1,14 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://github.com/zamaudio/zam-plugins.git</param>
+    <param name="scm">git</param>
+    <param name="revision">3.11</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>
+

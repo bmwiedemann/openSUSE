@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Tue Nov 27 09:15:52 UTC 2018 - mvetter@suse.com
+
+- Update to 1.2:
+  * When the repository cannot be found, but the repo ID is set,
+    output the stderr of other commands to help the user figure out
+	what's wrong (Closes: #914059).
+  * Note that git-remote-gcrypt's "not found" error can be misleading.
+
+-------------------------------------------------------------------
+Sun Apr 29 17:11:29 UTC 2018 - mvetter@suse.com
+
+- Update to 1.1:
+  * Add CONTRIBUTING.md and DEVELOPER-CERTIFICATE.
+  * Add experimental rclone backend (for early adoptors only).
+
+-------------------------------------------------------------------
+Sat Mar 10 08:14:03 UTC 2018 - mvetter@suse.com
+
+- Update to 1.0.3:
+  * Add note about non-standard rsync:// URI format.
+  * Improve first section of manpage.
+  * Add "Known issues" to README.
+
+-------------------------------------------------------------------
+Sat Sep  2 15:54:47 UTC 2017 - mvetter@suse.com
+
+- Update to 1.0.2:
+  Bug fixes:
+  * Correctly handle the case where gcrypt.gpg-args contains more than one
+    argument, separated by spaces.
+    Thanks Etienne Brodu for the patch.
+
+  Documentation:
+  * Drop section "Note to users of GnuPG version 2".
+    The issue was a regression in GnuPG 2.x, fixed in version 2.1.16.
+  * Add a note about performance when not using the rsync:// or local backends.
+  * Add section containing author and maintainer information.
+  * Add `apt-get` installation instructions, for the benefit of GitHub users.
+  * Other minor edits and formatting changes.
+
+-------------------------------------------------------------------
+Thu Mar 16 20:31:12 UTC 2017 - mvetter@suse.com
+
+- Install real changelog file and not a link
+
+------------------------------------------------------------------- 
+Thu Mar 16 20:10:02 UTC 2017 - mvetter@suse.com
+
+- Update to 1.0.1:
+  * Add authorship details to script header
+- Get proper release tarball from GH now. Before used commit id
+  30b3f5e3356bba404eb630807879b8d4989f8c6e which was tag 1.0.0
+  on private repo of maintainer
+- Use rst2man to generate manpage, install that instead of readme
+
+-------------------------------------------------------------------
+Thu Sep 22 14:01:30 UTC 2016 - mvetter@suse.com
+
+- Use website of new maintainer
+
+-------------------------------------------------------------------
+Wed Sep 21 15:06:51 UTC 2016 - mvetter@suse.com
+
+- Initial package for 1.0.0
+

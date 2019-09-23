@@ -1,0 +1,111 @@
+Index: basename.c
+===================================================================
+--- basename.c.orig
++++ basename.c
+@@ -18,7 +18,7 @@ Copyright (C) 1986, 1987 Rahul Dhesi --
+ 
+ /* This function strips device/directory information from
+ a pathname and returns just the plain filename */
+-void basename (pathname, fname)
++void my_basename (pathname, fname)
+ char *pathname;
+ char fname[];
+ {
+Index: makefile
+===================================================================
+--- makefile.orig
++++ makefile
+@@ -18,13 +18,13 @@
+ 
+ MAKE = make	      # needed for some systems e.g. older BSD
+ 
+-CC = cc
++CC = gcc
+ CFLAGS =
+ MODEL =
+ EXTRA = -DBIG_MEM -DNDEBUG
+ LINTFLAGS = -DLINT
+ OPTIM = -O
+-DESTDIR = /usr/local/bin
++DESTDIR = /usr/bin
+ 
+ #List of all object files created for Zoo
+ ZOOOBJS = addbfcrc.o addfname.o basename.o comment.o crcdefs.o \
+@@ -107,10 +107,10 @@ bsdansi:
+ convex:
+ 	$(MAKE) CFLAGS="-c $(OPTIM) -DBSD4_3 -DANSI_HDRS" $(TARGETS)
+ 
+-# Linux 0.96c, gcc 2.2.2
++# Linux 2.0.0, gcc 2.7.2
+ linux:
+ 	$(MAKE) \
+-	CFLAGS="-c -O2 -DBSD4_3 -DANSI_HDRS -DLINUX" \
++       CFLAGS="-c $(OPTIM) -DBSD4_4 -DANSI_HDRS -DLINUX" \
+ 	$(TARGETS)
+ 
+ # linux as above, static linked
+Index: options.h
+===================================================================
+--- options.h.orig
++++ options.h
+@@ -89,7 +89,7 @@ For documentation about this file, see o
+ /***********************************************************************/
+ 
+ #ifdef BSD4_3
+-#define NOSTRCHR /* not really needed for 4.3BSD */
++/* #define NOSTRCHR */ /* not really needed for 4.3BSD */
+ #define FILTER
+ #define IO_MACROS
+ #define EXISTS(f)		(access(f, 00) == 0)
+Index: various.h
+===================================================================
+--- various.h.orig
++++ various.h
+@@ -25,7 +25,12 @@ the predefined type FILE.
+ 
+ #ifdef ANSI_HDRS /* if not defined in stdio.h */
+ # include <string.h>
++# include <sys/types.h>
++# include <sys/stat.h>
+ # include <stdlib.h>
++# include <time.h>
++# include <unistd.h>
++# include <utime.h>
+ #else
+ FILE *fdopen PARMS ((int, char *));
+ FILE *fopen PARMS ((char *, char *));
+Index: zooadd.c
+===================================================================
+--- zooadd.c.orig
++++ zooadd.c
+@@ -132,7 +132,7 @@ if (exists (zoo_path)) {
+ 
+ if (zoo_file == NOFILE)
+    prterror ('f', could_not_open, zoo_path);
+-basename(zoo_path, zoo_fname);      /* get basename of archive */
++my_basename(zoo_path, zoo_fname);      /* get basename of archive */
+ rootname (zoo_path, zoo_bak);       /* name without extension */
+ strcat (zoo_bak, BACKUP_EXT);       /* name of backup of this archive */
+ 
+@@ -222,7 +222,7 @@ while (1) {
+ 		break;
+ 	}
+ 
+-   basename (this_path, this_fname);   /* get just filename for later */
++   my_basename (this_path, this_fname);   /* get just filename for later */
+ 
+    this_file = zooopen(this_path, Z_READ);
+    if (this_file == NOFILE) {
+Index: zoofns.h
+===================================================================
+--- zoofns.h.orig
++++ zoofns.h
+@@ -85,7 +85,7 @@ void addbfcrc PARMS ((char *, int));
+ void addfname PARMS ((char *, long, unsigned int, unsigned int, 
+ 							unsigned, unsigned));
+ void add_version PARMS ((char *, struct direntry *));
+-void basename PARMS ((char *, char []));
++void my_basename PARMS ((char *, char []));
+ void break_off PARMS ((void));
+ void close_file PARMS ((ZOOFILE));
+ void comment PARMS ((char *, char *));

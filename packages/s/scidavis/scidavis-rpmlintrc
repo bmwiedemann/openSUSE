@@ -1,0 +1,5 @@
+# this desktop file is just for mime
+addFilter("untranslated-desktop-file.*x-sciprj.desktop");
+# IMHO needed and not a devel file
+addFilter("devel-file-in-non-devel-package.*/usr/lib64/scidavis/plugins/lib.*so");
+addFilter("devel-file-in-non-devel-package.*/usr/lib/scidavis/plugins/lib.*so");

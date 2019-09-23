@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Wed Feb 27 00:44:32 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- fix tumbleweed build
+  * fix Windows end of file, or rdoc 2.6.0 will fail
+
+-------------------------------------------------------------------
+Tue Sep 27 04:51:16 UTC 2016 - coolo@suse.com
+
+- updated to version 0.8.2
+ see installed CHANGELOG
+
+  =0.8.2
+  
+  * Added helper methods
+
+-------------------------------------------------------------------
+Tue Aug 16 12:09:14 UTC 2016 - tampakrap@opensuse.org
+
+- Initial commit
+

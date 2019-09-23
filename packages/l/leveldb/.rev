@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d05aae51de139aa5900ebdc8b74ff151</srcmd5>
+    <version>1.14.0</version>
+    <time>1384435334</time>
+    <user>scarabeus_factory</user>
+    <comment>New package see http://lists.opensuse.org/opensuse-factory/2013-10/msg00131.html</comment>
+    <requestid>205652</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b46013ceba63bca17c894db2beb0dda1</srcmd5>
+    <version>1.14.0</version>
+    <time>1388394323</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>212331</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ea6b6c1cee5f878e7f147ce59772e099</srcmd5>
+    <version>1.15.0</version>
+    <time>1392234831</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>222074</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fb7b323e85ebfc5018b94f2f48b67b74</srcmd5>
+    <version>1.16.0</version>
+    <time>1397042051</time>
+    <user>coolo</user>
+    <comment>- updated to 1.16.0
+  + Make Log::Reader not report a corruption when the last record in a
+    log file is truncated.
+  + Fix issue 224: variable created but not utilized.
+  + Remove comment that referenced a removed feature.</comment>
+    <requestid>229300</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>fb7b323e85ebfc5018b94f2f48b67b74</srcmd5>
+    <version>1.16.0</version>
+    <time>1409301472</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1a53bee3129cf2b86ed7f8f17eb5ea89</srcmd5>
+    <version>1.18</version>
+    <time>1413987801</time>
+    <user>coolo</user>
+    <comment>- update to 1.18:
+  + Replace the basic fprintf call with a call to fwrite
+  + Fix ALL the header guards.
+  + A new CONTRIBUTING file.
+  + leveldb: Remove unused function 'ConsumeChar'.
+  + leveldbutil: Remove unused member variables from WriteBatchItemPrinter.
+  + Verify checksums of index/meta/filter blocks when paranoid_checks set.
+  + Invoke all tools for iOS with xcrun. (This was causing problems with the new XCode 5.1.1 image on pulse.)
+  + include only once, and fix the following linter warning: &quot;Found C system header after C++ system header&quot;
+  + When encountering a corrupted table file, return Status::Corruption instead of Status::InvalidArgument.
+  + Support cygwin as build platform, patch is from https://code.google.com/p/leveldb/issues/detail?id=188
+  + Fix typo, merge patch from https://code.google.com/p/leveldb/issues/detail?id=159
+  + Fix typos and comments, and address the following two issues:
+  + Add missing db synchronize after &quot;fillseq&quot; in the benchmark.
+  + Removed unused variable in SeekRandom: value (issue #201)</comment>
+    <requestid>257763</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a50c0f5c7b81056f4e1b7448ec3d73e4</srcmd5>
+    <version>1.18</version>
+    <time>1428391799</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294636</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4397cf970b1c1f5824a1d135cefedf7c</srcmd5>
+    <version>1.20</version>
+    <time>1497949077</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503679</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>8d1f68232079a750e898280064f176b5</srcmd5>
+    <version>1.20</version>
+    <time>1502629097</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>515889</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a88a8603322af1454b20eeba759d0ee1</srcmd5>
+    <version>1.20</version>
+    <time>1503482023</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518015</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>c02dbea0c549209d6d7b90e11fc4b2b8</srcmd5>
+    <version>1.20</version>
+    <time>1567677879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720529</requestid>
+  </revision>
+</revisionlist>

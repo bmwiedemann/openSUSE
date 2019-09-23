@@ -1,0 +1,10 @@
+<package name="gnome-menus-branding-SLED" project="openSUSE:Factory">
+  <title>The GNOME Desktop Menu -- SLED Menus Definitions</title>
+  <description>The package contains an implementation of the draft &quot;Desktop Menu
+Specification&quot; from freedesktop.org:
+
+http://www.freedesktop.org/Standards/menu-spec
+
+This package provides the SLED definitions for menus.</description>
+  <devel project="openSUSE:Factory" package="gnome-menus-branding-openSUSE"/>
+</package>

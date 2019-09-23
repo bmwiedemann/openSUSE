@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>134ca135cb302833e650c20aaf11704d</srcmd5>
+    <version>0.4.1</version>
+    <time>1532161538</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624257</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4c6e64ee8f8a0c06365909d258538286</srcmd5>
+    <version>1.1.0</version>
+    <time>1564994190</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.1.0
+  * Per 'http://python-future.org/automatic_conversion.html' py2 &amp; py3 compatibility.
+  * Make sure test fails if there is more than one list entry.
+  * Fix deprecated warning for invalid escapes.
+  * Support utf-8 in template files
+  * Add utf-8 characters to a test example
+  * Unicode example in template input.
+  * Switch to utf-8 strings and remove unnecessary conversions.
+  * Remove legacy lint checks
+  * Migrate StringIO and remove unneeded import six.
+  * Remove unnecessary explicit unicast declaration.
+  * oll back changes to 'open'.
+  * Cosmetic linting.
+  * Package 'future' needed for importing builtins.
+  * Add tests and testdata to distribution.
+  * Use correct install_requires stanza for dependencies.
+  * Include testdata files in binarty dist for tyesting.
+- deleted patches
+  - textfsm_test_do_not_relay_on_dic_order.patch (upstreamed)</comment>
+    <requestid>720151</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8d75fc60d3f2ada9c5fdb84d8873dc5a</srcmd5>
+    <version>1.1.0</version>
+    <time>1565362416</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>721737</requestid>
+  </revision>
+</revisionlist>

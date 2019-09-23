@@ -1,0 +1,94 @@
+Index: acsccid-1.1.5/src/ifdhandler.c
+===================================================================
+--- acsccid-1.1.5.orig/src/ifdhandler.c
++++ acsccid-1.1.5/src/ifdhandler.c
+@@ -427,7 +427,7 @@ EXTERNAL RESPONSECODE IFDHCloseChannel(D
+ 
+ 
+ #if !defined(TWIN_SERIAL)
+-static RESPONSECODE IFDHPolling(DWORD Lun, int timeout)
++static RESPONSECODE IFDHPollingWithTimeout(DWORD Lun, int timeout)
+ {
+ 	int reader_index;
+ 
+@@ -444,7 +444,7 @@ static RESPONSECODE IFDHPolling(DWORD Lu
+ 
+ /* on an ICCD device the card is always inserted
+  * so no card movement will ever happen: just do nothing */
+-static RESPONSECODE IFDHSleep(DWORD Lun, int timeout)
++static RESPONSECODE IFDHSleepWithTimeout(DWORD Lun, int timeout)
+ {
+ 	int reader_index;
+ 
+@@ -478,6 +478,16 @@ static RESPONSECODE IFDHStopPolling(DWOR
+ 	(void)InterruptStop(reader_index);
+ 	return IFD_SUCCESS;
+ }
++
++static RESPONSECODE IFDHPolling(DWORD Lun)
++{
++	return IFDHPollingWithTimeout(Lun, 2 * 1000);	/* 2 seconds */
++}
++
++static RESPONSECODE IFDHSleep(DWORD Lun)
++{
++	return IFDHSleepWithTimeout(Lun, 10 * 60 * 1000);	/* 10 minutes */
++}
+ #endif
+ 
+ 
+@@ -681,7 +691,7 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
+ 				{
+ 					*Length = sizeof(void *);
+ 					if (Value)
+-						*(void **)Value = IFDHPolling;
++						*(void **)Value = IFDHPollingWithTimeout;
+ 				}
+ 
+ 				if ((PROTOCOL_ICCD_A == ccid_desc->bInterfaceProtocol)
+@@ -689,7 +699,7 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
+ 				{
+ 					*Length = sizeof(void *);
+ 					if (Value)
+-						*(void **)Value = IFDHSleep;
++						*(void **)Value = IFDHSleepWithTimeout;
+ 				}
+ 			}
+ 			break;
+@@ -732,6 +742,36 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
+ 				}
+ 			}
+ 			break;
++
++		case TAG_IFD_POLLING_THREAD:
++			{
++				_ccid_descriptor *ccid_desc;
++
++				/* default value: not supported */
++				*Length = 0;
++
++				ccid_desc = get_ccid_descriptor(reader_index);
++
++				/* CCID and not ICCD */
++				if (((PROTOCOL_CCID == ccid_desc -> bInterfaceProtocol)
++					|| (PROTOCOL_ACR38 == ccid_desc -> bInterfaceProtocol))
++					/* 3 end points */
++					&& (3 == ccid_desc -> bNumEndpoints))
++				{
++					*Length = sizeof(void *);
++					if (Value)
++						*(void **)Value = IFDHPolling;
++				}
++
++				if ((PROTOCOL_ICCD_A == ccid_desc->bInterfaceProtocol)
++					|| (PROTOCOL_ICCD_B == ccid_desc->bInterfaceProtocol))
++				{
++					*Length = sizeof(void *);
++					if (Value)
++						*(void **)Value = IFDHSleep;
++				}
++			}
++			break;
+ #endif
+ 
+ 		case SCARD_ATTR_VENDOR_IFD_SERIAL_NO:

@@ -1,0 +1,13 @@
+<package name="texlive" project="openSUSE:Factory">
+  <title>The TeXLive Formatting System</title>
+  <description>After installing texlive and the package texlive-latex, find a large selection of documentation for TeX, LaTeX, and various layout styles in /usr/share/texmf/doc.
+
+TeX (pronounced tech) is an interpreter for text formatting and was developed by Donald E. Knuth.  It works with control and macro commands on a text file. Working with TeX is similar to typesetting methods. LaTeX is a complex macro package that removes the cryptical TeX interface and does most of the work for the user.
+
+TeX uses special fonts produced by the MetaFont program. Various printer drivers and an X11 viewer are also included in this package. The teTeX package is based on the standard TeX package of Karl Berry, which makes configuration much easier. It is also possible to use PostScript fonts. A real PostScript printer is required, however. If the ghostscript (gs) package is installed, all drivers for printing and viewing can use these fonts. Note, however, that the fonts included in the ghostscript package are not identical to Adobe's PostScript fonts. The copyright prohibids us to include them on the CD.
+
+Besides these features, the programs MakeIndex (for producing indexes) and BibTeX (for literature data processing) exist.
+
+The texlive package includes a full texmf tree, many programs like tex, dvips, etc., shell script configuration, and a big collection of documentations. This package is easily configured by the script texconfig and has multilanguage options.</description>
+  <devel project="Publishing:TeXLive" package="texlive"/>
+</package>

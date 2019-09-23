@@ -1,0 +1,5 @@
+<package name="python-efl" project="openSUSE:Factory">
+  <title>python-efl</title>
+  <description>Python bindings for the enlightenment foundation libraries</description>
+  <devel project="X11:Enlightenment:Factory" package="python-efl"/>
+</package>

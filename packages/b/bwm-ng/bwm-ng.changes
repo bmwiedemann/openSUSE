@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Fri Aug 23 20:22:00 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from descriptions.
+- Remove unsupported arches from specfile.
+
+-------------------------------------------------------------------
+Wed Aug 14 19:46:57 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 0.6.2:
+  * Fix for timestamp inaccuracy and Y-2038 problem.
+  * Add the started time in "sum" mode.
+  * Fix DYNAMIC and ANSIOUT in config.
+  * Use `static inline` instead of `inline`.
+  * Always fflush the pipe.
+  * Update FSF address.
+  * Fix typos.
+  * Fix nan and inf values on fast refresh (deb#532331).
+- Remove bwm-ng-fix_gcc7_inline.patch: Fixed upstream.
+- Refresh spec file.
+
+-------------------------------------------------------------------
+Mon Jun 12 01:19:02 UTC 2017 - pascal.bleser@opensuse.org
+
+- add patch to fix build with GCC7 in Factory, requiring the use of
+  "static inline" instead of "inline":
+  bwm-ng-fix_gcc7_inline.patch
+
+-------------------------------------------------------------------
+Mon Nov 30 11:32:34 UTC 2015 - nemysis@openSUSE.org
+
+- Update to 0.6.1, please see
+
+  /usr/share/doc/packages/bwm-ng/ChangeLog and NEWS
+
+- Change Desktop entry file
+- Add icons
+- Add default header
+- Change URL
+- Change Source0 to use Web URL
+- license update: GPL-2.0+, use default
+- Add BuildRequires for hicolor-icon-theme
+- Remove BuildRequires for gcc make
+- Use default %make_install
+- Change Documentation
+
+-------------------------------------------------------------------
+Mon Jan 03 22:38:54 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.6)
+

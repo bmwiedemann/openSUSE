@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Sun Nov 11 10:52:36 UTC 2018 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- 0.9.0+git.2017.11.21:
+  * Sources were switched to github.com/lupoDharkael/smilla-enlarger.
+  * Removed smillaenlarger-qt5.patch & smillaenlarger.desktop.
+  * Added smillaenlarger-0.9.0+git.2017.11.21_Qt5.11.patch
+    that resolves boo#1115056.
+- `spec-cleaner` and general refactoring.
+
+-------------------------------------------------------------------
+Fri Dec 15 20:24:41 UTC 2017 - crrodriguez@opensuse.org
+
+- smillaenlarger-qt5.patch: Very simple patch to allow 
+  building against QT5.
+
+-------------------------------------------------------------------
+Wed Nov 13 15:36:28 UTC 2013 - dap.darkness@gmail.com
+
+- https://build.opensuse.org/request/show/206506 :
+  * qmake call was moved to %build phase;
+  * %setup -n was changed not to cd everywhere;
+  * non SUSE distros were dropped.
+
+-------------------------------------------------------------------
+Fri Nov  8 19:25:30 UTC 2013 - dap.darkness@gmail.com
+
+- Initial build by Sa Wa.
+- Refactored for openSUSE.
+

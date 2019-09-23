@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Mon Nov 12 08:28:17 UTC 2018 - Markos Chandras <mchandras@suse.de>
+
+- Version bump to 0.0.4
+  * Add input and forward zone to the known ones (bsc#1115001)
+  * Stop guessing firewall service from port/proto
+
+-------------------------------------------------------------------
+Wed May 30 09:46:51 UTC 2018 - mchandras@suse.de
+
+- Version bump to 0.0.3
+  * Do not try to handle unknown iptables chains
+  * Handle source whitelisting (gh#openSUSE/susefirewall2-to-firewalld#2, bsc#1105157)
+
+-------------------------------------------------------------------
+Mon Mar 19 12:17:00 UTC 2018 - mchandras@suse.de
+
+- Version bump to 0.0.2
+  * Handle migration when SF2 is absent (bsc#1084177)
+  * Ensure that firewalld is enabled after migration
+  * Print firewalld commands in debug mode
+
+-------------------------------------------------------------------
+Mon Apr  4 21:54:57 UTC 2016 - mchandras@suse.de
+
+- Fix Source URL
+
+-------------------------------------------------------------------
+Tue Mar 29 09:59:07 UTC 2016 - mchandras@suse.de
+
+- Initial commit for susefirewall2-to-firewalld-0.0.1 
+

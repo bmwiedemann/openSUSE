@@ -1,0 +1,91 @@
+diff --git ompi/etc/openmpi-totalview.tcl ompi/etc/openmpi-totalview.tcl
+index d9b4ab9..27edbc4 100644
+--- ompi/etc/openmpi-totalview.tcl
++++ ompi/etc/openmpi-totalview.tcl
+@@ -5,14 +5,14 @@
+ # Copyright (c) 2004-2005 The University of Tennessee and The University
+ #                         of Tennessee Research Foundation.  All rights
+ #                         reserved.
+-# Copyright (c) 2004-2005 High Performance Computing Center Stuttgart, 
++# Copyright (c) 2004-2005 High Performance Computing Center Stuttgart,
+ #                         University of Stuttgart.  All rights reserved.
+ # Copyright (c) 2004-2005 The Regents of the University of California.
+ #                         All rights reserved.
+ # $COPYRIGHT$
+-# 
++#
+ # Additional copyrights may follow
+-# 
++#
+ # $HEADER$
+ #
+ 
+diff --git opal/etc/openmpi-mca-params.conf opal/etc/openmpi-mca-params.conf
+index 7a1f923..e491480 100644
+--- opal/etc/openmpi-mca-params.conf
++++ opal/etc/openmpi-mca-params.conf
+@@ -5,15 +5,15 @@
+ # Copyright (c) 2004-2005 The University of Tennessee and The University
+ #                         of Tennessee Research Foundation.  All rights
+ #                         reserved.
+-# Copyright (c) 2004-2005 High Performance Computing Center Stuttgart, 
++# Copyright (c) 2004-2005 High Performance Computing Center Stuttgart,
+ #                         University of Stuttgart.  All rights reserved.
+ # Copyright (c) 2004-2005 The Regents of the University of California.
+ #                         All rights reserved.
+-# Copyright (c) 2006      Cisco Systems, Inc.  All rights reserved.
++# Copyright (c) 2006-2017 Cisco Systems, Inc.  All rights reserved
+ # $COPYRIGHT$
+-# 
++#
+ # Additional copyrights may follow
+-# 
++#
+ # $HEADER$
+ #
+ 
+@@ -54,5 +54,5 @@
+ # Change component loading path
+ #   component_path = /usr/local/lib/openmpi:~/my_openmpi_components
+ 
+-# See "ompi_info --param all all" for a full listing of Open MPI MCA
+-# parameters available and their default values.
++# See "ompi_info --param all all --level 9" for a full listing of Open
++# MPI MCA parameters available and their default values.
+diff --git orte/etc/openmpi-default-hostfile orte/etc/openmpi-default-hostfile
+index 0051d15..ad5a0f7 100644
+--- orte/etc/openmpi-default-hostfile
++++ orte/etc/openmpi-default-hostfile
+@@ -5,21 +5,21 @@
+ # Copyright (c) 2004-2005 The University of Tennessee and The University
+ #                         of Tennessee Research Foundation.  All rights
+ #                         reserved.
+-# Copyright (c) 2004-2005 High Performance Computing Center Stuttgart, 
++# Copyright (c) 2004-2005 High Performance Computing Center Stuttgart,
+ #                         University of Stuttgart.  All rights reserved.
+ # Copyright (c) 2004-2005 The Regents of the University of California.
+ #                         All rights reserved.
+ # $COPYRIGHT$
+-# 
++#
+ # Additional copyrights may follow
+-# 
++#
+ # $HEADER$
+ #
+ # This is the default hostfile for Open MPI.  Notice that it does not
+ # contain any hosts (not even localhost).  This file should only
+ # contain hosts if a system administrator wants users to always have
+ # the same set of default hosts, and is not using a batch scheduler
+-# (such as SLURM, PBS, etc.).  
++# (such as SLURM, PBS, etc.).
+ #
+ # Note that this file is *not* used when running in "managed"
+ # environments (e.g., running in a job under a job scheduler, such as
+@@ -32,5 +32,5 @@
+ # components were able to find any hosts to run on (this behavior can
+ # be disabled by excluding the localhost RAS component by specifying
+ # the value "^localhost" [without the quotes] to the "ras" MCA
+-# parameter).  
++# parameter).
+ 

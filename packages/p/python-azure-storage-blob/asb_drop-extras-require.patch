@@ -1,0 +1,11 @@
+diff -Nru azure-storage-blob-1.5.0.orig/setup.py azure-storage-blob-1.5.0/setup.py
+--- azure-storage-blob-1.5.0.orig/setup.py	2019-04-02 12:19:39.018438103 +0200
++++ azure-storage-blob-1.5.0/setup.py	2019-04-02 12:19:50.926545674 +0200
+@@ -74,7 +74,4 @@
+         'azure-common>=1.1.5',
+         'azure-storage-common>=1.4'
+     ],
+-    extras_require={
+-        ":python_version<'3.0'": ['futures'],
+-    },
+ )

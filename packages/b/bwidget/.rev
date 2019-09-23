@@ -1,0 +1,157 @@
+<revisionlist>
+  <revision rev="1" vrev="48">
+    <srcmd5>c6e628f3caf7c730d3406ddd2576d15a</srcmd5>
+    <version>1.7.0</version>
+    <time>1168902386</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0e020814e3778b4ded047dfcc20e00fd</srcmd5>
+    <version>1.8.0</version>
+    <time>1208739285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="39">
+    <srcmd5>0e020814e3778b4ded047dfcc20e00fd</srcmd5>
+    <version>1.8.0</version>
+    <time>1208739285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="40">
+    <srcmd5>4cfc2ea6dbdb30385bddb6eb8c7e82a2</srcmd5>
+    <version>1.8.0</version>
+    <time>1245337393</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a6045260dec40a503c50120fc5351259</srcmd5>
+    <version>1.9.0</version>
+    <time>1248883148</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>a6045260dec40a503c50120fc5351259</srcmd5>
+    <version>1.9.0</version>
+    <time>1248883148</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>4f79bdd1874903b2626897969135c2b6</srcmd5>
+    <version>1.9.0</version>
+    <time>1268923136</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>4f79bdd1874903b2626897969135c2b6</srcmd5>
+    <version>1.9.0</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>4f79bdd1874903b2626897969135c2b6</srcmd5>
+    <version>1.9.0</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>4f79bdd1874903b2626897969135c2b6</srcmd5>
+    <version>1.9.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>3e3c6fa53b27db3bbd7b5ab787585ac5</srcmd5>
+    <version>1.9.0</version>
+    <time>1317049293</time>
+    <user>oertel</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82932 from jengelh)</comment>
+    <requestid>84795</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>85617092abdb75c155404683ffe6616f</srcmd5>
+    <version>1.9.0</version>
+    <time>1317049298</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 84795
+</comment>
+  </revision>
+  <revision rev="13" vrev="14">
+    <srcmd5>85617092abdb75c155404683ffe6616f</srcmd5>
+    <version>1.9.0</version>
+    <time>1319181799</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="15">
+    <srcmd5>c64b6c09d1efc5bcfe3f3c40f9c1fc78</srcmd5>
+    <version>1.9.0</version>
+    <time>1323190925</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>8db968171e730cf38b4d1c2227c2398b</srcmd5>
+    <version>1.9.5</version>
+    <time>1330692424</time>
+    <user>coolo</user>
+    <comment>- Upgrade to version 1.9.5.
+- /images/CVS/ doesn't exist in this version
+- source name changed to bwidget from BWidget
+- included dos2unix to erease an error from a txt file (forwarded request 107481 from gschlotter)</comment>
+    <requestid>107672</requestid>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>8db968171e730cf38b4d1c2227c2398b</srcmd5>
+    <version>1.9.5</version>
+    <time>1340183221</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4ee75ad2f169bc58a155bf0e2051c784</srcmd5>
+    <version>1.9.6</version>
+    <time>1347618107</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134059</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>4ee75ad2f169bc58a155bf0e2051c784</srcmd5>
+    <version>1.9.6</version>
+    <time>1359108723</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>4ee75ad2f169bc58a155bf0e2051c784</srcmd5>
+    <version>1.9.6</version>
+    <time>1379662067</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>4ee75ad2f169bc58a155bf0e2051c784</srcmd5>
+    <version>1.9.6</version>
+    <time>1409300596</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e3438001fcc3db3fb33d7cbd055f0bc3</srcmd5>
+    <version>1.9.8</version>
+    <time>1420318871</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>267024</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>314cdfa5c9da378f6000372be2a9c6f2</srcmd5>
+    <version>1.9.9</version>
+    <time>1456127889</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360502</requestid>
+  </revision>
+</revisionlist>

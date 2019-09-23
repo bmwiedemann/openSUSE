@@ -1,0 +1,205 @@
+-------------------------------------------------------------------
+Tue May 28 04:38:14 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.4.0
+  + Rename export_moks as export_db_keys
+  + Add support for exporting other keys
+  + add new --mok argument
+  + set list-enrolled command as default for some arguments
+  + Add more info to --sb-state: show when we're in SetupMode or
+    with shim validation disabled
+  + Correct help: --set-timeout is really --timeout
+  + generate_hash() / generate_pw_hash(): don't use strlen() for
+    strncpy bounds
+  + Add the type casting to silence the warning
+  + Add a way for mokutil to configure a timeout for MokManager's
+    prompt
+  + list_keys_in_var(): check errno correctly, not ret twice
+  + Fix typo in error message when the system lacks Secure Boot
+    support
+  + Add bash completion file
+  + mokutil: be explicit about file modes in all cases
+  + Make all efi_guid_t const
+  + Don't allow sha1 on the mokutil command line
+  + Build with -fshort-wchar so toggle passwords work right
+  + Fix the 32bit signedness comparison
+  + Fix the potential buffer overflow
+- Add mokutil-remove-shebang-from-bash-completion-file.patch to
+  remove shebang from bash-completion/mokutil
+- Drop upstreamed patches
+  + mokutil-constify-efi-guid.patch
+  + mokutil-fix-overflow.patch
+  + mokutil-fshort-wchar.patch
+  + mokutil-set-efi-variable-file-mode.patch
+- Refresh mokutil-support-revoke-builtin-cert.patch
+- Install bash-completion/mokutil
+
+-------------------------------------------------------------------
+Thu Mar 21 02:39:46 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add modhash to calculate the hash of kernel module (SLE-5661)
+  + Also add openssl to Requires since the script needs it
+
+-------------------------------------------------------------------
+Fri Nov 23 08:58:24 UTC 2018 - glin@suse.com
+
+- Enable AArch64 build (bsc#1119769, fate#326541)
+
+-------------------------------------------------------------------
+Tue Mar 27 09:54:10 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Wed Jul 13 04:52:23 UTC 2016 - glin@suse.com
+
+- Patches for efivar 0.24
+  + Add mokutil-set-efi-variable-file-mode.patch to set the file
+    mode explicitly.
+  + Add mokutil-constify-efi-guid.patch to make all efi_guild_t
+    variables const.
+  + Refresh mokutil-support-revoke-builtin-cert.patch for the
+    change of efi_set_variable()
+
+-------------------------------------------------------------------
+Tue Jun 30 08:43:45 UTC 2015 - glin@suse.com
+
+- Add mokutil-fshort-wchar.patch to make sure the UEFI strings are
+  UCS-2 encoding.
+
+-------------------------------------------------------------------
+Tue Nov  4 07:52:54 UTC 2014 - glin@suse.com
+
+- Update to 0.3.0
+- Add mokutil-fix-overflow.patch to fix the buffer overflow
+- Drop upstreamed patches
+  + mokutil-upstream-fixes.patch
+  + mokutil-mokx-support.patch
+  + mokutil-check-corrupted-key-list.patch
+  + mokutil-check-secure-boot-support.patch
+  + mokutil-clean-request.patch
+  + mokutil-fix-hash-file-read.patch
+  + mokutil-fix-hash-list-size.patch
+  + mokutil-more-details-for-skipped-keys.patch
+  + mokutil-no-invalid-x509.patch
+- Refresh mokutil-support-revoke-builtin-cert.patch
+
+-------------------------------------------------------------------
+Wed Apr 16 04:11:50 UTC 2014 - glin@suse.com
+
+- Add mokutil-fix-hash-file-read.patch to fix the error handling of
+  reading a hash file
+
+-------------------------------------------------------------------
+Thu Apr 10 04:44:22 UTC 2014 - glin@suse.com
+
+- Add mokutil-check-corrupted-key-list.patch to check whether the
+  key list is corrupted or not
+- Add mokutil-no-invalid-x509.patch to avoid importing an invalid
+  x509 certificate
+
+-------------------------------------------------------------------
+Mon Mar 24 07:37:39 UTC 2014 - glin@suse.com
+
+- Add mokutil-more-details-for-skipped-keys.patch to show the
+  reason to skip the key
+- Add mokutil-check-secure-boot-support.patch to check whether the
+  system supports Secure Boot or not
+
+-------------------------------------------------------------------
+Fri Feb 21 10:10:15 UTC 2014 - glin@suse.com
+
+- Add mokutil-support-revoke-builtin-cert.patch to add an option to
+  revoke the built-in certificate in shim
+
+-------------------------------------------------------------------
+Wed Feb 12 10:06:31 UTC 2014 - glin@suse.com
+
+- Add mokutil-fix-hash-list-size.patch to update the list size
+  after merging or deleting a hash
+- Add mokutil-clean-request.patch to clean the request if all keys
+  are removed
+
+-------------------------------------------------------------------
+Wed Jan 22 05:55:45 UTC 2014 - glin@suse.com
+
+- Update mokutil-mokx-support.patch to fix the test-key request
+  check
+
+-------------------------------------------------------------------
+Thu Dec  5 02:11:40 UTC 2013 - glin@suse.com
+
+- Add mokutil-upstream-fixes.patch to include upstream fixes for
+  db signature check, gcc warnings, and error handling
+- Add mokutil-mokx-support.patch to support the MOK blacklist
+  (FATE#316531)
+
+-------------------------------------------------------------------
+Thu Jul 25 09:13:44 UTC 2013 - glin@suse.com
+
+- Update to 0.2.0
+  + Generate the password hash with crypt() by default instead of
+    the original sha256 password hash
+  + Add an option to import the root password hash
+  + Amend error messages, help, and man page
+- Drop upstreamed patches
+  + mokutil-lcrypt-ldflag.patch
+  + mokutil-probe-secure-boot-state.patch
+  + mokutil-allow-password-from-pipe.patch
+  + mokutil-bnc809703-check-pending-request.patch
+  + mokutil-support-delete-keys.patch
+  + mokutil-support-crypt-hash-methods.patch
+  + mokutil-update-man-page.patch
+  + mokutil-bnc809215-improve-wording.patch
+  + mokutil-support-new-pw-hash.patch
+  + mokutil-no-duplicate-keys-imported.patch
+
+-------------------------------------------------------------------
+Tue Apr  2 04:43:59 UTC 2013 - glin@suse.com
+
+- Add mokutil-bnc809215-improve-wording.patch to make the messages
+  understandable (bnc#809215)
+- Add mokutil-bnc809703-check-pending-request.patch to remove the
+  key from the pending request if necessary (bnc#809703)
+
+-------------------------------------------------------------------
+Wed Jan 30 08:00:22 UTC 2013 - glin@suse.com
+
+- Merge patches for FATE#314506
+  + Add mokutil-support-crypt-hash-methods.patch to support the
+    password hashes from /etc/shadow
+  + Add mokutil-update-man-page.patch to update man page for the
+    new added options
+- Add mokutil-lcrypt-ldflag.patch to correct LDFLAGS
+
+-------------------------------------------------------------------
+Fri Jan 18 10:05:27 UTC 2013 - glin@suse.com
+
+- Update mokutil-support-new-pw-hash.patch to extend the password
+  hash format
+
+-------------------------------------------------------------------
+Wed Jan 16 08:41:15 UTC 2013 - glin@suse.com
+
+- Merge patches for FATE#314506
+  + Add mokutil-support-delete-keys.patch to delete specific keys
+  + Add mokutil-support-new-pw-hash.patch to support the new
+    password format
+  + Add mokutil-allow-password-from-pipe.patch to allow the
+    password to be generated in a script and be sent through
+    pipeline
+- Install COPYING
+
+-------------------------------------------------------------------
+Tue Dec 11 08:07:32 UTC 2012 - glin@suse.com
+
+- Add mokutil-probe-secure-boot-state.patch to probe the state of
+  secure boot
+- Add mokutil-no-duplicate-keys-imported.patch to avoid importing
+  duplicate keys
+
+-------------------------------------------------------------------
+Wed Nov  7 08:10:45 UTC 2012 - glin@suse.com
+
+- Add new package mokutil-0.1.0 (FATE#314510)
+

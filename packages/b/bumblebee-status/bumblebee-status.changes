@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Tue Apr 17 11:48:45 UTC 2018 - jengelh@inai.de
+
+- Ensure summaries are noun phrases
+
+-------------------------------------------------------------------
+Wed Apr 11 22:59:18 UTC 2018 - avindra@opensuse.org
+
+- Update to 1.6.1
+  * traffic: Hide down interfaces
+  * nic: Add output format parameter
+  * new theme "greyish-powerline"
+  * new module "taskwarrior"
+  * fix: brightness: Return format fix
+  * fix: theme engine: Remove unneeded YAML dependency
+  * fix: general: Removed typos
+  * fix: battery: Better error handling
+  * fix: getcrypto: Handle downtime of crypto service
+  * fix: datetime: Fallback to en_US formatting
+  * fix: memory: Fixes to percentage calculation
+- package some modules separately (more can be done, this is a
+  start)
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Jan 19 05:34:23 UTC 2018 - avindra@opensuse.org
+
+- Update to 1.6.0
+  * redshift module now updates in the background and no longer
+    blocks the bar
+  * Awesome fonts in the theme can now be referenced by name
+    (using ${})
+  * Add generic mechanism for slow updates, and apply it to
+    various modules
+  * Update stock widget only every hour
+
+-------------------------------------------------------------------
+Sun Jan  7 21:53:11 UTC 2018 - avindra@opensuse.org
+
+- remove broken stock integration with deprecated Yahoo API
+
+-------------------------------------------------------------------
+Thu Jan  4 23:21:29 UTC 2018 - avindra@opensuse.org
+
+- Do not ship pacman module, as it's only relevant on Arch linux
+- update use-python-3.patch
+  * fix warning about /usr/bin/env breaking dependency detection
+    for python 3
+
+-------------------------------------------------------------------
+Tue Jan  2 03:30:12 UTC 2018 - avindra@opensuse.org
+
+- update to 1.5.1
+  * it was always logging messages to stderr (even when -d was
+    not specified), which end up in ~/.xsession-errors and consume
+    a lot of disk very quickly.
+  * Introduces two "special" log file names, stdout and stderr.
+- includes 1.5.0 (Theme support extension release)
+  * Add support for pywal in themes: Add a "colors" instruction
+    and then simply use names for your pywal colors (see the
+    wal-powerline.json themes for examples)
+  * Themes can now be stored outside the repository structure
+    (i.e. in ~/.config/bumblebee-status/themes/). Themes will be
+    merged, so it is also possible to partially overwrite theme
+    instructions by placing partial JSON files in this directory,
+    with the same name as the main theme (for example, anything
+    you write into ~/.config/bumblebee-status/themes/powerline.json
+    will overwrite the default powerline theme settings).
+  * 4 new modules
+    - rotation: Cycle through display orientations
+    - hipchat: Show number of unread hipchat messages
+    - uptime: Show current uptime
+    - zpool: Show zpool (ZFS) information
+  * new theme: "sac_red"
+- remove remove-invalid-shebang.patch
+  * merged in 9c52624ecb12adf6b3bcc3021feb7a0747ea179e
+
+-------------------------------------------------------------------
+Sun Oct  8 00:23:21 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Fri Oct  6 01:44:38 UTC 2017 - aavindraa@gmail.com
+
+- introduce package at 1.4.4 
+- 2 patches:
+  * remove-invalid-shebang.patch: removes shebang from non-executable
+    library code
+  * use-python-3.patch: force this package to use python 3, as python
+    2 is still the default for openSUSE.

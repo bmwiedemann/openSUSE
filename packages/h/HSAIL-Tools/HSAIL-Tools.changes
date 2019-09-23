@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Wed Jul 10 08:14:23 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to sort hash keys (boo#1041090)
+
+-------------------------------------------------------------------
+Sun Jun 09 09:01:34 UTC 2019 - bwiedemann@suse.com
+
+- Update to version 0+git20180830.6514deb:
+  * Fix misleading-indentation warning
+  * Fix for issue #52 : -Werror=int-in-bool-context
+  * Sort hash keys (boo#1041090)
+
+-------------------------------------------------------------------
+Thu Aug 24 12:27:52 UTC 2017 - mliska@suse.cz
+
+- Delete metadata from tarball.
+
+-------------------------------------------------------------------
+Thu Aug 24 11:07:00 UTC 2017 - mliska@suse.cz
+
+- Remove docs folder from package as it does not contain documentation
+  of the package.
+
+-------------------------------------------------------------------
+Sat Aug 12 21:57:40 UTC 2017 - jengelh@inai.de
+
+- Redo summary and description.
+- Fix escaping requirements on a find call.
+
+-------------------------------------------------------------------
+Fri Aug 04 13:16:44 UTC 2017 - mliska@suse.cz
+
+- Update to version 0+git20160712.12220b0:
+  * Restored imageQuery and samplerQuery for backward compatibility with legacy code
+  * Corrections to get rid of warnings + defined some constants for compatibility with legacy code
+  * Enable -Werror.
+  * Remove usage of EXTRA_CFLAGS.
+  * Clean up CMakeLists.txt
+  * Add build options to enable/disable all vendor extensions (VENDOR_EXTENSIONS) and AMD extensions (AMD_EXTENSIONS).
+  * Remove dependency on LLVM (it was only used to enable crash handler).
+  * Improve README.md
+  * Fix Windows build.
+  * Enable /W3 /WX on Windows.
+
+-------------------------------------------------------------------
+Fri Aug  4 11:21:51 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file
+-Use cmake macros
+
+-------------------------------------------------------------------
+Fri Aug  4 10:15:10 UTC 2017 - mliska@suse.cz
+
+- Initial version 0.99
+  * warning.patch

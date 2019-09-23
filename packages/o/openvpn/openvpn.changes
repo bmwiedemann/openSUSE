@@ -1,0 +1,1224 @@
+-------------------------------------------------------------------
+Mon Jul 29 07:43:00 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Clarify in the service file that the reload action doesn't work
+  when dropping root privileges (boo#1142830).
+
+-------------------------------------------------------------------
+Tue Jun 25 19:15:00 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Updated openvpn.keyring with public key downloaded from
+  https://swupdate.openvpn.net/community/keys/security-key-2019.asc
+
+-------------------------------------------------------------------
+Thu Feb 21 18:26:42 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Drop use of $FIRST_ARG in openvpn.spec
+
+  The use of $FIRST_ARG was probably required because of the
+  %service_* rpm macros were playing tricks with the shell positional
+  parameters. This is bad practice and error prones so let's assume
+  that no macros should do that anymore and hence it's safe to assume
+  that positional parameters remains unchanged after any rpm macro
+  call.
+
+-------------------------------------------------------------------
+Wed Feb 20 21:22:25 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Update to 2.4.7:
+  Adam Ciarcin?ski (1):
+    * Fix subnet topology on NetBSD (2.4).
+  Antonio Quartulli (3):
+    * add support for %lu in argv_printf and prevent ASSERT
+    * buffer_list: add functions documentation
+    * ifconfig-ipv6(-push): allow using hostnames
+  Arne Schwabe (7):
+    * Properly free tuntap struct on android when emulating persist-tun
+    * Add OpenSSL compat definition for RSA_meth_set_sign
+    * Add support for tls-ciphersuites for TLS 1.3
+    * Add better support for showing TLS 1.3 ciphersuites in --show-tls
+    * Use right function to set TLS1.3 restrictions in show-tls
+    * Add message explaining early TLS client hello failure
+    * Fallback to password authentication when auth-token fails
+  Christian Ehrhardt (1):
+    * systemd: extend CapabilityBoundingSet for auth_pam
+  David Sommerseth (1):
+    * plugin: Export base64 encode and decode functions
+  Gert Doering (3):
+    * Add %d, %u and %lu tests to test_argv unit tests.
+    * Fix combination of --dev tap and --topology subnet across multiple platforms.
+    * Add 'printing of port number' to mroute_addr_print_ex() for v4-mapped v6.
+  Gert van Dijk (1):
+    * Minor reliability layer documentation fixes
+  James Bekkema (1):
+    * Resolves small IV_GUI_VER typo in the documentation.
+  Jonathan K. Bullard (1):
+    * Clarify and expand management interface documentation
+  Lev Stipakov (5):
+    * Refactor NCP-negotiable options handling
+    * init.c: refine functions names and description
+    * interactive.c: fix usage of potentially uninitialized variable
+    * options.c: fix broken unary minus usage
+    * Remove extra token after #endif
+  Richard van den Berg via Openvpn-devel (1):
+    * Fix error message when using RHEL init script
+  Samy Mahmoudi (1):
+    * man: correct a --redirection-gateway option flag
+  Selva Nair (7):
+    * Replace M_DEBUG with D_LOW as the former is too verbose
+    * Correct the declaration of handle in 'struct openvpn_plugin_args_open_return'
+    * Bump version of openvpn plugin argument structs to 5
+    * Move get system directory to a separate function
+    * Enable dhcp on tap adapter using interactive service
+    * Pass the hash without the DigestInfo header to NCryptSignHash()
+    * White-list pull-filter and script-security in interactive service
+  Simon Rozman (2):
+    * Add Interactive Service developer documentation
+    * Detect TAP interfaces with root-enumerated hardware ID
+  Steffan Karger (7):
+    * man: add security considerations to --compress section
+    * mbedtls: print warning if random personalisation fails
+    * Fix memory leak after sighup
+    * travis: add OpenSSL 1.1 Windows build
+    * Fix --disable-crypto build
+    * Don't print OCC warnings about 'key-method', 'keydir' and 'tls-auth'
+    * buffer_list_aggregate_separator(): simplify code
+
+-------------------------------------------------------------------
+Fri Apr 27 12:25:19 UTC 2018 - max@suse.com
+
+- Update to 2.4.6:
+  * CVE-2018-9336, bsc#1090839: Fix potential double-free() in
+    Interactive Service
+  * Delete the IPv6 route to the "connected" network on tun close
+  * Management: warn about password only when the option is in use
+  * Avoid overflow in wakeup time computation
+
+-------------------------------------------------------------------
+Tue Apr 10 14:29:18 UTC 2018 - max@suse.com
+
+- Remove --askpass again, because it was also asking for a password
+  when none was needed. As a workaround for keys that need a
+  password, the "askpass" statement should be added to the config
+  file (bsc#1078026).
+- Use Type=notify in openvpn.service to reflect what openvpn is
+  actually doing.
+- Import the new signing key from upstream.
+- Remove obsolete configure switch --enable-password-save .
+
+-------------------------------------------------------------------
+Tue Mar 13 01:32:52 UTC 2018 - avindra@opensuse.org
+
+- Update to 2.4.5
+  * New features
+    + The new option --tls-cert-profile can be used to restrict the
+      set of allowed crypto algorithms in TLS certificates in mbed
+      TLS builds. The default profile is 'legacy' for now, which
+      allows SHA1+, RSA-1024+ and any elliptic curve certificates.
+      The default will be changed to the 'preferred' profile in the
+      future, which requires SHA2+, RSA-2048+ and any curve.
+    + openvpnserv: Add support for multi-instances (to support
+      multiple parallel OpenVPN installations, like EduVPN and
+      regular OpenVPN)
+    + Use P_DATA_V2 for server->client packets too (better packet
+      alignment)
+    + improve management interface documentation
+    + rework registry key handling for OpenVPN service, notably
+      making most registry values optional, falling back to
+      reasonable defaults
+    + accept IPv6 address for pushed "dhcp-option DNS ..." (make
+      OpenVPN 2 option compatible with OpenVPN 3 iOS and Android
+      clients)
+  * Bug fixes
+    + Fix --tls-version-min and --tls-version-max for OpenSSL 1.1+
+    + Fix lots of compiler warnings (format string, type casts, ...)
+    + reload HTTP proxy credentials when moving to the next
+      connection profile
+    + Fix build with LibreSSL (multiple times)
+    + Remove non-useful warning on pushed tun-ipv6 option.
+    + autoconf: Fix engine checks for openssl 1.1
+    + lz4: Rebase compat-lz4 against upstream v1.7.5
+    + lz4: Fix broken builds when pkg-config is not present but
+      system library is
+    + Fix '--bind ipv6only'
+    + Allow learning iroutes with network made up of all 0s
+- Includes 2.4.4
+  * Bug fixes
+    + Fix issues when a pushed cipher via the Negotiable Crypto
+      Parameters (NCP) is rejected by the remote side
+    + Ignore --keysize when NCP have resulted in a changed cipher
+    + Configurations using --auth-nocache and the management
+      interface to provide user credentials (like NetworkManager)
+      on client side with servers implementing authentication
+      tokens (for example, using --auth-gen-token) will now behave
+      correctly and not query the user for an, to them, unknown
+      authentication token on renegotiations of the tunnel.
+    + Invalid or corrupt SOCKS port number when changing the proxy
+      via the management interface.
+    + man page should now have proper escaping of hyphen/minus
+      characters and other minor corrections.
+  * User-visible Changes
+    + Linux servers with systemd which use the openvpn-server@.service
+      unit file for server configurations will now utilize the
+      automatic restart feature in systemd. If the OpenVPN server
+      process dies unexpectedly, systemd will ensure the OpenVPN
+      configuration will be restarted automatically.
+  * Deprecated
+    + --no-replay (will be removed in 2.5)
+    + --keysize (will be removed in 2.6)
+  * Security
+    + CVE-2017-12166: Fix bounds check for configurations using
+      --key-method 1. Before this fix, attackers could send a
+      malformed packet to trigger a stack overflow. This is
+      considered to be a low risk issue, as --key-method 2 has
+      been the default since 2.0 (released on 2005-04-17). This
+      option is already deprecated in v2.4 and will be completely
+      removed in v2.5.
+- Rebase openvpn-fips140-2.3.2.patch
+- Drop 0002-Fix-bounds-check-in-read_key.patch
+  * upstreamed in c7e259160b28e94e4ea7f0ef767f8134283af255
+- Partial cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb 13 17:49:09 UTC 2018 - max@suse.com
+
+- Add --askpass to ExecStart, so that the user name and password
+  are correctly being queried from the user.
+  (bsc#1078026, boo#985798, boo#1031748)
+- Use %service_add/del macros throughout (bsc#1038406).
+
+-------------------------------------------------------------------
+Thu Nov 23 13:52:15 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Tue Oct 10 14:10:30 CEST 2017 - ndas@suse.de
+
+- Do bound check in read_key before using values(CVE-2017-12166 bsc#1060877).
+  [+ 0002-Fix-bounds-check-in-read_key.patch]
+
+-------------------------------------------------------------------
+Fri Aug 11 13:43:39 UTC 2017 - sebix+novell.com@sebix.at
+
+- Do not package empty /usr/lib64/tmpfiles.d
+
+-------------------------------------------------------------------
+Fri Jun 23 11:47:38 CEST 2017 - ndas@suse.de
+
+- Update to 2.4.3 (bsc#1045489)
+    - Ignore auth-nocache for auth-user-pass if auth-token is pushed
+    - crypto: Enable SHA256 fingerprint checking in --verify-hash
+    - copyright: Update GPLv2 license texts
+    - auth-token with auth-nocache fix broke --disable-crypto builds
+    - OpenSSL: don't use direct access to the internal of X509
+    - OpenSSL: don't use direct access to the internal of EVP_PKEY
+    - OpenSSL: don't use direct access to the internal of RSA
+    - OpenSSL: don't use direct access to the internal of DSA
+    - OpenSSL: force meth->name as non-const when we free() it
+    - OpenSSL: don't use direct access to the internal of EVP_MD_CTX
+    - OpenSSL: don't use direct access to the internal of EVP_CIPHER_CTX
+    - OpenSSL: don't use direct access to the internal of HMAC_CTX
+    - Fix NCP behaviour on TLS reconnect.
+    - Remove erroneous limitation on max number of args for --plugin
+    - Fix edge case with clients failing to set up cipher on empty PUSH_REPLY.
+    - Fix potential 1-byte overread in TCP option parsing.
+    - Fix remotely-triggerable ASSERT() on malformed IPv6 packet.
+    - Preparing for release v2.4.3 (ChangeLog, version.m4, Changes.rst)
+    - refactor my_strupr
+    - Fix 2 memory leaks in proxy authentication routine
+    - Fix memory leak in add_option() for option 'connection'
+    - Ensure option array p[] is always NULL-terminated
+    - Fix a null-pointer dereference in establish_http_proxy_passthru()
+    - Prevent two kinds of stack buffer OOB reads and a crash for invalid input data
+    - Fix an unaligned access on OpenBSD/sparc64
+    - Missing include for socket-flags TCP_NODELAY on OpenBSD
+    - Make openvpn-plugin.h self-contained again.
+    - Pass correct buffer size to GetModuleFileNameW()
+    - Log the negotiated (NCP) cipher
+    - Avoid a 1 byte overcopy in x509_get_subject (ssl_verify_openssl.c)
+    - Skip tls-crypt unit tests if required crypto mode not supported
+    - openssl: fix overflow check for long --tls-cipher option
+    - Add a DSA test key/cert pair to sample-keys
+    - Fix mbedtls fingerprint calculation
+    - mbedtls: fix --x509-track post-authentication remote DoS (CVE-2017-7522)
+    - mbedtls: require C-string compatible types for --x509-username-field
+    - Fix remote-triggerable memory leaks (CVE-2017-7521)
+    - Restrict --x509-alt-username extension types
+    - Fix potential double-free in --x509-alt-username (CVE-2017-7521)
+    - Fix gateway detection with OpenBSD routing domains
+
+-------------------------------------------------------------------
+Wed Jun 14 12:05:14 CEST 2017 - ndas@suse.de
+
+- use %{_tmpfilesdir} for tmpfiles.d/openvpn.conf (bsc#1044223)
+
+-------------------------------------------------------------------
+Tue Jun  6 14:59:29 CEST 2017 - ndas@suse.de
+
+- Update to 2.4.2
+    - auth-token: Ensure tokens are always wiped on de-auth
+    - Make --cipher/--auth none more explicit on the risks
+    - Use SHA256 for the internal digest, instead of MD5
+    - Deprecate --ns-cert-type
+    - Deprecate --no-iv
+    - Support --block-outside-dns on multiple tunnels
+    - Limit --reneg-bytes to 64MB when using small block ciphers
+    - Fix --tls-version-max in mbed TLS builds
+  Details changelogs are avilable in 
+  https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24
+  [*0001-preform-deferred-authentication-in-the-background.patch
+   *openvpn-2.3.x-fixed-multiple-low-severity-issues.patch
+   *openvpn-fips140-2.3.2.patch]
+- pkcs11-helper-devel >= 1.11 is needed for openvpn-2.4.2
+- cleanup the spec file
+
+-------------------------------------------------------------------
+Fri Apr 21 14:55:09 CEST 2017 - ndas@suse.de
+
+- Preform deferred authentication in the background to not
+  cause main daemon processing delays when the underlying pam mechanism (e.g.
+  ldap) needs longer to response (bsc#959511).
+  [+ 0001-preform-deferred-authentication-in-the-background.patch]
+- Added fix for possible heap overflow on read accessing getaddrinfo 
+  result (bsc#959714).
+  [+openvpn-2.3.9-Fix-heap-overflow-on-getaddrinfo-result.patch]
+- Added a patch to fix multiple low severity issues (bsc#934237).
+  [+openvpn-2.3.x-fixed-multiple-low-severity-issues.patch]
+
+-------------------------------------------------------------------
+Sun Jan 22 15:21:17 UTC 2017 - mrueckert@suse.de
+
+- silence warning about %{_rundir}/openvpn
+  - for non systemd case: just package the %{_rundir}/openvpn in
+    the package
+  - for systemd case: call systemd-tmpfiles and own the dir as
+    %ghost in the filelist
+
+-------------------------------------------------------------------
+Sun Jan 22 14:51:44 UTC 2017 - mrueckert@suse.de
+
+- refreshed patches to apply cleanly again
+  openvpn-2.3-plugin-man.dif
+  openvpn-fips140-2.3.2.patch
+
+-------------------------------------------------------------------
+Sun Jan 22 14:47:39 UTC 2017 - mrueckert@suse.de
+
+- update to 2.3.14
+  - update year in copyright message
+  - Document the --auth-token option
+  - Repair topology subnet on FreeBSD 11
+  - Repair topology subnet on OpenBSD
+  - Drop recursively routed packets
+  - Support --block-outside-dns on multiple tunnels
+  - When parsing '--setenv opt xx ..' make sure a third parameter
+    is present
+  - Map restart signals from event loop to SIGTERM during
+    exit-notification wait
+  - Correctly state the default dhcp server address in man page
+  - Clean up format_hex_ex()
+- enabled pkcs11 support
+
+-------------------------------------------------------------------
+Sat Dec  3 21:26:52 UTC 2016 - michael@stroeder.com
+
+- update to 2.3.13
+- removed obsolete patch files openvpn-2.3.0-man-dot.diff and
+  openvpn-fips140-AES-cipher-in-config-template.patch
+
+2016.11.02 -- Version 2.3.13
+  Arne Schwabe (2):
+  * Use AES ciphers in our sample configuration files and add a few modern 2.4 examples
+  * Incorporate the Debian typo fixes where appropriate and make show_opt default message clearer
+  David Sommerseth (4):
+  * t_client.sh: Make OpenVPN write PID file to avoid various sudo issues
+  * t_client.sh: Add support for Kerberos/ksu
+  * t_client.sh: Improve detection if the OpenVPN process did start during tests
+  * t_client.sh: Add prepare/cleanup possibilties for each test case
+  Gert Doering (5):
+  * Do not abort t_client run if OpenVPN instance does not start.
+  * Fix t_client runs on OpenSolaris
+  * make t_client robust against sudoers misconfiguration
+  * add POSTINIT_CMD_suf to t_client.sh and sample config
+  * Fix --multihome for IPv6 on 64bit BSD systems.
+  Ilya Shipitsin (1):
+  * skip t_lpback.sh and t_cltsrv.sh if openvpn configured --disable-crypto
+  Lev Stipakov (2):
+  * Exclude peer-id from pulled options digest
+  * Fix compilation in pedantic mode
+  Samuli Seppänen (1):
+  * Automatically cache expected IPs for t_client.sh on the first run
+  Steffan Karger (6):
+  * Fix unittests for out-of-source builds
+  * Make gnu89 support explicit
+  * cleanup: remove code duplication in msg_test()
+  * Update cipher-related man page text
+  * Limit --reneg-bytes to 64MB when using small block ciphers
+  * Add a revoked cert to the sample keys
+
+2016.08.23 -- Version 2.3.12
+  Arne Schwabe (2):
+  * Complete push-peer-info documentation and allow IV_PLAT_VER for other platforms than Windows if the client UI supplies it.
+  * Move ASSERT so external-key with OpenSSL works again
+  David Sommerseth (3):
+  * Only build and run cmocka unit tests if its submodule is initialized
+  * Another fix related to unit test framework
+  * Remove NOP function and callers
+  Dorian Harmans (1):
+  * Add CHACHA20-POLY1305 ciphersuite IANA name translations.
+  Ivo Manca (1):
+  * Plug memory leak in mbedTLS backend
+  Jeffrey Cutter (1):
+  * Update contrib/pull-resolv-conf/client.up for no DOMAIN
+  Jens Neuhalfen (2):
+  * Add unit testing support via cmocka
+  * Add a test for auth-pam searchandreplace
+  Josh Cepek (1):
+  * Push an IPv6 CIDR mask used by the server, not the pool's size
+  Leon Klingele (1):
+  * Add link to bug tracker
+  Samuli Seppänen (2):
+  * Update CONTRIBUTING.rst to allow GitHub PRs for code review purposes
+  * Clarify the fact that build instructions in README are for release tarballs
+  Selva Nair (4):
+  * Make error non-fatal while deleting address using netsh
+  * Make block-outside-dns work with persist-tun
+  * Ignore SIGUSR1/SIGHUP during exit notification
+  * Promptly close the netcmd_semaphore handle after use
+  Steffan Karger (4):
+  * Fix polarssl / mbedtls builds
+  * Don't limit max incoming message size based on c2->frame
+  * Fix '--cipher none --cipher' crash
+  * Discourage using 64-bit block ciphers
+
+-------------------------------------------------------------------
+Mon Nov 28 16:33:34 UTC 2016 - matwey.kornilov@gmail.com
+
+- Require iproute2 explicitly. openvpn uses /bin/ip from iproute2,
+  so it should be installed
+
+-------------------------------------------------------------------
+Thu Sep  8 13:26:16 UTC 2016 - astieger@suse.com
+
+- Add an example for a FIPS 140-2 approved cipher configuration to
+  the sample configuration files. Fixes bsc#988522
+  adding openvpn-fips140-AES-cipher-in-config-template.patch
+- remove gpg-offline signature verification, now a source service
+
+-------------------------------------------------------------------
+Tue May 10 16:16:02 UTC 2016 - idonmez@suse.com
+
+- Update to version 2.3.11
+  * Fixed port-share bug with DoS potential
+  * Fix buffer overflow by user supplied data
+  * Fix undefined signed shift overflow
+  * Ensure input read using systemd-ask-password is null terminated
+  * Support reading the challenge-response from console
+  * hardening: add safe FD_SET() wrapper openvpn_fd_set()
+  * Restrict default TLS cipher list
+- Add BuildRequires on xz for SLE11
+
+-------------------------------------------------------------------
+Mon Jan  4 17:22:37 UTC 2016 - idonmez@suse.com
+
+- Update to version 2.3.10
+  * Warn user if their certificate has expired
+  * Fix regression in setups without a client certificate
+
+-------------------------------------------------------------------
+Wed Dec 16 14:30:49 UTC 2015 - idonmez@suse.com
+
+- Update to version 2.3.9
+  * Show extra-certs in current parameters.
+  * Do not set the buffer size by default but rely on the operation system default.
+  * Remove --enable-password-save option
+  * Detect config lines that are too long and give a warning/error
+  * Log serial number of revoked certificate
+  * Avoid partial authentication state when using --disabled in CCD configs
+  * Replace unaligned 16bit access to TCP MSS value with bytewise access
+  * Fix possible heap overflow on read accessing getaddrinfo() result.
+  * Fix isatty() check for good. (obsoletes revert-daemonize.patch)
+  * Client-side part for server restart notification
+  * Fix privilege drop if first connection attempt fails
+  * Support for username-only auth file.
+  * Increase control channel packet size for faster handshakes
+  * hardening: add insurance to exit on a failed ASSERT()
+  * Fix memory leak in auth-pam plugin
+  * Fix (potential) memory leak in init_route_list()
+  * Fix unintialized variable in plugin_vlog()
+  * Add macro to ensure we exit on fatal errors
+  * Fix memory leak in add_option() by simplifying get_ipv6_addr
+  * openssl: properly check return value of RAND_bytes()
+  * Fix rand_bytes return value checking
+  * Fix "White space before end tags can break the config parser"
+
+-------------------------------------------------------------------
+Thu Dec  3 14:07:17 UTC 2015 - mt@suse.com
+
+- Adjust /var/run to _rundir macro value in openvpn@.service too.
+
+-------------------------------------------------------------------
+Thu Aug 20 08:43:33 UTC 2015 - mt@suse.com
+
+- Removed obsolete --with-lzo-headers option, readded LFS_CFLAGS.
+- Moved openvpn-plugin.h into a devel package, removed .gitignore
+
+-------------------------------------------------------------------
+Thu Aug 13 08:29:35 UTC 2015 - idonmez@suse.com
+
+- Add revert-daemonize.patch, looks like under systemd the stdin
+  and stdout are not TTYs by default. This reverts to previous
+  behaviour fixing bsc#941569
+
+-------------------------------------------------------------------
+Wed Aug  5 12:03:33 UTC 2015 - idonmez@suse.com
+
+- Update to version 2.3.8
+  * Report missing endtags of inline files as warnings
+  * Fix commit e473b7c if an inline file happens to have a
+    line break exactly at buffer limit
+  * Produce a meaningful error message if --daemon gets in the way of
+    asking for passwords.
+  * Document --daemon changes and consequences (--askpass, --auth-nocache)
+  * Del ipv6 addr on close of linux tun interface
+  * Fix --askpass not allowing for password input via stdin
+  * Write pid file immediately after daemonizing
+  * Fix regression: query password before becoming daemon
+  * Fix using management interface to get passwords
+  * Fix overflow check in openvpn_decrypt()
+
+-------------------------------------------------------------------
+Tue Jun  9 15:51:06 UTC 2015 - idonmez@suse.com
+
+- Update to version 2.3.7
+  * down-root plugin: Replaced system() calls with execve()
+  * sockets: Remove the limitation of --tcp-nodelay to be server-only
+  * pkcs11: Load p11-kit-proxy.so module by default
+  * New approach to handle peer-id related changes to link-mtu
+  * Fix incorrect use of get_ipv6_addr() for iroute options
+  * Print helpful error message on --mktun/--rmtun if not available
+  * Explain effect of --topology subnet on --ifconfig
+  * Add note about file permissions and --crl-verify to manpage
+  * Repair --dev null breakage caused by db950be85d37
+  * Correct note about DNS randomization in openvpn.8
+  * Disallow usage of --server-poll-timeout in --secret key mode
+  * Slightly enhance documentation about --cipher
+  * On signal reception, return EAI_SYSTEM from openvpn_getaddrinfo()
+  * Use EAI_AGAIN instead of EAI_SYSTEM for openvpn_getaddrinfo()
+  * Fix --redirect-private in --dev tap mode
+  * Updated manpage for --rport and --lport
+  * Properly escape dashes on the man-page
+  * Improve documentation in --script-security section of the man-page
+  * Really fix '--cipher none' regression
+  * Set tls-version-max to 1.1 if cryptoapicert is used
+  * Account for peer-id in frame size calculation
+  * Disable SSL compression
+  * Fix frame size calculation for non-CBC modes.
+  * Allow for CN/username of 64 characters (fixes off-by-one)
+  * Re-enable TLS version negotiation by default
+  * Remove size limit for files inlined in config
+  * Improve --tls-cipher and --show-tls man page description
+  * Re-read auth-user-pass file on (re)connect if required
+  * Clarify --capath option in manpage
+  * Call daemon() before initializing crypto library
+
+-------------------------------------------------------------------
+Mon Mar  2 08:26:08 UTC 2015 - mt@suse.de
+
+- Fixed to use correct sha digest data length and in fips mode,
+  use aes instead of the disallowed blowfish crypto (boo#914166).
+- Fixed to provide actual plugin/doc dirs in openvpn(8) man page.
+
+-------------------------------------------------------------------
+Mon Dec  1 19:37:29 UTC 2014 - mt@suse.de
+
+- Update to version 2.3.6 fixing a denial-of-service vulnerability
+  where an authenticated client could stop the server by triggering
+  a server-side ASSERT (bnc#907764,CVE-2014-8104).
+  See ChangeLog file for a complete list of changes.
+
+-------------------------------------------------------------------
+Thu Oct 30 12:28:48 UTC 2014 - idonmez@suse.com
+
+- Update to version 2.3.5
+  * See included changelog
+- Depend on systemd-devel for the daemon check functionality
+
+-------------------------------------------------------------------
+Mon Aug 25 09:12:08 UTC 2014 - idonmez@suse.com
+
+- Update to version 2.3.4
+  * Add support for client-cert-not-required for PolarSSL.
+  * Introduce safety check for http proxy options.
+
+-------------------------------------------------------------------
+Mon May 26 15:41:34 UTC 2014 - crrodriguez@opensuse.org
+
+- Build with large file support in 32 bit systems. 
+
+-------------------------------------------------------------------
+Sun May 11 07:58:52 UTC 2014 - coolo@suse.com
+
+- use %_rundir for %ghost directory - leaving /var/run everywhere
+  else
+
+-------------------------------------------------------------------
+Tue Jan 14 10:43:19 UTC 2014 - mt@suse.de
+
+- Updated README.SUSE, documented also the rcopenvpn compatibility
+  wrapper script (bnc#848070).
+
+-------------------------------------------------------------------
+Thu Jan  9 14:14:19 UTC 2014 - meissner@suse.com
+
+- openvpn-fips140-2.3.2.patch: Allow usage of SHA1 instead of MD5 in
+  some internal checking routines. This allows operation in FIPS 140-2
+  mode.
+
+-------------------------------------------------------------------
+Tue Dec 17 15:26:16 UTC 2013 - mt@suse.de
+
+- Readded rcopenvpn helper script under systemd (bnc#848070)
+
+-------------------------------------------------------------------
+Thu Oct 31 18:45:02 UTC 2013 - mt@suse.de
+
+- Fixed invalid mode in exec bit removal call from doc files
+
+-------------------------------------------------------------------
+Tue Aug 27 16:28:52 UTC 2013 - lmuelle@suse.com
+
+- Add a section about how to control all or a named configuration with the
+  help of systemctl to the README.SUSE file.
+
+-------------------------------------------------------------------
+Mon Jun  3 22:09:09 UTC 2013 - mrdocs@opensuse.org
+
+- Update to 2.3.2
+  +Fixes since 2.3.0
+- Remove dead code path and putenv functionality
+- Remove unused function xor
+- Move static prototype definition from header into c file
+- Remove unused function no_tap_ifconfig
+- fix build with automake 1.13(.1)
+- Fix corner case in NTLM authentication (trac #172)
+- Update README.IPv6 to match what is in 2.3.0
+- Repair "tcp server queue overflow" brokenness, more <stdbool.h> fallout.
+- Permit pool size of /64.../112 for ifconfig-ipv6-pool
+- Add MIN() compatibility macro
+- Fix directly connected routes for "topology subnet" on Solaris.
+- close more file descriptors on exec
+- Ignore UTF-8 byte order mark
+- reintroduce --no-name-remapping option
+- make --tls-remote compatible with pre 2.3 configs
+- add new option for X.509 name verification
+- add man page patch for missing options
+- Fix parameter listing in non-debug builds at verb 4
+- (updated) [PATCH] Warn when using verb levels >=7 without debug
+- Enable TCP_NODELAY configuration on FreeBSD.
+- Updated README
+- Cleaned up and updated INSTALL
+- PolarSSL-1.2 support
+- Improve PolarSSL key_state_read_{cipher, plain}text messages
+- Improve verify_callback messages
+- Config compatibility patch. Added translate_cipher_name.
+- Switch to IANA names for TLS ciphers.
+- Fixed autoconf script to properly detect missing pkcs11 with polarssl.
+- Use constant time memcmp when comparing HMACs in openvpn_decrypt.
+
+-------------------------------------------------------------------
+Mon May  6 11:13:49 UTC 2013 - mt@suse.de
+
+- Try to migrate openvpn.service autostart to openvpn@<CONF>.service
+  instance enablement.
+
+-------------------------------------------------------------------
+Tue Apr 23 13:20:48 UTC 2013 - mt@suse.de
+
+- Fixed to enable systemd support in configure
+- Fixed openvpn-tmpfile.conf to use GID root, there is no openvpn group.
+- Added openvpn.target file allowing to handle all instances at once.
+- Fixed to install the service template correctly as openvpn@.service.
+  Use "systemctl enable openvpn@foo.service" to enable instance using
+  /etc/openvpn/foo.conf.
+- Disabled systemd variant of restart on update rpm macro, adopted other
+  macros to use openvpn.target to e.g. stop all instances on uninstall.
+
+-------------------------------------------------------------------
+Tue Mar 26 14:38:48 UTC 2013 - aj@suse.com
+
+- Remove _unitdir definition, it is provided by systemd.
+- Install service file without x permissions
+
+-------------------------------------------------------------------
+Mon Mar 25 14:55:35 UTC 2013 - p.drouand@gmail.com
+
+Update to version 2.3.0:
+ * Full IPv6 support
+ * SSL layer modularised, enabling easier implementation for other SSL libraries
+ * PolarSSL support as a drop-in replacement for OpenSSL
+ * New plug-in API providing direct certificate access, improved logging API
+   and easier to extend in the future
+ * Added 'dev_type' environment variable to scripts and plug-ins - which is
+   set to 'TUN' or 'TAP'
+ * New feature: --management-external-key - to provide access to the encryption
+   keys via the management interface
+ * New feature: --x509-track option, more fine grained access to X.509 fields
+   in scripts and plug-ins
+ * New feature: --client-nat support
+ * New feature: --mark which can mark encrypted packets from the tunnel, suitable 
+   for more advanced routing and firewalling
+ * New feature: --management-query-proxy - manage proxy settings via the management
+   interface (supercedes --http-proxy-fallback)
+ * New feature: --stale-routes-check, which cleans up the internal routing table
+ * New feature: --x509-username-field, where other X.509v3 fields can be used for
+   the authentication instead of Common Name
+ * Improved client-kill management interface command
+ * Improved UTF-8 support - and added --compat-names to provide backwards compatibility
+   with older scripts/plug-ins
+ * Improved auth-pam with COMMONNAME support, passing the certificate's common
+   name in the PAM conversation
+ * More options can now be used inside <connection> blocks
+ * Completely new build system, enabling easier cross-compilation and Windows builds
+ * Much of the code has been better documented
+ * Many documentation updates
+ * Plenty of bug fixes and other code clean-ups
+- Add systemd native support for OpenSUSE > 12.1
+- Adapt patchs to upstream release:
+  * openvpn-2.1-plugin-man.dif > openvpn-2.3-plugin-man.dif
+  * openvpn-2.1.0-man-dot.diff > openvpn-2.3.0-man-dot.diff
+- Remove obsolete patchs; fixed or merged on upstream release:
+  * 0001-Use-SSL_MODE_RELEASE_BUFFERS-if-available.patch
+  * openvpn-2.1-plugin-build.dif
+  * openvpn-2.1-systemd-passwd.patch
+- Rebase specfile to upstream changes:
+  * easy-rsa is not provided anymore with main package
+  * remove %clean section
+  * autoreconf -fi is no needed
+- Update openvpn.keyring file for upstream release asc key
+
+-------------------------------------------------------------------
+Mon Jan 28 13:59:07 UTC 2013 - mt@suse.com
+
+- Join openvpn.service systemd cgroup in start when needed, e.g.
+  when starting with further parameters. (bnc#781106)
+
+-------------------------------------------------------------------
+Thu Nov 29 18:19:40 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signature.
+
+-------------------------------------------------------------------
+Fri Sep 21 12:18:32 UTC 2012 - coolo@suse.com
+
+- fix ciaran's previous license entry. the license has a SUSE prefix
+
+-------------------------------------------------------------------
+Thu Sep 20 10:50:23 UTC 2012 - mt@suse.com
+
+- Fixed openvpn init script to not map reopen to reload so the
+  reopen code is without any effect (bnc#781106).
+- Added requested OPENVPN_AUTOSTART variable allowing to provide
+  an optional list of config names started by default (bnc#692440).
+
+-------------------------------------------------------------------
+Wed Aug 22 14:50:39 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0-with-openssl-exception and LGPL-2.1
+  openssl has an openssl exception (also, it is GPL-2.0 only)
+
+-------------------------------------------------------------------
+Thu Mar 29 09:45:56 UTC 2012 - mt@suse.com
+
+- Fixed SLES build readding Group tags to sub-packages in spec,
+  not require libselinux-devel on SLE-10 and datadir/doc cleanup.
+
+-------------------------------------------------------------------
+Wed Feb 15 15:21:32 UTC 2012 - mt@suse.com
+
+- Updated to openvpn-2.2.2:
+ - Warn once, that IPv6 in tun mode is not supported in OpenVPN 2.2
+ - Pkcs11 support built into the Windows version
+ - Fixed a bug in the Windows TAP-driver
+
+-------------------------------------------------------------------
+Thu Dec  8 08:40:17 UTC 2011 - aj@suse.de
+
+- Fix source URLs.
+
+-------------------------------------------------------------------
+Fri Dec  2 16:24:00 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Aug 29 18:05:30 UTC 2011 - mt@suse.com
+
+- Marked /var/run/openvpn as ghost (bnc#710270), man page and
+  other rpmlint warning fixes
+
+-------------------------------------------------------------------
+Tue Aug 23 15:41:00 UTC 2011 - crrodriguez@opensuse.org
+
+- BuildRequires libselinux-devel
+- Use SSL_MODE_RELEASE_BUFFERS to keep memory usage low, sent 
+  upstream as https://community.openvpn.net/openvpn/ticket/157
+
+-------------------------------------------------------------------
+Mon Aug 22 09:55:44 UTC 2011 - fcrozat@novell.com
+
+- Add openvpn-2.1-systemd-passwd.patch / modify openvpn.init to
+  support systemd password query (bnc#675406)
+
+-------------------------------------------------------------------
+Mon Jul 11 14:38:45 UTC 2011 - mt@suse.de
+
+- Updated to openvpn-2.2.1, a new version series providing several
+  new features. This version fixes build issues and provides
+  updated easy-rsa for OpenSSL 1.0.0 (fixes Trac ticket #125),
+- Adopted spec file, enabled saving password in a file and to
+  specify an alternative username in x509 cert.
+- Removed X-Interactive from init script again, as systemd isn't
+  able to use it correctly [any more?] (bnc#675406). We will
+  address it later and probably use /bin/systemd-ask-password.
+
+-------------------------------------------------------------------
+Tue Mar 15 21:05:23 UTC 2011 - crrodriguez@opensuse.org
+
+- KVPNC is unable to parse openvpn version [bnc#679153]
+
+-------------------------------------------------------------------
+Thu Feb 17 10:59:23 UTC 2011 - mt@suse.de
+
+- Added X-Interactive: true LSB tag to the init script.
+
+-------------------------------------------------------------------
+Tue Nov 16 09:45:46 UTC 2010 - mt@suse.de
+
+- Updated to openvpn 2.1.4, providing several bug fixes and
+  improvements, such as:
+  * Fix of a problem with special case route targets
+  * Try to ensure, that the tun/tap interface gets closed on
+    non-graceful aborts.
+  * Several AUTH_FAILED reporting fixes causing the connection
+    to fail without any error indication.
+  * Enable exponential backoff in reliability layer retransmits.
+  * Proxy improvements
+  Please review the ChangeLog file for a complete and exact list.
+
+-------------------------------------------------------------------
+Wed Sep  8 16:34:21 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Do not include build date in binaries 
+
+-------------------------------------------------------------------
+Tue Jun 15 09:31:56 UTC 2010 - mt@suse.de
+
+- Improved netconfig based client up and down sample scripts.
+
+-------------------------------------------------------------------
+Fri Jun 11 17:07:11 CEST 2010 - anschneider@exsuse.de
+
+- Added netconfig based client up and down scripts to samples.
+
+-------------------------------------------------------------------
+Thu Mar 11 08:51:39 UTC 2010 - mt@suse.de
+
+- Updated to openvpn 2.1.1; linux related changes since 2.1_rc20:
+  * Fixed a couple issues in sample plugins auth-pam.c and
+    down-root.c.
+    (1) Fail gracefully rather than segfault if calloc returns NULL.
+    (2) The openvpn_plugin_abort_v1 function can potentially be
+        called with handle == NULL.  Add code to detect this case,
+	and if so, avoid dereferencing pointers derived from handle
+	(Thanks to David Sommerseth for finding this bug).
+  * Documented "multihome" option in the man page.
+  * Added a hard failure when peer provides a certificate chain
+    with depth > 16.  Previously, a warning was issued.
+  * Added additional session renegotiation hardening. OpenVPN has
+    always required that mid-session renegotiations build up a new
+    SSL/TLS session from scratch. While the client certificate
+    common name is already locked against changes in mid-session
+    TLS renegotiations, we now extend this locking to the
+    auth-user-pass username as well as all certificate content in
+    the full client certificate chain.
+- Improved openvpn init script adding messages giving a hint about
+  pid write failure and to look into the log messages (bnc#559041).
+- Added -fno-strict-aliasing to compile flags in the spec file.
+
+-------------------------------------------------------------------
+Fri Dec 17 23:00:46 CET 2009 - mt@suse.de
+
+- Updated to openvpn 2.1 2.1_rc20, fixing problems in route and
+  option handling provided by the from server (bnc#552440).
+  For complete list of changes, see ChangeLog file, here just
+  the IMO most important:
+  * Fixed a bug introduced in 2.1_rc17 (svn r4436) where using
+    the redirect-gateway option by itself, without any extra
+    parameters, would cause the option to be ignored.
+  * Optimized PUSH_REQUEST handshake sequence to shave several
+    seconds off of a typical client connection initiation.
+  * The maximum number of "route" directives (specified in the
+    config file or pulled from a server) can now be configured
+    via the new "max-routes" directive.
+  * Eliminated the limitation on the number of options that can
+    be pushed to clients, including routes. Previously, all
+    pushed options needed to fit within a 1024 byte options
+    string.
+  * Added --server-poll-timeout option : when polling possible
+    remote servers to connect to in a round-robin fashion,
+    spend no more than n seconds waiting for a response before
+    trying the next server.
+  * Added the ability for the server to provide a custom reason
+    string when an AUTH_FAILED message is returned to the client.
+    This string can be set by the server-side managment interface
+    and read by the client-side management interface.
+  * client-kill management interface command, when issued on server,
+    will now send a RESTART message to client. This feature is
+    intended to make UDP clients respond the same as TCP clients
+    in the case where the server issues a RESTART message in order
+    to force the client to reconnect and pull a new options/route
+    list.
+
+-------------------------------------------------------------------
+Fri Oct  2 15:14:51 CEST 2009 - mt@suse.de
+
+- Added network-remotefs to init script dependencies (bnc#522279).
+
+-------------------------------------------------------------------
+Wed Jun 10 10:24:06 CEST 2009 - mt@suse.de
+
+- Updated to openvpn 2.1 [2.1_rc18] series (fate#305289).
+- Enabled pkcs11-helper for openSUSE > 10.3 (bnc#487558).
+- Adopted spec file and patches, improved init script.
+- Disabled installation of easy-rsa for Windows.
+
+-------------------------------------------------------------------
+Tue Feb 17 18:22:23 CET 2009 - mt@suse.de
+
+- Improved init script to show config name in action messages
+  and allow to specify a config name in the second argument.
+
+-------------------------------------------------------------------
+Mon Dec  1 10:58:12 CET 2008 - mt@suse.de
+
+- Removed restart_on_update rpm install hook that may break the
+  update process, e.g. when openvpn asks for auth data or the
+  update process is running over the tunnel (bnc#450390).
+
+-------------------------------------------------------------------
+Tue Oct 28 12:13:45 CET 2008 - mt@suse.de
+
+- Fixed init script to handle pid files correctly (bnc#435421).
+
+-------------------------------------------------------------------
+Thu May 29 15:16:03 CEST 2008 - mt@suse.de
+
+- Added $time $named to Should-Start in the init script to avoid
+  time related certificate errors and name resolving problems.
+- Added iproute2 to BuildRequires to avoid openvpn rely on PATH.
+
+-------------------------------------------------------------------
+Mon May 26 07:53:38 CEST 2008 - mt@suse.de
+
+- Reverted init script changes adding startproc, since they break
+  user auth query and multiple tunnels (bnc#394360, bnc#394353).
+
+-------------------------------------------------------------------
+Thu May 22 18:21:59 CEST 2008 - mt@suse.de
+
+- Added -lpam to LDFLAGS of openvpn, because linking the openvpn
+  auth-pam plugin against pam is not sufficient. Many pam modules
+  that are loaded by pam during the authentication process are not
+  linked against pam and contain undefined symbols, causing the
+  authentication to fail (bnc#334773).
+- Replaced patch loading plugins from /usr/%_lib/openvpn/plugin/lib
+  with -rpath linker flags (bnc#334773).
+- Fixed init script to use startproc to return 0 when started twice.
+
+-------------------------------------------------------------------
+Tue Feb 19 11:32:55 CET 2008 - mt@suse.de
+
+- Fixed spec file to not set pie flags when building plugins
+
+-------------------------------------------------------------------
+Thu Jan 17 19:44:41 CET 2008 - mt@suse.de
+
+- Bug #334773: Enabled build of down-root and auth-pam plugins,
+  sub-packaged as openvpn-auth-pam-plugin/down-root-plugin.
+- Added patch to load plugins from /usr/%_lib/openvpn/plugin/lib
+  first, when the plugin name is specified as basename only.
+- Added patch adoptiong plugin path informations in openvpn.8.
+- Added patch to build plugins with RPM_OPT_FLAGS.
+- Fixed init script to use Should-Start/Stop LSB info tags.
+- Bug #343106: Enabled iproute2 support / usage
+
+-------------------------------------------------------------------
+Mon Jun  4 10:14:03 CEST 2007 - mt@suse.de
+
+- fixed easy-rsa installation (no exec in doc directory)
+- improved spec to use configure directory variables and
+  cleaned up macro calls in RPM pre/post scripts.
+- fixed openvpn binary check in the init script.
+
+-------------------------------------------------------------------
+Fri Oct 27 10:40:59 CEST 2006 - mt@suse.de
+
+- upstream 2.0.9, Windows related fixes only
+  * Windows installer updated with OpenSSL 0.9.7l DLLs to fix
+    published vulnerabilities.
+  * Fixed TAP-Win32 bug that caused BSOD on Windows Vista
+    (Henry Nestler).  The TAP-Win32 driver has now been
+    upgraded to version 8.4.
+
+-------------------------------------------------------------------
+Wed Sep 27 14:34:48 CEST 2006 - poeml@suse.de
+
+- upstream 2.0.8
+  * Windows installer updated with OpenSSL 0.9.7k DLLs to fix
+    RSA Signature Forgery (CVE-2006-4339).
+  * No changes to OpenVPN source code between 2.0.7 and 2.0.8.
+
+-------------------------------------------------------------------
+Fri Jun 23 11:55:10 CEST 2006 - poeml@suse.de
+
+- upstream 2.0.7, with bug fixes:
+* When deleting routes under Linux, use the route metric
+  as a differentiator to ensure that the route teardown
+  process only deletes the identical route which was originally
+  added via the "route" directive (Roy Marples).
+* Fixed bug where --server directive in --dev tap mode
+  claimed that it would support subnets of /30 or less
+  but actually would only accept /29 or less.
+* Extend byte counters to 64 bits (M. van Cuijk).
+* Better sanity checking of --server and --server-bridge
+  IP pool ranges, so as not to hit the assertion at
+  pool.c:119 (2.0.5).
+* Fixed bug where --daemon and --management-query-passwords
+  used together would cause OpenVPN to block prior to
+  daemonization.
+* Fixed client/server race condition which could occur
+  when --auth-retry interact is set and the initially
+  provided auth-user-pass credentials are incorrect,
+  forcing a username/password re-query.
+* Fixed bug where if --daemon and --management-hold are
+  used together, --user or --group options would be ignored.
+* fix for CVE-2006-1629 integrated (disallow "setenv" to be pushed
+  to clients from the server)
+- build with fPIE/pie on SUSE 10.0 or newer, or on any other platform
+
+-------------------------------------------------------------------
+Wed Apr 19 13:10:56 CEST 2006 - poeml@suse.de
+
+- security fix (CVE-2006-1629): disallow "setenv" to be pushed to
+  clients from the server [#165123]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:08 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Nov  3 15:25:01 CET 2005 - poeml@suse.de
+
+- update to 2.0.5, with two security fixes -- see below. [#132003]
+  2005.11.02 -- Version 2.0.5
+  * Fixed bug in Linux get_default_gateway function
+    introduced in 2.0.4, which would cause redirect-gateway
+    on Linux clients to fail.
+  * Restored easy-rsa/2.0 tree (backported from 2.1 beta
+    series) which accidentally disappeared in
+    2.0.2 -> 2.0.4 transition.
+  2005.11.01 -- Version 2.0.4
+  * Security fix -- Affects non-Windows OpenVPN clients of
+    version 2.0 or higher which connect to a malicious or
+    compromised server.  A format string vulnerability
+    in the foreign_option function in options.c could
+    potentially allow a malicious or compromised server
+    to execute arbitrary code on the client.  Only
+    non-Windows clients are affected.  The vulnerability
+    only exists if (a) the client's TLS negotiation with
+    the server succeeds, (b) the server is malicious or
+    has been compromised such that it is configured to
+    push a maliciously crafted options string to the client,
+    and (c) the client indicates its willingness to accept
+    pushed options from the server by having "pull" or
+    "client" in its configuration file (Credit: Vade79).
+    CVE-2005-3393
+  * Security fix -- Potential DoS vulnerability on the
+    server in TCP mode.  If the TCP server accept() call
+    returns an error status, the resulting exception handler
+    may attempt to indirect through a NULL pointer, causing
+    a segfault.  Affects all OpenVPN 2.0 versions.
+    CVE-2005-3409
+  * Fix attempt of assertion at multi.c:1586 (note that
+    this precise line number will vary across different
+    versions of OpenVPN).
+  * Added ".PHONY: plugin" to Makefile.am to work around
+    "make dist" issue.
+  * Fixed double fork issue that occurs when --management-hold
+    is used.
+  * Moved TUN/TAP read/write log messages from --verb 8 to 6.
+  * Warn when multiple clients having the same common name or
+    username usurp each other when --duplicate-cn is not used.
+  * Modified Windows and Linux versions of get_default_gateway
+    to return the route with the smallest metric
+    if multiple 0.0.0.0/0.0.0.0 entries are present.
+  2005.09.25 -- Version 2.0.3-rc1        
+  * openvpn_plugin_abort_v1 function wasn't being properly
+    registered on Windows.
+  * Fixed a bug where --mode server --proto tcp-server --cipher none
+    operation could cause tunnel packet truncation.
+
+-------------------------------------------------------------------
+Tue Aug 30 15:05:08 CEST 2005 - poeml@suse.de
+
+- update to 2.0.2 [#106258] relevant changes:
+  * Fixed bug where "--proto tcp-server --mode p2p --management
+    host port" would cause the management port to not respond until
+    the OpenVPN peer connects.
+  * Modified pkitool script to be /bin/sh compatible (Johnny Lam).
+
+-------------------------------------------------------------------
+Tue Aug 23 13:56:27 CEST 2005 - poeml@suse.de
+
+- update to 2.0.1 [#106258]
+  * Security Fix -- DoS attack against server when run with "verb 0" and
+    without "tls-auth".  If a client connection to the server fails
+    certificate verification, the OpenSSL error queue is not properly
+    flushed, which can result in another unrelated client instance on the
+    server seeing the error and responding to it, resulting in disconnection
+    of the unrelated client (CAN-2005-2531).
+  * Security Fix -- DoS attack against server by authenticated client.
+    This bug presents a potential DoS attack vector against the server
+    which can only be initiated by a connected and authenticated client.
+    If the client sends a packet which fails to decrypt on the server,
+    the OpenSSL error queue is not properly flushed, which can result in
+    another unrelated client instance on the server seeing the error and
+    responding to it, resulting in disconnection of the unrelated client
+    (CAN-2005-2532).
+  * Security Fix -- DoS attack against server by authenticated client.
+    A malicious client in "dev tap" ethernet bridging mode could
+    theoretically flood the server with packets appearing to come from
+    hundreds of thousands of different MAC addresses, causing the OpenVPN
+    process to deplete system virtual memory as it expands its internal
+    routing table.  A --max-routes-per-client directive has been added
+    (default=256) to limit the maximum number of routes in OpenVPN's
+    internal routing table which can be associated with a given client
+    (CAN-2005-2533).
+  * Security Fix -- DoS attack against server by authenticated client.
+    If two or more client machines try to connect to the server at the
+    same time via TCP, using the same client certificate, and when
+    --duplicate-cn is not enabled on the server, a race condition can
+    crash the server with "Assertion failed at mtcp.c:411"
+    (CAN-2005-2534).
+  * Fixed server bug where under certain circumstances, the client instance
+    object deletion function would try to delete iroutes which had never been
+    added in the first place, triggering "Assertion failed at mroute.c:349".
+  * Added --auth-retry option to prevent auth errors from being fatal
+    on the client side, and to permit username/password requeries in case
+    of error.  Also controllable via new "auth-retry" management interface
+    command.  See man page for more info.
+  * Added easy-rsa 2.0 scripts to the tarball in easy-rsa/2.0
+  * Fixed bug in openvpn.spec where rpmbuild --define 'without_pam 1'
+    would fail to build.
+  * Implement "make check" to perform loopback tests (Matthias Andree).
+- drop obsolete patch which fixed finding lzo libraries
+
+-------------------------------------------------------------------
+Tue Jun 28 14:27:17 CEST 2005 - mrueckert@suse.de
+
+- The previous patch didnt work with lzo1 based distros. Fixed.
+
+-------------------------------------------------------------------
+Tue Jun 28 11:25:32 CEST 2005 - cthiel@suse.de
+
+- fixed build with lzo2 (added lzo2.diff)
+
+-------------------------------------------------------------------
+Thu Jun 23 01:48:38 CEST 2005 - ro@suse.de
+
+- build with fPIE/pie 
+
+-------------------------------------------------------------------
+Thu Jun  2 18:01:18 CEST 2005 - hvogel@suse.de
+
+- lzo headers are in a subdirectory now
+
+-------------------------------------------------------------------
+Tue Apr 19 10:28:32 CEST 2005 - cthiel@suse.de
+
+- update to 2.0
+
+-------------------------------------------------------------------
+Thu Feb 17 21:57:20 CET 2005 - poeml@suse.de
+
+- update to 2.0_rc14
+- add README.SUSE
+
+-------------------------------------------------------------------
+Fri Jan 28 10:52:55 CET 2005 - poeml@suse.de
+
+- update to 2.0_rc10
+
+-------------------------------------------------------------------
+Wed Dec 29 14:10:20 CET 2004 - poeml@suse.de
+
+- update to 2.0_rc6
+
+-------------------------------------------------------------------
+Wed Dec 29 10:35:28 CET 2004 - poeml@suse.de
+
+- update to 2.0_rc1 (closing #45979)
+  IMPORTANT: OpenVPN's default port number is now 1194, based on an
+  official port number assignment by IANA.  OpenVPN 2.0-beta16 and
+  earlier used 5000 as the default port.
+  -> see http://openvpn.net/20notes.html
+- remove lzo sources, which come in a separate package since 9.2
+
+-------------------------------------------------------------------
+Mon Jul 26 15:43:00 CEST 2004 - poeml@suse.de
+
+- update to 1.6_rc4
+- bzip2 sources
+
+-------------------------------------------------------------------
+Sun Jan 11 11:33:35 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Tue Dec 16 16:07:29 CET 2003 - wengel@suse.de
+
+- update to version 1.5.0
+
+-------------------------------------------------------------------
+Sun Sep  7 18:41:23 CEST 2003 - poeml@suse.de
+
+- add an init script
+- use RPM_OPT_FLAGS
+- add /var/run/openvpn directory for pid files
+
+-------------------------------------------------------------------
+Thu Jul 31 14:24:14 CEST 2003 - wengel@suse.de
+
+- update to new version -> 1.4.2
+
+-------------------------------------------------------------------
+Tue May 27 10:45:35 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+- package a bit more straightforward
+
+-------------------------------------------------------------------
+Mon May 19 08:41:42 CEST 2003 - wengel@suse.de
+
+- update to version 1.4.1
+
+-------------------------------------------------------------------
+Mon Jan 20 17:05:53 CET 2003 - wengel@suse.de
+
+- initial package
+

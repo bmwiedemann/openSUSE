@@ -1,0 +1,1641 @@
+-------------------------------------------------------------------
+Fri Aug 30 09:42:29 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add cron BuildRequires: needed for /etc/cron.* ownership. As
+  those directories have special permissions it is easier/cheaper
+  to buildrequire cron (boo#1148950).
+- 4.2.3
+
+-------------------------------------------------------------------
+Thu Jul  4 10:29:27 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix 'ntp-client' behaviour when running in firstboot
+  (bsc#1140199).
+- 4.2.2
+
+-------------------------------------------------------------------
+Thu Jul  4 10:29:27 UTC 2019 - knut.anderssen@suse.com
+
+- Added cwm/popup dependency (bsc#893065, bsc#1039985)
+
+-------------------------------------------------------------------
+Thu Jun 13 16:09:13 CEST 2019 - schubi@suse.de
+
+- Enable/disable chronyd service: Enable/disable chrony-wait
+  service too (bsc#1137196).
+
+- 4.2.1
+
+-------------------------------------------------------------------
+Fri May 31 12:35:08 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Tue Mar 19 16:33:52 UTC 2019 - ancor@suse.com
+
+- Activate translations for the SelectFrom widget (bsc#1126523,
+  bsc#1126520).
+- 4.1.8
+
+-------------------------------------------------------------------
+Sun Nov 25 20:37:21 UTC 2018 - Noah Davis <noahadvs@gmail.com>
+
+- Provide icon with module (boo#1109310)
+- 4.1.7
+
+-------------------------------------------------------------------
+Wed Nov 14 21:32:26 UTC 2018 - knut.andersse@suse.com
+
+- Aligned "Synchronize Now" button and "NTP Server Address" box not
+  breaking previous fix and not hiding the manual checkbox in
+  TextMode (bnc#893065, bsc#1039985).
+- 4.1.6
+
+-------------------------------------------------------------------
+Thu Nov  8 19:20:26 UTC 2018 - knut.andersse@suse.com
+
+- fate#323454
+  - Bring back the menu button for choosing an NTP address from a
+    public NTP servers list or from the ones returned by DHCP.
+  - When no configuration is proposed by default, then use the DHCP
+    offered servers as fallback.
+- Do not synchronize if chronyd service is running (bsc#1087048)
+- Use the title style capitalization in "Synchronize Now" button
+  (bsc#1039987)
+- 4.1.5
+
+-------------------------------------------------------------------
+Thu Nov  8 15:20:26 UTC 2018 - knut.andersse@suse.com
+
+- Only write the configuration once, and do not save changes when
+  we are only synchronizing the date. (bsc#1108497)
+- 4.1.4
+
+-------------------------------------------------------------------
+Tue Oct 16 10:28:35 CEST 2018 - schubi@suse.de
+
+- Fixed license path. Build error for bsc#1110598.
+- 4.1.3
+
+-------------------------------------------------------------------
+Wed Oct  3 14:11:34 UTC 2018 - knut.anderssen@suse.com
+
+- AutoYaST: Do not show the progress when merging the configuration
+  before writing it (bsc#1110598)
+- 4.1.2
+
+-------------------------------------------------------------------
+Fri Sep  7 15:20:26 UTC 2018 - dgonzalez@suse.com
+
+- Save the service status according to the user preferences
+  (bsc#1075039)
+- 4.1.1
+
+-------------------------------------------------------------------
+Wed Aug 22 16:08:46 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format. 
+
+-------------------------------------------------------------------
+Tue Aug 21 08:46:30 CEST 2018 - schubi@suse.de
+
+- Changed dir of COPYING file.
+
+-------------------------------------------------------------------
+Mon Aug 20 10:13:23 UTC 2018 - jreidinger@suse.com
+
+- Properly disable cron service when running systemd service when
+  called from Date and Time module (bsc#1102983)
+- 4.1.0
+
+-------------------------------------------------------------------
+Thu Apr 19 08:56:08 CEST 2018 - schubi@suse.de
+
+- Fix in checking installed chrony package while writing ntp
+  settings. (bnc#1089962)
+- 4.0.12
+
+-------------------------------------------------------------------
+Fri Apr 13 10:34:33 CEST 2018 - schubi@suse.de
+
+- Improved robustness if chrony has not been installed.
+  (bnc#1072345, bnc#1061035)
+- 4.0.11
+
+-------------------------------------------------------------------
+Thu Mar 22 08:16:37 UTC 2018 - knut.anderssen@suse.com
+
+- Permitted the use of 'listentry' element or 'ntp_server' and
+  allowed to be an empty list in the AutoYaST schema (bsc#1013047)
+- 4.0.10
+
+-------------------------------------------------------------------
+Wed Mar  7 10:57:36 UTC 2018 - jreidinger@suse.com
+
+- change cron config file name to suse-ntp_synchronize
+  (bsc#1079122)
+- convert old file to new one during upgrade, ensure that ntpd is
+  replaced by chrony (FATE#323432)
+- ghost that config file, so it is easy to find which package owns
+  it
+- 4.0.9
+
+-------------------------------------------------------------------
+Thu Feb 22 15:21:04 UTC 2018 - gsouza@suse.com
+
+- Inform user when client cannot sync with NTP server after the
+  user clik on "sync time now" (bsc#1081000)
+- 4.0.8
+
+-------------------------------------------------------------------
+Fri Feb  2 16:38:55 UTC 2018 - jreidinger@suse.com
+
+- set properly range for sync interval (bsc#1079117)
+- Mention proper configuration file when write failed (bsc#1079120)
+- validate pool address (bsc#1079120)
+- 4.0.7
+
+-------------------------------------------------------------------
+Wed Dec 13 14:40:48 UTC 2017 - jreidinger@suse.com
+
+- Do minimal modification to default chrony.conf in autoyast
+  when chrony is not specified explicitly in packages section of
+  profile (bsc#1072595)
+- 4.0.6
+
+-------------------------------------------------------------------
+Tue Dec 12 16:55:54 UTC 2017 - igonzalezsosa@suse.com
+
+- Improve AutoYaST error message adaptation when too many
+  unsupported keys are found (related to bsc#1072407)
+- 4.0.5
+
+-------------------------------------------------------------------
+Tue Dec 12 14:54:34 UTC 2017 - igonzalezsosa@suse.com
+
+- Adapt AutoYaST error message to 80x25 screens (bsc#1072407)
+- 4.0.4
+
+-------------------------------------------------------------------
+Fri Dec  8 13:25:04 UTC 2017 - jreidinger@suse.com
+
+- support also autoyast for chrony (FATE#323432)
+  NOTE: autoyast profile is not backward compatible
+- 4.0.3
+
+-------------------------------------------------------------------
+Fri Dec  8 09:58:40 UTC 2017 - jreidinger@suse.com
+
+- fix crash with missing method ntp_selected (bsc#1071735)
+- 4.0.2
+
+-------------------------------------------------------------------
+Tue Nov 28 09:03:56 UTC 2017 - jreidinger@suse.com
+
+- Switch ntp-client from ntp to chrony (FATE#323432)
+- 4.0.1
+
+-------------------------------------------------------------------
+Wed Oct 11 08:40:26 UTC 2017 - mvidner@suse.com
+
+- Avoid Internal Error during AutoYaST cloning
+  when fudge records are present (bsc#1058510)
+- 4.0.0
+
+-------------------------------------------------------------------
+Thu Aug  3 08:51:24 UTC 2017 - jreidinger@suse.com
+
+- fix crash in ntp-client (bsc#1051899)
+- 3.3.3
+
+-------------------------------------------------------------------
+Thu Jul 13 14:23:11 UTC 2017 - jreidinger@suse.com
+
+- fix crash when restrict entry in autoyast have empty value
+  (bsc#1043370)
+- fix wrong export for trustedkey config entry
+  (bsc#1043370)
+- 3.3.2
+
+-------------------------------------------------------------------
+Fri Jun 30 16:58:16 UTC 2017 - knut.anderssen@suse.com
+
+- Resrict records are written at the end but the default file and
+  most profiles use them at the beginning, which mangles the file
+  completely (bsc#983486).
+  To fix it we have just changed the order of writing.
+- 3.3.1
+
+-------------------------------------------------------------------
+Fri Jun 30 09:36:48 UTC 2017 - jlopez@suse.com
+
+- AutoYaST: Fix crash when trying to sanitize not string values,
+  for example initial_sync.
+- AutoYaST: Sanitize comments by only removing blank spaces at
+  the beginning and adding line break. This avoids augeas parse
+  errors (bsc#1045777).
+
+-------------------------------------------------------------------
+Thu Jun 30 09:32:02 UTC 2017 - knut.anderssen@suse.com
+
+- AutoYaST: Fix crash in CFA when creating a command record with
+  some key value option is given (bsc#1045968)
+
+-------------------------------------------------------------------
+Thu Jun 29 15:19:51 UTC 2017 - jlopez@suse.com
+
+- AutoYaST: Comments from autoyast profile should not be sanitized
+  to avoid entries without space between value and comment (e.g
+  trustedkey 1# coment). This is caused by a bug in augeas adding
+  new entries.
+
+-------------------------------------------------------------------
+Mon Jun 26 17:23:52 UTC 2017 - jlopez@suse.com
+
+- AutoYaST: Fixed crash in CFA when creating restrict record from
+  scratch (bsc#1045777)
+- 3.3.0
+
+-------------------------------------------------------------------
+Fri Jun  2 16:37:27 CEST 2017 - schubi@suse.de
+
+- AutoYaST: Fixed crash in CFA class while writing settings to
+  ntp.conf. (bnc#1040350)
+- 3.2.8
+
+-------------------------------------------------------------------
+Fri Apr 21 15:32:37 UTC 2017 - igonzalezsosa@suse.com
+
+- Add a CFA class to handle ntp.conf
+- Fixed build.
+- NtpClient module does not use this new class
+- These are additional fixed for bsc#983486 and bsc#929694.
+- 3.2.7
+
+-------------------------------------------------------------------
+Tue Mar 21 14:48:29 UTC 2017 - jreidinger@suse.com
+
+- Adapt to new version of rubygem-cfa ( updated for bsc#1023204)
+- 3.2.6
+
+-------------------------------------------------------------------
+Thu Jan 26 10:17:50 CET 2017 - schubi@suse.de
+
+- AutoYaST writing settings crash: Initialize CFA instance
+  correctly (bnc#1019292)
+- 3.2.5
+
+-------------------------------------------------------------------
+Wed Jan  4 08:18:24 UTC 2017 - lslezak@suse.cz
+
+- Update the Rubocop style to version 0.41.2 (to match the other
+  YaST modules)
+
+-------------------------------------------------------------------
+Fri Dec 30 12:08:30 CET 2016 - schubi@suse.de
+
+- AutoYaST: Fixed crash while exporting settings. Do not export
+  Augeas objects (bnc#1017490)
+- 3.2.4
+
+-------------------------------------------------------------------
+Thu Dec 15 12:19:27 UTC 2016 - kanderssen@suse.com
+
+- Fixed some tests that were passing because of an old ntp augeas
+  lens (bsc#983486).
+- 3.2.3
+
+-------------------------------------------------------------------
+Fri Dec  2 14:37:28 UTC 2016 - joseivanlopez@gmail.com
+
+- Updated client to read/write NTP configuration using CFA
+  (bsc#983486 and bsc#929694)
+- 3.2.2 
+
+-------------------------------------------------------------------
+Fri Nov 25 16:44:58 UTC 2016 - igonzalezsosa@suse.com
+
+- Remove warning message from a wrong widget definition 
+  (bsc#1012185)
+- 3.2.1
+
+-------------------------------------------------------------------
+Tue Oct 18 13:53:24 UTC 2016 - jreidinger@suse.com
+
+- properly report that test failed if server without running ntp is
+  checked as ntp server (bsc#972842)
+- 3.2.0
+
+-------------------------------------------------------------------
+Thu Aug 11 14:24:42 CEST 2016 - schubi@suse.de
+
+- Error while using <type>__clock</type> in AutoYaST.
+  Fixed typo.
+  (bnc#992854)
+- 3.1.28
+
+-------------------------------------------------------------------
+Thu Jun 30 06:51:52 UTC 2016 - jreidinger@suse.com
+
+- Fix regression: crash when reading cron entry failed
+  ( discovered by sap-ha module ) (bsc#977610, bsc#987064)
+- 3.1.27
+
+-------------------------------------------------------------------
+Tue Jun 14 06:54:54 UTC 2016 - kanderssen@suse.com
+
+- Fix handling of NTP records without comments (bsc#977610)
+- 3.1.26
+
+-------------------------------------------------------------------
+Thu Jun  2 07:40:56 UTC 2016 - kanderssen@suse.com
+
+- Fixed Ntp Test adding a workaround to return false in case given
+  server is not reachable (bsc#977610)
+- Replaced old testsuite with Rspec tests
+- Added rubocop and coveralls
+- Removed autotools
+- 3.1.25
+
+-------------------------------------------------------------------
+Wed Jun  1 15:33:15 UTC 2016 - igonzalezsosa@suse.com
+
+- Drop yast2-ntp-client-devel-doc package (fate#320256)
+- 3.1.24
+
+-------------------------------------------------------------------
+Fri May  6 16:09:50 UTC 2016 - lslezak@suse.cz
+
+- Fixed the default synchronization interval in the help text
+  (bsc#978453)
+- Unify the default value in the code (the proposal client used
+  a different default)
+- Set the initial state of the interval widget according to
+  the current synchronization mode (bsc#978892)
+- Fixed firewall widget layout (double frame widget)
+- 3.1.23
+
+-------------------------------------------------------------------
+Thu Apr 14 09:16:37 CEST 2016 - kanderssen@suse.com
+
+- Calls to sntp adjusted to the syntax of ntp 4.2.8
+  (bnc#937837, bnc#916617, FATE#320392)
+- 3.1.22
+
+-------------------------------------------------------------------
+Fri Nov 13 10:59:21 UTC 2015 - igonzalezsosa@suse.com
+
+- Fix validation of AutoYaST profiles (bsc#954412)
+- 3.1.21
+
+-------------------------------------------------------------------
+Thu Oct 29 12:05:53 UTC 2015 - ancor@suse.com
+
+- Fixed an error in the "run NTP as daemon" checkbox (bsc#952144)
+- 3.1.20
+
+-------------------------------------------------------------------
+Mon Aug 17 15:57:24 UTC 2015 - ancor@suse.com
+
+- Always use a server from pool.ntp.org as default (bnc#940881)
+- 3.1.19
+
+-------------------------------------------------------------------
+Fri Aug  7 12:35:42 UTC 2015 - varkoly@suse.com
+
+- bnc#799473 - Do not use chronos.cru.fr which is is not really
+  freely accessible: Access policy : acces sous conditions
+- 3.1.18
+
+-------------------------------------------------------------------
+Thu Aug  6 08:51:13 UTC 2015 - mvidner@suse.com
+
+- If Install Recommended Packages is disabled during system
+  installation, explicitly install ntp.rpm, avoiding error pop-up
+  "Cannot adjust 'NTP' service" (boo#938951).
+- 3.1.17
+
+-------------------------------------------------------------------
+Mon Jul 20 10:38:30 UTC 2015 - ancor@suse.com
+
+- Calls to sntp adjusted to the syntax of ntp 4.2.8
+  (bnc#937837, bnc#916617)
+- 3.1.16
+
+-------------------------------------------------------------------
+Fri Jun 26 11:34:00 UTC 2015 - jreidinger@suse.com
+
+- do not crash if ntp is not installed to target system during
+  cloning (bnc#936178)
+- 3.1.15
+
+-------------------------------------------------------------------
+Fri May  8 09:39:11 CEST 2015 - schubi@suse.de
+
+- AutoYaST (bnc#928987):
+  -- Read ntp.conf again before generating autoinst.xml file
+     (after the ntp rpm has been installed)
+  -- New section "restricts"
+- 3.1.14
+
+-------------------------------------------------------------------
+Thu Dec  4 09:50:34 UTC 2014 - jreidinger@suse.com
+
+- remove X-KDE-Library from desktop file (bnc#899104)
+
+-------------------------------------------------------------------
+Tue Sep  2 10:00:18 UTC 2014 - cwh@suse.com
+
+- Using Report.Error to be autoyast-proof
+- Fixed variable replacement int gettext string;
+- Added linebreaks in too long popup content (bnc#894573)
+- 3.1.12
+
+-------------------------------------------------------------------
+Mon Sep  1 15:34:23 UTC 2014 - cwh@suse.com
+
+- Aligned "Synchronize now" button and "NTP Server Address" box (bnc#893065)
+- Fixed checking of return value of "sntp -s" (bnc#893094)
+- 3.1.11
+
+-------------------------------------------------------------------
+Wed Aug 20 16:27:49 CEST 2014 - schubi@suse.de
+
+- Autoyast cloning: Do not show error popup if ntp server has not
+  installed. (bnc#891422)
+- 3.1.10
+
+-------------------------------------------------------------------
+Thu Jun  5 09:45:40 UTC 2014 - varkoly@suse.com
+
+- bnc#881026 - YaST ntp-client: "sync without daemon" not documented in help
+  3.1.9
+
+-------------------------------------------------------------------
+Tue Apr 15 09:58:18 CEST 2014 - locilka@suse.com
+
+- Fixed evaluation of starting the NTP service (bnc#872389)
+- 3.1.8
+
+-------------------------------------------------------------------
+Thu Apr  3 11:52:14 UTC 2014 - jreidinger@suse.com
+
+- change path for ntptimeset(bnc#871367)
+- 3.1.7
+
+-------------------------------------------------------------------
+Tue Apr  1 11:22:41 UTC 2014 - coolo@suse.com
+
+- adapt to new ntp service name (see bnc#871367)
+- 3.1.6
+
+-------------------------------------------------------------------
+Fri Mar 28 13:31:07 UTC 2014 - vmoravec@suse.com
+
+- Fix failing testsuite
+- 3.1.5
+
+-------------------------------------------------------------------
+Thu Mar 27 14:25:29 UTC 2014 - varkoly@suse.com
+
+- bnc#866313 - NTP in Installer: Offers remote functionality, but no network is configured
+- 3.1.4 
+
+-------------------------------------------------------------------
+Wed Mar  5 15:18:31 UTC 2014 - varkoly@suse.com
+
+- bnc#863965 - NTP servers should be selected by timezone not keyboard layout
+- 3.1.3
+
+-------------------------------------------------------------------
+Sat Feb  1 21:17:29 UTC 2014 - mfilka@suse.com
+
+- bnc#861560
+  - adapted to new API provided by NetworkService module
+- 3.1.2 
+
+-------------------------------------------------------------------
+Wed Nov  6 12:47:35 UTC 2013 - lslezak@suse.cz
+
+- log sntp output to /var/log/YaST2/sntp.log (to avoid messing
+  the text console in textmode installation) (bnc#847253)
+- 3.1.1
+
+-------------------------------------------------------------------
+Thu Sep 19 12:09:02 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Thu Aug 15 07:36:40 UTC 2013 - lslezak@suse.cz
+
+- move the development documentation to devel-doc subpackage
+- 3.0.1
+
+-------------------------------------------------------------------
+Fri Aug  2 07:04:14 UTC 2013 - lslezak@suse.cz
+
+- convert data file from YCP to YAML format (ntp_servers.ycp ->
+  ntp_servers.yml)
+
+-------------------------------------------------------------------
+Wed Jul 31 08:22:59 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Mon Jul 29 11:45:52 UTC 2013 - ftake@geeko.jp
+
+- replace NTP servers in Japan
+  * remove NTP servers in Fukuoka University
+  * add public NTP servers hosted by NICT
+
+-------------------------------------------------------------------
+Thu Jun 20 08:34:17 CEST 2013 - jsuchome@suse.cz
+
+- remove duplicated help text (bnc#795856) 
+- remember value of "Save NTP Configuration" checkbox (bnc#815165)
+- 2.24.0
+
+-------------------------------------------------------------------
+Fri Mar 22 13:20:47 CET 2013 - mvidner@suse.cz
+
+- fix ntp.conf config merging: do reread the config from disk (bnc#773201)
+- 2.21.3
+
+-------------------------------------------------------------------
+Wed Aug 15 08:06:07 UTC 2012 - varkoly@suse.com
+
+- bnc#775926 - During installation ntp is not configured correctly after accessing the Change Date and Time screen
+
+-------------------------------------------------------------------
+Wed Jul 18 14:14:03 UTC 2012 - varkoly@suse.com
+
+- bnc#771340 - Configuring NTP in YaST2 the service does not start
+- bnc#753936 - yast2 ntp-client creates ntp.conf with syntax error
+
+-------------------------------------------------------------------
+Thu Mar 29 15:32:06 CEST 2012 - jsuchome@suse.cz
+
+- merged proofread texts 
+
+-------------------------------------------------------------------
+Thu Jan  5 07:26:54 UTC 2012 - varkoly@suse.com
+
+- bnc#707408 - Additional NTP server entries for NTP client Configuration 
+
+-------------------------------------------------------------------
+Wed Jan  4 12:33:27 UTC 2012 - varkoly@suse.com
+
+- bnc#724762 - bad yast2 timezone NTP config 
+
+-------------------------------------------------------------------
+Thu Sep 29 13:17:51 CEST 2011 - visnov@suse.cz
+
+- set dialog title
+- 2.21.1 
+
+-------------------------------------------------------------------
+Mon Sep 12 15:41:43 UTC 2011 - lslezak@suse.cz
+
+- updated testsuite (systemd support) (bnc#664548)
+- 2.21.0
+
+-------------------------------------------------------------------
+Fri Aug  5 12:34:26 CEST 2011 - tgoettlicher@suse.de
+
+- fixed .desktop file (bnc #681249)
+
+-------------------------------------------------------------------
+Tue Jul  5 10:18:01 UTC 2011 - varkoly@novell.com
+
+- bnc#680764 - ntp synchronization before i can configure the source
+
+-------------------------------------------------------------------
+Fri Jun 17 12:49:42 UTC 2011 - jreidinger@novell.com
+
+- fix button order (bnc#571961) 
+
+-------------------------------------------------------------------
+Wed Feb  9 13:10:23 UTC 2011 - varkoly@novell.com
+
+- bnc#665761 - VUL-0: default NTP configuration
+  Now we provide adding more ntp servers"^C
+
+-------------------------------------------------------------------
+Thu Feb  3 17:02:54 CET 2011 - mvidner@suse.cz
+
+- Fixed one-time setting and testing by adjusting to the changed sntp
+  syntax (bnc#661865).
+- 2.20.2
+
+-------------------------------------------------------------------
+Fri Nov 12 08:38:53 CEST 2010 - varkoly@novell.com
+
+- bnc#650879 - Missing newline makes /etc/cron.d/novell.ntp-synchronize not work
+
+-------------------------------------------------------------------
+Wed Nov 10 15:11:04 CEST 2010 - varkoly@novell.com
+
+- bnc#619782 Time zone configuration during initial installation.
+
+-------------------------------------------------------------------
+Thu Sep  2 11:21:09 CEST 2010 - jsuchome@suse.cz
+
+- provide public API for info about time synchronization without
+  daemon running (bnc#627818)
+- 2.20.0 
+
+-------------------------------------------------------------------
+Thu Jun 24 06:00:41 UTC 2010 - varkoly@novell.com
+
+- bnc#598856 - empty NTP server list on time setup
+
+-------------------------------------------------------------------
+Wed Apr 21 16:39:38 CEST 2010 - varkoly@suse.de
+
+- Remove missleading depracated input field
+
+-------------------------------------------------------------------
+Fri Apr  9 15:24:42 UTC 2010 - varkoly@novell.com
+
+- Initial version of time synchronization without running ntp as deamon
+- NTP configuration is possible in first stage even no network is
+  configured.
+- In the NTP proposal now it is possible to select if the NTP service
+  will be started as deamon or not 
+
+-------------------------------------------------------------------
+Thu Apr  8 15:48:00 CEST 2010 - mvidner@suse.cz
+
+- Added a write_only parameter to ntp-client_proposal:Write,
+  to fix disabling NTP without trying to sync with it (bnc#589296)
+
+------------------------------------------------------------------
+Wed Jan 13 18:56:03 CET 2010 - kmachalkova@suse.cz
+
+- Adjusted .desktop file(s) to wrap /sbin/yast2/ calls in xdg-su
+  where root privileges are needed, removed X-KDE-SubstituteUID key 
+  (bnc#540627)
+
+-------------------------------------------------------------------
+Wed Jul  8 13:30:06 CEST 2009 - ug@suse.de
+
+- RNC file less strict
+
+-------------------------------------------------------------------
+Tue Jun 16 14:27:45 CEST 2009 - mvidner@suse.cz
+
+- Using autodocs-ycp.ami, which contains a fix for automake 1.11.
+
+-------------------------------------------------------------------
+Tue Mar 31 16:52:04 CEST 2009 - mvidner@suse.cz
+
+- Moved more code dealing with NTP setup from yast2-country
+  to yast2-ntp-client to make the API less fragile (bnc#483787).
+- 2.18.0
+
+-------------------------------------------------------------------
+Tue Mar 17 14:01:57 CET 2009 - mvidner@suse.cz
+
+- Do not pop up with questions in CLI mode (bnc#456553).
+
+-------------------------------------------------------------------
+Fri Feb 20 12:39:15 CET 2009 - mvidner@suse.cz
+
+- Fixed: the checkbox for opening/closing the firewall port would
+  have no effect (bnc#476951). Same problem, different reason.
+- 2.17.14
+
+-------------------------------------------------------------------
+Fri Jan 23 14:32:10 CET 2009 - mvidner@suse.cz
+
+- Fixed: the checkbox for opening/closing the firewall port would
+  have no effect (bnc#468405).
+- 2.17.13
+
+-------------------------------------------------------------------
+Mon Jan 19 14:45:26 CET 2009 - mvidner@suse.cz
+
+- Use the iburst option also for the server added during the
+  installation, to make the initial sync work even if the
+  time slew is too big (bnc#450418).
+- 2.17.12
+
+-------------------------------------------------------------------
+Fri Jan  9 14:10:47 CET 2009 - mvidner@suse.cz
+
+- Removed a server reported nonfunctional (bnc#458917).
+- Offer CC.pool.ntp.org for countries that do not have any other
+  server (bnc#458917 c4).
+- 2.17.11
+
+-------------------------------------------------------------------
+Fri Dec 12 16:00:50 CET 2008 - mvidner@suse.cz
+
+- Due to yesterday's change, the Configure button at install time
+  would access settings that would be ignored. Removed it.
+  (bnc#449615 c15)
+- Reduced spacing in new server dialog to make it fit 80x24
+  (bnc#458459).
+- 2.17.10
+
+-------------------------------------------------------------------
+Thu Dec 11 14:41:45 CET 2008 - mvidner@suse.cz
+
+- At install time, do not overwrite the original ntp.conf but add our
+  changes instead. Specifically netconfig needs the key config
+  preserved (bnc#449615).
+- 2.17.9
+
+-------------------------------------------------------------------
+Mon Dec  8 13:42:09 CET 2008 - kmachalkova@suse.cz
+
+- Missing strings marked for translation (bnc#446967, bnc#446969) 
+
+-------------------------------------------------------------------
+Thu Dec  4 14:49:50 CET 2008 - kmachalkova@suse.cz
+
+- If NETCONFIG_NTP_POLICY value can't be read (e.g. in inst-sys), 
+  set it to 'auto' as safe default (bnc#449362) 
+- 2.17.8
+
+-------------------------------------------------------------------
+Thu Nov 13 16:25:33 CET 2008 - ug@suse.de
+
+- rnc file fixed
+
+-------------------------------------------------------------------
+Fri Nov  7 13:54:27 CET 2008 - mvidner@suse.cz
+
+- Set a 15s timeout on one-time synchronization (bnc#442287).
+- 2.17.7
+
+-------------------------------------------------------------------
+Thu Nov  6 18:31:20 CET 2008 - mvidner@suse.cz
+
+- Adjusted dialog buttons according to YaST Style Guide
+  (bnc#440532).
+- 2.17.6
+
+-------------------------------------------------------------------
+Tue Oct 28 15:47:41 CET 2008 - varkoly@suse.de
+
+- (bnc#438704) – ntp server do not work 
+- 2.17.5
+
+-------------------------------------------------------------------
+Wed Oct 15 13:24:52 CEST 2008 - mvidner@suse.cz
+
+- Use sntp instead of ntpdate which is obsolete (bnc#431516).
+- 2.17.4
+
+-------------------------------------------------------------------
+Sun Oct 12 21:54:08 CEST 2008 - mvidner@suse.cz
+
+- Removed a check that was too expensive and made potential failures
+  silent (bnc#428026).
+- 2.17.3
+
+-------------------------------------------------------------------
+Mon Sep 29 15:13:54 CEST 2008 - visnov@suse.cz
+
+- avoid reading configuration during install (bnc #427712)
+- 2.17.2
+
+-------------------------------------------------------------------
+Mon Aug 18 12:26:19 CEST 2008 - mvidner@suse.cz
+
+- Applied Netconfig patch for fine-grained merging of static and
+  DHCP-supplied data (thanks to Michael Calmer)
+- ntp-client_proposal: do not propose new configuration when some
+  already exists; Write: get server name from argument before
+  checking UI 
+- 2.17.1
+
+-------------------------------------------------------------------
+Fri Jun 13 12:35:00 CEST 2008 - mvidner@suse.cz
+
+- yast2-slp is already present during the installation, so don't ask
+  to install it when the user chooses Local NTP Server / Lookup
+  (bnc#399659).
+- Do not leave ntpd running if it was not running before pressing Test.
+- 2.17.0
+
+-------------------------------------------------------------------
+Fri May 16 16:40:22 CEST 2008 - jsrain@suse.cz
+
+- added categories Settings and System into desktop file
+  (bnc #382778)
+
+-------------------------------------------------------------------
+Tue May 13 13:36:47 CEST 2008 - mvidner@suse.cz
+
+- Fixed breakage caused by last change ("Command line specification
+  maps undefined option 'initial' for action 'add'", bnc#387717)
+- 2.16.9
+
+-------------------------------------------------------------------
+Wed Apr 30 14:16:39 CEST 2008 - mvidner@suse.cz
+
+- /etc/sysconfig/ntp:NTPD_INITIAL_NTPDATE was removed and assumes AUTO
+  now. Removed the UI related to it, but keet CLI and AutoYaST options
+  for compatibility (bnc#381838).
+- Avoid "UI syntax error" when Write is called from the timezone
+  module (bnc#384715).
+- 2.16.8
+
+-------------------------------------------------------------------
+Wed Apr 16 10:45:26 CEST 2008 - mvidner@suse.cz
+
+- Merged proofread texts.
+
+-------------------------------------------------------------------
+Fri Apr 11 10:47:33 CEST 2008 - mvidner@suse.cz
+
+- Suggest ntp.$domain as the local server (fate#302863).
+- 2.16.7
+
+-------------------------------------------------------------------
+Wed Apr  9 13:38:32 CEST 2008 - mvidner@suse.cz
+
+- Read the whole configuration of NTP (not only ntp.conf
+  but also e.g. firewall) on running system to initialize
+  everything correctly; do not re-read ntp.confif it has been read
+  already (bnc#375877)
+
+-------------------------------------------------------------------
+Fri Apr  4 16:17:14 CEST 2008 - jsuchome@suse.cz
+
+- ntp-client_proposal: UI adapted for fate#302917 (distinguish
+  between one-time synchronization and saving the client config)
+- 2.16.6
+
+-------------------------------------------------------------------
+Thu Apr  3 17:30:40 CEST 2008 - kmachalkova@suse.cz
+
+- Display popup with icon if NTP test succeeds (bnc#306018)
+- Require and install ntp packages (instead of obsoleted xntp),
+  correct documentation (bnc#372417)    	
+- 2.16.5
+
+-------------------------------------------------------------------
+Mon Mar 17 12:43:32 CET 2008 - jsrain@suse.cz
+
+- added 'StartupNotify=true' to the desktop file (bnc #304964)
+
+-------------------------------------------------------------------
+Wed Feb 20 19:28:18 CET 2008 - kmachalkova@suse.cz
+
+- Added yast2-country-data into BuildRequires 
+
+-------------------------------------------------------------------
+Tue Feb 19 17:51:21 CET 2008 - kmachalkova@suse.cz
+
+- Improved NTP service start wording (now & on boot vs. manually) 
+  (bnc#345340)
+- Improved NTP installation proposal layout (bnc#359209)
+- Depend on lightweight yast2-country-data instead of yast2-country
+- ntp-client_proposal made smarter (FaTE#302917)
+- 2.16.4
+
+-------------------------------------------------------------------
+Thu Jan 24 15:48:51 CET 2008 - mzugec@suse.cz
+
+- replace deprecated NetworkDevices by NetworkInterfaces (from yast2)
+- 2.16.3
+
+-------------------------------------------------------------------
+Mon Jan  7 12:02:51 CET 2008 - kmachalkova@suse.cz
+
+- Merged proofread texts
+
+-------------------------------------------------------------------
+Tue Nov 20 15:49:59 CET 2007 - kmachalkova@suse.cz
+
+- Repository scanning (Package::Available()) definitely removed 
+  (#327336)
+- Updated help text referring to xntp documentation (#340867)
+- 2.16.2 
+
+-------------------------------------------------------------------
+Wed Oct 31 13:53:04 CET 2007 - kmachalkova@suse.cz
+
+- Prompt for installing xntp package (CheckAndInstallPackages) on 
+  running system, do not scan  repositories (Package::Available()) 
+  (#327336)
+ - 2.16.1
+
+-------------------------------------------------------------------
+Wed Oct  3 18:44:06 CEST 2007 - kmachalkova@suse.cz
+
+- Added visual progress feedback for running ntpdate in installation 
+  proposal (#328469)
+- Hide read/write progress in installation (#327066)   
+- Do not check for availability of xntp package (thus, update all 
+  the repos) if it is already installed (#327336)
+- 2.16.0
+
+-------------------------------------------------------------------
+Fri Sep 21 11:33:24 CEST 2007 - locilka@suse.cz
+
+- When user selects to use NTP during installation, trigger also
+  yast2-ntp-client RPM for installation (#327050).
+- 2.15.12
+
+-------------------------------------------------------------------
+Thu Sep 20 18:11:22 CEST 2007 - kmachalkova@suse.cz
+
+- Do not write NTP configuration at the end of 1st stage of 
+  installation if it hasn't been modified (#326338) 
+- Set write_only mode at the end of 1st stage, do not start NTP 
+  service (#326478 related)
+- 2.15.11
+  
+-------------------------------------------------------------------
+Thu Sep 13 17:50:19 CEST 2007 - kmachalkova@suse.cz
+
+- In installation proposal, remember whether synchronization with
+  NTP server has been selected (#308238) 
+- Set AbortFunction back to 'nil' after NtpClient::Read has been 
+  called to prevent segfault after multiple calls (#294773)
+- 2.15.10
+
+-------------------------------------------------------------------
+Thu Sep  6 18:51:37 CEST 2007 - kmachalkova@suse.cz
+
+- Accept IP as a valid NTP server address (#308265)
+- Use Packages::addAdditionalPackage() for marking xntp package for 
+  installation so that it is not discarded later on (#307363) 
+- Correct fix for not re-reading NTP configuration when calling 
+  ntp-client from outside (no exception for the 1st stage)
+- 2.15.9
+
+-------------------------------------------------------------------
+Mon Sep  3 17:01:12 CEST 2007 - kmachalkova@suse.cz
+
+- Fixed adding new NTP servers when calling ntp-client from outside 
+  (e.g. timezone) - do not re-read the configuration if it has been 
+  already read
+- Use error popup (Report::Error) if NTP test fails (#306018)
+- Display 'ntpd started on boot' warning message only if we don't 
+  use NM and/or no network device is started at boot time (#299666)
+- Do not query status/stop/start NTP service during installation 
+  (holds for NTP test and ntp proposal client)
+- Replace 'Finish' button with 'Accept' button in installation
+  proposal
+- 2.15.8
+
+-------------------------------------------------------------------
+Fri Aug 31 17:04:37 CEST 2007 - kmachalkova@suse.cz
+
+- Move all installation-related functionality into separate inst.
+  clients (_proposal and _finish) (FaTE #302192)
+- Do not check for xntp package during installation (#299557, #299238)
+- Call 'ntpdate' to synchronize with NTP server during installation
+  (do not restart the service) (#299238)
+- 'During boot' NTP service start is now default (#302389)
+- 2.15.7
+
+-------------------------------------------------------------------
+Mon Aug  6 16:04:39 CEST 2007 - kmachalkova@suse.cz
+
+- Do not allow to edit access control rules if NTP is configured 
+  via DHCP (DHCP may servers distribute their own rule set)
+- Added help texts (FaTE #120109)
+- 2.15.6
+
+-------------------------------------------------------------------
+Fri Jul 27 16:00:59 CEST 2007 - kmachalkova@suse.cz
+
+- Added functionality to restrict NTP service to selected servers
+  only and to modify access control flags for individual servers
+  (FaTE #120109)
+- 2.15.5
+
+-------------------------------------------------------------------
+Thu Jul 26 17:16:41 CEST 2007 - kmachalkova@suse.cz
+
+- UI redesign: advanced configuration dialog splitted into 'General'
+  and 'Security' settings tab 
+- New GetNtpServersByCountry function - to be used by yast2-timezone
+  (FaTE #302192)
+- 2.15.4
+
+-------------------------------------------------------------------
+Fri Apr 13 16:42:50 CEST 2007 - kmachalkova@suse.cz
+
+- Use 'ntpdate -q' (query only) when testing if ntp server is accesible,
+  do not hard-set the time 
+- Updated list of public ntp servers
+- 2.15.3 
+
+-------------------------------------------------------------------
+Mon Mar 12 12:01:39 CET 2007 - kmachalkova@suse.cz
+
+- Removed dependency on yast2-slp - install yast2-slp package only
+  when needed (scan for local NTP servers)
+- 2.15.2 
+
+-------------------------------------------------------------------
+Tue Feb  6 11:09:08 CET 2007 - kmachalkova@suse.cz
+
+- Merged 'Great Britain' and 'UK' public ntp server lists (#241054)
+- 2.15.1
+
+-------------------------------------------------------------------
+Mon Jan 22 11:09:09 CET 2007 - kmachalkova@suse.cz
+
+- Correct handling of switching between simple and advanced config
+  (display current server entries in server table) (#230240)
+- Updated obsolete help text
+- 2.15.0
+ 
+-------------------------------------------------------------------
+Fri Nov 10 18:04:03 CET 2006 - kmachalkova@suse.cz
+
+- Don't forget to store type of ntp record (simple config -> server)
+ (#216456)
+- 2.14.2 
+
+-------------------------------------------------------------------
+Mon Nov  6 14:16:06 CET 2006 - kmachalkova@suse.cz
+
+- Set ActiveDirectory DC as a default time server when called from
+  samba-client
+- 2.14.1 
+
+-------------------------------------------------------------------
+Mon Oct 30 09:45:30 CET 2006 - kmachalkova@suse.cz
+
+- Improved Autoyast profile validation (ntpclient.rnc moved from
+  autoyast package (#215248)
+- Always set NTP_INITIAL_NTPDATE to AUTO if ntp.conf is modified
+  via DHCP
+- 2.14.0  
+
+-------------------------------------------------------------------
+Wed Aug  2 17:15:43 CEST 2006 - locilka@suse.cz
+
+- Complex configuration renamed to Advanced configuration (#179476)
+
+-------------------------------------------------------------------
+Tue Jul 18 15:05:25 CEST 2006 - locilka@suse.cz
+
+- NTP Client renamed to NTP Configuration because one can also
+  configure an NTP Server here (#173411).
+- 2.13.12 
+
+-------------------------------------------------------------------
+Mon May 22 16:12:12 CEST 2006 - locilka@suse.cz
+
+- When switchich to the complex configuration or saving the simple
+  configuration, current server was allways re-added with
+  initial_sync==true even if there was no reason to change
+  the current value of initial_sync (#177575).
+- Remember all servers correctly when random pool servers are
+  selected (#177570).
+- 2.13.11
+
+-------------------------------------------------------------------
+Thu May 18 09:26:20 CEST 2006 - locilka@suse.cz
+
+- Do not report the empty server address when switching to the
+  Complex configuration (#176581).
+- Fixed behavior when switching to the complex configuration with
+  no server address defined before. Sometimes it deleted the local
+  clock entry.
+- 2.13.10
+
+-------------------------------------------------------------------
+Thu May 11 15:28:30 CEST 2006 - locilka@suse.cz
+
+- Adjusting ntp_conf rw agent to be able to understand additional
+  comments on the same line where are already some entries written
+  (#172589).
+- 2.13.9
+
+-------------------------------------------------------------------
+Wed Apr 26 09:17:00 CEST 2006 - locilka@suse.cz
+
+- Check and store the changed address record when switching from
+  the simple to the complex configuration (#169206).
+- 2.13.8
+
+-------------------------------------------------------------------
+Thu Apr 13 16:02:25 CEST 2006 - locilka@suse.cz
+
+- Leaving the 'initial_sync' and 'options' for pool.ntp.org feature
+  without change when user has previously changed them (#165852).
+- 2.13.7
+
+-------------------------------------------------------------------
+Tue Apr 11 11:53:06 CEST 2006 - locilka@suse.cz
+
+- Switching from simple to complex configuration was eating server
+  entries (#165149).
+- 2.13.6
+
+-------------------------------------------------------------------
+Thu Mar 23 08:45:37 CET 2006 - locilka@suse.cz
+
+- Added checking for root permissions into the module startup
+  process (#158483)
+- 2.13.5
+
+-------------------------------------------------------------------
+Mon Mar 13 09:31:30 CET 2006 - locilka@suse.cz
+
+- fixed bug #155325, problems with widgets around random pool
+  servers feature
+- 2.13.4
+
+-------------------------------------------------------------------
+Fri Mar 10 10:56:22 CET 2006 - locilka@suse.cz
+
+- merged texts from proofread
+- 2.14.3
+
+-------------------------------------------------------------------
+Mon Mar  6 18:44:03 CET 2006 - locilk@suse.cz
+
+- Adjusted BuildRequires for package
+- 2.14.2
+
+-------------------------------------------------------------------
+Fri Jan 27 09:15:00 CET 2006 - locilka@suse.cz
+
+- merged texts from proofread
+
+-------------------------------------------------------------------
+Mon Dec 19 13:40:23 CET 2005 - jsuchome@suse.cz
+
+- merged texts from proofread
+- 2.13.1
+
+-------------------------------------------------------------------
+Thu Nov  3 08:53:46 CET 2005 - locilka@suse.cz
+
+- Added enhancement #114268
+  Selection of public servers newly contains
+  $country_shortname.pool.ntp.org for every state known for YaST.
+- Added enhancement #105300
+  New checkbox for adding 3 'random' servers from pool.ntp.org
+  which adds [0|1|2].pool.ntp.org servers. These servers names
+  change their IP (and physical destination) every hour.
+- Generated and tested new set of public NTP servers.
+- Fixed scropt for generating set of public servers not to contain
+  HTML tags in server name and location.
+- 2.13.0
+
+-------------------------------------------------------------------
+Tue Aug 16 14:31:27 CEST 2005 - locilka@suse.cz
+
+- Fixed bug #104907
+  Server selected from one of found with the Lookup function had
+  been returned as the string "server".
+- Fixed bug #104906
+  Now it is possible to save the configuration when
+  start ntp: "never" is selected and no server has been choosen.
+- 2.12.6 
+
+-------------------------------------------------------------------
+Tue Aug 16 11:50:17 CEST 2005 - locilka@suse.cz
+
+- Merged proofread texts
+
+-------------------------------------------------------------------
+Fri Aug 12 13:53:26 CEST 2005 - locilka@suse.cz
+
+- ComboBox for selecting a public NTP server has at least 40
+  characters. Helpful for ncurses. Bug #97184
+- 2.12.5
+
+-------------------------------------------------------------------
+Tue Aug  9 15:42:06 CEST 2005 - locilka@suse.cz
+
+- Fixing bug #102993
+  NTP server textentry is not checked when switching to the complex
+  configuration
+- 2.12.4
+
+-------------------------------------------------------------------
+Wed Aug  3 14:52:56 CEST 2005 - locilka@suse.cz
+
+- Changed the last "xntpd" to "ntp"
+- Changed SCR agent for xntpd to ntp
+- Changed sysconfig variables XNTPD to NTPD
+- Fixed testsuites
+- Changed sysconfig/network/dhcp.DHCLIENT_MODIFY_NTPD_CONF to the
+  DHCLIENT_MODIFY_NTP_CONF
+- Fixed a typo in help
+- Fixed testsuites (xntp -> ntp)
+- 2.12.3
+
+-------------------------------------------------------------------
+Thu Jul 28 11:26:40 CEST 2005 - locilka@suse.cz
+
+- Changed service name "xntpd" to "ntp" 
+- Updated .desktop file
+- 2.12.2
+
+-------------------------------------------------------------------
+Tue Jul 19 10:32:09 CEST 2005 - locilka@suse.cz
+
+- Fixing some help texts to match exactly the dialog widget names
+- Fixing complains in y2log about converting 'true' to integer
+  during Radio Clock symlink configuration
+
+-------------------------------------------------------------------
+Thu May 19 12:26:25 CEST 2005 - locilka@suse.cz
+
+- Fixing "Save and Restart" function not to produce Progress errors
+- Changing labels, headlines, names. Major changes:
+    Broadcast -> Outgoing Broadcast 
+    Accepting Broadcasts -> Incoming Broadcast
+- Replacing "Select NTP Server" dialog with two popups:
+  "Select Local NTP Server" and "Select Public NTP Server"
+- Changing texts to be YaST2 Style Guide Compatible
+- 2.12.1
+
+-------------------------------------------------------------------
+Tue May 17 13:14:01 CEST 2005 - locilka@suse.cz
+
+- Fixing bug #83918
+  NTP Client could freeze during saving the configuration when the
+  starting directory of YaST2 ntp-client was a network directory
+  and the "Configure via DHCP" option has been unselected.
+
+-------------------------------------------------------------------
+Wed May 11 12:33:39 CEST 2005 - locilka@suse.cz
+
+- NTP Server entry-checking is ommited when changing the dialog to
+  select one from already found or public ones
+- Caching Lookup-Servers results
+
+-------------------------------------------------------------------
+Mon May  9 15:18:59 CEST 2005 - locilka@suse.cz
+
+- Added "Scanning nework" popup which appears during scanning the
+  local network for NTP servers
+- Added error popups when no servers are found (popup text depends
+  on whether SuSEfirewall2 is running)
+- Added some missing comments for translators
+- 2.12.0 
+
+-------------------------------------------------------------------
+Thu Mar 31 14:23:34 CEST 2005 - locilka@suse.cz
+
+- Fixed bug #74376
+  Checking server/peer address entry for existency and rightness
+
+-------------------------------------------------------------------
+Wed Mar 16 15:51:15 CET 2005 - locilka@suse.cz
+
+- Fixed bug #73039
+  Firewall configuration had never been saved
+- Changing maintainer -> locilka
+- 2.11.3
+
+-------------------------------------------------------------------
+Mon Feb 14 12:29:46 CET 2005 - jsrain@suse.cz
+
+- do not ask to confirm abort if nothing changed (#50743)
+- 2.11.2
+
+-------------------------------------------------------------------
+Wed Dec 15 14:38:09 CET 2004 - jsrain@suse.cz
+
+- clean-up of neededforbuild and requires
+- using generic firewall enabling widget/popup
+- using Progress::set
+- 2.11.1
+
+-------------------------------------------------------------------
+Tue Nov  2 11:38:57 CET 2004 - jsrain@suse.cz
+
+- adapted to new Mode.ycp interface
+- 2.11.0
+
+-------------------------------------------------------------------
+Tue Oct 19 14:34:08 CEST 2004 - jsrain@suse.cz
+
+- using unified messages from Message.ycp/Confirm.ycp/Label.ycp
+
+-------------------------------------------------------------------
+Fri Sep 17 10:20:51 CEST 2004 - jsrain@suse.cz
+
+- added NTP servers located at "Physikalisch-Technische
+  Bundesanstalt" to the list of NTP servers (#45409)
+- 2.10.8
+
+-------------------------------------------------------------------
+Tue Sep 14 08:24:14 CEST 2004 - jsrain@suse.cz
+
+- adapted testsuite to changes in yast2-firewall
+- 2.10.7
+
+-------------------------------------------------------------------
+Mon Sep  6 16:15:38 CEST 2004 - jsrain@suse.cz
+
+- fixed using NTP server detected via SLP
+- 2.10.6
+
+-------------------------------------------------------------------
+Fri Sep  3 14:18:08 CEST 2004 - jsrain@suse.cz
+
+- added GerModified and SetModified functions to _auto client
+
+-------------------------------------------------------------------
+Mon Aug 30 13:08:37 CEST 2004 - jsrain@suse.cz
+
+- removed duplicated ntp_servers.ycp file
+- 2.10.5
+
+-------------------------------------------------------------------
+Mon Aug 23 10:31:56 CEST 2004 - locilka@suse.cz
+
+- added missing data: ntp_servers
+- 2.10.4
+
+-------------------------------------------------------------------
+Thu Aug 19 16:31:25 CEST 2004 - visnov@suse.cz
+
+- fixed command line return type
+- 2.10.3 
+
+-------------------------------------------------------------------
+Mon Aug 16 08:25:14 CEST 2004 - jsrain@suse.cz
+
+- fixed firewall port identification
+- 2.10.2
+
+-------------------------------------------------------------------
+Tue Aug 10 09:36:19 CEST 2004 - jsrain@suse.cz
+
+- merged texts from proofread
+
+-------------------------------------------------------------------
+Mon Aug  9 12:07:05 CEST 2004 - jsrain@suse.cz
+
+- adapted to the new firewall interface
+- updated to changes in CWM
+- split the UI and backend (the border wasn't clear)
+- 2.10.1
+
+-------------------------------------------------------------------
+Tue Aug  3 15:57:42 CEST 2004 - jsrain@suse.cz
+
+- updated helps
+- updated comments to functions and texts fro translations
+- other updates
+
+-------------------------------------------------------------------
+Fri Jul 30 15:42:18 CEST 2004 - jsrain@suse.cz
+
+- UI updates
+
+-------------------------------------------------------------------
+Thu Jul 29 09:48:11 CEST 2004 - jsrain@suse.cz
+
+- added a list of NTP servers and offering to select one of them
+- added support for configuring via DHCP
+- 2.10.0
+
+-------------------------------------------------------------------
+Mon Jul 19 12:36:29 CEST 2004 - jsrain@suse.cz
+
+- use common function for checking installed packages (#30872)
+
+-------------------------------------------------------------------
+Mon Jun 21 07:55:25 CEST 2004 - jsrain@suse.cz
+
+- fixed saving of options to /etc/ntp.conf (#42199)
+
+-------------------------------------------------------------------
+Sun May 30 05:15:03 CEST 2004 - nashif@suse.de
+
+- Honor old syntax when importing (#41379)
+- 2.9.13
+
+-------------------------------------------------------------------
+Fri May 21 08:13:20 CEST 2004 - jsrain@suse.cz
+
+- dont complain about missing packages when cloning (nashif)
+- 2.9.12
+
+-------------------------------------------------------------------
+Tue May  4 09:04:19 CEST 2004 - jsrain@suse.cz
+
+- merged texts from proofread
+- 2.9.11
+
+-------------------------------------------------------------------
+Thu Apr  8 14:30:30 CEST 2004 - jsrain@suse.cz
+
+- fixed texts of menu button in the log display dialog (#38522)
+
+-------------------------------------------------------------------
+Fri Apr  2 16:08:30 CEST 2004 - jsrain@suse.de
+
+- changed version to GPL
+- 2.9.10
+
+-------------------------------------------------------------------
+Tue Mar 30 08:31:54 CEST 2004 - jsrain@suse.de
+
+- fixed typo in variable name
+- 2.9.9
+
+-------------------------------------------------------------------
+Fri Mar 26 14:36:57 CET 2004 - jsrain@suse.de
+
+- added missing textdomain, added missing comments for translators
+
+-------------------------------------------------------------------
+Mon Mar 15 11:28:36 CET 2004 - jsrain@suse.cz
+
+- fixed parsing of configuration files with comments on the same
+  line as option (eg. server ntp.example.com #comment) (#35818)
+- fixed saving address of the NTP server from the simple dialog
+- added support for lookup NTP servers via SLP
+- reduced VSpacings in order to fit in new wizard
+- not asking for confirmation when set NTP service on if at least
+  one network interface started on boot found (#35487)
+- fixed handling of `abort event
+- 2.9.8
+
+-------------------------------------------------------------------
+Wed Mar 10 02:20:52 CET 2004 - sh@suse.de
+
+- V 2.9.7
+- Migration to new wizard 
+
+-------------------------------------------------------------------
+Tue Mar  9 09:34:23 CET 2004 - jsrain@suse.de
+
+- Require -> Package
+- using Sequencer module
+
+-------------------------------------------------------------------
+Mon Mar  8 18:12:02 CET 2004 - jsrain@suse.de
+
+- setting icon
+- 2.9.6
+
+-------------------------------------------------------------------
+Fri Mar  5 15:15:32 CET 2004 - jsrain@suse.de
+
+- types fixes
+- 2.9.5
+
+-------------------------------------------------------------------
+Wed Mar  3 12:49:15 CET 2004 - jsrain@suse.de
+
+- fixed testsuite
+- 2.9.4
+
+-------------------------------------------------------------------
+Mon Mar  1 16:38:57 CET 2004 - jsrain@suse.de
+
+- fixed displaying NTP summary
+- merged texts from proofread
+- more strict data types
+- 2.9.3
+
+-------------------------------------------------------------------
+Mon Feb 16 17:37:37 CET 2004 - jsrain@suse.de
+
+- syntax fix of abort checking (in order to build)
+- 2.9.2
+
+-------------------------------------------------------------------
+Tue Feb 10 08:19:59 CET 2004 - jsrain@suse.de
+
+- dropped .y2cc file
+- 2.9.1
+
+-------------------------------------------------------------------
+Thu Jan 22 17:37:58 CET 2004 - jsrain@suse.de
+
+- added displaying of NTP daemon's log
+- added firewall settin support
+- 2.9.0
+
+-------------------------------------------------------------------
+Wed Jan 21 17:28:47 CET 2004 - jsrain@suse.de
+
+- updated for the new interpreter
+- added support for command line interface
+
+-------------------------------------------------------------------
+Thu Sep 25 10:05:18 CEST 2003 - jsrain@suse.de
+
+- typos fixed (#30274)
+
+-------------------------------------------------------------------
+Thu Sep 11 06:56:31 CEST 2003 - nashif@suse.de
+
+- #30291: return list of required packages for autoinstallation
+
+-------------------------------------------------------------------
+Wed Sep 10 10:27:35 CEST 2003 - jsrain@suse.de
+
+- stopping XNTP daemon when set to never start it automatically
+  (30358)
+- 2.8.9
+
+-------------------------------------------------------------------
+Fri Sep  5 08:30:16 CEST 2003 - jsrain@suse.de
+
+- merged texts from proofread
+- 2.8.8
+
+-------------------------------------------------------------------
+Tue Sep  2 11:29:07 CEST 2003 - jsrain@suse.de
+
+- marked missed texts for translation
+- fixed translation of exit without saving popup (was evaluated in
+  incorect textdomain)
+
+-------------------------------------------------------------------
+Mon Sep  1 11:35:25 CEST 2003 - jsrain@suse.de
+
+- separated "Type of entry to add" popup to extra dialog and added
+  some help to the entries (#29669)
+- 2.8.7
+
+-------------------------------------------------------------------
+Fri Aug 29 13:13:26 CEST 2003 - jsrain@suse.de
+
+- improved helps (#29379)
+- displaying correctly local CMOS clock (#29422)
+- 2.8.6
+
+-------------------------------------------------------------------
+Mon Aug 25 17:33:19 CEST 2003 - jsrain@suse.de
+
+- not touching sysconfig/xntp:XNTPD_INITIAL_NTPDATE if containg
+  AUTO and would be replaced with empty string (#29315)
+- 2.8.5
+
+-------------------------------------------------------------------
+Wed Aug 20 15:18:40 CEST 2003 - jsuchome@suse.de
+
+- removed redundant "initialization dialog" (#28779)
+- 2.8.4
+
+-------------------------------------------------------------------
+Mon Aug 11 09:43:03 CEST 2003 - jsrain@suse.de
+
+- merged text from proofread
+- 2.8.3
+
+-------------------------------------------------------------------
+Wed Aug  6 13:52:54 CEST 2003 - jsrain@suse.de
+
+- fixed Abort button handling
+
+-------------------------------------------------------------------
+Wed Aug  6 08:48:57 CEST 2003 - jsrain@suse.de
+
+- changed internal structure (autoyast requirement)
+- reporting error if xntp package installation fails
+- handling double-click in the summary table
+- 2.8.2
+
+-------------------------------------------------------------------
+Tue Aug  5 15:46:20 CEST 2003 - jsrain@suse.de
+
+- added warning if NTP daemon set to be started at boot
+- added more testsuites
+- added some documentation
+
+-------------------------------------------------------------------
+Mon Aug  4 14:42:15 CEST 2003 - jsrain@suse.de
+
+- added .desktop file
+- 2.8.1
+
+-------------------------------------------------------------------
+Wed Jul 30 07:56:30 CEST 2003 - jsrain@suse.de
+
+- not (re)starting service during autoinstallation
+
+-------------------------------------------------------------------
+Tue Jul 29 14:52:50 CEST 2003 - jsrain@suse.de
+
+- adapted to udpated CWM interface
+
+-------------------------------------------------------------------
+Mon Jul  7 16:11:29 CEST 2003 - jsrain@suse.de
+
+- initial version

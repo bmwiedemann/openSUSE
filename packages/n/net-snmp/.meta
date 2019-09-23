@@ -1,0 +1,18 @@
+<package name="net-snmp" project="openSUSE:Factory">
+  <title>SNMP Daemon</title>
+  <description>Net-SNMP is a suite of applications used to implement SNMP v1, SNMP v2c
+and SNMP v3 using both IPv4 and IPv6. The suite includes:
+
+- An extensible agent for responding to SNMP queries including built-in
+  support for a wide range of MIB information modules
+- Command-line applications to retrieve and manipulate information from
+  SNMP-capable devices
+- A daemon application for receiving SNMP notifications
+- A library for developing new SNMP applications, with C and Perl APIs
+- A graphical MIB browser.
+
+This package was originally based on the CMU 2.1.2.1 snmp code. It was
+renamed from cmu-snmp to ucd-snmp in 1995 and later renamed from ucd-snmp
+to net-snmp in November 2000.</description>
+  <devel project="network:utilities" package="net-snmp"/>
+</package>

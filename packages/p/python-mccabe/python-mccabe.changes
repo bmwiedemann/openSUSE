@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Wed Jul  3 09:10:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the test run with new pytest
+
+-------------------------------------------------------------------
+Mon Mar  6 14:03:34 UTC 2017 - jmatejek@suse.com
+
+- update for singlespec
+- enable tests
+
+-------------------------------------------------------------------
+Mon Feb 20 10:36:41 UTC 2017 - tbechtold@suse.com
+
+- Use pypi.io and https in Source
+
+-------------------------------------------------------------------
+Wed Feb 15 08:55:16 UTC 2017 - kkaempf@suse.com
+
+- update to version 0.6.1:
+  * Fix signature for PathGraphingAstVisitor.default to match the
+    signature for ASTVisitor
+
+- update to version 0.6.0:
+  * Add support for Python 3.6
+  * Fix handling for missing statement types
+
+- update to version 0.5.3:
+  * Report actual column number of violation instead of the start
+    of the line
+
+- update to version 0.5.2:
+  * When opening files ourselves, make sure we always name the file
+    variable
+
+- update to version 0.5.1:
+  * Set default maximum complexity to -1 on the class itself
+
+- update to version 0.5.0:
+  * PyCon 2016 PDX release
+  * Add support for Flake8 3.0
+
+- update to version 0.4.0:
+  * Stop testing on Python 3.2
+  * Add support for async/await keywords on Python 3.5 from PEP 0492
+
+- update to version 0.3.1:
+  * Include test_mccabe.py in releases.
+  * Always coerce the max_complexity value from Flake8’s entry-point
+    to an integer.
+
+-------------------------------------------------------------------
+Thu May  7 16:34:53 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.3:
+  * Computation was wrong: the mccabe complexity starts at 1, not 2
+  * The max-complexity value is now inclusive. E.g.: if the value
+    is 10 and the reported complexity is 10, then it passes
+  * Add tests
+- add the LICENSE to the package documentation
+
+-------------------------------------------------------------------
+Thu Oct 24 11:08:23 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Apr 23 13:04:20 UTC 2013 - speilicke@suse.com
+
+- Fix SLE_11_SP2 build
+- Set license to MIT (SPDX mapping from Expat)
+
+-------------------------------------------------------------------
+Sun Apr 21 23:39:43 UTC 2013 - dmueller@suse.com
+
+- Initial package (0.2.1) 
+

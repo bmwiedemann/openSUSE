@@ -1,0 +1,5 @@
+<package name="bcm20702a1-firmware" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="hardware" package="bcm20702a1-firmware"/>
+</package>

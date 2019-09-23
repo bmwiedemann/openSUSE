@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Fri Sep 13 13:22:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.1.10:
+  * Print out return code, stdout and stderr output
+
+-------------------------------------------------------------------
+Thu Aug 22 08:31:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use spec-cleaner
+- Update to 0.1.9:
+  * Fixes for newer pytest releases
+
+-------------------------------------------------------------------
+Mon Oct  1 12:07:44 UTC 2018 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.1.6
+- Added pytest-console-scripts-0.1.6_test_virtualenv.patch
+
+-------------------------------------------------------------------
+Fri Jun 15 09:11:13 UTC 2018 - Andreas Schneider <asn@cryptomilk.org>
+
+- Initial package

@@ -1,0 +1,21 @@
+Index: grub-2.02/util/grub.d/00_header.in
+===================================================================
+--- grub-2.02.orig/util/grub.d/00_header.in
++++ grub-2.02/util/grub.d/00_header.in
+@@ -417,8 +417,14 @@ if [ "x${SUSE_BTRFS_SNAPSHOT_BOOTING}" =
+     # Note: No $snapshot_num on *read-only* rollback!  (bsc#901487)
+     cat <<EOF
+ if [ -n "\$extra_cmdline" ]; then
+-  submenu "Bootable snapshot #\$snapshot_num" {
+-    menuentry "If OK, run 'snapper rollback' and reboot." { true; }
++  menuentry "Help on bootable snapshot #\$snapshot_num" {
++    echo "Select the default entry of the snapshot boot menu."
++    echo "Examine the snapshot, and if it's OK,"
++    echo "   run 'snapper rollback' and reboot."
++    echo "See 'System Rollback by Booting from Snapshots'"
++    echo "   in the manual for more information."
++    echo "  ** Hit Any Key to return to boot menu **  "
++    read
+   }
+ fi
+ EOF

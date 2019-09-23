@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>37bcea1a65ad080c5a77950e220ca47b</srcmd5>
+    <version>1.0</version>
+    <time>1515261257</time>
+    <user>dimstar_suse</user>
+    <comment>For SLE15, added sle15 detection and removed %clean</comment>
+    <requestid>562007</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>41203be47ab463ae72216f94c32f00d2</srcmd5>
+    <version>1.0</version>
+    <time>1516634293</time>
+    <user>dimstar_suse</user>
+    <comment>Added SLE15 detection (bsc#1073573) (forwarded request 567795 from jrecord)</comment>
+    <requestid>567796</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>47c963eb312267e3913e34c1bf823cd9</srcmd5>
+    <version>1.0</version>
+    <time>1516712001</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed pattern runtime error divide by zero (bsc#1077110) (forwarded request 568429 from jrecord)</comment>
+    <requestid>568430</requestid>
+  </revision>
+</revisionlist>

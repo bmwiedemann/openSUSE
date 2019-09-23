@@ -1,0 +1,33 @@
+Index: libcap/_makenames.c
+===================================================================
+--- libcap/_makenames.c.orig
++++ libcap/_makenames.c
+@@ -7,7 +7,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+-#include <linux/capability.h>
++#include "include/sys/capability.h"
+ 
+ /*
+  * #include 'sed' generated array
+Index: libcap/include/sys/capability.h
+===================================================================
+--- libcap/include/sys/capability.h.orig
++++ libcap/include/sys/capability.h
+@@ -23,15 +23,6 @@ extern "C" {
+ #include <sys/types.h>
+ #include <stdint.h>
+ 
+-/*
+- * Make sure we can be included from userland by preventing
+- * capability.h from including other kernel headers
+- */
+-#define _LINUX_TYPES_H
+-#define _LINUX_FS_H
+-
+-typedef unsigned int __u32;
+-
+ #include <linux/capability.h>
+ 
+ /*

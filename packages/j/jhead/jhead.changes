@@ -1,0 +1,187 @@
+-------------------------------------------------------------------
+Wed Oct 24 08:01:56 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Renamed CVE-2018-16554.patch to CVE-2018-17088.patch, because
+  it is in fact fix of boo#1108672
+- Buffer overflow fix (boo#1108480) CVE-2018-16554.patch
+
+-------------------------------------------------------------------
+Fri Sep 14 20:20:06 CEST 2018 - sbrabec@suse.com
+
+-  Integer overflow fixes (boo#1108480, CVE-2016-3822,
+  CVE-2018-16554, CVE-2016-3822.patch, CVE-2018-16554.patch.
+
+-------------------------------------------------------------------
+Mon Feb  5 16:46:47 UTC 2018 - kbabioch@suse.com
+
+- Added CVE-2018-6612.patch: Fix of a heap-based buffer over-read
+  (boo#1079349 CVE-2018-6612)
+
+-------------------------------------------------------------------
+Mon Apr 27 17:44:31 UTC 2015 - mpluskal@suse.com
+
+- Update to version 3.00
+  * Make max comment size 16000
+  * Added "-zt" option to trim 32k of trailing zeroes from Nikon 1 
+    J2 and J3 images.
+  * Add ability to reset invalid rotation tag (from Moultrie 
+    game cameras)
+- Use url for source
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Sun Mar 10 19:16:12 UTC 2013 - toganm@opensuse.org
+
+- Update to version 2.97
+  * Add feature to show quality of jpeg, (by Andy Spiegel)
+  * Fix crash on some corrupt files bug, clarify time adjustment
+    syntax in help 
+
+-------------------------------------------------------------------
+Mon Jul  2 09:26:57 UTC 2012 - toganm@opensuse.org
+
+- Update to version 2.96
+  * Fix printing file info when -ft option is used
+  * Do not skip readonle files with -st option 
+
+-------------------------------------------------------------------
+Tue Mar 20 10:00:09 UTC 2012 - toganm@opensuse.org
+
+- Updated to version 2.95
+  * Handle very large unsigned rational numbers in exif header 
+
+-------------------------------------------------------------------
+Fri Mar 16 20:16:46 UTC 2012 - toganm@opensuse.org
+
+- Fixed file-contains-date-and-time rpmlint warning. Date is set as
+  last date in the changes file.  
+
+-------------------------------------------------------------------
+Thu Mar 15 22:38:08 UTC 2012 - toganm@opensuse.org
+
+- Updated to version 2.93: For details please read changes.txt
+  * Fixed bug in jhead -cmd that caused metatdata to be deleted.
+
+-------------------------------------------------------------------
+Wed Aug  5 19:26:59 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 2.87:
+  * Added the ability to move files with the -n option.
+  * Minor fixes.
+
+-------------------------------------------------------------------
+Mon Jan  5 18:12:13 CET 2009 - sbrabec@suse.cz
+
+- Fixed arbitrary command vulnerability in DoCommand (bnc#435979,
+  CVE-2008-4641).
+- Fixed dependencies.
+
+-------------------------------------------------------------------
+Thu Oct 16 11:50:04 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 2.84:
+  * Decode more exif tags for '-v' mode.
+  * Fix a bunch of potential string overflows (bnc#435979,
+    CVE-2008-4575)
+  * Fix bug where IPTC sction was not deleted by -purejpg
+  * Fix GPS altitude decode bug
+
+-------------------------------------------------------------------
+Mon Apr  7 12:17:51 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 2.82:
+  * Make jhead aware of XMP data and not delete it.
+  * Improve IPTC handling a little.
+  * Change how date is encoded with -mkexif section to make it more
+    compatible.
+
+-------------------------------------------------------------------
+Fri Nov 16 13:26:50 CET 2007 - sbrabec@suse.cz
+
+- Updated to version 2.8:
+  * Added IPTC handling
+  * Added -q option
+  * Fix handling of corrupted GPS directory.
+  * Extract focus distance from canon makernote.
+  * Extract subject range (pentax and fuji cameras)
+
+-------------------------------------------------------------------
+Mon Aug  6 16:12:05 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.7:
+  * Remove maximum jpeg sections limit
+  * Added -ds option
+  * On clearing rotation, clear the image and the optional
+    thumbnail rotation tags.
+  * Add -mkexif option to make a new exif header.
+
+-------------------------------------------------------------------
+Sat Dec 16 12:22:47 CET 2006 - prusnak@suse.cz
+
+- fixed comparison with string literal (strcmp.patch) [#226477]
+
+-------------------------------------------------------------------
+Fri Oct 20 15:18:47 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 2.6:
+  * Compilation and bug fixes
+  * Fix shutter speed display in '-c' mode for very long shutter
+    speeds
+  * Fix a bug in autorot when rotating filenames with spaces in
+    them.
+  * Improved handling of corrupt exif linkages in exif header.
+  * Added -a (rename associated files) options.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:02 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 10 17:20:24 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 2.5.
+
+-------------------------------------------------------------------
+Fri Jul 29 13:43:12 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.4.
+
+-------------------------------------------------------------------
+Tue Feb  8 19:16:58 CET 2005 - mcihar@suse.cz
+
+- update to 2.3
+
+-------------------------------------------------------------------
+Fri Jul 16 15:47:13 CEST 2004 - mcihar@suse.cz
+
+- use fixed 2.2 tarball, so patch is not needed
+
+-------------------------------------------------------------------
+Wed Jul 14 16:44:47 CEST 2004 - mcihar@suse.cz
+
+- update to 2.2
+
+-------------------------------------------------------------------
+Tue Jan 27 12:06:08 CET 2004 - mcihar@suse.cz
+
+- update to 2.1:
+    This release changes the behavior of setting copied dates, adds the "-cl"
+    option for inserting literal comments, adds the "-norot" option, and fixes
+    the Unix Makefile.
+
+-------------------------------------------------------------------
+Sun Jan 11 12:10:34 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Aug 11 11:23:43 CEST 2003 - mcihar@suse.cz
+
+- requires jpegtran (used for -autorot)
+
+-------------------------------------------------------------------
+Fri Aug 08 11:07:56 CEST 2003 - mcihar@suse.cz
+
+- created new package
+

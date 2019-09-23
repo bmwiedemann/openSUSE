@@ -1,0 +1,8 @@
+<package name="evolution" project="openSUSE:Factory">
+  <title>The Integrated GNOME Mail, Calendar, and Address Book Suite</title>
+  <description>Evolution consists of modular components (at the moment: mailer,
+calendar, and address book) that should make daily life easier. Because
+of the modular design, it is possible to plug new components into
+Evolution or embed the existing ones in other applications.</description>
+  <devel project="GNOME:Factory" package="evolution"/>
+</package>

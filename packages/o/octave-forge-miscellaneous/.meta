@@ -1,0 +1,6 @@
+<package name="octave-forge-miscellaneous" project="openSUSE:Factory">
+  <title></title>
+  <description>Miscellaneous functions for Octave.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-miscellaneous"/>
+</package>

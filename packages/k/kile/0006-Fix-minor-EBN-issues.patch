@@ -1,0 +1,157 @@
+From e5778ffa15c31e4547f9c3e4d97c652fbfbad088 Mon Sep 17 00:00:00 2001
+From: Yuri Chornoivan <yurchor@ukr.net>
+Date: Tue, 14 Aug 2018 15:11:46 +0300
+Subject: [PATCH 06/35] Fix minor EBN issues
+
+---
+ src/kileappIface.h                   | 1 -
+ src/kilehelp.cpp                     | 2 +-
+ src/kilelauncher.cpp                 | 2 +-
+ src/scripting/kilescriptobject.cpp   | 3 ++-
+ src/scripting/kilescriptview.h       | 2 +-
+ src/scripting/script.cpp             | 3 ++-
+ src/usermenu/usermenu.cpp            | 2 +-
+ src/widgets/usermenuconfigwidget.cpp | 4 ++--
+ 8 files changed, 10 insertions(+), 9 deletions(-)
+
+diff --git a/src/kileappIface.h b/src/kileappIface.h
+index 3b17a045..80482b5a 100644
+--- a/src/kileappIface.h
++++ b/src/kileappIface.h
+@@ -19,7 +19,6 @@
+ #define KILEAPPIFACE_H
+ 
+ #include <QObject>
+-#include <QtDBus>
+ 
+ /*
+  * 	This files servers as our source for the xml file net.sourceforge.kile.main.xml
+diff --git a/src/kilehelp.cpp b/src/kilehelp.cpp
+index 440ece73..6698cfaf 100644
+--- a/src/kilehelp.cpp
++++ b/src/kilehelp.cpp
+@@ -11,6 +11,7 @@
+  *                                                                         *
+  ***************************************************************************/
+ 
++#include "kilehelp.h"
+ #include <QDir>
+ #include <QFileInfo>
+ #include <QTextStream>
+@@ -18,7 +19,6 @@
+ 
+ #include "editorextension.h"
+ #include "errorhandler.h"
+-#include "kilehelp.h"
+ #include "kiledebug.h"
+ #include "kiletool_enums.h"
+ #include "kiletoolmanager.h"
+diff --git a/src/kilelauncher.cpp b/src/kilelauncher.cpp
+index 62c296f3..edf1cd7c 100644
+--- a/src/kilelauncher.cpp
++++ b/src/kilelauncher.cpp
+@@ -314,7 +314,7 @@ void ProcessLauncher::slotProcessError(QProcess::ProcessError error)
+         errorString = i18n("crashed");
+         break;
+     default:
+-        errorString = i18n("failed (error code %i)", error);
++        errorString = i18n("failed (error code %1)", error);
+         break;
+     }
+     emit(message(Error, errorString));
+diff --git a/src/scripting/kilescriptobject.cpp b/src/scripting/kilescriptobject.cpp
+index 9cb05a6c..25ea1308 100644
+--- a/src/scripting/kilescriptobject.cpp
++++ b/src/scripting/kilescriptobject.cpp
+@@ -11,6 +11,8 @@
+ *                                                                         *
+ ***************************************************************************/
+ 
++#include "scripting/kilescriptobject.h"
++
+ #include <QFile>
+ #include <QFileDialog>
+ #include <QFileInfo>
+@@ -22,7 +24,6 @@
+ #include <KMessageBox>
+ #include <KTextEditor/View>
+ 
+-#include "scripting/kilescriptobject.h"
+ #include "kileviewmanager.h"
+ #include "dialogs/validatorinputdialog.h"
+ #include "kileinfo.h"
+diff --git a/src/scripting/kilescriptview.h b/src/scripting/kilescriptview.h
+index 6d458d8d..62ba2b07 100644
+--- a/src/scripting/kilescriptview.h
++++ b/src/scripting/kilescriptview.h
+@@ -17,7 +17,7 @@
+ 
+ #include <QObject>
+ #include <QMap>
+-#include <QtScript/QScriptable>
++#include <QScriptable>
+ 
+ #include <KTextEditor/Cursor>
+ #include <KTextEditor/Range>
+diff --git a/src/scripting/script.cpp b/src/scripting/script.cpp
+index 343ab431..eda0ca85 100644
+--- a/src/scripting/script.cpp
++++ b/src/scripting/script.cpp
+@@ -12,6 +12,8 @@
+ *                                                                         *
+ ***************************************************************************/
+ 
++#include "scripting/script.h"
++
+ #include <QFile>
+ #include <QTextStream>
+ #include <QScriptValue>
+@@ -27,7 +29,6 @@
+ 
+ #include "kileinfo.h"
+ #include "kiledebug.h"
+-#include "scripting/script.h"
+ #include "scripting/kilescriptobject.h"
+ #include "scripting/kilescriptview.h"
+ #include "scripting/kilescriptdocument.h"
+diff --git a/src/usermenu/usermenu.cpp b/src/usermenu/usermenu.cpp
+index 8588eca6..b87f0f8c 100644
+--- a/src/usermenu/usermenu.cpp
++++ b/src/usermenu/usermenu.cpp
+@@ -12,6 +12,7 @@
+  *                                                                         *
+  ***************************************************************************/
+ 
++#include "usermenu/usermenu.h"
+ 
+ #include <QFile>
+ #include <QRegExp>
+@@ -27,7 +28,6 @@
+ #include "kileactions.h"
+ #include "editorextension.h"
+ #include "kileviewmanager.h"
+-#include "usermenu/usermenu.h"
+ 
+ #include "kileconfig.h"
+ #include "kiledebug.h"
+diff --git a/src/widgets/usermenuconfigwidget.cpp b/src/widgets/usermenuconfigwidget.cpp
+index 0e4085dc..3b069937 100644
+--- a/src/widgets/usermenuconfigwidget.cpp
++++ b/src/widgets/usermenuconfigwidget.cpp
+@@ -11,11 +11,11 @@
+ *                                                                         *
+ ***************************************************************************/
+ 
++#include "widgets/usermenuconfigwidget.h"
++
+ #include <KMessageBox>
+ #include <QFileDialog>
+ 
+-#include "widgets/usermenuconfigwidget.h"
+-
+ #include "kileconfig.h"
+ #include "kiledebug.h"
+ 
+-- 
+2.20.1
+

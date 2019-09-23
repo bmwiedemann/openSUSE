@@ -1,0 +1,231 @@
+-------------------------------------------------------------------
+Fri Mar  1 09:47:57 UTC 2019 - mvetter@suse.com
+
+- Update to 0.14.1:
+  * Only translations was changed
+
+-------------------------------------------------------------------
+Thu Jan 31 10:52:41 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  * Added terminal margins
+  * Added history-based tab switching
+  * Smaller settings dialog
+  * Prevent TAB from changing focus in the shortcut editor
+  * Remember the maximization state of the window
+- Move translation from lxqt-l10n into package
+
+-------------------------------------------------------------------
+Sat Jun 23 06:35:22 UTC 2018 - mvetter@suse.com
+
+- Remove BuildRequires lxqt-l10n
+
+-------------------------------------------------------------------
+Tue May 22 15:26:34 UTC 2018 - mvetter@suse.com
+
+- Update to 0.9.0:
+  * Fix tab texts, especially for vertical tabs
+  * Sort color schemes alphabetically
+  * Support modifying $TERM and use xterm-256color by default
+  * Misc bug fixes for the tabbar
+  * Close tab on middle clicking
+  * A real shortcut editor
+  * Allow to change tab title color
+  * Make tab closing button configurable
+  * Make active tab text bold to make it more visible
+  * New config: show terminal size on resize
+  * Fix bracket paste
+  * Fix terminal menubar transparency
+  * Add option for configuring tab width limit.
+  * Add maximum tab width and proper text eliding.
+  * Enable bidi by default
+  * Add RTL support button
+
+-------------------------------------------------------------------
+Wed Oct 25 09:19:46 UTC 2017 - mvetter@suse.com
+
+- Update to 0.8.0:
+  * Set version to 0.8.0
+  * Update information on distribution package
+  * Added legacy font setting support
+  * Made font in settings file human readable
+  * Fix action inconsistency when switching tabs
+  * Lithuanian translation
+  * Added Lithuanian language
+  * Don't export github templates
+  * correct spelling mistake
+  * Adapt to QTermWidget API changes after DECSCUSR handling
+  * liblxqt dont make sense here
+  * Copied issue template
+  * Drops Qt5Core_VERSION_STRING
+  * Update qterminal_drop.desktop
+  * Update qterminal.desktop
+  * Make disabled actions consistent at all times (#331)
+  * DBus DropMode (#325)
+  * Change subterminal shortcuts to avoid breaking qtermwidget scrolling (#327)
+  * Update main.cpp (#322)
+  * Fix toggle menu action.
+  * Focus highlight (#266)
+  * Replace numbered terminals with directional navigation (#255)
+  * Fix '1 Terminal' preset (#324)
+  * Change "Clear Current Tab" into "Clear Active Terminal" (#268)
+  * Fix duplicated items, rework MainWindow memory-management (#313)
+  * Fixed comment - needless compiler warnings are annoying (#321)
+  * DBus integration (#307)
+  * Restore filter actions (#310)
+  * New features: trim \n from pasted strings, confirm multiline pastes (#309)
+  * Support custom QSS styles
+  * Call QApp destructor (#306)
+  * Fixes (#318)
+  * Refactor dangling actions, delete windows on close
+  * Adds superbuild support
+  * Improve translation (.ts) handling
+  * Removes Qt5X11Extras_DEFINITIONS
+  * Stops adding not exist entries to CMAKE_MODULE_PATH
+  * Use the LXQtCompilerSettings module
+  * Adapt to QTermWidget improved CMake
+  * Fix a copy/paste error from 4afcc4d0d0922f526f89aadf16ec0517f6b5267e
+  * Update dependencies and cleanup trailing spaces
+- Remove post and postun
+- Add BuildRequires utf8proc-devel for better utf8 support
+- Add BuildRequires pkgconfig(Qt5DBus) for new dbus interface
+
+-------------------------------------------------------------------
+Sun Feb 26 05:32:26 UTC 2017 - sfalken@opensuse.org
+
+- Update to 0.7.1:
+  * Bump patch version (#294)
+  * Add common shortcuts for switching tabs (#275)
+  * Fix tabstop order in properties dialog & add buddy relations for labels. (#290)
+  * Add preferences for background images (#273)
+  * Disable menu actions that are not applicable currently (#244)
+  * DEFINES += STR_VERSION=\\\"0.7.0\\\"
+  * Add context menu actions for URLs and E-Mail addresses (#276)
+  * Removed minimum size (#265)
+  * Set maxval of dropdown spinboxen to 100, instead of 99
+  * Use the new lxqt-build-tools package
+  * Fix context menu actions being applied to the window opened last (#235)
+  * Show exit confirmation dialog when closing the last window tab (#242)
+  * remove "building with cpack" from CMakeLists.txt - not used anymore Added very basic .gitattributes
+
+-------------------------------------------------------------------
+Sun Sep 25 13:30:19 UTC 2016 - mvetter@suse.com
+
+- Update to 0.7.0:
+  * Bump version to 0.7.0 (#262)
+  * Update README.md
+  * Collapse splitter hierarchies containing a single terminal (#254)
+  * Make qterminal.appdata.xml valid (#257)
+  * Add config option for changing window's title/icon
+  * Add support for automatic title & icon modification
+  * Delete Properties instance on exit (#239)
+  * Fix compilation warning related to QXmlStreamReader (#247)
+  * Set the desktopFileName property
+  * Fix typo in the conditional expression
+  * Add location for custom color schemes (#234)
+  * CMake Support changes (#237)
+  * Add keyboard cursor shape setting (#228)
+  * made the .pro file work on openSUSE; #229 (#232)
+  * Fix renaming a tab from the menu
+  * Make the rename current session shortcut work and configurable
+  * build: Use external translations
+  * ts-files removal (#222)
+  * Add pt_BR (Brazilian Portuguese) translation (#215)
+  * Merge pull request #214 from f2404/212_collapse_segfault_fix
+  * Remove noisy qDebug()
+  * Fix jumbled prompt
+  * Add Greek (el) translation
+  * Missing equal symbol for xml template
+  * Delete MainWindow on exit
+  * Link to the current github projects and trackers
+  * Apply context menu to the tab that it was opened over
+  * Close tabs in reverse order
+  * Eliminate memory leaks by closing tabs on exit
+  * Russian translation update
+  * Fix menubar transparency
+  * Fix default settings width
+  * Fix bookmarks widget transparency
+  * Use the same icon for dropdown and regular terminal
+  * Fix license file
+  * Improve README and use markdown
+  * Fixed button focus in close confirmation (resolves #179).
+  * Updated german translation.
+  * Fix Simplified Chinese(zh_CN)
+  * Update japanese translation
+  * Add Japanese translation to *.desktop
+  * fixed #174 XDG_CONFIG_DIRS support - read system wide QSettings
+  *  Fix license issues within qterminal
+  * Add chinese translation
+  * Require Qt 5.2 or higher
+  * fix private header dependency for X11 global shortcuts
+  * fix searching for Qt5 private headers
+  * make only terminal widget transparent, not the parent window
+  * Fix japanese translation
+  * Russian translation update
+  * Add Japanese translation
+  * fixed #160 FTBFS as of commit 4967123
+  * Fixes for Portuguese language
+  * Fixes missing App Window icon
+  * Hungarian translation added
+  * Update qterminal_tr.ts
+  * Create qterminal_tr.ts
+  * do not overwrite settings in migrateSettings
+  * remove fullscreen patch
+  * migrateSettings add size and pos and rm geometry
+  * split geometry into size and position
+  * define saveGeomOnExit in properties.h
+  * add save geometry on exit
+  * Add Alt-<letter> shortcuts to all menu items.
+  * Make sure no settings are overwritten in migrateSettings().
+  * Update index property of tabs when tabs are moved by drag-and-drop.
+  * Update german translation.
+  * Corrected terminology in settings (transparency vs. opacity). Now transparency instead of opacity is used in the whole application consistently.
+  * Migrate AlwaysShowTabs-setting.
+  * Move migrateSettings()-method to Properties-class and call it *before* loadSettings().
+  * Update version number in settings.
+  * Renamed always show tabs setting.
+  * Portuguese update
+  * Add instructions to disable system qxt when building with Qt5.
+  * Changed position of font button in settings.
+  * Changed layout of font-setting to better fit to the other settings in the widget.
+  * Appdata file for QTerminal (resolves #60).
+  * Add view-menu actions to mainwindow, to make them available when menu bar is hidden.
+  * Add fullscreen mode.
+  * Ignore user-specific project files of QtCreator.
+  * Resolves #115: Store Actions of 'View'-menu in properties too and enable shorctus for them.
+  * Set shortcuts for 'Preferences...' and 'Quit' from settings on startup.
+  * Fixed #83: Add menu actions to main window.
+  * Fixed #93: Add 'Toggle Menu' and 'Preferences...' to context menu.
+  * Use GNUInstallDirs in CMakeLists.txt to stop hardcoding paths
+  * Make the left column expandable to get more space for translated text.
+  * Updated german translation
+  * Remove empty file
+  * Remove unnecessarily noisy qDebug calls
+  * Portuguese update
+  * Add Portuguese translation
+  * Update Russian translation
+  * slightly naive "layout/preset" implementation
+  * fixed build for Qt4 and Qt5.x < 5.2
+  * Rework settings window
+  * Fixed translation (added tr() for some combo boxes in properties dialog).
+- Add keyring
+- Remove preferences_context_menu.patch: upstreamed
+
+-------------------------------------------------------------------
+Mon Aug  8 13:28:52 UTC 2016 - mvetter@suse.com
+
+- Adapt qtermwidget name change
+  See: https://build.opensuse.org/request/show/397609
+
+-------------------------------------------------------------------
+Tue Mar  8 13:54:46 UTC 2016 - mvetter@suse.com
+
+- Adding: preferences_context_menu.patch
+  Without this it's possible to disable the menu bar with
+  no way to bring it back.
+
+-------------------------------------------------------------------
+Sat Mar  5 12:17:51 UTC 2016 - avvissu@yandex.ru
+
+- Initial release
+

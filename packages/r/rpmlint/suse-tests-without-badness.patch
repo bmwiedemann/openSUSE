@@ -1,0 +1,44 @@
+Index: rpmlint-rpmlint-1.11/test.sh
+===================================================================
+--- rpmlint-rpmlint-1.11.orig/test.sh
++++ rpmlint-rpmlint-1.11/test.sh
+@@ -19,7 +19,10 @@ for i in $TESTPATH/test.*.py; do
+     fi
+ done
+ 
+-run_rpmlint="$PYTHON ./rpmlint -C $(pwd)"
++export RPMLINT_SKIP_GLOBAL=1
++
++run_rpmlint="$PYTHON ./rpmlint -f config -C $(pwd)"
++
+ 
+ echo "Check that rpmlint executes with no unexpected errors"
+ echo "...in default locale"
+@@ -40,10 +43,6 @@ $PYTEST -v || exit $?
+ 
+ unset PYTHONWARNINGS
+ 
+-echo "$FLAKE8 tests"
+-$FLAKE8 --version
+-$FLAKE8 . ./rpmdiff ./rpmlint || exit $?
+-
+ echo "man page tests"
+ if man --help 2>&1 | grep -q -- --warnings; then
+     tmpfile=$(mktemp) || exit 1
+Index: rpmlint-rpmlint-1.11/rpmlint
+===================================================================
+--- rpmlint-rpmlint-1.11.orig/rpmlint
++++ rpmlint-rpmlint-1.11/rpmlint
+@@ -267,8 +267,10 @@ conf_file = _default_user_conf
+ info_error = set()
+ 
+ # load global config files
+-configs = glob.glob('/etc/rpmlint/*config')
+-configs.sort()
++configs = []
++if 'RPMLINT_SKIP_GLOBAL' not in os.environ:
++    configs = glob.glob('/etc/rpmlint/*config')
++    configs.sort()
+ 
+ # Was rpmlint invoked as a prefixed variant?
+ m = re.match(r"(?P<prefix>[\w-]+)-rpmlint(\.py)?", argv0)

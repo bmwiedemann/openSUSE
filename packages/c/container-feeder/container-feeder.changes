@@ -1,0 +1,507 @@
+-------------------------------------------------------------------
+Wed Dec 19 17:31:11 UTC 2018 - clee@suse.com
+
+- Update go requirements to >= go1.11.3 to fix
+  * bsc#1118897 CVE-2018-16873
+    go#29230 cmd/go: remote command execution during "go get -u"
+  * bsc#1118898 CVE-2018-16874
+    go#29231 cmd/go: directory traversal in "go get" via curly braces in import paths
+  * bsc#1118899 CVE-2018-16875
+    go#29233 crypto/x509: CPU denial of service
+-------------------------------------------------------------------
+Mon Nov  5 12:45:51 UTC 2018 - containers-bugowner@suse.de
+
+- Commit ddd2d41 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ [packaging] add libgpgme11 requirement explicetely
+ 
+ fix bsc#1114429
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+-------------------------------------------------------------------
+Fri Sep  7 07:26:02 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 37fa816 by Michal Jura mjura@suse.com
+ Fix func normalizeNameTag() when image <none>:<none>, bsc#1107228
+
+
+-------------------------------------------------------------------
+Wed Aug  8 17:00:59 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu May 31 10:25:09 UTC 2018 - containers-bugowner@suse.de
+
+- Commit c4e5d86 by David Cassany dcassany@suse.de
+ Make use of %license macro
+
+
+-------------------------------------------------------------------
+Tue May 15 03:00:06 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 5f6bccb by Kiall Mac Innes kiall@macinnes.ie
+ Add Housekeeping Job
+
+
+-------------------------------------------------------------------
+Fri May 11 07:44:40 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 93775b6 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ update version to 4.0.0+dev
+ 
+ master is now development version for 4.0 (and kubic)
+
+
+-------------------------------------------------------------------
+Fri Apr 27 10:16:25 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 37cd0b8 by Rafael Fernández López ereslibre@ereslibre.es
+ Import the container image if any tag is not found on the current ones.
+ 
+ This will ensure that as long as there's one unmatched new tag, we'll import
+ (and retag) the container image.
+ 
+ Fixes: bsc#1090841
+
+
+-------------------------------------------------------------------
+Wed Mar 21 16:08:05 UTC 2018 - containers-bugowner@suse.de
+
+- Commit ed2237e by Flavio Castelli fcastelli@suse.com
+ Ensure only whitelisted images are imported
+ 
+ Do not import images that are not whitelisted. Also ensure already imported
+ images are not loaded twice.
+ 
+ feature#crio
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+ 
+ Commit 1185fdf by Flavio Castelli fcastelli@suse.com
+ Fix broken tests
+ 
+ Some tests were broken due to small mistakes.
+ 
+ feature#crio
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+ 
+ Commit 5de48ec by Flavio Castelli fcastelli@suse.com
+ Normalize all image names
+ 
+ Ensure all image names are normalized. That means the "docker.io/" prefix is
+ going to be used whenever no registry is specified.
+ 
+ This is needed to prevent already imported images from not be seen (due to
+ the missing "docker.io/" prefix automatically added by crio).
+ 
+ This also ensure tagging consistency of all the images imported into crio.
+ Before this patch the following images would have been loaded into crio:
+ 
+ - docker.io/sles12/velum:1.0.0
+ - sles12/velum:latest
+ 
+ Causing the second image to be invisible to crio.
+ 
+ Note well: this change doesn't affect docker loads. Everything keeps working
+ as intended.
+ 
+ feature#crio
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+ 
+ Commit 26f6da6 by Flavio Castelli fcastelli@suse.com
+ Fail when an unknown CRI is specified
+ 
+ Do not silently roll back to use docker
+ 
+ feature#crio
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+
+
+-------------------------------------------------------------------
+Fri Mar 16 13:33:09 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 351b951 by Valentin Rothberg vrothberg@suse.com
+ crio_feeder: speedup image loading
+ 
+ Shell out to /usr/bin/unxz to uncompress the container images instead of
+ using the golang xz library to speed things up.  Preliminary experiments have
+ shown speed improvements from nearly 18 seconds down to 5 seconds per image
+ load.
+ 
+ Signed-off-by: Valentin Rothberg <vrothberg@suse.com> feature#crio
+
+
+-------------------------------------------------------------------
+Fri Mar 16 11:16:46 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 405a96f by Valentin Rothberg vrothberg@suse.com 
+ add whitelist support
+
+ Depending on the cluster-role and use-case of a machine, only a subset of
+ container images must be loaded.  Add whitelist support for image loading to
+ container-feeder in order to avoid redundant loading and to ultimately speed
+ things up.
+
+ The whitelist can be specified via the `/etc/container-feeder.json` config. 
+ The `whitelist` field in the config is an array of strings, each representing
+ an image name (e.g., `opensuse/tumbleweed`).  Hence, the whitelist filtering
+ is image-name based and ignores tags.  If the whitelist is empty, no
+ filtering will be applied.
+
+ From the code perspective, the change required to break the Feeder into a
+ concrete type and an interface.
+
+ Signed-off-by: Valentin Rothberg <vrothberg@suse.com> feature#crio
+
+
+-------------------------------------------------------------------
+Thu Mar 15 12:25:09 UTC 2018 - containers-bugowner@suse.de
+
+- Commit e44efd4 by Valentin Rothberg vrothberg@suse.com
+ vendor: update libpod to latest image-list fixes
+ 
+ Update github.com/projectatomic/libpod/libpod to the latest version, which
+ includes fixes for image listing, an API used by container-feeder.
+ 
+ Signed-off-by: Valentin Rothberg <vrothberg@suse.com> feature#crio
+ 
+ Commit 5c2f078 by Valentin Rothberg vrothberg@suse.com
+ debug: print images from local storage
+ 
+ Print the images found in the local container storage (e.g., docker, crio)
+ when run in debug mode.  This can be useful for debugging.
+ 
+ Signed-off-by: Valentin Rothberg <vrothberg@suse.com> feature#crio
+
+
+-------------------------------------------------------------------
+Wed Mar 14 08:53:26 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 2858df0 by Flavio Castelli fcastelli@suse.com
+ Fixed small typo
+ 
+ Commit 9ec4711 by Flavio Castelli fcastelli@suse.com
+ Don't fall back to docker when something goes wrong
+ 
+ We should exit immediately with an error message instead of falling back to
+ use the docker target.
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+
+
+-------------------------------------------------------------------
+Tue Mar 13 14:26:43 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 2fbe04d by Valentin Rothberg vrothberg@suse.com
+ update packaging
+ 
+ Update the make_spec.sh spec-file generation template and add the remaining
+ sources to adhere to the lastet changes introduced by commit 78c810dba49f
+ ("add crio support").
+ 
+ Signed-off-by: Valentin Rothberg <vrothberg@suse.com>
+
+
+-------------------------------------------------------------------
+Tue Mar 13 12:15:25 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 78c810d by Valentin Rothberg vrothberg@suse.com
+ add crio support
+ 
+ container-feeder defaults to loading the images into the Docker daemon, which
+ can be changed by setting the "feeder-target" field in the
+ /etc/container-feeder.json config to "crio".  The loading of the images to
+ the graphroot of crio is achieved by using the libpod library, adding more
+ dependencies to the vendor directory.
+ 
+ Notice, that this change implies some heavy refactorings.  Now, we have a
+ more generalized design and a type hiearchry that will ultimately ease
+ maintenance.  For packaging purposes a default container-feeder.json file is
+ added to the root of the project.
+ 
+ Further changes:
+ * Add --log-level option to facilitate debugging.
+ * Manually update (and fix) containers/image and libpod to load xz
+ compressed files. Notice that once libpod has fixed the issue, we
+ need to update our ./vendor directory.
+ * Update Travis:
+ * Use go 1.8.x and 1.9.x
+ * Perform fmt checks via govendor
+ * Replace go test by a more meaningful compile-test
+ 
+ Signed-off-by: Valentin Rothberg <vrothberg@suse.com>
+
+
+-------------------------------------------------------------------
+Mon Feb 26 10:52:15 UTC 2018 - containers-bugowner@suse.de
+
+- Commit fbe8ef9 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ Replace references to /var/adm/fillup-templates with new %_fillupdir macro
+ 
+ fix boo#1069468
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+-------------------------------------------------------------------
+Wed Jan 31 18:56:21 UTC 2018 - containers-bugowner@suse.de
+
+- Commit fbe8ef9 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ Replace references to /var/adm/fillup-templates with new %_fillupdir macro
+ 
+ fix boo#1069468
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Jan 30 15:35:28 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 9da5d37 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ rename docker to docker-kubic: fix package requirement and conflict
+
+
+-------------------------------------------------------------------
+Tue Nov 21 09:53:47 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 8e461e0 by Michal Jura mjura@suse.com
+ Add container-feeder package source files
+ 
+ We would like to keep conainter-feeder package source files in github.
+ - add container-feeder.service
+ - add sysconfig.container-feeder
+
+
+-------------------------------------------------------------------
+Fri Sep  1 11:58:16 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 274c645 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ fix importing new tags
+ 
+ We were using the "response" of the image creation called as image name. This
+ was working when there was no previous image, but when that is the case,
+ response contains a message error.
+ 
+ This commit fixes it
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Aug 29 13:43:36 UTC 2017 - containers-bugowner@suse.de
+
+- Commit ef3252c by Kiall Mac Innes kiall@macinnes.ie
+ Compare all tags during import
+ 
+ Ensure all tags exist, rather than just the first tag, when deciding if an
+ image needs to be imported or not.
+
+
+-------------------------------------------------------------------
+Tue Aug 29 12:59:14 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 7d8f1ba by Kiall Mac Innes kiall@macinnes.ie
+ Fix compatibility with docker 1.12.6
+ 
+ Docker 1.12.6 does not return a JSON payload in the ret.Body field in 1.12.6,
+ for now, lets fix compatibility with 1.12.6 and add support for newer
+ versions at a later date.
+
+
+-------------------------------------------------------------------
+Fri Aug 25 12:42:01 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 435dce1 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ refactor: replace [14:] by a TrimPrefix to make it more readable
+ 
+ Commit 78f506f by Jordi Massaguer Pla jmassaguerpla@suse.de
+ fix doc strings
+ 
+ Commit f311068 by Kiall Mac Innes kiall@macinnes.ie
+ Tag loaded images using the supplied metadata
+ 
+ The metadata JSON file included an array of tags, these were previously
+ ignored, and will now be used as additional tags for the loaded images
+
+
+-------------------------------------------------------------------
+Fri Jul 14 14:46:22 UTC 2017 - containers-bugowner@suse.de
+
+- Commit bfbbcc6 by Maximilian Meister mmeister@suse.de
+ make branch safe by transforming slashes to dashes
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+ 
+ Commit 4ce64b2 by Maximilian Meister mmeister@suse.de
+ packaging: make branch configurable
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Fri Jul 14 13:39:29 UTC 2017 - containers-bugowner@suse.de
+
+- Commit bfbbcc6 by Maximilian Meister mmeister@suse.de
+ make branch safe by transforming slashes to dashes
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+ 
+ Commit 4ce64b2 by Maximilian Meister mmeister@suse.de
+ packaging: make branch configurable
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Fri Jul 14 13:38:20 UTC 2017 - containers-bugowner@suse.de
+
+- Commit cf55234 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ fix docker version
+ 
+ We are adding a conflict with docker > 1.12.6 to prevent accidentally
+ installing another docker which will be available in the containers module.
+ 
+ This means that if we want to update docker, we need to update this
+ requirement.
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+-------------------------------------------------------------------
+Thu Jun 22 15:03:49 UTC 2017 - containers-bugowner@suse.de
+
+- Commit cf55234 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ fix docker version
+ 
+ We are adding a conflict with docker > 1.12.6 to prevent accidentally
+ installing another docker which will be available in the containers module.
+ 
+ This means that if we want to update docker, we need to update this
+ requirement.
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+-------------------------------------------------------------------
+Mon Jun 19 11:42:21 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 4fa1902 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ review version so it is seen as an update to the previous one
+ 
+ We need to include the date or otherwise is seen as a downgrade
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+-------------------------------------------------------------------
+Fri Jun 16 12:40:35 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 90859e3 by Alvaro Saurin alvaro.saurin@gmail.com
+ Updated the logrus dependency and recorded versions in the vendor/manifest
+ file
+ 
+ github.com/Sirupsen/logrus                 -
+ 85b1699d505667d13f8ac4478c1debbf85d6c5de
+ gopkg.in/gemnasium/logrus-airbrake-hook.v2 -
+ e928b033a891c0175fb643d5aa0779e86325eb12 github.com/sirupsen/logrus
+ - 85b1699d505667d13f8ac4478c1debbf85d6c5de golang.org/x/sys/unix
+ - fb4cac33e3196ff7f507ab9b2d2a44b0142f5b5a
+ gopkg.in/airbrake/gobrake.v2               -
+ 668876711219e8b0206e2994bf0a59d889c775aa
+
+
+-------------------------------------------------------------------
+Tue Jun  6 11:40:58 UTC 2017 - containers-bugowner@suse.de
+
+- Commit ba57a27 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ use git revision in package version
+ 
+ otherwise the latest commit may not be seen as an update by zypper
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+-------------------------------------------------------------------
+Fri Apr 28 12:04:55 UTC 2017 - containers-bugowner@suse.de
+
+- Do not require vendored deps to comply with gofmt
+- Vendored deps
+- Use logrus for logging
+
+
+-------------------------------------------------------------------
+Fri Apr  7 16:11:08 UTC 2017 - containers-bugowner@suse.de
+
+- replace with skip
+- circumvent rpm verify for travis builds.
+
+
+-------------------------------------------------------------------
+Thu Mar 23 00:44:56 UTC 2017 - containers-bugowner@suse.de
+
+- Apply small fixes proposed during review process`
+- Activate only legit images
+
+
+-------------------------------------------------------------------
+Wed Mar 22 15:21:31 UTC 2017 - alvaro.saurin@suse.com
+
+- added Requires=docker.service
+
+-------------------------------------------------------------------
+Wed Mar 22 10:51:59 UTC 2017 - containers-bugowner@suse.de
+
+- fillup can only be called in post, never in pre
+
+
+-------------------------------------------------------------------
+Wed Mar 15 15:44:47 UTC 2017 - jmassaguerpla@suse.com
+
+- fix bsc#1029277 - container-feeder: missing fillup prereq and /etc/sysconfig
+  not created 
+
+-------------------------------------------------------------------
+Wed Mar 15 14:26:42 UTC 2017 - containers-bugowner@suse.de
+
+- Impement repotagFromRPMFile func
+
+
+-------------------------------------------------------------------
+Wed Mar 15 09:44:57 UTC 2017 - containers-bugowner@suse.de
+
+- travis: test against 1.6 as well
+
+
+-------------------------------------------------------------------
+Wed Mar 15 09:22:27 UTC 2017 - containers-bugowner@suse.de
+
+- add travis.yml
+
+
+-------------------------------------------------------------------
+Wed Mar 15 09:21:35 UTC 2017 - containers-bugowner@suse.de
+
+- packaging: fix setup
+
+
+-------------------------------------------------------------------
+Tue Mar 14 13:52:23 UTC 2017 - containers-bugowner@suse.de
+
+- packaging: add .gitignore
+
+
+-------------------------------------------------------------------
+Mon Mar 13 10:35:31 UTC 2017 - jmassaguerpla@suse.com
+
+- Latest master to fix go1.6 build 
+
+-------------------------------------------------------------------
+Thu Mar  2 14:28:23 UTC 2017 - hguo@suse.com
+
+- New package, initial release.
+

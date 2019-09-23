@@ -1,0 +1,824 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>feb475652ff6b0a1d2e208e755127bdb</srcmd5>
+    <version>1.65.0</version>
+    <time>1241105948</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>99a63f42e4fc1741b6c8255588818db5</srcmd5>
+    <version>1.66.0</version>
+    <time>1243479952</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5c7eca3d089559f46340937d222caf5b</srcmd5>
+    <version>1.66.0</version>
+    <time>1248366819</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ea3a3796894af60eaac33262584a1998</srcmd5>
+    <version>1.66.0.svn1004480</version>
+    <time>1249062902</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7fbfc7996da1b1b732d2e5da53726a50</srcmd5>
+    <version>1.66.0.svn1009369</version>
+    <time>1250005219</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/k3b based on submit request 17430 from user Beineri
+</comment>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>285c8a5b78c6109666996bf9f9283193</srcmd5>
+    <version>1.66.0.svn1009369</version>
+    <time>1254792812</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/k3b based on submit request 21652 from user Beineri
+</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>285c8a5b78c6109666996bf9f9283193</srcmd5>
+    <version>1.66.0.svn1009369</version>
+    <time>1254792812</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/k3b based on submit request 21652 from user Beineri
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9fd52f5e39692b5151789a1355935b90</srcmd5>
+    <version>1.68.0</version>
+    <time>1256078911</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/k3b based on submit request 22542 from user Beineri
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0bd071d8b36cb29a82347f1a067b9355</srcmd5>
+    <version>1.69.0</version>
+    <time>1259755413</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/k3b based on submit request 25244 from user Beineri
+</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0f265f952abb55bf2c9aff49ceaf28f0</srcmd5>
+    <version>1.70.0</version>
+    <time>1267060916</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/k3b based on submit request 33422 from user dirkmueller
+</comment>
+    <requestid>33422</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ce8793b789da930c7462c4079e448ed6</srcmd5>
+    <version>1.91.0</version>
+    <time>1268355056</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/k3b based on submit request 34601 from user wstephenson
+</comment>
+    <requestid>34601</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>673739af2785317be4343bf4a2e1b889</srcmd5>
+    <version>1.91.0</version>
+    <time>1268832254</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/k3b based on submit request 35032 from user coolo
+</comment>
+    <requestid>35032</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>2a2725288b76961d8a7c44a275dcda8e</srcmd5>
+    <version>1.91.0</version>
+    <time>1268924159</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5dee8bc3e0c2401b47a0c655eaaa0faa</srcmd5>
+    <version>1.92.0</version>
+    <time>1274792524</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/k3b based on submit request 40622 from user wstephenson
+</comment>
+    <requestid>40622</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>22bf3588d96a0ee6cadedc37056d6693</srcmd5>
+    <version>1.93.0</version>
+    <time>1277139304</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/k3b based on submit request 41784 from user dirkmueller
+</comment>
+    <requestid>41784</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>22bf3588d96a0ee6cadedc37056d6693</srcmd5>
+    <version>1.93.0</version>
+    <time>1278667354</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>22bf3588d96a0ee6cadedc37056d6693</srcmd5>
+    <version>1.93.0</version>
+    <time>1278678585</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ceb079482dfb8bbfc11fc8c5f05f4895</srcmd5>
+    <version>2.0.0</version>
+    <time>1279565970</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/k3b based on submit request 42684 from user dirkmueller
+</comment>
+    <requestid>42684</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>1c9431dea7e9ac38781ae281cc901a62</srcmd5>
+    <version>2.0.0</version>
+    <time>1281737100</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/k3b based on submit request 45544 from user dirkmueller
+</comment>
+    <requestid>45544</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2bd47e12d8bd87c8a07712216a279529</srcmd5>
+    <version>2.0.1</version>
+    <time>1282572123</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/k3b based on submit request 45867 from user Beineri
+</comment>
+    <requestid>45867</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>b733935f6f8eb6460f613082fef7977a</srcmd5>
+    <version>2.0.1</version>
+    <time>1283518666</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/k3b based on submit request 46817 from user wstephenson
+</comment>
+    <requestid>46817</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>d92b01898144f8e4c18c4000e408666d</srcmd5>
+    <version>2.0.1</version>
+    <time>1288266297</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51560 from user coolo
+</comment>
+    <requestid>51560</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>c642916e75b824f4b9cba7030a8f1889</srcmd5>
+    <version>2.0.1</version>
+    <time>1288266305</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51560
+</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>2ba96e140eeba892b10d0f0c920f6e6b</srcmd5>
+    <version>2.0.1</version>
+    <time>1292320996</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 55811 from user wstephenson
+</comment>
+    <requestid>55811</requestid>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>b6c332400c65aeb6ee73d6746e5e6d69</srcmd5>
+    <version>2.0.1</version>
+    <time>1292321005</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 55811
+</comment>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>1df0084ba73dd0f0425b8b8e8c44747e</srcmd5>
+    <version>2.0.1</version>
+    <time>1294658277</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57296 from user dirkmueller
+</comment>
+    <requestid>57296</requestid>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>9bc93dfea003d251e72716298cc8f611</srcmd5>
+    <version>2.0.1</version>
+    <time>1294658289</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57296
+</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>84674d2fef6fc6305af39c0d59cd3d29</srcmd5>
+    <version>2.0.2</version>
+    <time>1295287548</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58417 from user tittiatcoke
+</comment>
+    <requestid>58417</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>7e6d9e25d5652180c423e015ee3ac417</srcmd5>
+    <version>2.0.2</version>
+    <time>1295287565</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58417
+</comment>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>0e1bbc85c98be914833393bad6c142ac</srcmd5>
+    <version>2.0.2</version>
+    <time>1296582307</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59305 from user coolo
+</comment>
+    <requestid>59305</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>094a45847aea9f71d3c629fea69512fc</srcmd5>
+    <version>2.0.2</version>
+    <time>1296582337</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59305
+</comment>
+  </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>094a45847aea9f71d3c629fea69512fc</srcmd5>
+    <version>2.0.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="33" vrev="8">
+    <srcmd5>d61ec1ffe0f55e8964c94f5047ba91c9</srcmd5>
+    <version>2.0.2</version>
+    <time>1298328884</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62291 from user wstephenson
+</comment>
+    <requestid>62291</requestid>
+  </revision>
+  <revision rev="34" vrev="9">
+    <srcmd5>3a028304011bcff0a78c4a451576efa8</srcmd5>
+    <version>2.0.2</version>
+    <time>1298328896</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62291
+</comment>
+  </revision>
+  <revision rev="35" vrev="10">
+    <srcmd5>709e41991c45e4c7e9582c4dd005e670</srcmd5>
+    <version>2.0.2</version>
+    <time>1303380797</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67900 from user licensedigger
+</comment>
+    <requestid>67900</requestid>
+  </revision>
+  <revision rev="36" vrev="11">
+    <srcmd5>5c4c67dca19bf736eddc18f9c4472c78</srcmd5>
+    <version>2.0.2</version>
+    <time>1303380806</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67900
+</comment>
+  </revision>
+  <revision rev="37" vrev="12">
+    <srcmd5>502c96842416cf475c8994664d05b0f1</srcmd5>
+    <version>2.0.2</version>
+    <time>1305631507</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>70380</requestid>
+  </revision>
+  <revision rev="38" vrev="13">
+    <srcmd5>22532f38fa5f20fc75ba2171a05ca8cd</srcmd5>
+    <version>2.0.2</version>
+    <time>1305631518</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 70380
+</comment>
+  </revision>
+  <revision rev="39" vrev="14">
+    <srcmd5>050483722d3cd35c092dc51b4190ac39</srcmd5>
+    <version>2.0.2</version>
+    <time>1314106255</time>
+    <user>saschpe</user>
+    <comment>forward to factory</comment>
+    <requestid>79380</requestid>
+  </revision>
+  <revision rev="40" vrev="15">
+    <srcmd5>d934008ce7668b2f1589d58d5dd2c1e6</srcmd5>
+    <version>2.0.2</version>
+    <time>1314106264</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79380
+</comment>
+  </revision>
+  <revision rev="41" vrev="16">
+    <srcmd5>092e8d842bec7fd1605a6335f6681c0c</srcmd5>
+    <version>2.0.2</version>
+    <time>1314883663</time>
+    <user>saschpe</user>
+    <comment>- Add k3b-short-trackinfo.patch: Too short track info dataLen 
+  returned at least on HL-DT-ST BH10LS30 , bko #268307</comment>
+    <requestid>80361</requestid>
+  </revision>
+  <revision rev="42" vrev="17">
+    <srcmd5>a154859361a5175143177d02f56b74cb</srcmd5>
+    <version>2.0.2</version>
+    <time>1314883673</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80361
+</comment>
+  </revision>
+  <revision rev="43" vrev="19">
+    <srcmd5>a154859361a5175143177d02f56b74cb</srcmd5>
+    <version>2.0.2</version>
+    <time>1319182020</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="44" vrev="20">
+    <srcmd5>3271ad4e20590b2d203a5ac08015ceb7</srcmd5>
+    <version>2.0.2</version>
+    <time>1323192061</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="45" vrev="21">
+    <srcmd5>6b2d90ff465204b35ead09264c465d97</srcmd5>
+    <version>2.0.2</version>
+    <time>1334818139</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>114366</requestid>
+  </revision>
+  <revision rev="46" vrev="23">
+    <srcmd5>6b2d90ff465204b35ead09264c465d97</srcmd5>
+    <version>2.0.2</version>
+    <time>1340183495</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="47" vrev="24">
+    <srcmd5>d1a45c65aa5000a796b5332a776da73f</srcmd5>
+    <version>2.0.2</version>
+    <time>1343661175</time>
+    <user>namtrac</user>
+    <comment>- Fix build with ffmpeg 0.11. Took from Packman. (forwarded request 128947 from RedDwarf)</comment>
+    <requestid>129262</requestid>
+  </revision>
+  <revision rev="48" vrev="25">
+    <srcmd5>997928d59bc160547097fb128a97a444</srcmd5>
+    <version>2.0.2</version>
+    <time>1355946605</time>
+    <user>coolo</user>
+    <comment>Add various bugfixes from upstream 2.0 branch (forwarded request 145797 from sumski)</comment>
+    <requestid>145798</requestid>
+  </revision>
+  <revision rev="49" vrev="27">
+    <srcmd5>997928d59bc160547097fb128a97a444</srcmd5>
+    <version>2.0.2</version>
+    <time>1359109134</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="50" vrev="28">
+    <srcmd5>b12f84f09c10cc1b662c2f450b35156a</srcmd5>
+    <version>2.0.2</version>
+    <time>1361633733</time>
+    <user>coolo</user>
+    <comment>Replace recommended package dependencies with file dependencies. For example zypper can use package &quot;kwave&quot; which contains &quot;normalize&quot; plugin instead of package &quot;normalize&quot;. (forwarded request 155777 from Dmitry_R)</comment>
+    <requestid>156172</requestid>
+  </revision>
+  <revision rev="51" vrev="30">
+    <srcmd5>b12f84f09c10cc1b662c2f450b35156a</srcmd5>
+    <version>2.0.2</version>
+    <time>1379662731</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="52" vrev="31">
+    <srcmd5>7acd541b650811a5c1cfed68fec3da29</srcmd5>
+    <version>2.0.2</version>
+    <time>1405658387</time>
+    <user>coolo</user>
+    <comment>- Add Requires: cdparanoia-devel to make copying of a CD work (kde#328769)</comment>
+    <requestid>240103</requestid>
+  </revision>
+  <revision rev="53" vrev="32">
+    <srcmd5>e9cd5bb426017ddea8b2da8033c4fa41</srcmd5>
+    <version>2.0.2</version>
+    <time>1409170697</time>
+    <user>coolo</user>
+    <comment>Use kde4-macros for filelists, k3b uses kdelibs4 buildsystem</comment>
+    <requestid>246445</requestid>
+  </revision>
+  <revision rev="54" vrev="34">
+    <srcmd5>e9cd5bb426017ddea8b2da8033c4fa41</srcmd5>
+    <version>2.0.2</version>
+    <time>1409301298</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>4440c99aa93c6d92121d0eedc5577c60</srcmd5>
+    <version>2.0.3</version>
+    <time>1415347508</time>
+    <user>coolo</user>
+    <comment>Update to 2.0.3</comment>
+    <requestid>259700</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>75dd52018310ef55424d9d21150737f9</srcmd5>
+    <version>2.0.3</version>
+    <time>1416425071</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261202</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>1cf30802c5324239a5d6b934631c2486</srcmd5>
+    <version>2.0.3</version>
+    <time>1428272620</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294075</requestid>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>ebbd2aabed185dad0b1709e9858deb45</srcmd5>
+    <version>2.0.3</version>
+    <time>1432071124</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307672</requestid>
+  </revision>
+  <revision rev="59" vrev="5">
+    <srcmd5>771c34977a3c0fd9e6683393ffe9f41c</srcmd5>
+    <version>2.0.3</version>
+    <time>1433744962</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>310590</requestid>
+  </revision>
+  <revision rev="60" vrev="6">
+    <srcmd5>e5e52bc6ac610d9c3add8993cf841c03</srcmd5>
+    <version>2.0.3</version>
+    <time>1444636879</time>
+    <user>coolo</user>
+    <comment>- Added building-docs-once-is-enough.patch: Fix build when CMP002
+  policy is set to NEW</comment>
+    <requestid>337919</requestid>
+  </revision>
+  <revision rev="61" vrev="7">
+    <srcmd5>86ee54bf7eb191bea95b17b7c7ced820</srcmd5>
+    <version>2.0.3</version>
+    <time>1446647541</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341825</requestid>
+  </revision>
+  <revision rev="62" vrev="8">
+    <srcmd5>d0eb0815bf3742735028ec41505c23f0</srcmd5>
+    <version>2.0.3</version>
+    <time>1447353603</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342869</requestid>
+  </revision>
+  <revision rev="63" vrev="9">
+    <srcmd5>501bac95d1e633f16914889290659c86</srcmd5>
+    <version>2.0.3</version>
+    <time>1452122660</time>
+    <user>dimstar_suse</user>
+    <comment>Correctly replace the %{BUILD_ORIG} with the available internal packages. This would also remove the necessity to build this package on packman. Now only the ffmpeg libs have to be switched.</comment>
+    <requestid>351777</requestid>
+  </revision>
+  <revision rev="64" vrev="10">
+    <srcmd5>d60f0b78a2a12751d750c2b8fe75971a</srcmd5>
+    <version>2.0.3</version>
+    <time>1464689436</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397931</requestid>
+  </revision>
+  <revision rev="65" vrev="11">
+    <srcmd5>f063e70acbe2ae871bac76a1f594f660</srcmd5>
+    <version>2.0.3</version>
+    <time>1467541604</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404780</requestid>
+  </revision>
+  <revision rev="66" vrev="12">
+    <srcmd5>6a32051662ae032e5905feb874b38918</srcmd5>
+    <version>2.0.3</version>
+    <time>1470217243</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415376</requestid>
+  </revision>
+  <revision rev="67" vrev="13">
+    <srcmd5>7b60cc92dd0ee6c5e83ba194742a63a7</srcmd5>
+    <version>2.0.3</version>
+    <time>1480693112</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442944</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>a95a18994f7bb0ed756cf19650ce071f</srcmd5>
+    <version>17.04.0</version>
+    <time>1494262017</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.04.0 final</comment>
+    <requestid>490361</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>bc4f553095cb0a7f4ff7db1a6ab2037b</srcmd5>
+    <version>17.04.1</version>
+    <time>1495442313</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.04.1</comment>
+    <requestid>495890</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>14c7aae1fffdd90d9bcdd4a88f6a117d</srcmd5>
+    <version>17.04.1</version>
+    <time>1496327040</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497834</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>acfe302121a42ef6d390cb6abd5d25e4</srcmd5>
+    <version>17.04.2</version>
+    <time>1497273368</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.04.2</comment>
+    <requestid>501954</requestid>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>3fc04bccd21ba8b2b6c9b14fc66d34e9</srcmd5>
+    <version>17.04.2</version>
+    <time>1497949293</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503435</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>fcb08a603a50a377c273920ac280f410</srcmd5>
+    <version>17.04.3</version>
+    <time>1500974814</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.04.3</comment>
+    <requestid>510656</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>fe0e395f6ed0cdb02de13674f631b682</srcmd5>
+    <version>17.04.3</version>
+    <time>1501227924</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512731</requestid>
+  </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>33ff51ef94e166f8488782b59dea4689</srcmd5>
+    <version>17.04.3</version>
+    <time>1502011478</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514059</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>9bc6cf8f572de0c78b6d68ea94cd2411</srcmd5>
+    <version>17.08.0</version>
+    <time>1503589870</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516522</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>308bdb0938b7fbc2845379d00e9b9f4f</srcmd5>
+    <version>17.08.0</version>
+    <time>1504620395</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519602</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>b8396c99d1daa590da315757a020f43e</srcmd5>
+    <version>17.08.1</version>
+    <time>1505238171</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.08.1</comment>
+    <requestid>522489</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>213b435838a971ce3954adc7eccbfbe2</srcmd5>
+    <version>17.08.1</version>
+    <time>1505757098</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526434</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>ac3032bed8d91461d4954afe2a308b09</srcmd5>
+    <version>17.08.2</version>
+    <time>1508768845</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.08.2</comment>
+    <requestid>534657</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>d093eab759886ffdb5be28fe68f264b6</srcmd5>
+    <version>17.08.3</version>
+    <time>1510838399</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.08.3</comment>
+    <requestid>540828</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>bb4ae870cfc62bc34a5839f44e109ca3</srcmd5>
+    <version>17.12.0</version>
+    <time>1513583204</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.12.0 final (release on 2017-12-14)</comment>
+    <requestid>556134</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>20f13abcfa44824a6483a14ae54a58d6</srcmd5>
+    <version>17.12.1</version>
+    <time>1516091642</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.12.1</comment>
+    <requestid>564256</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>27d6c8511ff248b854061704fca102c1</srcmd5>
+    <version>17.12.2</version>
+    <time>1518597304</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.12.2</comment>
+    <requestid>574983</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>9bfbdae2ee7642fa8c4e84b459547dd5</srcmd5>
+    <version>17.12.3</version>
+    <time>1521716249</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 17.12.3</comment>
+    <requestid>585514</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>58934ca8a7cd699fc80386d6a93d44fa</srcmd5>
+    <version>18.04.0</version>
+    <time>1524837719</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 18.04.0</comment>
+    <requestid>598991</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>0378c906f5b0a01b40e6b104e1ad6d16</srcmd5>
+    <version>18.04.1</version>
+    <time>1526488579</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 18.04.1</comment>
+    <requestid>607118</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>d90f2e7f3a6bfa268ccbbc805e611fdb</srcmd5>
+    <version>18.04.2</version>
+    <time>1529066335</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Applications 18.04.2</comment>
+    <requestid>615478</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>53889bd88ae3cb486c275d1b56bafa8e</srcmd5>
+    <version>18.04.3</version>
+    <time>1532033437</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 18.04.3</comment>
+    <requestid>622613</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>2a89a2c93b5547e0b443ea058d0dceb8</srcmd5>
+    <version>18.08.0</version>
+    <time>1535123092</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 18.08.0</comment>
+    <requestid>630113</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>8008035e9fb9b128320327390d95bd69</srcmd5>
+    <version>18.08.1</version>
+    <time>1537018056</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Applications 18.08.1 (forwarded request 633799 from luca_b)</comment>
+    <requestid>633880</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>9d7aecdda2535e06810560bc8e60d604</srcmd5>
+    <version>18.08.2</version>
+    <time>1539757707</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 18.08.2</comment>
+    <requestid>641451</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>a41c42096e2305bb97e8b21a783011cb</srcmd5>
+    <version>18.08.3</version>
+    <time>1542123584</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 18.08.3</comment>
+    <requestid>647978</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>632583214931963283d38fc557a57ce4</srcmd5>
+    <version>18.12.0</version>
+    <time>1546946417</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 18.12</comment>
+    <requestid>658341</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>61b05cab05602a91976f43d07a904b14</srcmd5>
+    <version>18.12.1</version>
+    <time>1548335119</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 18.12.1</comment>
+    <requestid>665087</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>3eb22135783b50043786362d2298ce70</srcmd5>
+    <version>18.12.2</version>
+    <time>1550220994</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 18.12.2</comment>
+    <requestid>673703</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>1b772c2ebc21558c5ad1ba52774ac34e</srcmd5>
+    <version>18.12.3</version>
+    <time>1552308153</time>
+    <user>coolo</user>
+    <comment>KDE Applications 18.12.3</comment>
+    <requestid>683135</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>c89f442fa3b4b714934b1a8aa7f11c2f</srcmd5>
+    <version>19.04.0</version>
+    <time>1556474545</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Applications 19.04.0 (forwarded request 696164 from luca_b)</comment>
+    <requestid>696200</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>3dc2334c0db057c4695f5409ec827c9b</srcmd5>
+    <version>19.04.1</version>
+    <time>1557915985</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.04.1</comment>
+    <requestid>702172</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>20e7a1b2c84b18546f477249c371f49e</srcmd5>
+    <version>19.04.2</version>
+    <time>1560971167</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.04.2</comment>
+    <requestid>708548</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>1371ecf85b060959cc27d7887a4cc994</srcmd5>
+    <version>19.04.3</version>
+    <time>1563362130</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.04.3</comment>
+    <requestid>715058</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>e84fa3fafa9b198d4af2e7b59d7143b2</srcmd5>
+    <version>19.08.0</version>
+    <time>1566242939</time>
+    <user>dimstar_suse</user>
+    <comment>Applications 19.08.0 (forwarded request 723532 from cgiboudeaux)</comment>
+    <requestid>723591</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>2e82673e7a459662dbba8342763f0a00</srcmd5>
+    <version>19.08.1</version>
+    <time>1568190397</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.08.1 (forwarded request 728705 from luca_b)</comment>
+    <requestid>728767</requestid>
+  </revision>
+</revisionlist>

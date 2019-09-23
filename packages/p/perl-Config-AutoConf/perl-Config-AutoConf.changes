@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Sat Jun  9 05:10:05 UTC 2018 - coolo@suse.com
+
+- updated to 0.317
+   see /usr/share/doc/packages/perl-Config-AutoConf/Changes
+
+  0.317	2018-06-08
+  	- fix pkg_config_package_flags a bit more
+  	- improve documentation of pkg_config_package_flags (fix
+  	  RT#125274 - thanks to Petr Písař <ppisar@redhat.com>)
+
+-------------------------------------------------------------------
+Wed Apr 18 05:06:48 UTC 2018 - coolo@suse.com
+
+- updated to 0.316
+   see /usr/share/doc/packages/perl-Config-AutoConf/Changes
+
+  0.316	2018-04-12
+  	- deal with pkg-config errors
+  	- allow more search_lib others
+
+-------------------------------------------------------------------
+Thu Aug  3 05:14:13 UTC 2017 - coolo@suse.com
+
+- updated to 0.315
+   see /usr/share/doc/packages/perl-Config-AutoConf/Changes
+
+  0.315	2017-08-02
+  	- add check_builtin
+  	- perltidy code and add perltidy test (taken from MooX::Options)
+  	- ensure for many check_* methods that externally controlled
+  	  ac_av_* environment variables are correctly passed into config.h
+  	- fix check_dirent_header to cache proving header and proving
+  	  availability of 'DIR *' in such a header separately
+
+-------------------------------------------------------------------
+Fri Mar 31 05:17:35 UTC 2017 - coolo@suse.com
+
+- updated to 0.314
+   see /usr/share/doc/packages/perl-Config-AutoConf/Changes
+
+  0.314	2017-03-30
+  	- _get_extra_linker_flags: add library dirs
+
+-------------------------------------------------------------------
+Tue Apr 12 13:21:20 UTC 2016 - coolo@suse.com
+
+- updated to 0.313
+   see /usr/share/doc/packages/perl-Config-AutoConf/Changes
+
+  0.313	2016-04-11
+  	- release 0.312_001 without further changes
+  
+  0.312_001	2016-04-07
+  	- fix "check_member" test (RT#113271)
+  	- update Copyright notice
+  	- add license files
+  	- improve compile_if_else/link_if_else by proving whether object
+  	  or binary file (compile result) exists
+  	- fix some typos and other POD quirks
+  	- Update README.md from updated POD
+
+-------------------------------------------------------------------
+Wed Apr 15 14:54:11 UTC 2015 - coolo@suse.com
+
+- updated to 0.311
+   see /usr/share/doc/packages/perl-Config-AutoConf/Changes
+
+-------------------------------------------------------------------
+Mon Jun  3 15:51:32 UTC 2013 - coolo@suse.com
+
+- updated to 0.22
+       - Flag some more tests as TODO.
+       - Flag -lm tests as 'TODO' as they might fail in some Windows
+         machines
+       - Add stdint.h into check_default_headers
+       - Make POD tests author only.
+
+-------------------------------------------------------------------
+Tue Feb 21 08:47:46 UTC 2012 - coolo@suse.com
+
+- initial package 0.19
+    * created by cpanspec 1.78.06
+

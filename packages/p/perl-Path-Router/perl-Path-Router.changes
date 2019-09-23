@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Tue Mar  8 10:47:48 UTC 2016 - coolo@suse.com
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-Path-Router/Changes
+
+  0.15 2016-03-01 NEILB
+      - Switched to Moo, done by FELLIOTT++.
+      - Added strict and warnings to Path::Router::Types - MANWAR++
+      - Specified versions when use'ing any third-party modules.
+      - Added minimal doc for route_class() method in Path::Router,
+        and clone() method in Path::Router::Route.
+      - Updated Stevan's email address.
+  
+  0.14_01  2015-07-03
+      - Switched to Moo, done by FELLIOTT++.
+      - Specified versions when use'ing any third-party modules.
+      - Temporarily dropped NextRelease and Git::NextVersion from the @DOY
+        bundle, so I can specify a developer release version.
+      - Added minimal doc for route_class() method in Path::Router,
+        and clone() method in Path::Router::Route.
+      - Updated Stevan's email address.
+
+-------------------------------------------------------------------
+Mon Apr 13 17:50:23 UTC 2015 - coolo@suse.com
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-Path-Router/Changes
+
+  0.14  2015-01-13
+      - localize $SIG{__DIE__} so that our exception based
+        flow control does not mess up, or get messed up by, 
+        application exception handling 
+          - thanks to Tim Bunce for finding and reporting 
+            this issue
+  
+  0.13  2014-08-24
+      - Allow path components to be false values (doy)
+          - added tests for this
+
+-------------------------------------------------------------------
+Fri Jul 25 14:38:56 UTC 2014 - ncutler@suse.com
+
+- taking over 
+

@@ -1,0 +1,12 @@
+Index: suite3270-3.4/x3270/x3270.c
+===================================================================
+--- suite3270-3.4.orig/x3270/x3270.c
++++ suite3270-3.4/x3270/x3270.c
+@@ -76,6 +76,7 @@
+ #include "utils.h"
+ #include "xactions.h"
+ #include "xappres.h"
++#include "xglobals.h"
+ #include "xio.h"
+ #include "xkybd.h"
+ #include "xmenubar.h"

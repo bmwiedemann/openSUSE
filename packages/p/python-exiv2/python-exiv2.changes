@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Tue Jul  2 14:47:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.1:
+  * Various fixes to work with new exiv releases
+
+-------------------------------------------------------------------
+Mon Apr  8 19:10:25 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.6.1
+  * Add the streaming of the preview data
+
+-------------------------------------------------------------------
+Thu Jan 31 14:57:44 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.5.0
+  * Several fixes for exiv2-0.27
+- Removed exiv2-1.0.27.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Tue Jan 29 11:22:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to build with latest exiv2 releases:
+  * exiv2-1.0.27.patch
+
+-------------------------------------------------------------------
+Thu Jun 28 09:38:11 UTC 2018 - asn@cryptomilk.org
+
+- Update to version 0.3.0
+  * Add some convenient functions
+
+-------------------------------------------------------------------
+Sun May  6 07:55:37 UTC 2018 - asn@cryptomilk.org
+
+- Initial package

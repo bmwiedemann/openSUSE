@@ -1,0 +1,27 @@
+## Path:	Network/Sound/festival
+## Description:	Options for the festival server
+
+## Type:	string
+## Default	""
+#
+FESTIVAL_OPTIONS=""
+
+## Type:           yesno
+## Default:        yes
+## ServiceRestart: ntp
+#
+# Shall the festival server run in the chroot jail /var/lib/festival?
+#
+# Each time you start festival with the init script, /etc/festival.conf will be
+# copied to /var/lib/festival/etc/.
+# 
+FESTIVAL_RUN_CHROOTED="yes"
+
+## Type:           string
+## Default:        ""
+## ServiceRestart: ntp
+#
+# If the festival server runs in the chroot jail these files will be
+# copied to /var/lib/festival/ besides the default of /etc/festival.scm
+#
+FESTIVAL_CHROOT_FILES=""

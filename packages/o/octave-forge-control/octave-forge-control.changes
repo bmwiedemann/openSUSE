@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Sat Oct 31 19:56:24 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 3.0.0
+  * Substantial parts of the most vital internals have been rewritten
+    and streamlined in order to improve compatibility and reliability.
+  * LTI models:
+    Improved handling of key-value pairs in all constructors for LTI models.
+    Support inheritance of LTI properties in many variations.
+    Accept [] as an alias for unspecified sampling time (Ts = -1).
+    Automatic vector expansion for input and output names.
+  * dss
+    Fixed a long-standing but undiscovered bug where 'dss (sys)'
+    overwrites sys.e with an identity matrix even if sys.e was not empty.
+  * ss
+    Support for the special cases has been added.
+  * tf, zpk, filt
+    Restrict transfer function variable to the candidates 's', 'p' for
+    continuous-time and 'z', 'q', 'z^-1', 'q^-1' for discrete-time models.
+  * bode, bodemag, nichols, nyquist, sigma
+    It is now possible to specify a frequency vector of length 1.
+  * step, impulse, initial, ramp
+    The time response functions now raise an error or warning if invalid
+    arguments are passed to them.  As it was the case for frequency response
+    functions, they used to simply ignore invalid arguments.
+  * lsim
+    Support logical arrays as input signal.  Before, logical arrays were
+    simply ignored without notice, which could lead to unexpected results.
+    Additionally, lsim received the same improvements as the other time and
+    frequency response functions regarding invalid arguments.
+  * pzmap
+    Improved argument checks.
+  * augstate
+    New function for state-space models.  Adds the state vector to the output
+    vector.
+  * connect
+    The function no longer raises an error for name-based interconnections
+    if some systems have common input names and one of these inputs are to
+    be kept.
+  * estim
+    Add input/output/state names to the returned system.  Support name-based
+    selection of inputs (arguments 'sensors' and 'known').
+ ** sumblk
+    Add signal names as input/output groups if argument  n > 1.
+ ** minreal
+    If state-space models already have a minimal realization, then no state
+    transformations are applied to the returned model.
+
+-------------------------------------------------------------------
+Sat Oct  3 08:30:44 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to versiob 2.8.5
+  * Bug fixes
+  * Matlab compatibility improvements
+
+-------------------------------------------------------------------
+Wed Sep  9 18:16:09 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.8.4
+  * Bug fixes and minor changes
+
+-------------------------------------------------------------------
+Tue Jul  7 17:34:40 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.8.3
+  * Bug fixes and minor changes
+
+-------------------------------------------------------------------
+Sat Jun 20 10:48:06 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.8.2
+  * Bugfix release
+
+-------------------------------------------------------------------
+Mon May  4 06:58:02 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.8.1
+  * tf
+    - Revamped the modifications of TB01ZD from control version 2.8.0.
+      The function now uses LAPACK routines to find the maximum norm element.
+    - Improved error handling when converting state-space models.
+
+-------------------------------------------------------------------
+Tue Apr  7 21:24:46 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.8.0
+  * zero
+    Compatibility fix in the C++ oct-file to support the upcoming Octave 4.0.
+  * isminimumphase
+    Reverted changes from control-2.6.6.  According to the
+    definition of Byrnes/Isidori, the function tests whether the system
+    has asymptotically stable zero dynamics. The poles are not tested.
+  * series
+    Fixed a bug which gave unnecessary error messages when the
+    function is called with 4 arguments.
+  * tf
+    Resolved issues in MIMO state-space to transfer function
+    conversion by implementing a more robust algorithm in SLICOT
+    routine TB01ZD.
+  * Support for 64bit indexing option.
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 2.6.6
+- Fix GCC errors: no return in non-void function
+  * control-gcc-errors.patch
+

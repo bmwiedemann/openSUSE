@@ -1,0 +1,378 @@
+<revisionlist>
+  <revision rev="1" vrev="22">
+    <srcmd5>0d1002a5682c0f30b005fae918b42207</srcmd5>
+    <version>0.10</version>
+    <time>1300786191</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64668 from user mvyskocil
+</comment>
+    <requestid>64668</requestid>
+  </revision>
+  <revision rev="2" vrev="23">
+    <srcmd5>edf8e532bdf5f1b1cb0c60e6b689e51b</srcmd5>
+    <version>0.10</version>
+    <time>1300786202</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64668
+</comment>
+  </revision>
+  <revision rev="3" vrev="24">
+    <srcmd5>73fe1b2675f67a704012116f6b6a61d3</srcmd5>
+    <version>0.10</version>
+    <time>1300812838</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64836 from user licensedigger
+</comment>
+    <requestid>64836</requestid>
+  </revision>
+  <revision rev="4" vrev="25">
+    <srcmd5>0f9b42451cd266ca266db2e7db0d25e3</srcmd5>
+    <version>0.10</version>
+    <time>1300812846</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64836
+</comment>
+  </revision>
+  <revision rev="5" vrev="26">
+    <srcmd5>b19687d325cf11ce9e27e9afad9afe80</srcmd5>
+    <version>0.10</version>
+    <time>1311590134</time>
+    <user>saschpe</user>
+    <comment>restore zipconf.h into includedir or packages building with zip.h will fail: example is X11:lxde/deadbeef --&gt; openSUSE_Factory. Please push it into factory ASAP (forwarded request 76926 from anubisg1)</comment>
+    <requestid>76927</requestid>
+  </revision>
+  <revision rev="6" vrev="27">
+    <srcmd5>c581798b5f849f4818025d217a554f7c</srcmd5>
+    <version>0.10</version>
+    <time>1311590145</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76927
+</comment>
+  </revision>
+  <revision rev="7" vrev="29">
+    <srcmd5>c581798b5f849f4818025d217a554f7c</srcmd5>
+    <version>0.10</version>
+    <time>1319182150</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="30">
+    <srcmd5>43ed2cab51852e3a45639959bccab2c5</srcmd5>
+    <version>0.10</version>
+    <time>1321886889</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 92618 from coolo)</comment>
+    <requestid>92702</requestid>
+  </revision>
+  <revision rev="9" vrev="31">
+    <srcmd5>361c67ae5c5f622d8e7d78f03296b079</srcmd5>
+    <version>0.10</version>
+    <time>1325348408</time>
+    <user>coolo</user>
+    <comment>- Use O_CLOEXEC where needed, as calling applications 
+  may fork.. execve and we end up leaking internal fds. (forwarded request 98429 from elvigia)</comment>
+    <requestid>98430</requestid>
+  </revision>
+  <revision rev="10" vrev="32">
+    <srcmd5>7435a031e140d2f7f9c8fd5c1d28ab2a</srcmd5>
+    <version>0.10</version>
+    <time>1329405558</time>
+    <user>coolo</user>
+    <comment>spdx.org patch</comment>
+    <requestid>105271</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fcd35e31f4861455e5888df499a54c4f</srcmd5>
+    <version>0.10.1</version>
+    <time>1332416105</time>
+    <user>coolo</user>
+    <comment>- updated to 0.10.1: fixes 
+  * CVE-2012-1162 [bnc#751829]
+  * CVE-2012-1163 [bnc#751830]</comment>
+    <requestid>110202</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>fcd35e31f4861455e5888df499a54c4f</srcmd5>
+    <version>0.10.1</version>
+    <time>1340183660</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>fcd35e31f4861455e5888df499a54c4f</srcmd5>
+    <version>0.10.1</version>
+    <time>1359109391</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>c6340a811b132360801c7c2825a1b5eb</srcmd5>
+    <version>0.10.1</version>
+    <time>1362474682</time>
+    <user>coolo</user>
+    <comment>- Specify exact build requirements on autotools
+  (2.68 comes from patch; tarball has 2.57) (forwarded request 157189 from jengelh)</comment>
+    <requestid>157311</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>09ec9ea3b004bf5733cf3b2b7adbb857</srcmd5>
+    <version>0.11.1</version>
+    <time>1367486570</time>
+    <user>coolo</user>
+    <comment>- make test failure fatal again and add needed
+  timezone and unzip build dependencies
+
+- update to 0.11.1
+  * Fix bugs in zip_set_file_compression().
+  * Added Zip64 support (large file support)
+  * Added UTF-8 support for file names, file comments, and archive comments
+  * Changed API for name and comment related functions for UTF-8 support
+  * Added zip_discard()
+  * Added ZIP_TRUNCATE for zip_open()
+  * Added zip_set_file_compression()
+  * Added API for accessing and modifying extra fields
+  * Improved API type consistency
+  * Use gcc4's visibility __attribute__
+  * More changes for Windows support
+  * Additional test cases
+- split the automake part from ocloexec patch to
+  libzip-autoconf-268.patch
+- drop already upstream libzip.test.diff
+- make tests non-fail, until issue will be solved upstream</comment>
+    <requestid>173768</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>fe628018b9804cb2ebc78b3e17b4899f</srcmd5>
+    <version>0.11.1</version>
+    <time>1367904496</time>
+    <user>coolo</user>
+    <comment>- use upstream patch for visibility
+  drop: libzip-0.8.hg20080403-visibility.patch
+  add : libzip-visibility.diff
+- tag all patches according a policy</comment>
+    <requestid>174607</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>fe628018b9804cb2ebc78b3e17b4899f</srcmd5>
+    <version>0.11.1</version>
+    <time>1379663154</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1ad424104760adb6f09206f2581ac8a9</srcmd5>
+    <version>0.11.2</version>
+    <time>1396622234</time>
+    <user>coolo</user>
+    <comment>- fix for bnc#859525 has happened upstream
+- update to 0.11.2
+- drop: libzip-visibility.diff
+  (included upstream already) (forwarded request 228933 from netsroth)</comment>
+    <requestid>228982</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>4012e22864cf3a337f5ea9ca443eff80</srcmd5>
+    <version>0.11.2</version>
+    <time>1403176798</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>237292</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>4012e22864cf3a337f5ea9ca443eff80</srcmd5>
+    <version>0.11.2</version>
+    <time>1409301787</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>d6cb46e9fc67050524b6a79fefecc0aa</srcmd5>
+    <version>0.11.2</version>
+    <time>1414943153</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258880</requestid>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>3b77593e324bd0c0569ba6204eaca210</srcmd5>
+    <version>0.11.2</version>
+    <time>1427313761</time>
+    <user>dimstar_suse</user>
+    <comment>- fix CVE-2015-2331 [bnc#923240]
+  + libzip-CVE-2015-2331.patch</comment>
+    <requestid>291700</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>62fcb5a2ab23a845ff3b49b02ab10458</srcmd5>
+    <version>1.0.1</version>
+    <time>1430903908</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305465</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>881329bd749a65250d09a29af036face</srcmd5>
+    <version>1.1.2</version>
+    <time>1456622752</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.2
+  * Improve support for 3MF files
+  * ziptool(1): command line tool to modify zip archives
+  * Speedups for archives with many entries
+  * Better APK support
+  * Documentation improvements</comment>
+    <requestid>360770</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3f608d772879e52c2a2a5a705337c204</srcmd5>
+    <version>1.1.3</version>
+    <time>1465129128</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398871</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>030467dd2c90fcd6e6a378c43fa3133d</srcmd5>
+    <version>1.2.0</version>
+    <time>1487767753</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0:
+  * Support for AES encryption (Winzip version), both encryption
+    and decryption.
+  * Support legacy zip files with &gt;64k entries.
+  * Fix seeking in zip_source_file if start &gt; 0.
+  * Add zip_fseek() for seeking in uncompressed data.
+  * Add zip_ftell() for telling position in uncompressed data.
+  * Add zip_register_progress_callback() for UI updates during 
+    zip_close()</comment>
+    <requestid>459157</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>6abea7dbe500532b65c36e42187f8e24</srcmd5>
+    <version>1.2.0</version>
+    <time>1497362842</time>
+    <user>dimstar_suse</user>
+    <comment>- Small spec file and dependencies cleanup
+- Try profiled build (forwarded request 501586 from pluskalm)</comment>
+    <requestid>502527</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>339ba9b685f80d2beb49079091f07be7</srcmd5>
+    <version>1.2.0</version>
+    <time>1498840682</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505756</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>c58753884fca60e81a3eca28e80d3cfd</srcmd5>
+    <version>1.2.0</version>
+    <time>1504520744</time>
+    <user>dimstar_suse</user>
+    <comment>- security update:
+  * CVE-2017-12858 [bsc#1055377]
+    + libzip-CVE-2017-12858.patch</comment>
+    <requestid>519094</requestid>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>a8ebcc38eaa9fdb23412629c6daba43c</srcmd5>
+    <version>1.2.0</version>
+    <time>1506195129</time>
+    <user>dimstar_suse</user>
+    <comment>- reverted version update to 1.3.0 due failing i586 tests
+- remove libzip-disable-failing-tests.patch again
+- add libzip-CVE-2017-12858.patch again
+- add libzip-CVE-2017-14107.patch [bsc#1056996]
+
+- update to version 1.3.0:
+  * Support bzip2 compressed zip archives
+  * Improve file progress callback code
+  * Fix zip_fdopen()
+  * CVE-2017-12858: Fix double free().
+  * CVE-2017-14107: Improve EOCD64 parsing.
+- remove upstreamed libzip-CVE-2017-12858.patch
+- added libzip-disable-failing-tests.patch [bsc#1056996#c12]</comment>
+    <requestid>528196</requestid>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>0b0c1abf34275375abd53193c6fc7f9b</srcmd5>
+    <version>1.2.0</version>
+    <time>1507897010</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533153</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6125c416efe3ad85cc3544d41b3c544e</srcmd5>
+    <version>1.3.2</version>
+    <time>1513851962</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 1.3.2:
+  * Fix bug introduced in last: zip_t was erroneously freed if zip_close() failed.
+  * Install zipconf.h into ${PREFIX}/include
+  * Add zip_libzip_version()
+  * Fix AES tests on Linux
+  * Support bzip2 compressed zip archives
+  * Improve file progress callback code
+  * Fix zip_fdopen()
+  * CVE-2017-12858: Fix double free()
+  * CVE-2017-14107: Improve EOCD64 parsing
+- removed patches (upstreamed)
+  * libzip-CVE-2017-12858.patch
+  * libzip-CVE-2017-14107.patch
+- added patch (fixed in head)
+  * libzip-uninitialized-value.patch</comment>
+    <requestid>558324</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>25aeb10f57ec56357858161e3921cc62</srcmd5>
+    <version>1.5.0</version>
+    <time>1522057944</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable tests again
+- Enable more functionality by updating dependencies
+- Deduplicate manpages
+
+- update to version 1.5.0:
+  * Use standard cryptographic library instead of custom AES
+    implementation. This also simplifies the license.
+- includes 1.4.0:
+  * Improve build with cmake (retires autoconf/automake)
+  * Add zip_source_buffer_fragment().
+  * Add support to clone unchanged beginning of archive (instead
+    of rewriting it). Supported for buffer sources and on AFS.
+- rebase libzip-ocloexec.patch
+- drop libzip-uninitialized-value.patch
+  * merged in 8609c9ce6c8e613a7b5825e4d0eba8a31fe67e75
+- cleanup with spec-cleaner (forwarded request 588448 from pluskalm)</comment>
+    <requestid>588459</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>74f3416f18188b1a74ae4463e8a0dee3</srcmd5>
+    <version>1.5.0</version>
+    <time>1522934810</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593067</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1117b1841a294275baf94600ff67dcdc</srcmd5>
+    <version>1.5.1</version>
+    <time>1523956387</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595912</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>971bd10e5835da44688df1bc842ca8da</srcmd5>
+    <version>1.5.2</version>
+    <time>1552901758</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.2
+  * Fix bug in AES encryption affecting certain file sizes
+  * Keep file permissions when modifying zip archives
+  * Support systems with small stack size.
+  * Support mbed TLS as crypto backend.
+  * Add nullability annotations.</comment>
+    <requestid>684542</requestid>
+  </revision>
+</revisionlist>

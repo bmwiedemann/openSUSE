@@ -1,0 +1,1732 @@
+-------------------------------------------------------------------
+Thu Apr 12 12:02:07 CEST 2018 - jsmeix@suse.de
+
+- Replaced the non-working saned@.service with the simpler kind
+  according to the second template in "man saned" of the therein
+  described "systemd configuration for saned" (boo#1074054).
+
+-------------------------------------------------------------------
+Wed Mar 21 16:29:29 CET 2018 - jsmeix@suse.de
+
+- Drop BuildRequires for libieee1284-devel and libieee1284
+  which is only needed for some parallel port scanners
+  but parallel port scanners are no longer supported
+  so that the backends canon_pp, hpsj5s, and mustek_pp
+  are no longer provided.
+- Fixed installation of systemd unit files saned@.service
+  and saned.socket that enable socket based saned activation
+  which replaces xinetd (boo#1074054).
+
+-------------------------------------------------------------------
+Sun Oct 29 10:14:52 UTC 2017 - meissner@suse.com
+
+- add a 32bit devel package for use in wine32 bit builds
+
+-------------------------------------------------------------------
+Fri Jun 16 11:42:37 UTC 2017 - nmoudra@suse.com
+
+- Deleted xinetd service in favor of socket based activation
+  via systemd unit files saned@.service and saned.socket
+  see https://build.opensuse.org/request/show/504186
+
+-------------------------------------------------------------------
+Wed May 24 10:02:33 CEST 2017 - jsmeix@suse.de
+
+- Upgraded to sane-backends version 1.0.27:
+  There is no 1.0.26 release of sane-backends.
+  That number was skipped so that the SANE upstream
+  development version numbers would more clearly be
+  an extension of the prior release.
+  Changes since 1.0.25:
+  * Significant enhancements to canon_dr, epjitsu, epsonds,
+    fujitsu, genesys, hp3500, pixma and xerox-mfp backends.
+  * Minor updates, bugfixes or scanners added in several backends.
+  * 30+ new scanner models supported.
+  * Made libusb-1.0 the default for USB support.
+  * Switched code from C90 to C99 (Thanks to Volker Diels-Grabsch).
+  * Updated Linux USB3 workaround:
+    The Linux USB3 workaround which was added in version 1.0.25
+    is now disabled by default. If you have difficulty using
+    a scanner which previously worked, or intermittent scanner
+    availability, try setting the new environment variable
+    SANE_USB_WORKAROUND=1
+    before starting your frontend.
+  * Documentation and translation updates.
+  * Bugfixes (Avahi, threading, USB, ICC/PNG/JPEG, etc).
+  * Reduced compiler warnings, improved code:
+    A special thanks goes to Olaf Meeuwissen for picking up
+    the janitorial duties in sane-backends. He has found and
+    fixed a large number of long-standing bugs, curated the
+    SANE upstream bug tracker, improved the build scripts
+    and docs, and provided user support.
+- CVE-2017-6318.patch is no longer needed because
+  the issue is fixed in the upstream sources.
+- dell1600n_net-fix-strncat.patch is no longer needed because
+  the issue is fixed in the upstream sources.
+
+-------------------------------------------------------------------
+Tue Feb 28 12:15:12 CET 2017 - jsmeix@suse.de
+
+- CVE-2017-6318.patch fixes CVE-2017-6318 which is about that via
+  access to saned some opcodes could leak uninitialized memory
+  back to the requester allowing information disclosure
+  of memory content in saned (bsc#1027197).
+  In general regarding "access to saned" see
+  https://en.opensuse.org/SDB:CUPS_and_SANE_Firewall_settings
+
+-------------------------------------------------------------------
+Mon Jan 11 11:44:28 UTC 2016 - olaf@aepfle.de
+
+- sane-backends.builttime.patch: reduce build-compare noise
+
+-------------------------------------------------------------------
+Tue Dec 29 22:32:37 UTC 2015 - stefan.bruens@rwth-aachen.de
+
+- remove gphoto2 backend, as is usefulness is highly questionable,
+  but adds many (indirect) build and runtime dependencies
+
+-------------------------------------------------------------------
+Tue Oct  6 10:55:10 CEST 2015 - jsmeix@suse.de
+
+- Upgraded to sane-backends version 1.0.25:
+  Changes since 1.0.24:
+  * New backends: epsonds (Epson DS, PX and WF series),
+    pieusb (PIE and Reflecta film/slide scanners).
+  * Support for JPG and PNG output format in scanimage.
+  * Significant enhancements to avision, canon_dr, epjitsu,
+    fujitsu, genesys, kodakaio and pixma backends.
+  * Minor updates, bugfixes or scanners added in several backends.
+  * 300 new scanner models supported.
+  * Workaround for USB3 problems in Linux kernel.
+  * Added code for IR functionality.
+  * Documentation and translation updates.
+  * Bugfixes (threading, networking, udev rules).
+  A big thanks to Olaf Meeuwissen, for his efforts in bug triage,
+  patch wrangling and code cleanups.
+- fix-buffer-overflow.patch, fix-mustek_pp_ccd300.c.patch,
+  install-umax_pp-tool.patch, MG5550-works.patch are obsolete
+  since sane-backends-1.0.24 because it is fixed in the source.
+- re-add-SANE_CAP_ALWAYS_SETTABLE.patch should be longer needed
+  because there should be longer a fontend that references
+  SANE_CAP_ALWAYS_SETTABLE in its source code.
+- Recreated adapt_epkowa.desc_for_yast2-scanner.patch
+  according to the comment in sane-backends.spec
+  so that it applies for sane-backends-1.0.25.
+- Dropped avision.c.patch and avision.conf.patch
+  (cf. the entry below dated "Mon Sep 15 23:23:23 UTC 2013")
+  because it does no longer apply to sane-backends-1.0.25 sources.
+  Issues that are not specific for a particular Linux distribution
+  must be fixed directly at SANE upstream so that all Linux
+  distributions get it properly fixed and not via patches
+  at one particular Linux distribution where it falls apart
+  each time when SANE upstream changes that sources.
+- Added BuildRequires for libpng-devel and libtiff-devel because
+  scanimage output format supports PNG and TIFF.
+- dell1600n_net-fix-strncat.patch fixes the following build error:
+  Statement might be overflowing a buffer in strncat.
+  BAD: strncat(buffer,charptr,sizeof(buffer)) is wrong
+  GOOD: strncat(buffer,charptr,sizeof(buffer)-strlen(buffer)-1)
+  The upstream issue report is
+  https://alioth.debian.org/tracker/index.php?func=detail&aid=315198&group_id=30186&atid=410366
+- Disabled use of LaTeX to generate documentation because LaTeX
+  blows up the build system and "BuildRequires: texlive-latex"
+  causes various cycles and the sane.ps documentation
+  is not for users but for developers who could get
+  the "Programmer's Documentation" from SANE upstream
+  at http://www.sane-project.org/docs.html
+
+-------------------------------------------------------------------
+Wed Jan 14 12:41:18 UTC 2015 - johannes@lst.de
+
+- MG5550-works.patch: support Canon Pixma MG5500
+
+-------------------------------------------------------------------
+Tue Dec  3 11:09:25 CET 2013 - jsmeix@suse.de
+
+- Upgraded to sane-backends version 1.0.24:
+  Changes since 1.0.23:
+  * Significant enhancements to pixma, genesys, kodakaio,
+    fujitsu, canon_dr.
+  * Minor updates, bugfixes or scanners added in several backends.
+  * Added new testsuite.
+  * 51 new scanner models supported.
+  * USB support improvements.
+  * Improved build system (mingw64, bug fixes,
+    default pthread on Linux).
+  * Documentation updates.
+  * Bugfixes.
+  For Details see the ChangeLog file.
+- sane-backends-1.0.21-SCX4500W.patch that adds usb id for SCX4500W
+  is obsolete since sane-backends-1.0.24 because it is fixed
+  in the source.
+- fix-no-return-in-nonvoid-function.patch that fixes a
+  "control reaches end of non-void function" gcc warning
+  in kodakaio.c is obsolete since sane-backends-1.0.24
+  because it is fixed in the source.
+- Recreated adapt_epkowa.desc_for_yast2-scanner.patch
+  according to the comment in sane-backends.spec
+  so that it applies for sane-backends-1.0.24.
+
+-------------------------------------------------------------------
+Mon Sep 15 23:23:23 UTC 2013 - piny@gmx.com
+
+- Workaround for hp scanjet 8200: As described in
+  https://bugzilla.novell.com/show_bug.cgi?id=840443
+  when operating on a hp scanjet 8200 the avision driver gets stuck
+  in a loop trying to detect an ADF, even if none is present.
+  In order circumvent this issue, following workaround has been
+  implemented:
+  1) create an option "enforce-no-adf" in the file avision.conf
+  2) patch the code in avision.c to make use of this option,
+     if the conditions that lead to the unsuccessful ADF search
+     (namely detection of NO ADF but reporting of SOME ADF type)
+     is given.
+  Per default the new option is inactive by comment.
+  Activate at your own risk!
+  An upstream report was added to
+  https://alioth.debian.org/tracker/index.php?func=detail&aid=314108&group_id=30186&atid=410366
+- created patch110 (avision.conf.patch) for avision.conf
+- created patch111 (avision.c.patch) for avision.c
+
+-------------------------------------------------------------------
+Thu Apr  4 15:52:19 UTC 2013 - meissner@suse.com
+
+- fixed /etc/slp.reg.d/ ownership conflict, just have
+  it as %dir and the files as %config.
+  (see OBS RQ 162582 decline message)
+
+-------------------------------------------------------------------
+Wed Mar  6 06:14:19 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Sat Jan 19 12:53:11 UTC 2013 - lnussel@suse.de
+
+- require libv4l-devel to enable v4l backend
+
+-------------------------------------------------------------------
+Tue Dec 11 14:42:20 CET 2012 - jsmeix@suse.de
+
+- Our own special source file epkowa.desc is dropped because
+  the package iscan-free is dropped (bnc#788756). Instead
+  adapt_epkowa.desc_for_yast2-scanner.patch adapts the upstream
+  epkowa.desc for yast2-scanner which works without additional
+  adaptions in yast2-scanner so that the sane-backends package
+  works on released openSUSE systems without a RPM requirement
+  for a yast2-scanner update (bnc#788756 starting at comment#14).
+
+-------------------------------------------------------------------
+Tue Oct 16 13:47:46 CEST 2012 - jsmeix@suse.de
+
+- Upgraded to sane-backends version 1.0.23:
+  New backends:
+  kvs40xx (Panasonic KV-S40xx), kodakaio (Kodak AiO ESP and Hero).
+  Significant enhancements to several backends.
+  30 new scanner models supported.
+  V4L support improvements.
+  Improvements for builds on multiple platforms.
+  Improved udev rules.
+  Updated software deskew algorithm.
+  Documentation updates.
+  Bugfixes.
+  Note:
+  This is one more release of the SANE 1.0 series, compare
+  the below entry dated "Thu Feb 28 13:56:15 CET 2008".
+- sane-backends-1.0.22-xerox_mfp-fix-usb-devices.patch that
+  fixes usb device support in xerox_mfp is obsolete since
+  sane-backends-1.0.23 because it is fixed in the source.
+- fix-no-return-in-nonvoid-function.patch fixes a "control reaches
+  end of non-void function" gcc warning which lets build fail
+  with "no-return-in-nonvoid-function" error in kodakaio.c.
+
+-------------------------------------------------------------------
+Thu Aug 23 09:24:52 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+ and SUSE-GPL-2.0+-with-sane-exception and
+  SUSE-Public-Domain
+  The LICENSE file in the sane-backends packages explains the licensing of
+  the package. Added SUSE-GPL-2.0+-with-sane-exception to the spreadsheet
+  linked from license.opensuse.org as that license is not yet upstream at
+  http://www.spdx.org/licenses (hence the SUSE- proprietary extension)
+
+-------------------------------------------------------------------
+Fri Apr 20 12:24:49 CEST 2012 - jsmeix@suse.de
+
+- Configure --enable-libusb_1_0 plus BuildRequires libusb-1_0-devel
+  to use libusb1 (instead of using libusb0 via libusb-compat),
+  see https://bugzilla.novell.com/show_bug.cgi?id=559697#c7
+  for the libusb versioning numbering.
+- Use traditional bash scriptlets for post/postun with
+  an explicite "exit 0" line at the end to be fail safe
+  and therefore also "PreReq: /sbin/ldconfig" explicitly,
+  see the "Shared_libraries" section in
+  http://en.opensuse.org/openSUSE:Packaging_scriptlet_snippets
+- BuildIgnore ghostscript-x11 because BuildRequires texlive-latex
+  is needed for sane.tex -> sane.dvi -> sane.ps but texlive-latex
+  requires texlive which requires ghostscript-x11 but the latter
+  is not needed and blows up the build system.
+- Minor cleanups in the spec file.
+
+-------------------------------------------------------------------
+Tue Mar 20 15:44:31 UTC 2012 - jslaby@suse.de
+
+- added explicit "BuildRequires libusb-compat-devel" to
+  re-add support for USB scanners
+
+-------------------------------------------------------------------
+Sun Feb  5 20:18:31 UTC 2012 - lnussel@suse.de
+
+- sane-backends-1.0.21-SCX4500W.patch adds usb id for SCX4500W
+- sane-backends-1.0.22-xerox_mfp-fix-usb-devices.patch fixes
+  usb device handling regression in xerox_mfp (bnc#745245)
+
+-------------------------------------------------------------------
+Sun Nov 20 06:28:34 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Sep 29 16:57:26 CEST 2011 - jsmeix@suse.de
+
+- Added an entry for "SCSI processor EPSON Perfection1640"
+  to libsane.rules (bnc#681146) see in particular
+  https://bugzilla.novell.com/show_bug.cgi?id=681146#c43
+- Added a wildcard entry for any "SCSI processor EPSON SCANNER*"
+  to libsane.rules see the "55-libsane.rules"/"Device recognition"
+  mail thread in June 2011 on sane-devel@lists.alioth.debian.org
+
+-------------------------------------------------------------------
+Tue Mar 29 13:07:20 CEST 2011 - jsmeix@suse.de
+
+- Fixed udev rules for SCSI scanners:
+  For SCSI scanners "ATTRS" is mandatory for every sysfs attribute
+  (in particular ATTRS{type}, ATTRS{vendor}, and ATTRS{model})
+  so that "ATTRS" is replaced by "ATTR" only for USB scanners
+  (see openSUSE/Novell Bugzilla bnc#681146).
+
+-------------------------------------------------------------------
+Fri Mar 25 10:27:36 CET 2011 - jsmeix@suse.de
+
+- Fixed udev rules for SCSI scanners:
+  Because of openSUSE/Novell Bugzilla bnc#436085
+  (see the entry below dated "Tue Oct 21 13:12:42 CEST 2008")
+  "SYSFS" and "ATTRS" were replaced by "ATTR" everywhere in
+  libsane.rules but for SCSI scanners "ATTRS{type}" is mandatory
+  (see openSUSE/Novell Bugzilla bnc#681146).
+
+-------------------------------------------------------------------
+Sun Feb 20 10:43:15 UTC 2011 - coolo@novell.com
+
+- fix dependencies of devel package
+
+-------------------------------------------------------------------
+Wed Feb 16 15:31:21 CET 2011 - jsmeix@suse.de
+
+- Upgraded to sane-backends version 1.0.22:
+  New backends:
+  kvs20xx (Panasonic KV-S20xx), magicolor (Konica-Minolta).
+  Significant enhancements to several backends.
+  More than 80 new scanner models supported.
+  Support many more networked scanners.
+  Added -A option to scanimage.
+  Improved build system.
+  Improved USB support.
+  Improved udev rules.
+  Documentation updates.
+  Bugfixes.
+  Note:
+  This is one more release of the SANE 1.0 series, compare
+  the below entry dated "Thu Feb 28 13:56:15 CET 2008".
+- sane-backends-1.0.21-i18n.patch,
+  fix-genesys-create_range-type.patch,
+  fix-xerox_mfp-color-mode.patch, and
+  canon-backend-autoprobing.patch are obsolete since
+  sane-backends-1.0.22 because it is fixed in the source.
+- Adapted how we derive our libsane.rules file from the
+  generated one which uses now "ATTRS" (instead of "SYSFS"),
+  see the below entry dated "Tue Oct 21 13:12:42 CEST 2008".
+- Updated models.dat to the one from the current HPLIP 3.11.1.
+- Added only those new models from epkowa.desc in the
+  sane-backends 1.0.22 sources which 'requires DFSG non-free'
+  plugin software to our epkowa.desc source file so that the
+  supported models in our epkowa.desc source file still match
+  to what is supported by our iscan-free package but more users
+  of models which require the proprietary software from Avasys
+  will be informed via yast2-scanner.
+
+-------------------------------------------------------------------
+Thu Dec  9 11:48:58 CET 2010 - jsmeix@suse.de
+
+- fix-xerox_mfp-color-mode.patch adds SANE_VALUE_SCAN_MODE_HALFTONE
+  in xerox_mfp.c to fix a regression in sane-backends-1.0.21
+  where the xerox_mfp works only in grayscale mode
+  (see openSUSE/Novell Bugzilla bnc#658017).
+- Updated models.dat to the one from the current hplip-3.10.9.
+
+-------------------------------------------------------------------
+Wed Sep 22 14:08:26 CEST 2010 - jsmeix@suse.de
+
+- Configure with --enable-pthread so that backends can use
+  POSIX threads to implement asynchronous I/O instead of
+  the default which uses a pipe and forks a reader process
+  (see openSUSE/Novell Bugzilla bnc#633780).
+
+-------------------------------------------------------------------
+Wed Sep 15 08:51:03 UTC 2010 - aj@suse.de
+
+- BuildRequires libieee1284-devel.
+- Split up devel package.
+
+-------------------------------------------------------------------
+Tue Jun 22 16:40:42 CEST 2010 - jsmeix@suse.de
+
+- Updated models.dat to the one from our current HPLIP version
+  so that the generated hpaio.desc matches to our HPLIP version.
+- Enhanced epkowa.desc only with models which require proprietary
+  software so that the supported models in epkowa.desc
+  still match to what is supported by our iscan-free package
+  but more users of models which require proprietary
+  software will be informed via yast2-scanner.
+
+-------------------------------------------------------------------
+Tue May 11 14:31:58 UTC 2010 - lnussel@suse.de
+
+- remove disable-resmgr-support.patch.
+  It's not needed as configure won't find resmgr anyways
+  (see Novell/Suse Bugzilla bnc#605914).
+
+-------------------------------------------------------------------
+Fri May  7 11:43:41 CEST 2010 - jsmeix@suse.de
+
+- Upgraded to sane-backends version 1.0.21:
+  New backends:
+  kodak (Kodak i18xx), kvs1025 (Panasonic KV-S10xx),
+  p5 (Primax PagePartner)
+  Many backends updated.
+  224 more scanner models supported.
+  More consistent option naming.
+  Scanimage no longer writes image to tty.
+  Modern translation infrastructure.
+  Improved saned network daemon.
+  Internal SCSI, USB, threading, TCP & UDP code updates.
+  Updated HAL and udev support.
+  New sanei_magic image processing library.
+  Documentation updates.
+  Bugfixes.
+  Note:
+  This is one more release of the SANE 1.0 series, compare
+  the below entry dated "Thu Feb 28 13:56:15 CET 2008".    
+- fix-hp3900_config.c.patch, sane-desc_closedir.patch,
+  fix-lexmark_low-memory-leak.patch, and
+  fix-hp3900_sane-string-option-sizes.diff are obsolete since
+  sane-backends-1.0.21 because it is fixed in the source.
+- sane-backends-1.0.20-xerox_mfp.diff backported post 1.0.20
+  xerox_mfp changes and is therefore removed since
+  sane-backends-1.0.21 which contains those changes, compare
+  the below entry dated "Thu Oct  8 09:35:17 UTC 2009".
+- Slightly adapted disable-resmgr-support.patch and
+  no-descriptions-external-hpoj.patch to apply to the
+  sane-backends-1.0.21 sources.
+- fix-genesys-create_range-type.patch lets in genesys.c
+  the create_range function be of type 'SANE_Range *'
+  to fix 'assignment makes pointer from integer' bugs
+  wherever the create_range function is called.
+
+-------------------------------------------------------------------
+Wed Apr 28 11:27:50 CEST 2010 - jsmeix@suse.de
+
+- HAL is deprecated and does no longer support to grant read/write
+  device access permissions for scanners to the currently logged
+  in "desktop" user. Therefore all HAL related stuff was removed
+  (see Novell/Suse Bugzilla bnc#593946).
+- Removed /usr/lib[64]/libsane.la
+  (see Novell/Suse Bugzilla bnc#592143).
+
+-------------------------------------------------------------------
+Mon Feb  1 12:29:15 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Fri Dec 18 00:04:42 UTC 2009 - seife@opensuse.org
+
+- fix udev warnings 'NAME="%k" is superfluous'
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:44 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Thu Oct  8 09:35:17 UTC 2009 - lnussel@suse.de
+
+- backport xerox_mfp changes to support samsung printers
+
+-------------------------------------------------------------------
+Wed Sep 30 12:59:12 CEST 2009 - jsmeix@suse.de
+
+- fix-lexmark_low-memory-leak.patch adds a missing call to free
+  in sanei_lexmark_low_find_start_line in backend/lexmark_low.c
+  (see Novell/Suse Bugzilla bnc#542341).
+- fix-hp3900_sane-string-option-sizes.diff fixes option sizes
+  because otherwise the frontend (e.g. xsane) may crash
+  (see Novell/Suse Bugzilla bnc#535752).
+
+-------------------------------------------------------------------
+Fri Sep 18 12:53:45 CEST 2009 - jsmeix@suse.de
+
+- Updated models.dat with the one in the HPLIP 3.9.8 sources and
+  adapted create_hpaio.desc_from_models.dat accordingly so that
+  it results a hpaio.desc scanner description file for SANE
+  which matches to the sacnner models which are supported
+  by our currently provided HPLIP version.
+
+-------------------------------------------------------------------
+Thu Sep 17 01:24:39 CEST 2009 - crrodriguez@suse.de
+
+- use find_lang macro
+- run ldconfig correctly 
+
+-------------------------------------------------------------------
+Thu Aug 13 14:25:00 CEST 2009 - jsmeix@suse.de
+
+- sane-desc_closedir.patch adds a missing call to closedir
+  to sane-desc.c (see Novell/Suse Bugzilla bnc#530313).
+
+-------------------------------------------------------------------
+Wed Jul 29 16:46:53 CEST 2009 - jsmeix@suse.de
+
+- fix-hp3900_config.c.patch fixes a possible for loop overflow
+  in hp3900_config.c (see Novell/Suse Bugzilla bnc#517281).
+- fix-mustek_pp_ccd300.c.patch fixes undefined operations
+  in mustek_pp_ccd300.c (see Novell/Suse Bugzilla bnc#498435).
+
+-------------------------------------------------------------------
+Fri Jun 12 10:29:45 CEST 2009 - jsmeix@suse.de
+
+- re-add-SANE_CAP_ALWAYS_SETTABLE.patch re-adds
+  SANE_CAP_ALWAYS_SETTABLE to sane.h which was erroneously
+  removed in sane-backends-1.0.20 so that sane-frontends
+  and xsane can no longer build,
+  see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=527675
+
+-------------------------------------------------------------------
+Wed Jun 10 15:25:58 CEST 2009 - jsmeix@suse.de
+
+- Upgraded to sane-backends version 1.0.20:
+  New backends:
+  canon_dr (Canon DR-series), coolscan3 (Nikon LS & Coolscan),
+  rts8891 (Umax & HP 44xx), xerox_mfp (Samsung/Xerox/Dell MFPs)
+  Many backends updated.
+  75 more scanner models supported.
+  New (automake compatible) build system.
+  Avahi support.
+  More network scanners supported.
+  Epson backend deprecated, use epson2.
+  Coolscan2 backend deprecated, use coolscan3.
+  Internal SCSI, USB, threading, TCP & UDP code updates.
+  Updated HAL and udev support.
+  Improved saned configuration.
+  Scanimage updates.
+  Updated translations.
+  Documentation updates.
+  Bugfixes.
+  Note:
+  This is one more release of the SANE 1.0 series, compare
+  the below entry dated "Thu Feb 28 13:56:15 CET 2008".
+- Re-enabled "autoreconf -fi" in the build section (it was
+  disabled because it failed for sane-backends-1.0.19).
+- fix-uninitialized-variables.patch and
+  fix-sanei_scsi_find_devices.patch are obsolete since
+  sane-backends-1.0.20 because it is fixed in the source.
+- Adapted install-umax_pp-tool.patch for the new build system
+  (now tools/Makefile.am instead of tools/Makefile.in).
+- no-descriptions-external-hpoj.patch removes
+  descriptions-external/hpoj.desc from doc/Makefile.am
+  because it is intentionally removed from the sources
+  in the prep section to avoid confusion with its successor
+  hpaio.desc (since openSUSE 10.3 the package hp-officeJet
+  which provided the hpoj driver is dropped).
+
+-------------------------------------------------------------------
+Fri Jan 23 10:40:21 CET 2009 - jsmeix@suse.de
+
+- Do no longer add a generic entry for SCSI scanners
+  to the HAL fdi file 70-scanner.fdi because this
+  is now provided by the hal package itself
+  (see Novell/Suse Bugzilla bnc#462639 comment #29).
+
+-------------------------------------------------------------------
+Fri Jan 16 12:26:55 CET 2009 - jsmeix@suse.de
+
+- Avoid to suppress falsely found as "unsupported" models
+  in 55-libsane.rules and in 70-scanner.fdi
+  (see Novell/Suse Bugzilla bnc#439193 starting at comment #6).
+- Avoid to get changed sources packaged into our source RPM
+  (see Novell/Suse Bugzilla bnc#463464 comment #11).
+
+-------------------------------------------------------------------
+Tue Jan 13 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Wed Dec  3 17:11:53 CET 2008 - lnussel@suse.de
+
+- use "usb" instead of "usb_device" (bnc#438867)
+
+-------------------------------------------------------------------
+Wed Dec  3 11:10:31 CET 2008 - jsmeix@suse.de
+
+- Moved /etc/hal/fdi/policy/10osvendor/70-scanner.fdi
+  to /usr/share/hal/fdi/information/20thirdparty/70-scanner.fdi
+  (see Novell/Suse Bugzilla bnc#438867).
+
+-------------------------------------------------------------------
+Tue Nov 18 14:51:34 CET 2008 - jsmeix@suse.de
+
+- In /etc/hal/fdi/policy/10osvendor/70-scanner.fdi 
+  disable entries for USB scanners which are "unsupported"
+  (see Novell/Suse Bugzilla bnc#444158).
+
+-------------------------------------------------------------------
+Wed Oct 29 11:34:31 CET 2008 - jsmeix@suse.de
+
+- Having only models in /etc/udev/rules.d/55-libsane.rules which
+  are in /etc/udev/rules.d/56-sane-backends-autoconfig.rules
+  is too restrictive because libsane.rules disables
+  USB autosuspend in the kernel which is needed as safe default
+  for any scanner regardless of its support status.
+  The only valid exception are unsupported models.
+  Therefore the scanner database is now created directly
+  in the spec file with the file name "scanner.database"
+  so that the scanner database can also be used to determine
+  the "unsupported" models to be disabled in libsane.rules
+  (see Novell/Suse Bugzilla bnc#439193).
+
+-------------------------------------------------------------------
+Tue Oct 28 12:35:52 CET 2008 - jsmeix@suse.de
+
+- install-umax_pp-tool.patch installs tools/umax_pp as
+  /usr/bin/umax_pp which is built but not installed
+  but it is needed to recover from a failed scan
+  with scanners which use the umax_pp backend
+  (see the Debian report http://bugs.debian.org/496833).
+
+-------------------------------------------------------------------
+Tue Oct 28 10:51:00 CET 2008 - jsmeix@suse.de
+
+- Avoid false positives (e.g. unsupported) and problematic
+  models in /etc/udev/rules.d/55-libsane.rules by having
+  all model entries disabled where the support status is
+  not "complete" or "good", i.e. when it is not listed
+  in /etc/udev/rules.d/56-sane-backends-autoconfig.rules
+  (see Novell/Suse Bugzilla bnc#439193).
+
+-------------------------------------------------------------------
+Tue Oct 21 13:12:42 CEST 2008 - jsmeix@suse.de
+
+- Changed /etc/udev/rules.d/55-libsane.rules to jump to the end
+  if SUBSYSTEM!="usb" and replaced SYSFS by ATTR and did
+  the same chages in create_sane-backends-autoconfig.rules
+  (see Novell/Suse Bugzilla bnc#436085).
+
+-------------------------------------------------------------------
+Thu May 15 15:51:11 CEST 2008 - jsmeix@suse.de
+
+- Changed create_sane-backends-autoconfig.rules
+  to output '$$' insead of '$' because in udev rules files
+  '$$' represents the '$' character itself, see "man udev"
+  (see Novell/Suse Bugzilla bnc#390783).
+
+-------------------------------------------------------------------
+Thu Apr 17 12:24:22 CEST 2008 - jsmeix@suse.de
+
+- Use info.subsystem instead of the deprecated info.bus
+  for the HAL 70-scanner.fdi file.
+- Changed create_sane-backends-autoconfig.rules to ignore
+  the INTERFACE field because it could be empty or arbitrary
+  stuff like "Parport USB" or "SCSI USB IEEE-1394".
+
+-------------------------------------------------------------------
+Fri Apr 11 14:40:50 CEST 2008 - jsmeix@suse.de
+
+- Updated epkowa.desc from the current Iscan version 2.10.0.1.
+- Replaced hpaio.desc which is currently messed up in HPLIP
+  by create_hpaio.desc_from_models.dat which creates hpaio.desc
+  directly from the models.dat file from HPLIP version 2.8.4.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Tue Apr  8 15:49:51 CEST 2008 - jsmeix@suse.de
+
+- fix-sanei_scsi_find_devices.patch lets sanei_scsi_find_devices
+  continue on to look at subsequent devices if the attach callback
+  returns anything other than SANE_STATUS_GOOD
+  (see Novell/Suse Bugzilla bnc#350688).
+
+-------------------------------------------------------------------
+Tue Mar 18 15:58:45 CET 2008 - jsmeix@suse.de
+
+- Added "Supplements: sane-backends" to sane-backends-autoconfig
+  sub-package.
+
+-------------------------------------------------------------------
+Thu Mar 13 14:00:15 CET 2008 - jsmeix@suse.de
+
+- Added "scanner autoconfiguration" support via
+  create_scanner_database, create_sane-backends-autoconfig.rules
+  which create /etc/udev/rules.d/56-sane-backends-autoconfig.rules
+  and provide it in the new sane-backends-autoconfig sub-package
+  (see Novell/Suse Bugzilla bnc#347943).
+
+-------------------------------------------------------------------
+Tue Mar 11 15:30:25 CET 2008 - jsmeix@suse.de
+
+- Replaced "scanner" by "SCSIviaUSBscanner" in info.capabilities
+  in 70-scanner.fdi to explicitely mark those special USB scanners
+  which do not use libusb but an unusual SCSI protocol which is a
+  derivative of usb storage (see Novell/Suse Bugzilla bnc#341565).
+
+-------------------------------------------------------------------
+Thu Feb 28 13:56:15 CET 2008 - jsmeix@suse.de
+
+- Updated to sane-backends version 1.0.19:
+  New backends:
+  cardscan (Corex Cardscan 800c), epjitsu (Epson-based Fujitsu),
+  epson2 (various Epson scanners), hp3900 (HP ScanJet 3970 and
+  more), hp5590 (HP ScanJet 5590 and more), hpljm1005 (HP LaserJet
+  M1005 and more), hs2p (Ricoh IS400 series)
+  Updated backends:
+  abaton, agfafocus, apple, artec, artec_eplus48u, as6e, avision,
+  canon, coolscan, coolscan2, dc25, dell1600n_net, dll, epson,
+  fujitsu, genesys, gt68xx, hp3500, ibm, lexmark, microtek,
+  microtek2, mustek, nec, net, pie, pint, pixma, plustek,
+  plustek_pp, ricoh, s9036, sm3600, sm3840, snapscan, sp15c,
+  st400, tamarack, teco2, test, u12, umax, umax1220u, umax_pp
+  Plus:
+  Scanimage detects more chipsets.
+  Internal scsi, usb, tcp and udp code updates.
+  Basic HAL .fdi creation support
+  Build system updates.
+  Updated translations.
+  Documentation updates.
+  Bugfixes.
+  Note:
+  This will be (hopefully) the last release of the SANE 1.0 series.
+  The next release will be extended (in a backwards compatible
+  fashion) to support more features of modern scanners.
+- sane-backends-1.0.16-nb.patch (did locale rename: no -> nb)
+  is obsolete since version 1.0.19 because it uses already 'nb'.
+- in fix-buffer-overflow.patch the overflows in backend/epson.c
+  backend/as6e.c and sanei/sanei_ab306.c are obsolete because
+  they are fixed in the source (only backend/niash.c is left).
+- replace-HZ-by-sysconf_SC_CLK_TCK.patch is obsolete because
+  it is fixed in the source.
+- fujitsu-disable-hw_ink_remain.patch is obsolete because
+  it is fixed in the source.
+- in fix-uninitialized-variables.patch the fix regarding
+  teco2.c is obsolete because it is fixed in the source
+  but a new fix regarding avision.c was added.
+- fix-ambiguous-post-pre-increment.patch is obsolete because
+  it is fixed in the source.
+- module-build.diff is dropped because there is no reason to build
+  driver modules as libtool modules and furthermore it makes our
+  package incompatible with the rest of the SANE world.
+- Since version 1.0.19 there is udev and HAL support.
+  Therefore the old/outdated hotplug stuff (libsane.usermap
+  and libusbscanner) is dropped (it was never used by openSUSE).
+  Also the evil-hack init-script "sane-dev" is no longer provided.
+  libsane.rules.CVS-2007-07-29.using-lp is obsolete because
+  the udev rules file 55-libsane.rules is directly derived
+  from tools/udev/libsane.rules.
+  create_hal_global_fdi_from_libsane.rules is obsolete because
+  the HAL fdi file 70-scanner.fdi is directly derived 
+  from tools/hal/libsane.fdi.
+
+-------------------------------------------------------------------
+Thu Jan 31 10:45:45 CET 2008 - adrian@suse.de
+
+- Call create_hal_global_fdi_from_libsane.rules via bash.
+  We can not rely on source file permissions
+
+-------------------------------------------------------------------
+Tue Aug 14 16:07:08 CEST 2007 - jsmeix@suse.de
+
+- Replaced create_hal_global_fdi_for_scanners by
+  create_hal_global_fdi_from_libsane.rules which creates the
+  global HAL 70-scanner.fdi file during build-time from the
+  libsane.rules file (see Novell/Suse Bugzilla bnc#298878).
+
+-------------------------------------------------------------------
+Fri Aug 10 14:48:13 CEST 2007 - jsmeix@suse.de
+
+- Removed hpoj.desc completely to avoid confusion with its
+  successor hpaio.desc because since openSUSE 10.3 the package
+  hp-officeJet (for hpoj.desc) is dropped.
+- Updated hpaio.desc from the current HPLIP version 2.7.7.
+- Updated epkowa.desc from the current Iscan version 2.8.0.1.
+
+-------------------------------------------------------------------
+Fri Aug  3 13:29:39 CEST 2007 - jsmeix@suse.de
+
+- Added libsane.rules.CVS-2007-07-29.using-lp which are udev rules
+  that are needed for the openSUSE 10.3 kernel. The rules are
+  derived from what sane-desc in sane-backends 1.0.18-cvs creates.
+
+-------------------------------------------------------------------
+Wed Jun 13 11:50:30 CEST 2007 - jsmeix@suse.de
+
+- Adapted create_hal_global_fdi_for_scanners according to the
+  currently newest changes in HAL (see Suse Bugzilla bnc#250659).
+
+-------------------------------------------------------------------
+Wed Jun  6 15:25:26 CEST 2007 - dmueller@suse.de
+
+- module-build.diff builds driver modules as libtool modules.
+
+-------------------------------------------------------------------
+Sat Apr 21 15:15:08 CEST 2007 - aj@suse.de
+
+- Use texlive.
+
+-------------------------------------------------------------------
+Wed Feb 21 15:40:03 CET 2007 - jsmeix@suse.de
+
+- Added a fix for an "array subscript is above array bounds"
+  error in niash.c to fix-buffer-overflow.patch
+  (see Suse Bugzilla bnc#246654).
+
+-------------------------------------------------------------------
+Wed Jan 31 14:41:10 CET 2007 - jsmeix@suse.de
+
+- Added a fix for an "array subscript is above array bounds"
+  error in sanei_ab306.c to fix-buffer-overflow.patch
+  (see Suse Bugzilla bnc#239953).
+
+-------------------------------------------------------------------
+Mon Jan 29 14:29:35 CET 2007 - jsmeix@suse.de
+
+- Renamed the package from 'sane' (which is only used by Suse)
+  to 'sane-backends' which is used by the rest of the world
+  and let this package provide and obsolete 'sane'.
+- Updated replace-HZ-by-sysconf_SC_CLK_TCK.patch to what
+  there will be done upstream.
+
+-------------------------------------------------------------------
+Fri Dec  8 13:54:43 CET 2006 - jsmeix@suse.de
+
+- fix-ambiguous-post-pre-increment.patch fixes an ambiguous
+  post-increment in canon-sane.c for big-endian architectures
+  (e.g. PowerPC).
+
+-------------------------------------------------------------------
+Fri Oct 27 11:50:40 CEST 2006 - jsmeix@suse.de
+
+- Updated hpaio.desc from the current HPLIP version 1.6.10
+- Updated epkowa.desc from the current Iscan version 2.3.0.1.
+- Added fixes of possible strncat buffer overflows and
+  strncpy unterminated string errors in as6e.c
+  to fix-buffer-overflow.patch.
+- Replaced the complicated postinstall script by calling
+  create_hal_global_fdi_for_scanners which should obsolete
+  sane-dev (see Suse Bugzilla bnc#160899).
+- Moved sane-dev from {_initrddir} to {_datadir}/sane/ to have it
+  still available in case of backward compatibility problems.
+
+-------------------------------------------------------------------
+Sun Oct 22 12:25:08 CEST 2006 - meissner@suse.de
+
+- buildrequires libgphoto2-devel.
+
+-------------------------------------------------------------------
+Mon Sep 18 14:47:07 CEST 2006 - jsmeix@suse.de
+
+- fix-uninitialized-variables.patch fixes an uninitialized
+  variable in teco2.c (see Suse Bugzilla bnc#205451).
+- create_hal_global_fdi_for_scanners can be called by HAL or YaST
+  to create a global HAL fdi file for scanners which are known
+  by the current SANE version (see Suse Bugzilla bnc#160899).
+
+-------------------------------------------------------------------
+Mon Sep 11 10:53:35 CEST 2006 - jsmeix@suse.de
+
+- disable-resmgr-support.patch disables the resmgr support in SANE
+  which is no longer needed in SANE because resmgr works now
+  outside of SANE via ACLs for the scanner device nodes.
+
+-------------------------------------------------------------------
+Mon Sep  4 11:23:09 CEST 2006 - jsmeix@suse.de
+
+- Replaced the fix from Thu Aug 31 in fujitsu.c by a new fix
+  fujitsu-disable-hw_ink_remain.patch which disables hw_ink_remain
+  which causes a buffer overflow (see Suse Bugzilla bnc#202243).
+
+-------------------------------------------------------------------
+Thu Aug 31 15:09:06 CEST 2006 - jsmeix@suse.de
+
+- Added a fix of a too small char array in fujitsu.c to
+  fix-buffer-overflow.patch (see Suse Bugzilla bnc#202243).
+
+-------------------------------------------------------------------
+Fri Jul 21 10:20:00 CEST 2006 - jsmeix@suse.de
+
+- canon-backend-autoprobing.patch lets the "canon" backend
+  do scanner auto-recognition (see Suse Bugzilla bnc#177492).
+
+-------------------------------------------------------------------
+Tue Jul  4 14:47:26 CEST 2006 - jsmeix@suse.de
+
+- Updated to sane-backends version 1.0.18:
+  New backends: dell1600n_net, hp3500, pixma, stv680.
+  Updated backends: avision, canon, dll, epson, fujitsu, genesys,
+  gt68xx, microtek2, mustek_pp, niash, plustek, snapscan, sp15c,
+  test, u12, umax1220u.
+  Several bug fixes.
+- fix-buffer-overflow.patch fixes a too small char array
+  which causes a buffer overflow if SANE_DEBUG_EPSON is set.
+- replace-HZ-by-sysconf_SC_CLK_TCK.patch replaces the fixed HZ
+  compile-time value (no longer supported by new glibc)
+  by the more correct sysconf(_SC_CLK_TCK) runtime value.
+- Updated hpaio.desc from the current HPLIP version 1.6.6a.
+- Updated epkowa.desc from the current Iscan version 2.1.0.1.
+
+-------------------------------------------------------------------
+Wed Mar 22 14:29:05 CET 2006 - jsmeix@suse.de
+
+- Added "haldaemon" to Should-Start in /etc/init.d/sane-dev and
+  keeping old name "hal" for the same boot facility to be safe.
+
+-------------------------------------------------------------------
+Wed Mar 15 11:03:52 CET 2006 - jsmeix@suse.de
+
+- Fixed percent-characters for RPM in post-install script
+  (use '%%%%' in spec file to get actually '%%' in the script).
+
+-------------------------------------------------------------------
+Mon Mar 13 11:52:47 CET 2006 - jsmeix@suse.de
+
+- Added automagic but safe pos-install script which tries
+  to update resmgr permissions for scanners for an update
+  from Suse Linux 10.0 to 10.1 (see Suse Bugzilla bnc#157055).
+
+-------------------------------------------------------------------
+Fri Jan 27 13:22:30 CET 2006 - jsmeix@suse.de
+
+- Current epkowa.desc from the current iscan package.
+- Current hpaio.desc made from the current hplip package.
+- Changed hpoj.desc to match better to hpaio.desc.
+  Added "hpoj is outdated" comments to hpoj.desc.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:19 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan  3 12:56:28 CET 2006 - jsmeix@suse.de
+
+- Updated to sane-backends version 1.0.17.
+
+-------------------------------------------------------------------
+Mon Sep 26 14:12:11 CEST 2005 - jsmeix@suse.de
+
+- Disabled locking because /var/lock/sane/ would be world writable. 
+
+-------------------------------------------------------------------
+Tue Sep 20 12:02:46 CEST 2005 - jsmeix@suse.de
+
+- Updated to sane-backends version 1.0.16.
+
+-------------------------------------------------------------------
+Mon Aug 22 14:43:14 CEST 2005 - jsmeix@suse.de
+
+- Updated the hpaio.desc file according to our current HPLIP
+  software version 0.9.4.
+
+-------------------------------------------------------------------
+Tue Aug  9 12:25:44 CEST 2005 - jsmeix@suse.de
+
+- Updated the epkowa.desc in this package with the newest version
+  from the iscan package to build the SANE documentation files
+  accordingly (see the entry dated Thu Feb 17 16:52:24 CET 2005).
+
+-------------------------------------------------------------------
+Mon Aug  1 12:14:59 CEST 2005 - jsmeix@suse.de
+
+- Added the USB usermap file to the sane package to have the
+  USB manufacturer and model IDs available for scanner detection.
+
+-------------------------------------------------------------------
+Wed May 25 12:05:30 CEST 2005 - jsmeix@suse.de
+
+- Added "Should-Start: hal" to sane-dev.
+- The "SnapScan 1236u" needs no firmware upload (SUSE bug 73960).
+
+-------------------------------------------------------------------
+Tue May 17 15:09:07 CEST 2005 - jsmeix@suse.de
+
+- Fix "... is used uninitialized ..." warnings.
+
+-------------------------------------------------------------------
+Fri Mar 11 11:39:50 CET 2005 - jsmeix@suse.de
+
+- Removed the obsolete SLP stuff from sane-dev
+  because sane-dev has nothing to do with
+  saned and its SLP registration (SUSE bug 72156).
+- Using only SANE device entries in sane-dev which start
+  with '^/dev/' to find possible SCSI devices because e.g.
+  HPLIP creates SANE devices like 'hpaio:.../dev/...'.
+- Replaced the test with 'ps' for a running scanimage
+  with a simpler test using '/proc/$scanimagePID/cmdline'.
+
+-------------------------------------------------------------------
+Thu Feb 24 09:33:15 CET 2005 - jsmeix@suse.de
+
+- Increased the maximum wait time in sane-dev to 30 seconds
+  because some scanners fall asleep and need a longer time
+  to wake up and respond to 'scanimage -f ...'.
+
+-------------------------------------------------------------------
+Thu Feb 17 16:52:24 CET 2005 - jsmeix@suse.de
+
+- Updated the SUSE versions of the descriptions-external files.
+- Now the SUSE versions of the descriptions-external files
+  are used for build so that the SANE documentation files
+  _defaultdocdir/sane/sane-backends/*.html
+  are built accordingly.
+- Added 'Provides: sane-backends' because the rest of the world has
+  package names 'sane-backends' and 'sane-frontends' according to
+  the two SANE software projecs. Therefore third party RPMs which
+  require SANE libraries usually have 'Requires: sane-backends'.
+
+-------------------------------------------------------------------
+Thu Feb 10 02:40:55 CET 2005 - ro@suse.de
+
+- added libpng to neededforbuild (for tetex)
+
+-------------------------------------------------------------------
+Tue Feb  8 14:31:29 CET 2005 - jsmeix@suse.de
+
+- Replaced the descriptions-external file epkowa.desc from SANE
+  by an extended SUSE version which has more model listed
+  according to "man sane-epkowa" in the SUSE iscan package.
+- Removed the automated "insserv" for sane-dev because this
+  is now done by the YaST scanner config only if a SCSI scanner
+  was set up (i.e. for USB scanners sane-dev is useless and
+  therefore it should not run by default).
+
+-------------------------------------------------------------------
+Wed Feb  2 15:21:11 CET 2005 - jsmeix@suse.de
+
+- Added a descriptions-external file hpaio.desc which was
+  manually derived from the models.xml in the hplip package.
+  Therefore there is a package version problem to have a fixed
+  source file hpaio.desc but in the future an automated script
+  may create an up to date hpaio.desc file.
+
+-------------------------------------------------------------------
+Tue Dec 28 11:24:53 CET 2004 - jsmeix@suse.de
+
+- Changed how the descriptions and descriptions-external files
+  are installed (those files are needed by YaST to create its
+  scanner database): No longer via a doc/Makefile.in patch
+  but directly in the spec file to avoid changes in the sources
+  for SUSE-specific stuff.
+- Added ':firmware "required"' entries for the respective scanners
+  to the descriptions files (for gt68xx, artec_eplus48u, snapscan)
+  so that YaST knows which scanners require a firmware upload.
+- Replaced the descriptions-external file hpoj.desc from SANE
+  by an extended SUSE version which has a list of explicite model 
+  names added so that YaST can show a detailed model list.
+
+-------------------------------------------------------------------
+Wed Nov 17 16:57:23 CET 2004 - jsmeix@suse.de
+
+- Changed runlevel script "sane-dev":
+  Avoid too long (perhaps infinite) waiting for "scanimage".
+  Maximum wait is 10 seconds.
+  Improved the format of the output.
+
+-------------------------------------------------------------------
+Wed Nov 10 16:19:48 CET 2004 - jsmeix@suse.de
+
+- Changed "sane" runlevel script which sets permissions in /dev/
+  and renamed it to "sane-dev" to avoid confusion with the
+  SANE network daemon "saned" and its service name "sane-port"
+  respectively "sane" (see SUSE bugzilla bnc#41233).
+
+-------------------------------------------------------------------
+Mon Nov  8 15:57:37 CET 2004 - jsmeix@suse.de
+
+- new sane-backends version 1.0.15
+- sane-frontends stuff is moved to the new package sane-frontends
+
+-------------------------------------------------------------------
+Wed Oct 20 01:57:33 CEST 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Mon Sep 20 17:47:53 CEST 2004 - jsmeix@suse.de
+
+- Added a test in /etc/init.d/sane whether slpd is really
+  running before "/etc/init.d/slpd reload" is done.
+  (SUSE bugzilla bnc#42032).
+
+-------------------------------------------------------------------
+Wed Sep 15 13:50:05 CEST 2004 - jsmeix@suse.de
+
+- Added sane-backends-1.0.14-epson_d8.patch which fixes the
+  problem with EPSON D8 function level scanners that have
+  a transparency unit (SUSE bugzilla bnc#45075).
+- Changed the file name of /etc/xinetd.d/sane.xinetd to
+  /etc/xinetd.d/sane-port because xinetd ignores files
+  with names containing a dot (SUSE bugzilla bnc#45313).
+
+-------------------------------------------------------------------
+Fri Aug 13 14:46:04 CEST 2004 - jsmeix@suse.de
+
+- Changed "sane" to "sane-port" in sane.xinetd see bug 41233 
+
+-------------------------------------------------------------------
+Thu Jul 15 14:13:20 CEST 2004 - jsmeix@suse.de
+
+- Added libieee1284 support (by using the new libieee1284 package)
+
+-------------------------------------------------------------------
+Tue Jul 13 15:34:55 CEST 2004 - jsmeix@suse.de
+
+- Update sane-backends to version 1.0.14
+
+-------------------------------------------------------------------
+Wed Apr 21 12:52:35 CEST 2004 - pth@suse.de
+
+- Remove libtool macros from acinclude.m4 that caused build
+  failures.
+- Fix the cases of unnecessary type-punning, obsoleting the need
+  for -fno-strict-aliasing.
+- Fix pointer->int casts.
+
+-------------------------------------------------------------------
+Thu Apr  1 13:55:32 CEST 2004 - jsmeix@suse.de
+
+- Correction of what was done according to previous entry: 
+  Disable all entries in almost all descriptions-external/*.desc
+  files because none of the external backends is included in the
+  sane package
+  except one: /usr/share/sane/descriptions-external/hpoj.desc
+  because the hpoj backend is in fact available because it is
+  in the hp-officeJet package which is installed by default
+  see bug 37885
+
+-------------------------------------------------------------------
+Mon Mar 29 14:27:04 CEST 2004 - jsmeix@suse.de
+
+- Removed sane-descriptions-external-epkowa.desc.dif and
+  disabled all entries in all descriptions-external/*.desc files
+  because none of the external backends is included in the sane
+  package (see bugzilla bnc#37169) and for details see
+  .../doc/packages/sane/sane-backends/sane-backends-external.html
+
+-------------------------------------------------------------------
+Thu Mar 25 15:44:37 CET 2004 - jsmeix@suse.de
+
+- Patch sane-descriptions-external-epkowa.desc.dif
+  disables those entries in descriptions-external/epkowa.desc
+  which are also in descriptions/epson.desc
+  because we want to prefer the open source backend "epson"
+  (see bugzilla bnc#36584).
+
+-------------------------------------------------------------------
+Tue Mar 23 08:00:24 CET 2004 - meissner@suse.de
+
+- gimp plugins are now in ../2.0/...
+
+-------------------------------------------------------------------
+Mon Mar 22 11:16:04 CET 2004 - meissner@suse.de
+
+- epson.conf triggers autodetect on mentioning of "usb", so just
+  add this instead of all ids. #36585
+
+-------------------------------------------------------------------
+Fri Mar 12 10:55:40 CET 2004 - meissner@suse.de
+
+- The plustek driver has its very own idea of a config file format,
+  adapt the config patch.
+
+-------------------------------------------------------------------
+Mon Mar  8 15:04:54 CET 2004 - meissner@suse.de
+
+- Updated the .conf files with most of the USB ids in use,
+  so scanimage -L finds the scanners even without kernel module.
+
+-------------------------------------------------------------------
+Wed Feb 25 11:48:20 CET 2004 - meissner@suse.de
+
+- Merged all system scanner ids into the hardcoded usermap, 
+  since newer kernels might no longer have the scanner module.
+
+-------------------------------------------------------------------
+Sat Feb 21 13:04:46 CET 2004 - ro@suse.de
+
+- use no-strict-aliasing
+
+-------------------------------------------------------------------
+Sat Feb 21 12:46:16 CET 2004 - ro@suse.de
+
+- fix gimp plugin link
+
+-------------------------------------------------------------------
+Sat Feb 21 11:46:39 CET 2004 - ro@suse.de
+
+- updated frontends to 1.0.11-cvs to get gimp2 support
+- use gtk2 for gimp
+
+-------------------------------------------------------------------
+Wed Feb 18 13:57:59 CET 2004 - meissner@suse.de
+
+- actually apply the patch (and update it) and not just
+  readd it to the sources.
+
+-------------------------------------------------------------------
+Mon Feb 16 17:59:51 CET 2004 - meissner@suse.de
+
+- reapply resmgr patch.
+
+-------------------------------------------------------------------
+Fri Feb  6 15:46:45 CET 2004 - jsmeix@suse.de
+
+- new versions sane-backends-1.0.13 and sane-frontends-1.0.11
+- use the more important backend version number as package version
+
+-------------------------------------------------------------------
+Sat Jan 17 12:52:06 CET 2004 - meissner@suse.de
+
+- fixed small typemismatch in sm3600.c
+
+-------------------------------------------------------------------
+Wed Nov 19 16:46:47 CET 2003 - adrian@suse.de
+
+- use $HOSTNAME instead of $LOCALHOST in slp reg file
+
+-------------------------------------------------------------------
+Fri Nov 14 10:55:04 CET 2003 - adrian@suse.de
+
+- use correct keyword "X-UnitedLinux-Should-Start" in runlevel script
+
+-------------------------------------------------------------------
+Thu Nov 13 22:51:33 CET 2003 - adrian@suse.de
+
+- add xinetd file for sane daemon
+- let slpd check for running saned via (x)inetd
+- notify slpd, if using saned init script
+
+-------------------------------------------------------------------
+Wed Nov 12 15:42:36 CET 2003 - freitag@suse.de
+
+- added registration file for slp daemon 
+
+-------------------------------------------------------------------
+Mon Nov 10 01:41:16 CET 2003 - ro@suse.de
+
+- use net-snmp instead of ucdsnmp 
+
+-------------------------------------------------------------------
+Fri Oct 10 13:00:01 CEST 2003 - hvogel@suse.de
+
+- fix scanimage path in the init script
+
+-------------------------------------------------------------------
+Mon Jun 16 12:17:27 CEST 2003 - meissner@suse.de
+
+- Also use -L/..._lib, so we find -lresmgr on x86_64.
+
+-------------------------------------------------------------------
+Fri Jun 13 10:18:34 CEST 2003 - meissner@suse.de
+
+- Buildrooted.
+- Added missing directories and files.
+
+-------------------------------------------------------------------
+Fri Jun  6 14:16:23 CEST 2003 - freitag@suse.de
+
+- update to backend version 1.0.12 - better support of current
+  devices. 
+
+-------------------------------------------------------------------
+Mon Mar  3 17:12:04 CET 2003 - freitag@suse.de
+
+- fixed a filelist error which turned out to be a wrong lib link.
+  Bug #24567 
+
+-------------------------------------------------------------------
+Wed Feb 26 16:04:58 CET 2003 - meissner@suse.de
+
+- Added one missing resmgr invocation.
+
+-------------------------------------------------------------------
+Mon Feb 17 16:19:09 CET 2003 - meissner@suse.de
+
+- Added resmgr support for both SCSI and USB kernel mode.
+  (basically use rsm_open_device). This will allow opening
+  the /dev/*scanner devices as user without need for special
+  permissions.
+- Added a USB hotplug usermap which makes the sm3600 devices
+  accessible for libusb. (The rest are handled by the yast2 scanner
+  module).
+
+-------------------------------------------------------------------
+Mon Feb 17 13:39:41 CET 2003 - freitag@suse.de
+
+- added epson backend directly from the author Karl Hein Kremer due
+  to further changes to the USB base code. Removed the patch applied
+  before again. 
+
+-------------------------------------------------------------------
+Mon Feb 17 10:09:29 CET 2003 - freitag@suse.de
+
+- patch applied to detect Epson scanners via libusb correctly. 
+  Thanks to Karl Heinz Kremer who sent it in. 
+
+-------------------------------------------------------------------
+Mon Feb 10 11:26:14 CET 2003 - freitag@suse.de
+
+- updated to backends version 1.0.11 which was suggested to avoid
+  a possible security whole. 
+
+-------------------------------------------------------------------
+Mon Feb  3 11:20:17 CET 2003 - freitag@suse.de
+
+- update to stable version 1.0.10 
+  added gimp and gimp-devel to neededforbuild again to provide gimp
+  support for xscanimage 
+
+-------------------------------------------------------------------
+Fri Jan 31 18:11:12 CET 2003 - meissner@suse.de
+
+- neededforbuild +resmgr, so libusb gets detected.
+
+-------------------------------------------------------------------
+Fri Jan 31 14:30:16 CET 2003 - freitag@suse.de
+
+- added backend descriptions file to /usr/share/sane
+  moved the style file from /usr/X11R6/lib to /usr/share/sane
+  added sane postscript and dvi documentation as extra source 
+
+-------------------------------------------------------------------
+Mon Jan 27 10:40:00 CET 2003 - freitag@suse.de
+
+- update to version 1.0.10 pre 3  
+
+-------------------------------------------------------------------
+Fri Jan 24 11:29:58 CET 2003 - freitag@suse.de
+
+- update to pre version 1.0.10, final will follow soon. 
+  Much more scanner supported. 
+
+-------------------------------------------------------------------
+Thu Oct 31 11:56:53 CET 2002 - freitag@suse.de
+
+- update to final version 1.0.9 
+
+-------------------------------------------------------------------
+Tue Oct 29 13:32:56 CET 2002 - ro@suse.de
+
+- removed (old) libtool macros from acinclude.m4 
+
+-------------------------------------------------------------------
+Fri Oct 18 12:46:26 CEST 2002 - freitag@suse.de
+
+- updated to pre version of 1.0.9 in advance for 1.0.9 and did some
+  cleanup of the spec like removing a lot of neededforbuild deps
+  and applied proper CFLAGS
+  Added the gt68xx backend that supports expecially rf's new Mustek
+  usb scanner  
+
+-------------------------------------------------------------------
+Mon Sep  9 15:16:07 CEST 2002 - freitag@suse.de
+
+- fixed filelist and added libsane.so again. 
+
+-------------------------------------------------------------------
+Mon Sep  9 11:55:45 CEST 2002 - freitag@suse.de
+
+- removed wrong lib libsane-hpoj from packlist, they came from package
+  hp-officeJet accidentially. 
+
+-------------------------------------------------------------------
+Fri Aug 16 09:54:02 CEST 2002 - freitag@suse.de
+
+- added prerequires (Bug #17983) and a postun procedure 
+
+-------------------------------------------------------------------
+Mon Jul 29 16:18:13 CEST 2002 - meissner@suse.de
+
+- gphoto -> libgphoto2
+
+-------------------------------------------------------------------
+Sat Jul 27 15:04:46 CEST 2002 - adrian@suse.de
+
+- fix neededforbuild
+
+-------------------------------------------------------------------
+Thu Jul 18 15:38:44 CEST 2002 - freitag@suse.de
+
+- reapplied __KERNEL__-Patches  
+
+-------------------------------------------------------------------
+Wed Jul 17 16:49:12 CEST 2002 - freitag@suse.de
+
+- update to sane version 1.0.8:
+  -Network backend and saned update
+  -documentation updates
+  -bugfixes
+  -updated backends
+  -new backends 
+-------------------------------------------------------------------
+Tue Mar 19 13:12:23 CET 2002 - freitag@suse.de
+
+- fixed bug #14916
+  This bug was caused by an segfault of scanimage which is used to
+  find out which scanner are in operation on the network scan server.
+  Since scanimage uses a one byte to small buffer in a string copy
+  operation, a segfault happens. 
+  Fixed that bug by enlarging the buffer. 
+
+-------------------------------------------------------------------
+Fri Mar  8 14:06:32 CET 2002 - freitag@suse.de
+
+- fixed bug #14449  
+  That changes the sane startup script to work with the scanimage
+  from sane package 1.0.7. 
+  Added a proper check for being root or not. only root may start
+  or restart the service (which actually does nothing but setting
+  file permissions for scsi scanner). See rcsane.diff for the patch
+  applied on rc.sane. Note that rcsane.diff is not applied during
+  the build process, but shows the differences against the former
+  version of rc.sane
+
+-------------------------------------------------------------------
+Mon Feb 18 17:11:15 CET 2002 - freitag@suse.de
+
+- fixed bug 13430 - updated to version 1.0.7 of sane. This broadens
+  the scanner support. 
+
+-------------------------------------------------------------------
+Wed Feb  6 12:22:25 CET 2002 - freitag@suse.de
+
+- minor fixes in rc.sane: removed useless test on start variable 
+
+-------------------------------------------------------------------
+Thu Jan 10 15:09:23 CET 2002 - freitag@suse.de
+
+- updated to V. 1.0.6, provides bugfixes, gphoto2 changes and some
+  new backends
+- removed rc.config-template and used rpm macro instead to set the
+  rc.config var.
+- removed mustek_usb external source, because it is now part of the
+  standard sane package. 
+
+-------------------------------------------------------------------
+Tue Jan  8 20:34:39 CET 2002 - egmont@suselinux.hu
+
+- changed `adjustscannerperm' to `sane' in init script
+- removed bogus `probe' entry from the same script
+
+-------------------------------------------------------------------
+Wed Nov 21 01:44:23 CET 2001 - bjacke@suse.de
+
+- remove useless provides
+- make config files (noreplce)
+- use libdir macro
+
+-------------------------------------------------------------------
+Wed Sep 12 17:16:16 CEST 2001 - freitag@suse.de
+
+- added support for Agfa SnapScan 1236U and updated to a later verion
+  of mustek_usb-Backend, which provides better integration to the 
+  main backend module. 
+  Disabled all dll-entries in /etc/sane.d/dll.conf to avoid probs
+  with wrong device detection which happend in the past. The yast
+  module enables the correct one, added a README.SuSE to the sane
+  package doc path that describes this change.
+
+-------------------------------------------------------------------
+Tue Sep  4 17:16:16 CEST 2001 - freitag@suse.de
+
+- added a rc-script that changes the permissions of scsi scanner
+  devices if they are installed. The scsi device files are switched
+  to permission 666 on startup and reverted back to 640 on shutdown. 
+
+-------------------------------------------------------------------
+Mon Sep  3 11:21:39 CEST 2001 - freitag@suse.de
+
+- added a backend for mustek usb scanners. 
+
+-------------------------------------------------------------------
+Wed Aug 29 17:32:55 CEST 2001 - freitag@suse.de
+
+- added support for scanning from HP all-in-one-devices.
+  Therefore, package hp-officeJet is needed.
+- added a configure option --docdir to get rid of build failiures
+  on distributions which have the documentation not in share.
+
+-------------------------------------------------------------------
+Mon Aug 27 12:05:51 CEST 2001 - freitag@suse.de
+
+- applied patches for scanimage and sane-find-scanner that produce
+  better parseable output for scripts etc. to help yast2 module.
+- added a not yet in SANE released driver for mustek usb scanners, 
+  which are quite common in germany. The driver was initially written
+  by a mustek engineer and was overtaken by the mustek backend 
+  maintainer of SANE. 
+
+-------------------------------------------------------------------
+Tue Jul 17 14:40:49 CEST 2001 - uli@suse.de
+
+- disabled direct PIO access for PPC 
+
+-------------------------------------------------------------------
+Thu Jul  5 16:41:30 CEST 2001 - freitag@suse.de
+
+- update to release 1.0.5
+- documentation again created dynamically.
+
+-------------------------------------------------------------------
+Thu Jun 28 18:43:33 CEST 2001 - freitag@suse.de
+
+- updated to pre-1.0.5 version, 1.0.5 is expected soon
+- patched sane-find-scanner to have a silent mode.
+
+-------------------------------------------------------------------
+Mon Apr  9 10:58:07 CEST 2001 - freitag@suse.de
+
+- applied snapscan-patch, fixed problem with missing gimp-plugin-link
+
+-------------------------------------------------------------------
+Fri Mar 30 16:43:20 CEST 2001 - uli@suse.de
+
+- fixed to build on PPC 
+
+-------------------------------------------------------------------
+Fri Mar 23 16:43:36 CET 2001 - freitag@suse.de
+
+- removed dependency to gimp, patch to solve timing probs with
+  kernel 2.4 
+
+-------------------------------------------------------------------
+Fri Jan  5 11:56:32 CET 2001 - freitag@suse.de
+
+- updated to version 1.0.4 
+
+-------------------------------------------------------------------
+Wed Dec 20 09:04:44 CET 2000 - ro@suse.de
+
+- fixed symlink 
+
+-------------------------------------------------------------------
+Mon Nov 20 18:51:03 CET 2000 - freitag@suse.de
+
+- hide parport-scanner in standard sane distribution in dll.conf 
+
+-------------------------------------------------------------------
+Wed Nov 15 09:24:39 CET 2000 - freitag@suse.de
+
+- skipped parport-scanner driver also for axp 
+
+-------------------------------------------------------------------
+Tue Nov  7 16:19:16 CET 2000 - freitag@suse.de
+
+- skipped parport-scanner for ppc and sparc 
+
+-------------------------------------------------------------------
+Mon Nov  6 10:09:48 CET 2000 - freitag@suse.de
+
+- fixed Copyright/License-Field in SpecFile 
+
+-------------------------------------------------------------------
+Thu Nov  2 23:55:53 CET 2000 - ro@suse.de
+
+- fix neededforbuild for new package-names 
+
+-------------------------------------------------------------------
+Thu Nov  2 10:40:01 CET 2000 - freitag@suse.de
+
+- new version 1.0.3
+  patch for Artec AS6E scanner
+  patch for HP4200 PPort Scanner 
+
+-------------------------------------------------------------------
+Mon Sep 25 18:44:41 CEST 2000 - uli@suse.de
+
+- fixed to build with new GIMP
+
+-------------------------------------------------------------------
+Mon Sep 25 16:33:19 MEST 2000 - egger@suse.de
+
+- Upgraded to 1.0.3.
+- Added -DGIMP_ENABLE_COMPAT_CRUFT to build again.
+- The specfile is quite messy... maybe the maintainer could clean
+  that up, please? 
+
+-------------------------------------------------------------------
+Mon Sep 25 01:04:16 CEST 2000 - ro@suse.de
+
+- changed neededforbuild: libgimpd -> gimpdev 
+
+-------------------------------------------------------------------
+Tue Sep 12 14:15:34 CEST 2000 - mhafner@suse.de
+
+- added suse_update_config
+
+-------------------------------------------------------------------
+Tue Jun 27 11:22:16 CEST 2000 - freitag@suse.de
+
+- libs back to /usr/lib/sane - except libsane.so. and libsane-dll 
+
+-------------------------------------------------------------------
+Fri Jun  2 18:00:43 CEST 2000 - freitag@suse.de
+
+- problem with missing headerfiles and wrong linked libs fixed. 
+
+-------------------------------------------------------------------
+Wed May 24 16:28:05 CEST 2000 - freitag@suse.de
+
+- new configure switch --enable-scsibuffersize due to reported
+  problems on the SANE-Mailinglist.
+- installed *all* sane-libraries to /usr/lib  
+
+-------------------------------------------------------------------
+Tue Mar 21 10:02:35 CET 2000 - bodammer@suse.de
+
+- backend for Agfa SnapScan V0.8 again
+
+-------------------------------------------------------------------
+Mon Mar 20 12:57:59 CET 2000 - bodammer@suse.de
+
+- update -> sane-1.0.2
+  link to libsane-dll.so.1 included for xsane to work
+
+-------------------------------------------------------------------
+Sat Mar  4 16:31:40 CET 2000 - ro@suse.de
+
+- removed libgimp from neededforbuild
+
+-------------------------------------------------------------------
+Thu Mar  2 15:46:18 CET 2000 - uli@suse.de
+
+- moved man pages to _mandir
+
+-------------------------------------------------------------------
+Mon Feb  7 15:57:14 CET 2000 - kukuk@suse.de
+
+- Don't check for asm/io.h, this will not work on SPARC
+
+-------------------------------------------------------------------
+Tue Jan 18 15:38:21 CET 2000 - bodammer@suse.de
+
+- backend for Agfa SnapScan updated to V0.8
+  works with new sg-modul from kernel > 2.2.5
+
+-------------------------------------------------------------------
+Fri Oct 15 09:39:22 CEST 1999 - ro@suse.de
+
+-xscanimage: renamed GIMP_EXTENSION to IS_GIMP_EXTENSION
+ (GIMP_EXTENSION is already used as enumerator as of gimp-1.1.10) 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu Sep  2 19:02:36 CEST 1999 - ro@suse.de
+
+- update to 1.0.1
+- fixed neededforbuild to get gimp-support back
+- removed tcl tk from neededforbuild 
+
+-------------------------------------------------------------------
+Sun Jul 18 11:44:25 MEST 1999 - mha@suse.de
+
+- removed '#' in front of /usr/sbin/saned in sane.spec
+  for mb who isn't here today ;-)
+
+-------------------------------------------------------------------
+Tue Jul 13 12:42:22 MEST 1999 - bs@suse.de
+
+- use gtk and glib instead of gtkn and glibn
+
+-------------------------------------------------------------------
+Fri Mar 19 14:16:40 MET 1999 - mb@suse.de
+
+- fixed gtkn, gtkndev, glibn, glibndev dependencies
+
+-------------------------------------------------------------------
+Thu Nov 26 15:15:53 MET 1998 - mb@suse.de
+
+- major update to version 1.0
+- new enhanced drivers for Abaton, Agfa Focus and Ricoh scanners
+- Kodak DC210 still not supported
+- Update for many drivers (Artec,Kodak,DC25,Microtek,Microtek2,Mustek
+  UMAX and SnapScan).
+- removed sgcheck. sgcheck now is in scsiinfo.
+
+-------------------------------------------------------------------
+Mon Nov 23 15:07:44 MET 1998 - mb@suse.de
+
+- added sgcheck tool. It scans /proc/scsi/scsi and tells you
+  exactly the generic scsi ID of your SCSI devices, respectively 
+  your scanner.
+- added README.sgcheck
+
+-------------------------------------------------------------------
+Wed Nov 18 09:02:40 MET 1998 - ro@suse.de
+
+- added libsane.so
+
+-------------------------------------------------------------------
+Tue Nov 17 16:52:19 MET 1998 - ro@suse.de
+
+- adjust neededforbuild to current distribution
+
+
+-------------------------------------------------------------------
+Fri Nov 13 14:49:08 MET 1998 - mb@suse.de
+
+- new version 0.74
+- new and more scanners supported
+- automatically detects attached scanners
+-------------------------------------------------------------------
+Mon May 25 13:39:12 MEST 1998 - mb@suse.de
+
+- new version 0.73
+- according to author may still cause trouble with microtek2 scanners!!
+- uses new gtk1.0.1
+- added scanners to supported list
+- lots of bug fixed
+
+-------------------------------------------------------------------
+Wed Mar 11 18:20:24 MET 1998 - ro@suse.de
+
+- added libsane.so.0 to filelist
+
+-------------------------------------------
+Wed Feb  4 14:53:43 MET 1998 - mb@suse.de
+
+- new version 0.70
+- added support for various scanners, such as agfa, microtek etc.
+- bugfixing for umax scanners
+-------------------------------------------
+
+Sun Sep 21 21:17:00 MEST 1997 - mb@suse.de
+
+Initial version 0.63
+-------------------------------------------

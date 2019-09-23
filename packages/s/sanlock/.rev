@@ -1,0 +1,219 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95888efd1d1d8cb25443bbfb276c501a</srcmd5>
+    <version>1.9</version>
+    <time>1327674257</time>
+    <user>coolo</user>
+    <comment>New sanlock package that, in conjunction with libvirt, provides
+ability to &quot;lock&quot; KVM virtual machines.  Without this feature,
+it is possible to start a VM on more than one host, resulting in
+corruption of the VM's disk image.  See FATE#306399.</comment>
+    <requestid>101564</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6e5ec2730fde1e337ab910d0ea157f61</srcmd5>
+    <version>2.1</version>
+    <time>1332239726</time>
+    <user>coolo</user>
+    <comment>- Update to sanlock 2.1
+  - python: release leases for other processes
+  - python: add shared resource parameter to acquire
+  - add a logrotate file
+  - status for all shared tokens
+  - retry transient sh failures
+  - fix inquire state string</comment>
+    <requestid>109771</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6e5ec2730fde1e337ab910d0ea157f61</srcmd5>
+    <version>2.1</version>
+    <time>1340184186</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d99b0e21cb00825ea30791bf79fe0e1b</srcmd5>
+    <version>2.6</version>
+    <time>1355919751</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>145056</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d99b0e21cb00825ea30791bf79fe0e1b</srcmd5>
+    <version>2.6</version>
+    <time>1359110365</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>5fa1e1958adec1f72f1675ccced84a0f</srcmd5>
+    <version>2.6</version>
+    <time>1362341311</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 156918 from coolo)</comment>
+    <requestid>156919</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>51353c89af8eff7bec4f587add2d0082</srcmd5>
+    <version>3.0.1</version>
+    <time>1376310374</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>186515</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>51353c89af8eff7bec4f587add2d0082</srcmd5>
+    <version>3.0.1</version>
+    <time>1379664606</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>46e8d3e3bda451008d5a306059a40153</srcmd5>
+    <version>3.1.0</version>
+    <time>1389708764</time>
+    <user>coolo</user>
+    <comment>Updated sanlock package for Factory / SLE12 alpha2.
+
+- Update to sanlock 3.1.0
+  - fix debug status for add/rem lockspace
+  - add_lockspace error for conflicting lockspace definitions
+  - transient timeout handling in acquire and release
+  - allow more than 8 resources per client
+  - fix spaces in path names</comment>
+    <requestid>213524</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>46e8d3e3bda451008d5a306059a40153</srcmd5>
+    <version>3.1.0</version>
+    <time>1409303311</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4727597004f355abc11c9be61097adcd</srcmd5>
+    <version>3.2.2</version>
+    <time>1427445607</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292524</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c51cc33786f268bb958698a8bbab1eed</srcmd5>
+    <version>3.2.4</version>
+    <time>1435652230</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>313902</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b7b4a8c16f80c660aa270c88c8cee3ef</srcmd5>
+    <version>3.4.0</version>
+    <time>1490786507</time>
+    <user>maxlin_factory</user>
+    <comment>Another Factory submission for sanlock. Supersedes 482020.
+
+- Update to sanlock 3.4.0
+- Enable fence_sanlockd so that lvm2 can use the new lvmlocked
+  feature in cluster environment
+  * fix unpackaged file - /usr/sbin/rcfence_sanlockd
+  * refresh suse-no-date-time.patch to cover the same issue
+    in fence_sanlockd
+  * adjust fence_sanlockd.init and suse-systemd.patch
+- Enable sanlk-reset subpackage 
+- Fix &quot;undefined symbol to io_suspend&quot; at runtime, bsc#1030060
+  suse-fix-link-errors.patch
+
+- Add group disk as Prerequires</comment>
+    <requestid>482340</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>06c3faf160c607121ecfd52f460b91f8</srcmd5>
+    <version>3.4.0</version>
+    <time>1492417343</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>487143</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>aea4e0df2f699ef63594646b15334a39</srcmd5>
+    <version>3.5.0</version>
+    <time>1497687631</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501828</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>45a79195d3c958277278ab8504d1859b</srcmd5>
+    <version>3.5.0</version>
+    <time>1512042042</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545093</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6528852690797dce9de5bf6d5bdbbba3</srcmd5>
+    <version>3.6.0</version>
+    <time>1513109814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554610</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>d8ef3cdd6aab8e686e4ab488ecaba12f</srcmd5>
+    <version>3.6.0</version>
+    <time>1522403967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591650</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a682dd5e9a8c87b262723be32e843531</srcmd5>
+    <version>3.7.0</version>
+    <time>1553610973</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to sanlock 3.7.0
+  - Allow setting max_sectors_kb
+  - Configurable sector size and align size
+  - Support SANLOCK_RUN_DIR and SANLOCK_PRIVILEGED environment
+    variables
+  - Revert upstream commit forcing use of python2
+    revert-5d535c0d-py2.patch
+  - Dropped patches:
+    sanlock-old_blkid.patch, suse-fix-link-errors.patch</comment>
+    <requestid>687477</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>35ad526ea56a053d76da16141eeb1e13</srcmd5>
+    <version>3.7.1</version>
+    <time>1555588499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694650</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7ce45d8c274572ece5b184bbc13b9996</srcmd5>
+    <version>3.8.0</version>
+    <time>1561049657</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710441</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>0345a2cb91568d31f0287c67d7cd6eeb</srcmd5>
+    <version>3.8.0</version>
+    <time>1562591185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711901</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>8d35f73f82386d44374f1bf69f30cced</srcmd5>
+    <version>3.8.0</version>
+    <time>1566900000</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724055</requestid>
+  </revision>
+</revisionlist>

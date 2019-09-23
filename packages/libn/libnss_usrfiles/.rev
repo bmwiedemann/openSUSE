@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eb7511aae1e23a91540b21de4f43dd63</srcmd5>
+    <version>2.25</version>
+    <time>1492516191</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>483858</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>19840b76aa648218a9efb602ba32e732</srcmd5>
+    <version>2.25</version>
+    <time>1515506112</time>
+    <user>dimstar_suse</user>
+    <comment>- The default nsswitch.conf has changed again back to the old
+  values [bsc#1074515]</comment>
+    <requestid>562559</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f9ec116cb4ed021c0d788afa4f0ecdfe</srcmd5>
+    <version>2.25</version>
+    <time>1521499166</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license instead of %doc [bsc#1082318]</comment>
+    <requestid>588517</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6aecd75d266126cac2d9eb45bae11876</srcmd5>
+    <version>2.27</version>
+    <time>1550221365</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.27
+  - Sync with glibc 2.27 source code
+  - Add support for alias, ethers, protocols, services and rpc
+- Add usrfiles to /etc/nsswitch.conf only on first installation,
+  remove it during de-installation.</comment>
+    <requestid>676055</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ca6693e1efde60de28cc9935221de2a1</srcmd5>
+    <version>2.27</version>
+    <time>1566464062</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove post %install section to make it generic useable</comment>
+    <requestid>725012</requestid>
+  </revision>
+</revisionlist>

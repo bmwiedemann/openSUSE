@@ -1,0 +1,332 @@
+-------------------------------------------------------------------
+Wed Aug 21 23:31:42 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 3.3.101
+  * Bugfixes and minor changes, see included ChangeLog file
+
+-------------------------------------------------------------------
+Sun Jan  8 14:41:58 UTC 2017 - dmitry_r@opensuse.org
+
+- Update to version 3.3.79
+  * Bugfixes and minor changes, see included ChangeLog file
+
+-------------------------------------------------------------------
+Mon Oct 31 20:36:11 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 3.3.78
+  * Bugfixes and minor changes, see included ChangeLog file
+
+-------------------------------------------------------------------
+Sun Aug 28 17:45:53 UTC 2016 - dmitry_r@opensuse.org
+
+- Uptdate to version 3.3.76
+  * Bugfixes and minor changes, see included ChangeLog file
+
+-------------------------------------------------------------------
+Mon Aug  8 18:18:00 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 3.3.75
+  * bugfix release, see included ChangeLog file for details
+
+-------------------------------------------------------------------
+Sun Jun 12 04:57:19 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 3.3.73
+  * bugfix release, see included ChangeLog file for details
+
+-------------------------------------------------------------------
+Tue Apr 19 08:21:07 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 3.3.72
+  * bugfix release, see included ChangeLog file for details
+
+-------------------------------------------------------------------
+Wed Feb 24 14:26:32 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 3.3.70
+  * bugfix release, see included ChangeLog file for details
+
+-------------------------------------------------------------------
+Fri Nov 20 13:17:04 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 3.3.68
+  * bugfix release, see included ChangeLog file for details
+
+-------------------------------------------------------------------
+Wed Sep 30 15:11:08 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 3.3.67
+  * bugfix release, see included ChangeLog file for details
+
+-------------------------------------------------------------------
+Tue Jul  7 16:37:08 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 3.3.66
+  * minor changes and bugfixes, see included ChangeLog file for details
+
+-------------------------------------------------------------------
+Wed Apr 15 21:19:39 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 3.3.65
+  * minor changes, see included ChangeLog file for details
+
+-------------------------------------------------------------------
+Wed Nov 26 13:38:45 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 3.3.64
+  * bugfix release, see included ChangeLog file for details
+
+-------------------------------------------------------------------
+Sat Nov  8 09:04:17 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 3.3.63
+  * bugfix release, see included ChangeLog file for details
+
+-------------------------------------------------------------------
+Sat Aug 30 07:13:52 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 3.3.62
+  * bugfix release, see included ChangeLog file for details
+- Move documentation and examples to separate packages
+- Delete gtkwave-rpmlintrc
+
+-------------------------------------------------------------------
+Thu Jul 17 23:28:43 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 3.3.61
+  * Parameterized number of named markers
+  * Updated LZ4 for version r118.
+
+-------------------------------------------------------------------
+Wed Jun 11 18:00:20 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 3.3.60
+  * Harden fsdb reader against xtags that move backward in time.
+
+-------------------------------------------------------------------
+Tue Apr 29 10:17:50 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 3.3.59
+  * Use Duff's Device for 8 byte -> 1 byte binary value compression 
+    algorithm in FST writer.
+  * Updated man page for gtkwave.1 indicating that XID is in hex.
+  * Allow decimal conversions on popcnt filtered vectors that are
+    greater than 64 bits (they will never overflow).
+
+-------------------------------------------------------------------
+Fri Mar 21 21:30:30 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 3.3.58
+  * Added /Data Format/Popcnt function for ones counting.
+  * Warnings fixes from new Clang 3.4 scan-build.
+  * Updated VCD ID generation in various helpers to use a faster,
+    equivalent algorithm.
+  * Change [1] at end of struct to C99 [] notation with appropriate
+    allocation size modification.
+
+-------------------------------------------------------------------
+Sat Feb 15 07:58:33 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 3.3.57
+  * Fix for Electric Fence crash in vlist_freeze().
+  * Updated LZ4 for version r113.
+
+-------------------------------------------------------------------
+Fri Feb 14 19:35:58 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 3.3.56
+  * Fix to regex search to remove duplicate signal names because of
+    faulty dumpers.
+  * Valgrind fix on deallocated context: old GLOBALS pointer could
+    be examined in set_GLOBALS_x().
+  * Minor cleanup in treesearch_gtk2.c: removed redundant show
+    widget invocation.
+  * Added missing compressBound() for compress2() dest mallocs.
+
+-------------------------------------------------------------------
+Fri Sep  6 21:39:37 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 3.3.48
+  * Fixed infinite loop hang on various helpers executables when
+    extra arguments are specified.
+  * Delete changed marker name if it exists when marker is removed.
+  * Added "Open Hierarchy" option that will expand the SST and
+    select the hierarchy for a given signal selected in the
+    Signals window.
+  * Added preliminary support for FsdbReader.
+  * FSDB fix for generate created hierarchies.
+  * FSDB fix for new debug info output style to be parsed.
+  * Added generate as scope type to VCD/FST/FSDB.
+  * Preliminary add for module port direction for FSDB and FST.
+  * Display signal direction column in SST if not all signals are 
+    declared as FST_VD_IMPLICIT.
+  * Fixed GTK warning when hide_sst is enabled and SST is opened
+    then closed.
+  * Added extraction of in/out/inout from FSDB into FST with
+    vcd2fst helper executable.  (It also converts FSDB to FST.)
+  * Added support for SV structures, unions, classes, packages,
+    programs, and interfaces.
+  * Updated signal parsing in FST/FSDB to handle NC declarations
+    for arrays in VCD.  (i.e., bitranges are missing)  Use vcd2fst
+    or the -o option to read NC VCD files with arrays properly.
+  * Preliminary support for SV datatypes of bit, logic, int,
+    shortint, longint, byte, enum, and shortreal in VCD and FST.
+  * Added sparse array datatype to FST (currently unused by gtkwave).
+  * Added support for attribute begin/end in FST.  (Currently
+    unused by gtkwave.)  This allows embedding of various data
+    inside the structure tree.
+  * Added autoraise on entry window on keystrokes or periodically
+    when it exists.
+  * Added ability to store $comment in FST files via the attribute
+    mechanism (FST_AT_MISC/FST_MT_COMMENT).
+  * removed obsolete gtkwave-3.3.47-no-return-in-nonvoid-function.patch
+-------------------------------------------------------------------
+Tue Jun 11 04:26:27 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 3.3.47
+  * Fix for crash in 64-bit mode with array accesses in deprecated
+    loader.
+  * Partial VCD loader fix for small files.
+  * Added preliminary do-nothing generate support in vermin.
+  * Fixed minmax_valid for partial VCD loader: affects scaling
+    on floating-point traces.
+- Fix gcc warning no-return-in-nonvoid-function
+  * gtkwave-3.3.47-no-return-in-nonvoid-function.patch
+
+
+-------------------------------------------------------------------
+Mon Apr 29 18:52:47 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 3.3.46
+  * Fixed as of yet undetected hdr_incomplete bug when running off
+    end of FST file.
+  * Fixed problem with is_gtkw_save_file getting wiped out on
+    reload.
+
+-------------------------------------------------------------------
+Fri Mar 22 20:22:11 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 3.3.45
+  * Fix for VCDNAM_ESCAPE character in treesearch window
+
+-------------------------------------------------------------------
+Thu Feb 28 09:35:10 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 3.3.44
+  * bugfix release, see included CHANGELOG.TXT for details 
+
+-------------------------------------------------------------------
+Tue Feb  5 07:35:34 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 3.3.43
+  * bugfix release, see included CHANGELOG.TXT for details
+
+-------------------------------------------------------------------
+Tue Jan  1 07:11:52 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 3.3.42
+  * bugfix release, see included CHANGELOG.TXT for details
+
+-------------------------------------------------------------------
+Wed Oct 31 18:33:11 UTC 2012 - dmitry_r@opensuse.org
+
+- Update to version 3.3.41
+  * Fix for gtkwave::addSignalsFromList when encountering
+    signals of form a.b.MyBus[7:0] and a.b.MyBus[15:8] such
+    that brackets aren't stripped.
+  * Added experimental highlight_wavewindow rc variable which
+    allows signals also to be highlighted in the wave window
+    using the value for color_grid.
+  * Added use_standard_trace_select rc variable and related
+    menu option.
+
+-------------------------------------------------------------------
+Tue Oct  2 19:55:14 UTC 2012 - dmitry_r@opensuse.org
+
+- Remove non OSI compliant files [bnc#783166]
+
+-------------------------------------------------------------------
+Sat Sep 29 19:11:54 UTC 2012 - dmitry_r@opensuse.org
+
+- Update to version 3.3.40
+
+-------------------------------------------------------------------
+Sat Nov 19 18:15:42 UTC 2011 - werner.ho@gmx.de
+
+- new version 3.3.28
+
+-------------------------------------------------------------------
+Sat Mar 06 11:41:04 CEST 2010 - werner.ho@gmx.de
+
+- new version 3.3.3
+- removed build patch
+- enabled xz compression for versions greater than 11.1
+
+-------------------------------------------------------------------
+Fri Apr 24 19:41:04 CEST 2009 - werner.ho@gmx.de
+
+- new version 3.1.10
+
+-------------------------------------------------------------------
+Tue Oct 07 19:47:50 CEST 2008 - bwalle@suse.de
+
+- Fix build on Factory.
+- Strip binaries.
+
+-------------------------------------------------------------------
+Tue Oct  7 00:00:00 CEST 2008 - 
+
+- new version 3.1.10
+
+-------------------------------------------------------------------
+Tue Oct  7 00:00:00 CEST 2008 - 
+
+- new version 3.1.7
+
+-------------------------------------------------------------------
+Tue Oct  7 00:00:00 CEST 2008 - 
+
+- new version 3.1.6
+
+-------------------------------------------------------------------
+Tue Oct  7 00:00:00 CEST 2008 - 
+
+- new version 3.1.2
+
+-------------------------------------------------------------------
+Tue Oct  7 00:00:00 CEST 2008 - 
+
+- new version 3.1.1
+
+-------------------------------------------------------------------
+Tue Oct  7 00:00:00 CEST 2008 - 
+
+- new version 3.0.30
+
+-------------------------------------------------------------------
+Tue Oct  7 00:00:00 CEST 2008 - 
+
+- new version 3.0.29 with better build scripts
+
+-------------------------------------------------------------------
+Tue Oct  7 00:00:00 CEST 2008 - 
+
+- new version 3.0.28
+
+-------------------------------------------------------------------
+Tue Oct  7 00:00:00 CEST 2008 - 
+
+- new version 3.0.23
+
+-------------------------------------------------------------------
+Tue Oct  7 00:00:00 CEST 2008 - 
+
+- updated to version 3.0.21
+- added dummyfiles src/lib{z,bz2}/Makefile.in
+
+-------------------------------------------------------------------
+Tue Oct  7 00:00:00 CEST 2008 - 
+
+- first specfile, mostly copied from ftp://download.fedora.redhat.com/pub/fedora/linux/extras/3/SRPMS/gtkwave-3.0.5-1.fc3.src.rpm
+
+-------------------------------------------------------------------

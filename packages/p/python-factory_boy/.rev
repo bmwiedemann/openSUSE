@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8f58008ddb95748e3e986c381f62f78f</srcmd5>
+    <version>1.0.4</version>
+    <time>1339587143</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>124463</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>8f58008ddb95748e3e986c381f62f78f</srcmd5>
+    <version>1.0.4</version>
+    <time>1340184052</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0a3cb9b7398ac2d9cbdbc0ad81becf35</srcmd5>
+    <version>1.2.0</version>
+    <time>1353847171</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.2.0:
+  + Upstream provides no changelog
+- Build HTML documentation</comment>
+    <requestid>142567</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0a3cb9b7398ac2d9cbdbc0ad81becf35</srcmd5>
+    <version>1.2.0</version>
+    <time>1359110029</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>0a3cb9b7398ac2d9cbdbc0ad81becf35</srcmd5>
+    <version>1.2.0</version>
+    <time>1379664175</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>0a3cb9b7398ac2d9cbdbc0ad81becf35</srcmd5>
+    <version>1.2.0</version>
+    <time>1409302868</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>78d3ba9216e5c83940cad1a0e3b30408</srcmd5>
+    <version>2.5.2</version>
+    <time>1430983357</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305661</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e1f1ac77aa779acfda0004caced6e1e9</srcmd5>
+    <version>2.9.2</version>
+    <time>1507391480</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532235</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>096ac1a3dd947cb04cb124705a616414</srcmd5>
+    <version>2.11.1</version>
+    <time>1540448036</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.11.1:
+  * Support for Django 2.1
+  * Support for python 3.7
+  * Various small bugfixes
+- Add patch python37.patch</comment>
+    <requestid>642838</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>da5c351864abcf51e7edf86ef72175b5</srcmd5>
+    <version>2.11.1</version>
+    <time>1555691871</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to support django 2.2:
+  * django-2.2.patch</comment>
+    <requestid>695101</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>38d3ee62d979d0dae68de7281fa4b916</srcmd5>
+    <version>2.12.0</version>
+    <time>1560457840</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708348</requestid>
+  </revision>
+</revisionlist>

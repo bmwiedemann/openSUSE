@@ -1,0 +1,466 @@
+-------------------------------------------------------------------
+Thu Jul 18 11:43:15 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 1.23.0:
+  * Update translations.
+  * deprecate g_type_class_add_private
+  * cpufreq: support kernel 5.1.0
+  * weather: align Gtk_Box to center
+  * multiload: filter-out non-local disks and user mounts<Paste>
+  * Other smaller changes.
+- remove patch:
+  * mate-applets-gtk-3.20.patch: we don't support gtk3.20 anymore
+- build require gtk >= 3.22, glib >= 2.50 and gio >= 2.50
+
+-------------------------------------------------------------------
+Sun May 12 18:13:56 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.22.1:
+  * Use g_list_free_full() convenience function.
+  * Fix use-after-free clang warning.
+  * help: Update copyright.
+  * help: Use XInclude instead of ENTITY for legal.xml.
+  * Assignment discards "const" qualifier from pointer target type.
+  * Make translatable documenters in about dialogue.
+  * Make translatable copyright info in about dialogue.
+  * Ensure proper translation of the about dialogue title.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * Remove unused png files.
+  * accessx-status: Fix another leak.
+  * Fix memory leak on accessx-status.
+  * sticky-notes: Fix a memory leak.
+  * timerapplet: Allow reseting timer when inactive.
+  * Avoid newly deprecated gtk_css_provider_get_default.
+  * Weather: Apply a widget name to the textview.
+  * weather: Add cssprovider for widget, not for screen.
+  * mateweather-dialog.c: Avoid deprecated
+    "gtk_widget_override_font".
+  * cpufreq: Stop a segfault with GTK+ 3.23.
+  * trash applet: Avoid deprecated "gtk_window_set_wmclass".
+  * cpufreq: Fix a -Wimplicit-function-declaration.
+  * trash: Fix a -Wincompatible-pointer-types warning.
+  * weather: Replace deprecated GtkAlignment.
+  * stickynotes: Replace deprecated gdk_error_trap_push/pop
+    functions.
+  * Replace deprecated gtk_menu_popup.
+  * multiload: Ignore priviledged mount points.
+  * Disable deprecation warnings for distcheck.
+  * Silent output when building.
+  * Update translations.
+- Rebase mate-applets-gtk-3.20.patch.
+
+-------------------------------------------------------------------
+Sat Dec 22 20:48:48 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.3:
+  * Use make functions for HELP_LINGUAS.
+  * Netspeed Manual: Clean up.
+  * Manual: Linux and UNIX systems -> Linux and other Unix-like
+    systems.
+  * Use orderedlist to describe the steps to add the applet to a
+    panel.
+  * Manual: Fix Add to Panel dialogue title.
+  * Eyes Applet: Fix window title and factory name.
+  * Manual: OK -> Add (Add to Panel dialogue).
+  * trashapplet manual: Open Trash guimenuitem.
+  * Fix name of Eyes applet.
+  * Refer to the fstab(5) man page for more information.
+  * Fix url of ulink to point to mate-user-guide.
+  * Fix spelling and grammar mistakes.
+  * legal.xml.
+  * Cpufreq: Force the frequency label to render if frequencies are
+    not found right away.
+  * Cpufreq: Refactor to remove more GTK+2 leftovers.
+  * Cpufreq: Ensure frequency label always shows up if freq
+    selected.
+  * Update translations.
+
+-------------------------------------------------------------------
+Thu Jun  5 11:44:33 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.2:
+  * accessx: Convert icons from pixbuf to cairo surfaces.
+  * netspeed: Use theme icons instead of embedded.
+  * battstat: Load theme icons instead of pixmaps.
+  * Convert applet icons from pixbuf to surfaces.
+  * multiload: Solving type mismatch in g_settings_set_value.
+  * multiload: Only text formatting to prepare for real change.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Apr 11 10:12:43 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1:
+  * Fix cpufreq applet spacing on HiDPI displays.
+  * multiload: Add a style class multiload-applet.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.0:
+  * Require GTK+ 3.22 and GLib 2.50.
+  * Bump libmateweather requirement to 1.19.1.
+  * drivemount: Fix a build warning.
+  * cpufreq-prefs: Don't use deprecated gtk_show_uri().
+  * Avoid deprecated gdk_screen_get_number().
+  * drivemount: If the list is empty, it will show a media-floppy
+    icon.
+  * Load graph scales automatically according to average load.
+  * cpufreq: Set frequency on all cores.
+  * Add GSettings for checkmark colour shown for mounted volumes.
+  * Mounted drives will show a little bit different icon.
+  * Avoid deprecated gdk_screen_get_monitor_(),
+    gdk_screen_width/height(), gdk_screen_get_width/height()
+    functions.
+  * Get rid of misleading_indentation and maybe-uninitialized
+    warnings during build.
+  * all applets: Don't use deprecated gtk_show_uri().
+  * Add a new digital theme.
+  * Rounding error in draw corrected.
+  * Recognise GSettings change dynamically.
+  * command: Bump the range of intervals.
+  * An implementation of WidthOfScreen and HeightOfScreen.
+  * build: When gtksourceview isn't found, show that package name.
+  * Cpufreq: Update tooltips with latest values.
+  * Cpufreq: Fix a build warning.
+  * Cpufreq: stop jumping numbers moving units label
+  * multiload: Scaling network graph using thresholds defined by user
+  * multiload: fix tabs/spaces mix in more places
+  * multiload: fix spacing in some places
+  * multiload: remove some unneeded spaces
+  * weather: Fix a possible crash when opening the Preferences
+    dialogue.
+  * Update translations.
+- Add mate-applets-gtk-3.20.patch: Restore GLib 2.48 and
+  GTK+ 3.20 support.
+
+-------------------------------------------------------------------
+Fri Sep 15 18:30:13 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.2:
+  * cpufreq: Fix calculating max width of frequency/unit/percent
+    labels.
+  * stickynotes: Fix text selection.
+  * cpufreq: Refresh applet size on style change (e.g. font size).
+  * cpufreq: Fix random invisibility of the applet.
+  * stickynotes: Create parent directory for
+    "stickynotes-applet.xml" if it does not exist.
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Apr  7 12:11:17 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.1:
+  * Fix a GError memory leak.
+  * Fix for crasher in Command applet.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * NEWS: Use consistent, project wide, markdown-like formatting to
+    make generating release announcements easier.
+  * Build: Require libmateweather and mate-panel >= 1.17.
+  * Move to GTK+3 (require GTK+ >= 3.14), drop the GTK+2 code and
+    --with-gtk build option.
+  * Weather: Fix temperature label placement.
+  * Weather: Show proper help section for each tab of the
+    preferences dialogue.
+  * Fix some GTK+ deprecations and runtime warnings.
+  * Some code cleanups.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * Build: Require polkit 0.97.
+  * Use GtkAboutDialog instead of MateAboutDialog.
+  * Netspeed: Use GtkColorButton/GtkColorChooser.
+  * Drop dependency on libmate-desktop.
+  * GTK+3: Fix various deprecations.
+  * Some code cleanups.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Aug 16 13:12:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.1:
+  * Accessx-status: Fix possible crash when updating layout.
+  * Cpufreq: Fix build with kernel 4.7.
+  * Cpufreq: Make build options --enable-frequency-selector
+    and --enable-suid actually work.
+  * Netspeed: Fix default route.
+  * Some more fixes and cleanups.
+  * Make distcheck use currently selected GTK+ version.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0:
+  * Update translations.
+  * Fix Changelog generation.
+
+-------------------------------------------------------------------
+Sun Apr  3 11:25:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.1:
+  * GTK+3: Fix cpufreq applet rendering.
+  * cpufreq: Capitalise CPU in schema description.
+  * Re-licence Command and Timer applets under GPLv2+.
+  * cpufreq  GTK+3: Hardcode fewer labels.
+  * weather: Fix some typos and remove some dead code.
+
+-------------------------------------------------------------------
+Thu Jan 28 21:23:41 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.0:
+  * GTK+3: Fix several deprecations.
+  * Drop null_applet which isn't even buildable these days.
+  * Drop MateConf migration scripts.
+  * Merge netspeed applet from mate-netspeed project (and
+    discontinue that project).
+  * GTK+3: fix setting fg/bg colors and font type in stickynotes
+    applet.
+  * Some more fixes and cleanups.
+- Obsolete mate-applet-netspeed package.
+
+-------------------------------------------------------------------
+Sun Nov 29 19:29:57 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.1:
+  * Drivemount: Fix invisible text with some Gtk3 themes.
+  * Update translations.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0:
+  * GTK+3: make cpufreq, charpick and drivemount support custom
+    panel themes.
+  * Some more GTK+3 fixes.
+
+-------------------------------------------------------------------
+Wed Oct 14 20:45:54 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11.0:
+  * Accessx-status, geyes: have applet background automatically
+    painted.
+  * Cpufreq: make cpupower the default library.
+  * Retrieve strings directly from gschema (requires intltool
+    0.50.1).
+  * Drop useless dependency on mate-icon-theme.
+  * GTK+3: fix missing icons with custom icon themes.
+  * Several small fixes and cleanups.
+
+-------------------------------------------------------------------
+Fri Jul 17 12:52:43 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.3:
+  * Several small help fixes.
+  * Rename sticky-notes help directory.
+
+-------------------------------------------------------------------
+Wed Jul 15 11:23:21 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.2:
+  * Charpick, geyes: restore missing button icons in dialogs.
+  * Actually install manpages on make install.
+  * Multiple help fixes in several applets.
+
+-------------------------------------------------------------------
+Fri Jun 26 10:41:37 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.1:
+  * Battstat applet: fix NetBSD APM support.
+  * Invest applet: display proper icon in About dialog.
+  * Multiple help fixes in several applets.
+  * GTK+3 fixes.
+
+-------------------------------------------------------------------
+Tue May  5 13:47:23 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.0 (changes since 1.9.1):
+  * [command] Add missing static void declaration.
+  * [stickynotes] Fix spacing and copy/paste errors.
+  * [stickynotes] Proper tooltip for 'x' button on the note's title.
+  * [stickynotes] Use modern color-related API in Gtk3 build.
+  * [stickynotes] Fix indentation a bit.
+  * [stickynotes] Use mate_panel_applet_set_background_widget.
+  * Update translations.
+- Update icon cache after installing icons.
+
+-------------------------------------------------------------------
+Thu Jan 22 10:14:48 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.9.1 (unstable)
+  * Bug fix release
+
+-------------------------------------------------------------------
+Sun Oct 26 13:43:19 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.0 (unstable)
+  + Use MateAboutDialog from libmate-desktop.
+- Fix version requirements
+
+-------------------------------------------------------------------
+Fri Oct  3 09:31:53 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.1
+  + Several man pages added and updated
+  + Update policykit vendor url
+  + Fix file encoding
+- Remove unneeded CFLAGS hack
+
+-------------------------------------------------------------------
+Sat Jul 12 12:47:03 UTC 2014 - p.drouand@gmail.com
+
+- Add BuildRequires:  pkgconfig(gtksourceview-2.0); needed to build
+  StickyNotes applet
+
+-------------------------------------------------------------------
+Sun Apr  6 15:04:30 UTC 2014 - p.drouand@gmail.com
+
+- Build with stickynotes support
+
+-------------------------------------------------------------------
+Wed Mar  5 12:36:44 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  + no changes since version 1.7.90
+
+-------------------------------------------------------------------
+Thu Feb 20 19:53:19 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.90 (unstable)
+  + move from mate-doc-utils to yelp-tools.
+  + replace libmatewnck with gnome's libwnck.
+  + replace mucharmap in with gucharmap.
+  + add Gtk+3 support.
+  + new command applet that displays output from a command.
+  + replace broken timer applet with new applet written in C.
+  + serveal enhancement to invest-applet.
+  + remove broken modem-light applet.
+- Replace libmatewnck requires with libwnck; follow upstream changes
+
+-------------------------------------------------------------------
+Wed Jan  1 15:10:22 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.6.2
+  + Fix summary for invest applet
+  + Require pygobject 3 now that it was ported to gi
+  + battstat applet: ready for upower-1.0
+  + Fix Sun GNOME Documentation Team references
+  + Upate yahoo finance http adress
+  + Correct invest Icon name
+  + Fix typo in AM_INIT_AUTOMAKE
+  + make distcheck now works
+  + Make tar.xz and not tar.gz
+  + Just use CLEANFILES instead of DISTCLEANFILES
+  + Correct name, server -> service
+  + Add applet_DATA to CLEANFILES
+  + Mixer applet moved so also remove MATE_MixerApplet.server.in
+  + Remove Invest_Applet.xml from po/POTFILES.in
+    It causes gettext to throw a fit and mateweather applet has a
+    simular file and it is also not in POTFILES.in
+  + Replace old gconf with gsettings schema
+  + Remove MAINTAINERS (does not exist) file from extra dist
+  + Fix EXTRA_DIST for applet gschemas
+    The following fails to include the needed schemas files:
+    $(gsettings_SCHEMAS_in_in) replacing it with
+    $(gsettings_SCHEMAS).in.in
+  + fix some make files for automake-1.13
+- Replace python-gtk-devel requirement with python-gobject;
+  the applets have been ported to gobject
+- Replace mate-doc-utils requirement with yelp-tools; upstream use it 
+  to build help documentation
+
+-------------------------------------------------------------------
+Fri Jul 26 12:15:12 UTC 2013 - p.drouand@gmail.com
+
+- Remove useless rpmlintrc file; rpmlint doesn't show any fatal warning
+
+-------------------------------------------------------------------
+Sat Apr 27 18:28:43 UTC 2013 - p.drouand@gmail.com
+
+- Add --disable-frequency-selector to configure options
+  We don't wan't frequency-selector in OpenSUSE
+
+-------------------------------------------------------------------
+Fri Apr 19 18:37:30 UTC 2013 - p.drouand@gmail.com
+
+- Fix a non-executable-script rpmlint warning
+
+-------------------------------------------------------------------
+Fri Apr 12 08:30:21 UTC 2013 - johann.luce@wanadoo.fr
+
+- Update in 1.6.1
+  + Bump minimum libmateweather version
+  + Update COPYING-DOCS
+  + Addded support for the show-notifications GSchema entry
+    only displays notifications when true and a toggle button in the
+    preferences which resembles the current state
+  + cpufreq: Fix GSettings init 
+
+-------------------------------------------------------------------
+Thu Apr 11 15:27:39 UTC 2013 - stefano-k@mate-desktop.org
+
+- Fix standard-dir-owned-by-package rpmlint warning
+
+-------------------------------------------------------------------
+Wed Apr 10 16:38:39 UTC 2013 - p.drouand@gmail.com
+
+- Fix a mistake with fdupes, %{buildroot} was forget and fdupes tried
+  to symlink local python sitepackage
+
+-------------------------------------------------------------------
+Wed Apr  3 17:52:04 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.0
+  + update translations
+
+-------------------------------------------------------------------
+Mon Mar 11 00:10:46 UTC 2013 - nmo.marques@gmail.com
+
+- Update to version 1.5.2
+  + replace INCLUDES with AM_CPPFLAGS in Makefiles
+  + rename configure.in to configure.ac
+  + use libnotify instead of libmatenotify
+  + rename cpufreq applet to avoid conflict with GNOME package
+  + AC_CONFIG_HEADERS to please automake 1.13
+  + enable build against mucharmap (wtf?)
+  + other fixes
+
+-------------------------------------------------------------------
+Thu Jan 24 21:28:06 UTC 2013 - nmo.marques@gmail.com
+
+- Update to version 1.5.1
+  + fix libmateweather units
+  + update accessx-status
+  + add gio-unix-2.0 to gio requirements and multiload in Makefile
+
+-------------------------------------------------------------------
+Sun Dec  9 17:22:19 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.0
+  + port to gsettings
+  + remove mixer applet and move to mate-media
+  + port invest applet to GObject Instrospection
+  + remove mini-commander applet
+  + many other fixes
+- Move pkgconfig(polkit-backends-1) to pkgconfig(polkit-gobject-1)
+  as polkit-gobject-1 was dropped by upstream (fix build Factory)
+
+-------------------------------------------------------------------
+Sun Sep  9 03:11:46 UTC 2012 - nmo.marques@gmail.com
+
+- initial package from version 1.4.0
+- add mate-applets-rpmlint; need review from SUSE Security Team
+

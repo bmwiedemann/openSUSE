@@ -1,0 +1,289 @@
+Index: ConfFile.cpp
+===================================================================
+--- ConfFile.cpp.orig	2012-06-29 16:22:33.918246972 +0200
++++ ConfFile.cpp	2012-06-29 16:23:55.566308197 +0200
+@@ -34,7 +34,7 @@
+  *  Version: $Id: ConfFile.cpp 2752 2006-01-19 14:40:17Z mst $
+  *
+  */
+-#include <stdio.h>
++#include <cstdio>
+ #include <cstring>
+ 
+ #include "ConfFile.h"
+Index: CrSpace.cpp
+===================================================================
+--- CrSpace.cpp.orig	2012-06-29 16:22:33.918246972 +0200
++++ CrSpace.cpp	2012-06-29 16:23:55.583307793 +0200
+@@ -34,10 +34,10 @@
+  *  Version: $Id: CrSpace.cpp 2752 2006-01-19 14:40:17Z mst $
+  *
+  */
+-#include <stdarg.h>
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <ctype.h>
++#include <cstdarg>
++#include <cstdio>
++#include <cstdlib>
++#include <cctype>
+ 
+ #include "CrSpace.h"
+ #include "Param.h"
+Index: Expr.cpp
+===================================================================
+--- Expr.cpp.orig	2012-06-29 16:22:33.918246972 +0200
++++ Expr.cpp	2012-06-29 16:23:55.583307793 +0200
+@@ -35,9 +35,9 @@
+  *
+  */
+ 
+-#include <stdio.h>
+-#include <string.h>
+-#include <ctype.h>
++#include <cstdio>
++#include <cstring>
++#include <cctype>
+ #include "Expr.h"
+ 
+ #ifdef __WIN__
+Index: Expr.h
+===================================================================
+--- Expr.h.orig	2012-06-29 16:22:33.918246972 +0200
++++ Expr.h	2012-06-29 16:23:55.583307793 +0200
+@@ -93,7 +93,7 @@
+ #ifndef EXPR_H
+ #define EXPR_H
+ 
+-#include <stdarg.h>
++#include <cstdarg>
+ #include <sys/types.h>
+ 
+ #include "compatibility.h"
+Index: Image.cpp
+===================================================================
+--- Image.cpp.orig	2012-06-29 16:22:33.918246972 +0200
++++ Image.cpp	2012-06-29 16:23:55.584307769 +0200
+@@ -34,11 +34,11 @@
+  *  Version: $Id: Image.cpp 2752 2006-01-19 14:40:17Z mst $
+  *
+  */
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <string.h>
+-#include <errno.h>
+-#include <time.h>
++#include <cstdio>
++#include <cstdlib>
++#include <cstring>
++#include <cerrno>
++#include <ctime>
+ #include <map>
+ 
+ #include "compatibility.h"
+Index: IniFile.cpp
+===================================================================
+--- IniFile.cpp.orig	2012-06-29 16:22:33.918246972 +0200
++++ IniFile.cpp	2012-06-29 16:23:55.584307769 +0200
+@@ -34,11 +34,11 @@
+  *  Version: $Id: IniFile.cpp 2752 2006-01-19 14:40:17Z mst $
+  *
+  */
+-#include <stdarg.h>
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <string.h>
+-#include <errno.h>
++#include <cstdarg>
++#include <cstdio>
++#include <cstdlib>
++#include <cstring>
++#include <cerrno>
+ 
+ #include <string>
+ #include <iostream>
+Index: MicExpr.cpp
+===================================================================
+--- MicExpr.cpp.orig	2012-06-29 16:22:33.918246972 +0200
++++ MicExpr.cpp	2012-06-29 16:23:55.584307769 +0200
+@@ -1,5 +1,5 @@
+ #include "MicExpr.h"
+-#include <stdio.h>
++#include <cstdio>
+ 
+ namespace std {}; using namespace std;
+ 
+Index: MultiFile.cpp
+===================================================================
+--- MultiFile.cpp.orig	2012-06-29 16:22:33.918246972 +0200
++++ MultiFile.cpp	2012-06-29 16:23:55.584307769 +0200
+@@ -37,11 +37,11 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+-#include <stdio.h>
+-#include <stdarg.h>
+-#include <stdlib.h>
+-#include <string.h>
+-#include <errno.h>
++#include <cstdio>
++#include <cstdarg>
++#include <cstdlib>
++#include <cstring>
++#include <cerrno>
+ #include <zlib.h>
+ 
+ #include <iostream>
+Index: Param.cpp
+===================================================================
+--- Param.cpp.orig	2012-06-29 16:22:33.918246972 +0200
++++ Param.cpp	2012-06-29 16:23:55.584307769 +0200
+@@ -35,7 +35,7 @@
+  *
+  */
+ #define __EXTENSIONS__
+-#include <stdio.h>
++#include <cstdio>
+ #include <sstream>
+ 
+ #include "Param.h"
+Index: Param.h
+===================================================================
+--- Param.h.orig	2012-06-29 16:22:33.918246972 +0200
++++ Param.h	2012-06-29 16:23:55.584307769 +0200
+@@ -38,7 +38,7 @@
+ #ifndef PARAM_H
+ #define PARAM_H
+ 
+-#include <stdlib.h>
++#include <cstdlib>
+ 
+ #include <string>
+ #include <map>
+Index: ParamList.cpp
+===================================================================
+--- ParamList.cpp.orig	2012-06-29 16:22:33.918246972 +0200
++++ ParamList.cpp	2012-06-29 16:23:55.585307745 +0200
+@@ -34,11 +34,11 @@
+  *  Version: $Id: ParamList.cpp 2752 2006-01-19 14:40:17Z mst $
+  *
+  */
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <string.h>
+-#include <errno.h>
+-#include <time.h>
++#include <cstdio>
++#include <cstdlib>
++#include <cstring>
++#include <cerrno>
++#include <ctime>
+ 
+ #include <iostream>
+ #include <fstream>
+Index: ParamList.h
+===================================================================
+--- ParamList.h.orig	2012-06-29 16:22:33.918246972 +0200
++++ ParamList.h	2012-06-29 16:23:55.585307745 +0200
+@@ -38,8 +38,8 @@
+ #ifndef PARAMDEF_H
+ #define PARAMDEF_H
+ 
+-#include <stdio.h>
+-#include <stdarg.h>
++#include <cstdio>
++#include <cstdarg>
+ #include <expat.h>
+ 
+ #include <map>
+Index: PerlClass.cpp
+===================================================================
+--- PerlClass.cpp.orig	2012-06-29 16:22:33.918246972 +0200
++++ PerlClass.cpp	2012-06-29 16:23:55.585307745 +0200
+@@ -34,8 +34,8 @@
+  *  Version: $Id: PerlClass.cpp 2752 2006-01-19 14:40:17Z mst $
+  *
+  */
+-#include <stdio.h>
+-#include <stdlib.h>
++#include <cstdio>
++#include <cstdlib>
+ 
+ #include <map>
+ #include <list>
+Index: Special.cpp
+===================================================================
+--- Special.cpp.orig	2012-06-29 16:23:12.928320684 +0200
++++ Special.cpp	2012-06-29 16:24:19.191747159 +0200
+@@ -34,7 +34,7 @@
+  *  Version: $Id: Special.cpp 2752 2006-01-19 14:40:17Z mst $
+  *
+  */
+-#include <stdio.h>
++#include <cstdio>
+ #include <cstring>
+ 
+ #include "Special.h"
+Index: TImage.cpp
+===================================================================
+--- TImage.cpp.orig	2012-06-29 16:22:33.918246972 +0200
++++ TImage.cpp	2012-06-29 16:23:55.586307721 +0200
+@@ -1,8 +1,8 @@
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <string.h>
+-#include <errno.h>
+-#include <time.h>
++#include <cstdio>
++#include <cstdlib>
++#include <cstring>
++#include <cerrno>
++#include <ctime>
+ //#include <sys/time.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+Index: mic.cpp
+===================================================================
+--- mic.cpp.orig	2012-06-29 16:22:33.918246972 +0200
++++ mic.cpp	2012-06-29 16:23:55.586307721 +0200
+@@ -35,9 +35,9 @@
+  *
+  */
+ 
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <string.h>
++#include <cstdio>
++#include <cstdlib>
++#include <cstring>
+ 
+ #include <list>
+ #include <map>
+Index: utils.cpp
+===================================================================
+--- utils.cpp.orig	2012-06-29 16:22:33.918246972 +0200
++++ utils.cpp	2012-06-29 16:23:55.587307697 +0200
+@@ -36,8 +36,8 @@
+  */
+ 
+ #define __EXTENSIONS__
+-#include <stdio.h>
+-#include <stdarg.h>
++#include <cstdio>
++#include <cstdarg>
+ 
+ #include "utils.h"
+ #include "compatibility.h"
+Index: utils.h
+===================================================================
+--- utils.h.orig	2012-06-29 16:22:33.918246972 +0200
++++ utils.h	2012-06-29 16:23:55.587307697 +0200
+@@ -38,7 +38,7 @@
+ #ifndef UTILS_H
+ #define UTILS_H
+ 
+-#include <stdarg.h>
++#include <cstdarg>
+ 
+ #include <list>
+ #include <vector>

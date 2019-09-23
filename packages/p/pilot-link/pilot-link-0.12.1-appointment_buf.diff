@@ -1,0 +1,19 @@
+--- src/pilot-install-datebook.c
++++ src/pilot-install-datebook.c
+@@ -129,6 +129,7 @@
+ 	cPtr 			= file_text;
+ 	fieldno 		= 0;
+ 	fields[fieldno++] 	= cPtr;
++	Appointment_buf = (struct pi_buffer_t *) malloc(sizeof(struct pi_buffer_t));
+ 
+ 	while (cPtr - file_text < filelen) {
+ 		if (*cPtr == '\t') {
+@@ -238,6 +239,8 @@
+ 		}
+ 	}
+ 
++	free(Appointment_buf);
++
+ 	/* Close the database */
+ 	dlp_CloseDB(sd, db);
+ 

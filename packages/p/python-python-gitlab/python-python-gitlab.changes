@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Tue Sep 10 11:26:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.11.0:
+  * add methods to retrieve an individual project environment
+  * group labels with subscriptable mixin
+  * add mr rebase method bc4280c
+  * get artifact by ref and job cda1174
+  * add support for board update 908d79f, closes #801
+  * add support for issue.related_merge_requests 90a3631, closes #794
+
+-------------------------------------------------------------------
+Mon Jul 22 13:15:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.9.0:
+  * implement artifacts deletion
+  * add endpoint to get the variables of a pipeline
+  * delete ProjectPipeline
+  * implement __eq__ and __hash__ methods
+  * Allow runpy invocation of CLI tool (python -m gitlab)
+  * add project releases api
+  * merged new release & registry apis
+
+-------------------------------------------------------------------
+Thu May  9 06:22:28 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.8.0
+  * fix(api): make reset_time_estimate() work again
+  * fix: handle empty 'Retry-After' header from GitLab
+  * fix: remove decode() on error_message string
+  * fix(api): avoid parameter conflicts with python and gitlab
+  * fix(api): Don't try to parse raw downloads
+  * feat: Added approve & unapprove method for Mergerequests
+  * fix all kwarg behaviour
+
+-------------------------------------------------------------------
+Mon Dec 31 10:36:44 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 1.7.0:
+  * [docs] Fix the owned/starred usage documentation
+  * [docs] Add a warning about http to https redirects
+  * Fix the https redirection test
+  * [docs] Add a note about GroupProject limited API
+  * Add missing comma in ProjectIssueManager _create_attrs
+  * More flexible docker image
+  * Add project protected tags management
+  * [cli] Print help and usage without config file
+  * Rename MASTER_ACCESS to MAINTAINER_ACCESS
+  * [docs] Add docs build information
+  * Use docker image with current sources
+  * [docs] Add PyYAML requirement notice
+  * Add Gitter badge to README
+  * [docs] Add an example of pipeline schedule vars listing
+  * [cli] Exit on config parse error, instead of crashing
+  * Add support for resource label events
+  * [docs] Fix the milestone filetring doc (iid -> iids)
+  * [docs] Fix typo in custom attributes example
+  * Improve error message handling in exceptions
+  * Add support for members all() method
+  * Add access control options to protected branch creation
+  * [docs] Don't use hardcoded values for ids
+  * [docs] Improve the snippets examples
+  * [cli] Output: handle bytes in API responses
+  * [cli] Fix the case where we have nothing to print
+  * Project import: fix the override_params parameter
+  * Support group and global MR listing
+  * Implement MR.pipelines()
+  * MR: add the squash attribute for create/update
+  * Added support for listing forks of a project
+  * [docs] Add/update notes about read-only objects
+  * Raise an exception on https redirects for PUT/POST
+  * [docs] Add a FAQ
+  * [cli] Fix the project-export download
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:03 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Aug  8 14:53:53 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Fri Aug  3 03:37:05 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

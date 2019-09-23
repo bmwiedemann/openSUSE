@@ -1,0 +1,5 @@
+<package name="alembic" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="graphics" package="alembic"/>
+</package>

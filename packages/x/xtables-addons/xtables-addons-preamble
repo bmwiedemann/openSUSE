@@ -1,0 +1,3 @@
+Requires: kernel-%1
+Enhances: kernel-%1
+Supplements: packageand(kernel-%1:xtables-addons)

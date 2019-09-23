@@ -1,0 +1,6 @@
+<package name="freetype" project="openSUSE:Factory">
+  <title>TrueType Font Engine</title>
+  <description>A library for working with TrueType Fonts. Documentation is in the
+/usr/share/doc/packages/freetype directory.</description>
+  <devel project="devel:libraries:c_c++" package="freetype"/>
+</package>

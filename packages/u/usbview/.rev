@@ -1,0 +1,112 @@
+<revisionlist>
+  <revision rev="1" vrev="847">
+    <srcmd5>740da27eb8030ceeace7317b9c7e1297</srcmd5>
+    <version>1.0</version>
+    <time>1168904420</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1043">
+    <srcmd5>740da27eb8030ceeace7317b9c7e1297</srcmd5>
+    <version>1.0</version>
+    <time>1168904420</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1044">
+    <srcmd5>e7ef670755e2b104e7012f2c30391683</srcmd5>
+    <version>1.0</version>
+    <time>1245277967</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1046">
+    <srcmd5>e7ef670755e2b104e7012f2c30391683</srcmd5>
+    <version>1.0</version>
+    <time>1245277967</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>46fad0e43c7f7459755286d41394a876</srcmd5>
+    <version>1.1</version>
+    <time>1262129492</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/usbview based on submit request 27767 from user vuntz
+</comment>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b954997eaf7c2864fdcd3bc7c31d463c</srcmd5>
+    <version>1.1</version>
+    <time>1268926438</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>b954997eaf7c2864fdcd3bc7c31d463c</srcmd5>
+    <version>1.1</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>b954997eaf7c2864fdcd3bc7c31d463c</srcmd5>
+    <version>1.1</version>
+    <time>1278678624</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>b954997eaf7c2864fdcd3bc7c31d463c</srcmd5>
+    <version>1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>b954997eaf7c2864fdcd3bc7c31d463c</srcmd5>
+    <version>1.1</version>
+    <time>1319182544</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>cabfe538699e80de088d854655e1a599</srcmd5>
+    <version>1.1</version>
+    <time>1323195056</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>cabfe538699e80de088d854655e1a599</srcmd5>
+    <version>1.1</version>
+    <time>1340184302</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>cabfe538699e80de088d854655e1a599</srcmd5>
+    <version>1.1</version>
+    <time>1359110531</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ca37b90b3a2826d8db4cf43a71627fad</srcmd5>
+    <version>2.0</version>
+    <time>1372510331</time>
+    <user>coolo</user>
+    <comment>- updated to 2.0
+  + gtk 3.0 port
+  + /proc/bus/usb/devices has moved to /sys/kernel/debug/usb/devices</comment>
+    <requestid>181402</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>ca37b90b3a2826d8db4cf43a71627fad</srcmd5>
+    <version>2.0</version>
+    <time>1379664898</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>ca37b90b3a2826d8db4cf43a71627fad</srcmd5>
+    <version>2.0</version>
+    <time>1409303586</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

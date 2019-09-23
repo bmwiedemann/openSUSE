@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Mon May 23 12:18:23 UTC 2016 - coolo@suse.com
+
+- updated to 1.102
+   see /usr/share/doc/packages/perl-Net-IDN-Nameprep/Changes
+
+-------------------------------------------------------------------
+Tue Apr 14 19:49:15 UTC 2015 - coolo@suse.com
+
+- updated to 1.101
+   see /usr/share/doc/packages/perl-Net-IDN-Nameprep/Changes
+
+  1.101 (2011-12-08)
+  
+  	- FIXES: #72615 faulty data in Build.PL causes a lack of
+  	  meta files, which breaks carton.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:34:06 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:44 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Mon Nov  1 14:30:43 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (1.100)
+

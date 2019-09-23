@@ -1,0 +1,5 @@
+<package name="VirtualGL" project="openSUSE:Factory">
+  <title>VirtualGL</title>
+  <description>VirtualGL is an open source toolkit that gives any Unix or Linux remote display software the ability to run OpenGL applications with full 3D hardware acceleration. </description>
+  <devel project="X11:Bumblebee" package="VirtualGL"/>
+</package>

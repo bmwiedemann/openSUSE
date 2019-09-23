@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bdb3063ac9ec1b0c12325b301a7d0b7d</srcmd5>
+    <version>3.1.4</version>
+    <time>1503925900</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.1.4</comment>
+    <requestid>517769</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cf711db21be2d14e59978e1e3c35aa84</srcmd5>
+    <version>3.1.5</version>
+    <time>1505920034</time>
+    <user>dimstar_suse</user>
+    <comment>firehol (3.1.5) - 2017-09-17
+  * FireHOL
+    - Fix some links in documentation
+  * FireQOS
+    - Insert a rawmark mask if none specified
+  * Update-Ipsets
+    - Support serving ipset files from local web server
+    - Lower pressure on github
+</comment>
+    <requestid>526763</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cdd8a65ef5ac3cbdcd211a79c724449f</srcmd5>
+    <version>3.1.6</version>
+    <time>1544095143</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop useless _service
+firehol (3.1.6) - 2018-08-13
+  * FireHOL
+    - Boot startup fix #260
+    - docker_bridge helper #114
+    - Allow newer iptables #264
+    - Log blocked/dropped packets in synproxy, mac, connlimit, fragments, ...
+    - Fix wait for netfilter ready when using namespaces
+    - Fast activation fixes #272
+    - Allow matching DSCP CS0; fixes #288
+    - Allow DROP_INVALID with any action (e.g. REJECT)
+    - Add option FIREHOL_ACCEPT_OUTPUT_UNMATCHED_TCP_RST
+  * FireQOS
+    - Fix status to works with newer iproute; fixes #317
+  * Link-Balancer
+    - linkdown: routes cannot be added or deleted whilst marked invalid #211
+  * Update-Ipsets
+    - Various fixes, including #266 #265
+    - List additions, updates and removals
+    - Minor enhancements
+</comment>
+    <requestid>655449</requestid>
+  </revision>
+</revisionlist>

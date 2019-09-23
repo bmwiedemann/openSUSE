@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2f8ea2176be93ed6194fbfe219efec6a</srcmd5>
+    <version>1.11.8</version>
+    <time>1358412281</time>
+    <user>coolo</user>
+    <comment>leafnode, was last in the distribution in 11.1</comment>
+    <requestid>148514</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2f8ea2176be93ed6194fbfe219efec6a</srcmd5>
+    <version>1.11.8</version>
+    <time>1359109223</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9769d2c1458d17a76e34ff191c6587d8</srcmd5>
+    <version>1.11.10</version>
+    <time>1371134915</time>
+    <user>coolo</user>
+    <comment>1.11.10 (forwarded request 178592 from AndreasStieger)</comment>
+    <requestid>178593</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>9769d2c1458d17a76e34ff191c6587d8</srcmd5>
+    <version>1.11.10</version>
+    <time>1379662865</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9769d2c1458d17a76e34ff191c6587d8</srcmd5>
+    <version>1.11.10</version>
+    <time>1409301467</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>1fd987b0afb7dbb0cea523c52d896c00</srcmd5>
+    <version>1.11.10</version>
+    <time>1427983424</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>293848</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>af67f4657b0c09b0d6f89f07e5a011bc</srcmd5>
+    <version>1.11.11</version>
+    <time>1440658651</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>326592</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>cc0f7a9cbb542539c0fc4f0ef62763a9</srcmd5>
+    <version>1.11.11</version>
+    <time>1497944379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>504220</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>4c15075d8ac79b6b16cf15121dcc1462</srcmd5>
+    <version>1.11.11</version>
+    <time>1568190348</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724801</requestid>
+  </revision>
+</revisionlist>

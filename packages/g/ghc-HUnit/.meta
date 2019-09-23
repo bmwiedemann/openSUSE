@@ -1,0 +1,5 @@
+<package name="ghc-HUnit" project="openSUSE:Factory">
+  <title>The HUnit package for GHC</title>
+  <description>HUnit is a unit testing framework for Haskell, inspired by the JUnit tool for Java, see: http://www.junit.org.</description>
+  <devel project="devel:languages:haskell" package="ghc-HUnit"/>
+</package>

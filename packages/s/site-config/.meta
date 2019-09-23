@@ -1,0 +1,6 @@
+<package name="site-config" project="openSUSE:Factory">
+  <title>Site Paths Configuration for autoconf Based configure Scripts</title>
+  <description>Site configuration for autoconf based configure scripts provides smart
+defaults for paths that are not specified.</description>
+  <devel project="devel:tools:building" package="site-config"/>
+</package>

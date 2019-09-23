@@ -1,0 +1,152 @@
+#! /bin/sh
+#
+# Author: Dirk Stoecker <frozenbubble@dstoecker.de>
+#
+# /etc/init.d/fb-server
+#
+#   and its symbolic link
+#
+# /sbin/rcfb-server
+#
+# System startup script for the Frozen Bubble server
+#
+### BEGIN INIT INFO
+# Provides: fb-server frozen-bubble-server
+# Required-Start: $network $syslog $remote_fs
+# Required-Stop: $network $syslog $remote_fs
+# Default-Start: 3 5
+# Default-Stop: 0 1 2 4 6
+# Short-Description: Frozen Bubble server
+# Description: Frozen Bubble multiple server autohandler.
+#	Just create one or more /etc/fb-server*.conf file(s) and handle
+#	them with this init script.
+### END INIT INFO
+
+FB_SERVER_BIN=/usr/bin/fb-server
+FB_USER=nobody
+
+test -x $FB_SERVER_BIN || { echo "$FB_SERVER_BIN not installed";
+	if [ x"$1" = x"stop" ]; then exit 0; 
+	else exit 5; fi; }
+
+# Shell functions sourced from /etc/rc.status:
+#      rc_check         check and set local and overall rc status
+#      rc_status        check and set local and overall rc status
+#      rc_status -v     ditto but be verbose in local rc status
+#      rc_status -v -r  ditto and clear the local rc status
+#      rc_failed        set local and overall rc status to failed
+#      rc_reset         clear local rc status (overall remains)
+#      rc_exit          exit appropriate to overall rc status
+. /etc/rc.status
+
+# First reset status of this service
+rc_reset
+
+# Return values acc. to LSB for all commands but status:
+# 0 - success
+# 1 - misc error
+# 2 - invalid or excess args
+# 3 - unimplemented feature (e.g. reload)
+# 4 - insufficient privilege
+# 5 - program not installed
+# 6 - program not configured
+# 7 - program is not running
+#
+# Note that starting an already running service, stopping
+# or restarting a not-running service as well as the restart
+# with force-reload (in case signalling is not supported) are
+# considered a success.
+
+CONFFILES=/etc/fb-server*.conf
+PIDDIR="/run/fb-server/"
+mkdir -p $PIDDIR
+
+case "$1" in
+    start)
+        for file in $CONFFILES; do
+            CMD=`ps -A -o %a --no-headers | grep -e "$FB_SERVER_BIN -c $file" | grep -v grep`
+            if [ -z "$CMD" ]; then
+              	echo -n "Starting Frozen bubble server ($file)"
+                su -l $FB_USER -s /bin/sh -c "$FB_SERVER_BIN -c $file >/dev/null" && echo $( ps -A -o "%p %a" --no-headers | grep -e "$FB_SERVER_BIN -c $file" | grep -v grep | awk '" " { print $1 }') > $PIDDIR/`basename $file .conf`.pid
+              	rc_status -v
+            fi
+        done
+        ;;
+    stop)
+        for file in $CONFFILES; do
+            CMD=`ps -A -o %p%a --no-headers | grep -e "$FB_SERVER_BIN -c $file" | grep -v grep`
+            PID=`echo $CMD | perl -pe 's/^ *(\d+) .*$/$1/'`
+            if [ "$PID" ]; then
+              echo "Shutting down Frozen bubble server ($file) "
+              test -f $PIDDIR/`basename $file .conf`.pid && rm $PIDDIR/`basename $file .conf`.pid
+              kill -TERM $PID
+              rc_status -v
+            fi
+        done
+        ;;
+    reload) # no reloading possible, do a restart
+        ## Stop the service and regardless of whether it was
+        ## running or not, start it again.
+        $0 stop
+        sleep 2
+        $0 start
+        # Remember status and be quiet
+        rc_status
+        ;;
+	try-restart|condrestart)
+	    ## Do a restart only if the service was active before.
+	    ## Note: try-restart is now part of LSB (as of 1.9).
+	    ## RH has a similar command named condrestart.
+	    if test "$1" = "condrestart"; then
+	        echo "${attn} Use try-restart ${done}(LSB)${attn} rather than condrestart ${warn}(RH)${norm}"
+		fi
+		$0 status
+		if test $? = 0; then
+		    $0 restart
+	    else
+            rc_reset    # Not running is not a failure.
+	    fi
+       # Remember status and be quiet
+       rc_status
+       ;;
+    restart)
+        ## Stop the service and regardless of whether it was
+        ## running or not, start it again.
+        $0 stop
+        sleep 2
+        $0 start
+        # Remember status and be quiet
+        rc_status
+        ;;
+	status)
+		echo "Checking for Frozen Bubble servers: "
+		RUNNING=""
+		for file in $CONFFILES; do
+			CMD=`ps -A -o %p%a --no-headers | grep -e "$FB_SERVER_BIN -c $file" | grep -v grep`
+			PID=`echo $CMD | perl -pe 's/^ *(\d+) .*$/$1/'`
+				if [ "$PID" ]; then
+                                   echo "+ Frozen bubble server ($file) running "
+				   RUNNING="1"
+                                else 
+                                   echo "+ Frozen bubble server ($file) unused "
+				fi
+		done
+                if [ ! $RUNNING ]; then
+                    rc_failed 3
+                else
+                    rc_failed 0
+                fi
+		rc_status -v
+	;;
+	probe)
+		for file in $CONFFILES; do
+			test $file -nt $PIDDIR/`basename $file .conf`.pid && echo "$file reload"
+		done
+	;;
+    *)
+        echo "Usage: $0 {start|stop|status|try-restart|restart|reload|probe}"
+        exit 1
+        ;;
+esac
+rc_exit
+

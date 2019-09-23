@@ -1,0 +1,291 @@
+<revisionlist>
+  <revision rev="1" vrev="37">
+    <srcmd5>c194cd54439cd92d611a5e968307baf2</srcmd5>
+    <version>2.4.2</version>
+    <time>1168903050</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="48">
+    <srcmd5>7bc43964c00e12e4d908c35f342e428b</srcmd5>
+    <version>2.4.2</version>
+    <time>1171483478</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="54">
+    <srcmd5>4ae261b798bbd1670ab030a348bc8ce3</srcmd5>
+    <version>2.4.2</version>
+    <time>1175185111</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="56">
+    <srcmd5>44a2babe722fe74eac8a050693fbb400</srcmd5>
+    <version>2.4.2</version>
+    <time>1175628611</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="70">
+    <srcmd5>30e433f91ec24e10dfbf4207481f2284</srcmd5>
+    <version>2.4.2</version>
+    <time>1180546412</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="166">
+    <srcmd5>b99dc9daeee4f4d762dd5e71361fe5fa</srcmd5>
+    <version>2.4.2</version>
+    <time>1214252082</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="170">
+    <srcmd5>00d7e2b4baf378af39f0a3d984c52c4d</srcmd5>
+    <version>2.4.2</version>
+    <time>1215808233</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="201">
+    <srcmd5>f4b742ca37d571c2a466044bef1dd70c</srcmd5>
+    <version>2.4.2</version>
+    <time>1245364190</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="202">
+    <srcmd5>6a72ef9c12e1954b78e969d8f3872f5d</srcmd5>
+    <version>2.4.2</version>
+    <time>1251746887</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/inn based on submit request 19264 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="203">
+    <srcmd5>55dfd10748a727ad76dbd518acc9576c</srcmd5>
+    <version>2.4.2</version>
+    <time>1252338412</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/inn based on submit request 20025 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="11" vrev="205">
+    <srcmd5>55dfd10748a727ad76dbd518acc9576c</srcmd5>
+    <version>2.4.2</version>
+    <time>1252338412</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/inn based on submit request 20025 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="12" vrev="206">
+    <srcmd5>542257883bd7ec95ccaf1d668ff286c6</srcmd5>
+    <version>2.4.2</version>
+    <time>1268924020</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c0073212ef0319792ae5ba7d9529827f</srcmd5>
+    <version>2.5.2</version>
+    <time>1270667616</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/inn based on submit request 37233 from user mlschroe
+</comment>
+    <requestid>37233</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>ff6fa14fc8c41a03663c0e15ab33e661</srcmd5>
+    <version>2.5.2</version>
+    <time>1271189183</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/inn based on submit request 37395 from user mlschroe
+</comment>
+    <requestid>37395</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>8a24bb3f36d0cfc418829b04cfca6ae2</srcmd5>
+    <version>2.5.2</version>
+    <time>1274295146</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/inn based on submit request 40383 from user mlschroe
+</comment>
+    <requestid>40383</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>8a24bb3f36d0cfc418829b04cfca6ae2</srcmd5>
+    <version>2.5.2</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>8a24bb3f36d0cfc418829b04cfca6ae2</srcmd5>
+    <version>2.5.2</version>
+    <time>1278678583</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>8a24bb3f36d0cfc418829b04cfca6ae2</srcmd5>
+    <version>2.5.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="10">
+    <srcmd5>8a24bb3f36d0cfc418829b04cfca6ae2</srcmd5>
+    <version>2.5.2</version>
+    <time>1319181989</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>2c456d258c00c78a47084595d8e321cb</srcmd5>
+    <version>2.5.2</version>
+    <time>1334692712</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113802</requestid>
+  </revision>
+  <revision rev="21" vrev="13">
+    <srcmd5>2c456d258c00c78a47084595d8e321cb</srcmd5>
+    <version>2.5.2</version>
+    <time>1340183461</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="14">
+    <srcmd5>6eda3caebbde554d72f064ccb8679a7d</srcmd5>
+    <version>2.5.2</version>
+    <time>1340718771</time>
+    <user>coolo</user>
+    <comment>Use set_permissions, handle /var/run as tmpfs. (forwarded request 125417 from a_jaeger)</comment>
+    <requestid>125727</requestid>
+  </revision>
+  <revision rev="23" vrev="15">
+    <srcmd5>46ce3381458c55e711ed31562995abc1</srcmd5>
+    <version>2.5.2</version>
+    <time>1347618412</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134120</requestid>
+  </revision>
+  <revision rev="24" vrev="16">
+    <srcmd5>7caf432d545d296cef5ea64d89b88a45</srcmd5>
+    <version>2.5.2</version>
+    <time>1348412738</time>
+    <user>coolo</user>
+    <comment>- fix ownership of directories so subpackages can be installed with
+  rpm 4.10 (forwarded request 134687 from coolo)</comment>
+    <requestid>134929</requestid>
+  </revision>
+  <revision rev="25" vrev="17">
+    <srcmd5>cdae6a7810f61bd9d267b922faeab47a</srcmd5>
+    <version>2.5.2</version>
+    <time>1358431811</time>
+    <user>coolo</user>
+    <comment>Verify GPG signature: Perform build-time offline GPG verification.
+Please verify that included keyring matches your needs.
+For manipulation with the offline keyring, please use gpg-offline tool from openSUSE:Factory, devel-tools-building or Base:System.
+See the man page and/or /usr/share/doc/packages/gpg-offline/PACKAGING.HOWTO.
+
+If you need to build your package for older products and don't want to mess spec file with ifs, please follow PACKAGING.HOWTO:
+you can link or aggregate gpg-offline from
+devel:tools:building or use following trick with &quot;osc meta prjconf&quot;:
+
+--- Cut here ----
+%if 0%{?suse_version} &lt;= 1220
+Substitute: gpg-offline
+%endif
+
+Macros:
+%gpg_verify(dnf) \
+%if 0%{?suse_version} &gt; 1220\
+echo &quot;WARNING: Using %%gpg_verify macro from prjconf, not from gpg-offline package.&quot;\
+gpg-offline --directory=&quot;%{-d:%{-d*}}%{!-d:%{_sourcedir}}&quot; --package=&quot;%{-n:%{-n*}}%{!-n:%{name}}&quot;&quot;%{-f: %{-f*}}&quot; --verify %{**}\
+%else\
+echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping %{**} GPG signature verification!&quot;\
+%endif\
+%nil
+-----------------
+ (forwarded request 143887 from sbrabec)</comment>
+    <requestid>148779</requestid>
+  </revision>
+  <revision rev="26" vrev="19">
+    <srcmd5>cdae6a7810f61bd9d267b922faeab47a</srcmd5>
+    <version>2.5.2</version>
+    <time>1359109080</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="20">
+    <srcmd5>2e67173ca56ec1392fc5bf2fe7773820</srcmd5>
+    <version>2.5.2</version>
+    <time>1378724774</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>197979</requestid>
+  </revision>
+  <revision rev="28" vrev="22">
+    <srcmd5>2e67173ca56ec1392fc5bf2fe7773820</srcmd5>
+    <version>2.5.2</version>
+    <time>1379662669</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>f32153ccd7b66ba07402f7fa66ac79cb</srcmd5>
+    <version>2.5.4</version>
+    <time>1405573099</time>
+    <user>coolo</user>
+    <comment>- update to inn-2.5.4</comment>
+    <requestid>241217</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>f32153ccd7b66ba07402f7fa66ac79cb</srcmd5>
+    <version>2.5.4</version>
+    <time>1409301230</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>3234260d8a2804ee0dca4edf1fb1fe24</srcmd5>
+    <version>2.5.4</version>
+    <time>1419159886</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>265798</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>3185ca735e8b53a875007c5e8a574cce</srcmd5>
+    <version>2.5.4</version>
+    <time>1424430089</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286692</requestid>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>9401024d27c2e3cf04be95f53b10a85e</srcmd5>
+    <version>2.5.4</version>
+    <time>1477904140</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix tmpfiles.d usage to give it at least a chance to work (forwarded request 437413 from kukuk)</comment>
+    <requestid>437416</requestid>
+  </revision>
+  <revision rev="34" vrev="7">
+    <srcmd5>2fab8802ade23660081883b50a215c65</srcmd5>
+    <version>2.5.4</version>
+    <time>1491566139</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483142</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>4af71d664b18ec5240b80a6b5b1b5ee7</srcmd5>
+    <version>2.6.2</version>
+    <time>1546946641</time>
+    <user>dimstar_suse</user>
+    <comment>-&gt;</comment>
+    <requestid>658883</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>87732330e3ea2d08ed041e3b050f9c7d</srcmd5>
+    <version>2.6.2</version>
+    <time>1568379534</time>
+    <user>lnussel_factory</user>
+    <comment>- Use -ffat-lto-objects when building static libraries. (forwarded request 729850 from cgiboudeaux)</comment>
+    <requestid>730143</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>62d58c08c824c02bb1c0012c2fbffb3b</srcmd5>
+    <version>0.3.2</version>
+    <time>1436112152</time>
+    <user>coolo</user>
+    <comment>Please accept this new RPM.</comment>
+    <requestid>314881</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>335e9bafb649aada540094daf9722bf5</srcmd5>
+    <version>0.3.2</version>
+    <time>1439274414</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321590</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>25df775ba5efb6d86fb9b9394d4a5dfc</srcmd5>
+    <version>0.3.2</version>
+    <time>1450857017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies - boo#959814</comment>
+    <requestid>350167</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0937d0253e84d3264c9e95605956aabf</srcmd5>
+    <version>0.3.2</version>
+    <time>1455701193</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to python3</comment>
+    <requestid>359585</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ab40dfe9029465bbe28c8314be946a77</srcmd5>
+    <version>1.0.0</version>
+    <time>1480019119</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>441683</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c16537fb98a2f39e5c3714356d610a50</srcmd5>
+    <version>1.0.2</version>
+    <time>1490965762</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.0.2:
+  * No upstream changelog available</comment>
+    <requestid>482594</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0f1d8c4b6c2490ead791bad5b4f089ba</srcmd5>
+    <version>1.0.6</version>
+    <time>1507391462</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.6:
+  * Ensure the UTC ISO8601 date includes a Z offset
+  * Fix calculation of uploads to perform per size
+  * Pre-allocate upload data, but allow to disable pre-allocation,
+    for memory limited devices
+- Changes for version 1.0.5:
+  * Fixes for UTF-8 encoding of CSV output</comment>
+    <requestid>532150</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1365b28fb4fe457d223f0c4ebadb0925</srcmd5>
+    <version>1.0.7</version>
+    <time>1511817476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.7:
+  * Support using --csv-delimiter with --csv-header</comment>
+    <requestid>545762</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0d2a10330ffae7d3624b30bd8d2e8e65</srcmd5>
+    <version>2.0.2</version>
+    <time>1551883920</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682121</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5c100e5b986b70731c068f6f4adc270f</srcmd5>
+    <version>2.1.1</version>
+    <time>1553809744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689271</requestid>
+  </revision>
+</revisionlist>

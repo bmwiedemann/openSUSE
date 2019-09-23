@@ -1,0 +1,365 @@
+-------------------------------------------------------------------
+Sun Jun  2 17:57:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Sun May 19 14:35:37 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.2.2:
+  * Battery Features, tlp-stat -b:
+    - Show data for batteries named other than BAT0/BAT1
+      (non-ThinkPads).
+    - ThinkPad X1C6 discharge malfunction (gh#linrunner/TLP#395).
+    - Separate checks for charge thresholds and recalibration.
+    - Intelligible recommendation for tp-smapi on
+      ThinkPad X220/T420 et al.
+    - Explain "Battery Features: Charge Thresholds and Recalibrate".
+  * Discs:
+    - Fix type determination.
+  * Operation Mode AC/BAT:
+    - MacBookPro 5.3: Workaround for false AC offline status.
+  * Processor, tlp-stat -p:
+    - Fix read of /sys/devices/system/cpu/cpufreq/boost.
+    - x86_energy_perf_policy: Detect unsupported CPUs in newer
+      versions.
+  * Radio Devices:
+    - Make RESTORE_DEVICE_STATE_ON_STARTUP=1 persistent again
+      (gh#linrunner/TLP#404).
+
+-------------------------------------------------------------------
+Wed Mar 18 18:10:25 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.2.1:
+  * Fix unknown command "chargeonce" (gh#linrunner/TLP#391).
+- Change from %systemd_requires to %systemd_ordering
+
+-------------------------------------------------------------------
+Wed Mar 13 18:14:03 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.2:
+  * Disc drives:
+    - Support for NVMe devices.
+    - Support for removable drives e.g. USB / IEE1394 devices.
+    - Improve support for multi queue I/O schedulers (blk-mq).
+  * General:
+    - tlp bat/ac: Keep manual power settings until tlp start
+      (gh#linrunner/TLP#349).
+    - Remove all pm-utils scripts (gh#linrunner/TLP#363).
+    - tlp/tlp-stat: Temporarily overwrite configuration for one
+      programme invocation only: -- PARAM=value ...
+    - Document intrinsic defaults in config file
+      (gh#linrunner/TLP#353).
+    - Code verified with ShellCheck.
+  * Graphics:
+    - INTEL_GPU_MIN_FREQ_ON_AC/BAT, INTEL_GPU_MAX_FREQ_ON_AC/BAT,
+      INTEL_GPU_BOOST_FREQ_ON_AC/BAT: Intel GPU frequency limits.
+  * Radio Devices:
+    - tlp-rdw: New command to disable RDW actions temporarily
+      (until reboot).
+    - Support ThinkPad Pro Dock CS18 (17ef:306f).
+    - USB_BLACKLIST_WWAN: Disable by default.
+    - Retire compatibility with Network Manager 0.9.8.
+  * PCI(e) devices:
+    - RUNTIME_PM_BLACKLIST: Add mei_me, pcieport.
+  * ThinkPad Battery:
+    - New native kernel API for battery features "natacpi",
+      requires kernel 4.17; enabled by default
+      (gh#linrunner/TLP#321).
+    - NATACPI_ENABLE, TPACPI_ENABLE, TPSMAPI_ENABLE: Make all
+      battery feature drivers switchable.
+    - tlp discharge/recalibrate: Exclude multiple simultaneous
+      invocations.
+    - Support ThinkPad 25, *80 (Coffee Lake) and all newer models.
+  * tlp-stat:
+    - Check systemd-rfkill.socket masked status.
+    - Drives: Show all configured devices (consider default).
+    - Intel GPU: Show frequency limits and available frequencies.
+    - Rename "Suggestions" section to "Recommendations".
+    - Remove invocation via "tlp stat".
+  * USB:
+    - Exclude scanners managed by libsane from autosuspend.
+    - Remove long deprecated level/autosuspend attributes.
+  * Bugfixes
+    - Do not try to start NetworkManager (systemd)
+      (gh#linrunner/TLP#193).
+    - get_disk_dev logic is not compatible with NVMe devices
+      (gh#linrunner/TLP#319).
+    - AC mode not detected with USB charger (gh#linrunner/TLP#320).
+    - Process "/usr/bin/tlp auto" failed with exit code 4
+      (gh#linrunner/TLP#331).
+    - zsh parse error in tlp diskid (gh#linrunner/TLP#332).
+    - Circumvent broken AC/charger detection (gh#linrunner/TLP#343,
+      gh#linrunner/TLP#362, gh#linrunner/TLP#375).
+    - Keep ASPM default to enable deeper C-states on AC
+      (gh#linrunner/TLP#344).
+    - Fix writing sequence for start/stop charge thresholds
+      (gh#linrunner/TLP#356).
+    - Recognise Think*p*ad P50 (gh#linrunner/TLP#368).
+    - tlp-stat: filter HWP lines from x86_energy_perf_policy output
+
+-------------------------------------------------------------------
+Wed Jan 24 20:34:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.1:
+  * Disc drives:
+    - SATA_LINKPWR_ON_AC/BAT: Try multiple values to support the
+      new recommended ALPM policy "med_power_with_dipm" in
+      Linux 4.15.
+  * Processor:
+    - ENERGY_PERF_POLICY_ON_AC/BAT: Support changed values:
+      performance, balance-performance, default, balance-power,
+      power (gh#linrunner/TLP#297).
+  * ThinkPad Battery:
+    - Support ThinkPad 13 1st & 2nd Gen, E130;
+      new tpacpi-bat version.
+    - tlp-stat --psup: Show ASLbase for tpacpi-bat (in device/path).
+    - tlp discharge: Show state of the battery and force_discharge.
+  * USB:
+    - USB_BLACKLIST_PRINTER: Exclude printers from autosuspend.
+  * Bugfixes:
+    - Intercept the link_power_management_policy write error
+      (gh#linrunner/TLP#271).
+    - Fix AC power detection for MacBook Pro 2017
+      (gh#linrunner/TLP#283).
+    - Move runtime data from /var/run/tlp to /run/tlp
+      (gh#linrunner/TLP#298).
+    - Fix DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE="bluetooth" not
+      working as expected (gh#linrunner/TLP#301).
+    - Do not detect wireless input devices batteries as power
+      supply (gh#linrunner/TLP#313).
+- Remove tlp-1.0-run-mount.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Nov 26 12:10:33 UTC 2017 - sor.alexei@meowr.ru
+
+- Add tlp-1.0-run-mount.patch: Move runtime data from /var/run/tlp
+  to /run/tlp (boo#1058983)
+
+-------------------------------------------------------------------
+Fri May 26 10:10:52 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0:
+  * General:
+    - TLP_PERSISTENT_DEFAULT: Use TLP_DEFAULT_MODE regardless of
+      the actual power source.
+  * Device Bays:
+    - BAY_POWEROFF_ON_AC: Power off optical drive not only on bat
+      (gh#linrunner/TLP#243)
+  * Graphics:
+    - RUNTIME_PM_DRIVER_BLACKLIST: When unconfigured default to
+      "amdgpu nouveau nvidia radeon"; driver default control=auto
+      allows PRIME/Bumblebee to turn the dGPU off and prevents
+      accidential power-on during boot as well.
+    - Exclude Nvidia dGPU from runtime power management even when
+      no driver is associated (improve compatibility with
+      Bumblebee).
+  * PCI(e) devices
+    - RUNTIME_PM_ALL removed (default to RUNTIME_PM_ALL=1
+      internally).
+  * Processor:
+    - CPU_HWP_ON_AC/BAT: HWP energy performance hints; needs
+      Linux 4.10 and Intel Skylake CPU or newer, intel_pstate only.
+  * ThinkPad Battery:
+    - RESTORE_THRESHOLDS_ON_BAT: Restore charge thresholds on
+      battery.
+    - Detect ThinkPad *70 models.
+    - Detect ThinkPad 13 (1st and 2nd Gen) as unsupported
+      (gh#linrunner/TLP#227).
+    - Change texts "ThinkPad (extended) battery functions" to
+      "ThinkPad battery features".
+    - tlp-stat:
+      + Show "Charge total %" when more than one battery is
+        present.
+      + Show battery temperature (tp-smapi only).
+      + Show "unsupported" instead of "not installed" for tp-smapi
+        incapable hardware.
+  * USB:
+      - USB_BLACKLIST_BTUSB: exclude bluetooth devices from
+        autosuspend (gh#linrunner/TLP#239).
+      - USB_BLACKLIST_PHONE: exclude phone devices from
+        autosuspend (gh#linrunner/TLP#188).
+  * tlp-stat:
+      - -g|--graphics: Show graphics card data only.
+      - i915: Explain enable_psr modes.
+      - --psup: show power supply diagnostic.
+      - SMART attribute G-Sense_Error_Rate.
+      - -v: additional battery voltages.
+      - Workqueue power efficient status.
+      - Show Intel graphics parameters for Ubuntu's i915_bpo module.
+  * Bugfixes:
+    - init start: Apply powersave regardless of previous state
+      (gh#linrunner/TLP#237).
+    - tlp-stat: Intercept non-existing or invalid charge values
+      (gh#linrunner/TLP#256).
+
+-------------------------------------------------------------------
+Thu Aug 18 14:46:12 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.9:
+  * General:
+    - Block concurrent invocation of TLP.
+  * Disc drives:
+    - AHCI runtime power management for host controllers and
+      attached disc drives.
+    - SATA_LINKPWR_BLACKLIST: Exclude SATA host devices from power
+      management.
+  * Radio Devices:
+    - Finally remove deprecated DEVICES_TO_ENABLE_ON_RADIOSW code
+      (works with Ubuntu 12.04/Linux 3.2 only).
+    - Change WIFI_PWR_ON_AC/BAT default config values to off/on for
+      better usability (1/5 is still supported for backwards
+      compatibility).
+  * Radio Device Wizard (tlp-rdw):
+    - Add another ThinkPad OneLink Pro Dock USB LAN (17ef:304).
+  * (ThinkPad) Battery:
+    - tlp-stat:
+      + Distinguish incompatible hardware from load errors
+        (gh#linrunner/TLP#160).
+      + Display battery charge and capacity values in %.
+      + More selective suggestions for tp-smapi/acpi-call kernel
+        modules.
+  * tlp-stat:
+    - Intel graphics: include i915 parameters enable_dc, enable_psr,
+      modeset.
+    - --pev: monitor power supply udev events
+      (gh#linrunner/TLP#172).
+    - Processor:
+      + Display available scaling governors.
+      + intel_pstate: display turbo_pct, num_pstates.
+    - Storage Devices:
+      - Recognise blk-mq I/O scheduler.
+      - SMART attributes Power_Cycle_Count, Unused_Rsvd_Blk_Cnt_Tot,
+        NAND_Writes_1GiB.
+    - Suggestions: Add *60 models for tp-smapi/acpi-call.
+    - System Info: Display boot mode UEFI / BIOS.
+    - TLP Status:
+      + Display time and mode of tlp's last invocation.
+      + Issue warning when systemd-rfkill[@].service is not masked.
+    - Wireless: Display type in interface list.
+  * Bugfixes
+    - Handle kernel with built-in acpi_call module properly
+      (gh#linrunner/TLP#163).
+    - Battery discharge does not terminate on ThinkPad E-series
+      (gh#linrunner/TLP#170).
+    - TLP does not notice power source change (gh#linrunner/TLP#172).
+    - Do not touch wifi on shutdown when unconfigured
+      (gh#linrunner/TLP#175).
+    - Optimise rdw locking heuristics (gh#linrunner/TLP#176).
+    - tlp-stat: Fix ata error count (filter "DevExch" caused by
+      bay inserts).
+    - tp-smapi: Do not load on unsupported ThinkPads.
+    - Fix bash completion.
+- Remove tlp-0.8-correct-udev-rules-path.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jan  4 12:08:37 UTC 2016 - sor.alexei@meowr.ru
+
+- Add tlp-0.8-correct-udev-rules-path.patch: set correct udev
+  rules path (boo#960498).
+
+-------------------------------------------------------------------
+Thu Aug  6 18:03:12 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.8:
+  * General:
+      - TLP_DEFAULT_MODE: change default operation mode to AC when
+        no power supply can be detected (concerns some desktop and
+        embedded hardware only).
+  * Radio Devices:
+      - Resume: restore bluetooth state.
+  * Radio Device Wizard (tlp-rdw):
+      - Support ThinkPad OneLink Dock Basic/Pro for dock/undock
+        events.
+      - Detect systemd "predictable network interface names" for
+        WWAN.
+  * ThinkPad Battery:
+      - tpacpi-bat: new upstream version 2.2: get ASL path from
+        /sys/class/power_supply/*/device/path; avoids unnecessary
+        "AE_NOT_FOUND" kernel messages.
+      - tlp-stat:
+        - Show "No batteries detected."
+        - Explain battery status "Unknown" as "threshold effective".
+        - Show battery cell group voltages (verbose mode, tp-smapi
+          only).
+        - Show acpi-call suggestion for ThinkPad *40, *50, X1
+          models.
+  * USB:
+      - Remove USB_DRIVER_BLACKLIST.
+  * tlp-stat:
+      - Show warnings for ata errors by default.
+  * Bugfixes:
+    - tlp-stat: detect kernel config with PM_RUNTIME=N.
+    - tlp recalibrate: fix exitcode check.
+    - USB autosuspend: write power/control if actually changing
+      only.
+    - Ignore missing files in /proc/sys/fs/xfs.
+    - Fix udev event processing for AC/BAT sw.
+
+-------------------------------------------------------------------
+Sat Jan 31 23:32:42 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.7:
+  * Processor:
+    - Limit max/min P-state to control power dissipation of the
+      CPU (intel_pstate only)
+    - Set performance versus energy savings policy
+      (x86_energy_perf_policy)
+  * USB:
+    - USB_DRIVER_BLACKLIST: exclude devices assigned to the listed
+      drivers from USB autosuspend; default: usbhid
+    - USB_BLACKLIST_WWAN: match internal driver list instead of USB
+      vendor ids
+    - USB_WHITELIST: include devices into USB autosuspend even if
+      already excluded by the driver or WWAN blacklists
+  * Radio devices:
+    - DEVICES_TO_ENABLE_ON_AC/DISABLE_ON_BAT /
+      DISABLE_ON_BAT_NOT_IN_USE: enable/disable radio devices upon
+      change of power source (excluding connected devices)
+  * ThinkPad Battery:
+    - Issue #105: provide proper return codes for all battery
+      functions
+    - Issue #106: setcharge allowed on battery power
+    - Do not activate new thresholds with force_discharge anymore
+      (tp-smapi)
+    - tpacpi-bat: support for ThinkPad E325 charge thresholds
+  * Misc:
+    - RUNTIME_PM_DRIVER_BLACKLIST: exclude PCI(e) devices assigned
+      to drivers;
+      default: radeon, nouveau (solves issue #94)
+    - Support Dell Latitude docks
+    - Support for NM 0.9.10
+    - Issue #109: tlp-stat: report "unknown" power source when no
+      AC detected
+    - Issue #98: do not change autosuspend_delay_ms, keep kernel
+      default settings
+    - Exclude pseudo usb disks
+  * tlp-stat:
+    - New options -d|--disk, -e|--pcie, -p|--processor,
+                  -s|--system, -u|--usb
+    - Show driver and connection state for all enabled radio
+      devices
+    - Show driver name in Runtime PM PCI(e) device list
+    - Show type and state of docks and device bays
+    - Show type of init system
+    - Check if TLP's systemd services are enabled
+  * udev:
+    - Run change of power source in a detached subshell to avoid
+      blocking udev
+    - Fix dock/undock event processing for ThinkPad Adv Mini Dock
+      and Ultrabase 
+    - Make USB device event processing more robust
+      + Run in a detached subshell to avoid blocking udev
+      + Wait 2s for subdevices to populate for proper
+        black/whitelist detection
+
+-------------------------------------------------------------------
+Thu Nov 20 07:32:39 UTC 2014 - sor.alexei@meowr.ru
+
+- Adjust dependencies according to
+  http://linrunner.de/en/tlp/docs/tlp-developer-documentation.html
+
+-------------------------------------------------------------------
+Wed Oct  8 16:27:21 UTC 2014 - sor.alexei@meowr.ru
+
+- Initial build.

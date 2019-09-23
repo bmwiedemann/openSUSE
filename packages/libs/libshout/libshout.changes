@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Sun Sep  1 06:37:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4.3
+  * Fixed building with OpenSSL 1.1.0.
+  * Added support for PUT.
+  * Added support for WebM and Matroska with full timing.
+
+-------------------------------------------------------------------
+Wed Feb  7 21:54:52 UTC 2018 - jengelh@inai.de
+
+- Fix typographic tidbits in description. Compact filelist.
+- Drop old Obsoletes.
+
+-------------------------------------------------------------------
+Wed Dec 23 16:46:57 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.4.1
+* Support for TLS (HTTPS) (RFC2817 and RFC2818),
+  mode can be autodetected
+* Support for audio-only WebM
+* Improved protocol level metadata support.
+  (Some API calls got replaced and marked as obsolete)
+* Improved HTTP protocol: Set Host:-header (vhosting support);
+  and check for server capabilities
+* Added basic support for the RoarAudio protocol
+- Drop libshout-2.2.2-pkgconfig-bloat.patch (no longer needed)
+- Use smp_mflags for building; drop unnecessary %clean;
+  abolish %__tool indirections.
+
+-------------------------------------------------------------------
+Tue Jan 22 21:11:41 UTC 2013 - jw@suse.com
+
+- update to 2.3.1
+  * removed upstreamed libshout-2.2.2-missing-lib.patch
+
+-------------------------------------------------------------------
+Sun Nov 20 06:46:56 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun May  1 17:35:27 UTC 2011 - toddrme2178@gmail.com
+
+- Added 32bit compatibility libraries
+- Removed self-obsoletes (fix for RPMLINT warning)
+
+-------------------------------------------------------------------
+Wed Dec 26 03:08:19 CET 2007 - crrodriguez@suse.de
+
+- previous change introduced a undefined reference to `speex_packet_to_header'
+  library wants to use speex but does not link to it correctly
+  (libshout-2.2.2-missing-lib.patch)
+
+
+-------------------------------------------------------------------
+Sun Dec 16 23:47:12 CET 2007 - crrodriguez@suse.de
+
+- support speex
+- fix library packaging policy change
+- cleanup unneeded dependencies and pkgconfig script
+
+-------------------------------------------------------------------
+Mon Apr 16 15:00:09 CEST 2007 - tiwai@suse.de
+
+- follow library packaging policy
+  * move docs to devel package
+  * remove static library
+- added missing ldconfig to post and postun.
+
+-------------------------------------------------------------------
+Thu Oct 12 18:49:57 CEST 2006 - tiwai@suse.de
+
+- updated to version 2.2.2:
+  * Handle Oggs that don't begin with zero granulepos
+  * Theora memory leak fix
+  * Non-blocking shout_open was failing unnecessarily in the
+    connect_pending state.
+  * Cast some size_ts to ints for display purposes.
+  * Fix error handling while opening a connection, so that shout_open
+    can be retried.
+  * pkgconfig fix for header installation
+  * Fix a memory leak in HTTP authentication
+
+-------------------------------------------------------------------
+Thu Apr 27 04:06:51 CEST 2006 - mrueckert@suse.de
+
+- added libtheora-devel libvorbis-devel to the requires of the
+  devel package.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:44 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 11 19:00:14 CET 2006 - tiwai@suse.de
+
+- updated to version 2.2.
+
+-------------------------------------------------------------------
+Tue Jun 14 13:08:49 CEST 2005 - tiwai@suse.de
+
+- initial version: 2.1

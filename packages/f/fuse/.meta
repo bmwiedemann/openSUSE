@@ -1,0 +1,36 @@
+<package name="fuse" project="openSUSE:Factory">
+  <title>User space File System</title>
+  <description>With FUSE, a user space program can export a file system through the
+kernel-default (Linux kernel).
+
+User space file systems which are implemented using FUSE are provided
+by the following packages:
+
+- curlftpfs (mount FTP servers),
+
+- encfs (layered file encryption),
+
+- fuseiso (mount iso, img, bin, mdf and nrg CD-ROM images),
+
+- fusepod (mount iPods),
+
+- fusesmb (mount a fully browseable network neighborhood),
+
+- gphotofs (mount gphoto-supported cameras),
+
+- ntfs-3g (mount NTFS volumes read-write),
+
+- obexfs (mount of bluetooth devices),
+
+- sshfs (mount over ssh),
+
+- wdfs (mount of WebDAV shares)
+
+This package contains the mount binaries for fuse (might not be needed
+by some FUSE filesystems like ntfs-3g) and the documentation for FUSE.
+
+After installing fuse-devel, administrators can compile and install
+other user space file systems which can be found at
+http://fuse.sourceforge.net/wiki</description>
+  <devel project="filesystems" package="fuse"/>
+</package>

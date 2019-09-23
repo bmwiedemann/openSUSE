@@ -1,0 +1,8 @@
+<package name="rubygem-uglifier" project="openSUSE:Factory">
+  <title>uglifier</title>
+  <description>
+Ruby wrapper for UglifyJS JavaScript compressor
+  </description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-uglifier"/>
+  <url>https://github.com/lautis/uglifier</url>
+</package>

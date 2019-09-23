@@ -1,0 +1,1802 @@
+-------------------------------------------------------------------
+Mon Sep 16 10:13:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.2.5:
+  * Relaxed the system check added in Django 2.2 for models to reallow use of the same db_table by multiple models when database routers are installed (#30673).
+  * Fixed crash of KeyTransform() for JSONField and HStoreField when using on expressions with params (#30672).
+  * Fixed a regression in Django 2.2 where ModelAdmin.list_filter choices to foreign objects don’t respect a model’s Meta.ordering (#30449).
+  * Fixed a race condition in loading URLconf module that could cause a crash of auto-reloader on Python 3.5 and below (#30500).
+
+-------------------------------------------------------------------
+Thu Aug  1 11:13:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.2.4:
+  * CVE-2019-14232 CVE-2019-14233 CVE-2019-14234 CVE-2019-14235
+    bsc#1142883 bsc#1142885 bsc#1142882 bsc#1142880
+  * Fixed a regression in Django 2.2 when ordering a QuerySet.union(), intersection(), or difference() by a field type present more than once results in the wrong ordering being used (#30628).
+  * Fixed a migration crash on PostgreSQL when adding a check constraint with a contains lookup on DateRangeField or DateTimeRangeField, if the right hand side of an expression is the same type (#30621).
+  * Fixed a regression in Django 2.2 where auto-reloader crashes if a file path contains nulls characters ('\x00') (#30506).
+  * Fixed a regression in Django 2.2 where auto-reloader crashes if a translation directory cannot be resolved (#30647).
+
+-------------------------------------------------------------------
+Thu Jul 18 17:21:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.2.3:
+  * CVE-2019-12781 (bsc#1139945): Incorrect HTTP detection with reverse-proxy connecting via HTTPS¶
+
+-------------------------------------------------------------------
+Mon Jun  3 11:01:44 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.2.2
+ * Fixes CVE-2019-12308: AdminURLFieldWidget XSS (bsc#1136468)
+ * Fixes CVE-2019-11358: Prototype pollution
+
+-------------------------------------------------------------------
+Tue May  7 07:13:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update keyring file
+
+-------------------------------------------------------------------
+Mon May  6 14:11:22 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 2.2.1
+  * Fixed a regression in Django 2.1 that caused the incorrect quoting
+    of database user password when using dbshell on Oracle (#30307).
+  * Added compatibility for psycopg2 2.8 (#30331).
+  * Fixed a regression in Django 2.2 that caused a crash when loading
+    the template for the technical 500 debug page (#30324).
+  * Fixed crash of ordering argument in ArrayAgg and StringAgg when it
+    contains an expression with params (#30332).
+  * Fixed a regression in Django 2.2 that caused a single instance
+    fast-delete to not set the primary key to None (#30330).
+  * Prevented makemigrations from generating infinite migrations for
+    check constraints and partial indexes when condition contains a
+    range object (#30350).  Reverted an optimization in Django 2.2
+    (#29725) that caused the inconsistent behavior of count() and
+    exists() on a reverse many-to-many relationship with a custom
+    manager (#30325).
+  * Fixed a regression in Django 2.2 where Paginator crashes if
+    object_list is a queryset ordered or aggregated over a nested
+    JSONField key transform (#30335).
+  * Fixed a regression in Django 2.2 where IntegerField validation of
+    database limits crashes if limit_value attribute in a custom
+    validator is callable (#30328).
+  * Fixed a regression in Django 2.2 where SearchVector generates SQL
+    that is not indexable (#30385).
+  * Fixed a regression in Django 2.2 that caused an exception to be
+    raised when a custom error handler could not be imported (#30318).
+  * Relaxed the system check added in Django 2.2 for the admin app’s
+    dependencies to reallow use of SessionMiddleware subclasses,
+    rather than requiring django.contrib.sessions to be in
+    INSTALLED_APPS (#30312).
+  * Increased the default timeout when using Watchman to 5 seconds to
+    prevent falling back to StatReloader on larger projects and made
+    it customizable via the DJANGO_WATCHMAN_TIMEOUT environment
+    variable (#30361).
+  * Fixed a regression in Django 2.2 that caused a crash when
+    migrating permissions for proxy models if the target permissions
+    already existed. For example, when a permission had been created
+    manually or a model had been migrated from concrete to proxy
+    (#30351).
+  * Fixed a regression in Django 2.2 that caused a crash of runserver
+    when URLConf modules raised exceptions (#30323).
+  * Fixed a regression in Django 2.2 where changes were not reliably
+    detected by auto-reloader when using StatReloader (#30323).
+  * Fixed a migration crash on Oracle and PostgreSQL when adding a
+    check constraint with a contains, startswith, or endswith lookup
+    (or their case-insensitive variant) (#30408).
+  * Fixed a migration crash on Oracle and SQLite when adding a check
+    constraint with condition contains | (OR) operator (#30412).
+
+-------------------------------------------------------------------
+Wed Apr 10 07:55:46 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add test_clear_site_cache-sort.patch to workaround flaky test
+- Add bcond_with for selenium and memcached, as those tests are inactive,
+  and add missing dependencies and setup for selenium testing
+- Move removal of executable bit from a JavaScript file to %prep
+- Fix fdupes
+
+-------------------------------------------------------------------
+Wed Apr  3 11:21:56 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.2
+- drop pyyaml5.patch
+- add i18n_test.patch
+ * HttpRequest.headers to allow simple access to a request’s headers.
+ * Database-level constraints on models.
+ * Watchman compatibility for runserver to improve the performance
+
+-------------------------------------------------------------------
+Sat Mar 23 16:31:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to build with PyYAML >5:
+  * pyyaml5.patch
+
+-------------------------------------------------------------------
+Tue Feb 12 09:24:53 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 2.1.7 (CVE-2019-6975, bsc#1124991):
+  * Corrected packaging error from 2.1.6
+  * Memory exhaustion in django.utils.numberformat.format()
+    If django.utils.numberformat.format() – used by contrib.admin as well
+    as the the floatformat, filesizeformat, and intcomma templates
+    filters – received a Decimal with a large number of digits or a
+    large exponent, it could lead to significant memory usage
+    due to a call to '{:f}'.format().
+    To avoid this, decimals with more than 200 digits are now formatted
+    using scientific notation.
+  * Made the obj argument of InlineModelAdmin.has_add_permission() optional
+    to restore backwards compatibility with third-party code that doesn’t
+    provide it
+
+-------------------------------------------------------------------
+Thu Jan 10 12:09:43 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 2.1.5 (CVE-2019-3498, bsc#1120932):
+  * CVE-2019-3498: Content spoofing possibility in the default 404 page
+  *  Fixed compatibility with mysqlclient 1.3.14 (#30013).
+  *  Fixed a schema corruption issue on SQLite 3.26+. You might have to drop
+    and rebuild your SQLite database if you applied a migration while using
+    an older version of Django with SQLite 3.26 or later (#29182).
+  * Prevented SQLite schema alterations while foreign key checks are enabled
+    to avoid the possibility of schema corruption (#30023).
+  * Fixed a regression in Django 2.1.4 (which enabled keep-alive connections)
+    where request body data isn’t properly consumed for such
+    connections (#30015).
+  * Fixed a regression in Django 2.1.4 where
+    InlineModelAdmin.has_change_permission() is incorrectly called with
+    a non-None obj argument during an object add (#30050).
+
+-------------------------------------------------------------------
+Mon Dec 10 11:52:42 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to version 2.1.4
+ * Corrected the default password list that CommonPasswordValidator uses
+     by lowercasing all passwords to match the format expected by the validator
+ * Prevented repetitive calls to geos_version_tuple() in the WKBWriter class in
+     an attempt to fix a random crash involving LooseVersion
+ * Fixed keep-alive support in runserver after it was disabled o 2.0
+ * Fixed admin view-only change form crash when using ModelAdmin.prepopulated_fields
+ * Fixed “Please correct the errors below” error message when editing an object
+     in the admin if the user only has the “view” permission on inlines
+ * Fixed a regression in Django 2.0 where combining Q objects with __in lookups 
+     and lists crashed
+ * Fixed a regression in Django 2.0 where test databases aren’t reused
+     with manage.py test --keepdb on MySQL
+ * Fixed a regression where cached foreign keys that use to_field were
+     incorrectly cleared in Model.save()
+ * Fixed a regression in Django 2.0 where FileSystemStorage crashes
+     with FileExistsError if concurrent saves try to create the same directory 
+
+-------------------------------------------------------------------
+Thu Oct  4 13:13:00 UTC 2018 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 2.1.2
+  * CVE-2018-16984: Password hash disclosure to “view only” admin
+    users
+  * Fixed a regression where nonexistent joins in F() no longer raised
+    FieldError (#29727).
+  * Fixed a regression where files starting with a tilde or underscore
+    weren’t ignored by the migrations loader (#29749).
+  * Made migrations detect changes to Meta.default_related_name
+    (#29755).
+  * Added compatibility for cx_Oracle 7 (#29759).
+  * Fixed a regression in Django 2.0 where unique index names weren’t
+    quoted (#29778).
+  * Fixed a regression where sliced queries with multiple columns with
+    the same name crashed on Oracle 12.1 (#29630).
+  * Fixed a crash when a user with the view (but not change)
+    permission made a POST request to an admin user change form
+    (#29809).
+
+-------------------------------------------------------------------
+Tue Sep 18 13:17:15 CEST 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Switch of BR selenium for non-Intel platforms.
+
+-------------------------------------------------------------------
+Tue Sep  4 12:24:15 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to version 2.1.1
+- drop django-urlencode.patch
+ * Fixed a race condition in QuerySet.update_or_create() that could result
+    in data loss
+ * Fixed a regression where QueryDict.urlencode() crashed if the dictionary
+    contains a non-string value
+ * Fixed a regression in Django 2.0 where using manage.py test --keepdb fails
+    on PostgreSQL if the database exists and the user doesn’t have permission
+    to create databases
+ * Fixed a regression in Django 2.0 where combining Q objects with __in
+    lookups and lists crashed
+ * Fixed translation failure of DurationField’s “overflow” error message
+ * Fixed a regression where the admin change form crashed if the user doesn’t
+    have the ‘add’ permission to a model that uses TabularInline
+ * Fixed a regression where a related_query_name reverse accessor wasn’t
+    set up when a GenericRelation is declared on an abstract base model
+ * Fixed the test client’s JSON serialization of a request data dictionary
+    for structured content type suffixes
+ * Made the admin change view redirect to the changelist view after a POST
+    if the user has the ‘view’ permission
+ * Fixed admin change view crash for view-only users if the form
+    has an extra form field
+ * Fixed a regression in Django 2.0.5 where QuerySet.values() or values_list()
+    after combining querysets with extra() with union(), difference(),
+    or intersection() crashed due to mismatching columns
+
+-------------------------------------------------------------------
+Tue Aug 14 07:46:04 UTC 2018 - tchvatal@suse.com
+
+- Apply patch to fix urlencode nonstring values:
+  * django-urlencode.patch
+
+-------------------------------------------------------------------
+Wed Aug  8 13:33:57 UTC 2018 - tchvatal@suse.com
+
+- Enable testsuite
+
+-------------------------------------------------------------------
+Wed Aug  8 09:35:51 UTC 2018 - mimi.vx@gmail.com
+
+- update to version 2.1
+- move bash completion to right location
+- for full chanfges please see https://docs.djangoproject.com/en/2.1/releases/2.1/
+ * Dropped support for MySQL 5.5
+ * Dropped support for PostgreSQL 9.3
+ * Support for SpatiaLite 4.0 is removed
+ * Support for SQLite < 3.7.15 is removed.
+
+-------------------------------------------------------------------
+Mon Jul  2 13:15:55 UTC 2018 - aplanas@suse.com
+
+- update to version 2.0.7:
+  * Fixed admin changelist crash when using a query expression without
+    asc() or desc() in the page’s ordering (#29428).
+  * Fixed admin check crash when using a query expression in
+    ModelAdmin.ordering (#29428).
+  * Fixed __regex and __iregex lookups with MySQL 8 (#29451).
+  * Fixed migrations crash with namespace packages on Python 3.7
+    (#28814).
+- update to version 2.0.6
+  * Fixed a regression that broke custom template filters that use
+    decorators (#29400).
+  * Fixed detection of custom URL converters in included patterns
+    (#29415).
+  * Fixed a regression that added an unnecessary subquery to the GROUP
+    BY clause on MySQL when using a RawSQL annotation (#29416).
+  * Fixed WKBWriter.write() and write_hex() for empty polygons on GEOS
+    3.6.1+ (#29460).
+  * Fixed a regression in Django 1.10 that could result in large
+    memory usage when making edits using ModelAdmin.list_editable
+    (#28462).
+- update to version 2.0.5
+  * Corrected the import paths that inspectdb generates for
+    django.contrib.postgres fields (#29307).
+  * Fixed a regression in Django 1.11.8 where altering a field with a
+    unique constraint may drop and rebuild more foreign keys than
+    necessary (#29193).
+  * Fixed crashes in django.contrib.admindocs when a view is a
+    callable object, such as django.contrib.syndication.views.Feed
+    (#29296).
+  * Fixed a regression in Django 1.11.12 where QuerySet.values() or
+    values_list() after combining an annotated and unannotated
+    queryset with union(), difference(), or intersection() crashed due
+    to mismatching columns (#29286).
+
+-------------------------------------------------------------------
+Sat Apr  7 19:21:18 UTC 2018 - tbechtold@suse.com
+
+- update to version 2.0.4:
+  * Fixed #29265 -- Removed the suggestion to hardcode static URLs.
+  * Fixed #29206 -- Fixed PasswordResetConfirmView crash when the URL contains a non-UUID where one is expected.
+  * Fixed #29195 -- Fixed Exists.output_field resolution on single-valued queries.
+  * Fixed links to Sphinx docs.
+  * Fixed typo in docs/releases/2.0.4.txt.
+  * Clarified docs about ISO 8601 week numbering.
+  * Fixed #29116 -- Fixed OpenLayersWidget deserialization ignoring the widget map's SRID.
+  * Added CVE-2018-7536,7 to the security release archive.
+  * Fixed #29221 -- Corrected admin's autocomplete widget to add a space after custom classes.
+  * Fixed #29273 -- Prevented initial selection of empty choice in multiple choice widgets.
+  * Added a pagination example to ListView docs.
+  * Fixed #28514 -- Clarifed docs about idempotence of RelatedManager.add().
+  * isorted import statements in tutorial example.
+  * Fixed #29192 -- Corrected docs regarding overriding fields from abstract base classes.
+  * Refs #11278 -- Clarified RelatedManager differences between reverse one-to-many and many-to-many relations.
+  * Added stub release notes for 1.11.12.
+  * Fixed #29165 -- Clarified how to load initial data with migrations.
+  * Fixed #29213 -- Fixed autocomplete widget's translations for zh-hans/zh-hant.
+  * Reverted "Expanded docs for AbstractBaseUser.has_usable_password()."
+  * Fixed typo in docs/releases/2.0.4/1.11.12.txt.
+  * Bumped version for 2.0.4 release.
+  * Fixed #29250 -- Added 'django_version' context to startapp/project docs.
+  * Added release date for 2.0.4 and 1.11.12.
+  * Post-release version bump.
+  * Clarified a sentence in docs/topics/i18n/translation.txt.
+  * Fixed #29229 -- Fixed column mismatch crash when combining two annotated values_list() querysets with union(), difference(), or intersection().
+  * Added stub release notes for 2.0.4.
+  * Fixed a couple mistakes in docs/ref/forms/widgets.txt.
+  * Fixed #28655 -- Added more examples for customizing widgets in a form.
+
+-------------------------------------------------------------------
+Mon Mar 19 07:09:53 UTC 2018 - tbechtold@suse.com
+
+- update to 2.0.3 (bsc#1083305, bsc#1083304, CVE-2018-7536, CVE-2018-7537):
+  * Fixed #29108 -- Fixed crash in aggregation of distinct+ordered+sliced querysets.
+  * Added CVE-2018-6188 to the security release archive.
+  * Post-release version bump.
+  * Updated translations from Transifex
+  * Added stub release notes for security releases.
+  * Fixed incorrect regex in re_path() example.
+  * Fixed #29125 -- Made Q.deconstruct() deterministic with multiple keyword arguments.
+  * Fixed #29126 -- Doc'd the behavior of QuerySet.update_or_create() with manually specified pks.
+  * Used a CSS positioning in tutorial 6 that doesn't differ across browsers.
+  * Fixed typo in bulk_create() documentation.
+  * Fixed #29176 -- Fixed AbstractBaseUser.normalize_username() crash if username isn't a string.
+  * Removed blank lines per isort 4.3.0.
+  * Added stub release notes for 2.0.3.
+  * Fixed CVE-2018-7536 -- Fixed catastrophic backtracking in urlize and urlizetrunc template filters.
+  * Fixed #29172 -- Fixed crash with Window expression in a subquery.
+  * Fixed #29166 -- Fixed crash in When() expression with a list argument.
+  * Fixed #24270 -- Doc'd that django_bash_completion is only in the source distribution.
+  * Improved clarity of docs/topics/install.txt.
+  * Refs #29125 -- Made Q.deconstruct() omit 'query_utils' in the path and _connector='AND' since it's a default value.
+  * Fixed CVE-2018-7537 -- Fixed catastrophic backtracking in django.utils.text.Truncator.
+  * Bumped version for 2.0.3 release.
+  * Corrected doc'd type of some parameters from string to str.
+  * Fixed #29146 -- Readded ^ and $ inadvertently removed from re_path() examples.
+  * Fixed #29107 -- Doc'd that ModelForm doesn't actually inherit from Form.
+  * Switched test requirement to new psycopg2-binary package.
+  * Added backticks around obj argument in admin docs.
+  * Fixed typo in docs/topics/forms/media.txt.
+  * Fixed #29109 -- Fixed the admin time picker widget for the Thai locale.
+  * Fixed #29118 -- Fixed crash with QuerySet.order_by(Exists(...)).
+
+-------------------------------------------------------------------
+Wed Feb  7 13:54:36 UTC 2018 - tbechtold@suse.com
+
+- update to 2.0.2 (bsc#1077714, CVE-2018-6188):
+  * Fixed #28883 -- Doc'd that the uuid URL path converter matches lowercase only letters.
+  * Fixed a GeoIP2 test failure with the latest GeoIP2 database.
+  * Added stub release notes for 2.0.1.
+  * Bumped version for 2.0.2 release.
+  * Fixed location of spatialite_source label.
+  * Fixed #28958 -- Fixed admin changelist crash when using a query expression in the page's ordering.
+  * Fixed #28231 -- Doc'd that QuerySet.bulk_create() casts objs to a list.
+  * Fixed #29032 -- Fixed an example of using expressions in QuerySet.values().
+  * Disambiguated "settings" in SpatiaLite note.
+  * Fixed typo in docs/topics/testing/advanced.txt.
+  * Post-release version bump.
+  * Refs #25604 -- Removed docs for makemigrations --exit.
+  * Fixed #29002 -- Corrected cached template loader docs about when it's automatically enabled.
+  * Fixed typo in TemplateCommand argument help text.
+  * Added stub release notes for 1.11.9.
+  * Fixed #28915 -- Prevented SQLite from truncating trailing zeros in the fractional part of DecimalField.
+  * Refs #29086 -- Doc'd how to detect bytestring mistakes.
+  * Fixed #28886 -- Updated prefix for example django.contrib.auth.urls URLs.
+  * Fixed #29081 -- Clarified comments in QuerySet.select_related() example.
+  * Refs #27985 -- Reallowed using __exact=None as an alias for __isnull=True if a custom lookup class with lookup_name != None is registered as the exact lookup.
+  * Refs #28876 -- Fixed incorrect class-based model index name generation for models with quoted db_table.
+  * Removed 'development' word in contributing docs
+  * Fixed #29055 -- Doc'd that escapejs doesn't make template literals safe.
+  * Fixed #29016 -- Fixed incorrect foreign key nullification on related instance deletion.
+  * Fixed grammar in docs/releases/2.0.txt.
+  * Fixed #29071 -- Fixed contrib.auth.authenticate() crash if a backend doesn't accept a request but a later one does.
+  * Fixed #28944 -- Fixed crash when chaining values()/values_list() after QuerySet.select_for_update(of=()).
+  * Fixed #29091 -- Fixed makemigrations crash if migrations directory doesn't have __init__.py.
+  * Fixed #28898 -- Corrected admin check to allow a OneToOneField in ModelAdmin.autocomplete_fields.
+  * Fixed #28896 -- Reallowed filtering a queryset with GeometryField=None.
+  * Fixed #28891 -- Documented Origin's loader attribute.
+  * Confirmed support for PostGIS 2.4.
+  * Wrapped an import per isort.
+  * Added release date for 2.0.1 and 1.11.9.
+  * Fixed #28884 -- Fixed crash on SQLite when renaming a field in a model referenced by a ManyToManyField.
+  * Fixed "template tag" spelling in docs.
+  * Fixed #28947 -- Fixed crash when coercing a translatable URL pattern to str.
+  * Fixed typo in docs/topics/i18n/translation.txt.
+  * Refs #28932 -- Skipped the failing test for refs #28915 on Oracle.
+  * Refs #25181 -- Updated timezone.now() docs about obtaining the time in the current time zone.
+  * Updated documented mysqlclient requirement to 1.3.7.
+  * Fixed #28885 -- Fixed hidden content at the bottom of the "The install worked successfully!" page for some languages.
+  * Fixed #28403 -- Added missing formats in FORMAT_MODULE_PATH docs.
+  * Fixed #29067 -- Fixed regression in QuerySet.values_list(..., flat=True) followed by annotate().
+  * Removed note in tutorial about bypassing manage.py.
+  * Fixed #28929 -- Corrected QUnit examples.
+  * Refs #28958 -- Added a test for ModelAdmin with query expressions in ordering.
+  * Updated various links in docs to use HTTPS.
+  * Expanded docs for AbstractBaseUser.has_usable_password().
+  * Fixed #29017 -- Updated BaseCommand.leave_locale_alone doc per refs #24073.
+  * Doc'd specifying the ENGINE setting as part of configuring contrib.gis.
+  * Added stub release notes for 1.11.10.
+  * Fixed #28881 -- Doc'd that CommonPasswordValidator's password list must be lowercase.
+  * Fixed #28784 -- Clarified how migrate --fake works.
+  * Fixed typo in docs/ref/models/expressions.txt.
+  * Fixed #29094 -- Fixed crash when entering an invalid uuid in ModelAdmin.raw_id_fields.
+  * Refs #28876 -- Fixed incorrect foreign key constraint name for models with quoted db_table.
+  * Bumped version for 2.0.1 release.
+  * Fixed #25277 -- Restored test dependency to the original python-memcached.
+  * Fixed #28761 -- Documented how an inline formset's prefix works.
+  * Refs #28856 -- Fixed caching of a GenericForeignKey pointing to a model that uses more than one level of MTI.
+  * Fixed #28966 -- Doc'd that the uuid URL path converter requires dashes
+  * Fixed #29054 -- Fixed a regression where a queryset that annotates with geometry objects crashes.
+  * Reverted "[1.11.x] Refs #28856 -- Fixed caching of a GenericForeignKey pointing to a model that uses more than one level of MTI."
+  * Added "Python 3 Only" trove classifier.
+  * Fixed #28941 -- Fixed crash in testserver command startup.
+  * Fixed import in docs/ref/models/conditional-expressions.txt example.
+  * Fixed CVE-2018-6188 -- Fixed information leakage in AuthenticationForm.
+  * Fixed #28594 -- Removed Jython docs and specific code
+  * Renamed the "Supported versions" label.
+  * Fixed #28878 -- Added python_requires in setup.py and a warning for older pips that don't recognize it.
+  * Fixed typo in docs/ref/contrib/admin/index.txt.
+  * Refs #28856 -- Fixed caching of a GenericForeignKey pointing to a model that uses more than one level of MTI.
+  * Added stub release notes for 2.0.2.
+  * Fixed #28938 -- Corrected Python compatibility in the tutorial.
+  * Fixed #28890 -- Removed newlines between MultiWidget's subwidgets.
+
+-------------------------------------------------------------------
+Tue Dec 12 21:12:18 UTC 2017 - mimi.vx@gmail.com
+
+- update to 2.0
+  * drop python 2 support
+  * Simplified URL routing syntax
+  * Mobile-friendly contrib.admin
+  * Window expressions
+  * Removed support for bytestrings in some places
+  * Dropped support for Oracle 11.2
+- Please read Release Notes - https://docs.djangoproject.com/en/2.0/releases/2.0/
+ 
+-------------------------------------------------------------------
+Tue Dec 12 05:16:57 UTC 2017 - tbechtold@suse.com
+
+- update to 1.11.8:
+  * Fixed #28488 -- Reallowed error handlers to access CSRF tokens.
+  * Fixed #28856 -- Fixed a regression in caching of a GenericForeignKey
+    pointing to a MTI model.
+  * Fixed #28597 -- Fixed crash with the name of a model's autogenerated primary
+    key in an Index's fields.
+  * Added stub release notes for 1.11.7.
+  * Fixed #28305 -- Fixed "Cannot change column 'x': used in a foreign key constraint"
+    crash on MySQL with a sequence of AlterField or RenameField operations.
+  * Fixed #28689 -- Fixed unquoted table names in Subquery SQL when using OuterRef.
+  * Added assertion helpers for PostgreSQL's server-side cursor tests.
+  * Fixed #28729 -- Replaced a numbered list with unordered list in TemplatesSetting docs.
+  * Fixed #28786 -- Doc'd middleware ordering considerations due to
+    CommonMiddleware setting Content-Length.
+  * Added release date for 1.11.8.
+  * Fixed #28702 -- Made query lookups for CIText fields use citext.
+  * Added 2017-12794 to the security release archive.
+  * Fixed typo in docs/topics/cache.txt.
+  * Bumped version for 1.11.6 release.
+  * Added release date for 1.11.6.
+  * Fixed #28648 -- Corrected typo in docs/topics/db/queries.txt.
+  * Bumped version for 1.11.7 release.
+  * Added stub release notes for 1.11.8.
+  * Fixed #28848 -- Fixed SQLite/MySQL crash when ordering by a filtered
+    subquery that uses nulls_first/nulls_last.
+  * Fixed typo in docs/topics/db/aggregation.txt.
+  * Fixed #28802 -- Fixed typo in docs/topics/auth/default.txt.
+  * Fixed typo in docs/topics/forms/media.txt.
+  * Bumped version for 1.11.8 release.
+  * Fixed typo in docs/ref/models/querysets.txt.
+  * Fixed test failures due to ordering differences on PostgreSQL 10.
+  * Fixed #28710 -- Fixed the Basque DATE_FORMAT string
+  * Added stub release notes for 1.11.6.
+  * Fixed #28747 -- Fixed typos in django/conf/global_settings.py comments.
+  * Fixed #28817 -- Made QuerySet.iterator() use server-side cursors after
+    values() and values_list().
+  * Post-release version bump.
+  * Fixed #28792 -- Fixed index name truncation of namespaced tables.
+  * Fixed #28781 -- Added QuerySet.values()/values_list() support for union(),
+    difference(), and intersection().
+  * Fixed #28722 -- Made QuerySet.reverse() affect nulls_first/nulls_last.
+  * Refs #28710 -- Simplified l10n format test
+  * Initialized CsrfViewMiddleware once in csrf_tests.
+  * Added release date for 1.11.7.
+  * Linked to prefetch_related_objects func in DB optimization docs.
+  * Fixed #28645 -- Reallowed AuthenticationForm to raise the inactive user
+    error when using ModelBackend.
+  * Fixed #28653 -- Added missing ForeignKey.on_delete argument in docs.
+  * Fixed #28561 -- Removed inaccurate docs about QuerySet.order_by() and joins.
+  * Fixed #28555 -- Made CharField convert whitespace-only values to the
+    empty_value when strip is enabled.
+  * Fixed #28601 -- Prevented cache.get_or_set() from caching None if default
+    is a callable that returns None.
+
+-------------------------------------------------------------------
+Wed Sep 20 21:53:53 UTC 2017 - toddrme2178@gmail.com
+
+- update to version 1.11.5
+  * CVE-2017-12794: Possible XSS in traceback section of technical 500 debug page
+  * Fixed GEOS version parsing if the version has a commit hash at the end (new
+    in GEOS 3.6.2) (:ticket:`28441`).
+  * Added compatibility for ``cx_Oracle`` 6 (:ticket:`28498`).
+  * Fixed select widget rendering when option values are tuples (:ticket:`28502`).
+  * Django 1.11 inadvertently changed the sequence and trigger naming scheme on
+    Oracle. This causes errors on INSERTs for some tables if
+    ``'use_returning_into': False`` is in the ``OPTIONS`` part of ``DATABASES``.
+    The pre-1.11 naming scheme is now restored. Unfortunately, it necessarily
+    requires an update to Oracle tables created with Django 1.11.[1-4]. Use the
+    upgrade script in :ticket:`28451` comment 8 to update sequence and trigger
+    names to use the pre-1.11 naming scheme.
+  * Added POST request support to ``LogoutView``, for equivalence with the
+    function-based ``logout()`` view (:ticket:`28513`).
+  * Omitted ``pages_per_range`` from ``BrinIndex.deconstruct()`` if it's ``None``
+    (:ticket:`25809`).
+  * Fixed a regression where ``SelectDateWidget`` localized the years in the
+    select box (:ticket:`28530`).
+  * Fixed a regression in 1.11.4 where ``runserver`` crashed with non-Unicode
+    system encodings on Python 2 + Windows (:ticket:`28487`).
+  * Fixed a regression in Django 1.10 where changes to a ``ManyToManyField``
+    weren't logged in the admin change history (:ticket:`27998`) and prevented
+    ``ManyToManyField`` initial data in model forms from being affected by
+    subsequent model changes (:ticket:`28543`).
+  * Fixed non-deterministic results or an ``AssertionError`` crash in some
+    queries with multiple joins (:ticket:`26522`).
+  * Fixed a regression in ``contrib.auth``'s ``login()`` and ``logout()`` views
+    where they ignored positional arguments (:ticket:`28550`).
+
+-------------------------------------------------------------------
+Thu Aug 10 12:51:56 UTC 2017 - tbechtold@suse.com
+
+- update to version 1.11.4:
+  * Fixed #27939 -- Updated OpenLayersWidget.map_srid for OpenLayers 3.
+  * Fixed #27956 -- Fixed display of errors in an {% extends %} child.
+  * Updated various links in docs to avoid redirects
+  * Fixed typo in docs/topics/auth/default.txt.
+  * Double quoted HTML attributes in widget docs
+  * Fixed #28303 -- Prevented localization of attribute values in the DTL attrs.html widget template.
+  * Added stub release notes for 1.11.3.
+  * Documented OSMWidget.default_lat/lon.
+  * Fixed #28101 -- Fixed a regression with nested __in subquery lookups and to_field.
+  * Bumped version for 1.11.4 release.
+  * Bumped version for 1.11.3 release.
+  * Updated translations from Transifex
+  * Fixed #28039 -- Fixed crash in BaseGeometryWidget.subwidgets().
+  * Fixed #28242 -- Moved ImageField file extension validation to the form field.
+  * Made docs/topics/migrations.txt use single quotes consistently.
+  * Fixed #28355 -- Fixed widget rendering of non-ASCII date/time formats on Python 2.
+  * Updated name of topics/db/queries link on index.
+  * Fixed #28025 -- Fixed typo in docs/ref/models/querysets.txt.
+  * Fixed #28043 -- Prevented AddIndex and RemoveIndex from mutating model state.
+  * Fixed #28207 -- Fixed contrib.auth.authenticate() if multiple auth backends don't accept a request.
+  * Fixed #28361 -- Fixed possible time-related failure in was_published_recently() tutorial test.
+  * Fixed #28265 -- Prevented renderer warning on Widget.render() with **kwargs.
+  * Fixed typo in docs/topics/testing/advanced.txt.
+  * Fixed #28125 -- Clarified 1.11 release note about Template.render() prohibiting non-dict context.
+  * Refs #18974 -- Added stacklevel for permalink() deprecation.
+  * Fixed #28350 -- Fixed UnboundLocalError crash in RenameField with nonexistent field.
+  * Fixed #28051 -- Made migrations respect Index's name argument.
+  * Fixed #28420 -- Doc'd 'is' comparison restriction for User.is_authenticated/anonymous.
+  * Added release date for 1.11.4.
+  * Refs #28174 -- Fixed autoreload test crash on Python 2/non-ASCII path.
+  * Fixed #28389 -- Fixed pickling of LazyObject on Python 2 when wrapped object doesn't have __reduce__().
+  * Fixed #28148 -- Doc'd ImageField name validation concerns with the test client.
+  * Added stub release notes for 1.11.2.
+  * Fixed #27890 -- Fixed FileNotFoundError cleanup exception in runtests.py on Python 3.6+.
+  * Fixed #28138 -- Used output type handler instead of numbersAsStrings on Oracle cursor.
+  * Fixed widgets module path in docs/ref/contrib/gis/forms-api.txt.
+  * Fixed #27947 -- Doc'd that model Field.error_messages often don't propagate to forms.
+  * Fixed #28067 -- Clarified __str__() return type when using python_2_unicode_compatible().
+  * Fixed docstring typo in django/contrib/admin/actions.py.
+  * Fixed #28102 -- Doc'd how to compute path to built-in widget template directories.
+  * Fixed #28352 -- Corrected QuerySet.values_list() return type in docs examples.
+  * Fixed #28181 -- Added detection for GDAL 2.1 and 2.0.
+  * Refs #23853 -- Updated sql.query.Query.join() docstring.
+  * Added a test for Model._meta._property_names.
+  * Refs #27919 -- Changed Widget.get_context() attrs kwarg to an arg.
+  * Fixed #28415 -- Clarified what characters ASCII/UnicodeUsernameValidator accept.
+  * Fixed #28074 -- Doc'd template-based widget rendering changes for contrib.gis.
+  * Fixed #28278 -- Fixed invalid HTML for a required AdminFileWidget.
+  * Added content_type filtering in Permission querying example.
+  * Corrected FileExtensionValidator doc regarding the value being validated.
+  * Fixed #27960 -- Set errcheck=False for GDALAllRegister to prevent crash.
+  * Fixed #28097 -- Fixed layout of ReadOnlyPasswordHashWidget.
+  * Fixed #27969 -- Fixed models.Field.formfield() setting 'disabled' for fields with choices.
+  * Post-release version bump.
+  * Fixed #28298 -- Prevented a primary key alteration from adding a foreign key constraint if db_constraint=False.
+  * Refs #28192 -- Fixed documentation of ChoiceField choices requirement
+  * Fixed #27966 -- Bumped required psycopg2 version to 2.5.4.
+  * Linked GIS QuerySet API docs to corresponding PostGIS docs.
+  * Fixed #27974 -- Kept resolved templates constant during one rendering cycle.
+  * Refs #28100 -- Fixed URL in el, es_MX, and pt auth translations
+  * Fixed typo in docs/ref/request-response.txt.
+  * Fixed #27963 -- Removed unneeded docstring example in contributing docs.
+  * Added stub release notes for security releases.
+  * Fixed #28349 -- Doc'd how to upgrade Django from LTS to LTS.
+  * Fixed typo in docs/ref/forms/fields.txt.
+  * Fixed CVE-2017-7234 -- Fixed open redirect vulnerability in views.static.serve().
+  * Fixed #28170 -- Fixed file_move_safe() crash when moving files to a CIFS mount.
+  * Fixed broken links to Oracle docs.
+  * Fixed #27554 -- Fixed prefetch_related() crash when fetching relations in nested Prefetches.
+  * Added links and cosmetic edits to docs/ref/request-response.txt.
+  * Added stub release notes for 1.11.1.
+  * Fixed #28079 -- Restored "No POST data" (rather than an empty table) in HTML debug page.
+  * Removed incorrect "required" attribute in docs/ref/forms/fields.txt.
+  * Fixed #28176 -- Restored the uncasted option value in ChoiceWidget template context.
+  * Refs #24423 -- Readded inadvertently deleted i18n tests.
+  * Fixed #27965 -- Fixed precision comparison in a geoforms test (refs #27939).
+  * Corrected post-release version bump.
+  * Made runtests.py run gis_tests only when using a GIS database backend.
+  * Fixed #28230 -- Allowed DjangoJsonEncoder to serialize CallableBool.
+  * Fixed broken link to QUnit docs.
+  * Removed MySQL (unsupported) from Perimeter docs.
+  * Fixed #28266 -- Fixed typo in docs/ref/models/instances.txt.
+  * Fixed #28139 -- Added another level of headings in the topics index.
+  * Fixed #28003 -- Doc'd what an auto-created OneToOneField parent_link looks like.
+  * Fixed #28160 -- Prevented hiding GDAL exceptions when it's not installed.
+  * Updated man page for Django 1.11.
+  * Fixed #27988 -- Fixed typo in docs/ref/django-admin.txt.
+  * Fixed #28199 -- Fixed Subquery generating unnecessary/invalid CAST.
+  * Fixed #28122 -- Fixed crash when overriding views.static.directory_index()'s template.
+  * Fixed AppRegistryNotReady error when running gis_tests in isolation on PostGIS.
+  * Fixed #28435 -- Removed inaccurate warning about SECURE_HSTS_PRELOAD.
+  * Fixed #28040 -- Updated SplitArrayWidget to use template-based widget rendering.
+  * Fixed #28269 -- Fixed Model.__init__() crash on models with a field that has an instance only descriptor.
+  * Tested EmailMessage(attachments=[MIMEText])
+  * Clarified return value of NumGeometries GIS function.
+  * Refs #27935 -- Fixed BrinIndex.max_name_length if a project's default database isn't PostgreSQL.
+  * Fixed #28058 -- Restored empty BoundFields evaluating to True.
+  * Replaced "not A== B" with "A != B" in docs/howto/writing-migrations.txt.
+  * Added CVE-2017-7233,4 to the security release archive.
+  * Fixed #28204 -- Fixed MultipleObjectMixin.paginate_queryset() crash on Python 2 if InvalidPage message contains non-ASCII.
+  * Fixed #27935 -- Fixed crash with BrinIndex name > 30 characters.
+  * Fixed #28293 -- Fixed union(), intersection(), and difference() when combining with an EmptyQuerySet.
+  * Fixed #28222 -- Allowed settable properties in QuerySet.update_or_create()/get_or_create() defaults.
+  * Refs #27556, #27488 -- Updated support backends docs for isvalid lookup.
+  * Fixed nondeterministic ordering test failure in model_forms.
+  * Fixed #28345 -- Applied limit_choices_to during ModelForm.__init__().
+  * Fixed #27981 -- Doc'd date/time filter l10n changes in refs #25758.
+  * Made a few cosmetic updates to "Migrations that add unique fields".
+  * Bumped version for 1.11 release.
+  * Fixed #28004 -- Doc'd how to create migrations for an app without a migrations directory.
+  * Fixed #28202 -- Fixed FieldListFilter.get_queryset() crash on invalid input.
+  * Fixed #27949 -- Doc'd how OpenLayers 3 widgets work.
+  * Pass type to sql_alter_column_* where it was missing.
+  * Fixed #27866 -- Made ChoiceWidget.format_value() return a list
+  * Fixed #28308 -- Doc'd removal of Select.render_option() (refs #15667).
+  * Fixed #28178 -- Changed contrib.gis to raise ImproperlyConfigured if gdal isn't installed.
+  * Fixed #28284 -- Prevented Paginator's unordered object list warning from evaluating a QuerySet.
+  * Fixed #28209 -- Made date-based generic views return a 404 rather than crash when given an out of range date.
+  * Fixed #28161 -- Fixed return type of ArrayField(CITextField()).
+  * Corrected docs regarding MySQL support of Length GIS function.
+  * Fixed #28175 -- Fixed __in lookups on a foreign key when using the foreign key's parent model as the lookup value.
+  * Refs #18247 -- Fixed SQLite QuerySet filtering on decimal result of Least and Greatest.
+  * Refs #28207 -- Fixed contrib.auth.authenticate() if 'backend' is in the credentials.
+  * Fixed #27644 -- Doc'd FileSystemStorage.get_created_time().
+  * Added test for intersection() when combining with a queryset raising EmptyResultSet.
+  * Fixed #28197 -- Fixed introspection of index field ordering on PostgreSQL.
+  * Removed extra characters in docs header underlines.
+  * Fixed GEOSGeometry reference in GIS tutorial.
+  * Refs #28066 -- Fixed Python 2 failures in sessions_tests.
+  * Removed obsolete Widget.format_output() in tests.
+  * Fixed #28059 -- Restored class attribute in <ul> of widgets that use multiple_input.html.
+  * Fixed typo in docs/ref/contrib/postgres/fields.txt.
+  * Refs #27025 -- Fixed "invalid escape sequence" warning in auth_tests on Python 3.6.
+  * Fixed #28031 -- Removed notes about old uWSGI/sentry versions (refs #20537).
+  * Removed unexpected initial attribute in data migration examples.
+  * Renamed "Mac OS X" to "macOS" in docs.
+  * Sorted imports per isort 4.2.9.
+  * Refs #28138 -- Added release notes for d52577b62b3138674807ac74251fab7faed48331.
+  * Back to the future.
+  * Fixed #27993 -- Fixed model form default fallback for SelectMultiple.
+  * Refs #27866 -- Adapted backport for Python 2 compatibility
+  * Removed unused links in docs/internals/contributing/triaging-tickets.txt.
+  * Clarified QuerySet.iterator()'s docs on server-side cursors.
+  * Fixed #28096 -- Allowed prefetch calls with ModelIterable subclasses
+  * Fixed #28414 -- Fixed ClearableFileInput rendering as a subwidget of MultiWidget.
+  * Corrected REPL example in forms docs for Python 3.
+  * Refs #28181 -- Corrected detection of GDAL 2.1 on Windows.
+  * Fixed #28075 -- Prevented ChoiceWidget from localizing option values.
+  * Fixed #28282 -- Fixed class-based indexes name for models that only inherit Model.
+  * Fixed #28038 -- Restored casting to text of builtin lookups on PostgreSQL.
+  * Fixed #28418 -- Fixed queryset crash when using a GenericRelation to a proxy model.
+  * Fixed #28062 -- Added a setting to disable server-side cursors on PostgreSQL.
+  * Fixed #28105 -- Fixed crash in BaseGeometryWidget.get_context() when overriding existing attrs.
+  * Refs #28160 -- Skipped a GeoManager test if not using a GIS database backend.
+  * Fixed #28157 -- Fixed choice ordering in form fields with grouped and non-grouped options.
+  * Fixed #28095 -- Doc'd Widget.build_attrs() signature change in Django 1.11.
+  * Fixed a forms test after updated translations.
+  * Fixed 403 link in docs/ref/contrib/gis/install/spatialite.txt.
+  * Simplified schema.tests with assertForeignKeyExists()/assertForeignKeyNotExists().
+  * Fixed #28336 -- Fixed typo in docs/ref/settings.txt.
+  * Fixed #28378 -- Fixed union() and difference() when combining with a queryset raising EmptyResultSet.
+  * Refs #28052 -- Cleaned up some indexes in schema tests.
+  * Fixed #28047 -- Fixed QuerySet.filter() crash when it uses the name of a OneToOneField pk.
+  * Added release date for 1.11.1.
+  * Fixed #28327 -- Removed contradictory description of mod_wsgi docs.
+  * Clarified "newly-introduced features" in the supported versions policy.
+  * Fixed docs build with Sphinx 1.6.
+  * Fixed #28239 -- Removed docs for a removed arg of template.Context.
+  * Bumped version for 1.11.2 release.
+  * Refs #28066 -- Fixed nondeterministic ordering test failure in sessions_tests.
+  * Updated postgis.net and gaia-gis.it links to https.
+  * Fixed typos in docs/topic/db/search.txt.
+  * Fixed #28174 -- Fixed crash in runserver's autoreload with Python 2 on Windows with non-str environment variables.
+  * Fixed typos in docs/howto/static-files/index.txt.
+  * Fixed #28294 -- Doc'd request/args/kwargs attributes of class-based views.
+  * Fixed #27967 -- Fixed KeyError in admin's inline form with inherited non-editable pk.
+  * Fixed db backend discovery in admin_scripts tests.
+  * Fixed outdated TIME_FORMAT in docs/ref/templates/builtins.txt.
+  * Fixed #26028 -- Added overriding templates howto.
+  * Updated was_published_recently() tutorial test to check boundary condition.
+  * Fix a typo in django/db/transaction.py
+  * Fixed #28109 -- Corrected the stack level of unordered queryset pagination warnings.
+  * Fixed #28142 -- Fixed is_safe_url() crash on invalid IPv6 URLs.
+  * Refs #22397 -- Removed model in test cleanup
+  * Fixed #28052 -- Prevented dropping Meta.indexes when changing db_index to False.
+  * Fixed #18485 -- Doc'd behavior of PostgreSQL when manually setting AutoField.
+  * Updated core translations from Transifex
+  * Fixed #28166 -- Fixed Model._state.db on MTI parent model after saving child model.
+  * Added missing import in docs/topics/db/queries.txt.
+  * Refs #27919 -- Passed ChoiceWidget.create_option() kwargs as expected.
+  * Fixed #28229 -- Fixed the value of LoginView's "next" template variable.
+  * Fixed #27975 -- Fixed crash if ModelChoiceField's queryset=None.
+  * Added release date for 1.11.2.
+  * Fixed #27912, CVE-2017-7233 -- Fixed is_safe_url() with numeric URLs.
+  * Fixed #28159 -- Fixed BaseInlineFormSet._construct_form() crash when using save_as_new.
+  * Removed an obsolete temporal reference in docs/faq/general.txt.
+  * Fixed #28042 -- Fixed crash when using a two-tuple in EmailMessage's attachments arg.
+  * Fixed #27945 -- Clarified that RegexValidator searches with the regex.
+  * Linked GIS functions docs to corresponding PostGIS docs.
+  * Refs #17453 -- Fixed broken link to #django IRC logs.
+  * Fixed gis_tests.geoapp test with incorrect geodetic coordinates.
+  * Fixed #28066 -- Prevented SessionBase.cycle_key() from discarding data.
+  * Fixed #27730 -- Doc'd that template vars created outside a block can't be used in it.
+  * Fixed #28069 -- Moved setup_test_environment() warning in tutorial 5.
+  * Fixed #28130 -- Fixed formset min_num validation with initial, unchanged forms.
+  * Fixed #28091 -- Re-raised original exception when closing cursor cleanup fails
+  * Clarified backend support of Area GIS function.
+  * Fixed #28387 -- Fixed has_changed() for disabled form fields that subclass it.
+  * Fixed #27915 -- Allowed Meta.indexes to be defined in abstract models.
+  * Fixed #26755 -- Fixed test_middleware_classes_headers if Django source isn't writable.
+  * Fixed #28188 -- Fixed crash when pickling model fields.
+  * Fixed typo in docs/ref/models/querysets.txt.
+  * Pointed Dive into Python links to python3 site
+  * Refs #25240 -- Added ExtractWeek examples.
+  * Added some shell output in tutorial 2.
+  * Removed inappropriate highlighting in committing-code.txt.
+  * Fixed #28399 -- Fixed QuerySet.count() for union(), difference(), and intersection() queries.
+  * Fixed #28212 -- Allowed customizing the port that LiveServerTestCase uses.
+  * Fixed flake8 warning on Python 2.
+  * Clarified meaning of "Optional" in auth.models.User field docs.
+  * Clarified HStoreField model/form difference in 1.11 release notes.
+  * Removed self from method signatures in docs.
+  * Added stub release notes for 1.11.4.
+  * Updated tests after French translation update
+  * Fixed #27603 -- Fixed AsKML when queryset is evaluated more than once.
+  * Fixed #28262 -- Fixed incorrect DisallowedModelAdminLookup when a nested reverse relation is in list_filter.
+  * Fixed #27434 -- Doc'd how to raise a model validation error for a field not in a model form.
+  * Refs #21415 -- Fixed contrib.humanize translations for es_AR
+  * Fixed #27655 -- Added some guidelines to the coding style docs.
+  * Updated contrib translations from Transifex
+  * Removed nonexistent methods from File's docs.
+  * Doc'd the need to remove default ordering on Subquery aggregates.
+  * Fixed broken link to mysqlclient docs.
+  * Fixed #28210 -- Fixed Model._state.adding on MTI parent model after saving child model.
+  * Removed usage of deprecated sphinx.util.compat.Directive.
+  * Refs #28100 -- Added 1.11.1 release note for e6bfd3d751278d7cfd09af1120c4bbce509c05da.
+  * Fixed #28190 -- Clarifed how include/extends treat template names.
+  * Refs #26294 -- Fixed typo in docs/ref/django-admin.txt.
+  * Refs #28091 -- Fixed typo and rephrased 1.11.1 release note.
+  * Fixed typo in docs/ref/class-based-views/mixins-single-object.txt.
+  * Bumped version for 1.11.1 release.
+  * Added release date for 1.11.3.
+  * Bumped version for 1.11 release candidate 1.
+  * Simplified tutorial's test names and docstrings.
+  * Fixed typo in django/db/backends/base/schema.py comment.
+  * Fixed #28233 -- Used a simpler example in the aggregation "cheat sheet" docs.
+- Require python-pytz and Recommend python-bcrypt
+
+-------------------------------------------------------------------
+Wed Aug  9 17:58:19 UTC 2017 - toddrme2178@gmail.com
+
+- Fix building on older Python versions.
+
+-------------------------------------------------------------------
+Mon Jul 10 18:42:12 UTC 2017 - toddrme2178@gmail.com
+
+- Fix wrong-script-interpreter rpmlint error.
+
+-------------------------------------------------------------------
+Mon May  8 14:32:03 UTC 2017 - toddrme2178@gmail.com
+
+- django-admin.py should be the master, not django-admin.
+
+-------------------------------------------------------------------
+Sat May  6 03:31:54 UTC 2017 - toddrme2178@gmail.com
+
+- Don't provide python2-django or python2-South, singlespec
+  packages should use correct name.
+
+-------------------------------------------------------------------
+Thu May  4 15:33:21 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Tue Apr  4 14:38:13 UTC 2017 - appleonkel@opensuse.org
+
+- Update to 1.10.7
+  Bugfixes
+  * Made admin’s RelatedFieldWidgetWrapper use the wrapped widget’s 
+    value_omitted_from_data() method (#27905) 
+  * Fixed model form default fallback for SelectMultiple (#27993)
+
+-------------------------------------------------------------------
+Wed Mar  1 14:24:17 UTC 2017 - appleonkel@opensuse.org
+
+- Update to 1.10.6
+  Bugfixes
+  * Fixed ClearableFileInput’s “Clear” checkbox on model form fields where the 
+    model field has a default  
+  * Fixed RequestDataTooBig and TooManyFieldsSent exceptions crashing rather than 
+    generating a bad request response
+  * Fixed a crash on Oracle and PostgreSQL when subtracting DurationField or 
+    IntegerField from DateField 
+  * Fixed query expression date subtraction accuracy on PostgreSQL for differences 
+    large an a month
+  * Fixed a GDALException raised by GDALClose on GDAL >= 2.0 
+
+-------------------------------------------------------------------
+Tue Jan 31 14:00:11 UTC 2017 - michal@cihar.com
+
+- Update to 1.10.5
+  * See https://docs.djangoproject.com/en/1.10/releases/1.10/
+  * Full text search for PostgreSQL
+  * New-style middleware
+  * Official support for Unicode usernames
+
+-------------------------------------------------------------------
+Fri Dec  2 10:17:25 UTC 2016 - appleonkel@opensuse.org
+
+- Update to 1.9.12
+  Bugfixes
+  * Quoted the Oracle test user’s password in queries to fix the “ORA-00922: missing 
+    or invalid option” error when the password starts with a number or 
+    special character (#27420)
+  * DNS rebinding vulnerability when DEBUG=True
+  * CSRF protection bypass on a site with Google Analytics
+
+-------------------------------------------------------------------
+Sat Sep 24 16:42:55 UTC 2016 - sbahling@suse.com
+
+- Change Requires: python-Pillow to python-imaging for compatibility
+  with SLE-12 which provides PIL instead of Pillow. 
+
+-------------------------------------------------------------------
+Tue Aug  9 09:11:24 UTC 2016 - aplanas@suse.com
+
+- Update to 1.9.9
+  Bugfixes
+  * Fixed invalid HTML in template postmortem on the debug page
+    (#26938).
+  * Fixed some GIS database function crashes on MySQL 5.7 (#26657).
+
+- Update to 1.9.8
+  Fix XSS in admin’s add/change related popup (bsc#988420)
+  Unsafe usage of JavaScript’s Element.innerHTML could result in XSS
+  in the admin’s add/change related popup. Element.textContent is now
+  used to prevent execution of the data.
+  The debug view also used innerHTML. Although a security issue wasn’t
+  identified there, out of an abundance of caution it’s also updated
+  to use textContent.
+
+  Bugfixes
+  * Fixed missing varchar/text_pattern_ops index on CharField and
+    TextField respectively when using AddField on PostgreSQL (#26889).
+  * Fixed makemessages crash on Python 2 with non-ASCII file names
+    (#26897).
+
+- Update to 1.9.7
+  Bugfixes
+  * Removed the need for the request context processor on the admin
+    login page to fix a regression in 1.9 (#26558).
+  * Fixed translation of password validators’ help_text in forms
+    (#26544).
+  * Fixed a regression causing the cached template loader to crash
+    when using lazy template names (#26603).
+  * Fixed on_commit callbacks execution order when callbacks make
+    transactions (#26627).
+  * Fixed HStoreField to raise a ValidationError instead of crashing
+    on non-dictionary JSON input (#26672).
+  * Fixed dbshell crash on PostgreSQL with an empty database name
+    (#26698).
+  * Fixed a regression in queries on a OneToOneField that has to_field
+    and primary_key=True (#26667).
+
+-------------------------------------------------------------------
+Tue May  3 08:23:48 UTC 2016 - aplanas@suse.com
+
+- Update to 1.9.6
+  Bugfixes
+  * Added support for relative path redirects to the test client and
+    to SimpleTestCase.assertRedirects() because Django 1.9 no longer
+    converts redirects to absolute URIs (#26428). 
+  * Fixed TimeField microseconds round-tripping on MySQL and SQLite
+    (#26498).
+  * Prevented makemigrations from generating infinite migrations for a
+    model field that references a functools.partial (#26475).
+  * Fixed a regression where SessionBase.pop() returned None rather
+    than raising a KeyError for nonexistent values (#26520).
+  * Fixed a regression causing the cached template loader to crash
+    when using template names starting with a dash (#26536).
+  * Restored conversion of an empty string to null when saving values
+    of GenericIPAddressField on SQLite and MySQL (#26557).
+  * Fixed a makemessages regression where temporary .py extensions
+    were leaked in source file paths (#26341).
+ 
+-------------------------------------------------------------------
+Sun May  1 12:29:52 UTC 2016 - michael@stroeder.com
+
+- Update to 1.9.5
+
+-------------------------------------------------------------------
+Tue Feb  2 09:21:43 UTC 2016 - aplanas@suse.com
+
+- Update to 1.9.2
+  Security issue
+  * User with "change" but not "add" permission can create objects for
+    ModelAdmin's with save_as=True
+  Backwards incompatible change
+  * .py-tpl files rewritten in project/app templates
+  Bugfixes
+  * Fixed a regression in ConditionalGetMiddleware causing
+    If-None-Match checks to always return HTTP 200 (#26024).
+  * Fixed a regression that caused the "user-tools" items to display
+    on the admin's logout page (#26035).
+  * Fixed a crash in the translations system when the current language
+    has no translations (#26046).
+  * Fixed a regression that caused the incorrect day to be selected
+    when opening the admin calendar widget for timezones from GMT+0100
+    to GMT+1200 (#24980).
+  * Fixed a regression in the admin's edit related model popup that
+    caused an escaped value to be displayed in the select dropdown of
+    the parent window (#25997).
+  * Fixed a regression in 1.8.8 causing incorrect index handling in
+    migrations on PostgreSQL when adding db_index=True or unique=True
+    to a CharField or TextField that already had the other specified,
+    or when removing one of them from a field that had both, or when
+    adding unique=True to a field already listed in unique_together
+    (#26034).
+  * Fixed a regression where defining a relation on an abstract
+    model's field using a string model name without an app_label no
+    longer resolved that reference to the abstract model's app if
+    using that model in another application (#25858).
+  * Fixed a crash when destroying an existing test database on MySQL
+    or PostgreSQL (#26096).
+  * Fixed CSRF cookie check on POST requests when
+    USE_X_FORWARDED_PORT=True (#26094).
+  * Fixed a QuerySet.order_by() crash when ordering by a relational
+    field of a ManyToManyField through model (#26092).
+  * Fixed a regression that caused an exception when making database
+    queries on SQLite with more than 2000 parameters when DEBUG is
+    True on distributions that increase the SQLITE_MAX_VARIABLE_NUMBER
+    compile-time limit to over 2000, such as Debian (#26063).
+  * Fixed a crash when using a reverse OneToOneField in
+    ModelAdmin.readonly_fields (#26060).
+  * Fixed a crash when calling the migrate command in a test case with
+    the available_apps attribute pointing to an application with
+    migrations disabled using the MIGRATION_MODULES setting (#26135).
+  * Restored the ability for testing and debugging tools to determine
+    the template from which a node came from, even during template
+    inheritance or inclusion. Prior to Django 1.9, debugging tools
+    could access the template origin from the node via
+    Node.token.source[0]. This was an undocumented, private API. The
+    origin is now available directly on each node using the
+    Node.origin attribute (#25848).
+  * Fixed a regression in Django 1.8.5 that broke copying a
+    SimpleLazyObject with copy.copy() (#26122).
+  * Always included geometry_field in the GeoJSON serializer output
+    regardless of the fields parameter (#26138).
+  * Fixed the contrib.gis map widgets when using
+    USE_THOUSAND_SEPARATOR=True (#20415).
+  * Made invalid forms display the initial of values of their disabled
+    fields (#26129).
+
+-------------------------------------------------------------------
+Wed Jan 27 15:25:25 UTC 2016 - aplanas@suse.com
+
+- Update to 1.9.1
+  Bugfixes
+  * Fixed BaseCache.get_or_set() with the DummyCache backend (#25840).
+  * Fixed a regression in FormMixin causing forms to be validated
+    twice (#25548, #26018).
+  * Fixed a system check crash with nested ArrayFields (#25867).
+  * Fixed a state bug when migrating a SeparateDatabaseAndState
+    operation backwards (#25896).
+  * Fixed a regression in CommonMiddleware causing If-None-Match
+    checks to always return HTTP 200 (#25900).
+  * Fixed missing varchar/text_pattern_ops index on CharField and
+    TextField respectively when using AlterField on PostgreSQL
+    (#25412).
+  * Fixed admin’s delete confirmation page’s summary counts of related
+    objects (#25883).
+  * Added from __future__ import unicode_literals to the default
+    apps.py created by startapp on Python 2 (#25909). Add this line to
+    your own apps.py files created using Django 1.9 if you want your
+    migrations to work on both Python 2 and Python 3.
+  * Prevented QuerySet.delete() from crashing on MySQL when querying
+    across relations.
+  * Fixed evaluation of zero-length slices of QuerySet.values()
+    (#25894).
+  * ...
+  * https://docs.djangoproject.com/en/1.9/releases/1.9.1/
+  
+-------------------------------------------------------------------
+Wed Dec  2 15:14:05 UTC 2015 - aplanas@suse.com
+
+- update to 1.9 (CVE-2016-7401, CVE-2015-8213)
+  * https://docs.djangoproject.com/en/1.9/releases/1.9/ 
+  * Performing actions after a transaction commit
+  * Password validation
+  * Permission mixins for class-based views
+  * New styling for "contrib.admin"
+  * Running tests in parallel
+
+-------------------------------------------------------------------
+Tue Nov 10 10:39:22 UTC 2015 - tbechtold@suse.com
+
+- update to 1.8.6:
+  * https://docs.djangoproject.com/en/1.8/releases/1.8.5/
+  * https://docs.djangoproject.com/en/1.8/releases/1.8.6/
+
+-------------------------------------------------------------------
+Tue Nov 10 05:36:21 UTC 2015 - tbechtold@suse.com
+
+- add missing Requires for python-setuptools (bsc#952198)
+  /usr/bin/django-admin needs the pkg_resources framework from
+  python-setuptools to run properly.
+
+-------------------------------------------------------------------
+Sun Sep 20 07:51:27 UTC 2015 - tbechtold@suse.com
+
+- update to 1.8.4 (CVE-2015-5963):
+  * https://docs.djangoproject.com/en/1.8/releases/1.8.4/
+
+-------------------------------------------------------------------
+Fri Jul 10 11:51:49 UTC 2015 - astieger@suse.com
+
+- add keyring and verify source signature
+
+-------------------------------------------------------------------
+Fri Jul 10 10:03:54 UTC 2015 - dmueller@suse.com
+
+- update to 1.8.3:
+  * https://docs.djangoproject.com/en/1.8/releases/1.8.3/
+  Various bugfixes/security fixes (CVE-2015-5145, bsc#937524)
+
+-------------------------------------------------------------------
+Tue May 26 08:26:56 UTC 2015 - dmueller@suse.com
+
+- update to 1.8.2 (CVE-2015-3982):
+  * https://docs.djangoproject.com/en/1.8/releases/1.8.2/
+  * https://docs.djangoproject.com/en/1.8/releases/1.8.1/
+
+-------------------------------------------------------------------
+Thu Apr  2 07:35:07 UTC 2015 - aplanas@suse.com
+
+- Update to Django 1.8
+  * "Long-Term Support" (LTS) release
+  New features:
+  * Model._meta API
+  * Multiple template engines
+  * Security enhancements
+  * New PostgreSQL specific functionality
+  * New data types
+  * Query Expressions, Conditional Expressions, and Database Functions
+  * TestCase data setup
+  Backwards incompatible changes:
+  * Related object operations are run in a transaction
+  * Assigning unsaved objects to relations raises an error
+  * Management commands that only accept positional arguments
+  * Custom test management command arguments through test runner
+  * Model check ensures auto-generated column names are within limits
+    specified by database
+  * Query relation lookups now check object types
+  * select_related() now checks given fields
+  * Default EmailField.max_length increased to 254
+  * (DROP) Support for PostgreSQL versions older than 9.0
+  * (DROP) Support for MySQL versions older than 5.5
+  * (DROP) Support for Oracle versions older than 11.1
+  * Specific privileges used instead of roles for tests on Oracle
+  * ...
+
+-------------------------------------------------------------------
+Mon Mar 23 10:51:37 UTC 2015 - mcihar@suse.cz
+
+- Update to Django 1.7.7:
+  Security issues:
+  * Denial-of-service possibility with strip_tags()
+  * Mitigated possible XSS attack via user-supplied redirect URLs
+  Bugfixes:
+  * Fixed renaming of classes in migrations where renaming a subclass would
+    cause incorrect state to be recorded for objects that referenced the
+    superclass (#24354).
+  * Stopped writing migration files in dry run mode when merging migration
+    conflicts. When makemigrations --merge is called with verbosity=3 the
+    migration file is written to stdout (:ticket: 24427).
+
+-------------------------------------------------------------------
+Wed Mar 11 16:18:53 UTC 2015 - aplanas@suse.com
+
+- Update to Djano 1.7.6:
+  Bugfixes
+  * Mitigated an XSS attack via properties in
+    "ModelAdmin.readonly_fields"
+  * Fixed crash when coercing "ManyRelatedManager" to a string
+    (#24352).
+  * Fixed a bug that prevented migrations from adding a foreign key
+    constraint when converting an existing field to a foreign key
+    (#24447).
+
+-------------------------------------------------------------------
+Fri Feb 27 14:36:46 UTC 2015 - aplanas@suse.com
+
+- Update to Django 1.7.5:
+  Bugfixes
+  * Reverted a fix that prevented a migration crash when unapplying
+    contrib.contenttypes's or contrib.auth's first migration (#24075)
+    due to severe impact on the test performance (#24251) and problems
+    in multi-database setups (#24298).
+  * Fixed a regression that prevented custom fields inheriting from
+    ManyToManyField from being recognized in migrations (#24236).
+  * Fixed crash in contrib.sites migrations when a default database
+    isn't used (#24332).
+  * Added the ability to set the isolation level on PostgreSQL with
+    psycopg2 >= 2.4.2 (#24318). It was advertised as a new feature in
+    Django 1.6 but it didn't work in practice.
+  * Formats for the Azerbaijani locale (az) have been added.
+
+-------------------------------------------------------------------
+Fri Jan 30 15:13:10 UTC 2015 - aplanas@suse.com
+
+- Update to Django 1.7.4:
+  Bugfixes
+  * Fixed a migration crash when unapplying ``contrib.contenttypes``’s
+    or ``contrib.auth``’s first migration (:ticket:`24075`).
+  * Made the migration's ``RenameModel`` operation rename
+    ``ManyToManyField`` tables (:ticket:`24135`).
+  * Fixed a migration crash on MySQL when migrating from a
+    ``OneToOneField`` to a ``ForeignKey`` (:ticket:`24163`).
+  * Prevented the ``static.serve`` view from producing
+    ``ResourceWarning``\s in certain circumstances (security fix
+    regression, :ticket:`24193`).
+  * Fixed schema check for ManyToManyField to look for internal type
+    instead of checking class instance, so you can write custom
+    m2m-like fields with the same behavior. (:ticket:`24104`).
+
+-------------------------------------------------------------------
+Wed Jan 14 07:57:46 UTC 2015 - mcihar@suse.cz
+
+- Update to Django 1.7.3:
+  Security fixes:
+  * WSGI header spoofing via underscore/dash conflation.
+  * Mitigated possible XSS attack via user-supplied redirect URLs.
+  * Denial-of-service attack against django.views.static.serve.
+  * Database denial-of-service with ModelMultipleChoiceField.
+  Bug fixes:
+  * The default iteration count for the PBKDF2 password hasher has been
+    increased by 25%. This part of the normal major release process was
+    inadvertently omitted in 1.7. This backwards compatible change will not
+    affect users who have subclassed
+    django.contrib.auth.hashers.PBKDF2PasswordHasher to change the default
+    value.
+  * Fixed a crash in the CSRF middleware when handling non-ASCII referer 
+    header (#23815).
+  * Fixed a crash in the django.contrib.auth.redirect_to_login view when 
+    passing a reverse_lazy() result on Python 3 (#24097).
+  * Added correct formats for Greek (el) (#23967).
+  * Fixed a migration crash when unapplying a migration where multiple 
+    operations interact with the same model (#24110).
+
+-------------------------------------------------------------------
+Sun Jan 11 12:49:28 UTC 2015 - p.drouand@gmail.com
+
+- South has been merged in main Django; provide and obsolete it
+
+-------------------------------------------------------------------
+Thu Jan  8 11:04:09 UTC 2015 - tbechtold@suse.com
+
+- Update to Django 1.7.2:
+
+  * Fixed migration’s renaming of auto-created many-to-many tables
+    when changing Meta.db_table (#23630).
+  * Fixed a migration crash when adding an explicit id field to a
+    model on SQLite (#23702).
+  * Added a warning for duplicate models when a module is
+    reloaded. Previously a RuntimeError was raised every time two
+    models clashed in the app registry. (#23621).
+  * Prevented flush from loading initial data for migrated apps
+    (#23699).
+  * Fixed a makemessages regression in 1.7.1 when STATIC_ROOT has the
+    default None value (#23717).
+  * Added GeoDjango compatibility with mysqlclient database driver.
+  * Fixed MySQL 5.6+ crash with GeometryFields in migrations (#23719).
+  * Fixed a migration crash when removing a field that is referenced
+    in AlterIndexTogether or AlterUniqueTogether (#23614).
+  * Updated the first day of the week in the Ukrainian locale to
+    Monday.
+  * Added support for transactional spatial metadata initialization on
+    SpatiaLite 4.1+ (#23152).
+  * Fixed a migration crash that prevented changing a nullable field
+    with a default to non-nullable with the same default (#23738).
+  * Fixed a migration crash when adding GeometryFields with blank=True
+    on PostGIS (#23731).
+  * Allowed usage of DateTimeField() as Transform.output_field
+    (#23420).
+  * Fixed a migration serializing bug involving float("nan") and
+    float("inf") (#23770).
+  * Fixed a regression where custom form fields having a queryset
+    attribute but no limit_choices_to could not be used in a ModelForm
+    (#23795).
+  * Fixed a custom field type validation error with MySQL backend when
+    db_type returned None (#23761).
+  * Fixed a migration crash when a field is renamed that is part of an
+    index_together (#23859).
+  * Fixed squashmigrations to respect the --no-optimize parameter
+    (#23799).
+  * Made RenameModel reversible (#22248)
+  * Avoided unnecessary rollbacks of migrations from other apps when
+    migrating backwards (#23410).
+  * Fixed a rare query error when using deeply nested subqueries
+    (#23605).
+  * Fixed a crash in migrations when deleting a field that is part of
+    a index/unique_together constraint (#23794).
+  * Fixed django.core.files.File.__repr__() when the file’s name
+    contains Unicode characters (#23888).
+  * Added missing context to the admin’s delete_selected view that
+    prevented custom site header, etc. from appearing (#23898).
+  * Fixed a regression with dynamically generated inlines and allowed
+    field references in the admin (#23754).
+  * Fixed an infinite loop bug for certain cyclic migration
+    dependencies, and made the error message for cyclic dependencies
+    much more helpful.
+  * Added missing index_together handling for SQLite (#23880).
+  * Fixed a crash when RunSQL SQL content was collected by the schema
+    editor, typically when using sqlmigrate (#23909).
+  * Fixed a regression in contrib.admin add/change views which caused
+    some ModelAdmin methods to receive the incorrect obj value
+    (#23934).
+  * Fixed runserver crash when socket error message contained Unicode
+    characters (#23946).
+  * Fixed serialization of type when adding a deconstruct() method
+    (#23950).
+  * Prevented the SessionAuthenticationMiddleware from setting a
+    "Vary: Cookie" header on all responses (#23939).
+  * Fixed a crash when adding blank=True to TextField() on MySQL
+    (#23920).
+  * Fixed index creation by the migration infrastructure, particularly
+    when dealing with PostgreSQL specific {text|varchar}_pattern_ops
+    indexes (#23954).
+  * Fixed bug in makemigrations that created broken migration files
+    when dealing with multiple table inheritance and inheriting from
+    more than one model (#23956).
+  * Fixed a crash when a MultiValueField has invalid data (#23674).
+  * Fixed a crash in the admin when using “Save as new” and also
+    deleting a related inline (#23857).
+  * Always converted related_name to text (unicode), since that is
+    required on Python 3 for interpolation. Removed conversion of
+    related_name to text in migration deconstruction (#23455 and
+    #23982).
+  * Enlarged the sizes of tablespaces which are created by default for
+    testing on Oracle (the main tablespace was increased from 200M to
+    300M and the temporary tablespace from 100M to 150M). This was
+    required to accommodate growth in Django’s own test suite
+    (#23969).
+  * Fixed timesince filter translations in Korean (#23989).
+  * Fixed the SQLite SchemaEditor to properly add defaults in the
+    absence of a user specified default. For example, a CharField with
+    blank=True didn’t set existing rows to an empty string which
+    resulted in a crash when adding the NOT NULL constraint (#23987).
+  * makemigrations no longer prompts for a default value when adding
+    TextField() or CharField() without a default (#23405).
+  * Fixed a migration crash when adding order_with_respect_to to a
+    table with existing rows (#23983).
+  * Restored the pre_migrate signal if all apps have migrations
+    (#23975).
+  * Made admin system checks run for custom AdminSites (#23497).
+  * Ensured the app registry is fully populated when unpickling
+    models. When an external script (like a queueing infrastructure)
+    reloads pickled models, it could crash with an AppRegistryNotReady
+    exception (#24007).
+  * Added quoting to field indexes in the SQL generated by migrations
+    to prevent a crash when the index name requires it (##24015).
+  * Added datetime.time support to migrations questioner (#23998).
+  * Fixed admindocs crash on apps installed as eggs (#23525).
+  * Changed migrations autodetector to generate an AlterModelOptions
+    operation instead of DeleteModel and CreateModel operations when
+    changing Meta.managed. This prevents data loss when changing
+    managed from False to True and vice versa (#24037).
+  * Enabled the sqlsequencereset command on apps with migrations
+    (#24054).
+  * Added tablespace SQL to apps with migrations (#24051).
+  * Corrected contrib.sites default site creation in a multiple
+    database setup (#24000).
+  * Restored support for objects that aren’t str or bytes in
+    mark_for_escaping() on Python 3.
+  * Supported strings escaped by third-party libraries with the
+    __html__ convention in the template engine (#23831).
+  * Prevented extraneous DROP DEFAULT SQL in migrations (#23581).
+  * Restored the ability to use more than five levels of subqueries
+    (#23758).
+  * Fixed crash when ValidationError is initialized with a
+    ValidationError that is initialized with a dictionary (#24008).
+  * Prevented a crash on apps without migrations when running migrate
+    --list (#23366).
+
+-------------------------------------------------------------------
+Thu Oct 23 07:53:57 UTC 2014 - aplanas@suse.com
+
+- Update to Django 1.7.1
+
+  * Allowed related many-to-many fields to be referenced in the admin
+    (#23604).
+  * Added a more helpful error message if you try to migrate an app
+    without first creating the contenttypes table (#22411).
+  * Modified migrations dependency algorithm to avoid possible
+    infinite recursion.
+  * Fixed a UnicodeDecodeError when the flush error message contained
+    Unicode characters (#22882).
+  * Reinstated missing CHECK SQL clauses which were omitted on some
+    backends when not using migrations (#23416).
+  * Fixed serialization of type objects in migrations (#22951).
+  * Allowed inline and hidden references to admin fields (#23431).
+  * The @deconstructible decorator now fails with a ValueError if the
+    decorated object cannot automatically be imported (#23418).
+  * Fixed a typo in an inlineformset_factory() error message that
+    caused a crash (#23451).
+  * Restored the ability to use ABSOLUTE_URL_OVERRIDES with the
+    'auth.User' model (#11775). As a side effect, the setting now adds
+    a get_absolute_url() method to any model that appears in
+    ABSOLUTE_URL_OVERRIDES but doesn’t define get_absolute_url().
+  * Avoided masking some ImportError exceptions during application
+    loading (#22920).
+  * Empty index_together or unique_together model options no longer
+    results in infinite migrations (#23452).
+  * Fixed crash in contrib.sitemaps if lastmod returned a date rather
+    than a datetime (#23403).
+  * Allowed migrations to work with app_labels that have the same last
+    part (e.g. django.contrib.auth and vendor.auth) (#23483).
+  * Restored the ability to deepcopy F objects (#23492).
+  * Formats for Welsh (cy) and several Chinese locales (zh_CN,
+    zh_Hans, zh_Hant and zh_TW) have been added. Formats for
+    Macedonian have been fixed (trailing dot removed, #23532).
+  * Added quoting of constraint names in the SQL generated by
+    migrations to prevent crash with uppercase characters in the name
+    (#23065).
+  * Fixed renaming of models with a self-referential many-to-many
+    field (ManyToManyField('self')) (#23503).
+  * Added the get_extra(), get_max_num(), and get_min_num() hooks to
+    GenericInlineModelAdmin (#23539).
+  * Made migrations.RunSQL no longer require percent sign
+    escaping. This is now consistent with cursor.execute() (#23426).
+  * Made the SERIALIZE entry in the TEST dictionary usable (#23421).
+  * Fixed bug in migrations that prevented foreign key constraints to
+    unmanaged models with a custom primary key (#23415).
+  * Added SchemaEditor for MySQL GIS backend so that spatial indexes
+    will be created for apps with migrations (#23538).
+  * Added SchemaEditor for Oracle GIS backend so that spatial metadata
+    and indexes will be created for apps with migrations (#23537).
+  * Coerced the related_name model field option to unicode during
+    migration generation to generate migrations that work with both
+    Python 2 and 3 (#23455).
+  * Fixed MigrationWriter to handle builtin types without imports
+    (#23560).
+  * Fixed deepcopy on ErrorList (#23594).
+  * Made the admindocs view to browse view details check if the view
+    specified in the URL exists in the URLconf. Previously it was
+    possible to import arbitrary packages from the Python path. This
+    was not considered a security issue because admindocs is only
+    accessible to staff users (#23601).
+  * Fixed UnicodeDecodeError crash in AdminEmailHandler with non-ASCII
+    characters in the request (#23593).
+  * Fixed missing get_or_create and update_or_create on related
+    managers causing IntegrityError (#23611).
+  * Made urlsafe_base64_decode() return the proper type (byte string)
+    on Python 3 (#23333).
+  * makemigrations can now serialize timezone-aware values (#23365).
+  * Added a prompt to the migrations questioner when removing the null
+    constraint from a field to prevent an IntegrityError on existing
+    NULL rows (#23609).
+  * Fixed generic relations in ModelAdmin.list_filter (#23616).
+  * Restored RFC compliance for the SMTP backend on Python 3 (#23063).
+  * Fixed a crash while parsing cookies containing invalid content
+    (#23638).
+  * The system check framework now raises error models.E020 when the
+    class method Model.check() is unreachable (#23615).
+  * Made the Oracle test database creation drop the test user in the
+    event of an unclean exit of a previous test run (#23649).
+  * Fixed makemigrations to detect changes to Meta.db_table (#23629).
+  * Fixed a regression when feeding the Django test client with an
+    empty data string (#21740).
+  * Fixed a regression in makemessages where static files were
+    unexpectedly ignored (#23583).
+
+-------------------------------------------------------------------
+Wed Sep 24 08:30:00 UTC 2014 - aplanas@suse.com
+
+- Update to Django 1.7
+
+  * A new built-in database migration system. Notes on upgrading from
+    South (a popular third*party application providing migration
+    functionality) are also available.
+  * A refactored concept of Django applications. Django applications
+    are no longer tied to the existence of a models files, and can now
+    specify both configuration data and code to be executed as Django
+    starts up.
+  * Improvements to the model Field API to support migrations and, in
+    the future, to enable easy addition of composite-key support to
+    Django's ORM.
+  * Improvements for custom Manager and QuerySet classes, allowing
+    reverse relationship traversal to specify the Manager to use, and
+    creation of a Manager from a custom QuerySet class.
+  * An extensible system check framework which can assist developers
+    in detecting and diagnosing errors.
+
+  Please refer to the release notes for all details and migration
+  instructions:
+  https://docs.djangoproject.com/en/1.7/releases/1.7/
+
+- Added python-setuptools as a BuildRequires.
+
+- Fixed Source URL from Django Project site.
+
+- Reordered sources.
+
+- Fixed deduplication to avoid wrong mtimes in pyc files.
+
+-------------------------------------------------------------------
+Thu Jul 31 16:55:11 UTC 2014 - dimstar@opensuse.org
+
+- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+
+-------------------------------------------------------------------
+Wed Jun 11 12:34:45 UTC 2014 - mcihar@suse.cz
+
+- Update to version 1.6.5, sercurity and important changes:
+  + Unexpected code execution using reverse()
+  + Caching of anonymous pages could reveal CSRF token
+  + MySQL typecasting
+  + select_for_update() requires a transaction
+  + Issue: Caches may incorrectly be allowed to store and serve private data
+  + Issue: Malformed redirect URLs from user input not correctly validated
+
+-------------------------------------------------------------------
+Fri Feb 14 09:32:07 UTC 2014 - speilicke@suse.com
+
+- Fix update-alternatives
+
+-------------------------------------------------------------------
+Fri Feb  7 08:30:04 UTC 2014 - speilicke@suse.com
+
+- Update to version 1.6.2:
+  + Prevented the base geometry object of a prepared geometry to be garbage
+    collected, which could lead to crash Django (#21662).
+  + Fixed a crash when executing the changepassword command when the user
+    object representation contained non-ASCII characters (#21627).
+  + The collectstatic command will raise an error rather than default to
+    using the current working directory if STATIC_ROOT is not set. Combined
+    with the --clear option, the previous behavior could wipe anything
+    below the current working directory (#21581).
+  + Fixed mail encoding on Python 3.3.3+ (#21093).
+  + Fixed an issue where when settings.DATABASES['default']['AUTOCOMMIT'] = False,
+    the connection wasn’t in autocommit mode but Django pretended it was.
+  + Fixed a regression in multiple-table inheritance exclude() queries (#21787).
+  + Added missing items to django.utils.timezone.__all__ (#21880).
+  + Fixed a field misalignment issue with select_related() and model inheritance (#21413).
+  + Fixed join promotion for negated AND conditions (#21748).
+  + Oracle database introspection now works with boolean and float fields (#19884).
+  + Fixed an issue where lazy objects weren’t actually marked as safe when
+    passed through mark_safe() and could end up being double-escaped (#21882).
+
+-------------------------------------------------------------------
+Tue Feb  4 14:33:40 UTC 2014 - mcihar@suse.cz
+
+- Update to version 1.6.1:
+  - Most bug fixes are minor; you can find a complete list in the Django 1.6.1
+    release notes.
+
+-------------------------------------------------------------------
+Tue Nov 19 10:06:23 UTC 2013 - speilicke@suse.com
+
+- Update-alternatives also for bash-completion
+
+-------------------------------------------------------------------
+Fri Nov 15 13:33:20 UTC 2013 - speilicke@suse.com
+
+- Only ghost /etc/alternatives on 12.3 or newer
+
+-------------------------------------------------------------------
+Thu Nov  7 16:36:41 UTC 2013 - speilicke@suse.com
+
+- Require python-Pillow for image-related functionality
+- Package was renamed from python-django
+- Drop Django-1.2-completion-only-for-bash.patch: Useless
+
+-------------------------------------------------------------------
+Tue Nov  5 03:27:13 UTC 2013 - alexandre@exatati.com.br
+
+- Update to version 1.6:
+  - Please read the release notes
+    https://docs.djangoproject.com/en/1.6/releases/1.6
+- Removed Patch2 as it is no needed anymore:
+  Django-1.4-CSRF_COOKIE_HTTPONLY-support.patch
+
+-------------------------------------------------------------------
+Tue Sep 17 12:37:53 UTC 2013 - speilicke@suse.com
+
+- Update to version 1.5.4:
+  + Fixed denial-of-service via large passwords
+- Changes from version 1.5.3:
+  + Fixed directory traversal with ssi template tag
+
+-------------------------------------------------------------------
+Wed Aug 14 05:49:54 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 1.5.2:
+  - Security release, please check release notes for details:
+    https://www.djangoproject.com/weblog/2013/aug/13/security-releases-issued
+
+-------------------------------------------------------------------
+Thu Mar 28 23:27:01 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 1.5.1:
+   - Memory leak fix, please read release announcement at
+     https://www.djangoproject.com/weblog/2013/mar/28/django-151.
+
+-------------------------------------------------------------------
+Tue Feb 26 19:49:02 UTC 2013 - alexandre@exatati.com.br
+
+- Update to 1.5:
+  - Please read the release notes
+    https://docs.djangoproject.com/en/1.5/releases/1.5
+
+-------------------------------------------------------------------
+Tue Dec 11 12:27:50 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 1.4.3:
+  - Security release:
+    - Host header poisoning
+    - Redirect poisoning
+  - Please check release notes for details:
+    https://www.djangoproject.com/weblog/2012/dec/10/security
+
+-------------------------------------------------------------------
+Sat Oct 20 13:41:10 UTC 2012 - saschpe@suse.de
+
+- Add a symlink from /usr/bin/django-admin.py to /usr/bin/django-admin
+
+-------------------------------------------------------------------
+Wed Oct 17 22:51:36 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 1.4.2:
+  - Security release:
+    - Host header poisoning
+  - Please check release notes for details:
+    https://www.djangoproject.com/weblog/2012/oct/17/security
+
+-------------------------------------------------------------------
+Mon Jul 30 21:38:31 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 1.4.1:
+  - Security release:
+    - Cross-site scripting in authentication views
+    - Denial-of-service in image validation
+    - Denial-of-service via get_image_dimensions()
+  - Please check release notes for details:
+    https://www.djangoproject.com/weblog/2012/jul/30/security-releases-issued
+
+-------------------------------------------------------------------
+Tue Jun 19 11:27:33 UTC 2012 - saschpe@suse.de
+
+- Add patch to support CSRF_COOKIE_HTTPONLY config
+
+-------------------------------------------------------------------
+Fri Mar 23 18:39:40 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 1.4:
+  - Please read the release notes
+    https://docs.djangoproject.com/en/dev/releases/1.4
+- Removed Patch2, it was merged on upstream,
+
+-------------------------------------------------------------------
+Thu Nov 24 12:30:40 UTC 2011 - saschpe@suse.de
+
+- Set license to SDPX style (BSD-3-Clause)
+- Package AUTHORS, LICENE and README files
+- No CFLAGS for noarch package
+- Drop runtime dependency on gettext-tools
+
+-------------------------------------------------------------------
+Sat Sep 10 12:05:07 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.3.1 to fix security issues, please read
+  https://www.djangoproject.com/weblog/2011/sep/09/security-releases-issued.
+
+-------------------------------------------------------------------
+Thu Mar 31 15:09:16 UTC 2011 - alexandre@exatati.com.br
+
+- Fix build on SLES_9.
+
+-------------------------------------------------------------------
+Wed Mar 23 11:39:53 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.3 final;
+- Refresh patch empty-ip-2.diff.
+
+-------------------------------------------------------------------
+Fri Mar 18 03:45:45 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.3-rc1;
+- Regenerated spec file with py2pack;
+- No more need to fix wrong line endings;
+- Refresh patch empty-ip-2.diff with -p0.
+
+-------------------------------------------------------------------
+Thu Mar  3 09:32:52 UTC 2011 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Removed empty lines, package authors from description
+  * Cleanup duplicates
+  * Corrected wrong file endings
+  * Added zero-length rpmlint filter
+- Added AUTHORS, LICENSE and doc files
+
+-------------------------------------------------------------------
+Wed Feb  9 03:37:29 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.2.5:
+  - This is a security update that fix:
+    - Flaw in CSRF handling;
+    - Potential XSS in file field rendering.
+
+-------------------------------------------------------------------
+Thu Dec 23 10:20:03 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.2.4:
+  - Information leakage in Django administrative interface;
+  - Denial-of-service attack in password-reset mechanism.
+- This is a mandatory security update.
+
+-------------------------------------------------------------------
+Sat Sep 11 11:46:41 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.2.3:
+  - The patch applied for the security issue covered in Django
+    1.2.2 caused issues with non-ASCII responses using CSRF
+    tokens. This has been remedied;
+  - The patch also caused issues with some forms, most notably
+    the user-editing forms in the Django administrative interface.
+    This has been remedied.
+  - The packaging manifest did not contain the full list of
+    required files. This has been remedied.
+
+-------------------------------------------------------------------
+Thu Sep  9 01:06:43 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.2.2.
+- This is a ciritical security update fixing a default XSS bug!
+
+-------------------------------------------------------------------
+Fri Jul  9 11:27:26 UTC 2010 - jfunk@funktronics.ca
+
+- Added patch to fix upstream bug 5622: Empty ipaddress raises an error
+
+-------------------------------------------------------------------
+Mon May 17 21:14:11 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.2.1.
+
+-------------------------------------------------------------------
+Mon May 17 18:35:20 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.2.
+
+-------------------------------------------------------------------
+Thu May  6 13:46:03 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.2-rc-1.
+
+-------------------------------------------------------------------
+Mon Apr  5 02:21:44 UTC 2010 - alexandre@exatati.com.br
+
+- Spec file cleaned with spec-cleaner;
+- Minor manual adjusts on spec file.
+
+-------------------------------------------------------------------
+Thu Mar 18 17:47:12 UTC 2010 - alexandre@exatati.com.br
+
+- Moved autocomplete file path from /etc/profile.d to
+  /etc/bash_completion.d. Then it works with konsole too.
+
+-------------------------------------------------------------------
+Mon Mar 15 01:53:50 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.2-beta-1;
+- Using -q option on prep section of spec file;
+- Using INSTALLED_FILES instead of declaring files;
+- Removed dummy changelog section of spec file;
+- Update completion bash patch.
+
+-------------------------------------------------------------------
+Sun Oct 11 07:51:32 UTC 2009 - nix@opensuse.org
+
+- Update to 1.1.1 due to security issue described at
+  http://www.djangoproject.com/weblog/2009/oct/09/security/
+
+-------------------------------------------------------------------
+Sat Oct 10 12:18:31 UTC 2009 - alexandre@exatati.com.br
+
+- Removed old tarball file (Django-1.1.tar.bz2).
+
+-------------------------------------------------------------------
+Tue Aug 25 12:23:09 CEST 2009 - garloff@suse.de
+
+- Fix python version check.
+
+-------------------------------------------------------------------
+Sat Aug 22 13:39:35 CEST 2009 - garloff@suse.de
+
+- Don't require python-sqlite2 for python >= 2.6.
+
+-------------------------------------------------------------------
+Fri Aug 21 11:38:03 CEST 2009 - garloff@suse.de
+
+- Build as noarch on factory.
+
+-------------------------------------------------------------------
+Wed Aug 19 17:40:46 CEST 2009 - poeml@suse.de
+
+- don't run bash completion on shells other than bash. Avoiding
+  error messages produced at login when using other shells.
+
+-------------------------------------------------------------------
+Fri Aug 14 18:05:42 UTC 2009 - alexandre@exatati.com.br
+
+- Added bash auto-complete to openSUSE.
+
+-------------------------------------------------------------------
+Wed Jul 29 00:00:00 CEST 2009 - listuser@peternixon.net
+
+- update to version 1.1
+- add python-django-rpmlintrc to quiet rpmlint complaints about -lang
+
+-------------------------------------------------------------------
+Wed Jul  1 19:04:26 CEST 2009 - poeml@suse.de
+
+- add python-xml to the Requires (./manage.py syncdb crashes
+  otherwise)
+
+-------------------------------------------------------------------
+Sat Sep 13 00:00:00 UTC 2008 - listuser@peternixon.net
+
+- update to version 1.0
+- Fix build on SLES9
+
+-------------------------------------------------------------------
+Thu Sep  4 10:40:58 CEST 2008 - crrodriguez@suse.de
+
+- update to version 1.0 final
+
+-------------------------------------------------------------------
+Wed May 14 00:00:00 UTC 2008 - listuser@peternixon.net
+
+- update to version 0.96.2
+
+-------------------------------------------------------------------
+Thu Feb 21 00:00:00 UTC 2008 - jfunk@funktronics.ca
+
+- The way simplejson is included in this package is not useful to other
+  packages. Removed from provides
+
+-------------------------------------------------------------------
+Fri Oct 26 20:20:08 UTC 2007 - crrodriguez@suse.de
+
+- verion 0.96.1 fixes D.o.S attack in the i18n module
+
+-------------------------------------------------------------------
+Fri Mar 23 00:00:00 UTC 2007 - crrodriguez@suse.de
+
+- update to version 0.96
+  see http://www.djangoproject.com/documentation/release_notes_0.96 for details
+- this package provides python-simplejson too.

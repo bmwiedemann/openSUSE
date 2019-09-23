@@ -1,0 +1,90 @@
+.TH "supertuxkart" "6" "0.9.2" "Dmitriy A. Perlow aka DAP-DarkneSS" ""
+.SH "NAME"
+SuperTuxKart
+.br
+.SH "SYNTAX"
+supertuxkart [OPTIONS]
+.br
+.SH "DESCRIPTION"
+Run SuperTuxKart, a racing game with go-kart that features the Tux and friends.
+.br
+.SH "OPTIONS"
+-N,	--no-start-screen	Immediately start race without showing a menu.
+.br
+-R,	--race-now			Same as -N but also skip the ready-set-go phase and the music.
+.br
+-t,	--track=NAME		Start at track NAME.
+.br
+	--gp=NAME			Start the specified Grand Prix.
+.br
+	--add-gp-dir=DIR	Load Grand Prix in DIR. Setting will be saved inconfig.xml under additional_gp_directory. Use --add-gp-dir="" to unset.
+.br
+	--stk-config=FILE	use ./data/FILE instead of ./data/stk_config.xml
+.br
+-k,	--numkarts=NUM		Number of karts on the racetrack.
+.br
+	--kart=NAME			Use kart number NAME.
+.br
+	--ai=a,b,...		Use the karts a, b, ... for the AI.
+.br
+	--laps=N			Define number of laps to N.
+.br
+	--mode=N			N=1 novice, N=2 driver, N=3 racer.
+.br
+	--type=N			N=0 Normal, N=1 Time trial, N=2 FTL
+.br
+	--reverse			Play track in reverse (if allowed)
+.br
+-f,	--fullscreen		Select fullscreen display.
+.br
+-w,	--windowed			Windowed display (default).
+.br
+-s,	--screensize=WxH	Set the screen size (e.g. 320x200).
+.br
+-v,	--version			Show version of SuperTuxKart.
+.br
+	--trackdir=DIR		A directory from which additional tracks are loaded.
+.br
+	--profile-laps=n	Enable automatic driven profile mode for n laps.
+.br
+	--profile-time=n	Enable automatic driven profile mode for n seconds.
+.br
+	--no-graphics		Do not display the actual race.
+.br
+	--demo-mode=t		Enables demo mode after t seconds idle time in main menu.
+.br
+	--demo-tracks=t1,t2	List of tracks to be used in demo mode. No spaces are allowed in the track names.
+.br
+	--demo-laps=n		Number of laps in a demo.
+.br
+	--demo-karts=n		Number of karts to use in a demo.
+.br
+	--server=name		Start a server (not a playing client).
+.br
+	--lan-server=name	Start a LAN server (not a playing client).
+.br
+	--server-password=	Sets a password for a server (both client&amp;server).
+.br
+	--login=s			Automatically log in (set the login).
+.br
+	--password=s		Automatically log in (set the password).
+.br
+	--port=n			Port number to use.
+.br
+	--max-players=n		Maximum number of clients (server only).
+.br
+	--no-console		Does not write messages in the console but to stdout.log.
+.br
+	--console			Write messages in the console and files
+.br
+-h,	--help				Show this help.
+.br
+	--log=N				Set the verbosity to a value between 0 (Debug) and 5 (Only Fatal messages)
+.br
+	--root=DIR			Path to add to the list of STK root directories. You can specify more than one by separating them with colons (:).
+.br
+	--cutscene=NAME		Launch the specified track as a cutscene. This is for internal debugging use only.
+.br
+.SH "SEE ALSO"
+You can visit SuperTuxKart's homepage at \fIhttp://supertuxkart.sourceforge.net\fR
+.br

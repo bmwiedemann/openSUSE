@@ -1,0 +1,9 @@
+<package name="ifplugd" project="openSUSE:Factory">
+  <title>Daemon Activating Network Interfaces on Cable Plug</title>
+  <description>ifplugd is a lightweight Linux daemon that configures the network
+automatically when a cable is plugged in and unconfigures it when the
+cable is pulled. It is primarily intended for use with laptops. It
+relies on the distribution's native network configuration subsystem, so
+is not very intrusive.</description>
+  <devel project="Base:System" package="ifplugd"/>
+</package>

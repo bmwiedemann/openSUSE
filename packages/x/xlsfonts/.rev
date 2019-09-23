@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>70e4d64a5c99432a84cc51f0af1bdcba</srcmd5>
+    <version>1.0.4</version>
+    <time>1336471533</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115471</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>70e4d64a5c99432a84cc51f0af1bdcba</srcmd5>
+    <version>1.0.4</version>
+    <time>1340184371</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>70e4d64a5c99432a84cc51f0af1bdcba</srcmd5>
+    <version>1.0.4</version>
+    <time>1359110656</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>70e4d64a5c99432a84cc51f0af1bdcba</srcmd5>
+    <version>1.0.4</version>
+    <time>1379665082</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>e8189c6ed6aeccd28c946cb2334ccc6c</srcmd5>
+    <version>1.0.4</version>
+    <time>1392448073</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>222162</requestid>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>e8189c6ed6aeccd28c946cb2334ccc6c</srcmd5>
+    <version>1.0.4</version>
+    <time>1409303769</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4ea29b637a1fa23d861de1e9f6527878</srcmd5>
+    <version>1.0.5</version>
+    <time>1429948448</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.5:
+  * config: Add missing AC_CONFIG_SRCDIR
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Print which option was in error along with usage message
+  * Add -version option to print program version
+  * Remove old CVS id tags</comment>
+    <requestid>303787</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5cd8a3acb7a5a384d07d7d7e18790ba1</srcmd5>
+    <version>1.0.6</version>
+    <time>1524144418</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.6
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * Add -v option to synopsis in man page
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>593599</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="xreader" project="openSUSE:Factory">
+  <title>Simple document viewer</title>
+  <description>X-Apps Document Reader is a document viewer capable of displaying multiple and singlepage document formats like PDF and PostScript.</description>
+  <devel project="X11:Cinnamon:Factory" package="xreader"/>
+</package>

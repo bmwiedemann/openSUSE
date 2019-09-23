@@ -1,0 +1,6 @@
+<package name="erlang-rebar-testsuite" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="erlang-rebar"/>
+  <bcntsynctag>erlang-rebar</bcntsynctag>
+</package>

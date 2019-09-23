@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Thu Aug  6 17:37:51 UTC 2015 - normand@linux.vnet.ibm.com
+
+- Two new patches to build ppc64/ppc64le archi
+  (not yet upstream)
+  quantum_espresso_add_ppc64le_archi_to_configure.patch
+  quantum_espresso_do_not_set_xlf_for_powerpc.patch
+
+-------------------------------------------------------------------
+Sat Mar 14 13:32:48 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 5.2.1
+  * No changelog available
+- Use download Url as source
+- Remove espresso-5.0.2-no-return-in-nonvoid-function.patch; fixed
+  on upstream release
+- Update espresso-5.0.2-implicit-pointer-decl.patch > 
+  espresso-implicit-pointer-decl.patch
+- Add xspectra-5.2.1.tar.gz; needed to build package
+- TODO file doesn't exist anymore
+- Copy README into the package
+
+-------------------------------------------------------------------
+Fri May  2 18:07:08 UTC 2014 - dmitry_r@opensuse.org
+
+- Fix finging of duplicate files in documentation
+
+-------------------------------------------------------------------
+Wed Apr 30 16:17:03 UTC 2014 - dmitry_r@opensuse.org
+
+- Rename package to quantum-espresso to avoid conflict with espresso
+
+-------------------------------------------------------------------
+Thu May 23 19:21:36 UTC 2013 - scorot@free.fr
+
+- first package
+- Fix GCC warnings
+  * espresso-5.0.2-implicit-pointer-decl.patch
+  * espresso-5.0.2-no-return-in-nonvoid-function.patch

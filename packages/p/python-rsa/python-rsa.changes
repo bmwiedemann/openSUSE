@@ -1,0 +1,131 @@
+-------------------------------------------------------------------
+Sat Mar 23 18:54:24 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- fix build on older distributions
+
+-------------------------------------------------------------------
+Sat Feb 16 13:51:23 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v 4.0.0
+  * Removed deprecated modules:
+    + rsa.varblock
+    + rsa.bigfile
+    + rsa._version133
+    + rsa._version200
+  * Removed CLI commands that use the VARBLOCK/bigfile format.
+  * Ensured that PublicKey.save_pkcs1() and PrivateKey.save_pkcs1() always return bytes.
+  * Dropped support for Python 2.6 and 3.3.
+  * Dropped support for Psyco.
+  * Miller-Rabin iterations determined by bitsize of key.
+  * Added function `rsa.find_signature_hash()` to return the name of the
+    hashing algorithm used to sign a message. `rsa.verify()` now also
+    returns that name, instead of always returning `True`.
+  * Add support for SHA-224 for PKCS1 signatures.
+  * Transitioned from `requirements.txt` to Pipenv for package management.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:58 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon May  1 16:30:14 UTC 2017 - toddrme2178@gmail.com
+
+- Update to Version 3.4.2
+  * Fixed dates in CHANGELOG.txt
+- Update to Version 3.4.1
+  * Included tests/private.pem in MANIFEST.in
+  * Included README.md and CHANGELOG.txt in MANIFEST.in
+- Update to Version 3.4
+  * Moved development to Github: https://github.com/sybrenstuvel/python-rsa
+  * Solved side-channel vulnerability by implementing blinding, fixes #19
+  * Deprecated the VARBLOCK format and rsa.bigfile module due to security issues, see
+    https://github.com/sybrenstuvel/python-rsa/issues/13
+  * Integration with Travis-CI, Coveralls and Code Climate
+  * Deprecated the old rsa._version133 and rsa._version200 submodules, they will be
+    completely removed in version 4.0.
+  * Add an 'exponent' argument to key.newkeys()
+  * Switched from Solovay-Strassen to Miller-Rabin primality testing, to
+    comply with NIST FIPS 186-4 as probabilistic primality test
+    (Appendix C, subsection C.3):
+  * Fixed bugs #12, #14, #27, #30, #49
+- Update to Version 3.3
+  * Thanks to Filippo Valsorda: Fix BB'06 attack in verify() by
+    switching from parsing to comparison.
+  * Simplified Tox configuration and dropped Python 3.2 support. The
+    coverage package uses a u'' prefix, which was reintroduced in 3.3
+    for ease of porting.
+- Update to Version 3.2.3
+  * Added character encoding markers for Python 2.x
+- Update to Version 3.2.1
+  * Added per-file licenses
+  * Added support for wheel packages
+  * Made example code more consistent and up to date with Python 3.4
+- Update to Version 3.2
+  * Mentioned support for Python 3 in setup.py
+- Implement single-spec version.
+- Fix source URL.
+- Remove cve_2016-1494.diff, fixed in latest version.
+
+-------------------------------------------------------------------
+Tue Jan  5 18:39:56 UTC 2016 - rjschwei@suse.com
+
+- Fix CVE 2016-1494 (bsc#960680)
+  - Add patch cve_2016-1494.diff
+
+-------------------------------------------------------------------
+Tue Dec  1 15:02:09 UTC 2015 - rjschwei@suse.com
+
+- Include version 3.1.4 in SLE 12 (FATE#319904, bsc#954690)
+
+-------------------------------------------------------------------
+Fri Nov 20 17:53:48 UTC 2015 - p.drouand@gmail.com
+
+- Fix coreutils requirement
+
+-------------------------------------------------------------------
+Wed Sep 23 11:35:21 UTC 2015 - rjschwei@suse.com
+
+- require coreutils (bsc#935595)
+  + %pre section uses rm which is part of coreutils package
+
+-------------------------------------------------------------------
+Tue May 12 14:50:12 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 3.1.4:
+  * no changelog available
+- add test dependency python-unittest2
+- fix update-alternatives
+- run the tests with run_tests.py
+- add README.rst to the package documentation
+
+-------------------------------------------------------------------
+Sat Nov 08 20:23:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in pre script
+
+-------------------------------------------------------------------
+Fri Oct 11 23:06:55 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 3.1.2
+  + No changelog available
+- Replace python-distribute with python-setuptools BuildRequires
+- Remove rsa-use-system-setuptools.patch; merged upstream
+- Implement update-alternatives
+
+-------------------------------------------------------------------
+Mon Aug 12 15:26:44 UTC 2013 - speilicke@suse.com
+
+- Add rsa-use-system-setuptools.patch
+
+-------------------------------------------------------------------
+Fri Nov 23 11:18:01 UTC 2012 - speilicke@suse.com
+
+- Update to version 3.1.1:
+  + Upstream provides no changelog
+
+-------------------------------------------------------------------
+Fri May 18 00:58:19 UTC 2012 - jfunk@funktronics.ca
+
+- Initial release
+

@@ -1,0 +1,211 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ad3ab79c83559ba5e5ff06cde0dcf09</srcmd5>
+    <version>1.9015</version>
+    <time>1168903879</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="103">
+    <srcmd5>9ad3ab79c83559ba5e5ff06cde0dcf09</srcmd5>
+    <version>1.9015</version>
+    <time>1168903879</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="104">
+    <srcmd5>3e17ac76e2ea8ed8642b0a0733d377c5</srcmd5>
+    <version>1.9015</version>
+    <time>1245276925</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="106">
+    <srcmd5>3e17ac76e2ea8ed8642b0a0733d377c5</srcmd5>
+    <version>1.9015</version>
+    <time>1245276925</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="107">
+    <srcmd5>7b5fca303ea96edef3270eb6b6641f37</srcmd5>
+    <version>1.9015</version>
+    <time>1263502003</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Net-Netmask based on submit request 29552 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="108">
+    <srcmd5>8b1badad0c61005552c7be73d193f95f</srcmd5>
+    <version>1.9015</version>
+    <time>1268925543</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="110">
+    <srcmd5>8b1badad0c61005552c7be73d193f95f</srcmd5>
+    <version>1.9015</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="111">
+    <srcmd5>8b1badad0c61005552c7be73d193f95f</srcmd5>
+    <version>1.9015</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="112">
+    <srcmd5>e782ca9880996ccb0f3ed20e8dfcc14c</srcmd5>
+    <version>1.9015</version>
+    <time>1287486613</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51010 from user coolo
+</comment>
+    <requestid>51010</requestid>
+  </revision>
+  <revision rev="10" vrev="113">
+    <srcmd5>45faf72b1623fe232b14443cc8dca809</srcmd5>
+    <version>1.9015</version>
+    <time>1287486617</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51010
+</comment>
+  </revision>
+  <revision rev="11" vrev="114">
+    <srcmd5>caf721afcf915ea71027216ef84bc9ea</srcmd5>
+    <version>1.9015</version>
+    <time>1291583296</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54608 from user coolo
+</comment>
+    <requestid>54608</requestid>
+  </revision>
+  <revision rev="12" vrev="115">
+    <srcmd5>36b39393b02b804c2b18194145ab02c6</srcmd5>
+    <version>1.9015</version>
+    <time>1291583303</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54608
+</comment>
+  </revision>
+  <revision rev="13" vrev="118">
+    <srcmd5>36b39393b02b804c2b18194145ab02c6</srcmd5>
+    <version>1.9015</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="113">
+    <srcmd5>4e567405848bc0522746b4e39bb06dcb</srcmd5>
+    <version>1.9016</version>
+    <time>1300984759</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65129 from user licensedigger
+</comment>
+    <requestid>65129</requestid>
+  </revision>
+  <revision rev="15" vrev="114">
+    <srcmd5>975b8d9bee67605a1d58a5c8398df3ad</srcmd5>
+    <version>1.9016</version>
+    <time>1300984767</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65129
+</comment>
+  </revision>
+  <revision rev="16" vrev="116">
+    <srcmd5>975b8d9bee67605a1d58a5c8398df3ad</srcmd5>
+    <version>1.9016</version>
+    <time>1319182292</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="117">
+    <srcmd5>f0cc31e1e634ff9c861fee975baf1e73</srcmd5>
+    <version>1.9016</version>
+    <time>1321875829</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92365</requestid>
+  </revision>
+  <revision rev="18" vrev="118">
+    <srcmd5>f8a0a2ac6c054bd5b4a54427b8d213b3</srcmd5>
+    <version>1.9016</version>
+    <time>1332999988</time>
+    <user>coolo</user>
+    <comment>license update: Artistic-1.0 or GPL-1.0+
+Package is licensed under the same terms as Perl (forwarded request 111334 from babelworx)</comment>
+    <requestid>111368</requestid>
+  </revision>
+  <revision rev="19" vrev="120">
+    <srcmd5>f8a0a2ac6c054bd5b4a54427b8d213b3</srcmd5>
+    <version>1.9016</version>
+    <time>1340183891</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="122">
+    <srcmd5>f8a0a2ac6c054bd5b4a54427b8d213b3</srcmd5>
+    <version>1.9016</version>
+    <time>1359109762</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="124">
+    <srcmd5>f8a0a2ac6c054bd5b4a54427b8d213b3</srcmd5>
+    <version>1.9016</version>
+    <time>1379663792</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a131c01439ad0e213127b501c0be47f3</srcmd5>
+    <version>1.9019</version>
+    <time>1381077476</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>202213</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>a131c01439ad0e213127b501c0be47f3</srcmd5>
+    <version>1.9019</version>
+    <time>1409302426</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3c4be5136c7bbadf14fc22cdbcb26c5f</srcmd5>
+    <version>1.9021</version>
+    <time>1429186484</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297149</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d080230ceceb3cae47e6778d419fe5c9</srcmd5>
+    <version>1.9022</version>
+    <time>1430891358</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305418</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3b604644aa7a90c13f827b493643fead</srcmd5>
+    <version>1.9101</version>
+    <time>1529667074</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615381</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>96f06b661d7782766944fa088c05b80d</srcmd5>
+    <version>1.9103</version>
+    <time>1530304516</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619576</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>948ab9bca713bd56478b157e0029754b</srcmd5>
+    <version>1.9104</version>
+    <time>1535701969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631296</requestid>
+  </revision>
+</revisionlist>

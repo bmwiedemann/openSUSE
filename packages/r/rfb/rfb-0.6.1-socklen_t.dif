@@ -1,0 +1,22 @@
+--- x0rfbserver/x0rfbserver.cc
++++ x0rfbserver/x0rfbserver.cc
+@@ -485,7 +485,7 @@
+   if ( _fh == fhSocket ) {
+     if ( _mask & XCM_READABLE ) {
+       struct sockaddr addr;
+-      size_t laddr = sizeof(addr);
++      socklen_t laddr = sizeof(addr);
+       int fdClient = accept(fd, &addr, &laddr);
+       int one = 1;
+       setsockopt(fdClient, IPPROTO_TCP, TCP_NODELAY, (char *)&one, sizeof(one));
+--- xrfbviewer/OXViewerApplet.cc
++++ xrfbviewer/OXViewerApplet.cc
+@@ -197,7 +197,7 @@
+   if ( _fh == fhSocket ) {
+     std::cout << "Connection request" << std::endl;
+     struct sockaddr addr;
+-    size_t laddr = sizeof(addr);
++    socklen_t laddr = sizeof(addr);
+     int fdClient = accept(_fh->GetFd(), &addr, &laddr);
+     int one = 1;
+     setsockopt(fdClient, IPPROTO_TCP, TCP_NODELAY, (char *)&one, sizeof(one));

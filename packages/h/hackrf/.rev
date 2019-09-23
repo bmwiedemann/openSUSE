@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f361509a2ab19b81ac6dac5c6e7a60bf</srcmd5>
+    <version>2017.02.1</version>
+    <time>1510150210</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain hackrf in Factory</comment>
+    <requestid>538752</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>922a8d7990c04480b39130c830556954</srcmd5>
+    <version>2018.01.1</version>
+    <time>1517323423</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570631</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ba1d003def2bb1a51c5f910f3e7a83f2</srcmd5>
+    <version>2018.01.1</version>
+    <time>1531232118</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621070</requestid>
+  </revision>
+</revisionlist>

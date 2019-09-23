@@ -1,0 +1,22 @@
+Index: xaos-3.5/src/engine/zoom.c
+===================================================================
+--- xaos-3.5.orig/src/engine/zoom.c	2009-07-18 01:50:31.000000000 +0200
++++ xaos-3.5/src/engine/zoom.c	2012-06-14 16:40:37.209715612 +0200
+@@ -139,12 +139,11 @@ int nperi = 0;
+ 
+ #ifndef USE_i386ASM
+ static void
+-moveoldpoints(void *data1, struct taskinfo *task, int r1, int r2)
+-REGISTERS(0);
+-static void fillline_8(int line) REGISTERS(0);
+-static void fillline_16(int line) REGISTERS(0);
+-static void fillline_24(int line) REGISTERS(0);
+-static void fillline_32(int line) REGISTERS(0);
++moveoldpoints(void *data1, struct taskinfo *task, int r1, int r2);
++static void fillline_8(int line);
++static void fillline_16(int line);
++static void fillline_24(int line);
++static void fillline_32(int line);
+ #endif
+ 
+ /*first of all inline driver section */

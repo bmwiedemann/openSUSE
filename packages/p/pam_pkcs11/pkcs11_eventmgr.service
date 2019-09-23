@@ -1,0 +1,11 @@
+[Unit]
+Description=pkcs11 event manager
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/pkcs11_eventmgr
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

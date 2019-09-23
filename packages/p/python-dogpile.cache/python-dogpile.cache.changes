@@ -1,0 +1,276 @@
+-------------------------------------------------------------------
+Fri Mar  8 14:37:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.1:
+  * fix python3 deprecation warnings
+  * Restore the API for async_creation_runner in all cases
+
+-------------------------------------------------------------------
+Thu Mar  7 10:53:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+
+-------------------------------------------------------------------
+Thu Dec  6 05:44:25 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 0.6.8:
+  * Project hosting has moved to GitHub, under the SQLAlchemy
+    organization at https://github.com/sqlalchemy/dogpile.cache
+  * Fixed issue in the :meth:`.CacheRegion.get_or_create_multi` method which
+    was erroneously considering the cached value as the timestamp field if the
+    :meth:`.CacheRegion.invalidate` method had ben used, usually causing a
+    ``TypeError`` to occur, or in less frequent cases an invalid result for
+    whether or not the cached value was invalid, leading to excessive caching
+    or regeneration. The issue was a regression caused by an implementation
+    issue in the pluggable invalidation feature added in :ticket:`38`.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:28 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Oct 11 11:29:30 UTC 2018 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.6.6:
+   Added method :attr:`.CacheRegion.actual_backend` which calculates and
+   caches the actual backend for the region, which may be abstracted by
+   the use of one or more :class:`.ProxyBackend` subclasses.
+
+-------------------------------------------------------------------
+Mon Apr 23 12:54:25 UTC 2018 - dmueller@suse.com
+
+- skip lock tests, they fail frequently (bsc#1086987)
+
+-------------------------------------------------------------------
+Fri Apr 20 07:50:52 UTC 2018 - dmueller@suse.com
+
+- for testing purposes drop dogpile.cache-tests_more_slow_waiters.patch
+
+-------------------------------------------------------------------
+Thu Apr 19 13:00:53 UTC 2018 - dmueller@suse.com
+
+- only run generic tests using pytest (bsc#1089564)
+
+-------------------------------------------------------------------
+Tue Mar 27 00:44:45 CEST 2018 - ro@suse.de
+
+- update to 0.6.5:
+  * Fixed import issue for Python 3.7 where several variables named
+    "async" were, leading to syntax errors.
+  * drop dogpile-threading.patch (upstreamed)
+
+- add dogpile.cache-tests_more_slow_waiters.patch (bsc#1086987)
+  increase number of allowed slow waiters in testsuite
+  otherwise this testsuite seems extremely flaky on non-x86_64
+
+-------------------------------------------------------------------
+Sun Feb 18 17:35:00 UTC 2018 - dmueller@suse.com
+
+- add  dogpile-threading.patch
+
+-------------------------------------------------------------------
+Wed Nov  8 16:29:43 UTC 2017 - alarrosa@suse.com
+
+- Fix broken symlinks created by fdupes on the python3-dogpile.cache package
+
+-------------------------------------------------------------------
+Mon Aug 21 16:00:57 UTC 2017 - tbechtold@suse.com
+
+- update to 0.6.4:
+  * The method :meth:`.Region.get_or_create_multi` will not pass to the
+    cache backend if no values are ultimately to be stored, based on
+    the use of the :paramref:`.Region.get_or_create_multi.should_cache_fn`
+    function.  This empty dictionary is unnecessary and can cause API
+    problems for backends like that of Redis.
+  * The :attr:`.api.NO_VALUE` constant now has a fixed ``__repr__()``
+    output, so that scenarios where this constant's string value
+    ends up being used as a cache key do not create multiple values.
+  * A new exception class :class:`.exception.PluginNotFound` is now
+    raised when a particular cache plugin class cannot be located
+    either as a setuptools entrypoint or as a registered backend.
+    Previously, a plain ``Exception`` was thrown.
+  * Added ``replace_existing_backend`` to
+    :meth:`.CacheRegion.configure_from_config`.
+
+-------------------------------------------------------------------
+Sat May  6 03:31:54 UTC 2017 - toddrme2178@gmail.com
+
+- Fix Provides/Obsoletes.
+
+-------------------------------------------------------------------
+Wed Mar  1 14:02:39 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Wed Aug 31 10:47:40 UTC 2016 - tbechtold@suse.com
+
+- update to 0.6.2:
+  * Added a new system to allow custom plugins specific to the issue of
+    "invalidate the entire region", using a new base class
+    :class:`.RegionInvalidationStrategy`. As there are many potential
+    strategies to this (special backend function, storing special keys, etc.)
+     the mechanism for both soft and hard invalidation is now customizable.
+    New approaches to region invalidation can be contributed as documented
+    recipes.
+  * Added a new cache key generator :func:`.kwarg_function_key_generator`,
+    which takes keyword arguments as well as positional arguments into
+    account when forming the cache key.
+  * Restored some more util symbols that users may have been relying upon
+    (although these were not necessarily intended as user-facing):
+    ``dogpile.cache.util.coerce_string_conf``,
+    ``dogpile.cache.util.KeyReentrantMutex``,
+    ``dogpile.cache.util.memoized_property``,
+    ``dogpile.cache.util.PluginLoader``,
+    ``dogpile.cache.util.to_list``.
+  * Drop 0001-Link-moved-functions-in-dogpile.cache.util.patch
+    applied upstream
+
+-------------------------------------------------------------------
+Mon Jul  4 08:00:04 UTC 2016 - tbechtold@suse.com
+
+- Use pypi.io for Source url
+
+-------------------------------------------------------------------
+Fri Jul  1 14:38:37 UTC 2016 - tbechtold@suse.com
+
+- dogpile.core was merged into dogpile.cache .
+  See https://gerrit.sqlalchemy.org/#/c/89/
+  So dogpile.core is no longer a Require.
+- Add 0001-Link-moved-functions-in-dogpile.cache.util.patch
+  For backward compat.
+
+-------------------------------------------------------------------
+Tue Jun  7 09:48:08 UTC 2016 - aloisio@gmx.com
+
+- Update to version 0.6.1
+    bug:
+  * Fixed imports for dogpile.core restoring ReadWriteMutex
+    and NameRegistry into the base namespace, in addition to
+    dogpile.core.nameregistry and dogpile.core.readwrite_lock.
+  version 0.6.0
+    feature:
+  * The dogpile.core library has been rolled in as part of the
+    dogpile.cache distribution. The configuration of the
+    dogpile name as a namespace package is also removed from
+    dogpile.cache. In order to allow existing installations of
+    dogpile.core as a separate package to remain unaffected,
+    the .core package has been retired within dogpile.cache
+    directly; the Lock class is now available directly as
+    dogpile.Lock and the additional dogpile.core constructs
+    are under the dogpile.util namespace.
+    Additionally, the long-deprecated dogpile.core.Dogpile
+    and dogpile.core.SyncReaderDogpile classes have been
+    removed.
+    bug:
+  * The Redis backend now creates a copy of the “arguments”
+    dictionary passed to it, before popping values out of it.
+    This prevents the given dictionary from losing its keys.
+  * Fixed bug in “null” backend where NullLock did not accept
+    a flag for the NullLock.acquire() method, nor did it return
+    a boolean value for “success”.
+
+-------------------------------------------------------------------
+Mon Mar  7 07:47:48 UTC 2016 - tbechtold@suse.com
+
+- update to 0.5.7:
+  * Added new parameter :paramref:`.GenericMemcachedBackend.lock_timeout`,
+    used in conjunction with :paramref:`.GenericMemcachedBackend.distributed_lock`,
+    will specify the timeout used when communicating to the ``.add()`` method of
+    the memcached client.
+  * Added a new flag :paramref:`.CacheRegion.configure.replace_existing_backend`,
+    allows a region to have a new backend replace an existing one.
+  * Test suite now runs using py.test.
+  * Repaired the :meth:`.CacheRegion.get_multi` method when used with a
+    list of zero length against the redis backend.
+
+-------------------------------------------------------------------
+Mon May  4 11:45:10 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.5.6:
+  * Changed the pickle protocol for the file/DBM backend to
+    pickle.HIGHEST_PROTOCOL when producing new pickles, to match
+    that of the redis and memorypickle backends. Pull request
+    courtesy anentropic.
+- additional changes from version 0.5.5:
+  * Added new arguments
+    CacheRegion.cache_on_arguments.function_key_generator and
+    CacheRegion.cache_multi_on_arguments.function_multi_key_generator
+    which serve as per-decorator replacements for the region-wide
+    CacheRegion.function_key_generator and
+    CacheRegion.function_multi_key_generator parameters,
+    respectively, so that custom key production schemes can be
+    applied on a per-function basis within one region. Pull request
+    courtesy Hongbin Lu.
+  * Fixed bug where sending -1 for the
+    CacheRegion.get_or_create.expiration_time parameter to
+    CacheRegion.get_or_create() or
+    CacheRegion.get_or_create_multi() would fail to honor the
+    setting as “no expiration time”. Pull request courtesy Hongbin
+    Lu.
+  * The wrap argument is now propagated when calling
+    CacheRegion.configure_from_config(). Pull request courtesy
+    Jonathan Vanasco.
+  * Fixed tests under py.test, which were importing a symbol from
+    pytest itself is_unittest which has been removed.
+- add fdupes as BuildRequires and call it after install
+
+-------------------------------------------------------------------
+Mon Sep 15 09:03:52 UTC 2014 - tbechtold@suse.com
+
+- Update to version 0.5.4:
+  * Added new :class:`.NullBackend`, for testing and cache-disabling
+    purposes.  Pull request courtesy Wichert Akkerman.
+  * Added missing Mako test dependency to setup.py.
+    Pull request courtesy Wichert Akkerman.
+  * Fixed bug where calling :meth:`.CacheRegion.get_multi` or
+    :meth:`.CacheRegion.set_multi` with an empty list would cause failures
+    based on backend.  Pull request courtesy Wichert Akkerman.
+  * Added new :paramref:`.RedisBackend.connection_pool` option
+    on the Redis backend; this can be passed a ``redis.ConnectionPool``
+    instance directly.  Pull request courtesy Masayuko.
+  * Added new :paramref:`.RedisBackend.socket_timeout` option
+    on the Redis backend.  Pull request courtesy
+    Saulius Menkevičius.
+  * Added support for tests to run via py.test.
+  *  Repaired the entry point for Mako templates; the name of the entrypoint
+    itself was wrong vs. what was in the docs, but beyond that the entrypoint
+    would load the wrong module name.  Pull request courtesy zoomorph.
+  * The :func:`.coerce_string_conf` function, which is used by
+    :meth:`.Region.configure_from_config`, will now recognize floating point
+    values when parsing conf strings and deliver them as such; this supports
+    non-integer values such as Redis ``lock_sleep``.  Pullreq courtesy
+    Jeff Dairiki.
+
+-------------------------------------------------------------------
+Mon Jan 13 13:39:05 UTC 2014 - dmueller@suse.com
+
+- update to 0.5.3:
+  * Fixed bug where the key_mangler would get in the way of usage of the
+  async_creation_runner feature within the :meth:`
+
+-------------------------------------------------------------------
+Mon Dec 30 13:58:50 UTC 2013 - dmueller@suse.com
+
+- update to 0.5.2:
+  * Added a new argument ``lock_factory`` to the :class:`.DBMBackend`
+  * implementation.  This allows for drop-in replacement of the default
+  * :class:`.FileLock` backend, which builds on ``os.flock()`` and only
+  * supports Unix platforms. 
+
+-------------------------------------------------------------------
+Mon Oct 21 13:21:05 UTC 2013 - dmueller@suse.com
+
+- update to 0.5.1:
+  * The :meth:`.CacheRegion.invalidate` method now supports an option
+  ``hard=True|False``.
+  * New dogpile-specific exception classes have been added, so that
+  issues like "region already configured", "region unconfigured",
+  raise dogpile-specific exceptions.  Other exception classes have
+
+-------------------------------------------------------------------
+Mon Sep  2 08:37:12 UTC 2013 - dmueller@suse.com
+
+- Initial package (0.5.0) 
+

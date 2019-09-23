@@ -1,0 +1,18 @@
+diff -uprN mono-debugger-2.10/build/Makefile.am mono-debugger-2.10.new/build/Makefile.am
+--- mono-debugger-2.10/build/Makefile.am	2011-01-14 01:41:31.000000000 +0300
++++ mono-debugger-2.10.new/build/Makefile.am	2016-06-07 20:35:39.137431918 +0300
+@@ -1,4 +1,4 @@
+-twodir = $(prefix)/lib/mono/2.0
++twodir = $(prefix)/lib/mono/4.5
+ 
+ bin_SCRIPTS = mdb mdb-symbolreader
+ 
+@@ -218,7 +218,7 @@ mdb-symbolreader: mdb-symbolreader.in Ma
+ 		< $(srcdir)/mdb-symbolreader.in > mdb-symbolreader.tmp \
+ 	&& mv mdb-symbolreader.tmp mdb-symbolreader
+ 
+-NUNIT_CONSOLE_EXE = $(NUNIT_PREFIX)/lib/mono/2.0/nunit-console.exe
++NUNIT_CONSOLE_EXE = $(NUNIT_PREFIX)/lib/mono/4.5/nunit-console.exe
+ 
+ runtests: runtests.in Makefile ulimit-check
+ 	builddir=$(top_builddir) ; the_builddir=`cd $$builddir && pwd` ; \

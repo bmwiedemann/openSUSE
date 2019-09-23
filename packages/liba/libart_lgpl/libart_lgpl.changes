@@ -1,0 +1,204 @@
+-------------------------------------------------------------------
+Thu Apr 18 18:15:24 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove --with-pic which is useless with --disable-static.
+- Replace boilerplate descriptions from a decade ago.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:33:55 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat Sep 21 14:27:48 UTC 2013 - dimstar@opensuse.org
+
+- Change RPM Group of shared library package to System/Libraries.
+
+-------------------------------------------------------------------
+Fri Mar  1 12:44:41 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Fri Sep 16 17:11:45 UTC 2011 - jengelh@medozas.de
+
+- Add libart_lgpl-devel to baselibs
+- Remove redundant tags/sections; use %_smp_mflags
+
+-------------------------------------------------------------------
+Mon Oct 11 18:50:08 CEST 2010 - vuntz@opensuse.org
+
+- Update packaging to use the shared library packaging policy:
+  + Create libart_lgpl_2-2 subpackage.
+  + Add Provides/Obsoletes for libart_lgpl to libart_lgpl_2-2.
+  + Update baselibs.conf accordingly.
+
+-------------------------------------------------------------------
+Thu Apr  1 15:44:08 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.3.21:
+  + Allow crosscompiling without using different emulators
+- Remove call to autoreconf.
+- Use makeinstall macro.
+
+-------------------------------------------------------------------
+Wed Dec 16 15:55:14 CET 2009 - jengelh@medozas.de
+
+- Add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Sat Feb 14 22:43:22 CET 2009 - mboman@suse.de
+
+- Keep "la" files for <= 11.1
+
+-------------------------------------------------------------------
+Mon Jan 26 22:43:22 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files [BNC#357465] 
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Dec  4 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Feb 18 18:13:31 CET 2008 - maw@suse.de
+
+- Update to version 2.3.20:
+  + Fix the inclusion of art_misc.h from c++
+- Remove fix-headers.diff.
+
+-------------------------------------------------------------------
+Mon Mar 26 12:10:48 CEST 2007 - dmueller@suse.de
+
+- Fix the installed headers again
+
+-------------------------------------------------------------------
+Wed Mar 21 13:39:17 CST 2007 - maw@suse.de
+
+- Update to version 2.3.19
+- b.g.o fixes: 131478, 317562, and 301750.
+
+-------------------------------------------------------------------
+Tue Dec 19 18:34:34 CET 2006 - sbrabec@suse.cz
+
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:16 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Feb  4 23:36:33 CET 2005 - gekker@suse.de
+
+- Update to version 2.3.17 
+
+-------------------------------------------------------------------
+Thu Aug 26 00:39:46 CEST 2004 - kukuk@suse.de
+
+- call ldconfig directly and avoid /bin/sh prereq
+
+-------------------------------------------------------------------
+Sun Jan 11 11:00:12 CET 2004 - adrian@suse.de
+
+- add %defattr and %run_ldconfig
+
+-------------------------------------------------------------------
+Mon Oct 06 17:09:11 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.3.16.
+
+-------------------------------------------------------------------
+Mon Aug 18 18:01:25 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.3.14.
+
+-------------------------------------------------------------------
+Tue Jul 29 17:31:06 CEST 2003 - adrian@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Wed Jul 16 14:55:04 CEST 2003 - sbrabec@suse.cz
+
+- Prefix changed back to /usr on request of KDE maintainers.
+
+-------------------------------------------------------------------
+Tue Jul 15 15:39:46 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Thu Jun 12 16:07:56 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.3.12.
+
+-------------------------------------------------------------------
+Wed Jan 15 14:59:27 CET 2003 - hhetter@suse.de
+
+- updated to version 2.3.11 
+
+-------------------------------------------------------------------
+Thu Oct 24 10:14:04 CEST 2002 - hhetter@suse.de
+
+- use automake -c to copy files, not link
+  (Bug Id #21066) 
+
+-------------------------------------------------------------------
+Mon Oct 21 14:06:39 CEST 2002 - sbrabec@suse.cz
+
+- Updated %files (libart_lgpl/libart_lgpl-devel splitting).
+
+-------------------------------------------------------------------
+Tue Jul 23 15:04:56 CEST 2002 - hhetter@suse.de
+
+- updated to 2.3.10 
+
+-------------------------------------------------------------------
+Wed Jul 17 11:40:55 CEST 2002 - hhetter@suse.de
+
+- fix filelist 
+
+-------------------------------------------------------------------
+Thu Jun 27 10:23:27 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.3.9 (gnome 2.0 final)
+	* platform build fixes
+	* minor bugfixes
+
+-------------------------------------------------------------------
+Wed Jun 19 12:54:11 CEST 2002 - ro@suse.de
+
+- use "-a -f" for automake
+
+-------------------------------------------------------------------
+Fri Apr 26 15:29:38 CEST 2002 - coolo@suse.de
+
+- use %_libdir
+
+-------------------------------------------------------------------
+Mon Jan 14 09:44:03 CET 2002 - hhetter@suse.de
+
+- updated to version 2.3.8:
+	* new functions
+	* some header files corrected
+	* Makefile improvements 
+
+-------------------------------------------------------------------
+Wed Jan  9 15:21:39 CET 2002 - hhetter@suse.de
+
+- initial SuSE package for GNOME 2.0 platform 
+

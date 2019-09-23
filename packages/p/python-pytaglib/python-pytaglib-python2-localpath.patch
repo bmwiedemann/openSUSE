@@ -1,0 +1,12 @@
+Index: pytaglib-1.4.5/tests/__init__.py
+===================================================================
+--- pytaglib-1.4.5.orig/tests/__init__.py	2019-03-26 21:48:08.000000000 +0100
++++ pytaglib-1.4.5/tests/__init__.py	2019-05-09 15:30:36.799060223 +0200
+@@ -12,6 +12,6 @@ import os.path, shutil
+ def copy_test_file(filename, tmpdir):
+     """Make a temporary copy of test data file *name* (without dir) and return its full path."""
+     source = os.path.join(os.path.dirname(__file__), 'data', filename)
+-    target = os.path.join(tmpdir, filename)
++    target = os.path.join(tmpdir.strpath, filename)
+     shutil.copyfile(source, target)
+     return target

@@ -1,0 +1,206 @@
+-------------------------------------------------------------------
+Wed Apr 24 02:02:17 UTC 2019 - psimons@suse.com
+
+- Update zip-archive to version 0.4.1.
+  zip-archive 0.4.1
+
+    * writEntry behavior change: Improve raising of UnsafePath error (#55).
+      Previously we raised this error spuriously when archives were unpacked
+      outside the working directory.  Now we raise it if eRelativePath contains
+      ".." as a path component, or eRelativePath path is an absolute path and
+      there is no separate destination directory.  (Note that `/foo/bar` is fine
+      as a path as long as a destination directory, e.g. `/usr/local`, is
+      specified.)
+
+-------------------------------------------------------------------
+Tue Dec  4 03:02:25 UTC 2018 - psimons@suse.com
+
+- Update zip-archive to version 0.4.
+  zip-archive 0.4
+
+    * Implement read-only support for PKWARE encryption (Sergii Rudchenko).
+      The "traditional" PKWARE encryption is a symmetric encryption
+      algorithm described in zip format specification in section 6.1.
+      This change allows to extract basic "password-protected" entries from
+      ZIP files.  Note that the standard file extraction function
+      extractFilesFromArchive does not decrypt entries (it will raise
+      an exception if it encounters an encrypted entry). To handle
+      archives with encrypted entries, use the new function
+      fromEncryptedEntry.
+
+      API changes:
+
+      + Add eEncryptionMethod field to Entry.
+      + Add EncryptionMethod type.
+      + Add function isEncryptedEntry.
+      + Add function fromEncryptedEntry.
+      * Add CannotWriteEncryptedEntry constructor to ZipException.
+
+    * Add UnsafePath to ZipException (#50).
+    * writeEntry: raise UnsafePath exception for unsafe paths (#50).
+      This prevents malicious zip files from overwriting paths
+      above the working directory.
+    * Add Paths_zip_archive to autogen-modules.
+    * Clarify README and cabal description.
+    * Specify cabal-version: 2.0.  Otherwise we get an unknown build
+      tool error using `build-depends` without a custom Setup.hs.
+    * Change build-type to simple.  Retain 'build-tools: unzip' in
+      test stanza, though now it doesn't do anything except give a
+      hint to external tools.  If unzip is not found in the path,
+      the test suite prints a message and counts the test that
+      requires unzip as succeeding (see #51).
+
+-------------------------------------------------------------------
+Sat Oct 20 11:32:17 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:49 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jul 13 14:31:35 UTC 2018 - psimons@suse.com
+
+- Update zip-archive to version 0.3.3.
+  zip-archive 0.3.3
+
+    * Remove dependency on old-time (typedrat).
+    * Drop splitBase flag and support for base versions < 3.
+
+  zip-archive 0.3.2.5
+
+    * Move 'build-tools: unzip' from library stanza to test stanza.
+      unzip should only be required for testing, not for regular
+      builds of the library.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update zip-archive to version 0.3.2.4.
+  * Use createSymbolicLink instead of createFileLink in tests. This allows
+    us to lower the directory lower bound (#40).
+
+  * Fixes for handling of symbolic links (#39, Tommaso Piazza).
+
+  * Fixes for symbolic link tests, and additional tests.
+
+  * Add ZipOption to preserve symbolic links (#37, Tommaso Piazza).
+    Add OptPreserveSymbolicLinks constructor to ZipOption.  If this option
+    is set, symbolic links will be preserved.  Symbolic links are not
+    supported on Windows.
+
+  * Require binary >= 0.6 (#36).
+
+  * Improve exit handling in zip-archive program.
+
+-------------------------------------------------------------------
+Sun Jun 25 18:41:35 UTC 2017 - psimons@suse.com
+
+- Update to version 0.3.1.1.
+
+-------------------------------------------------------------------
+Mon Jun 12 09:41:33 UTC 2017 - psimons@suse.com
+
+- Update to version 0.3.1.
+
+-------------------------------------------------------------------
+Wed May  3 08:14:06 UTC 2017 - psimons@suse.com
+
+- Update to version 0.3.0.6 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Jan 23 20:28:10 UTC 2017 - psimons@suse.com
+
+- Update to version 0.3.0.5 revision 1 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu Sep 15 06:55:45 UTC 2016 - psimons@suse.com
+
+- Update to version 0.3.0.5 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:02:22 UTC 2016 - psimons@suse.com
+
+- Update to version 0.2.3.7 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Feb  1 08:54:40 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.2.3.7:
+  * Declared test suite's dependency on 'zip' using custom Setup.lhs (#21,#22).
+  * Removed hard-coded path to zip in test suite (#21).
+  * Removed misplaced build-depends in cabal file.
+  * Allow compilation with binary >= 0.5.  Note that toArchiveOrFail
+    is not safe when compiled against binary < 0.7; it will never
+    return a Left value, and will raise an error if parsing fails,
+    just like toArchive.  This is documented in the haddocks.
+    This is ugly, but justified by the need to have a version
+    of zip-archive that compiles against older versions of binary.
+  * Make sure all path comparisons compare normalized paths.
+    So, findEntryByPath "foo" will find something stored as "./foo"
+    in the zip container.
+  * Better normalization of file paths:  "./foo/bar" and "foo/./bar"
+    are now treated the same, for example.  Note that we do not
+    yet treat "foo/../bar" and "bar" as the same.
+  * Removed lower bound on directory (>= 1.2), which caused build
+    failures with GHC 7.4 and 7.6.
+  * Added travis script for automatic testing on 3 GHC versions.
+  * Require binary >= 0.7 and directory >= 1.2.  The newer binary
+    is needed to provide toArchiveOrFail.  The other change is
+    mainly for convenience, to avoid lots of ugly conditional
+    compilation.
+  * Export new function `toArchiveOrFail`.  Closes #17.
+  * Set general purpose bit flag to use UTF8 in local file header.
+    Otherwise we get a mismatch between the flag in the central
+    directory and the flag in the local file header, which causes some
+    programs not to be able to extract the files.  Closes #19.
+  * Fix a stack overflow in getWordsTillSig (Tristan Ravitch).
+    recognize UTF-8 encoded file names (Tobias Brandt).
+  * Added OptLocation, to specify the path to which a file
+    is to be added when readEntry is used (Stephen McIntosh).
+
+-------------------------------------------------------------------
+Thu Mar 13 21:40:00 UTC 2014 - sbahling@suse.com
+
+- Add missing %defattr
+
+-------------------------------------------------------------------
+Tue Dec 31 15:15:44 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 0.2 from upstream
+* replace dependency on utf8-string by text
+
+-------------------------------------------------------------------
+Wed May 15 15:21:20 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- new spec file template generated by cabal-rpm
+
+-------------------------------------------------------------------
+Mon Mar 11 14:39:51 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 0.1.3.4 from upstream
+* use new binary API
+* use new directory API
+* general code cleanup
+* added testsuite
+- requirement for pandoc 1.11
+
+-------------------------------------------------------------------
+Wed Oct  3 07:56:00 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 0.1.1.8 from upstream
+* fix parsing of "version needed to extract" field
+* license now BSD-3-Clause
+
+-------------------------------------------------------------------
+Thu Jun  7 08:27:48 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- cabal2spec 0.25.5 spec file template
+
+-------------------------------------------------------------------
+Wed Jan 18 20:38:15 UTC 2012 - herbert@graeber-clan.de
+
+- initial packaging for Fedora automatically generated by cabal2spec-0.24.1

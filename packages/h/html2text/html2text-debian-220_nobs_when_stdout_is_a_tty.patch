@@ -1,0 +1,24 @@
+Don't use backslashes when output is not a tty.
+Index: html2text-1.3.2a/html2text.C
+===================================================================
+--- html2text-1.3.2a.orig/html2text.C	2008-08-25 22:38:58.002779823 +0300
++++ html2text-1.3.2a/html2text.C	2008-08-25 22:51:16.633493573 +0300
+@@ -38,6 +38,7 @@
+ #include <iostream>
+ #include <string.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ 
+ #include "html.h"
+ #include "HTMLControl.h"
+@@ -217,6 +218,10 @@
+       << std::endl;
+     exit(1);
+   }
++  if (!isatty(1)) // standard output is not a tty
++  {
++	use_backspaces = false;
++  }
+ 
+   const char *const *input_urls;
+   int        number_of_input_urls;

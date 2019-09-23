@@ -1,0 +1,14 @@
+<package name="python-kombu" project="openSUSE:Factory">
+  <title>AMQP Messaging Framework for Python</title>
+  <description>An AMQP messaging framework for Python.
+
+AMQP is the Advanced Message Queuing Protocol, an open standard protocol
+for message orientation, queuing, routing, reliability and security.
+
+One of the most popular implementations of AMQP is RabbitMQ.
+
+The aim of Kombu is to make messaging in Python as easy as possible by
+providing an idiomatic high-level interface for the AMQP protocol, and also
+provide proven and tested solutions to common messaging problems.</description>
+  <devel project="devel:languages:python" package="python-kombu"/>
+</package>

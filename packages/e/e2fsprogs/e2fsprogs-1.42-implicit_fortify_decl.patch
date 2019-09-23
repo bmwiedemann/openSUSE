@@ -1,0 +1,18 @@
+Index: lib/ext2fs/mmp.c
+===================================================================
+--- lib/ext2fs/mmp.c.orig
++++ lib/ext2fs/mmp.c
+@@ -27,6 +27,13 @@
+ #include "ext2fs/ext2_fs.h"
+ #include "ext2fs/ext2fs.h"
+ 
++#if _BSD_SOURCE || _XOPEN_SOURCE >= 500
++#include <netdb.h>
++#endif
++
++#include <string.h>
++#include <stdio.h>
++
+ #ifndef O_DIRECT
+ #define O_DIRECT 0
+ #endif

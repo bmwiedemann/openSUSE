@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2bf04769fac86b6c40e0d14bebc0066a</srcmd5>
+    <version>3.103</version>
+    <time>1374248038</time>
+    <user>coolo</user>
+    <comment>moving back from NonFree to Factory</comment>
+    <requestid>183575</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4a3aed709a19522d3f418c695a17dcd8</srcmd5>
+    <version>3.103</version>
+    <time>1374756588</time>
+    <user>coolo</user>
+    <comment>- Add missing dependencies so the package build on factory.</comment>
+    <requestid>184306</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4a3aed709a19522d3f418c695a17dcd8</srcmd5>
+    <version>3.103</version>
+    <time>1379664990</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>4a3aed709a19522d3f418c695a17dcd8</srcmd5>
+    <version>3.103</version>
+    <time>1409303670</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>54a8788356fe7952c01940290e50d2cc</srcmd5>
+    <version>3.103</version>
+    <time>1419809426</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266501</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>cdd578d911ee8ec3426a6fd232b15b8a</srcmd5>
+    <version>3.103</version>
+    <time>1554977833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692961</requestid>
+  </revision>
+</revisionlist>

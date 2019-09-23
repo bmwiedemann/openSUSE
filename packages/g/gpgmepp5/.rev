@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>39b5d603a7fd109d4450b737b36f67a0</srcmd5>
+    <version>15.08.0</version>
+    <time>1443896111</time>
+    <user>coolo</user>
+    <comment>KDE 15.08.0</comment>
+    <requestid>326445</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f4b5b52f65752cc3c2390451b77586bf</srcmd5>
+    <version>15.08.2</version>
+    <time>1445286750</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 15.08.2</comment>
+    <requestid>338560</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a7a90dd8aaf78e579cfe57af5288aa49</srcmd5>
+    <version>15.08.3</version>
+    <time>1447586966</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applicationd 15.08.3</comment>
+    <requestid>343549</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a3b524cf3a9e8731c5ea44b5d7daff14</srcmd5>
+    <version>15.12.0</version>
+    <time>1452122414</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 15.12.0</comment>
+    <requestid>349947</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>706b5e428b0d7342d5566941ae651f65</srcmd5>
+    <version>15.12.1</version>
+    <time>1453507543</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Apps 15.12.1. Please only accept no earlier then next week Wednesday. This to give us a chance to notify people and people to lock their packages as that we are starting to obsolete the kdepim4 suite</comment>
+    <requestid>354186</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>77553434f5831d2108d1418335e15322</srcmd5>
+    <version>15.12.2</version>
+    <time>1456132472</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Apps 15.12.2</comment>
+    <requestid>359681</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cc6711d292bf980d36f9f5078fe84644</srcmd5>
+    <version>15.12.3</version>
+    <time>1459001588</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 15.12.3</comment>
+    <requestid>377757</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5767a2f96eab0f97fd042d26ca56803d</srcmd5>
+    <version>16.04.1</version>
+    <time>1464689802</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 16.04.1</comment>
+    <requestid>395357</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>34dd59110b50eb391312cb475b90fb3e</srcmd5>
+    <version>16.04.2</version>
+    <time>1466412950</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Apps 16.04.2</comment>
+    <requestid>402117</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a79c4882f1ab6179710badca8f83af98</srcmd5>
+    <version>16.04.3</version>
+    <time>1469079754</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 16.04.3</comment>
+    <requestid>407979</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>52d56e633cbbe288fd6398d81d293ce9</srcmd5>
+    <version>16.08.0</version>
+    <time>1472473981</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 16.08.0</comment>
+    <requestid>420095</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>596dd35a0a8d144fc62c4300fa3dd03f</srcmd5>
+    <version>16.08.1</version>
+    <time>1473886909</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 16.08.1</comment>
+    <requestid>426349</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>688a9789f226bd44ed3ccd952051a362</srcmd5>
+    <version>16.08.2</version>
+    <time>1476778312</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 16.08.2</comment>
+    <requestid>434811</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>63c10ac02c9102feef5cb7f901dfd8c1</srcmd5>
+    <version>16.08.3</version>
+    <time>1478953787</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 16.08.3</comment>
+    <requestid>439639</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>0af806ca93d1f86702ad0f0d75e1fade</srcmd5>
+    <version>16.08.3</version>
+    <time>1486547150</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454485</requestid>
+  </revision>
+</revisionlist>

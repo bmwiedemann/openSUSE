@@ -1,0 +1,32 @@
+---
+ joe/b.c |    6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+Index: joe/b.c
+===================================================================
+--- joe/b.c.orig
++++ joe/b.c
+@@ -638,9 +638,10 @@ int piseow(P *p)
+ int pisblank(P *p)
+ {
+ 	P *q = pdup(p, "pisblank");
++	int brc_result;
+ 
+ 	p_goto_bol(q);
+-	while (joe_isblank(p->b->o.charmap,brc(q)))
++	while (((brc_result = brc(q)) != MAXINT) && joe_isblank(p->b->o.charmap,brc(q)))
+ 		pgetb(q);
+ 	if (piseol(q)) {
+ 		prm(q);
+@@ -672,9 +673,10 @@ off_t pisindent(P *p)
+ {
+ 	P *q = pdup(p, "pisindent");
+ 	off_t col;
++	int brc_result;
+ 
+ 	p_goto_bol(q);
+-	while (joe_isblank(p->b->o.charmap,brc(q)))
++	while (((brc_result = brc(q)) != MAXINT) && joe_isblank(p->b->o.charmap,brc(q)))
+ 		pgetc(q);
+ 	col = q->col;
+ 	prm(q);

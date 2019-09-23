@@ -1,0 +1,488 @@
+-------------------------------------------------------------------
+Fri Dec 21 17:36:06 UTC 2018 - astieger@suse.com
+
+- GNU sed 4.7:
+  * Fix some fails with \b in the C locale and with the DFA matcher
+
+ -------------------------------------------------------------------
+Thu Dec 20 15:27:41 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.6:
+  * sed now prints a clear error message when r/R/w/W (and s///w)
+    commands are missing a filename.
+  * sed now uses fully-buffered output (instead of line-buffered)
+    when writing to files.
+  * sed no longer accesses invalid memory (heap overflow) when
+    given invalid backreferences in 's' command
+  * sed no longer adds extraneous NUL when given s/$//n command.
+  * sed no longer accesses invalid memory (heap overflow) with
+    s/$//n regexes.
+  * New option, --debug: print the input sed script in canonical
+    form and annotate program execution.
+- Refresh sed-dont_close_twice.patch
+
+-------------------------------------------------------------------
+Sat Apr 14 03:42:05 UTC 2018 - bwiedemann@suse.com
+
+- Make package build reproducible (boo#1040589)
+
+-------------------------------------------------------------------
+Sun Apr  1 11:59:30 UTC 2018 - astieger@suse.com
+
+- GNU sed 4.5:
+  * sed now fails when matching very long input lines (>2GB).
+    Before, sed would silently ignore the regex without indicating
+    an error
+  * sed no longer rejects comments and closing braces after y///
+    commands
+  * sed -E --posix no longer ignores special meaning of '+','?','|'
+  * sed -i now creates selinux context based on the context of the
+    symlink instead of the symlink target
+    sed -i --follow-symlinks remains unchanged.
+  * sed now treats the sequence '\x5c' (ASCII 92, backslash) as
+    literal backslash character, not as an escape prefix character
+
+-------------------------------------------------------------------
+Thu Feb 22 15:10:45 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Wed Feb  8 15:42:56 UTC 2017 - mpluskal@suse.com
+
+- Update to version 4.4:
+  * sed could segfault when invoked with specific combination of
+    newlines in the input and regex pattern. 
+
+-------------------------------------------------------------------
+Wed Jan  4 21:36:07 UTC 2017 - mpluskal@suse.com
+
+- Update to version 4.3:
+  * sed's regular expression matching is now typically 10x faster
+  * sed now uses unlocked-io where available, resulting in faster
+    I/O operations.
+  * lots of bugfixes (for detailed list see NEWS)
+- Drop patches (all upstreamed):
+  * sed-fix-overlapping-address-ranges.patch
+  * sed-follow-symlinks-hyphen.patch
+  * sed-follow-symlinks-stdin.patch
+  * sed-temp-delete.patch
+  * sed-y-NUL-RHS.patch
+- Spec file cleanups
+  * run spec-cleaner
+  * use macro for configure
+  * execute tests with produced binary as well
+  * use url for signature as well
+  * use https for download links
+  * use xs compressed tarballl
+  * make building verbose
+
+-------------------------------------------------------------------
+Fri Sep 11 15:32:37 UTC 2015 - schwab@linux-m68k.org
+
+- Build with ACL/SELinux support for in-place editing
+
+-------------------------------------------------------------------
+Tue Aug 25 16:54:40 CEST 2015 - sbrabec@suse.com
+
+- Cherry picking of the most important fixes from the upstream sed
+  GIT (not backporting testsuite, as it was completely refactored):
+  * Fix y command in the RHS of a y/LHS/RHS/ transliteration
+    (sed-y-NUL-RHS.patch).
+  * Fix mishandling of overlapping address ranges
+    (sed-fix-overlapping-address-ranges.patch).
+  * Fix fail to remove a temporary file (sed-temp-delete.patch).
+  * Fix behavior of --follow-symlinks when reading from stdin
+    (bnc#933029, gnu#20795, sed-follow-symlinks-stdin.patch).
+  * Make "sed --follow-symlinks -" consistent with "sed -" again,
+    and process stdin instead of ./-
+    (bnc#933029#c6, gnu#20796, sed-follow-symlinks-hyphen.patch).
+
+-------------------------------------------------------------------
+Tue Dec 30 11:15:38 UTC 2014 - meissner@suse.com
+
+- build with PIE
+
+-------------------------------------------------------------------
+Tue Jun  3 09:48:33 UTC 2014 - tcech@suse.cz
+
+- sed-dont_close_twice.patch (bnc#880817)
+  when closing fails, file is attempted to be closed again
+  patch based of Neil Brown's recommendation
+
+-------------------------------------------------------------------
+Fri Apr  5 12:08:28 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Tue Jan 22 18:20:25 CET 2013 - sbrabec@suse.cz
+
+- Update to version 4.2.2:
+  * don't truncate input for lines of length 2^31 and longer
+  * fix endless loop on incomplete multibyte sequences (bnc#743689)
+  * -u also does unbuffered input
+  * New command `F' to print current input file name
+  * sed -i, s///w, and the `w' and `W' commands also obey the
+    --binary option
+  * --posix fails for scripts that end in a backslash.
+  * New option -z (--null-data) to separate lines by ASCII NUL.
+  * \x26 (and similar escaped sequences) produces a literal & in
+    the replacement argument of the s/// command.
+- Split lang package.
+- Option to verify GPG signature.
+
+-------------------------------------------------------------------
+Fri Feb  3 15:20:39 UTC 2012 - rschweikert@suse.com
+
+- keep binary in /usr tree (UsrMerge project)
+
+-------------------------------------------------------------------
+Fri Dec  2 13:16:18 UTC 2011 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  There are no "GPL-3.0 only" licenses in sed
+
+-------------------------------------------------------------------
+Wed Nov 30 14:23:45 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Aug 13 11:10:53 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 4.2.1:
+  + fix parsing of s/[[[[[[[[[]//
+  + security contexts are preserved by -i too under SELinux
+  + temporary files for sed -i are not made group/world-readable
+    until they are complete
+- Changes from version 4.2:
+  + now released under GPLv3
+  + added a new extension `z` to clear pattern space even in the
+    presence of invalid multibyte sequences
+  + a preexisting GNU gettext installation is needed in order to
+    compile GNU sed with NLS support
+  + new option --follow-symlinks, available when editing a file
+    in-place.
+  + hold-space is reset between different files in -i and -s modes.
+  + multibyte processing fixed
+  + fixed bug in 'i\' giving a segmentation violation if given
+    alone.
+  + much improved portability
+  + much faster in UTF-8 locales
+  + will correctly replace ACLs when using -i
+  + will now accept NUL bytes for `.'
+- Drop upstream included [atches:
+  + sed-follow_symlinks.patch
+  + sed-4.1.5-fix_warnings.patch
+- Remove --enable-html from configure: the option is no longer
+  supported and sed.html no longer created.
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Tue Dec  8 00:01:17 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Mon Feb 18 17:57:19 CET 2008 - dmueller@suse.de
+
+- use %find_lang
+- fix rpmlint warnings
+
+-------------------------------------------------------------------
+Fri Mar  9 17:31:50 CET 2007 - mkoenig@suse.de
+
+- add --follow-symlinks option [#200082]
+- fix 'used uninitialized' warnings [#248721]
+
+-------------------------------------------------------------------
+Mon Aug  7 13:55:37 CEST 2006 - jsmeix@suse.de
+
+- Updated to version 4.1.5:
+  Fix parsing of a negative character class not including a closed
+  bracket, like [^]] or [^]a-z].
+  Fix parsing of [ inside an y command, like y/[/A/.
+  Output the result of commands a, r, R when a q command is found.
+- off-by-one.diff: obsolete (fixed in the source).
+- configure needs --enable-html to build sed.html (default=no)
+  and it is installed into usr/share/doc/sed-4.1.5/
+
+-------------------------------------------------------------------
+Mon Jul 17 13:29:16 CEST 2006 - jsmeix@suse.de
+
+- Fixed the "fix build" below for our current different build
+  environments on our different architectures:
+  On s390 and s390x the sed.html documentation is still installed
+  into usr/share/doc/ but on the other architectures it is
+  installed into usr/share/doc/sed/
+
+-------------------------------------------------------------------
+Mon Jul  3 17:46:16 CEST 2006 - cthiel@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:56 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 19 14:12:52 CET 2006 - agruen@suse.de
+
+- off-by-one.diff: Report the correct back-reference number if
+  a substitution's left-hand side does not contain enough groups.
+
+-------------------------------------------------------------------
+Fri Apr  1 10:29:28 CEST 2005 - schwab@suse.de
+
+- Don't use included regex.
+
+-------------------------------------------------------------------
+Mon Jan 31 11:49:09 CET 2005 - mmj@suse.de
+
+- Update to 4.1.4 including:
+  o \B correctly means "not on a word boundary" rather than
+    "inside a word"
+  o bugfixes for platform without internationalization
+  o more thorough testing framework for tarballs
+    (`make full-distcheck')
+
+-------------------------------------------------------------------
+Sat Jan 22 19:02:07 CET 2005 - mmj@suse.de
+
+- Update to 4.1.3 including:
+  o regex addresses do not use leftmost-longest matching.  In
+    other words, /.\+/ only looks for a single character, and
+    does not try to find as many of them as possible like it used
+    to do.
+  o added a note to BUGS and the manual about changed interpretation
+    of `s|abc\|def||', and about localization issues.
+  o fixed --disable-nls build problems on Solaris.
+  o fixed `make check' in non-English locales.
+  o `make check' tests the regex library by default if the
+    included regex is used (regex tests had to be enabled
+    separately up to now).
+
+-------------------------------------------------------------------
+Fri Sep 17 18:12:24 CEST 2004 - uli@suse.de
+
+- fixed segfault (bug #45491)
+
+-------------------------------------------------------------------
+Sun Aug 22 23:27:58 CEST 2004 - mmj@suse.de
+
+- Update to sed-4.1.2 including:
+  o fix bug in 'y' command in multi-byte character sets
+  o fix severe bug in parsing of ranges with an embedded open bracket
+  o fix off-by-one error when printing a "bad command" error
+
+-------------------------------------------------------------------
+Wed Jul  7 09:02:13 CEST 2004 - mmj@suse.de
+
+- Update to 4.1.1 including the initialization fix of output_fd
+
+-------------------------------------------------------------------
+Wed Jun 23 17:41:29 CEST 2004 - ro@suse.de
+
+- do initialize output_fd before use
+
+-------------------------------------------------------------------
+Thu Jun 17 00:32:15 CEST 2004 - mmj@suse.de
+
+- Update to 4.1 including:
+  o // matches the last regular expression even in
+    POSIXLY_CORRECT mode.
+  o change the way we treat lines which are not terminated by a
+    newline.  Such lines are printed without the terminating
+    newline (as before) but as soon as more text is sent to the
+    same output stream, the missing newline is printed, so that
+    the two lines don't concatenate.  The behavior is now
+    independent from POSIXLY_CORRECT because POSIX actually has
+    undefined behavior in this case, and the new implementation
+    arguably gives the ``least expected surprise''.
+  o documentation improvements, with updated references to the
+    POSIX.2 specification
+  o error messages on I/O errors are better, and -i does not
+    leave temporary files around (e.g. when running ``sed -i'' on
+    a directory) [#35419]
+  o escapes are accepted in the y command (for example: y/o/\n/
+    transforms o's into newlines)
+  o -i option tries to set the owner and group to the same as the
+    input file
+  o `L' command is deprecated and will be removed in sed 4.2.
+  o line number addresses are processed differently -- this is
+    supposedly conformant to POSIX and surely more idiot-proof.
+    Line number addresses are not affected by jumping around
+    them: they are activated and deactivated exactly where the
+    script says, while previously 5,8b 1,5d would actually delete
+    lines 1,2,3,4 and 9 (!).
+  o multibyte characters are taken in consideration to compute
+    the operands of s and y, provided you set LC_CTYPE correctly.
+    They are also considered by \l, \L, \u, \U, \E.
+  o [\n] matches either backslash or 'n' when POSIXLY_CORRECT.
+  o new option --posix, disables all GNU extensions.
+    POSIXLY_CORRECT only disables GNU extensions that violate the
+    POSIX standard.
+  o options -h and -V are not supported anymore, use --help and
+    --version.
+  o removed documentation for \s and \S which worked incorrectly
+  o restored correct behavior for \w and \W: match [[:alnum:]_]
+    and [^[:alnum:]_] (they used to match [[:alpha:]_] and
+    [^[:alpha:]_]
+  o the special address 0 can only be used in 0,/RE/ or 0~STEP
+    addresses; other cases give an error (you are hindering
+    portability for no reason if specifying 0,N and you are
+    giving a dead command if specifying 0 alone).
+  o when a \ is used to escape the character that would terminate
+    an operand of the s or y commands, the backslash is removed
+    before the regex is compiled.  This is left undefined by
+    POSIX; this behavior makes `s+x\+++g' remove occurrences of
+    `x+', consistently with `s/x\///g'.  (However, if you enjoy
+    yourself trying `s*x\***g', sed will use the `x*' regex, and
+    you won't be able to pass down `x\*' while using * as the
+    delimiter; ideas on how to simplify the parser in this
+    respect, and/or gain more coherent semantics, are welcome).
+
+-------------------------------------------------------------------
+Fri Mar 12 15:57:40 CET 2004 - mmj@suse.de
+
+- Remove created tempfile in the case of rename failing [#35419]
+
+-------------------------------------------------------------------
+Tue Feb 24 11:06:04 CET 2004 - mmj@suse.de
+
+- Update to 4.0.9 with the following changes since 4.0.6:
+  o 0 address behaves correctly in single-file (-i and -s) mode.
+  o documentation improvements.
+  o tested with many hosts and compilers.
+  o updated regex matcher from upstream, with many bugfixes and
+    speedups.
+  o the `N' command's feature that is detailed in the BUGS file was
+    disabled by the first change below in sed 4.0.8.  The behavior
+    has now been restored, and is only enabled if POSIXLY_CORRECT
+    behavior is not requested.
+  o fix `sed n' printing the last line twice.
+  o fix incorrect error message for invalid character classes.
+  o fix segmentation violation with repeated empty subexpressions.
+  o fix incorrect parsing of ^ after escaped (.
+  o more comprehensive test suite (and with many expected failures...)
+  o fix for -i option under Cygwin
+  o VPATH builds working on non-glibc machines
+  o fixed bug in s///Np: was printing even if less than N matches were
+    found.
+  o fixed infinite loop on s///N when LHS matched a null string and
+    there were not enough matches in pattern space
+  o behavior of s///N is consistent with s///g when the LHS can match
+    a null string (and the infinite loop did not happen :-)
+  o updated some translations
+
+-------------------------------------------------------------------
+Sat Jan 10 20:32:30 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Jun 20 02:38:59 CEST 2003 - ro@suse.de
+
+- build with current gettext 
+
+-------------------------------------------------------------------
+Wed Jun  4 18:19:46 CEST 2003 - jh@suse.de
+
+- Enable profile feedback
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Fri Mar 21 16:26:20 CET 2003 - pthomas@suse.de
+
+- Update to 4.0.6
+
+-------------------------------------------------------------------
+Fri Feb  7 01:27:19 CET 2003 - ro@suse.de
+
+- added install_info macros 
+
+-------------------------------------------------------------------
+Mon Nov 18 12:57:51 CET 2002 - ro@suse.de
+
+- set AM_GNU_GETTEXT_VERSION and use 0.10.36 since this is the
+  first one with DESTDIR support 
+
+-------------------------------------------------------------------
+Fri Sep 20 15:40:05 CEST 2002 - pthomas@suse.de
+
+- Correctly reference regex(7) from man page, remove the
+  obsolete remark. Fixes bug #19923.
+
+-------------------------------------------------------------------
+Wed Aug 14 15:04:44 CEST 2002 - pthomas@suse.de
+
+- Fix configure.in so that --with-regex=no actually does
+  work.
+
+- Make sed use glibc's regex/regex.h.
+
+-------------------------------------------------------------------
+Wed Jul  3 21:59:57 CEST 2002 - poeml@suse.de
+
+- enable 'make check' again on ppc64
+
+-------------------------------------------------------------------
+Wed Jul  3 21:42:55 CEST 2002 - bk@suse.de
+
+- add man page and remove joe from neededforbuild, no rebuild by joe
+
+-------------------------------------------------------------------
+Tue Jun  4 20:24:11 CEST 2002 - pthomas@suse.de
+
+- Move tar and sed to separate packages.
+- Update to 3.02.80
+- Adapt i18n patch.
+- Call autoreconf.
+- Update regex.c and regex.h to glibc 2.2.5 versions.
+- Use AM_MAINTAINER_MODE and don't enable it (no reconfiguration).
+- rework the autoconf test involving LIBOBJS
+- Remove acinclude.m4.
+- Make acconfig.h obsolete.
+
+-------------------------------------------------------------------
+Wed May 22 17:48:32 CEST 2002 - olh@suse.de
+
+- disable sed make check on ppc64
+
+-------------------------------------------------------------------
+Wed May 22 16:50:17 CEST 2002 - olh@suse.de
+
+- allow build as user, use buildroot
+
+-------------------------------------------------------------------
+Fri Nov 23 13:34:54 CET 2001 - mfabian@suse.de
+
+- add sed-3.02-i18n-0.5.patch from
+  http://oss.software.ibm.com/developer/opensource/linux/patches/i18n/
+  with this patch, sed passes the tests for the LI18NUX2K.L1
+  specification.
+
+-------------------------------------------------------------------
+Wed May  9 19:46:04 CEST 2001 - cstein@suse.de
+
+- repacked sources of sed with bzip2.
+
+-------------------------------------------------------------------
+Mon May 29 18:38:23 CEST 2000 - kukuk@suse.de
+
+- Move sed to /bin, add compat link
+
+-------------------------------------------------------------------
+Mon Jan 17 16:50:21 CET 2000 - ro@suse.de
+
+- info -> /usr/share/info 

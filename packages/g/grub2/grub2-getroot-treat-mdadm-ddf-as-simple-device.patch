@@ -1,0 +1,68 @@
+From: Michael Chang <mchang@suse.com>
+Subject: treat mdadm ddf fakeraid as simple device
+References: bnc#872360
+Patch-Mainline: no
+
+Index: grub-2.02~beta2/grub-core/osdep/linux/getroot.c
+===================================================================
+--- grub-2.02~beta2.orig/grub-core/osdep/linux/getroot.c
++++ grub-2.02~beta2/grub-core/osdep/linux/getroot.c
+@@ -117,7 +117,7 @@ struct btrfs_ioctl_search_args {
+                                struct btrfs_ioctl_fs_info_args)
+ 
+ static int
+-grub_util_is_imsm (const char *os_dev);
++grub_util_is_imsm_or_ddf (const char *os_dev);
+ 
+ 
+ #define ESCAPED_PATH_MAX (4 * PATH_MAX)
+@@ -603,10 +603,10 @@ out:
+ }
+ 
+ static int
+-grub_util_is_imsm (const char *os_dev)
++grub_util_is_imsm_or_ddf (const char *os_dev)
+ {
+   int retry;
+-  int is_imsm = 0;
++  int is_imsm_or_ddf = 0;
+   int container_seen = 0;
+   const char *dev = os_dev;
+ 
+@@ -667,10 +667,17 @@ grub_util_is_imsm (const char *os_dev)
+ 	  if (strncmp (buf, "MD_METADATA=imsm",
+ 		       sizeof ("MD_METADATA=imsm") - 1) == 0)
+ 	    {
+-	      is_imsm = 1;
++	      is_imsm_or_ddf = 1;
+ 	      grub_util_info ("%s is imsm", dev);	      
+ 	      break;
+ 	    }
++	  if (strncmp (buf, "MD_METADATA=ddf",
++		       sizeof ("MD_METADATA=ddf") - 1) == 0)
++	    {
++	      is_imsm_or_ddf = 1;
++	      grub_util_info ("%s is ddf", dev);
++	      break;
++	    }
+ 	}
+ 
+       free (buf);
+@@ -681,7 +688,7 @@ grub_util_is_imsm (const char *os_dev)
+ 
+   if (dev != os_dev)
+     free ((void *) dev);
+-  return is_imsm;
++  return is_imsm_or_ddf;
+ }
+ 
+ char *
+@@ -1018,7 +1025,7 @@ grub_util_get_dev_abstraction_os (const
+ 
+   /* Check for RAID.  */
+   if (!strncmp (os_dev, "/dev/md", 7) && ! grub_util_device_is_mapped (os_dev)
+-      && !grub_util_is_imsm (os_dev))
++      && !grub_util_is_imsm_or_ddf (os_dev))
+     return GRUB_DEV_ABSTRACTION_RAID;
+   return GRUB_DEV_ABSTRACTION_NONE;
+ }

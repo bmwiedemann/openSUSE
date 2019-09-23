@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<component>
+  <id type="desktop">blender.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>Blender</name>
+  <project_license>GPL-2.0+</project_license>
+  <summary>3D modeling, animation, rendering and post-production</summary>
+  <url type="homepage">http://www.blender.org/</url>
+  <description>
+    <p>Blender is the free and open source 3D creation suite. It supports the entirety of the 3D pipeline—modeling, rigging, animation, simulation, rendering, compositing and motion tracking, even video editing and game creation. Advanced users employ Blender’s API for Python scripting to customize the application and write specialized tools; often these are included in Blender’s future releases. Blender is well suited to individuals and small studios who benefit from its unified pipeline and responsive development process. Use Blender to create TV commercials, to make
+technical visualizations, business graphics, to do some morphing, or design user interfaces.</p>
+    <p>Blender is cross-platform and runs equally well on Linux, Windows and Macintosh computers. Its interface uses OpenGL to provide a consistent experience. </p>
+    <p>Features:</p>
+    <ul>
+      <li>Photorealistic Rendering featuring a powerful new unbiased rendering engine called Cycles that offers stunning ultra-realistic rendering</li>
+      <li>Comprehensive array of modeling tools to make creating, transforming and editing your models a breeze</li>
+      <li>Blender’s new rendering engine includes complete node support for full customization, physically accurate shaders like glass, translucency and SSS, Open Shading Language (OSL) support for coding unique shaders and much more</li>
+      <li>An impressive set of rigging tools including: Envelope, skeleton and automatic skinning, easy weight painting, mirror functionality, bone layers and colored groups for organization and B-spline interpolated bones</li>
+      <li>Animation toolset featuring Automated walk-cycles along paths, Character animation pose editor, Non Linear Animation (NLA) for independent movements, IK forward/inverse kinematics for fast poses and Sound synchronization</li>
+      <li>Sculpting using 20 different brush types, Multi-res sculpting support, Dynamic Topology sculpting, Mirrored sculpting and more</li>
+      <li>Easily unwrap your mesh right inside Blender, and use image textures or paint your own directly onto the model.
+Blender allows for: Fast Cube, Cylinder, Sphere and Camera projections, Conformal and Angle Based unwrapping (with edge seams and vertex pinning), Painting directly onto the mesh, Multiple UV layers, and UV layout image exporting</li>
+      <li>A fully fledged compositor built right in, which means no more exporting to third party programs; you can do it all without leaving the program</li>
+      <li>Great looking simulations with tools including Fluid, Smoke, Hair, Cloth, Particles and Rigid Body Physics simulators</li>
+      <li>Included in Blender is a complete game engine, allowing you to create a fully featured 3d game right inside Blender</li>
+      <li>Camera and Object tracking</li>
+      <li>A vast array of extensions, courtesy a large community of enthusiasts and developers</li>
+      <li>Built-in Video Editor</li>
+      <li>Import/export support for many different programs</li>
+      <li>A completely customizable layout</li>
+    </ul>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image height="809" width="1440">https://www.blender.org/wp-content/uploads/2012/11/Flexible-UI.png?c5b6e6</image>
+      <caption>Blender user interface</caption>
+    </screenshot>
+    <screenshot>
+      <image height="707" width="1256">https://www.blender.org/wp-content/uploads/2012/11/materials_screenshot.png?c5b6e6</image>
+      <caption>Rendering materials in blender</caption>
+    </screenshot>
+    <screenshot>
+      <image height="720" width="1280">https://www.blender.org/wp-content/uploads/2012/11/caminandes_edit_final.jpg?c5b6e6</image>
+      <caption>Video editin in blender</caption>
+    </screenshot>
+  </screenshots>
+  <update_contact>bf-committers@blender.org</update_contact>
+</component>

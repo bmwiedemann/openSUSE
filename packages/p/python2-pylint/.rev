@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>abed12349e5cce262c129fdad44fa562</srcmd5>
+    <version>1.9.2</version>
+    <time>1537436540</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636608</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5d8f6fc2bf79f369dcef16183cc1b9f5</srcmd5>
+    <version>1.9.2</version>
+    <time>1537882987</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide also python-pylint namespace
+</comment>
+    <requestid>637738</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>63c0b50b6045e9d195175caab68a2cee</srcmd5>
+    <version>1.9.2</version>
+    <time>1544189661</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call</comment>
+    <requestid>655593</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>147d2d281b3a8eae3eea95ea5c86e1ad</srcmd5>
+    <version>1.9.5</version>
+    <time>1565178864</time>
+    <user>dimstar_suse</user>
+    <comment>- Updte to 1.9.5:
+  * various bugfixes all around</comment>
+    <requestid>720099</requestid>
+  </revision>
+</revisionlist>

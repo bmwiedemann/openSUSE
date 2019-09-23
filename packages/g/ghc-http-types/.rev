@@ -1,0 +1,80 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>da08ed6d547d0907276e803347d388f2</srcmd5>
+    <version>0.8.6</version>
+    <time>1432190230</time>
+    <user>coolo</user>
+    <comment>Generic HTTP types for Haskell (for both client and server code)</comment>
+    <requestid>307879</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>08d83d32c7d19d3380733ebf20325ea1</srcmd5>
+    <version>0.9</version>
+    <time>1452262978</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9 (forwarded request 352137 from mimi_vx)</comment>
+    <requestid>352191</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d40cab6d2b8489ed2df276ad91860e55</srcmd5>
+    <version>0.9.1</version>
+    <time>1465336097</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.1
+- remove useless _service
+* New function: parseByteRanges.
+* Support for HTTP status 422 &quot;Unprocessable Entity&quot; (RFC 4918). (forwarded request 400116 from mimi_vx)</comment>
+    <requestid>400117</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5feb8f1c14c5a48dcda353f4669e1697</srcmd5>
+    <version>0.9.1</version>
+    <time>1469081422</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411553</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>87f99be603e490332c88c08fabb3ed05</srcmd5>
+    <version>0.9.1</version>
+    <time>1505505049</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524824</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9d2636fc476e9eb9f1646ded8cb4e492</srcmd5>
+    <version>0.12.1</version>
+    <time>1527674999</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-http-types to the latest version.</comment>
+    <requestid>607823</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>32beb7761f898cd92a7f947282c54013</srcmd5>
+    <version>0.12.1</version>
+    <time>1532161212</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 0.9</comment>
+    <requestid>623796</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2f898f70e074aa5f6e8eb62e547ece9a</srcmd5>
+    <version>0.12.2</version>
+    <time>1540448213</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642868</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2d90fbeda1f02be6001d24bf142e8072</srcmd5>
+    <version>0.12.3</version>
+    <time>1551883637</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>681684</requestid>
+  </revision>
+</revisionlist>

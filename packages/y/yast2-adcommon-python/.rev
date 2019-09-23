@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>814d0089b1e24c1468afb57201b17ed7</srcmd5>
+    <version>0.2</version>
+    <time>1555488499</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency package of yast2-gpmc, yast2-aduc, and yast2-adsi</comment>
+    <requestid>694536</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>02f5d00f038c2c8c2459b7236799cda6</srcmd5>
+    <version>0.3</version>
+    <time>1556622372</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 0.3</comment>
+    <requestid>699397</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8dc8ee6b2a5e722653715c0509253fc7</srcmd5>
+    <version>0.4</version>
+    <time>1557916503</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 0.4</comment>
+    <requestid>703003</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>27cf39fd1a1815fff75d20697b529499</srcmd5>
+    <version>0.5</version>
+    <time>1558037315</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 0.5</comment>
+    <requestid>703181</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>34abec91d4fb5b3e6eac49acb2d89e18</srcmd5>
+    <version>0.7</version>
+    <time>1560862765</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 0.7</comment>
+    <requestid>710511</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0f53f6272351538b841cfc77ec2fa589</srcmd5>
+    <version>0.8</version>
+    <time>1565775464</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 0.8</comment>
+    <requestid>723147</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d53e2eba25aa957df845ce3c669315c3</srcmd5>
+    <version>1.0</version>
+    <time>1566551386</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 1.0</comment>
+    <requestid>725411</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>086b4aa0acc9447286c573be68ba021a</srcmd5>
+    <version>1.1</version>
+    <time>1568379606</time>
+    <user>lnussel_factory</user>
+    <comment>submit new version 1.1</comment>
+    <requestid>730226</requestid>
+  </revision>
+</revisionlist>

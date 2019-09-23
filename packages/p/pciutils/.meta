@@ -1,0 +1,13 @@
+<package name="pciutils" project="openSUSE:Factory">
+  <title>PCI-utilities for Kernel version 2.2 and newer</title>
+  <description>lspci: This program displays detailed information about all PCI busses
+and devices in the system, replacing the original /proc/pci interface.
+
+setpci: This program allows reading from and writing to PCI device
+configuration registers. For example, you can adjust the latency timers
+with it.
+
+update-pciids: This program downloads the current version of the
+pci.ids file.</description>
+  <devel project="Base:System" package="pciutils"/>
+</package>

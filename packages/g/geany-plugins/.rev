@@ -1,0 +1,242 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7367d723746de05d9bcc88255451a138</srcmd5>
+    <version>0.19</version>
+    <time>1282642985</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/geany-plugins based on submit request 45616 from user dimstar
+</comment>
+    <requestid>45616</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>34d47e0e9edd8282d451f6a7775e2493</srcmd5>
+    <version>0.19</version>
+    <time>1282919280</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/geany-plugins based on submit request 46319 from user vuntz
+</comment>
+    <requestid>46319</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>93d892b388e314756413d8a90f4ab68c</srcmd5>
+    <version>0.20</version>
+    <time>1295022223</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58147 from user coolo
+</comment>
+    <requestid>58147</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>bd365eae0991d606b85b7efc64357475</srcmd5>
+    <version>0.20</version>
+    <time>1295022230</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58147
+</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>bd365eae0991d606b85b7efc64357475</srcmd5>
+    <version>0.20</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>bd365eae0991d606b85b7efc64357475</srcmd5>
+    <version>0.20</version>
+    <time>1319181899</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5973f3f2ced672da8f14157db6000b89</srcmd5>
+    <version>0.21.1</version>
+    <time>1325787054</time>
+    <user>coolo</user>
+    <comment>Pushing G:A</comment>
+    <requestid>98902</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0dc59b047d92c6588d0769a82fa7f3eb</srcmd5>
+    <version>0.21.1</version>
+    <time>1327087407</time>
+    <user>coolo</user>
+    <comment>Add upstream reference for patch (forwarded request 100856 from dimstar)</comment>
+    <requestid>100858</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>0dc59b047d92c6588d0769a82fa7f3eb</srcmd5>
+    <version>0.21.1</version>
+    <time>1340183358</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>89499cbdc576609227ba3feffd227aec</srcmd5>
+    <version>1.22</version>
+    <time>1345730614</time>
+    <user>namtrac</user>
+    <comment>Update to 1.22 - cleaned (forwarded request 130970 from dimstar)</comment>
+    <requestid>130971</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>89499cbdc576609227ba3feffd227aec</srcmd5>
+    <version>1.22</version>
+    <time>1359108916</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4baad7de80f1140e20de8c85b9611cb6</srcmd5>
+    <version>1.23</version>
+    <time>1364986240</time>
+    <user>coolo</user>
+    <comment>Update to 1.23 (forwarded request 160774 from Zaitor)</comment>
+    <requestid>160798</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>4baad7de80f1140e20de8c85b9611cb6</srcmd5>
+    <version>1.23</version>
+    <time>1379662407</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>802f99073e6f2d61fd80bcd54258c1b4</srcmd5>
+    <version>1.24</version>
+    <time>1399317436</time>
+    <user>coolo</user>
+    <comment>Push</comment>
+    <requestid>231864</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>802f99073e6f2d61fd80bcd54258c1b4</srcmd5>
+    <version>1.24</version>
+    <time>1409300940</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>7675964b6ecca53d573df01c7fb69410</srcmd5>
+    <version>1.24</version>
+    <time>1418737712</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265007</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c279ca302f42b8a0db98d330a35c1541</srcmd5>
+    <version>1.26</version>
+    <time>1456127841</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable pkgconfig(webkit-1.0), as we do not want to use this as
+  it is unsupported by upstream.
+
+- Geany was switched to build against gtk3, so also switch
+  this -plugins package to gtk3 too:
+  + Disable the following plugins because they do not build 
+    against gtk3: Debugger, DevHelp, GeanyDoc, GeanyGenDoc, 
+    GeanyLaTeX, GeanyMacro, GeanyNumberedBookmarks, GeanyPrj,
+    Geanypy, Markdown, MultiTerm, Scope, WebHelper.
+  + Update BuildRequires:
+    - Update geany version to 1.26.
+    - Replace pkgconfig(gtk+-2.0) by pkgconfig(gtk+-3.0).
+    - Replace pkgconfig(gtkspell-2.0) by pkgconfig(gtkspell3-3.0).
+    - Remove gconf2-devel, no longer required after the switch to
+      gtk3.
+
+- Update to version 1.26:
+  + General: Add a note about deprecating Waf build system --
+    will be removed with 1.27.
+  + Addons:
+    - Add new feature to copy path of current file into clipboard
+      (#291).
+    - Update bookmark list also on any line changes in the
+      document (SF#129, SF#39, #284).
+    - Add GTK3 support (#271).
+  + GeanyPy: Fix Python library loading on Debian based systems.
+  + GeanyVC:
+    - Add GTK3 support (#300).
+    - Little improvements on commit dialog (#300).
+  + GitChangeBar: Add support for libgit2 0.23 (#283).</comment>
+    <requestid>360003</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0ce81a7eb855208725df9d7441186467</srcmd5>
+    <version>1.28</version>
+    <time>1470217415</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415700</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>74daea4e1b8f5665b7ef4dbed016837f</srcmd5>
+    <version>1.28</version>
+    <time>1474623519</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop pkgconfig(vte) BuildRequires: geany-plugins still uses vte2
+  which is not compatible with the GTK3 build of geany. This change
+  does not result in any difference, since the package switched to
+  GTK3 a while ago and the GTK2/VTE2 based plugins have not been
+  shipped since then anyway. (forwarded request 428674 from dimstar)</comment>
+    <requestid>429176</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3f5ad45e66237d358e1b888cb83fec69</srcmd5>
+    <version>1.29</version>
+    <time>1485939181</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453495</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>10fdf28c436ced9eb314b9d7c9bc60f1</srcmd5>
+    <version>1.30</version>
+    <time>1489178789</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478473</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>7de0e9caf0228a370cc55cdb05d6d0c2</srcmd5>
+    <version>1.30</version>
+    <time>1500275415</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename misleadingly named macro %%{gtk3_enable} to
+  %%{gtk3_ready} and set it to true (1). Used to distinguish
+  between gtk-ready plugins and those that are not yet so in the
+  file-list. (forwarded request 509419 from badshah400)</comment>
+    <requestid>509994</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>578ad15b7df5363c3644de36152ea18e</srcmd5>
+    <version>1.31</version>
+    <time>1505920241</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527243</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a11f3c8d27d9ab5809c36691cbe5dd74</srcmd5>
+    <version>1.33</version>
+    <time>1520415367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583113</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3fbef724e7fa8d864b59c8ea4b1ccd13</srcmd5>
+    <version>1.34</version>
+    <time>1548062895</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.34 (successfully tested on Tumbleweed x86_64) (forwarded request 658789 from stroeder)</comment>
+    <requestid>659063</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>4a145f44e3699cb071995a6e834945d8</srcmd5>
+    <version>1.34</version>
+    <time>1550221443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>676260</requestid>
+  </revision>
+</revisionlist>

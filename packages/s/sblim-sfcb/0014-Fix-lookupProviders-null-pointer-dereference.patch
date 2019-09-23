@@ -1,0 +1,27 @@
+From 596e7e388be0a8cb7786dea7032b1dbfd4ff7869 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Tue, 28 Nov 2017 10:34:31 +0100
+Subject: [PATCH 14/25] Fix lookupProviders() null pointer dereference
+
+Tue Sep  1 13:44:19 UTC 2015 - mvetter@suse.com
+---
+ providerMgr.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/providerMgr.c b/providerMgr.c
+index 6ffe582fb106..47841f9c4b1c 100644
+--- a/providerMgr.c
++++ b/providerMgr.c
+@@ -361,6 +361,9 @@ lookupProviders(long type, char *className, char *nameSpace,
+ 
+   _SFCB_ENTER(TRACE_PROVIDERMGR, "lookupProviders");
+ 
++  if (className == NULL)
++    _SFCB_RETURN(NULL);
++
+   id = malloc(strlen(nameSpace) + strlen(className) + 8);
+   strcpy(id, nameSpace);
+   strcat(id, "|");
+-- 
+2.15.0
+

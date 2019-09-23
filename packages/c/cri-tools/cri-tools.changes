@@ -1,0 +1,158 @@
+-------------------------------------------------------------------
+Thu Jul  4 13:41:53 UTC 2019 - Michal Jura <mjura@suse.com>
+
+- Update golang(API) requiremnt to 1.12
+
+-------------------------------------------------------------------
+Thu Jul  4 13:28:57 UTC 2019 - Michal Jura <mjura@suse.com>
+
+- Update cri-tools to v1.15.0:
+  * Add registry prefix option
+  * Revert "Skip test "image status should support all kinds of references" for docker runtime"
+  * Upgrade Kuberntes version to v1.15.0
+  * Fix typo in parallel
+  * Skip test "image status should support all kinds of references" since dockershim doesn't support it
+  * Fallback to repo digest name if repoTag is <none>:<none>
+  * feature: add display; support live monitoring critool stats
+  * Test image status for various references.
+  * fix debug in config file
+  * Update `rmp` to test for running sandbox
+  * Fix logDirectory typo in examples.
+  * Search program directory for config as fallback
+  * Improve error message for failed to connect
+  * Set SelinuxRelabel to true for bind mounts
+  * Include gcs bucket release.
+  * Use same version as previous example
+  * Add `curl` to download example
+
+-------------------------------------------------------------------
+Mon Mar 25 08:00:25 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update cri-tools to v1.14.0:
+  * CRI CLI (crictl)
+    * Adds imagefsinfo subcommand for CRI ImageFSInfo() method.
+    * Adds support to filter containers by image.
+    * Fixes a bug when removing multiple containers.
+    * Reduces the default connection timeout value.
+    * Fixes the exit code for crictl exec.
+    * Updated the instructions fro godep.
+    * Adds support of -q for crictl info.
+    * Adds support of zsh completion.
+    * Upgrades kubernetes version to 1.14.
+  * CRI validation testing (critest)
+    *  Adds a benchmark testcase for measuring the time of creating pod and a
+       container.
+    *  Changes streaming tests to omit newlines on echo
+    *  Adds support of critest for Windows container runtime.
+    *  Updates test environment to xenial and fixes docker installation.
+    *  Updates Go version to 1.12.
+
+-------------------------------------------------------------------
+Mon Dec 17 08:14:45 UTC 2018 - Sascha Grunert <sgrunert@suse.com>
+
+- Added `rpmlintrc` to spec file
+
+-------------------------------------------------------------------
+Fri Dec 14 10:51:01 UTC 2018 - Sascha Grunert <sgrunert@suse.com>
+
+- Update cri-tools to v1.13.0:
+  * CRI CLI (crictl):
+    * Adds --auth options for pull command
+    * Fixes URL parsing for exec and attach
+    * Upgrades Go version to 1.11.1
+    * Enables Windows CI on travis
+    * Switches Windows default endpoints to npipe
+    * Updates version matrix information for the project
+    * Adds container name filter to ps command
+    * Adds metadata to filters
+    * Prints annotations and labels for inspect command
+  * CRI validation testing (critest)
+    * Add tests for multiple containers in a pod
+    * Adds runtime handler support for critest
+    * Adds exec sync timeout test cases
+    * Fixes readonly filesystem test cases
+- Add `crictl.yaml` to install directory
+- Fix build for ppc64
+- Require golang >= 1.11
+
+-------------------------------------------------------------------
+Tue Nov 13 07:50:12 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- crictl/critest: compile version
+
+- Require golang >= 1.10.
+
+-------------------------------------------------------------------
+Tue Oct  2 07:30:42 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Bump cri-tools to v1.12.0:
+  * Properly returns errors when the output format is not supported
+  * Show concise image info for crictl ps
+  * Fixes crictl ps and crictl pods
+  * Adds podID in output of crictl ps
+  * Adds sandbox config to image pull
+  * Fixes unmarshal issues in crictl inspecti
+  * Fixes timeout for grpc dialer
+  * Adds new test to critest for privileged container
+
+-------------------------------------------------------------------
+Mon Aug 13 08:54:30 UTC 2018 - vrothberg@suse.com
+
+- Generate and install bash completion for crictl.
+
+- Provide /etc/crictl.yaml config.
+  bsc#1104598
+
+-------------------------------------------------------------------
+Thu Aug  2 09:00:47 UTC 2018 - vrothberg@suse.com
+
+- Bump cri-tools to v1.11.1:
+  * versioning is now consistent with Kubernetes
+  * Fix argument parsing for crictl exec
+  * Improved documentation
+  * Multi-arch critest tests
+  * Filter pods with prefix matching of name and namespace
+  * Improve terminal support for exec and attach
+
+-------------------------------------------------------------------
+Fri Jun 15 07:59:00 UTC 2018 - vrothberg@suse.com
+
+- Bump cri-tools to v1.0.0-beta.1 (CRI v1.10.x):
+  * crictl: allow short option handling
+  * crictl-exec: fix argument parsing
+  * Update documentation
+  * Kubernetes/CRI 1.10.x compatibility
+  * Minor bug fixe
+
+-------------------------------------------------------------------
+Tue Jun  5 08:28:14 UTC 2018 - dcassany@suse.com
+
+- Refactor %license usage to a simpler form
+
+-------------------------------------------------------------------
+Mon Jun  4 14:50:13 UTC 2018 - dcassany@suse.com
+
+- Make use of %license macro
+
+-------------------------------------------------------------------
+Mon Mar  5 13:22:07 UTC 2018 - vrothberg@suse.com
+
+- Use cri-tools v1.0.0-alpha.0 to be compatible to cri-o v1.9.x.
+
+-------------------------------------------------------------------
+Fri Mar  2 17:38:18 UTC 2018 - fcastelli@suse.com
+
+- Change buildtime requirement of go-md2man: use go-go-md2man to ensure
+  package builds on IBS against sle12sp3. This change won't affect openSUSE
+
+-------------------------------------------------------------------
+Wed Feb 14 20:01:00 UTC 2018 - jengelh@inai.de
+
+- Description shall say what the software does now, not in the
+  future.
+
+-------------------------------------------------------------------
+Mon Feb 12 11:48:18 UTC 2018 - vrothberg@suse.com
+
+- Add cri-tools packaging for debugging and validating tools for the Kubelet
+  CRI, including the tools crictl and critest.

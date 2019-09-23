@@ -1,0 +1,135 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6c110f808635651ba4dca696198a8146</srcmd5>
+    <version>7.11.2</version>
+    <time>1332831411</time>
+    <user>coolo</user>
+    <comment>Replaces MesaGLw sources. Please remove devellink from openSUSE:Factory/MesaGLw
+to X11:XOrg/MesaGLw and create one from openSUSE:Factory/libGLw to 
+X11:XOrg/libGLw instead. Thanks.</comment>
+    <requestid>111070</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c0c2ccc31c56390544c8ad208726c1cf</srcmd5>
+    <version>7.11.2</version>
+    <time>1336653166</time>
+    <user>coolo</user>
+    <comment>- disable motif support in light of recent findings of the
+  legal-team 
+- switched to minimal pkgconfig buildrequires</comment>
+    <requestid>120576</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3314f080e291274bb112c815f6a66988</srcmd5>
+    <version>7.11.2</version>
+    <time>1338569649</time>
+    <user>coolo</user>
+    <comment>- Fix -devel package requires, it needs pkgconfig(gl)
+- Fix buildrequires to require explicitely all needed libraries.</comment>
+    <requestid>122975</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d6db04824754c94c868ccdb20ce18178</srcmd5>
+    <version>7.11.2</version>
+    <time>1338903150</time>
+    <user>coolo</user>
+    <comment>- added generation of biarch packages</comment>
+    <requestid>123558</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9e18d4b53df0a24e8691e7f63cb6921f</srcmd5>
+    <version>7.11.2</version>
+    <time>1339352250</time>
+    <user>coolo</user>
+    <comment>- enable Motif support if %use_motif is set (currently done in
+  X11:XOrg, but likely planned also for openSUSE:Factory:NonFree
+  project)</comment>
+    <requestid>123844</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>9e18d4b53df0a24e8691e7f63cb6921f</srcmd5>
+    <version>7.11.2</version>
+    <time>1340183552</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>7a0b371e9ae4004bd4627afdfe2f49a0</srcmd5>
+    <version>7.11.2</version>
+    <time>1348380329</time>
+    <user>coolo</user>
+    <comment>- fixed BuildRequires 
+
+- fixed build on openSUSE 12.2</comment>
+    <requestid>135261</requestid>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>7a0b371e9ae4004bd4627afdfe2f49a0</srcmd5>
+    <version>7.11.2</version>
+    <time>1359109227</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>7a0b371e9ae4004bd4627afdfe2f49a0</srcmd5>
+    <version>7.11.2</version>
+    <time>1379662871</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>7a0b371e9ae4004bd4627afdfe2f49a0</srcmd5>
+    <version>7.11.2</version>
+    <time>1409301475</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>6cf2d939b241beab95eabfe02759c542</srcmd5>
+    <version>7.11.2</version>
+    <time>1414613396</time>
+    <user>coolo</user>
+    <comment>- fixed buildrequires: pkgconfig(dri) -&gt; pkgconfig(gl) 
+- added baselibs.conf as source to specfile</comment>
+    <requestid>258491</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fb2c74a25424bdcf03ebec49dff17ecb</srcmd5>
+    <version>8.0.0</version>
+    <time>1422636622</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to current git 8.0.0_20130123_c4f7cdf; since 
+  1.0.0_20120320_4d1acb3 this is just a version bump to 8.0.0
+  and one typo fix (git commit c4f7cdf)
+- specfile cleanup</comment>
+    <requestid>283433</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>614e0ac77570e72f0dfb3b25727d1ee8</srcmd5>
+    <version>8.0.0</version>
+    <time>1459255834</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>379557</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>c876651face27dd4878580a68939c69a</srcmd5>
+    <version>8.0.0</version>
+    <time>1496225966</time>
+    <user>dimstar_suse</user>
+    <comment>- includes everything needed for missing sle issue entries:
+  fate #315643-315645, 319159-319161, 319618 (bsc#1041368)</comment>
+    <requestid>499012</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>4b46c97681bc4a5aa0f330f803e5781b</srcmd5>
+    <version>8.0.0</version>
+    <time>1519557689</time>
+    <user>dimstar_suse</user>
+    <comment>- n_Use-newly-introduced-GLAPIVAR-for-variables.patch
+  * moved bits from Mesa's n_Define-GLAPIVAR-separate-from-GLAPI.patch
+    into this one (boo#1082297)
+- always build with Motif support</comment>
+    <requestid>579530</requestid>
+  </revision>
+</revisionlist>

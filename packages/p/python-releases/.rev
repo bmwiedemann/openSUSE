@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>11b08310c12669119f0b8f0f1fc2372f</srcmd5>
+    <version>1.5.0</version>
+    <time>1527582635</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-invocations.
+See request 606019.
+https://build.opensuse.org/request/show/606019</comment>
+    <requestid>610400</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1ca0fdd0439bbaeb1a071d00c75922b2</srcmd5>
+    <version>1.6.1</version>
+    <time>1534100193</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable testsuite in multibuild mode as it creates cycle otherwise
+
+- Update to 1.6.1:
+  * Support sphinx 1.7</comment>
+    <requestid>628769</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5427eb0fed5dc970ac41e636a032dc12</srcmd5>
+    <version>1.6.1</version>
+    <time>1535705104</time>
+    <user>dimstar_suse</user>
+    <comment>- Move the Name definition above lua code to work on 42.3</comment>
+    <requestid>632101</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8ba2d6a94c986a0e9e4b330903aeb338</srcmd5>
+    <version>0.5.2</version>
+    <time>1553635883</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.5.2
+  - Include tests in sdist
+- Initial spec for v0.5.1
+</comment>
+    <requestid>686440</requestid>
+  </revision>
+</revisionlist>

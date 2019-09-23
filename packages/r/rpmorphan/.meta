@@ -1,0 +1,9 @@
+<package name="rpmorphan" project="openSUSE:Factory">
+  <title>List the orphaned RPM packages</title>
+  <description>Finds &quot;orphaned&quot; packages on your system. It determines which packages
+have no other packages depending on their installation, and shows you
+a list of these packages. It intends to be clone of deborphan debian
+tools for RPM packages.</description>
+  <devel project="utilities" package="rpmorphan"/>
+  <url>http://rpmorphan.sourceforge.net/</url>
+</package>

@@ -1,0 +1,45 @@
+Index: at-3.1.13/at.c
+===================================================================
+--- at-3.1.13.orig/at.c
++++ at-3.1.13/at.c
+@@ -319,7 +319,8 @@ writefile(time_t runtimer, char queue)
+ 	 * bit.  Yes, this is a kluge.
+ 	 */
+ 	cmask = umask(S_IRUSR | S_IWUSR | S_IXUSR);
+-	if ((fd = open(atfile, O_CREAT | O_EXCL | O_TRUNC | O_WRONLY, S_IRUSR)) == -1)
++	if ((fd = open(atfile,
++	               O_CREAT | O_EXCL | O_TRUNC | O_WRONLY | O_SYNC, S_IRUSR)) == -1)
+ 	    perr("Cannot create atjob file %.500s", atfile);
+ 
+ 	if ((fd2 = dup(fd)) < 0)
+Index: at-3.1.13/atd.c
+===================================================================
+--- at-3.1.13.orig/atd.c
++++ at-3.1.13/atd.c
+@@ -103,6 +103,7 @@ int selinux_enabled=0;
+ 
+ #define BATCH_INTERVAL_DEFAULT 60
+ #define CHECK_INTERVAL 3600
++#define RETRY_INTERVAL CHECK_INTERVAL
+ 
+ /* Global variables */
+ 
+@@ -845,12 +846,17 @@ run_loop()
+ 
+ 		/* Something went wrong the last time this was executed.
+ 		 * Let's remove the lockfile and reschedule.
++		 *
++		 * To prevent pointless CPU heating with permanent errors,
++		 * next execution is scheduled with RETRY_INTERVAL inserted.
+ 		 */
+ 		strncpy(lock_name, dirent->d_name, sizeof(lock_name)-1);
+ 		lock_name[sizeof(lock_name)-1] = 0;
+ 		lock_name[0] = '=';
+ 		unlink(lock_name);
+-		next_job = now;
++		if (next_job > now + RETRY_INTERVAL) {
++		    next_job = now + RETRY_INTERVAL;
++		}
+ 		nothing_to_do = 0;
+ 	    }
+ 	    continue;

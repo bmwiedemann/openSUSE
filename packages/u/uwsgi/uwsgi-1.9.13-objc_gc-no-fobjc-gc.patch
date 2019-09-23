@@ -1,0 +1,9 @@
+--- a/plugins/objc_gc/uwsgiplugin.py
++++ b/plugins/objc_gc/uwsgiplugin.py
+@@ -1,5 +1,5 @@
+ NAME="objc_gc"
+-CFLAGS=["-fobjc-gc"]
++CFLAGS=[]
+ LDFLAGS=[]
+ LIBS=[]
+ GCC_LIST=['objc_gc.m']

@@ -1,0 +1,6 @@
+<package name="parted" project="openSUSE:Factory">
+  <title>GNU partitioner</title>
+  <description>GNU Parted is a program for creating, destroying, resizing, checking,
+and copying partitions, and the file systems on them.</description>
+  <devel project="Base:System" package="parted"/>
+</package>

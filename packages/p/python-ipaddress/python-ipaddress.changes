@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Mon Apr 16 12:41:38 UTC 2018 - tchvatal@suse.com
+
+- Install license file
+
+-------------------------------------------------------------------
+Mon Apr 16 11:53:35 UTC 2018 - michael@stroeder.com
+
+- update to version v1.0.22:
+  * Avoid using assertRaises as a context manager
+
+-------------------------------------------------------------------
+Fri Feb  9 21:58:17 UTC 2018 - michael@stroeder.com
+
+- update to version v1.0.19
+  * Synchronize with Python3's ipaddress module of the day
+
+-------------------------------------------------------------------
+Thu Mar 16 15:39:29 UTC 2017 - tbechtold@suse.com
+
+- Use pypi.io as Source url
+
+-------------------------------------------------------------------
+Thu Mar 16 13:55:05 UTC 2017 - tbechtold@suse.com
+
+- update to 1.0.18
+- add Provides for python2-ipaddress
+
+-------------------------------------------------------------------
+Mon Dec  5 20:17:55 UTC 2016 - michael@stroeder.com
+
+- Update to 1.0.17
+
+-------------------------------------------------------------------
+Sat Jul  9 10:39:50 UTC 2016 - michael@stroeder.com
+
+- Update to 1.0.16:
+  * include license
+  * Customize warning when bytes are passed in
+
+-------------------------------------------------------------------
+Wed Jul 29 18:16:17 UTC 2015 - tbechtold@suse.com
+
+- Initial packaging
+

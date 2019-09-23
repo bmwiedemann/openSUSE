@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Thu Apr 25 08:37:53 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.0.4
+  - cleanup unused files, additional platform support
+  - Minor doc updates
+  - patch step for python3 no longer required in build
+- turn the test suite on
+- deleted patches
+  - pymilter-dns_dsn.patch (upstreamed)
+
+-------------------------------------------------------------------
+Thu Sep  6 12:54:13 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix grammar issues in description. Fix RPM group.
+
+-------------------------------------------------------------------
+Thu Sep  6 02:33:45 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Initial packaging

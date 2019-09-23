@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>36f06c66e9ac7e413c31a925df549499</srcmd5>
+    <version>1.7</version>
+    <time>1403724009</time>
+    <user>coolo</user>
+    <comment>submit new package as coolo suggested</comment>
+    <requestid>238601</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>36f06c66e9ac7e413c31a925df549499</srcmd5>
+    <version>1.7</version>
+    <time>1409300858</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ccf5f5695750657bedaf1139e6e1acf5</srcmd5>
+    <version>1.7</version>
+    <time>1412690437</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254474</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>67867b381e8ee81d430e6bd3ce8560e5</srcmd5>
+    <version>1.7</version>
+    <time>1466413614</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402907</requestid>
+  </revision>
+</revisionlist>

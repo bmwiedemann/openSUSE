@@ -1,0 +1,227 @@
+-------------------------------------------------------------------
+Fri Mar  9 11:32:41 UTC 2018 - jweberhofer@weberhofer.at
+
+- Cleaned up spec
+
+-------------------------------------------------------------------
+Sun Feb 11 08:33:11 UTC 2018 - jweberhofer@weberhofer.at
+
+- Cleaned up spec
+- Fixed building error
+- Do no longer package tests
+
+-------------------------------------------------------------------
+Fri Aug 18 09:56:20 UTC 2017 - ecsos@opensuse.org
+
+- renamed package to php7-pear-MDB2
+
+-------------------------------------------------------------------
+Fri Feb  1 12:57:35 UTC 2013 - aj@ajaissle.de
+
+- New upstream release 2.5.0b5
+
+- Changelog 2.5.0b5
+  * fixed bug #18494: _compareIntegerDefinition() ignores length 
+    change.
+  * fixed bug #16280: compareDefinition() turns NULL defaults into
+    empty strings for NOT NULL columns.
+  * fixed bug #19677: Call to undefined function: MDB2_Driver
+    mysql::isError()
+
+- Changelog 2.5.0b4
+  * MDB2 is now E_STRICT compliant! [danielc]
+  * Fix Bug #9502: Strong typing query result misbehaves [danielc]
+  * Fix Bug #16508: mdb2-2.5.0b1 not working with PHP 5.3.0
+    [quipo]
+  * Fix Bug #17552: MDB2_Driver_Manager
+    ibase::listTableConstraints returns list of indices [quipo]
+  * Fix Bug #17890: Improper use of array_search in psgsql.php
+    v1.173 prepare function [quipo]
+  * Fix Bug #18050: Many &quot;Deprecated&quot; [quipo]
+  * Fix Bug #18175: Using MDB2::factory raises fatal error [quipo]
+  * Fix Bug #18203: Type introspection breaks with associative
+    arrays if names are identical [danielc] (patch by Peter Bex)
+  * Fix Bug #18398: non-static functions called statically
+    [danielc]
+  * Fix Bug #18427: Notices appear while debugging [quipo]
+  * Fix Bug #18721: DSN URLs do not support &quot;@&quot; in
+    database names [danielc]
+  * Fix Bug #18826: Crash and security problem with is_a() in
+    combination with value escaping [doconnor]
+  * Fix Bug #18886: Deprecated code generates warnings
+    [astembridge]
+  * Fix Bug #18978: upgrade from alpha2 to beta3 breaks
+    iterator.php [danielc]
+  * Fix Bug #19008: remove error_reporting (for PEAR QA team)
+    [danielc]
+  * Fix Bug #19136: Infinite Recurcsion makes result object
+    unuseable [danielc]
+  * Fix Bug #19148: &quot;undefined variable result&quot; in
+    MDB2_Driver_Common::_wrapQuery() [danielc]
+  * Fix Bug #19191: Have dropSequence() return MDB2_OK on success,
+    as documented [danielc]
+  * Fix Bug #19192: Have createSequence() return MDB2_OK on
+    success, as documented [danielc]
+  * Fix Bug #19193: Have createConstraint() return MDB2_OK on
+    success, as documented [danielc]
+  * Fix Bug #19194: Have dropConstraint() return MDB2_OK on
+    success, as documented [danielc]
+  * Fix Bug #19195: Have createIndex() return MDB2_OK on success,
+    as documented [danielc]
+  * Fix Bug #19196: Have vacuum() return MDB2_OK on success, as
+    documented [danielc]
+  * Fix Bug #19199: Have dropTable() return MDB2_OK on success,
+    as documented [danielc]
+  * Fix Bug #19200: Have alterTable() return MDB2_OK on success,
+    as documented [danielc]
+  * Fix Bug #19201: Have truncateTable() return MDB2_OK on
+    success, as documented [danielc]
+  * Fix Bug #19202: sqlite foreign key violations produce generic
+    MDB2_ERROR [danielc]
+  * Fix Bug #19262: Fetchmode constants WERE bitwise [gauthierm]
+  * Implement Feature #17367: Documentation Sync Drift [quipo]
+  * Implement Feature #18759: User note that is a documentation
+    problem [danielc]
+  * small performance tweaks
+
+- Changelog 2.5.0b3
+  * fixed bug #15912: MDB2::loadClass can return MDB2_OK without
+    loading class
+  * fixed bug #16020: unable to set params via dsn string in
+    parseDSN()
+  * fixed bug #16508: reusing var name + return by ref [rix0r]
+  * fixed bug #16727: quote(url, 'clob')) fetches URL even if lob
+    allow_url_include option is false
+  * fixed unreported bug in parseDSN() and oracle's Easy Connect
+    syntax
+  * fixed bug #16973 and #17039: Wrong _skipDelimitedStrings
+    behavior with escaped quotes
+  * fixed bug #16994: incompatible declaration of
+    setTransactionIsolation() in some drivers
+  * dropped PHP 4 support
+  * PHP 5.3 compatibility fixes
+  * performance tweaks (reduced number of internal function calls)
+  * added new sqlsrv driver (native SQL Server driver) [Chris
+    Pucci, Mike Ketcham]
+  * added new ODBC experimental driver [pschellhaas]
+  * Switched test suite to PHPUnit 3.5
+
+- Changelog 2.5.0b2
+  * fixed bug #12117: disconnect() does not work as documented
+  * fixed bug #12912: replace() documentation
+  * fixed bug #13811: _skipDelimitedStrings() fails on empty
+    strings
+  * fixed bug #13898: more tolerant check for 'new_link' DSN option
+  * request #13929: added 'default_fk_action_ondelete' and
+    'default_fk_action_onupdate' options for default FOREIGN KEY
+    constraints actions
+  * fixed bug #14124: _skipDelimitedStrings() and prepare() fail
+    with sql comments inside quoted strings
+  * fixed bug #14179: declaration of MDB2_Driver
+    Common::raiseError() must be compatible with that of
+    PEAR::raiseError()
+  * fixed doc bug #14290: connect should mention the type of
+    object returned
+  * fixed bug #14831: $ignores in _skipDelimitedStrings()
+    [patch by Aleksander Machniak]
+
+- Changelog 2.5.0b1
+  * request #12731: added truncateTable() in the Manager module
+  * request #12732: added vacuum() in the Manager module for
+    OPTIMIZE/VACUUM TABLE abstraction
+  * request #12800: added alterDatabase() in the Manager module
+    [afz]
+  * fixed bug #12924: correctly handle internal expected errors
+    even with custom error handling
+  * fixed bug #12991: new error code in errorInfo() [afz]
+  * added databaseExists() method [afz]
+  * request #13106: added unixtimestamp() in the Function module
+  * added max_identifiers_length option
+
+
+- Changelog 2.5.0.a2
+  * fixed bug #12358: E_STRICT changes in latest alpha broke PHP4
+    compatibility
+  * fixed bug #12351: wrong case for function PEAR::isError() in
+    the Reverse module [was: IsError()]
+  * fixed bug #12530: MDB2_Extended::autoPrepare() gives error if
+    $types is null
+  * request #12012: added charset/collation support in
+    createDatabase() for the drivers that support this feature
+  * added bindname_format option (this is the regexp used to
+    recognize named placeholders in prepared statements)
+
+- Changelog 2.5.0a1
+  * fixed bug #10024: Security fix for LOBs. Added an option to
+    turn lob_allow_url_include off by default
+  * fixed bug #11179: prepared statements with named placeholders
+    fail if extra values are provided
+  * request #11297: added support for "schema.table" (or
+    "owner.table") notation in the Reverse module
+  * initial support for FOREIGN KEY and CHECK constraints in the
+    Reverse and Manager modules
+  * fixed bug #11428: propagate quote() errors with invalid data
+    types
+  * added new test cases in the test suite
+  * added LENGTH() function in the Function module
+  * fixed bug #11612: raiseError() must be compatible with
+    PEAR::raiseError() [PHP6]
+  * fixed bug #11790: avoid array_diff() because it has a memory
+    leak in PHP 5.1.x
+  * fixed bug #11906: quoteIdentifier fails for names with dots
+  * fixed bug #11975: Extended::autoExecute() does not work with
+    Oracle when using LOBs (patch by Pieter Meulen, van der)
+  * fixed some E_STRICT errors with PHP5
+  * fixed bug #12083: createTable() in the Manager module now
+    returns MDB2_OK on success, as documented
+  * fixed bug #12246: wrong check in MDB2::isStatement() (thanks to
+    zaa@zaa.pp.ru)
+
+-------------------------------------------------------------------
+Fri Feb  1 12:47:17 UTC 2013 - aj@ajaissle.de
+
+-  improved spec file to serve more build targets
+
+-------------------------------------------------------------------
+Tue Nov 27 13:27:47 UTC 2012 - Ralf Lang <lang@b1-systems.de>
+
+- adapted packaging for SLE11SP2 compatibility
+
+-------------------------------------------------------------------
+Thu Jan 12 11:31:06 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Thu Jan 20 15:23:50 UTC 2011 - chris@computersalat.de
+
+- change to php_pear_gen_filelist macro
+
+-------------------------------------------------------------------
+Wed Jan 19 21:40:17 UTC 2011 - chris@computersalat.de
+
+- package rename php5-pear-MDB2
+- added php-macros
+- cleanup spec
+
+-------------------------------------------------------------------
+Sat May 30 18:13:35 CEST 2009 - chris@computersalat.de
+
+- fixed post script
+
+-------------------------------------------------------------------
+Thu May 21 22:33:51 CEST 2009 - chris@computersalat.de
+
+- new version 2.4.1
+- beautify spec
+  o new spec header
+  o package rename due to package convention
+  o removed php4 stuff, deps
+  o added Provides and Obsoletes for old package names.
+    This should not break deps
+- added stuff to automatically create correct filelist
+  o tested against Factory (1120)
+  o opensuse >= 1100 complains about
+    "directory not owned by package"
+- some rpmlint stuff
+

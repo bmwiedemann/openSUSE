@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+            <param name="url">https://github.com/hexpm/hex.git</param>
+          <param name="changesrevision">9441d15e49808d8b509b412c66888b93e7af375b</param></service></servicedata>

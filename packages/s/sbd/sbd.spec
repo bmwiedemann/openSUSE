@@ -1,0 +1,102 @@
+#
+# spec file for package sbd
+#
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2013 Lars Marowsky-Bree
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+  %define _fillupdir /var/adm/fillup-templates
+%endif
+
+Name:           sbd
+Version:        1.4.0+20190612.398628b
+Release:        0
+Summary:        Storage-based death
+License:        GPL-2.0-or-later
+Group:          Productivity/Clustering/HA
+Url:            https://github.com/ClusterLabs/sbd
+Source:         %{name}-%{version}.tar.xz
+Patch1:         bsc#1140065-Fix-sbd-cluster-exit-if-cmap-is-disconnected.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  e2fsprogs-devel
+BuildRequires:  libaio-devel
+BuildRequires:  libtool
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(corosync)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(libqb)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(pacemaker)
+BuildRequires:  pkgconfig(pacemaker-cib)
+BuildRequires:  pkgconfig(uuid)
+Requires(post): %fillup_prereq
+Conflicts:      ClusterTools2 < 2.3.2
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%{?systemd_requires}
+
+%description
+This package contains the storage-based death functionality.
+
+%prep
+%autosetup -n %{name}-%{version} -p1
+
+%build
+autoreconf -fvi
+%configure
+make %{?_smp_mflags}
+
+%install
+%make_install LIBDIR=%{_libdir}
+install -D -m 0755 src/sbd.sh %{buildroot}%{_datadir}/sbd/sbd.sh
+install -D -m 0644 src/sbd.service %{buildroot}/%{_unitdir}/sbd.service
+install -D -m 0644 src/sbd_remote.service %{buildroot}/%{_unitdir}/sbd_remote.service
+ln -s service %{buildroot}%{_sbindir}/rcsbd
+ln -s service %{buildroot}%{_sbindir}/rcsbd_remote
+mkdir -p %{buildroot}%{_fillupdir}
+install -m 0644 src/sbd.sysconfig %{buildroot}%{_fillupdir}/sysconfig.sbd
+
+%post
+%service_add_post sbd.service sbd_remote.service
+
+if [ ! -e %{_sysconfdir}/sysconfig/sbd ]; then
+    %fillup_only sbd
+fi
+
+%pre
+%service_add_pre sbd.service sbd_remote.service
+
+%preun
+%service_del_preun -n sbd.service sbd_remote.service
+
+%postun
+%service_del_postun -n sbd.service sbd_remote.service
+
+%files
+%defattr(-,root,root)
+%{_libdir}/stonith/
+%{_sbindir}/sbd
+%{_sbindir}/rcsbd
+%{_sbindir}/rcsbd_remote
+%{_datadir}/sbd
+%{_mandir}/man8/sbd*
+%{_unitdir}/sbd.service
+%{_unitdir}/sbd_remote.service
+%{_fillupdir}/sysconfig.sbd
+%doc COPYING
+
+%changelog

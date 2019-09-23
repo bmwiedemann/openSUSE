@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Fri Mar 24 17:10:54 UTC 2017 - mpluskal@suse.com
+
+- Update project and download url
+
+-------------------------------------------------------------------
+Sat Jul  2 21:59:12 UTC 2016 - mpluskal@suse.com
+
+- Fix building on some architectures:
+  * make-dofile-global.patch
+- Add manpage
+
+-------------------------------------------------------------------
+Thu Apr  9 07:58:06 UTC 2015 - mpluskal@suse.com
+
+- Tiny spec-file cleanup
+
+-------------------------------------------------------------------
+Wed Aug 20 02:52:35 CEST 2014 - dsterba@suse.cz
+
+- use standard macro and fix build failure on SLE11 SP2
+
+-------------------------------------------------------------------
+Mon Aug  5 11:08:16 UTC 2013 - darin@darins.net
+
+- removed %clean
+- .spec cleanup 
+
+-------------------------------------------------------------------
+Mon Mar 19 18:23:00 UTC 2012 - darin@darins.net
+
+- Initial packaging of filebench 
+

@@ -1,0 +1,2971 @@
+-------------------------------------------------------------------
+Mon Jun 17 10:05:20 UTC 2019 - cloud-devel@suse.de
+
+- update to version 13.0.1
+  - Update .gitreview for stable/stein
+  - Add test for console-log and docs for bug 1746534
+  - Revert "Fix crashing console-log"
+  - Set the lower limit of api_version for volume_type
+  - Replace openstack.org git:// URLs with https://
+  - OpenDev Migration Patch
+  - Update UPPER_CONSTRAINTS_FILE for stable/stein
+
+-------------------------------------------------------------------
+Mon Apr  8 12:24:19 UTC 2019 - cloud-devel@suse.de
+
+- update to version 13.0.0
+  - Fix test_instance_action functional test failure
+  - switch documentation job to new PTI
+  - Update the CLI reference
+  - Replace MB with MiB
+  - Update the contributor guide
+  - Fixes Python3 issue in decoding password
+  - Add support changes-before for microversion 2.66
+  - Follow up "Fix up userdata argument to rebuild"
+  - import zuul job settings from project-config
+  - Add Python 3.6 classifier to setup.cfg
+  - Handle unicode multi-byte characters
+  - Fix output of interface-attach command
+  - API microversion 2.69: Handles Down Cells
+  - Fix up userdata argument to rebuild.
+  - Change openstack-dev to openstack-discuss
+  - Microversion 2.68: Remove 'forced' live migrations, evacuations
+  - Update reno for stable/rocky
+  - add python 3.6 unit test job
+  - Fix server strings in reboot operation
+  - Remove unnecessary if statement
+  - Use jsonutils of oslo.serialization
+  - Cleanup zuul.yaml
+  - Refactor the getid method in novaclient/base.py
+  - Fix changes-before values in an instance action test
+  - add lib-forward-testing-python3 test job
+  - Replace os-client-config to openstacksdk
+  - Add missing options in CLI reference
+  - Microversion 2.71 - show server group
+  - doc: Start using openstackdoctheme's extlink extension
+  - Follow the new PTI for document build
+  - Deprecate the unused instance-name
+  - Add a note in "nova service-delete" help about deleting computes
+  - Add support for microversion 2.70 - expose device tags
+  - Use uuidutils of oslo.utils
+  - Recommend against using --force for evacuate/live migration
+  - Make Server.networks use a predictable sort order
+  - Improve the description of optional arguments
+  - Remove deprecated novaclient.v2.contrib modules
+  - Add support for microversion v2.72
+  - Update hacking version
+  - Enable split logging for cinder-novaclient interaction
+  - docs: Add redirects
+  - Add support for microversion 2.67: BDMv2 volume_type
+  - Fix flavor keyerror when nova boot vm
+  - add python 3.7 unit test job
+  - Fix a type of block_device_mapping_v2 in a comment
+
+-------------------------------------------------------------------
+Fri Aug 31 16:41:30 UTC 2018 - cloud-devel@suse.de
+
+- update to version 11.0.0
+  - Update reno for stable/queens
+  - Remove deprecated services binary CLI arg
+  - Switch to stestr
+  - Rename --endpoint-override to --os-endpoint-override
+  - Remove doc/build when building docs
+  - Remove PyPI downloads
+  - CommandError is raised for invalid server fields
+  - Remove deprecated command in nova.rst
+  - flavor create: clarify --swap description
+  - Optimize jobs run on novaclient
+  - Add os-testr in test-requirements.txt
+  - Fix a comment in novaclient/api_versions.py
+  - inject file: add method of showing quota value of injecting files for 'rebuild' command
+  - [functional] Remove duplication of boot helper
+  - Remove incorrect legacy QuotaSet.id property
+  - Fix help text in server-group-create
+  - Microversion 2.62 - Add host/hostId to instance action event
+  - Update URLs in docs, comments and setup.cfg
+  - Fix trusted-image-certificate-id help text
+  - Fix AttributeError in getting a resource ID
+  - Update "The nova Shell Utility" in the user guide
+  - Fix comments in novaclient/tests/unit/fakes.py
+  - Remove deprecated cloudpipe CLIs and python API bindings
+  - Move zuulv3 jobs to project repo
+  - Fix listing of instances above API max_limit
+  - Microversion 2.56 - Enable cold migration with target host
+  - nova limits ERROR (Exception): Field names must be unique
+  - Updated from global requirements
+  - Microversion 2.54 - Enable reset keypair while rebuild
+  - Fix being able to create a reno using tox -e venv
+  - Make sure microversion < 2.62 does not show host(Id) for instance actions
+  - Remove irrelevant note
+  - tools: Remove dead script
+  - Add support for the 2.57 microversion
+  - Zuul: Remove project name
+  - Fix the incorrect cirros default password
+  - Implement hypervisor hostname exact pattern match
+  - Stop printing flavor details on successful flavor-delete
+  - boot: error out if no images match the property from --image-with
+  - Modify novaclient to support basic attributes
+  - Add a note in the nova CLI reference about using OSC
+  - Add support for microversion 2.65
+  - Allow tuple as for nics value
+  - fix tox python3 overrides
+  - Fix the docstring for the update method
+  - Update reno for stable/pike
+  - Remove deprecated fixedip/floatingip/virtual interface CLIs/APIs
+  - Remove setting of version/release from releasenotes
+  - Replace six.itervalues() with dict.values() in python-novaclient
+  - Remove deprecated os-hosts CLIs and python API bindings
+  - Remove deprecated certs CLIs and python bindings
+  - Fix local test fails with pypy
+  - Update documentation links
+  - Add support for microversion 2.60 - volume multiattach
+  - Fix crashing console-log
+  - Remove 2 redundant methods
+  - Fix missing metavar in aggregate-update
+  - Add CLI to show instance usage audit logs
+  - Fix the policy argument in server-group-create
+  - doc: Remove Makefile
+  - Replace GB with GiB
+  - Fix inconsistency
+  - Add missing spaces in `nova list --changes-since` help
+  - boot: show warning if more than one match when setting --image-with
+  - Remove run_tests.sh
+  - Microversion 2.58 - Instance actions list pagination
+  - Remove custom autodoc implementation
+  - Fix validation for command arguments
+  - Remove substitutions for command error msg
+  - Add CLI docs reference for flavor-update
+  - Fix reservation_id not supported by Nova API
+  - Add support for microversion 2.55 - flavor description
+  - Allow boot server with multiple nics
+  - Remove SecretsHelper
+  - Microversion 2.59 - Migrations list pagination
+  - inject file: add description of injecting multiple files.
+  - [CLI] Fix token auth type
+  - Microversion 2.63 - Add trusted_image_certificates
+  - Revert "Fix listing of instances above API max_limit"
+  - Avoid tox_install.sh for constraints support
+  - Import nova CLI reference from openstack-manuals
+  - Add release note link in README
+  - Remove deprecated MigrationManager.list cell_name kwarg
+  - Microversion 2.61 - support extra_specs in flavor API
+  - Clean imports in code
+  - Stop posting to os-volumes_boot
+  - Use generic user for both zuul v2 and v3
+  - Trivial: Update pypi url to new url
+  - Use utils.prepare_query_string instead of duplicated code
+  - Fix the help text for server-group-create
+  - Update new documentation PTI jobs
+  - [ci] Use pseudo-random names for new resources
+  - Microversion 2.64 - Use new format policy in server group
+  - add lower-constraints job
+
+-------------------------------------------------------------------
+Fri Feb 23 13:14:09 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Thu Jan 18 15:46:28 UTC 2018 - tbechtold@suse.com
+
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Thu Nov 23 17:17:58 UTC 2017 - cloud-devel@suse.de
+
+- update to version 9.1.1
+  - Update .gitreview for stable/pike
+  - Update UPPER_CONSTRAINTS_FILE for stable/pike
+  - Allow boot server with multiple nics
+
+-------------------------------------------------------------------
+Mon Aug  7 11:51:58 UTC 2017 - cloud-devel@suse.de
+
+- update to version 9.1.0
+  - Set test timout to 300 seconds
+  - Imported Translations from Zanata
+  - Error out if nic auto or none are not alone
+  - Remove functional tests for removed commands
+  - Remove direct dependency on requests
+  - Remove deprecated security_groups APIs
+  - Fix cinder volume leakage
+  - Update Compute API Guide pointer
+  - Fix cropping the endpoint url
+  - Remove deprecated network-related resource commands
+  - Skip rebuild functional test due to persistent vif plugging timeout
+  - Add `instance-uuid` flag to the migration-list
+  - Add 'Forced down' column in serivce-list
+  - Remove deprecated fixed_ips APIs
+  - Remove deprecated floating_ips APIs
+  - Grammar typo in the comments for function set_meta.
+  - Remove log translations
+  - Explicitly set 'builders' option
+  - 2.47: Show flavor info in server details
+  - Microversion 2.49 - Virt device tagged attach
+  - Fix the inappropriate parameter name
+  - Add functional test for "nova boot --image-with"
+  - client.logger.warning wrongly used in migrations
+  - Updated from global requirements
+  - Use Sphinx 1.5 warning-is-error
+  - Help message for aggregate-update is ambiguous
+  - Cleanup duplicated methods
+  - Add novaclient client_name and client_version to user-agent
+  - Remove deprecated security_group_default_rules APIs
+  - Better handle key=value pair not being key=value
+  - doc: Create directory structure for docs migration
+  - Microversion 2.42 - Fix tag attribute disappearing
+  - Help text for "--matching" is not clear.
+  - Explicitly specify arguments of server_groups creation
+  - Remove 1.1 extension comment
+  - Remove py34 tox env and pypi classifier
+  - Revert "client.logger.warning wrongly used in migrations"
+  - Deprecate binary argument in nova service enable/disable/force-down CLIs
+  - Tags and Metadata fields with unicode cannot be correctly displayed
+  - strip the remote prefixes from the release note branch specifiers
+  - Removed extra word 'method' from the NOTE
+  - Remove deprecated floating_ips_bulk API
+  - Remove deprecated baremetal CLIs and APIs
+  - Microversion 2.50 - fix quota class sets resource usage
+  - 2.45: createImage/createBackup image_id is in response body
+  - Deprecate certs commands and APIs
+  - 2.46: match nova API version
+  - Fix aggregate_update name and availability_zone clash
+  - Deperecate cell_name cli arg for migration-list
+  - Fix warning for deprecated cert commands
+  - Fix devstack python-novaclient warning
+  - [Fix gate]Update test requirement
+  - Remove deprecated floating IP DNS domain/entry APIs
+  - Remove deprecated security_group_rules APIs
+  - Update reno for stable/ocata
+  - Adjust test_resize_down_revert to account for counting quotas
+  - Make --profile load from environment variables
+  - Revise `nova list` description
+  - Add support for the 2.51 microversion
+  - Remove the deprecated fping API
+  - Microversion 2.52 - Support tag when boot
+  - Be clear about hypevisors.search used in a few CLIs
+  - Remove various deprecated options
+  - Microversion 2.53 - services and hypervisors using UUIDs
+  - Add functional test for resize-confirm plus quota validation
+  - doc: Switch from oslosphinx to openstackdocstheme
+  - 2.43: Deprecate novaclient /os-hosts usage
+  - 2.44: Deprecate multinic/floatingIP actions and os-virtual-interfaces
+  - Change Service repr to use self.id always
+  - Remove duplicate methods
+  - Update reno for removed network CLIs
+  - Microversion 2.48: Standardization of VM diagnostics
+  - Fix help message and description for volume-update
+  - Clean up ShellTest unit tests
+  - Fix setting 'global_request_id' in SessionClient
+  - Fix ValueError when incorrect metadata passed
+  - Remove deprecated tenant network APIs
+  - Remove deprecated network APIs
+  - Prevent 2.32 release note from showing up in 9.0.0 release notes
+  - Remove deprecated floating_ip_pools API
+  - Fix 'nova list --fields' error in no instances case
+  - doc: Remove cruft from conf.py
+  - Release note for cell_name deprecation
+  - Drop deprecated aggregate-update positional args
+  - Expect id and disabled_reason in GET /os-services response
+  - Fix a typo
+  - Have python-novaclient support global_request_id
+  - Add resize down test which also verifies quota changes
+  - Remove version 1.1 support
+  - Remove deprecated image commands/API bindings
+  - Mark cloudpipe deprecated in novaclient
+
+-------------------------------------------------------------------
+Fri Jul 14 06:01:59 UTC 2017 - cloud-devel@suse.de
+
+- update to version 7.1.2
+  - Updated from global requirements
+
+-------------------------------------------------------------------
+Wed Jun  7 09:49:44 UTC 2017 - cloud-devel@suse.de
+
+- update to version 7.1.1
+  - Fix cinder volume leakage
+  - Fix ValueError when incorrect metadata passed
+  - Fix devstack python-novaclient warning
+  - Fix aggregate_update name and availability_zone clash
+  - Update .gitreview for stable/ocata
+  - Update UPPER_CONSTRAINTS_FILE for stable/ocata
+  - Updated from global requirements
+  - Tags and Metadata fields with unicode cannot be correctly displayed
+
+-------------------------------------------------------------------
+Mon Feb 13 17:07:48 UTC 2017 - cloud-devel@suse.de
+
+- update to version 7.1.0:
+  - Add release not for fixing token auth method
+  - Fixed the __ne__ implementation in base.Resource
+  - Use more specific asserts in tests
+  - Allow multiple tag add/delete from cli
+  - Enable coverage report in console output
+  - Make _console() public
+  - Fix "Message object do not support addition".
+  - Fix help strings
+  - Blacklist rather than whitelist autodoc modules
+  - Fix functional tests to deal with multiple networks
+  - Replaces uuid.uuid4 with uuidutils.generate_uuid()
+  - ListExtResource given in place of ListExtManager
+  - x-openstack-request-id logged twice in logs
+  - Pass relevant parameters to Token based authentication
+  - Updated from global requirements
+  - Add support for showing aggregate UUIDs (v2.41)
+  - Add profiling support to novaclient
+
+-------------------------------------------------------------------
+Mon Feb 13 12:55:11 UTC 2017 - cloud-devel@suse.de
+
+- update to version 7.0.0:
+  - Use upper-constraints when running tox
+  - Clarify meaning of project_id var
+  - Remove unused helper volume methods in v2 shell
+  - Fix doc generation errors
+  - Update docs for instructions on deprecating commands
+  - Rename interface to endpoint_type
+  - Add version pin for image list function
+  - Deprecate connection_pool variable
+  - Enable release notes translation
+  - Add version pin for image related function
+  - Microversion 2.39 - Simple tenant usage pagination
+  - Clean up requests-mock usage
+  - Correct copy/paste errors in help
+  - Update reno for stable/newton
+  - Remove unused code
+  - Microversion 2.40 - Simple tenant usage pagination
+  - Fix incorrect output of "nova show" for long user data
+  - Fix 'UnicodeEncodeError' for unicode values
+  - Show team and repo badges on README
+  - Usage missing from generated docs
+  - Replace six.iteritems() with .items()
+  - Add some missing modules in API reference
+  - Fix the description of hypervisors.list
+  - Change fake server id as str to fit real server id type
+  - Rename api_key to password
+  - Rename bypass_url to endpoint_override
+  - Remove internal attribute access from shell
+  - Fix can't process the resource with name 'help'
+  - modified the description of service.list
+  - Replace oslo_utils.timeutils.isotime
+  - [proxy-api] microversion 2.39 deprecates image-metadata proxy API
+  - Restict usage *args for novaclient.client.Client
+  - Transmit all auth related vars from cli to inner methods
+  - Make SessionClient interface similar to HTTPClient
+  - Add Python 3.5 classifier and venv
+  - Add min-disk and min-ram filters to list flavors
+  - Revert "Microversion 2.39 - Simple tenant usage pagination"
+  - Add limit and offset to server-groups list
+  - Remove all code related to HTTPClient
+  - Modify use of assertTrue(A in B)
+  - Move all extensions from contrib dir
+  - Introduce helper for checking args deprecation
+  - Clarify some release notes prior to the 7.0.0 release
+  - Add timezone disclaimer to docstring
+  - Sort arguments for client's methods
+  - Remove unused test code
+  - Remove redundant args of _construct_http_client
+  - Remove support for non-keystone auth systems
+  - Remove deprecated commands
+  - Replace requests mocking with requests-mock
+  - Check source_type and destination_type when booting with bdm provided
+  - Make "policy" a mandatory argument for server-group-create
+  - Fix import statement order
+  - Deprecate proxy_token and proxy_tenant_id args
+  - Deprecate volume_service_name argument
+  - Create keystone session instance if not present
+  - CONF.osapi_max_limit -> CONF.api.max_limit
+  - Bump client microversion to 2.38
+  - Updated from global requirements
+  - remove variable '_' from tests
+
+-------------------------------------------------------------------
+Fri Oct 21 09:58:13 UTC 2016 - tbechtold@suse.com
+
+- switch to stable/newton in _service
+- add format_spec_file in _service
+- sync with upstream spec template
+
+-------------------------------------------------------------------
+Thu Oct  6 08:51:28 UTC 2016 - tbechtold@suse.com
+
+- Remove python-keyring from BuildRequires. It's optional.
+
+-------------------------------------------------------------------
+Fri Sep  2 12:32:42 UTC 2016 - tbechtold@suse.com
+
+update to version 6.0.0
+  * Cap baremetal python APIs at 2.35
+  * Store api_version object in one place
+  * Replace functions 'Dict.get' and 'del' with 'Dict.pop'
+  * Fixes TypeError on Client instantiation
+  * Deprecate all the nova-network functions in the python API
+  * Fix test_trigger_crash_dump_in_locked_state_nonadmin test
+  * Removed unused 'install_venv' module
+  * Add eggs to gitignore list
+  * Add support for v2.37 and auto-allocated networking
+  * [functional] Skip tests if API doesn't support microversion
+  * [functional] Do not discover same resources for every test
+  * Cap image API deprecated methods at 2.35
+  * Pick first image if can't find the specific image
+  * Updated from global requirements
+  * Deprecate network-* commands and clamp to microversion 2.35
+  * functional tests fail if cirros image not exist
+
+-------------------------------------------------------------------
+Tue Aug 30 16:08:07 UTC 2016 - tbechtold@suse.com
+
+update to version 5.1.0
+  * Change all test URLs to use example.com
+  * base.Resource not define __ne__() built-in function
+  * Use neutron for network name -> id resolution
+  * Add a missing i18n support
+  * Add support for microversion 2.31
+  * Correctly handle NOVACLIENT_INESCURE
+  * Added support for microversion 2.34
+  * Fix boot --nic error message for v2.32 boundary
+  * Add support for microversion 2.33
+  * Remove discover from test-requirements
+  * Added smaller flavors for novaclient functional tests to use
+  * [functional] Fix wrong message in server description test
+  * Make novaclient functional tests use pretty tox
+  * Skip nova-network-only tests if using Neutron
+  * Add support for microversion 2.30
+  * Split nic parsing out of _boot method
+  * Clean up deprecated CLI options
+  * Refactor test_servers APIVersion setup
+  * Move other-requirements.txt to bindep.txt
+  * Fix the help message for 'get-mks-console'
+  * Fix deprecation message for --volume-service-name
+  * Update README to comply with Identity v3
+  * Update clouds.yaml.sample
+  * [functional] make tests work with only keystone v3
+  * Look up image names directly in glance
+  * Fix python35 job failures
+  * remove start_version arg for keypairs v2.10 shell
+  * Add support for microversion 2.29
+  * Modify flatten method to display an empty dict
+  * functional: fix a deprecation warning in test_auth.TestAuthentication
+  * make string.letters python3 compatible
+  * Microversion 2.35 adds keypairs pagination support
+  * Extend microversion stuff to support resource classes
+  * Deprecated the `--volume-service-name` option
+  * Remove white space between print and ()
+  * Make wait_for_server_os_boot wait longer
+  * Handle successful response in console functional tests
+  * List system dependencies for running common tests
+  * Make it possible to list quotas with details
+  * Raise an exception in v2.client for direct_use
+  * Use glanceclient for functional tests
+  * Deprecate baremetal API and CLI interfaces
+  * Virtual device tagging client support
+  * Updated from global requirements
+  * functional: skip test_auth_via_keystone_vX if X is not available
+
+-------------------------------------------------------------------
+Thu Aug 11 13:02:59 UTC 2016 - tbechtold@suse.com
+
+update to version 4.1.0
+  * Update to microversion 2.27
+  * Fix funtional test gate failure caused by keystone client change.
+  * Enhance descriptions for get and clear password
+  * Use novaclient/utils directly and remove openstack/common (4/4)
+  * Added Support of microverison 2.26
+  * Remove unused code in tests/unit/v2/fakes.py
+  * Remove busted baremetal CLIs and API bindings
+  * Adding tox support for bandit
+  * Make functional tests work with v3 keystone
+  * Return a less dramatic message for public flavors.
+  * Functional tests for server's description
+  * Make it clear that host-servers-migrate is a cold migration
+  * Add a note message for reboot
+  * Fix host-evacuate-live for 2.25 microversion
+  * Use keystoneclient python bindings for testing
+  * Use novaclient/utils directly and remove openstack/common (2/4)
+  * Name and AZ should as be optional param on aggregate-update
+  * Prepare to move extension into core plugin
+  * Log request_id for each api call
+  * Clean the duplicated columns for "nova network-list"
+  * The novaclient Python API doc keystoneauth example fixed
+  * Remove additional 'timeout' element
+  * Switch to 2.1 default api_version in v2.Client
+  * Remove deprecated volume(snapshot) commands/bindings
+  * aggregate-details changed to aggregate-show
+  * Fix nova host-evacuate for v2.14
+  * Handle error response for webob>=1.6.0
+  * Use tempes.lib instead of tempes_lib
+  * Restrict positional arguments for Client
+  * Deprecate run_test.sh
+  * Remove an unused method in novaclient/shell.py
+  * Add info for user_id in v2.10
+  * Validate shutdown value of --block-device
+  * Update reno for stable/mitaka
+  * Using glance 'image-list'/'image-show' in boot help message
+  * Fix typos in docstrings and comments
+  * Add changes-since support when list servers
+  * Fix ServerGroup.NAME_ATTR
+  * Add support for microversion 2.28
+  * Overwrite Usage class's get() function
+  * Fix a typo in novaclient/v2/hosts.py
+  * Add default values for domain related options
+  * Use novaclient/utils directly and remove openstack/common
+  * Decorate FakeHTTPClient with versions
+  * Removed unused Oslo Incubator code
+  * [tests] initialize client objects inside setUp
+  * Use novaclient/utils directly and remove openstack/common (1/4)
+  * nova add-secgroup help updated with secgroup id
+  * Remove console expectation from NMI tests
+  * Use common find_server from v2.shell
+  * Update the home-page with developer documentation
+  * Added functional tests for server tags (microverison 2.26)
+  * Deprecate image list/show/delete/update CLIs/APIs
+  * [Trivial] change some functions in novaclient/utils.py to public
+  * Deprecate --tenant option from flavor-access-list
+  * Updated from global requirements
+  * TrivialFix: Added missed value in string formatting
+  * Wrap interface_list by proper resource class
+
+-------------------------------------------------------------------
+Thu Aug 11 13:02:20 UTC 2016 - tbechtold@suse.com
+
+- Update _service and use upstream spec template
+
+-------------------------------------------------------------------
+Fri Apr  1 10:22:54 UTC 2016 - tbechtold@suse.com
+
+- update to 3.3.1:
+  * Remove console expectation from NMI tests
+  * Fix host-evacuate-live for 2.25 microversion
+  * Update .gitreview for stable/mitaka
+
+-------------------------------------------------------------------
+Thu Mar  3 15:27:43 UTC 2016 - tbechtold@suse.com
+
+- update to 3.3.0:
+  * [microversion] Bump to 2.25
+  * Support for abort an ongoing live migration
+  * Add two server-migration commands and bump migration-list command
+  * Use isinstance instead of type
+  * Support for forcing live migration to complete
+  * Adds missing internationalization for help message
+  * [microversions] Enable 2.21
+  * [microversions] fix help msg for versioned args
+  * Use assertIsNone instead of assertEqual(None, ***)
+  * Functional tests for trigger-crash-dump (microversion 2.17)
+  * Fix string interpolation at logging call
+  * Updated from global requirements
+  * Add a way to discover only contrib extensions
+  * [functional] Move code for boot vm to base testcase
+  * [microversions] Enable 2.20
+  * [microversions] Turn off check for header in response
+  * [microversions] Add support for 2.19
+  * Allow to specify a network for functional tests
+  * Provide user with coherent interface to get request_ids
+  * [microversions] Skip microversion 2.18
+  * Fix running functional tests against deployment with insecure SSL
+  * Updated from global requirements
+  * Make _poll_for_status more user-friendly
+  * Fix omission of request_ids returned to user
+  * Remove unnecessary filter from Resource's __repr__() function
+  * Use # noqa to ignore one line but not whole file
+  * Add release notes for return-request-id-to-caller
+  * Update translation setup
+  * Add return-request-id-to-caller function(5/5)
+  * Add return-request-id-to-caller function(4/5)
+  * Add return-request-id-to-caller function(3/5)
+  * Support to boot a VM with network name
+  * Add return-request-id-to-caller function(2/5)
+  * Add return-request-id-to-caller function(1/5)
+  * Add wrapper classes for return-request-id-to-caller
+  * [microversions] Add support for 2.17
+  * Allow restore command with name param
+  * Updated from global requirements
+  * [microversions] Extend shell with 2.12
+  * Remove argparse from requirements
+  * Added support for Nova microversion 2.16
+  * Functional tests for os-services
+  * Functional tests for flavors with public and non-public access
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Fix URLs for CLI Reference and API
+  * Add functional tests launcher for py3 env
+  * [microversions] Add support for 2.15
+  * Updated from global requirements
+  * Test: Clean v2 client userwarning
+  * Fix broken link in documentation
+  * Fix W503 line break before binary operator
+  * Add a mechanism to call out deprecated options
+  * Updated from global requirements
+  * Replace assertTrue(isinstance()) by optimal assert
+  * Use assertTrue/False instead of assertEqual(T/F)
+  * Add python 2.7 comment
+  * [microversions] Add support for 2.14
+  * Fix extension loading from python path on Python 2.7
+  * Wrong usage of "a/an"
+  * Fix help strings
+  * Validate the fixed ip address passed with --nic
+  * [microversions] Add support for API microversion 2.13
+  * [microversions] share one object for shell arguments
+  * Put py34 first in the env order of tox
+  * Fixed test_shell which can't test microversions>=2.4
+  * Updated from global requirements
+  * document search_opts parameter
+  * Cleanup needless code from oslo-incubator
+  * Validation for arguments of list command passed by "--fields"
+  * Allow command line for virtual-interface-list
+  * Removes MANIFEST.in as it is not needed explicitely by PBR
+  * Updated from global requirements
+  * Drop py33 support
+  * Migrate to keystoneauth from keystoneclient
+  * Deprecated tox -downloadcache option removed
+  * Updated from global requirements
+  * [functional-test] add v2.8 functional test
+  * [functional-tests] fix version of novaclient instance
+  * remove the default arguments "[]"
+  * Change the logic for the client to retrive resources
+  * Fix help message in case of microversions
+  * Updated from global requirements
+  * [microversions] Increase max version to 2.12
+  * [microversions] Increase max version to 2.11
+  * [microversions] Add support for 2.10
+  * [microversions] update test_versions with implemented versions
+  * encode the url parameters
+  * Fix H404/405 violations in novaclient/v2/[a-f]
+  * Fix H404/405 violations in novaclient/tests/*
+  * Fix multiline string with missing space
+  * [microversions] Increase max version to 2.9
+  * [microversions] Add support for 2.8
+  * Enable pass instance name as parameter in nova cli
+  * Fix H404/405 violations in client.py,base.py,api_version.py
+  * Help msg about libvirt always default device names
+  * Fix a Typo in Docstring
+  * Updated from global requirements
+  * Remove python 2.6 support from python-novaclient
+  * [microversions] Increase max version to 2.7
+  * Optimize "open" method with context manager
+  * force releasenotes warnings to be treated as errors
+  * Updated from global requirements
+  * Fix repr of a host from a hosts.list()
+  * Updated from global requirements
+  * Add accessIPv4 and accessIPv6 when create server
+  * Add reno for release notes management
+  * Check response headers for microversions
+  * Not transform to str on potential unicode fields
+  * Updated from global requirements
+  * Print current nova default nova API microversion
+  * improve readme contents
+  * Updated from global requirements
+  * Last sync from oslo-incubator
+  * Fix typo in error message
+  * Added command for device to cinder volume mapping
+  * Functional tests for os-extended-server-attributes
+  * Remove --tenant suggestion for flavor-access-list
+  * Add v2 support for optional project_id in version discovery urls
+  * Remove novaclient.v1_1 module
+  * Revert "Remove novaclient.v1_1 module"
+  * Revert "Do not expose exceptions from requests library"
+  * Check flavor option before image checks
+  * Updated from global requirements
+  * Do not expose exceptions from requests library
+  * make project_id optional in urls for version discovery
+  * Support the server side remote-console API changes
+  * Correct usage of API_MAX_VERSION and DEFAULT_OS_COMPUTE_API_VERSION
+  * Rely on devstack for clouds.yaml
+  * Refactor parsing metadata to a common function
+  * Updated from global requirements
+  * Updated from global requirements
+  * Use v2.0 in clouds.yaml auth_url for functional test job
+  * Add sort_dir/key to flavor list
+  * Add pagination params for flavor list
+  * Increase timeout when testing admin timeout
+  * Fix incorrect help for 'nova flavor-create'
+  * Revert "Allow display project-id for server groups"
+  * Test that microversions are not skipped
+  * Updated from global requirements
+  * Set DEFAULT_OS_COMPUTE_API_VERSION to 2.5
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Sun Oct  4 07:25:16 UTC 2015 - tbechtold@suse.com
+
+- update to 2.30.1:
+  * Always send volume_id when booting with legacy bdm
+  * Update .gitreview for stable/liberty
+  * Change ignore-errors to ignore_errors
+  * Modify nova help list message for --tenant
+  * Updated from global requirements
+  * Encode unicode filter arguments for server list
+  * [docs] Fix length of underline
+  * Updated from global requirements
+  * Fix nova bash-completion needs authentication
+  * Show reserved status for a fixed_ip if available
+  * Fix unicode issue in shell.main() error handling
+  * Remove redundant help command test and commonize
+  * Fix the homepage url in setup.cfg
+  * Fix mistakes in comments
+  * Modify "nova keypair-show" Positional arguments help information
+
+-------------------------------------------------------------------
+Mon Sep 14 09:17:30 UTC 2015 - tbechtold@suse.com
+
+- update to 2.29.0:
+  * make sure os_password is set for auth_plugins
+  * [BugFix] Change parameters for legacy bdm
+  * Set api_version to 2.0 by default for v2.Client
+  * Deprecate 'novaclient.client.get_client_class'
+  * Restrict direct usage of novaclient.v2.client
+  * Fix bugs with rackspace
+  * Enable i18n with Babel
+  * Fix nova --help needs authentication
+  * [Bug-Fix] Update requests body for quota-update
+  * Adds missing internationalization for help message
+  * workaround for RAX repose configuration
+  * fix novaclient functional tests for new devstack config
+  * Don't assume oscomputeversions is correctly deployed
+  * Update path to subunit2html in post_test_hook
+  * Option to specify max servers for live evacuate
+  * Allow to reboot multiple servers
+  * Add method for better random name
+  * Launch functional tests serially
+  * Add mechanism to vm list to return all resources
+  * Fixed typo Errors in comments
+  * Updated from global requirements
+  * Add "limit" option to servers list cli
+  * Add 'marker' argument to server list cli
+  * Fix a fault of request logging with no credentials
+  * Fix versions.list for v2.1 Nova API
+  * Add help message for floating ip bulk operation
+  * Correct the files's description "overrwriter"
+  * Updated from global requirements
+  * Updated from global requirements
+  * Add ability to use default major version
+  * Copy cli arguments in api_versions.wraps decorator
+  * Change docstring of api_versions.discover_version
+  * Allow display project-id for server groups
+  * Remove _discover_extensions
+  * Updated from global requirements
+  * Support forcing service down
+  * Adds support for x509 certificates as keypairs
+  * Set "latest" as default compute api version
+  * Add version discover and check in CLI
+  * Specify NIC option for nova boot
+  * Refactor and update test_instances and test_volumes_api
+  * Use keystoneclient's TCPKeepAliveAdapter
+  * Add 'deleted' status check in _poll_for_status
+  * Add "get_current" method to VersionManager
+  * Implements 'microversions' api type - Part 2
+  * Fixes table when there are multiline in result data
+  * rename root-password to set-password
+  * Updated from global requirements
+  * hypervisor command can't use cell format id to show hypervisor
+  * Set iso8601 log level to WARNING
+  * Updated from global requirements
+  * Implements 'microversions' api type - Part 1
+  * Updated from global requirements
+  * Updated from global requirements
+  * Improve hypervisor-show print list
+  * Updated from global requirements
+  * Fix resolving image.id in servers.boot
+  * Added marker functionality to flavours and images
+  * Updated from global requirements
+  * Updated from global requirements
+  * Change future nova version number references based on new values
+  * cleanup openstack-common.conf and sync updated files
+  * Updated from global requirements
+  * Revert "Allow admin user to get all tenant's floating IPs"
+  * Add a sample clouds.yaml
+  * Pass full path to pkgutil.iter_modules()
+  * Cache a new token when the existing token expires
+  * Add help message for secgroup-add/del-default-rule
+  * Cleanup various inaccuracies in the README.rst
+  * Update weblinks
+  * Adds support to set admin password from the cli
+  * Adding missing nova read only CLI test
+  * Updated from global requirements
+  * Fix all doc warnings and gate on warnings
+  * Add docs tox env
+- Adjust Requires according to requirements.txt
+- Add python_requires to _service file
+
+-------------------------------------------------------------------
+Wed Aug  5 16:55:42 UTC 2015 - dmueller@suse.com
+
+- add %name-rpmlintrc
+
+-------------------------------------------------------------------
+Fri Apr 24 12:10:47 UTC 2015 - tbechtold@suse.com
+
+- Use %{version} in source
+
+-------------------------------------------------------------------
+Thu Apr 23 20:16:14 UTC 2015 - tbechtold@suse.com
+
+- Switch to version 2.23.0
+
+-------------------------------------------------------------------
+Wed Apr 22 00:26:57 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.23.0.post17:
+  * Remove all imports from oslo namespace
+  * Fix typo on class Client sample
+
+-------------------------------------------------------------------
+Sat Apr 18 00:27:28 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.23.0.post13:
+  * Uncap library requirements for liberty
+
+-------------------------------------------------------------------
+Thu Apr  2 01:04:06 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.23.0.post12:
+  * Combine test cases for checking nova limits response
+
+-------------------------------------------------------------------
+Wed Apr  1 01:02:45 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.23.0.post10:
+  * Fix repr of FloatingIPBulk
+
+-------------------------------------------------------------------
+Sun Mar 29 00:51:54 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.23.0.post8:
+  * Don't record time when self.timing is False
+
+-------------------------------------------------------------------
+Sat Mar 28 01:00:01 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.23.0.post6:
+  * Fix comments on metadata number limitation
+  * Corrected help for nova boot when attaching block device
+
+-------------------------------------------------------------------
+Thu Mar 26 01:17:05 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.23.0.post3:
+  * Removes reference to v3 nova api from novaclient docs
+
+-------------------------------------------------------------------
+Tue Mar 24 01:15:54 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.23.0.post2:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Sat Mar 21 01:13:11 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.23.0.post1:
+  * Revert 'Remove image to local block device mapping'
+
+-------------------------------------------------------------------
+Thu Mar 19 01:18:34 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.23.0:
+  2.23.0
+  * Ensure the use of volume endpoint in volumes apis
+
+-------------------------------------------------------------------
+Fri Mar 13 01:17:13 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.22.0.post27:
+  * Add missing servers.create parameter documentation
+  * Add Client object to documentation
+  * Add a test for the TCPKeepAliveAdapter
+  * Update help message for nova boot --file
+  * nova client cinder query param changed to display_name
+  * Fix client usage in api example
+
+-------------------------------------------------------------------
+Thu Mar 12 01:17:09 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.22.0.post15:
+  * Fix typo in socket attribute name
+  * nova flavor-show command is inconsistent
+  * Update help messages for default security group commands
+
+-------------------------------------------------------------------
+Wed Mar 11 01:18:12 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.22.0.post10:
+  * Add functional testing README
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Thu Mar  5 01:19:06 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.22.0.post7:
+  * Cleanup in asserts in python-novaclient
+  * Update version of novaclient in the docs
+
+-------------------------------------------------------------------
+Wed Mar  4 01:18:58 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.22.0.post3:
+  * Cleanup in test_images and image_fakes
+  2.22.0
+  * Moved set of asserts from post_servers_1234_action methods
+
+-------------------------------------------------------------------
+Sat Feb 28 01:17:53 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.21.0.post15:
+  * Fix description of parameters in nova-client functions
+  * Enable check for E124 rule
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Fri Feb 27 01:18:14 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.21.0.post9:
+  * allow --endpoint-type internal|admin|public
+  * Fixed redeclared test_names
+
+-------------------------------------------------------------------
+Thu Feb 26 01:17:33 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.21.0.post5:
+  * Removed unused 'e' from 'try except' statements
+  * add pretty_tox to nova functional tests
+  * Update volumes.get() docstring to correctly reflect functionality
+
+-------------------------------------------------------------------
+Wed Feb 25 10:17:57 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.21.0.post2:
+  * add functional test for nova volume-attach bug
+
+-------------------------------------------------------------------
+Tue Feb 24 02:12:19 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.21.0.post1:
+  * Revert "Overhaul bash-completion to support non-UUID based IDs"
+  2.21.0
+
+-------------------------------------------------------------------
+Sat Feb 14 00:51:32 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post131:
+  * Change commands name from net-* to tenant-network-*
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Fri Feb 13 00:51:32 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post128:
+  * Copy functional tests from tempest cli read only
+
+-------------------------------------------------------------------
+Wed Feb 11 00:51:23 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post126:
+  * Add all tenants search opt to del instnce by name
+  * Check 'auth_url' is presented while authentication
+  * Add support for keypair-add command reading public key from stdin
+  * Update volumes.get(
+
+-------------------------------------------------------------------
+Tue Feb 10 01:19:40 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post120:
+  * Updated from global requirements
+  * Wrong help for nova usage command
+
+-------------------------------------------------------------------
+Sun Feb  8 00:52:01 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post118:
+  * Change the unsuitable item caching for completion
+
+-------------------------------------------------------------------
+Sat Feb  7 00:52:09 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post116:
+  * Compare dicts for POST data in test_client_reauth
+  * Remove image to local block device mapping
+  * Update volumes.get() docstring to correctly reflect functionality
+
+-------------------------------------------------------------------
+Fri Feb  6 00:52:01 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post112:
+  * Change logic in find_resource() to identify upper-case/lower-case name
+  * Add first pass at post_test_hook for functional tests
+
+-------------------------------------------------------------------
+Thu Feb  5 00:52:03 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post108:
+  * Rename v1_1 to v2
+
+-------------------------------------------------------------------
+Wed Feb  4 00:52:23 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post107:
+  * Fix issue of quota-show and quota-defaults
+  * Update volumes.get(
+
+-------------------------------------------------------------------
+Tue Feb  3 00:52:29 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post106:
+  * Refer to the admin password consistently
+  * Update volumes.get() docstring to correctly reflect functionality
+  * First pass at tempest_lib based functional testing
+  * Add OS_TEST_PATH to testr
+  * Move unit tests into unit test directory
+  * whitelist find in testenv
+
+-------------------------------------------------------------------
+Sat Jan 31 00:50:29 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post97:
+  * Update volumes.get(
+
+-------------------------------------------------------------------
+Wed Jan 28 01:44:42 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post96:
+  * Adds separate class for Hypervisor Stats
+
+-------------------------------------------------------------------
+Tue Jan 27 01:41:00 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post94:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Sat Jan 24 01:39:25 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post93:
+  * Use TCP Keep-Alive on the socket level
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Fri Jan 23 01:40:50 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post90:
+  * In strings/comments change Ip/ip to IP
+
+-------------------------------------------------------------------
+Tue Jan 20 01:39:37 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post88:
+  * Improving the help of the lock command
+
+-------------------------------------------------------------------
+Thu Jan 15 01:40:35 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post87:
+  * Move to hacking 0.10
+  * Directly using base64 encoding for injected files
+
+-------------------------------------------------------------------
+Wed Jan 14 01:37:54 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post83:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Sat Jan 10 01:38:01 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post82:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Wed Jan  7 01:40:34 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post81:
+  * Document unexpected need for --all-tenants when using --tenant
+  * Display tenant id with nova list --all-tenants
+
+-------------------------------------------------------------------
+Mon Jan  5 01:38:47 UTC 2015 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.post78:
+  * Add 'Id' column to floating-ip-list
+  * Pass kwargs through to the adapter
+
+-------------------------------------------------------------------
+Wed Dec 17 01:42:11 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.75.ge422109:
+  * novaclient sort parameters support
+
+-------------------------------------------------------------------
+Tue Dec 16 01:41:21 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.73.g26246e7:
+  * pass id to ServerGroupsManager in ServerGroup.delete()
+
+-------------------------------------------------------------------
+Sun Dec 14 01:40:39 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.71.g5f2ad68:
+  * Reject non existent mock assert calls
+
+-------------------------------------------------------------------
+Fri Dec 12 01:40:59 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.69.gd439dc0:
+  * Updated from global requirements
+  * Avoid "ambiguous option" when only current/deprecated forms match
+
+-------------------------------------------------------------------
+Sat Dec  6 01:35:41 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.65.ge13df65:
+  * Workflow documentation is now in infra-manual
+
+-------------------------------------------------------------------
+Fri Dec  5 01:37:48 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.63.g912506b:
+  * Updated from global requirements
+  * Remove aliases for `args` and `env` in utils
+  * Use `arg` and `env` from cliutils: v1_1/shell
+  * Remove code related to V3
+
+-------------------------------------------------------------------
+Sat Nov 29 00:47:33 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.59.g1aa0209:
+  * Enable check for E128 rule
+
+-------------------------------------------------------------------
+Thu Nov 20 14:36:09 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.58.gae0890a:
+  * Fix E128 failures in novaclient/tests
+  * Fix E128 failures in novaclient/v3
+  * Fix E128 failures in novaclient/v1_1/
+  * Fix E128 failures in novaclient/v1_1/shell
+  * Updated from global requirements
+  * Curl statements to include globoff for IPv6 URLs
+  * Support using the Keystone V3 API from the Nova CLI
+
+-------------------------------------------------------------------
+Fri Nov 14 01:49:27 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.45.g252cd08:
+  * Add limits to V3 and improve limits formatting in shell
+  * Allow to start/stop multiple servers
+
+-------------------------------------------------------------------
+Thu Nov 13 01:49:41 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.41.g525a510:
+  * Fix the help comment about metadata
+  * Define helper to run an action on many resources
+
+-------------------------------------------------------------------
+Wed Nov 12 01:50:26 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.37.g3b2d001:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Thu Oct 30 01:46:35 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.36.gd485d75:
+  * support OS_ENDPOINT_TYPE in nova client
+
+-------------------------------------------------------------------
+Wed Oct 29 01:47:47 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.34.g571dc98:
+  * Updated from global requirements
+  * Propose 'tox' as tests launcher
+
+-------------------------------------------------------------------
+Mon Oct 27 18:10:06 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.31.gbf439b3:
+  * Enable check for E129
+  * Enable check for E127
+  * Enable check for E126
+  * Update novaclient shell to use shared arguments from Session
+  * Add missing parameters for server rescue
+  * Remove E12* from list of deliberately ignored flake8 rules
+  * no way to delete valid/invalid security rule
+
+-------------------------------------------------------------------
+Thu Oct 16 23:46:55 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.21.gf9ac34d:
+  * Sync latest code
+  * Port to use oslo.i18n
+
+-------------------------------------------------------------------
+Tue Oct 14 23:46:14 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.19.g1eb1abe:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Fri Oct 10 00:50:17 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.18.ge82b46b:
+  * Clarify "nova scrub" help text
+
+-------------------------------------------------------------------
+Wed Oct  8 00:48:49 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.17.gd6889ad:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Tue Oct  7 00:21:10 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.16.g41de515:
+  * Show 'state' and 'status' in hypervisor-list
+
+-------------------------------------------------------------------
+Sun Oct  5 00:19:34 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.14.g09f97e9:
+  * return 130 for keyboard interrupt
+
+-------------------------------------------------------------------
+Fri Sep 26 23:57:54 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.13.g58b539e:
+  * Fix parameter description in create_server
+
+-------------------------------------------------------------------
+Thu Sep 25 23:57:41 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.11.g8b8aa49:
+  * Enable check for E123
+  * Enable check for E122
+  * Enable check for E121
+
+-------------------------------------------------------------------
+Wed Sep 24 07:26:27 UTC 2014 - dmueller@suse.com
+
+- add dependency to oslo.utils / oslo.serialization 
+
+-------------------------------------------------------------------
+Tue Sep 23 23:42:42 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.8.g9634845:
+  * Use oslo.serialization
+
+-------------------------------------------------------------------
+Mon Sep 22 23:42:59 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.6.g1621c93:
+  * Live migrate each instance from one host to other hosts
+
+-------------------------------------------------------------------
+Mon Sep 22 12:16:34 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.20.0.4.gde94ddf:
+  * Use common code instead of novaclient.utils
+  2.20.0
+  * Add list by user to shell
+
+-------------------------------------------------------------------
+Sat Sep 20 23:42:48 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.19.0.21.g5ecfdac:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Sat Sep 20 00:13:22 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.19.0.20.g87a1ebc:
+  * Corrects typos "coearse," "proejct," and "unecrypts"
+  * Add retry_after only to exceptions supporting it
+
+-------------------------------------------------------------------
+Thu Sep 18 00:12:07 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.19.0.16.g3e5dae8:
+  2.19.0
+  * secgroup-create description is not optional
+  * novaclient: Convert v3 boot command with v2.1 spec (bdm)
+  * novaclient: Convert v3 boot command with v2.1 spec (user-data)
+  * novaclient: Convert v3 boot command with v2.1 spec (security-groups)
+  * Add support for the server group quotas
+  * add new command get-serial-console
+  * Make findall support server side filtering
+  * Fix order of arguments in assertEquals
+
+-------------------------------------------------------------------
+Wed Sep 17 00:13:19 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.80.gce11506:
+  * Don't display duplicated security groups
+
+-------------------------------------------------------------------
+Tue Sep 16 00:11:52 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.78.g915e916:
+  * Stop using intersphinx
+  * delete python bytecode before every test run
+  * quota delete tenant_id parameter should be required
+
+-------------------------------------------------------------------
+Sun Sep 14 00:35:11 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.72.g2a1c07e:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Thu Sep 11 19:53:17 UTC 2014 - dmueller@suse.com
+
+- use upstream-provided bash completion 
+
+-------------------------------------------------------------------
+Thu Sep 11 00:33:01 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.71.g4dbf132:
+  * Enhance network-list to allow --fields
+
+-------------------------------------------------------------------
+Wed Sep 10 00:34:45 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.69.g523e5bc:
+  * Fix test mistake with requests-mock
+  * Use oslo.utils
+  * Use Token fixtures from keystoneclient
+
+-------------------------------------------------------------------
+Fri Aug 29 23:56:36 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.64.g3fa0595:
+  * Add support for security-group-default-rules
+
+-------------------------------------------------------------------
+Thu Aug 28 15:30:59 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.62.g146fe80:
+  * Adding cornercases for set_metadata
+
+-------------------------------------------------------------------
+Thu Aug 28 00:29:50 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.60.gbd709d7:
+  * Update requirements.txt to include keystoneclient
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Wed Aug 27 00:26:32 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.57.g25d3d66:
+  * Add filtering by service to hosts list command
+
+-------------------------------------------------------------------
+Sun Aug 24 00:28:51 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.55.ga1e88c8:
+  * Updated from global requirements
+  * Adding Nova Client support for auto find host APIv3
+  * Quickstart (README) doc should refer to nova
+  * Fix variable error for nova --service-type
+
+-------------------------------------------------------------------
+Fri Aug 22 00:26:47 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.49.ge0ed6a1:
+  * Adding Nova Client support for auto find host APIv2
+  * Enable several checks and do not check docs/source/conf.py
+  * Allow selecting the network for doing the ssh with
+
+-------------------------------------------------------------------
+Thu Aug 21 00:27:30 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.43.gc204613:
+  * Quickstart (README
+
+-------------------------------------------------------------------
+Fri Aug 15 00:18:37 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.42.g9758ffc:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Thu Aug 14 00:18:06 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.41.gf13a246:
+  * Fix listing of flavor-list (V1_1) to display swap value
+
+-------------------------------------------------------------------
+Wed Aug 13 00:17:22 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.39.g47fe2d1:
+  * Use adapter from keystoneclient
+
+-------------------------------------------------------------------
+Mon Aug 11 12:09:55 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.37.g559dc60:
+  * Fix the return code of the command "delete"
+  * Convert to requests-mock
+  * Updated from global requirements
+  * Enable check for E131
+
+-------------------------------------------------------------------
+Thu Jul 31 23:41:04 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.31.gaae7ca2:
+  * Fix rxtx_factor name for creating a flavor
+  * fix host resource repr to use 'host' attribute
+
+-------------------------------------------------------------------
+Wed Jul 30 23:40:53 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.27.g43754f5:
+  * Filter endpoints by region whenever possible
+
+-------------------------------------------------------------------
+Mon Jul 28 23:41:01 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.25.g50b1068:
+  * Don't log sensitive auth data
+  * Edits on help strings
+
+-------------------------------------------------------------------
+Sat Jul 26 00:36:42 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.21.g547af1c:
+  * Enable H233
+  * Enabled hacking checks H305 and H307
+  * Add support for new fields in network create
+  * Add "version-list" for listing REST API versions
+  * Description is mandatory parameter when creating Security Group
+  * Add missing parameters for server rebuild
+  * Fixes typo in error message of do_network_create
+  * Mention keystoneclient.Session use in docs
+  * Fix booting from volume when using api v3
+  * Sync apiclient from oslo-incubator
+
+-------------------------------------------------------------------
+Sun Jul 20 00:38:52 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.7.gb21d677:
+  * Add way to specify key-name from environ
+
+-------------------------------------------------------------------
+Sat Jul 19 00:39:02 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.5.g9bedb3e:
+  * Fixes typo in error message of do_network_create
+  * Mention keystoneclient.Session use in docs
+
+-------------------------------------------------------------------
+Thu Jul 17 00:00:04 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.1.2.ge551cb0:
+  2.18.1
+  * Revert "Reuse exceptions from Oslo"
+  * Convert server tests to httpretty
+
+-------------------------------------------------------------------
+Sun Jul 13 23:43:43 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.0.8.gdeef71a:
+  * Convert Server Group Tests to httpretty
+
+-------------------------------------------------------------------
+Sat Jul 12 23:43:42 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.0.6.g2ebed39:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Fri Jul 11 23:44:07 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.18.0.5.ge14f974:
+  * Revert "Set default http-based exception as `HttpError`"
+  2.18.0
+  * Convert security group tests to httpretty
+  * Fix the wrong dest of 'vlan' option and add new 'vlan_start' option
+
+-------------------------------------------------------------------
+Thu Jul 10 23:44:16 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.217.g580c0aa:
+  * Adding multiple server support to nova reset-state
+  * Update nova boot help
+  * Fixing flavor access __repr__ method
+
+-------------------------------------------------------------------
+Tue Jul  8 23:43:41 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.212.gaca16d2:
+  * Convert security group rules tests to httpretty
+
+-------------------------------------------------------------------
+Mon Jul  7 23:44:16 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.210.g7d9d15e:
+  * Convert Quota tests to httpretty
+
+-------------------------------------------------------------------
+Fri Jul  4 23:43:50 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.208.gddb9749:
+  * Fix listing of Server in floating-ip-list
+
+-------------------------------------------------------------------
+Thu Jul  3 00:06:30 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.206.gd46e206:
+  * Fix the section name in CONTRIBUTING.rst
+
+-------------------------------------------------------------------
+Wed Jul  2 00:05:18 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.204.gcc73640:
+  * Allow us to use keystoneclient's session
+  * Convert network tests to httpretty
+
+-------------------------------------------------------------------
+Tue Jul  1 00:04:41 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.201.g6aa419b:
+  * Adds clarification note for project_id vs tenant_id
+
+-------------------------------------------------------------------
+Sun Jun 29 00:04:50 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.200.g5a3ca61:
+  * Convert limit tests to httpretty
+  * Convert keypair tests to httpretty
+  * Convert image tests to httpretty
+  * Convert Hypervisor tests to httpretty
+  * Convert hosts tests to httpretty
+  * Fix using a variable which is not defined
+  * Sync Oslo's apiclient
+  * Overhaul bash-completion to support non-UUID based IDs
+
+-------------------------------------------------------------------
+Fri Jun 27 00:03:41 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.184.g7d1cd18:
+  * Convert floating IP pool tests to httpretty
+
+-------------------------------------------------------------------
+Thu Jun 26 00:03:52 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.182.g614f9eb:
+  * add disk bus and device type to volume attach
+  * 'policy' should be required in server_group_create
+
+-------------------------------------------------------------------
+Wed Jun 25 00:07:28 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.179.g37f02bd:
+  * Updated from global requirements
+  * Look for all accessible flavors by default, not just public ones
+  * "nova boot" should not log an error if subsidiary commands fail
+
+-------------------------------------------------------------------
+Sat Jun 21 00:03:46 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.173.gc63dd3c:
+  * Add some security group tests for the V1_1 API
+  * Allow updating fixed_ips quotas in quota-class-update (v2 shell only)
+  * Enable F841
+
+-------------------------------------------------------------------
+Thu Jun 19 00:04:56 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.168.ge6a51f4:
+  * Remove quota-class-* commands from v3 shell
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Wed Jun 18 00:06:46 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.165.gaac82c4:
+  * Updated from global requirements
+  * Bump hacking to 0.9.x series
+  * Add posargs support to flake8 call
+  * Fixes wrong value description for volume-detach
+  * adjust to {SHA1} convention for token
+
+-------------------------------------------------------------------
+Tue Jun 17 00:06:12 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.156.g882627d:
+  * add tox target for python 3.4
+  * Convert Floating IP bulk tests to httpretty
+  * Convert Floating IPs DNS tests to httpretty
+  * Convert Floating IP tests to httpretty
+
+-------------------------------------------------------------------
+Sun Jun 15 00:05:57 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.148.g939cf46:
+  * Change help message for volume-update
+
+-------------------------------------------------------------------
+Sat Jun 14 00:06:15 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.146.g37457c3:
+  * Remove _print_volume from volume-update
+
+-------------------------------------------------------------------
+Wed Jun 11 23:58:00 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.144.g6d3a1ff:
+  * mask keystone token in debug output
+
+-------------------------------------------------------------------
+Tue Jun 10 23:57:42 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.142.g47774a2:
+  * Overwrite HelpFormatter constructur to extend argument column
+  * Change help for --poll option in Nova commands
+
+-------------------------------------------------------------------
+Mon Jun  9 23:56:58 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.138.g220fe7c:
+  * Add swap measurement unit (MB) to CLI output
+
+-------------------------------------------------------------------
+Sat Jun  7 23:56:56 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.136.g97c934d:
+  * Logical error in flavors unset_keys method
+
+-------------------------------------------------------------------
+Fri Jun  6 23:56:52 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.134.gbc2af78:
+  * Add NOVACLIENT_BYPASS_URL env variable
+  * Synced jsonutils from oslo-incubator
+
+-------------------------------------------------------------------
+Thu Jun  5 23:57:29 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.130.g8e6cb5f:
+  * Convert fPing tests to httpretty
+
+-------------------------------------------------------------------
+Wed Jun  4 23:57:12 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.128.g15ac2c9:
+  * Removed now unnecesary workaround for PyPy
+  * Revert "Remove quota-class subcommand"
+  * Convert Fixed IP tests to httpretty
+  * Convert Cloud Pipe tests to httpretty
+  * In Py3 decode the output of base64.decode
+  * Convert certificate tests to httpretty
+  * Set default http-based exception as `HttpError`
+
+-------------------------------------------------------------------
+Thu May 22 23:37:09 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.114.gc7c653d:
+  * Convert Availability Zone testing to httpretty
+
+-------------------------------------------------------------------
+Thu May 22 00:38:41 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.112.g0db9cff:
+  * Add missing dependent module gettextutils
+
+-------------------------------------------------------------------
+Wed May 21 00:39:08 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.110.g0f4f831:
+  * Convert agent testing to httpretty
+
+-------------------------------------------------------------------
+Sun May 18 00:37:35 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.109.g73dcda4:
+  * debug level logs should not be translated
+
+-------------------------------------------------------------------
+Tue May 13 23:52:49 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.107.g076c1a0:
+  * Enable delete multiple server groups in one request
+  * Reuse exceptions from Oslo
+  * Add unit test for keypair's api
+
+-------------------------------------------------------------------
+Mon May 12 23:52:18 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.103.g9d66862:
+  * Allow the default value of 1 to be set for boot multiple
+  * Add extension-list command for v3 API
+  * Make port-id and net-id keys mutually exclusive
+  * Remove duplicate test test_boot_multiple
+  * Deprecate num-instances in favor of min/max count
+
+-------------------------------------------------------------------
+Fri May  9 23:52:28 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.93.g02940f2:
+  * Make help description of rescue/unrescue more useful
+
+-------------------------------------------------------------------
+Thu May  8 23:52:29 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.91.g6c95abf:
+  * Add mailmap entry
+  * Some Help Messages Missing Translation Support
+  * Print message if instance is successfully deleted v3
+  * Convert aggregates testing to use httpretty
+
+-------------------------------------------------------------------
+Mon May  5 23:39:10 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.84.gb23c97d:
+  * Print message if instance is successfully deleted
+
+-------------------------------------------------------------------
+Fri May  2 23:38:54 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.83.g9752eee:
+  * Fix documentation for config_drive boot parameter
+  * Fix for "nova help list" command
+
+-------------------------------------------------------------------
+Thu May  1 23:38:56 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.79.g983e11f:
+  * Updated from global requirements
+  * Synced jsonutils from oslo-incubator
+
+-------------------------------------------------------------------
+Tue Apr 29 23:39:03 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.76.g4c5f545:
+  * Fixed a typo in a comment
+
+-------------------------------------------------------------------
+Sat Apr 26 00:20:32 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.75.g02ee4fc:
+  * Add unit test for keypair's api
+
+-------------------------------------------------------------------
+Wed Apr 23 00:21:07 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.74.g2598714:
+  * Fix the incorrect return messages in keypair show and delete
+  * Fix wrong fake return values for Nova V3 client tests
+  * Fix the unlimited length of console-log
+  * Fix mac address and task_state in baremetal-node-list
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Mon Apr 14 00:14:47 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.65.g5ff5e05:
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Wed Apr  9 23:46:17 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.64.gc9f4e08:
+  * Fix name arg help for volume-type-create
+  * Add service-delete subcommand to delete a service
+  * Allow admin user to get all tenant's floating IPs
+  * Sync with Oslo-Incubator
+  * Support IPv6 when booting instances
+
+-------------------------------------------------------------------
+Tue Apr  8 23:46:31 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.54.g375166c:
+  * Updated from global requirements
+  * Fix session handling in novaclient
+
+-------------------------------------------------------------------
+Tue Apr  8 00:03:08 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.50.g37df051:
+  * Print adminPass when rebuilding from shell
+  * Remove py3kcompat
+  * Split test_rebuild() into two tests
+
+-------------------------------------------------------------------
+Thu Apr  3 12:36:29 UTC 2014 - dmueller@suse.com
+
+- Update to version python-novaclient-2.17.0.45.g2005e17:
+  * Fix for invalid literal ValueError parsing ipv6 url(s)
+  * Remove unused arguments to _boot()
+  * typo in novaclient
+  * Start using oslosphinx theme for docs
+  * Fix error when run with no arguments on Python 3
+  * Avoid AttributeError in servers.Server.__repr__
+  * Raise exception when poll returns error state
+  * Explain how to delete a metadata in aggregate-set-metadata
+  * Remove quota-class subcommand
+  * Add service-list show `id` column
+  * Support building wheels (PEP-427)
+
+-------------------------------------------------------------------
+Wed Mar 26 01:21:07 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.24.g733f1e5:
+  * Fix authentication bug when booting an server in V3
+
+-------------------------------------------------------------------
+Sun Mar 23 01:21:09 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.22.g94a4c49:
+  * Correct the help sting of volume-type-delete
+  * Print a useful message for unknown server errors
+  * Show Exception Name in Shell Output
+
+-------------------------------------------------------------------
+Sat Mar 22 01:18:28 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.16.g8ecc6b3:
+  * Updated from global requirements
+  * Do auth_url.rstrip('/') only if auth_url is set
+  * Allow user ID for authentication
+  * Re-add install_venv_common to openstack-common.conf
+  * Fix element miss in client request body
+
+-------------------------------------------------------------------
+Fri Mar 21 01:33:11 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.6.g8c7524b:
+  * Work around pypy testing issue
+
+-------------------------------------------------------------------
+Fri Mar 14 00:55:00 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.5.g14deb01:
+  * Nova CLI for server groups
+  * Removes copy of output of 'nova help' from README
+
+-------------------------------------------------------------------
+Mon Mar 10 16:28:36 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.17.0.2.gc92485e:
+  2.17.0
+  * Add os-server-external-events support
+  * Fix some spelling mistakes
+
+-------------------------------------------------------------------
+Tue Mar  4 01:12:52 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.16.0.14.gd0b6550:
+  * Add classifiers for specific versions of Python
+
+-------------------------------------------------------------------
+Sat Mar  1 01:00:20 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.16.0.12.g427e346:
+  * oslo sync apiclient and cliutils
+  * Fix in in novaclient, to avoid excessive conns
+  * Revert "'name' should as be optional param on aggregate-update"
+  * oslo-sync of low hanging fruit
+  * Updated from global requirements
+  * 'name' should as be optional param on aggregate-update
+  2.16.0
+  * Remove usage of module py3kcompat
+
+-------------------------------------------------------------------
+Wed Feb 26 01:21:01 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.15.0.277.g5461af9:
+  * Fix typo in novaclient
+
+-------------------------------------------------------------------
+Tue Feb 25 01:04:53 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.15.0.276.gbd72fb0:
+  * Updated from global requirements
+  * Remove None for dict.get()
+  * Fix i18n messages in novaclient, part II
+
+-------------------------------------------------------------------
+Fri Feb 21 01:27:04 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.15.0.273.g43f1f78:
+  * Invalid client version message unclear
+  * Remove None for dict.get(
+  * Replace assertEqual(None, *) with assertIsNone in tests
+
+-------------------------------------------------------------------
+Sun Feb 16 01:43:48 UTC 2014 -  cloud-devel@suse.de
+
+- Update to version python-novaclient-2.15.0.268.g7cf73f1:
+  * Update broken command line reference link
+  * Fix spelling miss of password_func variable
+  * Fix copy/paste errors in print messages
+  * Remove invalid parameter of quota-update
+  * Adds support for the get_rdp_console API
+
+-------------------------------------------------------------------
+Thu Feb 13 14:06:17 UTC 2014 - dmueller@suse.com
+
+- install man pages
+- remove hacking dependency
+
+-------------------------------------------------------------------
+Tue Feb 11 15:58:50 UTC 2014 - speilicke@suse.com
+
+- Update to version python-novaclient-2.15.0.259.g7c3c1bb:
+  * Remove tox locale overrides
+  * Fix python 3.3 unit test job
+  * Fixed polling after boot in shell
+  * Update my mailmap
+  * Fix Serivce class AttributeError
+  * [UT] Fixed floating_ip_pools fake return to expected one
+  * [UT] Removed duplicate key from dict in fake baremetal_node
+  * Fixed multi validation and wrong fail calls in unit tests
+  * Fixed super constructor call for TestResponse class
+  * Flavor ExtraSpecs containing '/' cannot be deleted
+- Replace git_tarballs source service with download_files and set_version
+  + Use upstream URL as source (enables verification)
+
+-------------------------------------------------------------------
+Sun Feb  2 01:25:18 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.240:
+  + Removed undefined method in install_env.py file
+  + Flavor ExtraSpecs containing '/' cannot be deleted
+
+-------------------------------------------------------------------
+Fri Jan 31 01:13:43 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.237:
+  + Adds ability to boot a server via the Nova V3 API
+
+-------------------------------------------------------------------
+Wed Jan 29 01:43:09 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.236:
+  + Reuse Resource from oslo
+
+-------------------------------------------------------------------
+Tue Jan 28 00:52:54 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.234:
+  + Removes unsupported volume commands from V3 API support
+
+-------------------------------------------------------------------
+Sun Jan 26 01:03:37 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.233:
+  + Add tests for boot method of v3 shell
+  + Fix QuotaClassSet and their tests
+  + Adds volume support for the V3 API
+
+-------------------------------------------------------------------
+Sat Jan 25 01:08:51 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.227:
+  + Updates nova client to use the latest oslo files
+  + Using common methods from oslo cliutils
+
+-------------------------------------------------------------------
+Fri Jan 24 13:44:10 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.223:
+  + Don't slugify() None names
+  + Allow multiple volume delete from cli like Cinder
+  + Fix logic for "nova flavor-show 0#"
+  + Replace basestring by six.string_types
+
+-------------------------------------------------------------------
+Wed Jan 22 01:08:07 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.215:
+  + Sync with global requirements
+  + Don't call CS if a token + URL are provided
+  + assertTrue(isinstance) replace by assertIsInstance
+  + Sync apiclient from oslo
+  + Sync cliutils from oslo
+
+-------------------------------------------------------------------
+Tue Jan 21 01:17:46 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.205:
+  + Removes use of timeutils.set_time_override
+
+-------------------------------------------------------------------
+Sun Jan 19 01:48:55 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.203:
+  + add support for server set metadata item
+  + Fixes ambiguous cli output between "None" and NoneType
+
+-------------------------------------------------------------------
+Sat Jan 18 00:43:37 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.199:
+  + shell: refactor boot to use _print_server
+
+-------------------------------------------------------------------
+Thu Jan 16 11:56:41 UTC 2014 - dmueller@suse.com
+
+- remove pep8/flake8 requires, they come from hacking now 
+
+-------------------------------------------------------------------
+Thu Jan 16 00:56:40 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.197:
+  + Remove the coverage extension code
+
+-------------------------------------------------------------------
+Tue Jan 14 01:08:55 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.196:
+  + Adds quota usage support for the V3 API
+  + Generate interfaces reference doc
+  + Enable pep8 check for config.py in doc
+  + Added v3 interfaces in reference doc
+  + Ensure that the diagnostics are user friendly
+
+-------------------------------------------------------------------
+Mon Jan 13 00:37:08 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.186:
+  + Fix tab-completion of --flags under OS X
+
+-------------------------------------------------------------------
+Sun Jan 12 00:45:05 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.184:
+  + Support list deleted servers for admin
+  + Ensure that nova client prints dictionaries and arrays correctly
+
+-------------------------------------------------------------------
+Fri Jan 10 12:35:25 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.180:
+  + Using floating-ip-{associate|disassociate}
+  + Removes vim configuration headers
+
+-------------------------------------------------------------------
+Wed Jan  8 01:43:41 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.177:
+  + Remove class_name parameter from quota_class
+  + Code cleanup: use oslo's to_slug() instead of slugify()
+
+-------------------------------------------------------------------
+Tue Jan  7 00:45:36 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.174:
+  + Adds simple tenant usage support for the Nova V3 API
+
+-------------------------------------------------------------------
+Mon Jan  6 01:35:23 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.172:
+  + Allow empty response in service-list
+
+-------------------------------------------------------------------
+Sat Jan  4 01:11:24 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.170:
+  + Nova aggregate-details should be more human friendly
+  + Replace some utils.bool_from_str with strutils
+
+-------------------------------------------------------------------
+Fri Jan  3 01:23:25 UTC 2014 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.166:
+  + Expose the rebuild preserve-ephemeral extension
+
+-------------------------------------------------------------------
+Thu Dec 26 00:35:22 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.164:
+  + Fix "device" as the optional para on volume-attach
+
+-------------------------------------------------------------------
+Tue Dec 24 01:05:03 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.162:
+  + Adds certificates support for Nova V3 API
+  + Adds keypairs support for the Nova V3 API
+  + Removed duplicated import
+
+-------------------------------------------------------------------
+Sun Dec 22 00:45:44 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.156:
+  + Adds second part of quotas support for Nova V3 API
+  + Adds services support for Nova V3 API
+  + Adds hypervisor support for Nova V3 API
+  + Adds aggregates support for Nova V3 API
+
+-------------------------------------------------------------------
+Sat Dec 21 01:20:48 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.148:
+  + Adds basic servers support for the Nova V3 API
+  + Adds availability zone support for Nova V3 API
+  + Adds first part of quotas support for Nova V3 API
+  + Adding additional tests for novaclient ssh
+
+-------------------------------------------------------------------
+Fri Dec 20 00:39:18 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.140:
+  + add support for nova ssh user@host
+  + Adds images support for Nova V3 API
+
+-------------------------------------------------------------------
+Thu Dec 19 01:13:36 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.137:
+  + Fixed autodoc can't import/find class error
+  + remove duplicate six import
+
+-------------------------------------------------------------------
+Wed Dec 18 01:24:41 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.135:
+  + Adds flavor support for Nova V3 API
+  + Adds flavor access support for Nova V3 API
+  + Stop using deprecated keyring backends
+  + Adds agent support for Nova V3 API
+  + Remove commands not supported by Nova V3 API
+
+-------------------------------------------------------------------
+Sun Dec 15 01:10:48 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.127:
+  + Allow graceful shutdown on Ctrl+C
+  + Enables H306 pep8 rules
+  + Enables H403 pep8 rules
+
+-------------------------------------------------------------------
+Sat Dec 14 01:34:24 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.121:
+  + Remove the release.rst file
+
+-------------------------------------------------------------------
+Thu Dec 12 00:44:12 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.119:
+  + Updates tox.ini to use new features
+  + Adds a --show option to the image-create subcommand
+  + Fix docstring on novaclient
+  + Enables E711,E721,E712 pep8 rules
+
+-------------------------------------------------------------------
+Wed Dec 11 00:46:55 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.112:
+  + Updated from global requirements
+
+-------------------------------------------------------------------
+Tue Dec 10 01:37:24 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.111:
+  + Fix inappropriate comment for delete FloatingIP
+
+-------------------------------------------------------------------
+Mon Dec  9 00:36:23 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.109:
+  + Sets default service type for Nova V3 API
+
+-------------------------------------------------------------------
+Sun Dec  8 00:58:36 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.107:
+  + Fix incorrect help message on flavor_access action
+  + Enable hacking check for Apache 2.0 license
+
+-------------------------------------------------------------------
+Fri Dec  6 10:31:32 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.104:
+  + Updates .gitignore
+  + nova security-group-* should support uuid as input
+  + Fix the inappropriate comment for flavor
+
+-------------------------------------------------------------------
+Tue Dec  3 01:44:07 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.98:
+  + Allows users to retrieve ciphered VM passwords
+
+-------------------------------------------------------------------
+Thu Nov 28 01:01:43 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.96:
+  + Removes unnecessary pass
+
+-------------------------------------------------------------------
+Wed Nov 27 01:35:20 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.94:
+  + Fix inappropriate comment for flavor create api
+
+-------------------------------------------------------------------
+Mon Nov 25 14:22:04 UTC 2013 - dmueller@suse.com
+
+- switch to python-setuptools 
+
+-------------------------------------------------------------------
+Sat Nov 23 01:25:53 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.92:
+  + Updated from global requirements
+  + Fix typo in novaclient
+
+-------------------------------------------------------------------
+Fri Nov 15 17:43:12 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.89:
+  + Print security groups as a human readable list
+  + Flatten hypervisor-show dictionary for printing
+  + Change "project" to "project_id" in cloudpipe-create
+
+-------------------------------------------------------------------
+Thu Nov 14 00:54:13 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.83:
+  + Discrepancy between README.rst and nova help
+
+-------------------------------------------------------------------
+Sat Nov  9 01:26:16 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.82:
+  + Fix single H234 Bug to make Hacking 0.8 pass
+
+-------------------------------------------------------------------
+Tue Nov  5 01:20:32 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.81:
+  + Adds locking to completion caches
+
+-------------------------------------------------------------------
+Sun Nov  3 01:20:21 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.79:
+  + Update mailmap for Joe Gordon
+
+-------------------------------------------------------------------
+Tue Oct 29 01:57:13 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.77:
+  + Align mocking pattern for test case
+  + Add --insecure to curl output if required
+  + Quote URL in curl output to handle query params
+  + Nova aggregate-details should be more human friendly
+  + Revert "Nova aggregate-details should be more human friendly"
+
+-------------------------------------------------------------------
+Thu Oct 24 23:27:30 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.68:
+  + Make 'nova ssh' automatically fall back to private address
+
+-------------------------------------------------------------------
+Wed Oct 23 23:36:57 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.67:
+  + Apply six for metaclass
+
+-------------------------------------------------------------------
+Wed Oct 16 23:50:51 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.66:
+  + Updated from global requirements
+
+-------------------------------------------------------------------
+Wed Oct 16 00:25:18 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.65:
+  + Print dicts in alphabetical order
+  + Remove deprecated NOVA_RAX_AUTH
+  + Revert "Add-in some re-auth logic when using os_cache"
+  + Document and make OS_CACHE work
+  + Make os-cache retry on an invalid token
+
+-------------------------------------------------------------------
+Mon Oct 14 12:09:51 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.56:
+  + py33: safe_encode() returns bytes in Python 3
+  + py33: align the order of parameters for urlencode()
+  + py33: unify the input of request to json format
+  + py33: sort hosts while treeize AvailabilityZone
+  + py33: don't encode security_group
+  + py33: use six.StringIO() to mock stdout/stderr
+
+-------------------------------------------------------------------
+Wed Oct  9 00:32:18 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.52:
+  + py33: sort the files parameters of "--files"
+
+-------------------------------------------------------------------
+Tue Oct  8 12:47:35 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.51:
+  + if we have a valid auth token, use it instead of generating a new one
+  + py33: unknown encoding: base64 Edit
+  + py33: align the order of parameters for urlencode()
+  + assertEquals is deprecated, use assertEqual
+  + Add shelve/unshelve/shelve-offload command
+  + Add-in some re-auth logic when using os_cache
+  + Updated from global requirements
+  + py33: 'str' does not support the buffer interface
+  + py33: sort dict for test_add_floating_ip_to_fixed
+  + py33: uuid verification in find_resource()
+  + py33: iteration order of dict is unpredictable
+  + py33: safe_encode() returns bytes in Python 3
+  + py33: align the order of parameters for urlencode()
+  + py33: unify the input of request to json format
+  + py33: sort hosts while treeize AvailabilityZone
+
+-------------------------------------------------------------------
+Tue Sep 24 23:35:28 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.22:
+  + Corrected usage of len(filter(...))
+  + py33: 'dict_keys' object does not support indexing
+  + py33: dict.keys() is not a list in python3
+  + Corrected several usage of keys() for Python 3
+  + Update pbr usage
+  + Make nova CLI use term "server" where possible
+  + Fixed several test failures on Python3
+  + Fix AttributeError in Keypair._add_details()
+
+-------------------------------------------------------------------
+Tue Sep 24 00:19:26 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.7:
+  + Clean up a little cruft
+
+-------------------------------------------------------------------
+Fri Sep 20 23:57:04 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.5:
+  + Novaclient shell list command should support a minimal server list
+
+-------------------------------------------------------------------
+Thu Sep 19 00:07:15 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.15.0.4:
+  + Create v3 tests directory
+  + Add v3 HostManager
+
+-------------------------------------------------------------------
+Wed Sep 18 09:12:48 UTC 2013 - dmueller@suse.com
+
+- fix requires 
+
+-------------------------------------------------------------------
+Tue Sep 17 23:37:40 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.14.1.73:
+  + Small bugfix for client v3
+  + Fix the print order of quota-show
+  + Add a block device for the image when using BDMv2
+  + Modify --num-instances flag description to clarify limit upper bound
+  + python3: Fix traceback while running unit tests
+  + python3: Compatibility for iteritems differences
+  + python3: Fix Traceback while running unit tests
+  + Allow name argument to flavor-access-add
+  + Add delete method to Flavor class
+  + assertEquals is deprecated, use assertEqual
+
+-------------------------------------------------------------------
+Wed Sep 11 23:54:11 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.14.1.54:
+  + Python3: Fix traceback while running unit tests
+  + Python3: Use six.StringIO for io.Bytes()
+
+-------------------------------------------------------------------
+Tue Sep 10 23:38:00 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.14.1.50:
+  + Add support for os-assisted-volume-snapshots
+
+-------------------------------------------------------------------
+Tue Sep 10 00:07:59 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.14.1.48:
+  + Unittests added for client v1_1
+
+-------------------------------------------------------------------
+Sat Sep  7 07:15:25 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.14.1.47:
+  + Update oslo from oslo-incubator
+
+-------------------------------------------------------------------
+Thu Sep  5 00:24:08 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.14.1.46:
+  + New syntax to boot from a block device mapping
+
+-------------------------------------------------------------------
+Sun Sep  1 23:48:15 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.14.1.45:
+  + Suport instance list pagination in novaclient, Part I
+  + Add interface for listing security groups of an instance
+
+-------------------------------------------------------------------
+Thu Aug 29 23:40:17 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.14.1.42:
+  + python3: Fix imports for py2/py3
+  + Fix the help messages to specify image/flavor name
+  + Added support for running the tests under PyPy with tox
+  + change 'Host' object's 'host' attribute to 'host_name'
+  + Added 'nova migration-list' command
+
+-------------------------------------------------------------------
+Wed Aug 28 23:48:04 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.14.1.32:
+  + Upgrade to Hacking 0.7
+  + Fix and gate on H501, no locals for string formatting
+
+-------------------------------------------------------------------
+Sun Aug 25 00:09:28 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.14.1.28:
+  + Sync py3kcompat from oslo
+
+-------------------------------------------------------------------
+Fri Aug 23 23:36:30 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.14.1.27:
+  + Update oslo
+  + Update mailmap
+  + Update mailmap
+  + Allow name argument to flavor-access-add
+
+-------------------------------------------------------------------
+Thu Aug 22 23:39:23 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.14.1.19:
+  + Add support for swap_volume
+
+-------------------------------------------------------------------
+Thu Aug 15 00:08:13 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.14.1.17:
+  + python3: Fix traceback while running tests
+
+-------------------------------------------------------------------
+Tue Aug 13 23:35:20 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.14.1.16:
+  + Begin adding v3 api support
+  + Enable v3 api code
+  + Remove old references
+  + Updated from global requirements
+
+-------------------------------------------------------------------
+Mon Aug 12 23:41:25 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.14.1.8:
+  + Clean up inaccurate docstrings of server list() method
+  + FakeClient: fix the arguments of a string format.
+
+-------------------------------------------------------------------
+Sat Aug 10 11:04:31 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.14.1.4:
+  + Fix typo and grammar in docstring only
+
+-------------------------------------------------------------------
+Thu Aug  8 23:53:40 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.14.1.2:
+  + Do not restrict flavor to only ID and integers
+
+-------------------------------------------------------------------
+Thu Aug  8 00:01:15 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.14.0.1:
+  + remove requests version max
+
+-------------------------------------------------------------------
+Wed Aug  7 00:17:28 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.13.0.153:
+  + Sync with global requirements
+
+-------------------------------------------------------------------
+Fri Jul 26 12:17:12 UTC 2013 - bwiedemann@suse.com
+
+- Drop upstreamed patches
+
+-------------------------------------------------------------------
+Mon Jul 15 23:59:45 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.13.0.112:
+  + CLI for disable service reason
+
+-------------------------------------------------------------------
+Thu Jul 11 08:46:57 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.13.0.110:
+  + python3: Fix unicode compatibility python2/python3
+
+-------------------------------------------------------------------
+Wed Jul 10 15:12:32 UTC 2013 - dmueller@suse.com
+
+- add 0001-Skip-setting-volume_size-if-not-given.patch (bnc#828490) 
+
+-------------------------------------------------------------------
+Tue Jul  9 10:32:16 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.13.0.108:
+  + Sync install_venv_common from oslo
+
+-------------------------------------------------------------------
+Wed Jul  3 09:10:13 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.13.0.107:
+  + python3: Fix print statements
+
+-------------------------------------------------------------------
+Wed Jul  3 00:24:54 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.13.0.105:
+  + python3: Compatibility for iteritems differences
+
+-------------------------------------------------------------------
+Tue Jul  2 00:21:53 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.13.0.103:
+  + Bring stdout/stderr capturing in line w/ nova
+
+-------------------------------------------------------------------
+Mon Jul  1 00:19:48 UTC 2013 - opensuse-cloud@opensuse.org
+
+- Update to version 2.13.0.101:
+  + Fixup trivial License Header mismatch.
+
+-------------------------------------------------------------------
+Thu Jun 27 09:54:11 UTC 2013 - speilicke@suse.com
+
+- Only depend on python-discover on SLE, it's a Python-2.6 feature
+  backport
+
+-------------------------------------------------------------------
+Wed Jun 12 09:43:35 UTC 2013 - dmueller@suse.com
+
+- update testrequires 
+
+-------------------------------------------------------------------
+Mon May 27 08:39:42 UTC 2013 - dmueller@suse.com
+
+- python-pbr/d2to1 requires 
+
+-------------------------------------------------------------------
+Thu May  2 13:23:49 UTC 2013 - dmueller@suse.com
+
+- drop 0001-Restore-compatibility-with-PrettyTable-0.7.2-update.patch 
+
+-------------------------------------------------------------------
+Mon Apr 29 09:49:29 UTC 2013 - dmueller@suse.com
+
+- remove 0001-Revert-Correct-a-unit-test-failure-that-crept-into-t.patch
+- add 0001-Restore-compatibility-with-PrettyTable-0.7.2-update.patch
+
+-------------------------------------------------------------------
+Thu Apr 25 14:57:53 UTC 2013 - dmueller@suse.com
+
+- add 0001-Revert-Correct-a-unit-test-failure-that-crept-into-t.patch 
+
+-------------------------------------------------------------------
+Mon Mar 18 10:54:29 UTC 2013 - speilicke@suse.com
+
+- Drop +git.$TIMESTAMP.$COMMITHASH version suffix
+
+--------------------------------------------------------------------
+Sun Mar 17 00:17:52 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 2.11.1.55+git.1363479472.7850fcd:
+  + Removes tenant IDs checking for nova quota operations.
+  + Use keyring for testing
+  + Fix Copyright Headers from LLC to Foundation
+  + Set up debug level on root logger.
+  + Remove unused import
+
+--------------------------------------------------------------------
+Wed Mar 13 00:22:47 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 2.11.1.48+git.1363134167.c12f4bc:
+  + Revert API changes in "Unify Manager._update behaviour"
+
+--------------------------------------------------------------------
+Tue Mar 12 00:14:26 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 2.11.1.46+git.1363047266.f294635:
+  + Decodes input and encodes output
+  + Add wrap option to nova credentials for humans
+  + Check if tenant flag is uuid_like for all quota operations
+  + Show Tenant_ID for secgroup-list with all-tenant
+
+--------------------------------------------------------------------
+Mon Mar 11 13:02:00 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 2.11.1.39+git.1363006920.9f4ef60:
+  + Extend test coverage for v1_1/shell.py
+
+--------------------------------------------------------------------
+Mon Mar 11 10:05:45 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 2.11.1.37+git.1362996345.219f1df:
+  + Fix nova boot --num-instances option checking
+  + Fix typo in error message
+  + Remove prov_vlan_id from baremetal
+  + Additional "Unify Manager._update behaviour" cleanup
+
+--------------------------------------------------------------------
+Tue Mar  5 16:48:36 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 2.11.1.30+git.1362502116.8ac304f:
+  + Update the docstring of cloudpipe-configure command
+  + Make ip_protocol parameter in security groups rules case insensitive
+  + Added limit to image-list in a preparatory step toward addressing bug 1001345.
+  + Allows admins to reset-network of an instance
+  + A minimum of Python3 fixes so that installation works without errors/warnings.
+  + Fix how tests were failing due to missing attributes.
+  + Accept 201 status code on POST
+  + Fixes the output of 'os-evacuate' command.
+  + Fixed bug with password prompt, added tests
+
+-------------------------------------------------------------------
+Fri Feb 22 13:40:43 UTC 2013 - saschpe@suse.de
+
+- Add novaclient-prettytable.patch: Relax version constraint on 
+  python-prettytable
+
+--------------------------------------------------------------------
+Fri Feb 22 12:56:00 UTC 2013 - saschpe@suse.de
+
+- Update to version 2.11.1.15+git.1361537760.34c8a6b:
+  + Update to requests >= 0.8
+  + Mask permissions on private key files
+  + Fix run_tests.sh --coverage
+  + Add format options to 'nova coverage-report'.
+  + Corrects 2nd argument type for logging
+  + Fix IOError with gnomekeyring.find_network_password_sync
+  + Issue when gnomekeyring is present but not the current backend
+  + Make availability_zone in aggregate_create optional
+  + Fix nova availability-zone-list for admin users
+  + Expand and improve baremetal API.
+  + Allow extensions to provide a name when discovered on the python path.
+  + Avoid doing a deep copy on the availability zone manager
+  + Support showing extra fields in server list
+  + Extend test coverage (shell, fping)
+  + Add support for os-attach-interfaces
+  + Missing import for gnomekeyring
+- Dropped novaclient-requests-compat.patch: merged upstream
+
+-------------------------------------------------------------------
+Fri Feb 22 11:28:19 UTC 2013 - saschpe@suse.de
+
+- BuildRequire openstack-suse-macros instead of openstack-macros
+
+--------------------------------------------------------------------
+Mon Feb 11 15:12:17 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 2.10.0.101+git.1360595537.1ea7e65:
+  + Upgrade to pep8 1.3.3
+  + Add help about the id 'auto' for flavor-create
+  + Live migration with an auto selection of dest.
+  + Show the summary or details of all availability zones of a region
+  + Fix default format of 'nova coverage-report'
+  + Update .coveragerc
+  + management_url not set by authenticate method
+
+-------------------------------------------------------------------
+Thu Feb  7 08:29:27 UTC 2013 - saschpe@suse.de
+
+- Refreshed novaclient-requests-compat.patch
+
+--------------------------------------------------------------------
+Mon Feb  4 16:58:56 UTC 2013 - dmueller@suse.com
+
+- Update to version 2.10.0.89+git.1359997136.3ca976d:
+  + Allow request timeout to be specified.
+  + Allow for image selection using the metadata properties.
+  + make print_dict split strings with newlines into multiple rows
+  + RateLimit does not have method attribute
+  + ClientExceptions should include url and method
+  + Check tenant_id's format in "nova quota-update"
+  + Adds baremetal nova API support
+  + _get_secgroup returns first group even if multiple groups match
+  + Added homedir path expansion for keypair-add.
+  + Fix the usage of password, keyrings, and tokens.
+  + Migrate from nose to testr.
+  + Fix bash completion on osx
+  + Show the details of the added bare-metal resource
+  + Store tenant_id from keystone and use for quotas
+  + Add usage command to show usage for single tenant
+  + Fixed 7 pep8 errors.
+
+--------------------------------------------------------------------
+Wed Jan 23 16:42:40 UTC 2013 - cloud-devel@suse.de
+
+- Update to version 2.10.0.60+git.1358959360.7b6f0be:
+  + Add support for get_spice_console RPC API
+  + Ensure list output function can support non-sorting printing
+  + Implement get password for novaclient
+
+-------------------------------------------------------------------
+Mon Jan 21 11:08:37 UTC 2013 - saschpe@suse.de
+
+- Add novaclient-requests-compat.patch and
+  replace allow-any-python-requests-version.patch and 
+  support-requests-version-1.0.0.patch: Forward-compatibility with
+  requests >= 1.0.0
+
+-------------------------------------------------------------------
+Fri Jan 18 13:17:42 UTC 2013 - vuntz@suse.com
+
+- Use version-regexp param for git_tarballs service to avoid
+  uselessly including the last git commit id twice.
+
+-------------------------------------------------------------------
+Thu Jan 17 17:59:16 UTC 2013 - dmueller@suse.com
+
+- add allow-any-python-requests-version.patch: Allow any
+  python-requests version
+- add support-requests-version-1.0.0.patch: Run also with
+  requests >= 1.0
+
+--------------------------------------------------------------------
+Wed Jan 16 17:59:29 UTC 2013 - dmueller@suse.com
+
+- Update to version 2.10.0.56.g2408786+git.1358355569.2408786:
+  + Adds tenant network support to the client
+  + Update functionality of coverage extension.
+  + Fix a couple of broken shell tests
+  + Update hosts API action calls (startup etc.)
+  + When logging request include request data
+  + Add support for instance evacuate.
+  + Fix the help text of add-fixed-ip
+  + Move from untitest2 to testtools.
+  + Update README.rst
+  + Unify Manager._update behaviour
+  + Fix some usage messages of 'nova volume-*'
+
+--------------------------------------------------------------------
+Mon Jan 14 13:05:09 UTC 2013 - saschpe@suse.de
+
+- Update to version 2.10.0.36.gfba20df+git.1358165109.fba20df:
+  + add num_instances option for nova boot.
+  + Use requests module for HTTP/HTTPS
+  + Fix find for alphanumeic flavor id/name
+  + Make --tenant a required arg for quota-show
+  + Add support for the coverage extension.
+  + Specify some arguments by name.
+- Updated requirements
+
+--------------------------------------------------------------------
+Wed Dec 19 11:48:12 UTC 2012 - saschpe@suse.de
+
+- Update to version 2.10.0.27.g8d36500+git.1355914092.8d36500:
+  + Makes the OS_NO_CACHE env variable work again
+  + Add optional argument to include reservations in os-used-limits
+  + Add nova client support for nova-manage agent command
+  + Adds --os-cache to replace old --no-cache.
+  + Adds support for security group/rules quotas.
+  + Adds nova client support for nova-manage network command
+  + add host-update help info param.
+  + Fix argument checking method for 'nova list --flavor' command.
+  + Fix a wrong substition for '-h' in bash completion
+  + Fixed nics param ignored when bdm is specified
+  + Adds support for key_pairs quota.
+  + Adds support for injected_file_path_bytes quota.
+  + Adds nova client support for nova-manage floating command
+- No custom versioninfo file needed, upstream creates a valid one
+
+-------------------------------------------------------------------
+Fri Dec  7 11:36:20 UTC 2012 - saschpe@suse.de
+
+- Use --install-data=%{python_sitelib} to install novaclient/versioninfo
+  into the correct location (instead of %{_prefix})
+
+-------------------------------------------------------------------
+Wed Dec  5 09:31:04 UTC 2012 - saschpe@suse.de
+
+- Use @PARENT_TAG@ in _service file to automate versioning
+
+-------------------------------------------------------------------
+Mon Dec  3 11:54:41 UTC 2012 - saschpe@suse.de
+
+- Update to latest git (18deaf4):
+  + Remove unnecessary casts in flavor create.
+  + Validate that rxtx_factor is a float.
+  + Adds nova client support for nova-manage vpn command
+  + Fix aggregate command help messages.
+  + See git log for more...
+
+-------------------------------------------------------------------
+Thu Nov 15 12:38:13 UTC 2012 - saschpe@suse.de
+
+- Use openstack-macros
+
+-------------------------------------------------------------------
+Fri Nov  9 14:29:37 UTC 2012 - saschpe@suse.de
+
+- Downgrade version to new upstream scheme: 2.9.0 (bnc#787387)
+
+-------------------------------------------------------------------
+Thu Nov  8 11:15:13 UTC 2012 - saschpe@suse.de
+
+- Install LICENSING and README.rst
+- Build HTML documentation and split of doc package
+  + BuildRequire python-Sphinx 
+- BuildRequire changes:
+  + python-base instead of python-devel, sufficient for Python-only modules
+  + python-distribute instead of setuptools
+- Drop from_vcs build flag
+- Use real upstream version in "versioninfo" file, unfortunately we can't
+  adjust the package version to upstreams changes due to the RPM version
+  comparison algorithm
+
+-------------------------------------------------------------------
+Tue Oct 30 10:17:18 UTC 2012 - saschpe@suse.de
+
+- Add Provides/Obsoletes for openSUSE-12.2 package name
+  (openstack-novaclient and python-python-novaclient)
+
+-------------------------------------------------------------------
+Fri Oct 12 13:31:27 UTC 2012 - vuntz@suse.com
+
+- Update to version 2012.2 (Folsom), which is really 2.9.0:
+  + See https://github.com/openstack/python-novaclient/commits/2.9.0
+- Install bash completion for 'glance' binary
+- Dropped patches merged upstream:
+  + volume-list-all_tenants.patch
+  + encode-user-data-utf8.patch
+
+-------------------------------------------------------------------
+Thu Oct 11 07:25:12 UTC 2012 - vuntz@suse.com
+
+- Add encode-user-data-utf8.patch: encode user data to UTF-8 when
+  creating a server. Fix an issue in horizon when starting an
+  instance with non-ascii characters in user data (bnc#777867).
+
+-------------------------------------------------------------------
+Wed Sep 26 13:23:10 UTC 2012 - vuntz@suse.com
+
+- Add volume-list-all_tenants.patch: add --all_tenants option to
+  volume-list command, since nova-volume doesn't list volumes from
+  all tenants by default anymore. Part of bnc#782289.
+
+-------------------------------------------------------------------
+Thu Aug 16 06:11:30 UTC 2012 - jenkins@suse.de
+
+- Update to latest git (bab694e):
+  + set admin password during instance creation
+  + Relex prettytable depend to match glanceclient.
+  + Allow different auth providers via plugin system.
+  + Allow resources to use any field as 'name'
+  + Adds support for autogenerated device on attach
+
+-------------------------------------------------------------------
+Thu Aug 16 06:10:35 UTC 2012 - cthiel@suse.com
+
+- remove prettytable-requires.patch, has been merged upstream
+  https://review.openstack.org/#/c/10358/
+
+-------------------------------------------------------------------
+Mon Aug  6 22:05:33 UTC 2012 - jenkins@suse.de
+
+- Update to latest git (077cc0b):
+  + gitignore ChangeLog and add to MANIFEST.in.
+
+-------------------------------------------------------------------
+Fri Aug  3 13:22:56 UTC 2012 - rhafer@suse.de
+
+- Fixed Dependencies (bnc#774364)
+
+-------------------------------------------------------------------
+Wed Aug  1 22:05:17 UTC 2012 - jenkins@suse.de
+
+- Update to latest git (f15974b):
+  + Better handling of stale tokens (no more 401's)
+
+-------------------------------------------------------------------
+Mon Jul 30 22:06:31 UTC 2012 - jenkins@suse.de
+
+- Update to latest git (cefd0fc):
+  + change image list and network list data to be sorted by name rather than UUID
+
+-------------------------------------------------------------------
+Thu Jul 26 21:23:29 UTC 2012 - cthiel@suse.com
+
+- add prettytable-requires.patch to fix python prettytable requirement 
+
+-------------------------------------------------------------------
+Thu Jul 26 11:12:58 UTC 2012 - bwiedemann@suse.com
+
+- Update to master branch
+
+-------------------------------------------------------------------
+Thu Jul 26 10:40:54 UTC 2012 - saschpe@suse.de
+
+- Require python-setuptools, /usr/bin/glance needs it
+
+-------------------------------------------------------------------
+Wed Jun 27 09:55:20 UTC 2012 - saschpe@suse.de
+
+- Change versioning scheme to $release+git.$AUTHORDATE.$COMMITREV
+- Simplify from_vcs macros
+
+-------------------------------------------------------------------
+Tue Jun 26 11:30:30 UTC 2012 - saschpe@suse.de
+
+- Consistent package summaries
+- Macro cleanup:
+  + Package is noarch except for SLE-11
+- Added rpmlintrc for non-issues
+- Use correct upstream URL
+
+-------------------------------------------------------------------
+Thu May 24 11:06:04 MDT 2012 - jfehlig@suse.com
+
+- Add 'Requires: python >= 2.6.8'
+
+-------------------------------------------------------------------
+Fri Apr 20 09:49:17 UTC 2012 - bwiedemann@suse.com
+
+- add bash completion for nova
+
+-------------------------------------------------------------------
+Fri Feb 24 15:57:38 GMT 2012 - aspiers@suse.com
+
+- include LICENSE, AUTHORS, and README.rst
+
+-------------------------------------------------------------------
+Mon Feb  6 11:45:06 UTC 2012 - bwiedemann@suse.com
+
+- update to version 2012.1
+
+-------------------------------------------------------------------
+Mon Oct 31 02:42:09 UTC 2011 - cthiel@suse.com
+
+- update to version 2.6.6
+
+-------------------------------------------------------------------
+Tue Mar 15 19:45:50 CET 2011 - berendt@b1-systems.de
+
+- fixed autogenerated spec-file
+
+-------------------------------------------------------------------
+Tue Mar 15 15:08:41 CET 2011 - berendt@b1-systems.de
+
+- created initial version (2.4.1) of python-novaclient with py2pack
+

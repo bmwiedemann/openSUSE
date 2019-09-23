@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>88d38a77890cea5ba4b504e12f0204ed</srcmd5>
+    <version>0.7.1</version>
+    <time>1561049681</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708086</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ef48d4420fbb37b47f98f4017ba1aa40</srcmd5>
+    <version>0.7.1</version>
+    <time>1561103914</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>711171</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>939f674670771ea975fcc62e5f2cc032</srcmd5>
+    <version>0.7.2</version>
+    <time>1563808808</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.2:
+  * Hopefully fix the memory leak when loading from a stream (issue #117)</comment>
+    <requestid>717592</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b135c58faaf83ce168826b0b42be5ed2</srcmd5>
+    <version>0.8.0</version>
+    <time>1567010283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726709</requestid>
+  </revision>
+</revisionlist>

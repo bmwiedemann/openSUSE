@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f4bb9e1f09d7f94a2b044c470ef3ede9</srcmd5>
+    <version>0.10.2</version>
+    <time>1509722711</time>
+    <user>dimstar_suse</user>
+    <comment>- Submit as dependency for Azure CLI 2.0.</comment>
+    <requestid>538043</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bf5ea1d0a6e86a69149b5a584f58e167</srcmd5>
+    <version>0.10.2</version>
+    <time>1545648219</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659659</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1976d157ff9dbeca0ad31e635b137565</srcmd5>
+    <version>0.13.0</version>
+    <time>1552572029</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.1:
+  * Guard against some malformed messages from the server
+  * Remove all introspection logic for progress callback introduced in 0.12
+  * progress callback only accept 3 arguments again
+  * Introduce progress4 parameter which accepts the peername as 4th argument
+  * Fix progress callback failing when it is an instance or class method
+  * Fix README.rst for PyPI
+  * Add possibility of getting the peer IP and port from the progress callback
+  * Make putfo() work with file-like objects that don't provide getvalue()
+  * Add putfo() method, allowing one to upload a file-like object
+  * Add top-level get() and put() functions for convenience
+  * Increase default socket time from 5 to 10 seconds</comment>
+    <requestid>684703</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>22e24dd707629fb0a8cf0d4d91820731</srcmd5>
+    <version>0.13.2</version>
+    <time>1553611493</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688278</requestid>
+  </revision>
+</revisionlist>

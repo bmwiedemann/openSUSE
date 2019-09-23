@@ -1,0 +1,43 @@
+From 8ada0178c1a33253f09d44d1c90ffb042c5cebc3 Mon Sep 17 00:00:00 2001
+From: Guillaume GARDET <guillaume.gardet@free.fr>
+Date: Tue, 29 Jan 2019 11:38:12 +0100
+Subject: [PATCH] boo#1123170: Remove ubifs support from omap3_beagle to keep a
+ small u-boot.img
+
+---
+ configs/omap3_beagle_defconfig | 2 +-
+ include/configs/omap3_beagle.h | 1 -
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/configs/omap3_beagle_defconfig b/configs/omap3_beagle_defconfig
+index 73ffa83d0c..68317ead09 100644
+--- a/configs/omap3_beagle_defconfig
++++ b/configs/omap3_beagle_defconfig
+@@ -36,7 +36,6 @@ CONFIG_CMD_FS_UUID=y
+ CONFIG_CMD_MTDPARTS=y
+ CONFIG_MTDIDS_DEFAULT="nand0=omap2-nand.0"
+ CONFIG_MTDPARTS_DEFAULT="mtdparts=omap2-nand.0:512k(spl),1920k(u-boot),128k(u-boot-env),128k(dtb),6m(kernel),-(rootfs)"
+-CONFIG_CMD_UBI=y
+ # CONFIG_ISO_PARTITION is not set
+ # CONFIG_SPL_EFI_PARTITION is not set
+ CONFIG_SPL_PARTITION_UUIDS=y
+@@ -70,6 +69,7 @@ CONFIG_SYS_NAND_BUSWIDTH_16BIT=y
+ CONFIG_SYS_NAND_U_BOOT_LOCATIONS=y
+ CONFIG_SYS_NAND_U_BOOT_OFFS=0x80000
+ CONFIG_SPL_NAND_SIMPLE=y
++CONFIG_MTD_UBI=y
+ CONFIG_SPI=y
+ CONFIG_DM_SPI=y
+ CONFIG_OMAP3_SPI=y
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index 7698a90c4e..c614a6d962 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -91,7 +91,6 @@
+ #define BOOT_TARGET_DEVICES(func) \
+ 	func(MMC, mmc, 0) \
+ 	func(LEGACY_MMC, legacy_mmc, 0) \
+-	func(UBIFS, ubifs, 0) \
+ 	func(NAND, nand, 0)
+ 
+ #else /* !CONFIG_NAND */

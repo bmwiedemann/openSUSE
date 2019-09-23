@@ -1,0 +1,25 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">git@github.com:LINBIT/drbd-9.0.git</param>
+    <param name="scm">git</param>
+    <param name="filename">drbd</param>
+<!--
+    To update to a new release, change "revision" to the desired
+    git commit hash and bump "version" if necessary
+
+    <param name="revision">drbd-9.0</param>
+    <param name="version">9.0.19~1</param>
+-->
+    <param name="versionformat">9.0.19~1+git.%h</param>
+    <param name="revision">8e93a5d93b62db7cb3657557e0dafa1c8a1b0cc6</param>
+  </service>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">*drbd*.tar</param>
+    <param name="compression">bz2</param>
+  </service>
+
+  <service name="set_version" mode="disabled">
+    <param name="basename">drbd</param>
+  </service>
+</services>

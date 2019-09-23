@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>04a8923ca07e40926a735f2e7643d2b7</srcmd5>
+    <version>1.14.0</version>
+    <time>1519145813</time>
+    <user>dimstar_suse</user>
+    <comment>Rename from libcares2 and update</comment>
+    <requestid>578293</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6b8c2c5143d145598b28f627d6dfc79f</srcmd5>
+    <version>1.14.0</version>
+    <time>1519902418</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>580631</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>28976b50aa1c7c030a3ab306ad3317bf</srcmd5>
+    <version>1.15.0</version>
+    <time>1551024406</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>674654</requestid>
+  </revision>
+</revisionlist>

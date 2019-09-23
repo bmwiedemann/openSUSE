@@ -1,0 +1,12 @@
+--- src/CMakeLists.txt.orig	2018-04-18 16:11:00.227988702 +0200
++++ src/CMakeLists.txt	2018-04-18 16:11:14.228041424 +0200
+@@ -97,9 +97,6 @@ if(APPLE)
+ 	set_source_files_properties(${OSX_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+ endif(APPLE)
+ 
+-# enable SSE instructions for dumb library
+-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_USE_SSE -msse")
+-
+ add_executable(slade WIN32 MACOSX_BUNDLE
+ 	External/lzma/C/LzmaDec.c
+ 	External/mus2mid/mus2mid.cpp

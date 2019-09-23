@@ -1,0 +1,75 @@
+From 44bb07b4c2f582b486c060b5bb4c6fad05198827 Mon Sep 17 00:00:00 2001
+From: Peter Brittain <peter.brittain.os@gmail.com>
+Date: Mon, 28 Jan 2019 09:50:50 +0000
+Subject: [PATCH] Skip tests that require a TTY when none is available - for
+ #199
+
+---
+ tests/test_effects.py   |  2 ++
+ tests/test_renderers.py | 12 ++++++++++--
+ tests/test_screen.py    |  2 ++
+ 3 files changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_effects.py b/tests/test_effects.py
+index bc5e37b..ce9ca3c 100644
+--- a/tests/test_effects.py
++++ b/tests/test_effects.py
+@@ -45,6 +45,8 @@ def test_text_effects(self):
+         # This typically means we're running inside a non-standard termina;.
+         # For example, thi happens when embedded in PyCharm.
+         if sys.platform != "win32":
++            if not sys.stdout.isatty():
++                self.skipTest("Not a valid TTY")
+             curses.initscr()
+             if curses.tigetstr("ri") is None:
+                 self.skipTest("No valid terminal definition")
+diff --git a/tests/test_renderers.py b/tests/test_renderers.py
+index 9af6adf..97568f0 100644
+--- a/tests/test_renderers.py
++++ b/tests/test_renderers.py
+@@ -185,6 +185,8 @@ def test_colour_image_file(self):
+         # This typically means we're running inside a non-standard terminal.
+         # For example, this happens when embedded in PyCharm.
+         if sys.platform != "win32":
++            if not sys.stdout.isatty():
++                self.skipTest("Not a valid TTY")
+             curses.initscr()
+             if curses.tigetstr("ri") is None:
+                 self.skipTest("No valid terminal definition")
+@@ -254,6 +256,8 @@ def test_uni_image_files(self):
+         # This typically means we're running inside a non-standard terminal.
+         # For example, this happens when embedded in PyCharm.
+         if sys.platform != "win32":
++            if not sys.stdout.isatty():
++                self.skipTest("Not a valid TTY")
+             curses.initscr()
+             if curses.tigetstr("ri") is None:
+                 self.skipTest("No valid terminal definition")
+@@ -298,8 +302,12 @@ def test_rainbow(self):
+         # Skip for non-Windows if the terminal definition is incomplete.
+         # This typically means we're running inside a non-standard terminal.
+         # For example, this happens when embedded in PyCharm.
+-        if sys.platform != "win32" and curses.tigetstr("ri") is None:
+-            self.skipTest("No valid terminal definition")
++        if sys.platform != "win32":
++            if not sys.stdout.isatty():
++                self.skipTest("Not a valid TTY")
++            curses.initscr()
++            if curses.tigetstr("ri") is None:
++                self.skipTest("No valid terminal definition")
+ 
+         def internal_checks(screen):
+             # Create a base renderer
+diff --git a/tests/test_screen.py b/tests/test_screen.py
+index c30fe79..d669102 100644
+--- a/tests/test_screen.py
++++ b/tests/test_screen.py
+@@ -46,6 +46,8 @@ def setUp(self):
+         # This typically means we're running inside a non-standard terminal.
+         # For example, this happens when embedded in PyCharm.
+         if sys.platform != "win32":
++            if not sys.stdout.isatty():
++                self.skipTest("Not a valid TTY")
+             curses.initscr()
+             if curses.tigetstr("ri") is None:
+                 self.skipTest("No valid terminal definition")

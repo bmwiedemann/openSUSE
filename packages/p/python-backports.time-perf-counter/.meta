@@ -1,0 +1,5 @@
+<package name="python-backports.time-perf-counter" project="openSUSE:Factory">
+  <title></title>
+  <description>Backport of time.perf_counter() for Python &lt; 3.3</description>
+  <devel project="devel:languages:python" package="python-backports.time-perf-counter"/>
+</package>

@@ -1,0 +1,3145 @@
+-------------------------------------------------------------------
+Sun Sep 15 13:13:16 UTC 2019 - wbauer@tmo.at
+
+- Update to 6.3.0
+  * https://www.digikam.org/news/2019-09-08-6.3.0_release_announcement/
+- New features (from NEWS):
+General    : Internal Libraw updated to last stable 0.19.5.
+General    : First version of exported DPlugin API for future
+             external contributions.
+ImageEditor: new external plugin based on GMicQt included in all
+             bundles (https://github.com/c-koi/gmic-qt)
+- 193 bugs fixed
+
+-------------------------------------------------------------------
+Wed Aug 21 08:14:53 UTC 2019 - mvetter@suse.com
+
+- bsc#1144232 - Drop jasper dependency from Digikam:
+  Disable JPEG2000 support due to removal of jasper
+- Add BuildRequires libjpeg8 for regular JPEG support
+
+-------------------------------------------------------------------
+Mon Aug  5 15:19:28 UTC 2019 - wbauer@tmo.at
+
+- Update to 6.2.0
+  * https://www.digikam.org/news/2019-08-04-6.2.0_release_announcement/
+- New features (from NEWS):
+IconView : HiDPI support for 4K screens.
+General  : Internal Libraw updated to last stable 0.19.3.
+           New camera supported:
+           Canon A560, FujiFilm X-T30, Nikon Coolpix A1000, Z6, Z7,
+           Olympus E-M1X, Sony ILCE-6400, Several dng files from
+           phones and drones.
+           Full camera List supported:
+           https://www.libraw.org/supported-cameras-snapshot-201903
+- 310 bugs fixed
+- Drop patches merged upstream:
+  * Fix-compilation-with-Qt-5.6.patch
+  * Fix-build-with-QtWebEngine-5.6.patch
+- Refresh 0001-Disable-detection-of-OpenGL-for-GLES-platforms.patch
+
+-------------------------------------------------------------------
+Mon Apr 29 08:37:34 UTC 2019 - wbauer@tmo.at
+
+- Drop Lower-minimum-exiv2-version.patch, the latest digikam
+  version just crashes on start with exiv2-0.25 (kde#407022)
+
+-------------------------------------------------------------------
+Tue Apr 16 10:00:11 UTC 2019 - wbauer@tmo.at
+
+- Update to 6.1.0
+  * https://www.digikam.org/news/2019-04-14-6.1.0_release_announcement/
+- New features (from NEWS):
+General     : New plugins interface for digiKam and Showfoto named
+              dplugins.
+General     : All export tools become generic plugins and are
+              shared with Showfoto.
+General     : Update internal libpgf to last 07193.
+General     : Add compatiblity with OpenCV version 4.
+General     : MacOS and AppImage bundles are now published with Qt
+              5.11.3.
+General     : Add new optional configuration option to compile with
+              Faces Engine Neural Network.
+General     : Add optional support to ImageMagick codecs to support
+              extra image formats as XCF, FITS, HEIC, etc.
+BQM         : Add new advanced settings in resize tool.
+BQM         : All Batch Queue Manager tools become Bqm plugins.
+Editor      : All Image Editor tools become Editor plugins and are
+              shared with Showfoto.
+Item View   : Add sort items by modification date.
+DPlugin     : New plugin to copy items to a local storage.
+DPlugin     : New plugin to set image as Linux desktop wallpaper.
+- 138 bugs fixed
+- Add digikam-devel subpackage
+- Add digikam-plugins subpackage that contains all the plugins
+- Move plugins' icons to the -plugins subpackage
+- Move enblend-enfuse and hugin Recommends to the -plugins package
+  as the functionality has been moved to the plugins
+- Add pkgconfig(Magic++) BuildRequires to enable the new
+  ImageMagick support
+- Add patches to fix build on Leap 42.3:
+  * Fix-compilation-with-Qt-5.6.patch
+  * Fix-build-with-QtWebEngine-5.6.patch
+- Refresh 0001-Disable-detection-of-OpenGL-for-GLES-platforms.patch
+
+-------------------------------------------------------------------
+Fri Feb 22 15:56:21 UTC 2019 - wbauer@tmo.at
+
+- Update to 6.0.0
+  * https://www.digikam.org/news/2019-02-10-6.0.0_release_announcement/
+- New features (from NEWS):
+ImageEditor  : Add Web services Import and Export tools.
+Showfoto     : Add Web services Import and Export tools.
+LightTable   : Add Web services Import and Export tools.
+Database     : Similarity database has been moved to a dedicated file
+               to not bloat core database with computed finger-prints.
+               This will speed-up query in core database in case of
+               Similarity feature is used.
+Database     : New video metadata parser based on ffmpeg to populate
+               database.
+Search       : Add video support to find files based on properties
+               registered on database.
+General      : Add new Exiv2 0.27 support.
+General      : Add new Lensfun 0.4 support.
+General      : Use DrMinGW has crash handler under Windows.
+General      : Port all export/import tool to OAuth2 authentification.
+General      : New tool to adjust quickly time and date information
+               from items. Tool will be available in AlbumView,
+               ImageEditor, LightTable, and Showfoto.
+General      : New function to group images by timelapse / burst
+General      : New tool to export to Pinterest social network.
+General      : New tool to export to OneDrive webservice.
+General      : New tool to export to Box webservice.
+General      : New tool to export to Ipfs webservice.
+General      : All bundles use last Lenfun 0.3.95 to process
+               automatic lens correction.
+General      : Add QWebEngine support.
+General      : Fix all Krazy static analyzer reports.
+General      : Update internal Libraw to last 0.19.2.
+               New camera supported:
+               * Apple: Phone 8, iPhone 8 plus, iPhone X
+               * BlackMagic: URSA Mini 4k, URSA Mini 4.6k, URSA Mini Pro 4.6k
+               * Canon: PowerShot A410, A540, D10, ELPH 130 IS, ELPH 160 IS,
+                        SD750, SX100 IS,SX130 IS, SX160 IS, SX510 HS,
+                        SX10 IS, IXUS 900Ti, PowerShot G1 X Mark III,
+                        G9 X Mark II, EOS 6D Mark II, EOS 77D, EOS 200D,
+                        EOS 800D, EOS M6, EOS M100
+               * Casio: EX-ZR4100/5100
+               * DJI: Phantom4 Pro/Pro+, Zenmuse X5, Zenmuse X5R
+               * FujiFilm: S6500fd, GFX 50S, X100f, X-A3, X-A5, X-A10, X-A20,
+                           X-E3, X-H1, X-T20
+               * Hasselblad: H6D-100c, A6D-100c
+               * Huawei: P9 (EVA-L09/AL00), Honor6a, Honor9, Mate10 (BLA-L29)
+               * Leica: CL, M10, TL2
+               * LG: V20 (F800K), VS995
+               * Nikon: D850, D5600, D7500, Coolpix B700
+               * Olympus: E-PL9, E-M10 Mark III, TG-5
+               * OnePlus: A3303, A5000
+               * Panasonic: DMC-FZ45, DMC-FZ72, DC-FZ80/82, DC-G9 (std. res mode only),
+                            DC-GF10/GF90, DC-GH5, DC-GX9, DC-GX800/850/GF9,
+                            DMC-LX1, DC-ZS70 (DC-TZ90/91/92, DC-T93),
+                            DC-TZ100/101/ZS100, DC-TZ200/ZS200
+               * PARROT: Bebop 2, Bebop Drone
+               * Pentax: KP
+               * PhaseOne: IQ3 100MP Trichromatic
+               * Samsung: Galaxy Nexus, Galaxy S3, S6 (SM-G920F), S7, S7 Edge,
+                          S8 (SM-G950U)
+               * Sony: A7R III, A9, DSC-RX0, DSC-RX10IV
+               * Yi: M1
+               * YUNEEC: CGO3, CGO3P
+               * Xiaoyi: YIAC3 (YI 4k)
+Collection   : Add tool button to update an existing collection to the new
+               drive or path.
+Tags         : Add possibility to merge tags by drag & drop.
+IconView     : Add capability to re-organize the contents manually.
+IconView     : Add capability to separate the contents by month.
+HTML Gallery : New Vanilla theme to emulate export to HTML from Adobe LightRoom.
+HTML Gallery : New Blue Frame theme.
+HTML Gallery : New Kiosk-Mode theme.
+- 630 bugs fixed
+- Drop patches merged upstream:
+  * Add-QtWebEngine-support.patch
+  * fix-black-Welcome-page-by-clicking-on-a-link.patch
+  * add-support-for-Exiv2-0.27.patch
+  * be-compatible-with-backward-0.26.patch
+  * adjust-find-cmake-script-to-exiv2-0.27-RC1.patch
+  * first-patch-to-be-compatible-with-Exiv2-0.27.patch
+  * f27ab9c1051bd0a0.patch
+  * fix-compile.patch
+- Drop docs subpackage, docs are no longer included
+- Drop kipi-plugins subpackage, no longer included
+- Drop patch for kipi-plugins that's no longer relevant:
+  * 0002-Revert-replace-obsolete-qSort-function.patch
+- Drop 0001-Revert-replace-obsolete-qSort-function.patch and build
+  with gcc7 on Leap 42.3 instead
+- Refresh Lower-minimum-exiv2-version.patch
+- Remove kipi-plugins requirement, digikam doesn't use libkipi
+  anymore
+- Recommend enblend-enfuse and hugin (previously recommended by
+  kipi-plugins), needed for certain functionality in digikam
+- Update/cleanup build requirements
+- Use fdupes without -s option
+- Make lang package conditional
+- Handle soversion via a macro, bump to 6 following upstream
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jan  2 12:21:09 UTC 2019 - wbauer@tmo.at
+
+- Add upstream git commits to fix build with exiv2-0.27:
+  * add-support-for-Exiv2-0.27.patch
+  * be-compatible-with-backward-0.26.patch
+  * adjust-find-cmake-script-to-exiv2-0.27-RC1.patch
+  * first-patch-to-be-compatible-with-Exiv2-0.27.patch
+  * f27ab9c1051bd0a0.patch
+  * fix-compile.patch
+
+-------------------------------------------------------------------
+Sat Dec  1 22:42:22 UTC 2018 - wbauer@tmo.at
+
+- Add fix-black-Welcome-page-by-clicking-on-a-link.patch to fix
+  the Welcome page getting black when clicking on a link that opens
+  a new browser window (with QtWebEngine)
+
+-------------------------------------------------------------------
+Wed Oct 31 16:48:54 UTC 2018 - wbauer@tmo.at
+
+- Add Add-QtWebEngine-support.patch to allow building with
+  QtWebEngine instead of QtWebKit
+- Use QtWebEngine on platforms where it is available
+- Add some necessary build requirements to avoid relying on other
+  packages pulling them in
+- Remove unused libqca-qt5-devel BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct 30 13:17:52 UTC 2018 - wbauer@tmo.at
+
+- Add Lower-minimum-exiv2-version.patch to make it build on Leap
+  42.3
+- Remove some build requirements that are not used anymore since a
+  long time
+- Remove unnecessary ENABLE_OPENCV3 and ENABLE_MYSQLSUPPORT cmake
+  options, they are ON by default since 5.7.0
+- Remove obsolete ENABLE_LCMS2 option, LCMS2 is mandatory since 5.0
+
+-------------------------------------------------------------------
+Tue Oct 16 18:52:03 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Disable libkvkontakte support, it's dead
+
+-------------------------------------------------------------------
+Mon Aug 13 09:00:10 UTC 2018 - fabian@ritter-vogt.de
+
+- Require libQt5Sql5-sqlite (boo#1095688)
+- Use %license
+
+-------------------------------------------------------------------
+Sat Mar 24 18:48:15 UTC 2018 - wbauer@tmo.at
+
+- Update to 5.9.0:
+  * https://www.digikam.org/news/2018-03-25-5.9.0_release_announcement/
+- New features (from NEWS):
+General      : Libraw updated to last 0.18.8.
+- 45 bugs fixed
+- Drop upstream patches:
+  * fix-font-size-in-tooltips.patch
+  * digikam-5.8.0.fix-db-migration-0001.patch
+  * digikam-5.8.0.fix-db-migration-0002.patch
+  * digikam-5.8.0.fix-db-migration-0003.patch
+  * digikam-5.8.0.fix-db-migration-0004.patch
+  * update-internal-libraw-to-last-stable-0.18.7.patch
+  * update-internal-libraw-to-last-0.18.8.patch
+- Drop fix-italian-docs-with-older-kdoctools.patch, Leap 42.2 is no
+  longer supported
+- Don't try to delete libkvkontakte translations, they are no
+  longer installed (kde#369517)
+- Also don't try to delete *.a files and locale/x-test, no longer
+  necessary
+
+-------------------------------------------------------------------
+Wed Mar  7 17:01:45 UTC 2018 - wbauer@tmo.at
+
+- Add upstream patches to fix build in Tumbleweed:
+  * update-internal-libraw-to-last-stable-0.18.7.patch
+  * update-internal-libraw-to-last-0.18.8.patch
+
+-------------------------------------------------------------------
+Fri Feb  9 21:06:44 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Fix broken rebase of 0001-Disable-detection-of-OpenGL-for-GLES-platforms.patch
+
+-------------------------------------------------------------------
+Thu Feb  8 13:19:01 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Drop xorg-x11-devel BuildRequires, all x11 dependencies are
+  via Qt and covered by the Qt5* BuildRequires
+- Drop BuildRequires on gphoto binary, the version is discovered
+  using pkgconfig now.
+
+-------------------------------------------------------------------
+Thu Feb  8 13:08:46 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Rebase 0001-Disable-detection-of-OpenGL-for-GLES-platforms.patch
+
+-------------------------------------------------------------------
+Thu Jan 18 23:17:51 UTC 2018 - nico.kruber@gmail.com
+
+- Add digikam-5.8.0.fix-db-migration-0001.patch (adapted to 5.8.0),
+  digikam-5.8.0.fix-db-migration-0002.patch,
+  digikam-5.8.0.fix-db-migration-0003.patch, and
+  digikam-5.8.0.fix-db-migration-0004.patch to fix MySQL DB
+  migration issues (kde#388824, kde#388867, kde#388977)
+
+-------------------------------------------------------------------
+Wed Jan 17 18:50:08 UTC 2018 - wbauer@tmo.at
+
+- Add fix-font-size-in-tooltips.patch to make tooltips respect the
+  configured font size (kde#337243)
+- Remove some no longer respected cmake options
+
+-------------------------------------------------------------------
+Mon Jan 15 19:33:44 UTC 2018 - wbauer@tmo.at
+
+- Update to 5.8.0:
+  * https://www.digikam.org/news/2018-01-14-5.8.0_release_announcement/
+- New features (from NEWS):
+General      : Add support to OpenCV 3.4.x.
+General      : Updated internal Libraw to last 0.18.6.
+General      : New Upnp/Dlna media server to share collections on local network.
+Image Editor : New clone tool to replace old CImg in-painting tool.
+DropBox : tool ported AuthO2 API.
+
+- 231 bugs fixed
+- Remove unneeded libkface-devel build requirement, it's not used
+  anymore since over 2 years
+- Add 0001-Revert-replace-obsolete-qSort-function.patch and
+  0002-Revert-replace-obsolete-qSort-function.patch to fix build
+  with gcc 4.8 on Leap 42
+- Add fix-italian-docs-with-older-kdoctools.patch to make it build
+  on Leap 42.2
+- Pass --without-kde to %find_lang to prevent the docs being added
+  to the lang package, we have a separate docs subpackage
+  (it supports the KF5 docs location starting with rpm 4.14.0, and
+  that would break the build)
+- Drop upstream patches:
+  * Adapt-to-KCalCore-API-changes.patch
+  * fix-Qt-5.9.3-empty-album-problem.patch
+
+-------------------------------------------------------------------
+Fri Dec  8 19:48:19 UTC 2017 - wbauer@tmo.at
+
+- Add fix-Qt-5.9.3-empty-album-problem.patch to fix albums showing
+  up empty with Qt 5.9.3 or higher (kde#387373)
+
+-------------------------------------------------------------------
+Wed Nov 22 11:51:13 UTC 2017 - wbauer@tmo.at
+
+- Add Adapt-to-KCalCore-API-changes.patch to make it build with
+  KDE Applications 17.12
+
+-------------------------------------------------------------------
+Thu Sep 14 23:47:03 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Add 0001-Disable-detection-of-OpenGL-for-GLES-platforms.patch
+  Disable OpenGL detection on embedded platforms (e.g. ARM)
+  Currently digikam depends on Desktop GL and fails to build when
+  using a Qt5OpenGL build with GLES, see kde#383715
+
+-------------------------------------------------------------------
+Tue Sep 12 12:29:53 UTC 2017 - wbauer@tmo.at
+
+- Update to 5.7.0:
+  * https://www.digikam.org/news/2017-09-11-5.7.0_release_announcement/
+- New features (from NEWS):
+General     : Add online handbook reader not dependant of desktop.
+General     : New tool to export albums by email.
+General     : New tool to create advance print layout.
+General     : Send by Mail tool can remove all metadata to attached items.
+General     : Replaced the minimum and maximum similarity selection boxes in fuzzy
+              search, duplicates search and maintenance by a new, generic DIntRangeBox
+              which makes the look, feel and behavious consistent in all places.
+              Also, this makes redundant code obsolete and reduces the probability of bugs.
+PrintCreator: Add option to create printing from albums or images selection.
+PrintCreator: Add option to customize output image properties to render printing.
+PrintCreator: Tool is now multi-threaded to process images while preview and printing.
+ImageEditor : Add SendByMail and PrintCreator tools support.
+Showfoto    : Add SendByMail and PrintCreator tools support.
+LightTable  : Add SendByMail and PrintCreator tools support.
+Panorama    : Add Hugin 2017.0 support.
+Geolocation : Add new tool to export GPS trace to KML file from geolocation editor.
+
+- Many bugs fixed
+- Drop fix-build-cmake39.patch, now upstream
+- Drop find_libastro-qt5.patch, 42.1 is no longer supported and
+  its Qt5 is too old anyway
+- Drop unneeded exiv2 requirement, digikam uses libexiv2 only
+- Add libkvkontakte-devel and libmediawiki-devel build requirements
+  (both have been released as KF5 versions meanwhile) to enable the
+  corresponding kipi plugins
+- Build with opencv-devel instead of opencv-qt5-devel, the latter
+  doesn't exist any more
+  
+-------------------------------------------------------------------
+Sat Aug 26 09:16:31 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to fix build with cmake 3.9:
+  * fix-build-cmake39.patch
+
+-------------------------------------------------------------------
+Sun Jun 25 10:12:45 UTC 2017 - fabian@ritter-vogt.de
+
+- BuildRequire Qt >= 5.6.0
+
+-------------------------------------------------------------------
+Thu Jun 22 14:30:33 UTC 2017 - wbauer@tmo.at
+
+- Update to 5.6.0:
+  * https://www.digikam.org/news/2017-06-21-5.6.0-release-announcement/
+- New features (from NEWS):
+Database    : We activated database shrinking for MySQL as part of
+              the maintenance since now we can test the affected
+              tables for integrity.
+Searches    : Users can now restrict the results of fuzzy
+              image/drop/sketch search to be in specific albums.
+Searches    : Users can now select both tags and albums in duplicates
+              search and restrict the set of images in which
+              duplicates are searched with logical operations (in
+              selected albums or/and tags, in selected albums but not
+              tags and vice versa and only in selected objects of
+              current tab)
+Searches    : In extended search, the tags selection can also be
+              restricted such that images must be either tagged with
+              at least one of or with all selected tags.
+General     : New tool to export Albums to static HTML gallery.
+General     : New tool to export Albums to video diaporama.
+HTMLGallery : New "Elegant" theme using javascript to render image
+              as slideshow in web browser.
+HTMLGallery : New "SimpleRounded" theme that uses flat shapes with
+              rounded corners.
+HTMLGallery : New "BlueCurved" theme with a blue rubbon on the left
+              and an area for navigation arrows.
+HTMLGallery : Add option to generate a Gallery from a selection of
+              images instead an album list.
+ImageEditor : Add HTMLGallery, Calendar, ExpoBlending, VideSlideshow,
+              and Panorama tools support.
+Showfoto    : Add HTMLGallery, Calendar, ExpoBlending, VideSlideshow,
+              and Panorama tools support.
+LightTable  : Add HTMLGallery, Calendar, ExpoBlending, VideSlideshow,
+              and Panorama tools support.
+
+- Many bugs fixed
+- Enable building docs again, the problems are fixed
+
+-------------------------------------------------------------------
+Tue May 30 09:22:34 UTC 2017 - alarrosa@suse.com
+
+- digikam now recommends marble in order for the geolocation widgets
+  to work by default.
+
+-------------------------------------------------------------------
+Tue Mar 14 12:13:07 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.5.0:
+  * https://www.digikam.org/node/765
+- New features (from NEWS):
+Database    : Add new options to ignore some kind of directories while scanning collections.
+Database    : We introduced garbage collection for databases as maintenance stage. This stage removes stale image,
+              thumbnail and face entries gut does not shrink Databases automatically.
+Faces       : It is now possible to remove face tags from people sidebar but preserve them in tags sidebar.
+Faces       : Recognised but unconfirmed faces are now visible both in the recognised face tag and also in a special tag called Unconfirmed.
+Faces       : The list of proposed names for name assignment in people sidebar can now be reduced to face tags with a setup option.
+Faces       : Tags in tags sidebar can now be marked as face tags via context menu if they are not already.
+Maintenance : The maintenance now does not generate massive amounts of threads anymore. Instead, we use a queue based approach to
+              level the load on the CPUs more appropriate. This should improve the reactiveness during maintenance.
+Searches    : Improved the exactness of similarity recognition for external images dropped in fuzzy search.
+Searches    : Introduced a configurable lower bound for the minimum similarity in fuzzy and duplicates search.
+Searches    : The results of duplicates searches can now be restricted. It is now possible to restrict the duplicates to the ones that
+              are in the same album as the reference image or in another album. This feature is also usable in maintenance.
+Searches    : In duplicates view, the reference image is more clearly identified by the description reference image in the image information.
+BQM         : Several usability improvements in Watermark tool.
+General     : Unsharp Mask filter can now reduce color noise to process image in HSL color space.
+General     : Update internal Libraw to 0.18.2 : new camera supported: Sigma Quattro H.
+              Fixed bug in exposure computation for Fuji camera. Fix wrong black level in Sony A350.
+              Fix Sony metadata parser. Fix Phase One decoding.
+
+- Many bugs fixed
+- Remove patches, now upstream:
+  * fix-build-with-ecm-5.31.patch
+  * hide-functions-that-are-no-longer-available.patch
+- Disable building docs, those are broken upstream (kde#377597)
+
+-------------------------------------------------------------------
+Thu Mar  2 07:48:20 UTC 2017 - jslaby@suse.com
+
+- add hide-functions-that-are-no-longer-available.patch: hide functions
+  that are no longer available in the current Google (kde#376913)
+
+-------------------------------------------------------------------
+Sun Feb 26 13:00:27 UTC 2017 - tittiatcoke@gmail.com
+
+- Drop the useless Buildrequires on soprano
+
+-------------------------------------------------------------------
+Sun Feb 19 02:32:27 UTC 2017 - wbauer@tmo.at
+
+- Added fix-build-with-ecm-5.31.patch to fix build with the latest
+  KDE Frameworks 5.31.0
+
+-------------------------------------------------------------------
+Wed Jan 11 08:18:59 UTC 2017 - nico.kruber@gmail.com
+
+- update to 5.4.0
+  digikam:
+    - Searches: Improvements of duplicate searches to introduce a
+                range of similarity of items.
+    - Searches: Improvements of duplicate searches to be able to
+                sort search albums list view by similary level.
+    - Searches: Improvements of duplicate searches to permit
+                multiple selection in search albums list view.
+    - Searches: Improvements of fuzzy searches to permit fuzzy
+                search on local images not present in the
+                database via drag & drop.
+    - Searches: Improvements of duplicate/fuzzy/sketch searches
+                to permit sorting the resulting images in image
+                view by similarity level.
+    - Searches: Improvements of duplicate/fuzzy/sketch search
+                results by showing the concrete similarity values
+                in table view.
+    - AlbumGUI: Improvements of grouped images to apply renaming,
+                copying or metadata actions to all images.
+    - General: Media player is now ported to QtAV instead
+                Qt5Multimedia (http://www.qtav.org/).
+    - General: Add support of animated GIF in preview mode.
+    - SlideShow: Add video support.
+    - Presentation: Add video support.
+    - General: Update internal Libraw to last 0.18.
+    - over 193 bugfixes, among them:
+      kde#366624, kde#372027, kde#372232, kde#294579, kde#307332,
+      kde#368762, kde#371543, kde#369051, kde#372217, kde#372362,
+      kde#372341, kde#372326, kde#372314, kde#372164, kde#372433,
+      kde#372442, kde#366567, kde#274360, kde#372380, kde#372484,
+      kde#372323, kde#372583, kde#372584, kde#372683, kde#372640,
+      kde#370150, kde#372672, kde#372722, kde#204006, kde#372312,
+      kde#366162, kde#261417, kde#354232, kde#372684, kde#372781,
+      kde#372831, kde#372872, kde#372859, kde#367611, kde#371899,
+      kde#363998, kde#361848, kde#330062, kde#372900, kde#372427,
+      kde#102500, kde#330064, kde#372628, kde#372540, kde#373003,
+      kde#370553, kde#372093, kde#352870, kde#373100, kde#334799,
+      kde#321145, kde#320628, kde#285910, kde#340609, kde#370744,
+      kde#339961, kde#312054, kde#373500, kde#362406, kde#301936,
+      kde#327244, kde#256179, kde#327391, kde#373272, kde#159824,
+      kde#372755, kde#366387, kde#348933, kde#330112, kde#222319,
+      kde#281718, kde#280755, kde#373715, kde#301029, kde#242799,
+      kde#260594, kde#230985, kde#151539, kde#332074, kde#336309,
+      kde#335996, kde#336594, kde#225731, kde#096133, kde#091538,
+      kde#151540, kde#372485, kde#370228, kde#216655, kde#248586,
+      kde#139690, kde#373606, kde#373954, kde#373754, kde#373562,
+      kde#374010, kde#339748, kde#337300, kde#349924, kde#292316,
+      kde#152522, kde#144078, kde#336791, kde#132369, kde#142051,
+      kde#340093, kde#335299, kde#147466, kde#187959, kde#330579,
+      kde#356939, kde#333348, kde#320666, kde#302923, kde#374109,
+      kde#339027, kde#339092, kde#175626, kde#335885, kde#267992,
+      kde#235920, kde#294432, kde#264035, kde#369681, kde#369595,
+      kde#366440, kde#349929, kde#221690, kde#363116, kde#374071,
+      kde#313507, kde#353534, kde#097078, kde#096878, kde#119424,
+      kde#145228, kde#354867, kde#150076, kde#374135, kde#203714,
+      kde#374178, kde#374179, kde#370392, kde#372420, kde#366234,
+      kde#374185, kde#372481, kde#284780, kde#368124, kde#360155,
+      kde#374354, kde#360955, kde#371530, kde#365313, kde#366247,
+      kde#374326, kde#374327, kde#374413, kde#296580, kde#374428,
+      kde#340986, kde#339308, kde#321531, kde#372159, kde#357696,
+      kde#199608, kde#335915, kde#274893, kde#180701, kde#362300,
+      kde#358092, kde#288658, kde#352295, kde#361111, kde#292230,
+      kde#220201, kde#374191, kde#344698, kde#335340, kde#335051,
+      kde#333737, kde#330848, kde#319702, kde#244789, kde#261914,
+      kde#323194, kde#261397, kde#323514
+  kipi-plugins:
+    - kde#373434 - No exif data in pictures exported to Flickr.
+    - kde#374242 - exported photos to Gphoto are rotated.
+    - kde#374409 - Export to Flickr ignores EXIF Orientation.
+    - kde#329309 - TIF files appear not in correct orientation in
+                   Piwigo.
+    - kde#374510 - Creating albums on flickr with line breaks in
+                   their descriptions fails.
+    - kde#374442 - Exporting images with line breaks in their
+                   captions to flickr fails.
+    - kde#374293 - Google albums reload button still display
+                   albums which have  been removed from google
+                   photos.
+
+-------------------------------------------------------------------
+Tue Nov  8 10:48:30 UTC 2016 - wbauer@tmo.at
+
+- Update to Digikam v5.3.0: https://www.digikam.org/node/761
+  * bugfixes
+- Drop upstreamed patch migration_from_digikam4.diff
+
+-------------------------------------------------------------------
+Mon Oct  3 16:27:33 UTC 2016 - alarrosa@suse.com
+
+- Updated migration_from_digikam4.diff to migrate also the
+  geobookmarks.xml file from digikam4. This patch thus fixes
+  kde#364258, kde#357944 and kde#368968.
+
+-------------------------------------------------------------------
+Mon Oct  3 07:55:43 UTC 2016 - alarrosa@suse.com
+
+- Added migration_from_digikam4.diff to support migration of
+  settings and database from digikam4 the first time digikam5
+  is run by adding a migration page in the welcome wizard and
+  letting the user choose what to do (kde#364258).
+
+-------------------------------------------------------------------
+Thu Sep 29 22:19:22 UTC 2016 - lbeltrame@kde.org
+
+- Workaround kde#369517 by removing libvkontakte translations
+  (not built but installed anyway) 
+
+-------------------------------------------------------------------
+Tue Sep 27 11:42:16 UTC 2016 - lbeltrame@kde.org
+
+- Ensure akonadi-contact-devel is not pulled in for ppc64, as
+  QWebEngine is not available for that platform
+
+-------------------------------------------------------------------
+Sun Sep 25 12:08:37 UTC 2016 - wbauer@tmo.at
+
+- Don't disable building the documentation any more, kde#365135 is
+  fixed in 5.2.0
+
+-------------------------------------------------------------------
+Sat Sep 24 10:09:11 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to Digikam v5.2.0: https://www.digikam.org/node/758
+  * many bugfixes
+  * updated documentation
+
+- Remove build-32bits.patch again, fixed upstream
+- Add threadweaver and gphoto buildrequires
+- Enable appstyles to not force fusion style
+- Fix miscellaneous rpmlint warnings
+
+-------------------------------------------------------------------
+Wed Aug 10 14:39:26 UTC 2016 - wbauer@tmo.at
+
+- Add find_libastro-qt5.patch to fix build of geolocation support
+  in Leap 42.1
+
+-------------------------------------------------------------------
+Wed Aug 10 08:56:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to Digikam v5.1.0: https://www.digikam.org/node/756
+  * many bugfixes
+  * supports new RAW cameras
+
+- Add build-32bits.patch to fix build on 32-bit x86
+
+-------------------------------------------------------------------
+Fri Jul 15 15:39:44 UTC 2016 - wbauer@tmo.at
+
+- Enable mediaplayer (Qt5Multimedia support)
+
+-------------------------------------------------------------------
+Wed Jul 13 09:30:19 UTC 2016 - tittiatcoke@gmail.com
+
+- Drop unused build dependency on sqlite2
+- Obsolete the kipi-plugins5 package
+
+-------------------------------------------------------------------
+Sun Jul 10 21:34:47 UTC 2016 - nico.kruber@gmail.com
+
+- raise dependency on libkipi version
+
+-------------------------------------------------------------------
+Fri Jul  8 09:47:19 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to Digikam v5.0
+  * Now Qt5/KF5 based
+
+- Drop patches no longer required:
+  - fix_opencv3.patch
+  - digikam-4.14.0-lensfun-0.3.2.patch
+  - digikam-4.4.0.no-kdcraw.version-check.patch
+  - remove-gplv2-only.patch
+  - digikam-buildtime.patch
+
+- Drop library tarball, as we now depend on the external libraries
+  - digikam-libs.tar.bz2
+  
+- Disable documentation for now based on bko#365135
+
+-------------------------------------------------------------------
+Thu Jun  2 05:59:05 UTC 2016 - mlin@suse.com
+
+- Bump libKF5Kipi version to libKF5Kipi31_0_0
+
+-------------------------------------------------------------------
+Thu May 12 10:47:43 UTC 2016 - Mathias.Homann@opensuse.org
+
+- Add patch digikam-4.14.0-lensfun-0.3.2.patch to make digikam
+  build with the latest lensfun version
+
+-------------------------------------------------------------------
+Mon Mar  7 10:47:43 UTC 2016 - normand@linux.vnet.ibm.com
+
+- add _constraints file to set min disk space for ppc64le build
+
+-------------------------------------------------------------------
+Thu Mar  3 13:45:53 UTC 2016 - tittiatcoke@gmail.com
+
+- Add fix_opencv3.patch in order to build the internal libkface 
+  with openCV 3.x
+
+-------------------------------------------------------------------
+Wed Feb 17 10:17:03 UTC 2016 - tittiatcoke@gmail.com
+
+- Remove the kipi-plugin icons to enable co-installability with the 
+  kipi-plugins5 package. The required icons are now shipped in a 
+  seperate package kipi-plugin-icons, which is provided by the 
+  kipi-plugins5 package (boo#966939)
+
+-------------------------------------------------------------------
+Wed Feb 10 08:17:03 UTC 2016 - tittiatcoke@gmail.com
+
+- Drop the requires on digikam from the digikam-libs package. This 
+  would allow digikam-libs to replace the existing libkipi, libkexiv2,
+  etc without pulling in digikam/kipi-plugins (boo#965865)
+
+-------------------------------------------------------------------
+Wed Feb  3 19:17:03 UTC 2016 - tittiatcoke@gmail.com
+
+- Drop the BuildRequire on kdepimlibs4 for Factory
+
+- Make the dependency on marble-data from digikam-libs a recommends
+  to allow more flexibility for users
+
+-------------------------------------------------------------------
+Sat Jan 30 22:18:07 UTC 2016 - wbauer@tmo.at
+
+- Provide/Obsolete libkexiv2-11 instead of libkexiv2, that's the
+  actual name of the package
+
+-------------------------------------------------------------------
+Sat Jan 30 14:39:32 UTC 2016 - wbauer@tmo.at
+
+- Provide/Obsolete libkdcraw23 as well to prevent update problems
+
+-------------------------------------------------------------------
+Fri Jan 29 16:56:31 UTC 2016 - dimstar@opensuse.org
+
+- Split out the five plugins that upstream ships with a
+  metainfo.xml file: color, decorate, enhance, fxfilters and
+  transform. All new subpackages for now supplement the main
+  package (which is equal to the main package recommending them).
+
+-------------------------------------------------------------------
+Mon Jan 25 11:51:03 UTC 2016 - alarrosa@suse.com
+
+- Add symlinks for solid actions so Plasma5 can use digikam to 
+  import images from the device notifier applet
+
+-------------------------------------------------------------------
+Sun Jan 10 15:17:03 UTC 2016 - tittiatcoke@gmail.com
+
+- Add the file digikam-libs.tar.bz2 based on the Digikam 4.13.0 
+  source file. These are the libs that have moved to KF5 upstream, 
+  but digikam is still KDE4 based.
+  This should enable to build digikam until the KF5 based version 
+  is released
+
+-------------------------------------------------------------------
+Fri Jan  1 22:10:37 UTC 2016 - nico.kruber@gmail.com
+
+- re-enable support for MediaWiki export in kipi-plugins
+
+-------------------------------------------------------------------
+Wed Oct 28 17:23:00 UTC 2015 - nico.kruber@gmail.com
+
+- update to 4.14.0
+  digikam:
+    - General: Add support of OpenCV 3.x.
+    - General: Overlay icons are resized accordingly with thumbnails sizes.
+    - General: New Overlay icon to quickly show an image in full-screen.
+    - General: Exiv2 mininum version bumped to 0.25 to prevent crash with
+               video files.
+    - kde#349601 - digikam compile fine with OpenCV 2.X but not with 3.x.
+    - kde#261568 - ICONVIEW: scale overlay action icons accordingly with
+                   thumb size.
+    - kde#336331 - Thumbnails size can not be changed in MapView mode.
+    - kde#339082 - Allow a simpler way to place a photo in full-screen using
+                   overlay.
+    - kde#352338 - Digikam doesn't match Nikon lenses 35mm f/1.8G and
+                   50mm f/1.8G.
+    - kde#126149 - Album icon view stores both jpeg and raw (nef), handle
+                   both as one.
+    - kde#352919 - Crash on delete into image editor.
+    - kde#341819 - Auto-creation of date-based sub-albums ignored.
+    - kde#353155 - Apply face tags to multiple images.
+    - kde#237719 - Color effects: Neon / Find edges don't take parameters
+                   correctly.
+    - kde#340373 - Crash on scanning video directory.
+    - kde#285052 - SCAN: moving an album from one collection to another one
+                   do not update information.
+    - kde#353600 - Wrong date (1970-01-01) on rename during raw import from
+                   Nikon D750.
+    - kde#353614 - Crash shortly after opening application.
+    - kde#141592 - Position of inserted text is not exact.
+    - kde#353608 - The preview has blocky artifacts reminiscent of chroma
+                   subsampling.
+    - kde#286373 - DNG don't get filtered as raw (group of items relevant).
+    - kde#181813 - digiKam text decoration font size problem.
+    - kde#353815 - Using Batch Queue Manager to extract preview images loses
+                   metadata.
+  kipi-plugins:
+    - General: Add support of OpenCV 3.x
+    - kde#306442 - digiKam 2.8 crash when opening geolocation plugin.
+    - kde#352596 - Unable to upload large image to flickr even though I'm
+                   resizing it.
+    - kde#352621 - Export to facebook crashes.
+    - kde#352862 - Photos are compressed when exported to picasa.
+    - kde#352750 - Facebook export: Filename is used as Description.
+- remove digikam-4.6.0.install-libs-dev.patch (libs not packaged anymore)
+- remove digikam-4.8.0-libkgeomap-translations.tar.bz2 (libs not packaged
+  anymore)
+- remove support for MediaWiki export (libmediawiki not packaged anymore)
+
+-------------------------------------------------------------------
+Sun Oct 11 12:55:49 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Don't buildrequire marble-devel when libkgeomap isn't built
+
+-------------------------------------------------------------------
+Tue Oct  6 13:44:26 UTC 2015 - dimstar@opensuse.org
+
+- Align build of Leap 42.1 with the one in Tumbleweed (do not build
+  libkface3 and libkgeomap2).
+
+-------------------------------------------------------------------
+Wed Sep  9 09:48:14 UTC 2015 - nico.kruber@gmail.com
+
+- update to 4.13.0
+  digikam:
+    - kde#350915 - digiKam 4.11.0 fails to compile with jpeg-9a.
+    - kde#343548 - Tag Manager crashes when adding a new tag.
+    - kde#350541 - PNG alpha channel is ignored.
+    - kde#229788 - digiKam crashes fetching pictures SD-Card.
+    - kde#298265 - Embedded preview changes from full to reduced size
+                   regardless album view settings.
+    - kde#351142 - Add metadata tags support for video files time-stamp.
+    - kde#334244 - Face tag zones are hidden after adding a new face.
+    - kde#351243 - Table view click to select broken.
+    - kde#350225 - Auto rename on import does not work for RAW images.
+    - kde#346646 - Renaming works when downloading selected but settings are
+                   ignored when importing new ones only.
+    - kde#351245 - Unable to connect to mysql database, due to missing
+                   'create trigger' while user has ALL privileges on
+                   digikam DBs.
+    - kde#351404 - Wrong country name in country list.
+    - kde#351244 - Target album should be source album by default.
+    - kde#349901 - Delete shortcut key needed and should be Apple+delete.
+    - kde#349878 - digiKam Crashes when running maintenance.
+    - kde#350930 - UI freeze when importing to remote storage.
+    - kde#313390 - RAW images cannot be decoded if selected from within the
+                   image editor.
+    - kde#329873 - Crash during face detection.
+    - kde#351241 - Table view shows wrong thumbnails.
+    - kde#303545 - digiKam crash when importing photos from a camera.
+    - kde#344521 - digiKam crashes when trying to define one more face.
+    - kde#304952 - digiKam thumbnails don't load, even after rebuild
+                   thumbnails and application crashes.
+    - kde#341685 - Tags disappear on some photos after a few days.
+    - kde#346070 - Crash during "maintenance".
+    - kde#347348 - Moving a directory loses metadata in database associated
+                   with .cr2 raw files.
+    - kde#269634 - Crash when adding tags.
+    - kde#311135 - digiKam crashed after saving a new version of a modified
+                   picture.
+    - kde#309058 - Database can't be synchronized with XMP sidecars.
+    - kde#351679 - digiKam does not find album library.
+    - kde#350885 - Grouping images via the thumbbar is possible, but they
+                   disappear in digikam.
+    - kde#352040 - Names for faces do not take non-ASCII characters.
+  kipi-plugins:
+    - kde#280058 - No coordinates shown in GPSSync window when using sidecar
+                   files.
+- Remove fix-crash-with-tags-manager-add-tag-with-null-parent.patch
+  (fixed upstream - boo#940857, kde#343548)
+
+-------------------------------------------------------------------
+Fri Aug  7 17:15:47 UTC 2015 - nico.kruber@gmail.com
+
+- update to 4.12.0
+  digikam:
+    - kde#349302 - Copy path to clipboard.
+    - kde#339008 - digiKam crashed when opening import window.
+    - kde#349280 - Crash when importing photos via MTP.
+    - kde#330943 - New lens not detected.
+    - kde#285521 - Search by time of day.
+    - kde#269682 - digiKam crashes when selecting lens auto correction
+                   (ResizeEvent relevant).
+    - kde#317689 - Crash on selecting perspective tool (ResizeEvent relevant).
+    - kde#320382 - Unable to crop due to image corruption into canvas with not
+                   X11 based computers (ResizeEvent relevant).
+    - kde#340389 - digiKam crashes while editing pictures for color balancing
+                   on OSX.
+    - kde#294793 - Refocus filter crashes with 16bit images.
+    - kde#337324 - digiKam crashes when opening the import view via Import
+                   "Add Images...".
+    - kde#341356 - Not getting the new Versions of digiKam.
+    - kde#342625 - Can't install digikam because py27-numpy refuses to
+                   install.
+    - kde#326580 - digiKam 3.5 corrupts JPG, TiFF, PNG images.
+    - kde#349155 - digiKam does not work properly on OSX Yosemite.
+    - kde#347289 - digiKam crashes while beginning correcting perspective.
+    - kde#343948 - Crashes as soon as i try to import from USB3 attached flash
+                   drive with images on.
+    - kde#337537 - Crash on Import.
+    - kde#321899 - Crash during large import.
+    - kde#293671 - digiKam freezes on / after Import.
+    - kde#338685 - Program crashed while trying to import files from external
+                   USB HDD drive.
+    - kde#340990 - Crash after clicking importing from sd card.
+    - kde#345990 - 4.9.0 import from external card reader crashe.
+    - kde#339615 - Crashed after selecting Import (sd card reader).
+    - kde#277242 - MYSQL : using different databases for images metadata and
+                   thumbnail cache is broken.
+    - kde#320107 - Flip/Mirror operation doesn't flip/mirror the entirety of
+                   the picture (there is a strip left unmirrored).
+    - kde#222462 - Crashed unexpectedly when using refocus tool.
+    - kde#319730 - Local contrast crashes digikam when used for second time.
+    - kde#312476 - Crash while playing with liquid rescale.
+    - kde#209398 - Crashes with SIGABRT upon free rotation of large image (55
+                   MPixel) in image editor.
+    - kde#342313 - SQLITE : detected locked database file. There is an active
+                   transaction. Waited but giving up now.
+    - kde#334992 - Select color space -> other -> crash.
+    - kde#326133 - Crash during reread metadata from image.
+    - kde#316126 - digiKam crashed when choosing dlna export.
+    - kde#268356 - 0-pointer access if mysql-db is not working correctly.
+    - kde#257119 - digiKam crashes when i update fingerprints database.
+    - kde#348508 - Typing into "Enter Tag Here" crashes digikam 100% of the
+                   time.
+    - kde#349528 - After viewing only a handful of photos, digikam crashes.
+    - kde#314721 - Crash while starting.
+    - kde#313329 - Failed to start digiKam.
+    - kde#282047 - No open digikam.
+    - kde#276999 - Crash on saving changing EXIF settings.
+    - kde#298639 - digiKam crash when clicking on "next photo" button on lower
+                   right corner.
+    - kde#330106 - digikam crashes when changing database location.
+    - kde#288584 - Crash on exit.
+    - kde#338104 - digiKam crash when changing parameters for "detect and
+                   recognize faces".
+    - kde#204482 - SCAN : Failed to open database error message.
+    - kde#331937 - poll_for_event: assertion !xcb_xlib_threads_sequence_lost
+                   fails after editing metadata of a few videos and/or after
+                   viewing a few videos.
+    - kde#338695 - Crash when editig raw file: enhance -> restoration ->
+                   cancel.
+    - kde#249153 - Xorg with almost 100% CPU now and then during digiKam's
+                   usage.
+    - kde#334951 - digiKam freezes and after a while shutdown. no crash
+                   report.
+    - kde#322115 - Crash when opening an image.
+    - kde#267408 - digiKam new metadata template editor crash during save.
+    - kde#238935 - Jpeg 2000 Quality setting isn't working right: Always the
+                   same quality.
+    - kde#273290 - digiKam has crashed during import of pictures from SD card.
+    - kde#337921 - Unable to compile due to pointer type issue in gpcamera.
+    - kde#229779 - Imported folders show not images.
+    - kde#210742 - Kodak camera cx4300 detects but won't download locks @20%
+                   (old o.s. & digikam worked).
+    - kde#323210 - Image History Bar Shows A Mess Of Derived Images And
+                   Identical Images That Are Neither Derived Nor Identical.
+    - kde#245345 - digiKam crashes while importing pictures from card reader.
+    - kde#274768 - digiKam crashed @DatabaseConfigElement::element.
+    - kde#271677 - Renaming.
+    - kde#225760 - Started program with NFS album; scanning started; then at
+                   some point crash (wasn't paying attention).
+    - kde#349689 - digiKam cannot display images if directory name contains
+                   UTF8 characters (as e.g. 'ü').
+    - kde#219308 - digiKam crash when i close it, after to move 50 items.
+    - kde#215782 - digiKam crash when setting tags.
+    - kde#314526 - Crash at displaying preview images.
+    - kde#233612 - The DocumentName tag is not added when importing.
+    - kde#349903 - Crash importing images on OSX.
+    - kde#233222 - Thumbnails displayed are from incorrect images.
+    - kde#264999 - Exif-dates not recognices OK.
+    - kde#212848 - Crashed in slideshow while viewing.
+    - kde#194047 - digiKam crashes while atempting to index photos.
+    - kde#190982 - Crashes when selecting album every time.
+    - kde#192701 - Signal SIGSEGV - Crash under Gnome.
+    - kde#196917 - Problem with "sticky" tooltips in album view.
+    - kde#216392 - digiKam crashed during moving of an empty folder.
+    - kde#220549 - Clicking OK closes showfoto and digikam.
+    - kde#235392 - digiKam crash after changing folder/album.
+    - kde#343288 - Crash after opening multiple images in editor window.
+    - kde#335850 - Switch to next picture takes a long time.
+    - kde#349937 - Crash if view is switched to table view.
+    - kde#348344 - Crash when in Image Editor I select an image area and click
+                   Enhance->in-painting.
+    - kde#329127 - Remove Tag menu entry is enabled if a picture has no Tags.
+    - kde#220194 - Moving or copying photos crashes digiKam.
+    - kde#192119 - Thumbnail orientation is always landscape even with
+                   portrait images.
+    - kde#191211 - digiKam crashes and causes 'signal 6 (SIGBART)' when
+                   detecting new images.
+    - kde#337729 - Blur parameter has no effect in Local Contrast tool.
+    - kde#349975 - Import window freezes when selecting multiple items and
+                   scrolling.
+    - kde#346465 - Crash after loading tools.
+    - kde#291822 - Saving a versioned image puts it last.
+    - kde#331989 - digiKam crashes when playing AVI-file.
+    - kde#350239 - Unmounted network shares, external hard drives show up in
+                   the album view.
+    - kde#338200 - Cancelling tags assigment in file metadata does not work.
+    - kde#239896 - digiKam hangs and/or crashes after adding tags.
+    - kde#321680 - Crash / segmentation fault when trying to recognize faces.
+    - kde#167418 - Browsing with pgdn stops working after a movie.
+  kipi-plugins:
+    - Google Tools: Implementations of PicasaWeb and Google Drive are now
+                    merged into one common Google Services tool.
+    - kde#321446 - Export to Imgur just hang on 'loading' animation eternally.
+    - kde#349208 - Cmake can't find external libkvkontakte.
+    - kde#277898 - Does not compile, presumably because of missing directory
+                   in include path.
+    - kde#315580 - digiKam crashed after I changed the DLNA implementation
+                   from "HUPnP API" to "miniDLNA".
+    - kde#316126 - digiKam crashed when choosing dlna export.
+    - kde#348519 - Auth Token 98 - Login failed - Picasa Import.
+    - kde#215787 - Picasaweb updating photo or movie does not work,duplicate
+                   instead of replace.
+    - kde#217546 - Picasaweb export does not point to the current album.
+    - kde#223375 - PicasaWeb: videos won't be exported.
+    - kde#272423 - [wish] picasaweb updating tags.
+    - kde#272518 - Picasaweb updating photo not marked as uploaded.
+    - kde#329350 - Exporting a second time mix two exports (test picasaweb).
+    - kde#219773 - Attempted to use Picasaweb addon to upload an album of
+                   approximately 330 jpegs.
+    - kde#221200 - Uploading photo to picasa web albums.
+    - kde#221417 - Crash while export to Picasaweb.
+    - kde#291701 - PicasaWeb Export removes deleted photos from album.
+    - kde#304763 - Export of Picasaweb crashes Gwenview.
+    - kde#306165 - Crash while starting photo upload to picasa.
+    - kde#308701 - digikam crash while export again the same image to
+                   picasaweb with kipi plugin.
+    - kde#321251 - Gwenview crashs if close it while sending images to picasa.
+    - kde#172427 - digiKam crashed with kipi plugins.
+    - kde#164908 - Private albums are not listed (and then not usable) with
+                   picasa export plugin.
+    - kde#200091 - "remove EXIF data" crashes digikam, gwenview.
+    - kde#265630 - Gallery export uploads to wrong directory.
+    - kde#249842 - Blend bracketed images tool says it failed to save the
+                   blended image, but actually saves it.
+    - kde#320749 - Panorama tool fails systematically when file names contain ':'.
+    - kde#277994 - Missing dot in filename in "batch raw converter".
+    - kde#167286 - Gps tagging fails with message titled
+                   "digikam3rdparty.free.fr" and text "unauthorized call of
+                   the API" when  starting the gps tagger window.
+    - kde#350167 - The browser to authenticate the plugin with flickr at the
+                   first export is never started.
+    - kde#297455 - Thumbnails not refreshed on file list.
+    - kde#343668 - Gwenview crashed after upload movie to Rajce.net.
+    - kde#341688 - Dropbox upload does not work due to developer API keys.
+    - kde#337963 - Pictures moved from folders under copy.com sync control are
+                   re-downloaded again.
+    - kde#347194 - Export to Facebook fails with "Facebook Call Failed".
+    - kde#289256 - When an error occurs during session verification, the FB
+                   export dialog ends up in an unusable state.
+    - kde#240254 - Using FB and Flickr tools at the same time, FB is completed
+                   but dialog cannot be closed until Flickr tool is done.
+    - kde#319252 - FaceBook export doesn't work any more due to bad url given
+                   back to register to before photo uploading.
+    - kde#297162 - Application does not have permission for this action.
+    - kde#202898 - New Facebook Import Gui Mockup.
+    - kde#250564 - digiKam import corrupted pictures with facebook plugin
+                   (read html files).
+    - kde#317228 - Kipi plugins Facebook app seems to be hacked/redirected to
+                   a Japanese site.
+    - kde#305281 - Import to Facebook.
+    - kde#289272 - File upload to facebook fails/ digikam kipi plugin.
+    - kde#347117 - Crash when exporting pictures to facebook.
+    - kde#297732 - digiKam crash when tried to export pics to facebook.
+    - kde#223830 - digiKam crash on Export to Facebook.
+    - kde#342300 - Export to facebook connect properly so i can post to my
+                   facebook account.
+    - kde#346183 - Crash when exporting picture to facebook.
+    - kde#328472 - Gwenview crash on quit during Facebook upload.
+    - kde#306144 - Gwenview crashes with the kipi plugin Export to Facebook.
+    - kde#299776 - Violation: Privacy Policy.
+
+-------------------------------------------------------------------
+Fri Aug  7 06:23:24 UTC 2015 - wbauer@tmo.at
+
+- Add fix-crash-with-tags-manager-add-tag-with-null-parent.patch:
+  fix crash with tag manager when adding tags with no parent tag
+  selected (boo#940857, kde#343548)
+
+-------------------------------------------------------------------
+Fri Jul 24 13:03:02 UTC 2015 - wbauer@tmo.at
+
+- explicitly enable (external) mysql support, this is disabled by
+  default since 4.6.0
+
+-------------------------------------------------------------------
+Sat Jun 27 09:29:33 UTC 2015 - nico.kruber@gmail.com
+
+- update to 4.11.0
+  digikam:
+    - kde#342791 - Quality sorter does not honor album selection, scans
+                   all albums instead.
+    - kde#277024 - After running a batch process to change metadata, the
+                   files halved in size.
+    - kde#320466 - SCAN : after to run BQM a lot of files are missing in
+                   icon-view.
+    - kde#338765 - BQM Watermark tool : output files have reduced size
+                   compared to original.
+    - kde#343652 - "Open with" with "Run in Terminal" does not open a
+                   Terminal.
+    - kde#162950 - View albums thumbnail in icon-view with a special
+                   frame as Dolphin.
+    - kde#344608 - digiKam freezes for a second or three after rating
+                   a raw photo.
+    - kde#323458 - Removing all face tags doesn't work.
+    - kde#335515 - Crash on Enhance -> Noise Reduction.
+    - kde#294217 - Make add face persistent, and add box by single click
+                   instead of drawing.
+    - kde#298929 - MAINTENANCE : cannot assign tags anymore.
+    - kde#262171 - When attaching a name to a face in Preview mode, the
+                   widget does not behave correctly.
+    - kde#333955 - BQM: offer option to optimize jpg pics.
+    - kde#165344 - Empty albums should not be included when sorting
+                   albums by date.
+    - kde#329138 - Convert to B&W hangs when moving editor window to
+                   other screen.
+    - kde#347628 - Can't remove "legend" field when updating metadata.
+    - kde#290930 - Cannot resize gamut diagram vertically, only
+                   horizontally.
+    - kde#266264 - Sidebar does not automatically resize to avoid
+                   horizontal scrollbar.
+    - kde#347728 - Build crashes when compiling libkdcraw with libraw
+                   0.16.1.-76.1-x86_64.
+    - kde#341266 - No preview available with Gphoto2 camera.
+    - kde#309638 - Searching on technical images properties.
+    - kde#342557 - No rule to make target /opt/local/lib/libkgeomap.dylib
+                   in recent git distribution.
+    - kde#244097 - When importing .NEF files, if highlights are "rebuild",
+                   "auto-brightness" has no effect.
+    - kde#339612 - When adding label it moves files.
+    - kde#181736 - New tool for Image Editor to "delighting" photo.
+    - kde#196075 - Creating a quick-fix dialogue would give digiKam a
+                   real edge.
+    - kde#346877 - Cannot assign arrow keys as keyboard shortcut.
+    - kde#336126 - Batch renaming is broken : file just renamed cannot
+                   be found.
+    - kde#195701 - Do not default to "include subfolders"/no possibility
+                   to not include sub-folders.
+    - kde#262499 - Cannot rename .AVI files.
+    - kde#331194 - SCAN : prevent trailing white spaces in camera
+                   model/maker names.
+    - kde#326589 - When detect face with one folder limit and option skip
+                   already scanned image, .avi and .move in other folder
+                   are scanned too.
+    - kde#337878 - THUMBBAR : item focus must stay in the middle.
+    - kde#344952 - Keep selected image in thumbbar in the middle while
+                   being in preview mode.
+    - kde#348146 - kipi configuration module?
+    - kde#332316 - Lens Auto-Correction should remember previously used
+                   settings.
+    - kde#333630 - Cannot search items with exposure times > 30s or
+                   focal lengths > 1000mm.
+    - kde#257679 - Build a PKG package for digiKam under MacOSX.
+    - kde#348105 - TAGS MANAGER : Delete all unused tags.
+    - kde#309243 - Reread metadata does not remove tags from database.
+    - kde#348463 - First time, digiKam seems using more than one cpu.
+    - kde#348586 - digiKam does not write description to XMP sidecar
+                   file anymore.
+    - kde#318319 - Extended files type mime supported into search tool.
+    - kde#319921 - SCAN : Audio files are ignored.
+    - kde#253622 - digikam editor cannot use unsharp mask with radius
+                   smaller than one with Canon 7D RAW images.
+    - kde#349157 - Album view have random invisible / empty / disappearing
+                   previews, messed up selection.
+  kipi-plugins:
+    - kde#274029 - Edit Metadata dialog doesn't honour settings for XMP
+                   sidecar.
+    - kde#345358 - digiKam crash when vkontakte plugin failed to upload
+                   images.
+    - kde#320308 - "Failed to upload photo into Flickr" every time after
+                   first use.
+    - kde#327069 - Kipiplugins missing translations.
+    - kde#243106 - Flickr uploader uploads with wrong date.
+    - kde#291449 - To check the file size and report to the user if the
+                   file size exceeds limits set by flickr.
+    - kde#228010 - Let flickr export progress bar show progress of each
+                   image.
+    - kde#240147 - Allow to change Advanced Slideshow delay with mouse as
+                   with keyboard.
+    - kde#261862 - Advanced slideshow controls not visible during a
+                   slideshow.
+    - kde#134525 - Impossible to use both transitions in slideshow.
+    - kde#182345 - Missing slideshow effects with control by hand.
+    - kde#238601 - Slideshow should support reordering pictures.
+    - kde#144007 - Allow to drag and drop location link over map.
+    - kde#280215 - Can't add geolocation info to videos.
+    - kde#210458 - Allow to use NMEA format as imported track file.
+    - kde#273520 - Geolocation not working reliably.
+    - kde#319657 - Unable to save geotags in *.CR2 and *.DNG.
+    - kde#304760 - OpenStreetMap shows only tiles from cache and does not
+                   download missing ones.
+    - kde#328943 - Description EXIF information.
+    - kde#274869 - Images without filename extension will not print.
+    - kde#215705 - Save multiple account frobs, so we don't have to sign
+                   out and reauth each time.
+    - kde#193890 - Allow to update "Modified" date from image.
+    - kde#318661 - Export plugin does not convert to sRGB and strips
+                   existing ICC profile.
+    - kde#233675 - Shared binary programs dngconverter and scangui do not
+                   provide man pages.
+    - kde#316310 - Tools - resize images doesn' work.
+    - kde#300458 - Imgur export is unusable from ksnapshot.
+    - kde#339572 - Too much required information.
+    - kde#264351 - KDE Global shortcuts do not work when using
+                   Advanced Slideshow.
+    - kde#227978 - Problem with "image resize" when german umlaute in
+                   pathname.
+    - kde#154076 - Corrupted image when use image viewer tool.
+    - kde#264045 - Export to remote computer does not work with fish://
+                   urls.
+    - kde#160893 - Use UPNP server as image database.
+    - kde#340847 - MediaWiki: {{Coord}} template does not exist on Commons.
+    - kde#335493 - Fix issues when metadata are loaded by MediaWiki tool.
+    - kde#300629 - Print Assistant does not follow system localization.
+    - kde#303167 - DNGConverter fails if folder of raw files contains
+                   special characters like german umlauts.
+    - kde#122284 - Using mouse button to switch between next/previous
+                   item do not work with all effects.
+    - kde#317920 - Time zone data of IPTC metadata Date Created is
+                   unavailable and deleted in MetadataEdit.
+    - kde#342687 - Panorama file time-stamps should be the same than the
+                   stitched pictures.
+    - kde#311689 - Reverse Geocoding tags are sometimes not saved.
+    - kde#292482 - FACTORING : permit to fill image list with current
+                   selected album when no item are selected.
+    - kde#348278 - Export to GDrive fails when photo description contains
+                   double quotes.
+    - kde#330919 - Previews of dng images converted from dark cr2 images
+                   are too bright.
+- remove digikam_no_local_vkontakte_cmake_modules.diff (fixed upstream)
+
+-------------------------------------------------------------------
+Tue May 12 19:47:12 UTC 2015 - nico.kruber@gmail.com
+
+- update to 4.10.0
+  digikam:
+    General : add support of ACDSee and MediaPro metadata for
+              interoperability purpose.
+    - kde#345954 - Recursive calls made into
+                   ProgressManager::slotTransactionCompletedDeferred.
+    - kde#329214 - Crash when moving tags by D&D.
+    - kde#345941 - Add an auxiliary grid-thirds in the crop tool.
+    - kde#345942 - Leak of memory when color autocorrection used on all
+                   processor cores.
+    - kde#345184 - When manually adding a face, the focus should
+                   automatically go to the text.
+    - kde#346025 - Unable to add keywords to Database, unable to view
+                   keywords from past.
+    - kde#346646 - Renaming works when downloading selected but settings
+                   are ignored when. 
+    - kde#331742 - This takes a lot of time processing > 200 images in
+                   BQM.
+    - kde#345220 - HUB : Import ACDSee Categories to hierarchical Tags.
+    - kde#346637 - Missing support for Media Pro hierarchical keywords.
+    - kde#346405 - Problem importing pick labels.
+    - kde#347053 - BQM: "batched' files" are different from manually
+                   processed files.
+    - kde#186054 - FILEIO : add non-rgb TIFF files support.
+    - kde#329637 - Can't find Dutch translations of documentation in
+                   digikam tarball.
+  kipi-plugins:
+    - kde#280189 - SmugMug Call Failed: Invalid user/nick/password.
+    - kde#334593 - Kipiplugins fails with invalid method reading folders
+                   from Smug Mug.
+
+-------------------------------------------------------------------
+Tue Apr 28 14:46:24 UTC 2015 - tittiatcoke@gmail.com
+
+- For Tumbleweed start using the libkgeomap that is provide with
+  KDE Applications.
+
+-------------------------------------------------------------------
+Wed Apr  8 23:23:47 UTC 2015 - nico.kruber@gmail.com
+
+- update to 4.9.0
+  digikam:
+    - kde#344484 - digiKam 4.8.0 compilation error : undefined
+                   reference to `cv::Exception::Exception.
+    - kde#203733 - Syncing EXIF Artist and Copyright fields with IPTC/XMP.
+    - kde#338753 - Exif ImageDescription field is being used incorrectly.
+    - kde#330224 - Add collection from network share is silently ignored.
+    - kde#344699 - Maintenance is using the wrong face data management.
+    - kde#342931 - Wrong apect ratio in item properties and in item view.
+    - kde#344793 - Thumbnail-preview broken for tags and timeline.
+    - kde#345025 - Wrong sql statement updating thumbnail modification date.
+    - kde#327009 - Tags auto-completion suggestions list is cut off at
+                   the right side.
+    - kde#345168 - Crash when applying auto lens correction (chromatic
+                   aberration).
+    - kde#319383 - Crash while applying lensfun distortion correction.
+    - kde#333540 - Random crashes on OpenSUSE 13.1.
+    - kde#345387 - Lens auto-correction tools shows "partial mathc" for
+                   canon 700d 18-135 is stm.
+    - kde#345367 - The sideview containing the thumbnails is not updated
+                   after deleting a photo.
+    - kde#345187 - When naming unkown faces digikam only remembers typed
+                   characters and not the selected name for the next face.
+    - kde#326208 - When doing a face learning (erase data and rebuild),
+                   Database is not erased and grow.
+    - kde#323888 - Face recognition makes digikam fill all the available
+                   memory (Qt SQlite plugin relevant).
+    - kde#338176 - Face Recognition memory allocation crash application.
+    - kde#339933 - ICONVIEW : Incorrect Image Aspect Ratio shown.
+    - kde#344997 - 100% CPU - Hang for VERY long periods.
+    - kde#344420 - Incomplete update of sidecar after renaming face tag.
+    - kde#342788 - THUMBBAR : Sort order not in sync with pictures in
+                              editor.
+    - kde#337502 - THUMBBAR : no thumbs generated.
+    - kde#345659 - Cannot shrink thumbnails panel.
+    - kde#338230 - digiKam stops refreshing download progress after
+                   de-selecting pictures.
+    - kde#345648 - Progress bar disappeared while importing pictures
+                   before importing finished.
+    - kde#340139 - digiKam hangs after selecting folder with pictures.
+    - kde#341772 - Re-read metadata when image file timestamp has changed.
+    - kde#329433 - Manual adding of faces made easier.
+  kipi-plugins:
+    - kde#310977 - Applying data (exif, iptc, xmp caption) in "Edit all
+                   Metadata" window inconsistent - results in data loss.
+    - kde#340330 - Deselecting "Show tracks on map" crashes the dialog.
+    - kde#283504 - QJSon not optional.
+    - kde#345802 - Html export does not longer export the description tag
+                   to gallery.xml.
+- add digikam-4.8.0-libkgeomap-translations.tar.bz2 with libkgeomap
+  translations from 4.8.0 (missing in 4.9.0 tarball)
+
+-------------------------------------------------------------------
+Mon Mar  9 23:30:06 UTC 2015 - nico.kruber@gmail.com
+
+- update to 4.8.0
+  digikam:
+    - kde#343031 - Digikam won't start: *** Error in `digikam':
+                   realloc(): invalid pointer: 0x0000000000c14260 ***
+    - kde#343548 - Tag Manager crashes when adding a new tag.
+    - kde#337011 - Image Quality Sorter doesn't apply labels.
+    - kde#318726 - Some BQM tools in a workflow don't restore (all)
+                   parameters properly.
+    - kde#342189 - BQM won't let me remove a tool unless I change it.
+    - kde#332314 - Lens Auto-Correction seems to prefer makernotes over
+                   Exif making fixing manual lenses impossible.
+    - kde#343755 - Tags from Windows Photo Gallery sometimes ignored.
+    - kde#341241 - digiKam crash during marking photos in Persons/Tags view
+    - kde#344154 - digiKam sometimes shows the raw preview, sometimes the
+                   JPEG preview, depending on the position of the stars.
+    - kde#344156 - Use digiKam with your keyboard, delete the wrong photos.
+    - kde#344155 - Rotating raw image sometimes results in the preview
+                   showing the photo rotated in the opposite direction.
+  kipi-plugins:
+    - kde#342194 - Geolocalisation not possible using google maps:
+                   "Malformated Url"
+    - kde#343777 - FindQtSoap.cmake doesn't find latest qtsoap built from
+                   git code.
+    - kde#308021 - digiKam crashes when making panorama / boost.
+
+-------------------------------------------------------------------
+Wed Feb 18 19:55:54 UTC 2015 - nico.kruber@gmail.com
+
+- update to 4.7.0
+  digikam:
+    - kde#341054 - No way to filter only files of a specific extension.
+    - kde#342073 - The creation of the selection has a dysfunction after a
+                   very fast mouse double click.
+    - kde#342229 - Crash attempting to rotate empty (NULL) thumbnail.
+    - kde#342293 - Each mouse right click creates a new Open With entry in the
+                   context menu.
+    - kde#342346 - Show only vendor specific meta data which is relevant.
+    - kde#336127 - Rename pattern textbox not tall enough and uses hard-coded
+                   font colors.
+    - kde#342149 - Freezes when mousing over "create tag from address book"
+                   in the right click tag menu.
+    - kde#340384 - Segmentation fault when creating new album.
+    - kde#338785 - digiKam face detection finds no faces.
+    - kde#342602 - Restore toggle fit to window and last zoom in the image
+                   editor.
+    - kde#342708 - A little less image shift in the mouse over preview mode.
+    - kde#342448 - Compile issues in origin/master Jan/2015.
+    - kde#342931 - Wrong apect ratio in item properties and in item view.
+    - kde#341821 - "Cancel" button in Import window does nothing.
+    - kde#342273 - CANVAS : When using zoom +/- from the staus-bar are image
+                            artifacts is visible.
+    - kde#343013 - CANVAS : on working with raw images marked square isn't
+                            crop accurate.
+    - kde#343080 - Cannot find the right lensfun profile for RAW lens
+                   correction.
+    - kde#343221 - Softproofing in editor does not work anymore.
+    - kde#342996 - Corrections for rename settings in images import.
+    - kde#314441 - Rename settings while importing ignored.
+    - kde#328541 - Cursor sometimes stays "busy".
+    - kde#342430 - When selecting a subset of images instead of all images to
+                   download from camera, the numbering of the renamed images
+                   adds the number of selected images to the sequence numbers.
+  kipi-plugins:
+    - kde#342046 - In the export menu, Google Drive and Dropbox icons are huge,
+                   filling almost all the screen.
+    - kde#342857 - Changed files are not reported to host application.
+    - kde#310580 - DNG Converter cannot save image if path have non-ascii
+                   characters.
+
+-------------------------------------------------------------------
+Sat Jan 24 15:44:27 UTC 2015 - adrian@suse.de
+
+- old libkgeomap package provides older lib with same so name, adding
+  an explizit requires
+
+-------------------------------------------------------------------
+Thu Jan 15 14:09:02 UTC 2015 - tittiatcoke@gmail.com
+
+- libkface is now a separate package. Do not use the bundled 
+  version on opensUSE 13.2 and higher. 
+
+-------------------------------------------------------------------
+Sat Jan  3 17:58:02 UTC 2015 - nico.kruber@gmail.com
+
+- update to 4.6.0
+  digikam:
+    - Editor : Several fixes to complete image editor canvas port to Qt4 model/view.
+    - General: Better support of removable media and unvavailable items.
+    - Import : Allow sub-subfolders auto creation while importing.
+    - BQM    : Allow to save/load Workflow from tools context menu.
+    - kde#340811 - Wrap album caption.
+    - kde#340278 - Please provide a windows build of 4.4.
+    - kde#341031 - LibLqr detected during build but shown as not supported in
+                   components information.
+    - kde#340945 - libkgeomap, libmediawiki, libkvkontakte, libkface not found.
+    - kde#338532 - Sidecar files are neither created nor updated under Windows.
+    - kde#335661 - CANVAS : image is displayed with wrong magnification after
+                            crop.
+    - kde#338996 - CANVAS : Selection coordinates/size do not show either
+                            during selection or update when using selection
+                            area adjust controls.
+    - kde#339053 - Allow the usage of arrows to move in the photo sequence
+                   when in preview.
+    - kde#205776 - Option to load full image size in preview mode does not
+                   only do what it says with RAW files.
+    - kde#341306 - CANVAS: no "Select All" for the second time and selection
+                           fixes after crop and auto crop.
+    - kde#341298 - libkexiv2-4.14.3/libkexiv2/kexiv2exif.cpp:934: bad if test?
+    - kde#341470 - Better speed after downloading many pictures with
+                   auto-rotation/flip option.
+    - kde#286611 - Tags are losts randomly when converting TIFF to PNG.
+    - kde#320564 - CANVAS : full image dimensions not shown when not viewing
+                            at 100% zoom level.
+    - kde#341053 - Text Filter broken.
+    - kde#341566 - digiKam crashed after closing when BQM was used before.
+    - kde#294602 - Sub sub-folders separated with '/' in file path cannot be
+                   created with album selection dialog.
+    - kde#339108 - Segfault trying to download photos.
+    - kde#338367 - CANVAS : unable to zoom out to less than fit to window.
+    - kde#341671 - IMPORT: Zoom Out and Zoom In button in preview mode working
+                           not.
+    - kde#338224 - Inconsistent "Zoom to 100%" shortcut behavior between
+                   Preview Mode and Image Editor.
+    - kde#263550 - CANVAS : image shifts position in mouse-over mode when
+                            changing between Before and After.
+    - kde#333929 - Target ICC profile is common to all queues from BQM.
+    - kde#323112 - Preview fails when importing images because digiKam uses a
+                   wrong path with Gphoto2 camera
+    - kde#331224 - Sync metadata eventually slow-down computer to unusable
+                   state.
+    - kde#338276 - CANVAS : mouse-over preview mode does not work.
+    - kde#341825 - Rounding down zoom for fit to windows size and it will
+                   never scroll bars be displayed.
+    - kde#326796 - When returning from edit mode to preview mode, next image
+                   not always loaded.
+    - kde#341868 - View->Fit to Selection no centering the new selection.
+    - kde#191494 - Support search in offline collections (e.g. removable
+                   medias).
+  kipi-plugins:
+    - kde#302306 HTML export crashes digiKam with floating cards theme.
+    - kde#341379 Advanced slideshow crashes if it runs manually backwards.
+- drop digikam-4.5.0-reenable-libs.patch (use digikam 4.6.0 cmake options)
+- drop digikam_no_build_vkontakte.diff (replaced by patch below)
+- add digikam_no_local_vkontakte_cmake_modules.diff
+- add digikam-4.6.0.install-libs-dev.patch
+
+-------------------------------------------------------------------
+Wed Nov 26 10:44:01 UTC 2014 - nico.kruber@gmail.com
+
+- add obsoletes for libkface2 and libkgeomap1
+
+-------------------------------------------------------------------
+Sat Nov 22 01:41:03 UTC 2014 - nico.kruber@gmail.com
+
+- add digikam-4.5.0-reenable-libs.patch to use some internal
+  libraries not yet available as extra packages
+  (libkface, libkgeomap, libmediawiki)
+
+-------------------------------------------------------------------
+Wed Nov 19 19:38:13 UTC 2014 - adrian@suse.de
+
+- update to 4.5.0
+  kde#172295 digiKam has a hard dependency on Jasper library
+  kde#267789 Make face detection (kface) and geo tagging (kmap) optional features
+  kde#306767 ICONVIEW : thumb focus is lost after renaming
+  kde#315574 CORE : bad performance when Tag-related Sidebars (Tag management / Filter) are open
+  kde#326718 Clear text button on file rename does nothing
+  kde#326945 When build digikam from git and package libpgf is installed, no way to use internal digikam libpgf
+  kde#337422 EXIF thumbnail date information not updated when writing metadata to image
+  kde#337737 MYSQL : settings and installation windows freeze when valid mariadb/mysql db connection is available
+  kde#338407 Import not showing image thumbnails for certain Canon cameras
+  kde#339154 digiKam goes into infinite loop when working with tags/captions information tab templates
+  kde#339180 cmake and/or compiler pick up libkgeomap header files from previous version
+  kde#339524 Identity class miss d private container to improve binary compatibility
+  kde#339806 Compiler error: ambiguous reference to ratio variable
+  kde#339903 Select 'recent' albums containing MOV or .xcf(Gimp) files. Immediate crash occurs.
+  kde#340030 KIPI-plugins can not be deactivated on non-English locales
+  kde#340141 White Balance: Unable to specify exposure compensation > x.5
+  kde#340186 GROUP : Wallet icon for grouped photos is conceptually confusing
+  kde#340295 make fails on imagedescedittab.cpp has no member named 'textEdit'
+  kde#340439 No auto-rotation/flip Images after download
+  kde#340443 Advanced slideshow shows not all pictures under certain conditions
+  kde#340487 Add Album Category as a search criteria
+  kde#340581 Ratings with rating == 0 cannot be selected on the left sidebar
+  kde#340476 Floating Cards brings digiKam with non-English locales to crash and missing parameter text
+  kde#340811 Wrap album caption
+- remove upstream patches:
+  - kde#89156.patch
+  - digikam-4.4.0-fix-libkexiv2-version-for-AltLangStrEdit-textEdit.patch
+
+-------------------------------------------------------------------
+Mon Nov  3 13:47:10 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added kde#89156.patch: avoid deadlocks with external MySQL/MariaDB,
+  kde#89156
+
+-------------------------------------------------------------------
+Thu Oct 16 16:24:52 UTC 2014 - nico.kruber@gmail.com
+
+- add digikam-4.4.0-fix-libkexiv2-version-for-AltLangStrEdit-textEdit.patch
+  (fixes builds with KDE 4.14.x)
+
+-------------------------------------------------------------------
+Sun Oct 12 12:53:18 UTC 2014 - nico.kruber@gmail.com
+
+- Update to 4.4.0
+  digikam:
+    - General   : Navigate between pictures using PageUp/PageDown is now
+                  possible while editing properties through captions/tags
+                  sidebar.
+    - General   : New keyboard shortcuts to improve usability while photo
+                  review (as to switch focus on text edit widget, or to
+                  toogle tags view).
+    - General   : New keyboard shortcut to switch on/off color managed
+                  view for thumbnails and preview.
+    - AlbumGUI  : Album preview can be displayed in tooltip.
+    - SlideShow : Labels and Tags keyboard shortcuts can be used while
+                  slideshow.
+    - SlideShow : Support multi-monitors computer.
+    - 50 fixed bugs
+      (kde#147175, kde#282900, kde#303179, kde#229930, kde#322053, kde#137320,
+       kde#110658, kde#224806, kde#309557, kde#201698, kde#211622, kde#131632,
+       kde#291695, kde#290928, kde#320304, kde#325580, kde#338485, kde#275381,
+       kde#144168, kde#268284, kde#152948, kde#313947, kde#282506, kde#309558,
+       kde#338509, kde#275077, kde#229680, kde#206546, kde#339074, kde#324287,
+       kde#313857, kde#312043, kde#242119, kde#339051, kde#163941, kde#339140,
+       kde#339144, kde#339210, kde#339341, kde#338629, kde#336333, kde#339173,
+       kde#339052, kde#171199, kde#257313, kde#338783, kde#337507, kde#339440,
+       kde#313855, kde#339227)
+  kipi-plugins:
+    - PiwigoExport : Allow to upload videos (OGG, MP4 and WEBM) if the Piwigo
+                     server accept them.
+    - PiwigoExport : Remove the support of old Piwigo API (version < 2.4).
+    - 1 fixed bug (kde#337943)
+- swap digikam-3.0.0.no-kdcraw.version-check.patch for
+  digikam-4.4.0.no-kdcraw.version-check.patch
+- remove bug325580.patch (fixed upstream)
+- remove handle_right_libkexiv2_version.diff and
+  handle_right_libkexiv2_version2.diff (fixed upstream)
+
+-------------------------------------------------------------------
+Wed Sep 24 17:47:04 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added handle_right_libkexiv2_version.diff and
+  handle_right_libkexiv2_version2.diff, kde#339144, bnc#898260
+
+-------------------------------------------------------------------
+Tue Sep 23 15:55:06 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add bug325580.patch: Fix job reset when it's done : do not return
+  directly is an error appera with a job, without to reset job.
+  kde#325580, kde#339210
+
+-------------------------------------------------------------------
+Tue Sep 16 22:51:40 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.3.0
+  digikam:
+    - Database     : Nepomuk support have been replaced by
+                     Baloo support
+    - Map Searches : New option to display all non geolocated
+                     images from collections.
+    - General      : New notification event when kioslave
+                     cannot be started.
+    - General      : OSX event notifier is now used to
+                     dispatch notifications.
+    - AlbumGui     : New Action To Exclude Items Without Rating
+                     with items filter.
+  kipi-plugins:
+    - ExpoBlending:  remove OPenMP dependency. Ported to QtConcurrentRun.
+    - Panorama:      support next hugin version (2014.0).
+- Build with baloo support for 13.2+
+
+-------------------------------------------------------------------
+Tue Aug  5 14:08:33 UTC 2014 - nico.kruber@gmail.com
+
+- Update to 4.2.0
+  digikam:
+    - AlbumGui : New view on left sidebar to search quickly items
+                 with assigned Labels.
+                 Details: http://mohamedanwer.wordpress.com/2014/07/17/the-great-merging-day/
+    - AlbumGui : Tags view: add a new option to show items with
+                 no tag.
+                 Details: http://mohamedanwer.wordpress.com/2014/07/11/tags-left-sidebar-supports-new-action-now/
+    - Geberal  : Add retina display support with preview and
+                 editor canvas under OSX.
+    - 16 fixed bugs
+      (kde#336851, kde#336650, kde#326019, kde#337231, kde#337392,
+       kde#262175, kde#262167, kde#286463, kde#337417, kde#160363,
+       kde#330976, kde#337507, kde#337688, kde#160363, kde#132827,
+       kde#337993)
+  kipi-plugins:
+    - 4 fixed bugs (kde#313203, kde#334089, kde#336835, kde#256466)
+- adapt remove-gplv2-only.patch
+- dropped QtGstreamer-1.0.patch (added upstream)
+
+-------------------------------------------------------------------
+Thu Jul 24 10:34:36 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added QtGstreamer-1.0.patch to support QtGstreamer 1.x API (applied
+  on Factory/13.2 only)
+- Build with gstreamer-plugins-qt-devel for those openSUSE versions
+
+-------------------------------------------------------------------
+Mon Jun 30 18:24:44 UTC 2014 - adrian@suse.de
+
+- Update to 4.1.0
+  * Add Gelocation indicator over thumbnails when image has GPS coordinateds.
+  * Thumbnails from icon-view now support large resolution monitor (WQHD or 4K). Thumbs size can be set until 512x512 px instead 256x256 px.
+  * many many bugfixes, see NEWS file for more details
+
+-------------------------------------------------------------------
+Tue May 20 12:32:42 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Build with lcm2 for openSUSE 13.2 and newer
+
+-------------------------------------------------------------------
+Wed May 14 08:35:51 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.0.0 final
+  * Final release. see NEWS file for more details
+
+-------------------------------------------------------------------
+Wed May  7 17:11:30 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.0.0~rc
+  * Bugfix release, see NEWS file for more details
+- Added libxml2-devel and libxslt-devel BuildRequires (they where
+  pulled in via libkde4-devel previously)
+
+-------------------------------------------------------------------
+Mon Apr 21 00:35:31 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.0.0~beta4
+  digikam:
+    - General  : New Tags Manager window for easy tags management.
+    - General  : New images quality sorter tool, based on blur,
+                 noise, and compression analysis.
+    - General  : Multiple selection and multiple drag-n-drop
+                 capabilities on Tags Manager and Tags View from sidebars.
+    - General  : Drop of Qt3Support classes. Now digiKam is
+                 pure Qt4 implementation.
+    - Metadata : Support for writing face rectangles in Windows
+                 Live Photo format.
+    - Editor   : Port of canvas to Qt Model/view.
+    - Showfoto : Port of Thumbbar to Qt Model/view.
+  kipi-plugins:
+    - General:   New tool to export collection to Google Drive cloud service.
+    - General:   New tool to export collection to DropBox cloud service.
+    - MediaWiki: allow removal of metadata/GPS coordinates before uploading.
+    - MediaWiki: graphical interface improvements.
+  * See NEWS file for more details
+- Drop rajceexport-stop-crashing-when-uploaded-nothing.patch, merged
+  upstream
+- Drop libsoprano-devel and shared-desktop-ontologies-devel BuildRequires
+- Disable gstreamer-0_10-plugins-qt-devel Buildrequires for 13.2+,
+  until we get qgstreamer with gstreamer 1.0 API support
+- Remove unused parts of the spec (UpdatedApps repo no longer exists)
+
+-------------------------------------------------------------------
+Sun Oct 27 23:15:14 UTC 2013 - hrvoje.senjan@gmail.com
+
+- BuildRequire pkgconfig(libkipi) >= 2.0.0, instead of generic, and
+  unversioned libkipi-devel
+
+-------------------------------------------------------------------
+Fri Oct 18 01:20:20 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Bump minimal opencv-devel BuildRequires to 2.4.5 as per CMakeLists
+
+-------------------------------------------------------------------
+Fri Oct 11 21:25:58 UTC 2013 - nico.kruber@gmail.com
+
+- Update to 3.5.0:
+  digikam:
+    - General         : new RAW cameras supported : Richon GR,
+                        Panasonic LF1, Canon EOS 70D, Sony RX100II,
+                        Sony RX1R, Olympus E-P5.
+    - 5 fixed bugs
+      (kde#324349, kde#323648, kde#325111, kde#325264, kde#325309)
+  kipi-plugins:
+    - Panorama        : Autocrop. Cropping area defaults to the
+                        maximum inner rectangle of the panorama.
+    - 1 fixed bug (kde#324239)
+
+-------------------------------------------------------------------
+Fri Sep  6 15:42:33 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to 3.4.0:
+  digikam
+    - General         : Add interroperabilty with Capture NX about
+                        Color Labels support.
+    - MaintenanceTool : add new options to select Albums and Tags
+                        to process.
+    - MaintenanceTool : add multi-threading and multi-core CPU
+                        support for Metadata Synchronizer, Thumbs
+                        Generator, and Fingerprint Generator tools.
+    - 9 fixed bugs.
+
+-------------------------------------------------------------------
+Wed Aug 28 16:47:36 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Dropped desktop-files.diff, it's no longer needed and AcquireImages
+  is missing it's icon due to it (bnc#835989)
+
+-------------------------------------------------------------------
+Thu Aug 15 12:12:30 UTC 2013 - jslaby@suse.com
+
+- rajceexport-stop-crashing-when-uploaded-nothing.patch: rajceexport:
+  stop crashing when uploaded nothing (bnc#835021)
+
+-------------------------------------------------------------------
+Tue Aug  6 11:20:50 UTC 2013 - nico.kruber@gmail.com
+
+- fix libkface package not named after .so name
+
+-------------------------------------------------------------------
+Tue Aug  6 08:47:20 UTC 2013 - nico.kruber@gmail.com
+
+- Update to 3.3.0:
+  digikam:
+    - Faces Managament: Better management of Picasa Face Tags
+                        import/export through metadata.
+    - Faces Management: New Face Recognition engine based on
+                        OpenTLD.
+    - 37 fixed bugs.
+  kipi-plugins:
+    - 5 fixed bugs.
+- Drop patch included upstream: non-executable-script.patch
+
+-------------------------------------------------------------------
+Mon Jun 10 19:37:07 UTC 2013 - asterios.dramis@gmail.com
+
+- Added libeigen3-devel and libkqoauth-devel as build requirements.
+- Replaced ImageMagick with ImageMagick-devel as build requirement (since
+  "mogrify" is no longer needed to fix the icon sizes).
+- Removed support for openSUSE <= 11.4 for KDE:UpdatedApps (not needed).
+- Removed support for openSUSE 11.3.
+- Fix rawconverter icon links (links were pointing to rawconverter.* instead of
+  rawconverter.png or rawconverter.svgz).
+
+-------------------------------------------------------------------
+Sat Jun  1 19:31:46 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Pass the correct ImageMagick cmake flag for >= 13.1
+
+-------------------------------------------------------------------
+Tue May 14 21:53:56 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 3.2.0:
+  digikam:
+    - General:      Remove internal clapack library code. 
+                    Set only an optional and external dependency to 
+                    eigen3.
+    - General:      New tool to Auto-Crop image based on black hole 
+                    borders detection.
+    - AlbumGUI:     New "Table-View" view mode dedicated to show 
+                    album items in a list view.
+    - AlbumGUI:     New Aspect-Ratio information displayed in 
+                    icon-view and tooltips.
+    - AlbumGUI:     New filter based on Aspect-Ratio information.
+    - Searches:     New search tool to find images based on 
+                    Aspect-Ratio Information.
+    - Searches:     New search tool to find videos based on shot 
+                    properties.
+    - 46 fixed bugs.
+  kipi-plugins:
+    - FacebookExport: add new option to create private album.
+    - JAlbumExport:   New too to export items to JAblum
+    - 10 fixed bugs.
+- Drop patches included upstream: commit-006b3f4.diff and
+  digikam-patch78541.diff
+
+-------------------------------------------------------------------
+Wed May  8 06:50:52 UTC 2013 - tittiatcoke@gmail.com
+
+- Add patch commit-006b3f4.diff from upstream to build 
+  htmlexport again (bnc#816041)
+
+-------------------------------------------------------------------
+Mon Apr 15 14:14:46 UTC 2013 - tittiatcoke@gmail.com
+
+- Added patch digikam-patch78541.diff from upstream to fix 
+  detection of certain cameras (bnc#814622, kde#311393)
+
+-------------------------------------------------------------------
+Wed Mar 13 09:51:53 UTC 2013 - nico.kruber@gmail.com
+
+- Update to 3.1.0 (bnc#816693):
+  digikam:
+    - General: Remove internal lqr-1 library code. Set only an
+               optional and external dependency.
+    - 14 fixed bugs.
+  kipi-plugins:
+    - 7 fixed bugs.
+
+-------------------------------------------------------------------
+Wed Feb 13 21:54:09 UTC 2013 - wstephenson@suse.com
+
+- Remove spurious bison/flex dependencies
+
+-------------------------------------------------------------------
+Mon Feb 11 21:15:35 UTC 2013 - nico.kruber@gmail.com
+
+- Update to 3.0.0 (final):
+  digikam:
+    - General: Remove internal LensFun library code and xml lens
+               database. Set only an optional and external
+               dependency to last 0.2.6 release.
+    - BatchQueueManager: Add new tool to crop image.
+    - 51 fixed bugs.
+  kipi-plugins:
+    - Panorama: New parser using GNU Flex and GNU Bison instead of
+                Boost::spirit
+    - Panorama: Manual cropping of the final result
+    - 10 fixed bugs.
+- drop fix-broken-icon-reference.diff (fixed upstream)
+- update digikam-3.0.0-rc.no-kdcraw.version-check.patch
+  (rename to digikam-3.0.0.no-kdcraw.version-check.patch)
+
+-------------------------------------------------------------------
+Sat Jan  5 18:46:30 UTC 2013 - toddrme2178@gmail.com
+
+- Link rawconverter icon to the hicolor theme so it can be safely
+  used as an application icon (needed by kphotoalbum)
+
+-------------------------------------------------------------------
+Tue Jan  1 20:57:37 UTC 2013 - nico.kruber@gmail.com
+
+- Update to 3.0.0-rc:
+  digikam:
+    - General: Add new Noise Estimation feature to Wavelets Noise
+               Reduction tools.
+    - BatchQueueManager: Add Color Effect tool support.
+    - BatchQueueManager: Multicore CPU support to process items
+                         in parallel.
+    - BatchQueueManager: Add Raw Demosaicing settings in Queue
+                         Qettings.
+    - BatchQueueManager: Add new behavior options about RAW file
+                         loading (extract preview or perform
+                         demosaicing).
+    - BatchQueueManager: Add the capability to assign more than
+                         one time a tool to a queue.
+    - BatchQueueManager: Add the capability to put target file
+                         processed from queue to source album.
+    - BatchQueueManager: Add concept of Workflow dedicated to save
+                         and restore between sessions Queue Settings
+                         including Assigned Batch Tools list.
+    - 18 fixed bugs.
+  kipi-plugins:
+    - 2 fixed bugs.
+- Added patch (digikam-3.0.0-rc.no-kdcraw.version-check.patch) to 
+  temporarily disabled libkdcraw version check (does not work any more)
+
+-------------------------------------------------------------------
+Tue Nov 27 11:51:07 UTC 2012 - nico.kruber@gmail.com
+
+- enabled compilation of the VideoSlideshow kipi plugin
+
+-------------------------------------------------------------------
+Mon Nov 26 16:41:20 UTC 2012 - nico.kruber@gmail.com
+
+- Update to 3.0.0-beta3:
+  digikam:
+    - Libkipi:
+      * All kipi-plugins actions can be pluged to tools bar.
+      * Usability improvements in plugins configuration dialog.
+    - Libkdcraw:
+      * Update internal Libraw version 0.15.0 Alpha2 to support
+        new RAW cameras :
+      * Adobe DNG: Fast Load and lossy-compressed DNG
+        (LightRoom 4.x)
+      * Canon    : G1 X, SX220 HS, EOS 5D Mark III, EOS 650D,
+                   EOS 1D-X
+      * Casio    : EX-Z8
+      * Fujifilm : X-S1, HS30EXR, X1-Pro
+      * Nikon    : D4, D3200, D800, D800E
+      * Olympus  : E-M5
+      * Panasonic: DMC-GF5
+      * Samsung  : NX20, NX210, NX100, NX-1000
+      * Sigma    : SD15,SD1, SD1 Merill, DP1, DP1S, DP1X, DP2,
+                   DP2S, DP2X
+      * Sony     : NEX-F3, SLT-A37, SLT-A57, DSC-RX100
+    - ImportUI: Port icon-view to Qt4 model/View.
+    - ImportUI: Labels and Tags pre-assignation.
+    - ImportUI: Pipelined post download operations.
+    - ImportUI: Preview items during downloading.
+    - Metadata: Video files metadata support
+                (through Exiv2 project).
+    - 54 fixed bugs.
+  kipi-plugins:
+    - General: New tool to export Collection to DLNA device.
+    - General: New tool to make video slideshow.
+    - General: Port all plugins to KDE XML-GUI framework.
+    - 18 fixed bugs.
+
+-------------------------------------------------------------------
+Sat Nov 10 17:58:38 UTC 2012 - asterios.dramis@gmail.com
+
+- Added libpgf-devel as build requirement (to be used instead of the bundled
+  copy).
+
+-------------------------------------------------------------------
+Sun Oct 28 14:14:36 UTC 2012 - asterios.dramis@gmail.com
+
+- Added glu as build requirement (needed since it was split from Mesa in
+  Factory).
+
+-------------------------------------------------------------------
+Wed Oct  3 21:01:03 UTC 2012 - rabauke@opensuse.org
+
+- add BuildRequires:  libusb-compat-devel to fix gphoto2 deps
+
+-------------------------------------------------------------------
+Wed Sep 26 07:37:19 UTC 2012 - idonmez@suse.com
+
+- slideshow.png is gone 
+
+-------------------------------------------------------------------
+Sat Sep 22 23:26:04 UTC 2012 - nico.kruber@gmail.com
+
+- changed source URL to ftp.kde.org
+- format spec file 
+
+-------------------------------------------------------------------
+Tue Sep 11 03:32:40 UTC 2012 - mlin@suse.com
+
+- Update to 2.9.0:
+  digikam:
+    - CameraGUI : libgphoto 2.5.0 API support.
+    - 9 fixed bugs.
+  kipi-plugins:
+    - 2 fixed bugs.
+
+-------------------------------------------------------------------
+Fri Aug 10 08:17:05 UTC 2012 - nico.kruber@gmail.com
+
+- Update to 2.8.0:
+  digikam:
+   - CameraGUI: Add option to execute script during items to download from camera.
+   - 22 fixed bugs.
+  kipi-plugins:
+   - MediaWiki: GUI improvmenets and new features to export items.
+   - 6 fixed bugs.
+
+-------------------------------------------------------------------
+Wed Jul 11 11:45:29 UTC 2012 - lists.nico.k@googlemail.com
+
+- Update to 2.7.0:
+  digikam:
+   - General: Update internal Libraw library to last 0.14.7.
+     * New cameras supported: Canon 5D Mark III, G1 X, 1D X and
+       Powershot SX200; Nikon D4,D800/D800E and D3200;
+     * Fuji X-S1 and HS30EXR; Casio EX-Z8; Olympus E-M5;
+       Panasonic GF5; Sony NEX-F3, SLT-A37 and SLT-A57;
+       Samsung NX20 and NX210;
+     * Support for updated Samsung NX200 firmware.
+   - General: Update internal LensFun library to last 0.2.6 release.
+   - General: Update internal LibPGF library to last 6.12.24 release.
+   - 29 fixed bugs.
+  kipi-plugins:
+   - 5 fixed bugs.
+
+-------------------------------------------------------------------
+Tue Jun 19 12:39:49 UTC 2012 - coolo@suse.com
+
+- disable parallel build, it's too memory hungy for OBS workers
+
+-------------------------------------------------------------------
+Thu Jun  7 21:47:46 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to 2.6.0:
+  digikam:
+   - General: Add support of Little CMS version 2.
+   - General: New tool to run all maintenance process in background.
+   - General: Lprof 3rd party library have been removed from core
+     implementation.
+   - General: Thumbs/Preview for read-only files (as RAW) can be rotated
+     through a flag in thumbnails database.
+   - General: Add a Progress Manager as into Kontact to drive process running
+     in parallele.
+   - General: KIPI JPEGLossLess tool is now disabled in digiKam. A dedicated
+     solution is now implemented in digiKam core to rotate/flip image using
+     multithreading, parallelization, and image versioning.
+   - KipiInterface: Handle progress events from kipi tools through digiKam
+     Progress Manager.
+   - ImageEditor: Template Superimpose feature have been moved to
+     PhotoLayoutEditor kipi-plugin.
+   - ImageEditor: New film color negative inverter filter.
+   - 118 fixed bugs.
+  kipi-plugins:
+   - RAWConverter: Add progress management support, and parallelization of
+     tasks using ThreadWeaver.
+   - DNGConverter: Add progress management support, and parallelization of
+     tasks using ThreadWeaver.
+   - RedEyesRemoval: Add progress management support, and parallelization of
+     tasks using ThreadWeaver.
+   - TimeAdjust: Add items listview support, progress management support,
+     multithreading, and parallelization of tasks using ThreadWeaver.
+   - SendImages: Dialog Layout improvements, progress management support, and
+     parallelization of tasks using ThreadWeaver.
+   - PhotoLayoutEditor: Add SuperImpose Template support to compose fun frame,
+     post-card, etc... template file use SVG format.
+   - Panorama: Bugfix for binary detection on OSes different than Linux (fixes
+     the same issue with expoblending). Bugfix for the back button of the
+     assistant. First steps towards a cropping for target panorama.
+     Parallelization of tasks using ThreadWeaver.
+   - General: New tool to export items to ImageShack web service
+     (http://imageshack.us).
+   - General: New tool to export items to MediaWiki web service
+     (http://www.mediawiki.org).
+   - General: New tool to export items to Imgur web service (http://imgur.com).
+   - 49 fixed bugs.
+- Removed the following patches (fixed upstream):
+  - use_correct_libkipi.patch
+  - digikam-boost-1.48.patch
+  - digikam-gcc47.patch
+- Rebased fix-broken-icon-reference.diff patch to apply cleanly.
+
+-------------------------------------------------------------------
+Tue Apr 24 18:27:43 UTC 2012 - dimstar@opensuse.org
+
+- Add digikam-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Mon Apr  2 08:48:32 UTC 2012 - idonmez@suse.com
+
+- Add digikam-boost-1.48.patch to fix build with new boost 
+
+-------------------------------------------------------------------
+Fri Feb  3 09:56:22 UTC 2012 - tittiatcoke@gmail.com
+
+- Correct the license of the Documentation subpackage to the 
+  GFDL-1.X license. 
+- Correct spec-file to autodetect the translations for the 
+  additional libraries
+
+-------------------------------------------------------------------
+Fri Jan 13 09:50:17 UTC 2012 - tittiatcoke@gmail.com
+
+- The digikam spec-file now builds all additional components 
+  (kipi-plugins, libmediawiki, libkface and libkgeomap)
+
+-------------------------------------------------------------------
+Wed Jan  4 08:56:34 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 2.5.0
+  * a bug-fix release, including a total of 101 fixed bugs.
+
+-------------------------------------------------------------------
+Mon Dec 12 09:32:52 UTC 2011 - coolo@suse.com
+
+- update to 2.4.1
+  * a bug-fixes release, including a total of 25 fixed bugs. 
+  * histogram view from right sidebar have been improved for better
+     image analyse.
+
+-------------------------------------------------------------------
+Mon Dec 12 08:59:11 UTC 2011 - coolo@suse.com
+
+- require libkipi8 version build against, it changes ABI too often
+
+-------------------------------------------------------------------
+Tue Nov 15 18:36:36 UTC 2011 - ctrippe@opensuse.org
+
+- Require libqt4-sql-sqlite and libqt4-sql-mysql (bnc#730111)
+
+-------------------------------------------------------------------
+Sat Nov 12 23:08:30 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates:
+  * Removed %kde4_pimlibs_requires (fix for rpmlint warning
+    "suse-kde4-excessive-dependency").
+  * Don't install the libkgeomap translations (they belong to libkgeomap
+    package).
+
+-------------------------------------------------------------------
+Tue Nov  8 11:03:03 UTC 2011 - idonmez@suse.com
+
+- Workaround kde#286034 
+
+-------------------------------------------------------------------
+Mon Nov  7 10:46:01 UTC 2011 - adrian@suse.de
+
+- update to version 2.3.0
+  * Bugfix release, please see included NEWS file for fixed bugs.
+
+-------------------------------------------------------------------
+Fri Oct 14 12:30:54 UTC 2011 - toddrme2178@gmail.com
+
+- Removed check for obsolete openSUSE version (fix for RPMLINT warning)
+- Cleaned up spec file formatting
+
+-------------------------------------------------------------------
+Tue Oct  4 07:04:40 UTC 2011 - adrian@suse.de
+
+- update to version 2.2.0
+  * Add image title metadata support.
+  * larger number of bugfixes
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Thu Sep 15 05:56:43 UTC 2011 - idonmez@suse.com
+
+- kipi-plugins version can be different from digikam version 
+
+-------------------------------------------------------------------
+Wed Sep 14 19:15:10 UTC 2011 - adrian@suse.de
+
+- update to version 2.1.1
+  * fix database connection on initial startup
+
+-------------------------------------------------------------------
+Sun Sep 11 17:03:43 UTC 2011 - idonmez@suse.com
+
+- Add disable-unsupported-cmake-policy.patch to remove unsupported
+  cmake policy setup, fixes openSUSE 11.4 build
+
+-------------------------------------------------------------------
+Fri Sep  9 13:10:04 UTC 2011 - adrian@suse.de
+
+- update to version 2.1.0
+  * Mainly bug fix release
+  * CameraGUI improvements
+- new libkvkontakte may need to be splitted into own package as well
+
+-------------------------------------------------------------------
+Mon Sep  5 08:16:18 UTC 2011 - coolo@suse.com
+
+- fix package-with-large-docs - perhaps we can get it back to live cd somehow
+
+-------------------------------------------------------------------
+Fri Aug 26 08:18:51 UTC 2011 - idonmez@novell.com
+
+ - Add digikam-link-order.patch: fix library link order,
+   bko #258931
+
+-------------------------------------------------------------------
+Mon Aug  8 22:40:46 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates:
+  * Changed License: to GPL-2.0+.
+  * Added description for the patches based on openSUSE Patches Guidelines.
+  * Cleanup in BuildRequires:.
+  * Removed oxygen-icon-theme from Requires: (not needed).
+  * Removed *.so files and digikam-devel subpackage (not needed, the package
+    doesn't actually provide any shared libraries).
+  * Removed digikam-doc subpackage and merged it in digikam since it actually
+    contained the main help files.
+  * Added a fix for build time references so build-compare can do its work.
+  * Fixed some rpmlint warnings.
+  * Minor other updates.
+- Readded add_mimetype_bnc629393.diff patch to fix mimetypes to desktop file
+  for better integration in GNOME (bnc#629393).
+
+-------------------------------------------------------------------
+Thu Jul 28 10:21:17 UTC 2011 - idonmez@novell.com
+
+- Update to final version 2.0.0 
+  * XMP metadata sidecar support
+  * Reverse geo-coding support
+  * Face detection and recognition support
+  * Tag keyboard shortcuts support
+  * Color Labels support to improve photograph workfow
+  * Pick Labels support to improve photograph selection
+  * Color Theme engine is now ported to KDE color theme manager
+  * Re-designed Filters view on right sidebar to perform icon-view items filtering
+  * Add options to group/ungroup items from icon-view
+  * Add options to show file format over icon-view items
+  * Image versioning support
+  * Foveon sensor based camera support
+  * New advanced RAW decoding settings backported from RawTherapee project
+  * New datetime option "UnixTimeStamp" (requires Qt 4.7 or higher)
+- See included NEWS file for complete changelog
+
+-------------------------------------------------------------------
+Mon Jun 20 11:58:14 UTC 2011 - idonmez@novell.com
+
+- Add digikam-marblewidget.patch: provide a FindMarbleWidget.cmake 
+  for compatibility  
+
+-------------------------------------------------------------------
+Wed Mar  9 11:29:29 UTC 2011 - tittiatcoke@gmail.com
+
+- Added patch to correctly identify the version of libjpeg62. 
+  Due to a recent update on Factory, the new version shows the 
+  version number in the file /usr/include/jconfig.h
+
+-------------------------------------------------------------------
+Sat Mar  5 21:00:37 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 1.9.0:
+  * Bugfixes:
+    - png-1.5 compatibility fix (bko264181).
+    - digiKam 1.8.0 (svn) crashes on startup most times (bko263697).
+    - Grayscale TIFF display broken (bko237492).
+    - digikam 1.7.0 crashes on startup (bko263786).
+    - Inconsistant use of preview zoom-in function key-strokes (bko228531).
+    - The DocumentName tag is not added when importing (bko233612).
+    - Disable folder collapsing under certain circumstances (bko246778).
+    - Image editor always crashes when triggering Colour Auto-Correction
+      (bko264363).
+    - digiKam crash on loading (bko234021).
+    - Exif-dates not recognices OK (bko264999).
+    - When adding new tag to multiple images, tags not in common are removed
+      from metadata, though still present in database (bko264745).
+    - digiKam contains a convience copy of cimg code (bko173901).
+    - Underexposure indicator should always work in "pure color" mode
+      (bko264208).
+    - digiKam crash on startup (bko264769).
+    - Raw importer broken. Not possible to revert changes (bko264830).
+    - Only one digikam instance should run on the same image library path
+      (bko103371).
+    - digikam-1.8.0 fails to build against kde-4.6.x/gcc-4.6 (bko265445).
+    - Deleteing last TAG on a picture does actually not remove the tag within
+      the exif metadata (bko264631).
+    - Quickfilter by tags: Exclude tags (bko195648).
+    - digiKam crash at startup (bko265641).
+- Spec file updates:
+  * Changes based on rpmdevtools templates and spec-cleaner run.
+  * Updates in License: entry.
+  * Updates in Buildrequires:, Requires: and Provides: sections.
+  * Added description for the patches based on openSUSE Patches Guidelines.
+  * Removed digikam-doc subpackage and merged it in digikam-lang since it
+    actually contained the translated package help files.
+  * Moved the english help files in the main package.
+  * Updates in %description, %prep, %install and %files sections.
+  * Removed support for openSUSE < 1120.
+  * Minor other updates.
+
+-------------------------------------------------------------------
+Mon Jan 24 21:14:16 UTC 2011 - wstephenson@novell.com
+
+- Upate to version 1.8.0
+  * Bugfixes:
+    - Add a digiKam installer based on NSIS. (bko256372)
+    - Crash at startup. (bko261086)
+    - digiKan crashes upon import of large photo collection. (bko212947)
+    - digiKam Fingerprinter crashes. (bko261015)
+    - Wish: All thumbs created in a folder automatically. (bko237639)
+    - Thumbnails do not display. (bko189585)
+    - digiKam crashed when browsing/rating images. (bko255852)
+    - Empty menu when right clicking on an image. (bko184635)
+    - Provide a progress indicator for "rename". (bko261868)
+    - digiKam crash while viewing photos. (bko244560)
+    - Default filename for renamed imports: remove the colon character. (bko261582)
+    - Linking issue with Marble library. (bko262065)
+    - Ubuntu unity compatibility bugs: export menu disappeared. (bko261879)
+    - Camera GUI does not open. (bko262296)
+    - Picture navigation problems and disambiguation. (bko201788)
+    - digiKam crashes when adding lens data to ~/.local. (bko261415)
+    - Database of 80,000+ images wiped out. (bko253062)
+    - digiKam editor crashes on "save" and "save as" (KFileDialog relevant). (bko263083)
+    - digiKam crashes when modifying caption. (bko252404)
+    - Rebuild thumbnails or 'scan for new images' should work on just current folder. (bko262720)
+    - digiKam crashed when pressing 'Album -> New'. (bko242036)
+    - Disconnected usb passport external hard drive using "safely remove drive" option. (bko235597)
+    - Crash while looking at folder with 380 images for first time. (bko237957)
+    - Crash when viewing pictures. (bko253067)
+    - Crash during picture import . (bko255054)
+    - digiKam crahed on search Pictures on individal Album. (bko258106)
+    - Crash while scrolling the raw image preview. (bko261384)
+    - digiKam crashed while scrolling through images in folder. (bko258922)
+    - Metadata lost when decoding a raw file. (bko263726)
+    - Thumbnails incorrectly rotated on certain images. (bko224047)
+    - digiKam seems to find images that are not in the collection directory. (bko239902)
+    - Some tags lost on batch color space conversion - import metadata does not work. (bko245958)
+    - Frame rate drops to around 5 fps when dragging & dropping. (bko246735)
+
+-------------------------------------------------------------------
+Thu Dec 30 12:04:30 UTC 2010 - ctrippe@gmx.net
+
+- Add MimeTypes to desktop file for better integration in GNOME (bnc#629393) 
+
+-------------------------------------------------------------------
+Wed Dec 22 22:19:01 UTC 2010 - Nico.Laus.2001@gmx.de
+
+- update to version 1.7.0
+  * Bugfixes
+
+-------------------------------------------------------------------
+Tue Nov 23 16:52:41 UTC 2010 - adrian@suse.de
+
+- update to version 1.6.0
+  * Bugfixes
+  * New Features:
+     Album GUI : User can exclude tags in the tag-filter view.
+     Slideshow : User can change item rating during a slide.
+     Image Editor : New option to display over/under exposure indicators
+                    if pure colors is detected or if only one color
+                    component match the condition.
+     Image Editor : New options to adjust the levels of over/under exposed
+                    pixels from histogram, displayed by over/under exposure
+                    indicators.
+     Image Editor : Aspect ratio crop tool is now able to deal with the
+                    aspect ratio of the current loaded image in editor.
+
+-------------------------------------------------------------------
+Mon Oct 11 11:55:06 UTC 2010 - tittiatcoke@gmail.com
+
+- Update to version 1.5.0
+  * Bugfixes
+  * New Features: 
+        General : Fix compilation under windows with TDM-GCC and 
+                  MSVC compilers.
+        General : Including LensFun library source code as 3rd-party 
+                  component, especially for windows target where 
+                  this library is not available.
+        Image Editor : Improvement of algorithm to convert 8 bits 
+                       image to 16 and limit histogram holes during 
+                       conversion.
+        Batch Queue Manager : Add new tool to remove metadata from 
+                              images.
+        Batch Queue Manager : Add new tool to apply Lens corrections 
+                              using LensFun library.
+
+-------------------------------------------------------------------
+Tue Aug 31 10:05:00 UTC 2010 - aj@suse.de
+
+- Recommend instead of require lang package since it's not mandatory.
+
+-------------------------------------------------------------------
+Wed Aug 25 17:38:51 UTC 2010 - adrian@suse.de
+
+- update to version 1.4.0
+  * New feature: AdvancedRename : New modifier "Remove Doubles"
+  * Bugfixes
+
+-------------------------------------------------------------------
+Tue Aug  3 18:37:42 UTC 2010 - ctrippe@gmx.net
+
+- require libqt4-sql-mysql otherwise digikam will not start (bnc#627274)
+
+-------------------------------------------------------------------
+Tue Jul 20 00:48:33 CEST 2010 - dmueller@suse.de
+
+- change sqlite plugin to required
+
+-------------------------------------------------------------------
+Tue Jun  8 09:45:18 UTC 2010 - adrian@suse.de
+
+- update to version 1.3.0
+   * New Database interface to support different database backend.
+     MySql and SQlite are supported. Internal and Remote MySql server are supported. 
+   * Bugfixes and smaller features
+- use source service to download tar ball
+
+-------------------------------------------------------------------
+Mon Jun  7 23:29:28 UTC 2010 - cornelis@solcon.nl
+
+- use right name for Red eyes tool action (fixes KDE bug 
+  234545: Red eye correction tool is missing from image editor)
+
+-------------------------------------------------------------------
+Mon May 10 17:54:14 UTC 2010 - cmorve69@yahoo.es
+
+- Remove build time references so build-compare can do its work
+
+-------------------------------------------------------------------
+Mon Mar 29 21:03:34 UTC 2010 - wstephenson@novell.com
+
+- update to version 1.2.0
+  * AlbumGUI : All Album tree views are ported to pure
+    Qt4 model/view implementation.
+  * ImageEditor : Most tools are now multithreaded for performance
+  * BatchQueueManager : Many more tools can now be used in batch
+    processing
+  * 99 bugfixes: http://www.digikam.org/drupal/node/511
+
+-------------------------------------------------------------------
+Sun Jan 31 16:14:09 UTC 2010 - wstephenson@novell.com
+
+- Update to version 1.1.0
+  * AdvancedRename : The ReplaceModifier has regular expressions
+    support now.
+  * ImageEditor : Vignetting tool can now be used to add as well as
+    remove vignetting from an image.
+  * Over 100 bugfixes: http://www.digikam.org/drupal/node/497
+
+-------------------------------------------------------------------
+Fri Jan 29 12:29:01 UTC 2010 - llunak@novell.com
+
+- split out -doc subpackage
+
+-------------------------------------------------------------------
+Fri Jan  8 11:46:23 CET 2010 - ro@suse.de
+
+- remove imlib from buildrequires (obsolete for two years) 
+
+-------------------------------------------------------------------
+Mon Dec 21 20:39:05 UTC 2009 - beineri@opensuse.org
+
+- update to 1.0 release: only bugfixes since release candidate
+
+-------------------------------------------------------------------
+Thu Dec  3 09:49:33 UTC 2009 - tittiatcoke@gmail.com
+
+- update to 1.0 RC version:
+
+-------------------------------------------------------------------
+Thu Aug 20 09:41:31 CEST 2009 - beineri@opensuse.org
+
+- keep the two apps together in one menu and Gimp in upper level
+
+-------------------------------------------------------------------
+Fri Jul 24 15:25:26 CEST 2009 - beineri@opensuse.org
+
+- build with Marble dependency as long as it fits on CDs
+
+-------------------------------------------------------------------
+Wed Jul 22 15:01:08 CEST 2009 - dmueller@suse.de
+
+- require libqt4-sql-sqlite, not just recommend it (bnc#524174)
+
+-------------------------------------------------------------------
+Sun May 31 17:26:05 CEST 2009 - dmueller@suse.de
+
+- fix rename
+
+-------------------------------------------------------------------
+Mon May 18 09:52:56 CEST 2009 - beineri@opensuse.org
+
+- only recommend kipi-plugins
+
+-------------------------------------------------------------------
+Mon Apr 20 17:56:08 CEST 2009 - dmueller@suse.de
+
+- rename kde4-digikam to digikam
+
+-------------------------------------------------------------------
+Sat Apr 18 00:38:57 CEST 2009 - beineri@opensuse.org
+
+- create -lang package
+
+-------------------------------------------------------------------
+Sat Apr  4 17:32:00 CEST 2009 - coolo@suse.de
+
+- refresh patches to fix build
+
+-------------------------------------------------------------------
+Fri Apr  3 20:38:57 CEST 2009 - coolo@suse.de
+
+- build without hard huge Marble widget dependency unless it can
+  be packaged optionally
+- mark showfoto.desktop unimportant
+- refresh patch to build in factory
+
+-------------------------------------------------------------------
+Tue Mar 17 13:56:29 CET 2009 - wstephenson@suse.de
+
+- update to 0.10.0
+  * General : Internal CImg library updated to 1.3.0.
+  * General : New "DarkRoom" colors theme.
+  * many bugfixes
+
+-------------------------------------------------------------------
+Tue Mar 17 12:46:06 CET 2009 - wstephenson@suse.de
+
+- Update to 0.9.5
+  * TIFF/PNG/JPEG2000 metadata can be edited or added
+    (requires Exiv2 >= 0.18)
+  * Internal CImg library updated to 1.3.0.
+  * All image plugin tool settings provide default buttons to
+     reset values
+  * New Raw import tool to handle Raw pictures with customized
+    decoding settings
+  * All image plugin dialogs are removed. All tools are embedded
+    in editor window
+  * New composition guide based on Diagonal Rules
+  * http://www.digikam.org/drupal/node/432
+
+-------------------------------------------------------------------
+Thu Feb 26 15:51:35 CET 2009 - wstephenson@suse.de
+
+- Update to 0.9.5-beta3
+
+-------------------------------------------------------------------
+Thu Feb 26 15:30:05 CET 2009 - wstephenson@suse.de
+
+- Start using libkdcraw4
+
+-------------------------------------------------------------------
+Sat Jan 17 17:15:16 CET 2009 - coolo@suse.de
+
+- changed buildrequire to libkipi0-devel
+
+-------------------------------------------------------------------
+Wed Nov 12 09:59:56 CET 2008 - stbinner@suse.de
+
+- fix libdigikam-devel requirements
+
+-------------------------------------------------------------------
+Wed Nov  5 13:24:50 CET 2008 - dmueller@suse.de
+
+- update buildrequires
+
+-------------------------------------------------------------------
+Thu Jul 17 13:25:31 CEST 2008 - dmueller@suse.de
+
+- update to 0.9.4:
+  * auto-gamma and auto-whitebalance support for RAW files
+  * displaying the number of contained items in the overview for all albums
+  * usability improvements
+  * http://www.digikam.org/drupal/node/359
+
+-------------------------------------------------------------------
+Mon Jun 30 10:19:23 CEST 2008 - stbinner@suse.de
+
+- add missing %defattr
+
+-------------------------------------------------------------------
+Sat May 17 00:03:50 CEST 2008 - dmueller@suse.de
+
+- support custom whitebalance settings
+
+-------------------------------------------------------------------
+Thu May  8 14:16:07 CEST 2008 - dmueller@suse.de
+
+- temporarly disable autocolor/whitebalance setting
+
+-------------------------------------------------------------------
+Sun Dec 30 12:28:36 CET 2007 - coolo@suse.de
+
+- update to 0.9.3 final:
+   * new quick navigation feature has been added
+
+-------------------------------------------------------------------
+Mon Dec 10 10:18:45 CET 2007 - stbinner@suse.de
+
+- update to 0.9.3-rc1:
+   * In the Albums/Tags/Searches/TagsFilter sidebars the is a live 
+     filter at the bottom that lets you search for a string in 
+     Albums/Tags/Searches/TagsFilter hierarchy
+   * The main window has yet another live filter: The new string
+     search filters the current view (album/collection, date, tags,
+     search) on substrings within file name, caption, and tags.
+   * Several usability improvements in the Light Table
+   * A green tint has been added to the b&w conversion plugin
+   * Quick filters have been added to the status bar of main window
+   * A new navigation feature: whenever a thumbnail is selected in
+     the main window you can immediately jump (Go To) to any other
+     of the views where this image is a member of.
+   * New features of the camera interface:
+      - Interface is now used to import new images into collections.
+      - New options to download pictures and delete them from the
+        camera at the same time.
+      - Support of Drag & Drop to download files from camera window
+        to album window.
+      - A progress bar has been added to indicate the available
+        space in the Album Library Path
+
+-------------------------------------------------------------------
+Sat Nov  3 00:11:23 CET 2007 - dmueller@suse.de
+
+- fix build against lcms 1.17 
+
+-------------------------------------------------------------------
+Wed Aug 22 08:13:42 CEST 2007 - meissner@suse.de
+
+- handle filename conversions correctly, if you by chance
+  use MTP devices with digikam.
+
+-------------------------------------------------------------------
+Tue Jul 17 11:28:17 CEST 2007 - stbinner@suse.de
+
+- don't show digikamthemedesigner within application menu
+
+-------------------------------------------------------------------
+Mon Jul  9 09:51:51 CEST 2007 - stbinner@suse.de
+
+- move obsoletes/provides to proper place
+
+-------------------------------------------------------------------
+Thu Jun 21 18:11:00 CEST 2007 - dmueller@suse.de
+
+- deinstall digikamimageplugins-lang on update
+
+-------------------------------------------------------------------
+Tue Jun 19 08:23:55 CEST 2007 - stbinner@suse.de
+
+- fix build in KDE:Backports for older distributions
+- add "Recommends: digikamimageplugins-superimpose"
+
+-------------------------------------------------------------------
+Mon Jun 18 14:54:32 CEST 2007 - stbinner@suse.de
+
+- update to version 0.9.2:
+   * DigikamImagePlugins have been merged into digiKam tarballs.
+   * New depency to libkdcraw shared library used to decode RAW file.
+   * Removing direct Exiv2 library depency. libkexiv2 is now used
+
+   * Light Table tool to compare similar images side by side
+   * Red Eyes Correction tool have been completly re-writen.
+   * Solarize plugin is now a "Color Effects" pack including Solarize,
+     Velvia (new plugin), Neon, and Edge effects.
+   * Black & White converter now support a lots of B&W analog camera
+     film types (Agfa, Ilford, Kodak). A new 'strength' setting can
+     simulate the amount of Lens filters effect.
+- split of Superimpose plugin templates into sub-package
+
+-------------------------------------------------------------------
+Wed Jun 13 23:25:37 CEST 2007 - stbinner@suse.de
+
+- running fdupes makes digikam.rpm 285KB smaller
+
+-------------------------------------------------------------------
+Fri Jun  1 08:32:41 CEST 2007 - coolo@suse.de
+
+- move kde_post_install
+
+-------------------------------------------------------------------
+Tue May 15 19:20:31 CEST 2007 - coolo@suse.de
+
+- build on older distributions
+
+-------------------------------------------------------------------
+Fri May 11 14:40:34 CEST 2007 - coolo@suse.de
+
+- seperate translations into special subpackage
+
+-------------------------------------------------------------------
+Tue Apr 24 02:30:02 CEST 2007 - dmueller@suse.de
+
+- fix devel package requires
+
+-------------------------------------------------------------------
+Mon Apr 23 18:16:07 CEST 2007 - dmueller@suse.de
+
+- split into -devel package
+
+-------------------------------------------------------------------
+Fri Apr 20 13:17:52 CEST 2007 - dmueller@suse.de
+
+- update BuildRequires
+
+-------------------------------------------------------------------
+Thu Apr 19 14:49:33 CEST 2007 - dmueller@suse.de
+
+- update BuildRequires
+
+-------------------------------------------------------------------
+Mon Apr 16 23:45:29 CEST 2007 - dmueller@suse.de
+
+- build against libexiv 0.14
+
+-------------------------------------------------------------------
+Mon Mar  5 17:05:39 CET 2007 - stbinner@suse.de
+
+- update to 0.9.1:
+   * Native JPEG2000 image loader. Warning for lossy JPEG file saving
+   * Tags View from Comments & Tags side bar support drag & drop.
+   * Batch tool to sync all pictures metadata (EXIF/IPTC) with digiKam database content.
+   * Status bar in Album Gui with a progress bar, text bar, and navigate bar.
+   * Native SlideShow tool which uses the Image Preview feature. RAW files
+     can be slided very fast. Configurable data display. Album recursive mode available
+   *The tags trees are stored as such into IPTC fields
+   * Usability improvements everywhere
+  AlbumGUI :
+   * Improvement of pop-up menu of Tags Filter View and Comment & Tags ON auto selection/
+     deselection of parents/child tags in Tags treeview.
+   * Preview picture mode use a memory cache to speed-up loading.
+   * Preview mode has better a context pop-up menu.
+   * Prefer Exif DateTimeOriginal to sort images (DateTimeDigitized and DateTime used as fallback)
+  Image Plugins :
+   * All tools remember settings between sessions
+   * All tools render properly preview of image using Color Managed View
+   * All tools use the same keyboard shortcuts as PhotoShop
+   * Brightness/Contrast/Gamma : setting value excursion are the same as Photoshop.
+   * New option in all Color corrections Tools to show under-exposed and over-exposed areas
+     of corrected picture before applying corrections
+   * Add Border Tool : add new option to preserve aspect ratio. Border Width can be set in
+     pixels or in percentage
+   * Perspective Tool : add a grid and vertical/horizontal guide lines.
+   * Ratio-crop Tool : usability improvements from Jaromir Malenko.
+   * Auto Color Correction Tool : add new filter to perform auto-exposure corrections.
+  Image Editor :
+   * Advanced options to keep ratio and alignment when printing pictures.
+   * Color profiles are tested now to avoid invalid files.
+   * Add a progress bar to Image editor/showfoto about IO image files access.
+
+-------------------------------------------------------------------
+Thu Jan  4 10:30:56 CET 2007 - stbinner@suse.de
+
+- fix build on 10.2 in KDE:Backports
+
+-------------------------------------------------------------------
+Mon Dec 18 22:16:20 CET 2006 - stbinner@suse.de
+
+- update to final 0.9 release
+
+-------------------------------------------------------------------
+Sat Dec  9 16:50:24 CET 2006 - dmueller@suse.de
+
+- update to 0.9.0 rc2:
+   * uses libexiv2 now for EXIF parsing
+   * many more features and over 500 bugfixes see:
+     http://www.digikam.org/?q=about/features09x 
+
+-------------------------------------------------------------------
+Sat Nov  4 19:03:41 CET 2006 - stbinner@suse.de
+
+- fix build for < 10.1
+
+-------------------------------------------------------------------
+Fri Nov  3 17:38:14 CET 2006 - llunak@suse.cz
+
+- fix preview in rename dialog when downloading
+  from camera (#188108)
+
+-------------------------------------------------------------------
+Thu Nov  2 13:50:25 CET 2006 - stbinner@suse.de
+
+- fix crash when right-clicking in empty main window (#216511)
+
+-------------------------------------------------------------------
+Sat Oct 21 19:24:28 CEST 2006 - meissner@suse.de
+
+- buildrequires libgphoto2-devel
+
+-------------------------------------------------------------------
+Wed Sep 13 10:09:25 CEST 2006 - stbinner@suse.de
+
+- fix build for 10.0
+
+-------------------------------------------------------------------
+Tue Jul 18 22:27:14 CEST 2006 - dmueller@suse.de
+
+- update to 0.8.2.
+    * add missing Rating info in album item file tip and image
+      properties dialog 
+    * display JPEG that use CMYK color space
+    * Rating image using keyboard shortcuts CTRL+0/1/2/3/4/5 from
+      main interface
+    * Buttons to set the album date to oldest, yougest of the
+      images in the album
+-------------------------------------------------------------------
+Mon May 22 08:58:34 CEST 2006 - stbinner@suse.de
+
+- no x-raw.desktop in STABLE, is now contained in kdelibs 3.5.2
+
+-------------------------------------------------------------------
+Wed Mar 22 09:41:02 CET 2006 - stbinner@suse.de
+
+- no x-raw.desktop in PLUS, is now contained in kdelibs 3.5.2
+
+-------------------------------------------------------------------
+Tue Feb 28 11:48:14 CET 2006 - coolo@suse.de
+
+- fix the print of filename (as indicated by compiler warning and
+  #153544)
+
+-------------------------------------------------------------------
+Mon Feb 13 13:20:51 CET 2006 - stbinner@suse.de
+
+- add upstream patch to fix problems on ppc (KDE #121646)
+
+-------------------------------------------------------------------
+Mon Feb  6 16:13:10 CET 2006 - stbinner@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Mon Feb  6 14:44:17 CET 2006 - coolo@suse.de
+
+- grap fix from KDE SVN to fix severe problem with search for images
+  (KDE bugs 120479 and 120775)
+
+-------------------------------------------------------------------
+Tue Jan 31 18:58:42 CET 2006 - coolo@suse.de
+
+- fix gphoto2 cameras
+
+-------------------------------------------------------------------
+Thu Jan 26 09:48:03 CET 2006 - meissner@suse.de
+
+- Upgraded to 0.8.1.
+	- image rating
+	- 8 bit raw support added
+	- copy & paste support (between albums or between digikam + konqi)
+	- new dcop interface to control opening the camera dialog
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:52 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 15:14:33 CET 2006 - coolo@suse.de
+
+- give digikam as option in the media popup
+
+-------------------------------------------------------------------
+Wed Dec 21 00:37:30 CET 2005 - dmueller@suse.de
+
+- fix file list 
+
+-------------------------------------------------------------------
+Mon Nov 28 09:48:37 CET 2005 - stbinner@suse.de
+
+- update to version 0.8
+
+-------------------------------------------------------------------
+Sat Nov 19 08:15:20 CET 2005 - stbinner@suse.de
+
+- keep old xdg menu category for build on older distribution
+
+-------------------------------------------------------------------
+Thu Nov 17 17:51:27 CET 2005 - stbinner@suse.de
+
+- fix build on 9.1 and 9.2
+
+-------------------------------------------------------------------
+Thu Sep 29 10:15:29 CEST 2005 - stbinner@suse.de
+
+- fix "Photograph" to correct "Photography" xdg menu category
+
+-------------------------------------------------------------------
+Fri Aug 19 10:41:15 CEST 2005 - adrian@suse.de
+
+- update to version 0.7.4
+  * translation updates
+
+-------------------------------------------------------------------
+Fri Aug 19 08:14:08 CEST 2005 - coolo@suse.de
+
+- fix file list for icons
+
+-------------------------------------------------------------------
+Wed Aug 17 12:54:32 CEST 2005 - meissner@suse.de
+
+- do not overwrite ports with "usb:" everytime.
+
+-------------------------------------------------------------------
+Sat Jul 23 04:56:08 CEST 2005 - dmueller@suse.de
+
+- fix filelist 
+
+-------------------------------------------------------------------
+Thu Jul 21 03:45:02 CEST 2005 - dmueller@suse.de
+
+- 0.7.3 final update
+- removed -fvisibility=hidden support as it exposes a compiler bug
+  on x86_64 and ppc64 
+
+-------------------------------------------------------------------
+Mon May 23 17:22:53 CEST 2005 - adrian@suse.de
+
+- update to version 0.7.3 beta 2
+
+-------------------------------------------------------------------
+Mon Mar 14 09:51:43 CET 2005 - adrian@suse.de
+
+- fix build for 9.2 distribution
+
+-------------------------------------------------------------------
+Sat Mar  5 10:25:46 CET 2005 - adrian@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Thu Mar  3 11:53:01 CET 2005 - adrian@suse.de
+
+- update to version 0.7.2 final
+- hide showfoto dialog for now, we use gwenview as default picture
+  viewer
+
+-------------------------------------------------------------------
+Fri Feb 11 10:36:58 CET 2005 - adrian@suse.de
+
+- remove some debug output
+
+-------------------------------------------------------------------
+Wed Feb  9 14:46:03 CET 2005 - adrian@suse.de
+
+- update to version 0.7.2beta1
+
+-------------------------------------------------------------------
+Tue Jan  4 14:13:27 CET 2005 - adrian@suse.de
+
+- update to version 0.7.1
+
+-------------------------------------------------------------------
+Mon Nov 29 13:10:31 CET 2004 - adrian@suse.de
+
+- use sqlite2 compat packages
+
+-------------------------------------------------------------------
+Wed Nov 17 08:47:14 CET 2004 - adrian@suse.de
+
+- use the new native digikam icon again
+
+-------------------------------------------------------------------
+Mon Nov 15 15:34:49 CET 2004 - adrian@suse.de
+
+- use internal sqlite for < SuSE 9.1
+
+-------------------------------------------------------------------
+Mon Nov  8 14:23:36 CET 2004 - adrian@suse.de
+
+- update to version 0.7 final
+
+-------------------------------------------------------------------
+Sun Oct 24 15:46:17 CEST 2004 - adrian@suse.de
+
+- add libkipi-devel to nfb
+
+-------------------------------------------------------------------
+Wed Oct 20 10:50:49 CEST 2004 - adrian@suse.de
+
+- update to version 0.7 beta 1
+
+-------------------------------------------------------------------
+Mon Sep 27 16:29:46 CEST 2004 - adrian@suse.de
+
+- add Requires: imlib2-loaders or the editor is unable to load a
+  picture (#46002)
+
+-------------------------------------------------------------------
+Mon Sep 20 21:49:06 CEST 2004 - adrian@suse.de
+
+- update to current cvs
+- use the core camera icon, it does fit better to crystal icons
+
+-------------------------------------------------------------------
+Fri Sep 10 12:59:43 CEST 2004 - adrian@suse.de
+
+- update to current cvs
+
+-------------------------------------------------------------------
+Thu Jul 29 18:55:55 CEST 2004 - adrian@suse.de
+
+- update to current snapshot (pre-0.7 version)
+  * enable kipi support
+- patch to use external sqlite lib
+
+-------------------------------------------------------------------
+Mon Jun 21 09:26:24 CEST 2004 - adrian@suse.de
+
+- update to version 0.6.2
+
+-------------------------------------------------------------------
+Wed Jun 16 10:50:19 CEST 2004 - adrian@suse.de
+
+- add requires to dcraw for > 9.1
+  A plugin needs it.
+
+-------------------------------------------------------------------
+Wed Apr 21 09:13:54 CEST 2004 - coolo@suse.de
+
+- build everything without unsermake
+
+-------------------------------------------------------------------
+Sat Apr 17 22:09:33 CEST 2004 - coolo@suse.de
+
+- return in non-void function
+
+-------------------------------------------------------------------
+Thu Apr 15 19:29:01 CEST 2004 - coolo@suse.de
+
+- build without unsermake
+
+-------------------------------------------------------------------
+Thu Apr  8 00:08:07 CEST 2004 - adrian@suse.de
+
+- fix path to k3b
+- remove mpeg plugin, we miss the tools anyway
+
+-------------------------------------------------------------------
+Sun Apr  4 17:33:58 CEST 2004 - adrian@suse.de
+
+- add patch by Andi Kleen to create a "Pictures" directory,
+  instead of confusing the user.
+
+-------------------------------------------------------------------
+Thu Apr  1 18:04:21 CEST 2004 - coolo@suse.de
+
+- readding icons (#37369)
+
+-------------------------------------------------------------------
+Mon Mar 22 13:16:09 CET 2004 - adrian@suse.de
+
+- fixing german translation (#36674)
+
+-------------------------------------------------------------------
+Sun Feb 29 01:56:13 CET 2004 - ro@suse.de
+
+- different approach to remove buildroot traces
+
+-------------------------------------------------------------------
+Tue Feb 17 09:20:20 CET 2004 - adrian@suse.de
+
+- fix Categories
+
+-------------------------------------------------------------------
+Tue Feb 10 09:01:00 CET 2004 - adrian@suse.de
+
+- update to version 0.6 final
+
+-------------------------------------------------------------------
+Tue Feb  3 22:26:54 CET 2004 - adrian@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Mon Feb  2 13:50:59 CET 2004 - adrian@suse.de
+
+- update to version 0.6.0rc2
+- add digikamplugins to package
+
+-------------------------------------------------------------------
+Tue Jan 13 10:21:32 CET 2004 - coolo@suse.de
+
+- fixing Makefile problems
+
+-------------------------------------------------------------------
+Tue Dec 30 18:40:12 CET 2003 - adrian@suse.de
+
+- install default icons in crystalsvg
+
+-------------------------------------------------------------------
+Wed Oct 15 14:27:29 CEST 2003 - meissner@suse.de
+
+- Upgraded to current 0.6.0 CVS, "all known bugs fixed" [tm]
+- Do not build as root.
+
+-------------------------------------------------------------------
+Tue Sep 23 14:15:22 CEST 2003 - meissner@suse.de
+
+- fixed crash on corrupt JPEG, #31180.
+
+-------------------------------------------------------------------
+Thu Sep 18 17:06:48 CEST 2003 - varkoly@suse.de
+
+- update hungarian translation 
+
+-------------------------------------------------------------------
+Tue Sep 16 11:56:51 CEST 2003 - adrian@suse.de
+
+- update czech translation
+
+-------------------------------------------------------------------
+Tue Sep  9 09:50:30 CEST 2003 - adrian@suse.de
+
+- add hungarian translation from Peter Varkoly
+
+-------------------------------------------------------------------
+Mon Sep  8 10:51:06 CEST 2003 - adrian@suse.de
+
+- use a nicer icon
+
+-------------------------------------------------------------------
+Wed Aug 13 14:44:05 CEST 2003 - adrian@suse.de
+
+- add czech translation from Klara Cihlarova
+
+-------------------------------------------------------------------
+Mon Jul 28 16:02:53 CEST 2003 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Mon Jul 28 13:38:08 CEST 2003 - adrian@suse.de
+
+- Add Categories
+
+-------------------------------------------------------------------
+Thu Jun 12 11:25:37 CEST 2003 - coolo@suse.de
+
+- use find_lang
+- package icons directories too
+- use $INSTALL_TARGET
+
+-------------------------------------------------------------------
+Mon Jun  2 17:09:24 CEST 2003 - meissner@suse.de
+
+- Upgraded to pre 0.6, packaged the rest of the files,
+  adapted neededforbuild.
+
+-------------------------------------------------------------------
+Thu Sep 19 18:11:37 CEST 2002 - adrian@suse.de
+
+- enable the build again and update to 0.5.1 (KDE 3 port)
+
+-------------------------------------------------------------------
+Tue Feb 26 02:16:29 CET 2002 - ro@suse.de
+
+- added libexif to neededforbuild 
+
+-------------------------------------------------------------------
+Mon Feb  4 01:35:12 CET 2002 - ro@suse.de
+
+- try forward port to current gphoto2 
+
+-------------------------------------------------------------------
+Sat Jan 19 18:39:41 CET 2002 - adrian@suse.de
+
+- update to version 0.4
+
+-------------------------------------------------------------------
+Sat Jan  5 00:31:05 CET 2002 - adrian@suse.de
+
+- update to final 0.3
+
+-------------------------------------------------------------------
+Wed Jan  2 22:39:05 CET 2002 - adrian@suse.de
+
+- update to version 0.3_beta1
+
+-------------------------------------------------------------------
+Sat Dec 29 15:28:51 CET 2001 - adrian@suse.de
+
+- initial packaging
+

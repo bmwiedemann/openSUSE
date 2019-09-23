@@ -1,0 +1,262 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2e210c0c5894eb7d766f5825dc3f785f</srcmd5>
+    <version>2.3.0</version>
+    <time>1331324848</time>
+    <user>coolo</user>
+    <comment>An OBS-related gems</comment>
+    <requestid>108458</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2e210c0c5894eb7d766f5825dc3f785f</srcmd5>
+    <version>2.3.0</version>
+    <time>1340184169</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>126d919aaea18c649f1924c13352197d</srcmd5>
+    <version>2.5.2</version>
+    <time>1346529584</time>
+    <user>namtrac</user>
+    <comment>- updated to version 2.5.2
+ * Fix for Net::SSH::KnownHosts::SUPPORTED_TYPE [Marco Sandrini] 
+ * Added missing file to manifest [Marco Sandrini]
+ * Implement many algorithms [Ryosuke Yamazaki]
+   * Key Exchange
+      * diffie-hellman-group14-sha1
+      * ecdh-sha2-nistp{256,384,521}
+    * Host Key
+      * ecdsa-sha2-nistp{256,384,521}
+    * Authentication
+      * ecdsa-sha2-nistp{256,384,521}
+    * HMAC
+      * hmac-ripemd160
+    * Cipher:
+      * aes{128,192,256}-ctr
+      * camellia{128,192,256}-ctr
+      * blowfish-ctr
+      * cast128-ctr
+      * 3des-ctr
+      * arcfour (has problems with weak keys, and should be used with caution)
+      * camellia{128,192,256}-cbc
+ * Support for JRuby + Pageant + Windows [arturaz]</comment>
+    <requestid>132168</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>89ad27ad992323bd48b047bc3dc0699a</srcmd5>
+    <version>2.6.0</version>
+    <time>1348573593</time>
+    <user>coolo</user>
+    <comment>- jruby-pageant is only a hack and not a gem and only required
+  on java-win32, so remove the dependency:
+    remove-jruby-dep.diff
+
+- updated to version 2.6.0
+ * Use OpenSSL::PKey.read to read arbitrary private key. [nagachika]
+ * Check availability of UNIXSocket and UNIXServer for Windows [Nobuhiro IMAI]
+ * Bump version to 2.5.3 and depend on newer jruby-pageant version for Java 1.5 compat. [arturaz]
+ * Implementation of the &quot;none&quot;-authentication method [dubspeed]
+ * Add class for stricter host key verification [Andy Brody]</comment>
+    <requestid>135819</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3182275f5f23fe1e357de1b19066390c</srcmd5>
+    <version>2.6.1</version>
+    <time>1351688697</time>
+    <user>coolo</user>
+    <comment>- updated to version 2.6.1
+  * removed dependency on jruby-pageant again, makes patch obsolete
+   remove-jruby-dep.diff</comment>
+    <requestid>139640</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>3182275f5f23fe1e357de1b19066390c</srcmd5>
+    <version>2.6.1</version>
+    <time>1359110330</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>63da323ac189919af133a1982c4cd8a2</srcmd5>
+    <version>2.6.6</version>
+    <time>1363097002</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>158223</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>014bb710a7515fa4f88585d478f69d85</srcmd5>
+    <version>2.6.7</version>
+    <time>1366633117</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>172630</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ccad07aa9597867dd5e526b43003ba76</srcmd5>
+    <version>2.6.8</version>
+    <time>1375641708</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>185564</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>ccad07aa9597867dd5e526b43003ba76</srcmd5>
+    <version>2.6.8</version>
+    <time>1379664549</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>23536259ccc1f920da28fd065a85bd7d</srcmd5>
+    <version>2.7.0</version>
+    <time>1380298058</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200774</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5c00bd785efc22bf17a9d46512566fcb</srcmd5>
+    <version>2.8.0</version>
+    <time>1393310236</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223645</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>07162e6e147fcdaf0d1e3b1513e705de</srcmd5>
+    <version>2.9.1</version>
+    <time>1400682586</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>234909</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>07162e6e147fcdaf0d1e3b1513e705de</srcmd5>
+    <version>2.9.1</version>
+    <time>1409303259</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>7a984e8c0984e884331b22cd57e6a3fd</srcmd5>
+    <version>2.9.1</version>
+    <time>1413263447</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>255184</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2542a6d2d6f1b4d46ba63b5c30265477</srcmd5>
+    <version>2.9.2</version>
+    <time>1424117659</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>285943</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>70c6545b9046bfae1103f0d89da57ad5</srcmd5>
+    <version>3.0.1</version>
+    <time>1443585200</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>334722</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5dc683f846ead739e6bdbe7b576099b5</srcmd5>
+    <version>3.0.2</version>
+    <time>1454628690</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>356075</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2309f9dcd7c664550a700985e61febfe</srcmd5>
+    <version>3.1.0</version>
+    <time>1459238418</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>380043</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>47cabc2bb9778bb67a0833005efabe47</srcmd5>
+    <version>3.1.1</version>
+    <time>1461335061</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>388443</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d4ac87a1814afe3c726192eb8c39fac6</srcmd5>
+    <version>3.2.0</version>
+    <time>1467360041</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>405515</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bcae6cfcfef7615f750bcd7b67a588f5</srcmd5>
+    <version>4.0.0</version>
+    <time>1484475604</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450027</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>68e23685c106ad5cb372f8ffbcc43259</srcmd5>
+    <version>4.0.1</version>
+    <time>1485383254</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451298</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3926fa1f1b7195163d5b0235e4adaa1a</srcmd5>
+    <version>4.1.0</version>
+    <time>1490133040</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479684</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a9e572b926a1dce7158edd01915f79ab</srcmd5>
+    <version>4.2.0</version>
+    <time>1505239001</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523550</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a93a629c3ec041f14a28fa41108c2329</srcmd5>
+    <version>5.0.1</version>
+    <time>1528111367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613892</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c3e6769886f3fd20f74aadd30dddf386</srcmd5>
+    <version>5.0.2</version>
+    <time>1531947031</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621017</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9b17d4e684097690a6c9dc58eadd5601</srcmd5>
+    <version>5.1.0</version>
+    <time>1551687624</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679527</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>603d67d8d0c17cbab780793239738c2b</srcmd5>
+    <version>5.2.0</version>
+    <time>1553699872</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685129</requestid>
+  </revision>
+</revisionlist>

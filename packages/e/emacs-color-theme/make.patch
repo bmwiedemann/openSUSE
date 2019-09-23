@@ -1,0 +1,12 @@
+diff --git a/Makefile.orig b/Makefile
+index 029554e..9c5e250 100644
+--- a/Makefile.orig
++++ b/Makefile
+@@ -48,6 +48,7 @@ $(AUTOLOADFILE).elc: $(AUTOLOADFILE).el
+ %.elc: %.el
+ 	@$(EMACS) $(OPTIONCOMPILE) \
+ 	--eval '(setq load-path (cons "." load-path))' \
++	--eval '(setq load-path (cons ".." load-path))' \
+ 	-f batch-byte-compile $<
+ 
+ %.info: %.texi

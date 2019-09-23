@@ -1,0 +1,7 @@
+<package name="tv-fonts" project="openSUSE:Factory">
+  <title>Fonts for TV Applications</title>
+  <description>This package includes some X Window System bitmap fonts for TV
+applications:  large fonts frequently used in on-screen displays,
+teletext font, and more.</description>
+  <devel project="M17N:fonts" package="tv-fonts"/>
+</package>

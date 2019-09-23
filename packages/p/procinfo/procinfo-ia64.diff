@@ -1,0 +1,15 @@
+Only in .: procinfo
+Only in .: procinfo.o
+diff -ur ../procinfo-18.orig/routines.c ./routines.c
+--- ../procinfo-18.orig/routines.c	2004-03-01 14:39:17.710609000 +0100
++++ ./routines.c	2004-03-01 14:53:11.705012133 +0100
+@@ -390,7 +390,7 @@
+     unsigned int d, h, m, s;
+     static char buf[22];
+ 
+-    t *= 100 / HZ;
++    t = (t*100) / HZ;
+     d = (unsigned int) (t / 8640000);
+     t = t - ((unsigned long)d * 8640000);
+     h = (unsigned int) (t / 360000);
+Only in .: routines.o

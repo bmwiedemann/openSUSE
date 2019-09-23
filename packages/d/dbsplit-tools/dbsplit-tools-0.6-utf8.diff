@@ -1,0 +1,22 @@
+--- bin/dbautosplit
++++ bin/dbautosplit
+@@ -521,7 +521,7 @@
+ 	my $encoding = $opt_encoding || ($owner->getXMLDecl ? $owner->getXMLDecl->getEncoding : "UTF-8");
+ 	
+ 	mkpath dirname $url->abs->file;
+-	open OUT, ">:encoding($encoding)", $url->abs->file or die "Can't open file '".$url->abs->file."': $!\n";
++	open OUT, ">:utf8", $url->abs->file or die "Can't open file '".$url->abs->file."': $!\n";
+ 	print STDERR "Creting file ", ($verbosity_level > 1 ? "(encoding $encoding)" : ""), ": ",
+ 		is_abs($main_ourl)?$url->abs->file:$url->abs->rel(URI::file->cwd), "\n" if $verbosity_level > 0;
+ 	$owner->setXMLDecl($owner->createXMLDecl("1.0")) unless $owner->getXMLDecl;
+--- bin/dbmerge
++++ bin/dbmerge
+@@ -310,7 +310,7 @@
+ 	open OUT, ">", $ARGV[1] or die "$ARGV[1]: $!\n";
+ 	$outbase = URI::WithBase->new(URI::file->new($ARGV[1]), URI::file->cwd);
+ }
+-binmode(OUT, ":encoding($encoding)");
++binmode OUT, ":utf8";
+ 
+ print OUT $doc->getXMLDecl->toString, "\n" if $doc->getXMLDecl;
+ 

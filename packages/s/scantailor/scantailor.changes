@@ -1,0 +1,361 @@
+-------------------------------------------------------------------
+Fri Sep 14 10:24:13 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.0.16
+  * various bug fixes and improvements
+  * added buttons to navigate between pages
+
+-------------------------------------------------------------------
+Tue Apr  3 23:15:44 UTC 2018 - jengelh@inai.de
+
+- Update description.
+
+-------------------------------------------------------------------
+Mon Apr  2 09:49:54 UTC 2018 - aloisio@gmx.com
+
+- Update to version 1.0.13
+  * Bug fixes
+  version 1.0.12
+  * Implemented the feature of auto adjusting content area.
+  * Deviation parameters added into the settings dialog. The
+    deviation default settings have been calibrated.
+  * Improved: The follow page button is no more activated
+    automatically on switching a sorting method or on going to the
+    previous/next page.
+  * Auto and original alignment modes reworked.
+  * Added the ability to separately control vertical and
+    horizontal automatic alignment when auto or original alignment
+    mode enabled.
+  version 1.0.11
+  * Fixed a possible crash at the output stage: STA used the
+    wrong crop area for background estimation.
+  * UI fixes for the dialog of default parameters.
+    version 1.0.10
+  * Added color adjustments settings for color segmenter.
+  * Fixed: rectangular picture auto zones are incorrectly shifted.
+  * Support for any type of input image.
+  * Default parameters don't more require processing to convert
+    units. It caused a bug on margins stage.
+  * Improved: a default parameters profile can now be edited.
+  * Added page count info beside page number into status bar.
+  * Posterization improved:
+    + Posterization can now correctly handle with pale images.
+    + It's become possible due to normalizing the source image
+      before posterizing.
+    + Added normalize option so as to add the ability to get
+      normalized output.
+    + Force b&w option has been reworked.
+  * Improved: Follow page button is no more activated
+    automatically on switching a filter if the button was inactivated
+    before. Instead of that behavior ST now saves the sliders
+    positions.
+  * Note: The old behavior caused some problems of loosing the
+    position of the page sequence worked on if not natural sorting
+    enabled.
+  * Collapsible filter options.
+  * Added "Higher search sensitivity" option into picture shape
+    options.
+  * It gives the same search result as it was in Enhanced (&
+    Featured) versions.
+  * Deviation feature reworked and added sorting by decreasing
+    deviation.
+  version 1.0.9
+  * Fixed: ST used Otsu instead of Wolf and Sauvola binarization
+    methods in some cases, ignoring the user settings.
+  * Fixed: ST could cut off edges of content in auto mode.
+  * Added "Off" picture shape mode.
+  * Fixed possible crash on switching from rectangular to another
+    picture shape mode on some builds.
+  * Support for processing of images with light content on dark
+    background.
+  * Fixed a lag on opening the settings dialog.
+  * Added project version compatibility check.
+  * Implemented page area feature.
+  * Implemented new zone interaction modes feature.
+  * Implemented saving zoom and focus on switching output tabs
+    feature.
+  * Implemented measurement units system feature.
+  * Implemented status bar panel feature.
+  * Implemented default parameters feature.
+  * Implemented original background feature.
+  * Implemented color segmenter and posterization feature.
+  version 1.0.8
+  * Hotfix for version 1.0.7
+  * Warning! Old project files aren't compatible with this
+    version, you mustn't even try to open project files of
+    version 1.0.7 or earlier with this version.
+  version 1.0.7
+  * Fix for high DPI (ex. 4K) displays.
+  * Pages without content box will be blank at output. A content
+    box deleted manually won't more be reset to the page bounds on
+    reloading.
+  * On placing a new filling zone over another it now overlaps
+    the older one.
+  * "Quadro" picture shape mode was merged with rectangular. Also
+    removed the restriction of ver. Featured on deleting all the auto
+    zones. Before it resulted in resetting all the auto zones back.
+  * Added sensitivity option. If sensitivity equals 25%, the
+    results will be the same as they were in old "Quadro" mode, if
+    100% - as in old "Rectangular".
+  * Fixed bug come from ver. Featured: filling zones were set to
+    wrong positions in their view after manual / marginal dewarping
+    with post deskew enabled.
+  * Auto detection of the white on black option for Sauvola and
+    Wolf binarization methods on the first time processing.
+  * Applied some fixes from ver. Universal.
+  * Other improvements and fixes.
+  * Warning! Old project files aren't compatible with this
+    version.
+  version 1.0.6
+  * Fixed bug from Enhanced: applying manual deskew settings to a
+    multitude of pages didn't work for the pages with a size
+    different from that of the page the setting is applied to.
+  * That resulted in resetting those pages to auto mode on
+    processing. Also now deskew changes have effect on thumbnails
+    instantly without forcing to reload the pages.
+  * Start batch processing dialog from Enhanced removed.
+  * Splitting output options are moved out of the color settings.
+    Splitting options have its own "Apply To" dialog and button now.
+  * Fixed a bug of the official ST: ST could crash on output when
+    outer margins and content rectangle are "touch" by its sides on
+    margins stage.
+  * Fixed: on switching to manual alignment mode from any other
+    the content rectangle was always placed at the top center instead
+    of the place set by the align buttons.
+  * Fixed: Subtracting picture zones, placed over an auto layer
+    picture zone, no more blink on zoom.
+  * Fixed: Picture zone type used wasn't sometimes saved on page
+    switching.
+  * Added option to control highlighting (with red asterisks) the
+    thumbnails of pages with high deviation. The option refreshes the
+    thumbnails instantly.
+  * Fixed: page layout view didn't consider splitting settings.
+    Corresponding improvements are done to thumbnails.
+  * Fixed: on applying a content box to other pages it could be
+    set out of the page bounds.
+  * Fixed: possible mixed pixels in the output image of right
+    page after splitting.
+  * Various fixes of thumbnails drawing.
+  * Changed Scan Tailor behavior on page split stage.
+    + Reworked apply cut feature. Now on applying cut to the
+      pages with different dimensions than the page the cut
+      applied to, Scan Tailor tries to adapt cutters instead of
+      fully rejecting the cut setting and switching to auto mode
+      for those pages as it was before. The later was annoying as
+      pages could be similar and had the difference in a few pixels.
+    + Added check to reject invalid cut settings in manual mode.
+    + UI: Added cutters interaction between each other. They
+      can't more intersect each other, which created a wrong page
+      layout configuration before.
+  * Fixed bug from Enhanced: on select content stage after saving
+    and reopening the project the thumbnail could change its
+    position on the page loading when sorting enabled.
+  * Now outside pixels of color images are filled with the
+    background dominant color not gray. The respective feature has
+    been implemented.
+  * Also added filling setting with the following options:
+    + Background: estimate the background and fill outside pixels
+      with its color.
+    + White: always fill with white.
+  * Tiff compression feature reworked.
+  * Now there are two options in settings dialog: B&W and color
+    compression.
+    + The B&W one has None, LZW, Deflate and CCITT G4 options.
+    + The color one has None, LZW, Deflate and JPEG options.
+  * Other changes.
+  * Warning! Project files of older versions of ST are not
+    compatible with this version.
+  version 1.0.5
+  * fixed: a page wasn't refreshed in output on changing its crop
+    area;
+  * equalize illumination option does no more depend on white
+    margins.
+  version 1.0.4
+  * fixed bug from Enhanced: picture_shape in mixed mode wasn't
+    saved in the project file that caused reloading page on every
+    restart in output mode.
+  * fixed: filling color wasn't adapted on brightness change.
+  * improved output processing in B&W mode when illumination
+    equalization disabled.
+  version 1.0.3
+  * Images libraries reconfigured (the old configuration could
+    cause some problems with some images).
+  * Warning for a user of a 32-bit system: the count of threads
+    for multi-threaded batch processing is limited to 2 threads due
+    to memory constraints. And that is intended only for systems with
+    2GB RAM. If you have only 1GB RAM and lower, don't use this
+    feature and set the count of threads to 1. Otherwise you are
+    risking to get "out of memory" error.
+    version 1.0.2
+  * Added option to disable post-deskew on dewarping.
+    It should be applied to a cover with geometric distortions
+    and without any text lines which the auto-deskew algorithm
+    could  rely on. Also it can be applied to pages with those that
+    have non-horizontal text lines as part of the design and so the
+    auto-deskew algorithm fails on that kind of pages.
+    The setting is located at Output -> Dewarping -> Change... ->
+    Post deskew
+  * Fixed: Post-deskew on dewarping enabled now fills the outside
+    pixels with the dominant gray color in a color mode.
+  * Added option to control white on black mode for the adaptive
+    binarization methods.
+    It should be enabled when the text or content is lighter than
+    the background.
+  version 1.0.1
+  * bug fixes.
+  version 1.0.0
+  * Initial release after the fork. Merged the Qt5 branch from
+    the original repository and the features from Scan Tailor
+    Featured and Scan Tailor Enhanced
+
+- Switch to Qt5-based (and currently maintained)
+  scantailor-advanced fork
+
+- Dropped, hopefully temporarily, the cli subpackage
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Thu Feb  2 12:15:06 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Fri Jun 17 06:10:12 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 0.9.12.2 [boo#985096]
+  * Bugfix release
+  * Drop obsolete scantailor-boost-1.60.patch
+
+-------------------------------------------------------------------
+Wed Feb 24 07:06:09 UTC 2016 - dmitry_r@opensuse.org
+
+- Fix build with boost 1.60
+  * scantailor-boost-1.60.patch
+
+-------------------------------------------------------------------
+Sat Jan 24 13:31:55 UTC 2015 - dmitry_r@opensuse.org
+
+- Move command line interface to separate package
+
+-------------------------------------------------------------------
+Mon Dec 29 19:25:03 UTC 2014 - dmitry_r@opensuse.org
+
+- Use %cmake macros
+
+-------------------------------------------------------------------
+Sun Mar  3 18:02:43 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to 0.9.11.1:
+  * Fixed a bug affecting binarization quality in Mixed output mode.
+  * Fixed borders being filled with cyan instead of white.
+  * Avoid creating unwanted directories for projects requiring relinking.
+  * Cosmetic improvements in Relinking dialog.
+  * New translation: Brazilian Portuguese.
+
+-------------------------------------------------------------------
+Wed Jan 18 06:58:39 UTC 2012 - lazy.kent@opensuse.org
+
+- Update to 0.9.11.
+  * Ability to fix DPI of source images in an existing project.
+  * Project portability through resource relinking.
+  * It's now possible to save your project in an out-of-memory
+    situation.
+  * New translations: Spanish, Ukrainean.
+- Corrected icons size.
+
+-------------------------------------------------------------------
+Mon Aug  1 14:54:39 UTC 2011 - lazy.kent@opensuse.org
+
+- Update to 0.9.10.
+  + Page dewarping functionality.
+  + Command-line version.
+  + Ability to apply content box to to multiple pages.
+  + Ability to apply margins to odd and even pages separately.
+  + New translations: Italian, Czech, Polish, Slovak, Traditional
+    Chinese
+  + Bug fixes, including a couple of crashes.
+- Dropped tabbed_widget patch (don't build against Qt 4.4 anymore).
+- Build requires boost-devel >= 1.42 and libqt4-devel >= 4.5.
+- Install icons of different sizes.
+- Added icon_theme_cache_post/un macro.
+- Corrected License tag.
+- Use full URL for source.
+
+-------------------------------------------------------------------
+Sun Oct 24 23:08:58 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Update to 0.9.9.2.
+  + Fixed page sorting issues on Linux.
+  + Fixed improper calculation of cut-off page outline.
+  + Fixed pages re-appearing in a project after being removed
+    half-by-half.
+  + German and French translations were added.
+  + Compatibility with the latest version of boost.
+- Dropped boost compatibility patch.
+
+-------------------------------------------------------------------
+Sat Sep  4 12:04:11 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Fixed build against boost-1.44.
+
+-------------------------------------------------------------------
+Sun Jun 27 16:03:01 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Update to 0.9.9.1
+  + A few user interaction bugs were fixed.
+
+-------------------------------------------------------------------
+Mon Jun 14 09:22:47 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Update to 0.9.9.
+  + New feature: Fill Zones.
+  + New feature: ordering pages by content box dimensions.
+  + New naming scheme for output files.
+  + Bugfixes, including two possible crashes.
+- Renamed COPYING to COPYING.icons.
+
+-------------------------------------------------------------------
+Fri Apr 30 17:03:53 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Update to 0.9.8.1.
+  + Fixed despeckling aggressiveness depending on semi-random factors.
+  + Fixed cancelling of new page insertion not always working.
+  + For consistency, pure black and white colors are reserved in
+    Color / Grayscale mode as well.
+  + Minor fixes and improvements at Deskew and Page Layout stages.
+- Dropped obsolete despeckling patch.
+
+-------------------------------------------------------------------
+Sun Apr 11 14:43:59 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Fix a problem with despeckling.
+
+-------------------------------------------------------------------
+Sat Apr  3 22:42:52 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Update to 0.9.8.
+  + Despeckling: improved algorithm, adjustable, with visualization.
+  + Increased binarization adjustment range.
+  + Fixed a few crashes.
+  + Japanese translation.
+  + Disabled OpenGL based UI acceleration due to its instability.
+- Dropped obsolete gcc45 patch.
+- URL changed to English.
+
+-------------------------------------------------------------------
+Sun Feb 21 11:45:54 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Fixed build with GCC 4.5.
+
+-------------------------------------------------------------------
+Tue Jan  5 11:13:47 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Apply widget patch for openSUSE < 11.2 only.
+
+-------------------------------------------------------------------
+Sun Jan  3 06:47:31 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Initial package created.
+- Fixed build with Qt 4.4.x.
+

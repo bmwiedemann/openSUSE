@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Thu Jun 13 18:10:22 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.22:
+  + New minor release of the libblockdev library with multiple
+    fixes.
+  + nvdimm: New function for getting list of supported sector sizes
+    for namespaces fixes.
+  + Multiple memory leaks fixed.
+- Changes from version 2.21:
+  + crypto: Default key size for LUKS was changed to 512bit.
+  + tools:
+    - New simple cli tools that use libblockdev.
+    - First tool is lvm-cache-stats for displaying stats for LVM
+      cache devices.
+    - Use configure option --without-tools to disable building
+      these.
+- Package new cli tool in main package, should possibly be moved
+  into own sub-package in the future.
+
+-------------------------------------------------------------------
+Wed Feb 13 17:52:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Explain VDO. Fix grammar mishaps.
+
+-------------------------------------------------------------------
+Thu Jan 24 22:51:52 UTC 2019 - bjorn.lie@gmail.com
+
+- Add pkgconfig(yaml-0.1) BuildRequires and pass with-vdo instead
+  of without-vdo to configure, build vdo support.
+- Following the above, add new sub-packages libbd_vdo2 and
+  libbd_vdo-devel, aswell as handle the new library in post(un).
+
+-------------------------------------------------------------------
+Fri Jan 11 20:28:13 UTC 2019 - bjorn.lie@gmail.com
+
+- Add pkgconfig(dbus-1) BuildRequires: Add missing BuildRequires,
+  libblockdev needs dbus headerfiles during build, but configure
+  does not check for it.
+
+-------------------------------------------------------------------
+Mon Nov 19 15:23:30 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2.20:
+  + Fixes:
+    - Fix parsing extra arguments for LVM methods calls in the LVM
+      DBus plugin;
+    - Multiple fixes for running tests on Debian testing.
+  + Development: Vagrantfile template was added for easy
+    development machine setup.
+- Changes from version 2.19:
+  + Features:
+    - vdo: new functions to get statistical data for existing VDO
+      volumes (bd_vdo_get_stats);
+    - crypto: support for passing extra arguments for key
+      derivation function when creating LUKS2 format.
+
+-------------------------------------------------------------------
+Thu Jun 28 03:22:34 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2.18:
+  + New plugin: vdo, support for creating and managing VDO volumes.
+
+-------------------------------------------------------------------
+Fri May  4 02:53:53 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2.17:
+  + New plugin: nvdimm, support for NVDIMM namespaces management;
+  + LUKS2 support for creating LUKS2 format including authenticated
+    disk encryption. Multiple new functions for working with LUKS
+    devices (suspend/resume, header backup, metadata size...);
+  + Extended support for opening TrueCrypt/VeraCrypt volumes.
+- Drop pkgconfig(nss) and libvolume_key-devel BuildRequires now
+  that they are optional and pass without-escrow to configure:
+  libvolume_key's code is ancient and nearly dead upstream.
+
+-------------------------------------------------------------------
+Wed Mar 28 03:13:10 UTC 2018 - luc14n0@linuxmail.org
+
+- Resplit plugins to avoid pulling clusterlvm support by default
+  into the dependency chain (bsc#1086447).
+
+-------------------------------------------------------------------
+Mon Mar  5 23:28:39 UTC 2018 - luc14n0@linuxmail.org
+
+- Move all plugins into the shared library subpackage and their
+  respective development files into the devel one.
+- Add '-only' to LGPL License tag to comply with SPDX 3.0.
+
+-------------------------------------------------------------------
+Wed Feb 21 23:40:34 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2.16:
+  * Features:
+    - LUKS 2 support for luks_open/close and
+      luks_add/remove/change_key.
+    - Progress report support for ext filesystem checks.
+- Changes from version 2.15:
+  * Features:
+    - The file system plugin is now split into multiple source
+      files making it easier to add support for more file systems
+      and technologies.
+  * Fixes:
+    - How GPT patition flags are set;
+    - Check the btrfs module availability as part of checking the
+      btrfs plugin's dependencies;
+    - Memory leaks in bd_fs_vfat_get_info();
+    - The file system plugin's dependency checking mechanisms.
+- Add libblockdev-fix-libkmod-include.patch as openSUSE doesn't use
+  /usr/include/ but /usr/include/kmod to place libkmod.h.
+- Conditionalize the use of Python 2's bindings and turn it off
+  defaulting Python 3.
+- Drop s390's plugin due to the lack of a file still not present
+  in s390-tools package.
+- Drop BuildRoot tag since RPM already handles this itself.
+
+-------------------------------------------------------------------
+Thu Jan 18 23:26:58 UTC 2018 - jengelh@inai.de
+
+- Remove excess Provides, BuildRequires and %ifs.
+- Fix %description line mismatch for s390x parts.
+
+-------------------------------------------------------------------
+Tue Nov 28 22:38:39 UTC 2017 - luc14n0@linuxmail.org
+
+- Initial package, version 2.14:
+  * Features:
+    - Added function to get DM device subsystem.
+    - Support for the NTFS file system.
+    - pkg-config definitions improvements.
+  * Fixes:
+    - Fix BSSize memory leaks.
+    - Fixes for issues discovered by coverity.
+    - Support for the 'Legacy boot' GPT flag.
+

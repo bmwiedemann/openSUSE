@@ -1,0 +1,84 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4df2c3451a44782570ba7e65fbff9721</srcmd5>
+    <version>3.0</version>
+    <time>1485511119</time>
+    <user>dimstar_suse</user>
+    <comment>bring back nrpe in a current version</comment>
+    <requestid>434558</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>31c12c2a9f3bfcba2f68b42fa64ac7b3</srcmd5>
+    <version>3.0</version>
+    <time>1486465408</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>454393</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ae17c6922759f3be47b06d86423acddd</srcmd5>
+    <version>3.1.0</version>
+    <time>1493708093</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>492268</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a2ab8271939191eb7d8f7a01bcb2470e</srcmd5>
+    <version>3.1.1</version>
+    <time>1496822126</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>501194</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8564eb43540d3fce9c725c090a6510aa</srcmd5>
+    <version>3.1.1</version>
+    <time>1502892679</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>513684</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>77c54adca5bd4ded2d872fb79b3a35b1</srcmd5>
+    <version>3.2.1</version>
+    <time>1512547238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548945</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>068ece046de7f47bf2480120d9b95995</srcmd5>
+    <version>3.2.1</version>
+    <time>1513762822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558578</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>7eff3fe8614097a71454754891564c96</srcmd5>
+    <version>3.2.1</version>
+    <time>1522225901</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591140</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>028e748aee5783cd6a74bd2dd903985f</srcmd5>
+    <version>3.2.1</version>
+    <time>1528492436</time>
+    <user>dimstar_suse</user>
+    <comment>- only include %{_sysconfdir}/xinetd.d on newer distributions 
+  (fixes submission of this package as update for SLE12-SP4 
+   and Leap 42.3 - boo#938906)</comment>
+    <requestid>614056</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>aff979582aae91456b318620a0c2d68c</srcmd5>
+    <version>3.2.1</version>
+    <time>1540319887</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>643650</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+                  <param name="url">git://anongit.kde.org/amarok</param>
+                <param name="changesrevision">600806141d6c1c22fdd28fe8d8e26837d5d71adc</param>
+  </service>
+</servicedata>

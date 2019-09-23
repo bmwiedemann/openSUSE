@@ -1,0 +1,229 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>99fa36f77fd86f35910300b2079511e3</srcmd5>
+    <version>2011.09.31.gd2d759f</version>
+    <time>1319571643</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>89170</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c22cf2705f183cf30de49fbbe16b6e10</srcmd5>
+    <version>2011.09.31.gd2d759f</version>
+    <time>1323192744</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>010deb0ea68c21d35de8a22d505e24b8</srcmd5>
+    <version>2012.03</version>
+    <time>1335165358</time>
+    <user>coolo</user>
+    <comment>update to version 2012.03 (forwarded request 110861 from glassflag)</comment>
+    <requestid>114217</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9296c426f22d7c53dc06ea41bcef536a</srcmd5>
+    <version>2012.05</version>
+    <time>1339362075</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>124251</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9296c426f22d7c53dc06ea41bcef536a</srcmd5>
+    <version>2012.05</version>
+    <time>1340183736</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>17bd1a996b9d0e84e0d17590626dd253</srcmd5>
+    <version>2012.06.1</version>
+    <time>1340723345</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>125936</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ba80efc731d25d6827c8b71403023458</srcmd5>
+    <version>2012.07</version>
+    <time>1346399603</time>
+    <user>coolo</user>
+    <comment>- use PIC to fix build on arm (forwarded request 130345 from dirkmueller)</comment>
+    <requestid>131547</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bbbf1fc12ae6473f3b530076b64d7931</srcmd5>
+    <version>2012.12</version>
+    <time>1358432058</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>148739</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>bbbf1fc12ae6473f3b530076b64d7931</srcmd5>
+    <version>2012.12</version>
+    <time>1359109514</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f2b409b1523140734cc4bcd072107541</srcmd5>
+    <version>2013.06</version>
+    <time>1374045978</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>183454</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>f2b409b1523140734cc4bcd072107541</srcmd5>
+    <version>2013.06</version>
+    <time>1379663382</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2010d341438eb570c968750fd489ca6c</srcmd5>
+    <version>2014.02</version>
+    <time>1394516797</time>
+    <user>coolo</user>
+    <comment>- fix libdir calculation</comment>
+    <requestid>225423</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a682bf3f78aefb2e2218e0ea5d63a4b0</srcmd5>
+    <version>2014.08</version>
+    <time>1408957446</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>245759</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>a682bf3f78aefb2e2218e0ea5d63a4b0</srcmd5>
+    <version>2014.08</version>
+    <time>1409301996</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7d6c8b43be5b13276eac463685073868</srcmd5>
+    <version>2015.05</version>
+    <time>1435053438</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>312536</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>10b9855e91f20e130eaab79b5a29734f</srcmd5>
+    <version>2016.01</version>
+    <time>1455190676</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>358576</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>635f52ecdd2fcb2c65d5899a67a17375</srcmd5>
+    <version>2016.07</version>
+    <time>1469831232</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2016.07 (forwarded request 414803 from niner9)</comment>
+    <requestid>414994</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9395b0004aa285c78cd368c4f86a7262</srcmd5>
+    <version>2016.10</version>
+    <time>1477410230</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>437077</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>99ba035d70867acf29989551fe40d413</srcmd5>
+    <version>2016.12</version>
+    <time>1483048153</time>
+    <user>lnussel_factory</user>
+    <comment>-&gt;</comment>
+    <requestid>447296</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6fc5d1009a862652e8cb22ee9a19a179</srcmd5>
+    <version>2017.05</version>
+    <time>1497786625</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>503652</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>32402539fceeec66ee24f0a3c9ff9fba</srcmd5>
+    <version>2017.07</version>
+    <time>1501406825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>513002</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ba7fdf60c3b58f54448e0288223c600a</srcmd5>
+    <version>2017.08</version>
+    <time>1503393041</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518006</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2377352c7cd72342d7b4b51893932d5e</srcmd5>
+    <version>2018.01</version>
+    <time>1518514122</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574666</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>19260da3dc42910675ace6525b81f116</srcmd5>
+    <version>2018.03</version>
+    <time>1521716583</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589117</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>be7135f5ddbb21e0591b2dfca11bddf1</srcmd5>
+    <version>2018.04.1</version>
+    <time>1525611690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602783</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e42673023bc90987c8a978dff3d5e15e</srcmd5>
+    <version>2018.10</version>
+    <time>1543223991</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648568</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b10cd2daa6959bef543f13741ba16f3b</srcmd5>
+    <version>2018.12</version>
+    <time>1547130022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662296</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ec07c71725994f3f28d9d7044d30779f</srcmd5>
+    <version>2019.03</version>
+    <time>1555237427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693913</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ea4cbb6fc07903f95c17b3080ee39bd4</srcmd5>
+    <version>2019.07</version>
+    <time>1568379449</time>
+    <user>lnussel_factory</user>
+    <comment>Update to 2019.07</comment>
+    <requestid>729694</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="scout" project="openSUSE:Factory">
+  <title>Package Scout</title>
+  <description>Package Scout for indexing various properties of packages.</description>
+  <devel project="shells" package="scout"/>
+</package>

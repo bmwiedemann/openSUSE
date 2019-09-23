@@ -1,0 +1,11 @@
+--- a/libindicator/Makefile.am
++++ b/libindicator/Makefile.am
+@@ -65,7 +65,7 @@ libindicator_la_CFLAGS = \
+ 	$(LIBINDICATOR_CFLAGS) \
+ 	$(COVERAGE_CFLAGS) \
+ 	-DG_LOG_DOMAIN=\"libindicator\" \
+-	-Wall -Werror -Wno-error=deprecated-declarations
++	-Wall -Wno-error=deprecated-declarations
+ 
+ libindicator_la_LIBADD = \
+ 	$(LIBINDICATOR_LIBS) \

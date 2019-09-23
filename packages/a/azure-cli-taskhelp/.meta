@@ -1,0 +1,11 @@
+<package name="azure-cli-taskhelp" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'taskhelp' Command Module</title>
+  <description>Microsoft Azure CLI 'taskhelp' Command Module
+
+This package is for the 'taskhelp' module.
+i.e. 'az taskhelp'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-taskhelp"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

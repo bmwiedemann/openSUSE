@@ -1,0 +1,120 @@
+-------------------------------------------------------------------
+Fri Sep 20 07:49:13 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- add conflict for the impossible to workaround staging failures
+
+-------------------------------------------------------------------
+Thu Jul 11 17:22:15 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.12.0
+  - Add contextfunctions 'py2' and 'py3'
+
+-------------------------------------------------------------------
+Wed Jun 26 15:37:43 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- switch to python 3.x only package
+
+-------------------------------------------------------------------
+Mon Jun 17 10:07:53 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.11.1
+  - Switch to TOX_CONSTRAINTS_FILE
+  - Update flake8 version to latest release
+  - Switch to openstackdocstheme
+  - OpenDev Migration Patch
+  - Preserve list order in _pymod2pkg_translate
+  - Fix _pymod2pkg_translate when skip_pyversion is None
+  - Follow opendev rebranding
+
+-------------------------------------------------------------------
+Thu Apr 25 08:41:10 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.10.0
+  - fix tox python3 overrides
+  - Update home-page
+  - Update links in README
+  - Switch to stestr
+  - Change openstack-dev to openstack-discuss
+  - Move linter dependencies out of test-requirements
+  - Removed older version of python added 3.5
+  - Avoid tox_install.sh for constraints support
+  - switch documentation job to new PTI
+  - Update to a somewhat recent flake8 version
+  - add python 3.6 unit test job
+  - Updated from global requirements
+  - import zuul job settings from project-config
+- convert to singlespec
+
+-------------------------------------------------------------------
+Wed Apr 10 10:48:02 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- refresh spec file from master
+
+-------------------------------------------------------------------
+Wed Oct 11 05:28:36 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.9.1
+  - Remove python_module definition from suse template
+
+-------------------------------------------------------------------
+Mon Oct  9 15:08:12 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.9.0
+  - Add option to skip certain python version
+
+-------------------------------------------------------------------
+Mon Oct  9 14:56:13 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.8.0
+  - Fix SUSE detection on Tumbleweed and SLE15
+
+-------------------------------------------------------------------
+Fri Sep 15 09:36:33 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.7.0
+  - Support different py versions in py2name() and py2pkg()
+  - Clarify variable name
+  - Add context function `url_pypi`
+  - Introduce a new --input-template-format switch
+  - Semantically determine lowest version number, not lexigraphically
+  - Move context related functions to extra file
+  - Fix rc version handling on SUSE
+  - Updated from global requirements
+
+-------------------------------------------------------------------
+Tue May 30 13:18:42 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.6.1
+  - Sort found archives by mtime for version detection
+  - Updated from global requirements
+
+-------------------------------------------------------------------
+Fri Apr 21 09:14:13 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.6.0
+  - Return the full path when searching for archive files
+  - Add 'basename' filter
+
+-------------------------------------------------------------------
+Thu Apr 13 10:14:13 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.5.0:
+  - Look in 'output_dir' when searching archives
+  - Enable and fix more tests
+  - Updated from global requirements
+  - Make output dir available in the context
+  - Add new function fetch_source() to download files
+
+-------------------------------------------------------------------
+Wed Apr  5 14:52:52 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.4.0:
+  - Fix docs for child templates
+  - Introduce context variable 'pypi_name'
+  - Updated from global requirements
+  - Add dynamic version detection from archive files
+
+-------------------------------------------------------------------
+Fri Feb 10 14:13:49 UTC 2017 - tbechtold@suse.com
+
+- Initial packaging (version 1.3.0)

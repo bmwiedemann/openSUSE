@@ -1,0 +1,10 @@
+<package name="cronic" project="openSUSE:Factory">
+  <title>A cure for Cron's chronic email problem</title>
+  <description>Cronic is a small shim shell script for wrapping cron jobs so that cron only
+sends email when an error has occurred. Cronic defines an error as any non-
+trace error output or a non-zero result code. Cronic filters Bash execution
+traces (or anything matching PS4) from the error output, so jobs can be run
+with execution tracing to aid forensic debugging. Cronic has no options, it
+simply executes its arguments.</description>
+  <devel project="utilities" package="cronic"/>
+</package>

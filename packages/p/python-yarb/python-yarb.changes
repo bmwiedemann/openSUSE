@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Fri Dec  7 14:54:43 UTC 2018 - rick.salevsky@suse.com
+
+- Add to SUSE OpenStack Cloud 7 (fate#326791, bsc#1111232)
+
+-------------------------------------------------------------------
+Tue Dec  4 12:56:21 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Feb 13 10:47:28 UTC 2018 - igarcia@suse.com
+
+- update to version 1.0.0
+  * update readme
+  * Update config file and provide an example one
+
+-------------------------------------------------------------------
+Thu Feb  8 16:14:37 UTC 2018 - igarcia@suse.com
+
+- update to version 0.1.2
+  * protect against a timeout while deleting
+  * improve error message on wrong/invalid credentials
+  * add more tests
+
+-------------------------------------------------------------------
+Tue Feb  6 15:10:35 UTC 2018 - igarcia@suse.com
+
+- First 0.1 version

@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Mon Jul 10 05:23:40 UTC 2017 - coolo@suse.com
+
+- updated to 0.200007
+   see /usr/share/doc/packages/perl-Data-Section/Changes
+
+  0.200007  2017-07-07 11:36:04-04:00 America/New_York
+          - rename the test library "Parent.pm" to "Mother.pm" to avoid conflict
+            with core "parent.pm" on case-insensitive systems (thanks, Dan Kogai)
+
+-------------------------------------------------------------------
+Mon Mar 17 13:12:39 UTC 2014 - coolo@suse.com
+
+- updated to 0.200006
+     - skip tests on Win32 pre-5.14 related to line endings; perl munges the
+       data before we're able to get at it (thanks, Christian Walde!)
+
+-------------------------------------------------------------------
+Sun Feb  9 13:33:36 UTC 2014 - coolo@suse.com
+
+- updated to 0.200005
+       - open DATA handles both :raw and :bytes to avoid content munging on
+         Win32 (thanks, Kenichi Ishigaki!)
+       - This is not yet a perfect solution for Win32.
+
+-------------------------------------------------------------------
+Mon Dec  9 11:16:24 UTC 2013 - coolo@suse.com
+
+- updated to 0.200004
+    - avoid confusion between \n, \x0d\x0a, and Win32
+
+-------------------------------------------------------------------
+Mon Nov 25 07:36:05 UTC 2013 - coolo@suse.com
+
+- updated to 0.200003
+       [THIS MIGHT BREAK STUFF]
+       - add an "encoding" parameter to set encoding of data section contents;
+         this defaults to UTF-8 (thanks, David Golden!)
+
+-------------------------------------------------------------------
+Tue Jul 16 12:10:32 UTC 2013 - coolo@suse.com
+
+- updated to 0.101622
+       add a link to an Advent article about Data-Section                                                                                                                                                                                
+       update bugtracker, repo, etc.  
+- remove Data-Section-0.101620-Build_n_Test.patch
+
+-------------------------------------------------------------------
+Sat Nov 19 16:12:48 UTC 2011 - coolo@suse.com
+
+- update to 0.101621
+   document the \-escaping behavior of sections
+
+-------------------------------------------------------------------
+Wed Dec  1 13:11:14 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Aug  3 16:07:27 UTC 2010 - chris@computersalat.de
+
+- initial package 0.101620
+  * created by cpanspec 1.78
+

@@ -1,0 +1,9 @@
+<package name="tardy" project="openSUSE:Factory">
+  <title>Tar Archive Post-Processor</title>
+  <description>The tardy program is a tar(1) post-processor. It may be used to manipulate the
+file headers in tar(5) archive files in various ways.
+
+</description>
+  <devel project="Archiving" package="tardy"/>
+  <url>http://tardy.sourceforge.net/</url>
+</package>

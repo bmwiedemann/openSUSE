@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<deviceinfo version="0.2">
+  <device>
+
+    <match key="/org/freedesktop/Hal/devices/computer:system.kernel.name" string="Linux">
+      <match key="volume.fstype" string="ntfs">
+        <!-- Overwrite fstype with ntfs-3g if the package is installed 
+             NOTE: this isn't the correct way to go !!! It may breaks kernel ntfs mounting -->
+        <merge key="volume.fstype" type="string">ntfs-3g</merge>
+        <merge key="volume.policy.mount_filesystem" type="string">ntfs-3g</merge>
+        <append key="volume.mount.valid_options" type="strlist">locale=</append>
+
+        <!-- Currently it's planed to use these keys instead, but this need changes in the 
+              mount handlers as e.g. the desktop and also HAL 
+
+  	  <append key="volume.mount.alternative.fstype" type="strlist">ntfs-3g</append>
+          <append key="volume.mount.ntfs-3g.valid_options" type="strlist">ro</append>
+          <append key="volume.mount.ntfs-3g.valid_options" type="strlist">sync</append>
+          <append key="volume.mount.ntfs-3g.valid_options" type="strlist">dirsync</append>
+          <append key="volume.mount.ntfs-3g.valid_options" type="strlist">noatime</append>
+          <append key="volume.mount.ntfs-3g.valid_options" type="strlist">nodiratime</append>
+          <append key="volume.mount.ntfs-3g.valid_options" type="strlist">noexec</append>
+          <append key="volume.mount.ntfs-3g.valid_options" type="strlist">quiet</append>
+          <append key="volume.mount.ntfs-3g.valid_options" type="strlist">remount</append>
+          <append key="volume.mount.ntfs-3g.valid_options" type="strlist">exec</append>
+	  <append key="volume.mount.ntfs-3g.valid_options" type="strlist">locale=</append>
+          <append key="volume.mount.ntfs-3g.valid_options" type="strlist">uid=</append>
+          <append key="volume.mount.ntfs-3g.valid_options" type="strlist">gid=</append>
+          <append key="volume.mount.ntfs-3g.valid_options" type="strlist">umask=</append>
+          <append key="volume.mount.ntfs-3g.valid_options" type="strlist">utf8</append>
+        -->
+
+      </match>
+    </match>
+
+  </device>
+</deviceinfo>
+

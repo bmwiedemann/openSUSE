@@ -1,0 +1,31 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2016-03-17 01:13:03.340741300 +0100
+
+Skip these two steps from Makefile.am altogether.
+
+1. If $INSTALL_MOD_PATH/lib/modules/uname_r is missing, no depmod
+   files will be created at all (by depmod as invoked by the kernel's
+   modules_install target).
+
+2. Therefore, modinfo -b will error out because it cannot find
+   $INSTALL_MOD_PATH/lib/modules/uname-r/modules.order.
+
+3. lsmod fails because /proc and /sys are not mounted.
+
+---
+ Makefile.am |    2 --
+ 1 file changed, 2 deletions(-)
+
+Index: ipset-6.29/Makefile.am
+===================================================================
+--- ipset-6.29.orig/Makefile.am
++++ ipset-6.29/Makefile.am
+@@ -72,8 +72,6 @@ modules_install:
+ if WITH_KMOD
+ 	${MAKE} -C $(KBUILD_OUTPUT) M=$$PWD/kernel/net \
+ 			KDIR=$$PWD/kernel modules_install
+-	@modinfo -b ${INSTALL_MOD_PATH} ip_set_hash_ip | ${GREP} /extra/ >/dev/null || echo "$$DEPMOD_WARNING"
+-	@lsmod | ${GREP} '^ip_set' >/dev/null && echo "$$MODULE_WARNING"
+ else
+ 	@echo Skipping kernel modules due to --with-kmod=no
+ endif

@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Sun Nov 19 08:10:55 UTC 2017 - mpluskal@suse.com
+
+- Clean up spec file with spec-cleaner
+- Use pkgconfig() style of dependencies
+
+-------------------------------------------------------------------
+Wed Nov 23 09:30:47 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Jan 18 00:56:46 CET 2010 - vuntz@opensuse.org
+
+- Update to a cvs checkout from 20070731, that is used by Debian
+  and Mandriva: this lets us remove a patch and the dependency on
+  gdk-pixbuf 1.x.
+- Changes since 0.3.0:
+  + update playlist code in libkino
+  + add option for progress display to smil2raw
+  + fix parsing SMIL time values in locales which do not use period
+    as decimal point
+  + fix compilation against recent version of ffmpeg
+- Call autogen.sh instead of autoreconf, since this is cvs checkout
+  with no generated configure script.
+- Remove imlib-config, imlib-devel, imlib2-devel BuildRequires and
+  do not add possibility to use --with-imlib configure flag: imlib
+  support has been removed.
+- Change gdk-pixbuf-devel BuildRequires to gtk2-devel: the code has
+  been ported.
+- Add libquicktime-devel BuildRequires.
+- Update abuild.diff: since we call autogen.sh anyway, do not
+  provide Makefile.in parts in the patch.
+- Replace smilutils-includes.patch with smilutils-gcc4.3.patch,
+  that is now shared with Debian and Mandriva.
+- Add smilutils-gcc4.4.patch to fix build with gcc 4.4. Thanks
+  Mandriva!
+- Drop kino-1.1.0-playlistsupport.diff: fixed upstream.
+- Use makeinstall macro.
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Thu Apr 16 17:07:35 CEST 2009 - crrodriguez@suse.de
+
+- use --disable-static 
+
+-------------------------------------------------------------------
+Fri Feb 29 02:21:54 CET 2008 - ro@suse.de
+
+- fix build with current gcc 
+
+-------------------------------------------------------------------
+Sun Sep  2 10:18:21 CEST 2007 - ro@suse.de
+
+- fix libdir patch for kinoextension 
+
+-------------------------------------------------------------------
+Thu Aug 16 07:22:48 CEST 2007 - olh@suse.de
+
+- do not fail if no .la files exist
+
+-------------------------------------------------------------------
+Sun Aug 12 23:40:21 CEST 2007 - olh@suse.de
+
+- remove libdv, libtiff from Requires
+  cleanup BuildRequires
+  build parallel and run autoreconf
+
+-------------------------------------------------------------------
+Fri Jul 13 18:03:32 CEST 2007 - bk@suse.de
+
+- updated playlist code in libkino to support the newer playlists
+
+-------------------------------------------------------------------
+Tue Jan 23 16:18:43 CET 2007 - jw@suse.de
+
+- ops, fixed Buildreq.
+- avoiding /usr/lib/debug in main package.
+
+-------------------------------------------------------------------
+Mon Jan 22 22:45:32 CET 2007 - jw@suse.de
+
+- initial checkin.
+  Was in state NEW for ages, now I need it.
+

@@ -1,0 +1,5 @@
+<package name="vegastrike-data" project="openSUSE:Factory">
+  <title>Data files for Vega Strike</title>
+  <description>Data files for Vega Strike, a GPL 3D OpenGL Action RPG space sim that allows a player to trade and bounty hunt.</description>
+  <devel project="games" package="vegastrike-data"/>
+</package>

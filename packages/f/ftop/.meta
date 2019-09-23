@@ -1,0 +1,13 @@
+<package name="ftop" project="openSUSE:Factory">
+  <title>Open File Monitoring</title>
+  <description>Ftop is to files what top is to processes. The progress of all open files and
+file systems can be monitored. If run as a regular user, the set of open files
+will be limited to those in that user's processes (which is generally all that
+is of interest to the user). In any case, the selection of which files to
+display is possible through a wide assortment of options. As with top, the
+items are displayed in order from most to least active.
+
+</description>
+  <devel project="server:monitoring" package="ftop"/>
+  <url>http://code.google.com/p/ftop/</url>
+</package>

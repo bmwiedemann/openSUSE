@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>11e3371169ae8afd69dbbb866dc12e25</srcmd5>
+    <version>0.12</version>
+    <time>1554458240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687634</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bba399a0210728984afd52f7af498d3c</srcmd5>
+    <version>0.12</version>
+    <time>1568379726</time>
+    <user>lnussel_factory</user>
+    <comment>- Add patch to build with new tox releases:
+  * enviroment.patch</comment>
+    <requestid>730450</requestid>
+  </revision>
+</revisionlist>

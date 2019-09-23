@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Thu Apr 23 15:13:18 UTC 2015 - vcizek@suse.com
+
+- update to 1.1.7:
+  * Allow "configure --with-nettle" to use nettle MD5 implementation. Patch from Nikos Mavrogiannopoulos.
+  * Clean up generation of random numbers. Patch from Nikos Mavrogiannopoulos.
+  * Update BSD license as permitted by Christos Zoulas.
+  * Define PW_MAX_MSG_SIZE for maximum message sice. Patch from Nikos Mavrogiannopoulos.
+  * Allow the dictionary file parser to understand BEGIN-VENDOR / END-VENDOR as with FreeRADIUS server. Patch from Nikos Mavrogiannopoulos.
+  * Added support for IPv6. Patch from Nikos Mavrogiannopoulos.
+  * Don't crash if a config option is unset. Patch from Nikos Mavrogiannopoulos.
+  * Fix encoding of "date" attributes. Patch from Christian Schoch.
+  * Build fixes from Sven Neuhaus, Ghennadi Procopciuc, Daniel Pocock, and gureedo.
+  * Fix memory leaks. Patches from Alex Massover, William King, gureedo, and FreeSWITCH.
+  * Fixes to retry algorithm. Patch from Lewis Adam.
+  * Zero out secret fields. Patch from Scott Neugroschl.
+  * Update the dictionaries. Patches from Bogdan-Andrei Iancu and gureedo.
+  * Make the library thread-safe. Based on a patch from Alex Massover.
+  * Made rc_avpair_log thread-safe by using a buffer supplied by the caller. Patch from Alex Massover.
+  * Removed lock file for sequence number. It isn't needed.
+  * Use poll() where possible to avoid issues with FD_SETSIZE. Patch from Alfred E. Heggestad.
+  * Set Acct-Delay-Time in Accounting-Request packets. Patch from Alfred E. Heggestad.
+- add freeradius-client-missing_size_t_definition.patch to fix
+  build on 13.2
+
+-------------------------------------------------------------------
+Tue Dec  6 11:47:34 UTC 2011 - coolo@suse.com
+
+- BAD2c is not a license
+
+-------------------------------------------------------------------
+Sat Oct  1 05:39:07 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Tue Feb 17 10:33:00 CET 2009 - prusnak@suse.cz
+
+- fix garbled login.example file [bnc#469682]
+
+-------------------------------------------------------------------
+Wed Mar 19 17:03:39 CET 2008 - prusnak@suse.cz
+
+- updated to 1.1.6
+  o Added dead_time functionality / configuration
+  o Merge in fixes and enhancements from 'radiusclient-ng'
+  o Improved functionality for embedded operation
+    - In use in FreeSWITCH and OpenSER projects
+  o Wrap gethostby*() family of calls with threadsafe variants
+  o Change UINT4 to uint32_t, int to size_t, etc.
+  o Fixed wrong usage of strncat function in several places
+- dropped obsoleted patches:
+  * return.patch (included in update)
+  * strncat.patch (included in update)
+
+-------------------------------------------------------------------
+Wed Mar  5 20:42:30 CET 2008 - crrodriguez@suse.de
+
+- fix build in BETA
+- disable static libraries 
+
+-------------------------------------------------------------------
+Wed Nov  7 15:36:06 CET 2007 - prusnak@suse.cz
+
+- change %{version}-%{release} to %{version} in Requires tag
+
+-------------------------------------------------------------------
+Thu Mar  8 11:05:42 CET 2007 - prusnak@suse.cz
+
+- created package from BuildService
+  * project: network:aaa
+  * package: freeradius-client
+  * version: 1.1.5
+

@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Fri Aug 17 15:33:34 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Thu Oct 17 10:55:21 UTC 2013 - jreidinger@suse.com
+
+- remove usage of dropped y2doc generator
+- 3.1.1
+
+-------------------------------------------------------------------
+Thu Sep 19 14:18:41 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Tue Jul 30 08:29:16 UTC 2013 - yast-devel@opensuse.org
+
+- version 3.0.0
+
+-------------------------------------------------------------------
+Fri Jun 14 08:29:51 UTC 2013 - lslezak@suse.cz
+
+- removed obsolete BuildRequires (blocxx, libgcrypt, doxygen,
+  perl-XML-Writer)
+
+-------------------------------------------------------------------
+Mon Jan 28 10:42:12 UTC 2013 - lslezak@suse.cz
+
+- fixed documentation build (bnc#800692)
+- 2.23.1
+
+-------------------------------------------------------------------
+Fri Nov 25 09:09:39 UTC 2011 - coolo@suse.com
+
+- avoid duplicated index.html in installed docs
+
+-------------------------------------------------------------------
+Fri May 16 08:18:31 CEST 2008 - lslezak@suse.cz
+
+- documented lock API
+- 2.16.35
+
+-------------------------------------------------------------------
+Thu Apr  3 13:41:41 CEST 2008 - ma@suse.de
+
+- use repo name as mediaset label.
+
+-------------------------------------------------------------------
+Tue Mar 11 07:31:42 CET 2008 - coolo@suse.de
+
+- devtools requires redudant prefix definition
+
+-------------------------------------------------------------------
+Wed Mar  5 22:13:55 CET 2008 - coolo@suse.de
+
+- fixing spec file syntax
+
+-------------------------------------------------------------------
+Tue Dec 18 19:32:50 CET 2007 - lslezak@suse.cz
+
+- updated generating of the documentation to the new source file
+  layout
+- 2.16.7
+
+-------------------------------------------------------------------
+Wed Oct  3 10:06:31 CEST 2007 - mvidner@suse.cz
+
+- Do not try to package COPYRIGHT.english, it is gone from
+  devtools (#299144).
+- 2.16.0
+
+-------------------------------------------------------------------
+Thu Jul 26 15:55:21 CEST 2007 - lslezak@suse.cz
+
+- Initial version
+

@@ -1,0 +1,440 @@
+-------------------------------------------------------------------
+Wed Jul 10 15:50:50 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- Take 11.diff from https://github.com/jnweiger/perl-File-Unpack/pull/11
+
+-------------------------------------------------------------------
+Wed Jul 10 11:31:36 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- Remove perl-File-Unpack-fix-race.patch in favor of 9.diff
+- Add 10.diff from yet another pull request:
+  https://github.com/jnweiger/perl-File-Unpack/pull/10
+
+-------------------------------------------------------------------
+Sun Jun  9 18:13:14 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add perl-File-Unpack-fix-race.patch to make build reproducible
+  (boo#1102408)
+
+-------------------------------------------------------------------
+Fri Jun 29 12:16:33 UTC 2018 - kstreitova@suse.com
+
+- require p7zip-full for TW as 7z binary needed by perl-File-Unpack
+  was moved to this package (see bsc#899627 for more details about
+  this change)
+
+-------------------------------------------------------------------
+Fri Feb 23 08:32:23 UTC 2018 - adam.majer@suse.de
+
+- use mkisofs to supply `isoinfo` program instead of genisoimage
+
+-------------------------------------------------------------------
+Sun Sep  3 10:11:49 UTC 2017 - coolo@suse.com
+
+- fix file list hackery
+
+-------------------------------------------------------------------
+Sat Apr  1 17:40:35 UTC 2017 - coolo@suse.com
+
+- add 6.diff from my pull request
+
+-------------------------------------------------------------------
+Thu Mar 16 16:09:50 UTC 2017 - coolo@suse.com
+
+- add 5.diff from pull request of micha
+
+-------------------------------------------------------------------
+Tue Feb 21 18:37:08 UTC 2017 - coolo@suse.com
+
+- add fix-xml-test.diff to fix tests on tumbleweed
+
+-------------------------------------------------------------------
+Fri Mar 13 13:52:27 UTC 2015 - jw@owncloud.com
+
+- Update to 0.70
+  - added support for MacOS pkg files that are xar archives.
+
+-------------------------------------------------------------------
+Mon Jul 21 15:27:59 UTC 2014 - jw@owncloud.com
+
+- Added symlinks file_unpack_deep and unpack_deep to exploit the new semantics.
+
+- Update to 0.69
+  - fixed https://github.com/jnweiger/perl-File-Unpack/issues/2
+  - Semantics change of file_unpack.pl:
+    Default to one_shot unless $0 contains 'deep'. New --deep option to also switch this one.
+    This is a move towards least surprise. No other unpacker has this deep feature.
+  
+  - Fixed builtin helper for application=x-lzip to conform to IPC::Run::run() semantics.
+  - Added an example how to write a mime helper script to the documentation.
+  - Fixed diagnostics in case a helper script fails.
+
+-------------------------------------------------------------------
+Thu Jun 12 12:49:34 UTC 2014 - jnweiger@gmail.com
+
+- perl-String-ShellQuote pulled in by name, to work around 
+  perl-App-cpanminus false positives.
+
+-------------------------------------------------------------------
+Mon Jan 27 21:31:11 UTC 2014 - jw@suse.com
+
+- 0.66	harmful filename test removed, fixing bnc#860561. 
+  The name may not match, when symlinking back. Readlink is the only thing that counts.
+- _run_mime_helper() now returns diagnostics even when 'successful' so that we 
+  can see reasoning for 'passed'.
+- added t/08-survive-corrupt.t to define behavoiur for good10.pdf and bad34.pdf
+- registered the two new test files with t/02-mime.t and t/07-cmdline.t
+
+-------------------------------------------------------------------
+Tue Aug  6 11:43:58 UTC 2013 - jw@suse.com
+
+- 0.65 CPAN no longer fails with  'Using $< in a non-suffix rule context is a GNUmake idiom'
+
+-------------------------------------------------------------------
+Mon Jul 29 18:58:51 UTC 2013 - jw@suse.com
+
+- 0.64 fixed explosions on ksh:
+  * assert writable dirs in _run_mime_helper while disassembling jail.
+    needed for ksh/ast-base.2012-08-01.tar.bz2/src/cmd/pax/data/ro.dat
+  * all rename()s in _run_mime_helper() equipped with or die.
+  * DESTROY() now handles more cases: Adding the epilog when missing is paramount.
+
+-------------------------------------------------------------------
+Tue Jun 18 11:04:50 UTC 2013 - jw@suse.com
+
+- require lzip only for factoy. It is simply nowhere else.
+
+-------------------------------------------------------------------
+Fri Jun 14 10:29:04 UTC 2013 - jw@suse.com
+
+- 0.63 * supporting lzip, untested
+
+-------------------------------------------------------------------
+Tue May  7 18:28:40 UTC 2013 - jw@suse.com
+
+- 0.62 * support pax
+
+-------------------------------------------------------------------
+Mon Apr 29 14:24:31 UTC 2013 - jw@suse.com
+
+- 0.60 * report text/x-application-xml instead of application/xml
+         for ordinary xml files.
+
+-------------------------------------------------------------------
+Tue Mar 26 22:00:36 UTC 2013 - jw@suse.com
+
+- 0.59  * helping upx to survive symlinks. "%{lsrc}s" format added.
+        * POD fixes from from anirvan/patch-1
+        * application/msword helper added. Using antiword.
+	* helper diagnostics improved: first line of stderr is captured in 
+	  the log.
+	* {verbose} control improved.
+
+-------------------------------------------------------------------
+Fri Feb  8 10:19:00 UTC 2013 - jw@suse.com
+
+- 0.58	- bugfix: {inside_archives} was not decremented after leaving an archive.
+
+-------------------------------------------------------------------
+Thu Feb  7 20:06:13 UTC 2013 - jw@suse.com
+
+- 0.57 - fixed -f to really allow crawling symlinks.
+	  * the logfile will contain the link name, not the link target.
+	  * it thus preserves the illusion that all is inside the destination tree.
+	- The following command can now be used to recreate the logfile (and retry more unpacking)
+	  in $DIR:
+	  file_unpack -D $DIR -f -L $DIR.unpack.log $DIR
+	- _run_mime_helper(): cleanup $jail_base added when cmd fails to run. 
+	  Helper failure may still may result in missing files.
+	- t/07-cmdline.t added.
+
+-------------------------------------------------------------------
+Tue Feb  5 20:04:12 UTC 2013 - jw@suse.com
+
+- 0.56	- guard _my_shell_quote against undef. 
+	- no 'running as root warning' when !{verbose}
+	- Relax testsuite on test.mht
+	- relax DESTROY to not start a logfile, when none is requested.
+	- testsuite really silent now.
+
+-------------------------------------------------------------------
+Fri Jan 25 21:59:29 UTC 2013 - jw@suse.com
+
+- oops, t/data/test.mht  not included.
+
+-------------------------------------------------------------------
+Fri Jan 25 21:22:05 UTC 2013 - jw@suse.com
+
+- 0.55	- option --follow-file-symlinks or new(follow_file_symlinks => $yes) added;
+	  where $yes is 0, 1, or 2.
+	  We may want to use '1', if we are e.g. inside a legaldb_unpacked 
+	  tree, where everything is a symlink. This usage is experimental.
+	  A value of '2' is hideous and requires studying perldoc Unpack.pm first.
+	- tracking $self->{inside_archives} added. Also experimental.
+
+-------------------------------------------------------------------
+Thu Aug 23 18:48:17 UTC 2012 - jw@suse.com
+
+- attempting to build the C-Version of stringsx.
+  RPM does not like this, it enforces noarch on me.
+  -> unused
+
+-------------------------------------------------------------------
+Fri Mar  9 16:17:20 UTC 2012 - jw@suse.com
+
+- 0.54  - no longer add special files like fifos, sockets, dev nodes to the logfile.
+	- loggable_pathname adds {srcdir => 'input'} if path is in $self->{input}
+
+-------------------------------------------------------------------
+Tue Feb 21 14:23:27 UTC 2012 - jw@suse.com
+
+- 0.53a file_unpack binary was not updated to actually use the 
+        new plaintext feature. Rerolled 0.53 tar ball.
+
+-------------------------------------------------------------------
+Fri Feb 17 00:42:24 UTC 2012 - jw@suse.com
+
+- 0.53  - new parameter -A and new(archive_name_as_dir=>1) added.
+	- new(log_type => 'PLAIN') added, used unless -L
+
+-------------------------------------------------------------------
+Wed Feb  1 00:53:53 UTC 2012 - jw@suse.com
+
+- 0.52  - logfile: input menitoned on 'passed' items.
+	- Makefile.PL now actually installs file_unpack (rt#73670).
+	  Man page is a hack. Sorry.
+	- file_unpack can now unpack multiple archives on the command line.
+	- helper/handler wording now consistently speaks of helpers.
+
+-------------------------------------------------------------------
+Wed Jan 25 19:21:48 UTC 2012 - jw@suse.com
+
+- 0.51  input archives that do not exist in destdir (because they were unpacked)
+	now show up in the log prefixed with './input/./' unless fullpath.
+
+-------------------------------------------------------------------
+Tue Jan 24 17:45:32 UTC 2012 - jw@suse.com
+
+- 0.50 	made testsuite survive on SLE11_SP1, put IO::Handle::tell() 
+        inside eval to survive SLES11_SP1
+
+-------------------------------------------------------------------
+Mon Jan 23 18:15:18 UTC 2012 - jw@suse.com
+
+- 0.49	made survive ntop, in{file} must not modify, so that reopen inside mime() works.
+
+-------------------------------------------------------------------
+Tue Nov 29 11:35:46 UTC 2011 - jw@suse.com
+
+- 0.48   made compatible with perl-5.14.2 where qw() is (qw())
+
+-------------------------------------------------------------------
+Tue Oct  4 23:41:15 UTC 2011 - jw@suse.com
+
+- 0.47  Fixed rt#70885
+
+-------------------------------------------------------------------
+Thu Sep  8 16:07:22 UTC 2011 - jw@novell.com
+
+- 0.46  Incompatible change: unpacked filenames are now relative to destdir
+	unless -F or ->new(log_fullname => 1)
+	New parameter -P or ->new(log_params => {}) to feed params into the 
+	logfile.
+
+-------------------------------------------------------------------
+Fri May 27 11:23:38 UTC 2011 - jw@novell.com
+
+- 0.45	Added option world_readable=>1, to assert 0755/0444 modes for dirs/files.
+
+-------------------------------------------------------------------
+Fri May 20 10:55:16 UTC 2011 - jw@novell.com
+
+- 0.44	using syswrite in log() to catch errors.
+
+-------------------------------------------------------------------
+Thu May 12 11:40:29 UTC 2011 - jw@novell.com
+
+- 0.43 	Implemented no_op option in _run_mime_handler().
+        Added -n option to file_unpack.pl
+
+-------------------------------------------------------------------
+Thu Apr 21 13:58:55 UTC 2011 - jw@novell.com
+
+- 0.42  Unexpected DESTROY handler closes json 
+	logfile properly with an {error} message, if any.
+
+-------------------------------------------------------------------
+Mon Apr 18 13:00:13 UTC 2011 - jw@novell.com
+
+- 0.41	Statistics in logfile about skipped (exclude and symlink) files.
+
+-------------------------------------------------------------------
+Sat Apr 16 00:30:42 UTC 2011 - jw@novell.com
+
+- 0.40	less verbose with differing destnames...
+	Survive crashes in run(). 
+	logfile json syntax preserved, even when terminating error message. No more trailing dummy "/":{}
+
+-------------------------------------------------------------------
+Wed Apr  6 18:01:26 UTC 2011 - jw@novell.com
+
+- 0.39 Try /._\d?/ name suffixes on collisions to avoid _fu_* directories if possible.
+      Added _chmod_add() to help creating readable files and executable directories.
+      Raised default maxfilesize from 100M to 2.5G, honors FILE_UNPACK_MAXFILESIZE too.
+
+-------------------------------------------------------------------
+Thu Mar 31 23:15:27 UTC 2011 - jw@novell.com
+
+- t/data/monotone.info was missing in MANIFEST
+
+-------------------------------------------------------------------
+Thu Mar 31 09:11:58 UTC 2011 - jw@novell.com
+
+- 0.38	Both File::LibMagic and File::MimeInfo::Magic fail on info files.
+	Ask perl -T and return application/x-text-mixed in that case.
+	Fixed comparison with RLIM_INFINITY, it evaluates -1.
+
+
+-------------------------------------------------------------------
+Tue Mar 29 11:12:45 UTC 2011 - jw@novell.com
+
+- fix manpage to not contain ./ macros.
+
+-------------------------------------------------------------------
+Mon Mar 28 22:16:50 UTC 2011 - jw@novell.com
+
+- added a primitive man-page using .nf
+
+-------------------------------------------------------------------
+Mon Mar 28 19:56:36 UTC 2011 - jw@novell.com
+
+- 0.37	Fixed setrlimit() calls, to not explode, when the limit is already lower.
+	Minor cleanup.
+
+-------------------------------------------------------------------
+Fri Mar 25 21:54:36 UTC 2011 - jw@novell.com
+
+- 0.36	removed dependency on lsof, in favour of /proc and builtin
+        _children_fuser(). tick-tick now shows the percentage of the fastest moving fd.
+
+-------------------------------------------------------------------
+Thu Mar 24 18:22:47 UTC 2011 - jw@novell.com
+
+- 0.35	tested with gcc-ejc, parsing lsof output with $u->run() during $u->run(). Yeah!
+	Libmagic perl module explodes with malformed utf8, assert LC_ALL=C. 
+	run() untaint argv0. needed for running helpers under -T
+	Empty file is text/x-empty now. not application/x-empty.
+
+-------------------------------------------------------------------
+Tue Mar 22 15:12:27 UTC 2011 - coolo@novell.com
+
+- unrar is unfree software
+
+-------------------------------------------------------------------
+Thu Mar 10 01:13:42 UTC 2011 - jw@novell.com
+
+- updated to 0.32, 
+  fixed logfile JSON syntax.
+  fixed setrlimit().
+
+-------------------------------------------------------------------
+Wed Mar  9 15:21:56 UTC 2011 - jw@novell.com
+
+- updated to 0.31, docu fixes. list() mode added.
+
+-------------------------------------------------------------------
+Tue Dec 14 22:54:52 UTC 2010 - jw@novell.com
+
+- 0.29  Mention /usr/bin/file_unpack in perldoc
+
+-------------------------------------------------------------------
+Sun Dec  5 21:29:31 UTC 2010 - jw@novell.com
+
+- added /usr/bin/unpack_file as a symlink
+
+- 0.28  Look only at files and dirs, ignore special files.
+	Reading a pipe could block us endlessly.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:27 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Sep 24 16:22:46 UTC 2010 - jw@novell.com
+
+- 0.27	new feature in mime(): attempt full file access
+	not only if flm reports currupt, but also when it reports
+	a/octet-stream. This helps to recognize a/x-iso9660-image
+	Added .iso by including my old unpack_iso.pl as a helper.
+	Added .lha
+
+-------------------------------------------------------------------
+Fri Sep 10 17:17:57 UTC 2010 - jw@novell.com
+
+- 0.26	Added .upx; we are testing all application/*-executable for upx to get the mime type.
+	Fixed test results on SLE-11, 02-mime.t now can match regexp too.
+	Dependencies sharpened: file >= 5.03 shared-mime-info >= 0.60
+
+-------------------------------------------------------------------
+Wed Sep  8 20:39:30 UTC 2010 - jw@novell.com
+
+- 0.25 	Added .cpio, .deb, .cab, .7z
+	Removed done_testing() for the sake of old Test::More on 11.1
+
+-------------------------------------------------------------------
+Wed Sep  8 20:18:49 CEST 2010 - jw@suse.de
+
+- 0.24  Fixed helper. There was a debug die :-)
+
+-------------------------------------------------------------------
+Wed Sep  1 22:51:04 UTC 2010 - jw@novell.com
+
+- 0.23  Added option one_shot, to new() and file_unpack.pl
+	Added unpacking of: application/pdf, %tar+lzma, %rar, %uuencode
+	Added '# Requires: ....' comments with the builtin handlers to document 
+	the non-perlish dependencies. 
+	Fixed recognition of .xls -- File::LibMagic said corrupt, with only a short buffer.
+	Swapped 2nd and 3rd parameter of _run_mime_handler(): mime helpers have now their
+	suggested destname as second parameter.
+	mime(): added suffix rules for 'text/plain' and 'application/octet-stream', 
+	to harvest even the least trusted source of information, in the absence
+	of anything else.
+	Implemented first draft of helper/text/=x-shellscript: tested embedded gzip.
+	Added -L option to file_unpack.pl; 
+	_run_mime_handler() now untaints its argv. run() errors are now propagated.
+	t/04-subdir.t now does a real-life unzip test, if unzip is available.
+	Lowered $RECURSION_LIMIT to 200. 1000 takes ages with big files.
+	Call bunzip2 with -f, but don't call xz with -f.
+	Fixed unpack() to not hit 256 char limit per filename so easily.
+	Tested mime_handler_dir(), now it actually works. Introduced a default directory
+	/usr/share/File-Unpack/helper.
+	Preparing env variable PERL5LIB for helpers.
+	mime(): Fixed usage of LZMA alone decoder: count as positive, only of output appeared.
+	text/x-shellscript: uudecode and shar support tested; works now.
+
+-------------------------------------------------------------------
+Mon Aug 30 16:31:41 UTC 2010 - jw@novell.com
+
+- 0.22	Fixed descending of destdir into subdirs of subdirs
+	Added t/04-subdir.t, 
+	Added first support for running unpack() under -T
+	Replaced MANIFEST.SKIP with a filter in t/manifest.t
+	Fixed t/02-mime.t to survive missing shared-mime-info.
+	(Makefile.PL cannot require non-perl packages, can it?)
+
+-------------------------------------------------------------------
+Wed Aug 25 20:46:03 UTC 2010 - jw@novell.com
+
+- 0.21 Added 'nothing-to-do' semantic for mime-helpers: Point back by symlink.
+        Added helper/text=x-shellscript to demonstrate this.
+        Made external mime-helpers work: registering, calling.
+        Remember absolut path, call mime_type() correctly.
+        Started to propagate errors from _run_mime_handler() to unpack().
+        mime(): In SLES11 we get 'text/plain charset=utf-8' without semicolon.
+
+-------------------------------------------------------------------
+Tue Aug 24 20:14:14 UTC 2010 - jw@novell.com
+
+- 0.20 from cpan
+

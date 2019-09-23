@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Mon Jul  1 06:29:09 UTC 2019 - ecsos@opensuse.org
+
+- update to 0.4.7
+  No changelog from upstream.
+  See instead here:
+  https://github.com/kovidgoyal/html5-parser/compare/v0.4.6...v0.4.7?diff=unified&name=v0.4.7
+
+-------------------------------------------------------------------
+Wed May 29 14:38:09 UTC 2019 - ecsos@opensuse.org
+
+- update to 0.4.6
+  No changelog from upstream.
+  See instead here:
+  https://github.com/kovidgoyal/html5-parser/compare/v0.4.5...v0.4.6?diff=unified&name=v0.4.6
+
+-------------------------------------------------------------------
+Tue Feb  5 12:02:41 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- add pkgconfig build dependency
+
+-------------------------------------------------------------------
+Wed Jun 27 17:15:29 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.4.5
+  No changelog from upstream.
+  See instead here:
+  https://github.com/kovidgoyal/html5-parser/compare/v0.4.4...v0.4.5?diff=unified&name=v0.4.5
+
+-------------------------------------------------------------------
+Fri Sep 29 16:19:18 UTC 2017 - jengelh@inai.de
+
+- Reword descriptions for neutrality and accuracy.
+
+-------------------------------------------------------------------
+Mon Aug 14 14:52:38 UTC 2017 - opensuse@dstoecker.de
+
+- update to 0.4.4
+
+-------------------------------------------------------------------
+Fri Jul 28 17:02:03 UTC 2017 - ecsos@opensuse.org
+
+- initial version 0.4.3 

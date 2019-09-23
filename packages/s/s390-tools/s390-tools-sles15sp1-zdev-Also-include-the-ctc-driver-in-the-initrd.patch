@@ -1,0 +1,11 @@
+--- a/zdev/dracut/95zdev/module-setup.sh	2019-01-10 11:39:08.000000000 -0500
++++ b/zdev/dracut/95zdev/module-setup.sh	2019-01-14 13:28:33.983461097 -0500
+@@ -32,7 +32,7 @@
+ installkernel() {
+     # Add modules for all device types supported by chzdev (required for
+     # auto-configuration)
+-    instmods lcs qeth qeth_l2 qeth_l3 dasd_mod dasd_eckd_mod dasd_fba_mod \
++    instmods ctcm lcs qeth qeth_l2 qeth_l3 dasd_mod dasd_eckd_mod dasd_fba_mod \
+ 	     dasd_diag_mod zfcp
+ }
+ 

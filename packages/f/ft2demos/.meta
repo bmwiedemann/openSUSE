@@ -1,0 +1,5 @@
+<package name="ft2demos" project="openSUSE:Factory">
+  <title>Freetype2 Utilities and Demo Programs</title>
+  <description>Freetype2 utilities and demo programs.</description>
+  <devel project="openSUSE:Factory" package="freetype2"/>
+</package>

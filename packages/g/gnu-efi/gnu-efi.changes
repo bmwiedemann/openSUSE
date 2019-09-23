@@ -1,0 +1,469 @@
+-------------------------------------------------------------------
+Thu Oct 11 08:15:40 UTC 2018 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add gnu-efi-fix-strncpy-stpncpy-strncat.patch to fix StrnCpy(),
+  StpnCpy(), and StrnCat()
+
+-------------------------------------------------------------------
+Fri Oct  5 09:19:44 UTC 2018 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to gnu-efi 3.0.8
+  + Add debug helper applications
+  + Call ar in deterministic mode
+  + Nerf -Werror=pragma away
+  + Make ARCH overrideable on the command line
+  + Add %D to print device paths
+  + gnu-efi: add some more common string functions
+  + Fix typedef of EFI_PXE_BASE_CODE
+  + Work around -Werror=maybe-uninitialized not being very bright
+  + Fix arm build paths in the makefile
+  + Fix some types gcc doesn't like
+  + Move memcpy/memset definition to global init.c
+  + Use ARFLAGS when invoking ar
+  + Disable AVX instruction set on IA32 and x86_64 platforms
+  + Declare EFI_PXE_BASE_CODE correctly
+  + inserts the libefi.a objects in a stable order
+  + fallthrough attribute to notify gcc7
+  + x86-64/efibind: sanitize ms-abi cpp conditionals
+  + Add Exit() library function which calls BS->Exit()
+  + don't expect non-x86 compilers to compile x86 asm. also remove
+    what looks like garbage inside an #if 0 block
+  + For compatibility with an upcoming EDK2 feature
+- Drop upstreamed patches
+  + gnu-efi-ar-stable-order.patch
+  + gnu-efi-fix-efi-pxe-base-code.patch
+  + gnu-efi-fix-switch-warning.patch
+- Drop gnu-efi-fix-armv6-and-armv7-detection.patch since upstream
+  supports ARM officially
+
+-------------------------------------------------------------------
+Tue Mar 13 22:06:59 UTC 2018 - kasimir_@outlook.de
+
+- Fix armv6 builds
+  * Renamed gnu-efi-fix-armv7-detection.patch to gnu-efi-fix-armv6-and-armv7-detection.patch
+
+-------------------------------------------------------------------
+Sat Jan 27 16:55:32 UTC 2018 - guillaume@opensuse.org
+
+- Add gnu-efi-fix-armv7-detection.patch to fix ARM32 builds
+
+-------------------------------------------------------------------
+Tue Jun 13 08:49:16 UTC 2017 - glin@suse.com
+
+- Add gnu-efi-fix-efi-pxe-base-code.patch to fix the declaration
+  of EFI_PXE_BASE_CODE
+
+-------------------------------------------------------------------
+Fri Jun  2 01:55:41 UTC 2017 - glin@suse.com
+
+- Update to gnu-efi 3.0.5
+  + Allow gcc to emit warnings for unsafe usage of setjmp/longjmp
+  + GCC 4.8 (and others) const warnings
+  + GNU ar warning about deterministic mode
+  + Add Debugger protocol support
+  + Add EBC (EFI Byte Code) protocol support
+  + Add support for PCI Root Bridge I/O protocol
+  + Add support for some UEFI 2.0 protocols
+  + Add GUID for SMBIOS 3 entry point structure
+  + adds definitions to efiprot.h for EFI_EDID_ACTIVE_PROTOCOL,
+    EFI_EDID_DISCOVERED_PROTOCOL, EFI_EDID_OVERRIDE_PROTOCOL
+  + Protocol struct/type/define renaming to match spec naming
+    convention
+  + Add support for EFI_RNG_PROTOCOL to the library
+  + Moved LOADED_IMAGE_PROTOCOL definitions into efiprot.h with
+    other protocol definitions
+  + Added definitions for EFI HASH PROTOCOL
+  + Add definitions for EFI_COMPONENT_NAME_PROTOCOL and
+    EFI_COMPONENT_NAME2_PROTOCOL
+  + Global GUID for DRIVER_BINDING_PROTOCOL
+  + Add definitions for EFI_DRIVER_BINDING_PROTOCOL
+  + make "-Wall -Wextra" work
+  + make "-Werror=old-style-declaration" work
+  + Don't pass a pointer-to-(LoadedImage *) as a void **
+  + make "-Werror=unused-but-set-variable" work
+  + make "-Werror=unused-parameter" not fail
+  + arm: fix linker script for building efi binaries
+  + ARM/AARCH64: define C99 types explicitly when building against
+    older standard
+  + Add ARM .note.gnu.build-id input section to a dedicated output
+    section
+  + Replace ARM arithmetic support routines with EDK2 versions
+  + Relicense ARM and AARCH64 source files as both BSD and GPL
+  + lib/arm/setjmp.S: Use %function instead of @function
+  + Add the missing URI device path to the unions
+- Add gnu-efi-fix-switch-warning.patch to fix gcc7 warning
+- Add gnu-efi-ar-stable-order.patch to keep the object files in a
+  stable order (bsc#978586)
+- Drop upstreamed patch gnu-efi-add-missing-unions.patch
+
+-------------------------------------------------------------------
+Fri Feb 26 07:12:02 UTC 2016 - glin@suse.com
+
+- Add gnu-efi-add-missing-unions.patch to add the missing URI
+  entries in EFI_DEV_PATH and EFI_DEV_PATH_PTR
+
+-------------------------------------------------------------------
+Tue Aug 18 04:24:16 UTC 2015 - glin@suse.com
+
+- Update to gnu-efi 3.0.3
+  + Add URI Device Path
+  + Makes the symbols consistent between the linker scripts
+  + Added some missing error code descriptions
+  + Add setjump()/longjump()
+- Drop patches
+  + gnu-efi-setjmp.patch
+  + gnu-efi-missing-error-code.patch
+
+-------------------------------------------------------------------
+Fri Jun 12 08:06:57 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Resolve merge conflicts
+
+-------------------------------------------------------------------
+Thu Jun 11 04:08:53 UTC 2015 - glin@suse.com
+
+- Update to gnu-efi 3.0.2
+  + Fix ARM32 and AARCH64 builds
+  + _SPrint: fix NULL termination
+  + Add current OsIndications values
+  + Add the QueryVariableInfo() API
+  + Add the capsule API
+  + Fix Table Header misspelling. Change from EFI_TABLE_HEARDER to
+    EFI_TABLE_HEADER.
+  + Allow reuse of this file beyond GPL compatible software, update
+    the license of crt0-efi-aarch64.S to dual 2-clause BSD/GPLv2+.
+  + Add the missing Variable attributes
+  + document that binutils >= 2.24 needed
+  + allow to use external stdarg.h
+  + Add support for 32-bit ARM
+- Enable ARM 32
+- Add upstream patches
+  + gnu-efi-setjmp.patch
+  + gnu-efi-missing-error-code.patch
+- Drop patches
+  + gnu-efi-allow-external-stdarg.patch (upstreamed)
+  + gnu-efi-build-fix.patch (no necessary)
+
+-------------------------------------------------------------------
+Fri Sep 26 02:41:54 UTC 2014 - glin@suse.com
+
+- Add gnu-efi-allow-external-stdarg.patch to allow the EFI programs
+  such as shim to use the external stdarg.h
+
+-------------------------------------------------------------------
+Mon Sep 22 08:56:19 UTC 2014 - glin@suse.com
+
+- Update to gnu-efi 3.0w
+  + Add support for 64-bit ARM (AArch64)
+  + Add support for non-PE/COFF capable objcopy
+  + Add support for cross compilation
+  + Restrict GNU_EFI_USE_MS_ABI GCC version test to x86_64
+  + Use Shell protocols to retrieve argc/argv, when available.
+  + document format of LoadedImage::LoadOptions data
+  + Use OpenProtocol instead of HandleProtocol
+  + move cmdline parser to its own file
+  + make cmdline parsing a 1st class citizen
+  + Avoid buffer overflow while parsing the cmdline args
+  + Fix cmdline parser
+  + inc/efistdarg.h: Use gcc builtins instead of stdarg.h or
+    broken stubs
+  + always observe EFIAPI calling convention when calling 
+    STO.SetAttribute
+  + Add VPoolPrint Function
+  + Cleaned up compile warnings
+  + a patch for "DevicePathToStr()" to display device path
+    according to UEFI 2 specification
+  + Removed GPL code setjmp_ia32.S, setjmp_ia64.S, setjmp_x86_64.S
+  + Remove incumbent GPL 'debian' subdiretory
+  + Add support for the simple pointer and absolute pointer
+    protocols
+  + Trying to recurse into subdirectories of object files may lead
+    to an error if the directory doesn't exist. Even when cleaning
+  + Make install used to copy files unconditionnally to their
+    destination. However, if the destination is used by another
+    Makefile, it will always see modified files. "install" target
+    now only updates the files when they need to.
+  + Patch GNU-EFI to remove the ELILO code
+  + Initialize Status before calling GrowBuffer()
+  + These changes allow manually overridden SRCDIR (current source
+    directory) and TOPDIR (top of source tree) to separate the
+    build directory from the source tree.
+  + fix uninitialized variables warning
+  + Implement VSPrint function, prints a formatted unicode string
+    to a buffer
+  + Created lib/argify.c and inc/argify.h containing the function
+    argify. It contains verbatim copy of the comment at beginning
+    of file from elilo.
+  + The information needed is not really the host architecture as
+    given by the kernel arch. The information actually needed is
+    the default target of gcc.
+  + The information needed is not really the host architecture as
+    given by the kernel arch. The information actually needed is
+    the default target of gcc.
+  + Added support for SetVariable to store volatile variable, and
+    SetNVVariable to store non volatile variable.
+  + Atoi needs to have consistent declaration/definition.
+  + Be more pedantic when linking, don't allow duplicate symbols,
+    abort upon first error.
+  + Fix compilation on x86_64 without HAVE_USE_MS_ABI
+  + Fix typo when disabling mno-mmx
+- Add gnu-efi-build-fix.patch to fix Makefile
+- Enable AArch64
+
+-------------------------------------------------------------------
+Wed Jul 17 09:18:03 UTC 2013 - glin@suse.com
+
+- Update to gnu-efi 3.0u
+  + Disable MMX and SSE to avoid using the uninitialized registers
+  + Support .text.* sections on x86_64
+  + Automatically determine number of uefi_call_wrapper() args on
+    x86_64
+  + Fix parameter-passing corruption on x86_64 for >= 5 args
+  + Add the definitions for TCP, UDP and IP, for both IPv4 and IPv6
+  + Fix UEFI functions that use the wrong ABI (System V ABI)
+  + Use new gcc flag: GNU_EFI_USE_MS_ABI
+  + Add new status codes to efierr.h
+  + Align stack properly to avoid crash
+  + Support UEFI PXE over IPv6
+
+-------------------------------------------------------------------
+Wed Nov  7 16:22:08 UTC 2012 - dmueller@suse.com
+
+- revert last change as it breaks the app completely
+
+-------------------------------------------------------------------
+Wed Jul 18 15:47:22 UTC 2012 - meissner@suse.com
+
+- cleaned below up, pass in OPTFLAGS and LIBDIR to make.
+
+-------------------------------------------------------------------
+Wed Jul 18 03:06:46 UTC 2012 - malcolmlewis@opensuse.org
+
+- Add gnu-efi-add-optflags-to-make-defaults.patch: Add additional
+  RPM OPT FLAGS to Make.defaults to avoid brp check warning.
+- Spec file clean up and rename rpmlintrc file.
+
+-------------------------------------------------------------------
+Thu Jun 14 03:17:09 UTC 2012 - glin@suse.com
+
+- Update to gnu-efi 3.0q
+  + Fix .reloc section to support UEFI Secure Boot
+  + Fix redefined types compilation failure on x86_64 machines
+  + Conditionally assign toolchain binaries to allow overriding
+    them
+  + Force a dependency on lib for gnuefi
+  + Add guarantee 16-byte stack alignment on x86_64
+  + Add routine to make callbacks work
+  + Add apps/tcc.efi to test calling convention
+  + Add ifdefs for ia64 to mirror ia32 and x86-64 so that
+    one can build with GCC.
+  + Add headers for PciIo
+  + Add the UEFI 2.x bits for EFI_BOOT_SERVICES
+  + Add an ignore for .note.GNU-stack section in X86-64 linker maps
+  + Change license from GPL to BSD
+  + Fix elf_ia32_efi.lds linker script to be compatible with the
+    new linker behaviour
+  + Fix to not having any relocations at all
+  + Add setjmp/longjmp
+  + Fixes incorrect section attribute in crt0-efi-ia32.S
+  + Adds value EfiResetShutdown to enum EFI_RESET_TYPE
+  + Fixes a RAW warning in reloc_ia64.S
+  + Adds the USB HCI device path structure in the headers
+  + Added '-mno-red-zone' to x68_64 compiles
+
+-------------------------------------------------------------------
+Fri Oct 17 08:52:44 CEST 2008 - olh@suse.de
+
+- add ExclusiveArch ia64 x86 x86_64
+
+-------------------------------------------------------------------
+Tue Jul 29 22:41:17 CEST 2008 - rw@suse.de
+
+- Update to gnu-efi 3.0e for uEFI/x86_64.  (fate#301882)
+
+-------------------------------------------------------------------
+Sun May 27 00:49:15 CEST 2007 - schwab@suse.de
+
+- Remove completely pointless devel package.
+- Add rpmlintrc instead.
+
+-------------------------------------------------------------------
+Sat May 26 23:54:40 CEST 2007 - ro@suse.de
+
+- Split off devel package.
+
+-------------------------------------------------------------------
+Fri Feb 23 10:44:50 CET 2007 - schwab@suse.de
+
+- Disable stack protector.
+
+-------------------------------------------------------------------
+Fri Jun 23 17:12:49 CEST 2006 - rw@suse.de
+
+- Update to gnu-efi 3.0c to fix building on IA-32.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:44:15 CET 2006 - mls@suse.de
+
+- Convert neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec  9 16:28:14 CET 2005 - rw@suse.de
+
+- Allow building on IA-32.
+
+-------------------------------------------------------------------
+Tue Nov 29 19:10:23 CET 2005 - rw@suse.de
+
+- Update to gnu-efi 3.0b-041222.
+
+-------------------------------------------------------------------
+Tue Aug  3 15:42:54 CEST 2004 - schwab@suse.de
+
+- Discard unwind sections.
+
+-------------------------------------------------------------------
+Sat Apr 17 18:15:45 CEST 2004 - schwab@suse.de
+
+- Pacify autobuild.
+
+-------------------------------------------------------------------
+Fri Sep 26 20:43:48 CEST 2003 - schwab@suse.de
+
+- Fix linker script to include all data sections.
+
+-------------------------------------------------------------------
+Fri Jul 25 20:34:26 CEST 2003 - schwab@suse.de
+
+- Revert last change, was actually a binutils bug.
+
+-------------------------------------------------------------------
+Tue Apr  8 17:31:25 CEST 2003 - schwab@suse.de
+
+- Fix @gprel reference in crt object.
+
+-------------------------------------------------------------------
+Tue Feb 26 11:24:55 CET 2002 - schwab@suse.de
+
+- Update to gnu-efi 3.0a.
+
+-------------------------------------------------------------------
+Sat Nov 24 20:33:04 CET 2001 - schwab@suse.de
+
+- Add .rodata.* to linker script.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:33:45 CEST 2001 - schwab@suse.de
+
+- Update to gnu-efi 3.0.
+- Split off elilo.
+
+-------------------------------------------------------------------
+Tue May 22 10:45:05 CEST 2001 - schwab@suse.de
+
+- Update to gnu-efi 2.5.
+
+-------------------------------------------------------------------
+Fri May 11 15:48:39 CEST 2001 - schwab@suse.de
+
+- Add initrd fix.
+- Reduce timeout.
+
+-------------------------------------------------------------------
+Thu Apr 26 09:46:09 CEST 2001 - schwab@suse.de
+
+- neededforbuild lx_ia64 -> kernel-source.
+
+-------------------------------------------------------------------
+Fri Apr  6 10:48:36 CEST 2001 - schwab@suse.de
+
+- Update to gnu-efi 2.0.
+- Package renamed to gnu-efi.
+
+-------------------------------------------------------------------
+Tue Mar 13 17:29:15 CET 2001 - schwab@suse.de
+
+- Install some documentation.
+- Add unwind patch from David Mosberger.
+
+-------------------------------------------------------------------
+Wed Feb 14 12:05:49 CET 2001 - schwab@suse.de
+
+- Add lx_ia64 to neededforbuild.
+- Get kernel headers from /usr/src/linux.
+
+-------------------------------------------------------------------
+Sun Nov 26 22:42:24 CET 2000 - schwab@suse.de
+
+- Preserve .sdata section.
+
+-------------------------------------------------------------------
+Mon Nov  6 22:51:33 CET 2000 - schwab@suse.de
+
+- Update to gnu-efi 1.1.
+- Add `initrd=initrd' to sample eli.cfg.
+
+-------------------------------------------------------------------
+Fri Oct 13 10:58:53 CEST 2000 - schwab@suse.de
+
+- Update to gnu-efi 1.0.
+
+-------------------------------------------------------------------
+Mon Sep 11 16:55:35 CEST 2000 - schwab@suse.de
+
+- Mark startup.nsh as %config(noreplace).
+
+-------------------------------------------------------------------
+Thu Aug 17 11:45:50 CEST 2000 - schwab@suse.de
+
+- Fix initrd support.
+
+-------------------------------------------------------------------
+Tue Aug  8 10:35:47 CEST 2000 - schwab@suse.de
+
+- Update to gnu-efi 0.9.
+- Install lilo.efi in /boot.
+
+-------------------------------------------------------------------
+Mon Jul 17 17:43:16 CEST 2000 - schwab@suse.de
+
+- Add argv bug fix.
+
+-------------------------------------------------------------------
+Fri Jun 30 14:17:11 CEST 2000 - schwab@suse.de
+
+- Update to 0.4.0.
+- Fix uninitialized variable.
+
+-------------------------------------------------------------------
+Fri Jun 16 11:08:42 CEST 2000 - @suse.de
+
+- Update from CVS.
+
+-------------------------------------------------------------------
+Mon Jun  5 13:26:28 CEST 2000 - schwab@suse.de
+
+- Add initrd support.
+
+-------------------------------------------------------------------
+Wed May 31 18:10:39 CEST 2000 - schwab@suse.de
+
+- Fix allocation bug.
+
+-------------------------------------------------------------------
+Wed May 17 16:21:47 CEST 2000 - schwab@suse.de
+
+- Add eli.cfg and startup.nsh to package.
+
+-------------------------------------------------------------------
+Mon May 15 14:19:33 CEST 2000 - schwab@suse.de
+
+- Fix bug in AML parser.
+- Udate to gnu-efi 0.8.
+
+-------------------------------------------------------------------
+Tue Mar  7 18:58:12 CET 2000 - schwab@suse.de
+
+- Package created.
+

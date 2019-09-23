@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4c4b33afa916eedb2efcfdec0f2b7b7f</srcmd5>
+    <version>2.9.2</version>
+    <time>1356703235</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>145894</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4c4b33afa916eedb2efcfdec0f2b7b7f</srcmd5>
+    <version>2.9.2</version>
+    <time>1359109030</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b1a7e60bededafe387106b2c14d33998</srcmd5>
+    <version>2.9.3</version>
+    <time>1371544252</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.9.3</comment>
+    <requestid>179022</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b1a7e60bededafe387106b2c14d33998</srcmd5>
+    <version>2.9.3</version>
+    <time>1379662591</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>96f4762e971c399b0b7bd8785f236a32</srcmd5>
+    <version>2.9.4</version>
+    <time>1391765155</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to new upstream release 2.9.4</comment>
+    <requestid>220761</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>96f4762e971c399b0b7bd8785f236a32</srcmd5>
+    <version>2.9.4</version>
+    <time>1409301138</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>731c64cd12396a67498cba47fa6c0167</srcmd5>
+    <version>2.9.4</version>
+    <time>1411627378</time>
+    <user>coolo</user>
+    <comment>- Drop gpg-offline build-time requirement; this is now handled by
+  the local source validator</comment>
+    <requestid>251696</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>04d71edd2ad6a08dce67632963b899b7</srcmd5>
+    <version>2.9.5</version>
+    <time>1412799246</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>254706</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>dfed4fc0467874b2cf3e0a813e30c49b</srcmd5>
+    <version>2.9.5</version>
+    <time>1443068162</time>
+    <user>coolo</user>
+    <comment>- Add escdelay.diff to work around unintended use of ncurses API</comment>
+    <requestid>333141</requestid>
+  </revision>
+</revisionlist>

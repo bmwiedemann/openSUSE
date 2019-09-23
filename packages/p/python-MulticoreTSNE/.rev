@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7bab7a21e7eae549431f9c842cc665ac</srcmd5>
+    <version>0.0.1.1</version>
+    <time>1545223802</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655455</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>de8c23ad1aced867618497cac1a35ed1</srcmd5>
+    <version>0.1</version>
+    <time>1552380884</time>
+    <user>dimstar_suse</user>
+    <comment>- Respect optflags
+- Update to 0.1 release:
+  * no upstream changelog</comment>
+    <requestid>683877</requestid>
+  </revision>
+</revisionlist>

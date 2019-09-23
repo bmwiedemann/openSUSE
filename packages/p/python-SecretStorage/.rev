@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1228370afa5dda438593b919b6aae4f0</srcmd5>
+    <version>2.3.1</version>
+    <time>1473349048</time>
+    <user>dimstar_suse</user>
+    <comment>needed for python-keyring</comment>
+    <requestid>424145</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6322114c82b2e2ce83d8a2abfb91cb10</srcmd5>
+    <version>2.3.1</version>
+    <time>1480951922</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442569</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d00cad2ed7367f3896712c7f0cec0ecd</srcmd5>
+    <version>2.3.1</version>
+    <time>1485167487</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451346</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f5ed577ee695faebaaba5859071c39ee</srcmd5>
+    <version>2.3.1</version>
+    <time>1494937672</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492351</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>892c328b4c47f12d8bad7f38c46f094b</srcmd5>
+    <version>2.3.1</version>
+    <time>1516880226</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dbus-python deps to ease the logic and allow python2less build</comment>
+    <requestid>568848</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>cf9ed64a078bf3b1494f25e9904c689f</srcmd5>
+    <version>2.3.1</version>
+    <time>1545376802</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659357</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,41 @@
+#!/bin/sh
+#
+# script to create the file system environment for rrdcached
+# from rrdtool package. This is needed, as openSUSE >= 13.1
+# enforces use of systemd, and does not allow the old-style
+# init.d script.
+# Hence, the content here is shamelessly ripped from the
+# init.d script.
+#
+
+# Check for existence of needed config file and read it
+RRDCACHED_CONFIG='/etc/sysconfig/rrdcached'
+test -r $RRDCACHED_CONFIG || { echo "$RRDCACHED_CONFIG not existing";
+        if [ "$1" = "stop" ]; then exit 0;
+        else exit 6; fi; }
+
+# Read config   
+. $RRDCACHED_CONFIG
+
+check_and_create_dir() {
+        local DIR=$1
+        test -d "$DIR" || mkdir -p "$DIR"
+}
+
+case "$RRDCACHED_ADDRESS" in
+        unix:*)
+                SOCKETDIR=$(dirname ${RRDCACHED_ADDRESS#unix:})
+                check_and_create_dir "$SOCKETDIR"
+                chgrp $RRDCACHED_GROUP "$SOCKETDIR"
+        ;;
+esac
+case "$RRDCACHED_CHROOT_DIR" in 
+        /tmp)
+                echo "Warning: starting with chroot dir $RRDCACHED_CHROOT_DIR" >&2
+        ;;
+        *)
+                check_and_create_dir "$RRDCACHED_CHROOT_DIR"
+                chown $RRDCACHED_USER:$RRDCACHED_GROUP "$RRDCACHED_CHROOT_DIR"
+        ;;
+esac
+

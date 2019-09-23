@@ -1,0 +1,980 @@
+<revisionlist>
+  <revision rev="1" vrev="27">
+    <srcmd5>eaf5e835626778464a5124bbfd814e31</srcmd5>
+    <version>1.5.13</version>
+    <time>1168903563</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="48">
+    <srcmd5>739e36a4e94743310550e78bccf59e7c</srcmd5>
+    <version>1.5.13</version>
+    <time>1172513073</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="52">
+    <srcmd5>f25642855a2c18a696509402860d4fc0</srcmd5>
+    <version>1.5.13</version>
+    <time>1174681497</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="66">
+    <srcmd5>1a7e590b2edc39566f38f21a114ff255</srcmd5>
+    <version>1.5.13</version>
+    <time>1179395180</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7732317d83b35b13ab0fb623f6cfd950</srcmd5>
+    <version>1.5.15</version>
+    <time>1180900477</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7432cf34a74f3fe4371356a3eede88ee</srcmd5>
+    <version>1.5.16</version>
+    <time>1182458655</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="32">
+    <srcmd5>e5c6b17df8c059b59460c8610243b457</srcmd5>
+    <version>1.5.16</version>
+    <time>1190290756</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="59">
+    <srcmd5>27dddffbc2fb989b7cd9460f99736f9e</srcmd5>
+    <version>1.5.16</version>
+    <time>1196902543</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ac837dbd6555906a34dd30bcc68e0f26</srcmd5>
+    <version>1.5.17</version>
+    <time>1198229166</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d4f1dac795cecb1ca8a63184985ea850</srcmd5>
+    <version>1.5.17</version>
+    <time>1198241415</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="42">
+    <srcmd5>501915ab431088653538284fb5458e89</srcmd5>
+    <version>1.5.17</version>
+    <time>1207857658</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="117">
+    <srcmd5>501915ab431088653538284fb5458e89</srcmd5>
+    <version>1.5.17</version>
+    <time>1207857658</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4390a69b565a34fbe219ef9742e432a4</srcmd5>
+    <version>1.5.19</version>
+    <time>1236115709</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>138322a1a159e10d2c77e9009ca64ddd</srcmd5>
+    <version>1.5.19</version>
+    <time>1240310847</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>17ae3a7af1740accca7020dc7791f238</srcmd5>
+    <version>1.5.20</version>
+    <time>1246631602</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>d332b43f110dab185a3f01a72e033750</srcmd5>
+    <version>1.5.20</version>
+    <time>1247760548</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>99bdb2af269df363d52a7181784a4312</srcmd5>
+    <version>1.5.20</version>
+    <time>1252581256</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/mutt based on submit request 20196 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>99bdb2af269df363d52a7181784a4312</srcmd5>
+    <version>1.5.20</version>
+    <time>1252581256</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/mutt based on submit request 20196 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>c7fead26f9330213e05f87ba1af0a8d7</srcmd5>
+    <version>1.5.20</version>
+    <time>1257852874</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/mutt based on submit request 23900 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>b63bf84c461ae4590ebdc7e0b49a3c2d</srcmd5>
+    <version>1.5.20</version>
+    <time>1259161830</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/mutt based on submit request 25052 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>e976c8a5e18f27cabd6c38e6f090329e</srcmd5>
+    <version>1.5.20</version>
+    <time>1259927353</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/mutt based on submit request 25390 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>ce034fd51ef36bc6b6f318df649ede8b</srcmd5>
+    <version>1.5.20</version>
+    <time>1268925018</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>e3d6d7c2f4ba031e314d939c6cc9f5a8</srcmd5>
+    <version>1.5.20</version>
+    <time>1271723236</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/mutt based on submit request 38303 from user coolo
+</comment>
+    <requestid>38303</requestid>
+  </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>c24ec5e7423098443e6867d2ea3af9cb</srcmd5>
+    <version>1.5.20</version>
+    <time>1273791953</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/mutt based on submit request 39838 from user WernerFink
+</comment>
+    <requestid>39838</requestid>
+  </revision>
+  <revision rev="25" vrev="13">
+    <srcmd5>c24ec5e7423098443e6867d2ea3af9cb</srcmd5>
+    <version>1.5.20</version>
+    <time>1278667369</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="26" vrev="14">
+    <srcmd5>c24ec5e7423098443e6867d2ea3af9cb</srcmd5>
+    <version>1.5.20</version>
+    <time>1278678599</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>64ccf216dc23d606b92fd04eaab76837</srcmd5>
+    <version>1.5.21</version>
+    <time>1289418084</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52663 from user coolo
+</comment>
+    <requestid>52663</requestid>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>7c5ad9ce82f31d885c32602af09c5f61</srcmd5>
+    <version>1.5.21</version>
+    <time>1289418093</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52663
+</comment>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>8aed702800145683bd93a532d00e9a11</srcmd5>
+    <version>1.5.21</version>
+    <time>1291030579</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 54026 from user psmt
+</comment>
+    <requestid>54026</requestid>
+  </revision>
+  <revision rev="30" vrev="10">
+    <srcmd5>f643f5feb4b27c3b149325f2d06d6d59</srcmd5>
+    <version>1.5.21</version>
+    <time>1291030592</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 54026
+</comment>
+  </revision>
+  <revision rev="31" vrev="11">
+    <srcmd5>c8a7f7049c41c5744f8d9820cde5387d</srcmd5>
+    <version>1.5.21</version>
+    <time>1296768410</time>
+    <user>darix</user>
+    <comment>Accepted submit request 59909 from user WernerFink
+</comment>
+    <requestid>59909</requestid>
+  </revision>
+  <revision rev="32" vrev="12">
+    <srcmd5>1f5188bed2db6f34085b8c0425bb532f</srcmd5>
+    <version>1.5.21</version>
+    <time>1296768420</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 59909
+</comment>
+  </revision>
+  <revision rev="33" vrev="15">
+    <srcmd5>1f5188bed2db6f34085b8c0425bb532f</srcmd5>
+    <version>1.5.21</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="34" vrev="16">
+    <srcmd5>cbf44460aacdd0924f0e4cec7f9e6835</srcmd5>
+    <version>1.5.21</version>
+    <time>1302891373</time>
+    <user>darix</user>
+    <comment>Accepted submit request 67521 from user coolo
+</comment>
+    <requestid>67521</requestid>
+  </revision>
+  <revision rev="35" vrev="17">
+    <srcmd5>8e201cc61e4771e4e9010bdfbb540e00</srcmd5>
+    <version>1.5.21</version>
+    <time>1302891385</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67521
+</comment>
+  </revision>
+  <revision rev="36" vrev="18">
+    <srcmd5>93239656f00418d1862476a04541fe24</srcmd5>
+    <version>1.5.21</version>
+    <time>1308578472</time>
+    <user>saschpe</user>
+    <comment>- Add patches for the following Mutt Tickets:
+   #1771: pipe-mime
+   #2179: score-match
+   #3240: imapuser
+   #3261: readonly-open
+   #3288: mx_update_context-segfault
+   #3293: dont-recode-saved-attachments
+   #3300: gpgme-1.2
+   #3324: smimekeys-tmpdir
+   #3326: emptycharset
+   #3335: thread-segfault
+   #3339: smime_keys-chaining
+   #3371: ansi-escape-segfault
+   #3378: references
+   #3457: pop3-segfault
+   #3459: split-fetches
+   #3483: header-strchr
+   #3496: no-implicit_autoview-for-text-html
+   #3506: gnutls-CN-validation
+   #3515: gnutls-deprecated-set-priority
+   #3516: gnutls-deprecated-verify-peers
+  with ticket #3506 bnc#700648 becomes fixed, with ticket #3496
+  the autoview regression for text/html should be fixed.
+- Add one line more for sidebar if displayed on top</comment>
+    <requestid>74206</requestid>
+  </revision>
+  <revision rev="37" vrev="19">
+    <srcmd5>20ddd55a3586aac26e17ce3485314352</srcmd5>
+    <version>1.5.21</version>
+    <time>1308578485</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74206
+</comment>
+  </revision>
+  <revision rev="38" vrev="20">
+    <srcmd5>b6e1db7fe871e033bb6ac12f6309ce2c</srcmd5>
+    <version>1.5.21</version>
+    <time>1310046291</time>
+    <user>saschpe</user>
+    <comment>- Update patch for Mutt Ticket #3288 and check for empty headers
+  in mx_update_context() (bnx#704359)</comment>
+    <requestid>75648</requestid>
+  </revision>
+  <revision rev="39" vrev="21">
+    <srcmd5>a92a44ae2e2d3001a2d62ccb36bc6862</srcmd5>
+    <version>1.5.21</version>
+    <time>1310046312</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75648
+</comment>
+  </revision>
+  <revision rev="40" vrev="23">
+    <srcmd5>a92a44ae2e2d3001a2d62ccb36bc6862</srcmd5>
+    <version>1.5.21</version>
+    <time>1319182189</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="41" vrev="24">
+    <srcmd5>0d4f17dd9e805ff4c14c4e2d53223c18</srcmd5>
+    <version>1.5.21</version>
+    <time>1320488460</time>
+    <user>coolo</user>
+    <comment>- Add patch to be able to specify the color of the sidebar</comment>
+    <requestid>90131</requestid>
+  </revision>
+  <revision rev="42" vrev="25">
+    <srcmd5>4760ba109d9e6ac140417b805ec7c986</srcmd5>
+    <version>1.5.21</version>
+    <time>1322073419</time>
+    <user>coolo</user>
+    <comment>- Add patch to use libtinfo if available</comment>
+    <requestid>93100</requestid>
+  </revision>
+  <revision rev="43" vrev="26">
+    <srcmd5>e951569acc8468a0b889c631d8540cfd</srcmd5>
+    <version>1.5.21</version>
+    <time>1322481275</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>93869</requestid>
+  </revision>
+  <revision rev="44" vrev="27">
+    <srcmd5>2ae5f93c40d3cb34655e717a14ae07a5</srcmd5>
+    <version>1.5.21</version>
+    <time>1322839557</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94806 from coolo)</comment>
+    <requestid>94846</requestid>
+  </revision>
+  <revision rev="45" vrev="28">
+    <srcmd5>c38e7324602f849ef0375016d100f1f7</srcmd5>
+    <version>1.5.21</version>
+    <time>1323192638</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="46" vrev="29">
+    <srcmd5>b681dfb1ac7841c64d72558454655173</srcmd5>
+    <version>1.5.21</version>
+    <time>1338476840</time>
+    <user>coolo</user>
+    <comment>- fix build with automake-1.12 
+  - add: automake-1.12.patch (forwarded request 122771 from puzel)</comment>
+    <requestid>122774</requestid>
+  </revision>
+  <revision rev="47" vrev="31">
+    <srcmd5>b681dfb1ac7841c64d72558454655173</srcmd5>
+    <version>1.5.21</version>
+    <time>1340183716</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="48" vrev="32">
+    <srcmd5>582541c46760ab0c22d5b55c20841f44</srcmd5>
+    <version>1.5.21</version>
+    <time>1341820314</time>
+    <user>coolo</user>
+    <comment>This updates to a newer version of the mutt sidebar which allows sorting of the mailboxes. (forwarded request 125653 from gladiac)</comment>
+    <requestid>127359</requestid>
+  </revision>
+  <revision rev="49" vrev="33">
+    <srcmd5>ab4fd17ef91916c37bd0716401b25719</srcmd5>
+    <version>1.5.21</version>
+    <time>1348380350</time>
+    <user>coolo</user>
+    <comment>add back lost sidebar color patch (forwarded request 134918 from vmiklos)</comment>
+    <requestid>135332</requestid>
+  </revision>
+  <revision rev="50" vrev="34">
+    <srcmd5>5a659e1108a4cfa167225459a9e02673</srcmd5>
+    <version>1.5.21</version>
+    <time>1356098044</time>
+    <user>coolo</user>
+    <comment>- update sidebar to version 20120829
+- fix nion sidebar patch (forwarded request 145844 from aginies)</comment>
+    <requestid>145866</requestid>
+  </revision>
+  <revision rev="51" vrev="35">
+    <srcmd5>c294163e99cf5b3a49b10fbac98ad889</srcmd5>
+    <version>1.5.21</version>
+    <time>1358198649</time>
+    <user>coolo</user>
+    <comment>- Remove spurious blank line from new patch to make older patch(1)
+  also work with this
+- Make it build with older products</comment>
+    <requestid>148397</requestid>
+  </revision>
+  <revision rev="52" vrev="37">
+    <srcmd5>c294163e99cf5b3a49b10fbac98ad889</srcmd5>
+    <version>1.5.21</version>
+    <time>1359109471</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="53" vrev="38">
+    <srcmd5>935b26cbbafd47dd7da0098e544e77ec</srcmd5>
+    <version>1.5.21</version>
+    <time>1366730508</time>
+    <user>coolo</user>
+    <comment>- Add widechar.sidebar.dif as workaround: bnc#813498 - mutt crashes
+  in fgetwc in text_enriched_handler</comment>
+    <requestid>172816</requestid>
+  </revision>
+  <revision rev="54" vrev="39">
+    <srcmd5>d244c5de2cb9572e5e7e55ba1e2afd04</srcmd5>
+    <version>1.5.21</version>
+    <time>1370431873</time>
+    <user>coolo</user>
+    <comment>- Enable mutt to parse e.g. PGP markers with CRLF</comment>
+    <requestid>176932</requestid>
+  </revision>
+  <revision rev="55" vrev="40">
+    <srcmd5>9a93d6261052e8bab0686b47c9948e3d</srcmd5>
+    <version>1.5.21</version>
+    <time>1375765381</time>
+    <user>coolo</user>
+    <comment>- BuildRequire libgcrpyt-devel instead of libgcrypt for &gt; 12.3 (forwarded request 185970 from oertel)</comment>
+    <requestid>185977</requestid>
+  </revision>
+  <revision rev="56" vrev="42">
+    <srcmd5>9a93d6261052e8bab0686b47c9948e3d</srcmd5>
+    <version>1.5.21</version>
+    <time>1379663325</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="57" vrev="43">
+    <srcmd5>ea0e9bd2bc6dc156e06cb6eb9a15bb39</srcmd5>
+    <version>1.5.21</version>
+    <time>1395848487</time>
+    <user>coolo</user>
+    <comment>- mutt-CVE-2014-0467.patch: fixed a buffer overflow during header display.
+  CVE-2014-0467 / bnc#868115</comment>
+    <requestid>227415</requestid>
+  </revision>
+  <revision rev="58" vrev="45">
+    <srcmd5>ea0e9bd2bc6dc156e06cb6eb9a15bb39</srcmd5>
+    <version>1.5.21</version>
+    <time>1409301943</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="59" vrev="46">
+    <srcmd5>af754490953daf6ea414a7b3c9a35bb7</srcmd5>
+    <version>1.5.21</version>
+    <time>1416823740</time>
+    <user>dimstar_suse</user>
+    <comment>- handle text/html by default (bnc#899712)
+  that is add patch mutt-1.5.21-mailcap.diff</comment>
+    <requestid>262568</requestid>
+  </revision>
+  <revision rev="60" vrev="47">
+    <srcmd5>af04547f65ea5f10e9c6fd0245003007</srcmd5>
+    <version>1.5.21</version>
+    <time>1418737686</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>264777</requestid>
+  </revision>
+  <revision rev="61" vrev="33">
+    <srcmd5>b2672c3f765a72c68b63244acb7aa76e</srcmd5>
+    <version>1.5.23</version>
+    <time>1422346161</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to mutt version 1.5.23 which is a security bugfix release
+  as well as add support for TLS 1.1/1.2
+- Remove the patches automake-1.12.patch,
+  mutt-1.5.20-gpgme_set_locale.patch, and mutt-CVE-2014-0467.patch
+- Replace the patches
+  patch-1.5.23.rr.compressed.bz2 with patch-1.5.21.rr.compressed.1.bz2
+  mutt-1.5.21.sidebar.20120829.patch with patch-1.5.23.sidebar.20140412.patch
+  patch-1.5.5.1.nt.xtitles.3.ab.1 with patch-1.5.23.xtitles.patch
+  mutt-1.5.21.dif with mutt-1.5.23.dif
+- Modify the patches aw.listreply.diff, bug-676388-largefile.patch,
+  and bsc907453-CVE-2014-9116-jessie.patch
+- Build with PIE</comment>
+    <requestid>282890</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>8faee01f05acbd1b856d4e779b41a8b9</srcmd5>
+    <version>1.5.24</version>
+    <time>1442130321</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to mutt version 1.5.24
+ + terminal status-line (TS) support, a.k.a. xterm title. see the
+   following variables: $ts_enabled, $ts_icon_format, $ts_status_format
+ ! $ssl_use_sslv3 is disabled by default.
+ ! command-line arguments: -H now combines template and command-line
+   address arguments.
+ ! GnuPG signature name is set to signature.asc
+ + New color object &quot;prompt&quot; added.
+ + Ability to encrypt postponed messages.  See $postpone_encrypt and
+   $postpone_encrypt_as.
+ ! History ring now has a scratch buffer.
+ ! mail-key is implemented for GPGME.  (Requires a recent GPGME).
+ ! Removed GPG_AGENT_INFO check for GnuPG 2.1 compatibility.  Please
+   set pgp_use_gpg_agent if using GnuPG 2.1 or later.
+ ! $smime_encrypt_with now defaults to aes256.
+ ! GnuPG fingerprints are used internally when possible.
+   &quot;--with-fingerprint&quot; should be added to $pgp_list_pubring_command and
+   $pgp_list_secring_command to enable this.  Please see contrib/gpg.rc.
+   Fingerprints may also be used at the prompts for key selection.
+ + $crypt_opportunistic_encrypt automatically enables/disables encryption
+   based on message recipients.
+ ! Attachments for signed, unencrypted emails may be deleted.
+ ! Multiple crypt-hooks may be defined for the same regexp.
+   This means multiple keys may be used for a recipient.
+ + $crypt_confirmhook allows the confirmation prompt for crypt-hooks to
+   be disabled.
+ + $ssl_ciphers allows the SSL ciphers to be directly set.
+ ! sime_keys better handles importing certificate chains.
+ ! sime_keys now records certificate purposes (sign/encrypt).  Run
+   &quot;sime_keys refresh&quot; to update smime index files.</comment>
+    <requestid>330555</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>5036c4bb059d406306a5f447e9deeca6</srcmd5>
+    <version>1.5.24</version>
+    <time>1452122681</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352063</requestid>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>01fed257a54505185a0e78f8cf9de90e</srcmd5>
+    <version>1.5.24</version>
+    <time>1455790022</time>
+    <user>dimstar_suse</user>
+    <comment>fix patch-1.5.24.sidebar.20151111.patch wrt boo#961470 (forwarded request 353183 from vmiklos)</comment>
+    <requestid>358674</requestid>
+  </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>1829069e875408b4ae14e6b01162b170</srcmd5>
+    <version>1.5.24</version>
+    <time>1457353428</time>
+    <user>dimstar_suse</user>
+    <comment>- Add perl(Expect) as requirement for mutt due to the fact that a
+  useful helper script below the samples depends on this (boo#968699)</comment>
+    <requestid>363017</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>1d3760e7c37da5b06611d28423f41281</srcmd5>
+    <version>1.6.0</version>
+    <time>1460632047</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to mutt version 1.6.0 (2016-04-04):
+  + Enabled utf-8 mailbox support for IMAP.
+  + New expandos %r and %R for comma separated list of To: and Cc:
+    recipients respectively.
+  + Improved support for internationalized email and SMTPUTF8 (RFC653[0-3]).
+  ! $use_idn has been renamed to $idn_decode.
+  + $idn_encode controls whether outgoing email address domains will
+    be IDNA encoded.  If your MTA supports it, unset to use utf-8
+    email address domains.
+  + The S/MIME message digest algorithm is now specified using the
+    option $smime_sign_digest_alg.  Note that $smime_sign_command
+    should be modified to include &quot;-md %d&quot;.  Please see
+    contrib/smime.rc.
+  + $reflow_space_quotes allows format=flowed email quotes to be
+    displayed with spacing between them.
+  ! multipart draft files are now supported.
+  + The &quot;-E&quot; command line argument causes mutt to edit draft or include files.
+    All changes made in mutt will be saved back out to those files.
+  + $resume_draft_files and $resume_edited_draft_files control how
+    mutt processes draft files.
+  + For classic gpg mode, $pgp_decryption_okay should be set to verify
+    multipart/encrypted are actually encrypted.  Please see
+    contrib/gpg.rc for the suggested value.
+  ! mailto URL header parameters by default are now restricted to
+    'body' and 'subject'.
+  + mailto_allow and unmailto_allow can be used to add or remove
+    allowed mailto header parameters.
+  ! The method of setting $hostname has been changed.  Rather than
+    scanning /etc/resolv.conf, the domain will now be determined using
+    DNS calls.</comment>
+    <requestid>388311</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>cd6ed3aef65a392a07ef2476a8a1dd5c</srcmd5>
+    <version>1.6.1</version>
+    <time>1463498124</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to mutt version 1.6.1 (2016-05-01):
+  ! Bug fix release.  No features were modified or added.
+- Add and use neomutt-patches-20160502.tar.gz from
+  http://www.neomutt.org/
+- Modify the patches
+   aw.listreply.diff
+   bsc907453-CVE-2014-9116-jessie.patch
+   bug-676388-largefile.patch
+   mutt-1.5.15-wrapcolumn.diff
+   mutt-1.5.20-sendgroupreplyto.diff
+   mutt-1.5.21-mailcap.diff
+   mutt-1.5.21-tinfo.dif
+   mutt-1.5.23-cariage-return.path
+   mutt-1.5.9i-pgpewrap.diff
+   patch-1.5.24.vk.pgp_verbose_mime
+   widechar.sidebar.dif
+- Modify and rename the patches
+   mutt-1.6.0-opennfs.dif becomes mutt-1.6.1-opennfs.dif
+   mutt-1.6.0.dif becomes mutt-1.6.1.dif
+   patch-1.6.0.rr.compressed.bz2 becomes patch-1.6.1.rr.compressed.bz2
+- Remove the patches
+   patch-1.6.0.sidebar.20160411.patch
+   nion.sidebar-color.diff
+  now upstream or part of neomutt patch collection</comment>
+    <requestid>395127</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>a7485cf331c2ae1c22112bc597ec592a</srcmd5>
+    <version>1.6.1</version>
+    <time>1464075318</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable some of the new patches like sidebar (boo#980830) 
+- Add patch COLS-workaround.dif which should become removed once
+  the sidebar patch does not modify COLS anymore</comment>
+    <requestid>397514</requestid>
+  </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>c91ee26700ae83ccfe5185e3d0585402</srcmd5>
+    <version>1.6.1</version>
+    <time>1464853186</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix crash due keywords.patch which stumble over not existing
+  standard mailbox 
+
+- Update to neomutt 20160530
+- Avoid sidebar patch from bother other users (boo#982129) 
+- Remove patch patch-1.6.1.rr.compressed.bz2 as now part of neumutt</comment>
+    <requestid>399465</requestid>
+  </revision>
+  <revision rev="70" vrev="4">
+    <srcmd5>5634eb602ddbefae73b16304ccf77871</srcmd5>
+    <version>1.6.1</version>
+    <time>1465336015</time>
+    <user>dimstar_suse</user>
+    <comment>- Yet an other crash due keywords.patch (boo#982129) 
+
+  standard mailbox (boo#982129)</comment>
+    <requestid>399631</requestid>
+  </revision>
+  <revision rev="71" vrev="5">
+    <srcmd5>f2dfb15bb2a26f752d101f79b35226ae</srcmd5>
+    <version>1.6.1</version>
+    <time>1466326103</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to neomutt 20160611 
+  - Temporarily disable $sidebar_refresh_time
+    Unfortunately, this was causing too many problems.
+    It will be fixed and re-enabled as soon as possible.
+  - Fix several crashes, on startup, in Keywords
+  - Reflow text now works as it should
+  - Lots of typos fixed
+  - Compress config bug prevented it working
+  - Some minor bug-fixes from mutt/default
+  - Single quote at line beginning misinterpreted by groff
+  - Setting $sidebar_width to more than 128 would cause bad things to happen.
+  - Fix alignment in the compose menu.
+  - Fix sidebar buffy stats updating on mailbox close.
+- Modify patch mutt-1.6.1.dif, that is skip upstream of neo as now
+  part of neo
+- Adopt patches COLS-workaround.dif, aw.listreply.diff,
+  bug-676388-largefile.patch, mutt-1.5.21-tinfo.dif,
+  mutt-1.6.1-opennfs.dif, and patch-1.5.24.vk.pgp_verbose_mime</comment>
+    <requestid>401580</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>9fa988f9c4250bff53e65711b1c25f79</srcmd5>
+    <version>1.6.2</version>
+    <time>1469742439</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to mutt version 1.6.2 (2016-07-01):
+  * send.c: Check $pgp_autoinline and $pgp_replyinline if oppenc is set.
+    (closes #3846)
+  * The first oppenc call takes place after the initial checks of
+    $pgp_autoline and $pgp_replyinline, and doesn't go through the pgp
+    menu.
+  * Therefore, check for $pgp_autoline and $pgp_replyinline if oppenc is
+    set too, to avoid oppenc enabling encryption without INLINE being
+    set in those cases.
+  * a6a4d6ed0f19 previously cleaned things up so that it is safe to set
+    INLINE even if encryption isn't enabled.
+  * keymap.c: Fix infinite loop when help is bound to a named key
+    combination.
+  * Commit a07e8215a0ef introduced a bug in km_error_key, which is
+    called when an unbound key is pressed.
+  * If help is bound to a sequence containing named keys (e.g. &lt;esc&gt;),
+    the raw (untokenized) string would be pushed back into the unget
+    buffer. This could lead to an infinite loop of unbound key presses
+    triggering more unbound keys being put into the unget buffer.
+  * Change km_error_key to tokenize the string before putting it in the
+    unget buffer.
+  * Much thanks to Jiri Bohac for his bug report, analysis, and initial
+    patch!
+- Update to neomutt 20160723
+  New Features
+    New Mail Command - Execute a command on receipt of new mail
+    vim-keybindings - Mutt config for vim users
+    LMDB - In-memory header caching database
+    SMIME Encrypt to Self - Secure storage of sensitive email
+  Bug Fixes</comment>
+    <requestid>415277</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>58faaf044c448a3e372b65f26460dc12</srcmd5>
+    <version>1.6.2</version>
+    <time>1474476603</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>428971</requestid>
+  </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>5fee8e0d84353a15851079abf07177f4</srcmd5>
+    <version>1.6.2</version>
+    <time>1480341898</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch mutt-1.6.2-gpgme_set_sender.patch
+  that is avoid name space clash with gpgme_set_sender() from gpgme
+
+- Rename patch mutt-1.5.23-cariage-return.path to
+  mutt-1.5.23-carriage-return.path
+- Extend patch mutt-1.5.23-carriage-return.path
+  Be sure that also signed messages from Android can be verified
+  by gpgme interface of mutt</comment>
+    <requestid>441558</requestid>
+  </revision>
+  <revision rev="75" vrev="4">
+    <srcmd5>ff0d55224ef5cc07ae739b55a2a0f8fc</srcmd5>
+    <version>1.6.2</version>
+    <time>1489415613</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicite add package documentation directory to file list
+
+- Also now recommend urlscan</comment>
+    <requestid>478928</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>e04a3956daae2fc14c2de8e75b9f5a6d</srcmd5>
+    <version>1.8.2</version>
+    <time>1496225743</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch mutt-1.8.2-from4crypt.diff
+  to fix crash in crypt.c if no From is found or set 
+
+- Switch form TokyoCabinet over to KyotoCabinet
+
+- Remove warning
+
+- Make header cache work again, using TokyoCabinet as backend
+- Remove now-obsolete configure parameters
+
+- call gzip -n to make build more reproducible
+
+- Yet an other package split: now there is a mutt-lang 
+
+- Provide a hint on the package split 
+
+- Move some extend documentation about mutt in a seperate package 
+- Remove mutt-1.5.21.de.po as mutt now have a de.po as well
+
+- Update to neomutt 20170421 which updates to mutt 1.8.2
+  1.8.2 Bug fix release.
+  1.8.1 Bug fix release.
+  1.8.0
+  - $locale has been removed.  Mutt now respects the LC_TIME setting
+    instead.  See also $attribution_locale.
+  + $attribution_locale can be used to override the date formatting in
+    attribution strings.  When unset, Mutt will use the locale
+    environment, but note the default value of $date_format has a
+    leading '!' which says to use the C-locale.
+  ! Message-id and mail-followup-to headers are now preserved for recalled</comment>
+    <requestid>494270</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>b7e91626f560c371bdbcad83596af325</srcmd5>
+    <version>1.8.3</version>
+    <time>1502186311</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>510046</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>cdb077837bef0b11dfe13e91d473a57c</srcmd5>
+    <version>1.9.0</version>
+    <time>1505757277</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to neomutt 20170912 which updates to mutt 1.9.0 
+   NeoMutt
+    Add guix build support
+    Only match real mailboxes when looking for new mail
+    Fix the printing of ncurses version in -v output
+    Bind editor &lt;delete&gt; to delete-char
+    Fix overflowing colours
+    Fix empty In-Reply-To generation
+    Trim trailing slash from completed dirs
+    Add guix-neomutt.scm
+    Fix setting custom query_type in notmuch query
+    Better curses identification
+    Use the system's wchar_t support
+    Use the system's md5 tool (or equivalent)
+    Clean up configure.ac
+    Teach gen-map-doc about the new opcode header
+    Rename functions (snake_case)
+    Rename constants/defines (UPPER_CASE)
+    Create library of shared functions
+    Much tidying
+    Rename globals to match user config
+    Drop unnecessary functions/macros
+    Use a standard list implementation
+    Coverity fixes
+    Use explicit NUL for string terminators
+    Drop OPS* in favour of opcodes.h
+   Upstream
+    Fix menu color calls to occur before positioning the cursor
+    When guessing an attachment type, don't allow text/plain if there is a null character
+    Add $imap_poll_timeout to allow mailbox polling to time out</comment>
+    <requestid>526350</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>acec2416fa2cf95455cfcc1b51863927</srcmd5>
+    <version>1.9.0</version>
+    <time>1507197609</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch neomutt-c030a8b.patch from upstream commit to fix
+  boo#1061343</comment>
+    <requestid>531064</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>0e465e80f000ae070109538dbb4b4f0f</srcmd5>
+    <version>1.9.1</version>
+    <time>1508946458</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch mutt-1.9.0-1.9.1.patch which is a backport of the
+  mutt upstream patch diff-1.9.0-1.9.1 to neomutt 20170912
+- Rename patch mutt-1.9.0.dif which now becomes mutt-1.9.1.dif</comment>
+    <requestid>536409</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>bd5531e636cc189afef2be6fa4e79a72</srcmd5>
+    <version>1.10.0</version>
+    <time>1530993702</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip neomutt now (boo#1094717)
+  * There exists a package neomutt
+  * mutt-1.10.0 uses a lot of extensions now like compessed folders
+    and header caching, but still misses things like notmuch
+- Modified patches
+  * aw.listreply.diff
+  * bsc907453-CVE-2014-9116-jessie.patch
+  * bug-676388-largefile.patch
+  * mutt-1.5.15-wrapcolumn.diff
+  * mutt-1.5.20-sendgroupreplyto.diff
+  * mutt-1.5.21-mailcap.diff
+  * mutt-1.5.23-carriage-return.path
+  * mutt-1.5.9i-pgpewrap.diff
+  * mutt-1.6.1-opennfs.dif
+  * patch-1.5.24.vk.pgp_verbose_mime
+  * widechar.sidebar.dif
+- Renamed patch: mutt-1.9.1.dif becomes mutt-1.10.0.dif
+- Deleted patches mutt-1.9.0-1.9.1.patch neomutt-c030a8b.patch
+- Add patch truncate.patch to avoid truncated buffers due snprintf</comment>
+    <requestid>621178</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>ba25a0fec4e393dd95fa50320c1d61de</srcmd5>
+    <version>1.10.1</version>
+    <time>1531947413</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to mutt 1.10.1 (boo#1101428)
+  This is an important bug-fix release, fixing a code injection
+  and a couple path traversal vulnerabilities. 
+  This also covers
+  * CVE-2018-14363 bnc#1101566
+  * CVE-2018-14362 bnc#1101567
+  * CVE-2018-14361 bnc#1101568
+  * CVE-2018-14360 bnc#1101569
+  * CVE-2018-14359 bnc#1101570
+  * CVE-2018-14358 bnc#1101571
+  * CVE-2018-14357 bnc#1101573
+  * CVE-2018-14356 bnc#1101576
+  * CVE-2018-14355 bnc#1101577
+  * CVE-2018-14354 bnc#1101578
+  * CVE-2018-14353 bnc#1101581
+  * CVE-2018-14352 bnc#1101582
+  * CVE-2018-14351 bnc#1101583
+  * CVE-2018-14350 bnc#1101588
+  * CVE-2018-14349 bnc#1101589
+- Modified patches
+  * bug-676388-largefile.patch
+  * mutt-1.5.15-wrapcolumn.diff
+  * mutt-1.5.20-sendgroupreplyto.diff
+  * mutt-1.5.23-carriage-return.path
+  * mutt-1.6.1-opennfs.dif
+  * patch-1.5.24.vk.pgp_verbose_mime
+  * truncate.patch</comment>
+    <requestid>623577</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>c9594143883208ca62a0cd7f3ea24281</srcmd5>
+    <version>1.11.1</version>
+    <time>1546946858</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to mutt 1.11.1
+  * Bug fix release.
+  * IMAP retrieves the Sender header by default.  It doesn't need to be added
+    to $imap_headers.
+  * inotify is used for local mailbox monitoring on Linux.  Configuration flag
+    --disable-filemonitor turns this off.
+  * OAUTHBEARER support for IMAP, SMTP and POP via
+    $imap_oauth_refresh_command, $smtp_oauth_refresh_command, and
+    $pop_oauth_refresh_command.
+  * $pgp_timeout and $smime_timeout support 32-bit numbers.
+  * &lt;check-stats&gt; manually updates mailbox statistics, the same way
+    $mail_check_stats does when set.
+  * Thread limited views, e.g. ~(pattern), now show new mail as it arrives.
+  * Command line argument -z and -Z options also work for IMAP mailboxes.
+  * $imap_condstore and $imap_qresync enable IMAP CONDSTORE and QRESYNC
+    support, respectively.  QRESYNC should provide much faster mailbox opening.
+  * $abort_noattach skips quoted lines (as defined by $quote_regexp and
+    $smileys).
+  * Initial IMAP header downloading can be aborted with ctrl-c.
+  * &lt;compose-to-sender&gt; composes a message to the sender of the selected
+    message, in the index or attachment menu.
+  * Address book queries ($query_format) now support multibyte characters.
+  * Finnish translation.
+  * pgpring has been renamed to mutt_pgpring.
+  * Certificate prompts show sha-256 instead of md5 fingerprints.
+  * Non-threaded $sort_aux &quot;reverse-&quot; settings now work properly.
+  * The manual can be generated and installed in GNU Info format.
+  * index-format-hook and the new %@name@ expando for $index_format enable
+    dynamic index formats using pattern matching against the current message.
+    This can be used, for example, to format dates based on the age of</comment>
+    <requestid>662611</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>0f85902f0f7f9dae16987a6c3b9f057a</srcmd5>
+    <version>1.11.2</version>
+    <time>1548064577</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to mutt 1.11.2
+  * This is a bug-fix release, fixing compilation with the latest
+    OpenSSL version and various other bug fixes.</comment>
+    <requestid>666222</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>fad0412ac6b446d206e6ad6574b36d5c</srcmd5>
+    <version>1.11.3</version>
+    <time>1551025271</time>
+    <user>coolo</user>
+    <comment>- Update to mutt 1.11.3
+  * This is a bug-fix release, fixing compilation with LibreSSL
+    and various other bug fixes.
+  * Show top-level decoded smime text/plain parts.
+  * Improve attachment menu for s/mime parts. (closes #113)
+  * Fix tunnels to also retry and write full buffer.
+  * Fix raw socket read/write to follow expected behavior.
+  * Fix gnutls tls_socket_write() to properly retry.
+  * Update the muttrc man page with added commands.
+  * Wrap ssl init calls for LibreSSL too.
+- Modify the patches
+  * mutt-1.10.0.dif
+  * mutt-1.5.23-carriage-return.path</comment>
+    <requestid>678427</requestid>
+  </revision>
+</revisionlist>

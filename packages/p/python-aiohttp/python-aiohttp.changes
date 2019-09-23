@@ -1,0 +1,397 @@
+-------------------------------------------------------------------
+Wed Sep 18 07:34:10 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Add patch to fix type error with old multidict:
+  * aiohttp-3.6.0-fix-typeerror.patch
+- Require python-multidict 4.5 or newer
+
+-------------------------------------------------------------------
+Fri Sep 13 12:05:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.6.0:
+  * Add support for Named Pipes
+  * Removed Transfer-Encoding: chunked header
+  * Accept non-GET request for starting websocket handshake on server side
+- Drop merged patch pytest5.patch
+
+-------------------------------------------------------------------
+Thu Aug 22 09:27:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to work well with pytest 5:
+  * pytest5.patch
+
+-------------------------------------------------------------------
+Tue Jun  4 14:47:20 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Fix Requires and BuildRequires
+
+-------------------------------------------------------------------
+Wed Feb 27 14:25:09 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 3.5.4
+- drop invalid-escapes-in-tests.patch and rename-request-fixture.patch
+  * big list of changes from 3.4.4 - https://github.com/aio-libs/aiohttp/blob/master/CHANGES.rst
+
+-------------------------------------------------------------------
+Tue Jan 15 13:15:30 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Remove version dependency from Cython (boo#1121578).
+
+-------------------------------------------------------------------
+Tue Nov 20 13:29:01 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to address name collision issue with pytest fixtures
+  + rename-request-fixture.patch
+
+-------------------------------------------------------------------
+Sat Oct  6 11:10:41 CEST 2018 - mcepl@suse.com
+
+- Upgrade to 3.4.4:
+    - Multiple small bugfixes
+
+- Remove remove-failing-tests-due-to-pytest-timeout-issues.patch
+- Add invalid-escapes-in-tests.patch to fix invalid escapes in
+  non-raw regexp strings.
+
+-------------------------------------------------------------------
+Fri Aug 31 11:50:26 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Match up requirements to the setup.py
+
+-------------------------------------------------------------------
+Fri Aug 31 09:22:37 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.4.0:
+  * please check the longer list in CHANGES.rst
+
+-------------------------------------------------------------------
+Mon Jun 25 07:50:19 UTC 2018 - adrian@suse.de
+
+- update to version 3.3.2:
+  * Raise ``ConnectionResetError`` instead of ``CancelledError`` on trying to
+    write to a closed stream. (`#2499 <https://github.com/aio-libs/aiohttp/pull/2499>`_)
+  * Implement ``ClientTimeout`` class and support socket read timeout. (`#2768 <https://github.com/aio-libs/aiohttp/pull/2768>`_)
+  * Enable logging when ``aiohttp.web`` is used as a program (`#2956 <https://github.com/aio-libs/aiohttp/pull/2956>`_)
+  * Add canonical property to resources (`#2968 <https://github.com/aio-libs/aiohttp/pull/2968>`_)
+  * Forbid reading response BODY after release (`#2983 <https://github.com/aio-libs/aiohttp/pull/2983>`_)
+  * Implement base protocol class to avoid a dependency from internal
+    ``asyncio.streams.FlowControlMixin`` (`#2986 <https://github.com/aio-libs/aiohttp/pull/2986>`_)
+  * Cythonize ``@helpers.reify``, 5% boost on macro benchmark (`#2995 <https://github.com/aio-libs/aiohttp/pull/2995>`_)
+  * Optimize HTTP parser (`#3015 <https://github.com/aio-libs/aiohttp/pull/3015>`_)
+  * Implement ``runner.addresses`` property. (`#3036 <https://github.com/aio-libs/aiohttp/pull/3036>`_)
+  * Use ``bytearray`` instead of a list of ``bytes`` in websocket reader. It
+    improves websocket message reading a little. (`#3039 <https://github.com/aio-libs/aiohttp/pull/3039>`_)
+  * Remove heartbeat on closing connection on keepalive timeout. The used hack
+    violates HTTP protocol. (`#3041 <https://github.com/aio-libs/aiohttp/pull/3041>`_)
+  * Limit websocket message size on reading to 4 MB by default. (`#3045 <https://github.com/aio-libs/aiohttp/pull/3045>`_)
+
+-------------------------------------------------------------------
+Sat Apr 14 17:22:15 UTC 2018 - arun@gmx.de
+
+- update to version 3.1.3:
+  * Fix cancellation broadcast during DNS resolve (#2910)
+
+-------------------------------------------------------------------
+Thu Apr 12 20:47:59 UTC 2018 - arun@gmx.de
+
+- update to version 3.1.2:
+  * Make LineTooLong exception more detailed about actual data size
+    (#2863)
+  * Call on_chunk_sent when write_eof takes as a param the last chunk
+    (#2909)
+
+- changes from version 3.1.1:
+  * Support asynchronous iterators (and asynchronous generators as
+    well) in both client and server API as request / response BODY
+    payloads. (#2802)
+
+-------------------------------------------------------------------
+Fri Mar 23 15:16:21 UTC 2018 - tbechtold@suse.com
+
+- update to 3.1.0:
+  - Relax JSON content-type checking in the ``ClientResponse.json()`` to allow
+    "application/xxx+json" instead of strict "application/json". (#2206)
+  - Bump C HTTP parser to version 2.8 (#2730)
+  - Accept a coroutine as an application factory in ``web.run_app`` and gunicorn
+    worker. (#2739)
+  - Implement application cleanup context (``app.cleanup_ctx`` property). (#2747)
+  - Make ``writer.write_headers`` a coroutine. (#2762)
+  - Add tracking signals for getting request/response bodies. (#2767)
+  - Deprecate ClientResponseError.code in favor of .status to keep similarity
+    with response classes. (#2781)
+  - Implement ``app.add_routes()`` method. (#2787)
+  - Implement ``web.static()`` and ``RouteTableDef.static()`` API. (#2795)
+  - Install a test event loop as default by ``asyncio.set_event_loop()``. The
+    change affects aiohttp test utils but backward compatibility is not broken
+    for 99.99% of use cases. (#2804)
+  - Refactor ``ClientResponse`` constructor: make logically required constructor
+    arguments mandatory, drop ``_post_init()`` method. (#2820)
+  - Use ``app.add_routes()`` in server docs everywhere (#2830)
+  - Websockets refactoring, all websocket writer methods are converted into
+    coroutines. (#2836)
+  - Provide ``Content-Range`` header for ``Range`` requests (#2844)
+  - Fix websocket client return EofStream. (#2784)
+  - Fix websocket demo. (#2789)
+  - Property ``BaseRequest.http_range`` now returns a python-like slice when
+    requesting the tail of the range. It's now indicated by a negative value in
+  ``range.start`` rather then in ``range.stop`` (#2805)
+  - Close a connection if an unexpected exception occurs while sending a request
+  - Fix firing DNS tracing events. (#2841)
+  - Change ``ClientResponse.json()`` documentation to reflect that it now
+    allows "application/xxx+json" content-types (#2206)
+  - Document behavior when cchardet detects encodings that are unknown to Python.
+  - Add diagrams for tracing request life style. (#2748)
+  - Drop removed functionality for passing ``StreamReader`` as data at client
+    side. (#2793)
+
+-------------------------------------------------------------------
+Sat Feb 17 14:41:39 UTC 2018 - alarrosa@suse.com
+
+- update to version 3.0.1
+  * async/await everywhere. The minimal supported Python version is 3.5.3 now.
+  * Application Runners.
+  * Client Tracing. Now it is possible by registering special signal handlers
+    on every request processing stage.
+  * HTTPS support
+  * Dropped obsolete API. The release dropped a lot of already deprecated
+    features.
+  * The full changelog can be read at
+    https://aiohttp.readthedocs.io/en/stable/changes.html
+
+- Add python3-idna_ssl, python3-Pygments and python3-aiohttp-theme to
+  BuildRequires.
+
+- Add Requires: python3-idna_ssl
+
+- Fix tests by removing a file and adding a patch to remove another
+  failing test due to a DeprecationWarning being issued by pytest because
+  of a problem in python-pytest-timeout.
+  * remove-failing-tests-due-to-pytest-timeout-issues.patch
+
+-------------------------------------------------------------------
+Sun Dec 31 09:00:05 UTC 2017 - adrian@suse.de
+
+- update to version 2.3.7
+
+-------------------------------------------------------------------
+Sun Dec 10 08:39:51 UTC 2017 - adrian@suse.de
+
+- add MarkupSafe as build depdency to fix documentaion generation
+
+-------------------------------------------------------------------
+Wed Dec  6 03:01:31 UTC 2017 - arun@gmx.de
+
+- update to version 2.3.6:
+  * Correct request.app context (for handlers not just
+    middlewares). (#2577)
+
+-------------------------------------------------------------------
+Sun Dec  3 19:10:33 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * require pluggy
+
+- update to version 2.3.5:
+  * Fix compatibility with pytest 3.3+ (#2565)
+
+- changes from version 2.3.4:
+  * Make request.app point to proper application instance when using
+    nested applications (with middlewares). (#2550)
+  * Change base class of ClientConnectorSSLError to ClientSSLError
+    from ClientConnectorError. (#2563)
+  * Return client connection back to free pool on error in
+    connector.connect(). (#2567)
+
+-------------------------------------------------------------------
+Sun Nov 19 05:10:08 UTC 2017 - arun@gmx.de
+
+- update to version 2.3.3:
+  * Having a ; in Response content type does not assume it contains a
+    charset anymore. (#2197)
+  * Use getattr(asyncio, ‘async’) for keeping compatibility with
+    Python 3.7. (#2476)
+  * Ignore NotImplementedError raised by set_child_watcher from
+    uvloop. (#2491)
+  * Fix warning in ClientSession.__del__ by stopping to try to close
+    it. (#2523)
+  * Fixed typo’s in Third-party libraries page. And added async-v20 to
+    the list (#2510)
+
+-------------------------------------------------------------------
+Thu Nov  9 06:33:40 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * updated requirements according to requirement/ci-wheel.txt in
+    tar-ball
+  * removed 'changes' from %doc
+
+- update to version 2.3.2:
+  * Fix passing client max size on cloning request obj. (#2385)
+  * Fix ClientConnectorSSLError and ClientProxyConnectionError for
+    proxy connector. (#2408)
+  * Drop generated _http_parser shared object from tarball
+    distribution. (#2414)
+  * Fix connector convert OSError to ClientConnectorError. (#2423)
+  * Fix connection attempts for multiple dns hosts. (#2424)
+  * Fix ValueError for AF_INET6 sockets if a preexisting INET6 socket
+    to the aiohttp.web.run_app function. (#2431)
+  * _SessionRequestContextManager closes the session properly
+    now. (#2441)
+  * Rename from_env to trust_env in client reference. (#2451)
+
+- changes from version 2.3.1:
+  * Relax attribute lookup in warning about old-styled middleware
+    (#2340)
+
+- changes from version 2.3.0:
+  * Features
+    + Add SSL related params to ClientSession.request (#1128)
+    + Make enable_compression work on HTTP/1.0 (#1828)
+    + Deprecate registering synchronous web handlers (#1993)
+    + Switch to multidict 3.0. All HTTP headers preserve casing now
+      but compared in case-insensitive way. (#1994)
+    + Improvement for normalize_path_middleware. Added possibility to
+      handle URLs with query string. (#1995)
+    + Use towncrier for CHANGES.txt build (#1997)
+    + Implement trust_env=True param in ClientSession. (#1998)
+    + Added variable to customize proxy headers (#2001)
+    + Implement router.add_routes and router decorators. (#2004)
+    + Deprecated BaseRequest.has_body in favor of
+      BaseRequest.can_read_body Added BaseRequest.body_exists
+      attribute that stays static for the lifetime of the request
+      (#2005)
+    + Provide BaseRequest.loop attribute (#2024)
+    + Make _CoroGuard awaitable and fix ClientSession.close warning
+      message (#2026)
+    + Responses to redirects without Location header are returned
+      instead of raising a RuntimeError (#2030)
+    + Added get_client, get_server, setUpAsync and tearDownAsync
+      methods to AioHTTPTestCase (#2032)
+    + Add automatically a SafeChildWatcher to the test loop (#2058)
+    + add ability to disable automatic response decompression (#2110)
+    + Add support for throttling DNS request, avoiding the requests
+      saturation when there is a miss in the DNS cache and many
+      requests getting into the connector at the same time. (#2111)
+    + Use request for getting access log information instead of
+      message/transport pair. Add RequestBase.remote property for
+      accessing to IP of client initiated HTTP request. (#2123)
+    + json() raises a ContentTypeError exception if the content-type
+      does not meet the requirements instead of raising a generic
+      ClientResponseError. (#2136)
+    + Make the HTTP client able to return HTTP chunks when chunked
+      transfer encoding is used. (#2150)
+    + add append_version arg into StaticResource.url and
+      StaticResource.url_for methods for getting an url with hash
+      (version) of the file. (#2157)
+    + Fix parsing the Forwarded header. * commas and semicolons are
+      allowed inside quoted-strings; * empty forwarded-pairs (as in
+      for=_1;;by=_2) are allowed; * non-standard parameters are
+      allowed (although this alone could be easily done in the
+      previous parser). (#2173)
+    + Don’t require ssl module to run. aiohttp does not require SSL to
+      function. The code paths involved with SSL will only be hit upon
+      SSL usage. Raise RuntimeError if HTTPS protocol is required but
+      ssl module is not present. (#2221)
+    + Accept coroutine fixtures in pytest plugin (#2223)
+    + Call shutdown_asyncgens before event loop closing on Python
+      3.6. (#2227)
+    + Speed up Signals when there are no receivers (#2229)
+    + Raise InvalidURL instead of ValueError on fetches with invalid
+      URL. (#2241)
+    + Move DummyCookieJar into cookiejar.py (#2242)
+    + run_app: Make print=None disable printing (#2260)
+    + Support brotli encoding (generic-purpose lossless compression
+      algorithm) (#2270)
+    + Add server support for WebSockets Per-Message Deflate. Add
+      client option to add deflate compress header in WebSockets
+      request header. If calling ClientSession.ws_connect() with
+      compress=15 the client will support deflate compress
+      negotiation. (#2273)
+    + Support verify_ssl, fingerprint, ssl_context and proxy_headers
+      by client.ws_connect. (#2292)
+    + Added aiohttp.ClientConnectorSSLError when connection fails due
+      ssl.SSLError (#2294)
+    + aiohttp.web.Application.make_handler support access_log_class
+      (#2315)
+    + Build HTTP parser extension in non-strict mode by
+      default. (#2332)
+  * Bugfixes
+    + Clear auth information on redirecting to other domain (#1699)
+    + Fix missing app.loop on startup hooks during tests (#2060)
+    + Fix issue with synchronous session closing when using
+      ClientSession as an asynchronous context manager. (#2063)
+    + Fix issue with CookieJar incorrectly expiring cookies in some
+      edge cases. (#2084)
+    + Force use of IPv4 during test, this will make tests run in a
+      Docker container (#2104)
+    + Warnings about unawaited coroutines now correctly point to the
+      user’s code. (#2106)
+    + Fix issue with IndexError being raised by the
+      StreamReader.iter_chunks() generator. (#2112)
+    + Support HTTP 308 Permanent redirect in client class. (#2114)
+    + Fix FileResponse sending empty chunked body on 304. (#2143)
+    + Do not add Content-Length: 0 to GET/HEAD/TRACE/OPTIONS requests
+      by default. (#2167)
+    + Fix parsing the Forwarded header according to RFC 7239. (#2170)
+    + Securely determining remote/scheme/host #2171 (#2171)
+    + Fix header name parsing, if name is split into multiple lines
+      (#2183)
+    + Handle session close during connection, KeyError:
+      <aiohttp.connector._TransportPlaceholder> (#2193)
+    + Fixes uncaught TypeError in helpers.guess_filename if name is
+      not a string (#2201)
+    + Raise OSError on async DNS lookup if resolved domain is an alias
+      for another one, which does not have an A or CNAME
+      record. (#2231)
+    + Fix incorrect warning in StreamReader. (#2251)
+    + Properly clone state of web request (#2284)
+    + Fix C HTTP parser for cases when status line is split into
+      different TCP packets. (#2311)
+    + Fix web.FileResponse overriding user supplied Content-Type
+      (#2317)
+  * Improved Documentation
+    + Add a note about possible performance degradation in await
+      resp.text() if charset was not provided by Content-Type HTTP
+      header. Pass explicit encoding to solve it. (#1811)
+    + Drop disqus widget from documentation pages. (#2018)
+    + Add a graceful shutdown section to the client usage
+      documentation. (#2039)
+    + Document connector_owner parameter. (#2072)
+    + Update the doc of web.Application (#2081)
+    + Fix mistake about access log disabling. (#2085)
+    + Add example usage of on_startup and on_shutdown signals by
+      creating and disposing an aiopg connection engine. (#2131)
+    + Document encoded=True for yarl.URL, it disables all yarl
+      transformations. (#2198)
+    + Document that all app’s middleware factories are run for every
+      request. (#2225)
+    + Reflect the fact that default resolver is threaded one starting
+      from aiohttp 1.1 (#2228)
+  * Deprecations and Removals
+    + Drop deprecated Server.finish_connections (#2006)
+    + Drop %O format from logging, use %b instead. Drop %e format from
+      logging, environment variables are not supported
+      anymore. (#2123)
+    + Drop deprecated secure_proxy_ssl_header support (#2171)
+    + Removed TimeService in favor of simple caching. TimeService also
+      had a bug where it lost about 0.5 seconds per second. (#2176)
+    + Drop unused response_factory from static files API (#2290)
+  * Misc
+    + #2013, #2014, #2048, #2094, #2149, #2187, #2214, #2225, #2243,
+      #2248
+
+-------------------------------------------------------------------
+Wed Sep 20 15:49:32 UTC 2017 - aloisio@gmx.com
+
+- Fixed build on non Factory targets
+
+-------------------------------------------------------------------
+Mon Sep 11 15:24:42 UTC 2017 - jengelh@inai.de
+
+- Repair package description grammar.
+
+-------------------------------------------------------------------
+Thu Aug 24 07:57:17 UTC 2017 - sebix+novell.com@sebix.at
+
+- first singlespec package
+- fixes boo#1054580 boo#1054581

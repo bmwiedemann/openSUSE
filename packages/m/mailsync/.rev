@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="17">
+    <srcmd5>8edc256b0a92c4acbb765f850aacd7da</srcmd5>
+    <version>5.2.1</version>
+    <time>1168903476</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="162">
+    <srcmd5>8edc256b0a92c4acbb765f850aacd7da</srcmd5>
+    <version>5.2.1</version>
+    <time>1168903476</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="163">
+    <srcmd5>57e52cc76e8291d014c39b68d3ad64d1</srcmd5>
+    <version>5.2.1</version>
+    <time>1245276112</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="165">
+    <srcmd5>57e52cc76e8291d014c39b68d3ad64d1</srcmd5>
+    <version>5.2.1</version>
+    <time>1245276112</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="166">
+    <srcmd5>93754cf6da8f8c46dd38e7717a54612e</srcmd5>
+    <version>5.2.1</version>
+    <time>1268924894</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="168">
+    <srcmd5>93754cf6da8f8c46dd38e7717a54612e</srcmd5>
+    <version>5.2.1</version>
+    <time>1278667366</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="169">
+    <srcmd5>93754cf6da8f8c46dd38e7717a54612e</srcmd5>
+    <version>5.2.1</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="172">
+    <srcmd5>93754cf6da8f8c46dd38e7717a54612e</srcmd5>
+    <version>5.2.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="174">
+    <srcmd5>93754cf6da8f8c46dd38e7717a54612e</srcmd5>
+    <version>5.2.1</version>
+    <time>1319182168</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="175">
+    <srcmd5>73a456429f6d5b2816c95439c00c9a10</srcmd5>
+    <version>5.2.1</version>
+    <time>1323192487</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="177">
+    <srcmd5>73a456429f6d5b2816c95439c00c9a10</srcmd5>
+    <version>5.2.1</version>
+    <time>1340183686</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="179">
+    <srcmd5>73a456429f6d5b2816c95439c00c9a10</srcmd5>
+    <version>5.2.1</version>
+    <time>1359109426</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="181">
+    <srcmd5>73a456429f6d5b2816c95439c00c9a10</srcmd5>
+    <version>5.2.1</version>
+    <time>1379663244</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="182">
+    <srcmd5>c4e495d094c5a680a80299400a70893e</srcmd5>
+    <version>5.2.1</version>
+    <time>1386664482</time>
+    <user>coolo</user>
+    <comment>add SUSE_ASNEEDED=0 to fix c-client linking failure in configure (forwarded request 210024 from seife)</comment>
+    <requestid>210052</requestid>
+  </revision>
+  <revision rev="15" vrev="184">
+    <srcmd5>c4e495d094c5a680a80299400a70893e</srcmd5>
+    <version>5.2.1</version>
+    <time>1409301847</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="185">
+    <srcmd5>b7cc0fc029c3dbb2607ee1c6f8134271</srcmd5>
+    <version>5.2.1</version>
+    <time>1499415411</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508328</requestid>
+  </revision>
+  <revision rev="17" vrev="186">
+    <srcmd5>41d6fc411e7f8648ed3b6f8076ecf103</srcmd5>
+    <version>5.2.1</version>
+    <time>1567849833</time>
+    <user>dimstar_suse</user>
+    <comment>add mailsync-gcc9.diff to fix build in Factory (forwarded request 728499 from seife)</comment>
+    <requestid>728500</requestid>
+  </revision>
+  <revision rev="18" vrev="187">
+    <srcmd5>c106864fa87aec883cd31a79ba23cc1d</srcmd5>
+    <version>5.2.1</version>
+    <time>1568804994</time>
+    <user>maxlin_factory</user>
+    <comment>fix mailsync-gcc9.diff with remaining cases (fixes md5 support) (forwarded request 731099 from seife)</comment>
+    <requestid>731100</requestid>
+  </revision>
+</revisionlist>

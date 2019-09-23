@@ -1,0 +1,1233 @@
+-------------------------------------------------------------------
+Tue Sep  3 12:44:14 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.5.php
+- Changes since 5.16.4:
+  * Add some missing includes.
+  * Make "Network Disconnected" notification low priority
+
+-------------------------------------------------------------------
+Tue Jul 30 12:40:20 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.4.php
+- Changes since 5.16.3:
+  * Airplane mode improvements (kde#399993,kde#400535,kde#405447)
+
+-------------------------------------------------------------------
+Thu Jul 18 12:15:59 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the kf5_makeinstall call. It cannot use brackets.
+
+-------------------------------------------------------------------
+Tue Jul  9 17:29:08 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.3.php
+- Changes since 5.16.2:
+  * Change validator for Endpoint Address entry field (kde#408670)
+
+-------------------------------------------------------------------
+Tue Jun 25 12:41:19 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.2.php
+- No code changes since 5.16.1
+
+-------------------------------------------------------------------
+Tue Jun 18 16:38:17 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.1.php
+- Changes since 5.16.0:
+  * Handle Esc properly when focus is in searchbox (kde#408290)
+
+-------------------------------------------------------------------
+Thu Jun  6 14:07:10 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.0.php
+- Changes since 5.15.90:
+  * [CompactRepresentation] Glow on hover
+  * Add missing includes
+  * Fortissl VPN: fix crash when obtaining properties in the auth dialog (kde#407596)
+
+-------------------------------------------------------------------
+Thu May 16 16:56:40 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.90.php
+- Changes since 5.15.5:
+  * bump Qt version to 5.12 as agreed at start of cycle
+  * Make tests to build
+  * Add WireGuard at the end of the list of VPNs to make it correctly sorted
+  * Add default value for parent in contructors of all validator classes
+  * Update WireGuard to match NetworkManager 1.16 interface (kde#405501)
+  * PasswordField: add option to hide AlwaysAsk mode
+  * Added new option to use GlobalProtect with openconnect
+  * Mark "Connection Activated" notifications as low priority
+  * Port widget settings window to QQC2+Kirigami FormLayout
+  * Add OTP support for openconnect VPN
+  * Don't load the KSharedConfig instance on every read
+  * No need to set height to implicitHeight (kde#399155)
+  * OpenVPN: reneg-sec property doesn't need limitation (kde#404614)
+  * Inform about missing NetworkManager VPN plugin (kde#405088)
+  * Change entry of Endpoint UI (kde#403548)
+  * send a signal over dbus when the wrong password is provided
+  * [plasma-nm] Refresh wifi networks as fast as possible
+  * Remove redundant DNS field (kde#403546)
+  * Do not check NM version++
+  * Do not check NM version
+  * plasma-nm Connection Icon not showing correct icon when using a bridge (kde#397352)
+  * Fix connections' context menus position and parent
+  * Get rid of Q_FOREACH
+  * We require NM 1.4.0+ so we can remove these conditions
+  * Add a popup search bar to the plasma-nm applet (kde#344789,kde#394290)
+  * [plasma-nm/applet] Use correct HIG-approved string for Configure... action
+  * Configuration to never show the passwors dialog
+  * [plasma-nm/applet] Add right-click context menu to directly customize a connection
+- Add patch to fix build on Leap 42.3:
+  * 0001-Revert-Inform-about-missing-NetworkManager-VPN-plugi.patch
+
+-------------------------------------------------------------------
+Tue May  7 11:04:58 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.5.php
+- Changes since 5.15.4:
+  * Reject invalid keys
+  * Reset model when there are new available connections (kde#406765)
+
+-------------------------------------------------------------------
+Tue Apr  2 12:41:00 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.4.php
+- Changes since 5.15.3:
+  * Do not remove manually configured "route-metric" property from IPv4 and IPv6 setting (kde#406118)
+  * Applet: fix size of the busy indicator (kde#405962)
+  * OpenVPN: reneg-sec property doesn't need limitation (kde#404614)
+
+-------------------------------------------------------------------
+Tue Mar 12 13:15:24 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.3.php
+- No code changes since 5.15.2
+
+-------------------------------------------------------------------
+Tue Feb 26 14:06:03 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.2.php
+- No code changes since 5.15.1
+
+-------------------------------------------------------------------
+Tue Feb 19 12:26:52 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.1.php
+- No code changes since 5.15.0
+
+-------------------------------------------------------------------
+Thu Feb  7 16:02:54 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.0.php
+- Changes since 5.14.90:
+  * [build] Search for kirigami as a runtime dependency
+
+-------------------------------------------------------------------
+Thu Jan 17 18:49:35 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.90.php
+- Too many changes to list here
+- Introduces wireguard support
+- Refresh patches:
+  * 0001-Revert-Show-correct-current-download-and-upload-spee.patch
+  * 0001-Revert-Use-NetworkManager-DeviceStatistics-instead-o.patch
+
+-------------------------------------------------------------------
+Tue Jan  8 13:37:34 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.5.php
+- Changes since 5.14.4:
+  * Fix a wrong check in previous patch
+  * Openconnect: do not reload dialog when group changes for Juniper protocol (kde#395157)
+  * Revert "Openconnect: do not reload the auth dialog endlessly when group changes"
+  * Notify that kcm changed only when validity has changed (kde#379756)
+
+-------------------------------------------------------------------
+Wed Nov 28 07:52:49 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.4.php
+- Changes since 5.14.3:
+  * Openconnect: do not reload the auth dialog endlessly when group changes (kde#395157)
+  * VPN plugins: fix broken layout when using password field
+  * Do not request secrets for VPN connections all the time
+  * SSH VPN: put content of the configuration into scroll area BUG: 401004 FIXED-IN: 5.14.4 (kde#401004)
+
+-------------------------------------------------------------------
+Tue Nov  6 15:53:55 UTC 2018 - fabian@ritter-vogt.de
+
+- Add David Edmundson's key to plasma.keyring
+- Update to 5.14.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.3.php
+- Changes since 5.14.2:
+  * Use appropriate icon in system tray settings BUG: 400587 FIXED-IN: 5.14.3 (kde#400587)
+
+-------------------------------------------------------------------
+Tue Oct 23 13:56:32 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.2.php
+- Changes since 5.14.1:
+  * Show correct current download and upload speed
+- Revert yet another commit for 42.3:
+  * 0001-Revert-Show-correct-current-download-and-upload-spee.patch
+
+-------------------------------------------------------------------
+Tue Oct 16 14:05:16 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.1.php
+- Changes since 5.14.0:
+  * openconnect: add missing dependency Qt5Xml
+
+-------------------------------------------------------------------
+Fri Oct  5 10:01:14 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.0.php
+- Changes since 5.13.90:
+  * Fix ampersand and other characters in tooltip (kde#398225)
+
+-------------------------------------------------------------------
+Sun Sep 16 14:12:02 UTC 2018 - wbauer@tmo.at
+
+- Add 0001-Revert-Require-NM-1.4.0-and-newer.patch to make it build
+  on Leap 42.3 which only has NetworkManager 1.0
+- Add 0001-Revert-Use-NetworkManager-DeviceStatistics-instead-o.patch
+  for Leap 42.3 to make speed graph work again with NM < 1.4.0
+
+-------------------------------------------------------------------
+Sat Sep 15 16:25:31 UTC 2018 - fabian@ritter-vogt.de
+
+- Add tarball signature and keyring containing keys of release managers
+  Jonathan Riddell and Bhushan Shah
+
+-------------------------------------------------------------------
+Thu Sep 13 17:25:04 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.90.php
+- Changes since 5.13.5:
+  * Make sure we change icon on NM connectivity change (boo#1108019)
+  * Use QOverload to select overloaded functions
+  * QT_MIN_VERSIONS is Qt 5.11 for Plasma 5.14. Agreed at kickoff meeting.  Set everywhere for clearity and consistency.
+  * Use NetworkManager::DeviceStatistics instead of Plasma data engine
+  * Require NM 1.4.0 and newer
+  * Unbreak SSH agent support for SSH VPN tunnels.
+  * Parse protocol in port option
+  * Port away from KLocale and KDELibs4Support
+  * Update connection details only when necessary
+  * Use more nullptr
+  * Port from KStandardDirs to QStandardPaths
+  * Use non-deprecated KDEInstallDirs variables
+  * Use KF5_MIN_VERSION also for KF5ModemManagerQt
+  * Find KF5NetworkManagerQt together with other KF5 modules
+  * Fix label buddy in fortisslvpn auth widget
+  * Cleanup used Qt & KF libraries a bit
+  * Remove unneeded include
+  * Use KF5Wallet include for KWallet, not the kdelibs4support one
+  * Remove duplicated include
+  * Use explicit
+  * Use nullptr
+  * Use override consistently
+  * Remove unused entry X-KDE-DBus-ModuleName from the kded plugin metadata
+  * Remove usage of dead QT_USE_FAST_CONCATENATION
+  * Remove Qt module includes
+  * Remove unneeded cmake macro includes
+  * Use KF5_MIN_VERSION also for ECM, now that it's part of KF
+  * Require KDE Frameworks 5.42 and Qt 5.9
+  * Bump min cmake version to 3.0, move cmake_minimum_required to begin
+
+-------------------------------------------------------------------
+Tue Sep  4 10:58:42 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.5.php
+- Changes since 5.13.4:
+  * Fix a text label in the password dialog
+  * Add additional checks for device existence (kde#396957)
+
+-------------------------------------------------------------------
+Tue Jul 31 15:18:34 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.4.php
+- Changes since 5.13.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Jul 10 14:02:31 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.3.php
+- Changes since 5.13.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Jul  3 09:08:23 UTC 2018 - bjorn.lie@gmail.com
+
+- Add conditional for NetworkManager-openswan Requires: No longer
+  available in Tumbleweed and newer.
+
+-------------------------------------------------------------------
+Tue Jun 26 16:01:25 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.2.php
+- Changes since 5.13.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 19 14:46:55 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.1.php
+- Changes since 5.13.0:
+  * Properly fix icon size for connection delegate BUG: 394580 (kde#394580)
+  * Attempt to fix icon size for connection delegate BUG: 394580 (kde#394580)
+
+-------------------------------------------------------------------
+Thu Jun  7 20:03:52 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.0.php
+- Changes since 5.12.90:
+  * Assign notification area category
+
+-------------------------------------------------------------------
+Sat May 19 14:16:38 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.90.php
+- Changes since 5.12.5:
+  * Remove unused code
+  * Simplify connection item delegate
+  * Use QtQuick's built-in HSV color features for cycling download color
+  * Coding style and minor improvements
+  * Unquote remote when importing OpenVPN connections (kde#393657)
+  * Use ScrollView from QtQuickControls in the main connection view (kde#393794)
+  * Check for device not being null
+  * Require NM 1.0.0 and newer
+  * use the bundled variant of installpackage
+  * Adjust spacing between text and plotter line in Speed tab of nm applet
+
+-------------------------------------------------------------------
+Wed May  9 20:46:00 UTC 2018 - fabian@ritter-vogt.de
+
+- Add supplements to avoid hard requires (part of fix for boo#982962)
+
+-------------------------------------------------------------------
+Wed May  2 14:52:07 UTC 2018 - wbauer@tmo.at
+
+- Unconditionally provide the -vpnc subpackage again for now, vpnc
+  is still in Tumbleweed and has been revived for Leap 15.0
+- Activate proper Requires and Supplements for the -openswan,
+  -l2tp, and -iodine subpackages, the corresponding NetworkManager
+  packages are in Factory (and Leap) meanwhile
+
+-------------------------------------------------------------------
+Wed May  2 09:25:52 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.5.php
+- Changes since 5.12.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Apr  3 08:58:44 UTC 2018 - fabian@ritter-vogt.de
+
+- Fix plasma-nm5-openconnect supplements
+- Don't provide the -vpnc subpackage anymore on TW and Leap 15
+
+-------------------------------------------------------------------
+Tue Mar 27 15:40:48 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.4.php
+- Changes since 5.12.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Mar  6 16:08:02 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.3.php
+- Changes since 5.12.2:
+  * Use ScrollView from QtQuickControls (kde#390846)
+
+-------------------------------------------------------------------
+Wed Feb 21 23:57:08 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.2.php
+- Changes since 5.12.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Feb 13 16:25:29 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.1.php
+- Changes since 5.12.0:
+  * None
+
+-------------------------------------------------------------------
+Fri Feb  2 21:03:44 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.0.php
+- Changes since 5.11.95:
+  * None
+
+-------------------------------------------------------------------
+Mon Jan 15 15:54:07 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.95.php
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Jan  2 16:40:09 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.5.php
+- Changes since 5.11.4:
+  * None
+
+-------------------------------------------------------------------
+Thu Nov 30 10:47:38 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.4.php
+- Changes since 5.11.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Nov  7 15:15:49 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.3.php
+- Changes since 5.11.2:
+  * Do not set password field as readonly, it doesn't make sense
+  * Disable password field when password is not needed (kde#386426)
+  * Make sure we store password for all users when kwallet is diabled (kde#386343)
+
+-------------------------------------------------------------------
+Tue Oct 24 18:14:20 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.2.php
+- Changes since 5.11.1:
+  * Do not load initially selected connection twice BUG: 379756 (kde#379756)
+  * Fix focus in DNS servers and DNS domains dialogs BUG: 385839 (kde#385839)
+
+-------------------------------------------------------------------
+Tue Oct 17 17:19:48 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.1.php
+- Changes since 5.11.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Oct  5 12:39:18 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.0.php
+- Changes since 5.10.95:
+  * Don't duplicate UI option for automatic speed detection (kde#383505)
+  * Remove unused identity model
+  * It makes sense to show VPN connections only when we are connected to internet
+
+-------------------------------------------------------------------
+Thu Sep 14 14:29:07 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.95.php
+- Changes since 5.10.5:
+  * Drop the old legacy connection editor
+  * Add option to allow managing virtual connections (kde#376664)
+  * Summary: L2TP: pre-sharedkey should be mask
+  * Add support for fortisslvpn
+  * Openconnect: make sure the UI fits into the password dialog (kde#380399)
+  *  UI updates for NetworkManager-l2tp 1.2.6
+  * Add missing file with UI for configuration
+  * Allow to have wider password dialog while preffering minimum size (kde#380399)
+  * Openconnect: make sure we accept the dialog (kde#380299)
+  * Openconnect: Add option to select protocol
+  * Properly pass specific vpn type when selecting new connection by double click
+  * Openconnect (juniper): Properly make sure we are compatible with the rest of nm tools
+  * Openconnect (juniper): Make sure we are compatible with the rest of nm tools (kde#380244)
+  * Add option to disable unlocking modem on detection (kde#380150)
+
+-------------------------------------------------------------------
+Tue Aug 22 19:11:31 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.5.php
+- Changes since 5.10.4:
+  * None
+
+-------------------------------------------------------------------
+Fri Aug  4 06:58:10 UTC 2017 - fabian@ritter-vogt.de
+
+- Don't use symlinks for %fdupes, it's not allowed for kpackages
+  (boo#1052119)
+
+-------------------------------------------------------------------
+Tue Jul 18 16:14:48 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.4.php
+- Changes since 5.10.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 27 17:51:28 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.3.php
+- Changes since 5.10.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 13 21:35:01 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.2.php
+- Changes since 5.10.1:
+  * Openconnect: make sure the UI fits into the password dialog (kde#380399)
+
+-------------------------------------------------------------------
+Tue Jun  6 17:19:56 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.1.php
+- Changes since 5.10.0:
+  * Restrict shared connections to permanent hardware address (kde#380379)
+  * Allow to have wider password dialog while preffering minimum size (kde#380399)
+  * Openconnect: make sure we accept the dialog (kde#380299)
+  * Properly pass specific vpn type when selecting new connection by double click
+  * Openconnect (juniper): Properly make sure we are compatible with the rest of nm tools
+  * Openconnect (juniper): Make sure we are compatible with the rest of nm tools (kde#380244)
+
+-------------------------------------------------------------------
+Fri May 26 14:10:33 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.0.php
+- Changes since 5.9.95:
+  * None
+
+-------------------------------------------------------------------
+Thu May 11 20:26:33 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.95.php
+- Changes since 5.9.5:
+  * Workaround to fix PasswordDialog's focus. (kde#379279)
+  * Remove option to set network type in gsm configuration (kde#379400)
+  * Improve password dialogs
+  * Fix minor typo
+  * OpenVPN: don't require setting to be non-empty for advanced configuration
+  * OpenVPN: add new properties (sync with NM) (kde#378648)
+  * Simplify connection item delegate
+  * OpenVPN: Remove previously configured secrets to avoid passing them back (kde#375170)
+  * KCM: Do not use Plasma components as the colors are not consistent (kde#374905)
+
+-------------------------------------------------------------------
+Tue Apr 25 18:58:07 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.9.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.5.php
+- Changes since 5.9.4:
+  * Missing include
+  * Set auto-negotiate to true for newly created wired connections (kde#378554)
+
+-------------------------------------------------------------------
+Tue Mar 21 19:21:48 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.4.php
+- Changes since 5.9.3:
+  * WiredSetting: Speed has to be set when auto-negotiation is off (kde#376018)
+
+-------------------------------------------------------------------
+Tue Feb 28 19:56:19 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.3.php
+- Changes since 5.9.2:
+  * Don't assume initialized if there are pending dbus replies
+
+-------------------------------------------------------------------
+Tue Feb 14 17:58:13 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.2
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.2.php
+- Changes since 5.9.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Feb  7 18:58:23 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.1
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.1.php
+- Changes since 5.9.0:
+  * elide Network Manager KCM tabs
+
+-------------------------------------------------------------------
+Thu Jan 26 19:59:06 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.0.php
+- Changes since 5.8.95:
+  * Fix crash caused by notifications use-after-free
+  * Openconnect: cast QWidget to correct widget type used for password field
+  * OpenVPN: Remove previously configured secrets to avoid passing them back
+  * OpenVPN: Remove previously configured secrets to avoid passing them back
+  * KCM: Do not use Plasma components as the colors are not consistent
+  * Use KDE specific page for captive portal redirection
+  * Some captive portals seems to have problem redirecting from https
+  * Revert "Pass protocol type to openconnect"
+  * Pass protocol type to openconnect
+  * When importing an OpenVPN connection set default passwords to be stored in KWallet
+
+-------------------------------------------------------------------
+Thu Jan 12 20:39:58 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.8.95 (Plasma 5.9 Beta)
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.95.php
+- Changes:
+  * See https://www.kde.org/announcements/plasma-5.8.5-5.8.95-changelog.php#plasma-nm
+- Don't try to build openconnect support on 13.2
+
+-------------------------------------------------------------------
+Tue Dec 27 18:31:45 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.5.php
+
+-------------------------------------------------------------------
+Wed Nov 23 10:59:30 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.4.php
+
+-------------------------------------------------------------------
+Tue Nov  1 10:36:40 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.3.php
+
+-------------------------------------------------------------------
+Tue Oct 18 15:16:03 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.2.php
+
+-------------------------------------------------------------------
+Tue Oct 11 15:44:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.1.php
+
+-------------------------------------------------------------------
+Wed Oct  5 07:58:52 UTC 2016 - fabian@ritter-vogt.de
+
+- Add Source: URL back
+
+-------------------------------------------------------------------
+Thu Sep 29 16:36:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.0
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.0.php
+
+-------------------------------------------------------------------
+Thu Sep 15 15:53:55 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.95 (Plasma 5.8 Beta)
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.95.php
+
+-------------------------------------------------------------------
+Tue Sep 13 17:42:09 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.5.php
+
+-------------------------------------------------------------------
+Fri Aug 26 20:36:41 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.4.php
+
+-------------------------------------------------------------------
+Fri Aug 12 23:37:32 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Adjust filelist for the plasmoid appdata, installed with KF > 5.25.0
+
+-------------------------------------------------------------------
+Tue Aug  2 11:36:08 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.3.php
+
+-------------------------------------------------------------------
+Sat Jul 23 05:16:07 UTC 2016 - jengelh@inai.de
+
+- Update descriptions
+
+-------------------------------------------------------------------
+Wed Jul 20 08:54:42 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.2.php
+
+-------------------------------------------------------------------
+Wed Jul 13 06:13:38 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.1.php
+
+-------------------------------------------------------------------
+Tue Jul  5 11:49:31 UTC 2016 - wbauer@tmo.at
+
+- Use the new %kf5_find_lang macro to create the file list for the
+  lang package
+- Remove rpmlintrc file, it is not needed any more now
+
+-------------------------------------------------------------------
+Thu Jun 30 12:02:38 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.0.php
+
+-------------------------------------------------------------------
+Fri May 20 12:09:40 UTC 2016 - alarrosa@suse.com
+
+- The mobile-broadband-provider-info package is not required anymore,
+  but recommended.
+
+-------------------------------------------------------------------
+Sun May 15 16:50:25 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.4.php
+
+-------------------------------------------------------------------
+Tue Apr 19 20:46:12 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.3.php
+
+-------------------------------------------------------------------
+Tue Apr  5 15:53:56 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.2.php
+
+-------------------------------------------------------------------
+Tue Mar 29 16:21:09 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.1.php
+
+-------------------------------------------------------------------
+Sun Mar 20 09:20:00 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.0.php
+
+-------------------------------------------------------------------
+Tue Mar  1 17:33:35 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.5 (boo#968966)
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.5.php
+
+-------------------------------------------------------------------
+Tue Jan 26 22:20:18 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.4:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.4.php
+
+-------------------------------------------------------------------
+Wed Jan  6 14:12:19 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.3:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.3.php
+
+-------------------------------------------------------------------
+Tue Dec 22 22:35:17 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.2.php
+
+-------------------------------------------------------------------
+Tue Dec 15 17:50:02 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.1.php
+
+-------------------------------------------------------------------
+Sat Dec 12 17:32:59 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0:
+  * For more details please see:
+    https://dot.kde.org/2015/12/08/plasma-55-beautiful-new-artwork
+- Move to cmake(...) BuildRequires where possible
+
+-------------------------------------------------------------------
+Sun Nov  8 19:17:55 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.3 (boo#955068):
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.3.php
+
+-------------------------------------------------------------------
+Sun Oct  4 10:44:04 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.2:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.2.php
+
+-------------------------------------------------------------------
+Thu Sep 10 17:18:21 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.1:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.1.php
+
+-------------------------------------------------------------------
+Mon Aug 24 17:52:38 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.0.php
+
+-------------------------------------------------------------------
+Sun Aug 16 10:17:06 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.95 aka 5.4 beta:
+  This release of Plasma brings many nice touches for our users
+  such as much improved high DPI support, KRunner auto-completion
+  and many new beautiful Breeze icons. It also lays the ground for
+  the future with a tech preview of Wayland session available.
+  We're shipping a few new components such as an Audio Volume
+  Plasma Widget, monitor calibration tool and the User Manager
+  tool comes out beta.
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.95.php
+
+-------------------------------------------------------------------
+Sun Aug 16 09:03:33 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Build the openconnect plugin on Leap
+
+-------------------------------------------------------------------
+Sun Jul 26 15:53:38 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Fix Oboletes/Provides versions regarding Leap versioning
+
+-------------------------------------------------------------------
+Sun Jun 28 18:32:26 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.2.php
+
+-------------------------------------------------------------------
+Thu May 28 11:55:33 UTC 2015 - tittiatcoke@gmail.com
+
+- Add obsoletes for the old NetworkManager-kde4 package to
+  enable a smooth upgrade path from older openSUSE releases
+
+-------------------------------------------------------------------
+Fri May 22 15:30:18 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.1.php
+
+-------------------------------------------------------------------
+Tue May 19 01:38:29 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Drop pkgconfig(Qt5Concurrent), pkgconfig(Qt5Designer),
+  pkgconfig(Qt5Declarative), pkgconfig(Qt5OpenGL),
+  pkgconfig(Qt5Script), pkgconfig(Qt5ScriptTools),
+  pkgconfig(Qt5Sql), pkgconfig(Qt5Svg), pkgconfig(Qt5Test),
+  pkgconfig(Qt5WebKit), pkgconfig(Qt5WebKitWidgets) and
+  pkgconfig(Qt5X11Extras) BuildRequires, no longer needed
+
+-------------------------------------------------------------------
+Sun May 17 19:39:05 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Also obsolete plasma-nm subpackages for openSUSE > 13.2
+
+-------------------------------------------------------------------
+Tue May 12 17:45:20 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Make sure we require NetworkManager
+
+-------------------------------------------------------------------
+Thu Apr 23 13:27:33 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3 Final:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.0.php
+- Obsolete plasma-nm for openSUSE > 13.2
+
+-------------------------------------------------------------------
+Wed Apr 15 18:35:10 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Don't build openconnect plugin on SLE
+
+-------------------------------------------------------------------
+Sat Apr 11 18:53:49 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.95 aka 5.3 beta:
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.95.php
+- Update required Qt version to 5.4.0
+- Update required NetworkManager-devel version to 0.9.8.4
+- Update required extra-cmake-modules version to 1.3.0
+- Update required libKF5NetworkManagerQt-devel to 5.8.0
+- Update required libKF5ModemManagerQt-devel to 5.9.0
+- Add explicit pkgconfig(ModemManager) >= 1.0.0 BuildRequires
+- Drop patches merged upstream:
+  0001-Update-CMakeLists.txt-to-use-a-new-version-of-mm-qt.patch
+  and 0002-Adapt-to-modemmanager-qt-API-changes.patch
+
+-------------------------------------------------------------------
+Sun Apr  5 13:50:01 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added patches from upstream:
+  0001-Update-CMakeLists.txt-to-use-a-new-version-of-mm-qt.patch
+  and 0002-Adapt-to-modemmanager-qt-API-changes.patch
+- Add explicit pkgconfig(ModemManager) BuildRequires
+- Raise libKF5ModemManagerQt-devel BuildRequires to 5.8.0
+
+-------------------------------------------------------------------
+Thu Mar 19 17:42:43 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.2.php
+
+-------------------------------------------------------------------
+Fri Feb 20 02:44:03 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.1.php
+
+-------------------------------------------------------------------
+Mon Jan 26 19:49:30 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 Final:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.0.php
+- Drop 0001-Make-NM-to-store-Openconnect-secrets-into-KWallet.patch,
+  merged upstream
+
+-------------------------------------------------------------------
+Tue Jan 13 16:35:12 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 Beta aka 5.1.95:
+  * Undo changes to Plasma desktop layout
+  * Smarter sorting of results in KRunner
+  * Breeze window decoration theme adds a new look to your
+    desktop and is now used by default
+  * New white mouse cursor theme for Breeze.
+  * New plasma widgets: 15 puzzle, web browser, show desktop
+  * Over 300 bugs fixed throughout Plasma modules.
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.95.php
+- Drop patches merged upstream:
+    0001-Adapt-to-libnm-qt-changes.patch
+    0001-OpenVPN-Add-option-for-server-certificate-verificati.patch
+    0001-Update-OpenConnect-support-for-library-version-5.patch
+    0002-Update-OpenConnect-storage-of-manually-accepted-serv.patch
+- Fix supplements markings in spec
+- Added 0001-Make-NM-to-store-Openconnect-secrets-into-KWallet.patch
+  (kde#309931, kde#334474)
+-------------------------------------------------------------------
+Sat Jan  3 20:47:24 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added 0001-Adapt-to-libnm-qt-changes.patch from upstream
+
+-------------------------------------------------------------------
+Thu Dec 11 18:00:07 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.2.php
+
+-------------------------------------------------------------------
+Mon Dec  8 09:18:41 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added 0001-Update-OpenConnect-support-for-library-version-5.patch
+  and 0002-Update-OpenConnect-storage-of-manually-accepted-serv.patch
+  from upstream to support building/working with openconnect version 7
+
+-------------------------------------------------------------------
+Sat Nov 29 17:22:34 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added 0001-OpenVPN-Add-option-for-server-certificate-verificati.patch,
+  kde#341069
+
+-------------------------------------------------------------------
+Thu Nov  6 20:14:20 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.1:
+  * Bugfix release
+  * Properly initialize new OpenVPN connections, kde#340190
+  * Fix crash when trying to set operator name for uninitialized
+    GsmInterface, kde#340364
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.1.php
+- Drop plasma-nm-5.1.0.1-openvpn.patch, merged upstream
+
+-------------------------------------------------------------------
+Sat Oct 25 17:58:14 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Recommend lang subpackage
+
+-------------------------------------------------------------------
+Tue Oct 21 12:25:37 UTC 2014 - tchvatal@suse.com
+
+- Fix obsoletes/provides warning
+- Cleanup with spec-cleaner
+- Fix plasma-nm5-openvpn loosing its configuration on first setup:
+  * plasma-nm-5.1.0.1-openvpn.patch
+
+-------------------------------------------------------------------
+Thu Oct  9 21:24:39 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1 Final:
+  * Bugfixes since RC1
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.0.php
+
+-------------------------------------------------------------------
+Fri Sep 26 14:37:30 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.95:
+   * Fixed kde#339223
+- Install translations
+- Add rpmlintrc file for file-not-in-%lang warnings: we don't use
+  find_lang macro as it doesn't searches in subdirectories
+
+-------------------------------------------------------------------
+Fri Sep 12 14:27:03 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.95~git20140912 (rfe4e4ba):
+   * Applet improvements
+   * Less usage of kdelibs4support libraries
+   * Fixed bugs include kde#338146, and kde#338513, kde#337956
+- Require kwalletd5
+
+-------------------------------------------------------------------
+Tue Aug 12 18:42:19 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.1
+   * Bugfix release
+
+-------------------------------------------------------------------
+Fri Jul 11 19:43:00 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+   * Plasma 5.0 Final
+
+-------------------------------------------------------------------
+Fri Jul 11 08:52:24 UTC 2014 - cdenicolo@suse.com
+
+- license update: (LGPL-2.1 or LGPL-3.0) and (GPL-2.0 or GPL-3.0)
+  package is kde dual licensed, also GPL.
+
+-------------------------------------------------------------------
+Thu Jul  3 21:50:31 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Activate plasma-nm5 package
+

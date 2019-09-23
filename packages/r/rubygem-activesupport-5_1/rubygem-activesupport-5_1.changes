@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Fri Mar 29 05:55:00 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 5.1.7
+ see installed CHANGELOG.md
+
+  ## Rails 5.1.7 (March 27, 2019) ##
+  
+  *   No changes.
+
+-------------------------------------------------------------------
+Thu Mar 14 10:48:29 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 5.1.6.2
+ see installed CHANGELOG.md
+
+  ## Rails 5.1.6.2 (March 11, 2019) ##
+  
+  *   No changes.
+
+-------------------------------------------------------------------
+Sat Dec  8 16:18:00 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 5.1.6.1
+ see installed CHANGELOG.md
+
+  ## Rails 5.1.6.1 (November 27, 2018) ##
+  
+  *   No changes.
+
+-------------------------------------------------------------------
+Fri Mar 30 04:31:29 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 5.1.6
+ see installed CHANGELOG.md
+
+  ## Rails 5.1.6 (March 29, 2018) ##
+  
+  *   Return all mappings for a timezone identifier in `country_zones`
+  
+      Some timezones like `Europe/London` have multiple mappings in
+      `ActiveSupport::TimeZone::MAPPING` so return all of them instead
+      of the first one found by using `Hash#value`. e.g:
+  
+          # Before
+          ActiveSupport::TimeZone.country_zones("GB") # => ["Edinburgh"]
+  
+          # After
+          ActiveSupport::TimeZone.country_zones("GB") # => ["Edinburgh", "London"]
+  
+      Fixes #31668.
+  
+      *Andrew White*
+
+-------------------------------------------------------------------
+Thu Feb 15 05:29:58 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 5.1.5
+ see installed CHANGELOG.md
+
+  ## Rails 5.1.5 (February 14, 2018) ##
+  
+  *   No changes.
+
+-------------------------------------------------------------------
+Mon Sep 11 09:29:05 UTC 2017 - enavarro@suse.com
+
+- Update to version 5.1.4
+
+-------------------------------------------------------------------
+Tue Aug 22 14:22:08 UTC 2017 - bgeuken@suse.com
+
+- Add missing gem2rpm.yml and add -5.1 suffix
+
+-------------------------------------------------------------------
+Tue Aug 22 13:14:20 UTC 2017 - ammartinez@suse.com
+
+- Initial package for 5.1.3

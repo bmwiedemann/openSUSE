@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e1ac694391d18ed3dea064bc3163ba87</srcmd5>
+    <version>1.0.1</version>
+    <time>1554965341</time>
+    <user>dimstar_suse</user>
+    <comment>New package, Qt bindings for PulseAudio</comment>
+    <requestid>692806</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c03b1f264f8776ee029fb1577fcf82a4</srcmd5>
+    <version>1.1.0</version>
+    <time>1558340924</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703882</requestid>
+  </revision>
+</revisionlist>

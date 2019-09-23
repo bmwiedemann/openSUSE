@@ -1,0 +1,8 @@
+<package name="u-boot-highbank" project="openSUSE:Factory">
+  <title>Das U-Boot bootloader PandaBoard package </title>
+  <description>Das U-Boot Bootloader : http://www.denx.de/wiki/U-Boot
+
+Support for PandaBoard (http://pandaboard.org)</description>
+  <devel project="openSUSE:Factory" package="u-boot"/>
+  <bcntsynctag>u-boot</bcntsynctag>
+</package>

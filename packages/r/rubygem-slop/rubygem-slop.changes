@@ -1,0 +1,394 @@
+-------------------------------------------------------------------
+Fri Jul 19 09:37:55 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 4.7.0
+ see installed CHANGELOG.md
+
+  v4.7.0 (2019-06-29)
+  -------------------
+  
+  Features:
+    * Add `Slop::Result#fetch`. It returns the value of given option, or raises an error if given option is not present. [#232](https://github.com/leejarvis/slop/pull/232) ([Giovanni Benussi](https://github.com/giovannibenussi))
+    * Adding a separator without passing any arguments now creates a separator with the empty string. [#238](https://github.com/leejarvis/slop/pull/238) ([Teemu Matilainen](https://github.com/tmatilai))
+  Bug fixes
+    * Ensure non-string option types have their flags consumed properly [#241] (Sutou Kouhei)
+
+-------------------------------------------------------------------
+Tue Mar 20 10:17:38 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 4.6.2
+ see installed CHANGELOG.md
+
+  v4.6.2 (2018-03-12)
+  
+  Bug fixes/Enhancements
+    * Fix equals character (=) being parsed incorrectly in some cases. #226
+
+-------------------------------------------------------------------
+Tue Feb 27 05:34:59 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 4.6.1
+ see installed CHANGELOG.md
+
+  v4.6.1 (2017-11-20)
+  -------------------
+  
+  Bug fixes/Enhancements
+    * Fix separator so it doesn't mutate user data. #223 (Marc-André Lafortune)
+    * Add additional tests for `Options#separator` and fix issue where
+      the last separator was ignored. #222
+
+-------------------------------------------------------------------
+Wed Oct 11 06:18:38 UTC 2017 - coolo@suse.com
+
+- updated to version 4.6.0
+ see installed CHANGELOG.md
+
+  v4.6.0 (2017-10-06)
+  -------------------
+  
+  Features
+    * Add support for required options. #218 (William Woodruff)
+
+-------------------------------------------------------------------
+Tue May 23 10:22:40 UTC 2017 - coolo@suse.com
+
+- updated to version 4.5.0
+ see installed CHANGELOG.md
+
+  v4.5.0 (2017-05-22)
+  -------------------
+  
+  Features:
+    * Added config option to avoid translating flags-with-dashes into
+    underscores. #206 (@lbriais)
+  
+  v4.4.3 (2017-05-02)
+  -------------------
+  
+  Bug fixes:
+    * Ruby 2.0.0 support broken in v4.4.2
+  
+  v4.4.2 (2017-04-29)
+  -------------------
+  
+  Bug fixes:
+    * Fix support for parsing -x5 or -nfoo. #199
+    * Fix removing arguments after `--`. #194
+
+-------------------------------------------------------------------
+Sat Sep 10 04:39:20 UTC 2016 - coolo@suse.com
+
+- updated to version 4.4.1
+ see installed CHANGELOG.md
+
+  v4.4.1 (2016-08-21)
+  -------------------
+  
+  Bug fixes:
+    * Handle bad constant names in `Slop.option_defined?`. #198
+      (Ellen Marie Dash)
+
+-------------------------------------------------------------------
+Tue Aug 16 04:33:56 UTC 2016 - coolo@suse.com
+
+- updated to version 4.4.0
+ see installed CHANGELOG.md
+
+  v4.4.0 (2016-08-15)
+  -------------------
+  
+  Features
+    * Support parsing arguments prefixed with dashes. #192 (Andrew Clemons)
+  
+  Bug fixes:
+    * Retain sort order inside tail sort. #193 (Caio Chassot)
+
+-------------------------------------------------------------------
+Sun Mar 20 05:32:11 UTC 2016 - coolo@suse.com
+
+- updated to version 4.3.0
+ see installed CHANGELOG.md
+
+  v4.3.0 (2016-03-19)
+  -------------------
+  
+  Features
+    * Allow disabling array delimiter. #189 (Mike Pastore)
+    * Allow passing custom banner as config. #191 (Philip Rees)
+
+-------------------------------------------------------------------
+Thu Nov 26 05:35:58 UTC 2015 - coolo@suse.com
+
+- updated to version 4.2.1
+ see installed CHANGELOG.md
+
+  v4.2.1 (2015-11-25)
+  -------------------
+  
+  Features:
+    * Better handling of option names with multiple words. #169 (Tim Rogers)
+  
+  Minor enhancements:
+    * add ARGF notes to Arguments (README). #173 (Rick Hull)
+  
+  Bug fixes:
+    * Fix arguments removed with option arguments. #182 (Naoki Mizuno)
+    * Fix bug where true is passed to BoolOption block regardless
+      of --no- prefix. #184 (Ben Brady)
+    * only raise MissingArgument if not `default_value`. #163 (Ben Brady)
+
+-------------------------------------------------------------------
+Fri Jun 19 04:34:15 UTC 2015 - coolo@suse.com
+
+- updated to version 4.2.0
+ see installed CHANGELOG.md
+
+  v4.2.0 (2015-04-18)
+  -------------------
+  
+  Features:
+    * Support for Regexp option type #167 (Laurent Arnoud)
+    * Support prefixed `--no-` for explicitly setting boolean options
+      to `false` #168
+    * Better handling of flags with multiple words #169 (Tim Rogers)
+
+-------------------------------------------------------------------
+Thu Apr 23 08:19:27 UTC 2015 - coolo@suse.com
+
+- updated to version 4.1.0
+ Features:
+   * Support for FloatOption #156 (Rick Hull)
+   * Support for `limit` config to ArrayOption.
+   * Support for `tail` config to add options to the bottom of
+     the help text.
+   * Add explicit setter (#[]=) to Result class. #162
+   * Implement flag gettings for UnknownOption and MissingArgument
+     error classes. #165 (sigurdsvela)
+ 
+ Minor enhancements:
+   * Reset parser every time `parse` is called.
+ 
+ Bug fixes:
+   * Remove "--" from unprocessed arguments #157 (David Rodríguez).
+
+-------------------------------------------------------------------
+Tue Feb 10 18:34:28 UTC 2015 - coolo@suse.com
+
+- updated to version 4.0.0
+
+-------------------------------------------------------------------
+Sun Oct 12 17:11:28 UTC 2014 - coolo@suse.com
+
+- updated to version 3.6.0
+  * Add example of rest arguments usage in the readme file #139
+  * Default values on options are printed in the help message #134
+- new rubygem packaging
+
+-------------------------------------------------------------------
+Tue Mar 18 14:57:15 UTC 2014 - coolo@suse.com
+
+- updated to version 3.5.0
+ * Add support for `as: Regexp` #132
+
+-------------------------------------------------------------------
+Fri Nov 22 08:40:30 UTC 2013 - coolo@suse.com
+
+- updated to version 3.4.7
+ * Ensure trash is cleared on every parse so you can parse multiple
+   times with the same instance (#130)
+
+-------------------------------------------------------------------
+Tue Jul 30 18:46:52 UTC 2013 - coolo@suse.com
+
+- updated to version 3.4.6
+ * Ensure short-options still consume trailing arguments, ie `-abc foo`
+   should assign `foo` to the option `c` if it expects an argument (#114).
+
+-------------------------------------------------------------------
+Wed May 15 03:52:17 UTC 2013 - coolo@suse.com
+
+- updated to version 3.4.5
+ * Allow specifying long options starting with numbers (#110, Peter Zotov)
+
+-------------------------------------------------------------------
+Mon Mar 18 06:18:24 UTC 2013 - coolo@suse.com
+
+- updated to version 3.4.4
+ * Disable the run callback when the help option is used and `-h`
+   or `--help` is passed. #106
+ * Ensure default `--help` option exits by default (#107, Autumn Perrault).
+
+-------------------------------------------------------------------
+Sun Jan 20 07:26:54 UTC 2013 - coolo@suse.com
+
+- updated to version 3.4.3
+ * Ensure `parse!` removes commands and their options.
+ * Expose the Hash commands as public API.
+ * Deprecated `Slop.optspec`.
+ * Ensure help output prints to stdout, not stderr.
+ * Ensure options replace any existing duplicates
+ * Command config options now inherit config options from top level Slop.
+ * Command help output now adds command in usage string.
+ * Implement new command system (#95)
+ * Deprecate Slop::Commands
+ * Ensure 'no-foo' options are not inverted when parsing '--no-foo' (#86)
+ * Code refactoring and simplification (Kenichi Kamiya, #84, #85)
+
+-------------------------------------------------------------------
+Thu Aug 30 05:33:53 UTC 2012 - coolo@suse.com
+
+- update to 3.3.3 and merge rubygem-slop-3_3
+ * Ensure autocreate arguments are not created as options (#77)
+ * Ensure options are not swallowed when using short options with argument
+   included (#74)
+
+-------------------------------------------------------------------
+Thu Apr 12 07:56:19 UTC 2012 - saschpe@suse.de
+
+- Update to version 2.4.4:
+  * No upstream changelog for this version (yet)
+
+-------------------------------------------------------------------
+Tue Jan 24 00:11:24 UTC 2012 - mrueckert@suse.de
+
+- update to version 2.4.3
+  * Allow the `:as` option to accept an object responding to :call
+    for custom type conversions (#45)
+  * Ensure negative integers are not parsed as possible options (#46)
+- additional changes from 2.4.2
+  * Fix checking of required options (Dominik Honnef)
+- additional changes from 2.4.1
+  * Ensure optional arguments are returned correctly
+- additional changes from 2.4.0
+  * Avoid `define_method` for checking an options presence
+    (and caching it) #37
+  * Ensure the short option allows an appended `=` for accepting
+    arguments
+  * Implement `respond_to?`
+- additional changes from 2.3.1
+  * Return `nil` for any options using casting which don't expect
+    arguments (#33)
+  * Fix parenthesis warning on 1.8.7 (@shevegen)
+  * Ensure long argument is a string before attempting to use `#[]`
+    method on it
+- additional changes from 2.3.0
+  * Allow flags to have suffixed `=` char for options which accept
+    an argument
+- additional changes from 2.2.0
+  * Support `bup.options` style optspec parsing
+      * http://apenwarr.ca/log/?m=201111
+  * Allow `:as` to accept a `count` value (Conrad Irwin):
+    `on :v, :verbose, :as => :count # -vv; opts[:verbose] #=> 2`
+
+-------------------------------------------------------------------
+Thu Sep 15 17:00:35 UTC 2011 - mrueckert@suse.de
+
+- update to version 2.1.0
+  * Added `Slop#missing` for returning a list of missing options
+    parsed
+  * Allow `Slop#present?` to accept multiple arguments
+  * Added `:all_accept_arguments` to Slop configuration options,
+    this saves having to specify that every option takes an
+    argument
+  * Added `Slop#to_struct` for building new classes from options
+- additional changes from 2.0.0
+  * Deprecations:
+    * Removed `Slop::Options#to_hash` continue using `Slop#to_hash`
+      directly.  This method also now returns symbols by default
+      instead of strings. If you want strings use
+      `opts.to_hash(false)`
+    * `:multiple_switches` is now enabled by default, to parse
+      `fbar` as the option `f` with value `bar` you must disable
+      `:multiple_switches`
+    * Removed `Slop::Options#to_help` and merged its contents into
+      `Slop#help`
+    * Removed `lib/slop/options.rb` and merged `Slop::Options` into
+      slop.rb
+    * Removed `lib/slop/option.rb` and merged `Slop::Option` into
+      slop.rb
+    * These changes make Slop much easier to vendor in libraries
+  * `Slop::Option` now inherits from `Struct.new`
+  * Added Slop::Error subclassing from StandardError which all
+    exception classes should inherit from
+  * Added Slop::MissingOptionError and `:required` option to
+    Slop::Option.  This exception is raised when a mandatory option
+    is not used
+
+-------------------------------------------------------------------
+Tue Jul  5 13:02:41 UTC 2011 - mrueckert@suse.de
+
+- update to slop 1.9.1
+  * Ensure optional items with no arguments still return true when
+    searching for presence
+- additional changes from 1.9.1
+  * Add command completion and support for an error message when
+    ambiguous commands are used
+  * Add command aliases
+  * Fix: Ensure parsed elements are removed from original arguments
+    when using `:multiple_switches`
+  * Ensure anything after `--` is parsed as an argument and not
+    option even if prefixed with `/--?/`
+  * Performance improvements when making many calls to
+    `Slop#option?` for checking an options presence (Rob Gleeson)
+  * Ensure `execute` passes command arguments to the block
+  * Support for summary and description (Denis Defreyne)
+- additional changes from 1.8.0
+  * Added `execute` method to Slop for commands. This block will be
+    invoked when a specific command is used. The Slop object will
+    be yielded to the block
+  * Allow passing a class name to `on` to be used as an `:as`
+    option. ie: `on :people, 'Some people', Array`
+  * Get smart with parsing options optparse style: `on '--name
+    NAME'` and `on 'password [OPTIONAL]'`
+  * Feature: `:arguments` setting to enable argument passing for
+    all options
+- additional changes from 1.7.0
+  * Feature: Autocreate (auto create options at parse time, making
+    assumptions)
+  * Feature: When parsing options as arrays, push multiple
+    arguments into a single array
+- additional changes from 1.6.1
+  * Fix tests and using a temporary Array for ARGV, fixes RubyGems
+    Test issues
+  * General cleanup of code
+
+-------------------------------------------------------------------
+Thu May 19 15:21:48 UTC 2011 - mrueckert@suse.de
+
+- slop 1.6.0
+  * Add `:ignore_case` to Slop options for case insensitive option
+    matching
+  * Add `:on_noopts` for triggering an event when the arguments
+    contain no options
+  * Add `:unless` to Slop::Option for omitting execution of the
+  * Options block when this object exists in the Array of items
+  * passed to Slop.new
+  * Bugfix: Do not parse negative integers as options. A valid
+    option must start with an alphabet character
+  * Bugfix: Allow a Range to accept a negative Integer at either
+    end
+
+-------------------------------------------------------------------
+Tue May  3 10:54:03 UTC 2011 - mrueckert@suse.de
+
+- update to 1.5.5
+  - only grab options that are actually options
+
+-------------------------------------------------------------------
+Mon May  2 14:58:49 UTC 2011 - mrueckert@suse.de
+
+- update to 1.5.4
+  - parse! shouldn't remove unparsed items with same value as a
+    parsed item.
+
+-------------------------------------------------------------------
+Tue Apr 26 16:18:17 UTC 2011 - mrueckert@suse.de
+
+- update to 1.5.3
+
+-------------------------------------------------------------------
+Fri Mar 18 15:46:28 UTC 2011 - mrueckert@suse.de
+
+- initial package (v1.1.0)
+

@@ -1,0 +1,5 @@
+<package name="python-pytest-subtests" project="openSUSE:Factory">
+  <title>python-pytest-subtests</title>
+  <description>Python unittest subTest() support and subtests fixture</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-subtests"/>
+</package>

@@ -1,0 +1,445 @@
+-------------------------------------------------------------------
+Mon Aug  5 09:16:31 UTC 2019 - ghe@suse.com
+
+- Update to v4.0.9
+ * include some fixes/enhancements for dlm_controld (bsc#1144793)
+ * source moved to https://pagure.io/dlm
+
+-------------------------------------------------------------------
+Mon Aug  6 11:01:48 UTC 2018 - schwab@suse.de
+
+- sysmacros.patch: Include <sys/sysmacros.h> for minor
+
+-------------------------------------------------------------------
+Thu Nov 23 13:48:46 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Tue Feb 14 09:04:32 UTC 2017 - jengelh@inai.de
+
+- Use source URL; drop redundant %clean section;
+  rectify RPM groups; run fdupes to merge duplicate files.
+
+-------------------------------------------------------------------
+Sat Feb  4 07:26:02 UTC 2017 - zren@suse.com
+
+- Update to v4.0.7
+ * bsc#1023595: libdlm: upgrade version to 4.0.7
+- Re-add the dropped bsc numbers to follow the factory-first policy
+ * take Factory fixes for SLE12 (boo#944795, bsc#944797)
+
+-------------------------------------------------------------------
+Mon Jul 25 06:54:31 UTC 2016 - zren@suse.com
+
+- Update to v4.0.6
+ * In v4.0.4, there's a stupid and severe bug so that upstream
+   released v4.0.5 soon with an urgent fix
+ * Upstream merged our fix for bsc#977201 with release v4.0.6,
+   so I still use the 2 below bugs for this updates:
+ * bsc#967332: libdlm: package update to v4.0.4
+ * bsc#977201: output of `dlm_tool ls` should distinguish causes
+   for "wait fencing" message
+
+- Drop patches
+ * bnc#875122dlm_controld-fix-long-name-in-log-entry.patch
+ * build-dlm_stonith.patch
+
+- Rename patches more readable
+ * remove: Makefile-for-diff-arch.patch, remove-sd-notify.patch,
+   bnc#874705nodes-without-quorum.patch
+ * add: 0001-makefile-for-diff-arch.patch,
+   0002-remove-sd-notify.patch,
+   0003-bnc#874705-nodes-without-quorum.patch
+
+
+-------------------------------------------------------------------
+Mon Feb 15 06:15:03 UTC 2016 - zren@suse.com
+
+- Update to V4.0.4
+ * Remove build-dlm_stonith.patch
+ * Reove bnc#875122dlm_controld-fix-long-name-in-log-entry.patch
+
+-------------------------------------------------------------------
+Fri May  1 16:41:52 UTC 2015 - jengelh@inai.de
+
+- Avoid running sh for %post ldconfig
+- Default to implicit -n for %setup
+
+-------------------------------------------------------------------
+Sun Apr 12 16:30:46 UTC 2015 - crrodriguez@opensuse.org
+
+- Move udev rules to %{_udevrulesdir}, packages should 
+  not ship files in /etc/udev/rules.d which is reserved
+  for the sysadmin.
+
+-------------------------------------------------------------------
+Fri Nov 14 08:33:11 UTC 2014 - dimstar@opensuse.org
+
+- BuildRequire pkgconfig(systemd) instead of systemd-devel.
+
+-------------------------------------------------------------------
+Wed May 21 11:34:53 UTC 2014 - jsegitz@novell.com
+
+- added necessary macros for systemd files
+
+-------------------------------------------------------------------
+Tue May 20 08:06:58 UTC 2014 - lzhong@suse.com
+
+- fix different behavior when nodes without quorum
+   + bnc#874705nodes-without-quorum.patch 
+
+-------------------------------------------------------------------
+Mon Apr 28 02:36:41 UTC 2014 - lzhong@suse.com
+
+- dlm_controld print out error format message(bnc#875122)
+   + bnc#875122dlm_controld-fix-long-name-in-log-entry.patch	
+
+-------------------------------------------------------------------
+Mon Mar 31 06:12:40 UTC 2014 - lzhong@suse.com
+
+- dlm_controld notifies systemd(bnc#870626)
+   + remove-sd-notify.patch	
+
+-------------------------------------------------------------------
+Sat Sep  7 09:40:54 CDT 2013 - rgoldwyn@suse.com
+
+- Build dlm_stonith to prox fencing for pacemaker
+  + build-dlm_stonith.patch
+- Remove patch to use default fscontrol using sysconfig
+  - libdlm-enable-fscontrol.patch
+
+-------------------------------------------------------------------
+Thu Aug  1 04:33:51 UTC 2013 - lzhong@suse.com
+
+- Update to V4.0.2 
+
+-------------------------------------------------------------------
+Tue Jul 23 01:44:05 UTC 2013 - lzhong@suse.com
+
+- Update to V4.0.1(openSuse13.1) 
+  + file a patch for opensuse build service
+- Remove patches from sle11sp3 for either merged in the upstream
+  or obsoleted.
+  - bnc804707-reduce-RR-priority.patch
+  - bnc777137-fix-plock-dev_write_no_op.patch
+  - libdlm-gcc47.patch
+  - libdlm-pacemaker.patch
+
+-------------------------------------------------------------------
+Mon Jun 24 07:59:44 UTC 2013 - ygao@suse.com
+
+- dl_controld: libdlm-pacemaker.patch 
+  * Replace use of send_ais_text() with send_cluster_text()
+  * Replace use of ais_dispatch() with plugin_dispatch()
+  * Replace use of crm_peer_id_cache with crm_peer_cache
+
+-------------------------------------------------------------------
+Mon May 27 08:14:43 UTC 2013 - tserong@suse.com
+
+- Replace NAME= with SYMLINK+= in udev rules (bnc#779718)
+  + use-symlink-in-udev-rules.patch
+
+-------------------------------------------------------------------
+Thu Mar 28 09:50:01 UTC 2013 - dmzhang@suse.com
+
+- reduce dlm_controld priority to RR(1). (bnc#804707) 
+
+-------------------------------------------------------------------
+Fri Feb 22 18:16:54 UTC 2013 - lmb@suse.com
+
+- Make sure we poll the right fd for AIS notifications to avoid spinning
+  (bnc#803746)
+
+-------------------------------------------------------------------
+Mon Jan 28 14:48:07 UTC 2013 - coolo@suse.com
+
+- small cleanup of spec file
+
+-------------------------------------------------------------------
+Mon Jan 28 06:42:32 UTC 2013 - xli@suse.com
+
+- fix the build issue on openSuSE 12.3 Milestone 1 (bnc#798263)
+  add bnc798263-fix-opensuse123-compile-error.patch
+
+-------------------------------------------------------------------
+Fri Aug 24 02:51:55 UTC 2012 - jjzhang@suse.com
+
+- dlm_controld: fix plock dev_write no op (bnc#777137)
+  add bnc777137-fix-plock-dev_write-no-op.patch
+
+-------------------------------------------------------------------
+Sat Jun 23 07:21:44 UTC 2012 - ygao@suse.com
+
+- dlm_controld: Replace use of crm_is_member_active() with the new 
+  crm_is_peer_active() from pacemaker > 1.1.7
+
+-------------------------------------------------------------------
+Thu May 24 10:38:35 UTC 2012 - idonmez@suse.com
+
+- Fix build with gcc 4.7 
+
+-------------------------------------------------------------------
+Fri Dec 16 04:55:40 UTC 2011 - tserong@suse.com
+
+- fix build with current pacemaker
+  (/usr/include/pacemaker/crm/common/stack.h
+   moved to
+   /usr/include/pacemaker/crm/cluster/stack.h) 
+
+-------------------------------------------------------------------
+Sun Nov 13 09:15:17 UTC 2011 - coolo@suse.com
+
+- add libtool as explicit buildrequire to avoid implicit dependency from prjconf
+
+-------------------------------------------------------------------
+Tue Sep 20 14:07:24 UTC 2011 - tserong@suse.com
+
+- dlm_controld: fix build with old (< 3.0) kernel headers
+- dlm_controld: clear waiting plocks for closed files
+- dlm_controld: Introduce RB tree for improving plock resources searching
+  efficiency
+- dlm_controld: RB tree implementation borrowed from the kernel source
+- dlm_controld: remove oom_adj
+- dlm_controld: ignore plocks until checkpoint time
+- dlm_controld: fix plock signature in stored message
+- dlm_controld: fix plock owner syncing
+- dlm_controld: fix plock owner in checkpoints
+- dlm_controld: fix plock checkpoint signatures
+- dlm_controld: wrong fencing time comparison
+- dlm_controld.pcmk: Prevent use-of-NULL by checking the node has a valid
+  address before adding it to configfs
+- dlm_controld: always return error if the daemon is not ready to operate
+
+-------------------------------------------------------------------
+Tue Aug 30 19:36:41 UTC 2011 - andrea.turrini@gmail.com 
+
+- Fixed typos and removed duplicated "Authors:" entry in 
+  descriptions of libdlm.spec
+
+-------------------------------------------------------------------
+Mon May 23 19:39:04 UTC 2011 - crrodriguez@opensuse.org
+
+- Avoid adding build time in binaries, breaks build-compare. 
+
+-------------------------------------------------------------------
+Tue Feb  8 12:24:01 UTC 2011 - tserong@novell.com
+
+- bnc-634240_reset-fs_notified.diff : Reset fs_notified when check_fs_done
+
+
+-------------------------------------------------------------------
+Thu Aug 19 11:13:53 UTC 2010 - tserong@novell.com
+
+- Revert previous change ("allow libdlm to compile with new
+  pacemaker version")
+
+-------------------------------------------------------------------
+Mon Jun 14 15:16:06 UTC 2010 - lmb@novell.com
+
+- Allow libdlm to compile with new pacemaker version.
+
+-------------------------------------------------------------------
+Tue May 18 01:46:52 UTC 2010 - tserong@novell.com
+
+- Reverted libdlm-bug-603685-v2.diff (bug now fixed in Pacemaker)
+
+-------------------------------------------------------------------
+Fri May 14 12:54:48 UTC 2010 - lmb@novell.com
+
+- libdlm-bug-603685-v2.diff: fix dlm_controld.pcmk member processing
+  (bnc#603685)
+
+-------------------------------------------------------------------
+Mon Apr 26 16:00:24 UTC 2010 - coly.li@suse.de
+
+- update from upstream (cs fae6ee39)
+  - dlm_controld: don't log errors after disabling plocks
+  - dlm_controld: don't skip unlinking checkpoint
+  - dlm_controld: set last_plock_time for ownership operations
+  - dlm_controld: add plock checkpoint signatures
+  - dlm_controld: check all messages against enable options
+  - dlm_controld: avoid full plock unlock when no resource exists
+ 
+-------------------------------------------------------------------
+Wed Mar 24 18:34:58 UTC 2010 - coyli@novell.com
+
+- update from upstream:
+  - dlm_controld: set rmem for sctp
+  - misc: update copyright year and owners
+  - man pages: dlm_tool and dlm_controld
+  - dlm_controld/libdlmcontrol/dlm_tool: separate plock debug buffer
+  - dlm_controld: add more fs_notified debugging 
+
+-------------------------------------------------------------------
+Fri Feb  5 10:22:31 UTC 2010 - coyli@novell.com
+
+- delete 64bytes_lvb_len.diff (bnc#573460)
+
+-------------------------------------------------------------------
+Wed Jan 27 09:32:49 UTC 2010 - lmb@novell.com
+
+- Remove libdlm2 on upgrade.
+
+-------------------------------------------------------------------
+Tue Dec  8 06:35:06 UTC 2009 - coyli@novell.com
+
+- 64bytes_lvb_len.diff: change DLM_LVB_LEN to 64 bytes (bnc#515645)
+
+-------------------------------------------------------------------
+Wed Dec  2 08:35:31 UTC 2009 - coyli@novell.com
+
+- remove already-in-upstream patches from package
+
+-------------------------------------------------------------------
+Wed Dec  2 07:44:08 UTC 2009 - coyli@novell.com
+
+- update to upstream commit 7ad436ba4a7d68a79510fd6c033568b6bb100191.
+  not pass compiling yet
+
+-------------------------------------------------------------------
+Thu Nov 26 18:31:24 UTC 2009 - coyli@novell.com
+
+- upgrade package version number from 2.99.08 to 3.00.01, no code
+  modified.
+
+-------------------------------------------------------------------
+Tue Sep 29 06:54:06 UTC 2009 - "lmb@novell.com"
+
+- libdlm-lockspace-fs_notify.diff: fix a race which could lead to an
+  infinite logging loop (bnc#532406).
+
+-------------------------------------------------------------------
+Tue Sep 22 14:19:50 UTC 2009 - "lmb@novell.com"
+
+- dlm-no-quorum-default.diff: change quorum handling to allow cluster to
+  shutdown nodes one-by-one (bnc#541042).
+
+-------------------------------------------------------------------
+Thu Sep  3 09:25:51 UTC 2009 - "lmb@novell.com"
+
+- dlm-debug.diff: Include the lockspace name in syslog().
+
+-------------------------------------------------------------------
+Thu Aug 27 16:14:16 UTC 2009 - "lmb@novell.com"
+
+- dlm-plock-optimization.diff: allow plocks to revert back to single
+  node mode (bnc#497176).
+
+-------------------------------------------------------------------
+Mon Aug 10 17:48:27 UTC 2009 - lmb@novell.com
+
+- libdlm-lockspace-recovery.patch: ensure that all lock spaces are
+  recovered (bnc#528425).
+
+-------------------------------------------------------------------
+Wed Jul 29 16:20:24 CST 2009 - coly.li@suse.de
+
+- add ocfs2-kmp to libdlm requires, since fs/dlm will be integrated
+  into ocfs2-kmp.
+
+-------------------------------------------------------------------
+Tue Jul 21 15:10:39 CEST 2009 - lmb@novell.com
+
+- Fix compilation with new pacemaker code.
+
+-------------------------------------------------------------------
+Tue Mar 31 15:08:36 CEST 2009 - abeekhof@suse.de
+
+- Update for HAE11-RC9
+- Bug bnc#490418 - Reduce the amount of logging while waiting for nodes to be shot
+
+-------------------------------------------------------------------
+Fri Mar 20 12:12:41 CET 2009 - abeekhof@suse.de
+
+- Split the SUSE specific patch from the parts that have
+  been submitted upstream
+- Correctly log the result of calls to crm_terminate_member_no_mainloop() 
+
+-------------------------------------------------------------------
+Thu Mar 19 13:38:25 CET 2009 - abeekhof@suse.de
+
+- Fix race condition when creating configfs entries for
+  cluster peers 
+
+-------------------------------------------------------------------
+Fri Mar 13 09:45:54 CET 2009 - abeekhof@suse.de
+
+- All previous patches are now upstream
+- Update to upstream: cfd58b24b8bb17087e19a73139cf966135e78bec
+  - dlm_controld (pcmk) - Use a Pacemaker library function for kicking nodes from the cluster
+  - dlm_tool: fix lockdebug parsing of first_lkid
+  - dlm_controld: default to no plock rate limit
+  - dlm_controld: don't exit from query thread
+  - dlm_controld: finalize ckpt handle
+  - dlm_controld: cpg_finalize
+  - dlm_controld: use quorum instead of votequorum 
+
+-------------------------------------------------------------------
+Tue Feb 17 18:11:03 CET 2009 - abeekhof@suse.de
+
+- BNC#476449 - Correctly return the current fencing status
+
+-------------------------------------------------------------------
+Fri Feb  6 19:14:34 CET 2009 - abeekhof@suse.de
+
+- Switch to stand-alone libdlm code-base
+- Update to upstream: af52b7bb26a05a8f73d1076254e178b02ed192cd
+- Update to patch-level: a85c21afc4c99dc2aee8f7e7e356f25133c4d4ad
+  - Implement fencing hooks for Pacemaker based clusters
+  - Leverage more funcaitonality from Pacemaker libraries
+  - Add pkgconfig entries
+  - dlm_controld/gfs_controld: read lockless resources from ckpts
+  - dlm_controld/gfs_controld: dump unused resources
+  - dlm_controld/gfs_controld: fix plock rate limiting
+  - dlm_controld/gfs_controld: plock config paths
+  - dlm_controld/gfs_controld: plock dump display resource owner
+  - dlm_controld: recv error checking
+  - dlm_controld: clear plock syncing flags
+
+-------------------------------------------------------------------
+Tue Nov 11 11:22:14 CET 2008 - abeekhof@suse.de
+
+- Update to upstream bd261c8e51f3b5406f22bbb00b76f6da8722412d
+  - fix plock dump
+  - fix fencing checks which weren't happening
+  - fix confchg/message processing, must be done after each individual confchg/message
+  - init logging after fork to avoid ugly interaction with logging threads
+  - fix usage of the query thread mutex
+  - fix usage of realloc in deadlock code
+  - join should return error without fence domain
+
+-------------------------------------------------------------------
+Thu Oct  9 10:23:42 CEST 2008 - abeekhof@suse.de
+
+- Update to upstream b6d73f5752306d635f306036438af1fcf26f4332 
+  - Adds protocol negotiation which important for future compatability
+  - Miscelaneous bug fixes
+
+-------------------------------------------------------------------
+Mon Sep 15 16:22:42 CEST 2008 - abeekhof@suse.de
+
+- Reference newly created shared library packages as build dependancies
+
+-------------------------------------------------------------------
+Mon Sep  8 10:04:08 CEST 2008 - abeekhof@suse.de
+
+- Move documentation to acceptable location
+
+-------------------------------------------------------------------
+Tue Sep  2 09:19:25 CEST 2008 - abeekhof@suse.de
+
+- Extra %dir entries n the %files section to make autobuild happy
+
+-------------------------------------------------------------------
+Mon Aug 25 10:12:28 CEST 2008 - abeekhof@suse.de
+
+- version 2.99.08-2
+- make sure local_nodeid is set correctly for dlm_controld
+
+--------------------------------------------------------------------
+Tue Aug 19 19:14:17 CEST 2008 - abeekhof@suse.de
+
+- version 2.99.08-1
+- Initial package check-in

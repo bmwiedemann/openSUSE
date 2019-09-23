@@ -1,0 +1,35 @@
+Index: javapackages-5.2.0+git20180620.70fa2258/build
+===================================================================
+--- javapackages-5.2.0+git20180620.70fa2258.orig/build
++++ javapackages-5.2.0+git20180620.70fa2258/build
+@@ -117,5 +117,3 @@ manpage build-classpath
+ manpage build-jar-repository
+ manpage rebuild-jar-repository
+ manpage shade-jar
+-
+-(cd ./python && "${pyinterpreter}" setup.py build)
+Index: javapackages-5.2.0+git20180620.70fa2258/install
+===================================================================
+--- javapackages-5.2.0+git20180620.70fa2258.orig/install
++++ javapackages-5.2.0+git20180620.70fa2258/install
+@@ -253,8 +253,3 @@ exec >files-gradle
+ inst_exec target/gradle-local "${bindir}"
+ inst_data gradle/init.gradle "${datadir}/gradle-local"
+ inst_data target/gradle_build.7 "${mandir}/man7"
+-
+-exec >files-python
+-(cd ./python && "${pyinterpreter}" setup.py install -O1 --skip-build --prefix "${prefix}" --root "${DEST}") >&2
+-echo "${prefix}/lib/python?.?/site-packages/javapackages"
+-echo "${prefix}/lib/python?.?/site-packages/javapackages-*.egg-info"
+Index: javapackages-5.2.0+git20180620.70fa2258/configure-base.sh
+===================================================================
+--- javapackages-5.2.0+git20180620.70fa2258.orig/configure-base.sh
++++ javapackages-5.2.0+git20180620.70fa2258/configure-base.sh
+@@ -57,7 +57,6 @@ test -z "${rpmconfigdir}" && rpmconfigdi
+ test -z "${rpmmacrodir}" && rpmmacrodir="${rpmconfigdir}/macros.d"
+ 
+ test -z "${m2home}" && m2home="${datadir}/xmvn"
+-test -z "${pyinterpreter}" && pyinterpreter=$(which python)
+ test -z "${abrtlibdir}" && abrtlibdir="${prefix}/lib/abrt-java-connector"
+ 
+ eval $(sed -n 's/^%_\('"$vars_re"'\)\ *\(.*\)$/\1="\2"/;T;s/%{_\(.*}\)/${\1/;p' macros.d/macros.javapackages-filesystem)

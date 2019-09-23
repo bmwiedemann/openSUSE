@@ -1,0 +1,5 @@
+<package name="libirman" project="openSUSE:Factory">
+  <title>libirman</title>
+  <description></description>
+  <devel project="hardware" package="libirman"/>
+</package>

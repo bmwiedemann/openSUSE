@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>64d2e7d5f04bcccdf02deecf8340fe12</srcmd5>
+    <version>0.4.2</version>
+    <time>1508316630</time>
+    <user>dimstar_suse</user>
+    <comment>Required by python-django-nose
+
+See request 531880 : https://build.opensuse.org/request/show/531880</comment>
+    <requestid>533024</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7155d85d87b3e7d551eec4ec01b23aeb</srcmd5>
+    <version>0.4.2</version>
+    <time>1513245791</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to github url to contain the LICENSE file</comment>
+    <requestid>556696</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f1e7f9defcaf85985134bd7b898d0406</srcmd5>
+    <version>0.4.2</version>
+    <time>1544726583</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654017</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>667b7f755cea00011b9736508c33258c</srcmd5>
+    <version>0.5.0</version>
+    <time>1552380835</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  * Fixes for python3.6
+  * ipv6 parsing</comment>
+    <requestid>682847</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6bd62e317bdd5f5dbe4992213e7c0836</srcmd5>
+    <version>0.5.0</version>
+    <time>1552986173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686224</requestid>
+  </revision>
+</revisionlist>

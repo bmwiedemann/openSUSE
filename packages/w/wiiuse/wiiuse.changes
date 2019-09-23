@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Fri May 15 13:21:52 UTC 2015 - tchvatal@suse.com
+
+- Version bump once more to git snapshot 0.14_p20150515:
+  * Various fixes to match up state from supertuxkart
+  * Should be compatible with 0.12 and 0.14 still
+  * Mostly small fixes all around for Linux
+- Refreshed patch:
+  * wiiuse-soname.patch
+
+-------------------------------------------------------------------
+Fri May 15 12:41:23 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 0.14, various changes, see CHANGELOG
+- Remove obsoleted patches:
+  * wiiuse-0.12-arraysubscript.patch
+  * wiiuse-0.12-destdir.patch
+  * wiiuse-0.12-example-libs.patch
+  * wiiuse-0.12-example-sdl.patch
+- Add patch to generate properly soname:
+  * wiiuse-soname.patch
+
+-------------------------------------------------------------------
+Mon Mar 18 19:29:35 UTC 2013 - joop.boonen@opensuse.org
+
+- Cleaned the spec file up 
+
+-------------------------------------------------------------------
+Thu Apr 14 12:27:29 UTC 2011 - Rene.vanPaassen@gmail.com
+
+- initial version, 0.12  
+

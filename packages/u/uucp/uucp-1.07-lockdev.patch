@@ -1,0 +1,68 @@
+Index: unix/serial.c
+===================================================================
+--- unix/serial.c.orig
++++ unix/serial.c
+@@ -126,6 +126,10 @@ const char serial_rcsid[] = "$Id: serial
+ #include <sys/termiox.h>
+ #endif
+ 
++#if HAVE_LOCKDEV
++#include <ttylock.h>
++#endif
++
+ /* Get definitions for both O_NONBLOCK and O_NDELAY.  */
+ #ifndef O_NDELAY
+ #ifdef FNDELAY
+@@ -623,6 +627,20 @@ fsserial_lockfile (flok, qconn)
+ 	z = zalc;
+       }
+ #else /* ! HAVE_QNX_LOCKFILES */
++#if HAVE_LOCKDEV
++      {
++	int rc;
++	
++	if (flok)
++	  rc = ttylock(qsysdep->zdevice);
++	else
++	  rc = ttyunlock(qsysdep->zdevice);
++	if (rc)
++	  ulog (LOG_ERROR, "tty%slock (%s): %s", flok?"":"un", qsysdep->zdevice, strerror (-rc));
++	fret = (rc == 0 ? TRUE : FALSE);
++	return fret;
++      }
++#else /* ! HAVE_LOCKDEV */
+ #if ! HAVE_SVR4_LOCKFILES
+       {
+ 	const char *zbase;
+@@ -660,6 +678,7 @@ fsserial_lockfile (flok, qconn)
+ 	z = zalc;
+       }
+ #endif /* HAVE_SVR4_LOCKFILES */
++#endif /* ! HAVE_LOCKDEV */
+ #endif /* ! HAVE_QNX_LOCKFILES */
+     }
+ 
+Index: Makefile.am
+===================================================================
+--- Makefile.am.orig
++++ Makefile.am
+@@ -25,7 +25,7 @@ endif
+ 
+ AM_CFLAGS = $(WARN_CFLAGS) $(UUDIRFLAGS)
+ 
+-LDADD = unix/libunix.a uuconf/libuuconf.a lib/libuucp.a
++LDADD = unix/libunix.a uuconf/libuuconf.a lib/libuucp.a $(LOCKDEV_LIBS)
+ 
+ UUHEADERS = uucp.h uudefs.h uuconf.h policy.h system.h sysdep.h getopt.h
+ 
+Index: configure.in
+===================================================================
+--- configure.in.orig
++++ configure.in
+@@ -787,4 +787,6 @@ else
+  AC_SYS_LONG_FILE_NAMES
+ fi
+ dnl
++PKG_CHECK_MODULES([LOCKDEV], [lockdev], AC_DEFINE([HAVE_LOCKDEV],[1],[Define if you have lockdev]))
++dnl
+ AC_OUTPUT(Makefile uuconf/Makefile lib/Makefile unix/Makefile)

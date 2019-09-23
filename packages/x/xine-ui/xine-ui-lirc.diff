@@ -1,0 +1,11 @@
+diff -ur xine-ui-0.99.7.orig/src/xitk/lirc.c xine-ui-0.99.7/src/xitk/lirc.c
+--- xine-ui-0.99.7.orig/src/xitk/lirc.c	2011-11-08 21:49:07.000000000 +0100
++++ xine-ui-0.99.7/src/xitk/lirc.c	2012-06-10 17:27:44.844673614 +0200
+@@ -32,6 +32,7 @@
+ #include <string.h>
+ 
+ #include "common.h"
++#include "common/globals.h"
+ 
+ #ifdef DEBUG
+ #define LIRC_VERBOSE 1

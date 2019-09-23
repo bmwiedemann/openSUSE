@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Tue Oct 14 09:42:28 UTC 2014 - jengelh@inai.de
+
+- Remove ancient specfile tags (AutoReqProv, norootforbuild)
+
+-------------------------------------------------------------------
+Thu Oct  7 11:28:18 UTC 2010 - davejplater@gmail.com
+
+- Update to postfish-svn17492 no released version available.
+- Behavioral change in master panels: Glue the applied 
+  compression/expansion together for all channels.
+
+-------------------------------------------------------------------
+Mon Mar 22 21:45:17 UTC 2010 - dimstar@opensuse.org
+
+- Add postfish-gtk2.19.7.patch to fix build with gtk 2.19.7.
+
+-------------------------------------------------------------------
+Mon Jan 11 11:11:43 UTC 2010 - jw@novell.com
+
+- fixed bnc#536201
+
+-------------------------------------------------------------------
+Wed Mar 12 15:52:12 CET 2008 - jw@suse.de
+
+- fixed vector types for ggc43
+
+-------------------------------------------------------------------
+Mon Dec 17 12:52:50 CET 2007 - jw@suse.de
+
+- added -maltivec for pcc
+
+-------------------------------------------------------------------
+Fri Oct 12 01:26:02 CEST 2007 - ro@suse.de
+
+- fix filelist 
+
+-------------------------------------------------------------------
+Wed Oct 10 17:51:09 CEST 2007 - jw@suse.de
+
+- minimal spec file to build postfish.
+

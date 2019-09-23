@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57f75faa8b7c265b8dc73174d979b204</srcmd5>
+    <version>1.10.0</version>
+    <time>1542202912</time>
+    <user>dimstar_suse</user>
+    <comment>updated build command for bazel-19</comment>
+    <requestid>647379</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1da4ab3f15d77325ab7a148b31d58355</srcmd5>
+    <version>1.10.0</version>
+    <time>1543224859</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651661</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f3eb7d785aeedc9ff07b2d33fd87c7ef</srcmd5>
+    <version>1.10.0</version>
+    <time>1543311903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652060</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>896dace200c5247e2acd505af21c6570</srcmd5>
+    <version>1.10.0</version>
+    <time>1548064235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664696</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c567df5ef8d0273b86a33922fd615ee6</srcmd5>
+    <version>1.13.1</version>
+    <time>1563790801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>716088</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ce2faf13f292aa1a5d87e3efb85fa847</srcmd5>
+    <version>1.13.1</version>
+    <time>1566291418</time>
+    <user>dimstar_suse</user>
+    <comment>- added additonal dependencies (forwarded request 719605 from mslacken)</comment>
+    <requestid>719606</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>e52160941dcd66d203c20aeffed279ba</srcmd5>
+    <version>1.13.1</version>
+    <time>1569234738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731647</requestid>
+  </revision>
+</revisionlist>

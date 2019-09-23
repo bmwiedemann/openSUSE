@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Mon Jun 25 14:57:13 UTC 2018 - mcepl@suse.com
+
+- Clean up SPEC file
+- Upgrade to 0.13.0 ... zillion small changes, mostly bugfixes,
+  unfortunately there is no better log than the commit one on the GitHub
+  repo (https://github.com/ldx/python-iptables/commits/master)
+
+-------------------------------------------------------------------
+Thu Aug 24 13:41:30 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Sun Dec  8 21:22:27 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.2.0
+  + No changelog available
+- Use tarball generated with Github tags
+
+-------------------------------------------------------------------
+Thu Oct 24 11:07:03 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Wed Nov 14 21:52:14 UTC 2012 - saschpe@suse.de
+
+- Initial version
+
+

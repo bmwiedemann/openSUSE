@@ -1,0 +1,458 @@
+-------------------------------------------------------------------
+Tue Mar 12 16:16:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add provides/obsoletes on libdn bsc#1092034
+
+-------------------------------------------------------------------
+Fri Mar  8 08:50:48 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add disable-rwlock-test.patch to disable broken tests
+  (bnc#1120894).
+
+-------------------------------------------------------------------
+Wed May 16 20:05:43 UTC 2018 - astieger@suse.com
+
+- libidn 1.35:
+  * Reflect ABI/API breakage in version 1.34
+  * Added new gnulib files to repository
+  * Fix build issues introduced in 1.34
+
+-------------------------------------------------------------------
+Sat Mar 31 19:28:36 UTC 2018 - astieger@suse.com
+
+- libidn 1.34 (bsc#1087709):
+  * libidn: Fix integer overflow in combine_hangul()
+  * libidn: Fix integer overflow in punycode decoder
+    drop previously patched libidn-CVE-2017-14062.patch
+  * libidn: Fix performance issue in idna_to_unicode_internal()
+  * libidn: Fix performance issue in stringprep functions.
+  * libidn: Fix NULL pointer dereference in g_utf8_normalize()
+  * libidn: Fix NULL pointer dereference in stringprep_ucs4_nfkc_normalize()
+  * libidn: Increase performance of stringprep functions
+  * testing: Add OSS-fuzz integration and regression testing
+  * build: Update gnulib files
+  * build: Modernize GTK-Doc build
+  * build: Fix parallel builds
+  * build: Add configure flag --disable-doc
+  * build: Add configure flag --enable-ubsan (enable UB Sanitizer)
+  * build: Add configure flag --enable-asan (enable Address Sanitizer)
+  * build: Fix compiler warnings
+  * build: Fix build for gcc-7
+    drop reviously patched libidn-gcc7-part1.patch
+  * i18n: Added Swedish translation
+- update upstream signing key from website
+  
+-------------------------------------------------------------------
+Mon Mar 26 11:19:51 UTC 2018 - jengelh@inai.de
+
+- Update summaries. Remove ineffective --with-pic.
+
+-------------------------------------------------------------------
+Mon Mar 26 08:36:44 UTC 2018 - tchvatal@suse.com
+
+- Add patch to fix bsc#1056450 CVE-2017-14062:
+  * libidn-CVE-2017-14062.patch
+
+-------------------------------------------------------------------
+Thu Feb 22 15:10:36 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Tue Apr  4 09:13:49 UTC 2017 - tchvatal@suse.com
+
+- Add patches to build with gcc7:
+  * libidn-gcc7-part1.patch
+
+-------------------------------------------------------------------
+Wed Jul 20 21:01:13 UTC 2016 - astieger@suse.com
+
+- libidn 1.33:
+  * bnc#990189 CVE-2015-8948 CVE-2016-6262
+  * bnc#990190 CVE-2016-6261
+  * bnc#990191 CVE-2016-6263
+  * libidn: Fix out-of-bounds stack read in idna_to_ascii_4i.
+  * idn: Solve out-of-bounds-read when reading one zero byte as input.
+  * libidn: stringprep_utf8_nfkc_normalize reject invalid UTF-8.
+
+-------------------------------------------------------------------
+Thu Aug 13 19:10:23 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.32
+  * libidn: Fix crash in idna_to_unicode_8z8z and 
+    idna_to_unicode_8zlz. This problem was introduced in 1.31.
+  * API and ABI is backwards compatible with the previous version.
+- Update gpg keyring
+
+-------------------------------------------------------------------
+Thu Jul  9 08:22:18 UTC 2015 - tchvatal@suse.com
+
+- Add Apache-2.0 license to the license line. Under this is the
+  java code, but we don't build it -> just the sources license
+
+-------------------------------------------------------------------
+Thu Jul  9 07:54:25 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 1.31:
+  * Fixes bnc#923241 CVE-2015-2059 out-of-bounds read with stringprep on
+    invalid UTF-8
+  * Few other triv changes
+
+-------------------------------------------------------------------
+Fri Mar 13 13:49:20 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 1.30:
+  * punycode.{c,h} files were reimported
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 20 13:10:56 UTC 2014 - i@marguerite.su
+
+- update version 1.29:
+  * libidn: Mark internal variable "g_utf8_skip" as static.
+  * idn: Flush stdout to simplify for tools that buffer too heavily.
+  * i18n: Added Brazilian Portuguese translation.
+  * Update gnulib files.
+  * API and ABI is backwards compatible with the previous version.
+
+-------------------------------------------------------------------
+Thu Dec 19 12:22:05 UTC 2013 - coolo@suse.com
+
+- disable gpg-offline again to avoid build cycles
+
+-------------------------------------------------------------------
+Wed Dec 18 09:50:29 UTC 2013 - mvyskocil@suse.com
+
+- Verify source tarball via gpg-offline 
+
+-------------------------------------------------------------------
+Sat Dec 14 16:57:39 UTC 2013 - uweigand@de.ibm.com
+
+- Fix gnulib test failure due to SUSE_ASNEEDED.
+
+-------------------------------------------------------------------
+Mon Sep 23 14:35:40 UTC 2013 - tchvatal@suse.com
+
+- Version bump to 1.28:
+  * java buildfixes
+  * translation updates
+  * improved unit-tests
+  * for more read NEWS file
+
+-------------------------------------------------------------------
+Fri Sep 21 16:21:41 UTC 2012 - jengelh@inai.de
+
+- Employ shared library package naming
+
+-------------------------------------------------------------------
+Tue Jun  5 08:41:26 UTC 2012 - vdziewiecki@suse.com
+
+-Update to 1.25:
+  * MSVC: Build fixes related to _GL_ATTRIBUTE_CONST and
+    _GL_ATTRIBUTE_PURE.
+    Reported by Bartosz Brachaczek <b.brachaczek@gmail.com>.
+  * examples: Fix compiler warning about ignoring return value from
+    fgets.
+  * tests: Ship with a valgrind suppressions file for the strlen
+    issue.
+  * Update gnulib files and translations.
+  * API and ABI is backwards compatible with the previous version.
+
+-------------------------------------------------------------------
+Sun May 13 11:40:34 UTC 2012 - Nico.Laus.2001@gmx.de
+
+- Upgrade to version 1.24
+  * Libraries are re-licensed from LGPLv2+ to dual-GPLv2+|LGPLv3+.
+  * build: Fix parallel Windows builds.
+    Reported by René Berber
+  * libidn: Fix potential infloop in pr29 code.
+    Reported by Jon Nelson <address@hidden> in
+    http://lists.gnu.org/archive/html/help-libidn/2012-01/msg00008.html
+  * libidn: Add 'const' keyword to 'stringprep_ucs4_nfkc_normalize' function.
+  * Sync glib NFKC code and improve copyright/license statements.
+  * Update gnulib files and translations.
+  * API and ABI is backwards compatible with the previous version.
+
+-------------------------------------------------------------------
+Mon Dec 26 16:02:38 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections
+
+-------------------------------------------------------------------
+Mon Dec 26 14:01:29 UTC 2011 - crrodriguez@opensuse.org
+
+- fix URL 
+
+-------------------------------------------------------------------
+Mon Dec 26 05:47:14 UTC 2011 - crrodriguez@opensuse.org
+
+- Update to version 1.23 
+- Run spec cleaner
+
+-------------------------------------------------------------------
+Sat Oct  1 01:39:54 UTC 2011 - crrodriguez@opensuse.org
+
+- Do not build gtk-docs 
+- make check hangs in qemu-arm, workaround the bugs.
+
+-------------------------------------------------------------------
+Fri Jun 10 09:20:15 UTC 2011 - andrea.turrini@gmail.com
+
+- Fixed typo in description of libidn.spec
+
+-------------------------------------------------------------------
+Sat May  7 00:16:43 UTC 2011 - crrodriguez@opensuse.org
+
+- Upgrade to version 1.22
+  * Fix memory leak when idna_to_ascii_4i fails
+  * Fix ToUnicode case-insensitivity bug
+  *  Avoid some warnings to make it build with modern gcc on amd64.
+
+-------------------------------------------------------------------
+Tue Dec 15 19:58:00 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Tue Oct  6 16:28:16 UTC 2009 - crrodriguez@opensuse.org
+
+- update to version 1.15
+  * support GCC visibility features 
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Tue Oct 14 21:16:52 CEST 2008 - crrodriguez@suse.de
+
+- disable static libraries 
+
+-------------------------------------------------------------------
+Tue Oct  7 10:17:16 CEST 2008 - stbinner@suse.de
+
+- update to 1.10:
+   * idn: accept -n as short form for --nfkc.
+   * Fix compiler warnings, updated gnulib files and translations
+
+-------------------------------------------------------------------
+Mon Jul 21 15:09:40 CEST 2008 - stbinner@suse.de
+
+- update to 1.9:
+  * idn: fix error message when NFKC fails, and other translations
+  * Remove more non-free text from doc/specifications/rfc3454.txt.
+
+-------------------------------------------------------------------
+Thu Apr 24 10:18:31 CEST 2008 - stbinner@suse.de
+
+- update to 1.8: no functional changes
+
+-------------------------------------------------------------------
+Mon Apr 14 08:28:55 CEST 2008 - stbinner@suse.de
+
+- update to 1.7:
+   * new parameter --nfkc to process string with Unicode v3.2 NFKC
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Tue Mar 25 14:07:54 CET 2008 - stbinner@suse.de
+
+- update to 1.6:
+   * Remove non-free portions of doc/specifications/rfc3454.txt.
+   * Doc fixes in IDNA to clarify that some functions operate on
+     just one domain labels and some operate on domain name (which
+     can contain several domain labels).
+
+-------------------------------------------------------------------
+Wed Mar 19 00:33:40 CET 2008 - crrodriguez@suse.de
+
+- remove "la" file with empty dependency_libs 
+
+-------------------------------------------------------------------
+Wed Feb 27 10:17:50 CET 2008 - stbinner@suse.de
+
+- update to 1.5:
+   * Don't include wchar.h in idn-int.h.
+   * Added appendix 'On Label Separators' to the manual.
+   * Improved rendering of non-ASCII in the info manual.
+   * Fix non-portable use of brace expansion in makefiles.
+   * Update translations.
+
+-------------------------------------------------------------------
+Sun Jan 27 08:04:52 CET 2008 - stbinner@suse.de
+
+- update to 1.4: updated translations and fix of --version/--help
+
+-------------------------------------------------------------------
+Fri Aug  3 17:38:55 CEST 2007 - stbinner@suse.de
+
+- update to 1.0:
+   * Command-line tools, examples, etc are now licensed under GPLv3
+   * The library is still licensed under LGPL v2.1 for compatibility
+     reasons (it is included in glibc).
+   * Updated gnulib files and translations
+
+-------------------------------------------------------------------
+Tue Jul 17 14:33:42 CEST 2007 - stbinner@suse.de
+
+- update to 0.6.14:
+   * Documentation fixes
+   * Install images for the manual in $infodir
+   * Updated gnulib files
+   * Use AM_JAVACFLAGS instead of JAVACFLAGS in java/misc/Makefile.am
+
+-------------------------------------------------------------------
+Thu Mar 29 11:44:17 CEST 2007 - rguenther@suse.de
+
+- add emacs site-lisp directories.
+
+-------------------------------------------------------------------
+Wed Mar 14 13:48:51 CET 2007 - stbinner@suse.de
+
+- update to 0.6.11:
+   * The C# Libidn port was updated. 
+   * The Java code has been fixed to properly translate any 
+     non-ASCII dot into ".".
+ 
+-------------------------------------------------------------------
+Thu Oct 19 11:15:30 CEST 2006 - stbinner@suse.de
+
+- update to 0.6.8:
+   * The gnulib directory is separated into two directories.
+   * Update gnulib files.
+   * Some minor cleanups, like assuming locale.h and setlocale().
+   * API and ABI is backwards compatible with the previous version.
+
+-------------------------------------------------------------------
+Thu Sep 14 10:21:07 CEST 2006 - stbinner@suse.de
+
+- update to 0.6.7:
+   * Fix build failure of idn-int.h on C99 platforms.
+   * The manual includes GPL license, for the command-line tools.
+   * The function, variable and concept index is moved to the end 
+     of the manual.
+   * Update of gnulib files and translations
+
+-------------------------------------------------------------------
+Wed Aug 23 16:51:22 CEST 2006 - stbinner@suse.de
+
+- update to 0.6.6
+   * Instead of AX_CREATE_STDINT_H, use the stdint gnulib module,
+     for idn-int.h.
+   * Update gnulib files.
+   * Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 17 09:26:17 CEST 2006 - aj@suse.de
+
+- Remove unneccasary BuildRequires.
+
+-------------------------------------------------------------------
+Mon Jul 10 12:09:36 CEST 2006 - stbinner@suse.de
+
+- update to 0.6.5
+  * links the library with an external libintl for gettext
+  * updates the doxygen configuration file to version 1.4.7
+  * translation of error messages was fixed
+  * warnings on 64-bit platforms were fixed
+
+-------------------------------------------------------------------
+Mon May 22 09:36:36 CEST 2006 - stbinner@suse.de
+
+- update to 0.6.3
+  * Fix objdir != srcdir builds for the Java documentation.
+  * Update of gnulib files.
+  * Make it possible to cross-compile to mingw32.
+  * Minor changes in how the C# code is built.
+
+-------------------------------------------------------------------
+Thu Jan 26 15:51:26 CET 2006 - sbrabec@suse.cz
+
+- Added %install_info_prereq.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:30 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Dec  3 22:58:27 CET 2005 - coolo@suse.de
+
+- update to 0.6.0
+
+-------------------------------------------------------------------
+Wed Aug  3 15:18:20 CEST 2005 - coolo@suse.de
+
+- move .la file to -devel package
+
+-------------------------------------------------------------------
+Fri Jan 21 10:13:49 CET 2005 - coolo@suse.de
+
+- update to 0.5.9
+
+-------------------------------------------------------------------
+Thu Oct 14 10:17:09 CEST 2004 - coolo@suse.de
+
+- update to 0.5.8
+
+-------------------------------------------------------------------
+Fri Aug  6 09:27:07 CEST 2004 - coolo@suse.de
+
+- update to 0.5.3 (integrating schwab's patch)
+
+-------------------------------------------------------------------
+Thu Aug  5 09:37:14 CEST 2004 - coolo@suse.de
+
+- update to 0.5.2
+
+-------------------------------------------------------------------
+Sat Jul  3 14:07:34 CEST 2004 - schwab@suse.de
+
+- Fix invalid free.
+
+-------------------------------------------------------------------
+Tue Jun  1 09:52:39 CEST 2004 - coolo@suse.de
+
+- update to 0.4.8
+
+-------------------------------------------------------------------
+Thu Mar  4 14:46:23 CET 2004 - coolo@suse.de
+
+- fixing file list and requires
+
+-------------------------------------------------------------------
+Wed Feb  4 13:02:32 CET 2004 - coolo@suse.de
+
+- update to 0.3.7
+
+-------------------------------------------------------------------
+Thu Oct 16 17:25:01 CEST 2003 - coolo@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Sep 26 08:55:43 CEST 2003 - coolo@suse.de
+
+- update to 0.3
+
+-------------------------------------------------------------------
+Wed Aug 20 18:43:56 CEST 2003 - coolo@suse.de
+
+- update to 0.2.2
+
+-------------------------------------------------------------------
+Wed Jul 23 16:23:00 CEST 2003 - coolo@suse.de
+
+- update to 0.2.1
+
+-------------------------------------------------------------------
+Tue Jun  3 09:16:20 CEST 2003 - coolo@suse.de
+
+- Initial package
+

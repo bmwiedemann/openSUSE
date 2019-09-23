@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Fri Jun 24 13:52:25 UTC 2016 - meissner@suse.com
+
+- update to 2.47 (Firefox 47 based) for Wine 1.9.13
+
+-------------------------------------------------------------------
+Mon Mar 21 20:42:56 UTC 2016 - dimesio@earthlink.net
+
+- update to 2.44 (Firefox 44 based) for Wine 1.9.3
+
+-------------------------------------------------------------------
+Mon Sep  7 19:46:29 UTC 2015 - meissner@suse.com
+
+- update to 2.40 (Firefox 40 based) for Wine 1.7.50
+
+-------------------------------------------------------------------
+Fri Mar  6 22:44:32 UTC 2015 - meissner@suse.com
+
+- updated to 2.36 (Firefox 36 based) for Wine 1.7.38
+
+-------------------------------------------------------------------
+Wed Nov 12 20:46:19 UTC 2014 - meissner@suse.com
+
+- updated to 2.34 for Wine 1.7.30
+
+-------------------------------------------------------------------
+Fri Sep 27 20:26:23 UTC 2013 - meissner@suse.com
+
+- Updated to 2.24 for Wine 1.7.3 and later.
+
+-------------------------------------------------------------------
+Sat May 25 10:18:42 UTC 2013 - meissner@suse.com
+
+- Updated to 2.21 for Wine 1.5.31 and later.
+
+-------------------------------------------------------------------
+Tue May 21 13:08:35 UTC 2013 - meissner@suse.com
+
+- License MPL-1.1+ (just like mozilla)
+
+-------------------------------------------------------------------
+Fri Jan 18 20:21:17 UTC 2013 - meissner@suse.com
+
+- Include 1.9 gecko for 1.5.22 or later (FF 18 based)
+
+-------------------------------------------------------------------
+Tue Oct 16 09:55:31 UTC 2012 - meissner@suse.com
+
+- Include 1.8 gecko for 1.5.15 or later (FF 16 based)
+
+-------------------------------------------------------------------
+Tue Jul 31 20:11:28 UTC 2012 - meissner@suse.com
+
+- Include 1.7 gecko for 1.5.10 or later (FF 14 based)
+
+-------------------------------------------------------------------
+Sun Jun 24 20:19:57 UTC 2012 - meissner@suse.com
+
+- Include 1.6 gecko for 1.5.7 or later. (FF 13 based)
+
+-------------------------------------------------------------------
+Mon Mar 26 17:46:14 CEST 2012 - meissner@suse.de
+
+- Include 1.5 gecko version for 1.5.0 and later.
+
+-------------------------------------------------------------------
+Wed Nov  9 20:08:49 CET 2011 - meissner@suse.de
+
+- Include 1.4 gecko version for 1.3.33 and later.
+
+-------------------------------------------------------------------
+Wed Aug 31 11:37:11 CEST 2011 - meissner@suse.de
+
+- Include 1.3 gecko versions for 1.3.27 and later.
+
+-------------------------------------------------------------------
+Thu Mar 17 22:51:11 CET 2011 - meissner@suse.de
+
+- 1.2.0 version update for Wine 1.3.16 and later
+
+-------------------------------------------------------------------
+Wed Jan 12 18:50:40 CET 2011 - dmueller@suse.de
+
+- require wine
+
+-------------------------------------------------------------------
+Wed Nov 10 16:01:04 CET 2010 - meissner@suse.de
+
+- buildarch -> noarch to avoid having it twice on the repos
+
+-------------------------------------------------------------------
+Tue Sep 28 16:06:30 CEST 2010 - meissner@suse.de
+
+- also ship the x86_64 gecko cab (in same 32bit RPM).
+
+-------------------------------------------------------------------
+Sat Sep 25 08:01:41 UTC 2010 - meissner@novell.com
+
+- updated to 1.1.0 version for Wine 1.3.2 and later
+
+-------------------------------------------------------------------
+Fri Nov 13 15:55:55 CET 2009 - meissner@suse.de
+
+- Wine specific Win32 build of the Gecko rendering engine.
+

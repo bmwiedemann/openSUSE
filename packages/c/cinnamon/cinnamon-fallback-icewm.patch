@@ -1,0 +1,26 @@
+--- a/files/usr/bin/cinnamon-launcher
++++ b/files/usr/bin/cinnamon-launcher
+@@ -11,22 +11,13 @@ import gi
+ gi.require_version('Gtk', '3.0')  # noqa
+ from gi.repository import Gtk
+ 
+-FALLBACK_COMMAND = "metacity"
++FALLBACK_COMMAND = "icewm"
+ FALLBACK_ARGS = ("--replace",)
+ 
+ gettext.install("cinnamon", "/usr/share/locale")
+ 
+ panel_process_name = None
+ panel_cmd = None
+-if os.path.exists("/usr/bin/mate-panel"):
+-    panel_process_name = "mate-panel"
+-    panel_cmd = "mate-panel --replace &"
+-elif os.path.exists("/usr/bin/gnome-panel"):
+-    panel_process_name = "gnome-panel"
+-    panel_cmd = "gnome-panel --replace &"
+-elif os.path.exists("/usr/bin/tint2"):
+-    panel_process_name = "tint2"
+-    panel_cmd = "killall tint2; tint2 &"
+ 
+ 
+ def confirm_restart():

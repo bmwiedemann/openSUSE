@@ -1,0 +1,2204 @@
+-------------------------------------------------------------------
+Tue Jul  9 10:00:05 UTC 2019 - ghe@suse.com
+
+- Fix unknown feature in status message (bsc#1135984)
+  + bug-1135984_cache-support-no_discard_passdown.patch
+
+-------------------------------------------------------------------
+Thu Jun 27 02:53:03 UTC 2019 - heming.zhao@suse.com
+
+- Fix using device aliases with lvmetad (bsc#1137296)
+  + bug-1137296_pvremove-vgextend-fix-using-device-aliases-with-lvmetad.patch
+
+-------------------------------------------------------------------
+Tue Apr 30 10:20:05 UTC 2019 - ghe@suse.com
+
+- Fix devices drop open error message (bsc#1122666)
+  + bug-1122666_devices-drop-open-error-message.patch
+
+-------------------------------------------------------------------
+Tue Mar 19 12:02:02 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use %make_build in order to provide verbose output.
+
+-------------------------------------------------------------------
+Fri Feb  1 08:20:15 UTC 2019 - ghe@suse.com
+
+- Disable the LVM lock daemon using sanlock, in order to avoid the
+  dependence on sanlock related packages (bsc#1121382)
+
+-------------------------------------------------------------------
+Mon Jan 14 14:23:52 CET 2019 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Mon Nov  5 08:10:05 UTC 2018 - ghe@suse.com
+
+- Prevent writing beyond metadata area (bsc#1114113)
+  + bug-1114113_metadata-prevent-writing-beyond-metadata-area.patch
+
+-------------------------------------------------------------------
+Wed Aug 29 10:20:30 UTC 2018 - ghe@suse.com
+
+- Fix lvm2 activation issue when used on top of multipath
+  bsc#998893
+  + bug-998893_make_pvscan_service_after_multipathd.patch
+
+-------------------------------------------------------------------
+Mon Jul 23 11:45:20 UTC 2018 - ghe@suse.com
+
+- Update to LVM2.2.02.180
+  Never send any discard ioctl with test mode.
+  Fix thin-pool alloc which needs same PV for data and metadata.
+  Extend list of non-memlocked areas with newly linked libs.
+  Enhance vgcfgrestore to check for active LVs in restored VG.
+  lvconvert: provide possible layouts between linear and striped/raid
+  Fix unmonitoring of merging snapshots.
+  Add missing -l description in fsadm man page.
+  Cache can uses metadata format 2 with cleaner policy.
+  Avoid showing internal error in lvs output or pvmoved LVs.
+  Fix check if resized PV can also fit metadata area.
+  Reopen devices RDWR only before writing to avoid udev issues.
+  Change pvresize output confusing when no resize took place.
+  Fix lvmetad hanging on shutdown.
+  Fix mem leak in clvmd and more coverity issues.
+  Fix that pvmove does not work (bsc#1080299)
+- Drop patches that have been merged upstream
+  - fate-323203_lvmlockd-add-lockopt-values-for-skipping-selected-lo.patch
+  - lvm2-69-dm-lvm-metad.rules-explicit-pvscan-rule.patch
+  - lvm2-69-dm-lvm-metad.rules-set-systemd-vars-on-chang.patch
+  - bug-1095960_dev_io-no-discard-in-testmode.patch
+- Refresh patches
+  + bsc1080299-detect-clvm-properly.patch
+  + bug-950089_test-fix-lvm2-testsuite-build-error.patch
+- Update spec files
+  Fix BuildRequires package name for modprobe (bsc#1102668)
+  Fix cmirrord LV creation/activation failure (bsc#1091863)
+- Fix building error in OBS due to the script interpreter
+  + tests-specify-python3-as-the-script-interpreter.patch
+
+-------------------------------------------------------------------
+Wed Jul 18 11:33:30 UTC 2018 - ghe@suse.com
+
+- Fix issuing discard in test mode (bsc#1095960)
+  + bug-1095960_dev_io-no-discard-in-testmode.patch
+
+-------------------------------------------------------------------
+Tue May 29 10:45:30 UTC 2018 - ghe@suse.com
+
+- Fix the wrong filter for the cdrom device in /etc/lvm/lvm.conf
+  (bsc#1081530)
+
+-------------------------------------------------------------------
+Thu Apr 19 10:59:59 UTC 2018 - mwilck@suse.com
+
+- Fix handling of udev CHANGE events with systemd (bsc#1067312)
+  + lvm2-69-dm-lvm-metad.rules-explicit-pvscan-rule.patch
+  + lvm2-69-dm-lvm-metad.rules-set-systemd-vars-on-chang.patch
+
+-------------------------------------------------------------------
+Mon Feb 12 09:01:29 UTC 2018 - tchvatal@suse.com
+
+- Fix detection of clvm that happens on compile time based on
+  CLVM_PIDFILE, as we determine these features on runtime
+  bsc#1080299:
+  + bsc1080299-detect-clvm-properly.patch
+
+-------------------------------------------------------------------
+Tue Jan 16 11:53:36 UTC 2018 - zren@suse.com
+
+- clvmd: try to refresh device cache on the first failure
+  (bsc#978055, bsc#1076042)
+ + bug-978055_clvmd-try-to-refresh-device-cache-on-the-first-failu.patch 
+
+-------------------------------------------------------------------
+Wed Jan 10 10:41:45 UTC 2018 - zren@suse.com
+
+- lvmlockd: add lockopt values for skipping selected locks (fate#323203) 
+ + fate-323203_lvmlockd-add-lockopt-values-for-skipping-selected-lo.patch
+
+-------------------------------------------------------------------
+Tue Dec 19 07:35:11 UTC 2017 - zren@suse.com
+
+- device-mapper.spec: fix wrong replacement of DM_VERSION (bsc#1072524) 
+- Fixes failure of some testcases caused by nc behavior change (bsc#1072624)
+ + bug-1072624_test-lvmetad_dump-always-timed-out-when-using-nc.patch
+- Refreshed fate-31841_fsadm-add-support-for-btrfs.patch
+- Update to LVM2.2.02.177
+  When writing text metadata content, use complete 4096 byte blocks.
+  Change text format metadata alignment from 512 to 4096 bytes.
+  When writing metadata, consistently skip mdas marked as failed.
+  Refactor and adjust text format metadata alignment calculation.
+  Ensure _node_send_message always uses clean status of thin pool.
+  Fix lvmlockd to use pool lock when accessing _tmeta volume.
+  Report expected sanlock_convert errors only when retries fail.
+  Avoid blocking in sanlock_convert on SH to EX lock conversion.
+  Deactivate missing raid LV legs (_rimage_X-missing_Y_Z) on decativation.
+  Categorise I/O with reason annotations in debug messages.
+  Allow extending of raid LVs created with --nosync after a failed repair.
+  Command will lock memory only when suspending volumes.
+  Merge segments when pvmove is finished.
+  Activation code for pvmove automatically discovers holding LVs for resume.
+  Make a pvmove LV locking holder.
+  Do not change critical section counter on resume path without real resume.
+  Enhance activation code to automatically suspend pvmove participants.
+  Prevent conversion of thin volumes to snapshot origin when lvmlockd is used.
+  Add support for pvmove of cache and snapshot origins.
+  Avoid using precommitted metadata for suspending pvmove tree.
+  Deactivate activated LVs on error path when pvmove activation fails.
+  Add "io" to log/debug_classes for logging low-level I/O.
+  Avoid importing persistent filter in vgscan/pvscan/vgrename.
+  Fix memleak of string buffer when vgcfgbackup runs in secure mode.
+  Do not print error when clvmd cannot find running clvmd.
+  Prevent start of new merge of snapshot if origin is already being merged.
+  Fix offered type for raid6_n_6 to raid5 conversion (raid5_n).
+  Deactivate sub LVs when removing unused cache-pool.
+  Do not take backup with suspended devices.
+
+-------------------------------------------------------------------
+Tue Nov 21 09:29:02 UTC 2017 - zren@suse.com
+
+- Update to LVM2.2.02.176:
+  Keep Install section only in lvm2-{lvmetad,lvmpolld}.socket systemd unit.
+  Fix segfault in lvm_pv_remove in liblvm. (2.02.173)
+  Do not allow storing VG metadata with LV without any segment.
+  Fix printed message when thin snapshot was already merged.
+  Remove created spare LV when creation of thin-pool failed.
+  Avoid reading ignored metadata when mda gets used again.
+  Fix detection of moved PVs in vgsplit. (2.02.175)
+  Ignore --stripes/--stripesize on RAID takeover
+  Improve used paths for generated systemd units and init shells.
+  Disallow creation of snapshot of mirror/raid subLV (was never supported).
+  Fix regression in more advanced vgname extraction in lvconvert (2.02.169).
+  Allow lvcreate to be used for caching of _tdata LV.
+  Avoid internal error when resizing cache type _tdata LV (not yet supported).
+  Show original converted names when lvconverting LV to pool volume.
+  Move lib code used only by liblvm into metadata-liblvm.c.
+  Distinguish between device not found and excluded by filter.
+  Monitor external origin LVs. 
+  Remove the replicator code, including configure --with-replicators.
+  Allow lvcreate --type mirror to work with 100%FREE.
+  Improve selection of resource name for complex volume activation lock.
+  Avoid cutting first character of resource name for activation lock.
+  Support for encrypted devices in fsadm.
+  Improve thin pool overprovisioning and repair warning messages.
+  Fix incorrect adjustment of region size on striped RaidLVs.
+- Drop: bug-960044_lvm2-lvmetad.service-add-Also-lvm2-lvmetad.socket.patch
+- Refresh: fate-31841_fsadm-add-support-for-btrfs.patch
+
+-------------------------------------------------------------------
+Thu Nov  2 12:48:23 UTC 2017 - zren@suse.com
+
+- Re-add a strict requires on sanlock, fate#323203 
+
+-------------------------------------------------------------------
+Mon Oct 23 07:50:33 UTC 2017 - zren@suse.com
+
+- Update to LVM2.2.02.175
+- Use week dependency for lvm2-lockd on libdlm and sanlock
+- Rename/refresh patches:
+ - display-dm-name-for-lv-name.diff to fate-309425_display-dm-name-for-lv-name.patch
+ - fsadm-add-support-for-btrfs.patch to fate-31841_fsadm-add-support-for-btrfs.patch
+ - dmeventd-fix-dso-name-wrong-compare.patch to bug-935623_dmeventd-fix-dso-name-wrong-compare.patch
+ - lvm2-lvmetad.service-add-Also-lvm2-lvmetad.socket.patch to bug-960044_lvm2-lvmetad.service-add-Also-lvm2-lvmetad.socket.patch
+ - simplify-special-case-for-md-in-69-dm-lvm-metadata.patch to bug-1012973_simplify-special-case-for-md-in-69-dm-lvm-metadata.patch
+ - lvm2-testsuite.patch to bug-950089_test-fix-lvm2-testsuite-build-error.patch
+
+-------------------------------------------------------------------
+Thu Sep 14 09:51:18 UTC 2017 - zren@suse.com
+
+- Drop resource agents for clvmd and cmirror (bsc#1058680)
+  - clvmd.ocf
+  - cmirrord.ocf
+- Drop all patches for cmirror (bsc#1058661)
+  - cluster_support_mirrord_log.diff
+  - cmirrord_improvment_performance.patch
+  - lvconvert-cluster-mirrored-disk-failed.patch
+  - improve-mirror-legs-on-different-tag-pvs.patch
+  - make-mirror-legs-on-different-tag-pvs.patch
+  - use-mirrortype-asdefault-whenclvmdrunning.patch
+
+-------------------------------------------------------------------
+Fri Aug 18 09:53:39 UTC 2017 - mwilck@suse.com
+
+- Dropped udev rule patches (bsc#1054363)
+ * dropped udev_rules-update.diff
+ * dropped device-mapper-dmsetup-export.patch
+ * dropped udev-Check-for-DM_NR_VALID_PATHS.patch
+ * dropped Import-ID_FS_XXX-variables-bnc909358.patch
+ * dropped 69-dm-lvm-metad.rules-Do-not-process-rules-for-multi.patch
+
+-------------------------------------------------------------------
+Tue Aug  1 05:59:29 UTC 2017 - zren@suse.com
+
+- Dropped several not-upstreamed patches, some of them neither have
+  history reference nor patch header, some were temporary workaround
+  fix.
+  - device-mapper-gcc-warnings.patch
+  - device-mapper-type_punning.diff
+  - fix-closedown-before-thread-finish.patch
+  - libdm-iface-not-output-error-message-inside-retry-loop.patch
+  - pvcreate-enhance-the-error-message.patch
+  - pvmove_support_clustered_vg.diff
+  - version-plugins-in-libdir.patch
+
+-------------------------------------------------------------------
+Tue Jul 25 13:48:00 UTC 2017 - zren@suse.com
+
+- Update to LVM2.2.02.173
+- Sync our lvm.conf with V2.02.173
+
+-------------------------------------------------------------------
+Thu Jul 13 13:09:35 UTC 2017 - tchvatal@suse.com
+
+- Require device-mapper-devel rather than recommend. It is really
+  needed (the .h files are required by the lvm2app and lvm2cmd)
+
+-------------------------------------------------------------------
+Thu Jul  6 10:18:09 UTC 2017 - zren@suse.com
+
+- Don't create symlink for invisible device like thin-pool (bsc#1046591)
+  * drop 10-dm.rules-Reset-state-variable-for-spurious-events.patch
+
+-------------------------------------------------------------------
+Tue Jul  4 10:24:40 UTC 2017 - zren@suse.com
+
+- Update to LVM2.2.02.172
+- Cleanup spec file, and refresh patches
+  * removed device-mapper-link.patch
+  * removed bug-1033691_tests-missed-to-export-lvm-binary-for-fsadm.patch
+  * removed Makefile-skip-compliling-daemons-lvmlockd-directory.patch
+  * added bug-1037309_Makefile-skip-compliling-daemons-lvmlockd-directory.patch
+
+-------------------------------------------------------------------
+Thu Jun 29 16:38:05 UTC 2017 - dimstar@opensuse.org
+
+- Fix zypper update issue with device-mapper package, see bsc#1045396
+
+-------------------------------------------------------------------
+Sat Jun 17 16:50:53 UTC 2017 - zren@suse.com
+
+- Backport fix for lvresize-full.sh failed, see bsc#1033691 
+  + bug-1033691_tests-missed-to-export-lvm-binary-for-fsadm.patch
+
+-------------------------------------------------------------------
+Sat Jun 17 14:56:58 UTC 2017 - zren@suse.com
+
+- Fix test failures about read ahead issue, see bsc#1043040 
+  + bug-1043040_test-fix-read-ahead-issues-in-test-scripts.patch
+- Reorder the patches to put them into the right groups
+
+-------------------------------------------------------------------
+Fri Jun  9 19:27:45 UTC 2017 - kukuk@suse.com
+
+- Don't package dynamic directories in /run
+
+-------------------------------------------------------------------
+Wed May 17 08:21:27 UTC 2017 - zren@suse.com
+
+- Add lvmlockd-related configuration items in lvm.conf, fate#323203
+
+-------------------------------------------------------------------
+Tue May 16 07:45:25 UTC 2017 - zren@suse.com
+
+- Fix compiling issue of lvmlockd, bsc#1037309
+  + Makefile-skip-compliling-daemons-lvmlockd-directory.patch
+
+-------------------------------------------------------------------
+Fri May  5 11:33:28 UTC 2017 - tchvatal@suse.com
+
+- Remove comments breaking scriptlets:
+  * warning: %postun(libdevmapper1_03-1.02.137-5.1.x86_64) scriptlet failed
+
+-------------------------------------------------------------------
+Wed May  3 09:01:42 UTC 2017 - zren@suse.com
+
+- This patch has been dropped since SLE12 (bsc#952300)
+  * removed sys_mount_instead_linux_fs.diff
+- Drop obsolete patches:
+  * removed improve_probing.diff (bsc#49657)
+  * removed no-inc-audit.diff 
+  * removed suppress_format1_size_warning.diff
+- Add more bug/fate references, and reorder the patches accordingly
+
+-------------------------------------------------------------------
+Tue Apr 25 12:00:23 UTC 2017 - zren@suse.com
+
+- Add check_pv_device_sizes option to check PV and disk sizes
+  bsc#999878
+
+-------------------------------------------------------------------
+Mon Apr 24 17:08:34 UTC 2017 - arvidjaar@gmail.com
+
+- BuildRequire modutils so build script detects modprobe and module
+  autoloading works again (boo#983221)
+
+-------------------------------------------------------------------
+Tue Apr 18 11:07:01 UTC 2017 - tchvatal@suse.com
+
+- Update to 2.02.170:
+  * Few smal fixes around; obsoleted 169 release that was removed
+    from mirrors
+- Refresh patch:
+  * display-dm-name-for-lv-name.diff
+
+-------------------------------------------------------------------
+Wed Apr 12 01:33:15 UTC 2017 - zren@suse.com
+
+- Update device mapper version to 1.02.138, see WHATS_NEW_DM for
+  detailed changelogs
+  * Drop obsolete lvmchange files accordingly
+- Refresh libdm-iface-not-output-error-message-inside-retry-loop.patch
+- Refresh make-mirror-legs-on-different-tag-pvs.patch
+- device-mapper-dmsetup-export.patch
+
+-------------------------------------------------------------------
+Mon Apr 10 23:08:45 UTC 2017 - jnelson-suse@jamponi.net
+
+- Version update to 2.02.169 release, see WHATS_NEW and WHATS_NEW_DM
+  files for detailed changelogs
+
+-------------------------------------------------------------------
+Mon Apr 10 10:41:02 UTC 2017 - tchvatal@suse.com
+
+- Split configure options to have one per line
+- Pass over with spec-cleaner
+- Enable internal cache
+- Enable lvmpolld
+
+-------------------------------------------------------------------
+Mon Apr 10 07:41:10 UTC 2017 - zren@suse.com
+
+- Add 'lvm2-lockd' subpackage, fate#323203 to lvm2-clvm to not pull
+  corosync and other deps to the core lvm2 package
+
+-------------------------------------------------------------------
+Fri Feb 24 10:57:16 UTC 2017 - zren@suse.com
+
+- Improve the layout and readability of spec files
+  * Place subpackages' sections at the bottom of spec file, making
+  the layout more reasonable: 1. main package's spec sections are
+  contiguous without a break; 2. subpackage's spec spections can
+  also be placed together.
+  * Get rid of wild-card usage in %files section; spec file is a
+  perfect place for packager to know what files are exactly delivered
+  with each RPMs; staring at wild-card doesn't give much information.
+  * Put bsc#xxx at previous line of each SUSE patch at my best, some
+  are still missing.
+
+-------------------------------------------------------------------
+Thu Feb 23 06:27:55 UTC 2017 - zren@suse.com
+
+- Enable lvmetad in sync with SLE 
+
+-------------------------------------------------------------------
+Wed Feb 22 11:25:01 UTC 2017 - zren@suse.com
+
+- Add systemid feature
+  * update lvm.conf accordingly
+  * replace whitespaces with tab in lvm.conf 
+
+-------------------------------------------------------------------
+Wed Feb 22 10:43:38 UTC 2017 - zren@suse.com
+
+- Fix several issues about clvmd/cmorriord RAs (bsc#1023283,
+  bsc#1025560)
+  * deal with time values  passed down with time units
+  * make correct "return code"
+  * fix format issue that tab messes up with spaces 
+
+-------------------------------------------------------------------
+Wed Feb 22 06:39:27 UTC 2017 - zren@suse.com
+
+- udev: simplify special-case for md in 69-dm-lvm-metadata.rules
+  * fix regression of bsc#1012973
+  * drop remove-special-case-for-md-in-69-dm-lvm-metadata.rul.patch
+  * add simplify-special-case-for-md-in-69-dm-lvm-metadata.patch
+
+-------------------------------------------------------------------
+Fri Jan 20 09:46:27 UTC 2017 - tchvatal@suse.com
+
+- Remove special case for md (bsc#1012973)
+  * remove-special-case-for-md-in-69-dm-lvm-metadata.rul.patch
+
+-------------------------------------------------------------------
+Tue Jan 10 09:25:17 UTC 2017 - zlliu@suse.com
+
+- add a new test package named lvm2-testsuite bnc#950089
+  * lvm2-testsuite.patch
+
+-------------------------------------------------------------------
+Wed Dec 28 11:08:23 UTC 2016 - tchvatal@suse.com
+
+- Version update to 2.02.168 release, see WHATS_NEW and WHATS_NEW_DM
+  files for detailed changelogs
+  * Refresh patch cluster_support_mirrord_log.diff
+
+-------------------------------------------------------------------
+Wed Dec 28 10:58:29 UTC 2016 - zlliu@suse.com
+
+- fix bsc#1015357 about blkid_wiping printed warning.
+  * Add dependency on pkgconfig(blkid)
+
+-------------------------------------------------------------------
+Fri Sep  9 09:24:19 UTC 2016 - tchvatal@suse.com
+
+- This is sync commit from Leap/SLE12 only
+- Add patch pvcreate-enhance-the-error-message.patch bsc#960744
+- Modify GPL-2.0 to GPL-2.0+ and LGPL-2.1 to LGPL-2.1+ to avoid
+  license conflict with thin-provisioning-tools which is using GPL-3.0
+- Also contains fix for bsc#969310
+- Fix clvmd.ocf and cmirrord to remove "-d" option for cmirrod
+  (bsc#971334)
+- Fix clvmd.ocf to add lvmconf --enable-cluster before start daemon
+  when locking_type is not 3 or use_lvmetad is 1 in setting
+  (bsc#970439)
+- Modified spec to enable blkid-wiping (fate#319908)
+- Fix clvmd binary not found in case that users still use RA from
+  ocf:lvm2:clvm (bsc#980200) 
+  Add sbindir=$HA_SBIN_DIR for clvmd.ocf and cmirrord.ocf
+- The bsc#979635 wnd bsc#991181 as fixed in past thanks to proper /usr
+  migration code
+- Modified raid10_segtype_default from "mirror" to "raid10"(bsc#982329)
+- Remove lvm2-clvmd/cmirrord.service and related activation services
+  from %service_add _pre/post/preun/postun because we start clvmd 
+  /clmirrord and activate via pacemaker and RA. (bsc#980296)
+- Lvchange improve refresh by trying to deactivate snapshot thinLV 
+  in case it's preventing merge process change integrated upstream.
+  (bsc#984321)
+- Fixed in past bsc#992843
+- Fixed by upstream bsc#984321
+- Fixed by upstream bsc#970943
+- 69-dm-lvm-metad.rules: Do not process rules for multipath
+  devices (bsc#bsc#990538, bsc#986734)
+  Add: 69-dm-lvm-metad.rules-Do-not-process-rules-for-multi.patch
+- Rewrite patches to include patch header:
+  * 10-dm.rules-Reset-state-variable-for-spurious-events.patch
+  * device-mapper-link
+  * device-mapper-type_punning.diff
+  * udev_rules-update.diff
+- Sync also lvm.conf
+
+-------------------------------------------------------------------
+Fri Sep  2 08:23:06 UTC 2016 - tchvatal@suse.com
+
+- Update to 2.02.164 release, WHATS_NEW for changelog
+  * Mostly because the old tarball was no longer available
+  * Refresh fuzz on patch:
+    + make-mirror-legs-on-different-tag-pvs.patch
+    + cluster_support_mirrord_log.diff
+- Update patch to use correct api:
+  + make-mirror-legs-on-different-tag-pvs.patch
+
+-------------------------------------------------------------------
+Fri Jul  8 13:43:41 UTC 2016 - tchvatal@suse.com
+
+- Update to 2.02.160 release, read WHATS_NEW for detailed log.
+  * Most notable is lvconvert refactor/enhancements
+  * Refresh patch:
+    + cluster_support_mirrord_log.diff
+
+-------------------------------------------------------------------
+Tue Jun  7 12:08:24 UTC 2016 - tchvatal@suse.com
+
+- Add thin-provisioning-tools to deps to fix configure warnings
+
+-------------------------------------------------------------------
+Tue Jun  7 11:45:56 UTC 2016 - tchvatal@suse.com
+
+- Do not run initrd regenerating twice in post
+
+-------------------------------------------------------------------
+Tue Jun  7 11:40:41 UTC 2016 - tchvatal@suse.com
+
+- Update to 2.02.155 release, read WHATS_NEW for detailed log.
+  * Mostly few bugfixes around caching
+- Refresh patch pvmove_support_clustered_vg.diff
+
+-------------------------------------------------------------------
+Thu May 19 12:07:09 UTC 2016 - tchvatal@suse.com
+
+- Add compat symlinks for binaries to /sbin/ to avoid errors on
+  hardcoded systems, obsolete them with leap 43
+
+-------------------------------------------------------------------
+Thu May 12 08:12:54 UTC 2016 - tchvatal@suse.com
+
+- Add conflicts on unsplit packages to allow smooth upgrade path
+  Also do the conflict properly in baselibs.conf
+
+-------------------------------------------------------------------
+Wed May 11 07:54:19 UTC 2016 - tchvatal@suse.com
+
+- Add dependencies to the devel pacakge in baselibs.conf
+
+-------------------------------------------------------------------
+Wed May  4 10:36:40 UTC 2016 - tchvatal@suse.com
+
+- Update patch use-mirrortype-asdefault-whenclvmdrunning.patch
+  to match up the patches/pvmove_support_clustered_vg.diff and not
+  use the define declared only when building clvm codebase;
+  it is still broken if someone changes the PID location, but at least
+  it now does not depend on clvm code
+- Regenerate_initrd in post of the lvm2 main pkg
+- Update baselibs to point to split-out devicemapper libraries
+
+-------------------------------------------------------------------
+Wed May  4 09:27:30 UTC 2016 - tchvatal@suse.com
+
+- Keep in sync the common configuration options that are shared among
+  all the variants dm/lvm2/clvm
+
+-------------------------------------------------------------------
+Tue May  3 14:03:30 UTC 2016 - tchvatal@suse.com
+
+- Provide symlinks to 1.02 versions of dm and dm-event libs
+  * this should sort out binary packages without the need of double
+    rebuilding
+
+-------------------------------------------------------------------
+Tue May  3 13:23:52 UTC 2016 - tchvatal@suse.com
+
+- Update to 2.02.152 release, read WHATS_NEW for detailed log.
+- Refresh patches:
+  * 10-dm.rules-Reset-state-variable-for-spurious-events.patch
+  * device-mapper-gcc-warnings.patch
+  * device-mapper-link.patch
+  * udev-Check-for-DM_NR_VALID_PATHS.patch
+- Slightly tweak btrfs patch as the code changed for the detection:
+  * fsadm-add-support-for-btrfs.patch
+
+-------------------------------------------------------------------
+Tue May  3 12:55:34 UTC 2016 - tchvatal@suse.com
+
+- Build and install properly cluster files
+- Remove csm-converter.tar.gz as the evms was last present on sle10
+  and thus migration is bit out of scope today
+
+-------------------------------------------------------------------
+Tue May  3 09:23:48 UTC 2016 - tchvatal@suse.com
+
+- Add pre_checkin.sh to allow syncing of patches between packages:
+  workflow = add everything to lvm2.spec and run pre_checkin.sh
+
+-------------------------------------------------------------------
+Mon May  2 17:41:55 UTC 2016 - tchvatal@suse.com
+
+- Refresh patch use-mirrortype-asdefault-whenclvmdrunning.patch to
+  work without clvm code enabled
+
+-------------------------------------------------------------------
+Mon May  2 17:29:09 UTC 2016 - tchvatal@suse.com
+
+- Regenerate lvm2 tmpfiles after install so they won't populate just
+  after the reboot
+- Split out lvm2 libraries to separate subpkgs per standards
+- Rename versioning of plugins patch:
+  * version-plugins-in-libdir -> version-plugins-in-libdir.patch
+
+-------------------------------------------------------------------
+Mon May  2 16:51:09 UTC 2016 - tchvatal@suse.com
+
+- Remove evms provides/obsoletes, last seen on sle10
+- Mark configs as such
+- Ghost the during-run created dirs
+- Install rcbla compat service symlinks
+
+-------------------------------------------------------------------
+Mon May  2 15:13:35 UTC 2016 - tchvatal@suse.com
+
+- Sync with device-mapper.spec, build only lvm and wipe devicemapper
+  binaries
+- Install in /usr there is no technical reason to keep this out
+  of /usr
+
+-------------------------------------------------------------------
+Mon May  2 13:23:49 UTC 2016 - tchvatal@suse.com
+
+- Split out device-mapper and clvm to separate spec files
+  * No factual changes just deletion in the spec to keep it out
+    of interacting with those parts
+
+-------------------------------------------------------------------
+Fri Apr 29 11:05:04 UTC 2016 - tchvatal@suse.com
+
+- Do not explicitely require expat it is only used by thin_provisioning
+
+-------------------------------------------------------------------
+Thu Apr 28 20:40:17 UTC 2016 - tchvatal@suse.com
+
+- There is no factual reason to keep the device mapper out of /usr
+  so just match everything else
+
+-------------------------------------------------------------------
+Thu Apr 28 20:12:48 UTC 2016 - tchvatal@suse.com
+
+- Remove device-mapper-static.patch as there should be no need to
+  have static library here and it can be reenabled with some explanation
+  if needed
+
+-------------------------------------------------------------------
+Thu Apr 28 19:57:54 UTC 2016 - tchvatal@suse.com
+
+- Rename device-mapper-link to device-mapper-link.patch
+
+-------------------------------------------------------------------
+Mon Mar  7 01:53:34 UTC 2016 - lwang@suse.com
+
+- not output error message inside retry loops to avoid noisy error
+  message being output inside retry loops in case of remove failure
+  because device busy. (bsc#940298 boo#957059)
+  add: libdm-iface-not-output-error-message-inside-retry-loop.patch
+
+-------------------------------------------------------------------
+Thu Jan 28 03:47:31 UTC 2016 - lwang@suse.com
+
+- Add 'Also=lvm2-lvmetad.socket' in '[Install]' section of lvm2-lvmetad.
+  service to remove lvm2-lvmetad.socket when disable lvm2-lvmetad.service.
+  (bsc#960044) 
+  add: lvm2-lvmetad.service-add-Also-lvm2-lvmetad.socket.patch
+
+-------------------------------------------------------------------
+Wed Jan 27 05:38:07 UTC 2016 - lwang@suse.com
+
+- Split thin-provisioning-tools from lvm2 package for easier maintenance.
+- Update to lvm2-2.02.141 (device-mapper-1.02.115)
+  - Remove patches:
+     lvm2-do-not-strip-pdata_tools.patch: thin-provisioning-tools patch
+     lvmetad.c-ignore-lvmetad-global-handle-on-disconnect.patch:
+							   already in upstream
+     no_buildroot_shared.diff: LVM_SHARED_PATH dropped by upstream
+
+-------------------------------------------------------------------
+Mon Dec 14 14:52:00 CET 2015 - tiwai@suse.de
+
+- Fix missing dependency on coreutils for initrd macros (boo#958562)
+- Call missing initrd macro at postun (boo#958562)
+
+-------------------------------------------------------------------
+Fri Dec 11 16:03:58 UTC 2015 - dimstar@opensuse.org
+
+- Re-add lvm2-do-not-strip-pdata_tools.patch: this is still needed.
+
+-------------------------------------------------------------------
+Tue Aug 25 02:27:10 UTC 2015 - lwang@suse.com
+
+- Fix boot failed due to segfault at libc (bnc#942755)
+  add: lvmetad.c-ignore-lvmetad-global-handle-on-disconnect.patch
+
+-------------------------------------------------------------------
+Thu Aug  6 06:13:20 UTC 2015 - lwang@suse.com
+
+- fix spec to change /sbin/thin-check to %{_sbindir}/thin-check.
+  (bnc#940754)
+
+-------------------------------------------------------------------
+Mon Jul 27 19:35:15 UTC 2015 - mpluskal@suse.com
+
+- Update thin-provisioning tools to 0.5.3
+  * Fix bug where the tools would crash if given a very large 
+    metadata device to restore to.
+  * - thin_delta, thin_trim
+  * --clear-needs-check flag for cache_check
+  * space map checking for thin check
+- Drop unnecessary lvm2-do-not-strip-pdata_tools.patch
+
+-------------------------------------------------------------------
+Fri Jul 24 13:16:09 UTC 2015 - dvaleev@suse.com
+
+- Allow building without clvm (boo#923127)
+  Keep clvm2 building by default
+
+-------------------------------------------------------------------
+Tue Jul 14 09:05:13 UTC 2015 - lwang@suse.com
+
+- dmeventd: fix dso_name compare error. dso_name is thought as not
+  empty and doesn't create monitor thread. (bnc#935623)
+  add: dmeventd-fix-dso-name-wrong-compare.patch
+
+-------------------------------------------------------------------
+Tue Jul 14 05:41:55 UTC 2015 - lzhong@suse.com
+
+- 13-dm-disk.rules: Import ID_FS_XXX variables from udev 
+  database(bnc#909358)
+    If the disk is unavailable we need to import the existing ID_FS_XXX
+    variables from the database, otherwise the filesystem UUID won't
+    be set and the by-uuid symlink will disappear, leading to
+    intermittent boot failures
+    + Import-ID_FS_XXX-variables-bnc909358.patch
+
+- 10-dm.rules: Reset state variables for spurious events (bsc#932300)
+    + 10-dm.rules-Reset-state-variable-for-spurious-events.patch
+
+-------------------------------------------------------------------
+Tue May 19 16:30:47 UTC 2015 - jeffm@suse.com
+
+- Update to 2.02.120
+  - Fixed numerous bugs(see WHATS_NEW for full details)
+  - Deleted dab3ebce-devices-Do-not-support-unpartitioned-DASD.patch (upstream)
+
+-------------------------------------------------------------------
+Fri Apr  3 02:45:02 UTC 2015 - lzhong@suse.com
+
+- fsadm: add support for btrfs(fate#318413) 
+	fsadm-add-support-for-btrfs.patch 
+
+-------------------------------------------------------------------
+Mon Mar 23 07:50:05 UTC 2015 - lwang@suse.com
+
+- Moved BuildRequires: libcorosync-devel and libdlm-devel from lvm package
+  to clmv package to avoid dracut build needing cluster stack to be built.
+  (bsc#923127)
+
+-------------------------------------------------------------------
+Sat Feb 14 14:06:36 UTC 2015 - i@marguerite.su
+
+- provides libdevmapper.so.1.02 libdevmapper-event.so.1.02
+  for VirtualBox.
+
+-------------------------------------------------------------------
+Thu Feb  5 03:13:52 UTC 2015 - lwang@suse.com
+
+- LVM2 does not support unpartitioned DASD device which has special
+  format in the first 2 tracks and will siliently discards LVM2 lable
+  information written to it when pvcreate. (bsc#894202)
+  Add: dab3ebce-devices-Do-not-support-unpartitioned-DASD.patch 
+- Delete lvm2-lvmetad.socket from %service_del_preun/postun to avoid
+  lvmetad.service being started by 'systemctl retry-start' when updating
+  package. (bsc#914415)
+
+-------------------------------------------------------------------
+Thu Jan 22 09:45:12 UTC 2015 - mpluskal@suse.com
+
+- Don't replace lvm.conf
+
+-------------------------------------------------------------------
+Mon Jan 12 08:33:14 UTC 2015 - mpluskal@suse.com
+
+- Re-add lvm2-lvmetad.service to %service_add_pre/post
+- Add service registrations for cmirrord and clvm
+- Correct category for device-mapper-devel
+
+-------------------------------------------------------------------
+Thu Jan  8 15:21:17 UTC 2015 - dimstar@opensuse.org
+
+- Add lvm2-do-not-strip-pdata_tools.patch: Change build system to
+  not strip pdata_tools during installation. We need the file in
+  tact in order to be able to produce valid debuginfo packages
+  (boo#910327).
+
+-------------------------------------------------------------------
+Mon Dec 22 07:10:10 UTC 2014 - lwang@suse.com
+
+- delete lvm2-lvmetad.service from %service_add_pre/post and
+  %service_del_preun/postun to avoid lvm2-lvmetad.service running
+  when use_lvmetad=0.  (bnc#901859) 
+- locking_type is set to 3(clustered lock) by default will output
+  warning message if cmirrord is not running. Set to 1 to be same
+  with upstream. (bnc#906710)
+- Set silent default to 0 to avoid some commands have no output 
+  and to be same with upstream. (bnc#888798)
+  
+-------------------------------------------------------------------
+Mon Dec  8 21:19:13 UTC 2014 - jengelh@inai.de
+
+- spec: replace some shell variables and paths by rpm macros
+- shorten filelists by using wildcards
+
+-------------------------------------------------------------------
+Wed Dec  3 03:23:47 UTC 2014 - jeffm@suse.com
+
+- Update to 2.02.114
+  - Removed cmirrord-fix-s390-endian-issue.patch
+  - Renumbered patches to allow for upstream patches to be applied
+    before local ones.
+
+-------------------------------------------------------------------
+Wed Nov 19 22:40:13 UTC 2014 - dimstar@opensuse.org
+
+- Drop libudev-devel BuildRequires: we already buildrequire
+  pkgconfig(libudev), which is the better choice, as it allows us
+  to get libudev-mini-devel.
+
+-------------------------------------------------------------------
+Mon Nov 10 09:01:35 UTC 2014 - dimstar@opensuse.org
+
+- Require device-mapper by device-mapper-devel: otherwise, the .so
+  symlinks might happen to point to no target.
+
+-------------------------------------------------------------------
+Tue Oct 28 07:18:36 UTC 2014 - lwang@suse.com
+
+- Delete BuildRequire for device-mapper-devel for all symbols needed 
+  is created in ./include/.symlinks file.
+- Add link /usr/sbin/lvm file to avoid others using /usr/sbin/lvm
+
+-------------------------------------------------------------------
+Fri Sep 26 07:09:27 UTC 2014 - lwang@suse.com
+
+- recover no_buildroot_shared.diff, this may cause gcc error
+
+-------------------------------------------------------------------
+Wed Sep 24 08:24:13 UTC 2014 - lwang@suse.com
+  
+- All patches eliminated since update to 2.02.111
+  - Eliminated 25 patches in lvm2 package:
+    no_buildroot_shared.diff: don't know why necessary change this
+    pipe_buff-definition.diff: don't know why necessary
+    handle_extended_devt.diff: not need(bnc#525060 not reproduce even without this patch)  
+    support-drbd-filter.diff: source to patch not found
+    lvm-path.patch: not needed, upstream fixed hardcode
+    suppress_locking_failer_message.patch: no doc as to why suppress warning  
+    add_scm_support.patch: definition device_info_t _device_info is no longer exist
+   upstream patches(18):
+    man_page_sectors.diff
+    make_raid1_default.diff
+    remove-fedora-systemd.patch
+    0001-lvmetad-Init-lazily-to-avoid-socket-access-on-config.patch
+    do_not_read_from_mirrors_have_failed_devices.diff
+    avoid_reading_failed_dev_in_mirrored_log.diff
+    mirrored_log_fixed_when_double_fault_occurs.diff
+    device_is_usable_mem_leak.diff
+    clmvd-fix-decriptor-leak-on-restart.patch
+    clvmd-Fix-node-up-down-handing-in-corosync-module.patch
+    clvmd-Avoid-a-3-way-deadlock-in-dead-client-cleanup.patch
+    0001-clvmd-avoid-logging-in-signal-handler.patch
+    0001-RAID-Make-RAID-4-5-6-display-sync-status-under-headi.patch
+    clvmd-fix-debugging-level-set-in-clvmd_set_debug-function.patch
+    0001-toolcontext-Only-reopen-stdin-if-readable.patch
+    systemd-lvm2-activation-generator-report-only-error.patch
+    systemd-use-umask-022-for-generated-systemd-units-by.patch
+    remove-quote-in-lvm2-monitor.patch 
+ 
+  - Eliminated 6 patches in device-mapper package:
+    bug-479104_device-mapper-dmsetup-deps-export.patch:merged with device-mapper-dmsetup-export.patch
+    udev_sync-cookie_set-1-on-each-dm_task_set_cookie-ca.patch: already included in upstream
+    increase-minor-version.diff: not needed
+    segault_for_truncated_string_token.patch: upstream
+    s390-sectorsize4096.patch: upstream
+    add_integrate_flush_flag.patch: included in cmirrord_improvment_performance.patch
+
+  - Moved device-mapper patches to lvm2:
+    device-mapper-dmsetup-export.patch(bnc#707253)
+    device-mapper-gcc-warnings.patch
+    device-mapper-static.patch
+    device-mapper-link
+    udev_rules-update.diff(bnc#78902,bnc#789019,bnc#789020)
+
+-------------------------------------------------------------------
+Wed Sep 24 02:34:46 UTC 2014 - lwang@suse.com
+
+- cmirrord has endian issue which cause cmirrord start fail on s390
+  patch: cmirrord-fix-s390-endian-issue.patch(bnc#890452,bnc#893684)
+
+-------------------------------------------------------------------
+Thu Sep 11 15:55:50 UTC 2014 - jeffm@suse.com
+
+- Integrated device-mapper and thin-provisioning packages into
+  lvm2 package. device-mapper and lvm2 have been included in
+  the same source repository for some time.
+
+-------------------------------------------------------------------
+Thu Sep 11 05:17:27 UTC 2014 - jeffm@suse.com
+
+- Update to 2.02.111
+  - Eliminated 21 patches.
+       
+-------------------------------------------------------------------
+Wed Sep  3 01:48:48 CEST 2014 - ro@suse.de
+
+- sanitize release line in specfile
+
+-------------------------------------------------------------------
+Fri Jul  4 09:14:10 UTC 2014 - dmzhang@suse.com
+
+- bnc#885632, set multipath_componnet_detection = 1 per default 
+
+-------------------------------------------------------------------
+Fri Jun 13 10:31:48 CEST 2014 - hare@suse.de
+
+- Generate all symlinks even for multipath events (bnc#875233)
+  patch: udev-Check-for-DM_NR_VALID_PATHS.patch
+
+-------------------------------------------------------------------
+
+Tue May 30 09:01:08 UTC 2014 - lmb@suse.com
+
+- Versioning for the lvm2-cmirrord dependencies
+
+-------------------------------------------------------------------
+Thu May 29 10:01:35 UTC 2014 - dmzhang@suse.com
+
+- bnc#878930, systemd is putting out an erroneous message about lvm2-monitor.service
+  patch: remove-quote-in-lvm2-monitor.patch
+
+-------------------------------------------------------------------
+Wed May 28 16:45:45 UTC 2014 - lwang@suse.com
+
+- fix lvm2-activation{,-early}.service is marked world-inaccessible (bnc#878481)
+  add systemd-use-umask-022-for-generated-systemd-units-by.patch
+- add comment to lvm.conf to inform user to start lvm2-lvmetad.socket
+  if it is not started in case of use_lvmetad = 1 (bnc#878473)
+- disable lvmetad in lvm.conf to fix it (bnc#862076)
+
+-------------------------------------------------------------------
+Wed May 28 15:46:58 UTC 2014 - lwang@suse.com
+
+- bnc#878121, modify clvmd.ocf start debug level -d2 to d0
+
+-------------------------------------------------------------------
+Wed May 28 14:57:23 UTC 2014 - lwang@suse.com
+
+- bnc#870598, change lockdir to /run/lvm/lock
+        modify lvm.conf
+  bnc#854092, backport patches to fix 'nohup lvm' crash
+        patch:0001-toolcontext-Only-reopen-stdin-if-readable.patch
+  bnc#870824, defaut the mirrortype to mirror when clvmd is running
+        patch:use-mirrortype-asdefault-whenclvmdrunning.patch
+  bnc#859824, get rid of the annoying message 'LVM activation generator successfully completed'
+        patch:systemd-lvm2-activation-generator-report-only-error.patch
+  bnc#837538, fix closedown of clvmd
+        patch:fix-closedown-before-thread-finish.patch
+
+-------------------------------------------------------------------
+Wed May 28 14:50:13 UTC 2014 - lwang@suse.com
+
+- Added: clvmd-fix-debugging-level-set-in-clvmd_set_debug-function.patch
+   This patch is missed in sle12, added from sle11sp3
+   Fix debugging level set in clvmd_set_debug by using the correct
+   variable (bnc#785467),change default -d0 to -d2
+
+-------------------------------------------------------------------
+Wed May 28 14:34:04 UTC 2014 - meissner@suse.com
+
+- add missing %pre section, specify all sockets and services in
+  all 4 calls.
+
+-------------------------------------------------------------------
+Mon May 12 08:11:08 UTC 2014 - lwang@suse.com
+
+-bnc#871176, 0001-RAID-Make-RAID-4-5-6-display-sync-status-under-headi.patch 
+
+-------------------------------------------------------------------
+Wed Apr 16 09:11:32 UTC 2014 - trenn@suse.de
+
+- Switch from mkinitrd to dracut
+  - Dracut already has a lvm module and takes care that the right stuff is
+    include into initrd, therefore remove:
+      - mkinitrd-lvm2-boot.sh
+      - mkinitrd-lvm2-setup.sh
+    mkinitrd scripts from sources
+  - Add dracut macros in %post and %posttrans to ensure initrd recreation  
+- Remove unneeded comments in .spec file
+- Do not compile in DATE and TIME to avoid build unneeded retriggering in obs
+  Add: cmirrord_remove_date_time_from_compilation.patch
+
+-------------------------------------------------------------------
+Tue Apr  8 08:47:51 UTC 2014 - lwang@suse.com
+
+- bnc#862403, modify lvm.conf to add filter to exclude floppy and cdrom 
+
+-------------------------------------------------------------------
+Tue Mar 25 09:08:16 UTC 2014 - dmzhang@suse.com
+
+- backport more patches from slesp3(bnc#831518)
+  scm support:
+    add_scm_support.patch
+  mirrored log fix:
+    do_not_read_from_mirrors_have_failed_devices.diff
+    avoid_reading_failed_dev_in_mirrored_log.diff
+    mirrored_log_fixed_when_double_fault_occurs.diff
+    device_is_usable_mem_leak.diff
+  clvmd:
+    clmvd-fix-decriptor-leak-on-restart.patch
+    clvmd-Avoid-a-3-way-deadlock-in-dead-client-cleanup.patch
+    clvmd-Fix-node-up-down-handing-in-corosync-module.patch
+    0001-clvmd-avoid-logging-in-signal-handler.patch
+  fate#314367, missing patch
+    lvconvert-cluster-mirrored-disk-failed.patch
+  other fix:
+    pvmove_support_clustered_vg.diff
+    suppress_format1_size_warning.diff
+    display-dm-name-for-lv-name.diff
+  no longer needed patches:
+    autoactivate-lvmetad-with-generator.patch
+
+-------------------------------------------------------------------
+Thu Feb 20 16:23:21 UTC 2014 - arvidjaar@gmail.com
+
+- add 0001-lvmetad-Init-lazily-to-avoid-socket-access-on-config.patch
+  avoid connect to lvmetad.socket too early to prevent deadlock during
+  "systemctl daemon-reload" (bnc#862076)
+
+-------------------------------------------------------------------
+Thu Feb 13 06:39:47 UTC 2014 - dmzhang@suse.com
+
+- fate#315092, improve performance of cluster mirror
+  add cmirrord_improvment_performance.patch
+
+-------------------------------------------------------------------
+Wed Feb 12 15:17:05 UTC 2014 - arvidjaar@gmail.com
+
+- add autoactivate-lvmetad-with-generator.patch - if use_lvmetad=1,
+  automatically activate lvm2-lvmetad.socket to ensure lvmetad is
+  started when required (bnc#862076)
+
+-------------------------------------------------------------------
+Wed Jan 22 14:34:41 UTC 2014 - henrik.kuhn@origenis.de
+
+- added a lvm2-devel package definition 
+
+-------------------------------------------------------------------
+Mon Jan  6 07:43:59 UTC 2014 - dmzhang@suse.com
+
+- add csm_convert to lvm2-clvm package(bnc#854076)
+- system fails to boot due to missing /usr/sbin/lvm(bnc#837954)
+- lvm2 systemd incorrectly uses dependencies on Fedora services(bnc#851741)
+- set use_lvmetad = 1 as default of lvm.conf(bnc#854413)
+- drop patch dont_ignore_tmp_device_file.diff
+- backport patches from sle11sp3
+  fate#314367,cluster_support_mirrord_log.diff
+  fate#312248,make-mirror-legs-on-different-tag-pvs.patch
+  improve-mirror-legs-on-different-tag-pvs.patch
+- set default mirror to md_raid1 insdead of dm_mirror for better performance
+- enable lvm2-lvmetad.socket by default
+  
+-------------------------------------------------------------------
+Sun Oct 27 21:44:41 CET 2013 - ohering@suse.de
+
+- Remove /etc/sysconfig/lvm to avoid errors during mkinitrd run
+  LVM_VGS_ACTIVATED_ON_BOOT is not handled anymore with systemd
+- Remove fillup and insserv from PreReq
+
+-------------------------------------------------------------------
+Mon Oct 21 08:09:41 UTC 2013 - dmzhang@suse.com
+
+- bnc#779965, use export before %configure in spec
+
+-------------------------------------------------------------------
+Wed Sep 11 10:18:47 CEST 2013 - fcrozat@suse.com
+
+- Add lvm-path.patch: fix lvm binary path in systemd generator.
+- Use %_tmpfilesdir macro for tmpfiles directory.
+
+-------------------------------------------------------------------
+Sun Sep  8 22:20:46 UTC 2013 - crrodriguez@opensuse.org
+
+- Set all "run" directories relative to /run not just the "lock"
+  location
+- Install /usr/lib/tmpfiles.d/lvm2.conf as required to ensure
+  such runtime directories are _always_ there.
+
+-------------------------------------------------------------------
+Wed Aug 28 11:15:54 UTC 2013 - meissner@suse.com
+
+- replace BuildRequires: systemd by pkgconfig(udev) again
+  to avoid cycles.
+
+-------------------------------------------------------------------
+Tue Aug 20 07:59:06 UTC 2013 - dmzhang@suse.com
+
+- add systemd support to lvm2 package
+  split device-mapper to another package.
+
+-------------------------------------------------------------------
+Tue Jul 16 14:55:10 CEST 2013 - ohering@suse.de
+
+- Remove usage of absolute paths in mkinitrd scripts
+
+-------------------------------------------------------------------
+Tue Jul 16 14:39:31 CEST 2013 - ohering@suse.de
+
+- Fix parsing lvdisplay -c output with more than 10 volumes in 
+  mkinitrd-lvm2-setup.sh (bnc#826727)
+
+-------------------------------------------------------------------
+Mon Apr 22 14:01:29 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-2.0 and LGPL-2.1
+  Presence of multiple files (both GPL and LGPL) with "only" licenses
+
+-------------------------------------------------------------------
+Tue Apr 16 11:57:28 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Fri Feb 15 11:44:36 UTC 2013 - rmilasan@suse.com
+
+- Move all udev releated files in the appropriate udev directory.
+
+-------------------------------------------------------------------
+Wed Nov 28 09:37:23 UTC 2012 - rmilasan@suse.com
+
+- udev_sync-cookie_set-1-on-each-dm_task_set_cookie-ca.patch: 
+  cookie_set=1 on each dm_task_set_cookie call (bnc#788882)
+
+-------------------------------------------------------------------
+Mon Nov 12 10:41:45 UTC 2012 - seife+obs@b1-systems.com
+
+- fix 10-dm.rules (bnc#789021)
+- port dmsetup export patch to new LVM code (bnc#789019,bnc#789020)
+
+-------------------------------------------------------------------
+Mon Nov  5 21:10:28 UTC 2012 - hrvoje.senjan@gmail.com
+
+- Now also fix devmapper-setup
+
+-------------------------------------------------------------------
+Mon Nov  5 12:08:26 UTC 2012 - hrvoje.senjan@gmail.com
+
+- Adapt mkinitrd scripts to new udev locataion
+
+-------------------------------------------------------------------
+Sun Nov  4 02:31:00 UTC 2012 - crrodriguez@opensuse.org
+
+- Fix booting ... place udev rules in the proper location..
+
+-------------------------------------------------------------------
+Thu Oct 18 12:35:30 UTC 2012 - hrvoje.senjan@gmail.com
+
+- Change the default locking dir to reflect the change in filesystem package
+
+-------------------------------------------------------------------
+Wed Oct 17 23:01:54 UTC 2012 - nfbrown@suse.com
+
+- lvm2.spec: merge rules for device-mapper and
+  lvm2-clvm packages, so there is only one
+  spec file and all packages are built consistently.
+
+-------------------------------------------------------------------
+Tue Oct 16 09:34:40 UTC 2012 - coolo@suse.com
+
+- build against the minimal udev to avoid cycles
+- the sysvinit requires are no longer necessary
+
+-------------------------------------------------------------------
+Tue Oct 16 04:19:59 UTC 2012 - nfbrown@suse.com
+
+- Upgrade to LVM2-2-02-98.  Improvements include
+  improved interaction with udev and systemd,
+  improved dmraid support, and new command
+  "blkdeactivate".
+
+-------------------------------------------------------------------
+Thu Sep 27 01:11:17 UTC 2012 - nfbrown@suse.com
+
+- lvm2.spec: make sure MODPROBE_CMD is set properly
+  when configure is run.  Without it, modules are
+  not auto-loaded.  (bnc#779965)
+
+-------------------------------------------------------------------
+Fri Apr 20 07:52:09 UTC 2012 - rmilasan@suse.com
+
+- Run update of initrd at %post and %postun.
+  We need this to make sure initrd reflects the updates. 
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri May 27 09:09:35 UTC 2011 - lnussel@suse.de
+
+- don't unconditionally enable boot.lvm by default. yast takes care
+  of enabling the script when creating lvm volumes.
+- don't hard require boot.device-mapper in boot.dmraid. dm-mod is
+  autoloaded when accessing /dev/mapper/control anyways.
+
+-------------------------------------------------------------------
+Thu Mar 10 11:07:22 UTC 2011 - coolo@novell.com
+
+- prereq sysvinit(boot.device-mapper) to fix build
+
+-------------------------------------------------------------------
+Tue Feb 15 08:48:48 UTC 2011 - xwhu@novell.com
+
+- Update to LVM 2.02.84 
+  - Fix handling of simultaneous mirror image and mirrored log 
+    image failure.
+  - Fix vgremove to allow removal of VG with missing PVs
+  - Remove log directly if all mirror images of a mirrored log fail
+  - Fix potential for corruption during cluster mirror device 
+    failure
+  - Allow internal suspend and resume of origin without its 
+    snapshots
+  - Allow exclusive activation of snapshots in a cluster
+
+-------------------------------------------------------------------
+Thu Nov 11 12:24:04 UTC 2010 - coolo@novell.com
+
+- own parent directories for device-mapper files
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Fri Jul 16 10:11:59 UTC 2010 - xwhu@novell.com
+
+- bnc#556177, undefined symbol error while loading dmevent so.
+
+-------------------------------------------------------------------
+Wed Jun 23 05:50:12 UTC 2010 - xwhu@novell.com
+
+- Update to LVM.2.02.67
+  - Require partial option in lvchange --refresh for partial LVs
+  - Add replicators' LVs to dtree for activation
+  - Add lvm2app interfaces to lookup a vgname from a pvid and pvname
+  - Fix memory leak for invalid regex pattern input
+  - Disallow the direct removal of a merging snapshot
+  - Fix lvconvert error message when existing mirrored LV is not found
+  - Add LVM_SUPPRESS_LOCKING_FAILURE_MESSAGES environment variable
+  - Improve snapshot merge metadata import validation
+
+-------------------------------------------------------------------
+Tue Jun  1 14:06:38 UTC 2010 - xwhu@novell.com
+
+- Specify udev_sync and udev_rules in /etc/lvm/lvm.conf 
+
+-------------------------------------------------------------------
+Fri May 21 03:41:47 UTC 2010 - xwhu@novell.com
+
+- Fix mkinitrd-lvm2 to use udev rules for lvm2 
+
+-------------------------------------------------------------------
+Mon Apr 26 16:51:10 CEST 2010 - ro@suse.de
+
+- fix lvm2-clvm specfile so that patches apply 
+
+-------------------------------------------------------------------
+Sat Apr  3 03:17:12 UTC 2010 - xwhu@novell.com
+
+- Upgrade to LVM2 2.02.58
+  - Rename liblvm.so to liblvm2app.so
+  - Introduce lvconvert --use_policies
+  - Add readonly locking type to replace implementation of 
+    --ignorelockingfailure
+  - Add liblvm APIs to implement creation and deletion of VGs
+  - Add activation/udev_sync to lvm.conf
+  - Enable dmeventd monitoring section of config file by default
+  - Add --pvmetadatacopies for pvcreate, vgcreate, vgextend, 
+    vgconvert.
+
+-------------------------------------------------------------------
+Sun Nov 29 06:58:45 UTC 2009 - xwhu@novell.com
+
+- Link liblvm2cmd.so to libdevmapper-event.so (bnc#556177) 
+
+-------------------------------------------------------------------
+Sun Nov 15 10:40:19 CET 2009 - meissner@suse.de
+
+- quilt refreshed all patches.
+
+-------------------------------------------------------------------
+Mon Oct 12 13:31:12 UTC 2009 - xwhu@novell.com
+
+- make $tmp_mnt/etc/sysconfig before copying file into (bnc#525237)
+
+-------------------------------------------------------------------
+Wed Sep 23 06:38:47 UTC 2009 - xwhu@novell.com
+
+- Add -lvm2- infix to mkinitrd scripts
+- collect_lvm reads /etc/sysconfig/lvm (bnc#523944)
+
+-------------------------------------------------------------------
+Fri Aug 28 07:37:13 UTC 2009 - xwhu@novell.com
+
+- Support extended dev with major 259 
+
+-------------------------------------------------------------------
+Fri Jun 26 11:08:39 CST 2009 - xwhu@suse.de
+
+- bnc#510058, typo in dont_ignore_tmp_device_file.diff, which hangs
+  mkinitrd
+
+Mon May 25 16:47:18 CST 2009 - xwhu@suse.de
+-------------------------------------------------------------------
+
+- Cleanup scripts for mkinitrd, so that udev can activate root LV.
+
+Mon Apr 27 18:37:32 CST 2009 - xwhu@suse.de
+-------------------------------------------------------------------
+
+- Upgrade to LVM2 2.02.45
+  Avoid scanning empty metadata areas for VG names
+  Pass --test from lvresize to fsadm as --dry-run.
+  Remove duplicate cpg_initialize from clvmd startup.
+  Add option to /etc/sysconfig/cluster to select cluster type for clvmd.
+  Remove external dependency on the 'cut' command from fsadm.
+  Fix pvs segfault when pv mda attributes requested for not available PV.
+  Fix lvresize size conversion for fsadm when block size is not 1K.
+  Add pv_mda_size to pvs and vg_mda_size to vgs.
+  Add "--refresh" functionality to vgchange and vgmknodes.
+  Fix vgrename using UUID if there are VGs with identical names.
+  Fix segfault when invalid field given in reporting commands.
+  Merge device-mapper into the lvm2 tree.
+  Exit with non-zero status from vgdisplay if couldn't show any requested VG.
+  Fix snapshot monitoring library to not cancel monitoring invalid snapshot.
+  Fix conversion of md chunk size into sectors.
+  Fix misleading error message when there are no allocatable extents in VG.
+  Fix handling of PVs which reappeared with old metadata version.
+  Fix mirror DSO to call vgreduce with proper parameters.
+  Fix validation of --minor and --major in lvcreate to require -My always.
+  Fix release: clvmd build, vgreduce consolidate & tests, /dev/ioerror warning.
+
+-------------------------------------------------------------------
+Tue Mar 31 11:59:03 CST 2009 - xwhu@suse.de
+
+- Handle the case that drbd virtual device has the same PV uuid
+  with the underlining physical device.
+
+-------------------------------------------------------------------
+Wed Mar 25 23:14:29 CST 2009 - xwhu@suse.de
+
+- Do not filter out tmp device file(bnc#485572)
+- Do not try to activate VG when all paths are down already(bnc#479104)	
+
+-------------------------------------------------------------------
+Wed Mar 25 22:50:50 CST 2009 - xwhu@suse.de
+
+- Split CLVMD as a independent package
+
+-------------------------------------------------------------------
+Tue Mar 24 00:23:13 CST 2009 - xwhu@suse.de
+
+- Fix for bnc#486952
+  use "killproc -INT" instead of "killproc"
+  handle signal in the main loop thread only
+
+-------------------------------------------------------------------
+Thu Feb 26 14:08:22 CST 2009 - xwhu@suse.de
+
+- add daemon_options parameter to clvmd.ocf
+- check EUNLOCK for dlm_ls_unlock_wait
+
+-------------------------------------------------------------------
+Wed Feb 25 18:39:26 CST 2009 - xwhu@suse.de
+
+- bnc#479422, check both lksb.sb_status and status.
+
+-------------------------------------------------------------------
+Fri Feb 20 10:24:00 CET 2009 - xwhu@suse.de
+
+- simplify patch of dlm lock to clvmd
+
+-------------------------------------------------------------------
+Fri Feb 20 08:06:37 CET 2009 - xwhu@suse.de
+
+- bnc#476861, clvmd.ocf doesn't report the correct status when
+  kill -9 doesn't terminate the process 
+
+-------------------------------------------------------------------
+Thu Jan 22 13:00:26 CST 2009 - xwhu@suse.de
+
+- bnc#464851, use dlm instead of openais lck
+
+-------------------------------------------------------------------
+Wed Jan 21 15:23:31 CET 2009 - ro@suse.de
+
+- do not require a specific package release from subpackage 
+  (bnc#467704)
+
+-------------------------------------------------------------------
+Wed Dec  3 18:51:27 CST 2008 - xwhu@suse.de
+
+- Add OCF script for clvmd
+
+-------------------------------------------------------------------
+Wed Nov 12 02:22:56 CST 2008 - xwhu@suse.de
+
+- bnc#443677. dmeventd DSOs are linked against liblvm2cmd
+
+-------------------------------------------------------------------
+Thu Oct  9 11:54:47 CEST 2008 - xwhu@suse.de
+
+- bnc#432782. Remove vol_id in 64-lvm2.rules. 
+
+-------------------------------------------------------------------
+Mon Sep 29 14:09:33 CEST 2008 - ro@suse.de
+
+- buildreq: replace openais-devel by libopenais-devel 
+
+-------------------------------------------------------------------
+Wed Sep 24 18:25:40 CEST 2008 - ro@suse.de
+
+- change "udevsettle" to "udevadm settle" 
+
+-------------------------------------------------------------------
+Sat Sep 13 11:59:34 CEST 2008 - xwhu@novell.com
+
+- added missing directories to filelist 
+
+-------------------------------------------------------------------
+Wed Sep 10 13:43:17 CEST 2008 - xwhu@novell.com
+
+- Upgrade to 2.0.39
+  Fix up cache for PVs without mdas after consistent VG metadata is processed.
+  Update validation of safe mirror log type conversions in lvconvert.
+  Fix lvconvert to disallow snapshot and mirror combinations.
+  Fix reporting of LV fields alongside unallocated PV segments.
+  Add --unquoted and --rows to reporting tools.
+  Avoid undefined return value after _memlock manipulation in lvm2_run.
+  Avoid link failure if configured without --enable-cmdlib or --enable-readline.
+  Make clvmd return at once if other nodes down in a gulm or openais cluster.
+  Fix and improve readahead 'auto' calculation for stripe_size.
+  Fix lvchange output for -r auto setting if auto is already set.
+  Fix ambiguous use of identifier error_message_produced.
+  Fix add_mirror_images not to dereference uninitialized log_lv upon failure.
+  Don't call openlog for every debug line output by clvmd.
+  Add --force to lvextend and lvresize.
+  Fix vgchange to not activate mirror leg and log volumes directly.
+  Fix test directory clean up in make distclean.
+- pvcreate/pvremove/pvchange will create symlinks in /dev/disk/by-id/ 
+  to the device file
+-------------------------------------------------------------------
+Wed Sep  3 11:09:34 CEST 2008 - hare@suse.de
+
+- Call mkinitrd_setup during %post and %postun (bnc#413709)
+
+-------------------------------------------------------------------
+Tue Sep  2 16:59:00 CEST 2008 - hare@suse.de
+
+- Fix initrd scripts if no 'root=' parameter is given
+  (bnc#421546)
+
+-------------------------------------------------------------------
+Mon Aug 25 12:49:58 CEST 2008 - aj@suse.de
+
+- Provide and obsolete evms.
+
+-------------------------------------------------------------------
+Mon Aug 25 12:04:29 CEST 2008 - prusnak@suse.cz
+
+- enabled SELinux support [Fate#303662]
+
+-------------------------------------------------------------------
+Fri Aug 22 12:58:08 CEST 2008 - xwhu@suse.de
+
+- Remove the -p option for fillup_and_insserv 
+
+-------------------------------------------------------------------
+Wed Aug 13 06:18:44 CEST 2008 - xwhu@suse.de
+
+- Add Should-Stop to boot.lvm 
+
+-------------------------------------------------------------------
+Thu Jul 31 16:13:59 CST 2008  - xwhu@suse.de
+
+- repack LVM2.2.02.38.tar.bz2 into bz2 format
+
+-------------------------------------------------------------------
+Wed Jul 23 15:38:13 CEST 2008 - hare@suse.de
+
+- Include mkinitrd scriptlets.
+
+-------------------------------------------------------------------
+Fri Jun 27 07:51:31 CEST 2008 - xwhu@suse.de
+
+- update to 2.02.38
+  Fix tracking of validity of PVs with no mdas in lvmcache.
+  Fix return values for reporting commands when run with no PVs, LVs, or VGs.
+  Fix free_count when reading pool metadata.
+  Fix segfault when using pvcreate on a device containing pool metadata.
+  Fix segfault after _free_vginfo by remembering to remove vginfo from list.
+  Fix setpriority error message to signed int.
+  Fix uninitialised mutex in clvmd if all daemons are not running at startup.
+  Fix fsadm.sh to work with older blockdev, blkid & readlink binaries.
+  Fix lvresize to pass new size to fsadm when extending device.
+  Fix nodes list in clvmd-openais, and allow for broadcast messages.
+  Fix vgsplit internal counting of snapshot LVs.
+  Fix vgmerge snapshot_count when source VG contains snapshots.
+  Fix internal LV counter when a snapshot is removed.
+  Fix metadata corruption writing lvm1-formatted metadata with snapshots.
+  Fix lvconvert -m0 allocatable space check.
+  Fix vgdisplay 'Cur LV' field to match lvdisplay output.
+  Fix lv_count report field to exclude hidden LVs.
+  Fix vgsplit to only move hidden 'snapshotN' LVs when necessary.
+  Fix vgreduce to use vg_split_mdas to check sufficient mdas remain.
+  Fix orphan VG name used for format_pool.
+  Fix output if overriding command_names on cmdline.
+  Fix vgsplit locking of new VG (2.02.30).
+  Fix redundant lvresize message if vg doesn't exist.
+  Fix another allocation bug with clvmd and large node IDs.
+  Fix uninitialised variable in clvmd that could cause odd hangs.
+  
+-------------------------------------------------------------------
+Mon May  5 11:19:29 CEST 2008 - aj@suse.de
+
+- Fix requires of clvm.
+
+-------------------------------------------------------------------
+Wed Apr 30 12:17:29 CEST 2008 - hare@suse.de
+
+- Fixup build errors
+
+-------------------------------------------------------------------
+Wed Apr 30 09:22:55 CEST 2008 - xwhu@suse.de
+
+- Cleanup clvmd code on openais stack to make it work
+- Split clvmd into a separate package (bnc#384708)
+
+-------------------------------------------------------------------
+Wed Apr 23 12:16:22 CEST 2008 - xwhu@suse.de
+
+- Change async lock primitives to sync 
+
+-------------------------------------------------------------------
+Wed Apr 23 07:29:12 CEST 2008 - xwhu@suse.de
+
+- Fix build aginst beta
+  definition of PIPE_BUF is missing
+
+-------------------------------------------------------------------
+Tue Apr 22 10:47:17 CEST 2008 - xwhu@suse.de
+
+- Enable CLVM support in LVM2 
+
+-------------------------------------------------------------------
+Wed Feb 20 11:47:30 CET 2008 - fehr@suse.de
+
+- allow large minor number on command line with option --minor
+  (bnc#362960)
+  
+-------------------------------------------------------------------
+Wed Feb 13 14:11:32 CET 2008  - fehr@suse.de
+ 
+- update to new version 2.02.33
+  Fix mirror log name construction during lvconvert. (2.02.30)
+  Make monitor_dev_for_events recurse through the stack of LVs.
+  Clean up some more compiler warnings.
+
+-------------------------------------------------------------------
+Thu Feb  7 08:59:16 CET 2008 - hare@suse.de
+
+- Enable dmeventd (FATE#303381)
+
+-------------------------------------------------------------------
+Thu Jan 31 12:01:35 CET 2008  - fehr@suse.de
+ 
+- update to new version 2.02.32
+  Fix two check_lv_segments error messages to show whole segment
+  Refactor mirror log attachment code
+  Fix pvs, vgs, lvs error exit status on some error paths
+  Avoid readahead error message with default setting of lvcreate -M1
+  Set default readahead to twice maximium stripe size
+  Reinstate VG extent size and stripe size defaults (halved)
+  Change vgsplit -l (for unimplemented --list) into --maxlogicalvolumes
+  Fix process_all_pvs to detect non-orphans with no MDAs correctly
+  Don't use block_on_error with mirror targets version 1.12 and above
+  Update vgsplit to accept vgcreate options when new VG is destination
+  Update vgsplit to accept existing VG as destination
+  lvconvert waits for completion of initial sync by default
+  Refactor vgcreate for parameter validation and add tests
+  Add new convert_lv field to lvs output
+  Print warning when lvm tools are running as non-root
+  Prevent pvcreate from overwriting MDA-less PVs belonging to active VGs
+  Fix a segfault if using pvs with --all argument
+  Update --uuid argument description in man pages
+  Fix vgreduce PV list processing not to process every PV in the VG
+  Extend lvconvert to use polldaemon
+  Add support for stacked mirrors
+  Major restructuring of pvmove and lvconvert layer manipulation code
+
+-------------------------------------------------------------------
+Mon Dec 10 12:29:12 CET 2007  - fehr@suse.de
+ 
+- update to new version 2.02.29
+  Accept sizes with --readahead argument.
+  Store size arguments as sectors internally.
+  Attempt to remove incomplete LVs with lvcreate zeroing/activation problems.
+  Add read_ahead activation code.
+  Extend readahead arg to accept "auto" and "none".
+  Prevent lvconvert -s from using same LV as origin and snapshot.
+  Fix human-readable output of odd numbers of sectors.
+  Show 'not usable' space when PV is too large for device in pvdisplay.
+  Ignore and fix up any excessive device size found in metadata.
+  Detect md superblocks version 1.0, 1.1 and 1.2.
+  Handle new sysfs subsystem/block/devices directory structure.
+  Add %PVS extents option to lvresize, lvextend, and lvcreate.
+  Modify lvremove to prompt for removal if LV active on other cluster nodes.
+  Add '-f' to vgremove to force removal of VG even if LVs exist.
+
+-------------------------------------------------------------------
+Thu Nov 22 14:49:39 CET 2007  - fehr@suse.de
+ 
+- adapt man page for pvdisplay to program (#342862)
+- fix spec file to detect path to modprobe binary (#331968)
+ 
+-------------------------------------------------------------------
+Thu Nov 22 12:44:16 CET 2007  - fehr@suse.de
+
+- update to new version 2.02.28
+  Fix inconsistent licence notices: executables are GPLv2; libraries LGPLv2.1.
+  Add support for renaming mirrored LVs.
+  Add --mirrorlog argument to specify log type for mirrors.
+  Fix lvdisplay man page to say LV size is reported in sectors, not KB.
+  Fix snapshot cow area deactivation if origin is not active.
+  Add vg_mda_count and pv_mda_count columns to reports.
+  Handle vgsplit of an entire VG as a vgrename.
+  Print warnings to stderr instead of stdout.
+  Update vgcfgrestore man page.
+  Allow keyboard interrupt during user prompts when appropriate.
+  Add -f to vgcfgrestore to list metadata backup files.
+  Add pvdisplay --maps implementation.
+  Remove unsupported LVM1 options from vgcfgrestore man page.
+  Update vgcfgrestore man page to show mandatory VG name.
+  Update vgrename man page to include UUID and be consistent with lvrename.
+
+-------------------------------------------------------------------
+Mon May  7 14:02:16 CEST 2007 - fehr@suse.de
+
+- update to new version 2.02.25
+  Add devices/preferred_names config regex list for displayed device names
+  Update pvck to include text metadata area and record detection
+  Fix creation and conversion of mirrors with tags
+  Fix vgsplit for lvm1 format (set and validate VG name in PVs metadata)
+  Split metadata areas in vgsplit properly
+  Fix vgremove to require at least one vg argument
+  Fix reading of striped LVs in LVM1 format
+  Fix vgsplit to handle mirrors
+  Fix md signature check to handle both endiannesses
+  Add devices/ignore_suspended_devices to ignore suspended dm devices
+
+-------------------------------------------------------------------
+Tue Feb 20 16:57:34 CET 2007  - fehr@suse.de
+
+- add boot.dmraid to Should-Start in boot.lvm2
+
+-------------------------------------------------------------------
+Sun Feb 11 18:49:50 CET 2007 - ro@suse.de
+
+- fix build as non-root and use DESTDIR
+
+-------------------------------------------------------------------
+Mon Jan  8 16:15:23 CET 2007  - fehr@suse.de
+
+- fix buggy pointer arithmetic (#232117)
+
+-------------------------------------------------------------------
+Mon Dec 18 10:39:49 CET 2006  - fehr@suse.de
+
+- update to new version 2.02.17
+  Add missing pvremove error message when device doesn't exist.
+  When lvconvert allocates a mirror log, respect parallel area constraints.
+  Use loop to iterate through the now-ordered policy list in _allocate().
+  Check for failure to allocate just the mirror log.
+  Introduce calc_area_multiple().
+  Support mirror log allocation when there is only one PV: area_count now 0.
+  Fix detection of smallest area in _alloc_parallel_area() for cling policy.
+  Add manpage entry for clvmd -T
+  Fix gulm operation of clvmd, including a hang when doing lvchange -aey
+  Fix hang in clvmd if a pre-command failed.
+
+-------------------------------------------------------------------
+Wed Dec  6 10:07:57 CET 2006  - fehr@suse.de
+
+- update to new version 2.02.16 
+  Fix VG clustered read locks to use PR not CR.
+  Adjust some alignments for ia64/sparc.
+  Fix mirror segment removal to use temporary error segment.
+  Add -T (startup timeout) switch to clvmd.
+  Install lvmdump by default.
+  Fix check for snapshot module when activating snapshot.
+  Fix pvremove error path for case when PV is in use.
+  Warn if certain duplicate config file entries are seen.
+  Fix --autobackup argument which could never disable backups.
+  Fix a label_verify error path.
+  Fix adjusted_mirror_region_size() to handle 64-bit size.
+  Add some missing bounds checks on 32-bit extent counters.
+  Add Petabyte and Exabyte support.
+  Fix lvcreate error message when 0 extents requested.
+  lvremove man page: volumes must be cluster inactive before being removed.
+  Protect .cache manipulations with fcntl locking.
+  Change .cache timestamp comparisons to use ctime.
+  Fix mirror log LV writing to set all bits in whole LV.
+  Fix high-level free space check for partial allocations.
+
+-------------------------------------------------------------------
+Mon Oct 30 12:19:07 CET 2006  - fehr@suse.de
+
+- update to new version 2.02.13 to finally fix bug #178321
+  Add couple of missing files to tools/Makefile CLEAN_TARGETS.
+  When adding snapshot leave cow LV mapped device active after zeroing.
+  Fix a clvmd debug message.
+  Add dev_flush() to set_lv().
+  Add lvchange --resync.
+  Perform high-level free space check before each allocation attempt.
+  Don't allow a node to remove an LV that's exclusively active on anther node.
+  Cope if same PV is included more than once in cmdline PE range list.
+  Set PV size to current device size if it is found to be zero.
+  Add segment parameter to target_present functions.
+
+-------------------------------------------------------------------
+Tue Oct 17 10:55:33 CEST 2006 - fehr@suse.de
+
+- update to new version 2.02.12
+  Fix pvdisplay to use vg_read() for non-orphans.
+  Fall back to internal locking if external locking lib is missing or fails.
+  Retain activation state after changing LV minor number with --force.
+  Propagate clustered flag in vgsplit and require resizeable flag.
+  Add clvmd function to return the cluster name. not used by LVM yet.
+  Add cling allocation policy.
+  Change _check_contiguous() to use _for_each_pv().
+  Extend _for_each_pv() to allow termination without error.
+  Abstract _is_contiguous().
+  Remove duplicated pv arg from _check_contiguous().
+  Accept regionsize with lvconvert.
+  Add report columns with underscore before field names ending 'size'.
+  Correct regionsize default on lvcreate man page (MB).
+  Fix clvmd bug that could cause it to die when a node with a long name crashed
+  Add device size to text metadata.
+  Fix format_text mda_setup pv->size and pv_setup pe_count calculations.
+  Fix _for_each_pv() for mirror with core log.
+  Add lvm_dump.sh script to create a tarball of debugging info from a system.
+  Capture error messages in clvmd and pass them back to the user.
+  Remove unused #defines from filter-md.c.
+  Make clvmd restart init script wait until clvmd has died before starting it.
+  Add -R to clvmd which tells running clvmds to reload their device cache.
+  Add LV column to reports listing kernel modules needed for activation.
+  Show available fields if report given invalid field. (e.g. lvs -o list)
+  Add timestamp functions with --disable-realtime configure option.
+  Add %VG, %LV and %FREE suffices to lvcreate/lvresize --extents arg.
+  Fix two potential NULL pointer derefs in error cases in vg_read().
+  Separate --enable-cluster from locking lib options in lvmconf.sh.
+  Add a missing comma in lvcreate man page.
+
+-------------------------------------------------------------------
+Wed Sep 20 13:26:58 CEST 2006 - fehr@suse.de
+
+- update to new version 2.02.10
+  Fix lvconvert mirror change case detection logic.
+  Fix mirror log detachment so it correctly becomes a standalone LV.
+  Extend _check_contiguous() to detect single-area LVs.
+  Include mirror log (untested) in _for_each_pv() processing.
+  Use MIRROR_LOG_SIZE constant.
+  Remove struct seg_pvs from _for_each_pv() to generalise.
+  Avoid adding duplicates to list of parallel PVs to avoid.
+  Fix several incorrect comparisons in parallel area avoidance code.
+  Fix segment lengths when flattening existing parallel areas.
+  Log existing parallel areas prior to allocation.
+  Fix mirror log creation when activation disabled.
+  Don't attempt automatic recovery without proper locking.
+  When using local file locking, skip clustered VGs.
+  Add fallback_to_clustered_locking and fallback_to_local_locking parameters.
+  lvm.static uses built-in cluster locking instead of external locking.
+  Don't attempt to load shared libraries if built statically.
+  Change default locking_lib to liblvm2clusterlock.so.
+  Add skip_dev_dir() to process command line VGs.
+  Stop clvmd complaining about nodes that have left the cluster.
+  Move lvm_snprintf(), split_words() and split_dm_name() into libdevmapper.
+  Add lvconvert man page.
+  Add mirror options to man pages.
+  Prevent mirror renames.
+  Move CMDLIB code into separate file and record whether static build.
+
+-------------------------------------------------------------------
+Wed Sep 13 13:00:55 CEST 2006 - fehr@suse.de
+
+- change BuildRequires to device-mapper-devel
+
+-------------------------------------------------------------------
+Mon Aug 21 12:26:17 CEST 2006 - fehr@suse.de
+
+- update to new version 2.02.09
+  Fix PE_ALIGN for pagesize over 32KB.
+  Separate out LVM1_PE_ALIGN and pe_align().
+  Add lvm_getpagesize wrapper.
+  Add --maxphysicalvolumes to vgchange.
+
+-------------------------------------------------------------------
+Wed Aug 16 11:16:13 CEST 2006 - fehr@suse.de
+
+- update to new version 2.02.08
+  Add checks for duplicate LV name, lvid and PV id before writing metadata.
+  Report all sanity check failures, not just the first.
+  Fix missing lockfs on first snapshot creation. (#197850)
+  Add unreliable --trustcache option to reporting commands.
+  Fix locking for mimage removal.
+  Fix clvmd_init_rhel4 'status' exit code.
+
+-------------------------------------------------------------------
+Fri Jul 28 13:05:38 CEST 2006 - olh@suse.de
+
+- remove dropped boot.ibmsis from boot.lvm
+- boot.rootfsck should start before boot.lvm (#181972)
+
+-------------------------------------------------------------------
+Wed Jul 26 16:34:45 CEST 2006 - fehr@suse.de
+
+- update to new version 2.02.06
+  Fix activation logic in lvchange --persistent.
+  Don't ignore persistent minor numbers when activating.
+  Fix vgreduce --removemissing to return success if VG is already consistent.
+  Fix return code if VG specified on command line is not found.
+  Fix PV tools to include orphaned PVs in default output again.
+  Prevent snapshots of mirrors.
+  Fix lvcreate corelog validation.
+  Add --config for overriding most config file settings from cmdline.
+  Quote arguments when printing command line.
+  Remove linefeed from 'initialising logging' message.
+  Add 'Completed' debug message.
+  Don't attempt library exit after reloading config files.
+  Always compile with libdevmapper, even if device-mapper is disabled.
+
+-------------------------------------------------------------------
+Mon May 22 17:13:21 CEST 2006 - fehr@suse.de
+
+- update to new version 2.02.06
+  Propagate --monitor around cluster.
+  Add --monitor to vgcreate and lvcreate to control dmeventd registration.
+  Filter LCK_NONBLOCK in clvmd lock_vg.
+  Add --nosync to lvcreate with LV flag NOTSYNCED.
+  Use mirror's uuid for a core log.
+  Add mirror log fault-handling policy.
+  Improve mirror warning messages and tidy dmeventd syslog output.
+  Propagate nosync flag around cluster.
+  Allow vgreduce to handle mirror log failures.
+  Add --corelog to lvcreate and lvconvert.
+  Create a log header for replacement in-sync mirror log.
+  Use set_lv() and dev_set() to wipe sections of devices.
+  Add mirror_library description to example.conf.
+  Fix uuid_from_num() buffer overrun.
+  Increase maximum stripe size limit to physical extent size for lvm2 metadata.
+  Fix activation code to check for pre-existing mirror logs.
+  Ignore empty strings in config files.
+  Require non-zero regionsize and document parameter on lvcreate man page.
+  Invalidate cache if composition of VG changed externally.
+
+-------------------------------------------------------------------
+Wed Apr 26 10:01:52 CEST 2006 - hare@suse.de
+
+- add LVM_DEVICE_TIMEOUT sysconfig variable to make sure
+  udev has finished processing (#149979)
+- Fix init script dependencies
+  
+-------------------------------------------------------------------
+Mon Apr 24 18:32:56 CEST 2006 - fehr@suse.de
+
+- update to new version 2.02.05
+  Fix vgid string termination in recent cache code
+
+-------------------------------------------------------------------
+Thu Apr 20 17:11:07 CEST 2006 - fehr@suse.de
+
+- update to new version 2.02.04
+  Check for libsepol.
+  Add some cflow & scope support.
+  Separate out DEFS from CFLAGS.
+  Remove inlines and use unique function names.
+
+-------------------------------------------------------------------
+Wed Apr 19 09:48:51 CEST 2006 - fehr@suse.de
+
+- update to new version 2.02.03
+  vgrename accepts vgid and exported VG.
+  Add --partial to pvs.
+  When choosing between identically-named VGs, also consider creation_host.
+  Provide total log suppression with 2.
+  Fix vgexport/vgimport to set/reset PV exported flag so pv_attr is correct.
+  Add vgid to struct physical_volume and pass with vg_name to some functions.
+  If two or more VGs are found with the same name, use one that is not exported.
+  Whenever vgname is captured, also capture vgid and whether exported.
+  Remove an incorrect unlock_vg() from process_each_lv().
+  Update extent size information in vgchange and vgcreate man pages.
+  Introduce origin_from_cow() and lv_is_visible().
+  pvremove without -f now fails if there's no PV label.
+  Support lvconvert -s.
+  Suppress locking library load failure message if --ignorelockingfailure.
+  Propagate partial mode around cluster.
+  Fix archive file expiration.
+  Fix dmeventd build.
+  clvmd now uses libcman rather than cman ioctls.
+  clvmd will allow new cman to shutdown on request.
+
+-------------------------------------------------------------------
+Thu Apr  6 15:57:04 CEST 2006 - fehr@suse.de
+
+- add option --mknodes to vgscan call in /etc/init.d/boot.lvm to
+  avoid potential inconsistencies in minor number of dm devices after
+  reboot when root fs is LVM LV (#139740)
+    
+-------------------------------------------------------------------
+Tue Mar 14 11:25:42 CET 2006 - fehr@suse.de
+
+- update to new version 2.02.02
+  Add %.so: %.a make template rule.
+  Switchover library building to use LIB_SUFFIX.
+  Only do lockfs filesystem sync when suspending snapshots.
+  Always print warning if activation is disabled.
+  vgreduce removes mirror images.
+  Add --mirrorsonly to vgreduce.
+  vgreduce replaces active LVs with error segment before removing them.
+  Set block_on_error parameter if available.
+  Add target_version.
+  Add details to format1 'Invalid LV in extent map' error message.
+  Fix lvscan snapshot full display.
+  Bring lvdisplay man page example into line.
+  Add mirror dmeventd library.
+  Add some activation logic to remove_mirror_images().
+  lvconvert can remove specified PVs from a mirror.
+  lvconvert turns an existing LV into a mirror.
+  Allow signed mirrors arguments.
+  Move create_mirror_log() into toollib.
+  Determine parallel PVs to avoid with ALLOC_NORMAL allocation.
+  Fix lv_empty.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:06 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec 19 11:19:41 CET 2005  - fehr@suse.de
+
+- add new binary /sbin/lvconvert to file list
+
+-------------------------------------------------------------------
+Tue Dec 13 13:09:21 CET 2005  - fehr@suse.de
+
+- add patch lvm-lock.diff to fix bug #138128
+
+-------------------------------------------------------------------
+Tue Dec  6 16:10:12 CET 2005  - fehr@suse.de
+
+- update to new version 2.02.01
+
+-------------------------------------------------------------------
+Tue Nov  8 12:05:32 CET 2005  - fehr@suse.de
+
+- add fix_striped_old_format.diff to allow striped volumes with
+  old metadata format (#130433)
+- add fix_dm_as_pv.diff to allow usage of dm devices as PVs (#129960)
+
+-------------------------------------------------------------------
+Mon Oct 17 12:38:18 CEST 2005 - fehr@suse.de
+
+- update to new version 2.01.15
+
+-------------------------------------------------------------------
+Mon Sep 26 13:39:41 CEST 2005 - fehr@suse.de
+
+- fix bug in pvscan.c with PVs larger than 2TB in VGs 
+
+-------------------------------------------------------------------
+Thu Aug  4 14:49:51 CEST 2005 - fehr@suse.de
+
+- update to new version 2.01.14
+
+-------------------------------------------------------------------
+Mon Jul 18 19:05:08 CEST 2005 - fehr@suse.de
+
+- update to new version 2.01.13
+
+-------------------------------------------------------------------
+Thu Jun 16 10:21:03 CEST 2005 - fehr@suse.de
+
+- update to new version 2.01.12
+
+-------------------------------------------------------------------
+Wed Jun 15 13:36:23 CEST 2005 - meissner@suse.de
+
+- add libselinux to nfb to enable selinux support.
+- use RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Tue Jun 14 10:55:51 CEST 2005 - fehr@suse.de
+
+- update to new version 2.01.11
+
+-------------------------------------------------------------------
+Wed May  4 11:01:23 CEST 2005 - fehr@suse.de
+
+- update to new version 2.01.10
+
+-------------------------------------------------------------------
+Mon Apr 11 12:43:23 CEST 2005 - fehr@suse.de
+
+- use -y instead of -Y in options for call to fillup_and_insserv 
+  (#76689)
+- update to new version 2.01.09
+
+-------------------------------------------------------------------
+Wed Mar  9 11:12:58 CET 2005 - fehr@suse.de
+
+- update to new version 2.01.07
+
+-------------------------------------------------------------------
+Mon Mar  7 12:03:14 CET 2005 - fehr@suse.de
+
+- update to new version 2.01.06
+
+-------------------------------------------------------------------
+Thu Feb 10 16:28:53 CET 2005 - fehr@suse.de
+
+- update to new version 2.01.04
+
+-------------------------------------------------------------------
+Wed Feb  2 13:01:12 CET 2005 - fehr@suse.de
+
+- update to new version 2.01.03
+
+-------------------------------------------------------------------
+Mon Jan 24 12:08:59 CET 2005 - fehr@suse.de
+
+- update to new version 2.01.02
+
+-------------------------------------------------------------------
+Thu Jan 20 14:48:58 CET 2005 - fehr@suse.de
+
+- update to new version 2.01.01
+
+-------------------------------------------------------------------
+Wed Jan 19 11:13:53 CET 2005 - fehr@suse.de
+
+- update to new version 2.01.00
+
+-------------------------------------------------------------------
+Tue Jan 11 17:41:04 CET 2005 - fehr@suse.de
+
+- update to new version 2.00.33
+
+-------------------------------------------------------------------
+Wed Jan 05 12:33:00 CET 2005 - arvin@suse.de
+
+- update to new version 2.00.32
+
+-------------------------------------------------------------------
+Fri Dec 17 10:12:03 CET 2004 - arvin@suse.de
+
+- fixed -s option of vgdisplay (bug #49177)
+
+-------------------------------------------------------------------
+Mon Nov 29 13:01:31 CET 2004  - fehr@suse.de
+
+- update to new version 2.00.29
+
+-------------------------------------------------------------------
+Thu Nov 25 11:39:49 CET 2004  - fehr@suse.de
+
+- update to new version 2.00.27
+
+-------------------------------------------------------------------
+Wed Nov 24 12:40:10 CET 2004  - fehr@suse.de
+
+- update to new version 2.00.26
+
+-------------------------------------------------------------------
+Wed Sep 29 17:24:52 CEST 2004 - fehr@suse.de
+
+- update to new version 2.00.25
+
+-------------------------------------------------------------------
+Wed Sep 22 17:40:28 CEST 2004 - fehr@suse.de
+
+- prevent buggy macro for MAJOR in kdev_t.h creep into code via
+  include of linux/fs.h
+
+-------------------------------------------------------------------
+Mon Sep 20 11:45:30 CEST 2004 - fehr@suse.de
+
+- update to new version 2.00.24
+
+-------------------------------------------------------------------
+Thu Sep 16 15:03:58 CEST 2004 - fehr@suse.de
+
+- update to new version 2.00.23
+
+-------------------------------------------------------------------
+Mon Sep  6 12:09:54 CEST 2004 - fehr@suse.de
+
+- update to new version 2.00.22
+
+-------------------------------------------------------------------
+Mon Aug 23 12:46:37 CEST 2004 - fehr@suse.de
+
+- update to new version 2.00.21
+- new version obsoletes lvm2-vgscan.patch
+
+-------------------------------------------------------------------
+Wed Jul 14 15:21:48 CEST 2004 - fehr@suse.de
+
+- update to new version 2.00.20
+
+-------------------------------------------------------------------
+Mon Jun  7 11:45:15 CEST 2004 - fehr@suse.de
+
+- update to new version 2.00.16
+- add forgotten patch no-inc-audit.diff needed for STABLE
+
+-------------------------------------------------------------------
+Mon May 24 14:14:37 CEST 2004 - fehr@suse.de
+
+- update to new version 2.00.15 to fix bug #41020
+
+-------------------------------------------------------------------
+Mon May 24 08:31:31 CEST 2004 - hare@suse.de
+
+- Fixed vgscan on S/390 (readdir returned DT_UNKNOWN)
+
+-------------------------------------------------------------------
+Thu May 13 17:49:47 CEST 2004 - fehr@suse.de
+
+- ignore udev names in default configuration to prevent yast2
+  confusion (#36869)
+
+-------------------------------------------------------------------
+Mon Apr 19 18:09:49 CEST 2004 - fehr@suse.de
+
+- accept additional devices (IDE->64, iseries/vd->8, #39114)
+
+-------------------------------------------------------------------
+Thu Apr  1 10:28:39 CEST 2004 - fehr@suse.de
+
+- update to new version 2.00.09 (fixes #34657 and #36877)
+
+-------------------------------------------------------------------
+Tue Mar  2 02:03:07 CET 2004 - ro@suse.de
+
+- boot.lvm: root-fs is mounted-rw by boot.rootfsck
+
+-------------------------------------------------------------------
+Thu Feb 26 20:14:53 CET 2004  - fehr@suse.de
+
+- skip cdroms and device with zero size on probing
+
+-------------------------------------------------------------------
+Wed Feb  4 10:58:46 CET 2004  - fehr@suse.de
+
+- update to new version 2.00.08
+- now lvm2 obsoletes lvm
+
+-------------------------------------------------------------------
+Thu Sep 18 13:05:20 CEST 2003 - fehr@suse.de
+
+- fix boot.lvm to cope with LABEL= and UUID= in /etc/fstab
+  also check reiser filesystem (#31060)
+
+-------------------------------------------------------------------
+Wed Sep 17 16:20:18 CEST 2003 - fehr@suse.de
+
+- update to new version 2.00.07
+
+-------------------------------------------------------------------
+Thu Aug 21 10:00:04 CEST 2003 - fehr@suse.de
+
+- update to new version 2.00.06
+
+-------------------------------------------------------------------
+Mon Aug 18 17:41:31 CEST 2003 - garloff@suse.de
+
+- (#29083) Add # X-UnitedLinux-Should-Start: boot.scsidev
+
+-------------------------------------------------------------------
+Tue Jul  1 16:13:06 CEST 2003 - fehr@suse.de
+
+- created initial version of a SuSE package
+
+-------------------------------------------------------------------

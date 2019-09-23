@@ -1,0 +1,41 @@
+Author: Reiner Herrmann <reiner@reiner-h.de>
+Description: Support SOURCE_DATE_EPOCH for timestamps
+ To allow generating documents in a reproducible way,
+ allow overriding the timestamp through the environment.
+ .
+ See also: https://reproducible-builds.org/specs/source-date-epoch/
+Bug-Debian: https://bugs.debian.org/800797
+
+Index: docbook-utils-0.6.14/helpers/docbook2man-spec.pl
+===================================================================
+--- docbook-utils-0.6.14.orig/helpers/docbook2man-spec.pl
++++ docbook-utils-0.6.14/helpers/docbook2man-spec.pl
+@@ -57,6 +57,7 @@ Software Foundation, 675 Mass Ave, Cambr
+ use SGMLS;			# Use the SGMLS package.
+ use SGMLS::Output;		# Use stack-based output.
+ use SGMLS::Refs;
++use POSIX qw(strftime setlocale LC_TIME);
+ 
+ ########################################################################
+ # SGMLSPL script produced automatically by the script sgmlspl.pl
+@@ -279,6 +280,11 @@ sgml('</REFMETA>', sub {
+ _END_BANNER
+ 
+ 	my $manpage_date = `date "+%d %B %Y"`;
++	if ($ENV{SOURCE_DATE_EPOCH}) {
++		setlocale(LC_TIME, "C");
++		$manpage_date = strftime("%d %B %Y", gmtime($ENV{SOURCE_DATE_EPOCH} || time));
++	}
++
+ 		
+ 	output '.TH "';
+ 	
+@@ -292,7 +298,7 @@ _END_BANNER
+ 	}
+ 	
+ 	output  '" "', fold_string($manpage_sect), 
+-		'" "', fold_string(`date "+%d %B %Y"`), 
++		'" "', fold_string($manpage_date), 
+ 		'" "', $manpage_misc, 
+ 		'" "', $manpage_manual, 
+ 		"\"\n";

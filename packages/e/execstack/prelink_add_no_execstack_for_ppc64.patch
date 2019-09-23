@@ -1,0 +1,43 @@
+From: Michel Normand <normand@linux.vnet.ibm.com>
+Subject: prelink add no execstack for ppc64
+Date: Fri, 27 Nov 2015 18:37:37 +0100
+
+prelink add no execstack for ppc64
+
+Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
+---
+ src/Makefile.am |    1 +
+ src/Makefile.in |    2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+Index: prelink-4c79120bcdbde0616f592458ccde7035e92ca3d8/src/Makefile.am
+===================================================================
+--- prelink-4c79120bcdbde0616f592458ccde7035e92ca3d8.orig/src/Makefile.am
++++ prelink-4c79120bcdbde0616f592458ccde7035e92ca3d8/src/Makefile.am
+@@ -25,5 +25,6 @@ prelink_LDADD = @LIBGELF@
+ prelink_LDFLAGS = -all-static
+ 
+ execstack_SOURCES = execstack.c $(common_SOURCES) $(arch_SOURCES)
++execstack_LDFLAGS = -z noexecstack
+ 
+ extra_DIST = makecrc.c
+Index: prelink-4c79120bcdbde0616f592458ccde7035e92ca3d8/src/Makefile.in
+===================================================================
+--- prelink-4c79120bcdbde0616f592458ccde7035e92ca3d8.orig/src/Makefile.in
++++ prelink-4c79120bcdbde0616f592458ccde7035e92ca3d8/src/Makefile.in
+@@ -123,6 +123,7 @@ prelink_LDADD = @LIBGELF@
+ prelink_LDFLAGS = -all-static
+ 
+ execstack_SOURCES = execstack.c $(common_SOURCES) $(arch_SOURCES)
++execstack_LDFLAGS = -z noexecstack
+ 
+ extra_DIST = makecrc.c
+ subdir = src
+@@ -147,7 +148,6 @@ am_execstack_OBJECTS = execstack.$(OBJEX
+ execstack_OBJECTS = $(am_execstack_OBJECTS)
+ execstack_LDADD = $(LDADD)
+ execstack_DEPENDENCIES =
+-execstack_LDFLAGS =
+ am_prelink_OBJECTS = cache.$(OBJEXT) conflict.$(OBJEXT) cxx.$(OBJEXT) \
+ 	doit.$(OBJEXT) exec.$(OBJEXT) execle_open.$(OBJEXT) \
+ 	get.$(OBJEXT) gather.$(OBJEXT) layout.$(OBJEXT) main.$(OBJEXT) \

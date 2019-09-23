@@ -1,0 +1,12 @@
+Index: bundler-1.15.2/bundler-1.15.2.gemspec
+===================================================================
+--- bundler-1.15.2.orig/bundler-1.15.2.gemspec
++++ bundler-1.15.2/bundler-1.15.2.gemspec
+@@ -47,5 +47,7 @@ Gem::Specification.new do |s|
+     s.add_dependency(%q<ronn>, ["~> 0.7.3"])
+     s.add_dependency(%q<rspec>, ["~> 3.5"])
+   end
++  # remove pem files
++  s.files.select! { |file| !file.end_with?('.pem') }
+ end
+ 

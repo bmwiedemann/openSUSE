@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Mon Mar  4 10:41:49 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.5:
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * make sure filename is a regular file.
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
+Fri Apr 24 14:38:54 UTC 2015 - sndirsch@suse.com
+
+- Update to version 1.0.4:
+  * Close file leak when fdopen() fails in OpenFile()
+  * Convert sprintf calls to snprintf
+  * config: Add missing AC_CONFIG_SRCDIR
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Const cleanup
+  * unifdef -UNOTDEF -UNOTUSED
+  * Remove #if 0 code
+  * Combine usage message strings
+  * Remove CVS/RCS $Id tags
+  * Use SEEK_* names instead of raw numbers for fseek whence argument
+
+-------------------------------------------------------------------
+Sat Jan 19 10:59:39 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.3:
+  + config:
+    - Replace deprecated AM_CONFIG_HEADER with AC_CONFIG_HEADERS.
+    - Replace deprecated AC_HELP_STRING with AS_HELP_STRING.
+    - Use AC_PROG_INSTALL now supplied by XORG_DEFAULT_OPTIONS.
+    - Move man pages into their own directory.
+  + man:
+    - Replace hard coded man page section with substitution strings
+    - Remove trailing spaces and tabs.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xditview from xorg-x11. Initial version: 1.0.2.
+

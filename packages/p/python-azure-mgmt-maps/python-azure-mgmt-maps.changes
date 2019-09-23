@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Fri Apr 12 12:30:41 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Bump minimum version for namespace packages
+  to 3.0.0 in BuildRequires and Requires
+- Remove python-devel package from BuildRequires
+- Run fdupes to hardlink duplicate files
+  + Add fdupes to BuildRequires
+  + Add %fdupes invocation to %install
+
+-------------------------------------------------------------------
+Tue Sep  4 11:39:58 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.1.0
+- Add patch to drop compatible releases operator from setup.py,
+  required for SLES12 as the setuptools version is too old
+  + amm_drop-compatible-releases-operator.patch

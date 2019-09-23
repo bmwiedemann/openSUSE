@@ -1,0 +1,10 @@
+Index: pcsc-lite-1.8.23/src/spy/pcsc-spy
+===================================================================
+--- pcsc-lite-1.8.23.orig/src/spy/pcsc-spy
++++ pcsc-lite-1.8.23/src/spy/pcsc-spy
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python3
+ 
+ """
+ #    Display PC/SC functions arguments

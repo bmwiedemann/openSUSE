@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5b5217c1151f17b938286cbc3f77e8fd</srcmd5>
+    <version>0.2.3</version>
+    <time>1405611086</time>
+    <user>coolo</user>
+    <comment>New package python-raet see http://lists.opensuse.org/opensuse-factory/2014-07/msg00097.html</comment>
+    <requestid>241128</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>06c9bee22de54917fbb3355b462cdb19</srcmd5>
+    <version>0.2.4</version>
+    <time>1405658448</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241380</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>72b9492ce274b33a0aa9d5f493af524a</srcmd5>
+    <version>0.2.12</version>
+    <time>1406785312</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243069</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>72b9492ce274b33a0aa9d5f493af524a</srcmd5>
+    <version>0.2.12</version>
+    <time>1409302976</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>503fe0d88df23df98b71415d7e155cb0</srcmd5>
+    <version>0.3.2</version>
+    <time>1412533883</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253711</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3f289aac837672931463aed922fceba3</srcmd5>
+    <version>0.3.6</version>
+    <time>1414066862</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258056</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>375f1d0ca2785ffe254548e1fa8acbf7</srcmd5>
+    <version>0.4.2</version>
+    <time>1419896994</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266586</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c822118252ee1587e952aefa74190247</srcmd5>
+    <version>0.4.6</version>
+    <time>1422521898</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283250</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>12778bd1d67b9b3d03c68fecfe8b3ee6</srcmd5>
+    <version>0.6.1</version>
+    <time>1425031831</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288010</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f839b7ac5bcc3f8594721fab583a4b77</srcmd5>
+    <version>0.6.3</version>
+    <time>1427445657</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293168</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9e443052d5a73669b443829c692fcf2a</srcmd5>
+    <version>0.6.4</version>
+    <time>1464014425</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397414</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f72fd757341f90afac7bd6e8a662dce9</srcmd5>
+    <version>0.6.8</version>
+    <time>1535367450</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix unittests fix_unittest.patch
+- Run tests
+- Switch to singlespec package
+- Version update to 0.6.8:
+  * Added .veritive flag to RoadStack to enable better control of accepting signed packets
+  * Fixed tabs to spaces
+  * Added newRemote wrapper method aroung RemoteEstate() to allow for custom validation
+  * Fixed some test race timing conditions on faster computer with python3.6
+  * Fixed typo in stacking.py bug
+  * Support for ipv6
+  * More detail in console log messages associated with stale sessions
+  * Fixed to work with python 3.5 withoug simplejson. Removed encoding parameter.
+  * Fixed up unittests
+  * Add local test runners for sub section tests to run part of unit tests
+  * Added requirement of simpljson for python2.6 for object pairs hook</comment>
+    <requestid>628664</requestid>
+  </revision>
+</revisionlist>

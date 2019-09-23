@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>59c944bf745d377e37bee0e2372b29f1</srcmd5>
+    <version>1.0.0</version>
+    <time>1521904460</time>
+    <user>dimstar_suse</user>
+    <comment>A separate package (reasons for the separate packages were discussed
+in [bsc#1083834]) with the unrar_wrapper script that provides a backwards
+compatibility between unrar a unar [fate#323896]</comment>
+    <requestid>589778</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a73e9758edd3648c3f38c7aaa18aaced</srcmd5>
+    <version>1.0.0</version>
+    <time>1522404497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592285</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f00e20b1af0e175f4d3d1c238fcc0a49</srcmd5>
+    <version>1.0.0</version>
+    <time>1523875662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595584</requestid>
+  </revision>
+</revisionlist>

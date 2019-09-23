@@ -1,0 +1,234 @@
+-------------------------------------------------------------------
+Mon Jul 16 14:15:19 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.49:
+  * Fixed compatibility with GLM 0.9.9.0.
+
+-------------------------------------------------------------------
+Tue Jun 12 20:07:31 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.48:
+  * Can now generate logs from git sub module directories.
+  * Fixed building with GLM 0.9.9.
+
+-------------------------------------------------------------------
+Fri Nov 17 12:49:25 UTC 2017 - astieger@suse.com
+
+- gource 0.47:
+  * Fix low mouse movement speed with some mice while repositioning
+    camera
+- includes changes from 0.46:
+  * Add --screen option
+- includes changes from 0.45:
+  * Add --window-position XxY option
+  * Add --frameless option
+  * Add --file-show-filter REGEX option
+  * Add --filename-time and filename-colour options
+  * Improve handling of very low seconds-per-day values
+  * Fix crash when SVN log lacks author information
+  * Additional git log command validation
+  * Allow lower case hex colours in custom logs
+  * Now requires SDL 2 to build
+
+-------------------------------------------------------------------
+Thu Jul 13 09:28:11 UTC 2017 - astieger@suse.com
+
+- update to 0.44:
+  * Fixed crash when taking a screenshot with an odd resolution
+  * Fixed type deduction compilation error with newer versions of GCC
+  * Documentation improvements
+- drop svn-gource, gource has buil-t in svn support
+- drop cvs-exp.pl
+- drop gource-0.43-gcc6.patch, no longer required
+- drop boost_ppc64le.patch, not being built for it
+
+-------------------------------------------------------------------
+Wed Feb  1 10:56:43 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Sat Jul  2 07:29:58 UTC 2016 - i@marguerite.su
+
+- new patch: gource-0.43-gcc6.patch fixes boo#985356
+  * fix no matching function for call to 'max(double,float)'
+
+-------------------------------------------------------------------
+Thu Aug 13 09:50:08 UTC 2015 - dvaleev@suse.com
+
+- Fix boost libdir on ppc64le (boost_ppc64le.patch) 
+
+-------------------------------------------------------------------
+Tue Nov 11 21:08:06 UTC 2014 - andreas.stieger@gmx.de
+
+- gource 0.43:
+  + Updated boost autoconf macros to fix multi-arch detection.
+- includes changes from gource 0.42:
+  + Fixed bzr log command when no start date was specified.
+  + Fixed hg log commit order when date range specified.
+  + Fixed hg log command line on Windows.
+  + Fixed parser bug in date range filtering code.
+- includes changes from gource 0.41:
+  + Multi-monitor support using SDL 2.0 when available.
+  + SDL 1.2 support is deprecated.
+  + Full screen mode now uses desktop resolution by default.
+  + Added --start-date, --stop-date 'YYYY-MM-DD hh:mm:ss' options.
+  + Added --dir-name-depth option.
+  + Changed --file-idle-time default value to 0.
+  + Changed screenshot format to PNG.
+- packaging changes:
+  + update source URL
+  + drop ppc64le.patch, upstream
+  + update and clean up dependencies
+  + build with and use system tinyxml library instead of in-tree
+  + build with SDL2 where available
+
+-------------------------------------------------------------------
+Fri Jan 10 14:58:06 UTC 2014 - dvaleev@suse.com
+
+- Fix boot libdir for ppc64le
+
+- added patches:
+  * ppc64le.patch
+-------------------------------------------------------------------
+Mon Jul 22 13:04:37 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  No indication of licenses that would restrict the GPL-3.0 license to 3
+  only
+
+-------------------------------------------------------------------
+Tue Jul  2 18:52:40 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 0.40
+  * Added caption support.
+  * Improved command line interoperability on Windows.
+  * Fixed directory deletion short circuiting processing
+    the rest of a commit.
+  * Fixed issue loading non-ascii user image filenames on windows.
+  * Ignore UTF-8 byte order mark at the start of lines in custom
+    log files.
+  * Fix to boost macros for Macs and non-GNU systems (mistydemeo).
+  * Autotools improvements (flameeyes).
+
+-------------------------------------------------------------------
+Tue Apr 23 12:53:47 UTC 2013 - bruno@ioda-net.ch
+
+- Added version dependency in spec libboost >= 1.46 
+- Added new dependency glm-devel > 0.9.3 (devel:library:c_c++)
+
+- updated to 0.39
+	Changes since 0.38:
+
+    Fixed blurry non power of 2 logos.
+    File colour changes now supported in custom logs (rmyorston).
+    Fixed building against Boost 1.50 (svenstaro).
+    Updated boost autoconf macros (flameeyes).
+    Autogen script (matthiaskrgr). 
+
+	Changes since 0.37:
+
+    New high quality sprites.
+    Fullscreen toggle with alt + enter.
+    Window is now resizable. -WIDTHxHEIGHT! creates a non-resizable window.
+    Lowered minimum zoom distance.
+    Use AM_CPPFLAGS in Makefile.am to allow passing custom CPPFLAGS.
+    Don't add files that match the path of a known directory.
+    Fixed divide by zero in text shader causing artifacts on some video cards.
+    Recursively search for repository directory when log-format not specified (thanks to Jörg Bachmann for original concept / prototype).
+    New dependency on Boost Filesystem.
+    Doubled the maximum zoom out distance.
+    Allow negative timestamps before 1970 in custom log (artzub).
+    Fix for UTF8-CPP checked.h compilation issue (vszakats).
+    Fixed bug causing missing characters in text.
+    Fixed --highlight-users option not using highlight-colour.
+    highlight-colour default changed to white.
+    Added --selection-colour option (applied to selected users and files).
+    Added --dir-colour option (applied to directories). 
+
+	There are some new dependencies for building this version:
+
+    GLM 0.9.3 (header only library)
+    Boost Filesystem >= 1.46 
+
+-------------------------------------------------------------------
+Fri Nov 11 15:31:01 UTC 2011 - prusnak@opensuse.org
+
+- updated to 0.37
+- drop obsolete patch nonvoid.patch (applied upstream)
+
+-------------------------------------------------------------------
+Fri May 27 15:09:42 UTC 2011 - prusnak@opensuse.org
+
+- merge package from Contrib
+- updated to version 0.34
+- added two extra tools
+
+-------------------------------------------------------------------
+Wed Apr 13 08:12:29 UTC 2011 - asn@cryptomilk.org
+
+- update to version 0.32
+  * Fixed behaviour of user camera tracking.
+  * Added --with-tinyxml option to configure (use the system TinyXML library).
+  * Fixed crash when SVN log entry contains no 'paths' element.
+  * Handle directory deletion (happens in SVN logs).
+
+-------------------------------------------------------------------
+Tue Feb  8 17:03:05 UTC 2011 - asn@cryptomilk.org
+
+- update to version 0.29
+  * SVN built-in support.
+  * cvs2cl log support (cvs-exp support is now deprecated).
+  * Made camera behaviour when zooming and selecting objects more
+    intuitive.
+  * Improved interactive performance.
+  * Added file extension key (--key or toggled with 'K').
+  * Added mouse-over tool tips.
+  * Added --highlight-colour option.
+  * Added --hash-seed option. The S key now randomizes colours.
+  * Added --output-custom-log option.
+  * Exposed --time-scale option (previously only available
+    interactively).
+  * Removed arbitrary 1024 maximum length limit for log lines.
+  * Fixed two file colouring bugs (quoted files from git, period in
+    file path).
+  * Fix handling of avatars for UTF-8 usernames on MACOSX.
+  * Recover from video mode failing to set due to multi-sampling.
+
+- update to version 0.28
+  * Bazaar support for merged commits (Nick Moffit).
+  * C++ efficiency improvements (Oliver Smith).
+  * Improved cvs-exp log compatibility.
+  * Re-show name of user when adding a new action if user is idle.
+  * Added --padding option to control camera view padding.
+  * More accurate camera tracking (tracks the bounding boxes of
+    objects).
+  * Improved automatic rotation logic. 
+
+- update to version 0.27
+  * Config file support (ini style .conf files) has been added. You
+    can convert a gource command line to a conf file with
+    --save-config CONF_FILE.
+  * Automatic camera rotation has been added which makes better use
+    of the screen space.
+  * Support for logos, titles and background images to brand your
+    gource videos.
+  * Take tga screenshots with F12. Combined with the --transparent
+    option you can can use this to make gource decals. 
+
+-------------------------------------------------------------------
+Tue Apr 13 10:05:42 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.26a:
+  * updated to latest version of GL autoconf macros.
+
+-------------------------------------------------------------------
+Fri Apr  2 16:14:00 UTC 2010 - bitshuffler #suse@irc.freenode.org
+
+- Updated to 0.26
+
+-------------------------------------------------------------------
+Sat Dec  5 02:25:38 UTC 2009 - pascal.bleser@opensuse.org
+
+- initial version (0.18)
+

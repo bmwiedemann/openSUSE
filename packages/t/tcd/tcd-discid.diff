@@ -1,0 +1,45 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2013-03-17 16:46:40.000000000 +0100
+
+tcd: resolve crash
+
+The discid is a 32-bit unsigned quantity, but the cddb_discid
+function uses it as signed. If it is negative, the conversion to
+unsigned long can produce a value larger than 0xFFFFFFFF, which would
+cause a stack smash when sprintf was used.
+
+---
+ src/cd-utils.c |    3 ++-
+ src/cddb.c     |    5 ++++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+Index: tcd-2.2.0/src/cd-utils.c
+===================================================================
+--- tcd-2.2.0.orig/src/cd-utils.c
++++ tcd-2.2.0/src/cd-utils.c
+@@ -21,7 +21,8 @@ static int cddb_sum(unsigned int n)
+ 
+ extern unsigned long cddb_discid(const SDL_CD * cdrom)
+ {
+-    int i, t = 0, n = 0;
++    int i, t = 0;
++    uint32_t n = 0;
+     for (i = 0; i < cdrom->numtracks; i++) {
+         n += cddb_sum(cdrom->track[i].offset / CD_FPS);
+     }
+Index: tcd-2.2.0/src/cddb.c
+===================================================================
+--- tcd-2.2.0.orig/src/cddb.c
++++ tcd-2.2.0/src/cddb.c
+@@ -225,7 +225,10 @@ static const char *get_home_dir(void)
+ static char *cddb_filename(unsigned long discid)
+ {
+     char cd_id[9];
+-    sprintf(cd_id, "%08lx", discid);
++    int ret;
++    ret = snprintf(cd_id, sizeof(cd_id), "%08lx", discid);
++    if (ret >= sizeof(cd_id))
++        abort();
+     return concat_strings(get_home_dir(), "/.tcd/", cd_id, NULL);
+ }
+ 

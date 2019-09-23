@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b676cb57ff89510d37f69dc685369990</srcmd5>
+    <version>2.12.2</version>
+    <time>1503592914</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>512436</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>12786f46d429b79e2d8c5089b553bfcc</srcmd5>
+    <version>2.12.2</version>
+    <time>1507755853</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull boost-devel on Factory (bsc#1062774)</comment>
+    <requestid>533434</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>36db18ca7814d001216a33b762d4f10a</srcmd5>
+    <version>2.12.2</version>
+    <time>1508946440</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536290</requestid>
+  </revision>
+</revisionlist>

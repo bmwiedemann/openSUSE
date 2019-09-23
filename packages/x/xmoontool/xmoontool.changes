@@ -1,0 +1,125 @@
+-------------------------------------------------------------------
+Mon Mar  2 15:02:56 UTC 2015 - sfalken@opensuse.org
+
+- Added Categories and GenericName to .desktop to clear
+  brp-check-suse errors 
+
+-------------------------------------------------------------------
+Sat Nov  1 21:47:00 UTC 2014 - crrodriguez@opensuse.org
+
+- Run spec cleaner
+- Switch to individual pkgconfig() build requires
+  instead of using metapackage xorg-x11-devel
+- moontool-22sep94-xorg7.patch extend to avoid overlinking
+  multiple unneeded libraries and fix implicit declarations.
+
+-------------------------------------------------------------------
+Mon Nov  8 14:40:54 UTC 2010 - coolo@novell.com
+
+- remove support for pre-9.1
+
+-------------------------------------------------------------------
+Fri Aug 11 11:56:43 CEST 2006 - lmichnovic@suse.cz
+
+- adjusting paths to omit X11R6 when X.org is 7.x (*xorg7.patch)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:16 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 21 01:30:56 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Fri May  7 12:17:50 CEST 2004 - hmacht@suse.de
+
+- added # norootforbuild in specfile
+- added patch2 to correct filepermissions
+
+-------------------------------------------------------------------
+Fri Aug 15 15:28:04 CEST 2003 - adrian@suse.de
+
+- add desktop file
+
+-------------------------------------------------------------------
+Fri Jan 11 14:37:40 CET 2002 - cihlar@suse.cz
+
+- use %{_lib}
+
+-------------------------------------------------------------------
+Sat Nov  3 17:39:10 CET 2001 - sndirsch@suse.de
+
+- fixed the "Fatal Error!  No visuals that we can use" problem. It
+  is no longer necessary to execute "xmoontool -c" on non-8bit
+  visuals
+
+-------------------------------------------------------------------
+Thu Nov  9 14:49:02 CET 2000 - cihlar@suse.cz
+
+- renamed moontool -> xmoontool
+- uses openmotif now
+- fixed copyright
+
+-------------------------------------------------------------------
+Fri Jul 28 14:41:32 CEST 2000 - bjacke@suse.de
+
+- fixed y2k bug
+
+-------------------------------------------------------------------
+Wed May 17 12:03:48 CEST 2000 - cihlar@suse.cz
+
+- Group sorted 
+
+-------------------------------------------------------------------
+Wed Mar 22 14:56:50 CET 2000 - cihlar@suse.cz
+
+- added BuildRoot 
+
+-------------------------------------------------------------------
+Fri Mar  3 09:45:45 MET 2000 - fehr@suse.de
+
+- move man pages to /usr/share/man
+
+-------------------------------------------------------------------
+Thu Dec  9 16:37:27 MET 1999 - kukuk@suse.de
+
+- Use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Thu Sep 23 12:32:37 CEST 1999 - uli@suse.de
+
+- fixed Makefile for PPC
+
+-------------------------------------------------------------------
+Mon Sep 20 16:03:03 MEST 1999 - uli@suse.de
+
+- no builds with lesstif
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Feb  3 00:37:28 MET 1999 - ro@suse.de
+
+- no m486 on alpha
+
+-------------------------------------------------------------------
+Thu May  7 17:45:06 MEST 1998 - fehr@suse.de
+
+- add library -lXp for Motif 2.1
+
+-------------------------------------------------------------------
+Tue Dec  9 12:01:06 MET 1997 - ro@suse.de
+
+- build static and dynamic version
+
+----------------------------------------------------------------------------
+Wed Oct  8 11:16:36 MEST 1997    - fehr@suse.de
+
+- prepare for automatic build of package
+

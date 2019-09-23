@@ -1,0 +1,182 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c004172faf6e7bc033e5aa36ce9bd651</srcmd5>
+    <version>1.6</version>
+    <time>1326121270</time>
+    <user>coolo</user>
+    <comment>Request to have miniupnpc add to openSUSE:Factory</comment>
+    <requestid>99350</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>016cca4fdb2e7ddcb9a25b91a9d6580d</srcmd5>
+    <version>1.6</version>
+    <time>1329750926</time>
+    <user>coolo</user>
+    <comment>Install headers in the right location (forwarded request 105634 from vuntz)</comment>
+    <requestid>105732</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>016cca4fdb2e7ddcb9a25b91a9d6580d</srcmd5>
+    <version>1.6</version>
+    <time>1340183700</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ac82f5ad972085db374f5bec5ab705bb</srcmd5>
+    <version>1.7</version>
+    <time>1357038069</time>
+    <user>namtrac</user>
+    <comment>- Update to 1.7 version:
+  * Cleanup settings of CFLAGS in Makefile
+  * Fix signed/unsigned integer comparaisons
+  * Allow to specify protocol with TCP or UDP for -A option
+  * Only try to fetch XML description once in UPNP_GetValidIGD()
+  * Added -ansi flag to compilation, and fixed C++ comments to ANSI C comments.
+  * minor improvements to minihttptestserver.c
+  * upnperrors.c returns valid error string for unrecognized error codes
+  * make minihttptestserver listen on loopback interface instead of 0.0.0.0
+  * Maven installation thanks to Alexey Kuznetsov
+  * Replace WIN32 macro by _WIN32
+  * Fixes in java wrappers thanks to Alexey Kuznetsov :
+    https://github.com/axet/miniupnp/tree/fix-javatest/miniupnpc
+  * Make and install .deb packages (python) thanks to Alexey Kuznetsov :
+    https://github.com/axet/miniupnp/tree/feature-debbuild/miniupnpc
+  * The multicast interface can now be specified by name with IPv4.
+  * Install man page
+  * added header to Port Mappings list in upnpc.c
+  * Makefile : make clean now removes jnaerator generated files.
+  * MINIUPNPC_VERSION in miniupnpc.h (updated by make)
+  * added rootdescURL to UPNPUrls structure.
+- Remove unneeded miniupnpc-makefile.patch</comment>
+    <requestid>146618</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ac82f5ad972085db374f5bec5ab705bb</srcmd5>
+    <version>1.7</version>
+    <time>1359109446</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ac1b104dc492239585b910ba54851a6c</srcmd5>
+    <version>1.8</version>
+    <time>1370925373</time>
+    <user>coolo</user>
+    <comment>Update to 1.8 (forwarded request 177873 from worldcitizen)</comment>
+    <requestid>177875</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>ac1b104dc492239585b910ba54851a6c</srcmd5>
+    <version>1.8</version>
+    <time>1379663290</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d776207683bae7d2d2918581b6c5167e</srcmd5>
+    <version>1.9</version>
+    <time>1403176790</time>
+    <user>coolo</user>
+    <comment>- Update to 1.9:
+  * added argument remoteHost to UPNP_GetSpecificPortMappingEntry()
+    increment API_VERSION to 10
+  * --help and -h arguments in upnpc.c
+  * fixed potential buffer overrun in miniwget.c
+    bnc#881990
+    CVE-2014-3985
+    Modified UPNP_GetValidIGD() to check for ExternalIpAddress
+  * define MAXHOSTNAMELEN if not already done
+  * update upnpreplyparse to allow larger values (128 chars instead of 64) 
+  * Update upnpreplyparse to take into account &quot;empty&quot; elements
+    validate upnpreplyparse.c code with &quot;make check&quot;
+  * Fix Solaris build thanks to Maciej Małecki
+  * Fix testminiwget.sh for BSD
+  * Fixed Makefile for *BSD
+  * Update Makefile to use JNAerator version 0.11
+  * Fix testminiwget.sh for use with dash
+    Use $(DESTDIR) in Makefile</comment>
+    <requestid>237225</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>d776207683bae7d2d2918581b6c5167e</srcmd5>
+    <version>1.9</version>
+    <time>1409301899</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>dbda5a354f2caecbd9af95c393413ecc</srcmd5>
+    <version>1.9</version>
+    <time>1439190702</time>
+    <user>dimstar_suse</user>
+    <comment>- Add baselibs.conf: build libminiupnpc10-32bit, as needed by
+  libsocks0-32bit. (forwarded request 319246 from dimstar)</comment>
+    <requestid>319388</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fc2b00a290316d7da4147932c64074ee</srcmd5>
+    <version>1.9.20151026</version>
+    <time>1449145535</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>345025</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1a985ac5594ab387b846c50e9900726c</srcmd5>
+    <version>1.9.20160209</version>
+    <time>1456821340</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360628</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2451fc2e25a4ebd21aa918092c6ee90a</srcmd5>
+    <version>2.0</version>
+    <time>1462178583</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0
+  * No code changes since 1.9.20160209</comment>
+    <requestid>391484</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f1d302f35d2b4f45f73029787cd0e2c8</srcmd5>
+    <version>2.0.20170509</version>
+    <time>1496392194</time>
+    <user>dimstar_suse</user>
+    <comment>Corrected typo (forwarded request 497807 from worldcitizen)</comment>
+    <requestid>497808</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c143c946a0d329fc0c940cb8d05f336f</srcmd5>
+    <version>2.0.20171102</version>
+    <time>1510321255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539301</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2fabd2d284f4b7af2ae028c7e434ddd6</srcmd5>
+    <version>2.1</version>
+    <time>1527673227</time>
+    <user>dimstar_suse</user>
+    <comment>Build 2.1 (forwarded request 612402 from worldcitizen)</comment>
+    <requestid>612496</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>3e923cb915872ddc44d2f9837f26b6f0</srcmd5>
+    <version>2.1</version>
+    <time>1530993379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620181</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>3ebe7468995bd7397b8f2a0a413ea82c</srcmd5>
+    <version>2.1</version>
+    <time>1536327313</time>
+    <user>dimstar_suse</user>
+    <comment>Version 2.1 solved: CVE-2017-1000494 bnc#1075137 - (CVE-2017-1000494) VUL-1: CVE-2017-1000494 miniupnpc: Multiple vulnerabilities can allow a remote attacker to cause a denial of service or potentially execute code (forwarded request 633475 from worldcitizen)</comment>
+    <requestid>633476</requestid>
+  </revision>
+</revisionlist>

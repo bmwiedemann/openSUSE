@@ -1,0 +1,1099 @@
+-------------------------------------------------------------------
+Thu Sep 12 07:55:51 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 7.38
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.38 Wed 11 Sep 10:01:46 BST 2019
+  
+      No changes since v7.37_04
+  
+  7.37_04 Thu 22 Aug 15:20:34 BST 2019
+  
+      Bug fixes:
+      - Fix static linking on macOS
+  
+  7.37_03 Sat Aug  3 12:37:29 BST 2019
+  
+      Enhancements:
+      - Improved mandoc section detection
+  
+  7.37_02 Thu Jun 27 11:10:39 BST 2019
+  
+      Test fixes:
+      - Fix test failures in 02-xsdynamic.t on Android native builds
+        Github issue #337
+  
+  7.37_01 Fri Jun  7 11:21:39 BST 2019
+  
+      Test fixes:
+      - [rt.cpan.org #129763] fixed test errors with latest Pod::Simple
+
+-------------------------------------------------------------------
+Mon May 27 10:15:30 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- updated to 7.36
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+  7.36  Sun Apr 28 16:28:20 BST 2019
+
+    No changes since v7.35_14
+
+    This release was made possible by the kind
+    sponsors of the 2019 Perl Toolchain Summit
+    held in Marlow, UK:
+
+    Booking.com, cPanel, MaxMind, FastMail, ZipRecruiter,
+    Cogendo, Elastic, OpenCage Data, Bluehost, Perl Services,
+    Zoopla, Archer Education, OpusVL, Oetiker+Partner, YEF
+
+  7.35_14 Sun Apr 28 14:12:22 BST 2019
+
+    Win32 fixes:
+    - Add ExtUtils::PL2Bat path to pl2bat when PERL_CORE
+
+  7.35_13 Sun Apr 28 11:57:57 BST 2019
+
+    Bug fixes:
+    - Suppress warnings from EUMM::Locale code page workaround
+
+  7.35_12 Sat Apr 27 22:37:26 BST 2019
+
+    Enhancements:
+    - add AppVeyor CI configuration
+      see <https://github.com/rivy/CI.AppVeyor.helpers-perl> for more information
+
+    Bug fixes:
+    - Resolve RTs 127028 && 127316 on Mojave system perl
+    - Honour man page disablement under INSTALL_BASE
+    - fix `dmake` warning by removing dmake-superfluous ".NOTPARALLEL" target
+    - suppress inherited AUTOLOAD warning for 'Win32::ConsoleCP()'
+    - fix perl image (aka, executable) quoting for `dmake` builds
+    - skip broken test for Win32 strawberry perl v5.10 (and some earlier versions)
+    - add workaround to ExtUtils::MakeMaker::Locale for code pages 'cp65000' and 'cp65001'
+
+  7.35_11 Thu Apr 25 11:53:59 BST 2019
+
+    Bug fixes:
+    - Fix RT#128004 gcc AIX builds broken
+
+  7.35_10 Wed Feb 20 10:03:50 GMT 2019
+
+    Test fixes:
+    - Skip "merged /usr" tests on MSWin32
+
+  7.35_09 Mon Feb 18 10:05:42 GMT 2019
+
+    Bug fixes:
+    - stringify version before comparing
+
+    Test fixes:
+    - Changed wording of skip message for xsstatic
+
+    QA fixes:
+    - travis is deprecating container-based environments
+
+  7.35_08 Thu Dec  6 10:22:02 GMT 2018
+
+    Enhancements:
+    - propagate all variables used by Buildroot to subdirs
+
+  7.35_07 Fri Nov 23 11:34:27 GMT 2018
+
+    Bug fixes:
+    - Avoid mangling /bin non-perl shebangs on merged-/usr systems
+
+    VMS fixes:
+    - Handle PERL_ARCHLIBDEP and DESTINSTALL... macros on VMS.
+    - Remove trailing space from multi-in.PL in PL_FILES.t
+    - Skip "merged /usr" tests on VMS.
+
+  7.35_06 Thu Jul 19 20:30:55 BST 2018
+
+    Enhancements:
+    - Override shebang with PERL_MM_SHEBANG=relocatable env var
+
+    Bug fixes:
+    - Refactored Liblist::Kid tests, enabling UNIX testing
+
+  7.35_05 Tue Jul 10 09:44:25 BST 2018
+
+    Win32 fixes:
+    -  add Visual C parallel building support
+
+  7.35_04 Mon Jul  9 10:21:59 BST 2018
+
+    Bug fixes:
+    - Fix manification on MSWin32
+
+    Doc fixes:
+    - Mention manifypods target in FAQ for
+      man creation on non-un*x OS
+
+  7.35_03 Fri Apr 27 14:28:21 BST 2018
+
+    Enhancements:
+    - Allow specifying extra inputs for PL_FILES scripts
+
+  7.35_02 Tue Apr 24 11:38:39 BST 2018
+
+    Core fixes:
+    - Win32 fixes for gmake 4.2.1 in quoting literals
+
+ 7.35_01 Thu Apr 19 13:17:35 BST 2018
+
+    Core fixes:
+    - use tr instead of eval on $VERSION
+    - Fix PUREPERL_ONLY warnings
+
+- Refreshed Do_not_set_RPATH_by_default.patch
+
+-------------------------------------------------------------------
+Thu Mar 22 09:32:51 UTC 2018 - pmonrealgonzalez@suse.com
+
+- Refreshed Do_not_set_RPATH_by_default.patch not properly applied
+  on the update to version 7.34. (bsc#1086429)
+
+-------------------------------------------------------------------
+Tue Mar 20 06:19:11 UTC 2018 - coolo@suse.com
+
+- updated to 7.34
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.34  Mon Mar 19 10:21:12 GMT 2018
+  
+      No changes since v7.33_03
+  
+  7.33_03 Sat Feb 24 20:17:04 GMT 2018
+  
+      Core fixes:
+      - Properly silence warnings under core
+  
+      Darwin/NeXT fixes:
+      - Recognise -F as framework flag too
+  
+  7.33_02 Sat Feb 24 13:17:01 GMT 2018
+  
+      Core fixes:
+      - Skip xsstatic test on Darwin
+  
+  7.33_01 Tue Feb 20 10:39:43 GMT 2018
+  
+      Core fixes:
+      - Silence errant README.pod warning when in perl core
+
+-------------------------------------------------------------------
+Sat Feb 17 06:22:40 UTC 2018 - coolo@suse.com
+
+- updated to 7.32
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.32  Fri Feb 16 20:10:58 GMT 2018
+  
+      No changes since v7.31_08
+  
+  7.31_08 Mon Feb 12 12:19:11 GMT 2018
+  
+      VMS fixes:
+      - Fix 8-space line prefixes in MM_VMS.pm
+  
+  7.31_07 Tue Jan 16 16:09:04 GMT 2018
+  
+      Bug fixes:
+      - Change warning text for libscan() README.pod
+  
+  7.31_06 Tue Jan 16 10:28:11 GMT 2018
+  
+      Bug fixes:
+      - Teach libscan() to exclude README.pod
+  
+      Doc fixes:
+      - Documented when XSMULTI and XSBUILD are available
+      - Documented more version requirements for attributes
+  
+  7.31_05 Sat Nov 25 09:22:51 GMT 2017 (LPW Edition)
+  
+      Doc fixes:
+      - Spelling fixes
+      - clarify behaviour if VENDORLIB and no VENDORARCH
+  
+  7.31_04 Thu Oct  5 12:22:24 BST 2017
+  
+      Darwin/NeXT fixes:
+      - Escape ld -framework flags
+  
+  7.31_03 Mon Jul 10 09:34:26 BST 2017
+  
+      Bug fixes:
+      - Filter out non-XS .a files for static builds
+  
+  7.31_02 Mon Jun 26 13:53:15 BST 2017
+  
+      VMS fixes:
+      - Fixes for .PL tests
+      - VMS override for static_lib_pure_cmd
+      - Make the new subdirsstatic test portable
+  
+  7.31_01 Wed Jun 14 15:57:52 BST 2017
+  
+      Test fixes:
+      - Skip static test unless in perl core or in a .git directory
+
+-------------------------------------------------------------------
+Sun Jun 25 08:02:48 UTC 2017 - coolo@suse.com
+
+- try without the -mini package - the deps are using Module::Build
+  meanwhile
+
+-------------------------------------------------------------------
+Fri Jun 23 13:12:48 UTC 2017 - ddiss@suse.com
+
+- rebase downstream bsc#841204 fix against 7.30
+  + Do_not_set_RPATH_by_default.patch
+  + based on:
+  http://pkgs.fedoraproject.org/cgit/rpms/perl-ExtUtils-MakeMaker.git/plain/ExtUtils-MakeMaker-7.16-USE_MM_LD_RUN_PATH.patch
+
+-------------------------------------------------------------------
+Wed Jun 14 05:31:17 UTC 2017 - coolo@suse.com
+
+- updated to 7.30
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.30 Mon Jun 12 13:17:29 BST 2017
+  
+      No changes since v7.29_02
+  
+  7.29_02 Sun Jun 11 12:00:33 BST 2017
+  
+      Doc fixes:
+      - Fixed POD errors in FAQ
+  
+  7.29_01 Wed May 31 08:34:10 BST 2017
+  
+      Bug fixes:
+      - Prune .a without extralibs.ld from search paths
+
+-------------------------------------------------------------------
+Wed May 31 05:38:24 UTC 2017 - coolo@suse.com
+
+- updated to 7.28
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.28  Tue May 30 22:01:08 BST 2017
+  
+      No changes since v7.27_02
+  
+  7.27_02 Tue May 30 09:27:56 BST 2017
+  
+      Bug fixes:
+      - Prune auto/share from search paths RT#121918
+  
+  7.27_01 Sun May 28 11:35:46 BST 2017
+  
+      Bug fixes:
+      - Fix regression with metadata RT#121913
+
+-------------------------------------------------------------------
+Sun May 28 05:40:55 UTC 2017 - coolo@suse.com
+
+- updated to 7.26
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.26  Sat May 27 21:01:47 BST 2017
+  
+      No changes since 7.25_06
+  
+  7.25_06 Tue May 23 20:18:01 BST 2017
+  
+      Bug fixes:
+      - Fix regression with XS tests on MSWin32 with MS toolchain
+  
+  7.25_05 Mon May 15 10:18:01 BST 2017
+  
+      Bug fixes:
+      - Make MakeMaker pass compilation tests on AIX again
+      - Test, fix test dep on SKIPped linktype
+  
+  7.25_04 Fri May 12 12:24:09 BST 2017
+  
+      Enhancements:
+      - Add os_unsupported() function
+  
+  7.25_03 Thu May 11 17:51:23 BST 2017
+  
+      Bug fixes:
+      - processPL now depends on 'pure_all' instead of 'all'
+  
+  7.25_02 Thu May 11 11:54:42 BST 2017
+  
+      Bug fixes:
+      - Only add staticlibs that are installed under auto/
+      - Correct the order of tests of chmod()
+  
+      Doc fixes:
+      - Fixed typo in MakeMaker.pm
+  
+  7.25_01 Fri Feb  3 13:36:25 GMT 2017
+  
+      Bug fixes:
+      - Make perllocal.pod files reproducible
+      - META_ADD/MERGE default meta version based on each other
+      - Eliminate an ancient, unneeded, dangerous call to Carp::longmess
+
+-------------------------------------------------------------------
+Thu May 25 08:07:16 UTC 2017 - coolo@suse.com
+
+- updated to 7.24
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.24  Sat Aug 20 13:22:28 BST 2016
+  
+      No changes since 7.23_01
+  
+  7.23_01 Fri Aug 19 10:02:30 BST 2016
+  
+      Test fixes:
+      - always use the core serializers when testing in core
+  
+  7.22  Mon Aug  8 09:29:02 BST 2016
+  
+      No changes since 7.21_01
+  
+  7.21_01 Sun Aug  7 10:37:53 BST 2016
+  
+      Bug fixes:
+      - CVE-2016-1238: instmodsh sanitise @INC
+  
+  7.20  Fri Aug  5 09:39:56 BST 2016
+  
+      No changes since 7.19_08
+  
+  7.19_08 Thu Jul 28 12:31:13 BST 2016
+  
+      Bug fixes:
+      - CVE-2016-1238: avoid loading VMS::Feature from the default .
+  
+  7.19_07 Sun Jul  3 15:11:40 BST 2016
+  
+      Bug fixes:
+      - Restore ordering issue involving OTHERLDFLAGS
+  
+  7.19_06 Mon Jun 27 12:32:06 BST 2016
+  
+      Test fixes:
+      - Skip subdirscomplex test on VMS
+  
+  7.19_05 Mon Jun 20 15:21:52 BST 2016
+  
+      Doc fixes:
+      - fix typos and add subdirs text to MakeMaker.pm
+  
+  7.19_04 Tue Jun 14 11:16:19 BST 2016
+  
+      Bug fixes:
+      - prevent EUMM::Locale from warning with old Win32.pm
+  
+      Doc fixes:
+      - added examples for running tests in subdirs
+  
+  7.19_03 Mon Jun 13 14:22:46 BST 2016
+  
+      Bug fixes:
+      - Fix test warnings in MM_Unix.pm when in core
+  
+  7.19_02 Mon Jun 13 09:57:37 BST 2016
+  
+      Bug fixes:
+      - Check for ascii locale using normalized name
+  
+  7.19_01 Thu Jun  2 14:26:20 BST 2016
+  
+      Bug fixes:
+      - Cygwin: avoid libperl.dll.dll.a
+      - Fix basic.t tests on Win32 in core
+  
+  7.18  Mon May 23 15:55:26 BST 2016
+  
+      No changes since 7.17_03
+  
+  7.17_03 Wed May 11 18:22:06 BST 2016
+  
+      Dist fixes:
+      - remove build_requires on ourselves
+  
+  7.17_02 Mon May  9 23:55:09 BST 2016
+  
+      Bug fixes:
+      - Resolve a regression in c_o with trailing spaces
+  
+  7.17_01 Mon May  9 20:02:02 BST 2016
+  
+      Test fixes:
+      - Resolve issues with tests when running in core
+  
+  7.16  Sat May  7 10:13:05 BST 2016
+  
+      No changes since 7.15_03
+  
+  7.15_03 Sun May  1 14:13:44 BST 2016
+  
+      Bug fixes:
+      - lazy load Time::HiRes in ExtUtils::Command::MM
+      - fix 5.6 compat by removing indexed sprintf
+  
+  7.15_02 Thu Apr 28 12:54:23 BST 2016
+  
+      Bug fixes:
+      - Fix regression with small fractional numeric versions
+  
+  7.15_01 Wed Apr 27 19:13:46 BST 2016
+  
+      Bug fixes:
+      - Fix regression with SKIP and dynamic and static targets
+  
+  7.14  Sun Apr 24 13:53:33 BST 2016
+  
+    No changes since 7.13_01
+  
+  7.13_01 Sat Apr 23 16:41:20 BST 2016
+  
+      Bug fixes:
+      - Make dynamic depend on config again, fixes issues with Inline
+  
+  7.12 Tue Apr 19 12:24:41 BST 2016
+  
+      Enhancements:
+      - version ranges are now supported for PREREQS, etc.
+      - Metadata is now represented internally as Meta Spec 2.0
+      - ExtUtils::Command has been re-incorporated at 1.19 of that module
+      - Refactored XS handling
+      - XSMULTI=>1 - put multiple *.xs under lib, it "just works" and XSBUILD
+        for refined control of XSMULTI
+      - can do "make test" without first doing "make"
+  
+      Bug fixes:
+      - Handle new warnings from File::Path
+      - Resolve RT#106572 specifying AUTHOR via command-line is broken
+      - Warning on missing TEST_REQUIRES and CONFIGURE_REQUIRES
+      - Sanitise make_type on Win32
+      - Cygwin rebase fixes
+      - Makefile starting comments reflect decoded @ARGV, not raw
+      - Add various targets to .PHONY to avoid disk IO with dmake
+      - Fixed race condition in realclean
+      - improve static-build lib detection
+      - Eliminate non-error STDERR
+      - Make WriteEmptyMakefile Makefile functional when called in subdir
+      - manifypods fixes
+      - perllocal.pod generation "Perl in Space" fix
+      - PASTHRU fixes
+      - Fix distsignature dependencies for parallel make
+      - Check exit status for commands in "make ci" target
+      - Less noisey output during building sub-modules
+      - Fix dos2unix() on Windows
+      - stop makeaperl from polluting @ARGV in cases where ARGV contains args with spaces
+      - Fix regression when both test.pl and t/*.t are present
+      - Refactored internals to remove DirHandle usage
+      - MM_Unix::find_perl() dont repeatedly stat the same path in a loop
+      - No longer repeatedly attempt to load CPAN::Meta if it is now available
+  
+      VMS fixes:
+      - Made MM_VMS::oneline build continuation lines properly
+      - Implemented XSMULTI and XSBUILD
+      - Resurrect PASTHRU on VMS
+      - make_macro should handle multiple macros
+      - Fix regression with File::Spec changes in previous release
+  
+      Win32 fixes:
+      - t/echo.t needs SHELL env for Win32 gmake
+  
+      Dist fixes:
+      - Made %ExtraPrereqs match bundled prereqs
+      - Included MANIFEST.SKIP from ExtUtils::Manifest
+      - The bundled Encode::Locale has been updated to 1.04
+  
+      Test fixes:
+      - test PL_FILES of a "module"
+      - Various tests no longer require a separate .pm file for testing
+      - Support v5.6.1 in various tests
+      - test static build if $ENV{AUTHOR_TESTING}
+      - XS tests now pluggable
+      - test for "Perl in Space"
+  
+      Doc fixes:
+      - better document for PL_FILES, oneliner method
+      - FAQ updated
+  
+  7.11_06 Tue Mar 29 19:22:38 BST 2016
+  
+      Bug fixes:
+      - Backported change from blead for Win32 miniperl
+  
+  7.11_05 Sat Mar 19 09:41:02 GMT 2016
+  
+      Bug fixes:
+      - Less noisey output during building sub-modules
+      - Fix dos2unix() on Windows
+  
+      VMS fixes:
+      - Implemented XSMULTI and XSBUILD
+      - Resurrect PASTHRU on VMS
+  
+  7.11_04 Mon Feb 15 11:20:14 GMT 2016
+  
+      Enhancements:
+      - Added find_tests_recursive_in() method
+  
+      Bug fixes:
+      - Fix regression when both test.pl and t/*.t are present
+      - Refactored internals to remove DirHandle usage
+  
+      VMS fixes:
+      - make_macro should handle multiple macros
+      - Fix regression with File::Spec changes in previous release
+  
+      Win32 fixes:
+      - t/echo.t needs SHELL env for Win32 gmake
+  
+  7.11_03 Wed Nov 25 15:23:25 GMT 2015
+  
+      Bug fixes:
+      - stop makeaperl from polluting @ARGV in cases where ARGV contains args with spaces
+  
+  7.11_02 Sat Nov 21 20:05:45 GMT 2015
+  
+      Bug fixes:
+      - MM_Unix::find_perl() dont repeatedly stat the same path in a loop
+  
+  7.11_01 Thu Nov 12 11:58:58 GMT 2015
+  
+      Includes all the Changes noted for v7.06 and the following:
+  
+      Bug fixes:
+      - Use of intermediate files to store META.* and *.ppd files has been reverted
+      - No longer repeatedly attempt to load CPAN::Meta if it is now available
+      - Made MM_VMS::oneline build continuation lines properly
+
+-------------------------------------------------------------------
+Fri Mar 11 10:05:35 UTC 2016 - coolo@suse.com
+
+- updated to 7.10
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.10 Thu Sep 10 19:38:55 BST 2015
+  
+      Bug fixes:
+      - Fix an issue with quoting of dist_ci target on Win32
+  
+  7.08 Tue Sep  8 20:24:15 BST 2015
+  
+      This release reverts all the changes since v7.04 until such time
+      as the regressions we have found in the "wild" of CPAN can be
+      tamed
+  
+      ExtUtils::Command has been included in this release as it was
+      reincorporated in v7.06
+  
+      The following bug fixes have also been included:
+      - RT#100268 fix wrong variable being used
+      - Check exit status for commands in "make ci" target
+      - Fix distsignature dependencies for parallel make
+      - The bundled Encode::Locale has been updated to 1.04
+  
+  7.06 Mon Aug 31 18:54:14 BST 2015
+      Enhancements:
+      - version ranges are now supported for PREREQS, etc.
+      - Metadata is now represented internally as Meta Spec 2.0
+      - Use intermediate files to store META.* and *.ppd files
+      - ExtUtils::Command has been re-incorporated at 1.19 of that module
+      - Refactored XS handling
+      - XSMULTI=>1 - put multiple *.xs under lib, it "just works" and XSBUILD
+        for refined control of XSMULTI
+      - can do "make test" without first doing "make"
+  
+      Bug fixes:
+      - Handle new warnings from File::Path
+      - Resolve RT#106572 specifying AUTHOR via command-line is broken
+      - Warning on missing TEST_REQUIRES and CONFIGURE_REQUIRES
+      - Sanitise make_type on Win32
+      - Cygwin rebase fixes
+      - Makefile starting comments reflect decoded @ARGV, not raw
+      - Add various targets to .PHONY to avoid disk IO with dmake
+      - Fixed race condition in realclean
+      - improve static-build lib detection
+      - Eliminate non-error STDERR
+      - Make WriteEmptyMakefile Makefile functional when called in subdir
+      - manifypods fixes
+      - perllocal.pod generation "Perl in Space" fix
+      - PASTHRU fixes
+      - Fix distsignature dependencies for parallel make
+      - Check exit status for commands in "make ci" target
+  
+      Dist fixes:
+      - Made %ExtraPrereqs match bundled prereqs
+      - Included MANIFEST.SKIP from ExtUtils::Manifest
+      - The bundled Encode::Locale has been updated to 1.04
+  
+      Test fixes:
+      - test PL_FILES of a "module"
+      - Various tests no longer require a separate .pm file for testing
+      - Support v5.6.1 in various tests
+      - test static build if $ENV{AUTHOR_TESTING}
+      - XS tests now pluggable
+      - test for "Perl in Space"
+  
+      Doc fixes:
+      - better document for PL_FILES, oneliner method
+      - FAQ updated
+  
+  7.05_29 Mon Aug 24 16:00:14 BST 2015
+      Bug fixes:
+      - Handle new warnings from File::Path
+      - Resolve RT#106572 specifying AUTHOR via command-line is broken
+  
+  7.05_28 Wed Aug 19 18:56:25 BST 2015
+      Bug fixes:
+      - Warning on missing TEST_REQUIRES and CONFIGURE_REQUIRES
+  
+      Dist fixes:
+      - Removed .perlcriticrc
+      - Cleaned up Makefile.PL
+  
+  7.05_27 Wed Aug  5 10:31:56 BST 2015
+  
+      No changes since 7.05_26
+      Testing dist build
+  
+  7.05_26 Tue Aug  4 20:36:18 BST 2015
+      Bug fixes:
+      - Reverted pure_all changes due to bug in gmake and
+        parallel building perl core
+  
+  7.05_25 Tue Jul  7 18:13:13 BST 2015
+  
+      No changes since 7.05_24
+      Testing dist build
+  
+  7.05_24 Wed Jul  1 19:18:11 BST 2015
+      Bug fixes:
+      - Fix missing pipe in Cygwin rebase command
+  
+  7.05_23 Wed Jun 24 20:17:09 BST 2015
+      Bug fixes:
+      - Sanitise make_type on Win32
+      - Cygwin: do not mess with the image base and do an ephemeral rebase on i686
+  
+  7.05_22 Sun Jun 14 14:06:36 BST 2015
+      Dist fixes:
+      - eval $VERSION in all modules
+  
+  7.05_21 Sat Jun 13 14:57:44 BST 2015
+      Enhancements:
+      - Intermediate META.* and *.ppd files now stored under blib/
+  
+      Test fixes:
+      - fixed an executable bit on one of the tests
+  
+  7.05_20 Sat Apr  4 16:20:54 BST 2015
+      Test fixes:
+      - Disable the unicode filename tests for now
+  
+  7.05_19 Fri Mar 27 16:48:15 GMT 2015
+      Test fixes:
+      - Also skip t/basic.t unicode test on Win32
+  
+  7.05_18 Fri Mar 27 12:16:05 GMT 2015
+      Bug fixes:
+      - Fix LINKTYPE => '' backwards compatibility
+      - Have Makefile starting comments reflect decoded @ARGV, not raw
+  
+      Test fixes:
+      - Restore t/basic.t unicode test, except on BSD
+  
+  7.05_17 Tue Mar 24 12:11:47 GMT 2015
+      Bug fixes:
+      - Fix RT#103042 - maniadd failure needs "die" to stop make
+  
+  7.05_16 Mon Mar  9 11:17:40 GMT 2015
+      Bug fixes:
+      - Add non-overridable "config" target for subdirs_manifypod's benefit
+  
+      Test fixes:
+      - Fix Cygwin tests for manifypods() changes
+      - Skip a Mkbootstrap test on Cygwin
+  
+  7.05_15 Thu Mar  5 19:22:51 GMT 2015
+      Bug fixes:
+      - Resolve core integration regression with META handling
+      - Make "manifypods" go into subdirs
+      - Add various targets to .PHONY to avoid disk IO with dmake
+  
+  7.05_14 Fri Feb 20 16:43:30 GMT 2015
+      Bug fixes:
+      - Add static/dynamic no-ops - needed by nmake and others
+  
+      Test fixes:
+      - PL_FILES of a "module" was untested 
+  
+  7.05_13 Wed Feb 18 22:17:53 GMT 2015
+      Enhancements:
+      - do proper conversion to 2.x for META_ADD/MERGE
+  
+      Bug fixes:
+      - Resolved [RT#102009] subdir override of top_target lacking pure_nolink
+  
+      Test fixes:
+      - Various tests no longer require a separate .pm file for testing
+      - Handle unicode correctly in hash2files() function
+  
+  7.05_12 Sat Feb  7 15:00:09 GMT 2015
+      Bug fixes:
+      - Fixed race condition in realclean
+      - Fixed race condition with subdirs_$linktype
+  
+      Dist fixes:
+      - Made %ExtraPrereqs match bundled prereqs
+      - Included MANIFEST.SKIP from ExtUtils::Manifest
+  
+  7.05_11 Sat Jan 31 16:11:06 GMT 2015
+      Bug fixes:
+      - Don't make Makefile.aperl until static done so find *.a in blib
+      - Fixed precedence issue in linkext
+      - Make WriteEmptyMakefile produce Makefile compat with subdirs-test_*
+      - Relaxed the requirements for v5.6.1 in bundled version
+  
+      Test fixes:
+      - Support v5.6.1 in various tests
+  
+      Doc fixes:
+      - Clarified XSBUILD documentation slightly
+  
+  7.05_10 Mon Jan 26 15:06:37 GMT 2015
+      Test fixes:
+      - Update XSBUILD test to work when compiling under C++
+  
+  7.05_09 Fri Jan 23 10:15:47 GMT 2015
+      Bug fixes:
+      - pure_nolink as dep of dynamic/static in top_targets in case override
+        ( fixes a build issue in core)
+      - Only add DynaLoader to makeaperl if -Dusedl
+  
+  7.05_08 Tue Jan 20 10:00:01 GMT 2015
+      Enhancements:
+      - Add XSBUILD option: control XSMULTI per XS type and per-object
+      - Cache is_make_type results for performance (196 in normal WriteMakefile)
+  
+      Bug fixes:
+      - Eliminate non-error STDERR
+      - Use $from (rename to $object) param not $(OBJECT) in xs_make_dynamic_lib
+      - Set $(OBJECT) if XSMULTI
+      - Eliminate unnecessary MM_NW5 const_cccmd override
+      - Make WriteEmptyMakefile Makefile functional when called in subdir
+      - WriteEmptyMakefile rmtree _eumm, clean target removes Makefile
+      - WriteEmptyMakefile not recurse by default
+      - Make manifypods dep on blibdirs as needs it to function
+      - Back-compat linkext -> subdirs_(perl-linktype) if LINKTYPE= and some DIR
+      - Eliminate leak of dirhandles in ExtUtils::Liblist::lsdir
+      - perllocal.pod generation "Perl in Space" fix
+      - quote_literal PASTHRU_* as can have "" in
+      - Switch to using version->stringify, never ->normal
+  
+      Test fixes:
+      - Introduce use of $ENV{AUTHOR_TESTING} - don't skip some if true
+      - Skip static tests if not static perl and not author - false negatives
+  
+      Doc fixes:
+      - PL_FILES better documented
+  
+      Dist fixes:
+      - The bundled Encode::Locale has been updated to 1.04
+  
+  7.05_07 Fri Jan  9 15:58:49 GMT 2015
+      Bug fixes:
+      - Dynamic and static targets now depend from pure_nolink
+  
+      Test fixes:
+      - Skip XS static on Haiku as well
+      - Correctly skip static linking test on shrplib perls
+      - Handle an occasional race condition in pm_to_blib.t
+  
+  7.05_06 Thu Jan  8 19:03:48 GMT 2015
+      Enhancements:
+      - Refactored XS handling
+      - XSMULTI=>1 - put multiple *.xs under lib, it "just works"
+      - pure_all target split so can do "make dynamic" and "make static"
+  
+      Bug fixes:
+      - dist_ci target fixed for nmake
+      - Avoid dmake warning with XS
+      - Borland and GNU compiler can be specified with full path
+      - Fix parallel-build problems with split of pure_all target
+      - Make Win32 miniperl tests pass if no chcp
+      - Fix metadata extraction problem with *.pm with CRLF
+  
+      Test fixes:
+      - Now tested: XS builds of static, bootstrap code system
+      - XS tests now pluggable
+      - Win32 t/basic.t now tries Win32 module before chcp
+  
+      Doc fixes:
+      - FAQ updated for XSMULTI
+      - Improve doc for oneliner method
+  
+  7.05_05 Wed Dec 31 22:42:17 GMT 2014
+      Enhancements:
+      - Metadata is now represented internally as Meta Spec 2.0
+      - Use intermediate files to store META.* and *.ppd files
+      - ExtUtils::Command has been re-incorporated at 1.19 of that module
+  
+      Bug fixes:
+      - the SHELL env var needs to be set if gmake is used on Win32
+      - No longer manify top-level README.pod document
+      - Some "dubious code" in the shebang fixin has been fixed
+      - Lots of XS-handling code tidyups
+  
+      Test fixes:
+      - Ensure that tempdirs get tidied up after tests
+      - ExtUtils::Command tests have been added
+  
+      Doc fixes:
+      - Lots of changes to the FAQ document
+  
+      Dist fixes:
+      - Bundled CPAN::Meta, CPAN::Meta::Requirements and Parse::CPAN::Meta
+        updated to latest versions
+      - No longer bundle CPAN::Meta and prereqs on perls < 5.008001
+      - 'version' added to the no_index declaration
+  
+  7.05_04 Wed Dec 24 14:31:17 GMT 2014
+      Core fixes:
+      - Fix for lack of B module at build time when in core
+  
+  7.05_03 Wed Dec 24 11:45:58 GMT 2014
+      Bug fixes:
+      - Revert LibList to a previous working state
+      - Fix distsignature dependencies for parallel make
+      - Check exit status for commands in "make ci" target
+      - RT#100268 fix wrong variable being used
+      - Make open_for_writing() exportable for utf8 encoding
+      - Made prereqs work minus version-range if no CPAN::Meta::Requirements
+  
+      Test fixes:
+      - vstrings test was recfactored
+      - prereqs test acquired labels for all tests
+  
+      QA fixes:
+      - use containerised travis builds for extra speed
+      - blead build has been prioritised as it takes the longest
+  
+  7.05_02 Mon Dec 15 20:06:12 GMT 2014
+      VMS fixes:
+      - Unixify path in t/INSTALL_BASE.t
+  
+      Test fixes:
+      - perl_lib calls fixed in tests
+      - t/Liblist_Kid.t fixed for Win32 and others
+  
+  7.05_01 Sat Dec  6 15:44:55 GMT 2014
+      Enhancements:
+      - version ranges are now supported for PREREQS, etc.
+  
+      Bug fixes:
+      - Also quote linker paths to handle spaces
+      - Avoid cmdline duplication if ARCHLIB and LIB are identical
+  
+      Test fixes:
+      - Removed done_testing from a number of test files
+      - Added a subdir with a space test
+
+-------------------------------------------------------------------
+Wed Jul  8 05:29:02 UTC 2015 - coolo@suse.com
+
+- recompile against perl 5.22
+
+-------------------------------------------------------------------
+Fri Mar 20 00:19:50 UTC 2015 - ddiss@suse.com
+
+- Do not set LD_RUN_PATH by default; (bnc#841204).
+  + Add Do_not_set_RPATH_by_default.patch
+
+-------------------------------------------------------------------
+Sun Feb  8 07:44:48 UTC 2015 - coolo@suse.com
+
+- updated to 7.04
+    Doc fixes:
+     - Corrected MAGICXS documentation
+     - Remove Module::Build encouragement
+ 
+ 7.03_04 Thu Nov 27 14:35:15 GMT 2014
+     Core fixes:
+     - Do not use ccstdflags with the core extensions
+ 
+ 7.03_03 Tue Nov 25 16:37:57 GMT 2014
+     Win32 Fixes:
+     - Eliminate sub-process spawning when checking make type
+ 
+ 7.03_02 Mon Nov 24 13:18:09 GMT 2014
+     VMS fixes:
+     - Fix a couple of missing vendor targets
+     - Remove VAXCCURSE from ExtUtils::Liblist::Kid::_vms_ext.
+ 
+ 7.03_01 Tue Nov 18 21:29:40 GMT 2014
+     VMS fixes:
+     - Handle spaces in install targets
+     - Allow spaces in eliminate_macros and fixpath
+     - Remove fixpath call from ExtUtils::Liblist::Kid::_vms_ext.
+     - Override is_make_type() as checks as unnecessary
+ 
+     Core fixes:
+     - Wrap parse_abstract() call to Encode in eval() to
+       avoid build failures
+     - Fix issue with CCFLAGS in core
+- replace fix-provides.diff with a grep call
+
+-------------------------------------------------------------------
+Fri Jul 18 10:45:29 UTC 2014 - chris@computersalat.de
+
+- update to 6.98
+    Dist fixes:
+    * Removed redundant File::Spec check from Makefile.PL
+    Bug fixes:
+    * Resolve another regression related to not recursing into distdirs
+    * Work-around v5.10.1 for the MIN_PERL_VERSION v-string handling
+    * Make MIN_PERL_VERSION handle v-strings properly
+    * Resolved a regression in MM_Unix.pm
+      (https://github.com/Perl-Toolchain-Gang/ExtUtils-MakeMaker/issues/96)
+    * Libraries are not transitive on Android
+    Test fixes:
+    * Make meta tests more robust to changes in CPAN::Meta
+- fix deps and avoid build loop
+  * push all 'BuildRequires' (taken from Makefile.PL) into
+    perl-ExtUtils-MakeMaker-mini as 'Requires' and now 
+    BuildRequire: perl-ExtUtils-MakeMaker-mini
+
+-------------------------------------------------------------------
+Sat Feb  8 10:54:51 UTC 2014 - lars@linux-schulserver.de
+
+- update to 6.88:
+    Misc:
+    * disable make parallelism for pure_all target
+    * Enable bootstrapping to work on v5.10.x again
+    Bug fixes:
+    * Don't recurse into stale dist dirs
+    * RT#90780 fix Macro `BOOTSTRAP' redefined warnings
+    * Only enable automatic OBJECT generation if MAGICXS is true
+    * harden xsubpp locating loop in MM_Unix
+    * RT#91540 PREREQ_FATAL not recognised on command line
+    * Export 'configure' section of prereqs when meta-spec version 2
+    * Explicitly require dynaloader before using mod2fname
+    * Expanded test coverage for metafiles
+    * Get rid of unused printf arguments in dir_target
+    * Get rid of unused printf arguments in dynamic_bs
+    * On Android, pass PERL_LIB through rel2abs().
+    * Synchronisation with blead to remove old cross-compilation model
+    New Features:
+    * OBJECT can now be specified as an array
+    * build C_FILES/O_FILES/OBJECT automatically from XS
+    * Added MAGICXS attribute to explicitly enable automagic
+      XS building.
+    * Added PPM_UNINSTALL_EXEC and PPM_UNINSTALL_SCRIPT options
+      to PPD generation
+    Doc fixes:
+    * Correct the documentation for MAGICXS
+    * Document BUILD_REQUIRES defaults
+    * Documentation expanded to mention JSON metafiles
+    * mention that TEST_REQUIRES is in v6.64 and above
+    * Update documentation for LICENSE attribute.
+
+-------------------------------------------------------------------
+Tue Nov 26 14:26:44 UTC 2013 - coolo@suse.com
+
+- updated to 6.82
+   Misc:
+   * Special-case the bundling of version, so
+     that XS versions don't get overwritten
+   Doc fixes:
+   * Update XSPROTOARG docs for changes in xsubpp
+   * Clarify heir-apparent in FAQ
+
+   Misc:
+   * Changed GNU-Style to Unix-Style
+   * VMS will now report 'make' style
+   * Updated bundled JSON::PP
+   * Updated bundled Test-Simple
+
+   Bug fixes:
+   * Add CP_NONEMPTY to the list of tools in Makefile
+   * don't copy .bs portably :)
+   * RT#28992 don't copy .bs files if they are empty
+
+   New feature:
+   * Made UNINST an attribute, so removing shadowed modules
+     can be set 'perl Makefile.PL UNINST=1'
+
+   Bug fixes:
+   * do not set default switches in Test::Harness; not even -w
+
+-------------------------------------------------------------------
+Fri Jan 25 18:46:29 UTC 2013 - chris@computersalat.de
+
+- update to 6.64
+  * Update the home page in the meta file.  makemaker.org has been
+    unmaintained for a while.
+- fix deps for building on SLE_11
+- rebase provides patch
+
+-------------------------------------------------------------------
+Thu Feb 16 12:35:04 UTC 2012 - coolo@suse.com
+
+- this module bundles a bit too much
+
+-------------------------------------------------------------------
+Sun Dec 11 09:12:35 UTC 2011 - coolo@suse.com
+
+- update to 6.62, see Changes
+
+-------------------------------------------------------------------
+Tue Nov 30 12:12:50 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:54 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:36 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Mon Jul 26 08:42:23 UTC 2010 - pascal.bleser@opensuse.org
+
+- also exclude .3 man pages for SLE <= 10, as it conflicts with Perl too
+
+-------------------------------------------------------------------
+Mon Jul 26 07:49:38 UTC 2010 - pascal.bleser@opensuse.org
+
+- exclude instmodsh, as it conflicts with Perl itself
+
+-------------------------------------------------------------------
+Fri Dec 18 12:39:11 UTC 2009 - jw@novell.com
+
+- Update to 6.56
+- Stable release of 6.55_03
+
+-------------------------------------------------------------------
+Mon Dec  7 16:46:59 UTC 2009 - jw@novell.com
+
+- http://cpansearch.perl.org/src/MSCHWERN/ExtUtils-MakeMaker-6.55_03/Changes
+
+-------------------------------------------------------------------
+Mon Sep  7 15:09:03 CEST 2009 - mls@suse.de
+
+- Update to 6.54
+
+-------------------------------------------------------------------
+Mon Mar  3 13:00:00 CET 2008 - jw@suse.de
+
+- initial packaging
+

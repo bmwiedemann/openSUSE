@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Fri Jun  9 12:23:25 UTC 2017 - idonmez@suse.com
+
+- Devel package must depend on libpcap-devel
+
+-------------------------------------------------------------------
+Wed Jun  7 11:19:42 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Sat May 27 09:12:48 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.5 (see CHANGES.md)
+- Refreshed libtins-3.2_build.patch as libtins-3.5_build.patch
+
+-------------------------------------------------------------------
+Thu May  7 14:28:12 UTC 2015 - avvissu@yandex.ru
+
+- Initial release
+

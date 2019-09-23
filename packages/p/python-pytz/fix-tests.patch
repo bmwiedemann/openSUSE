@@ -1,0 +1,18 @@
+--- a/pytz/tests/test_tzinfo.py
++++ b/pytz/tests/test_tzinfo.py
+@@ -726,15 +726,6 @@ class LocalTestCase(unittest.TestCase):
+             '1914-01-01 13:40:00 UTC+0000'
+         )
+ 
+-    def no_testCreateLocaltime(self):
+-        # It would be nice if this worked, but it doesn't.
+-        tz = pytz.timezone('Europe/Amsterdam')
+-        dt = datetime(2004, 10, 31, 2, 0, 0, tzinfo=tz)
+-        self.assertEqual(
+-            dt.strftime(fmt),
+-            '2004-10-31 02:00:00 CET+0100'
+-        )
+-
+ 
+ class CommonTimezonesTestCase(unittest.TestCase):
+     def test_bratislava(self):

@@ -1,0 +1,287 @@
+-------------------------------------------------------------------
+Tue Apr  9 09:04:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + SearchProvider: Fix deprecation fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 15 12:51:18 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Update the icon to follow the GNOME 3.32 guidelines.
+  + Remove app menu following GNOME 3.32 guidelines.
+  + Fix various javascript deprecation warnings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct  9 18:07:09 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.0:
+  + Re-enable GNOME Shell search provider by default.
+
+-------------------------------------------------------------------
+Sat Aug 18 15:18:25 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.91:
+  + Port to modern JavaScript.
+  + build: Drop autotools support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May  7 07:43:32 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.2:
+  + libgc: Fix crasher with some GCC configurations.
+  + Updated translations.
+- Switch to meson builds system: Add meson and new dependency
+  libunistring-devel BuildRequires.
+
+-------------------------------------------------------------------
+Mon Mar 12 15:33:44 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Character: Avoid critical warning after closing the dialog.
+
+-------------------------------------------------------------------
+Mon Mar  5 19:17:08 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + build: Port to meson build system.
+  + libgc: Perform full canonical decomposition for Hangul
+    syllables.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:27:29 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Dec  7 13:35:49 UTC 2017 - fcrozat@suse.com
+
+- Add noto-coloremoji-fonts as a Recommends, otherwise application
+  looks very ugly when no emoji fonts are installed.
+
+-------------------------------------------------------------------
+Wed Nov  1 10:58:18 UTC 2017 - badshah400@gmail.com
+
+- Update to version 3.26.2:
+  - window: Fix error when searching on recently used page.
+  - Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct  4 22:06:12 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.1:
+  + characterList: Make search work again
+  + Updated translations.
+- Drop no longer needed post(un) macros:
+  glib2_gsettings_schema_post(un) and icon_theme_cache_post(un),
+  file triggers takes care of this now.
+
+-------------------------------------------------------------------
+Wed Sep  6 21:43:05 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.25.92:
+  + ui: Implement Emoji subcategories.
+  + character: Add to Recent list when copied not viewed.
+  + charatrerList: load more on resize.
+  + Build fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul  4 16:55:46 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.0:
+  + characterList: Add NULL check for character name.
+  + characterlist.ui: Improve the 'no result' strings.
+  + searchProvider: add clipboardText to result meta.
+  + categoryList: Make IBus detection robuster.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 12:06:37 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.0:
+  + build: Fix appdata installation.
+  + build: Don't run intltoolize in autogen.sh.
+  + build: Regenerate uninames.h.
+  + Add more options to XGETTEXT_OPTIONS in po/Makevars.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 26 12:36:46 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91.1:
+  + Remove intltool markers from .appdata and .desktop.
+  + Update tables for "See Also" list to Unicode 9.0.0.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 25 16:36:35 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Update Unicode standard to 9.0.0.
+  + characterList: Support drag and drop of characters
+    (bgo#764757).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Apr 10 11:41:52 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Update AppData.
+  + Fix regression in multi-keyword search with search provider
+    (bgo#747061).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 21 21:01:01 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 14 09:37:41 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.92:
+  + Add additional keywords to .desktop (bgo#762576).
+  + Disable subtitle in the headerbar (bgo#763177).
+  + Remove redundant horizontal padding in filter menu
+    (bgo#763233).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 15 09:55:32 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.90:
+  + Make "copy character" work again with newer GTK+.
+  + Make search provider work again with the new internal search
+    API.
+  + Hide missing characters by default (bgo#744591).
+  + Update appdata to 0.7+ format and add missing data.
+  + The search provider now only shows prefix matches (bgo#757368).
+  + Visual fixes for category list (bgo#761793).
+  + Visual fixes for font list (bgo#748717).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Dec 21 21:41:35 UTC 2015 - damjanovic.ivo@gmail.com
+
+- Update to version 3.19.3:
+  + Add visual feedback for invisible characters (bgo#757815).
+  + Rework search function to feed more results when the user
+    scrolls the list to the bottom (bgo#757523).
+  + Standardize app menu.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Oct 11 09:25:59 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Disable search provider by default.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 07:00:25 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Update tables for "See Also" list to Unicode 8.0.0.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 31 17:03:48 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.91:
+  + Fix font filtering logic.
+  + Close font filtering popover after selection.
+  + Fix character name display for CJK ideographs.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 18 08:45:08 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Fix bgo#753113: make fails without gperf.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 29 08:18:04 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.4.1:
+  + Fix bgo#752954: gnome-characters 3.17.4 no longer installs
+    appdata.
+  + Install all hicolor icons under $datadir/icons/hicolor.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 21 10:08:19 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.4:
+  + Update Unicode standard to 8.0.0.
+  + Bugs fixed: bgo#752607, bgo#743643, bgo#748717, bgo#748124,
+    bgo#747398, bgo#747061.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jun 24 08:49:38 UTC 2015 - dimstar@opensuse.org
+
+- Own %{_datadir}/appdata/ for openSUSE 42.
+
+-------------------------------------------------------------------
+Mon May 11 12:41:34 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Fix bgo#748124: build failure.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 15 08:08:26 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + bgo#747061: Search sometimes has poor results.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Apr  4 21:20:16 UTC 2015 - vuntz@opensuse.org
+
+- Add %post/%postun scriptlets with
+  %glib2_gsettings_schema_post(un), %icon_theme_cache_post(un) and
+  "%icon_theme_cache_post(un) gnome" (as the application installs
+  icons in both hicolor and gnome icon themes).
+
+-------------------------------------------------------------------
+Mon Mar 23 10:43:20 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 09:07:38 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + bgo#745508: Two fixes to the search provider.
+  + Fix non-BMP character display.
+  + Make search keyword match against hex code point.
+  + Add key navigation with cursor keys (without modifiers).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  5 13:18:01 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91.1:
+  + Restore the resizing behavior, which was broken in the last
+    release.
+- Changes from version 3.15.91:
+  + bgo#744336: Add a unique application icon.
+  + bgo#744855: Search provider.
+  + Add more characters to "Pictures" section.
+  + Add more characters to "See Also" list, by using Unicode
+    character compositions.
+
+-------------------------------------------------------------------
+Mon Feb 16 14:45:54 UTC 2015 - dimstar@opensuse.org
+
+- Initial package, version 3.15.90.
+

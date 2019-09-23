@@ -1,0 +1,8 @@
+<package name="ufraw" project="openSUSE:Factory">
+  <title>The Unidentified Flying Raw</title>
+  <description>Application to read and manipulate raw images from digital cameras. It
+takes care of the color management, handles the Nikon curve formats and
+has an editor for the tone curves. For batch processing of images you
+can use the command-line.</description>
+  <devel project="graphics" package="ufraw"/>
+</package>

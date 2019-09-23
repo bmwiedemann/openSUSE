@@ -1,0 +1,150 @@
+#!/bin/sh
+
+# script to help automate generation of config file and startup of ices2,
+# mostly useful for people trying to do things like run ices2 from cron.
+
+# contributed by Ciaran Anscomb <ciarana@rd.bbc.co.uk>
+# distributed under GPL, see LICENSE
+
+# You will probably want to leave this commented out - I need it tho...
+#LD_LIBRARY_PATH=/usr/local/ogg/lib
+#export LD_LIBRARY_PATH
+#PATH=/usr/local/ogg/bin:/usr/ucb:/usr/bin:/usr/etc
+#cd /usr/local/ogg/bin
+
+# Some moderately sensible defaults
+samplerate=44100
+channels=2
+bitrate=64000
+module=oss
+server=localhost
+port=8000
+password=hackme
+metadatafile=/var/tmp/metadata.$$
+
+start_wgets() {
+	while [ "x$1" != "x" ]; do
+		mount=$1; shift
+		outfile=$1; shift
+		wget -q http://$server:$port/$mount -O $outfile &
+	done
+}
+
+cleanup() {
+	rm -f $metadatafile
+}
+
+trap cleanup 2 15
+
+if [ "x$1" = "x" -o "x$1" = "x--help" -o "x$1" = "x-h" ]; then
+	cat << EOF
+run_ices, a script to start ices2 from the command line.
+Usage: $0 [OPTION] mountpoint [-o filename] ...
+Example: $0 -S localhost -P 8000 -p hackme -b 64000 path/low.ogg
+		-o low.ogg -b 128000 path/high.ogg -o high.ogg
+
+General configuration:
+  -sr n		Set sample rate of audio device [$samplerate]
+  -c n		Set number of channels [$channels]
+  -m module	Use named ices module (oss,sun) [$module]
+  -S server	Server to stream to [$server]
+  -P port	Port to connect to [$port]
+  -p pass	Server password
+  -A title	Artist for encoding
+  -T title	Title for encoding
+  -t n		Finish encoding after n seconds [don't stop]
+
+Per-instance encoding configuration:
+  -b n		Set bitrate [$bitrate]
+  -o filename	Spawn a wget process to write this encoding to file
+
+When listing more than one mountpoint, you only need to override the
+parameters that need changing since the last one.  Multiple encodings
+come at the expense of CPU.  If you use -o, always specify it AFTER the
+mountpoint, and make sure you have the GNU wget application installed.
+
+EOF
+	exit 0
+fi
+
+while [ "x$1" != "x" ]; do
+	opt=$1; shift
+	case $opt in
+	-sr) samplerate=$1; shift; ;;
+	-c) channels=$1; shift; ;;
+	-m) module=$1; shift; ;;
+	-S) server=$1; shift; ;;
+	-P) port=$1; shift; ;;
+	-p) password=$1; shift; ;;
+	-T) title=$1; shift; ;;
+	-A) artist=$1; shift; ;;
+	-o) outdata="$mount $1 $outdata"; shift; ;;
+	-t) time=$1; shift; ;;
+	-b) bitrate=$1; shift; ;;
+	*) mount=$opt;
+		if [ "x$init" = "x" ]; then
+			cat > live.xml << EOF
+<?xml version="1.0"?>
+<ices>
+	<background>0</background>
+	<logpath>/usr/local/ogg/log</logpath>
+	<logfile>ices.log</logfile>
+	<loglevel>1</loglevel>
+
+	<stream>
+		<metadata>
+			<name>Ogg stream</name>
+			<genre>misc</genre>
+			<description>No description</description>
+		</metadata>
+		<input>
+			<module>$module</module>
+			<param name="rate">$samplerate</param>
+			<param name="channels">$channels</param>
+			<param name="device">/dev/audio</param>
+			<param name="metadata">1</param>
+			<param name="metadatafilename">$metadatafile</param>
+		</input>
+EOF
+			init=1
+		fi
+		cat >> live.xml << EOF
+		<instance>
+			<hostname>$server</hostname>
+			<port>$port</port>
+			<password>$password</password>
+			<mount>/$mount</mount>
+			<encode>  
+				<bitrate>$bitrate</bitrate>
+				<samplerate>$samplerate</samplerate>
+				<channels>$channels</channels>
+			</encode>
+		</instance>
+EOF
+	;;
+	esac
+done
+
+cat >> live.xml << EOF
+	</stream>
+</ices>
+EOF
+
+cat > $metadatafile << EOF
+ARTIST=$artist
+TITLE=$title
+EOF
+ices live.xml &
+icespid=$!
+kill -USR1 $icespid
+if [ "x$outdata" != "x" ]; then
+	sleep 2
+	start_wgets $outdata
+fi
+if [ "x$time" != "x" ]; then
+	sleep $time
+	kill -INT $icespid
+else
+	wait $icespid
+fi
+cleanup

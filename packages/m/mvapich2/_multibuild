@@ -1,0 +1,12 @@
+<multibuild>
+  <package>standard</package>
+  <package>testsuite</package>
+  <package>psm</package>
+  <package>psm-testsuite</package>
+  <package>psm2</package>
+  <package>psm2-testsuite</package>
+  <package>gnu-hpc</package>
+  <package>gnu-hpc-psm</package>
+  <package>gnu-hpc-psm2</package>
+  <package>gnu-hpc-testsuite</package>
+</multibuild>

@@ -1,0 +1,201 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb45ca5414fd191824630adfeaa357be</srcmd5>
+    <version>1.0.0</version>
+    <time>1511274741</time>
+    <user>dimstar_suse</user>
+    <comment>include to factory</comment>
+    <requestid>537067</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>58e863161083b071d091eb475c6082e9</srcmd5>
+    <version>1.0.0</version>
+    <time>1513676917</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 557428 from StefanBruens)</comment>
+    <requestid>557433</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dbda5ade85825a9bbd0f92ebf88989da</srcmd5>
+    <version>1.0.2</version>
+    <time>1513851998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558344</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>321245a744702624cd5cb41696a0f05d</srcmd5>
+    <version>1.0.2</version>
+    <time>1514027511</time>
+    <user>dimstar_suse</user>
+    <comment>- Unbreak compilation on non-x86, upstream renamed options to disable
+  plugins. (forwarded request 559157 from StefanBruens)</comment>
+    <requestid>559158</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4571cb2c0dd47ad678acaf985a006184</srcmd5>
+    <version>1.0.5</version>
+    <time>1521051736</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.0.5 (forwarded request 583136 from dimstar)</comment>
+    <requestid>583200</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>91181d973dc67f4dde515c707cb6ea09</srcmd5>
+    <version>1.0.5</version>
+    <time>1521192954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587551</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ec73864285dc05a34b1bdcbcc673a26b</srcmd5>
+    <version>1.0.6</version>
+    <time>1522403757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590828</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>5e50b73206e56ab50d9fea277732ee3a</srcmd5>
+    <version>1.0.6</version>
+    <time>1522935087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593463</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>76c32ddcf851dda81831089ff9655527</srcmd5>
+    <version>1.1.0</version>
+    <time>1532681598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625266</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>073ebde4c59e5478b0d4f94ae6b46a3e</srcmd5>
+    <version>1.1.2</version>
+    <time>1537436429</time>
+    <user>maxlin_factory</user>
+    <comment>- Use noun phrase for summary. Trim request for comments from
+  description. (forwarded request 635573 from jengelh)</comment>
+    <requestid>635653</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e829109afeaf5083c13b2fe35a16c83e</srcmd5>
+    <version>1.1.2</version>
+    <time>1543223530</time>
+    <user>dimstar_suse</user>
+    <comment>- fwupd is require for thunderbolt firmware update in SLE15-SP1(fate#322681) (forwarded request 648410 from ndas)</comment>
+    <requestid>648413</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>8bc01a2b73d8fbcd7c9b564de0626295</srcmd5>
+    <version>1.1.2</version>
+    <time>1544539567</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657067</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>41c496038ae2ff0afa04a47231974147</srcmd5>
+    <version>1.1.2</version>
+    <time>1545376736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658956</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>55c4c2b9241b7547943f8c21d25b38e2</srcmd5>
+    <version>1.2.3</version>
+    <time>1548769526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667757</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a6015e40169932f305cde082b2d47861</srcmd5>
+    <version>1.2.3</version>
+    <time>1551784546</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679447</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>d1b6b5273fcc095388857dd179605ba5</srcmd5>
+    <version>1.2.3</version>
+    <time>1554930538</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692369</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>287be22c02def92f7d23225702753dc4</srcmd5>
+    <version>1.2.3</version>
+    <time>1557472165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701541</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>288280b2ded5ebdf86895a3f284afa24</srcmd5>
+    <version>1.2.8</version>
+    <time>1558782855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703101</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>29b5d2aeec291e76ff84017cdc1cbbf9</srcmd5>
+    <version>1.2.9</version>
+    <time>1561641777</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.9:
+  * Release fwupd 1.2.9
+  * trivial: Add two new translatable strings for new category types
+  * Check if the system is offline during install, rather than at startup
+  * Prompt the user to shutdown if requried when installing by ID
+  * Use the correct file extension for the offline updates cache
+  * trivial: Allow using --force to use the wrong daemon version
+  * trivial: Display the correct expected command
+  * standalone-installer: Be smarter about existing installed fwupd
+  * Add a plugin to update Synaptics Prometheus fingerprint readers
+  * trivial: standalone-installer: rename uninstall argument to cleanup
+  * fu-util: Check the daemon version is at least the client version
+  * fu-util: Check that daemon is started by expected unit
+  * fu-util-common: when stopping a daemon, check for snap too
+  * Allow using --force to trigger a duplicate offline update
+  * trivial: Allow using FuUsbDevice without a GUsbDevice
+  * trivial: Copy the icons if unset for the device child
+  * trivial: Copy the physical ID if unset for the device child
+  * trivial: Ensure the parent ID is up to date if the device ID changes
+  * trivial: Fix typo when setting the parent ID
+  * trivial: Disable the flatpak CI build
+  * Allow handling FORCE for devices that subclass FuDevice
+  * uefi: Fix a libasan failure when reading a UEFI variable
+  * trivial: Fix a memory leak found using libasan
+  * trivial: Fix an libasan failure in the dell plugin
+  * trivial: Fix some dead code spotted by coverity
+  * trivial: Fix a typo spotted by coverity
+  * trivial: Fix a missing config.h include in a new source file
+  * Dynamically read path to use for /system-update
+  * Display the remote warning on the console in an easy-to-read way (forwarded request 711904 from pluskalm)</comment>
+    <requestid>711910</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>578eb4733d5bea1f75bad4b674e5ca58</srcmd5>
+    <version>1.2.10</version>
+    <time>1564575280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718741</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>5e1370321a92502f79acffa14357aa55</srcmd5>
+    <version>1.2.10</version>
+    <time>1567848279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726463</requestid>
+  </revision>
+</revisionlist>

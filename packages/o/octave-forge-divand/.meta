@@ -1,0 +1,7 @@
+<package name="octave-forge-divand" project="openSUSE:Factory">
+  <title></title>
+  <description>divand performs an n-dimensional variational analysis (interpolation) of arbitrarily
+located observations.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-divand"/>
+</package>

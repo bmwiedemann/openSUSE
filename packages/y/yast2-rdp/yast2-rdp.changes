@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Mon Jul 22 10:05:05 UTC 2019 - knut.anderssen@suse.com
+
+- Remove network dependency completely (bsc#1142282)
+- 4.2.1
+
+-------------------------------------------------------------------
+Fri May 31 12:36:09 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Tue Feb 26 12:50:07 UTC 2019 - José Iván López González <jlopez@suse.com>
+
+- Version bump (bsc#1124009)
+- 4.1.0
+
+-------------------------------------------------------------------
+Sun Nov 25 23:37:11 UTC 2018 - Noah Davis <noahadvs@gmail.com>
+
+- Provide icon with module (boo#1109310)
+- 4.0.3
+
+-------------------------------------------------------------------
+Tue Oct 16 14:41:47 CEST 2018 - schubi@suse.de
+
+- Added license file to spec.
+
+-------------------------------------------------------------------
+Fri Aug 17 15:04:55 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Tue Jun 26 16:27:44 CEST 2018 - schubi@suse.de
+
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.0.2
+
+-------------------------------------------------------------------
+Mon Mar 12 07:40:34 UTC 2018 - knut.anderssen@suse.com
+
+- Use firewalld terminal server service definition (bsc#1079133).
+- 4.0.1
+
+-------------------------------------------------------------------
+Mon Feb  5 14:07:24 UTC 2018 - knut.anderssen@suse.com
+
+- Replace SuSEFirewall2 by firewalld (fate#323460)
+- 4.0.0
+
+-------------------------------------------------------------------
+Thu Aug  4 13:57:21 UTC 2016 - hguo@suse.com
+
+- Remove unnecessary files from source archive and fix build errors.
+- Fix firewall setup and rdp service activation for an installed
+  system. (bsc#988353 bsc#991238 bsc#988200)
+- Other tidy-ups around spec file and source code.
+
+-------------------------------------------------------------------
+Wed Jul 13 13:23:57 UTC 2016 - varkoly@suse.com
+
+- FATE#320363 Install and enable xrdp by default
+  When using the rdp proposal activate is the default.
+
+-------------------------------------------------------------------
+Tue Jun 21 04:47:51 UTC 2016 - varkoly@suse.com
+
+- FATE#320363 Install and enable xrdp by default 
+
+-------------------------------------------------------------------
+Thu Dec  4 09:51:11 UTC 2014 - jreidinger@suse.com
+
+- remove X-KDE-Library from desktop file (bnc#899104)
+
+-------------------------------------------------------------------
+Thu Sep 19 15:08:48 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Wed Jul 31 08:38:10 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Thu Mar  8 11:14:29 CET 2012 - tiwai@suse.com
+
+- Fixed module behavior when installation of requested packages
+  fails (bnc #744100)
+- 2.17.2
+
+-------------------------------------------------------------------
+Mon Jan 18 10:02:07 CET 2010 - mzugec@suse.cz
+
+- fixed rdp.desktop file (Categories)
+- 2.17.1 
+
+-------------------------------------------------------------------
+Mon Jan 26 09:16:57 2009 - dreveman@novell.com
+
+- initial version

@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>92e8ac57bdf22ac4b029b850d6d7067d</srcmd5>
+    <version>2.41</version>
+    <time>1374248370</time>
+    <user>coolo</user>
+    <comment>moving back from NonFree to Factory</comment>
+    <requestid>183576</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5d2b1c1f39490b6735ed7a8532fe649c</srcmd5>
+    <version>2.41</version>
+    <time>1374846664</time>
+    <user>coolo</user>
+    <comment>- Make this build on Factory again.
+- Cleanup the spec file.</comment>
+    <requestid>184405</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>5d2b1c1f39490b6735ed7a8532fe649c</srcmd5>
+    <version>2.41</version>
+    <time>1379665069</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>5d2b1c1f39490b6735ed7a8532fe649c</srcmd5>
+    <version>2.41</version>
+    <time>1409303753</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

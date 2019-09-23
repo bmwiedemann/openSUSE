@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>968964d7d3750cdd6bf82ad246aef416</srcmd5>
+    <version>0.8.0</version>
+    <time>1420754511</time>
+    <user>dimstar_suse</user>
+    <comment>Please accept this new RPM, use now for patch %{name}-0.8.0</comment>
+    <requestid>279957</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7e77c8c1aecec58a13375210ef78da94</srcmd5>
+    <version>0.8.1</version>
+    <time>1427445652</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293162</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>affbb7f4a3147c1a632555c0167377b4</srcmd5>
+    <version>0.8.4</version>
+    <time>1459238436</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>380520</requestid>
+  </revision>
+</revisionlist>

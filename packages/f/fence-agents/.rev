@@ -1,0 +1,714 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>14efea17adab8ed4f7e1c38b2fd7568a</srcmd5>
+    <version>4.0.3</version>
+    <time>1380188593</time>
+    <user>coolo</user>
+    <comment>Additional fence-agents for 13.1</comment>
+    <requestid>198823</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b302c951cbc4b66e13349dc7fb60d6a6</srcmd5>
+    <version>4.0.5</version>
+    <time>1383545141</time>
+    <user>coolo</user>
+    <comment>Upgrade to 4.0.5 (forwarded request 205386 from KGronlund)</comment>
+    <requestid>205449</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bb452bb9323da36df482718f5d10904d</srcmd5>
+    <version>4.0.6</version>
+    <time>1389617375</time>
+    <user>coolo</user>
+    <comment>Update to version 4.0.6</comment>
+    <requestid>213591</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>565431ea93c388c077e830c56eed26dd</srcmd5>
+    <version>4.0.7</version>
+    <time>1393394257</time>
+    <user>coolo</user>
+    <comment>Update to 4.0.7 (bug fixes)</comment>
+    <requestid>223775</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0c25100a81fc64ba11879a38822d91b4</srcmd5>
+    <version>4.0.9</version>
+    <time>1400173833</time>
+    <user>coolo</user>
+    <comment>Update to 4.0.9</comment>
+    <requestid>234136</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>eebb84bf206062a42a7cc89d3ae085b2</srcmd5>
+    <version>4.0.9</version>
+    <time>1401184831</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>235381</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f620fea41ceb6d35ee04b6105d5927db</srcmd5>
+    <version>4.0.10</version>
+    <time>1404306310</time>
+    <user>coolo</user>
+    <comment>Update to 4.0.10</comment>
+    <requestid>239160</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f620fea41ceb6d35ee04b6105d5927db</srcmd5>
+    <version>4.0.10</version>
+    <time>1409300870</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>448b986868f23ad3999a7f60d0403fa5</srcmd5>
+    <version>4.0.10</version>
+    <time>1411017177</time>
+    <user>coolo</user>
+    <comment>------------------------------------------------------------------- 
+- Backport fixes from upstream (bnc#896833):
+  + fence_brocade: Add support for 'list' action
+  + fencing: Monitor is not working correctly without 'list' or 'status'
+  + fence_apc_snmp: Add support for firmware 6.x
+  + fence_zvm: Add support for &quot;on&quot; and &quot;status&quot;
+  + fence_zvm: Add current XML metadata to test suite
+  + [build] Fix automake files, so 'make distcheck' works
+  + fencing: Add new options --ssl-secure and --ssl-insecure
+  + [tests] Update XML metadata of fence agents
+  + fence_cisco_ucs &amp; fence_vmware_soap: Logout has to be performed even when fencing fails
+  + fence_zvm: Fixes for better upstream inclusion
+  + fence_zvm: Add support for 'on', improve documentation
+- Added patches:
+  + 0001-fence_brocade-Add-support-for-list-action.patch
+  + 0002-fencing-Monitor-is-not-working-correctly-without-lis.patch
+  + 0003-fence_apc_snmp-Add-support-for-firmware-6.x.patch
+  + 0004-fence_zvm-Add-support-for-on-and-status.patch
+  + 0005-fence_zvm-Add-current-XML-metadata-to-test-suite.patch
+  + 0006-build-Fix-automake-files-so-make-distcheck-works.patch
+  + 0007-fencing-Add-new-options-ssl-secure-and-ssl-insecure.patch
+  + 0008-tests-Update-XML-metadata-of-fence-agents.patch
+  + 0009-fence_cisco_ucs-fence_vmware_soap-Logout-has-to-be-p.patch
+  + 0010-fence_zvm-Fixes-for-better-upstream-inclusion.patch
+  + 0011-fence_zvm-Add-support-for-on-improve-documentation.patch
+- Add dependency on python-requests
+
+- Update to 4.0.10:
+  * fence_scsi is reimplemented on top of fencing library
+  * fence_zvm support distributed z/VM systems</comment>
+    <requestid>249991</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>a6219abc7b54357335d6d1318f2a7ced</srcmd5>
+    <version>4.0.10</version>
+    <time>1412625892</time>
+    <user>coolo</user>
+    <comment>Add missing requirement for python-suds</comment>
+    <requestid>254112</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>174d8782f8cb0d3d7648d4f4417b12c8</srcmd5>
+    <version>4.0.10</version>
+    <time>1413263535</time>
+    <user>coolo</user>
+    <comment>--------------------------------------------------------------------
+- Backport security and bug fixes (bnc#900879) (CVE-2014-0104)
+  - fence_rhevm: Use https:// prefix also with --ssl-secure and --ssl-insecure
+  - fence_apc: --shell-timeout was used instead of --power-timeout
+  - fence_rsb: Fix 62d90e3a0827fcdc5be632bdf4103d3c08b39622
+  - fence_wti: Fix invalid &quot;eol&quot;
+  - fence_pve: Add support for --ssl-secure and --ssl-insecure
+- Added patches:
+  - 0012-fence_rhevm-Use-https-prefix-also-with-ssl-secure-an.patch
+  - 0013-fence_apc-shell-timeout-was-used-instead-of-power-ti.patch
+  - 0014-fence_rsb-Fix-62d90e3a0827fcdc5be632bdf4103d3c08b396.patch
+  - 0015-fence_wti-Fix-invalid-eol.patch
+  - 0016-fence_pve-Add-support-for-ssl-secure-and-ssl-insecur.patch</comment>
+    <requestid>255744</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>aa0deb2fd2002c7d91128816ab91b413</srcmd5>
+    <version>4.0.12</version>
+    <time>1413476107</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256909</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7cecfe289dc21761e85a6e8b1d133566</srcmd5>
+    <version>4.0.13</version>
+    <time>1419331846</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>266158</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a4cd11e39cbf6af6f7294bfa8059b7c1</srcmd5>
+    <version>4.0.14</version>
+    <time>1420754550</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.14:
+  * fence_zvmip for IBM z/VM is rewritten to Python
+  * new fence agent for Emerson devices
+  * fix invalid default ports for fence_eps and fence_amt
+  * properly escape XML in other fields of metadata
+  * a lot of refactoring and cleaning</comment>
+    <requestid>280160</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d4c6d9c0958065cba5e1cb01697df3d5</srcmd5>
+    <version>4.0.15</version>
+    <time>1423596201</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.15:
+  * Tripp Lite PDUs are now supported by fence_tripplite_snmp (symlink to 
+    fence_apc_snmp)
+  * Default values in metadata sometimes differ to those actually used, 
+    this is fixed now
+  * improvements in testing
+- Remove patch: 0001-Avoid-problem-with-broken-make-variable-expansion.patch</comment>
+    <requestid>284888</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>63fab5f5ef65e53b52207ee23291bec4</srcmd5>
+    <version>4.0.16</version>
+    <time>1426064296</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.16:
+  * fence_kdump has implemented 'monitor' action that check if local node 
+    is capable of working with kdump
+  * path to smnp(walk|get|set) can be set at runtime
+  * new operation 'validate-all' for majority of agents that checks if 
+    entered parameters are sufficient without connecting to fence 
+    device. Be aware that some checks can be done only after we receive 
+    information from fence device, so these are not tested.
+  * new operation 'list-status' that present CSV output (plug_number, 
+    plug_alias, plug_status) where status is ON/OFF/UNKNOWN</comment>
+    <requestid>290036</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d4f2885f1c190100cdb9eb82c572e39c</srcmd5>
+    <version>4.0.17</version>
+    <time>1428652267</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.17:
+  * HP iLO2 with firmware 2.27 has broken implementation of TLS negotation 
+    and SSLv3 is disabled by default (POODLE attack). Options --tls1.0 
+    (tls1.0 on stdin) was added to force using TLS v1.0. This options allows 
+    users to use that firmware with fence agents.
+  * Fence agent for AMT password was not put correctly into environment.
+  * Fix login process on bladecenter where 'last login' can occur in 
+    message of the day what mislead fence agent.
+  * Cipher for fence_ipmilan was previously set to 0. It was found out 
+    that this not good default value, we will use default value (3) of 
+    ipmitool instead.</comment>
+    <requestid>294721</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>42d4a3e9f581ef4c139e41abce348ff5</srcmd5>
+    <version>4.0.18</version>
+    <time>1434006635</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.18:
+  * fence_scsi has now implemented action 'monitor'
+    (thanks to John Ruemker)
+  * fence_scsi is now able to unfence devices added later
+    (thanks to John Ruemker)
+  * simplification of code thanks to auto-generation of help texts
+  * when 'name' is entered on STDIN instead of 'name=value', warning
+    is generated</comment>
+    <requestid>311499</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>714fd02ee72fdf496ed9dbf1ebb1a497</srcmd5>
+    <version>4.0.19</version>
+    <time>1435870256</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.19:
+  * New fence agent for Nova compute machines (thanks to Andrew 
+    Beekhof and Fabio)
+  * Fixed issues with whitespaces in few fence agents (thanks to 
+    Christoph Berg)
+  * User of RHEV-M can have less privileges with updated 
+    fence_rhevm (thanks to Rik Theys)
+  * Verbose output now captures also text before command prompt is 
+    found
+  * Support for HP Integrity Superdome X was added to fence_hpblade 
+    (thanks to Han Pilmeyer)
+  * Fence agent for IBM z/VM now uses API that require less resource 
+    of device</comment>
+    <requestid>314749</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>620989d08021d6e9e575d4a4f02e7915</srcmd5>
+    <version>4.0.20</version>
+    <time>1439385228</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.0.20</comment>
+    <requestid>321949</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fa70f7af5c512a09761234e2af9d9552</srcmd5>
+    <version>4.0.21</version>
+    <time>1444833929</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.21:
+  * Documentation of new actions in manual pages is improved
+  * Tests were improved and Travis CI is now used for every push
+  * fence_virsh has new option --missing-as-off to support older XEN hosts
+  * fence_ilo(2) now automatically attempts to use TLS1.0 if it is not 
+    possible to connect via SSLv3
+  * fence_mpath re-create SCSI keys after reboot, monitoring of devices 
+    were improved too (forwarded request 338317 from aspiers)</comment>
+    <requestid>338356</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1578ec7968395e4ca3922e82b6e6bd79</srcmd5>
+    <version>4.0.22</version>
+    <time>1452850879</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.22:
+  * New fence agent for VirtualBox
+  * A lot of changes in fence_compute (OpenStack)
+  * Re-enable fence_zvm
+  * Support for APC firmware v6.x
+  * Add hard-reboot option for fence_scsi_check script
+  * Add option for setting Docker Remote API version
+  * Fix HP Brocade fence agent (timeout settings, deprecated options)
+  * New action 'diag' for fence_ipmi</comment>
+    <requestid>353424</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>139768346e5a52944cc7cea5796cbb13</srcmd5>
+    <version>4.0.22</version>
+    <time>1453998282</time>
+    <user>dimstar_suse</user>
+    <comment>- Package fence_dummy in fence-agents-devel package
+- Clean up package</comment>
+    <requestid>356263</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>06ed6cebe9f0053dc13debe38558e955</srcmd5>
+    <version>4.0.22+git.1455008135.15c5e92</version>
+    <time>1457353384</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.22+git.1455008135.15c5e92:
+  + fence_cisco_ucs: Obtain status of device from different endpoint
+  + fence_cisco_ucs: Add --missing-as-off
+- Patches for fence_compute (fate#320346) (bsc#964748)
+  - fence_compute: Add --insecure command line argument
+  - fence_compute: Add --region-name command line argument
+  - fence_compute: Create nova client with API 2.11
+  - fence_compute: Fix disabling force_down on node when action is on
+  - fence_compute: Evacuate instances on all tenants
+  - fence_compute: On list, don't list hypervisors but nova-compute services
+  - fence_compute: Only list nova-compute services when getting status
+  - fence_compute: Deprecate the domain option
+- Add 0001-fence_compute-Add-insecure-command-line-argument.patch
+- Add 0002-fence_compute-Add-region-name-command-line-argument.patch
+- Add 0003-fence_compute-Create-nova-client-with-API-2.11.patch
+- Add 0004-fence_compute-Fix-disabling-force_down-on-node-when-.patch
+- Add 0005-fence_compute-Evacuate-instances-on-all-tenants.patch
+- Add 0006-fence_compute-On-list-don-t-list-hypervisors-but-nov.patch
+- Add 0007-fence_compute-Only-list-nova-compute-services-when-g.patch
+- Add 0008-fence_compute-Deprecate-the-domain-option.patch</comment>
+    <requestid>360786</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>80b8222445c77c0ad455090bd9894e50</srcmd5>
+    <version>4.0.23</version>
+    <time>1467360061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.23:
+  * A lot of changes in fence_compute (OpenStack compute instance)
+  * Obtain status of nodes from Cisco UCS correctly
+  * New fence agent for AMT using openwsman
+  * Python3 support
+  * Fence agent for PVE can be used by non-root users
+  * Parallel building and testing of fence agents
+  * Fix occasional failures of APC fence agent
+- Updated fence_compute patch set:
+  - Add 0001-fence_compute-Create-nova-client-with-API-2.11.patch
+  - Add 0002-fence_compute-Keep-compatibility-with-python-novacli.patch
+  - Add 0003-fence_compute-Only-list-nova-compute-services-when-g.patch
+  - Add 0004-fence_compute-Don-t-list-hypervisors-but-nova-comput.patch
+  - Add 0005-fence_compute-Do-not-override-domain-if-it-is-alread.patch
+  - Add 0006-fence_compute-Fix-use-of-undefined-variable.patch
+  - Add 0007-fence_compute-Fix-fix_domain-to-not-return-too-early.patch
+  - Add 0008-fence_compute-Fix-fix_plug_name-when-looking-if-plug.patch
+  - Add 0009-fence_compute-Fix-disabling-force_down-on-node-when-.patch
+  - Remove 0001-fence_compute-Add-insecure-command-line-argument.patch
+  - Remove 0002-fence_compute-Add-region-name-command-line-argument.patch
+  - Remove 0003-fence_compute-Create-nova-client-with-API-2.11.patch
+  - Remove 0004-fence_compute-Fix-disabling-force_down-on-node-when-.patch
+  - Remove 0005-fence_compute-Evacuate-instances-on-all-tenants.patch
+  - Remove 0006-fence_compute-On-list-don-t-list-hypervisors-but-nov.patch
+  - Remove 0007-fence_compute-Only-list-nova-compute-services-when-g.patch
+  - Remove 0008-fence_compute-Deprecate-the-domain-option.patch</comment>
+    <requestid>405627</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>4fb2e1e44073d3f43b718b29677da7f1</srcmd5>
+    <version>4.0.24</version>
+    <time>1472478138</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.24:
+  * Improve obtaining status on Cisco UCS devices
+  * Fix issues with symlink installations
+  * Fix documentation for fence_scsi and fence_mpath</comment>
+    <requestid>423098</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2a8bd6833a65a95fa5c2d262efa685f5</srcmd5>
+    <version>4.0.24+git.1480563949.e67fcd4</version>
+    <time>1480786036</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.24+git.1480563949.e67fcd4:
+  * fence_azure_arm: add fencing agent for Azure Resource Manager
+  * fence_lpar: Add support for IVM
+  * fence_lpar: Handle exceptions when invalid output is read
+  * fence_zvmip: Update XML metadata
+  * fence_compute: fix ConnectionError by using full module name
+  * fence_powerman: add fence agent for powerman
+  * Suppress InsecureRequestWarning when ssl_insecure is given
+  * compute: Correctly handle installations without tagged flavours
+  * compute: Use the best available nova API version
+  * compute: correctly implement 'on' when the force-down API call is available
+  * compute: Correctly identify when the nodename already includes the supplied domain
+  * compute: Ensure we can connect to nova when fixing the plug name
+  * compute: Simpler check for nova force down compatibility
+- Rebase and remove merged patches:
+  * Remove 0001-fence_compute-Create-nova-client-with-API-2.11.patch
+  * Remove 0002-fence_compute-Keep-compatibility-with-python-novacli.patch
+  * Remove 0003-fence_compute-Only-list-nova-compute-services-when-g.patch
+  * Remove 0004-fence_compute-Don-t-list-hypervisors-but-nova-comput.patch
+  * Remove 0005-fence_compute-Do-not-override-domain-if-it-is-alread.patch
+  * Remove 0006-fence_compute-Fix-use-of-undefined-variable.patch
+  * Remove 0007-fence_compute-Fix-fix_domain-to-not-return-too-early.patch
+  * Remove 0008-fence_compute-Fix-fix_plug_name-when-looking-if-plug.patch
+  * Add 0001-fence_compute-Only-list-nova-compute-services-when-g.patch
+  * Add 0002-fence_compute-Don-t-list-hypervisors-but-nova-comput.patch
+  * Add 0003-fence_compute-Do-not-override-domain-if-it-is-alread.patch
+  * Add 0004-fence_compute-Fix-handling-of-domain-None.patch
+  * Add 0005-fence_compute-Fix-fix_domain-to-not-return-too-early.patch
+  * Add 0006-fence_compute-Fix-fix_plug_name-when-looking-if-plug.patch
+  * Add 0007-fence_compute-Remove-duplicate-check-for-binary-name.patch</comment>
+    <requestid>443140</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f1c69991c9efd773de9095a93b7cb7c2</srcmd5>
+    <version>4.0.25+git.1485179354.eb43835</version>
+    <time>1486046736</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.25+git.1485179354.eb43835:
+  * Ironic fence agent
+  * fencing: Add --quiet option to disable logging to stderr
+  * fence_powerman: fix typo in option powerman-path
+  * fence_cisco_ucs: Commands sent to Cisco UCS are changed to
+- Drop merged patch:
+  * Remove 0008-Fix-travis.patch</comment>
+    <requestid>453978</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>dbeaa45550c6908faa7d7cd0b59f6b24</srcmd5>
+    <version>4.0.25+git.1485179354.eb43835</version>
+    <time>1486857036</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport fence_compute (fate#320346) (bsc#964748)</comment>
+    <requestid>455747</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>1092384d0d79b36e432b33b04685d5b6</srcmd5>
+    <version>4.0.25+git.1485179354.eb43835</version>
+    <time>1487261150</time>
+    <user>dimstar_suse</user>
+    <comment>- Downgrade some agent-specific dependencies to recommends (bsc#1025149)
+  * Add 0010-Make-pywsman-dependency-optional.patch</comment>
+    <requestid>457112</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>2951a87bcd8601ce290eec1b3c5902ab</srcmd5>
+    <version>4.0.25+git.1501671877.7bae40a0</version>
+    <time>1504103095</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove deprecated agents
+  * Remove fence_ovh
+  * Remove fence_drac
+  * Remove fence_vmware_soap
+- Drop dependency on python-suds
+- Update package description
+
+- Update to version 4.0.25+git.1501671877.7bae40a0:
+  * fence_ipmilan: add target support
+  * Explicitly use version 3 of the oVirt API
+  * fence_rhevm: fix &quot;--api-path must not have an argument&quot; issue
+  * Convert URLs passed to pycurl to ASCII
+  * fence_vbox: Add support for host on MacOS
+  * fence_vbox: Add support for Windows host
+  * fence_compute: fix to avoid breaking nova
+  * fence_ipmilan: fix target support
+  * fence_vmware_soap: fix for selfsigned certificate
+  * fence_ipmilan: Add support for hexadecimal format of Kg key
+  * fence_azure_arm: fix hardcoded path
+  * fence_azure_arm: remove release/build info
+  * fence_ipmilan: Fix inconsistency between help and manual page (defalt for --method)
+  * fence_scsi: add FIPS support
+  * fence_ipmilan: fix indentation
+  * fencing_snmp: fix timemout typo
+- Drop outdated patch:
+  * 0010-Make-pywsman-dependency-optional.patch</comment>
+    <requestid>519659</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>a48e9bb015fbda33e52deebcb8576ad7</srcmd5>
+    <version>4.0.25+git.1501671877.7bae40a0</version>
+    <time>1507755792</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533175</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>592d8491bcf6af579e96ef20ee3baab2</srcmd5>
+    <version>4.0.25+git.1509350522.8d6f8530</version>
+    <time>1509722692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.25+git.1509350522.8d6f8530 (bsc#1065966):
+  * Use Python 3 for all scripts
+  * compute: Fix unfencing and ensure fencing occurs in partial up/down states
+  * compute: Split out evacation functionality
+  * compute: Handle differences in Nova API argument passing
+  * fence_zvm: fix &quot;uintptr_t&quot; undeclared
+  * fence_ifmib: fix README typo(s)
+- Add patch:
+  * 0001-Use-Python-3-for-all-scripts-bsc-1065966.patch
+- Remove merged patches:
+  * 0001-fence_compute-Only-list-nova-compute-services-when-g.patch
+  * 0002-fence_compute-Don-t-list-hypervisors-but-nova-comput.patch
+  * 0003-fence_compute-Do-not-override-domain-if-it-is-alread.patch
+  * 0004-fence_compute-Fix-handling-of-domain-None.patch
+  * 0005-fence_compute-Fix-fix_domain-to-not-return-too-early.patch
+  * 0006-fence_compute-Fix-fix_plug_name-when-looking-if-plug.patch
+  * 0007-fence_compute-Remove-duplicate-check-for-binary-name.patch
+  * 0009-fence_compute-Fix-disabling-force_down-on-node-when-.patch</comment>
+    <requestid>538041</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>7e2832dfd91710cbcf31d0f598fd8da2</srcmd5>
+    <version>4.0.25+git.1509350522.8d6f8530</version>
+    <time>1511274950</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend openwsman-python3, not python-openwsman (bsc#1069137)</comment>
+    <requestid>544095</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>43155a0d13d4ca28a110e86262974ff8</srcmd5>
+    <version>4.0.25+git.1516265527.7ab202cf</version>
+    <time>1518025373</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.25+git.1516265527.7ab202cf (bsc#1074000):
+  * fence_ilo3: default to onoff
+  * fence_compute: Add support for keystone v3 authentication
+  * fence_ilo_ssh: fix hard reset
+  * fence_vmware_rest: new agent</comment>
+    <requestid>573720</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>83e0e088049561b466af076aaeee3cfb</srcmd5>
+    <version>4.0.25+git.1518188333.853850c3</version>
+    <time>1518426965</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.25+git.1518188333.853850c3:
+  * heuristics_ping: fix for python3 TypeError</comment>
+    <requestid>575475</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4f9a1178be336f8c4d402e00d402958a</srcmd5>
+    <version>4.0.25+git.1523367910.7473fab7</version>
+    <time>1523616625</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 4.0.25+git.1523367910.7473fab7:
+  * Add fence_gce: Google Compute Engine fence support (fate#325539) (bsc#1088358)
+  * Low: fence_scsi: Remove period from cmd string
+  * fence_compute/fence_evacuate: revert to old parameters
+  * fence_azure_arm: implement network-fencing (w/library from @MSSedusch)
+  * fence_mpath: Correction of command line which argument is not correctly recognized
+  * Mid: fence_docker: Exclude slashes from the list.
+  * fence_pve : choose vm type either lxc or qemu</comment>
+    <requestid>595782</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>fcacd7a97291db4bde87a260010ead88</srcmd5>
+    <version>4.0.25+git.1524215631.8f9c770a</version>
+    <time>1524742735</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.25+git.1524215631.8f9c770a:
+  * fence_gce: Write error messages to log (fate#325539) (bsc#1088358)
+  * fence_azure_arm: fix subscriptionId from metadata (bsc#1090995)
+  * fence_scsi: fix plug-parameter and keep support for nodename to avoid regressions
+
+- Disable Google Compute Engine support unless openSUSE (fate#325539) (bsc#1088358)</comment>
+    <requestid>601100</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>ce3b2cadf253179afbf86e945ed6dbc0</srcmd5>
+    <version>4.0.25+git.1524215631.8f9c770a</version>
+    <time>1526646462</time>
+    <user>dimstar_suse</user>
+    <comment>- run_command: fix Python 3 encoding issue (bsc#1082871)
+- fence_gce: use default credentials from googleapiclient
+- fence_gce: fix regression - missing import oauth2client.client
+- fence_gce: fix regression - missing import googleapiclient.discovery
+- Add 0002-fence_gce-fix-regression-missing-import-googleapicli.patch
+- Add 0003-fence_gce-fix-regression-missing-import-oauth2client.patch
+- Add 0004-fence_gce-use-default-credentials-from-googleapiclie.patch
+- Add 0005-run_command-fix-Python-3-encoding-issue.patch</comment>
+    <requestid>610127</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>8ea733a97e3cac4d8298d17ad326ae1a</srcmd5>
+    <version>4.2.1+git.1529316875.1a39345b</version>
+    <time>1529667294</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 4.2.1+git.1529316875.1a39345b:
+  * fence_vmware_soap: fix Python 3 suds issue
+  * Added python-novaclient and python-keystoneclient in configure.ac
+  * novaclient 1.1 depcrecated, so making changes for novaclient
+  * Python keystoneclient also included to pacify CI
+  * Changed travis to include pythomn-novaclient
+  * Fencing Agent for Openstack
+  * fence_scsi: fix python3 encoding error #206
+  * fence_ipmilan: add missing fence_ilo3 and fence_ilo4 metadata
+  * fence_scsi: match device names using re.MULTILINE to avoid duplicating names in /var/run/cluster/fence_scsi.dev
+  * fence_gce: use default credentials from googleapiclient
+  * run_command: fix Python 3 encoding issue
+- Drop merged patches:
+  * Remove 0002-fence_gce-fix-regression-missing-import-googleapicli.patch
+  * Remove 0003-fence_gce-fix-regression-missing-import-oauth2client.patch
+  * Remove 0004-fence_gce-use-default-credentials-from-googleapiclie.patch
+  * Remove 0005-run_command-fix-Python-3-encoding-issue.patch
+- Enable GCE fence agent for all targets (fate#325539) (bsc#1088358)
+- Enable fence_openstack agent (bsc#1097803)</comment>
+    <requestid>618070</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>9be6ef2aeb4e349db6ec45875c4555d6</srcmd5>
+    <version>4.2.1+git.1529316875.1a39345b</version>
+    <time>1530087705</time>
+    <user>dimstar_suse</user>
+    <comment>- Unify spec file for python 2 and 3
+- Enable build for python 2
+  * Add 0002-Build-without-openwsman-installed.patch</comment>
+    <requestid>618996</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>7c68de0c73a331ed16f537da7abc9fd4</srcmd5>
+    <version>4.2.1+git.1529316875.1a39345b</version>
+    <time>1530191588</time>
+    <user>dimstar_suse</user>
+    <comment>- Unify source package with SLE 12 and Leap 42:
+  * fencing: include timestamps when logging to STDERR and debug file (bsc#1049852)
+- Obsoletes the following patches (SLE 12 and Leap 42):
+  * 0001-fence_compute-Only-list-nova-compute-services-when-g.patch
+  * 0002-fence_compute-Don-t-list-hypervisors-but-nova-comput.patch
+  * 0003-fence_compute-Do-not-override-domain-if-it-is-alread.patch
+  * 0004-fence_compute-Fix-handling-of-domain-None.patch
+  * 0005-fence_compute-Fix-fix_domain-to-not-return-too-early.patch
+  * 0006-fence_compute-Fix-fix_plug_name-when-looking-if-plug.patch
+  * 0007-fence_compute-Remove-duplicate-check-for-binary-name.patch
+  * 0009-fence_compute-Fix-disabling-force_down-on-node-when-.patch
+  * 0010-Make-pywsman-dependency-optional.patch
+  * 0011-fencing-include-timestamps-when-logging-to-STDERR-an.patch</comment>
+    <requestid>619356</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>1b1337d9cff3ad912680b99857ae0ee1</srcmd5>
+    <version>4.2.1+git.1532964592.3ae5b58e</version>
+    <time>1534321989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2.1+git.1532964592.3ae5b58e:
+  * fence_aliyun: Add Aliyun fence agent. (fate#326557)
+  * fence_gce: add power cycle as default method
+  * fence_gce: set project and zone as not required
+  * fence_gce: add support for stackdriver logging
+  * fence_ilo3/fence_ipmilan: show correct default method (onoff) in help
+  * fence_mpath: add watchdog support
+  * fence_amt_ws: create metadata without agent specific libs
+- Drop obsolete patch:
+  * Remove 0002-Build-without-openwsman-installed.patch</comment>
+    <requestid>628434</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>a9fd984db677198a69dd91f4ef1747ea</srcmd5>
+    <version>4.2.1+git.1537269352.7b1fd536</version>
+    <time>1538117571</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2.1+git.1537269352.7b1fd536:
+  * fence_vmware_soap: cleanup when receiving SIGTERM
+  * fence_cisco_ucs: encode POSTFIELDS
+  * Update fence_rcd_serial to correct vendor URL
+  * fence_aliyun: correct indentation for *key in help
+  * fence_aliyun: list instance names and show up to 100 instances (fate#326557)
+  * fence-rhevm: improve error reporting.
+  * fence_impilan/fence_ilo_ssh: iLO5-support
+  * fence_rhevm: improve indentation and metadata
+  * fence_compute/fence_evacuate/fence_rhevm: dont use has_key (not supported in Python 3)
+  * fence_rhevm fixing help for plug param
+  * fence_kdump: fix strncpy issue
+  * fence_evacuate: fix evacuable tag mix issue</comment>
+    <requestid>638330</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>feee2d4cc679b683f54b14993bd3d7c4</srcmd5>
+    <version>4.4.0+git.1558595666.5f79f9e9</version>
+    <time>1560971224</time>
+    <user>dimstar_suse</user>
+    <comment>- Split fence_amt_ws into separate package due to licence incompatibility:
+   * Apache-2.0 is not compatible with GPL-2.0
+- Update to version 4.4.0+git.1558595666.5f79f9e9:
+  * fence_scsi: detect node ID using new format, and fallback to old format before failing
+  * fence_rhevm: fix debug encoding issues (bsc#1137314) (CVE-2019-10153)
+  * fence_mpath: import ctypes to fix watchdog hardreboot
+  * fence_rhevm: add RHEV v4 API support and auto-detection
+  * fence_azure_arm: use skip_shutdown feature when available
+  * fence_ipmilan: Add ipmitool timeout option
+  * fence_redfish: add headers to HTTP methods
+  * fence_gce: fix Python 3 encoding issue
+  * fence_pve: add support for sending reset command to qemu machines (#261)
+  * fencing: improve stdin parse function
+  * fence_redfish: backwards compatibility for &lt;ip&gt;:&lt;port&gt;
+
+- Update to version 4.2.1+git.1550476590.98767d24:
+  * fence_redfish: use &quot;ipport&quot; parameter and improve logging (fate#320898)
+  * Changed Encoding to UTF-8 (bsc#1137314) (CVE-2019-10153)
+  * fence_redfish: fail when using invalid cert without --ssl-insecure (fate#320898)
+  * Removed unnecessary variable assignments to simplify code
+  * fence_scsi: watchdog retries support
+  * Renamed variable to avoid reusing variable name
+  * Replaced default port 443 with default ssl enabled option
+  * Changed reboot type to ForceRestart
+  * Modify power status check
+  * Added run_delay()
+  * Updated fence_redfish.xml with make xml-upload (fate#320898)
+  * Add new fence agent for Redfish (fate#320898)
+  * build: fix issues with newer autoconf versions
+  * build: fix if-redirection to make check_used_options run for the agents as intended</comment>
+    <requestid>709349</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>1289633b37ef3fef30ff7c9011e797b5</srcmd5>
+    <version>4.4.0+git.1558595666.5f79f9e9</version>
+    <time>1562073502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712824</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>b65eaa30a4e85a67273e0310558c869c</srcmd5>
+    <version>4.4.0+git.1568100905.307de6f2</version>
+    <time>1568379653</time>
+    <user>lnussel_factory</user>
+    <comment></comment>
+    <requestid>730358</requestid>
+  </revision>
+</revisionlist>

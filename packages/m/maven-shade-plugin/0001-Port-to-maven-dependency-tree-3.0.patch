@@ -1,0 +1,30 @@
+From b5f9a9c64f42b7452681dc53e67e8cbae4de1105 Mon Sep 17 00:00:00 2001
+From: Mikolaj Izdebski <mizdebsk@redhat.com>
+Date: Mon, 12 Oct 2015 16:40:07 +0200
+Subject: [PATCH] Port to maven-dependency-tree 3.0
+
+---
+ .../org/apache/maven/plugins/shade/mojo/ShadeMojo.java     | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/main/java/org/apache/maven/plugins/shade/mojo/ShadeMojo.java b/src/main/java/org/apache/maven/plugins/shade/mojo/ShadeMojo.java
+index d7011f9..02450a2 100644
+--- a/src/main/java/org/apache/maven/plugins/shade/mojo/ShadeMojo.java
++++ b/src/main/java/org/apache/maven/plugins/shade/mojo/ShadeMojo.java
+@@ -1138,7 +1138,12 @@ public class ShadeMojo
+                                          List<Dependency> transitiveDeps )
+                                              throws DependencyGraphBuilderException
+     {
+-        DependencyNode node = dependencyGraphBuilder.buildDependencyGraph( project, null );
++        ProjectBuildingRequest projectBuildingRequest =
++                new DefaultProjectBuildingRequest( session.getProjectBuildingRequest() );
++        projectBuildingRequest.setLocalRepository( localRepository );
++        projectBuildingRequest.setRemoteRepositories( remoteArtifactRepositories );
++        projectBuildingRequest.setProject( project );
++        DependencyNode node = dependencyGraphBuilder.buildDependencyGraph( projectBuildingRequest, null );
+         boolean modified = false;
+         for ( DependencyNode n2 : node.getChildren() )
+         {
+-- 
+2.17.1
+

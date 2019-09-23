@@ -1,0 +1,265 @@
+-------------------------------------------------------------------
+Mon May 27 14:45:12 UTC 2019 - Jon Brightwell <jon@moozaad.co.uk>
+
+- Tumbleweed needs gimp-plugins-python & python-xml
+- Update to version 0.5.5:
+  * Add: Sprites for group liveries
+  * Update translations: 
+  	Czech
+    German
+    Hungarian
+    Japanese
+    Norwegian (bokmal)
+    Russian
+    Serbian
+    Slovak
+    Swedish
+    Tamil
+
+-------------------------------------------------------------------
+Tue Jan  2 17:38:25 UTC 2018 - zaitor@opensuse.org
+
+- Update to version 0.5.4:
+  * Updated translations.
+- Changes from version 0.5.3:
+  * Fix: [Makefile] Missing Makefile target bundle_zsrc.
+  * Fix: REPO_DATE was set to current date instead of commit date.
+  * Fix #7669: Make unix2dos an optional build requirement.
+  * Cleanup: Merge musa.ini into bananas.ini.
+  * Cleanup: Remove pointless link from GRF description. OpenTTD
+    can display readmes directly meanwhile.
+  * Cleanup: [Makefile] BUNDLE_FILES is set by the regular Makefile
+    just fine already.
+  * Cleanup: [Makefile] OBG descriptions are generated from lang
+    files meanwhile.
+  * Cleanup: Make use of sprites/graphics_source_lists (again?).
+  * Cleanup: hgignore.
+  * Updated translations.
+
+-------------------------------------------------------------------
+Wed May 20 08:44:34 UTC 2015 - dimstar@opensuse.org
+
+- Be less restrictive with the nml BuildRequires: any
+  version >= 0.3.1 will do.
+
+-------------------------------------------------------------------
+Sun Apr 26 13:04:55 UTC 2015 - mailaender@opensuse.org
+
+- update to 0.5.2
+  - Maintenance release with additional sprites to support OpenTTD 1.5.0
+  - Disable MD5 checksum tests (we use Unix line endings now)
+
+-------------------------------------------------------------------
+Sat Jun 14 16:02:43 UTC 2014 - mailaender@opensuse.org
+
+- update to 0.5.1
+  - Change/Fix: [Makefile] Re-introduce target 'clean-gfx' and have 'clean' remove the gimp script files (blathijs)
+  - Change: [Makefile] No point to bundle .hgtags .hgignore and .devzone files with source bundles
+  - Change: [Makefile] Use a temporary filename for custom_tags.txt and only update it, if the results would differ from the existing one
+  - Change: [Makefile] Cache custom_tags.txt and don't always re-build it
+  - Add: [Makefile] musa.ini for upload to bananas
+  - Fix: [Makefile] Install into the baseset dir, not the NewGRF dir
+  - Fix: create md5sum file for distribution and local check with the same rule (blathijs)
+  - Fix: Reinstate the possibility to (not) install documentation and to choose a separate install dir for them
+  - Fix: [Makefile] Use the same variable name for changelog, readme and license files (blathijs)
+  - Fix: [Makefile] Don't fail to build from fresh clones
+  - Fix: [Makefile] Don't remove used scripts
+  - Fix: [Makefile] More woes with custom_tags.txt and installation (blathijs)
+  - Cleanup: Remove unused files from script dir
+  - Cleanup: Remove more unused files
+- upstream changed to LZMA compression
+
+-------------------------------------------------------------------
+Wed Jul  3 11:20:19 UTC 2013 - suse@ammler.ch
+
+- update to 0.4.7
+  - Feature: GUI sprites for window default size and story book
+  - Add: Scottish Gaelic description
+  - Fix: [Makefile] Disallow automatic inclusion of default c headers by gcc 4.8
+- revert change by pgajdos for gcc 4.8 since upsteam does support it already
+  - remove patch openttd-opengfx-gcc48.patch
+
+-------------------------------------------------------------------
+Tue Jun 25 13:25:11 UTC 2013 - pgajdos@suse.com
+
+- fix build with gcc 4.8
+  * openttd-opengfx-gcc48.patch
+  
+-------------------------------------------------------------------
+Sat Dec 29 10:48:09 UTC 2012 - suse@ammler.ch
+
+- update to 0.4.6.1
+  - Feature: GUI sprites for delete buttons introduced in OpenTTD r24749
+  - Feature: Happyness indicators in town list (issue #3928)
+
+-------------------------------------------------------------------
+Thu Sep 27 17:59:36 UTC 2012 - suse@ammler.ch
+
+- update to 0.4.5
+  - Feature: Happyness indicators in town list (issue #3928)
+
+-------------------------------------------------------------------
+Mon Apr 16 10:16:15 UTC 2012 - suse@ammler.ch
+
+- update 0.4.4
+  - Change: Don't let the road works flash that much (issue #3395)
+  - Add: [Makefile] Introduce target 'clean-gfx' which deletes png files which can be re-built from source and allow 'maintainer-clean' to delete the opengfx.check.md5
+  - Add: More font sprites (issue #3578)
+  - Fix: Landing lights were inoperational for helipad and some broken at the heliport (issue #3709)
+  - Fix: German semaphore signals were not available anymore (issue #3429)
+  - Fix: Broken river borders at sea level (issue #3562)
+  - Fix: Add GridDesert to terrain.xcf and fix spelling of GridTropical (issue #3769)
+  - Fix: Wrong wanter pixels on some river and coast tiles (issue #3714)
+
+-------------------------------------------------------------------
+Mon Feb 20 11:23:14 UTC 2012 - suse@ammler.ch
+
+- upstream update 0.4.3
+  - Feature: Support for the baseset part of railtype-specific tunnel sprites
+  - Change: Update for a number of font glyphs (issue #3578)
+  - Fix / Revert: OpenTTD 1.1.5 and earlier requires some characters to be defined 
+    via glyphs as the actionA is not sufficient for those versions (issue #3960)
+
+-------------------------------------------------------------------
+Thu Feb  9 18:27:36 UTC 2012 - suse@ammler.ch
+
+- upstream update 0.4.2
+  - Fix: [Makefile] Force makefile to build with one thread only 
+    as gimp might barf on running in parallel (issue #3439)
+  - Fix: [Makefile] Don't remove the reference md5 file when 
+    using maintainer-clean (issue #3440)
+  - Fix: The grfID of the extra grf was wrong... and would be found as NewGRF
+  - Fix: sprite are out-of-bound (issue #3667)
+
+-------------------------------------------------------------------
+Sat Dec 31 18:09:13 UTC 2011 - suse@ammler.ch
+
+- upstream update 0.4.1
+  * Fix: Monospace fonts must not be available for OpenTTD prior to 1.2.0
+- updates with 0.4.0
+  * Feature: More and improved characters for all fonts (issue #3314)
+  * Feature: Monospaced font 'liberation mono'
+  * Feature: Snow transition aware locks (issue #3302)
+  * Feature: Respect snow density for river tiles (issue #3011)
+  * Change: Convert project to NML source
+  * Add: [Makefile] Allow to generate png files directly from the xcf if gimp is present
+- new requires:
+  * nml (instead grfcodec)
+  * gimp (sprites are generated by combinging different layers)
+
+-------------------------------------------------------------------
+Sun Oct  9 12:48:46 UTC 2011 - ammler@openttdcoop.org
+
+- upstream update 0.3.7
+  * Feature: GUI sprites for autoreplace status for vehicle groups
+  * Feature: Snow-aware buoy
+- updates with 0.3.6
+  * Feature: New sprites for fruit and rubber plantations
+  * Feature: Separate water for rivers
+  * Feature: New park sprites to match trees and river water (issue #3081)
+  * Feature: New road side trees to match other trees for temperate and arctic (issue #3081)
+  * Feature: Improved construction stages for some tiles of the food processing plant
+  * Feature: More undulating riverbanks for flat river tiles (issue #3011)
+- requires grfcodec 5.1.2
+
+-------------------------------------------------------------------
+Sun Aug 21 08:27:56 UTC 2011 - ammler@openttdcoop.org
+
+- upstream update 0.3.5
+  * Feature: New sprite for a sawmill tile
+  * Feature: New sprites for Food Processor
+  * Feature: Update to tropic rail wagons
+  * Feature: New rubber wagon sprites to match rail wagons rather 
+    than monolev wagons
+  * Feature: New sprites for arctic CS2400 and MJS 1000
+  * Feature: Temperate locomotives resized to 28px
+  * Feature: New ground tile for toyland buildings
+  * Fix: Tropic food monolev wagon was invisible
+  * Fix: New forest ground tile shows holes where trees used to sit 
+    in invisible industries mode
+- mode "localonly" to download service
+
+-------------------------------------------------------------------
+Tue May 24 22:29:48 UTC 2011 - ammler@openttdcoop.org
+
+- upstream update 0.3.4
+  * new trees and water shores
+  * better transparency view of some industries
+
+-------------------------------------------------------------------
+Fri Apr  1 20:20:45 UTC 2011 - ammler@openttdcoop.org
+
+- upstream update 0.3.3
+  * part of source is built with nml, but the generated files are 
+    in the source too (to omit nml requirement)
+  * fix some graphic glitches
+
+-------------------------------------------------------------------
+Thu Dec 23 10:06:43 UTC 2010 - ammler@openttdcoop.org
+
+- upstream update 0.3.2
+  * source graphics are pngs now (requires grfcodec >= 5.1)
+  * many improvements for climate toyland
+
+-------------------------------------------------------------------
+Sun Oct 31 16:26:15 UTC 2010 - ammler@openttdcoop.org
+
+- upstream update 0.3.1
+  * Name change to openttd-opengfx to make name compliment to 
+    other distros
+
+-------------------------------------------------------------------
+Thu Apr 29 20:31:57 UTC 2010 - Marcel Gmür <ammler@openttdcoop.org>
+
+- upstream update 0.2.4
+  * Fix: Adjust alignment of all rail vehicles
+  * Feature: Slightly better PBS signals graphics - should be more visible
+  * Feature: Improve entrance roof of office building 
+
+-------------------------------------------------------------------
+Wed Mar 31 11:59:27 UTC 2010 - Marcel Gmür <ammler@openttdcoop.org>
+
+- upstream update 0.2.3
+  * Fix: md5sum check
+
+-------------------------------------------------------------------
+Sun Mar 28 13:15:55 UTC 2010 - Marcel Gmür <ammler@openttdcoop.org>
+
+- upstream update 0.2.2
+  * Feature: GUI icon for NewGRF debug mode
+  * Feature: [Makefile] Add md5sum checklist to source bundle
+  * Change: [Makefile] Rename 'INSTALLDIR' into 'INSTALL_DIR', marking 'INSTALLDIR' as deprecated
+- add macro check
+
+-------------------------------------------------------------------
+Sat Feb 27 01:50:21 UTC 2010 - ammler@openttdcoop.org
+
+- no dummy sample.cat needed anymore, OpenTTD 1.0 has open
+  sound support
+
+-------------------------------------------------------------------
+Wed Dec 23 2009 - Marcel Gmür <ammler@openttdcoop.or>
+
+- upstream update 0.2.1
+
+-------------------------------------------------------------------
+Thu Dec 10 2009 - Marcel Gmür <ammler@openttdcoop.or>
+
+- upstream update 0.2.0
+- package rename to openttd-data-opengfx
+- BuildRequirment openttd-data removed
+
+-------------------------------------------------------------------
+Mon Sep 21 2009 - Marcel Gmür <ammler@openttdcoop.org>
+
+- update to 0.1.1
+- docs in unix format now
+- release targets for make
+- no subfolder games from datadir
+
+-------------------------------------------------------------------
+Fri Sep 18 2009 - Marcel Gmür <ammler@openttdcoop.org>
+
+- added nforenum
+- openttd is required for building
+- imported spec from fedoraproject.org (Felix "heffer" Kaechele)

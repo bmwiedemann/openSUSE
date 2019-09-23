@@ -1,0 +1,8 @@
+<package name="perl-MooseX-Object-Pluggable" project="openSUSE:Factory">
+  <title>perl-MooseX-Object-Pluggable</title>
+  <description>LONG DESCRIPTION
+GOES
+HERE
+  </description>
+  <devel project="devel:languages:perl" package="perl-MooseX-Object-Pluggable"/>
+</package>

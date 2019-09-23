@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Sun Sep 24 08:10:16 UTC 2017 - coolo@suse.com
+
+- add FastCGI-perl526.patch as perl 5.26 no longer has . in @INC
+
+-------------------------------------------------------------------
+Sat Dec 20 11:57:22 UTC 2014 - jengelh@inai.de
+
+- "libfcgi++-0" package name is wrong (should be "libfcgi++0");
+  change to libfcgi0 (due to libfcgi.so.0 being present, which is
+  the main one).
+- Remove pointless --with-pic (it is enabled by default anyway)
+
+-------------------------------------------------------------------
+Sat Dec 13 13:33:33 UTC 2014 - p.drouand@gmail.com
+
+- Split out the system library, following the shared library
+  conventions
+- Make devel subpackage depends on shared library package
+
+-------------------------------------------------------------------
+Mon Sep  1 07:41:20 UTC 2014 - fcrozat@suse.com
+
+- Update license tag to spdx 1.2.
+
+-------------------------------------------------------------------
+Wed Mar 20 13:13:06 UTC 2013 - boris@steki.net
+
+- re-enable SLE support as %perl_requires is too new
+
+-------------------------------------------------------------------
+Mon Jun 11 12:12:00 UTC 2012 - coolo@suse.com
+
+- require the right version of perl
+
+-------------------------------------------------------------------
+Tue Mar 27 08:35:39 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-OML
+  Use SUSE- proprietary prefix until license is accepted upstream by
+  SPDX.org. Fedora tracks this as OML.
+
+-------------------------------------------------------------------
+Wed Dec 21 16:14:12 UTC 2011 - mrueckert@suse.com
+
+- added FastCGI-fix_deprecated_api.patch: (bnc#735882)
+  Fixes an issue where CGI.pm received CGI variables from previous
+  requests. CVE-2011-2766
+
+-------------------------------------------------------------------
+Sat Oct 15 04:47:09 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sat Sep 17 09:16:06 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Enable parallel build
+
+-------------------------------------------------------------------
+Thu May 26 20:30:01 UTC 2011 - idonmez@novell.com
+
+- Add FastCGI-perl514.patch: fix compilation with Perl 5.14 
+
+-------------------------------------------------------------------
+Mon Dec  6 09:25:04 UTC 2010 - coolo@novell.com
+
+- fix build for factory
+
+-------------------------------------------------------------------
+Sun Dec 20 18:13:46 CET 2009 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Thu Sep 17 18:23:25 CEST 2009 - mrueckert@suse.de
+
+- add fastcgi-2.4.0_missing_call_to_fclose.patch (bnc#525009)
+
+-------------------------------------------------------------------
+Thu Jun 26 05:14:15 CEST 2009 - crrodriguez@suse.de
+
+- disable static libraries 
+
+-------------------------------------------------------------------
+Mon Feb 16 19:53:18 CET 2009 - coolo@suse.de
+
+- fix build with gcc 4.4
+
+-------------------------------------------------------------------
+Fri Oct 20 03:27:49 CEST 2006 - mrueckert@suse.de
+
+- remove perl_make_install for now ... i wont build for fedora
+  any time soon.
+
+-------------------------------------------------------------------
+Fri Sep 15 10:37:47 CEST 2006 - mrueckert@suse.de
+
+- add perl_make_install for all distros other than suse.
+
+-------------------------------------------------------------------
+Fri Sep  8 03:02:47 CEST 2006 - mrueckert@suse.de
+
+- add README.supervise
+- small spec file cleanup
+
+-------------------------------------------------------------------
+Thu Sep  7 16:42:33 CEST 2006 - mrueckert@suse.de
+
+- applied patch from
+  http://rubyists.com/articles/2005/05/03/spawn-fcgi-in-the-foreground
+  to run fastcgi application in foreground this is useful for tools
+  like runit/daemontools/initng
+
+-------------------------------------------------------------------
+Thu Aug 24 07:00:16 CEST 2006 - mrueckert@suse.de
+
+- run ldconfig
+
+-------------------------------------------------------------------
+Wed Mar  8 04:11:07 CET 2006 - mrueckert@suse.de
+
+- readded gcc-c++ to the BuildRequires
+  Seems it got lost in the automatic BuildRequires conversion.
+  fixes C++ bindings.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:12 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Aug 17 14:39:21 CEST 2005 - mrueckert@suse.de
+
+- Initial package with version 2.4.0
+

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90aab2723e57797cfe939d3e0fb640d2</srcmd5>
+    <version>1.9.2</version>
+    <time>1551883661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681695</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d1c4d423addcff8a1843cf3e250f0eff</srcmd5>
+    <version>1.9.2</version>
+    <time>1568720355</time>
+    <user>maxlin_factory</user>
+    <comment>- Skip one failing test which is caused by django-pytest</comment>
+    <requestid>731306</requestid>
+  </revision>
+</revisionlist>

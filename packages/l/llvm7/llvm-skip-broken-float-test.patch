@@ -1,0 +1,74 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Subject: Skip broken floating-point tests on i586
+References: bsc#1145085
+Patch-mainline: not yet, needs further research
+
+The test suite fails like this on i586:
+
+ [ 1254s] FAIL: LLVM-Unit :: Support/./SupportTests/JSONTest.Integers (2436 of 27030)
+ [ 1254s] ******************** TEST 'LLVM-Unit :: Support/./SupportTests/JSONTest.Integers' FAILED ********************
+ [ 1254s] Note: Google Test filter = JSONTest.Integers
+ [ 1254s] [==========] Running 1 test from 1 test case.
+ [ 1254s] [----------] Global test environment set-up.
+ [ 1254s] [----------] 1 test from JSONTest
+ [ 1254s] [ RUN ] JSONTest.Integers
+ [ 1254s] ../unittests/Support/JSONTest.cpp:319: Failure
+ [ 1254s] Expected: Doc->getAsNumber()
+ [ 1254s] Which is: 12-byte object <00-00 00-00 00-00 D0-43 01-38 D1-08>
+ [ 1254s] To be equal to: T.AsNumber
+ [ 1254s] Which is: 12-byte object <00-00 00-00 00-00 D0-43 01-B0 92-F2>
+ [ 1254s] Integer, not exact double. Stored as int64, convertible.
+ [ 1254s] ../unittests/Support/JSONTest.cpp:319: Failure
+ [ 1254s] Expected: Doc->getAsNumber()
+ [ 1254s] Which is: 12-byte object <00-00 00-00 00-00 D0-C3 01-60 D1-08>
+ [ 1254s] To be equal to: T.AsNumber
+ [ 1254s] Which is: 12-byte object <00-00 00-00 00-00 D0-C3 01-00 00-00>
+ [ 1254s] Negative integer, not exact double. Stored as int64, convertible.
+ [ 1254s] [ FAILED ] JSONTest.Integers (0 ms)
+ [ 1254s] [----------] 1 test from JSONTest (0 ms total)
+ [ 1254s]
+ [ 1254s] [----------] Global test environment tear-down
+ [ 1254s] [==========] 1 test from 1 test case ran. (1 ms total)
+ [ 1254s] [ PASSED ] 0 tests.
+ [ 1254s] [ FAILED ] 1 test, listed below:
+ [ 1254s] [ FAILED ] JSONTest.Integers
+
+Essentially, there is a check that an int64_t converted to a double
+matches a pre-calculated value exactly. This does not work for a
+large 64-bit integer which cannot be interpreted exactly as a 64-bit
+double.
+
+That's because the integer value is stored in a hardware floating-point
+register (using the FILD instruction). This register has 80 bits, so it
+can represent the integer value exactly. This register is then compared
+with the 64-bit value (loaded into another 80-bit floating-point
+register from memory using FLD instruction). Of course, the two do not
+match.
+
+It is not an issue on x86-64, because 64-bit XMM registers are used in
+that case, so there is no extra precision. I believe this unit test is
+broken, at least on i586.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+---
+ unittests/Support/JSONTest.cpp |    2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/unittests/Support/JSONTest.cpp
++++ b/unittests/Support/JSONTest.cpp
+@@ -279,6 +279,7 @@ TEST(JSONTest, Integers) {
+           1.5,
+       },
+ 
++#ifndef __i386__
+       {
+           "Integer, not exact double. Stored as int64, convertible.",
+           int64_t{0x4000000000000001},
+@@ -294,6 +295,7 @@ TEST(JSONTest, Integers) {
+           int64_t{-0x4000000000000001},
+           double{-0x4000000000000000},
+       },
++#endif
+ 
+       {
+           "Dynamically exact integer. Stored as double, convertible.",

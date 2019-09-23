@@ -1,0 +1,73 @@
+From ca4af49f2979610ff2c6818ebd0072432417ba95 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 1 Jun 2018 17:09:31 +0200
+Subject: [PATCH] hpijs: avoid segfault in DJGenericVIP::DJGenericVIP()
+
+DJGenericVIP::DJGenericVIP() doesn't treat an error from VerifyPenInfo() as
+fatal, but the superclass constructor DJ9xxVIP::DJ9xxVIP() does. This
+may lead to a sefgault in DJGenericVIP::DJGenericVIP() because ModeCount and
+pMode aren't initialized by the superclass constructor.
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ prnt/hpijs/dj9xxvip.cpp     | 8 ++++++--
+ prnt/hpijs/dj9xxvip.h       | 3 ++-
+ prnt/hpijs/djgenericvip.cpp | 2 +-
+ 3 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/prnt/hpijs/dj9xxvip.cpp b/prnt/hpijs/dj9xxvip.cpp
+index 519036c..0a5c959 100644
+--- a/prnt/hpijs/dj9xxvip.cpp
++++ b/prnt/hpijs/dj9xxvip.cpp
+@@ -55,7 +55,8 @@ extern MediaType MediaTypeToPcl (MEDIATYPE eMediaType);
+ DJ9xxVIP::DJ9xxVIP
+ (
+     SystemServices* pSS,
+-    BOOL proto
++    BOOL proto,
++    BOOL ignore_pen_error
+ ) :
+     Printer(pSS, NUM_DJ6XX_FONTS, proto),
+     PCL3acceptsDriverware(TRUE)
+@@ -67,7 +68,10 @@ DJ9xxVIP::DJ9xxVIP
+     {
+         bCheckForCancelButton = TRUE;
+         constructor_error = VerifyPenInfo();
+-        CERRCHECK;
++	if (!ignore_pen_error) {
++	  CERRCHECK;
++	} else
++	  ePen = BOTH_PENS;
+     }
+     else ePen = BOTH_PENS;    // matches default mode
+ 
+diff --git a/prnt/hpijs/dj9xxvip.h b/prnt/hpijs/dj9xxvip.h
+index 85eb3ac..af1be8f 100644
+--- a/prnt/hpijs/dj9xxvip.h
++++ b/prnt/hpijs/dj9xxvip.h
+@@ -42,7 +42,8 @@ APDK_BEGIN_NAMESPACE
+ class DJ9xxVIP : public Printer
+ {
+ public:
+-    DJ9xxVIP(SystemServices* pSS, BOOL proto=FALSE);
++    DJ9xxVIP(SystemServices* pSS, BOOL proto=FALSE,
++             BOOL ignore_pen_error=FALSE);
+ 
+     Header* SelectHeader(PrintContext* pc);
+     DRIVER_ERROR VerifyPenInfo();
+diff --git a/prnt/hpijs/djgenericvip.cpp b/prnt/hpijs/djgenericvip.cpp
+index b7e79dc..7228fcf 100644
+--- a/prnt/hpijs/djgenericvip.cpp
++++ b/prnt/hpijs/djgenericvip.cpp
+@@ -47,7 +47,7 @@ extern uint32_t ulMapDJ600_CCM_K[ 9 * 9 * 9 ];
+  */
+ 
+ DJGenericVIP::DJGenericVIP (SystemServices* pSS, BOOL proto)
+-    : DJ9xxVIP (pSS, proto)
++  : DJ9xxVIP (pSS, proto, true)
+ {
+ 
+     if (!proto && IOMode.bDevID)
+-- 
+2.17.0
+

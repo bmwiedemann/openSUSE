@@ -1,0 +1,187 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>617079d0317a424500177e6ec133a382</srcmd5>
+    <version>3.2</version>
+    <time>1334692866</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>113061</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a8b420cc0acd05eb05952971e698b298</srcmd5>
+    <version>3.2</version>
+    <time>1334927990</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>114452</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2c0467c87d39f129da17f8a378b35871</srcmd5>
+    <version>3.4</version>
+    <time>1338476986</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122677</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>2c0467c87d39f129da17f8a378b35871</srcmd5>
+    <version>3.4</version>
+    <time>1340184098</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6e1406585a98e62d34acb352064e1da3</srcmd5>
+    <version>3.5</version>
+    <time>1340726627</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>126140</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>6e1406585a98e62d34acb352064e1da3</srcmd5>
+    <version>3.5</version>
+    <time>1359110141</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6ac462cecf64f829fbe55abcf191a720</srcmd5>
+    <version>3.6</version>
+    <time>1359466654</time>
+    <user>coolo</user>
+    <comment>Update to 3.6.</comment>
+    <requestid>149687</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4e3c55810e107e4242fd96b31133c717</srcmd5>
+    <version>3.6.1</version>
+    <time>1363511277</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>159593</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e2cd98f3f87af4b43af406b241b06255</srcmd5>
+    <version>3.7</version>
+    <time>1364900005</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160716</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8c479246209ca1fd909d284882654e48</srcmd5>
+    <version>3.7.1</version>
+    <time>1366088195</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>164018</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fc35eeaabd167d02e9666a3586f894eb</srcmd5>
+    <version>4.0</version>
+    <time>1368451807</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174773</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>fc35eeaabd167d02e9666a3586f894eb</srcmd5>
+    <version>4.0</version>
+    <time>1379664308</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8ea6c2820eb153057c15bd3ff7772dd8</srcmd5>
+    <version>4.1.1</version>
+    <time>1381753852</time>
+    <user>scarabeus_factory</user>
+    <comment>Implement update-alternatives (forwarded request 203050 from posophe)</comment>
+    <requestid>203051</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>56fc3566c31c79fc15c88f538b061e95</srcmd5>
+    <version>4.2</version>
+    <time>1396291477</time>
+    <user>coolo</user>
+    <comment>Update to 4.2 (forwarded request 228208 from TheBlackCat)</comment>
+    <requestid>228209</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>56fc3566c31c79fc15c88f538b061e95</srcmd5>
+    <version>4.2</version>
+    <time>1409303018</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>c5b05133190732a4fc7ed43ff6ce897c</srcmd5>
+    <version>4.2</version>
+    <time>1416823695</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262087</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8a91e231e368f4750d35f51f6132a0ec</srcmd5>
+    <version>4.3.1</version>
+    <time>1417643271</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263633</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ca8cf85417d19a64bee7206a41f2a3b1</srcmd5>
+    <version>4.3.2</version>
+    <time>1428391816</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294680</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>36b203a101913f58ff09337ea30930da</srcmd5>
+    <version>4.7.1</version>
+    <time>1463221402</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394524</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>f579099370d2b92d41886d055f602974</srcmd5>
+    <version>4.7.1</version>
+    <time>1471428347</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419503</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7f71326503923e0809f9ade3d5b3fb49</srcmd5>
+    <version>4.8.2</version>
+    <time>1515506130</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562590</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>9eea096a3fe14a661b2c978976e0872a</srcmd5>
+    <version>4.8.2</version>
+    <time>1545648356</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659747</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d313c104f2623ce0e7254d6fa52e82d5</srcmd5>
+    <version>4.8.4</version>
+    <time>1558939108</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.8.4:
+  * various typo / docu fixes
+  * Support for python 3.7
+- Remove virtualenvwrapper-4.2-fix-bashisms.patch as the script
+  looks posix and if it is still applicable it should be sent
+  upstream</comment>
+    <requestid>705276</requestid>
+  </revision>
+</revisionlist>

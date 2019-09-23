@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Mon May 27 09:19:54 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix _service file so it follows Factory policies
+
+-------------------------------------------------------------------
+Mon May 27 00:32:15 UTC 2019 - Ryan Bach <romulasry@protonmail.com>
+
+- Update to 5.2.20.2+git1558384184.6faa3ea
+  * Fixes to make it work with kernel 5.1
+  * Fixes to make it work with kernel 5.2
+  
+- Use obs_scm instead of depricated tar_scm service file for maintainability in the future
+
+-------------------------------------------------------------------
+Wed Jan 30 13:25:18 UTC 2019 - alarrosa@suse.com
+
+- Add fix-backported-ndo_select_queue.patch to fix building with
+  SLE-15-SP1's 4.12 kernel with backported features from 4.19.
+
+-------------------------------------------------------------------
+Wed Jan 23 09:31:46 UTC 2019 - alarrosa@suse.com
+
+- Update to 5.2.20.2+git20190117.edcd447
+  * Fixes to make it work with kernel 5.0
+  * Fixes to make it work with kernel 4.20
+  * Minor compiler warning turned off
+
+-------------------------------------------------------------------
+Thu Aug 30 14:38:49 UTC 2018 - alarrosa@suse.com
+
+- Add new supported hardware to the preamble file
+
+-------------------------------------------------------------------
+Thu Aug 30 11:50:59 UTC 2018 - alarrosa@suse.com
+
+- Update to version 5.2.20.2
+  * Update phydm to improve TP stability
+  * Support WiFi-HAL for Android 8
+  * Build with kernel 4.19
+
+- Drop patch allow-reproducible-builds.patch which was
+  merged upstream by gordboy
+
+- Fix build with Leap 15 by parsing correctly the lp150 suffix
+
+-------------------------------------------------------------------
+Fri Mar 30 09:20:00 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Handle %arm, aarch64 and ppc* properly
+
+-------------------------------------------------------------------
+Thu Mar  1 11:45:59 UTC 2018 - alarrosa@suse.com
+
+- Update to 5.2.20 from https://github.com/gordboy/rtl8812au. This
+  includes support for kernel 4.15 and VHT extras.
+
+- Dropped patches already upstream:
+  * 0001-add-support-for-kernel-4.11.patch
+  * 0002-add-support-for-kernel-4.12.patch
+  * 0003-Fix-build-with-kernel-4.11.9.patch
+  * 0004-Fix-for-Linux-kernel-4.12.5.patch
+
+- Added patch:
+  * allow-reproducible-builds.patch
+
+- Added LICENSE file from upstream
+
+-------------------------------------------------------------------
+Thu Oct 19 13:39:01 UTC 2017 - alarrosa@suse.com
+
+- spec_cleaner
+
+-------------------------------------------------------------------
+Mon Oct  2 14:34:29 UTC 2017 - alarrosa@suse.com
+
+- Add 0001-add-support-for-kernel-4.11.patch
+  0002-add-support-for-kernel-4.12.patch
+  0003-Fix-build-with-kernel-4.11.9.patch
+  0004-Fix-for-Linux-kernel-4.12.5.patch
+  from https://github.com/maurossi/rtl8812au/ to fix
+  builds with the kernel versions in TW
+
+-------------------------------------------------------------------
+Fri Sep 29 16:46:58 UTC 2017 - alarrosa@suse.com
+
+- Build fixes and add Supplements modalias
+
+-------------------------------------------------------------------
+Fri Nov 25 14:02:17 UTC 2016 - alarrosa@suse.com
+
+- Initial build
+

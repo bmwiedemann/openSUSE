@@ -1,0 +1,3 @@
+findbugs ant/ant-findbugs apache-commons-lang dom4j findbugs-bcel jaxen
+jcip-annotations jFormatString jsr-305 junit objectweb-asm/asm
+objectweb-asm/asm-commons objectweb-asm/asm-tree

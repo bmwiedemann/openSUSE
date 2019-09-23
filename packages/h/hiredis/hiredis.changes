@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Sun Nov 22 08:50:22 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.13.3
+	* Revert "Clear `REDIS_CONNECTED` flag when connection is 
+		closed".
+	* Make tests pass on FreeBSD
+- Changes for 0.13.2
+	* Prevent crash on pending replies in async code
+	* Clear `REDIS_CONNECTED` flag when connection is closed
+	* Add MacOS X addapter
+	* Add Qt adapter
+	* Add Ivykis adapter
+- Changes for 0.13.1
+	* Fix memory leak in async reply handling
+	* Rename struct member to avoid name clash with pre-c99 code
+- Changes for 0.13.0
+	* Windows compatibility layer for parser code
+	* Properly escape data printed to PKGCONF file
+	* Fix tests when assert() undefined 
+	* Implement a reconnect method for the client context, this 
+		changes the structure of `redisContext`
+- Drop hiredis-pkgconfig.patch
+  * fixed in upstream
+
+-------------------------------------------------------------------
+Tue Mar  3 14:52:58 UTC 2015 - dimstar@opensuse.org
+
+- Add hiredis-pkgconfig.patch: Fix generation of .pc file.
+- Pass PREFIX and LIBRARY_PATH (lib/lib64) to make (and make
+  install): the build phase needs this info for the .pc file
+  generation.
+- Make use of the new DESTDIR support.
+
+-------------------------------------------------------------------
+Mon Mar  2 20:11:44 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.12.1
+  * Fix `make install`: DESTDIR support, install all required
+    files, install PKGCONF in proper location
+  * Fix `make test` as 32 bit build on 64 bit platform
+- Changes for  0.12.0
+  * Add optional KeepAlive support
+  * Try again on EINTR errors
+  * Add libuv adapter
+  * Add IPv6 support
+  * Remove possiblity of multiple close on same fd
+  * Add ability to bind source address on connect
+  * Add redisConnectFd() and redisFreeKeepFd()
+  * Fix getaddrinfo() memory leak
+  * Free string if it is unused (fixes memory leak)
+  * Improve redisAppendCommandArgv performance 2.5x
+  * Add support for SO_REUSEADDR
+  * Fix redisvFormatCommand format parsing
+  * Add GLib 2.0 adapter
+  * Refactor reading code into read.c
+  * Fix errno error buffers to not clobber errors
+  * Generate pkgconf during build
+  * Silence _BSD_SOURCE warnings
+  * Improve digit counting for multibulk creation
+
+-------------------------------------------------------------------
+Tue Aug 20 10:28:18 UTC 2013 - mvyskocil@suse.com
+
+- Package hiredis 0.11.0 for openSUSE 
+

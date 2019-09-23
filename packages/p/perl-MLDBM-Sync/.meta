@@ -1,0 +1,9 @@
+<package name="perl-MLDBM-Sync" project="openSUSE:Factory">
+  <title>Perl module for safe concurrent access to MLDBM databases</title>
+  <description>This module wraps around the MLDBM interface, by handling concurrent
+access to MLDBM databases with file locking, and flushes i/o explicity
+per lock/unlock. The new [Read]Lock()/UnLock() API can be used to
+serialize requests logically and improve performance for bundled reads
+&amp; writes.</description>
+  <devel project="devel:languages:perl" package="perl-MLDBM-Sync"/>
+</package>

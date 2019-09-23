@@ -1,0 +1,11 @@
+#############################################################################
+#
+# OpenSLP registration file
+#
+# register dhcp service daemon
+#
+#############################################################################
+
+service:dhcp://$HOSTNAME:67,en,65535
+watch-port-udp=67
+description=DHCP Service

@@ -1,0 +1,340 @@
+-------------------------------------------------------------------
+Thu Nov 15 10:19:55 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert sysv init script to systemd service (boo#1116016)
+- Pass --with-systemd to configure: enable proper systemd
+  integration.
+- Automatic cleanup using spec-cleaner.
+
+-------------------------------------------------------------------
+Thu Nov 23 13:51:26 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Fri Mar 17 12:21:53 UTC 2017 - jengelh@inai.de
+
+- Drop useless --with-pic, it is for (unbuilt) static libs.
+
+-------------------------------------------------------------------
+Wed Mar  8 22:05:02 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.7.1:
+  + Fix a possible crash when uploading a document to the infinoted
+    server.
+  + Fix two instances of possible format string injection.
+- Changes from version 0.7.0:
+  + Infinoted:
+    - Allow to listen on a specific interface instead of all
+      interfaces.
+    - Add a dbus plugin which allows some interaction with reading
+      and modifying the directory tree.
+  + Removed support for GTK+ 2.x. libinfinity-0.7 can only be built
+    against GTK+ 3.x.
+  + Generate gobject-introspection repositories, allowing
+    libinfinity to be used from higher-level programming languages
+    such as Python.
+  + Enable TCP keepalives on all connections to prevent inactive
+    connections from being dropped by a firewall, and to allow
+    quicker detection of an actual disconnect.
+- Add explicit pkgconfig(gobject-2.0), pkgconfig(gmodule-2.0) and
+  pkgconfig(gio-2.0): align with what configure looks for.
+- Drop conditional pkgconfig(gtk+-2.0) BuildRequires and stop
+  passing --without-gtk3 and --with-gtk3 to configure: No longer
+  makes any sense, following upstreams changes.
+- Add --with-gio configure call, follow what upstream checks for.
+- Bump define version to 0.7.
+- Drop postun %insserv_cleanup call, no longer needed.
+
+-------------------------------------------------------------------
+Wed Dec 30 15:49:54 UTC 2015 - netzheimer@yahoo.de
+
+- Update to version 0.6.7:
+  + Fix crash when library is linked against glib 2.46 or newer.
+  + Fixes potential crashes in some other uncommon situations.
+
+-------------------------------------------------------------------
+Wed May 13 11:32:53 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.6.6:
+  + Fix certificates being only verified for expiration and other
+    criteria such as weak algorithms if the CA is not trusted.
+  + Fix some assertion failures and inconsistencies in
+    InfTextFixlineBuffer.
+  + Fix a client-side crash when the server shuts down ordinarily
+    while still connected.
+
+-------------------------------------------------------------------
+Tue Feb  3 14:39:55 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.6.5:
+  + Fix memory corruption in InfTextFixlineBuffer.
+  + infinoted: Fix error message in server log when a client
+    certificate is not trusted.
+  + Fix various crashes related to sending data to already closed
+    connections.
+  + Build fix when res_query is provided by libc, not libresolv,
+    such as on FreeBSD.
+- Changes from version 0.6.4:
+  + Build fixes for Mac OS X.
+
+-------------------------------------------------------------------
+Sat Oct 11 11:25:26 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.6.3:
+  + infinoted:
+    - Fix a possible timing attack on the server password.
+    - Use mode 0777 instead of 0700 when creating directories in
+      the directory-sync plugin.
+  + Write certificates not seen before into the known hosts file.
+
+-------------------------------------------------------------------
+Thu Sep 18 10:42:13 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.6.2:
+  + Fix accounts being deleted when a plugin overrides the default
+    account storage.
+  + The infinoted manual page has been corrected for the syntax of
+    the --plugins option.
+  + A crash has been fixed when a connection is closed for which
+    the the certificate dialog was shown.
+- Changes from version 0.6.1:
+  + Explicitly link against libresolv on unix-based systems, to
+    avoid a possible build failure.
+- Changes from version 0.6.0:
+  + infinoted: Introduced a plugin infrastructure, and ported some
+    of the previous functionality to plugins.
+  + infinoted: Add a plugin for client authentication with
+    certificates.
+  + Add a system for user management and access control lists
+    (ACLs).
+  + Change certificate checker to a trust-on-first-use (SSH-like)
+    mechanism when the signer cannot be verified.
+  + Code refactorings, and many new interfaces and APIs.
+- Move BuildRequires, that are duplicated between GTK3 and GTK2
+  variant out of the if block.
+- Rebase infinoted-add-conf-subdir.patch.
+- Drop libinfinity-includes.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Jan 19 17:33:01 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.5.5:
+  + Fix a crash in infinoted when nmap scans the infinote port. 
+
+-------------------------------------------------------------------
+Thu Aug 22 08:46:53 UTC 2013 - dimstar@opensuse.org
+
+- Re-download the tarball: seems upstream re-released it with a
+  minor fix.
+
+-------------------------------------------------------------------
+Sat Jul 20 14:16:04 UTC 2013 - vuntz@opensuse.org
+
+- Update to version 0.5.4:
+  + Fix crashes that can happen when the connection goes down at
+    unexpected moments.
+  + Fix a crash when when drawing remote cursors or selections and
+    the initial document has not yet been fully transmitted.
+  + Fix a possible crash when undoing or redoing many operations in
+    a row.
+
+-------------------------------------------------------------------
+Wed Oct 31 12:06:25 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.5.3:
+  + Fix a crash when a connection goes down at the moment
+    libinfinity is trying to send data.
+  + Fix possible undefined behavior at type registration.
+- Add libinfiniti-includes.patch: Fix missing header includes.
+
+-------------------------------------------------------------------
+Wed Mar 28 11:46:52 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.5.2:
+  + Fix a crash when a server certificate does not have a hostname
+    set
+  + Fix a crash when the remote side sends invalid UTF-8
+  + Fix compilation with glib >= 2.31
+- Drop libinfinity-glib-2.31.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Dec 14 18:58:36 UTC 2011 - jangerrit@weiler-marker.com
+
+- Add pam-devel BuildRequires to build with pam support.
+
+-------------------------------------------------------------------
+Wed Nov 30 20:21:56 UTC 2011 - dimstar@opensuse.org
+
+- Add libinfinity-glib-2.31.patch: Fix build with glib 2.31.
+
+-------------------------------------------------------------------
+Tue Aug  2 08:44:35 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.5.1:
+  + infinoted:
+    - Update directory sync settings on config reload
+    - Fix a crash when directory sync was enabled
+  + Fix the build on Mac OS X
+  + Disallow node names containing non-printable or only space
+    characters
+  + Fixed a reference leak in infd_directory_add_note()
+  + Fixed a crash in infd_directory_iter_get_session()
+
+-------------------------------------------------------------------
+Fri May 27 23:55:50 CEST 2011 - vuntz@opensuse.org
+
+- Move to pkgconfig()-style BuildRequires if we target a gtk3
+  build:
+  + Old ones: glib2-devel, gnutls-devel, libavahi-devel,
+    libdaemon-devel, libgsasl-devel, libxml2-devel.
+  + New ones: avahi-client, glib-2.0, gnutls, libdaemon, libgsasl,
+    libxml-2.0.
+
+-------------------------------------------------------------------
+Thu Apr 28 14:09:30 UTC 2011 - dimstar@opensuse.org
+
+- Use favor_gtk2 to switch between gtk2 and gtk3 builds.
+- For gtk3 build, add pkgconfig(gtk+-3.0) BuildRequires.
+- Pass -with-gtk3/--without-gtk3 based on favor_gtk2 to configure.
+
+-------------------------------------------------------------------
+Thu Apr 21 15:31:51 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.5.0:
+  + infinoted: Added the --pam-server, --allow-user and
+    --allow-group command line options.
+  + Show cursor and selection of remote users in the own textview
+    and the scrollbar.
+  + Add optional support for GTK+ 3.
+  + Provide asynchronous SASL authentication.
+- Rebase infinoted-add-conf-subdir.patch.
+
+-------------------------------------------------------------------
+Fri Nov 26 12:39:07 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.4.2:
+  + infinoted: Fixed a bug when infinoted did not launch in
+    daemonized mode when the global PID file directory did not
+    exist.
+  + Fixed a crash which could occur in high latency concurrent
+    situations.
+  + Fixed a possible crash when multiple connections time out at
+    the same time.
+  + Fixed a crash when receiving an unexpected XML opening and
+    ending tag on the top-level.
+- Change -lang package Requires to Recommends, as it's not a strict
+  runtime requirement.
+
+-------------------------------------------------------------------
+Thu Feb 18 01:32:35 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.4.1:
+  + infinoted: Avoid a runtime warning when infinoted can not be
+    started.
+  + Fixed a crash in undo grouping when undoing a large number of
+    requests.
+  + Fixed a crash when showing closed connections in a
+    InfGtkBrowserView.
+  + Fixed expander arrows on non-expandable columns in
+    InfGtkBrowserView.
+  + Fixed a crash when closing an XML connection still in use by
+    a session.
+  + Introduced new API.
+
+-------------------------------------------------------------------
+Sun Dec 20 12:04:52 CET 2009 - vuntz@opensuse.org
+
+- Update to version 0.4.0:
+  + infinoted: Added the --password, --sync-directory,
+    --sync-interval, --daemonize and --kill-daemon command line
+    options.
+  + infinoted: Reload configuration file at runtime on SIGHUP
+  + Added an IRC-like chat, driven by InfChatSession.
+  + Added functionality to group undo requests to be undone in a
+    single step.
+- Rebase infinoted-add-conf-subdir.patch to apply without fuzz.
+- Add libdaemon-devel BuildRequires.
+
+-------------------------------------------------------------------
+Sat Nov 14 11:46:35 CET 2009 - vuntz@opensuse.org
+
+- Update to version 0.3.1:
+  + Avoid a crash when synchronizing a zero-length delete operation
+  + Fix sporadic disconnections on Windows
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Wed Jun 10 10:22:30 CEST 2009 - dmueller@suse.de
+
+- Move Requires for lang package to libinfinity-1_0-0.
+
+-------------------------------------------------------------------
+Thu May  7 14:28:24 CEST 2009 - vuntz@novell.com
+
+- Review packages.
+- Remove unneeded BuildRequires: gcc-c++, libsigc++2-devel,
+  pkg-config, gmp-devel, cairo-devel, libxml++-devel,
+  libuuid-devel.
+- Remove AutoReqProv: it's default now.
+- Update the Requires of the devel package.
+- Merge doc package with devel package.
+- Build with -fno-strict-aliasing: there's a warning requiring it.
+- Do not keep the versioned binary.
+- Do not ship the icons: they don't appear to be needed.
+
+-------------------------------------------------------------------
+Thu Apr 30 12:29:03 CET 2009 - opensuse@sukimashita.com
+
+- Update to 0.3.0:
+  * infinoted: Added the --certificate-chain command line option.
+  * Support rejecting a subscription on the client side, for example
+    when the client does not support the communication method.
+  * Made libinfinity parallel-installable with future versions.
+
+-------------------------------------------------------------------
+Sat Jan 10 12:00:00 CET 2009 - opensuse@sukimashita.com
+
+- Update to 0.2.0:
+  * infinoted records sessions to ~/.infinoted-records
+  * Added proper modification tracking, and an autosave feature for
+    infinoted.
+  * Implemented InfStandaloneIo on Windows, making infinoted run on
+    Windows
+  * Refactored connection manager, introducing InfCommunication API for
+    high-level network handling. This breaks protocol compatibility with
+    libinfinity 0.1.x.
+- Since 0.1.2:
+  * Fixed required dependencies in pkg-config files
+  * Improved error message when the remote host does not send XMPP
+  * Fixed a crash when compiling with -O2 or above
+  * Fixed a few memory leaks
+  * Fixed build with cairo 1.4 (#393)
+
+-------------------------------------------------------------------
+Thu Dec 04 12:00:00 CET 2008 - opensuse@sukimashita.com
+
+- Update to git version 20081204
+  * Implemented auto-saver feature for infinoted
+  * Install conf file to /etc/xdg to correctly recognize global configuration
+
+-------------------------------------------------------------------
+Sun Nov 09 12:00:00 CET 2008 - opensuse@sukimashita.com
+
+- Update to 0.1.1:
+  * Made libinfinity properly relocatable on Windows
+  * Fixed the documentation build when avahi is disabled
+  * Fixed a segfault when showing the file list
+  * Fixed pasting a lot amount of text
+  * Fixed connection to server with much history
+
+-------------------------------------------------------------------
+Thu Oct 23 12:00:00 CET 2008 - opensuse@sukimashita.com
+
+- Initial package created
+

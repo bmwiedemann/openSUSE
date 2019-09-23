@@ -1,0 +1,153 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ba1c5a822ec3054dfd1fecb3d16f1e14</srcmd5>
+    <version>2.1.0</version>
+    <time>1503593320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>515259</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>26d72f2b1330e53a4dc2fca8ae4aece6</srcmd5>
+    <version>2.2.0</version>
+    <time>1506956060</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530205</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e4d653cd67fd43349dad13b03d42c0a4</srcmd5>
+    <version>2.2.0</version>
+    <time>1508316874</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534480</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8f356b5ca5781a82fd496556cc9c161e</srcmd5>
+    <version>2.2.0</version>
+    <time>1516880486</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1077468</comment>
+    <requestid>569397</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>4f89a2c70e69a2d3fb96cf8c7f0235fb</srcmd5>
+    <version>2.2.0</version>
+    <time>1517517053</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch: fix-prevent-logout.patch to Work-around
+  Cantata preventing logout under GNOME/KDE if set to minimise
+  to system tray and main window is open.</comment>
+    <requestid>571720</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>6752669b46107cb26b183bb1aaadb3ee</srcmd5>
+    <version>2.2.0</version>
+    <time>1521904594</time>
+    <user>dimstar_suse</user>
+    <comment>- Make cantata require mpd, without mpd it is useless and mpd is
+  now part of the distribution.</comment>
+    <requestid>590610</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>e5c5a35dcfc8b1a2a0c1d4a74e4af0d2</srcmd5>
+    <version>2.2.0</version>
+    <time>1522225957</time>
+    <user>dimstar_suse</user>
+    <comment>- Change to Recommends: mpd. mpd can also run remotely without a
+  local instance. It still needs some form of mpd, so recommends
+  seems the right choice.</comment>
+    <requestid>591509</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>baa51f9b6b772c24769c0c333973d2c9</srcmd5>
+    <version>2.3.0</version>
+    <time>1525121835</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace fix-no-return-in-nonvoid-function.diff with patch from
+  upstream
+
+- For now disable remote device support. The dbus service that comes
+  with it needs a security audit.
+- Remove cantata.rpmlintrc: it dealt with the dbus service rpmlint
+  error in a way not allowed in factory.
+
+  - Added fix-no-return-in-nonvoid-function.diff and
+    cantata.rpmlintrc.
+
+- Use %license for LICENSE for newer versions.
+
+- Update to 2.3.0:
+  * Only disable system tray support if org.kde.StatusNotifierWatcher
+    is not registered when running under Gnome.
+  * Add ability to change grid cover size - Ctrl+ / Ctrl-
+  * Avahi support (automatic mpd discovery)
+  * Make serving of files to MPD via HTTP configurable.
+  * Improved transcode options.
+  * If dynamic playlists helper does not start, show link to wiki
+    page detailing perl dependencies.
+  * Add &quot;Add Local Files&quot; to playqueue context menu.
+  * Remember last loaded/saved playlist name - and use this as the
+    default name when saving.
+  * Add option to show bitrate, sample rate, and format in toolbar.
+  * Add support for forked-DAAP - thanks to Wolfgang Scherer.
+  * Add checkbox to indicate that server auto-updates when files
+    changed. Thanks to Wolfgang Scherer.
+  * Make it possible to filter on year (or range of years) in library</comment>
+    <requestid>602401</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f74503c1113479b484a0978fd236a3ff</srcmd5>
+    <version>2.3.1</version>
+    <time>1529667127</time>
+    <user>maxlin_factory</user>
+    <comment>- Updated comment why we build without remote devices (boo#1091824)
+
+- Update to 2.3.1:
+  * Update some translations.
+  * Set Smart rules 'files added in the last days' limit to 10*365.
+  * Only sort playlists in folders view, and place these after
+    tracks.
+  * Reduce width of statusbar spacer.
+  * Move scrobling 'love' button into toolbar. Use unfilled heart
+    before loved, and filled when loved.
+  * Better control of playqueue status bar buttons when
+    contracting/expanding.
+  * For windows, when adding local files (served via internal HTTP
+    server) add the real file path as a query item.
+  * Use smaller text for help text in Tweaks section of
+    preferences dialog.
+  * Fix playback of local non-MPD files under Windows.
+  * Stretching albums covers not working under Windows, so just
+    remove option.
+  * Don't enable AA_EnableHighDpiScaling for windows builds,
+    seems to interfere with fractional scaling.
+  * When playing, only poll MPD every 5 seconds.
+  * When updating play seekbar from MPDStatus, only upate if more
+    than 1 second from calculated position.
+  * Slightly reduce height of toolbar.
+  * Add a slight border to context view.
+  * Update suru icon - was a little too small.
+  * Don't attempt to align main menu for Windows &lt; 10, as Qt seems
+    to add some menu animation that just looks weird when menu is
+    moved.</comment>
+    <requestid>617450</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b94ad15dcd1de81481212fa69c79c5fc</srcmd5>
+    <version>2.3.2</version>
+    <time>1535122779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627337</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2c8710aa09e0184e068a00c9b59800b8</srcmd5>
+    <version>2.3.3</version>
+    <time>1546946841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662462</requestid>
+  </revision>
+</revisionlist>

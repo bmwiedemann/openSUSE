@@ -1,0 +1,5 @@
+<package name="engdic" project="openSUSE:Factory">
+  <title>Little Korean &lt;-&gt; English Dictionary</title>
+  <description>Little Korean &lt;-&gt; English dictionary.</description>
+  <devel project="M17N" package="engdic"/>
+</package>

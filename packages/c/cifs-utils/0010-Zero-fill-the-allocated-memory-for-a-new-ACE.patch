@@ -1,0 +1,29 @@
+From cb3dc2fe88f6179011acbafaaed025c5bdc96131 Mon Sep 17 00:00:00 2001
+From: misku <miskuu@gmail.com>
+Date: Wed, 31 Jul 2019 13:11:18 +0200
+Subject: [PATCH] Zero fill the allocated memory for a new ACE
+
+Fixes a bug inside a call to `verify_ace_flag`. When a flag string (char*)
+passed as a first parameter is "0x0", the final flag value (the second
+parameter - the value of a pointer to uint8_t) is not modified at all
+and contains the original memory contents == trash.
+---
+ setcifsacl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setcifsacl.c b/setcifsacl.c
+index 1b98c37..da1d742 100644
+--- a/setcifsacl.c
++++ b/setcifsacl.c
+@@ -672,7 +672,7 @@ build_cmdline_aces(char **arrptr, int numcaces)
+ 			goto build_cmdline_aces_ret;
+ 		}
+ 
+-		cacesptr[i] = malloc(sizeof(struct cifs_ace));
++		cacesptr[i] = calloc(1, sizeof(struct cifs_ace));
+ 		if (!cacesptr[i]) {
+ 			printf("%s: ACE alloc error %d\n", __func__, errno);
+ 			goto build_cmdline_aces_ret;
+-- 
+2.16.4
+

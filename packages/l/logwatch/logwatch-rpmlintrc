@@ -1,0 +1,4 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+addFilter("logwatch.noarch: W: script-without-shebang")

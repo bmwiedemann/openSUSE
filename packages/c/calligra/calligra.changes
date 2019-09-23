@@ -1,0 +1,1780 @@
+-------------------------------------------------------------------
+Fri Aug 23 11:10:41 UTC 2019 - wbauer@tmo.at
+
+- Add Guchar-to-unsigned-char.patch to fix build with poppler 0.73
+  and higher
+
+-------------------------------------------------------------------
+Mon Aug 12 09:22:08 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add Fix-build-with-Qt-5_13.patch.
+
+-------------------------------------------------------------------
+Sun Jan 27 12:19:45 UTC 2019 - wbauer@tmo.at
+
+- Add upstream patches to fix build with the latest poppler (and
+  not break it with older versions):
+  * Fix-build-with-poppler-0.69.patch
+  * Fix-build-with-poppler-0.64.patch
+  * Mark-the-functions-as-override.patch
+  * gBool-to-bool.patch
+  * Fix-build-with-poppler-0.64-take-2.patch
+  * Fix-build-with-poppler-0.71.patch
+  * Fix-GooString-not-having-getCString-anymore.patch
+- Remove unused libexiv2-devel build requirement
+
+-------------------------------------------------------------------
+Sun Jun  3 16:56:13 UTC 2018 - christophe@krop.fr
+
+- Add Fix-build-with-Qt-511.patch
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sat Jan 27 15:29:26 UTC 2018 - wbauer@tmo.at
+
+- Update to 3.1.0:
+  * Gemini, the KDE Office suite for 2-in-1 devices, is back
+  * Braindump has been dropped
+  * General
+    + Picture shape tool: Paint crop rectangle and its handles
+      with 1px wide outline (kde#388930)
+      Due to the painter scaling the pen width (1 by default) was 
+      scaled too, which caused the outlines to cover the whole
+      image
+    + Textlayout: Do not enter infinite loop when line rect is not 
+      valid
+    + Add RTF support to Okular (kde#339835)
+  * Sheets:
+    + LaTeX export: Fix typo in UI string (kde#380030)
+  * Gemini:
+    + Port to KDE Frameworks 5
+    + Port the welcome screen to Kirigami
+    + Port to using the Qt Quick 2 based Calligra components
+      (based on work done for Jolla Documents)
+    + Port to using libgit2 directly for git support (as the
+      Qt support library has become unmaintained)
+    + Fix template support
+- Drop fix-build-with-newer-kcalcore.patch, merged upstream
+- Drop braindump and plan subpackages, those applications are no
+  longer included (Plan is released separately now)
+- Add back gemini subpackage, it has been ported
+
+-------------------------------------------------------------------
+Wed Nov 22 11:44:30 UTC 2017 - wbauer@tmo.at
+
+- Add fix-build-with-newer-kcalcore.patch to make it build with
+  KDE Applications 17.12
+
+-------------------------------------------------------------------
+Fri Jul 21 13:44:56 UTC 2017 - tchvatal@suse.com
+
+- Build only against lcms2 and drop dependency over lcms1
+
+-------------------------------------------------------------------
+Wed May 10 11:34:50 UTC 2017 - fabian@ritter-vogt.de
+
+- Fixup filelist for Leap 42.3: enable -extras-okular subpackage
+
+-------------------------------------------------------------------
+Tue Apr  4 10:44:53 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.0.1:
+  * General
+    - Fix crash in move command when using arrow keys
+    - Respect container boundaries when moving shapes by arrow keys
+    - Remove shape manipulation handles when the tool is deactivated
+    - Always display shapes in the same order in the 'Add shape'
+      docker
+  * Sheets
+    - Improve formatting of scientific numbers
+    - Fix save/load of cell borders
+  * Plan
+    - Bad month calendar in Work & Vacation (kde#376469)
+      Day numbers were not initialized correctly.
+      Manually entered dates were not parsed correctly.
+    - Use default currency symbol if the currency symbol is not
+      explicitly set
+  * Chart
+    - Fix crash when chart type is changed
+    - Fix crash when a chart component is deleted
+    - Fix crash when x- or y-axis is removed
+    - Fix ui when editing axis label
+    - Limit moving chart components to chart boundaries
+    - Fix edit font dialog: Keep the axis font's QFont size in sync
+      with KChart's fontSize
+    - Fix save/load of axis label font size and font family
+    - Save/load legend alignment flags
+    - Do not save axis label if it is not visible
+    - Always do legend alignment when legend becomes visible.
+    - Make axis dimensions translatable
+    - Add undo command for hide/show titles
+    - Add undo command for add/remove axis
+    - Respect margins/spacing
+    - Handle resizing in a reasonable way
+- Don't explicitly require version 3.0.0 of kdb/kreport/kproperty,
+  calligra can be built with higher (3.0.x) versions now too
+- Adjust Source URL
+
+-------------------------------------------------------------------
+Sun Feb 26 17:02:18 UTC 2017 - tittiatcoke@gmail.com
+
+- Drop unnecessary buildrequires (librcps)
+
+-------------------------------------------------------------------
+Wed Feb  1 10:02:18 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Mon Jan 30 17:25:13 UTC 2017 - wbauer@tmo.at
+
+- Add back Vc-devel-static build requirement, calligra does
+  support 1.3.0 meanwhile that is in Factory
+
+-------------------------------------------------------------------
+Tue Jan 10 13:49:51 UTC 2017 - tittiatcoke@gmail.com
+
+- Update to version 3.0.0.1
+  * Frameworks based version of Calligra
+  * Tarball also includes translationes
+- No further Changelog available
+
+- Drop patches no longer required:
+  * adapt-to-libwps-0.4.patch
+  * narrowing-warning.patch
+
+-------------------------------------------------------------------
+Fri Dec 23 09:54:38 UTC 2016 - wbauer@tmo.at
+
+- Fix build in Factory by dropping calligra-extras-okular, okular
+  is KF5 based now so the plugin cannot be built any more
+
+-------------------------------------------------------------------
+Thu Dec  8 19:57:51 UTC 2016 - fabian@ritter-vogt.de
+
+- Revert kde4_runtime_requires change
+
+-------------------------------------------------------------------
+Tue Nov 29 07:20:36 UTC 2016 - olaf@aepfle.de
+
+- Expand macro kde4_runtime_requires only when its available
+  to fix quilt setup
+
+-------------------------------------------------------------------
+Wed Oct 26 15:51:20 UTC 2016 - wbauer@tmo.at
+
+- Disable Vc-devel-static build requirement again, it currently
+  makes calligra crash on runtime, and Vc 1.3.0 is entering TW
+  soon anyway which will break calligra's build
+
+-------------------------------------------------------------------
+Sun Oct 23 14:02:45 UTC 2016 - fabian@ritter-vogt.de
+
+- Enable PACKAGERS_BUILD=ON to detect cpu capabilities during runtime
+
+-------------------------------------------------------------------
+Mon Jul 18 08:06:11 UTC 2016 - schwab@suse.de
+
+- narrowing-warning.patch: Fix compilation of PsCommentLexer.cpp on
+  platforms where char is unsigned
+
+-------------------------------------------------------------------
+Mon May 30 09:18:21 UTC 2016 - wbauer@tmo.at
+
+- Re-enable building against Vc-devel-static, it builds fine again
+- Remove some unnecessary part from the specfile
+
+-------------------------------------------------------------------
+Tue May 17 10:35:58 UTC 2016 - dimstar@opensuse.org
+
+- Move words.appdata.xml from -words-common to -words, where also
+  the respective .desktop file is packaged.
+
+-------------------------------------------------------------------
+Sun May 15 14:29:43 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Use share-mime-info macros (boo#979301)
+
+-------------------------------------------------------------------
+Mon Apr 18 08:55:47 UTC 2016 - wbauer@tmo.at
+
+- Disable Vc-devel-static build requirement for now, it breaks the
+  build on Factory/Tumbleweed currently
+- Build against libwps-0.4 on 13.2 as well to fix the build, it has
+  been released as official update
+
+-------------------------------------------------------------------
+Fri Feb  5 12:26:58 UTC 2016 - wbauer@tmo.at
+
+- Update to 2.9.11
+  * Bugfix release, for more details please see
+    https://www.calligra.org/news/calligra-2-9-11-released/
+
+-------------------------------------------------------------------
+Wed Feb 3 19:12:47 UTC 2016 - tittiatcoke@gmail.com
+
+- Don't build with kdepimlibs4 on Tumbleweed. We have switched to
+  using Frameworks based PIM, which is no longer compatible
+
+-------------------------------------------------------------------
+Thu Jan 28 15:12:47 UTC 2016 - wbauer@tmo.at
+
+- Don't build with libkdcraw on Leap and Tumbleweed. It's KF5 based
+  and breaks the build. (boo#963570)
+
+-------------------------------------------------------------------
+Wed Dec 16 22:31:59 UTC 2015 - dvaleev@suse.com
+
+- Add disk constraints
+
+-------------------------------------------------------------------
+Fri Dec 11 22:05:32 UTC 2015 - wbauer@tmo.at
+
+- Update to 2.9.10
+  * Bugfix release, for more details please see
+    https://www.calligra.org/news/calligra-2-9-10-released/
+
+-------------------------------------------------------------------
+Fri Dec  4 13:17:11 UTC 2015 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Remove 12.3 conditionals
+- Remove koffice mentions as 12.1 is out of migration scope support
+- Only suggest calligra-doc, not needed unless you really want it
+
+-------------------------------------------------------------------
+Thu Dec  3 13:36:59 UTC 2015 - wbauer@tmo.at
+
+- Update to 2.9.9
+  * Bugfix release, for more details please see
+    https://www.calligra.org/news/calligra-2-9-9-released/
+
+-------------------------------------------------------------------
+Sun Oct 18 11:50:10 UTC 2015 - schwab@suse.de
+
+- Require Vc only on x86
+
+-------------------------------------------------------------------
+Wed Oct 14 17:07:13 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Build against libwps-0.4 on Leap too
+
+-------------------------------------------------------------------
+Sat Oct 10 02:03:36 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 2.9.8
+  * Bugfix release, for more details please see
+    https://www.calligra.org/news/calligra-2-9-8-released/
+
+-------------------------------------------------------------------
+Wed Sep 16 15:49:48 UTC 2015 - wbauer@tmo.at
+
+- move Author and Words .desktop files to the corresponding
+  subpackages to prevent broken application launcher entries
+- move doc, docx, and wpd okular plugins from calligra-words-common
+  to calligra-extras-okular and change the package description
+  accordingly
+
+-------------------------------------------------------------------
+Fri Sep  4 06:40:48 UTC 2015 - nemysis@openSUSE.org
+
+- Update to 2.9.7, announce message is here:
+
+    https://www.calligra.org/news/calligra-2-9-7-released/
+
+-------------------------------------------------------------------
+Sat Aug 22 10:34:02 UTC 2015 - wbauer@tmo.at
+
+- Add adapt-to-libwps-0.4.patch from Fedora to fix the build for
+  Tumbleweed (boo#942107)
+
+-------------------------------------------------------------------
+Fri Jul 24 19:37:17 UTC 2015 - nemysis@gmx.ch
+
+- Update to 2.9.6, announce message is here:
+
+    https://www.calligra.org/news/calligra-2-9-6-released/
+
+- Use BuildRequires pkgconfig() instead of devel packages
+
+-------------------------------------------------------------------
+Fri Jun 12 07:09:13 UTC 2015 - adrian@suse.de
+
+- Update to 2.9.5
+  Bugfixes in first place, but also various new features for krita
+  Details: https://www.calligra.org/news/calligra-2-9-5-released/
+
+-------------------------------------------------------------------
+Fri May  8 22:46:21 UTC 2015 - asterios.dramis@gmail.com
+
+- Update to 2.9.4:
+  See 
+  https://www.calligra.org/news/calligra-2-9-4-released/
+  https://www.calligra.org/news/calligra-2-9-2-released/
+  for details.
+
+-------------------------------------------------------------------
+Mon Mar 30 21:18:50 UTC 2015 - asterios.dramis@gmail.com
+
+- Added new build requirement Vc-devel-static (for krita).
+
+-------------------------------------------------------------------
+Sat Mar 21 18:54:09 UTC 2015 - tittiatcoke@gmail.com
+
+- Remove soprano as a buildrequires.
+
+-------------------------------------------------------------------
+Mon Mar 16 09:54:09 UTC 2015 - cgiboudeaux@gmx.com
+
+- Update to 2.9.1
+  See https://www.calligra.org/news/announcements/stable/calligra-2-9-1-released/ for details
+- Drop upstream patch let-calligra-okular-plugins-be-less-aggressively-go-for-being-file-handler.patch
+- Drop upstream restore-old-installation-location-of-app-desktop-files.patch
+
+-------------------------------------------------------------------
+Mon Mar  2 15:24:33 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added patches from upstream:
+  restore-old-installation-location-of-app-desktop-files.patch and
+  let-calligra-okular-plugins-be-less-aggressively-go-for-being-file-handler.patch
+
+-------------------------------------------------------------------
+Fri Feb 27 08:25:20 UTC 2015 - adrian@suse.de
+
+- Update to 2.9.0:
+  See https://www.calligra.org/news/calligra-2-9-released/ for details
+- Drop upstream patch calligra-2.8.5-librevenge.patch
+
+-------------------------------------------------------------------
+Sun Nov 09 02:23:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post/postun scripts
+
+-------------------------------------------------------------------
+Sun Sep 28 19:01:03 UTC 2014 - asterios.dramis@gmail.com
+
+- Update to 2.8.6:
+  * General
+    - Make rulers accept minimum length equal to zero. (kde#334968)
+    - Fix a crash while copy/pasting (kde#334832)
+    - Set the docker’s small font also on tool option panels for consistency.
+    - Use the list of available file types when setting the file filter for
+      picture shape. (kde#327782)
+    - Put the New view action back to the View menu.
+    - Prevent backtracking to undo the layout of a whole page, thus starting an
+      infinite loop. This can be triggered by a page break in the middle of
+      keepWithNext paragraphs. (kde#306000)
+  * Kexi
+    - Fix logic behind visibility of editing indicator in tabular and form
+      views
+    - Make Next and Last button in Page selector of Report data view to be
+      disabled on last page.
+    - Fix build error on OpenBSD operating system (missing include directory
+      for ICU).
+    - Fix row selection/highlighting when clicking/hovering over record
+      marker. (kde#337914)
+    - Fix an issue with resolving version of plugins (at least) on Linux.
+    - Improve behaviour of tabbed toolbar when Design Tab is present.
+    - Avoid displaying actions for parts that do not create objects.
+    - Set labels to right in the Find dialog.
+    - Fix a crash when pressed Tab on a form with one date picker. (kde#338766)
+    - Avoid crashes when closing Kexi views.
+    - Allow to create report items of specific size using mouse drag.
+      (kde#334967)
+    - Fix crash in Report designer.
+    - Fix possible crash on opening report with a barcode element.
+    - Fix icon alignment in Kexi record navigator buttons.
+    - Add running desktop name and version to the feedback agent. Recognizes
+      Plasma 4 and 5 at least.
+    - Position pasted report element with an offset to the active element or to
+      the corner. (kde#334967)
+    - Add donations info to Kexi’s status bar. Currently only opens a
+      BountySource page.
+    - Improve experience by adding a dedicated database password dialog.
+    - Avoid keeping potentially wrong password entered in the password dialog.
+      We don’t want to re-use it.
+    - Improve default size of modal assistant dialogs.
+    - Hide system PostgreSQL (postgres) and MySQL (performance_schema)
+      databases from the visible database list.
+    - Use consistent sorting of unicode text values. (kde#338808)
+    - Fix background opacity handling and new background/foreground’s defaults
+      for report elements.
+    - Many fixes for Kexi’s Database Import assistant (bugs kde#336556,
+      kde#336557, kde#336558):
+    - When needed ask for password to access source or destination servers.
+    - Reload source database list if user pressed back and selected different
+      connection.
+    - Improve saving recent directories.
+    - Do not ask twice about destination filename.
+    - In addition to title, properly ask for database name for server
+      destination databases.
+    - Properly open imported database (file).
+  * Krita
+    - Fix bug that randomly disables tablet support.
+    - Fix a crash with the latest evdev tablet drier.
+    - Fix recognition of the Wacom stylus’ serial ID.
+    - Add an option to disable touch capabilities of Wacom tablets. If you want
+      to use it, please add the following option to your kritarc configuration
+      file: disableTouchOnCanvas=true. (kde#332773)
+    - Make rotation on Linux be consistent with rotation on Windows.
+      (kde#331358)
+    - Fix tablet stylus rotation on Linux.
+    - Improve performance of the OpenGL canvas, it’s twice faster now.
+    - Reduce memory consumption when textures are updated.
+    - Fix a crash in Channels docker when the image is closed.
+    - Fix a crash when the number of patches that fits in a column is zero.
+    - Use period key instead of non-standard stop key for the "Select previous
+      favourite preset" command. (kde#331105)
+    - Fix moving of shapes in groups in shape layers. (kde#308942)
+    - Set focus to layer name text input in layer properties dialog.
+    - Fix the HSV options bug. (kde#313494)
+    - Round the corner point position of the rectangle base tool, otherwise
+      there is some odd jumping. (kde#335144)
+    - Fix Erase composite operation to handle the selections properly.
+    - Fix the Blur filter when Y>X. (kde#336914)
+    - Fix a crash after selecting Layer array clones more than a couple times.
+      (kde#336804)
+    - Don’t crash when trying to Ctrl-Alt pick a color from a group layer.
+    - Don’t show icons in the menus on Windows.
+    - Fix anisotropy in Color Smudge brush engine (offset calculation).
+      (kde#334538)
+    - Fix Lens Blur filter artifacts when used as an Adjustment Layer.
+      (kde#336470)
+    - Fix a hang-up when opening the filter dialog twice or running any
+      stroke-based action while having the dialog open. (kde#334982)
+    - Fix misbehavior of the Brush tool when selected on a vector layer.
+      (kde#335660)
+    - Fix saving 16 bit grayscale images to tiff, jpeg and ppm. (kde#338478)
+  * Calligra Stage
+    - Let Ctrl+Home and Ctrl+End keys go to top and bottom of text shape in
+      stage.
+    - Allow to exit text-edit mode by pressing Escape.
+- Moved OpenColorIO-devel build requirement out of librevenge %if conditional
+  (not related).
+- Fixed rpmlint error "summary-not-capitalized".
+- Remove build time references so build-compare can do its work (fix rpmlint
+  warning "file-contains-date-and-time").
+- Rebased calligra-2.8.5-librevenge.patch to apply cleanly.
+
+-------------------------------------------------------------------
+Thu Sep  4 00:33:55 UTC 2014 - nico.kruber@gmail.com
+
+- support build without librevenge framework based libraries on
+  openSUSE <= 13.1
+
+-------------------------------------------------------------------
+Fri Aug 22 10:46:38 UTC 2014 - fstrba@suse.com
+
+- Run osc service localrun clean_spec_file
+
+-------------------------------------------------------------------
+Tue Jul 22 08:14:18 UTC 2014 - fstrba@suse.com
+
+- Add calligra-2.8.5-librevenge.patch
+  * port calligra to librevenge framework based libraries.
+
+-------------------------------------------------------------------
+Fri Jul  4 17:09:03 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 2.8.5
+  * Bugfix release, no upstream changelog provided
+
+-------------------------------------------------------------------
+Wed Jul  2 08:58:34 UTC 2014 - ctrippe@opensuse.org
+
+- Build kexi postgresl driver again (bnc#882459) as the upstream bug
+  (kde#300871) which caused the disable was fixed.
+- Removed checks for old suse versions in the spec file
+
+-------------------------------------------------------------------
+Thu May 15 17:04:04 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 2.8.3
+  * Bugfix release, no upstream changelog provided
+- Drop libsoprano-devel BuildRequires
+- Create extras-converter, extras-dolphin and extras-okular subpackages,
+  to resolve issue reported in openSUSE-KDE ML
+
+-------------------------------------------------------------------
+Tue Apr 29 22:18:03 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 2.8.2
+  * Bugfix release, for more details please see
+    - General:
+      * Move Export to PDF command to the Export menu section instead
+        of the Print section for conformance with other office
+        suites (kde#332603).
+      * Fix “Missing import filter” bug when saving if not extension
+        is specified (even if selecting a File type is set to a format)
+        (kde#328975).
+      * Use native file dialogs on Windows.
+    - Kexi:
+      * Make Rich Text property false by default for Text Editor
+        form widget. Rich Text often causes misbehaviour.
+    - Krita
+      * Fix resetting the slider spin box when double clicking on
+        it (kde#330165).
+      * Ignore tablet press/release events which did not produce any
+        sane buttons (kde#331925).
+      * Added support for ‘evdev’ tablets (kde#332239, kde#331572, kde#329641).
+      * Save line smoothing options between runs of Krita. This is
+        really needed for low-level tablets like Genius to filter
+        the trajectory they report to us.
+      * Make Krita auto-recognize axes labels of Evdev tablets.
+        The labels are stored in a special property of the
+        XInput device.
+      * Recognize Surface Pro 2 tablets on Windows (kde#331922).
+      * Fixed size of predefined images.
+      * Set default gradient to alpha (kde#329008).
+      * Clean up the layout of the Transform tool.
+      * Hide unused settings for stroke in the Path tool (kde#331556).
+      * Fixed memory leaks in brush handling.
+      * Fixed memory leaks when resources fail to load.
+      * Fixed memory leaks when creating strokes (kde#331592).
+      * Don’t crash on creating a file layer in Krita Gemini (kde#332871).
+      * Improved splash screen.
+      * Fix loading plugins for Krita Gemini.
+      * Save tags with special characters properly (kde#332708).
+      * Fix removing of tags, don’t load or save dummy tags.
+      * Add import for PSD layer groups (kde#289857).
+      * Fix translation issues.
+      * Fix startup of Krtita Sketch and Gemini.
+
+-------------------------------------------------------------------
+Tue Mar 25 20:24:58 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 2.8.1
+  * Bugfix release
+    - Kexi
+      Bug 332329: do not remove table prefix when it is needed.
+      Bug 332293: fix crash on exporting reports as spread sheet document
+      Added ‘NOT LIKE’ SQL operator support in kexi queries.
+      Bug 331613: fixes sorting tables in the CSV import dialog.
+    - Krita
+      Fix memory leaks.
+      Fix loading and executing macros.
+      Save single-layer CMYK images correctly to PSD.
+      Bug 331805: do not let the selection grow bigger than the image on invert.
+      Bug 329945: fix the Unsharp Mask filter to not be applied with an offset.
+      Bug 322022: fix Mirror Mode in Color Smudge and Filter ops.
+      Bug 331775: make the Wrap-tool handles less obstructive.
+      Bug 332070: do not crash when selecting a template with a stylus doubleclick.
+      Bug 331950: mark the document as modified when changing layer properties.
+      Bug 331890: fix loading of multilayered PSD files.
+      Fix crash in pixellize filter.
+      Fix artefacts in the emboss filter.
+      Bug 331702: fix crash when saving 16 bits/channel PSD.
+      Fix crash in oilpaint filter.
+    - Flow
+      Add stencils icon generation.
+    - Words
+      Do not use calligrawords for plain-text files.
+
+-------------------------------------------------------------------
+Mon Mar  3 19:10:02 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 2.8.0
+  * Kexi
+    - New feature to open hyperlinks in forms
+  * Words
+    - Support for comments in the text
+  * Sheets
+    - Improved view for pivot tables
+  * Krita
+    - Many new features
+    - new high-quality scaling mode for the OpenGL canvas
+    - G’Mic integration
+    - a wraparound painting mode for easy creation of textures 
+      and tiles
+    - support for touch screens
+    - Two new parts:
+      - Krita Sketch (Aimed for tablets)
+      - Krita Gemini (switch between desktop and tablet mode at 
+                      the press of a button)
+
+-------------------------------------------------------------------
+Thu Nov 28 01:53:22 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 2.7.5
+  * Common
+    - Fixed kde#326158: the text color in the modebox tab icons were 
+      not drawn accoring to style.
+    - Make spellchinking work with more dictionaries.
+    - Fixed kde#290999: make sure we erase an old selection in another 
+      textshape whenever we make a new selection.
+    - Fixed crashes: kde#326243 and kde#325547.
+    - Fixed a crash while saving embedded documents like charts.
+  * Kexi
+    - Fixed kde#327995: Make changes to query design reflected in 
+      reports after saving
+    - Fixed kde#327993: Make records in reports sorted according to 
+      the sorting of the query
+    - If –driver is missing but connection options specified, 
+      display a note and exit
+    - Fixed kde#319432: Fixed crash when using command line 
+      “kexi –dbdriver postgresql”
+    - Fixed regression in password dialog.
+  * Krita
+    - Fixed untranslatable strings.
+    - Fixed crash on malformed pdf.
+    - Fixed fullscreen in canvas-only mode in Krita.
+    - Fixed kde#321100: do not write the implicitely written 
+      “mimetype” entry a 2nd time on saving kra files (and thus 
+      avoid assumed bug in KZip)
+  * Plan
+    - Set First Day of Week to Monday if using ISO Week 
+      for week numbering
+    - Fixed crash in Plan on loading work packages into gantt view.
+  * Sheets
+    - Update mimetypes for the CSV export to make it work.
+    - Fixed kde#298155: Fix a crash when using array values and 
+      make array values render correctly when used
+    - Fixed kde#178172 and kde#181576: fix text to columns.
+    - Don’t fail loading a file when the comments fail to load.
+
+-------------------------------------------------------------------
+Thu Oct 17 20:23:20 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 2.7.4
+  * Krita
+    - Fixed kde#293708: Cannot paint on duplicated layer
+    - Fixed kde#288714: Fix layer lock after exposure change
+    - Fixed kde#325193: Fix crash if there are multiple local 
+      selection masks
+  * Kexi
+    - Fixed kde#325070: Saving new table design for the first time 
+      does not clear history of edits
+
+-------------------------------------------------------------------
+Mon Sep 16 16:10:03 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 2.7.3
+  * Bugfix release, no upstream changelog provided
+  * Fixed bugs: kde#314214, kde#323804, kde#323827, kde#318129, 
+    kde#319155 and kde#324224
+
+-------------------------------------------------------------------
+Thu Aug 22 15:18:10 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 2.7.2
+  * Bugfix release, no upstream changelog provided
+  * Fixed bugs: kde#283164, kde#322940, kde#314214, kde#323804,
+    kde#323827
+
+-------------------------------------------------------------------
+Fri Aug  2 15:53:08 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Drop not needed java-devel and nepomuk-core-devel BuildRequires
+- Pass IHAVEPATCHEDQT=true, for older openSUSE versions
+
+-------------------------------------------------------------------
+Tue Jul 16 21:18:33 UTC 2013 - cgiboudeaux@gmx.com
+
+- Update to 2.7.1
+  * Words:
+    - new look for the toolbox. In the same toolbox there are also
+      new controls to manipulate shapes with much enhanced usability.
+    - Styles are now sorted with the used ones first in the style
+      selector which should make using styles much more convenient.
+    - enhancements to the reference controls, especially regarding
+      hyperlinks and bookmarks.
+  * Author:
+    - new support for EPUB3:
+      mathematical formulas and multimedia contents are now exported
+      to ebooks using the EPUB format.
+    - There is also new support for book covers using images.
+  * Sheets:
+    - the spreadsheet application now uses the same new toolbox as
+      Calligra Words.
+  * Plan:
+    - improvement in the scheduling of tasks and new export filters
+      to OpenDocument Spreadsheet (ODS) and CSV.
+  * Kexi:
+    - new feature to import CSV data into an existing table.
+  * Shapes:
+    - There are some improvements in the general shapes available
+      from most Calligra applications: The formula shape now has
+      new ways to enter formula: a matlab/octave mode and
+      a LaTEX mode.
+    - The tool for the text shape is improved to better handle
+      text styles.
+  * Krita:
+    - new grayscale masks, a better freehand path tool with line
+      smoothing, a way to paint shapes with Krita brushes, improved
+      color to alpha filter, an improved crop tool and an improved
+      transform tool that helps the user create textures.
+    - Support for new file formats include export to QML and a much
+      improved import/export filter for photoshop PSD files.
+- Added _constraints for exlcuding slow hosts
+
+-------------------------------------------------------------------
+Sat Jun  8 16:42:17 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to 2.6.4:
+  * Words:
+    - Fix the mimetype for the word perfect import filter. This makes the word
+      perfect import work again.
+    - Fix a problem with repeated header rows in tables.
+    - Fix a crash in the document structure docker (kde#317975).
+  * Author:
+    - Author got a new application icon.
+  * Kexi:
+    - A fix in the database engine.
+    - Fix in the query save dialog.
+    - Fix saving new query designs in the SQL view.
+    - Fix the look of the modern menu and tabbed toolbar for the bespin widget
+      style.
+- Added OpenColorIO-devel as build requirement.
+
+-------------------------------------------------------------------
+Sat May  4 20:59:05 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Drop and obsolete kexi-postgresql-driver package for 13.1, as kexi 
+  doesn't support libpqxx >= 4
+
+-------------------------------------------------------------------
+Mon Apr  8 23:07:17 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 2.6.3:
+  * Bugfix release
+
+-------------------------------------------------------------------
+Thu Mar 14 20:50:19 UTC 2013 - asterios.dramis@gmail.com
+
+- Build the doc subpackage as noarch.
+
+-------------------------------------------------------------------
+Thu Mar 14 00:04:09 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 2.6.2: 
+  * General:
+    - Mime types were synced between the Words, Sheets and Stage 
+      applications and the Calligra Active application.
+  * Filters:
+    - A bugfix in the import filter for the old KSpread file format 
+      that led to styles being treated wrong.
+  * Sheets:
+    - Fix for a bug that sometimes made the error #CIRCLE appear on 
+      a cell even when there was no circular dependency (kde#316244)
+  * Krita:
+    - Fix for a bug with the OpenGL drivers that led to the user 
+      sometimes have to remove their kritarc file manually (kde#308713)
+    - Krita now correctly remembers the layer box status.
+    - A crash fix for empty layers
+    - A fix in the autosave code
+    - Fix for a bug when a layer was rotated counter clockwise.
+  * Kexi:
+    - Don’t require write access in file connection for read-only mode
+
+-------------------------------------------------------------------
+Fri Feb 22 23:22:27 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to 2.6.1:
+  * General:
+    - Fixes for several different crashes. See for instance bugs kde#314676,
+      kde#314747
+    - Several new or improved icons for different applications.
+    - General look and feel on Windows improved by hardcoding the theme.
+  * Filters:
+    - A new filter for the MOBI ebook format was released with 2.6.1. This
+      filter was scheduled for 2.6.0 but was withheld because of some bugs that
+      were discovered late in the release cycle.
+    - Much improvement in exporting tables in the HTML export filter.
+    - Fix options in the CSV export dialog (bug kde#314766)
+- Removed oxygen-icon-theme build requirement (not needed anymore).
+- Recommend kexi-sqlite3-driver for kexi (as the preferred driver).
+- Require calligra-words-common for the calligra-words package.
+
+-------------------------------------------------------------------
+Sat Feb  9 18:51:35 UTC 2013 - tittiatcoke@gmail.com
+
+- Add libwacom2 and kcm_tablet to the runtime requires for Krita. 
+  This should enable tablets to work with Krita (bnc#802706)
+
+-------------------------------------------------------------------
+Wed Feb  6 14:21:59 UTC 2013 - mailaender@opensuse.org
+
+- Update to 2.6.0
+  - 3D shapes and annotations
+  - MS Office format improvements especially MS Open XML (MS Office >= 2007)
+  - improved rendering of mathematical formulas
+  - New Application: Calligra Author
+  * Words/Author
+    - bug fixes to various dialogs/tools e.g. spell checking
+    - improved text statistics and export to eBook formats EPUB2/MOBI
+  * Sheets
+    - new function optimizer named Solver
+    - all standard scripts are available for translation
+  * Stage
+    -  new animation framework to create and manipulate animations
+  * Flow
+    - improved connections for diagrams
+  * Plan
+    - updated scheduling information
+    - improved scheduling granularity
+    - improved performance charts
+    - improved project creation
+    - improved usability in the report generator
+    - many bug fixes
+  * Kexi
+    - new support for user data storage
+    - improved CSV import and export
+    - improved table views
+    - overwriting objects with the same name is now possible
+  * Krita
+    - new support for OpenColorIO (suitable for use in the movie industry)
+    - big speedups for vc library and precision slider
+    - improvements in painting HDR images
+    - integration into a GFX workflow
+    - support for the latest OpenRaster standard
+    - many bug fixes
+  * Charts
+    - improvements for fine tuning the formatting  
+
+- packaging: merged calligra-doc.spec and calligra.spec
+
+-------------------------------------------------------------------
+Thu Jan 24 14:09:49 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 2.5.5. (Bugfix release)
+  * Sheets
+    - bug which made recalculations of spreadsheet contents go 
+      wrong under some circumstances (bko#312981,bko#313010)
+  * Kexi Forms
+    - Description was ignored in Command Link button
+  * Kexi
+    - Fix MySql login failure when not saving password (bko#313025)
+    - Fix possible crash when pressing tab in the global search box
+    - Property editor: make items are always sorted by key
+
+-------------------------------------------------------------------
+Thu Dec 20 10:47:17 UTC 2012 - tittiatcoke@gmail.com
+
+- Added BuildRequires:  nepomuk-core-devel. This due to a recent
+  upstream change in kdepimlibs.
+
+-------------------------------------------------------------------
+Sat Dec 15 12:25:23 UTC 2012 - asterios.dramis@gmail.com
+
+- Added < %{version} for the obsoleted koffice2 packages.
+
+-------------------------------------------------------------------
+Mon Dec 10 18:36:15 UTC 2012 - asterios.dramis@gmail.com
+
+- Obsolete the respective koffice2 packages.
+
+-------------------------------------------------------------------
+Thu Nov 22 18:44:19 UTC 2012 - hrvoje.senjan@gmail.com
+
+- Update to 2.5.4
+  * Bugfix release, fixed kde#309574 and kde#295774 amongst others
+  
+-------------------------------------------------------------------
+Mon Nov 12 22:29:18 UTC 2012 - asterios.dramis@gmail.com
+
+- Added libvisio-devel as build requirement (support for visio files).
+- Added kexi-spreadsheet-import in Suggests: entries for kexi.
+
+-------------------------------------------------------------------
+Tue Oct 30 22:01:12 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to 2.5.3:
+  * Bugfix release.
+- Replaced Mesa-devel build requirement with pkgconfig(gl).
+- Removed dcmtk-devel build requirement (not needed anymore).
+- Added new build requirements java-devel and libwps-devel.
+
+-------------------------------------------------------------------
+Sun Sep 23 21:41:16 UTC 2012 - nico.kruber@gmail.com
+
+- merged package from KR49:
+  * update to calligra 2.5.2 (rabauke@opensuse.org)
+    - Sheets:
+      * Fixed bug that prevented plugins from showing on
+        Settings->Configure Sheets…->Plugins page (bug 291343)
+    - Stage:
+      * Fixed display of shapes in the document docker
+      * Fix unwanted offset after cancel slideshow (bug 306118)
+    - Kexi:
+      * Fixed bug in Query Designer: removed SQL Editor’s history
+        as it was not functional (bug 306145)
+      * Make string concatenation operator || work in
+        Query Designer (bug 305793)
+      * Startup GUI: fetch startup UI definition from x.y.0 URL
+        for any x.y.z version, not from x.y.z URL
+      * Buildsystem: make it possible to disable database drivers
+        even if their dependencies are present and found
+        (wish 305683)
+     - Common:
+      * Fix resizing of horizontal and vertical lines (bug 306133)
+      * Fix reordering of shapes (bug 306309)
+      * Fix some icons for the formula shape.
+      * Trigger repaint of the picture shape after insertion
+        (bug 305548)
+      * Fix some corner cases when loading borders
+  * removed bnc733534-calligra-msword-overflow-fix.diff;
+    fixed upstream (nico.kruber@gmail.com)
+  * update to 2.5.1 (rabauke@opensuse.org)
+     - Words:
+      * Fix: crash when saving file with imported text (bug 298899)
+      * Do not save with an attribue that makes LibreOffice and
+        OpenOffice crash (BUG: 298689 )
+     - Kexi:
+      * Workaround for visual glitch of Oxygen style for menu widget
+        in kexi (bug 305051)
+      * Fix crash on importing CSV files with more than 1024 columns
+        (bug 304405) and with Mac line endings (bug 304329)
+     - Krita:
+      * Make it possible to open Krita 2.5 documents in 2.4 if no
+        composition was set.
+      * Fix: conversion of HDR colorspaces
+      * Fix: crash when merging down the top layer if there is a
+        selection (bug 305465)
+     - Common:
+      * Fix: Uncompressed ODF is saved in wrong directory (bug 305794)
+      * Don’t mirror an image with a width of one pixel or less
+        (bug 166324)
+  * update to 2.5 (nico.kruber@gmail.com)
+    - See http://www.calligra.org/news/calligra-2-5-released/
+  * Fix remaining build errors (toddrme2178@gmail.com)
+  * Update to 2.5 RC 1 (2.4.92) (toddrme2178@gmail.com)
+    - See http://www.calligra.org/news/calligra-2-5-release-candidate/
+- removed calligra-marblewidget.patch; fixed upstream
+
+-------------------------------------------------------------------
+Fri Sep 21 09:17:09 UTC 2012 - idonmez@suse.com
+
+- Add explicit glu dependency
+
+-------------------------------------------------------------------
+Thu Sep 13 11:51:31 UTC 2012 - idonmez@suse.com
+
+- Add calligra-marblewidget.patch to fix compilation against new
+  marble
+
+-------------------------------------------------------------------
+Sat Aug  4 12:49:48 UTC 2012 - wstephenson@suse.com
+
+- Fix buffer overflow in MS Word ODF filter (bnc#774534)
+
+-------------------------------------------------------------------
+Fri Jun 29 09:26:46 UTC 2012 - wstephenson@suse.com
+
+- Update to 2.4.3:
+  * Words:
+    - Always show vertical scroll bar to avoid race condition (kde#301076)
+    - Do not save with an attribue that makes LibreOffice and OpenOffice crash (kde#298689 )
+  * Kexi:
+    - Fixed import from csv when “Start at Line” value changed (kde#302209)
+    - Set limit to 255 characters for Text type (VARCHAR) (kde#301277 and 301136)
+    - Remove limits for Text data type, leave as option (kde#301277)
+    - Fixed data saving when focus policy for one of widgets is NoFocus (kde#301109)
+  * Krita:
+    - Read and set the resolution for psd images
+  * Charts:
+    - Fix load/save styles of all shapes (title,subtitle,axistitles,footer,etc.)
+    - Lines in the chart should be displayed (kde#271771)
+    - Combined Bar and Line Charts only show bars (Trendlines not supported) (kde#288537)
+    - Load/save chart type for each dataset (kde#271771 and 288537)
+
+-------------------------------------------------------------------
+Wed Jun  6 20:10:14 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to 2.4.2:
+  * General:
+    - Speed improvement on layouting large documents (kde#298216)
+    - Fix image effects ‘grayscale’ and ‘mono’ (kde#260434)
+    - Fix saving of patterns
+    - Fix painting artefacts after snapping has been used (kde#260418)
+    - Fix adding word to dictionary (kde#298794)
+    - Fix crashes when using the color set popup (kde#298412)
+    - Fix compilation with CLANG compiler
+  * Stage:
+    - Use masterpage background correctly (kde#299639)
+  * Kexi:
+    - Fix crashes when saving query design
+  * Krita:
+    - Do not fill layers that cannot be edited (kde#300082)
+    - Fix loading of layer name from Gimp files having bad encoding
+      (kde#298994)
+    - Fix crash on opening pdf with special characters in the path (kde#298611)
+  * Charts:
+    - All standard 2D chart types be loaded and displayed now
+    - Saving of all chart types above work
+    - All crashes that happened when switching between different chart types
+      are gone
+    - Load correct data series in case of stock charts
+
+-------------------------------------------------------------------
+Wed May  2 11:12:15 UTC 2012 - idonmez@suse.com
+
+- Recommends kdepim4-runtime instead of Requires 
+
+-------------------------------------------------------------------
+Tue Apr 24 06:58:25 UTC 2012 - wstephenson@suse.com
+
+- Update to 2.4.1
+  * Optimisations
+  - Make histogram calculation in Krita much faster
+  * Bugfixes
+  - Fix showing the tab chooser in the ruler:
+       the tab chooser is now in the upper-left corner of Words,
+       Stage, Karbon, Flow the tab chooser is only created on demand,
+       not always (so it does not appear for Krita, like before)
+       the current tab in the the tab chooser is only shown/active
+       if tabs are also shown in the ruler
+  - Fixes linespacing in Words (kde#283351)
+  - Fix updating styles in Words (kde#296487)
+  - Fix layout and rendering bug in tables borders
+  - Fix saving ODT files when compiled with GCC 4.7 (kde#296487)
+  - Fix updating field name in property editor in Kexi (kde#278296)
+  - Fix crash in loading an SVG file created by Blender (kde#260429)
+  - Fix crash during load of doc with custum numbered pages (kde#298106)
+  - Fix loading image files in krita with the wrong extension (kde#297656)
+  - Fix crash in statistics docker (kde#298172)
+  - Fix crash in Sheets when saving a document without styles.
+  - Fix saving of cell-anchored shapes with proper offset in Sheets.
+  - Fix problem when loading a file with a bookmark that contains
+    non-latin characters in Words
+  - Fix canvas update in Krita when using rectangle tool
+  - Fix ordering of gradients in gradient chooser in Krita
+  - Fix order of channels in specfic color selector in Krita
+  - Fix the position of a text shape inserted with Krita's text tool
+  - Fix error in Kexi when attempting to compact an open database
+
+  - Translation updates
+
+-------------------------------------------------------------------
+Fri Apr 20 20:22:58 UTC 2012 - asterios.dramis@gmail.com
+
+- Changed license of calligra-plan and calligra-words to
+  "GPL-2.0 and GPL-2.0+ and LGPL-2.1+" (fix for bnc#757711).
+
+-------------------------------------------------------------------
+Thu Apr 12 07:45:35 UTC 2012 - wstephenson@suse.com
+
+- Add dependency on core calligra package to app subpackages to
+  ensure they are kept in sync, there may be BIC additions since betas
+
+-------------------------------------------------------------------
+Tue Apr 10 10:49:33 UTC 2012 - wstephenson@suse.com
+
+- Update to 2.4.0
+  * Fixes over 2.3.92
+  - Added: new default marker style "Arrow concave", as found in LibreOffice 3.4.5
+
+  - Changed: add sunken shadows to separators in KoModeBox
+  - Changed: cleanup includes
+  - Changed: disable mapshape for 2.4, as discussed on ml
+  - Changed: have KoConnectionShapeConfigWidget use QFormLayout instead of QGridLayout
+  - Changed: improve layout of KWDocumentColumns by using a QFormLayout
+  - Changed: in KoToolBoxLayout reuse the same variable for the length in the current orientation
+  - Changed: make labels of KoPageLayoutWidget right-aligned, improve resize behaviour
+  - Changed: merge KoToolBoxLayout::tryPlaceItems
+  - Changed: no need for ceilf, ceiling operation can be rewritten by
+  - Changed: no need to set margins of KoPageLayoutWidget object to 0, is by default
+  - Changed: printing option widgets need to have outer margins set, due to being set to a tab page
+  - Changed: remove group boxes from CharacterHighlighting dialog
+  - Changed: right-align all labels in the document info dialog
+  - Changed: right-align labels on paragraph/character dialogs
+  - Changed: set display-names of default marker styles to english names in LibreOffice 3.4.5
+  - Changed: while the toolbox icons should be square, still use iconSize.width
+  - Changed: align toolbox behaviour for all Calligra programs
+
+  - Fix closing tab window from context menu when window is not current.
+  - Fix deep copying of KexiDB query schema and ORDER BY structures
+  - Fix forms bug: Setting a text box as readonly allows changes to be made
+  - Fix inserting table shape in non-english locale
+  - Fix invalid buddy + warning
+  - Fix loading patterns
+  - Fix loading xls in sheets on windows
+  - Fix lookup column page combo boxes and lookup combos in tables and forms
+  - Fix private member name. Reviewed by JStaniek.
+  - Fix symbols of kexidb_sqlite3_icu library for windows
+  - Fix typos
+  - Fix unit test fails due to daylight saving time
+  - Fix visibility of layers
+
+  - Fixed: KoCellToolFactory now sets tooltype to "CalligraSheets", no longer "CalligraTables"
+  - Fixed: substitute remaining references to Calligra Tables with Calligra Sheets
+  - Fixed: attribute "alignment" not yet supported for layout items in UI files in 4.7
+  - Fixed: broken calculation of toolbox layout
+  - Fixed: preview of Paragraph dialog always had a "." behind the bullet figure
+  - Fixed: s/seperator/separator/g in KoToolBox code
+  - Fixed: Data source property for fields shows invalid list
+  - Fixed: (tables) Details of lookup column not visible
+
+  - Forms: Fixed saving "Enabled" property
+  - Forms: Setting a text boxes to Read Only changes the look to dimmed
+  - Forms: memory leak in data source page
+
+  - KexiDB: Properly deep-copy query asterisks when cloning query objects
+  - KexiDB: fix functions for field's type group name and type group string
+
+  See projects.kde.org/calligra for the full list of changes.
+
+-------------------------------------------------------------------
+Thu Mar 22 12:21:06 UTC 2012 - wstephenson@suse.com
+
+- Update to 2.3.92 (2.4rc2)
+  * Tables is renamed to Sheets.
+
+-------------------------------------------------------------------
+Fri Feb  3 20:00:25 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to 2.3.87:
+  * Improvements of saving and roundtripping.
+  * One bad set of issues with inheritance of styles was fixed.
+  * Crashes and normal bugs fixes.
+- Spec file updates:
+  * Added OpenGTL-devel and libQtGTL-devel in BuildRequires: (needed by krita).
+
+-------------------------------------------------------------------
+Wed Jan 11 22:00:22 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to 2.3.86:
+  * Improve saving and roundtripping.
+  * Crashes and normal bugs fixes.
+- Spec file updates:
+  * Enabled glew-devel in BuildRequires: for Factory also.
+  * Added libicu-devel in BuildRequires: (needed by kexi).
+
+-------------------------------------------------------------------
+Sun Dec 18 16:42:25 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 2.3.85:
+  * Bug fixes, particularly in the area of style handling and style
+    inheritance.
+- Spec file updates:
+  * Enabled create-resources, dcmtk-devel and openjpeg-devel in BuildRequires:.
+  * Enabled glew-devel in BuildRequires: for openSUSE <= 12.1 (fails for
+    Factory).
+  * Recommend create-resources package for calligra-krita.
+  * Added libktexteditor in Requires: for calligra-kexi (for katepart).
+- Removed lang subpackage and sources (will be added in a separate package).
+
+-------------------------------------------------------------------
+Sat Nov 26 19:52:04 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 2.3.84:
+  * General
+    - Fix saving quadratic bezier curves.
+    - Improve loading speed of patterns.
+    - Use the same tool on the mouse and tablet (kde#283130 and kde#285501).
+    - Do not show text boundary when printing (kde#285740).
+    - Fix zooming in stage, flow and words.
+    - Fix saving of GIF images (kde#285311).
+    - Text
+      + Improved handling of style inheritance (parent styles).
+      + Support embedded fonts.
+      + Improvement to the developer documentation.
+      + Fix numbering of list items (kde#278263).
+  * Words
+    - Improvement to loading paragraph and character styles from DOCX files.
+    - Fix image anchor for document with more than one page.
+  * Tables
+    - Fix the cell background being invisible for autofilter popup cells.
+    - Fix import of autofilter properties from XSLX files.
+    - Performance improvement for recalculating formulas.
+    - Fix ‘whole column’ and absolute definitions in XSLX formulas
+      (kde#284601).
+    - Performance improvement when loading files (kde#284325).
+  * Kexi
+    - Global Search, new feature of Kexi 2.4, now operates like Google Suggest
+      i.e. offers full-text search. It can be used to quickly locate objects
+      (tables, queries, forms, etc.) by name in large databases. More
+      information available on a blog entry.
+    - Link Buttons of the Kexi Menu Assistants have no longer hardcoded sizes.
+      This is visual and accessibility improvement.
+    - Fix crash when using a query as a report data source and switching to
+      design view.
+    - Fix placement of context menu for widgets on Kexi Forms (kde#283568).
+  * Plan
+    - Fix tooltips for work package owner and transmition time.
+    - Performance views.
+      + Fix items should not be selectable or editable.
+      + Fix resize the view when columns are hidden.
+    - Update reports automatically when schedule changes (kde#286495).
+    - Use calendar popups for all date-times (kde#286413).
+    - Initially expand resource group in the Task resource allocation dialog
+      (kde#286332).
+    - Remember zoom and scale settings in resource assignment Gantt chart
+      (kde#284349).
+    - Enable moving views and categories using drag and drop in the view
+      selector.
+  * Krita
+    - Fix display of a 2 pixels border at certain zoom level (kde#276870).
+    - Fix crash on moving layer with applied transparency mask (kde#255617).
+    - Fix calligraconverter hanging when converting files to ORA (kde#285827).
+    - Use a new icon for the multi hand tool.
+    - Port the rotate action to the strokes framework.
+    - Fixed updating canvas after crop (kde#250146).
+    - Fix conversion from CMYK 16bit to 8bit change the visual appearance
+      (kde#281761).
+    - Fix update and loading of clone layers.
+    - Improve CMYK support in PSD files.
+    - Better preset pack.
+    - Improve the dyna tool options docker.
+    - Fix crash in the grid brush (kde#285805).
+    - Fix crash on moving masks to root layer.
+    - Fix color management of display (kde#285382).
+    - Fix crash when using color picker and move tools on empty images.
+  * Shapes
+    - Text
+      + Fix crash when cancelling adding a table.
+    - Fix crashes with some EMF files (kde#286715 and kde#286713).
+    - Fix legend labels when not defined as region but within the local
+      data-table (kde#285440).
+- Spec file updates:
+  * Disable glew-devel from BuildRequires: (makes krita fail to compile).
+
+
+-------------------------------------------------------------------
+Thu Oct 27 21:13:34 UTC 2011 - cgiboudeaux@gmx.com
+
+- Update to 2.3.83:
+  * General
+    Make sure calligra’s library does not depend on Marble.
+    Allow to convert to PDF using calligraconverter.
+
+  * Text layout
+    Fix borders around paragraphs in a list.
+    Fix indentation when importing files from Libre Office (278260)
+    Fix painting of spellcheck decorations.
+    Make sure borders are drawn even when scrolling (278260)
+    Add support for rectangular and square gradient (274909).
+    Remove split view functionality (278000, 265200 and 239309).
+    Make sure clicking beyond the last text block puts cursor at end.
+    Lot of improvement to the DOCX and PPTX filters.
+
+  * Words
+    Fix: Cursor not shown at clicked position in a loaded document (284351).
+    Fix: list label being moved to next page when paragraph is split across pages.
+    Fix: some page numbers become invisible.
+    Add support for formatting of page numbers (278258).
+    Make sure the footnotes are shown at the bottom of the main area (278258).
+
+  * Tables
+    Fix: support of explicit line-breaks in rotated text (283070)
+
+  * Kexi
+    Global search: clear contents on activation, update on pressing Delete.
+    Simplified background below menu to make it flicker less.
+    Fix setup of main window shortcuts and actions.
+    Fix crash for larger CSV data import (282936).
+
+  * Plan
+    Fix scheduling of resources that works during daylight saving time changes.
+    Disable optimistic/pessimistic estimate for milestones.
+    Gantt chart: remember zoom and scale settings (284349).
+    Keep schedule selection up to date.
+
+  * Krita
+    Fix: crash when saving an integer image to EXR (284145).
+    Fix: the color preview block keeps showing colors if the image is grayscale (281039).
+    Rename: “Flake Shapes” to “Vector Layer”.
+    Fix pixelize filter to iterate over the whole image (279491
+    New autobrush type using gaussian for softer brushes.
+    Fix layout of color to alpha filter dialog.
+    Fix: crashes when the user have two running instances and one is closed (259262).
+    Fix: tool not following locking after using the text tool (282533).
+    Fix: loading/saving of clone layers (283610).
+    Optimize the creation of a flood selection (268212.
+    Improve performance of the non opengl canvas (282485).
+    Make it possible to get ICC profiles from GHNS.
+    Fix: the reset zoom action.
+    Fix: freezes when loading documents.
+    Fix: crashes when changing the configuration of filter masks (281660.
+    Fix: saving of ORA files should not use the locale decimal seperator (283255.
+    Fix: crash when saving brush with same name as brush that has been deleted (282858).
+    Fix: crash when opening the scratch pad.
+
+  * Karbon
+    Trigger layer docker update when shapes are added or removed.
+ 
+
+-------------------------------------------------------------------
+Mon Oct 10 21:37:33 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 2.3.82:
+  * Words
+    - Improved anchoring and better support for footnotes and endnotes.
+  * Tables
+    - Crash fix and improved compatibility with Microsoft Excel.
+  * Kexi
+    - Many small fixes including improvements in handling of CSV files.
+  * Plan
+    - New view category: execution, and improvements to various editor
+      functions.
+  * Krita
+    - New splashscreen and many bugfixes.
+  * Common Improvements
+    - Improvements in text layout.
+    - Improved SVG support.
+    - Speedups of among other things group shapes.
+    - All the import filters for Microsoft formats have received attention and
+      improvements.
+- Spec file updates:
+  * Install the hicolor kexi app icons to the main hicolor directory instead of
+    the kexi subdir.
+- Added a patch "remove_python_shebangs.patch" (based on koffice2 package) to
+  remove python shebangs from various scripts (fixes rpmlint warning
+  "non-executable-script").
+
+-------------------------------------------------------------------
+Fri Oct  7 16:52:51 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 2.3.81:
+  * Words
+    - Improved support for table of contents.
+    - Improved support for text tables.
+    - New support for citations and bibliographies.
+    - New search bar.
+  * Tables
+    - Improved support for large tables and much faster loading.
+  * Stage
+    - New view for slide sorting. This new slide sorter is also used in the
+      dialog for creating custom presentations.
+    - Editing of slide notes has also been much improved.
+  * Kexi
+    - New modern menu and startup screen.
+  * Plan
+    - Improved support for printing of many types of charts.
+    - Improved support for scripting that allows better import of data from
+      external sources.
+  * Flow
+    - A diagram application which is a new application in the suite.
+    - Support for downloading new stencils via the KNewStuff system.
+  * Braindump
+    - A new application, is a tool to dump and organize the content of your
+      brain, such as ideas, drawings, images, texts, etc.
+  * Krita
+    - Much improved brush editor and management of brush presets.
+    - Brushes can now be tagged with semantic markup.
+    - New selection popup palette that makes it very efficient to use while
+      drawing.
+  * Karbon
+    - Improved support for the standard SVG format.
+    - New color bar to let the user select colors from a palette.
+    - Some very nice improvements to the so called artistic text.
+  * Common
+    - Images can now be dragged & dropped into the applications from many
+      different sources, including web browsers.
+    - The whole Calligra Suite has gained support for images in the SVG format.
+    - All the import filters for Microsoft formats have received attention and
+      improvements.
+- Spec file updates:
+  * Changed License: of the main package to GPL-2.0+ ; LGPL-2.1+.
+  * Changed License: of calligra-doc to GFDL-1.2.
+  * Changed Group: of calligra-doc to Documentation/HTML.
+  * Improvements in Summaries and Descriptions.
+  * Cleanup in BuildRequires:.
+    - Removed not needed GraphicsMagick-devel, aspell-devel, doxygen, graphviz,
+    ImageMagick-devel, libgmm++-devel, libqimageblitz-devel,
+    libqt4-devel-doc-data, python-devel, readline-devel, ruby-devel, wv2-devel
+    and libexif.
+    - Added Mesa-devel, create-resources, dcmtk-devel, freetds-devel,
+    libQtWebKit-devel, libgsf-devel, liblcms-devel, libmysqld-devel,
+    libsoprano-devel, libspnav-devel, marble-devel and xbase-devel.
+  * Recommend calligra-doc package.
+  * Suggest calligra-flow and calligra-karbon instead of koffice2-flow and
+    koffice2-kexi. Also calligra-braindump and calligra-stage.
+  * Removed support for openSUSE < 11.3.
+  * Merged calligra-kformula in the main package (since it's not a separate
+    application anymore).
+  * Splitted kexi package and added kexi-mssql-driver, kexi-mysql-driver,
+    kexi-postgresql-driver and kexi-xbase-driver which can optionally be
+    installed (reduces dependencies). SQLite driver is included in the kexi
+    package as the default one.
+  * Disabled compilation for the active interface.
+  * Run fdupes only on directories that don't effect krita icons (bnc#688012).
+  * Improvements in desktop files Categories entries (make them also xdg
+    compatible).
+  * Copy kexi hicolor icons from the kexi subdir instead of the oxygen dir.
+  * Call update-mime-database also for calligra package.
+  * Remove /sbin/ldconfig %post/%postun sections from packages that don't need
+    it.
+  * Cleanup in %files sections.
+
+-------------------------------------------------------------------
+Wed Aug 17 17:05:25 UTC 2011 - ctrippe@opensuse.org
+
+- Remove call of fdupes as this causes missing icons in krita 
+  (bnc#688012)
+
+-------------------------------------------------------------------
+Fri Jul 29 23:26:16 UTC 2011 - javier@opensuse.org
+
+- Update to 2.3.73 , fix filelist
+
+-------------------------------------------------------------------
+Mon May 23 23:00:37 UTC 2011 - cgiboudeaux@gmx.com
+
+- Update to 2.3.71
+
+-------------------------------------------------------------------
+Fri May  6 19:49:20 UTC 2011 - cgiboudeaux@gmx.com
+
+- New snapshot (20110505)
+
+-------------------------------------------------------------------
+Mon Mar 28 16:14:07 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 2.3.60.git20110328
+
+-------------------------------------------------------------------
+Thu Mar 24 19:28:43 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 0.0.git20110324
+
+-------------------------------------------------------------------
+Wed Mar 23 18:19:33 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 0.0.git20110323
+
+-------------------------------------------------------------------
+Tue Mar 22 10:12:00 UTC 2011 - tittiatcoke@gmail.com
+
+- Initial package for the new Calligra suite (rebranding of KOffice)
+
+-------------------------------------------------------------------
+Thu Feb 17 14:19:54 UTC 2011 - wstephenson@novell.com
+
+- call update-mime-database in pre/post install scripts
+
+-------------------------------------------------------------------
+Tue Jan 18 12:44:08 UTC 2011 - wstephenson@novell.com
+
+- Update to 2.3.1
+  * Krita
+    * limit size of custom patterns to fit 1000x1000 -- avoid
+      memory problems
+    * fix error in memory handling. This means really large images
+      are more feasible now
+    * disable the tile pooler, saving memory for really large images
+    * fix crash when editing a brightness contrast filter in the
+      action editor
+    * Do not crash on startup when loading the tutorial if always
+      start with template is checked (261911, 261940)
+  * Kexi
+    * fix many memory leaks
+    * MySQL driver: add /var/run/mysql/mysql.sock to the list of
+      possible local socket paths
+    * Dont crash if no table was selected to import.
+    * fix saving recently visited directories for source and
+      destination database in the migration wizard
+  * KWord
+    * Fix calligra-words header's utf8 encoded text is not saved
+      properly (bko#262684)
+    * Fix crash when trying to print (bko#262192)
+  * KPlato
+    * RCPS scheduling: Set start/end times for summary tasks.
+
+- Add patch to allow import filters to work with libwpg 0.2.0
+
+-------------------------------------------------------------------
+Tue Dec 31 19:33:53 UTC 2010 - abrouwers@gmail.com
+
+- Update to 2.3.0 final; 
+  * A new slide sorter view in KPresenter
+  * Krita is now ready for professional artist use
+  * Improvements of the core engine and plugins in the support of 
+    the OpenDocument Format
+  * A new report engine used in KPlato and Kexi
+  * Improved support for reading Microsoft file formats 
+    (doc, xls, ppt, docx, xlsx, pptx).
+  * For more information: 
+        http://www.koffice.org/changelogs/koffice-2-3-0-changelog/
+- remove patch applied upstream
+
+-------------------------------------------------------------------
+Tue Dec 21 13:33:53 UTC 2010 - coolo@novell.com
+
+- libexif got split
+
+-------------------------------------------------------------------
+Wed Dec 15 21:06:44 UTC 2010 - tittiatcoke@gmail.com
+
+- Added lcms2 as dependency for Factory
+
+-------------------------------------------------------------------
+Tue Dec 14 19:34:16 UTC 2010 - tittiatcoke@gmail.com
+
+- Added an patch from upstream to prevent a crash (bko#259262)
+
+-------------------------------------------------------------------
+Mon Dec 13 10:27:14 UTC 2010 - coolo@novell.com
+
+- fix file list for factory
+
+-------------------------------------------------------------------
+Mon Dec  6 15:34:24 UTC 2010 - wstephenson@novell.com
+
+- Update to 2.2.91 (2.3 RC 1)
+
+-------------------------------------------------------------------
+Tue Nov 23 14:47:46 UTC 2010 - wstephenson@novell.com
+
+- fix file list of doc package
+
+-------------------------------------------------------------------
+Tue Oct 29 00:59:22 UTC 2010 - abrouwers@gmail.com
+
+- Update to 2.2.83 (2.3 Beta 3)
+
+-------------------------------------------------------------------
+Tue Oct  5 14:04:05 UTC 2010 - wstephenson@novell.com
+
+- Update to 2.2.82 (2.3 Beta 2)
+
+-------------------------------------------------------------------
+Thu Sep 16 00:00:00 UTC 2010 - abrouwers@gmail.com
+
+- Update to 2.2.81 (2.3 Beta 1)
+   * Separate kchart package removed
+
+-------------------------------------------------------------------
+Sun Aug 22 10:29:42 UTC 2010 - wstephenson@novell.com
+
+- update to 2.2.2 (bug fixes only):
+  * http://www.koffice.org/news/koffice-2-2-2-changelog/
+
+-------------------------------------------------------------------
+Fri Jul  9 11:28:38 UTC 2010 - beineri@opensuse.org
+
+- update to 2.2.1 bugfix release
+
+-------------------------------------------------------------------
+Mon May 24 08:41:32 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 2.2.0
+
+-------------------------------------------------------------------
+Tue May  4 13:21:35 UTC 2010 - wstephenson@novell.com
+
+- UPdate to 2.1.91 (2.2 Release Candidate 1)
+
+-------------------------------------------------------------------
+Sun Apr 11 10:57:33 UTC 2010 - wstephenson@suse.de
+
+- Update to 2.1.81 (2.2 Beta 1)
+
+-------------------------------------------------------------------
+Thu Apr  8 13:55:08 UTC 2010 - llunak@novell.com
+
+- fix compile with png14
+
+-------------------------------------------------------------------
+Fri Apr  2 11:28:07 UTC 2010 - llunak@novell.com
+
+- readd fixes for build with gcc-4.5
+
+-------------------------------------------------------------------
+Wed Mar 31 14:12:47 UTC 2010 - wstephenson@novell.com
+
+- update to KOffice 2.1.2 bugfix release
+
+-------------------------------------------------------------------
+Wed Mar 10 09:51:51 UTC 2010 - wstephenson@suse.de
+
+- Add patch for bko#218129 - cannot select predefined smudge brush
+
+-------------------------------------------------------------------
+Mon Mar  1 15:51:26 UTC 2010 - llunak@novell.com
+
+- fix build with gcc-4.5
+
+-------------------------------------------------------------------
+Mon Feb 15 14:23:35 UTC 2010 - llunak@novell.com
+
+- fix build with gcc-4.5
+
+-------------------------------------------------------------------
+Sun Jan 31 14:32:34 UTC 2010 - beineri@opensuse.org
+
+- don't require oxygen-icon-theme-large for build (KDE:Backports)
+
+-------------------------------------------------------------------
+Tue Jan 12 18:56:45 UTC 2010 - beineri@opensuse.org
+
+- update to KOffice 2.1.1 bugfix release
+
+-------------------------------------------------------------------
+Sat Nov 21 08:05:25 UTC 2009 - beineri@opensuse.org
+
+- update to KOffice 2.1 release:
+   * Improved OpenDocument format support
+   * KWord: new tables implementation, change tracking
+   * KPresenter: infinite canvas, slide numbers
+   * KPlato: support for offline work
+   * Karbon: framework for svg filter effects plugins, PDF import
+   * Krita: new brushes (spray, deform, 3D visualization), infinite
+     canvas, dyna tool to simulate pressure sensitive input device
+
+-------------------------------------------------------------------
+Wed Oct 28 18:36:08 UTC 2009 - beineri@opensuse.org
+
+- update to 2.0.91 (2.1 RC 1)
+
+-------------------------------------------------------------------
+Thu Oct  8 18:37:47 UTC 2009 - beineri@opensuse.org
+
+- update to 2.0.83 (2.1 Beta 3)
+
+-------------------------------------------------------------------
+Fri Sep 11 12:41:39 UTC 2009 - beineri@opensuse.org
+
+- update to 2.0.82 (2.1 Beta 2)
+
+-------------------------------------------------------------------
+Tue Aug 25 06:15:59 UTC 2009 - beineri@opensuse.org
+
+- update to 2.0.81 (2.1 Beta 1)
+
+-------------------------------------------------------------------
+Mon Aug 24 19:51:59 UTC 2009 - beineri@opensuse.org
+
+- make karbon require pstoedit (kde#204925)
+
+-------------------------------------------------------------------
+Tue Aug 18 15:50:41 CEST 2009 - beineri@opensuse.org
+
+- fix kthesaurus and karbon menu entries icons
+
+-------------------------------------------------------------------
+Thu Aug  6 22:27:00 CEST 2009 - beineri@opensuse.org
+
+- update to KOffice 2.0.2 release
+
+-------------------------------------------------------------------
+Sun Jun 21 09:58:47 CEST 2009 - beineri@opensuse.org
+
+- update to KOffice 2.0.1 release
+
+-------------------------------------------------------------------
+Fri May 22 11:22:41 CEST 2009 - beineri@opensuse.org
+
+- update to KOffice 2.0 release
+
+-------------------------------------------------------------------
+Mon Apr  6 14:26:38 CEST 2009 - wstephenson@suse.de
+
+- update to KOffice 2.0 RC 1 (1.9.99.0):
+  http://koffice.org/announcements/changelog-2.0-rc1.php
+
+-------------------------------------------------------------------
+Thu Mar  5 21:25:39 CET 2009 - coolo@suse.de
+
+- update to KOffice 2.0 Beta 7 (1.9.98.7):
+  http://koffice.org/announcements/changelog-2.0-beta7.php
+
+-------------------------------------------------------------------
+Sun Feb  1 22:48:47 CET 2009 - dmueller@suse.de
+
+- update to KOffice 2.0 Beta 6 (1.9.98.6):
+  http://koffice.org/announcements/changelog-2.0-beta6.php
+
+-------------------------------------------------------------------
+Fri Jan 23 13:06:20 CET 2009 - stbinner@suse.de
+
+- fix build against KDE 4.2 final
+
+-------------------------------------------------------------------
+Thu Jan  1 19:38:51 CET 2009 - stbinner@suse.de
+
+- update to KOffice 2.0 Beta 5 (1.9.93.5):
+  http://koffice.org/announcements/changelog-2.0-beta5.php
+
+-------------------------------------------------------------------
+Sat Dec  6 16:56:00 CET 2008 - stbinner@suse.de
+
+- update to KOffice 2.0 Beta 4 (1.9.93.3):
+  http://koffice.org/announcements/changelog-2.0-beta4.php
+
+-------------------------------------------------------------------
+Wed Nov 12 09:23:24 CET 2008 - stbinner@suse.de
+
+- update to KOffice 2.0 Beta 3 (1.9.98.2):
+  http://koffice.org/announcements/changelog-2.0-beta3.php
+
+-------------------------------------------------------------------
+Thu Oct 23 15:36:48 CEST 2008 - stbinner@suse.de
+
+- update to KOffice 2.0 Beta 2 (1.9.98.1):
+  http://koffice.org/announcements/changelog-2.0-beta2.php
+
+-------------------------------------------------------------------
+Mon Oct 13 11:54:22 CEST 2008 - stbinner@suse.de
+
+- fix build of koffice2-doc
+
+-------------------------------------------------------------------
+Thu Sep 18 12:01:11 CEST 2008 - stbinner@suse.de
+
+- update to KOffice 2.0 Beta 1 (1.9.98)
+
+-------------------------------------------------------------------
+Wed Aug 20 13:39:57 CEST 2008 - stbinner@suse.de
+
+- update to KOffice 2.0 Alpha 10
+
+-------------------------------------------------------------------
+Fri Jul 18 14:22:07 CEST 2008 - stbinner@suse.de
+
+- update to KOffice 2.0 Alpha 9
+
+-------------------------------------------------------------------
+Tue Jun 24 17:08:05 CEST 2008 - stbinner@suse.de
+
+- update to KOffice 2.0 Alpha 8
+
+-------------------------------------------------------------------
+Wed May  7 10:56:03 CEST 2008 - dmueller@suse.de
+
+- fix uninit return value warnings
+
+-------------------------------------------------------------------
+Mon Apr 28 10:21:51 CEST 2008 - stbinner@suse.de
+
+- update to 1.9.95.4 snapshot
+
+-------------------------------------------------------------------
+Tue Apr 22 09:16:09 CEST 2008 - stbinner@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Fri Feb  8 20:31:16 CET 2008 - dmueller@suse.de
+
+- update to 1.9.95.3, previous was never released
+
+-------------------------------------------------------------------
+Fri Feb  8 10:47:30 CET 2008 - stbinner@suse.de
+
+- update to real 1.9.95.2 release (KOffice 2.0 Alpha 6)
+
+-------------------------------------------------------------------
+Sun Jan 27 10:06:09 CET 2008 - stbinner@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Mon Jan 14 22:44:13 CET 2008 - dmueller@suse.de
+
+- fix build 
+
+-------------------------------------------------------------------
+Wed Jan  2 15:38:36 CET 2008 - stbinner@suse.de
+
+- update to 1.9.95.2
+
+-------------------------------------------------------------------
+Tue Dec  4 21:49:20 CET 2007 - dmueller@suse.de
+
+- update to 1.9.95.1
+
+-------------------------------------------------------------------
+Mon Nov 29 14:27:45 CEST 2007 - stbinner@suse.de
+
+- initial package in Factory
+

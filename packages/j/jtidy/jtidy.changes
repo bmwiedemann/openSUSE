@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Mon Oct 29 09:36:38 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Fix javadoc build
+- Package maven artifact
+
+-------------------------------------------------------------------
+Fri Sep  8 08:34:01 UTC 2017 - fstrba@suse.com
+
+- Modified file:
+  * maven-build.xml
+    + Specify java source and target level 1.6 in order to allow
+      building with jdk9
+
+-------------------------------------------------------------------
+Thu Dec  5 19:41:32 UTC 2013 - dvaleev@suse.com
+
+- increase stack size for ppc64le 
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:07 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Wed Dec 12 17:02:32 UTC 2012 - dvaleev@suse.com
+
+- increase stack size for ppc64 
+
+-------------------------------------------------------------------
+Fri Jun 15 13:39:06 UTC 2012 - mvyskocil@suse.cz
+
+- disable javadoc (workaround for jdk7 build) 
+
+-------------------------------------------------------------------
+Wed May 20 11:31:39 CEST 2009 - mvyskocil@suse.cz
+
+- 'fixed bnc#501764: removed clover.license from source tarball'
+
+-------------------------------------------------------------------
+Thu May  7 11:17:29 CEST 2009 - mvyskocil@suse.cz
+
+- Initial packaging of 8.0 in SUSE (from jpp 5.0) 
+

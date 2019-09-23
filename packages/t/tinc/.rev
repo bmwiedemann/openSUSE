@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>354985de378904c2f4326b390ca267b3</srcmd5>
+    <version>1.0.33</version>
+    <time>1527605571</time>
+    <user>dimstar_suse</user>
+    <comment>New package see https://www.tinc-vpn.org</comment>
+    <requestid>612810</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f7793aefeca6512b61998a19988b24d9</srcmd5>
+    <version>1.0.35</version>
+    <time>1546245995</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix systemd path problem. 
+  * Add tinc-1.0.35-systemd-path-fix.patch  
+- Security update to version 1.0.35.
+  * Prevent oracle attacks (CVE-2018-16737, CVE-2018-16738).
+  * Prevent a MITM from forcing a NULL cipher for UDP (CVE-2018-16758).
+</comment>
+    <requestid>661770</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>584ce383ec07b1f5b5ed32b867799a2b</srcmd5>
+    <version>1.0.35</version>
+    <time>1556022944</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696501</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>a15461db3e9fd6a052b6862ccb241b33</srcmd5>
+    <version>1.0.35</version>
+    <time>1558428070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704273</requestid>
+  </revision>
+</revisionlist>

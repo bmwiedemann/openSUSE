@@ -1,0 +1,2 @@
+addFilter("W: perl5-naming-policy-not-applied ")
+addFilter("W: zero-length /usr/lib.*/perl5/vendor_perl/.*/auto/Irssi/.*")

@@ -1,0 +1,13 @@
+Index: Makefile.in
+===================================================================
+--- Makefile.in.orig	2006-05-19 15:55:41.000000000 +0100
++++ Makefile.in	2011-12-26 12:45:43.000000000 +0000
+@@ -15,7 +15,7 @@ datadir =	@datadir@
+ 
+ PACKAGE =	jigdo
+ INSTALL =	@INSTALL@
+-INSTALL_EXE =	@INSTALL@ -s
++INSTALL_EXE =	@INSTALL@
+ INSTALL_DATA =	@INSTALL@ -m 644
+ INSTALL_SCRIPT = @INSTALL@ -m 755
+ AWK =		@AWK@

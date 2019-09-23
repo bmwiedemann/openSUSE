@@ -1,0 +1,22 @@
+--- src/pak.cpp.orig	2011-08-29 20:32:58.000000000 +0200
++++ src/pak.cpp	2014-09-23 23:31:08.000000000 +0200
+@@ -126,8 +126,8 @@
+ 			if (!infile)
+ 			{
+ 				printf("Couldn't open %s for reading!\n", filename);
++				fclose(pak);
+ 				closedir(dirp);
+-				gzclose(pak);
+ 				exit(1);
+ 			}
+ 			
+@@ -158,8 +158,8 @@
+ 			if (!fp)
+ 			{
+ 				printf("Couldn't open %s for reading!\n", filename);
++				fclose(pak);
+ 				closedir(dirp);
+-				gzclose(pak);
+ 				exit(1);
+ 			}
+ 			else

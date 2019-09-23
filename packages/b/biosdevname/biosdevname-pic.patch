@@ -1,0 +1,28 @@
+Index: biosdevname-0.7.1/src/bios_dev_name.c
+===================================================================
+--- biosdevname-0.7.1.orig/src/bios_dev_name.c
++++ biosdevname-0.7.1/src/bios_dev_name.c
+@@ -114,10 +114,21 @@ static u_int32_t
+ cpuid (u_int32_t eax, u_int32_t ecx)
+ {
+     asm volatile (
+-        "xor %%ebx, %%ebx; cpuid"
++#ifdef __x86_64__
++    	"push %%rbx\n"
++#else
++    	"push %%ebx\n"
++#endif
++        "xor %%ebx, %%ebx\n" /* not useful? ebx is overwritten by call? */
++	"cpuid\n"
++#ifdef __x86_64__
++	"pop %%rbx\n"
++#else
++	"pop %%ebx\n"
++#endif
+         : "=a" (eax),  "=c" (ecx)
+         : "a" (eax)
+-	: "%ebx", "%edx");
++	: "%edx");
+     return ecx;
+ }
+ 

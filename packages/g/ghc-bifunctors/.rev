@@ -1,0 +1,145 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a7d3d9fd154bf02eb4fd2f599610255f</srcmd5>
+    <version>4.2.1</version>
+    <time>1432888725</time>
+    <user>dimstar_suse</user>
+    <comment>Bifinctors</comment>
+    <requestid>308168</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6ff38d75d1ad45ac20e1cf1ce698b026</srcmd5>
+    <version>5</version>
+    <time>1440479979</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324457</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d712431404722250a904d37fd27b10bb</srcmd5>
+    <version>5.1</version>
+    <time>1452262990</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1
+* Added Data.Bifunctor.Fix
+* Added Data.Bifunctor.TH, which permits TemplateHaskell-based deriving 
+    of Bifunctor, Bifoldable and Bitraversable instances.
+* Simplified Bitraversable. (forwarded request 352128 from mimi_vx)</comment>
+    <requestid>352200</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9347ca737541e24943fbfe035419b4ff</srcmd5>
+    <version>5.2</version>
+    <time>1453998215</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.2
+* dded several Arrow-like instances for Tannen so we can use it as the Cayley 
+    construction if needed.
+* Added Data.Bifunctor.Sum
+* Added BifunctorFunctor, BifunctorMonad and BifunctorComonad. (forwarded request 355927 from mimi_vx)</comment>
+    <requestid>355929</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>fec0d5504d1735a7ae0f2e7f4152c868</srcmd5>
+    <version>5.2</version>
+    <time>1469080903</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411335</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>182e10fab3f3f6defa8ce9cc170ef53e</srcmd5>
+    <version>5.4.1</version>
+    <time>1477219836</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433362</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>abfa619fcac901b805d4d26f0e2b9277</srcmd5>
+    <version>5.4.1</version>
+    <time>1484232419</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447669</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0f6896b0f7c284fe405ad438a33892d6</srcmd5>
+    <version>5.4.2</version>
+    <time>1496533903</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>494138</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7ae832d75a4ff66718a7b93bc1d7231b</srcmd5>
+    <version>5.4.2</version>
+    <time>1505920232</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file and update descriptions</comment>
+    <requestid>527237</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f03e8b80ea9fd2b14510ce61af4982e0</srcmd5>
+    <version>5.5.2</version>
+    <time>1527674462</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-bifunctors to the latest version.</comment>
+    <requestid>607753</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cc64340adca37bf039701f1769cf7426</srcmd5>
+    <version>5.5.3</version>
+    <time>1532445214</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update bifunctors to version 5.5.3.
+  5.5.3 [2018.07.04]
+  ------------------
+  * Make `biliftA2` a class method of `Biapplicative`.
+  * Add the `traverseBia`, `sequenceBia`, and `traverseBiaWith` functions for
+    traversing a `Traversable` container in a `Biapplicative`.
+  * Avoid incurring some dependencies when using recent GHCs.
+
+* dded several Arrow-like instances for Tannen so we can use it as the Cayley
+* Added Data.Bifunctor.TH, which permits TemplateHaskell-based deriving
+* Inverted the dependency on semigroupoids. We can support a much wider array of base
+- correct licence to BSD-2-Clause
+- initial commit</comment>
+    <requestid>623727</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>01903356cd74e3a9cbc933cb12cff9cb</srcmd5>
+    <version>5.5.3</version>
+    <time>1540448564</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643356</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d3e9af389327f84468d7152319ced972</srcmd5>
+    <version>5.5.4</version>
+    <time>1557389386</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>700195</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3d36e3c2ce985dff6aee9f883bae6827</srcmd5>
+    <version>5.5.4</version>
+    <time>1560971421</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710621</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3e9a0f4cf56acff172807436ef821eb8</srcmd5>
+    <version>5.5.5</version>
+    <time>1567092003</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>726806</requestid>
+  </revision>
+</revisionlist>

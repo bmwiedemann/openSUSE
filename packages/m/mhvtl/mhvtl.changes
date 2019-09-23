@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Sat Mar 30 12:08:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Reduce dependency on systemd. Make use of %make_install.
+
+-------------------------------------------------------------------
+Thu Mar 28 17:35:06 UTC 2019 - Lee Duncan <lduncan@suse.com>
+
+- Update to upstream version 1.60_release from 1.55_release
+  * Switch to systemd from init scripts (see bsc#1116023)
+  * Create virtual media on post install
+  * Update version to 1.6 with introduction of systemd support
+  * Don't overwrite config files by default
+  * Replace SuSE rpm macros with systemctl command for RPM install/uninstall
+  * Update systemd-generators dir based on variable
+  * Include ChangeLog in tar ball as time/date string in man pages depend on it
+  * Corrected time/date stamp in spec change log
+  * Set correct shared lib path
+  * Remove empty double quotes in service tmeplates
+  This replaces mhvtl-1.53_release.tar.xz with mhvtl-1.60_release.tar.gz,
+  This change updates the SPEC file, and itremoves both patches,
+  no longer needed:
+  * mhvtl-set-lib64-correctly.patch
+  * mhvtl-suse-patches.diff.gz
+  For kernels 5.0 and newer, this patch was added to patch the KMP:
+  * mhvtl-remove-use-of-use_clustering.patch
+  And to cleanup systemd dependencies, added:
+  * mhvtl-systemd-load-modules-cleanup.patch
+  Both of these patches will be submitted upstream, as well.
+
+-------------------------------------------------------------------
+Fri Jul 27 07:23:04 UTC 2018 - jengelh@inai.de
+
+- Remove redundant %clean section. Replace unnecessary %__ macro
+  indirections. Fix erroneous description (was copy-pasted from
+  open-iscsi?)
+
+-------------------------------------------------------------------
+Mon Jul 16 18:41:00 UTC 2018 - lduncan@suse.com
+
+- Update SPEC file to correctly handle lib64 vs lib for ppc
+
+-------------------------------------------------------------------
+Sat Jun 16 01:21:58 UTC 2018 - lduncan@suse.com
+
+- Add "BuildRequires: modutils" to SPEC file, as required by
+  suse-policy-kmp-missing-supplements
+
+- Fix /usr/lib vs /usr/lib64 installation for the two shared
+  objects, adding patch:
+  * mnvtl--set-lib64-correctly.patch
+
+-------------------------------------------------------------------
+Tue May 22 21:59:11 UTC 2018 - lduncan@suse.com
+
+- Initial creation of package, from version 1.5-3_release
+
+-------------------------------------------------------------------

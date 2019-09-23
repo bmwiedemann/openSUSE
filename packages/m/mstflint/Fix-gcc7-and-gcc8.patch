@@ -1,0 +1,22 @@
+commit e325ecf9ecfabdb5ad5ad96f0ac025a2828b2dd3
+Author: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+Date:   Wed Aug 9 17:31:57 2017 +0200
+
+    Fix gcc7 and gcc8
+    
+    Fix compilation errors for GCC7 and GCC8
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+
+diff --git configure.ac configure.ac
+index 8840a41d8169..62aa0a738c2d 100644
+--- configure.ac
++++ configure.ac
+@@ -246,6 +246,7 @@ AC_SEARCH_LIBS([sqlite3_initialize], [sqlite3], [SQLITE_SYSTEM_AVAILABLE="yes"],
+ AM_CONDITIONAL([USE_LOCAL_SQLITE], [test "$SQLITE_SYSTEM_AVAILABLE" = no])
+ 
+ CFLAGS="$CFLAGS -DMST_UL"
++CPPFLAGS="$CPPFLAGS -DMST_UL"
+ CXXFLAGS="$CXXFLAGS -DMST_UL"
+ 
+ AM_CFLAGS="-Wall"

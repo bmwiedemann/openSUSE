@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Sudoku Sensei
+GenericName=Sudoku
+Comment=Enjoy playing with Sudoku boards designed by yourself
+Type=Application
+Exec=sudoku-sensei
+Icon=sudoku-sensei
+Categories=Game;LogicGame;
+StartupNotify=false

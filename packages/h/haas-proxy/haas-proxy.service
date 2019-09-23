@@ -1,0 +1,14 @@
+[Unit]
+Description=Man in the middle proxy for honeypot as a service
+
+[Service]
+Type=simple
+User=nobody
+EnvironmentFile=/etc/haas-proxy
+ExecStartPre=+/bin/sh -c 'mkdir -p /var/run/haas/; chown nobody /var/run/haas/'
+ExecStart=/usr/bin/python3 -m haas_proxy --pidfile /var/run/haas/haas_proxy.pid -n --syslog haas_proxy --device-token ${TOKEN} --port ${PORT} $EXTRA_ARGS
+ExecStopPost=+/bin/sh -c 'rm -rf /var/run/haas/'
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

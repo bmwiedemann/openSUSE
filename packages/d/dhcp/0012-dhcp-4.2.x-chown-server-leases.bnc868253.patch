@@ -1,0 +1,38 @@
+From 34e6100717f3de5a32ccb3234a949d017f789fdb Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Tue, 10 Jun 2014 02:42:32 +0000
+Subject: [PATCH] dhcp-4.2.x-chown-server-leases.bnc868253
+
+Fixed dhcp server to chown leases to run user at start
+
+References: bnc#868253
+Signed-off-by: Marius Tomaschewski <mt@suse.de>
+
+diff --git a/server/dhcpd.c b/server/dhcpd.c
+index afef390..0f5c640 100644
+--- a/server/dhcpd.c
++++ b/server/dhcpd.c
+@@ -770,8 +770,19 @@ main(int argc, char **argv) {
+ 	}
+ 
+ #if defined (PARANOIA)
+-	/* change uid to the specified one */
++	/* ensure, the leases db is owned by the run user/group */
++	if (set_gid || set_uid) {
++		char backfname[512];
++
++		chown(path_dhcpd_db, set_uid ? set_uid : -1,
++				     set_gid ? set_gid : -1);
+ 
++		snprintf (backfname, sizeof backfname, "%s~", path_dhcpd_db);
++		chown(backfname,     set_uid ? set_uid : -1,
++				     set_gid ? set_gid : -1);
++	}
++
++	/* change uid to the specified one */
+ 	if (set_gid) {
+ 		/* setgroups is done, OK */
+ 		if (setgroups (0, (void *)0))
+-- 
+2.1.4
+

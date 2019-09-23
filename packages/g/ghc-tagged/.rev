@@ -1,0 +1,127 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>745d381abf85680bb1726d1d7d5fd6c8</srcmd5>
+    <version>0.7.3</version>
+    <time>1432190299</time>
+    <user>coolo</user>
+    <comment>Haskell 98 phantom types to avoid unsafely passing dummy arguments</comment>
+    <requestid>307979</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9727f088a692e308bb1bad979fdd907c</srcmd5>
+    <version>0.8.1</version>
+    <time>1440337402</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324492</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d667e85cf02a0dc7606aca415f487eeb</srcmd5>
+    <version>0.8.2</version>
+    <time>1447146204</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.2
+* deepseq support</comment>
+    <requestid>343046</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cc129f99ccbf72e5fc811cf04e8a73fc</srcmd5>
+    <version>0.8.3</version>
+    <time>1454353020</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.3
+* Manual Generic1 support to work around a bug in GHC 7.6
+* Invert the dependency to supply the Semigroup instance ourselves 
+    when building on GHC 8 (forwarded request 356953 from mimi_vx)</comment>
+    <requestid>356955</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>61ac63f68e4668db60923fc6d0b30ff6</srcmd5>
+    <version>0.8.4</version>
+    <time>1461855425</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.4
+* Backport the Alternative, MonadPlus, and MonadZip instances for Proxy from base-4.9
+* Add Bits, FiniteBits, IsString, and Storable instances for Tagged (forwarded request 391638 from mimi_vx)</comment>
+    <requestid>391639</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>6684b38ea2372bd92af34cd4fa1bfdac</srcmd5>
+    <version>0.8.4</version>
+    <time>1468999243</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411680</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>501e468800bf27b3c98bca8e3d20a153</srcmd5>
+    <version>0.8.5</version>
+    <time>1476875066</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433416</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d0e23be99511ca0911f791321d491628</srcmd5>
+    <version>0.8.5</version>
+    <time>1484232761</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447714</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>126bbf3e0770907584d622e4396a5489</srcmd5>
+    <version>0.8.5</version>
+    <time>1505506560</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525467</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>833c8c7f2164b248d3d0ee89dbe1c3b6</srcmd5>
+    <version>0.8.5</version>
+    <time>1527675651</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609822</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1bd5e8d1c90b85de05f58e337141b3f2</srcmd5>
+    <version>0.8.6</version>
+    <time>1532445741</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update tagged to version 0.8.6.
+  0.8.6 [2018.07.02]
+  ------------------
+  * Make the `Read(1)` instances for `Proxy` ignore the precedence argument,
+    mirroring similar changes to `base`
+    [here](http://git.haskell.org/ghc.git/commitdiff/8fd959998e900dffdb7f752fcd42df7aaedeae6e).
+  * Fix a bug in the `Floating` instance for `Tagged` in which `logBase` was
+    defined in terms of `(**)`.
+  * Avoid incurring some dependencies when using recent GHCs.
+
+* Invert the dependency to supply the Semigroup instance ourselves
+* Removed reproxy from Data.Proxy. This is a bad API decision, but it isn't present
+- use cabal2spec 0.25.5 spec file template</comment>
+    <requestid>623864</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>2794713f9bbd02294b24fdacb27315a0</srcmd5>
+    <version>0.8.6</version>
+    <time>1540451140</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643467</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>58db2bbfbc28566fd6d1e34e589e8519</srcmd5>
+    <version>0.8.6</version>
+    <time>1560971519</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710642</requestid>
+  </revision>
+</revisionlist>

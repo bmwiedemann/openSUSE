@@ -1,0 +1,5 @@
+<package name="rubygem-autoprefixer-rails" project="openSUSE:Factory">
+  <title>rubygem-autoprefixer-rails</title>
+  <description>Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website.</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-autoprefixer-rails"/>
+</package>

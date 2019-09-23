@@ -1,0 +1,254 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9b7e5230250889e77332ed30928dc83e</srcmd5>
+    <version>0.3.0</version>
+    <time>1282920253</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gupnp-dlna based on submit request 46423 from user vuntz
+</comment>
+    <requestid>46423</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d3964f62b024ae0720efd1c09b56bc6a</srcmd5>
+    <version>unknown</version>
+    <time>1284372887</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gupnp-dlna based on submit request 47772 from user vuntz
+</comment>
+    <requestid>47772</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>009a042588f7bee4e67ac0de464905d2</srcmd5>
+    <version>0.4.2</version>
+    <time>1287153630</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gupnp-dlna based on submit request 50733 from user vuntz
+</comment>
+    <requestid>50733</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>aac3b147789c6b6842d1018d274abf0b</srcmd5>
+    <version>0.4.2</version>
+    <time>1292768833</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 56108 from user vuntz
+</comment>
+    <requestid>56108</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>14fb756c0f8a7dc942d6bbd9054fe289</srcmd5>
+    <version>0.4.2</version>
+    <time>1292768839</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 56108
+</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>14fb756c0f8a7dc942d6bbd9054fe289</srcmd5>
+    <version>0.4.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f8eec0bd20a1914fb211014cc4db6530</srcmd5>
+    <version>0.6.1</version>
+    <time>1304407206</time>
+    <user>saschpe</user>
+    <comment>Update to 0.6.1 (forwarded request 68844 from dimstar)</comment>
+    <requestid>69302</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e10a83632273f8d524db362f730e81d0</srcmd5>
+    <version>0.6.1</version>
+    <time>1304407221</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69302
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>76d12a4f9876e646e144c3462c09ef55</srcmd5>
+    <version>0.6.2</version>
+    <time>1310368564</time>
+    <user>saschpe</user>
+    <comment>New upstream version</comment>
+    <requestid>75896</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6628a8241a089dc56d0ebc033a624dde</srcmd5>
+    <version>0.6.3</version>
+    <time>1315560370</time>
+    <user>saschpe</user>
+    <comment>Pushing most of G:F</comment>
+    <requestid>81512</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>6628a8241a089dc56d0ebc033a624dde</srcmd5>
+    <version>0.6.3</version>
+    <time>1319181959</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fa5cb314f8b218929c4b9b89a36c894a</srcmd5>
+    <version>0.6.4</version>
+    <time>1319206524</time>
+    <user>coolo</user>
+    <comment>Update to 0.6.4 -- no code change, just new/updated upnp profiles =&gt; safe for 12.1 (forwarded request 88826 from vuntz)</comment>
+    <requestid>88854</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>7577ec9bfe0da7be710455362bc7d70d</srcmd5>
+    <version>0.6.4</version>
+    <time>1323191857</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>01ddec836ab0cec02473e8c8102e5909</srcmd5>
+    <version>0.6.4</version>
+    <time>1325846687</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>99079</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d2cb4a2ed8c0c42329149079b322f828</srcmd5>
+    <version>0.6.5</version>
+    <time>1330618797</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>106174</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>71707422717b060b37e902b72cb3220b</srcmd5>
+    <version>0.6.6</version>
+    <time>1333022362</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111750</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>71707422717b060b37e902b72cb3220b</srcmd5>
+    <version>0.6.6</version>
+    <time>1340183428</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>5d5aeb70caf53d0351c176b1090bb956</srcmd5>
+    <version>0.6.6</version>
+    <time>1349242768</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136728</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>31d35cefe506e2db95bd0cc1777c5538</srcmd5>
+    <version>0.8.0</version>
+    <time>1357568350</time>
+    <user>coolo</user>
+    <comment>Update (forwarded request 146409 from dimstar)</comment>
+    <requestid>146951</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>31d35cefe506e2db95bd0cc1777c5538</srcmd5>
+    <version>0.8.0</version>
+    <time>1359109033</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>71707422717b060b37e902b72cb3220b</srcmd5>
+    <version>0.6.6</version>
+    <time>1360243118</time>
+    <user>coolo</user>
+    <comment>Revert to gupnp-dlna-1.0: -1.1 pulls in GStreamer 1.0 and rygel explicitly requires GStreamer 0.10 for now.. thus resulting in two GStreamer versions in process =&gt; crash. bnc#802296</comment>
+    <requestid>151519</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3f0b824cfc1a48957297d96a5d64129c</srcmd5>
+    <version>0.10.0</version>
+    <time>1364986418</time>
+    <user>coolo</user>
+    <comment>Update to 0.10.0</comment>
+    <requestid>161960</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1059421fe431754b49ed77b10dc49802</srcmd5>
+    <version>0.10.1</version>
+    <time>1365927311</time>
+    <user>coolo</user>
+    <comment>Update to 0.10.1 (forwarded request 163473 from vuntz)</comment>
+    <requestid>163580</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>edc66c83077a1b2444d556868b3a4645</srcmd5>
+    <version>0.10.2</version>
+    <time>1372145215</time>
+    <user>coolo</user>
+    <comment>Update (forwarded request 177607 from vuntz)</comment>
+    <requestid>180639</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>edc66c83077a1b2444d556868b3a4645</srcmd5>
+    <version>0.10.2</version>
+    <time>1379662596</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>edc66c83077a1b2444d556868b3a4645</srcmd5>
+    <version>0.10.2</version>
+    <time>1409301144</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>137d14e12d536154db7a655782d63cd4</srcmd5>
+    <version>0.10.3</version>
+    <time>1437059862</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314736</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>5a6f3adbbda341b69f44577312061b1e</srcmd5>
+    <version>0.10.3</version>
+    <time>1452377523</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352083</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>81545e4c894f00c01416d9ab62c39d9b</srcmd5>
+    <version>0.10.4</version>
+    <time>1455789971</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358593</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8dccee2d8cce6c0abdddd904d0f5df19</srcmd5>
+    <version>0.10.5</version>
+    <time>1467359612</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404175</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>389825b8db52b8c2467cf965066857f2</srcmd5>
+    <version>0.10.5</version>
+    <time>1472594657</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423539</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>0ee582cb6f4b2f8599817f605c4fad4d</srcmd5>
+    <version>0.10.5</version>
+    <time>1520502465</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581237 from dimstar)</comment>
+    <requestid>582824</requestid>
+  </revision>
+</revisionlist>

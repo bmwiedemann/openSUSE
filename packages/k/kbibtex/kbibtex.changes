@@ -1,0 +1,354 @@
+-------------------------------------------------------------------
+Sun Sep  8 07:55:00 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the desktop categories.
+
+-------------------------------------------------------------------
+Thu Jun  6 14:28:08 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to version 0.9:
+  * Can be compiled under Windows via Craft
+  * Integrating 'BibSearch', a mobile variant of KBibTeX using QML
+    (Sailfish OS only as of now)
+  * Refactoring of id suggestion editor
+  * Making building Zotero support compile-time optional
+  * Internal refactoring of singleton variables and configuration
+    settings
+  * Adding considerable number of QtText-based tests
+  * Migrating from QRegExp to QRegularExpression class
+  * Using Kate's text editor component for BibTeX sources
+  * Validating user-entered BibTeX sources while typing
+  * More verbose diagnostics while loading BibTeX or RIS data
+  * Various bugfixes in Encoder and BibTeX import classes thanks to
+    improved automated tests
+  * Various small improvements for better robustness, performance,
+    and memory efficiency
+  * Make entry type (and more fields) available in entry id
+    suggestion setup (kde#392137)
+  * BibLaTeX uses "file" instead of "localfile" (kde#396597)
+  * Correct handling of ligatures like "st" (kde#405504,
+    kde#406692)
+  * Fixing resource leakage as identified by Coverity Scan:
+    CID 325572, 325573
+  * Integrating commits by Alexander Dunlap, Antonio Rojas, Erik
+    Quaeghebeur, Frederik Schwarzer, Pino Toscano, and Yuri
+    Chornoivan
+
+-------------------------------------------------------------------
+Sat Jan  5 08:19:43 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 0.8.2:
+  * Formatting error when saving file ( switching " and } ) (kde#388892)
+  * Crash after compilation (kde#394659)
+  * When saving the file, I am always warned that file has changed in disk
+    (kde#396343)
+  * Bibliography system options contains duplicates  (kde#396598)
+  * ScienceDirect search broken  (kde#397027)
+  * Untranslated strings from bibtexfields.cpp and bibtexentries.cpp
+    (kde#397604)
+  * KBibTeX crashes when editing element  (kde#398136)
+  * Don't remove leading whitespace in macros (kde#401470)
+  * Using official APIs for IEEE Xplore and ScienceDirect
+  * Fixing resource leakage as identified by Coverity Scan:
+    CID 287670, 287669
+  * Fixing issues as identified by clazy
+  * Migrating from HTTP to HTTPS protocol in various places
+  * In encoder classes, migrating away from raw char and char* to Qt 
+    classes
+  * Various smaller fixes
+- Removed now merged kde398136.patch
+
+-------------------------------------------------------------------
+Sun Nov 18 16:45:13 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Replace desktopfile.diff by proper use of %suse_update_desktop_file
+- Clean up the .spec file
+- Mark kbibtexrc as %config
+- Add %bcond_without lang
+
+-------------------------------------------------------------------
+Wed Sep 12 10:38:21 UTC 2018 - Cor Blom <cornelis@solcon.nl>
+
+- Add kde398136.patch to fix crash when editing element (kde#398136)
+
+-------------------------------------------------------------------
+Sat Sep  1 11:31:00 UTC 2018 - wbauer@tmo.at
+
+- BuildRequire QtWebKit only when building without QtWebEngine,
+  it's not used at all otherwise
+- Don't run %suse_update_desktop_file on kbibtexpart.desktop, it's
+  not part of the application menu and is not supposed to have a
+  category
+
+-------------------------------------------------------------------
+Fri Jun 29 11:28:07 UTC 2018 - cornelis@solcon.nl
+
+- Add desktopfile.diff to solve rpmlint errors
+
+-------------------------------------------------------------------
+Fri Jun 29 10:34:01 UTC 2018 - cornelis@solcon.nl
+
+- Remove %mime_database_post/postun and %desktop_database_post/postun,
+  they are no longer needed since suse_version 1500
+
+-------------------------------------------------------------------
+Sun Jun 24 19:32:50 UTC 2018 - wbauer@tmo.at
+
+- Update to 0.8.1 (0.8 final release)
+  * no code changes since 0.8rc1 (0.8.0 was not released due to a
+    bug when computing the version number in CMakeLists.txt)
+- Only build with QtWebEngine on platforms where it is available
+
+-------------------------------------------------------------------
+Thu May 31 21:23:59 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Fix typo in Requires, making the package dependencies unresolvable
+
+-------------------------------------------------------------------
+Tue May 29 08:38:25 UTC 2018 - cornelis@solcon.nl
+
+- Update to 0.7.95 a.k.a. 0.8rc1
+  Most important user visible changes:
+  * Removing ISBNdb as it is no longer a free service
+  * Updating list of journal abbreviations (kde#393032)
+  * LyX pipe detection (issues with Kile 3 fixed) (kde#393224)
+  * Preview image/vnd.djvu+multipage files (kde#391198)
+  * Fixing crash when closing settings dialog (kde# 378497)
+  * More options for ID generation: volume number, first page (kde#368732)
+  * More details in included changelog
+
+-------------------------------------------------------------------
+Sun May  6 12:51:36 UTC 2018 - wbauer@tmo.at
+
+- Recommend lang package
+
+-------------------------------------------------------------------
+Sat May  5 21:34:19 UTC 2018 - cornelis@solcon.nl
+
+- Update to 0.7.90 a.k.a. 0.8 beta1:
+  * switch to kdeframeworks5
+  * no upstream changelog yet
+
+-------------------------------------------------------------------
+Sat Dec 16 14:59:10 UTC 2017 - wbauer@tmo.at
+
+- Update to 0.7:
+  * Dependency on Qt WebKit can be disabled at compile time
+  * New dependency on ICU, used to transliterate text to plain ASCII
+  * Generally improved code quality as detected by code checkers such as Clazy or Coverity
+  * New online search: bioRxiv
+  * Various minor fixes
+  * Search in Zotero is rate limited to avoid overloading server
+  * Using KWallet to store Zotero credentials
+  * Adding basic DBUS support to, for example, open files or paste text
+- fix Urls, download.gna.org doesn't exist anymore
+
+-------------------------------------------------------------------
+Thu Mar 23 19:07:44 UTC 2017 - cornelis@solcon.nl
+
+- Added lang package
+
+-------------------------------------------------------------------
+Mon Mar 20 09:34:56 UTC 2017 - cornelis@solcon.nl
+
+- Update to 0.6.2:
+  * KDE Bug 377401 KBibTeX fails to load zotero bibliography
+  * KDE Bug 351455 Removing soversion from KBibTeX Part
+  * KDE Bug 353898 Fixing build issues on ARM architecture
+  * KDE Bug 354785 Using QTextDocument/QTextEdit instead of
+    WebKit/WebEngine: more lightweight and supported on all platforms
+  * KDE Bug 371515 Speeding up selection of elements in bibliography lists
+  * KDE Bug 371593 Sorting field and entry types in comboboxe
+    alphabetically
+  * Fixing crash when open file got modified externally
+  * Correcting choke on PubMed searches to 10 seconds
+  * Fixing search issues for ACM, Google Scholar, JSTOR, and ScienceDirect
+  * Setting foreground color of colored rows to either black or white
+    for better readability
+  * Disabling OCLC WorldCat (request for support denied by this organization)
+  * Generally improved code quality as detected by code checkers such as Clazy
+    or Coverity
+  * Fixing handling of URLs and their protocols for local files
+  * Fixing setting default id suggestion
+  * Adding 'Keywords' field to .desktop file
+  * Removing file that was licensed under CC BY-NC, but never got installed
+  * Improved Unicode support
+  * Refactoring writing of bibliography files, both to local and to
+    remote places, including writing to symbolic links
+  * Better handling quotation marks and protective curly brackets around titles
+  * Updating translations
+- Removed upstreamed module-soversion.patch
+
+-------------------------------------------------------------------
+Wed Aug 19 08:53:17 UTC 2015 - auxsvr@gmail.com
+
+- Added module-soversion.patch to fix kde#351455
+
+-------------------------------------------------------------------
+Mon Aug 17 19:51:03 UTC 2015 - auxsvr@gmail.com
+
+- Update to 0.6:
+
+  * Allowing "unity builds", i.e. merging source code files for faster compilation
+  * Enabling BibUtils support to import/export exotic file formats
+  * Entries can be rated with stars
+  * Adding entry type for Master's thesis
+  * Setting entry identifiers automatically if configured by user
+  * Files (e.g. PDF) can be 'associated' with an entry, including moving/copying/renaming the file to match the bibliography's location and the entry's id
+  * In the element editor, unused tabs are no longer just disabled, but hidden instead
+  * Automatic column-resizing improved
+  * Bibliographies can be imported from Zotero
+  * Adding user interface translations to various languages
+  * New online search engines: CERN Document Server, DOI, IDEAS (RePEc), MR Lookup; fixes to existing search engines
+  * New dockets for file settings, file statistics, and browsing Zotero bibliographies
+  * Value selected in the value list can be added or removed from selected entries
+  * Enhancing the Id Suggestion system
+  * Various fixes as suggested by KDE's code analysis tool Krazy
+  * Various changes and fixes from the ongoing port to KDE Frameworks 5 have been backported
+  
+-------------------------------------------------------------------
+Mon May 19 21:52:11 UTC 2014 - cornelis@solcon.nl
+
+- Update to 0.5.1:
+  * Fixing sorting issue in main list (kde#329724)
+  * KBibTeX will set itself as default bibliography editor in KDE (kde#329750)
+  * Crash when finding PDFs (kde#330700)
+  * Fixing crash in id suggestion editor (kde#332043)
+  * Fixing compilation issue (Gentoo Bug 498932: https://bugs.gentoo.org/show_bug.cgi?id=498932)
+  * Restoring session state (1) (Gna Bug 21581: http://gna.org/bugs/?21581)
+  * Restoring session state (2) (na Bug 21545: http://gna.org/bugs/?21545)
+  * Correctly parsing command line arguments if relative paths are given (deb#689310)
+  * Various minor clean-ups and improvements
+- Removed kbibtex-sorting,patch, integrated upstream.
+
+-------------------------------------------------------------------
+Thu May  8 07:17:56 UTC 2014 - cornelis@solcon.nl
+
+- Added libxml2-devel and libxslt-devel BuildRequires (they where pulled in via libkde4-devel previously)
+
+-------------------------------------------------------------------
+Fri Jan 10 18:24:09 UTC 2014 - auxsvr@gmail.com
+
+- update to version 0.5
+
+- add patch for kde#329724, which fixes wrong sorting order in columns
+
+-------------------------------------------------------------------
+Mon Dec 23 14:52:30 UTC 2013 - saigkill@opensuse.org
+
+- changed version from 0.5rc2 to 0.5~rc2 
+
+-------------------------------------------------------------------
+Sun Dec 22 19:27:49 UTC 2013 - saigkill@opensuse.org
+
+- splitted *.so files to the devel package to fix rpmlint issues 
+
+-------------------------------------------------------------------
+Sat Dec 21 23:49:06 UTC 2013 - saigkill@opensuse.org
+
+- update to version 0.5rc2 
+
+-------------------------------------------------------------------
+Mon Dec 16 22:09:45 UTC 2013 - saigkill@opensuse.org
+
+- update from HEAD 
+
+-------------------------------------------------------------------
+Tue Nov  6 13:16:31 UTC 2012 - cornelis@solcon.nl
+
+- Update to version 0.4.1:
+  * Web searches: Improved support for user-triggered cancelling
+  * SpringerLink search: GUI changes, using api.springer.com for search
+  * PubMed: Limiting search requests per time
+  * ACM Portal: Retrieving "month", fixing HTTP header
+  * JSTOR: fixing HTTP header
+  * Google Scholar: Updates to compensate for changes in Google's web layout; handling redirects
+  * Science Direct: Updates to compensate for changes in Science Direct's web layout; handling redirects
+  * arXiv: Trying to extract bibliographic information from journal strings
+  * BibSonomy: Specifying number of hits to find
+  * Web search uses KDE's proxy settings
+  * Using KDE subsystem to open external files (e.g. PDF files)
+  * Adding preview for images (in addition to PDF or HTML files); handling references to arXiv
+  * Squeezing long file names in user interface
+  * Handling quit actions more gracefully
+  * Improving interface to external programs such as pdflatex
+  * More robust XSL transformations
+  * BibTeX import: guessing encoding information left by JabRef, more informative debug output, improved handling of multiple fields with same name
+  * Reference preview: supporting dark color schemes
+  * Fixing sorting in value list
+  * Fixes in setting color tag to entries
+  * Fixes in name formatting
+  * Keeping user interface read-only for read-only use cases
+  * Numerous bug fixes, closing memory leaks, speed improvements
+  * Adding testing application for web searches
+  * Fixes in duplicate merging code: remove fields user doesn't want to keep
+
+-------------------------------------------------------------------
+Fri Jul  6 15:59:59 UTC 2012 - toddrme2178@gmail.com
+
+- Fix building on 11.4 again
+
+-------------------------------------------------------------------
+Tue Jan 24 10:38:37 UTC 2012 - toddrme2178@gmail.com
+
+- Cleaned up spec file formatting
+- Fix compilation in 11.4 and earlier
+
+-------------------------------------------------------------------
+Tue Nov 29 21:43:58 UTC 2011 - cornelis@solcon.nl
+
+- Updated to 0.4:
+  * Support for Windows (compiles out of the box)
+  * Configuration file system refactored
+  * Adding more online search engines: SpringerLink, PubMed, ACM Digital Library, JSTOR, IEEE Xplorer, Science Direct
+  * Improving all other online search engines: Google Scholar, arXiv, BibSonomy
+  * "List of Values" refactored, allows to search for items
+  * Introducing preferences dialog to manage various settings
+  * Improved support for drag'n'drop throughout the program
+  * Improving tagging elements with color
+  * Introducing global keyword list to select from
+  * Editing widgets get "history" to select from
+  * Widget for cross references allows to select from existing elements
+  * Introducing duplicate finding and merging code and user interface
+  * Improvements in usability of filter line edit
+  * File view can resize and order columns, settings get stored
+  * Improving file importer and exporter filters
+  * BibTeX references can be sent to LyX via a pipe
+  * Numerous bug fixes
+- updated url for kde4 version
+
+-------------------------------------------------------------------
+Mon Jun  6 13:08:29 UTC 2011 - kruber@zib.de
+
+- updated to version 0.3
+
+-------------------------------------------------------------------
+Thu Dec 30 11:57:04 UTC 2010 - alinm.elena@gmail.com
+
+- migration to svn services done 
+
+-------------------------------------------------------------------
+Thu Dec 30 11:32:51 UTC 2010 - alinm.elena@gmail.com
+
+- changed to services 
+
+-------------------------------------------------------------------
+Tue Dec 21 20:02:49 UTC 2010 - alinm.elena@gmail.com
+
+- updated to svn 414
+svn co http://svn.gna.org/svn/kbibtex/trunk kbibtex
+
+-------------------------------------------------------------------
+Mon Nov 29 09:56:36 UTC 2010 - alinm.elena@gmail.com
+
+- updated to 368 
+
+-------------------------------------------------------------------
+Tue Oct 26 09:07:56 UTC 2010 - alinm.elena@gmail.com
+
+- just a simple update... tittiatcoke fixed the ugly warnings 
+
+-------------------------------------------------------------------
+Sat Oct 23 22:03:16 UTC 2010 - alinm.elena@gmail.com
+
+- initial commit 

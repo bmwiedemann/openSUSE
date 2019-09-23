@@ -1,0 +1,285 @@
+-------------------------------------------------------------------
+Wed Sep  4 13:34:19 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec-file with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Apr 26 10:31:34 UTC 2019 - mvetter@suse.com
+
+- bsc#1130588: Require shadow instead of old pwdutils
+
+-------------------------------------------------------------------
+Tue May 23 13:41:33 UTC 2017 - dimstar@opensuse.org
+
+- Require group(nogroup) on openSUSE Leap 15/SLE 15 up: we join
+  our user to the group 'nogroup', hence we have to ensure the
+  group is in place.
+- Add rcusbmuxd link.
+
+-------------------------------------------------------------------
+Fri Oct 17 22:50:00 CEST 2014 - m.szulecki@libimobiledevice.org
+
+- Update to version 1.1.0
+  * Check for pkg-config availability in autogen.sh
+  * Fix missing "usbmuxd-proto.h" in released tarball
+  * Fix typo which broke udev support in rule for udev activation mode
+  * Fix broken configure summary on OS X and change activation method
+  * to "manual"
+  * Compile bits of udev and systemd support only if needed
+  * Bump autoconf requirement to 2.64
+- Changes from version 1.0.9
+  * Fix broken handling of "--user" argument value
+  * Add new "--enable-exit" argument to enable handling of "--exit" requests
+  * Add new "--disable-hotplug" argument to disable automatic device discovery
+  * Add new "--systemd" argument to startup with right settings for systemd
+  * Add man page for usbmuxd
+  * Update copyright headers to match best practice
+  * Flush input buffer on connection teardown
+  * Add systemd based activation with fallback for udev and manual activation
+  * Add initial NEWS file and update README with latest information
+  * Rename header guards according to C++ standard
+  * Implement support for usbmux protocol version 2 which improves stability
+  * Fix crash when old libusbmuxd was used as a client
+  * Add "--version" argument to print version number and exit
+  * Update command line usage to match best practice and other tools
+  * Massively improve read performance by using 3 parallel transfers
+  * Bump requirement to libplist 1.11
+  * Remove trailing "\n" from usbmuxd_log() messages
+  * Improve thread safety
+  * Fix crash on 64bit systems in process_send()
+  * Fix possible leak of file descriptors
+  * Implement "ReadBUID", "ReadPairRecord", "SavePairRecord" and
+  * "DeletePairRecord" commands
+  * Make plist based protocol support mandatory
+  * Return proper error packet on client version mismatch
+  * Implement "ListDevices" command
+  * Manage pair records in a directory compatible to native usbmuxd
+  * Output USB configuration changes in log
+  * Set "deactivated" USB configuration on iOS device by default as usbmuxd will
+  * bring device to "life" on it's own now
+  * Add udev rule installation with autotools
+  * Lower udev rules numbering to make sure to start as early as possible
+  * Split out client library into "libusbmuxd" and depend on "libimobiledevice"
+  * Implement preflight worker to support iOS 7 based trust dialog handling
+  * Install usbmuxd binary to sbindir instead of bindir
+  * Switch from CMake to autotools build system
+
+-------------------------------------------------------------------
+Tue Jul 15 05:50:07 UTC 2014 - i@marguerite.su
+
+- added baselibs.conf to Source99
+
+-------------------------------------------------------------------
+Mon Jun 16 14:04:13 UTC 2014 - i@marguerite.su
+
+- update version 1.0.9git20140528
+  * remove libusbmuxd sources and adapt source tree to use autotools
+  * other bugfixes, see:
+    http://cgit.sukimashita.com/usbmuxd.git/log/
+- remove 0001-Add-support-for-automatic-activation-as-systemd-serv.patch
+  * upstream changed
+- add usbmuxd systemd service
+
+-------------------------------------------------------------------
+Sun Nov 24 18:18:20 UTC 2013 - crrodriguez@opensuse.org
+
+- define _udevrulesdir only if not already in place
+- add systemd service %pre %post scriptlets
+- run %udev_rules_update if such macro is defined
+
+-------------------------------------------------------------------
+Tue Mar 26 16:49:04 UTC 2013 - schuetzm@gmx.net
+
+- Add systemd unit file for usbmuxd and activate it from the udev rules file.
+  This fixes bnc#811801.
+- Added 0001-Add-support-for-automatic-activation-as-systemd-serv.patch
+
+-------------------------------------------------------------------
+Wed Oct 17 13:41:00 UTC 2012 - fcrozat@suse.com
+
+- Fix build with new udev rules location
+
+-------------------------------------------------------------------
+Mon Apr 16 11:30:54 UTC 2012 - cfarrell@suse.com
+
+- license update: (GPL-2.0 or GPL-3.0) and LGPL-2.1+
+  See README
+
+-------------------------------------------------------------------
+Mon Apr 08 23:45:22 CEST 2012 - opensuse@sukimashita.com
+
+- Update to version 1.0.8
+  * Fix possible buffer overflow in libusbmuxd
+  * Fix detection for Apple TV 2 due to small interface detection bug
+  * Licensed common/utils.c and common/utils.h under LGPL
+  * Several bug fixes and improvements in libusbmuxd's device detection and
+    event handling code
+  * udev: Set owner to usbmux on device node to make it useable for usbmux user
+  * function usbmuxd_get_device_by_uuid has been renamed to
+    usbmuxd_get_device_by_udid
+  * usbmuxd_device_info_t member uuid been renamed to udid
+
+-------------------------------------------------------------------
+Fri Jan 20 13:06:47 UTC 2012 - coolo@suse.com
+
+- remove _service, too fragile
+
+-------------------------------------------------------------------
+Sun Apr 24 12:59:34 UTC 2011 - toddrme2178@gmail.com
+  
+- Add 32bit compatibility libraries
+  
+-------------------------------------------------------------------
+Thu Mar 24 17:45:01 CEST 2011 - opensuse@sukimashita.com
+
+- Create and use "usbmux" user in %pre to fix bno#679159
+
+-------------------------------------------------------------------
+Thu Mar 24 11:25:01 CEST 2011 - opensuse@sukimashita.com
+
+- Update to version 1.0.7
+  * Detect iPad 2 and upcoming next generation iPhone devices
+  * Fix support for ancient devices running iOS 1.x
+  * Optionally use inotify instead of polling to safe energy
+
+-------------------------------------------------------------------
+Thu Dec  9 00:03:29 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Fix -devel package dependencies, libusb is only required at
+ runtime.
+- disable static library creation instead of removing it. 
+
+-------------------------------------------------------------------
+Mon Nov 15 11:06:18 UTC 2010 - coolo@novell.com
+
+- ran spec-cleaner
+
+-------------------------------------------------------------------
+Mon Nov 15 10:57:35 UTC 2010 - coolo@novell.com
+
+- Update to version 1.0.6
+  * Bump udev rules to 0-9a-f, should last for a few device iterations
+  * Fix potential issue with USB transactions >=32k multiples of 16k
+- remove patch no longer necessary
+
+-------------------------------------------------------------------
+Thu Jul 22 11:56:54 CEST 2010 - opensuse@sukimashita.com
+
+- Update to version 1.0.5
+  * Protocol version 1 support. Enables libusbmuxd to talk to 
+    Apple's official usbmuxd on Windows and OSX
+  * Recovery mode support for idevicerestore firmware restores
+  * Detach kernel USB drivers to avoid USB issues
+  * Win32 support for libusbmuxd
+  * FreeBSD support
+  * Basic C++ support
+  * Fixes crasher bugs
+- Added libplist dependancy
+- Remove upstreamed patch
+
+-------------------------------------------------------------------
+Fri Jun  4 07:23:57 UTC 2010 - davejplater@gmail.com
+
+- Fixed incorrect summary and description see bnc#611595
+
+-------------------------------------------------------------------
+Tue May 11 22:07:50 CEST 2010 - opensuse@sukimashita.com
+
+- Update to version 1.0.4
+  * Fix aborts due to transmit window overflow
+  * libusbmuxd: close connection after enumerating devices
+  * Ignore SIGPIPE, otherwise usbmuxd might shut down
+  * OSX: add workaround for missing ppoll system call
+  * Detect the iPad and let usbmuxd talk to it
+  * libusbmuxd: support shorter device info record messages
+
+-------------------------------------------------------------------
+Tue Mar 23 19:37:05 CEST 2010 - opensuse@sukimashita.com
+
+- Update to version 1.0.3
+  * Set USBMUX_SUPPORTED in udev rules for user space to be
+    able to recognize devices supporting the usbmux protocol.
+
+-------------------------------------------------------------------
+Thu Feb 11 13:28:36 CEST 2010 - opensuse@sukimashita.com
+
+- Update to version 1.0.2
+  * Change documentation to mention libimobiledevice, add a 
+    trademark notice, and make things more consistent
+  * Security fix: fix a potential buffer overflow that could
+    be triggered by a rogue device
+  * Fixed a crash when we get unexpected TCP packets early
+    (e.g. reconnected device).
+  * usbmuxd will not 'drop' privileges to root (-U root is
+    now a no-op)
+  * Made -U require an argument. The optional argument behavior
+    was causing some confusion (since -U <name> didn't work, 
+    it had to be -U<name>), so now the argument is required.
+    Please make sure that you specify an explicit name from now
+    on ('-U' will not work).
+  * Removed debugging printfs in libusbmuxd
+  * Cleaned up and improved CMakeLists. Now it should honor the
+    CFLAGS environment variable if it is present and nonempty
+  * Add a missing <pthread.h> include to libusbmuxd
+
+-------------------------------------------------------------------
+Mon Dec 07 17:43:32 CEST 2009 - opensuse@sukimashita.com
+
+- Update to version 1.0.0
+  * Workaround udev bug; fixes not reacting to signals
+  * Do not try to claim all Apple devices
+  * Fix libusbmuxd cleanup when usbmuxd shuts down
+- Remove upstreamed patches
+
+-------------------------------------------------------------------
+Sat Oct 31 11:40:44 CEST 2009 - opensuse@sukimashita.com
+
+- Update to version 1.0.0-rc2
+  * Improved documentation
+  * Fix install target for 64bit architectures
+  * Fix underlinking of libusbmuxd
+
+-------------------------------------------------------------------
+Wed Oct 28 09:42:17 CEST 2009 - opensuse@sukimashita.com
+
+- Update to version 1.0.0-rc1
+  * completly new implementation
+  * uses cmake build system
+  * improved libusbmuxd API with device hotplug callbacks
+  * better performance and lower cpu usage
+
+-------------------------------------------------------------------
+Mon Aug 10 12:25:59 CEST 2009 - opensuse@sukimashita.com
+
+- Update to version 0.1.4
+  * udev operation mode
+  * better udev rules for non-Debian distributions
+  * debugging output refined with a mutex to prevent garbled output
+  * smaller buffer size in usbmuxd_client_handler_thread to fix
+    connection resets
+
+-------------------------------------------------------------------
+Tue Aug 04 09:37:09 CEST 2009 - opensuse@sukimashita.com
+
+- Update to version 0.1.3
+  * Proper fix for USB communication issue using wMaxPacketSize
+
+-------------------------------------------------------------------
+Sun Aug 02 20:20:09 CEST 2009 - opensuse@sukimashita.com
+
+- Update to version 0.1.1
+  * Fix USB communication issue with packet sizes of N*128 or N*512
+
+-------------------------------------------------------------------
+Mon Jul 20 16:01:09 CEST 2009 - opensuse@sukimashita.com
+
+- Update to version 0.1.0
+  * First official release
+  * Adds iPhone 3GS support and exposes new tethering USB interface
+  * Fix race condition using multiple clients simultaneously
+  * Fix various usbmux protocol bugs
+
+-------------------------------------------------------------------
+Sat May 22 11:22:09 CEST 2009 - opensuse@sukimashita.com
+
+- Initial package created

@@ -1,0 +1,21 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/LMMS/lmms.git</param>
+    <param name="scm">git</param>
+    <param name="submodules">enable</param>
+    <param name="exclude">.git</param>
+	<param name="filename">lmms</param>
+    <param name="versionformat">1.2.0</param>
+    <param name="revision">0fbaca4</param>
+    <param name="changesgenerate">enable</param>	
+  </service>
+  <service name="tar" mode="disabled">
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">lmms-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">lmms</param>
+  </service>
+</services>

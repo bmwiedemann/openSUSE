@@ -1,0 +1,9 @@
+<package name="equalx" project="openSUSE:Factory">
+  <title>equalx</title>
+  <description>
+EqualX is a helpful graphical interface to LaTeX programs	  
+
+  </description>
+  <devel project="Publishing" package="equalx"/>
+  <url>http://equalx.sourceforge.net/</url>
+</package>

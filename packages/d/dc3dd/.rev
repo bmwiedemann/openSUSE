@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>87bb9cb491cf659f000c4b4a5dc9586f</srcmd5>
+    <version>7.1.0</version>
+    <time>1329400538</time>
+    <user>coolo</user>
+    <comment>Another new computer forensic app.  dc3dd creates dd images.</comment>
+    <requestid>103667</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>87bb9cb491cf659f000c4b4a5dc9586f</srcmd5>
+    <version>7.1.0</version>
+    <time>1340183272</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>87bb9cb491cf659f000c4b4a5dc9586f</srcmd5>
+    <version>7.1.0</version>
+    <time>1359108802</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>9bc04892df7051c43fab50dc3839d479</srcmd5>
+    <version>7.1.0</version>
+    <time>1373395732</time>
+    <user>coolo</user>
+    <comment>- Override broken configure checks (forwarded request 182595 from Andreas_Schwab)</comment>
+    <requestid>182650</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>9bc04892df7051c43fab50dc3839d479</srcmd5>
+    <version>7.1.0</version>
+    <time>1379662210</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>9bc04892df7051c43fab50dc3839d479</srcmd5>
+    <version>7.1.0</version>
+    <time>1409300746</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e3225652328824319a7aaedfbf97fdf8</srcmd5>
+    <version>7.2.0</version>
+    <time>1420531612</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v7.2 and clean-up specfile</comment>
+    <requestid>267222</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b0e5879d7297c1574d4b0b38b99fca4d</srcmd5>
+    <version>7.2.0</version>
+    <time>1484772987</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451054</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b15acc7e60b125b40dc2352eceda7260</srcmd5>
+    <version>7.2.646</version>
+    <time>1565695283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722408</requestid>
+  </revision>
+</revisionlist>

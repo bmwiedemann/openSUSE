@@ -1,0 +1,569 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5c26759e24a166081fa751cacb378b00</srcmd5>
+    <version>0.5.0</version>
+    <time>1238622831</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>5c26759e24a166081fa751cacb378b00</srcmd5>
+    <version>0.5.0</version>
+    <time>1238622831</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>985981efec640c3e1db455301301c068</srcmd5>
+    <version>0.5.0</version>
+    <time>1261400988</time>
+    <user>autobuild</user>
+    <comment>Copy from zypp:Head/augeas based on submit request 27229 from user coolo
+</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>32160126e6cb372b384e538e8a8347f8</srcmd5>
+    <version>0.5.0</version>
+    <time>1268922959</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>32160126e6cb372b384e538e8a8347f8</srcmd5>
+    <version>0.5.0</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>32160126e6cb372b384e538e8a8347f8</srcmd5>
+    <version>0.5.0</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>60fc1dac07b6692f90a3a75467b28e59</srcmd5>
+    <version>0.7.3</version>
+    <time>1287010024</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/augeas based on submit request 50485 from user pmullaney
+</comment>
+    <requestid>50485</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>47c0a9d4c4f2e975250775b2aa51ef4a</srcmd5>
+    <version>0.7.4</version>
+    <time>1295014901</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58111 from user coolo
+</comment>
+    <requestid>58111</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ae4bbb4ed21210b4833258eda9e28fc1</srcmd5>
+    <version>0.7.4</version>
+    <time>1295014909</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58111
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>ae4bbb4ed21210b4833258eda9e28fc1</srcmd5>
+    <version>0.7.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>fd24595e7a2b637b803e2ac23867af75</srcmd5>
+    <version>0.7.4</version>
+    <time>1302019596</time>
+    <user>darix</user>
+    <comment>Accepted submit request 66006 from user coolo
+</comment>
+    <requestid>66006</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>15caa0b028ea8d02d1248626d7b0b641</srcmd5>
+    <version>0.7.4</version>
+    <time>1302019604</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 66006
+</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>76973c4eb0430c1d2b1d42ab7a3cc78e</srcmd5>
+    <version>0.8.1</version>
+    <time>1304926488</time>
+    <user>saschpe</user>
+    <comment>- update to 0.8.1
+  * augtool: respect autosave flag in oneshot mode, bug #193;
+    fix segfault caused by unmatched bracket in path expression,
+    bug #186
+  * eliminate a global variable in the lexer, fixes BZ 690286
+  * replace an erroneous assert(0) with a proper error message when
+    none of the alternatives in a union match during saving,
+    bug #183
+  * improve AIX support
+  * Lens changes/additions
+    * Access: support the format @netgroup@@nisdomain, bug #190
+    * Fstab: fix parsing of SELinux labels in the fscontext option
+    * Grub: support 'device' directive for UEFI boot, bug #189; support
+      'configfile' and 'background'
+    * Httpd: handle continuation lines; autoload httpd.conf on
+      Fedora/RHEL, BZ 688149; fix support for single-quoted
+      strings
+    * Iptables: support --tcp-flags, bug #157; allow blank and comment
+      lines anywhere
+    * Mysql: include /etc/my.cnf used on Fedora/RHEL, BZ 688053
+    * NagiosCfg: parse setting multiple values on one line
+      * NagiosObjects: process /etc/nagios3/objects/*.cfg
+      * Nsswitch: support 'sudoers' as a database, bug #187
+      * Shellvars: autoload /etc/rc.conf used in FreeBSD
+      * Sudoers: support '#include' and '#includedir', bug #188
+      * Yum: exclude /etc/yum/pluginconf.d/versionlock.list
+- changes for 0.8.0
+  * add new 'square' lens combinator
+  * add new aug_span API function
+  * augtool: short options for --nostdinc, --noload, and --noautoload (forwarded request 69753 from dmacvicar)</comment>
+    <requestid>69815</requestid>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>a2daf0493addf24391c829f0eb8b45c0</srcmd5>
+    <version>0.8.1</version>
+    <time>1304926498</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69815
+</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>24a63dea3b569fd3aac6b3ecc8374396</srcmd5>
+    <version>0.8.1</version>
+    <time>1309763558</time>
+    <user>saschpe</user>
+    <comment>Sync ChangeLog with SLE.</comment>
+    <requestid>75016</requestid>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>501f67dfa6b19fbe0f6f760d91ff7dc5</srcmd5>
+    <version>0.8.1</version>
+    <time>1309763569</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75016
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>91145a3985bc2ebdd267f8c9bc40b8df</srcmd5>
+    <version>0.9.0</version>
+    <time>1314186541</time>
+    <user>saschpe</user>
+    <comment>- update to 0.9.0:
+  - augtool: keep history in ~/.augeas/history
+  - add aug_srun API function; this makes it possible to run a sequence of
+    commands through the API
+  - aug_mv: report error AUG_EMVDESC on attempts to move a node into one of
+    its descendants
+  - path expressions: allow whitespace inside names, making '/files/etc/foo
+    bar/baz' a legal path, but parse [expr1 or expr2] and [expr1 and expr2]
+    as the logical and/or of expr1 and expr2
+  - path expressions: interpret escape sequences in regexps; since '.' does
+    not match newlines, it has to be possible to write '.|\n' to match any
+    character
+  - path expressions: allow concatenating strings and regexps; add
+    comparison operator '!~'; add function 'glob'; allow passing a nodeset
+    to function 'regexp'
+  - store the names of the functions available in path expressions under
+    /augeas/version
+  - fix several smaller memory leaks
+  - Lens changes/additions
+    * Aliases: allow spaces and commas in aliases (Mathieu Arnold)
+    * Grub: allow &quot;bootfs&quot; Solaris/ZFS extension for dataset name, bug #201
+      (Dominic Cleal); allow kernel path starting with a BIOS device,
+      bug #199
+    * Inifile: allow multiline values
+    * Php: include files from Zend community edition, bug #210
+    * Properties: new lens for Java properties files, bug #194 (Craig Dunn)
+    * Spacevars: autoload two ldap files, bug #202 (John Morrissey)
+    * Sudoers: support users:groups format in a Runas_Spec line, bug #211;
+      add CSW paths (Dominic Cleal)
+    * Util: allow comment_or_eol to match whitespace-only comments,</comment>
+    <requestid>79621</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>d3c307e70b2239f206de609cbe40fab0</srcmd5>
+    <version>0.9.0</version>
+    <time>1316439603</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Add augeas-devel to baselibs (forwarded request 82854 from jengelh)</comment>
+    <requestid>82861</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>2d219ab85d6b8d060c72697982153cd3</srcmd5>
+    <version>0.9.0</version>
+    <time>1316689271</time>
+    <user>saschpe</user>
+    <comment>- move lenses from /usr/share/libaugeas0/augeas
+  to /usr/share/augeas (bnc#719199)
+- move vim lenses syntax files from -lenses to -devel package (forwarded request 84389 from dmacvicar)</comment>
+    <requestid>84410</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>2d219ab85d6b8d060c72697982153cd3</srcmd5>
+    <version>0.9.0</version>
+    <time>1319181780</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>c80a00bb880c5e5084b3d6a3f6fbf086</srcmd5>
+    <version>0.9.0</version>
+    <time>1323190789</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>781917364dde6dc7ce711f84ef9e7dc0</srcmd5>
+    <version>0.9.0</version>
+    <time>1327673805</time>
+    <user>coolo</user>
+    <comment>- Patch shellvars.aug to recognize SUSE specific files in 
+  sysconfig (bnc#729491) (forwarded request 101693 from dmacvicar)</comment>
+    <requestid>101706</requestid>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>947dfea0eda51166018b00c460166ce3</srcmd5>
+    <version>0.9.0</version>
+    <time>1329750410</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>105933</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f45b8c94ea078e235a42fa8ff664c5ff</srcmd5>
+    <version>0.10.0</version>
+    <time>1330520748</time>
+    <user>coolo</user>
+    <comment>- update to 0.10.0
+  - support relative paths by taking them relative to the value of
+    /augeas/context in all API functions where paths are used
+  - add aug_to_xml to API: transform tree(s) into XML, exposed as dump-xml in
+    aug_srun and augtool. Introduces dependency on libxml2
+  - fix regular expression escaping. Previously, /[/]/ match either a backslash
+    or a slash. Now it only matches a slash
+  - path expressions: add function 'int' to convert a node value (string) to an
+    integer
+  - path expressions: make sure the regexp produced by empty nodesets from
+    regexp() and glob() matches nothing, rather than the empty word
+  - fix --autosave when running single command from command line, BZ 743023
+  - aug_srun: support 'insert' and 'move' as aliases for 'ins' and 'mv'
+  - aug_srun: allow escaping of spaces, quotes and brackets with \
+  - aug_init: accept AUG_NO_ERR_CLOSE flag; return augeas handle even when
+    initialization fails so that caller gets some details about why
+    initialization failed
+  - aug_srun: tolerate trailing white space in commands
+  - much improved, expanded documentation of many lenses
+  - always interpret lens filter paths as absolute, bug #238
+  - fix bug in libfa that would incorrectly calculate the difference of a case
+    sensistive and case insensitive regexp (/[a-zA-Z]+/ - /word/i would match
+    'worD')
+  - new builtin 'regexp_match' for .aug files to make testing regexp matching
+    easier during development
+  - fix 'span' command, bug #220
+  - Lens changes/additions
+    * Access: parse user@host and (group) in users field; field separator need
+      not be surrounded by spaces
+    * Aliases: allow spaces before colons</comment>
+    <requestid>107539</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>3fd212af6a78e3664d67ddbf57d25f94</srcmd5>
+    <version>0.10.0</version>
+    <time>1332415873</time>
+    <user>coolo</user>
+    <comment>- Ensure libxml2 is present in .pc file</comment>
+    <requestid>109807</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>3fd212af6a78e3664d67ddbf57d25f94</srcmd5>
+    <version>0.10.0</version>
+    <time>1340183188</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>9de4e563dc95e3239fe7eb2113bf0694</srcmd5>
+    <version>0.10.0</version>
+    <time>1343639803</time>
+    <user>namtrac</user>
+    <comment>Fix build with missing gets declaration (glibc 2.16) (forwarded request 129047 from a_jaeger)</comment>
+    <requestid>129162</requestid>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>41a4bd8d254054091e8eebf2a13051fa</srcmd5>
+    <version>0.10.0</version>
+    <time>1349944626</time>
+    <user>coolo</user>
+    <comment>license update: GPL-3.0+ and LGPL-2.1+
+semicolon is ambiguous (forwarded request 137763 from babelworx)</comment>
+    <requestid>137778</requestid>
+  </revision>
+  <revision rev="29" vrev="8">
+    <srcmd5>41a4bd8d254054091e8eebf2a13051fa</srcmd5>
+    <version>0.10.0</version>
+    <time>1359108677</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d58fac991208b0314faf1d1fff005e64</srcmd5>
+    <version>1.0.0</version>
+    <time>1366632262</time>
+    <user>coolo</user>
+    <comment>update to augeas-1.0.0 (forwarded request 163755 from poelzi)</comment>
+    <requestid>171231</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>d58fac991208b0314faf1d1fff005e64</srcmd5>
+    <version>1.0.0</version>
+    <time>1379662005</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6f72f07aa5bf30f85b42bca32b651bb5</srcmd5>
+    <version>1.1.0</version>
+    <time>1386942773</time>
+    <user>coolo</user>
+    <comment>- download url changed, also added keyring and .sig ring
+
+- Update to version 1.1.0
+    - Handle files with special characters in their name, bug #343
+  - Fix type error in composition ('f; g') of functions, bug #328
+  - Improve detection of version script; make build work on Illumos with
+      GBU ld (Igor Pashev)
+  - augparse: add --trace option to print filenames of all modules being
+      loaded
+  - Various lens documentation improvements (Jasper Lievisse Adriaanse)
+  - Lens changes/additions
+  - ActiveMQ_*: new lens for ActiveMQ/JBoss A-MQ (Brian Harrington)
+  - AptCacherNGSecurity: new lens for /etc/apt-cacher-ng/security.conf
+      (Erik Anderson)
+  - Automaster: accept spaces between options
+  - BBHosts: support more flags and downtime feature (Mathieu Alorent)
+  - Bootconf: new lens for OpenBSD's /etc/boot.conf (Jasper Adriaanse)
+  - Desktop: Support dos eol
+  - Dhclient: read /etc/dhclient.conf used in OpenBSD (Jasper Adriaanse)
+  - Dovecot: New lens for dovecot configurations (Serge Smetana)
+  - Fai_Diskconfig: Optimize some regexps
+  - Fonts: exclude all README files (Jasper Adriaanse)
+  - Inetd: support IPv6 addresses, bug #320
+  - IniFile: Add lns_loose and lns_loose_multiline definitions
+             Support smart quotes
+    Warning: Smart quotes support means users should not add
+             escaped double quotes themselves. Tests need to be fixed
+             also.
+             Use standard Util.comment_generic and Util.empty_generic
+    Warning: Existing lens tests must be adapted to use standard</comment>
+    <requestid>210795</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ad4f1079902ff40ad239c13a3002de09</srcmd5>
+    <version>1.2.0</version>
+    <time>1399703505</time>
+    <user>coolo</user>
+    <comment>- Add check phase, comment out as 2 test fails now.
+- Clean up with spec-cleaner
+- Version bump to 1.2.0:
+  - API changes
+    * Add aug_cp and the cp and copy commands
+    * aug_to_xml now includes span information in the XML dump
+  - General changes/additions
+    * Fix documentation link in c_api NaturalDocs menu
+    * Fix NaturalDocs documentation for various lenses
+    * src/transform.c (filter_matches): wrap fnmatch to ensure that an incl
+      pattern containing &quot;//&quot; matches file paths, RHBZ#1031084
+    * Correct locations table for transform_save() (Tomas Hoger)
+    * Corrections for CVE-2012-0786 tests (Tomas Hoger)
+    * Fix umask handling when creating new files, RHBZ#1034261
+  - Lens changes/additions
+    * Access: support DOMAIN\user syntax for users and groups, bug #353
+    * Authorized_Keys: Allow 'ssh-ed25519' as a valid authorized_key
+      type (Jasper Lievisse Adriaanse)
+    * Automounter: Handle hostnames with dashes in them, GH issue #27
+    * Build: Add combinatorics group
+    * Cyrus_Imapd: Create new entries without space before separator,
+      RHBZ#1014974 (Dietmar Kling)
+    * Desktop: Support square brackets in keys
+    * Dhclient: Add dhclient.conf path for Debian/Ubuntu (Esteve Fernandez)
+    * Dhcpd: Support conditionals, GH issue #34
+             Support a wider variety of allow/deny statement, including
+             booting and bootp (Yanis Guenane)
+             Support a wider variety of DHCP allow/deny/ignore statements
+             (Yanis Guenane)
+    * Dovecot: Various enhancements and bug fixes (Michael Haslgrübler):</comment>
+    <requestid>232823</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>a8695e0f8f37514caa0f311d3dc0afbe</srcmd5>
+    <version>1.2.0</version>
+    <time>1400388609</time>
+    <user>coolo</user>
+    <comment>Find device.map in any dir beneath /boot (bnc#875086) (forwarded request 234345 from mlatimer)</comment>
+    <requestid>234352</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>b046532a10607fb5fda0e419f349998c</srcmd5>
+    <version>1.2.0</version>
+    <time>1405264574</time>
+    <user>coolo</user>
+    <comment>- Change desc to describe the &quot;tools&quot; not just the library
+  bnc#885495.
+
+- Enable tests but &quot;pass&quot; them even with 2 failures.</comment>
+    <requestid>239344</requestid>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>b046532a10607fb5fda0e419f349998c</srcmd5>
+    <version>1.2.0</version>
+    <time>1409300531</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>bfdad9eaa8764f1e5c15fc4f22a0f983</srcmd5>
+    <version>1.3.0</version>
+    <time>1419159863</time>
+    <user>coolo</user>
+    <comment>- restore keyring and .sig file, as this is checked by the OBS
+  source service
+
+- Update  to version 1.3.0
+  + General changes/additions
+    * Add missing cp entry in manpage (GH issue #78)
+    * Add seq to vim syntax highlight (Robert Drake)
+    * Update augtool.1 man page with new commands and --span, RHBZ#1100077
+    * augtool autocomplete includes command aliases, RHBZ#1100184
+    * Remove unused &quot;filename&quot; argument from dump-xml command, RHBZ#1100106
+    * aug_save returns non-zero result when unable to delete files,
+      RHBZ#1091143
+  + Lens changes/additions
+    * Aliases: permit missing whitespace between colon and recipients
+    * AptPreferences: Support spaces in origin fields
+    * Cgconfig: handle additional valid controllers (Andy Grimm)
+    * Chrony: New lens to parse /etc/chrony.conf (Pat Riehecky)
+    * CPanel: New lens to parse cpanel.config files
+    * Desktop: Allow @ in keys (GH issue #92)
+    * Device_map: Parse all device.map files under /boot (Mike Latimer)
+    * Dhclient: Add support for option modifiers (Robert Drake,
+                GH issue #95)
+                Parse hash statements with dhcp-eval strings
+    * Dhcpd: stmt_string quoted blocks no longer store quote marks
+             (incompatible change),
+             many changes to support more record types (Robert Drake)
+    * Group: NIS support (KaMichael)
+    * Grub: handle &quot;foreground&quot; option, RHBZ#1059383 (Miguel Armas)
+    * Gshadow: New lens (Lorenzo Catucci)
+    * Httpd: Allow eol comments after section tags</comment>
+    <requestid>265847</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>d979a2285628bd7f24d6c34cef1b8327</srcmd5>
+    <version>1.3.0</version>
+    <time>1427313774</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>292031</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ead9dc39567fdba4cecf520ada056808</srcmd5>
+    <version>1.4.0</version>
+    <time>1437398052</time>
+    <user>coolo</user>
+    <comment>- Version bump to 1.4.0:
+  * Loads of bugfixes all around the package
+  * Read up NEWS file for the detailed changes</comment>
+    <requestid>317164</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>f2c74ceef301e77f0a9c36e877adb285</srcmd5>
+    <version>1.4.0</version>
+    <time>1460101083</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>384600</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>4b3f0b49574418f22a61472c53406db6</srcmd5>
+    <version>1.5.0</version>
+    <time>1464075286</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>396868</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>c029c66ab1e039d95eda695f49fb5ff6</srcmd5>
+    <version>1.6.0</version>
+    <time>1478174272</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.6.0:
+  * See the NEWS file for the details</comment>
+    <requestid>437703</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>7b82132fdb25696eb0ff8206e4fa54a4</srcmd5>
+    <version>1.8.0</version>
+    <time>1496822043</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.8.0:
+  * See the News file for all the details
+- Verified it contains fixes for bsc#933210 bsc#975729 bsc#925225
+  bsc#1023204 CVE-2014-8119</comment>
+    <requestid>500542</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>d0b041ddbcc98bac93bbbad0eadd4980</srcmd5>
+    <version>1.9.0</version>
+    <time>1509722511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537237</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>b81de165e934041edc06b303f729e850</srcmd5>
+    <version>1.9.0</version>
+    <time>1519902341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580130</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>bbc57915e4dd3cf20837ed398f809a0a</srcmd5>
+    <version>1.10.1</version>
+    <time>1522058912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589655</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>f04fbd7992a8253e8c1eb55563a9adf5</srcmd5>
+    <version>1.11.0</version>
+    <time>1545996818</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661481</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>08cdaec37789bfe9d04ef936573bc997</srcmd5>
+    <version>1.11.0</version>
+    <time>1551024374</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>674516</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>d72652c7016e85e8af037a37b7345b7a</srcmd5>
+    <version>1.11.0</version>
+    <time>1552571580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683893</requestid>
+  </revision>
+</revisionlist>

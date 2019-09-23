@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>377799b6da539336b9dc80f8590216f8</srcmd5>
+    <version>1.0.8</version>
+    <time>1476874870</time>
+    <user>dimstar_suse</user>
+    <comment>Add virt-top to Factory (bsc#990150)</comment>
+    <requestid>419670</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>996e258242f33e7fd76e56185fa7089f</srcmd5>
+    <version>1.0.8</version>
+    <time>1495268027</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>496360</requestid>
+  </revision>
+</revisionlist>

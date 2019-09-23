@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Fri Jun 21 10:15:58 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.8.0
+  * Fixed support for Python 3.8
+  * Dropped support for Python 2.6 and 3.3
+
+-------------------------------------------------------------------
+Tue Mar  5 16:35:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.2:
+  * Allow to replace gettext function by providing it in the template context or through base_globals in Loader
+  * Improve parsing of ${} expressions and fix syntax errors reporting in braced expressions.
+  * Improve parsing of documents with comments before the root element
+
+-------------------------------------------------------------------
+Tue Dec  4 12:49:45 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Aug 24 15:21:28 UTC 2017 - tbechtold@suse.com
+
+- Add missing python-nine Requires
+
+-------------------------------------------------------------------
+Mon Jul 10 11:51:25 UTC 2017 - jengelh@inai.de
+
+- Remove storytelling from description.
+
+-------------------------------------------------------------------
+Thu Jun 29 16:41:08 UTC 2017 - tbechtold@suse.com
+
+- update to 0.7.0:
+  * Text for i18n is now extracted ignoring the empty spaces surrounding the
+    text itself. Empty text will always be treated as non translatable nodes
+    for performance reasons.
+  * ``extract_python`` option will now report syntax errors when extracting
+    text for translation.
+  * Added ``extract_python`` option to babel message extractor, this allows
+    extracting gettext calls in ``${}`` expressions
+  * Actually report 0.6 in kajiki/version.py
+  * Expose ``strip_text`` option in loader
+  * Fixed ``py:switch`` error message wrongly mentioning ``py:with``
+  * Support for multiline ``${}`` expressions
+  * Subsequent text nodes are now squashed into a single text node. This allows
+    translating whole paragraphs instead of single sentences.
+  * Allow code and function calls inside tag attributes
+  * Added ``strip_text`` option to XMLTemplate and i18n collector to ensure
+    leading and trailing spaces are stipped by text nodes (also leads to
+    minified HTML)
+  * Some HTML nodes that do not require being closed but is commonly considered
+    best practice to close them are now emitted with ending tag (IE: <p>)
+  * Generally improved code documentation to lower entry barrier for contributors
+  * ``py:attrs`` will now emit the attribute name itself or will omit the attribute
+    at all in case of ``bool`` values for 'checked', 'disabled', 'readonly',
+    'multiple', 'selected', 'nohref', 'ismap', 'declare' and 'defer',
+  * ``py:switch`` now correctly supports multiple ``py:case`` statements.
+  * text inside ``<script>`` and ``<style>`` tags is no longer collected translation.
+  * Syntax errors now report the line and the surrounding code when there is a
+    markup or python syntax error.
+  * As ``py:swtich`` discards all its content apart from ``py:case`` and
+    ``py:else`` statements it will now correctly report an error when the
+    statements has other content.
+  * ``py:else`` will now correctly detect spurious content between itself and
+    ``py:if`` as the two must be consequential.
+  * Improved code documentation on core classes.
+  * ``py:with`` statement now keeps order of variables, so that variables can
+    depend from each other.
+  * Babel is no longer a dependency unless you want to use the message extractor.
+  * TranslatableTextNodes are now only generated for non-empty strings
+  * ``py:with`` statement now accepts multiple variables separated by semicolon
+  * Babel message extractor fixed on Python2
+  * Fix crash on PyPy
+  * CDATA sections created by the user are now properly preserved
+  * ``cdata_scripts=False`` option in ``XMLTemplate`` allows disabling automatic
+    CDATA for script and style tags.
+  * Autoblocks experimental feature automatically creates blocks from specified
+    tag names.
+  * Also accept "$." without erroring out. In fact, accept anything.
+  * Add integration plugin for TurboGears 1
+  * Accept "$(" without erroring out. Easier to write jQuery stuff.
+  * There was a showstopper regression in FileLoader. Fixes #1
+  * Support Python versions 2.6, 2.7, 3.2, 3.3 in a single codebase
+    using the *nine* library.
+  * Support HTML entities as well as XML entities in input templates.
+  * py:include fixed, can see global variables.
+  * Genshi compatibility: support built-in functions:
+    defined(), value_of() and Markup().
+  * ``py:def``: Do not crash if a function has no content.
+  * ``py:strip=''`` is the same as ``py:strip='True'``.
+  * Correctness: escape HTML attribute values.
+  * Correctness: Always close script tags, even in XML mode.
+  * Add integration module for the Pyramid web framework.
+  * Give the FileLoader a *path*, not just a base *directory*.
+  * Documentation improvements, including the need to write CDATA sections.
+  * Move from Sourceforge to Github.
+  * Use Travis for continuous integration.
+  * The whole codebase is formatted according to PEP8.
+- convert to singlespec
+
+-------------------------------------------------------------------
+Thu Oct 24 11:07:26 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Thu Jan 17 10:44:11 UTC 2013 - saschpe@suse.de
+
+- Initial version
+

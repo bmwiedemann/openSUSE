@@ -1,0 +1,160 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fd3d053974678edca63c81b8467720ee</srcmd5>
+    <version>0.0.1</version>
+    <time>1518697384</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libcontainers-common package.
+</comment>
+    <requestid>575507</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>18372fd08be57addca86e2f7c695b77b</srcmd5>
+    <version>0.0.1</version>
+    <time>1521903927</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>587881</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>dd146ead3a3e3a01c125bed16e0d9f7e</srcmd5>
+    <version>0.0.1</version>
+    <time>1523956160</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595965</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>8a003e29cdef9427dc84b84d6e345eaf</srcmd5>
+    <version>0.0.1</version>
+    <time>1536147979</time>
+    <user>dimstar_suse</user>
+    <comment>- storage.conf: comment out options that are not supported by btrfs.
+  This simplifies switching the driver as it avoids the whack-a-mole
+  of commenting out &quot;unsupported&quot; options.
+
+- Consolidate libcontainers-{common,image,storage} into one package,
+  libcontainers-common. That's the way upstream intended all libraries from
+  github.com/containers to be packaged. It facilitates updating and maintaining
+  the package, as all configs and manpages come from a central source.
+  Note that the `storage` binary that previously has been provided by the
+  libcontainers-storage package is not provided anymore as, despite the claims
+  in the manpages, it is not intended for production use.
+
+- Make libcontainers-common arch independent.
+- Add LICENSE.</comment>
+    <requestid>631824</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>53cafe2e093fddc2203e4df57e6d08db</srcmd5>
+    <version>0.0.1</version>
+    <time>1543223544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648418</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>f11e6690716aa133ab31ec026fd8c27f</srcmd5>
+    <version>0.0.1</version>
+    <time>1544441303</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656023</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>0f6a625797a8d2f18b87331bb317730c</srcmd5>
+    <version>0.0.1</version>
+    <time>1546946173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663216</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>02db1611175b6ba1d889165714240f1e</srcmd5>
+    <version>0.0.1</version>
+    <time>1547539726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>665312</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>eda4ec46c58cf1b968b883079aac0d63</srcmd5>
+    <version>20190125</version>
+    <time>1548844993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668672</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>2af150b2016f78f835fbab104b3c1c93</srcmd5>
+    <version>20190125</version>
+    <time>1549290782</time>
+    <user>coolo</user>
+    <comment>Sorry Dominique, I fucked up, please merge this ASAP or else Kubernetes is broken (see kubeadm test in openQA)</comment>
+    <requestid>670715</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cc2c3ce3e1f28e0c1ac2ab312d9e22fa</srcmd5>
+    <version>20190219</version>
+    <time>1551023571</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677418</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>975c1318084d4cadab51b86adfdc879a</srcmd5>
+    <version>20190219</version>
+    <time>1551468393</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>679865</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c314ae7304cda6223f4b0135c8aa6aef</srcmd5>
+    <version>20190401</version>
+    <time>1554372143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690415</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>25a460eb0e77fbeec9dcf5c41319d4b6</srcmd5>
+    <version>20190401</version>
+    <time>1559902709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707630</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>6d49e04dfb9029b64ebb0519cd30ed32</srcmd5>
+    <version>20190401</version>
+    <time>1561405708</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709116</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>1e66ecae9cf56b1c93e9d76593ef739d</srcmd5>
+    <version>20190401</version>
+    <time>1563790630</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714085</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b980dd7ef90143e8161dc0e2c0a4fc84</srcmd5>
+    <version>20190802</version>
+    <time>1565179155</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720584</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>fe199d78e6784a1ad45ad45fad82ddfd</srcmd5>
+    <version>20190802</version>
+    <time>1565473445</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721685</requestid>
+  </revision>
+</revisionlist>

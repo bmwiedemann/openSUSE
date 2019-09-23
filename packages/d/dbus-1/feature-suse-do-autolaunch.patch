@@ -1,0 +1,26 @@
+From: Stephan Kulow <coolo@suse.de>
+
+We want x11 autolaunch even if we have no x11 in the build environment
+
+Index: dbus-1.12.2/dbus/dbus-sysdeps-unix.c
+===================================================================
+--- dbus-1.12.2.orig/dbus/dbus-sysdeps-unix.c
++++ dbus-1.12.2/dbus/dbus-sysdeps-unix.c
+@@ -3552,7 +3552,7 @@ _dbus_get_tmpdir(void)
+   return tmpdir;
+ }
+ 
+-#if defined(DBUS_ENABLE_X11_AUTOLAUNCH) || defined(DBUS_ENABLE_LAUNCHD)
++#if 1
+ /**
+  * Execute a subprocess, returning up to 1024 bytes of output
+  * into @p result.
+@@ -3787,7 +3787,7 @@ _dbus_get_autolaunch_address (const char
+                               DBusString *address,
+                               DBusError  *error)
+ {
+-#ifdef DBUS_ENABLE_X11_AUTOLAUNCH
++#if 1
+   static const char arg_dbus_launch[] = "dbus-launch";
+   static const char arg_autolaunch[] = "--autolaunch";
+   static const char arg_binary_syntax[] = "--binary-syntax";

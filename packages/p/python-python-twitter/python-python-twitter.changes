@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Thu May  9 09:12:21 UTC 2019 - pgajdos@suse.com
+
+- version update to 3.5
+  * Fix DM endpoint handling
+- added patches
+  fix test for PostDirectMessage endpoint with new data
+  + python-python-twitter-fix-test.patch
+- run tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:09 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Jun 10 20:01:43 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 3.4.2:
+ * Bugfixes:
+  * Allow upload of GIFs with size up to 15mb. See #538
+- update to version 3.4.1:
+ * Bugfixes:
+  * Fix an issue where :py:func:`twitter.twitter_utils.calc_expected_status_length` was failing for python 2 due to a failure to convert a bytes string to unicode. Github issue #546.
+  * Documentation fix for :py:func:`twitter.api.Api.UsersLookup`. UsersLookup can take a string or a list and properly parses both of them now. Github issues #535 and #549.
+  * Properly decode response content for :py:func:`twitter.twitter_utils.http_to_file`. Github issue #521.
+  * Fix an issue with loading extended_tweet entities from Streaming API where tweets would be truncated when converting to a :py:class:`twitter.models.Status`. Github issues #491 and #506.
+
+-------------------------------------------------------------------
+Tue Feb 27 18:51:48 UTC 2018 - sebix+novell.com@sebix.at
+
+- Update to version 3.4. See changelog for all changes.
+- convert to singlespec
+- rename to python-python-twitter
+
+-------------------------------------------------------------------
+Fri Nov 15 23:21:00 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.1.0
+  + Remove from ParseTweet the Python 2.7 only dict comprehension item
+  + Fix GetListTimeline condition to enable owner_screen_name based fetching
+  + Many fixes for readability and PEP8
+  + Cleaning up some of the package importing. Only importing the functions that are needed
+  + Also added first build of the sphinx documentation. Copied some info from the readme to the index page
+  + Added lines to setup.py to help the user troubleshoot install problems. #109
+  + Removed the OAuth2 lines from the readme
+  + Removed OAuth2 library requirements
+  + Added GetListMembers()
+- Changes from 1.0.1
+  + added README bit about Python version requirement
+- Changes from 1.0
+  + removed doc directory until we can update docs for v1.1 API
+  + added to package MANIFEST.in the testdata directory
+- Changes from 1.0rc1
+  + The library is now only for Twitter API v1.1
+- Changes from 0.8.7
+  + removed GetPublicTimeline from the docs so as to stop confusing
+    new folks since it was the first example given
+
+-------------------------------------------------------------------
+Mon Feb 11 15:27:40 UTC 2013 - p.drouand@gmail.com
+
+- Update to 0.8.6
+  * update requirements.txt to remove distribute reference
+    github commit 3b9214a879e5fbd03036a7d4ae86babc03784846
+  * Merge pull request #33 from iElectric/profile_image_url_https
+    github commit 67cbb8390701c945a48094795474ca485f092049
+  * Change User.NewFromJsonDict so that it will pull from either
+    profile_image_url_https or profile_image_url to keep older code
+    working properly if they have stored older json data
+- Clean the specfile
+
+-------------------------------------------------------------------
+Wed May 25 06:46:11 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.8.2
+  * Fixed issues 193, 181, 182, 137, 93, 190, 166, 187, 184, 185, 183
+- Corrected shebang line for *.py files to use the correct interpreter
+
+-------------------------------------------------------------------
+Fri Apr 15 12:24:53 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.8.1
+- Spec file cleanup:
+  - Added documentation
+  - Set to noarch
+  - Set license to APLv2
+
+-------------------------------------------------------------------
+Mon Sep 21 21:25:31 UTC 2009 - alexandre@exatati.com.br
+
+- Included require in the spec file.
+
+-------------------------------------------------------------------
+Tue Aug 18 12:17:03 UTC 2009 - alexandre@exatati.com.br
+
+- Initial package (0.6) for openSUSE.

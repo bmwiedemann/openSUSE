@@ -1,0 +1,17 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/ncw/rclone.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">1.49.3</param>
+    <param name="revision">v1.49.3</param>
+    <param name="filename">rclone</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

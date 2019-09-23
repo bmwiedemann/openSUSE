@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Tue May 15 02:09:14 UTC 2018 - avindra@opensuse.org
+
+- Update to 0.5.9
+  * discard non tail chain states when locked
+- includes 0.5.8
+  * write to status fifo when a chain begins / ends
+- cleanup with spec-cleaner
+- fix compilation with distribution rpm opt flags
+- refresh example config file
+
+-------------------------------------------------------------------
+Fri Feb 10 03:42:07 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Update to 0.5.7
+    * No changelog provided
+
+-------------------------------------------------------------------
+Wed Oct  5 09:43:30 UTC 2016 - luke.nukem.jones@gmail.com
+
+- Add missing LICENSE to package
+
+-------------------------------------------------------------------
+Fri Jul 15 22:40:28 UTC 2016 - luke.nukem.jones@gmail.com
+
+- Move to pkgconfig
+

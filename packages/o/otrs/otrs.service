@@ -1,0 +1,20 @@
+# Copyright (c) 2017 Scorpio IT, Deidesheim, Germany
+[Unit]
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
+Description=OTRS
+Documentation=https://otrs.github.io/doc/manual/admin/stable/en/html/
+After=crond.service apache2.service mysql.service
+
+[Service]
+User=otrs
+Type=oneshot
+RemainAfterExit=yes
+EnvironmentFile=/etc/sysconfig/otrs
+#ExecStartPre=/usr/bin/chmod 755 @OTRS_ROOT@/bin/otrs.PostMaster.pl
+#ExecStartPre=/usr/bin/otrs.service.helper.sh
+ExecStart=@OTRS_ROOT@/bin/otrs.Daemon.pl start
+#ExecStop=/usr/bin/chmod 644 @OTRS_ROOT@/bin/otrs.PostMaster.pl
+#ExecStopPost=/usr/bin/crontab -u otrs -r
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,57 @@
+--- mysql-connector-java-5.1.43/build.xml	2017-07-06 21:42:45.000000000 +0200
++++ mysql-connector-java-5.1.43/build.xml	2017-10-06 10:08:59.178208898 +0200
+@@ -856,9 +856,7 @@
+                fork="yes"
+                executable="${com.mysql.jdbc.jdk5.javac}"
+                compiler="modern"
+-               includeantruntime="false"
+-               source="1.5"
+-               target="1.5">
++               includeantruntime="false">
+             <include name="**/*.java" />
+             <exclude name="testsuite/**" />
+             <exclude name="com/mysql/jdbc/integration/**" />
+@@ -930,9 +928,7 @@
+                fork="yes"
+                executable="${com.mysql.jdbc.jdk5.javac}"
+                compiler="modern"
+-               includeantruntime="false"
+-               source="1.5"
+-               target="1.5">
++               includeantruntime="false">
+             <include name="testsuite/**" />
+             <exclude name="testsuite/requiresNonRedists/**" />
+             <exclude name="testsuite/**/jdbc4*/**" />
+@@ -993,9 +989,7 @@
+                fork="yes"
+                executable="${com.mysql.jdbc.jdk5.javac}"
+                compiler="modern"
+-               includeantruntime="false"
+-               source="1.5"
+-               target="1.5">
++               includeantruntime="false">
+             <include name="com/mysql/jdbc/integration/c3p0/**" />
+             <classpath refid="project.build.classpath" />
+         </javac>
+@@ -1014,9 +1008,7 @@
+                fork="yes"
+                executable="${com.mysql.jdbc.jdk5.javac}"
+                compiler="modern"
+-               includeantruntime="false"
+-               source="1.5"
+-               target="1.5">
++               includeantruntime="false">
+             <include name="com/mysql/jdbc/integration/jboss/**" />
+             <classpath refid="project.build.classpath" />
+         </javac>
+@@ -1035,9 +1027,7 @@
+                fork="yes"
+                executable="${com.mysql.jdbc.jdk5.javac}"
+                compiler="modern"
+-               includeantruntime="false"
+-               source="1.5"
+-               target="1.5">
++               includeantruntime="false">
+             <include name="com/mysql/jdbc/log/Log4JLogger.java" />
+             <classpath refid="project.build.classpath" />
+         </javac>

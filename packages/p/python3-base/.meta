@@ -1,0 +1,11 @@
+<package name="python3-base" project="openSUSE:Factory">
+  <title>Python3 Interpreter</title>
+  <description>Python is an interpreted, object-oriented programming language, and is
+often compared to Tcl, Perl, Scheme, or Java.  You can find an overview
+of Python in the documentation and tutorials included in the python-doc
+(HTML) or python-doc-pdf (PDF) packages.
+
+If you want to install third party modules using distutils, you need to
+install python-devel package.</description>
+  <devel project="openSUSE:Factory" package="python3"/>
+</package>

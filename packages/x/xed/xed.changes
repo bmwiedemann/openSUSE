@@ -1,0 +1,360 @@
+-------------------------------------------------------------------
+Sun Jul 28 04:12:15 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- Update to version 2.2.2:
+  * Automatically open new Xed window on current workspace if
+    it wasn't already opened. Otherwise, open new tab in Xed
+    window on current workspace
+  * Preferences: Make dialog slightly taller
+
+-------------------------------------------------------------------
+Mon Jul  1 04:24:55 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 2.2.0:
+  * meson: require itstool command to be available (#266)
+  * statusbar: Fix the menu button styling (#281)
+  * cleanup: Remove an unused Makefile.am (#280)
+  * print preview: fix layout drawing for 1X2 and 2X1 layouts (#291)
+  * Filebrowser: Kill the click policy property with fire (#293)
+  * xed-window: Fix the tabs/spaces label in the statusbar (#283)
+  * xed-notebook: Always show the main notebook tabs (#285)
+  * Fix some deprecation warnings (#289)
+  * print preview: fix logic for forward button sensitivity (#292)
+  * Add toggle comment and toggle comment block actions w/ keybindings (#290)
+  * l10n: Update POT
+  * print job: replace some deprecated font button functions (#294)
+  * Replace deprecated gdk_cursor_new with gdk_cursor_new_for_display (#295)
+  * Print preview: remove a couple calls to gtk_adjustment_value_changed (#296)
+  * Search: replace a few functions that were deprecated in Gtk 3.22 (#297)
+  * Fix stuttering and disappearing of the toolbar when fullscreen (#300)
+  * Switch deprecated gtk_icon_info_free to g_object_unref (#301)
+  * Remove references to deprecated GTK_STOCK_* (#298)
+  * Remove deprecated call to gtk_widget_override_background_color (#299)
+  * Tab width popup: only select a menu item when the menu is open (#311)
+  * Simplify an if statement. The logic is identical, but easier to read (#314)
+  * Add minimum required version for xapp (#313)
+  * Prevent a warning when closing the window while print preview is open (#315)
+
+-------------------------------------------------------------------
+Fri Mar 15 04:16:51 UTC 2019 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 2.0.2:
+  * Fix non-translated desktop file
+  * highlight mode window:  Make activatable via shortcut (ctrl-shift-H), focus the search entry by default, and allow Escape to cancel the dialog from the search entry.
+  * Fix warnings when building xed 2.0.1 (#264)
+  * l10n: Update translations
+  * Switch build instructions for meson port. (#263)
+  * l10n: Update translations
+  * Import GeditHighlightModeDialog and -Selector from Gedit to Xed.
+  * Use highlight dialog instead submenu in "View" menu.
+  * XedWindow cleanup.
+  * Import GeditStatusMenuButton.
+  * Fix compilation warning.
+  * Use popover with highlight selector instead loooong menu in statusbar.
+  * Use XedStatusMenuButton instead -ComboBox in statusbar, for consistency.
+  * Kill XedStatusComboBox. It's not used now.
+  * xed-window: Indicate if we are currently using spaces or tabs in statusbar (#246)
+  * Use icon for keyboard shortcuts help entry (#255)
+  * Rearrange help entries (xapp consistency) (#256)
+  * close dialog: use "suggested-action" style class (#261)
+  * Port to meson (#258)
+  * Fix merge issues
+  * l10n: Update POT 
+
+-------------------------------------------------------------------
+Fri Jul 20 09:32:54 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.8.3:
+  * search bar/xed-history-entry: Set a "width-chars" on the
+    GtkEntry widgets of the search and replace entry widgets, and
+    allow their labels to ellipsise upon resizing.
+
+-------------------------------------------------------------------
+Tue Jun 26 17:30:24 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.8.2:
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat May 26 10:16:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.8.1:
+  * Update translations.
+
+-------------------------------------------------------------------
+Thu May  8 20:40:20 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.8.0:
+  * Fix clang compile issue.
+  * Fix Py*DeprecationWarning.
+  * Pull upstream fixes for gtk and gtksourceview changes.
+  * preferences-dialog: Complete revamp.
+  * xed-window: Rework the fullscreen toolbar.
+  * xed-status-combo-box: Remove some deprecated css functionality.
+  * xed-view-frame: Fix the css for the minimap frame.
+  * xed-notebook: Clean up some gtk3.20+ conditionals.
+  * Add a shortcuts window.
+  * xed-view: Add shortcuts for change case.
+  * css: Add support for Adwaita.
+  * xed-searchbar: Fix the size of the searchbar close button.
+  * xed-spell-checker.c: Clean up the code formatting.
+  * spell-plugin: Update for removal of some deprecated
+    functionality.
+  * xed-notebook: Allow changing tabs with mouse back/forward
+    buttons.
+  * Clean up a few build warnings.
+  * spell-plugin: Port to gspell.
+  * spell-plugin: Fix a link to the help file.
+  * Add C tags to the taglist plugin.
+  * xed-window: Fix a potential crash.
+  * Creation of plugin Word completion.
+
+-------------------------------------------------------------------
+Fri Nov 24 20:58:01 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.6.3:
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Nov 18 00:00:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.6.2:
+  * xed-status-combo-box: Simplify the widget heirarchy.
+
+-------------------------------------------------------------------
+Wed Nov 15 18:23:18 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.6.1:
+  * Fix localisation in the TextSize plugin.
+
+-------------------------------------------------------------------
+Sat Nov  4 10:10:46 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.6.0:
+  * text zoom: Put a limit on the min and max zoom.
+  * Make the trailsave plugin also strip trailing lines.
+  * Don't present users with the hidden highlight languages.
+  * xed-view: Fix a crash when right clicking the left gutter.
+  * Minimap.
+  * Update translations.
+- Move the .gir file to the devel package.
+
+-------------------------------------------------------------------
+Sun Jul 23 14:10:37 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.4.6:
+  * Use the correct value to save the window state in GSettings.
+
+-------------------------------------------------------------------
+Sun Jul  9 12:20:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.4.5:
+  * Create ISSUE_TEMPLATE.md.
+
+-------------------------------------------------------------------
+Wed Jun 28 19:20:44 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.4.4:
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Jun 21 16:11:48 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.4.3:
+  * Fix an ugly white border on GTK+ 3.20 and newer.
+  * filebrowser: Change an icon name.
+
+-------------------------------------------------------------------
+Wed May 24 14:40:01 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.4.2:
+  * Fix the gtksourceprintcompositor.h includes warning.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed May 10 08:02:19 UTC 2017 - jengelh@inai.de
+
+- Remove wrong claims in description.
+
+-------------------------------------------------------------------
+Sun May  7 11:23:03 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.4.1 (changes since 1.2.2):
+  * Search: Don't jump to the next result when toggling search
+    options.
+  * Clean up some deprecations.
+  * plugins: Drop support for old style python plugins.
+  * Build GObject introspection data.
+  * Fix some introspection warnings.
+  * Remove a couple of invalid annotations.
+  * Drop some leftover 2.xx comments from gnome/pluma.
+  * Port plugin system to libpeas.
+  * Remove old plugin system and docs for it.
+  * taglist plugin: Don't look for taglist in non-existing legacy
+    directories.
+  * xed-panel: Clean up the layout of the panels.
+  * Add buttons to the statusbar to show/hide the panels.
+  * xed-panel: Remove the header and close button.
+  * xed-panel: Simplify panel building a bit.
+  * xed-panel: Move the notebook tabs to the top.
+  * Add a few style classes.
+  * Add view menu entry for word wrap.
+  * Allow scrolling on notebook tabs to change the active page.
+  * xed-prefs-manager-app: Remove some leftover logging.
+  * notebooks: Don't show tabs when the notebook only has one page.
+  * xed-window: Use a better icon for the documents panel tab.
+  * xed-print-preview.c: Restyle the tool bar.
+  * Add new (App/Window/View)Activatable interfaces for plugins.
+  * Update plugins for the WindowActivatable changes.
+  * Port to the use of GFile instead of URIs and merge gio document
+    loader and saver into document loader and saver.
+  * Revamp our handling of settings.
+  * Clean up the docs a bit.
+  * Redesign the goto line popup dialogue.
+  * xed-preferences-dialog: Fix a setting having the wrong
+    sensitiviy.
+  * tests: Fix to use GFile instead of uris.
+  * Merge smart converter in the document output stream.
+  * xed-document-output-stream: Factor out validate_and_insert
+    method.
+  * Pull some upstream changes from Gedit in prep for using more of
+    the GtkSource* backend.
+  * Remove the xed style scheme manager instance.
+  * xed-document: Fix a couple of possible memory leaks.
+  * Kill xed-language-manager and use gtksourcelanguagemanager
+    directly.
+  * xed-document: Rework externally modified/deleted check.
+  * Remove xed_utils_location_has_file_scheme.
+  * Clean up our GSettings use a bit more.
+  * Port to the GtkSourceView search functionality.
+  * Add _xed_document_needs_saving.
+  * Plugins: Remove the changecase plugin.
+  * Port to GtkSource* API.
+  * Port xed to dbus and GtkApplication.
+  * message-area: Rename message area to info bar.
+  * info-bar: Don't use icons in buttons.
+  * xed-progress-info-bar: Properly expand the progress bar.
+  * Remove the dialogue utility library.
+  * Start using GResource.
+  * Set textdomain as soon as possible.
+  * Don't use global vars for command line parsing.
+  * xed-app: Handle also application::open.
+  * xed-app: Shutdown metadata-manager after GTK+.
+  * xed-window: Fix getting the wrong window size when cloning a
+    window.
+  * Add a preference to allow using the dark variant of a theme if
+    available.
+  * xed-view: Add some margin to the top and left of the text view.
+  * prefs-dialog: Fix a crash when removing style schemes.
+  * docs: Start cleaning up the docs.
+  * Implement font zooming in the editor.
+  * Sort: Turn sort into a simpler and undoable action.
+  * Focus view when opening files from the filebrowser or documents
+    panel.
+  * Fix g_free() which should be g_object_unref() in file browser.
+  * Use slice allocator instead of g_new() when appropriate.
+  * xed-file-browser-widget: Clean up code styling.
+  * filebrowser-view: Removed the unused "busy" cursor.
+  * Do not leak file info for . and .. dirs.
+  * filebrowser: Unref the enumerator in the filebrowser plugin.
+  * filebrowser: Don't leak GFiles.
+  * filebrowser: Fix crash on open_terminal action.
+  * filebrowser: Remove the back and forward toolbar dropdowns.
+  * filebrowser: Support new location of gtk bookmarks file.
+  * filebrowser: "Rename" menu entry should have an ellipsis.
+  * filebrowser: use Untitled File/Folder for new
+    file/directories.
+  * filebrowser: Redesign the toolbar in filebrowser.
+  * filebrowser: Activate selected item when search is complete.
+  * filebrowser: Do not parse .hidden in the file browser.
+  * filebrowser: Make the "Open terminal here" command work again.
+  * filebrowser: Set the combobox insensitive when the bookmarks
+    are showing.
+  * Fix calling set_command_line_wait().
+  * Allow building with --disable-spell.
+  * Focus a tab when attempting to close it with unsaved changes.
+  * Add a new animated xed-paned.
+  * xed-commands-view: Clean up code style.
+  * time-plugin: Use GDateTime.
+  * Clean up styling a bit.
+  * Use GtkApplication inhibit API.
+  * Fix "gedit" occurence.
+  * Depend on gtksourceview-3.0 >= 3.14.0.
+  * Only use gtk_text_view_set_top_margin() with GTK+ 3.18+.
+  * Fix po/POTFILES.in and generate POT file.
+  * Fix FSF address.
+  * Update translations.
+
+-------------------------------------------------------------------
+Thu Dec 15 19:24:15 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.2.2:
+  * searchbar: Add a close button.
+  * searchbar: Make sure we clear highlighting when the last
+    character is removed.
+  * Search: Fix search jumping to next result while typing.
+  * Search: Perform a search when case-sensitive or entire-word
+    buttons are clicked.
+  * Update translations.
+
+-------------------------------------------------------------------
+Thu Nov 10 09:32:16 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.2.1:
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Nov  2 19:25:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.2.0:
+  * configure: Don't require passing --with-gtk=3.0 to build.
+  * Add "notepad" to the list of menu item keywords.
+  * When running as root, add an infobar to warn about
+    Elevated Privileges.
+  * Toolbar: Don't emphasise toolbar items (save, open, undo).
+  * Give Xed a Sublime-like searchbar.
+  * Reformat code to conform to Mint coding style.
+  * Default Settings: Change line width to 120 chars and enable
+    "insert-spaces".
+  * toolbar: Revamp the main toolbar style.
+  * ui: Convert the remaining actions to use symbolic icons.
+  * prefs: Remove now unused toolbar style prefs.
+  * ui: Don't hide the main notebook tabs in fullscreen.
+  * xed-close-button: Convert to using a symbolic icon.
+  * filebrowser-plugin: Convert most icons to symbolic icons.
+  * Update the pot file.
+
+-------------------------------------------------------------------
+Mon Jun 27 20:21:34 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.0.6:
+  * xed-notebook.c: Check vertical mouse position when determining
+    whether a tab is being manipulated. We were just checking
+    horizontal position, which meant that depending on where you
+    start a drag-and-drop, it might think you're trying to drag a
+    tab instead, causing undesirable behaviour.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue May 24 16:25:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.0.5:
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Apr 27 16:43:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.0.4 (changes since 1.0.2):
+  * Fix wrong dconf paths.
+  * Switch to gnome-common.
+  * Fix few build warnings.
+  * GTK+ 3.10 compatibility.
+  * notebooks: Remove the extra frame from the main and documents
+    panel scrolled windows.
+  * Use Ctrl+Y for Redo.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun Feb  7 08:54:23 UTC 2016 - sor.alexei@meowr.ru
+
+- Initial package, based on pluma's package.

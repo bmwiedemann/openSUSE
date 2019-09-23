@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a2498b060ca7e69df921e7a7bd6ff84f</srcmd5>
+    <version>20131223</version>
+    <time>1393235939</time>
+    <user>coolo</user>
+    <comment>Now conflicts with other providers of terminology-theme-dft</comment>
+    <requestid>223036</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>a2498b060ca7e69df921e7a7bd6ff84f</srcmd5>
+    <version>20131223</version>
+    <time>1409303471</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>611b16825862dec1c91779425952937c</srcmd5>
+    <version>20140912</version>
+    <time>1410967594</time>
+    <user>coolo</user>
+    <comment>New theme for openSUSE 13.2</comment>
+    <requestid>249562</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>79ec14441fc78847e4d988cf2965922b</srcmd5>
+    <version>20141011</version>
+    <time>1413285897</time>
+    <user>coolo</user>
+    <comment>Fix missing features in latest terminology
+
+Fix previously incorrect licensing</comment>
+    <requestid>255063</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5e1cb5a6f7b0d1c6aaa80cdc64db463b</srcmd5>
+    <version>20141011</version>
+    <time>1432888995</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309073</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f3efebd058cbfb10ec2a2d10ff512296</srcmd5>
+    <version>20151216</version>
+    <time>1452377600</time>
+    <user>dimstar_suse</user>
+    <comment>Rebase against latest terminology theme and fix the build scripts</comment>
+    <requestid>349574</requestid>
+  </revision>
+</revisionlist>

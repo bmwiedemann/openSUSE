@@ -1,0 +1,8 @@
+<package name="darktable" project="openSUSE:Factory">
+  <title>A virtual Lighttable and Darkroom</title>
+  <description>darktable is a virtual lighttable and darkroom for photographers: it manages 
+your digital negatives in a database and lets you view them through a zoomable 
+lighttable. it also enables you to develop raw images and enhance them.</description>
+  <devel project="graphics" package="darktable"/>
+  <url>http://darktable.sourceforge.net</url>
+</package>

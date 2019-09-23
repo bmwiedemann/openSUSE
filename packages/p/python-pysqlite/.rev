@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d6c0c213ddda9edcda51f9a8bd435b97</srcmd5>
+    <version>2.6.3</version>
+    <time>1321274191</time>
+    <user>coolo</user>
+    <comment>Please add, requirement for python-SQLAlchemy</comment>
+    <requestid>90944</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1f4519c50b13d76f33024906697929e0</srcmd5>
+    <version>2.6.3</version>
+    <time>1322216001</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>93077</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bbece110d167129f21f1a1400e96ee8b</srcmd5>
+    <version>2.6.3</version>
+    <time>1323194248</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>63d0a45df4f5c136cc503ceed6b45294</srcmd5>
+    <version>2.6.3</version>
+    <time>1329242783</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103939</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>63d0a45df4f5c136cc503ceed6b45294</srcmd5>
+    <version>2.6.3</version>
+    <time>1340184084</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>63d0a45df4f5c136cc503ceed6b45294</srcmd5>
+    <version>2.6.3</version>
+    <time>1359110102</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>63d0a45df4f5c136cc503ceed6b45294</srcmd5>
+    <version>2.6.3</version>
+    <time>1379664261</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>63d0a45df4f5c136cc503ceed6b45294</srcmd5>
+    <version>2.6.3</version>
+    <time>1409302966</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>743184c40ba46c8c41062815120b152d</srcmd5>
+    <version>2.8.1</version>
+    <time>1441296312</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>328745</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>971b9332bd0b9057351fdfce726af663</srcmd5>
+    <version>2.8.3</version>
+    <time>1510231447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538425</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>bb6852e4fe7b10e3224b2981ed24d5a3</srcmd5>
+    <version>2.8.3</version>
+    <time>1560457816</time>
+    <user>dimstar_suse</user>
+    <comment>- New sphinx is providing only py3 variant, thus abandon
+  documentation here as it is py2 only package</comment>
+    <requestid>708346</requestid>
+  </revision>
+</revisionlist>

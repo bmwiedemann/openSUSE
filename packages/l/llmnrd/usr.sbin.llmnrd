@@ -1,0 +1,12 @@
+# Last Modified: Fri Jul 29 21:59:26 2016
+#include <tunables/global>
+
+/usr/sbin/llmnrd {
+  #include <abstractions/base>
+
+  network inet dgram,
+  network inet6 dgram,
+
+  /usr/sbin/llmnrd mr,
+
+}

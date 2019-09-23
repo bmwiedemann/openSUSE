@@ -1,0 +1,98 @@
+-------------------------------------------------------------------
+Sun Sep 11 05:05:48 UTC 2016 - coolo@suse.com
+
+- updated to 1.006
+   see /usr/share/doc/packages/perl-Class-Tiny/Changes
+
+  1.006     2016-09-10 14:47:49-04:00 America/New_York
+  
+      - No changes since 1.005
+  
+  1.005     2016-09-06 12:12:06-04:00 America/New_York (TRIAL RELEASE)
+  
+      [INTERNAL]
+  
+      - Optimize generated accessors (5% to 25% faster depending on
+        combination of read vs write and default vs no-default).
+
+-------------------------------------------------------------------
+Wed Nov 11 09:49:33 UTC 2015 - coolo@suse.com
+
+- updated to 1.004
+   see /usr/share/doc/packages/perl-Class-Tiny/Changes
+
+  1.004     2015-10-30 10:33:59-04:00 America/New_York
+  
+      - No changes since 1.003
+  
+  1.003     2015-10-27 13:01:02-04:00 America/New_York (TRIAL RELEASE)
+  
+      [INTERNAL]
+  
+      - Refactored accessor generation to allow subclasses of Class::Tiny
+        to implement alternate accessors.
+
+-------------------------------------------------------------------
+Sat Feb  7 07:21:44 UTC 2015 - coolo@suse.com
+
+- updated to 1.001
+    [ADDED]
+    - Added support for BUILDARGS for Moo(se) compatibility
+
+    [INTERNAL]
+    - Implements BUILDALL via method (was inline) for Moo(se) compatibility
+
+-------------------------------------------------------------------
+Fri Aug 15 08:54:35 UTC 2014 - ncutler@suse.com
+
+- re-checked license
+- updated to 1.000 -- upstream changes since last check-in:
+
+    1.000     2014-07-16 09:55:29-04:00 America/New_York
+ 
+    [*** INCOMPATIBLE CHANGES ***]
+ 
+    - Attributes for custom accessors *MUST* be declared for them to be
+      set via the constructor.  It is no longer sufficient for a method of
+      the same name to exist.
+ 
+    - Unknown constructor arguments are ignored rather than fatal; they are
+      not included in the object.  Special instructions for using BUILD to
+      hide constructor arguments from validation are irrelevant and have
+      been removed.
+ 
+    - These changes make Class::Tiny-based classes easier to subclass by
+      more advanced object frameworks like Moose or Moo.
+ 
+    0.015     2014-07-13 23:10:47-04:00 America/New_York
+ 
+    [CHANGED]
+ 
+    - lowered minimum perl to 5.006
+
+-------------------------------------------------------------------
+Fri Nov 29 11:06:39 UTC 2013 - coolo@suse.com
+
+- updated to 0.014
+    [FIXED]
+    - put back a 'no warnings "once"' line that caused downstream warnings
+
+    [DOCUMENTED]
+    - expanded comparision to Object::Tiny and Class::Accessor
+
+-------------------------------------------------------------------
+Mon Nov 25 07:39:21 UTC 2013 - coolo@suse.com
+
+- updated to 0.012
+   [DOCUMENTED]
+   - added documentation notes about multiple inheritance
+     and attribute defaults under subclassing
+   [INTERNAL]
+   - added tests for multiple inheritance
+
+-------------------------------------------------------------------
+Sat Oct  5 06:32:56 UTC 2013 - coolo@suse.com
+
+- initial package 0.011
+    * created by cpanspec 1.78.07
+

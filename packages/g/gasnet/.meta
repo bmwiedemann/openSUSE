@@ -1,0 +1,5 @@
+<package name="gasnet" project="openSUSE:Factory">
+  <title>GASNet networking layer.</title>
+  <description>GASNet is a language-independent, low-level networking layer that provides network-independent, high-performance communication primitives tailored for implementing parallel global address space SPMD languages and libraries such as UPC, Co-Array Fortran, SHMEM, Cray Chapel, and Titanium. The interface is primarily intended as a compilation target and for use by runtime library writers (as opposed to end users), and the primary goals are high performance, interface portability, and expressiveness. GASNet stands for &quot;Global-Address Space Networking&quot;. </description>
+  <devel project="science:HPC" package="gasnet"/>
+</package>

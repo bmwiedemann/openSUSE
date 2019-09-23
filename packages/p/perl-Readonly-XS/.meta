@@ -1,0 +1,9 @@
+<package name="perl-Readonly-XS" project="openSUSE:Factory">
+  <title>Companion module for Readonly.pm, to speed up read-only scalar variables</title>
+  <description>This is a companion module to Readonly.pm.  You do not use
+Readonly::XS directly.  Instead, once it is installed, Readonly.pm
+will detect this and will use it for creating read-only scalars.  This
+results in a significant speed improvement.  This does not speed up
+read-only arrays or hashes.</description>
+  <devel project="devel:languages:perl" package="perl-Readonly-XS"/>
+</package>

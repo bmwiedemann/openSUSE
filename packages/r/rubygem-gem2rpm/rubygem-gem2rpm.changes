@@ -1,0 +1,638 @@
+-------------------------------------------------------------------
+Sun Jun 23 02:24:56 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- build without gem docs
+
+-------------------------------------------------------------------
+Sun Jun 23 02:12:56 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- added support for 2.7.0
+
+-------------------------------------------------------------------
+Sat Feb 23 06:54:36 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- Update from git. Add:
+A    0027-quote-version_suffix-in-gem2rpm.yml.documentation-to.patch
+A    0028-add-binary_map-support.patch
+A    0029-Use-or-for-the-conditions-instead-of-and.patch
+A    0030-gem_package.spec.erb-sync-with-ruby-common.patch
+A    0031-use-template-opensuse-on-openSUSE-Tumbleweed-where-e.patch
+A    0032-Replace-no-rdoc-no-ri-with-no-document.patch
+
+And refresh all others
+
+Remove:
+D    binary_map.patch
+D    enhances.patch
+
+-------------------------------------------------------------------
+Mon Feb  4 19:57:20 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use less strict PreReq replacements.
+
+-------------------------------------------------------------------
+Fri Jan 18 15:32:43 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- [42.3/sle12] disable ruby 2.3 and 2.4 so we can enable 2.6
+
+-------------------------------------------------------------------
+Fri Jun 29 14:00:54 UTC 2018 - mrueckert@suse.de
+
+- add ruby 2.6 support
+
+-------------------------------------------------------------------
+Fri Jun 15 17:19:13 UTC 2018 - mrueckert@suse.de
+
+- enhances.patch is a WIP but we add it to the filelist for the
+  source validator
+
+-------------------------------------------------------------------
+Wed Jun  6 15:17:48 UTC 2018 - mrueckert@suse.de
+
+- added binary_map.patch:
+  add way to avoid conflicts with non rubygems packages in /usr/bin
+- added template_loader.patch (boo#1092585)
+
+-------------------------------------------------------------------
+Wed Nov  8 18:07:59 UTC 2017 - mrueckert@suse.de
+
+- disable 2.2 on suse_version 1315
+
+-------------------------------------------------------------------
+Wed Aug  9 10:09:18 UTC 2017 - mrueckert@suse.de
+
+- add ruby 2.5 support
+
+-------------------------------------------------------------------
+Thu Nov 10 17:17:22 UTC 2016 - mrueckert@suse.de
+
+- fix gem2rpm --fetch: prefer https for accessing rubygems.org
+  (bnc #963710)
+  adds 0026-use-https-instead-of-http-for-rubygems.org.patch
+
+-------------------------------------------------------------------
+Thu Nov 10 16:10:15 UTC 2016 - mrueckert@suse.de
+
+- added support for 2.4.0
+
+-------------------------------------------------------------------
+Thu Nov 10 16:04:57 UTC 2016 - mrueckert@suse.de
+
+- dropped all patches and replaced them with git format-patch
+  series:
+  - modified:
+     0001-use-the-ID-from-os-release-to-use-the-proper-templat.patch
+     0002-added-basic-config-file-support-to-gem2rpm-in-yaml-f.patch
+     0003-new-opensuse-templates.-they-require-the-config-file.patch
+     0004-added-example-gem2rpm.yml.patch
+     0005-properly-shorten-description-and-summary.patch
+     0006-Preserve-the-license-header-found-in-the-output-file.patch
+     0007-fixes-for-the-opensuse-template.patch
+     0008-do-not-use-not-.-not-supported-on-1.8-e.g.patch
+     0009-No-longer-require-the-ruby-version-inside-the-subpac.patch
+     0010-Try-to-load-rbconfigpackagingsupport-and-fail-gracef.patch
+     0011-Add-support-for-scripts-pre-post-for-subpackages.patch
+     0012-typo-in-gem2rpm.yml.documentation-custom_pkgs-instea.patch
+     0013-Also-tag-LICENSE-MIT-as-docfile.patch
+     0014-Refactor-into-multiple-lines.patch
+     0015-Add-licence-to-the-list-of-license-files-as-well.patch
+     0016-add-two-more-ways-to-express-changes.patch
+   - dropped:
+     0017-touch-unpacked-sources.patch
+     0001-Also-tag-APACHE-LICENSE-2.0-as-docfile.patch
+   - newly added:
+     0017-.markdown-is-also-seen-in-the-wild.patch
+     0018-Only-use-the-extensions-doc-dir-on-MRI-2.1.x.patch
+     0019-Cleaner-solution-for-the-extensions-doc-dir.patch
+     0020-Ruby-1.8-insists-on-the-for-the-parameter.patch
+     0021-Fix-company-name-in-copyright-header.patch
+     0022-add-the-touch-for-build-compare-to-the-template.patch
+     0023-Also-tag-APACHE-LICENSE-2.0-as-docfile.patch
+     0024-add-ability-to-provide-alternative-main-Source.patch
+     0025-allow-running-commands-after-patching.patch
+- added :post_patch hook to run commands before we rebuild the gem
+  used by libv8
+
+-------------------------------------------------------------------
+Mon Jul 18 08:29:08 UTC 2016 - tbechtold@suse.com
+
+- add 0001-Also-tag-APACHE-LICENSE-2.0-as-docfile.patch
+
+-------------------------------------------------------------------
+Wed Apr  6 06:54:21 UTC 2016 - coolo@suse.com
+
+- add 0017-touch-unpacked-sources.patch to please build-compare
+
+-------------------------------------------------------------------
+Wed Nov 11 23:34:13 UTC 2015 - mrueckert@suse.de
+
+- remove the rubinius 2.2 support
+- add support for rubinius 2.5 and ruby 2.3
+
+-------------------------------------------------------------------
+Thu Apr 16 22:04:44 UTC 2015 - mrueckert@suse.de
+
+- update
+  0003-new-opensuse-templates.-they-require-the-config-file.patch:
+  Fix company name in copyright header
+
+-------------------------------------------------------------------
+Wed Feb 11 01:23:45 UTC 2015 - coolo@suse.com
+
+- more patches from git:
+A    0010-Try-to-load-rbconfigpackagingsupport-and-fail-gracef.patch
+A    0011-Add-support-for-scripts-pre-post-for-subpackages.patch
+A    0012-typo-in-gem2rpm.yml.documentation-custom_pkgs-instea.patch
+A    0013-Also-tag-LICENSE-MIT-as-docfile.patch
+A    0014-Refactor-into-multiple-lines.patch
+A    0015-Add-licence-to-the-list-of-license-files-as-well.patch
+A    0016-add-two-more-ways-to-express-changes.patch
+
+-------------------------------------------------------------------
+Tue Oct 21 13:15:04 UTC 2014 - mrueckert@suse.de
+
+- added 0009-No-longer-require-the-ruby-version-inside-the-subpac.patch
+  No longer require the ruby version inside the subpackage
+
+  With the buildrequires we already make sure that the package is
+  only built if we find a recent enough ABI. then the normal
+  $interpreter(abi) requires generated by rpm is enough
+
+-------------------------------------------------------------------
+Tue Oct 21 13:06:09 UTC 2014 - mrueckert@suse.de
+
+- refreshed patch series to match the git again:
+  M 0001-use-the-ID-from-os-release-to-use-the-proper-templat.patch
+  M 0002-added-basic-config-file-support-to-gem2rpm-in-yaml-f.patch
+  A 0003-new-opensuse-templates.-they-require-the-config-file.patch
+  A 0004-added-example-gem2rpm.yml.patch
+  A 0005-properly-shorten-description-and-summary.patch
+  A 0006-Preserve-the-license-header-found-in-the-output-file.patch
+  A 0007-fixes-for-the-opensuse-template.patch
+  A 0008-do-not-use-not-.-not-supported-on-1.8-e.g.patch
+  D 0003-sle-12-templates.-they-require-the-config-file-suppo.patch
+  D 0004-openSUSE-template-fixes.patch
+  D 0005-added-example-gem2rpm.yml.patch
+  D 0006-properly-shorten-description-and-summary.patch
+  D 0007-Preserve-the-license-header-found-in-the-output-file.patch
+  D 0008-dont-allow-suffixes-with-just-a-plain-number.-prefix.patch
+  D 0009-rubinius-has-no-extensions-docdir.patch
+  D 0010-switch-to-new-packaging-scheme-by-default.patch
+  D 0011-fixes-for-the-opensuse-template.patch
+- new patch for fixing usage of not() which breaks on 1.8
+
+-------------------------------------------------------------------
+Wed Oct 15 08:44:14 UTC 2014 - coolo@suse.com
+
+- add 0011-fixes-for-the-opensuse-template.patch to survive
+  format_spec formatting
+
+-------------------------------------------------------------------
+Mon Oct 13 13:46:58 UTC 2014 - mrueckert@suse.de
+
+- added 0009-rubinius-has-no-extensions-docdir.patch
+  special casing for rubinius
+- added 0010-switch-to-new-packaging-scheme-by-default.patch
+  move to new packaging templates by default
+
+-------------------------------------------------------------------
+Mon Sep 22 16:12:08 UTC 2014 - mrueckert@suse.de
+
+- added ruby 1.9 support
+
+-------------------------------------------------------------------
+Wed Sep 17 16:16:59 UTC 2014 - mrueckert@suse.de
+
+- added ruby 1.8 support
+- also guarded the 2.1 part
+
+-------------------------------------------------------------------
+Wed Sep 17 14:55:33 UTC 2014 - mrueckert@suse.de
+
+- added 0008-dont-allow-suffixes-with-just-a-plain-number.-prefix.patch
+  Dont allow an suffix with just a plain number. prefix it with
+  ruby.
+
+-------------------------------------------------------------------
+Wed Sep 17 13:25:27 UTC 2014 - mrueckert@suse.de
+
+- added ruby 2.0 support
+
+-------------------------------------------------------------------
+Mon Sep  8 11:02:50 UTC 2014 - mrueckert@suse.de
+
+- changed rubinius macro
+
+-------------------------------------------------------------------
+Fri Sep  5 09:46:22 UTC 2014 - mrueckert@suse.de
+
+- for easier bootstrapping dont use gem2rpm here for now.
+
+-------------------------------------------------------------------
+Thu Sep  4 13:34:30 UTC 2014 - mrueckert@suse.de
+
+- make it easier to enable rbx and ruby 2.2 support
+
+-------------------------------------------------------------------
+Wed Sep  3 12:44:54 UTC 2014 - mrueckert@suse.de
+
+- added support for building for rbx
+
+-------------------------------------------------------------------
+Mon Jul 28 11:11:27 UTC 2014 - mrueckert@suse.de
+
+- really install the templates as docs
+
+-------------------------------------------------------------------
+Thu Jul 24 15:30:14 UTC 2014 - mrueckert@suse.de
+
+- update to 0.10.1
+  - Migrate test suite to Minitest 5.x.
+  - Move gem binary extension and gem.build_complete file.
+  - Merge pull request #31 from axilleas/add_check_macro
+  - Add %check macro, fix typos
+  - Remove Requires/Provides which are now autogenerated.
+  - Simplify binary extensions installation according to the new
+    guidelines.
+  - Clone new template for F21 and above. Rename the old one.
+  - "cp -a" implies -p.
+  - Better open mode handling.
+  - Test always against rawhide template.
+  - List development dependencies as BuildRequires.
+  - Cache rendered template in tests.
+  - Prevent dangling symlink in -debuginfo.
+  - Ignore release file encoding with older Ruby (fixes #23).
+  - Fix generating SRPM.
+  - Add description dot test case.
+  - Add description ending dot in #description method.
+  - Avoid 'method is redefined' warning.
+  - Test against current template.
+  - Merge pull request #25 from xsuchy/pull-req-dot
+  - description should end with dot
+  - Merge pull request #24 from strzibny/master
+  - Escape % in comment
+- rebased gem2rpm-change-default-template.diff, new name:
+  0001-use-the-ID-from-os-release-to-use-the-proper-templat.patch
+- rebased gem2rpm-0.9.2_config_file_support.patch, new name
+  0002-added-basic-config-file-support-to-gem2rpm-in-yaml-f.patch
+- rebased gem2rpm-0.9.2_sles12_template.patch, new name:
+  0003-sle-12-templates.-they-require-the-config-file-suppo.patch
+- rebased and splitted gem2rpm-fix-opensuse-template.diff, new
+  name:
+  0004-openSUSE-template-fixes.patch
+  0005-added-example-gem2rpm.yml.patch
+  0006-properly-shorten-description-and-summary.patch
+  0007-Preserve-the-license-header-found-in-the-output-file.patch
+
+-------------------------------------------------------------------
+Wed Jul 23 09:06:02 UTC 2014 - mrueckert@suse.de
+
+- make sure the sle12 template is also installed
+
+-------------------------------------------------------------------
+Mon Jul 21 11:32:38 UTC 2014 - mrueckert@suse.de
+
+- added gem2rpm_bootstrap conditional:
+  If this is set to true, the hardcoded subpackage/files sections
+  are used. Otherwise it will use the normal gem2rpm based solution
+- renamed gem2rpm.yml to gem2rpm.yml.documentation:
+  this is just documentation and not the gem2rpm.yml that gem2rpm
+  should pick up.
+
+-------------------------------------------------------------------
+Mon Jul 21 09:23:55 UTC 2014 - mrueckert@suse.de
+
+- added gem2rpm-0.9.2_sles12_template.patch:
+  initial template for sle12 ruby packaging
+- only build for 2.1 for now
+
+-------------------------------------------------------------------
+Tue Jul 15 18:43:12 UTC 2014 - mrueckert@suse.de
+
+- added gem2rpm.yml and install it to the installed documentation
+
+-------------------------------------------------------------------
+Tue Jul 15 18:38:35 UTC 2014 - mrueckert@suse.de
+
+- sles 12 template
+  - allow changing the master package name with config[:name]
+    This is mostly useful if you want the actual main package to
+    have real content after building. all the subpackages will
+    ignore config[:name] and still use the gem name.
+
+-------------------------------------------------------------------
+Tue Jul 15 17:21:42 UTC 2014 - mrueckert@suse.de
+
+- sles 12 template
+  - add version suffix to the "spec file for ..." line
+  - move the preamble up so we can actually use
+    %define rb_build_versions ...
+  - config[:disable_automatic_rdoc_dep] to disable adding automatic
+    rdoc dependency. This is mostly needed for building rdoc itself
+    and avoiding a bootstrap cycle.
+  - actually print the patch name in the preamble
+  - the scripts entry in gem2rpm.yml can now be a hash or a string.
+
+-------------------------------------------------------------------
+Tue Jul 15 14:27:57 UTC 2014 - mrueckert@suse.de
+
+- sles 12 template
+  - no longer print the gem2rpm.yml warning when the config is empty
+  - add back mod_version_suffix to the spec file
+    (needed for gem_install)
+- converted buildrequires for ruby and ruby-devel to the macros so
+  we can easily pull multiple ruby versions and also easily limit
+  the ruby versions
+- always buildrequire gem2rpm in generated spec files. It is the
+  only clean way to solve the "have choive for rubygem(gem2rpm)"
+  and still maintaining the multiversion ability
+- handle config[:disable_docs] and pass --no-rdoc --no-ri to
+  gem_install in that case. (mostly a workaround for the rdoc bug
+  with the fastthread gem)
+- added support to specify the content of the %check section.
+
+-------------------------------------------------------------------
+Fri Jul 11 08:23:20 UTC 2014 - mrueckert@suse.de
+
+- if the config is nil, set it to an empty hash. this allows for
+  less noisy template files.
+- more updates for the sle 12 template.
+
+-------------------------------------------------------------------
+Thu Jul 10 16:27:03 UTC 2014 - mrueckert@suse.de
+
+- added new tag :sources in the yaml file to track additional
+  sources. this makde the next change much easier.
+- make sure the config file that is passed to gem2rpm is also
+  appended to the sources list automatically.
+- added template for sles12 (gem2rpm-0.9.2_sles12_template.patch)
+
+-------------------------------------------------------------------
+Thu Jul 10 14:52:01 UTC 2014 - mrueckert@suse.de
+
+- added gem2rpm-0.9.2_config_file_support.patch:
+  added basic config file support to gem2rpm in yaml format. there
+  is no validation as it is basically a hash where certain keys
+  are picked up by our templates.
+- added quilt series file to the sources list
+- dropped empty doc package
+
+-------------------------------------------------------------------
+Thu Jun 26 09:58:34 UTC 2014 - mrueckert@suse.de
+
+- update rpm macros requires to 5
+
+-------------------------------------------------------------------
+Wed Jun 25 17:07:59 UTC 2014 - mrueckert@suse.de
+
+- fix filelist for multi ruby packaging
+
+-------------------------------------------------------------------
+Wed Jun 25 16:28:46 UTC 2014 - mrueckert@suse.de
+
+- add ruby 2.2 support
+
+-------------------------------------------------------------------
+Tue Jun 24 15:19:28 UTC 2014 - mrueckert@suse.de
+
+- added BuildIgnore for rubygem(gem2rpm), otherwise we can not
+  bootstrap a new ruby version. this package will need the
+  subpackages for a new ruby version to be created manually.
+
+-------------------------------------------------------------------
+Wed Jun 18 20:10:04 UTC 2014 - mrueckert@suse.de
+
+- fixed paths in the u-a scriptlets
+
+-------------------------------------------------------------------
+Wed Jun 18 18:47:31 UTC 2014 - mrueckert@suse.de
+
+- no longer provide gem2rpm-opensuse
+- use new style packaging but the hardcoded version
+
+-------------------------------------------------------------------
+Thu Feb  6 11:52:43 UTC 2014 - coolo@suse.com
+
+- buildrequire ruby-devel for extensions
+
+-------------------------------------------------------------------
+Mon Jan 13 19:52:26 UTC 2014 - coolo@suse.com
+
+- switch to the macros Klaus wrote
+
+- modified patches:
+  * gem2rpm-fix-opensuse-template.diff
+
+-------------------------------------------------------------------
+Wed Jun 26 14:48:32 UTC 2013 - coolo@suse.com
+
+- doing update-alternatives correctly after reading
+   http://en.opensuse.org/openSUSE:Packaging_Multiple_Version_guidelines
+
+-------------------------------------------------------------------
+Wed Jun 26 08:29:30 UTC 2013 - coolo@suse.com
+
+- avoid --force in update-alternatives as SLE11 does not have that ;(
+
+-------------------------------------------------------------------
+Mon Jun 10 10:04:12 UTC 2013 - coolo@suse.com
+
+- make sure license.txt is also symlinked
+
+-------------------------------------------------------------------
+Sat Jun  8 06:42:37 UTC 2013 - coolo@suse.com
+
+- integrate more of the version into the mod_weight to give
+  an easier job to update-alternatives
+- use --force in update-alternatives to replace (old) binaries
+
+-------------------------------------------------------------------
+Sat May 25 21:00:11 UTC 2013 - coolo@suse.com
+
+- include changelog and history files too
+
+-------------------------------------------------------------------
+Tue May  7 09:34:43 UTC 2013 - coolo@suse.com
+
+- more license files
+
+-------------------------------------------------------------------
+Thu May  2 08:58:11 UTC 2013 - coolo@suse.com
+
+- ciaran wants to see the license files mentioned in %docdir, so create
+  symlinks
+
+-------------------------------------------------------------------
+Sun Apr 28 06:55:08 UTC 2013 - coolo@suse.com
+
+- support ruby 2.0
+
+-------------------------------------------------------------------
+Sat Apr 27 16:09:07 UTC 2013 - coolo@suse.com
+
+- update to 0.9.2 - no changelog
+
+-------------------------------------------------------------------
+Mon Apr 22 19:03:01 UTC 2013 - mrueckert@suse.de
+
+- fix redirection in gem2rpm-opensuse
+
+-------------------------------------------------------------------
+Mon Mar 18 13:04:43 UTC 2013 - coolo@suse.com
+
+- update to 0.8.4 - fixes for fedora 18
+- use url for sources
+
+-------------------------------------------------------------------
+Mon Aug  6 10:54:32 UTC 2012 - coolo@suse.com
+
+- buildrequire rdoc if there are options (I just picked 3.10 as
+  minimum, which is one higher than what ruby 1.9.1 offers in itself)
+
+-------------------------------------------------------------------
+Wed Aug  1 06:07:50 UTC 2012 - coolo@suse.com
+
+- shorten the summary
+
+-------------------------------------------------------------------
+Mon Jul 30 12:43:00 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  See data/LICENSE
+
+-------------------------------------------------------------------
+Fri Jul 27 10:00:27 UTC 2012 - coolo@suse.com
+
+- do not use %gem_unpack by default
+
+-------------------------------------------------------------------
+Fri Jul 27 08:19:14 UTC 2012 - coolo@suse.com
+
+- do not put out empty URLs
+
+-------------------------------------------------------------------
+Thu Jul 26 13:11:05 UTC 2012 - coolo@suse.com
+
+- fix OS detection on SLE11
+
+-------------------------------------------------------------------
+Thu Jul 26 09:56:31 UTC 2012 - coolo@suse.com
+
+- no longer provide stuff for older distributions, we rely on patched
+  rpms
+
+-------------------------------------------------------------------
+Wed Jul 25 13:43:53 UTC 2012 - coolo@suse.com
+
+- do not add buildrequires, but install with -f
+
+-------------------------------------------------------------------
+Tue Jul 24 16:17:16 UTC 2012 - coolo@suse.com
+
+- cleanup the opensuse template
+
+-------------------------------------------------------------------
+Tue Jul 24 15:37:15 UTC 2012 - coolo@suse.com
+
+- update to 0.8.1, major cleanup and base on new macros
+
+-------------------------------------------------------------------
+Wed Apr  4 15:42:10 UTC 2012 - coolo@suse.com
+
+- small cleanup
+
+-------------------------------------------------------------------
+Wed Dec  7 13:38:47 UTC 2011 - jreidinger@suse.com
+
+- fix requirements, as package need to run json parser
+
+-------------------------------------------------------------------
+Wed Mar 23 11:33:09 UTC 2011 - mrueckert@suse.de
+
+- dont check if spec.license responds_to each. strings have that
+  method too. check for join
+- minor template cleanup
+
+-------------------------------------------------------------------
+Tue Mar 22 15:48:03 UTC 2011 - jreidinger@novell.com
+
+- Don't have hardcoded license. Try to extract it from specfile or
+  if it fail force user to manually check license. It avoids
+  problems with wrong license for rubygems
+
+-------------------------------------------------------------------
+Fri Feb 18 12:43:38 UTC 2011 - mrueckert@suse.de
+
+- remove license tag from doc/testsuite package
+
+-------------------------------------------------------------------
+Mon Jan 31 14:48:18 UTC 2011 - mrueckert@suse.de
+
+- small template clean up
+
+-------------------------------------------------------------------
+Thu Jan 20 13:44:42 UTC 2011 - mrueckert@suse.de
+
+- remove version from header comment
+- calculate the year on run
+
+-------------------------------------------------------------------
+Mon Jan 17 13:40:33 UTC 2011 - mvidner@suse.cz
+
+- Updated openSUSE template to produce *- doc and *-testsuite subpackages.
+  http://lists.opensuse.org/opensuse-ruby/2010-12/msg00001.html
+
+-------------------------------------------------------------------
+Thu Dec  9 15:33:55 UTC 2010 - chris@computersalat.de
+
+- update template
+  o # Copyright (c) 2010
+
+-------------------------------------------------------------------
+Wed Jun  9 16:28:21 UTC 2010 - mrueckert@suse.de
+
+- fix typo in template:
+  "requirements" is not "requirement".
+
+-------------------------------------------------------------------
+Wed Jun  9 09:49:19 UTC 2010 - mrueckert@suse.de
+
+- fix deprecation warning in template with newer versions of rubygems:
+  version_requirements is now called requirements
+
+-------------------------------------------------------------------
+Tue May 25 16:06:25 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro instead of repeating the
+  #if-conditional in every package
+
+-------------------------------------------------------------------
+Tue May 25 11:22:11 UTC 2010 - mrueckert@suse.de
+
+- use requires_eq/requires_ge instead of hardcoding the rubygems
+  version during spec generation
+
+-------------------------------------------------------------------
+Tue Mar  2 12:56:07 UTC 2010 - prusnak@suse.cz
+
+- use default URL when none is specified in gem (default-url.patch)
+
+-------------------------------------------------------------------
+Fri Jan 22 17:32:57 CET 2010 - prusnak@suse.cz
+
+- fix version transform (fix-spec-versions.patch)
+
+-------------------------------------------------------------------
+Sat Nov 14 02:08:21 UTC 2009 - mrueckert@suse.de
+
+- ignore development type requires of gems
+
+-------------------------------------------------------------------
+Fri Mar 27 17:38:45 CET 2009 - mrueckert@suse.de
+
+- fix opensuse template
+
+-------------------------------------------------------------------
+Fri Mar 27 16:06:28 CET 2009 - mrueckert@suse.de
+
+- initial package

@@ -1,0 +1,274 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dfc45332e657269a805fa52608c56d4f</srcmd5>
+    <version>4.300006</version>
+    <time>1327583222</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>99448</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e2f7b7b4ade7cc28187f03f3ffddcaf9</srcmd5>
+    <version>4.300007</version>
+    <time>1329400770</time>
+    <user>coolo</user>
+    <comment>- updated to 4.300007
+          Remove configs beginning with ':' from argument list before
+          constructing that config; fixes issue where :version was
+          being passed to a plugin that had a strict constructor. (Karen
+          Etheridge)</comment>
+    <requestid>105343</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0e7320c4621fd26fe53572d4ae25b47a</srcmd5>
+    <version>4.300008</version>
+    <time>1329750966</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>105928</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>901d08b87f8286184bd59acdb339e3d0</srcmd5>
+    <version>4.300009</version>
+    <time>1330007624</time>
+    <user>coolo</user>
+    <comment>- updated to 4.300009
+         PruneCruft also excludes the _Inline/ directory and MYMETA.json
+          MakeMaker has been refactored to make it easier to subclass
+          (Thanks, Christopher J. Madsen!)</comment>
+    <requestid>106600</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>901d08b87f8286184bd59acdb339e3d0</srcmd5>
+    <version>4.300009</version>
+    <time>1340183833</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>901d08b87f8286184bd59acdb339e3d0</srcmd5>
+    <version>4.300009</version>
+    <time>1359109652</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f0bac99b907c9e56019e11899f013f60</srcmd5>
+    <version>4.300035</version>
+    <time>1375901358</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184392</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f0bac99b907c9e56019e11899f013f60</srcmd5>
+    <version>4.300035</version>
+    <time>1379663655</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0c1ac098077e615f47a64d86b929edd8</srcmd5>
+    <version>4.300039</version>
+    <time>1382361196</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202440</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2f7e346b545a6b06c252e5244463871b</srcmd5>
+    <version>5.006</version>
+    <time>1386334282</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208418</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6258586d302bb277a78ee08e9aced0d7</srcmd5>
+    <version>5.013</version>
+    <time>1393568736</time>
+    <user>coolo</user>
+    <comment>- buildrequire timezone to fix test suite
+
+- updated to 5.013
+         - META.json is now a UTF-8 file, rather than ASCII
+         - document the use of filefinders in [PkgVersion], and remove
+           filtering out of .t, .pod files; do skip non-text files, though
+         - always load modules in &quot;extra tests&quot; like pod-coverage.t
+         - PruneCruft also prunes ./fatlib
+         - avoid being tricked by statements in __END__ section when looking for
+           variable assignments
+         - if &quot;dzil install&quot; fails due to exception, it is now propagated
+         - provide a better error when terminal encoding can't be determined
+ 
+ 5.012     2014-01-15 09:58:00-05:00 America/New_York
+         - when handling a multi-line abstract, fold the lines on whitespace;
+           previously, the newlines had been left in, which caused downstream
+           warnings
+ 
+ 5.011     2014-01-12 16:09:29-05:00 America/New_York
+         - -&gt;VERSION is again defined in the tester forms of Builder and Minter
+         - remove a small obsolete code path from PkgVersion
+ 
+ 5.010     2014-01-11 22:06:04-05:00 America/New_York
+         - stop sharing a reference to cached PPI docs, which led to spooky
+           action at a distance
+         - PkgVersion no longer surrounds the new $VERSION assignment with a
+           bare block
+         - if there's a blank line after the package statement (and any number
+           of comment-only lines), PkgVersion will use that for a $VERSION
+           assignment, rather than insert a new line; this can be made mandatory</comment>
+    <requestid>224040</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>6258586d302bb277a78ee08e9aced0d7</srcmd5>
+    <version>5.013</version>
+    <time>1409302267</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7318077103de58836712cd000a582b26</srcmd5>
+    <version>5.036</version>
+    <time>1430980125</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305195</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ff3296e79749d9bc0ba8f4b61efbf29b</srcmd5>
+    <version>5.037</version>
+    <time>1434003768</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311421</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>85d05cb6f3e2a90ed7f1f20badc461e0</srcmd5>
+    <version>5.038</version>
+    <time>1439190995</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321420</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5dc98bb4c4f7bcb4d73a87a9704d3261</srcmd5>
+    <version>5.039</version>
+    <time>1440658585</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325695</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3475870108bf69b883e9facacaa7212e</srcmd5>
+    <version>5.040</version>
+    <time>1445287939</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339328</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3bc7b821f21cdb959e9b279d813d085e</srcmd5>
+    <version>5.041</version>
+    <time>1446978367</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341839</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c390d4f8685f3378138368e21c662375</srcmd5>
+    <version>5.042</version>
+    <time>1449145856</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346615</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c52413d105ef56cef60c0381cfc75da5</srcmd5>
+    <version>5.043</version>
+    <time>1452850929</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353504</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>03a74ad9120c8fbacad154df42fdbe92</srcmd5>
+    <version>5.044</version>
+    <time>1460631911</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>386085</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3a924c470c8a6e1cb68a281fcf85f684</srcmd5>
+    <version>5.047</version>
+    <time>1463038409</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394606</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c6e338e0ca6c34a30e1b689a1936ff20</srcmd5>
+    <version>6.005</version>
+    <time>1464595062</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398548</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f9acd48eb33bbdfc7b03e87fa9d6451f</srcmd5>
+    <version>6.006</version>
+    <time>1468482422</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407324</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>56ba47aa194b7d44765956cff2648f25</srcmd5>
+    <version>6.007</version>
+    <time>1470773721</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417325</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f2e2601c38e7bc895f70c401cfdf2b41</srcmd5>
+    <version>6.008</version>
+    <time>1478289597</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433909</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b6d226ece0e56b1642101904589b9a57</srcmd5>
+    <version>6.009</version>
+    <time>1489345290</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477087</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>00b6f5b77a63fc27bed05d09e2cb84e9</srcmd5>
+    <version>6.010</version>
+    <time>1500670015</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509385</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>10ee5fbaba4a823b2e28541015eb1c7e</srcmd5>
+    <version>6.011</version>
+    <time>1522062042</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577177</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>132fd0e3f0323573954e929838017d99</srcmd5>
+    <version>6.012</version>
+    <time>1527933507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610485</requestid>
+  </revision>
+</revisionlist>

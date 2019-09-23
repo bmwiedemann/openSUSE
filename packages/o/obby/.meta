@@ -1,0 +1,7 @@
+<package name="obby" project="openSUSE:Factory">
+  <title>Synced document buffers</title>
+  <description>obby is a library which provides synced document buffers. It supports
+multiple documents in one session and is portable to both Windows and
+Unix-like platforms.</description>
+  <devel project="GNOME:Apps" package="obby"/>
+</package>

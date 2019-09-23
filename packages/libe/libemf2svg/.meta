@@ -1,0 +1,11 @@
+<package name="libemf2svg" project="openSUSE:Factory">
+  <title>MS EMF (Enhanced Metafile) to SVG conversion library</title>
+  <description>Library for conversion of MS EMF/EMF+ files the SVG format.
+It can be used for conversion of standalone EMF files, but
+more typically for files embedded in other file formats, e.g.
+Visio drawings.
+
+https://github.com/kakwa/libemf2svg
+</description>
+  <devel project="graphics" package="libemf2svg"/>
+</package>

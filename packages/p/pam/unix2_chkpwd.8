@@ -1,0 +1,79 @@
+.\" Copyright (C) 2003 International Business Machines Corporation
+.\" This file is distributed according to the GNU General Public License.
+.\" See the file COPYING in the top level source directory for details.
+.\"
+.de Sh \" Subsection
+.br
+.if t .Sp
+.ne 5
+.PP
+\fB\\$1\fR
+.PP
+..
+.de Sp \" Vertical space (when we can't use .PP)
+.if t .sp .5v
+.if n .sp
+..
+.de Ip \" List item
+.br
+.ie \\n(.$>=3 .ne \\$3
+.el .ne 3
+.IP "\\$1" \\$2
+..
+.TH "UNIX2_CHKPWD" 8 "2003-03-21" "Linux-PAM 0.76" "Linux-PAM Manual"
+.SH NAME
+unix2_chkpwd \- helper binary that verifies the password of the current user
+.SH "SYNOPSIS"
+.ad l
+.hy 0
+
+/sbin/unix2_chkpwd \fIservicename\fR \fIusername\fR
+.sp
+.ad
+.hy
+.SH "DESCRIPTION"
+.PP
+\fBunix2_chkpwd\fR is a helper program for applications that verifies 
+the password of the current user.  It is not intended to be run directly from 
+the command line and logs a security violation if done so. 
+
+It is typically installed setuid root or setgid shadow and called by
+applications, which only wishes to do an user authentification and
+nothing more.
+
+.SH "OPTIONS"
+.PP
+unix2_chkpwd requires the following arguments:
+.TP
+\fIpam_service\fR
+The name of the service using unix2_chkpwd. This is required to be one of
+the services in /etc/pam.d
+.TP
+\fIusername\fR
+The name of the user whose password you want to verify.
+
+.SH "INPUTS"
+.PP
+unix2_chkpwd expects the password via stdin.
+
+.SH "RETURN CODES"
+.PP
+\fBunix2_chkpwd\fR has the following return codes:
+.TP
+1
+unix2_chkpwd was inappropriately called from the command line or the password is incorrect.
+
+.TP
+0
+The password is correct.
+
+.SH "HISTORY"
+Written by Olaf Kirch loosely based on unix_chkpwd by Andrew Morgan
+
+.SH "SEE ALSO"
+
+.PP
+\fBpam\fR(8)
+
+.SH AUTHOR
+Emily Ratliff.

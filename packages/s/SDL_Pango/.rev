@@ -1,0 +1,185 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9a4f52187753e6d3c8c949f275f70019</srcmd5>
+    <version>0.1.2</version>
+    <time>1168901422</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="108">
+    <srcmd5>da17e09f731e2603e6fc973545cb45c1</srcmd5>
+    <version>0.1.2</version>
+    <time>1199137161</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="164">
+    <srcmd5>dfad9809f5dc85e03944587cfed67d27</srcmd5>
+    <version>0.1.2</version>
+    <time>1215559611</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="209">
+    <srcmd5>f302acb4658cc4f410cb15c0374e96e3</srcmd5>
+    <version>0.1.2</version>
+    <time>1243549768</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="210">
+    <srcmd5>6e01ccc4d2e24fb51fb2be97f8e1465b</srcmd5>
+    <version>0.1.2</version>
+    <time>1244240812</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="211">
+    <srcmd5>0512093b36cafe8259db7ca191d1f963</srcmd5>
+    <version>0.1.2</version>
+    <time>1254963155</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_Pango based on submit request 21999 from user prusnak
+</comment>
+  </revision>
+  <revision rev="7" vrev="213">
+    <srcmd5>0512093b36cafe8259db7ca191d1f963</srcmd5>
+    <version>0.1.2</version>
+    <time>1254963155</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_Pango based on submit request 21999 from user prusnak
+</comment>
+  </revision>
+  <revision rev="8" vrev="214">
+    <srcmd5>3d5522e6bb516b950621dbacb0ac34d4</srcmd5>
+    <version>0.1.2</version>
+    <time>1264783484</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_Pango based on submit request 30805 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="215">
+    <srcmd5>c91d42c90116e40177d5e83b602345a9</srcmd5>
+    <version>0.1.2</version>
+    <time>1268922810</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="217">
+    <srcmd5>c91d42c90116e40177d5e83b602345a9</srcmd5>
+    <version>0.1.2</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="218">
+    <srcmd5>c91d42c90116e40177d5e83b602345a9</srcmd5>
+    <version>0.1.2</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="221">
+    <srcmd5>c91d42c90116e40177d5e83b602345a9</srcmd5>
+    <version>0.1.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="222">
+    <srcmd5>e0b730c49ba820f2c1faecf13f3cf8b9</srcmd5>
+    <version>0.1.2</version>
+    <time>1316438920</time>
+    <user>lrupp</user>
+    <comment>- Add libSDL_Pango-devel to baselibs
+- Remove reundant tags/ssections
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)</comment>
+    <requestid>83180</requestid>
+  </revision>
+  <revision rev="14" vrev="224">
+    <srcmd5>e0b730c49ba820f2c1faecf13f3cf8b9</srcmd5>
+    <version>0.1.2</version>
+    <time>1319181757</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="225">
+    <srcmd5>41bc3a342ecfc552eb7852a076178704</srcmd5>
+    <version>0.1.2</version>
+    <time>1323194582</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="227">
+    <srcmd5>41bc3a342ecfc552eb7852a076178704</srcmd5>
+    <version>0.1.2</version>
+    <time>1340183156</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="228">
+    <srcmd5>ee9672874a3c32966619a4588901e566</srcmd5>
+    <version>0.1.2</version>
+    <time>1357653586</time>
+    <user>coolo</user>
+    <comment>- Remove fontconfig-devel freetype2-devel which are not 
+  really BuildRequired. (forwarded request 146877 from elvigia)</comment>
+    <requestid>147399</requestid>
+  </revision>
+  <revision rev="18" vrev="230">
+    <srcmd5>ee9672874a3c32966619a4588901e566</srcmd5>
+    <version>0.1.2</version>
+    <time>1359108626</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="231">
+    <srcmd5>f5b1c854d3929800d39f60ae6f12abe9</srcmd5>
+    <version>0.1.2</version>
+    <time>1366275600</time>
+    <user>coolo</user>
+    <comment>Fix build in Factory - the shipped libtool is really far outdated (forwarded request 171310 from dimstar)</comment>
+    <requestid>171330</requestid>
+  </revision>
+  <revision rev="20" vrev="233">
+    <srcmd5>f5b1c854d3929800d39f60ae6f12abe9</srcmd5>
+    <version>0.1.2</version>
+    <time>1379661926</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="234">
+    <srcmd5>29229846d18c9f49e15d13bdec032966</srcmd5>
+    <version>0.1.2</version>
+    <time>1384266181</time>
+    <user>coolo</user>
+    <comment>- Set RPM groups to the same values as on the main SDL packages</comment>
+    <requestid>206543</requestid>
+  </revision>
+  <revision rev="22" vrev="235">
+    <srcmd5>3b974a3c975ce588a76c1980a72c651f</srcmd5>
+    <version>0.1.2</version>
+    <time>1392116412</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221147</requestid>
+  </revision>
+  <revision rev="23" vrev="237">
+    <srcmd5>3b974a3c975ce588a76c1980a72c651f</srcmd5>
+    <version>0.1.2</version>
+    <time>1409300447</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="238">
+    <srcmd5>0115ce651e949a576f0313570548bcd4</srcmd5>
+    <version>0.1.2</version>
+    <time>1420754594</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pkgconfig() symbols for pulling in BuildRequires</comment>
+    <requestid>280321</requestid>
+  </revision>
+  <revision rev="25" vrev="239">
+    <srcmd5>d7235c6588149baa50a33133fe849614</srcmd5>
+    <version>0.1.2</version>
+    <time>1560337852</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702517</requestid>
+  </revision>
+</revisionlist>

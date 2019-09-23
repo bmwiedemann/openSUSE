@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0d7098188011a02edb7c535490ace819</srcmd5>
+    <version>0.5.1</version>
+    <time>1465596072</time>
+    <user>dimstar_suse</user>
+    <comment>needed by rubygem-capistrano</comment>
+    <requestid>398149</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c18948875548205e09f861ac00fbfb40</srcmd5>
+    <version>0.5.2</version>
+    <time>1467205836</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404748</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6f01defcec69704dd1351ca171c04e7e</srcmd5>
+    <version>0.5.3</version>
+    <time>1472111704</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418906</requestid>
+  </revision>
+</revisionlist>

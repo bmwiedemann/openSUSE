@@ -1,0 +1,2 @@
+addFilter(".*/ruby/lib/include/.*")
+addFilter(".*/ruby/gems/.*")

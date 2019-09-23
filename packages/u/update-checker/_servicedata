@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">git://github.com/thkukuk/update-checker.git</param>
+    <param name="changesrevision">70430e23086735e8b0cf0623db882d2954cb0a0a</param>
+ </service>
+</servicedata>

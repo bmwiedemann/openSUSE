@@ -1,0 +1,50 @@
+.TH cputype 1 "April 2014" "s390-tools"
+.SH NAME
+cputype \- Based on the IBM machine model, returns a (hopefully) human understandable string that identifies the processor.
+.SH SYNOPSIS
+.B cputype
+.SH DESCRIPTION
+.B cputype
+is intended to make it easy to find out the type of the mainframe system in use, by examining /proc/cpuinfo and converting that to the name typically known by people familiar with the IBM mainframe.
+.SH PARAMETERS
+.IP None
+.SH FILES
+.I /proc/cpuinfo
+.RS
+Read to determine the IBM machine model for the running system.
+.RE
+.SH DIAGNOSTICS
+The following messages may be issued on stderr:
+.IP
+.B This command is only useful on IBM mainframes.
+.RS
+The command was executed on a system that is running on a non-IBM mainframe architecture.
+Return code 1 is set.
+.RE
+.IP
+.B I couldn't find the machine type. Please report a bug with this output:
+.RS
+The contents of /proc/cpuinfo are printed as well as the output from the grep command used.
+Return code 2 is set.
+.RE
+.IP
+.B The machine type came out null. Please report a bug with this output:
+.RS
+The contents of /proc/cpuinfo are printed. Return code 3 is set.
+.RE
+.IP
+.B An unknown machine type was reported: mmmm
+.RS
+.B Please file a bug report with this output:
+.RE
+.RS
+This is most likely seen because the command was run on a newer generation processor
+and the script has not been updated with the new model number.
+The contents of /proc/cpuinfo are printed. Return code 4 is set.
+.RE
+.SH Author
+Mark Post (mpost@suse.com)
+.SH Copyright
+Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+.SH BUGS
+Gotta be some, I'm sure. If you find one, please open a bug report.

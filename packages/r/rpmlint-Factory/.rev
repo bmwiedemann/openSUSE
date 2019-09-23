@@ -1,0 +1,388 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf649cf8317f5318a5e4dc1c39d2fbef</srcmd5>
+    <version>1.0</version>
+    <time>1208573516</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>edd91e4a3494c5c8ac6d0bf2cfc80baf</srcmd5>
+    <version>1.0</version>
+    <time>1208737883</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>2b0e939239c331f8dbc7d47fca5ee616</srcmd5>
+    <version>1.0</version>
+    <time>1209646309</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="14">
+    <srcmd5>f67aff7c1c58c529e1988b833fb2a74f</srcmd5>
+    <version>1.0</version>
+    <time>1214188345</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="16">
+    <srcmd5>4b8db92d3801d450e2108c91ca2d150f</srcmd5>
+    <version>1.0</version>
+    <time>1214611315</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="18">
+    <srcmd5>fe369b895558eaddbc8d50bfa7279dd8</srcmd5>
+    <version>1.0</version>
+    <time>1214818331</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="43">
+    <srcmd5>32a743f796131192e75483059f15d8dc</srcmd5>
+    <version>1.0</version>
+    <time>1225577676</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="44">
+    <srcmd5>bedecf028294a6a510cde3888cd15d7f</srcmd5>
+    <version>1.0</version>
+    <time>1225817628</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="45">
+    <srcmd5>e2aaf6089abd882cd912825bb82b4008</srcmd5>
+    <version>1.0</version>
+    <time>1232750267</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="46">
+    <srcmd5>252da56355e48274928fe1ff33f1affa</srcmd5>
+    <version>1.0</version>
+    <time>1233186373</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="47">
+    <srcmd5>f140e71355e35cb6696a2c7185c8d8ae</srcmd5>
+    <version>1.0</version>
+    <time>1233328780</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="48">
+    <srcmd5>590cbd890597cf6eb04f4e88b17e498f</srcmd5>
+    <version>1.0</version>
+    <time>1234198741</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="49">
+    <srcmd5>8e1c8c846b709cd7019e8907fae0657e</srcmd5>
+    <version>1.0</version>
+    <time>1245466959</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="50">
+    <srcmd5>38845f4dd7c41a6c27e0d6299c5c5c24</srcmd5>
+    <version>1.0</version>
+    <time>1254405952</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rpmlint-Factory based on submit request 21436 from user coolo
+</comment>
+  </revision>
+  <revision rev="15" vrev="52">
+    <srcmd5>38845f4dd7c41a6c27e0d6299c5c5c24</srcmd5>
+    <version>1.0</version>
+    <time>1254405952</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rpmlint-Factory based on submit request 21436 from user coolo
+</comment>
+  </revision>
+  <revision rev="16" vrev="53">
+    <srcmd5>532fd39f4207cb982e4935a8509b7b6e</srcmd5>
+    <version>1.0</version>
+    <time>1267182364</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rpmlint-Factory based on submit request 33526 from user lnussel
+</comment>
+    <requestid>33526</requestid>
+  </revision>
+  <revision rev="17" vrev="54">
+    <srcmd5>5f4912c0804ab0d5cdd9055a35cd5335</srcmd5>
+    <version>1.0</version>
+    <time>1268925999</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="55">
+    <srcmd5>df408f9754ff398a20e03da3bd073504</srcmd5>
+    <version>1.0</version>
+    <time>1272318693</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rpmlint-Factory based on submit request 38819 from user dirkmueller
+</comment>
+    <requestid>38819</requestid>
+  </revision>
+  <revision rev="19" vrev="56">
+    <srcmd5>9f60d3ef2e94847ff1acda986758aeb2</srcmd5>
+    <version>1.0</version>
+    <time>1272487342</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rpmlint-Factory based on submit request 38984 from user dirkmueller
+</comment>
+    <requestid>38984</requestid>
+  </revision>
+  <revision rev="20" vrev="57">
+    <srcmd5>0529c5bb43318a0dc09b7140b60c69b1</srcmd5>
+    <version>1.0</version>
+    <time>1278080720</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rpmlint-Factory based on submit request 42263 from user lnussel
+</comment>
+    <requestid>42263</requestid>
+  </revision>
+  <revision rev="21" vrev="59">
+    <srcmd5>0529c5bb43318a0dc09b7140b60c69b1</srcmd5>
+    <version>1.0</version>
+    <time>1278667387</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="60">
+    <srcmd5>0529c5bb43318a0dc09b7140b60c69b1</srcmd5>
+    <version>1.0</version>
+    <time>1278678616</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="61">
+    <srcmd5>e2bde27607a16a13b2d42fe0ec70db0e</srcmd5>
+    <version>1.0</version>
+    <time>1287580993</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51110 from user prusnak
+</comment>
+    <requestid>51110</requestid>
+  </revision>
+  <revision rev="24" vrev="62">
+    <srcmd5>d4bdffb185a2919b98421af6f543b281</srcmd5>
+    <version>1.0</version>
+    <time>1287581000</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51110
+</comment>
+  </revision>
+  <revision rev="25" vrev="63">
+    <srcmd5>4126b2dd58cfedf9c2bc2e52ac4a38a9</srcmd5>
+    <version>1.0</version>
+    <time>1290435102</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53633 from user lnussel
+</comment>
+    <requestid>53633</requestid>
+  </revision>
+  <revision rev="26" vrev="64">
+    <srcmd5>f46e86c41b2acbd44459e20d663fffdf</srcmd5>
+    <version>1.0</version>
+    <time>1290435106</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53633
+</comment>
+  </revision>
+  <revision rev="27" vrev="67">
+    <srcmd5>f46e86c41b2acbd44459e20d663fffdf</srcmd5>
+    <version>1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="28" vrev="68">
+    <srcmd5>a292f3403f9279eab1c3981d1e9b4627</srcmd5>
+    <version>1.0</version>
+    <time>1305710608</time>
+    <user>saschpe</user>
+    <comment>rpmlint, rpmlint-Factory</comment>
+    <requestid>70524</requestid>
+  </revision>
+  <revision rev="29" vrev="69">
+    <srcmd5>429e3f27378cdce747302b87ddd4887c</srcmd5>
+    <version>1.0</version>
+    <time>1305890698</time>
+    <user>azouhr</user>
+    <comment>- set security team checks as nonfilterable
+
+- set shlib-policy and permissions check as nonfilterable</comment>
+    <requestid>70776</requestid>
+  </revision>
+  <revision rev="30" vrev="70">
+    <srcmd5>849565dc1af9a2bba26005b058b6086d</srcmd5>
+    <version>1.0</version>
+    <time>1305890706</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 70776
+</comment>
+  </revision>
+  <revision rev="31" vrev="71">
+    <srcmd5>fcbe78384ca4038aca154692168e05f0</srcmd5>
+    <version>1.0</version>
+    <time>1312810004</time>
+    <user>saschpe</user>
+    <comment>- make 'non-ghost-in-var-run' and 'non-ghost-in-var-lock' fatal</comment>
+    <requestid>78050</requestid>
+  </revision>
+  <revision rev="32" vrev="72">
+    <srcmd5>1d87e61272101a67fa478947acacceab</srcmd5>
+    <version>1.0</version>
+    <time>1312810011</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78050
+</comment>
+  </revision>
+  <revision rev="33" vrev="74">
+    <srcmd5>1d87e61272101a67fa478947acacceab</srcmd5>
+    <version>1.0</version>
+    <time>1319182430</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="34" vrev="75">
+    <srcmd5>ceeb05d69b30cad38532b9f46499faf2</srcmd5>
+    <version>1.0</version>
+    <time>1323194428</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="35" vrev="76">
+    <srcmd5>6b6610c6edf3c6c592e25e9390cc8e4b</srcmd5>
+    <version>1.0</version>
+    <time>1324458224</time>
+    <user>coolo</user>
+    <comment>- don't make suse-filelist-empty fatal anymore. Historical
+  justification for this check is not clear anymore. Probably to
+  avoid accidentally forgotten files. rpm nowadays throws errors
+  itself when globs don't match or files in the build root are not
+  listed.</comment>
+    <requestid>97178</requestid>
+  </revision>
+  <revision rev="36" vrev="77">
+    <srcmd5>af6a0f0b387cab54913bb9b2005750e5</srcmd5>
+    <version>1.0</version>
+    <time>1331232330</time>
+    <user>coolo</user>
+    <comment>- make non-position-independent-executable fatal as announced
+  on opensuse-factory at 2012-01-23</comment>
+    <requestid>108473</requestid>
+  </revision>
+  <revision rev="37" vrev="79">
+    <srcmd5>af6a0f0b387cab54913bb9b2005750e5</srcmd5>
+    <version>1.0</version>
+    <time>1340184149</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="38" vrev="81">
+    <srcmd5>af6a0f0b387cab54913bb9b2005750e5</srcmd5>
+    <version>1.0</version>
+    <time>1359110295</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="82">
+    <srcmd5>1ef9c4f64bf4b95ec00e68eb6f97c15a</srcmd5>
+    <version>1.0</version>
+    <time>1359466767</time>
+    <user>coolo</user>
+    <comment>- split out rpmlint-Factory-strict which enables further checks
+  only to be enabled in openSUSE:Factory itself (that can easily
+  be checked by factory-auto) (forwarded request 149938 from coolo)</comment>
+    <requestid>150199</requestid>
+  </revision>
+  <revision rev="40" vrev="83">
+    <srcmd5>882a873d356b6dea2409e76c15376a09</srcmd5>
+    <version>1.0</version>
+    <time>1359623948</time>
+    <user>coolo</user>
+    <comment>- remove the license badness from config, it was only meant for
+  strict config</comment>
+  </revision>
+  <revision rev="41" vrev="85">
+    <srcmd5>882a873d356b6dea2409e76c15376a09</srcmd5>
+    <version>1.0</version>
+    <time>1379664470</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="86">
+    <srcmd5>b6f3b8b0617b5514e6e7740f99e6b3d8</srcmd5>
+    <version>1.0</version>
+    <time>1391195482</time>
+    <user>coolo</user>
+    <comment>- make anything &gt;= 1000 fatal</comment>
+    <requestid>220383</requestid>
+  </revision>
+  <revision rev="43" vrev="87">
+    <srcmd5>5fa508333d496da17b97c23c06a80bf4</srcmd5>
+    <version>1.0</version>
+    <time>1400783847</time>
+    <user>coolo</user>
+    <comment>needs staging.
+
+rpmlint, rpmlint-Factory and rpmlint-tests need to go in together</comment>
+    <requestid>232816</requestid>
+  </revision>
+  <revision rev="44" vrev="89">
+    <srcmd5>5fa508333d496da17b97c23c06a80bf4</srcmd5>
+    <version>1.0</version>
+    <time>1409303199</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="90">
+    <srcmd5>4b8fb75566c243e1d8439ae6be31ac8e</srcmd5>
+    <version>1.0</version>
+    <time>1507627948</time>
+    <user>dimstar_suse</user>
+    <comment>- lower badness for script-interpreter in preparation of rpmlint
+  1.10 update</comment>
+    <requestid>531248</requestid>
+  </revision>
+  <revision rev="46" vrev="91">
+    <srcmd5>9ed9445e1049cb97fe44a04f99d0ec4c</srcmd5>
+    <version>1.0</version>
+    <time>1508316228</time>
+    <user>dimstar_suse</user>
+    <comment>- lower badness for summary-not-capitalized</comment>
+    <requestid>533331</requestid>
+  </revision>
+  <revision rev="47" vrev="92">
+    <srcmd5>66aede07544b30ac0fc9599880eac223</srcmd5>
+    <version>1.0</version>
+    <time>1509305003</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536394</requestid>
+  </revision>
+  <revision rev="48" vrev="93">
+    <srcmd5>228f789623097bd8be1fe5e05ce0ad98</srcmd5>
+    <version>1.0</version>
+    <time>1523029258</time>
+    <user>dimstar_suse</user>
+    <comment>- raise badness on polkit-untracked-privilege to 10000 based
+  on req from security team</comment>
+    <requestid>579618</requestid>
+  </revision>
+  <revision rev="49" vrev="94">
+    <srcmd5>23514139ab76c6aa657b5c60288081ef</srcmd5>
+    <version>1.0</version>
+    <time>1530001759</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>617432</requestid>
+  </revision>
+  <revision rev="50" vrev="95">
+    <srcmd5>2fe2e3bed84e98a1a63b9c3339623ccc</srcmd5>
+    <version>1.0</version>
+    <time>1564413923</time>
+    <user>dimstar_suse</user>
+    <comment>- Make lto-no-text-in-archive a fatal error.
+
+- add badness to polkit-unauthorized-rules to finally arm the new check
+  (bsc#1125314)
+
+- Make lto-bytecode a fatal error.</comment>
+    <requestid>718548</requestid>
+  </revision>
+</revisionlist>

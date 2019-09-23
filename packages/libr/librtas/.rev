@@ -1,0 +1,321 @@
+<revisionlist>
+  <revision rev="1" vrev="200610091709">
+    <srcmd5>2a6faa59433a8b17884d7fbcea020dd8</srcmd5>
+    <version>1.2.4</version>
+    <time>1168903387</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="200710161613">
+    <srcmd5>890c5d23951d58f4604c2d2cd42dbc4f</srcmd5>
+    <version>1.3.2</version>
+    <time>1192551588</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="200711062135">
+    <srcmd5>3a8b589d591a723e268588e1506a9e42</srcmd5>
+    <version>1.3.2</version>
+    <time>1194385018</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="200711062136">
+    <srcmd5>3607c67b889aad7de9c6fa7624f98833</srcmd5>
+    <version>1.3.2</version>
+    <time>1194650479</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="200711062137">
+    <srcmd5>74ec062b82bf357abb6faa2398189e84</srcmd5>
+    <version>1.3.2</version>
+    <time>1194985043</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="200711062138">
+    <srcmd5>53c8a657c9dcf20885c9c81a3e454f83</srcmd5>
+    <version>1.3.2</version>
+    <time>1200919018</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4f0d1bc5fa922169058a27995cd82e87</srcmd5>
+    <version>1.3.3</version>
+    <time>1203332734</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="38">
+    <srcmd5>addd5b1c4afeee67880df5a1aef47e65</srcmd5>
+    <version>1.3.3</version>
+    <time>1225711451</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="39">
+    <srcmd5>d97eb7b01e84e14e0a14b3652a229c37</srcmd5>
+    <version>1.3.3</version>
+    <time>1225928710</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="41">
+    <srcmd5>d97eb7b01e84e14e0a14b3652a229c37</srcmd5>
+    <version>1.3.3</version>
+    <time>1225928710</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c8bbe321f48d893fe87e44fb7d122be6</srcmd5>
+    <version>1.3.4</version>
+    <time>1259162301</time>
+    <user>autobuild</user>
+    <comment>Copy from IBS home:uli_suse:branches:SUSE:Factory:Head/librtas based on submit request 3038 from user uli_suse
+</comment>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9c1bd9490f594ff52036db9a4e7a1385</srcmd5>
+    <version>1.3.4</version>
+    <time>1268924710</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>9c1bd9490f594ff52036db9a4e7a1385</srcmd5>
+    <version>1.3.4</version>
+    <time>1278667362</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>9c1bd9490f594ff52036db9a4e7a1385</srcmd5>
+    <version>1.3.4</version>
+    <time>1278678592</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>9c1bd9490f594ff52036db9a4e7a1385</srcmd5>
+    <version>1.3.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>9c1bd9490f594ff52036db9a4e7a1385</srcmd5>
+    <version>1.3.4</version>
+    <time>1319182134</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>daf859d94fdc03b8bbb65ad8fe4699e4</srcmd5>
+    <version>1.3.6</version>
+    <time>1321278756</time>
+    <user>coolo</user>
+    <comment>updated to 1.3.6, various packaging fixes</comment>
+    <requestid>91369</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>3260d0cc6453157f87e7081e97da0668</srcmd5>
+    <version>1.3.6</version>
+    <time>1323192332</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>4b43369c471809f87a16172ef41d7c49</srcmd5>
+    <version>1.3.6</version>
+    <time>1328711943</time>
+    <user>coolo</user>
+    <comment>cleanup</comment>
+    <requestid>103171</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>4b43369c471809f87a16172ef41d7c49</srcmd5>
+    <version>1.3.6</version>
+    <time>1340183635</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>93e98cd4fe8958fb67bc28c02b26cfab</srcmd5>
+    <version>1.3.7</version>
+    <time>1357819917</time>
+    <user>coolo</user>
+    <comment>- update to 1.3.7
+   librtas allocates buffer space (required for RTAS call) in the 
+    RTAS private     memory area through sc_get_rmo_buffer() which 
+    internally allocates memory     and protects it by acquiring 
+    lock on the allocated memory area.
+    
+    Locking function :
+     At present acquire_file_lock() tries to lock the particular 
+    memory area. If the memory area is already locked then it 
+    returns error without retrying.
+    
+    So when two process executes rtas call simultaneously one fails 
+    with &quot;Unknown librtas I/O&quot; error.
+    
+    This patch introduces &quot;Wait for lock to be available&quot; instead 
+    of returning with IO error.
+    
+- fixed minor memory leak in librtas.so</comment>
+    <requestid>147666</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>93e98cd4fe8958fb67bc28c02b26cfab</srcmd5>
+    <version>1.3.7</version>
+    <time>1359109349</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>20289e245e49f0713d0ab4fd03cb4f57</srcmd5>
+    <version>1.3.8</version>
+    <time>1361820973</time>
+    <user>coolo</user>
+    <comment>- Update to 1.3.8
+  * Identify Platform Resource Reassignment Notifications (PRRN) (forwarded request 156264 from k0da)</comment>
+    <requestid>156269</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>20289e245e49f0713d0ab4fd03cb4f57</srcmd5>
+    <version>1.3.8</version>
+    <time>1379663083</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>04fe99982ae58fb30bd7e368ccb541d4</srcmd5>
+    <version>1.3.8</version>
+    <time>1386612713</time>
+    <user>coolo</user>
+    <comment>- enable ppc64le (forwarded request 210020 from k0da)</comment>
+    <requestid>210036</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6d87c388e622e961a999863966323549</srcmd5>
+    <version>1.3.9</version>
+    <time>1394103688</time>
+    <user>coolo</user>
+    <comment>change license to CPL-1.0 (see COPYRIGHT) (forwarded request 224623 from jloeser)</comment>
+    <requestid>224693</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ed4b9395d5efab1648afe2fe4bba3f24</srcmd5>
+    <version>1.3.10</version>
+    <time>1396011382</time>
+    <user>coolo</user>
+    <comment>version update to 1.3.10 (BNC#870006) (forwarded request 227463 from jloeser)</comment>
+    <requestid>227555</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>87723d741d91e9d20d4ab76fa181238e</srcmd5>
+    <version>1.3.11</version>
+    <time>1405053944</time>
+    <user>coolo</user>
+    <comment>- Update to 1.3.11 (bnc#884710:
+  * README: documentation on handling endianness
+  * librtas: Little endian support in syscalls
+  See Changelog in the package documentation for the full changes
+  documentation.
+- Refresh librtas-failedmagic.patch.
+- Packege Changelog
+- No need to remove and create buildroot, that's done by osc.</comment>
+    <requestid>239480</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>87723d741d91e9d20d4ab76fa181238e</srcmd5>
+    <version>1.3.11</version>
+    <time>1409301706</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>67448ca0130da871307a5436a745762f</srcmd5>
+    <version>1.3.12</version>
+    <time>1410361334</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247685</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>05f936d0db5bf2259ee957e53f3ad5ec</srcmd5>
+    <version>1.3.13</version>
+    <time>1416049584</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>258879</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>34cbdf098abdd42a4ab71749ba4f1bdc</srcmd5>
+    <version>1.4.0</version>
+    <time>1458560700</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>365637</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>765d82c25ccddeb824b245e4a00c754f</srcmd5>
+    <version>1.4.0</version>
+    <time>1465975565</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402070</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>9398252d4bdc11a7bd3c75f4a20a6dc0</srcmd5>
+    <version>2.0.0</version>
+    <time>1468048805</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2.0.0 (bsc#981294)
+  * SO version change from 1 -&amp;gt; 2
+  * generate static libraries
+  * minor fixes (see Changelog)
+
+This is a merge of package from  SUSE:SLE-12-SP2:GA (and Leap 42.2)
+and the doc split already present in this devel project. (forwarded request 404975 from michel_mno)</comment>
+    <requestid>404989</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>20d58ede54d8622728002c381751ee29</srcmd5>
+    <version>2.0.0</version>
+    <time>1470216985</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415202</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>14d2f4198c8dc996ff0c954e3062e07d</srcmd5>
+    <version>2.0.1</version>
+    <time>1476997496</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435007</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>72595a0d0befeafcac6fc288325da249</srcmd5>
+    <version>2.0.1</version>
+    <time>1493455616</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>484818</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>850348e4665fb36b2d79e190df1b9041</srcmd5>
+    <version>2.0.1</version>
+    <time>1504102960</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519321</requestid>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>5b410564b24a5650c07c3be2e52d4f59</srcmd5>
+    <version>2.0.1</version>
+    <time>1504815268</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521070</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>1462b24388c7f76344a157ce8abc3e11</srcmd5>
+    <version>2.0.2</version>
+    <time>1530866244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620235</requestid>
+  </revision>
+</revisionlist>

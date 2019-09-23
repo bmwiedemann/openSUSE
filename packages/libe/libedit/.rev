@@ -1,0 +1,228 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6006d36f85b3f1814d3720b42a6ac676</srcmd5>
+    <version>2.11.snap20080712</version>
+    <time>1220830982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6006d36f85b3f1814d3720b42a6ac676</srcmd5>
+    <version>2.11.snap20080712</version>
+    <time>1220830982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2fd74f90fa00e85c727135477bed94b8</srcmd5>
+    <version>3.0.snap20090923</version>
+    <time>1259925415</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libedit based on submit request 25514 from user darix
+</comment>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8147df934c2efc41886ca89d5129ea65</srcmd5>
+    <version>3.0.snap20090923</version>
+    <time>1261436069</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libedit based on submit request 27363 from user coolo
+</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>76a50f6aec0008d78db5d2880a2e4bfc</srcmd5>
+    <version>3.0.snap20090923</version>
+    <time>1268924550</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f54da624690d4f6a98db0bcf019d2933</srcmd5>
+    <version>3.0.snap20100424</version>
+    <time>1273790060</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libedit based on submit request 39660 from user darix
+</comment>
+    <requestid>39660</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f54da624690d4f6a98db0bcf019d2933</srcmd5>
+    <version>3.0.snap20100424</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f54da624690d4f6a98db0bcf019d2933</srcmd5>
+    <version>3.0.snap20100424</version>
+    <time>1278678589</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>f54da624690d4f6a98db0bcf019d2933</srcmd5>
+    <version>3.0.snap20100424</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>c3adf7e6f283d9c45f1e8dce4e052ef7</srcmd5>
+    <version>3.0.snap20100424</version>
+    <time>1312184656</time>
+    <user>saschpe</user>
+    <comment>- Link with ncurses6w instead of ncurses5 
+- Do not inject artificial dependencies on other packages (forwarded request 77511 from elvigia)</comment>
+    <requestid>77512</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>c9ed56582751ec900b15712b2849dafe</srcmd5>
+    <version>3.0.snap20100424</version>
+    <time>1312184667</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77512
+</comment>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>9a2cb80dffdc232b7676b1bf1f0f61f0</srcmd5>
+    <version>3.0.snap20100424</version>
+    <time>1312298934</time>
+    <user>saschpe</user>
+    <comment>- Add baselibs.conf (forwarded request 77692 from tiwai)</comment>
+    <requestid>77693</requestid>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>08e9537e731c5fd39b05c77db940ee45</srcmd5>
+    <version>3.0.snap20100424</version>
+    <time>1312298942</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77693
+</comment>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>08e9537e731c5fd39b05c77db940ee45</srcmd5>
+    <version>3.0.snap20100424</version>
+    <time>1319182086</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>140ba1ef4584a2997cfb272b69570e06</srcmd5>
+    <version>3.0.snap20100424</version>
+    <time>1321268645</time>
+    <user>coolo</user>
+    <comment>add buildrequire libtool (forwarded request 91147 from coolo)</comment>
+    <requestid>91178</requestid>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>fea8c0749e48fcc6348832150c51472d</srcmd5>
+    <version>3.0.snap20100424</version>
+    <time>1321886759</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>92856</requestid>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>5c94c5e33c3386b105af6aadb00c732c</srcmd5>
+    <version>3.0.snap20100424</version>
+    <time>1323192196</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ce179f4379ee84c0378a3fd147c66208</srcmd5>
+    <version>3.0.snap20110802</version>
+    <time>1330081536</time>
+    <user>coolo</user>
+    <comment>- Update to version 20110802, fix use after free triggerable
+  with sftp autocompletion and MALLOC_PERTURB set. (forwarded request 106720 from elvigia)</comment>
+    <requestid>106721</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>5c3f58c1c82ab68a60bd0f34b90102af</srcmd5>
+    <version>3.0.snap20110802</version>
+    <time>1332148000</time>
+    <user>coolo</user>
+    <comment>-  open all FDs with O_CLOEXEC in the library code.
+-  use gcc visibility by just reusing upstream macros &quot;public&quot;
+   and &quot;protected&quot; (forwarded request 109055 from elvigia)</comment>
+    <requestid>109079</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>5c3f58c1c82ab68a60bd0f34b90102af</srcmd5>
+    <version>3.0.snap20110802</version>
+    <time>1340183579</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>5c3f58c1c82ab68a60bd0f34b90102af</srcmd5>
+    <version>3.0.snap20110802</version>
+    <time>1359109262</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>5c3f58c1c82ab68a60bd0f34b90102af</srcmd5>
+    <version>3.0.snap20110802</version>
+    <time>1379662934</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1dd0670d3f9485478b63d8dbc9c0d414</srcmd5>
+    <version>3.1.snap20140620</version>
+    <time>1406698489</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242803</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>1dd0670d3f9485478b63d8dbc9c0d414</srcmd5>
+    <version>3.1.snap20140620</version>
+    <time>1409301544</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b3e5a4a2bd7177074dc44a8919189361</srcmd5>
+    <version>3.1.snap20141030</version>
+    <time>1425377412</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288051</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>835d5209a22ae7af58873f55ac789b62</srcmd5>
+    <version>3.1.snap20150325</version>
+    <time>1435869889</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313057</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>e8a116c6e4648a807147648b9d3a6b6a</srcmd5>
+    <version>3.1.snap20150325</version>
+    <time>1522404071</time>
+    <user>dimstar_suse</user>
+    <comment>- move Changelog back to runtime package as it might not
+  be only developer documentation
+
+- Use %license instead of %doc [bsc#1082318]
+- Move development docu into -devel subpackage</comment>
+    <requestid>591878</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>781f22434069f37f41132450951aa1fe</srcmd5>
+    <version>3.1.snap20180525</version>
+    <time>1533887250</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628098</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>d117cc7fd99eb89ed175741ecaa7db8d</srcmd5>
+    <version>3.1.snap20180525</version>
+    <time>1556914940</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20190324-3.1:
+  * Sync with upstream sources</comment>
+    <requestid>699689</requestid>
+  </revision>
+</revisionlist>

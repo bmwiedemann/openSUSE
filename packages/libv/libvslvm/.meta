@@ -1,0 +1,8 @@
+<package name="libvslvm" project="openSUSE:Factory">
+  <title>Library to access the Linux Logical Volume Manager (LVM) volume containers</title>
+  <description>libvslvm is a library to access the Linux Logical Volume Manager (LVM) volume containers.
+
+The main users of this library are python-dfVFS and python-plaso.
+</description>
+  <devel project="security:forensics" package="libvslvm"/>
+</package>

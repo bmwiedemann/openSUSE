@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Wed Aug 29 10:41:42 UTC 2018 - tchvatal@suse.com
+
+- Fix pytest call so it works on 42.3
+
+-------------------------------------------------------------------
+Wed May  9 02:03:28 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.8.1
+  * Fixed interval coercion (#41)
+
+-------------------------------------------------------------------
+Wed Oct 18 16:43:59 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 0.8.0
+  * See changelog at https://github.com/kvesteri/intervals/blob/0.8.0/CHANGES.rst
+
+-------------------------------------------------------------------
+Fri Sep 19 09:08:23 UTC 2014 - toddrme2178@gmail.com
+
+- Initial version
+

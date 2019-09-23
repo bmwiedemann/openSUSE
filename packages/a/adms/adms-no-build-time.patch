@@ -1,0 +1,66 @@
+Index: adms-2.3.4/admsXml/admsXml.c
+===================================================================
+--- adms-2.3.4.orig/admsXml/admsXml.c
++++ adms-2.3.4/admsXml/admsXml.c
+@@ -567,7 +567,7 @@ static void parseva (const int argc,cons
+   root()->_filename=basename(myverilogamsfile);
+   root()->_fullfilename=adms_kclone(myverilogamsfile);
+   root()->_curfilename=adms_kclone(myverilogamsfile);
+-  adms_message_info(("%sXml-%s (%s) %s %s\n",PACKAGE_NAME,PACKAGE_VERSION,GIT,__DATE__,__TIME__))
++  adms_message_info(("%sXml-%s\n",PACKAGE_NAME,PACKAGE_VERSION))
+   /* preprocess input file */
+   {
+     p_preprocessor mypreprocessor=(p_preprocessor)malloc(sizeof(t_preprocessor));
+@@ -2630,11 +2630,6 @@ int main (const int argc,const char**arg
+     adms_k2strconcat(&sdeveloper,"Xml");
+     adms_k2strconcat(&sdeveloper,"-");
+     adms_k2strconcat(&sdeveloper,PACKAGE_VERSION);
+-    adms_k2strconcat(&sdeveloper," (");
+-    adms_k2strconcat(&sdeveloper,__DATE__);
+-    adms_k2strconcat(&sdeveloper,"-");
+-    adms_k2strconcat(&sdeveloper,__TIME__);
+-    adms_k2strconcat(&sdeveloper,")");
+     root()->_simulator->_developer=sdeveloper;
+   }
+  /*[nepasimprimer]*/
+@@ -2665,8 +2660,8 @@ int main (const int argc,const char**arg
+     ((argc==3)&&!strcmp(argv[1],"--")&&!strcmp(argv[2],"help"))
+   )
+   {
+-    adms_message_usage(("%sXml-%s (%s) ",PACKAGE_NAME,PACKAGE_VERSION,GIT))
+-    adms_message_usage_continue(("%s %s (os=%s compiler=%s)\n",__DATE__,__TIME__,ADMS_OS,ADMS_COMPILER))
++    adms_message_usage(("%sXml-%s ",PACKAGE_NAME,PACKAGE_VERSION))
++    adms_message_usage_continue(("(os=%s compiler=%s)\n",ADMS_OS,ADMS_COMPILER))
+     adms_message_usage(("%sXml source [options] -e script1 [-e script2 ...]\n",PACKAGE_NAME))
+     adms_message_usage(("files:\n"))
+     adms_message_usage(("  source: verilog-ams source code\n"))
+@@ -2697,7 +2692,7 @@ int main (const int argc,const char**arg
+     ((argc==3)&&!strcmp(argv[1],"--")&&!strcmp (argv[2],"version"))
+   )
+   {
+-    adms_message_usage(("<release name=\"%sXml\" version=\"%s\" date=\"%s\" time=\"%s\"/>\n",PACKAGE_NAME,PACKAGE_VERSION,__DATE__,__TIME__))
++    adms_message_usage(("<release name=\"%sXml\" version=\"%s\" />\n",PACKAGE_NAME,PACKAGE_VERSION))
+     return 0;
+   }
+   else if(
+@@ -2713,8 +2708,7 @@ int main (const int argc,const char**arg
+     adms_message_usage(("  bug-report=\"%s\"\n",PACKAGE_BUGREPORT))
+     adms_message_usage(("  home-page=\"https://sourceforge.net/projects/mot-adms/\"\n"))
+     adms_message_usage(("  mailing-list=\"mot-adms-users@lists.sourceforge.net\">\n"))
+-    adms_message_usage(("  <release name=\"%s\" version=\"%s\" ",PACKAGE_NAME,PACKAGE_VERSION))
+-    adms_message_usage_continue(("git=\"%s\" date=\"%s\" time=\"%s\"/>\n",GIT,__DATE__,__TIME__))
++    adms_message_usage(("  <release name=\"%s\" version=\"%s\"/>\n",PACKAGE_NAME,PACKAGE_VERSION))
+     adms_message_usage(("</info>\n"))
+     return 0;
+   }
+@@ -2770,10 +2764,6 @@ int main (const int argc,const char**arg
+   adms_k2strconcat(&xheader,"  Command used:\n");
+   adms_k2strconcat(&xheader,"  # release: ");
+   adms_k2strconcat(&xheader,PACKAGE_VERSION);
+-  adms_k2strconcat(&xheader," ");
+-  adms_k2strconcat(&xheader,__DATE__);
+-  adms_k2strconcat(&xheader,"-");
+-  adms_k2strconcat(&xheader,__TIME__);
+   adms_k2strconcat(&xheader,"\n");
+   adms_k2strconcat(&xheader,"  ");
+   adms_k2strconcat(&xheader,PACKAGE_NAME);

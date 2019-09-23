@@ -1,0 +1,51 @@
+From 151b1691fe0cf885df101c6e6a7cb1defc50428b Mon Sep 17 00:00:00 2001
+From: Peter Jones <pjones@redhat.com>
+Date: Mon, 16 Jul 2012 18:57:11 -0400
+Subject: [PATCH] Use "linuxefi" and "initrdefi" where appropriate
+
+References: fate#314485
+Patch-Mainline: no
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ util/grub.d/10_linux.in |   18 ++++++++++++++++--
+ 1 files changed, 16 insertions(+), 2 deletions(-)
+
+Index: grub-2.02~beta2/util/grub.d/10_linux.in
+===================================================================
+--- grub-2.02~beta2.orig/util/grub.d/10_linux.in
++++ grub-2.02~beta2/util/grub.d/10_linux.in
+@@ -133,17 +133,31 @@ linux_entry ()
+     printf '%s\n' "${prepare_boot_cache}" | sed "s/^/$submenu_indentation/"
+   fi
+   message="$(gettext_printf "Loading Linux %s ..." ${version})"
+-  sed "s/^/$submenu_indentation/" << EOF
++  if [ -d /sys/firmware/efi ]; then
++    sed "s/^/$submenu_indentation/" << EOF
++	echo	'$(echo "$message" | grub_quote)'
++	linuxefi ${rel_dirname}/${basename} ${root_device} ${args}
++EOF
++  else
++    sed "s/^/$submenu_indentation/" << EOF
+ 	echo	'$(echo "$message" | grub_quote)'
+ 	linux	${rel_dirname}/${basename} ${root_device} ${args}
+ EOF
++  fi
+   if test -n "${initrd}" ; then
+     # TRANSLATORS: ramdisk isn't identifier. Should be translated.
+     message="$(gettext_printf "Loading initial ramdisk ...")"
+-    sed "s/^/$submenu_indentation/" << EOF
++    if [ -d /sys/firmware/efi ]; then
++      sed "s/^/$submenu_indentation/" << EOF
++	echo	'$(echo "$message" | grub_quote)'
++	initrdefi ${rel_dirname}/${initrd}
++EOF
++    else
++      sed "s/^/$submenu_indentation/" << EOF
+ 	echo	'$(echo "$message" | grub_quote)'
+ 	initrd	${rel_dirname}/${initrd}
+ EOF
++    fi
+   fi
+   sed "s/^/$submenu_indentation/" << EOF
+ }

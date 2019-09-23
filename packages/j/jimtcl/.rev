@@ -1,0 +1,17 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>456821df4b8cca82c1a5c9594028ca85</srcmd5>
+    <version>0.75</version>
+    <time>1396452207</time>
+    <user>coolo</user>
+    <comment>New package, please see http://lists.opensuse.org/opensuse-factory/2014-03/msg00170.html</comment>
+    <requestid>228213</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>456821df4b8cca82c1a5c9594028ca85</srcmd5>
+    <version>0.75</version>
+    <time>1409301286</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

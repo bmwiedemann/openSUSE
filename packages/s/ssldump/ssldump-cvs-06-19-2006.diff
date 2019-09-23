@@ -1,0 +1,334 @@
+Index: ssldump/configure.in
+===================================================================
+RCS file: /cvsroot/ssldump/ssldump/configure.in,v
+retrieving revision 1.3
+diff -U5 -r1.3 configure.in
+--- ssldump/configure.in	29 Mar 2005 17:53:04 -0000	1.3
++++ ssldump/configure.in	19 Jun 2006 18:40:40 -0000
+@@ -66,12 +66,14 @@
+ 
+ AC_ARG_WITH(pcap,[--with-pcap		  root location for pcap library],
+ 	if test "$withval" = "no"; then
+ 	   AC_MSG_ERROR(PCAP required for ssldump)
+ 	else
+-		ac_pcap_inc_dir=$withval/include
+-		ac_pcap_lib_dir=$withval/lib
++		if test "$withval" != ""; then
++			ac_pcap_inc_dir=$withval/include
++			ac_pcap_lib_dir=$withval/lib
++		fi
+ 	fi
+ )
+ 
+ AC_ARG_WITH(pcap-inc,[--with-pcap-inc           PCAP include files],
+ 	ac_pcap_inc_dir=$withval
+@@ -137,12 +139,14 @@
+ 
+ AC_ARG_WITH(openssl,[--with-openssl            root location for OpenSSL],
+ 	if test "$withval" = "no"; then
+ 	   ac_use_openssl="false"
+ 	else
+-		ac_openssl_lib_dir="$withval/lib $withval"
+-		ac_openssl_inc_dir=$withval/include
++		if test "$withval" != ""; then
++			ac_openssl_lib_dir="$withval/lib $withval"
++			ac_openssl_inc_dir=$withval/include
++		fi
+ 	fi
+ )
+ 
+ AC_ARG_WITH(openssl-inc,[--with-openssl-inc        OpenSSL include files],
+ 	ac_openssl_inc_dir=$withval
+Index: ssldump/base/pcap-snoop.c
+===================================================================
+RCS file: /cvsroot/ssldump/ssldump/base/pcap-snoop.c,v
+retrieving revision 1.3
+diff -U5 -r1.3 pcap-snoop.c
+--- ssldump/base/pcap-snoop.c	29 Mar 2005 17:53:05 -0000	1.3
++++ ssldump/base/pcap-snoop.c	19 Jun 2006 18:40:42 -0000
+@@ -236,10 +236,13 @@
+           SSL_print_flags |= SSL_PRINT_NROFF;
+           break;
+ 	case 'a':
+ 	  NET_print_flags |= NET_PRINT_ACKS;
+ 	  break;
++	case 'A':
++	  SSL_print_flags |= SSL_PRINT_ALL_FIELDS;
++	  break;
+         case 'T':
+           NET_print_flags |= NET_PRINT_TCP_HDR;
+           break;
+         case 'i':
+           interface_name=strdup(optarg);
+Index: ssldump/base/tcppack.c
+===================================================================
+RCS file: /cvsroot/ssldump/ssldump/base/tcppack.c,v
+retrieving revision 1.2
+diff -U5 -r1.2 tcppack.c
+--- ssldump/base/tcppack.c	2 Jan 2003 18:44:44 -0000	1.2
++++ ssldump/base/tcppack.c	19 Jun 2006 18:40:42 -0000
+@@ -111,15 +111,15 @@
+ 
+       /*Note that we MUST receive the 3-way handshake in the
+ 	proper order. This shouldn't be a problem, though,
+         except for simultaneous connects*/
+       if((p->tcp->th_flags & (TH_SYN|TH_ACK))!=TH_SYN){
+-	DBG((0,"TCP: rejecting packet from unknown connection\n"));
++	DBG((0,"TCP: rejecting packet from unknown connection, seq: %u\n",ntohl(p->tcp->th_seq)));
+ 	return(0);
+       }
+       
+-      DBG((0,"SYN1\n"));
++      DBG((0,"SYN1 seq: %u",ntohl(p->tcp->th_seq)));
+       if(r=new_connection(handler,ctx,p,&conn))
+ 	ABORT(r);
+       conn->i2r.seq=ntohl(p->tcp->th_seq)+1;
+       return(0);
+     }
+@@ -133,18 +133,18 @@
+ 	if((p->tcp->th_flags & (TH_SYN|TH_ACK))!=(TH_SYN|TH_ACK))
+  	  break;
+ 	conn->r2i.seq=ntohl(p->tcp->th_seq)+1;
+ 	conn->r2i.ack=ntohl(p->tcp->th_ack)+1;
+ 	conn->state=TCP_STATE_SYN2;
+-	DBG((0,"SYN2\n"));	
++	DBG((0,"SYN2 seq: %u",ntohl(p->tcp->th_seq)));
+ 	break;
+       case TCP_STATE_SYN2:
+         {
+           char *sn=0,*dn=0;
+ 	if(direction != DIR_I2R)
+ 	  break;
+-	DBG((0,"ACK\n"));
++	DBG((0,"ACK seq: %u",ntohl(p->tcp->th_seq)));
+ 	conn->i2r.ack=ntohl(p->tcp->th_ack)+1;
+         lookuphostname(&conn->i_addr,&sn);
+         lookuphostname(&conn->r_addr,&dn);
+         if(NET_print_flags & NET_PRINT_TYPESET)
+           printf("\\fC");
+@@ -244,11 +244,12 @@
+     long l;
+ 
+     l=p->len - p->tcp->th_off * 4;
+     
+     if(stream->close){
+-      DBG((0,"Rejecting packet received after FIN"));
++      DBG((0,"Rejecting packet received after FIN: %u:%u(%u)",
++             ntohl(p->tcp->th_seq),ntohl(p->tcp->th_seq+l),l));
+       return(0);
+     }
+ 
+     /*The idea here is to pass all available segments
+       to the analyzer at once. Since we want to preserve
+@@ -357,24 +358,30 @@
+           not a TCP analyzer*/
+         if(seg->p->tcp->th_flags & (TH_FIN) ){
+           if(conn->state == TCP_STATE_ESTABLISHED)
+             conn->state=TCP_STATE_FIN1;
+           else
+-	  conn->state=TCP_STATE_CLOSED;
++            conn->state=TCP_STATE_CLOSED;
+         }
+         
+         stream->oo_queue=seg->next;
+         seg->next=0;
+         stream->seq=seg->s_seq + seg->len;
+ 
+-        if(r=conn->analyzer->vtbl->data(conn->analyzer->obj,&_seg,direction))
++        DBG((0,"Analyzing segment: %u:%u(%u)", seg->s_seq, seg->s_seq+seg->len, seg->len));
++        if(r=conn->analyzer->vtbl->data(conn->analyzer->obj,&_seg,direction)) {
++          DBG((0,"ABORT due to segment: %u:%u(%u)", seg->s_seq, seg->s_seq+seg->len, seg->len));
+           ABORT(r);
++        }
+       }
+ 
+       if(stream->close){
+-	if(r=conn->analyzer->vtbl->close(conn->analyzer->obj,p,direction))
++	DBG((0,"Closing with segment: %u:%u(%u)", seg->s_seq, stream->seq, seg->len));
++	if(r=conn->analyzer->vtbl->close(conn->analyzer->obj,p,direction)) {
++	  DBG((0,"ABORT due to segment: %u:%u(%u)", seg->s_seq, stream->seq, seg->len));
+ 	  ABORT(r);
++	}
+       }
+       
+       free_tcp_segment_queue(_seg.next);
+     }
+ 
+Index: ssldump/ssl/ssl.enums.c
+===================================================================
+RCS file: /cvsroot/ssldump/ssldump/ssl/ssl.enums.c,v
+retrieving revision 1.2
+diff -U5 -r1.2 ssl.enums.c
+--- ssldump/ssl/ssl.enums.c	25 Apr 2003 17:30:45 -0000	1.2
++++ ssldump/ssl/ssl.enums.c	19 Jun 2006 18:40:42 -0000
+@@ -149,11 +149,11 @@
+ 	{
+ 		23,
+ 		"application_data",
+ 		decode_ContentType_application_data
+ 	},
+-{0}
++{-1}
+ };
+ 
+ static int decode_HandshakeType_HelloRequest(ssl,dir,seg,data)
+   ssl_obj *ssl;
+   int dir;
+Index: ssldump/ssl/ssl_analyze.c
+===================================================================
+RCS file: /cvsroot/ssldump/ssldump/ssl/ssl_analyze.c,v
+retrieving revision 1.2
+diff -U5 -r1.2 ssl_analyze.c
+--- ssldump/ssl/ssl_analyze.c	2 Jan 2003 18:44:47 -0000	1.2
++++ ssldump/ssl/ssl_analyze.c	19 Jun 2006 18:40:42 -0000
+@@ -357,16 +357,20 @@
+           case 21:
+           case 22:
+           case 23:
+             break;
+           default:
+-            printf("Unknown SSL content type %d\n",q->data[0] & 255);
+-            ABORT(R_INTERNAL);
++            DBG((0,"Unknown SSL content type %d for segment %u:%u(%u)",
++                   q->data[0] & 255,seg->s_seq,seg->s_seq+seg->len,seg->len));
+         }
+         
+ 	rec_len=COMBINE(q->data[3],q->data[4]);
+ 
++	/* SSL v3.0 spec says a record may not exceed 2**14 + 2048 == 18432 */
++	if (rec_len > 18432)
++	  ABORT(R_INTERNAL);
++
+ 	/*Expand the buffer*/
+ 	if(q->_allocated<(rec_len+SSL_HEADER_SIZE)){
+ 	  if(!(q->data=realloc(q->data,rec_len+5)))
+ 	    ABORT(R_NO_MEMORY);
+ 	  q->_allocated=rec_len+SSL_HEADER_SIZE;
+Index: ssldump/ssl/ssl_enum.c
+===================================================================
+RCS file: /cvsroot/ssldump/ssldump/ssl/ssl_enum.c,v
+retrieving revision 1.1.1.1
+diff -U5 -r1.1.1.1 ssl_enum.c
+--- ssldump/ssl/ssl_enum.c	14 Dec 2002 02:07:58 -0000	1.1.1.1
++++ ssldump/ssl/ssl_enum.c	19 Jun 2006 18:40:42 -0000
+@@ -68,11 +68,11 @@
+ 	{
+ 		23,
+ 		"application_data",
+ 		decode_ContentType_application_data
+ 	},
+-{0}
++{-1}
+ };
+ 
+ static int decode_HandshakeType_hello_request(ssl,dir,seg,data)
+   ssl_obj *ssl;
+   int dir;
+Index: ssldump/ssl/sslprint.c
+===================================================================
+RCS file: /cvsroot/ssldump/ssldump/ssl/sslprint.c,v
+retrieving revision 1.1.1.1
+diff -U5 -r1.1.1.1 sslprint.c
+--- ssldump/ssl/sslprint.c	14 Dec 2002 02:08:04 -0000	1.1.1.1
++++ ssldump/ssl/sslprint.c	19 Jun 2006 18:40:42 -0000
+@@ -246,37 +246,40 @@
+     SSL_DECODE_UINT8(ssl,0,0,&d,&vermaj);
+     SSL_DECODE_UINT8(ssl,0,0,&d,&vermin);    
+     SSL_DECODE_UINT16(ssl,0,0,&d,&length);
+ 
+     if(d.len!=length){
+-      explain(ssl,"Short record\n");
++      explain(ssl,"  Short record: %u bytes available (expecting: %u)\n",length,d.len);
+       return(0);
+     }
+    
+     P_(P_RH){
+-      explain(ssl,"V%d.%d(%d)",vermaj,vermin,length);
++      explain(ssl," V%d.%d(%d)",vermaj,vermin,length);
+     }
+ 
+       
+     version=vermaj*256+vermin;
+     
+     r=ssl_decode_record(ssl,ssl->decoder,direction,ct,version,&d);
+ 
+     if(r==SSL_BAD_MAC){
+-      explain(ssl," bad MAC\n");
++      explain(ssl,"  bad MAC\n");
+       return(0);
+     }
+ 
+     if(r){
+-      if(r=ssl_print_enum(ssl,0,ContentType_decoder,ct))
++      if(r=ssl_print_enum(ssl,0,ContentType_decoder,ct)) {
++        printf("  unknown record type: %d\n", ct);
+         ERETURN(r);
++      }
+       printf("\n");
+     }
+     else{
+-     if(r=ssl_decode_switch(ssl,ContentType_decoder,data[0],direction,q,
+-        &d))
++      if(r=ssl_decode_switch(ssl,ContentType_decoder,data[0],direction,q, &d)) {
++        printf("  unknown record type: %d\n", ct);
+         ERETURN(r);
++      }
+     }
+  
+     return(0);
+   }
+ 
+@@ -367,11 +370,11 @@
+ 	return(0);
+       }
+       dtable++;
+     }
+ 
+-    return(-1);
++    return(R_NOT_FOUND);
+   }
+   
+ int ssl_decode_enum(ssl,name,size,dtable,p,data,x)
+   ssl_obj *ssl;
+   char *name;
+@@ -414,12 +417,11 @@
+ 	return(0);
+       }
+       dtable++;
+     }
+ 
+-    explain(ssl,"%s","unknown value");
+-    return(0);
++    return(R_NOT_FOUND);
+   }
+ 
+ int explain(ssl_obj *ssl,char *format,...)
+   {
+     va_list ap;
+@@ -533,11 +535,11 @@
+   {
+     int i,bit8=0;
+ 
+     printf("\n");    
+     for(i=0;i<d->len;i++){
+-      if(!isprint(d->data[i]) && !strchr("\r\n\t",d->data[i])){
++      if(d->data[i] == 0 || (!isprint(d->data[i]) && !strchr("\r\n\t",d->data[i]))){
+ 	bit8=1;
+ 	break;
+       }
+     }
+ 
+@@ -555,11 +557,12 @@
+       
+     }
+     else{
+       int nl=1;
+       INDENT;
+-      printf("---------------------------------------------------------------\n");      if(SSL_print_flags & SSL_PRINT_NROFF){
++      printf("---------------------------------------------------------------\n");
++      if(SSL_print_flags & SSL_PRINT_NROFF){
+         if(ssl->process_ciphertext & ssl->direction)
+           printf("\\f[CI]");
+         else
+           printf("\\f(C");
+       }

@@ -1,0 +1,165 @@
+<revisionlist>
+  <revision rev="1" vrev="31">
+    <srcmd5>5d63cc2758fc8809631011a7517e6544</srcmd5>
+    <version>1.2</version>
+    <time>1168904293</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c10ee37fdb6f7be830f16010c16de127</srcmd5>
+    <version>1.4</version>
+    <time>1183927444</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="100">
+    <srcmd5>c10ee37fdb6f7be830f16010c16de127</srcmd5>
+    <version>1.4</version>
+    <time>1183927444</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="101">
+    <srcmd5>ee728886440341065f80e8436ec3f413</srcmd5>
+    <version>1.4</version>
+    <time>1245340966</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="103">
+    <srcmd5>ee728886440341065f80e8436ec3f413</srcmd5>
+    <version>1.4</version>
+    <time>1245340966</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="104">
+    <srcmd5>b11702a20748590db1c6828102199369</srcmd5>
+    <version>1.4</version>
+    <time>1268926246</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="106">
+    <srcmd5>b11702a20748590db1c6828102199369</srcmd5>
+    <version>1.4</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="107">
+    <srcmd5>b11702a20748590db1c6828102199369</srcmd5>
+    <version>1.4</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>055bf204e7a630af6691ba5dbc954cfa</srcmd5>
+    <version>1.6.svn3791</version>
+    <time>1287010337</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm:svn/subversion-doc based on submit request 50304 from user coolo
+</comment>
+    <requestid>50304</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>055bf204e7a630af6691ba5dbc954cfa</srcmd5>
+    <version>1.6.svn3791</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>413423237e4d2b1731f04f2f1dbb58d8</srcmd5>
+    <version>1.6.svn3904</version>
+    <time>1312809774</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>76431</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>aeaa22f64ab3d70b71581c2d22f3d0cd</srcmd5>
+    <version>1.6.svn3904</version>
+    <time>1312809791</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76431
+</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>aeaa22f64ab3d70b71581c2d22f3d0cd</srcmd5>
+    <version>1.6.svn3904</version>
+    <time>1319182494</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5283591fa8f4d0bc3a2e25e73692ec57</srcmd5>
+    <version>1.7.r4229</version>
+    <time>1324478504</time>
+    <user>coolo</user>
+    <comment>- small cleanups
+
+- update to /branches/1.7 r4229
+- adjust to changed source tree structure
+- use revision from version for subtitle,
+  subversion-doc.svn.version.patch no longer required
+- use distribution's docbook-xsl package</comment>
+    <requestid>96529</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>356ead16ae3eb7e46b0147e477a70767</srcmd5>
+    <version>1.7.r4252</version>
+    <time>1330364232</time>
+    <user>coolo</user>
+    <comment>- update to /branches/1.7 r4252
+- add BuildRequires for libxml2-tools for post-12.1 factory (forwarded request 106958 from AndreasStieger)</comment>
+    <requestid>106959</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>356ead16ae3eb7e46b0147e477a70767</srcmd5>
+    <version>1.7.r4252</version>
+    <time>1340184243</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>356ead16ae3eb7e46b0147e477a70767</srcmd5>
+    <version>1.7.r4252</version>
+    <time>1359110447</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3aca5dac7606acb514729d1a69642b15</srcmd5>
+    <version>1.8.r4501</version>
+    <time>1372059899</time>
+    <user>coolo</user>
+    <comment>- update to /trunk r4501 for 1.8 version of the book</comment>
+    <requestid>180571</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>3aca5dac7606acb514729d1a69642b15</srcmd5>
+    <version>1.8.r4501</version>
+    <time>1379664741</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0a104fa6f2f75d41cdc50d57f97c0cd0</srcmd5>
+    <version>1.8.r4562</version>
+    <time>1386757993</time>
+    <user>coolo</user>
+    <comment>update to /trunk r4562</comment>
+    <requestid>209952</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>0a104fa6f2f75d41cdc50d57f97c0cd0</srcmd5>
+    <version>1.8.r4562</version>
+    <time>1409303424</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>737125b73e5ae9ec095c3a6175a917c7</srcmd5>
+    <version>1.8.r5043</version>
+    <time>1442474384</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330781</requestid>
+  </revision>
+</revisionlist>

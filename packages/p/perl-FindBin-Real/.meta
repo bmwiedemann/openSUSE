@@ -1,0 +1,15 @@
+<package name="perl-FindBin-Real" project="openSUSE:Factory">
+  <title>Locate directory of original perl script</title>
+  <description>Locates the full path to the script bin directory to allow the use of paths
+relative to the bin directory.
+
+This allows a user to setup a directory tree for some software with
+directories &lt;root&gt;/bin and &lt;root&gt;/lib and then the above example will allow
+the use of modules in the lib directory without knowing where the software
+tree is installed.
+
+If perl is invoked using the *-e* option or the perl script is read from
+'STDIN' then FindBin sets both 'Bin()' and 'RealBin()' return values to the
+current directory.</description>
+  <devel project="devel:languages:perl" package="perl-FindBin-Real"/>
+</package>

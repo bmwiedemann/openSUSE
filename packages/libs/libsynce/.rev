@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>df840f39bde173a879b8ef67cd9e41d9</srcmd5>
+    <version>0.15.1</version>
+    <time>1315233464</time>
+    <user>lrupp</user>
+    <comment>Seems the project mobile:synchronization:FACTORY does not respond, so submitting from here. There is too little time left and there is still too much to do. Once they approve the SR#80362 it will supersede this one.</comment>
+    <requestid>80896</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>76e9767e1aa33b52db8ba6acf6487871</srcmd5>
+    <version>0.15.1</version>
+    <time>1315233473</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80896
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>76e9767e1aa33b52db8ba6acf6487871</srcmd5>
+    <version>0.15.1</version>
+    <time>1319182139</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>ea754a5b8d32b6bb58d8312783e3cf32</srcmd5>
+    <version>0.15.1</version>
+    <time>1323192352</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>ea754a5b8d32b6bb58d8312783e3cf32</srcmd5>
+    <version>0.15.1</version>
+    <time>1340183642</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>ea754a5b8d32b6bb58d8312783e3cf32</srcmd5>
+    <version>0.15.1</version>
+    <time>1359109362</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>ea754a5b8d32b6bb58d8312783e3cf32</srcmd5>
+    <version>0.15.1</version>
+    <time>1379663105</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>ea754a5b8d32b6bb58d8312783e3cf32</srcmd5>
+    <version>0.15.1</version>
+    <time>1409301729</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,14 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">git://github.com/openSUSE/jeos-firstboot.git</param>
+    <param name="versionformat">0.0+git%cd.%h</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">jeos-internal@suse.de</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

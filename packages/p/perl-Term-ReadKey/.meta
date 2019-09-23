@@ -1,0 +1,12 @@
+<package name="perl-Term-ReadKey" project="openSUSE:Factory">
+  <title>Module for Simple Terminal Control</title>
+  <description>This module, ReadKey, provides ioctl control for terminals and Win32 consoles
+so the input modes can be changed (thus allowing reads of a single character at
+a time), and also provides non-blocking reads of stdin, as well as several
+other terminal related features, including retrieval/modification of the screen
+size, and retrieval/modification of the control characters.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Term-ReadKey"/>
+  <url>http://search.cpan.org/dist/Term-ReadKey</url>
+</package>

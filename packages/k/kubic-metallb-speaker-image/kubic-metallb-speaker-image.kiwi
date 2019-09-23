@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- OBS-ExcludeArch: i586 s390 -->
+
+<image schemaversion="6.5" name="kubic-metallb-speaker-image" xmlns:suse_label_helper="com.suse.label_helper">
+  <description type="system">
+    <author>Thorsten Kukuk</author>
+    <contact>kukuk@suse.com</contact>
+    <specification>Load Balancer for bare metal Kubernetes clusters (speaker)</specification>
+  </description>
+  <preferences>
+    <type
+      image="docker"
+      derived_from="obsrepositories:/opensuse/busybox#latest">
+      <containerconfig
+	name="kubic/metallb-speaker"
+	tag="latest"
+	additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%"
+        maintainer="Thorsten Kukuk &lt;kukuk@suse.com&gt;">
+        <entrypoint execute="/usr/sbin/speaker"/>
+	<labels>
+          <suse_label_helper:add_prefix prefix="org.opensuse.kubic.speaker">
+            <label name="org.opencontainers.image.title" value="openSUSE Kubic MetalLB speaker container"/>
+            <label name="org.opencontainers.image.description" value="Image containing metallb speaker for openSUSE Kubic."/>
+            <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/kubic/metallb-speaker:%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
+          </suse_label_helper:add_prefix>
+        </labels>
+        <history author="Thorsten Kukuk &lt;kukuk@suse.com&gt;">openSUSE Kubic metallb speaker container</history>
+      </containerconfig>
+    </type>
+    <version>1.0.0</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-check-signatures>false</rpm-check-signatures>
+    <rpm-excludedocs>true</rpm-excludedocs>
+    <locale>en_US</locale>
+    <keytable>us.map.gz</keytable>
+    <hwclock>utc</hwclock>
+  </preferences>
+  <repository>
+    <source path="obsrepositories:/"/>
+  </repository>
+  <packages type="bootstrap">
+    <package name="metallb-speaker"/>
+  </packages>
+</image>

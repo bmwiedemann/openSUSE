@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42dd5ffcebc50b950fd39ce3aa45a754</srcmd5>
+    <version>0.7.4</version>
+    <time>1517424862</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.7.4
+  * Add new multi-word misspellings to the dictionary.
+  * Reset the SIGPIPE signal disposition.
+- Replace shebang in executable by call to /usr/bin/python3, fixing rpmlint error
+- remove deprecated manual source validation
+- fix source validation
+- use packaged method to install the package
+ * remove all patches
+- validate source file
+- initial package for version 0.7.3
+- add wip-pip.patch from upstream pull request #4 for setup.py
+- add allow_setup.py_call.patch allowing to use the setup.py file
+</comment>
+    <requestid>571389</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>10183fc6ea84fdfb4db6f70bb6592204</srcmd5>
+    <version>0.7.5</version>
+    <time>1527583711</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.7.5:
+ * Update PyPI URLs in documentation.
+ * Update Lintian URLs in the manual page.
+</comment>
+    <requestid>612514</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>050afc11af426db204d415a34f2e3fce</srcmd5>
+    <version>0.7.5</version>
+    <time>1535122848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628242</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1c38f4ca9e922eb990fb8a30abf19cea</srcmd5>
+    <version>0.7.6</version>
+    <time>1540200331</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>643328</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8e9cd404613f883473690cae144c3e35</srcmd5>
+    <version>0.7.7</version>
+    <time>1543953462</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653731</requestid>
+  </revision>
+</revisionlist>

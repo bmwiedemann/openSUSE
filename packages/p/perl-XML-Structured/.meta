@@ -1,0 +1,6 @@
+<package name="perl-XML-Structured" project="openSUSE:Factory">
+  <title>Simple conversion API from XML to perl structures and back</title>
+  <description>This package was branched from openSUSE:Tools in order to ...
+check if this is the latest code.</description>
+  <devel project="devel:languages:perl" package="perl-XML-Structured"/>
+</package>

@@ -1,0 +1,10 @@
+<package name="python-python-afl" project="openSUSE:Factory">
+  <title>American fuzzy lop fork server and instrumentation for pure-Python code</title>
+  <description>python-afl is an experimental module that enables American fuzzy lop fork server and instrumentation for pure-Python code.
+
+The scripts to run the fuzzer are only in the package for python3.
+
+</description>
+  <devel project="devel:tools" package="python-python-afl"/>
+  <url>http://jwilk.net/software/python-afl</url>
+</package>

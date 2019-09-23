@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4af0306ed3317a3598a33c3a6b9bb721</srcmd5>
+    <version>2.3.1</version>
+    <time>1492617862</time>
+    <user>dimstar_suse</user>
+    <comment>This package combined python3-pycodestyle, which is already in openSUSE:Factory, with a python2 version using the new single-spec macros.  It replaces python3-pycodestyle, which will receive a delete request as soon as this is accepted.</comment>
+    <requestid>483177</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6079bbadc04de7b1c5a6264eeb9d283c</srcmd5>
+    <version>2.3.1</version>
+    <time>1494345553</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493138</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c8e12b2b694c6a3c08152149a699740c</srcmd5>
+    <version>2.4.0</version>
+    <time>1524400143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595511</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>828cf433ce2aa9b2edb1cc9180a9b01d</srcmd5>
+    <version>2.4.0</version>
+    <time>1533887057</time>
+    <user>dimstar_suse</user>
+    <comment>- Really run tests
+- Drop devel dependency
+- Fix provides/obsoletes for pep8</comment>
+    <requestid>628090</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>971d801bfa1366aa4821a49d36fc018c</srcmd5>
+    <version>2.4.0</version>
+    <time>1539250724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639620</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>08676631cb1abb12b02d8978f2046851</srcmd5>
+    <version>2.5.0</version>
+    <time>1550149929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670544</requestid>
+  </revision>
+</revisionlist>

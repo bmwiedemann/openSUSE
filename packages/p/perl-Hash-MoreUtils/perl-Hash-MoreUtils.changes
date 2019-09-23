@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Sat Jun  9 05:32:46 UTC 2018 - coolo@suse.com
+
+- updated to 0.06
+   see /usr/share/doc/packages/perl-Hash-MoreUtils/Changes
+
+  0.06	2018-06-08
+      - update toolchain for modern perl environments including
+        * automated regression test
+        * test coverage analyzation
+        * pod coverage
+      - introducing common code style
+      - introduce a bunch of missing functions:
+        * slice_without (Thanks to Theo van Hoesel <Th.J.v.Hoesel@THEMA-MEDIA.nl>)
+        * slice_missing / slice_missing_map (Thanks to Christoph Zimmermann <christophemzim@web.de>)
+        * slice_notdef / slice_notdef_map (Thanks to Christoph Zimmermann <christophemzim@web.de>)
+        * slice_true / slice_true_map
+        * slice_false / slice_false_map
+
+-------------------------------------------------------------------
+Sun Feb  9 13:33:37 UTC 2014 - coolo@suse.com
+
+- updated to 0.05
+ - Fix hashsort with sort block (Koichi Nakashima - http://nksm.name)
+
+-------------------------------------------------------------------
+Tue Oct  8 06:15:48 UTC 2013 - coolo@suse.com
+
+- updated to 0.04
+    - add slice_map family
+    - Changes reformatted as per CPAN::Changes::Spec
+
+-------------------------------------------------------------------
+Fri Oct  4 09:13:21 UTC 2013 - coolo@suse.com
+
+- updated to 0.03
+     - Add documentation about intended behaviour of slice* when no
+       list given (fixing RT#77429 and RT#57095), thanks to Titi Ala'ilima
+       and Bernhard Graf
+     - Changes reformatted as per CPAN::Changes::Spec
+     - Move to GitHub.com
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:46 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Nov 19 20:34:22 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.02)
+

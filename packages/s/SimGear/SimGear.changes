@@ -1,0 +1,208 @@
+-------------------------------------------------------------------
+Fri Aug 16 22:11:30 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 2018.3.4
+  * changelog: http://wiki.flightgear.org/Changelog_2018.3#2018.3.4_point_release
+- Drop upstream patches:
+  * 0001-Improve-HTTP-redirect-handling-and-add-test.patch
+
+-------------------------------------------------------------------
+Thu Mar 21 18:22:45 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix building with booost 1.69:
+  * Add 0001-Remove-deprecated-boost-utility.patch
+  * Add 0001-boost-enable_if-Support-Boost-versions-1.56.patch
+
+-------------------------------------------------------------------
+Mon Mar  4 20:09:34 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix redirect handling, add
+  0001-Improve-HTTP-redirect-handling-and-add-test.patch
+
+-------------------------------------------------------------------
+Mon Feb 11 22:45:29 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 2018.3.2
+  * changelog: http://wiki.flightgear.org/Changelog_2018.3#2018.3.2_point_release
+
+-------------------------------------------------------------------
+Tue Dec 18 00:06:29 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 2018.3.1
+  * changelog: see upstream, http://wiki.flightgear.org/Changelog_2018.3
+- Drop upstream 0001-Add-missing-return-value.patch
+
+-------------------------------------------------------------------
+Thu Jul 19 00:44:12 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Adjust BuildRequires and Requires
+  * Use BuildConflicts to force a OSG version >= 3.2
+  * Drop BuildRequires for OSG plugins, not needed
+  * Add versioned Requires: openSceneGraph-plugins. We want plugins
+    with the same version as the linked library
+- Use %license for COPYING
+
+-------------------------------------------------------------------
+Sun Jul  1 03:21:06 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Fix failing build, no-return-in-nonvoid-function
+  0001-Add-missing-return-value.patch
+- Change BuildRequires, OpenSceneGraph 3.6 has an incompatible API
+
+-------------------------------------------------------------------
+Wed Jun 27 15:43:30 UTC 2018 - Mathias.Homann@opensuse.org
+
+- Update to 2018.2.2
+  * changelog: see upstream, http://wiki.flightgear.org/Changelog_2018.2
+  * Fixes boo#1099288 (update requested)
+
+-------------------------------------------------------------------
+Fri May  4 21:52:40 UTC 2018 - Mathias.Homann@opensuse.org
+
+- Update to 2018.1.1
+  * changelog: see upstream, http://wiki.flightgear.org/Changelog_2018.1
+
+-------------------------------------------------------------------
+Wed Jan  3 12:19:56 UTC 2018 - rpm@fthiessen.de
+
+- Fixed dependencies
+
+-------------------------------------------------------------------
+Tue Dec  5 12:49:39 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Drop lots of unused BuildRequires, as a side effect, fixes building
+  on Factory (as it no longer requires openSSL 1_0_0 and 1_1_0)
+- Remove no longer used/known -DJPEG_FACTORY:BOOL=ON
+
+-------------------------------------------------------------------
+Tue Sep 26 10:02:38 UTC 2017 - Mathias.Homann@opensuse.org
+
+- Update to 2017.3.1
+  * Change API for thumbnail access, so each variant can have a
+    unique thumbnail alongside other data. Map existing catalog
+    XML format to this system.
+  * New alternative terrain engine - SGMesh utilizing pagedLOD.
+  * OSG 3.5.x support
+  * Package APIs to support multiple primary aircraft, this
+    will allow packages to supply multiple primary aircraft.
+  * Fix bug "dns timeout, no terrasync servers found"
+  * Allow animations to take an object as the centre and axis.
+  * Fix mesh visibility on pick animations.
+  * Fix animation axis text for new calling conventions.
+  * Enable display lists for random trees.
+  * Add efficient hasTag check to Package.
+  * Persistent thumbnail cache for aircraft packages.
+  * Clear Uniform cache on reset.
+
+-------------------------------------------------------------------
+Thu Mar  9 22:26:50 UTC 2017 - wk@ire.pw.edu.pl
+
+- Update to 2017.1.2
+
+-------------------------------------------------------------------
+Fri Jan 27 13:07:00 UTC 2017 - rpm@fthiessen.de
+
+- Fixed spec file
+  * Fixed libname
+  * Do not spawn an extra bash process for ldconfig
+
+-------------------------------------------------------------------
+Wed Jan 11 22:21:51 UTC 2017 - rpm@fthiessen.de
+
+- Update to 2016.4.4
+- Removed upstream merged fix_cmake_config_package_location.patch
+
+-------------------------------------------------------------------
+Sun Aug 21 22:12:57 UTC 2016 - mailaender@opensuse.org
+
+- Update to 2016.2.1
+
+-------------------------------------------------------------------
+Sun Mar 20 18:11:49 CET 2016 - bosim@opensuse.org
+
+- Added SourceURL
+
+-------------------------------------------------------------------
+Mon Mar 14 22:12:21 CET 2016 - bosim@opensuse.org
+
+- Update to 2016.1.1
+
+-------------------------------------------------------------------
+Sun Mar 13 23:06:50 CET 2016 - bosim@opensuse.org
+
+- Fixed missing dependency on OpenSceneGraph-plugins.
+
+-------------------------------------------------------------------
+Wed Feb 24 00:21:00 UTC 2016 - code@hector.link
+
+- Fix CMakeLists.txt to correctly use lib64 for some files
+- Fix spec file as /usr/share/SimGearCore is no longer used
+
+-------------------------------------------------------------------
+Mon Nov 23 01:00:48 UTC 2015 - rpm@fthiessen.de
+
+- Update to 3.7.0 (for flightGear 3.7.0).
+
+-------------------------------------------------------------------
+Mon Sep 23 13:02:56 UTC 2013 - Mathias.Homann@opensuse.org
+
+- update: flightGear 2.12 has been released
+
+-------------------------------------------------------------------
+Fri Mar  8 17:39:04 UTC 2013 - joop.boonen@opensuse.org
+
+- update to 2.10.0
+- Corrected the license and group 
+
+-------------------------------------------------------------------
+Fri Aug 17 12:00:00 UTC 2012 - thorstenb@flightgear.org
+
+- update to 2.8.0
+
+-------------------------------------------------------------------
+Fri Feb 17 12:00:00 UTC 2012 - thorstenb@flightgear.org
+
+- update to 2.6.0
+- switched to cmake build system with shared libraries
+
+-------------------------------------------------------------------
+Thu Feb  2 07:48:19 UTC 2012 - highwaystar.ru@gmail.com
+
+- added autotools BuildRequires for build on current Factory
+
+-------------------------------------------------------------------
+Mon Jan 30 11:19:12 UTC 2012 - highwaystar.ru@gmail.com
+
+- fixed OpenSceneGraph-plugins version require (bnc#717918)
+
+-------------------------------------------------------------------
+Sat Nov 26 15:23:51 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Fri Nov 11 23:13:00 UTC 2011 - thorstenb@flightgear.org
+
+- added SVN dependency to enable built-in scenery download
+
+-------------------------------------------------------------------
+Mon Sep  5 05:51:16 UTC 2011 - highwaystar.ru@gmail.com
+
+- update to 2.4.0
+- shared lib patch reworked
+
+-------------------------------------------------------------------
+Tue Apr 12 11:44:40 UTC 2011 - Rene.vanPaassen@gmail.com
+
+- fixed required plib libraries in simgear/screen/Makefile.am 
+
+-------------------------------------------------------------------
+Wed Oct 27 13:34:56 UTC 2010 - prusnak@opensuse.org
+
+- fix OpenSceneGraph requirements for 11.3+
+
+-------------------------------------------------------------------
+Mon Mar  1 14:05:50 UTC 2010 - prusnak@suse.cz
+
+- import SimGear Fedora package by Fabrice Bellet <fabrice@bellet.info>
+

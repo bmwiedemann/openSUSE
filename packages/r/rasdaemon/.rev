@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7f300145747ea51f6fddaf62a2fd7d74</srcmd5>
+    <version>0.5.6</version>
+    <time>1449145842</time>
+    <user>dimstar_suse</user>
+    <comment>This package will replace mcelog on longterm and will get an essential package of our
+distribution.</comment>
+    <requestid>346525</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bbb9bec493a1f33e37b7ad306e9d1c65</srcmd5>
+    <version>0.5.7</version>
+    <time>1457533044</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.5.7 and run spec-cleaner.</comment>
+    <requestid>367695</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3d480e40423cae3c66c7690189683ee0</srcmd5>
+    <version>0.5.8</version>
+    <time>1464853144</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399263</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>43c3bc9b4b9007cee10b61b17509bbf9</srcmd5>
+    <version>0.5.8</version>
+    <time>1492011446</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>487045</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>53bd02358a2f3c805a69f114d8c54999</srcmd5>
+    <version>0.5.9</version>
+    <time>1499415425</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508365</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c42d1b40dcad22b4ccc9e1c9b8e4f82c</srcmd5>
+    <version>0.6.0</version>
+    <time>1511949232</time>
+    <user>dimstar_suse</user>
+    <comment>This package failed to build before indicating the dimm-labels.d/dell file
+was no longer available - after deleting the 'install'-line it started to
+build. 
+Looking for this file in the sources it was at exactly the same place it 
+has always been - and of course the build works now as well.
+I cannot get to the logs of the old build to reproduce what exactly went wrong
+so there is no way of tracking down what went wrong back then.
+
+Reinstating the installation of the dell dim-labels file and removing the 
+changelog entry. (forwarded request 546107 from eeich)</comment>
+    <requestid>546108</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>fe5ac963af1d2aac4eab983b31de66d4</srcmd5>
+    <version>0.6.0</version>
+    <time>1516222733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566610</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c37d22fdcd68416638a5cb51a71a0e71</srcmd5>
+    <version>0.6.0</version>
+    <time>1523029765</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593926</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>626b7963e22edd724ae91ebd8b794a5d</srcmd5>
+    <version>0.6.1</version>
+    <time>1529667217</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617739</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e33dcd580d1686045a2f98d37ff13a3c</srcmd5>
+    <version>0.6.2</version>
+    <time>1535123601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631249</requestid>
+  </revision>
+</revisionlist>

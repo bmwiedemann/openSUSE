@@ -1,0 +1,13 @@
+--- a/oauth.prf
++++ b/oauth.prf
+@@ -1,8 +1,8 @@
+ QOAUTH_INCDIR = $$[QT_INSTALL_HEADERS]
+ QOAUTH_LIBDIR = $$[QT_INSTALL_LIBS]
+ 
+-QOAUTH_INCDIR ~= s!/qt4*!!
+-QOAUTH_LIBDIR ~= s!/qt4*!!
++QOAUTH_INCDIR ~= s|/qt[0-9]*||
++QOAUTH_LIBDIR ~= s|/qt[0-9]*||
+ 
+ CONFIG *= qt
+ CONFIG += crypto

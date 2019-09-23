@@ -1,0 +1,6 @@
+<package name="rawstudio" project="openSUSE:Factory">
+  <title>RawStudio</title>
+  <description>RawStudio is a digital camera RAW files processing software.</description>
+  <devel project="graphics" package="rawstudio"/>
+  <url>http://rawstudio.org/</url>
+</package>

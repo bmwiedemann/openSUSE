@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>77624ef0d861ab18aa0c39ad1f5c23d5</srcmd5>
+    <version>2.0.0</version>
+    <time>1451177810</time>
+    <user>dimstar_suse</user>
+    <comment>require by rubygem-nokogiri</comment>
+    <requestid>348456</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8198486378a8a20bfac3fcab1f51d8ea</srcmd5>
+    <version>2.1.0</version>
+    <time>1460028441</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355563</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>929fc503022c963275aebcf88d00cf9d</srcmd5>
+    <version>2.2.0</version>
+    <time>1497949253</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503344</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>086477a674d98ceba77f67c24026812e</srcmd5>
+    <version>2.3.0</version>
+    <time>1505989786</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526801</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c0a6ded2269f52387a2242c9d419d919</srcmd5>
+    <version>2.4.0</version>
+    <time>1548061576</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656374</requestid>
+  </revision>
+</revisionlist>

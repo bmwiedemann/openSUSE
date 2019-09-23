@@ -1,0 +1,96 @@
+From 15c71e2588058f20169440c0add955a527144c7a Mon Sep 17 00:00:00 2001
+From: Michal Vyskocil <mvyskocil@suse.cz>
+Date: Mon, 26 Sep 2011 13:23:56 +0200
+Subject: [PATCH] locale support in papersize definition
+
+The papersize definition in groff_font(5) has been extended by new
+keyword "locale". In this mode groff determine the paper size from
+LC_PAPER variable.
+
+The algorithm is simple - there is a small static list of countries
+using letter based on territory language information page [1] (CLDR
+2.0). If the LC_PAPER contains the country code (for instance _CL -
+Chile), letter dimmensions are used. Otherwise a4.
+
+[1] http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/territory_language_information.html
+[2] http://wiki.services.openoffice.org/wiki/DefaultPaperSize
+---
+ src/include/paper.h         |    4 ++--
+ src/libs/libgroff/paper.cpp |   42 ++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 44 insertions(+), 2 deletions(-)
+
+diff --git a/src/include/paper.h b/src/include/paper.h
+index 73e070c..f5a8039 100644
+--- a/src/include/paper.h
++++ b/src/include/paper.h
+@@ -30,7 +30,7 @@ public:
+   papersize_init();
+ } _papersize_init;
+ 
+-// A0-A7, B0-B7, C0-C7, D0-D7, 8 American paper sizes, 1 special size */
+-#define NUM_PAPERSIZES 4*8 + 8 + 1
++// A0-A7, B0-B7, C0-C7, D0-D7, 8 American paper sizes, 1 special size and the locale */
++#define NUM_PAPERSIZES 4*8 + 8 + 1 + 1
+ 
+ extern paper papersizes[];
+diff --git a/src/libs/libgroff/paper.cpp b/src/libs/libgroff/paper.cpp
+index 27a7c8c..42dea69 100644
+--- a/src/libs/libgroff/paper.cpp
++++ b/src/libs/libgroff/paper.cpp
+@@ -58,6 +58,46 @@ static void add_american_paper(const char *name, int idx,
+   papersizes[idx].width = width;
+ }
+ 
++static int is_letter(const char* variable) {
++
++    // CLDR 1.8.1 http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/territory_la
++    // http://wiki.services.openoffice.org/wiki/DefaultPaperSize
++    #define COUNTRIES 13
++    static const char* countries[COUNTRIES] = {
++        "_BZ", "_CA", "CL", "CO", "CR", "GT", "MX", "NI", "PA", "PH", "PR", "SV", "US",
++    };
++
++    if (! variable) {
++        return 0;
++    }
++
++    for (int i = 0; i != COUNTRIES; i++) {
++        if (strstr(variable, countries[i])) {
++            return 1;
++        }
++    }
++
++    return 0;
++}
++
++static void add_locale_paper(int idx) {  
++    char * lc_paper;
++    double l = 297/25.4;
++    double w = 210/25.4;
++
++    //XXX: setlocale(LC_PAPER, NULL) does not work
++    //     at least on glibc 2.14
++    lc_paper = setlocale(LC_PAPER, "");
++
++    if (is_letter(lc_paper)) {
++        l = 11;
++        w = 8.5;
++    }
++    
++    add_american_paper("locale", idx, l, w);
++    
++}
++
+ int papersize_init::initialised = 0;
+ 
+ papersize_init::papersize_init()
+@@ -80,4 +120,6 @@ papersize_init::papersize_init()
+   add_american_paper("monarch", 39, 7.5, 3.875);
+   // this is an ISO format, but it easier to use add_american_paper
+   add_american_paper("dl", 40, 220/25.4, 110/25.4);
++  // the format from locale
++  add_locale_paper(41);
+ }
+-- 
+1.7.6.3
+

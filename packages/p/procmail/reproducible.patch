@@ -1,0 +1,13 @@
+Index: procmail-3.22/src/autoconf
+===================================================================
+--- procmail-3.22.orig/src/autoconf
++++ procmail-3.22/src/autoconf
+@@ -1251,7 +1251,7 @@ int main(argc,argv)int argc;const char*a
+ /* Your system's strstr() is %.2f times %sER than my C-routine */\n",
+ 	 syscnt>=iter?(double)syscnt/iter:(double)iter/syscnt,
+ 	 syscnt>=iter?"SLOW":"FAST");
+-	if(syscnt>iter+iter/16)		  /* if at least 1.0625 times slower */
++	if(0)		  /* always use system strstr to have reproducible binaries */
+ 	   printf("\
+ #define SLOWstrstr\t\t\t      /* using my substitute instead */\n");
+       }

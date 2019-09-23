@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9920f30fc4992390df72bee9c65e7661</srcmd5>
+    <version>0.1.6.3</version>
+    <time>1525426301</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-PyRIC required by mycroft-core</comment>
+    <requestid>603826</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>00cc8a173de9332bda7007df90378e3f</srcmd5>
+    <version>0.1.6.3</version>
+    <time>1548334979</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659294</requestid>
+  </revision>
+</revisionlist>

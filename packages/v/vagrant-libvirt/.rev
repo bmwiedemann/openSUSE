@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a3c88f049f71c2c78507467e26f367b5</srcmd5>
+    <version>0.0.45</version>
+    <time>1562247772</time>
+    <user>dimstar_suse</user>
+    <comment>I'd like to submit the vagrant plugin vagrant-libvirt to Factory.</comment>
+    <requestid>713057</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ba33768753f62b418ef901ac649d4ab8</srcmd5>
+    <version>0.0.45</version>
+    <time>1562925608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714765</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b367f851f4b87751764c18e8b89269a2</srcmd5>
+    <version>0.0.45</version>
+    <time>1567092282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726830</requestid>
+  </revision>
+</revisionlist>

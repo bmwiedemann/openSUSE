@@ -1,0 +1,158 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>325f377cb80b55d4d40b2bc802c91c3c</srcmd5>
+    <version>3.1</version>
+    <time>1247712774</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>325f377cb80b55d4d40b2bc802c91c3c</srcmd5>
+    <version>3.1</version>
+    <time>1247712774</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>9fff0992aac13ab94cd145b681d9d6ad</srcmd5>
+    <version>3.1</version>
+    <time>1268925134</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>9fff0992aac13ab94cd145b681d9d6ad</srcmd5>
+    <version>3.1</version>
+    <time>1278667371</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>9fff0992aac13ab94cd145b681d9d6ad</srcmd5>
+    <version>3.1</version>
+    <time>1278678601</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>9fff0992aac13ab94cd145b681d9d6ad</srcmd5>
+    <version>3.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>9fff0992aac13ab94cd145b681d9d6ad</srcmd5>
+    <version>3.1</version>
+    <time>1319182208</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>e19720168eaa0f04b7529faea3236bd8</srcmd5>
+    <version>3.1</version>
+    <time>1323192789</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1d30fad8d19eb2d2b791ee6b7104141e</srcmd5>
+    <version>3.3.1</version>
+    <time>1327674163</time>
+    <user>coolo</user>
+    <comment>improved changes</comment>
+    <requestid>101633</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>1d30fad8d19eb2d2b791ee6b7104141e</srcmd5>
+    <version>3.3.1</version>
+    <time>1340183743</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>1d30fad8d19eb2d2b791ee6b7104141e</srcmd5>
+    <version>3.3.1</version>
+    <time>1359109523</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>ca497697d77c321363cb77cb0fa0c4cd</srcmd5>
+    <version>3.3.1</version>
+    <time>1378899476</time>
+    <user>coolo</user>
+    <comment>- use add_maven_depmap from javapackages-tools
+
+- Move from jpackage-utils to javapackage-tools</comment>
+    <requestid>198420</requestid>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>ca497697d77c321363cb77cb0fa0c4cd</srcmd5>
+    <version>3.3.1</version>
+    <time>1379663396</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>59dc0c0fe69af02bd0630b6a31c40fcd</srcmd5>
+    <version>3.3.1</version>
+    <time>1380172195</time>
+    <user>coolo</user>
+    <comment>[FOR-OPENSUSE-13.1]
+- Build with gcc-java as openjdk7 (1.7.0_40) fails to build it
+- Disable javadoc package</comment>
+    <requestid>200559</requestid>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>59dc0c0fe69af02bd0630b6a31c40fcd</srcmd5>
+    <version>3.3.1</version>
+    <time>1409302010</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>0495562a36ca694173419ab424513414</srcmd5>
+    <version>3.3.1</version>
+    <time>1427983097</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292636</requestid>
+  </revision>
+  <revision rev="17" vrev="13">
+    <srcmd5>4212af2f0b2199c89990c99bca3abafa</srcmd5>
+    <version>3.3.1</version>
+    <time>1496230187</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496735</requestid>
+  </revision>
+  <revision rev="18" vrev="14">
+    <srcmd5>7d7330618b2a746fbd84151955e424fa</srcmd5>
+    <version>3.3.1</version>
+    <time>1507280124</time>
+    <user>dimstar_suse</user>
+    <comment>Don't depend on java-gcj-compat</comment>
+    <requestid>531066</requestid>
+  </revision>
+  <revision rev="19" vrev="15">
+    <srcmd5>0a939142513a9f4ffbeec46674a17ce5</srcmd5>
+    <version>3.3.1</version>
+    <time>1532446322</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620875</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c7f9ce760d6240b9400706d63480c3b1</srcmd5>
+    <version>6.0</version>
+    <time>1544816690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657252</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>764f6ec4443859a54ab620ad13606488</srcmd5>
+    <version>6.2.1</version>
+    <time>1552464399</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to 6.2.1</comment>
+    <requestid>682092</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a52fcf790560a2e6a75b47b1f3b173ac</srcmd5>
+    <version>2.1.2</version>
+    <time>1541666869</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the generation of files in /etc/permissions.d
+- Remove rpmlintrc file that suppresses the rpmlint warning
+- Cleanup of the spec fil using spec-cleaner
+- Cleanup of the spec file
+- Updated to version 2.1.2
+- Based on package from home:tbechtold:contrail
+- Update to version 2.1.1
+- OBS build fixes
+- Based on initial package from: home:eerovolotinen:authbind
+</comment>
+    <requestid>645571</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0b2e0c757d402adc1d6fb353e844f5ef</srcmd5>
+    <version>2.1.2</version>
+    <time>1542750247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650390</requestid>
+  </revision>
+</revisionlist>

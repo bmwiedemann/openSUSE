@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Wed Dec  5 01:59:04 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:10 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Dec 27 13:55:35 UTC 2017 - jengelh@inai.de
+
+- Trim filler words from description.
+
+-------------------------------------------------------------------
+Wed Oct 18 16:42:21 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+
+-------------------------------------------------------------------
+Sun Jul 31 15:18:28 UTC 2016 - mardnh@gmx.de
+
+- Update to version 3.1.5
+  * Support initialisation from an array.
+  * Added a separate LICENSE file.
+
+- Update to version 3.1.4
+  * Fix for bitstring types when created directly from other bitstring types.
+  * Updating contact, website details.
+
+- Update to version 3.1.3
+  * Fix for problem with prepend for bitstrings with byte offsets in their data store.
+
+-------------------------------------------------------------------
+Sat Apr 20 12:37:23 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 3.1.2
+  + this release has a fix for a problem where unpacked bytes could be
+    eight times too long.
+
+-------------------------------------------------------------------
+Tue Feb 26 13:12:50 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 3.1.0:
+  * New 'pad' token
+    This token can be used in reads and when packing/unpacking to indicate that
+    you don't care about the contents of these bits. Any padding bits will just
+    be skipped over when reading/unpacking or zero-filled when packing.
+    >>> a, b = s.readlist('pad:5, uint:3, pad:1, uint:3')
+    Here only two items are returned in the list - the padding bits are ignored.
+  * New clear and copy convenience methods
+    These methods have been introduced in Python 3.3 for lists and bytearrays,
+    as more obvious ways of clearing and copying, and we mirror that change here.
+    t = s.copy() is equivalent to t = s[:], and s.clear() is equivalent to del s[:].
+  * Some bug fixes.
+
+-------------------------------------------------------------------
+Fri Jan 11 14:31:13 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Fri Jan 11 14:30:45 UTC 2013 - p.drouand@gmail.com
+
+- Fix wronf EOF and remove shebang on bitstring.py
+
+-------------------------------------------------------------------
+Fri Jan 11 14:14:55 UTC 2013 - p.drouand@gmail.com
+
+- Update to 3.0.2 version:
+  * Fix for subclasses of bitstring classes behaving strangely ( Issue 121 ).
+  * Fix for excessive memory usage in rare cases ( Issue 120 ).
+  * Fixes for slicing edge cases. 
+
+-------------------------------------------------------------------
+Fri Sep 23 13:50:34 UTC 2011 - saschpe@suse.de
+
+- Update to version 2.2.0:
+  * Fix for Python 3.2, correcting for a change to the binascii module.
+  * Fix for bool initialisation from 0 or 1.
+  * Efficiency improvements, including interning strategy.
+- Changes from version 2.1.1:
+  * Bug fix: Reading using the 'bytes' token had been broken (Issue 102).
+  * Fixed problem using some methods on ConstBitArrays.
+  * Better exception handling for tokens missing values.
+  * Some performance improvements.
+- See release_notes.txt for further changes...
+
+-------------------------------------------------------------------
+Fri Mar 19 19:27:25 UTC 2010 - toms@suse.de
+
+- First initial version 1.3.0
+

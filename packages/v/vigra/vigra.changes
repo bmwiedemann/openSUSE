@@ -1,0 +1,211 @@
+-------------------------------------------------------------------
+Tue Jan 23 14:40:13 UTC 2018 - tchvatal@suse.com
+
+- Remove python dependencies as we are not buliding the numpy code
+  at all, as such it does not make sense to have just part of them
+- Make sure develpkg requires python3-base and fix shebang on
+  vigra-config
+
+-------------------------------------------------------------------
+Mon Dec 18 03:28:05 UTC 2017 - avindra@opensuse.org
+
+- Version update to 1.11.1:
+  * Added 3D convex hull computation and features
+  * Added Random Forest version 3, inspired by LEMON's graph API,
+    to simplify customization of RF variants
+  * Improved hierarchical clustering
+  * Minor improvements and bug fixes in code and docs.
+- cleanup with spec-cleaner
+- remove gcc7-Fix-parameter-of-ImagePyramid-swap.patch
+  * upstreamed in 18675a51fca27b324eb4e4b49593bcee9bc4535e
+
+-------------------------------------------------------------------
+Mon Mar 20 13:35:28 UTC 2017 - mliska@suse.cz
+
+- Add patch gcc7-Fix-parameter-of-ImagePyramid-swap.patch in order
+  to fix using the library with a GCC 7.
+
+-------------------------------------------------------------------
+Sat Feb 11 22:19:28 UTC 2017 - jengelh@inai.de
+
+- Update RPM group. Run fdupes.
+
+-------------------------------------------------------------------
+Thu Feb  2 15:21:56 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Mon Nov 21 07:47:16 UTC 2016 - tchvatal@suse.com
+
+- Version update to 1.11.0:
+  see http://ukoethe.github.io/vigra/doc-release/vigra/CreditsChangelog.html
+  * Ported vigranumpy to Python 3.5.
+  * Added Chunked arrays to store data larger than RAM as a collection
+    of rectangular blocks.
+  * Added vigra::ThreadPool and parallel_foreach() for portable
+    algorithm parallelization based on std::thread.
+  * Implemented parallel versions of Gaussian smoothing, Gaussian
+    derivatives, connected components labeling, and union-find watersheds.
+  * Added graph-based image analysis, e.g. agglomerative clustering
+  * Included the callback mechanism described in "Impossibly Fast
+    C++ Delegates" by Sergey Ryazanov (needed for agglomerative clustering).
+  * Added many image registration functions.
+  * Extended the collection of multi-dimensional distance transform
+    algorithms by vectorial DT, boundary DT, and eccentricity transform.
+  * Added skeletonizeImage(), nonLocalMean(), multi-dimensional
+    integral images.
+  * Added new 2D shape features based on skeletonization and the
+    convex hull.
+  * Additional arithmetic and algebraic functions for vigra::TinyVector.
+  * Added vigra::CountingIterator.
+  * Minor improvements and bug fixes in the code and documentation.
+
+-------------------------------------------------------------------
+Tue Jan  7 09:37:32 UTC 2014 - speilicke@suse.com
+
+- Fix source URL
+
+-------------------------------------------------------------------
+Fri Jan  3 09:12:08 UTC 2014 - adrian@suse.de
+
+- update to version 1.10.0
+  * see http://ukoethe.github.io/vigra/doc-release/vigra/CreditsChangelog.html
+  * comes with tutorial as part of documentation now
+- so name bump to version 5
+- fixing baselibs config
+
+-------------------------------------------------------------------
+Tue Jun  4 11:15:47 UTC 2013 - tchvatal@suse.com
+
+- Version bump to 1.9.0
+  * see http://hci.iwr.uni-heidelberg.de/vigra/doc/vigra/CreditsChangelog.html
+- Update openexr finding and libdir target.
+
+-------------------------------------------------------------------
+Tue Sep 18 12:06:46 UTC 2012 - idonmez@suse.com
+
+- Update to version 1.8.0
+  * See http://hci.iwr.uni-heidelberg.de/vigra/doc/vigra/CreditsChangelog.html
+- Drop all the patches, fixed upstream.
+- Fixed dependencies for the devel package.
+
+-------------------------------------------------------------------
+Thu Sep  6 08:40:22 UTC 2012 - pgajdos@suse.com
+
+- build also against libpng15
+  * libpng15.patch
+
+-------------------------------------------------------------------
+Sun Nov 20 06:29:41 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Apr 24 12:59:34 UTC 2011 - toddrme2178@gmail.com
+  
+- Add 32bit compatibility libraries
+- Remove test for obsolete openSUSE versions
+- Made package no longer obsolete itself (fix for RPMLINT warning)
+- More informative summaries (fix for RPMLINT warning)
+  
+-------------------------------------------------------------------
+Thu Dec  9 14:11:01 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Fix -devel package dependencies 
+
+-------------------------------------------------------------------
+Thu Apr  8 13:41:14 CEST 2010 - pgajdos@suse.cz
+
+- fixed build with libpng14
+
+-------------------------------------------------------------------
+Thu Apr 23 17:39:24 CEST 2009 - sbrabec@suse.cz
+
+- Don't call autoreconf on older products.
+
+-------------------------------------------------------------------
+Mon Mar  2 06:07:52 CET 2009 - crrodriguez@suse.de
+
+- save 3.8MB by removing static libraries and "la" files 
+
+-------------------------------------------------------------------
+Tue Oct 14 16:33:08 CEST 2008 - sbrabec@suse.cz
+
+- Fix acinclude.m4 to allow autoreconf to prevent build failure.
+
+-------------------------------------------------------------------
+Thu Sep  4 13:56:08 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 1.6.0:
+  * Added functions for arrays of arbitrary dimensions.
+  * Added functionality for 3D image analysis.
+  * Added Random Number Generation.
+  * Functions for affine transformation matrices.
+  * Added linear algebra functionality.
+  * Extended handling of rectangular matrices.
+  * Extended matrix functionality.
+  * Added sRGB to Color Space Conversions
+  * Other improvements and bug fixes in the code and documentation.
+
+-------------------------------------------------------------------
+Mon Jul 30 00:55:00 CEST 2007 - ro@suse.de
+
+- provide and obsolete old name 
+
+-------------------------------------------------------------------
+Thu Jul 26 19:07:04 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 1.5.0:
+  * minor fixes
+  * several functions added
+  * documentation update
+- Rename package according to shared library packaging policy.
+
+-------------------------------------------------------------------
+Fri Apr 20 15:11:09 CEST 2007 - aj@suse.de
+
+- Remove unneeded build requires.
+
+-------------------------------------------------------------------
+Mon Jul 17 15:15:11 CEST 2006 - nadvornik@suse.cz
+
+- do not redefine _AC_INIT_HELP in acinclude.m4
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:40 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 11 15:27:27 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 1.4.0.
+- Split devel subpackage.
+
+-------------------------------------------------------------------
+Mon Feb 14 16:30:53 CET 2005 - mcihar@suse.cz
+
+- update to 1.3.2
+
+-------------------------------------------------------------------
+Thu Nov 11 14:13:23 CET 2004 - ro@suse.de
+
+- fixed file list 
+
+-------------------------------------------------------------------
+Tue Oct 26 00:45:22 CEST 2004 - ro@suse.de
+
+- create directory config before use
+
+-------------------------------------------------------------------
+Tue Aug 03 11:16:05 CEST 2004 - mcihar@suse.cz
+
+- regenerate configure scripts to know all architectures
+- fix compilation on 64-bit platforms
+
+-------------------------------------------------------------------
+Fri Jul 30 10:35:25 CEST 2004 - mcihar@suse.cz
+
+- initial packaging
+

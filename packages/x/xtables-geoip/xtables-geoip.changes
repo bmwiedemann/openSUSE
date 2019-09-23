@@ -1,0 +1,206 @@
+-------------------------------------------------------------------
+Wed May 22 16:27:16 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update database files to 20190521
+
+-------------------------------------------------------------------
+Mon Feb  4 22:41:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update database files to 20190129
+
+-------------------------------------------------------------------
+Fri Sep  7 12:37:25 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update database files to 20180905
+- Switch source to GeoLite2 format
+
+-------------------------------------------------------------------
+Tue Sep 27 07:47:28 UTC 2016 - jengelh@inai.de
+
+- Update database files to 2016.09.07
+
+-------------------------------------------------------------------
+Sun May  8 17:49:06 UTC 2016 - jengelh@inai.de
+
+- Update database files to 2016.05.03
+
+-------------------------------------------------------------------
+Thu Nov 12 00:43:49 UTC 2015 - jengelh@inai.de
+
+- Update database files to 2015.11.03
+
+-------------------------------------------------------------------
+Wed Aug 19 10:41:47 UTC 2015 - jengelh@inai.de
+
+- Update database files to 2015.08
+
+-------------------------------------------------------------------
+Fri Jul 24 20:40:49 UTC 2015 - jengelh@inai.de
+
+- Update database files to 2015.07
+
+-------------------------------------------------------------------
+Thu Jun 25 10:09:08 UTC 2015 - jengelh@inai.de
+
+- Update database files to 2015.06
+
+-------------------------------------------------------------------
+Sat Mar 28 21:53:48 UTC 2015 - jengelh@inai.de
+
+- Update database files to 2015.03
+
+-------------------------------------------------------------------
+Tue Dec 16 01:46:12 UTC 2014 - jengelh@inai.de
+
+- Update database files to 2014.12
+
+-------------------------------------------------------------------
+Fri Jun 27 16:16:34 UTC 2014 - jengelh@inai.de
+
+- Update DB files to 2014.06
+
+-------------------------------------------------------------------
+Thu Jan  9 14:13:54 UTC 2014 - jengelh@inai.de
+
+- Update DB files to 2014.01
+- License change to Creative Commons Attribution-ShareAlike 3.0
+  Unported License.
+
+-------------------------------------------------------------------
+Fri May 10 20:38:24 UTC 2013 - jengelh@inai.de
+
+- update db files to 2013.05
+
+-------------------------------------------------------------------
+Thu Mar  7 17:59:47 UTC 2013 - jengelh@inai.de
+
+- update db files to 2013.03
+
+-------------------------------------------------------------------
+Mon Nov 12 21:06:34 UTC 2012 - jengelh@inai.de
+
+- update database files to the November 2012 release
+
+-------------------------------------------------------------------
+Thu Aug 23 14:16:49 UTC 2012 - jengelh@inai.de
+
+- update db files to 2012.08
+
+-------------------------------------------------------------------
+Mon Jun  4 14:25:34 UTC 2012 - jengelh@inai.de
+
+- update db files to 2012.06
+* 634 new IPv4 ranges, 463 new IPv6 ranges
+
+-------------------------------------------------------------------
+Thu Apr  5 05:09:27 UTC 2012 - jengelh@medozas.de
+
+- update db files to 2012.04
+
+-------------------------------------------------------------------
+Sat Jan 14 03:13:18 UTC 2012 - jengelh@medozas.de
+
+- update db files to 2012.01
+
+-------------------------------------------------------------------
+Wed Jan  4 18:53:02 UTC 2012 - jengelh@medozas.de
+
+- update db files to 2011.12
+- removing LGPL from License: field, it applies only to libGeoIP,
+  which is not shipped in any form in xtables-geoip
+
+-------------------------------------------------------------------
+Wed Dec 14 08:34:09 UTC 2011 - coolo@suse.com
+
+- LICENSE is BSD-4-Clause and LGPL-2.1+ is mentioned
+
+-------------------------------------------------------------------
+Wed Sep 14 08:52:54 UTC 2011 - jengelh@medozas.de
+
+- update database files to 2011.09
+
+-------------------------------------------------------------------
+Sat Aug 20 15:54:23 UTC 2011 - jengelh@medozas.de
+
+- update database files to 2011.08; ~3992 new subnets
+
+-------------------------------------------------------------------
+Sun Jul 10 17:08:23 UTC 2011 - jengelh@medozas.de
+
+- update database files to 2011.07; ~1940 new subnets
+
+-------------------------------------------------------------------
+Sat Apr  9 00:54:00 UTC 2011 - jengelh@medozas.de
+
+- update database files to 2011.04; ~4500 new subnets
+
+-------------------------------------------------------------------
+Sun Feb 27 14:57:42 UTC 2011 - jengelh@medozas.de
+
+- Add Conflicts marker for older Xtables-addons that cannot
+  interact with this version's files
+
+-------------------------------------------------------------------
+Mon Feb 14 23:42:07 UTC 2011 - jengelh@medozas.de
+
+- update database files to 2011.02
+
+-------------------------------------------------------------------
+Wed Feb  2 05:04:53 UTC 2011 - jengelh@medozas.de
+
+- update database files to 2011.01
+- include ranges for new IPv6-capable xt_geoip in
+  Xtables-addons 1.33
+
+-------------------------------------------------------------------
+Fri Nov  5 18:53:12 UTC 2010 - jengelh@medozas.de
+
+- update database files to 2010.11
+
+-------------------------------------------------------------------
+Sat Oct  9 13:22:04 UTC 2010 - jengelh@medozas.de
+
+- the database generation script is now packaged within
+  xtables-addons; use it
+- package missing network-order variants
+
+-------------------------------------------------------------------
+Sun Oct  3 09:48:51 UTC 2010 - jengelh@medozas.de
+
+- update database files to 2010.10
+
+-------------------------------------------------------------------
+Thu Jun  3 18:01:02 UTC 2010 - jengelh@medozas.de
+
+- update database files to 2010.06
+
+-------------------------------------------------------------------
+Mon May 17 07:29:57 UTC 2010 - jengelh@medozas.de
+
+- update database files to 2010.05
+
+-------------------------------------------------------------------
+Mon Apr 26 12:23:55 UTC 2010 - jengelh@medozas.de
+
+- update database files to 2010.04
+
+-------------------------------------------------------------------
+Sun Feb  7 18:06:11 UTC 2010 - jengelh@medozas.de
+
+- update database files to 2010.02
+
+-------------------------------------------------------------------
+Thu Jan  7 13:26:52 CET 2010 - jengelh@medozas.de
+
+- update database to version 2010.01
+- clarify license situation (bnc#568818)
+
+-------------------------------------------------------------------
+Thu Dec 31 01:59:56 CET 2009 - jengelh@medozas.de
+
+- initial OBS package
+
+-------------------------------------------------------------------             
+Sat Dec 12 2009 - jengelh@medozas.de
+
+- update to DB files from 2009-12

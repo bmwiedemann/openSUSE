@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2b3ccb0fd1716fc6086f837efa9d136d</srcmd5>
+    <version>1.0.2</version>
+    <time>1512547071</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package, required by rubygem-loofah as of https://build.opensuse.org/request/show/533894
+</comment>
+    <requestid>538416</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>372268e91b6027da30979dfa8a8f149c</srcmd5>
+    <version>1.0.3</version>
+    <time>1512734281</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>554718</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b33ffe53df1311658b29c4e396688313</srcmd5>
+    <version>1.0.4</version>
+    <time>1523448043</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>595029</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="perl-Net-Netmask" project="openSUSE:Factory">
+  <title>Parse, manipulate and lookup IP network blocks</title>
+  <description>Parse, manipulate and lookup IP network blocks.</description>
+  <devel project="devel:languages:perl" package="perl-Net-Netmask"/>
+</package>

@@ -1,0 +1,197 @@
+-------------------------------------------------------------------
+Mon Jan 14 13:51:25 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.0.0
+ see installed CHANGELOG.md
+
+  ### [v1.0.0][v1.0.0] (December 27, 2018)
+  
+  * Added suport for Ruby 2.6 docs ([#90](https://github.com/pry/pry-doc/pull/90))
+
+-------------------------------------------------------------------
+Thu Nov 22 05:27:57 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.13.5
+ see installed CHANGELOG.md
+
+  ### [v0.13.5][v0.13.5] (November 8, 2018)
+  
+  * Fixed deprecation warnings emitted by Pry v0.12.0
+    ([#87](https://github.com/pry/pry-doc/pull/87))
+  * Fixed MRI 2.0 regression ([#88](https://github.com/pry/pry-doc/pull/88))
+
+-------------------------------------------------------------------
+Tue Apr 10 17:47:24 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.13.4
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Tue Mar 13 10:00:35 UTC 2018 - coolo@suse.com
+
+- remove precompiled binaries
+
+-------------------------------------------------------------------
+Sun Mar  4 05:30:47 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.13.3
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Fri Feb 16 05:30:48 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.13.1
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Feb 15 05:33:18 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.13.0
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Feb  8 06:20:45 UTC 2018 - coolo@suse.com
+
+- updated to version 0.12.0
+ see installed CHANGELOG.md
+
+  ### [v0.12.0][v0.12.0] (January 21, 2018)
+  
+  * Added suport for Ruby 2.5 docs ([#75](https://github.com/pry/pry-doc/pull/75))
+
+-------------------------------------------------------------------
+Mon Sep 11 12:47:26 UTC 2017 - coolo@suse.com
+
+- updated to version 0.11.1
+ see installed CHANGELOG.md
+
+  ### [v0.11.1][v0.11.1] (August 8, 2017)
+  
+  * Specified minimum required Ruby version in the gemspec
+    ([#70](https://github.com/pry/pry-doc/pull/70))
+  
+  ### [v0.11.0][v0.11.0] (August 8, 2017)
+  
+  * **IMPORTANT:** Drop support for Ruby 1.9.3
+    ([#68](https://github.com/pry/pry-doc/pull/68))
+  * Stopped raising exception when Pry Doc doesn't support current Ruby version
+    (we print a warning instead) ([#65](https://github.com/pry/pry-doc/pull/65))
+
+-------------------------------------------------------------------
+Sun Jan  1 05:40:01 UTC 2017 - coolo@suse.com
+
+- updated to version 0.10.0
+ see installed CHANGELOG.md
+
+  ### [v0.10.0][v0.10.0] (December 31, 2016)
+  
+  * Added support for Ruby 2.4 docs
+    ([#46](https://github.com/pry/pry-doc/pull/46))
+
+-------------------------------------------------------------------
+Fri Jul  1 04:33:56 UTC 2016 - coolo@suse.com
+
+- updated to version 0.9.0
+ see installed CHANGELOG.md
+
+  ### master
+  
+  ### [v0.9.0][v0.9.0] (June 30, 2016)
+  
+  * **Important:** Added support for Ruby 2.3 docs
+    ([#35](https://github.com/pry/pry-doc/pull/35))
+  * Warn when Pry Doc doesn't support current Ruby version
+    ([#31](https://github.com/pry/pry-doc/pull/31))
+
+-------------------------------------------------------------------
+Mon Jun 15 04:34:10 UTC 2015 - coolo@suse.com
+
+- updated to version 0.8.0
+ see installed CHANGELOG.md
+
+  ### v0.8.0 (June 14, 2015)
+  
+  * Reverted to 0.6.0 approach for packaging Ruby core docs.
+  * Generated docs for Ruby 2.2
+  
+  ### v0.7.0 (April 1, 2014)
+  
+  * 0.7.0 tried a new approach to packaging Ruby core docs, which turned out to
+    have issues with cross-version compatibility. It's since been yanked.
+
+-------------------------------------------------------------------
+Sun Oct 12 11:56:36 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Fri Mar 21 12:54:12 UTC 2014 - coolo@suse.com
+
+- updated to version 0.6.0
+ * **Important:** dropped Ruby 1.8.7 support.
+ * Fixed (sort of [#19](https://github.com/pry/pry-doc/pull/19)) "Scanning and caching *.c files..." for show-doc Kernel.is_a?
+ * Rescanned docs for Ruby 2.0 (based on patchlevel 484)
+ * Rescanned docs for Ruby 2.1
+ * Removed the gem certificate
+
+-------------------------------------------------------------------
+Sun Jan  5 14:39:56 UTC 2014 - coolo@suse.com
+
+- updated to version 0.5.1
+ * **Important:** previous version `v0.5.0` does _not_ support Ruby 2.1.0. This
+   version does!
+ * Pry Doc has a logo now (embedded in the README)
+
+-------------------------------------------------------------------
+Tue Jul 30 16:07:29 UTC 2013 - coolo@suse.com
+
+- updated to version 0.4.6
+  * Added new docs for Ruby 1.9 and Ruby 2.0. For example, now you can execute
+    `pry-doc BigDecimal` and feel a little bit more happy.
+  * Fixed error message when trying to `show-doc` non-module singleton methods (like
+    top-level methods `include`, `private`, `public`, etc.)
+  
+  ### v0.4.5 (March 21, 2013)
+  
+  * **Important:** updated YARD gem dependency to loose `0.8` version. It is a
+    known fact that YARD `v0.8.4` [does not work with Pry Doc][yard648].
+  
+  * Removed a bunch of old and unused metafiles
+  * Added docs for Ruby 2.0 (based on patchlevel 0)
+  * Rescanned docs for Ruby 1.9 (based on patchlevel 392)
+  * Rescanned docs for Ruby 1.8 (based on patchlevel 370)
+  * Implicitly fixed `show-doc require_relative` to the new rescan of 1.9 docs
+  * Signed the gem with a cryptographic signature
+
+-------------------------------------------------------------------
+Sun Jul 29 19:44:53 UTC 2012 - coolo@suse.com
+
+- update to 0.4.4, no upstream changelog
+
+-------------------------------------------------------------------
+Fri Jun 29 13:23:53 UTC 2012 - coolo@suse.com
+
+- fix previous fix
+
+-------------------------------------------------------------------
+Fri Apr 13 08:44:12 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.4.1
+- Fix world-writable file permissions
+
+-------------------------------------------------------------------
+Thu Sep 15 17:16:25 UTC 2011 - mrueckert@suse.de
+
+- update to 0.3.0
+- dont build the doc subpackage anymore
+
+-------------------------------------------------------------------
+Wed Apr 27 10:14:30 UTC 2011 - mrueckert@suse.de
+
+- make sure we dont get world writable files
+
+-------------------------------------------------------------------
+Tue Apr 26 16:25:21 UTC 2011 - mrueckert@suse.de
+
+- initial package (v0.2.1)
+

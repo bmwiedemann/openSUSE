@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e885350b55a3ed79f7ac3181a2ab954b</srcmd5>
+    <version>0.62.0</version>
+    <time>1406005077</time>
+    <user>coolo</user>
+    <comment>This is a dependency of python-astroid, which is already in openSUSE:Factory.  The python3 version of this package, python3-logilab-common, is also already in openSUSE:Factory.</comment>
+    <requestid>241468</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e885350b55a3ed79f7ac3181a2ab954b</srcmd5>
+    <version>0.62.0</version>
+    <time>1409302911</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>337032d47cc7db33a7072f4c17a8c18b</srcmd5>
+    <version>0.63.2</version>
+    <time>1424288208</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286635</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6efc0d3487359c8ddc64cc90d0ab329f</srcmd5>
+    <version>1.0.2</version>
+    <time>1443585033</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>328671</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>af872599e0bbced0ef26de33641def90</srcmd5>
+    <version>1.4.1</version>
+    <time>1504617379</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520559</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>625f24b0f756a805096bcb238eb173f2</srcmd5>
+    <version>1.4.1</version>
+    <time>1545647962</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659480</requestid>
+  </revision>
+</revisionlist>

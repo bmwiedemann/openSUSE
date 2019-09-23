@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Tue Sep  3 07:09:34 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.20
+   see /usr/share/doc/packages/perl-Tie-Hash-DBD/Changes
+
+  0.20	- 02 Sep 2019, H.Merijn Brand
+      * Require the correct module for YAML::Syck::Dump
+
+-------------------------------------------------------------------
+Wed Aug 28 10:11:51 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- updated to 0.19
+   see /usr/share/doc/packages/perl-Tie-Hash-DBD/Changes
+
+  0.19	- 27 Aug 2019, H.Merijn Brand
+      * Don't skip the test, but do not require the feature
+      * It's 2019
+      * Support Sereal for (de-)serialization
+      * Support JSON, JSON::Syck, YAML, YAML::Syck, XML::Dumper, FreezeThaw,
+        and Bencode for (de-)serialization.
+      * Streamlined the test suite
+      * Doc updates
+      * Provide cpanfile
+
+-------------------------------------------------------------------
+Wed Jul 25 09:06:14 UTC 2018 - coolo@suse.com
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-Tie-Hash-DBD/Changes
+
+-------------------------------------------------------------------
+Sun Oct  8 08:18:33 UTC 2017 - coolo@suse.com
+
+- updated to 0.16
+   see /usr/share/doc/packages/perl-Tie-Hash-DBD/Changes
+
+-------------------------------------------------------------------
+Fri Nov 18 13:29:21 UTC 2011 - coolo@suse.com
+
+- update to 0.10
+    - NAME / DISTNAME in Makefile.PL
+  
+    - Up copyright to 2011
+    - More cross-checks for META data
+  
+    - Use Storable's nfreeze () instead of freeze ()
+    - Add transaction support in Tie::Hash::DBD
+
+-------------------------------------------------------------------
+Thu Sep  1 19:35:08 UTC 2011 - chris@computersalat.de
+
+- initial package 0.07
+  * created by cpanspec 1.78.04
+

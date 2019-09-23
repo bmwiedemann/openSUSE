@@ -1,0 +1,816 @@
+-------------------------------------------------------------------
+Thu Aug 22 13:13:21 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Stop packaging fcitx-qt4 for leap 15.2 and Tumbleweed.
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Mar 29 07:29:52 UTC 2018 - i@marguerite.su
+
+- update 4.2.9.6
+  * [ipcportal] close connection first
+  * [gtk] workaround libreoffice surrounding text issue
+  * decrease the length of clipboard limit to 256 bytes
+  * [gtk] use symbolic color name to lookup selected color 
+- change fcitx-gtk2 and fcitx-qt4 from Requires to Recommends
+- add fcitx-cmake-3.1.patch, downgrade cmake requirement to 3.1
+  again for Leap
+
+-------------------------------------------------------------------
+Tue Feb 27 09:34:05 UTC 2018 - dimstar@opensuse.org
+
+- Add pkgconfig(xkbfile) BuildRequires: in the past, this used to
+  be pulled in by libqt4, but since our own code depends on it, and
+  not Qt4, it is our own duty to request our build dependencies.
+- Package COPYING is %license, not as %doc.
+
+-------------------------------------------------------------------
+Sat Nov 11 01:06:32 UTC 2017 - i@marguerite.su
+
+- update 4.2.9.5
+  * [qt] remove quickphrase editor, moved to qt5
+  * [misc] forget to remove the add_directory for quickphrase editor
+  * fcitx-configtool.desktop: Remove MimeType entry
+  * [frontend] add a compatibility layer for ofd.portal.Fcitx
+  * [gtk] run clang-format on gtk libraries
+  * [gclinet] remove a undefined function
+  * set display for fcitx and harden dbus frontend with sender verification
+  * extend dbus module to be able to accept external dbus connection
+  * [ipcportal] fix signal sending in portal
+  * [qt] delay the recheck on availability, but does do the recheck
+  * [portal] put ipc portal in queue
+  * [qt] do the real unwatch
+  * [misc] make more optional disabled option for easier flatpak
+  * [table] make sure we don't download table data if we disable table
+- changes in 4.2.9.4
+  * [gtk, kimpanel] add relative coordinate support
+  * [kimpanel] check null before use ic
+  * [kimpanel] correctly reset relative spot state
+  * [notificationitem] Reply event method call
+- changes in 4.2.9.3
+  * [core] Make sure when RealEnd is called, instance->destroy == true
+- changes in 4.2.9.2
+  * [notificationitem] avoid unnecessary xembed tray icon fallback
+  * [classicui] give tray icon a default size
+  * [qt] fix inconsistency when handling qstring and ucs4 string
+  * [classicui] Watch for dockWindow visual property change
+  * [qt] fromUcs4 expect a nul terminated string by default, give it a size
+  * [core] Expose internal show input speed function
+  * logging should not include the build path(boo#951602)
+  * autostart desktop file should not be shown(boo#968486)
+  * [qt] replace QPointer with raw pointer in icdata
+  * [notificationitem] display layout under unity 
+  * [diagnose] Print info about dbus name owner
+  * Include emoji short codes ("emoji alpha codes") 
+  * [notificationitem] Fix a bug in plugin entry
+  * [core] Add a new hook to watch ui status changed
+  * [xim] handle reset ic
+  * [utils] Improve process name detection on *BSD
+  * [quickphrase] use some different character, original one looks bad under noto
+  * [misc] use RTLD_NODELETE for all dlopen
+  * Call sem_post() only on valid semaphore
+  * [unicode] Update Unicode 9.0 descriptions
+  * [classicui] Check XShape version before using it 
+  * [remote] exit the loop after trying 20 times
+  * Require bash in fcitx-cmake-helper.sh
+  * [xim] fix a memset
+  * [pinyin] fix missing files
+  * [dbus] fix a wrong dbus destruct order that my cause deadlock on exit
+  * [xkb] handle some corner case for any evil third party that override layout
+  * [xkb, xkbdbus] add support for our gnome-shell kimpanel dbus helper
+  * [xkb] fix circular deps between xkb and xkbdbus
+  * [gclient] try to eliminate a warning for configtool
+  * [misc] enforce c99 for compiler 
+  * [core] call backtrace() ahead to let it finish init()
+  * [misc] remove a dup define
+  * [unicode] enable prev/next key and enter to choose for unicode
+  * [gtk] fix wrong gobject add weak pointer
+  * [misc] use unsigned int instead for portability
+  * Remove deprecated api in enchant so we can also support 2.1.0.
+  * Fix bashism/use correct shebang
+- drop fcitx-autostart-desktop-no-display.patch, upstreamed
+- drop fcitx-use-basename-for-log.patch, upstreamed
+- drop boo954623.patch, upstreamed
+
+-------------------------------------------------------------------
+Fri Apr 21 12:12:12 UTC 2017 - fvogt@suse.com
+
+- Clean up .spec file:
+  * Remove KDE4 parts (install custom systray icon)
+  * Remove checks for obsolete distro versions
+
+-------------------------------------------------------------------
+Sun Nov 13 15:25:00 UTC 2016 - toddrme2178@gmail.com
+
+- Fix language code for fcitx-table-cn-wubi and
+  fcitx-table-cn-wubi-pinyin: zh-cn --> zh_CN
+
+-------------------------------------------------------------------
+Tue Aug  9 02:04:02 UTC 2016 - i@marguerite.su
+
+- fix Leap 42.2 build
+  * fcitx switched to DBus mechanism to select systray icon
+    which made it impossible to customize systray icon in
+    fcitx's themes. When the KDE default keyboard icon was
+    used, it was ugly-looking and invisible on small screens.
+    So we appended icons to openSUSE default Plasma themes
+  * in Leap 42.2 and Tumbleweed, our KDE team decided not to
+    provide any customization of the themes from kdebase4-openSUSE
+    package, so the customizations of systray icons are useless
+    in those systems.
+
+-------------------------------------------------------------------
+Fri Mar  4 14:57:37 UTC 2016 - i@marguerite.su
+
+- backport a upstream fix:
+  * boo#954623: fcitx prevents dropbox system tray
+    loading in KDE Plasma 5
+  * commit#c73761 : avoid unnecessary xembed tray
+    icon fallback, try harder to avoid touch tray
+    protocol related code when notification is
+    available or kimpanel is available.
+  * add patch boo954623.patch, delete next update
+
+-------------------------------------------------------------------
+Sun Feb 28 09:25:28 CET 2016 - tiwai@suse.de
+
+- Add NoDisplay=true in autostart desktop file so that it won't be
+  shown (boo#968486):
+  fcitx-autostart-desktop-no-display.patch
+
+-------------------------------------------------------------------
+Thu Feb 11 18:03:21 UTC 2016 - i@marguerite.su
+
+- Due to changes in kdebase4-openSUSE in Tumbleweed
+  %{_kde4_appsdir}/desktoptheme/{openSUSE,openSUSElight}
+  are no longer available. Actually those icon tweaks
+  are not needed too.
+
+-------------------------------------------------------------------
+Tue Dec 22 15:35:41 UTC 2015 - i@marguerite.su
+
+- update version 4.2.9.1
+  * support QPlatformInputContext::locale()
+  * correctly set input window position on scaled gtk3 application
+  * support unicode 8.0 in unicode module
+  * qt input context is not recreated correctly when fcitx restarts
+- drop patch: fcitx-4.2.8.5-fix-bashisms.patch, upstreamed
+
+-------------------------------------------------------------------
+Mon Nov 30 11:58:56 UTC 2015 - swyear@gmail.com
+
+- Remove # fix desktop file script in fcitx.spec:
+  Upstream fixed. 
+
+-------------------------------------------------------------------
+Thu Oct 22 16:02:07 CEST 2015 - tiwai@suse.de
+
+- Fix logging not to include the build path (boo#951602):
+  fcitx-use-basename-for-log.patch
+
+-------------------------------------------------------------------
+Thu Oct 22 14:59:29 CEST 2015 - tiwai@suse.de
+
+- Several fixes and cleanup for starting fcitx on GNOME on Leap
+  (boo#947576,boo#942816)
+  * Remove the superfluous manual dbus-launch from xim script
+  * Use xdg autostart for GNOME, KDE, LXDE and XFCE;
+    fcitx-autostart script is also modified to check $INPUT_METHOD:
+    fcitx-autostart-check-INPUT_METHOD.patch 
+  * Delay start of fcitx daemon a bit, too
+
+-------------------------------------------------------------------
+Fri Oct  2 02:50:30 UTC 2015 - i@marguerite.su
+
+- drop xinput-fcitx, which is not used by openSUSE
+- simplify xim.d-fcitx again
+  * do not define shell functions for success/failure, because
+    previous x11-tools change has been reverted, we can use
+    bash again.
+  * do not detect existence for fcitx itself, because this
+    scriptlet is installed with fcitx.
+  * drop usage of GTK3_IM_MODULE/QT4_IM_MODULE, the former
+    doesn't exist while the later is covered by QT_IM_MODULE
+
+-------------------------------------------------------------------
+Thu Oct  1 11:30:10 CEST 2015 - tiwai@suse.de
+
+- Add missing post/postun macro calls for updating desktops and
+  icons (boo#947842)
+- Remove superfluous ldconfig calls from the main package
+  post/postun
+
+-------------------------------------------------------------------
+Wed Oct  1 06:06:23 UTC 2015 - hillwood@linuxfans.org
+
+- Use lua 5.2+, fix build in openSUSE_Factory
+
+-------------------------------------------------------------------
+Mon Aug 10 14:19:20 UTC 2015 - i@marguerite.su
+
+- fix boo#941052: /etc/X11/xim is broken: input methods
+  (Fcitx, IBus and etc) do not start at all
+- fix bashism in xim.d-fcitx
+  * "return 0" can only be used in function or sourcing,
+    so define functions
+  * "type -p" command is not available in sh builtins,
+    change to "-x"
+  * other minor stuff
+
+-------------------------------------------------------------------
+Sat May 30 17:22:00 UTC 2015 - Led <ledest@gmail.com>
+
+- fix BuildRequires
+
+-------------------------------------------------------------------
+Sat May 30 05:43:52 UTC 2015 - i@marguerite.su
+
+- update version 4.2.9
+  * [qt,core]use xkbcommon for compose
+  * [qt,keyboard]use xkbcommon better by checking return value
+  * [qt, core] adjust xkb context log level
+  * [qt,core] adjust init order to ensure set log level works
+  * [unicode] fix decimal unicode search 
+  * [qt] fix compose when fcitx is not running
+  * [gtk] use xkbcommon also for gtk im context
+  * [gtk] reset xkb compose state when context reset
+  * [gtk, gclient] make connection and xkb context/table of 
+    fcitxclient shared
+  * [gclient] fix some gtk-doc comment 
+  * [qt] disable qt lib by option
+  * [core] fix invalid global imname
+- clean specfile, drop fedora support
+
+-------------------------------------------------------------------
+Thu Apr  2 14:20:58 UTC 2015 - i@marguerite.su
+
+- update version 4.2.8.6
+  * add kf5 kcm support
+
+-------------------------------------------------------------------
+Thu Feb 26 12:22:34 UTC 2015 - hillwood@linuxfans.org
+
+- update version of opencc to 1.0.2 
+
+-------------------------------------------------------------------
+Mon Nov 17 00:58:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in env_setup.sh script
+- add patches:
+  * fcitx-4.2.8.5-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Sun Nov  9 19:42:33 UTC 2014 - i@marguerite.su
+
+- fix Harlequin menu color, it should be greenish
+
+-------------------------------------------------------------------
+Sun Nov  9 07:00:33 UTC 2014 - i@marguerite.su
+
+- update themes
+  * reworked Dartmouth & New Air
+  * added Harlequin
+- droped input.svgz
+  * new input-Dartmouth/Harlequin.svgz are in openSUSE-themes.tar.gz
+    refers to Dark/Light versions of openSUSE
+
+-------------------------------------------------------------------
+Sat Sep 20 09:32:24 UTC 2014 - i@marguerite.su
+
+- update version 4.2.8.5
+  * bugfix release
+
+-------------------------------------------------------------------
+Sat Aug  9 05:33:21 UTC 2014 - i@marguerite.su
+
+- add baselibs.conf to SOURCE99
+
+-------------------------------------------------------------------
+Fri Aug  8 14:55:32 UTC 2014 - fcrozat@suse.com
+
+- Fix default category for fcitx (ensure it doesn't go to Other on
+  GNOME Classic)
+
+-------------------------------------------------------------------
+Tue Aug  5 16:22:59 UTC 2014 - schwab@suse.de
+
+- Build with RPM_OPT_FLAGS
+- Don't strip binaries
+
+-------------------------------------------------------------------
+Sat Jun  7 16:41:30 UTC 2014 - i@marguerite.su
+
+- update version 4.2.8.4
+  * Fix github issue fcitx/fcitx#134,137,153,154
+  * Fix google code issue 728
+  * Implement close event when close input method
+  * Restart from menu should be faster (but who cares :P). 
+- remove patch: fcitx-context-variable-disable-punc-on-the-fly.patch
+  * upstreamed
+- remove patch: fcitx-password-visible-on-clutter-entry.patch
+  * upstreamed
+- tweak New_Air theme's color to increase contrast in darker
+  plasma themes.
+
+
+-------------------------------------------------------------------
+Wed May  7 05:24:03 UTC 2014 - dliang@suse.com
+
+- Add fcitx-password-visible-on-clutter-entry.patch (bnc#875890)
+  Update the patch, back port from upstream
+
+-------------------------------------------------------------------
+Thu May  1 14:14:02 UTC 2014 - i@marguerite.su
+
+- Fix bnc#851983: "fcitx tray icon is incompatible with other 
+  systray icons" by refreshing input.svgz
+- Fix environment variables: QT_IM_MODULE supports Qt4 & Qt5 now
+  we need a new QT4_IM_MODULE variable set to prepare for the
+  worst
+- new skin: New Air. Idea from KDE Air theme.
+
+-------------------------------------------------------------------
+Thu Apr 17 16:10:11 UTC 2014 - i@marguerite.su
+
+- add patch: fcitx-context-variable-disable-punc-on-the-fly.patch
+  * To support the recently released Sogou Pinyin, we need this
+    patch to allow Sogou to disable punc on the fly.
+
+-------------------------------------------------------------------
+Fri Feb 14 13:07:53 UTC 2014 - fcrozat@suse.com
+
+- Ensure COPYING is installed.
+
+-------------------------------------------------------------------
+Fri Feb 14 12:10:13 CET 2014 - tiwai@suse.de
+
+- Fix *-32bit post and postun calls for gtk-query-immodules-2 on
+  openSUSE 13.1 and later (bnc#845860)
+
+-------------------------------------------------------------------
+Sat Dec  7 04:23:04 UTC 2013 - swyear@gmail.com
+
+- fix fcitx can't input in gnome-terminal 
+
+-------------------------------------------------------------------
+Sat Nov  2 07:31:38 UTC 2013 - i@marguerite.su
+
+- fix bnc#848694: fcitx still use the old gtk_immodule_post/postun
+
+-------------------------------------------------------------------
+Sat Sep 28 09:02:48 UTC 2013 - i@marguerite.su
+
+- update version 4.2.8.3
+  * fix for non-utf8 env
+  * fix for classic UI cursor position
+
+-------------------------------------------------------------------
+Thu Sep 26 05:14:42 UTC 2013 - i@marguerite.su
+
+- update version 4.2.8.2
+  * a bug fix release with some small new features
+  * implement preedit blacklist, and gvim preedit is now blacklisted by
+  default (thanks to lilydjwg)
+  * add more unicode support to unicode addon (thanks to jimmyxu)
+  * more fix on xmodmap loading, now we only load it if we did a layout reset.
+  * fix some table punctuation related bug
+  * install a dbus activatation file by default.
+  * install more library based on prefix.
+  * fix table configuration parsing
+  * fix trigger on release 
+
+-------------------------------------------------------------------
+Sat Jul 13 06:22:19 UTC 2013 - i@marguerite.su
+
+- update version 4.2.8.1
+  * udpate default skin
+  * Merge pull request #119 for fixing Libkvm detection with cmake 2.8.11
+  * add support for using @ to escape icon name
+  * remove an icon to support icon fallback in glib
+  * Check window size to avoid BadWindow caused by invalid skin
+  * Fix Issue #118
+  * Fix some memory leak in Issue #117
+  * Fix table punctuation ignore list
+  * Fix Pinyin Remind mode
+  * Fix behavior of trigger key with modifier
+- fix systray icon in Dartmouth
+
+-------------------------------------------------------------------
+Sun Jun 30 23:12:53 UTC 2013 - i@marguerite.su
+
+- update version 4.2.8
+  * New Default Theme
+  * Add modifier only key support to trigger keys
+  * New DBus based Tray Icon support
+  * Desktop Notification Support
+  * First time start will only choose language in current locale
+  * Use first keyboard input method as default keyboard layout for most case
+  * fcitx-qt supports a key grab widget forked from KDE, and Qt <-> Fcitx Key
+translation.
+  * Multi file quickphrase Support.
+  * Ship with some default quick phrase
+  * quickphrase editor support
+- drop all old patches: upstream absorbed.
+- add new patch: fcitx-4.2.8-freedesktop-notify.c-DBUS_TIMEOUT_USE_DEFAULT.patch
+  * DBUS_TIMEOUT_USE_DEFAULT is undefined in src/module/freedesktop-notify/freedesktop-notify.c
+- add new patch: fcitx-4.2.8-arch-dependent-file-in-usr-share.patch
+  * don't install fcitx-po-parser,fcitx-scanner,comp-spell-dict into
+    /usr/share/cmake/fcitx
+
+-------------------------------------------------------------------
+Fri Apr 26 23:57:32 UTC 2013 - i@marguerite.su
+
+- in baselibs.conf, obsoletes "libfcitx-<targettype> < <version>"
+  instead of "=".
+
+-------------------------------------------------------------------
+Thu Mar 28 18:28:49 UTC 2013 - i@marguerite.su
+
+- add more locales into xim.d
+- some Taiwan users reported that after installation, 
+  they can't have input panel because we don't start it
+  and export environments by default.
+
+-------------------------------------------------------------------
+Fri Feb  8 17:40:06 UTC 2013 - i@marguerite.su
+
+- disable DENABLE_DEBUG to avoid polluting .xsession-errors. (bnc#802866)
+
+-------------------------------------------------------------------
+Tue Feb  5 14:11:50 CET 2013 - mls@suse.de
+
+- fix typo in specfile
+
+-------------------------------------------------------------------
+Mon Feb  4 08:45:33 UTC 2013 - i@marguerite.su
+
+- remove BuildRequires: intltool, fcitx no longer use intltool 
+  to parse translations.
+- query immodules for gtk*-32bit subpackages.
+- explicitly add enchant, presage, opencc requirements, fcitx use
+  dlopen to detect them, ld can't fulfill its needs.
+
+-------------------------------------------------------------------
+Wed Jan 30 18:24:37 UTC 2013 - i@marguerite.su
+
+- fix bnc#801318: xkeyboard-config symlink breaks fcitx in detecting xkb rule files.
+  * bnc801318-fcitx-4.2.7-xkb-rule-symlink-detection.patch
+  * remove next release
+- fix bnc#801319: invalid /etc/xdg/autostart/fcitx-autostart.desktop breaks ibus
+  * leave fcitx-autostart.desktop only for fedora.
+
+-------------------------------------------------------------------
+Wed Jan 30 08:54:58 UTC 2013 - coolo@suse.com
+
+- fix the permissions of the .directory file in the openSUSE themeing
+
+-------------------------------------------------------------------
+Sat Jan 26 05:03:20 UTC 2013 - i@marguerite.su
+
+- update to 4.2.7
+  * new feature for user:
+    + qt im module support per window input context.
+    + quickphrase add new custom ui editor.
+    + all pinyin now support stroke.
+    + add clipboard input support (Ctrl + ; to use it)
+    + fcitx-diagnose script for diagnose the problem
+    + new dark skin which can also work for non-composite window manager (though
+      looks not the same)
+    + Helping xmodmap user to correct loading ~/.Xmodmap by default
+    + Bind one input method with specific key.
+    + Translation update (German, and some spanish).
+    + Add "up" and "down" to paging key by default
+    + fcitx-config now will comment out the value which is same as the default
+      value upon save, so default value can be controlled by upstream fcitx change.
+    + reload only one addon configuration
+
+  * new feature for developer:
+    + Big build system improvement
+    + remove intltool dependency
+    + auto-codegen tool for cross module function.
+    + add libfcitx-qt, containing dbus stuff and provides custom ui plugin
+      architecture.
+    + candidate window can be overriden to use horizontal / vertical by input
+      method. (kimpanel need KDE 4.10 to use this feature)
+    + paging can be override by custom function
+
+  * bug fix:
+    + fix for xim restart.
+    + add more locale to xim by default.
+    + compatible with lua 5.2
+    + some other misc bugfix
+- added patches
+  * fcitx-4.2.7-compat-12.2.patch
+    + fix 12.2 and below builds, remove next release
+  * fcitx-4.2.7-compat-qt474.patch
+    + fix qt 4.7 builds with 12.1 and below
+    + remove next release
+  * fcitx-4.2.7-compat-gcc46.patch
+    + fix gcc 4.6 builds with 12.1 and below
+    + remove next release 
+
+-------------------------------------------------------------------
+Thu Oct 11 14:03:53 UTC 2012 - i@marguerite.su
+
+-  update to 4.2.6.1
+   * a bugfix release, fix including: 
+     + FreeBSD xlib path detection 
+     + A few crash related bug 
+     + reduce remove call that save profile 
+     + Workaround a bug for qt older than 4.8.0 
+        (http://code.google.com/p/fcitx/issues/detail?id=630) 
+     + fcitx-config-gtk3 will not be called under KDE. 
+     + fcitx-table-emoji not usable under 4.2.6 
+     + IM switchkey will not be captured if there is only one im or no im at all. 
+     + A bunch of fix for gtk im module. 
+
+-------------------------------------------------------------------
+Sun Sep 23 13:32:25 UTC 2012 - i@marguerite.su
+
+- fix openSUSE 12.1 and below build
+  * 4.2.6 uses a Qt 4.8+ only function (QDBusConnection) so it fails on 12.1 and below.
+  * weng fix it.
+
+-------------------------------------------------------------------
+Sat Sep 15 18:04:19 UTC 2012 - i@marguerite.su
+
+- update to 4.2.6
+  * Add a private dbus service for Fcitx IM Module, simplify the setup on some light weight Desktop
+  * Improve “Select Character From Phrase” and Pinyin Symbol (typing special symbols in pinyin input 
+    methods) as well as move them to a new Pinyin Enhance module, so that these features can now be 
+    used in other pinyin input methods as well (previous just the builtin one).
+  * Move spell hint to a new module. Add a new spell hint backend using a builtin dictionary. Load 
+    enchant and presage at runtime using dlopen() so that they are not link dependencies anymore.
+  * Spell hint for pinyin/AutoEng/QuickPhrase
+  * Bug fixes for Gtk IM Module
+  * Add more compile options so it is possible to compile a more simplified Fcitx if necessary
+  * Add long description (show as tooltip) and hidden options in configure files for a more user 
+    friendly configure interface
+  * Add global font setting for classical UI
+  * Fix xkb support on BSD
+  * Other bug fixes
+
+-------------------------------------------------------------------
+Fri Sep  7 10:27:34 UTC 2012 - i@marguerite.su
+
+- fix libfcitx Provides, which can't drop old libraries.
+- fix 32bit baselib name.
+
+-------------------------------------------------------------------
+Sun Aug 26 01:15:41 UTC 2012 - i@marguerite.su
+
+- add openSUSE-branding theme for 12.2
+
+-------------------------------------------------------------------
+Thu Aug 16 22:34:07 UTC 2012 - i@marguerite.su
+
+- add Dependency: libpresage-devel, which will provide word prediction
+  for keyboard users.
+
+-------------------------------------------------------------------
+Sun Jul 22 00:13:01 UTC 2012 - i@marguerite.su
+
+- add Provides to libfcitx as AJ suggested.
+
+-------------------------------------------------------------------
+Sat Jul 21 18:23:11 UTC 2012 - i@marguerite.su
+
+- update to 4.2.5
+  *For user:
+   1. Default 3 skin change to support a new feature that respect the DPI on the screen.
+   2. Display current input method after switch the input method, and the hint window will disappear after a while.
+   3. fcitx-keyboard wordhint now is a per input context option, not a global one.
+   4. fcitx-xkb support loading custom xmodmap script when needed.
+   5. fcitx-xkb support assign a default layout when there is no input method.
+   6. fcitx-pinyin support fix like “jv -> ju”
+   7. fcitx-pinyin add xiaohe support.
+   8. fcitx-pinyin now can use “v” to trigger quick-phrase
+   9. change zh_HK punctutation map for “$” from ￥ to ＄.
+   10. support typing unicode character via “ctrl+shift+alt+u”
+   11. shift for default “active-inactive” switch, and can be only used after switch from “active to inactive” by default.
+   12. safer for handling signal and exit.
+   13. restart is displayed on the UI (both classic and kimpanel)
+   14. log message now includes pid.
+  *For API:
+   1. add timeout support.
+   2. add per-inputcontext data support
+   3. move all keysym to fcitx-utils.
+  *For module:
+   1. Quickphrase can be triggered via cross module call.
+
+-------------------------------------------------------------------
+Sat Jun 16 14:32:39 UTC 2012 - i@marguerite.su
+
+- fix memory overflow, thanks to reporter dieter.
+  * http://lists.opensuse.org/opensuse-factory/2012-06/msg00359.html
+- support fedora builds.
+- further split packages by input engines and tables, no longer a big mess. 
+
+-------------------------------------------------------------------
+Tue Jun 12 07:22:31 UTC 2012 - i@marguerite.su
+
+- update to 4.2.4.1
+  * urgent fix for compose key.
+- use new xim.d-fcitx.
+
+-------------------------------------------------------------------
+Sun Jun  3 13:05:53 UTC 2012 - i@marguerite.su
+
+- update to 4.2.4
+  * fix some xim problem
+  * add fcitx-gclient for glib and gir binding, can be used to control fcitx or implement fcitx client.
+  * merge fcitx-keyboard into fcitx
+  * bind specific keyboard layout with inputmethod 
+    (you need up to date fcitx-configtool，gtk3 ver or kcm-fcitx to configure this feature)
+  * adjust some default hotkey setting.
+- drop openSUSE 11.4 lua51 patch. upstream fixed.
+- drop downgrade gio version patch. upstream fixed.
+- add SUSE_ASNEEDED=0 macro to avoid a gobject-introspection bug as vuntz suggested. thanks!
+
+-------------------------------------------------------------------
+Sun Jun  3 04:46:37 UTC 2012 - i@marguerite.su
+
+- fix sles builds.
+  * add version tags. 
+  * changed source compression.
+  * add a patch to downgrade gio's version.
+  * use xim instead of qt im module.
+
+-------------------------------------------------------------------
+Sat May 12 12:49:11 UTC 2012 - i@marguerite.su
+
+- bring fcitx in as default IM in DVD.
+- add Provides(en;ko;zh_CN;zh_SG).
+
+-------------------------------------------------------------------
+Mon May  7 02:55:27 UTC 2012 - i@marguerite.su
+
+- enable lua by default
+
+-------------------------------------------------------------------
+Sun May  6 22:57:27 UTC 2012 - i@marguerite.su
+
+- update to 4.2.3
+  * Lua extension support, same interface with Googlepinyin.
+  * super can be used in hotkey again
+  * fixes Trad-Simp native engine in chttrans.
+  * Update fcitx-pinyin algorithm
+  * txt2mb and mb2txt support new English format
+  * Fix a crash when enable share status.
+  * Add surrounding text support.
+  * Commit input when unfocus.
+  * Classic UI improvement, including trayicon, menu.
+
+-------------------------------------------------------------------
+Tue Apr 10 14:14:34 UTC 2012 - i@marguerite.su
+
+- added baselibs.conf to build 32bit im modules and libraries.
+
+-------------------------------------------------------------------
+Sun Apr  8 02:00:07 UTC 2012 - i@marguerite.su
+
+- update to 4.2.2
+  * Can use text as classic UI icon. 
+  * Add more key can be used as hotkey. 
+  * Fixes 536(trayicon),538(enter as submit). 
+  * Make tray icon has a maximum size, so it will looks good under other tray.
+
+-------------------------------------------------------------------
+Fri Mar 09 13:11:40 UTC+8 2012 - hillwood@linuxfans.org
+
+- update to 4.2.1
+  * Changes related to API:
+    Cleanup Unused macro and API
+    Some new FcitxInputState series API for get the origin key event 
+    for frontend.
+    Portable with custom path, hide two path related API that may 
+    break portable.
+    Make FcitxHotkeyGetKey process latin letter and strip shift 
+    modifier for them.
+    Ability to bind menu with a status.
+    Ability to update client preedit with formatted string.
+  * Change related to user:
+    Update Taiwan punctuation
+    Quick Phrase can use grave as trigger key.
+    ctrl rshift can switch input method in reverse order.
+    2nd 3rd candidate choosing key will not conflict with same 
+    switch key.
+    AutoEng can accept upper case english key which is not the 
+    initial key.
+    Add Zenkaku_Hankaku and Hangul as default trigger key when 
+    locale is ja and ko.
+    Add Symbolic icon for gnome-shell’s kimpanel.
+    
+-------------------------------------------------------------------
+Wed Feb 29 21:04:39 UTC 2012 - i@marguerite.su
+
+- update source from git.
+- to keep source in the same state as modules submited,
+  as upstream suggested.
+
+-------------------------------------------------------------------
+Thu Feb  2 16:20:03 UTC 2012 - i@marguerite.su
+
+- merge changelogs.
+
+-------------------------------------------------------------------
+Wed Feb  1 20:54:34 UTC 2012 - i@marguerite.su
+
+- spec clean to make it pure openSUSE to submit to M17N.
+- set _service to localonly.
+- server deleted openSUSE unused sources.
+
+-------------------------------------------------------------------
+Mon Jan 30 02:41:20 UTC 2012 - i@marguerite.su
+
+- Upstream fix issue 511, now builds on 11.4.
+- Change pyphrase.mb back upon Upstream request.
+
+-------------------------------------------------------------------
+Tue Jan 24 06:35:50 UTC 2012 - i@marguerite.su
+
+- Fix local fcitx.googlecode.com resolv error because of #GFW.
+- Change pyphrase.mb to Sougou's Dict.
+
+-------------------------------------------------------------------
+Mon Jan 23 12:05:42 UTC 2012 - i@marguerite.su
+
+- Update source to git, enable opencc for Traditional & Simplified Chinese Switch.
+
+-------------------------------------------------------------------
+Tue Jan 17 14:31:42 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  GPL is not a recognised license and is not in SPDX format. Going on an
+  analysis of the source files GPL-2.0+ seems to be the best choice"
+
+------------------------------------------------------------------
+Fri Oct  7 01:01:22 UTC 2011 - stecue@gmail.com
+
+- csslayer provided a better way to fix the dbus bug.
+
+-------------------------------------------------------------------
+Tue Oct  5 03:36:42 UTC 2011  - hillwood@linuxfans.org
+
+- Fixed a bug for type words in comment box of facebook while using 
+  firefox visit facebook. Thanks to CSSlayer.
+
+-------------------------------------------------------------------
+Wed Oct  3 05:08:23 UTC 2011  - hillwood@linuxfans.org
+
+- Fixed a bug with dbus.
+
+------------------------------------------------------------------
+Sun Oct  2 19:12:29 UTC 2011 - stecue@gmail.com
+
+- upstream version 4.1.2
+  * Add ABI check.
+  * Fix table order bugs.
+  * other bug fixes.
+
+------------------------------------------------------------------
+Tue Sep 13 04:01:59 UTC 2011 - stecue@gmail.com
+
+- im-modules packaged. Thanks to hillwood (hillwood@linuxfans.org)!
+- xim is still the default method.
+
+-------------------------------------------------------------------
+Fri Sep  9 00:00:00 UTC 2011 - hillwood@linuxfans.org
+
+- update to 4.1.1
+
+-------------------------------------------------------------------
+Wed Sep  7 19:49:14 UTC 2011 - stecue@gmail.com
+
+- upstream version 4.1.0
+  * support im-module (gtk2, gtk3 and qt), not packaged yet
+
+-------------------------------------------------------------------
+Tue Jun 14 00:56:36 UTC 2011 - swyear@gmail.com
+
+- Add start up script, README and template
+
+-------------------------------------------------------------------
+Thu May 17 00:00:00 UTC 2011 - hillwood@linuxfans.org
+
+- add gtk-immodule-xim require
+
+-------------------------------------------------------------------
+Sat Sep 18 00:00:00 UTC 2010 - wengxt@gmail.com
+
+- Make it works with newest
+
+-------------------------------------------------------------------
+Fri Jun 11 00:00:00 UTC 2004 - xyb76@sina.com
+
+- Add data/tables.conf
+
+-------------------------------------------------------------------
+Mon Feb  2 00:00:00 UTC 2004 - xyb76@sina.com
+
+- Fix spec bug(patch by hamigua).
+
+-------------------------------------------------------------------
+Thu Jan 15 00:00:00 UTC 2004 - xyb76@sina.com
+
+- skeleton RPM

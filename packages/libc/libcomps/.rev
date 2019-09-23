@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>532217157e8b0154a911a8439f52a1d0</srcmd5>
+    <version>0.1.8</version>
+    <time>1503925823</time>
+    <user>dimstar_suse</user>
+    <comment>Initial import of libcomps into Factory</comment>
+    <requestid>517039</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>63f6a97d7c6f1c130db76c6a6b247432</srcmd5>
+    <version>0.1.8</version>
+    <time>1505920049</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526803</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>442e47e22412ba27715e190a7bec5f6a</srcmd5>
+    <version>0.1.9</version>
+    <time>1550668200</time>
+    <user>maxlin_factory</user>
+    <comment>- Upgrade to 0.1.9
+  + Fix memory leaks
+  + Remove unused code
+- Backport fix for logic error
+  * Patch: 0001-Fix-Missing-braces.patch
+- Backport fix for CVE-2019-3817 (boo#1122841)
+  * Patch: 0002-Fix-UAF-in-comps_objmrtree_unite-function.patch
+- Drop Python 2 subpackage
+- Adjust changes entries to use full author identities</comment>
+    <requestid>672448</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ba72a101ba919499954f3acdef897288</srcmd5>
+    <version>0.1.9</version>
+    <time>1551276545</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679582</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1c99c37a8d052852a61aa382d7892bd7</srcmd5>
+    <version>0.1.11</version>
+    <time>1554115188</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 0.1.11
+  + Fix missing braces
+  + Fix UAF in comps_objmrtree_unite function
+- Drop merged patches
+  * 0001-Fix-Missing-braces.patch
+  * 0002-Fix-UAF-in-comps_objmrtree_unite-function.patch
+  * libcomps-0.1.7-Add-zlib-as-an-explicit-dependency.patch
+</comment>
+    <requestid>690191</requestid>
+  </revision>
+</revisionlist>

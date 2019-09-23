@@ -1,0 +1,592 @@
+-------------------------------------------------------------------
+Fri Dec 14 13:25:50 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Small packaging cleanup
+
+-------------------------------------------------------------------
+Sat Oct 27 17:09:08 UTC 2018 - meissner@suse.com
+
+- updated to 1.1.16 release
+  - lots of new USB ids
+  - some bugfixes
+  - adjust udev rules for new kernel versions (bsc#1110868)
+
+-------------------------------------------------------------------
+Sat Mar 24 17:35:38 UTC 2018 - meissner@suse.com
+
+- updated to 1.1.15 release
+  - lots of new USB ids
+  - copy and move object implemented
+  - 64bit file bugfixes
+  - bugfixes
+
+-------------------------------------------------------------------
+Mon Oct  2 08:06:48 UTC 2017 - meissner@suse.com
+
+- updated to 1.1.14 release
+  - lots of new USB ids
+  - 64bit file bugfixes
+  - bugfixes
+
+-------------------------------------------------------------------
+Sun Apr  2 19:45:15 UTC 2017 - meissner@suse.com
+
+- updated to 1.1.13 release (bsc#1033830)
+  - lots of new USB id updates
+  - getpartialobject64 fixed for non x86_64
+  - some too strict bugflags removed for Galaxy S and Motorola G2
+
+-------------------------------------------------------------------
+Fri Aug 12 14:26:14 UTC 2016 - meissner@suse.com
+
+- updated to 1.1.12 release
+  - lots of new USB id updates
+  - async event function
+
+-------------------------------------------------------------------
+Wed Feb 10 21:06:21 UTC 2016 - meissner@suse.com
+
+- updated to 1.1.11 release
+  - lots of new USB id updates
+  - small usb 3 bugfix
+- libmtp.keyring: temporary add my older key, as I mistakenly
+  used that to sign the tarball
+
+-------------------------------------------------------------------
+Mon Oct 26 13:45:30 UTC 2015 - dmitry_r@opensuse.org
+
+- Split udev rules to separate package
+
+-------------------------------------------------------------------
+Sun Oct  4 15:14:12 UTC 2015 - meissner@suse.com
+
+- updated to 1.1.10 release
+  - lots of new ids
+  - various bugfixes
+
+-------------------------------------------------------------------
+Sun Jun 21 04:34:03 UTC 2015 - crrodriguez@opensuse.org
+
+- remove Requires on libusb-devel from libmtp-devel, the correct 
+  dependency is libusb1 already included by the pkgconfig 
+  generator.
+
+-------------------------------------------------------------------
+Thu Apr 30 09:18:47 UTC 2015 - olaf@aepfle.de
+
+- Package whole udev related dirs to avoid build failures
+
+-------------------------------------------------------------------
+Mon Apr 13 19:32:11 UTC 2015 - meissner@suse.com
+
+- updated to 1.1.9 release
+  - lots and lots of new ids
+  - bugfixes
+- mtp_DroidTurbo.patch,include-config-h.patch: upstream
+
+-------------------------------------------------------------------
+Sat Mar 21 14:28:40 UTC 2015 - meissner@suse.com
+
+- update to 1.1.8 
+  - several new ids.
+
+-------------------------------------------------------------------
+Sat Jan 31 20:26:11 UTC 2015 - rjschwei@suse.com
+
+- Add device data for Droid Turbo
+  add: mtp_DroidTurbo.patch
+
+-------------------------------------------------------------------
+Thu Sep 25 08:02:46 UTC 2014 - schwab@suse.de
+
+- include-config-h.patch: always include "config.h" first
+
+-------------------------------------------------------------------
+Tue Aug 26 06:31:36 UTC 2014 - meissner@suse.com
+
+- updated to 1.1.7
+  - Soname libmtp.so.9.2.0 - binary compatible, new interfaces
+    have been added.
+  - Compilation fixes for older GCC and non-GCC compilers.
+  - Finalize >4GB file transfer changes so this works now.
+  - A new API to check for device capabilities has been added.
+  - Sync in latest upstream ptp2 changes.
+  - Support for USB 3.0! (A patch adding async buffering was
+    reverted after deemed instable by Debian.)
+  - Some migration toward the new API in the examples.
+  - Use parent storage if available as default storage media.
+  - Force reset on close for Android devices.
+  - Handle integrated USB hubs in mtp-probe.
+  - Devices, devices, devices...
+- mtpz-use-LIBMTP_ERROR-instead-of-LIBMTP_INFO.patch: is upstream
+- music-players.h: use up to date 1.1.7 version again.
+
+-------------------------------------------------------------------
+Tue May 27 01:39:24 UTC 2014 - crrodriguez@opensuse.org
+
+- Tell doxygen to stop producing files with timestamps. 
+- define udev macros only if not already there.
+
+-------------------------------------------------------------------
+Mon Dec  9 12:45:01 UTC 2013 - meissner@suse.com
+
+- music-players.h: Updated to the device database of the current GIT level
+  to support more MTP devices (bnc#854328)
+
+-------------------------------------------------------------------
+Fri Sep 27 19:54:22 UTC 2013 - rmilasan@suse.com
+
+- Use LIBMTP_ERROR instead of LIBMTP_INFO function in mtpz_loaddata
+  (mtpz.c) to dont get junk in the udev rule when generating the rule.
+  add: mtpz-use-LIBMTP_ERROR-instead-of-LIBMTP_INFO.patch
+
+-------------------------------------------------------------------
+Fri Mar 15 09:28:44 UTC 2013 - meissner@suse.com
+
+- updated to 1.1.6
+
+  - Soname libmtp.so.9.1.0 - binary compatible, new interfaces
+    have been added.
+  - Devices, devices, devices... I think I had a hundred (no kidding)
+    reports for the Nexus 4. It seems hackers just love this device
+    and cannot wait for me to spin a new libmtp.
+  - More careful autoprobing code for Linux, running around in
+    sysfs to try to avoid opening non-MTP devices. The libusb devs
+    do not uniformly like this idea but what shall I do? People
+    still want their devices to autodetect. Any hints welcome,
+    any patches will be reviewed.
+  - Interface extenstions from Philip Langdale to support the
+    Android in-place read/write extensions. This will be used by
+    GVFS for editing files etc, it is actually very useful when
+    treating the MTP device as a "real" filesystem. It only works
+    on Android devices with Google's MTP stack, but hey, that is
+    a fair share of the MTP devices used today.
+  - Several fixes and memory leaks fixed by Lei Zhang courtesy if
+    the Chromebook project, thanks Google!
+  - Windows Phone 8 should work out of the box.
+- remove upstream libmtp_motoRazr.patch 
+
+-------------------------------------------------------------------
+Fri Feb  8 21:28:57 UTC 2013 - rschweikert@suse.com
+
+- add support for Motorola Droid Razr M (XT 907)
+
+-------------------------------------------------------------------
+Sun Nov  4 18:57:19 UTC 2012 - crrodriguez@opensuse.org
+
+- mtp-probe no longer working in factory, wrong udev dir. 
+
+-------------------------------------------------------------------
+Sat Sep 22 11:34:52 UTC 2012 - toddrme2178@gmail.com
+
+- updated to 1.1.5
+  - Soname libmtp.so.9.0.5 - binary compatible
+  - Stop forcing altinterface 0! That bug has been around like
+    forever and libgphoto2 never did this. It screws up some
+    Samsung devices and is the prime reason for releasing this
+    update so soon after 1.1.4 as I know a lot of people out there
+    have Samsung devices!
+  - Integrated Sajid Anwars hard long-term work on MTPZ. There are
+    no secret keys or certificates inside libmtp, if you need these
+    to talk to your MTPZ device (Zune models, Windows Phones) you
+    need to get a file of secrets from some other place, preferably
+    Microsoft.
+  - Expose getthumbnail method and the Add Storage events as needed
+    for a GNOME VFS project by Philip Langdale.
+  - Rearrange and try to understand some SONY device modes again
+    and again.
+  - A udev script fix from Alessio Treglia to avoid poking around
+    on Canon EOS 3D.
+  - Devices, devices, devices...
+- Add libgrypt buildrequires for MTPZ support
+
+-------------------------------------------------------------------
+Sun Aug 19 09:29:56 UTC 2012 - meissner@suse.com
+
+- updated to 1.1.4
+  - various bugfixes, especially in Samsung *
+  - lots of new ids
+
+-------------------------------------------------------------------
+Tue Apr  3 11:59:59 CEST 2012 - meissner@suse.de
+
+- updated to 1.1.3
+  - Soname libmtp.so.9.0.3 - binary compatible.
+  - Probably nailed the bugs in the Samsung Galaxy Tab S2 family
+    of devices. Ignacio Martinez helped us fixing this!
+  - Build fixes by Alessio Treglia and others.
+  - A horde of new devices in the database.
+
+-------------------------------------------------------------------
+Tue Jan 31 12:27:07 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+
+-------------------------------------------------------------------
+Fri Jan 13 11:35:55 CET 2012 - meissner@suse.de
+
+- updated to 1.1.2
+  * device updates
+  * ported to use libusb 1.0
+  * Autodetect "sony.net" devices
+
+-------------------------------------------------------------------
+Thu Dec 29 16:30:06 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections (authors list, already in package
+  as a file); put %description after %package
+- Parallel build with %_smp_mflags
+
+-------------------------------------------------------------------
+Thu Dec 29 11:46:54 UTC 2011 - adrian@suse.de
+
+- add support for Galaxy Nexus
+
+-------------------------------------------------------------------
+Wed Dec 21 21:30:49 UTC 2011 - adrian@suse.de
+
+- updated to 1.1.1
+  * device updates
+
+-------------------------------------------------------------------
+Mon Sep 19 10:01:27 CEST 2011 - meissner@suse.de
+
+- updated to 1.1.0
+  * lots of new devices
+  * IAD (0xfe class) device detection
+- drop HAL FDI snippets
+- libmtp8 -> libmtp9
+
+-------------------------------------------------------------------
+Fri Jun 10 09:23:53 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typos in descriptions of libmtp.spec
+
+-------------------------------------------------------------------
+Tue Feb 15 11:02:08 CET 2011 - meissner@suse.de
+
+- updated to 1.0.6
+  * even less aggressive mtp probing (not detecting nearly all
+    devices as MTP) bnc#668986
+  * some more USB ids
+
+-------------------------------------------------------------------
+Tue Jan 25 16:08:21 CET 2011 - meissner@suse.de
+
+- do not greedily match all PTP cameras in the udev rules.
+
+-------------------------------------------------------------------
+Mon Jan 10 10:28:34 CET 2011 - meissner@suse.de
+
+- updated to 1.0.4 incremental release
+  * new ids
+  * bugfixes
+  * new udev rules for new udev
+
+-------------------------------------------------------------------
+Sun May 23 11:34:39 UTC 2010 - meissner@novell.com
+
+- updated to 1.0.3 incremental release
+   * some new ids
+   * some smaller bugfixes
+- buildrequre pkg-config
+
+-------------------------------------------------------------------
+Wed Apr 28 13:28:02 CEST 2010 - meissner@suse.de
+
+- updated to intermediate snapshot
+   * Samsung fixes and new ids
+   * various small bugfixes
+
+-------------------------------------------------------------------
+Mon Feb  1 14:19:31 CET 2010 - meissner@suse.de
+
+- updated to 1.0.2 bugfix release
+   * new ids: Samsung, Archos, Blackberry, ...
+   * bugfixes
+
+-------------------------------------------------------------------
+Wed Sep 16 11:17:26 CEST 2009 - meissner@suse.de
+
+- updated to 1.0.1 bugfix release
+   * last patches included
+   * some more bug flags for devices
+
+-------------------------------------------------------------------
+Sat Sep  5 21:01:26 CEST 2009 - meissner@suse.de
+
+- bugfixes to "fast metadata loading" method
+
+-------------------------------------------------------------------
+Tue Aug  4 09:39:55 CEST 2009 - meissner@suse.de
+
+- upgraded to 1.0.0 release
+  * More USB ids
+  * libmtp.so.8.3.0 library interface
+  * New functions:
+    LIBMTP_Get_File_To_Handler
+    LIBMTP_Send_File_From_Handler
+    LIBMTP_Get_Track_To_Handler
+    LIBMTP_Send_Track_From_Handler
+       functions to get/send files/tracks from/to handler functions.
+
+    External handling of individual properties:
+    LIBMTP_Is_Property_Supported to check if a certain property is
+    supported on a certain device.
+    LIBMTP_Get_Allowed_Property_Values to get alowed range/enum of a
+    property value.
+
+    LIBMTP_Get_Representative_Sample_Format will now get the size
+    parameter to allow us to determine the maximum size for a
+    representative sample.
+  * Added modificationdate to file and track structs.
+  * Added LIBMTP_FILETYPE_ALBUM and LIBMTP_FILETYPE_PLAYLIST filetypes.
+  * Numerous Windows portability fixes.
+  * Marcus Meissner rewrote the PTP object handling and metadata caching
+    functions from libgphoto2 and fixed up the ugly largefile handling.
+  * Various minor bug fixes.
+
+-------------------------------------------------------------------
+Tue Mar 17 14:59:24 CET 2009 - meissner@suse.de
+
+- upgraded to 0.3.7
+  * compatible library interface libmtp.8.2.2
+  * stores albums and playlists in the default
+    music folder if no default folder for albums resp.
+    playlists has been detected.
+  * an error report from RedHat BZ
+    http://bugzilla.redhat.com/show_bug.cgi?id=485627
+    led to strange code for detecting anonymous OGG files
+    being rewritten to handle NULL filenames and filenames
+    that do not exceed 4 chars.
+  * patch from Marcus to fix an issue
+    with retransmit originally reported by Florent Pillet.
+  * discovered a new device that cannot even
+    read out battery level but still claims to be able to.
+- upgraded to 0.3.6
+  * Compatible API libmtp.so.8.2.1
+  * Several bug fixes to the examples
+  * Improved Windows and *BSD support
+  * Proper device flags to handle Toshiba players (hopefully)
+  * New devices and flag settings
+  * Nothing new from a programmers point of view
+- upgraded to 0.3.5
+  * Bumped soname to libmtp.so.8.2.0
+  - Only interface change:
+    * Change metadata const*const to *const to allow playlist_id to be
+      modified by LIBMTP_Update_Playlist. Shouldn't affect any code out
+      there really.
+  - New features and bugfixes:
+    * Allow for playlists with zero tracks on them (also in update).
+    * Get folders to a flat list and we get O(n) searching instead of
+      the previous O(n^2) algorithm! The rest is janitorial changes.
+
+-------------------------------------------------------------------
+Mon Dec 15 11:54:26 CET 2008 - meissner@suse.de
+
+- detach the Cowon iAudio 7 from usb-storage on start to make it work
+  bnc#457931
+
+-------------------------------------------------------------------
+Fri Nov  7 23:52:13 CET 2008 - meissner@suse.de
+
+- upgraded to 0.3.4
+ * Check propdesc before setting props in create_new_abstract_list() (Richard)
+ * Fix several bugs in Ogg filetype support (Alvin)
+ * New flag for broken handling of PTP_OPC_DateModified, tag all
+   SanDisk devices with this flag. Bug appeared in them. (Linus)
+ * Sync in upstream updates to PTP baseline (Linus)
+ * Detect and warn on broken OPLs (Richard)
+ * Fix the association type problem on LIBMTP_Create_Folder(). This
+   caused folders not to work properly on some devices!! (Linus)
+
+-------------------------------------------------------------------
+Wed Oct 22 16:17:20 CEST 2008 - mrueckert@suse.de
+
+- fix debug_packages_requires define
+
+-------------------------------------------------------------------
+Fri Sep 26 07:39:22 CEST 2008 - meissner@suse.de
+
+- upgraded to 0.3.3
+	- lots of new ids
+	- protocol bugfixes for Samsung and Creative devices
+	- bugfixes
+
+-------------------------------------------------------------------
+Wed Aug 27 12:16:56 CEST 2008 - meissner@suse.de
+
+- let debuginfo require libmtp8
+- disable static libs and .la files
+
+-------------------------------------------------------------------
+Tue Aug 26 14:41:28 CEST 2008 - meissner@suse.de
+
+- upgraded to 0.3.1
+	- lots of new ids
+	- sansa player handling better now
+	- special playlist support for a subkind of devices
+- commandline tools now live in mtp-tools, libmtp is empty.
+
+-------------------------------------------------------------------
+Tue Jun 24 10:27:48 CEST 2008 - meissner@suse.de
+
+- upgraded to 0.3.0
+	- new major version 8 due to API changes
+	- new devices
+	- lots of bugfixes
+- libmtp7 renamed to libmtp8
+- doxygen added as buildrequires
+
+-------------------------------------------------------------------
+Tue Mar 11 08:11:30 CET 2008 - meissner@suse.de
+
+- upgraded to 0.2.6.1
+	- disabled debug
+- info.bus -> info.subsystem in FDI file
+
+-------------------------------------------------------------------
+Mon Mar  3 09:57:15 CET 2008 - meissner@suse.de
+
+- upgraded to 0.2.6
+	- some new devices
+	- bugfixes
+	- remove LIBMTP_Set_Object_Parent function -> new major
+
+-------------------------------------------------------------------
+Wed Jan  9 08:44:12 CET 2008 - meissner@suse.de
+
+- upgraded to 0.2.5
+	- several new devices
+	- code cleanups and bugfixes
+
+-------------------------------------------------------------------
+Mon Nov 26 10:03:58 CET 2007 - meissner@suse.de
+
+- upgraded to 0.2.4
+	- various bug fixes and new fixes
+	- header-repairing for Zen devices
+
+-------------------------------------------------------------------
+Sun Oct 28 09:53:09 CET 2007 - meissner@suse.de
+
+- --program-prefix=mtp- is needed.
+
+-------------------------------------------------------------------
+Fri Oct 26 11:16:25 CEST 2007 - meissner@suse.de
+
+- upgraded to 0.2.3
+	- new devices added
+	- varous bugfixes, speed ups
+	- bumped so from 6 to 7
+- split off libmtp7 package
+
+-------------------------------------------------------------------
+Mon Oct  8 18:07:28 CEST 2007 - meissner@suse.de
+
+- upgraded to 0.2.2
+	- bugfixes, new devices, faster metadata read
+
+-------------------------------------------------------------------
+Fri Aug 10 13:49:23 CEST 2007 - meissner@suse.de
+
+- upgraded to 0.2.1 release
+	- fixed for LFS support
+
+-------------------------------------------------------------------
+Sat Aug  4 23:46:47 CEST 2007 - meissner@suse.de
+
+- upgraded to 0.2.0 release
+	- more USB ids
+	- 64bit handling
+
+-------------------------------------------------------------------
+Thu Jul 26 16:14:51 CEST 2007 - meissner@suse.de
+
+- uprgaded to current CVS state
+	- caching of fs and metadata
+	- new devices
+	- ptp reset binary
+	- bugfixes
+
+-------------------------------------------------------------------
+Mon Jun  4 11:09:29 CEST 2007 - stbinner@suse.de
+
+- fix build requires for older distributions
+
+-------------------------------------------------------------------
+Wed May 16 21:32:29 CEST 2007 - olh@suse.de
+
+- Buildrequires libusb -> libusb-devel
+  Remove unneded Requires libusb
+  -devel package requires libusb-devel
+
+-------------------------------------------------------------------
+Tue Mar 27 09:02:10 CEST 2007 - meissner@suse.de
+
+- upstream 0.1.5
+	- uses SetObjPropList for most devices
+	- usb lowlevel communication fixes for
+	  stubborn devices
+	- some new ids
+
+-------------------------------------------------------------------
+Wed Mar  7 23:56:48 CET 2007 - meissner@suse.de
+
+- upstream 0.1.4
+	- lots of bugfixes
+	- multiple device handling
+
+-------------------------------------------------------------------
+Thu Feb  8 10:16:36 CET 2007 - dmueller@suse.de
+
+- split into -devel subpackage
+
+-------------------------------------------------------------------
+Wed Jan 17 11:28:17 CET 2007 - meissner@suse.de
+
+- upstream 0.1.3
+	- bugfixes.
+
+-------------------------------------------------------------------
+Wed Jan 10 10:59:43 CET 2007 - meissner@suse.de
+
+- use %run_ldconfig in post/postun. (from rpmlint)
+
+-------------------------------------------------------------------
+Mon Jan  8 16:37:42 CET 2007 - meissner@suse.de
+
+- Upgraded to 0.1.2:
+	- new devices
+	- lots of bugfixes, rewritten lowlevel
+	  communications layer.
+
+-------------------------------------------------------------------
+Sat Dec  2 12:47:17 CET 2006 - meissner@suse.de
+
+- Upgraded to 0.1.0:
+	- new devices
+	- metadata, tracks, vcf handling
+	- enhanced tools
+	- HAL snippet
+
+-------------------------------------------------------------------
+Thu Sep 21 12:29:13 CEST 2006 - meissner@suse.de
+
+- Upgraded to 0.0.19:
+	- formatting of devices added
+	- lots of fixes
+
+-------------------------------------------------------------------
+Mon Aug 28 13:29:55 CEST 2006 - meissner@suse.de
+
+- Upgraded to 0.0.16
+	- better handling of non-ascii filenames
+	- handling of large files
+
+-------------------------------------------------------------------
+Wed Aug 23 10:43:23 CEST 2006 - meissner@suse.de
+
+- libmtp 0.0.13
+	- Library to access MTP devices.
+	- Small sample tools for accessing.

@@ -1,0 +1,9 @@
+<package name="HSAIL-Tools" project="openSUSE:Factory">
+  <title>HSAIL-Tools are used for parsing, assembling, and disassembling HSAIL</title>
+  <description>HSAIL-Tools are used for parsing, assembling, and disassembling HSAIL.
+This version of libHSAIL supports HSA PRM 1.02 (Final) specification.
+
+</description>
+  <devel project="devel:tools:compiler" package="HSAIL-Tools"/>
+  <url>https://github.com/HSAFoundation/HSAIL-Tools</url>
+</package>

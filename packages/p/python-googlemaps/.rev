@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>70f2acfc46f866dca754d7aecaeff49b</srcmd5>
+    <version>2.5.1</version>
+    <time>1527934299</time>
+    <user>dimstar_suse</user>
+    <comment>Google maps access for python</comment>
+    <requestid>613151</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3458071cf8752aa6dbed8b5c5bfaeb75</srcmd5>
+    <version>2.5.1</version>
+    <time>1545647860</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659402</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>346f9e852a19134b3908de57c7044e3e</srcmd5>
+    <version>3.0.2</version>
+    <time>1552901948</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.2:
+  * no upstream changelog (forwarded request 685349 from scarabeus_iv)</comment>
+    <requestid>685350</requestid>
+  </revision>
+</revisionlist>

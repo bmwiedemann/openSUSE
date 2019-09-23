@@ -1,0 +1,105 @@
+<revisionlist>
+  <revision rev="1" vrev="77">
+    <srcmd5>742966a9c937e40e02cb1eb6523b7ad8</srcmd5>
+    <version>2004.1.26</version>
+    <time>1168903009</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="208">
+    <srcmd5>742966a9c937e40e02cb1eb6523b7ad8</srcmd5>
+    <version>2004.1.26</version>
+    <time>1168903009</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="209">
+    <srcmd5>530476383626aca3bac7f9658c7682d7</srcmd5>
+    <version>2004.1.26</version>
+    <time>1232674288</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="211">
+    <srcmd5>530476383626aca3bac7f9658c7682d7</srcmd5>
+    <version>2004.1.26</version>
+    <time>1232674288</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="212">
+    <srcmd5>76c66a1f618701402c4626a43419afd1</srcmd5>
+    <version>2004.1.26</version>
+    <time>1268923953</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="214">
+    <srcmd5>76c66a1f618701402c4626a43419afd1</srcmd5>
+    <version>2004.1.26</version>
+    <time>1278667350</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="215">
+    <srcmd5>76c66a1f618701402c4626a43419afd1</srcmd5>
+    <version>2004.1.26</version>
+    <time>1278678582</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="218">
+    <srcmd5>76c66a1f618701402c4626a43419afd1</srcmd5>
+    <version>2004.1.26</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="220">
+    <srcmd5>76c66a1f618701402c4626a43419afd1</srcmd5>
+    <version>2004.1.26</version>
+    <time>1319181973</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="221">
+    <srcmd5>6f05f8a40deea043d56220865777a340</srcmd5>
+    <version>2004.1.26</version>
+    <time>1323191910</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="223">
+    <srcmd5>6f05f8a40deea043d56220865777a340</srcmd5>
+    <version>2004.1.26</version>
+    <time>1340183441</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="225">
+    <srcmd5>6f05f8a40deea043d56220865777a340</srcmd5>
+    <version>2004.1.26</version>
+    <time>1359109054</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="227">
+    <srcmd5>6f05f8a40deea043d56220865777a340</srcmd5>
+    <version>2004.1.26</version>
+    <time>1379662624</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="229">
+    <srcmd5>6f05f8a40deea043d56220865777a340</srcmd5>
+    <version>2004.1.26</version>
+    <time>1409301181</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="230">
+    <srcmd5>7828fc426e2ab690cb70161cb65f7d25</srcmd5>
+    <version>2004.1.26</version>
+    <time>1510912528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update license information
+
+- Rename README.SuSE to README.SUSE, adhering to the correct
+  spelling.</comment>
+    <requestid>542232</requestid>
+  </revision>
+</revisionlist>

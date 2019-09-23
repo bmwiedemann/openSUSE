@@ -1,0 +1,693 @@
+<revisionlist>
+  <revision rev="1" vrev="6">
+    <srcmd5>fa11a7fc2735e63e370993269fa7a664</srcmd5>
+    <version>3.8.2</version>
+    <time>1166483883</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="54">
+    <srcmd5>93ccbaaeacad1678305370fd151e4f7e</srcmd5>
+    <version>3.8.2</version>
+    <time>1185219020</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="56">
+    <srcmd5>4d99f8d748e9e4b4bfacd765b8b44ab5</srcmd5>
+    <version>3.8.2</version>
+    <time>1185544773</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="98">
+    <srcmd5>8303b42b6259376480838b7904467fad</srcmd5>
+    <version>3.8.2</version>
+    <time>1207834522</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="106">
+    <srcmd5>7f7d359f15c9dd041518de0cead5dee1</srcmd5>
+    <version>3.8.2</version>
+    <time>1211425268</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="128">
+    <srcmd5>7ecf0db2502fcf8016c82981c7b0ab0a</srcmd5>
+    <version>3.8.2</version>
+    <time>1220640976</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="133">
+    <srcmd5>328ac880b65e7308b6c68a94fe0cfd03</srcmd5>
+    <version>3.8.2</version>
+    <time>1220830760</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="137">
+    <srcmd5>46b431997259393dd0bde50ba710f3c3</srcmd5>
+    <version>3.8.2</version>
+    <time>1231463097</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="138">
+    <srcmd5>fded3f0376080b305e198e0acfea83eb</srcmd5>
+    <version>3.8.2</version>
+    <time>1231952419</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="142">
+    <srcmd5>2846185f183cf6102ab68f8ed5e4f856</srcmd5>
+    <version>3.8.2</version>
+    <time>1234476263</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="143">
+    <srcmd5>6e8a6bb3776f0180ddd22e3456ac09d8</srcmd5>
+    <version>3.8.2</version>
+    <time>1246633366</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="144">
+    <srcmd5>cff5c073c42a2aaf92ded5e2ea7e07b5</srcmd5>
+    <version>3.8.2</version>
+    <time>1254518881</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/tiff based on submit request 21235 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="13" vrev="146">
+    <srcmd5>cff5c073c42a2aaf92ded5e2ea7e07b5</srcmd5>
+    <version>3.8.2</version>
+    <time>1254518881</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/tiff based on submit request 21235 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="14" vrev="147">
+    <srcmd5>992239db0305a17a95f9ad2286d350c7</srcmd5>
+    <version>3.8.2</version>
+    <time>1262968358</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/tiff based on submit request 28245 from user coolo
+</comment>
+  </revision>
+  <revision rev="15" vrev="148">
+    <srcmd5>b3526964b6d5b12848a642399ea4b51f</srcmd5>
+    <version>3.8.2</version>
+    <time>1268926336</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d6bfdff731f2bbd585791eec2413e8fb</srcmd5>
+    <version>3.9.2</version>
+    <time>1269558946</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/tiff based on submit request 35458 from user pgajdos
+</comment>
+    <requestid>35458</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>edd98ccbdd26e76593780c5b40539ae9</srcmd5>
+    <version>3.9.2</version>
+    <time>1269616503</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/tiff based on submit request 35769 from user coolo
+</comment>
+    <requestid>35769</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>a8d353bfc877cde7f5dccefe6858df08</srcmd5>
+    <version>3.9.2</version>
+    <time>1272486814</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/tiff based on submit request 38843 from user pgajdos
+</comment>
+    <requestid>38843</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>854ceb860fb861e578dbfdf332db162e</srcmd5>
+    <version>3.9.2</version>
+    <time>1277491702</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/tiff based on submit request 41989 from user pgajdos
+</comment>
+    <requestid>41989</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>854ceb860fb861e578dbfdf332db162e</srcmd5>
+    <version>3.9.2</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>854ceb860fb861e578dbfdf332db162e</srcmd5>
+    <version>3.9.2</version>
+    <time>1278678622</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>75d36725c0899423d58ca5f731513b72</srcmd5>
+    <version>3.9.4</version>
+    <time>1279538857</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/tiff based on submit request 42845 from user pgajdos
+</comment>
+    <requestid>42845</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>cd429510319c7e8433c79dd44b82bf54</srcmd5>
+    <version>unknown</version>
+    <time>1284041019</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/tiff based on submit request 47254 from user pgajdos
+</comment>
+    <requestid>47254</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>cd429510319c7e8433c79dd44b82bf54</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>c8a2568662249c59cc1aa799663d05d2</srcmd5>
+    <version>3.9.4</version>
+    <time>1300092038</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64053 from user coolo
+</comment>
+    <requestid>64053</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>101e0213b3f2cef11c54941e09ee9bc0</srcmd5>
+    <version>3.9.4</version>
+    <time>1300092046</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64053
+</comment>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>2a64fe40422cbacea89242bd3963db14</srcmd5>
+    <version>3.9.4</version>
+    <time>1301641628</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65707 from user coolo
+</comment>
+    <requestid>65707</requestid>
+  </revision>
+  <revision rev="28" vrev="9">
+    <srcmd5>6f24f43827b715deb58bf2411e787161</srcmd5>
+    <version>3.9.4</version>
+    <time>1301641637</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65707
+</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>5fdc73aca204d4adfa4cd6b9843ea316</srcmd5>
+    <version>3.9.5</version>
+    <time>1302786402</time>
+    <user>darix</user>
+    <comment>Accepted submit request 67297 from user coolo
+</comment>
+    <requestid>67297</requestid>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>f67d106bf41c38cdbb7582b482b62449</srcmd5>
+    <version>3.9.5</version>
+    <time>1302786415</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67297
+</comment>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>03f59e73e62c213a01a504c8a3898af3</srcmd5>
+    <version>3.9.5</version>
+    <time>1312650716</time>
+    <user>saschpe</user>
+    <comment>- Do not use -fno-strict-aliasing, no longer needed 
+  and will probably slow down the code.
+- Fix self-obsoletion warning (forwarded request 78152 from elvigia)</comment>
+    <requestid>78153</requestid>
+  </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>cc805903e1b319ea08ab2c773e4b260b</srcmd5>
+    <version>3.9.5</version>
+    <time>1312650724</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78153
+</comment>
+  </revision>
+  <revision rev="33" vrev="9">
+    <srcmd5>cc805903e1b319ea08ab2c773e4b260b</srcmd5>
+    <version>3.9.5</version>
+    <time>1319182519</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="34" vrev="10">
+    <srcmd5>fc540057ab7ef9145f6a61ecf0f36d80</srcmd5>
+    <version>3.9.5</version>
+    <time>1322073473</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93233 from coolo)</comment>
+    <requestid>93244</requestid>
+  </revision>
+  <revision rev="35" vrev="11">
+    <srcmd5>5351f80f0e28f1f007c0f9b378a01f90</srcmd5>
+    <version>3.9.5</version>
+    <time>1326292690</time>
+    <user>coolo</user>
+    <comment>- remove libjpeg-devel and zlib-devel from libtiff-devel
+  requires as they are _not_ required to use the library.
+  Now, this _will_ break packages with wrong buildrequires
+  for good.
+
+- Hide private symbols using gcc visibility, this has been
+  applied only to functions that the source code clearly states
+  that are internal to the library.
+- Run spec cleaner (forwarded request 99532 from elvigia)</comment>
+    <requestid>99536</requestid>
+  </revision>
+  <revision rev="36" vrev="12">
+    <srcmd5>681c94f7a36bdd8eb19401f711c521da</srcmd5>
+    <version>3.9.5</version>
+    <time>1333000126</time>
+    <user>coolo</user>
+    <comment>license update: HPND
+tiff license most akin to spdx recognised http://www.spdx.org/licenses/HPND (forwarded request 111556 from babelworx)</comment>
+    <requestid>111558</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>0ee0fe36a6c18acc6794910ee4c6f69d</srcmd5>
+    <version>4.0.1</version>
+    <time>1334217254</time>
+    <user>coolo</user>
+    <comment>- Add lzma support
+- Implement %check
+- Drop visibility patch because it breaks compilation 
+
+- change package name libtiff4 to libtiff5.
+  library number is 5 actually.
+
+- Update to 4.0.1
+  * configure.ac
+    - Add libtiff private dependency on -llzma for pkg-config
+    - Add support for using library symbol versioning on
+      ELF systems with the GNU linker.
+  * libtiff/tif_win32.c: Eliminate some minor 64-bit warnings in
+                         tif_win32.c
+  * libtiff/tif_jpeg.c: Extra caution for case where sp is NULL.
+  * libtiff/tif_dir.c, libtiff/tif_dirread.c: Extra caution around
+    assumption tag fetching is always successful.
+  * libtiff/tiffio.h: Use double-underbar syntax in GCC printf
+    attribute specification to lessen the risk of accidental macro
+    substitution.
+  * Update automake used to 1.11.3.</comment>
+    <requestid>112147</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>a9d8cf65e4fe10a3790cbd56cc77af2e</srcmd5>
+    <version>4.0.1</version>
+    <time>1338477062</time>
+    <user>coolo</user>
+    <comment>Enable jbig support for &gt; 1210, Fix building for *suse versions 10.0 to current. Jbig is in factory now. (forwarded request 122795 from aljex)</comment>
+    <requestid>122798</requestid>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>a9d8cf65e4fe10a3790cbd56cc77af2e</srcmd5>
+    <version>4.0.1</version>
+    <time>1340184274</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e6ed2452023add0e2f7b63515cb9369e</srcmd5>
+    <version>4.0.2</version>
+    <time>1340627335</time>
+    <user>coolo</user>
+    <comment>- updated to 4.0.2: [bnc#767852] [bnc#767854]
+    tif_getimage.c: added support for _SEPARATED CMYK images.
+    tif_getimage.c: Added support for greyscale + alpha.
+    Added TIFFCreateCustomDirectory() and TIFFCreateEXIFDirectory() functions.
+    tif_print.c: Lots of fixes around printing corrupt or hostile input.
+    Improve handling of corrupt ycbcrsubsampling values.
+    tif_unix.c: use strerror to get meaningful error messages.
+    tif_jpeg.c: fix serious bugs in JPEGDecodeRaw().
+    tif_jpeg.c: Fix size overflow (zdi-can-1221,CVE-2012-1173). 
+    tiff2pdf: Defend against integer overflows while calculating required 
+              buffer sizes (CVE-2012-2113).</comment>
+    <requestid>125510</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>5d26c6b139d9968312f675be2200e70b</srcmd5>
+    <version>4.0.2</version>
+    <time>1340958279</time>
+    <user>coolo</user>
+    <comment>- RGBA is packed in host order, use the right macros to unpack
+  and verify in raw_decode test. (forwarded request 126493 from msmeissn)</comment>
+    <requestid>126497</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>c4b8911f8b39089e5d6b123f6c48f535</srcmd5>
+    <version>4.0.2</version>
+    <time>1343137176</time>
+    <user>coolo</user>
+    <comment>-  fixed CVE-2012-3401 [bnc#770816]</comment>
+    <requestid>128740</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>283cae4be5f69459cc61a8c87c5ff849</srcmd5>
+    <version>4.0.3</version>
+    <time>1352700439</time>
+    <user>coolo</user>
+    <comment>- updated to 4.0.3:
+  * Add some TIFF/FX support in libtiff.
+  * Fix bug rewriting image tiles in a compressed file.
+  * Fix read past end of data buffer.
+  * etc., see ChangeLog
+- removed upstreamed patches:
+  * bigendian.patch
+  * dont-fancy-upsampling.patch
+  * CVE-2012-3401.patch
+- new patch:
+  * test-jpeg-turbo.patch
+  * CVE-2012-4564.patch [bnc#787892]</comment>
+    <requestid>140217</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>283cae4be5f69459cc61a8c87c5ff849</srcmd5>
+    <version>4.0.3</version>
+    <time>1359110490</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>244562c6a8733137cb5930099a80090f</srcmd5>
+    <version>4.0.3</version>
+    <time>1365174842</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162757 from namtrac)</comment>
+    <requestid>162762</requestid>
+  </revision>
+  <revision rev="46" vrev="5">
+    <srcmd5>f0d3794ed9721a788c7df22afc1aba96</srcmd5>
+    <version>4.0.3</version>
+    <time>1367581949</time>
+    <user>coolo</user>
+    <comment>- security update
+  * CVE-2013-1961.patch [bnc#818117]
+  * CVE-2013-1960.patch [bnc#817573]</comment>
+    <requestid>174392</requestid>
+  </revision>
+  <revision rev="47" vrev="6">
+    <srcmd5>89138ca532f1c11b9a2555857446b22a</srcmd5>
+    <version>4.0.3</version>
+    <time>1372440558</time>
+    <user>coolo</user>
+    <comment>- tiff2pdf: introduced warning when the compression isn't lzw or
+  none [bnc#819142]
+- tiff2pdf: fixed crash [bnc#821872]</comment>
+    <requestid>181002</requestid>
+  </revision>
+  <revision rev="48" vrev="7">
+    <srcmd5>e7d8fc9b92f21f906ac25f2d63e46d95</srcmd5>
+    <version>4.0.3</version>
+    <time>1378638362</time>
+    <user>coolo</user>
+    <comment>- security update
+  * CVE-2013-4232.patch [bnc#834477]
+  * CVE-2013-4231.patch [bnc#834477]
+  * CVE-2013-4244.patch [bnc#834788]
+  * CVE-2013-4243.patch [bnc#834779]</comment>
+    <requestid>197585</requestid>
+  </revision>
+  <revision rev="49" vrev="9">
+    <srcmd5>e7d8fc9b92f21f906ac25f2d63e46d95</srcmd5>
+    <version>4.0.3</version>
+    <time>1379664821</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="50" vrev="11">
+    <srcmd5>e7d8fc9b92f21f906ac25f2d63e46d95</srcmd5>
+    <version>4.0.3</version>
+    <time>1409303498</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="51" vrev="12">
+    <srcmd5>f6c9a95e37e9d5479a77b9c90ac7dc0c</srcmd5>
+    <version>4.0.3</version>
+    <time>1419546006</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266248</requestid>
+  </revision>
+  <revision rev="52" vrev="13">
+    <srcmd5>914b4deaa3d87648cbbe01d69bf71c02</srcmd5>
+    <version>4.0.3</version>
+    <time>1425891879</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>289542</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>2a5fc48459e9fd47fe0ff76b78aea7b8</srcmd5>
+    <version>4.0.4</version>
+    <time>1436111735</time>
+    <user>coolo</user>
+    <comment>- update to 4.0.4
+D    tiff-4.0.3-double-free.patch
+D    tiff-handle-TIFFTAG_CONSECUTIVEBADFAXLINES.patch
+D    tiff-4.0.3-CVE-2013-1961.patch
+D    erouault.2862.patch
+D    bfriesen.2805.patch
+D    tiff-4.0.3-CVE-2013-4232.patch
+D    tiff-4.0.3-CVE-2013-4244.patch
+D    erouault.2861.patch
+D    erouault.2857.patch
+D    erouault.2856.patch
+D    erouault.2859.patch
+D    tiff-4.0.3-CVE-2012-4564.patch
+D    tiff-4.0.3-tiff2pdf-colors.patch
+D    erouault.2876.patch
+D    erouault.2860.patch
+D    tiff-dither-malloc-check.patch
+D    tiff-4.0.3-CVE-2013-1960.patch
+D    erouault.2858.patch
+D    tiff-handle-TIFFTAG_PREDICTOR.patch
+D    tiff-4.0.3-CVE-2013-4231.patch
+D    tiff-4.0.3-CVE-2013-4243.patch
+D    erouault.2863.patch
+D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
+    <requestid>314654</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>35670645e16937267fdaac9a9dd3e2ca</srcmd5>
+    <version>4.0.4</version>
+    <time>1438899530</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320346</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>6dca886b1db4a4c9e179d56873dd62fc</srcmd5>
+    <version>4.0.6</version>
+    <time>1450363977</time>
+    <user>dimstar_suse</user>
+    <comment>Enabled builds.</comment>
+    <requestid>348044</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>4ffb545537f131c864376d54f91b7af4</srcmd5>
+    <version>4.0.6</version>
+    <time>1452850828</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#942690</comment>
+    <requestid>353435</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>0b7443886e56a8e61ee027ed0c9321f1</srcmd5>
+    <version>4.0.6</version>
+    <time>1454491142</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#964225</comment>
+    <requestid>357067</requestid>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>cf71b7ace1ba7953b1def1fcf201e973</srcmd5>
+    <version>4.0.6</version>
+    <time>1460480249</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2016-3186, bsc#973340</comment>
+    <requestid>385377</requestid>
+  </revision>
+  <revision rev="59" vrev="5">
+    <srcmd5>11cf73fe3fc083d426b2b24e504a4e17</srcmd5>
+    <version>4.0.6</version>
+    <time>1468869779</time>
+    <user>dimstar_suse</user>
+    <comment>Some security fixes</comment>
+    <requestid>407887</requestid>
+  </revision>
+  <revision rev="60" vrev="6">
+    <srcmd5>439c2efa8022c3fcc7b3f1153dd659e2</srcmd5>
+    <version>4.0.6</version>
+    <time>1473103015</time>
+    <user>dimstar_suse</user>
+    <comment>A couple of VUL-1</comment>
+    <requestid>424275</requestid>
+  </revision>
+  <revision rev="61" vrev="7">
+    <srcmd5>e660bacc011239cf74599141bd82b093</srcmd5>
+    <version>4.0.6</version>
+    <time>1476409042</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2016-3622</comment>
+    <requestid>433716</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>c52339df558e0f5b0766e4d98e4045d0</srcmd5>
+    <version>4.0.7</version>
+    <time>1480693031</time>
+    <user>dimstar_suse</user>
+    <comment>Libtiff 4.0.7 with miscelaneous security fixes</comment>
+    <requestid>442627</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>6208a1a140200fb51b965a434e89d1f5</srcmd5>
+    <version>4.0.7</version>
+    <time>1482784925</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447009</requestid>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>f3e1e100118d6803b6fa84af04dd3f7a</srcmd5>
+    <version>4.0.7</version>
+    <time>1484771344</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2017-5225</comment>
+    <requestid>449993</requestid>
+  </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>bb842ea8a11ee4641e4a937be63b3948</srcmd5>
+    <version>4.0.7</version>
+    <time>1486547084</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1022103</comment>
+    <requestid>454370</requestid>
+  </revision>
+  <revision rev="66" vrev="5">
+    <srcmd5>da29b4c2cba99d1eaf76f361b9c79b3c</srcmd5>
+    <version>4.0.7</version>
+    <time>1491469187</time>
+    <user>maxlin_factory</user>
+    <comment>Misc security fixes</comment>
+    <requestid>483282</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>d71db688b3a54e11da8616e834d10458</srcmd5>
+    <version>4.0.8</version>
+    <time>1498638850</time>
+    <user>dimstar_suse</user>
+    <comment>Misc security issues</comment>
+    <requestid>505624</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>f71f768abe8b9cdec70f66cbbc5479f2</srcmd5>
+    <version>4.0.9</version>
+    <time>1513342760</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>556376</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>289ad941c5eb0b3e13d5b0d565941dad</srcmd5>
+    <version>4.0.9</version>
+    <time>1514907105</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559098</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>ba9d857eb8898a2ea0250f915aaf11ef</srcmd5>
+    <version>4.0.9</version>
+    <time>1518950370</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1046077: Add tiff-4.0.9-bsc1046077-CVE-2017-9935.patch
+  Fix Heap-based buffer overflow in t2p_write_pdf</comment>
+    <requestid>577270</requestid>
+  </revision>
+  <revision rev="71" vrev="4">
+    <srcmd5>43434eb80f495c5d354826b4ac2ca303</srcmd5>
+    <version>4.0.9</version>
+    <time>1519557650</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1081690: Add tiff-4.0.9-bsc1081690-CVE-2018-5784.patch
+  Fix uncontrolled resource consumption in TIFFSetDirectory</comment>
+    <requestid>578431</requestid>
+  </revision>
+  <revision rev="72" vrev="5">
+    <srcmd5>9c8637b8fb1251847d7ba145e35bf989</srcmd5>
+    <version>4.0.9</version>
+    <time>1526737307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610255</requestid>
+  </revision>
+  <revision rev="73" vrev="6">
+    <srcmd5>ce659f37871272ff4116dd8b9d1e1411</srcmd5>
+    <version>4.0.9</version>
+    <time>1528492797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614266</requestid>
+  </revision>
+  <revision rev="74" vrev="7">
+    <srcmd5>0cda65c16e77d991d709f4ee44a1ce40</srcmd5>
+    <version>4.0.9</version>
+    <time>1536678649</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>631401</requestid>
+  </revision>
+  <revision rev="75" vrev="8">
+    <srcmd5>5d00a0dd882d3eab2db0fbf68c7a11f4</srcmd5>
+    <version>4.0.9</version>
+    <time>1540319756</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643138</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>d81c3fefa40c45d3a4523530eb2023dd</srcmd5>
+    <version>4.0.10</version>
+    <time>1543223591</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650209</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>4646f7ba77eb3452f0172f8cfc028a52</srcmd5>
+    <version>4.0.10</version>
+    <time>1550049493</time>
+    <user>dimstar_suse</user>
+    <comment>- security update
+  * CVE-2019-7663 [bsc#1125113]
+    + tiff-CVE-2019-7663.patch
+
+- security update
+  * CVE-2019-6128 [bsc#1121626]
+    + tiff-CVE-2019-6128.patch
+
+- extend tiff-CVE-2018-19210.patch and rename it to
+  tiff-CVE-2018-17000,19210.patch [bsc#1108606c#11]
+  * solves CVE-2018-19210 [bsc#1115717] and CVE-2018-17000 [bsc#1108606]
+
+- amend tiff-CVE-2018-12900.patch: fix wrong error message
+  [bsc#1099257]</comment>
+    <requestid>674138</requestid>
+  </revision>
+</revisionlist>

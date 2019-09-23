@@ -1,0 +1,292 @@
+-------------------------------------------------------------------
+Wed Aug 14 15:09:28 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 0.8.9
+  * Added 'block-cursor' node styling for GtkEntry (Gtk 4.0).
+  * Moved GtkInfoBar styling from root node to child revealer > box node (Gtk 3.24/4.0).
+  * Updated some Lollypop workarounds for 1.2.0-alpha1 (Gtk 3.2x/4.0).
+  * Added a workaround for Gnome-Software 'origin-box' button node (Gtk 3.24/4.0).
+  * Added drop-target AppWellApp overview-icon styling (Gnome-Shell 3.32).
+- Added new build dependency libmarco-private for MATE.
+- Enable Mate just for Tumbleweed. plata-theme does not support the old Mate versions in Leap releases.
+
+-------------------------------------------------------------------
+Mon Jun 17 20:13:45 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 0.8.5
+  * Added RipplePointerLocation styling for 3.33/3.34 cycle (Gnome-Shell 3.32).
+  * Increased ripple's alpha value in RippleBox (Gnome-Shell 3.2x/3.32).
+  * Increased ripple's alpha value in RippleBox (Cinnamon).
+  * Added PieTimer styling for 3.33/3.34 cycle (Gnome-Shell 3.32).
+  * Tweaked Notification styling for cards contained in PopupMenu (Cinnamon).
+  * Added inline-mode GtkMenuBar styling for GtkPopover nodes (Gtk 4.0).
+
+-------------------------------------------------------------------
+Wed May  1 14:26:22 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 0.7.9
+  * Protected child label/image node foregrounds in GtkInfoBar's button nodes
+    (Gtk 3.2x/4.0).
+  * Stopped drawing focus-outlines around the carousel button nodes in
+    Gnome-Control-Center (Gtk 3.2x/4.0).
+  * Added generic typography styling for GtkTextView (Gtk 4.0).
+  * Added an ugly workaround for Lollypop's weird GtkHeaderBar toggle button
+    (Gtk 3.2x/4.0).
+- Update to version 0.7.8
+  * Applied color changer feature to GtkSourceView theming (GtkSourceView).
+  * Applied color changer feature to Telegram theming (Telegram).
+
+-------------------------------------------------------------------
+Mon Apr 22 18:15:42 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 0.7.7
+  * Drop .toggle-switch-us/-intl class style, define SVGs in .toggle-switch
+    instead (Gnome-Shell 3.32).
+  * Introduced Air-for-steam color changer mechanism (Air-for-Steam).
+  * Added some more styling for Vala-panel-appmenu in Vala-panel/Budgie-panel
+    (Gtk 3.2x/4.0).
+- Update to version 0.7.6
+  * Tweaked GtkComboBox styling in Cinnamon-Control-Center's GtkListBoxRows
+    (Gtk 3.2x/4.0).
+  * Prevented GtkLabel running into bottom action-area (Gtk 4.0).
+  * Added GtkListBox separator styling (Gtk 4.0).
+  * Added Air-for-Steam color/theme files with our dark-variant
+    (Air-for-Steam).
+- Add zip as BuildRequires
+
+-------------------------------------------------------------------
+Sat Apr 13 10:14:56 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 0.7.5
+  * Added SelectAreaRubberband styling (Gnome-Shell 3.32).
+  * Reverted "Added damned workaround for shadow-truncated modal-dialogs
+    (Gnome-Shell 3.32)." in 0.7.2 release.
+- Update to version 0.7.4.1
+  * Updated WhiskerMenu GtkEntry design with flat-style (Gtk 3.2x/4.0).
+  * Stopped drawing overshoot effects in Geary's 'conversation-scroller'
+    GtkScrolledWindow (Gtk 3.2x/4.0).
+  * Fixed some regressions of the previous 0.7.4 release (Gtk 3.2x/4.0).
+- Update to version 0.7.4
+  * Updated selector and styling for a list node in Gnome-Builder's omnibar
+    popover (Gtk 3.2x/4.0).
+  * Prevented some unneeded focus outlines in Gnome-Tweaks's tweak-group row
+    nodes (Gtk 3.2x/4.0).
+  * Ensured .title/.subtitle class styling were for label nodes only
+    (Gtk 3.2x/4.0).
+  * Switched to 16px checkbox SVGs (Gnome-Shell 3.2x/3.32).
+  * Switched to 16px checkbox/radiobutton SVGs (Cinnamon).
+  * Refined child spacing and font sizing in CheckBox/RadioButton (Cinnamon).
+  * Enforced flat-style entries in GtkPopover if entries were standalone
+    (Gtk 3.2x/4.0).
+  * Added a hack to expose drop-shadows behind the Lightdm-gtk-greeter main
+    dialogs (Gtk 3.2x/4.0).
+- Update to version 0.7.3
+  * Dropped a workaround for Lollypop's .light-button class backgrounds
+    (Gtk 3.2x/4.0).
+  * Add some more properties to try shutting up 3rd-party gresource
+    modifications (Gnome-Shell 3.2x/3.32).
+  * Added Pop!OS to unsupported OS list (README.md).
+  * Increased the size of AppWellAppRunningDot to 8px in standard Dash
+    (Gnome-Shell 3.2x/3.32).
+
+-------------------------------------------------------------------
+Tue Apr  2 19:15:48 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 0.7.2 
+  * Tweaked fontscaling SCSS function (Gnome-Shell/Cinnamon).
+  * Renamed 'Gtk+' with 'Gtk'.
+  * Tweaked GtkComboBox background colors when those were included in hovered GtkListBoxRows (Gtk+ 3.2x/4.0).
+  * Fixed incorrect versioning of PopupMenuPanelMenu (Gnome-Shell 3.26).
+  * Removed ink-reactions from Budgie's Menu and RavenTrigger buttons (Gtk+ 3.2x/4.0).
+  * Added damned workaround for shadow-truncated modal-dialogs (Gnome-Shell 3.32).
+  * Added a workaround for weird maxd SSD GtkWindow edge artifacts (Gtk+ 3.24/4.0).
+- Update to version 0.7.1
+  * Cleaned up unneeded GtkTooltip styling (Gtk 3.2x/4.0).
+  * Switched to outlined focus state PagerButtons (Gnome-Shell 3.2x/3.32).
+  * Dropped unneeded focus state CalendarChangeMonthBack/Forward (Cinnamon).
+  * Tweaked some styling for DashToPane/DocklExtension (Gnome-Shell 3.2x/3.32).
+    + Still we can't handle show-apps icon properly in light-variants though.
+  * Optimized PanelStatusIndicatorsBox's power-status StLabel alignment (Gnome-Shell 3.2x/3.32).
+- Update to version 0.7.0
+  Important change:
+  * Drop Mate-desktop support completely.
+  Standard changes:
+  * Added a workaround for Evolution's task switcher image-buttons (Gtk 3.2x/4.0).
+  * Decreased font-size to 100% in WorldClocksTime (Gnome-Shell 3.32).
+  * Refined child spacing in AppFolderIcon (Gnome-Shell 3.2x/3.32).
+  * Reduced corner roundness of reorderable-tabs (Gtk 3.2x/4.0).
+
+-------------------------------------------------------------------
+Mon Mar 11 21:15:03 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 0.6.1 
+  * Fixed unwanted solid backgrounds of categories left-pane in BudgieMenu (Gtk 3.2x/4.0).
+  * Tweaked 'Open New Tab' button radius in Gnome-Terminal's GtkHeaderBar (Gtk 3.24/4.0).
+  * Rounded UserWidget avatar shape (Gnome-Shell 3.32).
+  * Added one more stock CSS override for Gnome-Builder 3.31.91 (Gtk 3.24/4.0).
+  * Stop drawing GtkImage inside the GtkSwitch when placed in GtkHeaderBar (Gtk 3.2x/4.0).
+  * Re-designed 'Sign In' action button in LoginDialog (Gnome-Shell 3.2x/3.32).
+  * Fixed incorrect selector for WindowList parent container padding (Cinnamon).
+  * Polished GroupedWindowListBadge design (Cinnamon).
+  * Added PopupMenuItemDot styling (Cinnamon).
+  * Fixed incorrect background color mixing weight in WindowClose (Gnome-Shell 3.32).
+  * Enforced clearing stock CSS's unneeded borders in PageIndicatorIcon (Gnome-Shell 3.32).
+  * Optimized LgObjInspectorButton height again (Gnome-Shell 3.2x/3.32).
+  * Polished WeatherForecastIcon design (Gnome-Shell 3.32).
+- Update to version 0.6.0
+  * Fixed Geary's GtkStatusBar style conflicts with Gedit theming (Gtk+ 3.2x/4.0).
+  * Added a workaround for Lollypop's .light-button appearance (Gtk+ 3.2x/4.0).
+  * Stopped drawing last-child's horizontal separator in SearchSectionSeparator (Gnome-Shell < 3.24).
+  * Re-designed GroupedWindowList for 4.0.x (Cinnamon).
+  * Dropped MenuFavoritesBox's pane separator (Cinnamon).
+  * Refined child spacing in MenuApplicationsOuterBox (Cinnamon).
+
+-------------------------------------------------------------------
+Tue Feb 12 20:30:26 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 0.5.9
+  * Tweaked GtkMessagDialog action-area button margin/radius for a single-button-ed case (Gtk+ 3.2x/4.0).
+  * Cleaned up GtkMessageDialog codes (Gtk+ 3.2x/4.0).
+  * Cleaned up Budgie codes especially raven-trigger/show-desktop/main-menu panel button styling (Gtk+ 3.2x/4.0).
+
+-------------------------------------------------------------------
+Thu Jan 31 19:08:04 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 0.5.8
+  * Added a workaround to override border-radius/width for Geary left-pane searchbar GtkEntry (Gtk+ 3.2x/4.0).
+  * Refactored GtkPathBar theming code base (Gtk+ 3.2x/4.0).
+  * Prepared for some changes of Nautilus 3.30.6 or newer (Gtk+ 3.24/4.0).
+  * Re-defined flat GtkButton styling for mixed variant's GtkHeaderBar (Gtk+ 3.2x/4.0).
+  * Fixed Gnome-Documents searchbar node bottom banding (Gtk+ 3.2x/4.0).
+  * Set proper 'zero' padding for GtkListBoxRow .expander class (Gtk+ 4.0).
+  * Set proper drop-target colors for mixed variant GtkHeaderBar (Gtk+ 3.2x/4.0).
+
+-------------------------------------------------------------------
+Sat Jan 26 15:01:22 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Add package source verification
+
+-------------------------------------------------------------------
+Sat Jan 26 14:23:37 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 0.5.7
+  * Moved GtkListBoxRow root padding to child padding in case .expander class was added (Gtk+ 4.0).
+  * Applied IbusEmojier styling (Gtk+ 4.0).
+  * Masked unneeded L/R borders on the Album-art images placed in Lollypop GtkHeaderBar (Gtk+ 3.2x/4.0).
+  * Decreased GtkSwitch ink reaction alpha value from 0.2 to 0.12 (Gtk+ 3.2x/4.0).
+  * Converted SSD titlebutton top/bottom margins to its parent container padding (Gtk+ 3.2x/4.0).
+    + This is just for damned FF's weird CSD-mode titlebuttons.
+  * Removed focus-outline effect from various sidebar widget's GtkListBoxRow (Gtk+ 3.2x/4.0).
+- Changes in version 0.5.6
+  * Dropped outdated FF CSD-mode titlebutton styling (Gtk+ 3.24/4.0).
+  * Added new 'placeholder' node styling for GtkEntry (Gtk+ 4.0).
+  * Made GtkLevelBar complete-flat style (Gtk+ 3.2x/4.0).
+  * Re-designed Raven MPRIS card widget styling (Gtk+ 3.2x/4.0).
+  * Stopped exposing drop-shadows behind the keycaps in GtkTooltip (Gtk+ 3.2x/4.0).
+  * Set min-height for Inkscape's 2nd-row 'aux-toolbar's GtkToolBar (Gtk+ 3.2x/4.0).
+  * Introduced Ephy's incognito-mode GtkHeaderBar coloring (Gtk+ 3.24/4.0).
+  * Fixed some weird appearances in Nautilus 3.30.x's pathbar buttons (Gtk+ 3.24/4.0).
+  * Fixed missing 'checked and hovered' state background highlighting in mixed-variant's GtkHeaderBar buttons (Gtk+ 3.2x/4.0).
+
+-------------------------------------------------------------------
+Sun Jan 20 19:46:35 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Add provides plata-theme for metatheme-plata-common to make installation more easy. 
+
+-------------------------------------------------------------------
+Sun Jan 20 18:34:03 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 0.5.5
+  * Dropped a workaround for weird 1px child shifting in bottom/right Budgie-panel (Gtk+ 3.2x/4.0).
+    + Proposed PR should fix this in upstream, so let's drop our workarounds.
+  * Moved 'slash' label node L/R margins to button nodes in Nautilus path-bar widget (Gtk+ 3.24/4.0).
+  * Added a trial workaround for unwanted truncation of Nautilus path-bar button array's 'tail' (Gtk+ 3.24/4.0).
+    + Enough button node margin at the end of its array may or may not prevent those truncations, but I'm sure that's the upstream issue what should be fixed in upstream.
+  * Prepare for suggested-action styled 'Prominent' buttons in Chrome(ium) (Gtk+ 3.2x/4.0).
+- Changes in version 0.5.4
+  * Fixed 'zero padding' CaffeineApplet popover widget in Budgie (Gtk+ 3.2x/4.0).
+  * Added OpenSUSE official repository package link (README.md).
+  * Set proper background shader color for WorkspaceOverviewBackgroundShade (Cinnamon).
+  * Updated hover/active pseudo-class state WorkspaceAddButton styling (Cinnamon).
+  * Cleaned up unneeded leftovers (Gtk+ 3.2x/4.0).
+- Make some dependency changes and start to use rpm supplements more.
+
+-------------------------------------------------------------------
+Fri Jan 11 23:27:50 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 0.5.3
+  * Added some more package repositories (README.md).
+  * Added a workaround for LO/FF weird toolbar widget's separator colors (Gtk+ 3.2x/4.0).
+  * Dropped global color property from GtkToolBar (Gtk+ 3.2x/4.0).
+  * Dropped mixed variant color tweaks in Gnome-Terminal (Gtk+ 3.24/4.0).
+  * Cleaned up Tilix styling (Gtk+ 3.2x/4.0).
+  * Cleaned up Remmina styling (Gtk+ 3.2x.4.0).
+  * Updated Copyright years for 2018-2019.
+
+-------------------------------------------------------------------
+Sat Jan  5 20:32:38 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 0.5.2
+  * Polished GtkEmojiPicker styling again (Gtk+ 3.2x/4.0).
+  * Fixed node name typo (Gtk+ 4.0).
+  * Tweaked 'Open...' button shape in Evince's GtkHeaderBar (Gtk+ 3.2x/4.0).
+  * Tweaked MessageListSectionList styling (Gnome-Shell 3.26/3.32).
+
+-------------------------------------------------------------------
+Tue Jan  1 21:20:59 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 0.5.1
+  * Killed unneeded weird row separators in Gnome-Recipes sidebar (Gtk+ 3.2x/4.0).
+  * Increased category header label height in Dconf-Editor (Gtk+ 3.2x/4.0).
+  * Added hover state line indicators for GtkNotebook reorderable-tab class (Gtk+ 3.2x/4.0).
+  * Cleaned up GtkPlacesSidebar template codes (Gtk+ 3.2x/4.0).
+  * Replaced preset alpha values with our standard variables in Gnome-Weather styling (Gtk+ 3.2x/4.0).
+  * Dropped unneeded outer margins at top/bottom of GtkTreeView header button nodes (Gtk+ 3.2x/4.0).
+
+-------------------------------------------------------------------
+Fri Dec 28 22:35:24 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 0.5.0
+  * Set selection foreground color for BudgiePixelSaverApplet 'close' titlebuttons (Gtk+ 3.2x/4.0).
+  * Fixed incorrect link-color in dark variant Tweetdeck color scheme (Tweetdeck).
+  * Polished WsSwitcher styling (Gnome-Shell 3.2x/3.32).
+  * Tweaked SearchProviderIcon styling (Gnome-Shell 3.26/3.32).
+  * Set selection color for checked state category buttons in GtkEmojiPicker (Gtk+ 3.2x/4.0).
+  * Completely rewrote GtkComboBox styling with Gtk+-3-ed styling (Gtk+ 2.0).
+
+-------------------------------------------------------------------
+Tue Dec 18 21:00:11 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 0.4.9
+  * Styled .rubberband style-class for .content-view class as well (Gtk+ 3.2x/4.0).
+  * Updated BriskMenuApplet window styling (Gtk+ 3.2x/4.0).
+  * Tweaked selected MenuCategoryButton shape (Cinnamon).
+  * Added solid borders for OSK keycaps (Gnome-shell/Cinnamon).
+  * Stopped drawing GtkMenuBar bottom border in FirefoxQuantom (Gtk+ 3.2x/4.0).
+  * Re-optimized GtkMenuBar bottom border colors for mixed variants (Gtk+ 3.2x/4.0).
+  * Added a workaround for preventing unwanted button node height jumping in Rhythmbox's alternate bottom toolbar (Gtk+ 3.2x/4.0).
+  * Unified 'key-enter' SVGs for all variants with suggested-action foreground color (Gnome-shell 3.26/3.32).
+  * Converted WorkspaceControls sizing/spacing from fixed to font-sensitive (Cinnamon).
+  * Converted Panel width/height from fixed to font-sensitive (Cinnamon).
+
+-------------------------------------------------------------------
+Sat Dec 15 00:38:10 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Make sure we use correct sources for 0.4.8 version 
+
+-------------------------------------------------------------------
+Fri Dec 14 20:58:01 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 0.4.8
+  * Reduced GtkCalendar label padding for preventing mis-aligned 'week-number' labels (Gtk+ 3.2x/4.0).
+  * Simplified and rounded 'selected day' label background (Gtk+ 3.2x/4.0).
+  * Check the binary 'xmllint' provided by libxml2 utilities package as well (Configure.ac).
+  * Added 'meaningless' 2px L/R edges to Metacity-2 titlebars for damned Marco (Metacity).
+  * Enhanced Budgie apps-menu popover design (Gtk+ 3.2x/4.0).
+  * Fixed unwanted double padding in Budgie ClockApplet popover's GtkStack with new upstream style-classes (Gtk+ 3.2x/4.0).
+  * Added some styling for upcoming Budgie Raven's audio apps/devices GtkListBox (Gtk+ 3.2x/4.0).
+- Corrected description for some of the sub-packages.
+-------------------------------------------------------------------
+Sat Dec  8 18:28:24 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Initial packaging of version 0.4.7.1

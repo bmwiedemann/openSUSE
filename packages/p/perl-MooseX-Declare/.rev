@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>af53be2dc27a8a4586a06bc33411765f</srcmd5>
+    <version>0.35</version>
+    <time>1326104181</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>98154</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>af53be2dc27a8a4586a06bc33411765f</srcmd5>
+    <version>0.35</version>
+    <time>1340183880</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>af53be2dc27a8a4586a06bc33411765f</srcmd5>
+    <version>0.35</version>
+    <time>1359109745</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>af53be2dc27a8a4586a06bc33411765f</srcmd5>
+    <version>0.35</version>
+    <time>1379663758</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5aa5751a8f95416f0bd29a5ae441e8cc</srcmd5>
+    <version>0.37</version>
+    <time>1381062696</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202269</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>02a63df55ee2673ccfa7eeca28c757bb</srcmd5>
+    <version>0.38</version>
+    <time>1394519001</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>225374</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>02a63df55ee2673ccfa7eeca28c757bb</srcmd5>
+    <version>0.38</version>
+    <time>1409302396</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ca22597dd6cd3e04ab46180527908927</srcmd5>
+    <version>0.39</version>
+    <time>1410795694</time>
+    <user>coolo</user>
+    <comment>- updated to 0.39
+  - line numbers in shipped code are now almost the same (within 1) as
+    the repository source, for easier debugging
+  - pod fixes (Frank Wiegand, RT#51722)</comment>
+    <requestid>249279</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e73a55dd5c7d85fe3a6b622b8b7b4af9</srcmd5>
+    <version>0.40</version>
+    <time>1429107948</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296645</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f8dc3519f015ba37c64257f3b4b4594b</srcmd5>
+    <version>0.42</version>
+    <time>1435172149</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313249</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cf59ced75f03cbe324474ebaf3aafbfa</srcmd5>
+    <version>0.43</version>
+    <time>1440658579</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325688</requestid>
+  </revision>
+</revisionlist>

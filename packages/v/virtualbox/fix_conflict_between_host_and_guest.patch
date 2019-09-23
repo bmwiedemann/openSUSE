@@ -1,0 +1,13 @@
+Index: VirtualBox-6.0.10/src/VBox/Additions/common/VBoxGuest/VBoxGuest-haiku.c
+===================================================================
+--- VirtualBox-6.0.10.orig/src/VBox/Additions/common/VBoxGuest/VBoxGuest-haiku.c
++++ VirtualBox-6.0.10/src/VBox/Additions/common/VBoxGuest/VBoxGuest-haiku.c
+@@ -130,7 +130,7 @@ static struct vboxguest_module_info g_VB
+     RTMemAllocExTag,
+     RTMemContAlloc,
+     RTMemContFree,
+-    RTMemFreeEx,
++    RTMemFreeExG,
+     RTMpIsCpuPossible,
+     RTMpNotificationDeregister,
+     RTMpNotificationRegister,

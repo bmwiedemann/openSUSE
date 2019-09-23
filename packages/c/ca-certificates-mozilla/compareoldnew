@@ -1,0 +1,47 @@
+#!/bin/bash
+# print fingerprints of new or changed certificates
+set -e
+cleanup()
+{
+	rm -rf new{,.files} old{,.files}
+}
+showcert()
+{
+	openssl x509 -in "$1" -noout -subject -fingerprint -nameopt multiline,utf8,-esc_msb \
+	| sed -ne 's/ *commonName *= /  CN=/p; s/.*Fingerprint=/  sha1=/p'
+	sed -ne '/^# \(openssl\|distrust\|alias\)/s/^#/ /p' < "$1"
+}
+cleanup
+trap cleanup EXIT
+mkdir old new
+cd old
+echo old...
+ln -s ../.osc/certdata.txt
+python3 ../certdata2pem.py > stdout 2> stderr
+ls -1 *.crt | sort > ../old.files
+cd ..
+cd new
+echo new...
+ln -s ../certdata.txt
+python3 ../certdata2pem.py > stdout 2> stderr
+ls -1 *.crt | sort > ../new.files
+cd ..
+echo '----------------------------'
+while read line; do
+	IFS='#' eval set -- \$line
+	old="$1"
+	new="$2"
+	common="$3"
+	if [ -n "$old" ]; then
+		echo "- $old"
+		showcert old/$old
+	elif [ -n "$new" ]; then
+		echo "+ $new"
+		showcert new/$new
+	elif ! cmp "old/$common" "new/$common"; then
+		echo "~ $common"
+		showcert old/$common
+		showcert new/$common
+		diff -u old/$common new/$common || true
+	fi
+done < <(comm --output-delimiter='#' old.files new.files)

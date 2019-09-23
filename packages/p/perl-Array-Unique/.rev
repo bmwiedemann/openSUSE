@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa438f68a1e95bf2fc9d71ec8af6595e</srcmd5>
+    <version>0.08</version>
+    <time>1358417920</time>
+    <user>coolo</user>
+    <comment>- added missing copyright header (superseeded 148649
+- dependency for perl-Nagios-Plugins</comment>
+    <requestid>148658</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>aa438f68a1e95bf2fc9d71ec8af6595e</srcmd5>
+    <version>0.08</version>
+    <time>1359109598</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>aa438f68a1e95bf2fc9d71ec8af6595e</srcmd5>
+    <version>0.08</version>
+    <time>1379663554</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>aa438f68a1e95bf2fc9d71ec8af6595e</srcmd5>
+    <version>0.08</version>
+    <time>1409302164</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

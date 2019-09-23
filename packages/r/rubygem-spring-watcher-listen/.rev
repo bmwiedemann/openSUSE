@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e6a341cdd99571180254435bfe043e60</srcmd5>
+    <version>2.0.0</version>
+    <time>1469080679</time>
+    <user>dimstar_suse</user>
+    <comment>needed by rails 5</comment>
+    <requestid>406355</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>98f42de667e9e2c0b68148480b32cb10</srcmd5>
+    <version>2.0.1</version>
+    <time>1476109366</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433694</requestid>
+  </revision>
+</revisionlist>

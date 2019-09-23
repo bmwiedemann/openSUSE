@@ -1,0 +1,48 @@
+#----------------------------------------------------------------
+
+# The SSL tests that are failing correctly
+main.ssl_7937                                : bsc#937835, MDEV-8404
+main.ssl_crl                                 : bsc#937835, MDEV-8404
+main.ssl_8k_key                              : bsc#937835, MDEV-8404
+
+# Main and perfschema tests
+main.userstat                                : bsc#937836, MDEV-8446
+perfschema.nesting                           : bsc#937836, MDEV-8446
+perfschema.socket_summary_by_event_name_func : bsc#937836, MDEV-8446
+perfschema.socket_summary_by_instance_func   : bsc#937836, MDEV-8446
+
+# Failing because of "Self Signed Certificate in the Certificate Chain"
+perfschema.cnf_option                        : all
+rpl.rpl_row_img_blobs                        : all 
+rpl.rpl_row_img_eng_min                      : all
+rpl.rpl_row_img_eng_noblob                   : all
+
+#----------------------------------------------------------------
+
+# Needs to be investigated (issues trackers will be added)
+sys_vars.slave_parallel_threads_basic        : since 10.3.16 - x86_64, i386, s390x, armv7l
+rocksdb.2pc_group_commit                     : since 10.3.16 - x86_64
+rocksdb.read_only_tx                         : since 10.3.16 - x86_64
+rocksdb.shutdown                             : since 10.3.16 - x86_64
+rocksdb.index_merge_rocksdb                  : since 10.3.16 - x86_64
+rocksdb_rpl.mdev12179                        : since 10.3.16 - x86_64
+main.gis_notembedded                         : since 10.3.16 - x86_64, i386, s390x, armv7l
+unit.conc_ps_bugs                            : since 10.3.16 - x86_64, i386, s390x, armv7l
+handler.heap                                 : since 10.3.16 - s390x
+federated.federatedx_versioning              : since 10.3.16 - amrv7l
+versioning.partition                         : since 10.3.16 - amrv7l
+versioning.online                            : since 10.3.16 - amrv7l
+versioning.auto_increment                    : since 10.3.16 - amrv7l
+versioning.truncate                          : since 10.3.16 - amrv7l
+versioning.select                            : since 10.3.16 - amrv7l
+versioning.delete                            : since 10.3.16 - amrv7l
+versioning.foreign                           : since 10.3.16 - amrv7l
+versioning.insert                            : since 10.3.16 - amrv7l
+versioning.replace                           : since 10.3.16 - amrv7l
+versioning.select2                           : since 10.3.16 - amrv7l
+versioning.update                            : since 10.3.16 - amrv7l
+versioning.alter                             : since 10.3.16 - amrv7l
+versioning.commit_id                         : since 10.3.16 - amrv7l
+versioning.trx_id                            : since 10.3.16 - amrv7l
+mariabackup.system_versioning                : since 10.3.16 - amrv7l
+versioning.insert2                           : since 10.3.16 - amrv7l

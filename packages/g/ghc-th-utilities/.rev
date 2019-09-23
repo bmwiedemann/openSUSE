@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>321f8b2318008c638256842a42a9793c</srcmd5>
+    <version>0.2.0.1</version>
+    <time>1492169607</time>
+    <user>maxlin_factory</user>
+    <comment>initial version</comment>
+    <requestid>480537</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8f331d36ed781133ab67d8e2c3f1a3eb</srcmd5>
+    <version>0.2.0.1</version>
+    <time>1505506733</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525533</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d93dabf0ad7e5c043ec7574093853b0f</srcmd5>
+    <version>0.2.0.1</version>
+    <time>1527675668</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609826</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5bffe180c03b1735f5dfa02553023094</srcmd5>
+    <version>0.2.0.1</version>
+    <time>1532445791</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623877</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d3ee6c41bf7426df54a8c5a24990da90</srcmd5>
+    <version>0.2.0.1</version>
+    <time>1540451185</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643474</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2ed0056a2d6bd2afebaaca417bc09852</srcmd5>
+    <version>0.2.1.0</version>
+    <time>1548452614</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>667144</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e7c5bef2e2681e342b5dd7330feb3591</srcmd5>
+    <version>0.2.3.0</version>
+    <time>1557653794</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>701775</requestid>
+  </revision>
+</revisionlist>

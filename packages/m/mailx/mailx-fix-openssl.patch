@@ -1,0 +1,35 @@
+--- openssl.c
++++ openssl.c	2011-05-13 00:00:00.000000000 +0000
+@@ -63,6 +63,7 @@ static sigjmp_buf	ssljmp;
+ #include <openssl/x509.h>
+ #include <openssl/pem.h>
+ #include <openssl/rand.h>
++#include <openssl/engine.h>
+ 
+ #include "rcv.h"
+ #include <errno.h>
+@@ -171,6 +172,10 @@ ssl_init(void)
+ 	verbose = value("verbose") != NULL;
+ 	if (initialized == 0) {
+ 		SSL_library_init();
++/* Load all bundled ENGINEs into memory and make them visible */
++ ENGINE_load_builtin_engines();
++ /* Register all of them for every algorithm they collectively implement */
++ ENGINE_register_all_complete();
+ 		initialized = 1;
+ 	}
+ 	if (rand_init == 0)
+@@ -216,9 +221,12 @@ ssl_select_method(const char *uhp)
+ 
+ 	cp = ssl_method_string(uhp);
+ 	if (cp != NULL) {
++#ifndef OPENSSL_NO_SSL2
+ 		if (equal(cp, "ssl2"))
+ 			method = SSLv2_client_method();
+-		else if (equal(cp, "ssl3"))
++		else
++#endif 
++            if (equal(cp, "ssl3"))
+ 			method = SSLv3_client_method();
+ 		else if (equal(cp, "tls1"))
+ 			method = TLSv1_client_method();

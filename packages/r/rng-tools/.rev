@@ -1,0 +1,357 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e1cfb4e005c74456655c71a3497f5edf</srcmd5>
+    <version>2</version>
+    <time>1168904120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="43">
+    <srcmd5>de22702abaf9959d92fc40bd630d7b24</srcmd5>
+    <version>2</version>
+    <time>1175468582</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="78">
+    <srcmd5>f7fc1484ab6bcdabba3d76e123a05712</srcmd5>
+    <version>2</version>
+    <time>1194649206</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="133">
+    <srcmd5>f7fc1484ab6bcdabba3d76e123a05712</srcmd5>
+    <version>2</version>
+    <time>1194649206</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="134">
+    <srcmd5>21b1b64ee9565a213b5c092f893d0191</srcmd5>
+    <version>2</version>
+    <time>1231508211</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="136">
+    <srcmd5>21b1b64ee9565a213b5c092f893d0191</srcmd5>
+    <version>2</version>
+    <time>1231508211</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="137">
+    <srcmd5>a40f1f12f758ae31fddc6de368a1e6a0</srcmd5>
+    <version>2</version>
+    <time>1268925989</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="138">
+    <srcmd5>af8d53ea35e9a6782674855ecd9a8436</srcmd5>
+    <version>2</version>
+    <time>1272326643</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rng-tools based on submit request 38898 from user oertel
+</comment>
+    <requestid>38898</requestid>
+  </revision>
+  <revision rev="9" vrev="139">
+    <srcmd5>6f2dd97664453ec7de64819fda63f2ca</srcmd5>
+    <version>2</version>
+    <time>1275322881</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rng-tools based on submit request 40129 from user oertel
+</comment>
+    <requestid>40129</requestid>
+  </revision>
+  <revision rev="10" vrev="141">
+    <srcmd5>6f2dd97664453ec7de64819fda63f2ca</srcmd5>
+    <version>2</version>
+    <time>1278667387</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="142">
+    <srcmd5>6f2dd97664453ec7de64819fda63f2ca</srcmd5>
+    <version>2</version>
+    <time>1278678616</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="143">
+    <srcmd5>ff01f91ed457c63a8cf946fa4db865e0</srcmd5>
+    <version>2</version>
+    <time>1280741243</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/rng-tools based on submit request 44245 from user coolo
+</comment>
+    <requestid>44245</requestid>
+  </revision>
+  <revision rev="13" vrev="144">
+    <srcmd5>0dd65d0788c177e3ea850de3a70c7ac6</srcmd5>
+    <version>2</version>
+    <time>1289416356</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52725 from user oertel
+</comment>
+    <requestid>52725</requestid>
+  </revision>
+  <revision rev="14" vrev="145">
+    <srcmd5>d104641cf4cc3ca5412b986c3ac19dab</srcmd5>
+    <version>2</version>
+    <time>1289416366</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52725
+</comment>
+  </revision>
+  <revision rev="15" vrev="146">
+    <srcmd5>08c0fc8c8cc0fad5efc57a21ea742e77</srcmd5>
+    <version>2</version>
+    <time>1290435141</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53625 from user oertel
+</comment>
+    <requestid>53625</requestid>
+  </revision>
+  <revision rev="16" vrev="147">
+    <srcmd5>993131140db743461e6ae88161944851</srcmd5>
+    <version>2</version>
+    <time>1290435148</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53625
+</comment>
+  </revision>
+  <revision rev="17" vrev="150">
+    <srcmd5>993131140db743461e6ae88161944851</srcmd5>
+    <version>2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="151">
+    <srcmd5>7e2e7296d9cabf257e32f9553cf02200</srcmd5>
+    <version>2</version>
+    <time>1299756248</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63793 from user coolo
+</comment>
+    <requestid>63793</requestid>
+  </revision>
+  <revision rev="19" vrev="152">
+    <srcmd5>292763314dfb9127c8455ec8f00aa563</srcmd5>
+    <version>2</version>
+    <time>1299756256</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63793
+</comment>
+  </revision>
+  <revision rev="20" vrev="153">
+    <srcmd5>39c372f1e7c9090fd55b9d2ef7376bf4</srcmd5>
+    <version>2</version>
+    <time>1313050395</time>
+    <user>saschpe</user>
+    <comment>- Work around VIA Nano xstore bug
+- Add support for Linux 3.0
+- Enable large file support
+- Enable VIA PadLock support on x86_64 (forwarded request 78416 from elvigia)</comment>
+    <requestid>78417</requestid>
+  </revision>
+  <revision rev="21" vrev="154">
+    <srcmd5>79e670d33a2a52092e4aa06a39938014</srcmd5>
+    <version>2</version>
+    <time>1313050402</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78417
+</comment>
+  </revision>
+  <revision rev="22" vrev="156">
+    <srcmd5>79e670d33a2a52092e4aa06a39938014</srcmd5>
+    <version>2</version>
+    <time>1319182428</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="157">
+    <srcmd5>c0a16768ea4345c0bd3a5cd4b4c316d3</srcmd5>
+    <version>2</version>
+    <time>1324831262</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>97492</requestid>
+  </revision>
+  <revision rev="24" vrev="158">
+    <srcmd5>ac021a011da7db4759b414c87e99c07c</srcmd5>
+    <version>2</version>
+    <time>1325658677</time>
+    <user>coolo</user>
+    <comment>- Put rngd back into %{_sbindir} /usr is mounted in the initrd now. (forwarded request 98463 from elvigia)</comment>
+    <requestid>98476</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a18d924e3a2d940a27600e23497ad3f2</srcmd5>
+    <version>3</version>
+    <time>1328001726</time>
+    <user>coolo</user>
+    <comment>update to version 3 (forwarded request 101930 from tabraham1)</comment>
+    <requestid>102095</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>a18d924e3a2d940a27600e23497ad3f2</srcmd5>
+    <version>3</version>
+    <time>1340184146</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8ac4fb0e83e5aed04b3b4ee655d9a855</srcmd5>
+    <version>4</version>
+    <time>1349437666</time>
+    <user>coolo</user>
+    <comment>- update to version 4:
+  * Add RDRAND instruction support
+  * Add -q and -v options for quiet and verbose output
+  * Add -p option for specifying PID file (text file containing daemon's PID)
+  * Disable entropy source if facing continued failures, but be
+    tolerant of the occasional fault.
+  * Default device is now the preferred /dev/hwrng
+  * Do not use TPM device for RNG access, if /dev/hwrng is present
+    (TPM RNG is exported via the kernel, in newer kernels)
+- require $remote_fs in init script as binaries are below /usr (forwarded request 137047 from lrupp)</comment>
+    <requestid>137048</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>8ac4fb0e83e5aed04b3b4ee655d9a855</srcmd5>
+    <version>4</version>
+    <time>1359110291</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>efc80aceaa7c3fa3c0922ae4c26f90f9</srcmd5>
+    <version>4</version>
+    <time>1365791838</time>
+    <user>coolo</user>
+    <comment>- Just to be in the safe side, put udev rules later into
+  the mix 50-hwrng.rules --&gt; 90-hwrng.rules (forwarded request 163573 from elvigia)</comment>
+    <requestid>163592</requestid>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>cdcbf105617fe03dd860c7a8ddbc1152</srcmd5>
+    <version>4</version>
+    <time>1368721222</time>
+    <user>coolo</user>
+    <comment>- remove option &quot;--feed-interval=1&quot; from init-script and
+  service file, no current version of rng-tools has ever
+  known this option (bnc#819764) (forwarded request 175762 from oertel)</comment>
+    <requestid>175864</requestid>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>8970160e324fb13c3dadefe18dfb5fa0</srcmd5>
+    <version>4</version>
+    <time>1378133413</time>
+    <user>coolo</user>
+    <comment>- in a previous change I removed WantedBy=multi-user.target
+  from the systemd service file because the service can get
+  automatically started by udev, however there are usecases
+  on which manual start is desirable, restore that. (forwarded request 197037 from elvigia)</comment>
+    <requestid>197066</requestid>
+  </revision>
+  <revision rev="32" vrev="8">
+    <srcmd5>8970160e324fb13c3dadefe18dfb5fa0</srcmd5>
+    <version>4</version>
+    <time>1379664460</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="9">
+    <srcmd5>cee29fb42c3802ac0cde59310e382f6f</srcmd5>
+    <version>4</version>
+    <time>1383144695</time>
+    <user>scarabeus_factory</user>
+    <comment>made required changes (forwarded request 204992 from posophe)</comment>
+    <requestid>205100</requestid>
+  </revision>
+  <revision rev="34" vrev="10">
+    <srcmd5>769c5cc9ca3172aed8ad741c7e6af3e6</srcmd5>
+    <version>4</version>
+    <time>1385391840</time>
+    <user>coolo</user>
+    <comment>- there is no trousers-devel requirement anymore 
+- define _udevrulesdir only if not already defined
+- run %udev_rules_update, if defined. (forwarded request 208096 from elvigia)</comment>
+    <requestid>208263</requestid>
+  </revision>
+  <revision rev="35" vrev="11">
+    <srcmd5>45a6b9754928088b06b6b9121c38b90d</srcmd5>
+    <version>4</version>
+    <time>1388396381</time>
+    <user>coolo</user>
+    <comment>- udev does not like rules without a new line (forwarded request 212372 from elvigia)</comment>
+    <requestid>212417</requestid>
+  </revision>
+  <revision rev="36" vrev="12">
+    <srcmd5>ee501c1de65fd6ff5dcf8419daef110f</srcmd5>
+    <version>4</version>
+    <time>1399377778</time>
+    <user>coolo</user>
+    <comment>- Fix automagic startup with udev/systemd virtio-rng KERNEL
+  name is hw_random not hwrng..
+
+- in some parallel universe --fill-watermark took a percentage
+  value, not in this incarnation at least, where it takes
+  an integer. just use the sane builtin default (forwarded request 232122 from elvigia)</comment>
+    <requestid>232462</requestid>
+  </revision>
+  <revision rev="37" vrev="13">
+    <srcmd5>99b3d77b5fc3c09a2e0074a7e36cd01f</srcmd5>
+    <version>4</version>
+    <time>1403689648</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238561</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>8b37bb45dcbff840af661dd734b89698</srcmd5>
+    <version>5</version>
+    <time>1409118376</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246357</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>8b37bb45dcbff840af661dd734b89698</srcmd5>
+    <version>5</version>
+    <time>1409303193</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>48eba693c747a9f86ffb4e38d784e322</srcmd5>
+    <version>5</version>
+    <time>1409998703</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247476</requestid>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>7130e3931106f26f5486f524dfae369f</srcmd5>
+    <version>5</version>
+    <time>1411721524</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252015</requestid>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>9d16db185a7cf912acd1eae37f315701</srcmd5>
+    <version>5</version>
+    <time>1445288029</time>
+    <user>dimstar_suse</user>
+    <comment>- enable aarch64 as well
+
+- Enable Power64 architecture. Starting with Power7+ we have in 
+  CPU random number generator</comment>
+    <requestid>339773</requestid>
+  </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>f17e8f4dad0fa849704c3b1a99aa358f</srcmd5>
+    <version>5</version>
+    <time>1455190653</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358359</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5acd17ef9a20cac271722e825843e616</srcmd5>
+    <version>2.6.20</version>
+    <time>1517606485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568003</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c0567ef673f5b323dc527aeef92605cf</srcmd5>
+    <version>2.8.3</version>
+    <time>1532681726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623392</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>41f2f7a0bab2a535b2a8595d35208ff6</srcmd5>
+    <version>2.8.6</version>
+    <time>1543953277</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653509</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e518848edc12912d23069214f0abeed4</srcmd5>
+    <version>2.8.6</version>
+    <time>1544539725</time>
+    <user>dimstar_suse</user>
+    <comment>Don't build against xerces-j2-xml-apis that is bound to go</comment>
+    <requestid>656907</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>efe9b39a937064e71f81a645e1acf9ab</srcmd5>
+    <version>2.8.12</version>
+    <time>1557142077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700917</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4f9fc67c6ae848c994c6fa591d997ce1</srcmd5>
+    <version>2.8.13</version>
+    <time>1561641988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712162</requestid>
+  </revision>
+</revisionlist>

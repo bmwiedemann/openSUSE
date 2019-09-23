@@ -1,0 +1,28 @@
+From feb93b516fb9a1547c652972e5ebc5fc7b538e06 Mon Sep 17 00:00:00 2001
+From: Martin Liska <mliska@suse.cz>
+Date: Mon, 15 Jul 2019 16:05:05 +0200
+Subject: [PATCH] Fix -Werror=return-type error in configure.
+
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 988242835..16f3fd6d9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1655,9 +1655,9 @@ main (int   argc,
+     TestOutputStream () : OutputStream () { }
+     void Write (uint8_t *a, unsigned int b) { }
+     void NextSegment () { }
+-    uint64_t SegmentSize () { }
++    uint64_t SegmentSize () { return 0; }
+     void Close () { }
+-    int Open () { }
++    int Open () { return 0; }
+ };
+   MultiplexJob *job = new MultiplexJob ();
+   vector<IBitStream *> inputs;
+-- 
+2.22.0
+

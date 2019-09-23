@@ -1,0 +1,12 @@
+Index: compiz-0.8.6/src/screen.c
+===================================================================
+--- compiz-0.8.6.orig/src/screen.c
++++ compiz-0.8.6/src/screen.c
+@@ -2646,6 +2646,7 @@ focusDefaultWindow (CompScreen *s)
+ 
+ 	    if (w->type & (CompWindowTypeNormalMask |
+ 			   CompWindowTypeDialogMask |
++			   CompWindowTypeFullscreenMask |
+ 			   CompWindowTypeModalDialogMask))
+ 	    {
+ 		if (compareWindowActiveness (focus, w) < 0)

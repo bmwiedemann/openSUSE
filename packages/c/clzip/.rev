@@ -1,0 +1,97 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1e10a57494037c51f65ca0989e26026b</srcmd5>
+    <version>1.4</version>
+    <time>1372686771</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>178903</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1e10a57494037c51f65ca0989e26026b</srcmd5>
+    <version>1.4</version>
+    <time>1379662121</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>48f4594ae34b748970da974ba3a1130b</srcmd5>
+    <version>1.5</version>
+    <time>1381304561</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202655</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>48f4594ae34b748970da974ba3a1130b</srcmd5>
+    <version>1.5</version>
+    <time>1409300653</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>c437b276f7bbcf43a9d51373644c2e24</srcmd5>
+    <version>1.5</version>
+    <time>1411721518</time>
+    <user>coolo</user>
+    <comment>- Drop gpg-offline build-time requirement</comment>
+    <requestid>251758</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>11c521755a55c41e675a541637bb0b2e</srcmd5>
+    <version>1.6</version>
+    <time>1412533863</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.6</comment>
+    <requestid>253631</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>df031e72afa97bc62f122b02eb94fd37</srcmd5>
+    <version>1.7</version>
+    <time>1439556376</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>322308</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>944b8a23fc5bb57d87cc4273e7068d00</srcmd5>
+    <version>1.8</version>
+    <time>1464484421</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8:
+- Run internal testsuite (forwarded request 398441 from pluskalm)</comment>
+    <requestid>398454</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>133b2638a9e6156e5e55569efbff1c7d</srcmd5>
+    <version>1.9</version>
+    <time>1495267970</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9: (forwarded request 494531 from pluskalm)</comment>
+    <requestid>494555</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5e3fe58929503c038a5e2f39fcd135a8</srcmd5>
+    <version>1.10</version>
+    <time>1520588629</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.10</comment>
+    <requestid>583125</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>42d9a2988c4275e4ee0c6aecabc04c1e</srcmd5>
+    <version>1.11~rc1</version>
+    <time>1546245984</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.11~rc1</comment>
+    <requestid>658033</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>29633699249d920c2774dcc2f595bb08</srcmd5>
+    <version>1.11</version>
+    <time>1553611292</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.11</comment>
+    <requestid>685155</requestid>
+  </revision>
+</revisionlist>

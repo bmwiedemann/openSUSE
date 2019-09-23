@@ -1,0 +1,463 @@
+-------------------------------------------------------------------
+Fri Jul 19 08:00:21 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 1.23.1:
+  * Translations update
+  * fix build error when gla11y is not installed
+  * avoid 'g_type_class_add_private'
+  * Add support for checking .ui accessibility with gla11y
+  * preferences: Fix inconsistent active state of trailing characters
+  * Add draw spaces/tabs/newlines options
+  * Draw spaces, tabs, newlines and nbsp.
+  * Fix use of deprecated glib-genmarshal types
+  * add snippet to toggle comment/uncomment
+  * pluma-print-preview: Fix warning: identical expressions
+  * Switch to Python 3 and change code for compatibility.
+
+-------------------------------------------------------------------
+Thu Jul 18 13:48:08 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 1.23.0:
+  * Translations update
+  * fix build error when gla11y is not installed
+  * avoid 'g_type_class_add_private'
+  * Add support for checking .ui accessibility with gla11y
+  * Use smart tabs to fix indentation and alignment
+  * preferences: Fix inconsistent active state of trailing characters
+  * Add draw spaces/tabs/newlines options
+  * Draw spaces, tabs, newlines and nbsp.
+  * Fix use of deprecated glib-genmarshal types
+  * add snippet to toggle comment/uncomment
+  * pluma-print-preview: Fix warning: identical expressions
+  * Switch to Python 3 and change code for compatibility.
+- remove patch:
+  * pluma-gtk-3.20.patch: we don't support gtk3.20 anymore
+- build require gtk >= 3.22, glib >= 2.50 and gio >= 2.50
+ 
+
+-------------------------------------------------------------------
+Sun May 12 18:13:56 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.22.1:
+  * Update installation instructions, fix spelling and an old
+    reference.
+  * Help: Replace link linkend with xref linkend.
+  * help: Update copyright..
+  * Use ITS in docbook article info, validate with dbits schemas.
+  * Upgrade the manual to docbook 5.0.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * pluma-utils.c: Avoid deprecated gdk_error_trap_push/pop.
+  * pluma-notebook: Pass event to gdk_seat_grab.
+  * pluma-window: Use gtk_menu_popup_at_widget for GtkNotebook.
+  * Avoid deprecated gtk_menu_popup.
+  * pluma-notebook.c: Avoid deprecated gdk_pointer_ ... functions.
+  * pluma-notebook.c: Avoid deprecated gdk_window_at_pointer.
+  * Avoid deprecated gtk_dialog_get_action_area.
+  * pluma-view.c: Avoid deprecated gtk_widget_override_font.
+  * Avoid deprecated gtk_font_button_set/get_font_name.
+  * pluma-file-browser-widget.c: Avoid deprecated GtkImageMenuItem.
+  * error-message-area: Avoid gtk_info_bar_new_with_buttons with
+    stock ids.
+  * Avoid gtk_info_bar_add_button with stock ids.
+  * Avoid pluma_file_chooser_dialog_new with stock ids.
+  * Avoid gtk_file_chooser_dialog_new with stock ids.
+  * pluma-time-plugin.c: Avoid gtk_dialog_new_with_buttons with
+    stock ids.
+  * Avoid gtk_dialog_add_buttons with stock ids.
+  * Use the same legal.xml file.
+  * Refer to the strftime(3) man page for more information.
+  * Refer to the pluma(1) man page for more information.
+  * prefs-manager: Silent some build warnings.
+  * Fix a few introspection and doc warnings.
+  * Fix search backwards with regex.
+  * pluma-document: Fix a possible memory leak.
+  * pluma-view: Fix: Don't lose the PRIMARY clipboard.
+  * Make the "close confirmation" dialogue bigger with multiple
+    files.
+  * pluma-view: Fix bold and italic fonts in menus.
+  * spell plugin: Autocheck spelling with [control + F7].
+  * Add the option to hide the first tab if there is only one tab.
+  * pluma-view: Fix a possible memory leak.
+  * pluma-view: Use static variables for cssprovider and settings.
+  * pluma-view: Synch the font in context-menu with a gsettings key.
+  * pluma-window: Make sure some resources are freed.
+  * Add the ability to switch tabs using [ctrl+tab] and
+    [ctrl+shift+tab].
+  * pluma-view: Fix the font in context menu.
+  * pluma-view: pluma_override_font: Add CSS provider only one time.
+  * pluma-view: Fix: Bold and Italic fonts don't work.
+  * Add update-authors.pl script which helps to update
+    pluma.about.
+  * Read authors (updated) from pluma.about file.
+  * Show enchant version when configure.
+  * Replace the deprecated enchant_dict_add_to_pwl with
+    enchant_dict_add.
+  * Make translatable the documenters in the About dialogue.
+  * Ensure proper translation of the About dialogue title.
+  * Add Licence button in About Pluma dialogue.
+  * Make translatable the copyright in the About dialogue.
+  * Remove type & url attr of ulink in translation.
+  * Remove deprecated help section: Opening a File from a URI.
+  * eggsmclient: Avoid deprecated g_type_class_add_private.
+  * Get snippet window size before destroying it.
+  * Fix misplaced underscore.
+  * pluma-utils: Fix a memory leak.
+  * pluma-window: Fix memory leaks.
+  * Update translations.
+- Rebase pluma-gtk-3.20.patch.
+
+-------------------------------------------------------------------
+Wed Dec 26 23:25:34 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.4:
+  * Disable deprecation warnings for distcheck.
+  * Move appdata to metainfo directory.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun Nov 25 15:37:18 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.3:
+  * Use make functions for HELP_LINGUAS.
+  * help: Improvements.
+  * Remove unused screenshots.
+  * Fix spelling and grammar mistakes.
+  * Use actual pluma screenshot.
+  * pluma-document: Do not crash using files with "bom".
+  * pluma-view: Fix: unexpectedly switch between tabs.
+  * close-confirmation-dialog: Do not resize the dialogue
+    unexpectedly.
+  * pluma-sort-plugin: Avoid an extra empty line.
+  * Update translations.
+
+-------------------------------------------------------------------
+Thu Jun  5 11:44:33 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.2:
+  * pluma-notebook: Avoid new file with double click in a vertical
+    scrollbar.
+  * pluma-notebook: Avoid new file with double click in forward
+    arrow button.
+  * pluma-notebook: Fix unexpected behaviour with dnd selected text.
+  * pluma-view: Fix unexpected behaviour with dnd under line
+    numbers.
+  * pluma-print-preview: Fix weird behaviour with mouse buttons.
+  * Fix Pluma crashing with a mouse wheel over a tab.
+  * pluma-view.c: Improve GtkCheckMenuItem "Display line numbers".
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Apr 11 10:12:43 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1:
+  * Make notebook tabs scrollable.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.0:
+  * Require GTK+ 3.22 and GLib 2.50.
+  * Double click to the right of the last open tab to open a new
+    tab.
+  * Support new location of the Gtk bookmarks file.
+  * docs: We have encodings combobox, not option menu.
+  * Remove references to PlumaStatus.
+  * docs: Remove some references to nonexistent stuff.
+  * filebrowser: Don't parse .hidden files - GIO does it since
+    2.36.
+  * Don't request to save documents with no changes.
+  * Add a gsettings key to hide/show(default) tabs with the side
+    pane.
+  * Hide tabs if the sidebar is used.
+  * Enable the ability to save the document if it was changed
+    externally.
+  * Disable the ability to save the document if it has no changes.
+  * pluma-window: Have GtkRecentData on stack instead of allocating
+    it.
+  * An implementation of WidthOfScreen and HeightOfScreen.
+  * Fix regexp replacement with backreferences (e.g. "\0").
+  * Make sure pluma opens in the same window of the workspace.
+  * Add a gsettings key: Show save confirmation if the files have
+    changes.
+  * Put "peas_engine_enable_loader" in the correct pl.
+  * Make the list of recently used files work again.
+  * Fix some deprecations.
+  * Silent some build warnings.
+  * Update translations.
+- Add pluma-gtk-3.20.patch: Restore GLib 2.48 and GTK+ 3.20 support.
+
+-------------------------------------------------------------------
+Tue Nov 14 12:10:18 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.3:
+  * Fix pluma closing tabs unexpectedly with the [right+middle]
+    click.
+  * Fix wrong behaviour when holding down a [middle + right] click.
+  * Fix pluma closing tabs unexpectedly with a middle click.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun May  7 20:20:04 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.2:
+  * Improve the close-confirm dialogue.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Apr  4 17:20:24 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.1:
+  * Fix running under Wayland.
+  * modelines: Fix random crash on closing one of several Pluma
+    windows.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * NEWS: Use consistent, project wide, markdown-like formatting to
+    make generating release announcements easier.
+  * Move to GTK+3 (require GTK+ >= 3.14), drop the GTK+2 code and
+    --with-gtk build option.
+  * Build: Actually build GObject introspection data.
+  * Build: Remove the --enable-deprecations option - it actually
+    disables all deprecated stuff.
+  * Add the ability to search/replace text using regular expressions.
+  * Drop Python bindings and the --enable-python build option.
+  * Port the plugin system and both C and Python plugins to libpeas.
+  * Snippets plugin: Stop exposing functions on Pluma message bus
+    (doesn't work with GObject introspection).
+  * Snippets plugin: Fix snippet parts staying after Ctrl-Z.
+  * Fix an unexpected closing of the first tab with middle-click
+    under the line numbers column.
+  * Fix some runtime warnings in plugins.
+  * Some more fixes and cleanups in code and docs.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * Use GtkAboutDialog instead of MateAboutDialog.
+  * Drop dependency on libmate-desktop and --without-matedesktop
+    build option.
+  * GTK+3: Fix lots of deprecations.
+  * Some more fixes and cleanups.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun Aug 14 11:23:16 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.1:
+  * Enable spell checking for new documents when Always Autocheck
+    option is selected in Spell Check plugin.
+  * Fix restoring cursor position when loading a document.
+  * Install externaltools plugin only with Python support enabled.
+  * Make distcheck use currently selected GTK+ version.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0:
+  * Update translations.
+  * Fix Changelog generation.
+
+-------------------------------------------------------------------
+Mon Feb 22 13:43:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.1:
+  * Make switch-c tool in external tools work, fix security a issue.
+  * GTK+3: Add style class pluma-window and pluma-print-preview.
+
+-------------------------------------------------------------------
+Thu Feb 19 12:35:17 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.0:
+  * GTK+3: Fix several deprecations.
+  * Implement middle-click tab closing.
+  * Drop MateConf migration script.
+  * Add a new Configure dialog for the Spell Check plugin.
+
+-------------------------------------------------------------------
+Thu Feb 18 17:54:13 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 1.12.2:
+  * Python console plugin: Fix missing icon in plugin list.
+  * Fix possible use-after-free during incremental search.
+  * GTK+3: Fix incremental search entry colour when text isn't
+    found.
+
+-------------------------------------------------------------------
+Mon Nov 30 10:20:18 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.1:
+  * Add --without-matedesktop option to enable build without
+    dependency on libmate-desktop.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0.
+
+-------------------------------------------------------------------
+Wed Oct 14 06:17:24 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11.0:
+  * Add --enable-tests option to enable/disable running tests
+    during the build.
+  * Add plugin to strip trailing spaces on saving.
+  * Bring back active plugins listing in bugreport script.
+  * Drop support for win32/osx and checkupdate plugin.
+  * Retrieve strings directly from gschema (requires intltool
+    0.50.1).
+  * Capitalise Pluma in window titles and desktop file.
+  * Some annotation fixes.
+  * Some minor fixes and cleanups.
+
+-------------------------------------------------------------------
+Wed Jul 15 11:23:21 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.2:
+  * Window title: display full path to files on mounted drives.
+  * Close confirmation dialog: make text unfocusable.
+  * Quickopen plugin: fix filebrowser plugin support.
+  * Time plugin: GTK+3 fix.
+  * Multiple help fixes.
+
+-------------------------------------------------------------------
+Fri Jun 19 17:41:51 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.1:
+  * Fix gschema translations.
+  * Gtk3 fixes.
+  * Fix man page formatting.
+  * Build system fixes.
+
+-------------------------------------------------------------------
+Thu May  7 10:14:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.0 (changes since 1.9.1):
+  * Fix GLib >= 2.43 compatibility.
+  * Update translations.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Thu Jan 22 20:45:13 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.9.1 (unstable)
+  * Bug fixes release
+
+-------------------------------------------------------------------
+Fri Nov 28 16:42:11 UTC 2014 - p.drouand@gmail.com
+
+- Fix boo#906911,add mate-desktop-gsettings-schemas as a 
+  dependency
+
+-------------------------------------------------------------------
+Tue Nov 25  7:30:17 UTC 2014 - hillwood@opensuse.org
+
+- Fix boo#906911,add mate-desktop-gsettings-schemas as a 
+  dependency
+
+-------------------------------------------------------------------
+Sun Nov 23 22:39:00 UTC 2014 - p.drouand@gmail.com
+
+- Add pkgconfig(mate-desktop-2.0) build dependency; new build
+  requirement
+
+-------------------------------------------------------------------
+Mon Jul 14 16:30:57 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.0 (unstable)
+  + Use MateAboutDialog from libmate-desktop
+- Move from GTK2 to GTK3
+  + Replace pkgconfig(gtk+-2.0) with pkgconfig(gtk+-3.0) requirement
+  + Remove pkgconfig(pygtk-2.0) and pkgconfig(pygtksourceview-2.0)
+    build require
+  + Replace pkgconfig(pygobject-2.0) with pkgconfig(pygobject-3.0)
+    requirement
+  + Pass "with-gtk=3.0" in configure
+  
+-------------------------------------------------------------------
+Thu May  1 11:56:56 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.1
+  + fix go to line crash
+  + translations updates
+
+-------------------------------------------------------------------
+Wed Mar 12 16:11:07 UTC 2014 - p.drouand@gmail.com
+
+- Obsolete mate-text-editor-lang to avoid conflicts with this one
+
+-------------------------------------------------------------------
+Mon Mar 10 09:37:11 UTC 2014 - p.drouand@gmail.com
+
+- Obsolete mate-text-editor-devel with pluma-devel; add a Obsoletes
+  tag
+
+-------------------------------------------------------------------
+Wed Mar  5 13:04:50 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  + no changes since version 1.7.90
+
+-------------------------------------------------------------------
+Thu Feb 20 12:56:27 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.90 (unstable)
+  + add GTK3 support
+  + use yelp-tools instead of mate-doc-utils
+  + move user plugin dir from config_dir to data_dir. Plugins should have
+    never been installed in the config dir as they are not part of the
+    configuration. This means user will need to move the plugins directory
+    from: $HOME/.config/pluma/ to $HOME/.local/share/pluma/.
+
+-------------------------------------------------------------------
+Fri Feb 14 15:41:03 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.2 (unstable)
+  + update translation
+  + bugs fixed
+  + add tool to generate plugin templates
+
+-------------------------------------------------------------------
+Sun Jan 19 17:00:49 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.1 (unstable)
+  + update translations
+  + fix Sun GNOME Documentation Team references
+  + fix search fields in GTK3
+  + fix make dist
+  + add the primary-toolbar style class to the primary toolbar
+  + add section for running tests
+  + update bug tracker url
+  + gtk3: fix implicit declaration: gtk_source_language_get_id
+  + use Caja GSettings schema optionally
+    This makes Caja dependency optional.
+  + bump required glib version number to 2.32
+    It's required for the GSettingsSchemaSource API.
+  + Add  to ACLOCAL_AMFLAGS for user added flags
+  + plumadirs: Cleanup config dir usage
+    Remove backwards compatibility for < glib 2.6 as we require glib
+    2.22 at
+    a minimum now.
+    Use g_get_user_config_dir instead of custom logic.
+    Use pluma_dirs_get_user_config_dir in pluma_dirs_get_user_accels_file.
+  + pluma-dirs: Fix accel file location
+  + move user plugins dir to data_dir
+    Plugins don't belong in config_dir so we move them to data_dir.
+    User will need to move the plugin dir to the new location, see NEWS.
+  + update translations
+
+-------------------------------------------------------------------
+Fri Jan 17 23:17:38 UTC 2014 - p.drouand@gmail.com
+
+- Initial release (version 1.7.0)
+

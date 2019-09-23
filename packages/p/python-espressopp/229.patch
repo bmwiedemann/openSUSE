@@ -1,0 +1,34 @@
+From dadca19cb1dad95d1163163404b281118da150cf Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <junghans@votca.org>
+Date: Sun, 15 Jul 2018 19:41:19 -0600
+Subject: [PATCH] fix build with boost-1.67
+
+---
+ src/FixedPairList.cpp     | 1 +
+ src/integrator/Adress.cpp | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/FixedPairList.cpp b/src/FixedPairList.cpp
+index d4de07a9..0d4278be 100644
+--- a/src/FixedPairList.cpp
++++ b/src/FixedPairList.cpp
+@@ -29,6 +29,7 @@
+ //#include <algorithm>
+ #include <boost/bind.hpp>
+ #include "storage/Storage.hpp"
++#include "boost/serialization/vector.hpp"
+ #include "Buffer.hpp"
+ 
+ #include "esutil/Error.hpp"
+diff --git a/src/integrator/Adress.cpp b/src/integrator/Adress.cpp
+index 5d3b5c75..134ac3dd 100644
+--- a/src/integrator/Adress.cpp
++++ b/src/integrator/Adress.cpp
+@@ -28,6 +28,7 @@
+ #include "Cell.hpp"
+ #include "System.hpp"
+ #include "storage/Storage.hpp"
++#include "boost/serialization/vector.hpp"
+ #include "bc/BC.hpp"
+ #include "FixedTupleListAdress.hpp"
+ #include "iterator/CellListAllPairsIterator.hpp"

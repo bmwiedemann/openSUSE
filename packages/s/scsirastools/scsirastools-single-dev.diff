@@ -1,0 +1,50 @@
+Index: scsirastools-1.5.8/src/sgraidmon.c
+===================================================================
+--- scsirastools-1.5.8.orig/src/sgraidmon.c
++++ scsirastools-1.5.8/src/sgraidmon.c
+@@ -553,17 +553,17 @@ mdstat(char *devname, int *last)
+ 
+ int 
+ add_scsi_dev(int bus, int ch, int id, int lun)
+ {
+-	char cmd[40];
++	char cmd[48];
+ 	FILE *fp;
+ 
+ 	/* 
+-	 * echo "add-single-device 0 0 3 0" >/proc/scsi/scsi
++	 * echo "scsi add-single-device 0 0 3 0" >/proc/scsi/scsi
+ 	 */
+ 	fp = fopen("/proc/scsi/scsi","r+");
+ 	if (fp == NULL) return(errno); 
+-	sprintf(cmd,"add-single-device %d %d %d %d",bus,ch,id,lun);
++	sprintf(cmd,"scsi add-single-device %d %d %d %d",bus,ch,id,lun);
+ 	fprintf(fp,cmd);
+ 	fclose(fp);
+ 	strcat(cmd,"\n");
+ 	showit(cmd);
+Index: scsirastools-1.5.8/src/sgsafte.c
+===================================================================
+--- scsirastools-1.5.8.orig/src/sgsafte.c
++++ scsirastools-1.5.8/src/sgsafte.c
+@@ -374,17 +374,17 @@ mdstat(char *devname)
+ 
+ int 
+ add_scsi_dev(int bus, int ch, int id, int lun)
+ {
+-	char cmd[40];
++	char cmd[48];
+ 	FILE *fp;
+ 
+ 	/* 
+-	 * echo "add-single-device 0 0 3 0" >/proc/scsi/scsi
++	 * echo "scsi add-single-device 0 0 3 0" >/proc/scsi/scsi
+ 	 */
+ 	fp = fopen("/proc/scsi/scsi","r+");
+ 	if (fp == NULL) return(errno); 
+-	sprintf(cmd,"add-single-device %d %d %d %d",bus,ch,id,lun);
++	sprintf(cmd,"scsi add-single-device %d %d %d %d",bus,ch,id,lun);
+ 	fprintf(fp,cmd);
+ 	fclose(fp);
+ 	strcat(cmd,"\n");
+ 	showit(cmd);

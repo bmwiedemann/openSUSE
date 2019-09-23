@@ -1,0 +1,13 @@
+Index: src/pilot-xfer.c
+===================================================================
+--- src/pilot-xfer.c.orig
++++ src/pilot-xfer.c
+@@ -167,6 +167,8 @@ make_excludelist(const char *efile)
+ 			break;
+ 		}
+ 	}
++	
++	fclose(f);
+ }
+ 
+ 

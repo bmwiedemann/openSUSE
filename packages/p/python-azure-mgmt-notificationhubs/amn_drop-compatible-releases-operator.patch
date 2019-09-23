@@ -1,0 +1,12 @@
+diff -Nru azure-mgmt-notificationhubs-2.0.0.orig/setup.py azure-mgmt-notificationhubs-2.0.0/setup.py
+--- azure-mgmt-notificationhubs-2.0.0.orig/setup.py	2018-05-25 20:57:58.000000000 +0200
++++ azure-mgmt-notificationhubs-2.0.0/setup.py	2018-09-04 17:01:46.489121335 +0200
+@@ -78,7 +78,7 @@
+     packages=find_packages(exclude=["tests"]),
+     install_requires=[
+         'msrestazure>=0.4.27,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     cmdclass=cmdclass
+ )

@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a9dd87c309ff8df9c24b934634b3df09</srcmd5>
+    <version>1.0.4</version>
+    <time>1336471536</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115472</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>a9dd87c309ff8df9c24b934634b3df09</srcmd5>
+    <version>1.0.4</version>
+    <time>1340184371</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c56f3c2499bc87f9dc869a65280bcf34</srcmd5>
+    <version>1.0.5</version>
+    <time>1358874550</time>
+    <user>coolo</user>
+    <comment>Update (forwarded request 149177 from Zaitor)</comment>
+    <requestid>149351</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c56f3c2499bc87f9dc869a65280bcf34</srcmd5>
+    <version>1.0.5</version>
+    <time>1359110656</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c56f3c2499bc87f9dc869a65280bcf34</srcmd5>
+    <version>1.0.5</version>
+    <time>1379665083</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>ce8c55066393cd2520ff89a9207a8f37</srcmd5>
+    <version>1.0.5</version>
+    <time>1391770623</time>
+    <user>scarabeus_factory</user>
+    <comment>- fixed license to X11 in specfile</comment>
+    <requestid>221087</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>ce8c55066393cd2520ff89a9207a8f37</srcmd5>
+    <version>1.0.5</version>
+    <time>1409303769</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5244e71d37d3c2035a6a36f87b8f2d23</srcmd5>
+    <version>1.0.6</version>
+    <time>1429948449</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.6:
+  * config: Add missing AC_CONFIG_SRCDIR
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Fix typos &amp; wording issues in source comments
+  * Convert sprintf to snprintf
+  * Delete trailing whitespace from *.[ch] files</comment>
+    <requestid>303788</requestid>
+  </revision>
+</revisionlist>

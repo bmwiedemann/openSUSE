@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Mon Feb 18 19:46:51 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to new upstream release 2.33.0
+  * Fixed crash when compiling is null comparison with ASHANDLE object without any opEquals operator
+  * Fixed bug with anonymous initialization lists when used to initialize value type passed by value to function
+  * Loading bytecode that included use of template value types with a template type as argument crashed
+  * Compiler would crash on compiling ternary operator with anonymous list in one of the conditions
+  * Fixed error when saving bytecode for scripts containing interfaces that derives from interfaces
+  * Saving bytecode for a never returning function would cause assert failure
+  * Fixed an error when compiling a class method call as post-op and the name matches a type name
+  * Template types are now properly identified in separate namespaces
+  * Fixed memory build-up due to delayed cleanup when discarding modules with shared entities
+  * opImplCast with variable type won't be used for non-ref types
+  * Fixed compiler error when both opConv and opImplConv are implemented
+  * Fixed bug when loading bytecode containing shared interfaces with inheritance
+  * auto declarations now works correctly with implicit handle types
+  * Initializing an ASHANDLE type with overloaded opHndlAssign taking a var type as a handle wasn't done correctly
+  * Fixed loading byte code that uses external shared classes in namespace
+  * The bytecode for external shared entities is no longer saved in the module when inherited from
+  * Bytecode with external shared classes with virtual methods failed to load from bytecode
+  * Fixed assert failure on call to opCast(?&out) with a non-variable expression
+  * Passing a string literal to function expecting &out will now give compiler error
+  * Fixed problem in compiler that didn't release a temporary variable when passing anonymous object to function expecting ?&in
+  * Fixed a bug when loading bytecode having identical shared functions in different namespaces
+  * Compiler will now detect name conflict between property and function
+  * asIScriptFunction::GetDeclaration(false, true) no longer includes the namespace before the function name for class methods
+  * Fixed assert failure in asIScriptEngine::RefCastObject when object has multiple opCast methods
+  * Compiler no longer accepts primitives in the right hand expression for handle assignments
+  * Fixed compiler warning with use of asOFFSET on 64bit platforms
+  * Fixed crash caused by CreateScriptObjectCopy when script class' constructor takes argument by handle
+  * Child funcdefs in templates will no longer convert parameter types to @const&
+  * Fixed problem when compiling anonymous initialization list from default arg
+  * Ownership of shared template instances wasn't correctly transferred when discarding modules
+  * Fixed crash in compiler when matching anonymous list to function taking funcdef
+  * Fixed assert failure in builder when compiling external shared interfaces with inheritance
+  * Fixed crash in compiler when invalid script has inheritance from class with duplicate methods
+- Clean with spec-cleaner
+-------------------------------------------------------------------
+Sat Jul 15 08:21:51 UTC 2017 - mailaender@opensuse.org
+
+- Add documentation (including license)
+
+-------------------------------------------------------------------
+Tue Jun 13 14:30:46 UTC 2017 - jengelh@inai.de
+
+- Remove filler wording from description.
+
+-------------------------------------------------------------------
+Tue Feb 28 16:52:32 UTC 2017 - rpm@fthiessen.de
+
+- Update to new upstream release 2.31.2
+  * Fixed big endian errors in the compiler related to enum values
+  * CreateScriptObject crashed when called for template value types
+  * Fixed crash when discarding modules containing shared funcdefs
+  * Fixed big endian errors in the compiler related to implicit
+    conversions of constants
+  * Fixed bug with saved byte code not being portable between
+    32bit and 64bit platforms when including ChkNullS instruction
+  * Fixed assert failure in compiler when compiling
+    invalid switch case
+  * Fixed bug in compiler when passing a @& argument to a function
+  * Fixed bug when compiling get property accessor returning
+    a registered type that is then implicitly converted to another
+  * Fixed assert failure when compiling boolean not operator
+    on constant
+  * Fixed incorrect compiler warning about too large value when
+    assigning negative value to const int8/int16
+  * Compiler emits warnings if 64bit integer constants cannot
+    fit when implicitly converted to smaller types
+  * Compiler didn't support implicitly converting constant uint64
+    values to uint32 values
+  * Fixed assert failure when compiling comparison operator on
+    boolean constant
+  * Fixed bug in bytecode serialization when adjusting pointer
+    sizes for calls using asBC_ALLOC
+  * Fixed problem with registering types using the
+    asOBJ_IMPLICIT_HANDLE flag
+  * Fixed assert failure on implicit conversion from 8/16 bit
+    uint constant to integer
+  * opCast(?&out) on null handle now works without raising
+    null pointer exceptions
+  * Corrected as_config.h so Linux for 64bit ARM doesn't try to
+    compile as_callfunc_x64_gcc.cpp
+  * Fixed crash on GCC 6 due to CastToObjectType
+    accepting this == null
+
+-------------------------------------------------------------------
+Thu Aug 18 18:12:02 UTC 2016 - rpm@fthiessen.de
+
+- Update to new upstream release 2.31.1
+
+-------------------------------------------------------------------
+Sun Nov 23 18:07:07 UTC 2014 - mailaender@opensuse.org
+
+- Build version 2.29.2
+- Use en.opensuse.org/SourceUrls
+- Remove upstreamed makefile-flags.diff and angelscript-makefile.patch
+
+-------------------------------------------------------------------
+Sun Dec  9 11:13:54 UTC 2012 - joop.boonen@opensuse.org
+
+- Build version 2.25.2
+
+-------------------------------------------------------------------
+Thu Nov 15 22:14:23 UTC 2012 - joop.boonen@opensuse.org
+
+- Build version 2.25.1
+
+-------------------------------------------------------------------
+Wed Apr  4 17:08:10 UTC 2012 - jengelh@medozas.de
+
+- Avoid use of descending relative paths in %files
+- Add patch to allow using %optflags and resolve the
+  prior rpmlint message about the lack of it
+
+-------------------------------------------------------------------
+Sun Mar  4 18:33:21 UTC 2012 - joop.boonen@opensuse.org
+
+- added docs
+- corrected the patch now it the soname and the devel file
+  are symlinked to the version file
+
+-------------------------------------------------------------------
+Sun Mar  4 01:27:09 UTC 2012 - joop.boonen@opensuse.org
+
+- cleaned the spec file by means of spec-cleaner
+
+-------------------------------------------------------------------
+Sat Mar  3 21:34:28 UTC 2012 - joop.boonen@opensuse.org
+
+- corrected the license
+- adapted the spec file to the openSUSE standard
+
+-------------------------------------------------------------------
+Fri Feb 24 00:00:00 UTC 2012 - virus0025@gmail.com
+
+- initial version
+
+-------------------------------------------------------------------

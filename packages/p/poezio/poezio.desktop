@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Terminal=true
+Exec=poezio
+Type=Application
+Categories=Network;InstantMessaging
+StartupNotify=false
+Name=Poezio
+GenericName=XMPP client
+

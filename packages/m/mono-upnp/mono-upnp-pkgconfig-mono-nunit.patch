@@ -1,0 +1,84 @@
+diff -urN a/configure.ac b/configure.ac
+--- a/configure.ac	2012-02-14 12:58:30.000000000 +0000
++++ b/configure.ac	2012-02-14 19:05:05.699254547 +0000
+@@ -51,7 +51,7 @@
+ PKG_CHECK_MODULES([GLADE_SHARP_20], [glade-sharp-2.0])
+ PKG_CHECK_MODULES([MONO_ADDINS], [mono-addins])
+ PKG_CHECK_MODULES([TAGLIB_SHARP], [taglib-sharp])
+-PKG_CHECK_MODULES([NUNIT], [nunit])
++PKG_CHECK_MODULES([NUNIT], [mono-nunit])
+ 
+ AC_PATH_PROG(NUNIT_CMD, nunit-console2, nunit-console)
+ AC_SUBST(NUNIT_CMD)
+diff -urN a/tests/Mono.Upnp.Dcp.MediaServer1.FileSystem.Tests/Makefile.am b/tests/Mono.Upnp.Dcp.MediaServer1.FileSystem.Tests/Makefile.am
+--- a/tests/Mono.Upnp.Dcp.MediaServer1.FileSystem.Tests/Makefile.am	2012-02-09 01:42:03.000000000 +0000
++++ b/tests/Mono.Upnp.Dcp.MediaServer1.FileSystem.Tests/Makefile.am	2012-02-14 19:13:07.670254375 +0000
+@@ -89,7 +89,7 @@
+ 	../../bin/Mono.Upnp.Dcp.MediaServer1.dll \
+ 	../../bin/Mono.Upnp.Dcp.MediaServer1.FileSystem.dll \
+ 	../../bin/Mono.Upnp.dll \
+-	-pkg:nunit \
++	-pkg:mono-nunit \
+ 	-pkg:taglib-sharp \
+ 	System
+ 
+diff -urN a/tests/Mono.Upnp.Dcp.MediaServer1.FileSystem.Tests/Makefile.in b/tests/Mono.Upnp.Dcp.MediaServer1.FileSystem.Tests/Makefile.in
+--- a/tests/Mono.Upnp.Dcp.MediaServer1.FileSystem.Tests/Makefile.in	2012-02-14 12:58:44.000000000 +0000
++++ b/tests/Mono.Upnp.Dcp.MediaServer1.FileSystem.Tests/Makefile.in	2012-02-14 19:12:58.620254295 +0000
+@@ -243,7 +243,7 @@
+ 	../../bin/Mono.Upnp.Dcp.MediaServer1.dll \
+ 	../../bin/Mono.Upnp.Dcp.MediaServer1.FileSystem.dll \
+ 	../../bin/Mono.Upnp.dll \
+-	-pkg:nunit \
++	-pkg:mono-nunit \
+ 	-pkg:taglib-sharp \
+ 	System
+ 
+diff -urN a/tests/Mono.Upnp.Dcp.MediaServer1.Tests/Makefile.am b/tests/Mono.Upnp.Dcp.MediaServer1.Tests/Makefile.am
+--- a/tests/Mono.Upnp.Dcp.MediaServer1.Tests/Makefile.am	2012-02-09 01:42:03.000000000 +0000
++++ b/tests/Mono.Upnp.Dcp.MediaServer1.Tests/Makefile.am	2012-02-14 19:12:42.148254281 +0000
+@@ -91,7 +91,7 @@
+ REFERENCES =  \
+ 	../../bin/Mono.Upnp.Dcp.MediaServer1.dll \
+ 	../../bin/Mono.Upnp.dll \
+-	-pkg:nunit \
++	-pkg:mono-nunit \
+ 	System \
+ 	System.Xml
+ 
+diff -urN a/tests/Mono.Upnp.Dcp.MediaServer1.Tests/Makefile.in b/tests/Mono.Upnp.Dcp.MediaServer1.Tests/Makefile.in
+--- a/tests/Mono.Upnp.Dcp.MediaServer1.Tests/Makefile.in	2012-02-14 12:58:44.000000000 +0000
++++ b/tests/Mono.Upnp.Dcp.MediaServer1.Tests/Makefile.in	2012-02-14 19:12:49.636253193 +0000
+@@ -246,7 +246,7 @@
+ REFERENCES = \
+ 	../../bin/Mono.Upnp.Dcp.MediaServer1.dll \
+ 	../../bin/Mono.Upnp.dll \
+-	-pkg:nunit \
++	-pkg:mono-nunit \
+ 	System \
+ 	System.Xml
+ 
+diff -urN a/tests/Mono.Upnp.Tests/Makefile.am b/tests/Mono.Upnp.Tests/Makefile.am
+--- a/tests/Mono.Upnp.Tests/Makefile.am	2012-02-09 01:42:03.000000000 +0000
++++ b/tests/Mono.Upnp.Tests/Makefile.am	2012-02-14 19:09:22.881254542 +0000
+@@ -86,7 +86,7 @@
+ EXTRAS = 
+ 
+ REFERENCES =  \
+-	-pkg:nunit \
++	-pkg:mono-nunit \
+ 	System \
+ 	System.Xml
+ 
+diff -urN a/tests/Mono.Upnp.Tests/Makefile.in b/tests/Mono.Upnp.Tests/Makefile.in
+--- a/tests/Mono.Upnp.Tests/Makefile.in	2012-02-14 12:58:44.000000000 +0000
++++ b/tests/Mono.Upnp.Tests/Makefile.in	2012-02-14 19:09:13.187254689 +0000
+@@ -240,7 +240,7 @@
+ RESOURCES = 
+ EXTRAS = 
+ REFERENCES = \
+-	-pkg:nunit \
++	-pkg:mono-nunit \
+ 	System \
+ 	System.Xml
+ 

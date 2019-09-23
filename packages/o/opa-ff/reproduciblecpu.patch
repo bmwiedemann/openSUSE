@@ -1,0 +1,25 @@
+https://github.com/intel/opa-ff/issues/20
+https://bugzilla.opensuse.org/show_bug.cgi?id=1100677 packages do not build reproducibly from compile-time CPU-detection
+
+
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   2018-12-28
+
+    Drop march=native to avoid CPU detection on build machine
+    
+    in order to make builds reproducible.
+    See https://reproducible-builds.org/ for why this is good
+    
+Index: opa-ff-10.8.0.0.201.0.cb934204ad37/IbaTools/stream/Makefile
+===================================================================
+--- opa-ff-10.8.0.0.201.0.cb934204ad37.orig/IbaTools/stream/Makefile
++++ opa-ff-10.8.0.0.201.0.cb934204ad37/IbaTools/stream/Makefile
+@@ -110,7 +110,7 @@ INCLUDE_SUBDIR		=
+ #				(in addition to LOCALDEPLIBS)
+ #LOCAL_LIB_DIRS	= User library directories for libpaths [Empty]
+ 
+-CLOCAL = $(CPIE) -march=native -mcmodel=medium -DSTREAM_ARRAY_SIZE=353783808 -fopenmp
++CLOCAL = $(CPIE) -mcmodel=medium -DSTREAM_ARRAY_SIZE=353783808 -fopenmp
+ LDLOCAL = -fopenmp
+ 
+ # Include Make Rules definitions and rules

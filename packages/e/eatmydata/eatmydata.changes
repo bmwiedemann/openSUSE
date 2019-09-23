@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Thu Mar 26 10:34:14 UTC 2015 - astieger@suse.com
+
+- fix libdir for shlib on 64 bit
+
+-------------------------------------------------------------------
+Fri Jan 30 10:04:44 UTC 2015 - andreas.stieger@gmx.de
+
+- rename eatmydata.rpmlintrc to eatmydata-rpmlintrc for Factory
+
+-------------------------------------------------------------------
+Thu Jan 29 22:40:21 UTC 2015 - andreas.stieger@gmx.de
+
+- add eatmydata.rpmlintrc to spec file
+- reduce suppressed rpmlint warnings
+- note reason for suppression of shlib-policy-name-error 
+
+-------------------------------------------------------------------
+Sun Jan 25 10:40:01 UTC 2015 - andreas.stieger@gmx.de
+
+- eatmydata 105:
+  + no release notes
+- includes changes from 82:
+  + Add pthread_testcancel() calls to fix a bug where libeatmydata
+    wrapped fsync() wasn't a cancellation point which caused
+    problems with eglibc builds in debian.
+  + - another fixto get open and open64 on 32bit
+- includes changes from 79:
+  + fixed issues with largefile support on 64 and 32bit platforms
+    and being consistent behavior on if _FILE_OFFSET_BITS was
+    defined or not (test also added)
+- packaging changes:
+  + verify source signature
+  + clean spec file
+  + add documentation
+  + adjust %defattr to make %doc work on SLE 11
+  + add libeatmydata-105-remove-dpkg.patch to remove dpkg call for
+    run-time architecture description
+
+-------------------------------------------------------------------
+Mon Apr 15 14:53:46 UTC 2013 - jdsn@suse.de
+
+- initial package of eatmydata version 65
+

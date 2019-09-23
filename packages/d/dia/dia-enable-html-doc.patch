@@ -1,0 +1,25 @@
+From 9d0973e21955205c7b334a4447e2418e246aaeeb Mon Sep 17 00:00:00 2001
+From: Mike Gorse <mgorse@linux-sh69.site>
+Date: Thu, 13 Feb 2014 18:44:37 -0600
+Subject: [PATCH] Always enable html docs
+
+---
+ configure.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.in b/configure.in
+index bfca467..50bef62 100644
+--- a/configure.in
++++ b/configure.in
+@@ -602,7 +602,7 @@ hardbook_ok=no
+ xsltproc_ok=no
+ if test "x$with_hardbooks" = "xno"; then
+   AM_CONDITIONAL(WITH_JW, test "xno" != "xno")
+-  AM_CONDITIONAL(WITH_HTMLDOC, test "xno" != "xno")
++  AM_CONDITIONAL(WITH_HTMLDOC, test "x$xsltproc" != "xno")
+   AM_CONDITIONAL(WITH_PDFDOC, test "xno" != "xno")
+   AM_CONDITIONAL(WITH_PSDOC, test "xno" != "xno")
+ else
+-- 
+1.8.5.2
+

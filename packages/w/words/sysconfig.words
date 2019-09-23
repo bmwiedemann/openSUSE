@@ -1,0 +1,18 @@
+## Path:        Applications/Words
+## Description: Define words dictionary for english
+## Type:        string
+## Default:     "system american british canadian"
+## Config:      words
+## Command:     /usr/lib/words/update
+#
+# SuSEconfig.words maintains a symbolic link from the `english' (default)
+# dictionary to either `american' or `british' or `canadian'. In case only one
+# of `words' or `words-british' or `words-canadian' are installed, then the
+# link will point to this one. If more are installed, then the whitespace
+# separated value of ENGLISH_WORDS takes effect. The magic word `system'
+# expands to the system's default language (as defined in
+# /etc/sysconfig/language's RC_LANG) if it's one of `american' or `british' or
+# `canadian' languages, and expands to the empty string otherwise. The symlink
+# will point to the first installed dictionary in the list.
+#
+ENGLISH_WORDS="system american british canadian"

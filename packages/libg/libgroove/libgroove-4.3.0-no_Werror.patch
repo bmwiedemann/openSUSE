@@ -1,0 +1,26 @@
+From: Andreas Cadhalpun <Andreas.Cadhalpun@googlemail.com>
+Date: Tue, 3 Jan 2017 21:04:34 -0300
+Subject: cmake: remove Werror
+
+It is harmful in distributions as it causes unnecessary build failures.
+
+Last-Update: <2015-01-09>
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index be89a90..cec002e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -136,8 +136,8 @@ configure_file (
+   "${PROJECT_BINARY_DIR}/config.h"
+   )
+ 
+-set(LIB_CFLAGS "${C99_C_FLAGS} -pedantic -Werror -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L")
+-set(EXAMPLE_CFLAGS "${C99_C_FLAGS} -pedantic -Werror -Wall -g")
++set(LIB_CFLAGS "${C99_C_FLAGS} -pedantic -Wall -Werror=strict-prototypes -Werror=old-style-definition -Werror=missing-prototypes -D_REENTRANT -D_POSIX_C_SOURCE=200809L")
++set(EXAMPLE_CFLAGS "${C99_C_FLAGS} -pedantic -Wall -g")
+ set(EXAMPLE_INCLUDES "${PROJECT_SOURCE_DIR}")
+ 
+ add_library(groove SHARED ${LIBGROOVE_SOURCES} ${LIBGROOVE_HEADERS})

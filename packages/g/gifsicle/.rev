@@ -1,0 +1,80 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5751f85dbbccb4105e6f69493c5a5944</srcmd5>
+    <version>1.88</version>
+    <time>1453998186</time>
+    <user>dimstar_suse</user>
+    <comment>In repo M17N and Factory, there is the package ungifsicle, which is quite outdated. Furthermore, there aren't any gif patent issues any more as of http://www.gnu.org/philosophy/gif.html.
+
+So the package ungifsicle should be replaced by the package gifsicle. Takashi Iwai suggests to place this package into the graphics repo (done now), and then to Factory, as it does not fit into M17N. Afterwards, ungifsicle could be deleted from M17N. ATM there is a pending request to M17N for gifsicle, which could be canceled then. 
+
+Updates from mpluskal@suse.com:
+- Use macro for configure
+- Use correct obsoletes/provides</comment>
+    <requestid>355726</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3dc5aa3a723c440c37ddbc4e1f337b02</srcmd5>
+    <version>1.88</version>
+    <time>1493235804</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489862</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7a127f747ad8fdcbe7c49fed60369cb9</srcmd5>
+    <version>1.88</version>
+    <time>1498485304</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506061</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>aedd2238fee222cbeb026808982e4f2b</srcmd5>
+    <version>1.88</version>
+    <time>1499754464</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509202</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>49c9f2c686849ded56e73d3bb680a4d6</srcmd5>
+    <version>1.90</version>
+    <time>1503061604</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517506</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f9e933b8240ef28d65f8f9f1cae2cec8</srcmd5>
+    <version>1.90</version>
+    <time>1506955980</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529879</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>a1e57b1886aa3ef47baab77c8d0ce06b</srcmd5>
+    <version>1.90</version>
+    <time>1515110488</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561477</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4fc6393272e5ff566b51df5434db730d</srcmd5>
+    <version>1.91</version>
+    <time>1515505986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562246</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ab0d522a9b35ce750d80e6702e6904a1</srcmd5>
+    <version>1.91</version>
+    <time>1524144597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597416</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+# This rpmlint error:
+# 	Your package contains a single shared library but is not named after
+#	its SONAME.
+# is wrong, because the package contains not just a shared library, but also
+# a program.
+addFilter("shlib-policy-name-error")

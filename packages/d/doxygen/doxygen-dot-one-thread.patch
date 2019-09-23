@@ -1,0 +1,23 @@
+From: Michel Normand <normand@linux.vnet.ibm.com>
+Subject: doxygen ppc64le ignore DOT NUM THREADS to 0
+Date: Wed, 07 Oct 2015 14:11:22 +0200
+
+doxygen ppc64le ignore DOT NUM THREADS to 0 as a bypass to boo#921577
+
+===================================================================
+--- doxygen-1.8.12/src/dot.cpp  2016-05-10 21:51:52.000000000 +0200
++++ doxygen-1.8.12_new/src/dot.cpp      2016-09-06 19:42:27.244474872 +0200
+@@ -1192,9 +1192,12 @@
+   m_queue = new DotRunnerQueue;
+   int i;
+   int numThreads = QMIN(32,Config_getInt(DOT_NUM_THREADS));
++  if (numThreads==0) {
++    numThreads = 1;
++    msg("use single threaded despite DOT_NUM_THREADS=0 (bypass boo#921577)\n");
++  }
+   if (numThreads!=1)
+   {
+-    if (numThreads==0) numThreads = QMAX(2,QThread::idealThreadCount()+1);
+     for (i=0;i<numThreads;i++)
+     {
+       DotWorkerThread *thread = new DotWorkerThread(m_queue);

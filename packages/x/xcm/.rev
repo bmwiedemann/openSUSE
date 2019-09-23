@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>59f4066dccd60e13c1a5ff953453c1ef</srcmd5>
+    <version>0.4.2</version>
+    <time>1317025273</time>
+    <user>saschpe</user>
+    <comment>I want to maintain xcm in factory and would like to use multimedia:color_management as development base. rev1</comment>
+    <requestid>84246</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>59f4066dccd60e13c1a5ff953453c1ef</srcmd5>
+    <version>0.4.2</version>
+    <time>1319182580</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3ddaa92b9d0adbd2d6b31cd737b606c8</srcmd5>
+    <version>0.4.2</version>
+    <time>1319823937</time>
+    <user>coolo</user>
+    <comment>- remove vendor tag, the vendor is defined by the project config</comment>
+    <requestid>89618</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>d633fa01d9dea39b2c903fa17bb39891</srcmd5>
+    <version>0.4.2</version>
+    <time>1327087567</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>100875</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>84dd51c1723c0a0110b351576e7cf1a5</srcmd5>
+    <version>0.5.0</version>
+    <time>1334217390</time>
+    <user>coolo</user>
+    <comment>add descriptions</comment>
+    <requestid>112487</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>84dd51c1723c0a0110b351576e7cf1a5</srcmd5>
+    <version>0.5.0</version>
+    <time>1340184338</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>b29359311acc1b146a4f8482cd6d1373</srcmd5>
+    <version>0.5.0</version>
+    <time>1351265788</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>139295</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>b29359311acc1b146a4f8482cd6d1373</srcmd5>
+    <version>0.5.0</version>
+    <time>1359110596</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9bcd73f2897d91d1ae9b2608f4dbee05</srcmd5>
+    <version>0.5.2</version>
+    <time>1360059695</time>
+    <user>coolo</user>
+    <comment>- integrate UDEV patch from OBS into upstream
+- newest release</comment>
+    <requestid>151086</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>9bcd73f2897d91d1ae9b2608f4dbee05</srcmd5>
+    <version>0.5.2</version>
+    <time>1379665000</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>341e3e1e0ed90b22e25808729e2602d0</srcmd5>
+    <version>0.5.3</version>
+    <time>1400174370</time>
+    <user>coolo</user>
+    <comment>update to new release 0.5.3</comment>
+    <requestid>233510</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>341e3e1e0ed90b22e25808729e2602d0</srcmd5>
+    <version>0.5.3</version>
+    <time>1409303683</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>c2fe8be696f1969274e300a8b37eab35</srcmd5>
+    <version>0.5.3</version>
+    <time>1415118536</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259317</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1b699a2661cc2b1de23e7cb0eb9ce42f</srcmd5>
+    <version>0.5.4</version>
+    <time>1485511506</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>448193</requestid>
+  </revision>
+</revisionlist>

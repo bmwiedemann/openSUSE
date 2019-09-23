@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>97485bf3f707034a52cfc24f6504c5dd</srcmd5>
+    <version>3.4.0</version>
+    <time>1526371660</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-dill</comment>
+    <requestid>603752</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9a27b738ee3c856e5aa2d9f0aa009ff4</srcmd5>
+    <version>3.4.0</version>
+    <time>1528897092</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615179</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1b2f89b5a38c554c5c101dbf70b9bb61</srcmd5>
+    <version>3.4.0</version>
+    <time>1545648032</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659522</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>890c9f09a4d1ad6ae3e032e4184ec777</srcmd5>
+    <version>3.4.1</version>
+    <time>1559727513</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.1:
+  * Add support for Python 3.7.
+  * Drop support for Python 3.3 and 3.4.</comment>
+    <requestid>707157</requestid>
+  </revision>
+</revisionlist>

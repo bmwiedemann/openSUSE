@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>139f0b2e9836e4e00a6479f704b4aa34</srcmd5>
+    <version>1.9.8</version>
+    <time>1461334960</time>
+    <user>dimstar_suse</user>
+    <comment>This is a replacement package for python-moin, which I would like to rename to moinmoin-wiki.
+This package is a drop-in replacement; it does not change the set of files installed, nor their location. The only changes are the obvious ones related to the rename, and that it declares python-moin obsolete.
+
+This version contains proof that the license of the SVGImageFigure.java source file is GPL, as requested by the legal reviewer.
+If this request is accepted it will be followed up by a delete request for python-moin.
+</comment>
+    <requestid>360231</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ac9c6b4222a0ca1276bf4d1f5344c25e</srcmd5>
+    <version>1.9.8</version>
+    <time>1500275588</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510614</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8b7f7ac8ff6130a42645c2c12b6b7500</srcmd5>
+    <version>1.9.8</version>
+    <time>1505920428</time>
+    <user>dimstar_suse</user>
+    <comment>Adjust to Java9 as default compiler
+  + added anywikidraw-java9.patch
+  + added twikidraw-java9.patch
+</comment>
+    <requestid>527459</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2baf56fbe4698d519bb89db9b2f813fe</srcmd5>
+    <version>1.9.9</version>
+    <time>1516359022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560032</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>df01b285f1c1867da8890ae606efca51</srcmd5>
+    <version>1.9.10</version>
+    <time>1538374655</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 1.9.10
+  + security fix for CVE-2017-5934, XSS in GUI editor related code
+  + removed raw#199.patch, is included in new version
+</comment>
+    <requestid>638720</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b640c5cc3a88fdc04e6e77c94119601b</srcmd5>
+    <version>1.9.10</version>
+    <time>1539093260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640779</requestid>
+  </revision>
+</revisionlist>

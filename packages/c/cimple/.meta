@@ -1,0 +1,8 @@
+<package name="cimple" project="openSUSE:Factory">
+  <title>CIMPLE is an embeddable CIM provider engine</title>
+  <description>CIMPLE is an embeddable CIM provider engine. It is used to (1) build
+providers that will work with a variety of CIM servers and (2) provide
+a foundation for implementing CIM-based standards such as WBEM, SMASH,
+WSDM, and WS Management.</description>
+  <devel project="systemsmanagement:wbem" package="cimple"/>
+</package>

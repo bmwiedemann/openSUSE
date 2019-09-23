@@ -1,0 +1,5 @@
+<package name="m4" project="openSUSE:Factory">
+  <title>GNU m4</title>
+  <description>GNU m4 is an implementation of the traditional Unix macro processor.</description>
+  <devel project="Base:System" package="m4"/>
+</package>

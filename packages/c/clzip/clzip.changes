@@ -1,0 +1,116 @@
+-------------------------------------------------------------------
+Thu Mar 14 20:48:48 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.11
+  * No changes; just a version bump.
+
+-------------------------------------------------------------------
+Fri Dec 14 11:49:06 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.11~rc1
+  * Detection of forbidden combinations of characters in trailing
+    data has been improved.
+
+-------------------------------------------------------------------
+Mon Mar  5 19:31:54 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 1.10
+  * The option "--loose-trailing" has been added.
+  * The test used by clzip to discriminate trailing data from a
+    corrupt header in multimember or concatenated files has been
+    improved to a Hamming distance of 3.
+  * The "-S" option now keeps input files unchanged.
+
+-------------------------------------------------------------------
+Thu May 11 08:32:38 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.9:
+  * The option '-l, --list' has been ported from lziprecover.
+  * It is now an error to specify two or more different operations
+    in the command line (--decompress, --list or --test).
+  * Compression time of option '-0' has been reduced by 6%.
+  * Compression time of options '-1' to '-9' has been reduced by 1%.
+  * Decompression time has been reduced by 7%.
+  * In test mode, clzip now continues checking the rest of the
+    files if any input file is a terminal.
+  * Trailing data are now shown both in hexadecimal and as a string
+    of printable ASCII characters.
+  * Three missing chapters have been added to the manual, which
+    now contains all the chapters of the lzip manual.
+
+-------------------------------------------------------------------
+Sat May 28 07:53:41 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.8:
+  * main.c: Added new option '-a, --trailing-error'.
+  * main.c (decompress): Print up to 6 bytes of trailing data
+    when '-vvvv' is specified.
+  * decoder.c (LZd_verify_trailer): Removed test of final code.
+  * main.c (main): Delete '--output' file if infd is a terminal.
+  * main.c (main): Don't use stdin more than once.
+  * lzip.texi: Added chapter 'Trailing data'.
+  * configure: Avoid warning on some shells when testing for gcc.
+  * Makefile.in: Detect the existence of install-info.
+  * testsuite/check.sh: A POSIX shell is required to run the tests.
+  * testsuite/check.sh: Don't check error messages.
+- Run internal testsuite
+
+-------------------------------------------------------------------
+Thu Aug  6 08:28:24 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.7
+* The option "-0", which produces a compression speed and ratio
+  comparable to those of gzip, has been ported from lzip.
+
+-------------------------------------------------------------------
+Wed Oct  1 11:00:54 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.6
+* Compression ratio of option -9 has been slightly increased.
+* Copying of file dates, permissions, and ownership now behaves
+  like `cp -p`. (If the user ID or the group ID cannot be
+  duplicated, the file permission bits S_ISUID and S_ISGID are
+  cleared).
+* The license has been changed to GPL version 2 or later.
+
+-------------------------------------------------------------------
+Tue Sep 23 16:55:53 UTC 2014 - jengelh@inai.de
+
+- Drop gpg-offline build-time requirement; this is now handled by
+  the local source validator
+
+-------------------------------------------------------------------
+Wed Oct  2 01:08:32 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.5
+* Clzip now shows the progress of compression at verbosity
+  level 2 (-vv).
+
+-------------------------------------------------------------------
+Sat Jun  8 17:11:36 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call; remove redundant %clean
+  section; wrap description at 70 cols; GPG signature verification
+
+-------------------------------------------------------------------
+Mon Apr 01 15:03:36 UTC 2013 - pascal.bleser@opensuse.org
+
+- update to 1.4:
+  * Multi-step trials have been implemented
+  * Compression ratio has been slightly increased
+  * Compression time has been reduced by 10%
+  * Decompression time has been reduced by 8%
+
+-------------------------------------------------------------------
+Thu Mar 29 17:01:03 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 1.3:
+  * inability to change output file attributes has been downgraded from error
+    to warning
+  * a small change has been made in the "--help" output and man page
+
+-------------------------------------------------------------------
+Mon May 23 18:07:08 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (1.2)
+

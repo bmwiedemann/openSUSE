@@ -1,0 +1,249 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5c2bcb5d0033780d5e9bf181300119c0</srcmd5>
+    <version>1.0git.1483874658.ead0b0b</version>
+    <time>1484132171</time>
+    <user>dimstar_suse</user>
+    <comment>new python macro definitions,
+prerequisite for new python submission</comment>
+    <requestid>449218</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6ae08646ef0a67b53559fb04d4ab69e4</srcmd5>
+    <version>1.0.git.1486997542.e9fcc29</version>
+    <time>1487680263</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>459271</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>75f7a36cdec74283a44449cdb49749fc</srcmd5>
+    <version>1.0.git.1487869271.c6e9bfc</version>
+    <time>1488217289</time>
+    <user>dimstar_suse</user>
+    <comment>- let %python_module expand *all* its arguments, not just the first
+  (so that %{python_module x &gt;= 1.0} works as intended)
+
+- copy BuildArch to subpackages
+- on requires/provides etc., perform macro expansion *after* replacing
+  'python' name, to allow for tricking the rewriter to not replace
+
+- add BuildRoot to make SLE11 happy
+- check presence of %python_files even on new-style distros
+- better visibility of the %python_files error</comment>
+    <requestid>460270</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>049417ed8ae010c8cdce5876e5e9db7a</srcmd5>
+    <version>1.0.git.1489505194.b32e02a</version>
+    <time>1489759207</time>
+    <user>dimstar_suse</user>
+    <comment>- more intelligent %python_install_alternatives
+- multiline macro support
+- support for %requires_ge and %requires_eq as well as Requires(pre)
+  and friends
+- &quot;%python_clone -a&quot; auto-creates alternative entries
+
+- implement %python_clone to clone files for alternatives
+
+- support &quot;Supplements&quot; and &quot;Enhances&quot; tags
+- support packageand() expression
+- fix handling of %name in requires
+
+- make macros more resilient to missing %python_subpackages
+- expand %python_bin_suffix properly</comment>
+    <requestid>479619</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4e7086dd1f18136b9f8abee7a6d8ffb6</srcmd5>
+    <version>1.0.git.1490791775.6e5b01c</version>
+    <time>1492618219</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>487612</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>88ced79f8fe02c11925257f04a04e6d8</srcmd5>
+    <version>2017.05.09.fc237de</version>
+    <time>1495267658</time>
+    <user>dimstar_suse</user>
+    <comment>- version bump to 2017.05.09.fc237de
+- fix badly generated %posttrans snippets in cases where
+  old %python_install_alternative syntax is used for secondary files
+- rework %if-macros
+- introduce %python_flavor, which configures behavior of generic %python_*
+  macros, and can be overriden by the user
+- add --force to %python_install, to make install order fully deterministic
+- switch versioning scheme to date-based
+- switch from using service to a custom script update.sh
+- auto-generate Provides: python2-modname in old distributions
+  (only for main package though)</comment>
+    <requestid>494698</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f11f5e64728f1cae58400cde574965da</srcmd5>
+    <version>2017.06.21.6641889</version>
+    <time>1499167996</time>
+    <user>dimstar_suse</user>
+    <comment>- version bump to 2017.06.21.6641889
+- introduce smarter buildset support
+- fix %python_files on nonstandard build sets
+- introduce %python_for_executables in favor of magically taking
+  &quot;last python in %pythons&quot;
+- fix %licence tag handling (gh#opensuse/python-rpm-macros#4)</comment>
+    <requestid>506276</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7e28d772dee7fbc5cd17ac88ba2c9219</srcmd5>
+    <version>2017.06.29.107ac7a</version>
+    <time>1499754866</time>
+    <user>dimstar_suse</user>
+    <comment>- version bump to 2017.06.29.107ac7a
+- fix skip_python2 in environment where python2 is not actually present</comment>
+    <requestid>508139</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>48a8e12966c29d18362c88a1d5fd12eb</srcmd5>
+    <version>2017.08.09.32550d0</version>
+    <time>1503392698</time>
+    <user>dimstar_suse</user>
+    <comment>- version bump to 2017.08.09.32550d0
+- use %_specfile macro to locate the spec file, this should help with
+  factory-auto bot problems as well as issue#3</comment>
+    <requestid>517250</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>88e61f213e60ac5edbe8d262c096740d</srcmd5>
+    <version>2017.12.07.9d4e9eb</version>
+    <time>1512926101</time>
+    <user>dimstar_suse</user>
+    <comment>- version bump to 2017.12.07.9d4e9eb
+  * Fix macro usage for rpm 4.14</comment>
+    <requestid>555127</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>776ab86767770a7c03dfdd539231b125</srcmd5>
+    <version>2017.12.22.d9968ab</version>
+    <time>1514907127</time>
+    <user>dimstar_suse</user>
+    <comment>- version bump to 2017.12.22.d9968ab
+  * better fix for macro usage in rpm 4.14</comment>
+    <requestid>559401</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9a4845a15777d80213a84fc376379738</srcmd5>
+    <version>2018.08.15.ada6d63</version>
+    <time>1541510268</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644653</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>96d899a8077acba3d5428b6ecb9604aa</srcmd5>
+    <version>20181211.ab6f37c</version>
+    <time>1545222435</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20181211.ab6f37c:
+  * Fix an issue with epoch printing having too many \
+  * Remove packaging/ dir
+
+- Update to version 1540475376.149a499:
+  * add epoch while printing &quot;Provides:&quot;
+- Update URL
+- Add _service and use the tar_scm/recompress/set_version source
+  services to update the package.
+  Package updates can now be done with &quot;osc service run&quot;
+- Drop README.packaging
+- Drop update.sh . This is now handled via the source services</comment>
+    <requestid>657144</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>0a198e63e3c044a11c45ad843cef547e</srcmd5>
+    <version>20181211.ab6f37c</version>
+    <time>1545647781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660148</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0eda6f71244a28d6acba41b863cf5460</srcmd5>
+    <version>20190221.08f1194</version>
+    <time>1551215621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>678063</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f5bf685d2d5b4e7186f751f908556e84</srcmd5>
+    <version>20190307.81ca329</version>
+    <time>1552380236</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20190307.81ca329:
+  * We should preserve existing PYTHONPATH.
+
+- bsc#1128323: Update to version 20190307.fbaed33 bsc#1128323:
+  * Add --ignore to pytest calls to ignore build directories.</comment>
+    <requestid>682470</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>974319d9c7cca395d7736e1ebaaf2a7b</srcmd5>
+    <version>20190315.d3034bf</version>
+    <time>1553888135</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20190315.d3034bf bsc#1128323:
+  * Rewrite pytest and pytest_arch into Lua macros with multiple arguments.
+
+- bsc#1128323: Update to version 20190307.fbaed33</comment>
+    <requestid>685389</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e6be199f3d30032db847016613429724</srcmd5>
+    <version>20190402.c88be49</version>
+    <time>1554372203</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20190402.c88be49:
+  * Add missing $ expansion on the pytest call</comment>
+    <requestid>690635</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>64759b7a5f75956222539b104813b44e</srcmd5>
+    <version>20190408.32abece</version>
+    <time>1554930521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20190408.32abece bsc#1128323:
+  * Multiline macros don't work correctly on older RPMs.</comment>
+    <requestid>692295</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3fa62e459f360a64fc885a612f6cc8d0</srcmd5>
+    <version>20190430.5260267</version>
+    <time>1557388832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700011</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e22e5b51e6f0c64b7bcfdf15a9c4f1fc</srcmd5>
+    <version>20190610.2ee3233</version>
+    <time>1560862117</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20190610.2ee3233:
+  * Fix typo, missing opening brace.
+  * Add the first draft of pyproject_wheel and pyproject_install macros.
+  * Yet another attempt to preserve $PYTHONPATH set in the environment.
+  * Document also %pytest_arch
+  * Document %pytest in README.md
+  * Multiline macros don't work correctly on older RPMs.
+  * Add missing $ expansion on the pytest call
+  * Rewrite pytest and pytest_arch into Lua macros with multiple arguments.
+  * We should preserve existing PYTHONPATH.
+  * Add --ignore to pytest calls to ignore build directories.
+
+- Update to version 20190610.2ee3233:
+  * Fix typo, missing opening brace.
+
+- Update to version 20190511.2ed22b6:
+  * Add the first draft of pyproject_wheel and pyproject_install macros.</comment>
+    <requestid>708959</requestid>
+  </revision>
+</revisionlist>

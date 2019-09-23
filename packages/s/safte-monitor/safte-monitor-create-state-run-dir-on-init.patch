@@ -1,0 +1,33 @@
+diff -rup safte-monitor-0.0.5.orig/redhat/init.d/safte-monitor safte-monitor-0.0.5/redhat/init.d/safte-monitor
+--- safte-monitor-0.0.5.orig/redhat/init.d/safte-monitor	2012-10-17 13:14:39.215147453 -0700
++++ safte-monitor-0.0.5/redhat/init.d/safte-monitor	2012-10-17 15:14:42.462471214 -0700
+@@ -20,6 +20,8 @@
+ SAFTEMONITOR=/usr/bin/safte-monitor
+ [ -x $SAFTEMONITOR ] || exit 0
+ 
++SAFTEMONRUNDIR=/run/safte-monitor
++
+ # Source config
+ if [ -f /etc/sysconfig/safte-monitor ] ; then
+ 	. /etc/sysconfig/safte-monitor
+@@ -32,6 +34,11 @@ umask 077
+ 
+ start() {
+  	echo -n $"Starting SCSI enclosure monitor "
++	# the state run directory can go away between reboots
++	if [ ! -d $SAFTEMONRUNDIR ] ; then
++		mkdir -p $SAFTEMONRUNDIR
++		chown daemon:root $SAFTEMONRUNDIR
++	fi
+ 	startproc $SAFTEMONITOR $SAFTEMONITOR_OPTIONS
+ 	rc_status -v
+ }	
+@@ -70,7 +77,7 @@ case "$1" in
+   	exit 3
+ 	;;
+   try-restart)
+-  	[ -f /var/run/safte-monitor/pid ] && restart || :
++  	[ -f $SAFTEMONRUNDIR/pid ] && restart || :
+ 	;;
+   *)
+ 	echo $"Usage: $0 {start|stop|status|restart|try-restart}"

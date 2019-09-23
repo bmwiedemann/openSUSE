@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a17069e3fb389c9e64b46940b8bceae6</srcmd5>
+    <version>0.9.11.1</version>
+    <time>1420754489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>266828</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>087fb2668f5e1e4f575a451398a1f0ec</srcmd5>
+    <version>0.9.11.1</version>
+    <time>1422134473</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282650</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ab7782344c3acb9ef884fc20f077f956</srcmd5>
+    <version>0.9.11.1</version>
+    <time>1456434536</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with boost 1.60
+  * scantailor-boost-1.60.patch</comment>
+    <requestid>361201</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f722f9075cfe605b43b3f9b1033b43e7</srcmd5>
+    <version>0.9.12.2</version>
+    <time>1466337249</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.12.2 [boo#985096]
+  * Bugfix release
+  * Drop obsolete scantailor-boost-1.60.patch</comment>
+    <requestid>402844</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>29442b07422dd440aa096fcdd7d3694a</srcmd5>
+    <version>0.9.12.2</version>
+    <time>1486465428</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454448</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b30874e572148f8400c6283a1031eba6</srcmd5>
+    <version>1.0.4</version>
+    <time>1522750351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593040</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0e75cd637fedce6a293566be8dc80ca3</srcmd5>
+    <version>1.0.4</version>
+    <time>1523127333</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>594074</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>29e0b8039aff3615b557223f66d96cf5</srcmd5>
+    <version>1.0.16</version>
+    <time>1537360144</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635777</requestid>
+  </revision>
+</revisionlist>

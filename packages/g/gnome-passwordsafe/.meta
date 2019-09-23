@@ -1,0 +1,9 @@
+<package name="gnome-passwordsafe" project="openSUSE:Factory">
+  <title>A password manager for GNOME</title>
+  <description>Password Safe is a password manager which makes use of the Keepass v.4 format.
+It integrates perfectly with the GNOME desktop and provides an easy and uncluttered interface for the management of password databases.
+
+</description>
+  <devel project="GNOME:Factory" package="gnome-passwordsafe"/>
+  <url>https://gitlab.gnome.org/World/PasswordSafe</url>
+</package>

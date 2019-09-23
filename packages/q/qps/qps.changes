@@ -1,0 +1,173 @@
+-------------------------------------------------------------------
+Fri Mar  1 09:49:32 UTC 2019 - mvetter@suse.com
+
+- Update to 1.10.20:
+  * Only translations was changed
+
+-------------------------------------------------------------------
+Thu Jan 31 10:50:11 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.19:
+  * Improved localization support
+- Move translation from lxqt-l10n into package
+
+-------------------------------------------------------------------
+Tue May 22 13:43:45 UTC 2018 - mvetter@suse.com
+
+- Update to 1.10.18:
+  * Bumped patch version to 18 (#45)
+  * Update from Weblate. (#41)
+  * Added transltion state to README.md
+  * Add da translation
+  * translation update
+  * Added translation using Weblate (German)
+  * Create qps_da.ts
+  * Update qps.desktop.in
+  * i18n: Update Polish translation
+  * Drop Qt foreach
+  * Fix links QtDesktop --> lxqt
+
+-------------------------------------------------------------------
+Sun Feb 25 11:02:34 UTC 2018 - aloisio@gmx.com
+
+- Update to version 1.10.17
+  * some whitespaces fixed
+  * l10n: Polish translation
+  * Remove obsolete cpack
+  * Removed not needed ressource file
+  * some small fixes
+  * Fixed About page
+  * Fixed outdated FSF address in license headers
+  * Removed: It may be used, distributed and modified without
+    limitation. - not exactly true.
+  * Added license headers
+  * Fix typo
+  * Fix license headers for files with clearly known authorship
+  * remove some empty files
+  * fixed encoding and added a proper GPL2 file header
+  * Renamed LICENSE -> COPYING
+  * Another set of licenseheader fixes
+  * Fixed some typos in comments (CMakeLists.txt)
+    Fixed licenseheader: src/wchan.cpp UTF-8 and filename
+    Fixed licenseheader: src/watchdogdialog.*  filetype and UTF-8
+    Fixed licenseheader: src/watchcond.*  UTF-8
+    Fixed licenseheader: src/ttystr.cpp filentype and UTF-8
+  * Work around grep 2.23 new behaviour
+  * Removes not needed file
+  * Fixes CPack package version
+  * Fixes misnaming of binary qps
+  * Use CMAKE PROJECT_NAME instead of PROJECT
+  * Removes Icon related commented code
+  * Removes the custom QtIconLoader
+  * Use QIcon::fromTheme() instead of the internal QtIconLoader
+  * Adds the resources as an target dependency
+  * Puts TableField sctruct on it's own file
+  * Puts the QpsApp in it's own file
+  * Splits the command file into several files
+  * Puts Command utilities into it's own file
+  * Updates translations sources
+  * Removes toolTip, statusTip, whatsThis and accesibleName from
+    watchdog.ui
+  * Removes stylesheets commented stuff
+  * Include a copy of the license
+  * Install application icon
+  * Updates translation sources
+  * Adds desktop entry file
+  * Adds application internationalization / localization
+  * Set the minimum required CMake version to 3.0.2
+  * Add install instruction in CMakeLists.txt
+  * Add clang-format file and format all files
+
+- Switch build to cmake and Qt5
+
+- New source URL and homepage
+
+- Dropped qps-1.10.12.1-nostrip.patch and
+  qps-1.10.15-desktop.patch (no longer necessary)
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Thu Nov 24 17:46:28 UTC 2011 - lazy.kent@opensuse.org
+
+- Spec clean up.
+
+-------------------------------------------------------------------
+Sun Aug 28 15:03:25 UTC 2011 - lazy.kent@opensuse.org
+
+- Update to 1.10.16
+  + 3.0-ARCH problem fixed
+
+-------------------------------------------------------------------
+Mon Aug 22 12:40:55 UTC 2011 - lazy.kent@opensuse.org
+
+- Patch to fix typo in desktop file (bnc#631745)
+
+-------------------------------------------------------------------
+Sun Jul 17 17:26:11 UTC 2011 - lazy.kent@opensuse.org
+
+- Update to 1.10.15
+  + Added IO monitoring
+
+-------------------------------------------------------------------
+Wed Jul  6 05:11:57 UTC 2011 - lazy.kent@opensuse.org
+
+- Update to 1.10.14
+  + Fixed wrong process names
+
+-------------------------------------------------------------------
+Sat Jun 18 15:52:35 UTC 2011 - lazy.kent@opensuse.org
+
+- Update to 1.10.13
+  + GNOME3 and Avant Window Navigator support
+- Correct License tag according to SPDX Standard
+
+-------------------------------------------------------------------
+Fri Jun  3 15:30:56 UTC 2011 - lazy.kent@opensuse.org
+
+- Update to 1.10.12.3
+  + Zero CPU bug fixed (thanks to "David Rosenstrauch")
+  + SEGFAULT fixed (Google Chrome's very long cmdline bug fix)
+- Dropped obsolete buffer_overflow patch
+- Use full URL as a source
+
+-------------------------------------------------------------------
+Mon Apr 11 14:34:35 UTC 2011 - lazy.kent@opensuse.org
+
+- Added rpm optflags
+- Added COPYING
+- Marked man as doc
+
+-------------------------------------------------------------------
+Tue Jul  6 10:21:25 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Fixed buffer overflow (bnc#613864). Patch from Bernhard Rotter
+- Build debug packages
+
+-------------------------------------------------------------------
+Tue Oct 20 00:00:00 UTC 2009 - lazy.kent.suse@gmail.com
+
+- Update to 1.10.12.1
+  + 0 (zero) Process bug fixed (David_Rosenstrauch@archlinux)
+
+-------------------------------------------------------------------
+Thu Sep 17 00:00:00 UTC 2009 - lazy.kent.suse@gmail.com
+
+- Update to 1.10.12
+  + Not working problem on kernel-2.6.xx was fixed
+  + MEM field added
+  + Tab on-off switch added
+
+-------------------------------------------------------------------
+Fri Aug  7 00:00:00 UTC 2009 - lazy.kent.suse@gmail.com
+
+- Update to 1.10.11
+  + Window raise problem was fixed
+  + IO_RW was added
+  + Bugs was fixed (WCHAN, kernel warning.... etc)
+
+-------------------------------------------------------------------
+Sat Aug  1 00:00:00 UTC 2009 - lazy.kent.suse@gmail.com
+
+- Initial package created - 1.10.10
+

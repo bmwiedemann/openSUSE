@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>715ab8f243f3da4154208515ae297394</srcmd5>
+    <version>2.2.5</version>
+    <time>1314891732</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>80400</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c149c3a76d00c98b43294397a6d59ce5</srcmd5>
+    <version>2.2.5</version>
+    <time>1314891744</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 80400
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c149c3a76d00c98b43294397a6d59ce5</srcmd5>
+    <version>2.2.5</version>
+    <time>1319182403</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>795fa5a4af8365bcc68e58656b9a36da</srcmd5>
+    <version>2.2.5</version>
+    <time>1323194253</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>795fa5a4af8365bcc68e58656b9a36da</srcmd5>
+    <version>2.2.5</version>
+    <time>1340184085</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>795fa5a4af8365bcc68e58656b9a36da</srcmd5>
+    <version>2.2.5</version>
+    <time>1359110106</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>795fa5a4af8365bcc68e58656b9a36da</srcmd5>
+    <version>2.2.5</version>
+    <time>1379664266</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>795fa5a4af8365bcc68e58656b9a36da</srcmd5>
+    <version>2.2.5</version>
+    <time>1409302970</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>8693ac77c982b6fb47eb6b3f46c3156b</srcmd5>
+    <version>2.2.5</version>
+    <time>1493819708</time>
+    <user>dimstar_suse</user>
+    <comment>- Minor spec file cleanups
+- Provide python2-python-openid for compatibility with singlespec macros.</comment>
+    <requestid>489489</requestid>
+  </revision>
+</revisionlist>

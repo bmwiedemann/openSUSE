@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec149e7a15d05ff6187b910ea19cc932</srcmd5>
+    <version>17.2.1</version>
+    <time>1499880909</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>508466</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>68ef23895d204aed290014a01e27f1d7</srcmd5>
+    <version>17.2.1</version>
+    <time>1545866791</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659433</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c8599c6f385fafc33269b19b792cebf0</srcmd5>
+    <version>19.0.0</version>
+    <time>1560861768</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing runtime dependency on idna
+
+- version update to 19.0.0
+  * When passed to `str()` URLs now stringify to usable URL
+    strings. (See #49)
+  * Switched off of Python's built-in IDNA facilities to using the
+    [idna](https://pypi.python.org/pypi/idna) package. Not only is it
+    much more modern, it's also much more strict and correct in its
+    output. (See #19 and #56)
+  * Added new `DecodedURL` type with almost-identical API to the normal
+    `URL`, except that it automatically handles reserved characters in
+    argument values passed to its methods. (See #6, #11, #44)
+  * Added top-level `parse()` convenience function that now represents
+    the main entrypoint to hyperlink.
+  * Accept dictionaries as ‘query=’ arguments, in addition to
+    sequences of tuples (see #50)
+  * `URL.child()` will no longer fail when child gets no segments (#42 and #43)
+  * `URL.normalize()` now supports encoding stray/unmatched `%` characters
+    in character-encoded fields (userinfo, path, query string, fragment)
+    (see #61, #62)</comment>
+    <requestid>704698</requestid>
+  </revision>
+</revisionlist>

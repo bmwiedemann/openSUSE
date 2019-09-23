@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8cdacce86bdc66ac9ec1cf7f6de04aa0</srcmd5>
+    <version>0.1.1</version>
+    <time>1476350878</time>
+    <user>dimstar_suse</user>
+    <comment>For OpenStack</comment>
+    <requestid>425238</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1883eddd08ec3e8f9e3d7f643329edee</srcmd5>
+    <version>0.1.2</version>
+    <time>1491469381</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 0.1.2:
+  * Make REGISTERED_TYPES public
+  * Enable release notes translation
+  * Add oslo.log to requirements.txt
+  * Cleanup tox.ini</comment>
+    <requestid>485088</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fcbf6381ccfde9f707ad6811a0128fa0</srcmd5>
+    <version>0.2.1</version>
+    <time>1516804135</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix python3 test execution
+
+- update to 0.2.1:
+  * Add mock to test-requirements
+  * Uncaught ManagedObjectNotFoundError exception leads to 500 error
+  * Add certificate validation
+- add 0001-Cleanup-requirements.txt.patch
+  remove unneeded requirements
+- 0001-Use-openstackdocstheme-for-docs-and-release-notes.patch
+  switch to openstackdocstheme instead of oslosphinx</comment>
+    <requestid>568046</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>744bb3c507a7319eee57a553fb39f1de</srcmd5>
+    <version>0.2.2</version>
+    <time>1564994547</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.2:
+  * Make barbican-tempest-plugin gate voting
+  * Add .zuul.yaml 
+  * Address verifier DeprecationWarning
+  * Use openstackdocstheme for docs and release notes
+  - removes 0001-Use-openstackdocstheme-for-docs-and-release-notes.patch
+  * Cleanup requirements.txt
+  - removes 0001-Cleanup-requirements.txt.patch</comment>
+    <requestid>720890</requestid>
+  </revision>
+</revisionlist>

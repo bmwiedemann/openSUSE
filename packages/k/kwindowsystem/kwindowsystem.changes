@@ -1,0 +1,737 @@
+-------------------------------------------------------------------
+Sat Sep  7 20:37:12 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * KWindowSystem: add cmake option KWINDOWSYSTEM_NO_WIDGETS
+  * Deprecate slideWindow(QWidget *widget)
+  * KWindowSystem: fix compilation with KWINDOWSYSTEM_NO_DEPRECATED
+  * Add KWindowSystem::setMainWindow(QWindow *) overload
+  * KWindowSystem: add setNewStartupId(QWindow *...) overload
+  * KWindowSystem: remove unused QWidget includes
+  * KWindowSystem: port from QApplication to QCoreApplication
+
+-------------------------------------------------------------------
+Wed Aug  7 17:51:51 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * [platforms/xcb] Use XRES extension to get real window PID (kde#384837) 
+  * Fix failing autotest 
+  * Port KXMessages away from QWidget
+
+-------------------------------------------------------------------
+Fri Jul 19 11:45:42 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:40 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * Install in new logging directory when we use kf5 5.59.0
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:13 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- No code changes since 5.58.0
+
+-------------------------------------------------------------------
+Wed May 15 18:16:18 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- Changes since 5.57.0:
+  * API dox: fix typo
+  * Introduce CriticalNotificationType
+  * Adjust unit test for newly added state
+  * Support NET_WM_STATE_FOCUSED
+  * Document that modToStringUser and stringUserToMod only deal with english strings
+  * Replace count() == 0 by isEmpty()
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:44 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Use debug categories here
+  * port to std::sort
+  * Send blur/background contrast in device pixels (kde#404923)
+  * [autotests] Fix KWindowInfoX11Test::testState
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * No code changes since 5.55.0
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:19 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * autotests: fix it, since nobody else did, grmbl
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:53 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * No code changes since 5.53.0
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * autotests: cast to int so that the values appear.
+  * Use isEmpty()
+  * Remove qt include prefix
+  * normalize signal/slot
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:07 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * don't assign variable to itself
+  * Add categories file here
+  * Use qEnvironmentVariableIsEmpty
+  * Remove unused variable
+  * Do not compare iterators returned from two separate returned copies
+  * Call reserve() on Qt containers if fill size is known before
+
+-------------------------------------------------------------------
+Tue Oct 16 08:02:42 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:50:39 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Use _NET_WM_WINDOW_TYPE_COMBO instead of _NET_WM_WINDOW_TYPE_COMBOBOX
+  * API dox: 0 -> nullptr
+  * Use QString's multi-arg with multiple string args
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:46 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * None
+
+-------------------------------------------------------------------
+Sun Aug 19 09:19:29 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Honor BUILD_TESTING
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * Use consistently nullptr
+  * Use consistently override
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:07 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * None
+
+-------------------------------------------------------------------
+Sun May 13 21:03:07 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:06 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Add "SkipSwitcher" to API
+  * Autogenerate debug file
+  * We depend against 5.8.0
+  * Fix narrowing conversion warning on gcc and error on clang/FreeBSD
+  * [xcb] Fix implementation of _NET_WM_FULLSCREEN_MONITORS (kde#391960)
+  * Reduce plasmashell frozen time
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:42 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:10 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * autotests: set LIBRARY_OUTPUT_DIRECTORY so platform plugins are found uninstalled
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:21 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+  * Verify return value
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:49 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * [KWindowEffectsPrivateX11] Add reserve() call
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:15 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * KKeyServer: fix handling of Meta+Shift+Print, Alt+Shift+arrowkey etc.
+  * Support flatpak platform
+  * Use KWindowSystem's own platform detection API instead of duplicated code
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:44 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * Find test helper
+  * Find test helper
+  * Fix build with Qt 5.10
+  * autotest: test the shortcuts broken by last month's changes.
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:18 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * Do not leak symbols of pimpl classes, protect with Q_DECL_HIDDEN
+  * Restore behaviour of KKeyServer::symXToKeyQt
+  * KKeyServer: fix handling of KeypadModifier.
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:40 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * Remove header reliance on QWidget
+  * Use more nullptr
+
+-------------------------------------------------------------------
+Wed Jul 12 07:14:02 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * cmake: use ecm_add_test more
+  * [FEATURE] Option to build & install QCH file with the public API dox
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:43 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * Better fix for NetRootInfoTestWM in path with spaces
+  * Revert broken fix TestKWindowsystemPlatformWayland in path with spaces
+  * Un-bitrot debug code
+  * Fix TestKWindowsystemPlatformWayland & NetRootInfoTestWM in path with spaces
+  * use Q_FALLTHROUGH
+  * Use explicit flag values or explicit constructor instead of nullptr
+  * Add .arcconfig
+  * API dox: Fix usage of @link, using JavaDoc style
+
+-------------------------------------------------------------------
+Mon May 15 13:53:14 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:57 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * Upgrade KF5 version to 5.33.0.
+
+-------------------------------------------------------------------
+Sun Mar 19 14:51:12 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Commit translations from l10n-kf5
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Upgrade KF5 version to 5.32.0.
+
+-------------------------------------------------------------------
+Thu Feb  9 09:35:13 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:44:24 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 02:05:35 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * [KWindowInfo] Add pid() and desktopFileName()
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 22:12:26 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * Improved relocatability of CMake export
+  * Add support for desktopFileName to NETWinInfo
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 13:01:04 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:54:42 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:57:55 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * [xcb] Ensure the compositingChanged signal is emitted if
+    NETEventFilter is recreated (kde#362531)
+  * Add a convenience API to query the windowing system/platform used by Qt
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+- Drop upstreamed compositingchanged.patch
+
+-------------------------------------------------------------------
+Wed Aug  3 07:12:25 UTC 2016 - fabian@ritter-vogt.de
+
+- Add compositingchanged.patch from https://git.reviewboard.kde.org/r/128576/
+    to fix kde#362531
+
+-------------------------------------------------------------------
+Wed Jul  6 15:06:55 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:28:30 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * [platform xcb] Respect request icon size (kde#362324)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:34:32 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * Fix generation of path to xcb plugin
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:22:49 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 10:03:19 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * Support _NET_WM_BYPASS_COMPOSITOR (kde#349910)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 18:08:29 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * Change licence header from "Library GPL 2 or later" to "Lesser GPL 2.1 or later"
+  * Fix crash if KWindowSystem::mapViewport is called without a QCoreApplication
+  * Cache QX11Info::appRootWindow in eventFilter (kde#356479)
+  * Get rid of QApplication dependency (kde#354811)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:45:41 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * Add xcb variant for static KStartupInfo::sendFoo methods
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:10:59 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 17:05:23 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:37:38 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * Perform deep copy of QByteArray get_stringlist_reply
+  * Allow interacting with multiple X servers in the NETWM classes.
+  * [xcb] Consider mods in KKeyServer as initialized on platform != x11
+  * Change KKeyserver (x11) to categorized logging
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:13:36 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:48 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * Harden NETWM data reading (kde#350173)
+  * Guard for older Qt versions like in kio-http
+  * Private headers for platform plugins are installed.
+  * Platform specific parts loaded as plugins.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+- Drop 0001-Harden-NETWM-data-reading.patch, merged upstream
+
+-------------------------------------------------------------------
+Thu Jul 30 17:02:14 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added 0001-Harden-NETWM-data-reading.patch (kde#350173)
+
+-------------------------------------------------------------------
+Sun Jul  5 18:45:27 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:59 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:49:53 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * Don't depend on QX11Info in KXUtils::createPixmapFromHandle
+    (kde#346496)
+  * New method NETWinInfo::xcbConnection() -> xcb_connection_t*
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:56 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * Add a dummy Wayland implementation for KWindowSystemPrivate
+  * KWindowSystem::icon with NETWinInfo not bound to platform X11.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:57 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * KSelectionWatcher and KSelectionOwner can be used without
+    depending on QX11Info.
+  * KXMessages can be used without depending on QX11Info
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:33 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * Fixed NETRootInfo::setShowingDesktop(bool) not
+    working on Openbox
+  * Added convenience method KWindowSystem::setShowingDesktop(bool)
+  * Fixes in icon format handling
+  * Added method NETWinInfo::icccmIconPixmap provides icon pixmap
+    from WM_HINTS property
+  * Added overload to KWindowSystem::icon which reduces
+    roundtrips to X-Server
+  * Added support for _NET_WM_OPAQUE_REGION
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:30 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * Add OnScreenDisplay window type
+  * Fix build on FreeBSD
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+- Make sure that devel package requires pkgconfig(x11) and
+  pkgconfig(xcb), they are now public dependencies
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:50 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * Add KStartupInfo::createNewStartupIdForTimestamp
+  * Add support for more multimedia keys
+  * Add support for initial mapping state of WM_HINTS
+  * Drop incorrect warnings when using KXMessages without QX11Info
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:47:38 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+- Drop 0001-Fix-incorrect-count-of-netwm-atoms.patch, merged upstream
+
+-------------------------------------------------------------------
+Fri Oct 10 16:26:27 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added 0001-Fix-incorrect-count-of-netwm-atoms.patch, kde#339771
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:57 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * NETWinInfo now provides convenient wrapper for WM_PROTOCOLS.
+  * NETWinInfo now provides convenient wrapper for input and urgency
+    hints of WM_HINTS property.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+- Drop patches merged upstream:
+  0001-Make-constants-const-saves-a-few-symbols-in-the-.dat.patch,
+  0002-Add-support-for-urgency-hint-in-NETWinInfo.patch,
+  0003-Add-support-for-input-hint-in-NETWinInfo.patch and
+  0007-Add-support-for-protocols-to-NETWinInfo.patch
+
+-------------------------------------------------------------------
+Wed Sep 24 19:25:07 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added patches needed for KWin's 5.1 release, all from upstream:
+  0001-Make-constants-const-saves-a-few-symbols-in-the-.dat.patch,
+  0002-Add-support-for-urgency-hint-in-NETWinInfo.patch,
+  0003-Add-support-for-input-hint-in-NETWinInfo.patch and
+  0007-Add-support-for-protocols-to-NETWinInfo.patch
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:37 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * KWindowSystem: New method KWindowSystem::setOnActivities
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:20 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+- Harden required Qt5 libs versions
+- Pass the location of lconvert executable
+
+-------------------------------------------------------------------
+Tue Jul  1 21:36:07 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:38 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Added libqt5-linguist-devel BuildRequires
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Sun May  4 01:41:26 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:54 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+
+-------------------------------------------------------------------
+Tue Mar  4 16:40:25 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Sat Feb  8 02:20:03 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init kwindowsystem package
+

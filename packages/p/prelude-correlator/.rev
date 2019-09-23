@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb14e71bf441ad8379ea64b7582df21b</srcmd5>
+    <version>3.0.1</version>
+    <time>1474016474</time>
+    <user>dimstar_suse</user>
+    <comment>Adding prelude-correlator to factory.</comment>
+    <requestid>427418</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f306ffe277f26659c109df353c189064</srcmd5>
+    <version>3.1.0</version>
+    <time>1491210306</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>482271</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0916d5f052250620e7e2110d5618d14d</srcmd5>
+    <version>4.0.0</version>
+    <time>1510577973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538195</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,604 @@
+-------------------------------------------------------------------
+Sun Sep  1 06:50:27 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new release 20190822
+  * {= uq; =} causes the replacement string to be unquoted.
+  * --tagstring {=...=} is now evaluated for each line with
+    --linebuffer.
+  * Use -J ./profile to read a profile in current dir.
+  * Speedup of startup by 40%: Find the parent shell differently
+    on GNU/Linux, cache information about the CPU and which
+    setpgrp method to use to make GNU Parallel start 40% faster.
+  * $PARALLEL_SSHLOGIN can be used in the command line.
+
+-------------------------------------------------------------------
+Fri Apr 26 13:41:04 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to new upstream release 20190422
+  * 'env_parallel --end-session' makes it possible to nest
+    'env_parallel --session'
+  * --shard makes it possible to send input to the same jobslot
+    based on the value in one column of the input.
+    It is similar to sharding in databases.
+  * --shellquote --shellquote will shell quote the input twice.
+  * SIGTERM is changed to SIGHUP, so sending SIGHUP will make
+    GNU Parallel start no more jobs, but wait for running jobs
+    to finish.
+  * SIGTERM SIGTERM is changed to SIGTERM, so sending SIGTERM
+    will make GNU Parallel kill all running jobs.
+  * Bug fixes and man page updates.
+
+-------------------------------------------------------------------
+Fri Nov 23 17:26:52 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 20181122
+  * Experimental simpler job flow control.
+
+-------------------------------------------------------------------
+Wed Nov 14 20:02:22 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 20181022
+  * env_parallel.fish: --session support (alpha quality)
+
+-------------------------------------------------------------------
+Sat Aug 25 07:36:35 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 20180822
+  * parset sets exit code fixed.
+
+-------------------------------------------------------------------
+Wed Aug  8 16:42:50 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 20180722
+  * The quoting engine has been changed. Instead of using
+    \-quoting GNU Parallel now uses '-quoting in
+    bash/ash/dash/ksh. This should improve compatibility with
+    different locales. This is a big change causing this release
+    to be alpha quality.
+  * The CPU calculation has changed. By default GNU Parallel uses
+    the number of CPU threads as the number of CPUs. This can be
+    changed to the number of CPU cores or number of CPU sockets
+    with --use-cores-instead-of-threads or
+    --use-sockets-instead-of-threads.
+  * The detected number of sockets, cores, and threads can be
+    shown with --number-of-sockets, --number-of-cores, and
+    --number-of-threads.
+
+-------------------------------------------------------------------
+Fri Jun 22 07:55:24 UTC 2018 - astieger@suse.com
+
+- update to 20180622:
+  * Deal better with multibyte chars by forcing LC_ALL=C
+
+-------------------------------------------------------------------
+Fri May 25 17:53:59 UTC 2018 - astieger@suse.com
+
+- update to 20180522:
+  * --tty allows for more programs accessing /dev/tty in parallel.
+    Some programs require tty access without using it.
+  * env_parallel --session will record names in current environment
+    in $PARALLEL_IGNORED_NAMES and exit. It is only used with
+    env_parallel, and can work like --record-env but in a single
+    session.
+
+-------------------------------------------------------------------
+Mon Apr 23 14:07:44 UTC 2018 - astieger@suse.com
+
+- update to 20180422:
+  * Parse input sources as CSV with --csv. With --pipe only consider
+    full CSV-records
+  * Time in --bar is printed as 1d02h03m04s
+  * Optimization of --tee: It spawns a process less per value
+
+-------------------------------------------------------------------
+Fri Mar 30 15:47:51 UTC 2018 - astieger@suse.com
+
+- update to 20180322:
+  * niceload -p can now take multiple pids separated by comma
+  * --timeout gives a warning when killing processes
+  * --embed now uses the same code for all supported shells
+  * --delay can now take arguments like 1h12m07s
+
+-------------------------------------------------------------------
+Wed Mar  7 23:14:12 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 20180222
+  * --embed makes it possible to embed GNU parallel
+    in a shell script.
+
+-------------------------------------------------------------------
+Sun Dec 24 09:13:30 UTC 2017 - astieger@suse.com
+
+- update to 20171222:
+  * env_parset for ash, dash, ksh, sh, zsh
+  * Automatically create hostgroups if argument ends in @sshlogin
+
+-------------------------------------------------------------------
+Mon Oct 23 07:31:32 UTC 2017 - astieger@suse.com
+
+- update to 20171022:
+  * Initial support for XDG Base Directory $XDG_* environment
+    variables
+
+-------------------------------------------------------------------
+Thu Oct  5 12:20:26 UTC 2017 - riafarov@suse.com
+
+- update to 20170922:
+  * Use '--limit myprog' to make a dynamic job limit. Just return 0
+    to spawn another job, 1 to not spawn another job, and 2 to kill
+    the youngest job.
+  * PARALLEL_RSYNC_OPTS and --rsync-opts sets the options for rsync
+    (Default: -rlDzR).
+  * Download all of humble bundle books in parallel
+    https://til.hashrocket.com/posts/ggt1jaes4y-download-all-of-humble-bundle-books-in-parallel
+
+-------------------------------------------------------------------
+Wed Sep  6 21:20:11 UTC 2017 - astieger@suse.com
+
+- update to 20170822:
+  * --line-buffer no longer uses tempfiles. This is faster and
+    makes it possible for a single process to output more data than
+    there is free disk space.
+  * ship documentation license texts
+
+-------------------------------------------------------------------
+Sun Jul 30 12:30:19 UTC 2017 - astieger@suse.com
+
+- update to 20170722:
+  * Bug fixes and man page updates
+
+-------------------------------------------------------------------
+Fri Jul  7 14:58:14 UTC 2017 - astieger@suse.com
+
+- update to 20170622:
+  * The command line can now contain \257 (Macron) or UTF
+    characters containing \257.
+- includes changes from 20170522:
+  * --timeout can now use s=second,m=minute,h=hour,d=day.
+  * --dr is now an alias for --dry-run.
+- remove donation nag screen, add parallel-remove-nag-screen.patch
+  See "man 1 parallel" or "parallel --citation" for the upstream
+  request for citation or project donation.
+
+-------------------------------------------------------------------
+Mon May  8 13:39:45 UTC 2017 - astieger@suse.com
+
+- update to 20170422:
+  * --halt supports done in addition to success and fail.
+  * parset will set variables in parallel in Bash.
+  * Bug fixes and man page updates.
+- includes changes from 20170322:
+  * --rpl can now take arguments by adding '(regexp)' in the
+    replacement string.
+  * Bug fixes and man page updates.
+- includes changes from 20170222:
+  * env_parallel now supports /bin/sh, ash, dash.
+  * --tee will pipe all data to all jobs. Used with --pipe/
+    --pipepart and :::. Small example: seq 3333 | parallel --pipe
+    --tee --tag 'grep {} | wc -l' ::: {0..9}
+  * If --results {replstr} ends in /: save in dir. Otherwise save
+    as file. Example: parallel --results {} echo {} ::: a b c
+  * Bug fixes and man page updates.
+- includes changes from 20170206alpha:
+  * --tee introduced.
+
+-------------------------------------------------------------------
+Mon Jan 23 09:56:44 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 20170122
+  * sql now uses a temporary credentials file for MySQL to avoid
+    warnings.
+  * --sqlmaster and --sqlworker have been reworked.
+  * --sqlworker only reads from the DBURL: any command and any
+    arguments are ignored.
+  * --sqlmaster +DBURL will append commands to the DBURL and not
+    erase the table.
+  * If --results contain a replacement string, no tree structure
+    with args will be generated.
+  * --fg --tmux or --fg --tmuxpane will connect to the tmux.
+
+-------------------------------------------------------------------
+Sun Jan  1 16:06:57 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 20161222
+  * --results foo.csv will save output as a CSV-file. Can be
+    directly imported into R or LibreCalc.
+  * When using --pipepart a negative --block-size is not
+    interpreted as a block size but as the number of blocks each
+    jobslot should have.
+  * --sqlmaster/--sqlandworker will append jobs to the DBURL if the
+    DBURL is prepended with +.
+
+-------------------------------------------------------------------
+Wed Nov 23 00:09:25 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 20161122
+  * --record-env can now be used with env_parallel for bash, ksh,
+    pdksh, and zsh.
+
+-------------------------------------------------------------------
+Mon Oct 24 18:35:16 UTC 2016 - mpluskal@suse.com
+
+- Update to version 20161022:
+  * First command no longer gets stdin as it causes unpredictable
+    issues.
+  * Bug fixes and man page updates.
+- Changes for version 20160922
+  * parcat - cat files or fifos in parallel
+
+-------------------------------------------------------------------
+Tue Aug 30 08:47:57 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 20160822
+* --tmuxpane opens jobs in panes in tmux. Useful if you want to
+  monitor progress of less than 100 simultaneous jobs.
+* --linebuffer now treats \r as line ending, too.
+* Perl changes forces use of floats to be given with leading
+  zero, so 0.1 and not .1
+* --xapply renamed to --link.
+
+-------------------------------------------------------------------
+Sun Jul 31 17:52:04 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 20160722
+* env_parallel is now ready for wider testing. It is still beta
+  quality.
+* env_parallel is heavily modified for all shells and testing has
+  been increased.
+* Selectively choosing what to export using --env now works for
+  env_parallel (bash, csh, fish, ksh, pdksh, tcsh, zsh).
+* --round-robin now gives more work to a job that processes
+  faster instead of same amount to all jobs.
+* --pipepart works on block devices on GNU/Linux.
+
+-------------------------------------------------------------------
+Wed Jun 22 06:36:38 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 20160622
+* $PATH can now be exported using --env PATH. Useful if GNU
+  Parallel is not in your path on remote machines.
+* If --block is left out, --pipepart will use a block size that
+  will result in 10 jobs per jobslot.
+
+-------------------------------------------------------------------
+Sun May 22 14:57:17 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 20160522
+* niceload --net pauses the program if the internet connection
+  is overloaded.
+
+-------------------------------------------------------------------
+Thu Apr 21 23:06:02 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 20160422
+* :::+ and ::::+ work like ::: and :::: but links this input source
+  to the previous input source in a --xapply fashion. Contrary to
+  --xapply values do not wrap: The shortest input source determines
+  the length.
+* --line-buffer --keep-order now outputs continuously from the
+  oldest job still running. This is more what you would expect than
+  the earlier behaviour where --keep-order had no effect with
+  --line-buffer.
+* env_parallel supports tcsh, csh, pdksh. In fish it now supports
+  arrays. In csh/tcsh it now supports variables, aliases, and
+  arrays with no special chars. In pdksh it supports aliases,
+  functions, variables, and arrays.
+
+-------------------------------------------------------------------
+Tue Mar 22 22:05:36 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 20160322
+* env_parallel is a function that exports the environment
+  (functions, aliases, variables, and arrays) to GNU Parallel.
+* niceload --prg now searches for substrings if no process with the
+  name is found.
+
+-------------------------------------------------------------------
+Mon Feb 22 16:52:11 UTC 2016 - mpluskal@suse.com
+
+- Update to 20160222
+  * Bug fixes and man page updates.
+
+-------------------------------------------------------------------
+Sun Jan 24 09:26:20 UTC 2016 - mpluskal@suse.com
+
+- Update to 20160122
+  * --sql DBURL uses DBURL as storage for jobs and output. It does
+    not run any jobs so it requires at least one --sqlworker. DBURL
+    must point to a table.
+  * --sqlworker DBURL gets jobs from DBURL and stores the result
+    back to DBURL.
+  * --sqlandworker is a shorthand for --sql and --sqlworker.
+  * --sqlworker requires the output of a single job to fit in
+    memory.
+  * --results now also saves a file called 'seq' containing the 
+    sequence number.
+  * If $PARALLEL_ENV is a file, then that file will be read into
+    $PARALLEL_ENV.
+  * man parallel_tutorial has been given an overhaul.
+  * --workdir now accepts replacementstrings.
+
+-------------------------------------------------------------------
+Wed Dec 23 09:00:48 UTC 2015 - mpluskal@suse.com
+
+- Update to 20151222
+  * --transfer is now an alias for --transferfile {}.
+  * --transferfile works like --transfer, but takes an argument
+    like --return. This makes it possible to combine transferring
+    files with multiple input sources:
+    parallel -S server --tf {1} wc {2} {1} ::: * ::: -l -w -c
+  * Bug fixes and man page updates.
+
+-------------------------------------------------------------------
+Mon Nov 23 12:11:14 UTC 2015 - mpluskal@suse.com
+
+- Update to 20151122
+  * Automating large numbers of tasks https://rcc.uchicago.edu/docs/tutorials/kicp-tutorials/running-jobs.html
+	* Max out your IOPs with GNU Parallel http://blog.bitratchet.com/2015/11/11/max-out-your-iops-with-gnu-parallel/
+	* Bug fixes and man page updates.
+
+-------------------------------------------------------------------
+Sat Oct 24 10:59:28 UTC 2015 - mpluskal@suse.com
+
+- Update to 20151022
+  * --plus makes it possible to use {##} as a short had for {=
+  	$_=$Global::JobQueue->total_jobs() =} which gives the the
+		number of jobs to run.
+	* {= $_=$Global::JobQueue->total_jobs() =} is incompatible with
+		-X, -m, and --xargs.
+
+-------------------------------------------------------------------
+Tue Sep 22 07:11:31 UTC 2015 - mpluskal@suse.com
+
+- Update to 20150922
+  * Bug fixes and man page updates.
+
+-------------------------------------------------------------------
+Wed Sep  9 07:17:57 UTC 2015 - mpluskal@suse.com
+
+- Update to 20150822
+  * If $job->skip() is called in {= =} the job will not be run.
+  * @arg can now be used in {= =}: parallel echo '{= $arg[2] < 5
+    and $_="j" =}' ::: 1 2 3 ::: 4 5 6
+
+-------------------------------------------------------------------
+Fri Jul 24 17:52:36 UTC 2015 - astieger@suse.com
+
+- GNU parallel 20150722:
+  * If a record fits in a block, --block only reads upto the size
+    of --block. If not: --block reads a full --block more.
+  * Due to widely spread distributions still using --tollef even
+    after a  year of being retired following a year of being
+    obsolete, --tollef now gives an error unless used with --gnu.
+  * --nice now uses a perl wrapper instead of the nice command.
+
+-------------------------------------------------------------------
+Sun Jul 19 20:55:17 UTC 2015 - astieger@suse.com
+
+- GNU parallel 20150622:
+  * --halt has been rewritten completely. You can now combine
+    percentages with success or fail. See the man page.
+  * Exit values 102..254 have been removed. 101 means more than 100
+    jobs failed.
+  * Killing through --timeout, --memfree, or --halt is now done as
+    a process group.
+  * --termseq determines which signals are sent when a job is
+    killed.
+  * An empty argument would previously cause no string to be
+    inserted. This is now changed to '' being inserted, thus
+    prepending a space to the output of: parallel echo {} b ::: ''
+  * $PARALLEL_ENV can now be set to an environment prepending the
+    command. Used in env_parallel as mentioned in the manpage.
+  * --retry-failed will retry all failed jobs in a joblog. It will
+    ignore any command given.
+  * --ssh and $PARALLEL_SSH can be used to set the command used for
+    ssh. The command is assumed to behave the same way as ssh.
+  * --fifo now works in csh, too.
+  * Q(...) can be used in {= =} to shell quote a string.
+
+-------------------------------------------------------------------
+Sat May 23 19:17:45 UTC 2015 - astieger@suse.com
+
+- GNU parallel 20150522: [boo#932143]
+  * Security: The security issue for --sshlogin + --fifo/--cat has
+    been fixed. Thereby all issues with
+    http://lists.gnu.org/archive/html/parallel/2015-04/msg00045.html
+    have been fixed.
+  * Security: After further security analysis the issue fixed in
+    20150422 also fixed the problem for --tmux.
+
+-------------------------------------------------------------------
+Sun Apr 26 19:38:50 UTC 2015 - astieger@suse.com
+
+- GNU parallel 20150422:
+  * Security fix: A local attacker could make a user overwrite one
+    of his own files with a single byte when using --compress,
+    --tmux, --pipe, --cat or --fifo when guessing random file names
+    within a time window of 15 ms. [boo#928664]
+  * --shuf will generate all jobs, and shuffle them before running
+    them. This is useful to get a quick preview of the results before
+    running the full batch.
+  * Bug fixes and man page updates.
+
+-------------------------------------------------------------------
+Sun Mar 22 20:22:03 UTC 2015 - jengelh@inai.de
+
+- Avoid SLE11SP3 build failure by not mixing %doc with %_docdir/%name
+  in the files list.
+- Split documentation (82%) into separate package per
+  rpmlint suggestion
+
+-------------------------------------------------------------------
+Sun Mar 22 20:14:15 UTC 2015 - astieger@suse.com
+
+- GNU parallel 20150322:
+  * --number-of-cores respects 'taskset' on GNU/Linux.
+  * --joblog --pipe gives the data send and received in the log.
+  * GNU Parallel was tested to support 100 GB sized records in
+    --pipe. A few bugs was fixed to support >2 GB records. It works,
+    but is rather slow.
+  * Bug fixes and man page updates.
+- remove fdupes, not required
+
+-------------------------------------------------------------------
+Thu Mar  5 19:10:04 UTC 2015 - astieger@suse.com
+
+- GNU parallel 20150222:
+  * --tmux has gotten a major overhaul.
+  * Bug fixes and man page updates.
+- includes changes from 20150122:
+  * Remote jobs now send stderr (standard error) to stderr
+    (standard error) instead of stdout (standard output).
+  * Remote execution command is now packed using base64 encoded
+    bzip2. This means that big environments (app. 100 KB) can be
+    transferred. This change makes remote execution alpha quality.
+  * --semaphoretimeout now takes a negative value. This means give
+    up if the semaphore is not gotten within the timeout.
+  * --halt -1 and -2 now means halt if a job succeeds (so the
+    opposite of 1 and 2).
+  * --no-keep-order will reverse --keep-order.
+  * Bash's second fix of shellshock caused --env to break again
+    when exporting functions. This has been fixed again.
+  * A semibig refactoring of big functions. All non-trivial
+    functions are now less than 100 lines. The refactoring makes
+    this release beta quality.
+  * A description of the design decisions for GNU Parallel can be
+    found in 'man parallel_design'.
+  * A bug fix in replacement strings caused rewrite of the
+    replacement function. This makes use of replacement strings
+    alpha quality.
+  * Bug fixes and man page updates.
+
+-------------------------------------------------------------------
+Mon Dec  8 00:41:08 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 20141122
+* Remote systems can be divided into hostgroups (e.g. web and db)
+  by prepending '@groupname/' to the sshlogin. Multiple groups can
+  be given by separating groups with '+'.
+  E.g. @web/www1 @web+db/www2 @db/mariadb
+* Remote execution can be restricted to servers that are part of
+  one or more groups by '@groupname' as an sshlogin. Multiple
+  groups can be given by separating groups with '+'.
+  E.g. -S @web or -S @db+web
+
+-------------------------------------------------------------------
+Wed Aug  6 04:28:53 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 20140722
+* {= perl expression =} can be used as replacement string. The
+  expression should modify $_. E.g. {= s/\.gz$// =} to remove .gz
+  from the string. This makes replacement strings extremely flexible.
+* Positional perl expressions (similar to {2}) are given as
+  {=2 perl expression=} where 2 is the position.
+* One small backwards incompatability: {1}_{2} will replace {2}
+  with the empty string if there is only one argument. Previously,
+  {2} would have been left untouched.
+* Replacement strings can be defined using --rpl. E.g. parallel
+  --rpl '{.gz} s/\.gz$//' echo {.gz} ::: *.gz
+* --tmux will direct the output to a tmux session instead of files.
+  Each running jobs will be in its own window.
+* --halt 10% will stop spawning new jobs if 10% failed so far.
+
+-------------------------------------------------------------------
+Sat Jun 28 21:05:51 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 20140622
+* The "--pipepart" option works with "--header", "--regexp",
+  "--cat" and "--fifo".
+* "{%}" works as job slot.
+
+-------------------------------------------------------------------
+Mon May 26 08:31:42 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 20130522
+* --tollef has been retired. The format of --eta and --joblog has
+  changed slightly.
+* added --pipepart, a highly efficient alternative to --pipe if the
+  input is a real file and not a pipe. If using --cat or --fifo
+  with --pipe, the {} in the command will be replaced with the name
+  of a physical file and a fifo respectively containing the block
+  from --pipe.
+* --controlmaster is no longer experimental.
+* --env is now copied when determining CPUs on remote system. It is
+  useful for copying $PATH if parallel is not in the normal path.
+* --results now chops the argument if the argument is longer than
+  the allowed path length.
+
+-------------------------------------------------------------------
+Sat Nov 23 10:23:17 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 20131122
+* A citation notice is printed on stderr only if stderr is a
+  terminal, the user has not specified --no-notice, and the user
+  has not run --bibtex once.
+* --compress will compress temporary files.
+* --compress-program controls which program to use for compressing
+  temporary files.
+* --bar shows progress as a progress bar compatible with zenity.
+* --resume can now be used with --result:
+  jobs already run will be skipped.
+* --transfer and --basefile support paths relative to the --workdir
+  by inserting /./ into the path.
+
+-------------------------------------------------------------------
+Mon Oct 28 11:35:36 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 20131022
+* Using --transfer with files containing /./ in the path will copy
+  the files relative to the --workdir. The maximal command length
+  is now cached in a file, halving the startup time.
+
+-------------------------------------------------------------------
+Mon Sep 30 23:34:39 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 20130922
+* PDF-files of documentation is now included. Bugfixes and man page
+  updates have been made.
+- Remove fix-pod-syntax.diff (merged upstream)
+
+-------------------------------------------------------------------
+Wed Aug  7 17:36:39 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 20130722
+* --round-robin with --pipe will now write all blocks to
+  already-running jobs.
+* --env can now transfer the Bash function for remote execution.
+
+-------------------------------------------------------------------
+Sun Jun 23 05:41:30 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 20130522
+* --ctrlc is now the default if --pipe is not used, making it
+  possible to kill remotely-started jobs simply by pressing Ctrl-C.
+* --timeout 200% now means "kill jobs which take more than twice
+  the time of the median runtime of a job".
+* Jobs are now distributed round-robin when having mulitiple
+  --sshlogin, instead of filling up one --sshlogin at a time.
+- Update to new upstream release 20130622
+* --xapply now recycles arguments if an input source has more
+  arguments than others.
+* The sleep time between jobs is now both increased and decreased
+  exponentially.
+
+-------------------------------------------------------------------
+Thu Jun 20 11:36:03 UTC 2013 - coolo@suse.com
+
+- add fix-pod-syntax.diff to fix build with perl 5.18
+
+-------------------------------------------------------------------
+Wed May  8 17:30:12 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 20130422
+* --ctrlc will send SIGINT to tasks running on remote computers and
+  thus killing them.
+* --load now uses `ps` to see immediately see the number of running
+  processes instead of `uptime` thus making --load react much faster.
+*  --retries works with --onall.
+* --nice works under tcsh.
+- Ship license file and do tarball signature verification
+
+-------------------------------------------------------------------
+Wed Feb 27 15:46:58 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 20130222) for build.opensuse.org

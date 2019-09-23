@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Thu Nov 23 03:50:23 UTC 2017 - i@marguerite.su
+
+- update version 0.2.3
+  * add qkana in configuration
+  * fix anchor resolve
+  * more fix on anthy reconvert
+  * make use of new ShowCurrentIMInfo function
+    to show input mode
+
+-------------------------------------------------------------------
+Sat May 30 06:45:43 UTC 2015 - i@marguerite.su
+
+- update version 0.2.2
+  * fix some errors in 101kana.sty and tsuki-2-203-106.sty
+  * quick kana: shift modifiered keys produces voiced
+    consonant kana
+  * add circle latin-hiragana mode
+  * [anthy]delete duplicate defined of UTF8 scancode
+  * fix unexpected clear key bindings when load_config().
+
+-------------------------------------------------------------------
+Mon Jun  9 04:56:42 UTC 2014 - i@marguerite.su
+
+- update version 0.2.1
+  * Fix Google Code Issue 729
+
+-------------------------------------------------------------------
+Mon Jul  1 02:38:45 UTC 2013 - i@marguerite.su
+
+- update version 0.2.0
+  * bug fix
+  * translation update
+
+-------------------------------------------------------------------
+Sat Sep 15 20:54:29 UTC 2012 - i@marguerite.su
+
+- update version 0.1.1
+  * Fix a word selecting related bug
+
+-------------------------------------------------------------------
+Sat Jul 21 21:42:06 UTC 2012 - i@marguerite.su
+
+- change source to initial public version 0.1.0
+
+-------------------------------------------------------------------
+Sun Jan 29 07:56:28 UTC 2012 - i@marguerite.su
+
+- initial package 0.1git
+

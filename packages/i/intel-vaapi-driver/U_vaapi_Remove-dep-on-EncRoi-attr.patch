@@ -1,0 +1,28 @@
+From 91bc8071823d019f258dc675c95660761c10f93e Mon Sep 17 00:00:00 2001
+From: Mark Thompson <sw@jkqxz.net>
+Date: Mon, 4 Mar 2019 23:49:44 +0000
+Subject: [PATCH] Remove dependency on EncROI attribute to enable encoding with
+ ROI
+
+The VAConfigAttribEncROI attribute is read-only, so a user should not need
+to write it to enable encoding with ROI.
+
+Signed-off-by: Mark Thompson <sw@jkqxz.net>
+---
+ src/gen6_mfc_common.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gen6_mfc_common.c b/src/gen6_mfc_common.c
+index 19f97937..d192eeeb 100644
+--- a/src/gen6_mfc_common.c
++++ b/src/gen6_mfc_common.c
+@@ -2085,7 +2085,7 @@ intel_h264_enc_roi_config(VADriverContextP ctx,
+ 
+     vme_context->roi_enabled = 0;
+     /* Restriction: Disable ROI when multi-slice is enabled */
+-    if (!encoder_context->context_roi || (encode_state->num_slice_params_ext > 1))
++    if (encode_state->num_slice_params_ext > 1)
+         return;
+ 
+     vme_context->roi_enabled = !!encoder_context->brc.num_roi;
+

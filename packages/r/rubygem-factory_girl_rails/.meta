@@ -1,0 +1,10 @@
+<package name="rubygem-factory_girl_rails" project="openSUSE:Factory">
+  <title>factory_girl_rails provides integration between factory_girl and rails 3</title>
+  <description>factory_girl_rails provides integration between
+    factory_girl and rails 3 (currently just automatic factory definition
+    loading)
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-factory_girl_rails"/>
+  <url>http://github.com/thoughtbot/factory_girl_rails</url>
+</package>

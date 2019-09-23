@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c9acd02366844cd6c1a146773f20a553</srcmd5>
+    <version>8.4.8</version>
+    <time>1510761662</time>
+    <user>dimstar_suse</user>
+    <comment>Add libvma to Factory
+
+Since previous request:
+ - Add COPYING file</comment>
+    <requestid>541812</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dcfe477efa0b8ded7969d72354400e99</srcmd5>
+    <version>8.4.11</version>
+    <time>1516804342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568833</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>17fe0d876cac46853a3e67acd923890e</srcmd5>
+    <version>8.6.7</version>
+    <time>1529919777</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618881</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>64258053eb48db232915e4ddbd60a621</srcmd5>
+    <version>8.7.1</version>
+    <time>1542123357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644617</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>48d96ed205c10c37fc11f7bfd0f3d4c9</srcmd5>
+    <version>8.8.2</version>
+    <time>1560337904</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705788</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,7 @@
+<package name="scim-unikey" project="openSUSE:Factory">
+  <title>Vietnamese Input Method Engine for SCIM using Unikey IME</title>
+  <description>SCIM (Smart Common Input Method) is an input method (IM) platform.
+scim-unikey is a IME for scim. Use for type Vietnamese
+Support via forum at: http://forum.ubuntu-vn.com/viewforum.php?f=85</description>
+  <devel project="M17N" package="scim-unikey"/>
+</package>

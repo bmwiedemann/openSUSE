@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Thu Dec 13 12:06:48 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 0.1.2
+  * Fixed fullScale value for getNativeStreamFormat() call
+  * Apply optional arguments to settings on setting key match
+  * Added optional stream bitpacking with "bitpack" setting
+
+
+-------------------------------------------------------------------
+Sat Nov 10 13:27:22 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- build with soapy-sdr 0.7
+
+-------------------------------------------------------------------
+Fri May  5 09:37:40 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.1.1
+  * Support native AIRSPY_SAMPLE_INT16_IQ format
+  * Use atomics for ring buffer implementation
+  * Use Format string constants for stream types
+
+-------------------------------------------------------------------
+Wed Apr 19 21:45:41 UTC 2017 - mardnh@gmx.de
+
+- renamed packages according the debian package name from upstream
+
+-------------------------------------------------------------------
+Fri Apr 14 20:20:57 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.1.0 (tagged release)
+- renamed package from SoapyAirspy to soapy-airspy
+- specfile cleanup
+
+-------------------------------------------------------------------
+Tue Jan 03 21:40:06 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.1.0.git1475969537.e206492:
+  * Scaffold for SoapyAirspy from SoapyAudio
+  * find/init device, set frequency, sample rates, rf range
+  * Looks to be working now, mostly untested.
+  * Init sample rate before rx to avoid immediate re-init, remove local var copy
+  * Implement LNA, MIXER and VGA gain
+  * unnecessary loop; memcpy() for matching format
+  * Add Bias tee support
+  * debian build files and changelog
+  * debian: fixed executable bit on rules
+  * airspy streaming - use format defines
+  * streaming - Use atomics for ring buffer
+  * streaming - support AIRSPY_SAMPLE_INT16_IQ format
+  * streaming - check buf count under lock
+  * match buffer length to airspy source
+  * fixed bad pointer math, needs to be in bytes
+  * buffer length is in samples
+
+-------------------------------------------------------------------
+Thu Oct 15 05:50:33 UTC 2015 - mardnh@gmx.de
+
+- Update to version 0.0.0.git1444873076.ee7011d:
+  + 
+
+-------------------------------------------------------------------
+Thu Oct 15 05:49:31 UTC 2015 - mardnh@gmx.de
+
+ - initial package

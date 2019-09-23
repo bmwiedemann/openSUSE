@@ -1,0 +1,6 @@
+<package name="maven-surefire-plugins" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="maven-surefire"/>
+  <bcntsynctag>maven-surefire</bcntsynctag>
+</package>

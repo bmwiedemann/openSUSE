@@ -1,0 +1,26 @@
+Index: artha-1.0.3/configure.ac
+===================================================================
+--- artha-1.0.3.orig/configure.ac
++++ artha-1.0.3/configure.ac
+@@ -57,7 +57,7 @@ AC_SUBST([WORDNET_LIB])
+ 
+ # GtkComboBox with entry only since 2.24 only, hence check for GTK+-2.0 >= 2.24
+ # check for GTK+ and GLib
+-PKG_CHECK_MODULES([GTK], [gtk+-2.0 >= 2.24 glib-2.0 >= 2.22], , [
++PKG_CHECK_MODULES([GTK], [gtk+-2.0 >= 2.24 glib-2.0 >= 2.22 gio-2.0], , [
+ AC_MSG_RESULT(no)
+ AC_MSG_ERROR([
+ You must have GTK+ 2.0 (version 2.24 or above) and GLib 2.0 (version 2.22 
+Index: artha-1.0.3/src/Makefile.am
+===================================================================
+--- artha-1.0.3.orig/src/Makefile.am
++++ artha-1.0.3/src/Makefile.am
+@@ -39,7 +39,7 @@ artha_LDADD = libwni.a $(WORDNET_LIB)
+ if POSIX
+ AM_CFLAGS += @libdbus_CFLAGS@
+ artha_LDADD += -lX11 -ldbus-1 -ldbus-glib-1 -lgtk-x11-2.0 \
+-		-lgdk-x11-2.0 -lgmodule-2.0 -lgobject-2.0 -lglib-2.0
++		-lgdk-x11-2.0 -lgmodule-2.0 -lgobject-2.0 -lglib-2.0 -lgio-2.0
+ else
+ artha_LDADD += @GTK_LIBS@
+ artha_LDFLAGS = -mwindows

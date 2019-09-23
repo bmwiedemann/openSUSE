@@ -1,0 +1,712 @@
+-------------------------------------------------------------------
+Thu Jan  3 08:18:53 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 1.21
+  * No news for linux based systems
+
+-------------------------------------------------------------------
+Tue Sep 18 14:43:05 UTC 2018 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 1.20
+  * Small changes in inux/diskmeter.cc
+  * As well as in linux/netmeter.cc 
+  * New 32x32 icon
+
+-------------------------------------------------------------------
+Mon Mar 20 18:50:58 UTC 2017 - mimi.vx@gmail.com
+
+- spec-cleaned, removed limitation to gcc5
+
+-------------------------------------------------------------------
+Tue Mar  7 08:53:24 UTC 2017 - werner@suse.de
+
+- Diskmeter: allow removable devices (boo#1027532)
+
+-------------------------------------------------------------------
+Mon Dec  5 11:16:41 UTC 2016 - werner@suse.de
+
+- Update to version 1.19
+   * Strip empty fields from the nlist.
+   * arm64 doesn't have sys/io.h and sys/perm.h like many other Linux architectures
+   * Fix typo that was blocking compilation on gcc 6
+   * Fix /sys/class/net traversal on recent Linux systems
+   * Use right variable in error message.
+   * Fix coretemp for AMD K10 CPUs on kernel >= 3.17.
+   * Support coretemp on linux 3.15
+   * Do not parse error when 64-bit kernel is used with 32-bit userland
+   * arm64 doesn't have sys/io.h and sys/perm.h like many other Linux architectures
+   * Remove the Linux-specific 'MAP' field
+   * Replace the parsing of /proc/meminfo
+   * Fix spelling of "mandatory".
+   * Add a command-line flag for cpuFormat: single
+   * Change legend to match battery meter
+     The battery meter is the more concise one.
+   * Default IRQ meter to off
+   * Strip empty fields from the nlist.
+   * Fix name conflict.
+     Local and member variable had the same name.
+   * Initialize class member.
+   * Silence a warning from debug code.
+   * Use a helper to get the value of kstat_named_t.
+   * Save the needed kstats in a centralized way.
+   * Use sysconf instead of CPUMeter::countCpus().
+   * Show wireless meter when WLAN adapter is present.
+   * Use c++ iostreams for console messages.
+   * Remove two deprecated and unused functions.
+   * Coding style cleanup (linux/intmeter).
+   * Remove checks for kernel versions <= 2.0.
+   * Port interrupt rate meter from BSDs to Linux.
+   * Read net statistics from sysfs.
+   * Drop support for kernels < 2.4 in netmeter.
+   * Drop decimal from floats greater than 99.9 in used legends.
+   * Show negative values in sensor meters.
+   * Put value scaling code to base Meter class.
+   * Rework coretemp's CPU detection.
+   * Copy recent fieldmeter changes to bitfieldmeter.
+   * Calculate total correctly.
+   * Enable coretemp only on x86/x86_64.
+- Remove patches now upstream
+   0001-Replace-the-parsing-of-proc-meminfo.patch
+   pull-request7.patch
+   xosview-1.16-coretemp.patch
+   xosview-1.16-coretemp2.patch
+   xosview-1.16-serial.patch
+- Modify patch xosview-1.16-diskstat.patch
+- Port patches
+   xosview-1.16-appdef.patch becomes xosview-1.19-appdef.patch
+   xosview-1.16.dif becomes xosview-1.19.dif
+
+-------------------------------------------------------------------
+Fri Jul  8 08:40:39 UTC 2016 - werner@suse.de
+
+- Add upstream patch pull-request7.patch from pull request to avoid
+  compiler error 
+
+-------------------------------------------------------------------
+Fri Jun 17 08:22:27 UTC 2016 - werner@suse.de
+
+- Choose a working compiler 
+
+-------------------------------------------------------------------
+Thu Nov 19 16:00:50 UTC 2015 - opensuse@cboltz.de
+
+- reduce Requires: xorg-x11 (which drops in lots of packages) to the
+  really needed Requires: xrdb (boo#954114)
+
+-------------------------------------------------------------------
+Thu Sep 17 08:05:37 UTC 2015 - werner@suse.de
+
+- Adopt upstream commit 607d58bf3724bdacfecd9d7ff78f7f1838c0e08f
+  as patch 0001-Replace-the-parsing-of-proc-meminfo.patch
+  but without subtracting Mapped from Cached 
+
+-------------------------------------------------------------------
+Wed Sep 16 12:48:10 UTC 2015 - werner@suse.de
+
+- Adopt upstream commit 91afaf8c8b348376e6f67f6074729f5e1c1f7eb7 
+
+-------------------------------------------------------------------
+Tue Feb  3 13:41:24 UTC 2015 - werner@suse.de
+
+- Rename patches
+  xosview-appdef.patch becomes xosview-1.16-appdef.patch
+  xosview-configuration.patch becomes xosview-1.16.dif
+  xosview-diskstat.patch becomes xosview-1.16-diskstat.patch 
+  xosview-serial.patch becomes xosview-1.16-serial.patch
+- Remove superfluous patches
+  xosview-maxlimit.patch, xosview-pixmap.patch, and xosview-sysinfo.patch
+- Port coretemp changes from Upstream to this (boo#896632)
+  therefore add patch xosview-1.16-coretemp.patch
+- Add code to make coretemp reading work with kernel 3.17+ work (boo#896632) 
+  therefore add patch xosview-1.16-coretemp2.patch
+
+-------------------------------------------------------------------
+Sat Jan 17 04:14:45 UTC 2015 - sfalken@opensuse.org
+
+- Update to version 1.16:
+  + Changes from 1.14 to 1.15:
+    - Build system changes for GNU/Hurd
+    - Add 64-bit support for ARM and PPC to MeterMaker
+    - Increase MAX_PROCSTAT_LENGTH
+    - Make Buffer size for interrupt meter an overall variable
+    - Change USE_SYSCALLS to 0, to reduce I/O load
+    - Read /usr/share/X11/app-defaults/xosview if available
+    - Avoid removable and loop devices in disk stats
+    - Do not ignore removable devices
+    - Re-enable background pixmaps
+    - Use XPM handling by default
+    - Add command line shorthand for seeing all CPU cores
+      seperately
+    - Kernel disk stats are always in 512-byte units
+    - Do not ignore floppy disks in diskmeter
+  + Changes from 1.15 to 1.16
+    - Added keywords entry in desktop file
+    - New battery meter for *BSD
+    - Support DragonflyBSD 4.3 in netmeter
+    - Use correct size integer for sysctl return value
+    - Use snprintf() instead of std::ostringstream when
+      updating speed in loadmeter
+    - Make loadmeter autoscaling predictable
+  + Patches Refactored, and deversioned, xosview-1.14.dif renamed
+    to xosview-configuration.patch
+  + Removed:
+    - xosview-1.14.tar.gz
+    - xosview-1.14.dif
+    - xosview-1.14-appdef.dif
+    - xosview-1.14-diskstat.dif
+    - xosview-1.14-maxlimit.patch
+    - xosview-1.14-longint.patch
+    - xosview-1.14-pixmap.patch
+    - xosview-1.14-serial.patch
+    - xosview-1.14-sysinfo.patch
+  + Added:
+    - xosview-1.16.tar.gz
+    - xosview-configuration.patch
+    - xosview-appdef.patch
+    - xosview-diskstat.patch
+    - xosview-maxlimit.patch
+    - xosview-pixmap.patch
+    - xosview-serial.patch
+    - xosview-sysinfo.patch
+
+-------------------------------------------------------------------
+Thu Oct  2 00:04:03 UTC 2014 - crrodriguez@opensuse.org
+
+- Cleanup/reduce buildrequires by not pulling xorg-x11-devel 
+
+-------------------------------------------------------------------
+Sun Feb  9 22:03:02 UTC 2014 - dmueller@suse.com
+
+- update xosview-1.14-serial.patch: Fix build for aarch64 
+
+-------------------------------------------------------------------
+Mon Apr 29 12:12:43 UTC 2013 - werner@suse.de
+
+- Add patch xosview-1.14-pixmap.patch (bnc#817558) 
+- Combine patch xosview-1.14-procsys.patch with patch
+  xosview-1.14-sysinfo.patch to use one configure variable for
+  system calls.
+- Finally delete older patches xosview-1.9.2.dif and
+  xosview-config.diff as not used anymore with 1.14
+
+-------------------------------------------------------------------
+Tue Apr  9 13:34:24 UTC 2013 - werner@suse.de
+
+- Update to xosview version 1.14
+    This release makes small fixes, including one for a bug that
+    could cause random crashes.
+    1.13: This release makes changes to temperature sensing, adds
+          significant performance optimizations, and fixes bugs.
+    1.12: This release fixes a number of long-standing issues with
+          screen updates and redrawing.
+    1.11: The only change in this release is to fix a bug which
+          prevents use with Red Hat Enterprise Linux 6 kernels
+    1.10: This release adds a new configurable (and simplified)
+          CPU meter, plus several Linux and BSD improvements.
+    1.9.4: This release improves temperature sensor displays and
+           BSD support, and fixes bugs.
+    1.9.3: This release adds a simplified build system and some
+           minor changes.
+
+-------------------------------------------------------------------
+Sun Mar 10 11:24:45 UTC 2013 - schwab@suse.de
+
+- Add aarch64 to the list platforms without ioperm
+- Update config.{guess,sub}
+- Use %configure
+
+-------------------------------------------------------------------
+Thu Feb 28 14:27:57 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  the other licenses are consolidated into the GPL license of the derived
+  binary (Fedora uses the same)
+
+-------------------------------------------------------------------
+Wed Feb 27 06:17:03 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Tue Feb 21 10:51:47 UTC 2012 - coolo@suse.com
+
+- buildrequire xorg-x11 for directory ownership of app-defaults
+- drop support for pre-sles9 X11 paths
+
+-------------------------------------------------------------------
+Wed Feb  8 11:39:02 UTC 2012 - werner@suse.de
+
+- Update to xosview version 1.9.2 
+  * Fix a bug where battery meter was not redrawn
+  * Modify linux serialmeter startup to allow for a port number instead of
+    True/False.  Patch provided by Horst Wente.
+  * netIface support for NetBSD.  Patch from  Bernd Ernesti.
+  * Move repository to Git
+  * Merged patches from Debian distribution
+  * Several bugfixes
+  * Improvements to defaults
+
+-------------------------------------------------------------------
+Tue Jan 31 20:15:04 UTC 2012 - dvaleev@suse.com
+
+- fix ppc64 build 
+
+-------------------------------------------------------------------
+Wed Dec 21 13:44:52 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Dec 21 10:31:55 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Fri Dec  4 15:23:02 CET 2009 - seife@opensuse.org
+
+- de-fuzz patches
+
+-------------------------------------------------------------------
+Fri Jun  5 15:27:05 CEST 2009 - coolo@novell.com
+
+- rediff irda to avoid fuzz
+- fix build with glibc 2.10
+
+-------------------------------------------------------------------
+Wed Jun  3 02:08:28 CEST 2009 - crrodriguez@suse.de
+
+- fix build 
+
+-------------------------------------------------------------------
+Tue Nov 25 11:48:01 CET 2008 - werner@suse.de
+
+- xorg-11 is required as xrdb is required (bnc#448059)
+
+-------------------------------------------------------------------
+Thu May 15 17:51:49 CEST 2008 - werner@suse.de
+
+- The disk IO rates seems to be a factor 10 to large (bnc#390740)
+
+-------------------------------------------------------------------
+Fri Apr 25 12:33:04 CEST 2008 - werner@suse.de
+
+- There are kernels with more than 1024 IRQ lines (bnc#381758)
+
+-------------------------------------------------------------------
+Tue Dec  4 17:46:32 CET 2007 - werner@suse.de
+
+- Use I/O block size for hd if lstat(8) has success (bug #342107)
+
+-------------------------------------------------------------------
+Mon Nov 26 11:43:30 CET 2007 - werner@suse.de
+
+- Take ACPI and Xresources in account for battery option (#343806)
+
+-------------------------------------------------------------------
+Fri Sep  7 18:59:09 CEST 2007 - werner@suse.de
+
+- Count disks only once within diskmeter (bug #301665)
+
+-------------------------------------------------------------------
+Mon Aug 13 11:01:26 CEST 2007 - schwab@suse.de
+
+- Remove obsolete patch.
+
+-------------------------------------------------------------------
+Mon Aug  6 18:01:08 CEST 2007 - werner@suse.de
+
+- Fix BuildRequires
+
+-------------------------------------------------------------------
+Fri Mar 16 15:58:37 CET 2007 - werner@suse.de
+
+- More one thin-skinned Gcc42
+
+-------------------------------------------------------------------
+Fri Mar 16 11:57:43 CET 2007 - werner@suse.de
+
+- Gcc42 seems to be thin-skinned
+
+-------------------------------------------------------------------
+Fri Mar  9 13:14:17 CET 2007 - werner@suse.de
+
+- Fix the last fix by re-adding g++
+
+-------------------------------------------------------------------
+Mon Feb 26 15:06:57 CET 2007 - stbinner@suse.de
+
+- fix build by including icon and .desktop into package
+
+-------------------------------------------------------------------
+Mon Dec 11 11:52:48 CET 2006 - werner@suse.de
+
+- Expand search path for app-defaults to /usr/share/X11 (#227401)
+
+-------------------------------------------------------------------
+Mon Jul 31 12:02:48 CEST 2006 - werner@suse.de
+
+- Correct mandir for the manual page
+
+-------------------------------------------------------------------
+Thu Jul 27 15:22:46 CEST 2006 - werner@suse.de
+
+- Update to xosview version 1.8.3
+  * New sysfs support
+- Make it build with X11R7
+
+-------------------------------------------------------------------
+Fri Jun 16 15:30:32 CEST 2006 - schwab@suse.de
+
+- Fix syntax error in configure script.
+- Set mandir.
+- Use RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:21 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Dec 13 13:23:21 CET 2005 - werner@suse.de
+
+- Avoid potential undefined code (bug #137124)
+
+-------------------------------------------------------------------
+Tue Nov 29 17:51:40 CET 2005 - sbrabec@suse.cz
+
+- Don't package icon already present in desktop-data-SuSE.
+  Cleans rpm -V output.
+
+-------------------------------------------------------------------
+Mon Nov 28 16:30:54 CET 2005 - od@suse.de
+
+- Fix swap size calculation by using float numbers to calculate
+  swap size > ~ 3GB (#135681)
+
+-------------------------------------------------------------------
+Mon Apr 18 14:31:45 CEST 2005 - werner@suse.de
+
+- Change disk IO fudgeFactor from 4 to 2 (bug #66537)
+
+-------------------------------------------------------------------
+Fri Jan 28 17:31:07 CET 2005 - werner@suse.de
+
+- Update to xosview 1.8.2 (bug #49829)
+
+-------------------------------------------------------------------
+Wed Nov 17 16:22:32 CET 2004 - werner@suse.de
+
+- Add log.png pixmap to file list
+
+-------------------------------------------------------------------
+Tue Aug 31 16:45:55 CEST 2004 - werner@suse.de
+
+- Disable the not used notify message
+
+-------------------------------------------------------------------
+Tue May  4 12:31:51 CEST 2004 - werner@suse.de
+
+- Fixes the inability of xosview to display interrupts
+
+-------------------------------------------------------------------
+Fri Mar 12 16:44:16 CET 2004 - werner@suse.de
+
+- Fix boolean typo (bug #35803)
+
+-------------------------------------------------------------------
+Tue Mar  9 16:37:52 CET 2004 - werner@suse.de
+
+- Just support ppc64
+
+-------------------------------------------------------------------
+Tue Mar  9 13:58:14 CET 2004 - werner@suse.de
+
+- Make a real support of kernel 2.6 (bug #35474)
+
+-------------------------------------------------------------------
+Thu Jan 22 17:22:48 CET 2004 - werner@suse.de
+
+- Support the broken ISO standard of C++ about templates and name
+  spaces imported from a template class (or better not imported
+  even if unique).
+
+-------------------------------------------------------------------
+Wed Jan 21 14:16:15 CET 2004 - werner@suse.de
+
+- Force memmeter to use double by modding some classes to class
+  templates for typenames (fix bug #33722)
+
+-------------------------------------------------------------------
+Tue Jan 20 18:35:07 CET 2004 - werner@suse.de
+
+- Update to version 1.8.1
+
+-------------------------------------------------------------------
+Sat Jan 10 20:33:14 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Tue Oct 21 09:19:56 CEST 2003 - ja@suse.cz
+
+- fixed xosview on 2.6.x kernels.
+
+-------------------------------------------------------------------
+Sat Aug 16 16:04:34 CEST 2003 - adrian@suse.de
+
+- install desktop file from kappfinder
+
+-------------------------------------------------------------------
+Wed May 28 15:26:01 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Thu Apr 24 20:53:06 CEST 2003 - garloff@suse.de
+
+- Detect number of interrupts rather than hardcoding it per plat-
+  form.
+
+-------------------------------------------------------------------
+Sat Mar 22 18:45:39 CET 2003 - schwab@suse.de
+
+- Fix app-defaults to work with any resource name.
+
+-------------------------------------------------------------------
+Mon Jan 27 15:04:53 CET 2003 - ro@suse.de
+
+- fix build with gcc-3.3 (strstream.h) 
+
+-------------------------------------------------------------------
+Thu Sep 26 15:17:11 CEST 2002 - froh@suse.de
+
+- disable serialmeter like for sparc/ppc to make it build on s390/s390x
+  and disable interrupt-meter on s390/s390x (#20207)
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Sat Aug 17 20:41:09 CEST 2002 - schwab@suse.de
+
+- Fix resources.
+
+-------------------------------------------------------------------
+Fri Jul 19 13:23:46 CEST 2002 - werner@suse.de
+
+- Fix irda (and other) scanning bug for /proc/net/dev (bug #16929)
+
+-------------------------------------------------------------------
+Wed Jul  3 11:56:15 CEST 2002 - werner@suse.de
+
+- Update to xosview 1.8.0
+- Extend label width by one character (bug #16490) for more then
+  9 CPUs systems
+
+-------------------------------------------------------------------
+Wed Feb 13 18:33:03 CET 2002 - werner@suse.de
+
+- Full remove including %if
+
+-------------------------------------------------------------------
+Wed Feb 13 16:19:26 CET 2002 - werner@suse.de
+
+- Remove km_memst package
+
+-------------------------------------------------------------------
+Tue Feb 12 17:26:30 CET 2002 - werner@suse.de
+
+- Fix bug #12749: do not install xosview.rc.config nor
+  /etc/sysconfig/xosview because the memstat module does not work
+  with 2.4.x kernels
+- Fix bug #12756: increase buffer size
+
+-------------------------------------------------------------------
+Mon Jan 14 10:43:48 CET 2002 - schwab@suse.de
+
+- Fix dependency generation.
+
+-------------------------------------------------------------------
+Wed Dec 12 23:41:30 CET 2001 - garloff@suse.de
+
+- Restrict num. of IRQs to 64 on AXP if ridiculous numbers (>256) 
+  are detected. (We can't display them anyway ...)
+
+-------------------------------------------------------------------
+Wed Nov 14 17:42:14 CET 2001 - werner@suse.de
+
+- Increase buffer size for reading /proc/stat because
+  on PPC64 more than 1024 bytes is required (Bugzilla #12235).
+
+-------------------------------------------------------------------
+Wed Jun 27 16:24:09 CEST 2001 - schwab@suse.de
+
+- Fix for gcc 3.0.
+
+-------------------------------------------------------------------
+Fri Mar 16 01:39:34 CET 2001 - ro@suse.de
+
+- don't build memstat module during build
+  n/a for 2.4 kernels anyway 
+
+-------------------------------------------------------------------
+Fri Jan 12 13:21:38 CET 2001 - werner@suse.de
+
+- Enable /proc/net/dev usage of xosview
+
+-------------------------------------------------------------------
+Wed Dec 13 00:55:41 CET 2000 - ro@suse.de
+
+- added rc.config snippet for variable LOAD_MEMSTAT_MODULE 
+
+-------------------------------------------------------------------
+Thu Nov 30 12:54:06 CET 2000 - ro@suse.de
+
+- don't try to compile memstat for 2.4 
+
+-------------------------------------------------------------------
+Mon Aug 14 18:20:05 CEST 2000 - schwab@suse.de
+
+- Don't build memstat module on ia64.
+- Fix intmeter for ia64.
+- Add %suse_update_config.
+
+-------------------------------------------------------------------
+Sun Aug  6 18:08:35 CEST 2000 - kukuk@suse.de
+
+- Add CFLAGS and CC variable for UltraSPARC 
+
+-------------------------------------------------------------------
+Wed Jun 21 17:22:29 CEST 2000 - werner@suse.de
+
+- Add patch which allows kernels without CONFIG_SYSCTL
+
+-------------------------------------------------------------------
+Wed May 24 19:31:16 CEST 2000 - uli@suse.de
+
+- moved docs to %{_docdir}
+
+-------------------------------------------------------------------
+Thu May 11 18:07:27 CEST 2000 - ro@suse.de
+
+- fixed intmeter for alpha 
+
+-------------------------------------------------------------------
+Thu Mar 16 18:14:52 CET 2000 - kukuk@suse.de
+
+- Remove SerialMeter for SPARC
+
+-------------------------------------------------------------------
+Thu Mar  9 08:27:49 CET 2000 - ro@suse.de
+
+- removed k_deflt from neededforbuild 
+
+-------------------------------------------------------------------
+Sun Mar  5 14:41:32 CET 2000 - kukuk@suse.de
+
+- Fix handling of SMP configuration
+- Don't include memstat module, create source package instead
+
+-------------------------------------------------------------------
+Fri Mar  3 13:39:43 CET 2000 - werner@suse.de
+
+- Make pattern for DRVver to `1.*' to catch all 1.X drivers
+
+-------------------------------------------------------------------
+Fri Feb 25 22:47:41 CET 2000 - werner@suse.de
+
+- Secure method to test if we have a *working* system battery (in
+  the absolute most cases this means we are running on a notebook)
+
+-------------------------------------------------------------------
+Thu Feb 10 12:19:30 CET 2000 - ro@suse.de
+
+- replaced kernmod by k_deflt 
+
+-------------------------------------------------------------------
+Mon Feb  7 17:50:45 CET 2000 - kasal@suse.de
+
+- app-defaults files should be %config
+
+-------------------------------------------------------------------
+Thu Nov 25 12:39:34 CET 1999 - uli@suse.de
+
+- disabled serial meter for PPC
+
+-------------------------------------------------------------------
+Wed Nov 24 16:34:46 CET 1999 - kettner@suse.de
+
+- bug workaround for AXP /proc/stat problem 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Fri Aug 27 12:49:44 CEST 1999 - ro@suse.de
+
+- set kernel-version to 2.2.12
+
+-------------------------------------------------------------------
+Tue Aug 24 12:41:13 CEST 1999 - ro@suse.de
+
+- use .c instead of .$(FEXT) ... to make it compile on alpha
+
+-------------------------------------------------------------------
+Fri Jul 16 17:48:25 MEST 1999 - ro@suse.de
+
+- modified to contain own modules
+
+-------------------------------------------------------------------
+Thu Jul  8 16:14:25 CEST 1999 - werner@suse.de
+
+- Fix option handling in xosview script
+
+-------------------------------------------------------------------
+Wed Mar 10 16:07:33 MET 1999 - ro@suse.de
+
+- adapted to old kernmod
+
+-------------------------------------------------------------------
+Fri Mar  5 16:38:37 MET 1999 - werner@suse.de
+
+- Upgrade to 1.7.1
+  * Fix XOsview to handle graphs in the old way
+  * Change makefile of memstat to detect configuration
+    at runtime (MODVERSIONS, SMP, RELEASE)
+ 
+
+-------------------------------------------------------------------
+Mon Dec 14 21:23:13 MET 1998 - ro@suse.de
+
+- enable net if proc/net/ip_fwchains exists (or proc/net/ip_acct)
+
+-------------------------------------------------------------------
+Tue Nov 24 15:32:14 MET 1998 - ro@suse.de
+
+- use gcc 
+
+-------------------------------------------------------------------
+Wed Nov 11 14:47:01 MET 1998 - ro@suse.de
+
+	- detect kernel-version from UTS-Release (not from uname -r)
+
+----------------------------------------------------------------------------
+Thu May 28 17:38:42 MET DST 1998 - werner@suse.de
+
+	- New version 1.6.0
+	- Remove suid bit from binary
+	- Add a message for sending after installation
+----------------------------------------------------------------------------
+Wed Feb 11 23:22:13 MET 1998 - werner@suse.de
+
+	- New revision
+----------------------------------------------------------------------------
+Tue Nov  4 21:27:51 MET 1997 - werner@suse.de
+
+	- New revision
+	  * with module support to count shared pages only once
+	  * Swap page in/out

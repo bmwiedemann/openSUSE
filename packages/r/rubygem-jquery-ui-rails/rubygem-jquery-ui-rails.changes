@@ -1,0 +1,103 @@
+-------------------------------------------------------------------
+Wed Dec 21 05:33:13 UTC 2016 - coolo@suse.com
+
+- updated to version 6.0.1
+ see installed History.md
+
+  # 6.0.1
+  
+  * Fix "define is not defined" issue in `core.js`
+
+-------------------------------------------------------------------
+Wed Nov 30 05:38:47 UTC 2016 - coolo@suse.com
+
+- updated to version 6.0.0
+ see installed History.md
+
+  # 6.0.0
+  
+  * Update to jQuery UI 1.12.1
+  
+  # 5.0.5
+  
+  * Update to jQuery UI 1.11.4
+  
+  # 5.0.4
+  
+  * Update to jQuery UI 1.11.3
+
+-------------------------------------------------------------------
+Wed May 13 04:29:44 UTC 2015 - coolo@suse.com
+
+- updated to version 5.0.5
+ see installed History.md
+
+-------------------------------------------------------------------
+Mon Feb  9 08:06:36 UTC 2015 - coolo@suse.com
+
+- updated to version 5.0.3
+ * Speed up: Only use .erb extension if `<%= %>` tags are used
+ 
+ # 5.0.2
+ 
+ * Update to jQuery UI 1.11.2
+ 
+ # 5.0.1
+ 
+ * Update to jQuery UI 1.11.1
+ 
+ # 5.0.0
+ 
+ * Update to jQuery UI 1.11.0
+ * Rename `jquery.ui.*.{js,css}` to `jquery-ui/*.{js,css}`
+ * Add jquery-ui.js and jquery-ui.css assets
+
+-------------------------------------------------------------------
+Sun Oct 12 11:25:26 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Mon Apr 21 17:23:09 UTC 2014 - coolo@suse.com
+
+- updated to version 4.2.1
+  * Update to jQuery UI 1.10.4
+
+-------------------------------------------------------------------
+Sat Feb 22 08:10:50 UTC 2014 - coolo@suse.com
+
+- updated to version 4.2.0
+ * Bump Rails dependency to `>=3.2.16`
+
+-------------------------------------------------------------------
+Mon Dec 16 06:28:06 UTC 2013 - coolo@suse.com
+
+- updated to version 4.1.1
+ * Declare image dependencies using `//= depend_on_asset`, to stop the
+   Sprockets cache from going stale.
+
+-------------------------------------------------------------------
+Thu Oct 31 05:54:42 UTC 2013 - coolo@suse.com
+
+- updated to version 4.1.0
+  * Add Jquery::Ui::Rails::JQUERY_UI_VERSION constant
+
+-------------------------------------------------------------------
+Mon Sep 23 14:51:06 UTC 2013 - coolo@suse.com
+
+- updated to version 4.0.5
+  * Remove unused dependency on the `jquery-rails` gem. If you get an error
+    "couldn't find file 'jquery'", you may need to explicitly add `gem
+    'jquery-rails'` to your Gemfile.
+
+-------------------------------------------------------------------
+Tue Jul 30 16:05:59 UTC 2013 - coolo@suse.com
+
+- updated to version 4.0.4
+ * Include license in gemspec
+
+-------------------------------------------------------------------
+Sat Jun  8 08:36:10 UTC 2013 - coolo@suse.com
+
+- initial version (removed from jquery-rails)
+

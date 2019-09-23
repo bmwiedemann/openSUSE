@@ -1,0 +1,162 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f5a5b6458d665a5875ff319dc5524af2</srcmd5>
+    <version>1.0</version>
+    <time>1219803924</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>788ce4645093a1a2d3fc2ecd22dcc73f</srcmd5>
+    <version>1.1</version>
+    <time>1223311691</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2d70df030ad74e75b84bd0476198ae29</srcmd5>
+    <version>1.1</version>
+    <time>1226936937</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>bd0bf0f0c028c9d9007432513b9bc0f4</srcmd5>
+    <version>1.1</version>
+    <time>1245338642</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>bd0bf0f0c028c9d9007432513b9bc0f4</srcmd5>
+    <version>1.1</version>
+    <time>1245338642</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>e4ba18c13512ae1e36f2aac30e947d0d</srcmd5>
+    <version>1.1</version>
+    <time>1268922722</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>e4ba18c13512ae1e36f2aac30e947d0d</srcmd5>
+    <version>1.1</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>e4ba18c13512ae1e36f2aac30e947d0d</srcmd5>
+    <version>1.1</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>e4ba18c13512ae1e36f2aac30e947d0d</srcmd5>
+    <version>1.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>cbce38bf3d91a8789e2c4d1b04ff4020</srcmd5>
+    <version>1.1</version>
+    <time>1316503628</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82632 from jengelh)</comment>
+    <requestid>83650</requestid>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>cbce38bf3d91a8789e2c4d1b04ff4020</srcmd5>
+    <version>1.1</version>
+    <time>1319181750</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>86abf48a85b23786add4f83fc827dd8a</srcmd5>
+    <version>1.1</version>
+    <time>1323191374</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9b2cb6d39d69f452f04fbaed615f9d5e</srcmd5>
+    <version>1.5</version>
+    <time>1332831390</time>
+    <user>coolo</user>
+    <comment>- added himem driver
+- updated to freedos 1.1
+
+- specify image geometry explicitly
+
+- fix grub &amp; lilo for small images (bnc#727974)
+- added 'free' option to specify extra disk space
+- added VERSION &amp; changelog files
+- removed dependency on master-boot-code
+
+- fix iso creation for small firmware files</comment>
+    <requestid>111139</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>9b2cb6d39d69f452f04fbaed615f9d5e</srcmd5>
+    <version>1.5</version>
+    <time>1340183150</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>992d610dab1a0e7fccb9e1a414302b2d</srcmd5>
+    <version>1.6</version>
+    <time>1340617525</time>
+    <user>coolo</user>
+    <comment>- work around bigint strangeness in perl 5.16 (bnc#766339)</comment>
+    <requestid>125504</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>992d610dab1a0e7fccb9e1a414302b2d</srcmd5>
+    <version>1.6</version>
+    <time>1359108616</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>992d610dab1a0e7fccb9e1a414302b2d</srcmd5>
+    <version>1.6</version>
+    <time>1379661906</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>992d610dab1a0e7fccb9e1a414302b2d</srcmd5>
+    <version>1.6</version>
+    <time>1409300428</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>44b5509b9848525a74704a2d737722d4</srcmd5>
+    <version>1.6</version>
+    <time>1520778304</time>
+    <user>dimstar_suse</user>
+    <comment>- support_mkisofs.patch: support mkisofs in addition to genisoimage
+  (bnc#1081739)
+- user_executable.patch: specify path for executables in /usr/sbin
+  allowing us to create images as a regular user.
+- spec file cleanup and use v3 SPDX license (forwarded request 584994 from adamm)</comment>
+    <requestid>585001</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e678b96ea26f046fba1d57152fa9cc90</srcmd5>
+    <version>2.0</version>
+    <time>1558690329</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>704964</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>ebbb3fa4df615662340d341c2d659ce5</srcmd5>
+    <version>2.0</version>
+    <time>1558948487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705529</requestid>
+  </revision>
+</revisionlist>

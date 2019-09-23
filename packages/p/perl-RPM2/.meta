@@ -1,0 +1,7 @@
+<package name="perl-RPM2" project="openSUSE:Factory">
+  <title>Perl bindings for the RPM Package Manager API</title>
+  <description>The RPM2 module provides an object-oriented interface to querying both the installed RPM database as well as files on the filesystem.
+</description>
+  <devel project="devel:languages:perl" package="perl-RPM2"/>
+  <url>http://search.cpan.org/dist/RPM2</url>
+</package>

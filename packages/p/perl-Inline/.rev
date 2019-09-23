@@ -1,0 +1,259 @@
+<revisionlist>
+  <revision rev="1" vrev="115">
+    <srcmd5>5d1f0f97611aabf88ffeeecebc6262bd</srcmd5>
+    <version>0.44</version>
+    <time>1168903860</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="329">
+    <srcmd5>5d1f0f97611aabf88ffeeecebc6262bd</srcmd5>
+    <version>0.44</version>
+    <time>1168903860</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8ccfacb0e546061c81d418c713670888</srcmd5>
+    <version>0.45</version>
+    <time>1232626475</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8ccfacb0e546061c81d418c713670888</srcmd5>
+    <version>0.45</version>
+    <time>1232626475</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>0d0e347c70672c5fe2dc00fc497e576d</srcmd5>
+    <version>0.45</version>
+    <time>1263225004</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Inline based on submit request 28979 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f945498552bc7a8a070b2c7407ff0718</srcmd5>
+    <version>0.46</version>
+    <time>1266508221</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Inline based on submit request 32693 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c0e579d50cc55c3e2f79dd0bb7396aa3</srcmd5>
+    <version>0.46</version>
+    <time>1268925506</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>c0e579d50cc55c3e2f79dd0bb7396aa3</srcmd5>
+    <version>0.46</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>c0e579d50cc55c3e2f79dd0bb7396aa3</srcmd5>
+    <version>0.46</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>55128c5fcb670dd9ec2ce2ab29cf6fb4</srcmd5>
+    <version>0.46</version>
+    <time>1291582816</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54559 from user coolo
+</comment>
+    <requestid>54559</requestid>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>3843c1930fd46a944190f92c3f6b178c</srcmd5>
+    <version>0.46</version>
+    <time>1291582821</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54559
+</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>6108086244473906409a2f555e915a6f</srcmd5>
+    <version>0.47</version>
+    <time>1295881138</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 59038 from user vitezslav_cizek
+</comment>
+    <requestid>59038</requestid>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>ae03e4f49a9297cd7ba0d0bdfe09ce55</srcmd5>
+    <version>0.47</version>
+    <time>1295881151</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 59038
+</comment>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>ae03e4f49a9297cd7ba0d0bdfe09ce55</srcmd5>
+    <version>0.47</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>46fb16fd0416c20db3dddc6c2daf4916</srcmd5>
+    <version>0.48</version>
+    <time>1298380795</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62464 from user vitezslav_cizek
+</comment>
+    <requestid>62464</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>dd2f7dc657c07f4708b224b7f27d6162</srcmd5>
+    <version>0.48</version>
+    <time>1298380807</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 62464
+</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>dd2f7dc657c07f4708b224b7f27d6162</srcmd5>
+    <version>0.48</version>
+    <time>1319182280</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>704dd515d2e7d102bc312a11bee7c7fa</srcmd5>
+    <version>0.48</version>
+    <time>1321875681</time>
+    <user>coolo</user>
+    <comment>- obsolete perl-Inline-C correctly
+
+- use original .tar.gz</comment>
+    <requestid>92772</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>84a73a185a34a170237c8ac906694846</srcmd5>
+    <version>0.48</version>
+    <time>1323193375</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6accda7b28735b515cda7e369d6a5686</srcmd5>
+    <version>0.49</version>
+    <time>1323427887</time>
+    <user>coolo</user>
+    <comment>- update to 0.49
+  * Inline.pm - small alteration to M19_usage_language error message
+    - Have the config file re-created *before* we croak with
+      M19_usage_language(). (Re-creating the config file should
+      alleviate the need to croak, thus allowing the script to
+      complete successfully.) Thanks to Patrick LeBoutillier for
+      the patch, and to David Oswald for pursuing this.
+- licence correction (same as Perl)</comment>
+    <requestid>95913</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ca4408285cbad03592e1e07f56ae89d5</srcmd5>
+    <version>0.50</version>
+    <time>1328717997</time>
+    <user>coolo</user>
+    <comment>- update to 0.50
+      Inline.pm - Bump version number to 0.50
+      Inline.pm - Bring version numbering into line with recommendations made in
+                  http://perldoc.perl.org/perlmodstyle.html#Version-numbering
+      Inline.pm - Rename create_config_file()'s private @INC to @_inc.
+                  (This is just to avoid any confusion that we might be
+                  messing with @INC.)
+                - In creating @_inc, we now additionally grep for the location
+                  of Parse::RecDescent - in case it's in a different PERL5LIB
+                  location to Inline (as generally happens with cpan smokers -
+                  but could happen anywhere).
+                - Update copyright dates throughout.
+      C/t - Make alterations to all of the '.t' files in C/t (except
+            for 00init.t). This is in reponse to ticket 73448, which
+            raised the possibility that Inline may get built with the
+            PERL_INSTALL_ROOT environment variable set.
+      Inline.pod - mention the need to make provision for the
+                   PERL_INSTALL_ROOT environment variable iff it has
+                   been set.
+      As the result of input from David Oswald:
+      Inline.pod - Changes relating to &quot;CONFIGURE_REQUIRES&quot; and fix
+                   typo reported in ticket 73108.
+      Inline-FAQ.pod - Changes relating to &quot;CONFIGURE_REQUIRES&quot;
+      Inline.pm - Bump version to 0.49_01
+      lib/Inline/MakeMaker.pm - Bump version to 0.49_01</comment>
+    <requestid>103229</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>ca4408285cbad03592e1e07f56ae89d5</srcmd5>
+    <version>0.50</version>
+    <time>1340183862</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>2731bacad81066c97b1236c62c9d6061</srcmd5>
+    <version>0.50</version>
+    <time>1354104957</time>
+    <user>coolo</user>
+    <comment>- require make+gcc to avoid
+  https://rt.cpan.org/Public/Bug/Display.html?id=81375 (forwarded request 142595 from bmwiedemann)</comment>
+    <requestid>142886</requestid>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>2731bacad81066c97b1236c62c9d6061</srcmd5>
+    <version>0.50</version>
+    <time>1359109711</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>2731bacad81066c97b1236c62c9d6061</srcmd5>
+    <version>0.50</version>
+    <time>1379663720</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="10">
+    <srcmd5>2731bacad81066c97b1236c62c9d6061</srcmd5>
+    <version>0.50</version>
+    <time>1409302344</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4486c534e2d85e4ffeae787feb2b8f09</srcmd5>
+    <version>0.80</version>
+    <time>1429186439</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297046</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>79d22c00597623b93925b5c0b5361a20</srcmd5>
+    <version>0.81</version>
+    <time>1549286771</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671010</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4f1404b08599eced9db598120aa31cbd</srcmd5>
+    <version>0.82</version>
+    <time>1554281493</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690872</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fd1416c7fb571373399dd0da3bc000bf</srcmd5>
+    <version>0.83</version>
+    <time>1556622358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699376</requestid>
+  </revision>
+</revisionlist>

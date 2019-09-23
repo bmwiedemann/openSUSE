@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>774654ef788b62762ac340349f17c688</srcmd5>
+    <version>0.0.18</version>
+    <time>1520588193</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by the latest version of python-holoviews, which is already in openSUSE:Factory.</comment>
+    <requestid>581989</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a9fa7e61acf22e6c989cfcc87bc48191</srcmd5>
+    <version>0.0.18</version>
+    <time>1545648134</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659600</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e3414e483fec5216a60e13e9591d6066</srcmd5>
+    <version>0.0.19</version>
+    <time>1551784769</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.0.19:
+  * No upstream changelog, many flake/codewarning fixes</comment>
+    <requestid>680421</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>755576cae3f185591812c37e94c0da63</srcmd5>
+    <version>0.0.20</version>
+    <time>1563914139</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.0.20:
+  * no changelog</comment>
+    <requestid>717625</requestid>
+  </revision>
+</revisionlist>

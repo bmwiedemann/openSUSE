@@ -1,0 +1,156 @@
+-------------------------------------------------------------------
+Tue Sep 17 09:25:07 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.15.2:
+  * [NEW] Added humanize week granularity translations for Portuguese and Brazilian Portuguese.
+  * [NEW] Embedded changelog within docs and added release dates to versions.
+  * [FIX] Fixed a bug that caused test failures on Windows only, see #668 for details.
+
+-------------------------------------------------------------------
+Fri Sep 13 12:10:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.15.1:
+  * Too many changes to enumerate, see CHANGELOG.rst
+
+-------------------------------------------------------------------
+Sun Aug  4 15:07:17 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.14.4:
+  * [FIX] Fixed a regression in 0.14.3 that prevented a tzinfo
+    argument of type string to be passed to the get()
+    function. Functionality such as arrow.get("2019072807",
+    "YYYYMMDDHH", tzinfo="UTC") should work as normal again.
+  * [CHANGE] Moved backports.functools_lru_cache dependency from
+    extra_requires to install_requires for Python 2.7 installs to fix
+    #495.
+
+-------------------------------------------------------------------
+Sun Jul 28 16:10:58 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.14.3:
+  * [NEW] Added full support for Python 3.8.
+  * [CHANGE] Added warnings for upcoming factory.get() parsing changes
+    in 0.15.0. Please see
+    https://github.com/crsmithdev/arrow/issues/612 for full details.
+  * [FIX] Extensive refactor and update of documentation.
+  * [FIX] factory.get() can now construct from kwargs.
+  * [FIX] Added meridians to Spanish Locale.
+
+-------------------------------------------------------------------
+Sat Jun  8 23:19:40 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.14.2:
+  * [CHANGE] Travis CI builds now use tox to lint and run tests.
+  * [FIX] Fixed UnicodeDecodeError on certain locales (#600).
+
+- changes from version 0.14.1:
+  * [FIX] Fixed "ImportError: No module named 'dateutil'" (#598).
+
+- changes from version 0.14.0:
+  * [NEW] Added provisional support for Python 3.8.
+  * [CHANGE] Removed support for EOL Python 3.4.
+  * [FIX] Updated setup.py with modern Python standards.
+  * [FIX] Upgraded dependencies to latest versions.
+  * [FIX] Enabled flake8 and black on travis builds.
+  * [FIX] Formatted code using black and isort.
+
+- changes from version 0.13.2:
+  * [NEW] Add is_between method.
+  * [FIX] Improved humanize behaviour for near zero durations (#416).
+  * [FIX] Correct humanize behaviour with future days (#541).
+  * [FIX] Documentation updates.
+  * [FIX] Improvements to German Locale.
+
+-------------------------------------------------------------------
+Wed Mar  6 12:14:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.13.1:
+  * Support for python3.7
+- Remove merged patch arrow-py37.patch
+
+-------------------------------------------------------------------
+Tue Jan 22 08:55:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to work with python 3.7:
+  * arrow-py37.patch
+
+-------------------------------------------------------------------
+Sun Jan 20 04:31:54 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * be more specific in %files section
+  * require pytz
+
+- update to version 0.13.0:
+  * [NEW] Added support for Python 3.6.
+  * [CHANGE] Drop support for Python 2.6/3.3.
+  * [CHANGE] Return generator instead of list for Arrow.range(),
+    Arrow.span_range() and Arrow.interval().
+  * [FIX] Make arrow.get() work with str & tzinfo combo.
+  * [FIX] Make sure special RegEx characters are escaped in format
+    string.
+  * [NEW] Added support for ZZZ when formatting.
+  * [FIX] Stop using datetime.utcnow() in internals, use
+    datetime.now(UTC) instead.
+  * [FIX] Return NotImplemented instead of TypeError in arrow math
+    internals.
+  * [NEW] Added Estonian Locale.
+  * [FIX] Small fixes to Greek locale.
+  * [FIX] TagalogLocale improvements.
+  * [FIX] Added test requirements to setup.
+  * [FIX] Improve docs for get, now and utcnow methods.
+  * [FIX] Correct typo in depreciation warning.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:45:42 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Feb 20 20:59:15 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * also require python-backports.functools_lru_cache during
+    installation
+
+-------------------------------------------------------------------
+Sat Feb 17 18:29:14 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+  * require python-backports.functools_lru_cache for python2
+
+- update to version 0.12.1:
+  * Allow wheels to determine the required dependencies
+  * Makes the only_distance paramter value equivalent to value given
+    to function when granularity paramter is also provided by user
+
+- changes from version 0.12.0:
+  * [FIX] Compatibility fix for Python 2.x
+
+- changes from version 0.11.0:
+  * [FIX] Fix grammar of ArabicLocale
+  * [NEW] Add Nepali Locale
+  * [FIX] Fix month name + rename AustriaLocale -> AustrianLocale
+  * [FIX] Fix typo in Basque Locale
+  * [FIX] Fix grammar in PortugueseBrazilian locale
+  * [FIX] Remove pip --user-mirrors flag
+  * [NEW] Add Indonesian Locale
+
+-------------------------------------------------------------------
+Sat Jul 15 18:33:22 UTC 2017 - aloisio@gmx.com
+
+- Update to 0.10.0 (see HISTORY.md)
+- Converted to singlespec
+
+-------------------------------------------------------------------
+Fri Feb 26 12:54:58 UTC 2016 - tbechtold@suse.com
+
+- Require python-python-dateutil. package was renamed
+
+-------------------------------------------------------------------
+Wed Aug  6 08:03:23 UTC 2014 - toddrme2178@gmail.com
+
+- Initial version
+

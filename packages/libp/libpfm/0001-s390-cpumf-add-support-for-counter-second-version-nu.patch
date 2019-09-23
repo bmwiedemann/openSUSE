@@ -1,0 +1,88 @@
+From c08003fb085e23f2229e58cc176fcfcf58a3b238 Mon Sep 17 00:00:00 2001
+From: Thomas Richter <tmricht@linux.ibm.com>
+Date: Thu, 11 Jul 2019 17:49:42 -0700
+Subject: [PATCH] s390/cpumf: add support for counter second version number 6
+
+IBM added secound version number 6 in the CPU Measurement
+Counter facility to indicate additional counters in the
+crypto counter set.
+
+Signed-off-by: Thomas Richter <tmricht@linux.ibm.com>
+---
+ lib/events/s390x_cpumf_events.h | 39 +++++++++++++++++++++++++++++++++
+ lib/pfmlib_s390x_cpumf.c        |  2 ++
+ 2 files changed, 41 insertions(+)
+
+diff --git a/lib/events/s390x_cpumf_events.h b/lib/events/s390x_cpumf_events.h
+index 8be1d55..8587a3b 100644
+--- a/lib/events/s390x_cpumf_events.h
++++ b/lib/events/s390x_cpumf_events.h
+@@ -13,6 +13,8 @@
+ #define CPUMF_CTRSET_EXTENDED           1
+ #define CPUMF_CTRSET_MT_DIAG            32
+ 
++#define CPUMF_SVN6_ECC			4
++
+ 
+ static const pme_cpumf_ctr_t cpumcf_fvn1_counters[] = {
+ 	{
+@@ -270,6 +272,43 @@ static const pme_cpumf_ctr_t cpumcf_svn_generic_counters[] = {
+ 			" coprocessor is busy performing a function issued by"
+ 			" another CPU",
+ 	},
++	{
++		.ctrnum = 80,
++		.ctrset = CPUMF_CTRSET_CRYPTO,
++		.name = "ECC_FUNCTION_COUNT",
++		.desc = "This counter counts the"
++			" total number of the elliptic-curve cryptography (ECC)"
++			" functions issued by the CPU.",
++	},
++	{
++		.ctrnum = 81,
++		.ctrset = CPUMF_CTRSET_CRYPTO,
++		.name = "ECC_CYCLES_COUNT",
++		.desc = "This counter counts the total"
++			" number of CPU cycles when the ECC coprocessor is"
++			" busy performing the elliptic-curve cryptography"
++			" (ECC) functions issued by the CPU.",
++	},
++	{
++		.ctrnum = 82,
++		.ctrset = CPUMF_CTRSET_CRYPTO,
++		.name = "ECC_BLOCKED_FUNCTION_COUNT",
++		.desc = "This counter counts the total number of the"
++			" elliptic-curve cryptography (ECC) functions that are"
++			" issued by the CPU and are blocked because the ECC"
++			" coprocessor is busy performing a function issued by"
++			" another CPU.",
++	},
++	{
++		.ctrnum = 83,
++		.ctrset = CPUMF_CTRSET_CRYPTO,
++		.name = "ECC_BLOCKED_CYCLES_COUNT",
++		.desc = "This counter counts the total number of CPU cycles "
++			" blocked for the elliptic-curve cryptography (ECC) "
++			" functions issued by the CPU because the ECC"
++			" coprocessor is busy perform ing a function issued"
++			" by another CPU.",
++	},
+ };
+ 
+ static const pme_cpumf_ctr_t cpumcf_z10_counters[] = {
+diff --git a/lib/pfmlib_s390x_cpumf.c b/lib/pfmlib_s390x_cpumf.c
+index 7566aa0..e68b000 100644
+--- a/lib/pfmlib_s390x_cpumf.c
++++ b/lib/pfmlib_s390x_cpumf.c
+@@ -168,6 +168,8 @@ static int pfm_cpumcf_init(void *this)
+ 	/* counters based on second version number */
+ 	csvn_set = cpumcf_svn_generic_counters;
+ 	csvn_set_count = LIBPFM_ARRAY_SIZE(cpumcf_svn_generic_counters);
++	if (csvn < 6)	/* Crypto counter set enlarged for SVN == 6 */
++		csvn_set_count -= CPUMF_SVN6_ECC;
+ 
+ 	/* check and assign a machine-specific extended counter set */
+ 	switch (get_machine_type()) {
+-- 
+2.22.0
+

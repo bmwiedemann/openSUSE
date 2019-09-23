@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5ae84395c057e28cbb281d4328e8826b</srcmd5>
+    <version>0.19</version>
+    <time>1331124250</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>106258</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>5ae84395c057e28cbb281d4328e8826b</srcmd5>
+    <version>0.19</version>
+    <time>1340183813</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>5ae84395c057e28cbb281d4328e8826b</srcmd5>
+    <version>0.19</version>
+    <time>1359109623</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>702dcaed9996daf00748288d64239bbd</srcmd5>
+    <version>0.22</version>
+    <time>1370517092</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 177628 from coolo)</comment>
+    <requestid>177661</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>702dcaed9996daf00748288d64239bbd</srcmd5>
+    <version>0.22</version>
+    <time>1379663594</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>702dcaed9996daf00748288d64239bbd</srcmd5>
+    <version>0.22</version>
+    <time>1409302212</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9f5d62426a2ce2a2fbd1263e61cabf19</srcmd5>
+    <version>0.311</version>
+    <time>1429989326</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>296950</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5c4a645fdf1bf9110754e99c520a7d5f</srcmd5>
+    <version>0.313</version>
+    <time>1460924205</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>388245</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fb37410baf87a5bdd1f66805d399dae3</srcmd5>
+    <version>0.314</version>
+    <time>1491907286</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486129</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>92a60428d4d0085a29ef7563cfed0821</srcmd5>
+    <version>0.315</version>
+    <time>1502559724</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514865</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8c3a5b8d321239d28d702983609a216b</srcmd5>
+    <version>0.316</version>
+    <time>1524742453</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599328</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3f130875cbb2584b154a65720cde9ee1</srcmd5>
+    <version>0.317</version>
+    <time>1529066054</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615376</requestid>
+  </revision>
+</revisionlist>

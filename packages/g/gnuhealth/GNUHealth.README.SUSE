@@ -1,0 +1,188 @@
+GNUHealth for openSUSE
+======================
+
+How to get it running (Without reading the instructions)
+========================================================
+
+You have already installed the package gnuhealth and found this documentation. Good.
+
+As very easy and convenient way to do all required settings, log in as user root and run openSUSE-gnuhealth-setup:
+
+> su
+> openSUSE-gnuhealth-setup setup
+
+You can follow the proposals given, anyway, **it is not recommended to use default settings for a production environment**
+
+
+The above setup-program automates the steps below, which you could do as well manually, if desired.
+(If you have run openSUSE-gnuhealth-setup, the below steps are not needed additionally!)
+
+1) Log in as root and start the database
+> su
+> systemctl start postgresql
+
+2) Change postgres parameters. You need to log in as user postgres, in order to avoid authorisation issues. Assuming we have nano as editor:
+<you are logged in as user 'root'>
+
+> su postgres
+> nano /var/lib/pgsql/data/pg_hba.conf
+
+FOR LOCAL CONNECTIONS (Database on the same machine) change the line
+    local   all             all                                     md5
+to
+    local   all             all                                     trust
+
+Save your input. This will make sure that Tryton/GNUHealth server can connect to the database
+
+3) Create a role for 'tryton' in the database (still as user postgres)
+> psql -c "CREATE USER tryton WITH CREATEDB;"
+
+4) Creating the database:
+> createdb mydb --encoding='UTF-8' --owner=tryton
+
+5) exit as user postgres and restart postgres
+> exit
+> systemctl restart postgresql
+
+Note: The owner of the database should be the same user, as under which the 
+tryton server runs (default:tryton) 
+
+6) Initializing the database:  
+Log in as user tryton: 
+
+> sudo su tryton -s /bin/bash
+> /usr/bin/trytond-admin -c /etc/tryton/trytond.conf --all -d mydb
+
+Note: Use the database name you chose in the previous step (here as default: mydb). 
+You will be asked for the admin password for this database. 
+For the first login, log in to the newly initialized database with user 'admin' and password as set during initialization.
+
+As result you will have a bare GNU Health database with the base modules installed.
+
+7) Start the Gnuhealth-Server:
+> systemctl start gnuhealth
+
+DONE.
+
+You may want to install a Client locally:
+
+8) Install the GNU Health client:
+> zypper in gnuhealth-client
+
+9) Open the GNU Health client:
+> gnuhealth-client
+go to 'manage profiles' -> add -> name it 'localhost' -> Host: localhost
+-> you should now see a selection of available databases
+
+DONE. (now really)
+
+Upgrade
+-------
+
+  * openSUSE supports online upgrade (zypper dup) between releases. In case you
+    are updating your installation from openSUSE Leap 42.2 to 42.3, the following message will appear:
+    
+    Problem: gnuhealth-3.2.0-12.1.noarch requires python3-PyWebDAV3-GNUHealth, but this requirement cannot be provided
+    uninstallable providers: python3-PyWebDAV3-GNUHealth-0.10.1-1.1.noarch[repo-oss]
+    Solution 1: keep obsolete gnuhealth-3.0.8-11.6.1.noarch
+    Solution 2: deinstallation of python-PyWebDAV-0.9.8-1.1.noarch
+    Solution 3: break gnuhealth-3.2.0-12.1.noarch by ignoring some of its dependencies
+
+    This message is somewhat misleading, as the new python3-PyWebDAV3-GNUHealth conflicts with python-PyWebDAV. 
+    Go for Solution 2
+
+  * In case you upgrade from a previous GNU Health make sure you apply the 
+    upgrade procedures described in /usr/share/doc/packages/gnuhealth/upgrade.
+
+    As user tryton, run tryton-admin:
+
+    > /usr/bin/trytond-admin -c /etc/tryton/trytond.conf --all -d mydb
+    
+  * GNU_Health 3.0 on openSUSE delivered 2 modules, which are not (yet) in 3.2
+    anymore: pdq and hl7. You need to delete them first
+
+    Log in as database owner (usually tryton):
+    
+    > sudo su tryton -s /bin/bash
+
+    Delete the 2 modules:
+    > psql mydb
+    delete from ir_module where name='pdq';
+    delete from ir_module where name='hl7';
+    
+    Quit with CRTL-D
+    Apply the database patch:
+    
+    > psql mydb < /usr/share/doc/packages/gnuhealth/upgrade/3.2/upgrade_32.sql
+    
+    Remember to replace mydb with the name of your database.
+
+
+GNUHealth for openSUSE (a bit more in detail)
+=============================================
+
+GNUHealth is a free Health and Hospital Information system build on top of Tryton, an OpenSource ERP framework. 
+
+This is the openSUSE package for GNUHealth. Starting with openSUSE Leap 42.2, it is shipped with the standard distribution. It was build to simplify the installation and maintenance of a system, to make it useable for 'end-users' as well. 
+
+To achieve this goal, the openSUSE package handles some things different than the GNUHealth standard:
+
+1) No installation from source code
+GNUHealth has an installation script (gnuhealth_install.sh) that installs the Software from the source code.
+It has shown that this can cause a lot of trouble with dependencies (other software packages that are required to run GNUHealth and the Tryton Server), as they may be named slightly different in your Linux-distribution, or are just not listed.
+
+To avoid hassle for each and every end user, openSUSE uses the Open Build Service [1] to create a package where all dependencies are resolved for you.
+
+As a consequence, you install the package 'gnuhealth' with the openSUSE package manager, and the system does the rest for you. See [2] for installation advise.
+
+In GNU Health installation from source, the program gnuhealth_control is used to perform updates, maintenance etc. The openSUSE packages come with a modified gnuhealth_control to distinguish between activities performed by system tools (zypper) and those that safely can be handled by gnuhealth_control. Try it, its save!
+
+2) GNUHealth depends on Tryton
+Tryton [3] is the technical backend for GNUHealth. Tryton can run as ERP-System on its own. For the reasons explained under 1) , Tryton is build as well as package for openSUSE, following the same philosophy. See [4]for details.
+
+See as well: /usr/share/doc/packages/trytond/tryton-server.README.SUSE to set up your local installation.
+
+3) GNUHealth is build on top of Tryton
+Unlike the standard GNUHealth setup, openSUSE treats GNUHealth as add-on (additional modules) to a Tryton standard installation. The implications are:
+
+- The Tryton Server (basis for GNUHealth) runs under the user 'tryton', not under the user 'gnuhealth'
+- you can use the openSUSE standard tools to start and stop the server [4]
+- you can use the openSUSE package manager (zypper or YaST) to install upgrades. 
+- all Tryton and GNUHealth modules are installed in the python directory /usr/lib/python/site-packages/trytond
+
+Nevertheless, you can use gnuhealth-control to create database backups, install languages and updates. Make sure the version of gnuhealth-control ends on -openSUSE. gnuhealth-control should run as root, if in doubt.
+
+In case you want to install additional Tryton modules, you need to include the Tryton repository:
+zypper ar -f http://download.opensuse.org/repositories/Application:/ERP:/Tryton:/4.2/openSUSE_Leap_42.3 tryton
+
+You may use the GNUHealth mailing list (health@gnu.org) for remarks or questions.
+
+gnuhealth-webdav@.service
+=========================
+
+Starting with GNU Health 3.2, GNU Health comes with its own WebDAV-Server that can be used for shared calendars. In order to enable the WebDAV server, it comes with a systemd-service. As input parameter for the service the database-name on which to operate must be passed. Say your database is called mydb, invoke the service with
+
+> systemctl enable gnuhealth-webdav@mydb.service
+
+You can start multiple webdav services for different databases in parallel.
+
+Digital Signatures
+==================
+
+In order to make use of GNUHealth's capabilities to digitally sign documents, you need to create a PGP-key for the user logged in to the operating system.
+
+From the start menu, start the program Kgpg and follow the instructions, it will guide you through the process of key generation. Choose the maximal key length (4096).
+Use a passphrase with Capital letters, small letters, numbers and special characters (like %$§ etc) and have at least 12 digits for the passphrase - the more, the better.
+Keep the passphrase in a secure location, and take a backup of the PGP keys (located in ~/gnupg - in the live CD this is /home/gnuhealth/.gnupg ).
+
+
+Have fun and keep the neighborhood well and fit!
+
+
+[1] https://build.opensuse.org
+[2] http://en.wikibooks.org/wiki/GNU_Health/Operating_System-Specific_Notes#OpenSUSE
+[3] http://www.tryton.org
+[4] https://github.com/mbehrle/tryton/blob/wiki/InstallationonopenSUSE.md
+
+
+ -- Axel Braun <axel.braun@gmx.de>  Fri Dec  7 18:21:20 UTC 2018

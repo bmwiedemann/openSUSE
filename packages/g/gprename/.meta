@@ -1,0 +1,5 @@
+<package name="gprename" project="openSUSE:Factory">
+  <title></title>
+  <description>GPRename is a complete GTK2/perl batch renamer for files and directories.</description>
+  <devel project="utilities" package="gprename"/>
+</package>

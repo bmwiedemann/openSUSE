@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4ef2b7a140d99b75d1b97205d915e952</srcmd5>
+    <version>1.0.12</version>
+    <time>1393495605</time>
+    <user>scarabeus_factory</user>
+    <comment>needed by task kensho cli</comment>
+    <requestid>223943</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4ef2b7a140d99b75d1b97205d915e952</srcmd5>
+    <version>1.0.12</version>
+    <time>1409302189</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4169a7042a6e005dd4c138dc1b6475e0</srcmd5>
+    <version>1.0.15</version>
+    <time>1429658349</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298260</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>94d514b61ca69adb1b0d62c47df1d749</srcmd5>
+    <version>1.0.16</version>
+    <time>1430113614</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>304021</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3caffe886250962515e9faf0819ba246</srcmd5>
+    <version>1.0.17</version>
+    <time>1430246900</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>304315</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cac926232b7d7ee7356de9ae2bd35cef</srcmd5>
+    <version>1.0.19</version>
+    <time>1430576161</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305008</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>33c9fa8bf39be95fa616634ff4b7e7c9</srcmd5>
+    <version>1.0.20</version>
+    <time>1431247649</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306057</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4cb371232245e87156b0e4d92aba124e</srcmd5>
+    <version>1.0.21</version>
+    <time>1431980617</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307506</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e6c1d1df8a703fcba3ef610d7cad8f66</srcmd5>
+    <version>1.0.22</version>
+    <time>1440658596</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325704</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7fa81bab8f6aa542b8cc42665aea8c6d</srcmd5>
+    <version>1.0.28</version>
+    <time>1464595053</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398545</requestid>
+  </revision>
+</revisionlist>

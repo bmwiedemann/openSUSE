@@ -1,0 +1,47 @@
+Author: Adam Majer <amajer@suse.de>
+Date: Thu Dec  7 15:10:07 CET 2017
+
+Other asprintf memory leaks found. Forwarded upstream.
+
+Index: libvirt-cim-0.6.3/src/Virt_ComputerSystem.c
+===================================================================
+--- libvirt-cim-0.6.3.orig/src/Virt_ComputerSystem.c
++++ libvirt-cim-0.6.3/src/Virt_ComputerSystem.c
+@@ -417,6 +417,8 @@ static int set_other_id_info(const CMPIB
+                                     CMPI_string);
+         }
+ 
++        free (model);
++
+         CMSetProperty(instance, "OtherIdentifyingInfo",
+                       &id_info, CMPI_stringA);
+ 
+Index: libvirt-cim-0.6.3/src/Virt_SettingsDefineCapabilities.c
+===================================================================
+--- libvirt-cim-0.6.3.orig/src/Virt_SettingsDefineCapabilities.c
++++ libvirt-cim-0.6.3/src/Virt_SettingsDefineCapabilities.c
+@@ -1977,7 +1977,6 @@ static CMPIStatus set_input_props(const
+         char *cap;
+ 
+         if (get_input_dev_caption(type, bus, &cap) != 1) {
+-                free(cap);
+                 cu_statusf(_BROKER, &s,
+                            CMPI_RC_ERR_NOT_FOUND,
+                            "Unable to build input caption");
+@@ -1985,12 +1984,15 @@ static CMPIStatus set_input_props(const
+         }
+ 
+         if (caption != NULL) {
+-                if (asprintf(&cap, "%s %s", caption, cap) == -1) {
++                char *old_cap = cap;
++                if (asprintf(&cap, "%s %s", caption, old_cap) == -1) {
++                        free(old_cap);
+                         cu_statusf(_BROKER, &s,
+                                    CMPI_RC_ERR_NOT_FOUND,
+                                    "Unable to build input caption");
+                         goto out;
+                 }
++                free(old_cap);
+         }
+ 
+         inst = sdc_rasd_inst(&s, ref, CIM_RES_TYPE_INPUT, DEVICE_RASD);

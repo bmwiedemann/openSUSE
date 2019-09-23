@@ -1,0 +1,16 @@
+Index: b/upgrade.py
+===================================================================
+--- a/upgrade.py
++++ b/upgrade.py
+@@ -207,6 +207,11 @@ if os.geteuid() == 0:
+ if os.getenv("HPLIP_DEBUG"):
+     log.set_level('debug')
+ 
++
++log.error("HPLIP upgrade is disabled by openSUSE for security reasons, see https://bugzilla.novell.com/show_bug.cgi?id=853405 - if you like to upgrade HPLIP, use an openSUSE software package manager like YaST or zypper.")
++clean_exit(1)
++
++
+ for o, a in opts:
+     if o in ('-h', '--help'):
+         usage()

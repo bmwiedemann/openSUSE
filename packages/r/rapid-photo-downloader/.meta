@@ -1,0 +1,9 @@
+<package name="rapid-photo-downloader" project="openSUSE:Factory">
+  <title>Rapid Photo Downloader</title>
+  <description>Rapid Photo Downloader for Linux is written by a photographer for professional
+and amateur photographers. Its goal is to be the best photo downloader for the
+Linux Desktop. It is free software, released under the GNU GPL license.
+</description>
+  <devel project="graphics" package="rapid-photo-downloader"/>
+  <url>http://damonlynch.net/rapid/</url>
+</package>

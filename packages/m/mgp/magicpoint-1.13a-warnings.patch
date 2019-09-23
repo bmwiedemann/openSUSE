@@ -1,0 +1,31 @@
+--- draw.c
++++ draw.c
+@@ -2846,7 +2846,7 @@
+ 	char *seed;
+ 	char *registry;
+ 
+-	if (code >= 0xa0 && ((!argregistry || !argregistry[0]) && mgp_charset))
++	if (code >= 0xa0 && ((!argregistry || !argregistry[0]) && mgp_charset[0]))
+ 		registry = mgp_charset;
+ 	else 
+ 		registry = argregistry;
+--- tfont.c
++++ tfont.c
+@@ -171,7 +171,7 @@
+ 	if (charset16)
+ 		tfc = tfc_lookup(code, size, tf_mcurname, 0);
+ 	else {
+-		if (code >= 0xa0 && ((!registry || !registry[0]) && mgp_charset)){
++		if (code >= 0xa0 && ((!registry || !registry[0]) && mgp_charset[0])){
+ 			regid = get_regid(mgp_charset);
+ 		} else 
+ 			regid = get_regid(registry);
+@@ -595,7 +595,7 @@
+ 				if (registry)
+ 					tempregid = get_regid(registry) -1;
+ 				else {
+-					if (mgp_charset)
++					if (mgp_charset[0])
+ 						tempregid = get_regid(mgp_charset)-1;
+ 				}
+ 				if (tempregid >= 0) {

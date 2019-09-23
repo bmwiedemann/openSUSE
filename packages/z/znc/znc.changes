@@ -1,0 +1,515 @@
+-------------------------------------------------------------------
+Sat Jul 13 04:20:29 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use swig to build bindings
+
+-------------------------------------------------------------------
+Thu Jun 27 08:35:56 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.7.4:
+  * This is a security release to fix CVE-2019-12816 boo#1138572
+  * Send "Connected!" messages to client to the correct nick
+
+-------------------------------------------------------------------
+Tue May 28 07:01:09 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.7.3:
+  * This is a security release to fix CVE-2019-9917.
+  * Docker only: the znc image now supports --user option of docker
+    run.
+- Drop no longer needed znc-CVE-2019-9917.patch
+
+-------------------------------------------------------------------
+Mon Mar 25 11:06:56 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix boo#1130360 CVE-2019-9917
+  * znc-CVE-2019-9917.patch
+
+-------------------------------------------------------------------
+Tue Jan 29 12:51:03 UTC 2019 - info@paolostivanin.com
+
+- Update to version 1.7.2:
+  * Fix compilation without deprecated APIs in OpenSSL (#1615)
+  * Distinguish Channel CTCP Requests and Replies (#1624)
+  * admindebug: Enforce need of TTY to turn on debug mode (#1580)
+  * controlpanel: Add missing return to ListNetMods (#1589)
+  * webadmin: Fix adding the last allowed network (#1584) 
+
+-------------------------------------------------------------------
+Wed Jul 18 07:22:27 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.7.1:
+  * Security critical fixes[edit]
+    + CVE-2018-14055: non-admin user could gain admin privileges and shell access by injecting values into znc.conf.
+    + CVE-2018-14056: path traversal in HTTP handler via ../ in a web skin name.
+  * Core
+    + Fix znc-buildmod to not hardcode the compiler used to build ZNC anymore in CMake build (#1536)
+    + Fix language selector. Russian and German were both not selectable.
+    + Fix build without SSL support (#1554)
+    + Fix several broken strings
+    + Stop spamming users about debug mode. This feature was added in 1.7.0, now reverted. (#1541)
+  * New
+    + Add partial Spanish, Indonesian, and Dutch translations
+  * Modules
+    + adminlog: Log the error message again (regression of 1.7.0) (#1557)
+    + admindebug: New module, which allows admins to turn on/off --debug in runtime (#1556)
+    + flooddetach: Fix description of commands (#1548)
+    + modperl: Fix memory leak in NV handling
+    + modperl: Fix functions which return VCString (#1543)
+    + modpython: Fix functions which return VCString (#1543)
+    + webadmin: Fix fancy CTCP replies editor for Firefox. It was showing the plain version even when JS is enabled
+  * Internal
+    + Deprecate one of the overloads of CMessage::GetParams(), rename it to CMessage::GetParamsColon()
+    + Don't throw from destructor in the integration test
+    + Fix a warning with integration test / gmake / znc-buildmod interaction.
+- Drop upstream patches:
+  * znc-inject2.patch
+  * znc-inject.patch
+  * znc-traversal.patch
+
+-------------------------------------------------------------------
+Mon Jul 16 07:58:04 UTC 2018 - mpluskal@suse.com
+
+- Fix boo#1101280 CVE-2018-14056
+  * znc-traversal.patch
+- Fix boo#1101281 CVE-2018-14055
+  * znc-inject.patch
+  * znc-inject2.patch
+- Fix building on Leap-42* by using less strict linker flags
+
+-------------------------------------------------------------------
+Mon Jun  4 09:11:45 UTC 2018 - tchvatal@suse.com
+
+- Define systemd unitdir for cmake
+
+-------------------------------------------------------------------
+Fri Jun  1 15:02:25 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.7.0:
+  * Add CMake build. Minimum supported CMake version is 3.1. For now ZNC can be built with either CMake or autoconf. In future autoconf is going to be removed.
+  * Currently znc-buildmod requires python if CMake was used; if that's a concern for you, please open a bug.
+  * Increase minimum GCC version from 4.7 to 4.8. Minimum Clang version stays at 3.2.
+  * Make ZNC UI translateable to different languages (only with CMake), add partial Russian and German translations. (#1237) (#1354) (#1462)
+  * If you want to translate ZNC to your language, please join https://crowdin.com/project/znc-bouncer
+  * Configs written before ZNC 0.206 can't be read anymore (#929)
+  * Implement IRCv3.2 capabilities away-notify, account-notify, extended-join (#315) (#316)
+  * Implement IRCv3.2 capabilities echo-message, cap-notify on the "client side" (#950)
+  * Update capability names as they are named in IRCv3.2: znc.in/server-time-iso→server-time, znc.in/batch→batch. Old names will continue working for a while, then will be removed in some future version.
+  * Make ZNC request server-time from server when available (#839)
+  * Increase accepted line length from 1024 to 2048 to give some space to message tags
+  * Separate buffer size settings for channels and queries (#967)
+  * Support separate SSLKeyFile and SSLDHParamFile configuration in addition to existing SSLCertFile (#1192)
+  * Add "AuthOnlyViaModule" global/user setting (#331)
+  * Added pyeval module
+  * Added stripcontrols module (#387)
+  * Add new substitutions to ExpandString: %empty% and %network%. (#1049) (#1139)
+  * Stop defaulting real name to "Got ZNC?" (#818)
+  * Make the user aware that debug mode is enabled. (#1446)
+  * Added ClearAllBuffers command (#852)
+  * Don't require CSRF token for POSTs if the request uses HTTP Basic auth. (#946)
+  * Set HttpOnly and SameSite=strict for session cookies (#1077) (#1450)
+  * Add SNI SSL client support (#1200)
+  * Add support for CIDR notation in allowed hosts list and in trusted proxy list (#207) (#1219)
+  * Add network-specific config for cert validation in addition to user-supplied fingerprints: TrustAllCerts, defaults to false, and TrustPKI, defaults to true. (#866)
+  * Add /attach command for symmetry with /detach. Unlike /join it allows wildcards.
+  * Timestamp format now supports sub-second precision with %f. Used in awaystore, listsockets, log modules and buffer playback when client doesn't support server-time (#1455)
+  * Build on macOS using ICU, Python, and OpenSSL from Homebrew, if available (#894)
+  * Remove --with-openssl=/path option from ./configure. SSL is still supported and is still configurable
+- Update dependencies
+- Run spec-cleaner
+- Use cmake for building
+
+-------------------------------------------------------------------
+Wed Mar  7 17:31:43 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.6.6:
+  * Fix use-after-free in znc --makepem. It was broken for a long
+    time, but started segfaulting only now. This is a useability
+    fix, not a security fix, because self-signed (or signed by a
+    CA) certificates can be created without using --makepem, and
+    then combined into znc.pem.
+
+-------------------------------------------------------------------
+Thu Nov  9 12:52:41 UTC 2017 - jzelazkova@suse.com
+
+- Cleanup of spec file with spec-cleaner 
+
+-------------------------------------------------------------------
+Wed May 10 12:27:49 UTC 2017 - mpluskal@suse.com
+
+- Update project url
+
+-------------------------------------------------------------------
+Wed Mar 15 21:11:48 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.6.5:
+  * Fixed a regression of 1.6.4 which caused a crash in modperl/modpython. (#1283)
+  * Fixed the behavior of verbose command in the sasl module. (#1291)
+
+-------------------------------------------------------------------
+Fri Feb  3 17:28:18 UTC 2017 - mpluskal@suse.com
+
+- Drop extra hardening flags
+
+-------------------------------------------------------------------
+Fri Feb  3 17:00:26 UTC 2017 - jengelh@inai.de
+
+- Slightly trim descriptions.
+
+-------------------------------------------------------------------
+Wed Dec 14 10:45:20 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.6.4 (boo#1017182):
+  * Fixed build with OpenSSL 1.1. (#1310)
+  * Fixed build on Cygwin.
+  * Fixed a segfault after cloning a user. The bug was introduced in ZNC 1.6.0. (#1340)
+  * Fixed a segfault when deleting a user or network which is waiting for DNS during connection. The bug was introduced in ZNC 1.0. (#1342)
+  * Fixed a segfault which could be triggered using alias module. (#1347)
+  * Fixed an error in controlpanel module when setting the bindhost of another user.
+  * Fixed route_replies to not cause client to disconnect by timeout. (#1299)
+  * Fixed compatibility with the Gitter IRC bridge. (#1321)
+  * Fixed OnInvite for modpython and modperl. (#1283)
+  * Fixed external location of GoogleTest for make test.
+
+-------------------------------------------------------------------
+Tue Mar 29 21:20:09 UTC 2016 - mpluskal@suse.com
+
+- Update changelog with missed issue boo#973088 (update to 1.6.3)
+
+-------------------------------------------------------------------
+Wed Feb 24 20:29:50 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.6.3
+  * New character encoding is now applied immediately, without 
+    reconnect.
+  * Fixed build with LibreSSL. (#594)
+  * Fixed error 404 when accessing the web UI with the configured 
+    URI prefix, but without the / in the end.
+  * znc-buildmod now exits with non-zero exit code when the .cpp 
+    file is not found. (#1226)
+  * Fixed znc-buildmod on Cygwin.
+  * ExpandString got expanded.
+  * Default quit message is switche
+- Small spec file cleanup
+
+-------------------------------------------------------------------
+Tue Nov 17 12:33:57 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.6.2
+  * fixes
+		+ Fixed a use-after-delete in webadmin. It was already 
+			partially fixed in ZNC 1.4; since 1.4 it has been still 
+			possible to trigger, but much harder.
+		+ Fixed a startup failure when awaynick and simple_away were 
+			both loaded, and simple_away had arguments.
+		+ Fixed a build failure when using an ancient OpenSSL version.
+		+ Fixed a build failure when using OpenSSL which was built 
+			without SSLv3 support.
+		+ Bindhost was sometimes used as ident.
+		+ CAP :END wasn't parsed correctly, causing timeout during 
+			login for some clients.
+		+ Fixed channel keys if client joined several channels in 
+			single command.
+		+ Fixed memory leak when reading an invalid config.
+	* autovoice
+		+ Check for autovoices when we are opped.
+	* controlpanel
+		+ Fixed DelCTCPReply case-insensitivity.
+	* dcc
+		+ Add missing return statement. It was harmless.
+	* modpython
+		+ Fixed a memory leak.
+	* modules_online
+		+ Wrong ident was used before.
+	* stickychan
+		+ Fixed to unstick inaccessible channels to avoid infinite 
+			join loops.
+	* internal changes
+		+ Fixed the nick passed to CModule::OnChanMsg() so it has 
+			channel permissions set.
+		+ Fixed noisy -Winconsistent-missing-override compilation 
+			warnings.
+		+ Initialized some fields in constructors of modules before 
+			OnLoad().
+- Make building more verbose
+- Partially fixes bsc#956254 - CVE-2014-9043
+
+-------------------------------------------------------------------
+Wed Aug  5 12:25:38 UTC 2015 - mimi.vx@gmail.com
+
+- Update to 1.6.1:
+ * Fixed the problem that channels were no longer removed from the config despite 
+   of chansaver being loaded. 
+ * Fixed query buffer size for users who have the default channel buffer size set to 0.
+ * Fixed a startup failure when simple_away was loaded after awaynick.
+ * Fixed channel matching commands, such as DETACH, to be case insensitive.
+ * Specified the required compiler versions in the configure script.
+ * Fixed a rare conflict of HTTP-Basic auth and cookies.
+ * Hid local IP address from the 404 page.
+ * Fixed a build failure for users who have -Werror=missing-declarations in their CXXFLAGS.
+ * Fixed CXXFLAGS=-DVERSION_EXTRA="foo" which is used by some distros to package ZNC.
+ * Fixed znc-buildmod on Cygwin.
+ * Fixed CThreadPool destructor to handle spurious wakeups.
+ * Fixed make distclean to remove zncconfig.h.
+ * Improved the error message about --datadir.
+ * Fixed a compilation warning when HAVE_LIBSSL is not defined.
+ * Fixed 'comparision' typos in CString documentation.
+ * Added a non-minified version of the jQuery source code to make Linux distributions
+   (Debian) happy, even though the jQuery license does not require this.
+ * chansaver:
+    * Fixed random loading behavior due to an uninitialized member variable.
+ * modpython:
+    * Fixed access to CUser::GetUserClients() and CUser::GetAllClients().
+ * sasl:
+    * Improved help texts for the SET and REQUIREAUTH commands. (#875)
+ * savebuff:
+    * Fixed periodical writes on the disk when the module is loaded after startup. (#868)
+ * webadmin:
+    * Fixed module checkboxes not to claim that all networks/users have loaded 
+      a module when there are no networks/users. (#872)
+    * Added an explanation that ZNC was built without ICU support, when encoding 
+      settings are disabled for that reason.
+    * Improved the breadcrumbs.
+    * Mentioned ExpandString in CTCP replies.
+    * Added an explanation how to delete port which is used to access webadmin.
+
+------------------------------------------------------------------
+Sun Feb 15 18:28:43 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.6.0:
+ * Switch versioning scheme to <major>.<minor>.<patch>.  Add settings
+ * for which SSL/TLS protocols to use (SSLProtocols), 
+   which ciphers to enable (SSLCiphers). By default TLSv1+ are enabled,
+   SSLv2/3 are disabled. Default ciphers are what Mozilla advices:
+   https://wiki.mozilla.org/Security/Server_Side_TLS#Intermediate_compatibility_.28default.29
+ * Validate SSL certificates.  Allow clients to specify an ID as part of
+ * username 
+   (user[@identifier][/network]). Currently not used, but modules can
+   use it.
+ * Add alias module for ZNC-side command interception and processing.
+ * Support character encodings with separate settings for networks, 
+   and for clients. It replaces older charset module, which didn't work
+   well with webadmin, log and other modules.
+ * Support X-Forwarded-For HTTP header, used with new TrustedProxy
+ * setting.  Add URIPrefix option for HTTP listeners, used with reverse
+ * proxy.  Store query buffers per query the same way it's done for
+ * channels, 
+   add new option AutoClearQueryBuffer.
+ * Add DisableChan command to *status, it was available only in 
+   webadmin before.
+ * Allow wildcards in arguments of Help commands of *status and 
+   various modules.
+ * Support IRCv3.2 batches, used for buffer playbacks.  Support IRCv3.2
+ * self-message.  Remove awaynick module. It's considered bad etiquette.
+ * Add JoinDelay setting, which allows a delay between 
+   connection to server, and joining first channel. By default it joins
+   immediately after connect.
+ * Make Detach, EnableChan and DisableChan commands of *status 
+   accept multiple channels.
+ * znc-buildmod: Build output to the current working directory.  Wrap
+ * long lines in tables (e.g. in Help or 
+   ListAvailMods commands).
+ * Support ECDHE if available in OpenSSL.  Report ZNC version more
+ * consistently, add HideVersion 
+   setting, which hides ZNC version from public.
+ * Bump compiler requirements to support C++11. This means 
+   GCC 4.7+, Clang 3.2+, SWIG 3.0.0+.
+- Drop support for old distributions since they lack support for
+  C++11
+- Drop package extra, all modules are now in znc
+- Disable colloquy plugin since it fails to build
+- Drop init script
+
+-------------------------------------------------------------------
+Mon Feb  9 15:37:18 UTC 2015 - mpluskal@suse.com
+
+- Rename znc-python to znc-python3
+- Add signature and znc.keyring
+- Reorder source names
+- Correct (pre) dependencies for older releases of openSUSE
+
+-------------------------------------------------------------------
+Tue Sep 30 18:52:35 UTC 2014 - mpluskal@suse.com
+
+- Use proper licence
+- Some tiny spec file cleanups
+
+-------------------------------------------------------------------
+Mon Sep 29 12:39:19 UTC 2014 - mpluskal@suse.com
+
+- Tighter dependency for perl
+- Cleanup specfile 
+
+-------------------------------------------------------------------
+Mon Sep 29 10:31:29 UTC 2014 - mpluskal@suse.com
+
+- Update to new version (1.4) 
+- Split to more packages
+- Enable perl, python and tcl modules
+- Remove obsolete modules
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Jan  5 14:12:44 UTC 2013 - joey.yuzheng@gmail.com
+
+- add cap_sasl to support sasl which is needed for cloak usage.
+  http://wiki.znc.in/Cap_sasl
+
+-------------------------------------------------------------------
+Mon Sep 17 10:54:16 UTC 2012 - suse@ammler.ch
+
+- update to 0.206 (bugfix release)
+  - Identfile: don't crash when ZNC is shutting down.
+  - CTCPReplies setting with empty value now blocks those CTCP 
+    requests to the client.
+  - Show more sane error messages instead of "Error: Success".
+  - Imapauth: Follow RFC more closely.
+  - "No" is a false value too.  
+
+-------------------------------------------------------------------
+Wed Jan 25 16:43:30 UTC 2012 - suse@ammler.ch
+
+- update to 0.204 (CVE-2012-0033)
+  * Fix a crash in bouncedcc module with DCC RESUME.
+  * Fix modperl compilation.
+  * Don't use mkdir during install.
+  * Check for the swig2.0 binary too, instead of only swig. 
+
+-------------------------------------------------------------------
+Sun Sep 25 11:23:00 UTC 2011 - suse@ammler.ch
+
+- update to 0.202 (bugfix release)
+  * Fix a crash when a user changes the buffer size of a channel.  
+
+-------------------------------------------------------------------
+Wed Sep 14 19:27:02 UTC 2011 - suse@ammler.ch
+
+- update to 0.200
+  - Move ident spoofing from ZNC core into new identfile module.
+  - Move dcc handling from ZNC core into new modules bouncedcc and dcc.
+  - Remove the obsolete fixfreenode module.
+  - New module: cert
+  - Move away into ZNC-Extra. 
+- remove remote services, just use it local
+
+-------------------------------------------------------------------
+Thu Mar 31 07:49:09 UTC 2011 - ammler@openttdcoop.org
+
+- update to 0.098
+  - new module: modpython (not enabled in this package)
+  - webinterface for modules perform and listsockets
+  - admin can disconnect/reconnect other users
+  - user modules: 
+    - colloquy (Push private messages and highlights to
+      your iPhone/iPod Touch via Colloquy Mobile.) 
+    - update twitter (ssl and new api support)
+
+-------------------------------------------------------------------
+Mon Nov  8 00:27:41 UTC 2010 - ammler@openttdcoop.org
+
+- update to 0.096
+  - new modules: clearbufferonmsg, certauth
+  - new global setting: MaxBufferSize
+  - new config option: SSLCertFile
+  - module route_replies now also supports routing channel ban 
+    lists, ban exemptions and invite exceptions
+  - big perl overhaul (not part of this package)
+
+-------------------------------------------------------------------
+Tue Jul  6 12:37:52 CEST 2010 - anschneider@exsuse.de
+
+- updated twitter module
+
+-------------------------------------------------------------------
+Mon Jul  5 09:12:19 UTC 2010 - ammler@openttdcoop.org
+
+- update to 0.092
+  - Webmods - Every module can now provide its own webpages.
+  - Webmods and thus webadmin now use cookies for managing 
+    sessions instead of HTTP authentication.
+  - ZNC can now listen on IPv4-only, IPv6-only or on both-IP 
+    sockets. Renamed "Listen" config option to "Listener".
+  - Added AddPort, DelPort, ListPorts command to *status. 
+  - Added a traffic info page to webadmin.
+
+-------------------------------------------------------------------
+Fri Feb 19 19:16:23 CET 2010 - ammler@openttdcoop.org
+
+- update to 0.080
+  New Webadmin default skin with UTF-8 support
+
+-------------------------------------------------------------------
+Tue Dec 29 13:03:31 CET 2009 - anschneider@exsuse.de
+
+- added twitter module
+
+-------------------------------------------------------------------
+Mon Dec 28 21:07:00 CET 2009 - anschneider@exsuse.de
+
+- update to 0.078
+  Fixed a possible crash if a client disconnected before an auth
+  module was able to verify the login.
+
+-------------------------------------------------------------------
+Fri Jul 24 13:40:50 CEST 2009 - mrueckert@suse.de
+
+- update to 0.074
+  ALL ZNC versions prior to 0.072 have a path traversal bug in
+  core. Users with a valid login are able to write files to all
+  places to which ZNC has write access. This means they could
+  upload and load new modules which do anything imaginable.
+
+-------------------------------------------------------------------
+Wed Feb 25 17:30:23 CET 2009 - mrueckert@suse.de
+
+- added znc-0.066_sles9_configure.patch:
+  fix build on sles9
+
+-------------------------------------------------------------------
+Tue Feb 24 19:10:57 CET 2009 - mrueckert@suse.de
+
+- update to 0.066
+  ALL ZNC versions have a privilege escalation bug in webadmin.
+  Users with a valid login are able to write arbitrary lines to
+  your znc.conf which means they can make themselves admin, load
+  the shell module or temporarily overwrite any files znc has
+  access to (e.g. ~/.ssh/authorized_keys) via ISpoof. This bug can
+  only be abused when ZNC is restarted or rehashed, so check your
+  config before you do so! 
+
+  This bug is fixed in znc 0.066. Update as soon as possible!
+
+  for all the details see http://en.znc.in/wiki/ChangeLog/0.066
+- fix rpmlint warnings
+- split out devel package
+
+-------------------------------------------------------------------
+Tue Dec  4 20:44:00 CET 2007 - mrueckert@suse.de
+
+- if'ed buildrequires for non suse distros
+- expand %makeinstall to make it work on non suse distros
+
+-------------------------------------------------------------------
+Tue Dec  4 16:22:30 CET 2007 - mrueckert@suse.de
+
+- update to 0.052
+- removed znc-0.050_cxxflags.patch
+  included upstream
+
+-------------------------------------------------------------------
+Sun Sep 30 22:37:24 CEST 2007 - mrueckert@suse.de
+
+- update to 0.050
+- added znc-0.050_cxxflags.patch:
+  preserve externally passed CXXFLAGS
+
+-------------------------------------------------------------------
+Thu Apr 12 22:01:37 CEST 2007 - mrueckert@suse.de
+
+- build with stackprotector if possible
+
+-------------------------------------------------------------------
+Thu Apr 12 20:47:01 CEST 2007 - mrueckert@suse.de
+
+- update to 0.047
+

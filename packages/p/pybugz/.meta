@@ -1,0 +1,5 @@
+<package name="pybugz" project="openSUSE:Factory">
+  <title>pybugz</title>
+  <description>Python Bugzilla Interface</description>
+  <devel project="utilities" package="pybugz"/>
+</package>

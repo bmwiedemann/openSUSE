@@ -1,0 +1,474 @@
+-------------------------------------------------------------------
+Wed Apr 17 14:53:36 CEST 2019 - tiwai@suse.de
+
+- Drop build of gcin-qt4 subpackage on TW due to EOL of Qt4.
+
+-------------------------------------------------------------------
+Mon Apr  1 09:37:49 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 2.8.9
+  + Fix issues with gtk3 and switch to gtk3 by default
+  + Fix an issue with 41 keys bopomofo
+- Add gcin-remove-dead-code.patch to remove the dead code which
+  causes the useless warning
+
+-------------------------------------------------------------------
+Thu Dec 27 08:42:44 UTC 2018 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 2.8.8
+  + Fix a cursor issue in 26 keys bopomofo
+  + Fix a issue with Hsu's keyboard layout and enabling
+    "more UTF-8 characters"
+- Refresh gcin-fix-qt5-iid.patch
+- Use %license for COPYING
+
+-------------------------------------------------------------------
+Fri May 25 02:57:14 UTC 2018 - glin@suse.com
+
+- Update to 2.8.6
+  + Fixed a selection key problem with ctrl-alt-,
+  + Use libcurl to upload/download phrases
+  + Improved pinyin pre-select phrases
+- Add libcurl-devel and libXtst-devel to BuildRequires
+- Drop upstreamed patch: gcin-reproducible.patch
+- Refresh patches
+  + gcin-dont-copy-gcin-qt5-header.patch
+  + gcin-improve-build-with-pkgconfig.patch
+  + gcin-parallel-compiling.patch
+- Remove the version check since openSUSE 13.1 is not supported
+  long ago
+- Only build gcin-qt4 for openSUSE
+
+-------------------------------------------------------------------
+Mon Sep  4 17:10:44 UTC 2017 - bwiedemann@suse.com
+
+- Add gcin-reproducible.patch to initialize memory 
+
+-------------------------------------------------------------------
+Wed Jun 21 04:25:04 UTC 2017 - glin@suse.com
+
+- Amend gcin-improve-build-with-pkgconfig.patch for Qt 5.9.0
+
+-------------------------------------------------------------------
+Thu Mar  2 10:22:42 UTC 2017 - glin@suse.com
+
+- Add gcin-dont-copy-gcin-qt5-header.patch to avoid overwriting
+  the patched gcin-qt5.h
+
+-------------------------------------------------------------------
+Thu Feb  9 03:50:40 UTC 2017 - glin@suse.com
+
+- Update to 2.8.5
+  + Fix a typing bug with Hsu layout
+  + Fix the missing pre-select phrases when using Array input
+    method
+- Refresh patches:
+  + gcin-improve-build-with-pkgconfig.patch
+  + gcin-parallel-compiling.patch
+
+-------------------------------------------------------------------
+Wed Oct 12 02:55:52 UTC 2016 - glin@suse.com
+
+- Amend baselibs.conf to avoid the immodules to require gcin-32bit
+  (boo#1002566)
+
+-------------------------------------------------------------------
+Fri Sep  9 09:48:26 UTC 2016 - glin@suse.com
+
+- Remove libappindicator since KDE already brought system tray icon
+  back.
+
+-------------------------------------------------------------------
+Wed Jun  8 01:47:55 UTC 2016 - i@marguerite.su
+
+- fix tumbleweed build
+- refresh patch: gcin-improve-build-with-pkgconfig.patch
+  * Qt5PlatformSupport has gone from Qt 5.6.0
+  * fix include for qinputmethod.h
+- add gcin-qt5 to baselibs.conf
+- rename the sub-packages in openSUSE style
+- split libgcin-im-client1 library
+
+-------------------------------------------------------------------
+Mon Oct 26 08:07:25 UTC 2015 - mlin@suse.com
+
+- Add gcin-improve-build-with-pkgconfig.patch
+  + Improve build with pkgconfig
+  + Add Qt5Gui private headers at moc period
+- Update gcin-fix-qt5-iid.patch
+  + Use macro instead of string literal, better backward compatibility
+    for Qt5 < 5.5 
+
+-------------------------------------------------------------------
+Sat Oct 24 06:50:58 UTC 2015 - glin@suse.com
+
+- Add gcin-fix-qt5-iid.patch to fix the qt5 iid so that the qt5
+  applications can load the gcin immodule (boo#951750)
+
+-------------------------------------------------------------------
+Fri Oct 23 08:50:18 UTC 2015 - glin@suse.com
+
+- Update to 2.8.4
+  + Switch to appindicator by default
+  + Changes: http://hyperrate.com/gcin-source/Changelog.html
+- Drop upstreamed fixes
+  + qt5gui-header-path-fix.patch
+  + plasma5-dirty-fix.patch
+
+-------------------------------------------------------------------
+Tue Sep 29 06:41:42 UTC 2015 - ramaxlo@gmail.com
+
+- Add gcin-qt5-immodule, libappindicator3-1 as runtime dependencies
+  for Plasma 5 (the program does own binding with dlsym())
+
+-------------------------------------------------------------------
+Mon Sep  7 08:11:22 UTC 2015 - glin@suse.com
+
+- Add libappindicator3-devel to BuildRequires to enable appindicator
+  support for Plasma 5
+
+-------------------------------------------------------------------
+Wed May 27 18:12:40 UTC 2015 - ramaxlo@gmail.com
+
+- Add qt5 immodule support.
+- Add qt5gui-header-path-fix.patch to fix build failure.
+- Add plasma5-dirty-fix.patch to fix plasma 5 black screen issue
+  during starting. The reason is unknown so far.
+  Refer to http://hyperrate.com/thread.php?tid=31194 for more
+  information.
+
+-------------------------------------------------------------------
+Sun Mar  8 04:29:50 UTC 2015 - i@marguerite.su
+
+- add baselibs.conf as source
+
+-------------------------------------------------------------------
+Sat Mar  7 15:49:58 UTC 2015 - i@marguerite.su
+
+- update version 2.8.3
+  * read http://hyperrate.com/gcin-source/Changelog.html
+
+-------------------------------------------------------------------
+Wed May 14 04:07:10 UTC 2014 - glin@suse.com
+
+- Update to 2.8.2
+  + Make the pre-select phrases more precise
+  + The tray icon now can show the status of CAPLOCK
+- refresh patches
+  + icon_path.diff
+  + doc_dir.diff
+  + gcin-keep-debug-symbols.patch
+- drop gcin-bnc858193-fixes-frozen-gnome-shell.patch since upstream
+  fixed the bug
+
+-------------------------------------------------------------------
+Mon Jan 13 06:37:22 UTC 2014 - glin@suse.com
+
+- Add gcin-bnc858193-fixes-frozen-gnome-shell.patch to fix the
+  deadlock between gnome-shell (bnc#858193)
+- Add gcin-keep-debug-symbols.patch to keep the debug symbols
+- Add gcin-parallel-compiling.patch to fix the Makefile dependency
+  for parallel compiling
+
+-------------------------------------------------------------------
+Wed Nov 27 23:47:36 UTC 2013 - swyear@gmail.com
+
+- add doc_dir.diff patch to fix doc path
+  this path is used to open doc from gcin-tools 
+
+-------------------------------------------------------------------
+Sun Nov 24 00:26:33 UTC 2013 - swyear@gmail.com
+
+- modify baselibs.conf  
+
+-------------------------------------------------------------------
+Sat Nov 23 14:42:22 UTC 2013 - swyear@gmail.com
+
+- fix gcin can't on_the_spot, because libreoffice-gnome's lib name changed
+  remove the test to force OOO_FORCE_DESKTOP=gnome
+
+-------------------------------------------------------------------
+Mon Nov 18 02:31:47 UTC 2013 - swyear@gmail.com
+
+- test remove gtk2(3) scriptlets in spec file, use macro (same as fcitx)
+  instead 
+
+-------------------------------------------------------------------
+Thu Oct  3 07:24:22 UTC 2013 - i@marguerite.su
+
+- remove gcin_scripts_modify-XIM_103.diff
+  * qt3 is long dead, just drop scripts/modify-XIM which was also
+    targeting for Mandriva/Fedora
+- split gcin-gtk2-immodule, it's better
+- fix xim.d-gcin
+  * can't input in firefox/chrome, have to export GTK3_IM_MODULE
+  * /usr/bin is already in $PATH. no /usr/X11R6/bin at all.
+  * remove skim part, as it's dropped from openSUSE, newer scim
+    don't need skim to support kde4/kde3.
+  * remove the useless LC_TYPE test, we're installed, we just keep
+    every locale work, so just export'em.
+- add patch: gcin-2.8.1-gtk_immodules_path.patch
+  * fix gtk2/3 immodule install path
+
+-------------------------------------------------------------------
+Fri Jul 26 08:43:14 UTC 2013 - glin@suse.com
+
+- Update to 2.8.1
+  + Fix crash caused by keypad keys when there are words in the
+    editing area.
+  + Fix a file name issue when exporting the thesaurus
+  + Clear unfinished changjie codes after switching to English mode
+  + Support new input method: Array 10 keys
+- Refresh icon_path.diff
+  + Although gcin icon is installed to hicolor/64x64 by default,
+    the icon size is actually 64x51, not suitable for a fixed-size
+    dir.
+
+-------------------------------------------------------------------
+Wed Jul 17 08:21:47 UTC 2013 - coolo@suse.com
+
+- remove qt3 support, long dead
+
+-------------------------------------------------------------------
+Fri Feb 22 07:49:23 UTC 2013 - swyear@gmail.com
+
+- remove patch configure146p12.diff, use --doc_version_dir=N instead
+
+-------------------------------------------------------------------
+Fri Feb 22 03:26:30 UTC 2013 - swyear@gmail.com
+
+- Update to 2.8.0
+- fix gtk_show_uri in Ubuntu, gcin will now open uri with gcin's own 
+  script
+- fix pop-up status position
+- Tray/OSD icon of Capslock status
+- more bug fix and new features 
+
+-------------------------------------------------------------------
+Sun Jan 20 06:00:11 UTC 2013 - swyear@gmail.com
+
+- Add libreoffice-gnome dependency as Recommends,
+  so you will not install the whole office suite for gcin.
+- Remove Requires gcin-anthy-module,
+  most of the user don't need to input Japanese characters.
+- modify xim.d-gcin to test if libreoffice-gnome was installed
+- add a section about libreoffice-kde4's problem and workaround
+  in gcin-README.suse 
+
+-------------------------------------------------------------------
+Fri Jan 18 01:40:50 UTC 2013 - swyear@gmail.com
+
+- test remove libreoffice-gnome dependency
+
+-------------------------------------------------------------------
+Fri Dec  7 08:56:27 UTC 2012 - meissner@suse.com
+
+- readd a new gcin-libdir.patch as the bug was fixed only for
+  strange subforms of x86_64 and not all other platforms.
+
+-------------------------------------------------------------------
+Thu Nov  8 03:10:10 UTC 2012 - swyear@gmail.com
+
+-remove gcin-libdir.patch, upstream had solved the bug 
+
+-------------------------------------------------------------------
+Wed Nov  7 01:22:39 UTC 2012 - swyear@gmail.com
+
+- update to 2.7.9
+- fix problem about switch to tsin from systray
+- add %flag_keypad_input_key to .cin files
+- fix problem about Ctrl+Shift+* in firefox
+- use gtk2 UI as default
+- add vietnamese and german input method support
+- remove chewing support temporary, need more develpment
+- screen keyboard will keep on the top of all applications
+- other minor bugs fixed
+
+-------------------------------------------------------------------
+Fri Oct  5 15:31:37 UTC 2012 - dvaleev@suse.com
+
+- Better detect for architecture specific libdir
+  
+-------------------------------------------------------------------
+Mon Jun  4 12:13:51 UTC 2012 - i@marguerite.su
+
+- update bzip as source compression format.
+  * sles can't recognize xz.
+
+-------------------------------------------------------------------
+Sat May 12 12:59:55 UTC 2012 - i@marguerite.su
+
+- bring in gcin as default IM for TW/HK/MO locale.
+- add Provides: locale(zh_TW;zh_HK;zh_MO).
+
+-------------------------------------------------------------------
+Mon Apr  2 07:27:15 UTC 2012 - glin@suse.com
+
+- Amend the post-install script of gcin-gtk3-immodule to avoid
+  adding gcin into gnome-shell more than once.
+
+-------------------------------------------------------------------
+Fri Mar 16 05:37:47 UTC 2012 - swyear@gmail.com
+
+- qt*-immodule subpackages are license GPL-2.0 
+
+-------------------------------------------------------------------
+Tue Mar  6 11:45:50 UTC 2012 - swyear@gmail.com
+
+- Fix gcin-gtk3-immodule postin scriptlet for gnome3 panel
+- Add new icons in gcin-branding-openSUSE package
+
+-------------------------------------------------------------------
+Sun Mar  4 13:59:31 UTC 2012 - swyear@gmail.com
+
+- Update to 2.7.5
+- Fix blink when select words with arrow
+- gen-deb from Yao Wei
+- Fix crash when use number to select pre-select words
+- Modify gtk3 postinst about gnome3 panel icon display 
+
+-------------------------------------------------------------------
+Wed Feb  1 07:35:39 UTC 2012 - glin@suse.com
+
+- Follow the gtk2.spec and gtk3.spec to update the immodule cache
+
+-------------------------------------------------------------------
+Wed Feb  1 01:49:50 UTC 2012 - swyear@gmail.com
+
+- Remove some un-needed patchs
+- Add Requires chewing-module and anthy-module 
+
+-------------------------------------------------------------------
+Wed Jan  4 14:08:35 UTC 2012 - swyear@gmail.com
+
+- Update to 2.7.0
+- Fix crash when switch to latin letter input
+- Fix about can't input when launch QT application from KDE menu 
+
+-------------------------------------------------------------------
+Wed Jan  4 03:35:32 UTC 2012 - swyear@gmail.com
+
+- Rollback to 2.6.6 
+
+-------------------------------------------------------------------
+Thu Dec 29 07:17:22 UTC 2011 - swyear@gmail.com
+
+- Rollback to 2.6.7 
+
+-------------------------------------------------------------------
+Wed Dec 28 03:42:34 UTC 2011 - swyear@gmail.com
+
+- Update to 2.6.8
+- Open symbol table from tray icon
+- Fix compile error 
+
+-------------------------------------------------------------------
+Fri Dec 23 14:20:48 UTC 2011 - swyear@gmail.com
+
+- Update to 2.6.6
+- Fix issues in pchome and facebook 
+
+-------------------------------------------------------------------
+Fri Dec 23 08:46:29 UTC 2011 - swyear@gmail.com
+
+- remove qt4-moc-tmp.diff
+- add lib64-qt4-moc.diff 
+
+-------------------------------------------------------------------
+Fri Dec 23 08:27:52 UTC 2011 - swyear@gmail.com
+
+- add qt4-moc-tmp.diff to solve 64-bit compile issue 
+
+-------------------------------------------------------------------
+Tue Dec 20 09:24:26 UTC 2011 - swyear@gmail.com
+
+- Update to 2.6.5 
+
+-------------------------------------------------------------------
+Sun Dec 18 10:28:00 UTC 2011 - swyear@gmail.com
+
+- Update to 2.6.2
+
+-------------------------------------------------------------------
+Thu Dec 15 08:06:46 UTC 2011 - swyear@gmail.com
+
+- Update to 2.5.4
+- Fix font-size change problem 
+
+-------------------------------------------------------------------
+Tue Dec 13 05:12:52 UTC 2011 - swyear@gmail.com
+
+- Update to 2.5.3
+- modify utf8-edit.diff, remove beaver (can't input chinese)
+- gtab window patch from Tetralet
+- gtk3 button css from caleb
+- and more bugs fixed 
+
+-------------------------------------------------------------------
+Thu Dec  1 07:34:02 UTC 2011 - swyear@gmail.com
+
+- Update to 2.3.0
+- Add utf8-edit.diff, to use kwrite (KDE) or beaver (LXDE) to edit 
+  symbol table 
+
+-------------------------------------------------------------------
+Sun Nov 20 15:48:36 UTC 2011 - swyear@gmail.com
+
+- Update to 2.0.1
+- Use bold font as default
+- Rename gcin-setup to gcin-tools 
+
+-------------------------------------------------------------------
+Wed Nov 16 16:49:49 UTC 2011 - swyear@gmail.com
+
+- Update to 1.7.1.pre12
+- Fix bug: crash when use Ctrl-Shift to switch to chewing and others 
+
+-------------------------------------------------------------------
+Mon Oct 17 16:02:06 UTC 2011 - swyear@gmail.com
+
+- Update to gcin 1.7.0
+- Fix bug: crash when click full/half trayicon (compile with gcc 4.4.3 -O) 
+
+-------------------------------------------------------------------
+Sun Oct 16 09:59:35 UTC 2011 - swyear@gmail.com
+
+- Update to gcin 1.6.9 upstream release 
+
+-------------------------------------------------------------------
+Thu Oct 13 16:38:25 UTC 2011 - swyear@gmail.com
+
+- Update to gcin 1.6.9.pre9
+- fix qt-base program's problem, and other
+- codes in gtk3-im were links to gtk-im, so rediff gcin-gtk3-im.diff(some fixed upstream)
+- add GTK3_IM_MODULE=gcin in xim.d/gcin 
+
+-------------------------------------------------------------------
+Tue Sep 20 03:49:23 UTC 2011 - glin@suse.com
+
+- Update to gcin 1.6.8
+- Re-package the tarball as .tar.bz2 to be compatible with SLE11
+- Add gcin-gtk3-im.diff to fix an error in gtk3-im module
+- Add gcin-util-return.patch to return strings for errno
+
+-------------------------------------------------------------------
+Mon Jun 27 16:28:39 UTC 2011 - swyear@gmail.com
+
+- gcin 1.6.4 pre 24 can't build, Update to pre 25 
+
+-------------------------------------------------------------------
+Fri Jun 24 12:16:18 UTC 2011 - swyear@gmail.com
+
+- Update to gcin 1.6.4 pre 24 
+
+-------------------------------------------------------------------
+Mon Jun 13 05:50:19 UTC 2011 - swyear@gmail.com
+
+-Update README file 
+
+-------------------------------------------------------------------
+Sat Jun 11 15:07:48 UTC 2011 - swyear@gmail.com
+
+-Update to gcin 1.6.4 pre 23 
+
+

@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Sat May  2 09:12:02 UTC 2015 - coolo@suse.com
+
+- updated to 2.4.10
+   see /usr/share/doc/packages/perl-Chart/
+
+-------------------------------------------------------------------
+Fri Oct  3 17:47:13 UTC 2014 - crrodriguez@opensuse.org
+
+- Cleanup buildRequires, none of the libraries are used
+  by this (noarch) package
+
+-------------------------------------------------------------------
+Sun Apr  1 15:26:36 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 2.4.5: no upstream changelog available
+
+-------------------------------------------------------------------
+Wed Jan 11 05:59:31 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 2.4.4: no upstream changelog available
+
+-------------------------------------------------------------------
+Wed Nov 30 22:50:48 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.4.3:
+  * corrections to imagemap production in Composite.pm and Lines.pm
+
+-------------------------------------------------------------------
+Wed Dec  1 13:30:57 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Oct 14 13:00:28 UTC 2010 - chris@computersalat.de
+
+- update to 2.4.2
+  o Base.pm:
+    * The values for 'true' resp. 'false' may be of the following
+      true: TRUE, true, T, t, 1 and defined
+      false: FALSE, false, F, f, 0 or undefined
+    * Added new options xlabel and xrange which is valid for xy_plot
+      and Chart::Lines, Chart::Points, Chart::LinesPoints,
+      Chart::Split, Chart::ErrorBars.
+    * In order to use the labels, the chart module needs to have 'xlabels' 
+      AND 'xrange' set. Below is some example code for use: 
+      @labels = (['Jan', 'Feb','Mar'], 
+                 ['10','40','70']); 
+      $chart->set( xlabels => \@labels, 
+                   xrange => [0,100] ); 
+      This options allow to set and position labels at the x-axis arbitrary.
+    * add_dataset() and app_pt() accepts now datasets as lists and as
+          references to list like already mentioned in the docs
+  o Pie.pm: 
+    * Optimized organisation of the placement of the labels.
+      Added flag to avoid plotting of legends at all
+      Using GD Version 2.0.36 as this version supports 'filledArc'
+  o Composite.pm:
+    * Correction due to Request 23166
+      write the endmost value of input array
+      in imagemap_data array
+  o Lines.pm:
+    * Correction due to Request 23166: 
+      write the endmost value of input array
+      in imagemap_data array
+- noarch pkg
+- recreated by cpanspec 1.78
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Fri Jan 27 02:19:20 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 24 18:10:37 CET 2006 - dmueller@suse.de
+
+- 2.4.1 update 
+
+-------------------------------------------------------------------
+Mon Oct 17 09:54:25 CEST 2005 - dmueller@suse.de
+
+- initial package (2.3) 
+

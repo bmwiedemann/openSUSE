@@ -1,0 +1,353 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c083b906bef45a5eca856d9a9c0f3e2</srcmd5>
+    <version>11.0.2</version>
+    <time>1488480209</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>461885</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1f3d91d0bf1d87a91d72cdbf383b8f21</srcmd5>
+    <version>11.0.3</version>
+    <time>1493235858</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490892</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>145a5601d6b8bbdf9e68de8b346377e9</srcmd5>
+    <version>12.0.0</version>
+    <time>1499291818</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498187</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c92a1ee6bc1396d2b32a1053616b5518</srcmd5>
+    <version>12.0.2</version>
+    <time>1503593585</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516978</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d308cdc7de2829bc32d6d9f1cc1073af</srcmd5>
+    <version>12.0.3</version>
+    <time>1505990117</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527587</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cb575ba10ade160ef9b234aa9d729c08</srcmd5>
+    <version>12.0.4</version>
+    <time>1512547137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548210</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3a74abfc6793801d2936afb771936a73</srcmd5>
+    <version>12.0.4</version>
+    <time>1513762850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558696</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>365a021b575510774acfd4aa1bd04af6</srcmd5>
+    <version>13.0.0</version>
+    <time>1518025272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573418</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>54314bd2ccd8f6753e4175652f69a235</srcmd5>
+    <version>13.0.1</version>
+    <time>1521193477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587585</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>41e8667800557af1a46cc92f213af6b1</srcmd5>
+    <version>13.0.2</version>
+    <time>1525121628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>601659</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a07fc9660c60b133ed5efb22119f7089</srcmd5>
+    <version>13.0.3</version>
+    <time>1528897111</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615262</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a5cdb27f8b610965674e39510467e6c6</srcmd5>
+    <version>13.0.4</version>
+    <time>1529402344</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 13.0.4
+  - Allow setting notify credentials in environment (server#9788)
+  - Make the token expiration also work for autocasting 0 
+    (server#9803)
+  - Enable caldav for webdav subtree public-calendars (server#9820)
+</comment>
+    <requestid>616574</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>6f6e3adfce2db41fc1ea580f2a8920e4</srcmd5>
+    <version>13.0.4</version>
+    <time>1530866996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621279</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3e461202b978f1e50870c0a9ac94afbf</srcmd5>
+    <version>13.0.5</version>
+    <time>1532527843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625049</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>aee8c3806f55713a0bc2caa05aea057b</srcmd5>
+    <version>13.0.6</version>
+    <time>1535963751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632541</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9f5dca012efd2648260d940478610bb2</srcmd5>
+    <version>14.0.0</version>
+    <time>1536327738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>633788</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>ed733a44e5da6dc3a1deb12a99116fa1</srcmd5>
+    <version>14.0.0</version>
+    <time>1536679199</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634805</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>cf0d9c51604cf98772cbf6ebbe14f4cd</srcmd5>
+    <version>14.0.1</version>
+    <time>1538117603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638487</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5900faa1d2272373bbfbb042f16bc3c6</srcmd5>
+    <version>14.0.3</version>
+    <time>1539589387</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641741</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>622395da906f3efc274a38c0e0dd0fcf</srcmd5>
+    <version>14.0.4</version>
+    <time>1543224636</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 14.0.4
+  - Allow overwrite.cli.url without trailing slash (server#11772)
+  - Remove duplicate call to decodeURIComponent (server#11781)
+  - Check for empty string (server#11783)
+  - Add &quot;Referrer-Policy&quot; to htaccess file, addresses issue #11099
+    (server#11798)
+  - Always query the lookup server in a global scale setup 
+    (server#11800)
+  - Fix a case where &quot;password_by_talk&quot; was not a boolean
+    (server#11851)
+  - Add .l10nignore files for compiled assets (server#11925)
+  - Properly escape column name in &quot;createFunction&quot; call 
+    (server#11929)
+  - Allow userId to be null (server#11939)
+  - Allow &quot;same-origin&quot; as &quot;Referrer-Policy&quot; (Backport to stable14)
+    (server#11950)
+  - Do not emit preHooks twice on non-part-storage (server#11961)
+  - Filter null values for UserManager::getByEmail (server#11976)
+  - Allow local delivery of schedule message while prohibiting 
+    FreeBusy requests (server#11979)
+  - Load apps/APP/l10n/*.js and themes/THEME/apps/APP/l10n/*.js 
+    (server#11990)
+  - Lazy open first source stream in assemblystream (server#11994)
+  - Fix opening a section again in the Files app (server#11995)
+  - Remove cookies from Clear-Site-Data Header (server#12005)
+  - Forwarded ExpiredTokenException (server#12032)
+  - Allow chunked uploads even if your quota is not sufficient
+    (server#12040)
+  - Improve encrypt all / decrypt all (server#12045)
+  - Double check for failed cache with a shared storage 
+    (server#12108)
+  - Implement the size of an assembly stream (server#12111)
+  - Bring the browser window of an actor to the foreground when 
+    acting as him (server#12120)
+  - Move acceptance tests that crash the PHP built-in server to
+    Apache (server#12121)
+  - Remove unneeded empty search attribute values, fixes #12086 
+    (server#12122)
+  - Fixes wrong variable usage (server#12137)
+  - LDAP: announce display name changes so that addressbook picks 
+    it up (server#12141)
+  - Bruteforce protection handling in combination with 
+    (server#12160)
+  - Add global site selector as user back-end which doesn't support 
+    password confirmation (server#12184)
+  - Do not set indeterminate state for file shares (server#12187)
+  - Revert &quot;Wait for cron to finish before running upgrade command&quot; 
+    (server#12197)
+  - Fix bug #12151: fix list formatting by correcting malformed
+    html (server#12202)
+  - A folder should get a folder mimetype (server#12297)
+  - Use the proper server for the apptoken flow login
+    (server#12299)
+  - Do not log FileLock as exception (server#12300)
+  - Set the filemodel before rending the detailsview (server#12301)
+  - Disabled ldap fix (server#12331)
+  - Fix - Add to favorites not working in IE11 (server#12339)
+  - Remove arrow function for ie compatibility (server#12341)
+  - Fix default types of activity event member variables
+    (server#12353)
+  - Suppress wrong audit log messages about failed login attempts 
+    (server#12372)
+  - Add fix for IE11 flexbox height bug (server#12374)
+  - Properly search the root of a shared external storage 
+    (server#12375)
+  - Fix app update available check (server#12412)
+  - Use nextcloud-password-confirmation (server#12416)
+  - Fix IE rule for min width (server#12431)
+  - Added cache override to ensure an always up-to-date 
+    accessibility css (server#12432)
+  - Unique contraint and deadlock fixes for filecache and 
+    file_locks (server#12433)
+  - Fix app menu calculation for random size of the right header 
+    (server#12440)
+  - Fix missing quickaccess favorite folder on add (server#12441)
+  - Fixes dav share issue with owner (server#12459)
+  - Fix wrong share popover opening on share link (server#12482)
+  - Only use width and opacity for transition (server#12492)
+  - Forward object not found error in swift as dav 404 
+    (server#12502)
+  - Fix the warning appearing in the admin section when
+    mail_smtpmode is not configured (server#12529)
+  - Remove unused svg api route (server#12542)
+  - Bearer tokens are app token (server#12545)
+  - Handle permission in update of share better (server#12561)
+  - Correctly restrict affected users when using command to send 
+    emails (activity#312)
+  - Improve code blocks in markdown rendering (files_texteditor#121)
+  - Properly escape column name in &quot;createFunction&quot; call 
+    (survey_client#85)
+</comment>
+    <requestid>651370</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>7aa7a4d246861af04cc73214b0a4bdcb</srcmd5>
+    <version>14.0.4</version>
+    <time>1543400142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652247</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8d65cb8df8bb4b92a917c84e86f5545d</srcmd5>
+    <version>15.0.0</version>
+    <time>1546946736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660210</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7f4ea2ee7b1bfc27785afa2ddea8bcc5</srcmd5>
+    <version>15.0.1</version>
+    <time>1547211955</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664424</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1f31c066dcee40a71d07ad7c4405da94</srcmd5>
+    <version>15.0.2</version>
+    <time>1547540223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664964</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>1b7deb1cd40dcd137484f4549e8df96f</srcmd5>
+    <version>15.0.4</version>
+    <time>1551024836</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672882</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b9f7c52fc43ac87c5ae3c20c21df7946</srcmd5>
+    <version>15.0.5</version>
+    <time>1551455337</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680382</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>89668c5f97045570d50eb17f7d61655a</srcmd5>
+    <version>15.0.6</version>
+    <time>1554458791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691721</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>24913e26babfd3829e9470911116377c</srcmd5>
+    <version>15.0.7</version>
+    <time>1554833979</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692657</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8fe52cecdaad1a7b88e341a9d50ecd15</srcmd5>
+    <version>16.0.0</version>
+    <time>1557141937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698167</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>6e3b96e090251735d0aa9be1894ac0cf</srcmd5>
+    <version>16.0.1</version>
+    <time>1558037417</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703492</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1dd4f914327da289add12197cb014a17</srcmd5>
+    <version>16.0.3</version>
+    <time>1562843841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714285</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>375aac3375f9d2e26ef21ddda259732a</srcmd5>
+    <version>16.0.4</version>
+    <time>1566893943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725840</requestid>
+  </revision>
+</revisionlist>

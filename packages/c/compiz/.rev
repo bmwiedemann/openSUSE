@@ -1,0 +1,924 @@
+<revisionlist>
+  <revision rev="1" vrev="23">
+    <srcmd5>14ca725ca6c2ed795e1defcf6155bc71</srcmd5>
+    <version>0.2.2</version>
+    <time>1166464312</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="24">
+    <srcmd5>77f0907b7aec82b300b5d4b3a9992934</srcmd5>
+    <version>0.2.2</version>
+    <time>1166543918</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c7c18bd83193ae14b45a358feaceabcb</srcmd5>
+    <version>0.3.6</version>
+    <time>1168187107</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2713abfd8cf78dd4fc012eca45d3ab6f</srcmd5>
+    <version>0.3.6</version>
+    <time>1168614255</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>20e05a570b07c421bf5a33a993184c12</srcmd5>
+    <version>0.3.6</version>
+    <time>1169080192</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>e69f3c780328cddee6140b0abc7396e5</srcmd5>
+    <version>0.3.6</version>
+    <time>1169230604</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>8b89da188eda10a86d1a5ae3003e6844</srcmd5>
+    <version>0.3.6</version>
+    <time>1169511196</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b578a081c871dac648d50821a2725b54</srcmd5>
+    <version>0.3.7</version>
+    <time>1170428406</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>0b16bc2079dcdc263d3f94ed379c4043</srcmd5>
+    <version>0.3.7</version>
+    <time>1170922120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>147958601683bc2757e8005f8ee25949</srcmd5>
+    <version>0.3.7</version>
+    <time>1173106493</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>3930e05f5a2816bea2bf042efce83c44</srcmd5>
+    <version>0.3.7</version>
+    <time>1173918123</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>0b838dfe2c9b15a900b57f53465aa223</srcmd5>
+    <version>0.3.7</version>
+    <time>1174349921</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>931f79942adc1a3b234f710cdfc4b2c0</srcmd5>
+    <version>0.3.7</version>
+    <time>1174433854</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ca786daa25b44c6f00e8b0bffb63217c</srcmd5>
+    <version>0.4.0</version>
+    <time>1174435185</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>53926be3ed9d2b586272bbca27e60967</srcmd5>
+    <version>0.4.0</version>
+    <time>1175120932</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7486f88089650ae365ce305d5f62ac62</srcmd5>
+    <version>0.5.0</version>
+    <time>1176395101</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>6d41b3678f0576a1e503a9c6f683de02</srcmd5>
+    <version>0.5.0</version>
+    <time>1177362910</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>20d8e084126f607738e22ec03354184a</srcmd5>
+    <version>0.5.0</version>
+    <time>1179393845</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a998aeb90211101a9872c464eb1dfcc2</srcmd5>
+    <version>0.5.1_git_9a137959</version>
+    <time>1184665717</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c5d46b03cd94b632d9b8992a368a1d50</srcmd5>
+    <version>0.5.2</version>
+    <time>1186178021</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>d37b324d5ffcf639be8dddad838ef233</srcmd5>
+    <version>0.5.2</version>
+    <time>1186426577</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0d1d4189ae6c046779ad6d7b19ec8aa8</srcmd5>
+    <version>0.5.4</version>
+    <time>1187644614</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>ec213ffc4a1d0ee2624c3f82417e69ca</srcmd5>
+    <version>0.5.4</version>
+    <time>1188230815</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="12">
+    <srcmd5>9f03fea1952c784aa48863b0b2f1b3e3</srcmd5>
+    <version>0.5.4</version>
+    <time>1189108368</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="47">
+    <srcmd5>de67b93ede38ab954e4fc60f3893e671</srcmd5>
+    <version>0.5.4</version>
+    <time>1193789261</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="75">
+    <srcmd5>57bb13d2d91065cf3b100b82338920be</srcmd5>
+    <version>0.5.4</version>
+    <time>1201658808</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3edb7a8d969ad0be7c4b885a3d99f2ba</srcmd5>
+    <version>0.7.2</version>
+    <time>1205252265</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>2a03578ae8d311e5b246cc4ed763ad20</srcmd5>
+    <version>0.7.2</version>
+    <time>1205331189</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>ca2daa424a2e13abe06396e95ef64268</srcmd5>
+    <version>0.7.2</version>
+    <time>1205430994</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>ce945c50e5c5f19d51542a2e3047c5e0</srcmd5>
+    <version>0.7.2</version>
+    <time>1205511970</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>e5bfa11e0f15efa1df81734ea05d9b58</srcmd5>
+    <version>0.7.2</version>
+    <time>1205535869</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="10">
+    <srcmd5>ab9a0538025630b4008a3661612ff9a0</srcmd5>
+    <version>0.7.2</version>
+    <time>1206067699</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>9b9948bd094a8bee5cf771cf2e2b3287</srcmd5>
+    <version>0.7.4</version>
+    <time>1208203227</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="6">
+    <srcmd5>4c8c933c884a72668247d8eb668e9e68</srcmd5>
+    <version>0.7.4</version>
+    <time>1208906256</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="13">
+    <srcmd5>9500e16bd005b1c8b6d45e04fd9e3652</srcmd5>
+    <version>0.7.4</version>
+    <time>1209643456</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="21">
+    <srcmd5>971f111986be05f43ff8fae98ac35398</srcmd5>
+    <version>0.7.4</version>
+    <time>1210937332</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="25">
+    <srcmd5>c738b232c3f2ee6c73e74a125d8db313</srcmd5>
+    <version>0.7.4</version>
+    <time>1211402700</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="26">
+    <srcmd5>c9b69d3ac8c91e31d87fde295609ead0</srcmd5>
+    <version>0.7.4</version>
+    <time>1211820936</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="34">
+    <srcmd5>5dfec8d03fc611a3e77fb272443a191c</srcmd5>
+    <version>0.7.4</version>
+    <time>1214413457</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0d16a458eb09c0912c79394a5f795e00</srcmd5>
+    <version>0.7.6</version>
+    <time>1214942044</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="18">
+    <srcmd5>c66a8c28ff70a357fadfc6876f96126a</srcmd5>
+    <version>0.7.6</version>
+    <time>1217233532</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="24">
+    <srcmd5>f4833e33685ab04b7495cb0f60ffcbc1</srcmd5>
+    <version>0.7.6</version>
+    <time>1217637797</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="56">
+    <srcmd5>05c70cc43d7633a74ed981b0c364fc66</srcmd5>
+    <version>0.7.6</version>
+    <time>1221521656</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="57">
+    <srcmd5>5255eddaa07f6566986cd7269e150e73</srcmd5>
+    <version>0.7.6</version>
+    <time>1221611678</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0e3c92444c2ae334cbbadd77e7e99c24</srcmd5>
+    <version>0.7.8</version>
+    <time>1222702337</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>b78400edb9957505ca94a5012c5f2cf1</srcmd5>
+    <version>0.7.8</version>
+    <time>1223387615</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>750744401447284f9e0ec947a5fb829a</srcmd5>
+    <version>0.7.8</version>
+    <time>1223735766</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>a083d43ee142071bda831e07e2c6622c</srcmd5>
+    <version>0.7.8</version>
+    <time>1225709952</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>5159a560e5edb9800d21671fa838e4c9</srcmd5>
+    <version>0.7.8</version>
+    <time>1227283581</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="50" vrev="6">
+    <srcmd5>afd6461bd228b0c33f1daef6e43c08aa</srcmd5>
+    <version>0.7.8</version>
+    <time>1227425519</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="51" vrev="7">
+    <srcmd5>07a6584ad178d130c66afbdf179976ce</srcmd5>
+    <version>0.7.8</version>
+    <time>1228227210</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="52" vrev="8">
+    <srcmd5>e0c34a844acbbf4d8e138f1823f95227</srcmd5>
+    <version>0.7.8</version>
+    <time>1228381985</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="53" vrev="9">
+    <srcmd5>3fe81e431ff5094632a0a8b777eabdeb</srcmd5>
+    <version>0.7.8</version>
+    <time>1228563738</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="54" vrev="10">
+    <srcmd5>9e2705c6f6e8fcba96e602a0ff3a3a5a</srcmd5>
+    <version>0.7.8</version>
+    <time>1231434034</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="55" vrev="11">
+    <srcmd5>955823241ae449b179b9c74833fe080c</srcmd5>
+    <version>0.7.8</version>
+    <time>1231463655</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="56" vrev="12">
+    <srcmd5>d94cc9325611f69aae98804d637c6354</srcmd5>
+    <version>0.7.8</version>
+    <time>1232556609</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="57" vrev="15">
+    <srcmd5>27e191c6faec4c27d90e5880fe8b4bdc</srcmd5>
+    <version>0.7.8</version>
+    <time>1233017654</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="58" vrev="16">
+    <srcmd5>3d01cffa0f8b5e6674b77d5f6136d9a9</srcmd5>
+    <version>0.7.8</version>
+    <time>1233143084</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="59" vrev="18">
+    <srcmd5>c528492eb7df0a76d881313fa666d4b5</srcmd5>
+    <version>0.7.8</version>
+    <time>1233189451</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="60" vrev="19">
+    <srcmd5>174595e5db8ea78f732217ebfb065a2d</srcmd5>
+    <version>0.7.8</version>
+    <time>1233270558</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="61" vrev="20">
+    <srcmd5>0853b8c21f27cb8c09677d578acd5c14</srcmd5>
+    <version>0.7.8</version>
+    <time>1233696935</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="62" vrev="22">
+    <srcmd5>70a0359ec90639bc5b8b669e59b6580d</srcmd5>
+    <version>0.7.8</version>
+    <time>1233953178</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="63" vrev="25">
+    <srcmd5>06a819f96f4ea0bbe0b464fe1922faef</srcmd5>
+    <version>0.7.8</version>
+    <time>1234224900</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="64" vrev="27">
+    <srcmd5>8f6b9db71146498d53561c6dba421d44</srcmd5>
+    <version>0.7.8</version>
+    <time>1234314025</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="65" vrev="28">
+    <srcmd5>f58e58f655a4d21fe3b7c8f6f3ae8df5</srcmd5>
+    <version>0.7.8</version>
+    <time>1234474977</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="66" vrev="29">
+    <srcmd5>44aaca7f5724dc0fcabfa2201c1bdf60</srcmd5>
+    <version>0.7.8</version>
+    <time>1234484703</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="67" vrev="33">
+    <srcmd5>dfc25dd36fb06cd7abfdeb6674d8c0d9</srcmd5>
+    <version>0.7.8</version>
+    <time>1235649411</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="68" vrev="34">
+    <srcmd5>2f493ea5b7be827b24bdee756681c518</srcmd5>
+    <version>0.7.8</version>
+    <time>1235692880</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="69" vrev="35">
+    <srcmd5>e0f748b50f28f82ff795231a1df465bb</srcmd5>
+    <version>0.7.8</version>
+    <time>1235708024</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="70" vrev="36">
+    <srcmd5>5d5852803091dd5ac27f80aee3b16c80</srcmd5>
+    <version>0.7.8</version>
+    <time>1239747030</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="71" vrev="37">
+    <srcmd5>a0a4eccb6e49ee8eca439818925f0e80</srcmd5>
+    <version>0.7.8</version>
+    <time>1240055623</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="72" vrev="38">
+    <srcmd5>d9c092308d604f99e1023d0caa3530d4</srcmd5>
+    <version>0.7.8</version>
+    <time>1250904751</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 18444 from user dimstar
+</comment>
+  </revision>
+  <revision rev="73" vrev="39">
+    <srcmd5>41b1347ecb1a415cfc978b34124c6fa1</srcmd5>
+    <version>0.7.8</version>
+    <time>1252355113</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 20031 from user dimstar
+</comment>
+  </revision>
+  <revision rev="74" vrev="40">
+    <srcmd5>bad43003f32e67069150b3d3daf1b225</srcmd5>
+    <version>0.7.8</version>
+    <time>1253732639</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 20848 from user dimstar
+</comment>
+  </revision>
+  <revision rev="75" vrev="41">
+    <srcmd5>55fc59d35cb44b933e8f828c88075750</srcmd5>
+    <version>0.7.8</version>
+    <time>1254524445</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 21332 from user dimstar
+</comment>
+  </revision>
+  <revision rev="76" vrev="42">
+    <srcmd5>aa9a972827befb339691193a6b71c3c9</srcmd5>
+    <version>0.7.8</version>
+    <time>1254784919</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 21858 from user dimstar
+</comment>
+  </revision>
+  <revision rev="77" vrev="44">
+    <srcmd5>aa9a972827befb339691193a6b71c3c9</srcmd5>
+    <version>0.7.8</version>
+    <time>1254784919</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 21858 from user dimstar
+</comment>
+  </revision>
+  <revision rev="78" vrev="45">
+    <srcmd5>c7c0dd5a8c17f4569eca40511b51a8ae</srcmd5>
+    <version>0.7.8</version>
+    <time>1256211683</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 22647 from user dimstar
+</comment>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>c208ae0584dd8399a3140f395a25ee4a</srcmd5>
+    <version>0.8.4</version>
+    <time>1258983171</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 24904 from user dimstar
+</comment>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>afed0383bdd443261d0f64cc25fac34d</srcmd5>
+    <version>0.8.4</version>
+    <time>1259925636</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 25474 from user dimstar
+</comment>
+  </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>148efeef7815f0169546a66254b0e103</srcmd5>
+    <version>0.8.4</version>
+    <time>1266499597</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 32598 from user dimstar
+</comment>
+  </revision>
+  <revision rev="82" vrev="4">
+    <srcmd5>30fce5ad28cdde12c97a25fab5c28fc2</srcmd5>
+    <version>0.8.4</version>
+    <time>1268923225</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="83" vrev="5">
+    <srcmd5>7ef713ea934455ee8b9ea71b427ebe40</srcmd5>
+    <version>0.8.4</version>
+    <time>1269273245</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 35475 from user dimstar
+</comment>
+    <requestid>35475</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>3f879653c654a3a5c48601f4bd673150</srcmd5>
+    <version>0.8.6</version>
+    <time>1270058080</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 36451 from user dimstar
+</comment>
+    <requestid>36451</requestid>
+  </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>31b468e9dd57934f3fa8ace79ead4aa9</srcmd5>
+    <version>0.8.6</version>
+    <time>1273790509</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 40006 from user dimstar
+</comment>
+    <requestid>40006</requestid>
+  </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>505d36a84be3b3242021b52a99d6d96b</srcmd5>
+    <version>0.8.6</version>
+    <time>1276835330</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 41456 from user dimstar
+</comment>
+    <requestid>41456</requestid>
+  </revision>
+  <revision rev="87" vrev="4">
+    <srcmd5>505d36a84be3b3242021b52a99d6d96b</srcmd5>
+    <version>0.8.6</version>
+    <time>1278667340</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="88" vrev="5">
+    <srcmd5>505d36a84be3b3242021b52a99d6d96b</srcmd5>
+    <version>0.8.6</version>
+    <time>1278678568</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>538f3d94f727439776f652bd3a493fe2</srcmd5>
+    <version>0.9.0</version>
+    <time>1279707228</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 43564 from user dimstar
+</comment>
+    <requestid>43564</requestid>
+  </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>7e60f3e89b3f714e326da797b7d6fa1f</srcmd5>
+    <version>0.9.0</version>
+    <time>1282914021</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 46259 from user dimstar
+</comment>
+    <requestid>46259</requestid>
+  </revision>
+  <revision rev="91" vrev="3">
+    <srcmd5>27ff10769888cc497c815840cce1b8d4</srcmd5>
+    <version>unknown</version>
+    <time>1283778658</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 47198 from user dimstar
+</comment>
+    <requestid>47198</requestid>
+  </revision>
+  <revision rev="92" vrev="4">
+    <srcmd5>8120c2f6e797d7ff3c98fc7ccd3e3df3</srcmd5>
+    <version>unknown</version>
+    <time>1284461850</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 48032 from user dimstar
+</comment>
+    <requestid>48032</requestid>
+  </revision>
+  <revision rev="93" vrev="5">
+    <srcmd5>61acdada11144bd56312a1d8070c71e8</srcmd5>
+    <version>0.9.0</version>
+    <time>1285971249</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Compiz/compiz based on submit request 49552 from user dimstar
+</comment>
+    <requestid>49552</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>ec3efd3725aca6e5f403d5a28238de80</srcmd5>
+    <version>0.9.2</version>
+    <time>1289224444</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52326 from user dimstar
+</comment>
+    <requestid>52326</requestid>
+  </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>9f9d9598da8a1e14e20e274d9b8b0b15</srcmd5>
+    <version>0.9.2</version>
+    <time>1289224453</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52326
+</comment>
+  </revision>
+  <revision rev="96" vrev="3">
+    <srcmd5>8bf386ca95426d7d10bf06ebc73ff517</srcmd5>
+    <version>0.9.2</version>
+    <time>1289227897</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52405 from user dimstar
+</comment>
+    <requestid>52405</requestid>
+  </revision>
+  <revision rev="97" vrev="4">
+    <srcmd5>9a0c2cc6ccc7181ec639fbd1710d3f12</srcmd5>
+    <version>0.9.2</version>
+    <time>1289227902</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52405
+</comment>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>017538ae9bf48ee8ba00d80df5010b84</srcmd5>
+    <version>0.9.2.1</version>
+    <time>1296607380</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59543 from user dimstar
+</comment>
+    <requestid>59543</requestid>
+  </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>002902d16eb801fe90e8782aabd08041</srcmd5>
+    <version>0.9.2.1</version>
+    <time>1296607390</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59543
+</comment>
+  </revision>
+  <revision rev="100" vrev="3">
+    <srcmd5>f2d2baa57425d1b147b4959f4fd2dd11</srcmd5>
+    <version>0.9.2.1</version>
+    <time>1297642428</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60655 from user dimstar
+</comment>
+    <requestid>60655</requestid>
+  </revision>
+  <revision rev="101" vrev="4">
+    <srcmd5>7624b4eb04ed5606cbf68efb147b83de</srcmd5>
+    <version>0.9.2.1</version>
+    <time>1297642434</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60655
+</comment>
+  </revision>
+  <revision rev="102" vrev="7">
+    <srcmd5>7624b4eb04ed5606cbf68efb147b83de</srcmd5>
+    <version>0.9.2.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="103" vrev="8">
+    <srcmd5>157f33b6113066401641243e240575dd</srcmd5>
+    <version>0.9.2.1</version>
+    <time>1298304973</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62347 from user dimstar
+</comment>
+    <requestid>62347</requestid>
+  </revision>
+  <revision rev="104" vrev="9">
+    <srcmd5>9e3bbe466f92bea77a5e1587cfd02690</srcmd5>
+    <version>0.9.2.1</version>
+    <time>1298304979</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 62347
+</comment>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>c3361c044b9cdfa17cfe26383d68ca16</srcmd5>
+    <version>0.9.5</version>
+    <time>1309181406</time>
+    <user>saschpe</user>
+    <comment>Re-inject latest compiz pkg into Factory.</comment>
+    <requestid>74613</requestid>
+  </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>48e8bac7d1e0c628b200dba1a7ed46eb</srcmd5>
+    <version>0.9.5</version>
+    <time>1309181422</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74613
+</comment>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>07794e5b0a8cdbdd82eee16abbc67e0c</srcmd5>
+    <version>0.9.5.92.1</version>
+    <time>1317211531</time>
+    <user>saschpe</user>
+    <comment>- Update to 0.9.5.92.1:
+  + Fix failure to build from source due to merge failure on the
+    last release
+- Changes from version 0.9.5.92:
+  + Added GSettings schema generation
+  + Revised libdecoration interface
+  + Fixed crashes on shutdown
+  + Don't unredirect overlay windows until they have been shaped
+
+- Fixed typos in compiz.spec</comment>
+    <requestid>85217</requestid>
+  </revision>
+  <revision rev="108" vrev="3">
+    <srcmd5>07794e5b0a8cdbdd82eee16abbc67e0c</srcmd5>
+    <version>0.9.5.92.1</version>
+    <time>1319181820</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>bac7298b4673f6ae75c83513cae0c822</srcmd5>
+    <version>0.8.8</version>
+    <time>1338991556</time>
+    <user>coolo</user>
+    <comment>license update: HPND and GPL-2.0+
+SPDX format (and the majority of the MIT-like licenses are actually HPND - see http://www.spdx.org/licenses/HPND) (forwarded request 123223 from babelworx)</comment>
+    <requestid>123228</requestid>
+  </revision>
+  <revision rev="110" vrev="3">
+    <srcmd5>bac7298b4673f6ae75c83513cae0c822</srcmd5>
+    <version>0.8.8</version>
+    <time>1340183246</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="111" vrev="4">
+    <srcmd5>304566e3e34d6fed84414c4950c6fa93</srcmd5>
+    <version>0.8.8</version>
+    <time>1353266721</time>
+    <user>namtrac</user>
+    <comment>- compiz-kde-4.9.patch:
+  taken from gentoo to fix compilation with kde-4.9 (forwarded request 141621 from oertel)</comment>
+    <requestid>141635</requestid>
+  </revision>
+  <revision rev="112" vrev="5">
+    <srcmd5>165a4c130a6d677c1b4b8404a4da94c4</srcmd5>
+    <version>0.8.8</version>
+    <time>1358664367</time>
+    <user>coolo</user>
+    <comment>- fixing build in Factory
+  compiz-0.8.8-non-abstract-KWD-Window.patch (forwarded request 149146 from -miska-)</comment>
+    <requestid>149160</requestid>
+  </revision>
+  <revision rev="113" vrev="7">
+    <srcmd5>165a4c130a6d677c1b4b8404a4da94c4</srcmd5>
+    <version>0.8.8</version>
+    <time>1359108763</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="114" vrev="8">
+    <srcmd5>594287455621dc35b8d1ef3c401fd13f</srcmd5>
+    <version>0.8.8</version>
+    <time>1362474282</time>
+    <user>coolo</user>
+    <comment>- Added support for translation-update-upstream. (forwarded request 157254 from sbrabec)</comment>
+    <requestid>157291</requestid>
+  </revision>
+  <revision rev="115" vrev="9">
+    <srcmd5>ec10291208948d3fcb55b9d44020f562</srcmd5>
+    <version>0.8.8</version>
+    <time>1374575425</time>
+    <user>coolo</user>
+    <comment>Kill compiz-kde4 for 13.1 - not supported with KWin starting 4.11 release (forwarded request 182693 from sumski)</comment>
+    <requestid>183974</requestid>
+  </revision>
+  <revision rev="116" vrev="11">
+    <srcmd5>ec10291208948d3fcb55b9d44020f562</srcmd5>
+    <version>0.8.8</version>
+    <time>1379662140</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="117" vrev="12">
+    <srcmd5>40b0a14b3df230fb551a2ebfcaec374e</srcmd5>
+    <version>0.8.8</version>
+    <time>1407942496</time>
+    <user>lnussel</user>
+    <comment>fix compilation by omitting metacity configure option
+remove old unused gtk patch</comment>
+    <requestid>244308</requestid>
+  </revision>
+  <revision rev="118" vrev="14">
+    <srcmd5>40b0a14b3df230fb551a2ebfcaec374e</srcmd5>
+    <version>0.8.8</version>
+    <time>1409300669</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="119" vrev="15">
+    <srcmd5>3db94848c25812d5130872e0260ffff6</srcmd5>
+    <version>0.8.8</version>
+    <time>1414613422</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258667</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>c1ee23a65d549f98fd16f463f9a34ca4</srcmd5>
+    <version>0.8.9</version>
+    <time>1448553835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>345919</requestid>
+  </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>96b43214cbbdd1fb9982c9f42912c9a0</srcmd5>
+    <version>0.8.9</version>
+    <time>1448720369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>346422</requestid>
+  </revision>
+  <revision rev="122" vrev="3">
+    <srcmd5>12df4050ed73007accccfd5074cb7397</srcmd5>
+    <version>0.8.9</version>
+    <time>1450284167</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>348656</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>e710c049c683efec34aaef40939847b4</srcmd5>
+    <version>0.8.10</version>
+    <time>1450856986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>349448</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>3d162ab380c6184022a984b6ba93b31d</srcmd5>
+    <version>0.8.12</version>
+    <time>1456434168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>360564</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>b93ee05273f364d94efbbbf8a1462597</srcmd5>
+    <version>0.8.12.1</version>
+    <time>1458333767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>374283</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>af498140a4add74ba99798eef01142da</srcmd5>
+    <version>0.8.12.2</version>
+    <time>1459002526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>379263</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>3b2431b7015d215e69f78f758e48aaf9</srcmd5>
+    <version>0.8.12.3</version>
+    <time>1460482650</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>387195</requestid>
+  </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>072119e947792345fc813a96bbe82488</srcmd5>
+    <version>0.8.12.3</version>
+    <time>1490318588</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>482052</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>067b1bb58af12a7fdcd3e78e3ada58b2</srcmd5>
+    <version>0.8.14</version>
+    <time>1493020095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>489084</requestid>
+  </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>2c8d829d7efe0d222272fc1a06cea116</srcmd5>
+    <version>0.8.14</version>
+    <time>1493819799</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>492297</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>596de67a41aef5a81840531865d6e72a</srcmd5>
+    <version>0.8.16.1</version>
+    <time>1543224210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.16.1.</comment>
+    <requestid>649973</requestid>
+  </revision>
+</revisionlist>

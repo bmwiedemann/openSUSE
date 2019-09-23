@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a97c4bed2648ff0a5f7f11d3ae68a42b</srcmd5>
+    <version>1.4.6</version>
+    <time>1392731104</time>
+    <user>coolo</user>
+    <comment>See SR#198024
+https://build.opensuse.org/request/show/198024</comment>
+    <requestid>198027</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6eff613a0af4558b817023a5b92ab42f</srcmd5>
+    <version>1.4.7</version>
+    <time>1392792674</time>
+    <user>coolo</user>
+    <comment>- update to 1.4.7
+  * Correctly handle newer versions of the Spaceball firwmare (thanks to
+    Andrew Basterfield &lt;abasterfield@gmail.com&gt;). This fixes Debian
+    #298494.
+- updated the comment in spec file about when the spit took place.
+ (forwarded request 222802 from etamPL)</comment>
+    <requestid>222803</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6eff613a0af4558b817023a5b92ab42f</srcmd5>
+    <version>1.4.7</version>
+    <time>1409301802</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f5f60025e6af9617ba88ff3f13e7a2dc</srcmd5>
+    <version>1.4.8</version>
+    <time>1424622074</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287039</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>36c27d52bcb49e416f1e87b5b2f68278</srcmd5>
+    <version>1.4.9</version>
+    <time>1455701587</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358919</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4746dfdde052ece335d7fa3181cdd278</srcmd5>
+    <version>1.5.1</version>
+    <time>1475241883</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>430638</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>148b591289ace0a53d9b05c0a39b6340</srcmd5>
+    <version>1.5.1</version>
+    <time>1496681388</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500866</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e0f14f9a8b623edd711c517bad9c63dc</srcmd5>
+    <version>1.6.0</version>
+    <time>1548537779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668737</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>352d449be4a2e877a0da66d54913643e</srcmd5>
+    <version>1.6.1</version>
+    <time>1564994309</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720285</requestid>
+  </revision>
+</revisionlist>

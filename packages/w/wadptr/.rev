@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf7d71f63c0f59602148a45ffcfc9c58</srcmd5>
+    <version>2.4</version>
+    <time>1313494328</time>
+    <user>saschpe</user>
+    <comment>WAD archive compressor.
+(Technique used: collapse identical objects and set a pointer; much like file hardlinking)</comment>
+    <requestid>78538</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c205bd3f316cc527bd863bcd2135894a</srcmd5>
+    <version>2.4</version>
+    <time>1313494340</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78538
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c205bd3f316cc527bd863bcd2135894a</srcmd5>
+    <version>2.4</version>
+    <time>1319182557</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>4705ccbe816f5e9e74ed12dec4270c2a</srcmd5>
+    <version>2.4</version>
+    <time>1327087553</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>100873</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>4705ccbe816f5e9e74ed12dec4270c2a</srcmd5>
+    <version>2.4</version>
+    <time>1340184319</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>4705ccbe816f5e9e74ed12dec4270c2a</srcmd5>
+    <version>2.4</version>
+    <time>1359110557</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>4705ccbe816f5e9e74ed12dec4270c2a</srcmd5>
+    <version>2.4</version>
+    <time>1379664946</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>4705ccbe816f5e9e74ed12dec4270c2a</srcmd5>
+    <version>2.4</version>
+    <time>1409303627</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

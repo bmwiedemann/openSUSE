@@ -1,0 +1,324 @@
+-------------------------------------------------------------------
+Thu Mar 14 13:53:55 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.26.1:
+  + Fix crashes caused by Nominatim server changes.
+  + Fix warnings when building the API documentation.
+
+-------------------------------------------------------------------
+Wed Jun  6 13:31:02 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.0:
+  + Remove full build path from public headers so as to make the
+    build more easily reproduceable.
+- Drop geocode-glib-make-reproducible.patch: Fixed upstream.
+- Drop hicolor-icon-theme BuildRequires: No longer needed.
+
+-------------------------------------------------------------------
+Sat Mar 17 23:09:04 UTC 2018 - bjorn.lie@gmail.com
+
+- Add geocode-glib-make-reproducible.patch: lib: Remove full build
+  path from public headers. So as to make the build more easily
+  reproducible.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:26:24 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Sep  8 13:25:36 UTC 2017 - jengelh@inai.de
+
+- Update descriptions and RPM groups.
+
+-------------------------------------------------------------------
+Wed Aug  9 13:25:41 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.4.1:
+  + Brown paperbag release to add news entry for 3.25.4.
+- Changes from version 3.25.4:
+  + Port to meson build system.
+  + Drop autotools.
+  + Provide a configure script for backwards compatibility.
+  + Fix a warning from gcc 7.1.1.
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream switch to Meson build system.
+- Replace gnome-doc-utils-devel with gtk-doc BuildRequires and pass
+  enable-gtk-doc=true to meson.
+- Pass enable-installed-tests=false to meson, unsure if we should
+  package these or not, default upstream is yes.
+
+-------------------------------------------------------------------
+Wed Aug  9 09:42:45 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.0:
+  + Stable bump only.
+
+-------------------------------------------------------------------
+Tue Feb  7 13:40:08 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.90:
+  + Add g_autoptr cleanup functions.
+  + Make code base const-correct.
+  + Add backend abstraction.
+  + Make unit-test base on offline mock backend.
+  + Add support for multiple reverse results.
+  + Add a user-agent property to override default user-agent.
+  + Add equality functions to bbox/location/place.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr 15 17:17:01 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Tue Apr 12 11:27:58 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Fix build for uClibc.
+
+-------------------------------------------------------------------
+Mon Mar 21 20:14:30 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Add icons to EXTRA_DIST.
+  + Fix memleaks in query cache.
+
+-------------------------------------------------------------------
+Sun Feb 14 23:12:46 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.90:
+  + Add simple train stops and tram stops to place types.
+  + Fix timestamp documentation.
+
+-------------------------------------------------------------------
+Sun Jan 31 14:39:52 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Added a default User-Agent, based on GApplication ID if
+    available. Nominatim’s usage policy requires a User-Agent, so
+    we add one.
+
+-------------------------------------------------------------------
+Sun Sep 20 14:39:20 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.0:
+  + No changes, version bump only.
+
+-------------------------------------------------------------------
+Wed Sep 16 08:44:58 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Fix compilation under MacOS X.
+  + Make location timestamp writable on construction.
+
+-------------------------------------------------------------------
+Sun Aug 16 14:34:33 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Update unit tests.
+  + Add workaround for Nominatim boundingbox bug (bgo#749963).
+  + Update project description.
+  + Prettify Geo URI generation.
+
+-------------------------------------------------------------------
+Tue May 12 20:05:49 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.1:
+  + Make error handling of reverse geocode more robust.
+
+-------------------------------------------------------------------
+Tue May 12 19:36:08 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Fix bugs in reverse geocode.
+
+-------------------------------------------------------------------
+Mon Mar 23 08:17:01 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Tue Jan 13 00:45:47 UTC 2015 - badshah400@gmail.com
+
+- Update to version 3.15.4:
+  + Derive the order of street name and street number from locale
+    (GLIBC only).
+
+-------------------------------------------------------------------
+Wed Dec 17 19:53:27 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.3.1:
+  + Switch to https:// and fix the geocode cache.
+  + Fix gtkdoc-check errors.
+- Changes from version 3.15.3:
+  + Add osm_type property to geocode place.
+
+-------------------------------------------------------------------
+Fri Nov 28 19:18:17 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.2:
+  + Fix error handling in parsing of URIs.
+  + Allow escape characters in URIs.
+
+-------------------------------------------------------------------
+Thu Oct 16 19:53:02 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add baselibs.conf: provide multi-arch packages.
+
+-------------------------------------------------------------------
+Tue Sep 23 15:28:52 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Add category and programming language to doap file.
+
+-------------------------------------------------------------------
+Sat Jul 12 21:51:36 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.3:
+  + Add types and icons for more amenity place types.
+  + Fix memory leaks in geo uri handling.
+  + Add description extension to geo uri.
+  + Add cancellable check to all GSimpleAsyncResult.
+
+-------------------------------------------------------------------
+Sat May 17 07:49:06 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Fix memory leaks in 'geo' URI parsing and testing.
+
+-------------------------------------------------------------------
+Mon Mar 24 20:59:21 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + No changes since 3.11.92.
+
+-------------------------------------------------------------------
+Wed Mar 19 15:59:19 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92.2:
+  + Nano release to fix configure.ac hickup.
+- Changes from version 3.11.92.1:
+  + Fix typo in Nominatim search result attribute.
+
+-------------------------------------------------------------------
+Tue Mar 18 10:27:17 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Add osm-id property to GeocodePlace.
+
+-------------------------------------------------------------------
+Tue Mar  4 19:37:19 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.91:
+  + Adapt to fixed behavior of json-glib. Without this we get a
+    crash on parsing search results.
+  + Require json-glib >= 0.99.2.
+
+-------------------------------------------------------------------
+Tue Feb  4 20:27:48 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.5:
+  + API to expose bounding box of places from Nominatim.
+  + Switch to jsonv2 format of Nominatim API to get all needed
+    info.
+
+-------------------------------------------------------------------
+Tue Jan 14 23:11:01 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4.1:
+  + A nano releaase to fix icon installation in 3.11.4.
+
+-------------------------------------------------------------------
+Tue Jan 14 19:20:28 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + Do not depend on intltool, use upstream gettext instead.
+  + Check for libsoup not libsoup-gnome in Makefile.am.
+  + Add parsing of geo URI to GeocodeLocation (RFC 5870).
+  + Add altitude and CRS (Coordinate Reference System) property to
+    GeocodeLocation.
+  + Allow specifying a bounding-box search-area for GeocodeForward
+    searches.
+  + Replace the Nominatim place icons with place type derived
+    icons, using the BSD licensed Maki point-of-interest icon set.
+- Require geocode-glib from the library package in ordere to have
+  the new icon set available to the library.
+- Add hicolor-icon-theme BuildRequires: needed for the post/postun
+  script macros.
+
+-------------------------------------------------------------------
+Mon Sep 23 17:09:28 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Depend on json-glib >= 0.16.2 to avoid conflict w/ json-c.
+  + Remove a now redundant workaround from a testcase.
+  + Fix `make distcheck` against latest gtk-doc.
+
+-------------------------------------------------------------------
+Tue Sep 17 17:01:31 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.99.4:
+  + Fixes to gobject-introspection.
+  + Version documentation installation directory.
+  + Documentation build fixes.
+  + Explicitly link to libm.
+  + Fix a leak.
+  + Sync GeocodeLocation with its copy in Geoclue.
+  + Ensure country codes are always in upper-case.
+  + Some cleanups.
+
+-------------------------------------------------------------------
+Tue Sep  3 06:39:28 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.99.3:
+  + Fix a crash in reverse geocoding API.
+  + Expose place icons when available from Nominatim.
+  + Make GeocodeReverse locale safe.
+  + Fix build against latest gnome-common.
+
+-------------------------------------------------------------------
+Wed Aug 21 06:46:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.99.2:
+  + Make use of our new proxy to Nominatim at nominatim.gnome.org.
+  + Better name/description for street numbers.
+  + Fixes to build.
+  + Drop all geoip code, which has been moved to Geoclue where it
+    belongs.
+  + Fix failing testcases.
+- Drop pkgconfig(geoip) BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
+Wed Jul 31 14:59:05 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.99.1:
+  + The library has almost been completey re-written since 0.99.0
+    so too many changes to document here. Most notable changes
+    however are:
+    - Freeform geocoding, and reverse geocoding search API.
+    - Search results are now locale aware.
+    - We now use Nominatim instead of Yahoo Places API for
+      (reverse-)geocoding. Not only is Nominatim a completely open
+      service, it is also has a lot more data to offer.
+    - GeoIP server and client API. WARNING: These will soon be
+      removed in favor of geoclue2 so do not use them in your
+      application. Instead use geoclue2 directly.
+    - More test cases.
+    - Various fixes to build and installation.
+- Add pkgconfig(geoip) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Fri Dec  9 09:27:41 UTC 2011 - dimstar@opensuse.org
+
+- Split typelib file into typelib-1_0-GeocodeGlib-1_0 subpackage.
+- Add typelib-1_0-GeocodeGlib-1_0 Requires to devel subpackage.
+
+-------------------------------------------------------------------
+Fri Jun 17 02:07:49 CEST 2011 - vuntz@opensuse.org
+
+- Initial package (version 0.99.0).
+

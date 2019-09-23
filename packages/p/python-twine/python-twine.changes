@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Tue Sep 10 09:42:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.14.0:
+  * Better error handling and gpg2 fallback if gpg not available.
+  * Fixes for python 3.8
+
+-------------------------------------------------------------------
+Sat Mar  2 04:53:11 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+  * remove patch fix-keyring-support.patch, included upstream
+
+- update to version 1.13.0:
+  * bug`452` Restore prompts while retaining support for suppressing
+    prompts.
+  * bug`447` Avoid requests-toolbelt to 0.9.0 to prevent attempting to
+    use openssl when it isn't available.
+  * :feature:`427` Add disable_progress_bar option to disable tqdm.
+  * :feature:`426` Allow defining an empty username and password in
+    .pypirc.
+  * bug`441` Only install pyblake2 if needed.
+  * bug`444` Use io.StringIO instead of StringIO.
+  * bug`436` Use modern Python language features.
+  * :support:`439` Refactor tox env and travis config.
+  * bug`435` Specify python_requires in setup.py
+  * bug`432` Use https URLs everywhere.
+  * bug`428` Fix --skip-existing for Nexus Repos.
+  * :feature:`419` Support keyring.get_credential.
+  * :feature:`418` Support keyring.get_username_and_password.
+  * bug`421` Remove unnecessary usage of readme_render.markdown.
+  * :feature:" Add Python 3.7 to classifiers.
+  * bug`412` Don't crash if there's no package description.
+  * bug`408` Fix keyring support.
+
+-------------------------------------------------------------------
+Sat Feb  9 19:52:43 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add fix-keyring-support.patch fixing
+  gh#pypa/twine#408
+
+-------------------------------------------------------------------
+Sat Feb  9 13:45:55 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Deduplicate installed files
+
+-------------------------------------------------------------------
+Fri Jan  4 14:54:32 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to version 1.12.1
+  - bug`404` Fix regression with upload exit code
+
+- update to version 1.12.0
+  - feature`395 major` Add twine check command to check long description
+  - feature`392 major` Drop support for Python 3.3
+  - feature`363` Empower --skip-existing for Artifactory repositories
+  - bug`367` Avoid MD5 when Python is compiled in FIPS mode
+
+- Fix source URL
+- add python-readme_renderer dependency
+- BuildRequire python2-pyblake2 for successful testing
+
+-------------------------------------------------------------------
+Mon May 21 09:30:29 UTC 2018 - tchvatal@suse.com
+
+- Recommend the pyblake2 on python2 as it is included in py3.6+
+  but was never in py2
+
+-------------------------------------------------------------------
+Mon May 21 09:23:53 UTC 2018 - tchvatal@suse.com
+
+- Switch to github archive to have test fixtures
+- Enable tests
+
+-------------------------------------------------------------------
+Sat May 19 09:44:51 UTC 2018 - hpj@urpla.net
+
+- adjust requirements
+
+-------------------------------------------------------------------
+Fri May 18 12:16:54 UTC 2018 - hpj@urpla.net
+
+- update to version 1.11.0
+  - see https://github.com/pypa/twine/blob/master/docs/changelog.rst
+
+-------------------------------------------------------------------
+Thu May 17 08:26:25 UTC 2018 - tchvatal@suse.com
+
+- Format with spec-cleaner and reduce the license conditions
+
+-------------------------------------------------------------------
+Thu Jul  6 13:02:30 UTC 2017 - sebix+novell.com@sebix.at
+
+- fix source url
+
+-------------------------------------------------------------------
+Wed Jul  5 18:50:28 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to version 1.9.1
+- update specfile to singlespec
+
+-------------------------------------------------------------------
+Wed Jan 18 11:48:32 UTC 2017 - michael@stroeder.com
+
+- Update to version 1.8.1
+- requires python-requests-toolbelt>=0.4.0
+
+-------------------------------------------------------------------
+Fri Sep 25 11:27:26 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.6.1
+  * bug:`130` Fix signing support for uploads
+- Implement update-alternatives
+
+-------------------------------------------------------------------
+Wed Jul 16 09:57:47 UTC 2014 - toddrme2178@gmail.com
+
+- BuildRequires: python-setuptools
+- Add executable
+
+-------------------------------------------------------------------
+Tue Feb  4 10:07:31 UTC 2014 - speilicke@suse.com
+
+- Initial version
+

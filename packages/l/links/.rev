@@ -1,0 +1,351 @@
+<revisionlist>
+  <revision rev="1" vrev="36">
+    <srcmd5>b5d5ebb8e4142068961de9735fbd634c</srcmd5>
+    <version>2.1pre18</version>
+    <time>1168903436</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="51">
+    <srcmd5>f3d8a1afa916c9d2abd896e377fac2cc</srcmd5>
+    <version>2.1pre18</version>
+    <time>1170981342</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7438acbab25d3ce2e38b38594b34b8ed</srcmd5>
+    <version>2.1pre29</version>
+    <time>1186758650</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>059020dac60e90bd61db052bab2e3b76</srcmd5>
+    <version>2.1pre30</version>
+    <time>1187991639</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="86">
+    <srcmd5>40da9704e4d6f6e30953b566236199f3</srcmd5>
+    <version>2.1pre30</version>
+    <time>1212395521</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="138">
+    <srcmd5>40da9704e4d6f6e30953b566236199f3</srcmd5>
+    <version>2.1pre30</version>
+    <time>1212395521</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="139">
+    <srcmd5>48569f670fb8b4e7d5a17e10c12a40f8</srcmd5>
+    <version>2.1pre30</version>
+    <time>1245366699</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e2bbeee0c09e16f8c0206a4433fcc93e</srcmd5>
+    <version>2.2</version>
+    <time>1250514910</time>
+    <user>autobuild</user>
+    <comment>Copy from network/links based on submit request 17999 from user azouhr
+</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e2bbeee0c09e16f8c0206a4433fcc93e</srcmd5>
+    <version>2.2</version>
+    <time>1250514910</time>
+    <user>autobuild</user>
+    <comment>Copy from network/links based on submit request 17999 from user azouhr
+</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>e9f24f625af54a0e41c59ae245aadfb0</srcmd5>
+    <version>2.2</version>
+    <time>1268924826</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>e9f24f625af54a0e41c59ae245aadfb0</srcmd5>
+    <version>2.2</version>
+    <time>1278667364</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>e9f24f625af54a0e41c59ae245aadfb0</srcmd5>
+    <version>2.2</version>
+    <time>1278678594</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>36214c8294d6c9612d7192002c437347</srcmd5>
+    <version>2.2</version>
+    <time>1285281614</time>
+    <user>autobuild</user>
+    <comment>Copy from network/links based on submit request 48803 from user prusnak
+</comment>
+    <requestid>48803</requestid>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>36214c8294d6c9612d7192002c437347</srcmd5>
+    <version>2.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>36214c8294d6c9612d7192002c437347</srcmd5>
+    <version>2.2</version>
+    <time>1319182154</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>058c9cf1b3e361344a143168625094e2</srcmd5>
+    <version>2.2</version>
+    <time>1323341451</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 95078 from coolo)</comment>
+    <requestid>95530</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ffd398b1ad34108203315b5363ec9429</srcmd5>
+    <version>2.5</version>
+    <time>1326796437</time>
+    <user>coolo</user>
+    <comment>- updated to 2.5
+  * obsoletes libpng15.patch
+  * Support lzma compression
+  * Implemented forward history
+  * Removed save bookmarks menu option, bookmarks are saved always when
+    closing bookmark window
+  * Recognise tgz extension
+  * Do not send '#' in the url when downloading
+  * etc, see ChangeLog
+
+- build also for libpng15
+  * libpng15.patch (forwarded request 100223 from pgajdos)</comment>
+    <requestid>100275</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f6dd6f92ec0c10657397ce584dbb9ce1</srcmd5>
+    <version>2.6</version>
+    <time>1337955401</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121878</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>f6dd6f92ec0c10657397ce584dbb9ce1</srcmd5>
+    <version>2.6</version>
+    <time>1340183666</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>f6dd6f92ec0c10657397ce584dbb9ce1</srcmd5>
+    <version>2.6</version>
+    <time>1359109398</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>a96ccaa118b61a8fbc06a9fbee366d36</srcmd5>
+    <version>2.6</version>
+    <time>1361821050</time>
+    <user>coolo</user>
+    <comment>** you may want this for 12.3 ***
+
+- Extend configure.diff so _GNU_SOURCE and largefile Support
+ is tested properly
+- expand inks-nosslcomp.patch to fix other misuses of the openssl
+  API including TLSv1 being disabled (with the wrong API too)
+- build with SSL_NO_INTERN so we can escape ABI breaks in future 
+  openSSL versions
+
+- links was used to demonstrate bnc#803004 
+   &quot;openSSL 1.0.1d breaks most, if not all, SSL connections&quot; 
+It also turns out that links is not doing SSL stuff quite right..
+HTTPS clients must not negotiate SSL compression which is compromised
+since CVE-2012-4929 (aka. the CRIME attack) and should not even
+try to use SSLv2 either which is broken since a very long time
+(links-nosslcomp.patch) (forwarded request 155072 from elvigia)</comment>
+    <requestid>156242</requestid>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>3bb369e7c186ed424f4d23b424a2b083</srcmd5>
+    <version>2.6</version>
+    <time>1375177510</time>
+    <user>coolo</user>
+    <comment>- Silly me tried to connect to a HTTPS host that uses 
+  Server Name Indication (SNI) expecting it
+  to do something sane, of course, it did not work.
+  links-sni.patch: fix that. (forwarded request 184566 from elvigia)</comment>
+    <requestid>184577</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f5a4fc4d252ecebdf45d786e4d444ecb</srcmd5>
+    <version>2.7</version>
+    <time>1377332135</time>
+    <user>scarabeus_factory</user>
+    <comment>- links-no-date-time.patch: Supress usage of __DATE__ and 
+  __TIME__ macros  build-compare should be happy now.
+
+- version 2.7
+* support ipv6
+* Fix memory leak in ftp
+* support HTTPS proxy
+- Update spec file URL section.
+- Fix buildRequires, add support for lzma and bzip2, just use
+  pkgconfig(x11) instead of xorg-x11-devel (forwarded request 196040 from elvigia)</comment>
+    <requestid>196138</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>f5a4fc4d252ecebdf45d786e4d444ecb</srcmd5>
+    <version>2.7</version>
+    <time>1379663164</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ce814dfc4d8c400281e8c94a22ca6c3e</srcmd5>
+    <version>2.8</version>
+    <time>1380809109</time>
+    <user>scarabeus_factory</user>
+    <comment>version 2.8 (forwarded request 201972 from AndreasStieger)</comment>
+    <requestid>202011</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>ce814dfc4d8c400281e8c94a22ca6c3e</srcmd5>
+    <version>2.8</version>
+    <time>1409301798</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a55ebb4213687244a47b5142dcb4bb51</srcmd5>
+    <version>2.9</version>
+    <time>1419896963</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 2.9:
+  * Work around some screen-corruption bugs in the OpenVMS terminal driver
+  * Support mouse wheel in framebuffer (unfortunatelly we can't support it
+    in text mode because when we instruct gpm to send us the wheel event,
+     gpm stops drawing the cursor when the mouse is moved).
+  * Pring &quot;^&quot; and &quot;_&quot; for &lt;sub&gt; and &lt;sup&gt; tags in text mode
+  * An option to fake Firefox in the HTTP header. It modifies User-Agent and
+    several other options to be more Firefox-like. This option is also
+    automatically turned on when &quot;Connect only via proxies or Socks (useful
+    for tor)&quot; is selected. It makes it safer to use Links with tor.
+  * Fixed quadratic complexity in the text renderer when exteremely long
+    lines were used
+  * Do not print the character 0x9b if the display character set doesn't
+    have it, because it is interpreted as a control character on the Linux
+    console
+  * An option to break long lines in &lt;pre&gt; sections
+  * Consume less memory when 8-bit gamma correction is used
+  * Updated the list of top level domains
+  * Use malloc_trim to return unused memory to the system
+  * Support RFC5987 for filenames
+  * Support StaticColor in the X-window driver
+  * Fix crash on OS/2 if image is wider than 10921 pixels
+  * Use clock_gettime if available
+  * The ability to set screen margins for text mode and framebuffer
+  * Fix palette corruption on framebuffer when links instance was terminated
+    while it was not active
+  * Improve the gif decoder to accept more images
+  * Increase the amount of data read from the socket, it improves speed when
+    loading big images
+  * Accept &quot;text/xml&quot; as html type</comment>
+    <requestid>266437</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0257663b4f8cc36d878cf023e51f1a54</srcmd5>
+    <version>2.10</version>
+    <time>1437980895</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>317844</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>63ade483933dc9694bdbf579bebf6bb8</srcmd5>
+    <version>2.12</version>
+    <time>1443684473</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>332784</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c2e0a69e09fc29cb9b7bdefc4b352202</srcmd5>
+    <version>2.13</version>
+    <time>1471345373</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417250</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d8d714cda6580cc507e5af699b947b72</srcmd5>
+    <version>2.14</version>
+    <time>1497949183</time>
+    <user>dimstar_suse</user>
+    <comment>links 2.14
+bsc#1022469
+bsc#1022468</comment>
+    <requestid>504005</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>65fd616dbefa899cb647522ee97c9be9</srcmd5>
+    <version>2.14</version>
+    <time>1498995472</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507348</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>eafaf4b866f49c42a8ee362a2bf07edd</srcmd5>
+    <version>2.15</version>
+    <time>1522062904</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590885</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>6dc9c19ecda4797e80e6f56ddb42c9e5</srcmd5>
+    <version>2.16</version>
+    <time>1530866389</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619938</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b33ef3c6ccd2db2a6d624c511f2d0d86</srcmd5>
+    <version>2.17</version>
+    <time>1537787606</time>
+    <user>dimstar_suse</user>
+    <comment>links 2.17</comment>
+    <requestid>637162</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8c5ad1a3eae260851571068f10a91104</srcmd5>
+    <version>2.18</version>
+    <time>1548064777</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666914</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>ed0a35a42e1042b1b712e27fa84bd92a</srcmd5>
+    <version>2.19</version>
+    <time>1554712584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691862</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>981e6d82de9f33af885fd383a6077262</srcmd5>
+    <version>2.20.1</version>
+    <time>1568025346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729195</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="kexec-tools" project="openSUSE:Factory">
+  <title>Tools for fast kernel loading</title>
+  <description>Kexec is a user space utility for loading another kernel and asking the
+currently running kernel to do something with it. A currently running
+kernel may be asked to start the loaded kernel on reboot, or to start
+the loaded kernel after it panics.</description>
+  <devel project="Kernel:kdump" package="kexec-tools"/>
+</package>

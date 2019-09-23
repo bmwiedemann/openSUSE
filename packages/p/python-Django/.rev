@@ -1,0 +1,625 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb90274edb729322cedb2dff4f10b033</srcmd5>
+    <version>1.6</version>
+    <time>1386161323</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>207554</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4c35474ba95c693f934f4d2e5afcc2f9</srcmd5>
+    <version>1.6.1</version>
+    <time>1391540237</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.6.1:
+  - Most bug fixes are minor; you can find a complete list in the Django 1.6.1
+    release notes. (forwarded request 220826 from Nijel)</comment>
+    <requestid>220835</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>68b3c6150ee9b214f5a469c22c495b96</srcmd5>
+    <version>1.6.2</version>
+    <time>1393394111</time>
+    <user>coolo</user>
+    <comment>- Fix update-alternatives
+
+- Update to version 1.6.2:
+  + Prevented the base geometry object of a prepared geometry to be garbage
+    collected, which could lead to crash Django (#21662).
+  + Fixed a crash when executing the changepassword command when the user
+    object representation contained non-ASCII characters (#21627).
+  + The collectstatic command will raise an error rather than default to
+    using the current working directory if STATIC_ROOT is not set. Combined
+    with the --clear option, the previous behavior could wipe anything
+    below the current working directory (#21581).
+  + Fixed mail encoding on Python 3.3.3+ (#21093).
+  + Fixed an issue where when settings.DATABASES['default']['AUTOCOMMIT'] = False,
+    the connection wasn’t in autocommit mode but Django pretended it was.
+  + Fixed a regression in multiple-table inheritance exclude() queries (#21787).
+  + Added missing items to django.utils.timezone.__all__ (#21880).
+  + Fixed a field misalignment issue with select_related() and model inheritance (#21413).
+  + Fixed join promotion for negated AND conditions (#21748).
+  + Oracle database introspection now works with boolean and float fields (#19884).
+  + Fixed an issue where lazy objects weren’t actually marked as safe when
+    passed through mark_safe() and could end up being double-escaped (#21882).</comment>
+    <requestid>222292</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0aff4eb6903bc1601362d246a8edab33</srcmd5>
+    <version>1.6.5</version>
+    <time>1402996986</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237595</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b305c2a4b83d4eee7f04aba8093897ad</srcmd5>
+    <version>1.6.5</version>
+    <time>1407236416</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243453</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>b305c2a4b83d4eee7f04aba8093897ad</srcmd5>
+    <version>1.6.5</version>
+    <time>1409302786</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8ad9a461aa37e9ff1185cd3d9decc0f5</srcmd5>
+    <version>1.7</version>
+    <time>1412851943</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254796</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>659cd4d745e8299564382cf0cb65675f</srcmd5>
+    <version>1.7.1</version>
+    <time>1414218797</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258134</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6fc1b5c160aede9a9a58c1baedef75ad</srcmd5>
+    <version>1.7.2</version>
+    <time>1420754592</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280313</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>57afeb9e406d09b2a99b41f9321ae588</srcmd5>
+    <version>1.7.2</version>
+    <time>1421052599</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280773</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>73960a91e233e7d5659007e7156a891a</srcmd5>
+    <version>1.7.3</version>
+    <time>1421232339</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281083</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7ee8f334749f3acbea6667ba0296dca8</srcmd5>
+    <version>1.7.4</version>
+    <time>1422790209</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283565</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c64f6cb9ed9cc561a6c50ae62e23b986</srcmd5>
+    <version>1.7.5</version>
+    <time>1425217637</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288110</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0e87d0ade26928356f64bcc8be7582be</srcmd5>
+    <version>1.7.6</version>
+    <time>1426174739</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290359</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>14af1d0132bbf9fc31982456f606d278</srcmd5>
+    <version>1.7.7</version>
+    <time>1427274042</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292422</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>39499ed04385a1a99e676077e00a30b7</srcmd5>
+    <version>1.8.2</version>
+    <time>1433313234</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>309740</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9c15e72588d7e3579d13ab2ee1cefe9c</srcmd5>
+    <version>1.8.3</version>
+    <time>1436888624</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315852</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>851a998a474e3ea42bc072dc3841c6ac</srcmd5>
+    <version>1.8.4</version>
+    <time>1443068119</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>332549</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>6dd3f5d303c4e8fb5f853991a3e6d059</srcmd5>
+    <version>1.8.4</version>
+    <time>1447234292</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343323</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2548bfc656191b9e8b746093ab2802c1</srcmd5>
+    <version>1.8.6</version>
+    <time>1448186402</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>343787</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a70c132b4a80792c0004f76846d256cb</srcmd5>
+    <version>1.9</version>
+    <time>1449687042</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347292</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9e93f19a17303ea2f03a0fc0bc67b771</srcmd5>
+    <version>1.9.2</version>
+    <time>1455190359</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357581</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>754f6de079933497d3472b55f81b8d7d</srcmd5>
+    <version>1.9.6</version>
+    <time>1462696833</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393390</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>96c6f9a4bf9c2f50dafcf97708a0083e</srcmd5>
+    <version>1.9.9</version>
+    <time>1471008984</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417963</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>ad9d46d05bef9a6e261b27641bf377f2</srcmd5>
+    <version>1.9.9</version>
+    <time>1478377377</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438355</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>92efe32d72e2ebf37ec5b96fb5d979ad</srcmd5>
+    <version>1.9.12</version>
+    <time>1481153305</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443785</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>23939546f0f962d366a2b4c4559a75a5</srcmd5>
+    <version>1.10.5</version>
+    <time>1486305966</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453635</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a99a1a3702c49337c213c960ee1d02cc</srcmd5>
+    <version>1.10.6</version>
+    <time>1489759533</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479913</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5079f3c0d9d7d9fe134a05a4f4da2fea</srcmd5>
+    <version>1.10.7</version>
+    <time>1492618043</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>485687</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>25ca2bb86caf7110749a17f6e5781a79</srcmd5>
+    <version>1.10.7</version>
+    <time>1494345590</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493461</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>452810af4495ce215d68066f3e864302</srcmd5>
+    <version>1.10.7</version>
+    <time>1501406399</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509479</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>01745644cef38941882283de6309b295</srcmd5>
+    <version>1.11.4</version>
+    <time>1502707098</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516162</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>77f09f2d90dc2b0d80b3ddd76cdc40e3</srcmd5>
+    <version>1.11.5</version>
+    <time>1506340445</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527627</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>530befb87d8b1ee01b85ca51bb221174</srcmd5>
+    <version>1.11.8</version>
+    <time>1513342773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556390</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1585c85dc51e4f8dad39b3b2ce725ffe</srcmd5>
+    <version>2.0</version>
+    <time>1516358771</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558342</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>17f059885e339b56a8f3a6d246009696</srcmd5>
+    <version>2.0.2</version>
+    <time>1518095396</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.2 (bsc#1077714, CVE-2018-6188):
+  * Fixed #28883 -- Doc'd that the uuid URL path converter matches lowercase only letters.
+  * Fixed a GeoIP2 test failure with the latest GeoIP2 database.
+  * Added stub release notes for 2.0.1.
+  * Bumped version for 2.0.2 release.
+  * Fixed location of spatialite_source label.
+  * Fixed #28958 -- Fixed admin changelist crash when using a query expression in the page's ordering.
+  * Fixed #28231 -- Doc'd that QuerySet.bulk_create() casts objs to a list.
+  * Fixed #29032 -- Fixed an example of using expressions in QuerySet.values().
+  * Disambiguated &quot;settings&quot; in SpatiaLite note.
+  * Fixed typo in docs/topics/testing/advanced.txt.
+  * Post-release version bump.
+  * Refs #25604 -- Removed docs for makemigrations --exit.
+  * Fixed #29002 -- Corrected cached template loader docs about when it's automatically enabled.
+  * Fixed typo in TemplateCommand argument help text.
+  * Added stub release notes for 1.11.9.
+  * Fixed #28915 -- Prevented SQLite from truncating trailing zeros in the fractional part of DecimalField.
+  * Refs #29086 -- Doc'd how to detect bytestring mistakes.
+  * Fixed #28886 -- Updated prefix for example django.contrib.auth.urls URLs.
+  * Fixed #29081 -- Clarified comments in QuerySet.select_related() example.
+  * Refs #27985 -- Reallowed using __exact=None as an alias for __isnull=True if a custom lookup class with lookup_name != None is registered as the exact lookup.
+  * Refs #28876 -- Fixed incorrect class-based model index name generation for models with quoted db_table.
+  * Removed 'development' word in contributing docs
+  * Fixed #29055 -- Doc'd that escapejs doesn't make template literals safe.
+  * Fixed #29016 -- Fixed incorrect foreign key nullification on related instance deletion.
+  * Fixed grammar in docs/releases/2.0.txt.
+  * Fixed #29071 -- Fixed contrib.auth.authenticate() crash if a backend doesn't accept a request but a later one does.
+  * Fixed #28944 -- Fixed crash when chaining values()/values_list() after QuerySet.select_for_update(of=()).
+  * Fixed #29091 -- Fixed makemigrations crash if migrations directory doesn't have __init__.py.
+  * Fixed #28898 -- Corrected admin check to allow a OneToOneField in ModelAdmin.autocomplete_fields.</comment>
+    <requestid>573722</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>47a5e0d1f06e233b4c2932b66c0838c3</srcmd5>
+    <version>2.0.3</version>
+    <time>1522057924</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.3 (bsc#1083305, bsc#1083304, CVE-2018-7536, CVE-2018-7537):
+  * Fixed #29108 -- Fixed crash in aggregation of distinct+ordered+sliced querysets.
+  * Added CVE-2018-6188 to the security release archive.
+  * Post-release version bump.
+  * Updated translations from Transifex
+  * Added stub release notes for security releases.
+  * Fixed incorrect regex in re_path() example.
+  * Fixed #29125 -- Made Q.deconstruct() deterministic with multiple keyword arguments.
+  * Fixed #29126 -- Doc'd the behavior of QuerySet.update_or_create() with manually specified pks.
+  * Used a CSS positioning in tutorial 6 that doesn't differ across browsers.
+  * Fixed typo in bulk_create() documentation.
+  * Fixed #29176 -- Fixed AbstractBaseUser.normalize_username() crash if username isn't a string.
+  * Removed blank lines per isort 4.3.0.
+  * Added stub release notes for 2.0.3.
+  * Fixed CVE-2018-7536 -- Fixed catastrophic backtracking in urlize and urlizetrunc template filters.
+  * Fixed #29172 -- Fixed crash with Window expression in a subquery.
+  * Fixed #29166 -- Fixed crash in When() expression with a list argument.
+  * Fixed #24270 -- Doc'd that django_bash_completion is only in the source distribution.
+  * Improved clarity of docs/topics/install.txt.
+  * Refs #29125 -- Made Q.deconstruct() omit 'query_utils' in the path and _connector='AND' since it's a default value.
+  * Fixed CVE-2018-7537 -- Fixed catastrophic backtracking in django.utils.text.Truncator.
+  * Bumped version for 2.0.3 release.
+  * Corrected doc'd type of some parameters from string to str.
+  * Fixed #29146 -- Readded ^ and $ inadvertently removed from re_path() examples.
+  * Fixed #29107 -- Doc'd that ModelForm doesn't actually inherit from Form.
+  * Switched test requirement to new psycopg2-binary package.
+  * Added backticks around obj argument in admin docs.
+  * Fixed typo in docs/topics/forms/media.txt.
+  * Fixed #29109 -- Fixed the admin time picker widget for the Thai locale.
+  * Fixed #29118 -- Fixed crash with QuerySet.order_by(Exists(...)).</comment>
+    <requestid>588436</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>667b104ebd98a3968766c4fdd98969f4</srcmd5>
+    <version>2.0.4</version>
+    <time>1523447242</time>
+    <user>maxlin_factory</user>
+    <comment>- update to version 2.0.4:
+  * Fixed #29265 -- Removed the suggestion to hardcode static URLs.
+  * Fixed #29206 -- Fixed PasswordResetConfirmView crash when the URL contains a non-UUID where one is expected.
+  * Fixed #29195 -- Fixed Exists.output_field resolution on single-valued queries.
+  * Fixed links to Sphinx docs.
+  * Fixed typo in docs/releases/2.0.4.txt.
+  * Clarified docs about ISO 8601 week numbering.
+  * Fixed #29116 -- Fixed OpenLayersWidget deserialization ignoring the widget map's SRID.
+  * Added CVE-2018-7536,7 to the security release archive.
+  * Fixed #29221 -- Corrected admin's autocomplete widget to add a space after custom classes.
+  * Fixed #29273 -- Prevented initial selection of empty choice in multiple choice widgets.
+  * Added a pagination example to ListView docs.
+  * Fixed #28514 -- Clarifed docs about idempotence of RelatedManager.add().
+  * isorted import statements in tutorial example.
+  * Fixed #29192 -- Corrected docs regarding overriding fields from abstract base classes.
+  * Refs #11278 -- Clarified RelatedManager differences between reverse one-to-many and many-to-many relations.
+  * Added stub release notes for 1.11.12.
+  * Fixed #29165 -- Clarified how to load initial data with migrations.
+  * Fixed #29213 -- Fixed autocomplete widget's translations for zh-hans/zh-hant.
+  * Reverted &quot;Expanded docs for AbstractBaseUser.has_usable_password().&quot;
+  * Fixed typo in docs/releases/2.0.4/1.11.12.txt.
+  * Bumped version for 2.0.4 release.
+  * Fixed #29250 -- Added 'django_version' context to startapp/project docs.
+  * Added release date for 2.0.4 and 1.11.12.
+  * Post-release version bump.
+  * Clarified a sentence in docs/topics/i18n/translation.txt.
+  * Fixed #29229 -- Fixed column mismatch crash when combining two annotated values_list() querysets with union(), difference(), or intersection().
+  * Added stub release notes for 2.0.4.
+  * Fixed a couple mistakes in docs/ref/forms/widgets.txt.
+  * Fixed #28655 -- Added more examples for customizing widgets in a form.</comment>
+    <requestid>594522</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>76732f609caa6fc49a2c0fd2257d50c1</srcmd5>
+    <version>2.0.7</version>
+    <time>1531470151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622355</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>faa0879eb98fa341e42db32e308147fc</srcmd5>
+    <version>2.1</version>
+    <time>1533732876</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.1
+- move bash completion to right location
+- for full chanfges please see https://docs.djangoproject.com/en/2.1/releases/2.1/
+ * Dropped support for MySQL 5.5
+ * Dropped support for PostgreSQL 9.3
+ * Support for SpatiaLite 4.0 is removed
+ * Support for SQLite &amp;lt; 3.7.15 is removed. (forwarded request 628038 from mimi_vx)</comment>
+    <requestid>628043</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>6139114eb2dd1a27c0c2296d649a8537</srcmd5>
+    <version>2.1</version>
+    <time>1534099928</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable testsuite</comment>
+    <requestid>628114</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>6218f11a4dacab7778776f72dcf1442c</srcmd5>
+    <version>2.1</version>
+    <time>1535123063</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply patch to fix urlencode nonstring values:
+  * django-urlencode.patch</comment>
+    <requestid>629188</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>ebf744cbfe03a85a211dc0e24632e6c9</srcmd5>
+    <version>2.1.1</version>
+    <time>1536148178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>633261</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b5d03b8341a924f8bf254cbdfd2daff3</srcmd5>
+    <version>2.1.2</version>
+    <time>1539250996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639976</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>1428d8b590172b9d42dbbb96675442d6</srcmd5>
+    <version>2.1.2</version>
+    <time>1541746251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646024</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>baf02b38deceb7a220ba7098fb523a5e</srcmd5>
+    <version>2.1.4</version>
+    <time>1545222244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656848</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>c7b4c5fc25e8884e9e14587958a4ea58</srcmd5>
+    <version>2.1.5</version>
+    <time>1547540003</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.5 (CVE-2019-3498, bsc#1120932):
+  * CVE-2019-3498: Content spoofing possibility in the default 404 page
+  *  Fixed compatibility with mysqlclient 1.3.14 (#30013).
+  *  Fixed a schema corruption issue on SQLite 3.26+. You might have to drop
+    and rebuild your SQLite database if you applied a migration while using
+    an older version of Django with SQLite 3.26 or later (#29182).
+  * Prevented SQLite schema alterations while foreign key checks are enabled
+    to avoid the possibility of schema corruption (#30023).
+  * Fixed a regression in Django 2.1.4 (which enabled keep-alive connections)
+    where request body data isn’t properly consumed for such
+    connections (#30015).
+  * Fixed a regression in Django 2.1.4 where
+    InlineModelAdmin.has_change_permission() is incorrectly called with
+    a non-None obj argument during an object add (#30050).</comment>
+    <requestid>664341</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>5410e88e2d2fc70a53cc1e97e20dddc3</srcmd5>
+    <version>2.1.7</version>
+    <time>1550149969</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.7 (CVE-2019-6975, bsc#1124991):
+  * Corrected packaging error from 2.1.6
+  * Memory exhaustion in django.utils.numberformat.format()
+    If django.utils.numberformat.format() – used by contrib.admin as well
+    as the the floatformat, filesizeformat, and intcomma templates
+    filters – received a Decimal with a large number of digits or a
+    large exponent, it could lead to significant memory usage
+    due to a call to '{:f}'.format().
+    To avoid this, decimals with more than 200 digits are now formatted
+    using scientific notation.
+  * Made the obj argument of InlineModelAdmin.has_add_permission() optional
+    to restore backwards compatibility with third-party code that doesn’t
+    provide it</comment>
+    <requestid>673591</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>b1f3fe19a3d89e2e1bca5391f78acd64</srcmd5>
+    <version>2.1.7</version>
+    <time>1553435893</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build with PyYAML &gt;5:
+  * pyyaml5.patch</comment>
+    <requestid>687916</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>36ff4296f497fcf87bbd031cc8fc6b19</srcmd5>
+    <version>2.2</version>
+    <time>1555691806</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693732</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>00e2a84b1b92195a7d27a4b3d9a5915c</srcmd5>
+    <version>2.2.1</version>
+    <time>1557321347</time>
+    <user>dimstar_suse</user>
+    <comment>- Update keyring file
+
+- Update to 2.2.1
+  * Fixed a regression in Django 2.1 that caused the incorrect quoting
+    of database user password when using dbshell on Oracle (#30307).
+  * Added compatibility for psycopg2 2.8 (#30331).
+  * Fixed a regression in Django 2.2 that caused a crash when loading
+    the template for the technical 500 debug page (#30324).
+  * Fixed crash of ordering argument in ArrayAgg and StringAgg when it
+    contains an expression with params (#30332).
+  * Fixed a regression in Django 2.2 that caused a single instance
+    fast-delete to not set the primary key to None (#30330).
+  * Prevented makemigrations from generating infinite migrations for
+    check constraints and partial indexes when condition contains a
+    range object (#30350).  Reverted an optimization in Django 2.2
+    (#29725) that caused the inconsistent behavior of count() and
+    exists() on a reverse many-to-many relationship with a custom
+    manager (#30325).
+  * Fixed a regression in Django 2.2 where Paginator crashes if
+    object_list is a queryset ordered or aggregated over a nested
+    JSONField key transform (#30335).
+  * Fixed a regression in Django 2.2 where IntegerField validation of
+    database limits crashes if limit_value attribute in a custom
+    validator is callable (#30328).
+  * Fixed a regression in Django 2.2 where SearchVector generates SQL
+    that is not indexable (#30385).
+  * Fixed a regression in Django 2.2 that caused an exception to be
+    raised when a custom error handler could not be imported (#30318).
+  * Relaxed the system check added in Django 2.2 for the admin app’s
+    dependencies to reallow use of SessionMiddleware subclasses,</comment>
+    <requestid>701222</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>ac9ba44e1727984842af8f0d2d763edc</srcmd5>
+    <version>2.2.2</version>
+    <time>1559727495</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.2
+ * Fixes CVE-2019-12308: AdminURLFieldWidget XSS (bsc#1136468)
+ * Fixes CVE-2019-11358: Prototype pollution</comment>
+    <requestid>707145</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>b44b3f9a3f5cec10ea9daf6ee5953df8</srcmd5>
+    <version>2.2.3</version>
+    <time>1563701544</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.3:
+  * CVE-2019-12781 (bsc#1139945): Incorrect HTTP detection with reverse-proxy connecting via HTTPS¶</comment>
+    <requestid>716616</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>e9289f91d3d066a731bf1e2ec74d3590</srcmd5>
+    <version>2.2.4</version>
+    <time>1565178964</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.4:
+  * CVE-2019-14232 CVE-2019-14233 CVE-2019-14234 CVE-2019-14235
+    bsc#1142883 bsc#1142885 bsc#1142882 bsc#1142880
+  * Fixed a regression in Django 2.2 when ordering a QuerySet.union(), intersection(), or difference() by a field type present more than once results in the wrong ordering being used (#30628).
+  * Fixed a migration crash on PostgreSQL when adding a check constraint with a contains lookup on DateRangeField or DateTimeRangeField, if the right hand side of an expression is the same type (#30621).
+  * Fixed a regression in Django 2.2 where auto-reloader crashes if a file path contains nulls characters ('\x00') (#30506).
+  * Fixed a regression in Django 2.2 where auto-reloader crashes if a translation directory cannot be resolved (#30647).</comment>
+    <requestid>720189</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>240bd5c2cbc30b6ae1750a9431c5ec3f</srcmd5>
+    <version>2.2.5</version>
+    <time>1569233882</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.5:
+  * Relaxed the system check added in Django 2.2 for models to reallow use of the same db_table by multiple models when database routers are installed (#30673).
+  * Fixed crash of KeyTransform() for JSONField and HStoreField when using on expressions with params (#30672).
+  * Fixed a regression in Django 2.2 where ModelAdmin.list_filter choices to foreign objects don’t respect a model’s Meta.ordering (#30449).
+  * Fixed a race condition in loading URLconf module that could cause a crash of auto-reloader on Python 3.5 and below (#30500).</comment>
+    <requestid>731244</requestid>
+  </revision>
+</revisionlist>

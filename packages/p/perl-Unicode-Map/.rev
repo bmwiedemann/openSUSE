@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9cd35762a45961fd3f3a36bdcc39fb4b</srcmd5>
+    <version>0.112</version>
+    <time>1308061386</time>
+    <user>saschpe</user>
+    <comment>new dep</comment>
+    <requestid>72851</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>305babe13d657e85cede5ee7da8c8ab0</srcmd5>
+    <version>0.112</version>
+    <time>1308061405</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72851
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>305babe13d657e85cede5ee7da8c8ab0</srcmd5>
+    <version>0.112</version>
+    <time>1319182320</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>d0b2c62c1a85f0f6b9155c99b7185f11</srcmd5>
+    <version>0.112</version>
+    <time>1323193759</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>d0b2c62c1a85f0f6b9155c99b7185f11</srcmd5>
+    <version>0.112</version>
+    <time>1340183948</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>d0b2c62c1a85f0f6b9155c99b7185f11</srcmd5>
+    <version>0.112</version>
+    <time>1359109840</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>d0b2c62c1a85f0f6b9155c99b7185f11</srcmd5>
+    <version>0.112</version>
+    <time>1379663909</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>d0b2c62c1a85f0f6b9155c99b7185f11</srcmd5>
+    <version>0.112</version>
+    <time>1409302558</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

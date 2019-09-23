@@ -1,0 +1,13 @@
+[Unit]
+Description=Setup devices for cio_ignore
+DefaultDependencies=no
+Before=local-fs.target
+ConditionKernelCommandLine=cio_ignore
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/lib/systemd/scripts/setup_cio_ignore.sh
+
+[Install]
+WantedBy=sysinit.target

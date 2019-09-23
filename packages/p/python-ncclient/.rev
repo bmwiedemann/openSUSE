@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69e5f0f955a0449d6e7f5d8918ae20c1</srcmd5>
+    <version>0.3.2</version>
+    <time>1380609177</time>
+    <user>coolo</user>
+    <comment>New Package needed for Nexus / OpenStack Neutron integration (also needed for 13.1)</comment>
+    <requestid>201089</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>69e5f0f955a0449d6e7f5d8918ae20c1</srcmd5>
+    <version>0.3.2</version>
+    <time>1409302922</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>bca2970088ae521e6b0924e61ff62a00</srcmd5>
+    <version>0.3.2</version>
+    <time>1441173239</time>
+    <user>coolo</user>
+    <comment>- Unify spec file. Use fedora compatible files macros</comment>
+    <requestid>328093</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a340d54037ed8aee90ad1d6f2dc86466</srcmd5>
+    <version>0.4.7</version>
+    <time>1454921277</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to version from pypi
+  This is the version used by OpenStack networking-cisco
+- update to 0.4.7:
+  * Add support for netconf 1.1
+  * Fix multiple RPC error handling
+  * Add support for cancel-commit and persist param
+  * Add more examples
+  * Add Huawei device support
+  * Add cli command support for hpcomware v7 devices
+  * Add H3C support, Support H3C CLI,Action,Get_bulk,Save,Rollback,etc.
+  * Add alcatel lucent support
+  * Rewrite multiple error handling
+  * Add coveralls support, with shield in README.md
+  * Set severity level to higher when multiple
+  * Simplify logging and multi-error reporting
+  * Keep stacktrace of errors
+  * Check for known hosts on hostkey_verify only
+  * Add check for device sending back null error_text
+  * Fix RPC.raise_mode
+  * Specifying hostkey_verify=False should not load_known_hosts
+  * Check the correct field on rpc-error element
+  * Nexus exec_command operation
+  * Allow specifying multiple cmd elements in Cisco Nexus
+  * Update rpc for nested rpc-errors
+  * Prevent race condition in threading
+  * Prevent hanging in session close
+  * Support for paramiko ProxyCommand via ~/.ssh/config parsing
+  * Add Juniper-specific commit operations
+  * Add Huawei devices support
+  * Tests/Travis support</comment>
+    <requestid>357896</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>caae7d04b99c8adb95c0df8746ae47af</srcmd5>
+    <version>0.5.2</version>
+    <time>1473241642</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424777</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ba743830e3fc73ca62e3fc9a01e89a7d</srcmd5>
+    <version>0.5.3</version>
+    <time>1503927074</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514958</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8b603915681d0703869ea31898869e81</srcmd5>
+    <version>0.5.4</version>
+    <time>1537964579</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Update to 0.5.4
+  * Python 3.6 support</comment>
+    <requestid>634905</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8c86413a6b782efc21591e48d4f97b58</srcmd5>
+    <version>0.6.3</version>
+    <time>1553084541</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version v0.6.3
+  * Housekeeping &amp; Cleaning
+  * Log sent and received messages at level INFO. Fixes #167
+  * - move known_hosts_lookup (the host entry in known_hosts, with optional port number appended)
+  * First draft of versioning with versioneer (#269)
+  * revert to raising SSHError
+  * fix: add missing placeholder in exception string
+  * Updates to re-enable Python 3.7 (#249)
+  * Updates for 0.5.4 and 0.6.0
+  * SSH Host key checking (#280)
+  * check for transform_reply type (#270)
+  * Change superclass call style to keep tests happy
+  * SSH Host key checking
+  * Fix homepage link registered with PyPi (#274)
+  * more tests
+  * invoke self.parse() to ensure errors, if any, have been detetcted before check in ok() (#286)
+  * Avoid spurious SessionCloseError when intentionally closing session. (#268)
+  * Minor edits
+  * Revert &quot;Fixes to unit tests to account for use of selectors&quot;
+  * Close the channel when closing SSH session
+  * Revert &quot;fixes to tests for python2.7&quot;
+  * add Huawei device support through YANG (#1) (#242)
+  * Revert &quot;use selectors instead of select; improve performance of base 1.0 or 1.1 selection&quot;
+  * instructions for running unit tests locally
+  * updated README.md in preparation for 0.6.1 release
+  * netconf:base:1.1 parsing improvements (#267)
+  * Add session as extra context to session-related logs
+  * Include host in log message as well, as session-id is not globally unique
+  * fix: comments &amp; whitespace tidy
+  * removed Manager class metaclass and modified operation lookup to __getattr__ (#200)</comment>
+    <requestid>686886</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6a10e50fbd5201a8b6689e0ab9bcebf2</srcmd5>
+    <version>0.6.4</version>
+    <time>1557916529</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0.6.4:
+  * Use os.path.expanduser() on paths read from ssh_config.
+  * Proxycommand can be a list. Identityfile already performs ~ expansion in
+  * Enhance Alcatel-Lucent -support
+- add sphinx-use-imgmath-extension.patch</comment>
+    <requestid>703087</requestid>
+  </revision>
+</revisionlist>

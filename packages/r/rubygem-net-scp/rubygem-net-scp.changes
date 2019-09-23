@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Fri Mar 29 06:07:13 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.0.0
+ see installed CHANGES.txt
+
+  === 2.0.0
+  
+  * NetSSH 5.* support
+
+-------------------------------------------------------------------
+Thu Oct  9 15:39:06 UTC 2014 - fcastelli@suse.com
+
+- update to new packaging scheme and add gem2rpm.yml
+
+-------------------------------------------------------------------
+Sun May 18 09:04:39 UTC 2014 - coolo@suse.com
+
+- updated to version 1.2.1
+ * Resign gem with new pubkey
+ * Get the error string during download [jkeiser]
+
+-------------------------------------------------------------------
+Sat Jul 20 11:05:34 UTC 2013 - coolo@suse.com
+
+- updated to version 1.1.2
+ * Explicit convert to string in shellescape [jwils]
+
+-------------------------------------------------------------------
+Wed May 15 04:05:21 UTC 2013 - coolo@suse.com
+
+- updated to version 1.1.1
+ * Allow passing a shell to use when executing scp. [Arthur Schreiber]
+
+-------------------------------------------------------------------
+Sat Mar 23 08:07:24 UTC 2013 - coolo@suse.com
+
+- updated to version 1.1.0
+ * Added public cert. All gem releases are now signed. See INSTALL in readme.
+
+-------------------------------------------------------------------
+Tue Feb 21 11:32:40 UTC 2012 - saschpe@suse.de
+
+- Provide rubygem-net-scp-1_0
+
+-------------------------------------------------------------------
+Mon Dec 20 09:02:31 UTC 2010 - dmacvicar@suse.de
+
+- update to 1.0.4
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Thu Mar 26 02:59:16 CET 2009 - mrueckert@suse.de
+
+- initial package
+

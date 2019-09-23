@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Wed Oct  8 11:30:42 UTC 2014 - jengelh@inai.de
+
+- Remove old specfile tags and sections
+
+-------------------------------------------------------------------
+Wed Oct  5 14:38:21 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:28 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Apr 12 17:45:10 CEST 2005 - mfabian@suse.de
+
+- fix build with gcc 4.
+
+-------------------------------------------------------------------
+Sun Jan 11 11:24:30 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Fri Aug 30 08:53:59 CEST 2002 - ro@suse.de
+
+- corrected changes file
+
+-------------------------------------------------------------------
+Thu Jan 04 12:00:00 CEST 2001 - violiet@susekorea.net
+
+- update to 1.0p15.
+- change COPYRIGHT: distributable.
+
+-------------------------------------------------------------------
+Tue Nov 28 12:00:00 CEST 2000 - violiet@susekorea.net
+
+- initial RPM release for SuSE Linux. 
+

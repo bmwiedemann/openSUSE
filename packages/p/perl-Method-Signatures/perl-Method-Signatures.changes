@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Sun Feb 12 06:08:53 UTC 2017 - coolo@suse.com
+
+- updated to 20170211
+   see /usr/share/doc/packages/perl-Method-Signatures/Changes
+
+  20170211    Feb 11 13:38:39 PST 2017
+      Promoted to full release
+  
+  20160608.0051_002   Wed Jun  8 00:51:42 PDT 2016
+      New Features
+      * Can now put prototypes in front of signatures
+        (provides compatibility with sigs in 5.20)
+        [RT/93336, github #99/#127] (thanks brummett)
+  
+  20160516.2032_001   Mon May 16 20:32:59 PDT 2016
+      New Features
+      * Can now use bare sigils as placeholders
+        (provides compatibility with sigs in 5.20)
+        [RT/93334, github #100/#126] (thanks brummett)
+
+-------------------------------------------------------------------
+Mon Mar 21 11:35:22 UTC 2016 - coolo@suse.com
+
+- updated to 20160315
+   see /usr/share/doc/packages/perl-Method-Signatures/Changes
+
+  20160315    Tue Mar 15 16:21:33 PDT 2016
+      Promoted to full release
+  
+  20160310.2049_001   Thu Mar 10 20:49:00 PST 2016
+      Docs
+      * Fix broken link in POD
+        [github #120] (thanks Manwar)
+  
+      Distribution Fixes
+      * Generate README from POD
+        [github #122/#123/#124] (thanks jluis)
+      * Silence bogus Kwalitee failure
+        [github #121] (thanks jluis)
+  
+  20151120.1519_001   Fri Nov 20 15:19:44 PST 2015
+      Bug Fixes
+      * Fix missing semi-colon
+        [github #118] (thanks joenio)
+  
+      Distribution Fixes
+      * Bump required version of Lexical::SealRequireHints to fix RT #93759
+        [github #119] (thanks chorny)
+
+-------------------------------------------------------------------
+Sun Nov 23 11:20:05 UTC 2014 - coolo@suse.com
+
+- updated to 20141021
+     Promoted to full release
+ 
+ 20140920.1910_001   Sat Sep 20 19:10:06 PDT 2014
+     New Features
+     * Can now specify an alternate name for invocant (besides `$self`)
+       [github #82] (thanks Hercynium)
+ 
+     Bug Fixes
+     * Correct parse error on multi-line default values
+       [github #106]
+     * Using a required param after an optional one now a compile error
+       [github #108]
+ 
+ 20140806.0226_001   Wed Aug  6 02:26:36 PDT 2014
+     Bug Fixes
+     * Correct parse error when invocant is preceded by a space
+     * Fix bug where undef which should trigger default fails typecheck
+       [github #102]
+ 
+     Distribution Fixes
+     * Remove dependency on experimental (breaks 5.8 compat)
+       [github #97]
+ 
+     Misc
+     * Refactor signature parsing into its own class
+       [github #96]
+
+-------------------------------------------------------------------
+Wed Aug 27 08:00:02 UTC 2014 - coolo@suse.com
+
+- initial package 20140224
+    * created by cpanspec 1.78.08
+

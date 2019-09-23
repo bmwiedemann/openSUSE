@@ -1,0 +1,289 @@
+-------------------------------------------------------------------
+Wed Nov 29 15:48:49 UTC 2017 - crrodriguez@opensuse.org
+
+- Require just pkgconfig(gl) for build and -devel package.
+
+-------------------------------------------------------------------
+Mon Nov 14 22:38:35 UTC 2016 - jengelh@inai.de
+
+- Replace questionable Mesa binary require for devel package
+
+-------------------------------------------------------------------
+Thu Sep  1 23:25:53 UTC 2016 - rpm@fthiessen.de
+
+- Update to current svn version 1.8.5+svn.2173
+  * Removed upstream fixed patches:
+    plib-1.8.5-commit2136-segfault.patch,
+    plib-1.8.5-commit2139-slider.patch,
+    plib-1.8.5-commit2140-slider.patch and
+    plib-1.8.5-commit2154-segfault.patch 
+  * Removed plib-1.8.5-intptr_t.patch
+- Reported patches upstream (even if upstream is orphaned)
+
+-------------------------------------------------------------------
+Sat Jul 30 13:08:24 UTC 2016 - jengelh@inai.de
+
+- Implement shared library packaging guideline
+
+-------------------------------------------------------------------
+Tue Apr 23 14:18:43 UTC 2013 - joop.boonen@opensuse.org
+
+- Added missing BuildRequires for openSUSE > 12.3
+
+-------------------------------------------------------------------
+Sun Nov  4 18:49:16 UTC 2012 - reddwarf@opensuse.org
+
+- Add plib-1.8.5-CVE-2011-4620.patch (bnc#738207) and
+  plib-1.8.5-CVE-2012-4552.patch (bnc#787305)
+
+-------------------------------------------------------------------
+Mon Feb 13 10:53:47 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Fri Dec 30 13:14:12 CET 2011 - brehmt@gmail.com
+
+- Applied patches from plib SVN
+  * Fixed segfault in puInput when pasting empty buffer
+  * Fixed heap corruption when removing puInputBase objects
+  * Fixed various puSlider issues
+
+-------------------------------------------------------------------
+Sun Nov 27 15:23:03 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Sun Nov 27 06:45:21 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Jul  2 15:42:24 UTC 2011 - jengelh@medozas.de
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)
+- Remove duplicated changelog
+
+-------------------------------------------------------------------
+Fri Jan  9 22:42:23 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Tue Mar 11 13:10:50 CET 2008 - prusnak@suse.cz
+
+- updated to 1.8.5
+  * removed several widgets from pui/, which were declared
+    obsolete since a long time. Most of them are now available
+    in puAux/
+  * several fixes and improvements to puAuxList
+  * puInputText scrolling fixed
+  * Improved DirectX loader
+  * Check ownership before deleting in ssgSimpleList
+  * Fixed netSocket
+  * Fixed mem leak in ssgVertSplitter
+  * Fixed pw window sizes on win32
+  * Added pview ssg-example
+  * Fix clock delta in first call
+  * Made colour of listbox changable
+  * Fixed text with negative coordinates
+  * Fixed misc bugs in puAuxLargeInput
+  * Allow the user to activate a widget with custom mouse button
+  * Made material loading from wavefront models more robust
+  * Handle linux joysticks with a lot of axes
+  * Avoid specular anomalies in 3ds files
+  * Added a demo for ssgaShapes
+  * Fixed the diameter of ssgaSphere
+  * Fixed inability to add colour to the ssgaTeapot
+  * Remove scale dep in ssgaFire
+- fixed strncat usage (strncat.patch)
+- dropped obsolete patches:
+  * extraqual.diff (included in update)
+  * joystick.diff (included in update)
+
+-------------------------------------------------------------------
+Thu Jan 10 13:51:12 CET 2008 - lmichnovic@suse.cz
+
+- added glibc-devel, xorg-x11-devel as Requires
+
+-------------------------------------------------------------------
+Fri Jan  4 13:25:25 CET 2008 - lmichnovic@suse.cz
+
+- fixed deprecated run_ldconfig macro
+- no need to use %suse_update_config when autotools are called
+  anyway (Other dists get chocked in BuildService.)
+- no need to pack files NEWS and INSTALL
+- compiling with no-strict-aliasing
+
+-------------------------------------------------------------------
+Wed May 23 11:50:26 CEST 2007 - prusnak@suse.cz
+
+- move devel files to plib-devel subpackage
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:21 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Oct 20 18:23:27 CEST 2005 - mmj@suse.de
+
+- remove extra qualification
+
+-------------------------------------------------------------------
+Fri Feb 25 11:44:24 CET 2005 - ro@suse.de
+
+- fix filelist (packing complete /usr/lib is not possible) 
+
+-------------------------------------------------------------------
+Wed Feb 23 16:38:03 CET 2005 - mjancar@suse.cz
+
+- build shared libraries (needed by torcs)
+
+-------------------------------------------------------------------
+Wed Feb 02 13:50:12 CET 2005 - mjancar@suse.cz
+
+- update to 1.8.4 (needed by FlightGear)
+
+-------------------------------------------------------------------
+Fri Aug 13 17:26:10 CEST 2004 - mjancar@suse.cz
+
+- update to 1.8.3
+
+-------------------------------------------------------------------
+Sat Jan 10 12:45:29 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Mon Oct 13 14:46:19 CEST 2003 - ro@suse.de
+
+- remove explicit requires for mesa
+
+-------------------------------------------------------------------
+Thu Jul 31 19:56:39 CEST 2003 - mjancar@suse.cz
+
+- use %run_ldconfig
+
+-------------------------------------------------------------------
+Tue Dec 10 13:50:33 CET 2002 - prehak@suse.cz
+
+- fixed brace-enclosed initialization (due to gcc-3.3)
+
+-------------------------------------------------------------------
+Thu Oct 24 18:51:00 CEST 2002 - prehak@suse.cz
+
+- updated to version 1.6.0
+
+-------------------------------------------------------------------
+Wed Aug 21 12:16:59 CEST 2002 - nadvornik@suse.cz
+
+- use RPM_OPT_FLAGS instead of -O6
+
+-------------------------------------------------------------------
+Thu Jan 10 11:14:22 CET 2002 - rvasice@suse.cz
+
+- use %{_libdir}
+
+-------------------------------------------------------------------
+Fri Nov  9 16:53:17 CET 2001 - rvasice@suse.cz
+
+- fix to compile with new automake
+
+-------------------------------------------------------------------
+Thu Nov  8 18:39:45 CET 2001 - ro@suse.de
+
+- use mesa-devel-packages in neededforbuild 
+
+-------------------------------------------------------------------
+Thu Jul 26 12:25:01 CEST 2001 - rvasice@suse.cz
+
+- update to version 1.4.2
+
+-------------------------------------------------------------------
+Fri Jul 13 17:21:15 CEST 2001 - rvasice@suse.cz
+
+- update to version 1.4.1
+
+-------------------------------------------------------------------
+Mon Jun  4 10:37:15 CEST 2001 - rvasice@suse.cz
+
+- spec file cleanup
+- bzip2 sources
+
+-------------------------------------------------------------------
+Thu Mar 15 18:23:12 CET 2001 - ro@suse.de
+
+- changed neededforbuild <mesaglu> to <xf86glu>
+- changed neededforbuild <mesaglu-devel> to <xf86glu-devel>
+
+-------------------------------------------------------------------
+Tue Mar 13 16:57:50 CET 2001 - ro@suse.de
+
+- added mesaglut 
+
+-------------------------------------------------------------------
+Fri Mar  9 01:40:36 CET 2001 - ro@suse.de
+
+- added mesaglu 
+
+-------------------------------------------------------------------
+Wed Mar  7 16:58:40 CET 2001 - ro@suse.de
+
+- changed neededforbuild <mesadev> to <mesa-devel>
+- added xf86 to neededforbuild
+
+-------------------------------------------------------------------
+Fri Feb  9 12:08:05 CET 2001 - ro@suse.de
+
+- include float.h in sg.h 
+
+-------------------------------------------------------------------
+Mon Aug  7 13:37:19 CEST 2000 - smid@suse.cz
+
+- upgrade to 1.2.0
+
+-------------------------------------------------------------------
+Mon May 22 15:23:20 CEST 2000 - smid@suse.cz
+
+- mesadev added to neededforbuild
+
+-------------------------------------------------------------------
+Thu May  4 13:01:47 CEST 2000 - smid@suse.cz
+
+- upgrade to 1.1.11
+
+-------------------------------------------------------------------
+Fri Apr 21 15:04:46 CEST 2000 - smid@suse.cz
+
+- buildroot added
+
+-------------------------------------------------------------------
+Thu Feb 17 00:06:20 MET 2000 - grimmer@suse.de
+
+- added URL to spec file
+- use full URL to source package
+- use version macro
+
+-------------------------------------------------------------------
+Tue Dec 28 12:20:31 MET 1999 - sndirsch@suse.de
+
+- updated to version 1.0.20
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Aug 18 18:23:37 MEST 1999 - sndirsch@suse.de
+
+- update to version 1.0.16 
+
+-------------------------------------------------------------------
+Wed Jul  7 13:29:03 MEST 1999 - grimmer@suse.de
+
+- initial package created (Version 1.0.12)
+

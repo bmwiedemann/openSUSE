@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Tue Apr 14 18:23:28 UTC 2015 - coolo@suse.com
+
+- updated to 2.201
+   see /usr/share/doc/packages/perl-Email-Send/Changes
+
+  2.201     2015-03-05
+            ** PLEASE CONSIDER USING EMAIL-SENDER INSTEAD **
+  
+            add x_deprecated metadata
+  
+  2.200     2015-02-25
+            ** PLEASE CONSIDER USING EMAIL-SENDER INSTEAD **
+  
+            when trying to pick the first available mailer, never pick Test
+  
+  2.199     2013-08-18
+            ** PLEASE CONSIDER USING EMAIL-SENDER INSTEAD **
+  
+            stop warning from Return::Value; if it didn't switch you to
+            Email::Sender by now, it isn't gonna
+  
+            cope with irritating differences between Net::SMTP and Net::SMTP::TLS
+            (thanks, Yanick Champoux!)
+
+-------------------------------------------------------------------
+Wed Dec  1 11:41:20 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Nov 30 12:14:21 UTC 2010 - coolo@novell.com
+
+- fix file list
+
+-------------------------------------------------------------------
+Mon Jun  7 16:59:38 CEST 2010 - dmueller@suse.de
+
+- update to 2.198
+

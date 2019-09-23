@@ -1,0 +1,78 @@
+Index: b/docs/index.rst
+===================================================================
+--- a/docs/index.rst
++++ b/docs/index.rst
+@@ -1,7 +1,7 @@
+ Flask-Cache
+ ================
+ 
+-.. module:: flask.ext.cache
++.. module:: flask_cache
+ 
+ Installation
+ ------------
+@@ -20,7 +20,7 @@ Set Up
+ Cache is managed through a ``Cache`` instance::
+ 
+     from flask import Flask
+-    from flask.ext.cache import Cache
++    from flask_cache import Cache
+ 
+     app = Flask(__name__)
+     # Check Configuring Flask-Cache section for more details
+@@ -163,7 +163,7 @@ Set timeout to "del" to delete cached va
+ If keys are provided, you may easily generate the template fragment key and
+ delete it from outside of the template context::
+ 
+-    from flask.ext.cache import make_template_fragment_key
++    from flask_cache import make_template_fragment_key
+     key = make_template_fragment_key("key1", vary_on=["key2", "key3"])
+     cache.delete(key)
+ 
+@@ -188,7 +188,7 @@ Here's an example script to empty your a
+ 
+ .. code-block:: python
+ 
+-    from flask.ext.cache import Cache
++    from flask_cache import Cache
+ 
+     from yourapp import app, your_cache_config
+ 
+Index: b/flask_cache/__init__.py
+===================================================================
+--- a/flask_cache/__init__.py
++++ b/flask_cache/__init__.py
+@@ -1,6 +1,6 @@
+ # -*- coding: utf-8 -*-
+ """
+-    flask.ext.cache
++    flask_cache
+     ~~~~~~~~~~~~~~
+ 
+     Adds cache support to your application.
+Index: b/flask_cache/jinja2ext.py
+===================================================================
+--- a/flask_cache/jinja2ext.py
++++ b/flask_cache/jinja2ext.py
+@@ -30,7 +30,7 @@ Example:
+ 
+ from jinja2 import nodes
+ from jinja2.ext import Extension
+-from flask.ext.cache import make_template_fragment_key
++from flask_cache import make_template_fragment_key
+ 
+ JINJA_CACHE_ATTR_NAME = '_template_fragment_cache'
+ 
+Index: b/test_cache.py
+===================================================================
+--- a/test_cache.py
++++ b/test_cache.py
+@@ -7,7 +7,7 @@ import random
+ import string
+ 
+ from flask import Flask, render_template, render_template_string
+-from flask.ext.cache import Cache, function_namespace, make_template_fragment_key
++from flask_cache import Cache, function_namespace, make_template_fragment_key
+ 
+ if sys.version_info < (2,7):
+     import unittest2 as unittest

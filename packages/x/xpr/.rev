@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5da1830abbbbd59a76755325be232b84</srcmd5>
+    <version>1.0.4</version>
+    <time>1336471621</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115492</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>5da1830abbbbd59a76755325be232b84</srcmd5>
+    <version>1.0.4</version>
+    <time>1340184382</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>5da1830abbbbd59a76755325be232b84</srcmd5>
+    <version>1.0.4</version>
+    <time>1359110683</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>5da1830abbbbd59a76755325be232b84</srcmd5>
+    <version>1.0.4</version>
+    <time>1379665111</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>5da1830abbbbd59a76755325be232b84</srcmd5>
+    <version>1.0.4</version>
+    <time>1409303796</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1b718d21593e258169fd6dfcd6e865f7</srcmd5>
+    <version>1.0.5</version>
+    <time>1524144497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.5
+  * Remove unneeded uses of &lt;math.h&gt; &amp; -lm
+  * This is not a GNU project, so declare it foreign.
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Remove old CVS id tags
+  * Combine strings in usage message
+  * Fix &quot;missmatch&quot; typo in error message
+  * Print which option was in error along with usage message
+  * Add -version option to print program version
+  * More constification
+  * Fix man page references to X(1) to use __miscmansuffix__
+  * autogen.sh: use quoted string variables
+  * Use strcmp() to compare strings and simplify options parser.
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>593601</requestid>
+  </revision>
+</revisionlist>

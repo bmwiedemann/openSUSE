@@ -1,0 +1,29 @@
+From 5c21fcebb7b23c048e7e1ebf7b21256b1ee5c476 Mon Sep 17 00:00:00 2001
+From: Antony Dovgal <tony@daylessday.org>
+Date: Thu, 11 Oct 2012 19:39:50 +0400
+Subject: [PATCH 09/10] remove duplicated option
+
+---
+ src/pidgin-libnotify.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/src/pidgin-libnotify.c b/src/pidgin-libnotify.c
+index 1e09780..0298082 100644
+--- a/src/pidgin-libnotify.c
++++ b/src/pidgin-libnotify.c
+@@ -62,12 +62,6 @@ get_plugin_pref_frame (PurplePlugin *plugin)
+                             _("Show new messages text"));
+ 	purple_plugin_pref_frame_add (frame, ppref);
+ 
+-	ppref = purple_plugin_pref_new_with_name_and_label (
+-                            "/plugins/gtk/libnotify/newmsgtxt",
+-                            _("Show new messages text"));
+-	purple_plugin_pref_frame_add (frame, ppref);
+-
+-
+ 	if (purple_prefs_get_int("/plugins/gtk/libnotify/timeout") == 0) {
+ 		/* 3 seconds is the default timeout */
+ 		purple_prefs_set_int("/plugins/gtk/libnotify/timeout", 3000);
+-- 
+1.8.4.5
+

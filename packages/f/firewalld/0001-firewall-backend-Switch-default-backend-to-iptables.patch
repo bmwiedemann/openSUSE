@@ -1,0 +1,59 @@
+From dbbf60a4bb0c7edc83cd8bae2177d96842ad9034 Mon Sep 17 00:00:00 2001
+From: Markos Chandras <mchandras@suse.de>
+Date: Mon, 13 Aug 2018 22:31:04 +0300
+Subject: [PATCH] firewall: backend: Switch default backend to 'iptables'
+
+Switch default backend to 'iptables'. Some packages (eg docker)
+are not able to work well with nftables right now, so lets stick
+with iptables as default backend.
+
+Link: https://bugzilla.suse.com/show_bug.cgi?id=1102761
+Signed-off-by: Markos Chandras <mchandras@suse.de>
+---
+ config/firewalld.conf              | 6 +++---
+ doc/xml/firewalld.conf.xml         | 4 ++--
+ src/firewall/config/__init__.py.in | 2 +-
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/config/firewalld.conf b/config/firewalld.conf
+index b53c0aa5..e6afde19 100644
+--- a/config/firewalld.conf
++++ b/config/firewalld.conf
+@@ -59,6 +59,6 @@ AutomaticHelpers=system
+ # FirewallBackend
+ # Selects the firewall backend implementation.
+ # Choices are:
+-#	- nftables (default)
+-#	- iptables (iptables, ip6tables, ebtables and ipset)
+-FirewallBackend=nftables
++#	- nftables
++#	- iptables (default)
++FirewallBackend=iptables
+diff --git a/doc/xml/firewalld.conf.xml b/doc/xml/firewalld.conf.xml
+index df4b9521..fee0d3ca 100644
+--- a/doc/xml/firewalld.conf.xml
++++ b/doc/xml/firewalld.conf.xml
+@@ -149,8 +149,8 @@
+             <listitem>
+                 <para>
+                 Selects the firewall backend implementation. Possible values
+-                are; <replaceable>nftables</replaceable> (default), or
+-                <replaceable>iptables</replaceable>. This applies to all
++                are; <replaceable>nftables</replaceable>, or
++                <replaceable>iptables</replaceable> (default). This applies to all
+                 firewalld primitives. The only exception is direct and
+                 passthrough rules which always use the traditional iptables,
+                 ip6tables, and ebtables backends.
+diff --git a/src/firewall/config/__init__.py.in b/src/firewall/config/__init__.py.in
+index 955be320..cff7c3fe 100644
+--- a/src/firewall/config/__init__.py.in
++++ b/src/firewall/config/__init__.py.in
+@@ -129,4 +129,4 @@ FALLBACK_IPV6_RPFILTER = True
+ FALLBACK_INDIVIDUAL_CALLS = False
+ FALLBACK_LOG_DENIED = "off"
+ FALLBACK_AUTOMATIC_HELPERS = "system"
+-FALLBACK_FIREWALL_BACKEND = "nftables"
++FALLBACK_FIREWALL_BACKEND = "iptables"
+-- 
+2.16.4
+

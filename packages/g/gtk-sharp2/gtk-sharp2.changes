@@ -1,0 +1,543 @@
+-------------------------------------------------------------------
+Wed Feb 07 00:00:00 UTC 2018 - fwdsbs.to.11df@xoxy.net
+
+- Update version to 2.12.41 from project's github page: https://github.com/mono/gtk-sharp/releases
+- Remove patch: gtk-sharp2-glib-2_31.patch
+- Remove patch: gtk-sharp2-gmcs-as-compiler.patch
+- Add fix-64bit-portability-issue.patch:
+  * fix "64bit-portability-issue" error at windowmanager.c:113
+
+-------------------------------------------------------------------
+Wed Sep 28 15:00:00 UTC 2016 - fwdsbs.to.11df@xoxy.net
+
+- fix install phase: set MONO_GAC_PREFIX env variable pointing to %{buildroot}%{_prefix}.
+  gacutil from mono >= 4.6 need this variable to find libraries installed in non-default gac location, even if this location provided by "root" or "gacdir" cmdline option
+
+-------------------------------------------------------------------
+Mon Dec  7 04:29:30 UTC 2015 - lnussel@suse.de
+
+- run ldconfig in post/postun also in glib-sharp2 package
+
+-------------------------------------------------------------------
+Fri Dec  4 08:36:39 UTC 2015 - meissner@suse.com
+
+- run ldconfig in post/postun
+
+-------------------------------------------------------------------
+Mon Jan 28 22:52:06 UTC 2013 - dimstar@opensuse.org
+
+- Add gtk-sharp2-gmcs-as-compiler.patch: Choose gmcs as the
+  prefered compiler. This will build gtk sharp2 with .Net runtime
+  4.0.
+- Add libtool BuildRequires and call to autoreconf, as above patch
+  touches the build system.
+
+-------------------------------------------------------------------
+Thu Feb  9 21:17:36 UTC 2012 - dimstar@opensuse.org
+
+- Add gtk-sharp2-glib-2_31.patch: Only glib.h can be #include'd
+  with glib 2.31.
+
+-------------------------------------------------------------------
+Sat Nov  6 18:47:51 UTC 2010 - aj@suse.de
+
+- Readd glade-sharp2 which was lost in last change.
+
+-------------------------------------------------------------------
+Wed Nov  3 15:26:02 UTC 2010 - ajorgensen@novell.com
+
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Sat May 15 17:16:13 UTC 2010 - coolo@novell.com
+
+- avoid gnome-panel dependency to avoid build cycle
+
+-------------------------------------------------------------------
+Sat Apr 24 11:38:17 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Tue Mar 16 17:04:22 UTC 2010 - ajorgensen@novell.com
+
+- Update to 2.12.10
+  * Bugfix release
+
+-------------------------------------------------------------------
+Tue Aug 11 16:43:33 UTC 2009 - ajorgensen@novell.com
+
+- Update to 2.12.9
+  * Bugfix release
+
+-------------------------------------------------------------------
+Tue Mar 31 13:27:14 MDT 2009 - ajorgensen@novell.com
+
+- Update to 2.4
+  * http://www.mono-project.com/Release_Notes_Mono_2.4
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Dec  1 13:33:51 MST 2008 - ajorgensen@novell.com
+
+- Fix for bnc#450119
+
+-------------------------------------------------------------------
+Mon Nov 24 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Fri Nov  7 15:10:32 MST 2008 - ajorgensen@novell.com
+
+- Update to 2.12.6
+  * Critical signal crash bugfix for bgo#555242
+  * Atk API cleanup
+  * minor GLib and Gtk bugfixes
+
+-------------------------------------------------------------------
+Fri Nov  7 12:24:14 CET 2008 - jjohnny@novell.com
+
+- support for custom marshalling hooks (bgo#555242)
+
+-------------------------------------------------------------------
+Wed Oct 22 10:11:32 MDT 2008 - ajorgensen@novell.com
+
+- Update to 2.12.5
+  * Fix for bnc#400595
+  * Assembly Reference Loading Fix (bnc#426876)
+  * Atk API cleanup
+  * Win32 installer build integration
+
+-------------------------------------------------------------------
+Tue Sep 23 16:11:21 MDT 2008 - ajorgensen@novell.com
+
+- Update to 2.12.4
+  * Bugfixes for bnc#427588 and bnc#384475
+
+-------------------------------------------------------------------
+Wed Sep 10 11:14:08 MDT 2008 - ajorgensen@novell.com
+
+- Update to 2.12.3
+  * Bugfixes including bnc#387220, bnc#411444, and bnc#423450
+
+-------------------------------------------------------------------
+Tue Sep  9 15:20:08 MDT 2008 - ajorgensen@novell.com
+
+- Restore 2.8 version of tarball so we can build on SLE10
+- Fix logic for patches
+
+-------------------------------------------------------------------
+Fri Aug 22 12:37:01 MDT 2008 - ajorgensen@novell.com
+
+- Update to 2.12.2
+  * Extensive Atk# API cleanup (Andres Aragoneses, Brad Taylor, and MK)
+  * Signal EmissionHook and Emit implementations (Andres and MK)
+  * GObject Property Registration (Christian Hoff)
+  * Interface and VirtualMethod improvements (Christian Hoff)
+  * Bugfixing (Andres Aragoneses, Stephane Delcroix, Lluis Sanchez Gual, Christian Hoff & MK)
+
+-------------------------------------------------------------------
+Thu May  8 06:55:33 CEST 2008 - aj@suse.de
+
+- Fix warnings about missing return.
+
+-------------------------------------------------------------------
+Thu Apr 24 15:49:10 MST 2008 - wberrier@suse.de
+
+- Update to 2.12.1
+
+ * Bugfix in GLib ref management for Gnome.Program crash in
+   gnome-sharp
+ * Enhanced Null-terminated string array marshaling
+ * Bugfixes for Pango.AttrList
+ * Added missing virtual methods and some reference management
+   fixes in Atk
+ * Bugfix for crash in Gtk.KeySnoopFunc delegate marshaling
+ * PrintOperation cairo context reference management fix
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Apr  2 16:49:10 MST 2008 - wberrier@suse.de
+
+- Packaging updates to allow building of 2.12.0, and still build
+  older versions (for the build service)
+- Simplify (hopefully) version choosing for each distro
+- Tie differences between gtk# versions to versions and not
+  distros
+- Update to 2.12.0
+ -Memory and Reference Management Improvements
+ -Gtk.Object destruction enhancements
+ -Revamped the GLib.Object finalization mechanism
+ -Better exception handling
+ -Structure marshaling
+ -GInterface Registration
+
+-------------------------------------------------------------------
+Tue Mar 25 16:49:10 MST 2008 - wberrier@suse.de
+
+- Remove off_t patch now that it's in 2.10.4
+- Update to 2.10.4
+ -Various gug fixes, including: bnc #359561
+- Changes in 2.10.3:
+ -Performance, memory management, and object finalization
+  improvements.
+ -GLib.ExceptionManager to support exception handling in signal
+  callbacks.
+ -GLib.IOChannel and GLib.Spawn classes for process spawning.
+ -Numerous bugfixes
+
+-------------------------------------------------------------------
+Wed Dec  5 17:11:40 CET 2007 - sbrabec@suse.cz
+
+- Handle off_t as long (#319824),
+
+-------------------------------------------------------------------
+Fri Aug  3 20:49:10 CEST 2007 - wberrier@suse.de
+
+- Update to bigfix release: 2.10.2
+ -Bugfixes: bugzilla.ximian.com:
+  -82287, 78524, 79214, 82037, 82098, 82115
+- Remove fix_callback_code_generator.patch, as it's been fixed in
+  2.10.2
+
+-------------------------------------------------------------------
+Sun Jul 15 10:06:26 CEST 2007 - aj@suse.de
+
+- Add fix_callback_code_generator.patch to fix gapi's code
+  generator for callbacks with out parameters (fixes gmime-sharp).
+
+-------------------------------------------------------------------
+Sat Jul 03 12:25:27 MST 2007 - wberrier@suse.de
+
+- Correct time for May 2 entry (failing on s390 machines)
+- Update to 2.10 for distros with gtk 2.10 (currently this is
+  opensuse 10.2, 10.3, and fedora 7)
+ -Make all subpackages that are in the new gnome-sharp package
+  conditional for 2.10 and newer, leave them there for 2.8 and
+  older)
+ -2.10.1 Changes:
+  -Memory leak and other various fixes
+ -2.10 Changes:
+  -subpackages split between platform/desktop for inclusion into
+   Gnome (based on gtk# 2.8.3)
+
+-------------------------------------------------------------------
+Sat Jun 16 22:35:27 CEST 2007 - wberrier@suse.de
+
+- Correct time for May 2 entry (failing on s390 machines)
+
+-------------------------------------------------------------------
+Tue May 16 20:16:53 MST 2007 - wberrier@novell.com
+
+- make sure vte is installed during suse 10.0 build to resolve
+  .config dllmaps
+
+-------------------------------------------------------------------
+Tue May  4 01:55:53 MST 2007 - wberrier@novell.com
+
+- revert_unportable_relocatable.patch so that the fedora packages
+  don't need to depend on the 'which' package
+
+-------------------------------------------------------------------
+Tue May  2 19:15:53 MST 2007 - wberrier@novell.com
+
+- Use the internally defined deps/reqs since the suse rpm support
+  doesn't look for assembly .config files
+ (set _use_internal_dependency_generator to 0 on fedora distros)
+
+-------------------------------------------------------------------
+Tue May  1 20:25:53 MST 2007 - wberrier@novell.com
+
+- Rely on the new .config rpm dep generation for requires for:
+ gtkhtml-sharp2
+ rsvg-sharp2
+ gnome-vfs-sharp2
+ vte-sharp2
+  (Also simplifies cross distro packaging, mainly suse vs. redhat)
+
+-------------------------------------------------------------------
+Thu Apr 26 05:53:58 CEST 2007 - wberrier@suse.de
+
+- Fix vte .so version in the .config file (fixes bnc #265854)
+
+-------------------------------------------------------------------
+Fri Apr 13 19:18:53 CET 2007 - wberrier@novell.com
+
+- add %debug_package so debug packages get created
+
+-------------------------------------------------------------------
+Wed Apr 11 16:16:25 CET 2007 - wberrier@novell.com
+
+- Add mono dep/req for older distros
+
+-------------------------------------------------------------------
+Thu Apr  5 03:55:38 CEST 2007 - wberrier@novell.com
+
+- Adapt for build service, final fix (at least hopefully for a long
+  time) for gtkhtml
+
+-------------------------------------------------------------------
+Tue Mar 27 14:51:38 CEST 2007 - sbrabec@suse.cz
+
+- Build with the latest gtkhtml.
+
+-------------------------------------------------------------------
+Wed Jan 17 15:45:17 CET 2007 - meissner@suse.de
+
+- use RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Fri Oct 20 01:42:14 CEST 2006 - ro@suse.de
+
+- added mono-devel to buildrequires
+
+-------------------------------------------------------------------
+Mon Oct 16 01:11:26 CEST 2006 - schwab@suse.de
+
+- Use install-data-hook instead of install-hook.
+
+-------------------------------------------------------------------
+Tue Aug  1 02:58:48 CEST 2006 - wberrier@suse.de
+
+- Update to 2.8.3
+- Fix: Multiple calls to Gnome.Vfs.MimeType.Description triggers glibc error (77534)
+
+-------------------------------------------------------------------
+Mon May  8 22:34:24 CEST 2006 - joeshaw@suse.de
+
+- Add a patch to make GLib.ValueArray actually free in the main
+  GTK thread rather than the finalizer thread.  Fixes deadlocks,
+  like bnc #168650.
+
+-------------------------------------------------------------------
+Tue Feb 28 19:44:29 CET 2006 - wberrier@suse.de
+
+- Update to 2.8.2.  Fixes the following bugs: (Ximian)
+  - 77497
+  - 77662
+  - 77658 (64bit fix, needed by f-spot)
+
+  - 154029 in Novell's Bugzilla
+
+-------------------------------------------------------------------
+Tue Feb 21 14:37:09 CET 2006 - rguenther@suse.de
+
+- Fix build failure on ppc64.  [#152472]
+
+-------------------------------------------------------------------
+Thu Feb 16 05:12:56 CET 2006 - wberrier@suse.de
+
+- Add .mdb files.  Fixes: https://bugzilla.novell.com/show_bug.cgi?id=151353
+ - also, remove the explicit deps (they are provided by mono(assembly) deps
+
+-------------------------------------------------------------------
+Thu Feb  9 05:04:20 CET 2006 - wberrier@suse.de
+
+- Update to 2.8.1.  Fixes the following bugs (Ximian bugzilla):
+ - #77400
+ - #77323
+ - #77016
+ - #76992
+ - #77017
+ - #77182
+ - #77244
+
+-------------------------------------------------------------------
+Fri Feb  3 19:05:29 CET 2006 - aj@suse.de
+
+- Cleanup BuildRequires.
+- Add Requires for packages.
+- Reorder spec file sections.
+
+-------------------------------------------------------------------
+Fri Jan 27 01:49:06 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 24 21:19:51 CET 2006 - wberrier@suse.de
+
+- Additional package splits: art, rsvg, gtkhtml, and gnome-vfs
+
+-------------------------------------------------------------------
+Fri Jan 13 07:42:27 CET 2006 - wberrier@suse.de
+
+- Redo almost all of the packaging (Novell Bug #142367)
+ - split package based on what another distro does
+ - clean up nfb a little
+ - remove unnecessary hard rpm deps
+  - I don't understand why gnome-filesystem would be required?
+ - Provide gtk-sharp2-complege virtual package depending on all sub packages
+
+-------------------------------------------------------------------
+Wed Jan 11 21:24:26 CET 2006 - wberrier@suse.de
+
+- Update to 2.8.0
+
+-------------------------------------------------------------------
+Fri Dec 16 05:10:51 CET 2005 - wberrier@suse.de
+
+- Update to 2.7.90
+
+-------------------------------------------------------------------
+Thu Dec  1 20:51:25 CET 2005 - wberrier@suse.de
+
+- Clean up needed for build and install section
+
+-------------------------------------------------------------------
+Fri Nov 11 03:15:27 CET 2005 - wberrier@suse.de
+
+- Update to 2.7.1
+
+-------------------------------------------------------------------
+Thu Oct  6 20:36:46 CEST 2005 - wberrier@suse.de
+
+- Update to 2.3.92
+
+-------------------------------------------------------------------
+Mon Oct  3 22:37:43 CEST 2005 - gekker@suse.de
+
+- Update to svn snapshot to fix crash when re-sizing windows
+- Remove upstreamed patch
+
+-------------------------------------------------------------------
+Tue Sep 27 02:13:40 CEST 2005 - ro@suse.de
+
+- re-enable gtkhtml
+
+-------------------------------------------------------------------
+Mon Sep 26 19:06:52 CEST 2005 - gekker@suse.de
+
+- Fix build on x86_64
+
+-------------------------------------------------------------------
+Fri Sep 23 19:49:18 CEST 2005 - wberrier@suse.de
+
+- updated to 2.3.91.  New version also includes docs for monodoc
+
+-------------------------------------------------------------------
+Fri Sep 23 01:56:40 CEST 2005 - ro@suse.de
+
+- removed libgdiplus-devel from nfb (dropped)
+
+-------------------------------------------------------------------
+Sun Sep  4 09:00:06 CEST 2005 - aj@suse.de
+
+- Add check-build.sh.
+
+-------------------------------------------------------------------
+Thu Aug 18 22:42:09 CEST 2005 - wberrier@suse.de
+
+- Add dependencies on Perl xml packages for gapi (Novell [Bug 105055])
+
+-------------------------------------------------------------------
+Mon Jul 11 19:00:04 CEST 2005 - gekker@suse.de
+
+- fix build with current libgda/libgnomedb
+
+-------------------------------------------------------------------
+Wed Jul  6 18:33:28 CEST 2005 - gekker@suse.de
+
+- Fix to build all optional modules
+
+-------------------------------------------------------------------
+Tue Jul  5 23:23:07 CEST 2005 - gekker@suse.de
+
+- Branch for gtk-sharp2, initial version 1.9.5
+
+-------------------------------------------------------------------
+Thu May 19 00:50:49 CEST 2005 - ro@suse.de
+
+- fix build with current pkgconfig
+
+-------------------------------------------------------------------
+Thu May  5 22:55:47 CEST 2005 - gekker@suse.de
+
+- Fix requires in gtk-sharp to require gtk-sharp-gapi
+
+-------------------------------------------------------------------
+Wed Mar 16 17:01:41 CET 2005 - gekker@suse.de
+
+- Update to version 1.0.8, leak fixes
+- Remove upstreamed patches
+
+-------------------------------------------------------------------
+Tue Mar  8 23:47:39 CET 2005 - gekker@suse.de
+
+- Update gtkhtml-sharp.diff for new .so version in gtkhtml2
+
+-------------------------------------------------------------------
+Tue Mar  8 03:08:15 CET 2005 - gekker@suse.de
+
+- add gtkhtml-sharp.diff (66769, 66439)
+
+-------------------------------------------------------------------
+Thu Feb 24 18:37:38 CET 2005 - gekker@suse.de
+
+- Fix requires (66439)
+
+-------------------------------------------------------------------
+Mon Feb 21 08:29:28 CET 2005 - clahey@suse.de
+
+- Update to 1.0.6.
+
+-------------------------------------------------------------------
+Fri Jan 21 01:36:25 CET 2005 - ro@suse.de
+
+- update to 1.0.4
+
+-------------------------------------------------------------------
+Fri Jan 14 02:20:00 CET 2005 - ro@suse.de
+
+- build with gtkhtml-3.6
+
+-------------------------------------------------------------------
+Thu Dec  2 01:33:41 CET 2004 - ro@suse.de
+
+- try to fix build on x86_64
+
+-------------------------------------------------------------------
+Sun Nov 28 22:47:50 CET 2004 - ro@suse.de
+
+- run autoreconf
+
+-------------------------------------------------------------------
+Wed Sep  8 19:00:20 CEST 2004 - joeshaw@suse.de
+
+- Update the gtkhtml patch.
+
+-------------------------------------------------------------------
+Tue Sep  7 18:25:33 CEST 2004 - joeshaw@suse.de
+
+- Add a patch to use gtkhtml 3.1 instead of 3.0.  Ximian #63188
+
+-------------------------------------------------------------------
+Fri Sep  3 23:31:20 CEST 2004 - clahey@suse.de
+
+- Updated to 1.0.
+
+-------------------------------------------------------------------
+Tue Jun 29 01:06:19 CEST 2004 - ro@suse.de
+
+- use rpm scripts for find requires/provides
+
+-------------------------------------------------------------------
+Tue Jun 22 00:28:44 CEST 2004 - clahey@suse.de
+
+- Updated to 0.98.
+
+-------------------------------------------------------------------
+Wed May 26 00:11:31 CEST 2004 - clahey@suse.de
+
+- Initial import.

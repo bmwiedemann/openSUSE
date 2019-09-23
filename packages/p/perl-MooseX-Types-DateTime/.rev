@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>515f6a382ad84c389d01d461f63ffb41</srcmd5>
+    <version>0.05</version>
+    <time>1324831165</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>97676</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>14bd1712129f6fc58359cdbd4a54c635</srcmd5>
+    <version>0.07</version>
+    <time>1331147410</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>108317</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>14bd1712129f6fc58359cdbd4a54c635</srcmd5>
+    <version>0.07</version>
+    <time>1340183885</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>14bd1712129f6fc58359cdbd4a54c635</srcmd5>
+    <version>0.07</version>
+    <time>1359109754</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>00a9ab39f3dd1a32f1b8a8938df04361</srcmd5>
+    <version>0.08</version>
+    <time>1375185800</time>
+    <user>coolo</user>
+    <comment>- updated to 0.08
+ - Require perl 5.8.3, as Moose does</comment>
+    <requestid>184916</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>00a9ab39f3dd1a32f1b8a8938df04361</srcmd5>
+    <version>0.08</version>
+    <time>1379663773</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5c5a4875f85c7267c37ffa883a79d35d</srcmd5>
+    <version>0.10</version>
+    <time>1394519593</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>225379</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>5c5a4875f85c7267c37ffa883a79d35d</srcmd5>
+    <version>0.10</version>
+    <time>1409302412</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>475169f2661e2dad266c28e2dbabd389</srcmd5>
+    <version>0.11</version>
+    <time>1440743176</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324568</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>416efa9f235c85470ac320ea1035416c</srcmd5>
+    <version>0.13</version>
+    <time>1445675147</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>336702</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>75198fd4df8e85d631c0a92699678b15</srcmd5>
+    <version>0.1.2</version>
+    <time>1307364027</time>
+    <user>saschpe</user>
+    <comment>New package / Presentation creation using clutter / json based transitions</comment>
+    <requestid>71073</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>393b9b6a221075e5a50d47fea1852e8f</srcmd5>
+    <version>0.1.2</version>
+    <time>1307364041</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71073
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>36cf2fd1496e22bfbbc1653ad0989a0f</srcmd5>
+    <version>0.1.2</version>
+    <time>1313413943</time>
+    <user>saschpe</user>
+    <comment>Tweak, to have the cleanup specified</comment>
+    <requestid>78697</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>184677cd35d478b6f97c65c2b48cbe75</srcmd5>
+    <version>0.1.2</version>
+    <time>1313413953</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78697
+</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c56cd979079aca884ae05d92d2193916</srcmd5>
+    <version>0.1.2</version>
+    <time>1318501504</time>
+    <user>lrupp</user>
+    <comment>Pushing G:A</comment>
+    <requestid>87623</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>c56cd979079aca884ae05d92d2193916</srcmd5>
+    <version>0.1.2</version>
+    <time>1319182358</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>89ddb153c69f0af347fa4215d8bfe608</srcmd5>
+    <version>0.1.4</version>
+    <time>1325787298</time>
+    <user>coolo</user>
+    <comment>Pushing G:A</comment>
+    <requestid>98942</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>89ddb153c69f0af347fa4215d8bfe608</srcmd5>
+    <version>0.1.4</version>
+    <time>1340184003</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fb4c9da8a6920d0577da7ba453d67683</srcmd5>
+    <version>0.1.4+git</version>
+    <time>1358786668</time>
+    <user>coolo</user>
+    <comment>- Version 0.1.5 (git 5118c870cd0b):
+  + Features
+    - Map left/right mouse buttons to next/prev slide
+    - blank screen when B is pressed
+    - First slide (home) when H is pressed
+    - Identify window titles
+  + Bugfixes
+    - Making the speaker's view handles properly relative paths.
+    - video: add support for .gif video extension
+    - Avoid crash when speaker window is closed
+- Added 0001-Fix-overwriting-of-slides-in-speaker-screen.patch and
+  0001-Honor-stage-color-in-PDF-output.patch.
+- Removed pinpoint-racy-video-frame.patch: fixed upstream.
+- Drop pkgconfig(clutter-gst-1.0) BuildRequires: There is no
+  support for clutter-gst-1.0 in Factory / 12.3.
+- Add libtool BuildRequires and call to autogen.sh, as the tarball
+  is a non-bootstrapped git archive. (forwarded request 149319 from dimstar)</comment>
+    <requestid>149320</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>fb4c9da8a6920d0577da7ba453d67683</srcmd5>
+    <version>0.1.4+git</version>
+    <time>1359109928</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>fb4c9da8a6920d0577da7ba453d67683</srcmd5>
+    <version>0.1.4+git</version>
+    <time>1379664032</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>fb4c9da8a6920d0577da7ba453d67683</srcmd5>
+    <version>0.1.4+git</version>
+    <time>1409302705</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e3457b247e39abdf65c9b822f4e15b0f</srcmd5>
+    <version>0.1.6</version>
+    <time>1438421882</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319219</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ea39b36535515d1d804c981e6b8aad7b</srcmd5>
+    <version>0.1.8</version>
+    <time>1452850859</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353286</requestid>
+  </revision>
+</revisionlist>

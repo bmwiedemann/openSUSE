@@ -1,0 +1,845 @@
+-------------------------------------------------------------------
+Mon Aug  6 09:04:06 UTC 2018 - schwab@suse.de
+
+- Rebuild configure to pick up the updated AC_HEADER_MAJOR
+- Use %license for COPYING, COPYING.LIB
+
+-------------------------------------------------------------------
+Wed Jul 12 11:19:52 UTC 2017 - jengelh@inai.de
+
+- Rename %soname to %sover to better reflect its use
+
+-------------------------------------------------------------------
+Mon Jul  7 11:04:11 UTC 2017 - zenitur@ya.ru
+
+- Switch GCC version from 4.3 to 4.8 for SLES 11
+
+-------------------------------------------------------------------
+Mon Jun 26 10:11:41 UTC 2017 - idonmez@suse.com
+
+- Update to version 2017.3.23
+  * Delegated processing of special reparse points to external plugins
+  * Allowed kernel cacheing by lowntfs-3g when not using Posix ACLs
+  * Enabled fallback to read-only mount when the volume is hibernated
+  * Made a full check for whether an extended attribute is allowed
+  * Moved secaudit and usermap to ntfsprogs (now ntfssecaudit and ntfsusermap)
+  * Enabled encoding broken UTF-16 into broken UTF-8
+  * Autoconfigured selecting <sys/sysmacros.h> vs <sys/mkdev>
+  * Allowed using the full library API on systems without extended attributes support
+  * Fixed DISABLE_PLUGINS as the condition for not using plugins
+  * Corrected validation of multi sector transfer protected records
+  * Denied creating/removing files from $Extend
+  * Returned the size of locale encoded target as the size of symlinks
+
+-------------------------------------------------------------------
+Sat Apr 01 10:32:33 UTC 2017 - zenitur@ya.ru
+
+- Fix SLES 11 build.
+
+-------------------------------------------------------------------
+Thu Aug 11 21:39:51 UTC 2016 - Greg.Freemyer@gmail.com
+
+- Fix update-alternatives usage.
+
+-------------------------------------------------------------------
+Mon Mar 21 22:56:13 UTC 2016 - Greg.Freemyer@gmail.com
+
+- change soname to 87
+
+- add "--enable-extras" arg to configure
+	Start including the extra programs: ntfswipe, ntfstruncate, ntfsrecover
+- add "--enable-crypto" arg to configure
+	Start including the optional program: ntfsdecrypt
+- add "--enable-quarantined" arg to configure
+	Start including the optional programs: ntfsck, ntfsdump_logfile, ntfsfallocate, ntfsmftalloc, ntfsmove
+	Put these "quarantined" applications in a new -extra sub-project
+
+- add specfile updates to support the above new program builds
+
+- create a -extra sub-package to hold the "quarantined" utilities.
+
+- update to stable Versions 2016.2.22 (Mar 21, 2016 release date)
+	Changes to NTFS-3G driver:
+	– Write as much data as possible in compressed attribute pwrite
+	– Fixed getting space for making an index non resident
+	– Alleviated constraints relative to reparse points
+	– Fixed special case of decompressing a runlist
+	– Fixed returning the trimming count to fstrim()
+	– Fixed the range of valid subauthority counts in a SID
+	– Updated the read-only flag even when the security attribute was cached
+	– Defended against reusing data from an invalid MFT record
+	– Simplified NTFS ACLs when group same as owner and same permission as world
+	– Packed/unpacked st_rdev transported as 32-bits on Solaris 64-bits
+	– Zero uninitialized bytes before writing compressed data
+	– Clear the environment when starting mount or umount
+	– Implemented rewinding a directory in lowntfs-3g
+	– Use incremental offsets when reading a directory in lowntfs-3g
+
+	Changes to mkntfs:
+	– Make installing mkntfs /sbin symlinks dependent on ENABLE_MOUNT_HELPER
+	– Mention the starting sector when it overflows in mkntfs
+	– Upgraded the upper-case table to same as Windows 7, 8 and 10
+
+	Changes to ntfsresize:
+	– Fixed relocating the MFT runlists
+	– Decode the full list of bad clusters
+	– Fixed resizing an extended bad cluster list
+
+	Changes to ntfsclone:
+	– Decoded the full list of bad clusters
+
+	Changes to ntfsinfo:
+	– Displayed reparse point information
+
+	Changes to ntfsdecrypt:
+	– Fixed DESX decryption
+
+	Changes to ntfswipe:
+	– Added clarifications about several options to the manual
+
+	New ntfsprogs tool:
+	– Included ntfsrecover to recover the updates committed by Windows (experimental)
+
+	Overall:
+	– Made a general cleanup of endianness types for easier checks
+
+
+-------------------------------------------------------------------
+Tue Jun  2 12:19:03 UTC 2015 - idonmez@suse.com
+
+- Update to STABLE Version 2015.3.14 (March 31, 2015)
+    ntfs-3g: Fixed inserting a new ACL after wiping out by chkdsk
+    ntfs-3g: Fixed Windows-type inheritance
+    ntfs-3g: Fixed ignoring the umask mount option when permissions are used
+    ntfs-3g: Fixed checking permissions when Posix ACLs are compiled in but not enabled
+    ntfs-3g: Disabled option remove_hiberfile on read-only mounts
+    ntfs-3g: Implemented an extended attribute to get/set EAs
+    ntfs-3g: Avoid full runlist updating in more situations
+    ntfs-3g: Update ctime after setting an ACL
+    ntfs-3g: Use MFT record 15 for the first extent to MFT:DATA
+    ntfs-3g: Ignore the sloppy mount option (-s)
+    ntfs-3g: Implemented FITRIM (fstrim) ioctl
+    ntfs-3g: Reengineered the compression algorithm
+    ntfsprogs: Added manuals for ntfsdecrypt, ntfswipe, ntfstruncate and ntfsfallocate
+
+-------------------------------------------------------------------
+Thu Feb 12 15:56:00 UTC 2015 - Greg.Freemyer@gmail.com
+
+- remove buildall.sh file and spec file reference
+    It is a remnant from a previous maintainer and is well out of date
+
+-------------------------------------------------------------------
+Thu Jan  1 22:16:09 UTC 2015 - meissner@suse.com
+
+- build with PIE
+
+-------------------------------------------------------------------
+Tue Nov 18 22:18:43 UTC 2014 - crrodriguez@opensuse.org
+
+- Enable ACL support 
+- Buildrequire libuuid-devel and hwinfo-devel, silences build warning
+  about the need of that libraries.
+
+-------------------------------------------------------------------
+Tue Apr 22 23:53:03 UTC 2014 - tabraham@suse.com
+
+- Upgrade to STABLE Version 2014.2.15 (February 23, 2014)
+    libntfs: added use of hd library to get the legacy BIOS geometry
+    libntfs: switched to /proc/mounts for checking existing mounts
+    libntfs: fixed usa checking by ntfsck on 4K sector disks
+    libntfs: fixed processing compressed data beyond file size (Windows 8 compliance)
+    libntfs: fixed expanding a resident attribute without inserting holes
+    libntfs: allow DACLs to not have any ACE
+    libntfs: ignore unmapped regions when checking whether sparse
+    libntfs: upgraded the Win32 interface for use with ntfsprogs
+    ntfsresize: enabled relocating the MFT when shrinking a volume
+    ntfsresize: fixed trying to update the MFT and Bitmap on a test run
+    ntfsresize: fixed updating all the MFT runs in a relocated MFT
+    ntfsresize: set the backup boot sector when the size is reliable
+    ntfsresize: reserved a single sector for the backup boot sector
+    ntfsundelete: output the modification time when scanning files
+    ntfsundelete: ported to Windows
+    ntfsclone: fixed wiping fragmented metadata when creating a metadata image
+    ntfsclone: allowed cloning a file system despite allocation errors
+    ntfsclone: fixed bad copying of the backup boot sector
+    ntfsclone: ported to Windows
+    ntfsdecrypt: made compatible with libgrypt-1.6
+
+-------------------------------------------------------------------
+Mon May 20 02:40:34 UTC 2013 - Greg.Freemyer@gmail.com
+
+- Upgrade to STABLE Version 2013.1.13 (January 14, 2013)
+    ntfs-3g: fixed returned files types in readdir()
+    ntfs-3g: force option ‘ro’ when mounting a read-only device
+    ntfs-3g: keep the name of a deleted file in place for easier undeletion
+    ntfs-3g: accept multiple read-only mounts
+    ntfs-3g: improved Windows-type ACL inheritance, as needed by Windows 8
+    ntfs-3g: avoid unnecessary runlist update when appending data to a file
+    ntfs-3g: added inheritance of the set-group-id flag
+    ntfs-3g: deny mounting when fast restart mode of Windows 8 is detected
+    ntfs-3g: reject getting/setting DOS names on hard linked files
+    ntfsclone: fixed wiping user data when creating metadata images
+    ntfsclone: implemented a new option to set a new serial number
+    ntfsfix: implemented fixing the backup boot sector
+    ntfsfix: fixed clearing the bad cluster list
+    ntfsinfo: added allocation data to the volume parameters summary
+    ntfsinfo: output the numbers of runs and fragments for the selected file
+    ntfslabel: implemented a new option to set a new serial number
+    ntfswipe: added optional wiping of file tails and undelete data
+    mkntfs: insert an $Info stream in $UpCase to comply with Windows 8
+    openindianas: merged OpenIndiana requirements into the driver and fuse-lite
+- remove ntfs-3g_ntfsprogs-use-caution-with-fastboot.patch, now in upstream
+
+-------------------------------------------------------------------
+Mon Apr 15 13:32:48 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Thu Jan 31 21:04:14 UTC 2013 - badshah400@gmail.com
+
+- Add ntfs-3g_ntfsprogs-use-caution-with-fastboot.patch to 
+  prevent partitions with metadata cached in Windows (when
+  FastBoot is enabled) from being mounted; patch taken from
+  upstream git and rebased (bnc#798337 / rh#859373).
+
+-------------------------------------------------------------------
+Sun Sep 23 04:44:46 UTC 2012 - jengelh@inai.de
+
+- Avoid static and internal libraries - use system libfuse instead
+- Avoid %makeinstall to fix installation on non-SUSE
+
+-------------------------------------------------------------------
+Sat May 26 16:37:45 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+
+-------------------------------------------------------------------
+Thu Feb 16 21:09:25 UTC 2012 - crrodriguez@opensuse.org
+
+- Libraries back to %{_libdir}, /usr merge project.
+
+-------------------------------------------------------------------
+Sat Jan 28 16:44:49 UTC 2012 - tabraham@novell.com
+
+-  Update to version 2012.1.15
+   + ntfs-3g:
+     - fixed device path canonicalization for use by devmapper
+     - fixed setting DOS names when defined with lower-case chars
+     - fixed attribute flags controlling recursive writes
+     - fixed compilation on OpenIndiana
+     - fixed options parsing on OSes with no extended attributes
+     - fixed realtime as a default mount option
+     - fixed endless recursion when MFT extents are described by
+       themselves
+     - fixed the description of inherit option
+     - fixed overwriting a truncated file
+     - fixed truncation of DOS file names (12 ntfschars, not 12
+       utf8 chars)
+     - fixed the setting of attributes by secaudit (index not
+       synced)
+     - faster compression
+     - new option delay_mtime to delay updates of mtime+ctime
+   + ntfsfix:
+     - new option -d to clear the dirty flag if fix is successful
+     - fixed volume dirty flag test
+     - new option to clear the list of bad sectors
+     - fixed compilation on Sparc
+     - fixed a bug causing segmentation violation
+     - repair self-located MFT data bug
+   + ntfscp:
+     - fix free space calculation
+     - support compression
+   + ntfsresize:
+     - implemented expanding runlists
+     - updated the description of the -f option
+     - expand an NTFS volume downwards
+   + ntfsclone:
+     - backup bootsector not be to accounted for
+     - creating/restoring a metadata image
+   + ntfsundelete:
+     - try to recover the file name when undeleting
+     - use inode number to name unnamed files
+   + ntfswipe:
+     - big endian and other fixes
+   + secaudit:
+     - prefixed owner and group SID in ACL display
+   + library:
+     - fixed big cluster support using 4kB sector disk
+     - fixed huge data writes
+     - use transparent compression by default
+     - fixed several bad returns in error conditions
+     - enabled getting the sector size on FreeBSD and MacOSX
+   + build:
+     - fixed "make libs" to only build libraries
+- Rename libntfs-3g81 subpackage to libntfs-3g83, following
+  upstream soversion bump.
+
+-------------------------------------------------------------------
+Fri Jul  1 15:41:25 CEST 2011 - vuntz@opensuse.org
+
+- Rename source package from ntfs-3g to ntfs-3g_ntfsprogs
+  (following upstream).
+- Remove ntfsprogs BuildRequires as it will now be built with this
+  package; update %check to reference the mkntfs binary we built
+  instead of the system one.
+- Define a ntfs-3g subpackage, for compatibility with old package.
+- Split libntfs-3g in libntfs-3g81 subpackage to follow shared
+  library packaging policy.
+- Rename devel subpackage to libntfs-3g-devel for extra clarity,
+  and add appropriate Provides/Obsoletes.
+- Package /sbin/mount.ntfs and %{_mandir}/man8/mount.ntfs.8 as
+  ghost files, to fix rpmlint warning.
+
+-------------------------------------------------------------------
+Tue Jun 28 17:10:56 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 2011.4.12:
+  + ntfs-3g:
+    - fixed possible wrong hole size when overwriting compressed
+      data
+    - fixed listxattr() to environments with extended attributes
+    - fixed ENOSPC when making an index non-resident
+    - fixed partial mapping ahead of mapped runlist
+    - enabled forensic mounting (currently same as read-only)
+    - expand an attribute without creating a hole
+    - improved appending data to a long hole
+    - deny direct modifications to metadata files
+    - option 'acl' to request the use of Posix ACLs
+  + ntfsclone:
+    - fixed reading old big-endian ntfsclone images
+    - avoided writing beyond allocated variable
+    - close volume and cleanup when exiting
+    - new option not to clear the timestamps
+    - sync created image before remounting
+    - use a stream to produce aligned writes during image creation
+  + ntfsinfo: display times in UTC
+  + mkntfs:
+    - don't store full bitmap and logfile in memory
+    - set a volume UUID if option -U
+    - fixed $MFT allocated size
+    - fixed allocated size of resident unnamed data
+  + ntfsfix:
+    - new option -n for no action
+    - try alternate boot sector if cannot start up
+    - check and fix the upcase table
+    - try to fix file systems with incorrect size
+  + ntfsundelete: fixed a segfault
+  + ntfsresize:
+    - new option --info-mb-only
+    - new option --check
+- ntfs-3g and ntfsprogs are now part of one source tarball. For
+  easiest upgrade path, we create a subpackage called ntfsprogs.
+  The version number is higher than the latest released one, so
+  there is no need for special care.
+
+-------------------------------------------------------------------
+Sat Apr 30 18:14:05 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix build with gcc 4.6: Remove -Werror from CFLAGS in the spec
+  file. It currently fails on "error: variable 'foo' set but not
+  used [-Werror=unused-but-set-variable]"
+
+-------------------------------------------------------------------
+Sun Mar 20 22:23:50 CET 2011 - dimstar@opensuse.org
+
+- Update to version 2011.1.15:
+  + New festures:
+    - implemented fsync() and fsyncdir().
+    - implemented the ’sync’ mount option.
+    - sanity check upcase table.
+    - added a big-endian extended attribute name for attrib and
+      times.
+    - added an extended attribute name for creation time.
+    - enable renaming of system extended attributes.
+  + Bug fixes:
+    - improved appending data to fragmented files.
+    - improved rebuilding a runlist.
+    - improved comparing filenames on big-endian CPUs.
+    - stat(2) for system files with no data.
+    - alignment on cached structures.
+    - Posix ACLs for big-endian CPUs.
+    - deleting files using ignore_case option.
+    - allocated size when an attribute update causes unnamed
+      data to be expelled.
+
+-------------------------------------------------------------------
+Mon Oct  4 12:06:02 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2010.10.2:
+  + Bug fixes:
+    - Fixed filename encoding when standard functions are not
+      available.
+    - Fixed checking mounted device status on some non-Linux
+      platforms.
+    - Fixed mounting with SELinux context.
+    - Fixed -n and --no-mtab mount option handling, needed by
+      automount.
+    - Improved consistency checks of POSIX ACLs.
+    - NTFS-3G manual update.
+
+-------------------------------------------------------------------
+Mon Aug  9 11:30:16 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2010.8.8:
+  + New features:
+    - Full, transparent, read-write compression support.
+    - Two new mount options: compression and nocompression
+      (default).
+    - Introduced windows_names mount option to enforce only Windows
+      names.
+  + Behavior changes:
+    - Re-enabled compression in root directory.
+    - Reversed default for showing/hiding hidden files.
+    - Redefined default user mapping.
+    - Marked files whose name has a dot initial as “hidden” if
+      option hide_dot_files is used.
+    - Renamed option default_permissions to permissions.
+  + Bug fixes:
+    - Fixed use of utimensat() with external fuse older than 2.8.
+    - Fixed a hang when reading a corrupt compressed file.
+    - Fixed a possible crash when creating a stream.
+    - Fixed all reported and found compressed write related bugs.
+    - Fixed partially overwriting sparse clusters on highly
+      fragmented volumes.
+    - Fixed checking write errors in setxattr().
+    - Fixed processing end of partial runlist for compressed files.
+    - Fixed updating file compressed sizes.
+    - Fixed checking the device mount state.
+    - Fixed processing of options silent and no_def_opts.
+    - Fixed excessive cluster allocation within big holes.
+    - Fixed creating empty encrypted extended attributes.
+    - Fixed too permissive sanity check before compressing.
+    - Fixed error returns when writing compressed data.
+    - Fixed sanity checked when closing a compressed file.
+    - Fixed zeroing the end of an ex-hole cluster of compressed
+      files.
+    - Improved sanity checks on security descriptors.
+
+-------------------------------------------------------------------
+Fri May 28 09:09:32 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 2010.5.22:
+  + The missing helpers secaudit and usermap are back.
+
+-------------------------------------------------------------------
+Fri May  21 10:08:37 CET 2010 - andrea@opensuse.org
+
+- Update to version 2010.5.16:
+  + Fixed a compilation issue with uClibc.
+  + Fixed modifying the read-only flag on a directory.
+  + Fixed a bug in ACL inheritance.
+  + Fixed a bad condition for security descriptor upgrade.
+  + Fixed a possible index block with no key in $SII.
+  + Fixed the condition for executing utime() and utimensat().
+  + Fixed wrong flags when uid/gid are forced in mount options.
+  + Fixed a bad error checking when closing a compressed file.
+  + Fixed compiler warnings on OpenSolaris.
+  + Fixed conditional code for self-test in secaudit.
+
+-------------------------------------------------------------------
+Mon Mar  8 10:08:37 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2010.3.6:
+  + New: Support Object Identifiers which are used by Windows for
+    shortcuts and caused CHKDSK warnings when the target was
+    deleted.
+  + New: Nanosecond resolution file timestamps support.
+  + New: Selective file timestamp modification by utimensat(2).
+  + New: Make non-resident TXF_DATA attribute of root directory
+    resident so Vista and later won’t complain about RAW partition.
+  + New: Caching inodes.
+  + New: More efficient UTF8/UTF16 translations.
+  + Fixed setting archive bit on file and alternated data stream
+    creation.
+  * Fixed setting reparse tags in parent directories.
+  + Fixed enabling permissions when no UserMapping file is found.
+  + Fixed an error return code in the main mount function.
+  + Fixed setting timestamp via extended attributes to be
+    consistent between Windows and Linux view.
+  + Fixed option processing when uid, gid, fmask or dmask are
+    present.
+- Drop ntfs-3g-usermap.patch and ntfs-3g-warnings.patch. Both have
+  beein included upstream.
+
+-------------------------------------------------------------------
+Sun Jan 17 04:36:33 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2010.1.16:
+  + Vista, Windows Server 2008 and Windows 7 couldn’t access a
+    volume, file or directory if it had a non-resident TXF_DATA
+    attribute despite being allowed by the NTFS $AttrDef attribute
+    specification file.
+  + NTFS-3G may crashed if a junction point referred to a non-ASCII
+    file.
+  + Compilation errors on Mac OS X, OpenSolaris and openSUSE.
+- Drop ntfs-3g-xattr.patch: fixed upstream.
+- Drop ntfs-3g-ac_c_const.patch: fixed upstream. This means we can
+  also remove the autogen.sh call.
+- Fix self-obsoletion of ntfsprogs-fuse.
+
+-------------------------------------------------------------------
+Wed Dec  9 10:19:27 CET 2009 - dimstar@opensuse.org
+
+- Update to version 2009.11.14:
+  + Full file ownership and permissions support. The ownership and
+    permissions of files are interoperable with Windows and
+    conforms to the POSIX rules.
+  + POSIX ACL support.
+  + Optional Windows-type inheritance of ACLs.
+  + Full extended attributes support for all namespaces: user,
+    system, security and trusted.
+  + Junction points support. The junction points and symbolic links
+    created by Windows are seen as symbolic links.
+  + Access is possible to NTFS internal data like Windows style
+    archive bit and file attributes. They are mapped to extended
+    attributes for easier access.
+  + Compression write support: sequential writing to compressed
+    files is supported.
+  + Support copying and restoring encrypted files without
+    decrypting them.
+  + Support getting and setting high-resolution file timestamps.
+  + Support to get, set and remove DOS filenames.
+  + Tools for managing ownership, permissions and ACLs:
+    ntfs-3g.secaudit checks the integrity of ownership, permissions
+    and ACL, ntfs-3g.usermap gives help to configure ownership.
+  + Implemented setchgtime() on Mac OS X.
+  + Improved Windows junction and symlink handling.
+  + Improved ACL handling.
+  + Unicode normalization on Mac OS X.
+  + Implemented true fsync() on Mac OS X
+  + Performance optimizations:
+    - Frequently used data are cached to improve speed.
+    - Space allocation for fragmented and sparse files has been
+      improved.
+- Add ntfs-3g-ac_c_const.patch: AC_C_CONST is not needed in
+  configure checks as per autoconf documentation (it fails with
+  -Werror)
+- Add ntfs-3g-usermap.patch, from upstream.
+- Rebase ntfs-3g-warnings.patch: one warning regarding unused
+  parameters is left. Patch sent upsream.
+- Add ntfs-3g-xattr.patch, from upstream.
+- Add pkg-config BuildRequires: needed for autogen to work.
+
+-------------------------------------------------------------------
+Mon Dec  7 13:17:33 CET 2009 - vuntz@opensuse.org
+
+- Rework the update-alternatives part to be really correct, even in
+  case of package renaming. Note that we need a %posttrans to work
+  around bugs in previously installed packages.
+
+-------------------------------------------------------------------
+Thu Oct 29 18:00:09 UTC 2009 - crrodriguez@opensuse.org
+
+- fix buggy calls to update-alternatives part of [bnc#544199] 
+
+-------------------------------------------------------------------
+Sat May  9 14:11:34 CEST 2009 - crrodriguez@suse.de
+
+- fix -devel package dependencies
+- fix suse-filelist-forbidden-devel-in-lib rpmlint error
+- avoid possible race condition during %check
+
+-------------------------------------------------------------------
+Tue Apr  7 20:35:37 CEST 2009 - vuntz@novell.com
+
+- Update to version 2009.4.4:
+  + Fix: Mount and system boot could hang if Linux kernel audit was
+    enabled.
+  + Fix: Volume could be potentially corrupted or the driver
+    crashed after a partial write or hardware error.
+  + Fix: The driver could crash handling highly fragmented files. 
+
+-------------------------------------------------------------------
+Fri Mar 27 11:04:42 CET 2009 - vuntz@novell.com
+
+- Update to version 2009.3.8:
+  + Fix: Some defragmenters reported NTFS-3G created directories
+    unmovable.
+  + Fix: The Windows NTFS file system checker, CHKDSK, may reported
+    "free space marked as allocated in the master file table (MFT)
+    bitmap".
+  + Fix: The driver may returned "No space left on device" error
+    when there was still free space on the NTFS volume.
+  + Fix: A file may got corrupted when the STANDARD INFORMATION
+    attribute was moved to an extent MFT record. Only the already
+    fixed Advanced NTFS-3G Driver had this problem, not the Stable
+    NTFS-3G Driver.
+  + Change: 10-50% faster file and directory creation, removal,
+    copy, unpackaging performance.
+  + Change: 500-1000% faster mount time. This is mostly noticable
+    on multi-TB volumes and embedded devices. Please note, a
+    generally 10-20 times faster performing NTFS-3G driver is
+    available for embedded devices separately.
+  + Change: Improved multi-cluster allocation, non-aligned file
+    write performance.
+  + Change: Improved volume consistency and recovery if the storage
+    device was unsafely detached or powered down.
+  + Change: Less disk space usage.
+  + New: The version/-V command line option has been added. 
+- Use makeinstall
+
+-------------------------------------------------------------------
+Thu Feb 12 02:31:27 CET 2009 - vuntz@novell.com
+
+- Update to version 2009.2.1:
+  + The 'recover' and 'norecover' mount options were introduced.
+    The former option will cause the driver to recover and repair a
+    corrupted or inconsistent NTFS volume if it's possible. The
+    default behaviour is 'recover'.
+  + The driver could crash when it tried to read a highly
+    fragmented file or directory which was either corrupted or it
+    was unreadable due to a hardware error.
+  + The driver incorrectly returned 'Permission denied' error
+    message if a requested extended attribute namespace wasn't
+    supported.
+  + The lack of file backup timestamp support confused some
+    applications on OS X.
+  + The user extended attribute namespace is supported by default
+    on Linux.
+  + A volume having unclean journal file is recovered and mounted
+    by default. The 'norecover' mount option can be used to disable
+    this behavior. 
+
+-------------------------------------------------------------------
+Sun Feb  1 18:10:44 EST 2009 - mboman@suse.de
+
+- Update to version 2009.1.1:
+  + New: Built-in, transparent UTF-8 conversion support.
+  + New: Support getting/setting the file creation timestamp on
+    OS X.
+  + Fix: An extended attribute got corrupted if the new attribute
+    size was smaller than the original size.
+  + Fix: Memory leaked if an extended attribute or alternate data
+    stream couldn't be opened.
+  + Fix: Report an error if a filename can not be listed during
+    reading a directory.
+  + Change: The 'locale=' mount option is not used anymore for
+    filename characterset conversion. Instead filenames are always
+    converted to UTF-8
+- Remove ntfs-3g-utf8-fallback.patch. Fixed differenly upstream
+
+-------------------------------------------------------------------
+Fri Jan 23 00:56:31 CET 2009 - vuntz@novell.com
+
+- Add back ntfs-3g-warnings.patch, for the warning fixes that were
+  not accepted upstream.
+
+-------------------------------------------------------------------
+Mon Jan 05 17:30:48 CET 2009 - mboman@suse.de
+
+- Update to version 1.5130:
+  +  New Advanced NTFS-3G Release
+  +  New High-Performance NTFS-3G for Embedded Devices
+- Remove ntfs-3g-warnings.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Mon Oct 27 17:30:48 CET 2008 - ro@suse.de
+
+- changed flavored requires to a simple PreReq
+  (the former are not really supported by all tools) 
+
+-------------------------------------------------------------------
+Mon Oct 27 16:54:28 CET 2008 - vuntz@novell.com
+
+- Use Requires(post) and Requires(postun) for update-alternatives,
+  to fix potential issues when installing.
+
+-------------------------------------------------------------------
+Wed Oct 22 14:14:56 CEST 2008 -  vuntz@novell.com
+
+- Update to version 1.5012:
+  + New: Support unlimited file and directory creation.
+- Changes from version 1.2812:
+  + Fix: A corrupted directory index entry could hang the driver
+    instead of returning "I/O error"
+- Changes from version 1.2918:
+  + Fix: The allocation size of an attribute may got corrupted if
+    the attribute size change failed.
+  + Fix: An MFT record could leak on big-endian CPUs if adding a
+    new attribute failed.
+  + Fix: The system log was flooded if a transparently compressed
+    or encrypted file was tried to be updated repeatedly.
+  + New: Solaris support.
+  + New: Libtool-2 support.
+  + Change: No external dependency on librt anymore when internal
+    FUSE is used (default on Linux).
+  + Change: The default compiler is gcc.
+  + Change: Internal FUSE further shrank by 10%. 
+- Use update-alternatives to provide /sbin/mount.ntfs and the
+  relevant man page, /usr/share/man/man8/mount.ntfs.8.gz.
+- Add volume.policy.mount_filesystem to the fdi file, since it's
+  recommended by upstream and used by other distributions.
+- Update ntfs-3g-warnings.patch with a few more warning fixes.
+- Add a devel package.
+- Tag patches.
+- Remove old stuff for non-existing ntfs-3g-permssions.patch.
+- Remove lzma BuildRequires.
+- Minor cleanup.
+
+-------------------------------------------------------------------
+Wed Oct 15 13:13:22 CEST 2008 - dkukawka@suse.de
+
+- Added fdi file for ntfs-3g. For more info, read comments in the 
+  new file.
+
+-------------------------------------------------------------------
+Mon Jul 14 15:34:23 CEST 2008 - bk@suse.de
+
+- Update to 1.2712 (maintenance release) to fix a number of issues:
+  - A corrupted size directory or a directory over tens of million
+    files could have hung the driver
+  - Removing alternate data streams and extended attrs leaked memory
+  - mount could fail with some mount(8) utilities (e.g. busybox one)
+    if the /etc/mtab file didn't exist or was on a read-only fs
+  - "I/O error" if the standard file descriptors were closed during
+    mount, e.g. via some usage of udev or hotplug
+
+-------------------------------------------------------------------
+Thu Jun  5 13:49:43 CEST 2008 - bk@suse.de
+
+- Update to 1.2531 to fix fs crashes and fs hangs with corrupt NTFS:
+  - A corrupted directory could hang the filesystem driver itself.
+  - The driver could hang or misbehave when compressed, sparse or
+    encrypted file attribute flags were corrupted.
+  - The driver could crash when both an MFT attribute offset and
+    the allocated bytes were corrupted.
+  - Mount could hang if the block allocation map was corrupted.
+
+-------------------------------------------------------------------
+Tue May  6 16:56:02 CEST 2008 - bk@suse.de
+
+- Update to STABLE Version 1.2506 (May 6, 2008):
+  - Fix NTFS volume corruption in extremely specific circumstances
+  - Fix symlink(2) for size 256 if the old path was over 255 bytes
+  - Unprivileged mount fixes: supplementary groups dropped too early
+    and make unprivileged mount if /etc/fuse.conf wasn't in shape.
+  - No longer pass 'noatime' additionally and unconditionally to mount
+- Obsolete ntfsprogs-fuse (to be dropped from ntfsprogs package)
+- With ntfsprogs and lzma, this builds in all non-debian repros
+
+-------------------------------------------------------------------
+Wed Mar 19 18:10:39 CET 2008 - bk@suse.de
+
+- Update to 1.2310:
+  - Fix: CHKDSK reported inconsistencies as data and allocation size
+    of some special purpose resident unnamed $DATA attribute in the
+    index and inode FILE_NAME attributes could be incorrect.
+  - Fix: unprivileged mount failed if user had rights for everything
+    except the FUSE device file.
+  - Fix: the 'dev' and 'suid' mount options weren't useable before
+  - Change from ENOTEMPTY to EEXIST on rmdir of non-empty directories 
+
+-------------------------------------------------------------------
+Mon Mar  3 19:14:18 CET 2008 - bk@suse.de
+
+- Add a fix for a crash of the driver with a specific long filename
+- Fix support for -odev and -osuid when mounting using /bin/ntfs-3g
+
+-------------------------------------------------------------------
+Thu Feb 28 16:05:43 CET 2008 - bk@suse.de
+
+- Workaround for build issue with gcc-4.3 (bnc#354113) is obsolete
+- Improve treatment of warnings and integrate -Wformat-security
+
+-------------------------------------------------------------------
+Mon Feb 18 16:38:06 CET 2008 - bk@suse.de
+
+- Update to 1.2216:
+  - adds ntfs3-g.probe to check if filesystem is in mountable state
+  - fixes "Operation not supported" when deleting huge directories
+  - uses specialized integrated libfuse with fixes for suid usage
+- Add a temporary workaround to prevent miscompilation with gcc-4.3
+- Add a simple functionality check using ntfs-3g.probe to %check
+- Added -Wextra -Werror and fixed the resulting compiler errors
+
+-------------------------------------------------------------------
+Wed Sep 26 14:22:32 CEST 2007 - bk@suse.de
+
+- When called as mount.ntfs-3g and rw mount is not possible because
+  the volume is dirty or hibernated, fall back to read-only mounnt
+  to allow installation and system boot to succeed (fixes #309074)
+
+-------------------------------------------------------------------
+Thu Sep 13 17:00:18 CEST 2007 - bk@suse.de
+
+- Update to version 1.913
+  - Fix too rigid hibernation check which unneccesarily refused mount 
+  - Free disk space calculation was highly CPU intensive during writes.
+    This could reduce write performance severely, especially for huge
+    volumes if a file manager or desktop applet regularly polled for
+    disk space usage. Change code to O(1), takes ~10ms on a typical
+    desktop, and it's now completely independent of the volume size.
+  The changes noted below were tested in public release candidate:
+  - Significant performance improvement for writing many files,
+    typically by 50-1000% (cp, tar, compile, directory syncronisation)
+  - improved the performance of writing multi-GB size files, particulary
+    after the creation of many thousands of other files. Previous disk
+    space defragmentation is highly adviced for the best possible speed.
+    File level defragmentation is not enough.
+  - improved concurrent write performance. 
+
+-------------------------------------------------------------------
+Mon Aug 27 13:10:58 CEST 2007 - bk@suse.de
+
+- Update to version 1.826: 
+  * fix: utime() also updated the timestamp of the parent directory
+  * fix: ignore the "volume dirty" bit because its real meaning is
+    "check the volume". The fact of the real dirtiness is stored in
+    the NTFS logfile which is already checked for.
+  * new: --disable-library option links libntfs-3g into ntfs-3g
+
+-------------------------------------------------------------------
+Fri Aug 10 17:14:42 CEST 2007 - bk@suse.de
+
+- Update to version 1.810: 
+  fix: file rename changed the modification time of some files which
+       prevented tools like rsync from preserving the timestamp
+  fix: unmount (fusermount -u) was denied for an unprivileged user
+       who was allowed to mount a block device.
+  fix: the driver could hang if there wasn't enough memory during
+       reading a large directory
+  fix: reading a directory may reporte success when there was an error
+  fix: metadata update error was ignored in some very rare cases during
+       writing a file
+  fix: permissions checking was turned on if umask, fmask and dmask
+       was set to the default 000 value.
+  change: manual update, added Windows filename compatibility section
+  change: lots of logging improvements 
+
+-------------------------------------------------------------------
+Thu Jul 26 21:05:44 CEST 2007 - coolo@suse.de
+
+- let yast install the package for ntfs-3g filesystems
+
+-------------------------------------------------------------------
+Fri Jul 13 15:56:16 CEST 2007 - bk@suse.de
+
+- Update to version 1.710:
+  change: more troubleshooting hints if a volume can't be mounted
+  change: logging improvements 
+  fix: move, rename and hard link could return "input/output error"
+  fix: very rare, recoverable directory corruption
+- Do not obsolete ntfsprogs-fuse and do not provide mount.ntfs
+  Can coexist with ntfsmount and kernel ntfs module now, but you
+  have to use "ntfs-3g" as filesystem type in fstab and mount -t,
+  as done in the examples on http://www.ntfs-3g.org/index.html#usage
+
+-------------------------------------------------------------------
+Tue Jul  3 17:43:16 CEST 2007 - bk@suse.de
+
+- Update to version 1.616:
+  new: ensure mount works during boot: move binaries to the rootfs
+  fix: any kind of file size change failure returned "Operation not permitted"
+  fix: a file close failure was not always reported
+  fix: an unmount failure was not always reported
+  fix: if the $MFT Bitmap wasn't up-to-date file creation always gave "Input/output error" 
+  fix: converting very long file names to Unicode may have failed
+  fix: syslog messages didn't show the low level error detail  
+
+-------------------------------------------------------------------
+Wed Jun  6 12:33:59 CEST 2007 - bk@suse.de
+
+- Initial version 1.516, has Obsoletes: ntfsmount-fuse
+

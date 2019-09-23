@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Mon Aug 19 08:15:30 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Remove dependency on attrs
+  Add: 0005-Drop-dependency-on-attrs.patch
+  this fixes bsc#1144506
+
+-------------------------------------------------------------------
+Thu Aug 15 08:35:19 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix a bit the multibuild conversion
+- Remove the attrs from the deps as they are no longer needed
+
+-------------------------------------------------------------------
+Thu Aug  8 11:41:45 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Enable tests via _multibuild
+  Add patches from https://github.com/pypa/packaging/pull/176:
+  * 0001-Fix-test-failures-test_linux_platforms_manylinux-for.patch
+  * 0002-Fix-check-for-64-bit-OS.patch
+  * 0003-Add-additional-test-to-get-100-branch-coverage.patch
+  * 0004-Fix-test_macos_version_detection-failure-on-32-bit-L.patch
+  (these fix the tests on non-x86 platforms and can be dropped on the next
+  release)
+
+-------------------------------------------------------------------
+Thu Aug  8 10:24:07 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Add Requires:python-attrs as this is a new dependency
+  this fixes bsc#1144506
+
+-------------------------------------------------------------------
+Tue Aug  6 04:58:54 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 19.1:
+  * Add the ``packaging.tags`` module.
+  * Correctly handle two-digit versions in ``python_version``
+
+-------------------------------------------------------------------
+Sat Mar  9 04:56:34 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix check that egg-info is a directory to work with %check enabled,
+  and better explain how it works
+- Remove unnecessary build dependency on base
+- Re-add test dependency on pyparsing with minimum version defined upstream,
+  and replace inline comment with GitHub issue URL
+- Add LICENSE.APACHE LICENSE.BSD to %license
+- Update to v19.0
+  * Fix string representation of PEP 508 direct URL requirements with markers.
+  * Better handling of file URLs
+    This allows for using ``file:///absolute/path``, which was previously
+    prevented due to the missing ``netloc``
+    This allows for all file URLs that ``urlunparse`` turns back into the
+    original URL to be valid
+- from v18.0
+  * Improve error messages when invalid requirements are given
+
+-------------------------------------------------------------------
+Fri Dec 28 08:49:34 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop pyparsing dependency as its not needed and creates circular
+  dependency on older distributions
+- Reduce amount of duplicities
+
+-------------------------------------------------------------------
+Thu Mar 22 20:37:57 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 17.1
+  * Fix utils.canonicalize_version when supplying non PEP 440 versions.
+- Update to version 17.0
+  * Drop support for python 2.6, 3.2, and 3.3.
+  * Define minimal pyparsing version to 2.0.2 (#91).
+  * Add epoch, release, pre, dev, and post attributes to Version and LegacyVersion (#34).
+  * Add Version().is_devrelease and LegacyVersion().is_devrelease to make it easy to determine if a release is a development release.
+  * Add utils.canonicalize_version to canonicalize version strings or Version instances (#121).
+
+-------------------------------------------------------------------
+Tue May  2 08:41:19 UTC 2017 - dmueller@suse.com
+
+- fix pyparsing requirement
+
+-------------------------------------------------------------------
+Thu Feb 23 11:45:52 UTC 2017 - jmatejek@suse.com
+
+- update for single-spec
+- drop setuptools dependency, as this is itself now a dependency
+  of setuptools
+- run tests conditionally, to minimize dependency tree
+- ensure egg-info is a directory (distutils would install it as file)
+
+-------------------------------------------------------------------
+Fri Dec  2 17:55:31 UTC 2016 - tbechtold@suse.com
+
+- update to 16.8:
+  * Fix markers that utilize ``in`` so that they render correctly.
+  * Fix an erroneous test on Python RC releases.
+
+-------------------------------------------------------------------
+Wed May 25 10:55:53 UTC 2016 - tbechtold@suse.com
+
+- update to 16.7:
+  * Add support for the deprecated ``python_implementation`` marker which was
+    an undocumented setuptools marker in addition to the newer markers.
+  * Add support for the deprecated, PEP 345 environment markers in addition to
+    the newer markers.
+
+-------------------------------------------------------------------
+Tue Mar  8 13:59:53 UTC 2016 - tbechtold@suse.com
+
+- update to 16.5:
+  * Fix a regression in parsing requirements with whitespaces between the comma
+    separators.
+  * Fix a regression in parsing requirements like ``foo (==4)``.
+  * Fix a bug where ``packaging.requirements:Requirement`` was overly strict when
+    matching legacy requirements.
+  * Add a function that implements the name canonicalization from PEP 503.
+  * Implement requirement specifiers from PEP 508.
+  * Relicense so that packaging is available under *either* the Apache License,
+    Version 2.0 or a 2 Clause BSD license.
+  * Support installation of packaging when only distutils is available.
+  * Fix ``==`` comparison when there is a prefix and a local version in play.
+    (:issue:`41`).
+  * Implement environment markers from PEP 508.
+- Adjust Requires according to requires.txt
+
+-------------------------------------------------------------------
+Tue Aug 11 07:05:29 UTC 2015 - tbechtold@suse.com
+
+- update to 15.3:
+  * Normalize post-release spellings for rev/r prefixes. :issue:`35`
+
+-------------------------------------------------------------------
+Thu Jun 25 04:01:09 UTC 2015 - tbechtold@suse.com
+
+- update to 15.2:
+  * Fix an error where the arbitary specifier (``===``) was not correctly
+    allowing pre-releases when it was being used.
+  * Expose the specifier and version parts through properties on the
+    ``Specifier`` classes.
+  * Allow iterating over the ``SpecifierSet`` to get access to all of the
+    ``Specifier`` instances.
+  * Allow testing if a version is contained within a specifier via the ``in``
+    operator.
+
+
+-------------------------------------------------------------------
+Thu Apr 23 18:45:03 UTC 2015 - tbechtold@suse.com
+
+- Initial packaging
+

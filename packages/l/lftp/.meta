@@ -1,0 +1,17 @@
+<package name="lftp" project="openSUSE:Factory">
+  <title>Command Line File Transfer Program</title>
+  <description>LFTP is a reliable shell-like command line FTP client. It can retry
+operations and does reget automatically. It can do several transfers
+simultaneously in the background. With LFTP, you can start a transfer
+in the background and continue browsing that FTP site or another one.
+This is all done in one process. Background jobs are completed in nohup
+mode if you exit or close the modem connection. LFTP has reput, mirror,
+and reverse mirror among its features. Since version 2.0, it also
+supports the HTTP protocol. Other features include IPV6 support,
+context sensitive completion, output redirection to files or to pipe,
+FTP and HTTP proxy support, transfer rate throttling for each
+connection and for all connections in sum, job queuing, job execution
+at specified times, opie and skey support in the FTP protocol, SSL for
+HTTP and FTP, and FXP transfers.</description>
+  <devel project="network" package="lftp"/>
+</package>

@@ -1,0 +1,249 @@
+Index: lttng-modules-2.10.9/instrumentation/events/lttng-module/block.h
+===================================================================
+--- lttng-modules-2.10.9.orig/instrumentation/events/lttng-module/block.h
++++ lttng-modules-2.10.9/instrumentation/events/lttng-module/block.h
+@@ -618,7 +618,8 @@ LTTNG_TRACEPOINT_EVENT(block_bio_bounce,
+ 	TP_ARGS(q, bio),
+ 
+ 	TP_FIELDS(
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) \
++	|| LTTNG_KERNEL_RANGE(4,12,0, 4,13,0)) /* openSUSE */
+ 		ctf_integer(dev_t, dev, bio_dev(bio))
+ #else
+ 		ctf_integer(dev_t, dev, bio->bi_bdev ? bio->bi_bdev->bd_dev : 0)
+@@ -663,7 +664,8 @@ LTTNG_TRACEPOINT_EVENT(block_bio_complet
+ #endif
+ 
+ 	TP_FIELDS(
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) \
++	|| LTTNG_KERNEL_RANGE(4,12,0, 4,13,0)) /* openSUSE */
+ 		ctf_integer(dev_t, dev, bio_dev(bio))
+ #else
+ 		ctf_integer(dev_t, dev, bio->bi_bdev->bd_dev)
+@@ -697,7 +699,8 @@ LTTNG_TRACEPOINT_EVENT_CLASS(block_bio_m
+ 	TP_ARGS(q, rq, bio),
+ 
+ 	TP_FIELDS(
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) \
++	|| LTTNG_KERNEL_RANGE(4,12,0, 4,13,0)) /* openSUSE */
+ 		ctf_integer(dev_t, dev, bio_dev(bio))
+ #else
+ 		ctf_integer(dev_t, dev, bio->bi_bdev->bd_dev)
+@@ -763,7 +766,8 @@ LTTNG_TRACEPOINT_EVENT(block_bio_queue,
+ 	TP_ARGS(q, bio),
+ 
+ 	TP_FIELDS(
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) \
++	|| LTTNG_KERNEL_RANGE(4,12,0, 4,13,0)) /* openSUSE */
+ 		ctf_integer(dev_t, dev, bio_dev(bio))
+ #else
+ 		ctf_integer(dev_t, dev, bio->bi_bdev->bd_dev)
+@@ -854,7 +858,8 @@ LTTNG_TRACEPOINT_EVENT_CLASS(block_get_r
+ 	TP_ARGS(q, bio, rw),
+ 
+ 	TP_FIELDS(
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) \
++	|| LTTNG_KERNEL_RANGE(4,12,0, 4,13,0)) /* openSUSE */
+ 		ctf_integer(dev_t, dev, bio ? bio_dev(bio) : 0)
+ #else
+ 		ctf_integer(dev_t, dev, bio ? bio->bi_bdev->bd_dev : 0)
+@@ -1019,7 +1024,8 @@ LTTNG_TRACEPOINT_EVENT(block_split,
+ 	TP_ARGS(q, bio, new_sector),
+ 
+ 	TP_FIELDS(
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) \
++	|| LTTNG_KERNEL_RANGE(4,12,0, 4,13,0)) /* openSUSE */
+ 		ctf_integer(dev_t, dev, bio_dev(bio))
+ #else
+ 		ctf_integer(dev_t, dev, bio->bi_bdev->bd_dev)
+@@ -1062,7 +1068,8 @@ LTTNG_TRACEPOINT_EVENT(block_remap,
+ 	TP_ARGS(q, bio, dev, from),
+ 
+ 	TP_FIELDS(
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) \
++	|| LTTNG_KERNEL_RANGE(4,12,0, 4,13,0)) /* openSUSE */
+ 		ctf_integer(dev_t, dev, bio_dev(bio))
+ #else
+ 		ctf_integer(dev_t, dev, bio->bi_bdev->bd_dev)
+Index: lttng-modules-2.10.9/instrumentation/events/lttng-module/btrfs.h
+===================================================================
+--- lttng-modules-2.10.9.orig/instrumentation/events/lttng-module/btrfs.h
++++ lttng-modules-2.10.9/instrumentation/events/lttng-module/btrfs.h
+@@ -39,10 +39,12 @@ struct extent_state;
+ #endif
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) || \
++	LTTNG_KERNEL_RANGE(4,12,0, 4,13,0) /* openSUSE */  || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,73,5,0,0, 4,4,73,6,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,82,6,0,0, 4,4,82,7,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,92,6,0,0, 4,4,92,7,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,103,6,0,0, 4,5,0,0,0,0))
++
+ LTTNG_TRACEPOINT_EVENT(btrfs_transaction_commit,
+ 
+ 	TP_PROTO(const struct btrfs_root *root),
+@@ -146,7 +148,8 @@ LTTNG_TRACEPOINT_EVENT_INSTANCE(btrfs__i
+ )
+ #endif
+ 
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) || \
++	LTTNG_KERNEL_RANGE(4,12,0, 4,13,0)) /* openSUSE */
+ 
+ LTTNG_TRACEPOINT_EVENT(btrfs_get_extent,
+ 
+@@ -285,7 +288,8 @@ LTTNG_TRACEPOINT_EVENT(btrfs_get_extent,
+ 
+ #endif /* #else #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,10,0)) */
+ 
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) || \
++	LTTNG_KERNEL_RANGE(4,12,0, 4,13,0)) /* openSUSE */
+ LTTNG_TRACEPOINT_EVENT_CLASS(btrfs__ordered_extent,
+ 
+ 	TP_PROTO(const struct inode *inode,
+@@ -329,6 +333,7 @@ LTTNG_TRACEPOINT_EVENT_CLASS(btrfs__orde
+ 	)
+ )
+ #elif (LTTNG_SLE_KERNEL_RANGE(4,4,73,5,0,0, 4,4,73,6,0,0) || \
++	LTTNG_KERNEL_RANGE(4,12,0, 4,13,0) /* openSUSE */  || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,82,6,0,0, 4,4,82,7,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,92,6,0,0, 4,4,92,7,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,103,6,0,0, 4,5,0,0,0,0))
+@@ -376,6 +381,7 @@ LTTNG_TRACEPOINT_EVENT_CLASS(btrfs__orde
+ #endif
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) || \
++	LTTNG_KERNEL_RANGE(4,12,0, 4,13,0) /* openSUSE */  || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,73,5,0,0, 4,4,73,6,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,82,6,0,0, 4,4,82,7,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,92,6,0,0, 4,4,92,7,0,0) || \
+@@ -581,6 +587,7 @@ LTTNG_TRACEPOINT_EVENT(btrfs_sync_file,
+ #endif
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) || \
++	LTTNG_KERNEL_RANGE(4,12,0, 4,13,0) /* openSUSE */  || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,73,5,0,0, 4,4,73,6,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,82,6,0,0, 4,4,82,7,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,92,6,0,0, 4,4,92,7,0,0) || \
+@@ -623,6 +630,7 @@ LTTNG_TRACEPOINT_EVENT(btrfs_sync_fs,
+ #endif
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) || \
++	LTTNG_KERNEL_RANGE(4,12,0, 4,13,0) /* openSUSE */  || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,73,5,0,0, 4,4,73,6,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,82,6,0,0, 4,4,82,7,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,92,6,0,0, 4,4,92,7,0,0) || \
+@@ -797,6 +805,7 @@ LTTNG_TRACEPOINT_EVENT_INSTANCE_MAP(btrf
+ )
+ 
+ #elif (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) || \
++	LTTNG_KERNEL_RANGE(4,12,0, 4,13,0) /* openSUSE */  || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,73,5,0,0, 4,4,73,6,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,82,6,0,0, 4,4,82,7,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,92,6,0,0, 4,4,92,7,0,0) || \
+@@ -1000,7 +1009,8 @@ LTTNG_TRACEPOINT_EVENT(btrfs_delayed_ref
+ )
+ #endif
+ 
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) || \
++	LTTNG_KERNEL_RANGE(4,12,0, 4,13,0)) /* openSUSE */
+ 
+ LTTNG_TRACEPOINT_EVENT_CLASS(btrfs__chunk,
+ 
+@@ -1070,7 +1080,8 @@ LTTNG_TRACEPOINT_EVENT_INSTANCE(btrfs__c
+ 	TP_ARGS(fs_info, map, offset, size)
+ )
+ 
+-#elif (LTTNG_SLE_KERNEL_RANGE(4,4,73,5,0,0, 4,4,73,6,0,0) || \
++#elif (LTTNG_KERNEL_RANGE(4,12,0, 4,13,0) /* openSUSE */  || \
++	LTTNG_SLE_KERNEL_RANGE(4,4,73,5,0,0, 4,4,73,6,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,82,6,0,0, 4,4,82,7,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,92,6,0,0, 4,4,92,7,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,103,6,0,0, 4,5,0,0,0,0))
+@@ -1146,6 +1157,7 @@ LTTNG_TRACEPOINT_EVENT_INSTANCE(btrfs__c
+ #endif /* #else #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,10,0)) */
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) || \
++	LTTNG_KERNEL_RANGE(4,12,0, 4,13,0) /* openSUSE */  || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,73,5,0,0, 4,4,73,6,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,82,6,0,0, 4,4,82,7,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,92,6,0,0, 4,4,92,7,0,0) || \
+@@ -1186,6 +1198,7 @@ LTTNG_TRACEPOINT_EVENT(btrfs_cow_block,
+ #endif
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) || \
++	LTTNG_KERNEL_RANGE(4,12,0, 4,13,0) /* openSUSE */  || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,73,5,0,0, 4,4,73,6,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,82,6,0,0, 4,4,82,7,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,92,6,0,0, 4,4,92,7,0,0) || \
+@@ -1223,7 +1236,8 @@ LTTNG_TRACEPOINT_EVENT(btrfs_space_reser
+ )
+ #endif
+ 
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) || \
++	LTTNG_KERNEL_RANGE(4,12,0, 4,13,0)) /* openSUSE */
+ 
+ LTTNG_TRACEPOINT_EVENT_CLASS(btrfs__reserved_extent,
+ 
+@@ -1392,7 +1406,8 @@ LTTNG_TRACEPOINT_EVENT_INSTANCE(btrfs__r
+ 	TP_ARGS(block_group, start, len)
+ )
+ 
+-#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0))
++#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) || \
++	LTTNG_KERNEL_RANGE(4,12,0, 4,13,0)) /* openSUSE */
+ LTTNG_TRACEPOINT_EVENT_MAP(find_free_extent,
+ 
+ 	btrfs_find_free_extent,
+@@ -1611,6 +1626,7 @@ LTTNG_TRACEPOINT_EVENT_INSTANCE(btrfs__r
+ #endif /* #else #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,10,0)) */
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) || \
++	LTTNG_KERNEL_RANGE(4,12,0, 4,13,0) /* openSUSE */  || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,73,5,0,0, 4,4,73,6,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,82,6,0,0, 4,4,82,7,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,92,6,0,0, 4,4,92,7,0,0) || \
+@@ -1707,6 +1723,7 @@ LTTNG_TRACEPOINT_EVENT(btrfs_setup_clust
+ #endif
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,0) || \
++	LTTNG_KERNEL_RANGE(4,12,0, 4,13,0) /* openSUSE */  || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,73,5,0,0, 4,4,73,6,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,82,6,0,0, 4,4,82,7,0,0) || \
+ 	LTTNG_SLE_KERNEL_RANGE(4,4,92,6,0,0, 4,4,92,7,0,0) || \
+Index: lttng-modules-2.10.9/instrumentation/events/lttng-module/kmem.h
+===================================================================
+--- lttng-modules-2.10.9.orig/instrumentation/events/lttng-module/kmem.h
++++ lttng-modules-2.10.9/instrumentation/events/lttng-module/kmem.h
+@@ -132,7 +132,8 @@ LTTNG_TRACEPOINT_EVENT_MAP(mm_page_free_
+ 	)
+ )
+ 
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0) \
++	|| LTTNG_KERNEL_RANGE(4,12,0, 4,13,0)) /* openSUSE */
+ LTTNG_TRACEPOINT_EVENT_MAP(mm_page_free_batched, kmem_mm_page_free_batched,
+ 
+ 	TP_PROTO(struct page *page),
+Index: lttng-modules-2.10.9/instrumentation/events/lttng-module/kvm.h
+===================================================================
+--- lttng-modules-2.10.9.orig/instrumentation/events/lttng-module/kvm.h
++++ lttng-modules-2.10.9/instrumentation/events/lttng-module/kvm.h
+@@ -111,6 +111,7 @@ LTTNG_TRACEPOINT_EVENT(kvm_mmio,
+ 	|| LTTNG_KERNEL_RANGE(3,2,97, 3,3,0) \
+ 	|| LTTNG_UBUNTU_KERNEL_RANGE(4,13,16,38, 4,14,0,0) \
+ 	|| LTTNG_DEBIAN_KERNEL_RANGE(4,9,65,0,3,0, 4,10,0,0,0,0) \
++	|| LTTNG_KERNEL_RANGE(4,12,0, 4,13,0) /* openSUSE */ \
+ 	|| LTTNG_FEDORA_KERNEL_RANGE(4,14,13,300, 4,15,0,0))
+ 
+ LTTNG_TRACEPOINT_EVENT(kvm_mmio,

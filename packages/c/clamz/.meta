@@ -1,0 +1,9 @@
+<package name="clamz" project="openSUSE:Factory">
+  <title>Command-line tool to download MP3 files from Amazon</title>
+  <description>Clamz is a little command-line program to download MP3 files from
+Amazon.com's music store. It is intended to serve as a substitute
+for Amazon's official MP3 Downloader, which is not free software.
+Clamz can be used to download either individual songs or complete
+albums that you have purchased from Amazon.</description>
+  <devel project="devel:openSUSE:Factory" package="clamz"/>
+</package>

@@ -1,0 +1,22 @@
+<package name="stk" project="openSUSE:Factory">
+  <title>Synthesis ToolKit in C++</title>
+  <description>The Synthesis ToolKit in C++ (STK) is a set of open source audio
+signal processing and algorithmic synthesis classes written in the C++
+programming language. STK was designed to facilitate rapid development
+of music synthesis and audio processing software, with an emphasis on
+cross-platform functionality, realtime control, ease of use, and
+educational example code. The Synthesis ToolKit is extremely portable
+(it's mostly platform-independent C and C++ code), and it's completely
+user-extensible (all source included, no unusual libraries, and no
+hidden drivers). We like to think that this increases the chances that
+our programs will still work in another 5-10 years. In fact, the
+ToolKit has been working continuously for about 10 years now. STK
+currently runs with realtime support (audio and MIDI) on Linux,
+Macintosh OS X, and Windows computer platforms. Generic, non-realtime
+support has been tested under NeXTStep, Sun, and other platforms and
+should work with any standard C++ compiler.
+
+</description>
+  <devel project="multimedia:libs" package="stk"/>
+  <url>http://ccrma.stanford.edu/software/stk/</url>
+</package>

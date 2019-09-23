@@ -1,0 +1,13 @@
+<package name="llmnrd" project="openSUSE:Factory">
+  <title>Link-Local Multicast Resolution (LLMNR) Daemon</title>
+  <description>llmnrd is a daemon implementing the Link-Local Multicast Name Resolution (LLMNR)
+protocol according to RFC 4795. It currently only supports Linux, as it uses the
+netlink kernel interface.
+
+llmnrd will respond to name resolution queries sent by Windows clients in
+networks where no DNS server is available. It supports both IPv4 and IPv6.
+
+</description>
+  <devel project="network" package="llmnrd"/>
+  <url>https://github.com/tklauser/llmnrd</url>
+</package>

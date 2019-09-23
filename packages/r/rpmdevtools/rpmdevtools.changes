@@ -1,0 +1,235 @@
+-------------------------------------------------------------------
+Sat Dec 29 17:48:07 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Refreshed suse-specfile.patch to reflect current spec-cleaner
+  templates.
+
+- Dropped suse-specfile_python.patch (targets no longer supported)
+  and suse-specfile_python_single.patch (re-merged into
+  suse-specfile.patch)
+
+-------------------------------------------------------------------
+Wed Jul 25 07:14:11 UTC 2018 - mpluskal@suse.com
+
+- Modernise spec-file with spec-cleaner
+- Use generic runtime dependency on distribution-release
+- Move bash completions to correct dir
+- Update dependencies
+
+-------------------------------------------------------------------
+Sat May 27 13:28:13 UTC 2017 - aloisio@gmx.com
+
+- Update to version 8.10
+  * Extract (only) full name from gecos field in -packager
+    (rh#1350928)
+  * Point URLs to pagure.io
+
+- Updated source and homepage URLs
+
+- Dropped rmdevelrpms-8.5-SLE11.patch (target no longer built
+  in project)
+
+- Polished suse-specfile.patch, split off the python template
+  as suse-specfile_python.patch and
+  suse-specfile_python_single.patch and applied each depending on
+  the availability of python-rpm-macros
+
+-------------------------------------------------------------------
+Sat Dec 31 19:31:42 UTC 2016 - aloisio@gmx.com
+
+- Small changes to suse-specfile.patch
+
+-------------------------------------------------------------------
+Fri Dec 30 14:22:05 UTC 2016 - aloisio@gmx.com
+
+- Update to version 8.9 
+  * Fix bumpspec regression introduced in 8.7
+  rpmdevtools 8.8:
+  * Fix build if no previous version of rpmdev-packager is 
+    installed
+  * Update perl spec template build dependencies (#1349884)
+  rpmdevtools 8.7:
+  * Use %make_build for rpm >= 4.12 in -newspec
+  * Add placeholders args for %doc in spec templates (#1256815)
+  * Add %license to spec templates (#1256815)
+  * Use %autosetup for rpm >= 4.11 in -newspec (#1290913)
+  * Don't use shell to invoke -packager in -bumpspec
+  * Fix -checksig with Python 3; Python >= 2.7 is now required 
+    (#1348737)
+  * Don't write changelog in -bumpspec if nothing changed
+  * Make -bumpspec preserve whitespace in release lines
+  * Add -f/--file option to -bumpspec (#1246273)
+  * Try git config for -packager info (#1311255)
+
+- Refreshed suse-specfile.patch dont-drop-Groups.patch
+  also to add the copyright year dynamically to the
+  template
+
+- Refreshed rpmdevtools-rpmlintrc
+
+-------------------------------------------------------------------
+Sun Apr 24 16:39:58 UTC 2016 - aloisio@gmx.com
+
+- Last minute changes to templates (suse-specfile.patch)
+
+-------------------------------------------------------------------
+Sat Apr 23 11:40:10 UTC 2016 - aloisio@gmx.com
+
+- Update to version 8.6
+- Refreshed suse-specfile.patch 
+
+-------------------------------------------------------------------
+Sat Mar  7 08:28:44 UTC 2015 - aloisio@gmx.com
+
+- Template fix (2nd attempt)
+
+-------------------------------------------------------------------
+Sun Feb 22 13:52:58 UTC 2015 - aloisio@gmx.com
+
+- Minor fix to avoid having outdated templates
+
+-------------------------------------------------------------------
+Sat Jan 31 20:23:09 UTC 2015 - aloisio@gmx.com
+
+- debian tools are now packaged separately (devscripts)
+- added patch for SLE11
+- update to version 8.5 (2014-10-20)
+  Ville Skyttä:
+  * Install default curlrc, add --insecure to it.
+  * Support case insensitive Release tag in -bumpspec fallback.
+  * Add LZ4, zlib, and qpress support to -extract.
+  * Sync with qa-robot upstream 0.3.6-alt1 (#1004450).
+  * Exclude .git and .svn from -bumpspec completions by default (#22).
+  * Make -rmdevelrpms work with Python 3; Python >= 2.6 is now required.
+  * Avoid duplicate argument completions (#22).
+  * Recognize .deb archives in -extract per their new IANA MIME type.
+  * Update file strings for recognizing jar and friends in -extract.
+  * Fix -bumpspec encoding issues with Python 3 (#23).
+  * Explicitly error out on invalid number of args to -vercmp.
+  * Make -vercmp warn if parsed epoch, version, or release contains a hyphen.
+  * Make -extract less sensitive to upper/lowercase "file" output.
+  Michael Schwendt:
+  * Avoid some superfluous bumps in -bumpspec (#789330).
+  * Add --new option to -bumpspec (#14).
+  Ralph Bean:
+  * Preserve Release whitespace with bumpspec --new (#27).
+
+- version 8.4 (2013-10-07)
+  Ville Skyttä:
+  * Drop bundled devscripts, they're packaged separately now (#920163).
+  * Do not erase any files with -wipetree if given an argument.
+  * Exit with zero exit status from rpminfo -h/--help (#949976).
+  * Support 7z in -extract with 7z in addition to 7za.
+  * Output template %changelog entry from -newspec (#980897).
+  * Support non-lowercase %changelog in -bumpspec.
+  * Make -checksig, -sort, and -vercmp work with Python 3.
+  * Make -rmdevelrpms closer to work with Python 3.
+  * Sync with qa-robot upstream 0.3.5-alt1.
+  Michael Schwendt:
+  * Make -bumpspec bump all values, recognized or via fallback (#789330).
+
+-------------------------------------------------------------------
+Mon Apr 15 16:01:13 UTC 2013 - bwiedemann@suse.com
+
+- dont drop Group: lines as we still want them
+- replace [spectemplate] in the spec header if possible
+
+-------------------------------------------------------------------
+Sun Feb 24 19:15:17 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to 8.3:
+  * Make -bumpspec bump subpackage releases too (#789330).
+  * Use %make_install for rpm >= 4.8 in -newspec (#828455).
+  * Sync with upstream devscripts 2.12.1+git.
+  * Chop trailing comma off some licensecheck GPL version outputs.
+  * Make licencecheck check OCaml programs by default.
+  * Use nproc for _smp_mflags in -setuptree if available.
+  * Fix licensecheck to not truncate other licenses on Public domain
+    or WTFPL presence (#841043).
+  * Prevent symlink attack in annotate-output (#853452, CVE-2012-3500).
+- Updated suse-specfile.patch to be more compatible with
+  http://en.opensuse.org/Portal:Packaging.
+
+-------------------------------------------------------------------
+Fri Dec  9 21:46:30 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 8.2 version:
+  * Make -bumpspec write changelog timestamp in UTC.
+  * Make -extract work with multiple rpms from relative paths (#730120).
+  * Make -extract work with all combinations of supported archive types.
+  * Cope with _rpm_installed_packages function N/A or loaded on demand.
+  * Sync with upstream devscripts 2.11.1+git.
+  * Make main package dep in lib spec template ISA qualified (#751582).
+- Removed Redhat's spectool package (rpmdevtools has an internal copy).
+- Removed the patch for Redhat's spectool (rpmdevtools's spectool has it).
+- Spec file updates:
+  * Changes based on spec-cleaner run.
+  * Changed License: to GPL-2.0 and GPL-2.0+.
+  * rpmdevtools spectool now requires curl instead of wget.
+  * Use the "rpmdev-" prefix for some programs/manpages that conflict with the
+    ones from Debian devscripts or Redhat spectool.
+
+-------------------------------------------------------------------
+Wed May  4 09:09:56 UTC 2011 - toganm@opensuse.org
+
+- Update to 8.1 version 
+  * reworked the patch for newspec.conf so macros are preffered
+  Changes in this version:
+  * Sync with upstream devscripts 2.10.72+git.
+  * Use pigz and lbzip2/pbzip2 in -extract if available.
+  * Add lrzip support to -extract.
+  * Avoid leaking $i from various bash completions.
+  * -newspec -r related doc and completion improvements (#694579).
+  * Use completion features from bash-completion 1.2+ if available.
+  * Add -vercmp bash completion.
+
+-------------------------------------------------------------------
+Tue Mar  8 16:18:07 UTC 2011 - toganm@opensuse.org
+ 
+- Update to 8.0 version
+  Changes in this version
+  * Don't check RPATHs for noarch by default in -setuptree macros (#657594).
+  * Complete -extract in bash with more supported tarball names.
+  * Add -s option to -bumpspec (#12), speed it up a bit.
+  * Sync with upstream devscripts 2.10.69+git.
+  * Add Nils Philippsen's spectool 1.0.10.
+  * Fix spectool with Icon and incompatible BuildArchitectures tags (#637000).
+  * Don't shell-expand specfile preambles in spectool.
+  * Recognize %{pretrans,posttrans,verifyscript,triggerprein} in spectool.
+  * Make spectool work with old specfiles containing Serial and Copyright.
+  * Handle missing Group tag in spectool for rpm versions that require it.
+  * Make spectool download things with non-lowercase protocol names in URLs.
+  * Make spectool exit with non-zero status when downloading fails.
+  * Add man page for spectool, tune exit status and stdout/stderr for usage.
+  * Use curl instead of wget for downloading in spectool. Backwards
+    incompatible changes from spectool 1.0.10: uses
+    $sysconfdir/rpmdevtools/curlrc instead of $sysconfdir/fedora/wgetrc, and
+    downloads things that exist in the target dir only with --force.
+  * Make -newspec filter some specfile constructs depending on rpm version.
+  * Treat empty strings as nonexistent in -vercmp input (#13).
+  * Parse some unusual cases better in -vercmp 2-argument form;
+    rpmUtils.miscutils is no longer needed for that.
+  * Make -vercmp output prettier.
+  * Add -diff bash completion.
+  * Define _topdir when calling rpmbuild in spectool.
+  * Make spectool -s x,y and -p x,y work as documented.
+
+-------------------------------------------------------------------
+Fri Nov 19 10:50:19 UTC 2010 - toganm@opensuse.org
+
+- Update to 7.10 version
+  converted template.init to opensuse skeleton
+  reapplied http://en.opensuse.org/openSUSE:Specfile_guidelines as before
+
+-------------------------------------------------------------------
+Wed Sep  8 17:59:37 UTC 2010 - rob.fortune@live.com
+
+- Made tools more compliant with
+  http://en.opensuse.org/openSUSE:Specfile_guidelines
+  Specifically, macros are now default since all templates contained them and 
+  rm -rf $RPM_BUILD_ROOT was removed from the beginning of install. Odd,
+  floating %configuration section was also removed from the minimal specfile.
+  %clean section handles removing of buildroot so no problems should be caused
+  and I can't see anyone objecting to the prohibition on mixing and matching
+  shell and marco style variables, it's bad form.
+

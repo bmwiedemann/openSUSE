@@ -1,0 +1,75 @@
+Backport of r275640.
+
+2019-09-11  Richard Biener  <rguenther@suse.de>
+
+	* lto-opts.c (lto_write_options): Stream -g when debug is enabled.
+	* lto-wrapper.c (merge_and_complain): Pick up -g.
+	(append_compiler_options): Likewise.
+	(run_gcc): Re-instantiate handling -g0 at link-time.
+	* doc/invoke.texi (flto): Document debug info generation.
+
+Index: gcc/lto-opts.c
+===================================================================
+--- gcc/lto-opts.c	(revision 275454)
++++ gcc/lto-opts.c	(working copy)
+@@ -94,6 +94,10 @@ lto_write_options (void)
+ 				      : "-fno-pie");
+     }
+ 
++  /* If debug info is enabled append -g.  */
++  if (debug_info_level > DINFO_LEVEL_NONE)
++    append_to_collect_gcc_options (&temporary_obstack, &first_p, "-g");
++
+   /* Append options from target hook and store them to offload_lto section.  */
+   if (lto_stream_offload_p)
+     {
+Index: gcc/lto-wrapper.c
+===================================================================
+--- gcc/lto-wrapper.c	(revision 275454)
++++ gcc/lto-wrapper.c	(working copy)
+@@ -265,6 +265,7 @@ merge_and_complain (struct cl_decoded_op
+ 	case OPT_fshow_column:
+ 	case OPT_fcommon:
+ 	case OPT_fgnu_tm:
++	case OPT_g:
+ 	  /* Do what the old LTO code did - collect exactly one option
+ 	     setting per OPT code, we pick the first we encounter.
+ 	     ???  This doesn't make too much sense, but when it doesn't
+@@ -617,6 +618,7 @@ append_compiler_options (obstack *argv_o
+ 	case OPT_fopenacc:
+ 	case OPT_fopenacc_dim_:
+ 	case OPT_foffload_abi_:
++	case OPT_g:
+ 	case OPT_O:
+ 	case OPT_Ofast:
+ 	case OPT_Og:
+@@ -1399,6 +1401,10 @@ run_gcc (unsigned argc, char *argv[])
+ 	  linker_output_rel = !strcmp (option->arg, "rel");
+ 	  break;
+ 
++	case OPT_g:
++	  /* Recognize -g0.  */
++	  skip_debug = option->arg && !strcmp (option->arg, "0");
++	  break;
+ 
+ 	default:
+ 	  break;
+Index: gcc/doc/invoke.texi
+===================================================================
+--- gcc/doc/invoke.texi	(revision 275454)
++++ gcc/doc/invoke.texi	(working copy)
+@@ -10335,6 +10335,14 @@ conflicting translation units.  Specific
+ precedence; and for example @option{-ffp-contract=off} takes precedence
+ over @option{-ffp-contract=fast}.  You can override them at link time.
+ 
++To enable debug info generation you need to supply @option{-g} at
++compile-time.  If any of the input files at link time were built
++with debug info generation enabled the link will enable debug info
++generation as well.  Any elaborate debug info settings
++like the dwarf level @option{-gdwarf-5} need to be explicitely repeated
++at the linker command line and mixing different settings in different
++translation units is discouraged.
++
+ If LTO encounters objects with C linkage declared with incompatible
+ types in separate translation units to be linked together (undefined
+ behavior according to ISO C99 6.2.7), a non-fatal diagnostic may be

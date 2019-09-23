@@ -1,0 +1,75 @@
+--- cachefilesd.c.orig
++++ cachefilesd.c
+@@ -50,6 +50,7 @@
+ #include <sys/time.h>
+ #include <sys/vfs.h>
+ #include <sys/stat.h>
++#include <libkmod.h>
+ 
+ typedef enum objtype {
+ 	OBJTYPE_INDEX,
+@@ -278,6 +279,9 @@ int main(int argc, char *argv[])
+ 	char *line, *cp;
+ 	long page_size;
+ 	int _cachefd, nullfd, opt, loop, open_max, nodaemon = 0;
++	struct kmod_ctx *ctx;
++	struct kmod_module *mod;
++	int kmod_status;
+ 
+ 	/* handle help request */
+ 	if (argc == 2 && strcmp(argv[1], "--help") == 0)
+@@ -344,6 +348,29 @@ int main(int argc, char *argv[])
+ 	/* just in case... */
+ 	sync();
+ 
++	if (!(ctx = kmod_new(NULL, NULL))) {
++		oserror("Failed to allocate memory for kmod.");
++        }
++
++	kmod_load_resources(ctx);
++
++	kmod_status = kmod_module_new_from_name(ctx, "cachefiles", &mod);
++
++	if(kmod_status < 0)  oserror("Cannot load cachefiles module");
++
++	kmod_status = kmod_module_probe_insert_module(mod, KMOD_PROBE_APPLY_BLACKLIST,NULL, NULL, NULL, NULL);
++
++       	if (kmod_status == 0)
++		info("Inserted module '%s'", kmod_module_get_name(mod));
++	else if (kmod_status == KMOD_PROBE_APPLY_BLACKLIST)
++		oserror("Module '%s' is blacklisted", kmod_module_get_name(mod));
++	else {
++		oserror("Failed to insert '%s'", kmod_module_get_name(mod));
++	}
++
++	kmod_module_unref(mod);
++	kmod_unref(ctx);
++
+ 	/* open the devfile or the procfile on fd 3 */
+ 	_cachefd = open(devfile, O_RDWR);
+ 	if (_cachefd < 0) {
+--- configure.ac.orig
++++ configure.ac
+@@ -29,6 +29,8 @@ AC_SUBST([systemdsystemunitdir], [$with_
+ fi
+ AM_CONDITIONAL(HAVE_SYSTEMD, [test -n "$with_systemdsystemunitdir" -a "x$with_systemdsystemunitdir" != xno ])
+ 
++PKG_CHECK_MODULES([KMOD], [libkmod])
++
+ # Checks for typedefs, structures, and compiler characteristics.
+ AC_TYPE_SIZE_T
+ AC_TYPE_SSIZE_T
+--- Makefile.am.orig
++++ Makefile.am
+@@ -8,7 +8,8 @@ endif
+ 
+ sysconf_DATA = cachefilesd.conf
+ 
+-cachefilesd_CFLAGS = -fwhole-program
++cachefilesd_CFLAGS = $(KMOD_CFLAGS) -fwhole-program
++cachefilesd_LDADD = $(KMOD_LIBS)
+ cachefilesd_SOURCES = cachefilesd.c
+ dist_man8_MANS = cachefilesd.8
+-dist_man5_MANS = cachefilesd.conf.5
+\ No newline at end of file
++dist_man5_MANS = cachefilesd.conf.5

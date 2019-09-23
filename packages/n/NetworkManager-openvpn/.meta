@@ -1,0 +1,6 @@
+<package name="NetworkManager-openvpn" project="openSUSE:Factory">
+  <title>NetworkManager VPN support for OpenVPN</title>
+  <description>NetworkManager-openvpn provides VPN support to NetworkManager for
+OpenVPN.</description>
+  <devel project="GNOME:Factory" package="NetworkManager-openvpn"/>
+</package>

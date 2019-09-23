@@ -1,0 +1,12 @@
+Index: finger-bsd-1.3/finger/util.c
+===================================================================
+--- finger-bsd-1.3.orig/finger/util.c
++++ finger-bsd-1.3/finger/util.c
+@@ -440,5 +440,6 @@ vs (char *src)
+ 	wdst[i] = wstr[i];
+     }
+ 
+-  return wcstombs_alloc (wstr);
++  free(wstr);
++  return wcstombs_alloc (wdst);
+ }

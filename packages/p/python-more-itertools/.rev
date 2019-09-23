@@ -1,0 +1,153 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>931bb2ad24afe7db50f89d91991170d6</srcmd5>
+    <version>3.2.0</version>
+    <time>1513245295</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.0
+  * New itertools:
+      + :func:`lstrip`, :func:`rstrip`, and :func:`strip`
+        (thanks to MSeifert04 and pylang)
+      + :func:`islice_extended`
+  * Improvements to existing itertools:
+      + Some bugs with slicing :func:`peekable`-wrapped iterables
+        were fixed
+  3.1.0:
+  * New itertools:
+      + :func:`numeric_range` (Thanks to BebeSparkelSparkel and
+        MSeifert04)
+      + :func:`count_cycle` (Thanks to BebeSparkelSparkel)
+      + :func:`locate` (Thanks to pylang and MSeifert04)
+  * Improvements to existing itertools:
+      + A few itertools are now slightly faster due to some
+        function optimizations. (Thanks to MSeifert04)
+  * The docs have been substantially revised with installation
+    notes, categories for library functions, links, and more.
+    (Thanks to pylang)
+  3.0.0:
+  * Removed itertools:
+      + ``context`` has been removed due to a design flaw - see
+        below for replacement options. (thanks to NeilGirdhar)
+  * Improvements to existing itertools:
+      + ``side_effect`` now supports ``before`` and ``after``
+        keyword arguments. (Thanks to yardsale8)
+  * PyPy and PyPy3 are now supported.
+    The major version change is due to the removal of the
+    ``context`` function.
+    Replace it with standard ``with`` statement context management:
+    .. code-block:: python
+      # Don't use context() anymore
+      file_obj = StringIO()
+      consume(print(x, file=f) for f in context(file_obj) for x in
+      u'123')
+      # Use a with statement instead
+      file_obj = StringIO()
+      with file_obj as f:
+          consume(print(x, file=f) for x in u'123')
+  2.6.0:
+  * New itertools:
+      + ``adjacent`` and ``groupby_transform`` (Thanks to diazona)
+      + ``always_iterable`` (Thanks to jaraco)
+      + (Removed in 3.0.0) ``context`` (Thanks to yardsale8)
+      + ``divide`` (Thanks to mozbhearsum)
+  * Improvements to existing itertools:
+      + ``ilen`` is now slightly faster. (Thanks to wbolster)
+      + ``peekable`` can now prepend items to an iterable. (Thanks
+        to diazona)
+  2.5.0:
+  * New itertools:
+      + ``distribute`` (Thanks to mozbhearsum and coady)
+      + ``sort_together`` (Thanks to clintval)
+      + ``stagger`` and ``zip_offset`` (Thanks to joshbode)
+      + ``padded``
+  * Improvements to existing itertools:
+      + ``peekable`` now handles negative indexes and slices with
+        negative components properly.
+      + ``intersperse`` is now slightly faster. (Thanks to pylang)
+      + ``windowed`` now accepts a ``step`` keyword argument.
+        (Thanks to pylang)
+  * Python 3.6 is now supported.
+  2.4.1:
+  * Move docs 100% to readthedocs.io.
+  2.4:
+  * New itertools:
+      + ``accumulate``, ``all_equal``, ``first_true``,
+        ``partition``, and
+        ``tail`` from the itertools documentation.
+      + ``bucket`` (Thanks to Rosuav and cvrebert)
+      + ``collapse`` (Thanks to abarnet)
+      + ``interleave`` and ``interleave_longest`` (Thanks to
+        abarnet)
+      + ``side_effect`` (Thanks to nvie)
+      + ``sliced`` (Thanks to j4mie and coady)
+      + ``split_before`` and ``split_after`` (Thanks to
+        astronouth7303)
+      + ``spy`` (Thanks to themiurgo and mathieulongtin)
+  * Improvements to existing itertools:
+      + ``chunked`` is now simpler and more friendly to garbage
+        collection.
+        (Contributed by coady, with thanks to piskvorky)
+      + ``collate`` now delegates to ``heapq.merge`` when possible.
+        (Thanks to kmike and julianpistorius)
+      + ``peekable``-wrapped iterables are now indexable and
+        sliceable. Iterating through ``peekable``-wrapped iterables
+        is also faster.
+      + ``one`` and ``unique_to_each`` have been simplified.
+        (Thanks to coady)
+  2.3:
+  * Added ``one`` from ``jaraco.util.itertools``. (Thanks, jaraco!)
+  * Added ``distinct_permutations`` and ``unique_to_each``.
+    (Contributed by bbayles)
+  * Added ``windowed``. (Contributed by bbayles, with thanks to
+    buchanae, jaraco, and abarnert)
+  * Simplified the implementation of ``chunked``. (Thanks, nvie!)
+  * Python 3.5 is now supported. Python 2.6 is no longer supported.
+  * Python 3 is now supported directly; there is no 2to3 step.
+- Converted to single-spec
+- initial version
+</comment>
+    <requestid>555102</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>52f21ff1ea72fc151ffded5f277fc342</srcmd5>
+    <version>4.1.0</version>
+    <time>1522062924</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590886</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f7963c8dc151f680fc1715d58a6e52cd</srcmd5>
+    <version>4.1.0</version>
+    <time>1522404523</time>
+    <user>dimstar_suse</user>
+    <comment>- spec-cleaned
+- use of %license macro
+- removed unneded dependency (forwarded request 592318 from mimi_vx)</comment>
+    <requestid>592319</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1d1b56fe27ae61006a0a08011bc122a8</srcmd5>
+    <version>4.2.0</version>
+    <time>1528111280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613148</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5ad1bde6f15ea0357f26233e7db243df</srcmd5>
+    <version>5.0.0</version>
+    <time>1558938637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705242</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1a2efba501c21a22745b921970ff85be</srcmd5>
+    <version>7.2.0</version>
+    <time>1567420893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727060</requestid>
+  </revision>
+</revisionlist>

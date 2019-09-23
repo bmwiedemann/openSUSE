@@ -1,0 +1,211 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40b41c3d1192b2437a70b398cc896d0f</srcmd5>
+    <version>0.1.1</version>
+    <time>1462342795</time>
+    <user>dimstar_suse</user>
+    <comment>This is necessary for the Docker 1.11.1 update, in which the daemon has been
+split into multiple components.
+
+runC is also a useful package unto itself (it allows people to just run
+containers without needing any of the complicated functionality that Docker
+provides).</comment>
+    <requestid>392078</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b0fb1c4b7b6daa1c2fe371caffe2eb8d</srcmd5>
+    <version>0.1.1</version>
+    <time>1469831261</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>415383</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>82de08acce739c7bcb614a330cb98c9c</srcmd5>
+    <version>0.1.1</version>
+    <time>1471504687</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419732</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0d6f4c50245c6551d083d3f78989d044</srcmd5>
+    <version>0.1.1+gitcc29e3d</version>
+    <time>1474476558</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428676</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>84257b31e06193f433fc690c7a09ba76</srcmd5>
+    <version>0.1.1+gitcc29e3d</version>
+    <time>1475242315</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>429838</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c535449c076bde646b96f34670811ae4</srcmd5>
+    <version>0.1.1+git02f8fa7</version>
+    <time>1477481357</time>
+    <user>dimstar_suse</user>
+    <comment>update to docker-1.12.2</comment>
+    <requestid>437086</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cac71ceb0946667633d9b498ce561ffd</srcmd5>
+    <version>0.1.1+gitr2816_02f8fa7</version>
+    <time>1480019164</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441850</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4637c7876dc10c5d87b7b192d01e1c7e</srcmd5>
+    <version>0.1.1+gitr2818_f59ba3cdd76f</version>
+    <time>1484041471</time>
+    <user>dimstar_suse</user>
+    <comment>- update runc to the version used in docker 1.12.5 (bsc#1016307).
+  This fixes bsc#1015661 
+
+- For the moment, we have to switch to using Docker's fork of runC. This *will*
+  be solved properly by creating a new package purely for Docker's runC fork,
+  because it's quite silly to tie OCI project releases to Docker's vendoring
+  scheme. Once this is fixed, this package will be switch to being purely-OCI.
+
+- add the /usr/bin/docker-run symlink to partially fix bsc#1015661
+
+  fix bsc#1009961
+- update to 02f8fa7 because that is the needed version for docker 1.12.1 (bsc#1004490)
+  it fails to build</comment>
+    <requestid>447965</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6253449732d63eeb610eb2f281906c3d</srcmd5>
+    <version>0.1.1+gitr2819_50a19c6</version>
+    <time>1485167810</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 450530 from jordimassaguerpla)</comment>
+    <requestid>450531</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>68525668f6758e1751a13cdccf016869</srcmd5>
+    <version>0.1.1+gitr2942_2f7393a</version>
+    <time>1489345555</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>478794</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>126e10c9d61b0a903a895d304ddd7b42</srcmd5>
+    <version>0.1.1+gitr2942_2f7393a</version>
+    <time>1492417580</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>487329</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0267467c20c5b4683f36f882de09203a</srcmd5>
+    <version>0.1.1+gitr2947_9c2d8d1</version>
+    <time>1495267999</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>494718</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fe3b557441fcffb16826ec6ce6db010c</srcmd5>
+    <version>1.0.0~rc3+r133</version>
+    <time>1501406574</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509158</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>20703739c9234f79a595e4f602d0eea8</srcmd5>
+    <version>1.0.0~rc4</version>
+    <time>1502963060</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the upstream Makefile, to ensure that we always include the version
+  information in runc. This was confusing users (and Docker). bsc#1053532
+- Add a backported patch to fix a Makefile bug.
+  https://github.com/opencontainers/runc/pull/1555
+  + bsc1053532-0001-makefile-drop-usage-of-install.patch
+- Update to runc v1.0.0-rc4.
+- Use -buildmode=pie for tests and binary build. bsc#1048046 bsc#1051429
+- Cleanup seccomp builds similar to bsc#1028638</comment>
+    <requestid>517265</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c77fa6524f07c464f715b91e8085344b</srcmd5>
+    <version>1.0.0~rc4</version>
+    <time>1503591748</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517695</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5507f0a4cba09d6efdc23050ab33f689</srcmd5>
+    <version>1.0.0~rc5</version>
+    <time>1519902217</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580741</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>5974f7592f4361801ac833a93abed8aa</srcmd5>
+    <version>1.0.0~rc5</version>
+    <time>1528492193</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614156</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>557bc22db3ad7cfdb180dc35f4239035</srcmd5>
+    <version>1.0.0~rc5</version>
+    <time>1529666138</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616570</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>f75c8c5abe4111dbe4dc39067441937d</srcmd5>
+    <version>1.0.0~rc5</version>
+    <time>1541514542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645770</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b6342b7fec0bff43e174304dd8f9d7a5</srcmd5>
+    <version>1.0.0~rc6</version>
+    <time>1543999026</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to runc v1.0.0~rc6. Upstream changelog is available from
+  https://github.com/opencontainers/runc/releases/tag/v1.0.0-rc6</comment>
+    <requestid>652640</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>f605b543a7cd45231feb3b6844e4df0b</srcmd5>
+    <version>1.0.0~rc6</version>
+    <time>1545866707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660263</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>00d32202cb142716808872880f950a60</srcmd5>
+    <version>1.0.0~rc6</version>
+    <time>1551024234</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>674113</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8626cdaea984d9de8a86ff41e311cd25</srcmd5>
+    <version>1.0.0~rc8</version>
+    <time>1556817281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699413</requestid>
+  </revision>
+</revisionlist>

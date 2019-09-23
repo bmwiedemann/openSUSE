@@ -1,0 +1,632 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>36478980e2fa9650db9da76b726beb35</srcmd5>
+    <version>1.4.5_git201007091204</version>
+    <time>1285602015</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/cronie based on submit request 49010 from user elvigia
+</comment>
+    <requestid>49010</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5121f47ac0347880e306652ae9305b86</srcmd5>
+    <version>1.4.5_git201010210619</version>
+    <time>1287870518</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51274 from user mseben
+</comment>
+    <requestid>51274</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>98fff67d37e3e58df595abab63c4940f</srcmd5>
+    <version>1.4.5_git201010210619</version>
+    <time>1287870549</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51274
+</comment>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>738145fcc3f6c1ead6abba334dee6ec2</srcmd5>
+    <version>1.4.5_git201010210619</version>
+    <time>1288022494</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51338 from user coolo
+</comment>
+    <requestid>51338</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>5fe37ecd1e893222a3a04604ffbef124</srcmd5>
+    <version>1.4.5_git201010210619</version>
+    <time>1288022510</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51338
+</comment>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>bd8b050498d2ac8efcd7bdbf88c8a38f</srcmd5>
+    <version>1.4.6</version>
+    <time>1288262246</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51457 from user elvigia
+</comment>
+    <requestid>51457</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c2a071164c68e1f4b1153a9a7d2e3487</srcmd5>
+    <version>1.4.6</version>
+    <time>1288262253</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51457
+</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>77d1b0d918933ff087e7acfed22338db</srcmd5>
+    <version>1.4.6</version>
+    <time>1288692242</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51819 from user coolo
+</comment>
+    <requestid>51819</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>be0b42178d038a0f0287b0405dc7409c</srcmd5>
+    <version>1.4.6</version>
+    <time>1288692251</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51819
+</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>57cfe3244bb097c80cc2ab0afce43cfb</srcmd5>
+    <version>1.4.6</version>
+    <time>1289223613</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52397 from user a_jaeger
+</comment>
+    <requestid>52397</requestid>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>08f0e3154241696cbb9e8fcd021e34b7</srcmd5>
+    <version>1.4.6</version>
+    <time>1289223624</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52397
+</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>1f288e93d0a20a25371a505d16b89ad3</srcmd5>
+    <version>1.4.6</version>
+    <time>1289409562</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52640 from user elvigia
+</comment>
+    <requestid>52640</requestid>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>d43aa132ecc00ae3cdc1f661f3728dc2</srcmd5>
+    <version>1.4.6</version>
+    <time>1289409567</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52640
+</comment>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>9d9644f1ba54ca4d5815211319db747c</srcmd5>
+    <version>unknown</version>
+    <time>1291993478</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55564 from user elvigia
+</comment>
+    <requestid>55564</requestid>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>fd7c22c431649fa0ad958aaa59c2d030</srcmd5>
+    <version>unknown</version>
+    <time>1291993486</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55564
+</comment>
+  </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>f49b88c62ce13cc82522836c49bee221</srcmd5>
+    <version>unknown</version>
+    <time>1294652244</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57476 from user elvigia
+</comment>
+    <requestid>57476</requestid>
+  </revision>
+  <revision rev="17" vrev="13">
+    <srcmd5>52566152225066a34fca921ba6f60ee3</srcmd5>
+    <version>unknown</version>
+    <time>1294652255</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57476
+</comment>
+  </revision>
+  <revision rev="18" vrev="16">
+    <srcmd5>52566152225066a34fca921ba6f60ee3</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="17">
+    <srcmd5>3cb19aec2404ff86aa291ad1d318b554</srcmd5>
+    <version>unknown</version>
+    <time>1298555810</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 62702 from user vitezslav_cizek
+</comment>
+    <requestid>62702</requestid>
+  </revision>
+  <revision rev="20" vrev="18">
+    <srcmd5>d00906ac2591741bf7abc01180b3cda0</srcmd5>
+    <version>unknown</version>
+    <time>1298555821</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 62702
+</comment>
+  </revision>
+  <revision rev="21" vrev="19">
+    <srcmd5>dfa769c82e3f167d491859ff7f0818b8</srcmd5>
+    <version>unknown</version>
+    <time>1304330975</time>
+    <user>saschpe</user>
+    <comment>- update to 1.4.7
+  many bugs fixed (including bnc#690166)</comment>
+    <requestid>68790</requestid>
+  </revision>
+  <revision rev="22" vrev="20">
+    <srcmd5>237e10826687832ab0c763a405db7ed7</srcmd5>
+    <version>unknown</version>
+    <time>1304330990</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68790
+</comment>
+  </revision>
+  <revision rev="23" vrev="21">
+    <srcmd5>6d5a129495a5fb479ea20cd36de6c4ad</srcmd5>
+    <version>unknown</version>
+    <time>1305530218</time>
+    <user>saschpe</user>
+    <comment>- corrected job output via syslog (bnc#692871) (forwarded request 70024 from vitezslav_cizek)</comment>
+    <requestid>70100</requestid>
+  </revision>
+  <revision rev="24" vrev="22">
+    <srcmd5>79ced9e75f956e9d00e6ec37d9bcbd68</srcmd5>
+    <version>unknown</version>
+    <time>1305530227</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70100
+</comment>
+  </revision>
+  <revision rev="25" vrev="23">
+    <srcmd5>ef4d8e168e6accec777d2a1778d20c45</srcmd5>
+    <version>unknown</version>
+    <time>1307430112</time>
+    <user>saschpe</user>
+    <comment>- Mention possibility of disabling logging to syslog in a crontab 
+  manual.
+- Better error report, when ^ tried as an unprivileged user (forwarded request 72736 from vitezslav_cizek)</comment>
+    <requestid>72815</requestid>
+  </revision>
+  <revision rev="26" vrev="24">
+    <srcmd5>505aff1907e47add69585e293a359021</srcmd5>
+    <version>unknown</version>
+    <time>1307430122</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72815
+</comment>
+  </revision>
+  <revision rev="27" vrev="25">
+    <srcmd5>5b659a15756ecebe8aecf07a7601a325</srcmd5>
+    <version>unknown</version>
+    <time>1308120990</time>
+    <user>saschpe</user>
+    <comment>- to keep compatibility with 11.3, execute the command despite 
+  an unprivileged user tries to disable logging (bnc#698549) (forwarded request 73444 from vitezslav_cizek)</comment>
+    <requestid>73602</requestid>
+  </revision>
+  <revision rev="28" vrev="26">
+    <srcmd5>1f624936c8a18f74113abb03068182dc</srcmd5>
+    <version>unknown</version>
+    <time>1308120998</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73602
+</comment>
+  </revision>
+  <revision rev="29" vrev="27">
+    <srcmd5>cec0d8957ea6893bd77373d55b42a34b</srcmd5>
+    <version>unknown</version>
+    <time>1310471414</time>
+    <user>darix</user>
+    <comment>- changed run-parts to run-crons in anacron (bnc#689494)
+
+- mention possibility of disabling logging to syslog in the crontab (forwarded request 76038 from vitezslav_cizek)</comment>
+    <requestid>76089</requestid>
+  </revision>
+  <revision rev="30" vrev="28">
+    <srcmd5>2ec5c240eedbc0885db63726d14e593d</srcmd5>
+    <version>unknown</version>
+    <time>1310471431</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 76089
+</comment>
+  </revision>
+  <revision rev="31" vrev="29">
+    <srcmd5>ef47c2e20297530505befb0d7abf9c2b</srcmd5>
+    <version>unknown</version>
+    <time>1317542014</time>
+    <user>lrupp</user>
+    <comment>- Use systemd macros to register cron.service.
+
+- Remove redundant tags/sections from specfile</comment>
+    <requestid>85762</requestid>
+  </revision>
+  <revision rev="32" vrev="30">
+    <srcmd5>b34b6e65adfb5e9d0d0f5a9215009474</srcmd5>
+    <version>unknown</version>
+    <time>1318344739</time>
+    <user>lrupp</user>
+    <comment>- Ensure service_add_post is called in %post and not verify. (forwarded request 87078 from fcrozat)</comment>
+    <requestid>87268</requestid>
+  </revision>
+  <revision rev="33" vrev="32">
+    <srcmd5>b34b6e65adfb5e9d0d0f5a9215009474</srcmd5>
+    <version>unknown</version>
+    <time>1319181826</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="34" vrev="33">
+    <srcmd5>e855f5135a47e9bf2fd22b89e3f635e7</srcmd5>
+    <version>unknown</version>
+    <time>1322814376</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94455 from coolo)</comment>
+    <requestid>94519</requestid>
+  </revision>
+  <revision rev="35" vrev="34">
+    <srcmd5>39fb653d780fcc870d8b831f103346d9</srcmd5>
+    <version>unknown</version>
+    <time>1323190701</time>
+    <user>coolo</user>
+    <comment>- Add dependency on ypbind and nscd (bnc#732356)
+- Do not install generic INSTALL file.
+- Use set_permissions for newer distros.
+
+- Cron started before network is up [bnc#733275]</comment>
+    <requestid>95207</requestid>
+  </revision>
+  <revision rev="36" vrev="35">
+    <srcmd5>e71f01069c6891a513d081d667b1a42e</srcmd5>
+    <version>unknown</version>
+    <time>1327500068</time>
+    <user>coolo</user>
+    <comment>- removed cronie-1.4.7-syslog_output.patch deprecated by this update
+- Update to 1.4.8
+  + Cron writes job output to syslog incorrectly. When cron is
+    invoked in a way to print job output to syslog, it does print
+    only the first character of the output
+  + Check orphanded crontabs for adoption
+  + Unify logging in case SyslogOutput with the rest of crond
+  + The charset of anacron's mail is always ANSI_X3.4-1968. There
+    are no setlocale in anacron's source
+  + Cronie disables inotify when the /etc/crontab file does not
+    exist at startup. Existance of crontab and directories wasn't
+    controlled before creating inotify watches.</comment>
+    <requestid>100857</requestid>
+  </revision>
+  <revision rev="37" vrev="36">
+    <srcmd5>8bb9f91298435c0f7313018fbcbeff36</srcmd5>
+    <version>unknown</version>
+    <time>1334215258</time>
+    <user>coolo</user>
+    <comment>fixed bug 756197 (forwarded request 113117 from tabraham1)</comment>
+    <requestid>113181</requestid>
+  </revision>
+  <revision rev="38" vrev="38">
+    <srcmd5>8bb9f91298435c0f7313018fbcbeff36</srcmd5>
+    <version>unknown</version>
+    <time>1340183252</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="39" vrev="39">
+    <srcmd5>9c5e582f1cc3f1829f2c8627be38a55d</srcmd5>
+    <version>unknown</version>
+    <time>1340716576</time>
+    <user>coolo</user>
+    <comment>- the recommends for postfix was from a time when smtp_daemon
+  was required, now that smtp_daemon is recommended, the recommend
+  for postfix is between useless and harmful - so reduce it to a suggests
+
+- remove useless autmake dependency</comment>
+    <requestid>125950</requestid>
+  </revision>
+  <revision rev="40" vrev="40">
+    <srcmd5>f4f268d218dce4ee8cff8728d1900fe2</srcmd5>
+    <version>unknown</version>
+    <time>1345983697</time>
+    <user>namtrac</user>
+    <comment>- When the cron daemon does not fork, as it is the case
+  when using systemd, pid files are useless. avoid creating 
+  them in the first place. (forwarded request 130827 from elvigia)</comment>
+    <requestid>131689</requestid>
+  </revision>
+  <revision rev="41" vrev="41">
+    <srcmd5>0e483d747111c461ab253318610273f7</srcmd5>
+    <version>unknown</version>
+    <time>1350622183</time>
+    <user>coolo</user>
+    <comment>- buildrequire systemd by pkgconfig provide to get systemd-mini
+  in build environments (to break cycle) (forwarded request 138697 from coolo)</comment>
+    <requestid>138710</requestid>
+  </revision>
+  <revision rev="42" vrev="42">
+    <srcmd5>13fb454979f2446fc3b099f986db5534</srcmd5>
+    <version>unknown</version>
+    <time>1351687871</time>
+    <user>coolo</user>
+    <comment> (forwarded request 139628 from elvigia)</comment>
+    <requestid>139651</requestid>
+  </revision>
+  <revision rev="43" vrev="44">
+    <srcmd5>13fb454979f2446fc3b099f986db5534</srcmd5>
+    <version>unknown</version>
+    <time>1359108773</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="44" vrev="45">
+    <srcmd5>785b9c97d1d11fea4d6d4030795771d7</srcmd5>
+    <version>unknown</version>
+    <time>1360008492</time>
+    <user>coolo</user>
+    <comment>- Regenerate cronie-pam_config.diff, last line of the patch was not
+  properly added, causing bnc#801553. (forwarded request 151116 from fcrozat)</comment>
+    <requestid>151142</requestid>
+  </revision>
+  <revision rev="45" vrev="46">
+    <srcmd5>34968a2a38b264f5e8c206d9e611be3c</srcmd5>
+    <version>unknown</version>
+    <time>1360330269</time>
+    <user>coolo</user>
+    <comment>- fixed the file descriptor leak correctly (bnc#786096,bnc#802345) (forwarded request 151577 from msmeissn)</comment>
+    <requestid>151578</requestid>
+  </revision>
+  <revision rev="46" vrev="47">
+    <srcmd5>2316a1710c425e06461e4cb1a21d3d1c</srcmd5>
+    <version>unknown</version>
+    <time>1363982768</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 160545 from m_meister)</comment>
+    <requestid>160623</requestid>
+  </revision>
+  <revision rev="47" vrev="48">
+    <srcmd5>a64dfe424abe8a96097e0a975ea7c5be</srcmd5>
+    <version>unknown</version>
+    <time>1366213149</time>
+    <user>coolo</user>
+    <comment>- Ordering units after syslog.target is no longer recommended. (forwarded request 163931 from elvigia)</comment>
+    <requestid>171019</requestid>
+  </revision>
+  <revision rev="48" vrev="49">
+    <srcmd5>413d5dcb3f43f915cc902c16235791dd</srcmd5>
+    <version>unknown</version>
+    <time>1379076241</time>
+    <user>scarabeus_factory</user>
+    <comment>- define PIDIDIR to &quot;/run&quot; instead of the (outdated) definition 
+  coming from glibc &quot;paths.h&quot;
+- systemd: there is no mail-transfer-agent target anymore, services
+  must be ordered After= a list of possible MTA. (forwarded request 198383 from elvigia)</comment>
+    <requestid>198736</requestid>
+  </revision>
+  <revision rev="49" vrev="51">
+    <srcmd5>413d5dcb3f43f915cc902c16235791dd</srcmd5>
+    <version>unknown</version>
+    <time>1379662157</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="50" vrev="52">
+    <srcmd5>ad05d40c003acaf4c8f1b6ac257c6985</srcmd5>
+    <version>unknown</version>
+    <time>1381221924</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202436</requestid>
+  </revision>
+  <revision rev="51" vrev="53">
+    <srcmd5>f0bcb93598aaa81eac9094f014d6bd23</srcmd5>
+    <version>unknown</version>
+    <time>1390819396</time>
+    <user>scarabeus_factory</user>
+    <comment>Leave /usr/sbin/rccron in as link to /sbin/service (forwarded request 214974 from aeneas_jaissle)</comment>
+    <requestid>215091</requestid>
+  </revision>
+  <revision rev="52" vrev="54">
+    <srcmd5>59fb5f03e05f19acd26275f8b2d7a8c3</srcmd5>
+    <version>unknown</version>
+    <time>1393098266</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223377</requestid>
+  </revision>
+  <revision rev="53" vrev="55">
+    <srcmd5>349b9107e49abf47a05541909e7ae2b9</srcmd5>
+    <version>unknown</version>
+    <time>1403176113</time>
+    <user>coolo</user>
+    <comment>-Add an option to manually reload cron.</comment>
+    <requestid>237534</requestid>
+  </revision>
+  <revision rev="54" vrev="57">
+    <srcmd5>349b9107e49abf47a05541909e7ae2b9</srcmd5>
+    <version>unknown</version>
+    <time>1409300684</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="55" vrev="58">
+    <srcmd5>8512f81f925b1ed43a29907457a40458</srcmd5>
+    <version>unknown</version>
+    <time>1410513548</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248612</requestid>
+  </revision>
+  <revision rev="56" vrev="59">
+    <srcmd5>2b2ccc7457ffdae4a7d9a4cbf25c5b4f</srcmd5>
+    <version>unknown</version>
+    <time>1411556944</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250667</requestid>
+  </revision>
+  <revision rev="57" vrev="60">
+    <srcmd5>fe694e18e900f9cd56a6ce6fef42c061</srcmd5>
+    <version>unknown</version>
+    <time>1415866772</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260625</requestid>
+  </revision>
+  <revision rev="58" vrev="61">
+    <srcmd5>77162e280721f7ee5b2d2987e04913ae</srcmd5>
+    <version>unknown</version>
+    <time>1434006595</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311271</requestid>
+  </revision>
+  <revision rev="59" vrev="62">
+    <srcmd5>203869f9837a363f1509c21841e65432</srcmd5>
+    <version>unknown</version>
+    <time>1435870002</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314437</requestid>
+  </revision>
+  <revision rev="60" vrev="63">
+    <srcmd5>aacc1982d583b66ae9681615f21969b9</srcmd5>
+    <version>unknown</version>
+    <time>1437059728</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315644</requestid>
+  </revision>
+  <revision rev="61" vrev="64">
+    <srcmd5>989e4c95d8519b7eafd6dbd9f3bd6c77</srcmd5>
+    <version>unknown</version>
+    <time>1473679301</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>426128</requestid>
+  </revision>
+  <revision rev="62" vrev="65">
+    <srcmd5>86498fda66369eb48bcc4024607dcadf</srcmd5>
+    <version>unknown</version>
+    <time>1476409078</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433756</requestid>
+  </revision>
+  <revision rev="63" vrev="66">
+    <srcmd5>b353030ea43caeabac99bef25d9a6ab6</srcmd5>
+    <version>unknown</version>
+    <time>1491565954</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483286</requestid>
+  </revision>
+  <revision rev="64" vrev="67">
+    <srcmd5>10812a99c3e85de90fdf043649cbea6a</srcmd5>
+    <version>unknown</version>
+    <time>1503999410</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517956</requestid>
+  </revision>
+  <revision rev="65" vrev="68">
+    <srcmd5>2713304ceccf4875312aa2d163f97b7f</srcmd5>
+    <version>unknown</version>
+    <time>1511949121</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546013</requestid>
+  </revision>
+  <revision rev="66" vrev="69">
+    <srcmd5>53cd53ed3660794df70ce0dee136474a</srcmd5>
+    <version>unknown</version>
+    <time>1512046249</time>
+    <user>dimstar_suse</user>
+    <comment>Correct mail dependencies to prevent Kubic being broken and Tumbleweed being blocked (forwarded request 546703 from RBrownSUSE)</comment>
+    <requestid>546705</requestid>
+  </revision>
+  <revision rev="67" vrev="70">
+    <srcmd5>bc4d7ae036f274acdb95893b54e97ea2</srcmd5>
+    <version>unknown</version>
+    <time>1538377359</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637026</requestid>
+  </revision>
+  <revision rev="68" vrev="71">
+    <srcmd5>7e0b70f2a9883c77ad61b5ae737d69a1</srcmd5>
+    <version>unknown</version>
+    <time>1542011655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647642</requestid>
+  </revision>
+  <revision rev="69" vrev="72">
+    <srcmd5>cb8a253e96d38a4bd3996a21363b5883</srcmd5>
+    <version>unknown</version>
+    <time>1549916188</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>672798</requestid>
+  </revision>
+  <revision rev="70" vrev="73">
+    <srcmd5>18c7b10a0a80c52fa1bea13b6b7a1513</srcmd5>
+    <version>unknown</version>
+    <time>1553435820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686472</requestid>
+  </revision>
+  <revision rev="71" vrev="74">
+    <srcmd5>199d2b1b9a6784d4b9b9230a6ad47e10</srcmd5>
+    <version>unknown</version>
+    <time>1554189438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690292</requestid>
+  </revision>
+  <revision rev="72" vrev="75">
+    <srcmd5>794cdf04f39acdd9a92f6b3e63aa8117</srcmd5>
+    <version>unknown</version>
+    <time>1558515265</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704171</requestid>
+  </revision>
+  <revision rev="73" vrev="76">
+    <srcmd5>80dc5c3e35c53fb7eed1f6a24f4a134b</srcmd5>
+    <version>unknown</version>
+    <time>1566664730</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724718</requestid>
+  </revision>
+  <revision rev="74" vrev="77">
+    <srcmd5>4078282ce08c2046c71e2ccd4be3b349</srcmd5>
+    <version>unknown</version>
+    <time>1567848320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726494</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,48 @@
+diff --git a/tools/asp_state/Makefile.am b/tools/asp_state/Makefile.am
+index ea56700..1166c27 100644
+--- a/tools/asp_state/Makefile.am
++++ b/tools/asp_state/Makefile.am
+@@ -1,4 +1,4 @@
+-MCSFLAGS= -debug+ -debug:full -nologo
++MCSFLAGS= -debug+ -debug:full -nologo -r:Mono.Posix.dll
+ 
+ scripts2 = asp-state2.exe
+ data2 = asp-state2.exe.config
+diff --git a/tools/asp_state/asp_state.cs b/tools/asp_state/asp_state.cs
+index 8ba8b62..0157ff5 100644
+--- a/tools/asp_state/asp_state.cs
++++ b/tools/asp_state/asp_state.cs
+@@ -11,6 +11,8 @@ using System;
+ using System.IO;
+ using System.Reflection;
+ using System.Runtime.Remoting;
++using Mono.Unix;
++using Mono.Unix.Native;
+ 
+ namespace Mono.ASPNET.Tools {
+ 
+@@ -64,10 +66,22 @@ and works until <Enter> is pressed.
+ 		public static void Main (string [] args)
+ 		{
+ 			if (args.Length == 0) {
++				UnixSignal [] signals = new UnixSignal[] {
++		                    new UnixSignal(Signum.SIGINT),
++                		    new UnixSignal(Signum.SIGTERM),
++                		};
+ 				RemotingConfiguration.Configure (ConfigurationFileName, false);
+ 				ShowVerboseConfigurationInfo(ConfigurationFileName);
+-				Console.Write("Press <Enter> to stop...");
+-				Console.ReadLine ();
++
++       			        // Wait for a unix signal to exit
++		                for (bool exit = false; !exit; )
++                		{
++                    			int id = UnixSignal.WaitAny(signals);
++                    			if (id >= 0 && id < signals.Length)
++                    			{
++                        			if (signals[id].IsSet) exit = true;
++                    			}
++	                	}
+ 			} else {
+ 				ShowUsage();
+ 			}

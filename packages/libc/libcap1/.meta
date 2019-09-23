@@ -1,0 +1,5 @@
+<package name="libcap1" project="openSUSE:Factory">
+  <title>Library for Capabilities (linux-privs) Support</title>
+  <description>This package provides a compatible library for the old libcap-1.</description>
+  <devel project="Base:System" package="libcap1"/>
+</package>

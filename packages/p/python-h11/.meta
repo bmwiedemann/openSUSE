@@ -1,0 +1,8 @@
+<package name="python-h11" project="openSUSE:Factory">
+  <title>A pure-Python, bring-your-own-I/O implementation of HTTP/11</title>
+  <description>This is a little HTTP/1.1 library written from scratch in Python,
+heavily inspired by hyper-h2 &lt;https://hyper-h2.readthedocs.io&gt;
+
+</description>
+  <devel project="devel:languages:python" package="python-h11"/>
+</package>

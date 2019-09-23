@@ -1,0 +1,12 @@
+README for bi-architecture 64 bit platforms users
+=================================================
+
+The GTK_PATH64 environment variable is used instead of GTK_PATH
+for the 64 bit library. See the GTK+ documentation for how to use
+GTK_PATH.
+
+The GTK+ IM modules are different, based on the architecture of
+the package. To update the cache of IM modules, run:
+
+ + for 32 bit version: /usr/bin/gtk-query-immodules-3.0
+ + for 64 bit version: /usr/bin/gtk-query-immodules-3.0-64

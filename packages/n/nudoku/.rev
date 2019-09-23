@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>947cbf3ff7e5c7d14511eae0508226e2</srcmd5>
+    <version>0.2.4</version>
+    <time>1444130678</time>
+    <user>dimstar_suse</user>
+    <comment>sudoku for terminal. just a small game ;) i will maintain it.</comment>
+    <requestid>334760</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>21eeb761259643d49d43d32784a353c8</srcmd5>
+    <version>0.2.5</version>
+    <time>1468699994</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>403749</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d7a70095dec87a42ba84298742ee88f4</srcmd5>
+    <version>1.0.0</version>
+    <time>1524144807</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Add 'mark' command to highlight the currently selected number
+    in all other cells. Thanks to James Warnock.
+  * Redesign commands display.
+  * Display how many hints a person used when the puzzle is solved.
+  * Update maintainer email and man page.
+  * Code cleanup</comment>
+    <requestid>598488</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2dae5bee5358f88fbb060750c8dbbce5</srcmd5>
+    <version>2.0.0</version>
+    <time>1564576089</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cairo dependency: enable PDF and PNG creation
+
+- Update to 2.0.0:
+  * Translation support
+  * Added translations for: Spanish, German, Russian
+  * Refactoring and code cleanup
+  * Add color difference between provided numbers and the ones
+    entered by the user
+  * Output sudoku PDFs (-p/-n option)
+  * Output sudoku PNG (-i option)
+  * Fix duplicate fields in sudoku generation (pr #28)</comment>
+    <requestid>719806</requestid>
+  </revision>
+</revisionlist>

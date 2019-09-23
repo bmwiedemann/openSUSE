@@ -1,0 +1,235 @@
+-------------------------------------------------------------------
+Mon Apr  1 22:08:06 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 19.04.0 (changes since 18.04.3):
+  * mate_menu/plugins/recent.py: Replace deprecated gvfs-open call
+    by "gio open".
+  * Support the new mate-menus 1.22+ API.
+  * Port to Python3.
+  * Fix Fix icon file types.
+  * Use gtk-missing-image to replace application-default-icon
+    image.
+  * Fix keybindings from swallowing Super+Mouse events.
+  * Fix spawning zombie processes.
+  * Update translations.
+- Remove mate-menu-mate-menus-1.22.patch: fixed upstream.
+- Add mate-menu-glib-2.48.patch: Restore GLib 2.48 support.
+
+-------------------------------------------------------------------
+Sun Nov 25 15:37:18 UTC 2018 - sor.alexei@meowr.ru
+
+- Add mate-menu-mate-menus-1.22.patch: Support the mate-menus 1.22+
+  API (commit b2ce7a8).
+
+-------------------------------------------------------------------
+Sat Nov  3 20:36:06 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 18.04.3 (changes since 18.04.1):
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 18.04.1 (changes since 17.10.8):
+  * Search engine icon updates.
+  * Use xdg-open, not Caja.
+  * Support correct widget sizes for HiDPI displays.
+  * Play nice with global keybinding code that uses the same
+    modifier key.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Sep 27 14:10:08 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 17.10.8:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Wed Jun 28 19:20:44 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 17.10.6:
+  * places: Fix desktop button.
+  * Allow mate-menu to receive event reports from other windows.
+- Remove mate-menu-17.10.5-desktop-button.patch.
+
+-------------------------------------------------------------------
+Sat Jun 17 23:35:11 UTC 2017 - sor.alexei@meowr.ru
+
+- Add mate-menu-17.10.5-desktop-button.patch: Fix desktop button in
+  Places (commit 7f904dc).
+
+-------------------------------------------------------------------
+Sun Jun 11 17:10:09 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 17.10.5 (changes since 17.10.3):
+  * Fix arguments in launchers.
+  * Sort applications by relevance when searching.
+  * Add exception handling around pointer monitor and keybinder.
+  * Revert to using "dock" type.
+- Remove mate-menu-17.10.3-fix-launching.patch.
+
+-------------------------------------------------------------------
+Sun Jun 11 17:10:09 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 17.10.3:
+  * Add DuckDckGo as a web search engine option.
+  * Make search engines configurable under
+    Preferences -> Applications.
+  * Fix missing drag-data-get event handler.
+  * Fix launching menu editors.
+- Add mate-menu-17.10.3-fix-launching.patch: Fix entries launching
+  with arguments.
+
+-------------------------------------------------------------------
+Fri Jun  9 07:16:28 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 17.10.2 (changes since 17.10.0):
+  * Fix get_origin calls in older Gtk3.
+  * Fix keybinding in older Gtk3.
+  * Fix popup menus.
+  * Fix race condition with dconf on session start.
+  * Fix missing custom icon crashing mate-menu.
+  * Fix bug where hotkey setting blocks usage in global
+    keybindings.
+  * Use the Gtk3 bookmarks location.
+  * Add `PRELIGHT` state flags to all menu buttons while focused.
+  * Fix DnD of favourites.
+  * Replace ctypes with setproctitle.
+  * Fix some deprecations.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Apr 29 18:30:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 17.10.0:
+  * Fix reordering of favourites.
+  * Fix adding Menu to a left or right panel.
+  * Drop Opacity support.
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Mar 31 11:05:58 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 17.04.3:
+  * Menu icon: Scale SVG files to 22px to prevent them from getting
+    too big.
+  * Fix launching some Wine applications.
+  * Better categories hovering state.
+
+-------------------------------------------------------------------
+Sun Mar 19 11:03:41 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 17.04.2 (changes since 16.10.1):
+  * Enforce the /usr prefix: code relies on it.
+  * Build bytecode for scripts in /usr/lib/mate-menu/.
+  * Replace galculator with mate-calc.
+  * Try MenuLibre and fallback to Mozo.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Jun  8 12:08:34 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 16.10.1:
+  * Fix application popup menu.
+  * Don't make huge separators in search suggestions.
+  * Use a displayable icon for applet selector.
+  * Make mate-menu aware of $XDG_CONFIG_HOME.
+  * Have a system colour for the border.
+  * Have more fallbacks for Terminal.
+  * Add GNOME Software as a Package Manager option.
+  * Sort available themes in Menu preferences->Theme.
+  * Refresh the applications on icon-theme-changed.
+- Remove 0001-xterm-no-symlink-dep.patch: fixed upstream.
+- Rebase and rename 0002-yast2-software.patch to
+  mate-menu-yast2-software.patch.
+
+-------------------------------------------------------------------
+Wed Jun  8 12:08:34 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 16.10.0:
+  * Port to Gtk3.
+  * Don't crash if there's no PM to show.
+  * Drop a broken "add to startup" feature.
+- Rebase 0001-xterm-no-symlink-dep.patch, 0002-yast2-software.patch.
+
+-------------------------------------------------------------------
+Wed May  4 16:34:01 UTC 2016 - sor.alexei@meowr.ru
+
+- Add a missing python-gobject-Gdk dependency.
+- Remove useless libmate-desktop-2-17, libmate-panel-applet-4-1
+  dependencies.
+
+-------------------------------------------------------------------
+Thu Apr 28 06:45:38 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 5.7.1:
+  * Fix configuring a custom heading colour (lp#1560332).
+  * Display the Software Boutique as package manager if it is
+    available (lp#1568170).
+  * Ensure the menu is always drawn over existing windows
+    (lp#1569563)
+- Rebase 0001-xterm-no-symlink-dep.patch, 0002-yast2-software.patch.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 5.7.0 (changes since 5.6.8):
+  * Fix mate-menu.py being displayed (lp#1553313).
+  * Change window hint to toolbar.
+  * Update translations.
+- Rebase and rename 0002-xterm-no-symlink-dep.patch to
+  0001-xterm-no-symlink-dep.patch.
+- Rebase 0002-yast2-software.patch.
+
+-------------------------------------------------------------------
+Thu Jan 28 22:40:00 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 5.6.8:
+  * Fix a crash.
+- Remove 0001-fix-path-find.patch: merged upstream.
+
+-------------------------------------------------------------------
+Mon Jan 18 14:08:33 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 5.6.7:
+  * Fix intends in mate-menu execute.py.
+  * Do not use mate-folder.png that doesn't exist in freedesktop
+    specification.
+  * Fix configurator crash due to changes in Gtk 2.24.29.
+  * Do not crash if lsb_release is not available (boo#959024).
+- Remove 0001-execute-fix.patch, 0001-recent-icon.patch,
+  0003-fix-configurator-crash.patch: fixed upstream.
+- Add 0001-fix-path-find.patch.
+- Only recommend lsb-release.
+
+-------------------------------------------------------------------
+Mon Jan 11 15:30:48 UTC 2016 - sor.alexei@meowr.ru
+
+- Add missing lsb-release and python-gobject dependencies
+  (boo#959024).
+- Add 0003-fix-configurator-crash.patch: fix crash in mate-menu
+  configurator.
+
+-------------------------------------------------------------------
+Sun Dec 20 16:45:13 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 5.6.6.
+- Rebase 0001-execute-fix.patch and 0002-yast2-software.patch.
+
+-------------------------------------------------------------------
+Fri May  1 09:40:37 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 5.6.5a:
+  * Remove utility scripts.
+  * Update translations.
+
+-------------------------------------------------------------------
+Thu Apr  1 22:48:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 5.6.5:
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 18:32:43 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

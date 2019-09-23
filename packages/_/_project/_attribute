@@ -1,0 +1,340 @@
+<attributes>
+  <attribute namespace="OBS" name="VeryImportantProject"/>
+  <attribute namespace="OBS" name="InitializeDevelPackage"/>
+  <attribute namespace="OBS" name="ApprovedRequestSource"/>
+  <attribute namespace="OSRT" name="IgnoredIssues">
+    <value>last_seen:
+  boo#1091353: '20190620'
+  boo#1094987: '20190921'
+  boo#1106840: '20190414'
+  boo#1113042: '20190506'
+  boo#1115946: '20190423'
+  boo#1117643: '20190815'
+  boo#1120279: '20190621'
+  boo#1122165: '20190701'
+  boo#1122176: '20190701'
+  boo#1122804: '20190604'
+  boo#1123244: '20190701'
+  boo#1123985: '20190921'
+  boo#1124481: '20190404'
+  boo#1128707: '20190506'
+  boo#1128915: '20190408'
+  boo#1130055: '20190505'
+  boo#1131096: '20190404'
+  boo#1132312: '20190415'
+  boo#1132738: '20190509'
+  boo#1132848: '20190424'
+  boo#1132980: '20190507'
+  boo#1133541: '20190514'
+  boo#1133564: '20190520'
+  boo#1133632: '20190612'
+  boo#1133686: '20190503'
+  boo#1134233: '20190506'
+  boo#1135543: '20190702'
+  boo#1135884: '20190607'
+  boo#1136279: '20190614'
+  boo#1136945: '20190601'
+  boo#1138327: '20190617'
+  boo#1138372: '20190713'
+  boo#1138401: '20190726'
+  boo#1138417: '20190703'
+  boo#1139857: '20190730'
+  boo#1140040: '20190921'
+  boo#1140249: '20190709'
+  boo#1141597: '20190801'
+  boo#1141848: '20190909'
+  boo#1142197: '20190809'
+  boo#1143313: '20190805'
+  boo#1144007: '20190820'
+  boo#1144439: '20190921'
+  boo#1144543: '20190815'
+  boo#1144560: '20190918'
+  boo#1144894: '20190921'
+  boo#1145372: '20190921'
+  boo#1145461: '20190820'
+  boo#1146736: '20190921'
+  boo#1148477: '20190909'
+  boo#1148850: '20190921'
+  boo#1150977: '20190917'
+  bsc#1114673: '20190921'
+  bsc#1120957: '20190508'
+  bsc#1131301: '20190424'
+  bsc#1133369: '20190424'
+  bsc#1151148: '20190917'
+  gh#os-autoinst/openQA#2159: '20190705'
+  gh#os-autoinst/os-autoinst-distri-opensuse#7166: '20190430'
+  gh#os-autoinst/os-autoinst-distri-opensuse#7278: '20190423'
+  gh#os-autoinst/os-autoinst-distri-opensuse#8348: '20190902'
+  kde#408594: '20190921'
+  poo#33283: '20190810'
+  poo#48899: '20190521'
+  poo#49187: '20190612'
+  poo#49454: '20190517'
+  poo#49688: '20190414'
+  poo#49937: '20190418'
+  poo#50093: '20190408'
+  poo#50399: '20190921'
+  poo#50486: '20190424'
+  poo#50615: '20190722'
+  poo#50678: '20190423'
+  poo#50735: '20190426'
+  poo#50756: '20190815'
+  poo#50804: '20190805'
+  poo#50810: '20190425'
+  poo#50822: '20190426'
+  poo#50996: '20190505'
+  poo#51110: '20190508'
+  poo#51203: '20190601'
+  poo#51221: '20190921'
+  poo#51614: '20190617'
+  poo#51635: '20190517'
+  poo#51638: '20190520'
+  poo#51650: '20190702'
+  poo#51983: '20190525'
+  poo#51986: '20190612'
+  poo#52499: '20190604'
+  poo#52580: '20190703'
+  poo#52688: '20190713'
+  poo#53054: '20190624'
+  poo#53057: '20190612'
+  poo#53117: '20190617'
+  poo#53288: '20190628'
+  poo#53351: '20190622'
+  poo#53639: '20190701'
+  poo#53645: '20190704'
+  poo#53729: '20190702'
+  poo#53750: '20190722'
+  poo#53795: '20190724'
+  poo#53993: '20190716'
+  poo#54056: '20190921'
+  poo#54224: '20190810'
+  poo#54422: '20190921'
+  poo#54425: '20190907'
+  poo#54722: '20190909'
+  poo#54797: '20190809'
+  poo#55148: '20190805'
+  poo#55229: '20190809'
+  poo#55661: '20190916'
+  poo#55664: '20190820'
+  poo#55682: '20190921'
+  poo#55688: '20190909'
+  poo#55805: '20190921'
+  poo#55826: '20190828'
+  poo#55919: '20190824'
+  poo#56111: '20190911'
+  poo#56150: '20190902'
+  poo#56153: '20190907'
+  poo#56162: '20190902'
+  poo#56531: '20190921'
+  poo#56771: '20190911'
+  poo#56774: '20190921'
+  poo#56840: '20190909'
+  poo#56918: '20190916'
+  poo#56927: '20190918'
+  poo#56963: '20190921'
+  poo#57008: '20190921'
+  poo#57011: '20190919'
+  poo#57014: '20190921'
+  poo#57077: '20190921'
+</value>
+  </attribute>
+  <attribute namespace="OSRT" name="Config">
+    <value># restricts what stagings the staging-bot will use, when available, for --try-strategies
+splitter-whitelist = B C D E F G H I J
+
+# now just for testing
+source_projects_expand = devel:languages:haskell
+
+devel-whitelist = Virtualization:WSL 
+ 
+# packagelist generator related configuration
+pkglistgen-archs = i586 x86_64
+pkglistgen-ignore-unresolvable = 1
+pkglistgen-delete-kiwis-target = *.kwd
+pkglistgen-delete-kiwis-staging = openSUSE-Addon-NonOss*  openSUSE-cd-mini-* *i586*.kiwi
+pkglistgen-delete-kiwis-rings = openSUSE-Addon-NonOss*  openSUSE-cd-mini-* *i586*.kiwi 
+nocleanup-packages = 000product 000release-packages bootstrap-copy
+pkglistgen-scopes = target rings
+
+# subpackages of ring packages with unacceptable requires (don't abuse)
+repo_checker-binary-whitelist-ring = patterns-media-rest_dvd patterns-media-rest_cd_x11 patterns-devel-base-devel_web monitoring-plugins-metadata codec2-examples libreoffice-l10n-fi java-1_8_0-openjdk-accessibility
+
+repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bison,bzip2,cpio,cracklib,dejagnu,dwz,e2fsprogs,ed,elfutils,expat,expect,fdupes,file,findutils,flex,gawk,gcc,gcc8,gcc9,gdbm,gettext-runtime-mini,glibc,glibc:i686,gmp,gpm,gzip,help2man,isl,keyutils,krb5-mini,libcap,libcap-ng,libdb-4_8,libffi,libnsl,libselinux,libsemanage,libsepol,libtirpc,libtool,libustr,libverto,libxcrypt,libzio,linux-glibc-devel,lua-macros,lua53,m4,make,mpc,mpfr,ncurses,openssl-1_1,pam,patch,pcre,perl,perl-Text-Unidecode,perl-gettext,permissions,pkg-config,pkgconf,popt,python-rpm-macros,python3-base,readline,rpm,screen,shadow,system-user-root,system-users,systemd-rpm-macros,systemtap-headers,sysuser-tools,tcl,tcpd,texinfo,update-alternatives,utempter,util-linux,which,xz,zlib,zstd
+
+staging-required-checks-adi = installcheck
+repo_checker-project-skip = True
+
+installcheck-ignore-duplicated-binaries = glade-catalog-gtksourceview python3-clang libc++-devel libc++1 libc++abi-devel libc++abi1 tftpboot-installation-openSUSE-MicroOS-x86_64
+
+# for scan_baselibs.py
+allowed-missing-32bit-binaries-importing = audit-secondary bash coreutils curl-mini dbus-1-x11 ft2demos gamin gdb gettext-runtime-mini krb5-mini librtas librtas-doc libselinux-bindings LibVNCServer llvm lvm2 lvm2-clvm openssl openucx postgresql10 postgresql96 psl-make-dafsa python-libxml2-python python-magic python-rpm python-semanage strace syslinux systemd-mini util-linux-systemd
+
+# packages in here are rebuild if their buildinfo changed
+rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-branding-openSUSE xfce4-branding-openSUSE installation-images:openSUSE installation-images:Kubic installation-images:MicroOS installation-images-extras rpmlint rpmlint-mini yast2-schema
+
+bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-module permissions-unauthorized-file permissions-symlink permissions-dir-without-slash permissions-file-as-dir permissions-fscaps permissions-file-setuid-bit permissions-directory-setuid-bit permissions-world-writable polkit-changed- polkit-unauthorized- polkit-untracked- </value>
+  </attribute>
+  <attribute namespace="OSRT" name="OpenQAMapping">
+    <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
+  </attribute>
+  <attribute namespace="OSRT" name="ProductVersion">
+    <value>20190923</value>
+  </attribute>
+  <attribute namespace="OSRT" name="ToTestManagerConfig">
+    <value>arch: x86_64
+jobs_num: 70
+openqa_group: openSUSE Tumbleweed
+openqa_server: https://openqa.opensuse.org
+product_repo: images
+totest_images_repo: appliances
+products:
+  container:
+  - ceph-csi-image:
+    - x86_64
+  - ceph-image:
+    - x86_64
+  - kubic-cilium-etcd-operator-image:
+    - x86_64
+  #- kubic-cilium-image:
+  # - x86_64
+  - kubic-cilium-init-image:
+    - x86_64
+  - kubic-cilium-operator-image:
+    - x86_64
+  - kubic-coredns-image:
+    - x86_64
+  - kubic-etcd-image:
+    - x86_64
+  - kubic-flannel-image:
+    - x86_64
+  - kubic-hello-kubic-image:
+    - x86_64
+  - kubic-kube-apiserver-image:
+    - x86_64
+  - kubic-kube-controller-manager-image:
+    - x86_64
+  - kubic-kube-proxy-image:
+    - x86_64
+  - kubic-kube-scheduler-image:
+    - x86_64
+  - kubic-kured-image:
+    - x86_64
+  - kubic-metallb-controller-image:
+    - x86_64
+  - kubic-metallb-speaker-image:
+    - x86_64
+  - kubic-pause-image:
+    - i586
+    - x86_64
+  - kubic-rbac-manager-image:
+    - x86_64
+  - kubic-weave-kube-image:
+    - x86_64
+  - kubic-weave-npc-image:
+    - x86_64
+  - opensuse-tumbleweed-image:docker:
+    - i586
+    - x86_64
+  - rook-ceph-image:
+    - x86_64
+  - tumbleweed-busybox-image:
+    - i586
+    - x86_64
+  ftp:
+  - 000product:openSUSE-ftp-ftp-i586_x86_64
+  - 000product:openSUSE-Addon-NonOss-ftp-ftp-i586_x86_64
+  images:
+  - opensuse-tumbleweed-image:lxc:
+    - i586
+    - x86_64
+  - openSUSE-Tumbleweed-JeOS:MS-HyperV:
+    - x86_64
+  - openSUSE-Tumbleweed-JeOS:OpenStack-Cloud:
+    - x86_64
+  - openSUSE-Tumbleweed-JeOS:VMware:
+    - x86_64
+  - openSUSE-Tumbleweed-JeOS:XEN:
+    - x86_64
+  - openSUSE-Tumbleweed-JeOS:kvm-and-xen:
+    - x86_64
+  - openSUSE-Tumbleweed-Vagrant:libvirt:
+    - x86_64
+  - openSUSE-Tumbleweed-Vagrant:virtualbox:
+    - x86_64
+  - openSUSE-MicroOS:ContainerHost-hardware:
+    - x86_64
+  - openSUSE-MicroOS:ContainerHost-kvm-and-xen:
+    - x86_64
+  - openSUSE-MicroOS:ContainerHost-MS-HyperV:
+    - x86_64
+  - openSUSE-MicroOS:ContainerHost-OpenStack-Cloud:
+    - x86_64
+  - openSUSE-MicroOS:ContainerHost-Vagrant:
+    - x86_64
+  - openSUSE-MicroOS:ContainerHost-VMware:
+    - x86_64
+  - openSUSE-MicroOS:hardware:
+    - x86_64
+  - openSUSE-MicroOS:Kubic-kubeadm-hardware:
+    - x86_64
+  - openSUSE-MicroOS:Kubic-kubeadm-kvm-and-xen:
+    - x86_64
+  - openSUSE-MicroOS:Kubic-kubeadm-MS-HyperV:
+    - x86_64
+  - openSUSE-MicroOS:Kubic-kubeadm-OpenStack-Cloud:
+    - x86_64
+  - openSUSE-MicroOS:Kubic-kubeadm-Vagrant:
+    - x86_64
+  - openSUSE-MicroOS:Kubic-kubeadm-VMware:
+    - x86_64
+  - openSUSE-MicroOS:kvm-and-xen:
+    - x86_64
+  - openSUSE-MicroOS:MS-HyperV:
+    - x86_64
+  - openSUSE-MicroOS:OpenStack-Cloud:
+    - x86_64
+  - openSUSE-MicroOS:Vagrant:
+    - x86_64
+  - openSUSE-MicroOS:VMware:
+    - x86_64
+  livecds:
+  - livecd-tumbleweed-kde:
+    - i586
+    - x86_64
+  - livecd-tumbleweed-gnome:
+    - i586
+    - x86_64
+  - livecd-tumbleweed-x11:
+    - i586
+    - x86_64
+  - livecd-tumbleweed-xfce:
+    - i586
+    - x86_64
+  main:
+  - 000product:openSUSE-dvd5-dvd-i586
+  - 000product:openSUSE-dvd5-dvd-x86_64
+  - 000product:openSUSE-cd-mini-i586
+  - 000product:openSUSE-cd-mini-x86_64
+  - 000product:openSUSE-MicroOS-dvd5-dvd-x86_64
+  - 000product:openSUSE-MicroOS-dvd5-kubic-dvd-x86_64
+test_subproject: ToTest
+set_snapshot_number: True</value>
+  </attribute>
+  <attribute namespace="OSRT" name="ToTestManagerStatus">
+    <value>failed: ''
+published: '20190921'
+publishing: '20190921'
+testing: '20190921'
+</value>
+  </attribute>
+  <attribute namespace="OSRT" name="OriginConfig">
+    <value>origins:
+- &lt;devel&gt;:
+    additional_reviews:
+    - &lt;config:review-team&gt;
+    automatic_updates: false
+fallback-group: 'origin-reviewers'
+    </value>
+  </attribute>
+  <attribute namespace="OSRT" name="OriginUpdateSkip"/>
+</attributes>

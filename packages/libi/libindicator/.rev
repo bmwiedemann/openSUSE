@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>09979f31ece98f513b42660b5a9a800d</srcmd5>
+    <version>12.10.1</version>
+    <time>1387390839</time>
+    <user>coolo</user>
+    <comment>submit HEAD</comment>
+    <requestid>201232</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d1ff5dd555dc8562b4396f36d1df6b76</srcmd5>
+    <version>12.10.2+14.04.20140304</version>
+    <time>1395495865</time>
+    <user>coolo</user>
+    <comment>Push X11:M:N to X11:M:F; new libraries (external dependencies) and a lot of renamed packages</comment>
+    <requestid>225326</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d1ff5dd555dc8562b4396f36d1df6b76</srcmd5>
+    <version>12.10.2+14.04.20140304</version>
+    <time>1409301594</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>db3435d3d9af37638f7236c9190cea67</srcmd5>
+    <version>12.10.2+bzr20140922</version>
+    <time>1434456327</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>312149</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>aa85b46625882df691de5860786209dd</srcmd5>
+    <version>12.10.2+bzr20140922</version>
+    <time>1445288018</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>339747</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>82881a1444d14b35c350200330cf3745</srcmd5>
+    <version>12.10.2+bzr20151208</version>
+    <time>1451674132</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>351429</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2e0ca1ebb63a3ab1eb9448d94ac315f2</srcmd5>
+    <version>16.10.0+bzr20171205</version>
+    <time>1521052357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586613</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>4e4fe59a259f57037ee359fa872f1881</srcmd5>
+    <version>16.10.0+bzr20171205</version>
+    <time>1522058202</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588615</requestid>
+  </revision>
+</revisionlist>

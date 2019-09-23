@@ -1,0 +1,11 @@
+--- ./lib/backend/db3.c.orig	2017-12-01 15:44:53.609993968 +0000
++++ ./lib/backend/db3.c	2017-12-01 15:45:05.462959735 +0000
+@@ -416,7 +416,7 @@ static int db_init(rpmdb rdb, const char
+     int rdonly = ((rdb->db_mode & O_ACCMODE) == O_RDONLY);
+     struct dbConfig_s * cfg = &rdb->cfg;
+     /* This is our setup, thou shall not have other setups before us */
+-    uint32_t eflags = (DB_CREATE|DB_INIT_MPOOL|DB_INIT_CDB);
++    uint32_t eflags = (DB_CREATE|DB_INIT_MPOOL|DB_INIT_CDB|DB_PRIVATE);
+ 
+     if (rdb->db_dbenv != NULL) {
+ 	rdb->db_opens++;

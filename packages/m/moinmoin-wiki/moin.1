@@ -1,0 +1,34 @@
+.TH moin 1 "September 2014" "moinmo.in" "User Commands"
+
+.SH NAME
+moin - modular administration tools for MoinMoin wikis
+.SH SYNOPSIS
+.B moin
+[command] [general options] command subcommand [specific options]
+.SH DESCRIPTION
+Moin is a command for executing tools that operate on a MoinMoin wiki instance.
+The set of tools available depends on the set of installed modules.
+.PP
+The moin command itself, as well as all tools, are self-documenting - please
+refer to the built-in help for more information about available commands and
+options.
+.SH EXAMPLES
+To display general help about available tools and global options:
+.PP
+.nf
+.RS
+moin
+.RE
+.fi
+.PP
+To display help about a specific tool (e.g.,
+.IR "export dump"):
+.PP
+.nf
+.RS
+moin export dump --help
+.RE
+.fi
+.SH SEE ALSO
+<http://moinmo.in/HelpOnMoinCommand>
+

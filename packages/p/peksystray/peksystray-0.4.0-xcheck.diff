@@ -1,0 +1,33 @@
+Index: peksystray-0.4.0/configure.in
+===================================================================
+--- peksystray-0.4.0.orig/configure.in
++++ peksystray-0.4.0/configure.in
+@@ -19,14 +19,6 @@ if test "$debug" = yes; then
+         AC_DEFINE(DEBUG,,[Enable verbose debugging output])
+ fi
+ 
+-CFLAGS="$CFLAGS $X_CFLAGS"
+-#x_includes="-I$x_includes"
+-LDFLAGS="$LDFLAGS $X_LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS"
+-#x_libraries="$X_LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS"
+-
+-AC_SUBST(x_includes)
+-AC_SUBST(x_libraries)
+-
+ AC_OUTPUT([
+ Makefile
+ src/Makefile
+Index: peksystray-0.4.0/src/Makefile.am
+===================================================================
+--- peksystray-0.4.0.orig/src/Makefile.am
++++ peksystray-0.4.0/src/Makefile.am
+@@ -1,7 +1,7 @@
+ bin_PROGRAMS = peksystray
+ 
+-INCLUDES = @x_includes@
++INCLUDES = $(X_INCLUDES)
+ 
+-peksystray_LDADD = @x_libraries@
++peksystray_LDADD = $(X_PRE_LIBS) $(X_LIBS) -lX11 $(X_EXTRA_LIBS)
+ 
+ peksystray_SOURCES = peksystray.c

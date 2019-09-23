@@ -1,0 +1,13 @@
+<package name="supervisor" project="openSUSE:Factory">
+  <title>A system for controlling process state under UNIX</title>
+  <description>Supervisor is a client/server system that allows its users to control a number
+of processes on UNIX-like operating systems.
+
+
+Author:
+--------
+    Chris McDonough &lt;chrism@plope.com&gt;
+
+</description>
+  <devel project="devel:languages:python" package="supervisor"/>
+</package>

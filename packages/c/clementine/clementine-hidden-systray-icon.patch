@@ -1,0 +1,25 @@
+Index: Clementine-75f18dab23f0842713a4200a7e362efd51b12e31/dist/clementine.desktop
+===================================================================
+--- Clementine-75f18dab23f0842713a4200a7e362efd51b12e31.orig/dist/clementine.desktop	2019-07-24 12:51:48.000000000 +0200
++++ Clementine-75f18dab23f0842713a4200a7e362efd51b12e31/dist/clementine.desktop	2019-07-26 11:41:32.638186156 +0200
+@@ -36,7 +36,7 @@ TryExec=clementine
+ Icon=clementine
+ Terminal=false
+ Categories=AudioVideo;Player;Qt;Audio;
+-StartupNotify=false
++StartupNotify=true
+ MimeType=application/ogg;application/x-ogg;application/x-ogm-audio;audio/aac;audio/mp4;audio/mpeg;audio/mpegurl;audio/ogg;audio/vnd.rn-realaudio;audio/vorbis;audio/x-flac;audio/x-mp3;audio/x-mpeg;audio/x-mpegurl;audio/x-ms-wma;audio/x-musepack;audio/x-oggflac;audio/x-pn-realaudio;audio/x-scpls;audio/x-speex;audio/x-vorbis;audio/x-vorbis+ogg;audio/x-wav;video/x-ms-asf;x-content/audio-player;x-scheme-handler/zune;x-scheme-handler/itpc;x-scheme-handler/itms;x-scheme-handler/feed;
+ Actions=Play;Pause;Stop;StopAfterCurrent;Previous;Next;
+ 
+Index: Clementine-75f18dab23f0842713a4200a7e362efd51b12e31/src/ui/mainwindow.cpp
+===================================================================
+--- Clementine-75f18dab23f0842713a4200a7e362efd51b12e31.orig/src/ui/mainwindow.cpp	2019-07-24 12:51:48.000000000 +0200
++++ Clementine-75f18dab23f0842713a4200a7e362efd51b12e31/src/ui/mainwindow.cpp	2019-07-26 11:41:32.638186156 +0200
+@@ -1041,6 +1041,7 @@ MainWindow::MainWindow(Application* app,
+   if (hidden && (!QSystemTrayIcon::isSystemTrayAvailable() || !tray_icon_ ||
+                  !tray_icon_->IsVisible())) {
+     settings_.setValue("hidden", false);
++    setVisible(TRUE);
+     show();
+   }
+ #endif

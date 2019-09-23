@@ -1,0 +1,84 @@
+diff -Nurp net-snmp-5.8-orig/net-snmp-config.in net-snmp-5.8/net-snmp-config.in
+--- net-snmp-5.8-orig/net-snmp-config.in	2018-10-10 09:45:14.947075442 +0000
++++ net-snmp-5.8/net-snmp-config.in	2018-10-10 09:48:04.792631474 +0000
+@@ -41,6 +41,14 @@ count()
+     echo $#
+ }
+ 
++check_devel_files()
++{
++    if [ ! -e "${NSC_INCDIR}/net-snmp/net-snmp-config.h" ] ; then
++        echo "Can not find \"${NSC_INCDIR}/net-snmp/net-snmp-config.h\". The net-snmp development files seems to be missing. Exiting" >&2
++       # exit 2
++    fi
++}
++
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ includedir=@includedir@
+@@ -140,9 +148,11 @@ else
+       ;;
+     #################################################### compile
+     --base-cflags)
++      check_devel_files
+       echo @CFLAGS@ @CPPFLAGS@ -I${NSC_INCLUDEDIR}
+       ;;
+     --cflags|--cf*)
++      check_devel_files
+       echo @CFLAGS@ @DEVFLAGS@ @CPPFLAGS@ -I. -I${NSC_INCLUDEDIR}
+       ;;
+     --srcdir)
+@@ -153,6 +163,7 @@ else
+       echo $NSC_LIBDIR
+       ;;
+     --ldflags|--ld*)
++      check_devel_files
+       echo $NSC_LDFLAGS
+       ;;
+     --build-lib-dirs)
+@@ -190,29 +201,37 @@ else
+     #################################################### client lib
+     --libs)
+       # use this one == --netsnmp-libs + --external-libs
++      check_devel_files
+       echo $NSC_LDFLAGS $NSC_LIBDIR $NSC_SNMPLIBS $NSC_LIBS
+       ;;
+     --netsnmp-libs)
++      check_devel_files
+       echo $NSC_LIBDIR $NSC_BASE_SNMP_LIBS
+       ;;
+     --external-libs)
++      check_devel_files
+       echo $NSC_LDFLAGS $NSC_LNETSNMPLIBS $NSC_LIBS @PERLLDOPTS_FOR_APPS@
+       ;;
+     #################################################### agent lib
+     --base-agent-libs)
++      check_devel_files
+       echo $NSC_BASE_AGENT_LIBS
+       ;;
+     --base-subagent-libs)
++      check_devel_files
+       echo $NSC_BASE_SUBAGENT_LIBS
+       ;;
+     --agent-libs)
+       # use this one == --netsnmp-agent-libs + --external-libs
++      check_devel_files
+       echo $NSC_LDFLAGS $NSC_LIBDIR $NSC_AGENTLIBS $NSC_LIBS
+       ;;
+     --netsnmp-agent-libs)
++      check_devel_files
+       echo $NSC_LIBDIR $NSC_BASE_AGENT_LIBS
+       ;;
+     --external-agent-libs)
++      check_devel_files
+       echo $NSC_LDFLAGS $NSC_LMIBLIBS $NSC_LAGENTLIBS $NSC_LNETSNMPLIBS $NSC_LIBS
+       ;;
+     ####################################################
+@@ -238,6 +257,7 @@ else
+ 
+     ####################################################
+     --compile-subagent)
++      check_devel_files
+       shift
+       shifted=1
+       while test "x$done" = "x" -a "x$1" != "x" ; do

@@ -1,0 +1,70 @@
+diff -r -u homeshick-1.1.0-orig/bin/homeshick homeshick-1.1.0/bin/homeshick
+--- homeshick-1.1.0-orig/bin/homeshick	2018-04-12 21:52:30.000000000 +0200
++++ homeshick-1.1.0/bin/homeshick	2018-06-07 21:42:03.651248460 +0200
+@@ -1,8 +1,8 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ 
+ repos="$HOME/.homesick/repos"
+ # Include all helper functions. We will include the required command function later on.
+-homeshick=${HOMESHICK_DIR:-$HOME/.homesick/repos/homeshick}
++homeshick=${HOMESHICK_DIR:-/usr/share/homeshick}
+ # On travis-ci exit_status for some reason errors out, ignore it
+ # shellcheck disable=SC1090
+ source "$homeshick/lib/exit_status.sh"
+diff -r -u homeshick-1.1.0-orig/bin/homeshick.csh homeshick-1.1.0/bin/homeshick.csh
+--- homeshick-1.1.0-orig/bin/homeshick.csh	2018-04-12 21:52:30.000000000 +0200
++++ homeshick-1.1.0/bin/homeshick.csh	2018-06-07 21:35:03.398240964 +0200
+@@ -1,6 +1,6 @@
+ # This helper script should be sourced via an alias, e.g.
+ #
+-#   alias homeshick "source $HOME/.homesick/repos/homeshick/bin/homeshick.csh"
++#   alias homeshick "source /usr/share/homeshick/bin/homeshick.csh"
+ #
+ if ( "$1" == "cd" && "x$2" != "x" ) then
+     if ( -d "$HOME/.homesick/repos/$2/home" ) then
+@@ -12,6 +12,6 @@
+     if ( $?HOMESHICK_DIR ) then
+         $HOMESHICK_DIR/bin/homeshick $*
+     else
+-        $HOME/.homesick/repos/homeshick/bin/homeshick $*
++        /usr/share/homeshick/bin/homeshick $*
+     endif
+ endif
+diff -r -u homeshick-1.1.0-orig/homeshick.fish homeshick-1.1.0/homeshick.fish
+--- homeshick-1.1.0-orig/homeshick.fish	2018-04-12 21:52:30.000000000 +0200
++++ homeshick-1.1.0/homeshick.fish	2018-06-07 21:35:03.398240964 +0200
+@@ -1,5 +1,5 @@
+ # This script should be sourced in the context of your shell like so:
+-# source $HOME/.homesick/repos/homeshick/homeshick.fish
++# source /usr/share/homeshick/homeshick.fish
+ # Once the homeshick() function is defined, you can type
+ # "homeshick cd CASTLE" to enter a castle.
+ 
+@@ -9,6 +9,6 @@
+ 	else if set -q HOMESHICK_DIR
+ 		eval $HOMESHICK_DIR/bin/homeshick (string escape -- $argv)
+ 	else
+-		eval $HOME/.homesick/repos/homeshick/bin/homeshick (string escape -- $argv)
++		eval /usr/share/homeshick/bin/homeshick (string escape -- $argv)
+ 	end
+ end
+diff -r -u homeshick-1.1.0-orig/homeshick.sh homeshick-1.1.0/homeshick.sh
+--- homeshick-1.1.0-orig/homeshick.sh	2018-04-12 21:52:30.000000000 +0200
++++ homeshick-1.1.0/homeshick.sh	2018-06-07 21:40:18.111999430 +0200
+@@ -1,6 +1,5 @@
+-#!/usr/bin/env sh
+ # This script should be sourced in the context of your shell like so:
+-# source $HOME/.homeshick/repos/.homeshick/homeshick.sh
++# source /usr/share/homeshick/homeshick.sh
+ # Once the homeshick() function is defined, you can type
+ # "homeshick cd CASTLE" to enter a castle.
+ 
+@@ -10,6 +9,6 @@
+ 		# shellcheck disable=SC2164
+ 		cd "$HOME/.homesick/repos/$2"
+ 	else
+-		"${HOMESHICK_DIR:-$HOME/.homesick/repos/homeshick}/bin/homeshick" "$@"
++		"${HOMESHICK_DIR:-/usr/share/homeshick}/bin/homeshick" "$@"
+ 	fi
+ }

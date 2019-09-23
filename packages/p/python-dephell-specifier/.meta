@@ -1,0 +1,5 @@
+<package name="python-dephell-specifier" project="openSUSE:Factory">
+  <title></title>
+  <description>Work with version specifiers</description>
+  <devel project="devel:languages:python" package="python-dephell-specifier"/>
+</package>

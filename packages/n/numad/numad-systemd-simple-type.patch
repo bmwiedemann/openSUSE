@@ -1,0 +1,120 @@
+From b1d3aef655509d7debc651ff54226e4b067db3f4 Mon Sep 17 00:00:00 2001
+From: Mel Gorman <mgorman@suse.de>
+Date: Wed, 12 Jun 2013 15:53:26 +0100
+Subject: [PATCH] Give an option of running in foreground mode
+
+systemd forking service type smells of something unfortunate apparently
+and a desire was expressed to have it run as a simple service with
+a foreground mode option. This patch implements a -F flag and uses it
+with systemd.
+
+Signed-off-by: Mel Gorman <mgorman@suse.de>
+---
+ numad.8       |  5 ++++-
+ numad.c       | 30 ++++++++++++++++++++----------
+ numad.service |  5 ++---
+ 3 files changed, 26 insertions(+), 14 deletions(-)
+
+diff --git a/numad.8 b/numad.8
+index 2c46f55..73a0bc9 100644
+--- a/numad.8
++++ b/numad.8
+@@ -5,7 +5,7 @@ numad \- A user\-level daemon that provides placement advice and process
+ management for efficient use of CPUs and memory on systems with NUMA topology.
+ .SH "SYNTAX"
+ .LP 
+-numad [\fI\-dhvV\fP]
++numad [\fI\-dFhvV\fP]
+ .br 
+ .LP 
+ numad  [\fI\-D non-standard-cgroup-mount-point\fP]
+@@ -61,6 +61,9 @@ Debug output in log, sets the log level to LOG_DEBUG.  Same effect as \fI\-l 7\f
+ \fB\-D\fR <\fInon-standard-cgroup-mount-point\fP>
+ This option can be used to communicate a non-standard cgroup mount point to
+ numad.  This is not normally necessary.
++.TP
++\fB\-F\fR
++Run in foreground mode, do not daemonize\fP.
+ .TP 
+ \fB\-h\fR
+ Display usage help information and then exit.
+diff --git a/numad.c b/numad.c
+index d08b622..f6581c0 100644
+--- a/numad.c
++++ b/numad.c
+@@ -680,6 +680,7 @@ void print_usage_and_exit(char *prog_name) {
+     fprintf(stderr, "Usage: %s <options> ...\n", prog_name);
+     fprintf(stderr, "-d for debug logging (same effect as '-l 7')\n");
+     fprintf(stderr, "-D <CGROUP_MOUNT_POINT> to specify cgroup mount point\n");
++    fprintf(stderr, "-F to run in the foreground\n");
+     fprintf(stderr, "-h to print this usage info\n");
+     fprintf(stderr, "-i [<MIN>:]<MAX> to specify interval seconds\n");
+     fprintf(stderr, "-K 1  to keep interleaved memory spread across nodes\n");
+@@ -2145,8 +2146,9 @@ int main(int argc, char *argv[]) {
+     int v_flag = 0;
+     int w_flag = 0;
+     int x_flag = 0;
++    int F_flag = 0;
+     long list_pid = 0;
+-    while ((opt = getopt(argc, argv, "dD:hi:K:l:p:r:S:u:vVw:x:")) != -1) {
++    while ((opt = getopt(argc, argv, "dFD:hi:K:l:p:r:S:u:vVw:x:")) != -1) {
+         switch (opt) {
+         case 'd':
+             d_flag = 1;
+@@ -2155,6 +2157,9 @@ int main(int argc, char *argv[]) {
+         case 'D':
+             cpuset_dir_list[0] = strdup(optarg);
+             break;
++        case 'F':
++            F_flag = 1;
++            break;
+         case 'h':
+             print_usage_and_exit(argv[0]);
+             break;
+@@ -2278,15 +2283,20 @@ int main(int argc, char *argv[]) {
+     } else if (max_interval > 0) {
+         // Start the numad daemon...
+         check_prereqs(argv[0]);
+-        // Daemonize self...
+-        daemon_pid = fork();
+-        if (daemon_pid < 0) { numad_log(LOG_CRIT, "fork() failed\n"); exit(EXIT_FAILURE); }
+-        // Parent process now exits
+-        if (daemon_pid > 0) { exit(EXIT_SUCCESS); }
+-        // Child process continues...
+-        umask(S_IWGRP | S_IWOTH); // Reset the file mode
+-        int sid = setsid();  // Start a new session
+-        if (sid < 0) { numad_log(LOG_CRIT, "setsid() failed\n"); exit(EXIT_FAILURE); }
++
++        // Daemonize self if requested
++        if (F_flag == 0) {
++                daemon_pid = fork();
++                if (daemon_pid < 0) { numad_log(LOG_CRIT, "fork() failed\n"); exit(EXIT_FAILURE); }
++                // Parent process now exits
++                if (daemon_pid > 0) { exit(EXIT_SUCCESS); }
++
++                // Child process continues...
++                umask(S_IWGRP | S_IWOTH); // Reset the file mode
++                int sid = setsid();  // Start a new session
++                if (sid < 0) { numad_log(LOG_CRIT, "setsid() failed\n"); exit(EXIT_FAILURE); }
++        }
++
+         if ((chdir("/")) < 0) { numad_log(LOG_CRIT, "chdir() failed"); exit(EXIT_FAILURE); }
+         daemon_pid = register_numad_pid();
+         if (daemon_pid != getpid()) {
+diff --git a/numad.service b/numad.service
+index d0c8c5b..0223ca9 100644
+--- a/numad.service
++++ b/numad.service
+@@ -2,10 +2,9 @@
+ Description=numad - The NUMA daemon that manages application locality.
+ 
+ [Service]
+-Type=forking
+-PIDFile=/var/run/numad.pid
++Type=simple
+ EnvironmentFile=/etc/numad.conf
+-ExecStart=/usr/sbin/numad -i $INTERVAL
++ExecStart=/usr/sbin/numad -i $INTERVAL -F
+ ExecStop=/usr/sbin/numad -i 0
+ 
+ [Install]

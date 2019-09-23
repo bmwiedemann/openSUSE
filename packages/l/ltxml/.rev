@@ -1,0 +1,131 @@
+<revisionlist>
+  <revision rev="1" vrev="4">
+    <srcmd5>f8209db13cf3ec426c6bbbce4d780947</srcmd5>
+    <version>1.2.7</version>
+    <time>1168903461</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="38">
+    <srcmd5>965ce4e6bf6b80b50c9c635a6e14975c</srcmd5>
+    <version>1.2.7</version>
+    <time>1169571644</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="46">
+    <srcmd5>5f415d104c7ebfe94e261a03057c242d</srcmd5>
+    <version>1.2.7</version>
+    <time>1175629310</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="55">
+    <srcmd5>071890c91c19ac0861bbc979b00ba967</srcmd5>
+    <version>1.2.7</version>
+    <time>1180900228</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="139">
+    <srcmd5>071890c91c19ac0861bbc979b00ba967</srcmd5>
+    <version>1.2.7</version>
+    <time>1180900228</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="140">
+    <srcmd5>6da9e09ff3eec8c8d496f83c60b5b726</srcmd5>
+    <version>1.2.7</version>
+    <time>1245276086</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="142">
+    <srcmd5>6da9e09ff3eec8c8d496f83c60b5b726</srcmd5>
+    <version>1.2.7</version>
+    <time>1245276086</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="143">
+    <srcmd5>8746205eaa1e2f305b10e17526b985b9</srcmd5>
+    <version>1.2.7</version>
+    <time>1268924859</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="145">
+    <srcmd5>8746205eaa1e2f305b10e17526b985b9</srcmd5>
+    <version>1.2.7</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="146">
+    <srcmd5>8746205eaa1e2f305b10e17526b985b9</srcmd5>
+    <version>1.2.7</version>
+    <time>1278678595</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="149">
+    <srcmd5>8746205eaa1e2f305b10e17526b985b9</srcmd5>
+    <version>1.2.7</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="151">
+    <srcmd5>8746205eaa1e2f305b10e17526b985b9</srcmd5>
+    <version>1.2.7</version>
+    <time>1319182160</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="152">
+    <srcmd5>36c20cbe755bfdc13f83548ce2cd1301</srcmd5>
+    <version>1.2.7</version>
+    <time>1324458079</time>
+    <user>coolo</user>
+    <comment>- update PyLTXML from upstream URL
+
+- add automake as buildrequire to avoid implicit dependency</comment>
+    <requestid>97067</requestid>
+  </revision>
+  <revision rev="14" vrev="154">
+    <srcmd5>36c20cbe755bfdc13f83548ce2cd1301</srcmd5>
+    <version>1.2.7</version>
+    <time>1340183676</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="156">
+    <srcmd5>36c20cbe755bfdc13f83548ce2cd1301</srcmd5>
+    <version>1.2.7</version>
+    <time>1359109412</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="158">
+    <srcmd5>36c20cbe755bfdc13f83548ce2cd1301</srcmd5>
+    <version>1.2.7</version>
+    <time>1379663203</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="160">
+    <srcmd5>36c20cbe755bfdc13f83548ce2cd1301</srcmd5>
+    <version>1.2.7</version>
+    <time>1409301825</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="161">
+    <srcmd5>4a93b56ef7f9827c65837c402bff7097</srcmd5>
+    <version>1.2.7</version>
+    <time>1568191276</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729989</requestid>
+  </revision>
+  <revision rev="19" vrev="162">
+    <srcmd5>d424a482139dd1082818d0a6ed78579c</srcmd5>
+    <version>1.2.7</version>
+    <time>1569234706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>730763</requestid>
+  </revision>
+</revisionlist>

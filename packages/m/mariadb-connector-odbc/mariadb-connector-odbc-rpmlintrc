@@ -1,0 +1,7 @@
+# Not a direct replacement. Users need to modify their .odbc.ini config files
+# to point at the new binary
+addFilter("mariadb-connector-odbc.*: W: obsolete-not-provided MyODBC-unixODBC")
+
+# It's a plugin
+addFilter("mariadb-connector-odbc.*: W: no-soname /usr/lib.*/libmaodbc.so")
+

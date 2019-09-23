@@ -1,0 +1,713 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3859608022311bc8d6c5264371b04faf</srcmd5>
+    <version>2.2.3</version>
+    <time>1330966902</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>106138</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3859608022311bc8d6c5264371b04faf</srcmd5>
+    <version>2.2.3</version>
+    <time>1340184084</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>3859608022311bc8d6c5264371b04faf</srcmd5>
+    <version>2.2.3</version>
+    <time>1359110103</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4d0cd94a7b96804b8ef23172656680de</srcmd5>
+    <version>2.3.4</version>
+    <time>1366709948</time>
+    <user>coolo</user>
+    <comment>Ok, %defattr was an oversight; removed bcond, so it's fixed (forwarded request 172823 from thomas-schraitle)</comment>
+    <requestid>172888</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b18154cbbd517baba29cb013f99a24cb</srcmd5>
+    <version>2.3.4</version>
+    <time>1368451613</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174888</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bda5d54a4f68d675df3fde75dd4ad295</srcmd5>
+    <version>2.3.5</version>
+    <time>1372138944</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179972</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>bda5d54a4f68d675df3fde75dd4ad295</srcmd5>
+    <version>2.3.5</version>
+    <time>1379664262</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>4a726ab9e633dc736542e01aac8b52aa</srcmd5>
+    <version>2.3.5</version>
+    <time>1380297747</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200749</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ebeb4f1ae119745f80e47937b606d1db</srcmd5>
+    <version>2.5.1</version>
+    <time>1389108430</time>
+    <user>coolo</user>
+    <comment>- Update to 2.5.1: 
+  + merge new documentation styling PR from Tobias Bieniek.
+  + fix issue403: allow parametrize of multiple same-name functions within
+    a collection node.
+  + Allow parameterized fixtures to specify the ID of the parameters by
+    adding an ids argument to pytest.fixture() and pytest.yield_fixture().
+  + fix issue404 by always using the binary xml escape in the junitxml
+    plugin.
+  + fix issue407: fix addoption docstring to point to argparse instead of
+    optparse.
+  * 2.5.0:
+  + dropped python2.5 from automated release testing of pytest itself
+    which means it's probably going to break soon
+  + simplified and fixed implementation for calling finalizers when
+    parametrized fixtures or function arguments are involved.  finalization
+    is now performed lazily at setup time instead of in the &quot;teardown phase&quot;.
+  + PR90: add --color=yes|no|auto option to force terminal coloring
+    mode (&quot;auto&quot; is default).
+  + fix issue319 - correctly show unicode in assertion errors. Also means
+    we depend on py&gt;=1.4.19 now.
+  + fix issue396 - correctly sort and finalize class-scoped parametrized
+    tests independently from number of methods on the class.
+  + refix issue323 in a better way -- parametrization should now never
+    cause Runtime Recursion errors because the underlying algorithm
+    for re-ordering tests per-scope/per-fixture is not recursive
+    anymore
+  + fix issue290 - there is preliminary support now for parametrizing
+    with repeated same values (sometimes useful to to test if calling
+    a second time works as with the first time).
+  + close issue240 - document precisely how pytest module importing (forwarded request 212738 from mvyskocil)</comment>
+    <requestid>212740</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>87e69ab0e7587805402c33d5c2057ffd</srcmd5>
+    <version>2.5.1</version>
+    <time>1391100296</time>
+    <user>coolo</user>
+    <comment>- Re-add python-argparse requirement for SP3</comment>
+    <requestid>220367</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>134d8d6ea8b72fa01d705fd535247686</srcmd5>
+    <version>2.5.2</version>
+    <time>1395146298</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.5.2:
+  - fix issue409 -- better interoperate with cx_freeze by not
+    trying to import from collections.abc which causes problems 
+    for py27/cx_freeze.  Thanks Wolfgang L. for reporting and tracking it down.
+  - fixed docs and code to use &quot;pytest&quot; instead of &quot;py.test&quot; almost everywhere.
+    Thanks Jurko Gospodnetic for the complete PR.  
+  - fix issue425: mention at end of &quot;py.test -h&quot; that --markers
+    and --fixtures work according to specified test path (or current dir)
+  - fix issue413: exceptions with unicode attributes are now printed
+    correctly also on python2 and with pytest-xdist runs. (the fix
+    requires py-1.4.20)
+  - copy, cleanup and integrate py.io capture
+    from pylib 1.4.20.dev2 (rev 13d9af95547e)
+  - address issue416: clarify docs as to conftest.py loading semantics
+  - fix issue429: comparing byte strings with non-ascii chars in assert
+    expressions now work better.  Thanks Floris Bruynooghe.
+  - make capfd/capsys.capture private, its unused and shouldnt be exposed</comment>
+    <requestid>225731</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>5a2b30c1c32a99e172ae3794d19fe888</srcmd5>
+    <version>2.5.2</version>
+    <time>1403176119</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237622</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9ee6969c210c593353e63d6613e7e35d</srcmd5>
+    <version>2.6.0</version>
+    <time>1406793844</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242963</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>9ee6969c210c593353e63d6613e7e35d</srcmd5>
+    <version>2.6.0</version>
+    <time>1409302967</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>119609f66470108c22cf65641480b53f</srcmd5>
+    <version>2.6.3</version>
+    <time>1412851922</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254343</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>714d3ce8d533475f257939cce841a077</srcmd5>
+    <version>2.6.3</version>
+    <time>1416048061</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261690</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>30be085e565a94e785b04ffc10bb5554</srcmd5>
+    <version>2.7.1</version>
+    <time>1432587914</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308505</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4f9dd758f136f5027bcde843c8f1ae4f</srcmd5>
+    <version>2.7.1</version>
+    <time>1437059634</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315284</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>f370d298c373a8e6c376e9708bc964b6</srcmd5>
+    <version>2.7.1</version>
+    <time>1438899639</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319403</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>04054b19b721dee0a6b7dda60281593d</srcmd5>
+    <version>2.8.2</version>
+    <time>1445287640</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>337397</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>dab4ce39e93eb9bff73e7835be724f2f</srcmd5>
+    <version>2.8.7</version>
+    <time>1455611233</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357125</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>52ab84aab5c3028b849270192743b302</srcmd5>
+    <version>2.8.7</version>
+    <time>1473103123</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424253</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a3453449dd77f4df2c6fca0ff1b242fe</srcmd5>
+    <version>3.0.2</version>
+    <time>1474370620</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 3.0.2</comment>
+    <requestid>428222</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>887a7b18f08c56a1e0c75699fe5edb23</srcmd5>
+    <version>3.0.6</version>
+    <time>1488216838</time>
+    <user>dimstar_suse</user>
+    <comment>first batch of singlespec packages</comment>
+    <requestid>460258</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>602a1096b533001108f1b6f6d0331272</srcmd5>
+    <version>3.0.7</version>
+    <time>1492617953</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>483801</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>79198e669222a60c511640d1c04346e7</srcmd5>
+    <version>3.0.7</version>
+    <time>1505989692</time>
+    <user>dimstar_suse</user>
+    <comment>- skip creating a python3 symlink when only python2.x is being built</comment>
+    <requestid>527316</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d49798c14f624599ea2ce448a0e952fe</srcmd5>
+    <version>3.2.3</version>
+    <time>1509614650</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.2.3:
+  * Bug Fixes
+    + Fix crash in tab completion when no prefix is given. (#2748)
+    + The equality checking function (__eq__) of MarkDecorator returns
+      False if one object is not an instance of MarkDecorator. (#2758)
+    + When running pytest --fixtures-per-test: don’t crash if an item
+      has no _fixtureinfo attribute (e.g. doctests) (#2788)
+  * Improved Documentation
+    + In help text of -k option, add example of using not to not
+      select certain tests whose names match the provided
+      expression. (#1442)
+    + Add note in parametrize.rst about calling metafunc.parametrize
+      multiple times. (#1548)
+  * Trivial/Internal Changes
+    + Set xfail_strict=True in pytest’s own test suite to catch
+      expected failures as soon as they start to pass. (#2722)
+    + Fix typo in example of passing a callable to markers (in
+      example/markers.rst) (#2765)
+
+- Fix python-py version requirement.
+- Update to 3.2.2:
+  * Bug Fixes
+    - Calling the deprecated request.getfuncargvalue() now shows the
+      source of the call. (#2681)
+    - Allow tests declared as @staticmethod to use fixtures. (#2699)
+    - Fixed edge-case during collection: attributes which raised
+      pytest.fail when accessed would abort the entire collection.
+      (#2707)
+    - Fix ReprFuncArgs with mixed unicode and UTF-8 args. (#2731)
+  * Improved Documentation</comment>
+    <requestid>537603</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8911af7ecd41709c467b98cf47083552</srcmd5>
+    <version>3.2.5</version>
+    <time>1511085958</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.5
+* don't limit py&amp;lt;1.5
+
+- update to 3.2.5
+* don't limit py&amp;lt;1.5 (forwarded request 542012 from mimi_vx)</comment>
+    <requestid>542013</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>80af1d398893372fb82222e6afdc1806</srcmd5>
+    <version>3.3.1</version>
+    <time>1513342900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556675</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>83ddcd049cfc486e12f236b7104e1a50</srcmd5>
+    <version>3.3.2</version>
+    <time>1516091101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562163</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>fe44b08c13a8204f8c04a85bbc8f2dd7</srcmd5>
+    <version>3.4.0</version>
+    <time>1518697239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575840</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>5a5aa37dc0f67f50ed2645c0741001c6</srcmd5>
+    <version>3.4.1</version>
+    <time>1519486641</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.4.1
+* Move import of doctest.UnexpectedException to top-level to avoid possible
+  errors when using --pdb.
+* Added printing of captured stdout/stderr before entering pdb, and improved a
+  test which was giving false negatives about output capturing.
+* Fix ordering of tests using parametrized fixtures which can lead to fixtures
+  being created more than necessary.
+* Fix bug where logging happening at hooks outside of &quot;test run&quot; hooks would
+  cause an internal error.
+* Detect arguments injected by unittest.mock.patch decorator correctly when
+  pypi mock.patch is installed and imported.
+* Errors shown when a pytest.raises() with match= fails are now cleaner
+  on what happened: When no exception was raised, the &quot;matching '...'&quot; part got
+  removed as it falsely implies that an exception was raised but it didn't
+  match. When a wrong exception was raised, it's now thrown 
+  instead of complaining about the unmatched text.
+* Add Sphinx parameter docs for match and message args to pytest.raises
+* Rename ParameterSet._for_parameterize() to _for_parametrize() in
+    order to comply with the naming convention.
+
+- update to 3.4.1
+* Move import of doctest.UnexpectedException to top-level to avoid possible
+  errors when using --pdb.
+* Added printing of captured stdout/stderr before entering pdb, and improved a
+  test which was giving false negatives about output capturing.
+* Fix ordering of tests using parametrized fixtures which can lead to fixtures
+  being created more than necessary.
+* Fix bug where logging happening at hooks outside of &quot;test run&quot; hooks would
+  cause an internal error.
+* Detect arguments injected by unittest.mock.patch decorator correctly when (forwarded request 579197 from mimi_vx)</comment>
+    <requestid>579198</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>0e58eab6a80198150fa75a01bd20acbf</srcmd5>
+    <version>3.4.1</version>
+    <time>1520329434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581941</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>cc1a2dbb9e6e735b0337f639efec9b5b</srcmd5>
+    <version>3.4.2</version>
+    <time>1520852515</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.4.2
+- more in python-pytest.changes
+
+- update to 3.4.2
+* Removed progress information when capture option is no.
+* Refactor check of bindir from exists to isdir.
+* Fix TypeError issue when using approx with a Decimal value. 
+* Fix reference cycle generated when using the request fixture. 
+* [tool:pytest] sections in *.cfg files passed by the
+   -c option are now properly recognized.</comment>
+    <requestid>584625</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b4888d77b3991c1b6ff12ec9225d1597</srcmd5>
+    <version>3.5.0</version>
+    <time>1522702127</time>
+    <user>dimstar_suse</user>
+    <comment>- add python3-sphinxcontrib-trio to BuildRequires 
+
+- update to 3.5.0
+- new install dependency python-more-itertools
+- more changes in CHANGELOG.rst
+
+- update to 3.5.0
+- new install dependency python-more-itertools
+- more changes in CHANGELOG.rst</comment>
+    <requestid>593001</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b8b95c88023f2b4a6243d21763d938b7</srcmd5>
+    <version>3.5.1</version>
+    <time>1525611308</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602321</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>56d7930d44dc763a450d173d31b89939</srcmd5>
+    <version>3.6.2</version>
+    <time>1529919339</time>
+    <user>dimstar_suse</user>
+    <comment>-  update to 3.6.2
+- add python-mock to buildrequires
+- fix test command
+- add python_mock.patch to use stdlib mock library on py3
+
+- Update to version 3.6.0
+  + Features
+    * Revamp the internals of the ``pytest.mark`` implementation with correct per
+      node handling which fixes a number of long standing bugs caused by the old
+      design. This introduces new ``Node.iter_markers(name)`` and
+      ``Node.get_closest_mark(name)`` APIs. Users are **strongly encouraged** to
+      read the `reasons for the revamp in the docs
+      &lt;https://docs.pytest.org/en/latest/mark.html#marker-revamp-and-iteration&gt;`_,
+      or jump over to details about `updating existing code to use the new APIs
+      &lt;https://docs.pytest.org/en/latest/mark.html#updating-code&gt;`_. (`#3317
+      &lt;https://github.com/pytest-dev/pytest/issues/3317&gt;`_)
+    * Now when ``@pytest.fixture`` is applied more than once to the same function a
+      ``ValueError`` is raised. This buggy behavior would cause surprising problems
+      and if was working for a test suite it was mostly by accident. (`#2334
+      &lt;https://github.com/pytest-dev/pytest/issues/2334&gt;`_)
+    * Support for Python 3.7's builtin ``breakpoint()`` method, see `Using the
+      builtin breakpoint function
+      &lt;https://docs.pytest.org/en/latest/usage.html#breakpoint-builtin&gt;`_ for
+      details. (`#3180 &lt;https://github.com/pytest-dev/pytest/issues/3180&gt;`_)
+    * ``monkeypatch`` now supports a ``context()`` function which acts as a context
+      manager which undoes all patching done within the ``with`` block. (`#3290
+      &lt;https://github.com/pytest-dev/pytest/issues/3290&gt;`_)
+    * The ``--pdb`` option now causes KeyboardInterrupt to enter the debugger,
+      instead of stopping the test session. On python 2.7, hitting CTRL+C again
+      exits the debugger. On python 3.2 and higher, use CTRL+D. (`#3299</comment>
+    <requestid>618559</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>b99a5b2d3962a05437f53d8d508c07e3</srcmd5>
+    <version>3.6.3</version>
+    <time>1531813093</time>
+    <user>dimstar_suse</user>
+    <comment>- update to pytest-3.6.3
+- drop python_mock.patch
+ * Fix ImportWarning triggered by explicit relative imports in assertion-rewritten
+    package modules.
+ * Fix error in pytest.approx when dealing with 0-dimension numpy arrays.
+ * No longer raise ValueError when using the get_marker API.
+ * Fix problem where log messages with non-ascii characters would not appear
+    in the output log file.
+ * No longer raise AttributeError when legacy marks can't be stored in functions.
+
+- update to pytest-3.6.3
+- drop python_mock.patch
+ * Fix ImportWarning triggered by explicit relative imports in assertion-rewritten
+    package modules.
+ * Fix error in pytest.approx when dealing with 0-dimension numpy arrays.
+ * No longer raise ValueError when using the get_marker API.
+ * Fix problem where log messages with non-ascii characters would not appear
+    in the output log file.
+ * No longer raise AttributeError when legacy marks can't be stored in functions. (forwarded request 622958 from mimi_vx)</comment>
+    <requestid>622959</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>9c2b04e0e193cd9a80bc466572141ff1</srcmd5>
+    <version>3.7.1</version>
+    <time>1533732349</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.7.1 
+
+-  update to 3.7.0
+ * pytest_namespace has been deprecated.
+ * Calling a fixture function directly, as opposed to request them in a test
+    function, now issues a RemovedInPytest4Warning.
+ * New package fixture scope: fixtures are finalized when the last test of
+    a package finishes. This feature is considered experimental, so use it sparingly.
+ * Node.add_marker now supports an append=True/False parameter to determine
+    whether the mark comes last (default) or first.
+ * Fixture caplog now has a messages property, providing convenient access
+    to the format-interpolated log messages without the extra data provided by the formatter/handler.
+ * New --trace option to enter the debugger at the start of a test.
+ * Introduce pytester.copy_example as helper to do acceptance tests
+   against examples from the project.
+
+- update to 3.7.1
+ * Raise immediately if approx() is given an expected value of a type it
+     doesn’t understand (e.g. strings, nested dicts, etc.).
+ * Correctly represent the dimensions of an numpy array when calling repr() on approx().
+ * Fix incompatibility with third party plugins during collection, which
+     produced the error object has no attribute '_collectfile'.
+ * Display the absolute path if cache_dir is not relative to the rootdir instead of failing.
+ * Fix compatibility problem with plugins and the warning code issued
+     by fixture functions when they are called directly.
+ * Fix infinite recursion in pytest.approx with arrays in numpy&lt;1.13.
+ * iFix TypeError when the assertion message is bytes in python 3.
+
+-  update to 3.7.0
+ * pytest_namespace has been deprecated.</comment>
+    <requestid>627904</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>6177e195511acb559ea620d209c8c9d4</srcmd5>
+    <version>3.7.4</version>
+    <time>1536575771</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 3.7.4
+- drop 0001-Use-unittest.mock-if-is-only-aviable.patch
+ * Fix possible infinite recursion when writing .pyc files
+ * Cache plugin now obeys the -q flag when --last-failed and
+     --failed-first flags are used.
+ * Fix bad console output when using console_output_style=classic
+ * Fixtures during teardown can again use capsys and capfd to inspect
+     output captured during tests.
+ * Fix bugs where unicode arguments could not be passed to testdir.runpytest
+     on Python 2.
+ * Fix double collection of tests within packages when the filename starts
+     with a capital letter
+ * Fix collection error when specifying test functions directly in the command
+     line using test.py::test syntax together with --doctest-modules
+  * Fix stdout/stderr not getting captured when real-time cli logging is active.
+  * Fix bug where --show-capture=no option would still show logs printed during
+     fixture teardown.
+  * Fix issue where teardown of fixtures of consecutive sub-packages were
+     executed once, at the end of the outer package.
+
+- update to 3.7.2
+- add 0001-Use-unittest.mock-if-is-only-aviable.patch
+ * Fix filterwarnings not being registered as a builtin mark.
+ * Fix test collection from packages mixed with normal directories.
+ * Fix infinite recursion during collection if a pytest_ignore_collect
+    hook returns False instead of None.
+ * Fix bug where decorated fixtures would lose functionality
+ * Fix bug where importing modules or other objects with prefix pytest_ prefix
+    would raise a PluginValidationError.
+ * Fix AttributeError during teardown of TestCase subclasses which raise</comment>
+    <requestid>633516</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>c5f1d27e9fbc15ab1b6e5e91a6eda145</srcmd5>
+    <version>3.8.1</version>
+    <time>1537966437</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.8.1
+- drop remove_mock.patch
+ * .pytest_cache directory is now automatically ignored by Git
+ * Fix the following error during collection of tests inside packages:
+    'TypeError: object of type 'Package' has no len()'
+ * Fix bug where indirect parametrization would consider the scope of all
+     fixtures used by the test function to determine the parametrization scope,
+     and not only the scope of the fixtures being parametrized.
+ * Fix crash of the assertion rewriter if a test changed the current working
+     directory without restoring it afterwards.
+ * Fix issue that prevented some caplog properties (for example record_tuples)
+     from being available when entering the debugger with --pdb.
+ * Fix UnicodeDecodeError in python2.x when a class returns a non-ascii binary
+     __repr__ in an assertion which also contains non-ascii text.
+
+- update to 3.8.1
+- drop remove_mock.patch
+ * .pytest_cache directory is now automatically ignored by Git
+ * Fix the following error during collection of tests inside packages:
+    'TypeError: object of type 'Package' has no len()'
+ * Fix bug where indirect parametrization would consider the scope of all
+     fixtures used by the test function to determine the parametrization scope,
+     and not only the scope of the fixtures being parametrized.
+ * Fix crash of the assertion rewriter if a test changed the current working
+     directory without restoring it afterwards.
+ * Fix issue that prevented some caplog properties (for example record_tuples)
+     from being available when entering the debugger with --pdb.
+ * Fix UnicodeDecodeError in python2.x when a class returns a non-ascii binary
+     __repr__ in an assertion which also contains non-ascii text. (forwarded request 637650 from mimi_vx)</comment>
+    <requestid>637656</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>82504df44045554066f263dd016d30be</srcmd5>
+    <version>3.10.0</version>
+    <time>1542012552</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.10.0
+ * Resume capturing output after continue with __import__(&quot;pdb&quot;).set_trace().
+ * Add -sw, --stepwise as an alternative to --lf -x for stopping at the first
+    failure, but starting the next test invocation from that test.
+ * Make --color emit colorful dots when not running in verbose mode.
+ * Improve performance with collection reporting in non-quiet mode with terminals.
+ * The &quot;collecting …&quot; message is only printed/updated every 0.5s.
+ * Fix false RemovedInPytest4Warning: usage of Session... is deprecated, 
+    please use pytest warnings.
+ * Fix problems with running tests in package __init__.py files.
+ * Swallow warnings during anonymous compilation of source.
+ * Fix access denied error when deleting stale directories
+    created by tmpdir / tmp_path.
+ * Naming a fixture request will now raise a warning: the request fixture
+    is internal and should not be overwritten as it will lead to internal errors.
+ * Handle (ignore) exceptions raised during collection, e.g.
+    with Django's LazySettings proxy class.
+ * Added missing documentation about the fact that module names passed
+    to filter warnings are not regex-escaped.
+ * Display cachedir also in non-verbose mode if non-default.
+ * pdb: improve message about output capturing with set_trace.
+ * Do not display &quot;IO-capturing turned off/on&quot; when -s is used to avoid confusion.
+ * Improve message and stack level of warnings issued by monkeypatch.setenv
+    when the value of the environment variable is not a str.
+ * Fix &quot;ValueError: Plugin already registered&quot; with conftest plugins via symlink.
+ * Handle race condition between creation and deletion of temporary folders.
+ * Fix bug where the warning summary at the end of the test session was
+    not showing the test where the warning was originated.
+ * Fix regression when stacklevel for warnings was passed as positional
+    argument on python2.</comment>
+    <requestid>646342</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>6ca7220cd2e648d85b5a5e139cdb78d7</srcmd5>
+    <version>3.10.1</version>
+    <time>1543223767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648996</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>1c6f40c3e7c2ddf7203703e107518e3a</srcmd5>
+    <version>3.10.1</version>
+    <time>1547554395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663296</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>365223b349299e4a7929733f36109d37</srcmd5>
+    <version>3.10.1</version>
+    <time>1551215786</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build with new pluggy:
+  * new-pluggy.patch</comment>
+    <requestid>679255</requestid>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>473282a18d31d75b9efa17eb49bea0d3</srcmd5>
+    <version>3.10.1</version>
+    <time>1560862151</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing quotes to the test call
+
+- Add patch to fix build with new sphinx:
+  * sphinx2.0.patch
+- Add patch to fix build with new pluggy that uses importlib-metadata:
+  * importlib-metadata.patch</comment>
+    <requestid>709052</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>518a1a9a9bc6818c223dceb2690f639d</srcmd5>
+    <version>5.0.1</version>
+    <time>1564484512</time>
+    <user>dimstar_suse</user>
+    <comment>- Add setuptools requires as we still use entrypoints
+
+- Python-pytest4 contains pytest4; python-pytest3 contains pytest3
+  the main package from now on will be tracking upstream releases
+- Update to 5.0.1:
+  * Major update; from now on supporting only python3+
+- Remove merged patches:
+  * fix_test_raises_exception_looks_iterable.patch
+  * importlib-metadata.patch
+  * new-pluggy.patch
+  * sphinx2.0.patch</comment>
+    <requestid>717009</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3b73afb3cb06fb8c6319edd1b694220e</srcmd5>
+    <version>5.1.2</version>
+    <time>1569232991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.2:
+  * #2270: Fixed self reference in function-scoped fixtures defined plugin classes: previously self would be a reference to a test class, not the plugin class.
+  * #570: Fixed long standing issue where fixture scope was not respected when indirect fixtures were used during parametrization.
+  * #5782: Fix decoding error when printing an error response from --pastebin.
+  * #5786: Chained exceptions in test and collection reports are now correctly serialized, allowing plugins like pytest-xdist to display them properly.
+
+- Update to 5.1.1
+ * Removed:
+   + Request.getfuncargvalue: use Request.getfixturevalue instead.
+   + pytest.raises and pytest.warns no longer support strings as the second argument.
+   + message parameter of pytest.raises.
+   + pytest.raises, pytest.warns and ParameterSet.param now use native keyword-only
+     syntax. This might change the exception message from previous versions, but
+     they still raise TypeError on unknown keyword arguments as before.
+   + pytest.config global variable.
+   + tmpdir_factory.ensuretemp method.
+   + pytest_logwarning hook.
+   + RemovedInPytest4Warning warning type.
+   + request is now a reserved name for fixtures.
+   + Removed unused support code for unittest2.
+   + pytest.fail, pytest.xfail and pytest.skip no longer support bytes
+     for the message argument.
+ * New Config.invocation_args attribute containing the unchanged arguments passed to pytest.main().
+ * New NUMBER option for doctests to ignore irrelevant differences in floating-point numbers
+ * JUnit XML now includes a timestamp and hostname in the testsuite tag.
+ * Fix RuntimeError/StopIteration when trying to collect package with “__init__.py” only.
+ * Warnings issued during pytest_configure are explicitly not treated as errors,
+    even if configured as such, because it otherwise completely breaks pytest.
+ * The XML file produced by --junitxml now correctly contain a &lt;testsuites&gt; root element.
+ * Fixed using multiple short options together in the command-line (for example -vs) in Python 3.8+.</comment>
+    <requestid>729497</requestid>
+  </revision>
+</revisionlist>

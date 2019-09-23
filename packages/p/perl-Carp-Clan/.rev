@@ -1,0 +1,197 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c662c6a3b2cd80da8fc4b24689ffe8e6</srcmd5>
+    <version>5.8</version>
+    <time>1168903794</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b6ea5d16bb0f46465bee0eb29f7e8b1a</srcmd5>
+    <version>5.9</version>
+    <time>1182179135</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>94af4d964f5a3d56c84e0b5611d2fc94</srcmd5>
+    <version>6.00</version>
+    <time>1203957349</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="41">
+    <srcmd5>94af4d964f5a3d56c84e0b5611d2fc94</srcmd5>
+    <version>6.00</version>
+    <time>1203957349</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="42">
+    <srcmd5>fd5feabb8d1357a0ecfbc206b173a373</srcmd5>
+    <version>6.00</version>
+    <time>1245337130</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="44">
+    <srcmd5>fd5feabb8d1357a0ecfbc206b173a373</srcmd5>
+    <version>6.00</version>
+    <time>1245337130</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="45">
+    <srcmd5>0afff99a7984f18b29e2175dc23c8116</srcmd5>
+    <version>6.00</version>
+    <time>1263223487</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Carp-Clan based on submit request 28923 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4c759c05eabb68558e7b5854d66b1eb6</srcmd5>
+    <version>6.04</version>
+    <time>1263824289</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Carp-Clan based on submit request 29658 from user anicka
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>311a7365e1d07f2d0e5acff1e600d03c</srcmd5>
+    <version>6.04</version>
+    <time>1268925380</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>311a7365e1d07f2d0e5acff1e600d03c</srcmd5>
+    <version>6.04</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>311a7365e1d07f2d0e5acff1e600d03c</srcmd5>
+    <version>6.04</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>97668e5be0e90059b2ae149b52e04391</srcmd5>
+    <version>6.04</version>
+    <time>1290788227</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53902 from user computersalat
+</comment>
+    <requestid>53902</requestid>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>b9053e7799fa0f55a806dd07acbddf79</srcmd5>
+    <version>6.04</version>
+    <time>1290788238</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53902
+</comment>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>cfc63e7062305b9a84ca39238d8b240d</srcmd5>
+    <version>6.04</version>
+    <time>1291581532</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54476 from user coolo
+</comment>
+    <requestid>54476</requestid>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>866f318c21fa66b7cf341c08cee161b0</srcmd5>
+    <version>6.04</version>
+    <time>1291581543</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54476
+</comment>
+  </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>866f318c21fa66b7cf341c08cee161b0</srcmd5>
+    <version>6.04</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>866f318c21fa66b7cf341c08cee161b0</srcmd5>
+    <version>6.04</version>
+    <time>1319182245</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="15">
+    <srcmd5>f9fa57f30bcb5954a6144ef936bbb367</srcmd5>
+    <version>6.04</version>
+    <time>1321875333</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92107</requestid>
+  </revision>
+  <revision rev="19" vrev="16">
+    <srcmd5>72418303f5970151f8c7759f250a34e2</srcmd5>
+    <version>6.04</version>
+    <time>1323193090</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="18">
+    <srcmd5>72418303f5970151f8c7759f250a34e2</srcmd5>
+    <version>6.04</version>
+    <time>1340183803</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="20">
+    <srcmd5>72418303f5970151f8c7759f250a34e2</srcmd5>
+    <version>6.04</version>
+    <time>1359109611</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="21">
+    <srcmd5>58d8429fde61ee4cd2d33dc3a27b4a83</srcmd5>
+    <version>6.04</version>
+    <time>1366177465</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 164112 from namtrac)</comment>
+    <requestid>170894</requestid>
+  </revision>
+  <revision rev="23" vrev="23">
+    <srcmd5>58d8429fde61ee4cd2d33dc3a27b4a83</srcmd5>
+    <version>6.04</version>
+    <time>1379663574</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="25">
+    <srcmd5>58d8429fde61ee4cd2d33dc3a27b4a83</srcmd5>
+    <version>6.04</version>
+    <time>1409302188</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>369ae21f4da34b4e65e70093a47255ac</srcmd5>
+    <version>6.06</version>
+    <time>1468869718</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.06
+   see /usr/share/doc/packages/perl-Carp-Clan/Changes
+  Version 6.06  29.05.2016
+   + Avoid failure due to version self-check in 20pre560.t
+     This test seems like a footgun for release management reasons, but apprently
+     I wasn't quite as careful as I tried to be in keeping the last release minimal.
+  
+  Version 6.05  29.05.2016
+   + Patch tests failing due to 5.25.1+'s deprecated unquoted { } in regex.
+     (RT #114537)</comment>
+    <requestid>406695</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f98722f8c7c9a35cdaec88f4c5e9cace</srcmd5>
+    <version>6.07</version>
+    <time>1544264367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655731</requestid>
+  </revision>
+</revisionlist>

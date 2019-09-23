@@ -1,0 +1,7 @@
+<package name="coreboot-utils" project="openSUSE:Factory">
+  <title>A universal flash programming utility</title>
+  <description>coreboot utilities are a comprehensive set of tools to work with coreboot.
+Currently it includes: 
+* nvramtool - a tool to set CMOS variables</description>
+  <devel project="hardware" package="coreboot-utils"/>
+</package>

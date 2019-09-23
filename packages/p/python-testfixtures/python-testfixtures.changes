@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Mon Jul 22 12:42:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.10.0:
+  * Better feedback where objects do not :func:`compare` equal but do have the same representation.
+
+-------------------------------------------------------------------
+Mon Jun 17 10:12:42 UTC 2019 - pgajdos@suse.com
+
+- version update to 6.9.0
+  - Fix deprecation warning relating to :func:`getargspec`.
+  - Improve :doc:`mocking <mocking>` docs.
+  - Add ``strip_whitespace`` option to :class:`OutputCapture`.
+  - When ``separate`` is used with :class:`OutputCapture`, differences in ``stdout` and ``stderr``
+    are now given in the same :class:`AssertionError`.
+  - :class:`ShouldRaise` no longer catches exceptions that are not of the required type.
+  - Fixed a problem that resulted in unhelpful :func:`compare` failures when
+    :func:`~unittest.mock.call` was involved and Python 3.6.7 was used.
+
+-------------------------------------------------------------------
+Tue May 21 08:14:30 UTC 2019 - pgajdos@suse.com
+
+- version update to 6.8.2
+  * Fix handling of the latest releases of the :mod:`mock` backport.
+  * Fix bogus import in :class:`OutputCapture`.
+  * Allow :class:`OutputCapture` to capture the underlying file descriptors for
+    :attr:`sys.stdout` and :attr:`sys.stderr`.
+  * Silence :class:`DeprecationWarning` relating to ``collections.abc`` on
+    Python 3.7.
+
+-------------------------------------------------------------------
+Thu Apr 18 14:41:23 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 6.7.0
+  * Add :meth:`twisted.LogCapture.raise_logged_failure` debugging 
+    helper.
+
+-------------------------------------------------------------------
+Tue Mar 26 22:09:06 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add docs/*.txt to %docs
+- Remove tests from the runtime package
+- Update to v6.6.2
+  * popen.MockPopen.set_command is now symmetrical with
+    popen.MockPopen process instantiation in that both can be called with
+    either lists or strings, in the same way as subprocess.Popen.
+- from 6.6.1
+  * Fixed bugs where using 'not_there' to ensure a key or attribute
+    was not there but would be set by a test would result in the test
+    attribute or key being left behind.
+  * Add support for comparing functools.partial instances and fix
+    comparison of functions and other objects where vars() returns
+    an empty dict.
+- from v6.6.0
+  * Add the ability to ignore attributes of particular object types when
+    using `compare`.
+- from v6.5.2
+  * Fix bug when `compare` was used with objects that had __slots__ inherited
+    from a base class but where their __slots__ was an empty sequence.
+- from v6.5.1
+  * Fix bug when `compare` was used with objects that had __slots__ inherited
+    from a base class.
+
+-------------------------------------------------------------------
+Wed Feb 13 17:52:51 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to version 6.5.0
+  See changes.rst for list of changes since version 5.3.1
+- Remove many unnecessary build dependencies
+- Activate tests
+- Add Suggests for Django, Twisted, sybil and zope.component
+
+-------------------------------------------------------------------
+Tue Feb  5 16:07:51 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove unnecessary build dependencies
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:09 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Jan  5 09:58:02 UTC 2018 - alarrosa@suse.com
+
+- Update to version 5.3.1
+  * Fix missing support for the start_new_session parameter to
+    ~testfixtures.popen.MockPopen.
+
+-------------------------------------------------------------------
+Fri Nov 17 10:49:24 UTC 2017 - alarrosa@suse.com
+
+- Update to version 5.3.0 
+  * Add pytest traceback hiding for TempDirectory.compare.
+  * Add warnings that log_capture, tempdir and replace are not
+    currently compatible with pytest's fixtures mechanism.
+  * Better support for stdout or stderr *not* being set to PIPE
+    when using testfixtures.popen.MockPopen.
+  * Add support to testfixtures.popen.MockPopen for
+    using subprocess.Popen as a context manager in Python 3.
+  * Add support to testfixtures.popen.MockPopen for stderr=STDOUT.
+  * Work done on  testfixtures.popen.MockPopen.
+
+-------------------------------------------------------------------
+Tue Sep 26 18:47:13 UTC 2017 - t.gruner@katodev.de
+
+- Initial release version 5.2.0

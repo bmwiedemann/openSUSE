@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>03fb915ff6dda363a9ec247f175857ed</srcmd5>
+    <version>3.4</version>
+    <time>1527933840</time>
+    <user>dimstar_suse</user>
+    <comment>High-level FTP client library</comment>
+    <requestid>612070</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>10de279138ce46fb1cccc46358967896</srcmd5>
+    <version>3.4</version>
+    <time>1533045719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626413</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>eb15a7720499ac92908e7ca6d394196b</srcmd5>
+    <version>3.4</version>
+    <time>1545223989</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659386</requestid>
+  </revision>
+</revisionlist>

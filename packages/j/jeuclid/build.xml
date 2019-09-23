@@ -1,0 +1,229 @@
+<project default="compile-core" basedir="." name="jeuclid">
+  <property name="build.directory" value="target"/>
+  <property name="build.output" value="${build.directory}/classes"/>
+  <property environment="env"/>
+
+  <path id="libs-build-classpath">
+    <fileset dir="./lib">
+      <include name="*.jar"/>
+    </fileset>
+  </path>
+
+  <target name="init" description="Init dependencies">
+    <mkdir dir="${build.directory}"/>
+    <echo message="------------------- ${ant.project.name} ----------------"/>
+    <echo message="${ant.version}"/>
+    <echo message="VM: ${java.vm.version}, ${java.vm.vendor}"/>
+    <echo message="JAVA_HOME: ${env.JAVA_HOME}"/>
+
+    <available property="ant.present" classname="org.apache.tools.ant.BuildException" classpathref="libs-build-classpath"/>
+    <condition property="ant.message" value="ANT Support PRESENT">
+      <equals arg1="${ant.present}" arg2="true"/>
+    </condition>
+    <condition property="ant.message" value="ANT Support NOT Present">
+      <not>
+        <equals arg1="${ant.present}" arg2="true"/>
+      </not>
+    </condition>
+    <echo message="${ant.message}"/>
+
+    <available property="batik.present" classname="org.apache.batik.dom.AbstractNode" classpathref="libs-build-classpath"/>
+    <condition property="batik.message" value="Batik Support PRESENT">
+      <equals arg1="${batik.present}" arg2="true"/>
+    </condition>
+    <condition property="batik.message" value="Batik Support NOT Present">
+      <not>
+        <equals arg1="${batik.present}" arg2="true"/>
+      </not>
+    </condition>
+    <echo message="${batik.message}"/>
+
+    <available property="logging.present" classname="org.apache.commons.logging.LogFactory" classpathref="libs-build-classpath"/>
+    <condition property="logging.message" value="commons-logging Support PRESENT">
+      <equals arg1="${logging.present}" arg2="true"/>
+    </condition>
+    <condition property="logging.message" value="commons-logging Support NOT Present">
+      <not>
+        <equals arg1="${logging.present}" arg2="true"/>
+      </not>
+    </condition>
+    <echo message="${logging.message}"/>
+<!--
+    <available property="freeheputil.present" classname="org.freehep.util.export.ExportFileType" classpathref="libs-build-classpath"/>
+    <condition property="freeheputil.message" value="FreeHep Util Support PRESENT">
+      <equals arg1="${freeheputil.present}" arg2="true"/>
+    </condition>
+    <condition property="freeheputil.message" value="FreeHep Util Support NOT Present">
+      <not>
+        <equals arg1="${freeheputil.present}" arg2="true"/>
+      </not>
+    </condition>
+    <echo message="${freeheputil.message}"/>
+
+    <available property="freehepgraph.present" classname="org.freehep.graphics2d.VectorGraphics" classpathref="libs-build-classpath"/>
+    <condition property="freehepgraph.message" value="FreeHep Graphics2D Support PRESENT">
+      <equals arg1="${freehepgraph.present}" arg2="true"/>
+    </condition>
+    <condition property="freehepgraph.message" value="FreeHep Graphics2D Support NOT Present">
+      <not>
+        <equals arg1="${freehepgraph.present}" arg2="true"/>
+      </not>
+    </condition>
+    <echo message="${freehepgraph.message}"/>
+-->
+
+    <available property="xmlext.present" classname="org.xml.sax.InputSource" classpathref="libs-build-classpath"/>
+    <condition property="xmlext.message" value="xml-commons-external Support PRESENT">
+      <equals arg1="${xmlext.present}" arg2="true"/>
+    </condition>
+    <condition property="xmlext.message" value="xml-commons-external Support NOT Present">
+      <not>
+        <equals arg1="${xmlext.present}" arg2="true"/>
+      </not>
+    </condition>
+    <echo message="${xmlext.message}"/>
+
+    <available property="xmlgraphics.present" classname="org.apache.xmlgraphics.util.ClasspathResource" classpathref="libs-build-classpath"/>
+    <condition property="xmlgraphics.message" value="xmlgraphics-commons Support PRESENT">
+      <equals arg1="${xmlgraphics.present}" arg2="true"/>
+    </condition>
+    <condition property="xmlgraphics.message" value="xmlgraphics-commons Support NOT Present">
+      <not>
+        <equals arg1="${xmlgraphics.present}" arg2="true"/>
+      </not>
+    </condition>
+    <echo message="${xmlgraphics.message}"/>
+
+    <available property="commonscli.present" classname="org.apache.commons.cli.CommandLine" classpathref="libs-build-classpath"/>
+    <condition property="commonscli.message" value="commons-cli Support PRESENT">
+      <equals arg1="${commonscli.present}" arg2="true"/>
+    </condition>
+    <condition property="commonscli.message" value="commons-cli Support NOT Present">
+      <not>
+        <equals arg1="${commonscli.present}" arg2="true"/>
+      </not>
+    </condition>
+    <echo message="${commonscli.message}"/>
+
+    <available property="commonslang.present" classname="org.apache.commons.lang3.StringUtils" classpathref="libs-build-classpath"/>
+    <condition property="commonslang.message" value="commons-lang3 Support PRESENT">
+      <equals arg1="${commonslang.present}" arg2="true"/>
+    </condition>
+    <condition property="commonslang.message" value="commons-lang3 Support NOT Present">
+      <not>
+        <equals arg1="${commonslang.present}" arg2="true"/>
+      </not>
+    </condition>
+    <echo message="${commonslang.message}"/>
+</target>
+
+  <target name="compile-core" depends="init" description="Compile the core code">
+  <property name="package.name" value="jeuclid-core" />
+  <property name="full.build.output.core" value="${package.name}/${build.output}" />
+
+    <mkdir dir="${full.build.output.core}"/>
+    <javac destdir="${full.build.output.core}" debug="true" deprecation="true" optimize="false" source="6" target="6">
+      <src>
+        <pathelement location="${package.name}/src/main/java"/>
+
+      </src>
+      <exclude name="**/FreeHep*" />
+      <classpath refid="libs-build-classpath"/>
+    </javac>
+    <copy todir="${full.build.output.core}">
+      <fileset dir="${package.name}/src/main/resources"/>
+    </copy>
+    <jar jarfile="${build.directory}/${package.name}.jar" basedir="${full.build.output.core}"/>
+  </target>
+
+
+  <target name="compile-mathviewer" depends="init, compile-core" description="Compile the mathviewer code">
+  <property name="package.name.mathviewer" value="jeuclid-mathviewer" />
+  <property name="full.build.output.mathviewer" value="${package.name.mathviewer}/${build.output}" />
+    <mkdir dir="${full.build.output.mathviewer}"/>
+    <javac destdir="${package.name.mathviewer}/${build.output}" debug="true" deprecation="true" optimize="false" source="6" target="6">
+      <src>
+        <pathelement location="${package.name.mathviewer}/src/main/java"/>
+
+      </src>
+      <exclude name="**/FreeHep*" />
+      <classpath>
+        <fileset dir="${build.directory}">
+          <include name="jeuclid-core.jar"/>
+        </fileset>
+        <path refid="libs-build-classpath"/>
+      </classpath>
+    </javac>
+    <copy todir="${full.build.output.mathviewer}">
+      <fileset dir="${package.name.mathviewer}/src/main/resources"/>
+    </copy>
+    <jar jarfile="${build.directory}/${package.name.mathviewer}.jar" basedir="${full.build.output.mathviewer}">
+      <manifest>
+        <attribute name="Main-Class" value="net.sourceforge.jeuclid.app.mathviewer.MathViewer"/>
+      </manifest>
+	</jar>
+  </target>
+
+  <target name="compile-cli" depends="init, compile-core" description="Compile the jeuclid cli">
+  <property name="package.name.cli" value="jeuclid-cli" />
+  <property name="full.build.output.cli" value="${package.name.cli}/${build.output}" />
+
+    <mkdir dir="${full.build.output.cli}"/>
+    <javac destdir="${full.build.output.cli}" debug="true" deprecation="true" optimize="false" source="6" target="6">
+      <src>
+        <pathelement location="${package.name.cli}/src/main/java"/>
+
+      </src>
+      <classpath>
+        <fileset dir="${build.directory}">
+          <include name="jeuclid-core.jar"/>
+        </fileset>
+        <path refid="libs-build-classpath"/>
+      </classpath>
+    </javac>
+    <jar jarfile="${build.directory}/${package.name.cli}.jar" basedir="${full.build.output.cli}">
+      <manifest>
+        <attribute name="Main-Class" value="net.sourceforge.jeuclid.app.Mml2xxx"/>
+      </manifest>
+
+	</jar>
+  </target>
+
+
+  <target name="compile-fop" depends="init, compile-core" description="Compile the jeuclid fop">
+  <property name="package.name.fop" value="jeuclid-fop" />
+  <property name="full.build.output.fop" value="${package.name.fop}/${build.output}" />
+
+    <mkdir dir="${full.build.output.fop}"/>
+    <javac destdir="${full.build.output.fop}" debug="true" deprecation="true" optimize="false" source="6" target="6">
+      <src>
+        <pathelement location="${package.name.fop}/src/main/java"/>
+
+      </src>
+      <classpath>
+        <fileset dir="${build.directory}">
+          <include name="jeuclid-core.jar"/>
+        </fileset>
+        <path refid="libs-build-classpath"/>
+      </classpath>
+    </javac>
+    <copy todir="${full.build.output.fop}">
+      <fileset dir="${package.name.fop}/src/main/resources"/>
+    </copy>
+    <jar jarfile="${build.directory}/${package.name.fop}.jar" basedir="${full.build.output.fop}"/>
+  </target>
+
+
+
+
+	<!-- Clean sources -->
+<!--
+        <target name="clean" description="clean sources">
+                <delete dir="${build.directory}"/>
+                <delete dir="jeuclid-core/${build.directory}"/>
+                <delete dir="jeuclid-mathviewer/${build.directory}"/>
+                <delete dir="jeuclid-cli/${build.directory}"/>
+                <delete dir="jeuclid-fop/${build.directory}"/>
+        </target>
+-->
+</project>

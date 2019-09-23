@@ -1,0 +1,5 @@
+<package name="maven2" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="maven2"/>
+</package>

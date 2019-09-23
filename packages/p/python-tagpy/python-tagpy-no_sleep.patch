@@ -1,0 +1,12 @@
+diff -ur aksetup_helper.py.orig aksetup_helper.py
+--- aksetup_helper.py.orig	2012-12-15 22:56:27.000000000 -0300
++++ aksetup_helper.py	2012-12-27 16:58:57.428369684 -0300
+@@ -34,7 +34,7 @@
+     print("Hit Ctrl-C now if you'd like to think about the situation.")
+     print("-------------------------------------------------------------------------")
+ 
+-    count_down_delay(delay=10)
++    count_down_delay(delay=0)
+ 
+ 
+ def setup(*args, **kwargs):

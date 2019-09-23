@@ -1,0 +1,190 @@
+-------------------------------------------------------------------
+Sat Sep 12 18:18:07 UTC 2015 - i@marguerite.su
+
+- do not build with skim, which is dead
+- remove scim-chinese Provides/Obsoletes, no package required it
+- remove PreReq, useless
+- remove gconf schemas install bits, useless
+- obsoletes the removed subpackage
+
+-------------------------------------------------------------------
+Wed Sep 12 15:42:48 CST 2012 - hillwood@linuxfans.org
+
+- update to 0.5.92, fixed gtk3 build by upstream.
+- remove old patches: these bugs which fixed by these patches have been
+  fixed by upstream.
+
+-------------------------------------------------------------------
+Tue Jun 12 16:34:43 CEST 2012 - tiwai@suse.de
+
+- Remove locale provides for avoiding automatic installation
+- Disable gtk3-migration patches temporarily (can be enabled by
+  defining scim_gtk3=1)
+
+-------------------------------------------------------------------
+Thu Jun  7 02:44:08 UTC 2012 - swyear@gmail.com
+
+- remove "Provides: locale(scim:zh)" from spec 
+
+-------------------------------------------------------------------
+Tue Jun  5 09:08:10 UTC 2012 - i@marguerite.su
+
+- fix openSUSE builds.
+  * add gtktooltips patch to migrate it to gtk > 2.12. 
+
+-------------------------------------------------------------------
+Tue Apr 20 12:45:35 CEST 2010 - tiwai@suse.de
+
+- disabled build with skim for openSUSE-11.3
+
+-------------------------------------------------------------------
+Tue Feb 23 12:07:24 UTC 2010 - coolo@novell.com
+
+- do not bootstrap with random tools, but provide configure as
+  patch
+
+-------------------------------------------------------------------
+Fri Jan 11 10:28:27 CST 2008 - pwu@suse.de
+
+- fix bug #352838, recover from corrupt scim-pinyin data files.
+
+-------------------------------------------------------------------
+Thu Nov 08 15:22:00 CET 2007 - mfabian@suse.de
+
+- add missing includes to fix build with gcc 4.3.0.
+
+-------------------------------------------------------------------
+Tue Apr 24 12:08:52 CEST 2007 - mfabian@suse.de
+
+- add "BuildRequires: unsermake" for SUSE Linux 10.0.
+
+-------------------------------------------------------------------
+Wed Oct 11 19:09:37 CEST 2006 - mfabian@suse.de
+
+- fix to build with scim 1.4.5.
+
+-------------------------------------------------------------------
+Wed Jul 05 12:57:18 CEST 2006 - mfabian@suse.de
+
+- update to 0.5.91.20060705
+  (fix-include-hints.diff is now included).
+- fix build for autoconf 2.60.
+
+-------------------------------------------------------------------
+Thu Feb 23 16:43:17 CET 2006 - mfabian@suse.de
+
+- add "Provides:     locale(skim:zh)" to scim-pinyin-skim sub-
+  package.
+
+-------------------------------------------------------------------
+Thu Feb 23 16:40:42 CET 2006 - mfabian@suse.de
+
+- add "Provides:     locale(scim:zh)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:26 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Oct 13 09:29:19 CEST 2005 - stbinner@suse.de
+
+- remove unintended char in patch
+
+-------------------------------------------------------------------
+Wed Oct 12 21:14:27 CEST 2005 - stbinner@suse.de
+
+- fix wrong include hints for compilation against Qt 3.3.5
+
+-------------------------------------------------------------------
+Mon Aug 15 19:04:31 CEST 2005 - mfabian@suse.de
+
+- update to scim-pinyin-0.5.91.20050815 to fix a bug which
+  makes it impossible to switch beteen input modes.
+
+-------------------------------------------------------------------
+Thu Aug 11 17:56:51 CEST 2005 - mfabian@suse.de
+
+- update to current cvs HEAD and remove workaround for wrong prefix
+  from .spec file.
+
+-------------------------------------------------------------------
+Wed Aug 10 15:59:28 CEST 2005 - mfabian@suse.de
+
+- update to 0.5.90.20050808.
+- new sub-package scim-pinyin-skim.
+
+-------------------------------------------------------------------
+Thu Aug 04 17:43:38 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #97962: add configure option "--enable-debug" to
+  the .spec file.
+
+-------------------------------------------------------------------
+Tue Aug  2 11:40:00 CEST 2005 - aj@suse.de
+
+- Adjust neededforbuild.
+
+-------------------------------------------------------------------
+Thu Jul 28 12:24:12 CEST 2005 - mfabian@suse.de
+
+- use "make install" instead of "make install-strip" otherwise
+  the scim-pinyin-debuginfo package will be empty.
+- use RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Fri Apr 15 15:35:55 CEST 2005 - mfabian@suse.de
+
+- make it build with gcc4. 
+
+-------------------------------------------------------------------
+Tue Feb 15 16:25:59 CET 2005 - mfabian@suse.de
+
+- update to 0.5.0.20050215 (Italian translations are available
+  now).
+
+-------------------------------------------------------------------
+Mon Jan 10 21:23:13 CET 2005 - mfabian@suse.de
+
+- update to 0.5.0.20050110 (during this update, the package
+  has been renamed from scim-chinese to scim-pinyin).
+
+-------------------------------------------------------------------
+Fri Aug 13 19:25:38 CEST 2004 - mfabian@suse.de
+
+- update to 0.4.1.
+
+-------------------------------------------------------------------
+Thu Aug  5 15:57:51 CEST 2004 - mfabian@suse.de
+
+- update to 0.4.0.
+
+-------------------------------------------------------------------
+Tue Apr 27 11:24:03 CEST 2004 - mfabian@suse.de
+
+- create SuSE package (version 0.3.0).
+
+-------------------------------------------------------------------
+Mon Apr 26 2004 - James Su <suzhe@tsinghua.org.cn>
+
+- change the license to GPL.
+
+-------------------------------------------------------------------
+Thu Jun 19 2003 - James Su <suzhe@tsinghua.org.cn>
+
+- updated to include setup module.
+
+-------------------------------------------------------------------
+Thu May 22 2003 - James Su <suzhe@tsinghua.org.cn>
+
+- upto v0.2.1
+
+-------------------------------------------------------------------
+Mon Mar 31 2003 - James Su <suzhe@tsinghua.org.cn>
+
+- upto v0.2.0
+
+-------------------------------------------------------------------
+Sun Jul 7 2002 - James Su <suzhe@tsinghua.org.cn>
+
+- first public release of SCIM-chinese.

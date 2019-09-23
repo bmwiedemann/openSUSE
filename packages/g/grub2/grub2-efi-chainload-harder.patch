@@ -1,0 +1,103 @@
+---
+ grub-core/loader/efi/chainloader.c |   62 +++++++++++++++++++++----------------
+ 1 file changed, 36 insertions(+), 26 deletions(-)
+
+Index: grub-2.02~beta2/grub-core/loader/efi/chainloader.c
+===================================================================
+--- grub-2.02~beta2.orig/grub-core/loader/efi/chainloader.c
++++ grub-2.02~beta2/grub-core/loader/efi/chainloader.c
+@@ -326,40 +326,41 @@ grub_secure_mode (void)
+ static grub_efi_boolean_t
+ read_header (void *data, grub_efi_uint32_t size, pe_coff_loader_image_context_t *context)
+ {
+-  grub_efi_guid_t guid = SHIM_LOCK_GUID;
+-  grub_efi_shim_lock_t *shim_lock;
+-  grub_efi_status_t status;
+-
+-  shim_lock = grub_efi_locate_protocol (&guid, NULL);
++  char *msdos = (char *)data;
++  struct grub_pe32_header_no_msdos_stub *pe32 = (struct grub_pe32_header_no_msdos_stub *)data;
+ 
+-  if (!shim_lock)
++  if (size < sizeof (*pe32))
+     {
+-      grub_error (GRUB_ERR_BAD_ARGUMENT, "no shim lock protocol");
++      grub_error (GRUB_ERR_BAD_ARGUMENT, "Invalid image");
+       return 0;
+     }
+ 
+-  status = shim_lock->context (data, size, context);
+-
+-  if (status == GRUB_EFI_SUCCESS)
++  if (grub_memcmp (msdos, "MZ", 2) == 0)
+     {
+-      grub_dprintf ("chain", "context success\n");
+-      return 1;
++      grub_uint32_t off = *((grub_uint32_t *) (msdos + 0x3c));
++      pe32 = (struct grub_pe32_header_no_msdos_stub *) ((char *)data + off);
+     }
+ 
+-  switch (status)
++  if (grub_memcmp (pe32->signature, "PE\0\0", 4) != 0 ||
++      pe32->coff_header.machine != GRUB_PE32_MACHINE_X86_64 ||
++      pe32->optional_header.magic != GRUB_PE32_PE64_MAGIC)
+     {
+-      case GRUB_EFI_UNSUPPORTED:
+-      grub_error (GRUB_ERR_BAD_ARGUMENT, "context error unsupported");
+-      break;
+-      case GRUB_EFI_INVALID_PARAMETER:
+-      grub_error (GRUB_ERR_BAD_ARGUMENT, "context error invalid parameter");
+-      break;
+-      default:
+-      grub_error (GRUB_ERR_BAD_ARGUMENT, "context error code");
+-      break;
++      grub_error (GRUB_ERR_BAD_ARGUMENT, "Not supported image");
++      return 0;
+     }
+ 
+-  return 0;
++  context->number_of_rva_and_sizes = pe32->optional_header.num_data_directories;
++  context->size_of_headers = pe32->optional_header.header_size;
++  context->image_size = pe32->optional_header.image_size;
++  context->image_address = pe32->optional_header.image_base;
++  context->entry_point = pe32->optional_header.entry_addr;
++  context->reloc_dir = &pe32->optional_header.base_relocation_table;
++  context->sec_dir = &pe32->optional_header.certificate_table;
++  context->number_of_sections = pe32->coff_header.num_sections;
++  context->pe_hdr = pe32;
++  context->first_section = (struct grub_pe32_section_table *)((char *)(&pe32->optional_header) + pe32->coff_header.optional_header_size);
++
++  return 1;
+ }
+ 
+ static void*
+@@ -623,6 +624,9 @@ error_exit:
+   if (buffer)
+       efi_call_1 (b->free_pool, buffer);
+ 
++  if (grub_errno)
++    grub_print_error ();
++
+   return 0;
+ 
+ }
+@@ -845,6 +849,19 @@ grub_cmd_chainloader (grub_command_t cmd
+   status = efi_call_6 (b->load_image, 0, grub_efi_image_handle, file_path,
+ 		       boot_image, fsize,
+ 		       &image_handle);
++#ifdef SUPPORT_SECURE_BOOT
++  if (status == GRUB_EFI_SECURITY_VIOLATION && !grub_secure_mode())
++    {
++      /* If it failed with security violation while not in secure boot mode,
++         the firmware might be broken. We try to workaround on that by forcing
++         the SB method! (bsc#887793) */
++      grub_dprintf ("chain", "Possible firmware flaw! Security violation while not in secure boot mode.\n");
++      grub_file_close (file);
++      grub_loader_set (grub_secureboot_chainloader_boot,
++	      grub_secureboot_chainloader_unload, 0);
++      return 0;
++    }
++#endif
+   if (status != GRUB_EFI_SUCCESS)
+     {
+       if (status == GRUB_EFI_OUT_OF_RESOURCES)

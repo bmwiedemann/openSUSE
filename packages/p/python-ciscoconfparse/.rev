@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dae00f05db90226b8df42f8203fb2e02</srcmd5>
+    <version>1.2.39</version>
+    <time>1455021139</time>
+    <user>dimstar_suse</user>
+    <comment>New package needed for some OpenStack networking plugins</comment>
+    <requestid>357883</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>01dc4d9864d57939dff344d5053544da</srcmd5>
+    <version>1.2.39</version>
+    <time>1458228871</time>
+    <user>dimstar_suse</user>
+    <comment>- fix license</comment>
+    <requestid>371256</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>423444e248153723c3bb92bd07db029b</srcmd5>
+    <version>1.2.40</version>
+    <time>1476109518</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434067</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>22d6009dd3e6585621439ad903430b09</srcmd5>
+    <version>1.3.15</version>
+    <time>1527605358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611177</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>fc610d0af93cc86c7b64f2c088b4f60b</srcmd5>
+    <version>1.3.15</version>
+    <time>1533887383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628223</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>37061cfa131ba214632925254dd7eeb2</srcmd5>
+    <version>1.3.32</version>
+    <time>1553809701</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.32:
+  * No good changelog
+- Remove unused patch ciscoconfparse-1.2.40-fix-tests.patch
+
+- Update to 1.3.30:
+  * Fix bugs related to Python3 (Github issue #117)
+  * Add IP helper-address parsing in models_cisco.py
+  * Revert universal wheel packages (universal=0)
+  * Build universal wheel packages
+  * Build improvements - ref Github issue #127, #128
+  * Another swing at Github issue #127
+  * Rollback fix for Github issue #127
+  * Attempt to fix Github issue #127
+  * Fix Github issue #124-126 and Github issue #110
+  * Fix Github issue #121 and Github issue #123
+  * Fix Github issue #114 (Py3.5 requires different open() syntax)
+  * Fix Github issue #111 (banner parsing broken in some cases)
+  * Add * to MANIFEST.in
+  * Attempt to resolve Github issue #106
+  * Add dns_query() zone transfer as text</comment>
+    <requestid>688723</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>aab109e679bd3fbbb83da564b024732a</srcmd5>
+    <version>1.4.1</version>
+    <time>1564994211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720165</requestid>
+  </revision>
+</revisionlist>

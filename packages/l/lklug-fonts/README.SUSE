@@ -1,0 +1,17 @@
+The font file in TrueType format can be downloaded here:
+
+http://sinhala.sourceforge.net/files/lklug.ttf
+
+CVS is available here:
+
+cvs -d:pserver:anonymous@sinhala.cvs.sourceforge.net:/cvsroot/sinhala login
+
+(no password)
+
+The SFD sources for the file are here:
+
+cvs -d:pserver:anonymous@sinhala.cvs.sourceforge.net:/cvsroot/sinhala co sinhala/fonts
+
+And here is the GPL Copyright file:
+
+cvs -d:pserver:anonymous@sinhala.cvs.sourceforge.net:/cvsroot/sinhala co sinhala/COPYING

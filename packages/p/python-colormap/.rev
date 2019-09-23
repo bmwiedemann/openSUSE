@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>14f1b0a83e146ff3f56075776ab63003</srcmd5>
+    <version>1.0.1</version>
+    <time>1529066218</time>
+    <user>maxlin_factory</user>
+    <comment>Additional colormaps for matplotlib and tools to make more</comment>
+    <requestid>603560</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>39133ed2a64cdbe91d90efa9b1a63413</srcmd5>
+    <version>1.0.1</version>
+    <time>1530304024</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure neutrality of description.
+</comment>
+    <requestid>617151</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a11c5b6c030014508de58677a235b202</srcmd5>
+    <version>1.0.2</version>
+    <time>1564155205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717709</requestid>
+  </revision>
+</revisionlist>

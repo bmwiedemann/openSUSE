@@ -1,0 +1,22 @@
+<package name="html2ps" project="openSUSE:Factory">
+  <title>HTML to PostScript Converter</title>
+  <description>An HTML to PostScript converter written in Perl.  Html2ps understands
+many of the HTML 4.0 features.	From the home page
+(http://www.tdb.uu.se/~jan/html2ps.html):
+
+* Many ways to control the appearance; this is mostly done using
+   configuration files.
+
+* Support for processing multiple documents, can be done
+   automatically by recursively following links.
+
+* A table of contents can be generated, either from the links in a
+   document or automatically from document headings.
+
+* Configurable page headers and footers that can, for example,
+   contain document title, URL, page number, current heading, and
+   date.
+
+* Automatic hyphenation and text justification can be selected.</description>
+  <devel project="Publishing" package="html2ps"/>
+</package>

@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Sun Mar  3 13:29:07 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.5.4
+  * Added data type base class for unit types, upgrades and etc.
+  * Fixed issue which caused rally point map layers to be saved
+    incorrectly.
+  * Remove instances of \r from the config data strings
+  * Added snow and ice flags, made the map field flags into an enum
+  * Added comment to better explain the CPlayer::CanRecruitHero code
+  * Improved the check to see if a file is in the user's home directory
+  * Fixed issue which caused a crash when starting a second game
+  * Fixed issue with quest failure
+  * Improved worker automatic level-up upgrade choice
+  * Potential fix for mouse jumping issues
+  * Added support for certain spells being empowered in a particular plane
+  * Fixed issue which caused building i.e. a road near a rock tile to
+    recalculate the rock tile's transitions.
+- Add patch:
+  * wyrmgus-fix-build.patch
+- Run spec-cleaner
+- Use pkg-config style dependencies
+
+-------------------------------------------------------------------
+Sun Sep 10 12:15:24 UTC 2017 - rpm@fthiessen.de
+
+- Update to 2.8.1:
+ * Added code for terrain features
+ * Terrain features are groups of tiles which have their name
+   displayed when one of the tiles is hovered over
+ * Update to supply display
+ * Fixed issue with the AI not building town halls close
+   to silver and gold deposits
+ * Ai force update
+ * Added support for variation weight
+ * Update to character code to make heroes be more dynamically
+   applied to the scenario mode
+ * Fixed issue with minecart stone right-click crash
+ * Fixed issue with genversion
+
+-------------------------------------------------------------------
+Tue Feb  7 16:33:10 UTC 2017 - mailaender@opensuse.org
+
+- Update to version 2.5.3
+
+-------------------------------------------------------------------
+Tue Sep  6 17:05:00 UTC 2016 - malcolmlewis@opensuse.org
+
+- Update to version 2.4.2:
+  + Removed species development system (should be replaced later
+    with something that is lair-based).
+- Changes from version 2.4.1:
+  + Reduced the starting resources of split-off factions, as they
+    were too strong.
+
+-------------------------------------------------------------------
+Sun Aug 21 21:30:34 UTC 2016 - mailaender@opensuse.org
+
+- Updated to version 2.4.0
+- Removed fix-find-toluapp.patch
+
+-------------------------------------------------------------------
+Sun May 15 15:59:44 UTC 2016 - rpm@fthiessen.de
+
+- Updated to version 2.2.1
+- Now using cmake macros
+
+-------------------------------------------------------------------
+Sat Jan 16 02:20:56 UTC 2016 - rpm@fthiessen.de
+
+- Fixed build on openSUSE > 13.2 after tolua++ package got renamed,
+  therefore also modified fix-find-toluapp. patch.
+
+-------------------------------------------------------------------
+Sun Dec 27 17:22:18 UTC 2015 - rpm@fthiessen.de
+
+- Added fix-find-toluapp.patch to fix build on openSUSE > 13.2 
+
+-------------------------------------------------------------------
+Thu Dec 24 15:31:10 UTC 2015 - mailaender@opensuse.org
+
+- update to version 1.8.6
+
+-------------------------------------------------------------------
+Sat Dec 19 16:53:59 UTC 2015 - mailaender@opensuse.org
+
+- initial packaging
+

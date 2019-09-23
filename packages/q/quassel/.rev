@@ -1,0 +1,505 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b2e69fa58f3bd832d585004c41ad05e6</srcmd5>
+    <version>0.7.2</version>
+    <time>1311950746</time>
+    <user>saschpe</user>
+    <comment>new package quassel</comment>
+    <requestid>77287</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>47a41f1795681e05918edcb2fa057704</srcmd5>
+    <version>0.7.2</version>
+    <time>1311950757</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77287
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd1329c60987374e47035bd0f1123b51</srcmd5>
+    <version>0.7.3</version>
+    <time>1317546801</time>
+    <user>lrupp</user>
+    <comment>- update to version 0.7.3 (securtity bugfix release)
+  * Some CTCP requests triggered a bug in the parser
+  * Core crashed after deleting a Network without disconnecting
+    the Network first (forwarded request 85779 from hgraeber)</comment>
+    <requestid>85781</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>bd6ea30eadde752a5fe46a791753a9a8</srcmd5>
+    <version>0.7.3</version>
+    <time>1318428902</time>
+    <user>lrupp</user>
+    <comment>- Added dbusmenu-qt buildrequires
+- Removed redundant or incorrect provides (fix for RPMLINT warning)
+- Cleaned up spec file formatting (forwarded request 87169 from TheBlackCat)</comment>
+    <requestid>87437</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>bd6ea30eadde752a5fe46a791753a9a8</srcmd5>
+    <version>0.7.3</version>
+    <time>1319182419</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>5d5019aab5c79a6838f69ac08352258d</srcmd5>
+    <version>0.7.3</version>
+    <time>1323869682</time>
+    <user>coolo</user>
+    <comment>- fix license to be in spdx.org format (forwarded request 96126 from coolo)</comment>
+    <requestid>96128</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>afab634b2851e5d570a013d0d5f367a6</srcmd5>
+    <version>0.8.0</version>
+    <time>1332416397</time>
+    <user>coolo</user>
+    <comment>- fix names of some renamed icons
+
+- update to version 0.8.0
+  * Add support for syslog request
+  * Make TAB completion keyboard shortcut configurable
+  * /showkey command for blowfish encryption
+  * Keyboard navigation: shortcut for hiding the current buffer
+  * oidentd support (forwarded request 110503 from hgraeber)</comment>
+    <requestid>110507</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>afab634b2851e5d570a013d0d5f367a6</srcmd5>
+    <version>0.8.0</version>
+    <time>1340184133</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>35313d72979363c467faf0f9d9c25b30</srcmd5>
+    <version>0.8.0</version>
+    <time>1344368043</time>
+    <user>coolo</user>
+    <comment>forward to factory</comment>
+    <requestid>130226</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>35313d72979363c467faf0f9d9c25b30</srcmd5>
+    <version>0.8.0</version>
+    <time>1359110268</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>67b01453f7b7e220124a92d2e7674ecc</srcmd5>
+    <version>0.9.0</version>
+    <time>1376382241</time>
+    <user>scarabeus_factory</user>
+    <comment>- Version bump to 0.9.0:
+  * Halfop support
+  * Channel-specific highlights
+  * Support for intermediate CA certificates
+  * Support the DockManager interface
+  * OSX Notification Center support
+  * DH1080 key exchange
+  * SASL EXTERNAL support
+  * Improvements for Retina displays on OSX
+  * Supporting to start minimized to tray
+  * Rudimentary support for Qt5 (obsolete again because upstream changed too much)
+  * Refactor of SignalProxy, network and protocol code
+  * First pieces of the coming protocol abstraction
+  * Build system improvements
+  * Various bugfixes
+  * New and updated translations
+  * Reformatted ALL the source code (forwarded request 186615 from scarabeus_iv)</comment>
+    <requestid>186667</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>67b01453f7b7e220124a92d2e7674ecc</srcmd5>
+    <version>0.9.0</version>
+    <time>1379664424</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6b3c48c249c330b9bcee9629a2b597a8</srcmd5>
+    <version>0.9.1</version>
+    <time>1381781089</time>
+    <user>scarabeus_factory</user>
+    <comment>- Utilize the unit file rather than old initscript (forwarded request 203236 from scarabeus_iv)</comment>
+    <requestid>203238</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>e2116b958200fe97d81698c24f5748f9</srcmd5>
+    <version>0.9.1</version>
+    <time>1384177956</time>
+    <user>coolo</user>
+    <comment>- Fix quasselcore.service, EnvironmentFile belongs into [Service]
+  section and use ${FOO} rather than $FOO for proper expansion (Check
+  https://fedoraproject.org/wiki/Packaging%3aSystemd#EnvironmentFiles_and_support_for_.2Fetc.2Fsysconfig_files) (forwarded request 205896 from saschpe)</comment>
+    <requestid>205917</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>ba160bb54bdfc7b9b14e47b8e250ba30</srcmd5>
+    <version>0.9.1</version>
+    <time>1384856882</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>207548</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c0a1d45c690cd059f9855efd179018f7</srcmd5>
+    <version>0.9.2</version>
+    <time>1387174181</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>210892</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>0136c4e4b7986856cf2a493d8e55b841</srcmd5>
+    <version>0.9.2</version>
+    <time>1389208109</time>
+    <user>coolo</user>
+    <comment>- Add back /etc/sysconfig/quasselcore (bnc#849850)</comment>
+    <requestid>213152</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>d74cafb17b4fcd1823d83f4e87829e09</srcmd5>
+    <version>0.9.2</version>
+    <time>1394866096</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>226021</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>18d83438c58f5c402d45cc3b0256e2b0</srcmd5>
+    <version>0.10.0</version>
+    <time>1396005177</time>
+    <user>coolo</user>
+    <comment>- Update to 0.10.0
+  * Refactor lots of the protocol and connection code
+  * Introduce connection probing for reliably negotiating protocol features
+  * Introduce the new DataStream protocol with streaming compression
+  * Option for forcing the core to only accept SSL connections
+  * Support for the Snore notification backend
+  * Allow searching the web for selected text
+  * Connection-related fixes
+  * Allow for hiding inactive networks
+  * Enable line wrap in the input field
+  * Show backlog messages in the Chat Monitor
+  * Remove SSL protocol selection, always use auto-negotiation for best
+    results
+  * Highlight rules are now case-insensitive by default
+  * New and updated translations
+  * Bump inxi version (for /sysinfo)
+  * Use the raster rendering engine by default on OSX (should improve
+    performance) (forwarded request 227747 from hgraeber)</comment>
+    <requestid>227759</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>262ee35d539061e0331f6358d0e2ffb1</srcmd5>
+    <version>0.10.0</version>
+    <time>1406836242</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243223</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>262ee35d539061e0331f6358d0e2ffb1</srcmd5>
+    <version>0.10.0</version>
+    <time>1409303151</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>46664fcf50fc3cb50848f2214003429a</srcmd5>
+    <version>0.11.0</version>
+    <time>1414066822</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257974</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>b8a39917d2e792d05cc896a83843bb03</srcmd5>
+    <version>0.11.0</version>
+    <time>1420754591</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280301</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4e4d97232f052b82d38564e50e015e3f</srcmd5>
+    <version>0.12~beta1</version>
+    <time>1426064293</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.12-beta1:
+  * Various fixes all around
+  * Add support for KF5 so build with its integration
+- Reenable qca2 crypto
+- Enable snorenotify support</comment>
+    <requestid>290031</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>365c67d02187583e5d0cf73c6782a11e</srcmd5>
+    <version>0.12~rc1</version>
+    <time>1427653094</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.12-rc1:
+  * Core hashing algorithm update
+  * Proper message splitting on multi-byte encodings/encryption
+  * Updated DB schema, no downgrade possible</comment>
+    <requestid>293601</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>dcb7f08040c381ffdb641fc293ead659</srcmd5>
+    <version>0.12.0</version>
+    <time>1429658376</time>
+    <user>dimstar_suse</user>
+    <comment>- Deprecate realver as it is not used now again
+
+- Update to 0.12.0 final
+  * Remote password change
+  * Core connection improvements
+  * Build system improvements
+  * PostgreSQL connection improvements
+  * Improve Qt5 support
+  * Translation updates</comment>
+    <requestid>298287</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>19ecc32dc4158a6be24bbf5aa454e447</srcmd5>
+    <version>0.12.2</version>
+    <time>1430980151</time>
+    <user>coolo</user>
+    <comment>Update and Fixes</comment>
+    <requestid>305583</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>2fd17bf146bb7ebd714f77f360bdb847</srcmd5>
+    <version>0.12.2</version>
+    <time>1436331566</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315100</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>53fcf4e14cc0404067d02dd0da154fc2</srcmd5>
+    <version>0.12.2</version>
+    <time>1444636973</time>
+    <user>coolo</user>
+    <comment>- Added Fix-build-with-Qt-5.5.patch (boo#949489)</comment>
+    <requestid>337512</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>a7bcc2b970e00a872dc9ec6d2f07d9d9</srcmd5>
+    <version>0.12.2</version>
+    <time>1447696309</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344471</requestid>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>e5d31c0353fb9bc82e82e8ceba89f0b2</srcmd5>
+    <version>0.12.2</version>
+    <time>1454921307</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow building kde and non-kde based quassel version
+- Move quasselclient desktop to base so both variants don't have to
+  rename the file
+- Introduce quasselclient-qt5 subpackage
+- Use update-alternatives to switch between kde/qt5 versions
+
+- Apply patch for bnc#958928 CVE-2015-8547:
+  * CVE-2015-8547.patch</comment>
+    <requestid>358217</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2730e63624bff59d793a0410e614f2f6</srcmd5>
+    <version>0.12.3</version>
+    <time>1459238439</time>
+    <user>dimstar_suse</user>
+    <comment>Update Quassel to 0.12.3. The required library snorenotify-qt5-devel is already in Factory.</comment>
+    <requestid>380523</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8f5c392ded0d1328d9a697c0789349fd</srcmd5>
+    <version>0.12.4</version>
+    <time>1462261057</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.12.4:
+  * Various small fixes
+  * Fix for core crash from client handshake data bnc#978002 CVE-2016-4414</comment>
+    <requestid>393267</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>3497b799d5713616486e5e7d1a6f70e6</srcmd5>
+    <version>0.12.4</version>
+    <time>1464595006</time>
+    <user>dimstar_suse</user>
+    <comment>- Reduce pc files to only those that are really needed</comment>
+    <requestid>398379</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>e26cab6b0328fec769c324611bff4fe5</srcmd5>
+    <version>0.12.4</version>
+    <time>1472477836</time>
+    <user>dimstar_suse</user>
+    <comment>- Reenable translations that disappeared at some point of time</comment>
+    <requestid>422340</requestid>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>d4e404556bce0490c50fd5f3e9cfcba9</srcmd5>
+    <version>0.12.4</version>
+    <time>1511517410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545040</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>59ece5d707cca44e2c29dad99e13477e</srcmd5>
+    <version>0.12.5</version>
+    <time>1524838068</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.12.4:
+  * Various small fixes
+  * Fix for DOS and information leaks bsc#1090495
+- Rebase patch quassel-set-required-libs-and-flags.patch
+- Switch from qt5webkit to webengine</comment>
+    <requestid>600829</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>ae433a53727431bb93ddc2aa8a28a78b</srcmd5>
+    <version>0.12.5</version>
+    <time>1525209989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602577</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>9a8924fe6f92a8d9a37e4db48cb95c6c</srcmd5>
+    <version>0.12.5</version>
+    <time>1525426127</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602973</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>135f4fcac71294e763259ef58a5c3d41</srcmd5>
+    <version>0.12.5</version>
+    <time>1526371997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606429</requestid>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>2c863802efd51c746835c0aa19af36bc</srcmd5>
+    <version>0.12.5</version>
+    <time>1529919715</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618636</requestid>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>929376e0df11bb1a4b0f0bb61b50643e</srcmd5>
+    <version>0.12.5</version>
+    <time>1530191674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619434</requestid>
+  </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>c9eab2d8b01538bb19823268f013ba46</srcmd5>
+    <version>0.12.5</version>
+    <time>1531380024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622075</requestid>
+  </revision>
+  <revision rev="44" vrev="8">
+    <srcmd5>35d2f9f5ad395a09e640fb1face8acc9</srcmd5>
+    <version>0.12.5</version>
+    <time>1532681811</time>
+    <user>dimstar_suse</user>
+    <comment>  startup otherwise. bsc#1102568</comment>
+    <requestid>625382</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>712b62241116c6571761e6023dbd9d92</srcmd5>
+    <version>0.13~rc1</version>
+    <time>1533214711</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not ship quassel.SuSEfirewall2 as firewalld has the config
+  within its general package
+
+- Version update to 0.13-rc1:
+  * New branding, more modern icons (from the Breeze icon theme)
+  * Better support for icon themes
+  * Many UI improvements
+  * Support for many IRCv3 features, including the display of modern formatting codes
+  * Functionality such as highlights and chat activity tracking move into the core to help mobile clients to be more efficient
+  * Support for containerization, i.e. config-less core
+  * Optional authentication via LDAP
+  * Database improvements, including support for 64 bit IDs and timestamps, and performance tweaks
+  * For more see ChangeLog
+- Drop merged patch Fix-build-with-Qt5.11.patch</comment>
+    <requestid>626681</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>1ebad9e5c6deb0b71248f8e6dcaf9ae9</srcmd5>
+    <version>0.13~rc1</version>
+    <time>1535123472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631145</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>6c918f925c2f05eb6405d3c5ce178e0a</srcmd5>
+    <version>0.13~rc2</version>
+    <time>1540200239</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13-rc2:
+  * Many stability tweaks to fix issues reported against the rc1</comment>
+    <requestid>643147</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>48b88225f72814d618a3c855a5d21f6a</srcmd5>
+    <version>0.13.0</version>
+    <time>1543224392</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.0:
+  * no dedicated changelog available, final release</comment>
+    <requestid>651042</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>a6387d8f0f1066ccb9673d9ad121deab</srcmd5>
+    <version>0.13.0</version>
+    <time>1547130065</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ldap dependency so the feature is compiled too</comment>
+    <requestid>663656</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>eaecd5d949add914580840d5538439ae</srcmd5>
+    <version>0.13.1</version>
+    <time>1550574108</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.13.1:
+  * Fix backlog message fetching that was broken when using Qt4
+  * Improve output to syslog
+  * Make upgrading the database schema more robust in case of interruption
+  * Fix alignment of buttons in the input widget
+  * Fix bug where the nicklist would be hidden on first start
+  * Allow configuring the listen addresses for the built-in identd (--ident-listen)
+  * Honor core options even if it was just configured via environment variables
+  * Fix syncing of auto reconnect retries in network settings
+  * Update translations
+
+- update to 0.13.0 (bsc#1122572):</comment>
+    <requestid>677127</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>67aa78d2b852415c17dfdf285eb1fdd9</srcmd5>
+    <version>0.13.1</version>
+    <time>1556312116</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>698165</requestid>
+  </revision>
+</revisionlist>

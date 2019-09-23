@@ -1,0 +1,10 @@
+<package name="vorbis-tools" project="openSUSE:Factory">
+  <title>Ogg Vorbis Tools</title>
+  <description>This package contains some tools for Ogg Vorbis:
+
+oggenc (an encoder) and ogg123 (a playback tool). It also has vorbiscomment (to
+add comments to Vorbis files), ogginfo (to give all useful information about an
+Ogg file, including streams in it), oggdec (a simple command line decoder), and
+vcut (which allows you to cut up Vorbis files).</description>
+  <devel project="multimedia:apps" package="vorbis-tools"/>
+</package>

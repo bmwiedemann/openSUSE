@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1ec82edb1b69316ab8110e064e6cb17a</srcmd5>
+    <version>unknown</version>
+    <time>1489242026</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8777b5a1d66e9ff6de3db540745b5103</srcmd5>
+    <version>unknown</version>
+    <time>1525250613</time>
+    <user>dimstar_suse</user>
+    <comment>add ignore on cputype-armv6l</comment>
+    <requestid>602978</requestid>
+  </revision>
+</revisionlist>

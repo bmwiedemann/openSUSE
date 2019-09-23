@@ -1,0 +1,6 @@
+# avr-libc.x86_64: W: static-library-without-debuginfo /opt/cross/avr/lib/avr4/libc.a
+addFilter("W: static-library-without-debuginfo /")
+
+# They are all false positives.
+#avr-libc.noarch: E: arch-independent-package-contains-binary-or-object (Badness: 499) /opt/cross/avr/avr/lib/avr31/libscanf_min.a
+addFilter("arch-independent-package-contains-binary-or-object")

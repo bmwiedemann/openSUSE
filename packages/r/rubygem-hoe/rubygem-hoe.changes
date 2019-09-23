@@ -1,0 +1,568 @@
+-------------------------------------------------------------------
+Fri Jul 19 09:17:18 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.18.0
+ see installed History.rdoc
+
+  === 3.18.0 / 2019-05-25
+  
+  * 1 major enhancement:
+  
+    * Added Minitest::TestTask (will move to minitest proper soon)
+  
+  * 8 minor enhancements:
+  
+    * Added 'multiruby_skip' config so it can be in global ~/.hoerc.
+    * Added Hoe.include_dirs to allow tasks to probe directly.
+    * Added X=exclude_pattern to the test plugin. Can be used in conjunction with N=select_pattern.
+    * Deprecated Hoe::Test.make_test_cmd      (argue with me!)
+    * Deprecated Hoe::Test.try_loading_rspec  (argue with me!)
+    * Deprecated Hoe::Test.try_loading_rspec2 (argue with me!)
+    * Deprecated testunit support             (argue with me!)
+    * Switched normally hoe-generated test tasks over to use Minitest::TestTask.
+  
+  * 1 bug fix:
+  
+    * Fixed incompatibility with rubygems 3.x. (drbrain)
+
+-------------------------------------------------------------------
+Thu Mar 14 10:57:04 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.17.2
+ see installed History.rdoc
+
+  === 3.17.2 / 2019-03-13
+  
+  * 1 bug fix:
+  
+    * Fixed gem sign breakage caused by rubygems update. Tested against rubygems 3.0.2
+
+-------------------------------------------------------------------
+Thu Nov 22 05:16:18 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.17.1
+ see installed History.rdoc
+
+  === 3.17.1 / 2018-09-06
+  
+  * 1 bug fix:
+  
+    * Bumped dependencies on rdoc and rake for latest majors.
+
+-------------------------------------------------------------------
+Tue Mar 20 10:10:33 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 3.17.0
+ see installed History.rdoc
+
+  === 3.17.0 / 2018-03-17
+  
+  * 2 minor enhancements:
+  
+    * Added task check_key to see if your signing cert is expired or not.
+    * Bump rdoc dependency to range from 4.x to 5.x.
+  
+  * 1 bug fix:
+  
+    * Fixed ridocs rake task.
+
+-------------------------------------------------------------------
+Sun Dec  3 19:21:06 UTC 2017 - coolo@suse.com
+
+- updated to version 3.16.2
+ see installed History.rdoc
+
+  === 3.16.2 / 2017-11-21
+  
+  * 2 bug fixes:
+  
+    * Make missing history/readme situations more resilient and informative. (kemonomachi)
+    * Make missing urls value just warn.
+
+-------------------------------------------------------------------
+Thu Aug  3 19:22:16 UTC 2017 - coolo@suse.com
+
+- updated to version 3.16.1
+ see installed History.rdoc
+
+-------------------------------------------------------------------
+Wed Jan  4 05:37:58 UTC 2017 - coolo@suse.com
+
+- updated to version 3.16.0
+ see installed History.rdoc
+
+  === 3.16.0 / YYYY-MM-DD
+  
+  * 1 minor enhancement:
+  
+    * Updated compiler plugin dependency for rake-compiler to 1.x.
+  
+  * 2 bug fixes:
+  
+    * Fixed rdoc cmd to be more resilient to ruby version changes (w/ isolate)
+    * Relaxed rake dependency to < 13 to fix against latest release.
+
+-------------------------------------------------------------------
+Fri Nov 18 05:31:05 UTC 2016 - coolo@suse.com
+
+- updated to version 3.15.3
+ see installed History.rdoc
+
+  === 3.15.3 / 2016-11-17
+  
+  * 1 bug fix:
+  
+    * Call Gem::Specification.reset after installing a gem. (segiddins)
+
+-------------------------------------------------------------------
+Mon Oct 10 04:31:48 UTC 2016 - coolo@suse.com
+
+- updated to version 3.15.2
+ see installed History.rdoc
+
+  === 3.15.2 / 2016-10-09
+  
+  * 2 bug fixes:
+  
+    * Add noop clobber_docs and clobber_package tasks in case they are disabled.
+    * Moved activate_plugin_deps to post_initialize.
+
+-------------------------------------------------------------------
+Thu Jun 16 04:32:05 UTC 2016 - coolo@suse.com
+
+- updated to version 3.15.1
+ see installed History.rdoc
+
+  === 3.15.1 / 2016-06-15
+  
+  * 1 bug fix:
+  
+    * rake newb does a better job of activating gems it had to install. (duckinator)
+
+-------------------------------------------------------------------
+Wed Apr  6 06:23:19 UTC 2016 - coolo@suse.com
+
+- updated to version 3.15.0
+ see installed History.rdoc
+
+  === 3.15.0 / 2016-03-25
+  
+  * 1 minor enhancement:
+  
+    * Added ruby version declarations for hoe-spec. ruby20!
+  
+  * 2 bug fixes:
+  
+    * Fixed running rdoc if it was satisfied outside of GEM_HOME.
+    * Relaxed requirement on rake to include new rake 11.x. (hsbt)
+
+-------------------------------------------------------------------
+Tue Sep 15 04:30:24 UTC 2015 - coolo@suse.com
+
+- updated to version 3.14.2
+ see installed History.rdoc
+
+  === 3.14.2 / 2015-09-14
+  
+  * 1 minor enhancement:
+  
+    * Updated Hoe.pdf to reflect reality (removed all rubyforge references).
+  
+  * 1 bug fix:
+  
+    * Fixed extension paths. Again. Damnit. I normally don't release after midnight.
+  
+  === 3.14.1 / 2015-09-13
+  
+  * 1 bug fix:
+  
+    * *sigh* fixed bug setting up extensions data for spec.
+
+-------------------------------------------------------------------
+Sun Sep 13 04:30:21 UTC 2015 - coolo@suse.com
+
+- updated to version 3.14.0
+ see installed History.rdoc
+
+  === 3.14.0 / 2015-09-12
+  
+  * 5 minor enhancements:
+  
+    * Added so_name variable to bin/sow for using hoe w/ c-extensions.
+    * Default config now excludes tmp, .git, and .bundle.
+    * Extended :compiler plugin to define #extension for hoe spec decls.
+    * Failures to detect/load rake-compiler are handled gracefully.
+    * Removed generation of synthesized .gemtest file. Dead.
+  
+  * 1 bug fix:
+  
+    * Fix PRERELEASE= for packaging against newer versions of rubygems. (drbrain)
+
+-------------------------------------------------------------------
+Sat Feb  7 07:21:17 UTC 2015 - coolo@suse.com
+
+- updated to version 3.13.1
+ * 1 bug fix:
+   * Remove deprecated test_files from spec. (igas)
+
+-------------------------------------------------------------------
+Sun Oct 12 17:13:13 UTC 2014 - coolo@suse.com
+
+- updated to version 3.13.0
+ * 2 minor enhancements:
+ 
+   * Added ext_name to sow template expansion variables.
+   * Added oedipus version to generation output
+
+-------------------------------------------------------------------
+Sun Oct 12 09:25:35 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Sun May 18 09:04:38 UTC 2014 - coolo@suse.com
+
+- updated to version 3.12.0
+ * 3 minor enhancements:
+   * Added :rdoc plugin.
+   * Renamed History.txt to History.rdoc.
+   * Renamed README.txt to README.rdoc.
+ 
+ === 3.11.0 / 2014-04-02
+ 
+ * 1 minor enhancement:
+   * Added test:slow task so I don't have to remember sort's flags anymore. YAY for UNIX!
+ 
+ === 3.10.0 / 2014-03-14
+ 
+ * 1 major enhancement:
+   * Removed all references to rubyforge, including the rubyforge plugin.
+ 
+ * 1 minor enhancement:
+   * Updated template project (minitest usage, readme format, etc)
+ 
+ === 3.9.0 / 2014-02-10
+ 
+ * 1 minor enhancement:
+   * Added irb task.
+ 
+ * 1 bug fix:
+   * Properly constrain rubyforge dependency to avoid warnings. Prolly remove entirely soon. (halostatue)
+
+-------------------------------------------------------------------
+Tue Mar 18 14:57:15 UTC 2014 - coolo@suse.com
+
+- updated to version 3.10.0
+ * 1 major enhancement:
+   * Removed all references to rubyforge, including the rubyforge plugin.
+ 
+ * 1 minor enhancement:
+   * Updated template project (minitest usage, readme format, etc)
+
+-------------------------------------------------------------------
+Sat Feb 22 06:25:43 UTC 2014 - coolo@suse.com
+
+- updated to version 3.9.0
+ * 1 minor enhancement:
+   * Added irb task.
+ 
+ * 1 bug fix:
+   * Properly constrain rubyforge dependency to avoid warnings. Prolly remove entirely soon. (halostatue)
+
+-------------------------------------------------------------------
+Thu Feb  6 18:00:17 UTC 2014 - coolo@suse.com
+
+- updated to version 3.8.1
+ * 2 minor enhancements:
+   * Added C=<#cpus> for minitest parallel testing support.
+   * Added test_cmd task to make running tests in subcommands (eg profiling) easy.
+ 
+ * 1 bug fix:
+   * Fixed bug when mixing TESTOPTS & N.
+
+-------------------------------------------------------------------
+Mon Jan 20 09:29:44 UTC 2014 - coolo@suse.com
+
+- updated to version 3.8.0
+ * 2 minor enhancements:
+ 
+   * Change racc plugin to support oedipus_lex, not rexical.
+   * Switched .rb to .rex rule to oedipus_lex.
+
+ * 1 bug fix:
+ 
+   * Fix path in template/Rakefile.erb since we now have template styles. (mikestok)
+
+-------------------------------------------------------------------
+Mon Dec 16 06:28:05 UTC 2013 - coolo@suse.com
+
+- updated to version 3.7.3
+ * 1 bug fix:
+  * Quell warnings in sow on ruby 2.0. (teoljungberg)
+
+-------------------------------------------------------------------
+Mon Dec  9 11:39:39 UTC 2013 - coolo@suse.com
+
+- updated to version 3.7.2
+ * 1 bug fix:
+  * Apparently getting files in a different order on osx on ruby 2.1. (sanemat)
+
+-------------------------------------------------------------------
+Mon Aug 26 05:05:25 UTC 2013 - coolo@suse.com
+
+- updated to version 3.7.1
+ * 1 minor enhancement:
+   * Added N=testname option to the test task to shortcut TESTOPTS='-n testname'
+
+-------------------------------------------------------------------
+Tue Jul 30 16:03:07 UTC 2013 - coolo@suse.com
+
+- updated to version 3.7.0
+ * 1 minor enhancement:
+   * Warn and default to MIT license if not set.
+
+-------------------------------------------------------------------
+Fri Jul 12 19:00:08 UTC 2013 - coolo@suse.com
+
+- updated to version 3.6.3
+ * 1 bug fix:
+   * Fixed problems with shell redirection on non-bash systems. (kou)
+
+-------------------------------------------------------------------
+Fri Jun  7 08:07:41 UTC 2013 - coolo@suse.com
+
+- updated to version 3.6.2
+ * 1 minor enhancement:
+  * Um... the default test lib should probably be minitest, not testunit.
+
+-------------------------------------------------------------------
+Mon May 13 08:19:06 UTC 2013 - coolo@suse.com
+
+- updated to version 3.6.1
+ * 2 bug fixes:
+ 
+   * Define a blank test task just in case nothing is found
+   * Fixed an ancient test to use capture_subprocess_io. More reliable.
+
+-------------------------------------------------------------------
+Wed May  8 06:35:59 UTC 2013 - coolo@suse.com
+
+- updated to version 3.6.0
+ * 5 minor enhancements:
+ 
+   * Added built-in support for markdown.
+   * Renamed rubyforge_name to group_name.
+   * Aliased and deprecated rubyforge_name from group_name.
+   * Strip <> from parse_urls for markdown style raw urls.
+   * intuit_values looks for README.md and History.md as well as txt.
+ 
+ * 1 bug fix:
+ 
+   * Fix file_name regex for test file. (bhenderson/veganstraightedge)
+
+-------------------------------------------------------------------
+Fri Apr 12 09:19:32 UTC 2013 - coolo@suse.com
+
+- updated to version 3.5.3
+ * 1 minor enhancement:
+   * Updated publish plugin to depend on rdoc 4.x.
+
+-------------------------------------------------------------------
+Tue Mar 19 19:32:03 UTC 2013 - coolo@suse.com
+
+- updated to version 3.5.2
+ * 1.9: fixed warning of ambiguous args in bin/sow. (amesee)
+
+-------------------------------------------------------------------
+Sun Mar  3 09:37:10 UTC 2013 - coolo@suse.com
+
+- updated to version 3.5.1
+ 
+ * 1 bug fix:
+   * Fixed use of Gem::Specification.find_by_name for ruby 2.0. (haramako)
+
+-------------------------------------------------------------------
+Thu Jan 24 06:48:41 UTC 2013 - coolo@suse.com
+
+- updated to version 3.5.0
+ * 1 minor enhancement:
+ 
+   * Added optional cmd field in blog setup for hoe/publish
+ 
+ * 1 bug fix:
+ 
+   * Fixed MiniTest const for older stock ruby minitests. (illuminerdi)
+
+-------------------------------------------------------------------
+Wed Dec 19 06:38:59 UTC 2012 - coolo@suse.com
+
+- updated to version 3.4.0
+ * 2 minor enhancements:
+  * Splatted version arg on require_rubygems_version and require_ruby_version.
+  * Switch default template test file to minitest
+
+-------------------------------------------------------------------
+Mon Nov 26 17:41:56 UTC 2012 - coolo@suse.com
+
+- updated to version 3.3.1
+  * Updated rake dep to be >= 0.8 and < 11.0 for the new wack version scheme. (MichaelXavier)
+
+-------------------------------------------------------------------
+Wed Nov 14 06:16:38 UTC 2012 - coolo@suse.com
+
+- updated to version 3.3.0, no changelog
+
+-------------------------------------------------------------------
+Mon Nov 12 11:47:09 UTC 2012 - coolo@suse.com
+
+- updated to version 3.2.0
+  * Added flog_method and defaulted it to max_method
+  * Changed flog_threshold to 20, 2x the industry average. Be strong. You can do it.
+  * Hoe#timebomb will now default finis/start values to 1/1 and 12/31 of the current year if not specified.
+
+-------------------------------------------------------------------
+Sun Nov  4 07:47:10 UTC 2012 - coolo@suse.com
+
+- updated to version 3.1.1
+ * Fixed ridocs command args. (bikeNomad)
+
+-------------------------------------------------------------------
+Sun Sep 23 09:20:14 UTC 2012 - coolo@suse.com
+
+- updated to version 3.1.0
+ * 1 minor enhancement:
+   * Added Hoe#licenses and Hoe#license for declaring your gem's license. (flavorjones)
+ * 1 bug fix:
+   * Rake 0.8.7 sets verbose flag to true, breaking 2 tests. (michelboaventura)
+
+-------------------------------------------------------------------
+Wed Aug 29 08:37:43 UTC 2012 - coolo@suse.com
+
+- updated to version 3.0.8
+ * Set test_globs default value to pick up test/*spec* files as well. (millisami)
+
+-------------------------------------------------------------------
+Wed Aug  8 09:05:13 UTC 2012 - coolo@suse.com
+
+- updated to version 3.0.7
+ * Added quote from DrNic about manifests to readme.
+
+-------------------------------------------------------------------
+Sun Jul 15 12:13:56 UTC 2012 - coolo@suse.com
+
+- update to 3.0.6
+  * Added install_plugins to the newb task
+
+-------------------------------------------------------------------
+Wed May  9 05:41:57 UTC 2012 - coolo@suse.com
+
+- update to 3.0.5
+  * Fixed ridocs argument handling (erikh)
+
+-------------------------------------------------------------------
+Sun May  6 09:05:40 UTC 2012 - coolo@suse.com
+
+- update to 3.0.4
+  * Removed rubygems/deprecated and rolled my own for users on older rubygems
+
+-------------------------------------------------------------------
+Wed Apr 11 12:04:05 UTC 2012 - coolo@suse.com
+
+- update to 3.0.3
+  * Fixed racc plugin's gem dependency activation
+  * Fixed rake multi's use of multiruby_skip.
+
+-------------------------------------------------------------------
+Thu Apr  5 07:49:30 UTC 2012 - coolo@suse.com
+
+- update to 3.0.2 - long History.txt
+
+-------------------------------------------------------------------
+Fri Jun 11 17:14:04 UTC 2010 - mrueckert@suse.de
+
+- update to version 2.6.1
+  * Fix up hoe to be happy when rubyforge is missing or misconfigured
+  * Fixed dep tasks to deal with broken rubygems changes RF#27847
+    (mjwillson)
+- additional changes from version 2.6.0
+  * Added '.' to load path for (bad) 1.9.2 changes
+  * Added rdoc_locations array to the publish plugin to allow for
+    multiple arbitrary rdoc locations
+    * Refactored old rubyforge rdoc location to the rubyforge plugin.
+  * Added require_ruby_version and require_rubygems_version.
+  * Cleaned up dep tests
+  * Hoe now depends on rubygems 1.3.6 instead of the gemcutter gem.
+  * Remove ext from default_ruby_flags and require_paths. (luis)
+  * Fixed test command to use '--' before filter args
+  * Tweaked .hoerc error to point to a fix.
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Fri Jan 15 16:28:39 UTC 2010 - dmacvicar@novell.com
+
+- update to 2.5.0
+  * Add extra dirs to rcov include path if needed.
+  * Added Hoe#dependency_target to make dependencies easier to declare.
+  * Added extra doco to describe how auto-population works.
+  * Added more doco to readme.
+  * Don’t bother posting news to rubyforge.
+  * Hoe::Inline plugin now deals with X::Y by flattening the name.
+  * Merged some of Hoe.pdf to README.txt and further improved doco.
+  * Pushed gemcutter & rubyforge dependencies down to the plugins.
+  * Fix perms on Hoe.pdf after copying.
+  * Fixed Hoe rdoc problem caused by gemcutter plugin.
+  (plus 2.4.0 changes)
+  * Added Hoe.pdf
+  * Added gemcutter plugin (raggi)
+  * Added newb plugin. (jbarnette)
+  * Improved README.txt
+  * Improved rdoc
+  * Refactored rubyforge task to plugin. (jbarnette)
+
+-------------------------------------------------------------------
+Fri Nov 13 20:12:23 UTC 2009 - mrueckert@suse.de
+
+- update to 2.3.3
+
+-------------------------------------------------------------------
+Sun Jul 26 03:51:54 CEST 2009 - dmacvicar@suse.de
+
+- update to 2.3.2 
+
+-------------------------------------------------------------------
+Fri Mar 20 16:08:32 CET 2009 - dmacvicar@suse.de
+
+- update to 1.11.0
+
+-------------------------------------------------------------------
+Sat Jan 31 20:00:00 CEST 2009 - dmacvicar@suse.de
+
+- update to 1.8.3
+
+-------------------------------------------------------------------
+Wed Oct  1 13:35:05 CEST 2008 - mrueckert@suse.de
+
+- update to version 1.7.0
+
+-------------------------------------------------------------------
+Tue May 22 18:05:59 CEST 2007 - mrueckert@suse.de
+
+- update to version 1.2.1
+
+-------------------------------------------------------------------
+Sun Oct 15 07:30:52 CEST 2006 - mrueckert@suse.de
+
+- update to version 1.1.1:
+  o small bug fixes
+
+-------------------------------------------------------------------
+Fri Oct  6 05:36:30 CEST 2006 - mrueckert@suse.de
+
+- update to 1.1.0:
+  o Added sow, a command-line tool for quickly creating new projects.
+  o Added check_manifest task
+

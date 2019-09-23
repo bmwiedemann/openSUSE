@@ -1,0 +1,10 @@
+<package name="lightdm" project="openSUSE:Factory">
+  <title>Lightweight, Cross-desktop Display Manager</title>
+  <description>LightDM is a lightweight, cross-desktop display manager. Its main features are
+a well-defined greeter API allowing multiple GUIs, support for all display
+manager use cases, with plugins where appropriate, low code complexity, and
+fast performance. Due to its cross-platform nature greeters can be written in
+several toolkits such as Qt and GTK.</description>
+  <devel project="X11:Utilities" package="lightdm"/>
+  <url>http://www.freedesktop.org/wiki/Software/LightDM</url>
+</package>

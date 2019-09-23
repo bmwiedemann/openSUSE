@@ -1,0 +1,219 @@
+-------------------------------------------------------------------
+Fri Jul 19 12:02:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Restrict pytest to <5.0; upstream has an issue already reported
+
+-------------------------------------------------------------------
+Sun Mar  3 09:14:50 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add de-vendor.patch to avoid new vendoring of html5lib in v3.1.0
+- Remove direct dependency on webencodings, a dependency of html5lib
+- Update to v3.1.0
+  * Add ``recognized_tags`` argument to the linkify ``Linker`` class. This
+    fixes issues when linkifying on its own and having some tags get escaped.
+    It defaults to a list of HTML5 tags
+  * Add ``six>=1.9`` to requirements
+  * Fix cases where attribute names could have invalid characters in them.
+  * Fix problems with ``LinkifyFilter`` not being able to match links
+    across ``&amp;``.
+  * Fix ``InputStreamWithMemory`` when the ``BleachHTMLParser`` is
+    parsing ``meta`` tags
+  * Fix doctests.
+- from v3.0.2
+  * Merge ``Characters`` tokens after sanitizing them. This fixes issues
+    in the ``LinkifyFilter`` where it was only linkifying parts of urls
+- from v3.0.1
+  * Support Python 3.7. It supported Python 3.7 just fine, but 3.7 was
+    added to the list of Python environments being test
+  * Fix ``list`` object has no attribute ``lower`` in ``clean``
+  * Fix ``abbr`` getting escaped in ``linkify``
+- from v3.0.0
+  * [breaking] A bunch of functions were moved from one module to another.
+    These were moved from ``bleach.sanitizer`` to ``bleach.html5lib_shim``:
+    + convert_entity
+    + convert_entities
+    + match_entity
+    + next_possible_entity
+    + BleachHTMLSerializer
+    + BleachHTMLTokenizer
+    + BleachHTMLParser
+    These functions and classes weren't documented and aren't part of the
+    public API, but people read code and might be using them so we're
+    considering it an incompatible API change.
+    If you're using them, you'll need to update your code.
+  * Bleach no longer depends on html5lib. html5lib==1.0.1 is now vendored into
+    Bleach. You can remove it from your requirements file if none of your other
+    requirements require html5lib.
+    This means Bleach will now work fine with other libraries that depend on
+    html5lib regardless of what version of html5lib they require.
+  * Fixed tags getting added when using clean or linkify. This was a
+    long-standing regression from the Bleach 2.0 rewrite
+  * Fixed ``<isindex>`` getting replaced with a string. Now it gets escaped or
+    stripped depending on whether it's in the allowed tags or not
+- from v2.1.4
+  * Dropped support for Python 3.3
+  * Handle ambiguous ampersands in correctly
+
+-------------------------------------------------------------------
+Wed Dec  5 01:56:44 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim rhetorics and bias from descriptions.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:11 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Mar 20 08:38:36 UTC 2018 - kbabioch@suse.com
+
+- Update to version 2.1.3:
+  * Attributes that have URI values weren't properly sanitized if the
+    values contained character entities. Using character entities, it
+    was possible to construct a URI value with a scheme that was not
+    allowed that would slide through unsanitized.
+    (CVE-2018-7753 bnc#1085969)
+
+-------------------------------------------------------------------
+Thu Dec  7 16:50:14 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 2.1.2:
+  * Bug fixes
+    + Support html5lib-python 1.0.1. (#337)
+    + Add deprecation warning for supporting html5lib-python < 1.0.
+    + Switch to semver.
+
+-------------------------------------------------------------------
+Sat Nov 11 17:17:50 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 2.1.1:
+  * Bug fixes
+    + Fix setup.py opening files when LANG=. (#324)
+
+- changes from version 2.1:
+  * Security fixes
+    + Convert control characters (backspace particularly) to “?”
+      preventing malicious copy-and-paste situations. (#298)
+      See https://github.com/mozilla/bleach/issues/298 for more details.
+      This affects all previous versions of Bleach. Check the comments
+      on that issue for ways to alleviate the issue if you can’t
+      upgrade to Bleach 2.1.
+  * Backwards incompatible changes
+    + Redid versioning. bleach.VERSION is no longer available. Use the
+      string version at bleach.__version__ and parse it with
+      pkg_resources.parse_version. (#307)
+    + clean, linkify: linkify and clean should only accept text types;
+      thank you, Janusz! (#292)
+    + clean, linkify: accept only unicode or utf-8-encoded str (#176)
+  * Bug fixes
+    + bleach.clean() no longer unescapes entities including ones that
+      are missing a ; at the end which can happen in urls and other
+      places. (#143)
+    + linkify: fix http links inside of mailto links; thank you,
+      sedrubal! (#300)
+    + clarify security policy in docs (#303)
+    + fix dependency specification for html5lib 1.0b8, 1.0b9, and
+      1.0b10; thank you, Zoltán! (#268)
+    + add Bleach vs. html5lib comparison to README; thank you, Stu
+      Cox! (#278)
+    + fix KeyError exceptions on tags without href attr; thank you,
+      Alex Defsen! (#273)
+    + add test website and scripts to test bleach.clean() output in
+      browser; thank you, Greg Guthe!
+
+-------------------------------------------------------------------
+Wed Apr 12 15:15:17 UTC 2017 - toddrme2178@gmail.com
+
+- Fix source URL.
+
+-------------------------------------------------------------------
+Thu Apr  6 17:49:43 UTC 2017 - toddrme2178@gmail.com
+
+- Update to Version 2.0.0
+  + Backwards incompatible changes
+    * Removed support for Python 2.6. #206
+    * Removed support for Python 3.2. #224
+    * Bleach no longer supports html5lib < 0.99999999 (8 9s).
+    * ``bleach.clean`` and friends were rewrittenped.
+    * ``bleach.clean`` and friends attribute callables now take three arguments:
+      tag, attribute name and attribute value. Previously they only took attribute
+      name and attribute value.
+    * ``bleach.linkify`` was rewritten
+    * ``bleach.linkify`` and friends had a ``skip_pre`` argument--that's been
+      replaced with a more general ``skip_tags`` argument.
+  + Changes
+    * Supports Python 3.6.
+    * Supports html5lib >= 0.99999999 (8 9s).
+    * There's a ``bleach.sanitizer.Cleaner`` class that you can instantiate with your
+      favorite clean settings for easy reuse.
+    * There's a ``bleach.linkifier.Linker`` class that you can instantiate with your
+      favorite linkify settings for easy reuse.
+    * There's a ``bleach.linkifier.LinkifyFilter`` which is an htm5lib filter that
+      you can pass as a filter to ``bleach.sanitizer.Cleaner`` allowing you to clean
+      and linkify in one pass.
+    * ``bleach.clean`` and friends can now take a callable as an attributes arg value.
+    * Tons of bug fixes.
+    * Cleaned up tests.
+    * Documentation fixes.
+- Update to Version 1.5
+  + Backwards incompatible changes
+    * clean: The list of ``ALLOWED_PROTOCOLS`` now defaults to http, https and
+      mailto.
+  + Changes
+    * clean: Added ``protocols`` to arguments list to let you override the list of
+      allowed protocols. Thank you, Andreas Malecki! #149
+    * linkify: Fix a bug involving periods at the end of an email address. Thank you,
+      Lorenz Schori! #219
+    * linkify: Fix linkification of non-ascii ports. Thank you Alexandre, Macabies!
+      #207
+    * linkify: Fix linkify inappropriately removing node tails when dropping nodes.
+      #132
+    * Fixed a test that failed periodically. #161
+    * Switched from nose to py.test. #204
+    * Add test matrix for all supported Python and html5lib versions. #230
+    * Limit to html5lib ``>=0.999,!=0.9999,!=0.99999,<0.99999999`` because 0.9999
+      and 0.99999 are busted.
+    * Add support for ``python setup.py test``. #97
+- Update to Version 1.4.3 (May 23rd, 2016)
+  + Changes
+    * Limit to html5lib ``>=0.999,<0.99999999`` because of impending change to
+      sanitizer api. #195
+- Update to Version 1.4.2
+  + Changes
+    * linkify: Fix hang in linkify with ``parse_email=True``. #124
+    * linkify: Fix crash in linkify when removing a link that is a first-child. #136
+    * Updated TLDs.
+    * linkify: Don't remove exterior brackets when linkifying. #146
+- Implemenet single-spec version
+
+-------------------------------------------------------------------
+Thu Sep  3 14:39:11 UTC 2015 - toddrme2178@gmail.com
+
+- Fix build on SLE 11
+
+-------------------------------------------------------------------
+Fri Aug  7 22:19:47 UTC 2015 - hpj@urpla.net
+
+- eabled checks again: don't know, why they failed in the first place
+
+-------------------------------------------------------------------
+Thu Jul 30 09:34:52 UTC 2015 - hpj@urpla.net
+
+- disabled checks: developer unresponsive
+
+-------------------------------------------------------------------
+Wed Jun 17 18:11:49 UTC 2015 - hpj@urpla.net
+
+- updated to version 1.4.1
+
+-------------------------------------------------------------------
+Mon May 26 22:28:56 UTC 2014 - hpj@urpla.net
+
+- version 1.4: initial build
+

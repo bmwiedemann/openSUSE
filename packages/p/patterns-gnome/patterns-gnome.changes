@@ -1,0 +1,312 @@
+-------------------------------------------------------------------
+Fri Apr 26 08:20:36 UTC 2019 - lnussel@suse.de
+
+- Require gnome_basic instad of gnome_basis to get gnome-software
+  etc (boo#1132777).
+- Don't pull in gimp as it pulls in python2 which is deprecated
+  (boo#1133307). KDE also doesn't install GIMP by default either.
+
+-------------------------------------------------------------------
+Wed Dec 12 11:54:01 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend deja-dup: there are so many variants for
+  users to maintain their backups (e.g. cloud storage) that
+  deja-dup is no longer in the position of being unique.
+  Additionally, we no longer need to pull in python2 on the default
+  installation (boo#1119220).
+
+-------------------------------------------------------------------
+Sun Sep 30 00:28:46 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Change icons for Gnome Wayland and Gnome XOrg patterns.
+  (boo#1039994)
+
+-------------------------------------------------------------------
+Wed Sep 19 20:20:28 UTC 2018 - bjorn.lie@gmail.com
+
+- Drop nautilus-eiciel Recommends.
+
+-------------------------------------------------------------------
+Wed Aug 22 14:17:42 UTC 2018 - badshah400@gmail.com
+
+- gnome_x11: Drop gnote; bijiben (another, more modern, note
+  taking app) is already recommended by the same pattern.
+
+-------------------------------------------------------------------
+Mon Jun 25 17:58:05 UTC 2018 - bjorn.lie@gmail.com
+
+- Drop all traces of gconf:
+  + Drop gconf-editor Suggests and Recommends.
+  + Drop gconf2-branding-openSUSE Recommends.
+  + Replace pulseaudio-module-gconf with
+    pulseaudio-module-gsettings.
+
+-------------------------------------------------------------------
+Mon May 14 15:44:23 UTC 2018 - fcrozat@suse.com
+
+- Move gnome-shell-classic recommends to gnome_basis pattern
+  (boo#1090117).
+
+-------------------------------------------------------------------
+Wed May  9 07:07:41 UTC 2018 - dimstar@opensuse.org
+
+- Move the gnome(wayland) pattern into the category of
+  graphicalenvironments, aligning with the other DEs of the distro.
+
+-------------------------------------------------------------------
+Mon May  7 11:22:44 UTC 2018 - dimstar@opensuse.org
+
+- Re-add gnome-menus recommends to x11 pattern: gnome-menus still
+  brings the .directory translations, which are shown in GNOME
+  Activities (boo#1091487).
+
+-------------------------------------------------------------------
+Thu Apr 19 11:39:43 UTC 2018 - fcrozat@suse.com
+
+- Do not recommend pulseaudio-modules-lirc/bluetooth/zeroconf,
+  use supplements in pulseaudio subpackages instead (bsc#1087207).
+
+-------------------------------------------------------------------
+Wed Apr 11 09:40:59 UTC 2018 - fcrozat@suse.com
+
+- Ensure x11_enhanced pattern is required by gnome_basis on SLE,
+  not just x11 one (bsc#1084155).
+
+-------------------------------------------------------------------
+Tue Apr 10 14:56:06 UTC 2018 - fcrozat@suse.com
+
+- gnome-user-share is not available on all SLE flavors, only
+  recommend it on SLE and keep require on openSUSE (bsc#1087222).
+
+-------------------------------------------------------------------
+Fri Apr  6 12:03:45 UTC 2018 - fcrozat@suse.com
+
+- Drop Recommends on caribou, it is no longer needed since
+  GNOME 3.26.
+- Enable gnome-multimedia pattern on SLE (bsc#1080203).
+- Recommends gutenprint (bsc#1075136) on SLE.
+- Improve description, icons and order for GNOME patterns
+  (bsc#1062753, bsc#1080976).
+- Remove totem-browser-plugin from Recommends, package no longer
+  exists.
+- Tune main gnome patterns order: first gnome_basic, then
+  gnome_wayland then gnome_x11. gnome_basis doesn't need a order
+  (not visible).
+
+-------------------------------------------------------------------
+Fri Apr  6 08:31:11 UTC 2018 - lnussel@suse.de
+
+- Do not pull in gnome-initial-setup on openSUSE (boo#1086056)
+
+-------------------------------------------------------------------
+Fri Apr  6 07:31:11 UTC 2018 - dleuenberger@suse.com
+
+- Drop gnome-icon-theme recommendation from gnome_x11: this theme
+  has been long superseded by adwaita. While reworking the pattern
+  for the SLE12->15 migration, it snuck back in.
+
+-------------------------------------------------------------------
+Wed Apr  4 12:01:50 UTC 2018 - dimstar@opensuse.org
+
+- Only recommend gnome-initial-setup on SLE/Leap: those have a
+  crippled variant of g-i-s only doing extended keyboard settings.
+  g-i-s in Tumbleweed is 'the real thing' and is meant for system
+  integrators, that can use it as initial system start to configure
+  the system.
+
+-------------------------------------------------------------------
+Fri Mar 23 10:14:19 UTC 2018 - tchvatal@suse.com
+
+- Drop dia and inkscape from defaults basically if you want to do
+  vector operations you can install the packages while most users
+  won't use these on default installation
+
+-------------------------------------------------------------------
+Thu Mar 22 12:39:48 UTC 2018 - tchvatal@suse.com
+
+- Drop the gnome-menus as it is dead as snail since 2013
+
+-------------------------------------------------------------------
+Wed Mar 21 10:14:07 UTC 2018 - tchvatal@suse.com
+
+- Reduce remmina/vino/vinagre to require only remmina/vingare
+  as SLE/openSUSE diff, vino is VNC server not needed by default
+  * kill gnome admin which is now empty
+- Do not recommend amavisd-new - no need for virus scanner
+- Drop google-droid-fonts, all core pkgs recommend required fonts
+  no need to mess with it in patterns
+- No longer recommend aria2
+- Drop gutenprint and hplip from patterns here, this is handled
+  by printing patterns
+- Drop gnome-laptop pattern, move gnome-bluetooth recommend to
+  core
+- Drop gnome-imaging-opt moving dia to gnome-imaging
+- Remove suggest on sound-juicer - rippers can install it by hand
+- Remove abiword/gnumeric/pinpoint - we already pull full
+  libreoffice, if someone wants to, they can pull it later on
+- Switch from empathy to pidgin (also dropping the telepathy
+  connectors) as the empathy is kinda dying while pidgin rocks
+  on
+
+-------------------------------------------------------------------
+Wed Mar 21 09:18:48 UTC 2018 - tchvatal@suse.com
+
+- Bump version to $TODAY
+- Remove libui-gtk-pkg as it is gone
+- Remove various stray comments
+- Drop gtk2-devel from devel as we should strive to kill it
+- Drop gnome-doc-utils-devel as gnome-doc-utils is deprecated
+- Drop monodevelop as we do not really emphasise mono these days
+- Drop f-spot as it is gone
+- Recommend also gstreamer-plugins-libav
+- Drop yast-scanner and yast-tv as both modules were removed
+
+-------------------------------------------------------------------
+Mon Mar 12 15:00:01 UTC 2018 - lnussel@suse.de
+
+- Don't guard gnome pattern with %is_opensuse (bsc#1084155)
+
+-------------------------------------------------------------------
+Wed Jan 24 16:00:34 UTC 2018 - fcrozat@suse.com
+
+- Split gnome pattern into gnome_x11 and gnome (wayland) patterns
+  to implement SLED system roles (FATE#324198).
+- Add gnome-user-share as requires (bsc#1075321).
+
+-------------------------------------------------------------------
+Thu Dec  7 14:00:16 UTC 2017 - fcrozat@suse.com
+
+- Add deja-dup, gnome-characters and gnome-contacts are Recommends
+  to gnome pattern (SLE only) (bsc#1069699).
+- Add brasero and file-roller as Recommends to gnome_basic pattern
+  (SLE only) (bsc#1069699, bsc#1065945).
+
+-------------------------------------------------------------------
+Fri Nov 10 09:12:11 UTC 2017 - fcrozat@suse.com
+
+- Fix requires in gnome_basic pattern, it MUST be gnome_basic, not
+  gnome-basic (bsc#1066771), pattern name MUST NOT contain -, only
+  _ is allowed.
+
+-------------------------------------------------------------------
+Fri Nov  3 13:17:32 UTC 2017 - fcrozat@suse.com
+
+- Fix requires in gnome pattern on SLE, should be gnome-basic not
+  gnome_basic.
+
+-------------------------------------------------------------------
+Tue Oct 31 16:51:41 UTC 2017 - fcrozat@suse.com
+
+- Stop requiring yast2-control-center-gnome in gnome pattern, use
+  x11_yast patterns as Recommends instead (bsc#1062733).
+- Remove gstreamer as Recommends, it is pulled by package
+  dependencies.
+- Stop provides/obsoletes openSUSE patterns when building on SLE.
+- On SLE, gnome pattern requires gnome_basic and not just
+  gnome_basis (bsc#1065166).
+- No longer requires cheese for g-c-c user panel, only recommends.
+- Switch to pidgin on SLE (bsc#1065191).
+- Recommends gnome-documents on SLE gnome pattern.
+- No longer recommends tracker-gui, it no longer exists.
+- Recommends NetworkManager-openvpn/pptp/openconnect-gnome on SLE
+  gnome pattern (bsc#1065148).
+- Disable some implicit requires
+  (gnome-shell/gnome-settings-daemon/gnome-control-center) when gdm
+  is requires.
+- Massive cleanup on gnome_basis pattern, dropping obsolete
+  package dependencies.
+- Add gnome_basic pattern, installing a basic GNOME desktop and
+  application, with SLES as a use case.
+
+-------------------------------------------------------------------
+Tue Oct 17 09:17:16 UTC 2017 - sflees@suse.de
+
+- evince should be included on SLE (bsc#1063397)
+
+-------------------------------------------------------------------
+Tue Oct 10 08:37:32 UTC 2017 - fcrozat@suse.com
+
+- Do not requires x11_base pattern, it doesn't exist anymore and
+  gnome_basis as requirement is enough.
+
+-------------------------------------------------------------------
+Mon Oct  9 06:03:44 UTC 2017 - sflees@suse.de
+
+- base pattern now obsoletes and provides Default to make SLE-12
+  upgrades smoother (bsc#1062164)
+
+-------------------------------------------------------------------
+Thu Oct  5 15:10:41 UTC 2017 - fcrozat@suse.com
+
+- x11_base is required instead of desktop_base and enhanced_base for
+  gnome pattern.
+- Replace vinagre with Remmina and drop gftp (unmaintained
+  upstream).
+- Recommends gnome-session-wayland (bsc#1060638).
+
+-------------------------------------------------------------------
+Thu Oct  5 10:36:54 UTC 2017 - aplazas@suse.com
+
+- Add gnome-font-viewer recommendation to the gnome pattern.
+
+-------------------------------------------------------------------
+Wed Jul  5 09:44:00 UTC 2017 - dimstar@opensuse.org
+
+- Do not recommend gdb by gnome_basis: gdb alone does not give us
+  useful bug reports; a reporter producing something useful still
+  has to install all the -debuginfo packages and can as well
+  install gdb.
+
+-------------------------------------------------------------------
+Thu Jun 22 09:26:27 UTC 2017 - adrien.plazas@suse.com
+
+- gnome_ide pattern:
+  + Add the gnome-builder recommendation.
+  + Add the gedit, gedit-plugins and jhbuild suggestions.
+  + Move anjuta and monodevelop from recommendations to
+    suggestions.
+  + Move gitg from suggestions to recommendations.
+
+-------------------------------------------------------------------
+Tue Jun 20 14:07:51 UTC 2017 - adrien.plazas@suse.com
+
+- Remove liferea as it is not a GNOME application and is a niche
+  tool that shouldn't be installed by default.
+
+-------------------------------------------------------------------
+Tue Jun 20 07:20:14 UTC 2017 - adrien.plazas@suse.com
+
+- Replace gucharmap by gnome-characters.
+
+-------------------------------------------------------------------
+Mon Jun 19 10:20:25 UTC 2017 - dimstar@opensuse.org
+
+- Do not require a base system: GNOME builds on top of X11 (for
+  now) and what is below X11 is not our concern.
+
+-------------------------------------------------------------------
+Mon May 29 19:14:58 UTC 2017 - dimstar@opensuse.org
+
+- Change gnome_basis to be an internal-only pattern (non-visible).
+
+-------------------------------------------------------------------
+Wed May  3 08:51:13 UTC 2017 - jengelh@inai.de
+
+- Compact %install routine; replace old RPM shell vars by macros.
+
+-------------------------------------------------------------------
+Sat Apr 29 09:33:16 UTC 2017 - dimstar@opensuse.org
+
+- Fixup supplements: the patterns no longer carry '-openSUSE' in
+  the name.
+
+-------------------------------------------------------------------
+Thu Apr 27 08:46:07 UTC 2017 - dimstar@opensuse.org
+
+- Add gdk-pixbuf-thumbnailer and rsvg-thumbnailer recommends to
+  gnome_utilities pattern (boo#1033650).
+
+-------------------------------------------------------------------
+Thu Mar 16 06:15:40 UTC 2017 - sflees@suse.de
+
+- Create new package from old unified patterns package

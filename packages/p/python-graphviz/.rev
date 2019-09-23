@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>78cc5fdc74c73a82fcf7b83d4b36a463</srcmd5>
+    <version>0.8.1</version>
+    <time>1510837343</time>
+    <user>dimstar_suse</user>
+    <comment>Simple python interface for graphviz</comment>
+    <requestid>542040</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bd2466dbfd05815ace3b99e9b2ac46e7</srcmd5>
+    <version>0.8.2</version>
+    <time>1515506004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562294</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9a3693c9c074be3724b94ebe7ff74e89</srcmd5>
+    <version>0.10.1</version>
+    <time>1542282050</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.1:
+  * python 3.7 support
+  * Various fixes</comment>
+    <requestid>648969</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>747630ccd1bdf0a1f9409ea46c71bbab</srcmd5>
+    <version>0.10.1</version>
+    <time>1545647865</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659404</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>5e580ea5292d48c1b2d8114b457809d1</srcmd5>
+    <version>0.10.1</version>
+    <time>1556311329</time>
+    <user>maxlin_factory</user>
+    <comment>- Add minimal needed versions to BuildRequires
+  Build fails with older python-pytest-mock versions so add the
+  needed checks to avoid that</comment>
+    <requestid>697106</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c1950a261975dba77c061d9daf190538</srcmd5>
+    <version>0.11</version>
+    <time>1561195282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710135</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fdf255c327adc5f7d7938c9eee9ab20a</srcmd5>
+    <version>0.11.1</version>
+    <time>1565864621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720879</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4b1da79bd594417b7eca281d32d0d483</srcmd5>
+    <version>0.13</version>
+    <time>1569233342</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13:
+  * Fix missing escaping of backslashes, e.g. in labels
+  * Add basic debug logging via the stdlib ``logging`` module.
+  * Add ``escape()`` function (resembling ``re.escape()``)
+  * Add explicit support for layout engine escape sequences</comment>
+    <requestid>730352</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,154 @@
+-------------------------------------------------------------------
+Sun Jul  7 22:40:48 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix a Group: line.
+- In descriptions, EFL needs to be camel cased because it is a
+  proper noun (a name).
+
+-------------------------------------------------------------------
+Thu May  2 00:20:10 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- Update to 1.22.0 with efl
+
+-------------------------------------------------------------------
+Thu Feb  7 04:52:51 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- Update to 1.21.0 in line with efl
+
+-------------------------------------------------------------------
+Wed Oct  4 21:51:44 UTC 2017 - avvissu@yandex.by
+
+- Build with Python2 on Fedora and Mageia
+- Build on ix86 (add the -O0 optimization to flags)
+- Fix build on Fedora and Mageia
+- Use a single spec file (build with Python2 and Python3)
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Tue Sep  5 09:25:42 UTC 2017 - sflees@suse.de
+
+- i586 builds are working again, reenable them
+- update the efl version requirement to be correct
+
+-------------------------------------------------------------------
+Wed Aug 23 00:44:16 UTC 2017 - sflees@suse.de
+
+- Sync with efl 1.20
+
+-------------------------------------------------------------------
+Tue Jun 27 13:07:06 UTC 2017 - lnussel@suse.de
+
+- Exclude x86, cc1 uses too much memory atm
+
+-------------------------------------------------------------------
+Thu Jun 22 08:39:03 UTC 2017 - sflees@suse.de
+
+- Add a _constraints file to fix out of mem issues
+
+-------------------------------------------------------------------
+Wed May 17 03:15:04 UTC 2017 - sflees@suse.de
+
+- Update to 1.19.0
+  * changes in line with 1.19.X changes in efl
+
+-------------------------------------------------------------------
+Wed Aug 31 05:57:39 UTC 2016 - sflees@suse.de
+
+- Another attempt at python3 - Removes python2 support
+
+-------------------------------------------------------------------
+Sat Nov 14 20:11:42 UTC 2015 - simon@simotek.net
+
+- 1.16.0 pre release will add full changes with release
+
+-------------------------------------------------------------------
+Fri Aug 21 11:47:45 UTC 2015 - simon@simotek.net
+
+- Add COPYING.* AUTHORS to package
+
+-------------------------------------------------------------------
+Sat Aug 15 23:14:25 UTC 2015 - simon@simotek.net
+
+- Bindings update to efl 1.15.x
+Fixes:
+
+    elm.Entry: Fixed name of the callback_rejected_del function
+    Fixed build on OSX
+    Fixed build when ecore-x is not available
+    Fixed module init from embedded interpreter
+
+Changes:
+
+    Elm: Unify modules into a monolithic module
+
+Additions:
+
+    elm.Configuration.transition_duration_factor
+    elm.Window.autohide
+    elm.ELM_POLICY_QUIT_LAST_WINDOW_HIDDEN
+    elm.Entry.callback_context_open_add/del
+    elm.ELM_FOCUS_MOVE_POLICY_KEY_ONLY
+    elm.Object.focus_move_policy
+    elm.Scrollable.wheel_disabled
+    evas.Textblock.obstacle_add
+    evas.Textblock.obstacle_del
+    evas.Textblock.obstacles_update
+    evas.EVAS_CALLBACK_CANVA_VIEWPORT_RESIZE
+
+
+-------------------------------------------------------------------
+Thu May  7 11:18:59 UTC 2015 - simon@simotek.net
+
+- Bindings updated to efl 1.14.X
+
+-------------------------------------------------------------------
+Mon Feb 16 01:18:18 UTC 2015 - simon@simotek.net
+
+- Bindings updated to match efl 1.13.x
+
+-------------------------------------------------------------------
+Fri Jan  9 05:14:00 UTC 2015 - simon@simotek.net
+
+- Bindings updated to match efl 1.12.x
+
+-------------------------------------------------------------------
+Tue Sep 16 04:47:41 UTC 2014 - simon@simotek.net
+
+- bump to 1.11.0
+  ** Re enabled cython building **
+
+  No new features upstream just following efl changes
+
+-------------------------------------------------------------------
+Mon Aug 18 06:13:17 UTC 2014 - simon@simotek.net
+
+- Disabled Cython with env var for this release as the upstream tar was broken.
+   It was missing .pxd files this has been fixed for the next release.
+
+-------------------------------------------------------------------
+Sun Jun  1 20:42:02 UTC 2014 - sleep_walker@suse.cz
+
+- bump to 1.10.0 (but missing any short changelog)
+- correct all provides and obsoletes
+
+-------------------------------------------------------------------
+Wed Apr  9 02:20:26 UTC 2014 - simon@simotek.net
+
+- version 1.9.0
+  Release Notes:
+  	No major changes have been made since the last 1.8 release. All the new
+	features of efl and elementary 1.9 has been ported and the usual has been
+	done in fixing bugs and optimizing speed. (see **changes.html** in the
+	tarball for the full list of changes)
+
+-------------------------------------------------------------------
+Tue Dec 17 00:23:57 UTC 2013 - sleep_walker@suse.cz
+
+- change to use pkgconfig dependencies
+- beutify spec a bit
+
+-------------------------------------------------------------------
+Mon Dec  9 15:39:20 UTC 2013 - sleep_walker@suse.cz
+
+- let there by python-efl!
+

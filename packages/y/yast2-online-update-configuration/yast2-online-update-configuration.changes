@@ -1,0 +1,139 @@
+-------------------------------------------------------------------
+Tue Aug 27 18:28:54 CEST 2019 - schubi@suse.de
+
+- Set X-SuSE-YaST-AutoInstResource in desktop file (bsc#144894).
+- 4.2.1
+
+-------------------------------------------------------------------
+Fri May 31 12:35:33 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Sun Nov 25 21:58:09 UTC 2018 - Noah Davis <noahadvs@gmail.com>
+
+- Provide icon with module (boo#1109310)
+- 4.1.0
+
+-------------------------------------------------------------------
+Tue Oct 16 15:38:55 CEST 2018 - schubi@suse.de
+
+- Added license file to spec.
+
+-------------------------------------------------------------------
+Wed Jun 27 15:08:56 CEST 2018 - schubi@suse.de
+
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.0.1
+
+-------------------------------------------------------------------
+Thu Nov 30 06:38:15 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new
+  %_fillupdir macro (boo#1069468).
+- 4.0.0
+
+-------------------------------------------------------------------
+Fri Jun 30 11:30:17 UTC 2017 - lslezak@suse.cz
+
+- Install the patches for all selected categories (not just the
+  first one) (bsc#1044018)
+- Properly handle the exist status for multiple categories
+- 3.1.6
+
+-------------------------------------------------------------------
+Wed Apr 16 13:29:46 UTC 2014 - lslezak@suse.cz
+
+- registration client has been renamed to "scc" (bnc#870869)
+- zypp_config.rb: fixed a typo in the constant name
+- 3.1.5
+
+-------------------------------------------------------------------
+Wed Mar 26 14:56:00 UTC 2014 - robin.roth@kit.edu
+
+- Rerun zypper if it returns 103 which indicates that an update to 
+  zypper itself was installed
+- 3.1.4
+
+-------------------------------------------------------------------
+Wed Dec 18 09:00:16 UTC 2013 - vmoravec@suse.com
+
+- Fix missing lib dir in makefile and specfile 
+- 3.1.3
+
+-------------------------------------------------------------------
+Tue Dec 17 13:20:40 UTC 2013 - vmoravec@suse.com
+
+- Add option for using deltarpms during update - FATE#314867
+- 3.1.2
+
+-------------------------------------------------------------------
+Wed Nov 13 15:56:18 UTC 2013 - jreidinger@suse.com
+
+- Add explicit COPYING file
+
+-------------------------------------------------------------------
+Thu Sep 19 12:23:01 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Wed Jul 31 08:34:34 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Tue Jul  9 12:30:27 UTC 2013 - jdsn@suse.de
+
+- do not finish sources if called from other module (bnc#828132)
+- 2.24.1
+
+-------------------------------------------------------------------
+Mon Jul  8 16:56:22 UTC 2013 - jdsn@suse.de
+
+- fix the call of the repositories module (bnc#828139)
+- 2.24.0
+
+-------------------------------------------------------------------
+Wed Mar 13 16:51:35 UTC 2013 - jdsn@suse.de
+
+- translate cron intervals and update categories (bnc#807773)
+
+-------------------------------------------------------------------
+Fri Oct 19 15:16:44 UTC 2012 - jdsn@suse.de
+
+- feature: filter patches by category in automatic update cronjob
+  (fate#313278)
+- 2.22.1
+
+-------------------------------------------------------------------
+Tue Sep 27 11:08:52 CEST 2011 - visnov@suse.cz
+
+- set dialog title
+- 2.21.1 
+
+-------------------------------------------------------------------
+Mon May 30 14:46:54 CEST 2011 - jdsn@suse.de
+
+- add split-provides to keep this module in zypper dup (bnc#695449)
+- 2.21.0
+
+-------------------------------------------------------------------
+Fri Apr  8 15:56:56 CEST 2011 - jdsn@suse.de
+
+- fix proxy settings in automatic online update script, bnc#(678888)
+- make online-update script more robust
+
+-------------------------------------------------------------------
+Mon Apr 26 16:57:22 2010 - jdsn@suse.de
+
+- initial version, split off from yast2-registration (fate#308494)
+- adapting code to work separately from registration
+- 2.19.0

@@ -1,0 +1,163 @@
+-------------------------------------------------------------------
+Wed Jan  2 16:41:40 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- update to version 1.2.2
+  - Default to build with Gtk3, Gtk2 still available but will be removed
+    in the next release
+  - Appease valgrind by properly calculating size when using memmove
+  - Remove g_object_unref() calls at the end of main, were causing
+    double-frees with Gtk3 on OpenBSD
+  - Better utf-8 normalization (bxo#14172)
+  - Improve app search on close (bxo#14466)
+  - Many translation updates
+
+-------------------------------------------------------------------
+Sat Jun  9 18:02:47 UTC 2018 - seife+obs@b1-systems.com
+
+- update to version 1.2.1
+  - New Feature: add --start-hidden commandline option (bxo#14343)
+  - Fix incorrect UID reporting (bxo#12970)
+  - Fix memory usage display (bxo#13371)
+  - Fix various types/casts/initializations/leaks (bxo#14401,
+    bxo#14402, bxo#14403)
+  - Possible fix for a crash when lots of processes were
+    spawned/disappeared
+  - Translation updates
+- packaging:
+  - build against GTK3
+  - use %license
+
+-------------------------------------------------------------------
+Wed Apr 19 21:04:28 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 1.2.0
+  - New Feature: identify windows by clicking on them
+  - Give the filter/search entry focus by default (bxo#11868)
+  - Add delete and shift/delete keyboard shortcuts to the treeview
+  - Improve kill and terminate dialog wording
+  - Add Ctrl+q keyboard shortcut to close the taskmanager
+  - Translation updates
+
+-------------------------------------------------------------------
+Wed Dec 24 19:55:23 UTC 2014 - gber@opensuse.org
+
+- update to version 1.1.0
+  - stop using lots of deprecated Gtk2 API
+  - add a process treeview mode
+  - general UI/graph overhaul
+  - various crash & correctness fixes on the bsd backend
+  - add a searchbox to filter on process names (bxo#9856)
+  - make Escape key close the main window (bxo#11343)
+  - fix window settings not properly saved (bxo#10670)
+  - fix build issue on FreeBSD 9.0 (bxo#8081)
+  - fix the refresh rate menu
+  - default the focus on the process list instead of the exec button
+    (bxo#10643)
+  - add an option to show memory/swap usage as bytes instead of %
+    (bxo#6503)
+  - add unique app behaviour (bxo#8808)
+  - default to close the window instead of hiding in systray
+    (bxo#10941)
+  - fix type causing high cpu usage on ARM (bxo#10417)
+  - tons of translation updates
+
+-------------------------------------------------------------------
+Wed Jan  8 21:02:16 UTC 2014 - gber@opensuse.org
+
+- update to version 1.0.1
+  - add "Run Task Manager as root" item in "Execute" menu
+  - add a menu position function
+  - fix shell substitution for Korn Shell (ksh)
+  - set monitor's background box use the prelight state
+  - remove quit tool button
+  - OpenBSD removed KERN_PROC2/KINFO_PROC2 some months ago.
+  - translation updates
+
+-------------------------------------------------------------------
+Sun Apr 29 09:55:41 UTC 2012 - gber@opensuse.org
+
+- add dependency on exo-tools since exo-open is used
+
+-------------------------------------------------------------------
+Fri Mar 30 15:09:40 UTC 2012 - gber@opensuse.org
+
+- specfile cleanup
+- split off -lang subpackage
+
+-------------------------------------------------------------------
+Fri Feb 18 00:18:39 UTC 2011 - gber@opensuse.org
+
+- call %desktop_database_post/un
+
+-------------------------------------------------------------------
+Mon Dec 27 17:25:59 UTC 2010 - gber@opensuse.org
+
+- use libwnck
+- drop obsolete build dependencies
+- show compiler output
+- remove unsupported locales
+- improved summaries/descriptions
+
+-------------------------------------------------------------------
+Tue Jun 15 10:49:00 UTC 2010 - prusnak@opensuse.org
+
+- updated to 1.0.0
+  - Replaced progress bars against monitors
+  - Display window icons/names with libwnck (optional)
+  - Display the tree view context menu on Menu key press
+  - On tree view column click sort first by descending order
+  - Context menu on the status icon to quit the application
+  - Hide window on window close when the status icon is visible
+  - Several fixes
+
+-------------------------------------------------------------------
+Wed Oct 08 13:41:16 CEST 2008 - bwalle@suse.de
+
+- Add suse_update_desktop_file to fix build on Factory
+
+-------------------------------------------------------------------
+Wed Jun 18 16:20:24 CEST 2008 - prusnak@suse.cz
+
+- updated to 0.4.0
+  * Priority setting
+  * 64bit archs fix
+  * Update strings
+- dropped obsoleted patch: signal.diff
+
+-------------------------------------------------------------------
+Tue Dec  4 12:06:15 CET 2007 - prusnak@suse.cz
+
+- use %find_lang macro
+- do not package INSTALL file
+- replace startup-notification with startup-notification-devel
+
+-------------------------------------------------------------------
+Sat Jun 23 17:17:11 CEST 2007 - bwalle@suse.de
+
+- replaced group 'System/GUI/Other' by 'System/GUI/Xfce'
+
+-------------------------------------------------------------------
+Tue May 22 11:51:42 CEST 2007 - prusnak@suse.cz
+
+- sync with BuildService
+
+-------------------------------------------------------------------
+Thu Mar  8 11:15:30 CET 2007 - prusnak@suse.cz
+
+- added norootforbuild
+
+-------------------------------------------------------------------
+Tue Feb 13 11:26:28 CET 2007 - prusnak@suse.cz
+
+- fixed comparison of a char* pointer with a string literal (signal.diff)
+
+-------------------------------------------------------------------
+Mon Jan 29 10:07:42 CET 2007 - pnemec@suse.cz
+
+- package merged from BuildService at version 0.4.0
+
+-------------------------------------------------------------------
+Wed Aug 23 00:00:00 CET 2006 - bernhard.walle@gmx.de
+
+- initial package
+

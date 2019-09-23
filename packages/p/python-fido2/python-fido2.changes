@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Mon Jun 17 15:26:45 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+* Version 0.7.0 (released 2019-06-17)
+  * Add support for NFC devices using PCSC.
+  * Add support for the hmac-secret Authenticator extension.
+  * Honor max credential ID length and number of credentials to Authenticator.
+  * Add close() method to CTAP devices to explicitly release their resources.
+
+-------------------------------------------------------------------
+Fri May 10 19:45:22 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- Version 0.6.0 (released 2019-05-10)
+  * Don't fail if CTAP2 Info contains unknown fields.
+  * Replace cbor loads/dumps functions with encode/decode/decode_from.
+  * Server: Add support for AuthenticatorAttachment.
+  * Server: Add support for more key algorithms.
+  * Client: Expose CTAP2 Info object as Fido2Client.info. 
+- Changed source URL to official release tarball
+- Verifying signature of release tarball
+
+-------------------------------------------------------------------
+Fri Dec 21 14:05:31 UTC 2018 - Karol Babioch <kbabioch@suse.de>
+
+- Version 0.5.0 (released 2018-12-21)
+  * Changes to server classes, some backwards breaking.
+  * Add ability to authenticate U2F credentials by using the appid extension.
+  * Make verification of attestation more explicit.
+  * Add support for Android SafetyNet attestation.
+  * Make it easier to work with U2F/CTAP1 data formats.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:58 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Sep 27 19:12:54 UTC 2018 - Karol Babioch <kbabioch@suse.com>
+
+- Version 0.4.0 (released 2018-09-27)
+  - Add classes for implementing a server.
+  - Various small changes, some affecting backwards compatibility.
+
+-------------------------------------------------------------------
+Sat Apr 21 20:45:38 UTC 2018 - jengelh@inai.de
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Tue Apr 17 09:57:23 UTC 2018 - kbabioch@suse.com
+
+- Initial packaging of version 0.3.0 

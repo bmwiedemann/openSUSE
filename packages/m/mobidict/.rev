@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>88cc388cec9eea912b354dff99cd9822</srcmd5>
+    <version>1.0</version>
+    <time>1511346089</time>
+    <user>dimstar_suse</user>
+    <comment>My hackweek0x10 project, a dictonary viewer for Kindle dictionaries. Please accept :-)</comment>
+    <requestid>542709</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5c2c3ad825f2a8f74b7b6d818c02ecd2</srcmd5>
+    <version>1.0</version>
+    <time>1511426641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544377</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c506776ed6958943433850c5fc91875e</srcmd5>
+    <version>1.1</version>
+    <time>1528111383</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1
+  * Remove a hack used for broken mobi files
+  * Update libmobi for better compatibility</comment>
+    <requestid>613945</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>091e4cd2924a363da3aff9db6868ba49</srcmd5>
+    <version>1.2</version>
+    <time>1530866926</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2
+  * Fixes CVE-2018-11724, CVE-2018-11725 and CVE-2018-11726</comment>
+    <requestid>621131</requestid>
+  </revision>
+</revisionlist>

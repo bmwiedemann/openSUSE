@@ -1,0 +1,70 @@
+https://github.com/PerlGameDev/Alien-SDL/pull/6
+https://rt.cpan.org/Public/Bug/Display.html?id=119888
+
+
+From 573a2c6971d78a751238a1b408d588769e6710d6 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Mon, 18 Sep 2017 10:36:16 +0200
+Subject: [PATCH 1/2] Sort hash keys
+
+When building packages (e.g. for openSUSE Linux) in disposable VMs
+every build gave a different result.
+This patch fixes this by sorting hash keys
+
+See https://reproducible-builds.org/ for why this matters.
+
+was also filed at
+https://rt.cpan.org/Public/Bug/Display.html?id=119888
+---
+ inc/My/Builder/Unix.pm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/inc/My/Builder/Unix.pm b/inc/My/Builder/Unix.pm
+index 15291d5..ad3e600 100644
+--- a/inc/My/Builder/Unix.pm
++++ b/inc/My/Builder/Unix.pm
+@@ -18,7 +18,7 @@ sub get_additional_cflags {
+   my $self = shift;
+   my @list = ();
+   ### any platform specific -L/path/to/libs shoud go here
+-  for (keys %$inc_lib_candidates) {
++  for (sort keys %$inc_lib_candidates) {
+     push @list, "-I$_" if (-d $_);
+   }
+   return join(' ', @list);
+@@ -36,7 +36,7 @@ sub get_additional_libs {
+       $rv{"-Wl,-rpath,$ld"} = 1 if $^O =~ /^linux|dragonfly|.+bsd$/;
+     }
+   }
+-  push @list, (keys %rv);
++  push @list, sort (keys %rv);
+   if ($^O eq 'openbsd') {
+     my $osver = `uname -r 2>/dev/null`;
+     if ($self->notes('perl_libs')->{pthread} || ($osver && $osver < 5.0)) {
+
+From 088244849360b485c56268d2e497563d52868fb0 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Wed, 19 Jun 2019 14:39:41 +0200
+Subject: [PATCH 2/2] Sort find_file file list
+
+so that ConfigData.pm ld_shared_libs builds in a reproducible way
+in spite of indeterministic filesystem readdir order.
+
+See https://reproducible-builds.org/ for why this is good.
+---
+ inc/My/Utility.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/inc/My/Utility.pm b/inc/My/Utility.pm
+index 6d10d6d..328567f 100644
+--- a/inc/My/Utility.pm
++++ b/inc/My/Utility.pm
+@@ -477,7 +477,7 @@ sub find_file {
+     no warnings;
+     find({ wanted => sub { push @files, rel2abs($_) if /$re/ }, follow => 1, no_chdir => 1 , follow_skip => 2}, $dir);
+   };
+-  return @files;
++  return sort @files;
+ }
+ 
+ sub find_SDL_dir {

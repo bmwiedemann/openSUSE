@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>709fcd58415526787841409b4cfe1842</srcmd5>
+    <version>1.3</version>
+    <time>1306766332</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>67298</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7761bb30b1d3bef6d9850ce376f1427b</srcmd5>
+    <version>1.3</version>
+    <time>1306766341</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67298
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>054fdc4bea8b7993d210c4ec30e66022</srcmd5>
+    <version>1.4.2</version>
+    <time>1317024879</time>
+    <user>saschpe</user>
+    <comment>- BuildRequire python-docutils instead of old docutils
+
+- Update to version 1.4.0:
+  * No changes provided by upstream
+- Spec file cleanup:
+  * Proper suse version checks
+  * Removed old stuff (%clean section)
+  * Corrected docs install location, generate HTML docs
+  * Obsolete doc package, ship in base package
+  * Fix non-executable bit rpmlint warning</comment>
+    <requestid>84429</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>054fdc4bea8b7993d210c4ec30e66022</srcmd5>
+    <version>1.4.2</version>
+    <time>1319182390</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>e7a4bc727a7ed9a098ad07b9f56b422a</srcmd5>
+    <version>1.4.2</version>
+    <time>1326988605</time>
+    <user>coolo</user>
+    <comment>patching license field to be in spdx.org format, for legal team to review before forward (forwarded request 100001 from coolo)</comment>
+    <requestid>100015</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>e7a4bc727a7ed9a098ad07b9f56b422a</srcmd5>
+    <version>1.4.2</version>
+    <time>1340184053</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>e7a4bc727a7ed9a098ad07b9f56b422a</srcmd5>
+    <version>1.4.2</version>
+    <time>1359110031</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>b47291d8d8eec902ed78182a956535e5</srcmd5>
+    <version>1.4.2</version>
+    <time>1379427533</time>
+    <user>coolo</user>
+    <comment>- don't use distribute bootstrapping code as it attempt to download files 
+  * flickrapi-drop-bootstrap-distribute.patch (forwarded request 199200 from mvyskocil)</comment>
+    <requestid>199385</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>b47291d8d8eec902ed78182a956535e5</srcmd5>
+    <version>1.4.2</version>
+    <time>1379664179</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>b47291d8d8eec902ed78182a956535e5</srcmd5>
+    <version>1.4.2</version>
+    <time>1409302872</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1234861252fdb5c68d58e3e6f59dbff3</srcmd5>
+    <version>2.3</version>
+    <time>1495034339</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3:
+  - Removed flickrapi/contrib.py, as a persistent connection is now managed (much better)
+  - Added explicit support for Python 3.5.
+  - Moved from a Mercurial repository at BitBucket to a [Git repository
+    at GitHub](https://github.com/sybrenstuvel/flickrapi/).
+  - Mocking some calls to Flickr, so that unit tests can run without
+    requiring the user to authenticate via the browser. This also
+    prevents the upload of the test photo.
+  - More serious testing, using py.test and Tox to test on all support
+    versions of Python.
+  - Automated builds are performed with Travis-CI.
+  - Make flickrapi token storage directory configurable.
+    [[ Feature request #68 ]](https://github.com/sybrenstuvel/flickrapi/issues/68)
+  - Put requests in a session to benefit from connection reuse (Alexandre L).
+  - When uploading a photo, send the title as UTF8
+  - Sort many photosets with 'flickr.photosets.orderSets' failed
+    [[ Bug report #74]](https://github.com/sybrenstuvel/flickrapi/issues/74)
+  - Converted requested_permissions to unicode and ported authentication
+    example to Python 3 (Michael Klich).
+
+- update to version 2.0:
+  * Major revision; now uses OAuth to interface with Flickr.
+    Combines work of Sybren A. Stüvel, Jim Easterbrook,
+    Thai Nguyen, Nick Loadholtes and Bengt.
+- drop flickrapi-drop-bootstrap-distribute.patch: fixed upstream
+- point the source URL to pypi
+- remove unneeded depedencies to python-docutils, python-xml
+  and unzip
+- add new dependencies required by upstream:
+  * python-requests</comment>
+    <requestid>495528</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ecb8d3e7a385468bb84cb0a535d24b9e</srcmd5>
+    <version>2.4.0</version>
+    <time>1544189725</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 2.4.0:
+  * Fix parameter naming conflict: 'method_name' parameter from do_flickr_call() clashed with 'method_name' parameter required by the Flickr API method flickr.reflection.getMethodInfo (since 952c133
+  * Fixed typos [ Pull request #86 ] (Daniel Hohard)
+  * Fixed infinite recursion calling FlickrAccessToken.str()
+  * Use latest pip and enable cache on travis [ Pull request #100 ] (Thijs Triemstra)
+  * Properly include text files in setup.py [ Pull request #101 ] (Thijs Triemstra)
+- Fix fdupes call</comment>
+    <requestid>655676</requestid>
+  </revision>
+</revisionlist>

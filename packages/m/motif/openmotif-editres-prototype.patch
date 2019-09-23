@@ -1,0 +1,13 @@
+Index: b/lib/Xm/EditresCom.c
+===================================================================
+--- a/lib/Xm/EditresCom.c
++++ b/lib/Xm/EditresCom.c
+@@ -1788,7 +1788,7 @@ Widget w;
+ void
+ _XEditResPutString8(stream, str)
+ ProtocolStream * stream;
+-char * str;
++_Xconst char * str;
+ {
+     int i, len = strlen(str);
+ 

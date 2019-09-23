@@ -1,0 +1,49 @@
+From 136aa0ecf5f2cc27553b468188b68a0e08930bb9 Mon Sep 17 00:00:00 2001
+From: David Disseldorp <ddiss@suse.de>
+Date: Sun, 2 Feb 2014 17:06:08 +0100
+Subject: [PATCH 09/12] build: specify systemd services file on Linux
+
+Allow for the specification of a systemd services path at configure time
+via the new --with-unitdir=PATH option. When specified, the systemd
+services file will be generated and installed under PATH.
+---
+ configure.in | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
+
+diff --git configure.in configure.in
+index 52e0af9..c960984 100644
+--- configure.in
++++ configure.in
+@@ -18,6 +18,13 @@ if test "$CC" = "clang" && test "$ac_test_CFLAGS" != "set"; then
+   CFLAGS="-g -O3"
+ fi
+ 
++# systemd unit directory
++AC_ARG_WITH([unitdir],
++	    [AS_HELP_STRING([--with-unitdir=UNITDIR_PATH],
++	    [Generate and install a systemd services file in provided dir])],
++	    [],
++	    [with_unitdir=no])
++
+ # host OS related
+ vboxinc="/usr/local/src/virtualbox/*/include"
+ vboxlib="/usr/local/lib/virtualbox"
+@@ -31,8 +38,13 @@ case "$host_os" in
+ 	    vboxinc=$tmp
+ 	fi
+ 	vboxlib="/usr/lib/virtualbox"
+-	AC_SUBST([rctemplate], ["istgt_linux.sh.in"])
+-	AC_SUBST([rcdir], ['/etc/init.d'])
++	if test "x$with_unitdir" != xno -a -d "$with_unitdir"; then
++		AC_SUBST([rctemplate], ["istgt.service.in"])
++		AC_SUBST([rcdir], [$with_unitdir])
++	else
++		AC_SUBST([rctemplate], ["istgt_linux.sh.in"])
++		AC_SUBST([rcdir], ['/etc/init.d'])
++	fi
+ 	AC_DEFINE([_GNU_SOURCE], 1, [Define if linux host])
+ 	;;
+ *netbsd*)
+-- 
+2.1.2
+

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4b9dd0d421e4e371a313a49a441e6185</srcmd5>
+    <version>0.0.0+git20150520.e6ac2fc</version>
+    <time>1437724702</time>
+    <user>coolo</user>
+    <comment>follow the new naming scheme for golang packages</comment>
+    <requestid>317336</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dda9b2b02cb28f2ce4d24d02cd269047</srcmd5>
+    <version>0.0.0+git20150520.e6ac2fc</version>
+    <time>1459936315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>383607</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f6a528b3b7b2687c8f573871fe4070b5</srcmd5>
+    <version>0.0.0+git20160823.cfb55aa</version>
+    <time>1490318148</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>477175</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="perl-Expect" project="openSUSE:Factory">
+  <title>Expect for perl</title>
+  <description>A tool for automating interactive programs</description>
+  <devel project="devel:languages:perl" package="perl-Expect"/>
+</package>

@@ -1,0 +1,38 @@
+Index: src/Imakefile
+===================================================================
+--- src/Imakefile.orig
++++ src/Imakefile
+@@ -189,7 +189,9 @@ LDLIBS = -lm -lXi $(XLIB) $(EXTRA_LIBRAR
+ #    with #define
+ #
+ 
+-#ifdef HPArchitecture
++CCOPTIONS = $(RPM_OPT_FLAGS)
++
++#if defined(HPArchitecture) && !defined(LinuxArchitecture)
+ CCOPTIONS = -Ae
+ CDEBUGFLAGS = +O2 +Onolimit
+ 
+@@ -220,8 +222,6 @@ GUIOPTION = -DXFORMSLIB -I/sw/include
+ ComplexProgramTarget(rasmol)
+ MakeDirectories(install,$(RASMOLDIR))
+ InstallNonExec(../doc/rasmol.hlp,$(RASMOLDIR))
+-InstallNonExec(../data/1crn.pdb,$(RASMOLDIR))
+-InstallNonExec(../data/3cro.pdb,$(RASMOLDIR))
+ 
+ cleandir:: 
+ 	   $(RM) gtkui.h rasmol.man
+Index: src/cif_ctonum.c
+===================================================================
+--- src/cif_ctonum.c.orig
++++ src/cif_ctonum.c
+@@ -189,7 +189,9 @@
+ extern "C" {
+ #endif
+ 
++#ifndef _USE_RASMOL_H_
+ #define _USE_RASMOL_H_
++#endif
+ #ifdef _USE_RASMOL_H_
+ #include "rasmol.h"
+ #else

@@ -1,0 +1,16 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://code.alephobjects.com/diffusion/U/uranium.git</param>
+    <param name="scm">git</param>
+    <param name="filename">Uranium</param>
+    <param name="revision">v3.6.18</param>
+    <param name="version">3.6.18</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

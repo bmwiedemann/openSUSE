@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Mon Jun 13 12:27:25 UTC 2016 - normand@linux.vnet.ibm.com
+
+- Update to version 1.2.1+git20150311.f7bdc5c:
+  + Replace pickle with json.
+  + Resolves a couple of issues building the powerpc-utils-python
+  + Add Vendor tag to spec file
+  + amsvis cmd will fail if vio devices have addresses greater...
+- Add new _service file with tar_scm service
+
+-------------------------------------------------------------------
+Tue Dec 10 20:57:15 UTC 2013 - dvaleev@suse.com
+
+- enable ppc64le
+
+-------------------------------------------------------------------
+Tue Dec 18 18:23:32 UTC 2012 - dvaleev@suse.com
+
+- initial package

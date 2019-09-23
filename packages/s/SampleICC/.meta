@@ -1,0 +1,7 @@
+<package name="SampleICC" project="openSUSE:Factory">
+  <title>SampleICC</title>
+  <description>This package is based on the package 'sampleicc' from project 'home:bekun'.
+
+SampleICC provides an open source platform independent C++ library for reading, writing, manipulating, and applying ICC profiles along with applications that make use of this library.</description>
+  <devel project="multimedia:color_management" package="SampleICC"/>
+</package>

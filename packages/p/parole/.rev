@@ -1,0 +1,360 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eb96539c6fcfc63c849b94847ee792fa</srcmd5>
+    <version>0.2.0.2</version>
+    <time>1291808788</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54797 from user coolo
+</comment>
+    <requestid>54797</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dac2ac36fe401f5a4dd9e033b31e511c</srcmd5>
+    <version>0.2.0.2</version>
+    <time>1291808793</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54797
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1009047b0377e5b9b0aaec65482a75a1</srcmd5>
+    <version>0.2.0.2</version>
+    <time>1294668943</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57384 from user gberh
+</comment>
+    <requestid>57384</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c62e7ccfacc3078c07629255055ca480</srcmd5>
+    <version>0.2.0.2</version>
+    <time>1294668951</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57384
+</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>6c480d70d9db37c03168260e394fd693</srcmd5>
+    <version>0.2.0.2</version>
+    <time>1296808779</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 59996 from user gberh
+</comment>
+    <requestid>59996</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>555c53adca3535e17ef44800c3cc8062</srcmd5>
+    <version>0.2.0.2</version>
+    <time>1296808789</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 59996
+</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>555c53adca3535e17ef44800c3cc8062</srcmd5>
+    <version>0.2.0.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>e40a33a2670a51eaf0f5f33839b57fd4</srcmd5>
+    <version>0.2.0.2</version>
+    <time>1298032053</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61698 from user gberh
+</comment>
+    <requestid>61698</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>87eb86ff5ad1fdefde0f5a07480b5c0c</srcmd5>
+    <version>0.2.0.2</version>
+    <time>1298032069</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61698
+</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>81524041d4b3a930d3bf6ca5bac15110</srcmd5>
+    <version>0.2.0.5</version>
+    <time>1303197850</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67739 from user coolo
+</comment>
+    <requestid>67739</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>77296ea634d954a803d26544745e0e0f</srcmd5>
+    <version>0.2.0.5</version>
+    <time>1303197865</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67739
+</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1899787172bcb5cc07facea11e8f1c09</srcmd5>
+    <version>0.2.0.6</version>
+    <time>1315233784</time>
+    <user>lrupp</user>
+    <comment>- update to version 0.2.0.6
+  - automatically select row for the media that is currently played
+- added parole-fix-linking.patch in oder to fix an underlinking
+  issue
+- removed obsolete parole-0.2.0.5-missing-files.patch</comment>
+    <requestid>80733</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>1899787172bcb5cc07facea11e8f1c09</srcmd5>
+    <version>0.2.0.6</version>
+    <time>1319182229</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>ec4a4246516a6fdbca049086e0be17ce</srcmd5>
+    <version>0.2.0.6</version>
+    <time>1323192958</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>cb88dd0803fb0e1d047e35d7812a8eb6</srcmd5>
+    <version>0.2.0.6</version>
+    <time>1334759391</time>
+    <user>coolo</user>
+    <comment>- specfile cleanup
+- corrected dependencies
+- merged parole-0.2.0.2-fix-lib-linking-order.patch into
+  parole-fix-linking.patch</comment>
+    <requestid>112506</requestid>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>cb88dd0803fb0e1d047e35d7812a8eb6</srcmd5>
+    <version>0.2.0.6</version>
+    <time>1340183778</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9d539dade8e02d77c29d0291376b1d66</srcmd5>
+    <version>0.3.0.3</version>
+    <time>1345639066</time>
+    <user>namtrac</user>
+    <comment>- update to version 0.3.0.3
+  - fixed and fully tested --enable-gtk-doc, --enable-debug=yes,
+    --enable-debug=full
+  - fixed CD-Drive icon disappearing after drive eject
+  - small interface tweaks to Plugins dialog
+
+- update to version 0.3.0.2
+  - maintenance release
+  - updated build requirements
+  - fixed installation directory for plugins
+  - fixed compilation of plugin api
+  - fixed compilation of debug=yes and debug=full
+  - fixed compiling twice
+- dropped obsolete parole-fix-plugin-installation.patch and
+  parole-misc-fixes.patch
+
+- added parole-misc-fixes.patch with a range of fixes for missing
+  includes and prototypes, return statements, removal of unused
+  code and variables (backported from upstream git)
+
+- update to version 0.3.0
+  - replaced libxfce4gui dependencies with libxfce4ui
+  - upgraded GTK interface to GTK 2.20+
+  - revamped, minimalistic interface
+  - replaced playbin with playbin2
+  - improved subtitle/audio track handling
+  - improved keyboard shortcuts
+  - updated application icon
+  - added command line option to enqueue files
+  - cleared warnings due to deprecated functions</comment>
+    <requestid>131343</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9d50f2b404c5ca5d7c53b5c1c0cd27e4</srcmd5>
+    <version>0.4.0</version>
+    <time>1358412823</time>
+    <user>coolo</user>
+    <comment>- update to version 0.4.0
+  - fixed fullscreen controls
+  - fixed screensaver inhibition
+  - fixed freezing with subtitles
+  - fixed skipping every second ogg-vorbis in playlist
+  - added embedded mode
+  - added missing codec installation
+  - added custom subtitle management
+  - added CD and DVD playlist support
+  - added DVD navigation support
+  - added Recent Items in open menu
+  - replaced Stream Properties plugin with AudioBox widget
+  - moved notifications from system tray plugin to notify plugin
+  - added album artwork and details to notifications
+  - ported configuration to Xfconf
+  - interface refinements
+  - keyboard shortcut refinements</comment>
+    <requestid>148620</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>9d50f2b404c5ca5d7c53b5c1c0cd27e4</srcmd5>
+    <version>0.4.0</version>
+    <time>1359109576</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f20db866cc1ddf5a8d1dfc6e9e6d5a06</srcmd5>
+    <version>0.5.0</version>
+    <time>1362731693</time>
+    <user>coolo</user>
+    <comment>- update to version 0.5.0
+  - fixed potential file name clash in parole extension
+  - fixed libnotify error on make
+  - fixed moving show/hide playlist button
+  - fixed mute button toggling
+  - fixed playlist manipulation while playlist hidden
+  - fixed webm file support
+  - fixed aspect ratio calculation
+  - fixed untranslateable strings
+  - fixed timer update on user seek
+  - fixed auto-saved playlist saving as UTF-8
+  - fixed playlist menu from opening off-screen
+  - fixed notifications plugin notifying on play/pause
+  - added improved locale name support in audio tracks and
+    subtitles
+  - added gstreamer 1.0 support with --with-gstreamer=0.10|1.0
+  - added additional tooltips
+  - added theming to fullscreen widgets
+  - removed now-useless power-manager plugin
+  - removed scrollwheel event from progress scale
+  - improved audio cover image loading
+  - improved support for window manager fullscreen command
+  - improved tray plugin functionality, ported to xfconf
+  - made codec installer transient for player window
+  - moved playlist to .local/share/xfce4/parole</comment>
+    <requestid>157624</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fa36bf36f8e3e85a2e96f11364989a6f</srcmd5>
+    <version>0.5.1</version>
+    <time>1370430409</time>
+    <user>coolo</user>
+    <comment>- update to version 0.5.1
+  - fix m3u playlist processing with relative filenames
+  - fix playlist controls disabling access to media controls
+  - fix next-button ignoring shuffle mode
+  - prevent shuffle from playing the same song twice in a row
+  - fix MKV subtitles being shown when automatically show subtitles
+    is disabled</comment>
+    <requestid>177311</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f6f9d5d78288aae8e462c19009594b0e</srcmd5>
+    <version>0.5.2</version>
+    <time>1374932966</time>
+    <user>coolo</user>
+    <comment>- update to version 0.5.2
+  - revert &quot;Fix MKV subtitles being shown when automatically show
+    subtitles is disabled&quot;
+  - fix freezing on load of some subtitles
+  - fix crash on startup when &quot;Remember playlist&quot; option enabled
+  - fix muting after playing media
+  - fix failure to load filenames with space after colon
+  - fix gstreamer version check</comment>
+    <requestid>184341</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>f6f9d5d78288aae8e462c19009594b0e</srcmd5>
+    <version>0.5.2</version>
+    <time>1379663509</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f227697720a5fbb9c59ba4e22ca75008</srcmd5>
+    <version>0.5.3</version>
+    <time>1382430060</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 0.5.3. (forwarded request 204218 from Lazy_Kent)</comment>
+    <requestid>204233</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8f04f0185850acd43aca31a27fb9d0d3</srcmd5>
+    <version>0.5.4</version>
+    <time>1386604570</time>
+    <user>coolo</user>
+    <comment>update to 0.5.4</comment>
+    <requestid>209755</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>8f04f0185850acd43aca31a27fb9d0d3</srcmd5>
+    <version>0.5.4</version>
+    <time>1409302118</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3147457e11205b73b714f17ef7cdf1d1</srcmd5>
+    <version>0.8.0</version>
+    <time>1425892020</time>
+    <user>dimstar_suse</user>
+    <comment>Xfce 4.12</comment>
+    <requestid>289377</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>341b65adf3391cb68f9d6cfe1116c649</srcmd5>
+    <version>0.8.1</version>
+    <time>1506524086</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528206</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0195c19998266708a0401344e065a40b</srcmd5>
+    <version>0.9.2</version>
+    <time>1513245497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555979</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3fb2b2ccfdd290e3d12caa7eab49b226</srcmd5>
+    <version>1.0.0</version>
+    <time>1522062817</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 1.0.0: First stable release of the 1.0.x series (forwarded request 590822 from seife)</comment>
+    <requestid>590823</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>d814d599937495cb9479379fca0b5d85</srcmd5>
+    <version>1.0.0</version>
+    <time>1522225879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591068</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>cb08ecde64a59902380500457d53156d</srcmd5>
+    <version>1.0.1</version>
+    <time>1529066740</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615821</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>4b0eb5f3087f2b5cf95ef02611763df9</srcmd5>
+    <version>1.0.2</version>
+    <time>1554833963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692588</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>276e6d85086f6f4af837c408c2d08e75</srcmd5>
+    <version>1.0.3</version>
+    <time>1564576200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719846</requestid>
+  </revision>
+</revisionlist>

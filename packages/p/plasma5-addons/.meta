@@ -1,0 +1,5 @@
+<package name="plasma5-addons" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="plasma5-addons"/>
+</package>

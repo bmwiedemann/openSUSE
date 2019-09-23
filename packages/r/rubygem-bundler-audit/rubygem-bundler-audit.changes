@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Sat Mar  2 15:07:09 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.6.1
+ see installed ChangeLog.md
+
+  ### 0.6.1 / 2019-01-17
+  
+  * Require bundler `>= 1.2.0, < 3` to support [bundler] 2.0.
+
+-------------------------------------------------------------------
+Thu Aug  3 19:06:21 UTC 2017 - coolo@suse.com
+
+- updated to version 0.6.0
+ see installed ChangeLog.md
+
+-------------------------------------------------------------------
+Mon Feb 29 05:32:46 UTC 2016 - coolo@suse.com
+
+- updated to version 0.5.0
+ see installed ChangeLog.md
+
+  ### 0.5.0 / 2015-02-28
+  
+  * Added {Bundler::Audit::Task}.
+  * Added {Bundler::Audit::Advisory#date}.
+  * Added {Bundler::Audit::Advisory#cve_id}.
+  * Added {Bundler::Audit::Advisory#osvdb_id}.
+  * Allow insecure gem sources (`http://` and `git://`), if they are hosted on a
+    private network.
+  
+  #### CLI
+  
+  * Added the `--update` option to `bundle-audit check`.
+  * `bundle-audit update` now returns a non-zero exit status on error.
+  * `bundle-audit update` only updates `~/.local/share/ruby-advisory-db`, if it is a git
+    repository.
+
+-------------------------------------------------------------------
+Thu Aug 20 12:38:14 UTC 2015 - astieger@suse.com
+
+- update to 0.4.0:
+  * Require ruby >= 1.9.3 due to i18n gem deprecating < 1.9.3.
+  * Added {Bundler::Audit::Advisory#osvdb}.
+  * Resolve the IP addresses of gem sources and ignore intranet
+    gem sources.
+  * Use ISO8601 date format when querying the git timestamp of
+    ruby-advisory-db.
+  * Print the CVE or OSVDB id.
+  * No longer print "Unpatched versions found!" when an insecure
+    gem source is detected.
+
+-------------------------------------------------------------------
+Mon Jun 29 10:24:00 UTC 2015 - coolo@suse.com
+
+- adapt to proper gem packaging
+
+-------------------------------------------------------------------
+Tue May 19 09:46:29 UTC 2015 - astieger@suse.com
+
+- initial package
+

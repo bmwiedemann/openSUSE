@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6c53c68bf205b3d314860b76662ca9d3</srcmd5>
+    <version>1.5.0</version>
+    <time>1322501223</time>
+    <user>coolo</user>
+    <comment>Dependency for OpenStack packages.</comment>
+    <requestid>93443</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>300943c57ef5b58f24e2846904b016a4</srcmd5>
+    <version>1.5.0</version>
+    <time>1323194217</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>44cb4c32b945648cbcf7fc7d3429de13</srcmd5>
+    <version>1.5.0</version>
+    <time>1338284717</time>
+    <user>coolo</user>
+    <comment>python3 package added, not sure if it could be usefull without python3-Paste, but it builds and imports. python-Paste seems not to be ready for python3 atm (forwarded request 122530 from HighwayStar)</comment>
+    <requestid>122537</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>44cb4c32b945648cbcf7fc7d3429de13</srcmd5>
+    <version>1.5.0</version>
+    <time>1340184031</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>81b325dbf7460aca3110c378ad682a3f</srcmd5>
+    <version>1.5.0</version>
+    <time>1347347830</time>
+    <user>coolo</user>
+    <comment>Restore BuildRequires: python3  This package depends on hash algorithms that are only available if python3 is installed, python3-devel will not pull them in.  Building will fail if  BuildRequires: python3 is removed. (forwarded request 132958 from TheBlackCat)</comment>
+    <requestid>132959</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>6b45ff244ef3551664b6abd92a01af7d</srcmd5>
+    <version>1.5.0</version>
+    <time>1353601332</time>
+    <user>coolo</user>
+    <comment>Remove openSUSE 11.4 spec file workarounds (forwarded request 142398 from TheBlackCat) (forwarded request 142399 from TheBlackCat)</comment>
+    <requestid>142400</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>6b45ff244ef3551664b6abd92a01af7d</srcmd5>
+    <version>1.5.0</version>
+    <time>1359109981</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>c824df183102f3c49c7b2d11eef6a6e5</srcmd5>
+    <version>1.5.0</version>
+    <time>1371654236</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179698</requestid>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>c824df183102f3c49c7b2d11eef6a6e5</srcmd5>
+    <version>1.5.0</version>
+    <time>1379664110</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>fbea84cd8a0d6d1adc27c280521feaab</srcmd5>
+    <version>1.5.0</version>
+    <time>1382693120</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204612</requestid>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>fbea84cd8a0d6d1adc27c280521feaab</srcmd5>
+    <version>1.5.0</version>
+    <time>1409302797</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a7bed15a25a395e26f3f3e941f97c0cf</srcmd5>
+    <version>1.5.2</version>
+    <time>1423596193</time>
+    <user>dimstar_suse</user>
+    <comment>Update</comment>
+    <requestid>284876</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>7ae63f791c74626cf9116869f7e9ba26</srcmd5>
+    <version>1.5.2</version>
+    <time>1493819724</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489510</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>6b11a9e1e3198875b7a14d04aee28a9a</srcmd5>
+    <version>1.5.2</version>
+    <time>1494088289</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493140</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a568171630676f739ce187bb64895246</srcmd5>
+    <version>2.0.1</version>
+    <time>1545224038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659630</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ee2e17e3b094ba79fbca4dadd126632b</srcmd5>
+    <version>2.0.1</version>
+    <time>1552039255</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to github tarball to run tests</comment>
+    <requestid>681894</requestid>
+  </revision>
+</revisionlist>

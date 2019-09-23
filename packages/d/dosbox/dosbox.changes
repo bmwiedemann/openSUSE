@@ -1,0 +1,379 @@
+-------------------------------------------------------------------
+Thu Jun 27 13:22:47 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.74-3 (boo#1140254)
+ * Some fixes to the OpenGL rendering.
+ * Several other fixes for out of bounds access and buffer overflows.
+ * Fixed that a very long line inside a bat file would overflow
+    the parsing buffer. CVE-2019-7165
+ * Added a basic permission system so that a program running inside DOSBox
+    can't access the contents of /proc (e.g. /proc/self/mem) when / or /proc
+    were (to be) mounted. CVE-2019-12594
+
+-------------------------------------------------------------------
+Tue Sep 18 06:48:29 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Set CFLAGS with export so as to override the implicit
+  export of %configure. Use %make_install.
+
+-------------------------------------------------------------------
+Fri Sep 14 12:49:59 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
+
+- Run spec-cleaner
+- Drop support for SLE10
+- Add GPL-3.0 as license too due to src/libs/gui_tk/gui_tk.*
+
+-------------------------------------------------------------------
+Mon Sep 10 12:05:49 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use simpler Sourceforge download URLs
+
+-------------------------------------------------------------------
+Fri Sep  7 07:12:28 UTC 2018 - meissner@suse.com
+
+- updated to 0.74-2
+  - Windows: Fix auto/max cycles algorithm on Windows 7, which helps with stuttering audio.
+  - Mac OS X: Bring a 64 bit version and improve performance.
+  - Linux: Fix the 64bit dynrec cpu core and a lot of compilation problems. Add patches for the WINE Team.
+- dosbox-0.74-init-crash.patch: solved differently upstream
+- dosbox-0.74-formatsecurity.patch: is upstream
+- 0001-Apply-patch-by-gulikoza-to-add-support-for-absolute-.patch: upstream
+- 0001-Workaround-clang-confusing-itself-compile-error-resu.patch: upstream
+- 0001-update-64bit-recompiler-core-to-handle-OSX-memory-ad.patch: upstream
+- gcc46.patch: upstream
+
+-------------------------------------------------------------------
+Mon Aug 28 12:26:06 UTC 2017 - lnussel@suse.de
+
+- Fix desktop file category to sort below Game (boo#1055340)
+- directly use desktop-file-install instead of the old macro
+
+-------------------------------------------------------------------
+Mon Feb 13 12:13:08 UTC 2017 - lnussel@suse.de
+
+- add patches from Fedora
+  * 0001-Apply-patch-by-gulikoza-to-add-support-for-absolute-.patch
+  * 0001-update-64bit-recompiler-core-to-handle-OSX-memory-ad.patch
+  * 0001-Workaround-clang-confusing-itself-compile-error-resu.patch
+  * dosbox-0.74-formatsecurity.patch
+  * dosbox-0.74-init-crash.patch
+
+-------------------------------------------------------------------
+Tue Dec 17 16:59:02 UTC 2013 - martin.jakl@qbicon.cz
+
+- added missing alsa dependency for midi support (bnc#855514)
+
+-------------------------------------------------------------------
+Mon Oct  8 15:32:42 UTC 2012 - matthias@mailaender.name
+
+- improved dosbox icon, from wikipedia entry.
+- use pkgconfig(sdl) instead of SDL-devel buildrequires
+
+-------------------------------------------------------------------
+Fri Sep 21 08:22:01 UTC 2012 - idonmez@suse.com
+
+- Add explicit glu dependency
+
+-------------------------------------------------------------------
+Fri Dec  2 07:48:44 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Mar 16 08:50:16 UTC 2011 - ismail@namtrac.org
+
+- Fix compilation with gcc 4.6 
+
+-------------------------------------------------------------------
+Wed May 19 11:30:33 UTC 2010 - lnussel@suse.de
+
+- new version 0.74
+  * Several small game specific fixes/hacks/support. (Offensive, Roadhog, GTA
+    installer, Kingdom O' Magic soundcard detection, Pirate booter, Armored
+    Fist installer)
+  * Add the S3-specific 640x480 256 color mode. (fixes regression in "Wooden
+    Ships and Iron Men" and "I Have No Mouth And I Must Scream")
+  * Fix a stack overflow that could crash DOSBox.
+  * Add fake microphone input. (fixes Talking Parrot)
+  * Modify adlib turn off code, so that it doesn't turn off in cases where the
+    same sound is repeated over and over again.
+  * Several small fixes to the CDROM audio code.(HOMM2, Redneck Rampage and
+    others)
+  * Several improvements to the CDROM emulation code. (fixes Alpha Storm and GT
+    Racing 97)
+  * Some small CPU fixes that might fix something.
+  * Handle opcode 0xff subcode 7 as invalid instruction. (fixes dif-2 & others)
+  * Some hercules fixes. (Testdrive)
+  * Improve support for blanked parts that wrap around to the start of the
+    screen. (fixes Magic Circle demo and Sid&Al)
+  * Remove old OPL cores as the new ones seem to work very nicely.
+  * Modify movie recording code so that the movies aren't corrupt when you exit
+    dosbox without stopping the movie.
+  * Change RGB3x scaler to look more pretty.
+  * Improve initial register values compatility of the GUS.
+  * Added autodetection for Gameblaster. (games can find it now)
+  * Change render preferences a bit to be more compatible with Windows 7.
+  * Add DOS fixes to terminate program. (fixes Fortune Teller)
+  * Add FFREEP. (fixes Trucks)
+  * Improve FPU ST80 in C mode when writing zero. (fixes Antigok)
+  * Add special int10 scanline function. (fixes mz700 and probably lots of
+    games that mess with them)
+  * Fix scrolling in rarely used video modes. (fixes Orphee)
+  * Modify game specific hacks a bit so that Kick off 3 works again.
+  * Lots of fixes to the INT10 video parameter table. (Seven spirits of ra and
+    others)
+  * Add VGA blanking in machine=vgaonly. (used by Alien Carnage)
+  * CGA, PCJr, Tandy: Add video blanking, change display start latch timing,
+    sync pulse width correction.
+  * PCJr, Tandy: implement vertical retrace interrupt.
+  * PCJr, CGA: line-by-line video emulation.
+  * PCJr: support on-screen change of color modes 4medium to 16low. (used by
+    Ghostbusters booter)
+  * Hercules: Add green and amber monochrome support.
+  * All machines: only update the video timing when needed. (Jungle Hunt,
+    others that synchronize to the video screen might profit)
+  * Several small DOS fixes.
+  * Some UMB related fixes. (The Legacy without UMB)
+  * Fix version number of DSP for SB 1.5. (fixes a few games)
+  * Several VGA emulation improvements. (Allertone football manager)
+  * Some Tandy fixes. (Mech Warrior)
+  * Small improvements and fixes to the OPL emulation.
+  * Add low level Tandy DAC emulation.
+  * Some EMS fixes. (fixes Mortal Kombat and others)
+  * Change SoundBlaster DSP reset mechanism, add sb irq acknowledge logic.
+    (fixes stmik*based applications)
+  * Some interrupt pointer location modifications. (fixes Tinker Tales)
+  * Some fixes to the BOOT code. (fixes Last Mission)
+  * Respect write-only file information. (fixes Champions of Zulala)
+  * Some RTC fix. (fixes Tully Bodine and others)
+  * Improve mouse emulation to work better with Water World.
+  * Hopefully fix the translation of the configuration file.
+  * Speed up and fixes for the recompiler core. (pitfall2 pcjr)
+  * Change memory start location. (fixes 7th Guest installer)
+  * Several fixes to the batch file handling. (Shift and use the typed first %0
+    instead of the parsed %0)
+  * Improve file redirection and redirected line ends. (fixes Phantasmagoria 2
+    DOS installer)
+  * Fix compilation with new MAC os X version.
+  * Add 16C550A FIFO support to the serial port emulation.
+  * Improve modem emulation to get higher speeds.
+  * Change default samplerates to 44100, blocksize to 1024 and prebuffer to 20,
+    so that hopefully certain soundcards produce more fluent sound playback.
+  * Add some rarely used, but for some games critical flags to the internal
+    commands.
+  * Add -userconf flag, so that the userspecific configuration can easily be
+    used together with *conf configfile.
+  * Improve internal timing with repeating timers (especially with the dynamic
+    core).
+
+-------------------------------------------------------------------
+Thu May 28 10:23:56 CEST 2009 - lnussel@suse.de
+
+- new version 0.73
+  * Support for more graphics modes and cards.
+  * Improved Vista support.
+  * New OPL emulation cores.
+  * Sound fixes and improvements for Mac OS X.
+  * Lots of compatibility fixes.
+  * Lots of cdrom detection improvements.
+  * Lots of memory (EMS/XMS) improvements.
+  * Various fixes and enhancements for the recompiling core.
+  * Support for evdev.
+  * Lots of DOS fixes.
+  * Slightly faster!
+  * More stable.
+
+-------------------------------------------------------------------
+Tue Dec  4 17:09:18 CET 2007 - lnussel@suse.de
+
+- fix wrong use of strncat
+
+-------------------------------------------------------------------
+Mon Oct 15 13:37:05 CEST 2007 - lnussel@suse.de
+
+- fix build with gcc 4.3
+
+-------------------------------------------------------------------
+Tue Aug 28 14:58:11 CEST 2007 - lnussel@suse.de
+
+- new version 0.72
+  * Fixed unitialized variable in joystick. (Fixes crashes on Vista and
+    Mac OS X)
+  * Some bugfixes and speedups to the 64 bit recompiling core.
+  * Fixed sign flag on soundblaster dma transfers (Space Quest 6 intro)
+  * Fixed a bug in keyboard layout processing code and fixed certain
+    layouts.
+  * Fixed Dreamweb.
+  * Improved speed unlocking when running cycles=max.
+  * Fixed a crash related to the tab completion in the shell.
+  * Improved aspect correction code. Should now be like how a real monitor
+    handles it.
+  * Fixed a bug in the xms status report code. (Blake Stone 1.0 shareware)
+  * Added a lot more keyboard layouts.
+  * Fix crash related to changing the scaler before a screen was created.
+  * Hopefully fixed compilation on *bsd.
+  * Enabled auto cpu core selection for recompiling core as well.
+  * Made the used joystick selectable when 4axis is specified.
+  * Added some hints for inexperienced DOS users to the shell.
+
+-------------------------------------------------------------------
+Mon Jul 30 11:38:04 CEST 2007 - lnussel@suse.de
+
+- new version 0.71
+  * Added a new recompiling cpu core which is easier to port!
+  * Added a x86_64 and a mipsel_32 recompiling core.
+  * Fixed hangups on certain platforms after long gameplay of
+    several games.
+  * Fix several joystick bugs.
+  * Improved cdrom support. (fixes for audio, iso and detection.)
+  * Improved SVGA and VESA. (detection and display)
+  * Fixed a few textmodes and improved ansi emulation a bit.
+  * Fixed pcspeaker and certain types of soundeffects.
+  * Added undocumented mousebackdoor.
+  * Made mount and imgmount a bit easier to use. (ioctl by default,
+    support for ~ and ~username, auto size guessing for images)
+  * Fix a few compilation problems on various hosts and a general
+    code cleanup.
+  * Several small fixes that improve compatibility.
+
+-------------------------------------------------------------------
+Fri May 25 15:42:58 CEST 2007 - lnussel@suse.de
+
+- dont rm -rf %buildroot in %prep
+
+-------------------------------------------------------------------
+Mon Mar  5 13:08:48 CET 2007 - lnussel@suse.de
+
+- new version 0.70
+  * Speed up the dynamic cpu core (certain games get much faster).
+  * Added a dynamic fpu on x86 hosts.
+  * Improved the cycle guessing code (and make it default).
+  * Better and more configurable joystick support.
+  * Improved the image and fat drives.
+  * Added nullmodem emulation.
+  * Various win 3.x enhanchments (video/audio/ems/win32s).
+  * Improved CDROM detection and support.
+  * Speed up the screen drawing code.
+  * Added support for different keyboard layouts.
+  * Various fixes to the (C/E/V)GA emulation.
+  * Extended and improved all types of emulated memory. (umb/ems/xms)
+  * Dynamic core should work on Intel Macs.
+  * Various timer related fixes.
+  * Added a few more graphic scalers.
+
+-------------------------------------------------------------------
+Mon Feb 12 15:53:12 CET 2007 - lnussel@suse.de
+
+- fix overflow of a global variable reported by gcc
+
+-------------------------------------------------------------------
+Tue Jun 27 15:55:43 CEST 2006 - lnussel@suse.de
+
+- fix use of uninitialized variables (#188290)
+
+-------------------------------------------------------------------
+Mon May  8 17:37:47 CEST 2006 - lnussel@suse.de
+
+- new version 0.65
+  * 4/15/16/32bpp VESA mode support
+  * Lot's of fixes for better vga compatibility
+  * Improved CGA composite output
+  * Added video capturing to avi
+  * Improved screen updating for more speed
+  * PCjr machine mode added
+  * Speedup cpu cores and fix endian issues
+  * FPU core speedup with assembly
+  * Improved keyboard and bios handling
+  * Lockfree mouse mode added again
+  * Improved builtin dos with umbs and better fat support
+  * Added VCPI emulation and fixed some issues with ems
+  * Improved support for booter games
+  * Modem and IPX support improved for multiplayer
+
+-------------------------------------------------------------------
+Fri Jan 27 11:21:31 CET 2006 - lnussel@suse.de
+
+- add Mesa-devel, libpng-devel and gcc-c++ to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:33 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov 29 11:35:06 CET 2005 - lnussel@suse.de
+
+- add -fno-strict-aliasing
+- fix uninitialized variables
+
+-------------------------------------------------------------------
+Tue Oct 18 17:10:44 CEST 2005 - lnussel@suse.de
+
+- fix build with gcc 4.1
+
+-------------------------------------------------------------------
+Sun Oct  2 15:18:17 CEST 2005 - stbinner@suse.de
+
+- GenericName = short, Comment = verbose
+
+-------------------------------------------------------------------
+Fri Apr 22 14:40:33 CEST 2005 - lnussel@suse.de
+
+- fix another build failure on x86_64
+
+-------------------------------------------------------------------
+Fri Apr  8 13:57:22 CEST 2005 - lnussel@suse.de
+
+- fix build with gcc4
+- add icon
+
+-------------------------------------------------------------------
+Mon Nov 29 10:19:44 CET 2004 - lnussel@suse.de
+
+- update to version 0.63
+
+-------------------------------------------------------------------
+Tue Oct 12 17:28:39 CEST 2004 - lnussel@suse.de
+
+- update to version 0.62 
+
+-------------------------------------------------------------------
+Tue Feb 17 22:23:46 CET 2004 - lnussel@suse.de
+
+- update to version 0.61 
+
+-------------------------------------------------------------------
+Sat Jan 10 17:29:17 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Sep  1 10:04:40 CEST 2003 - adrian@suse.de
+
+- use Emulator Category
+
+-------------------------------------------------------------------
+Tue Aug 19 14:15:13 CEST 2003 - lnussel@suse.de
+
+- new version 0.58
+- use /etc/dosbox.conf or ~/.dosbox.conf as config file
+- desktop file
+
+-------------------------------------------------------------------
+Tue May 27 12:05:45 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Fri Aug  2 13:42:46 CEST 2002 - uli@suse.de
+
+- initial package
+
+

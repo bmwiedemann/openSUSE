@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Thu Feb 21 11:16:51 UTC 2019 - sndirsch@suse.com
+
+- Update to version 1.2.0
+  * This release adds a -E flag to see the preprocessor command
+    issued and the output of the preprocessor, to aid in debugging.
+
+-------------------------------------------------------------------
+Thu Jan 10 13:21:14 UTC 2019 - sndirsch@suse.com
+
+- run cpp with "-x assembler-with-cpp" in order to get rid of
+  warnings when parsing valid comments (bsc#1120004)
+
+-------------------------------------------------------------------
+Wed Apr  4 16:31:31 UTC 2018 - sndirsch@suse.com
+
+- Update to version 1.1.1
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * configure: add more m4 quoting to quiet autoconf complaints
+  * Remove unused macro RESOURCE_PROPERTY_NAME
+  * Clean up sign/size conversion warnings from clang
+  * Stop casting free() arguments to (char *)
+  * unifdef -U__UNIXOS2__
+  * Print which option was in error along with usage message
+  * Use SEEK_* names instead of raw numbers for fseek whence argument
+  * Reformat code to X.Org standard coding style
+  * Fix "editting" typo in comment
+  * Use reallocarray() for array allocations & resizing
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
+Thu Sep 12 19:26:22 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.1.0:
+  + Add -version flag to print package version string from
+    autoconf.
+  + Only add -P flag if using cpp as our preprocessor (fdo#34546).
+  + Predefined cpp macros can produce unexpected results
+    (fdo#3413).
+  + Rename args to several functions to not shadow global
+    variables.
+  + Mark fatal() & Syntax() with printf & noreturn attributes.
+  + Strip trailing whitespace.
+  + Remove unnecessary casts from malloc & realloc calls.
+  + Fix many const pointer warnings.
+  + Ensure we don't read out of ClassName array bounds for unknown
+    visual type (deb#488535).
+  + Clarify .Xresources vs. .Xdefaults in man page (deb#649187).
+  + Allow the CPP macro to contain preprocessors with command line
+    options (v2).
+  + Usage: In usage message print preprocessor that's actually
+    chosen.
+  + Fix build with WIN32 defined, but PATHETICCPP not defined.
+  + Tokenize #define names in the PATHETICCPP case too.
+- Add pkgconfig(xproto) BuildRequires, new dependency.
+
+-------------------------------------------------------------------
+Sat Apr 14 15:55:03 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.0.9:
+  + Create shell-escape-safe cpp options in the non-pathetic-cpp
+    case (CVE-2011-0465).
+- Changes from version 1.0.8:
+  + Merge usage() printf() strings/calls into a single string/call.
+  + Replace complex malloc calculations with asprintf().
+  + Man page fixes.
+  + Build system fixes.
+- Drop xrdb-Create-shell-escape-safe-cpp-options-in-the-non-path-bnc674733.patch:
+  fixed upstream.
+- Drop xrdb-traditional-cpp.diff: obsoleted.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xrdb from xorg-x11. Initial version: 1.0.7.
+

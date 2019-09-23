@@ -1,0 +1,406 @@
+-------------------------------------------------------------------
+Thu Nov 23 13:42:07 UTC 2017 - dimstar@opensuse.org
+
+- Add pingus-scons-on-py3.patch: Fix build with scons using
+  python3 as interpreter.
+
+-------------------------------------------------------------------
+Thu Feb  2 10:39:54 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Thu Dec 11 22:16:55 UTC 2014 - nemysis@gmx.ch
+
+- Change Desktop entry
+- Remove icon pingus.png, use supplied icons
+- Change Summary abd Group
+- Download from Google Code and packed as tar.bz2
+- Remove obsolete patch pingus-gcc47.patch, changed by upstream
+- Use sed instead of simple patches pingus-cwiid_with_bluez.patch,
+  dsolink.patch, remove-debug_fix-includes.patch and
+  makefile-fixes.patch
+- Add patches pingus-0.7.6-Makefile.patch and
+  pingus-0.7.6-SConscript.patch
+- Use check for openSUSE %if 0%{?suse_version}
+- Add BuildRequires for hicolor-icon-theme, dos2unix and
+  pkgconfig(xi)
+- Use BuildRequires pkgconfig() instead of devel packages
+- Change Description
+
+-------------------------------------------------------------------
+Sun Mar 25 12:18:17 UTC 2012 - dimstar@opensuse.org
+
+- Add pingus-gcc47.patch: Fix build with gcc 4.7.
+- Disable wiimote support (using a with_wiimote define) for now on
+  openSUSE > 12.1, as bluez needs to be fixed first.
+
+-------------------------------------------------------------------
+Thu Jan 26 09:00:00 MST 2012 - dbuck@novell.com
+
+- Update to 0.7.6
+  * added new SVG icons for Pingus
+  * added 10 new xmas themed levels
+  * added ability to sort levelsets by priority
+
+-------------------------------------------------------------------
+Wed Nov  9 11:01:52 UTC 2011 - saschpe@suse.de
+
+- Spec file cleanup:
+  * run spec-cleaner
+  * run fdupes
+  * fix executable bits for stuff in /usr/share/pingus
+
+-------------------------------------------------------------------
+Wed Nov 03 01:00:00 MST 2011 - dbuck@novell.com
+
+- update to 0.7.5
+ * fixed memory leak in OpenGL renderer
+ * added support for Win32 cross-compilation with mingw32
+ * added gamespeed adjustments via KPPlus, KPMinus, KPEnter
+ * added single-stepping the game with 'S'
+ * added better application icon
+ * added access to all levelsets in developer-mode (Ctrl-m)
+ * added 10 new Halloween levels
+
+-------------------------------------------------------------------
+Wed Oct 12 01:00:00 MST 2011 - dbuck@novell.com
+
+- update to 0.7.4
+ * fixed game not starting when no soundcard is present
+ * all halloween and tutorial levels have been converted to a minimum size of 1920x1200 so they can be played in fullscreen without letterboxing
+ * new --userdir command line switch to set the directory where savegames are saved
+ * menu getting confused by fast succedding clicks fixed
+ * level-demo recording and playback are back (files not compatible between x86 and x86-64)
+ * window resize support throughout the whole game
+ * dirty-rectangles drawing for improved performance with software rendering
+ * OpenGL rendering
+ * new blackboard graphic
+ * Unicode support
+ * two new levelsets, "Desert" and "Factory Campaign", with 27 new levels
+ * added a man-page
+ * deadly fall height has been increased
+ * support for prefab objects and groups in the editor
+ * cleaned up digger, miner and basher paths
+ * added an option menu
+ * lots of minor bug fixes
+ * bitmap fonts have been generated with anti-aliasing
+- update patch set
+ * removed gcc46.patch (included in update)
+ * added makefile-fixes.patch and remove-debug_fix-includes.patch
+ * updated dsolink.patch and pingus-cwiid_with_bluez.patch
+- clean SPEC a bit
+
+
+-------------------------------------------------------------------
+Mon Sep  5 11:14:29 CEST 2011 - meissner@suse.de
+
+- fix build with --dt-needed...
+
+-------------------------------------------------------------------
+Thu Jul  7 13:06:38 UTC 2011 - cwh@novell.com
+
+- fixed build for gcc46
+
+-------------------------------------------------------------------
+Sat Jul 31 13:51:47 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.7.3
+- add Wiimote support (with libcwiid)
+
+-------------------------------------------------------------------
+Wed Jun  3 18:21:09 CEST 2009 - coolo@novell.com
+
+- fix build with gcc 4.4
+
+-------------------------------------------------------------------
+Tue Mar  3 03:43:49 CET 2009 - crrodriguez@suse.de
+
+- fix buildrequires 
+
+-------------------------------------------------------------------
+Fri Nov 30 10:17:22 CET 2007 - prusnak@suse.cz
+
+- update to 0.7.2
+  * added support for levelsets
+  * added 8 new levels in the form of a halloween levelset
+  * added window resize support to the editor (use --allow-resize)
+  * added minimap to the editor  
+  * scroll wheel support to change the actions
+  * right and middle button now both scroll
+  * 'jumper dying on landing' bug fixed
+  * numerous other small bug fixes
+- removed obsoleted patch
+  * stdlib_string.patch (included in update)
+
+-------------------------------------------------------------------
+Thu Oct 18 10:55:25 CEST 2007 - prusnak@suse.cz
+
+- added missing include (stdlib_string.patch)
+
+-------------------------------------------------------------------
+Tue Oct  9 11:46:55 CEST 2007 - prusnak@suse.cz
+
+- update to 0.7.1
+  * faster sprite drawing, so more overall fps
+  * level editor rewritten from scratch
+  * level loading from command line fixed
+  * numerous other command line parsing bugs fixed
+  * separate images for gfx and colmap are used again
+  * input subsystem rewritten from scratch, supports now gamepads,
+    usbmice, wiimote (some of those might unfinished and not enabled by
+    default)
+
+-------------------------------------------------------------------
+Tue Sep  4 17:49:05 CEST 2007 - prusnak@suse.cz
+
+- updated to 0.7.0 (first SDL version)
+  * switch from ClanLib to SDL
+  * new anti-aliased fonts
+  * better support for resolutions larger then 800x600 (see --geometry WxH option)
+  * s-expression based file format (converter scripts are available)
+  * PPC and 64bit support
+  * language support for Czech, German, Finish, Italian, Norwegian,
+    Serbian, Turkish, Danish, Dutch, Spanish and Fench
+  * level editor temporarly removed
+  * a little less fps then the ClanLib version
+  * no new levels or other main features
+
+-------------------------------------------------------------------
+Wed Jun  6 13:38:18 CEST 2007 - prusnak@suse.cz
+
+- modified Makefile.in to accept DESTDIR (destdir.patch)
+- cleaned spec file
+
+-------------------------------------------------------------------
+Fri Apr 13 01:16:55 CEST 2007 - ro@suse.de
+
+- added libmikmod-devel to buildreq 
+
+-------------------------------------------------------------------
+Tue Sep 12 18:44:33 CEST 2006 - dmueller@suse.de
+
+- don't set -save-temps in a spec file
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:20 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Apr 20 15:22:39 CEST 2005 - nadvornik@suse.de
+
+- fixed to compile with gcc4
+
+-------------------------------------------------------------------
+Tue Nov  9 09:53:37 CET 2004 - sndirsch@suse.de
+
+- pingus-snow11.diff: fixed wrong level description (Bug #47953)
+
+-------------------------------------------------------------------
+Wed Jul 21 18:12:07 CEST 2004 - schwab@suse.de
+
+- Fix use of size_type.
+
+-------------------------------------------------------------------
+Sat Jan 10 10:07:25 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Tue Sep 23 11:40:48 CEST 2003 - sndirsch@suse.de
+
+- fixed category; should be Arcade instead of Puzzle (Bug #31608)
+
+-------------------------------------------------------------------
+Wed Sep  3 13:51:25 CEST 2003 - adrian@suse.de
+
+- disable KDE wait cursor blinking on startup
+
+-------------------------------------------------------------------
+Sat Aug 30 05:55:40 CEST 2003 - sndirsch@suse.de
+
+- added desktop icon
+
+-------------------------------------------------------------------
+Sun Aug 10 12:42:33 CEST 2003 - sndirsch@suse.de
+
+- added desktop file
+
+-------------------------------------------------------------------
+Wed May 14 01:52:58 CEST 2003 - ro@suse.de
+
+- run autoreconf 
+
+-------------------------------------------------------------------
+Mon Apr 21 16:52:27 CEST 2003 - sndirsch@suse.de
+
+- updated to version 0.6 - announced as first playable version!
+
+-------------------------------------------------------------------
+Tue Feb 25 10:06:37 CET 2003 - aj@suse.de
+
+- Add missing assert include.
+
+-------------------------------------------------------------------
+Tue Feb 11 17:25:01 CET 2003 - nadvornik@suse.cz
+
+- added install_info macros
+
+-------------------------------------------------------------------
+Thu Nov 21 01:32:29 CET 2002 - ro@suse.de
+
+- removed duplicates in output files of configure.in 
+
+-------------------------------------------------------------------
+Tue Nov  5 01:56:18 CET 2002 - ro@suse.de
+
+- use correct include path for libxml 
+
+-------------------------------------------------------------------
+Sat Jun  1 10:42:03 CEST 2002 - ro@suse.de
+
+- changed neededforbuild <libmikmo> to <libmikmod>
+
+-------------------------------------------------------------------
+Tue May  7 18:22:18 CEST 2002 - ro@suse.de
+
+- make it compile with current gcc-3.1 snapshot 
+
+-------------------------------------------------------------------
+Tue May  7 15:25:52 CEST 2002 - ro@suse.de
+
+- added <libmikmo> <DirectFB> to neededforbuild
+
+-------------------------------------------------------------------
+Fri Apr 12 12:28:04 CEST 2002 - ro@suse.de
+
+- build with gcc-3.1 
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:11 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Thu Jan 24 01:17:28 CET 2002 - ro@suse.de
+
+- up to pre3 to make it build with latest clanlib 
+- (doesn't seem to use artsd at all anyway ...)
+
+-------------------------------------------------------------------
+Tue Jan 22 18:23:53 CET 2002 - ro@suse.de
+
+- changed neededforbuild <kdelibs-artsd> to <kdelibs3-artsd>
+
+-------------------------------------------------------------------
+Tue Nov 20 13:04:10 CET 2001 - nadvornik@suse.cz
+
+- added suse_update_config
+
+-------------------------------------------------------------------
+Sat Sep 22 13:33:57 CEST 2001 - sndirsch@suse.de
+
+- RPM Group tag set to Amusements/Games, so it can be found easier 
+
+-------------------------------------------------------------------
+Wed Aug 29 17:10:53 CEST 2001 - sndirsch@suse.de
+
+- added pingus.sh
+
+-------------------------------------------------------------------
+Wed Aug  8 16:55:46 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <sdl> to <SDL>
+- changed neededforbuild <sdl-devel> to <SDL-devel>
+
+-------------------------------------------------------------------
+Mon Jul 30 12:08:07 CEST 2001 - nadvornik@suse.cz
+
+- update to 0.5.0pre2
+
+-------------------------------------------------------------------
+Mon Oct  9 09:29:23 CEST 2000 - nadvornik@suse.cz
+
+- fixed Copyright
+
+-------------------------------------------------------------------
+Thu Apr 13 10:23:03 CEST 2000 - nadvornik@suse.cz
+
+- added BuildRoot
+
+-------------------------------------------------------------------
+Fri Feb 18 14:16:17 MET 2000 - sndirsch@suse.de
+
+- updated to release 0.3.1
+
+-------------------------------------------------------------------
+Wed Feb  9 20:31:40 MET 2000 - sndirsch@suse.de
+
+- changed group tag
+
+-------------------------------------------------------------------
+Thu Jan 20 17:31:55 MET 2000 - sndirsch@suse.de
+
+- moved /usr/man/*,/usr/info/* to /usr/share/man and /usr/share/info
+
+-------------------------------------------------------------------
+Tue Jan  4 14:38:58 MET 2000 - sndirsch@suse.de
+
+- update to release 0.3.0a
+
+-------------------------------------------------------------------
+Mon Jan  3 16:46:34 MET 2000 - sndirsch@suse.de
+
+- adjusted to new clanlib package
+
+-------------------------------------------------------------------
+Thu Dec 23 17:21:05 MET 1999 - sndirsch@suse.de
+
+- updated to pingus 0.2.4, ClanLib 0.2.3 and Hermes 1.2.6
+- removed OpenPTC, SVGALIB, FBDEV and GLX support (never worked)
+- now only the necessary files are included
+
+-------------------------------------------------------------------
+Sun Oct  3 14:56:47 MEST 1999 - sndirsch@suse.de
+
+- updated to pingus 0.2.3 and ClanLib 0.1.19
+- the patch against ClanLib is not required any more
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Aug 30 18:20:05 CEST 1999 - ro@suse.de
+
+- asm parts only used on x86
+- no sa_restorer on alpha
+
+-------------------------------------------------------------------
+Fri Jul 16 14:08:46 MEST 1999 - sndirsch@suse.de
+
+- updated pingus sources to version 0.1.1, now there are 5 levels playable
+- updated OpenPTC sources to version 1.0.0-2
+
+-------------------------------------------------------------------
+
+Fri Jun 11 13:58:28 MEST 1999 - sndirsch@suse.de
+
+- updated pingus sources to version 0.0.15
+- updated clanlib sources to version 0.1.15
+- updated hermes sources to version 1.2.5
+
+-------------------------------------------------------------------------------
+
+Tue May 11 15:08:06 MEST 1999 - sndirsch@suse.de
+
+- updated package to release 0.0.14 (now two additional levels)
+
+-------------------------------------------------------------------------------
+
+Mon May 10 13:02:52 MEST 1999 - sndirsch@suse.de
+
+- created SPEC file
+

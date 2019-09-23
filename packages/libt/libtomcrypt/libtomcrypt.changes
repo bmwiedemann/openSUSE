@@ -1,0 +1,113 @@
+-------------------------------------------------------------------
+Wed Aug  8 13:14:47 UTC 2018 - jengelh@inai.de
+
+- Expand summary of libtomcrypt1.
+- Use %make_install.
+
+-------------------------------------------------------------------
+Thu Jul 26 19:40:32 UTC 2018 - jengelh@inai.de
+
+- Fix RPM groups.
+- Don't pipe find, use the safer -exec.
+
+-------------------------------------------------------------------
+Thu Jul 12 12:41:50 UTC 2018 - meissner@suse.com
+
+- libtomcrypt.keyring: added key of new release manager 0xAF0CB17621EDAD72
+
+- libtomcrypt-makefile.shared.patch: dropped
+- reproducible.patch: dropped
+
+-------------------------------------------------------------------
+Mon Jul  2 23:47:09 UTC 2018 - darin@darins.net
+
+- v1.18.2
+  - Fix Side Channel Based ECDSA Key Extraction (CVE-2018-12437) (PR #408)
+  - Fix potential stack overflow when DER flexi-decoding (CVE-2018-0739) (PR #373)
+  - Fix two-key 3DES (PR #390)
+  - Fix accelerated CTR mode (PR #359)
+  - Fix Fortuna PRNG (PR #363)
+  - Fix compilation on platforms where cc doesn't point to gcc (PR #382)
+  - Fix using the wrong environment variable LT instead of LIBTOOL (PR #392)
+  - Fix build on platforms where the compiler provides __WCHAR_MAX__ but wchar.h is not available (PR #390)
+  - Fix & re-factor crypt_list_all_sizes() and crypt_list_all_constants() (PR #414)
+  - Minor fixes (PR's #350 #351 #375 #377 #378 #379)
+` 
+- Added libtommath-devl build requirement
+- Added baselibs.conf
+
+-------------------------------------------------------------------
+Fri Jun 22 11:47:21 UTC 2018 - darin@darins.net
+
+- v1.18.1
+  - Fix wrong SHA3 blocksizes, thanks to Claus Fischer for reporting this via Mail (PR #329)
+  - Fix NULL-pointer dereference in `ccm_memory()` with LTC_CLEAN_STACK enabled (PR #327)
+  - Fix `ccm_process()` being unable to process input buffers longer than 256 bytes (PR #326)
+  - Fix the `register_all_{ciphers,hashes,prngs}()` return values (PR #316)
+  - Fix some typos, warnings and duplicate prototypes in code & doc (PR's #310 #320 #321 #335)
+  - Fix possible undefined behavior with LTC_PTHREAD (PR #337)
+  - Fix some DER bugs (PR #339)
+  - Fix CTR-mode when accelerator is used (OP-TEE/optee_os #2086)
+  - Fix installation procedure (Issue #340) 
+
+-------------------------------------------------------------------
+Wed Jul 12 17:15:54 UTC 2017 - darin@darins.net
+
+- udpate to version 1.18.0
+- removed up upstream patches
+ 
+
+-------------------------------------------------------------------
+Mon May 29 13:08:06 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort input files to make build reproducible
+  (boo#1041090)
+
+-------------------------------------------------------------------
+Fri Feb 12 22:03:58 UTC 2016 - mpluskal@suse.com
+
+- Use url for source
+- Add gpg signature
+- Cleanup spec file with spec-cleaner
+- Do not include build date/time
+
+-------------------------------------------------------------------
+Tue Jul 15 12:38:56 UTC 2014 - darin@darins.net
+
+- cleaned up with spec-cleaner 
+- examples now require the devel package
+
+-------------------------------------------------------------------
+Fri Jul 11 09:07:26 UTC 2014 - darin@darins.net
+
+- do not package libtool archives
+
+-------------------------------------------------------------------
+Thu Jul  3 16:50:28 UTC 2014 - darin@darins.net
+
+- fix requires due to rename
+
+-------------------------------------------------------------------
+Thu Jul  3 16:38:47 UTC 2014 - darin@darins.net
+
+- add group to libtomcrypt0 package
+
+-------------------------------------------------------------------
+Thu Jul  3 16:28:21 UTC 2014 - darin@darins.net
+
+- rename to libtomcrypt.{spec,changes} and the patch,
+  there's not osc move|copy so I just cp'd them.
+- update packaging for share-lib policy
+- fix license
+
+-------------------------------------------------------------------
+Tue Jan 31 10:27:11 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Parallel building using %_smp_mflags
+- Add libtool as BuildRequires for factory/12.2
+
+-------------------------------------------------------------------
+Thu Aug 12 13:05:05 UTC 2010 - alexandre@exatati.com.br
+
+- Spec file cleaned with spec-cleaner.

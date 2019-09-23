@@ -1,0 +1,5 @@
+<package name="python-enzyme" project="openSUSE:Factory">
+  <title>Python video metadata parser</title>
+  <description>Enzyme is a Python module to parse video metadata.</description>
+  <devel project="devel:languages:python" package="python-enzyme"/>
+</package>

@@ -1,0 +1,6 @@
+<package name="libgtkdatabox" project="openSUSE:Factory">
+  <title>GTK+ widget for fast data display</title>
+  <description>GtkDatabox is a widget for the Gtk+ library designed to display large
+amounts of numerical data fast and easy.</description>
+  <devel project="Education" package="libgtkdatabox"/>
+</package>

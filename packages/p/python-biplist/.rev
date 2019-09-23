@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc5500202e4b6c79c0ab1137bff9a8a4</srcmd5>
+    <version>0.4</version>
+    <time>1332616162</time>
+    <user>coolo</user>
+    <comment>please add</comment>
+    <requestid>110505</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>dc5500202e4b6c79c0ab1137bff9a8a4</srcmd5>
+    <version>0.4</version>
+    <time>1340184037</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>647e0c308464d72aacaf861c912400d9</srcmd5>
+    <version>0.5</version>
+    <time>1358168665</time>
+    <user>coolo</user>
+    <comment>Update and python3 support (forwarded request 148128 from posophe)</comment>
+    <requestid>148366</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>647e0c308464d72aacaf861c912400d9</srcmd5>
+    <version>0.5</version>
+    <time>1359109997</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>bbdd88c82b200e5ba7753041c5f067a2</srcmd5>
+    <version>0.5</version>
+    <time>1371651990</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179738</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>bbdd88c82b200e5ba7753041c5f067a2</srcmd5>
+    <version>0.5</version>
+    <time>1379664132</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>d1bb69eabb4e08d5c41489a778f713da</srcmd5>
+    <version>0.5</version>
+    <time>1382692305</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204526</requestid>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>d1bb69eabb4e08d5c41489a778f713da</srcmd5>
+    <version>0.5</version>
+    <time>1409302823</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4ad63745b3fcd3ac5fdc9afb3f9370c9</srcmd5>
+    <version>0.9</version>
+    <time>1430132734</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304137</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b8a1c8d58b0a656fda39f22307384bb0</srcmd5>
+    <version>1.0.2</version>
+    <time>1504521088</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519841</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>63bb23f91e74ae282f700f64d77cb9f4</srcmd5>
+    <version>1.0.3</version>
+    <time>1527084558</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable one test that expect int to be equal to long on 32bit
+
+- Update to version 1.0.3:
+  * Added additional checks to guard against invalid plists. This includes writing and reading plists with recursive collections.
+  * Handle OverflowErrors when reading dates outside the range of datetime.datetime</comment>
+    <requestid>611233</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>f1f1f74764f80eec33622a683bc577a9</srcmd5>
+    <version>1.0.3</version>
+    <time>1544726387</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653945</requestid>
+  </revision>
+</revisionlist>

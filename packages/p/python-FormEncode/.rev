@@ -1,0 +1,127 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>70677d72b635cff5c7975791835b8f38</srcmd5>
+    <version>1.2.4</version>
+    <time>1332239574</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>109286</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>70677d72b635cff5c7975791835b8f38</srcmd5>
+    <version>1.2.4</version>
+    <time>1340184029</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>70677d72b635cff5c7975791835b8f38</srcmd5>
+    <version>1.2.4</version>
+    <time>1359109976</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f8402a9f1647f2fea0252bb4f59446a4</srcmd5>
+    <version>1.2.6</version>
+    <time>1371217623</time>
+    <user>coolo</user>
+    <comment>- update to 1.2.5:
+  * The method field_is_empty was added to 
+  formencode.validators.FormValidator
+  * Fix packaging issue with i18n files (from Juliusz Gonera) (forwarded request 178353 from dirkmueller)</comment>
+    <requestid>178851</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9a35a1a9ef8d4580ecbb0defdf9a4e1c</srcmd5>
+    <version>1.2.6</version>
+    <time>1376991873</time>
+    <user>scarabeus_factory</user>
+    <comment>- somebody updated this package to 1.2.6 (not me)
+- added missing pieces in order to generate sphinx documentation
+- create documentation in separate -doc package
+- fix various wrong line endings (forwarded request 195401 from frispete)</comment>
+    <requestid>195602</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>9a35a1a9ef8d4580ecbb0defdf9a4e1c</srcmd5>
+    <version>1.2.6</version>
+    <time>1379664102</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>89ed0d7d2adffaef4c79f8483805f4a1</srcmd5>
+    <version>1.2.6</version>
+    <time>1382692582</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204563</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>89ed0d7d2adffaef4c79f8483805f4a1</srcmd5>
+    <version>1.2.6</version>
+    <time>1409302788</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>82cdb40b1ea7c421434ce0eef0cb040e</srcmd5>
+    <version>1.3.0</version>
+    <time>1431247576</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305738</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>a7eef3c8eda0c1408d84f221fdc499fa</srcmd5>
+    <version>1.3.0</version>
+    <time>1458120867</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369210</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>ba43a0c9eb9a59a3d0562f355a9cd49d</srcmd5>
+    <version>1.3.0</version>
+    <time>1507755384</time>
+    <user>dimstar_suse</user>
+    <comment>- common -doc subpackage
+- improve packaging of docs (forwarded request 522041 from matejcik)</comment>
+    <requestid>522042</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>e777902faad89a67e00a2f8d3f1c7736</srcmd5>
+    <version>1.3.0</version>
+    <time>1544726690</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654062</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7bde03bfcdb2962d179029c30553d324</srcmd5>
+    <version>1.3.1</version>
+    <time>1551785090</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove online tests:
+  * remove-online-tests.patch
+- Work with new pycountry:
+  * new-pycountry.patch
+- Run tests
+
+- Fix fdupes call
+- Update to 1.3.1:
+  * no obvious changelog</comment>
+    <requestid>681513</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>ca7b5096a64e51bf80aae1b8932934f1</srcmd5>
+    <version>1.3.1</version>
+    <time>1552206804</time>
+    <user>coolo</user>
+    <comment>- Really run tests under python3
+- Add patch to work with python3:
+  * six.patch</comment>
+    <requestid>682404</requestid>
+  </revision>
+</revisionlist>

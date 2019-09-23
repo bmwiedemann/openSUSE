@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Tue Aug 15 11:23:34 CEST 2017 - kukuk@suse.de
+
+- Update to lsb-release 3.0
+  - obsoletes lsb-release-2.0.dif and reproducible.patch
+  - only supports /etc/os-release as fallback
+  - adjusted documentation
+
+-------------------------------------------------------------------
+Mon Jun 19 16:11:39 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to drop current timestamps from man-page to make build reproducible
+
+-------------------------------------------------------------------
+Mon May 30 15:33:16 CEST 2016 - kukuk@suse.de
+
+- Merge with openSUSE again, change openSUSE project distributor
+  name to remove the problematic whitespace.
+
+-------------------------------------------------------------------
+Mon Feb 22 10:56:38 CET 2016 - kukuk@suse.de
+
+- Change Distributor name from "SUSE LINUX" to "SUSE", since
+  the LSB spec is not in sync with the reference implementation,
+  and some projects follow the reference implementation and not
+  the spec.
+
+-------------------------------------------------------------------
+Fri Jan 30 11:08:40 CET 2015 - kukuk@suse.de
+
+- Read /etc/lsb-release.d/* even if /etc/lsb-release does not
+  contain a LSB_VERSION entry [FATE#318419]
+- codename is not the distribution version
+
+-------------------------------------------------------------------
+Mon May 26 14:53:28 CEST 2014 - kukuk@suse.de
+
+- Remove openSUSE stuff [bnc#877042]
+
+-------------------------------------------------------------------
+Thu Oct 17 07:52:33 UTC 2013 - bugs@vdm-design.de
+
+- Change to use /etc/os-release instead of /etc/SuSE-release [bnc#845262]
+
+-------------------------------------------------------------------
+Tue Sep 11 10:55:19 UTC 2012 - aj@suse.de
+
+- For openSUSE the distributor is the openSUSE project.
+
+-------------------------------------------------------------------
+Mon Sep 20 17:31:46 CEST 2010 - kukuk@suse.de
+
+- Read "CODENAME" from /etc/SuSE-release [bnc#640213]
+- Add "lsb-release" compat links
+
+-------------------------------------------------------------------
+Mon Jul 20 15:11:12 CEST 2009 - kukuk@suse.de
+
+- Split off from lsb package [bnc#483655]

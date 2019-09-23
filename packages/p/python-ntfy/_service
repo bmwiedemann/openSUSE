@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/dschep/ntfy.git</param>
+    <param name="scm">git</param>
+    <param name="revision">v2.7.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="tar" mode="disabled" />
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled" />
+</services>

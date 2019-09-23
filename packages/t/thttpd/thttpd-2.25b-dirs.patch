@@ -1,0 +1,68 @@
+--- Makefile.in
++++ Makefile.in
+@@ -30,11 +30,12 @@
+ prefix = @prefix@
+ exec_prefix = @exec_prefix@
+ # Pathname of directory to install the binary.
+-BINDIR = @sbindir@
++BINDIR = @bindir@
++SBINDIR = @sbindir@
+ # Pathname of directory to install the man page.
+ MANDIR = @mandir@
+ # Pathname of directory to install the CGI programs.
+-WEBDIR = $(prefix)/www
++WEBDIR = /srv/www/htdocs
+ 
+ # CONFIGURE: The group that the web directory belongs to.  This is so that
+ # the makeweb program can be installed set-group-id to that group, and make
+@@ -110,7 +111,7 @@
+ 
+ installthis:
+ 	-mkdir -p $(DESTDIR)$(BINDIR)
+-	$(INSTALL) -m 555 -o bin -g bin thttpd $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 555 -o bin -g bin thttpd $(DESTDIR)$(SBINDIR)
+ 
+ install-man:
+ 	-mkdir -p $(DESTDIR)$(MANDIR)/man8
+@@ -121,9 +122,11 @@
+ 	    cd $$i ; \
+ 	    pwd ; \
+ 	    $(MAKE) $(MFLAGS) \
+-		WEBDIR=$(WEBDIR) \
+-		CGIBINDIR=$(CGIBINDIR) \
+-		MANDIR=$(MANDIR) \
++		BINDIR=$(DESTDIR)$(BINDIR) \
++		SBINDIR=$(DESTDIR)$(SBINDIR) \
++		WEBDIR=$(DESTDIR)$(WEBDIR) \
++		CGIBINDIR=$(DESTDIR)$(CGIBINDIR) \
++		MANDIR=$(DESTDIR)$(MANDIR) \
+ 		WEBGROUP=$(WEBGROUP) \
+ 		install \
+ 	) ; done
+--- extras/Makefile.in
++++ extras/Makefile.in
+@@ -26,7 +26,8 @@
+ 
+ prefix =	@prefix@
+ exec_prefix =	@exec_prefix@
+-BINDIR =	@sbindir@
++BINDIR =	@bindir@
++SBINDIR =	@sbindir@
+ WEBDIR =	$(prefix)/www
+ CGIBINDIR =	$(WEBDIR)/cgi-bin
+ MANDIR =	@mandir@
+@@ -66,12 +67,12 @@
+ 
+ 
+ install:	all
+-	rm -f $(BINDIR)/makeweb $(BINDIR)/htpasswd $(BINDIR)/syslogtocern
++	rm -f $(SBINDIR)/makeweb $(SBINDIR)/htpasswd $(SBINDIR)/syslogtocern
+ 	cp makeweb $(BINDIR)/makeweb
+ 	chgrp $(WEBGROUP) $(BINDIR)/makeweb
+ 	chmod 2755 $(BINDIR)/makeweb
+ 	cp htpasswd $(BINDIR)/htpasswd
+-	cp syslogtocern $(BINDIR)/syslogtocern
++	cp syslogtocern $(SBINDIR)/syslogtocern
+ 	rm -f $(MANDIR)/man1/makeweb.1
+ 	cp makeweb.1 $(MANDIR)/man1/makeweb.1
+ 	rm -f $(MANDIR)/man1/htpasswd.1

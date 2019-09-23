@@ -1,0 +1,737 @@
+-------------------------------------------------------------------
+Fri Aug 9 20:06:57 UTC 2019 - Tony Jones <tonyj@suse.com>
+
+- Update to version 4.1.  
+  Do not package systemtap-exporter.
+  4.1 release notes: https://sourceware.org/ml/systemtap/2019-q2/msg00043.html
+  4.0 release notes: https://sourceware.org/ml/systemtap/2018-q4/msg00018.html
+
+- Force autoreconf of configure to match systemtap-docs (tarball configure 
+  is stale).
+
+-------------------------------------------------------------------
+Mon Apr 15 13:40:09 UTC 2019 - jlee@suse.com
+
+- Add BuildRequire libavahi-devel, otherwise that the systemstap-server
+  and systemstap client do not work. (bsc#1132538)
+
+-------------------------------------------------------------------
+Wed Jan 30 13:17:03 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow to use
+  systemd-mini during build.
+- Use %tmpfiles_create macro in -server package: consider the right
+  usage in transactional update cases.
+
+-------------------------------------------------------------------
+Fri Jan  4 18:38:37 UTC 2019 - mgorse@suse.com
+
+- Remove glib2-devel from BuildRequires: it appears not to be used
+  and causes a build loop if glib2 is built with SDT markers
+  (bsc#1090047).
+
+-------------------------------------------------------------------
+Fri Aug  3 16:50:41 UTC 2018 - sschricker@suse.de
+
+- Upgrade to version 3.3:
+
+  Changelog: https://lwn.net/Articles/757030/
+
+  eBPF backend extensions, easier access to examples, adapting to
+  meltdown/spectre complications, real-time / high-cpu-count
+  concurrency fixes
+
+- Remove patches, because the issues were fixed upstream:
+    systemtap-fixes-for-gcc-8.patch
+    systemtap-change-extra_cflags-escape-processing.patch 
+
+- Adjust patch for version 3.3:
+    systemtap-build-source-dir.patch
+
+- Added public key of "Frank Ch. Eigler <fche@elastic.org>",
+  since he signed the new package
+
+-------------------------------------------------------------------
+Fri Mar 23 23:54:17 UTC 2018 - tonyj@suse.com
+
+- GCC 8 fixes (bsc#1084642)
+  New patch: systemtap-fixes-for-gcc-8.patch
+
+-------------------------------------------------------------------
+Fri Feb 16 15:28:22 UTC 2018 - matz@suse.com
+
+- Care for pecularities of build counter syncs between different
+  build rings: the Requires from sdt-devel can't use %release
+  for systemtap-headers, but we also don't want to just include
+  %version, so separate both totally:
+  * Add the include headers to sdt-devel again.
+  * Add Conflicts with systemtap-headers to care for the resulting
+    file conflicts.
+  * Remove Require from sdt-devel to systemtap-headers again.
+
+-------------------------------------------------------------------
+Thu Feb  8 15:28:32 UTC 2018 - matz@suse.com
+
+- Don't include the headers files in sdt-devel
+- Add systemtap-headers to Requires of sdt-devel, so that it
+  provides the same files as before.  [fate#324969]
+
+-------------------------------------------------------------------
+Mon Nov 20 23:01:35 UTC 2017 - tonyj@suse.com
+
+- Upgrade to version 3.2
+  Changelog: https://sourceware.org/ml/systemtap/2017-q4/msg00096.html
+  Drop patch: systemtap-tweak-i386-argument-passing.patch (upstream)
+  Update keyring.
+
+- Fix issue with Kbuild handling of escaped paths (bsc#1067437)
+  Add patch: systemtap-change-extra_cflags-escape-processing.patch 
+
+-------------------------------------------------------------------
+Fri Nov 10 12:48:28 UTC 2017 - mpluskal@suse.com
+
+- Use pytho3 by default (fate#323526)
+  * Do not explicitly require python by subpackage, dependency gets
+    generated automatically
+
+-------------------------------------------------------------------
+Thu Mar 30 19:42:04 UTC 2017 - tonyj@suse.com
+
+- Tweak i386 argument-passing (bsc#1030285)
+  New patch: systemtap-tweak-i386-argument-passing.patch
+
+-------------------------------------------------------------------
+Tue Mar 28 19:32:02 UTC 2017 - jeffm@suse.com
+
+- Update to version 3.1
+  Update keyring with new key
+  Changelog:
+  https://sourceware.org/ml/systemtap/2017-q1/msg00106.html
+
+-------------------------------------------------------------------
+Fri Apr  1 19:28:53 CEST 2016 - tonyj@suse.de
+
+- Update to version 3.0 
+  Update keyring with new key
+  Update info in README-KEYRING
+  Changelog:
+  https://sourceware.org/ml/systemtap/2016-q1/msg00179.html
+
+-------------------------------------------------------------------
+Tue Nov 10 00:32:54 UTC 2015 - tonyj@suse.com
+
+- Update to version 2.9.
+  Update keyring with new key
+  Changelog:
+  https://sourceware.org/ml/systemtap/2015-q4/msg00025.html
+
+-------------------------------------------------------------------
+Fri Sep 11 17:59:49 UTC 2015 - tonyj@suse.com
+
+- Update to version 2.8. 
+  Update keyring with new key
+  New file: README-KEYRING documenting how to update keyring
+  Changelog:
+  https://sourceware.org/ml/systemtap/2015-q2/msg00160.html  
+
+-------------------------------------------------------------------
+Fri Mar 27 17:03:48 UTC 2015 - mpluskal@suse.com
+
+- Update keyring with new key
+
+-------------------------------------------------------------------
+Fri Mar 27 14:12:15 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.7
+  Changelog:
+  https://sourceware.org/ml/systemtap/2015-q1/msg00173.html
+- Update systemtap-docdir-fix.diff 
+
+-------------------------------------------------------------------
+Tue Feb 17 20:49:14 UTC 2015 - mpluskal@suse.com
+
+- Add keyring and signature
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Sep  9 06:05:47 UTC 2014 - tonyj@suse.com
+
+- Update to version 2.6
+  Changelog:
+    2.6: https://sourceware.org/ml/systemtap/2014-q3/msg00231.html 
+
+-------------------------------------------------------------------
+Sat May 17 19:34:40 UTC 2014 - coolo@suse.com
+
+- use %_rundir if available
+
+-------------------------------------------------------------------
+Fri May  2 19:48:19 UTC 2014 - tonyj@suse.com
+
+- Update to version 2.5
+  Changelog: 
+    2.5: https://sourceware.org/ml/systemtap/2014-q2/msg00103.html
+
+-------------------------------------------------------------------
+Fri Nov 15 18:51:03 UTC 2013 - tonyj@suse.com
+
+- Update to version 2.4
+  Changelog:
+    2.4: http://sourceware.org/ml/systemtap/2013-q4/msg00165.html 
+
+-------------------------------------------------------------------
+Wed Aug  7 17:40:24 UTC 2013 - tonyj@suse.com
+
+- Update to version 2.3
+  Changelog:
+    2.3: http://sourceware.org/ml/systemtap/2013-q3/msg00062.html
+- Refresh systemtap-build-source-dir.patch for context
+
+-------------------------------------------------------------------
+Wed May 22 17:42:53 UTC 2013 - tonyj@suse.com
+
+- Upgrade to version 2.2.1
+  Drop patch: systemtap-fix-for-kernels-without-vm_executable.patch
+  Refresh patch (context): systemtap-build-source-dir.patch
+
+  Changelog:
+    2.1: http://sourceware.org/ml/systemtap/2013-q1/msg00130.html
+    2.2.1: http://sourceware.org/ml/systemtap/2013-q2/msg00138.html 
+
+-------------------------------------------------------------------
+Fri Feb 22 06:30:58 UTC 2013 - tonyj@suse.com
+
+- Change how systemtap looks for tracepoint header files 
+  (bnc#796574, new patch: systemtap-build-source-dir.patch)
+- Add libebl1 dependancy. Systemtap manually loads libebl backends and
+  the manual Requires: was incorrectly removed in a previous revision
+  (bnc#800335)
+
+-------------------------------------------------------------------
+Fri Dec 14 23:42:06 UTC 2012 - tonyj@suse.com
+
+- Update to version 2.0
+  Changelog: http://sourceware.org/ml/systemtap/2012-q4/msg00047.html
+- Delete previous patches (present in version 2.0):
+   link-with-pthread.patch
+   systemtap-linux-types.patch
+- Add patches:
+   systemtap-fix-for-kernels-without-vm_executable.patch
+
+-------------------------------------------------------------------
+Wed Oct 17 12:20:17 UTC 2012 - fcrozat@suse.com
+
+- Fix build with new systemd location.
+
+-------------------------------------------------------------------
+Fri Jul 27 10:29:19 UTC 2012 - aj@suse.de
+
+- Fix build with glibc 2.16
+
+-------------------------------------------------------------------
+Mon Jun 18 09:46:52 CEST 2012 - jslaby@suse.de
+
+- Upgrade to version 1.8
+  Changelog: http://sourceware.org/ml/systemtap/2012-q2/msg00277.html
+
+-------------------------------------------------------------------
+Sat Feb 18 01:33:56 UTC 2012 - tonyj@suse.com
+
+- Upgrade to version 1.7
+  Changelog: http://sourceware.org/ml/systemtap/2012-q1/msg00097.html
+
+-------------------------------------------------------------------
+Wed Nov 23 14:30:33 CET 2011 - aj@suse.de
+
+- Create tmpfiles during new install.
+
+-------------------------------------------------------------------
+Wed Nov  2 10:54:26 CET 2011 - jslaby@suse.de
+
+- update to 1.6
+  changes 1.5-1.6: http://sourceware.org/ml/systemtap/2011-q3/msg00105.html
+  changes 1.4-1.5: http://sourceware.org/ml/systemtap/2011-q2/msg00218.html
+
+-------------------------------------------------------------------
+Fri Aug 19 08:38:29 UTC 2011 - tonyj@novell.com
+
+- Fix for bnc#710291 - systemtap: fails rpmlint check non-ghost-in-var-run 
+
+-------------------------------------------------------------------
+Mon May  2 15:11:31 UTC 2011 - idoenmez@novell.com
+
+- Add systemtap-1.4-gcc46.patch to fix compilation with gcc 4.6 
+
+-------------------------------------------------------------------
+Tue Mar 15 17:50:11 CET 2011 - jslaby@suse.de
+
+- add ifdef CLONE_STOPPED to fix compilation on newer kernels
+
+-------------------------------------------------------------------
+Fri Jan 21 18:46:18 UTC 2011 - tonyj@novell.com
+
+- Update to version 1.4
+  Changes in this release: https://lkml.org/lkml/2011/1/17/101
+  Drop patches: 
+	systemtap-hppa.diff
+	systemtap-support-2.6.36.diff
+	systemtap_fix_mod_vs_del_timer_race.patch
+	systemtap_improve_gettimeofday_stability.patch
+
+-------------------------------------------------------------------
+Fri Jan 14 14:32:11 UTC 2011 - trenn@novell.com
+
+- Hopefully fix bnc#664105:
+  Kernel segfault in kernel/timer.c - comm: stapio (process) - related to preloadtrace.ko
+
+-------------------------------------------------------------------
+Mon Sep 13 11:25:26 UTC 2010 - coolo@novell.com
+
+- take fix for pr11940 from systemtap git
+
+-------------------------------------------------------------------
+Sun Sep  5 18:39:44 UTC 2010 - bg@novell.com
+
+- fix build for hppa
+
+-------------------------------------------------------------------
+Thu Aug 26 01:35:21 UTC 2010 - tonyj@novell.com
+
+- Update from version 1.1 to version 1.3 
+  Upstream release notes: 
+	1.3: http://sourceware.org/ml/systemtap/2010-q3/msg00098.html
+	1.2: http://sourceware.org/ml/systemtap/2010-q1/msg00740.html
+
+-------------------------------------------------------------------
+Wed Jul 21 12:51:32 CEST 2010 - vuntz@opensuse.org
+
+- Add python Requires to sdt-devel subpackage since dtrace is a
+  python script.
+
+-------------------------------------------------------------------
+Thu Mar 11 23:56:17 UTC 2010 - tonyj@novell.com
+
+- Add dependancies for systemtap shell scripts (coreutils, zip, avahi)
+
+-------------------------------------------------------------------
+Thu Mar 11 22:47:15 UTC 2010 - tonyj@novell.com
+
+- Update to version 1.1
+- Fixes for CVE-2009-4273 (second part, also known as CVE-2010-0412) and
+  CVE-2010-0411.
+- Fix parsing error (systemtap-prevent-nested-arg.diff)
+
+-------------------------------------------------------------------
+Wed Dec  2 23:51:24 UTC 2009 - tonyj@novell.com
+
+- Fixes for CVE-2009-2911, BNC#548361
+
+-------------------------------------------------------------------
+Fri Oct  2 18:57:14 CEST 2009 - tonyj@suse.de
+
+- updated to version 1.0:
+ * SystemTap frontend (stap) changes
+   - EXPERIMENTAL support for unprivileged users.
+   - -a ARCH allows cross compiling of scripts, stap-start-server arguments
+     extended to support starting a cross compiling server
+   - Change notion of architecture to be same as kernels
+   - Support output file switching by SIGUSR2
+   - New experimental transport mechanism using ftrace's ring_buffer
+   - Reduction in memory consumption for scripts using many uprobes
+   - Support for recognizing DW_OP_{stack,implicit}_value DWARF expressions
+ * SystemTap script language changes
+   - Dwarf probes now support C++ scopes and so can be limited to classes or
+    namespaces.
+   - Preprocessor support for || and &&
+   - Probe alias names may be overloaded (multiple aliases of same name)
+ * SystemTap tapset changes
+   - Enabling semaphore now used to reduce computation overhead of dorman
+     process().mark() probes.
+   - Many functions marked as usable by unprivileged users (return global info
+     or specific to user process).
+   - New netdev tapset probe points for monitoring network traffic and device 
+     configurations.
+   - New task_backtrace function returns the current hex backtrace of any
+     arbitrary task in the system.
+   - Function is_myproc returns whether the current process is owned by user
+     which started systemtap script.
+
+-------------------------------------------------------------------
+Thu Aug 13 15:55:14 CEST 2009 - tiwai@suse.de
+
+- updated to version 0.9.9:
+ * Systemwide kernel .function.return (kretprobe) maxactive overridden
+   with -DKRETACTIVE=nnn parameter.
+ * performance improvement in translation pass 2
+ * new DW_OP_call_frame_CFA handling with elfutils 0.142
+ * dwarf probes now show parameters and local variables in the verbose
+  listing mode (-L)
+ * symbol aliases are now resolved to their canonical dwarf names
+ * The syntax for dereferencing $target variables and @cast() gained new
+  capabilities
+ * For reading all probe variables, kernel.mark now supports $$vars and
+  $$parms, and process.syscall now supports $$vars.
+ * SNMP tapset for many network statistics
+ * dentry tapset to map kernel VFS directory entries to file or full
+  path names: d_path(), d_name() and reverse_path_walk().
+ * SystemTap now has userspace markers in its own binaries
+ * More to see in NEWS
+
+-------------------------------------------------------------------
+Tue Jul 21 08:47:11 CEST 2009 - tiwai@suse.de
+
+- corrected to use libexecdir
+- fix summary and description
+
+-------------------------------------------------------------------
+Tue Jun 16 16:24:28 CEST 2009 - tiwai@suse.de
+
+- updated to version 0.9.8:
+  * Module signing support
+  * Debuginfo suggestions when a script fails
+  * Using %M in print formats for hex dumps can now print entire
+    buffers
+  * Dwarfless syscalls: The nd_syscalls tapset is now available to
+    probe system calls without requiring kernel debug info.
+  * sid() returns the session ID of the current process
+  * stringat() indexes a single character from a string.
+  * New script examples
+
+-------------------------------------------------------------------
+Wed May 20 13:02:00 CEST 2009 - tiwai@suse.de
+
+- split docs and examples to docs subpackage and generate from its
+  own spec file to cut off the dependency loop
+
+-------------------------------------------------------------------
+Fri May 15 11:46:11 CEST 2009 - tiwai@suse.de
+
+- split to several subpackages, systemtap-runtime, -client, -server
+  and -sdt-devel (bnc#503088).
+
+-------------------------------------------------------------------
+Fri May  8 16:43:08 CEST 2009 - tiwai@suse.de
+
+- updated to released version 0.9.7:
+  * Lots of fixes, improvements, see NEWS file for details
+
+-------------------------------------------------------------------
+Thu Feb 19 16:55:48 CET 2009 - tiwai@suse.de
+
+- updated to systemtap snashot 20090214:
+  * Version bump to 0.8
+  * Bunch of fixes and updates, see ChangeLog
+  * Fix for recent 2.6.29 kernels
+- fixed doc build, using fop instead of direct xmlto pdf
+
+-------------------------------------------------------------------
+Thu Feb 12 16:32:29 CET 2009 - tiwai@suse.de
+
+- backport the blacklist additions from upstream to fix possible
+  system crash (bnc#459387, bnc#473277)
+
+-------------------------------------------------------------------
+Thu Feb  5 13:31:19 CET 2009 - tiwai@suse.de
+
+- Backport tapset/signal.stp to fix the signal probe problem
+  (bnc#468321)
+
+-------------------------------------------------------------------
+Tue Feb  3 14:39:38 CET 2009 - tiwai@suse.de
+
+- Fix debugpath.exp with $SYSTEMTAP_DEBUGINFO_PATH (bnc#471811)
+
+-------------------------------------------------------------------
+Thu Jan 29 12:58:42 CET 2009 - tiwai@suse.de
+
+- Fix procfs dir_entry count warning (bnc#470526)
+- Improve the parsing of lineno checks (bnc#468247)
+
+-------------------------------------------------------------------
+Thu Jan 15 08:22:24 CET 2009 - tiwai@suse.de
+
+- Fix quoting in Tcl scripts (bnc#461588)
+
+-------------------------------------------------------------------
+Mon Jan 12 12:55:06 CET 2009 - tiwai@suse.de
+
+- Fix syntax errors with Tcl send_log (bnc#460886)
+
+-------------------------------------------------------------------
+Thu Dec 18 16:59:23 CET 2008 - tiwai@suse.de
+
+- Fix stap failures with signal tapsets (bnc#459387)
+
+-------------------------------------------------------------------
+Tue Dec 16 13:50:32 CET 2008 - tiwai@suse.de
+
+- Fix dependency on libebl1 (bnc#448331, #445783)
+- Fix stap for 2.6.28 kernels
+
+-------------------------------------------------------------------
+Fri Dec 12 16:32:35 CET 2008 - tiwai@suse.de
+
+- Don't assert of dwarf_getsrcfiles().  This hits recent SUSE
+  kernels (bnc#455992)
+- Backport fix patches for stap-*-server scripts to run with
+  netcat (bnc#446686)
+
+-------------------------------------------------------------------
+Mon Dec  8 14:09:01 CET 2008 - tiwai@suse.de
+
+- fixed unresolved path in man pages (bnc#457217)
+- fixed build for old distros on OBS
+
+-------------------------------------------------------------------
+Thu Dec  4 18:08:23 CET 2008 - tiwai@suse.de
+
+- fix ioblock.stp for SUSE 2.6.27.x kernel (bnc#456175)
+
+-------------------------------------------------------------------
+Fri Nov 21 14:09:21 CET 2008 - tiwai@suse.de
+
+- Add the bound check of parameters to fix segfault (bnc#447551)
+
+-------------------------------------------------------------------
+Tue Nov  4 13:57:24 CET 2008 - tiwai@suse.de
+
+- Fix systemtap assertion with CONFIG_RELOCATABLE (bnc#440351)
+
+-------------------------------------------------------------------
+Thu Sep 11 17:14:47 CEST 2008 - tiwai@suse.de
+
+- updated to snapshot 20080906
+  * Fix / clean up autotools stuff
+  * Ugly workaround for 2.6.27 and later kernel
+  * stap-server updates
+  * Lots of small fixes
+
+-------------------------------------------------------------------
+Tue Aug 12 18:11:10 CEST 2008 - tiwai@suse.de
+
+- updated to snapshot 20080809
+  * bump to 0.7.1
+  * tutorials
+  * examples
+  * i386-fix merged 
+  * previous patches are all merged in
+- add latex2html to buildrequires for generating documents
+
+-------------------------------------------------------------------
+Fri Jun 20 15:58:30 CEST 2008 - tiwai@suse.de
+
+- fix run on i386 (bnc#401970)
+- don't include obsolete linux/compile.h.
+
+-------------------------------------------------------------------
+Wed Jun 18 16:04:01 CEST 2008 - tiwai@suse.de
+
+- updated to snapshot 20080614:
+  * bump to version 0.7, man page updates, misc fixes
+    see ChangeLog for details
+
+-------------------------------------------------------------------
+Fri Mar 14 14:15:17 CET 2008 - tiwai@suse.de
+
+- updated to snapshot 20080308:
+  * configure fixes, compile option changes
+  * fixes for 2.6.25 kernel
+
+-------------------------------------------------------------------
+Wed Jan 30 18:26:01 CET 2008 - tiwai@suse.de
+
+- updated to snapshot 20080126
+  * fix configure and automake stuff
+  * gcc 4.3 fix is included
+  * ufprobes fixes, improvements
+  * reorganized probe condition implementation.
+
+-------------------------------------------------------------------
+Fri Jan 11 17:10:09 CET 2008 - tiwai@suse.de
+
+- updated to snapshot 20080105
+- fixed build of the snapshot with gcc 4.3
+
+-------------------------------------------------------------------
+Mon Nov 19 14:53:53 CET 2007 - tiwai@suse.de
+
+- enable gcc-4.3 patch (yes, we use only gcc4.3 now)
+- updated to snapshot 20071117
+
+-------------------------------------------------------------------
+Thu Oct 25 12:53:04 CEST 2007 - tiwai@suse.de
+
+- disable gcc-4.3 fix again since it breaks older gccs...
+
+-------------------------------------------------------------------
+Wed Oct 24 16:33:35 CEST 2007 - tiwai@suse.de
+
+- fix build with gcc 4.3
+
+-------------------------------------------------------------------
+Mon Oct 22 15:23:15 CEST 2007 - tiwai@suse.de
+
+- updated to snapshot 20071020:
+  * bump up version 0.6
+  * bunch of updates and fixes, see ChangeLog
+
+-------------------------------------------------------------------
+Tue Aug 14 16:53:57 CEST 2007 - tiwai@suse.de
+
+- updated to snapshot 20070811:
+  * Updated -m MODNAME usage
+  * Rework on line editing functions
+
+-------------------------------------------------------------------
+Mon Jul 16 17:39:33 CEST 2007 - tiwai@suse.de
+
+- updated to snapshot 20070714:
+  * configure fix for sqlite
+  * support for crash extension module
+  * new enum for type column in coverage_element
+
+-------------------------------------------------------------------
+Wed Jul  4 12:22:34 CEST 2007 - tiwai@suse.de
+
+- updated to snapshot 20070630:
+  * auto-tools fixes, sqlite3 requirement
+- add sqlite-devel and glib2-devel to buildrequires
+
+-------------------------------------------------------------------
+Wed Jun  6 16:13:15 CEST 2007 - tiwai@suse.de
+
+- updated to snapshot 20070602:
+  * fix for gcc4.3
+  * minor fixes in elaborate.*
+- include the snapshot date into version string
+- clean up spec file
+
+-------------------------------------------------------------------
+Tue May 22 17:09:38 CEST 2007 - tiwai@suse.de
+
+- updated to snapshot 20070519:
+  * Updated temporary handlings
+  * Autoconf tweaks
+  * Performance improvements with const and temporary handlings
+  * Removed do_write and do_read probles, added aio_write,
+    aio_read, writev and readv probes.
+
+-------------------------------------------------------------------
+Mon May 21 12:24:15 CEST 2007 - tiwai@suse.de
+
+- use the external elfutils packages.
+
+-------------------------------------------------------------------
+Tue Apr 24 18:15:56 CEST 2007 - tiwai@suse.de
+
+- updated to snapshot 20070421 and elfutils-0.127:
+  * minor compile warning fixes
+  * add interruptible parameter
+  * improvement on documents
+  * fix for debugfs and relayfs mounts
+  * see ChangeLog for other changes
+
+-------------------------------------------------------------------
+Mon Mar 19 17:25:52 CET 2007 - tiwai@suse.de
+
+- updated to snapshot 20070317:
+  including all fix patches
+
+-------------------------------------------------------------------
+Thu Mar  8 15:24:56 CET 2007 - tiwai@suse.de
+
+- fix the handling of function arguments in more generic way
+  (#245310, #252311)
+  added a new option -P to switch the prologue-search behavior
+
+-------------------------------------------------------------------
+Wed Mar  7 15:47:20 CET 2007 - tiwai@suse.de
+
+- fix misalignment of exception table entry on s390x (#249576)
+
+-------------------------------------------------------------------
+Mon Feb 26 12:42:41 CET 2007 - tiwai@suse.de
+
+- fix crash with large H value in hist_linear() (#248430)
+
+-------------------------------------------------------------------
+Fri Feb 23 16:43:53 CET 2007 - tiwai@suse.de
+
+- fix mmap syscall on s390x (#248110)
+
+-------------------------------------------------------------------
+Thu Feb 15 13:20:32 CET 2007 - tiwai@suse.de
+
+- fix a wrong name of store_deref definition (#245544)
+
+-------------------------------------------------------------------
+Wed Feb 14 16:39:39 CET 2007 - tiwai@suse.de
+
+- fix the handling of function arguments on s390x (#245310)
+
+-------------------------------------------------------------------
+Tue Feb  6 14:51:54 CET 2007 - tiwai@suse.de
+
+- update to snapshot 20070203, bugfixes including:
+  * add missing sockets tapset support (#239346)
+  * fix the array membership (#242481)
+
+-------------------------------------------------------------------
+Wed Jan 31 13:44:43 CET 2007 - tiwai@suse.de
+
+- turn on Autoprov again to fix broken dependency.
+
+-------------------------------------------------------------------
+Tue Jan 30 12:01:03 CET 2007 - tiwai@suse.de
+
+- update to snapshot 20070120 and elfutils-0.125 to fix major
+  bugs (#238710):
+  * fixed libdw known bugs in elfutils 0.124
+  * add the missing support of tapsetr/errno.stp for s390x
+  * fix conditionals in syscall tapset for s390x
+  * new macros to safely read/write values from kernel pointers
+  * fix the non-standard C behavior to handle NULL in an array
+  * fixed support for benchmarking mode with off-line code
+  * added support to allow user to use array size declarations
+  * reduce number of calls to stp_module_relocate within $tvar
+    functions
+
+-------------------------------------------------------------------
+Tue Jan  9 19:30:00 CET 2007 - tiwai@suse.de
+
+- updated to the recent snapshot version (FATE 301670).
+  * fix cache bugs
+  * auto-tools fixes
+  * probe registartion rework
+  * allow negative numeric literals
+  * bugfixes/optmizations
+- elfutls 1.2.4
+  removed codes with problematic license in elfutils (#232894)
+
+-------------------------------------------------------------------
+Thu Aug 24 19:10:59 CEST 2006 - tiwai@suse.de
+
+- update elfutils to 1.2.3, including vmlinux.debuginfo fix.
+
+-------------------------------------------------------------------
+Thu Aug 24 18:20:39 CEST 2006 - tiwai@suse.de
+
+- fix the auto-lookup of vmlinux debuginfo for SUSE systems
+- fix the stp compilation with 2.6.18 kernel
+
+-------------------------------------------------------------------
+Wed Aug  9 15:27:09 CEST 2006 - tiwai@suse.de
+
+- updated to latest snapshot (version 0.5.8)
+  with elfutils-1.2.2.
+
+-------------------------------------------------------------------
+Tue Apr 18 03:14:22 CEST 2006 - mason@suse.de
+
+- Update to latest snapshot 
+
+-------------------------------------------------------------------
+Sun Apr  9 20:32:35 CEST 2006 - mason@suse.de
+
+- created package
+

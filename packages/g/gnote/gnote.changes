@@ -1,0 +1,945 @@
+-------------------------------------------------------------------
+Sun Apr 14 15:51:46 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Fix Preferences menu item not visible in menu.
+  + Update manual.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar 17 16:29:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan  5 11:13:52 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.0:
+  + Added new automated tests.
+  + Removed App menu, refactored actions menu.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 26 18:10:41 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.0:
+  + Added new automated tests.
+  + Removed a bunch of unused localized manual images.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar 18 22:56:19 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.28.0:
+  + Fixes:
+    - Manual validation;
+    - gettext-domain in GSettings schema;
+    - Do not show empty actions menu (bgo#789750);
+    - Some shortcuts, that are added by context menu (bgo#792859).
+  + Updated manual.
+  + Updated translations.
+- Update URL tag to https://wiki.gnome.org/Apps/Gnote: currently
+  the Gnote's web page.
+- Drop:
+  + shortkey-ctrl-o-alt-w.patch: fixed upstream.
+  + update-desktop-files BuildRequires and suse_update_desktop_file
+    macro: they are no longer needed.
+- Add desktop-file-utils BuildRequires to avoid implicit
+  dependencies since the configure script checks for desktop-file-\
+  validate. It was already being pulled by update-desktop-files.
+- Conditionalize glib2_gsettings_schema_*, desktop_database_* and
+  icon_theme_cache_* post/postun scriptlets, and
+  glib2_gsettings_schema_require macro: they are needed only in
+  distro releases where RPM 4.13 is not present.
+- Point fdupes to the data directory instead of directly to the
+  build root, which is a practice that must be avoided.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:30:25 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sun Feb 11 05:51:40 UTC 2018 - qzheng@suse.com
+
+- Add shortkey-ctrl-o-alt-w.patch:
+  When left-click the note tree view, shortkey should be enable
+  ( bsc#1075335, bgo#792859 ).
+
+-------------------------------------------------------------------
+Mon Sep 18 22:05:25 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.0:
+  + Updated manual.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  5 21:30:09 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.25.0:
+  + Removed Shadow from SearchView (bgo#783610).
+  + Formatting and actions menus redesigned.
+  + Fix possible crash when deleting a notebook (bgo#701846).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug 20 18:30:52 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.1:
+  + Fix typo in help.
+  + Fix possible crash when deleting a notebook (bgo#701846).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 28 11:05:34 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.0:
+  + Left align items in popovers and increase vertical spacing
+    (bgo#778823).
+  + Fix --background option.
+  + Make D-Bus APIs for opening notes respect new window setting
+    (bgo#778871).
+  + Change default for window to not autosize (bgo#778822).
+  + Fix no icon for Gnote windows in some WMs (bgo#762001).
+  + Use icon for Create Note button (bgo#704116).
+  + Fix crash in search.
+  + Updated translations.
+- Bump _gnote_version defines to 3.24, following upstream.
+
+-------------------------------------------------------------------
+Mon Feb 27 08:41:21 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.0:
+  + New Features:
+    - New optional dependency: UnitTest++ (required only for
+      running gnote tests).
+    - Removed dependency: boost (all of it).
+    - Gnote now internally uses Unicode strings for all data.
+  + Fixes:
+    - Fix indentation sometimes getting is lost after restart
+      (bgo#773630).
+    - Use %1 style placeholders instead of %1% in translatable
+      strings (bgo#774262).
+    - Make app menu item ordering consistent with GNOME
+      (bgo#772009).
+    - Use open-menu-symbolic icon for menu (bgo#775320).
+  + Updated translations.
+- Drop libboost_test-devel/boost-devel BuildRequires: no longer
+  needed.
+- Bump _gnote_version defines to 3.23, following upstream.
+
+-------------------------------------------------------------------
+Wed Feb  1 10:55:46 UTC 2017 - adam.majer@suse.de
+
+- Use individual libboost-*-devel packages instead of boost-devel.
+  + Add conditional libboost_test-devel BuildRequires.
+
+-------------------------------------------------------------------
+Tue Nov 29 10:47:05 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.1:
+  + Fix possible loss of bullet when using formatting (bgo#773630).
+  + More translator comments for the boost formats (bgo#774262).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 25 14:29:19 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 17:11:29 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.1:
+  + New Features:
+    - Shell search provider will search only in note titles
+      (bgo#765894).
+    - Change accelerator for Back button to <Ctrl>.
+  + Fixes:
+    - Fix build against Glibmm 2.21 (bgo#770541).
+    - Fix memory leak in TrieTree (bgo#770056).
+  + Updated translations.
+- Drop gnote-buildfix.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Aug 31 19:01:22 UTC 2016 - dimstar@opensuse.org
+
+- Add gnote-buildfix.patch: Fix build.
+
+-------------------------------------------------------------------
+Fri Aug 26 18:23:45 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.21.0:
+  + New Features:
+    - GTK+ 3.20 is required.
+    - Undo will now undo last user action as single unit
+      (bgo#747202).
+    - Added shortcuts window.
+    - Added <Ctrl>Left accelerator to go from note to main window.
+  + Fixes:
+    - Enter key will find next match when searching in note
+      (bgo#700624).
+    - Fixed formatting buttons when selection is mixed formatting
+      (bgo#702248).
+    - Fixed crash on first run when data migration is required
+      (bgo#765791).
+    - Fixed disabling application plugins.
+    - Fixed Windows size shrinking when switching from/to note
+      (bgo#764464).
+    - Fixed tab key activating search, while it shouldn't
+      (bgo#767834).
+    - Escape will close search when search entry has focus.
+    - Make --search always show main window in search mode
+      (bgo#769906).
+  + Updated translations.
+- Align BuildRequires with what configure checks for:
+  + Removed gtkmm3-devel, libuuid-devel and libxslt-devel.
+  + Added pkgconfig(glibmm-2.4), pkgconfig(gtk+-3.0),
+    pkgconfig(gtkmm-3.0), pkgconfig(libxslt) and pkgconfig(uuid).
+- Bump _gnote_version to 3.21.
+
+-------------------------------------------------------------------
+Thu May 19 04:16:43 UTC 2016 - tyang@suse.com
+
+- Update to GNOME 3.20.1  Fate#318572
+
+-------------------------------------------------------------------
+Sun May 15 18:14:39 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Fix typo in user visible string (bgo#766003).
+  + Fix crash on first run when data migration is required
+    (bgo#765791).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 14 22:09:12 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Sat Mar 26 12:18:17 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.0:
+  + Text menu now uses popover.
+  + Updated translations.
+- Bump soname following upstream changes.
+- Add a define _gnote_version and set it to 3.20, make future
+  soname bumps easier to deal with.
+
+-------------------------------------------------------------------
+Mon Feb  1 08:31:40 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.0:
+  + GTK+ 3.16 is required.
+  + Gtkmm 3.18 is required.
+  + C++11 is required.
+  + configure option --with-x11-support was removed.
+  + Use popover for gear menu.
+  + Updated translations.
+- Drop pkgconfig(x11) BuildRequires: no longer supported.
+- Drop --with-x11-support and --with-cxx11-support configure
+  parameters: no longer recognized.
+
+-------------------------------------------------------------------
+Sat Nov 28 18:18:18 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Fix crash when running with X11 support under Wayland.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 27 15:25:39 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.0:
+  + Allow closing window via Ctrl+Q (bgo#755399).
+  + Updated translations.
+- Bump soname following upstream changes.
+
+-------------------------------------------------------------------
+Mon Sep 14 07:23:24 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.1:
+  + Handle ircs URLs (bgo#754940).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 14 20:40:07 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.0:
+  + Allow to configure, when client side decorations are used
+    (bgo#748121).
+  + Drop dependency on gnome-common.
+  + Ident selected lines on tab (bgo#632457).
+  + Updated translations.
+- Add the %fdupes macro, we already had the BuildRequires, but were
+  not actually using the required macro in install section.
+
+-------------------------------------------------------------------
+Sun Jul 12 18:33:17 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Fix crash when DESKTOP_SESSION env variable is not set
+    (bgo#752024).
+  + Fix crash when quiting (bgo#751427).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 30 10:45:49 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.1:
+  + Use client side window decorations only in Gnome (bgo#748121).
+  + Do not lose identation on first item when double (bgo#749658).
+  + Fix typos in documentation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 30 10:53:23 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated manual.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar  8 16:05:04 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.15.1:
+  + New Features: Manual updates.
+  + Fixes: Updated boost.m4 (bgo#745160).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 17 13:39:17 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.0:
+  + New Features:
+    - Remove status icon.
+    - Remove builtin key binding.
+    - Move notebook selection from toolbar to action menu.
+  + Fixes:
+    - Manual fixes (bgo#700422).
+    - TOC copyright notice fixes (bgo#737918).
+    - Fix some typos.
+    - Fix toolbar in note view.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 21 18:29:51 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.14.2:
+  + Fix crash when disabling note actions (bgo#742657).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Dec 14 04:04:52 UTC 2014 - badshah400@gmail.com
+
+- Update to version 3.14.1:
+  + Bugs fixed: bgo#700422, bgo#737918.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 26 21:05:52 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.0:
+  + New Features:
+    - Increase the default size of note window.
+    - Add option to autosize note window (bgo#709699).
+  + Fixes:
+    - Optimize auto-linking (bgo#729832).
+    - Fix link action not always sensitive when text is selected.
+    - Timeout when started as shell search provider (bgo#736472).
+    - Fix bullet not removed on delete key.
+    - Fix removing bullet on enter at the start of bulleted line
+      (bgo#702018).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May  7 20:43:34 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.0:
+  + New Features:
+    - Header bar rework.
+    - Add configure option for C++11 (--with-cxx11-support).
+  + Fixes:
+    - Fix build using C++11 incompatible compiler (bgo#727077).
+  + Updated translations.
+- Pass --with-cxx11-support to configure to ensure cxx11-support is
+  built, following upstream changes.
+- Bump soname following upstream changes.
+
+-------------------------------------------------------------------
+Wed Mar 26 19:35:27 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + New Features:
+    - NoteDirectoryWatcher plugin interval is now configurable.
+    - Import plugins are enabled by default and auto-disabled after
+      import (bgo#723635).
+    - Plugins are now checked for compatibility with Gnote.
+  + Updated translations.
+- Drop gnote-enable-tomboy-migration.patch: Fixed upstream.
+- Bump soname following upstream changes.
+
+-------------------------------------------------------------------
+Wed Feb 12 16:39:23 UTC 2014 - mgorse@suse.com
+
+- Add gnote-enable-tomboy-migration.patch: enable Tomboy migration
+  by default (bnc#862246, bgo#723635).
+
+-------------------------------------------------------------------
+Wed Feb 12 14:49:51 UTC 2014 - mgorse@suse.com
+
+- Add gnote-enable-tomboy-migration.patch -- enable Tomboy
+  migration by default (bnc#862246 bgo#723835). 
+
+-------------------------------------------------------------------
+Sun Jan 19 14:43:57 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.1:
+  + New Features:
+    - App menu: standardize help/about/quit (bgo#720130).
+    - Help: add logo next to title (bgo#720131).
+    - Do not close main window on escape.
+    - Make setting enable-close-note-on-escape work (bgo#720748).
+    - Use Gtk::HeaderBar in main window.
+  + Fixes:
+    - Hold application in background mode, fixes crash in some
+      environments (bgo#719666).
+    - Never open new window with --background (bgo#720491).
+    - Fix command line processing on primary instance.
+    - Pluralize "notes" keyword in desktop file.
+    - Fix tooltip on unpin button (bgo#721357).
+    - Update notes list when back from note (bgo#721358).
+    - Fix empty items in application menu in some environments.
+    - Update documentation licence (new FSF address) (bgo#721563).
+    - Do not close main window when middle-click on link
+      (bgo#721852).
+    - Update README (bgo#721855).
+    - Update AppData screenshot.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov  4 09:34:52 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.0:
+  + Updated boost.m4.
+  + Rename add-ins -> plugins (bgo#700422).
+  + Change title Notes -> Gnote (bgo#701854).
+  + Add TODO plug-in.
+  + Remember spell-check language per note (bgo#586350).
+  + Add ability to disable spell check per note (bgo#703258).
+  + Add options to disable url and note autolinking (bgo#633855).
+  + Add links tab to preferences dialog.
+  + Add plug-in to export to Getting Things GNOME (bgo#697934).
+
+-------------------------------------------------------------------
+Tue Oct 29 18:46:01 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Add missing space in user visible string (bgo#709494).
+  + Fix spell-check breaking note links (bgo#703664).
+  + Fix note rename dialog freeze.
+  + Fix formatting breaking links (bgo#702160, bgo#702239).
+  + Fix internal links merging with other links.
+  + Fix crash when disabling note add-in.
+  + Fix build without C++11 (bgo#710949).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 28 19:30:09 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.10.0:
+  + New Features:
+    - Updated manual.
+    - Notes list is now search-as-you-type.
+    - Added AppData.
+    - Changed design of create notebook dialog (bgo#701845).
+  + Fixes:
+    - Fix note disabling.
+    - Remove menu item when statistics add-in is disabled.
+    - Make dttest locale-independent (bgo#707546).
+  + Updated translations.
+- Bump .so name following upstream changes.
+- Remove V=1 from make as it only fills up the obs buildlog to no
+  use, debugging is done locally anyway.
+
+-------------------------------------------------------------------
+Mon Aug 26 15:27:33 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.3:
+  + New Features:
+    - boost::lexical_cast dependency not used if C++11 is
+      supported.
+    - BOOST_FOREACH dependency not used if C++11 is supported.
+    - Special Notes notebook add-in.
+    - ReadOnly add-in (bgo#588807).
+  + Fixes:
+    - Don't open new note window, if it's already open
+      (bgo#703151).
+    - Add icon for Active Notes notebook (bgo#704114).
+    - Update notes list result when getting back (bgo#702149).
+    - Avoid lock-up, which sometimes happens when clicking out from
+      title (bgo#705879).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jul 21 16:20:38 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.2:
+  + New Features:
+    - Remove underline from note title (bgo#701855).
+    - Always open new windows from tray (bgo#700458).
+    - Add option to always open notes in new window (bgo#700458).
+    - Make preferences dialog more compact.
+    - Do not save window position, leave it to window manager.
+    - Make X11 conditional dependency to allow run on Wayland
+      (--with-x11-support to enable).
+    - Save main window sorting, always show it (bgo#700609,
+      bgo#700436).
+    - Respect gnome clock-format setting (bgo#700432).
+    - Rename Notes dialog column "Last Changed" to "Modified"
+      (bgo#704111).
+    - Make "Modified" column format more compact (bgo#704113).
+    - Add menu item and accelerator for renaming notebook
+      (bgo#700435).
+    - Shorten context menu item labels.
+    - New dependency BOOST_FOREACH.
+  + Fixes:
+    - "Table of Content" renamed to "Table of Contents"
+      (bgo#701942).
+    - Note title no longer displayed in brackets (bgo#701853).
+    - Some cleanup in create notebook dialog (bgo#701845).
+    - Do not show faded icons in main window toolbar (bgo#701851).
+    - Bump required version of Glibmm to 2.32 (actually required
+      version).
+    - Fix occasional crash when using tray icon.
+    - Fix crash when closing after multiple link activations.
+    - Do not overwrite entire note when replacing title
+      (bgo#701616).
+    - Fix critical assertion errors when searching (bgo#700626).
+    - Set focus to notes list when showing it (bgo#700611).
+    - Fix notebook selection on rename.
+    - Make selection saving work reliably (bgo#700553).
+    - Do not show empty Active notes notebook.
+    - Disable rename notebook context menu for special notebooks
+      (bgo#704197).
+  + Updated translations.
+- Pass --with-x11-support to configure, we don't want to go the
+  wayland route just yet.
+- Stop passing obsolete --disable-scrollkeeper to configure.
+
+-------------------------------------------------------------------
+Sat Jun 22 12:55:32 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.1:
+  + New Features:
+    - Add check for desktop file validity.
+    - Add shell search provider (bgo#694014).
+    - Redesign main window toolbar (bgo#699119, bgo#701614,
+      bgo#701450).
+    - Add accelerator for New Note in main window (bgo#700434).
+    - Add F10 accelerator for gears button.
+    - Add Ctrl+W accel to close window (bgo#700434).
+    - Embed note toolbar into main window (bgo#699119).
+    - Move add-in menu items to main window gears menu
+      (bgo#700655).
+    - Make TOC header items act on entire line (bgo#700612).
+    - Rename Pinned Notes toolbar to Important Notes (bgo#700493).
+    - Add tooltip for pin button (bgo#700437).
+    - Shorten special notebook names (bgo#701570).
+    - Remove unsensitive Font Size menu item (bgo#701618).
+  + Fixes:
+    - Fix keywords translations.
+    - Fix open note in new window context item sensibility.
+    - Text fixes in preferences dialog.
+    - Fix English usage and grammar throughout help pages.
+    - Make new notes numbered from 1 (bgo#700448).
+    - Sort notes and notebooks case-insensitively and using Unicode
+      (bgo#700438).
+    - Fix splitter in search window (bgo#700431).
+    - Fix All Notes notebook selection in search.
+    - Fix TOC accelerators when IBus is used (bgo#701555).
+  + Updated translations.
+- Split out the new gnome-shell-search-provider in own sub-package.
+
+-------------------------------------------------------------------
+Sun May  5 09:16:12 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.0:
+  + New Features:
+    - Added statistics add-in.
+    - Load only enabled addins on startup.
+    - Errors, printed to console, are now translatable.
+    - Add Table Of Content add-in (bgo#698059).
+  + Bugs fixed:
+    - Fix desktop file keyword translations (bgo#696664).
+    - Fix opening help pages using URI (bgo#698327).
+    - Fix show help on F1 in main window search mode.
+    - Let move window my dragging toolbar (bgo#699115).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar 24 20:38:19 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.8.0:
+  + New Features:
+    - Updated manual.
+    - Increase default width of main window.
+  + Bugs Fixed:
+    - Fix crash on first run.
+    - Make labels for delete actions translatable.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 15 17:06:38 CET 2013 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Sun Mar  3 19:41:12 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.3:
+  + New Features:
+    - Hide titlebar when maximized
+    - Require Gtkmm 3.6
+    - Use Gtk::SearchEntry for search entries
+    - Return spell check support (requires GtkSpell3)
+    - Redesing main window toolbar
+    - Ability for add-ins to add actions to main window search and
+      note modes
+  + Fixes:
+    - Remove use of deprecated gdk_threads_* functions
+    - Fix ocasional crashes and hungs when launching syncronization
+    - Save main window pos and size on quit
+    - Fix opening notes via command line args
+    - Gnote silently discard/truncate data when disk is full
+      (bgo#627317)
+    - Fix export to HTML with XML special chars in title
+      (bgo#694935)
+  + Updated translations.
+- Add pkgconfig(gtkspell3-3.0) BuildRequires: verified dependency.
+
+-------------------------------------------------------------------
+Sun Jan 27 17:57:25 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.2:
+  + Add automatic synchronization
+  + Updated manual
+  + Fix remembered selection with replacing selected text
+  + Fix status icon for Xfce 4 (bgo#666775)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan 26 19:14:22 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.7.1:
+  + New Features:
+    - Add new special notebook PinnedNotesNotebook.
+    - Add new special notebook Active Notes.
+    - Replace switcher by search button in main window.
+    - Add New Note button to main window toolbar (bgo#657270).
+    - Add keywords to desktop file.
+    - Change window title according to what's displayed.
+  + Fixes:
+    - Fix segfaults when using tray menu (bgo#688558).
+    - Fix Search All Notes tray menu item.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 25 08:52:13 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.0:
+  + Show notes inside main window, do not use separate windows.
+  + Make several main windows possible.
+  + Add application menu (bgo#675251).
+  + Save main window maximization state.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 24 17:40:25 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.6.2:
+  + New Features: Add keywords for search.
+  + Fixes:
+    - Fix remembered selection with replacing selected text.
+    - Fix status icon for Xfce 4 (bgo#666775)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Oct 28 17:37:57 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Fix build on GCC 4.2 (bgo#684931).
+  + Fix runtime warning with markup in fixed width addin.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 28 20:35:15 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + New Features:
+    - WebDAV synchronization checks now time-out
+    - Port to new documentation infrastructure
+  + Fixes:
+    - Fix error in WebDAV manual
+    - Fix exit in status icon mode on close window
+  + Updated translations.
+- Replace gnome-doc-utils-devel BuildRequires with yelp-tools:
+  follow upstreams port to the new documentation infrastructure.
+
+-------------------------------------------------------------------
+Wed Aug 29 08:05:13 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.0:
+  + New Features:
+    - Added NoteDirectoryWatcher add-in (bgo#583812)
+    - Droped dependency on libpcrecpp
+    - Migrated to libsecret, dropped dependency on libgnome-keyring
+    - Updated documentation
+    - Switch to GNOME versioning scheme
+  + Fixes:
+    - Add check for X11 (bgo#679496)
+    - Fixed FTBFS with Debian GNU/kFreeBSD (bgo#681588)
+    - Make possible to disable synchronization addins
+    - Fixed memory leak in search window
+  + Updated translations.
+- Replace pkgconfig(gnome-keyring-1) BuildRequires with
+  pkgconfig(libsecret-1), following upstream.
+- Drop pcre-devel BuildRequires: no longer needed.
+- Add pkgconfig(x11) BuildRequires: new dependency.
+- Call /sbin/ldconfig in post/postun: as the package contains a
+  library, this is needed.
+
+-------------------------------------------------------------------
+Mon Jul 16 16:36:25 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.9.1:
+  + New Features:
+    - Gtkmm 3.4 is required
+    - Derived Search window from Gtk::ApplicationWindow
+    - Replace shave with automake's silent rules (bgo#673710)
+    - Added 256x256 app icon (bgo#674267)
+    - Added log to file capability in debug mode
+    - Added gnome-keyring dependency
+    - Added WebDAV synchronization
+    - Droped support for panel applet
+    - Migrated to Gtk::Application
+  + Fixes:
+    - Fix quit application for glib >= 2.32 (bgo#670104)
+    - Removed use of deprecated GtkStyle (bgo#667395)
+    - Fixed missing include for Glibmm 2.32 (bgo#671787)
+    - Fixed multiple compiler warningsbgo
+    - Fix bullet indentation when printing (bgo#674904)
+  + Updated translations.
+- Drop gnote-buildfix.patch, fixed upstream.
+- Drop BuildRequires: pkgconfig(libpanelapplet-4.0), not needed
+  anymore.
+- Add BuildRequires: pkgconfig(gnome-keyring-1), pulled in by
+  something else before.
+
+-------------------------------------------------------------------
+Sat Mar 10 18:28:58 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.9.0:
+  + New Features:
+    - Added core synchronization support
+    - Added addin to synchronize with local folder.
+  + Fixes:
+    - Fix missing header for Glib::signal_idle (bgo#667349)
+    - Call startup defined in GApplication
+    - Remove mnemonic references in documentation (bgo#670916)
+    - Fix selection deletion and remembering it
+    - Fix quit application for glib >= 2.32
+  + Updated translations.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+- Drop gnote-new-glibmm.patch: fixed upstream.
+- Add gnote-buildfix.patch: Fix build by incuding missing headers.
+
+-------------------------------------------------------------------
+Fri Jan  6 14:11:23 UTC 2012 - vuntz@opensuse.org
+
+- Add gnote-new-glibmm.patch: fix build with recent versions of
+  glibmm, taken from git.
+
+-------------------------------------------------------------------
+Tue Jan  3 07:50:31 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.8.2:
+  + New Features:
+    - Added template bar to template notes
+    - Integrated with GtkApplication (bgo#640430)
+    - Gnote remains present while at least one window is present
+    - Panel applet disabled by default
+    - Added option for status icon to preferences (bgo#663817)
+    - Added background mode
+    - Return ordered note list when using D-BUS search (bgo#662246)
+  + Fixes:
+    - Fixed keys in GSettings schema descriptions
+    - Manual fixes
+    - Updated man page to current behaviour
+    - Do not open Search Window in status icon mode (bgo#653447)
+    - Fixed special XML character encoding
+    - Make sticky note importer support special chars
+    - Show in all desktop environements (bgo#664609)
+    - src/notetag.hpp must include <map> (bgo#655340)
+    - Add missing includes (bgo#665344)
+    - Fixed a warning about a condition never reached
+    - Fixed note deletion with international characters
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Drop gnote-buildfix.patch: fixed upstream.
+- Pass --enable-applet to configure to keep building the applet.
+
+-------------------------------------------------------------------
+Thu Dec  1 21:57:00 UTC 2011 - dimstar@opensuse.org
+
+- Add gnote-buildfix.patch: Fix build for Factory.
+
+-------------------------------------------------------------------
+Sun Oct 23 21:30:47 UTC 2011 - zaitor@opensuse.org
+
+- Update to version 0.8.1:
+  + New features:
+    - Removed case-sensitive search from Search All Notes window.
+    - Focus chain for Search All Notes.
+    - Optimized note creation, renaming and deletion
+      (bgo#660653, bgo#660663).
+    - Search in notebook suggests to search all notes, when there
+      are no matches.
+  + Fixes:
+    - Open note action availability.
+    - Program name in about dialog.
+    - Help for --start-here.
+    - Don't change content modification time when autolinking.
+    - Link not created when linking to existing note.
+    - Broken link activation does not make link normal.
+    - GetNoteContents D-Bus API returns wrong text for notes not
+      displayed (bgo#647888).
+    - Case-insensitive search via SearchNotes D-Bus API 
+      (bgo#662426).
+    - Added -Wformat-security to compilation flags (bgo#662490).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 25 23:10:13 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.8.0:
+  + New features:
+    - Ported to GTK 3.0
+    - New documentation in Mallard format
+    - Handle x-scheme-handler/note mime-type
+    - Use pkg-config for uuid (bgo#649486)
+    - Build only shared libraries for addins (bgo#620015)
+    - Search window context menus rework (bgo#601852)
+    - Disabled GtkSpell
+    - Ported panel applet to libpanelapplet-4 (bgo#639779)
+    - Ported configuration to Gio::Settings
+    - Status icon presence is now configurable
+    - About dialog is now a child of Search All Notes
+    - Added replace title addin (bgo#639938)
+    - Changed search to prioritize note titles
+    - Ported D-Bus support to Gio::DBus (also fixes bgo#618330)
+    - Open all selected notes
+    - Show note title when deleting only 1 note
+    - Removed minimum size on Search All Notes Window
+    - Set min width of note title column to 150
+  + Fixes:
+    - Place user local addins in addins subdirectory (bgo#619867)
+    - Change tomboyimport according recent Tomboy
+    - Import sticky notes when Tomboy is not installed (bgo#605382)
+    - Use actual visibility of status icon (bgo#650001)
+    - Fix dragging notes to Unfiled notes (bgo#655208)
+    - Fix command line option --new-note with argument
+    - Fix delete key behaviour in bulleted list
+    - Don't create nested links
+  + Updated translations.
+- Drop gnote-no-deprecated.patch: fixed upstream.
+- Remove gconf2-devel BuildRequires: ported to GSettings.
+- Chnage gtkmm2-devel BuildRequires to gtkmm3-devel, following port
+  to GTK+ 3.
+- Remove gtkspell-devel BuildRequires: there's no gtkspell support
+  for GTK+ 3 right now.
+- Change libpanelappletmm-devel BuildRequires to
+  pkgconfig(libpanelapplet-4.0), following port to new library.
+  Also remove the build_applet define, since it's now unneeded.
+- Stop passing --enable-dbus to configure: this option is now gone.
+- Replace gconf schema packaging machinery with gsettings
+  machinery.
+
+-------------------------------------------------------------------
+Sun Jul 31 09:15:01 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.7.5:
+  + New features:
+    - If Search All Notes dialog is shown, make about dialog a
+      child of it
+    - Show search window when launching
+    - Improved Search All Notes context menus (bgo#601852)
+  + Fixes:
+    - When dragging notes to Unfiled notes, the note view is not
+      updated (bgo#655208)
+    - When closing Search All Notes dialog, use actual visibility
+      of status icon (bgo#650001)
+    - Remove usage of GConf and depending on Tomboy, when importing
+      sticky notes (bgo#605382)
+    - Change tomboyimport according recent Tomboy
+    - Fix build on FreeBSD and OpenBSD (bgo#649478, bgo#649481,
+      bgo#649472)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 31 14:55:17 CEST 2011 - vuntz@opensuse.org
+
+- Disable the build of the applet with a %build_applet define,
+  unless %favor_gtk2 is set (which means we don't build against
+  GNOME 3).
+- Add gnote-no-deprecated.patch to not use some deprecated APIs
+  that break the build.
+
+-------------------------------------------------------------------
+Thu May 12 10:09:32 UTC 2011 - feeyo@cronosproject.org
+
+- Update to version 0.7.4:
+  + bgo#620402: Show addin categories and versions in addin
+    preferences tab
+  + bgo#610194: Implemented notebook rename
+  + bgo#641416: Drop dependency on Boost filesystem
+  + Bugs fixed: bgo#631408, bgo#633976, bgo#637051, bgo#594932,
+    bgo#585048, bgo#608713, bgo#633951, bgo#634026, bgo#627539,
+    bgo#588098, bgo#641545, bgo#638321, bgo#627073, bgo#627075,
+    bgo#627418, bgo#627417, bgo#646051.
+- Drop gnote-replace_boost_with_glib.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Mar 20 21:53:18 UTC 2011 - dimstar@opensuse.org
+
+- Add gnote-replace_boost_with_glib.patch: Replace
+  boost::filesystem with glib equivalents. Taken from upstream git.
+
+-------------------------------------------------------------------
+Sat Feb 12 18:46:05 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Add missing Recommends for lang subpackage.
+
+-------------------------------------------------------------------
+Sun Dec 12 16:31:30 UTC 2010 - bitshuffler@opensuse.org
+
+- Update to 0.7.3.
+
+-------------------------------------------------------------------
+Sun Apr  4 14:03:43 UTC 2010 - bitshuffler@opensuse.org
+
+- Initial package
+

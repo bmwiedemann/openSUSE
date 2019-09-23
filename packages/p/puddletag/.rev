@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b94419b01e24d4dea00c3cb0b156eb14</srcmd5>
+    <version>1.2.0</version>
+    <time>1499291849</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>498964</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b475e832b3f54f3526cd704a7474bd9f</srcmd5>
+    <version>1.2.0</version>
+    <time>1500275383</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>509958</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e1fa87d57de0294745c66f71812542ec</srcmd5>
+    <version>1.2.40git.20190609T143128~aab842a</version>
+    <time>1568805117</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731490</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,19 @@
+--- Makefile
++++ Makefile
+@@ -30,11 +30,11 @@
+ 	rm -f ${BIN_LIST} core *~
+ 
+ install:	${BIN_LIST}
+-	install -o root -g root -m 751 ${BIN_LIST} ${BIN_DIR}
+-	install -d -o root -g root -m 755 ${MAN_DIR}
+-	install -o root -g root -m 644 ${MAN_LIST} ${MAN_DIR}
++	install -m 751 ${BIN_LIST} ${BIN_DIR}
++	install -d -m 755 ${MAN_DIR}
++	install -m 644 ${MAN_LIST} ${MAN_DIR}
+ 
+ install.doc:	${DOC_LIST}
+-	install -d -o root -g root -m 755 ${DOC_DIR}
+-	install -o root -g root -m 644 ${DOC_LIST} ${DOC_DIR}
++	install -d -m 755 ${DOC_DIR}
++	install -m 644 ${DOC_LIST} ${DOC_DIR}
+ 

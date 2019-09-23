@@ -1,0 +1,141 @@
+-------------------------------------------------------------------
+Tue Jul  2 13:26:59 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add explicit BuildRequires for pkg-config for doc flavor, otherwise
+  configuration on Leap 15.x / SLE 15 fails.
+- Disable build and checks for tools/bindings when building API docs.
+
+-------------------------------------------------------------------
+Thu Jun 27 00:14:16 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Make the package name dependent on the flavor, otherwise OBS can not track
+  the packages correctly and keeps blocking until all flavors are finished.
+- Remove unnneded Requires: presage in devel subpackge
+
+-------------------------------------------------------------------
+Tue Jun 25 11:32:39 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Split out API doc generation using multibuild. graphviz-gd has
+  become quite heavy as a build dependency.
+- Cleanup specfile
+  * remove defattr, use license macro
+  * remove conditionals for EOLed distribution versions
+- Remove gpresagemate, it depends on the long deprecated XEVIE extension
+- Set she-bang for /usr/bin/presage_dbus_* to /usr/bin/python2
+
+-------------------------------------------------------------------
+Sat Nov 11 01:02:34 UTC 2017 - zaitor@opensuse.org
+
+- Drop obsolete and unused libgnome-devel BuildRequires: No longer
+  needed.
+
+-------------------------------------------------------------------
+Fri May 19 14:28:13 UTC 2017 - jengelh@inai.de
+
+- Add presage-buildcycle.diff to break the build cycle
+  preemptively.
+- Limit fdupes to not cross typical partition boundaries.
+
+-------------------------------------------------------------------
+Sun Jun 19 23:32:21 UTC 2016 - jengelh@inai.de
+
+- Request wx3 for building so we can move off wx2.8
+
+-------------------------------------------------------------------
+Sat Jun 18 06:16:52 UTC 2016 - i@marguerite.su
+
+- add patch: presage-0.9.1-doxygen-no-freesans.patch
+  * doxygen no longer ships with the FreeSans font
+  * used to suppress the annoying fontconfig output
+- add BuildRequires ghostscript-fonts-std providing Helvetica,
+  default for doxygen, which is also smaller in size than
+  texlive-gnu-freefont-fonts that provides FreeSans
+
+-------------------------------------------------------------------
+Fri Jun 17 15:07:19 UTC 2016 - i@marguerite.su
+
+- add patch: presage-0.9.1-gcc6.patch
+  * fix boo#985362
+  * fix narrowing conversion from int to char inside {}
+
+-------------------------------------------------------------------
+Fri Mar  4 08:32:12 UTC 2016 - bwiedemann@suse.com
+
+- Add reproducible.patch to make build-compare work
+
+-------------------------------------------------------------------
+Sun Aug 23 13:15:28 UTC 2015 - i@marguerite.su
+
+- update version 0.9.1
+  * see NEWS
+- drop: presage-0.9-automake-1.14.patch
+- drop: presage-0.9.0-automake_1.12_abuild.patch
+- add:  presage-0.9.1-automake-1.12.patch
+- add:  presage-0.9.1-automake-1.14.patch
+- drop: presage-swig-3.0.patch,upstreamed
+
+-------------------------------------------------------------------
+Mon Jan 26 13:35:56 UTC 2015 - dimstar@opensuse.org
+
+- Add presage-swig-3.0.patch: Fix build with SWIG 3.0.
+
+-------------------------------------------------------------------
+Mon Oct 27 09:07:27 UTC 2014 - i@marguerite.su
+
+- fix build for factory
+  * add patch: presage-0.9-automake-1.14.patch
+  * automake 1.14 starts to check subdir-objects.
+
+-------------------------------------------------------------------
+Tue Jun 10 16:31:45 UTC 2014 - i@marguerite.su
+
+- update version 0.9.beta20140216
+  * see ChangeLog file
+- drop patch: presage-0.8.9-automake_1.12_abuild.patch
+- add patch: presage-0.9.0-automake_1.12_abuild.patch
+
+-------------------------------------------------------------------
+Tue Sep 24 09:48:34 UTC 2013 - i@marguerite.su
+
+- update version 0.8.9
+  * a minor bugfix release
+  * see Changelog and News for details
+
+-------------------------------------------------------------------
+Wed Jul  3 02:23:36 UTC 2013 - i@marguerite.su
+
+- update version 0.8.9.beta20130208
+  * see ChangeLog for details
+
+-------------------------------------------------------------------
+Thu Sep 20 15:44:53 UTC 2012 - i@marguerite.su
+
+- fix build after autoreconf -fi using automake 1.12
+  * presage_automake_1.12.abuild.patch
+
+-------------------------------------------------------------------
+Wed Sep 19 04:39:01 UTC 2012 - i@marguerite.su
+
+- fix cmuclmtk command in arpa.
+  * patch1: presage_cmuclmtk.patch
+  * port old CMU-Statistical Language Modelling tools to its
+    successor CMU-Cambridge Statistical Language Modeling Toolkit v2
+    (cmuclmtk)
+
+-------------------------------------------------------------------
+Tue Sep 18 08:01:46 UTC 2012 - jzheng@suse.com
+
+- fix ncurses check flag 
+- fix fedora flag in spec and remove unnecessary if
+
+-------------------------------------------------------------------
+Thu Sep 13 22:15:43 UTC 2012 - i@marguerite.su
+
+- support fedora builds.
+
+-------------------------------------------------------------------
+Sun Jun  3 16:08:04 UTC 2012 - i@marguerite.su
+
+- initial version 0.8.8
+  * see ChangeLog and News for details.
+

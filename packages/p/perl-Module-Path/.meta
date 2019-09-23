@@ -1,0 +1,5 @@
+<package name="perl-Module-Path" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Module-Path"/>
+</package>

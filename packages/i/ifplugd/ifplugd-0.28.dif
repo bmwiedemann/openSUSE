@@ -1,0 +1,11 @@
+--- src/Makefile.in
++++ src/Makefile.in	2006/01/14 22:53:40
+@@ -185,7 +185,7 @@
+ sysconfdir = @sysconfdir@
+ target_alias = @target_alias@
+ AM_CFLAGS = $(LIBDAEMON_CFLAGS) -DSYSCONFDIR="\"$(sysconfdir)\"" -D_GNU_SOURCE
+-LDADD = $(LIBDAEMON_LIBS)
++LDADD = $(LIBDAEMON_LIBS) -Wl,-Bdynamic
+ ifplugd_SOURCES = ifplugd.c \
+ 			interface.c interface.h \
+ 			ethtool-kernel.h ethtool-local.h \

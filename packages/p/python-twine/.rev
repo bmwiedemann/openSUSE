@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a0ea44b5849b41b3ecd0a8f5a8a6fcb</srcmd5>
+    <version>1.6.1</version>
+    <time>1486389812</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for certbot.</comment>
+    <requestid>449755</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b6d39a7830bcae9119c42d08e2d4899e</srcmd5>
+    <version>1.9.1</version>
+    <time>1501840721</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>508798</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>46c1179683ef1e23df412802af8e6a0d</srcmd5>
+    <version>1.9.1</version>
+    <time>1526573114</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner and reduce the license conditions</comment>
+    <requestid>610017</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>93d5c930661b80406afd8c76368af728</srcmd5>
+    <version>1.11.0</version>
+    <time>1527605326</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend the pyblake2 on python2 as it is included in py3.6+
+  but was never in py2
+
+- Switch to github archive to have test fixtures
+- Enable tests
+
+- adjust requirements
+
+- update to version 1.11.0
+  - see https://github.com/pypa/twine/blob/master/docs/changelog.rst</comment>
+    <requestid>610896</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4830f779003367070a2a2234de52867f</srcmd5>
+    <version>1.12.1</version>
+    <time>1550048405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673043</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4e281f00e51a8fc1181b8f290338de8e</srcmd5>
+    <version>1.13.0</version>
+    <time>1552901854</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680764</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1cfacf6c0d61dbdf782cafe355a73e4e</srcmd5>
+    <version>1.14.0</version>
+    <time>1569233017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.14.0:
+  * Better error handling and gpg2 fallback if gpg not available.
+  * Fixes for python 3.8</comment>
+    <requestid>729748</requestid>
+  </revision>
+</revisionlist>

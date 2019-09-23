@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Sun Jun  7 09:07:45 UTC 2015 - coolo@suse.com
+
+- updated to 0.05
+   see /usr/share/doc/packages/perl-Test-RequiresInternet/Changes
+
+  0.05        2015-05-25
+              Fix test error when NO_NETWORK_TESTING is set (Karen Etheridge,
+              RT#101996, GH#3)
+
+-------------------------------------------------------------------
+Tue Feb 17 13:43:18 UTC 2015 - coolo@suse.com
+
+- initial package 0.04
+    * created by cpanspec 1.78.08
+

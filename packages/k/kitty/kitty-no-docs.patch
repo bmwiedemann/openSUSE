@@ -1,0 +1,24 @@
+There is no python-sphinx >= 1.7 for Leap 15.0.
+After many requests to provide a package for Leap, I decided to ship a version
+without docs.
+diff -urEbwB kitty-0.14.1/setup.py kitty-0.14.1.new/setup.py
+--- kitty-0.14.1/setup.py	2019-05-29 16:27:00.000000000 +0200
++++ kitty-0.14.1.new/setup.py	2019-05-30 09:22:49.768323634 +0200
+@@ -674,8 +674,6 @@
+     safe_makedirs(launcher_dir)
+     build_launcher(args, launcher_dir, for_bundle, sh_launcher, args.for_freeze)
+     if not is_macos:  # {{{ linux desktop gunk
+-        copy_man_pages(ddir)
+-        copy_html_docs(ddir)
+         icdir = os.path.join(ddir, 'share', 'icons', 'hicolor', '256x256', 'apps')
+         safe_makedirs(icdir)
+         shutil.copy2('logo/kitty.png', icdir)
+@@ -888,8 +886,6 @@
+         )
+     elif args.action == 'linux-package':
+         build(args, native_optimizations=False)
+-        if not os.path.exists(os.path.join(base, 'docs/_build/html')):
+-            run_tool(['make', 'docs'])
+         package(args)
+     elif args.action in ('macos-bundle', 'osx-bundle'):
+         build(args, native_optimizations=False)

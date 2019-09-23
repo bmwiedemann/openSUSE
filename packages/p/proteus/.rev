@@ -1,0 +1,105 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>edbc1bd5a8bf01304e74338ebe92714c</srcmd5>
+    <version>3.8.4</version>
+    <time>1474623148</time>
+    <user>dimstar_suse</user>
+    <comment>part of GNU Health</comment>
+    <requestid>425119</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6355947cb1d1ac5a895036d59abe818a</srcmd5>
+    <version>3.8.5</version>
+    <time>1478626086</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix version 3.8.5</comment>
+    <requestid>439115</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0850036a46c4d46f26e864b236cf150e</srcmd5>
+    <version>4.2.0</version>
+    <time>1499291737</time>
+    <user>dimstar_suse</user>
+    <comment>Release 3.2 of GNU Health</comment>
+    <requestid>505301</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>aeac571ef40d31648e5ad6e56fa759f1</srcmd5>
+    <version>4.2.1</version>
+    <time>1510837389</time>
+    <user>dimstar_suse</user>
+    <comment>bnc1065671</comment>
+    <requestid>542137</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>41ccb3349b2dbbcdce171a84b90f45e5</srcmd5>
+    <version>4.2.2</version>
+    <time>1520778269</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>584724</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2ec83e672f829870d12ea8d16b075b4f</srcmd5>
+    <version>4.2.3</version>
+    <time>1526372029</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.2.3 - Bugfix Release
+</comment>
+    <requestid>606647</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ff8a8a934bff39980c0dc76db3185ba1</srcmd5>
+    <version>4.2.4</version>
+    <time>1532033728</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>623657</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>bf2fa8c9a292cb777a170691221e19c5</srcmd5>
+    <version>4.2.4</version>
+    <time>1536575539</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634688</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>54e743354a19249e6ebd2573b4d0432c</srcmd5>
+    <version>4.6.5</version>
+    <time>1548064137</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.6.5 - Bugfix Release
+- Version 4.2.4 - Bugfix Release (boo#1107771)
+- Version 4.2.3 - Bugfix Release
+- Version 4.2.2 - Bugfix Release
+- Version 4.2.1 - Bugfix Release
+ 
+- Tryton Release 4.2 
+- version 4.0
+ 
+- Tryton Release 3.8 
+-- 
+- Tryton Release 3.6 
+-----------------------------------------------------------------
+- initial build on OBS
+</comment>
+    <requestid>664353</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a7edd24687c31c130741a7fc52d6dfcd</srcmd5>
+    <version>4.6.6</version>
+    <time>1559375277</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705906</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>94722e74cc8be98736ca5f890e5fab9b</srcmd5>
+    <version>4.6.7</version>
+    <time>1569235578</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>732523</requestid>
+  </revision>
+</revisionlist>

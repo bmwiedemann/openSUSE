@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Wed Aug 16 01:51:39 UTC 2017 - klaussfreire@gmail.com
+
+- Exclude i586 so repocheker wouldn't complain here
+
+-------------------------------------------------------------------
+Wed May  9 17:10:19 UTC 2012 - klaussfreire@gmail.com
+
+- Update license to match other UTCS data packages (new FSF address)
+
+-------------------------------------------------------------------
+Wed Apr 25 12:11:51 UTC 2012 - klaussfreire@gmail.com
+
+- Add license and author information
+
+-------------------------------------------------------------------
+Wed Apr 18 17:04:47 UTC 2012 - klaussfreire@gmail.com
+
+- Update license to use spdx.org
+- Fix category
+- Use fdupes to collapse identical files
+
+-------------------------------------------------------------------
+Mon Apr  2 17:36:52 UTC 2012 - klaussfreire@gmail.com
+
+- Mark this package as conflicted with older vegastrike-data
+
+-------------------------------------------------------------------
+Sun Apr  1 01:17:52 UTC 2012 - klaussfreire@gmail.com
+
+- Upgraded to upstream version 0.5.1.r1
+  * Compatibility with r1 core data
+
+-------------------------------------------------------------------
+Mon Jan 30 05:34:31 UTC 2012 - klaussfreire@gmail.com
+
+- Upgraded to upstream version 0.5.1.beta2
+  * Compatibility with beta2 core data  
+
+-------------------------------------------------------------------
+Sun Feb 27 00:08:17 UTC 2011 - klaussfreire@users.sourceforge.net
+ 
+- Initial version 0.5.1.beta1 from upstream

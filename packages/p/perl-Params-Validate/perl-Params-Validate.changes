@@ -1,0 +1,474 @@
+-------------------------------------------------------------------
+Wed Jun 14 06:05:11 UTC 2017 - coolo@suse.com
+
+- updated to 1.29
+   see /usr/share/doc/packages/perl-Params-Validate/Changes
+
+  1.29    2017-06-11
+  
+  - Fixes for MSVC compilation. Patch by Andy Grundman. PR #15.
+
+-------------------------------------------------------------------
+Sat May  6 06:19:49 UTC 2017 - coolo@suse.com
+
+- updated to 1.28
+   see /usr/share/doc/packages/perl-Params-Validate/Changes
+
+  1.28    2017-05-05
+  
+  - Removed the broken Makefile.PL that was accidentally being shipped with this
+    distro since 1.26.
+
+-------------------------------------------------------------------
+Sun Apr 30 06:24:58 UTC 2017 - coolo@suse.com
+
+- updated to 1.27
+   see /usr/share/doc/packages/perl-Params-Validate/Changes
+
+  1.27    2017-04-29
+  
+  - When more than one required parameters are missing, the list of missing
+    parameters in the error message is sorted by name. Patch by E. Choroba. GH
+    #14.
+
+-------------------------------------------------------------------
+Fri Oct  7 06:15:14 UTC 2016 - coolo@suse.com
+
+- updated to 1.26
+   see /usr/share/doc/packages/perl-Params-Validate/Changes
+
+  1.26    2016-10-06
+  
+  - Reverted to Module::Build. The use of EUMM in 1.25 broke Windows builds.
+
+-------------------------------------------------------------------
+Tue Sep 27 05:55:13 UTC 2016 - coolo@suse.com
+
+- updated to 1.25
+   see /usr/share/doc/packages/perl-Params-Validate/Changes
+
+  1.25    2016-09-25
+  
+  - Switched to Params::Validate.
+
+-------------------------------------------------------------------
+Mon May 23 12:27:21 UTC 2016 - coolo@suse.com
+
+- updated to 1.24
+   see /usr/share/doc/packages/perl-Params-Validate/Changes
+
+  1.24    2016-05-08
+  
+  - Author tests are no longer in t/. This makes running tests for non-authors
+    faster. Requested by Karen Etheridge. RT #113063.
+
+-------------------------------------------------------------------
+Tue Mar 29 09:55:50 UTC 2016 - coolo@suse.com
+
+- updated to 1.23
+   see /usr/share/doc/packages/perl-Params-Validate/Changes
+
+  1.23    2016-03-26
+  
+  - Fixed some Perl stack corruption bugs. Based on a proposed PR from Tony Cook
+    plus some additional changes. GH #8.
+  
+  - Fixed tests with Carp 1.01 (shipped with Perl 5.8.3). Patch by Andreas
+    Koenig. RT #113318.
+
+-------------------------------------------------------------------
+Fri Feb 19 10:44:48 UTC 2016 - coolo@suse.com
+
+- updated to 1.22
+   see /usr/share/doc/packages/perl-Params-Validate/Changes
+
+  1.22    2016-02-13
+  
+  - Fixed a bug when a callback failed but did not die. The resulting error
+    message had a pointless colon in it. Reported by Slaven Rezic. RT #111036.
+  
+  - Made the pure Perl version use Carp's croak rather than confess. The XS
+    version has never included a stack trace in errors. You can use the on_fail
+    setting to get a stack trace if you prefer. Reported by Slaven Rezic. RT
+    #111036.
+  
+  - The pure Perl code now uses "(unknown)" when it cannot determine the sub
+    that failed, instead of "N/A". Reported by Slaven Rezic. RT #111036.
+  
+  - Documented the PARAMS_VALIDATE_IMPLEMENTATION environment
+    variable. Requested by Slaven Rezic. RT #111035.
+
+-------------------------------------------------------------------
+Sun Jul 19 09:09:30 UTC 2015 - coolo@suse.com
+
+- updated to 1.21
+   see /usr/share/doc/packages/perl-Params-Validate/Changes
+
+  1.21    2015-07-18
+  
+  - Attribute::Params::Validate is now in its own distro, and needs a new
+    maintainer. If you would like to maintain it, please contact me.
+
+-------------------------------------------------------------------
+Mon Jun 29 01:27:01 UTC 2015 - coolo@suse.com
+
+- updated to 1.20
+   see /usr/share/doc/packages/perl-Params-Validate/Changes
+
+  1.20    2015-06-28
+  
+  - Fixed a bug with stack handling in the XS code. If a callback sub caused
+    Perl to reallocate the stack this could trigger weird errors of the form
+    "Bizarre copy of ARRAY" from Perl itself. Fixed by Noel Maddy. GH #5.
+  
+  - Fixed use of inlining in the XS code to work when "gcc -std=c89" is
+    specified. Fixed by Vincent Pit. GH #6.
+  
+  - Previously, Params::Validate would eagerly stringify all values it was
+    validating, even though this stringification was only needed for error
+    messages that are used when a parameter fails. For objects which overload
+    stringification and do real work, this added an unnecessary
+    slowdown. Stringification is now delayed until it is needed. Reported by
+    Klaus. RT #105326.
+
+-------------------------------------------------------------------
+Sun Jun 14 08:29:04 UTC 2015 - coolo@suse.com
+
+- updated to 1.19
+   see /usr/share/doc/packages/perl-Params-Validate/Changes
+
+  1.19    2015-06-12
+  
+  - Fixed an uninitialized value warning from the pure Perl implementation under
+    5.8.8. Reported by Jim Bacon. RT #105198.
+
+-------------------------------------------------------------------
+Tue Apr 14 20:51:06 UTC 2015 - coolo@suse.com
+
+- updated to 1.18
+   see /usr/share/doc/packages/perl-Params-Validate/Changes
+
+  1.18    2015-02-13
+  
+  - We no longer attempt to save and restore an existing $SIG{__DIE__} hook
+    before calling a validation callback. This uses undocumented black magic
+    poking at the Perl interpreter guts, which seems to cause sporadic
+    segfaults. Reported by David Wheeler with help from Andreas Koenig. RT
+    #102112.
+  
+  
+  1.17    2015-01-08
+  
+  - More XS fixes. Simplified how we localize $@ in the XS code and fixed error
+    with Perls compiled with -DDEBUGGING. Reported by Lars Dɪᴇᴄᴋᴏᴡ. RT #101416.
+  
+  
+  1.16    2015-01-07
+  
+  - The changes in 1.14 introduced a memory leak any time a callback was called
+    and it did not throw an error that was a reference. This affected the
+    DateTime constructor and probably many other things. Reported by David
+    Kayal. RT #101380.
+  
+  
+  1.15    2015-01-01
+  
+  - No changes from 1.14
+  
+  
+  1.14    2014-12-20 (TRIAL RELEASE)
+  
+  - Callbacks can now die to provide a custom error message or exception
+    object. Requested by multiple people. Addresses RT #95701 and will allow
+    MooseX::Params::Validate to use messages provided by the type object.
+
+-------------------------------------------------------------------
+Wed Jul 30 08:15:16 UTC 2014 - ncutler@suse.com
+
+- updated to 1.13 (excerpt from upstream Changes file):
+
+1.13    2014-06-28
+- Fix my brain damage so that this code compiles with Perl 5.14.
+
+1.12    2014-06-27
+- Temporarily skip tests that use Readonly with Readonly 1.50+ until various
+  bugs are worked out in Readonly.
+
+1.11    2014-06-26
+- Fixes for MSVC compilation. Patch by J.R. Mash. PR #1.
+
+1.10    2014-05-11
+- Require Readonly 1.03+ and Scalar::Util 1.20 for testing with
+  Readonly. AFAICT, earlier versions of Readonly worked very differently,
+  and/or this is related to Scalar::Util. Either way, this test isn't that
+  important anyway. RT #95402.
+
+1.09    2014-05-04
+- A call to validate() where the spec was a reference to a Readonly hash would
+  segfault. Reported by Salvatore Bonaccorso. RT #80572.
+- When using the XS implementation, attempting to validate parameters with
+  tainted values would cause an "Insecure dependency in eval_sv() while
+  running with -T switch" exception from Perl *if the validation failed*. This
+  is fixed, but only for Perl 5.14+. Older Perls do not include the necessary
+  XS API. RT #70174.
+- Fixed some potential segfaults from the XS implementation including the one
+  reported by Анатолий Гришаев in RT #50412. However, the XS code in general
+  is pretty crufty and tends to assume that values which could be NULL aren't.
+- Fixed bad example of state() in POD. Reported by Salvatore Bonaccorso. RT
+  #80250.
+
+1.08    2013-06-07
+- The handling of defaults in the XS version of validate_pos was broken. The
+  default were simply pushed into the returned array, rather than being
+  explicitly stored in the right index based on the order of the specs passed
+  to validate_pos(). RT #83780.
+
+1.07    2012-10-26
+- Params::Validate's XS implementation would overwrite $@ when validation subs
+  were called. Patch by Salvador Fandino. RT #80124.
+- The use of state in the POD was broken. It only works with scalars. Reported
+  by Salvatore Bonaccorso. RT #80250.
+
+-------------------------------------------------------------------
+Mon Feb 13 02:34:45 UTC 2012 - vcizek@suse.com
+
+- update to 1.06
+- Shut up warnings when XS is loaded on older 5.8.x Perl versions. Reported by
+  Aaron James Trevena. RT #74742.
+
+-------------------------------------------------------------------
+Fri Feb 10 02:34:18 UTC 2012 - vcizek@suse.com
+
+- update to 1.05
+  * The XS code had a code path where it could pass the contents of a Perl
+    variable as the first argument to the XS croak() subroutine. This subroutine
+    is like printf(), and should receive a format string as its first
+    argument. According to RT #74777, this can lead to segfaults on some systems.
+
+    This could in theory be a security bug, but it's very unlikely that
+    untrusted user input could end up being passed to this croak(). It is called
+    when a spec specifies a "depend" value on another parameter. The value of
+    the "depend" parameter was passed in the first argument to croak().
+  1.04    2012-02-08
+  * Use the latest Module::XSOrPP dzil plugin to generate a saner Build.PL. No
+    need update if you're using an earlier version.
+  * This release uses Module::Implementation to handle loading the XS or pure
+    Perl implementation of Params::Validate.
+  1.02    2012-02-06
+  * The previous release never loaded the XS implementation, even if it had been
+    compiled.
+  * With newer versions of Perl, the pure Perl implementation treated regexp
+    objects differently than the XS implementation. They should be treated as
+    belonging to the SCALARREF type for backwards compatibility.
+  * These two bugs combined managed to break the test suites of a number of
+    modules on CPAN. This release should fix them.
+
+-------------------------------------------------------------------
+Mon Feb  6 10:06:56 UTC 2012 - vcizek@suse.com
+
+- update to 1.01
+- The generated Build.PL detects whether or not the machine it's run on has a
+  working compiler, and disables XS automatically if it doesn't. Fixes RT
+  #44719.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:47 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Fri Aug 26 21:33:33 UTC 2011 - chris@computersalat.de
+
+- remove Author from desc
+- fix deps
+  * fix build for 1120 (perl -p -i -e 's|0.3601|0.280801|' Build.PL)
+- add bcond_with opt (Test::Taint, Readonly::XS)
+
+-------------------------------------------------------------------
+Mon Jun 13 08:12:10 UTC 2011 - vcizek@novell.com
+
+- update to 1.00
+- Fix documentation indexing on search.cpan.org. Reported by Lutz Gehlen. RT
+  #68756.
+
+-------------------------------------------------------------------
+Mon May 30 08:14:14 UTC 2011 - vcizek@novell.com
+
+- update to 0.99
+  - The metadata file - META.{json,yml} - had references to a different distro
+    because of a copy and paste error. Reported by Bernhad Graf. RT #68514.
+
+-------------------------------------------------------------------
+Tue Apr 26 07:37:31 UTC 2011 - vcizek@novell.com
+
+- update to 0.98
+- Attribute::Params::Validate's $VERSION regressed in 0.96. 
+  It's now manually set to 1.07.
+
+-------------------------------------------------------------------
+Thu Apr 21 12:47:54 UTC 2011 - vcizek@novell.com
+
+- update to 0.97
+- The XS version of the code always called Carp::confess, regardless of
+  whether you provided your own on_fail callback. Reported by Scott Bolte. RT
+  #66359.
+- There were a couple spots that called eval without localizing $@ first. RT
+  #58087.
+- The parameters for each key validation (can, isa, regex) are now checked,
+  and an error is thrown if any of the keys are not valid. Basically, we
+  validate the validation spec. Based on a patch by Andreas Faafeng. RT
+  #57831.
+- This module now requires Perl 5.8.1.
+- Switched to version 2.0 of the Artistic License.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:34:19 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sun Feb 21 18:45:29 UTC 2010 - chris@computersalat.de
+
+- update to 0.95
+  - Skip t/29-taint-mode.t entirely, since it seems to randomly fail
+    for people, despite already being marked a todo test.
+- spec mods
+  o sort TAGS
+  o added cpan_name
+  o fixed deps
+  o added perl-macros
+    - perl_gen_filelist
+  o fixed Summary/Description
+  o added Build test
+
+-------------------------------------------------------------------
+Mon Jan 25 13:40:15 CET 2010 - anicka@suse.cz
+
+- update to 0.94
+ * Removed the Makefile.PL entirely. If it was used then the XS 
+   code was never built, because I'm using the Module::Build XS 
+   layout.
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Thu Jun 19 16:26:06 CEST 2008 - anicka@suse.cz
+
+- update to 0.91
+ * The fix for handling @_'s readonly-ness introduced a refcounting
+   bug. One symptom of this was a failing Log::Dispatch test.
+ * Make the XS version of Params::Validate recognize regexp objects
+   with Perl 5.11.0-to-be.
+ * With the XS version, when you passed @_ directly to validate() and
+   then got a hash reference back, the values of that hash reference
+   would be marked readonly.
+
+-------------------------------------------------------------------
+Thu Nov  1 15:35:49 CET 2007 - anicka@suse.cz
+
+- update to 0.89
+ * With validation turned off, the pure Perl version incorrectly
+   ignored an odd number of parameters when a hash was expected (no
+   validation still does the bare minimum of checks needed to set
+   defaults).
+ * Added pod & pod coverage tests.
+ * Modernized test suite to use Test::More and fixed some test suite
+   bugs along the way.
+ * Attribute::Params::Validate would die when given a ValidatePos
+   attribute containing one element.
+ * More tests are skipped on 5.6.0.
+
+-------------------------------------------------------------------
+Thu Mar  8 14:28:02 CET 2007 - anicka@suse.cz
+
+- update to 0.88
+  * The XS version threw an error when it attempted to do "isa" or 
+    "can" validation on a value that was not a string or object, 
+    such as undef or a number.
+
+-------------------------------------------------------------------
+Thu Jan 25 18:24:00 CET 2007 - anicka@suse.cz
+
+- update to 0.87
+  * When determining the caller of a function in the XS version, use
+    Perl's caller() function rather than CopSTASHPV. The caller()
+    function apparently ignores the DB package, whereas the latter
+    doesn't. This caused validate_options to be ignored when running
+    under profiling (and probably the debugger as well).
+
+-------------------------------------------------------------------
+Thu Oct  5 11:39:54 CEST 2006 - anicka@suse.cz
+
+- update to 0.86
+  * Only turn inlining on if __GNUC__ is defined
+  * Removed spaces in #define, #ifdef, etc
+  * If a type is specified as a string ('SCALAR', not SCALAR), 
+    this is now caught and a useful error is thrown.
+
+-------------------------------------------------------------------
+Fri Sep 29 14:09:21 CEST 2006 - anicka@suse.cz
+
+- update to 0.84 
+  * XS version uses Carp::confess instead of Carp::croak 
+  * bugfixes 
+  * speed optimalizations
+- remove last patch (fixed in upstream)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:54 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 16 18:01:59 CET 2006 - sf@suse.de
+
+- update to 0.79 
+
+-------------------------------------------------------------------
+Wed Sep 28 22:14:33 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Sun Jul 31 16:16:15 CEST 2005 - cthiel@suse.de
+
+- update to version 0.78
+
+-------------------------------------------------------------------
+Thu Jul  7 18:47:40 CEST 2005 - pth@suse.de
+
+- Update to 0.77
+
+-------------------------------------------------------------------
+Fri Aug 22 15:33:32 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Mon Jul 28 12:02:57 CEST 2003 - ro@suse.de
+
+- install to vendor location 
+
+-------------------------------------------------------------------
+Tue Jul  1 12:56:52 CEST 2003 - ro@suse.de
+
+- use perl_process_packlist macro 
+
+-------------------------------------------------------------------
+Sun Jun 22 21:42:43 CEST 2003 - coolo@suse.de
+
+- package directories
+
+-------------------------------------------------------------------
+Mon May 26 00:20:03 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Thu Mar 21 15:18:49 CET 2002 - sf@suse.de
+
+-  initial versio 0.14
+

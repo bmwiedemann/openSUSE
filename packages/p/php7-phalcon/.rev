@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>acfc83833b2564a46b950285f41cd2ba</srcmd5>
+    <version>3.1.2</version>
+    <time>1493235792</time>
+    <user>dimstar_suse</user>
+    <comment>I maintaint this package and it's time to enhance support for php7.</comment>
+    <requestid>488074</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>616f8c6ffbc326802d0b538915674dd4</srcmd5>
+    <version>3.2.0</version>
+    <time>1499677656</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507068</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fa3b9110eae5c70e492e2f1b1a4e5c41</srcmd5>
+    <version>3.2.1</version>
+    <time>1500275472</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510144</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f6bafede14d636dfd96e9ea76a3a97f8</srcmd5>
+    <version>3.2.1</version>
+    <time>1502562370</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514651</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>da57552948f38a8763ceef5c2bff42b7</srcmd5>
+    <version>3.2.2</version>
+    <time>1503393077</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518033</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>662fb40aaa3701bf9443116690a224a7</srcmd5>
+    <version>3.2.2</version>
+    <time>1507897238</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533783</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3f585b76156226d44c02f5d56fa271dd</srcmd5>
+    <version>3.2.3</version>
+    <time>1508610118</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535617</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>49a41660c53d5ac41210ec21ef78dbc5</srcmd5>
+    <version>3.2.4</version>
+    <time>1508946461</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536431</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>db0bdb5daf5f68ed49be4e60489bfd0c</srcmd5>
+    <version>3.3.1</version>
+    <time>1516444050</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567522</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f6fb787cb97f5e8b53edea833255b119</srcmd5>
+    <version>3.3.2</version>
+    <time>1522935141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593391</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0ca5ac7fe0c6f2e4239c321d11fc7bb8</srcmd5>
+    <version>3.4.0</version>
+    <time>1532445966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625000</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2cd3ae89cde649814aa48d061690ddeb</srcmd5>
+    <version>3.4.1</version>
+    <time>1538502474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639356</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7c146e44456aeddc5d55bda71a2df097</srcmd5>
+    <version>3.4.2</version>
+    <time>1546695749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662735</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>32e531248310fb419dd1f792382d48e1</srcmd5>
+    <version>3.4.3</version>
+    <time>1551785030</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681466</requestid>
+  </revision>
+</revisionlist>

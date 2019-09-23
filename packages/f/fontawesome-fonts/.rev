@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b472b4510ce630adf2e9e73cb0dbe932</srcmd5>
+    <version>4.3.0</version>
+    <time>1435053589</time>
+    <user>dimstar_suse</user>
+    <comment>New package.</comment>
+    <requestid>312981</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>18d2053992d50e23fa5e146d814a140b</srcmd5>
+    <version>4.3.0</version>
+    <time>1443335964</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>329713</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d031632cc21131b2abf400f0627a2b7a</srcmd5>
+    <version>4.5.0</version>
+    <time>1455272555</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358800</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6e7426581ff04fef30faf0890c11c29f</srcmd5>
+    <version>4.6.3</version>
+    <time>1470217437</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 4.6.3</comment>
+    <requestid>415847</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>11b3d8300793c60dead1d8ef9c1be630</srcmd5>
+    <version>4.7.0</version>
+    <time>1480019142</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.7.0:</comment>
+    <requestid>441825</requestid>
+  </revision>
+</revisionlist>

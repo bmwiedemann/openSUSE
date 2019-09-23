@@ -1,0 +1,651 @@
+-------------------------------------------------------------------
+Sat Jun 29 21:15:00 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.8.1:
+  * Fix audio freeze while sorting.
+  * Fix a crash when resuming playback of a file that has been
+    deleted.
+  * Fix error messages when loading PLS playlist with relative
+    paths.
+  * Fix adjusting shuffle queue after a user initiated track change.
+  * Write Album Artist field into OGG files as "ALBUMARTIST".
+  * Load external album covers before embedded.
+  * Remove the unmaintained sndio plugin.
+  * Fix localisation of status bar.
+  * Add experimental subgrouping support in playlist, via using a
+    "|||" separator for each subsequent nested group, when using
+    Group by -> Custom.
+  * Add new title formatting functions "$stripprefix" and
+    "$swapprefix".
+  * Change supereq DSP configuration to be more compact
+    horizontally and to have more slider precision.
+  * Update Repeat and Shuffle hotkey names to match the menus.
+  * Fix rounding bug of total playtime in statusbar.
+  * Fix design mode splitter handles dragging beyond the window edges.
+  * Fix setting album art size based on larger dimension (by ToadKing).
+  * Fix a regression causing custom layouts with splitters look
+    wrong.
+  * Add a FLAC plugin option to ignore corrupted stream errors.
+  * Fix a supereq reentrancy bug, potentially causing crash after
+    changing audio output configuration.
+  * Fix reloading replaygain info.
+  * Fix writing replaygain info to APEv2 tags.
+- Rebase deadbeef-compiler-warnings.patch,
+  deadbeef_disable_psf.patch.
+
+-------------------------------------------------------------------
+Fri May 24 08:21:09 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Added _service file to remove the non-distributable plugins/psf 
+  and other undesired files
+- Added deadbeef_disable_psf.patch
+
+-------------------------------------------------------------------
+Mon Apr  8 06:01:14 UTC 2019 - olaf@aepfle.de
+
+- Fix filelist for restricted build
+
+-------------------------------------------------------------------
+Sun Apr  7 17:43:47 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.8.0
+  * added Opus support
+  * added ReplayGain Scanner
+  * added proper tracks+cue support (in cooperation with wdlkmpx)
+  * added/improved MP4 tag reading and writing
+  * added loading embedded album art from MP4 files
+  * added File Copy and File Move converter presets
+  * added Log Window displaying error information from various
+    sources (in cooperation with Saivert)
+  * improved replaygain configuration and runtime behavior
+  * fixed replaygain support in Converter
+  * improved reading, storing and editing multi-value tag fields
+  * added GBS support to Game_Music_Emu (kode54)
+  * added SGC support to Game_Music_Emu
+  * fixed clipping prevention for mp3, replaygain is applied
+    before clipping
+  * fixed vfz_zip handling of colons in filenames
+  * fixed wma decoding precision error
+  * fixed issues with playing very short files
+  * fixed a number of known issues in the Converter
+  * UI splitter proportional resizing (cboxdoerfer)
+  * added to title formatting: $num, %_path_raw%,
+    %_playlist_name%, $replace, $upper, $lower,
+    %playback_bitrate%, $repeat, $insert, $len, <<<>>>, >>><<<,
+    $pad, $pad_right (saivert)
+  * added support for dim and bright text in playlist columns
+    (saivert)
+  * improved detecting GTK theme colors for custom widgets
+  * added new multiline tag editing dialog for individual values
+  * added Copy&Paste in playlist (cboxdoerfer)
+  * added localization support for plugin UI
+  * added Drag'n'drop support from deadbeef to other
+    applications (cboxdoerfer)
+  * fixed a number of ogg file tagging issues (kode54)
+  * fixed multiple crash bugs in AdPlug plugin
+  * added UMX module support, ported from foo_dumb
+  * updated Game_Music_Emu and VGMplay (kode54)
+  * added an option to Converter, to copy the files if the
+    format doesn't change
+  * added a configuration option `gtkui.start_hidden`, to start
+    the player with hidden main window (Radics Péter)
+  * added a converter option to retag the files after copying
+  * added a context menu action for duplicating playlists (Alex
+    Couture-Beil)
+  * fixed a number of fadeout issues in Game_Music_Emu
+  * fixed musepack seeking issue
+  * fixed loading album covers from ID3v2.2
+  * fixed mp3 bitrate calculation bug for incomplete files with
+    LAME header
+  * improved large file support with many internal values
+    converted to use 64 bits for sample counts
+  * use title formatting for displaying status bar text
+  * added %seltime% title formatting value, for displaying
+    playback time of selected tracks (Thomas Ross)
+  * added reading SONGWRITER field from cue sheets (wdlkmpx)
+  * added playlist group spacing configuration (saivert)
+  * improved mp3 USLT lyrics support (in copperation with Ignat
+    Loskutov)
+  * improved playlist browser configurability (Jakub Wasylków)
+  * added hotkey action for opening track properties (Jakub
+    Wasylków)
+  * added hotkey actions for add/remove/toggle in playqueue
+    (Jakub Wasylków)
+  * added --volume command line option (Saivert)
+  * improved ISRC and subindex handling in CUE (wdlkmpx)
+  * added hotkey actions to move selected tracks up/down (Jakub
+    Wasylków)
+  * fixed memory access bugs in config handling and supereq
+    (github/tsowa)
+  * added charset detection based on the whole ID3v2 tag content
+  * added automatic charset detection for cdtext (Jakub Wasylków)
+  * added configuration for output samplerate setting
+  * removed fast scanning mp3 option, since it was too inaccurate
+  * improved detection of PSF files, to disambiguate them
+    against other files which use the same extension
+  * added Edit In Place and Crop options to the track properties
+    menu
+  * fixed WildMidi playback of some MID files playing more than
+    1024 simultaneous notes
+  * fixed playing stereo APE files with single-channel silence
+  * added wavpack version 5 support with DSD
+  * fixed performance issue when reading AdPlug's HSC files
+  * fixed loading audio files from GVFS volumes
+  * fixed handling of cuesheets in zip files
+  * fixed writing tags into tiny ogg files
+  * fixed handling FLAC files with huge block sizes over 100KB
+  * replaced mp3 parsing code with the new library, which is
+    more reliable and tested, and can handle even more obscure
+    mp3 files
+  * renamed Looping and Order menus to Repeat and Shuffle,
+    respectively
+  * fixed loading larger Songlenths.txt in sid plugin, and added
+    support for Songlengths.md5
+
+- Refreshed deadbeef-fix_ubuntu_unity_desktop.patch and
+  deadbeef-compiler-warnings.patch
+
+- Dropped 0001-Explicitly-specify-signedness-for-char.patch and
+  0002-Use-signed-values-instead-of-potentially-unsigned-li.patch
+  (no longer necessary)
+
+- Enabled opus
+
+-------------------------------------------------------------------
+Wed Feb 14 15:43:17 UTC 2018 - crrodriguez@opensuse.org
+
+- Add missing direct buildRequires 
+- Remove buildrequires on xorg-x11-libs metapackage
+
+-------------------------------------------------------------------
+Fri Nov  3 18:10:41 UTC 2017 - sor.alexei@meowr.ru
+
+- Add deadbeef.appdata.xml as a separate file and remove
+  deadbeef-add-appdata.patch (boo#1066408): the patch was rejected
+  upstream. Remove intltool stubs, which fixes the bug.
+
+-------------------------------------------------------------------
+Thu Nov  2 17:25:14 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+Fix build on ARM/PPC:
+ * Add 0001-Explicitly-specify-signedness-for-char.patch
+ * Add 0002-Use-signed-values-instead-of-potentially-unsigned-li.patch
+ * Add 0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
+
+-------------------------------------------------------------------
+Fri Aug 25 06:10:58 UTC 2017 - olaf@aepfle.de
+
+- Remove mpg123/mad conditional because it is always present
+
+-------------------------------------------------------------------
+Fri Jun 30 20:35:31 UTC 2017 - olaf@aepfle.de
+
+- Better conditional for mp3.so
+
+-------------------------------------------------------------------
+Tue Jun 27 21:32:39 UTC 2017 - olaf@aepfle.de
+
+- buildconditional for mad and mpg123
+
+-------------------------------------------------------------------
+Thu May 11 09:27:18 UTC 2017 - sor.alexei@meowr.ru
+
+- Enable building with libmpg123 and libmad for newer openSUSE
+  releases even outside of Packman.
+
+-------------------------------------------------------------------
+Wed Mar 15 17:36:47 UTC 2017 - olaf@aepfle.de
+
+- List all %doc files to fix build with rpm 4.13
+
+-------------------------------------------------------------------
+Sun Feb  5 13:36:34 UTC 2017 - mailaender@opensuse.org
+
+- Add deadbeef-add-appdata.patch for
+  https://software.opensuse.org/appstore
+
+-------------------------------------------------------------------
+Sun Feb  5 12:24:41 UTC 2017 - jengelh@inai.de
+
+- Update description
+
+-------------------------------------------------------------------
+Wed May  4 16:34:01 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.7.2:
+  * Fix title formatting %filename% crash.
+  * Fix streaming of aac content in mp4 container.
+  * Add https:// support to vfs_curl.
+  * Add zh_TW translation to deadbeef.desktop.
+  * Fix loading cue sheets without any metadata fields.
+  * Fix file close bug in VTX plugin.
+  * Fix evaluating nested square brackets syntax in title
+    formatting.
+  * Improve support for large fields in ID3v2 tags.
+  * Fix potential crash bug in artwork plugin.
+  * Fix path separator '/' escaping regression in converter.
+  * Move ffmpeg plugin to the end of plugin list, to prevent
+    conflicts with other input plugins.
+  * Add $fix_eol, $hex title formatting.
+  * Fix importing [, ] and \n characters from old configuration
+    files.
+  * Fix "Group by artist/date/title" title formatting.
+  * Add enumerating/exposing of all supported file extensions to
+    ffmpeg plugin.
+  * Fix handling of ':' in file path in vfs_zip plugin.
+  * Fix old ffmpeg versions support.
+  * Fix wma decoder loudness issue.
+  * Fix DCA buffer allocation, to make it more musl-friendly.
+  * Add $num implementation to title formatting.
+  * Fix --nowplaying-tf behavior when player is stopped.
+- Remove deadbeef-0.7.1-fix-osd-notify.patch.
+- Rebase deadbeef-fix_ubuntu_unity_desktop.patch.
+
+-------------------------------------------------------------------
+Wed Apr  6 06:45:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Add deadbeef-0.7.1-fix-osd-notify.patch from the upstream commit
+  da89020: fix a crash when processing "%filename%".
+
+-------------------------------------------------------------------
+Tue Mar 15 19:41:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.7.1:
+  * Fix GTKUI maximised window layout saving/restoring.
+  * Fix GTKUI maximised window column autoresize saving/restoring.
+  * Fix artwork plugin version checks.
+  * Disable bogus shift-jis detection, which was overriding cp1252.
+  * Fix MP3 bitrate calculation regression.
+  * Fix wrong padding of formatted time.
+  * Fix importing legacy title formatting fields bug.
+  * Fix incorrect output format after resuming paused session.
+  * Fix $ext title formatting bug.
+  * Fix %tracknumber% title formatting bug.
+  * Fix auto-updating title formatting fields.
+  * Fix cache cleaner crash bug.
+  * Fix crash when trying to play GYM files.
+  * Fix importing legacy playlist grouping config.
+  * Fix FLAC metadata field mapping.
+  * Fix FLAC metadata track/total and disc/total splitting.
+
+-------------------------------------------------------------------
+Mon Feb  1 14:19:36 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.7.0:
+  * converter: Fix bug overwriting the source file with destination.
+  * artwork: add cache cleaner, MusicBrainz backend;
+    + configurable default picture, numerous bugfixes;
+    + performance improvements, more customisation options.
+  * playlist browser: improve drag-n-drop;
+    + double-click / middle-click on empty area to create new
+      playlist;
+    + middle-click on playlist to remove it;
+    + highlight current playlist, configurable columns;
+    + sort columns by clicking their headers;
+    + performance optimisations.
+  * Various selection properties improvements.
+  * Add "Skip to ..." next/prev album/genre/composer actions.
+  * More appearance customisation options in GTK+UI.
+  * Add center-alignment option to playlist columns.
+  * Add 1 and 5 second "Seek forward/backward" actions.
+  * Fix random gtkui crash when closing playlist via menu.
+  * New title formatting implementation, aiming to be compatible
+    with fb2k, replacing the old one.
+  * Add grouping to search window.
+  * Improve error handling in vfs_curl.
+  * Fix volume control via mouse scroll when using Gtk3.
+  * Fix unwanted restarting when unpausing streaming tracks of
+    known length.
+  * sid: Use stereo by default, with an option to force mono;
+    fix performance issues.
+  * cdda: Improve cddb support, libcdparanoia, multiple CD drives,
+    speed selection.
+  * gtkui: Add selection focus, such that the found tracks will be
+    focused while using the search window.
+  * tags: Use cp1252 instead of iso8859-1 everywhere.
+  * Fix resuming network streams after losing network connection.
+  * Fix cuesheet charset detection crash bug.
+  * Rename mpgmad plugin to "mp3".
+  * Add libmpg123 support as a 2nd backend to mp3 plugin, as default.
+  * mp3: Fix xing header parsing, length calculation issues.
+  * Favour album artist over artist in "stop after current album"
+    mode.
+  * gme: Fix SAP file duration and improved looping handling.
+  * sid: Automatic detection of HVSC SongLengths.txt from sid file
+    paths.
+  * gtkui: Add Tabs widget in Design mode.
+  * Add sc68 plugin for playing Atari ST music.
+  * Add on-demand initialisation to wild-midi, to speed up player
+    init.
+  * flac: Fix legacy cuesheet handling.
+  * Add writing updated replaygain info to all supported tag
+    formats.
+  * Fix setting focus on the main window / playlist on startup.
+  * Change volume up/down actions to have a step of 1dB instead of
+    2dB.
+  * Fix bigendian support in the converter.
+  * Update DUMB and GME to the newest versions.
+  * Fix handling of several formats in sndfile plugin.
+  * Add support for ORIGINAL_RELEASE_TIME and ORIGINAL_RELEASE_YEAR
+    metadata fields.
+  * Add loading plugins from a $DEADBEEF_PLUGIN_DIR directory.
+  * Fix a bug which was skipping next track after deleting current
+    track.
+  * DUMB and GME can now do their own proper infinite looping in
+    "Loop single" mode.
+  * alac: Fix bits per sample varying from what the MP4 container
+    specifies.
+  * psf: Fix crash after format probing failure.
+  * Search window title will show the number of search results.
+  * SRC resampler: Fix very rare buffer overflow crash.
+  * mp3: Add LAME preset support.
+  * album art: Fix scaling of non-square images.
+  * ffmpeg: Update to support new library versions.
+  * gtkui: Improve playlist column drag-n-drop.
+  * Configuration file is now written with 0600 permissions.
+  * Add tracktotal and disctotal support for many tagging formats.
+  * Add extended ID3v1 genres.
+  * Fix int-float conversion off-by-one precision bug.
+  * Fix sorting algorithm u8_strcasecmp stability issue.
+  * Fix playlist context menu actions to work on clicked playlist,
+    instead of the current one.
+- Add plugin licences to the main package.
+- Move GME plugin to the main package.
+- Rebase deadbeef-fix_ubuntu_unity_desktop.patch.
+- Update deadbeef-compiler-warnings.patch.
+- Remove workaround_div_by_zero.diff: merged upstream.
+
+-------------------------------------------------------------------
+Tue Sep  1 10:22:51 UTC 2015 - sor.alexei@meowr.ru
+
+- Enable Gtk2 build.
+- Move Game Music Emu and AOSDK plugins to deadbeef-plugins-extra
+  package: non-commercial restriction makes these plugins non-FOSS.
+- Require deadbeef-plugins-extra instead of recommending in PMBS.
+
+-------------------------------------------------------------------
+Thu Jun 25 07:13:39 UTC 2015 - olaf@aepfle.de
+
+- Fix compiler warnings
+
+-------------------------------------------------------------------
+Tue Jun  2 16:32:22 UTC 2015 - sor.alexei@meowr.ru
+
+- Fix build of vfs_zip plugin.
+- Rename deadbeef-restricted-plugins to deadbeef-plugins-extra.
+- Move locales to deadbeef-lang package.
+- Move documentation to a proper directory.
+- Do not use _service for downloading the tarball.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Sat Nov  8 07:35:02 UTC 2014 - aloisio@gmx.com
+
+- New upstream version 0.6.2
+  - added "Stop playback after current album finished" (Aleksejs Popovs)
+  - added ALAC, OPUS, OggFlac encoder presets (Ian Nartowicz)
+  - added configure option to build artwork plugin without network support
+  - added new widget for muting chiptune voices
+  - added support for SHIFT-JIS charset detection/recoding (off by default)
+  - fixed "stop after current" bug, which required player restart on every change
+  - fixed --gui command line option
+  - fixed GUI seeking accuracy bug
+  - fixed bug in extended frame flags conversion between ID3v2.3 and ID3v2.4 tag formats
+  - fixed crash when loading playlist from command line
+  - fixed loading album art (APIC frame) from ID3v2.4 with data length indicator
+  - fixed non-utf8 locale support in console
+  - fixed support for vorbis files with more than 6 channels
+  - fixed playlist count limit bug
+  - fixed preserving file permissions after editing ogg files
+  - fixed several bugs in PLS playlist format support
+  - improved FreeBSD and OSX support
+  - improved charset detection in CUE and ID3v1
+  - improved album art column rendering/resizing (Christian Boxdörfer)
+  - improved the build system and the output build quality
+  - improved detection of config changes, to avoid unnecessary config writing
+  - improved support for reading APEv2 and ID3v1 tags from large files (>2Gb)
+  - updated licensing information in all plugins, to include information about all used libraries
+  - aac: added workaround for 7 channel sound playback bug
+  - ape: play files with format >= 4.11, improved error handling
+  - artwork: many fixes and improvements, including support for non-tagged files
+  - dumb: added option to configure internal volume
+  - ffmpeg: fixed bitrate calculation
+  - ffmpeg: fixed replaygain support
+  - flac: fixed/improved many things in tag reading and writing code
+  - gme: added support for loading gzipped modules from supported archives (e.g. from zips)
+  - gtkui, pltbrowser: better accessibility
+  - gtkui: added option to disable seekbar overlay
+  - gtkui: added option to display playback state as unicode characters, instead of bitmaps
+    (works better on HDPI screens)
+  - gtkui: added support for design mode to more widgets (seekbak, volumebar, playback toolbar)
+  - gtkui: fixed bug in gtk_drag_check_threshold handler
+  - gtkui: numerous fixes in widget layout code
+  - gtkui: single/double clicking on album art column will select/play the album/group
+    (Christian Boxdörfer)
+  - lastfm: added support for scrobbling radio streams (off by default)
+  - lastfm: added support for scrobbling tracks shorter than 30 sec (off by default)
+  - lastfm: improved support for musicbrainz track id
+  - mms: fixed few buffer overflow bugs, improved responsiveness
+  - mp3: optimized scanner: less backward seeks during frame syncing
+  - shellexec: fixed escaping of single quotes, prevent opening copies of shxui dialogs
+  - vfs_zip: huge speed improvements
+  - vorbis, oggflac: new tagging code (Ian Nartowicz)
+  - improved plugin duplicate checking
+  - fixed RIFF WAVE header writing in converter
+  - fixed 8bit png crash in album art plugin (Ian Nartowicz)
+  - static builds now use -O3 -D_FORTIFY_SOURCE=0 compiler flags
+  - fixed few issues with implementation of the Play button
+  - improved tag writing in converter
+  - fixed issues with "background jobs are running" warning
+  - changed all wiki links to point to the new wiki on github
+  - improved streamer event handling, to make the GUI more responsive and stable
+  - fixed cleaning up downloaded temporary playlist files
+  - Fixed skipping bad FLAC__METADATA_TYPE_CUESHEET blocks in FLAC
+  - added support for uppercase .CUE extension
+  - added "mpga" extension support (mp3)
+  - fixed seeking backwards using hotkeys when in the beginning of a track
+
+-------------------------------------------------------------------
+Mon Mar  3 16:46:20 UTC 2014 - dap.darkness@gmail.com
+
+- libffmpeg_oldabi-devel (required to build) was replaced by
+  libffmpeg-devel to fix packman's build.
+
+-------------------------------------------------------------------
+Sat Feb 22 21:44:18 UTC 2014 - dap.darkness@gmail.com
+
+- new upsream version 0.6.1
+  - don't allow spawning multiple instances of converter
+  - added config option to help debug buffering/streaming
+  - ffmpeg plugin can now handle dynamic data format changes
+  - added support for loading plugins from ~/.local/lib{32|64}/
+    /deadbeef, depending on running deadbeef build version
+  - removed libstdc++ hacks from C++ plugins
+  - paused network streams don't attempt to prebuffer until played
+  - unpausing network streams always restarts them
+  - prevent loading playlists from archives
+    (treat them like folders)
+  - hide the "Hotkeys" tab from preferences
+    if hotkeys plugin is not available
+  - don't build shellexecui if not building shellexec
+  - prevent passing non-utf8 filenames to progress dialog
+  - don't delete replaygain info from FLACs when writing tags
+  - gui layout designer, with a set of widgets to choose from
+    (View -> Design mode, then use right click)
+  - new API for creating GUI extension plugins
+  - visualization support, spectrum analyzer and scope widgets
+  - new hotkeys system, which adds local hotkeys,
+    and many more actions to choose from
+  - playlist browser widget:
+    a vertical alternative to playlist tabs
+  - album art viewer widget
+  - selection properties widget
+  - button widget: put custom buttons to main window,
+    and assign any actions to them
+  - showing seek time in the bar during seeking
+  - added worldofspectrum downloader to artwork plugin
+    (for AY tunes)
+  - native flac cuesheet support
+  - added GTK3.6 filechooser filter regression workaround
+  - added location field to the metadata tab in track properties
+  - new WMA plugin
+  - added customizable content-type mapper,
+    to associate network streams with plugins
+  - subtracks no longer get written to pls and m3u
+  - warn a user if he attempts to quit while a job is running
+    (e.g. converter)
+  - added GTK3 touchpad smooth scrolling support
+    (kudos to thesame)
+  - added option to always convert 16 bit input signal to 24 bit
+  - added OPUS and TAK support in the static build (via ffmpeg)
+- switched to _service file.
+- post-build-checks were disabled because of
+  http://code.google.com/p/ddb/issues/detail?id=1057
+- update deadbeef-fix_ubuntu_unity_desktop.patch
+
+-------------------------------------------------------------------
+Wed Dec 19 10:11:06 UTC 2012 - andrea@opensuse.org
+
+- new upsream version 0.5.6
+  - wavpack: fixed reload_metadata not clearing old data
+  - sndfile: fixed big/little endian byte swap buffer overrun
+  - gme: fixed loopcount bugs
+  - alsa: fixed race condition bug leading to freezes
+  - alac: added new ALAC plugin with proper gapless playback support and other goods
+  - aac: lots of bugfixes and improvements, as usual, including half/double
+    duration bugfix, and custom metadata fields support, and audiobook chapters
+  - cue and m3u parsers can now skip utf8 BOM
+  - automatically fill new/edited column title from the selected column type
+  - removed the frame widget around playlist to make scroll bar more accessible
+    in maximized windows
+  - restored old GDK drawing in GTK2 plugin, because cairo produces weird results on
+    older GTK2 versions -- that means, tabs and playlist now look correct again
+    with gtk2.20 and below
+  - gtk3 compiling is now enabled by default, if gtk3 sdk is installed
+  - --enable/disable-gtkui configure option is removed, now there are only --enable/disable-gtk2
+    and --enable/disable-gtk3
+  - added Menu key support
+  - always auto-name playlist by folder name when empty, even if the playlist title is non-default
+  - insert/delete key support in track properties (Ruslan Khusnullin)
+  - fixed Enter and Esc keys in track properties
+  - fixed playlist column auto-resizing in maximized window
+  - added user-agent configuration for last.fm, vfs_curl, etc
+  - added cp936 charset detection support. it breaks cp1251 detection, so it's done as an option
+    -- look in the preferences (Joey Zheng)
+  - show blank instead of "?" when a metadata field is absent
+  - fixed local album cover files search order, it's alphabetical now
+  - alsa: added a hack/work-around to prevent releasing sound device when a user switches between tracks
+  - m3u: improved handling of relative file pathes
+  - converter: fixed handling "/" in filenames; fixed tag-writing to files which have special characters
+  - fixed resuming last session in shuffle albums mode
+  - fixed several libmms freeze/hang/crash bugs
+  - vorbis: update waveformat dynamically, so now it's possible to listen the radios which
+    switch between mono and stereo dynamically
+  - mp3: fixed samplerate shown in the track properties
+  - added work-around for unsupported channel masks to wavpack and sndfile plugins
+  - fixed notification cover-art loading for tracks with empty album
+
+-------------------------------------------------------------------
+Wed Sep 26 02:49:17 UTC 2012 - jzheng@suse.com
+
+- update to git commit 8f3b1661fd1372508b35de39ca1cc405f1111c0e
+- remove patch files as upstream accepts them
+- update deadbeef-fix_ubuntu_unity_desktop.patch
+- update spec to include alac
+
+-------------------------------------------------------------------
+Sat Sep  8 12:45:56 UTC 2012 - jzheng@suse.com
+
+- update deadbeef_Fix_CDTEXT.patch to prepare for upstream
+
+-------------------------------------------------------------------
+Thu Aug 30 07:12:15 UTC 2012 - jzheng@suse.com
+
+- update to 0.5.5
+- remove deadbeef-0.5.0-fix-return-values.patch and
+  deadbeef-0.5.0-fix-strcmp.patch as no need any more.
+- refresh deadbeef_FixGB.patch and fix_ubuntu_unity_desktop.patch
+  based on now version.
+- add deadbeef_gtk_combo_box_entry_new_text.patch
+- add deadbeef_Fix_CDTEXT.patch
+- add enable-gtk3 option to enable gtk3 interface for openSUSE 12.x
+- add new plugin files to file list
+
+-------------------------------------------------------------------
+Mon Jan 30 05:48:45 UTC 2012 - jzheng@suse.com
+
+- let version higher than the one in pacman to avoid some update 
+  issues.
+
+-------------------------------------------------------------------
+Sun Jan 29 14:53:58 UTC 2012 - i@marguerite.su
+
+- Fix Ubuntu Unity Oriented Desktopfile Warnings. SuSE doesn't need that.
+
+-------------------------------------------------------------------
+Sun Jan 29 12:43:31 UTC 2012 - jzheng@suse.com
+
+- Add hack to support cp936 (GBK, GB18030)
+
+-------------------------------------------------------------------
+Sat Jun  4 16:16:16 UTC 2011 - andrea@opensuse.org
+
+- New upstream version 0.5.1 
+
+-------------------------------------------------------------------
+Mon May 16 09:02:32 UTC 2011 - andrea@opensuse.org
+
+- New upstream version 0.5.0 
+
+-------------------------------------------------------------------
+Mon Mar 14 13:23:47 UTC 2011 - gber@opensuse.org
+
+- call %desktop_database_post/un and %icon_theme_cache_post/un
+
+-------------------------------------------------------------------
+Thu Dec  2 11:00:47 UTC 2010 - gber@opensuse.org
+
+- added deadbeef-0.4.4-fix-undefined-assignments.patch and
+  deadbeef-0.4.4-fix-return-value.patch to fix compile warnings
+
+-------------------------------------------------------------------
+Wed Dec  1 08:06:05 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.4.4
+ - fixed crash in OSS plugin
+ - fixed random crashes caused by upgrading to libcurl-7.21.2
+ - fixed metadata editing in non-english locales
+ - fixed switching playlists using hotkeys with caps/num/xcb
+   modifiers
+ - made preferences window tabs scrollable
+ - fixed dts plugin description
+ - fixed 'n' hotkey with numlock
+ - improved support for icy (shoutcast) protocol
+ - fixed ctrl+j (jump to current track) to work correctly with
+   multiple playlists
+ - fixed cursor/scroll follows playback to work correctly with
+   multiple playlists
+ - session resume does not seek anymore after skipping failed track
+ - fixed seekbar flickering
+ - bundled libmms library to fix freezes after updating to 0.6
+ - blank cue tracks (without titles) are not skipped anymore
+ - fixed trailing whitespace handling in cuesheets
+ - "middle mouse button to delete playlist" is now default behavior
+ - fixed few issues with auto-saving playlist configuration
+ - fixed playlist redraw after cddb queries
+
+-------------------------------------------------------------------
+Fri Jun  4 21:58:24 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.4.1 - bug fix release 
+
+-------------------------------------------------------------------
+Mon May 24 08:07:55 UTC 2010 - andrea@opensuse.org
+
+- added deadbeef-0.4.0-fix-critical-warning.patch to make
+  brp-checks happy
+
+-------------------------------------------------------------------
+Sun May 23 23:05:28 UTC 2010 - andrea@opensuse.org
+
+- New package 

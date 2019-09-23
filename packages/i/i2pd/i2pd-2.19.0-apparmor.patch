@@ -1,0 +1,12 @@
+diff -ruN i2pd-2.19.0.orig/i2pd-2.19.0/contrib/apparmor/usr.sbin.i2pd i2pd-2.19.0/i2pd-2.19.0/contrib/apparmor/usr.sbin.i2pd
+--- i2pd-2.19.0.orig/i2pd-2.19.0/contrib/apparmor/usr.sbin.i2pd	2018-06-26 20:46:01.000000000 +0300
++++ i2pd-2.19.0/i2pd-2.19.0/contrib/apparmor/usr.sbin.i2pd	2018-06-27 17:58:51.936939476 +0300
+@@ -18,8 +18,6 @@
+   /etc/hosts r,
+   /etc/nsswitch.conf r,
+   /etc/resolv.conf r,
+-  /run/resolvconf/resolv.conf r,
+-  /run/systemd/resolve/stub-resolv.conf r,
+ 
+   # path specific (feel free to modify if you have another paths)
+   /etc/i2pd/** r,

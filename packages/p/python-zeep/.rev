@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40b3c428f7a5587e7a5117e854088a75</srcmd5>
+    <version>3.1.0</version>
+    <time>1546535391</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit, repo-checker has a stale review</comment>
+    <requestid>662618</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e5b0dabc40a0364ad66d84d98751c484</srcmd5>
+    <version>3.2.0</version>
+    <time>1551216069</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>679181</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a4aaa5c91a1229c5f610a9757b19d164</srcmd5>
+    <version>3.3.1</version>
+    <time>1553611480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688250</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>123d63b28e2c3e839c233f85e5e561f4</srcmd5>
+    <version>3.4.0</version>
+    <time>1560537774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709932</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>99a80bc1296523c7dad18afb9526ca23</srcmd5>
+    <version>3.4.0</version>
+    <time>1564483138</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719693</requestid>
+  </revision>
+</revisionlist>

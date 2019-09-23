@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Wed Jul  3 11:49:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 3.2.0
+  * Switched to python3.
+  * Added "bdr" as valid blank medium type.
+  * Implemented "dvd-report-css" ad device option instead of
+    image-loading parameter.
+
+-------------------------------------------------------------------
+Mon Aug  7 19:36:22 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.1.0
+  * improved python3 compatibility
+  * build scripts cleanup
+  * improved handling of localized strings in python 2.7
+
+-------------------------------------------------------------------
+Mon Feb  6 19:05:14 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.0.3
+  * set displayed process name to "cdemu"
+  * ported from dbus-python to GDBus
+
+-------------------------------------------------------------------
+Mon Nov 23 22:39:47 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 3.0.1
+* build only fixes
+
+-------------------------------------------------------------------
+Sun Jul 13 08:48:46 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to new upstream release 3.0.0
+* cdemu-client now allow the user to create a "blank" disc on
+  CDEmu device and write to it using CD/DVD burning software. And
+  as a side effect, the image analyzer application also gained
+  support for image conversion.
+
+-------------------------------------------------------------------
+Sun Nov 24 11:31:22 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 2.1.1
+* added handling of bad sector verification option
+
+-------------------------------------------------------------------
+Mon Jun 10 12:10:55 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 2.1.0
+* Added support for device addition/removal
+
+-------------------------------------------------------------------
+Sat Dec 22 08:23:15 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 2.0.0 (up from 1.5.0)
+* Support for ISZ, CSO, DMG, GBI, ECM, gzip and xz formats
+* Partial support for 1-track MDX
+- Remove cdemu-lang.diff, no longer applies
+
+-------------------------------------------------------------------
+Wed Dec 19 13:35:50 UTC 2012 - jengelh@inai.de
+
+- Add Freecode URL
+
+-------------------------------------------------------------------
+Wed May  9 04:35:46 UTC 2012 - jengelh@inai.de
+
+- Initial package for build.opensuse.org

@@ -1,0 +1,142 @@
+-------------------------------------------------------------------
+Tue Aug  7 08:53:48 UTC 2018 - tchvatal@suse.com
+
+- Fix directory mode on the bash-completion
+
+-------------------------------------------------------------------
+Sat Jul 28 13:37:06 UTC 2018 - jengelh@inai.de
+
+- Trim aims from description, say what it does. Trim bias.
+- Do not ignore errors from groupadd.
+
+-------------------------------------------------------------------
+Fri Jul 27 00:00:00 UTC 2018 - sven@uebelacker.net
+
+- Please, do not overwrite bumblebee configs (adding noreplace)
+- fixing some rpmlint errors
+  * bash-completion goes to /usr/share/bash-completion/completions/ not /etc/bash_completion.d/
+  * rpmlint filter for zero-size 10-dummy.conf
+
+-------------------------------------------------------------------
+Wed Jul 25 09:07:27 UTC 2018 - tchvatal@suse.com
+
+- Run %udev_rules_update in post
+
+-------------------------------------------------------------------
+Thu Aug 10 15:12:23 UTC 2017 - olaf@aepfle.de
+
+- Update filename in /var/adm/update-messages to match documentation,
+  and build-compare pattern
+
+-------------------------------------------------------------------
+Sat Nov 19 08:35:26 UTC 2016 - tchvatal@suse.com
+
+- Update dirs handling to work correctly on Backports project
+
+-------------------------------------------------------------------
+Wed Aug 24 12:36:48 UTC 2016 - tchvatal@suse.com
+
+- Add patch for bnc#994454 pciid's bigger than 9:
+  * bumblebee-decimal-pciid.patch
+
+-------------------------------------------------------------------
+Sat Aug  7 00:54:05 UTC 2016 - bumblebee.obs@gmail.com
+
+- Update patch to add/remove /dev/nvidia-uvm for CUDA and remove
+  /dev/nvdia-modeset on demand :
+  * nvidia-uvm-modeset-drm-support.patch
+
+-------------------------------------------------------------------
+Mon Apr 11 11:21:39 UTC 2016 - bumblebee.obs@gmail.com
+
+- Update patch to correctly load/unload nvidia-modeset and
+  nvidia-drm:
+  * Extended and renamed nvidia-uvm-support.patch
+    to nvidia-uvm-modeset-drm-support.patch
+
+-------------------------------------------------------------------
+Wed Jan 21 08:55:40 UTC 2015 - arnaldo.coelho@gmail.com
+
+- Added patch to correctly load/unload nvidia-uvm:
+  * nvidia-uvm-support.patch
+
+-------------------------------------------------------------------
+Tue Nov 11 09:52:16 UTC 2014 - tchvatal@suse.com
+
+- Only recommend 32b stuff.
+
+-------------------------------------------------------------------
+Wed Jun 25 14:10:18 UTC 2014 - tchvatal@suse.com
+
+- Install README and COPYING
+
+-------------------------------------------------------------------
+Fri Jun 13 08:43:38 UTC 2014 - tchvatal@suse.com
+
+- Require systemd-modules-load.service to be present for our service
+
+-------------------------------------------------------------------
+Wed Jun  4 12:58:37 UTC 2014 - tchvatal@suse.com
+
+- Add mention aboud the blacklist requirement for nouveau.
+
+-------------------------------------------------------------------
+Wed Jun  4 12:15:32 UTC 2014 - tchvatal@suse.com
+
+- Recommend bbswitch to install the default module, which should
+  now be autoloaded.
+
+-------------------------------------------------------------------
+Thu Feb 20 19:03:52 UTC 2014 - tchvatal@suse.com
+
+- Require primus and primus-32bit. Fix typo in previous commit.
+
+-------------------------------------------------------------------
+Thu Feb 20 19:01:31 UTC 2014 - tchvatal@suse.com
+
+- Always require 32b version of virtualgl on 64b system
+
+-------------------------------------------------------------------
+Thu Feb 20 08:30:27 UTC 2014 - tchvatal@suse.com
+
+- Remove some redundant dependencies
+- Provide rcbumblebeed symlink for service control.
+
+-------------------------------------------------------------------
+Fri Feb  7 12:54:08 UTC 2014 - tchvatal@suse.com
+
+- Use 1315 as version string as kmod is also in SLE12.
+
+-------------------------------------------------------------------
+Sun Jan 26 09:03:50 UTC 2014 - tchvatal@suse.com
+
+- Update my clumsy wording on postinst info.
+
+-------------------------------------------------------------------
+Mon Jan 20 12:56:11 UTC 2014 - tchvatal@suse.com
+
+- Notify user about the group actions, do not create and delete
+  it automatically. It can cause more problems than the benefits
+  are from it.
+
+-------------------------------------------------------------------
+Fri Jan 17 18:40:43 UTC 2014 - tchvatal@suse.com
+
+- Sort out the dep on kmod-compat or module-init-tools
+
+-------------------------------------------------------------------
+Tue Jan 14 19:06:20 UTC 2014 - tchvatal@suse.com
+
+- Use suse macros to build and sort out BuildRequires to contain
+  needed stuff.
+
+-------------------------------------------------------------------
+Tue Jan 14 18:56:58 UTC 2014 - tchvatal@suse.com
+
+- Format the spec-file up to openSUSE requirements.
+
+-------------------------------------------------------------------
+Tue Jan 14 18:56:50 UTC 2014 - tchvatal@suse.com
+
+- Covert to use proper changelog file.
+

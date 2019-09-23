@@ -1,0 +1,12 @@
+diff -Nru azure-graphrbac-0.53.0.orig/setup.py azure-graphrbac-0.53.0/setup.py
+--- azure-graphrbac-0.53.0.orig/setup.py	2018-11-27 20:08:10.000000000 +0100
++++ azure-graphrbac-0.53.0/setup.py	2019-03-25 10:53:45.148784283 +0100
+@@ -78,7 +78,7 @@
+     install_requires=[
+         'msrest>=0.5.0',
+         'msrestazure>=0.4.32,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     extras_require={
+         ":python_version<'3.0'": ['azure-nspkg'],

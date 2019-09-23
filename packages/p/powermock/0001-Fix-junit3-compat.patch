@@ -1,0 +1,40 @@
+From 963d26fcff4b11865a1646d2eb1efdb1412c95a0 Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Wed, 1 Jun 2016 19:47:52 +0200
+Subject: [PATCH 1/2] Fix junit3 compat
+
+---
+ .../junit3/internal/impl/PowerMockJUnit3RunnerDelegateImpl.java     | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/modules/module-impl/junit3/src/main/java/org/powermock/modules/junit3/internal/impl/PowerMockJUnit3RunnerDelegateImpl.java b/modules/module-impl/junit3/src/main/java/org/powermock/modules/junit3/internal/impl/PowerMockJUnit3RunnerDelegateImpl.java
+index af3d2ea..b573b4b 100644
+--- a/modules/module-impl/junit3/src/main/java/org/powermock/modules/junit3/internal/impl/PowerMockJUnit3RunnerDelegateImpl.java
++++ b/modules/module-impl/junit3/src/main/java/org/powermock/modules/junit3/internal/impl/PowerMockJUnit3RunnerDelegateImpl.java
+@@ -54,12 +54,12 @@ public class PowerMockJUnit3RunnerDelegateImpl extends TestSuite implements Powe
+             getTestConstructor(theClass); // Avoid generating multiple error
+             // messages
+         } catch (NoSuchMethodException e) {
+-            addTest(warning("Class " + theClass.getName() + " has no public constructor TestCase(String name) or TestCase()"));
++            addTest(warningInternal("Class " + theClass.getName() + " has no public constructor TestCase(String name) or TestCase()"));
+             return;
+         }
+ 
+         if (!Modifier.isPublic(theClass.getModifiers())) {
+-            addTest(warning("Class " + theClass.getName() + " is not public"));
++            addTest(warningInternal("Class " + theClass.getName() + " is not public"));
+             return;
+         }
+ 
+@@ -95,7 +95,7 @@ public class PowerMockJUnit3RunnerDelegateImpl extends TestSuite implements Powe
+             superClass = superClass.getSuperclass();
+         }
+         if (testCount() == 0) {
+-            addTest(warning("No tests found in " + theClass.getName()));
++            addTest(warningInternal("No tests found in " + theClass.getName()));
+         }
+     }
+ 
+-- 
+2.7.4
+

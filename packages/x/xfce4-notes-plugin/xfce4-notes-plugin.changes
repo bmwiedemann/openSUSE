@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Fri Aug 16 12:21:22 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Wed Jul 17 07:59:53 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Package renamed to follow upstream name xfce4-foo-plugin
+- Use lang subpackage for manual edits instead of %lang_package macro 
+- Cleaned up spec file
+- Added bcond for git master builds
+- Use %license macro for COPYING
+
+-------------------------------------------------------------------
+Mon Jun 29 06:46:36 UTC 2015 - gber@opensuse.org
+
+- update to version 1.8.1
+  - provide graphics tabs/ for gtk-2.0 theme
+  - fit panel button inside a single panel row (for deskbar mode)
+
+-------------------------------------------------------------------
+Sun Apr 19 20:34:55 UTC 2015 - gber@opensuse.org
+
+- update to version 1.8.0
+  - Dependencies: match Xfce 4.10 requirements
+  - Vala: Compilation fixes, and fixed build for GTK2 and GTK3 to
+    work together.
+  - GTK3: Added support for GTK3 and theming through GtkCssProvider,
+    it's still missing features from GTK2 code, and doesn't build
+    a panel plugin. Build with --enable-gtk3 from Git (dist do not
+    permit to rebuild from Vala.)
+  - Settings: New hidden notes-path setting tweakable through
+    xfconf.
+  - Monitor: Add monitoring of notes files to allow hot-edition and
+    refresh in notes windows.
+  - Other misc fixes.
+  - Updated translations
+- drop obsolete
+  xfce4-panel-plugin-notes-create-unversioned-lib.patch and
+  xfce4-panel-plugin-notes-automake-1.13.patch
+
+-------------------------------------------------------------------
+Wed Mar 13 11:17:09 CET 2013 - pgajdos@suse.cz
+
+- builds with automake 1.13
+  * automake-1.13.patch
+
+-------------------------------------------------------------------
+Sat Aug 18 19:09:47 UTC 2012 - gber@opensuse.org
+
+- correct the name of the desktop file in order to prevent
+  migration issues (bxo#6993)
+
+-------------------------------------------------------------------
+Sun Apr 29 09:55:41 UTC 2012 - gber@opensuse.org
+
+- add dependency on exo-tools since exo-open is used
+
+-------------------------------------------------------------------
+Fri Apr 20 08:58:51 UTC 2012 - gber@opensuse.org
+
+- added documentation files
+- added xfce4-panel-plugin-notes-create-unversioned-lib.patch in
+  order to build the plugin module as an unversioned lib, also
+  install it in the default panel plugin module path
+- removed xfce4-panel-plugin-notes-1.7.7-fix-desktop-file.patch
+  which is obsoleted by the above
+
+-------------------------------------------------------------------
+Tue Apr 17 22:34:40 UTC 2012 - gber@opensuse.org
+
+- corrected source URL
+
+-------------------------------------------------------------------
+Tue Apr  3 21:46:54 UTC 2012 - gber@opensuse.org
+
+- dropped unnecessary
+  xfce4-panel-plugin-notes-1.7.7-add-missing-vapi-files.patch
+- specfile cleanup
+- correct dependencies
+- split off -lang subpackage
+
+-------------------------------------------------------------------
+Wed Jul 27 13:22:03 UTC 2011 - gber@opensuse.org
+
+- removed unnecessary dependency on vala
+
+-------------------------------------------------------------------
+Wed Mar  9 11:00:00 UTC 2011 - gber@opensuse.org
+
+- new package (split off from xfce4-panel-plugins)
+

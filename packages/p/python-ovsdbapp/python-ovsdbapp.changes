@@ -1,0 +1,153 @@
+-------------------------------------------------------------------
+Mon Apr  8 13:52:13 UTC 2019 - cloud-devel@suse.de
+
+- update to version 0.15.0
+  - Update home-page
+  - Check for oslo library usage
+  - Pass posargs to pylint, not flake8
+  - Fix functional tests timeout race condition
+  - Expand retry behavior to cover other python-ovs methods
+  - update pylint to 1.9.2
+  - import zuul job settings from project-config
+  - NBDB API: Add param if_exists for methods using db_remove()
+  - Change openstack-dev to openstack-discuss
+  - Add Gateway_Chassis support
+  - Update reno for stable/rocky
+  - Attempt to fetch the schema from any remote
+  - Fix a typo in docstring
+  - add python 3.6 unit test job
+  - Add WaitEvent to the API
+  - Ensure timeout on queueing transaction
+  - Remove the oslo-utils dependency
+  - Group tests in same class to run in same group
+  - Move ovsdbapp jobs to its tree
+  - Convert base commands to ReadOnlyCommand
+  - fix tox python3 overrides
+  - Allow read-only Commands to bypass txns in execute()
+  - Migrate tempest job to zuul v3 native
+  - ut: Patch get_ident for race transaction test
+  - Make nested transaction thread aware
+
+-------------------------------------------------------------------
+Wed Mar  6 07:38:17 UTC 2019 - cloud-devel@suse.de
+
+- update to version 0.12.3
+  - Allow read-only Commands to bypass txns in execute()
+  - Convert base commands to ReadOnlyCommand
+  - Move ovsdbapp jobs to its tree
+
+-------------------------------------------------------------------
+Thu Oct 11 21:21:00 UTC 2018 - cloud-devel@suse.de
+
+- update to version 0.12.2
+  - Update UPPER_CONSTRAINTS_FILE for stable/rocky
+  - Remove the oslo-utils dependency
+  - Check for oslo library usage
+  - Update .gitreview for stable/rocky
+  - ut: Patch get_ident for race transaction test
+  - import zuul job settings from project-config
+  - Make nested transaction thread aware
+
+-------------------------------------------------------------------
+Tue Sep  4 15:23:12 UTC 2018 - cloud-devel@suse.de
+
+- update to version 0.12.0
+  - Display attempt number during transaction commit
+  - Add Port_Group commands
+  - TOX/pep8: Enforce the use of python2
+  - Add LrGet command
+  - Avoid tox_install.sh for constraints support
+  - Extend transaction with multiple commands
+  - Update reno for stable/queens
+  - Change external_ids to columns, in dns_add API
+  - Improve DbListCommand operation from O(n^2) to O(n)
+  - Support setting of interface external-ids
+  - Fix spelling error
+  - Switch to stestr
+  - Update OvsdbConnectionUnavailable error message
+  - Add QoS command for ovn northbound db.
+  - Use api.lookup instead of idlutils.row_by_record
+  - Make it possible to run functional tests again
+  - Add Port Group ACL commands
+  - Port Group's letfovers
+  - Document *_extenal_ids methods in open_vswitch/api.py
+  - IP should be optional in lsp_set_addresses
+  - Fix python3 compat with debug_venv.py
+  - Transaction: Handle NOT_LOCKED status
+  - Ensure idl.run() called on TRY_AGAIN
+  - Updated from global requirements
+  - add lower-constraints job
+
+-------------------------------------------------------------------
+Fri Mar  2 15:22:49 UTC 2018 - cloud-devel@suse.de
+
+- update to version 0.9.1
+  - Add ability to debug OVS virtual environments
+  - There is no documentation for ovsdbapp
+  - Return False when comparing a RowEvent to something else
+  - Don't throw NotConnectedError in queue_txn
+  - Add set_column(s) for ovs_idl backend
+  - pylint: Disable duplicate-code for check
+  - venv: Change --enable-dummy default to override
+  - Add RowView versions of db_find and db_list
+  - Fix condition_map type checking for strings
+  - Removes unnecessary utf-8 encoding
+  - rearrange existing documentation to fit the new standard layout
+  - Add OVN Northbound API for LS, LSP, and DHCP
+  - Add OVN_Northbound API LR, LRP, and LB commands
+  - Fix vlog level filtering
+  - venv: Split OvsVenvFixture to OVS and OVN
+  - The python 3.5 is added
+  - Don't wait on TRY_AGAIN when calling commit_block()
+  - Update the documentation link for doc migration
+  - Add OVN_Southbound API support
+  - Add command for deleting row column values
+  - Allow to stop and restart connections in Backend
+  - Enable warning-is-error in doc build
+  - Switch from oslosphinx to openstackdocstheme
+  - Have debug_venv use OVN venv
+  - Change parent to parent_name in lsp_add
+  - Adding {LS|LSP|DHCP_options}_get to OVN Northbound API
+  - Remove ignoring _ builtin usage for pep8
+  - Add DNS APIs
+  - Update UPPER_CONSTRAINTS_FILE for stable/queens
+  - Fix BridgeFixture
+  - Don't create a sandbox chassis by default
+  - Add RowEvent mechanism from networking-ovn
+  - Modify LSP List command to return all ports
+  - Enable pylint 1.4.5
+  - nb_schema: Use normalize_ip_port even for lb ips
+  - Allow use of installed OVS if OVS_SRCDIR not set
+  - Don't return garbage if table has no index col
+  - Add backward compatible connection attribute
+  - Update reno for stable/pike
+  - Add native IDL tests from neutron
+  - Drop MANIFEST.in - it's not needed by pbr
+  - Move ovsdb_connection definition to Backend
+  - Don't add non-strings to external_ids
+  - Update .gitreview for stable/queens
+  - Make schema-agnostic db commands part of base API
+  - Fix _ls_add-based tests
+  - Add Windows support when using eventlet with monkey_patch
+  - Ensure idl.run() called on TRY_AGAIN
+  - Updated from global requirements
+
+-------------------------------------------------------------------
+Tue Feb 13 08:07:45 UTC 2018 - cloud-devel@suse.de
+
+- update to version 0.4.2
+  - Ensure idl.run() called on TRY_AGAIN
+
+-------------------------------------------------------------------
+Fri Jan 12 15:00:57 UTC 2018 - cloud-devel@suse.de
+
+- update to version 0.4.1
+  - Update .gitreview for stable/pike
+  - Updated from global requirements
+  - Don't wait on TRY_AGAIN when calling commit_block()
+  - Update UPPER_CONSTRAINTS_FILE for stable/pike
+
+-------------------------------------------------------------------
+Fri Aug 25 07:42:12 UTC 2017 - tbechtold@suse.com
+
+- Initial packaging (version 0.4.0)

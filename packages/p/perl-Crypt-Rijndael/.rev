@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>87d58b5c4b1c4f133e10b614cd0fbd1d</srcmd5>
+    <version>1.09</version>
+    <time>1280738307</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Crypt-Rijndael based on submit request 44071 from user computersalat
+</comment>
+    <requestid>44071</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ee90837744db79ba5ce8baf79fd48450</srcmd5>
+    <version>1.09</version>
+    <time>1291581844</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54502 from user coolo
+</comment>
+    <requestid>54502</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d4c131f971385e867810e9cab0ff4fe2</srcmd5>
+    <version>1.09</version>
+    <time>1291581849</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54502
+</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>d4c131f971385e867810e9cab0ff4fe2</srcmd5>
+    <version>1.09</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>d4c131f971385e867810e9cab0ff4fe2</srcmd5>
+    <version>1.09</version>
+    <time>1319182254</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>c156f1446e75104cc89b84410866c756</srcmd5>
+    <version>1.09</version>
+    <time>1321875444</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92212</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>33f3b07eb705cf7261eaf5236abc6880</srcmd5>
+    <version>1.09</version>
+    <time>1323193175</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>33f3b07eb705cf7261eaf5236abc6880</srcmd5>
+    <version>1.09</version>
+    <time>1340183819</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>33f3b07eb705cf7261eaf5236abc6880</srcmd5>
+    <version>1.09</version>
+    <time>1359109631</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>665a0597e86b3a2ee1d9a8515acba412</srcmd5>
+    <version>1.11</version>
+    <time>1370432019</time>
+    <user>coolo</user>
+    <comment>- updated to 1.11
+      * Clarify the license as LGPL v3 (29 June 2007) (RT 78629)
+      * Add MirBSD support. It's the same options as Sun stuff. (forwarded request 177292 from coolo)</comment>
+    <requestid>177373</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>665a0597e86b3a2ee1d9a8515acba412</srcmd5>
+    <version>1.11</version>
+    <time>1379663607</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e4fa1c29b98c8eaebc09941ee2eee168</srcmd5>
+    <version>1.12</version>
+    <time>1392325157</time>
+    <user>coolo</user>
+    <comment>update version 1.12 (forwarded request 222145 from MargueriteSu)</comment>
+    <requestid>222149</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>e4fa1c29b98c8eaebc09941ee2eee168</srcmd5>
+    <version>1.12</version>
+    <time>1409302226</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>18bd3e39c3b98c9c3a4989d8a2b78dba</srcmd5>
+    <version>1.13</version>
+    <time>1434456319</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>312117</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cd4d964dd477c38cf83018462b126d51</srcmd5>
+    <version>1.14</version>
+    <time>1560760275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710111</requestid>
+  </revision>
+</revisionlist>

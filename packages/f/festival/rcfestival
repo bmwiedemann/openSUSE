@@ -1,0 +1,125 @@
+#! /bin/sh
+# Copyright (c) 2006 Andreas Schneider <mail@cynapses.org>.
+# All rights reserved.
+#
+# This file and all modifications and additions to the pristine
+# package are under the same license as the package itself.
+#
+# /etc/init.d/festival
+#   and its symbolic link
+# /usr/sbin/rcfestival
+#
+### BEGIN INIT INFO
+# Provides:          festival
+# Required-Start:    $syslog $remote_fs
+# Should-Start:      $time
+# Required-Stop:     $syslog $remote_fs
+# Should-Stop:       $time
+# Default-Start:     3 5
+# Default-Stop:      0 1 2 6
+# Short-Description: festival daemon providing full text-to-speech system
+# Description:       Start festival to allow applications to access a
+#	text-to-speech system with various APIs, as well as an environment
+#	for development and research of speech synthesis techniques. It is
+#	written in C++ and has a Scheme-based command interpreter for
+#	general control. 
+### END INIT INFO
+
+# Check for missing binaries (stale symlinks should not happen)
+# Note: Special treatment of stop for LSB conformance
+FESTIVAL_PID=/var/run/festival.pid
+FESTIVAL_BIN=/usr/bin/festival
+test -x $FESTIVAL_BIN || { echo "$FESTIVAL_BIN not installed"; 
+	if [ "$1" = "stop" ]; then exit 0;
+	else exit 5; fi; }
+
+# Check for existence of needed config file and read it
+FESTIVAL_CONFIG=/etc/sysconfig/festival
+test -r $FESTIVAL_CONFIG || { echo "$FESTIVAL_CONFIG not existing";
+	if [ "$1" = "stop" ]; then exit 0;
+	else exit 6; fi; }
+
+# Read config	
+. $FESTIVAL_CONFIG
+
+# Source LSB init functions
+. /etc/rc.status
+
+FESTIVAL_OPTIONS=""
+
+function prepare_chroot
+{
+    for configfile in /etc/festival.scm $FESTIVAL_CHROOT_FILES; do
+        test -d ${CHROOT_PREFIX}/${configfile%/*} || mkdir -p ${CHROOT_PREFIX}/${configfile%/*}
+        cp -auL ${configfile} ${CHROOT_PREFIX}/${configfile%/*}
+    done
+    FESTIVAL_OPTIONS="${FESTIVAL_OPTIONS} --chroot ${CHROOT_PREFIX}"
+}
+
+if( test "${FESTIVAL_RUN_CHROOTED}" = "yes" )
+then
+	FESTIVAL_OPTIONS="$FESTIVAL_OPTIONS --libdir / --uid festival"
+    CHROOT_PREFIX="/usr/share/festival/"
+	prepare_chroot
+else
+#	FESTIVAL_OPTIONS="$FESTIVAL_OPTIONS"
+    CHROOT_PREFIX=""
+fi
+
+
+# Reset status of this service
+rc_reset
+
+case "$1" in
+    start)
+		echo -n "Starting festival "
+
+		/sbin/startproc -p $FESTIVAL_PID $FESTIVAL_BIN $FESTIVAL_OPTIONS --server >/dev/null 2>&1
+		rc_status -v
+	;;
+    stop)
+		echo -n "Shutting down festival "
+		/sbin/killproc -TERM $FESTIVAL_BIN
+		rc_status -v
+	;;
+    try-restart|condrestart)
+		if test "$1" = "condrestart"; then
+			echo "${attn} Use try-restart ${done}(LSB)${attn} rather than condrestart ${warn}(RH)${norm}"
+		fi
+		$0 status
+		if test $? = 0; then
+			$0 restart
+		else
+			rc_reset	# Not running is not a failure.
+		fi
+		rc_status
+	;;
+    restart)
+		$0 stop
+		$0 start
+		rc_status
+	;;
+    force-reload)
+		echo -n "Reload service festival "
+		/sbin/killproc -HUP $FESTIVAL_BIN
+		rc_status -v
+	;;
+    reload)
+		echo -n "Reload service festival "
+		/sbin/killproc -HUP $FESTIVAL_BIN
+		rc_status -v
+	;;
+    status)
+		echo -n "Checking for service festival "
+		/sbin/checkproc $FESTIVAL_BIN
+		rc_status -v
+	;;
+    probe)
+		test /etc/festival.scm -nt /var/run/festival.pid && echo reload
+	;;
+    *)
+		echo "Usage: $0 {start|stop|status|try-restart|restart|force-reload|reload|probe}"
+		exit 1
+	;;
+esac
+rc_exit

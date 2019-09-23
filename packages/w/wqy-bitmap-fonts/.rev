@@ -1,0 +1,96 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e91ebdb0bd8291d2fdebc588efd5f0a6</srcmd5>
+    <version>0.9.9_0</version>
+    <time>1333389144</time>
+    <user>coolo</user>
+    <comment>Moving M17N/wqy-bitmapfont to M17N:fonts/wqy-bitmap-fonts.</comment>
+    <requestid>112026</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b1d7082a264fa399554b5cb526cd035c</srcmd5>
+    <version>0.9.9_0</version>
+    <time>1338280604</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122198</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b1d7082a264fa399554b5cb526cd035c</srcmd5>
+    <version>0.9.9_0</version>
+    <time>1340184326</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>6541e691d1605f8aaa5737133a05c777</srcmd5>
+    <version>0.9.9_0</version>
+    <time>1347619329</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133999</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>338c8be8510c91d78de080fba6ecb098</srcmd5>
+    <version>0.9.9_0</version>
+    <time>1350364770</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>138214</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>a3ee22c70747ff17b6a14ede71ac25a7</srcmd5>
+    <version>0.9.9_0</version>
+    <time>1355921966</time>
+    <user>coolo</user>
+    <comment>- silented &quot;Having multiple values in &lt;test&gt; isn't supported and may 
+  not works as expected&quot;
+  * conf.patch</comment>
+    <requestid>145283</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>a3ee22c70747ff17b6a14ede71ac25a7</srcmd5>
+    <version>0.9.9_0</version>
+    <time>1359110576</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>e73003438f58bb34765927b33c0113e6</srcmd5>
+    <version>0.9.9_0</version>
+    <time>1363982844</time>
+    <user>coolo</user>
+    <comment>- fix invalid attribute in conf.patch</comment>
+    <requestid>160585</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>c82bce084ff58f2729249730b1df9d41</srcmd5>
+    <version>0.9.9_0</version>
+    <time>1365484247</time>
+    <user>coolo</user>
+    <comment>fix bnc#813988 (forwarded request 163159 from MargueriteSu)</comment>
+    <requestid>163160</requestid>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>c82bce084ff58f2729249730b1df9d41</srcmd5>
+    <version>0.9.9_0</version>
+    <time>1379664969</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>c82bce084ff58f2729249730b1df9d41</srcmd5>
+    <version>0.9.9_0</version>
+    <time>1409303648</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>1b50ba2be7fcc9e2cd151e26431d41c3</srcmd5>
+    <version>0.9.9_0</version>
+    <time>1493580252</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492133</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,48 @@
+From: Michel Normand <normand@linux.vnet.ibm.com>
+Subject: vegastrike ppc64
+Date: Tue, 30 Aug 2016 14:04:17 +0200
+
+patch to avoid PowerPC build error.
+* The tcoord changed from char to signed char not yet upstream.
+* The move of not used variables are already upstream.
+
+Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
+---
+ src/gfx/background.cpp |    6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+Index: vegastrike-src-0.5.1.r1/src/gfx/background.cpp
+===================================================================
+--- vegastrike-src-0.5.1.r1.orig/src/gfx/background.cpp
++++ vegastrike-src-0.5.1.r1/src/gfx/background.cpp
+@@ -209,7 +209,7 @@ void Background::Draw()
+             {
+                 Texture *tex;
+                 float    vertices[4][3];              //will be *= size
+-                char     tcoord[4][4];             //S-T-S-T: 0 >= min, 1 => max
++                signed char tcoord[4][4];             //S-T-S-T: 0 >= min, 1 => max
+             }
+             skybox_rendering_sequence[6] = {
+ #ifdef NV_CUBE_MAP
+@@ -337,13 +337,10 @@ void Background::Draw()
+             skybox_rendering_sequence[5].tex = down;
+             for (size_t skr = 0; skr < sizeof (skybox_rendering_sequence)/sizeof (skybox_rendering_sequence[0]); skr++) {
+                 Texture *tex = skybox_rendering_sequence[skr].tex;
+-                int lyr;
+ 
+ #ifdef NV_CUBE_MAP
+                 if (tex == NULL)
+                     tex = _Universe->getLightMap();
+-                const int    numlayers = 1;
+-                const bool   multitex  = true;
+                 const int    numpasses = 1;
+                 static const float edge_fixup =
+                     XMLSupport::parse_float( vs_config->getVariable( "graphics", "background_edge_fixup", "0" ) );
+@@ -357,6 +354,7 @@ void Background::Draw()
+                 _Universe->activateLightMap( 0 );
+                 GFXToggleTexture( true, 0, CUBEMAP );
+ #else
++                int lyr;
+                 int   numlayers = tex->numLayers();
+                 bool  multitex  = (numlayers > 1);
+                 int   numpasses = tex->numPasses();

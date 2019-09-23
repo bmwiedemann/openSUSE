@@ -1,0 +1,5 @@
+<package name="python-pip-run" project="openSUSE:Factory">
+  <title></title>
+  <description>Install packages and run Python with them</description>
+  <devel project="devel:languages:python" package="python-pip-run"/>
+</package>

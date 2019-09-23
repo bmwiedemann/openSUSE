@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Fri Jul 13 19:04:15 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to 2.8:
+  * Fix file browsing.
+  * Fix compilation issues on Windows.
+  * Fix breakage of keybindings and menu item accelerators.
+- Update to 2.7:
+  * No changelog provided.
+- Use cmake for build.
+- Remove qgit4.desktop from rpm sources (now present in upstream
+  sources).
+
+-------------------------------------------------------------------
+Mon Jan  2 13:45:01 UTC 2017 - dmueller@suse.com
+
+- update to 2.6:
+  * switch to Qt5 (bsc#988809)
+- spec-cleaner run
+
+-------------------------------------------------------------------
+Tue Jun  4 20:53:57 UTC 2013 - dmueller@suse.com
+
+- update to 2.5:
+  * fixed sorting of tree-view
+  * better support for dark GUI color schemes
+  * fixed off-sync line numbers in the annotation file view
+
+-------------------------------------------------------------------
+Sun Sep 16 12:29:56 UTC 2012 - schwab@linux-m68k.org
+
+- Don't strip binaries
+
+-------------------------------------------------------------------
+Thu Dec  1 09:34:18 CET 2011 - dmueller@suse.de
+
+- update to 2.4 (bnc#734180):
+  * fix functionality losses with newer git releases
+  * shortlog parsing fixes
+  * display cleanups
+
+-------------------------------------------------------------------
+Wed Sep  9 18:16:33 CEST 2009 - dmueller@suse.de
+
+- update to 2.3:
+  * mainly a manteinance release with added a new and 
+  better graph look
+
+-------------------------------------------------------------------
+Sat Apr  4 19:26:14 CEST 2009 - dmueller@suse.de
+
+- rediff patches
+
+-------------------------------------------------------------------
+Thu Jul 17 23:08:55 CEST 2008 - dmueller@suse.de
+
+- update to 2.2:
+  * no changelog available
+
+-------------------------------------------------------------------
+Sat May 17 12:02:38 CEST 2008 - schwab@suse.de
+
+- Use RPM_OPT_FLAGS.
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Mon Mar 10 13:02:31 CET 2008 - dmueller@suse.de
+
+- udpate to 2.1:
+  * Lots of fixes from 2.0, see detailed change log at
+    http://git.kernel.org/?p=qgit/qgit4.git;a=shortlog
+  * Speed improvements
+
+-------------------------------------------------------------------
+Mon Oct  8 23:13:05 CEST 2007 - dmueller@suse.de
+
+- update to 2.0:
+  * Qt4 port, less security vulnerabilities 
+
+-------------------------------------------------------------------
+Mon Oct  8 22:48:50 CEST 2007 - dmueller@suse.de
+
+- update to 1.5.7 
+
+-------------------------------------------------------------------
+Sun Aug 12 10:20:10 CEST 2007 - dmueller@suse.de
+
+- update to 1.5.6 
+
+-------------------------------------------------------------------
+Thu May 17 07:04:18 CEST 2007 - dmueller@suse.de
+
+- Update to 1.5.5
+
+-------------------------------------------------------------------
+Thu Jan 18 19:26:01 CET 2007 - bwalle@suse.de
+
+- Update to 1.5.4
+
+-------------------------------------------------------------------
+Mon Nov 13 15:13:23 CET 2006 - mhopf@suse.de
+
+- Update to 1.5.3
+
+-------------------------------------------------------------------
+Thu Jul 20 12:57:02 CEST 2006 - mhopf@suse.de
+
+- Initial commit (version 1.4)
+

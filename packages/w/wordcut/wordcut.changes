@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Sat Oct  4 17:23:36 UTC 2014 - crrodriguez@opensuse.org
+
+- Cleanup buildrequires, no libraries other than glibc are needed. 
+
+-------------------------------------------------------------------
+Tue Jun  5 16:08:43 UTC 2012 - i@marguerite.su
+
+- fix sles builds.
+
+-------------------------------------------------------------------
+Thu Nov 24 10:21:07 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Dec 18 00:38:55 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Wed Dec 26 07:58:37 CET 2007 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-*
+- remove static libraries and libtool archives with empty dependency_libs 
+
+-------------------------------------------------------------------
+Tue Sep  5 17:47:32 CEST 2006 - meissner@suse.de
+
+- set CFLAGS/CXXFLAGS correctly for configure.
+
+-------------------------------------------------------------------
+Wed Mar 01 11:37:00 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(th)".
+
+-------------------------------------------------------------------
+Thu Feb 23 18:27:00 CET 2006 - mfabian@suse.de
+
+- Bugzilla #152315: "local variable used before set".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:51 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug 16 16:36:57 CEST 2004 - mfabian@suse.de
+
+- new package: wordcut, version 0.5.1b2
+

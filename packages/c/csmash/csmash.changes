@@ -1,0 +1,224 @@
+-------------------------------------------------------------------
+Mon Jun  4 12:00:26 UTC 2018 - meissner@suse.com
+
+- build with RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Fri Feb  9 12:52:58 UTC 2018 - crrodriguez@opensuse.org
+
+- FIx buildRequires so metapackages xorg-x11-devel, Mesa-devel
+  are not required anymore.
+
+-------------------------------------------------------------------
+Tue Sep 18 13:04:54 UTC 2012 - idonmez@suse.com
+
+- Add explicit glu dependency 
+
+-------------------------------------------------------------------
+Sun Sep 18 00:04:19 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Mon Nov  8 17:42:22 UTC 2010 - prusnak@opensuse.org
+
+- spec cleanup
+
+-------------------------------------------------------------------
+Mon Nov  8 12:46:41 UTC 2010 - coolo@novell.com
+
+- remove support for pre-9.1
+
+-------------------------------------------------------------------
+Sat Jan  2 17:09:03 CET 2010 - vuntz@opensuse.org
+
+- Change gtk1-compat-devel BuildRequires to gtk2-devel: the game
+  has been ported to GTK+ 2 a while ago.
+- Make sure to use datadir instead of /usr/share.
+
+-------------------------------------------------------------------
+Mon Nov 12 14:34:30 CET 2007 - lmichnovic@suse.cz
+
+- using find_lang macro
+- fixed uninitilized variable (uninitialized.diff)
+
+-------------------------------------------------------------------
+Fri Nov  9 17:32:17 CET 2007 - lmichnovic@suse.cz
+
+- using fdupes macro
+- not installing files INSTALL, NEWS (zero lenght)
+- renamed last patch to *definitions.diff
+
+-------------------------------------------------------------------
+Thu Oct 25 18:18:33 CEST 2007 - pgajdos@suse.cz
+
+- fixed build with new gcc 4.3 
+
+-------------------------------------------------------------------
+Fri Mar 23 18:49:59 CET 2007 - lmichnovic@suse.cz
+
+- forcing use of CXXFLAGS for compilation
+
+-------------------------------------------------------------------
+Mon Aug  7 17:43:22 CEST 2006 - lmichnovic@suse.cz
+
+- using gettextize -f to fix not expanding macro MKINSTALLDIRS
+
+-------------------------------------------------------------------
+Fri Jul 28 09:58:34 CEST 2006 - lmichnovic@suse.cz
+
+- checking version of X.org instead of suse_version
+
+-------------------------------------------------------------------
+Mon Jul 24 12:36:51 CEST 2006 - lmichnovic@suse.cz
+
+- fixed new X.org 7.x includes and headers dir
+- now using aclocal, automake, autoconf
+- using make %{?jobs:-j%jobs} for icecream 
+
+-------------------------------------------------------------------
+Fri Jan 27 11:32:45 CET 2006 - nadvornik@suse.cz
+
+- fixed BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:14 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Oct 20 11:07:49 CEST 2005 - lmichnovic@suse.cz
+
+- fixed invalid extra qualification for build with new gcc 4.1
+
+-------------------------------------------------------------------
+Mon Oct 10 10:18:22 CEST 2005 - lmichnovic@suse.cz
+
+- upgrade to version 0.6.6 
+- now building as gtk2 application
+
+-------------------------------------------------------------------
+Sat Jan 10 15:03:13 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Tue Aug 12 11:20:47 CEST 2003 - ltinkl@suse.cz
+
+- fixed bug #28657 (wrong datadir)
+
+-------------------------------------------------------------------
+Mon Aug 11 10:21:40 CEST 2003 - sndirsch@suse.de
+
+- added desktop file
+
+-------------------------------------------------------------------
+Fri Jul 11 13:07:56 CEST 2003 - ltinkl@suse.cz
+
+- updated to version 0.6.5
+- install binary to /usr/bin and data to /usr/share
+
+-------------------------------------------------------------------
+Tue Jun  3 01:28:32 CEST 2003 - ro@suse.de
+
+- added translations to filelist 
+
+-------------------------------------------------------------------
+Tue Sep  3 14:56:12 CEST 2002 - ro@suse.de
+
+- fix compilation (object->name may not be passed though ...) 
+
+-------------------------------------------------------------------
+Wed Jul 31 11:41:24 CEST 2002 - uli@suse.de
+
+- fixed to build on 64 bit archs 
+
+-------------------------------------------------------------------
+Tue Jul 30 18:42:16 CEST 2002 - tcrhak@suse.cz
+
+- update to version 0.6.4.2
+
+-------------------------------------------------------------------
+Tue Nov 13 14:35:19 CEST 2001 - tcrhak@suse.cz
+
+- removed aclocal, autoconf and automake
+
+-------------------------------------------------------------------
+Thu Nov  8 18:39:06 CET 2001 - ro@suse.de
+
+- use mesa-devel-packages in neededforbuild 
+
+-------------------------------------------------------------------
+Thu Oct 18 14:46:13 CEST 2001 - tiwai@suse.de
+
+- updated to version 0.6.3.
+- added smpeg and smpeg-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Wed Oct 17 21:31:22 CEST 2001 - schwab@suse.de
+
+- Fix for gcc 3.
+
+-------------------------------------------------------------------
+Mon Sep  3 17:11:05 CEST 2001 - tiwai@suse.de
+
+- updated to version 0.6.2
+  (better graphics, bug fixes, opening BGM).
+
+-------------------------------------------------------------------
+Wed Aug  8 17:43:57 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <kdelibs kdelibs-devel> to <kdelibs-artsd>
+
+-------------------------------------------------------------------
+Wed Aug  8 16:55:45 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <sdl> to <SDL>
+- changed neededforbuild <sdl-devel> to <SDL-devel>
+
+-------------------------------------------------------------------
+Mon Jul 30 14:57:50 CEST 2001 - dan@suse.cz
+
+- 0.6.1 version
+
+-------------------------------------------------------------------
+Wed Jun 20 17:02:07 CEST 2001 - ro@suse.de
+
+- added kdelibs for arts 
+
+-------------------------------------------------------------------
+Sun May  6 00:25:19 CEST 2001 - sndirsch@suse.de
+
+- replaced glx with mesasoft in #neededforbuild
+
+-------------------------------------------------------------------
+Sat Apr 14 21:02:41 CEST 2001 - schwab@suse.de
+
+- Add alsa to neededforbuild.
+
+-------------------------------------------------------------------
+Fri Apr 13 14:21:35 CEST 2001 - pblaha@suse.cz
+
+- update on 0.6.0 
+
+-------------------------------------------------------------------
+Thu Mar 15 18:23:12 CET 2001 - ro@suse.de
+
+- changed neededforbuild <mesaglu> to <xf86glu>
+- changed neededforbuild <mesaglu-devel> to <xf86glu-devel>
+
+-------------------------------------------------------------------
+Thu Mar  8 16:01:38 CET 2001 - uli@suse.de
+
+- added mesaglu*, mesaglut* to neededforbuild
+
+-------------------------------------------------------------------
+Wed Mar  7 16:58:41 CET 2001 - ro@suse.de
+
+- changed neededforbuild <mesadev> to <mesa-devel>
+
+-------------------------------------------------------------------
+Wed Dec 20 18:43:07 CET 2000 - pblaha@suse.cz
+
+- create this package
+

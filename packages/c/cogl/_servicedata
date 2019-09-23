@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://git.gnome.org/cogl</param>
+              <param name="changesrevision">d043a41d86ab762b42b1e2396f8732a353fb8bc2</param></service><service name="tar_scm">
+                <param name="url">https://gitlab.gnome.org/GNOME/cogl.git</param>
+              <param name="changesrevision">b7915c45ff71785efb9888c412ceb794b60395a6</param></service></servicedata>

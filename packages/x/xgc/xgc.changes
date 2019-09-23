@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Fri Apr 24 14:50:34 UTC 2015 - sndirsch@suse.com
+
+- Update to version 1.0.5:
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Remove include of Version 7 <sys/timeb.h> header
+  * configure: look for gram.c in $srcdir
+
+-------------------------------------------------------------------
+Sat Jan 19 08:52:45 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.4:
+  + Bounds check value passed to WriteText.
+  + config:
+    - Add missing AC_CONFIG_SRCDIR.
+    - Let Automake handle Lex and Yacc dist and cleaning.
+    - Move man pages into their own directory.
+    - Replace deprecated AM_CONFIG_HEADER with AC_CONFIG_HEADERS.
+    - Replace deprecated AC_HELP_STRING with AS_HELP_STRING.
+    - Replace AC_CHECK_FILE with test -f.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xgc from xorg-x11. Initial version: 1.0.3.
+

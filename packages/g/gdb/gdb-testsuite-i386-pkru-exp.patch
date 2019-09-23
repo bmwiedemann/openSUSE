@@ -1,0 +1,47 @@
+commit 1512d3b7b9de3a1943623f2e1f373459d5d80a98
+Author: Tom de Vries <tdevries@suse.de>
+Date:   Fri Jul 26 21:49:45 2019 +0200
+
+    [gdb/testsuite] Fix unterminated string in i386-pkru.exp
+    
+    I ran into this error:
+    ...
+    ERROR: tcl error sourcing gdb/testsuite/gdb.arch/i386-pkru.exp.
+    ERROR: missing "
+        while executing
+    "untested ""
+        invoked from within
+    "if { [prepare_for_testing "failed to prepare" ${testfile} ${srcfile} \
+         [list debug additional_flags=${comp_flags}]] } {
+        untested "failed to c..."
+        (file "gdb/testsuite/gdb.arch/i386-pkru.exp" line 25)
+        invoked from within
+    ...
+    caused by:
+    ...
+        untested "failed to compile x86 PKEYS test.
+    ...
+    
+    Fix the unterminated string.
+    
+    Tested on x86_64-linux.
+    
+    gdb/testsuite/ChangeLog:
+    
+    2019-07-26  Tom de Vries  <tdevries@suse.de>
+    
+            * gdb.arch/i386-pkru.exp: Fix unterminated string.
+
+diff --git a/gdb/testsuite/gdb.arch/i386-pkru.exp b/gdb/testsuite/gdb.arch/i386-pkru.exp
+index 7a2c65799e..db271522f0 100644
+--- a/gdb/testsuite/gdb.arch/i386-pkru.exp
++++ b/gdb/testsuite/gdb.arch/i386-pkru.exp
+@@ -24,7 +24,7 @@ set comp_flags "-I${srcdir}/../nat/"
+ 
+ if { [prepare_for_testing "failed to prepare" ${testfile} ${srcfile} \
+      [list debug additional_flags=${comp_flags}]] } {
+-    untested "failed to compile x86 PKEYS test.
++    untested "failed to compile x86 PKEYS test."
+     return -1
+ }
+ 

@@ -1,0 +1,209 @@
+---
+ util/s390x/zipl2grub.conf.in |   30 +++++++++++++++++++-
+ util/s390x/zipl2grub.pl.in   |   64 +++++++++++++++++++++++++++++--------------
+ 2 files changed, 73 insertions(+), 21 deletions(-)
+
+--- a/util/s390x/zipl2grub.conf.in
++++ b/util/s390x/zipl2grub.conf.in
+@@ -10,17 +10,45 @@ defaultmenu = menu
+     image = @zipldir@/image
+     parameters = "root=@GRUB_DEVICE@ @GRUB_EMU_CONMODE@ @GRUB_CMDLINE_LINUX@ @GRUB_CMDLINE_LINUX_DEFAULT@ initgrub quiet splash=silent plymouth.enable=0 "
+ 
++[grub2-mem1G]
++    target = @zipldir@
++    image  = @zipldir@/image
++    ramdisk = @zipldir@/initrd,0x2000000
++    parameters = "root=@GRUB_DEVICE@ @GRUB_EMU_CONMODE@ @GRUB_CMDLINE_LINUX@ @GRUB_CMDLINE_LINUX_DEFAULT@ initgrub quiet splash=silent plymouth.enable=0 mem=1G "
++
+ [skip-grub2]
+     target = @zipldir@
+     ramdisk = @zipldir@/initrd,0x2000000
+     image = @zipldir@/image
+     parameters = "root=@GRUB_DEVICE@ @GRUB_CONMODE@ @GRUB_CMDLINE_LINUX@ @GRUB_CMDLINE_LINUX_DEFAULT@ "
++#@
++#@[grub2-previous]
++#@    target = @zipldir@
++#@    image  = @zipldir@/image.prev
++#@    ramdisk = @zipldir@/initrd.prev,0x2000000
++#@    parameters = "root=@GRUB_DEVICE@ @GRUB_EMU_CONMODE@ @GRUB_CMDLINE_LINUX@ @GRUB_CMDLINE_LINUX_DEFAULT@ initgrub quiet splash=silent plymouth.enable=0 "
++#@
++#@[grub2-mem1G-previous]
++#@    target = @zipldir@
++#@    image  = @zipldir@/image.prev
++#@    ramdisk = @zipldir@/initrd.prev,0x2000000
++#@    parameters = "root=@GRUB_DEVICE@ @GRUB_EMU_CONMODE@ @GRUB_CMDLINE_LINUX@ @GRUB_CMDLINE_LINUX_DEFAULT@ initgrub quiet splash=silent plymouth.enable=0 mem=1G "
++#@
++#@[skip-grub2-previous]
++#@    target = @zipldir@
++#@    image  = @zipldir@/image.prev
++#@    ramdisk = @zipldir@/initrd.prev,0x2000000
++#@    parameters = "root=@GRUB_DEVICE@ @GRUB_CONMODE@ @GRUB_CMDLINE_LINUX@ @GRUB_CMDLINE_LINUX_DEFAULT@ "
+ 
+ :menu
+     target = @zipldir@
+-    timeout = 16
++    timeout = 60
+     default = 1
+     prompt = 0
+     1 = grub2
+     2 = skip-grub2
++    3 = grub2-mem1G
++#@    4 = grub2-previous
++#@    5 = skip-grub2-previous
++#@    6 = grub2-mem1G-previous
+ 
+--- a/util/s390x/zipl2grub.pl.in
++++ b/util/s390x/zipl2grub.pl.in
+@@ -10,6 +10,7 @@ my $sysconfbl = '@sysconfdir@/sysconfig/
+ my $defimage = "/boot/image";
+ my $definitrd = "/boot/initrd";
+ my $Image = "$defimage";
++my $previous = ".prev";
+ my $zipldir = "";
+ my $running = "";
+ my $refresh = 1; # needs to default to "on" until most bugs are shaken out!
+@@ -44,12 +45,12 @@ sub System(@) {
+   return 0 if ($debug);
+   system( @C);
+   if ($? == -1) {
+-    Panic( $?, "$C[0]: Failed to execute: $!\n");
++    Panic( 1, "$C[0]: Failed to execute: $!\n");
+   } elsif ($? & 127) {
+-    Panic( $?, sprintf( "$C[0]: Died with signal %d with%s coredump\n",
++    Panic( 1, sprintf( "$C[0]: Died with signal %d with%s coredump\n",
+            ($? & 127),  ($? & 128) ? '' : 'out'));
+   } elsif ( $? >> 8 != 0 ) {
+-    Panic( $?, "$C[0]: Failed\n");
++    Panic( $? >> 8, "$C[0]: Failed\n");
+   }
+   return( 0);
+ }
+@@ -74,11 +75,13 @@ sub ln($$) {
+   unlink( $_[1]) || Panic( 1, "$C: unlink: $!.\n") if ( -e $_[1]);
+   symlink($_[0], $_[1]) || Panic( 1, "$C: symlink: $!.\n");
+ }
+-sub BootCopy($$$) {
++
++sub ManagePrev($$$){
+   my( $file, $dir, $tgt) = @_;
+   my $curr = "$dir/$tgt";
+-  my $prev = "$dir/$tgt.prev";
+-  Info(4, "Copy /boot/$file $dir $tgt\n");
++  my $prev = "$dir/$tgt$previous";
++  my $ret = 0;
++  Info(2, "Manage $prev\n");
+   if ( -l $curr ) {
+     my $curf = readlink( $curr);
+     if ( $curf ne $file ) {
+@@ -88,7 +91,21 @@ sub BootCopy($$$) {
+ 	rm( $pref);
+       }
+       mv( $curr, $prev);
++      $ret = 1;
++    } else {
++      Info(2, "  nothing to do ($curr -> $file).\n");
+     }
++  } else {
++    Info(2, "  nothing to do ($curr no sym-link).\n");
++  }
++  return $ret;
++}
++sub BootCopy($$$) {
++  my( $file, $dir, $tgt) = @_;
++  my $curr = "$dir/$tgt";
++  Info(4, "Copy /boot/$file $dir $tgt\n");
++  if ( $tgt eq "image" && ManagePrev( $file, $dir, $tgt)) {
++    ManagePrev( $file, $dir, "initrd")
+   }
+   cp( "/boot/$file", "$dir/$file");
+   ln( $file, $curr);
+@@ -163,7 +180,9 @@ sub Usage($) {
+ 	"zIPL directory missing.",
+ 	"Configuration template missing.",
+ 	"Configuration template unreadable.",
+-	"zIPL directory not accesible.",
++	"zIPL directory not accessible.",
++	"kernel image parameter missing.",
++	"kernel image unreadable.",
+ 	""
+   );
+   my $msg = "";
+@@ -186,7 +205,8 @@ while ( $#ARGV >= 0 ) {
+   (/^--?help/ || /^-h/)       && (Usage(0));
+   (/^--zipldir$/ || /^-z$/)   && ($zipldir = shift || Usage(2), next);
+   (/^--template$/ || /^-T$/)  && ($in = shift || Usage(3), next);
+-  (/^--image$/ || /^-i$/)     && ($Image = shift || Usage(5), $force = 1, next);
++  (/^--image$/ || /^-i$/)     && ($Image = shift || Usage(6),
++				  -r "$Image" || Usage(7), $force = 1, next);
+   (/^-/)                      && (Usage(1));
+   Usage(1);
+ }
+@@ -345,7 +365,7 @@ if ( $debug && $verbose > 2 ) {
+ open( IN, "< $in") ||
+    Panic( 1, "$C: Failed to open 'zipl.conf' template: $!.\n");
+ while ( <IN> ) {
+-  Info( 3, "$.. <$_$.. >");
++  Info( 4, "$.. <$_$.. >");
+   if ( $. == 1 && m{^## This} ) {
+     $_ = "## This file was written by 'grub2-install/$C'\n" .
+ 	 "## filling '$in' as template\n";
+@@ -366,7 +386,7 @@ while ( <IN> ) {
+     }
+     s{\@$k\@}{$v}g;
+   }
+-  Info( 2, $_);
++  Info( 3, $_);
+   $cfg .= $_;
+ }
+ if ( $miss ) {
+@@ -374,13 +394,6 @@ if ( $miss ) {
+   Panic( 1, "$C: 'zipl.conf' template could not be filled. \n");
+ }
+ 
+-my $ziplconf = "$zipldir/config";
+-if ( ! $debug ) {
+-  open( OUT, "> $ziplconf") || die;
+-  print( OUT $cfg) || die;
+-  close( OUT);
+-}
+-
+ # copy out kernel and initrd
+ my $ziplimage = "$zipldir/image";
+ my $ziplinitrd = "$zipldir/initrd";
+@@ -399,15 +412,15 @@ if ( -l $Image ) {
+   $Image = readlink( $Image);
+ }
+ my ($image, $version) = ($Image =~ m{^(?:/boot/)?([^-]+-(.+))$});
+-my $initrd = "initrd-$version";
+-
+ if ( !defined($image) || !defined($version) || ! -r "/boot/$image" ) {
+   Panic( 1, "$C: weird $Image. This should never happen!\n");
+ }
++my $initrd = "initrd-$version";
+ 
+ if ( ! -r $ziplimage || ! -r $ziplinitrd || $refresh ) {
+   BootCopy( $image, $zipldir, "image");
+-  BootCopy( $initrd, $zipldir, "initrd") if (-r "/boot/$initrd");
++  BootCopy( $initrd, $zipldir, "initrd")
++    if (-r "/boot/$initrd" && ! exists( $fsdev{"/boot"}));
+ }
+ if ( $refresh || ChkInitrd( $zipldir, "initrd") <= 0 ) {
+   MkInitrd( $initrd, $zipldir, $version);
+@@ -417,6 +430,17 @@ if ( ChkInitrd( $zipldir, "initrd") == 0
+   $miss++;
+ }
+ 
++# write zipl config file
++my $ziplconf = "$zipldir/config";
++$cfg =~ s{#@}{}g if ( -r "$ziplimage$previous"  && -r "$ziplinitrd$previous" );
++if ( ! $debug ) {
++  open( OUT, "> $ziplconf") || die;
++  print( OUT $cfg) || die;
++  close( OUT);
++} else {
++  print( STDERR $cfg);
++}
++
+ # now: go for it!
+ my @C = ( "/sbin/zipl", (($verbose) ? "-Vnc" : "-nc"), "$ziplconf" );
+ System( @C);

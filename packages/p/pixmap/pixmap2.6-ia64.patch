@@ -1,0 +1,110 @@
+--- Dialog.c
++++ Dialog.c
+@@ -88,7 +88,7 @@
+      Widget w;
+      XtPointer client_data, call_data;
+ {
+-  selected = (int)client_data;
++  selected = (int)(long)client_data;
+ }
+ 
+ #ifdef USE_ATHENA
+@@ -211,7 +211,7 @@
+ 	    if (options & dialog_buttons[i].flag)
+ 		XawDialogAddButton(popup->dialog_widget, 
+ 				   dialog_buttons[i].name, SetSelected, 
+-                                   (XtPointer)dialog_buttons[i].flag);
++                                   (XtPointer)(long)dialog_buttons[i].flag);
+ #endif /* USE_ATHENA */
+ 
+ 	popup->options = options;
+--- PixEdit.c
++++ PixEdit.c
+@@ -59,6 +59,7 @@
+ 
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <X11/Intrinsic.h>
+ #include <X11/Xos.h>
+ #include <X11/Xfuncs.h>
+--- Pixmap.c
++++ Pixmap.c
+@@ -67,6 +67,7 @@
+ #include "PixmapP.h"
+     
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <math.h>
+ 
+ #define XtStrlen(s)                   ((s) ? strlen(s) : 0)
+--- SelFile/Draw.c
++++ SelFile/Draw.c
+@@ -508,7 +508,7 @@
+ 
+ 	if (SFbuttonPressed) {
+ 		SFscrollTimerId = XtAppAddTimeOut(SFapp,
+-			SFscrollTimerInterval(), SFscrollTimer, (XtPointer) n);
++			SFscrollTimerInterval(), SFscrollTimer, (XtPointer)(long) n);
+ 	}
+ }
+ 
+@@ -549,7 +549,7 @@
+ 				SFscrollTimerAdded = 1;
+ 				SFscrollTimerId = XtAppAddTimeOut(SFapp,
+ 					SFscrollTimerInterval(), SFscrollTimer,
+-					(XtPointer) n);
++					(XtPointer)(long) n);
+ 			}
+ 		}
+ 
+--- SelFile/SelFile.c
++++ SelFile/SelFile.c
+@@ -415,9 +415,9 @@
+ 			scrollbarWidgetClass, selFileLists[n], arglist, i);
+ 
+ 		XtAddCallback(selFileVScrolls[n], XtNjumpProc,
+-			SFvFloatSliderMovedCallback, (XtPointer) n);
++			SFvFloatSliderMovedCallback, (XtPointer)(long) n);
+ 		XtAddCallback(selFileVScrolls[n], XtNscrollProc,
+-			SFvAreaSelectedCallback, (XtPointer) n);
++			SFvAreaSelectedCallback, (XtPointer)(long) n);
+ 
+ 		i = 0;
+ 
+@@ -432,9 +432,9 @@
+ 			scrollbarWidgetClass, selFileLists[n], arglist, i);
+ 
+ 		XtAddCallback(selFileHScrolls[n], XtNjumpProc,
+-			SFhSliderMovedCallback, (XtPointer) n);
++			SFhSliderMovedCallback, (XtPointer)(long) n);
+ 		XtAddCallback(selFileHScrolls[n], XtNscrollProc,
+-			SFhAreaSelectedCallback, (XtPointer) n);
++			SFhAreaSelectedCallback, (XtPointer)(long) n);
+ 	}
+ 
+ 	i = 0;
+@@ -493,17 +493,17 @@
+ 
+ 	for (n = 0; n < 3; n++) {
+ 		XtAddEventHandler(selFileLists[n], ExposureMask, True,
+-			SFexposeList, (XtPointer) n);
++			SFexposeList, (XtPointer)(long) n);
+ 		XtAddEventHandler(selFileLists[n], EnterWindowMask, False,
+-			SFenterList, (XtPointer) n);
++			SFenterList, (XtPointer)(long) n);
+ 		XtAddEventHandler(selFileLists[n], LeaveWindowMask, False,
+-			SFleaveList, (XtPointer) n);
++			SFleaveList, (XtPointer)(long) n);
+ 		XtAddEventHandler(selFileLists[n], PointerMotionMask, False,
+-			SFmotionList, (XtPointer) n);
++			SFmotionList, (XtPointer)(long) n);
+ 		XtAddEventHandler(selFileLists[n], ButtonPressMask, False,
+-			SFbuttonPressList, (XtPointer) n);
++			SFbuttonPressList, (XtPointer)(long) n);
+ 		XtAddEventHandler(selFileLists[n], ButtonReleaseMask, False,
+-			SFbuttonReleaseList, (XtPointer) n);
++			SFbuttonReleaseList, (XtPointer)(long) n);
+ 	}
+ 
+ 	XtAddEventHandler(selFileField, KeyPressMask, False,

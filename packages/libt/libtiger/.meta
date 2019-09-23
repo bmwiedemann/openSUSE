@@ -1,0 +1,7 @@
+<package name="libtiger" project="openSUSE:Factory">
+  <title>libtiger</title>
+  <description>Rendering library for Kate streams using Pango and Cairo
+
+</description>
+  <devel project="multimedia:libs" package="libtiger"/>
+</package>

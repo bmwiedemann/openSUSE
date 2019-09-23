@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>840cfdc51c7a98a2e23432ff1e9ae856</srcmd5>
+    <version>0.39</version>
+    <time>1445287823</time>
+    <user>dimstar_suse</user>
+    <comment>bnc#949446 needed by some cfengine thing.</comment>
+    <requestid>338130</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d3f08cae763bb046eba0ccdbc034d4a2</srcmd5>
+    <version>0.40</version>
+    <time>1468482403</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407320</requestid>
+  </revision>
+</revisionlist>

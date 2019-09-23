@@ -1,0 +1,11 @@
+Don't start Redshift in a terminal.
+
+--- a/data/applications/redshift.desktop.in
++++ b/data/applications/redshift.desktop.in
+@@ -6,5 +6,5 @@
+ Exec=redshift
+ Icon=redshift
+-Terminal=true
++Terminal=false
+ Type=Application
+ Categories=Utility;

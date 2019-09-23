@@ -1,0 +1,25 @@
+---
+ bash_completion |   11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+--- bash_completion
++++ bash_completion	2017-07-04 07:40:15.221922680 +0000
+@@ -1881,12 +1881,13 @@ _longopt()
+     fi
+ }
+ # makeinfo and texi2dvi are defined elsewhere.
+-complete -F _longopt a2ps awk base64 bash bc bison cat chroot colordiff cp \
+-    csplit cut date df diff dir du enscript env expand fmt fold gperf \
++complete -F _longopt -o filenames a2ps awk base64 bash bc bison cat chroot colordiff cp \
++    csplit cut date df diff dir du enscript expand fmt fold gperf \
+     grep grub head irb ld ldd less ln ls m4 md5sum mkdir mkfifo mknod \
+-    mv netstat nl nm objcopy objdump od paste pr ptx readelf rm rmdir \
+-    sed seq sha{,1,224,256,384,512}sum shar sort split strip sum tac tail tee \
+-    texindex touch tr uname unexpand uniq units vdir wc who
++    mv nl nm objcopy objdump od paste pr ptx readelf rm rmdir \
++    sed sha{,1,224,256,384,512}sum shar sort split strip sum tac tail tee \
++    texindex touch tr unexpand uniq vdir wc who
++complete -F _longopt -o default env netstat seq uname units
+ 
+ declare -A _xspecs
+ _filedir_xspec()

@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Wed May  2 08:12:23 UTC 2018 - tchvatal@suse.com
+
+- Use exclusive arch wrt issue bsc#1091620 as it gets unresolvable
+  otherwise
+
+-------------------------------------------------------------------
+Wed Oct  4 17:02:42 UTC 2017 - tuukka.pasanen@ilmi.fi
+
+- Remove not requires pre/post/postun requires
+
+-------------------------------------------------------------------
+Wed Oct  4 08:01:02 UTC 2017 - tuukka.pasanen@ilmi.fi
+
+- Added python3-libvoikko to requires list so spell checking
+  actually works
+
+-------------------------------------------------------------------
+Wed Jun  7 16:47:57 UTC 2017 - tchvatal@suse.com
+
+- No need to limit exclusivearch
+
+-------------------------------------------------------------------
+Tue Apr 25 13:17:59 UTC 2017 - tchvatal@suse.com
+
+- Version update to 5.0:
+  * Few parts redone in python instead of C++
+
+-------------------------------------------------------------------
+Tue May 17 13:42:49 UTC 2016 - schwab@suse.de
+
+- Enable on aarch64
+
+-------------------------------------------------------------------
+Wed Aug  5 08:49:14 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+- Tiny cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jan 22 12:20:32 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 4.1:
+  + Unconditionally enable grammar checker since it is now used
+    only with dictionaries and backends that support it.
+  + Switch to passive component registration.
+
+-------------------------------------------------------------------
+Thu Feb 27 10:53:07 UTC 2014 - fcrozat@suse.com
+
+- set exclusivearch to x86/x86_64
+
+-------------------------------------------------------------------
+Thu Feb 27 09:40:06 UTC 2014 - tchvatal@suse.com
+
+- Fix the install phase.
+
+-------------------------------------------------------------------
+Tue Feb 11 10:22:36 UTC 2014 - fcrozat@suse.com
+
+- Fix license tag to GPL-3.0+ or MIT and package COPYING and
+  README (which states both licenses can apply).
+
+-------------------------------------------------------------------
+Sun Jan 26 10:22:23 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 3.7:
+  * Needed to build with lo-4.2 and later
+  * Also compatible with new libvoikko
+- Cleanup with spec-cleaner and remove useless defines.
+- Drop no longer needed patch:
+  * libreoffice-voikko-rel-3.4.1-lo-4.1-cppumaker.diff
+
+-------------------------------------------------------------------
+Thu Aug 22 15:28:03 UTC 2013 - pmladek@suse.com
+
+- updated to version 3.4.1:
+        * do not query available languages too often
+	* support for spell checking multiple languages
+	* English as the fallback language for settings dialog
+- bumped dependencies in LibreOffice; documentation said that it built
+  and worked only with LO 4.1 and higher
+- libreoffice-voikko-rel-3.4.1-lo-4.1-cppumaker.diff: -BUCR is gone in
+  the upstream cppumaker
+- remove obsolete post install scripts; the system UNO cache is not
+  longer read by LO >= 4.0
+
+-------------------------------------------------------------------
+Thu Apr 12 12:33:04 UTC 2012 - pmladek@suse.com
+
+- set license tag correctly to GPL-3.0+ (bnc#741551)
+
+-------------------------------------------------------------------
+Mon Apr  2 13:07:21 UTC 2012 - pmladek@suse.com
+
+- fix build with LibreOffice-3.5; basis directory does not longer exist
+- call unopkg-sync-bundled in %posttrans and %post to update extensions
+  cache and make it actually working
+- spec file clean up
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:45 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Thu Mar  3 17:41:34 CET 2011 - pmladek@suse.cz
+
+- removed unused update-alternatives from BuildRequires
+
+-------------------------------------------------------------------
+Thu Feb  3 20:46:50 CET 2011 - pmladek@suse.cz
+
+- updated to version 3.1.2:
+    * fix broken config.xcu to work with stricter validation in OOo/LO 3.3
+    * add license attribute that allows suppressing the license dialog with
+      unopkg --suppress-license
+    * error handling for damaged configuration (sf#2919454)
+    * change order of linker flags on Linux to enable building with
+      -Wl,--as-needed
+    * icon update; add SVG version
+- renamed from OpenOffice_org-voikko to libreoffice-voikko
+- added provides locale(libreoffice:fi) to make it installed
+  with libreoffice (bnc#668145)
+- installed files into %%ooo_prefix/%%ooo_home/share/extensions/voikko
+  where the extensions are automatically registered
+- removed obsolete postinstall scripts
+
+-------------------------------------------------------------------
+Mon Aug  3 18:54:05 CEST 2009 - pmladek@suse.cz
+
+- added Provides: locale(OpenOffice_org:fi) to make it installed automatically
+- added PreReq: OpenOffice_org, zip; unopkg is part of OpenOffice_org-libs-core
+  but it should be rather called with complete OOo installed
+- thanks to Lars Rupp for hints
+
+-------------------------------------------------------------------
+Mon Jul 27 20:10:21 CEST 2009 - pmladek@suse.cz
+
+- changed the order of linker arguments to fix build in openSUSE Factory;
+  -Wl,--as-needed is enabled by default there (sf#2827973)
+
+-------------------------------------------------------------------
+Fri Jun 19 10:26:06 CEST 2009 - pmladek@suse.cz
+
+- initial package for openSUSE Factory, version 3.1
+- based on the package by Sami Vento
+- it is necessary to support Finnish spellcheck, hyphen, and thesaurus
+  functionality in OOo
+

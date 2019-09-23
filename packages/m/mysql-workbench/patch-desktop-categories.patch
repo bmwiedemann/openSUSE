@@ -1,0 +1,12 @@
+Index: mysql-workbench-community-6.3.9-src/mysql-workbench.desktop.in
+===================================================================
+--- mysql-workbench-community-6.3.9-src.orig/mysql-workbench.desktop.in
++++ mysql-workbench-community-6.3.9-src/mysql-workbench.desktop.in
+@@ -6,5 +6,6 @@ Terminal=false
+ Type=Application
+ Icon=mysql-workbench
+ MimeType=application/vnd.mysql-workbench-model;application/sql;
+-Categories=GTK;Database;Development;
++Categories=Development;Office;Database;GUIDesigner;
++GenericName=mysql-workbench
+ StartupWMClass=mysql-workbench-bin

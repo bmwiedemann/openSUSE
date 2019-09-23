@@ -1,0 +1,94 @@
+-- .......................................................................... --
+-- File catalog  ............................................................ --
+
+--  XHTML Catalog Data File
+
+    Revision:  $Id: xhtml.cat,v 1.7 2000/03/29 18:52:38 ahby Exp $ SMI
+
+    This is the catalog data file for various versions of the XHTML DTD.
+    You do not need to use the file names listed here, and do not need 
+    to use the filename method of identifying storage objects at all.
+
+    See "Entity Management", SGML Open Technical Resolution 9401 for detailed
+    information on supplying and using catalog data. This document is available
+    from OASIS at URL:
+
+        <http://www.oasis-open.org/cover/tr9401.html>
+--
+
+-- .......................................................................... --
+-- SGML declaration associated with XHTML  .................................. --
+
+OVERRIDE YES
+
+-- for use with non-Unicode compatible parsers: --
+-- SGMLDECL "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xml1n.dcl" --
+
+-- uncomment for XML compatibility: --
+-- SGMLDECL "xml1.dcl" --
+
+-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: --
+
+-- XHTML framework modules .................................................. --
+
+PUBLIC "-//W3C//ENTITIES XHTML Modular Framework 1.0//EN"      "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-framework-1.mod"
+PUBLIC "-//W3C//NOTATIONS XHTML Notations 1.0//EN"             "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-notations-1.mod"
+PUBLIC "-//W3C//ENTITIES XHTML Datatypes 1.0//EN"              "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-datatypes-1.mod"
+PUBLIC "-//W3C//ENTITIES XHTML Qualified Names 1.0//EN"        "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-qname-1.mod"
+PUBLIC "-//W3C//ENTITIES XHTML Common Attributes 1.0//EN"      "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-attribs-1.mod"
+PUBLIC "-//W3C//ENTITIES XHTML Character Entities 1.0//EN"     "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-charent-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Redeclarations 1.0//EN"         "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-redecl-1.mod"
+
+-- XHTML modules ............................................................ --
+
+PUBLIC "-//W3C//ELEMENTS XHTML Document Structure 1.0//EN"     "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-struct-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Text 1.0//EN"                   "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-text-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Hypertext 1.0//EN"              "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-hypertext-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Lists 1.0//EN"                  "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-list-1.mod"
+
+PUBLIC "-//W3C//ELEMENTS XHTML Inline Structural 1.0//EN"      "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-inlstruct-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Inline Presentation 1.0//EN"    "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-inlpres-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Inline Phrasal 1.0//EN"         "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-inlphras-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Block Structural 1.0//EN"       "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-blkstruct-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Block Presentation 1.0//EN"     "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-blkpres-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Block Phrasal 1.0//EN"          "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-blkphras-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Ruby 1.0//EN"                   "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-ruby-1.mod"
+
+PUBLIC "-//W3C//ELEMENTS XHTML Java Applets 1.0//EN"           "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-applet-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Base Architecture 1.0//EN"      "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-arch-1.mod"
+PUBLIC "-//W3C//DTD XHTML Architecture 1.1//EN"                "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml11-arch.dtd"
+PUBLIC "-//W3C//ELEMENTS XHTML Param Element 1.0//EN"          "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-param-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Presentation 1.0//EN"           "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-pres-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Editing Elements 1.0//EN"       "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-edit-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML BIDI Override Element 1.0//EN"  "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-bdo-1.mod" 
+PUBLIC "-//W3C//ELEMENTS XHTML Basic Forms 1.0//EN"            "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-basic-form-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Forms 1.0//EN"                  "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-form-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Basic Tables 1.0//EN"           "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-basic-table-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Tables 1.0//EN"                 "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-table-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Images 1.0//EN"                 "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-image-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Client-side Image Maps 1.0//EN" "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-csismap-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Server-side Image Maps 1.0//EN" "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-ssismap-1.mod"
+PUBLIC "-//W3C//ENTITIES XHTML Intrinsic Events 1.0//EN"       "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-events-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Metainformation 1.0//EN"        "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-meta-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Scripting 1.0//EN"              "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-script-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Stylesheets 1.0//EN"            "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-style-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Link Element 1.0//EN"           "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-link-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Base Element 1.0//EN"           "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-base-1.mod"
+
+PUBLIC "-//W3C//ELEMENTS XHTML Legacy Redeclarations 1.0//EN"  "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-legacy-redecl-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Legacy Markup 1.0//EN"          "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-legacy-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Embedded Object 1.0//EN"        "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-object-1.mod" 
+PUBLIC "-//W3C//ELEMENTS XHTML Frames 1.0//EN"                 "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-frames-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Target 1.0//EN"                 "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-target-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Inline Frame Element 1.0//EN"   "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-iframe-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Inline Style 1.0//EN"           "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-inlstyle-1.mod"
+PUBLIC "-//W3C//ELEMENTS XHTML Name Identifier 1.0//EN"        "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-nameident-1.mod"
+
+-- XHTML entity sets  ....................................................... --
+
+PUBLIC "-//W3C//ENTITIES Latin 1 for XHTML//EN"                "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-lat1.ent"
+PUBLIC "-//W3C//ENTITIES Special for XHTML//EN"                "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-special.ent"
+PUBLIC "-//W3C//ENTITIES Symbols for XHTML//EN"                "/usr/share/xml/xhtml/schema/dtd/1.0-modularization/xhtml-symbol.ent"
+
+-- End of catalog data  ..................................................... --
+-- .......................................................................... --

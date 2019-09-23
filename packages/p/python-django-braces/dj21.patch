@@ -1,0 +1,39 @@
+From 22f6bc6d8da13080797b411563391d59b3791880 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michael=20K=C3=A4ufl?= <michael-k@users.noreply.github.com>
+Date: Mon, 3 Sep 2018 21:41:39 +0200
+Subject: [PATCH] [tests] Use class based login view
+
+`django.contrib.auth.views.login` was deprecated in Django 1.11 in
+favor of `django.contrib.auth.views.LoginView` and removed in
+Django 2.1.
+
+https://docs.djangoproject.com/en/2.1/releases/1.11/#django-contrib-auth
+https://docs.djangoproject.com/en/2.1/releases/2.1/#features-removed-in-2-1
+---
+ tests/urls.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/urls.py b/tests/urls.py
+index 80f5f1f..89f1bc2 100644
+--- a/tests/urls.py
++++ b/tests/urls.py
+@@ -1,7 +1,7 @@
+ from __future__ import absolute_import
+ 
+ from django.core.exceptions import ImproperlyConfigured
+-from django.contrib.auth.views import login
++from django.contrib.auth.views import LoginView
+ from . import views
+ from .compat import include, url, patterns_compat
+ 
+@@ -116,8 +116,8 @@
+ ]
+ 
+ urlpatterns += [
+-    url(r'^accounts/login/$', login, {'template_name': 'blank.html'}),
+-    url(r'^auth/login/$', login, {'template_name': 'blank.html'}),
++    url(r'^accounts/login/$', LoginView.as_view(template_name='blank.html')),
++    url(r'^auth/login/$', LoginView.as_view(template_name='blank.html')),
+ ]
+ try:
+     urlpatterns += [

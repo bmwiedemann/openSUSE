@@ -1,0 +1,90 @@
+Index: pam_krb5-2.4.13/src/acct.c
+===================================================================
+--- pam_krb5-2.4.13.orig/src/acct.c
++++ pam_krb5-2.4.13/src/acct.c
+@@ -90,6 +90,10 @@ pam_sm_acct_mgmt(pam_handle_t *pamh, int
+ 		_pam_krb5_free_ctx(ctx);
+ 		return PAM_SERVICE_ERR;
+ 	}
++	if (options->debug) {
++		debug("pam_acct_mgmt called for '%s', realm '%s'", user,
++			options->realm);
++	}
+ 
+ 	/* Get information about the user and the user's principal name. */
+ 	userinfo = _pam_krb5_user_info_init(ctx, user, options);
+Index: pam_krb5-2.4.13/src/auth.c
+===================================================================
+--- pam_krb5-2.4.13.orig/src/auth.c
++++ pam_krb5-2.4.13/src/auth.c
+@@ -109,8 +109,8 @@ pam_sm_authenticate(pam_handle_t *pamh,
+ 		return PAM_SERVICE_ERR;
+ 	}
+ 	if (options->debug) {
+-		debug("called to authenticate '%s', configured realm '%s'",
+-		      user, options->realm);
++		debug("pam_authenticate called for '%s', realm '%s'", user,
++			options->realm);
+ 	}
+ 	_pam_krb5_set_init_opts(ctx, gic_options, options);
+ 
+@@ -434,6 +434,11 @@ pam_sm_setcred(pam_handle_t *pamh, int f
+ 	       int argc, PAM_KRB5_MAYBE_CONST char **argv)
+ {
+ 	const char *why = "";
++	notice("pam_setcred (%s) called",
++		(flags & PAM_ESTABLISH_CRED)?"establish credential":
++		(flags & PAM_REINITIALIZE_CRED)?"reinitialize credential":
++		(flags & PAM_REFRESH_CRED)?"refresh credential":
++		(flags & PAM_DELETE_CRED)?"delete credential":"unknown flag");
+ 	if (flags & PAM_ESTABLISH_CRED) {
+ 		return _pam_krb5_open_session(pamh, flags, argc, argv,
+ 					      "pam_setcred(PAM_ESTABLISH_CRED)",
+Index: pam_krb5-2.4.13/src/password.c
+===================================================================
+--- pam_krb5-2.4.13.orig/src/password.c
++++ pam_krb5-2.4.13/src/password.c
+@@ -111,6 +111,16 @@ pam_sm_chauthtok(pam_handle_t *pamh, int
+ 		_pam_krb5_free_ctx(ctx);
+ 		return PAM_SERVICE_ERR;
+ 	}
++	if (options->debug) {
++		debug("pam_chauthtok called (%s) for '%s', realm '%s'",
++			(flags & PAM_PRELIM_CHECK) ?
++			"preliminary check" :
++			((flags & PAM_UPDATE_AUTHTOK) ?
++			    "updating authtok":
++			    "unknown phase"),
++			user,
++			options->realm);
++	}
+ 	_pam_krb5_set_init_opts(ctx, gic_options, options);
+ 
+ 	/* Get information about the user and the user's principal name. */
+Index: pam_krb5-2.4.13/src/session.c
+===================================================================
+--- pam_krb5-2.4.13.orig/src/session.c
++++ pam_krb5-2.4.13/src/session.c
+@@ -98,6 +98,10 @@ _pam_krb5_open_session(pam_handle_t *pam
+ 		_pam_krb5_free_ctx(ctx);
+ 		return PAM_SERVICE_ERR;
+ 	}
++	if (options->debug) {
++		debug("pam_open_session called for '%s', realm '%s'", user,
++			options->realm);
++	}
+ 
+ 	/* If we're in a no-cred-session situation, return. */
+ 	if ((!options->cred_session) &&
+@@ -295,7 +299,10 @@ _pam_krb5_close_session(pam_handle_t *pa
+ 		_pam_krb5_free_ctx(ctx);
+ 		return PAM_SERVICE_ERR;
+ 	}
+-
++	if (options->debug) {
++		debug("pam_close_session called for '%s', realm '%s'", user,
++			options->realm);
++	}
+ 	/* If we're in a no-cred-session situation, return. */
+ 	if ((!options->cred_session) &&
+ 	    (caller_type == _pam_krb5_session_caller_setcred)) {

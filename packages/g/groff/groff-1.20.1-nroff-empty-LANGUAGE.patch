@@ -1,0 +1,13 @@
+Index: groff-1.20.1/src/roff/nroff/nroff.sh
+===================================================================
+--- groff-1.20.1.orig/src/roff/nroff/nroff.sh	2010-08-23 15:04:18.000000000 +0200
++++ groff-1.20.1/src/roff/nroff/nroff.sh	2010-08-23 15:46:28.313156532 +0200
+@@ -41,7 +41,7 @@
+   IBM-1047)
+     Tloc=cp1047 ;;
+   *)
+-    case "${LC_ALL-${LC_CTYPE-${LANG}}}" in
++    case "${LC_ALL:-${LC_CTYPE:-${LANG}}}" in
+       *.UTF-8)
+         Tloc=utf8 ;;
+       iso_8859_1 | *.ISO-8859-1 | *.ISO8859-1 | \

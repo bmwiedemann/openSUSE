@@ -1,0 +1,5 @@
+<package name="bazel-workspaces" project="openSUSE:Factory">
+  <title>bazel-workspaces</title>
+  <description>Bazel workspaces for libraries packaged in openSUSE</description>
+  <devel project="devel:tools:building" package="bazel-workspaces"/>
+</package>

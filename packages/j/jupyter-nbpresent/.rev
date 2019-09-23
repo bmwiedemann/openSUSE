@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95f9c7ca3474760c9dc112df755e68a8</srcmd5>
+    <version>3.0.0</version>
+    <time>1558515454</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename to to match jupyter package naming guidelines.
+- Avoid bashism in scriptlet.
+- Remove filler wording.
+- Rewrite description not to contain imperatives.
+- Use || true syntax instead of exit 0
+- Initial version
+</comment>
+    <requestid>698388</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,12 @@
+diff -Nur asm-ASM_3_3_2/build.properties new/build.properties
+--- asm-ASM_3_3_2/build.properties	2011-03-20 16:16:03.000000000 +0100
++++ new/build.properties	2018-08-11 15:36:07.110836928 +0200
+@@ -31,7 +31,7 @@
+ # Some information about the product
+ 
+ product.name    asm
+-product.version 3.3.1
++product.version 3.3.2
+ # product.snapshot yes
+ 
+ plugin.version 3.3.0

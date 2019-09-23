@@ -1,0 +1,5 @@
+<package name="python-osmviz" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Application:Geo" package="python-osmviz"/>
+</package>

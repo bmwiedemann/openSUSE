@@ -1,0 +1,8 @@
+<package name="xmldb-api" project="openSUSE:Factory">
+  <title>XML:DB API for Java</title>
+  <description>The API interfaces are what driver developers must implement when
+creating a new driver and are the interfaces that applications are
+developed against. Along with the interfaces a concrete DriverManager
+implementation is also provides.</description>
+  <devel project="Java:packages" package="xmldb-api"/>
+</package>

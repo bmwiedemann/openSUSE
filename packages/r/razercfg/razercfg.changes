@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Fri Mar 15 21:27:13 UTC 2019 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.40
+  * Increase supported resolution of Mouse: MambaTE to 16000dpi
+  * QT5 (python-qt5 no PySide anymore)
+- Added 59a530d9456351b244ba19b24b2c4bfeaa4207ad.patch from upstream
+
+-------------------------------------------------------------------
+Tue Jun 20 06:29:13 UTC 2017 - rpm@fthiessen.de
+
+- Update to version 0.39
+  * Basic support for Diamondback Chroma
+  * New maximal DPI: 16'000
+  * Some bugfixes for systemd support
+
+-------------------------------------------------------------------
+Thu Nov 10 14:44:40 UTC 2016 - rpm@fthiessen.de
+
+- Added GPG signature / keyring
+- Update to version 0.38
+  * CMake fixes
+  * Fix unaligned access of 16 bit values
+  * Added icon to launcher
+
+-------------------------------------------------------------------
+Tue Aug 30 09:22:50 UTC 2016 - aloisio@gmx.com
+
+- Update to version 0.37 
+
+-------------------------------------------------------------------
+Sat Jul 30 02:29:45 UTC 2016 - rpm@fthiessen.de
+
+- Update to new upstream release 0.35
+- Replaced .desktop and icon with bundled ones
+
+-------------------------------------------------------------------
+Thu Jan  7 18:53:05 UTC 2016 - rpm@fthiessen.de
+
+- Update to new release 0.33:
+  * Support new Naga mice
+  * Some code improvments
+
+-------------------------------------------------------------------
+Mon Nov  2 16:40:50 UTC 2015 - rpm@fthiessen.de
+
+- Added help2man for creating man pages
+
+-------------------------------------------------------------------
+Sun Jul 19 18:07:25 UTC 2015 - rpm@fthiessen.de
+
+- First version
+  * Added patch: razercfg-fix-install-in-libdir.patch
+    To install libraries in matching directories
+    e.g. 'lib64', report it upstream.
+  * Created desktop file
+  * razercfg does not provide image,
+    so took a public domain one from:
+    https://openclipart.org/detail/96913/mouse
+  * Requires python3-pyside for qrazercfg gui

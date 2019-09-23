@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>45ea87d50d4bbf752adf60177d1fb1af</srcmd5>
+    <version>2.8+git.20161226.6ac7740e</version>
+    <time>1489345210</time>
+    <user>dimstar_suse</user>
+    <comment>popular and usefull tool for source code indexing</comment>
+    <requestid>471845</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f845746fa95055651c654d61a83294de</srcmd5>
+    <version>2.13+git.20170825.93b00636</version>
+    <time>1503927184</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519070</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6e575b30d3b19f87aca2ae6ac99ecd58</srcmd5>
+    <version>2.18+git.20180130.98d668e8</version>
+    <time>1517932096</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>572532</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e628d0d08c45014ae109d1a0b7ae1f4d</srcmd5>
+    <version>2.18.1+git.20180909.ce3bdfd9</version>
+    <time>1538374521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.18.1+git.20180909.ce3bdfd9:
+  * Fix typo d2b10d624
+  * Start groundwork for making it possible to run rp in a thread
+  * loose the warning. Kinda silly.
+  * apparently this isn't okay.
+  * elisp warnings
+  * Opt-in for completion thread diagnostics.
+  * Refactor automated test runner
+  * Warning.
+  * Fixed max-depth issues.
+  * Fixed some of the recursion depth issues.
+  * Adding imenu index function.
+</comment>
+    <requestid>637202</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7dee2ace3988dfc9ba93312488f9381e</srcmd5>
+    <version>2.22+git.20190304.c4dea899</version>
+    <time>1553611219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682831</requestid>
+  </revision>
+</revisionlist>

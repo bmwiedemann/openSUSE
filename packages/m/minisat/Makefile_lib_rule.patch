@@ -1,0 +1,33 @@
+Subject: Makefile: fix lib rule
+From: Jiri Slaby <jslaby@suse.cz>
+
+When the rule for dynamic library is run in parallel, it can overwrite
+one file multiple times resulting in errors like:
+build/dynamic/lib/libminisat.so: file not recognized: File format not recognized
+
+Fix it by splitting and making an explicit dependency.
+---
+ Makefile |    8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+--- a/Makefile
++++ b/Makefile
+@@ -157,13 +157,15 @@ $(BUILD_DIR)/release/bin/$(MINISAT_CORE)
+ 	$(VERB) $(AR) -rcs $@ $^
+ 
+ ## Shared Library rule
+-$(BUILD_DIR)/dynamic/lib/$(MINISAT_DLIB).$(SOMAJOR).$(SOMINOR)$(SORELEASE)\
+- $(BUILD_DIR)/dynamic/lib/$(MINISAT_DLIB).$(SOMAJOR)\
+- $(BUILD_DIR)/dynamic/lib/$(MINISAT_DLIB):
++$(BUILD_DIR)/dynamic/lib/$(MINISAT_DLIB).$(SOMAJOR).$(SOMINOR)$(SORELEASE):
+ 	$(ECHO) Linking Shared Library: $@
+ 	$(VERB) mkdir -p $(dir $@)
+ 	$(VERB) $(CXX) $(MINISAT_LDFLAGS) $(LDFLAGS) -o $@ -shared -Wl,-soname,$(MINISAT_DLIB).$(SOMAJOR) $^
++
++$(BUILD_DIR)/dynamic/lib/$(MINISAT_DLIB).$(SOMAJOR): $(BUILD_DIR)/dynamic/lib/$(MINISAT_DLIB).$(SOMAJOR).$(SOMINOR)$(SORELEASE)
+ 	$(VERB) ln -sf $(MINISAT_DLIB).$(SOMAJOR).$(SOMINOR)$(SORELEASE) $(BUILD_DIR)/dynamic/lib/$(MINISAT_DLIB).$(SOMAJOR)
++
++$(BUILD_DIR)/dynamic/lib/$(MINISAT_DLIB): $(BUILD_DIR)/dynamic/lib/$(MINISAT_DLIB).$(SOMAJOR)
+ 	$(VERB) ln -sf $(MINISAT_DLIB).$(SOMAJOR) $(BUILD_DIR)/dynamic/lib/$(MINISAT_DLIB)
+ 
+ install:	install-headers install-lib install-bin

@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4a847bd4475cfdd2623cd94c87211a81</srcmd5>
+    <version>3.13</version>
+    <time>1335165193</time>
+    <user>coolo</user>
+    <comment>new font</comment>
+    <requestid>114691</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8e57ab4156a64dfe28e71d843222510b</srcmd5>
+    <version>3.13</version>
+    <time>1338017002</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122129</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>8e57ab4156a64dfe28e71d843222510b</srcmd5>
+    <version>3.13</version>
+    <time>1340183355</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>b51185ddef4e56c0107f29639379151c</srcmd5>
+    <version>3.13</version>
+    <time>1347617830</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133933</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>b51185ddef4e56c0107f29639379151c</srcmd5>
+    <version>3.13</version>
+    <time>1359108913</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>b51185ddef4e56c0107f29639379151c</srcmd5>
+    <version>3.13</version>
+    <time>1379662401</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cb891ad5e11074f24f3da0cea6d04f63</srcmd5>
+    <version>5.01</version>
+    <time>1390394857</time>
+    <user>coolo</user>
+    <comment>- add Aegyptus.pdf
+
+- updated to 5.01
+  * added Aegyptus bold typeface
+  * otherwise no upstream changelog
+  * leaving *.txt files from 3.13 version as upstream doesn't 
+    provide it anymore</comment>
+    <requestid>214590</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>cb891ad5e11074f24f3da0cea6d04f63</srcmd5>
+    <version>5.01</version>
+    <time>1409300935</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>eef8d55cae2f2cd21b4c4401f22058b4</srcmd5>
+    <version>5.03</version>
+    <time>1435053618</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 5.03
+added Nilus font (version 6.00) (forwarded request 313075 from alois)</comment>
+    <requestid>313082</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2285bb20aa615ac3ca5f0190f12eb386</srcmd5>
+    <version>6.00</version>
+    <time>1453416172</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 6.00 (forwarded request 354398 from alois)</comment>
+    <requestid>354459</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>421d7d2415af2f15437a990327428c8b</srcmd5>
+    <version>6.17</version>
+    <time>1492170059</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>487264</requestid>
+  </revision>
+</revisionlist>

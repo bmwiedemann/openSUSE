@@ -1,0 +1,27 @@
+From adca775071398e0dbb87a972798ee82975794640 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Thu, 22 Mar 2018 09:30:38 +0100
+Subject: [PATCH] photocard: fix import error for pcardext
+
+Due to the way the C module is installed, explicit relative
+import doesn't work for pcardext.
+---
+ pcard/photocard.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pcard/photocard.py b/pcard/photocard.py
+index 913dc4e98d7f..2c7315883c8d 100644
+--- a/pcard/photocard.py
++++ b/pcard/photocard.py
+@@ -30,7 +30,7 @@ from base.codes import *
+ from base import device, utils, exif
+ 
+ try:
+-    from . import pcardext
++    import pcardext
+ except ImportError:
+     if not os.getenv("HPLIP_BUILD"):
+         log.error("PCARDEXT could not be loaded. Please check HPLIP installation.")
+-- 
+2.16.1
+

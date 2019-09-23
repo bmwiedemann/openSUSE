@@ -1,0 +1,153 @@
+-------------------------------------------------------------------
+Mon Jan 16 10:12:25 UTC 2017 - meissner@suse.com
+
+- new keyring fetched from savannah homepage, for new maintainer.
+
+-------------------------------------------------------------------
+Sat Jan 17 19:12:38 UTC 2015 - p.drouand@gmail.com
+
+- Updateto version 2.10
+  * The 'Hello, World' message is now part of translations.  The
+    translation bug was introduced in release 2.9.
+  * Make use of none-recursive build.
+  * Removal of user-defined new-style.  
+  * Include an example how to add a section to a manual page, such as BUGS.  
+  * Rather than 'fprintf (stderr' use libc 'error()' reporting facility.  
+  * Start using 'make update-copyright' facility. 
+  * Generate ChangeLog from git commit logs.
+  * Avoid manual page generation errors when cross-compiling.
+- Split out translation files into a lang subpackage
+- Make main package recommend hello-lang
+
+-------------------------------------------------------------------
+Sun Nov 16 07:58:25 UTC 2014 - meissner@suse.com
+
+- removed gpg-offline usage as its checked by source services.
+
+-------------------------------------------------------------------
+Wed Nov 13 14:02:46 UTC 2013 - sweet_f_a@gmx.de
+
+- update to version 2.9:
+  * modernized and improved build system
+  * added the possibility of user-defined new-style greetings
+  * added support for unicode
+  * various translations have been updated 
+
+-------------------------------------------------------------------
+Mon Feb 18 15:32:50 UTC 2013 - abergmann@novell.com
+
+- Added GPG Offline checking.
+
+-------------------------------------------------------------------
+Thu Jul 26 14:58:25 UTC 2012 - meissner@suse.com
+
+- buildrequire makeinfo
+
+-------------------------------------------------------------------
+Sun Apr 22 10:50:38 UTC 2012 - puzel@suse.com
+
+- update to version 2.8 
+  - use newer autotools and friends
+  - update translations
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Sat Feb  7 18:55:52 CET 2009 - schwab@suse.de
+
+- Rebuild broken info file.
+
+-------------------------------------------------------------------
+Sun Mar 16 03:36:00 CET 2008 - crrodriguez@suse.de
+
+- fix file-not-in-lang errors 
+
+-------------------------------------------------------------------
+Mon Jul  9 10:48:34 CEST 2007 - meissner@suse.de
+
+- upgraded to version 2.3
+	- bugfixes, updates to buildsystem
+- now GPLv3 licensed.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:22 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 14 22:42:16 CEST 2005 - cthiel@suse.de
+
+- specfile cleanup
+
+-------------------------------------------------------------------
+Wed Mar 10 14:37:08 CET 2004 - meissner@suse.de
+
+- run make check
+- added feedback based profiling optimization.
+
+-------------------------------------------------------------------
+Sun Jan 11 10:30:27 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Fri Feb  7 16:13:31 CET 2003 - ke@suse.de
+
+- Use install_info macro [# 23424].
+
+-------------------------------------------------------------------
+Tue Jun 11 13:17:42 CEST 2002 - schwab@suse.de
+
+- Don't package %{_infodir}/dir.
+
+-------------------------------------------------------------------
+Tue Jun 11 11:45:01 CEST 2002 - ke@suse.de
+
+- Update to version 2.1.1; from NEWS:
+  * Automake support.
+  * Experimental NLS ("Native Language Support").
+  * Translations for ca, da, de, el, eo, es, et, fi, fr, gl, he, hr, hu,
+    id, it, ja, ko, lv, nb, nl, nn, pl, pt, pt_BR, ru, sk, sl, sv, tr, and
+    uk.
+  * Test suite.
+  * Add a contrib directory.
+  * Manual page, produced with 'help2man'.
+  * Create proper copyright statement for all output formats.
+  * New greeting message ('-n', '--next-generation').
+  * Bugfixes:
+  *. GNU hello ('-m') does not loop forever if MAIL environment variable is
+     not set.
+- spec file: Use DESTDIR; use predefined RPM macros; add %clean section.
+
+-------------------------------------------------------------------
+Sun Feb 20 16:06:32 CET 2000 - ke@suse.de
+
+- General spec file cleanup:
+- Add group tag.
+- ./configure -> %build.
+- Use %{version} and %{_infodir} macros.
+- Add `#neededforbuild automake' to use the suse_update_config macro.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu Jul 16 08:45:05 MEST 1998 - ke@suse.de
+
+- Use the BuildRoot feature properly.
+- Update home site (the Source: tag).
+
+Sun Sep 14 19:35:40 1997 - Karl Eichwalder  <ke@suse.de>
+
+- initial package: version 1.3
+

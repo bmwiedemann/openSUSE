@@ -1,0 +1,162 @@
+diff -ur geany-plugins-0.21.1/geanylua/glspi_app.c geany-plugins-0.21.1.patch/geanylua/glspi_app.c
+--- geany-plugins-0.21.1/geanylua/glspi_app.c	2011-01-04 14:15:31.000000000 +0100
++++ geany-plugins-0.21.1.patch/geanylua/glspi_app.c	2012-01-18 23:55:27.494668050 +0100
+@@ -603,7 +603,7 @@
+ 
+ 
+ 
+-static const struct luaL_reg glspi_app_funcs[] = {
++static const struct luaL_Reg glspi_app_funcs[] = {
+ 	{"pluginver", glspi_pluginver},
+ 	{"appinfo",   glspi_appinfo},
+ 	{"xsel",      glspi_xsel},
+diff -ur geany-plugins-0.21.1/geanylua/glspi_dlg.c geany-plugins-0.21.1.patch/geanylua/glspi_dlg.c
+--- geany-plugins-0.21.1/geanylua/glspi_dlg.c	2010-06-10 18:46:27.000000000 +0200
++++ geany-plugins-0.21.1.patch/geanylua/glspi_dlg.c	2012-01-18 23:55:27.494668050 +0100
+@@ -130,7 +130,7 @@
+ 			arg1=lua_tostring(L, 1);
+ 	}
+ 
+-	n=lua_objlen(L,2);
++	n=lua_rawlen(L,2);
+ 	for (i=1;i<=n; i++) {
+ 		lua_rawgeti(L,2,i);
+ 		if (!lua_isstring(L, -1)) {
+@@ -539,7 +539,7 @@
+ 
+ 
+ 
+-static const struct luaL_reg glspi_dlg_funcs[] = {
++static const struct luaL_Reg glspi_dlg_funcs[] = {
+ 	{"choose",   glspi_choose},
+ 	{"confirm",  glspi_confirm},
+ 	{"input",    glspi_input},
+diff -ur geany-plugins-0.21.1/geanylua/glspi_doc.c geany-plugins-0.21.1.patch/geanylua/glspi_doc.c
+--- geany-plugins-0.21.1/geanylua/glspi_doc.c	2010-06-10 18:46:27.000000000 +0200
++++ geany-plugins-0.21.1.patch/geanylua/glspi_doc.c	2012-01-18 23:55:27.498668099 +0100
+@@ -325,7 +325,7 @@
+ 
+ 
+ 
+-static const struct luaL_reg glspi_doc_funcs[] = {
++static const struct luaL_Reg glspi_doc_funcs[] = {
+ 	{"filename",  glspi_filename},
+ 	{"fileinfo",  glspi_fileinfo},
+ 	{"documents", glspi_documents},
+diff -ur geany-plugins-0.21.1/geanylua/glspi.h geany-plugins-0.21.1.patch/geanylua/glspi.h
+--- geany-plugins-0.21.1/geanylua/glspi.h	2011-10-02 06:17:30.000000000 +0200
++++ geany-plugins-0.21.1.patch/geanylua/glspi.h	2012-01-18 23:51:04.043495617 +0100
+@@ -9,6 +9,7 @@
+ #ifdef HAVE_CONFIG_H
+ # include "config.h"
+ #endif
++#define LUA_COMPAT_MODULE 1
+ 
+ #include <lua.h>
+ #include <lualib.h>
+diff -ur geany-plugins-0.21.1/geanylua/glspi_init.c geany-plugins-0.21.1.patch/geanylua/glspi_init.c
+--- geany-plugins-0.21.1/geanylua/glspi_init.c	2010-06-10 18:46:27.000000000 +0200
++++ geany-plugins-0.21.1.patch/geanylua/glspi_init.c	2012-01-18 23:55:27.498668099 +0100
+@@ -551,7 +551,7 @@
+ 	return 0;
+ }
+ 
+-static const struct luaL_reg glspi_mnu_funcs[] = {
++static const struct luaL_Reg glspi_mnu_funcs[] = {
+ 	{"rescan",    glspi_rescan},
+ 	{NULL,NULL}
+ };
+diff -ur geany-plugins-0.21.1/geanylua/glspi_kfile.c geany-plugins-0.21.1.patch/geanylua/glspi_kfile.c
+--- geany-plugins-0.21.1/geanylua/glspi_kfile.c	2010-06-10 18:46:27.000000000 +0200
++++ geany-plugins-0.21.1.patch/geanylua/glspi_kfile.c	2012-01-18 23:57:04.319865376 +0100
+@@ -8,6 +8,7 @@
+ #include <glib.h>
+ #include <glib/gi18n.h>
+ 
++#define LUA_COMPAT_MODULE 1
+ #include <lua.h>
+ #include <lualib.h>
+ #include <lauxlib.h>
+@@ -370,7 +371,7 @@
+ 
+ 
+ 
+-static const struct luaL_reg kfile_funcs[] = {
++static const struct luaL_Reg kfile_funcs[] = {
+ 	{"new",     kfile_new},
+ 	{"data",    kfile_data},
+ 	{"groups",  kfile_groups},
+diff -ur geany-plugins-0.21.1/geanylua/glspi_run.c geany-plugins-0.21.1.patch/geanylua/glspi_run.c
+--- geany-plugins-0.21.1/geanylua/glspi_run.c	2010-06-10 18:46:27.000000000 +0200
++++ geany-plugins-0.21.1.patch/geanylua/glspi_run.c	2012-01-18 23:55:27.502668148 +0100
+@@ -301,7 +301,7 @@
+ 
+ 
+ 
+-static const struct luaL_reg glspi_timer_funcs[] = {
++static const struct luaL_Reg glspi_timer_funcs[] = {
+ 	{"timeout",  glspi_timeout},
+ 	{"yield",    glspi_yield},
+ 	{"optimize", glspi_optimize},
+@@ -315,7 +315,9 @@
+ /* Catch and report script errors */
+ static gint glspi_traceback(lua_State *L)
+ {
+-	lua_getfield(L, LUA_GLOBALSINDEX, "debug");
++	lua_pushglobaltable(L);
++	lua_getfield(L,-1,"debug");
++	lua_remove(L,-2);
+ 	if (!lua_istable(L, -1)) {
+ 		lua_pop(L, 1);
+ 		return 1;
+diff -ur geany-plugins-0.21.1/geanylua/glspi_sci.c geany-plugins-0.21.1.patch/geanylua/glspi_sci.c
+--- geany-plugins-0.21.1/geanylua/glspi_sci.c	2010-06-10 18:46:27.000000000 +0200
++++ geany-plugins-0.21.1.patch/geanylua/glspi_sci.c	2012-01-18 23:55:27.506668197 +0100
+@@ -774,7 +774,7 @@
+ 	ttf.chrg.cpMin=lua_tonumber(L,2);
+ 	ttf.chrg.cpMax=lua_tonumber(L,3);
+ 
+-	n=lua_objlen(L,4);
++	n=lua_rawlen(L,4);
+ 	for (i=1;i<=n; i++) {
+ 		lua_rawgeti(L,4,i);
+ 		if (lua_isstring(L, -1)) {
+@@ -841,7 +841,7 @@
+ 
+ 
+ 
+-static const struct luaL_reg glspi_sci_funcs[] = {
++static const struct luaL_Reg glspi_sci_funcs[] = {
+ 	{"text",      glspi_text},
+ 	{"selection", glspi_selection},
+ 	{"select",    glspi_select},
+diff -ur geany-plugins-0.21.1/geanylua/gsdlg_lua.c geany-plugins-0.21.1.patch/geanylua/gsdlg_lua.c
+--- geany-plugins-0.21.1/geanylua/gsdlg_lua.c	2010-06-10 18:46:27.000000000 +0200
++++ geany-plugins-0.21.1.patch/geanylua/gsdlg_lua.c	2012-01-18 23:55:27.510668247 +0100
+@@ -30,7 +30,7 @@
+  */
+ 
+ 
+-
++#define LUA_COMPAT_MODULE 1
+ #include <lua.h>
+ #include <lualib.h>
+ #include <lauxlib.h>
+@@ -323,7 +323,7 @@
+ 	if (argc>=2) {
+ 		if (!lua_istable(L,2)) { return FAIL_TABLE_ARG(2); }
+ 	}
+-	n=lua_objlen(L,2);
++	n=lua_rawlen(L,2);
+ 	for (i=1;i<=n; i++) {
+ 		lua_rawgeti(L,2,i);
+ 		if (!lua_isstring(L, -1)) {
+@@ -387,7 +387,7 @@
+ 
+ 
+ 
+-static const struct luaL_reg gsdl_funcs[] = {
++static const struct luaL_Reg gsdl_funcs[] = {
+ 	{"new",      gsdl_new},
+ 	{"run",      gsdl_run},
+ 	{"label",    gsdl_label},	

@@ -1,0 +1,216 @@
+Subject: zdev: Integrate firmware auto-configuration with initramfs-tools
+From: Peter Oberparleiter <oberpar@linux.ibm.com>
+
+Summary:     zdev: Add support for handling I/O configuration data
+Description: LPARs that are running in IBM Dynamic Partition Manager (DPM) mode
+             can access a firmware-generated I/O configuration data file that
+             contains s390-specific information about available I/O devices
+             such as qeth device numbers and parameters, and FCP device IDs.
+
+             This data file is intended to remove the need for users to
+             manually enter the corresponding device data during installation.
+
+             Linux kernels with the corresponding support make the I/O
+             configuration data available at the following location:
+
+               /sys/firmware/sclp_sd/config/data
+
+             This patch set adds support for handling this data file using the
+             chzdev and lszdev tools:
+
+               - I/O configuration data can be applied using chzdev's --import
+                 option
+               - Initial RAM-Disk scripts automatically apply the
+                 I/O configuration data to the system configuration
+               - lszdev can be used to display the applied auto-configuration
+                 data
+               - chzdev can be used to manually override the
+                 auto-configuration data
+
+Upstream-ID: 3c5644ccfd46aab27df6e0ed783e94a620bc3fe6
+Problem-ID:  LS1604
+
+Upstream-Description:
+
+             zdev: Integrate firmware auto-configuration with initramfs-tools
+
+             Add initramfs-tools scripts that apply firmware-provided I/O
+             configuration data as auto-configuration during boot. This way, all I/O
+             devices configured by DPM are automatically brought online without
+             further user interaction.
+
+             This mechanism is active by default. It can be deactivated by specifying
+             the following parameter on the kernel command line:
+
+               rd.zdev=no-auto
+
+             Signed-off-by: Peter Oberparleiter <oberpar@linux.vnet.ibm.com>
+             Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Peter Oberparleiter <oberpar@linux.ibm.com>
+---
+ README.md                            |    1 
+ zdev/Makefile                        |    1 
+ zdev/initramfs/Makefile              |   22 ++++++++
+ zdev/initramfs/hooks/zdev            |   39 +++++++++++++++
+ zdev/initramfs/scripts/init-top/zdev |   67 +++++++++++++++++++++++++++
+ 5 files changed, 130 insertions(+)
+
+--- a/README.md
++++ b/README.md
+@@ -272,6 +272,7 @@ This table lists additional build or ins
+ | __COMPONENT__  | __OPTION__       | __TOOLS__                       |
+ |----------------|:----------------:|:-------------------------------:|
+ | dracut         | `HAVE_DRACUT`    | zdev                            |
++| initramfs-tools| `HAVE_INITRAMFS` | zdev                            |
+ 
+ The s390-tools build process uses "pkg-config" if available and hard-coded
+ compiler and linker options otherwise.
+--- a/zdev/Makefile
++++ b/zdev/Makefile
+@@ -8,6 +8,7 @@ install: all
+ 	$(MAKE) -C src install
+ 	$(MAKE) -C man install
+ 	$(MAKE) -C dracut install
++	$(MAKE) -C initramfs install
+ 
+ clean:
+ 	$(MAKE) -C src clean
+--- /dev/null
++++ b/zdev/initramfs/Makefile
+@@ -0,0 +1,22 @@
++# Common definitions
++include ../../common.mak
++
++INITRAMFSDIR := /usr/share/initramfs-tools
++HOOKDIR := $(INITRAMFSDIR)/hooks
++INITTOP := $(INITRAMFSDIR)/scripts/init-top
++
++# HAVE_INITRAMFS
++#
++# This install time parameter determines whether the zdev initramfs support is
++# installed (HAVE_INITRAMFS=1) or not (default). When installed, the module
++# performs the following functions when mkinitramfs is run:
++#
++#  - install a boot-time hook to apply firmware-provided configuration data
++#    to the system
++#
++ifeq ($(HAVE_INITRAMFS),1)
++install:
++	$(INSTALL) -m 755 -d $(DESTDIR)/$(HOOKDIR) $(DESTDIR)/$(INITTOP)
++	$(INSTALL) -m 755 hooks/zdev $(DESTDIR)/$(HOOKDIR)
++	$(INSTALL) -m 755 scripts/init-top/zdev $(DESTDIR)/$(INITTOP)
++endif
+--- /dev/null
++++ b/zdev/initramfs/hooks/zdev
+@@ -0,0 +1,39 @@
++#!/bin/sh
++#
++# Copyright IBM Corp. 2016, 2017
++#
++# s390-tools is free software; you can redistribute it and/or modify
++# it under the terms of the MIT license. See LICENSE for details.
++#
++# hooks/zdev
++#   This hook script adds files required to apply firmware-provided I/O
++#   configuration data during boot.
++#
++
++PREREQ=""
++
++prereqs()
++{
++	echo "$PREREQ"
++}
++
++case $1 in
++	prereqs)
++	prereqs
++	exit 0
++	;;
++esac
++
++. /usr/share/initramfs-tools/hook-functions
++
++# Add modules for all device types supported by chzdev (required for
++# auto-configuration)
++zdev_modules="lcs qeth qeth_l2 qeth_l3 dasd_mod dasd_eckd_mod dasd_fba_mod dasd_diag_mod zfcp"
++
++for x in $zdev_modules ; do
++	manual_add_modules ${x}
++done
++
++copy_exec /sbin/chzdev
++copy_exec /sbin/lszdev
++copy_exec /sbin/vmcp
+--- /dev/null
++++ b/zdev/initramfs/scripts/init-top/zdev
+@@ -0,0 +1,67 @@
++#!/bin/sh
++#
++# Copyright IBM Corp. 2017
++#
++# s390-tools is free software; you can redistribute it and/or modify
++# it under the terms of the MIT license. See LICENSE for details.
++#
++# scripts/init-top/zdev
++#   Parse the kernel command line for rd.zdev kernel parameters. These
++#   parameters are evaluated and used to configure z Systems specific devices.
++#
++# Format:
++#   rd.zdev=no-auto
++#
++#     where
++#
++#   no-auto:       Indicates that firmware-provided I/O configuration data
++#                  should not be applied.
++#
++
++PREREQ="udev"
++
++prereqs()
++{
++	echo "$PREREQ"
++}
++
++case $1 in
++prereqs)
++	prereqs
++	exit 0
++	;;
++esac
++
++. /scripts/functions
++
++zdev_fw_file="/sys/firmware/sclp_sd/config/data"
++zdev_base_args="--force --yes --no-root-update --no-settle --auto-conf --quiet"
++
++if [ -e "$zdev_fw_file" ] ; then
++	zdev_auto=1
++else
++	zdev_auto=0
++fi
++
++for x in $(cat /proc/cmdline); do
++        case ${x} in
++	rd.zdev=*)
++		zdev_arg=${x#*=}
++		if [ "$zdev_arg" = "no-auto" ] ; then
++			zdev_auto=0
++		fi
++		;;
++	esac
++done
++
++if [ $zdev_auto -eq 1 ] ; then
++	log_begin_msg "Starting firmware auto-configuration"
++	chzdev --import "$zdev_fw_file" $zdev_base_args
++	log_end_msg
++
++	# Repeat cold-plug after creating udev rules
++	udevadm control --reload
++	udevadm trigger --type=subsystems --action=add
++	udevadm trigger --action=add
++	udevadm settle || true
++fi

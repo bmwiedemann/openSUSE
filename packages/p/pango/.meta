@@ -1,0 +1,9 @@
+<package name="pango" project="openSUSE:Factory">
+  <title>Library for Layout and Rendering of Text</title>
+  <description>Pango is a library for layout and rendering of text, with an emphasis
+on internationalization. It can be used anywhere that text layout
+is needed.
+
+Pango forms the core of text and font handling for GTK+.</description>
+  <devel project="GNOME:Factory" package="pango"/>
+</package>

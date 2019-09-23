@@ -1,0 +1,5 @@
+<package name="uwsgi" project="openSUSE:Factory">
+  <title>uwsgi</title>
+  <description>uWSGI is a fast, self-healing and developer/sysadmin-friendly application container server coded in pure C.</description>
+  <devel project="server:http" package="uwsgi"/>
+</package>

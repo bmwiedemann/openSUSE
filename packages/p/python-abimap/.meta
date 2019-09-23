@@ -1,0 +1,11 @@
+<package name="python-abimap" project="openSUSE:Factory">
+  <title>A helper for library maintainers to use symbol versioning</title>
+  <description>This script allows to generate and update symbol version linker scripts which
+adds version information to the exported symbols. The script is intended to be
+integrated as part of a shared library build to check for changes in the set of
+exported symbols and update the symbol version linker script accordingly.
+
+</description>
+  <devel project="devel:languages:python" package="python-abimap"/>
+  <url>https://github.com/ansasaki/abimap</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="printer-driver-brlaser" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Printing" package="printer-driver-brlaser"/>
+</package>

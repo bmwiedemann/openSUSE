@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6b72f172085b2a9035dde1312bd2a306</srcmd5>
+    <version>1.2.0</version>
+    <time>1450955772</time>
+    <user>dimstar_suse</user>
+    <comment>Package unibilium. This is necessary for neovim 0.1.1. I changed the package name from libunibilium to unibilium as per DimStar request.</comment>
+    <requestid>348742</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7603abc29366107a4100e929a7445a8c</srcmd5>
+    <version>2.0.0</version>
+    <time>1522225943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591300</requestid>
+  </revision>
+</revisionlist>

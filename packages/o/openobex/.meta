@@ -1,0 +1,8 @@
+<package name="openobex" project="openSUSE:Factory">
+  <title>Open Source Implementation of the Object Exchange (OBEX) Protocol</title>
+  <description>OBEX is a session protocol and can best be described as a binary HTTP
+protocol. OBEX is optimized for ad-hoc wireless links and can be used
+to exchange all kind of objects, like files, pictures, calendar entries
+(vCal), and business cards (vCard).</description>
+  <devel project="filesystems" package="openobex"/>
+</package>

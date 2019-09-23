@@ -1,0 +1,5 @@
+<package name="python-neovim" project="openSUSE:Factory">
+  <title>Python client to Neovim</title>
+  <description>Library for scripting Nvim processes through its msgpack-rpc API.</description>
+  <devel project="editors" package="python-neovim"/>
+</package>

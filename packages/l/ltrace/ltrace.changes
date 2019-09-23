@@ -1,0 +1,542 @@
+-------------------------------------------------------------------
+Tue Apr 30 10:35:37 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add gcc9-Wlto-type-mismatch.patch in order to address LTO warnings
+  (boo#1133256).
+
+-------------------------------------------------------------------
+Thu Mar 28 11:18:58 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- lens-double-free.patch: fix double free of memory (bsc#1130664)
+- Use %license
+
+-------------------------------------------------------------------
+Fri Jan  4 14:24:14 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add gcc9-printf-s-null-argument.patch: boo#1120789.
+
+-------------------------------------------------------------------
+Wed Feb  7 09:55:11 UTC 2018 - schwab@suse.de
+
+- ppc-ptrace.patch: include <asm/ptrace.h> on ppc
+- arm-trace.patch: remove unreachable assignment
+
+-------------------------------------------------------------------
+Thu Nov 30 15:07:59 UTC 2017 - bwiedemann@suse.com
+
+- Do not store test results in the package to make build reproducible
+
+-------------------------------------------------------------------
+Fri Nov 24 16:28:46 UTC 2017 - matz@suse.com
+
+- Fix overactive post-build-checks tripping over some testsuite
+  compile warnings.  Adds ltrace-fix-build.patch .
+
+-------------------------------------------------------------------
+Wed Jul 13 10:00:22 UTC 2016 - schwab@suse.de
+
+- readdir.patch: Remove use of deprecated readdir_r
+
+-------------------------------------------------------------------
+Tue Sep  2 17:35:50 UTC 2014 - schwab@linux-m68k.org
+
+- Update to git rev 6c6bcc3
+  ** Prototype libraries
+     - Each DSO can now ship an ltrace config file (called prototype
+       library) that ltrace will open when that DSO is loaded to process
+       image.  See ltrace(1) for details.
+
+     - ltrace.conf is no longer part of installation tarball.  Instead,
+       we now ship libc.so.conf, libm.so.conf, libacl.so.conf, and
+       syscalls.conf.  Those are now istalled to /usr/share/ltrace by
+       default.  /etc/ltrace.conf and $HOME/.ltrace.conf are still
+       loaded if present, and can contain arbitrary user configuration.
+
+     - The option -F was retrofitted to be a colon-separated list of
+       prototype libraries, and directories to look for prototype
+       libraries in.  On Linux, ltrace looks into XDG_CONFIG_HOME,
+       XDG_CONFIG_DIRS, and /usr/share/ltrace as well.
+
+     - Wide character strings are supported in prototypes.  Use "string"
+       lens as usual, but use array of integers as underlying type.
+       libc.so.conf now contains prototypes of wide character functions.
+
+     - Sole void function parameter such as in the following example, is
+       now considered obsolete:
+
+       | int fork(void); |
+
+       This use is still accepted, taken to mean "hide(int)", but
+       produces a warning, and will be removed in future.
+
+     - Prototypes are now read from DWARF debug info, if available. This
+       complements the data available in config files
+
+  ** Architectural support
+     - MIPS and MIPSel are now handled by the same backend.
+     - ARMv6, ARMv7 and ARMv8 (AArch64) are supported, including full
+       fetch backend.  ARMv8 backend doesn't support tracing of 32-bit
+       binaries, as currently there's no 32-bit userspace available for
+       ARM64 processors.
+     - Imagination Technologies Meta is now supported.
+     - PowerPC64 ELFv2 little-endian ABI is now supported including full
+       fetch backend.
+
+     - On Linux, tracing of IFUNC symbols is supported.  On i386,
+       x86_64, ppc32 with secure PLT and ppc64, IRELATIVE PLT slots are
+       traced as well.
+
+  ** -w output now shows full library path
+      The output format is similar to glibc's backtrace_symbols, e.g.:
+       > /bin/ls(_init+0x19be) [0x40398e]
+       > /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xed) [0x7f50cbc3676d]
+       > /bin/ls(_init+0x25fd) [0x4045cd]
+- Enable for ppc64le and aarch64
+
+-------------------------------------------------------------------
+Fri Dec 13 15:26:16 UTC 2013 - schwab@linux-m68k.org
+
+- Enable for m68k
+
+-------------------------------------------------------------------
+Tue Jun 18 17:26:48 UTC 2013 - schwab@linux-m68k.org
+
+- Don't warn about unused local typedefs
+
+-------------------------------------------------------------------
+Mon Dec 10 21:18:56 UTC 2012 - schwab@linux-m68k.org
+
+- Update to 0.7.2
+  ** Bugfixes
+  *** (Again) detect VDSO entry in r_debug linkmap with non-empty name
+  *** Fix building with libunwind 1.1
+  *** Fix prototype lookup for -x symbols from shared libraries
+- Remove upstreamed patch ltrace.vdso.patch
+
+-------------------------------------------------------------------
+Fri Nov 30 13:51:04 UTC 2012 - schwab@linux-m68k.org
+
+- Update to 0.7.1
+  * Version 0.7.1
+  ** Bugfixes
+  *** ltrace.conf.5 is now installed to man5 as it should be
+  *** [PowerPC] A header file necessary for building is now shipped
+  *** [MIPS] Work around duplicate symbol request bug
+  *** Detect VDSO entry in r_debug linkmap with non-empty name
+  *** Temporary files are wiped properly after the test suite has been run
+  *** Parsing typedefs with common prefix now works as it should
+  ** Cofiguration Files
+  *** The following prototypes in ltrace.conf were added or updated
+  *** Duplicate typedefs are now guarded against
+  *** It's now possible to define recursive structures
+  *** New lens "bitvec" is available
+  *** Octal lens renamed to "oct"
+  *** The hex lens can now format floating point arguments
+
+  * Version 0.7.0
+  ** Tracing
+  *** Full support for tracing multi-threaded processes
+  *** Support for tracing inter-library calls
+  *** Better support for parameter passing ("fetch backend")
+  *** Awareness of deny_ptrace SELinux boolean
+  *** Limited support for tracing returns from tail call functions
+  *** -e, -x and -l selectors now allow using globs and regular expressions
+  *** -g command line option dropped
+  *** Test suite can now be run under valgrind
+  *** [ppc] Support both BSS and secure PLTs for 32-bit processes
+  *** [mips] Implement software singlestepping
+  *** [mips] Add support for CPIC main programs
+  *** Support tracing PIE binaries
+  ** Configuration Files
+  *** New abstraction: parameter pack
+  *** New expression: zero
+  *** Lenses: change the way that underlying type is rendered
+  *** Misspelling of "int" as "itn" temporarily accepted, but deprecated
+  *** Using void as top-level function argument now deprecated
+  *** Using void to hide one argument is now obsolete
+  ** Documentation
+  *** New manual page ltrace.conf(5)
+  *** README, INSTALL brought up to date
+  *** New file CREDITS with a list of contributors
+  ** Bugfixes
+  *** Fix detaching from a process
+  *** Argument to -n is now checked for validity
+  *** Fix tracing across exec in a stripped binary
+  *** [x86] ORIG_RAX/ORIG_EAX may not contain original syscall number
+  *** [ppc] Fix races in tracing -e events in 64-bit processes
+  *** [ppc] Allow stepping over lwarx instruction
+  ** Known bugs
+  *** [arm] Tracing is not supported at all on ARM
+
+  * Version 0.6.0
+
+  ** General Features
+  *** Use autotools for building
+  *** New option -b: disables output of signals received by the tracee
+  *** New option -w: print stack trace of events
+  *** Support tracing of symbols from libraries opened with dlopen
+  ** Architecture-specific Changes
+  *** Various fixes for MIPS and PowerPC
+  *** Support for ARM Thumb mode
+  *** Implement fetching of 5th and further function arguments on s390
+  *** Support fork/exec syscalls on 31-bit s390
+  *** Support for float and double arguments on x86_64
+  *** Fixes for return arguments (after '+') in nested calls on x86_64
+
+- removed upstreamed patches:
+  ltrace.ppc.patch
+  ltrace.s390-more-arguments.patch
+  ltrace.demangle-lib.cstdlib.patch
+
+- ltrace.vdso.patch: allow more VDSO names.
+-------------------------------------------------------------------
+Thu May 31 11:09:55 UTC 2012 - sweet_f_a@gmx.de
+
+- update to 0.5.3 (bug and build fixes)
+- autoreconf is not required
+- add ppc patch
+
+-------------------------------------------------------------------
+Tue Feb 21 13:48:59 CET 2012 - snwint@suse.de
+
+- build with libelf1 instead of libelf0
+
+-------------------------------------------------------------------
+Thu Dec  1 15:56:54 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Jul  9 20:08:06 UTC 2010 - jengelh@medozas.de
+
+- Kernel commit v2.6.28-5383-g192eee8 removed
+  arch/sparc/include/asm/reg.h, so deactivate SPARC building
+
+-------------------------------------------------------------------
+Mon Feb  1 12:47:42 UTC 2010 - jengelh@medozas.de
+
+- enable SPARC building
+
+-------------------------------------------------------------------
+Mon Feb  1 12:00:39 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Fri May 22 20:34:09 CEST 2009 - pbaudis@suse.cz
+
+- Update version from 0.4-svn to 0.5.2
+  * Huge amount of bugfixes, arm support, etc. ...
+  * Fix ctrl-c sometimes crashing ltrace [bnc#474534]
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Tue Dec  9 15:04:10 CET 2008 - olh@suse.de
+
+- remove ltrace -c patch from bnc#201272 (bnc#439498)
+- include cstdlib in demangle-lib test (bnc#439498)
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Fri Feb 29 11:48:51 CET 2008 - olh@suse.de
+
+- update last patch to not use global variables
+
+-------------------------------------------------------------------
+Wed Feb 27 14:23:24 CET 2008 - olh@suse.de
+
+- more complete powerpc ABI handling (bnc#364988 - LTC41151)
+
+-------------------------------------------------------------------
+Thu Jan  3 13:28:17 CET 2008 - olh@suse.de
+
+- handle more than 4 args on s390 (349987 - LTC41171)
+
+-------------------------------------------------------------------
+Fri Oct 19 15:02:27 CEST 2007 - olh@suse.de
+
+- allow build with old distributions, libelf0-devel is new in 10.3
+
+-------------------------------------------------------------------
+Mon Oct  8 16:03:44 CEST 2007 - olh@suse.de
+
+- update to ltrace mainline r80
+  added more system calls
+  add sleep to clone testcase to avoid earlier termination of process
+  disable breakpoints before doing fork()
+
+-------------------------------------------------------------------
+Fri Oct  5 16:26:55 CEST 2007 - olh@suse.de
+
+- fix build with sles9 (329163 - LTC38963)
+
+-------------------------------------------------------------------
+Mon Jul  2 16:53:18 CEST 2007 - tiwai@suse.de
+
+- changed from libelf to libelf0-devel in buildrequires.
+
+-------------------------------------------------------------------
+Tue Apr 17 22:39:40 CEST 2007 - schwab@suse.de
+
+- Fix argument decoding.
+
+-------------------------------------------------------------------
+Fri Jan 26 12:02:55 CET 2007 - olh@suse.de
+
+- update to ltrace mainline r75
+  fix -p behavior: wait for process to stop after PTRACE_ATTACH
+  fix -L behavior: always initialize the breakpoint dictionary,
+  and thus aviod NULL dereference.
+- rename patch numbers in %prep section to match commit ids
+
+-------------------------------------------------------------------
+Thu Jan 25 12:01:52 CET 2007 - olh@suse.de
+
+- fix ltrace -c on ppc32 (201272 - LTC24809)
+
+-------------------------------------------------------------------
+Mon Nov 20 15:05:19 CET 2006 - olh@suse.de
+
+- add ltrace.trace_exec.patch (201282 - LTC25640)
+
+-------------------------------------------------------------------
+Thu Oct 12 20:57:50 CEST 2006 - olh@suse.de
+
+- better opd handling
+  add arch name to mack check results
+  use /etc/ltrace.conf (211921)
+
+-------------------------------------------------------------------
+Wed Sep 20 22:55:05 CEST 2006 - olh@suse.de
+
+- add more ia64 fixes from Steve Fink
+  keep make check results in the package
+
+-------------------------------------------------------------------
+Fri Sep 15 08:16:04 CEST 2006 - olh@suse.de
+
+- provide elf_gnu_hash, current glibc defines SHT_GNU_HASH
+  remove merge acl entries for ltrace.conf
+
+-------------------------------------------------------------------
+Thu Sep 14 19:41:39 CEST 2006 - olh@suse.de
+
+- fix opd2addr to return the value at addr, not addr itself
+  revert a regex handling change in the testsuite to fix make check
+
+-------------------------------------------------------------------
+Thu Sep 14 14:21:03 CEST 2006 - olh@suse.de
+
+- run make check, do not abort the build if it fails
+
+-------------------------------------------------------------------
+Thu Sep 14 12:36:31 CEST 2006 - olh@suse.de
+
+- update to ltrace mainline r65 (201272)
+  implement ignored arguments, pointer parameters, enumerated parameters
+  short, ushort and float types, typedefs, array arguments and struct support
+  improve string handling
+  add .gnu.hash ELF support
+  add -F option to read in config files
+  add secure-plt support
+  update syscall list to 2.6.17
+  use e_entry instead of _start if the binary is stripped
+  fix the -x processing to get rid of bad warning.
+
+-------------------------------------------------------------------
+Tue Jun 13 18:23:28 CEST 2006 - schwab@suse.de
+
+- Update to ltrace 0.4 to get support for ia64.
+- Don't build as root.
+
+-------------------------------------------------------------------
+Tue May 30 19:12:11 CEST 2006 - bk@suse.de
+
+- fix crash of every process traced with -p on ltrace exit (138568)
+
+-------------------------------------------------------------------
+Thu May 18 13:02:44 CEST 2006 - olh@suse.de
+
+- update man page to ltrace 0.4 version (176209 - LTC23913)
+
+-------------------------------------------------------------------
+Tue May  2 13:33:30 CEST 2006 - olh@suse.de
+
+- add handling for secure PLT on powerpc (154472 - LTC21994)
+  fix segfault when following forks (155754 - LTC22229)
+  configure does checks for c++ features, add c++ to Buildrequires
+
+-------------------------------------------------------------------
+Mon Mar 20 19:08:40 CET 2006 - pth@suse.de
+
+- Add patch from IBM that fixes segfaults when using -x (#150487)
+
+-------------------------------------------------------------------
+Thu Mar  2 13:44:11 CET 2006 - hare@suse.de
+
+- biarch support for S/390.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:04 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jun 28 18:34:35 CEST 2005 - uli@suse.de
+
+- ported s390x support from 0.3.10
+
+-------------------------------------------------------------------
+Tue May 10 16:10:04 CEST 2005 - pth@suse.de
+
+- Incorporate RH patch for biarch support
+- Incorporate all pathches from IBM for biarch ltrace on ppc64
+
+-------------------------------------------------------------------
+Thu Apr 21 16:50:35 CEST 2005 - pth@suse.de
+
+- Fix warnings in the ppc specific parts.
+
+-------------------------------------------------------------------
+Thu Apr 14 12:17:20 CEST 2005 - pth@suse.de
+
+- Don't use elfutils because of their unacceptable license,
+  use libelf instead.
+- Fix the check for gelf.h
+- Really use the include path for gelf.h that configure found.
+- Use version number from config.h
+
+-------------------------------------------------------------------
+Mon Apr  4 12:24:09 CEST 2005 - pth@suse.de
+
+- Update to ltrace 0.3.36: 
+  - All SUSE patches integrated
+  - Alpha support,
+  - Uses elfutils.
+  - list of functions expanded.
+
+-------------------------------------------------------------------
+Thu Mar 24 14:14:30 CET 2005 - pth@suse.de
+
+- Adapt patch from Jakub Jellinek to make ltrace handle long/ulong
+  values and thus work on AMD64 (#74374).
+
+-------------------------------------------------------------------
+Fri May  7 16:41:16 CEST 2004 - bk@suse.de
+
+- fix assert in call summary if ltrace was tracing nothing(#39642)
+
+-------------------------------------------------------------------
+Thu Apr  1 16:44:17 CEST 2004 - bk@suse.de
+
+- use new path for changelog file, fixes stale symlink (Bug #36383)
+- update manual page regarding bugs fixed with the applied patches
+
+-------------------------------------------------------------------
+Wed Mar 31 20:09:29 CEST 2004 - bk@suse.de
+
+- calculate PLT table function address if missing in symtab(#36212)
+  (this makes ltrace work again on i386, otherwise it does nothing)
+
+-------------------------------------------------------------------
+Mon Feb 23 20:44:28 CET 2004 - bk@suse.de
+
+- Update to ltrace 0.3.31: More functions in ltrace.conf, options
+  to show time spent inside each call and summary of calls at end
+
+-------------------------------------------------------------------
+Mon Feb  9 15:55:40 CET 2004 - bk@suse.de
+
+- fix ExclusiveArch: Include s390 and s390x for 32- and 64-bit arch
+
+-------------------------------------------------------------------
+Fri Jun 13 12:38:20 CEST 2003 - mmj@suse.de
+
+- Use BuildRoot
+
+-------------------------------------------------------------------
+Mon Jun  2 00:32:43 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Fri Sep 20 20:39:54 CEST 2002 - agruen@suse.de
+
+- Update syscall table definitions for supported architectures to
+  current 8.1/UL/SLES kernel.
+- Add declarations for extended attribute syscalls and
+  for libacl functions (POSIX ACL library).
+
+-------------------------------------------------------------------
+Fri Jul 12 21:30:27 CEST 2002 - kukuk@suse.de
+
+- Fix ExclusiveArch for x86.
+
+-------------------------------------------------------------------
+Thu Jun 27 17:19:27 CEST 2002 - mludvig@suse.cz
+
+- Added support for Elf64 binaries.
+- Fixed x86-64 port.
+
+-------------------------------------------------------------------
+Fri Jun  7 11:09:45 CEST 2002 - aj@suse.de
+
+- Update to ltrace 0.3.26:
+  * Added support for s390 and powerpc
+- Add initial support for x86-64.
+
+-------------------------------------------------------------------
+Mon Nov 26 15:25:36 CET 2001 - uli@suse.de
+
+- added armv4l to ExclusiveArch
+
+-------------------------------------------------------------------
+Thu Jul 19 19:24:45 CEST 2001 - uli@suse.de
+
+- added PPC port by Anton Blanchard 
+
+-------------------------------------------------------------------
+Tue Apr  3 09:32:11 CEST 2001 - bk@suse.de
+
+- added S/390 patch from IBM Linux Technology Center
+
+-------------------------------------------------------------------
+Mon Jan 10 10:58:03 CET 2000 - kukuk@suse.de
+
+- Update to ltrace 0.3.10
+- Add patch for SPARC
+
+-------------------------------------------------------------------
+Sat Oct 23 19:29:18 CEST 1999 - bk@suse.de
+
+- updated to ltrace-0.3.8
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Aug  4 12:19:06 MEST 1999 - bs@suse.de
+
+- added call of Check
+
+-------------------------------------------------------------------
+Mon Mar 29 00:35:59 MEST 1999 - bk@suse.de
+
+- new package

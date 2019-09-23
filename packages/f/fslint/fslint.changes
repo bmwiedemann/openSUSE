@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Tue Jul 11 21:41:09 UTC 2017 - ecsos@opensuse.org
+
+- update to 2.46
+  * Fixes:
+    * Selecting within and removal of GUI groups works again.
+      This regression was introduced in 2.44.
+    * "Bad symlinks" functionality works in the GUI again.
+      This regression was introduced in 2.44.
+    * Dangling symlinks are reported correctly for symlinks
+      whose names end in 2 digits.
+    * Empty directories now only lists actual empty dirs
+      even if extra find parameters are specified.
+    * Empty directories now ignore specified exluded paths, as
+      they can impact whether an "empty" directory can be removed.
+    * Single quotes in extra find params are now quoted,
+      and no longer generate a syntax error.
+    * Multiple adjacent spaces in command line params are preserved
+      and no longer generate file not found errors.
+    * Listing packages is supported for modern archlinux systems.
+  * Improvements:
+    * findup now includes zero length files by default.  This can
+      be changed with -size +0c, or the new GUI min size option.
+    * findup no longer reports/remerges duplicates when there
+      are other files being checked that are the same size.
+      (The GUI already had such logic in place).
+    * findup supports symlinking duplicates as well as hardlinking.
+    * "Select from same folder" is now less CPU and RAM intensive.
+    * A renamed duplicate file no longer auto removes another
+      item in the group from display, to allow deleting it etc.
+
+-------------------------------------------------------------------
+Fri Apr  3 11:25:33 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 2.44
+  * Translations:
+    * Added: Polish.
+    * Updated: Galician,Czech,Spanish,France,Romanian,Serbian,
+      Russian,Swedish,German.
+  * Fixes:
+    * finded now doesn't report passed non empty directories when
+      not recursing. This regression was introduced in 2.40.
+    * The wildcard selection dialog is displayed correctly again
+      in German locales. This regression was introduced in 2.42.
+    * File metadata is now maintained when cleaning whitespace.
+    * findup -d now supports file names with trailing whitespace.
+    * Changed the complexity of deleting files from O((n/2)*(n+1))
+      to O(n), n being the number of items in the GtkCList, not
+      the number of items being deleted.
+    * findns and findul now work with findutils >= 4.5.11
+  * Improvements:
+    * Add support for selecting all files from a the same folder
+      as another file.
+
+-------------------------------------------------------------------
+Mon Sep  6 20:33:54 UTC 2010 - mrdocs@opensuse.org
+
+-spec file cleanup
+
+=====================================================
+* Sun May  2 20:57:07 UTC 2010 mrdocs at opensuse.org
+- 2.42 release
+* Mon Oct 13 2008 mrdocs at opensuse.org
+- first build server package
+- reviewed by mw and move changelog into .changes file

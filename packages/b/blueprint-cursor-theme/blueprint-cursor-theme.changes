@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Thu Dec  1 16:03:24 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Sep 17 20:02:32 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Aug  8 15:49:34 CEST 2006 - schwab@suse.de
+
+- Move to /usr/share/icons.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:53 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 10 14:37:09 CET 2005 - schwab@suse.de
+
+- Fix links.
+
+-------------------------------------------------------------------
+Tue Mar  9 15:05:44 CET 2004 - adrian@suse.de
+
+- add symlinks (prepared by Lubos)
+
+-------------------------------------------------------------------
+Mon Mar  8 10:55:50 CET 2004 - adrian@suse.de
+
+- this is no longer our default cursor
+
+-------------------------------------------------------------------
+Tue Feb 24 16:31:19 CET 2004 - hmacht@suse.de
+
+- building as non-root
+
+-------------------------------------------------------------------
+Fri Sep 12 15:40:09 CEST 2003 - adrian@suse.de
+
+- fix sysconfig comment
+
+-------------------------------------------------------------------
+Tue Sep  9 12:55:13 CEST 2003 - adrian@suse.de
+
+- initial package of version 0.0.2
+

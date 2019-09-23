@@ -1,0 +1,151 @@
+-------------------------------------------------------------------
+Tue Sep 10 08:05:36 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Use -ffat-lto-objects to provide a proper static library.  
+
+-------------------------------------------------------------------
+Wed Aug 28 09:11:24 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 6.0.7:
+  * bugfixes and some new minor features, such as an extension of 
+    the target architecture API and MeTiS v5 compatibility.	
+
+-------------------------------------------------------------------
+Thu Feb 14 09:17:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix the package group fix.
+
+-------------------------------------------------------------------
+Mon Feb 11 06:35:16 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Set default module version correctly when installing
+  master package, unset when deinstalling the default library
+  package.
+- Fix dependencies for HPC packages.
+- Fix HPC modulefile: library dir is always there when module file
+  is installed.
+- Fix package groups.
+- Cosmetic fixes to module file.
+- Consolidate use of openmpi1, openmpi2, openmpi3 for non-HPC builds.
+
+-------------------------------------------------------------------
+Fri Jan 25 13:07:54 UTC 2019 - eich@suse.com
+
+- Disable openmpi1 and openmpi3 builds on SLE.
+
+-------------------------------------------------------------------
+Fri Jan 25 07:24:24 UTC 2019 - eich@suse.com
+
+- Add mpich support to HPC build.
+- Reenable ldconfig for HPC & MPI:
+  do not attempt to update the cache.
+
+-------------------------------------------------------------------
+Sun Jan 20 21:06:14 UTC 2019 - eich@suse.com
+
+- Remove 'lib' from devel packages.
+- Fix dependencies.
+
+-------------------------------------------------------------------
+Mon Jan 14 12:28:43 UTC 2019 - eich@suse.com
+
+- Convert 'scotch' to multibuild and add HPC support.
+
+-------------------------------------------------------------------
+Mon Nov 19 13:13:08 UTC 2018 - Mark.Olesen@esi-group.com
+
+- Update to version 6.0.6
+  * bugfix release
+- Drop old patches (changed upstream).
+- Use deterministic behaviour, for repeatable results
+
+-------------------------------------------------------------------
+Sun Apr  1 02:04:53 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Setup MPI environment before building.
+
+-------------------------------------------------------------------
+Thu May 28 08:57:08 UTC 2015 - foss@grueninger.de
+
+- Update to version 6.0.4
+  * bugfix release
+
+-------------------------------------------------------------------
+Sat Jan 24 20:06:03 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 6.0.3
+  * bugfix release
+- Add "scotch_" prefix to binaries and man pages to avoid name conficts
+
+-------------------------------------------------------------------
+Thu Nov  6 08:50:58 UTC 2014 - dmitry_r@opensuse.org
+
+- Fix license name to SPDX format
+
+-------------------------------------------------------------------
+Sun Apr  7 13:49:27 UTC 2013 - scorot@free.fr
+
+- update to version 6.0.0
+  * sequential graph repartitioning
+  * sequential graph partitioning with fixed vertices
+  * sequential graph repartitioning with fixed vertices
+  * new, fast, direct k-way partitioning and mapping algorithms
+  * multi-threaded, shared memory algorithms in the (formerly)
+    sequential part of the library
+  * exposure in the API of many distributed graph handling routines
+  * embedded pseudo-random generator for improved reproducibility
+- put metis and parmetis compatibilty libs and header in a
+  separate package in order to avoid conflict with metis packages
+- fix %%doc in order to not mix anymore ptscotch and scotch
+  documentation files
+
+-------------------------------------------------------------------
+Thu Oct 11 18:47:18 UTC 2012 - scorot@free.fr
+
+- fix files list
+- add metis and parmetis header files in devel devel packages
+
+-------------------------------------------------------------------
+Tue Aug 21 16:53:06 UTC 2012 - scorot@free.fr
+
+- fix provides of devel packages
+
+-------------------------------------------------------------------
+Sun May 13 11:35:34 UTC 2012 - scorot@free.fr
+
+- revert soversion change to be the same as fedora
+
+-------------------------------------------------------------------
+Tue May  8 17:30:01 UTC 2012 - scorot@free.fr
+
+- fix conditionnal macro error in file list
+- add build of shared esmumps and ptesmumps libs
+
+-------------------------------------------------------------------
+Tue May  8 15:41:24 UTC 2012 - scorot@free.fr
+
+- use only the source tarball of the esmumps version
+- soname version of libraries set to major release number
+- put libraries in separte packages
+- build ptscotch for openmpi and mvapich2
+- mpi version of the libs are placed in separate packages
+
+-------------------------------------------------------------------
+Fri May  4 22:17:08 UTC 2012 - scorot@free.fr
+
+- spec file cleanup
+- version 5.1.12
+   * load balance enforcement has been improved for parallel graph
+     partitioning
+   * The clustering features of Scotch and PT-Scotch are now
+     available through the '-q' option of command line programs
+     dgmap, dgpart, gmap and gpart.
+   * Strategy string building helper routines are also available
+     for clustering in the libScotch library.
+   * Some internal graph handling routines have been exposed in
+     the interface, such as for graph coarsening.
+
+-------------------------------------------------------------------
+Sun Nov  8 22:00:20 UTC 2009 - andrea@opensuse.org
+
+- New package

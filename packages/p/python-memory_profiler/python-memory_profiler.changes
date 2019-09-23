@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Tue Apr 23 19:10:06 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add revert-5fe38da92673.patch to avoid
+  gh#pythonprofilers/memory_profiler#226 and to make
+  python-spyder-memory-profiler testsuite to pass.
+
+-------------------------------------------------------------------
+Fri Apr  5 12:32:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.55.0:
+  * no upstream changelog available
+
+-------------------------------------------------------------------
+Tue Dec  4 12:50:21 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Feb 16 16:47:10 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 0.52.0:
+ * no upstream changelog available
+
+-------------------------------------------------------------------
+Sat Jan  6 21:39:50 UTC 2018 - sebix+novell.com@sebix.at
+
+- python-psutil is now a hard requirement
+
+-------------------------------------------------------------------
+Sat Jan  6 21:18:21 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 0.51.0
+ * update argument parser to use argparse
+- remove test conditionals from specfile
+- use license macro for license file
+
+-------------------------------------------------------------------
+Mon Aug 28 11:53:24 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial package

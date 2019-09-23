@@ -1,0 +1,13 @@
+Index: fcitx-zhuyin-0.1.0+git20150626.36064e1/src/eim.cpp
+===================================================================
+--- fcitx-zhuyin-0.1.0+git20150626.36064e1.orig/src/eim.cpp
++++ fcitx-zhuyin-0.1.0+git20150626.36064e1/src/eim.cpp
+@@ -547,7 +547,7 @@ INPUT_RETURN_VALUE FcitxZhuyinGetCandWor
+         FcitxMessagesAddMessageAtLast(FcitxInputStateGetPreedit(input), MSG_INPUT, "%s", zhuyin->buf);
+     }
+ 
+-    zhuyin_guess_candidates(zhuyin->inst, LibPinyinGetOffset(zhuyin));
++    zhuyin_guess_candidates_after_cursor(zhuyin->inst, LibPinyinGetOffset(zhuyin));
+     guint candidateLen = 0;
+     zhuyin_get_n_candidate(zhuyin->inst, &candidateLen);
+     for (guint i = 0 ; i < candidateLen; i ++) {

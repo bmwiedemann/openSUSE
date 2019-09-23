@@ -1,0 +1,11 @@
+--- src/plugins/Input/cdaudio/decoder_cdaudio.cpp.orig	2013-04-15 18:59:58.252555786 +0200
++++ src/plugins/Input/cdaudio/decoder_cdaudio.cpp	2013-04-15 19:02:19.299842731 +0200
+@@ -25,7 +25,7 @@
+ #include <QFileInfo>
+ #include <QDir>
+ #include <cdio/cdio.h>
+-#if LIBCDIO_VERSION_NUM <= 83
++#if LIBCDIO_VERSION_NUM <= 90
+ #include <cdio/cdda.h>
+ #else
+ #include <cdio/paranoia/cdda.h>

@@ -1,0 +1,88 @@
+#!/bin/sh
+# 
+# Groovy script
+# Lubomir Rintel <lkundrak@v3.sk>
+
+# Packagers: When updating the package be sure to check
+# all this against against the upstream binary package
+
+# Source functions library
+if [ -f /usr/share/java-utils/java-functions ] ; then 
+  . /usr/share/java-utils/java-functions
+else
+  echo "Can't find functions library, aborting"
+  exit 1
+fi
+
+# Configuration
+SCRIPT_PATH=$0
+PROGNAME=$(basename $SCRIPT_PATH)
+GROOVY_CONF=/etc/groovy18-starter.conf
+TOOLS_JAR=$JAVA_HOME/lib/tools.jar
+STARTER_MAIN_CLASS=org.codehaus.groovy.tools.GroovyStarter
+MAIN_CLASS=$STARTER_MAIN_CLASS
+
+# Wrappers
+[ $PROGNAME = grape18 ]		&& CLASS=org.codehaus.groovy.tools.GrapeMain
+[ $PROGNAME = groovy18 ]		&& CLASS=groovy.ui.GroovyMain
+[ $PROGNAME = groovy18c ]		&& CLASS=org.codehaus.groovy.tools.FileSystemCompiler
+[ $PROGNAME = groovy18Console ]	&& CLASS=groovy.ui.Console
+[ $PROGNAME = java2groovy18 ]	&& CLASS=org.codehaus.groovy.antlr.java.Java2GroovyMain
+[ $PROGNAME = groovy18sh ]	&& CLASS=org.codehaus.groovy.tools.shell.Main
+[ $PROGNAME = groovy18sh ]	&& [ "$OLDSHELL" ] && CLASS=groovy.ui.InteractiveShell
+
+# Load system-wide configuration
+if [ -f /etc/groovy18.conf ]; then
+  . /etc/groovy18.conf
+fi
+
+# Load user configuration
+[ -f "$HOME/.groovy18rc" ] && . "$HOME/.groovy18rc"
+[ -f "$HOME/.groovy18/startup" ] && . "$HOME/.groovy18/startup"
+
+# Bail out if there's nothing to run
+if [ -z "$CLASS" ]
+then
+	echo "Can not determine main class for '$PROGNAME'" >&2
+	exit 1
+fi
+
+# JVM options
+GROOVY_OPTS="$GROOVY_OPTS -Dscript.name=$SCRIPT_PATH"
+GROOVY_OPTS="$GROOVY_OPTS -Dprogram.name=$PROGNAME"
+GROOVY_OPTS="$GROOVY_OPTS -Dgroovy.starter.conf=$GROOVY_CONF"
+GROOVY_OPTS="$GROOVY_OPTS -Dgroovy.home=$GROOVY_HOME"
+if [[ -f "$TOOLS_JAR" ]]; then
+	GROOVY_OPTS="$GROOVY_OPTS -Dtools.jar=$TOOLS_JAR"
+fi
+
+# Do not forget about RPM dependencies!
+BASE_JARS="$BASE_JARS ant"
+BASE_JARS="$BASE_JARS ant/ant-junit"
+BASE_JARS="$BASE_JARS ant-launcher"
+BASE_JARS="$BASE_JARS antlr"
+BASE_JARS="$BASE_JARS objectweb-asm3/asm-distroshaded"
+BASE_JARS="$BASE_JARS objectweb-asm3/asm-analysis-distroshaded"
+BASE_JARS="$BASE_JARS objectweb-asm3/asm-tree-distroshaded"
+BASE_JARS="$BASE_JARS objectweb-asm3/asm-util-distroshaded"
+BASE_JARS="$BASE_JARS bsf"
+BASE_JARS="$BASE_JARS commons-cli"
+BASE_JARS="$BASE_JARS commons-logging"
+BASE_JARS="$BASE_JARS groovy-1.8"
+BASE_JARS="$BASE_JARS apache-ivy/ivy"
+BASE_JARS="$BASE_JARS jline1/jline-1"
+BASE_JARS="$BASE_JARS glassfish-jsp-api/javax.servlet.jsp-api"
+BASE_JARS="$BASE_JARS junit"
+BASE_JARS="$BASE_JARS glassfish-servlet-api"
+BASE_JARS="$BASE_JARS xstream"
+BASE_JARS="$BASE_JARS jansi"
+BASE_JARS="$BASE_JARS gpars/gpars"
+
+# Set parameters
+set_jvm
+set_classpath $BASE_JARS
+set_flags $BASE_FLAGS
+set_options $BASE_OPTIONS $GROOVY_OPTS
+
+# Let's start
+run --conf "$GROOVY_CONF" --main "$CLASS" "$@"

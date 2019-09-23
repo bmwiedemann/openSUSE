@@ -1,0 +1,18 @@
+--- Makefile.in
++++ Makefile.in
+@@ -28,11 +28,11 @@
+ 
+ INSTALL_BINDIR		:= @prefix@/bin
+ INSTALL_INCDIR		:= @prefix@/include/rubberband
+-INSTALL_LIBDIR		:= @prefix@/lib
+-INSTALL_VAMPDIR		:= @prefix@/lib/vamp
+-INSTALL_LADSPADIR	:= @prefix@/lib/ladspa
++INSTALL_LIBDIR		:= @libdir@
++INSTALL_VAMPDIR		:= @libdir@/vamp
++INSTALL_LADSPADIR	:= @libdir@/ladspa
+ INSTALL_LRDFDIR		:= @prefix@/share/ladspa/rdf
+-INSTALL_PKGDIR		:= @prefix@/lib/pkgconfig
++INSTALL_PKGDIR		:= @libdir@/pkgconfig
+ 
+ all:	bin lib $(PROGRAM_TARGET) $(STATIC_TARGET) $(DYNAMIC_TARGET) $(VAMP_TARGET) $(LADSPA_TARGET)
+ 

@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eb244580a581f4c61d86bde0f41e8552</srcmd5>
+    <version>0.4.6</version>
+    <time>1468579617</time>
+    <user>dimstar_suse</user>
+    <comment>ocaml 4.03 (fate#320836)</comment>
+    <requestid>404358</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>90aa1932df598de18dc27e30a70f0d40</srcmd5>
+    <version>0.4.9.20170523.2e34867</version>
+    <time>1503061416</time>
+    <user>dimstar_suse</user>
+    <comment>- Use Group: Development/Languages/OCaml
+
+- Update to version 0.4.9.20170523.2e34867
+  See included CHANGES.txt for details
+  add ocaml-oasis.patch
+
+- Wrap specfile conditionals to fix quilt setup
+
+- Remove autodeps for pre openSUSE 12.1 releases</comment>
+    <requestid>517020</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5f03cf7f5fe742442d2da61c5e390a43</srcmd5>
+    <version>0.4.10</version>
+    <time>1513762836</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.10
+  No code changes</comment>
+    <requestid>558596</requestid>
+  </revision>
+</revisionlist>

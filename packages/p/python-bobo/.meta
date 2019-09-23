@@ -1,0 +1,18 @@
+<package name="python-bobo" project="openSUSE:Factory">
+  <title>Web application framework for the impatient</title>
+  <description>Bobo is a light-weight framework for creating WSGI web applications.
+
+It addresses 2 problems:
+- Mapping URLs to objects
+- Calling objects to generate HTTP responses
+
+Bobo doesn't have a templating language, a database integration layer,
+or a number of other features that are better provided by WSGI
+middle-ware or application-specific libraries.
+
+Bobo builds on other frameworks, most notably WSGI and WebOb.
+
+</description>
+  <devel project="devel:languages:python" package="python-bobo"/>
+  <url>http://bobo.readthedocs.io/</url>
+</package>

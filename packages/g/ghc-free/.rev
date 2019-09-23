@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4ffe48846e77fc15c684b0cef67efbcc</srcmd5>
+    <version>4.11</version>
+    <time>1432281040</time>
+    <user>dimstar_suse</user>
+    <comment>Monads for Fre
+
+Free monads are useful for many tree-like structures and domain specific
+languages.</comment>
+    <requestid>307869</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>18d09ee5301800d1b079aa0c6274248c</srcmd5>
+    <version>4.12.1</version>
+    <time>1440658529</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324474</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d272d6fae44c6a36ea8574774a3a0732</srcmd5>
+    <version>4.12.4</version>
+    <time>1453416218</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.12.4
+* Add instances for ExceptT: like ErrorT, but without an Error constraint.
+* Support containers
+* Support transformers 0.5
+* Removed a number of spurious class constraints.
+* Support comonad 5</comment>
+    <requestid>354575</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>92485e2c2535b58e4d96f44a27e95b50</srcmd5>
+    <version>4.12.4</version>
+    <time>1469081356</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411532</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>17614fa131d60ac78ad6f21fbd32f7c6</srcmd5>
+    <version>4.12.4</version>
+    <time>1505504430</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524537</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>36e7d0bb28ce9bfd4f9effd270489e16</srcmd5>
+    <version>5.0.2</version>
+    <time>1527674869</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-free to the latest version.</comment>
+    <requestid>607800</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>88a437f804e186f09b757a0c36d52703</srcmd5>
+    <version>5.1</version>
+    <time>1532445532</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update free to version 5.1.
+  5.1 [2018.07.03]
+  ----------------
+  * Generalize the type of `_Free`.
+  * Allow building with `containers-0.6`.
+  * Avoid incurring some dependencies when using recent GHCs.
+  5.0.2 [2018.04.25]
+  ------------------
+  * Add `Generic` and `Generic1` instances where possible.</comment>
+    <requestid>623775</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>186683737fe66112f117da86e1bb14e6</srcmd5>
+    <version>5.1</version>
+    <time>1540448739</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643396</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2fe4cea84de582ccf001c56c22527abb</srcmd5>
+    <version>5.1.1</version>
+    <time>1557653719</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>701766</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8d9cf2527200c9b2f3a8c139ee8ad0bb</srcmd5>
+    <version>5.1.2</version>
+    <time>1567092073</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>726810</requestid>
+  </revision>
+</revisionlist>

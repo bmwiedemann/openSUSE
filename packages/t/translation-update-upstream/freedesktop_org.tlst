@@ -1,0 +1,6 @@
+# package                   domain                  method repository                                                   dir                 branch
+gstreamer                   gstreamer-1.0             cgit git://anongit.freedesktop.org/gstreamer/gstreamer            gstreamer/po
+gstreamer-plugins-base      gst-plugins-base-1.0      cgit git://anongit.freedesktop.org/gstreamer/gst-plugins-base     gst-plugins-base/po
+gstreamer-plugins-good      gst-plugins-good-1.0      cgit git://anongit.freedesktop.org/gstreamer/gst-plugins-good     gst-plugins-good/po
+pulseaudio                  pulseaudio                cgit git://anongit.freedesktop.org/pulseaudio/pulseaudio          pulseaudio/po
+shared-mime-info            shared-mime-info          cgit git://anongit.freedesktop.org/xdg/shared-mime-info           po

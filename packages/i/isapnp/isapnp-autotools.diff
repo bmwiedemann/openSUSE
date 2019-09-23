@@ -1,0 +1,184 @@
+--- configure.in
++++ configure.in
+@@ -1,7 +1,9 @@
+ dnl Process this file with autoconf to produce a configure script.
+-AC_INIT(src/pnpdump.c)
++AC_PREREQ(2.53)
++AC_INIT(isapnptools, 1.26)
++AC_CONFIG_SRCDIR(src/pnpdump.c)
+ AC_REVISION($Revision: 0.3 $)
+-AM_INIT_AUTOMAKE(isapnptools, 1.26)
++AM_INIT_AUTOMAKE
+ AM_CONFIG_HEADER(include/config.h)
+ 
+ dnl Checks for programs.
+@@ -34,17 +36,34 @@
+ dnl Checks for library functions.
+ AC_TYPE_SIGNAL
+ AC_FUNC_VPRINTF
+-AC_SUBST(LIBOBJS) # Shouldn't be necessary ?
+ AC_CHECK_FUNCS(strncmp) # For getopt if required
+ AC_CHECK_FUNCS(strdup strerror strtol strtoul nanosleep sched_setscheduler snprintf strncasecmp getdelim memcmp)
+ AC_CHECK_FUNCS(iopl ioperm usleep delay _sleep2)
+ 
+ dnl check for getopt in standard library
+-AC_CHECK_FUNCS(getopt_long , , [LIBOBJS="$LIBOBJS getopt.o getopt1.o"] ) 
++AC_CHECK_FUNCS(getopt_long , , [AC_LIBOBJ([getopt]) AC_LIBOBJ([getopt1])] ) 
++
++AH_TEMPLATE([REALTIME],
++	    [Define REALTIME if you want to run with realtime scheduling, this
++	     is not really an option any more])
++
++AH_TEMPLATE([HAVE_PROC],
++	    [Define HAVE_PROC if you want to read allocated resource data from /proc])
++
++AH_TEMPLATE([ENABLE_PCI],
++	    [Define ENABLE_PCI if you want to check PCI resource usage (requires HAVE_PROC)])
++
++AH_TEMPLATE([WANT_TO_VALIDATE],[Define this to check board ident])
++
++AH_BOTTOM([
++#if defined __TURBOC__ || defined __BORLANDC__
++#include <config.bor>
++#endif
++])
+ 
+ AC_ARG_ENABLE(
+ 	realtime,
+-        [  --enable-realtime       enable realtime scheduling (default=yes)],
++        AC_HELP_STRING([--enable-realtime],[enable realtime scheduling (default=yes)]),
+ 	if test "$enableval" = yes
+ 	then	
+ 		AC_DEFINE(REALTIME,1)
+@@ -59,7 +78,7 @@
+ 
+ AC_ARG_ENABLE(
+ 	proc,
+-        [  --enable-proc           enable resource checks using /proc data (default=yes)],
++        AC_HELP_STRING([--enable-proc],[enable resource checks using /proc data (default=yes)]),
+ 	if test "$enableval" = yes
+ 	then	
+ 		AC_DEFINE(HAVE_PROC,1)
+@@ -75,7 +94,7 @@
+ 
+ AC_ARG_ENABLE(
+ 	pci,
+-        [  --enable-pci            enable pci resource checks (default=yes)],
++        AC_HELP_STRING([--enable-pci],[enable pci resource checks (default=yes)]),
+ 	if test "$enableval" = yes
+ 	then	
+ 		if test "$enable_proc" = yes
+@@ -100,10 +119,11 @@
+ 
+ AC_ARG_ENABLE(
+       onreserr,
+-      [  --enable-onreserr       enable abort on resource dump error (default=no)],
++      AC_HELP_STRING([--enable-onreserr],[enable abort on resource dump error (default=no)]),
+ 	if test $enableval = yes
+ 	then	
+-		AC_DEFINE(ABORT_ONRESERR,1)
++		AC_DEFINE(ABORT_ONRESERR,1,
++			  [Define this if you want to abort on resource dump error])
+ 	else
+ 		if test "$enableval" != no
+ 		then
+@@ -114,10 +134,13 @@
+ 
+ AC_ARG_ENABLE(
+       always-report-activation,
+-      [  --enable-always-report-activation  enable report activation regardless of (NAME ..) in isapnp (default=no)],
++      AC_HELP_STRING([--enable-always-report-activation],
++		     [enable report activation regardless of (NAME ..) in isapnp (default=no)]),
+ 	if test $enableval = yes
+ 	then	
+-		AC_DEFINE(ALWAYSREPORTACTIVATION,1)
++		AC_DEFINE(ALWAYSREPORTACTIVATION,1,
++			  [Define this if you always want board configuration output
++			   (normally you add the (NAME "..") keyword before (ACT .)])
+ 	else
+ 		if test "$enableval" != no
+ 		then
+@@ -128,10 +151,10 @@
+ 
+ AC_ARG_ENABLE(
+       debug,
+-      [  --enable-debug          enable debug code (default=no)],
++      AC_HELP_STRING([--enable-debug],[enable debug code (default=no)]),
+ 	if test $enableval = yes
+ 	then	
+-		AC_DEFINE(DEBUG,1)
++		AC_DEFINE(DEBUG,1,[Define this to enable debugging code (see cardinfo.c)])
+ 	else
+ 		if test "$enableval" != no
+ 		then
+@@ -142,10 +165,10 @@
+ 
+ AC_ARG_ENABLE(
+       tag-debug,
+-      [  --enable-tag-debug      enable tag debugging code (default=no)],
++      AC_HELP_STRING([--enable-tag-debug],[enable tag debugging code (default=no)]),
+ 	if test $enableval = yes
+ 	then	
+-		AC_DEFINE(TAG_DEBUG,1)
++		AC_DEFINE(TAG_DEBUG,1,[Define this to enable tag debugging code])
+ 	else
+ 		if test "$enableval" != no
+ 		then
+@@ -156,7 +179,7 @@
+ 
+ AC_ARG_ENABLE(
+       validate,
+-      [  --enable-validate       enable validation (default=yes)],
++      AC_HELP_STRING([--enable-validate],[enable validation (default=yes)]),
+ 	if test $enableval = yes
+ 	then	
+ 		AC_DEFINE(WANT_TO_VALIDATE,1)
+@@ -171,10 +194,12 @@
+ 
+ AC_ARG_ENABLE(
+       dumpaddr,
+-      [  --enable-dumpaddr       enable additional pnpdump output to show every valid address setting (default=no)],
++      AC_HELP_STRING([--enable-dumpaddr],
++		     [enable additional pnpdump output to show every valid address setting (default=no)]),
+ 	if test $enableval = yes
+ 	then	
+-		AC_DEFINE(DUMPADDR,1)
++		AC_DEFINE(DUMPADDR,1,
++			  [Define this to enable additional pnpdump output (show all valid address ranges)])
+ 	else
+ 		if test "$enableval" != no
+ 		then
+@@ -185,16 +210,20 @@
+ 
+ AC_ARG_ENABLE(
+       gonefile,
+-      [  --enable-gonefile       set the location of the resources already used file (default="/etc/isapnp.gone")],
+-	AC_DEFINE_UNQUOTED(GONEFILE,"$enableval")
++      AC_HELP_STRING([--enable-gonefile],
++		     [set the location of the resources already used file (default="/etc/isapnp.gone")]),
++	AC_DEFINE_UNQUOTED(GONEFILE,"$enableval",
++			   [Define this to set the location of the resources already used file
++			    (default="/etc/isapnp.gone")])
+ )
+ 
+ AC_ARG_ENABLE(
+       sfn,
+-      [  --enable-sfn            enable short file names, assumes source files have been renamed (default=no)],
++      AC_HELP_STRING([--enable-sfn],
++		     [enable short file names, assumes source files have been renamed (default=no)]),
+ 	if test $enableval = yes
+ 	then	
+-		AC_DEFINE(HAVE_SFN,1)
++		AC_DEFINE(HAVE_SFN,1,[Define this to use short file name includes (8.3)])
+ 	else
+ 		if test "$enableval" != no
+ 		then
+@@ -205,7 +234,7 @@
+ 
+ AC_ARG_ENABLE(
+ 	static,
+-	[  --enable-static         compile to static binaries (default=no)],
++	AC_HELP_STRING([--enable-static],[compile to static binaries (default=no)]),
+ 	if test $enableval = yes
+ 	then	
+ 		[LDFLAGS="$LDFLAGS -static"]

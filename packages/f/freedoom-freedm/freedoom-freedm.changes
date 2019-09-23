@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Mon Jan  1 21:13:20 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 0.11.3
+  * This point release allows building from source with DeuTex 5.0,
+    there are no changes to the graphics.
+
+-------------------------------------------------------------------
+Tue Jul  4 14:32:39 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 0.11.2
+  * Missing multiplayer starts have been added to several levels.
+    No map should be lacking anymore.
+
+-------------------------------------------------------------------
+Sat Mar 26 08:13:44 UTC 2016 - mailaender@opensuse.org
+
+- updated to 0.10.1
+
+-------------------------------------------------------------------
+Tue May  3 18:03:00 UTC 2011 - claes.backstrom@opensuse.org
+
+- updated to 0.7 
+
+-------------------------------------------------------------------
+Mon Feb 15 14:29:41 CET 2010 - prusnak@suse.cz
+
+- updated to 0.6.4
+
+-------------------------------------------------------------------
+Tue Jul  1 23:08:36 CEST 2008 - claes.backstrom@fsfe.org
+
+- New upstream version 0.6.2
+
+-------------------------------------------------------------------
+Thu Nov 22 00:03:00 CET 2007 - claes.backstrom@fsfe.org
+
+- Initial package built from Fedora package (0.5-4)
+

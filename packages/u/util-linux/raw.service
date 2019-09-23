@@ -1,0 +1,18 @@
+[Unit]
+Description=raw devices
+After=local-fs.target remote-fs.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/sh -c "\
+	/sbin/modprobe raw;\
+	/sbin/udevadm settle;\
+	for i in `grep -v ^# /etc/raw`; do\
+		rawdev=`echo $i | cut -f1 -d:`;\
+		rawbind=`echo $i | cut -f2- -d:`;\
+		/usr/sbin/raw /dev/raw/$rawdev /dev/$rawbind;\
+	done"
+
+[Install]
+WantedBy=multi-user.target

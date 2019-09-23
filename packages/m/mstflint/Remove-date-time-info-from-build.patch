@@ -1,0 +1,24 @@
+commit 5f1b8c66deb4f825bc626a2cc8bf1251841bf9ac
+Author: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+Date:   Thu May 18 07:48:13 2017 +0200
+
+    Remove date/time info from build
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+
+diff --git common/tools_version.h common/tools_version.h
+index 2b6f16bf874e..5dc0239f31d6 100644
+--- common/tools_version.h
++++ common/tools_version.h
+@@ -75,10 +75,8 @@ int get_version_string(char *buf, int buf_size, const char *exe_name, const char
+         len = snprintf(buf, buf_size, "%s %s, ", exe_name, tool_version);
+     }
+     // cut out first and last "$" from the SVN version string:
+-    len += snprintf(buf + len, buf_size - len, "%s, built on %s, %s. Git SHA Hash: %s",
++    len += snprintf(buf + len, buf_size - len, "%s. Git SHA Hash: %s",
+                     MSTFLINT_VERSION_STR,
+-                    __DATE__,
+-                    __TIME__,
+                     TOOLS_GIT_SHA);
+     return len;
+ }

@@ -1,0 +1,60 @@
+From ce3897ffd6e7c8b8f36b8e920168bac8c7f836ae Mon Sep 17 00:00:00 2001
+From: Ilias Tsitsimpis <iliastsi@debian.org>
+Date: Tue, 18 Sep 2018 17:45:17 +0200
+Subject: [PATCH] Fix check whether GCC supports __atomic_ builtins
+
+Summary:
+C11 atomics are never used because:
+
+* The program used for checking whether GCC supports
+__atomic_ builtins fails with the following error:
+
+```
+  error: size mismatch in argument 2 of `__atomic_load`
+   int test(int *x) { int y; __atomic_load(&x, &y, __ATOMIC_SEQ_CST); return x; }
+```
+
+* There is a typo when checking if CONF_GCC_SUPPORTS__ATOMICS equals YES,
+resulting in PRIM_CFLAGS and PRIM_EXTRA_LIBRARIES never being set.
+
+Reviewers: bgamari
+
+Reviewed By: bgamari
+
+Subscribers: rwbarton, erikd, carter
+
+Differential Revision: https://phabricator.haskell.org/D5154
+---
+ libraries/ghc-prim/aclocal.m4   | 2 +-
+ libraries/ghc-prim/configure.ac | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libraries/ghc-prim/aclocal.m4 b/libraries/ghc-prim/aclocal.m4
+index e5695385f2..81fc44c500 100644
+--- a/libraries/ghc-prim/aclocal.m4
++++ b/libraries/ghc-prim/aclocal.m4
+@@ -5,7 +5,7 @@ AC_DEFUN([FP_GCC_SUPPORTS__ATOMICS],
+ [
+    AC_REQUIRE([AC_PROG_CC])
+    AC_MSG_CHECKING([whether GCC supports __atomic_ builtins])
+-   echo 'int test(int *x) { int y; __atomic_load(&x, &y, __ATOMIC_SEQ_CST); return x; }' > conftest.c
++   echo 'int test(int *x) { int y; __atomic_load(x, &y, __ATOMIC_SEQ_CST); return y; }' > conftest.c
+    if $CC -c conftest.c > /dev/null 2>&1; then
+        CONF_GCC_SUPPORTS__ATOMICS=YES
+        AC_MSG_RESULT([yes])
+diff --git a/libraries/ghc-prim/configure.ac b/libraries/ghc-prim/configure.ac
+index bacc89ccc8..8249be31a9 100644
+--- a/libraries/ghc-prim/configure.ac
++++ b/libraries/ghc-prim/configure.ac
+@@ -8,7 +8,7 @@ dnl    unregisterised, Sparc, and PPC backends.
+ FP_GCC_SUPPORTS__ATOMICS
+ AC_DEFINE([HAVE_C11_ATOMICS], [$CONF_GCC_SUPPORTS__ATOMICS], [Does GCC support __atomic primitives?])
+ 
+-if test "x$CONF_GCC_SUPPORTS__ATOMICS" = YES
++if test "$CONF_GCC_SUPPORTS__ATOMICS" = "YES"
+ then PRIM_CFLAGS=-DHAVE_C11_ATOMICS
+      PRIM_EXTRA_LIBRARIES=atomic
+ fi
+-- 
+2.13.7
+

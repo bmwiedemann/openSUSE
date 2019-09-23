@@ -1,0 +1,6 @@
+<package name="scrot" project="openSUSE:Factory">
+  <title>Screenshot Capture Utility</title>
+  <description>A nice and straightforward screen capture utility.</description>
+  <devel project="X11:Utilities" package="scrot"/>
+  <url>http://linuxbrit.co.uk/scrot/</url>
+</package>

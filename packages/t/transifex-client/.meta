@@ -1,0 +1,5 @@
+<package name="transifex-client" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="transifex-client"/>
+</package>

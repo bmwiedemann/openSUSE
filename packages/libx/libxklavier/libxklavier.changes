@@ -1,0 +1,379 @@
+-------------------------------------------------------------------
+Mon Mar  5 15:43:03 UTC 2018 - jengelh@inai.de
+
+- Fix RPM groups. Update summaries. Remove --with-pic.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:36:47 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb  1 15:19:46 UTC 2016 - dimstar@opensuse.org
+
+- Pass --with-xkb-bin-base=%{_bindir} to configure: we know that
+  xkbcomp is installed there (boo#964360).
+- Add xkbcomp Requires to libxklavier16: the xkbcomp binary is
+  required for proper functioning of the library.
+
+-------------------------------------------------------------------
+Sat Oct 18 21:20:49 UTC 2014 - crrodriguez@opensuse.org
+
+- Discontinue the use of xorg-x11-devel metapackage, just
+  buildrequire pkgconfig(xi), pkgconfig(x11), pkgconfig(xkbfile).
+
+-------------------------------------------------------------------
+Mon Sep 24 07:17:49 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 5.3:
+  +  A number of introspection and build fixes.
+
+-------------------------------------------------------------------
+Thu Feb 16 18:55:08 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 5.2.1:
+  + Fixed GIR params for introspection (broken build)
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+- Drop libxklavier-fix-gir-build.patch: fixed upstream.
+- Change glib2-devel and libxml2-devel BuildRequires to their
+  pkgconfig() equivalents: glib-2.0 and libxml-2.0.
+- Clean spec file using spec-cleaner.
+
+-------------------------------------------------------------------
+Thu Jan 26 10:38:23 UTC 2012 - vuntz@opensuse.org
+
+- license update: LGPL-2.0+
+  No indication of GPL-2.0+ tools or utilities (apart from
+  configure, etc.)
+
+-------------------------------------------------------------------
+Wed Jan 18 06:40:17 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 5.2:
+  + Optional introspection introduced
+  + Some minor fixes (runtime and build-time)
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Add gobject-introspection-devel BuildRequires to build
+  introspection support.
+- Add libxklavier-fix-gir-build.patch to fix build of introspection
+  support.
+- Create typelib-1_0-Xkl-1_0 subpackage for typelib file.
+- Add typelib-1_0-Xkl-1_0 Requires to devel subpackage.
+- Remove glib2-devel and libxml2-devel Requires from devel
+  subpackage: they will automatically be added the pkgconfig() way.
+- Remove Requires for the XFree86-devel provider from devel
+  subpackage: it's not needed according to the pkgconfig file.
+- Change group of libxklavier16 from Development/Libraries/X11 to
+  System/Libraries.
+
+-------------------------------------------------------------------
+Thu Oct  6 15:47:27 UTC 2011 - vuntz@opensuse.org
+
+- Add iso-codes Requires to libxklavier16 since the iso-codes data
+  is used at runtime.
+
+-------------------------------------------------------------------
+Tue Apr 19 05:44:44 UTC 2011 - ro@suse.de
+
+- Update baselibs.conf (libxklavier16 instead of libxklavier12)
+
+-------------------------------------------------------------------
+Mon Feb 14 14:59:49 UTC 2011 - fcrozat@novell.com
+
+- Update to version 5.1:
+  + Expanding APIs for GNOME 3 needs:
+    - converting ISO codes to translatable names (it was private,
+      now public)
+    - search by pattern
+  + Using X11 API through pkg-config
+  + One race condition eliminated
+  + XInput2 version checking: looking for support of DevicePresence
+
+-------------------------------------------------------------------
+Thu Jan 14 00:50:05 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 5.0:
+  + Introducing counters for start/stop listen operations: in one
+    process (actually g-s-d) start and stop can be called several
+    times, with different masks. The API is incompatibly changed!
+  + Using transient property for smart handling of the popup
+    windows (for the per-window layout scenario)
+  + Save xinput error code and event type
+  + Introduced engine-specific error handling (for ignoring xinput
+    errors)
+  + Sometimes focus_in arrives when the previously focused window
+    is already destroyed. That causes BadMatch and all kinds of
+    trouble. The code should handle that case correctly
+  + Fixed a bug with XIE check (bgo#583709)
+  + Small fix for flag enum fdo#21578
+- Rename libxklavier15 subpackage to libxklavier16, following
+  soname change.
+
+-------------------------------------------------------------------
+Tue Jan  5 16:35:19 CET 2010 - jengelh@medozas.de
+
+- Package baselibs.conf
+
+-------------------------------------------------------------------
+Sun Aug  2 17:27:41 CEST 2009 - coolo@novell.com
+
+- remove the obsolete to the old library, shared libraries are supposed
+  to be installable in parallel
+
+-------------------------------------------------------------------
+Mon Jul 20 12:43:57 CEST 2009 - vuntz@novell.com
+
+- Update to version 4.0:
+  + Support for "extras" in xkeyboard-config, small bugfixes and
+    build fixes.
+- Rename libxklavier12 to libxklavier15 and make it Obsolete
+  libxklavier12.
+
+-------------------------------------------------------------------
+Thu Mar 19 04:44:40 CET 2009 - vuntz@novell.com
+
+- Update to version 3.9:
+  + Several small bugs fixed, including memleak and crash under NX
+- Remove AutoReqProv: it's default now.
+- Use makeinstall.
+- Remove libxklavier package (contained only doc) and have
+  libxklavier12 provide it.
+- Remove work-around for old versions of openSUSE and autoreconf
+  call.
+
+-------------------------------------------------------------------
+Mon Jan 26 22:52:32 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files [BNC#357465]
+
+-------------------------------------------------------------------
+Wed Dec 24 08:51:58 EST 2008 - mboman@suse.de
+
+- Update to version 3.8:
+  + Added "new device" signal - for plugged keyboard 
+
+-------------------------------------------------------------------
+Wed Sep 10 17:54:39 CDT 2008 - maw@suse.de
+
+- Update to version 3.7:
+  + Several bugfixes
+  + Convert all translated strings to UTF-8.
+
+-------------------------------------------------------------------
+Fri Jun 20 19:53:23 CEST 2008 - maw@suse.de
+
+- Update to version 3.6:
+  + Added API for countries and languages.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Apr  3 06:22:27 CEST 2008 - hpj@suse.de
+
+- Upgrade to version 3.5:
+
+  * Got rid of the fallback xml file (some code cleanup).
+  * Fixed a couple of bugs (one crasher).
+
+-------------------------------------------------------------------
+Sun Feb 10 10:19:36 CET 2008 - coolo@suse.de
+
+- don't make the library unreadable
+
+-------------------------------------------------------------------
+Tue Feb  5 16:36:42 CET 2008 - maw@suse.de
+
+- Split out a shared library subpackage.
+
+-------------------------------------------------------------------
+Thu Jan 31 11:49:22 CET 2008 - rodrigo@suse.de
+
+- Update to version 3.4:
+  * Use gettext for translations 
+- Fixed package summaries to pass rpmlint checks
+
+-------------------------------------------------------------------
+Fri Jan 25 13:28:25 CET 2008 - rodrigo@suse.de
+
+- Update to version 3.3:
+  * Support of the "vendor" tag in base.xml
+  * Minor bugfixes
+- Removed COPYING from %doc, it now includes COPYING.LIB 
+
+-------------------------------------------------------------------
+Fri Jul  6 20:14:55 CEST 2007 - maw@suse.de
+
+- Update to version 3.2
+- Bugfixes
+- Remove upstreamed libxklavier-216201-kbd-layout-fix.patch.
+
+-------------------------------------------------------------------
+Mon Mar  5 19:25:36 CET 2007 - danw@suse.de
+
+- Add back --with-xkb-base that got removed in the spec file
+  cleanup. #250556
+
+-------------------------------------------------------------------
+Tue Feb 13 11:50:51 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552#c17).
+
+-------------------------------------------------------------------
+Tue Dec 19 11:54:11 CET 2006 - sbrabec@suse.cz
+
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Thu Nov 16 19:45:24 CET 2006 - danw@suse.de
+
+- Add patch from CVS to fix a crash in the keyboard layout indicator
+  #216201
+
+-------------------------------------------------------------------
+Fri Oct 13 22:49:06 CEST 2006 - danw@suse.de
+
+- Remove dead patch (fixed differently upstream)
+
+-------------------------------------------------------------------
+Thu Oct 12 00:13:56 CEST 2006 - danw@suse.de
+
+- Fix xkb-base to match xkeyboard-config package. #204368, etc
+- Remove some disabled patches that have been committed upstream
+
+-------------------------------------------------------------------
+Wed Aug 30 19:02:07 CEST 2006 - jhargadon@suse.de
+
+- update to version 3.0
+- Some fixes in 2.91. Huge memory optimization 
+
+-------------------------------------------------------------------
+Tue Aug 22 08:40:06 CEST 2006 - aj@suse.de
+
+- Remove unneeded BuildRequires.
+
+-------------------------------------------------------------------
+Fri Aug 18 19:22:37 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.91
+- Absolutely new API based on glib
+- Bugfixes
+- XML processing improved
+- Better compatibility with modular X.org filesystem layout
+
+-------------------------------------------------------------------
+Thu Jul 20 22:58:25 CEST 2006 - danw@suse.de
+
+- Use AC_PATH_XTRA rather than AC_PATH_X to make it easier to deal
+  correctly with xorg-modular (which installs into /usr and so
+  doesn't require -I or -L flags)
+
+-------------------------------------------------------------------
+Fri Jun  9 14:26:41 CEST 2006 - danw@suse.de
+
+- Fix two weird NULL->int casts with a patch from libxklavier HEAD
+  to fix the beta build.
+
+-------------------------------------------------------------------
+Thu Mar 23 18:29:56 CET 2006 - danw@suse.de
+
+- trap X errors when setting the keyboard map, to protect against
+  bad data from callers or other packages (eg, xkeyboard-config, which
+  currently seems to have a bug). Part of #158177
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:26 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 13:20:57 CET 2006 - sbrabec@suse.cz
+
+- Updared to version 2.1.
+
+-------------------------------------------------------------------
+Wed Dec  7 14:49:27 CET 2005 - rodrigo@suse.de
+
+- Added unreleased patch libxklavier-waitpid.patch, needed for
+  control-center2-2.12.2.
+
+-------------------------------------------------------------------
+Wed Nov  2 22:23:30 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Wed Jun  1 16:09:24 CEST 2005 - sbrabec@suse.cz
+
+- Fixed devel requirements.
+
+-------------------------------------------------------------------
+Tue Apr 26 22:55:39 CEST 2005 - gekker@suse.de
+
+- Disable -Werror for now. 
+
+-------------------------------------------------------------------
+Thu Mar 10 00:53:35 CET 2005 - gekker@suse.de
+
+- Update to version 2.0 (GNOME 2.10). 
+
+-------------------------------------------------------------------
+Fri Jan 21 23:19:46 CET 2005 - gekker@suse.de
+
+- Update to version 1.14
+- Remove patch, already upstream 
+
+-------------------------------------------------------------------
+Wed Dec 22 14:42:39 CET 2004 - ro@suse.de
+
+- added missing includes to test_config.c 
+
+-------------------------------------------------------------------
+Tue Dec 21 18:36:41 CET 2004 - gekker@suse.de
+
+- Update to version 1.04 
+
+-------------------------------------------------------------------
+Thu Aug 12 12:24:36 CEST 2004 - ro@suse.de
+
+- added libpng to neededforbuild (for doxygen)
+
+-------------------------------------------------------------------
+Thu May 13 00:06:11 CEST 2004 - clahey@suse.de
+
+- Add --with-xkb-base=/usr/lib/X11/xkb to configure to make this
+  build on 64 bit platforms.
+
+-------------------------------------------------------------------
+Fri Apr 30 19:07:25 CEST 2004 - clahey@suse.de
+
+- Upgraded to version 1.02 as needed for control-center.
+
+-------------------------------------------------------------------
+Mon Feb 16 16:11:44 CET 2004 - sbrabec@suse.cz
+
+- Degraded to version 0.96 (GSwitchIt compatible with version 0.97 is
+  not yet released).
+
+-------------------------------------------------------------------
+Thu Feb 12 18:30:46 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 0.97.
+
+-------------------------------------------------------------------
+Thu Sep  4 23:27:21 CEST 2003 - ro@suse.de
+
+- run autoreconf
+- use configure to detect X11R6 libdir
+
+-------------------------------------------------------------------
+Thu Sep 04 13:51:54 CEST 2003 - sbrabec@suse.cz
+
+- Added new package (bug #28623).
+

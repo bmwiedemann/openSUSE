@@ -1,0 +1,161 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>459ee461066516e38fce8ddaf6c0b983</srcmd5>
+    <version>1.0.1</version>
+    <time>1465335953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>396296</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c06c0a0424034435971fca5751f998eb</srcmd5>
+    <version>1.0.2</version>
+    <time>1466681833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>404031</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7cf95ecb147289ade9da7f8a8c5f8441</srcmd5>
+    <version>1.0.5</version>
+    <time>1467359974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>405238</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4788a436e5b09b64b778b8a48c707f9f</srcmd5>
+    <version>1.0.6</version>
+    <time>1473798177</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>412847</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d14079a54b34329b6058c1dd0792e472</srcmd5>
+    <version>1.2.0</version>
+    <time>1479229187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>439877</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>38b021f2cebbd08c2257be3abbb27dde</srcmd5>
+    <version>1.2.1</version>
+    <time>1484041367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>446532</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>99fe4cad56c030e62419ebe86f837f09</srcmd5>
+    <version>1.4.1</version>
+    <time>1494263034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>493333</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dbbdbefc0f2696e11d2d59f947913a57</srcmd5>
+    <version>1.4.2</version>
+    <time>1495883870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>498010</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>208ece874165827eb1c6539c03bd8350</srcmd5>
+    <version>1.4.4</version>
+    <time>1497362986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>503271</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>916bdc16a7f82ff98cc7bd159e19155d</srcmd5>
+    <version>1.4.5</version>
+    <time>1498742301</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>506914</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e56207bdeaa68d5ed0a42b5900bac5bc</srcmd5>
+    <version>1.6.0</version>
+    <time>1509305098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537361</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2390f4c5d7ddf47e27684ed51c1f422b</srcmd5>
+    <version>1.6.1</version>
+    <time>1510045105</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538934</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>156cac140730ac7699994f007cbff21c</srcmd5>
+    <version>1.6.2</version>
+    <time>1512216771</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>547319</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4ff8b8143284d134cbe7502f770a3db4</srcmd5>
+    <version>1.8.0</version>
+    <time>1526371848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605786</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>663dc9f35272943ed194985536236b72</srcmd5>
+    <version>1.8.1</version>
+    <time>1527583618</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612396</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f2cf51230562a77faf6ae32ead61f41c</srcmd5>
+    <version>1.8.2</version>
+    <time>1530191577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619353</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7d736c75583bf4de58dd5f73a38ae1e4</srcmd5>
+    <version>2.0.3</version>
+    <time>1549286753</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670930</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>e861198dcbd62a1b9d58eed4b155ee1a</srcmd5>
+    <version>2.0.3</version>
+    <time>1561195504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711404</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>32ab7c662036bc29db2eecfa10cd3700</srcmd5>
+    <version>2.2.0</version>
+    <time>1562591489</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0
+  * Patches rebase and merged
+  * Add autogen file and amend Install (#64)
+  * Fix exiv2 issues (https://github.com/linuxmint/pix/issues/70) (#71)
+  * Add Ctrl+W and Ctrl+Q shortcuts
+  * l10n: Update translations
+- drop pix-exiv2-xmp_hpp.patch, upstream fixed.
+</comment>
+    <requestid>713771</requestid>
+  </revision>
+</revisionlist>

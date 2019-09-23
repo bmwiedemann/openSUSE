@@ -1,0 +1,676 @@
+-------------------------------------------------------------------
+Thu Jan 25 10:26:25 UTC 2018 - Thomas.Blume@suse.com
+
+- add git ChangeLog to /usr/share/doc/w3m/
+
+- update to version 0.5.3+git20180125
+  addressed security issue:
+         CVE-2018-6196: w3m: an infinite recursion flaw in HTMLlineproc0 
+           because the feed_table_block_tag function in table.c does not 
+           prevent a negative indent value allows for (bsc#1077559)
+         CVE-2018-6197: w3m: NULL pointer dereference flaw in formUpdateBuffer 
+           in form.c (bsc#1077568)
+         CVE-2018-6198: w3m: does not properly handle temporary files when 
+           the ~/.w3m directory is unwritable, which allows a local attacker to 
+           craft a symlink attack to overwrite arbitrary files (bsc#1077572)
+  other changes, bugfixes see: /usr/share/doc/w3m/ChangeLog
+
+-------------------------------------------------------------------
+Thu Nov 24 11:18:22 UTC 2016 - Thomas.Blume@suse.com
+
+- update to debian git version (bsc#1011293)
+  addressed security issues:
+         CVE-2016-9621: w3m: global-buffer-overflow write (bsc#1012020)
+         CVE-2016-9622: w3m: null deref (bsc#1012021)
+         CVE-2016-9623: w3m: null deref (bsc#1012022)
+         CVE-2016-9624: w3m: near-null deref (bsc#1012023)
+         CVE-2016-9625: w3m: stack overflow (bsc#1012024)
+         CVE-2016-9626: w3m: stack overflow (bsc#1012025)
+         CVE-2016-9627: w3m: heap overflow read + deref (bsc#1012026)
+         CVE-2016-9628: w3m: null deref (bsc#1012027)
+         CVE-2016-9629: w3m: null deref (bsc#1012028)
+         CVE-2016-9630: w3m: global-buffer-overflow read (bsc#1012029)
+         CVE-2016-9631: w3m: null deref (bsc#1012030)
+         CVE-2016-9632: w3m: global-buffer-overflow read (bsc#1012031)
+         CVE-2016-9633: w3m: OOM (bsc#1012032)
+         CVE-2016-9434: w3m: null deref (bsc#1011283)
+         CVE-2016-9435: w3m: use uninit value (bsc#1011284)
+         CVE-2016-9436: w3m: use uninit value (bsc#1011285)
+         CVE-2016-9437: w3m: write to rodata (bsc#1011286)
+         CVE-2016-9438: w3m: null deref (bsc#1011287)
+         CVE-2016-9439: w3m: stack overflow (bsc#1011288)
+         CVE-2016-9440: w3m: near-null deref (bsc#1011289)
+         CVE-2016-9441: w3m: near-null deref (bsc#1011290)
+         CVE-2016-9442: w3m: potential heap buffer corruption (bsc#1011291)
+         CVE-2016-9443: w3m: null deref (bsc#1011292)
+
+  dropped patches:
+         w3m-fix-build-with-imlib2-1.4.6.patch
+         w3m-scheme.patch
+         w3mman-formatting.patch
+         w3m-parallel-make.patch
+         w3m-gc7.diff
+         w3m-openssl.patch
+         w3m-closedir.patch
+         w3m-fh-def.patch
+         w3m-ssl-verify.patch
+         w3m-parsetagx-crash.patch
+         w3m-tempdir-override.patch
+         w3m-0.5.1-no-ASCII-equivalents-by-default.patch
+         w3m-uninitialized.patch
+         w3m-inline-image.patch
+         w3m-0.4.1-textarea-segfault.dif
+        
+   ported patches:
+         w3m-disable-cookie-special-domain-check.patch to
+         0001-allow-to-configure-the-accept-option-for-bad-cookies.patch
+         w3m-0.4.1-session-mgmt.dif to
+         0001-implements-simple-session-management.patch         
+         w3m-history-crossdev.patch to
+         0001-handle-EXDEV-during-history-file-rename.patch
+         w3mman-formatting.patch to 
+         0001-w3mman-don-t-show-invalid-characters-bsc-950800.patch
+
+-------------------------------------------------------------------
+Fri Jun 24 07:24:53 UTC 2016 - fweiss@suse.com
+
+- w3mman-formatting.patch: w3mman now doesn't show invalid
+  characters anymore (bsc#950800)
+
+-------------------------------------------------------------------
+Wed Jun 22 12:43:27 UTC 2016 - max@suse.com
+
+- Add w3m-scheme.patch to fix a segfault when doing a https request
+  to an unresolvable host (bsc#950468).
+
+-------------------------------------------------------------------
+Mon Mar  2 04:05:20 UTC 2015 - mlin@suse.com
+
+- Add w3m-fix-build-with-imlib2-1.4.6.patch: fix build with imlib2 1.4.6,
+  the patch is from Debian. See http://sourceforge.net/p/w3m/patches/70/
+
+-------------------------------------------------------------------
+Sun Dec 21 12:49:22 UTC 2014 - meissner@suse.com
+
+- build with PIE support
+
+-------------------------------------------------------------------
+Wed Mar 12 16:17:09 UTC 2014 - schwab@linux-m68k.org
+
+- w3m-parallel-make.patch: More dependency fixes for parallel build
+
+-------------------------------------------------------------------
+Tue Aug 20 12:04:52 UTC 2013 - schwab@suse.de
+
+- w3m-parallel-make.patch: Fix missing dependency for parallel build
+
+-------------------------------------------------------------------
+Fri Jun 21 06:46:21 UTC 2013 - crrodriguez@opensuse.org
+
+- attempting to download a large file will end in total fail 
+  on 32bit archs, use LFS_CFLAGS to fix that problem.
+
+-------------------------------------------------------------------
+Thu Mar 21 16:27:19 UTC 2013 - jengelh@inai.de
+
+- Make w3m compile with gc 7.x (adds w3m-gc7.diff),
+  and also use the system libgc.
+
+-------------------------------------------------------------------
+Mon Nov 12 18:26:45 UTC 2012 - crrodriguez@opensuse.org
+
+- Due to the "CRIME attack" (CVE-2012-4929) HTTPS clients
+  that negotiate TLS-level compression can be abused for
+  MITM attacks. (w3m-openssl.patch) 
+
+- Use SSL_MODE_RELEASE_BUFFERS if available .
+
+-------------------------------------------------------------------
+Fri Sep 28 12:43:43 UTC 2012 - cfarrell@suse.com
+
+- license update: ISC
+  w3m permissive license much more akin to ISC (spdx.org/licenses/ISC) than
+  to either BSD or MIT
+
+-------------------------------------------------------------------
+Thu Sep 27 14:05:50 UTC 2012 - crrodriguez@opensuse.org
+
+- Build with OPENSSL_NO_SSL_INTERN, poor's man visibility
+  to avoid ABI breaks between different openssl version.
+
+- Also define _GNU_SOURCE to allow some extra optimizations
+  with recent GCC versions. 
+
+-------------------------------------------------------------------
+Fri Mar 23 11:16:03 UTC 2012 - max@suse.com
+
+- Removed w3m-helppaths.patch, because it broke interactive help
+  (bnc#747560). It was a leftover that should have been removed
+  as part of the May 2011 package overhaul.
+
+-------------------------------------------------------------------
+Tue Aug 30 17:59:53 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix build error: redefinition of 'struct file_handle' 
+
+-------------------------------------------------------------------
+Sat Jul 30 23:09:55 UTC 2011 - crrodriguez@opensuse.org
+
+- Use ncursesw6 instead of old ncurses5
+
+-------------------------------------------------------------------
+Fri May 20 13:51:20 UTC 2011 - max@novell.com
+
+- Overhaul the package
+- Add license files and other stuff from the doc subcdir
+  (bnc#666935).
+
+-------------------------------------------------------------------
+Tue Jan 18 14:33:24 UTC 2011 - max@novell.com
+
+- Version 0.5.3:
+  * security fix
+    - fix vulnerabilities indicated by bugs.debian.org.
+    - suppress sending Referer, if https:// -> http://
+  * new features
+    - adapt w3mimg to native windows on MS Windows.
+    - support xterm-incompatible terminals without gpm.
+    - add "xhtml" to default guess.
+    - introduce option pseudo_inlines.
+    - add option to avoid "wrong number of dots" error in cookies.
+  * other bug fixes
+    - fix "important" bugs from bugs.debian.org
+    - preserve spaces in multibyte context.
+    - fix proxy authentication.
+
+-------------------------------------------------------------------
+Tue Jun 15 17:56:55 CEST 2010 - max@suse.de
+
+- Fix handling of embedded nul characters in certificate subjects.
+  (bnc#609451, CVE-2010-2074).
+- Turn on certificate verification by default.
+
+-------------------------------------------------------------------
+Thu Dec 31 13:18:57 CET 2009 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:51 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Mon Sep  7 16:49:56 CEST 2009 - max@suse.de
+
+- Added w3m-closedir.patch to fix a directory descriptor leak in
+  loadLocalDir (bnc#531675).
+
+-------------------------------------------------------------------
+Mon Aug  3 06:40:24 UTC 2009 - jansimon.moeller@opensuse.org
+
+- small patch for gc to work with qemu-arm on the workers
+
+-------------------------------------------------------------------
+Fri Nov 14 14:11:26 CET 2008 - max@suse.de
+
+- Re-added the private copy of gc, so that we don't need to
+  provide generic L3 for the gc package, which is not used by
+  anything else in the distribution.
+- Disable unneeded thread support in gc to fix build on ppc64.
+
+-------------------------------------------------------------------
+Tue Oct 28 20:30:46 CET 2008 - max@suse.de
+
+- Removed unneeded explicit build dependencies
+- w3m-inline-image needs imlib2-loaders.
+- Use system-supplied gc library.
+
+-------------------------------------------------------------------
+Mon Feb 25 14:34:04 CET 2008 - crrodriguez@suse.de
+
+- use find_lang macro 
+
+-------------------------------------------------------------------
+Wed Sep  5 14:31:00 CEST 2007 - olh@suse.de
+
+- use expandPath to expand ~ in TMPDIR (306745)
+
+-------------------------------------------------------------------
+Tue Aug 14 19:06:06 CEST 2007 - olh@suse.de
+
+- handle EXDEV during history file rename()
+
+-------------------------------------------------------------------
+Sat Aug 11 19:12:36 CEST 2007 - olh@suse.de
+
+- fix crash in parse_tag() during every start
+  use TMPDIR, TMP or TEMP enviroment variables
+  fix a few harmless uninitialized variables
+
+-------------------------------------------------------------------
+Fri Jun  1 17:41:33 CEST 2007 - max@suse.de
+
+- New version: 0.5.2:
+  * fix format string vulnerability.
+  * support gtk2 with w3m-img.
+  * new option for LiveHTTPHeaders-like logs.
+  * new option to fontify <del>, <s>, <ins>, and so on.
+  * avoid errors in "configure" and "make".
+  * '\n' handling in attributes' values of HTML tags.
+- Enabled console mouse support via gpm.
+
+-------------------------------------------------------------------
+Mon Apr  2 01:11:30 CEST 2007 - ro@suse.de
+
+- added ncurses-devel to buildreq 
+
+-------------------------------------------------------------------
+Fri Feb 16 15:45:41 CET 2007 - od@suse.de
+
+- change the default for the option "Use ASCII equivalents to
+  display entities" from YES to NO. (#247397)
+
+-------------------------------------------------------------------
+Thu Jan  4 20:00:47 CET 2007 - max@suse.de
+
+- Fixed a format string problem that led to a crash.
+  (#230775, CVE-2006-6772)
+- Made sure everything gets compiled with RPM_OPT_FLAGS.
+- Enabled inline images on frame buffer consoles.
+
+-------------------------------------------------------------------
+Sat Mar 18 03:31:30 CET 2006 - od@suse.de
+
+- fixes for w3m-0.4.1-session-mgmt.dif:
+  - longer session names: increase filename length for session
+    files from 30 to 249
+  - fix buffer-overrun in several strncat()
+  - report errors other than ENOENT when opening session and
+    history files
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:44 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Apr 27 16:25:19 CEST 2005 - ro@suse.de
+
+- remove boehm-gc from nfb (dropped)
+- use private copy of gc6.4
+
+-------------------------------------------------------------------
+Fri Aug 13 04:31:47 CEST 2004 - mmj@suse.de
+
+- Don't --enable-messagel10n since it breaks w3m and makes every-
+  thing Japanese [#43750]
+
+-------------------------------------------------------------------
+Mon May  3 09:41:59 CEST 2004 - mmj@suse.de
+
+- Update to 0.5.1
+
+-------------------------------------------------------------------
+Tue Apr 13 15:14:01 CEST 2004 - mmj@suse.de
+
+- Update to 0.5 which merges the -m17 part, and also adds
+  auto{make,conf} support.
+- Use %_lib
+
+-------------------------------------------------------------------
+Mon Mar 22 08:52:50 CET 2004 - mmj@suse.de
+
+- Fix illegal prefetch instructions on intel 64-bit platform [#36352]
+
+-------------------------------------------------------------------
+Tue Feb 17 20:43:26 CET 2004 - kukuk@suse.de
+
+- Remove s390x ulimit hack (does not work as normal user)
+
+-------------------------------------------------------------------
+Tue Feb  3 17:09:51 CET 2004 - mmj@suse.de
+
+- Compile with -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Sat Jan 10 16:56:28 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Fri Oct 10 11:48:45 CEST 2003 - od@suse.de
+
+- added new option "-session=<sessionname>" which implements simple
+  session management
+
+-------------------------------------------------------------------
+Mon Aug 18 17:37:27 CEST 2003 - uli@suse.de
+
+- replaced Boehm GC with a more recent version that works on s390x,
+  ppc64 (obsoletes w3m-0.3.1-x86_64.dif)
+
+-------------------------------------------------------------------
+Fri Jul 25 18:49:59 CEST 2003 - poeml@suse.de
+
+- switch to w3m-m17n sources (w3m-0.4.1-m17n-20030308) for its
+  UTF-8 support, and no longer build the extra w3mj binary
+- get rid of -m17n suffix
+- add patch by Bjoern Jacke to automatically follow locale
+- install the cgi's in /usr/lib/w3m/cgi-bin
+
+-------------------------------------------------------------------
+Thu Jul 24 14:45:45 CEST 2003 - poeml@suse.de
+
+- update to 0.4.1
+  - tab browsing
+    * rc: open_tab_blank, close_tab_back
+    * func: CLOSE_TAB, NEW_TAB, NEXT_TAB, PREV_TAB,
+    * func:        TAB_GOTO, TAB_GOTO_RELATIVE
+    * func: TAB_LEFT, TAB_LINK, TAB_MENU, TAB_RIGHT
+    * func: CLOSE_TAB_MOUSE, MENU_MOUSE, MOVE_MOUSE, TAB_MOUSE
+    * rc: open_tab_dl_list
+    * func: DOWNLOAD_LIST
+  - wheel scrolling
+    * rc: relative_wheel_scroll
+    * rc: relative_wheel_scroll_ratio
+    * rc: fixed_wheel_scroll_count
+  - https proxy
+    * env: https_proxy
+    * rc: https_proxy
+  - form filling
+    * pre_form: ~/.w3m/pre_form
+    * rc: pre_form_file: pre_form configuration file
+  - building
+    * separate auxbindir and libdir (local-CGI, file:///$LIB/)
+    * configure: -auxbindir
+  - misc
+    * options: -show-option
+    * 2 stroke keybinding
+    * rc: use_proxy
+    * rc: preserve_timestamp
+    * rc: fold_line
+    * local cookie: passed via file named $LOCAL_COOKIE or posted not in url query
+    * URL data: support
+    * URL news:, nntp: newsgroup support
+    * rc: nntpserver, nntpmode, max_news
+    * rc: graphic_char
+    * func: REDO, UNDO
+    * func: LIST, LIST_MENU, MOVE_LIST_MENU
+    * func: ACCESSKEY, LINK_MENU
+    * rc: display_ins_del
+    * func: MULTIMAP
+    * options: -N
+    * func: NEXT, PREV
+    * rc: image_map_list
+    * rc: decode_url
+    * func: RESHAPE
+    * func: SEARCH can take arg
+    * rc: disable_secret_security_check (for windows?)
+ - w3m-0.2.1-ia64.dif seems obsolete
+ - re-diff textarea-segfault.dif, it seems still needed
+ - package some of the new Bonus cgi's
+
+-------------------------------------------------------------------
+Fri Jun 13 09:34:16 CEST 2003 - kukuk@suse.de
+
+- Add missing directories to filelist
+
+-------------------------------------------------------------------
+Mon Feb 24 20:52:47 CET 2003 - poeml@suse.de
+
+- add fix for segfault that can occur when editing a textarea field
+  with vi, and returning to w3m (it seems to happen if the terminal
+  is not writable, as when using w3m after 'su - some_user') [#17597]
+
+-------------------------------------------------------------------
+Thu Jan 16 00:03:13 CET 2003 - adrian@suse.de
+
+- do not package files from sub package also into main package
+  (no more X11 dependency on main package)
+- package also man pages
+
+-------------------------------------------------------------------
+Thu Dec  5 18:24:48 CET 2002 - poeml@suse.de
+
+- update to 0.3.2.2
+  * security fix: html_quote for img alt attributes
+  * security fix: html_quote for frame contents
+  * backport from w3m 0.3.2+cvs
+    - fix segmentation fault by large complex table.
+         [w3m-dev 03371][w3m-dev 03438]
+
+-------------------------------------------------------------------
+Mon Nov  4 19:27:06 CET 2002 - poeml@suse.de
+
+- update to 0.3.2 (which has framebuffer console image support, but
+  we don't build it because the permissions of /dev/fb* can only be
+  set globally)
+- w3mimgsize ceased to exist
+- add w3mman, a pretty handy man page browser
+
+-------------------------------------------------------------------
+Thu Aug 15 12:59:39 CEST 2002 - schwab@suse.de
+
+- Fix compilation on ia64.
+
+-------------------------------------------------------------------
+Wed Aug  7 16:21:35 CEST 2002 - poeml@suse.de
+
+- fixed for s390x
+   - set ulimit -v unlimited otherwise the mktable helper segfaults
+- apply lib64 patch on all architectures
+
+-------------------------------------------------------------------
+Tue Jul 16 12:03:47 CEST 2002 - poeml@suse.de
+
+- define konqueror instead of mozilla as default external browser
+- no path needed for external helpers
+
+-------------------------------------------------------------------
+Mon Jul 15 23:21:41 CEST 2002 - poeml@suse.de
+
+- update to version 0.3.1.
+- cookie handling: don't treat toplevel domains with 2 letters
+  different from ones with 3 letters ("special domain check"), by
+  don't allowing domain= values with 2 periods in a Set-Cookie
+  header (why should a cookie from .ebay.de be invalid, while the
+  same cookie from .ebay.com is not?)
+- allow to configure the "accept" option for bad cookies 
+- define mozilla instead of netscape as default external browser
+- show configuration in build log
+- don't explicitely -I/usr/include, avoid nasty compiler warnings
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Sun Jul  7 22:32:58 CEST 2002 - schwab@suse.de
+
+- Update to version 0.3.
+
+-------------------------------------------------------------------
+Wed May 29 01:30:18 CEST 2002 - ro@suse.de
+
+- first hack to work on x86_64 
+
+-------------------------------------------------------------------
+Tue May 21 19:05:32 CEST 2002 - poeml@suse.de
+
+- fix wrong configuration which broke HTML text area editing
+  (editor was set to -O) (#16260)
+
+-------------------------------------------------------------------
+Thu May 16 14:10:11 CEST 2002 - poeml@suse.de
+
+- split off a w3m-inline-image subpackage to avoid the main package
+  RPM dependency on X stuff
+
+-------------------------------------------------------------------
+Sat Feb  2 17:47:00 CET 2002 - poeml@suse.de
+
+- update to 0.2.5:
+  * RFC2617: HTTP Digest authentication
+  * rc: default_url=0(empty) 1(current URL) 2(link URL)
+  * GOTO_RELATIVE (M-u)
+  * highlight for incremental search
+  * support migemo (romaji search)
+  * use w3mmail.cgi for mailto: URL
+  * support external URI loader
+  * support -dump_extra ftp://
+  * new regex implementation
+- update inline image patch to w3m-0.2.5-img-2.2.patch.bz2
+- add WWW-Authenticate.dif (makes w3m recognize WWW-Authenticate:
+  token in lower case)
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:08 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Thu Jan 24 19:31:59 CET 2002 - poeml@suse.de
+
+- update to 0.2.4
+- use updated inline image patch w3m-0.2.4-img-1.18.patch.gz
+
+-------------------------------------------------------------------
+Wed Nov 28 23:41:59 CET 2001 - mfabian@suse.de
+
+- add patch for inline images (tweaked to work with
+  w3m-0.2.2-inu-1.1 by <tiwai@suse.de>,
+  originally from http://www2u.biglobe.ne.jp/~hsaka/w3m/patch/)
+
+-------------------------------------------------------------------
+Fri Nov 23 01:20:29 CET 2001 - poeml@suse.de
+
+- update to w3m-0.2.2-inu-1.1. This time, the included gc is new
+  enough (6.1alpha2), so we don't need to supply another one.
+
+-------------------------------------------------------------------
+Mon Nov 12 13:22:04 CET 2001 - schwab@suse.de
+
+- Fix for ia64.
+
+-------------------------------------------------------------------
+Wed Oct 31 19:59:05 CET 2001 - poeml@suse.de
+
+- update to w3m-0.2.1-inu-1.5. This includes almost all patches
+  posted to w3m-dev ML and w3m-dev-en ML in Oct. For details, see:
+  http://mi.med.tohoku.ac.jp/~satodai/w3m/inu/200110/index.en.html
+
+-------------------------------------------------------------------
+Tue Oct 30 14:19:46 CET 2001 - poeml@suse.de
+
+- update to latest version: w3m-0.2.1-inu-1.4 [w3m-dev-en 00596]
+  (it is semi-official, but all developers use that one)
+- drop all patches since they are now included
+- w3m ships with current gc now, but update to gc6.0alpha9 which
+  has some s390 patches
+
+-------------------------------------------------------------------
+Tue Aug 28 11:48:03 CEST 2001 - poeml@suse.de
+
+- add w3m-0.2.1-javascript-hide.dif from author to hide javascript
+  statements even if they are inside table tags
+- apply forgotten relURL patch
+
+-------------------------------------------------------------------
+Thu Jun 28 14:29:11 CEST 2001 - poeml@suse.de
+
+- security fix: w3m-0.2.1-mimehead-buf.dif to prevent possible
+  buffer overflow when parsing malformed URLs
+- add patch that allows key mappings with a count
+- spec file cleanup
+
+-------------------------------------------------------------------
+Wed Apr  4 21:42:29 CEST 2001 - poeml@suse.de
+
+- add patch to help with pages containing javascript 
+
+-------------------------------------------------------------------
+Wed Apr  4 13:29:12 CEST 2001 - poeml@suse.de
+
+- update to w3m-0.2.1
+- as before, use a newer gc on ia64 and sparc
+- fix include path for gc on ia64 and sparc
+- undefine INET6 on sparc: struct sockaddr_storage seems to have no
+  member ss_family 
+- fix double declaration of CMT_SSL_FORBID_METHOD
+- add patch for problems caused by misunderstanding of relative
+  URLs
+- fix Version tag (was a macro)
+
+-------------------------------------------------------------------
+Mon Feb 19 00:25:56 CET 2001 - poeml@suse.de
+
+- update to 0.1.11-pre (which is actually more stable than 0.1.10)
+- apply massive kokb23 patch collection
+- add patch for lynx-like pauth option
+- drop norman.patch 
+- add newer gc (6.0alpha6) for ia64 and sparc that works with
+  glibc-2.2.1
+- update autoconf and libtool on these archs
+
+-------------------------------------------------------------------
+Wed Jan 31 19:23:01 CET 2001 - poeml@suse.de
+
+- add a version 5.1 of gc (Boehm-Weiser garbage collector) which is
+  patched for ia64 ( http://www.cs.berkeley.edu/projects/
+  titanium/src/titaniumc/runtime/gc/ ).
+  don't use GC_push_other_roots() for some reason -> gc-5.1.patch
+
+-------------------------------------------------------------------
+Tue Jan  9 17:34:22 CET 2001 - poeml@suse.de
+
+- removed duplicate man page in %{_defaultdocdir}/w3m/doc/
+
+-------------------------------------------------------------------
+Wed Dec 20 15:49:39 CET 2000 - poeml@suse.de
+
+- add web_browser to Provides (in sync with lynx and links)
+
+-------------------------------------------------------------------
+Mon Dec 18 15:50:09 CET 2000 - poeml@suse.de
+
+- merged w3m and w3m_ssl
+- added openssl to neededforbuild
+- bzipped sources
+
+-------------------------------------------------------------------
+Wed Dec  6 10:19:37 CET 2000 - poeml@suse.de
+
+- added japanese binary
+
+-------------------------------------------------------------------
+Fri Oct 13 09:51:55 CEST 2000 - poeml@suse.de
+
+- update to 0.1.10
+- patch for perl path no longer necessary (now done by ./configure)
+- fix missing ifdef JP_CHARSET
+- readjust spec file to new option in ./configure
+- compile with lynx-like key binding
+
+-------------------------------------------------------------------
+Sat Sep  9 13:20:27 CEST 2000 - bjacke@suse.de
+
+- added Excludes with w3m_ssl
+
+-------------------------------------------------------------------
+Mon May 15 11:45:30 CEST 2000 - kukuk@suse.de
+
+- Update to 0.1.9 (works on SPARC)
+- Use /bin/vi for 7.0
+- Fix defines on SPARC 
+- Fix spec file
+- Add installed scripts to filelist
+
+-------------------------------------------------------------------
+Sun Feb 13 16:54:14 MET 2000 - mge@suse.de
+
+- update to 0.1.6
+- group tag
+
+-------------------------------------------------------------------
+Tue Oct 26 05:39:06 MEST 1999 - mge@suse.de
+
+- initial SuSE-RPM
+

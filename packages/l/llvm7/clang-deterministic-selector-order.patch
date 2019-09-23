@@ -1,0 +1,69 @@
+commit 6c4fb3c5356d1a4fb031292c3a56458dd6e041b2
+Author: David Chisnall <csdavec@swan.ac.uk>
+Date:   Tue Aug 14 10:05:25 2018 +0000
+
+    [gnu-objc] Make selector order deterministic.
+    
+    Summary:
+    This probably fixes PR35277, though there may be other sources of
+    nondeterminism (this was the only case of iterating over a DenseMap).
+    
+    It's difficult to provide a test case for this, because it shows up only
+    on systems with ASLR enabled.
+    
+    Reviewers: rjmccall
+    
+    Reviewed By: rjmccall
+    
+    Subscribers: bmwiedemann, mgrang, cfe-commits
+    
+    Differential Revision: https://reviews.llvm.org/D50559
+    
+    git-svn-id: https://llvm.org/svn/llvm-project/cfe/trunk@339668 91177308-0d34-0410-b5e6-96231b3b80d8
+
+diff --git a/lib/CodeGen/CGObjCGNU.cpp b/lib/CodeGen/CGObjCGNU.cpp
+index 622c8bfb50..b509187b4c 100644
+--- a/lib/CodeGen/CGObjCGNU.cpp
++++ b/lib/CodeGen/CGObjCGNU.cpp
+@@ -3541,12 +3541,16 @@ llvm::Function *CGObjCGNU::ModuleInitFunction() {
+     ConstantInitBuilder builder(CGM);
+     auto selectors = builder.beginArray(selStructTy);
+     auto &table = SelectorTable; // MSVC workaround
+-    for (auto &entry : table) {
++    std::vector<Selector> allSelectors;
++    for (auto &entry : table)
++      allSelectors.push_back(entry.first);
++    llvm::sort(allSelectors.begin(), allSelectors.end());
+ 
+-      std::string selNameStr = entry.first.getAsString();
++    for (auto &untypedSel : allSelectors) {
++      std::string selNameStr = untypedSel.getAsString();
+       llvm::Constant *selName = ExportUniqueString(selNameStr, ".objc_sel_name");
+ 
+-      for (TypedSelector &sel : entry.second) {
++      for (TypedSelector &sel : table[untypedSel]) {
+         llvm::Constant *selectorTypeEncoding = NULLPtr;
+         if (!sel.first.empty())
+           selectorTypeEncoding =
+diff --git a/test/CodeGenObjC/gnu-deterministic-selectors.m b/test/CodeGenObjC/gnu-deterministic-selectors.m
+new file mode 100644
+index 0000000000..5f8d2e5378
+--- /dev/null
++++ b/test/CodeGenObjC/gnu-deterministic-selectors.m
+@@ -0,0 +1,16 @@
++// RUN: %clang_cc1 -triple x86_64-unknown-freebsd -fobjc-runtime=gnustep-1.5 %s -emit-llvm -o - | FileCheck %s
++// RUN: %clang_cc1 -triple x86_64-unknown-freebsd -fobjc-runtime=gcc %s -emit-llvm -o - | FileCheck %s
++
++// Check that these selectors are emitted in alphabetical order.
++// The order doesn't actually matter, only that it doesn't vary across runs.
++// Clang sorts them when targeting a GCC-like ABI to guarantee determinism.
++// CHECK: @.objc_selector_list = internal global [6 x { i8*, i8* }] [{ i8*, i8* } { i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.objc_sel_namea, i64 0, i64 0), i8* null }, { i8*, i8* } { i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.objc_sel_nameg, i64 0, i64 0), i8* null }, { i8*, i8* } { i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.objc_sel_namej, i64 0, i64 0), i8* null }, { i8*, i8* } { i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.objc_sel_namel, i64 0, i64 0), i8* null }, { i8*, i8* } { i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.objc_sel_namez, i64 0, i64 0), i8* null }, { i8*, i8* } zeroinitializer], align 8
++
++
++void f() {
++	SEL a = @selector(z);
++	SEL b = @selector(a);
++	SEL c = @selector(g);
++	SEL d = @selector(l);
++	SEL e = @selector(j);
++}

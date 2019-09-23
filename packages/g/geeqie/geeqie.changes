@@ -1,0 +1,131 @@
+-------------------------------------------------------------------
+Fri Aug 23 13:02:45 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.5.1
+  - #626 - High CPU load with animated GIFs
+  - #683 - Build failuer on macOS
+  - #686 - Zoom lable adjustment
+  - #703 - non-glibc fix
+  - Lua compatibility
+
+-------------------------------------------------------------------
+Wed Jul 31 08:53:24 UTC 2019 - gutaper@gmail.com
+
+- Update to version 1.5
+- Drop exiv-2.0.27-buildfix.patch (fixed in upstream)
+- Set CFLAGS="-Wno-deprecated-declarations" (Fix compilation fail)
+
+-------------------------------------------------------------------
+Mon Apr  8 16:16:22 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add exiv-2.0.27-buildfix.patch.
+
+-------------------------------------------------------------------
+Wed Nov  8 12:49:32 UTC 2017 - gutaper@gmail.com
+
+- Fix SLE_12 rpmlint warning "files-attr-not-set".
+
+-------------------------------------------------------------------
+Fri Sep  1 19:27:12 UTC 2017 - zaitor@opensuse.org
+
+- Enable pkgconfig(champlain-0.12), add
+  pkgconfig(champlain-gtk-0.12), pkgconfig(clutter-1.0) and
+  pkgconfig(clutter-gtk-1.0) BuildRequires and pass --enable-maps
+  to configure: Build map support (boo#1054718).
+- Enable conditional pkgconfig(lua5.1) BuildRequires and stop
+  passing --disable-lua to configure: New lua is now in place in
+  Tumbleweed, build lua support.
+
+-------------------------------------------------------------------
+Thu Jul 27 16:51:31 UTC 2017 - tchvatal@suse.com
+
+- Run just autoreconf and intltoolize, to avoid double configure run
+- Add deps for post/postun scriptlets
+- Remove dep on lcms and depend on lcms2
+
+-------------------------------------------------------------------
+Tue Mar  7 11:59:13 UTC 2017 - zaitor@opensuse.org
+
+- Add README.lirc explicitly to doc packages, now needed due to
+  rpm 4.13 no longer implicitly packages those files.
+
+-------------------------------------------------------------------
+Thu Jun 16 17:56:03 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.3 (boo#985090):
+  + Sort by creation date.
+  + Enhancements in mouse less operation.
+  + Rotation invariant duplication search.
+  + Better zoom steps.
+  + Easy access to working directory when copying ('.').
+  + Updated documentation.
+  + Speed improvements.
+  + Stability improvements.
+  + Many bugfixes.
+- Enable source signature verification (geeqie.keyring plus
+  corresponding .asc file).
+
+-------------------------------------------------------------------
+Mon Apr 18 14:30:31 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.2.3:
+  + Support for GTK+ 3.
+  + Support for lcms2.
+  + Basic support for lua scripting.
+  + Several bugfixes.
+- Replace pkgconfig(gtk+-2.0) for pkgconfig(gtk+-3.0) BuildReqiures
+  following upstreams port to gtk3.
+- Add disabled pkgconfig(lua-5.1) BuildRequires, configure does not
+  find our lua.
+- Replace libchamplain-devel for pkgconfig(champlain-0.12)
+  BuildRequires, align with what configure looks for, but keep it
+  disabled, since upstream deams libchamplain support experimental,
+  and it's not the champlain we have in Tumbleweed.
+- Add libtool BuildRequires and pass autogen.sh as the tarball is
+  not bootstrapped.
+- Update package descriptions.
+- Update source and Url to new home.
+- Drop geeqie-bigendian.patch and geeqie-1.1-fix-bashisms.patch:
+  Fixed upstream.
+- Remove conditionals for obsolete versions of openSUSE.
+
+-------------------------------------------------------------------
+Wed Dec 17 13:55:36 UTC 2014 - zaitor@opensuse.org
+
+- Rebase patch to match what upstream actually have commited.
+
+-------------------------------------------------------------------
+Tue Dec 16 18:07:00 UTC 2014 - Led <ledest@gmail.com>
+
+- Add geeqie-1.1-fix-bashisms.patch: Fix bashisms in geeqie-rotate
+  script.
+
+-------------------------------------------------------------------
+Fri Dec 28 11:53:06 UTC 2012 - dvaleev@suse.com
+
+- Add geeqie-bigendian.patch: fix bigendian build.
+
+-------------------------------------------------------------------
+Sun Sep 16 13:05:05 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.1:
+  + Support for stereoscopic images.
+  + input: side-by-side (JPS) and MPO format.
+  + output: single image, anaglyph, SBS, mirror, SBS half size
+    (3DTV).
+  + Custom tiff loader - better handling of large tiff files.
+  + Rewritten file grouping.
+- Add libjpeg-devel and libtiff-devel BuildReqiuires, support jpg,
+  and tiff loader.
+- Add FIXME entry for champlain support.
+- Pass enable-gps to configure, even if this is not taken into
+  accout at the moment, libchamplain is not an active
+  BuildRequires. 
+- Change configure switch --with-helpdir to --with-html dir,
+  upstream does not support --with-helpdir anymore.
+
+-------------------------------------------------------------------
+Tue Sep 27 14:31:48 UTC 2011 - vuntz@opensuse.org
+
+- Initial package of this gqview fork (version 1.0).
+

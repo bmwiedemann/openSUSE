@@ -1,0 +1,28 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+Subject: Fix build requirements which were in fact tests requirements
+
+pytest-asyncio was build requirement by pyee's setup.py file, but
+it was only used for tests. Fix it so we can build for all python flavors
+and run tests only for python3 (where pytest-asyncio is available).
+
+Index: pyee-6.0.0/setup.py
+===================================================================
+--- pyee-6.0.0.orig/setup.py	2019-04-13 19:47:29.000000000 +0200
++++ pyee-6.0.0/setup.py	2019-04-25 09:47:13.860816108 +0200
+@@ -14,11 +14,14 @@ setup(
+ 
+     packages=find_packages(),
+     setup_requires=[
++        'vcversioner'
++    ],
++    tests_require=[
++        'twisted',
++        'futures; python_version < "3.0"',
+         'pytest-runner',
+         'pytest-asyncio; python_version > "3.4"',
+-        'vcversioner'
+     ],
+-    tests_require=['twisted', 'futures; python_version < "3.0"'],
+     include_package_data=True,
+ 
+     description="A port of node.js's EventEmitter to python.",

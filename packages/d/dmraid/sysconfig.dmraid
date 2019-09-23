@@ -1,0 +1,26 @@
+## Path:	System/File systems/dmraid
+## Description: dmraid configuration
+#
+## Type:	integer(0:)
+## Default:	60
+#
+# Timeout for udev device detection. This is the upper limit which the
+# boot script will wait for udev to finish hotplug event processing.
+# If not all devices are detected during boot this value should be
+# increased. Setting this to '0' disables waiting for udev.
+#
+DMRAID_DEVICE_TIMEOUT="60"
+
+## Type:	string
+## Default:	""
+#
+# Commandline options for dmraid on start 
+#
+DMRAID_START_OPTIONS=""
+
+## Type:	string
+## Default:	""
+#
+# Commandline options for dmraid on stop
+#
+DMRAID_STOP_OPTIONS=""

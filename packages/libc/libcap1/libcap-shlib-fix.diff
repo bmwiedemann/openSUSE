@@ -1,0 +1,32 @@
+Index: libcap/Makefile
+===================================================================
+--- libcap/Makefile.orig
++++ libcap/Makefile
+@@ -43,7 +43,7 @@ $(MINLIBNAME): $(OBJS)
+ 	ln -sf $(MAJLIBNAME) $(LIBNAME)
+ 
+ %.o: %.c $(INCLS)
+-	$(CC) $(CFLAGS) -c $< -o $@
++	$(CC) $(COPTFLAG) $(CFLAGS) -fpic -c $< -o $@
+ 
+ install: all
+ 	mkdir -p -m 0755 $(INCDIR)/sys
+Index: progs/Makefile
+===================================================================
+--- progs/Makefile.orig
++++ progs/Makefile
+@@ -15,12 +15,12 @@ $(PROGS): %: %.o
+ 	$(CC) $(COPTFLAG) $(LDFLAGS) -o $@ $< $(LIBS)
+ 
+ %.o: %.c $(INCS)
+-	$(CC) $(CFLAGS) -c $< -o $@
++	$(CC) $(COPTFLAG) $(CFLAGS) -c $< -o $@
+ 
+ install: all
+ 	mkdir -p -m 0755 $(SBINDIR)
+ 	for p in $(PROGS) ; do \
+-		install -s -m 0755 $$p $(SBINDIR) ; \
++		install -m 0755 $$p $(SBINDIR) ; \
+ 	done
+ 
+ clean:

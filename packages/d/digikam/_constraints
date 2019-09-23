@@ -1,0 +1,17 @@
+<constraints>
+  <hardware>
+    <disk>
+      <size unit="M">4500</size>
+    </disk>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>ppc64le</arch>
+    </conditions>
+    <hardware>
+       <disk>
+         <size unit="M">6000</size>
+       </disk>
+    </hardware>
+  </overwrite>
+</constraints>

@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>15555ae6473568a83829558775695531</srcmd5>
+    <version>0.3.9.2</version>
+    <time>1544726926</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.9.2:
+  * Update changelog &amp; authors
+  * Fix splint test error (#359)
+  * Clarify the usage of callback fields inside oneof sections in the docs
+  * cmake: Include CMAKE_INSTALL_LIBDIR in CMAKE_INSTALL_CMAKEDIR
+  * cmake: Allow to build a shared library
+  * Made some changes for Error Output.
+  * Update README.md
+  * Further test fail fix for Windows
+- Initial release
+</comment>
+    <requestid>657118</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>293a5effe613e07f738efc32e2253614</srcmd5>
+    <version>0.3.9.2</version>
+    <time>1547540199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664676</requestid>
+  </revision>
+</revisionlist>

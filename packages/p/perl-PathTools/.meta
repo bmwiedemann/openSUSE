@@ -1,0 +1,5 @@
+<package name="perl-PathTools" project="openSUSE:Factory">
+  <title>Tools for working with paths and file specs across platforms</title>
+  <description>Tools for working with paths and file specs across platforms</description>
+  <devel project="devel:languages:perl" package="perl-PathTools"/>
+</package>

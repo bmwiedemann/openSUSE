@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Mon Oct 29 09:03:17 UTC 2018 - psimons@suse.com
+
+- Update resolv to version 0.1.1.2.
+  ## 0.1.1.2
+
+  * Clarify/relax licensing terms
+
+-------------------------------------------------------------------
+Fri Oct 19 13:14:37 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Update Cabal build instructions to support ghc-8.6.1.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Add resolv at version 0.1.1.1.

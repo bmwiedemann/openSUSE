@@ -1,0 +1,5 @@
+<package name="ubuntu-mate-artwork" project="openSUSE:Factory">
+  <title>Ubuntu MATE themes and artwork</title>
+  <description>This package contains Ubuntu MATE themes and artwork.</description>
+  <devel project="X11:MATE:Factory" package="ubuntu-mate-artwork"/>
+</package>

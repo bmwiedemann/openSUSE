@@ -1,0 +1,5 @@
+:preamble: |-
+  BuildRequires:  autoconf
+  BuildRequires:  automake
+  BuildRequires:  gcc-c++
+  BuildRequires:  gettext-devel

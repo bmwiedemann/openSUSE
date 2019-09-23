@@ -1,0 +1,432 @@
+From: Egbert Eich <eich@suse.de>
+Date: Thu Sep 24 12:38:13 2015 +0200
+Subject: [PATCH]vesa: Add VBEDPMSGetCapabilities & VBEDPMSGet()
+Patch-mainline: to be upstreamed
+
+References: bnc#947356
+Signed-off-by: Egbert Eich <eich@suse.com>
+
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ hw/xfree86/vbe/vbe.c | 147 ++++++++++++++++++++++++++++++++++++++++++++++++++-
+ hw/xfree86/vbe/vbe.h |   3 ++
+ 2 files changed, 149 insertions(+), 1 deletion(-)
+
+diff --git a/hw/xfree86/vbe/vbe.c b/hw/xfree86/vbe/vbe.c
+index 39f0cef..179d4c6 100644
+--- a/hw/xfree86/vbe/vbe.c
++++ b/hw/xfree86/vbe/vbe.c
+@@ -20,6 +20,28 @@
+ #include "vbe.h"
+ #include <X11/extensions/dpmsconst.h>
+ 
++#ifdef DEBUG
++#define LOG_RESULT(x) { \
++    xf86DrvMsg(x->pInt10->pScrn->scrnIndex, X_INFO, "%s () = %s\n", \
++               __FUNCTION__,                                        \
++               R16(x->pInt10->ax) == 0x4f ? "success" : "failure"); }
++
++#define LOG_SUCCESS(x) { \
++    xf86DrvMsg(x->pInt10->pScrn->scrnIndex, X_INFO, "%s () = success\n", \
++               __FUNCTION__); }
++#define LOG_FAILURE(x) { \
++    xf86DrvMsg(x->pInt10->pScrn->scrnIndex, X_INFO, "%s () = failure\n", \
++               __FUNCTION__); }
++#define LOG_VBE(x,fmt, args...) { \
++    xf86DrvMsg(x->pInt10->pScrn->scrnIndex, X_INFO, "%s " fmt, __FUNCTION__, \
++               ##args); }
++#else
++#define LOG_RESULT(x) {}
++#define LOG_SUCCESS(x) {}
++#define LOG_FAILURE(x) {}
++#define LOG_VBE(x,fmt, args...) {}
++#endif
++
+ #define VERSION(x) VBE_VERSION_MAJOR(x),VBE_VERSION_MINOR(x)
+ 
+ #if X_BYTE_ORDER == X_LITTLE_ENDIAN
+@@ -187,6 +209,7 @@ vbeProbeDDC(vbeInfoPtr pVbe)
+     if (pVbe->ddc != DDC_UNCHECKED)
+         return TRUE;
+ 
++    LOG_VBE(pVbe,"()\n");
+     pVbe->pInt10->ax = 0x4F15;
+     pVbe->pInt10->bx = 0;
+     pVbe->pInt10->cx = 0;
+@@ -195,6 +218,7 @@ vbeProbeDDC(vbeInfoPtr pVbe)
+     pVbe->pInt10->num = 0x10;
+ 
+     xf86ExecX86int10(pVbe->pInt10);
++    LOG_RESULT(pVbe);
+ 
+     if ((pVbe->pInt10->ax & 0xff) != 0x4f) {
+         xf86DrvMsgVerb(screen, X_INFO, 3, "VESA VBE DDC not supported\n");
+@@ -285,6 +309,7 @@ vbeReadEDID(vbeInfoPtr pVbe)
+     memset(page, 0, sizeof(vbeInfoPtr));
+     strcpy(page, vbeVersionString);
+ 
++    LOG_VBE(pVbe, "()\n");
+     pVbe->pInt10->ax = 0x4F15;
+     pVbe->pInt10->bx = 0x01;
+     pVbe->pInt10->cx = 0;
+@@ -294,6 +319,7 @@ vbeReadEDID(vbeInfoPtr pVbe)
+     pVbe->pInt10->num = 0x10;
+ 
+     xf86ExecX86int10(pVbe->pInt10);
++    LOG_RESULT(pVbe);
+ 
+     if ((pVbe->pInt10->ax & 0xff) != 0x4f) {
+         xf86DrvMsgVerb(screen, X_INFO, 3, "VESA VBE DDC invalid\n");
+@@ -365,11 +391,13 @@ VBEGetVBEInfo(vbeInfoPtr pVbe)
+     ((char *) pVbe->memory)[2] = 'E';
+     ((char *) pVbe->memory)[3] = '2';
+ 
++    LOG_VBE(pVbe, "()\n");
+     pVbe->pInt10->num = 0x10;
+     pVbe->pInt10->ax = 0x4f00;
+     pVbe->pInt10->es = SEG_ADDR(pVbe->real_mode_base);
+     pVbe->pInt10->di = SEG_OFF(pVbe->real_mode_base);
+     xf86ExecX86int10(pVbe->pInt10);
++    LOG_RESULT(pVbe);
+ 
+     if (R16(pVbe->pInt10->ax) != 0x4f)
+         return NULL;
+@@ -458,6 +486,7 @@ VBESetVBEMode(vbeInfoPtr pVbe, int mode, VbeCRTCInfoBlock * block)
+        Output: AX = Status
+        (All other registers are preserved)
+      */
++    LOG_VBE(pVbe, "(mode=0x%x)\n", mode);
+     pVbe->pInt10->num = 0x10;
+     pVbe->pInt10->ax = 0x4f02;
+     pVbe->pInt10->bx = mode;
+@@ -471,6 +500,7 @@ VBESetVBEMode(vbeInfoPtr pVbe, int mode, VbeCRTCInfoBlock * block)
+         pVbe->pInt10->bx &= ~(1 << 11);
+ 
+     xf86ExecX86int10(pVbe->pInt10);
++    LOG_RESULT(pVbe);
+ 
+     return (R16(pVbe->pInt10->ax) == 0x4f);
+ }
+@@ -488,10 +518,12 @@ VBEGetVBEMode(vbeInfoPtr pVbe, int *mode)
+        BX := Current video mode
+        (All other registers are preserved)
+      */
++    LOG_VBE(pVbe, "()\n");
+     pVbe->pInt10->num = 0x10;
+     pVbe->pInt10->ax = 0x4f03;
+ 
+     xf86ExecX86int10(pVbe->pInt10);
++    LOG_RESULT(pVbe);
+ 
+     if (R16(pVbe->pInt10->ax) == 0x4f) {
+         *mode = R16(pVbe->pInt10->bx);
+@@ -521,12 +553,14 @@ VBEGetModeInfo(vbeInfoPtr pVbe, int mode)
+        AX    := status
+        (All other registers are preserved)
+      */
++    LOG_VBE(pVbe, "(mode = 0x%x)\n",mode);
+     pVbe->pInt10->num = 0x10;
+     pVbe->pInt10->ax = 0x4f01;
+     pVbe->pInt10->cx = mode;
+     pVbe->pInt10->es = SEG_ADDR(pVbe->real_mode_base);
+     pVbe->pInt10->di = SEG_OFF(pVbe->real_mode_base);
+     xf86ExecX86int10(pVbe->pInt10);
++    LOG_RESULT(pVbe);
+     if (R16(pVbe->pInt10->ax) != 0x4f)
+         return NULL;
+ 
+@@ -586,6 +620,7 @@ VBESaveRestore(vbeInfoPtr pVbe, vbeSaveRestoreFunction function,
+        (All other registers are preserved)
+      */
+ 
++    LOG_VBE(pVbe, "(function = %d)", function);
+     if ((pVbe->version & 0xff00) > 0x100) {
+         int screen = pVbe->pInt10->pScrn->scrnIndex;
+ 
+@@ -597,9 +632,9 @@ VBESaveRestore(vbeInfoPtr pVbe, vbeSaveRestoreFunction function,
+             pVbe->pInt10->dx = 0;
+             pVbe->pInt10->cx = 0x000f;
+             xf86ExecX86int10(pVbe->pInt10);
++            LOG_RESULT(pVbe);
+             if (R16(pVbe->pInt10->ax) != 0x4f)
+                 return FALSE;
+-
+             if (function == MODE_SAVE) {
+                 int npages = (R16(pVbe->pInt10->bx) * 64) / 4096 + 1;
+ 
+@@ -618,6 +653,7 @@ VBESaveRestore(vbeInfoPtr pVbe, vbeSaveRestoreFunction function,
+ 
+             if (!*memory)
+                 return FALSE;
++
+             pVbe->pInt10->num = 0x10;
+             pVbe->pInt10->ax = 0x4f04;
+             switch (function) {
+@@ -635,6 +671,7 @@ VBESaveRestore(vbeInfoPtr pVbe, vbeSaveRestoreFunction function,
+             pVbe->pInt10->es = SEG_ADDR(*real_mode_pages);
+             pVbe->pInt10->bx = SEG_OFF(*real_mode_pages);
+             xf86ExecX86int10(pVbe->pInt10);
++            LOG_RESULT(pVbe);
+             return (R16(pVbe->pInt10->ax) == 0x4f);
+ 
+         }
+@@ -652,11 +689,13 @@ VBEBankSwitch(vbeInfoPtr pVbe, unsigned int iBank, int window)
+ 
+        Output:
+      */
++    LOG_VBE(pVbe, "(bank = %d window = %d)\n", iBank, window);
+     pVbe->pInt10->num = 0x10;
+     pVbe->pInt10->ax = 0x4f05;
+     pVbe->pInt10->bx = window;
+     pVbe->pInt10->dx = iBank;
+     xf86ExecX86int10(pVbe->pInt10);
++    LOG_RESULT(pVbe);
+ 
+     if (R16(pVbe->pInt10->ax) != 0x4f)
+         return FALSE;
+@@ -690,12 +729,14 @@ VBESetGetLogicalScanlineLength(vbeInfoPtr pVbe, vbeScanwidthCommand command,
+        DX := Maximum Number of Scan Lines
+      */
+ 
++    LOG_VBE(pVbe,"(width = %i)\n",width);
+     pVbe->pInt10->num = 0x10;
+     pVbe->pInt10->ax = 0x4f06;
+     pVbe->pInt10->bx = command;
+     if (command == SCANWID_SET || command == SCANWID_SET_BYTES)
+         pVbe->pInt10->cx = width;
+     xf86ExecX86int10(pVbe->pInt10);
++    LOG_RESULT(pVbe);
+ 
+     if (R16(pVbe->pInt10->ax) != 0x4f)
+         return FALSE;
+@@ -715,12 +756,15 @@ VBESetGetLogicalScanlineLength(vbeInfoPtr pVbe, vbeScanwidthCommand command,
+ Bool
+ VBESetDisplayStart(vbeInfoPtr pVbe, int x, int y, Bool wait_retrace)
+ {
++    LOG_VBE(pVbe, "(x = %i y = %i wait_retrace = %s)\n",
++            x, y, wait_retrace ? "y" : "n");
+     pVbe->pInt10->num = 0x10;
+     pVbe->pInt10->ax = 0x4f07;
+     pVbe->pInt10->bx = wait_retrace ? 0x80 : 0x00;
+     pVbe->pInt10->cx = x;
+     pVbe->pInt10->dx = y;
+     xf86ExecX86int10(pVbe->pInt10);
++    LOG_RESULT(pVbe);
+ 
+     if (R16(pVbe->pInt10->ax) != 0x4f)
+         return FALSE;
+@@ -731,10 +775,12 @@ VBESetDisplayStart(vbeInfoPtr pVbe, int x, int y, Bool wait_retrace)
+ Bool
+ VBEGetDisplayStart(vbeInfoPtr pVbe, int *x, int *y)
+ {
++    LOG_VBE(pVbe, "()\n");
+     pVbe->pInt10->num = 0x10;
+     pVbe->pInt10->ax = 0x4f07;
+     pVbe->pInt10->bx = 0x01;
+     xf86ExecX86int10(pVbe->pInt10);
++    LOG_RESULT(pVbe);
+ 
+     if (R16(pVbe->pInt10->ax) != 0x4f)
+         return FALSE;
+@@ -761,6 +807,7 @@ VBESetGetDACPaletteFormat(vbeInfoPtr pVbe, int bits)
+        BH := Current number of bits of color per primary
+      */
+ 
++    LOG_VBE(pVbe, "(bits = %d)\n", bits);
+     pVbe->pInt10->num = 0x10;
+     pVbe->pInt10->ax = 0x4f08;
+     if (!bits)
+@@ -768,6 +815,7 @@ VBESetGetDACPaletteFormat(vbeInfoPtr pVbe, int bits)
+     else
+         pVbe->pInt10->bx = (bits & 0x00ff) << 8;
+     xf86ExecX86int10(pVbe->pInt10);
++    LOG_RESULT(pVbe);
+ 
+     if (R16(pVbe->pInt10->ax) != 0x4f)
+         return 0;
+@@ -805,6 +853,8 @@ VBESetGetPaletteData(vbeInfoPtr pVbe, Bool set, int first, int num,
+        DS     := Selector for memory mapped registers
+      */
+ 
++    LOG_VBE(pVbe,"(%s first = %i num = %i wait_retrace = %s)\n",
++            set ? "set" : "get", first, num, wait_retrace ? "y" : "n");
+     pVbe->pInt10->num = 0x10;
+     pVbe->pInt10->ax = 0x4f09;
+     if (!secondary)
+@@ -818,6 +868,7 @@ VBESetGetPaletteData(vbeInfoPtr pVbe, Bool set, int first, int num,
+     if (set)
+         memcpy(pVbe->memory, data, num * sizeof(CARD32));
+     xf86ExecX86int10(pVbe->pInt10);
++    LOG_RESULT(pVbe);
+ 
+     if (R16(pVbe->pInt10->ax) != 0x4f)
+         return NULL;
+@@ -850,11 +901,13 @@ VBEGetVBEpmi(vbeInfoPtr pVbe)
+        (All other registers are preserved)
+      */
+ 
++    LOG_VBE(pVbe, "()\n");
+     pVbe->pInt10->num = 0x10;
+     pVbe->pInt10->ax = 0x4f0a;
+     pVbe->pInt10->bx = 0;
+     pVbe->pInt10->di = 0;
+     xf86ExecX86int10(pVbe->pInt10);
++    LOG_RESULT(pVbe);
+ 
+     if (R16(pVbe->pInt10->ax) != 0x4f)
+         return NULL;
+@@ -967,6 +1020,7 @@ VBEGetPixelClock(vbeInfoPtr pVbe, int mode, int clock)
+        AX := VBE Return Status
+        ECX := Closest pixel clock
+      */
++    LOG_VBE(pVbe,"(mode = 0x%x clock = %d)\n", mode, clock);
+ 
+     pVbe->pInt10->num = 0x10;
+     pVbe->pInt10->ax = 0x4f0b;
+@@ -974,6 +1028,7 @@ VBEGetPixelClock(vbeInfoPtr pVbe, int mode, int clock)
+     pVbe->pInt10->cx = clock;
+     pVbe->pInt10->dx = mode;
+     xf86ExecX86int10(pVbe->pInt10);
++    LOG_RESULT(pVbe);
+ 
+     if (R16(pVbe->pInt10->ax) != 0x4f)
+         return 0;
+@@ -981,6 +1036,92 @@ VBEGetPixelClock(vbeInfoPtr pVbe, int mode, int clock)
+     return pVbe->pInt10->cx;
+ }
+ 
++int
++VBEDPMSGetCapabilities(vbeInfoPtr pVbe, int *cap)
++{
++    /*
++       Input:
++       AX := 4F10h DPMS
++       BL := 00h Get VBE/PM Capabilities
++       CX := 00h
++       ES:DI := 0
++
++       Output:
++       AX := Status
++       BH := Power Saving State 1=supported, 0=unsupported
++       Bit 0: stand by, Bit 1: suspend, Bit 2: off Bit 3: reduced
++     */
++    LOG_VBE(pVbe, "()\n");
++    pVbe->pInt10->num = 0x10;
++    pVbe->pInt10->ax = 0x4f10;
++    pVbe->pInt10->bx = 0x0;
++    pVbe->pInt10->cx = 0x0;
++    pVbe->pInt10->es = pVbe->pInt10->di = 0;
++    xf86ExecX86int10(pVbe->pInt10);
++    LOG_RESULT(pVbe);
++
++    if ((R16(pVbe->pInt10->ax) != 0x4f))
++        return FALSE;
++
++    xf86DrvMsgVerb(pVbe->pInt10->pScrn->scrnIndex, X_INFO, 7,
++                   "DPMSGetCapabilities: 0x%x\n,",
++                   pVbe->pInt10->bx);
++    *cap = 1 << DPMSModeOn; /* always supported */
++    if (pVbe->pInt10->bx & 0x100)
++        *cap |= 1 << DPMSModeStandby;
++    if (pVbe->pInt10->bx & 0x200)
++        *cap |= 1 << DPMSModeSuspend;
++    if (pVbe->pInt10->bx & 0x200)
++        *cap |= 1 << DPMSModeOff;
++
++    return TRUE;
++}
++
++int
++VBEDPMSGet(vbeInfoPtr pVbe, int *mode)
++{
++    /*
++       Input:
++       AX := 4F10h DPMS
++       BL := 02h Get Display Power State
++       CX := 00h
++
++       Output:
++       AX := VBE Return Status
++       BH := Power State currently set
++     */
++    LOG_VBE(pVbe, "()\n");
++    pVbe->pInt10->ax = 0x4f10;
++    pVbe->pInt10->bx = 0x2;
++    pVbe->pInt10->cx = 0x0;
++    xf86ExecX86int10(pVbe->pInt10);
++    LOG_RESULT(pVbe);
++    if ((R16(pVbe->pInt10->ax) != 0x4f))
++        return FALSE;
++
++    xf86DrvMsgVerb(pVbe->pInt10->pScrn->scrnIndex, X_INFO, 7,
++                   "DPMSGetState: 0x%x\n,",
++                   pVbe->pInt10->bx);
++    switch (pVbe->pInt10->bx >> 4) {
++    case 0:
++        *mode = DPMSModeOn;
++        break;
++    case 1:
++        *mode = DPMSModeStandby;
++        break;
++    case 2:
++        *mode = DPMSModeSuspend;
++        break;
++    case 4:
++        *mode = DPMSModeOff;
++        break;
++    case 8:
++        *mode = DPMSModeOn;
++        break;
++    }
++    return TRUE;
++}
++
+ Bool
+ VBEDPMSSet(vbeInfoPtr pVbe, int mode)
+ {
+@@ -994,6 +1135,7 @@ VBEDPMSSet(vbeInfoPtr pVbe, int mode)
+        AX := VBE Return Status
+      */
+ 
++    LOG_VBE(pVbe, "(mode = %d)\n", mode);
+     pVbe->pInt10->num = 0x10;
+     pVbe->pInt10->ax = 0x4f10;
+     pVbe->pInt10->bx = 0x01;
+@@ -1011,6 +1153,7 @@ VBEDPMSSet(vbeInfoPtr pVbe, int mode)
+         break;
+     }
+     xf86ExecX86int10(pVbe->pInt10);
++    LOG_RESULT(pVbe);
+     return (R16(pVbe->pInt10->ax) == 0x4f);
+ }
+ 
+@@ -1059,6 +1202,7 @@ VBEReadPanelID(vbeInfoPtr pVbe)
+     void *tmp = NULL;
+     int screen = pVbe->pInt10->pScrn->scrnIndex;
+ 
++    LOG_VBE(pVbe, "()\n");
+     pVbe->pInt10->ax = 0x4F11;
+     pVbe->pInt10->bx = 0x01;
+     pVbe->pInt10->cx = 0;
+@@ -1068,6 +1212,7 @@ VBEReadPanelID(vbeInfoPtr pVbe)
+     pVbe->pInt10->num = 0x10;
+ 
+     xf86ExecX86int10(pVbe->pInt10);
++    LOG_RESULT(pVbe);
+ 
+     if ((pVbe->pInt10->ax & 0xff) != 0x4f) {
+         xf86DrvMsgVerb(screen, X_INFO, 3, "VESA VBE PanelID invalid\n");
+diff --git a/hw/xfree86/vbe/vbe.h b/hw/xfree86/vbe/vbe.h
+index 3907c53..9b37f46 100644
+--- a/hw/xfree86/vbe/vbe.h
++++ b/hw/xfree86/vbe/vbe.h
+@@ -336,6 +336,9 @@ VBEVesaSaveRestore(vbeInfoPtr pVbe, vbeSaveRestorePtr vbe_sr,
+ 
+ extern _X_EXPORT int VBEGetPixelClock(vbeInfoPtr pVbe, int mode, int Clock);
+ extern _X_EXPORT Bool VBEDPMSSet(vbeInfoPtr pVbe, int mode);
++#define VBE_HAVE_DPMS_GET_CAPABILITIES
++extern _X_EXPORT Bool VBEDPMSGetCapabilities(vbeInfoPtr pVbe, int *cap);
++extern _X_EXPORT Bool VBEDPMSGet(vbeInfoPtr pVbe, int *mode);
+ 
+ struct vbePanelID {
+     short hsize;

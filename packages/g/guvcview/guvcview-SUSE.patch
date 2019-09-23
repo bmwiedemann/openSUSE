@@ -1,0 +1,52 @@
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: 2017-07-28 17:04:22 +0200
+Subject: SUSE-specific paths
+
+Change filenames and paths to SUSE standards instead
+of messing with them in the .spec file.
+
+Index: guvcview-src-2.0.5/data/icons/Makefile.am
+===================================================================
+--- guvcview-src-2.0.5.orig/data/icons/Makefile.am
++++ guvcview-src-2.0.5/data/icons/Makefile.am
+@@ -1,6 +1,6 @@
+ iconsdir = ${datadir}/pixmaps/guvcview
++appicondir = ${datadir}/pixmaps
+ icons_DATA = \
+-		guvcview.png\
+ 		camera.png\
+ 		movie.png\
+ 		image_controls.png\
+@@ -8,6 +8,7 @@ icons_DATA = \
+ 		audio_controls.png\
+ 		close.png
+ 
++appicon_DATA = guvcview.png
+ 
+ gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/pixmaps/guvcview/
+ 
+@@ -22,4 +23,4 @@ update-icon-cache:
+ 		echo "***   $(gtk_update_icon_cache)"; \
+ 	fi
+ 
+-EXTRA_DIST = $(icons_DATA)
++EXTRA_DIST = $(icons_DATA) $(appicon_DATA)
+Index: guvcview-src-2.0.5/Makefile.am
+===================================================================
+--- guvcview-src-2.0.5.orig/Makefile.am
++++ guvcview-src-2.0.5/Makefile.am
+@@ -27,14 +27,6 @@ pkgconfig_DATA = pkgconfig/libgviewv4l2c
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-docdir = ${datadir}/doc/guvcview
+-doc_DATA = \
+-	README.md\
+-	COPYING\
+-	AUTHORS\
+-	ChangeLog\
+-	INSTALL
+-
+ EXTRA_DIST = bootstrap.sh
+ 
+ check-gettext:

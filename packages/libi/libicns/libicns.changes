@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Mon Sep  2 11:30:47 UTC 2019 - mvetter@suse.com
+
+- bsc#1144246 - Drop jasper dependency from libicns:
+  Loosing JPEG2000 support
+
+-------------------------------------------------------------------
+Fri Mar  2 20:05:50 UTC 2018 - crrodriguez@opensuse.org
+
+- Use system's default libpng for build 
+
+-------------------------------------------------------------------
+Fri Dec 11 16:01:57 UTC 2015 - mpluskal@suse.com
+
+- Revert accidental rename of icns-utils package
+
+-------------------------------------------------------------------
+Fri Dec  4 10:44:51 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Remove hardcoded dependencies, they are generated automatically
+- Rename devel package
+
+-------------------------------------------------------------------
+Wed Jul  8 17:08:22 UTC 2015 - cdenicolo@suse.com
+
+- license update: LGPL-2.1+
+  see Readme-file
+
+-------------------------------------------------------------------
+Mon Jul  6 10:56:40 UTC 2015 - badshah400@gmail.com
+
+- Update to version 0.8.1:
+  + fix libtool issue
+  + fix cppcheck issues
+  + implement 1024x1024 support
+  + autotools fixes
+- Changes from version 0.8.0:
+  + libicns version 2.8.2 (per libtool).
+  + fixed potentially dangerous parsing error.
+  + improved icns2png's understanding of 'icnV' type.
+  + added awareness of 'TOC ' type to libicns/icns2png.
+  + added support for PNG icns elements.
+  + added support for icon variant type.
+  + fix for alignment/bus errors on ARM/Sparc.
+
+-------------------------------------------------------------------
+Wed Jul 13 14:42:04 UTC 2011 - malcolmlewis@opensuse.org
+
+- Initial build. 
+

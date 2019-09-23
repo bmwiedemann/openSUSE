@@ -1,0 +1,8 @@
+<package name="ucm" project="openSUSE:Factory">
+  <title>Unicode Font Viewer</title>
+  <description>Ucm is a small xfs-like widget specifically designed for Unicode fonts.
+ As opposed to xfs, ucm allows you to select an arbitrary character
+which can then be pasted into another application or identify an
+arbitrary character by pasting it into ucm.</description>
+  <devel project="M17N" package="ucm"/>
+</package>

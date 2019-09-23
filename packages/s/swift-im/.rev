@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd597bee104e8d4666e384c73593cf22</srcmd5>
+    <version>3.0</version>
+    <time>1464204427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>396560</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>54a8138f45ba176a235192791f6dacd2</srcmd5>
+    <version>4.0~beta2</version>
+    <time>1469831263</time>
+    <user>dimstar_suse</user>
+    <comment>Will be in beta for about a month</comment>
+    <requestid>415410</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>70fa8aa2ab4807cc69b385eeb01b4e66</srcmd5>
+    <version>4.0~rc2</version>
+    <time>1503592192</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502672</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ceff1667b4bb1c3321a2ad77e273e764</srcmd5>
+    <version>4.0~rc2</version>
+    <time>1510232161</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>536259</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>04b6d4009579286b7897ced000a77d4e</srcmd5>
+    <version>4.0~rc2</version>
+    <time>1511426633</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1062799:
+  * Replace big boost-devel with only required boost devel libs
+  * Use boost_bundled_enable=false switch</comment>
+    <requestid>544360</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>887a39f72f7e084376f5a8a3206836ba</srcmd5>
+    <version>4.0~rc3</version>
+    <time>1513245747</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4RC3:
+  * Fix crash in emoticon dialog
+  * Update translations ( Dutch, German )
+  * And smaller bug fixes
+
+- Use bundled scons for now
+- Drop swift-im-scons-python3.patch
+
+- Convert scons files to use python3</comment>
+    <requestid>556641</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1fcdff5355a50571edcef71c98c64527</srcmd5>
+    <version>4.0~rc3</version>
+    <time>1520329635</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582602</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3a89cd74378a705c26a5c0322aba6b0d</srcmd5>
+    <version>4.0</version>
+    <time>1521716824</time>
+    <user>dimstar_suse</user>
+    <comment>- Add GPG checking
+  * Add swift-4.0.tar.gz.asc
+  * Add swift.keyring
+
+- Update to version 4.0: 
+  * New chat theme including a new font
+  * Support for message carbons (XEP-0280)
+  * Enabled trellis mode as a default feature, allowing several tiled chats windows to be shown at once
+  * Redesigned keyword highlighting
+  * Improve date formatting
+  * Fix Last Message Correction in multi client scenarios
+  * Fix UI layout issue for translations that require right-to-left (RTL) layout
+  * Fix UX issues in trellis mode
+  * Improvements to font size handling in the chat theme
+  * Improved spell checker support on Linux
+  * And assorted smaller features and usability enhancements</comment>
+    <requestid>589733</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>882f860d28dd424a0d7c1a42d693bd0b</srcmd5>
+    <version>4.0</version>
+    <time>1522225906</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591144</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>5fad6210fdb4aa63aa641449bceccc0d</srcmd5>
+    <version>4.0</version>
+    <time>1529402167</time>
+    <user>maxlin_factory</user>
+    <comment>- Add swift-4.0-qt5.11-includes.patch:
+  Add includes explicitly, so it builds with Qt 5.11</comment>
+    <requestid>616303</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>c7ed5856a50ebf9ca57ff98d89f5b754</srcmd5>
+    <version>4.0</version>
+    <time>1554189795</time>
+    <user>dimstar_suse</user>
+    <comment>- Add swift-im-boost-tribool.patch: Fix for boost &gt;= 1.69.0
+- Remove deprecated libboost_signals-devel
+  swift-im uses signal2 which is in libboost_headers-devel</comment>
+    <requestid>690391</requestid>
+  </revision>
+</revisionlist>

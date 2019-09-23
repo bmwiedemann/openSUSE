@@ -1,0 +1,340 @@
+-------------------------------------------------------------------
+Thu Jul 18 11:22:45 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 1.23.0:
+  * update translations
+  * require GLib 2.52
+  * Restore image types list and add wildcard
+  * Disconnect callbacks for "Open with" menu items before connecting new ones.
+  * Unref GtkUIManager so "Open with" menu is freed.
+  * update image of eom_toolbar_editor_window
+  * Use ITS in docbook article info, validate with dbits schemas
+  * store: Add any image file in the current directory to the store
+  * Simplify the installation process of the icons
+  * help: update copyright
+  * Upgrade the manual to docbook 5.0
+  * Use persistent page setup
+- remove patches:
+  * eom-gtk-3.20.patch: we don't support systems with gtk-3.20
+    anymore
+- BuildRequire gtk3 >= 3.22
+ 
+
+-------------------------------------------------------------------
+Sun May 12 18:13:56 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.22.1:
+  * store: Add any image file in the current directory to the store.
+  * help: Update copyright.
+  * Upgrade the manual to docbook 5.0.
+  * Use persistent page setup.
+  * Update translations.
+- Rebase eom-gtk-3.20.patch.
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * See /usr/share/doc/packages/eom/NEWS
+- Rebase eom-gtk-3.20.patch.
+
+-------------------------------------------------------------------
+Sat Dec 22 20:48:48 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.2:
+  * Reduce the number of g_file_query_info calls at start-up.
+  * EomImage: Remove unused constructor.
+  * Use make functions for HELP_LINGUAS.
+  * Fix url of ulink to point to mate-user-guide.
+  * Fix spelling and grammar mistakes.
+  * Update eom_start_window.png.
+  * Fix a memory leak.
+  * exif-details: Make value column selectable.
+  * EomExifDetails: Take Exif IFD into account when creating hash
+    keys.
+  * Place GPS Exif tags into their own subcategory.
+  * Reformat Exif tags for GPS position to be better
+    understandable.
+  * Make sure GPS Exif tags are named and ordered correctly.
+  * EomPropertiesDialog: Make details view expand vertically.
+  * EogScrollView: Implement simple two-pass filtering.
+  * EomScrollView: Use better downscaling filter.
+  * reload: Ensure that pending updates to UI are complete.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Jun 16 15:48:41 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1:
+  * svg: Fix offset coordinates when transforming SVG images on
+    HiDPI displays.
+  * Scale HiDPI images correctly.
+  * Fix some -Wincompatible-pointer-types warnings.
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.0:
+  * Require GTK+ 3.22 and GLib 2.50.
+  * EomThumbView, EomScrollView: Replace the deprecated
+    gtk_menu_popup() function.
+  * UI: Avoid using deprecaded widgets.
+  * Fix a few GtkStock deprecations.
+  * A bunch of instrospection warning fixes.
+  * EomScrollView: Fix the override_background deprecated call.
+  * EomPropertiesDialog: Fix deprecation warnings.
+  * EomThumbNav: Fix a deprecated function warning.
+  * EomScrollView: Switch from GdkDeviceManager to GdkSeat.
+  * settings: Use the rgb colour definition as defaults.
+  * EomFileChooser: Use MateThumbnailFactory to create the preview
+    image.
+  * EomPropertiesDialog: Allow RGBA for transparent background
+    colour.
+  * preferences-ui: Drop usage of MateColorButton.
+  * EomScrollView: Switch to GdkRGBA for background and transparent
+    colours.
+  * EomPrintPreview: Avoid unnecessary colour parsing.
+  * toolbar-editor: Avoid deprecated GtkAlignment.
+  * gtk 3.22: Avoid deprecated gdk_screen_get_monitor_ functions.
+  * Don't use deprecated gtk_show_uri().
+  * Avoid deprecated gdk_screen_get_number().
+  * print-preview: Replace custom code with a GDK function call.
+  * Update translations.
+- Add eom-gtk-3.20.patch: Restore GLib 2.48 and GTK+ 3.20 support.
+
+-------------------------------------------------------------------
+Wed Nov  8 17:56:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.3:
+  * Fix typo in function annotation.
+  * Fix warning on closing empty window with multiple eom windows.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun May  7 22:16:11 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.2:
+  * EomWindow: Set file open dialogue transient for its parent
+    window.
+  * EomCloseConfirmationDialog: Set max width chars for primary
+    label.
+  * EomCloseConfirmationDialog: Fix size request for the image list.
+  * Printing paper orientation should default based on image
+    dimensions.
+  * Avoid recompressing JPEGs as PNG when printing.
+  * Other bug fixes.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Apr  5 18:48:13 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.1:
+  * Bring eom-image.c's SVG handling up to date, properly
+    recognise svgz filetypes.
+  * eom_uri_converter: GList leak fix.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * NEWS: Use consistent, project wide, markdown-like formatting to
+    make generating release announcements easier.
+  * Build: Require libmate-desktop >= 1.17.
+  * Move to GTK+3 (require GTK+ >= 3.14), drop the GTK+2 code and
+    --with-gtk build option.
+  * Drop Python bindings and the --enable-python build option.
+  * Port the plugin system and plugins to libpeas.
+  * Some code and docs cleanups.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Feb  8 14:23:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.16.1:
+  * Prefs dialogue: Fix runtime warnings.
+  * Fix the auto-reload of externally modified images.
+  * Fix a memleak when loading SVG fails.
+  * GTK+3: Force the X11 backend.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * Use GtkAboutDialog instead of MateAboutDialog.
+  * Fix possible out-of-bounds writes in error message area.
+  * Some cleanups.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Aug 10 12:43:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.2:
+  * Fix zoom and scroll performance on large images.
+  * Make distcheck use currently selected GTK+ version.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun May 22 15:13:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.1:
+  * Fix new windows not getting focus.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0:
+  * Auto-reload unmodified images when their file is changed.
+  * GTK+3: Add CSS name EggToolbarEditor for Gtk 3.20.
+  * GTK+3: Fix SVG rendering.
+  * Some more fixes and cleanups.
+  * Update translations.
+  * Fix Changelog generation.
+
+-------------------------------------------------------------------
+Sun Feb 21 14:46:29 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.1:
+  * Avoid integer overflow when allocating a large block of memory.
+  * Use org.gnome.SessionManager DBus name to inhibit screensaver.
+  * totem-screensaver: Don't use old API and add ref to TotemScrsaver.
+  * totem-screensaver: Fix assertions on entry to TotemScrsaver
+    methods.
+  * GTK+3: Add eom-window style class at top level.
+  * Fix build warnings and remove useless nested #if.
+
+-------------------------------------------------------------------
+Thu Feb 19 12:35:17 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.0:
+  * Fix compilation with enabled GObject Introspection.
+  * Fix GTK+3 build when --without-cms is set.
+  * Gtk3: Fix several deprecations.
+  * Drop MateConf migration script.
+  * Use _XOPEN_SOURCE_EXTENDED as OpenBSD needs it for strptime.
+- Remove Python bindings: imcompatible with Gtk3.
+
+-------------------------------------------------------------------
+Thu Feb 18 17:54:13 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 1.12.2:
+  * Print preview: avoid integer overflow when allocating a large
+    block of memory.
+  * Fix build with introspection enabled.
+  * Fix GTK+3 build when --without-cms is set.
+  * Some more fixes.
+- Remove eom-fix-introspection.patch: merged upstream.
+
+-------------------------------------------------------------------
+Mon Dec  7 15:13:31 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.1:
+ * Fix shortcuts for several menu items in en_US locale.
+ * Some more fixes and cleanups.
+- Enable GObject Introspection.
+- Add eom-fix-introspection.patch: fixes compilation with
+  GObject Introspection enabled.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0.
+
+-------------------------------------------------------------------
+Thu Oct 15 11:23:19 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11.0.
+
+-------------------------------------------------------------------
+Thu Oct  8 11:55:25 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.5:
+  * Fix Gtk3 build.
+
+-------------------------------------------------------------------
+Mon Oct  5 14:45:54 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.4:
+  * EomScrollView: clip all types of images to the visible image area.
+  * EomScrollView: enable double buffering.
+  * Bump GLib/GIO required version to 2.36.
+  * Drop useless dependency on mate-icon-theme.
+  * Fix build with libexif when prefix is not /usr.
+  * Some annotation fixes.
+  * Some GTK+3 fixes and improvements.
+
+-------------------------------------------------------------------
+Wed Jul 15 11:23:21 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.3:
+  * Fix scroll issues during zoom.
+  * Multiple help fixes.
+
+-------------------------------------------------------------------
+Thu Jun 18 07:52:18 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.2:
+  * Fix gschema translations.
+  * Gtk3 fixes and improvements.
+
+-------------------------------------------------------------------
+Sat Jun 13 09:11:21 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.1:
+  * Bugfixes.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue May  5 13:47:23 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.0 (changes since 1.9.1):
+  * Bugfixes.
+  * Improvements taken from eog.
+  * Update translations.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Thu Jan 22 20:39:15 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.9.1
+  * ChangeLog is empty
+  
+-------------------------------------------------------------------
+Sun Oct 26 10:43:23 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.0 (unstable)
+  + ChangeLog is empty
+- Fix version requirements
+
+-------------------------------------------------------------------
+Fri Oct  3 09:18:07 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.1
+  + Update scrollbars when display is resized in "normal size" mode
+  + Fix hyphen-as-minus-sign issues
+    closes #47 (https://github.com/mate-desktop/eom/issues/47)
+
+-------------------------------------------------------------------
+Fri Sep  5 16:42:32 UTC 2014 - p.drouand@gmail.com
+
+- Fix mate-desktop-gsettings-schemas version requirement
+
+-------------------------------------------------------------------
+Wed Mar 12 13:32:13 UTC 2014 - p.drouand@gmail.com
+
+- Fix conflicts with mate-image-viewer
+- Fix license; a library is released under LGPL-2.1+ and the rest
+  under GPL-2.0+
+
+-------------------------------------------------------------------
+Wed Mar  5 12:34:47 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  + no changes since version 1.7.90
+
+-------------------------------------------------------------------
+Fri Feb 14 15:37:51 UTC 2014 - p.drouand@gmail.com
+
+- Initial release (version 1.7.0)
+

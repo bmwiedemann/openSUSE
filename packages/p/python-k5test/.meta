@@ -1,0 +1,5 @@
+<package name="python-k5test" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-k5test"/>
+</package>

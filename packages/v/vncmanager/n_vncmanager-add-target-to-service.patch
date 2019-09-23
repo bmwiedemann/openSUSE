@@ -1,0 +1,13 @@
+Index: vncmanager-1.0.2/vncmanager.service.in
+===================================================================
+--- vncmanager-1.0.2.orig/vncmanager.service.in
++++ vncmanager-1.0.2/vncmanager.service.in
+@@ -1,6 +1,8 @@
+ [Unit]
+ Description=VNC manager
+ After=network.target
++Before=xvnc.target
++Wants=xvnc.target
+ 
+ [Service]
+ User=vnc

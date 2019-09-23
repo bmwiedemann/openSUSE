@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Thu Jun 11 09:08:54 UTC 2015 - schwab@suse.de
+
+- keyword-identifier.patch: rename identifier conflicting with keyword
+
+-------------------------------------------------------------------
+Mon Feb 13 10:44:51 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sat Sep 17 22:41:18 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri Aug 13 00:56:53 UTC 2010 - jengelh@medozas.de
+
+- Add -DOLD_READLINE to get prototypes into scope

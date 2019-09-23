@@ -1,0 +1,470 @@
+-------------------------------------------------------------------
+Sat Aug 24 04:06:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 7
+  * New internal debug scopes and logging framework
+  * Improved documentation
+  * HDCP support
+  * A new PipeWire plugin
+
+-------------------------------------------------------------------
+Mon Jul 22 14:08:32 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable simple-dmabuf-drm=intel option only on x86* since it
+  requires libdrm_intel, only available on x86*
+
+-------------------------------------------------------------------
+Mon Jun 24 21:50:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 6.0.1
+  * clients: close unused keymap fd
+  * compositor: Fix invalid view numbering in scene-graph
+  * weston-terminal: Fix weston-terminal crash on mutter
+  * cairo-util: Don't set title string to Pango layout if the
+    title is NULL
+- Remove 0001-meson-dep-fix-for-compositor.h-needing-xkbcommon.h.patch,
+  0001-build-add-missing-dep-to-x11-backend.patch.
+
+-------------------------------------------------------------------
+Thu Mar 28 09:20:31 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 6
+  * No changelog was provided
+- Add 0001-meson-dep-fix-for-compositor.h-needing-xkbcommon.h.patch,
+  0001-build-add-missing-dep-to-x11-backend.patch.
+
+-------------------------------------------------------------------
+Sat Aug 25 17:30:52 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 5
+  * The use of hardware planes in atomic mode setting.
+  * Clone mode
+  * A new touchscreen calibrator
+
+-------------------------------------------------------------------
+Mon Apr  9 18:28:42 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 4.0.0
+  * Weston now supports the input-timestamps protocol, allowing
+    clients to subscribe to high precision timestamp information
+    for input events.
+  * Basic atomic mode setting support has now landed.
+  * xdg-shell-v5 support has been removed.
+- Drop 0001-build-honor-results-obtained-by-pkg-config-libinput.patch
+
+-------------------------------------------------------------------
+Tue Feb 27 14:41:38 UTC 2018 - emil.l.velikov@gmail.com
+
+- Remove unneeded dependencies, update existing version checks
+
+-------------------------------------------------------------------
+Tue Feb 27 14:15:43 UTC 2018 - emil.l.velikov@gmail.com
+
+- Remove no longer present libinput configure toggle
+
+-------------------------------------------------------------------
+Thu Sep 14 14:39:38 UTC 2017 - jengelh@inai.de
+
+- Rectify license field.
+
+-------------------------------------------------------------------
+Wed Sep 13 23:04:56 UTC 2017 - zaitor@opensuse.org
+
+- Drop broken conditional pkgconfig(freerdp) BuildRequires,
+  pkgconfig(freerdp2) is available on all supported versions of
+  openSUSE.
+
+-------------------------------------------------------------------
+Wed Aug  9 08:12:15 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.0
+  * Improvement to the integration of drm_fb within the DRM
+    compositor.
+  * Make libdrm a non-optional build-time dependency
+  * Handle multi-head repainting globally rather than per-output,
+    with output routing rearranged a bit to allow slightly faster
+    startup.
+  * libweston's output interface has been refactored a fair bit,
+    including unexporting the symbols
+    weston_compositor_add_output and weston_output_update_matrix.
+
+-------------------------------------------------------------------
+Tue Feb 21 22:40:30 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.0
+  * Support for EGL_KHR_swap_buffers_with_damage.
+  * Backends are ported to the new API for output setup.
+  * Support for DRM_FORMAT_YUV444 buffers in the GL backend.
+  * Better panel positioning support for desktop-shell.
+  * Improved XWayland warning messages.
+
+-------------------------------------------------------------------
+Wed Sep 21 05:17:56 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.12.0
+* Weston's internal code has been restructured into a new
+  software library, libweston. This is for use by other
+  compositor efforts that want to more easily utilize Weston's
+  internal functionalities. Weston's own compositor is now a user
+  of this library.
+* Another new library named libweston-desktop provides an
+  additional level of functionality of relevance to compositors
+  implementing a desktop metaphor style of graphical interface.
+* Both libraries' APIs are subject to change.
+* Support for the new version 6 of the xdg_shell protocol has been
+  implemented in the Weston compositor.
+* A pointer locking and confinement API is implemented for Weston
+  using the wp_pointer_constraints protocol, to allow clients to
+  define window regions to confine the pointer to.
+
+-------------------------------------------------------------------
+Wed Jun  1 08:32:54 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.11.0
+* Fix crash when focused client doesn't have pointer resources.
+* Fix crash on destruction of clients with two or more surfaces.
+* Fix wrong background surface size and wrong panel width in
+  hmi-controller.
+* Fix bad pointer passed to memcpy in drm_output_choose_initial_mode.
+* IVI: A large number of unnecessary API calls were dropped or
+  simplified.
+* Add new icons for weston terminal, flower, and editor clients.
+
+-------------------------------------------------------------------
+Thu Feb 18 22:18:58 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.10
+* add support for a number of recently added Wayland protocols:
+  drag and drop actions, new frame and axis events, and buffer
+  co-ordinates for surface damage.
+* Touch input support is added.
+- Update to new upstream relaese 1.9
+* Input device hotplug is better polished, so it misbehaves less
+  frequently when adding and removing keyboards and mice. This
+  benefits multi-seat.
+* weston shell: switched the middle and right mouse bindings, so
+  that the more useful window resize functionality is accessed via
+  the right button, and the less useful rotate-windows
+  functionality is on the middle.
+* The DRM compositor is now able to handle triple-head graphics
+  cards, and other hardware with more than two output CRTCs per
+  card. Various mode-setting improvements and fixes are also
+  included.
+* The weston-screensaver client is removed, in favor of just using
+  simpler DPMS.
+
+-------------------------------------------------------------------
+Wed Jun  3 15:45:17 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.8.0
+* Feature changes include: repaint scheduling, named outputs,
+  output transformations, EGL improvements to gl-renderer,
+  surface-shooting API, source clipping and view scissor in the
+  pixman renderer, and adding Cut/Copy/Paste support to the
+  editor.
+* There is a new "headless rendering" test framework feature.
+  This allows test cases to run weston synthetically, and instead
+  of drawing to a physical monitor, to draw to an artificial
+  monitor that is just an in-memory bitmap buffer.
+
+-------------------------------------------------------------------
+Tue Mar 10 12:04:57 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.7.0
+  * Improve the look of shadows for small (<128 pixel wide or high)
+    clients.  This resulted in observable dark lines in menus with
+    fewer than 3 items.
+  * A handful of fixes for xwm/Xwayland oddities, including better
+    handling of popups/tooltips that to be top level, and better
+    sizing of fullscreened X apps to not include the border in
+    their height and
+    width calculations.
+  * An optimization to gl-renderer reduces the geometry needed for
+    representing complex scenes, by utilizing pixman's y-x banded
+    rectangles.
+  * Memory allocation is cleaned up and standardized internally, to
+    better demonstrate best practices in avoiding common leaks and
+    crashes.
+  * Doubleclicking on a window title bar now maximizes it.
+  * Several fixes to glitches found during mode switching or
+    restoring back to native.  And refactor the mode switching code
+    into several specialized routines, so further mode switch
+    handling can be done more flexibly.
+  * Fix logind-util to do DRM-device synchronization only on DRM,
+    and to pass the Activate signal immediately for other
+    compositor backends.
+  * Fix a couple problematic tests in the testsuite to skip in
+    situations they're always going to fail.
+  * Fix hang when closing the output if colord plugin is enabled
+    due to an incorrect GMutex value in the mutex lock output
+    notifier handler.
+  * Multiple keyboard and pointer button events are better
+    handled; we only forward the first and less press and
+    release events, and suppress extraneous ones.
+
+-------------------------------------------------------------------
+Tue Jan 27 21:47:25 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream prerelease 1.6.92
+* gl-renderer: compress pixman bands to simplify geometry
+* compositor-headless: allow rendering with pixman
+* compositor: Add idle timeout option to weston.ini
+* protocol: add presentation extension v5
+* compositor: add stub implementation of presentation interface
+* compositor: drop legacy backends in favor of libinput
+
+-------------------------------------------------------------------
+Thu Jan 22 08:07:12 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to new upstream release 1.6.1
+* cairo-util: fix shadows for small clients
+* clipboard: set fd member of clipboard_source
+* compositor: add missing newline to help text
+* compositor: Display option help text only for enabled backends
+* compositor: Fix tabbing of help output
+* compositor: Fix typos in help text
+* compositor: List only available backends in help text
+* compositor: Propagate errors from module_init
+* compositor: (Whitespace-only) Indent with tabs
+* compositor-x11: Fix some shutdown crashes
+* configure.ac: bump version to 1.6.1 for stable release
+* configure.ac:  Clarify libinput requirement
+* desktop-shell: don't crash input-panel if no kbd focus
+* dnd: Fix some mouse cursor issues
+* input: don't run the key bindings on focus in
+* input: fix access to invalid resource
+* input: swallow the key press event when running a compositor key binding
+* Makefile.am: Link weston_multi_resource against rt library
+* protocol: Fix some typos in protocol files
+* releasing: Typo
+* releasing: update web host name
+* shell: don't crash on create_common_surface() failure
+* shell: fix weston_output_mode_switch() usage
+* smoke: Don't commit an xdg_surface with a NULL buffer
+* smoke: fix valgrind invalid read errors
+* text: Don't crash if a seat has no keyboard
+* text: Fix some typos
+* text: Fix typo
+* window: use roundtrip instead of dispatch after get_registry
+* xwayland: fix fullscreening
+* xwm: fix a crash in handle_state
+* zoom: Check the value of level before using it.
+- Disable libinput backend for now as it requires libinput < 0.8.0.
+
+-------------------------------------------------------------------
+Fri Sep 19 20:38:34 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.6.0
+* Xdg-shell protocol changes. [Changed again since 1.5.0.]
+* Add weston_layer masking mechanism.
+* keyboard repeat rate support, sent from compositor to clients,
+  configurable.
+* Use wl_display_add_socket_auto(): no need to specify the socket
+  anymore when running Weston under Weston, it just works now.
+* Exit Weston, if weston-desktop-shell dies too early. Should help with
+  one class of "just black screen" problems.
+* Option to force numlock on at start on DRM and fbdev backends.
+
+-------------------------------------------------------------------
+Fri Sep 12 11:14:34 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.5.93
+* Weston is now more picky about incorrect command line arguments.
+* Weston's libinput backend, which is enabled by default, now
+  requires libinput 0.6.0.
+
+-------------------------------------------------------------------
+Mon Sep  8 12:58:51 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.5.92
+* No changelog provided yet (comes with 1.6.0 later)
+- Add 0001-build-honor-results-obtained-by-pkg-config-libinput.patch
+
+-------------------------------------------------------------------
+Tue Jul 22 08:07:12 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to new upstream release 1.5.0
+* More work on xdg-shell, still not complete. The minimize feature
+  was added.
+* The weston input stack was split out as a new library, libinput.
+  Weston can be configured to link to libinput for input but defaults
+  to the built in input code for now.
+* Weston now uses the new Xwayland server. The Xwayland code was
+  refactored to be its own X server in the Xorg tree, similar to how
+  Xwin and Xquartz and Xnest work.
+* Animated window closing. A minor feature, but it validates the
+  mechanism for keeping surfaces around after the client that created
+  them goes away.
+* Fullscreen shell. The fullscreen shell provides a mechanism for a
+  single client to provide a fullscreen surface, for kiosk-mode or
+  appliance type use cases.
+* Weston now supports different color dephts on different outputs.
+* Weston now uses non-recursive Makefiles.
+
+-------------------------------------------------------------------
+Fri Jan 24 12:08:08 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.4.0
+* Window buttons for xwayland windows and proper decorations for
+  the nested compositor
+* Make the gl-renderer a loadable module and make it possible to
+  switch from pixman to gl renderer at runtime. This lets the
+  compositor start up faster, since we can load the gl-renderer
+  and initialize EGL+GLES2 later in the startup.
+* Support framebuffer formats other than XRGB8888
+* Use logind for privileged access.  logind can now do the this
+  that weston-launch used to do: drm drop/set master and opening
+  input devices. With this, weston can run on KMS without the
+  weston-launch setuid helper.
+* Better output unplug handling.  We used to crash and in general
+  not handle output (monitor) unplug at all. We now clean up
+  properly and move windows back into the visible region when
+  their output is unplugged.
+* Keyboard focus animation and exposay (exposé-like window picker)
+* More touch screen support, including touch-to-move and
+  touch-to-activate for surfaces, touch screen drag-and-drop
+
+-------------------------------------------------------------------
+Tue Dec 24 22:44:59 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.3.91
+* No upstream news was provided
+
+-------------------------------------------------------------------
+Thu Oct 17 22:12:31 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.3.0
+* HW accelerated screen capture using libva. This adds realtime
+  H.264 screen capture to Weston
+* Multi-resource input events
+* Better touch support: better support in clients, critical bug
+  fixes in the evdev touch code
+* XWM: better fullscreen support, support for drag-and-drop from
+  X to wayland
+* weston-launch: modified behavior, now two modes of operation: run
+  from a vt after logging in or run from an init script with -u.
+  setup and restore tty in weston-launch, handle vt switch and
+  drop/set master in weston-launch.
+* Support for RGB565 client buffers in gl and pixman renderers
+* New WL_OUTPUT udev attribute for matching touch screen input
+  devices to their outputs.
+* weston-terminal: Better support for wide (CJK) characters
+
+-------------------------------------------------------------------
+Thu Sep 19 21:55:30 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to new upstream release 1.2.2
+* Fix crash on fast click on titlebar
+* Included private config.h from SDK header compositor.h
+* evdev device cleanup crashes when used for error recovery or when
+  rejecting joysticks, due to uninitialized list.
+
+-------------------------------------------------------------------
+Wed Jul 24 09:26:43 UTC 2013 - cfarrell@suse.com
+
+- license update: HPND and CC-BY-SA-3.0
+
+-------------------------------------------------------------------
+Mon Jul 15 08:39:31 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.2.0
+* New features that have been added: The Wayland Input Method
+  Framework, color management, Raspberry Pi backend and renderer.
+
+-------------------------------------------------------------------
+Fri Jun  7 22:26:21 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to new upstream release 1.1.1
+* Avoid unnecessarily re-allocating texture buffer when the size
+  hasn't changed.
+* compositor-drm: Force DPMS state to ON after drmModeSetCrtc()
+* compositor-drm: Cache the DPMS property on drm_output
+* weston.pc: Added libexecdir and pkglibexecdir variables
+* udev-seat: Fail input setup only if no devices are found
+* use _exit instead of exit if client fails to exec
+* compositor-x11: Set original mode after current
+* compositor: Make backlight_current int32_t to avoid unsigned
+  overflow
+* compositor-drm: Log failure and which backlight sysfs file
+  we're using
+* weston-launch: Print explanation of why we failed to open
+  the device
+* Fix missing corner resize cursors in Kubuntu (oxy-white theme)
+* text: Respawn input method process if it exits
+* compositor-drm: Don't page flip before a mode is set
+* compositor-drm: Destroy sprites before destroying the outputs
+* xwm: Reparent client windows into ARGB windows
+* Fix not checking return value of drmIoctl function call to
+  map dumb buffer
+* weston.ini: document background-type
+* Fix simple-egl tear-down order to prevent a crash on exit time
+* window: Add a log handler for window.c clients
+
+-------------------------------------------------------------------
+Wed Apr 17 05:41:15 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.1.0
+* Added a pixman renderer, and fbdev, Raspberry Pi, RDP and
+  Headless backends
+* libunwind support for better crash dumps
+- Use a header location that does not change with every release
+
+-------------------------------------------------------------------
+Sun Mar 24 15:51:43 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to new upstream release 1.0.6
+* weston.man: Document the way to disable idle timeout
+* evdev: Wait for SYN event before sending events over to the client
+* compositor-drm: Fix a crash with a fullscreen surface with driver mode
+* compositor: Don't set DPMS state on start up
+* weston.ini: Use 'modeline' key for modeline example
+* Install header files and pkg-config file for external modules
+* compositor-drm: Remember to drop master in drm error handling
+* compositor: Use libunwind if available for better backtraces
+* xwm: Don't leak pending.input region
+* shell: Do not hang when mapping a popup twice
+* compositor: set data_device keyboard focus in seat_get_keyboard
+* xkb: Don't call exit on failure in weston_compositor_xkb_init()
+* shell: Set the DPMS state if the screensaver fails to launch or dies
+* xwm: Fix silly region math
+* xwm: Fix input region regression from commit changes
+* shell: Fix bug when input panel is shown twice
+* shell: Add back ability to rotate unresponsive surfaces
+* window.c: Don't allow moving a maximized window
+* shell: Bypass fullscreen scaling if surface width and height
+* compositor: Init fade surface color properly
+* screenshot: Print warning if we're not launched from weston
+* weston-launch: Clear environment and set it up from scratch
+* clients: Make libtoytoolkit a libtool library
+* terminal: Handle the window close event
+
+-------------------------------------------------------------------
+Tue Dec 18 13:01:52 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.0.3
+* rewrite of the test suite
+* fixes from the Coverity checker
+
+-------------------------------------------------------------------
+Sat Dec  1 06:35:02 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.0.2
+* documentation and a couple of repaint bug fixes
+
+-------------------------------------------------------------------
+Tue Nov 20 10:30:33 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.0.1
+* This is a bugfix release
+  (no further notes provided by upstream)
+
+-------------------------------------------------------------------
+Sat Oct 20 11:08:23 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.0
+* first public release, so no direct changelog
+
+-------------------------------------------------------------------
+Thu Aug 30 00:15:28 UTC 2012 - jengelh@inai.de
+
+- Initial package for build.opensuse.org (0.85)

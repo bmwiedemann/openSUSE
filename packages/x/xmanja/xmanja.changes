@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Tue Oct 14 09:43:48 UTC 2014 - jengelh@inai.de
+
+- Remove ancient specfile tags and sections
+
+-------------------------------------------------------------------
+Mon Jan 29 12:44:49 CET 2007 - mfabian@suse.de
+
+- remove /usr/share/man/ja/man4/mouse.4.gz because it conflicts
+  with the man-pages-ja package.
+
+-------------------------------------------------------------------
+Thu Jan 25 21:33:34 CET 2007 - sndirsch@suse.de
+
+- move from /usr/X11R6 to /usr 
+
+-------------------------------------------------------------------
+Tue Feb 28 17:20:34 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(xorg-x11:ja)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:49:27 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Feb  4 12:55:15 CET 2004 - hmacht@suse.de
+
+- added option # norootforbuild in specfile
+
+-------------------------------------------------------------------
+Fri Jun 13 21:54:03 CEST 2003 - mfabian@suse.de
+
+- fix "directory now owned by any package".
+
+-------------------------------------------------------------------
+Fri Mar 15 04:23:31 CET 2002 - mfabian@suse.de
+
+- update to 0.7 (covers XFree86 4.1.0. previous version was for
+  XFree86 3.3.6)
+
+-------------------------------------------------------------------
+Fri Aug 11 13:59:15 CEST 2000 - mfabian@suse.de
+
+- new package xmanja-0.5
+
+

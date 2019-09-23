@@ -1,0 +1,10 @@
+<package name="libburn" project="openSUSE:Factory">
+  <title>Library for Writing Preformatted Data onto Optical Media</title>
+  <description>
+Libburn is a library for writing preformatted data onto optical media such as
+CD, DVD, BD (Blu-Ray) and also offers a facility for reading data blocks from
+its drives without using the normal block device I/O.
+</description>
+  <devel project="multimedia:libs" package="libburn"/>
+  <url>http://libburnia-project.org/</url>
+</package>

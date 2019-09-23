@@ -1,0 +1,22 @@
+---
+ autoopts/Makefile.am |    2 +-
+ doc/mk-agen-texi.sh  |    6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+Index: autogen-5.18.16/doc/mk-agen-texi.sh
+===================================================================
+--- autogen-5.18.16.orig/doc/mk-agen-texi.sh
++++ autogen-5.18.16/doc/mk-agen-texi.sh
+@@ -98,9 +98,9 @@ setup_exports()
+ 
+   PATH=${top_builddir}/columns:${PATH}
+   timer=`expr ${AG_TIMEOUT} '*' 5`
+-  d=`find ${top_builddir}/autoopts -type f -name libopts.a -print`
+-  test -f "$d" || die "Cannot locate libopts.a"
+-  LIBS="$d ${LIBS}"
++  d=`find ${top_builddir}/autoopts -type f -name libopts.a -o -name libopts.so | head -n 1`
++  LIBS="-L$(dirname "$d") -lopts ${LIBS}"
++  LD_LIBRARY_PATH="$(dirname "$d"):$LD_LIBRARY_PATH"
+ 
+   eval `${EGREP} '^AG_[A-Z_]*' ${top_srcdir}/VERSION`
+ 

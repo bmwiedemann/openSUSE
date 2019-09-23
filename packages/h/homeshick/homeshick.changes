@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Thu Jun  7 19:47:32 UTC 2018 - seroton10@gmail.com
+
+- Upgrade to version 1.1.0:
+  * symlinks are now relative (useful when linking for a chrooted environment
+    or when renaming the home folder)
+  * fish shell completion (guide in wiki)
+  * homeshick.sh can now be sourced from dash as well
+  * the entire codebase is now linted with shellcheck
+  * loads of minor bugfixes
+- Rename default-location.patch to suse-packaging.patch
+
+-------------------------------------------------------------------
+Tue May 26 16:28:59 UTC 2015 - seroton10@gmail.com
+
+- Upstream introduced version numbers; no change of content.
+
+-------------------------------------------------------------------
+Sun Apr 26 12:26:56 UTC 2015 - seroton10@gmail.com
+
+- Added README for openSUSE.
+
+-------------------------------------------------------------------
+Fri Apr 24 20:31:00 UTC 2015 - seroton10@gmail.com
+
+- Make homeshick command available by default
+
+-------------------------------------------------------------------
+Sun Apr 19 12:51:55 UTC 2015 - seroton10@gmail.com
+
+- PRs #135 and #138 accepted upstream, which allows running BATS
+  tests in %check section without patches.
+
+-------------------------------------------------------------------
+Mon Apr 13 11:16:39 UTC 2015 - seroton10@gmail.com
+
+- Latest obs_compat fixes, spec-cleaning.
+
+-------------------------------------------------------------------
+Sat Apr 11 22:41:51 UTC 2015 - seroton10@gmail.com
+
+- First build with running BATS tests
+  * Based on development branch for required fix
+
+-------------------------------------------------------------------
+Sun Nov  9 17:01:13 UTC 2014 - seroton10@gmail.com
+
+- Initial version
+

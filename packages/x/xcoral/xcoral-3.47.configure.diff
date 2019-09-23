@@ -1,0 +1,42 @@
+--- Makefile.in
++++ Makefile.in	2008/05/09 22:39:53
+@@ -6,6 +6,8 @@
+ X_BINDIR     = @bindir@
+ XC_LIBDIR    = @libdir@/xcoral
+ 
++installprefix=
++
+ CC           = @CC@
+ INSTALL      = @INSTALL@
+ BISON        = @BISON@
+@@ -78,11 +80,12 @@
+ 	$(CC) -g -o $(PROGRAM) $(OBJS) $(SMACOBJS) $(LDOPTIONS) $(LDLIBS)
+ 
+ install: $(PROGRAM) $(MISCFILES)
+-	- mkdir -p $(X_BINDIR)
+-	$(INSTALL) $(PROGRAM) $(X_BINDIR)
+-	- mkdir ${exec_prefix}/lib $(XC_LIBDIR)
++	- mkdir $(installprefix)/$(X_BINDIR)
++	$(INSTALL) $(PROGRAM) $(installprefix)/$(X_BINDIR)
++	- mkdir $(installprefix)/${exec_prefix}/lib
++	- mkdir $(installprefix)/$(XC_LIBDIR)
+ 	for i in $(MISCFILES); do \
+-	(set -x;$(INSTALL) $$i $(XC_LIBDIR) );\
++	(set -x;$(INSTALL) $$i $(installprefix)/$(XC_LIBDIR) );\
+ 	done
+ 	@echo ""
+ 	@echo "  ==============================================================="
+@@ -113,11 +116,11 @@
+ 	$(BISON) -d -t -p BR_yy BR_Parser.y
+ 	mv BR_Parser.tab.c BR_Parser.c
+ 	mv BR_Parser.tab.h BR_Parser.h
+- 
++
+ BR_Lexer.c: BR_Lexer.l BR_Parser.h
+ 	$(FLEX) -8 -PBR_yy -oBR_Lexer.c BR_Lexer.l
+ 
+-targz: 
++targz:
+ 	$(MAKE) $(MFLAGS) distclean
+ 	rm -f xcoral-`grep CURRENT_VERSION xcoral.h | awk -F\" '{print $$2}'`.tar.gz Smac/word.h
+ 	rm -f xcoral-`grep CURRENT_VERSION xcoral.h | awk -F\" '{print $$2}'`.tar.Z

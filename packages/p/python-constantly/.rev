@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6dce66c3f8b2adfabf88b3dfe26cd0c9</srcmd5>
+    <version>15.1.0</version>
+    <time>1499754794</time>
+    <user>dimstar_suse</user>
+    <comment>for python-Twisted</comment>
+    <requestid>507961</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3132a1879644b2ec51d41bc88e17ca71</srcmd5>
+    <version>15.1.0</version>
+    <time>1544094863</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653988</requestid>
+  </revision>
+</revisionlist>

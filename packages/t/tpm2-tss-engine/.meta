@@ -1,0 +1,5 @@
+<package name="tpm2-tss-engine" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security" package="tpm2-tss-engine"/>
+</package>

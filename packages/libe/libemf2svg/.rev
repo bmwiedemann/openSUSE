@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e86db586cf2c0e9d82a9f82ed3b690a2</srcmd5>
+    <version>1.1.0</version>
+    <time>1523350425</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix grammatical error in description
+- Fix SRPM group.
+- Update descriptions.
+- update to 1.1.0:
+  * add handling of font index encoding
+  * add fontconfig dependency
+  * add freetype dependency
+  * add common variables LIB_INSTALL_DIR, BIN_INSTALL_DIR,
+    INCLUDE_INSTALL_DIR to set install directories
+- Use %license for LICENSE
+- Update to release 1.0.1, bump soversion (API break in 1.0.0)
+- initial package version
+</comment>
+    <requestid>593316</requestid>
+  </revision>
+</revisionlist>

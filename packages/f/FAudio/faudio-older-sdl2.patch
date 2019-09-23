@@ -1,0 +1,34 @@
+Index: FNA/lib/FAudio/src/FAudio_internal.h
+===================================================================
+--- FNA.orig/lib/FAudio/src/FAudio_internal.h
++++ FNA/lib/FAudio/src/FAudio_internal.h
+@@ -111,7 +111,7 @@
+ #define FAudio_floor(x) SDL_floor(x)
+ #define FAudio_abs(x) SDL_abs(x)
+ #define FAudio_ldexp(v, e) SDL_scalbn(v, e)
+-#define FAudio_exp(x) SDL_exp(x)
++#define FAudio_exp(x) exp(x)
+ 
+ #define FAudio_cosf(x) SDL_cosf(x)
+ #define FAudio_sinf(x) SDL_sinf(x)
+Index: FNA/lib/FAudio/CMakeLists.txt
+===================================================================
+--- FNA.orig/lib/FAudio/CMakeLists.txt
++++ FNA/lib/FAudio/CMakeLists.txt
+@@ -163,14 +163,14 @@ if (TARGET SDL2::SDL2)
+ 	endif()
+ elseif (TARGET SDL2)
+ 	message(STATUS "using TARGET SDL2")
+-	target_link_libraries(FAudio PUBLIC SDL2)
++	target_link_libraries(FAudio PUBLIC SDL2 m)
+ 	if(INSTALL_MINGW_DEPENDENCIES)
+ 		install_shared_libs(bin SDL2)
+ 	endif()
+ else()
+ 	message(STATUS "no TARGET SDL2::SDL2, or SDL2, using variables")
+ 	target_include_directories(FAudio PUBLIC $<BUILD_INTERFACE:${SDL2_INCLUDE_DIRS}>)
+-	target_link_libraries(FAudio PUBLIC ${SDL2_LIBRARIES})
++	target_link_libraries(FAudio PUBLIC ${SDL2_LIBRARIES} m)
+ 	if(INSTALL_MINGW_DEPENDENCIES)
+ 		install_shared_libs(bin ${SDL2_LIBRARIES})
+ 	endif()

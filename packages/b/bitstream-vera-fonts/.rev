@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="304">
+    <srcmd5>032ab77249ce613323b4eec1fb1dcbd2</srcmd5>
+    <version>1.10</version>
+    <time>1334641432</time>
+    <user>coolo</user>
+    <comment>Moving M17N/bitstream-vera to M17N:fonts/bitstream-vera-fonts.</comment>
+    <requestid>112010</requestid>
+  </revision>
+  <revision rev="2" vrev="305">
+    <srcmd5>bc19ad9a334018e97e28ac93115614a0</srcmd5>
+    <version>1.10</version>
+    <time>1338016919</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122114</requestid>
+  </revision>
+  <revision rev="3" vrev="307">
+    <srcmd5>bc19ad9a334018e97e28ac93115614a0</srcmd5>
+    <version>1.10</version>
+    <time>1340183203</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="308">
+    <srcmd5>cbf1395483088da086212a69f45e1010</srcmd5>
+    <version>1.10</version>
+    <time>1347617683</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133920</requestid>
+  </revision>
+  <revision rev="5" vrev="310">
+    <srcmd5>cbf1395483088da086212a69f45e1010</srcmd5>
+    <version>1.10</version>
+    <time>1359108702</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="312">
+    <srcmd5>cbf1395483088da086212a69f45e1010</srcmd5>
+    <version>1.10</version>
+    <time>1379662037</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="314">
+    <srcmd5>cbf1395483088da086212a69f45e1010</srcmd5>
+    <version>1.10</version>
+    <time>1409300565</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="315">
+    <srcmd5>d4d06bf6ebf75daf7c29477d9aa306eb</srcmd5>
+    <version>1.10</version>
+    <time>1427736835</time>
+    <user>dimstar_suse</user>
+    <comment>- Update project url
+- Use url for source (forwarded request 293581 from pluskalm)</comment>
+    <requestid>293664</requestid>
+  </revision>
+</revisionlist>

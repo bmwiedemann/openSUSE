@@ -1,0 +1,481 @@
+-------------------------------------------------------------------
+Tue Mar 20 17:23:19 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:28:54 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Feb 08 20:45:25 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.8.1+20180208.1e8ca5d:
+  + Several years of bugfixes and features added.
+  + Updated translations.
+- Switch to git-checkout via source service, following this: Add
+  gnome-common BuildRequires and pass autogen.sh.
+- Drop gnome-nettool-bnc879122.patch and
+  gnome-nettool-bsc977225-Infiniband.patch: Fixed upstream.
+- Minor spec cleanup, use make_build and make_install macros.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+- Drop obsolete clean section and post(un) handling of
+  desktop_database_post(un), icon_theme_cache_post(un) and
+  glib2_gsettings_schema_post(un) macros, we have file triggers
+  taking care of this for us now.
+
+-------------------------------------------------------------------
+Thu Jun 30 09:07:03 UTC 2016 - dimstar@opensuse.org
+
+- Add gnome-nettool-bsc977225-Infiniband.patch: Add new network
+  type: infiniband (bsc#977225, bgo#768235).
+
+-------------------------------------------------------------------
+Thu May 29 17:21:36 UTC 2014 - sreeves@suse.com
+
+- Add gnome-nettool-bnc879122.patch. Fix corrupted ping display
+
+-------------------------------------------------------------------
+Wed May 14 08:52:22 UTC 2014 - glin@suse.com
+
+- Add gnome-nettool-bnc866643-predictable-name.patch to match the
+  predictable device name (bnc#866643)
+
+-------------------------------------------------------------------
+Fri May 31 18:51:15 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.8.1:
+  + Fix build in x86_64 platforms using gcc 4.8 (bgo#699546).
+
+-------------------------------------------------------------------
+Thu May  2 17:17:37 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Minor bug fixes.
+  + Port to new documentation infrastructure.
+  + Updated translations.
+- Replace gnome-doc-utils-devel BuildRequires with yelp-tools,
+  following upstream.
+
+-------------------------------------------------------------------
+Sat Apr 14 18:01:33 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.2.0:
+  + Change schema path to standard format.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 21 08:48:03 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.1.1:
+  + Use nmap for basic port scanning
+  + Added tracepath support for tracing routes
+  + Cleanup of warning messages at compiling time
+  + Avoid flickering in fast operations
+  + Made the help menu HIG compliant
+  + Fixed the incorrect tooltip of the traceroute text
+  + Updated translations.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+- Add Recommends for tools that are important to have gnome-nettool
+  work: bind-utils (dig), iputils (ping, tracepath) and net-tools
+  (netstat, traceroute).
+- Add Suggests for tools that are nice to have for gnome-nettool:
+  finger, nmap, whois.
+- Update check for broken categories in gnome-nettool.desktop: the
+  categories have changed, but are not better, unfortunately.
+- Stop adding a GenericName to gnome-nettool.desktop: the name is a
+  bit generic already.
+
+-------------------------------------------------------------------
+Wed Jan  4 09:05:58 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.0.1:
+  + Fix OpenBSD compilation
+  + Fix netstat routing table display on OpenBSD
+  + Use finger by default instead of pinky
+  + Fix up to make translations work
+  + Fix ugliness when window is bigger than expected
+  + Handle output with icmp_req
+  + Portability fixes for IPv4/IPv6
+  + Fix memory leak
+  + Fixed garbage in translated string for loopback
+  + Fix ping layout to resize it gently
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Drop 0001-ping-Handle-output-with-icmp_req.patch: fixed upstream.
+- Stop changing libexecdir in configure: we don't need it anyway.
+
+-------------------------------------------------------------------
+Wed Apr  6 10:50:31 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Updated translations
+- Changes from version 2.91.5:
+  + Use NetworkManager connection editor if available
+  + Get working with latest GTK3
+- Changes from version 2.91.2:
+  + bgo#625900: Use GSettings
+  + Fix autocompletion and dropdown history
+- Remove pkgconfig(gconf-2.0) BuildRequires.
+- Replace pkgconfig(gtk+-2.0) BuildRequires with
+  pkgconfig(gtk+-3.0).
+- Add GSettings schemas handling with %glib2_gsettings_schema_*
+  macros.
+
+-------------------------------------------------------------------
+Tue Mar 15 18:24:23 UTC 2011 - malcolmlewis@opensuse.org
+
+- Fix bnc#679874: iputils-ping displays icmp_req= instead of
+  icmp_seq=. Handle the two outputs correctly.
+
+-------------------------------------------------------------------
+Sun Feb 13 16:06:13 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Tue Dec 14 15:08:41 CET 2010 - vuntz@opensuse.org
+
+- Own /usr/share/gnome and /usr/share/gnome/help to fix build.
+
+-------------------------------------------------------------------
+Tue Sep 28 13:30:54 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  6 15:07:14 CEST 2010 - vuntz@opensuse.org
+
+- Make gnome-nettool.desktop appear where it should in the menu, by
+  removing the Utility category. Also add X-SuSE-Core-System
+  category to make the build happy.
+
+-------------------------------------------------------------------
+Thu Aug  5 23:33:50 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.6:
+  + Update after GtkNotebookPage removal from GTK+
+  + New --with-gtk=2.0|3.0 configure flag
+  + Updated translations.
+- Build against GTK+ 2 again: change pkgconfig(gtk+-3.0)
+  BuildRequires to pkgconfig(gtk+-2.0).
+- Change gconf2-devel and libgtop-devel BuildRequires to
+  pkgconfig() ones for gconf-2.0 and libgtop-2.0.
+
+-------------------------------------------------------------------
+Fri Jul 30 15:07:28 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.5:
+  + bgo#592686: Remove deprecated Encoding key from desktop file
+  + bgo#612477: Does not compile with -DGSEAL_ENABLED
+  + bgo#615130: Modernize autotools configuration
+  + bgo#615133: Move GtkBuilder and .desktop files to data
+    directory.
+  + Updated translations.
+- Replace gtk2-devel BuildRequires with pkgconfig(gtk+-3.0)
+
+-------------------------------------------------------------------
+Tue Mar 30 07:42:51 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + bgo#602490: Fix build on GNU/kFreeBSD
+  + Updated translations.
+- Remove en@shaw translations on 11.2 and earlier.
+
+-------------------------------------------------------------------
+Wed Sep 23 13:10:13 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + bgo#576221 - Fix glibtop initialization order in order to make
+    it work on BS
+  + bgo#583286 - Compilation fixes for DragonFly BSD
+  + bgo#577788 - Made some tooltips translatable
+  + bgo#503587 - Avoid freeze in whois tab when encoding isn't the
+    expected one
+  + bgo#580149 - Use GtkBuilder instead of libglade.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 20 11:03:38 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.4:
+  + bgo#576221: Fix glibtop initialization order in order to make
+    it work on BSD
+  + bgo#583286: Compilation fixes for DragonFly BSD
+  + bgo#577788: Made some tooltips translatable
+  + bgo#503587: Avoid freeze in whois tab when encoding isn't the
+    expected one
+  + bgo#580149: Use GtkBuilder instead of libglade
+  + Updated translations.
+- Remove gnutls-devel, libglade2-devel BuildRequires.
+- Add gtk2-devel BuildRequires.
+
+-------------------------------------------------------------------
+Wed May 20 13:19:00 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.2:
+  + bgo#583286: Compilation fixes for DragonFly BSD
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Apr  4 14:47:59 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.1:
+  + bgo#576221: Fix glibtop initialization order in order to make
+    it work on BSD.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 06:58:23 CET 2009 - mboman@suse.de
+
+- Update to version 2.26.0:
+  + bgo#573147: Remove deprecated gtk/gdk functions
+  + Translation updates
+- Remove docbook_4, gnome-common, gnome-doc-utils,
+  libgnomeprintui-devel, libgnomeui-devel, libwnck-devel,
+  libxslt-devel, perl-XML-Parser and scrollkeeper from
+  BuildRequires
+- Remove AutoReqProv, it's default
+- Don't run autoreconf
+- Remove custom CFLAGS
+- Use %makeinstall instead of make install DESTDIR=$RPM_BUILD_ROOT
+- Don't package %{_datadir}/omf/gnome-nettool in main package
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Sat Dec 20 10:21:11 EST 2008 - mboman@suse.de
+
+- Update to version 2.25.3:
+  + Removed warnings from the Glade UI
+  + bgo#557055: Improved accesability
+  + bgo#522934: Fixed support for unlimited pings
+  + bgo#554733: Gnome Nettool now is 1024x600 friendly
+  + bgo#563044: Added basic NetBSD support
+  + bgo#394648: Added menu for the documentation
+  + bgo#487308: Restored the behaviour of 'Edit/Copy' as default in 
+    Gnome. Added 'Copy as text report' to copy all the values 
+    in a tab window
+  + bgo#156176: Removed Linux-dependency on NIC Information through the
+    use of ligbtop instead of ioctl calls and reading from
+    /proc/net
+  + bgo#341070: Updated About dialog
+  + bgo#549588: Use pinky instead of finger to reduce one dependency in
+    Linux systems
+  + bgo#560435: Removed deprecated symbols from glib
+  + bgo#559852: Fixed unlocalized string in copyright
+  + bgo#551754: Fixed unlocalized string in port scan
+  + bgo#500773: Improved documentation metadata for library.gnome.org
+  + bgo#561229: Clean up Gtk+ includes
+  + Translation updates
+
+-------------------------------------------------------------------
+Tue Sep 23 18:51:28 EST 2008 - mboman@suse.de
+
+- Update to version 2.22.1:
+  + Fixed bgo#524078: Replaced icon with wrong size 
+  + Translation updates
+
+-------------------------------------------------------------------
+Tue Apr  1 19:46:25 CEST 2008 - vuntz@suse.de
+
+- Remove uz@cyrillic workaround (see bnc#372941) 
+
+-------------------------------------------------------------------
+Fri Mar 14 05:25:29 CET 2008 - maw@suse.de
+
+- Update to version 2.22.0:
+  + Bugs fixed bgo#470264, bgo#451925, bgo#508610
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct 11 16:39:38 CEST 2007 - sbrabec@suse.cz
+
+- Removed bogus dependency on mDNSResponder.
+
+-------------------------------------------------------------------
+Tue Sep 18 17:55:59 CEST 2007 - maw@suse.de
+
+- Update to version 2.20.0:
+  + Bug (bugzilla.gnome.org) fixed: #467467
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 31 01:01:53 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.90:
+  + #408452: Fixed the output for traceroute/ping. (Germ�n Po�-Caama�o)
+  + #414068: Added missing strings for translation (Germ�n Po�-Caama�o)
+  + #435650: Fixed Run gtk-update-icon-cache in uninstall-hook (David Farning)
+  + #401076: Added Tango icons for different sizes (Hylke Bons)
+  + #311350: Fixed locale problem in whois (Lo�s Minier)
+  (bug numbers are against bugzilla.gnome.org).
+
+-------------------------------------------------------------------
+Wed Aug  8 01:02:20 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage.
+
+-------------------------------------------------------------------
+Mon May 14 14:52:23 CEST 2007 - pgajdos@suse.cz
+
+- removed gnome-icon-theme from Requires and BuildRequires
+  [#247450] 
+
+-------------------------------------------------------------------
+Wed Apr 11 18:24:23 CDT 2007 - maw@suse.de
+
+- Update to version 2.18.0
+- Make the .desktop file comply with the spec
+- New translation: ku
+- Updated translations: ja, ru, lt, mk, gu, uk, he, zh_HK, zh_TW,
+  pl, gb, da, hu, pt, fi, ko, pt_BR, nl, fr, ca, de, fi, ar, en_GB,
+  et, and lv.
+
+-------------------------------------------------------------------
+Thu Mar  8 18:21:41 CST 2007 - maw@suse.de
+
+- Update to version 2.17.4.
+- #352148: Improves the behavior on list (Paolo Borelli)
+ - #357839: Fixed compilation in OpenBSD (Marc Brockschmidt).
+ - #357840: Added support for OpenBSD (Marc Brockschmidt).
+ - #128264: Changed the sematic from packets loss to packet succeed
+            (Germ341n Po363-Caama361o).
+ - #346528: Added bar-graph display for ping (Callum McKenzie).
+ - Updated translations:
+    - en_GB (David Lodge)
+    - et (Ivar Smolin)
+    - fi (Ilkka Tuohela)
+    - nb (Kjartan Maraas)
+    - sv (Daniel Nylander)
+    - es (Francisco Javier F. Serrador)
+    - th (Theppitak Karoonboonyanan)
+    - ar (Djihed Afifi)
+
+-------------------------------------------------------------------
+Thu Mar  8 15:42:41 CET 2007 - sbrabec@suse.cz
+
+- Removed obsolete hicolor icon symlink (#248676).
+
+-------------------------------------------------------------------
+Tue Dec 19 17:10:11 CET 2006 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Fri Oct 13 01:03:48 CEST 2006 - ro@suse.de
+
+- added gnome-doc-utils-devel to buildreq 
+
+-------------------------------------------------------------------
+Tue Oct  3 22:07:24 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.16.0
+- translation updates 
+
+-------------------------------------------------------------------
+Thu Aug 31 00:40:54 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.15.92
+- #348546, #348827: Fixed Bug-Buddy info in .desktop file
+- #347310 : shows correct hardware address in 64 bit machines
+- Fix memory leak in netstat
+- Updated translations
+- #337907: Use po/LINGUAS
+- #344831: Fixed compilation on Mac OSX 10.3
+- #341830: Micro cleanup 
+
+-------------------------------------------------------------------
+Fri Aug 11 23:32:46 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.15.0
+- #129326: Added sound support for ping
+- #154069: Fixed alert dialog when a applitation is missing
+- #340209: Fixed lost packets miscalculated on machines off the
+   network
+- #307529: Fixed unclean exit of child processes
+- #338278: Fixed window title according the HIG
+- #316659: Fixed ping's compilation error on Solaris and HP/UX
+- #338272: Fixed ping to a broadcast address in Linux
+- #334687: Fixed InfoIpAddr leakage
+- #338080: Theme friendly icon patch applied for gnome-nettool
+- #336941: Fixed bad formed define for DNS lookups
+- Updated translations
+
+-------------------------------------------------------------------
+Fri Feb 17 23:58:53 CET 2006 - sreeves@suse.de
+
+- Update .desktop file (Name, GenericName, Comment, DocPath)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:47 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct  4 15:42:44 CEST 2005 - rodrigo@suse.de
+
+- Update to version 1.4.1 (GNOME 2.12.1)
+- Removed upstreamed patch.
+
+-------------------------------------------------------------------
+Mon Sep  5 09:45:47 CEST 2005 - mmj@suse.de
+
+- Update to version 1.4.0 (GNOME 2.12)
+
+-------------------------------------------------------------------
+Tue Aug 23 17:35:58 CEST 2005 - rodrigo@suse.de
+
+- Update to version 1.3.92
+
+-------------------------------------------------------------------
+Mon Aug  8 15:56:13 CEST 2005 - rodrigo@suse.de
+
+- Update to version 1.3.91
+
+-------------------------------------------------------------------
+Fri Jul 22 18:56:17 CEST 2005 - gekker@suse.de
+
+- Update to version 1.3.0 
+
+-------------------------------------------------------------------
+Wed Mar  9 22:52:46 CET 2005 - gekker@suse.de
+
+- Update to version 1.2.0 (GNOME 2.10). 
+
+-------------------------------------------------------------------
+Sun Feb  6 01:08:14 CET 2005 - gekker@suse.de
+
+- Update to 1.1.0 
+
+-------------------------------------------------------------------
+Tue Feb  1 09:14:43 CET 2005 - meissner@suse.de
+
+- Added one missing NULL.
+
+-------------------------------------------------------------------
+Mon Jan 24 07:18:34 CET 2005 - clahey@suse.de
+
+- Initial import.
+

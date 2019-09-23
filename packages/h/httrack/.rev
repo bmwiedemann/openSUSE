@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>00db550a93ffcea0c5f56f56eaa1025f</srcmd5>
+    <version>3.46.1</version>
+    <time>1346488263</time>
+    <user>namtrac</user>
+    <comment>New Package to download / copy a website.  Useful to preserve a copy for certification purposes or offline reading as on an airplane.</comment>
+    <requestid>131803</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8e644477bd46b6a9bc6380536c44cf2d</srcmd5>
+    <version>3.46.1</version>
+    <time>1347487368</time>
+    <user>namtrac</user>
+    <comment>Fix rpmlint complaint that shared library was in main package (forwarded request 133669 from gregfreemyer)</comment>
+    <requestid>133670</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>8e644477bd46b6a9bc6380536c44cf2d</srcmd5>
+    <version>3.46.1</version>
+    <time>1359109055</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>234e4a544f7af1cacc9869e8bd6de9eb</srcmd5>
+    <version>3.47.24</version>
+    <time>1377629334</time>
+    <user>coolo</user>
+    <comment>Update to 3.47.24, Updated build/runtime requirements, Updated patches, Minor spec file fixes (forwarded request 196232 from adra)</comment>
+    <requestid>196331</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>234e4a544f7af1cacc9869e8bd6de9eb</srcmd5>
+    <version>3.47.24</version>
+    <time>1379662626</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>d0a7d8ae756fb0954252b78259baed95</srcmd5>
+    <version>3.47.24</version>
+    <time>1382013580</time>
+    <user>scarabeus_factory</user>
+    <comment>Fix bug BNC#845885 by moving html directory back to where it was in earlier versions (forwarded request 203607 from gregfreemyer)</comment>
+    <requestid>203608</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f34e63de5571711df6ac17ffa2151d03</srcmd5>
+    <version>3.48.19</version>
+    <time>1408957462</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245984</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f34e63de5571711df6ac17ffa2151d03</srcmd5>
+    <version>3.48.19</version>
+    <time>1409301183</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1417e18ca2d7f9ffd5e325b6023e4857</srcmd5>
+    <version>3.48.22</version>
+    <time>1470413864</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416903</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7fe98aa778687b8e77ec17b191e79870</srcmd5>
+    <version>3.49.2</version>
+    <time>1514842270</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 3.49.2:
+  * Fixed: Buffer overflow in output option commandline argument
+    (VL-ID 2068).
+  * Minor fixes.
+- Changes from version 3.48.23:
+  * Fixed: FTBFS with openssl 1.1.0.
+</comment>
+    <requestid>560894</requestid>
+  </revision>
+</revisionlist>

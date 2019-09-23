@@ -1,0 +1,5 @@
+<package name="pidgin-guifications" project="openSUSE:Factory">
+  <title>Windows styled notifications for Pidgin.</title>
+  <description>Guifications, are customizable notifications windows styled after those found in msn, deadim, and newer version of aim. It is entirely gtk based and there for should compile on anything that gaim will compile on.</description>
+  <devel project="network:pidgin" package="pidgin-guifications"/>
+</package>

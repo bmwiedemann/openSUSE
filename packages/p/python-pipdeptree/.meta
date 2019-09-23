@@ -1,0 +1,5 @@
+<package name="python-pipdeptree" project="openSUSE:Factory">
+  <title></title>
+  <description>Command line utility to show dependency tree of packages</description>
+  <devel project="devel:languages:python" package="python-pipdeptree"/>
+</package>

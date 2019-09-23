@@ -1,0 +1,16 @@
+In order to support longer values in INI parser, the maximum value length
+is increased.
+
+Author: David Bond <dbond@suse.com>
+diff -rupN ding-libs-0.5.0/ini/ini_defines.h ding-libs-0.5.0-patched/ini/ini_defines.h
+--- ding-libs-0.5.0/ini/ini_defines.h	2015-06-23 14:12:00.000000000 +0200
++++ ding-libs-0.5.0-patched/ini/ini_defines.h	2016-07-29 12:15:41.866273555 +0200
+@@ -66,7 +66,7 @@
+ #define INI_SECTION_KEY "["
+ 
+ /* Internal sizes. MAX_KEY is defined in config.h */
+-#define MAX_VALUE       PATH_MAX
++#define MAX_VALUE       (PATH_MAX + 4096)
+ #define BUFFER_SIZE     MAX_KEY + MAX_VALUE + 3
+ 
+ /* Beffer length used for int to string conversions */

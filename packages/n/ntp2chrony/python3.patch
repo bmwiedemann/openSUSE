@@ -1,0 +1,8 @@
+--- ntp2chrony/ntp2chrony.py
++++ ntp2chrony/ntp2chrony.py	2018/06/13 11:12:24
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ #
+ # Convert ntp configuration to chrony
+ #

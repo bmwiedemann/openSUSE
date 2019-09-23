@@ -1,0 +1,5 @@
+<package name="python-nose-exclude" project="openSUSE:Factory">
+  <title>Exclude specific directories from nosetests runs</title>
+  <description>nose-exclude is a Nose plugin that allows you to easily specify directories to be excluded from testing.</description>
+  <devel project="devel:languages:python" package="python-nose-exclude"/>
+</package>

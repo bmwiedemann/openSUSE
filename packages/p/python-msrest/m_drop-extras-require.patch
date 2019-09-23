@@ -1,0 +1,16 @@
+diff -Nru msrest-0.6.6.orig/setup.py msrest-0.6.6/setup.py
+--- msrest-0.6.6.orig/setup.py	2019-04-02 17:09:03.735080855 +0200
++++ msrest-0.6.6/setup.py	2019-04-02 17:09:14.547185065 +0200
+@@ -53,12 +53,4 @@
+         "isodate>=0.6.0",
+         "certifi>=2017.4.17",
+     ],
+-    extras_require={
+-        ":python_version<'3.4'": ['enum34>=1.0.4'],
+-        ":python_version<'3.5'": ['typing'],
+-        "async:python_version>='3.5'": [
+-            'aiohttp>=3.0',
+-            'aiodns'
+-        ],
+-    }
+ )

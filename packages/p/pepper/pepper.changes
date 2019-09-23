@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Thu Feb 25 20:24:33 UTC 2016 - mpluskal@suse.com
+
+- Fix dependency issues for current Factory
+
+-------------------------------------------------------------------
+Thu Feb 25 17:43:53 UTC 2016 - astieger@suse.com
+
+- pepper 0.3.3:
+  * Support for Apache Subversion 1.9
+  * Numerous fixes for multi-threading
+  * Bug fixes regarding the lifetime of wrapped Lua objects
+- require apr 1.5 (https://github.com/jgehring/pepper/issues/6)
+
+-------------------------------------------------------------------
+Mon Oct  6 21:55:20 UTC 2014 - andreas.stieger@gmx.de
+
+- pepper 0.3.2:
+  * Fixed compilation with GCC 4.7
+  * Fixed memory leaks
+  * Use points instead of dots for the times report
+- includes changes from earlier version:
+  * invocation improvements of gnuplut
+  * Fixes on subversion listing and detection
+  * New reports or report options:
+    + Added authors_pie report (author contribution pie chart)
+    + Added volume report (commit or contribution volume by author)
+    + Added --pie flag to files report
+    + Added punchcard report
+  * Incompatible report API changes
+  * Added date range options to most built-in reports
+- rebuild spec file
+
+-------------------------------------------------------------------
+Mon May 02 22:48:56 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.2.2)
+

@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Fri Oct 12 02:01:09 UTC 2018 - psimons@suse.com
+
+- Update uri-bytestring to version 0.3.2.1.
+  0.3.2.1
+  * Loosen upper bounds on template-haskell
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:47 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jul 13 14:31:32 UTC 2018 - psimons@suse.com
+
+- Update uri-bytestring to version 0.3.2.0.
+  0.3.2.0
+  * Only depend on the fail package when it is needed due to GHC version.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update uri-bytestring to version 0.3.1.1.
+  * Avoid using OverloadedStrings for Builder.
+  * Fix normalization bug where certain combination of options would fail to add a trailing slash.
+  * Add MonadFail instance.
+  * Correct haddock spelling mistake.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Mon Jun 12 09:41:41 UTC 2017 - psimons@suse.com
+
+- Update to version 0.2.3.3.
+
+-------------------------------------------------------------------
+Thu Jun  8 11:08:19 UTC 2017 - psimons@suse.com
+
+- Update to version 0.2.3.2.
+
+-------------------------------------------------------------------
+Tue Mar  7 11:19:22 UTC 2017 - psimons@suse.com
+
+- Update to version 0.2.3.1 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Feb 27 10:12:20 UTC 2017 - psimons@suse.com
+
+- Update to version 0.2.3.0 with cabal2obs.
+
+-------------------------------------------------------------------
+Tue Nov 29 11:31:01 UTC 2016 - psimons@suse.com
+
+- Update to version 0.2.2.1 with cabal2obs.
+
+-------------------------------------------------------------------
+Wed Aug 17 18:24:02 UTC 2016 - psimons@suse.com
+
+- Update to version 0.2.2.0 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:05:01 UTC 2016 - psimons@suse.com
+
+- Update to version 0.2.1.2 revision 0 with cabal2obs.

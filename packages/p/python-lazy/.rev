@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>acc8048956921c91a3647598b561de63</srcmd5>
+    <version>1.3</version>
+    <time>1526371982</time>
+    <user>dimstar_suse</user>
+    <comment>Lazy attributes</comment>
+    <requestid>606013</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7ce524190a1ec22f0700a04e207163e7</srcmd5>
+    <version>1.3</version>
+    <time>1548335643</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>667860</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9e6d5fb59f0f9491f1eb3028a052e590</srcmd5>
+    <version>1.4</version>
+    <time>1551468651</time>
+    <user>coolo</user>
+    <comment>- Update to 1.4:
+  * Add MANIFEST.in. [stefan]
+  * Release as universal wheel. [stefan]</comment>
+    <requestid>680150</requestid>
+  </revision>
+</revisionlist>

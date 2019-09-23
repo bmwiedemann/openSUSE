@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Thu Oct 27 09:20:33 UTC 2011 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  no instances of GPL-3.0 (i.e. only) code in the package
+
+-------------------------------------------------------------------
+Wed Oct 26 08:47:43 CDT 2011 - jnelson-suse@jamponi.net
+
+- Update to 0.5 (bnc#726528):
+  * Support unencrypted AMZ files, which Amazon has recently started
+    using for the Amazon Cloud Player.  (If you choose not to use the
+    Cloud Player, the old MP3 store interface is still using encrypted
+    AMZ files, at least for now.)  Thanks to John Southworth for
+    identifying the problem and providing a patch.
+
+-------------------------------------------------------------------
+Sat Sep 17 23:00:59 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Mon Nov  8 13:26:34 UTC 2010 - lnussel@suse.de
+
+- fix build on older distros
+
+-------------------------------------------------------------------
+Tue Oct 12 12:21:47 UTC 2010 - lnussel@suse.de
+
+- exclude %{_datadir}/applications/mimeinfo.cache and call desktop
+  macros in %post/%postun
+
+-------------------------------------------------------------------
+Thu Sep  9 07:13:05 UTC 2010 - lnussel@suse.de
+
+- file permissions patch no longer needed
+
+-------------------------------------------------------------------
+Wed Sep  8 21:39:24 CEST 2010 - asn@cynapses.org
+
+- update to version 0.4
+
+-------------------------------------------------------------------
+Sun Dec 13 14:32:43 UTC 2009 - lnussel@suse.de
+
+- new package version 0.2
+

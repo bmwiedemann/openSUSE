@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a729441a41443aa35dd9e2777fb1096</srcmd5>
+    <version>0.1.9</version>
+    <time>1352215416</time>
+    <user>coolo</user>
+    <comment>needed for notifications</comment>
+    <requestid>140088</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>959c77853e8ab4a58433e4695b8a05e3</srcmd5>
+    <version>0.2.0</version>
+    <time>1355133534</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>144923</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>959c77853e8ab4a58433e4695b8a05e3</srcmd5>
+    <version>0.2.0</version>
+    <time>1359110347</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>959c77853e8ab4a58433e4695b8a05e3</srcmd5>
+    <version>0.2.0</version>
+    <time>1379664574</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>959c77853e8ab4a58433e4695b8a05e3</srcmd5>
+    <version>0.2.0</version>
+    <time>1409303283</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4a254a7781147986890b05c5537b4b3c</srcmd5>
+    <version>0.3.1</version>
+    <time>1423669571</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>285567</requestid>
+  </revision>
+</revisionlist>

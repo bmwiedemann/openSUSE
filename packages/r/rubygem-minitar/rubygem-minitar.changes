@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Fri Jan 27 17:40:36 UTC 2017 - jmassaguerpla@suse.com
+
+- fix CVE-2016-10173 (bsc#1021740): rubygem-minitar,
+  rubygem-archive-tar-minitar: directory traversal vulnerability
+  bsc_1021740.patch: contains the fix
+
+-------------------------------------------------------------------
+Thu Oct 23 10:44:38 UTC 2014 - tboerger@suse.com
+
+- Initial packaging of 0.5.4
+

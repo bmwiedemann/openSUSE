@@ -1,0 +1,399 @@
+-------------------------------------------------------------------
+Fri Mar 15 06:05:35 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.000002
+   see /usr/share/doc/packages/perl-Config-IniFiles/Changes
+
+-------------------------------------------------------------------
+Thu Jan 17 06:03:38 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.000001
+   see /usr/share/doc/packages/perl-Config-IniFiles/Changes
+
+-------------------------------------------------------------------
+Wed Sep 19 05:08:47 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.000000
+   see /usr/share/doc/packages/perl-Config-IniFiles/Changes
+
+-------------------------------------------------------------------
+Sun Apr 22 05:08:01 UTC 2018 - coolo@suse.com
+
+- updated to 2.98
+   see /usr/share/doc/packages/perl-Config-IniFiles/Changes
+
+-------------------------------------------------------------------
+Sun Apr  8 05:07:26 UTC 2018 - coolo@suse.com
+
+- updated to 2.96
+   see /usr/share/doc/packages/perl-Config-IniFiles/Changes
+
+-------------------------------------------------------------------
+Sat Mar 17 06:05:47 UTC 2018 - coolo@suse.com
+
+- updated to 2.95
+   see /usr/share/doc/packages/perl-Config-IniFiles/Changes
+
+    * Make use of perltidy and test for it.
+    * Remove firstload / reload logic
+        - https://rt.cpan.org/Ticket/Display.html?id=104763
+        - thanks to José Joaquín Atria
+
+-------------------------------------------------------------------
+Wed Nov 30 06:13:12 UTC 2016 - coolo@suse.com
+
+- updated to 2.94
+   see /usr/share/doc/packages/perl-Config-IniFiles/Changes
+
+-------------------------------------------------------------------
+Mon Jul 25 05:07:02 UTC 2016 - coolo@suse.com
+
+- updated to 2.93
+   see /usr/share/doc/packages/perl-Config-IniFiles/Changes
+
+-------------------------------------------------------------------
+Thu Jun 23 06:02:52 UTC 2016 - coolo@suse.com
+
+- updated to 2.92
+   see /usr/share/doc/packages/perl-Config-IniFiles/Changes
+
+-------------------------------------------------------------------
+Sun Jun 12 12:43:36 UTC 2016 - coolo@suse.com
+
+- updated to 2.91
+   see /usr/share/doc/packages/perl-Config-IniFiles/Changes
+
+-------------------------------------------------------------------
+Thu May  5 08:55:21 UTC 2016 - coolo@suse.com
+
+- updated to 2.89
+   see /usr/share/doc/packages/perl-Config-IniFiles/Changes
+
+-------------------------------------------------------------------
+Sun Jul 12 08:25:00 UTC 2015 - coolo@suse.com
+
+- updated to 2.88
+   see /usr/share/doc/packages/perl-Config-IniFiles/Changes
+
+-------------------------------------------------------------------
+Thu Jun 18 17:36:02 UTC 2015 - coolo@suse.com
+
+- updated to 2.87
+   see /usr/share/doc/packages/perl-Config-IniFiles/Changes
+
+-------------------------------------------------------------------
+Thu Apr 16 20:22:29 UTC 2015 - coolo@suse.com
+
+- updated to 2.86
+   see /usr/share/doc/packages/perl-Config-IniFiles/Changes
+
+-------------------------------------------------------------------
+Sun Feb  9 13:34:29 UTC 2014 - coolo@suse.com
+
+- updated to 2.83
+ * Add a LICENSE file and section.
+     - Kwalitee.
+ 
+ * Minimum version is now perl-5.8.0.
+     - CPANTS Kwalitee.
+
+-------------------------------------------------------------------
+Mon Jun  3 15:55:18 UTC 2013 - coolo@suse.com
+
+- updated to 2.82
+  * Add t/style-trailing-space.t .
+      - Remove trailing space.
+  
+  * Add the CopySection method to copy a section.
+      - Thanks to James Rouzier.
+  
+  * Add the RenameSection method to rename a section.
+      - Thanks to James Rouzier.
+  
+  * Fix test failures with Pod-Simple-3.28:
+      - http://www.cpantesters.org/cpan/report/98f9d3a8-b557-11e2-9adc-3d5fc1508286
+  
+  * Fix https://rt.cpan.org/Public/Bug/Display.html?id=80259:
+      - Warnings on undefined value in length in perl-5.10.x.
+  
+  * Bump the List::MoreUtils dependency to '0.33'.
+      - https://rt.cpan.org/Ticket/Display.html?id=77930
+      - Thanks to TJENNESS for the report.
+  
+  * Correct the documentation regarding the syntax of calling ->WriteConfig(),
+  which always accepts a mandatory filename and not just
+  "->WriteConfig(-delta => 1)".
+      - Thanks to the Mageia Linux QA team at:
+          - https://bugs.mageia.org/show_bug.cgi?id=6024#c17
+
+-------------------------------------------------------------------
+Wed May 30 13:11:50 UTC 2012 - vcizek@suse.com
+
+- update to 2.75
+- fixes CVE-2012-2451 (bnc#760459)
+  * SECURITY BUG FIX: Config::IniFiles used to write to a temporary filename
+  with a predictable name ("${filename}-new") which opens the door for potential
+  exploits.
+  * Now requiring Fcntl (which is a core module) for SEEK_SET() and SEEK_CUR().
+  * Now requiring List::MoreUtils (for any() and other functions), File::Temp
+  and File::Basename .
+  * Fix the test dependency (in the new t/31comments_with_spaces.t test)
+  on IO::stringy (now writing it to a file).
+    - This caused some CPAN Testers failures such as:
+        - http://www.cpantesters.org/cpan/report/c16b9978-7f40-11e1-9d6f-f6dbfa7543f5
+  * Modernized some of the open() calls in the test files.
+    - three args open, lexcial file handles, etc.
+  * Fix https://sourceforge.net/tracker/?func=detail&aid=3388382&group_id=6926&atid=106926
+    - "Trailing comments with whitespace are not recognised"
+    - Thanks to briconaut for the report and to rbowen for the patch and test.
+  * Add the method ->OutputConfigToFileHandle which is a more explicit and
+  safer version of ->OutputConfig.
+    - ->OutputConfig now uses it.
+    - all existing tests pass, and a new test was added to
+    t/15store-and-retrieve-here-doc-terminator.t .
+
+-------------------------------------------------------------------
+Wed Dec  7 13:53:12 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Thu Jun 23 07:50:01 UTC 2011 - vcizek@novell.com
+
+- update to 2.68
+  * Typo correction: https://rt.cpan.org/Ticket/Display.html?id=69003
+  Version 2.67:    ( Tue Jun 21 14:55:07 IDT 2011 )
+  * Made sure that parameters with empty values will be written to the file.
+    - Fixes https://rt.cpan.org/Public/Bug/Display.html?id=68554 .
+
+-------------------------------------------------------------------
+Mon Jan 31 09:47:16 UTC 2011 - vcizek@novell.com
+
+- update to 2.66
+  * Add support for the handle_trailing_comment option to support trailing
+  comments at the end of a param=value line.
+    - Fixes https://rt.cpan.org/Public/Bug/Display.html?id=43843 .
+    - Original patch by Peter Xu.
+    - Some comments and corrections of the patch by Shlomi Fish (the current 
+    Config-IniFiles maintainer.)
+
+-------------------------------------------------------------------
+Fri Dec 10 11:08:20 UTC 2010 - coolo@novell.com
+
+- fix spec file
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:10 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Dec  1 11:29:38 CET 2010 - anicka@suse.cz
+
+- update to 2.65
+ * Replaced calls to File::Temp's tempfile() with those to its tempdir()
+   followed by File::Spec->catfile() - hopefully fixes the CPAN smoking failures
+   on Win32.
+
+-------------------------------------------------------------------
+Mon Nov 22 12:51:58 CET 2010 - anicka@suse.cz
+
+- update to 2.64
+ * bugfixes
+ * Add -nomultiline option.
+ * Add the tag-release.pl file to tag a release.
+
+-------------------------------------------------------------------
+Sun Jul 25 14:46:23 UTC 2010 - chris@computersalat.de
+
+- removed dos2unix usage
+
+-------------------------------------------------------------------
+Wed Jun  2 12:22:56 UTC 2010 - chris@computersalat.de
+
+- update to 2.58
+  * Incorporated a fix for some broken POD.
+    - https://rt.cpan.org/Ticket/Display.html?id=51617
+    - Thanks to Frank Wiegand for reporting it.
+
+  * Got rid of \r/carriage-returns's in lib/Config/IniFiles.pm .
+    - It interfered with applying a patch.
+
+  * Applied a patch to get rid of indirect object notation in the documentation
+    and code ("new Config::IniFiles") and replace it with Config::IniFiles->new().
+    - https://rt.cpan.org/Ticket/Display.html?id=57536
+    - Thanks to Tom Molesworth for the patch.
+- package recreated by cpanspec 1.78
+- noarch package
+- switch from Makefile.PL > Build.PL
+
+-------------------------------------------------------------------
+Thu Mar  4 14:46:10 CET 2010 - anicka@suse.cz
+
+- update to 2.57
+* Fixed failure to read the ini file contents from a filehandle made out of a 
+  scalar
+    - https://rt.cpan.org/Ticket/Display.html?id=45997
+    - Applied a patch by Nicolas Mendoza - thanks!
+
+-------------------------------------------------------------------
+Wed Jan 13 16:32:58 CET 2010 - anicka@suse.cz
+
+- update to 2.56
+ * Hopefully fixed the skip() in t/07misc.t
+     - https://rt.cpan.org/Public/Bug/Display.html?id=53238
+     - It was skip($num, $label) instead of skip($label, $num) and it
+     lacked a "SKIP:" label.
+ * Refactoring the tests:
+     - Converted t/05hash.t to Test::More and modernised it.
+     - Converted t/06oo.t to Test::More and modernised it.
+     - Testing: extracted t/lib/Config/IniFiles/TestPaths.pm.
+     - Converted t/10delta.t to Test::More and modernised it.
+     - Add the t_unlink method.
+ * Adapted t/25line-endings.t to perl-5.6.x .
+     - http://www.nntp.perl.org/group/perl.cpan.testers/2009/11/msg6026936.html
+     - Failure there.
+ * Converted t/01basic.t to Test::More and modernised it.
+ * Converted t/02weird.t to Test::More and modernised it.
+ * Converted t/04import.t to Test::More and modernised it.
+ * Applied a patch from Steffen Heinrich (SHE) for:
+     - https://rt.cpan.org/Ticket/Display.html?id=51445
+     - included t/25line-endings.t
+         - modified a little.
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Aug  3 15:49:52 CEST 2009 - anicka@suse.cz
+
+- update to 2.52
+ * Added more keys to Build.PL (author, etc.)
+ * Added resources and keywords to META.yml.
+ * Converted t/00load.t to Test-More.
+ * No longer chdir()-ing into "t" in t/00load.t
+ * Got rid of the "new Config::IniFiles" syntax in the tests.
+ - replaced with Config::IniFiles->new().
+ - see "Perl Best Practices", "Programming Perl", 3rd Edition
+ * Fixed "#46721: $config->exists() does not pay attention to -nocase => 1"
+ - https://rt.cpan.org/Ticket/Display.html?id=46721
+ 
+ * Fixed the POD for SetParameterEOT:
+ - https://rt.cpan.org/Ticket/Display.html?id=28375
+ * Added t/pod.t and t/pod-coverage.t and fixed the problems they pointed:
+ - Removed some trailing pod.
+     - http://rt.cpan.org/Ticket/Display.html?id=46549
+ - Documented the ->OutputConfig() method.
+
+-------------------------------------------------------------------
+Mon May 18 15:48:12 CEST 2009 - anicka@suse.cz
+
+- update to 2.49
+ * Fixed bug https://rt.cpan.org/Public/Bug/Display.html?id=45209
+ * Makefile.PL lacked the empty "PL_FILES" directive.
+ * Fixed bug https://rt.cpan.org/Ticket/Display.html?id=45588 
+ * Failure to read ini file contents from a scalar 
+   (via "IO::Scalar").
+ * added t/23scalar-ref.t
+
+-------------------------------------------------------------------
+Tue Apr 14 11:44:55 CEST 2009 - anicka@suse.cz
+
+- update to 2.48 
+ * bugfixes, documentation fixes
+
+-------------------------------------------------------------------
+Thu Jan 22 15:42:36 CET 2009 - anicka@suse.cz
+
+- update to 2.47 
+ * Moved the eval'ed debugging code (_assert_invariants) to
+   its own module
+ * Placed IniFiles.pm under lib/Config/IniFiles.pm.
+ * Added a Build.PL file for the distribution.
+ * Made the README contain the useful information and nothing else
+ * bugfixes, test fixes
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:33 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jul 11 15:52:45 CEST 2005 - schubi@suse.de
+
+- update to 2.39
+
+-------------------------------------------------------------------
+Tue Oct 21 17:12:40 CEST 2003 - lmuelle@suse.de
+
+- add norootforbuild to the spec file
+
+-------------------------------------------------------------------
+Fri Aug 22 14:14:18 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Thu Aug 14 16:24:18 CEST 2003 - lmuelle@suse.de
+
+- update to version 2.38
+
+-------------------------------------------------------------------
+Fri Jun 13 12:41:14 CEST 2003 - lmuelle@suse.de
+
+- use perl macros in file list
+
+-------------------------------------------------------------------
+Fri Jun 13 11:23:11 CEST 2003 - lmuelle@suse.de
+
+- add missing directories
+
+-------------------------------------------------------------------
+Mon May 19 12:17:50 CEST 2003 - lmuelle@suse.de
+
+- remove perllocal.pod after install
+
+-------------------------------------------------------------------
+Mon May  5 15:25:09 CEST 2003 - lmuelle@suse.de
+
+- update to 2.37
+- remove superfluous document directory, #26659
+
+-------------------------------------------------------------------
+Thu Aug  8 18:37:28 CEST 2002 - mls@suse.de
+
+- use macro in filelist
+
+-------------------------------------------------------------------
+Tue Jul  9 15:05:11 CEST 2002 - ray@suse.de
+
+- update to 2.27
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Mon Feb 25 17:36:23 CET 2002 - choeger@suse.de
+
+- perlmodule and some README files had been executable
+
+-------------------------------------------------------------------
+Mon May 21 17:03:04 CEST 2001 - choeger@suse.de
+
+- update to version 2.19
+
+-------------------------------------------------------------------
+Wed Nov 15 16:50:06 CET 2000 - choeger@suse.de
+
+- long package name
+- buildroot
+
+-------------------------------------------------------------------
+Wed Aug 16 15:38:23 CEST 2000 - choeger@suse.de
+
+- first package, v0.09
+

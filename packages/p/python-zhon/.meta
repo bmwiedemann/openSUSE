@@ -1,0 +1,5 @@
+<package name="python-zhon" project="openSUSE:Factory">
+  <title>python-zhon</title>
+  <description>Zhon provides constants used in Chinese text processing</description>
+  <devel project="devel:languages:python" package="python-zhon"/>
+</package>

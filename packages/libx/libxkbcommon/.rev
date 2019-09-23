@@ -1,0 +1,215 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>881c22975a5de9bd29a628b43f5f7037</srcmd5>
+    <version>0.0.222</version>
+    <time>1329476637</time>
+    <user>coolo</user>
+    <comment>- Initial package</comment>
+    <requestid>105487</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>881c22975a5de9bd29a628b43f5f7037</srcmd5>
+    <version>0.0.222</version>
+    <time>1340183656</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>467ee099bdc7c67b8f9a29fc206c37ca</srcmd5>
+    <version>0.0.222</version>
+    <time>1348573512</time>
+    <user>coolo</user>
+    <comment>- specfile cleanup</comment>
+    <requestid>135830</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cfb80bef366a33ad6a22f7fe49a687ce</srcmd5>
+    <version>0.2.0</version>
+    <time>1351264450</time>
+    <user>coolo</user>
+    <comment>- Update to first tarball release 0.2.0 (forwarded request 139135 from jengelh)</comment>
+    <requestid>139276</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>cfb80bef366a33ad6a22f7fe49a687ce</srcmd5>
+    <version>0.2.0</version>
+    <time>1359109380</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fbb2a9128113988dfb91e8a78e919371</srcmd5>
+    <version>0.3.0</version>
+    <time>1366232747</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 0.3.0
+* This introduces the xkb_keymap_new_from_buffer API, relaxes
+  restrictions on the xkb_keymap_new_from_names API, introduces
+  support for setting default keymaps from the environment, and
+  includes several new bugfixes, as well as swathes of testing
+  improvements.</comment>
+    <requestid>171223</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>fbb2a9128113988dfb91e8a78e919371</srcmd5>
+    <version>0.3.0</version>
+    <time>1379663137</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dd7baa3285cf3d692bd3417abf2c7d07</srcmd5>
+    <version>0.4.0</version>
+    <time>1395156079</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>226093</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c6f5b9d8c5c2b5893df1121fb590d504</srcmd5>
+    <version>0.4.1</version>
+    <time>1397220031</time>
+    <user>coolo</user>
+    <comment>add COPYING and NEWS to files list. otoh may we need forward 0.4.1 to Factory (forwarded request 229456 from mlin7442)</comment>
+    <requestid>229478</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>235b027092bfd1103ac16e99b7275e5d</srcmd5>
+    <version>0.4.2</version>
+    <time>1401685456</time>
+    <user>coolo</user>
+    <comment>Update to 0.4.2 (forwarded request 234988 from sumski)</comment>
+    <requestid>235009</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>1da2737ee28faf4696f63e64d5f5ffb4</srcmd5>
+    <version>0.4.2</version>
+    <time>1407072975</time>
+    <user>coolo</user>
+    <comment>- Add symbol versioning to xkbcommon
+(now with baselibs)</comment>
+    <requestid>243274</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>1da2737ee28faf4696f63e64d5f5ffb4</srcmd5>
+    <version>0.4.2</version>
+    <time>1409301767</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>028c2c7a407fece763c1e8bb529a1282</srcmd5>
+    <version>0.4.3</version>
+    <time>1412098621</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>250151</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>77d5d0a0486b57dd82b2ef6a31e27835</srcmd5>
+    <version>0.5.0</version>
+    <time>1415866598</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>260744</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>0e702aebc44f4f88d96b9400a6d82288</srcmd5>
+    <version>0.5.0</version>
+    <time>1446765024</time>
+    <user>dimstar_suse</user>
+    <comment>require xkeyboard-config, boo#952403 (forwarded request 342075 from mlin7442)</comment>
+    <requestid>342086</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2b20b13ff0ffd70b1e5619d0ac764553</srcmd5>
+    <version>0.6.1</version>
+    <time>1460480369</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream rel (forwarded request 386208 from Zaitor)</comment>
+    <requestid>386217</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>da8a4978ebdeb72b1ec4bd602a68300f</srcmd5>
+    <version>0.7.0</version>
+    <time>1479150598</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.7.0</comment>
+    <requestid>439944</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c85f2efed0657975ab0c32294e56cf10</srcmd5>
+    <version>0.7.1</version>
+    <time>1485510412</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>452495</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>37cd70ae837789af4ecb23329394e6ca</srcmd5>
+    <version>0.7.2</version>
+    <time>1502560991</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to new upstream release 0.7.2</comment>
+    <requestid>515070</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>5337b96f4e94ec7949ce480ad22f28eb</srcmd5>
+    <version>0.7.2</version>
+    <time>1509193029</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow building x11 subpackage on any distribution</comment>
+    <requestid>535177</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>44d4fbcad95d0b27696786d3f75ed8f6</srcmd5>
+    <version>0.8.0</version>
+    <time>1514677400</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>559511</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fc08cdcb600062c05f6e3c960a3af18b</srcmd5>
+    <version>0.8.2</version>
+    <time>1533887190</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.8.2</comment>
+    <requestid>627889</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>90bc47304a1c80ec4327d178dfdc80df</srcmd5>
+    <version>0.8.2</version>
+    <time>1535123586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631243</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>fc7ae6add832343b386ce470f327732d</srcmd5>
+    <version>0.8.2</version>
+    <time>1536833375</time>
+    <user>maxlin_factory</user>
+    <comment>* CVEs fixed:     CVE-2018-15853, CVE-2018-15854, CVE-2018-15855,
+    CVE-2018-15856, CVE-2018-15857, CVE-2018-15858, CVE-2018-15859,
+    CVE-2018-15861, CVE-2018-15862, CVE-2018-15863, CVE-2018-15864
+- run make check (forwarded request 632991 from msmeissn)</comment>
+    <requestid>633728</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b459a35939a2bd85b990090b3f421717</srcmd5>
+    <version>0.8.3</version>
+    <time>1549916184</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.8.3</comment>
+    <requestid>672793</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e1903cb25141e4110ff5954b0e1354e1</srcmd5>
+    <version>0.8.4</version>
+    <time>1551385494</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 0.8.4</comment>
+    <requestid>678388</requestid>
+  </revision>
+</revisionlist>

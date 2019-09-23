@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>211e1decaa1f326aa836edd7d67d691a</srcmd5>
+    <version>2.0~pre.1526654735.3f8c8702</version>
+    <time>1529666970</time>
+    <user>maxlin_factory</user>
+    <comment>this is replacing python-pyside2, fixing some more broken pathes
+</comment>
+    <requestid>614265</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>150b371d6e581f617b77d9cc1afbbc72</srcmd5>
+    <version>5.11.2</version>
+    <time>1541666859</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644854</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>759660261f4055e256e2d89c4030e133</srcmd5>
+    <version>5.12.0</version>
+    <time>1546246000</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661779</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7c897a40afbaa9f413ff218bee9e25de</srcmd5>
+    <version>5.12.3</version>
+    <time>1558516255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701006</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8a6f0a92d037da3a63699f4d5ef3bbf1</srcmd5>
+    <version>5.13.0</version>
+    <time>1562056767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712917</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>62a10f6b25745536ce8a6f831638e43d</srcmd5>
+    <version>5.13.0</version>
+    <time>1562843885</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714380</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>45dfd001bcdc05c772e3d7fb45318bc4</srcmd5>
+    <version>5.13.1</version>
+    <time>1568025419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729264</requestid>
+  </revision>
+</revisionlist>

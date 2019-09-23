@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa97e825a9988c4346511712f45edd4d</srcmd5>
+    <version>0.0.14</version>
+    <time>1396543098</time>
+    <user>coolo</user>
+    <comment>future openstack dep</comment>
+    <requestid>228557</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>17ce87c56bfb5c497ad4b421dffd7857</srcmd5>
+    <version>0.0.20</version>
+    <time>1404306298</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239097</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>17ce87c56bfb5c497ad4b421dffd7857</srcmd5>
+    <version>0.0.20</version>
+    <time>1409303028</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>34748e9372da231a9ef53cac4f4e5f9d</srcmd5>
+    <version>0.1.6</version>
+    <time>1424779357</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287331</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3533ead1cbebd5a6d8019b98cf7f90f8</srcmd5>
+    <version>0.2.0</version>
+    <time>1425031804</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287914</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>963eb3822d6c8d93cc49f132ea9bbcfe</srcmd5>
+    <version>0.2.1</version>
+    <time>1432071870</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307819</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>df5eccf6ec7fd9fb0e1630d877dd5f1b</srcmd5>
+    <version>0.2.2</version>
+    <time>1481153408</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441357</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>db9548909a5ff0eb03c13b735423e3ed</srcmd5>
+    <version>0.2.2</version>
+    <time>1504617288</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518324</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>6480204222d3665c67283a73fadd582e</srcmd5>
+    <version>0.2.2</version>
+    <time>1527084545</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup to match up requirements and pass tests
+
+- singlespec auto-conversion (forwarded request 611202 from scarabeus_iv)</comment>
+    <requestid>611203</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>15df5c3b4f748f9c2f77294477acce15</srcmd5>
+    <version>0.2.2</version>
+    <time>1562247792</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip one randomly failing test</comment>
+    <requestid>713081</requestid>
+  </revision>
+</revisionlist>

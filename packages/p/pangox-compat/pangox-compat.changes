@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Thu Oct 18 06:15:16 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.0.2:
+  + Bump pkgconfig package version to 1.30.
+
+-------------------------------------------------------------------
+Fri Sep 28 21:44:36 UTC 2012 - dimstar@opensuse.org
+
+- Add baselibs.conf: acroread at least also requires pangoX.
+
+-------------------------------------------------------------------
+Fri Sep 28 12:21:37 UTC 2012 - dimstar@opensuse.org
+
+- Initial package, version 0.0.1.
+

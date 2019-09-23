@@ -1,0 +1,6 @@
+<package name="bootchart" project="openSUSE:Factory">
+  <title>Boot Process Charting Application</title>
+  <description>bootchart2 instruments your boot process and provides a tool to render
+a graph of what was happening during the boot process later.</description>
+  <devel project="Base:System" package="bootchart"/>
+</package>

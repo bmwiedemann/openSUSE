@@ -1,0 +1,36 @@
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Mon, 15 Jul 2019 08:46:23 +0200
+Subject: conntrackd: use correct max unix path length
+Patch-mainline: conntrack-tools-1.4.6?
+Git-commit: b47e00e8a579519b163cb4faed017463bf64c40d
+References: bsc#1141480
+
+When copying value of "Path" option for unix socket, target buffer size is
+UNIX_MAX_PATH so that we must not copy more bytes than that. Also make sure
+that the path is null terminated and bail out if user provided path is too
+long rather than silently truncate it.
+
+Fixes: ce06fb606906 ("conntrackd: use strncpy() to unix path")
+Signed-off-by: Michal Kubecek <mkubecek@suse.cz>
+Signed-off-by: Pablo Neira Ayuso <pablo@netfilter.org>
+---
+ src/read_config_yy.y | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+--- a/src/read_config_yy.y
++++ b/src/read_config_yy.y
+@@ -689,8 +689,13 @@ unix_options:
+ 
+ unix_option : T_PATH T_PATH_VAL
+ {
+-	strncpy(conf.local.path, $2, PATH_MAX);
++	strncpy(conf.local.path, $2, UNIX_PATH_MAX);
+ 	free($2);
++	if (conf.local.path[UNIX_PATH_MAX - 1]) {
++		dlog(LOG_ERR, "UNIX Path is longer than %u characters",
++		     UNIX_PATH_MAX - 1);
++		exit(EXIT_FAILURE);
++	}
+ };
+ 
+ unix_option : T_BACKLOG T_NUMBER

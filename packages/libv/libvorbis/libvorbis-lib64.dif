@@ -1,0 +1,18 @@
+---
+ vorbis.m4 |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- vorbis.m4.orig
++++ vorbis.m4
+@@ -20,9 +20,9 @@
+   elif test "x$vorbis_prefix" = "xno" || test "x$vorbis_prefix" = "xyes" ; then
+     VORBIS_LIBS=""
+   elif test "x$vorbis_prefix" != "x" ; then
+-    VORBIS_LIBS="-L$vorbis_prefix/lib"
++    VORBIS_LIBS="-L$vorbis_prefix/lib64"
+   elif test "x$prefix" != "xNONE" -a "x$prefix" != "x/usr"; then
+-    VORBIS_LIBS="-L$prefix/lib"
++    VORBIS_LIBS="-L$prefix/lib64"
+   fi
+ 
+   if test "x$vorbis_prefix" != "xno" ; then

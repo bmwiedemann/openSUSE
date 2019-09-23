@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>18c8d269c037ccb6d3bd57e7ea72ba28</srcmd5>
+    <version>0.11.x</version>
+    <time>1416048097</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>261187</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4f9e6bb03385fd0bd733504aa00516ed</srcmd5>
+    <version>0.12.1</version>
+    <time>1459845788</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.1
+  * no upstream changelog provided
+- Merge bash and zsh completions to main package
+- Spec file cleanups</comment>
+    <requestid>382713</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6324dc6f09274ba3d800677c50b1e58b</srcmd5>
+    <version>0.13</version>
+    <time>1480019124</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.13:
+  * No upstream changelog available</comment>
+    <requestid>441769</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2a7e14838d7f991a694680ccdc76616b</srcmd5>
+    <version>0.13</version>
+    <time>1499880948</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to singlespec</comment>
+    <requestid>509481</requestid>
+  </revision>
+</revisionlist>

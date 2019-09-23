@@ -1,0 +1,27 @@
+From 13e8f728ec83133b990ed21404cbac1d8a0bc74c Mon Sep 17 00:00:00 2001
+From: Sergei Golubchik <serg@mariadb.org>
+Date: Sun, 16 Jun 2019 01:25:03 +0200
+Subject: [PATCH] compilation failure on ppc with -DCMAKE_BUILD_TYPE=Debug
+
+if ${CRC32_LIBRARY} target has no COMPILE_FLAGS yet,
+GET_TARGET_PROPERTY returns COMPILE_FLAGS-NOTFOUND, which
+doesn't work very well when it's later fed back into COMPILE_FLAGS.
+
+GET_PROPERTY() returns an empty string in this case.
+---
+ extra/crc32-vpmsum/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/extra/crc32-vpmsum/CMakeLists.txt b/extra/crc32-vpmsum/CMakeLists.txt
+index 31c09a97d6af..b4adebdadf5a 100644
+--- a/extra/crc32-vpmsum/CMakeLists.txt
++++ b/extra/crc32-vpmsum/CMakeLists.txt
+@@ -2,7 +2,7 @@ ADD_CONVENIENCE_LIBRARY(${CRC32_LIBRARY} $<TARGET_OBJECTS:crc32c> $<TARGET_OBJEC
+ ADD_LIBRARY(crc32c OBJECT vec_crc32.c)
+ ADD_LIBRARY(crc32ieee OBJECT vec_crc32.c)
+ 
+-GET_TARGET_PROPERTY(CFLAGS_CRC32_VPMSUM ${CRC32_LIBRARY} COMPILE_FLAGS)
++GET_PROPERTY(CFLAGS_CRC32_VPMSUM TARGET ${CRC32_LIBRARY} PROPERTY COMPILE_FLAGS)
+ SET_TARGET_PROPERTIES(crc32c crc32ieee PROPERTIES  COMPILE_FLAGS "${CFLAGS_CRC32_VPMSUM} -maltivec -mvsx -mpower8-vector -mcrypto -mpower8-vector")
+ SET_TARGET_PROPERTIES(crc32ieee PROPERTIES COMPILE_DEFINITIONS "CRC32_FUNCTION=crc32ieee_vpmsum;CRC32_CONSTANTS_HEADER=\"crc32ieee_constants.h\"")
+ SET_TARGET_PROPERTIES(crc32c PROPERTIES COMPILE_DEFINITIONS "CRC32_FUNCTION=crc32c_vpmsum;CRC32_CONSTANTS_HEADER=\"crc32c_constants.h\"")

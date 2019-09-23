@@ -1,0 +1,254 @@
+-------------------------------------------------------------------
+Sat Sep  7 15:57:52 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Bump SOVER as needed.
+
+-------------------------------------------------------------------
+Wed Aug 21 07:23:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 7.12.3352
+  * Add interface symbol and uniform symbol location auto mapping
+    for OpenGL shader.
+  * Handle SPIR-V type mismatch when constructing a composite.
+  * Implement GL_EXT_demote_to_helper_invocation.
+  * Avoid generating 8/16-bit constants when 8/16-bit arithmetic
+    extensions are not enabled.
+  * Add support for SPV_KHR_shader_clock.
+
+-------------------------------------------------------------------
+Fri Aug  2 07:00:29 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
+Fri Jun 28 07:50:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new snapshot 7.11.3276.git10 (4162de4)
+  * Add Float16/Int8/Int16 capabilities for private variables and
+    function parameters.
+  * Use spvValidatorOptionsSetBeforeHlslLegalization for
+    pre-legalized HLSL.
+  * Add support for GL_NV_shader_sm_builtins.
+  * Add gl_SemanticsVolatile to GL_KHR_memory_scope_semantics,
+    and make volatile-qualified atomics generate
+    MemorySemanticsVolatile when using the Vulkan memory model.
+  * Add missing GL_ARB_shader_ballot builtins to Geometry and
+    Tessellation shaders.
+  * SPV: Add a switch for favoring non-NaN operands in min, max,
+    and clamp.
+- Remove nodate.diff (upstreamed)
+
+-------------------------------------------------------------------
+Wed Jun  5 10:31:35 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new snapshot 7.11.3214.git16 (2f4a8dfd)
+  * GLSL: Fix tessellation control shader bounding box support.
+  * GLSL: Add error check for an argument dropping the
+    "restrict" qualifier.
+  * Add support for GL_EXT_buffer_reference2.
+  * SPV: Move to the SPIR-V 1.4 header.
+  * Support GL_ARB_fragment_shader_interlock.
+
+-------------------------------------------------------------------
+Sat Mar 16 18:40:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream snapshot 7.11.3113.git55 (f925eefb)
+  to be in line with spirv-headers.
+  * Implement GL_NV_cooperative_matrix
+  * Fixup leak of TString
+  * Add option to reflect all block members, inactive or active.
+  * Add option to reflect buffer blocks & variables separately to
+    uniforms.
+  * Reflect array stride, top-level array stride, and block
+    member count.
+  * Reflect pipeline outputs as well as inputs, optionally from
+    other stages.
+  * Add an option to report array variables with trailing [0]
+    suffix.
+  * Include array index in reflected uniform names more
+    consistently.
+  * Add options to control how reflection information is built
+  * Move TObjectReflection into public interface to clean up
+    reflection.
+
+-------------------------------------------------------------------
+Tue Feb 19 09:48:37 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 7.11.3113
+  * Implement GL_EXT_scalar_block_layout
+  * GLSL: Increase supported sizes of XBF strides and offsets
+  * Update to newer SPIRV-Tools, including VK_EXT_scalar_block_layout
+  * Implement GL_EXT_fragment_invocation_density
+  * SPV: Generate OpArrayLength with no signedness
+  * SPV: For GLSL only, bitcast OpArrayLength result back to int
+  * Rename GL_KHX_shader_explicit_arithmetic_types to
+    GL_EXT_shader_explicit_arithmetic_types
+  * Add support for GL_EXT_YUV_target
+
+-------------------------------------------------------------------
+Tue Dec  4 09:10:17 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 7.10.2984
+  * Updated type conversion rules for HLSL frontend
+  * HLSL: implemented c register handling
+  * HLSL: fix invalid spir-v vector * scalar for float1
+
+-------------------------------------------------------------------
+Mon Nov 12 16:12:41 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 7.9.2933
+  * Add a SPIRV-Tools validator
+  * GLSL: Remove use of "__" in the implementation of keywords
+    having "__".
+  * Add GL_EXT_shader_atomic_int64
+  * Add ES 320 support and additional error checks for
+    SPV_NV_mesh_shader.
+
+-------------------------------------------------------------------
+Fri Aug 24 07:02:34 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 7.8.2853
+  * Link/SPV: Correct symbol IDs on merging ASTs to a single coherent space.
+  * Add missing OpExtension SPV_EXT_descriptor_indexing for dynamic indexing
+    capabilities.
+  * GLSL/Vulkan: Warn about arrays of arrays of resources that need bindings.
+  * GLSL/SPV: Implement SPV_EXT_descriptor_indexing and
+  GL_EXT_nonuniform_qualifier.
+  * Implement GL_NV_shader_subgroup_partitioned.
+  * Add support for GL_NV_shader_noperspective_interpolation.
+- Add ver.diff.
+
+-------------------------------------------------------------------
+Thu Mar  8 00:39:46 UTC 2018 - jengelh@inai.de
+
+- Update to 6.2.2604
+  * SPV: Implement Vulkan 1.1 features and extensions.
+
+-------------------------------------------------------------------
+Wed Feb  7 22:51:46 UTC 2018 - jengelh@inai.de
+
+- Update to new snapshot 3.0.g1817
+  * HLSL: Include built-in processing for vertex input and fragment output flattening.
+  * HLSL: Flatten structs for all non-arrayed I/O interfaces.
+  * SPV: Implement extension SPV_EXT_shader_stencil_export
+  * HLSL: handle clip and cull distance input builtin type conversion
+  * SPV: 1st pass implementation of SPV_EXT_shader_viewport_index_layer.
+  * HLSL: add geometry stage support for clip/cull distance
+  * Add support for GL_OES_EGL_image_external_essl3
+  * Implement the extension GL_AMD_shader_fragment_mask
+  * Add implementation of SPV_EXT_fragment_fully_covered
+  * GLSL: Implement GL_EXT_control_flow_attributes.
+
+-------------------------------------------------------------------
+Mon Aug  7 18:14:24 UTC 2017 - jengelh@inai.de
+
+- Update to new snapshot 3.0.g1516
+  * SPV: Handle nested opaque types as function parameters.
+  * SPV: Implement new extensions GL_KHX_device_group and
+    GL_KHX_multiview.
+  * HLSL: Fix #747: accept 'struct' in front of previously
+    user-defined type name.
+  * Rename KHX to EXT to match the released specs.
+  * PP: Recognize the '::' token, and translate appropriately to
+    GLSL/HLSL token.
+  * Added 'GL_core_profile' and 'GL_compatibility_profile' macro
+    definition to preamble.
+  * HLSL: Add scoping operator, accept static member functions,
+    and support calling them.
+  * HLSL: require tessellation factors to be fixed size arrays
+  * HLSL: Add namespace grammar and some basic semantics.
+  * Implement the SPV_KHR_16bit_storage,
+    GL_AMD_texture_gather_bias_lod, GL_AMD_gpu_shader_int16,
+    GL_EXT_shadow_samplers, GL_ARB_shader_stencil_export,
+    GL_OVR_multiview, GL_OVR_multiview2
+    SPV_KHR_post_depth_coverage extensions.
+  * Fix NULL pointer dereference in TParseContext::builtInOpCheck.
+  * GLSL 4.6: Implement atomic counter ops and
+    SPV_KHR_shader_atomic_counter_ops.
+  * GLSL 4.6: Implement draw parameters.
+  * GLSL 4.6: Implement shader group vote.
+- Add nodate.diff
+
+-------------------------------------------------------------------
+Mon Feb 20 15:12:17 UTC 2017 - jengelh@inai.de
+
+- Update to 3.0.g1115
+  * Added --vn option to generate a C header file containing a
+    variable assigned to the hex representation of the shader.
+  * HLSL: Type sanitization: create non-IO types for var decl and
+    fn param/ret.
+- Drop gccwarn.diff (resolved upstream)
+
+-------------------------------------------------------------------
+Sat Feb  4 23:45:26 UTC 2017 - jengelh@inai.de
+
+- Update to 3.0.g1077
+  * Support SPV_NV_viewport_array2 and SPV_NV_stereo_view_rendering
+  * Implement SPV_KHR_subgroup_vote
+  * Add EOpD3DCOLORtoUBYTE4 decomposition
+  * Add support for SPV_NV_geometry_shader_passthrough and
+    SPV_NV_sample_mask_override_coverage
+  * Add UAV (image) binding offset and HLSL register support
+- Add gccwarn.diff
+
+-------------------------------------------------------------------
+Mon Oct 31 22:28:28 UTC 2016 - jengelh@inai.de
+
+- Update to 3.0g900
+* Added -x option to save SPIR-V as 32-bit hexadecimal numbers to
+  a text file.
+* Add decompositions for some HLSL intrinsics.
+* HLSL: Support semantics in function parameter declarations.
+* HLSL: Map parameter qualifiers from generic to function-specific
+  and entry-point specific.
+* HLSL: Add texture Load method & decomposition
+* HLSL: Add SampleLevel method
+* HLSL: Add gather, improve proto generator machine for upcoming
+  2DMS/Shadow
+* HLSL: add 2DMS texture formats, and matching Load / GetDimensions
+  support
+* HLSL: Add shape conversions for scalar -> vector assigments.
+* HLSL: Add string basic type and recognize string declaration
+  grammar.
+* HLSL: allow multi-dimensional arrays
+
+-------------------------------------------------------------------
+Sun Jun 12 14:06:11 UTC 2016 - jengelh@inai.de
+
+- Update to 2.3g537
+* HLSL: Implement proper nesting of symbol-table scopes and
+  identifier searching.
+* HLSL: Add all int/float/bool/uint matrix types, void for
+  functions, and a few others.
+* Types: Add an isOpaque() helper
+* remapper: do not eliminate interface variables in dce by default
+* Initial implementation of direct-mapped subset of HLSL intrinsics
+  with type subset.
+* SPV: Don't shadow sampler parameters when performing function calls
+* Check for linking multiple ES shaders to the same stage
+* Vulkan: Finish semantics for what creates spec-const-semantics.
+* HLSL: Add more matrix types to the grammar.
+* Full stack: distinguish between a scalar and a vector of size 1.
+* SPV: Don't emit memory barrier for ESSL barrier(), but still do
+  for GLSL barrier().
+* Add support for querying vertex attributes in reflection API
+* SPV: Don't add clip/cull distance capabilities unless used.
+* Tests: Add a set of gtest-file-based HLSL tests.
+* SPV: Handle matrix's OpFConvert vector by vector.
+* HLSL: Add function call syntax and AST building.
+* SPV: Add capability ImageGatherExtended if necessary.
+* SPIR-V do not decorate: members of plain structs with location;
+  non-top level members with interp.
+
+-------------------------------------------------------------------
+Tue Apr 26 18:35:34 UTC 2016 - jengelh@inai.de
+
+- Update to 2.3.g401
+* Fix compile error involving std::isinf
+- Drop badcode.diff (merged upstream)
+
+-------------------------------------------------------------------
+Wed Feb 17 11:06:24 UTC 2016 - jengelh@inai.de
+
+- Initial package (version 2.3.g244) for build.opensuse.org
+- Add badcode.diff

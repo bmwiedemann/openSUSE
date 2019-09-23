@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>477f5d63c621016bb99a5346a29be974</srcmd5>
+    <version>5.0</version>
+    <time>1543591959</time>
+    <user>dimstar_suse</user>
+    <comment>Rerun tests on failure</comment>
+    <requestid>652701</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d45373cafe9fe7036e5e6b4a61ebd544</srcmd5>
+    <version>6.0</version>
+    <time>1551113500</time>
+    <user>coolo</user>
+    <comment>- Enable tests really
+- Update to 6.0:
+  * Drop support for pytest version 3.6 and 3.7.
+  * Add support for pytest version 4.0 and 4.1.
+  * Fixed #77 regression issue introduced in 4.2 related to the rerun attribute on the test report. (#77) (Thanks to @RibeiroAna for the PR).</comment>
+    <requestid>676366</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>163ef61e644b35c97f4fa5eb24abc14c</srcmd5>
+    <version>7.0</version>
+    <time>1553809788</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0:
+  * Drop support for pytest version 3.8 and 3.9.
+  * Add support for pytest version 4.2 and 4.3.
+  * Fixed #83 issue about ignored pytest_runtest_logfinish hooks</comment>
+    <requestid>689361</requestid>
+  </revision>
+</revisionlist>

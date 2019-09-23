@@ -1,0 +1,540 @@
+-------------------------------------------------------------------
+Sun Sep  8 20:21:52 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.22.6:
+  + qmicli:
+    - Fix potential dereference of null GArray in LOC service.
+  + libqmi-glib:
+    - Fix definitions for QMI_*_LTE_BAND_*_EUTRAN_32 enum values.
+  + Build updated with several fixes:
+    - Explicitly define max allowed GLib version.
+
+-------------------------------------------------------------------
+Thu Apr 11 18:11:50 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.22.4:
+  + New request/responses/indications:
+    - uim: new "Register Events" request/response.
+    - dms: new "Dell Change Device Mode" request/response.
+    - dms: new "Dell Get Firmware Version" request/response.
+  + libqmi-glib:
+    - wds: fixed reporting unknown current rates.
+  + qmi-proxy:
+    - Increased empty lifetime to 300s.
+  + qmicli:
+    Avoid priting service option in 3GPP devices.
+
+-------------------------------------------------------------------
+Sat Mar  2 21:38:48 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.2:
+  + Fixed CID tracking logic in the qmi-proxy.
+    https://gitlab.freedesktop.org/mobile-broadband/libqmi/issues/9
+
+-------------------------------------------------------------------
+Tue Jan  8 21:43:44 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 1.22.0:
+  + Build now looks for the correct python provider in the system
+    during configure.
+  + New services: New 'QoS' (Quality of Service) service, with some
+    minimal initial implementation to support flow/network status
+    querying. Additionally, some Sierra-specific commands are also
+    implemented that allow querying per-bearer statistics (e.g. if
+    multiple dedicated and default LTE bearers are used).
+  + New request/responses/indications:
+    - loc: new "Register Events" request/response.
+    - loc: new "NMEA" indication.
+    - loc: new "Engine State" indication.
+    - loc: new "Fix Recurrence Type" indication.
+    - loc: new "GNSS Sv Info" indication.
+    - loc: new "Inject Predicted Orbits Data"
+      request/response/indication.
+    - loc: new "Get Predicted Orbits Data Source"
+      request/response/indication.
+    - loc: new "Set Server" request/response/indication.
+    - loc: new "Get Server" request/response/indication.
+    - loc: new "Delete Assistance Data"
+      request/response/indication.
+    - loc: new "Set Operation Mode" request/response/indication.
+    - loc: new "Get Operation Mode" request/response/indication.
+    - loc: new "Inject XTRA Data" request/response/indication.
+    - uim: new "Card Status" indication.
+    - wds: new "Get Default Profile Num" request/response.
+    - wds: new "Set Default Profile Num" request/response.
+    - wds: new Sierra-specific "Swi Create Profile Indexed"
+      request/response.
+  + New TLVs supported in existing messages:
+    - loc: added multiple new TLVs in the "Position Report"
+      indication, which was a minimal skeleton in previous
+      releases.
+    - loc: added 'Fix Recurrence Type' TLV in "Start".
+    - loc: added 'Minimum Interval between Position Reports' TLV in
+      "Start".
+    - nas: added 'Acquisition Order Preference' TLV in "Set System
+      Selection Preference" and "Get System Selection Preference".
+    - nas: added 'Phy CA Agg Secondary Cells' TLV in "Get LTE Cphy
+      CA Info".
+    - wds: added 'WDS APN Disabled Flag' TLV in "Create Profile",
+      "Modify Profile" and "Get Profile Settings".
+    - wds: added 'WDS Roaming Disallowed Flag' TLV in "Create
+      Profile", "Modify Profile" and "Get Profile Settings".
+  + libqmi:
+    - Assume TLVs < 0x10 are mandatory by default.
+    - Fixed some missing QmiProtocolErrors and updated some
+      existing ones.
+    - Implemented support to allow enabling QMI indications when in
+      MBIM mode.
+    - Addded missing QmiNasBandPreference and
+      QmiDmsLteBandCapability flags.
+    - Deprecate QMI_CORE_ERROR_TLV_EMPTY, as empty TLVs are allowed
+      by the protocol and totally valid e.g. in 0-sized string-type
+      TLVs.
+    - Moved all deprecated APIs to 'qmi-compat.h' header.
+  + qmicli:
+    - New '--loc-get-position-report' command.
+    - New '--loc-get-gnss-sv-info' command.
+    - New '--loc-follow-position-report' command.
+    - New '--loc-follow-gnss-sv-info' command.
+    - New '--loc-follow-nmea' command.
+    - New '--loc-delete-assistance-data' command.
+    - New '--qos-get-flow-status' command.
+    - New '--qos-get-network-status' command.
+    - New '--qos-swi-read-data-stats' command.
+    - New '--qos-reset' command.
+    - New '--wds-create-profile' command.
+    - New '--wds-modify-profile' command.
+    - New '--wds-delete-profile' command.
+    - New '--wds-get-default-profile-num' command.
+    - New '--wds-set-default-profile-num' command.
+    - New '--wds-swi-create-profile-indexed' command.
+    - Added support to request acquisition order preference updates
+      when using '--nas-set-system-selection-preference'.
+    - Fixed slot indices in '--uim-get-card-status'.
+    - Fixed '--uim-set-pin-protection', '--uim-verify-pin",
+      "--uim-unblock-pin", and '--uim-change-pin', so that a dummy
+      application identifier is always used.
+    - Updated so that all commands work even through QMI over MBIM,
+      even if indications are required to complete the command
+      (e.g. most PDC and LOC commands).
+  + qmi-network: Avoid creating invalid --wds-start-network when
+    APN is not set.
+  + Several other minor improvements and fixes.
+
+-------------------------------------------------------------------
+Mon Aug 13 20:01:38 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.20.2:
+  + qmicli:
+    - Exit on --wds-start-network parse errors.
+    - Fix reading current technology in
+      --wds-get-data-bearer-technology.
+    - Remove implicity casts to GDestroyNotify in
+      g_clear_pointer().
+  + qmi-firmware-update:
+    - Fix --ignore-version-errors.
+    - Fix byte counts in error message.
+  + libqmi-glib:
+    - dms: factory settings related operations since 1.0
+    - Avoid closing same file descriptor twice.
+    - Don't leak the inner MbimDevice if MBIM_QMUX_ENABLED.
+- Add no-dependency-on filter to rpmlintrc, filter out false
+  warning about missing deps in devel package.
+
+-------------------------------------------------------------------
+Thu Mar  8 09:52:04 UTC 2018 - jengelh@inai.de
+
+- Update summary to standard language
+
+-------------------------------------------------------------------
+Wed Feb 28 16:36:07 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jan 22 01:27:29 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 1.20.0:
+  + New services: loc - new "LOC" (location) service, which e.g.
+    allows controlling GPS devices in newer modules that don't
+    implement the PDS service. Just some very basic implementation
+    for now.
+  + New request/responses:
+    - nas: new "Attach/Detach" request/response messages.
+    - wds: new "Get Channel Rates" request/response messages.
+    - dms: new 'Swi Get/Set USB Composition' request/response
+      messages.
+  + New TLVs supported in existing messages:
+    - nas: new 'Extended LTE Band Preference' TLV in "Set/Get SSP".
+    - dms: new 'Extended LTE Band Capability' TLV in "Get Band
+      Capabilities".
+  + libqmi:
+    - New:
+      . QMI_DEVICE_SIGNAL_REMOVED signal in the QmiDevice
+      object, propagated through the qmi-proxy.
+      . QMI_CLIENT_VALID property in the QmiClient that allows
+      detecting whether the underlying QmiDevice is usable or not.
+    - Defined additional LTE bands.
+  + qmicli:
+    - New: --wds-set-ip-family, --wds-get-channel-rates,
+      --uim-read-record, --dms-swi-get-usb-composition and
+      --dms-swi-set-usb-composition commands.
+  + libqmi-glib:
+    - Prefer realpath() to canonicalize_file_name().
+    - Avoid signals sent to the qmi-proxy process.
+  + qmi-firmware-update: Support USB3->USB2 mode changes during
+    upgrade.
+- Update Url to https://www.freedesktop.org/wiki/Software/libqmi/:
+  current libqmi's web page.
+- Add pkgconfig(gio-unix-2.0) BuildRequires: it was being pulled
+  by another pkgconfig module that live in glib2-devel package and
+  used already.
+
+-------------------------------------------------------------------
+Thu Nov  2 09:15:39 UTC 2017 - mpluskal@suse.com
+
+- Do not rely on env for python during build
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed May 10 18:03:59 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.18.0:
+  + libqmi:
+    - Implemented support for vendor-specific commands through a
+      new qmi_device_command_full() operation and a new
+      QmiMessageContext type.
+    - New 'QMI_DEVICE_OPEN_FLAGS_AUTO' flag in qmi_device_open()
+      which allows automatic detection of the underlying protocol
+      in a cdc-wdm device (either QMI or MBIM) and transparently
+      uses it based on that.
+    - New qmi_device_close_async() operation, which allows closing
+      a QmiDevice asynchronously.
+    - Fixed QmiWmsCdmaCauseCode enum names, and provided a
+      compatibility layer keeping the old names to avoid breaking
+      API.
+  + New services: pdc: new "PDC" (persistent device configuration)
+    service, which among other things, allows configuring the HP
+    lt4120.
+  + New TLVs supported in existing messages: wda: updated "Set Data
+    Format" request to allow specifying endpoint type and interface
+    number.
+  + qmi-firmware-update: This is a completely new tool that allows
+    upgrading firmware in (at least) Sierra Wireless devices with
+    MDM9200, MDM9x15 or MDM9x30 chipsets. Run the tool with --help
+    and --help-examples to get more information on how to use it.
+  + qmicli:
+    - The CLI no longer requires the '--device-open-mbim' explicit
+      option when opening QMI capable MBIM devices, the automatic
+      detection of QMI over MBIM is enabled by default.
+    - New '--device-open-qmi' option to disable the automatic
+      detection of protocol and force using QMI.
+    - If running in MBIM mode, enable MBIM logs and traces.
+    - By default the QmiDevice will be closed before exiting, e.g.
+      so that the MBIM session is also closed.
+  + docs:
+    - Updated the documentation so that each QMI message and each
+      TLV specifies in which libqmi version it was introduced,
+      using "since:" tags in the QMI message databases.
+    - Added indices for new symbols introduced in the major libqmi
+      releases, as well as for symbols flagged as deprecated.
+- Add pkgconfig(gudev-1.0) BuildRequires: New optional dependency.
+
+-------------------------------------------------------------------
+Thu Nov 17 13:07:07 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.16.2:
+  + DMS: flagged several methods as available since DMS 1.1.
+  + NAS: Fix RX/TX mixup in 'Get LTE Cphy CA Info'.
+  + qmi-proxy:
+    - Fix segfault when trying to use already disposed clients.
+    - Fix segfault when trying to use already disposed
+      transactions.
+    - Plug several memleaks in error conditions.
+  + qmicli: Added support for IP type in --wds-start-network.
+  + build: fix checking for libmbim.
+
+-------------------------------------------------------------------
+Tue Jul 12 07:20:33 UTC 2016 - bruno@ioda-net.ch
+
+- Packaging:
+  + add missing exclude in rpmlintrc
+  + add BuildRequires for having QMUX over MBIM option
+
+-------------------------------------------------------------------
+Mon Jul 11 19:22:33 UTC 2016 - bruno@ioda-net.ch
+
+- Update to version 1.16.0
+  + New --enable-mbim-qmux option during configure, which enables
+  the support for using an MBIM control device as transport for the 
+  QMI messages, only if the MBIM device implements the "QMI
+  service". This setting is automatically enabled if libmbim >=
+  1.14.0 is found in the system, and can be explicitly disabled 
+  with --disable-mbim-qmux.
+  + New request/responses:
+    - nas: new "Get LTE Cphy CA Info" request/response.
+    - nas: new "Force Network Search" request/response.
+  + qmi-network:
+    - Fixed several bashisms.
+  + Added compatibility symbols for some API breaks introduced in
+    1.14.0:
+    - qmi_message_dms_set_service_programming_code_input_get_\
+      current was renamed to qmi_message_dms_set_service_\
+      programming_code_input_get_current_code.
+    - qmi_message_dms_set_service_programming_code_input_get_new
+      was renamed to qmi_message_dms_set_service_programming_code_\
+      input_get_new_code.
+    - qmi_message_dms_set_service_programming_code_input_set_\
+      current was renamed to qmi_message_dms_set_service_\
+      programming_code_input_set_current_code.
+    - qmi_message_dms_set_service_programming_code_input_set_new
+      was renamed to qmi_message_dms_set_service_programming_code_\
+      input_set_new_code.
+    - QMI_NAS_SIM_REJECT_STATE_SIM_VAILABLE was renamed to
+      QMI_NAS_SIM_REJECT_STATE_SIM_AVAILABLE.
+  + libqmi-glib:
+    - Fixed QMI_DMS_BAND_CAPABILITY_BC_15 enum value so that it 
+      isn't treated as a negative value.
+  + qmicli:
+    - Fixed --dms-get-band-capabilities output on 32-bit platforms.
+    - Fixed license text of the voice service implementation.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:03:29 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.14.2:
+  + Added compatibility symbols for some API breaks introduced in
+    1.14.0:
+  + This release will recover the old names and still keep the new
+    ones around for compatibility.
+  + libqmi-glib: Fixed QMI_DMS_BAND_CAPABILITY_BC_15 enum value so
+    that it isn't treated as a negative value. This may actually be
+    treated as a minor ABI break.
+  + qmicli: Fixed --dms-get-band-capabilities output on 32-bit
+    platforms.
+  + Fixed license text of the voice service implementation.
+- Changes from version 1.14.0:
+  + This version comes with a couple of small API breaks:
+  + ECIO value type in "NAS Event Report Indication" is given as
+    unsigned.
+  + ECIO value in ECIO List array type in "NAS Get Signal Strenght"
+    is given as unsigned.
+  + QMI_NAS_SIM_REJECT_STATE_SIM_AVAILABLE enum name was fixed.
+  + The library and tools now support working with modems which
+    only implement raw IP (i.e. no ethernet headers) in the WWAN
+    interface. This relies on the kernel to expose
+    '/sys/class/net/<WWAN>/qmi/raw_ip' sysfs files for each WWAN
+    network interface (available since Linux 4.5-rc1).
+  + New initial support for the 'Voice' service.
+  + The qmicli tool has been updated with several new
+    functionalities.
+  + The qmi-network helper script has been updated with several new
+    features.
+  + Added command completion support in qmicli.
+  + Other bugfixes and minor improvements.
+- Bump soname following upstream changes, and as a result: rename
+  subpackage to libqmi-glib5.
+
+-------------------------------------------------------------------
+Wed Mar 23 20:42:43 UTC 2016 - jengelh@inai.de
+
+- Improve description; say what QMI is
+
+-------------------------------------------------------------------
+Mon Feb 15 18:57:05 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.12.8:
+  + codegen: fix bug which was limiting the transaction ID of
+    request messages generated to just 8bits.
+  + device: try to debug-print raw invalid QMI messages too.
+  + Additional bugfixes:
+    - build: avoid C++ reserved keywords.
+    - nas: correct ID for Get RF Band Information result TLV.
+    - qmicli: fix PLMN printing.
+
+-------------------------------------------------------------------
+Thu Feb 26 20:36:04 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.12.6:
+  + Fix big-endian handling of tlv->length.
+
+-------------------------------------------------------------------
+Wed Feb 25 18:39:52 UTC 2015 - mgorse@suse.com
+
+- Added COPYING and COPYING.LIB and fixed license attribute for
+  debug utils
+
+-------------------------------------------------------------------
+Wed Feb 11 21:21:56 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.12.4:
+  + Fix reading last call packet statistics.
+  + Added support for the "DMS Set FCC" command, required to bring
+    out of low power mode several new Sierra devices.
+
+-------------------------------------------------------------------
+Sun Feb  1 09:13:26 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.12.2:
+  + Fix bug reading sized-guints, which was making --dms-get-time
+    segfault.
+  + Fix compilation warnings in 32 bit systems.
+  + Add missing services in get_printable() and
+    get_version_introduced().
+
+-------------------------------------------------------------------
+Wed Jan 28 15:58:56 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.12.0:
+  + New `--enable-qmi-username' option during configure, which
+    allows specifying which will be the user owning the
+    /dev/cdc-wdm character devices of all QMI modems (udev rules
+    are installed to change file ownership). If this option is
+    used, the qmi-proxy will only allow connections from processes
+    running by the specified user or by the root user.
+  + New TLV builder and reader API, which is much more strict and
+    secure. The autogenerated code will no longer first check if
+    there is enough space available in the output message buffer
+    and then write the parsed contents. Instead, the new reader API
+    will be used, which is able to check for the expected size
+    directly before writing in the buffer.
+  + New unit tests to check messages built by the libqmi-glib
+    library, using a fake proxy. In order to support these, the
+    QmiDevice has two new properties:
+    - "device-no-file-check": instructs the QmiDevice to avoid
+      checking if the specified file exists.
+    - "device-proxy-path": specifies a custom abstract socket path
+      for the QmiProxy, to avoid using the default one.
+  + New A-GPS support in the PDS service:
+    - pds: added "Get Default Tracking Session" request/response.
+    - pds: added "Set Default Tracking Session" request/response.
+    - pds: added "Get AGPS Config" request/response.
+    - pds: added "Set AGPS Config" request/response.
+  + Updated minumum available version of several messages:
+    - dms: "UIM Get IMSI" seems to be available in DMS 1.1 already.
+    - dms: "UIM Get ICCID" seems to be available in DMS 1.1
+      already.
+  + Other bugfixes and minor improvements:
+    - Attach timeout and idle events to the thread-default context.
+    - Fix bashisms in the qmi-network script.
+    - Fix qmi_message_set_transaction_id() in non-CTL messages.
+    - Fix segfault due to race condition in the QmiProxy.
+    - Fixed printing contents of structs with fixed sized strings
+      in qmi-codegen.
+- Drop libqmi-1.10.2-fix-bashisms.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Nov 27 01:11:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in qmi-network script
+- add patches:
+  * libqmi-1.10.2-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Mon Oct  6 06:51:48 UTC 2014 - mardnh@gmx.de
+
+- Update to version 1.10.2:
+  + release: bump version to 1.10.2
+  + build: update NEWS
+  + cli,nas: S/N ratio is dB, not dBm
+  + cli,nas: limit resolution when printing floating point numbers
+  + cli,nas: fix constant out of range issue in comparison
+  + cli,nas: fix unmatched format specifiers
+  + release: post release version bump to 1.10.1
+  + release: bump version to 1.10.0
+  + cli,nas: decode BCD-encoded PLMN and print it
+  + cli,nas: pretty print field types
+  + cli,nas: don't print fields with unknown data
+  + cli,nas: add missing indentations
+  + nas: add 'UMTS Info Neighboring LTE' TLV to 'Cell Location
+    Info'
+  + nas: fix several TLV field types
+  + nas: consolidate variable names
+  + nas: add missing TLV field
+  + nas: trivial fixes in indentation and alignment
+  + docs,libqmi-glib: add 'NAS Get Cell Location Info'
+    documentation
+  + qmi-codegen: handle 'gfloat' types
+  + qmicli: fix wrong array reference cutnpaste bug
+  + qmicli: add NAS Get Cell Location Info
+  + nas: add "Get Cell Location Info"
+  + libqmi-glib,proxy: update internal default timeout value
+  + cli,wda: new '--wda-set-data-format' action
+  + cli,wda: fix error string message
+  + libqmi,wda: rename enum to "_RAW_IP" to match the name in the
+    CTL service
+  + wda: implement 'Set Data Format' request/response
+  + cli,wda: new '--wda-get-data-format' action
+  + wda: new 'WDA' service
+  + cli: new '--uim-get-card-status' action
+  + uim: implement "Get Card Status"
+  + data: add libqmi icon
+  + license: add GPLv2+ license in addition to the LGPLv2+ one
+  + build-aux,qmi-codegen: explicitly state which services have
+    flags64
+  + libqmi-glib,device: print as debug flags used when opening or
+    releasing client
+  + qmicli: add '--device-open-net' option
+  + libqmi-glib: generate types for QmiDeviceOpenFlags and
+    QmiDeviceReleaseClientFlags
+
+-------------------------------------------------------------------
+Sun Jan 26 21:38:29 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.8.0:
+  + This version comes with one small API break: Enum value
+    QMI_SERVICE_RMTFS is not 0x14, but 14.
+  + Support for sharing the QMI port through multiple processes
+    with the new 'qmi-proxy' infrastructure.
+  + api: Added new known service ID enumeration values.
+  + wds: Added "Get Profile List", "Get Profile Settings", "Get
+    Default Settings" request/response.
+  + cli: Add --wds-get-profile-list & --wds-get-default-settings.
+  + man: Added qmi-network manpage, autogenerated from --help-all.
+- Changes from version 1.6.0:
+  + This version comes with one small API break: dms: 'SID' TLV in
+    "Activate Manual" is a guint8, not a string.
+  + Extended API with macros to check for the libqmi-glib version
+    in use.
+  + Setup libtool versioning in libqmi-glib.
+  + Added initial support for the PBM (phonebook) service.
+  + Added initial support for the UIM service.
+  + Added initial support for the OMA (Open Mobile Alliance)
+    service.
+  + nas: added "Get Tx Rx Info" request/response.
+  + wds: added "Get Packet Statistics" request/response.
+  + dms: added support for the 'PRL' TLV in "Activate Manual".
+  + cli: add --nas-get-tx-rx-info, --wds-get-packet-statistics,
+    --get-service-version-info, --uim-read-transparent,
+    --uim-get-file-attributes.
+  + cli: fix following network status until disconnected.
+  + tests: use gtester to run unit tests.
+  + man: added qmicli manpage, autogenerated from --help-all.
+  + Also fixed several minor bugs and memory leaks.
+- Bump soname following upstream changes, this means that
+  package libqmi-glib0 will be renamed to libqmi-glib1.
+
+-------------------------------------------------------------------
+Wed Jan 22 12:23:01 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.4.0:
+  + dms: fix minimum version requirement for DMS Get/Set Operating
+    Mode.
+  + nas: added 'Network Time' indication.
+  + utils: fix reading sized uints in BE systems.
+  + cli: add --dms-activate-manual.
+  + cli: implemented setting System Selection Preference.
+  + cli: fix technology preference persistence reporting.
+  + cli: fix reading new PIN in '--dms-uim-change-pin'.
+  + docs: always generate documentation at dist time.
+  + tests: fixed BE/LE tests in BE systems.
+- Changes from version 1.2.0:
+  + Builds with Python3.
+  + Fixed DMS activation code string handling.
+  + Enhanced "start network" functionality in qmicli.
+
+-------------------------------------------------------------------
+Mon Dec 10 17:23:34 UTC 2012 - dimstar@opensuse.org
+
+- Initial package, release 1.0.
+

@@ -1,0 +1,6 @@
+<package name="libverto-tevent" project="openSUSE:Factory">
+  <title>libverto</title>
+  <description>Main loop abstraction library.</description>
+  <devel project="openSUSE:Factory" package="libverto"/>
+  <bcntsynctag>libverto</bcntsynctag>
+</package>

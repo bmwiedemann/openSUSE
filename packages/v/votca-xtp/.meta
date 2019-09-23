@@ -1,0 +1,5 @@
+<package name="votca-xtp" project="openSUSE:Factory">
+  <title>Votca excitation and charge properties module</title>
+  <description>VOTCA-XTP is a branch from CTP, which incorporates CTP,KMC,MOO and a manual. Furthermore it extends CTP to excitons and offers an implementation of GW-BSE to access exciton behaviour. Furthermore it supports more qm packages.</description>
+  <devel project="science" package="votca-xtp"/>
+</package>

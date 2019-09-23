@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Sep 11 19:56:49 UTC 2014 - Greg.Freemyer@gmail.com
+
+- update to v2.0.4
+	* converted to a module
+	* setup for pypi 
+- updated Url and Source fields
+- use newly available python setup.py install
+- updated %files section since this is now a more traditional python package
+
+-------------------------------------------------------------------
+Sat Feb 18 23:12:46 UTC 2012 - Greg.Freemyer@gmail.com
+
+- initial package submission
+
+    A Python tool to deconstruct the Windows NTFS $MFT file
+

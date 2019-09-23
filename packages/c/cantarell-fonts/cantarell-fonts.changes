@@ -1,0 +1,355 @@
+-------------------------------------------------------------------
+Wed Sep 26 15:58:16 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.111:
+  + Fix the wrongly assigned OS/2 weight class values that e.g. led
+    to Extra Bold being selected when Bold was requested.
+- Changes from version 0.110:
+  + Space everything a little bit tighter.
+  + Scale down whiteCircle and blackCircle by 50%, makes password
+    dots smaller.
+  + Tweak feet of one.lf slightly for a more even appearance.
+  + Revise lcaron, dcaron and tcaron for collision-free rendering
+    even at bold weight. Will need kerning later.
+  + Add draft of Cyrillic (GF Cyrillic Plus set), to be improved.
+  + Equalize advance width of period, comma, colon, semicolon.
+  + Build packages with prebuilt fonts baked in.
+  + New contributed AppStream metadata translations for Slovak.
+  
+-------------------------------------------------------------------
+Thu Mar 15 22:14:12 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 0.101:
+  + Several small improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:24:04 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Feb  9 00:00:09 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 0.100:
+  + Redesigned from scratch to interpolate cleanly from thin to
+    extra bold. Currently targets the Google Fonts Latin Core and
+    Pro glyph sets.
+- Update Url tag to https://wiki.gnome.org/Projects/CantarellFonts:
+  current Cantarell Fonts' web page.
+- Add meson BuildRequires, replace configure/make/make_install
+  macros with meson/meson_build/meson_install and remove call for
+  gnome-autogen.sh. All of these changes reflect the upstream port
+  to Meson build system.
+- Drop dos2unix BuildRequires: it's no longer required.
+
+-------------------------------------------------------------------
+Fri Aug 19 12:29:13 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.0.25:
+  + Outline and spacing on C,G.
+  + Improved terminals on numerous glyphs.
+  + Weight/stem width fixes (k,G).
+  + Port imrpovements from regular to bold.
+  + Improved metrics.
+  + Fixes to f-ligatures.
+  + Shape fixes to some numerals.
+  + Fixes to anchors > composited glyphs.
+
+-------------------------------------------------------------------
+Tue May  3 23:53:09 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Mon Feb 29 18:46:32 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.0.24:
+  + Asymmetric k for bold, fix stem width.
+  + Sync bold hyphen metrics with regular.
+
+-------------------------------------------------------------------
+Mon Feb 22 16:25:51 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.0.23:
+  + Reworked anchors for correct accent rendering under harfbuzz
+    1.2.0.
+  + More anchor and combined glyph work.
+
+-------------------------------------------------------------------
+Mon Feb 15 20:17:40 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.0.22:
+  + Improvements to the generation script.
+  + Bold: double quotes alignment.
+  + Rehint font with adobe toolkit.
+
+-------------------------------------------------------------------
+Fri Jan 15 11:46:34 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.0.21:
+  + Bold:
+    - Latin and cyrillic respace.
+    - Adapt f ligatures for the new i.
+    - Improvements from Cambay.
+    - Match width of numerals to regular.
+  + Redular: adjust spacing of Thorn, ß, ẞ.
+  + Numerals: improved spacing.
+
+-------------------------------------------------------------------
+Thu Jan  7 19:19:29 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.0.20.1:
+  + Fix composited glyph issues.
+  + Fix parallel build issue.
+
+-------------------------------------------------------------------
+Mon Jan  4 16:13:57 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.0.20:
+  + Cyrillic improvements.
+  + x-height hinting tweaks.
+  + Sync bold to regular.
+  + OE and oe ligatures.
+  + Ratio respaced.
+  + Capital sharp s for German.
+
+-------------------------------------------------------------------
+Sun Dec 20 21:27:34 UTC 2015 - damjanovic.ivo@gmail.com
+
+- Update to version 0.0.19:
+  + Generate oblique version.
+  + More diacritics work; full Latin 4 coverage.
+  + Tabular figures.
+  + Fold over work done on Cambay.
+
+-------------------------------------------------------------------
+Mon Nov  9 10:35:53 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.0.18.1:
+  + Improved terminals on a,e,r,s,S,l,2.
+  + Fix validation errors.
+
+-------------------------------------------------------------------
+Mon Nov  2 13:19:35 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.0.18:
+  + Respaced t, 4 and 7.
+  + Bold accents fixes.
+  + Consistent stem width and various improvements on E, H, B
+    and S.
+  + Harmonized o and c.
+  + Improved capitals.
+  + Superscript 123 fixes.
+  + Extra glyps for gtk+ (arrows, openbox).
+
+-------------------------------------------------------------------
+Mon Oct 12 10:33:46 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.0.17.2:
+  + Rebuild accented glyphs for bold.
+
+-------------------------------------------------------------------
+Mon Oct 12 10:16:28 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.0.17.1:
+  + Accent fixes.
+  + Revert ijbdklh to snap to caps height.
+  + Proper weight of f ligatures for bold.
+  + Respaced ligatures.
+
+-------------------------------------------------------------------
+Sun Oct  4 17:23:28 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.0.17:
+  + Improved shapes and metrics:
+    - Baseline and bluezone fixes for autohinter to produce valid
+      hints.
+    - Many glyphs adjusted for baseline and proper hinting.
+
+-------------------------------------------------------------------
+Tue Sep 23 10:11:34 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.0.16:
+  + Add space variations (bgo#735205).
+
+-------------------------------------------------------------------
+Fri Sep 27 19:17:44 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.0.15:
+  + Improved spacing for cyrillics (bgo#703588).
+  + Fixed hinting on numerals (bgo#704084).
+  + Bold outlines improved (bgo#706358).
+  + Improved cyrillics (bgo#706358).
+  + Improved outlines and spacing (bgo#703115).
+  + Missing romanian accent glyphs (bgo#705004).
+  + Uppercase U shape improvements (bgo#702955).
+
+-------------------------------------------------------------------
+Fri Sep 20 05:49:13 UTC 2013 - toms@opensuse.org
+
+- Fixed bnc#827785: Cantarell font packaged into wrong folder 
+
+-------------------------------------------------------------------
+Fri Aug 23 09:58:20 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.0.14:
+  + Large improvement to shapes of latin and extended latin glyphs.
+  + Improvements to the numeral shapes.
+  + Greatly improved horizontal metrics of regular weight.
+  + Corrected maths.
+  + Corrected outlines & metrics of Cyrillics.
+
+-------------------------------------------------------------------
+Sat Jun 22 16:14:41 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.0.13:
+  + Many l/rbearking tweaks.
+  + Extra symbols for Shell (bgo#657957).
+  + Balanced shape for s and S.
+  + Balanced shape for 6 and 9.
+  + Balanced 2 and 3.
+  + Improved hints.
+  + OT anchors for accents.
+  + Contrast tweaks to bold (b, B, e).
+
+-------------------------------------------------------------------
+Sun Dec 23 21:47:45 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.0.12:
+  + Improved ligatures.
+  + Improve and add missing cyrillics. (bgo#689220)
+  + Advanced typo glyphs. (bgo#689184)
+
+-------------------------------------------------------------------
+Fri Nov 16 09:31:31 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.0.11:
+  + Use ligature lookup tables.
+  + Make digits monospaced for bold.
+
+-------------------------------------------------------------------
+Mon Oct  8 12:50:07 UTC 2012 - pgajdos@suse.com
+
+- use %files_fontsconf_availdir and %files_fontsconf_file macros
+
+-------------------------------------------------------------------
+Tue Oct  2 11:44:58 UTC 2012 - pgajdos@suse.com
+
+- install avail configuration into /usr/share/%{name}/conf.avail
+  and use %link_avail_to_system_fontsconf macro for linking it into
+  /etc/fonts/conf.d (fontconfig 2.10 doesn't use /etc/fonts/conf.avail)
+
+-------------------------------------------------------------------
+Tue Sep 25 13:44:22 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.0.10.1:
+  + build related fixes.
+
+-------------------------------------------------------------------
+Fri Sep 14 11:35:00 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.0.10:
+  + Generate OTF from SFDs automatically
+  + Install to appropriate system directories
+  + Fix cyrillic metrics
+  + Improve EE diacritics
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Mon Jun 11 07:02:55 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.0.9:
+  + initial support for Cyrillic
+  + uppercase Greek
+
+-------------------------------------------------------------------
+Thu May 17 09:09:52 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Sat Apr  7 12:25:56 UTC 2012 - toms@opensuse.org
+
+- Added xz to the list of BuildRequire-ments
+
+-------------------------------------------------------------------
+Tue Mar 27 07:29:48 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.0.8:
+  + accented l (bgo#665433)
+  + extrema & node fixes
+  + build related fixes
+
+-------------------------------------------------------------------
+Tue Oct 18 14:51:15 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.0.7:
+  + ON/OFF glyphs (bgo#643120)
+  + combining circumflex metrics (bgo#637066)
+  + ] hinting (bgo#652834)
+  + bold: 'a','e','n','s' and 'c' hints.
+  + black circle a circle (bgo#660442)
+  + bold: sync accented characters with base glyph.
+
+-------------------------------------------------------------------
+Sat Sep 17 22:37:23 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Tue Apr  5 12:06:59 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.0.6:
+  + bold l
+  + fix umlaut positions (bgo#646222)
+  + README fixes
+
+-------------------------------------------------------------------
+Thu Mar 24 10:43:29 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.0.5:
+  + improved password entry glyph
+  + improved hyphen by making narrower
+  + improved licensing and FONTLOG metadata
+  + improved vertical metrics
+- Changes from version 0.0.4:
+  + improved hints on numerals and bold letters
+  + improved metrics
+
+-------------------------------------------------------------------
+Thu Mar 24 09:36:42 UTC 2011 - fcrozat@novell.com
+
+- Add fontconfig BuildRequires for directory ownership.
+
+-------------------------------------------------------------------
+Tue Feb 22 18:15:27 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.0.3:
+  + create the tarball from the actual git master
+- Changes from version 0.0.2:
+  + improved hints, hinting related metrics
+  + added black circle glyph for password entries
+  + increased size of '^'
+  + fixed the fontconfig script not to override the global default
+- Remove call to autogen.sh since we don't use a git tarball
+  anymore.
+
+-------------------------------------------------------------------
+Mon Jan 17 18:24:45 UTC 2011 - fcrozat@novell.com
+
+- Fix fontconfig file path (/etc/fontconfig/conf.avail instead of
+  /usr/share/fontconfig/conf.avail) by setting configdir in
+  %make_install, and set cantarell as default font by linking it in
+  /etc/fontconfig/conf.d.
+
+-------------------------------------------------------------------
+Wed Dec 15 18:17:11 CET 2010 - vuntz@opensuse.org
+
+- Initial package (from git as of 2010-12-15).
+

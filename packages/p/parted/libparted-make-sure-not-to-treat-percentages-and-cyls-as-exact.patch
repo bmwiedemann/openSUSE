@@ -1,0 +1,31 @@
+From: Phillip Susi <psusi@ubuntu.com>
+Date: Mon, 4 Nov 2013 13:10:09 -0500
+Subject: libparted: make sure not to treat percentages as exact
+Patch-mainline: v3.2, custom part from puzel still required
+Git-commit: 01900e056ec250836d15b5f5c3f59a8e1454b781
+
+If 1% of the drive size worked out ot be an even power of
+two, it would trigger the exact placement.  Add an exception
+for the percent units.
+
+Petr Uzel <puzel@suse.cz>:
+Also avoid this logic when the unit is specified as cylinders.
+---
+ libparted/unit.c |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+Index: parted-3.2/libparted/unit.c
+===================================================================
+--- parted-3.2.orig/libparted/unit.c
++++ parted-3.2/libparted/unit.c
+@@ -551,7 +551,9 @@ ped_unit_parse_custom (const char* str,
+ 	   do not use 4MiB as the range.  Rather, presume that they
+ 	   are specifying precisely the starting or ending number,
+ 	   and treat "4MiB" just as we would treat "4194304B".  */
+-	if (is_power_of_2 (unit_size) && unit != PED_UNIT_PERCENT)
++	if (is_power_of_2 (unit_size) &&
++	    unit != PED_UNIT_PERCENT &&
++	    unit != PED_UNIT_CYLINDER)
+ 		radius = 0;
+ 
+ 	*sector = num * unit_size / dev->sector_size;

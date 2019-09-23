@@ -1,0 +1,20 @@
+Index: network-manager-applet-1.8.22/nm-applet.desktop.in
+===================================================================
+--- network-manager-applet-1.8.22.orig/nm-applet.desktop.in
++++ network-manager-applet-1.8.22/nm-applet.desktop.in
+@@ -2,7 +2,7 @@
+ Name=Network
+ Comment=Manage your network connections
+ Icon=nm-device-wireless
+-Exec=nm-applet
++Exec=nm-applet --indicator
+ Terminal=false
+ Type=Application
+ NoDisplay=true
+@@ -11,3 +11,6 @@ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=NetworkManager
+ X-GNOME-Bugzilla-Component=nm-applet
+ X-GNOME-UsesNotifications=true
++# We need to make sure the systray has already started
++# otherwise nm-applet will fall back to non systray too quickly
++X-GNOME-Autostart-Delay=4

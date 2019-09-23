@@ -1,0 +1,92 @@
+Index: at.c
+===================================================================
+--- at.c.orig
++++ at.c
+@@ -132,9 +132,10 @@ int fcreated;
+ char *namep;
+ char atfile[] = ATJOB_DIR "/12345678901234";
+ 
+-char *atinput = (char *) 0;	/* where to get input from */
+-char atqueue = 0;		/* which queue to examine for jobs (atq) */
+-char atverify = 0;		/* verify time instead of queuing job */
++char *atinput = (char *) 0;		/* where to get input from */
++char atqueue = 0;			/* which queue to examine for jobs (atq) */
++char atverify = 0;			/* verify time instead of queuing job */
++char *timeformat = TIMEFORMAT_POSIX;	/* time format (atq) */
+ 
+ /* Function declarations */
+ 
+@@ -513,7 +514,7 @@ writefile(time_t runtimer, char queue)
+ 
+     runtime = localtime(&runtimer);
+ 
+-    strftime(timestr, TIMESIZE, TIMEFORMAT_POSIX, runtime);
++    strftime(timestr, TIMESIZE, timeformat, runtime);
+     fprintf(stderr, "job %ld at %s\n", jobno, timestr);
+ 
+     /* Signal atd, if present. Usual precautions taken... */
+@@ -627,7 +628,7 @@ list_jobs(long *joblist, int len)
+ 	runtimer = 60 * (time_t) ctm;
+ 	runtime = localtime(&runtimer);
+ 
+-	strftime(timestr, TIMESIZE, TIMEFORMAT_POSIX, runtime);
++	strftime(timestr, TIMESIZE, timeformat, runtime);
+ 
+ 	if ((pwd = getpwuid(buf.st_uid)))
+ 	  printf("%ld\t%s %c %s\n", jobno, timestr, queue, pwd->pw_name);
+@@ -824,7 +825,7 @@ main(int argc, char **argv)
+      */
+     if (strcmp(pgm, "atq") == 0) {
+ 	program = ATQ;
+-	options = "hq:V";
++	options = "hq:Vo:";
+     } else if (strcmp(pgm, "atrm") == 0) {
+ 	program = ATRM;
+ 	options = "hV";
+@@ -908,6 +909,10 @@ main(int argc, char **argv)
+ 	    timer -= timer % 60;
+ 	    break;
+ 
++	case 'o':
++	    timeformat = optarg;
++            break;
++
+ 	default:
+ 	    usage();
+ 	    break;
+Index: at.1.in
+===================================================================
+--- at.1.in.orig
++++ at.1.in
+@@ -29,6 +29,8 @@ at, batch, atq, atrm \- queue, examine,
+ .RB [ \-V ]
+ .RB [ \-q
+ .IR queue ]
++.RB [ -o
++.IR timeformat ]
+ .br
+ .B at
+ .RB [ \-rd ]
+@@ -260,6 +262,9 @@ Times displayed will be in the format "T
+ .B
+ \-c
+ cats the jobs listed on the command line to standard output.
++.TP 8
++.BI \-o " fmt"
++strftime-like time format used for the job list
+ .SH FILES
+ .I @ATJBD@
+ .br
+Index: panic.c
+===================================================================
+--- panic.c.orig
++++ panic.c
+@@ -96,7 +96,7 @@ usage(void)
+             "       at [-V] [-q x] [-f file] [-mMlbv] -t time\n"
+     	    "       at -c job ...\n"
+ 	    "       at [-V] -l [job ...]\n"
+-	    "       atq [-V] [-q x]\n"
++	    "       atq [-V] [-q x] [-o timeformat]\n"
+ 	    "       at [ -rd ] job ...\n"
+ 	    "       atrm [-V] job ...\n"
+ 	    "       batch\n");

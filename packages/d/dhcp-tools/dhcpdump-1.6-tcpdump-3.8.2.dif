@@ -1,0 +1,90 @@
+diff -uNr dhcpdump-1.6-tcpdump3.8.1/dhcpdump.c dhcpdump-1.6-tcpdump3.8.2/dhcpdump.c
+--- dhcpdump-1.6-tcpdump3.8.1/dhcpdump.c	2004-09-09 22:59:41.000000000 +0200
++++ dhcpdump-1.6-tcpdump3.8.2/dhcpdump.c	2004-09-10 00:50:42.951253925 +0200
+@@ -479,17 +479,32 @@
+ 
+ // read the data of the packet, which is a bunch of hexdigits like:
+ // ffff ffff 0043 0044 013f 2432 0201 0600.
++//
++// as of tcpdump-3.8.2, the output format is:
++// 0x0000:  4500 0240 d77a 0000 4011 a133 0000 0000  E..@.z..@..3....
++// or even:
++// 0x0160:  311c 04c0 a800 ff2a 04c0 a800 05ff       1......*......
++// (which means, data bytes are no longer padded with zeroes)
+ int readdata(uchar *buf,uchar *data,int *data_len) {
+     int i,length;
+     bool first=TRUE;
+     int prev=0;
++    int digits_read=0;	// count data bytes that have been read, and don't read 
++			// more than 32 digits (16 data bytes) per line, in order
++			// to ignore the trailing ascii dump
+ 
+     length=strlen(buf);
+-    for (i=0;i<length;i++) {
++    for (i=0;((i<length) && (digits_read<32) && (*data_len+digits_read%2<=max_data_len));i++) {
+ 	if (buf[i]==' ') continue;
+ 	if (buf[i]=='\t') continue;
+ 	if (buf[i]=='\r') continue;
+ 	if (buf[i]=='\n') continue;
++	if (buf[i]=='0' && ((i+7)<length)
++			&& buf[i+1]=='x'
++			&& buf[i+6]==':') {
++		i+=7;				// skip 'leading 0x0000:'
++		continue;
++	}
+ 	if (isxdigit(buf[i])) {
+ 	    if (buf[i]<='9') {
+ 		if (first) {
+@@ -505,6 +520,7 @@
+ 		    data[(*data_len)++]=prev*16+buf[i]-'a'+10; first=TRUE;
+ 		}
+ 	    }
++	    digits_read++;
+ 	    continue;
+ 	}
+ 	fprintf(stderr,"Error in packet: %c\n",buf[i]);
+@@ -534,15 +550,19 @@
+ // tcpdump 3.8.1:
+ // 12:37:06.225651 00:30:65:c2:61:d2 > ff:ff:ff:ff:ff:ff, ethertype IPv4, length 590: IP 0.0.0.0.68 > 255.255.255.255.67: BOOTP/DHCP, Request from 00:30:65:c2:61:d2, length: 548
+ // [0]            [1]               [2] [3]               [4]       [5]   [6]    [7] [8] [9]      [10] [11]
++//
++// tcpdump 3.8.2:
++// 22:53:29.559377 00:30:65:c2:61:d2 > ff:ff:ff:ff:ff:ff, ethertype IPv4 (0x0800), length 590: IP 0.0.0.0.68 > 255.255.255.255.67: BOOTP/DHCP, Request from 00:30:65:c2:61:d2, length: 548
++// [0]            [1]               [2] [3]               [4]       [5]   [6]      [7]    [8]  [9] [10]     [11] [12]
+ int readheader(uchar *buf) {
+     int n;
+     char **ap;
+-    char *argv[13];
++    char *argv[14];
+     char max_data_str[20];
+ 
+     for (ap=argv,n=0;(*ap=strsep((char **)&buf," \t"))!=NULL;n++)
+ 	if (**ap!='\0') {
+-	    if (++ap>=&argv[13])
++	    if (++ap>=&argv[14])
+ 		break;
+ 	    switch(n) {
+ 		default:
+@@ -557,16 +577,16 @@
+ 		    strcpy(mac_destination,argv[3]);
+ 		    mac_destination[strlen(mac_destination)-1]=0; /* trailing comma */
+ 		    break;
+-		case 7: // size of packet
+-		    strcpy(max_data_str,argv[7]);
++		case 8: // size of packet
++		    strcpy(max_data_str,argv[8]);
+ 		    max_data_str[strlen(max_data_str)-1]=0;
+ 		    max_data_len=atoi(max_data_str)-14; // note 2 *************
+ 		    break;
+-		case 9:	// ip origin
+-		    strcpy(ip_origin,argv[9]);
++		case 10:	// ip origin
++		    strcpy(ip_origin,argv[10]);
+ 		    break;
+-		case 11:	// ip destination
+-		    strcpy(ip_destination,argv[11]);
++		case 12:	// ip destination
++		    strcpy(ip_destination,argv[12]);
+ 		    ip_destination[strlen(ip_destination)-1]=0;
+ 		    break;
+ 	    }

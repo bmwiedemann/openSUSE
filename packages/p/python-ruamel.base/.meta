@@ -1,0 +1,5 @@
+<package name="python-ruamel.base" project="openSUSE:Factory">
+  <title>Shared code for ruamel</title>
+  <description>Common routines for ruamel packages</description>
+  <devel project="devel:languages:python" package="python-ruamel.base"/>
+</package>

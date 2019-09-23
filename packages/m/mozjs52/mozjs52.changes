@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Wed Jan  9 15:47:11 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add -Wno-format-overflow in order to fix boo#1121270.
+
+-------------------------------------------------------------------
+Tue Jul 24 12:59:14 UTC 2018 - msuchanek@suse.com
+
+- Remove trailing backslash (https://build.suse.de/request/show/168818)
+
+-------------------------------------------------------------------
+Mon Jun 18 15:01:12 UTC 2018 - normand@linux.vnet.ibm.com
+
+- update _constraints file for ppc64/ppc64le to avoid
+  "Out of memory" build failure on some PowerPC workers.
+
+-------------------------------------------------------------------
+Wed May 30 11:47:15 UTC 2018 - normand@linux.vnet.ibm.com
+
+- for ppc64 (BE) use same patches as s390x
+  (mozilla-s390-bigendian.patch xulrunner-24.0-s390-inlines.patch)
+- This change is sufficient to solve boo#1093033
+
+-------------------------------------------------------------------
+Wed May 30 08:38:07 UTC 2018 - schwab@suse.de
+
+- No JIT on ppc, don't run jit test
+
+-------------------------------------------------------------------
+Tue May 22 13:57:35 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Fix armv6 build by fixing armv6 detection:
+  * fix_armv6_build.patch
+
+-------------------------------------------------------------------
+Thu Mar  1 16:17:33 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Actually remove bundled zlib and use system zlib. Avoids potential
+  problems when trying to use system zlib while mozjs52-devel is
+  installed (two zlib.h instances with conflicting definitions).
+  Likewise fix for boo#1082720.
+- Drop unused zip BuildRequires.
+
+-------------------------------------------------------------------
+Mon Jan 29 12:08:10 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to 52.6.0
+- Drop fix-64bit-archs.patch and bmo1379539.patch, fixed upstream
+- Update Source url.
+
+-------------------------------------------------------------------
+Fri Dec  1 22:21:04 UTC 2017 - cgrobertson@suse.com
+
+- Added support for ICU and data file.
+- Added mozilla-s390-bigendian.patch to enable bigendian support
+  for s390 machines.
+- Added xulrunner-24.0-s390-inlines.patch for s390 builds.
+
+-------------------------------------------------------------------
+Sat Nov 18 00:59:35 UTC 2017 - jones_ld@protonmail.com
+
+- Enable Internationalization required by GJS
+- Disable running tests due to broken toLocaleDateString_timeZone test
+
+-------------------------------------------------------------------
+Fri Oct  6 17:11:55 UTC 2017 - cgrobertson@suse.com
+
+- Added additional compiler flags on the condition
+  of building for ppc64le using gcc7 or newer.
+  (see bmo#1399248)
+
+-------------------------------------------------------------------
+Tue Aug 29 06:03:29 UTC 2017 - wr@rosenauer.org
+
+- try to use ION everywhere
+- removed obsolete NSPR build dependency
+
+-------------------------------------------------------------------
+Mon Aug 28 09:28:56 UTC 2017 - wr@rosenauer.org
+
+- update to 52.3.0
+- added bmo1176787.patch to disable MOZ_GLUE_IN_PROGRAM
+- added bmo1379539.patch to remove NSPR dependency while
+  --enable-posix-nspr-emulation is used
+
+-------------------------------------------------------------------
+Tue Aug 15 15:19:48 UTC 2017 - wr@rosenauer.org
+
+- initial mozjs52 package
+  (roughly based on previous mozjs* packages)

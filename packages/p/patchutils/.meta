@@ -1,0 +1,12 @@
+<package name="patchutils" project="openSUSE:Factory">
+  <title>A Collection of Tools for Manipulating Patch Files</title>
+  <description>Patchutils contains a collection of tools for manipulating patch files:
+interdiff, combinediff, filterdiff, fixcvsdiff, rediff, lsdiff, and
+splitdiff. You can use interdiff to create an incremental patch between
+two patches that are against a common source tree. Combinediff can be
+used for creating a cumulative diff from two incremental patches.
+Filterdiff is for extracting or excluding patches from a patch set
+based on modified files matching shell wildcards. Lsdiff lists modified
+files in a patch. Rediff corrects hand-edited patches.</description>
+  <devel project="devel:tools" package="patchutils"/>
+</package>

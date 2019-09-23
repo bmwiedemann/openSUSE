@@ -1,0 +1,13 @@
+Index: ntp-4.2.6p5/ntpd/refclock_parse.c
+===================================================================
+--- ntp-4.2.6p5.orig/ntpd/refclock_parse.c
++++ ntp-4.2.6p5/ntpd/refclock_parse.c
+@@ -3668,7 +3668,7 @@ parse_process(
+ 
+ 		NLOG(NLOG_CLOCKINFO) /* conditional if clause for conditional syslog */
+ 			msyslog(LOG_WARNING, "PARSE receiver #%d: conversion status \"%s\"",
+-				CLK_UNIT(parse->peer), parsestatus(parsetime->parse_status, buffer, sizeof(buffer)));
++				CLK_UNIT(parse->peer), parsestatus(parsetime->parse_status, buffer, sizeof(buffer) - strlen(buffer) - 1));
+ 
+ 		if ((parsetime->parse_status & CVT_MASK) == CVT_FAIL)
+ 		{

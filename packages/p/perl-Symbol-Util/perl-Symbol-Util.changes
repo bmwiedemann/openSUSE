@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Tue Jun  4 18:35:03 UTC 2013 - coolo@suse.com
+
+- updated to 0.0203
+  Fixes:
+  
+  * Compiles cleanly with Perl 5.14: defined(%hash) and defined(@array) are
+    deprecated.  Fixes: RT#75763.
+  * Mixor changes in POD.
+
+-------------------------------------------------------------------
+Mon Apr  4 08:39:25 UTC 2011 - coolo@novell.com
+
+- initial package 0.0202
+    * created by cpanspec 1.78.03
+

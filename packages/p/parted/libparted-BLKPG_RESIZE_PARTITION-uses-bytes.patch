@@ -1,0 +1,30 @@
+From: "Brian C. Lane" <bcl@redhat.com>
+Date: Fri, 5 Jun 2015 14:40:00 -0700
+Subject: libparted: BLKPG_RESIZE_PARTITION uses bytes, not sectors
+References: bsc#1058667
+Patch-mainline: v3.3
+Git-commit: c6dc6e5d0f49a26242d2b28622514814a53d92e1
+
+This results in the extended partition vanishing after adding another
+partition.
+
+Resolves: rhbz#1135493
+Acked-by: Sebastian Parschauer <sparschauer@suse.de>
+---
+ libparted/arch/linux.c |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+--- a/libparted/arch/linux.c
++++ b/libparted/arch/linux.c
+@@ -2640,7 +2640,10 @@ static int _blkpg_resize_partition (PedD
+                                 if (walk->geom.start == part->geom.start+1)
+                                         linux_part.length = 1;
+                         }
+-                } else linux_part.length = 1;
++                } else {
++                        linux_part.length = 1;
++                }
++                linux_part.length *= disk->dev->sector_size;
+         }
+         else
+                 linux_part.length = part->geom.length * disk->dev->sector_size;

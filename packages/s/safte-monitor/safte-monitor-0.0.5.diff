@@ -1,0 +1,217 @@
+Index: safte-monitor-0.0.5/Makefile.in
+===================================================================
+--- safte-monitor-0.0.5.orig/Makefile.in
++++ safte-monitor-0.0.5/Makefile.in
+@@ -40,7 +40,7 @@ DESTDIR =
+ pkgdatadir = $(datadir)/safte-monitor
+ pkglibdir = $(libdir)/safte-monitor
+ pkgincludedir = $(includedir)/safte-monitor
+-pkglibexecdir = $(libexecdir)/safte-monitor
++pkgsysconfdir = $(sysconfdir)/safte-monitor
+ 
+ top_builddir = .
+ 
+@@ -52,9 +52,10 @@ transform = @program_transform_name@
+ 
+ 
+ # C Flags
++CFLAGS			= @CFLAGS@
+ CFLAGS			+= -DUSE_CELCIUS
+ CFLAGS			+= -DHAVE_CRYPT_H
+-CFLAGS			+= -g -I$(LINUX_INCLUDES) -Isrc -I$(MATHOPD_DIR) \
++CFLAGS			+= -O2 -I$(LINUX_INCLUDES) -Isrc -I$(MATHOPD_DIR) \
+ 			   -DMATHOPD_CONF="\"$(sysconfdir)/$(SAFTEMON_CONF)\""
+ 
+ 
+@@ -112,11 +113,11 @@ install: all
+ 	$(srcdir)/mkinstalldirs $(DESTDIR)$(bindir) \
+ 		$(DESTDIR)$(sysconfdir) \
+ 		$(DESTDIR)$(pkglibdir)/www \
+-		$(DESTDIR)$(pkglibexecdir) \
++		$(DESTDIR)$(pkgsysconfdir) \
+ 		$(DESTDIR)$(localstatedir)/log/safte-monitor \
+ 		$(DESTDIR)$(localstatedir)/run/safte-monitor
+ 	$(INSTALL_PROGRAM) $(BIN_FILES) $(DESTDIR)$(bindir)
+-	$(INSTALL_PROGRAM) $(LIBEXEC_FILES) $(DESTDIR)$(pkglibexecdir)
++	$(INSTALL_PROGRAM) $(LIBEXEC_FILES) $(DESTDIR)$(pkgsysconfdir)
+ 	$(INSTALL_DATA) $(CONF_FILES) $(DESTDIR)$(sysconfdir)
+ 	$(INSTALL_DATA) $(WWW_FILES) $(DESTDIR)$(pkglibdir)/www
+ 
+Index: safte-monitor-0.0.5/redhat/init.d/safte-monitor
+===================================================================
+--- safte-monitor-0.0.5.orig/redhat/init.d/safte-monitor
++++ safte-monitor-0.0.5/redhat/init.d/safte-monitor
+@@ -3,45 +3,51 @@
+ # safte-monitor        Starts safte-monitor
+ #
+ #
+-# chkconfig: 2345 99 01
+-# description: safte-monitor reads disk enclosure status information from \
+-# SAF-TE (SCSI Accessible Fault Tolerant Enclosures).
++### BEGIN INIT INFO
++# Provides: saftemon
++# Required-Start: $remote_fs
++# Required-Stop: $remote_fs
++# Default-Start: 2 3 5
++# Default-Stop: 0 1 6
++# Short-Description: SAF-TE SCSI enclosure monitor
++# Description: saftemon reads disk enclosure status information from \
++#	SAF-TE (SCSI Accessible Fault Tolerant Enclosures).
++### END INIT INFO
+ 
+ # Source function library.
+-. /etc/init.d/functions
++. /etc/rc.status
+ 
+-[ -f /usr/bin/safte-monitor ] || exit 0
++SAFTEMONITOR=/usr/bin/safte-monitor
++[ -x $SAFTEMONITOR ] || exit 0
+ 
+ # Source config
+ if [ -f /etc/sysconfig/safte-monitor ] ; then
+ 	. /etc/sysconfig/safte-monitor
+ else
+-	SAFTEMONITOR_OPTIONS="-A /usr/libexec/safte-monitor/alert"
++	SAFTEMONITOR_OPTIONS="-A /etc/safte-monitor/alert"
+ fi
+ 
+-RETVAL=0
+-
++rc_reset
+ umask 077
+ 
+ start() {
+- 	echo -n $"Starting SCSI enclosure monitor: "
+-	daemon safte-monitor $SAFTEMONITOR_OPTIONS
+-	RETVAL=$?
+-	echo
+-	[ $RETVAL -eq 0 ] && touch /var/lock/subsys/safte-monitor
+-	return $RETVAL
++ 	echo -n $"Starting SCSI enclosure monitor "
++	startproc $SAFTEMONITOR $SAFTEMONITOR_OPTIONS
++	rc_status -v
+ }	
++
+ stop() {
+-	echo -n $"Shutting down SCSI enclosure monitor: "
+-	killproc safte-monitor
+-	RETVAL=$?
+-	echo
+-	[ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/safte-monitor
+-	return $RETVAL
++	echo -n $"Shutting down SCSI enclosure monitor "
++	killproc $SAFTEMONITOR
++	rc_status -v
+ }
+-rhstatus() {
+-	status safte-monitor
++
++susestatus() {
++	echo -n "Check SCSI enclosure monitor "
++	checkproc $SAFTEMONITOR
++	rc_status -v
+ }
++
+ restart() {
+ 	stop
+ 	start
+@@ -55,18 +61,21 @@ case "$1" in
+   	stop
+ 	;;
+   status)
+-  	rhstatus
++  	susestatus
+ 	;;
+-  restart|reload)
+-  	restart
++  restart|force-reload)
++	restart
++  	;;
++  reload)
++  	exit 3
+ 	;;
+-  condrestart)
+-  	[ -f /var/lock/subsys/safte-monitor ] && restart || :
++  try-restart)
++  	[ -f /var/run/safte-monitor/pid ] && restart || :
+ 	;;
+   *)
+-	echo $"Usage: $0 {start|stop|status|restart|condrestart}"
++	echo $"Usage: $0 {start|stop|status|restart|try-restart}"
+ 	exit 1
+ esac
+ 
+-exit $?
++rc_exit
+ 
+Index: safte-monitor-0.0.5/redhat/sysconfig/safte-monitor
+===================================================================
+--- safte-monitor-0.0.5.orig/redhat/sysconfig/safte-monitor
++++ safte-monitor-0.0.5/redhat/sysconfig/safte-monitor
+@@ -1 +1,13 @@
+-SAFTEMONITOR_OPTIONS="-A /usr/libexec/safte-monitor/alert"
++## Path:        Hardware/SCSI/Monitor
++## Description: Options for the safte-monitor
++## Type:        string
++## Default:     "-A /etc/safte-monitor/alert"
++## ServiceRestart: safte-monitor
++#
++# Options for the safte-monitor, which monitors your SAF-TE
++# compliant SCSI enclosures (temperature, fans, ...)
++# Use safte-monitor -h to get a usage summary.
++# Default: "-A /etc/safte-monitor/alert"
++# sets the alert script name
++#
++SAFTEMONITOR_OPTIONS="-A /etc/safte-monitor/alert"
+Index: safte-monitor-0.0.5/src/qlogic_api.c
+===================================================================
+--- safte-monitor-0.0.5.orig/src/qlogic_api.c
++++ safte-monitor-0.0.5/src/qlogic_api.c
+@@ -1,5 +1,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
++#include <stropts.h>
+ 
+ #include "scsi_api.h"
+ #include "qlogic_api.h"
+Index: safte-monitor-0.0.5/mathopd-1.3pl7-lite/request.c
+===================================================================
+--- safte-monitor-0.0.5.orig/mathopd-1.3pl7-lite/request.c
++++ safte-monitor-0.0.5/mathopd-1.3pl7-lite/request.c
+@@ -211,7 +211,7 @@ static char *rfctime(time_t t, char *buf
+ 	return buf;
+ }
+ 
+-static char *getline(struct pool *p)
++static char *mygetline(struct pool *p)
+ {
+ 	register char *s;
+ 	char *olds, *sp, *end;
+@@ -248,7 +248,7 @@ static char *getline(struct pool *p)
+ 			break;
+ 		}
+ 	}
+-	log_d("getline: fallen off the end");
++	log_d("mygetline: fallen off the end");
+ 	return 0;
+ }
+ 
+@@ -803,7 +803,7 @@ static int process_headers(struct reques
+ 	time_t i;
+ 
+ 	while (1) {
+-		l = getline(r->cn->input);
++		l = mygetline(r->cn->input);
+ 		if (l == 0) {
+ 			return -1;
+ 		}
+@@ -831,7 +831,7 @@ static int process_headers(struct reques
+ 		r->args = s + 1;
+ 		*s = 0;
+ 	}
+-	while ((l = getline(r->cn->input)) != 0) {
++	while ((l = mygetline(r->cn->input)) != 0) {
+ 		s = strchr(l, ':');
+ 		if (s == 0)
+ 			continue;

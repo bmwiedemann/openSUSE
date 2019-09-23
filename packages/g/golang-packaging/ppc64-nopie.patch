@@ -1,0 +1,15 @@
+--- golang-packaging-15.0.11/golang.sh~	2018-06-11 16:17:13.000000000 +0200
++++ golang-packaging-15.0.11/golang.sh	2018-06-12 20:35:41.617659481 +0200
+@@ -139,7 +139,11 @@
+     local last=$(($#-1))
+   fi
+ 
+-  local build_flags="-v -p 4 -x -buildmode=pie"
++  local build_flags="-v -p 4 -x"
++  case "$(uname -m)" in
++    ppc64) ;;
++    *) build_flags="$build_flags -buildmode=pie" ;;
++  esac
+   # Add s flag if go is older than 1.10.
+   # s flag is an openSUSE flag to fix
+   #  https://bugzilla.suse.com/show_bug.cgi?id=776058

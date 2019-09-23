@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Tue Mar 26 13:48:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to skip one test that fails in OBS:
+  * skip-test.patch
+
+-------------------------------------------------------------------
+Tue Mar 26 13:41:36 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.1:
+  * Project moved from https://github.com/haypo/faulthandler to https://github.com/vstinner/faulthandler
+  * Fix tests: accept "python2" and "python2.7" thread name in tests
+  * Fix tests on Python 2.6.
+  * On Windows, faulthandler.register() now also installs an handler for Windows exceptions.
+  * Add support for the PYTHONFAULTHANDLER environment variable. Patch written by Ionel Cristian Mărieș.
+  * Issue #23433: Fix undefined behaviour in faulthandler._stack_overflow(): don't compare pointers, use the Py_uintptr_t type instead of void*. It fixes test_faulthandler on Fedora 22 which now uses GCC 5.
+  * The write() function used to write the traceback is now retried when it is interrupted by a signal.
+  * Issue #23566: enable(), register(), dump_traceback() and dump_traceback_later() functions now accept file descriptors. Patch by Wei Wu.
+  * Drop support and Python 2.5, 2.6, 3.1 and 3.2: only support Python 2.7. No Linux distribution use these versions anymore, so it becomes difficult to test these versions.
+  * Add tox.ini to run tests with tox: it creates a virtual environment, compile and install faulthandler, and run unit tests.
+  * Add Travis YAML configuration.
+- Run tests
+
+-------------------------------------------------------------------
+Wed May  2 15:41:52 UTC 2018 - tchvatal@suse.com
+
+- Fix url
+
+-------------------------------------------------------------------
+Fri Nov 10 20:12:18 UTC 2017 - toddrme2178@gmail.com
+
+- Provide python2-faulthandler for compatibility with singlespec
+  macros
+
+-------------------------------------------------------------------
+Sat Aug 22 15:54:56 UTC 2015 - i@marguerite.su
+
+- disable tests
+  * too time-consuming and fails on TW
+
+-------------------------------------------------------------------
+Sun Aug 16 09:36:32 UTC 2015 - i@marguerite.su
+
+- update to version 2.4
+  * no changelog
+
+-------------------------------------------------------------------
+Thu Aug  1 10:53:03 UTC 2013 - hpj@urpla.net
+
+- clean up spec file
+
+-------------------------------------------------------------------
+Wed Jul 31 16:12:21 UTC 2013 - hpj@urpla.net
+
+- updated to version 2.2
+
+    *   Rename dump_tracebacks_later() to dump_traceback_later(): 
+        use the same API than the faulthandler module of Python 3.3
+    *   Fix handling of errno variable in the handler of user signals
+    *   Fix the handler of user signals: chain the previous signal
+        handler even if getting the current thread state failed
+
+- updated to version 2.1
+
+    *   Add an optional chain argument to faulthandler.register()
+    *   Fix faulthandler._sigsegv() for Clang 3.0
+    *   Fix compilation on Visual Studio
+
+- tests enabled
+
+-------------------------------------------------------------------
+Fri Aug 26 21:58:00 CEST 2011 - hpj@urpla.net
+
+- version 2.0: initial build
+
+

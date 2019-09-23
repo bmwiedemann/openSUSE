@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f5039ab33c72cf670e34a89249f9a97</srcmd5>
+    <version>0.8</version>
+    <time>1530866449</time>
+    <user>dimstar_suse</user>
+    <comment>additional functions and classes for python</comment>
+    <requestid>620104</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0654da57aa0825c264748248ebd8c308</srcmd5>
+    <version>0.8</version>
+    <time>1544726643</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654045</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e79ba29e6daa35843d0a2547d0a1d45a</srcmd5>
+    <version>0.8.2.1</version>
+    <time>1552380856</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.2.1:
+  * no upstream changelog</comment>
+    <requestid>683760</requestid>
+  </revision>
+</revisionlist>

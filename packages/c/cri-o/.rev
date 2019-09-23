@@ -1,0 +1,321 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>66a5247071657305205cc75e716f9f51</srcmd5>
+    <version>1.9.5</version>
+    <time>1519041665</time>
+    <user>dimstar_suse</user>
+    <comment>Changes since the last SR:
+
+- Update cri-o to v1.9.5:
+  * system container: add /var/tmp as RW
+  * container_create: correctly set user
+  * imageService: cache information about images
+  * image: Add lock around image cache access
+- Cleanup version-update related changelogs to only keep log entries of
+  changes that are visible and important to the user, and the project.</comment>
+    <requestid>577286</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6816a45cfd3391456a7031ce6bef23db</srcmd5>
+    <version>1.9.6</version>
+    <time>1519308143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578812</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a986bfab94d52844c8dccab2fc180da2</srcmd5>
+    <version>1.9.8</version>
+    <time>1520329656</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582930</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5d411a6ee13a1c7fc223a5d4ded80321</srcmd5>
+    <version>1.9.8</version>
+    <time>1520588708</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584228</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bc90e33a4de1d6bc1078b295cfbff6d2</srcmd5>
+    <version>1.9.9</version>
+    <time>1520933021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585789</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bb0e56e9c83144647dc169011b39159c</srcmd5>
+    <version>1.9.10</version>
+    <time>1521193463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587563</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7ef3a9e3176223c1cd1cfc86926b9966</srcmd5>
+    <version>1.9.11</version>
+    <time>1523448220</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>595521</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c900860846299b6a2ab983c03770f6e4</srcmd5>
+    <version>1.9.11</version>
+    <time>1523616674</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>595981</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>922b67d265c8940f69d28121b3daee0d</srcmd5>
+    <version>1.9.11</version>
+    <time>1525611717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>604028</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>f84db358f676851e514d71e6522c1d69</srcmd5>
+    <version>1.9.11</version>
+    <time>1528196024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614174</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c5f43412d44e1610317c4600d07d464d</srcmd5>
+    <version>1.9.13</version>
+    <time>1528492675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614859</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a1c4bea5a4f85382693bae889fe32376</srcmd5>
+    <version>1.9.13</version>
+    <time>1528897177</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616027</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1b91ee70a23f7c4aeb05dd183b349409</srcmd5>
+    <version>1.10.4</version>
+    <time>1530304524</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>619578</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>75759d7721813afa1923ce49573e516e</srcmd5>
+    <version>1.10.5</version>
+    <time>1530567202</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620166</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4619cac351c65fe8c62f46a2da6e2281</srcmd5>
+    <version>1.10.6</version>
+    <time>1531232220</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621831</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1d136911bebf535cb3c74e0f6601698d</srcmd5>
+    <version>1.11.1</version>
+    <time>1534322303</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629197</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5baeb711f48734d1ac5345a8a0079e87</srcmd5>
+    <version>1.11.2</version>
+    <time>1536147909</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630742</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>f5a66bca01c3484ad9faf27d788c8b10</srcmd5>
+    <version>1.11.2</version>
+    <time>1539251088</time>
+    <user>dimstar_suse</user>
+    <comment>- Add go-1.11-compat-backport.patch for go1.11 compatibility.
+  * Tested with golang(API) == 1.10 and golang(API) == 1.11, OK
+  * Upstream git master commit
+    https://github.com/kubernetes-sigs/cri-o/commit/0bd30872028b5ed2d0eb7febb39f034b5f2da72a
+    contains 1 hunk adding missing argument in format string of
+    calls to:
+    # github.com/kubernetes-incubator/cri-o/lib
+    lib/container_server.go:309: Debugf call needs 1 arg but has 2 args
+    lib/container_server.go:317: Debugf call needs 1 arg but has 2 args
+    ...
+    FAIL   github.com/kubernetes-incubator/cri-o/lib [build failed]
+    Calls in question:
+    logrus.Debugf(&quot;loaded new pod sandbox %s&quot;, sandboxID, err)
+    logrus.Debugf(&quot;loaded new pod container %s&quot;, containerID, err)
+    require another argument to the string format (&quot;: %v&quot; per upstream):
+    logrus.Debugf(&quot;loaded new pod sandbox %s: %v&quot;, sandboxID, err)
+    logrus.Debugf(&quot;loaded new pod container %s: %v&quot;, containerID, err)
+    Patch contents not available in upstream cri-o released versions:
+    cri-o-1.11.3
+    cri-o-1.11.4
+    cri-o-1.11.5
+    cri-o-1.11.6
+    Filed upstream issue requesting patch contents in released version:
+    https://github.com/kubernetes-sigs/cri-o/issues/1827</comment>
+    <requestid>640756</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>07bc6507d85308ec31e378da34b8e01b</srcmd5>
+    <version>1.12.0</version>
+    <time>1541508518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643136</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>029613164d179279c35b380bf92ea3fc</srcmd5>
+    <version>1.12.0</version>
+    <time>1542122548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646997</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>25ac498de2cb792fc12a78ef6cc30559</srcmd5>
+    <version>1.12.1</version>
+    <time>1542749318</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650125</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1732dd07c38aa0d8db6079e6e50a0a96</srcmd5>
+    <version>1.13.0</version>
+    <time>1544441298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656022</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>210264ca9801a3886766d035297920c5</srcmd5>
+    <version>1.13.0</version>
+    <time>1545376708</time>
+    <user>dimstar_suse</user>
+    <comment>- Update cri-o deprecated configuration and documentation to match upstream</comment>
+    <requestid>658861</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9d1473725a4da797d21950bc6c873ea6</srcmd5>
+    <version>1.13.1</version>
+    <time>1551298315</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>679428</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f23341f362468a99cc7f79f7a08c95b5</srcmd5>
+    <version>1.13.3</version>
+    <time>1553699479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685952</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>391ed446ab9e5d5ba3fe5f5247c3b143</srcmd5>
+    <version>1.14.0</version>
+    <time>1554372190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690560</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>fbaee2a4037e2c5a1f595eb607e59cbb</srcmd5>
+    <version>1.14.0</version>
+    <time>1555321895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693682</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>798c5aa918f325026884ce84c7a7518e</srcmd5>
+    <version>1.14.0</version>
+    <time>1555928607</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>695815</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>37d17d9fca38a8d19bd627e69ce0cd72</srcmd5>
+    <version>1.14.1</version>
+    <time>1558514995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703679</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>af858407cf76957a8502261f2fee58ba</srcmd5>
+    <version>1.14.1</version>
+    <time>1560337448</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706320</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>72f9cc1dfac09928f4d991b248f19355</srcmd5>
+    <version>1.15.0</version>
+    <time>1563223406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713498</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>8839d5e9cff0b7ba6c5b87c6c3dfa0e7</srcmd5>
+    <version>1.15.0</version>
+    <time>1564137459</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718499</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>c6132722aa6694f46a0cbc4460bc4d64</srcmd5>
+    <version>1.15.0</version>
+    <time>1565473457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721687</requestid>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>02cd96f5b7de1d378265645177214b06</srcmd5>
+    <version>1.15.0</version>
+    <time>1567423347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727037</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>7a7ade0ef397a36db1ce293fa8c643ca</srcmd5>
+    <version>1.15.1</version>
+    <time>1568190199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728727</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3d3b93c1e7fbd2d7e494ca907388020f</srcmd5>
+    <version>1.15.2</version>
+    <time>1568983665</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>730745</requestid>
+  </revision>
+</revisionlist>

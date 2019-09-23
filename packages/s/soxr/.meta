@@ -1,0 +1,5 @@
+<package name="soxr" project="openSUSE:Factory">
+  <title>The SoX Resampler library</title>
+  <description>The SoX Resampler library performs one-dimensional sample-rate conversion – it may be used, for example, to resample PCM-encoded audio.</description>
+  <devel project="multimedia:libs" package="soxr"/>
+</package>

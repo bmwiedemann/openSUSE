@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Tue Apr  9 17:17:04 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove reference to parent pom, since we are not building with
+  Maven.
+- Clean the classpath of the script to include only neede jars
+
+-------------------------------------------------------------------
+Sat Mar 23 08:40:02 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- plexus-metadata-generator.spec: Describe package, not project.
+
+-------------------------------------------------------------------
+Fri Mar 22 21:34:55 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Add another spec file to build plexus-metadata-generator in order
+  to be able to generate plexus components.xml descriptor
+- Added patch:
+  * plexus-metadata-generator-nomojo.patch
+    + Allow building this command-line tool without needing to use
+      exceptions defined in maven-plugin-api
+
+-------------------------------------------------------------------
+Sun Mar  3 18:20:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Describe package, not project.
+
+-------------------------------------------------------------------
+Sat Mar  2 13:22:53 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of plexus-containers 1.7.1
+- Generate and customize ant build files
+- Leave out the plexus-component-metadata that will be built
+  by a different spec file

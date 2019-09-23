@@ -1,0 +1,105 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7117dd3a17eac15984b724534c093678</srcmd5>
+    <version>2.3</version>
+    <time>1168902738</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="178">
+    <srcmd5>7117dd3a17eac15984b724534c093678</srcmd5>
+    <version>2.3</version>
+    <time>1168902738</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="179">
+    <srcmd5>63d93bc4929215cc6d3c6a89cc13a7d8</srcmd5>
+    <version>2.3</version>
+    <time>1245259942</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="181">
+    <srcmd5>63d93bc4929215cc6d3c6a89cc13a7d8</srcmd5>
+    <version>2.3</version>
+    <time>1245259942</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="182">
+    <srcmd5>ba182ac3f18e396509871d911db9c72e</srcmd5>
+    <version>2.3</version>
+    <time>1268923522</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="184">
+    <srcmd5>ba182ac3f18e396509871d911db9c72e</srcmd5>
+    <version>2.3</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="185">
+    <srcmd5>ba182ac3f18e396509871d911db9c72e</srcmd5>
+    <version>2.3</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="188">
+    <srcmd5>ba182ac3f18e396509871d911db9c72e</srcmd5>
+    <version>2.3</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="189">
+    <srcmd5>f9f80bdb586d50413efcd7393d0efb55</srcmd5>
+    <version>2.3</version>
+    <time>1316516020</time>
+    <user>saschpe</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.) (forwarded request 83509 from jengelh)</comment>
+    <requestid>83733</requestid>
+  </revision>
+  <revision rev="10" vrev="191">
+    <srcmd5>f9f80bdb586d50413efcd7393d0efb55</srcmd5>
+    <version>2.3</version>
+    <time>1319181876</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="192">
+    <srcmd5>31253d88fefa6225e9ef5020f449b120</srcmd5>
+    <version>2.3</version>
+    <time>1337004840</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-FHS
+A new license was created in the spreadsheet linked from license.opensuse.org specifically for this package and license (forwarded request 120675 from babelworx)</comment>
+    <requestid>120689</requestid>
+  </revision>
+  <revision rev="12" vrev="194">
+    <srcmd5>31253d88fefa6225e9ef5020f449b120</srcmd5>
+    <version>2.3</version>
+    <time>1340183326</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="196">
+    <srcmd5>31253d88fefa6225e9ef5020f449b120</srcmd5>
+    <version>2.3</version>
+    <time>1359108875</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="198">
+    <srcmd5>31253d88fefa6225e9ef5020f449b120</srcmd5>
+    <version>2.3</version>
+    <time>1379662337</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="200">
+    <srcmd5>31253d88fefa6225e9ef5020f449b120</srcmd5>
+    <version>2.3</version>
+    <time>1409300873</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

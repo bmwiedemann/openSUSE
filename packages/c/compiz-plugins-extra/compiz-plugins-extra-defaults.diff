@@ -1,0 +1,41 @@
+diff -ur a/metadata/animationaddon.xml.in b/metadata/animationaddon.xml.in
+--- a/metadata/animationaddon.xml.in	2008-09-19 13:21:35.000000000 +0530
++++ b/metadata/animationaddon.xml.in	2008-09-19 13:23:55.000000000 +0530
+@@ -90,14 +90,14 @@
+ 	  <option name="fire_particles" type="int">
+ 	    <_short>Number Of Fire Particles</_short>
+ 	    <_long>Number of fire particles.</_long>
+-	    <default>1000</default>
++	    <default>300</default>
+ 	    <min>100</min>
+ 	    <max>10000</max>
+ 	  </option>
+ 	  <option name="fire_size" type="float">
+ 	    <_short>Fire Particle Size</_short>
+ 	    <_long>Fire particle size.</_long>
+-	    <default>5</default>
++	    <default>3</default>
+ 	    <min>0.1</min>
+ 	    <max>20</max>
+ 	    <precision>0.1</precision>
+diff -ur a/metadata/cubeaddon.xml.in b/metadata/cubeaddon.xml.in
+--- a/metadata/cubeaddon.xml.in	2008-09-19 13:21:35.000000000 +0530
++++ b/metadata/cubeaddon.xml.in	2008-09-19 13:25:15.000000000 +0530
+@@ -220,7 +220,7 @@
+ 					<option name="top_scale" type="bool">
+ 						<_short>Scale top image</_short>
+ 						<_long>Scale image to cover top face of cube</_long>
+-						<default>true</default>
++						<default>false</default>
+ 					</option>
+ 					<option name="bottom_scale" type="bool">
+ 						<_short>Scale bottom image</_short>
+@@ -274,7 +274,7 @@
+ 						<type>string</type>
+ 						<hints>file;image;</hints>
+ 						<default>
+-							<value>fusioncap.png</value>
++							<value>opensuse.png</value>
+ 						</default>
+ 						<hints>file;image;</hints>
+ 					</option>

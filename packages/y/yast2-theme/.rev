@@ -1,0 +1,1225 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>17e83d9521e93018bd0e688bea487277</srcmd5>
+    <version>2.14.1</version>
+    <time>1168904694</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>643f3eeb42b953e2265ff44a3b7473d2</srcmd5>
+    <version>2.15.0</version>
+    <time>1169512083</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4d5c74a26578dab3b72b55b8d3d919f3</srcmd5>
+    <version>2.15.2</version>
+    <time>1172229174</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b980c59ea79bd71a984576e68f596fd7</srcmd5>
+    <version>2.15.3</version>
+    <time>1176914599</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6bba3968bcaaf580fd3661ab2c73aa3e</srcmd5>
+    <version>2.15.3</version>
+    <time>1177949063</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>488bc2e7134a6346303f233e986ed023</srcmd5>
+    <version>2.15.3</version>
+    <time>1181946530</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ccfd15c22ffa680c54c3eefe711560c7</srcmd5>
+    <version>2.15.4</version>
+    <time>1184085727</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2070599a5521aa3fe9427145c042ecfc</srcmd5>
+    <version>2.15.5</version>
+    <time>1186167894</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6d67c28baab04ffc817bbfc2fe869605</srcmd5>
+    <version>2.15.6</version>
+    <time>1186168251</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>70c730f12dc37e105f1a0c065576953f</srcmd5>
+    <version>2.15.7</version>
+    <time>1187178811</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>274b4df9719c9eed714edc31639fd294</srcmd5>
+    <version>2.15.8</version>
+    <time>1187906987</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fbfaf77449ed6cb67118e73282277edd</srcmd5>
+    <version>2.15.10</version>
+    <time>1188418164</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>254229eafd6b0eac7ffd764b71003c91</srcmd5>
+    <version>2.15.13</version>
+    <time>1188836486</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d7c03154a60d79c24c8382f339324309</srcmd5>
+    <version>2.15.14</version>
+    <time>1190654262</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>201206066baad921cbe7083d3830ebd9</srcmd5>
+    <version>2.16.1</version>
+    <time>1197998375</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e4874efc2baa5688b93c80c8a1c0bfd1</srcmd5>
+    <version>2.16.2</version>
+    <time>1198099218</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ca374afc8f68d6a0dfcf9776b93a45cd</srcmd5>
+    <version>2.16.3</version>
+    <time>1198599716</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b3161bc2a48f47b7d8abf015495facd9</srcmd5>
+    <version>2.16.4</version>
+    <time>1199670404</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0fc1b2f83b32f8afb49939ffbe4d4d52</srcmd5>
+    <version>2.16.5</version>
+    <time>1201133305</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ce7a3ca979b9fc2fd0b81b9b910504df</srcmd5>
+    <version>2.16.6</version>
+    <time>1201133410</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a5c4dffc567ed5b50e8b0c6f2c46e174</srcmd5>
+    <version>2.16.7</version>
+    <time>1201478311</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5509367e362b29d5654d8ca7b61a3dec</srcmd5>
+    <version>2.16.8</version>
+    <time>1201711823</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0e6699f506afa8b1c56561612674e574</srcmd5>
+    <version>2.16.9</version>
+    <time>1201818807</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d5756f1f18f288c14805860ea0388ce6</srcmd5>
+    <version>2.16.12</version>
+    <time>1203147810</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>303de3270ff5f1521dcd7f2c2ccafb93</srcmd5>
+    <version>2.16.13</version>
+    <time>1203413862</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>7e8f05012d899b063bcb1cd85ea1c815</srcmd5>
+    <version>2.16.13</version>
+    <time>1203639894</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>a44c39966a64b766ff7ad52c8b1f7239</srcmd5>
+    <version>2.16.13</version>
+    <time>1203691103</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9b1f36603502113ba4fafc45c797dd1b</srcmd5>
+    <version>2.16.14</version>
+    <time>1204560080</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4a87a2873760590d2d7cda9ba4e59812</srcmd5>
+    <version>2.16.15</version>
+    <time>1204640813</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1f95cc7e60d370ca781c3173f3e59782</srcmd5>
+    <version>2.16.16</version>
+    <time>1204749607</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>976a0156a43dd4f67bb78a52b5fb4b5e</srcmd5>
+    <version>2.16.17</version>
+    <time>1205172173</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>cb5c1bfdde800b9b03b2cf44e4ed8d57</srcmd5>
+    <version>2.16.18</version>
+    <time>1208020101</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>4cb1cacb7355008279e30a975edf81b3</srcmd5>
+    <version>2.16.19</version>
+    <time>1208129471</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0d2841c1cbe053eddf1de07d6abc520d</srcmd5>
+    <version>2.16.20</version>
+    <time>1208353110</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>695e1433cb6e3442491fe24e287448b5</srcmd5>
+    <version>2.16.21</version>
+    <time>1208353280</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b929619660b9358af95e45a228c129fa</srcmd5>
+    <version>2.16.22</version>
+    <time>1208740466</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4bb457e0d1536c4e4ba47aea77973cad</srcmd5>
+    <version>2.16.23</version>
+    <time>1209284283</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>d07201e4bb9f496b862cf01f40990fb0</srcmd5>
+    <version>2.16.24</version>
+    <time>1209460373</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>def539426f55ac6cea18c0998b152b48</srcmd5>
+    <version>2.16.25</version>
+    <time>1209501940</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>19e12c30ec3ece9c97480f19eaf6f6d7</srcmd5>
+    <version>2.16.26</version>
+    <time>1210089979</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>9eed99785c4ec17cdfc63cac99c28f98</srcmd5>
+    <version>2.16.27</version>
+    <time>1210516046</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>3d4f4512e96ec3953be9658f0f54b7cc</srcmd5>
+    <version>2.16.28</version>
+    <time>1210978249</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>401f04c390618a68b7e473df2222b6a5</srcmd5>
+    <version>2.16.28</version>
+    <time>1211401458</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>32e42c8c3d5a27e148039866eab873b2</srcmd5>
+    <version>2.16.31</version>
+    <time>1211820250</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>7028c698fe946789069d4af6981bec1b</srcmd5>
+    <version>2.16.31</version>
+    <time>1211836481</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>70db0bc8b7f025a9bc8eb01b737063ac</srcmd5>
+    <version>2.16.32</version>
+    <time>1211904992</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>208c718ea1ffd180a377e6e1c7dcd891</srcmd5>
+    <version>2.16.35</version>
+    <time>1212228777</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>7c6fa6209280ca5ebfc9e2c6510962ff</srcmd5>
+    <version>2.16.36</version>
+    <time>1212447928</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>883402654afa9666898b904863babde5</srcmd5>
+    <version>2.16.37</version>
+    <time>1212504177</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>f9b22f0a9dc877b2de9edd15aedbc62f</srcmd5>
+    <version>2.16.38</version>
+    <time>1212679105</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>e85067b3c29452de47350475a683d896</srcmd5>
+    <version>2.17.1</version>
+    <time>1218066031</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>56141093f37ce11c98f4b4f435bd2e4d</srcmd5>
+    <version>2.17.2</version>
+    <time>1219568817</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>d286c9687f38acfb7c0fdd3dcbb3c714</srcmd5>
+    <version>2.17.2</version>
+    <time>1219616516</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>190fd68705e3ac0b1fadb421a0979a20</srcmd5>
+    <version>2.17.3</version>
+    <time>1221177608</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>b0163676887d7fc01ecd95ff4cdc14b8</srcmd5>
+    <version>2.17.4</version>
+    <time>1222297836</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>9367b6e7338242fcc053d53ae96c0e3b</srcmd5>
+    <version>2.17.5</version>
+    <time>1223389102</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>d3c75cd49a5bd5f4b5025dba20093d1a</srcmd5>
+    <version>2.17.6</version>
+    <time>1224861708</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>a7cf334480dd5d5d9d5492caf9f5ec73</srcmd5>
+    <version>2.17.7</version>
+    <time>1225818124</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>e6d6660e4eca6b78f3f8a0c52320d0c6</srcmd5>
+    <version>2.17.8</version>
+    <time>1225818379</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>2a627f16d3c2ebda9123740a8ee36e8a</srcmd5>
+    <version>2.17.9</version>
+    <time>1226007480</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>25f14df738c7942813e7da5d5ef3bee9</srcmd5>
+    <version>2.17.10</version>
+    <time>1226332527</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>24b65150d27bc271db8eebaeccbc1642</srcmd5>
+    <version>2.17.11</version>
+    <time>1227142997</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>6bb74a3c376de62d93ead0b6e14a1911</srcmd5>
+    <version>2.17.12</version>
+    <time>1227602277</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>452e8c0ac2a3c339e8d2ca1533712992</srcmd5>
+    <version>2.17.13</version>
+    <time>1227907947</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>4e95900e165db6178ab4fa40adbd223f</srcmd5>
+    <version>2.17.15</version>
+    <time>1229350833</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>2974e0165ad6f1566045764bf2c6f30a</srcmd5>
+    <version>2.18.0</version>
+    <time>1232640126</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>794b2f04cdde11b6bce87736fec32ebb</srcmd5>
+    <version>2.18.1</version>
+    <time>1238601265</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>a57712e45a9924b4fd3443b0e67bf7bf</srcmd5>
+    <version>2.18.2</version>
+    <time>1240326185</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>8803c8b437c94e4a516bb0aaa29c062c</srcmd5>
+    <version>2.18.3</version>
+    <time>1244067781</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>04d8449c450f90bd947dd732e76a6dfb</srcmd5>
+    <version>2.18.5</version>
+    <time>1251145537</time>
+    <user>autobuild</user>
+    <comment>Copy from YaST:Head/yast2-theme based on submit request 18552 from user kmachalkova
+</comment>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>26250bef0d572b3c613f6de8ad95ff0e</srcmd5>
+    <version>2.18.6</version>
+    <time>1251919125</time>
+    <user>autobuild</user>
+    <comment>Copy from YaST:Head/yast2-theme based on submit request 19549 from user coolo
+</comment>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>271a7c84a4a2f018b356b536a0b787b2</srcmd5>
+    <version>2.18.7</version>
+    <time>1252109354</time>
+    <user>autobuild</user>
+    <comment>Copy from YaST:Head/yast2-theme based on submit request 19939 from user tgoettlicher
+</comment>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>6e0c54512459d1437efe5dc4b0fa4779</srcmd5>
+    <version>2.18.8</version>
+    <time>1252580418</time>
+    <user>autobuild</user>
+    <comment>Copy from YaST:Head/yast2-theme based on submit request 20112 from user tgoettlicher
+</comment>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>3256be43a0ac3d5257e522a70cda292d</srcmd5>
+    <version>2.18.9</version>
+    <time>1254525173</time>
+    <user>autobuild</user>
+    <comment>Copy from YaST:Head/yast2-theme based on submit request 21577 from user tgoettlicher
+</comment>
+  </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>0bbe5072641a25f43ba914e7a3c390dc</srcmd5>
+    <version>2.18.9</version>
+    <time>1255018254</time>
+    <user>autobuild</user>
+    <comment>Copy from YaST:Head/yast2-theme based on submit request 22101 from user coolo
+</comment>
+  </revision>
+  <revision rev="76" vrev="4">
+    <srcmd5>0bbe5072641a25f43ba914e7a3c390dc</srcmd5>
+    <version>2.18.9</version>
+    <time>1255018254</time>
+    <user>autobuild</user>
+    <comment>Copy from YaST:Head/yast2-theme based on submit request 22101 from user coolo
+</comment>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>bf2fdc467031c0624e13033ade3737d2</srcmd5>
+    <version>2.18.10</version>
+    <time>1256083902</time>
+    <user>autobuild</user>
+    <comment>Copy from YaST:Head/yast2-theme based on submit request 22435 from user coolo
+</comment>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>e66d9c752d5e17d18888339912968e52</srcmd5>
+    <version>2.18.11</version>
+    <time>1257854465</time>
+    <user>autobuild</user>
+    <comment>Copy from YaST:Head/yast2-theme based on submit request 24088 from user tgoettlicher
+</comment>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>7320777e1fc4f20dd1b88b2093383c01</srcmd5>
+    <version>2.19.0</version>
+    <time>1264611273</time>
+    <user>autobuild</user>
+    <comment>Copy from YaST:Head/yast2-theme based on submit request 30466 from user jsrain
+</comment>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>24e972404b3aecbecd266aead982f116</srcmd5>
+    <version>2.19.0</version>
+    <time>1268926792</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>dda5ba8256cb7e0a4de80ab5d485776d</srcmd5>
+    <version>2.19.1</version>
+    <time>1274261988</time>
+    <user>autobuild</user>
+    <comment>Copy from YaST:Head/yast2-theme based on submit request 40312 from user coolo
+</comment>
+    <requestid>40312</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>6d46655ae4ca4ed12871d70626a7d3e7</srcmd5>
+    <version>2.19.2</version>
+    <time>1275569313</time>
+    <user>autobuild</user>
+    <comment>Copy from YaST:Head/yast2-theme based on submit request 41026 from user coolo
+</comment>
+    <requestid>41026</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>6d46655ae4ca4ed12871d70626a7d3e7</srcmd5>
+    <version>2.19.2</version>
+    <time>1278667399</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="84" vrev="3">
+    <srcmd5>6d46655ae4ca4ed12871d70626a7d3e7</srcmd5>
+    <version>2.19.2</version>
+    <time>1278678634</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>9b59966bfae7dfd1323123f565d5c036</srcmd5>
+    <version>2.20.1</version>
+    <time>1296128035</time>
+    <user>darix</user>
+    <comment>Accepted submit request 59151 from user coolo
+</comment>
+    <requestid>59151</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>2ff852202c5fc5c930130565a77d5908</srcmd5>
+    <version>2.20.1</version>
+    <time>1296128043</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 59151
+</comment>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>13fa53dc21823467d511fd86d441de72</srcmd5>
+    <version>2.20.2</version>
+    <time>1296469024</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 59466 from user coolo
+</comment>
+    <requestid>59466</requestid>
+  </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>795a3fcfe186d941e8ac2a2d48cadf7a</srcmd5>
+    <version>2.20.2</version>
+    <time>1296469036</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 59466
+</comment>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>7fe4132bcba4257ea78e9f0d44dc7dc2</srcmd5>
+    <version>2.20.3</version>
+    <time>1296693376</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59824 from user tgoettlicher
+</comment>
+    <requestid>59824</requestid>
+  </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>01db4015919d452a322ac530b4319a58</srcmd5>
+    <version>2.20.3</version>
+    <time>1296693388</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59824
+</comment>
+  </revision>
+  <revision rev="91" vrev="5">
+    <srcmd5>01db4015919d452a322ac530b4319a58</srcmd5>
+    <version>2.20.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>07c762d974ab5d964cd156c8cd0dff64</srcmd5>
+    <version>2.21.3</version>
+    <time>1305702702</time>
+    <user>saschpe</user>
+    <comment> </comment>
+    <requestid>70465</requestid>
+  </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>d26c7672ed6b77984f4f41c17843fe3f</srcmd5>
+    <version>2.21.3</version>
+    <time>1305702713</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70465
+</comment>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>bf12eeb7c1e815c02c9cbc18bb4ab6e3</srcmd5>
+    <version>2.21.4</version>
+    <time>1307543671</time>
+    <user>saschpe</user>
+    <comment> </comment>
+    <requestid>72932</requestid>
+  </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>a90f94b5a9180b03afb83f5ee5b5aefd</srcmd5>
+    <version>2.21.4</version>
+    <time>1307543682</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72932
+</comment>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>13519fc1140493ef4f0e316429d35dd9</srcmd5>
+    <version>2.21.5</version>
+    <time>1307691350</time>
+    <user>saschpe</user>
+    <comment> </comment>
+    <requestid>73134</requestid>
+  </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>29753ab84f48a29de0f376e05e1631ca</srcmd5>
+    <version>2.21.5</version>
+    <time>1307691365</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73134
+</comment>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>e7c435109fb0f5e4dca0f3f3531bebfa</srcmd5>
+    <version>2.21.6</version>
+    <time>1312736042</time>
+    <user>saschpe</user>
+    <comment> </comment>
+    <requestid>78014</requestid>
+  </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>0cec513d587c1c595521615a93d69a60</srcmd5>
+    <version>2.21.6</version>
+    <time>1312736050</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78014
+</comment>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>083a795ac8f1869f94f41675bf8633f1</srcmd5>
+    <version>2.21.7</version>
+    <time>1314621826</time>
+    <user>saschpe</user>
+    <comment> </comment>
+    <requestid>80028</requestid>
+  </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>1a3bdf928bac344e6d2fae469ed1b389</srcmd5>
+    <version>2.21.7</version>
+    <time>1314621836</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80028
+</comment>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>4b37cb647e5fbc82119558d5f698fd45</srcmd5>
+    <version>2.21.8</version>
+    <time>1314692399</time>
+    <user>saschpe</user>
+    <comment> </comment>
+    <requestid>80086</requestid>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>d3dc0f66526ae66ae80fa3282850de40</srcmd5>
+    <version>2.21.8</version>
+    <time>1314692409</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80086
+</comment>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>e06b3c1f8131881ed08d5ca77ed21d7f</srcmd5>
+    <version>2.21.11</version>
+    <time>1316767118</time>
+    <user>saschpe</user>
+    <comment>- move wizards into art repo - yast2-qt-branding now required by
+  yast2-qt</comment>
+    <requestid>84500</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>9696d3d29a8fa07698122cdb306a59de</srcmd5>
+    <version>2.21.12</version>
+    <time>1317025434</time>
+    <user>saschpe</user>
+    <comment> </comment>
+    <requestid>84589</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>7a8b540aef7c9749ac4b71daa48e1dc9</srcmd5>
+    <version>2.21.13</version>
+    <time>1317744249</time>
+    <user>oertel</user>
+    <comment> </comment>
+    <requestid>86547</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>46c4ae4a6f2c063180c2f1927deb061f</srcmd5>
+    <version>2.21.14</version>
+    <time>1317996541</time>
+    <user>lrupp</user>
+    <comment> </comment>
+    <requestid>87021</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>bee44af8ceab0cb79fdcc23c60060455</srcmd5>
+    <version>2.21.16</version>
+    <time>1318527858</time>
+    <user>lrupp</user>
+    <comment>- add a symlink for the wizard (split into qt-branding)
+- 2.21.16
+
+- renamed icons
+- 2.21.15</comment>
+    <requestid>87735</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>104274cfbdabd643d30b955b308e3d3a</srcmd5>
+    <version>2.21.18</version>
+    <time>1318941361</time>
+    <user>saschpe</user>
+    <comment>- make wizard a directory again and link single files as we did 
+  in the past (long standing rpm bug)
+- 2.21.18
+
+- added iucv icons
+- 2.21.17</comment>
+    <requestid>88434</requestid>
+  </revision>
+  <revision rev="110" vrev="3">
+    <srcmd5>104274cfbdabd643d30b955b308e3d3a</srcmd5>
+    <version>2.21.18</version>
+    <time>1319182641</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="111" vrev="4">
+    <srcmd5>f41cc82e3b5394098262169338e78513</srcmd5>
+    <version>2.21.18</version>
+    <time>1323195632</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="112" vrev="6">
+    <srcmd5>f41cc82e3b5394098262169338e78513</srcmd5>
+    <version>2.21.18</version>
+    <time>1340184413</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="113" vrev="8">
+    <srcmd5>f41cc82e3b5394098262169338e78513</srcmd5>
+    <version>2.21.18</version>
+    <time>1359110761</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>e0983b0a63b5c6d6f87fddd981a2988e</srcmd5>
+    <version>2.21.19</version>
+    <time>1362033113</time>
+    <user>coolo</user>
+    <comment>submit changed packages from YaST:Head to openSUSE:Factory</comment>
+    <requestid>156648</requestid>
+  </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>5dac621c6795335d48bf2df5b49fa093</srcmd5>
+    <version>2.21.19</version>
+    <time>1369642506</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176345</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>564b4a5a52be1a456f7a153f8217adc2</srcmd5>
+    <version>3.0.0</version>
+    <time>1375348225</time>
+    <user>coolo</user>
+    <comment>updated to version 3.0.0</comment>
+    <requestid>185185</requestid>
+  </revision>
+  <revision rev="117" vrev="3">
+    <srcmd5>564b4a5a52be1a456f7a153f8217adc2</srcmd5>
+    <version>3.0.0</version>
+    <time>1379665177</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>8cad09740c9e8f4ef87d0765d37072c0</srcmd5>
+    <version>3.0.1</version>
+    <time>1380113040</time>
+    <user>coolo</user>
+    <comment>Fixes bnc#779489 (make dotted questionable Indian border in the world map)
+
+It should probably also go to openSUSE-13.1.</comment>
+    <requestid>200321</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>a086df25644c1b782ba9ad4cbe429cc1</srcmd5>
+    <version>3.1.0</version>
+    <time>1381475154</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202849</requestid>
+  </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>ba8ad4eefbac16720298782a0619407d</srcmd5>
+    <version>3.1.0</version>
+    <time>1384415049</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.0
+Version:	3.1.0
+Version:	3.1.0
+Version:	3.1.0
+Version:	3.1.0</comment>
+    <requestid>206787</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>976cda8c70e496ae6c33c574da4af6ec</srcmd5>
+    <version>3.1.1</version>
+    <time>1390382052</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.1</comment>
+    <requestid>214485</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>701f509cf443e9d7aca540b127a8ddfa</srcmd5>
+    <version>3.1.2</version>
+    <time>1390818231</time>
+    <user>scarabeus_factory</user>
+    <comment>submit new version 3.1.2</comment>
+    <requestid>214768</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>47c1b644c2caf710d5bda6f5bb0b21fb</srcmd5>
+    <version>3.1.3</version>
+    <time>1392111955</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.3</comment>
+    <requestid>221263</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>d533b68014e84666e479d2dac1e148be</srcmd5>
+    <version>3.1.5</version>
+    <time>1392626266</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.5</comment>
+    <requestid>222286</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>085d62d60a337b7e305d3a1a695e08a5</srcmd5>
+    <version>3.1.6</version>
+    <time>1393136182</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.6</comment>
+    <requestid>223406</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>6425d5c9169e46362e29d6403d59a23a</srcmd5>
+    <version>3.1.8</version>
+    <time>1394526253</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.8</comment>
+    <requestid>225456</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>3fbe81db61235c21d7021772e7d42507</srcmd5>
+    <version>3.1.12</version>
+    <time>1395400442</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.12</comment>
+    <requestid>226433</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>cbf9baf1705bb054e61b1a6598979ea8</srcmd5>
+    <version>3.1.14</version>
+    <time>1396701778</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.14</comment>
+    <requestid>228331</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>47cc857fdd88eb2817e5cc05125a144d</srcmd5>
+    <version>3.1.17</version>
+    <time>1398505516</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.17</comment>
+    <requestid>231221</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>5466ba3b50cce2006e05d04d37c6dea8</srcmd5>
+    <version>3.1.18</version>
+    <time>1399700940</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.18</comment>
+    <requestid>232893</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>743711c360d590d3c512be2d08247eda</srcmd5>
+    <version>3.1.19</version>
+    <time>1400356904</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.19</comment>
+    <requestid>234129</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>3931f150eabafce8c9fb22b92fbdca1b</srcmd5>
+    <version>3.1.20</version>
+    <time>1401685219</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.20</comment>
+    <requestid>235812</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>e040497d664fbafec3ba4ea36b569255</srcmd5>
+    <version>3.1.21</version>
+    <time>1404487106</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.21</comment>
+    <requestid>239327</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>22bab0c795e8f34f4fba5492b5c68626</srcmd5>
+    <version>3.1.22</version>
+    <time>1406177847</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.22</comment>
+    <requestid>241828</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>73b98b326e4221253e63e8cc88d080ca</srcmd5>
+    <version>3.1.23</version>
+    <time>1406698493</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.23</comment>
+    <requestid>242816</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>da691853c5ff9b0bfa9cab09429b9d9a</srcmd5>
+    <version>3.1.24</version>
+    <time>1406836144</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.24</comment>
+    <requestid>242999</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>880bd92b516441d14ea0a03b505ae783</srcmd5>
+    <version>3.1.25</version>
+    <time>1407744576</time>
+    <user>lnussel</user>
+    <comment>submit new version 3.1.25</comment>
+    <requestid>243863</requestid>
+  </revision>
+  <revision rev="138" vrev="3">
+    <srcmd5>880bd92b516441d14ea0a03b505ae783</srcmd5>
+    <version>3.1.25</version>
+    <time>1409303859</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>94727590cba5761bd2f63e5889e16fd0</srcmd5>
+    <version>3.1.30</version>
+    <time>1409741432</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.30</comment>
+    <requestid>247083</requestid>
+  </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>9f389a9bf6dca2b89ab525547a3463cd</srcmd5>
+    <version>3.1.31</version>
+    <time>1410528305</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.31</comment>
+    <requestid>248335</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>f99fce6790ed994ac159682210edfb70</srcmd5>
+    <version>3.1.32</version>
+    <time>1415288994</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.32</comment>
+    <requestid>259814</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>373439cee0e5ade1ea0c150640b6493c</srcmd5>
+    <version>3.1.33</version>
+    <time>1430983303</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.33</comment>
+    <requestid>305581</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>60081019f76c9f46a76c4354373eb8c9</srcmd5>
+    <version>3.1.34</version>
+    <time>1431753210</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.34</comment>
+    <requestid>307120</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>7afc1fc8e9048d5a3c79342712b1de3a</srcmd5>
+    <version>3.1.35</version>
+    <time>1445782228</time>
+    <user>coolo</user>
+    <comment>submit new version 3.1.35</comment>
+    <requestid>340116</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>8321644031ec2d590c117a35f73b420e</srcmd5>
+    <version>3.1.36</version>
+    <time>1455021017</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 3.1.36</comment>
+    <requestid>356583</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>6fa3f5120defe22922b5623a36f683d1</srcmd5>
+    <version>3.1.37</version>
+    <time>1455701387</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 3.1.37</comment>
+    <requestid>358701</requestid>
+  </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>f9765fcfc24378253279a9cf0b552e1f</srcmd5>
+    <version>3.1.40</version>
+    <time>1468699928</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 3.1.40</comment>
+    <requestid>407889</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>659400fb14030b5354fcf3c087ddbd41</srcmd5>
+    <version>3.1.42</version>
+    <time>1476113243</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 3.1.42</comment>
+    <requestid>433269</requestid>
+  </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>955d080bd0cbe92e0315e57fbd73b7bb</srcmd5>
+    <version>3.2.1</version>
+    <time>1476790094</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 3.2.1</comment>
+    <requestid>435780</requestid>
+  </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>d1d714ecf64d3c75d6eb080a4a52f25f</srcmd5>
+    <version>3.2.2</version>
+    <time>1492009785</time>
+    <user>maxlin_factory</user>
+    <comment>submit new version 3.2.2</comment>
+    <requestid>485786</requestid>
+  </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>0e378c7c3fdddbd8c684c076f7dc8bab</srcmd5>
+    <version>3.2.3</version>
+    <time>1497949270</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 3.2.3</comment>
+    <requestid>503375</requestid>
+  </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>7a34b0f76c52540dfa151498db20f9fe</srcmd5>
+    <version>3.3.0</version>
+    <time>1503999241</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 3.3.0</comment>
+    <requestid>516125</requestid>
+  </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>dfa44fb4193d36bc4b1548c5820ccd38</srcmd5>
+    <version>4.0.0</version>
+    <time>1506340244</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.0.0</comment>
+    <requestid>528309</requestid>
+  </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>86558efecb2c2c4508b3a93001fe8a2f</srcmd5>
+    <version>4.0.1</version>
+    <time>1507280031</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.0.1</comment>
+    <requestid>531742</requestid>
+  </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>910ccbef33fa00e64f424f2ecec1ab22</srcmd5>
+    <version>4.0.3</version>
+    <time>1507896280</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.0.3</comment>
+    <requestid>533715</requestid>
+  </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>7c5e742841b73a8d6fb26801435d76ed</srcmd5>
+    <version>4.0.4</version>
+    <time>1524742162</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.0.4</comment>
+    <requestid>597333</requestid>
+  </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>c16906a865142e8c338bd72e82e413e3</srcmd5>
+    <version>4.1.0</version>
+    <time>1529776644</time>
+    <user>maxlin_factory</user>
+    <comment>submit new version 4.1.0</comment>
+    <requestid>618220</requestid>
+  </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>a7e2abf0bc18409b36f7c50f221d6153</srcmd5>
+    <version>4.1.1</version>
+    <time>1533887264</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.1.1</comment>
+    <requestid>627714</requestid>
+  </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>068fab81c388e1bada288b9f50363f57</srcmd5>
+    <version>4.1.4</version>
+    <time>1541095209</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.1.4</comment>
+    <requestid>642422</requestid>
+  </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>71e22b5f4d1296ad0045637bb4c75834</srcmd5>
+    <version>4.1.5</version>
+    <time>1541864962</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.1.5</comment>
+    <requestid>647019</requestid>
+  </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>3d292f15ea8405340c209851b85e5109</srcmd5>
+    <version>4.1.8</version>
+    <time>1546245917</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.1.8</comment>
+    <requestid>660292</requestid>
+  </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>c8775f44f3924c260eea9cee6031999b</srcmd5>
+    <version>4.1.9</version>
+    <time>1549292863</time>
+    <user>coolo</user>
+    <comment>submit new version 4.1.9</comment>
+    <requestid>669034</requestid>
+  </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>8cd381490ecbe17d808cedb96b93cec9</srcmd5>
+    <version>4.1.10</version>
+    <time>1550573837</time>
+    <user>maxlin_factory</user>
+    <comment>submit new version 4.1.10</comment>
+    <requestid>676549</requestid>
+  </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>5288a275a49ae3be9a2da7c72bdec60e</srcmd5>
+    <version>4.1.11</version>
+    <time>1553158333</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.1.11</comment>
+    <requestid>686904</requestid>
+  </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>3b557ab11ead570864bbcc8ae7298f54</srcmd5>
+    <version>4.2.0</version>
+    <time>1555053121</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.2.0</comment>
+    <requestid>692612</requestid>
+  </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>7b8918c06755c19100a7b341e1533224</srcmd5>
+    <version>4.2.1</version>
+    <time>1557472390</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.2.1</comment>
+    <requestid>701795</requestid>
+  </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>a199fd3afce1f4117f3e3cff0890b065</srcmd5>
+    <version>4.2.2</version>
+    <time>1557915795</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.2.2</comment>
+    <requestid>702842</requestid>
+  </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>02adbf4de63e14a58dbfcb5fe5db130f</srcmd5>
+    <version>4.2.4</version>
+    <time>1564575914</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.2.4</comment>
+    <requestid>718459</requestid>
+  </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>107da132804d736fb617d084d50cbf2f</srcmd5>
+    <version>4.2.5</version>
+    <time>1566893653</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.2.5</comment>
+    <requestid>725303</requestid>
+  </revision>
+</revisionlist>

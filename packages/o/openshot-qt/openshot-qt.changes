@@ -1,0 +1,160 @@
+-------------------------------------------------------------------
+Fri May  3 08:14:07 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 2.4.4
+   * Scale keyframe coordinates when changing Profile or Exporting using a different FPS (#2620)
+   * Large performance improvements on AngularJS Timeline (and solved some Async issues) (#2533)
+   * Integration of resvg SVG library (gitlab and freeze updates) (#2540)
+   * Improved Tracks (simpler numbering, faster inserting, prevent deletion of locked tracks) (#2491)
+   * Improved Docking (Timeline widget is now dockable and Properties works in pillar mode) (#2490)
+   * Use libopenshot to generate preview images for our Title editor, and no longer use Qt's SVG parsing by default. (#2544)
+   * Improving UTF-8 path detection and conversion (#2525)
+   * Rewrite conversion of relative and absolute path support in OpenShot (#2477)
+   * Fixing many Python issues reported in our automatic exception tracking (#2482)
+   * Fixing regressions to Split Audio (#2660)
+   * Integrate Constant Rate Factor (CRF) into Export Dialog (#2543)
+   * Separating PrepareStreams() from Open(), to allow SetOption() to correctly function (#2568)
+   * Adding h265 export preset (thanks Peter) (#2680)
+   * Adding ~/.openshot_qt/presets/ User-defined Presets, so users can easily install custom export presets (devices and formats) (#2555)
+   * Dragging an OSP file into the Project Files widget will open the entire project file (and prompt to save unsaved changes) (#2616)
+   * Persist undo/redo history correctly across OpenShot sessions (#2474)
+   * Fix audio waveform display when slicing clips or resizing/trimming clips
+   * Color picker: Never use native dialog (#2425)
+   * Adding Git Changelog screen (#2566)
+   * Converting to new Settings class, instead of the old ENV VAR method (#2520)
+   * Reverting Angular from 1.7.2 to 1.6.0 (for stability reasons) (#2479)
+   * Completed Arabic, Hindi, Chinese (Simplified and Traditional) translations (#2594)
+   * Update messaging integration on build server (#2426)
+   * Add init.py file for installed module (#2419)
+   * launch.py: Path-detect via openshot_qt init (#2419)
+   * Exit using sys.exit() (#2409)
+   * preferences: Tweak item layout (#2401)
+   * Widen export window (#2373)
+   * Pass remaining command line args to Qt (#2355)
+   * Copy (cleaned up) xdg icon to src/images (#2316)
+   * Add strings to be translated and fix tuple error (#2275)
+   * added browse button in file properties dialog, to allow relinking of individual media files (#2275)
+   * fix for automatic relinking of missing media files during project open (#2275)
+   * Add the same browse type for inkscape and blender field (#2255)
+   * Remove CRLF line endings from chromebook preset (#2204)
+   * Convert language.py line endings (#2204)
+   * Missing files are now automatically deleted from the recent menu (#2202)
+   * Append correct extension to snapshot frames (#2196)
+   * Update Contributors & Translations (#2679)
+
+-------------------------------------------------------------------
+Mon Jan 14 07:02:30 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- add python3-requests dependency (boo#1105262)
+
+-------------------------------------------------------------------
+Mon Sep 24 09:51:28 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- update to version 2.4.3
+  * Animated Masks: New "reader" property type, initially used by the Mask effect to change the image/video used by transitions and the Mask effect
+  * Disable OMP thread concurrency during Export, to make exports as safe as possible
+  * Nudge clips when holding SHIFT + Left or Right arrow (Richard Alloway - N3WWN)
+  * Add Save Current Frame button (Richard Alloway - N3WWN)
+  * New translation & language infrastructure and logic (better logic for determining current language) (Frank Dana - ferdnyc)
+  * Fixed split keep both sides (right side position was incorrect)
+  * Application icon updates (Frank Dana - ferdnyc)
+  * Zoom fixes (lots of issues relating to zooming fixed)
+  * Undo/Redo fixes (fixing and preventing giant .osp project files)
+  * New tutorial system, better child window management (Frank Dana - ferdnyc)
+  * Travis CI Integration
+  * Improve Title filename duplication naming/counting (DerGenaue)
+  * Use track names in "Add To Timeline" window (Frank Dana - ferdnyc)
+  * Improve waveform display rendering (DerGenaue)
+  * Fix audio wave not rendered after completion (DylanC)
+  * Add instagram and twitter presets (DylanC)
+  * Add AppStream metadata to setup.py (Peter Eszlari)
+  * Timeline JavaScript Bug Fixes (DylanC)
+  * Timeline cleanup and performance, upgrade Angular.js (DylanC)
+  * Removing libdrm.so.2 from AppImage
+  * Add src/language path to Mac DMG builder (Frank Dana - ferdnyc)
+  * Add language override on command line using --lang (Frank Dana - ferdnyc)
+  * Add explanatory text for --list-lang (Frank Dana - ferdnyc)
+  * Some fixes for the timeline debugger (Frank Dana - ferdnyc)
+  * Update edit-clear icon in Humanity (Frank Dana - ferdnyc)
+  * Correct variable name typo to initialize properly (DylanC)
+  * Convert all nonessential logs to .debug() (Frank Dana - ferdnyc)
+  * Remove unused effects filters (Frank Dana - ferdnyc)
+  * Add "Ask a Question" template (Frank Dana - ferdnyc)
+  * Preventing libopenshot version check on unittests
+  * More framerates for YouTube HD and Vimeo HD presets (Frank Dana - ferdnyc)
+  * Convert (most) files with DOS line-endings to Unix (Frank Dana - ferdnyc)
+  * Remove debug.js from index.html (Frank Dana - ferdnyc)
+  * Square the PNG icon file (Frank Dana - ferdnyc)
+  * App metadata updates for easier packaging (Frank Dana - ferdnyc)
+  * Move Slice All shortcuts to correct menu (Frank Dana - ferdnyc)
+  * launch-linux.sh: Don't set QT_DEBUG_PLUGINS=1 (Frank Dana - ferdnyc)
+  * Updating default project type to 720p 30 FPS, and sample rate 44100
+  * Fix retention of export path (Richard Alloway - N3WWN)
+  * Fixing GitLab to no longer run CI for tags, and fixing version # for daily and release builds
+  * Add "release-candidate" to filename for daily RC builds, so they don't look so official on the website
+  * Misc Typos and text fixes (luzpaz)
+  * Updating contributors and supporters (Thank You!)
+  * Updating translations
+
+-------------------------------------------------------------------
+Mon Jul 30 13:10:35 UTC 2018 - adrian@suse.de
+
+- fix symlink of file
+
+-------------------------------------------------------------------
+Mon Jul  2 12:59:40 UTC 2018 - adrian@suse.de
+
+- update to version 2.4.2
+  * ACC is default codec now
+  * New effects via libopenshot
+  * Bugfixes
+
+-------------------------------------------------------------------
+Tue Mar  6 13:17:43 UTC 2018 - adrian@suse.de
+
+- update to version 2.4.1
+
+-------------------------------------------------------------------
+Thu Sep 21 16:50:27 UTC 2017 - draht@schaltsekun.de
+
+- fix filelist for build
+
+-------------------------------------------------------------------
+Mon Sep 11 09:36:11 UTC 2017 - adrian@suse.de
+
+- update to 2.4.0
+
+-------------------------------------------------------------------
+Mon Apr  3 09:25:47 UTC 2017 - adrian@suse.de
+
+- Update to 2.3.1
+
+-------------------------------------------------------------------
+Fri Jan 13 10:20:59 UTC 2017 - jengelh@inai.de
+
+- Trim filler words from description.
+
+-------------------------------------------------------------------
+Thu Jan 12 08:41:24 UTC 2017 - adrian@suse.de
+
+- adapt for openSUSE Factory
+
+-------------------------------------------------------------------
+Thu Jan  5 17:39:01 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.2.O:
+  * Performance / Caching
+  * Improved Stability
+  * Keyframe Enhancements
+  * Error Handling / Reporting
+  * New Title Templates
+  * Infrastructure Improvements
+  * Misc / Bug Fixes
+  * More info: http://www.openshotvideo.com/
+
+-------------------------------------------------------------------
+Thu Oct 20 23:12:57 UTC 2016 - avvissu@yandex.by
+
+- Initial package
+
+

@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Mon Aug 26 08:21:49 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove degree adverbs from description.
+
+-------------------------------------------------------------------
+Mon Jul  8 07:57:33 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add baselibs.conf: libmpcdec6-32bit is a dependency for
+  gstreamer-plugins-bad-32bit.
+
+-------------------------------------------------------------------
+Thu Jul  4 10:42:03 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- More spec file cleanup:
+  * Use SPDX identifiers for License
+  * Correct license for libmpcdec (BSD-3-clause)
+  * Use https:// for Source and Url
+  * Remove __DATE__/__TIME__ mangling, no longer needed with current GCC
+  * Remove BuildRoot
+
+-------------------------------------------------------------------
+Fri Jun 21 20:11:03 UTC 2019 - mgorse@suse.com
+
+- Conflict with libmpcdec-devel, since both packages provide
+  libmpcdec.so.
+- Use cmake macros.
+- Move source modifications from %prep to %build. Makes 'quilt
+  setup' more robust.
+- Remove %defattr.. No longer needed.
+
+-------------------------------------------------------------------
+Mon Mar 11 20:34:11 UTC 2013 - asterios.dramis@gmail.com
+
+- Initial rpm release (version r475).
+- Added a patch "libmpcdec.patch" in order to fix CMakeLists.txt
+  to install a libmpcdec shared library and add a missing
+  libmpcdec link to libm.

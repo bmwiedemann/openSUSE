@@ -1,0 +1,7 @@
+usr/sbin/kopano-dagent
+usr/share/doc/kopano/example-config/apparmor.d/usr.sbin.kopano-dagent
+usr/share/doc/kopano/example-config/autorespond
+usr/share/doc/kopano/example-config/dagent.cfg
+usr/share/man/man5/kopano-dagent.cfg.5
+usr/share/man/man8/kopano-dagent.8
+var/lib/kopano/autorespond/

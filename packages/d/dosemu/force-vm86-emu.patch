@@ -1,0 +1,35 @@
+Description: in the face of mmap_min_addr>0, force _cpu_emu to "vm86".
+Author: Kees Cook <kees@debian.org>
+
+Index: dosemu-1.4.0+svn.2008/etc/dosemu.conf
+===================================================================
+--- dosemu-1.4.0+svn.2008.orig/etc/dosemu.conf	2011-05-07 05:49:14.108699827 -0700
++++ dosemu-1.4.0+svn.2008/etc/dosemu.conf	2011-05-07 05:49:55.979273762 -0700
+@@ -34,11 +34,11 @@
+ 
+ # $_cpu = "80586"
+ 
+-# Usage of cpu emulation: "off" (default on x86),
+-# "vm86" only (default on x86-64) or "full" (vm86 and DPMI, experimental!).
++# Usage of cpu emulation: "off" (requires /proc/sys/vm/mmap_min_addr= 0),
++# "vm86" only (default) or "full" (vm86 and DPMI, experimental!).
+ # Use "vm86sim" or "fullsim" to use simulation instead of JIT code generation.
+ 
+-# $_cpu_emu = "off"
++# $_cpu_emu = "vm86"
+ 
+ # if possible use Pentium cycle counter for timing. Default: off
+ 
+Index: dosemu-1.4.0+svn.2008/etc/global.conf
+===================================================================
+--- dosemu-1.4.0+svn.2008.orig/etc/global.conf	2011-05-07 06:00:12.607700020 -0700
++++ dosemu-1.4.0+svn.2008/etc/global.conf	2011-05-07 06:00:27.767906604 -0700
+@@ -220,7 +220,7 @@
+     $xxx = "cpuemu ", $_cpu_emu;
+     $$xxx
+   else
+-    cpuemu off
++    cpuemu vm86
+   endif
+   xms 0
+   $_pm_dos_api = $_ems;		# disabling EMS disables also the translator

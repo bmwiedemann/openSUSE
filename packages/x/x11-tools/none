@@ -1,0 +1,40 @@
+echo "Dummy input method \"none\" (do not use any fancy input method by default)"
+
+# set XMODIFIERS="@im=local".
+# "@im=local" means "use compose and dead-keys" and
+# some programs will use compose and dead-keys only if XMODIFIERS
+# is set to either "@im=local" or "@im=none".
+        
+export XMODIFIERS="@im=local"     # use "Compose"
+
+# Input of German umlauts in acroread doesn’t work if GTK_IM_MODULE is
+# unset. Make sure that it is set here.
+#
+# Setting it to "xim" is a reasonable setting together with
+# XMODIFIERS="@im=local" because Compose support then works exactly
+# as defined in the X11 Compose file.
+#
+# But this still causes problems when saving files
+# with non-ASCII characters in the file name from acroread 8.x because
+# xim support in acroread 8.x is very buggy
+# (see http://bugzilla.novell.com/show_bug.cgi?id=370330)
+#
+# Apart from problems in acroread, xim is generally
+# known to be quite buggy. Therefore a better choice is probably
+# GTK_IM_MODULE=cedilla. This changes 6 Compose key sequences to
+# produce U+00C7 (LATIN CAPITAL LETTER C WITH CEDILLA) and
+# LATIN_SMALL_LETTER_C_WITH_CEDILLA which produce 
+# U+00E7 (LATIN SMALL LETTER C WITH CEDILLA) instead of
+# U+0106 (LATIN CAPITAL LETTER C WITH ACUTE) and
+# U+0107 (LATIN SMALL LETTER C WITH ACUTE).
+# Most users won’t notice that small change, and for those who do notice
+# it is probably even useful.
+# For details see  http://bugzilla.novell.com/show_bug.cgi?id=413879#c27
+
+export GTK_IM_MODULE=cedilla
+
+export QT_IM_MODULE=xim            # to make Compose work as expected in Qt
+#export QT_IM_SWITCHER=imsw-none   # disable input method switching in Qt
+export QT_IM_SWITCHER=imsw-multi   # enable input method switching in Qt
+
+return 0

@@ -1,0 +1,174 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f05e292a6eee8b17ca9f8bbd299f5f94</srcmd5>
+    <version>3.01</version>
+    <time>1306766815</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>71067</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ee94ef6527d100d7b76fa84535e233db</srcmd5>
+    <version>3.01</version>
+    <time>1306766823</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 71067
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>02773b856e1f3a7bc6adec777d71f6d8</srcmd5>
+    <version>3.02</version>
+    <time>1317024941</time>
+    <user>saschpe</user>
+    <comment>- Update to version 3.02:
+  * Upstream provides no changes
+- BuildRequire more modern python-distribute instead of python-setuptools
+- Fixed non-executable script rpmlint warning</comment>
+    <requestid>84084</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>02773b856e1f3a7bc6adec777d71f6d8</srcmd5>
+    <version>3.02</version>
+    <time>1319182393</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3b36e8eb1833c6b6148519a48ea10068</srcmd5>
+    <version>3.101</version>
+    <time>1322215988</time>
+    <user>coolo</user>
+    <comment>plz</comment>
+    <requestid>93426</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a0cc8a9d656759192941ba235eac5bdd</srcmd5>
+    <version>3.200.3</version>
+    <time>1329221458</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103929</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>a0cc8a9d656759192941ba235eac5bdd</srcmd5>
+    <version>3.200.3</version>
+    <time>1340184060</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>a0cc8a9d656759192941ba235eac5bdd</srcmd5>
+    <version>3.200.3</version>
+    <time>1359110049</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>b22b1558d5c14fc1baab1e32a393b572</srcmd5>
+    <version>3.200.3</version>
+    <time>1362414834</time>
+    <user>coolo</user>
+    <comment>created a python3 package. would still need a linkpac call to create the python3 on deve:languages:python after accepting this request. Tried it in my home and it build ok apart from SL-linux due to the lack of python3 there. (forwarded request 157167 from apersaud)</comment>
+    <requestid>157185</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>a0cc8a9d656759192941ba235eac5bdd</srcmd5>
+    <version>3.200.3</version>
+    <time>1371652692</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179853</requestid>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>a0cc8a9d656759192941ba235eac5bdd</srcmd5>
+    <version>3.200.3</version>
+    <time>1379664194</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>55ac6638c5551d6495f7eea7fe7d1635</srcmd5>
+    <version>3.200.3</version>
+    <time>1383035617</time>
+    <user>coolo</user>
+    <comment>- Add html2text-entrypoints.patch:
+  + Fix entry point colliding with /usr/bin/html2text
+- Spec cleanup
+
+- Require python-setuptools instead of distribute (upstreams merged)</comment>
+    <requestid>205013</requestid>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>55ac6638c5551d6495f7eea7fe7d1635</srcmd5>
+    <version>3.200.3</version>
+    <time>1409302888</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>630a61d1f6163f165f7c785b7b3f3682</srcmd5>
+    <version>3.200.3</version>
+    <time>1424827082</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed</comment>
+    <requestid>287515</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>91388eb3c82420bd84579ec61a7479f1</srcmd5>
+    <version>2015.4.14</version>
+    <time>1429606424</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298180</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b27c2294f267e7685f22a64088710b7e</srcmd5>
+    <version>2015.11.4</version>
+    <time>1458120872</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369222</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8020e653708027ed5235d6719efee4ea</srcmd5>
+    <version>2016.9.19</version>
+    <time>1493708086</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491649</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>673463927785fc9e2aef9ac09bf9065d</srcmd5>
+    <version>2018.1.9</version>
+    <time>1535123072</time>
+    <user>dimstar_suse</user>
+    <comment>- Use noun phrase for summary. Ensure accuracy and
+  neutrality of description. (forwarded request 629535 from jengelh)</comment>
+    <requestid>629541</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>cf35a3c6c0534f6ff5117c01bdf2c888</srcmd5>
+    <version>2018.1.9</version>
+    <time>1545647888</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659415</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ed86d29324de1ec3f844b65a74cca9b5</srcmd5>
+    <version>2019.8.11</version>
+    <time>1568379623</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 2019.8.11:
+  * Fix #201: handle &amp;lrm;/&amp;rlm; marks mid-text within stressed tags or right after stressed tags.
+  * Feature #213: images_as_html config option to always generate an img html tag. preserves &quot;height&quot;, &quot;width&quot; and &quot;alt&quot; if possible.
+  * Remove support for end-of-life Pythons. Now requires Python 2.7 or 3.4+.
+  * Remove support for retrieving HTML over the network.
+  * Add __main__.py module to allow running the CLI using python -m html2text ....
+  * Fix #238: correct spacing when a HTML entity follows a non-stressed tags which follow a stressed tag.
+  * Remove unused or deprecated: * html2text.compat.escape() * html2text.config.RE_UNESCAPE * html2text.HTML2Text.replaceEntities() * html2text.HTML2Text.unescape() * html2text.unescape()
+  * Fix #208: handle LEFT-TO-RIGHT MARK after a stressed tag.
+- Remove patch remove_unittest2.patch</comment>
+    <requestid>730321</requestid>
+  </revision>
+</revisionlist>

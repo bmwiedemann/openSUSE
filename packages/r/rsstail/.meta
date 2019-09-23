@@ -1,0 +1,6 @@
+<package name="rsstail" project="openSUSE:Factory">
+  <title>RSS Feed Reader</title>
+  <description>RSSTail is more or less an RSS reader: it monitors an RSS feed and if it detects a new entry, it will emit only that new entry on the terminal.</description>
+  <devel project="network:utilities" package="rsstail"/>
+  <url>http://www.vanheusden.com/rsstail/</url>
+</package>

@@ -1,0 +1,75 @@
+diff -Nur deepin-movie-reborn-3.2.24/src/common/event_monitor.cpp deepin-movie-reborn-3.2.24-new/src/common/event_monitor.cpp
+--- deepin-movie-reborn-3.2.24/src/common/event_monitor.cpp	2019-06-20 16:43:45.000000000 +0800
++++ deepin-movie-reborn-3.2.24-new/src/common/event_monitor.cpp	2019-07-09 21:54:17.331888895 +0800
+@@ -32,8 +32,15 @@
+ 
+ #include "event_monitor.h"
+ #define Bool int
++#include <X11/Xlib.h>
+ #include <X11/Xlibint.h>
+ #include <X11/extensions/record.h>
++#undef Bool
++
++void callback(XPointer ptr, XRecordInterceptData* data)
++{
++    ((dmr::EventMonitor *) ptr)->handleRecordEvent(data);
++}
+ 
+ namespace dmr {
+ 
+@@ -85,13 +92,10 @@
+     }
+ }
+ 
+-void EventMonitor::callback(XPointer ptr, XRecordInterceptData* data)
+-{
+-    ((EventMonitor *) ptr)->handleRecordEvent(data);
+-}
++void EventMonitor::handleRecordEvent(void* dat)
+ 
+-void EventMonitor::handleRecordEvent(XRecordInterceptData* data)
+ {
++    XRecordInterceptData* data = (XRecordInterceptData*)dat;
+     if (!_recording) {
+         XRecordFreeData(data);
+         return;
+diff -Nur deepin-movie-reborn-3.2.24/src/common/event_monitor.h deepin-movie-reborn-3.2.24-new/src/common/event_monitor.h
+--- deepin-movie-reborn-3.2.24/src/common/event_monitor.h	2019-06-20 16:43:45.000000000 +0800
++++ deepin-movie-reborn-3.2.24-new/src/common/event_monitor.h	2019-07-09 21:56:06.480170669 +0800
+@@ -31,10 +31,6 @@
+ #define EVENTMONITOR_H
+ 
+ #include <QThread>
+-#define Bool int
+-#include <X11/Xlib.h>
+-#include <X11/extensions/record.h>
+-#undef Bool
+ 
+ 
+ namespace dmr {
+@@ -56,8 +52,7 @@
+ 
+ public:
+     EventMonitor(QObject *parent = 0);
+-    static void callback(XPointer trash, XRecordInterceptData* data);
+-    void handleRecordEvent(XRecordInterceptData *);
++    void handleRecordEvent(void *);
+ 
+     void resumeRecording();
+     void suspendRecording();
+diff -Nur deepin-movie-reborn-3.2.24/src/libdmr/online_sub.h deepin-movie-reborn-3.2.24-new/src/libdmr/online_sub.h
+--- deepin-movie-reborn-3.2.24/src/libdmr/online_sub.h	2019-06-20 16:43:45.000000000 +0800
++++ deepin-movie-reborn-3.2.24-new/src/libdmr/online_sub.h	2019-07-09 21:57:32.608219960 +0800
+@@ -30,8 +30,10 @@
+ #ifndef _DMR_ONLINE_SUB_H
+ #define _DMR_ONLINE_SUB_H 
+ 
+-#include <QtWidgets>
+-#include <QtNetwork>
++#include <QFileInfo>
++#include <QNetworkAccessManager>
++#include <QNetworkRequest>
++#include <QNetworkReply>
+ 
+ 
+ namespace dmr {

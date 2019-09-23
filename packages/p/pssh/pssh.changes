@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Thu Jun 30 10:27:41 UTC 2016 - tchvatal@suse.com
+
+- Cleanup slightly with spec-cleaner no factual change
+
+-------------------------------------------------------------------
+Thu Dec 25 17:10:43 UTC 2014 - kgronlund@suse.com
+
+- Add: 0001-Prepend-hostname-on-each-line-when-P-is-set.patch
+  - Prepend hostname on each line when -P is set (fate#318220)
+- Add: 0002-Fix-quiet-option-after-API-patch.patch
+  - Fix quiet option after API patch
+
+-------------------------------------------------------------------
+Wed Jan 15 19:11:41 UTC 2014 - kgronlund@suse.com
+
+- Clarify error message when API calls fail
+- Detect use of absolute path when slurping
+
+-------------------------------------------------------------------
+Thu Jan  9 11:56:31 UTC 2014 - kgronlund@suse.com
+
+- Changed to .xz compression
+- Updated to latest upstream (cs: b6c8d715)
+- added support for multiple source paths in prsync (issue #64)
+- made a relative import explicit (issue #66)
+- Add support for select.poll on systems where it is available (issue #72)
+- Remove restriction on remote relative paths (Issue #83)
+- Added programmatic API (with tests)
+- Fixed teardown handling for tests
+
+Cleaned up and added patches:
+- Rename pssh-remove_shebangs.patch:
+  to 0001-Remove-shebangs-from-library-files.patch
+  Also updated patch format
+- Rename pssh-man_dir.patch:
+  to 0006-openSUSE-Adjust-man-pages-destination.patch
+  Also updated patch format
+- Rename pssh-quiet.patch: to 0002-Add-quiet-option.patch
+- Rename pssh_pcmk_nodes.patch: 
+  to 0008-openSUSE-add-C-pcmk_nodes-option-to-get-list-of-node.patch
+- Rename pssh_askpass_dir.patch: 
+  to 0007-openSUSE-Add-openSUSE-specific-pssh-askpass-location.patch
+- Rename pssh_status_order.patch: 
+  to 0003-Fix-order-of-command-statuses-returned-by-the-Manage.patch
+- Add 0005-Add-an-explicit-API-entrypoint.patch: 
+  Add an explicit API entry point
+- Add 0004-test-Teardown-code-was-never-called.patch:
+  Fixes test cases so teardown code is called
+
+-------------------------------------------------------------------
+Fri Sep 13 12:43:13 UTC 2013 - dmuhamedagic@suse.com
+
+- Update pssh_pcmk_nodes.patch: Update interface to crm_node (its
+  output changed)
+
+-------------------------------------------------------------------
+Wed Sep 11 09:01:07 UTC 2013 - dmuhamedagic@suse.com
+
+- Add pssh_status_order.patch: Return statuses of ssh commands in
+  the proper order (helps in crmsh resource testing and history)
+  (bnc#828897)
+
+-------------------------------------------------------------------
+Tue Mar 13 19:27:22 UTC 2012 - tabraham@novell.com
+
+- Update to 2.3.1
+  * fixed a problem where man pages were omitted from the tar file
+
+- Changes from 2.3
+  * added a --inline-stdout option (issue #57).  Thanks to
+    pablo.barbachano for the patch.
+  * Added a PSSH_HOST environment variable (issue #62).
+  * Added a --version option (issues #33 and #45)
+  * Expanded the pssh man page and added man pages for all other
+    commands (issues #10 and #55).
+  * Fixed askpass on Mac OS X 10.6.7 (issue #50)
+  * Many other small fixes
+
+-------------------------------------------------------------------
+Tue Feb 14 03:15:49 UTC 2012 - tserong@suse.com
+
+- exit gracefully when pacemaker is not running (--pcmk_nodes)
+- update --quiet option to suppress all status output
+- add /usr/bin to the search path for pssh-askpass
+- add -C (--pcmk_nodes) option (get host names from cluster: crm_node -l)
+- add -q (--quiet) option (suppresses status output)
+
+-------------------------------------------------------------------
+Mon Jan  9 09:19:09 UTC 2012 - tserong@suse.com
+
+- Update license string in spec file
+
+-------------------------------------------------------------------
+Thu Apr 28 14:33:58 UTC 2011 - dmuhamedagic@novell.com
+
+- add man page pssh(1)
+- update to v2.2.2
+
+-------------------------------------------------------------------
+Sat Mar  6 09:29:33 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial build (2.1.1)
+

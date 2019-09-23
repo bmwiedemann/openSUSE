@@ -1,0 +1,5328 @@
+-------------------------------------------------------------------
+Sat Aug 31 08:07:08 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.15 development release
+  - Initial implementation of the HTTP service.
+  - Stack unwinding support on ARM64.
+  - Better multi-monitor support on macOS.
+  - RichEdit control optimizations.   
+  - Various bug fixes.
+- updated staging to 4.15
+
+-------------------------------------------------------------------
+Sat Aug 17 09:23:43 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.14 development release
+  - New version of the Mono engine with upstream updates.                                                                                     
+  - PE dlls no longer rely on the MinGW runtime.                                                                                              
+  - Exception handling fixes on ARM64.                                                                                                        
+  - Various bug fixes.                                                                                                                        
+- updated staging to 4.14
+
+-------------------------------------------------------------------
+Thu Aug 15 10:52:54 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Drop build dependency on gcc8
+
+-------------------------------------------------------------------
+Sun Aug 11 09:24:26 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.13 development release
+  - Support for Passport HTTP redirects.
+  - A bunch of header updates.
+  - Various bug fixes.
+- updated staging to 4.13
+
+-------------------------------------------------------------------
+Sun Jul  7 13:18:54 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.12.1 development release
+  - Fixes for broken 64-bit prefix initialization.
+
+-------------------------------------------------------------------
+Sat Jul  6 08:58:29 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.12 development release
+  - Still more DLLs are built as PE files by default.
+  - Support for Plug & Play device drivers.
+  - Better support for the Visual Studio remote debugger.
+  - More support for enumerating display devices.
+  - Various bug fixes.
+- updated staging to 4.12
+
+-------------------------------------------------------------------
+Sun Jun 23 11:55:34 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.11 development release
+  - Updated version of the Mono engine, including Windows.Forms.
+  - More DLLs are built as PE files by default.
+  - Faster implementation of Slim Reader/Writer locks on Linux.
+  - Initial support for enumerating display devices.
+  - Various bug fixes.
+- updated staging to 4.11
+- removed wine49-include-Avoid-compound-literals-for-WCHAR-strings.patch: upstream
+
+-------------------------------------------------------------------
+Thu Jun 13 07:49:12 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add wine49-include-Avoid-compound-literals-for-WCHAR-strings.patch
+  backport from mainline.
+- Use gcc9.
+
+-------------------------------------------------------------------
+Tue Jun 11 05:56:26 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.10 development release
+  - Many DLLs are built as PE files by default.
+  - More support for installing Plug and Play drivers.
+  - Clock synchronization in Media Foundation.
+  - Volume adjustment in audio drivers.
+  - Various bug fixes.
+- updated staging to 4.10
+
+-------------------------------------------------------------------
+Mon Jun  3 10:44:25 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- fix unexpanded %version macro in provides and obsoletes
+- use %license macro
+
+-------------------------------------------------------------------
+Mon Jun  3 05:25:36 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- build with gcc8 for now, gcc9 seems to break wine. (bsc#1137071)
+
+
+-------------------------------------------------------------------
+Sun May 26 08:30:03 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.9 development release
+  - Initial support for installing Plug and Play drivers.
+  - Support for building 16-bit modules in PE format.
+  - A lot of code moved to the new KernelBase DLL.
+  - Various game controller fixes.
+  - Use higher performance system clocks if available.
+  - Various bug fixes.
+- updated staging to 4.9
+
+-------------------------------------------------------------------
+Fri May 10 15:49:18 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.8 development release
+  - Support building most programs in PE format.
+  - Unicode data updated to Unicode 12.0.
+  - Support for MSI patch files.
+  - Default to non-PIC builds on i386.
+  - Joystick support improvements.
+  - Asturian locale.
+  - Various bug fixes.
+- updated staging to 4.8
+
+-------------------------------------------------------------------
+Sat Apr 27 05:41:13 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.7 development release
+  - Support for builtin libraries in PE format even on Unix.
+  - Updated version of the Mono engine.
+  - More implementation of the Debug Engine DLL.
+  - Support for the Command Link standard control.
+  - Improved Edit control sizing in CJK locales.
+  - Various bug fixes.
+- updated staging to 4.7
+
+-------------------------------------------------------------------
+Sat Apr 13 16:26:34 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.6 development release
+  - Beginnings of a Vulkan backend for WineD3D.
+  - Support for loading Mono libraries from a shared location.
+  - Libwine.dll no longer needed when using Wine DLLs on Windows.
+  - Regression tests compiled directly to PE format.
+  - Support for the Split Button Common Control.
+  - Complex structs support in the typelib marshaller.
+  - Video capture ported to Video4Linux version 2.
+  - Initial version of the Debug Engine DLL.
+  - Various bug fixes.
+- updated staging to 4.6
+
+-------------------------------------------------------------------
+Sat Mar 30 05:37:47 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.5 development release
+  - Support for Vulkan 1.1.
+  - Better support for kernel objects in device drivers.
+  - Still more Media Foundation APIs implemented.
+  - Support for SVG elements in MSHTML.
+  - Fixes for case conversion troubles in Turkish locale.
+  - Various bug fixes.
+- updated staging to 4.5
+
+-------------------------------------------------------------------
+Thu Mar 28 07:44:14 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- add buildrequires FAudio-devel.
+
+-------------------------------------------------------------------
+Sat Mar 16 07:08:30 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.4 development release
+  - New MSIDB tool for manipulating MSI databases.
+  - Support for custom draw buttons in common controls.
+  - Many more Media Foundation APIs implemented.
+  - Various bug fixes.
+- updated staging to 4.4
+- disable -nine- builds as its not getting updated currently.
+
+-------------------------------------------------------------------
+Sat Mar  2 08:35:25 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.3 development release
+  - Reimplementation of XAudio2 using the FAudio library.
+  - Mono engine updated to the latest upstream.
+  - More modern handling of iconic windows.
+  - Improved handling of kernel objects.
+  - Various bug fixes.
+- updated staging to 4.3
+
+-------------------------------------------------------------------
+Sat Feb 16 15:30:33 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.2 development release
+  - Unicode string normalization support.
+  - Support for ECC cryptographic keys.
+  - Support for mixing 32/64-bit dlls in the load path.
+  - Futex-based implementations for more synchronization primitives.
+  - Various bug fixes.
+- updated staging to 4.2
+
+-------------------------------------------------------------------
+Tue Feb  5 06:26:41 UTC 2019 - meissner@suse.com
+
+- updated to 4.1 development release
+  - Support for NT kernel spinlocks.
+  - Better glyph positioning in DirectWrite.
+  - More accurate reporting of CPU information.
+  - Context handle fixes in the IDL compiler.
+  - Preloader fixes on macOS.
+  - Various bug fixes.
+- updated staging to 4.1
+
+-------------------------------------------------------------------
+Wed Jan 23 07:39:56 UTC 2019 - meissner@suse.com
+
+- updated to 4.0 release, core features
+  - Vulkan support.
+  - Direct3D 12 support.
+  - Game controllers support.
+  - High-DPI support on Android.
+- updated staging to 4.0
+
+-------------------------------------------------------------------
+Sat Jan 19 08:07:48 UTC 2019 - meissner@suse.com
+
+- updated to 4.0rc7 release candidate
+  - bugfixes only
+- updated staging to 4.0-rc7
+
+-------------------------------------------------------------------
+Fri Jan 11 19:24:12 UTC 2019 - meissner@suse.com
+
+- updated to 4.0rc6 release candidate
+  - bugfixes only
+- updated staging to 4.0-rc6
+
+-------------------------------------------------------------------
+Sat Jan  5 12:26:57 UTC 2019 - meissner@suse.com
+
+- updated to 4.0rc5 release candidate
+  - bugfixes only
+- updated staging to 4.0-rc5
+
+-------------------------------------------------------------------
+Sat Dec 29 11:57:54 UTC 2018 - meissner@suse.com
+
+- Update to 4.0rc4 release candidate
+  - bugfixes only
+- updated staging to 4.0-rc4
+
+-------------------------------------------------------------------
+Fri Dec 21 19:55:16 UTC 2018 - meissner@suse.com
+
+- Update to 4.0rc3 release candidate
+  - bugfixes only
+- updated staging to 4.0-rc3
+
+-------------------------------------------------------------------
+Fri Dec 14 18:36:11 UTC 2018 - meissner@suse.com
+
+- Update to 4.0rc2 release candidate
+  - bugfixes only
+- updated staging to 4.0-rc2
+
+-------------------------------------------------------------------
+Sat Dec  8 08:46:56 UTC 2018 - meissner@suse.com
+
+- Update to 4.0rc1 release candidate
+  - Preloader implemented on mac OS.
+  - Mouse cursor support on Android.
+  - Updates to the timezone database.
+  - Vulkan support updated to the latest spec.
+  - Stream I/O support in WebServices.
+  - Better palette support in WindowsCodecs.
+  - Synchronization objects support for kernel drivers.
+  - Various bug fixes.
+- updated staging to 4.0-rc1
+
+-------------------------------------------------------------------
+Tue Dec  4 16:50:35 UTC 2018 - meissner@suse.com
+
+- winetricks moved into its own package.
+
+-------------------------------------------------------------------
+Thu Nov 29 13:55:38 UTC 2018 - meissner@suse.com
+
+- require Mesa-libd3d and Mesa-libd3d-32bit for the "nine"
+  flavors (bsc#1112026)
+
+-------------------------------------------------------------------
+Sat Nov 24 08:19:07 UTC 2018 - meissner@suse.com
+
+- Update to 3.21 development release
+  - Typelib marshaller rewrite using NDR functions.
+  - Graphics support on recent Android versions.
+  - Support for memory font resources in DirectWrite.
+  - Joystick support improvements.
+  - Various bug fixes.
+- updated staging to 3.21
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Nov  9 20:29:46 UTC 2018 - meissner@suse.com
+
+- Update to 3.20 development release
+  - Async interfaces and ACF files in the IDL compiler.
+  - Support for substorage transforms in MSI.
+  - RPC/COM marshalling fixes.
+  - Support for Unicode requests in WinHTTP.
+  - Shell Autocomplete optimizations.
+  - Various bug fixes.
+- updated staging to 3.20
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Oct 27 07:57:19 UTC 2018 - meissner@suse.com
+
+- Update to 3.19 development release
+  - Support for file I/O completion modes.
+  - WaitOnAddress synchronization primitives.
+  - Better support for 32-bit .NET binaries on 64-bit.
+  - Improved recovery on broken RPC connection.
+  - Various bug fixes.
+- updated staging to 3.19
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Oct 13 07:43:30 UTC 2018 - meissner@suse.com
+
+- Update to 3.18 development release
+  - Subpixel font rendering with FreeType >= 2.8.1.
+  - Support for OAEP algorithm in RSA encryption.
+  - Array marshalling fixes in DCOM.
+  - Improved DPI scaling in the Wine console.
+  - Various bug fixes.
+- updated staging to 3.18
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Sep 29 08:28:25 UTC 2018 - meissner@suse.com
+
+- Update to 3.17 development release
+  - Improved Shell Autocomplete support.
+  - More implementation of OPC Services.
+  - Improvements to the Pager common control.
+  - Various bug fixes.
+- updated staging to 3.17
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Sep 14 19:25:29 UTC 2018 - meissner@suse.com
+
+- Update to 3.16 development release
+  - Initial implementation of OPC Services.
+  - Support for rendering buttons from an ImageList.
+  - Better support for CSS properties in MSHTML.
+  - Namespace fixes in XML Writer.
+  - Various bug fixes.
+- updated staging to 3.16
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Sep  1 06:17:50 UTC 2018 - meissner@suse.com
+
+- Update to 3.15 development release
+  - Support for DPI scaling on Android.
+  - HID device support in Raw Input.
+  - Many more new icons in Shell32.
+  - WinHTTP converted to use Windows Sockets.
+  - Syntax fixes in the command line interpreter.
+  - Various bug fixes.
+- updated staging to 3.15
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Aug 17 19:59:29 UTC 2018 - meissner@suse.com
+
+- Update to 3.14 development release
+  - Support for DXTn texture decompression.
+  - Deferral support for MSI install actions.
+  - Support for Japanese keyboard in DirectInput.
+  - More improvements in the standard Task Dialog.
+  - A few more icons in Shell32.
+  - Various bug fixes.
+- updated staging to 3.14
+- updated winetricks
+
+-------------------------------------------------------------------
+Thu Aug 16 06:07:52 UTC 2018 - meissner@suse.com
+
+- recommend libpulse0-32bit in wine-32bit (bsc#1104952)
+
+-------------------------------------------------------------------
+Mon Aug  6 14:36:38 UTC 2018 - meissner@suse.com
+
+- intermediate staging 3.13.1 release
+- d3d9 patchset updated to 3.13
+
+-------------------------------------------------------------------
+Mon Jul 23 14:54:27 UTC 2018 - tobias.johannes.klausmann@mni.thm.de
+
+- Switch to using pkgconfig for dri2proto as dri2proto-devel does 
+  not exist in "Factory" anymore, it is now provided by 
+  xorgproto-devel, yet using pkgconfig is more robust
+
+-------------------------------------------------------------------
+Sat Jul 21 08:15:41 UTC 2018 - meissner@suse.com
+
+- Update to 3.13 development release
+  - Vulkan support on macOS using MoltenVK.
+  - Initial support for performance data in the registry.
+  - Mono engine updated with some bug fixes.
+  - Support for fetching BIOS information on Linux.
+  - GnuTLS also used on macOS when available.
+  - Improvements in the standard Task Dialog.
+  - Various bug fixes.
+- updated staging to 3.13
+- updated winetricks
+
+-------------------------------------------------------------------
+Tue Jul 10 06:07:29 UTC 2018 - meissner@suse.com
+
+- Update to 3.12 development release
+  - Unicode data updated to Unicode 11.0.0.
+  - Proxy configuration dialog in the Internet control panel.
+  - Syntax fixes in the Cmd.exe command intepreter.
+  - Some more glyphs in the Wingdings font.
+  - Various bug fixes.
+- updated staging to 3.12
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Jun 23 06:30:49 UTC 2018 - meissner@suse.com
+
+- Update to 3.11 development release
+  - More debugger support for Wow64 processes.
+  - Support for sha256/sha384 hashes in ECDSA signatures.
+  - Better reporting of hyper-threaded CPUs.
+  - Improvements to the standard Task Dialog.
+  - Various bug fixes.
+- updated winetricks
+- updated staging to 3.11
+
+-------------------------------------------------------------------
+Wed Jun 20 14:00:19 UTC 2018 - meissner@suse.com
+
+- buildrequire vkd3d.
+
+-------------------------------------------------------------------
+Mon Jun 11 18:50:48 UTC 2018 - meissner@suse.com
+
+- Update to 3.10 development release
+  - Swapchain support in Direct 3D 12.
+  - Vulkan support updated to the latest spec.
+  - Debugger support for Wow64 processes.
+  - Still more support for the Task Scheduler.
+  - Various bug fixes.
+- updated winetricks
+- updated staging to 3.10
+
+-------------------------------------------------------------------
+Thu Jun  7 11:41:33 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Fix aarch64 (by using clang)
+- Enable win64 option for aarch64
+
+-------------------------------------------------------------------
+Fri May 25 19:20:01 UTC 2018 - meissner@suse.com
+
+- Update to 3.9 development release
+  - OpenGL core contexts enabled by default in Direct 3D.
+  - Beginnings of Direct 3D 12 implementation using vkd3d.
+  - More support for the Task Scheduler.
+  - Some more Task Dialog support.
+  - Better arrow support in GdiPlus.
+  - Various bug fixes.
+- updated winetricks
+- updated staging to 3.9
+
+-------------------------------------------------------------------
+Fri May 11 18:37:37 UTC 2018 - meissner@suse.com
+
+- Update to 3.8 development release
+  - Infrastructure for writing kernel driver tests.
+  - Support for showing file properties in the Shell browser.
+  - MP3 decoder as a DirectX Media Object.
+  - More support for the Task Scheduler.
+  - Support for COM aggregation in UrlMon.
+  - Various bug fixes.
+- updated winetricks
+- updated staging to 3.8
+
+-------------------------------------------------------------------
+Fri Apr 27 18:55:43 UTC 2018 - meissner@suse.com
+
+- Update to 3.7 development release
+  - MSI custom actions run in a separate process.
+  - Support for job files in the Task Scheduler.
+  - Improved viewport support in Direct 3D.
+  - Larger resolution version of the standard icons.
+  - Various bug fixes.
+- updated winetricks
+- updated staging to 3.7
+
+-------------------------------------------------------------------
+Sat Apr 14 13:09:33 UTC 2018 - meissner@suse.com
+
+- Update to 3.6 development release
+  - Support for PNG format icons.
+  - Support for 1D textures.
+  - More infrastructure for high DPI support.
+  - OLE data cache improvements.
+  - Various bug fixes.
+- updated winetricks
+- updated staging to 3.5
+
+-------------------------------------------------------------------
+Wed Apr  4 06:50:06 UTC 2018 - schwab@suse.de
+
+- Adjust dependencies for aarch64
+
+-------------------------------------------------------------------
+Tue Apr  3 12:31:24 UTC 2018 - schwab@suse.de
+
+- Enable build for aarch64
+
+-------------------------------------------------------------------
+Fri Mar 30 19:31:00 UTC 2018 - meissner@suse.com
+
+- Update to 3.5 development release
+  - More Vulkan support, including the vulkan-1 loader.
+  - Support for RSA and ECDSA cryptographic keys.
+  - Improved manifest file parser.
+  - Support for the Places toolbar in file dialogs.
+  - Various bug fixes.
+- updated winetricks
+- updated staging to 3.5
+
+-------------------------------------------------------------------
+Fri Mar 16 19:28:06 UTC 2018 - meissner@suse.com
+
+- Update to 3.4 development release
+  - More Vulkan support, including integration with the X11 driver.
+  - Better handling of privileged instructions on x86-64.
+  - Hex edit dialog improvements in RegEdit.
+  - Assortment of patches merged from wine-staging.
+  - Various bug fixes.
+- updated winetricks
+- updated staging to 3.4
+
+-------------------------------------------------------------------
+Wed Mar 14 14:54:42 UTC 2018 - crrodriguez@opensuse.org
+
+- Remove buildrequires on metapackages xorg-x11-devel and 
+  Mesa-devel, use pkgconfig() deps with individual X libs
+
+-------------------------------------------------------------------
+Mon Mar  5 08:52:57 UTC 2018 - mimi.vx@gmail.com
+
+- update wine-staging and wine-nine to 3.3
+- enable wine staging
+
+-------------------------------------------------------------------
+Fri Mar  2 18:49:34 UTC 2018 - meissner@suse.com
+
+- Update to 3.3 development release
+  - Beginnings of Vulkan support.
+  - Direct3D multi-threaded command stream enabled by default.
+  - Multisample textures enabled by default.
+  - Support for game controllers through SDL.
+  - Support for loading CIL-only .Net binaries.
+  - Various bug fixes.
+- Updated winetricks
+
+-------------------------------------------------------------------
+Mon Feb 19 12:23:23 UTC 2018 - meissner@suse.com
+
+- Update to 3.2 development release
+  - Separate implementation of USER controls for ComCtl32 v6.
+  - Multisample texture support in Direct3D.
+  - Support for HID gamepads.
+  - More event support in MSHTML.
+  - Obsolete DOS code removed.
+  - Various bug fixes.
+- Updated winetricks
+
+-------------------------------------------------------------------
+Sat Feb  3 21:27:49 UTC 2018 - meissner@suse.com
+
+- Update to 3.1
+  - Kerberos authentication support.
+  - Window class redirection for Common Controls 6.
+  - Support for X11 ARGB visuals.
+  - DOSBox required for running DOS executables.
+  - Various bug fixes.
+- Updated winetricks
+
+-------------------------------------------------------------------
+Thu Jan 18 15:51:47 UTC 2018 - meissner@suse.com
+
+- Update to 3.0
+  This release represents a year of development effort and over 6,000
+  individual changes. It contains a large number of improvements that
+  are listed in the release notes below. The main highlights are:
+
+  - Direct3D 10 and 11 support.
+  - The Direct3D command stream.
+  - The Android graphics driver.
+  - Improved DirectWrite and Direct2D support.
+
+-------------------------------------------------------------------
+Sat Jan 13 11:12:02 UTC 2018 - meissner@suse.com
+
+- Update to 3.0 rc6 release candidate
+  - Bugfixes only, we are in code freeze
+
+-------------------------------------------------------------------
+Sat Jan  6 06:33:22 UTC 2018 - jimmy@boombatower.com
+
+- Update to 3.0 rc5 release candidate
+  - Bugfixes only, we are in code freeze
+
+-------------------------------------------------------------------
+Fri Dec 29 20:36:29 UTC 2017 - meissner@suse.com
+
+- Update to 3.0 rc4 release candidate
+  - Bugfixes only, we are in code freeze
+- Updated winetricks
+
+-------------------------------------------------------------------
+Fri Dec 22 17:47:31 UTC 2017 - meissner@suse.com
+
+- Update to 3.0 rc3 release candidate
+  - Bugfixes only, we are in code freeze
+- Updated winetricks
+
+-------------------------------------------------------------------
+Sun Dec 17 18:39:18 UTC 2017 - meissner@suse.com
+
+- Update to 3.0 rc2 release candidate
+  - Bugfixes only, we are in code freeze
+- Updated winetricks
+
+-------------------------------------------------------------------
+Fri Dec  8 20:02:00 UTC 2017 - meissner@suse.com
+
+- Update to 3.0 rc1 release candidate
+  - Direct3D 11 enabled by default on AMD and Intel GPUs.
+  - AES encryption support on macOS.
+  - Implementation of the task scheduler.
+  - Registry export support in the reg.exe tool.
+  - Progman DDE support.
+  - OLE data cache improvements.
+  - More event support in MSHTML.
+  - Relay debugging improvements.
+  - Various bug fixes.
+- Updated winetricks
+- disabled multibuild staging as the staging team did not provide 2.22 snapshot yet
+
+-------------------------------------------------------------------
+Sat Nov 25 08:23:00 UTC 2017 - meissner@suse.com
+
+- Update to 2.22 development snapshot
+  - Source selection dialog for scanners.
+  - Improvements in ARM64 support.
+  - Float audio formats with more than 2 channels in XAudio.
+  - Fixes for DLL injection support.
+  - Input methods improvements.
+  - Various bug fixes.
+- Updated winetricks
+
+-------------------------------------------------------------------
+Mon Nov 13 16:23:51 UTC 2017 - jimmy@boombatower.com
+
+- switched to _multibuild packaging. include staging
+  and staging-nine variants.
+
+-------------------------------------------------------------------
+Mon Nov 13 15:05:05 UTC 2017 - meissner@suse.com
+
+- recommend Mesa-GL1-32bit in baselibs, so we get opengl support.
+  (it is not directly required)
+
+-------------------------------------------------------------------
+Sat Nov 11 14:56:58 UTC 2017 - aavindraa@gmail.com
+
+- Update to 2.21 development snapshot
+  - More metafile support in GdiPlus.
+  - Indirect draws support in Direct 3D.
+  - Calling convention fixes on ARM.
+  - Improved serial port detection on Linux.
+  - Services fixes on WoW64.
+  - Better DPI scaling in the Shell Explorer.
+  - Various bug fixes.
+- Updated winetricks
+
+-------------------------------------------------------------------
+Tue Oct 31 19:08:10 UTC 2017 - meissner@suse.com
+
+- Update to 2.20 development snapshot
+  - Improved event support in MSHTML.
+  - Preloader support on ARM64.
+  - Interpolation modes in Direct3D.
+  - Improved metafile support in GdiPlus.
+  - Initial version of Kerberos5 Authentication Package.
+  - OLE clipboard cache improvements.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Mon Oct 16 09:09:11 UTC 2017 - meissner@suse.com
+
+- Update to 2.19 development snapshot
+  - Support for 32-bit float audio on Android.
+  - Named pipes now fully handled by the Wine server.
+  - Support for a new Microsoft root certificate.
+  - More transform fixes in GdiPlus.
+  - Some heap allocation optimizations.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Sep 29 20:37:24 UTC 2017 - meissner@suse.com
+
+- Update to 2.18 development snapshot
+  - Radial gradients in Direct2D.
+  - Asynchronous message support in WebServices.
+  - Virtual memory write watches improvements.
+  - FreeType 2.8.1 compatibility fixes.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Sep 16 16:34:34 UTC 2017 - meissner@suse.com
+
+- Update to 2.17 development snapshot
+  - Better support for grayscale mode in DirectWrite.
+  - Per-application StartupWMClass in desktop files.
+  - Virtual memory compatibility improvements.
+  - Palette handling improvements in WindowsCodecs.
+  - Reply messages improvements in WebServices.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sun Sep  3 17:23:15 UTC 2017 - meissner@suse.com
+
+- Update to 2.16 development snapshot
+  - Support for pasting metafiles in RichEdit.
+  - Better support for grayscale PNG images.
+  - Support for safety features in library loading.
+  - Better handling of transforms in GdiPlus.
+  - Rendering improvements in DirectWrite.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sun Aug 20 08:00:13 UTC 2017 - meissner@suse.com
+
+- Update to 2.15 development snapshot
+  - Support for AES encryption.
+  - Improved Bezier support in Direct2D.
+  - Chunked transfer improvements in WinInet.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Aug  4 11:03:53 UTC 2017 - meissner@suse.com
+
+- Update to 2.14 development snapshot
+  - Mono engine updated with some bug fixes.
+  - C++ calling convention workarounds in the IDL compiler.
+  - Z-order support in the Android graphics driver.
+  - Scalable mouse cursors on macOS.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Jul 22 09:29:38 UTC 2017 - meissner@suse.com
+
+- Update to 2.13 development snapshot
+  - Unicode data updated to Unicode 10.0.0.
+  - Nicer looking default mouse cursors.
+  - Persistent connections support in WinHTTP.
+  - Message Framing protocol support in WebServices.
+  - Improved metafile support in GdiPlus.
+  - Debug registers support in x86-64 exception handling.
+  - Anti-aliasing improvements in DirectWrite.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Jul  8 09:46:14 UTC 2017 - meissner@suse.com
+
+- Update to 2.12 development snapshot
+  - Audio driver for Android.
+  - Some performance improvements with async I/O.
+  - More RegEdit file parser improvements.
+  - Beginnings for MSI user interface support.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Mon Jun 26 07:21:39 UTC 2017 - meissner@suse.com
+
+- Update to 2.11 development snapshot
+  - OpenGL support in the Android driver.
+  - Support for security labels.
+  - Relay debugging on ARM64.
+  - More dictionary support in WebServices.
+  - New registry file parser in RegEdit.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Jun 10 11:14:22 UTC 2017 - meissner@suse.com
+
+- Update to 2.10 development snapshot
+  - Initial version of the Android graphics driver.
+  - Dictionary support in WebServices.
+  - A number of Direct2D fixes.
+  - User interface improvements in RegEdit.
+  - OLE clipboard cache fixes.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Jun  3 07:50:23 UTC 2017 - meissner@suse.com
+
+- obsolete also the 32bit wine-mp3 package. (bsc#1042452)
+
+-------------------------------------------------------------------
+Fri May 26 14:35:31 UTC 2017 - meissner@suse.com
+
+- Update to 2.9 development snapshot
+  - Direct3D command stream runs asynchronously.
+  - Better serial and parallel ports autodetection.
+  - Still more fixes for high DPI settings.
+  - System tray notifications on macOS.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Tue May 23 09:10:31 UTC 2017 - meissner@suse.com
+
+- obsolete the external wine-mp3 for distributions that have
+  mp3 support now. (bsc#1040190)
+
+-------------------------------------------------------------------
+Mon May 15 11:16:10 UTC 2017 - meissner@suse.com
+
+- Update to 2.8 development snapshot
+  - Direct3D command stream runs asynchronously.
+  - Better serial and parallel ports autodetection.
+  - Still more fixes for high DPI settings.
+  - System tray notifications on macOS.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Apr 29 16:06:30 UTC 2017 - meissner@suse.com
+
+- Update to 2.7 development snapshot
+  - TCP and UDP connection support in WebServices.
+  - Various shader improvements for Direct3D 11.
+  - Improved support for high DPI settings.
+  - Partial reimplementation of the GLU library.
+  - Support for recent versions of OSMesa.
+  - Window management improvements on macOS.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Wed Apr 19 07:55:57 UTC 2017 - meissner@suse.com
+
+- Enable mp3 support (buildrequire mpg123-devel)
+
+-------------------------------------------------------------------
+Fri Apr 14 10:50:04 UTC 2017 - meissner@suse.com
+
+- Update to 2.6 development snapshot
+  - Multi-threaded command stream in Direct3D.
+  - More Shader Model 5 instructions.
+  - More support for 3D textures.
+  - Better font transformations in DirectWrite.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Mar 31 19:34:18 UTC 2017 - meissner@suse.com
+
+- Update to 2.5 development snapshot
+  - Support for message-mode named pipes.
+  - Translation of version resources through po files.
+  - Transform feedback support in Direct3D.
+  - Scheduler classes in C++ runtime.
+  - Better scrolling in popup menus.
+  - More improvements to the XML reader.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Mar 17 21:33:29 UTC 2017 - meissner@suse.com
+
+- Update to 2.4 development snapshot
+  - Built-in implementation of cryptographic hashes.
+  - Mono engine updated with upstream fixes.
+  - More Direct3D command stream work.
+  - Simulated bold and italic in DirectWrite.
+  - Improvements to the XML reader.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Mon Mar  6 07:54:19 UTC 2017 - meissner@suse.com
+
+- export WIDL_TIME_OVERRIDE="0" for more reproducible builds
+
+-------------------------------------------------------------------
+Fri Mar  3 21:14:23 UTC 2017 - meissner@suse.com
+
+- Update to 2.3 development snapshot 
+  - Obsolete wineinstall script removed.
+  - More Direct3D command stream work.
+  - A few more Shader Model 5 instructions.
+  - Better underline rendering in DirectWrite.
+  - Improved ODBC support on 64-bit.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Feb 17 21:04:31 UTC 2017 - meissner@suse.com
+
+- Update to 2.2 development snapshot 
+  - Windows version set to Windows 7 for new prefixes.
+  - More steps towards the Direct3D command stream.
+  - Still more Shader Model 5 instructions.
+  - Initial support for double-buffered theme painting.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Feb  4 20:57:03 UTC 2017 - meissner@suse.com
+
+- Update to 2.1 development snapshot 
+  - Many fixes that were deferred during code freeze.
+  - More Shader Model 5 instructions.
+  - A number of improvements to MIME message handling.
+  - Line breaking improvements in DirectWrite.
+  - HID bus service now running by default.
+  - Direct2D rendering improvements.
+  - Various bug fixes.
+  - Source release tarballs now use xz compression.
+- updated winetricks
+
+-------------------------------------------------------------------
+Tue Jan 24 22:44:55 UTC 2017 - meissner@suse.com
+
+- Updated to 2.0 final release
+
+-------------------------------------------------------------------
+Sat Jan 21 11:23:10 UTC 2017 - meissner@suse.com
+
+- Updated to 2.0-rc6 development snapshot
+  - Bug fixes only, we are in code freeze.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Jan 13 22:31:41 UTC 2017 - meissner@suse.com
+
+- Updated to 2.0-rc5 development snapshot
+  - Bug fixes only, we are in code freeze.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Jan  7 10:00:56 UTC 2017 - meissner@suse.com
+
+- Updated to 2.0-rc4 development snapshot
+  - Bug fixes only, we are in code freeze.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Dec 23 20:01:53 UTC 2016 - meissner@suse.com
+
+- Updated to 2.0-rc3 development snapshot
+  - Bug fixes only, we are in code freeze.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Dec 17 04:26:14 UTC 2016 - meissner@suse.com
+
+- Updated to 2.0-rc2 development snapshot
+  - Bug fixes only, we are in code freeze.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Dec  9 21:21:02 UTC 2016 - meissner@suse.com
+
+- Updated to 2.0-rc1 development snapshot
+  - Bug fix update of the Mono engine.
+  - Support for IDN name resolution.
+  - Many more Shader Model 5 operations.
+  - Still more fixes in the regression tests.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Nov 25 20:26:36 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.24 development snapshot
+  - Support for unordered access views in Direct3D.
+  - Many fixes in the regression tests.
+  - Some more improvements in HID support.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Mon Nov 21 10:28:38 UTC 2016 - meissner@suse.com
+
+- downgrade requires of cabextract and unzip to recommends, so we can
+  use 32bit wine during build on reduced 32bit package sets.
+
+-------------------------------------------------------------------
+Sat Nov 12 13:36:14 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.23 development snapshot
+  - HID bus support for macOS.
+  - Color font support in Direct2D.
+  - More color formats in Direct3D.
+  - Uninstallation fixes in MSI.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sun Oct 30 18:31:45 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.22 development snapshot
+  - macOS clipboard support adapted to the new design.
+  - Initial implementation of bitmap rendering in Direct2D.
+  - More WebServices implementation.
+  - A few more steps towards HID support.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Tue Oct 18 21:54:12 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.21 development snapshot
+  - Initial version of the HID minidriver.
+  - Support for lists in the RichEdit control.
+  - System tray improvements.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Mon Oct  3 16:57:24 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.20 development snapshot
+  - Reimplementation of the clipboard API.
+  - Message handling in WebServices.
+  - Many more API Set libraries.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Sep 16 19:47:25 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.19 development snapshot
+  - Initial version of a udev bus driver for HID.
+  - Various improvements in joystick support.
+  - Initial implementation of DC rendering in Direct2D.
+  - Improved metafile support in GDI+.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sun Sep  4 11:28:12 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.18 development snapshot
+  - Support for multiple kernel drivers in a single process.
+  - More WebServices reader support.
+  - Various improvements in joystick support.
+  - Some more work towards the Direct3D command stream.
+  - GDI performance improvements.
+  - Improved IME window handling.
+  - Compatibility fixes in the clipboard support.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Aug 19 21:43:06 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.17 development snapshot
+  - Better 64-bit binary compatibility on macOS.
+  - Performance improvements in JavaScript.
+  - More progress towards the Direct3D command stream.
+  - More shader instructions in Direct3D.
+  - Performance improvements in GDI.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Aug  6 09:38:24 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.16 development snapshot
+  - Better 64-bit binary compatibility on macOS.
+  - Performance improvements in JavaScript.
+  - More progress towards the Direct3D command stream.
+  - More shader instructions in Direct3D.
+  - Performance improvements in GDI.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Jul 23 19:31:42 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.15 development snapshot
+  - More shader instructions in Direct3D.
+  - Performance improvements in GDI.
+  - Better multi-joystick support on macOS.
+  - Active Scripting improvements.
+  - Additional stream support in the C++ runtime.
+  - Various bug fixes.
+- Updated to 1.9.14 development snapshot
+  - More Shader Model 5 support in Direct3D.
+  - Some more write support in WebServices.
+  - Performance improvements in GDI.
+  - Some more progress towards the Direct3D command stream.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Tue Jun 28 19:42:07 UTC 2016 - jengelh@inai.de
+
+- Resolve rpmlint warnings: summary-not-capitalized,
+  spurious-executable-perm, devel-package-with-non-devel-group.
+- Rework description not to talk of the program as an emulator.
+  Use path-invariant download URLs.
+
+-------------------------------------------------------------------
+Fri Jun 24 13:42:30 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.13 development snapshot
+  - New version of the Gecko engine based on Firefox 47.
+  - More Shader Model 5 support in Direct3D.
+  - Unicode data updated to Unicode 9.0.0.
+  - Improvements to GDI paths and metafiles.
+  - More progress towards the Direct3D command stream.
+  - Joystick support improvements on Mac OS X.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Jun 10 14:18:00 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.12 development snapshot
+  - Bug fix update of the Mono engine.
+  - Initial version of a taskbar in desktop mode.
+  - Fixes for right-to-left languages in Uniscribe.
+  - More Shader Model 4 support in Direct3D.
+  - Better metafile support in RichEdit.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri May 27 14:58:43 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.11 development snapshot
+  - Better support for long URLs in WinInet.
+  - Various Direct3D 11 improvements.
+  - Down-mixing support in DirectSound.
+  - Some cosmetic improvements in desktop mode.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Tue May 17 06:09:59 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.10 development snapshot
+  - High resolution ("Retina") rendering option on Mac OS X.
+  - More compatible directory enumeration.
+  - A number of C++ runtime fixes.
+  - Video output improvements.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Apr 30 08:13:02 UTC 2016 - meissner@suse.com
+ 
+- Updated to 1.9.9 development snapshot
+  - More work towards the WineD3D command stream.
+  - Service proxies in WebServices.
+  - Query support in the builtin reg.exe utility.
+  - Improved support for long URLs in WinInet.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Apr 15 15:05:02 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.8 development snapshot
+  - More work towards the WineD3D command stream.
+  - Bug fix update of the Mono engine.
+  - More WebServices reader support.
+  - Still more Shader Model 5 support.
+  - Support for gradients in metafiles.
+  - Improved table formatting in WinHelp.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Apr  1 17:24:29 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.7 development snapshot
+  - More work towards the WineD3D command stream.
+  - More support for Shader Model 5 shaders.
+  - C++ exception handling on x86-64.
+  - Support for Windows-style static import libraries.
+  - Performance fixes in the XML writer.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Mar 18 14:24:51 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.6 development snapshot
+  - Better video card detection when using Mesa.
+  - Support for Shader Model 5 shaders.
+  - C++ exception handling improvements.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Mar  4 16:41:56 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.5 development snapshot
+  - New version of the Mono engine, with 64-bit support.
+  - Beginnings of the WineD3D command stream.
+  - Support for effect states in Direct3DX.
+  - Drag & drop improvements.
+  - Various bug fixes.
+- updated winetricks
+- wine.keyring: alexandre switched his gpg key
+
+-------------------------------------------------------------------
+Fri Feb 19 16:27:50 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.4 development snapshot
+  - Support for color glyphs and font fallbacks in DirectWrite.
+  - Improvements to the WebServices reader.
+  - Support for more formats in Direct3D 11.
+  - Simplified syntax and clean up of tests marked todo.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Feb  5 14:28:51 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.3 development snapshot
+  - New version of the Gecko engine based on Firefox 44.
+  - JSON support in JavaScript.
+  - Improved line breaking in DirectWrite.
+  - Some more write support in WebServices.
+  - Still more Shader Model 4 instructions.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Jan 22 14:54:12 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.2 development snapshot
+  - GStreamer 1.0 support.
+  - Support for SHA hashes in BCrypt.
+  - Synthesizing bold glyphs also for bitmap fonts.
+  - Underlines support in DirectWrite.
+  - Still more Shader Model 4 instructions.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Tue Jan 12 16:08:11 UTC 2016 - i@marguerite.su
+
+- make sure wine desktop files installed under correct categories
+  * currently they land in "unspecific category"
+  * "Emulator" can only be used after "System" or "Game" according
+    to freedesktop specification
+  * "Wine" itself is not a valid category
+  * "Documentation" doesn't fit wine related stuff
+
+-------------------------------------------------------------------
+Sat Jan  9 10:22:46 UTC 2016 - meissner@suse.com
+
+- Updated to 1.9.1 development snapshot
+  - A few more deferred fixes.
+  - Support for debug registers on x86-64.
+  - More Shader Model 4 instructions.
+  - Support for the Mingw ARM toolchain.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Dec 25 18:20:27 UTC 2015 - meissner@suse.com
+
+- Updated to 1.9.0 development snapshot
+  - A number of fixes that were deferred during code freeze.
+  - WSAPoll implementation.
+  - Standard font dialog fixes.
+  - X11 drag&drop improvements.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Dec 19 16:13:19 UTC 2015 - meissner@suse.com
+
+- Updated to the 1.8 release
+  This release represents 17 months of development effort and around
+  13,000 individual changes. The main highlights are the implementation
+  of DirectWrite and Direct2D, and the new Pulse Audio driver.
+
+-------------------------------------------------------------------
+Sun Dec 13 12:30:16 UTC 2015 - meissner@suse.com
+
+- Updated to 1.8-rc4 codefreeze snapshot
+  - bugfixes only
+- winetricks updated
+
+-------------------------------------------------------------------
+Fri Dec  4 16:05:53 UTC 2015 - meissner@suse.com
+
+- Updated to 1.8-rc3 codefreeze snapshot
+  - bugfixes only
+- winetricks updated
+
+-------------------------------------------------------------------
+Fri Nov 27 14:26:22 UTC 2015 - meissner@suse.com
+
+- Updated to 1.8-rc2 codefreeze snapshot
+  - bugfixes only
+- winetricks updated
+
+-------------------------------------------------------------------
+Fri Nov 20 13:52:33 UTC 2015 - meissner@suse.com
+
+- Updated to 1.8-rc1 codefreeze snapshot
+  - bugfixes only
+- winetricks updated
+
+-------------------------------------------------------------------
+Fri Nov 13 14:50:20 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.55 development snapshot
+  - Pulse audio driver
+  - Various fixes for Microsoft Office 2013 support
+  - Some more implementation of the Web Services DLL
+  - More fixes for the latest C runtime version
+  - Improvements to the Makefile generation
+  - Various bug fixes
+- buildrequire libpulse-devel for pulseaudio support
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Oct 30 13:46:11 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.54 development snapshot
+  - Implementation of the TransmitFile function.
+  - More implementation of the Web Services DLL.
+  - Improved video decoding.
+  - Alternative for the deprecated prelink tool.
+  - Major Turkish translation update.
+  - Various bug fixes.
+- wine-relocate-base.patch: is upstream
+- winetricks: updated
+
+-------------------------------------------------------------------
+Fri Oct 23 09:25:26 UTC 2015 - meissner@suse.com
+
+- gcc5 is now building wine correctly in openSUSE Factory,
+  switch to it.
+
+-------------------------------------------------------------------
+Sat Oct 17 18:13:42 UTC 2015 - meissner@suse.com
+
+- remove prelink build dependency
+- wine-relocate-base.patch: Use the -Ttext-segment linker option to
+  specify the text segment start.
+
+-------------------------------------------------------------------
+Fri Oct 16 14:24:25 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.53 development snapshot
+  - Support for the various versions of XAudio.
+  - More implementation of the Web Services DLL.
+  - Improved OLE object embedding.
+  - Various code cleanups in Direct3D.
+  - New MAINTAINERS file and Signed-off-by requirement to
+    improve the patch review process.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Oct  2 14:37:06 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.52 development snapshot
+  - Unicode data updated to Unicode 8.0.0.
+  - Some implementation of the Web Services DLL.
+  - More Direct3D 11 interfaces.
+  - A few more functions in the C++ runtime.
+  - Output standard glyph names in the PostScript driver.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Sep  4 14:29:47 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.51 development snapshot
+  - XAudio2 implementation using OpenAL Soft.
+  - Support for the new Universal C Runtime DLL.
+  - Dropdown menu support in the standard Open Dialog.
+  - Grayscale rendering mode in DirectWrite.
+  - Various bug fixes.
+- winetricks helper script updated
+
+-------------------------------------------------------------------
+Mon Aug 31 15:27:39 UTC 2015 - meissner@suse.com
+
+- have -devel require gcc48 too, as winegcc directly gets it. bsc#943841
+
+-------------------------------------------------------------------
+Mon Aug 24 09:47:12 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.50 development snapshot
+  - New version of the Gecko engine based on Firefox 40.
+  - First steps of the Direct3D 11 implementation.
+  - Better font matching in DirectWrite.
+  - Support for OpenMP on ARM platforms.
+  - Various bug fixes.
+- updated winetricks
+- removed susepatches.patch (upstreamed)
+
+-------------------------------------------------------------------
+Thu Aug 13 06:21:54 UTC 2015 - meissner@suse.com
+
+- susepatches.patch: fix ms word
+
+-------------------------------------------------------------------
+Sat Aug  8 10:57:45 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.49 development snapshot
+  - DirectWrite is now good enough for rendering text in Steam.
+  - A number of Direct2D improvements.
+  - Some more OpenMP functions.
+  - Support for namespaces in the IDL compiler.
+  - Various bug fixes.
+- winetricks update
+
+-------------------------------------------------------------------
+Wed Jul 29 16:27:02 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.48 development snapshot 
+  - Fleshed out OpenMP implementation.
+  - I/O stream support in the MSVCIRT C++ runtime.
+  - Support for pixel snapping in DirectWrite.
+  - More support for OpenGL core contexts.
+  - Various bug fixes.
+- winetricks update
+
+-------------------------------------------------------------------
+Fri Jul 10 13:58:37 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.47 development snapshot 
+  - Text drawing in Direct2D.
+  - Support for the new thread pool API.
+  - Toolbar state saving.
+  - Beginnings of an implementation for proper HID support.
+  - Support for file objects in device drivers.
+  - Various bug fixes.
+- winetricks update
+
+-------------------------------------------------------------------
+Tue Jul  7 09:55:22 UTC 2015 - meissner@suse.com
+
+- use gcc-4.8 for building, as gcc5 miscompiles wine currently.
+
+-------------------------------------------------------------------
+Fri Jun 26 12:18:00 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.46 development snapshot 
+  - Improvements in the BITS file transfer service.
+  - Still more progress on DirectWrite implementation.
+  - Support for shared user data on 64-bit.
+  - Various C++ runtime improvements.
+  - Some more support for the 64-bit ARM platform.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sat Jun 13 10:24:09 UTC 2015 - meissner@suse.com
+
+- susepatches.patch: fix build on x86_64
+
+-------------------------------------------------------------------
+Fri Jun 12 13:45:03 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.45 development snapshot 
+  - Better debugging support on 64-bit Mac OS X.
+  - Some more progress on DirectWrite implementation.
+  - A number of RichEdit control fixes.
+  - Beginning implementation of the old MSVCIRT C++ runtime.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sun Jun  7 10:17:40 UTC 2015 - meissner@suse.com
+
+- buildrequire new dependency libunwind-devel.
+
+-------------------------------------------------------------------
+Sun May 31 14:48:25 UTC 2015 - hillwood@opensuse.org
+
+- Updated to 1.7.44 development snapshot 
+  - More support for the COM interfaces of the RichEdit control.
+  - Initial version of a SmartTee filter.
+  - Some more support for the ARM64 platform.
+  - Support for the null device kernel object.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri May 15 14:39:56 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.43 development snapshot
+  - Improved support for Shell Browser windows.
+  - Some more API Sets libraries. 
+  - Read/write operations support with built-in devices.
+  - Major Catalan translation update.
+  - Support for WoW64 mode on ARM64.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri May  1 13:15:59 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.42 development snapshot
+  - Support for dynamic timezone information.
+  - Initial desktop shell window support.
+  - Some more Direct2D support.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Apr 17 14:06:38 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.41 development snapshot
+  - More Known Folders supported in the shell.
+  - Some more support for kernel job objects.
+  - More MSI patches improvements.
+  - Some theming fixes.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sun Apr  5 17:53:17 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.40 development snapshot
+  - Support for kernel job objects.
+  - Various fixes to the ListView control.
+  - Better support for OOB data in Windows Sockets.
+  - Support for DIB images in the OLE data cache.
+  - Improved support for MSI patches.
+  - Some fixes for ACL file permissions.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Mar 27 10:22:34 UTC 2015 - meissner@suse.com
+
+- switch from gstream 010 to gstreamer-plugins-base-devel (current)
+  bsc#924632
+
+-------------------------------------------------------------------
+Tue Mar 24 14:37:30 UTC 2015 - meissner@suse.com
+
+- updated winetricks script to 20150316, they moved to github:
+  https://github.com/Winetricks/winetricks
+
+-------------------------------------------------------------------
+Fri Mar 20 13:54:06 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.39 development snapshot
+  - WinMM joystick support on Mac OS X.
+  - Kerning support in DirectWrite.
+  - Support for DirectX Media Objects filters.
+  - Better support for animated GIFs in GdiPlus.
+  - Improved support for Known Folders in Shell32.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Mar  6 16:38:20 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.38 development snapshot
+  - New version of the Gecko engine based on Firefox 36.
+  - Support for themed scrollbars.
+  - Updated version of the Mono engine.
+  - More compatible RPC interface for service control.
+  - Support for X Drag & Drop version 5.
+  - Threading fixes in IME support.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Feb 20 15:20:31 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.37 development snapshot
+  - Interface change notifications.
+  - Support for the UTF-7 encoding.
+  - A number of graphical fixes for themed controls.
+  - Wininet now implemented on top of Win32 sockets.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sat Feb  7 08:27:39 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.36 development snapshot
+  - Some preliminary 64-bit support for Mac OS X.
+  - Support for configuring speakers in Winecfg.
+  - Improved support for Mac OS X Trash folder.
+  - Support for typographic features in DirectWrite.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Jan 23 20:29:32 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.35 development snapshot
+  - Beginnings of support for OpenGL core contexts.
+  - Initial support for glyph placement in DirectWrite.
+  - Some more WBEM objects.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Jan  9 20:03:00 UTC 2015 - meissner@suse.com
+
+- Updated to 1.7.34 development snapshot
+  - Support for surround sound in DirectSound.
+  - Better text run support in DirectWrite.
+  - Many HTML engine fixes.
+  - More support for WBEM objects.
+  - A few more C/C++ runtime functions.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Dec 12 20:11:04 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.33 development snapshot
+  - Support for copy/paste commands in MSHTML.
+  - Some more font support in DirectWrite.
+  - Better handling for loss of focus in Direct3D windows.
+  - Several more API Sets DLLs.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Nov 28 20:42:30 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.32 development snapshot
+  - New version of the Mono engine.
+  - A few more functions implemented in MSHTML.
+  - Improved support for restoring display mode.
+  - Font metrics improvements in DirectWrite.
+  - Various bug fixes.
+- updated winetricks to current version
+
+-------------------------------------------------------------------
+Sun Nov 16 07:57:54 UTC 2014 - meissner@suse.com
+
+- remove gpg-offline usage as its checked by the source services
+
+-------------------------------------------------------------------
+Fri Nov 14 13:37:19 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.31 development snapshot
+  - New version of the Gecko engine based on Firefox 34.
+  - Support for the Visual Studio 2013 version of the C/C++ runtimes.
+  - More font metrics support in DirectWrite.
+  - Some more Direct2D work.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sat Nov  1 07:50:51 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.30 development snapshot
+  - Support for shaping and BiDi mirroring in DirectWrite.
+  - Some page fault handling fixes.
+  - A few more C runtime functions.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sun Oct 19 20:36:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in wisotool script
+
+-------------------------------------------------------------------
+Fri Oct 17 12:06:51 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.29 development snapshot
+  - Support for shaping and BiDi mirroring in DirectWrite.
+  - Some page fault handling fixes.
+  - A few more C runtime functions.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Oct  3 21:18:44 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.28 development snapshot
+  - Support for conditional compilation in JavaScript.
+  - Bidirectional text support in DirectWrite.
+  - Stubs for DirectPlay Voice support.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Sep 19 20:10:25 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.27 development snapshot
+  - Some more work on Direct2D support.
+  - Various improvements to RichEdit interfaces.
+  - Initial support for ICMP version 6.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sat Sep  6 06:50:08 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.26 development snapshot
+  - Still more DirectWrite functions.
+  - Improvements to the common File Dialog.
+  - A number of C runtime improvements.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Aug 22 19:01:09 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.25 development snapshot
+  - Implementation of the packet capture library.
+  - A few more DirectWrite functions.
+  - Improvements in HTML table support.
+  - More VBScript math functions.
+  - Various bug fixes.
+- buildrequire libpcap-devel for wpcap.dll
+
+-------------------------------------------------------------------
+Mon Aug 11 05:36:04 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.24 development snapshot
+  - Beginning of some DirectWrite classes implementation.
+  - Initial wrapper dll for the packet capture library.
+  - Some crypto improvements.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Jul 26 08:13:06 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.23 development snapshot
+  - Better support for files drag & drop.
+  - Improvements to the HTTP cookie management.
+  - Initial support for 64-bit Android builds.
+  - Fixes to crypto certificates management.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sun Jul 13 21:06:42 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.22 development snapshot
+  - Support for Unicode bracketing pairs.
+  - Improved Internet cookie support.
+  - OS X CoreAudio driver uses AUHAL instead of AudioQueue.
+  - Initial support for geographical information.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Jun 27 21:36:27 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.21 development snapshot
+  - Support for critical sections in the C runtime.
+  - Unicode data updated to Unicode 7.0.
+  - Support for interlaced PNG encoding.
+  - Initial stub for the Packager library.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Jun 13 22:49:37 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.20 development snapshot
+  - X11 drag & drop fixes.
+  - A few more C/C++ runtime functions.
+  - Fixes for various memory issues found by Valgrind.
+  - Some OLE storage fixes.
+  - Various bug fixes.
+- winetricks updated
+
+-------------------------------------------------------------------
+Mon May 19 11:54:30 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.19 development snapshot
+  - New JSProxy DLL for automatic proxy configuration.
+  - More OLE Accessible Object support.
+  - Improvements to the XML writer.
+  - Fixes for various memory issues found by Valgrind.
+  - Initial headers for Direct2D support.
+  - Various bug fixes.
+- winetricks updated
+
+-------------------------------------------------------------------
+Fri May  2 18:39:29 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.18 development snapshot
+  - Improved OLE Accessible Object support.
+  - Window sizing improvements in the Mac driver.
+  - Fixes for various memory issues found by Valgrind.
+  - A few more MSHTML functions.
+  - Some DirectDraw cleanups.
+  - Various bug fixes.
+- winetricks updated
+
+-------------------------------------------------------------------
+Fri Apr 18 19:08:23 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.17 development snapshot
+  - More implementations for the Task Scheduler.
+  - C runtime made more compatible by sharing source files.
+  - Fixes in the Mac OS X joystick support.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Apr  4 21:15:06 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.16 development snapshot
+  - More regression test fixes.
+  - String arrays better supported in the IDL compiler.
+  - Initial stubs for DirectX Video Acceleration.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Mar 21 22:56:05 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.15 development snapshot
+  - New Task Scheduler service.
+  - Many regression test fixes.
+  - Support for exception unwinding in VBScript.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Mar  7 21:41:41 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.14 development snapshot
+  - More Task Scheduler support.
+  - Improvements for AVI encoding support.
+  - More VisualBasic interfaces in MSXML.
+  - Support for deflate content encoding in Wininet.
+  - Some fixes for monochrome printers.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sat Feb 22 08:43:13 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.13 development snapshot
+  - More Task Scheduler support.
+  - A few more Direct3D 10 interfaces.
+  - More Windows Media Player stubs.
+  - ARM code generation improvements.
+  - Better memory size reporting on Mac OS X.
+  - Various bug fixes.
+- updated winetricks, added manpage
+
+-------------------------------------------------------------------
+Fri Feb  7 21:29:14 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.12 development snapshot
+  - Initial support for Window Media Player interfaces.
+  - Some more Task Scheduler support.
+  - Various C++ runtime fixes.
+  - More dlls with ugly names for Windows 8 API set support.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Jan 24 08:15:18 UTC 2014 - meissner@suse.com
+
+- require p11-kit-32bit in -32bit package.
+
+-------------------------------------------------------------------
+Fri Jan 17 20:16:01 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.11 development snapshot
+  - Uniscribe support in the RichEdit control.
+  - Support for condition variables and Slim Reader/Writer locks.
+  - More D3D command stream preparation work.
+  - Optional Start Menu in desktop mode.
+  - Improved support for vertical fonts metrics.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Tue Jan  7 08:09:39 UTC 2014 - meissner@suse.com
+
+- recommend alsa-plugins-pulse and alsa-plugins for the x86 -32bit
+  package, otherwise there would be no sound.
+  bnc#857621
+
+-------------------------------------------------------------------
+Sat Jan  4 09:56:25 UTC 2014 - meissner@suse.com
+
+- Updated to 1.7.10 development snapshot
+  - Window maximization in the Mac driver.
+  - AVI compressor implementation.
+  - Thread local storage support in dynamically loaded libraries.
+  - Beginnings of a Task Scheduler implementation.
+  - Extended IPX protocol support.
+  - Various bug fixes.
+- require samba-winbind for the ntlm_auth helper binary
+  bnc#857302
+
+-------------------------------------------------------------------
+Fri Dec 20 19:32:51 UTC 2013 - meissner@suse.com
+
+- Updated to 1.7.9 development snapshot
+  - Improved window moving/resizing in the Mac driver.
+  - Some DirectDraw palette fixes.
+  - Reduced code duplication between C++ runtime versions.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sat Dec  7 10:09:23 UTC 2013 - meissner@suse.com
+
+- Updated to 1.7.8 development snapshot
+  - Updated version of the Mono package.
+  - Improvements in the BITS service implementation.
+  - Better data tables for Japanese vertical fonts support.
+  - Improved backtraces on recent Mac OS X versions.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sun Nov 24 22:36:04 UTC 2013 - meissner@suse.com
+
+- Updated to 1.7.7 development snapshot
+  - Support for configuring remote shares using Samba's NetAPI library.
+  - Multiple keyboard layouts support in the Mac driver.
+  - Improved embedding support through XEMBED.
+  - Support for arrays in VBScript.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Nov  8 19:17:15 UTC 2013 - meissner@suse.com
+
+- Updated to 1.7.6 development snapshot
+  - Rewrite of the BiDi algorithm for full Unicode 6.3 support.
+  - Support for Video Mixing Renderer version 7.
+  - Better handling of window resizes in the Mac driver.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Oct 25 18:01:13 UTC 2013 - meissner@suse.com
+
+- Updated to 1.7.5 development snapshot
+  - Support for registration-free COM using activation contexts.
+  - Improved support for simulated bold fonts.
+  - Unicode data updated to Unicode 6.3.
+  - Better support for typelib registration on 64-bit.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Oct 11 17:37:38 UTC 2013 - meissner@suse.com
+
+- Updated to 1.7.4 development snapshot
+  - Support for Cocoa-style full-screen mode in the Mac driver.
+  - More preparation work for the Direct3D command stream.
+  - A number of Winsock improvements.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Sep 27 20:17:32 UTC 2013 - meissner@suse.com
+
+- Updated to 1.7.3 development snapshot
+  - New version of the Gecko engine based on Firefox 24.
+  - Preparation work for the Direct3D command stream.
+  - Window management fixes in the Mac driver.
+  - Support for IPHLPAPI functions on Android.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Sep 27 15:46:39 UTC 2013 - meissner@suse.com
+
+- split off a wine-msi.desktop for installing MSI packages.
+  bnc#695105
+
+-------------------------------------------------------------------
+Wed Sep 18 21:42:31 UTC 2013 - meissner@suse.com
+
+- Updated to 1.7.2 development snapshot
+  - Right-to-left text layout improvements.
+  - NTLM and Negotiate authentication for RPC over HTTP.
+  - More glyphs in the built-in Wingdings font.
+  - Better system tray support in the Mac driver.
+  - Activation context improvements.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sat Aug 31 08:43:28 UTC 2013 - meissner@suse.com
+
+- Updated to 1.7.1 development snapshot
+  - Support for keyed event objects.
+  - Support for the "init once" synchronization mechanism.
+  - Activation context support for DLLs, typelibs, and COM classes.
+  - Support for loading 32-bit typelibs on 64-bit.
+  - Various Mac driver fixes.
+  - Some fixes for serial port devices.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Tue Aug  6 15:44:29 UTC 2013 - meissner@suse.com
+
+- Updated to 1.7.0 development release
+  - Support for vertical text in the Postscript driver.
+  - Version 2 of liblcms used now instead of version 1.
+  - Unicode data updated to Unicode 6.2.0.
+  - Hyperlink controls supported in installers.
+  - Improved support for XML attributes.
+  - Various bug fixes.
+- buildrequire liblcms2-devel now instead of liblcms-devel
+
+-------------------------------------------------------------------
+Tue Jul 30 06:22:29 UTC 2013 - meissner@suse.com
+
+- enable armv7l
+
+-------------------------------------------------------------------
+Fri Jul 19 05:36:25 UTC 2013 - meissner@suse.com
+
+- Updated to 1.6 Release.
+
+  This release represents 16 months of development effort and around
+  10,000 individual changes. The main highlights are the new Mac driver,
+  the full support for window transparency, and the new Mono package for
+  .NET applications support.
+
+  It also contains a lot of improvements across the board, as well as
+  support for many new applications and games. See the release notes
+  for a summary of the major changes. 
+
+- winetricks helper script updated
+
+-------------------------------------------------------------------
+Fri Jun  7 20:46:09 UTC 2013 - meissner@suse.com
+
+- updated to 1.6rc1 beta snapshot.
+  - New implementation of the typelib creation support.
+  - GLSL-based support for fixed function vertex shaders.
+  - Support for desktop launchers in virtual desktop mode.
+  - Fixes for Japanese vertical text.
+  - New Croatian translation.
+  - Various bug fixes.
+- more 1.6rcs with just bugfixes
+
+-------------------------------------------------------------------
+Fri May 24 19:19:20 UTC 2013 - meissner@suse.com
+
+- Updated to 1.5.31 development snapshot.
+  - New version of the Gecko engine based on Firefox 21.
+  - Joystick force feedback support on Mac OS X.
+  - Window management fixes in the Mac driver.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri May 10 22:34:33 UTC 2013 - meissner@suse.com
+
+- Updated to 1.5.30 development snapshot.
+  - Mouse capture support in the Mac driver.
+  - NTLM and Negotiate authentication in WinHTTP.
+  - Support for proxy bypass in WinInet.
+  - Various bug fixes.
+- susepatches.patch: Fixed a build issue.
+
+-------------------------------------------------------------------
+Sun Apr 28 10:48:07 UTC 2013 - meissner@suse.com
+
+- Updated to 1.5.29 development snapshot.
+  - Input method support in the Mac driver.
+  - Support for TLS 1.1 and 1.2 connections on Mac OS X.
+  - JavaScript performance improvements.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Apr 12 18:59:48 UTC 2013 - meissner@suse.com
+
+- Updated to 1.5.28 development snapshot.
+  - GnuTLS used for all secure connections, OpenSSL is no longer needed.
+  - Mac driver enabled by default.
+  - Built-in FixedSys fonts.
+  - New icon for the joystick control panel.
+  - Postscript driver improvements.
+  - Various bug fixes.
+
+- Updated to 1.5.27 development snapshot
+  - System tray support in the Mac driver.
+  - Various C runtime improvements.
+  - Large icons for built-in applications.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Tue Apr  2 09:42:34 UTC 2013 - meissner@suse.com
+
+- Updated to 1.5.26 development snapshot
+  - System tray support in the Mac driver.
+  - Various C runtime improvements.
+  - Large icons for built-in applications.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Mar  1 21:05:58 UTC 2013 - meissner@suse.com
+
+- Updated to 1.5.25 development snapshot
+  - Proper cursor support in the Mac driver.
+  - Fixes for right-to-left support in RichEdit.
+  - Initial version of a Wingdings font.
+  - Various bug fixes.
+- enabled gpg verification
+
+-------------------------------------------------------------------
+Fri Feb 15 20:47:07 UTC 2013 - meissner@suse.com
+
+- Updated to 1.5.24 development snapshot
+  - Keyboard and mouse wheel support in the Mac driver.
+  - Regular expression support in VB Script.
+  - Many RichEdit code cleanups.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Feb  1 08:47:27 UTC 2013 - meissner@suse.com
+
+- Updated to 1.5.23 development snapshot
+  - HTTPS support no longer dependent on OpenSSL.
+  - Support for event handling in the Mac driver.
+  - A functional Netstat built-in application.
+  - A bunch of C++ runtime math functions.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Jan 18 20:58:27 UTC 2013 - meissner@suse.com
+
+- Updated to 1.5.22 development snapshot
+  - New version of the Gecko engine.
+  - Beginnings of the Mac graphics driver.
+  - Support for ARM64 platforms.
+  - Fixes for RTL text in Uniscribe.
+  - Various bug fixes.
+- require new wine-gecko version > 1.9
+
+-------------------------------------------------------------------
+Sun Jan  6 20:28:23 UTC 2013 - meissner@suse.com
+
+- Updated to 1.5.21 development snapshot
+  - Beginnings of a netstat built-in program.
+  - Support for selecting resolution in the PostScript driver.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sat Dec 22 14:00:09 UTC 2012 - meissner@suse.com
+
+- Updated to 1.5.20 development snapshot
+  - A bunch of dlls with ugly names for API sets support.
+  - More ATL functions implemented.
+  - Still more C++ runtime functions.
+  - Several text rendering fixes.
+  - PostScript driver improvements.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sat Dec  8 17:48:35 UTC 2012 - meissner@suse.com
+
+- Updated to 1.5.19 development snapshot.
+  - Performance improvements in the DIB engine.
+  - More fleshed out XML-lite implementation.
+  - Some more C++ runtime functions.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Mon Nov 26 21:03:26 UTC 2012 - jengelh@inai.de
+
+- Parallel build with %_smp_mflags
+
+-------------------------------------------------------------------
+Fri Nov 23 21:56:07 UTC 2012 - meissner@suse.com
+
+- Updated to 1.5.18 development snapshot.
+  - Various Windows Codecs improvements.
+  - Fixes for OLE database support.
+  - Improvements to system parameters management.
+  - Some fixes to the built-in Web browser.
+  - Fixes for XML support.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sun Nov 11 19:27:22 UTC 2012 - meissner@suse.com
+
+- Updated to 1.5.17 development snapshot.
+  - Sub-pixel font anti-aliasing in the DIB engine.
+  - Support for automatic installation of ActiveX controls.
+  - Automatic fallback to TLS 1.0 for secure connections.
+  - Beginnings of the DirectWrite text analyzer.
+  - Better handling of font outlines in OpenGL.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Oct 26 23:08:03 UTC 2012 - meissner@suse.com
+
+- Updated to 1.5.16 development snapshot
+  - New version of the Mono package.
+  - Many improvements to the CMD command-line parser.
+  - More stream classes in the C++ runtime.
+  - Support for managing services in WMI.
+  - Improved CPU detection.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Oct 12 18:48:04 UTC 2012 - meissner@suse.com
+
+- Updated to 1.5.15 development snapshot
+  - Full support for layered windows.
+  - New version of the Gecko engine based on Firefox 16.
+  - Support for broadcast sockets used by networked games.
+  - Downloaded add-ons installers are now cached.
+  - Support for persistent Internet cookies.
+  - String optimizations in JavaScript.
+  - Various bug fixes.
+- require wine-gecko >= 1.8
+
+-------------------------------------------------------------------
+Fri Sep 28 21:25:04 UTC 2012 - meissner@suse.com
+
+- Updated to 1.5.14 development snapshot
+  - Much better behavior of the URL cache.
+  - Improved GIF image support.
+  - More parser features in the shader compiler.
+  - Optimizations in JavaScript.
+  - Various bug fixes.
+- updated winetricks to 20120912
+
+-------------------------------------------------------------------
+Fri Sep 14 22:29:43 UTC 2012 - meissner@suse.com
+
+- Updated to 1.5.13 development snapshot
+  - Client-side window rendering using the DIB engine.
+  - Raw input support for keyboard and mouse.
+  - Support for transparent window areas using color keying.
+  - Proper C++ RTTI support on 64-bit.
+  - Implementation of logical processor information.
+  - Support for fonts with localized names.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Aug 31 18:59:58 UTC 2012 - meissner@suse.com
+
+- Updated to 1.5.12 development snapshot
+  - Support for disabling individual joysticks.
+  - Better support for D3DX9 constant tables.
+  - Some XRandR improvements.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Tue Aug 21 11:02:45 UTC 2012 - meissner@suse.com
+
+- updated winetricks
+
+-------------------------------------------------------------------
+Mon Aug 20 11:27:40 UTC 2012 - dmueller@suse.com
+
+- package bin/wine on %arm
+- prelink is only needed for %ix86 and x86_64 (win32 and win64)
+  (not yet for ARM)
+
+-------------------------------------------------------------------
+Fri Aug 17 19:33:11 UTC 2012 - meissner@suse.com
+
+- Updated to 1.5.11 development snapshot
+  - Multi-channel support in the ALSA driver.
+  - Removal of the big X11 lock.
+  - Support for pair positioning adjustments in Uniscribe.
+  - More I/O stream implementations in the C++ runtime.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Tue Jul 31 20:08:50 UTC 2012 - meissner@suse.com
+
+- Updated to 1.5.10 development snapshot
+  - New version of the Gecko engine based on Firefox 14.
+  - Support for OpenGL in the DIB engine using libOSMesa.
+  - Off-screen rendering is now the default in Direct3D.
+  - Some more WMI infrastructure.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Wed Jul 18 09:07:07 UTC 2012 - meissner@suse.com
+
+- Updated to 1.5.9 development snapshot
+  - Support for GPOS font tables in Uniscribe.
+  - Support for XRandr 1.2 and 1.3.
+  - Parser improvements for the HLSL compiler.
+  - More key exchange algorithms supported on Mac OS.
+  - Relay tracing on ARM.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Tue Jul  3 19:28:03 UTC 2012 - meissner@suse.com
+
+- Updated to 1.5.8 development snapshot
+  - More stream functionality in the C++ runtime.
+  - A number of Windows Codecs improvements.
+  - More WBEM classes and properties.
+  - Some HTML Help fixes.
+  - Support for printing fake italic fonts.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Tue Jul  3 15:51:50 UTC 2012 - meissner@suse.com
+
+- updated winetricks to current version
+
+-------------------------------------------------------------------
+Sun Jun 24 20:16:19 UTC 2012 - meissner@suse.com
+
+- Updated to 1.5.7 development snapshot
+  - New version of the Gecko engine based on Firefox 13.
+  - Dynamic device support with UDisks2.
+  - More stream classes implemented in the C++ runtime.
+  - Support for metadata in TIFF files.
+  - Fleshed out WBEM implementation.
+  - Improved support for printer paper sizes.
+  - Various bug fixes.
+- wine gecko 1.6 now required (see above)
+
+-------------------------------------------------------------------
+Mon Jun 11 20:30:12 UTC 2012 - meissner@suse.com
+
+- Updated to 1.5.6 development snapshot
+  - Automatic installation of the Mono add-on package.
+  - Control panel applet for joysticks.   
+  - Device bitmap rendering now done through the DIB engine.
+  - Support for video rendering through DirectX (VMR-9).
+  - First steps towards a D3D shader compiler.
+  - Build fixes for DragonFly BSD.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri May 25 21:12:31 UTC 2012 - meissner@suse.com
+
+- Updated to 1.5.5 development snapshot
+  - Support for installing Mono as a Wine add-on package.
+  - Dithering of pattern brushes in the DIB engine.
+  - Support for installing the .NET 4.0 runtime.
+  - DDS files supported in D3DX9.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Mon May 21 11:41:00 UTC 2012 - badshah400@gmail.com
+
+- Use BuildRequires: libgnutls-devel instead of gnutls-devel for
+  Factory in keeping with gnutls package naming changes. 
+
+-------------------------------------------------------------------
+Wed May 16 14:54:37 CEST 2012 - meissner@suse.de
+
+- Use .*def as regexp instead of glob *.def
+
+-------------------------------------------------------------------
+Sat May 12 13:02:37 CEST 2012 - meissner@suse.de
+
+- Updated to 1.5.4 development snapshot
+  - A new DirectSound resampler.
+  - A Negotiate authentication provider.
+  - OpenGL support in the DIB engine.
+  - Beginnings of support for .NET mixed assemblies.
+  - Support routines for Internationalized Domain Names.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Apr 27 22:44:03 CEST 2012 - meissner@suse.de
+
+- Updated to 1.5.3 development snapshot
+  - Support for graphics bounds tracking.
+  - A number of fixes to the builtin Internet Explorer.
+  - Support for displaying ARM code in the Wine debugger.
+  - Various DirectMusic improvements.
+  - Better namespace support in MSXML.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Apr 13 20:57:25 CEST 2012 - meissner@suse.de
+
+- Updated to 1.5.2 development snapshot
+  - Improved naming scheme for audio devices.
+  - Better support for finding system fonts on Mac OS X.
+  - Beginnings of support for JPEG encoding.
+  - Several printing fixes.
+  - Improvements to the URL cache.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Thu Apr  5 13:08:08 UTC 2012 - reddwarf@opensuse.org
+
+- Include /usr/lib/wine/*.def files in wine-devel-32bit
+
+-------------------------------------------------------------------
+Fri Mar 30 23:21:10 CEST 2012 - meissner@suse.de
+
+- Updated to 1.5.1 development snapshot
+  - Built-in JavaScript now preferred over Gecko in most cases.
+  - Support for scalable font resources.
+  - Fixes for audio and video playback.
+  - Support for script decoding in JScript.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Mon Mar 26 17:41:16 CEST 2012 - meissner@suse.de
+
+- Updated to 1.5.0 development snapshot (use Emulators:Wine:STABLE for wine 1.4)
+  - New version of the Gecko engine.
+  - Partial support for using the Trash on Mac OS X.
+  - Support for path gradients in GdiPlus.
+  - Various MSXML improvements.
+  - Fixes to 64-bit exception handling.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Tue Mar 13 17:41:05 CET 2012 - meissner@suse.de
+
+- Updated winetricks to 20120308
+
+-------------------------------------------------------------------
+Wed Mar  7 17:35:05 CET 2012 - meissner@suse.de
+
+- Wine 1.4 final release
+  This release represents 20 months of development effort and over
+  16,000 individual changes. The main highlights are the new DIB
+  graphics engine, a redesigned audio stack, and full support for
+  bidirectional text and character shaping.
+
+-------------------------------------------------------------------
+Fri Feb 17 22:58:23 CET 2012 - meissner@suse.de
+
+- Updated to 1.4-rc4 release candidate (1.3.38_1.4rc4 for linearity)
+  - Bug fixes only, we are in code freeze.
+
+-------------------------------------------------------------------
+Mon Feb 13 16:43:54 CET 2012 - meissner@suse.de
+
+- Updated to 1.4-rc3 release candidate (1.3.38_1.4rc3 for linearity)
+  - Bug fixes only, we are in code freeze.
+
+-------------------------------------------------------------------
+Mon Feb  6 14:28:55 CET 2012 - meissner@suse.de
+
+- Updated to 1.4-rc2 release candidate (1.3.38_1.4rc2 for linearity)
+  - Bug fixes only, we are in code freeze.
+
+-------------------------------------------------------------------
+Tue Jan 31 17:56:28 CET 2012 - meissner@suse.de
+
+- disable fdupes as then install on btrfs will not work. bnc#723402
+
+-------------------------------------------------------------------
+Fri Jan 27 20:23:03 UTC 2012 - meissner@suse.com
+
+- Updated to 1.4-rc1 release candidate (1.3.38_1.4rc1 for linearity)
+  - Improved crash dialog with support for saving the backtrace.
+  - Support for the Back button in built-in Internet Explorer.
+  - Keyboard accelerators can now be translated through po files.
+  - A number of installer fixes.
+  - Many translation updates and tweaks.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Thu Jan 26 22:00:45 UTC 2012 - meissner@suse.com
+
+- autogenerate baselibs.conf
+
+-------------------------------------------------------------------
+Mon Jan 16 17:53:20 CET 2012 - meissner@suse.de
+
+- Updated to 1.3.36 development snapshot
+  - Completion of the DIB engine.
+  - Improvements to the C++ runtime.
+  - A number of fixes in the audio drivers.
+  - Unnecessary Direct3D options removed from WineCfg.
+  - Some fixes to the built-in Internet Explorer.
+  - Various bug fixes.
+- packaging changed to use baselibs methods
+
+-------------------------------------------------------------------
+Fri Dec 30 18:59:04 UTC 2011 - meissner@suse.com
+
+- Updated to 1.3.36 development snapshot
+  - UDisks backend for the dynamic device support.
+  - Polygons and geometric pens implemented in the DIB engine.
+  - JScript now compiles entire functions.
+  - Improved support for vertical fonts.
+  - A few more scripts in UniScribe.
+  - A bunch of ctype functions implemented in MSVCP.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Wed Dec 21 10:51:39 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Dec 17 10:13:32 UTC 2011 - meissner@suse.com
+
+- Updated to 1.3.35 development snapshot
+  - Triangular gradients and cosmetic wide pens support in the DIB engine.
+  - All Wine dialogs can now be translated through po files.
+  - Many more scripts added to UniScribe.
+  - JScript using bytecode throughout now.
+  - Several MSXML improvements.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Dec  2 23:39:07 CET 2011 - meissner@suse.de
+
+- Updated to 1.3.34 development snapshot
+  - Bytecode support in JavaScript.
+  - Support for gradients in the DIB engine.
+  - A number of Uniscribe improvements.
+  - Fixes for DirectDraw mode switching.
+  - A few more MSVC runtime functions.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Mon Nov 21 22:49:24 CET 2011 - meissner@suse.de
+
+- Remove -fomit-frame-pointer again.
+
+-------------------------------------------------------------------
+Fri Nov 18 21:51:53 CET 2011 - meissner@suse.de
+
+- Updated to 1.3.33 development snapshot
+  - Support for text output in the DIB engine.
+  - Improved support for HTTP proxies.
+  - New version of the Gecko engine.
+  - A number of cursor fixes.
+  - Some fixes in bidirectional text layout.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sun Nov  6 22:34:00 CET 2011 - meissner@suse.de
+
+- Updated to 1.3.32 development snapshot
+  - BiDi text support in the multi-line edit control.
+  - Support for pattern brushes in the DIB engine.
+  - A number of MSXML fixes.
+  - Improvements to the PostScript driver.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Oct 21 21:56:08 CEST 2011 - meissner@suse.de
+
+- Updated to 1.3.31 development snapshot
+  - BiDi text support in the single-line edit control.
+  - Support for StretchDIBits and AlphaBlend in the DIB engine.
+  - A number of audio fixes.
+  - VBScript improvements.
+  - Various bug fixes.
+- Updated winetricks
+
+-------------------------------------------------------------------
+Tue Oct 18 17:45:28 CEST 2011 - meissner@suse.de
+
+- Updated to 1.3.30 development snapshot
+  - DirectSound reimplemented on top of MMDevAPI.
+  - Support for StretchBlt in the DIB engine.
+  - User interface improvements in HTML help.
+  - Some MSXML fixes.
+  - Performance improvements in cmd.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sat Oct 15 10:40:45 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typo in wine.spec
+
+-------------------------------------------------------------------
+Tue Oct  4 10:08:01 CEST 2011 - meissner@suse.de
+
+- recommend dosbox as it is used when vm86 is not present.
+
+-------------------------------------------------------------------
+Sun Sep 25 09:59:25 CEST 2011 - meissner@suse.de
+
+- Updated to 1.3.29 development snapshot
+  - Extensive support for VBScript.
+  - Various improvements to the calendar common control.
+  - A number of XRender fixes and optimizations.
+  - Several new functions in the MSVCP runtime.
+  - A number of audio fixes.
+  - DirectDraw cleanups.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sun Sep 11 10:11:11 CEST 2011 - meissner@suse.de
+
+- Updated to 1.3.28 development snapshot
+  - Initial version of the VBScript parser.
+  - Automagic audio driver selection.
+  - Support for volume information on UDF file systems.
+  - The OpenGL renderer is now the default for DirectDraw.
+  - Device configuration dialog in DirectInput.
+  - SetDIBitsToDevice support in the DIB engine.
+  - Several improvements in the cmd parser.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Wed Aug 31 14:25:25 CEST 2011 - meissner@suse.de
+
+- Updated to 1.3.27 development snapshot
+  - Support for multisampling in Direct3D.
+  - New version of the Gecko engine.
+  - Improvements to the network proxy handling.
+  - Better write support in MSXML.
+  - Side-by-side manifests for built-in libraries.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sat Aug  6 19:15:13 CEST 2011 - meissner@suse.de
+
+- Updated to 1.3.26 development snapshot
+  - Various improvements to the builtin Internet Explorer.
+  - Support for Get/SetDIBits in the DIB engine.
+  - Support for enhanced metafiles in the View tool.
+  - Many improvements in WinHTTP.
+  - A number of fixes to the COM stubless marshaller.
+  - Improved mechanism for DLL registrations.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sat Jul 23 11:06:06 CEST 2011 - meissner@suse.de
+
+- Updated to 1.3.25 development snapshot
+  - Rewrite of the audio support, using the Win7 architecture.
+  - Old-style sound drivers for Jack, NAS and ESD are removed.
+  - Graphics driver architecture changes for the DIB engine.
+  - Improved handling of the shell recycle bin.
+  - Better joystick support in DirectInput.
+  - Initial stub for VBScript support.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Jul  8 22:34:27 CEST 2011 - meissner@suse.de
+
+- Updated to 1.3.24 development snapshot
+  - Various DirectInput improvements.
+  - Support for line breaking in Uniscribe.
+  - More UI elements in builtin Shell Explorer.
+  - Some more D3DX9 functions.
+  - Improved support for shell known folders.
+  - Various bug fixes.
+- libv4l headers no longer are in glibc, but in libv4l on factory 
+- updated winetricks to 20110629
+
+-------------------------------------------------------------------
+Wed Jun 29 16:46:15 CEST 2011 - meissner@suse.de
+
+- Updated to 1.3.23 development snapshot
+  - Support for stubless COM proxies on x86-64.
+  - Builtin dxdiag now outputs real information.
+  - Monochrome bitmap format in the DIB engine.
+  - Beginnings of a true shell Explorer builtin.
+  - A number of new D3DX9 functions.
+  - More support for Indic text shaping.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Wed Jun 29 13:31:38 CEST 2011 - meissner@suse.de
+
+- fixed pl man path
+
+-------------------------------------------------------------------
+Tue Jun 28 13:24:29 UTC 2011 - lnussel@suse.de
+
+- make hal support optional, default off (bnc#697035)
+
+-------------------------------------------------------------------
+Fri Jun 10 21:00:29 CEST 2011 - meissner@suse.de
+
+- Updated to 1.3.22 development snapshot
+  - Support for Indic text shaping.
+  - Generation of stubless code in the IDL compiler.
+  - Support for X files in D3DX.
+  - 4- and 24-bit bitmap formats in the DIB engine.
+  - Listview performance improvements.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri May 27 23:21:05 CEST 2011 - meissner@suse.de
+
+- Updated to 1.3.21 development snapshot
+  - Support for installation rollbacks in MSI.
+  - 8- and 16-bit bitmap formats in the DIB engine.
+  - Fixes in the XInput2 mouse support.
+  - Better support for text shaping in Uniscribe.
+  - Improvements to the Item common dialog.
+  - More MSVC runtime functions.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Mon May 16 17:45:44 CEST 2011 - meissner@suse.de
+
+- escape a single \ with \\ in the wine-browsedrive.desktop file.
+
+-------------------------------------------------------------------
+Sat May 14 14:21:25 CEST 2011 - meissner@suse.de
+
+- Updated to 1.3.20 development snapshot
+  - Option to clip the mouse inside fullscreen windows.
+  - Support for persistent HTTP connections.
+  - Initial implementation of the XML writer.
+  - Support for drawing rectangles in the DIB engine.
+  - Volume control in MMDevAPI.
+  - More MSVC runtime functions.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Apr 29 20:41:37 CEST 2011 - meissner@suse.de
+
+- Updated to 1.3.19 development snapshot
+  - New sound driver architecture for MMDevAPI.
+  - Better support for relative mouse events in DInput.
+  - Debugger support for the ARM platform.
+  - Various improvements in D3DX9.
+  - More MSVC runtime functions.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Apr 29 11:27:34 UTC 2011 - meissner@novell.com
+
+- Updated winetricks
+
+-------------------------------------------------------------------
+Fri Apr 15 20:19:30 CEST 2011 - meissner@suse.de
+
+- Updated to 1.3.18 development snapshot
+  - Support for mouse pointer clipping.
+  - Raw mouse events support using XInput2.
+  - First steps of a DIB engine implementation.
+  - More properties supported in DXDiag.
+  - New security tab in the Internet control panel.
+  - Improved video playback on Mac OS X.
+  - Various bug fixes.
+- Updated winetricks 
+
+-------------------------------------------------------------------
+Fri Apr  1 23:54:35 CEST 2011 - meissner@suse.de
+
+- Updated to 1.3.17 development snapshot
+  - Implementation of the new Vista file dialogs.
+  - Initial support for patching in MSI installers.
+  - Improvements to the calendar control.
+  - A few fixes for file associations.
+  - Menus cleaned up in built-in applications.
+  - Various bug fixes.
+- Updated winetricks 
+
+-------------------------------------------------------------------
+Fri Mar 18 21:24:18 CET 2011 - meissner@suse.de
+
+- Updated to 1.3.16 development snapshot
+  - New version of the Gecko engine, based on Firefox 4.
+  - Better support for Dwarf debugging information.
+  - Improved handling of animated cursors.
+  - GnuTLS no longer required on Mac OS X.
+  - Improvements to the GDI driver infrastructure.
+  - A number of MSI fixes for the .NET installers.
+  - Several GdiPlus improvements.
+  - Various bug fixes.
+- new winetricks release
+
+-------------------------------------------------------------------
+Sat Mar  5 07:16:17 UTC 2011 - meissner@suse.de
+
+- Updated to 1.3.15 development snapshot
+  - Support for changing network passwords.
+  - Reflection support in shader compiler.
+  - Tests no longer attempt to cope with Win9x behavior.
+  - A number of MSHTML and MSXML improvements.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sat Feb 19 08:34:33 CET 2011 - meissner@suse.de
+
+- Updated to 1.3.14 development snapshot
+  - Many cleanups to address Valgrind and Clang warnings.
+  - Support for creating compressed cabinet files.
+  - Translation updates.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Feb  4 21:25:23 CET 2011 - meissner@suse.de
+
+- Updated to 1.3.13 development snapshoamrcust
+  - Tools for creating MSI installers.
+  - Clipboard improvements.
+  - Support for po files in the message compiler.
+  - Improvements to the Wine debugger.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sun Jan 23 10:59:03 CET 2011 - meissner@suse.de
+
+- Updated to 1.3.12 development snapshot
+  - Support for multiple icon sizes in winemenubuilder.
+  - Improvements to the help browser.
+  - Initial stab at DOSBox integration.
+  - Various MSI fixes.
+  - Some fixes to the Wine debugger.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Tue Jan 11 13:20:24 CET 2011 - meissner@suse.de
+
+- one more fix for ppc build
+
+-------------------------------------------------------------------
+Fri Jan  7 20:32:21 CET 2011 - meissner@suse.de
+
+- Updated to 1.3.11 development snapshot
+  - PO files now used for translations.
+  - Various JavaScript improvements.
+  - Some fixes to the Wine debugger.
+  - Translation updates.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Jan  7 13:45:24 CET 2011 - meissner@suse.de
+
+- moved development tools into -devel package 
+
+-------------------------------------------------------------------
+Mon Jan  3 14:30:52 CET 2011 - meissner@suse.de
+
+- Updated to 1.3.10 development snapshot
+  - Support for notification balloons in system tray.
+  - Obsolete AudioIO sound driver removed.
+  - More work on ActiveX support.
+  - Various MSI fixes.
+  - Preloader now used for 64-bit too. 
+  - Translation updates.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Mon Jan  3 13:23:21 UTC 2011 - meissner@novell.com
+
+- little fix for PowerPC build.
+
+-------------------------------------------------------------------
+Sat Dec 11 09:30:57 CET 2010 - meissner@suse.de
+
+- Updated to 1.3.9 development snapshot
+  - Beginnings of support for ActiveX in built-in browser.
+  - Icons on Internet shortcut menu entries.
+  - Standardization of code implementing COM interfaces.
+  - New scheme for auto-generated DLL registrations.
+  - OpenCL library wrapper.
+  - Translation updates.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sat Nov 27 08:34:15 UTC 2010 - meissner@novell.com
+
+- Updated to 1.3.8 development snapshot
+  - Icons in the "open with" menus.
+  - Man pages for all installed binaries.
+  - Support for schemas in MSXML.
+  - Many installer fixes.
+  - Translation updates.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sun Nov 21 14:42:05 CET 2010 - meissner@suse.de
+
+- updated winetricks to 20101106
+- updated wisotool to 20101106
+
+-------------------------------------------------------------------
+Sat Nov 13 18:27:25 UTC 2010 - meissner@novell.com
+
+- Updated to 1.3.7 development snapshot
+  - Improved system tray support.
+  - Better support for installers with assemblies.
+  - Many of the msvcrt "secure" functions implemented.
+  - A lot of fixes to the GStreamer support.
+  - Many MSXML improvements.
+  - Translation updates.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Oct 29 23:55:15 CEST 2010 - meissner@suse.de
+
+- Updated to 1.3.6 development snapshot
+  - Support for GStreamer filters.
+  - Mapping of standard cursors to native desktop cursors.
+  - Improved support for installers with services.
+  - Many MSXML improvements.
+  - Decoder for TGA-format images.
+  - Translation updates.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Tue Oct 26 11:22:15 CEST 2010 - meissner@suse.de
+
+- nodisplay=true in the .desktop file, so you can click on .exes again
+  bnc#625365
+
+-------------------------------------------------------------------
+Tue Oct 26 11:20:16 CEST 2010 - meissner@suse.de
+
+- fixed wine.desktop
+
+-------------------------------------------------------------------
+Sun Oct 24 15:23:52 CEST 2010 - meissner@suse.de
+
+- add gstreamer-0_10-devel
+
+-------------------------------------------------------------------
+Fri Oct 15 21:07:20 UTC 2010 - meissner@novell.com
+
+- Updated to 1.3.5 development snapshot
+  - Support for animated cursors.
+  - Printing directly through CUPS instead of lpr.
+  - Installer fixes for Office 2010.
+  - Many MSXML3 improvements.
+  - Improved Shader Model 4 support.
+  - Proper icons in built-in Internet Explorer.
+  - Translation updates.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Thu Oct 14 13:45:30 CEST 2010 - meissner@suse.de
+
+- fixed the icons for the menu entries
+
+-------------------------------------------------------------------
+Sat Oct  9 11:51:11 CEST 2010 - meissner@suse.de
+
+- explicitly filter -fomit-frame-pointer as it breaks some
+  copy protections or hooks in Steam.
+
+-------------------------------------------------------------------
+Fri Oct  1 22:03:47 CEST 2010 - meissner@suse.de
+
+- Updated to 1.3.4 development snapshot
+  - Support for right-to-left mirrored windows.
+  - Winelib now supports the ARM platform.
+  - New taskkill.exe built-in application.
+  - Inetcpl control panel fleshed out.
+  - AcceptEx is implemented now.
+  - Improved security checks for SSL connections.
+  - Translation updates.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Mon Sep 20 13:11:42 CEST 2010 - meissner@suse.de
+
+- Updated to 1.3.3 development snapshot
+  - Improved support for right-to-left text.
+  - Support for CMYK JPEG images.
+  - Beginnings of a Game Explorer implementation.
+  - Improved 64-bit support in MSI.
+  - Stub inetcpl control panel applet.
+  - A number of fixes to crypto support.
+  - Translation updates.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Wed Sep 15 09:04:56 UTC 2010 - aj@suse.de
+
+- Change BuildRequires for sane-backends devel split.
+
+-------------------------------------------------------------------
+Mon Sep  6 12:55:46 CEST 2010 - meissner@suse.de
+
+- Updated to 1.3.2 development snapshot
+  - Update of the Gecko engine, now including a 64-bit version.
+  - New implementation of console support on Unix terminals.
+  - Many new functions in the C runtime dlls.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sun Aug 22 12:51:50 CEST 2010 - meissner@suse.de
+
+- Updated to 1.3.1 development snapshot
+  - Support for drag & drop between X11 and OLE.
+  - New ipconfig.exe builtin tool.
+  - Support for favorites in builtin Internet Explorer.
+  - Beginnings of a shell Explorer control.
+  - A number of DirectDraw code cleanups.
+  - Improvements to the calendar control.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sun Aug  1 16:31:57 CEST 2010 - meissner@suse.de
+
+- Updated to 1.3.0 development snapshot
+  - Beginnings of a user interface for the builtin Internet Explorer.
+  - Support for cross-process OLE drag & drop.
+  - New builtin wscript.exe (Windows Script Host) program.
+  - Open/save dialogs remember the last used directory.
+  - Translation updates.
+  - Various bug fixes.
+- updated winetricks
+  - various new loaders
+  - bugfixes
+- updated wisotool
+  - lots of fixes
+
+-------------------------------------------------------------------
+Fri Jul 16 21:28:13 CEST 2010 - meissner@suse.de
+
+- Updated to 1.2 Release
+
+-------------------------------------------------------------------
+Mon Jul  5 14:34:46 CEST 2010 - meissner@suse.de
+
+- updated to 1.2 rc6
+  - Many translation updates.
+  - A lot of bug fixes.
+
+-------------------------------------------------------------------
+Fri Jun 25 22:31:16 CEST 2010 - meissner@suse.de
+
+- updated to 1.2 rc5
+  - Many translation updates.
+  - A lot of bug fixes.
+- updated winetricks to current state (minor bugfixes)
+- updated wisotools to current state
+
+-------------------------------------------------------------------
+Tue Jun 22 11:06:18 CEST 2010 - meissner@suse.de
+
+- moved scalable icons to /usr/share/icons/hicolor/scalable/apps
+
+-------------------------------------------------------------------
+Fri Jun 18 21:11:50 CEST 2010 - meissner@suse.de
+
+- updated to 1.2 rc4
+  - Many translation updates.
+  - A lot of bug fixes.
+- Added Ubuntu supplied desktop , menu and icons for 
+  Wine stuff. bnc#613850
+
+-------------------------------------------------------------------
+Fri Jun 11 23:04:47 CEST 2010 - meissner@suse.de
+
+- updated to 1.2 rc3
+  - Many translation updates.
+  - A lot of bug fixes.
+- updated winetricks
+  - utorrent downloader
+  - some bugfixes
+- updated wisotool
+  - lots of improvements
+
+-------------------------------------------------------------------
+Fri May 28 21:06:43 CEST 2010 - meissner@suse.de
+
+- Updated to 1.2rc2
+  - Lots of bugfixes
+
+-------------------------------------------------------------------
+Tue May 25 10:53:10 CEST 2010 - meissner@suse.de
+
+- Updated to 1.2rc1 (named 1.1.45_1.2rc1 to satisfy RPM)
+  - Many new toolbar icons.
+  - Support for alpha blending in image lists.
+  - Much more complete shader assembler.
+  - Support for Arabic font shaping and joining.
+  - A number of fixes for video rendering.
+  - Font antialiasing configuration through fontconfig.
+  - Improved handling of desktop link files.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri May  7 21:44:42 CEST 2010 - meissner@suse.de
+
+- Updated to 1.1.44
+  - Many more new icons.
+  - Support for 32-bit prefixes with a 64-bit Wine.
+  - Many additional msvcr80/90 functions.
+  - Improvements to Bidi handling.
+  - More complete mmdevapi (Win7 audio) support.
+  - Improved handling of MSI patches.
+  - A number of fixes for desktop menus.
+  - Optimizations in OLE storage.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sun Apr 25 18:39:16 CEST 2010 - meissner@suse.de
+
+- updated winetricks
+   - lots of bugfixes and several additions
+- added new wisotool
+   - for easier installation of some known ISOs setups
+
+-------------------------------------------------------------------
+Mon Apr 19 13:24:18 CEST 2010 - meissner@suse.de
+
+- Updated to 1.1.43
+  - A number of new icons.
+  - Improved support for alpha channel in bitmaps.
+  - Many Direct3D fixes and optimizations.
+  - More complete msvcr80/90 implementations.
+  - A wide range of 64-bit fixes.
+  - Various bug fixes.
+
+- Enabled 64bit packaging.
+  - "wine" package can now be either 64 or 32bit.
+  - "wine-32bit" package is the 32bit runtime system
+    which is used by both 32bit and 64bit wine packages.
+    It is required to run 32bit binaries.
+
+-------------------------------------------------------------------
+Fri Apr  2 20:52:05 CEST 2010 - meissner@suse.de
+
+- Updated to 1.1.42
+  - Support for shared 32/64-bit setups.
+  - Dwarf debug info support for better backtraces.
+  - More standard actions supported in MSI.
+  - Support for TIFF image format in WinCodecs.
+  - A number of Direct3D improvements.
+  - Shell fixes for better Internet Explorer support.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Mar 19 20:31:31 CET 2010 - meissner@suse.de
+
+- Updated to 1.1.41
+  - A wide range of Direct3D improvements.
+  - Support for SHA-256, SHA-384, and SHA-512 algorithms.
+  - A number of MSHTML fixes.
+  - Support for mp3 decoding on Mac OS X.
+  - Various widl improvements.
+  - More typelib fixes.
+  - OLE storage improvements.
+  - Various bug fixes.
+- Updated winetricks
+
+-------------------------------------------------------------------
+Wed Mar 17 13:47:52 CET 2010 - meissner@suse.de
+
+- updated winetricks
+   - win7 handling
+   - some new downloaders, some non working ones adjusted
+
+-------------------------------------------------------------------
+Fri Mar  5 23:30:10 CET 2010 - meissner@suse.de
+
+- Updated to 1.1.40
+  - Support for Wow64 registry redirection.
+  - Increased coverage of MSI standard actions.
+  - Various Wordpad improvements.
+  - Many shell fixes for better IE support.
+  - Improved support for typelibs.
+  - Better GL card detection.
+  - Various bug fixes.
+- recommend wine-mp3
+
+-------------------------------------------------------------------
+Fri Feb 19 19:36:41 CET 2010 - meissner@suse.de
+
+- Updated to 1.1.39
+  - Support for registry symbolic links.
+  - Many MSI fixes.
+  - Build process improvements.
+  - MSXML cleanups and fixes.
+  - A number of MSHTML improvements.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Thu Feb 18 17:25:22 CET 2010 - meissner@suse.de
+
+- fixed gcc 4.5 issue
+
+-------------------------------------------------------------------
+Fri Feb  5 20:27:26 CET 2010 - meissner@suse.de
+
+- Updated to 1.1.38
+  - Better support for memory allocations debugging.
+  - Improved MIDI support.
+  - A wide range of Direct3D fixes.
+  - OLEDB fixes (should fix Clipart in Office).
+  - Improved debugger support on x86-64.
+  - Many MSI fixes.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Jan 22 20:33:13 CET 2010 - meissner@suse.de
+
+- Updated to 1.1.37
+  - A number of fixes in AVI file support.
+  - Several MSXML improvements.
+  - A few MSI fixes.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Jan  8 22:52:30 CET 2010 - meissner@suse.de
+
+- Updated to 1.1.36
+  - Completion of the 16-bit separation.
+  - Improved Shader Model 4 support.
+  - A ton of memory leak fixes.
+  - Improved debugging support for MinGW.
+  - A number of MSHTML fixes.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Dec 18 21:27:45 CET 2009 - meissner@suse.de
+
+- Updated to 1.1.35
+  - Support for OLE transacted storage.
+  - Better certificate checking on secure connections.
+  - More progress on the 16-bit separation.
+  - Left 4 Dead 2 DRM really supported now.
+  - MSI performance improvements.
+  - 64-bit fixes in debugger support.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Mon Dec 14 13:20:00 CET 2009 - meissner@suse.de
+
+- winetricks update
+  - fixed multiple downloaders, including quicktime, flash
+
+-------------------------------------------------------------------
+Fri Dec  4 20:30:35 CET 2009 - meissner@suse.de
+
+- Updated to 1.1.34
+  - Many fixes for crypto certificates support.
+  - A lot of MSHTML improvements.
+  - Various fixes to support the Left 4 Dead 2 DRM.
+  - A number of OLE marshalling fixes.
+  - More Listview improvements.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Thu Nov 26 08:27:28 CET 2009 - meissner@suse.de
+
+- new winetricks release
+  - Add experimental dotnet35 verb
+  - Add IE7 verb. Based on a patch by Hans Leidekker.
+  - Add verbs alsa, audioio, coreaudio, esound, jack, nas, oss to override
+    sound driver
+  - Add verbs backbuffer, fbo, pbuffer for setting offscreen rendering buffer
+  - Don't crash winecfg if native comctl32 is used
+  - Fix gecko to work with wine-1.1.33.
+  - Make vc2003toolkit and psdk2003 verbs run on windows
+  - On cleanup, remove $WINETRICKS_TMP, not just the files in it
+  - Sorted command menu
+  - Update Firefox to 3.5.5
+  - Update mpc to latest version, move the exe to Program Files and add it to %PATH%
+
+-------------------------------------------------------------------
+Sat Nov 14 09:47:23 CET 2009 - meissner@suse.de
+
+- Updated to 1.1.33
+  - Gecko now installed at wineprefix creation time.
+  - Better support for certificates in crypt32.
+  - Improved sound support in mciwave.
+  - Some more Direct3D 10 functions.
+  - Many cleanups for issues spotted by Valgrind.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Nov 13 16:03:18 CET 2009 - meissner@suse.de
+
+- buildrequire "wine-gecko" prepackaged gecko engine,
+  so it does not need to be seperately downloaded.
+
+-------------------------------------------------------------------
+Sun Nov  8 15:40:20 CET 2009 - meissner@suse.de
+
+- starting to build for 64bit on Factory and later.
+
+-------------------------------------------------------------------
+Fri Oct 23 22:56:07 CEST 2009 - meissner@suse.de
+
+- Updated to 1.1.32
+  - Many crypto fixes, particularly on 64-bit.
+  - Improved DVD access on Mac OS.
+  - Several common controls improvements.
+  - Various HTML support improvements.
+  - More DIB optimizations.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Oct  9 21:17:23 CEST 2009 - meissner@suse.de
+
+- Updated to 1.1.31
+  - Vastly improved monthcal control.
+  - Performance improvements for DIB sections.
+  - Several sound driver fixes.
+  - Beginning of ActiveX support in JScript.
+  - More Direct3D 10 work.
+  - More 16-bit dlls split off to separate modules.
+  - Support for attachments in MAPI.
+  - Various bug fixes.
+- updated winetricks
+-------------------------------------------------------------------
+Fri Sep 25 22:55:12 CEST 2009 - meissner@suse.de
+
+- Updated to 1.1.30
+  - Support for OpenAL.
+  - Many improvements in HTML and JavaScript support.
+  - Many common controls fixes and improvements.
+  - More Direct3D 10 work.
+  - Better MAPI support.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Sep  4 14:19:52 CEST 2009 - meissner@suse.de
+
+- Updated to 1.1.29
+  - Improved Gecko integration by using Wine's network layers.
+  - Use of external libmpg123 for mp3 decoding.
+  - Support for JPEG and PNG formats in WindowsCodecs.
+  - Many regression test fixes for Win64 and Windows 7.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Aug 21 19:11:09 CEST 2009 - meissner@suse.de
+
+- Updated to 1.1.28
+  - Support for IRDA protocol.
+  - Faster initial wineprefix creation.
+  - Axis remapping with evdev joysticks.
+  - More image formats in WindowsCodecs.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Fri Aug  7 22:42:10 CEST 2009 - meissner@suse.de
+
+- Updated to upstream 1.1.27
+  - New version of the Gecko engine.
+  - New GSM 06.10 codec support.
+  - Improved support for the disk volume APIs.
+  - Support for XShm pixmaps for better performance.
+  - Various bug fixes.
+- added libgsm-devel to buildrequires
+
+-------------------------------------------------------------------
+Sat Jul 18 02:09:22 CEST 2009 - meissner@suse.de
+
+- Updated to upstream 1.1.26
+  - Still more translation updates.
+  - Faster bitmap stretching using XRender.
+  - Proxy support in WinHTTP.
+  - Many more JScript functions.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sat Jul  4 12:58:33 CEST 2009 - meissner@novell.com
+
+- spec file cleanup, make it possible to rpmbuild -ba
+  on x86_64 machines. bnc#519192  
+- Updated to upstream 1.1.25
+  - A ton of translation updates.
+  - Support for various Unicode file encodings in Notepad.
+  - Improved memory management, especially for OpenGL.
+  - Desktop menus now cleaned up automatically.
+  - Beginnings of a windowscodecs DLL implementation.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sun Jun 21 22:35:23 CEST 2009 - meissner@suse.de
+
+- Updated to upstream 1.1.24
+  - Support for freedesktop file associations.
+  - Support for exception handling on 64-bit.
+  - Improved ARB shaders.
+  - Fixes for the FBO mode.
+  - Many listview improvements.
+  - Various bug fixes.
+- added hardrequires libgnutls.so.26 for schannel.dll.
+- updated winetricks script
+
+-------------------------------------------------------------------
+Sun Jun  7 09:35:57 CEST 2009 - meissner@suse.de
+
+- Updated to upstream 1.1.23
+  - Support for registering MIME types with the Linux desktop.
+  - FBO mode is now the default for Direct3D.
+  - Support for COM proxy delegation.
+  - Improved support for the Mingw cross-compile.
+  - Proper fullscreen mode for the virtual desktop.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sat May 23 01:57:03 CEST 2009 - meissner@suse.de
+
+- Updated to upstream 1.1.22
+  - More improvements to OLE copy/paste.
+  - Beginnings of x86_64 exception handling.
+  - Direct3D locking fixes.
+  - ARB shaders improvements.
+  - Better OpenGL pixel format support.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri May  8 22:43:27 CEST 2009 - meissner@suse.de
+
+- Updated to upstream 1.1.21
+  - Beginnings of shader model 4 support.
+  - Support for copying/pasting images from X11 applications.
+  - A number of GDIPlus improvements.
+  - Various listview fixes.
+  - 64-bit support in winemaker.
+  - Support for building on Mac OS X Snow Leopard.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Mon May  4 00:21:22 CEST 2009 - meissner@suse.de
+
+- Updated to upstream 1.1.20
+  - Show a dialog on application crashes.
+  - Much improved OLE copy/paste support.
+  - Various listview improvements.
+  - More Direct3D code cleanups.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Apr 10 18:41:28 CEST 2009 - meissner@suse.de
+
+- Updated to upstream 1.1.19
+  - Support for Visual C++ project files in winemaker.
+  - Improvements to the Esound driver.
+  - Many Direct3D code cleanups.
+  - Fixes to OLE clipboard handling.
+  - OpenBSD compilation fixed.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Thu Apr  2 22:28:00 CEST 2009 - meissner@suse.de
+
+- Updated to upstream 1.1.18
+  - Joystick support on Mac OS X.
+  - Implementation of iphlpapi on Solaris. 
+  - A number of 64-bit improvements.
+  - Obsolete LinuxThreads support has been removed.
+  - Many fixes to the regression tests on Windows.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sat Mar 14 11:37:40 CET 2009 - meissner@suse.de
+
+- Updated to upstream 1.1.17
+  - Joystick support on Mac OS X.
+  - Implementation of iphlpapi on Solaris.
+  - A number of 64-bit improvements.
+  - Obsolete LinuxThreads support has been removed.
+  - Many fixes to the regression tests on Windows.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sat Feb 28 11:49:33 CET 2009 - meissner@suse.de
+
+- Updated to upstream 1.1.16
+  - Improved SANE scanner support.
+  - Support for digital CD audio playback.
+  - Improved cookies management in Wininet.
+  - Support for building stand-alone 16-bit modules.
+  - Many fixes to the regression tests on Windows.
+  - Various bug fixes.
+- updated winetricks to current version
+
+-------------------------------------------------------------------
+Fri Feb 13 23:32:31 CET 2009 - meissner@suse.de
+
+- Updated to upstream 1.1.15
+  - Gecko engine update.
+  - Better region support in GdiPlus.
+  - Support for cross-compilation in winegcc.
+  - Beginnings of MS Text Framework support.
+  - Many fixes to the regression tests on Windows.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Tue Feb  3 17:50:35 CET 2009 - meissner@suse.de
+
+- Updated to upstream 1.1.14
+  - Various bug fixes for Internet Explorer 7.
+  - Many crypt32 improvements, including new export wizard.
+  - Better support for windowless Richedit.
+  - Improvements to the print dialog.
+  - Many fixes to the regression tests on Windows.
+  - Various bug fixes.
+- Updated winetricks
+
+-------------------------------------------------------------------
+Sun Jan 18 23:13:18 CET 2009 - meissner@suse.de
+
+- Updated to upstream 1.1.13
+  - Freedesktop.org-compliant startup notifications.
+  - Many fixes for 64-bit application support.
+  - Improved graphics support in Internet Explorer.
+  - Various Richedit improvements.
+  - Better certificate manager dialog.
+  - Various bug fixes.
+- Updated winetricks to current state.
+
+-------------------------------------------------------------------
+Fri Jan  2 19:42:37 CET 2009 - meissner@suse.de
+
+- Updated to upstream 1.1.12
+  - Some simple 64-bit apps should now run.
+  - Support for subpixel font rendering.
+  - 64-bit code generation in the IDL compiler.
+  - New version of the Gecko engine.
+  - Various bug fixes.
+- updated winetricks
+
+-------------------------------------------------------------------
+Sat Dec 20 19:13:32 CET 2008 - meissner@suse.de
+
+- Updated to upstream 1.1.11
+  - Numerous fixes for IE7 support.
+  - Support for 64-bit cross-compile using Mingw64.
+  - User interface support for crypto certificates.
+  - Better support for MSI installation patches.
+  - Various Direct3D optimizations.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Dec  5 18:44:46 CET 2008 - meissner@suse.de
+
+- Updated to upstream 1.1.10
+  - Support for virtual memory write watches.
+  - Workarounds for the WINAPI compiler bug on Mac OS.
+  - Several fixes for the 64-bit build.
+  - Some more GdiPlus functions.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Nov 28 08:35:01 CET 2008 - meissner@suse.de
+
+- new winetricks
+  - loaders for mono20, ole2, msmask, ie6
+  - bugfixes for directx9
+
+-------------------------------------------------------------------
+Mon Nov 24 12:20:58 CET 2008 - meissner@suse.de
+
+- Updated to upstream 1.1.9
+  - A large number of regression test fixes.
+  - Performance improvements in memory management.
+  - Improved POP3 support in inetcomm.
+  - Initial implementation of the XInput DLL.
+  - Various bug fixes.
+- hardrequire all the funny 32bit libraries against we link
+- run suse_update_desktop_file bnc#445736
+
+-------------------------------------------------------------------
+Fri Nov  7 19:34:04 CET 2008 - meissner@suse.de
+
+- Updated to upstream 1.1.8
+  - Substantial parts of inetcomm implemented (for Outlook).
+  - Still better crypt32 support.
+  - Memory management improvements.
+  - Theming support for buttons.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Fri Oct 24 21:27:45 CEST 2008 - meissner@suse.de
+
+- Updated to upstream 1.1.7
+  - Improved device management for DOS drives.
+  - Many Richedit fixes.
+  - Various installer fixes, particularly for IE 7.
+  - First steps of Direct3D 10 implementation.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Mon Oct 13 18:05:48 CEST 2008 - meissner@suse.de
+
+- Updated to upstream 1.1.6
+  - Beginnings of schannel implementation using GnuTLS.
+  - Many fixes from various code analysis tools.
+  - Support for X11 desktop work area.
+  - Fixes for Richedit tables.
+  - More complete JavaScript support.
+  - Various bug fixes.
+- Requires gnutls-devel for schannel support
+- small winetricks fixes
+
+-------------------------------------------------------------------
+Fri Sep 19 20:22:33 CEST 2008 - meissner@suse.de
+
+- Updated to upstream 1.1.5
+  - Substantial JavaScript implementation.
+  - Partial support for layered windows.
+  - Support for Unicode file export in Regedit.
+  - Proper exception handling in widl-generated code.
+  - Asynchronous requests and cookies support in WinHTTP.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Sun Sep  7 16:45:39 CEST 2008 - meissner@suse.de
+
+- Updated to upstream 1.1.4
+  - Substantial chunks of WinHTTP are implemented.
+  - More JavaScript support.
+  - Beginnings of shell AppBar implementation.
+  - Several fixes for Google Chrome support.
+  - Chinese translations.
+  - Various bug fixes.
+- Updated winetricks
+
+-------------------------------------------------------------------
+Sat Aug 23 01:59:45 CEST 2008 - meissner@suse.de
+
+- Updated to upstream 1.1.3
+  - Beginnings of ddraw overlay support.
+  - Many more crypt32 functions.
+  - Improved support for tables in Richedit.
+  - Support for NETWM window maximization.
+  - Many installer fixes.
+  - Tweaks for better PulseAudio support.
+  - Various bug fixes.
+- Updated to upstream 1.1.2
+  - Control panel improvements and new appwiz panel.
+  - Restructurations of state handling in Direct3D.
+  - Support for timer queue functions.
+  - Many MSXML improvements.
+  - Several fixes to Solaris support.
+  - Various bug fixes.
+- Updated winetricks to current version
+
+-------------------------------------------------------------------
+Fri Aug 15 14:33:18 CEST 2008 - ro@suse.de
+
+- add exclusivearch to specfile
+
+-------------------------------------------------------------------
+Fri Jul 11 22:10:34 CEST 2008 - meissner@suse.de
+
+- Updated to upstream 1.1.1 - development release
+  - Fixes for Photoshop CS3 and Office 2007 installers.
+  - More progress on gdiplus.
+  - Support for Unicode files in regedit.
+  - Improved video playback.
+  - Many Richedit fixes and improvements.
+  - Various bug fixes.
+
+- winetricks updated
+  - ogg and schroeder/dirac codecs
+  - Added firefox3, kde
+  - Simpler recipe for msls31
+  - sets win2k while installing vcrun2005.
+  - Fixed DirectX9 install
+  - Added visual j# 2.0 runtime
+  - divx codec download location changed
+  - Add comctl32.ocx
+  - Added autohotkey
+
+- Upgraded to upstream 1.1.0 - development release
+  - Many more gdiplus functions implemented.
+  - Improved graphics tablet support.
+  - Many Richedit fixes and improvements.
+  - Support for HWND_MESSAGE windows.
+  - A lot of new MSHTML functions.
+  - Many fixes in MSI registry handling.
+  - Initial implementation of the inetmib1 DLL.
+  - Improvements to the quartz renderers.
+  - Various bug fixes.
+
+-------------------------------------------------------------------
+Tue Jun 17 16:45:46 CEST 2008 - meissner@suse.de
+
+- Upgraded to upstream 1.0 - first stable release
+- updated winetricks
+        - comctl32.ocx downloader added
+	- dirac,vlc downloader
+
+-------------------------------------------------------------------
+Fri Jun 13 17:50:26 CEST 2008 - meissner@suse.de
+
+- Upgraded to upstream 1.0-rc5
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Sun Jun  8 12:01:29 CEST 2008 - meissner@suse.de
+
+- Upgraded to upstream 1.0-rc4 (labeled 0.9.65_aka_1.0.rc4
+  to avoid update problems to 1.0)
+  - Bug fixes only, we are in code freeze.
+- updated to current winetricks
+  - added vlc,quicktime downloader and mplayerclient tool downloader
+- Changelog only included in source tarball now
+
+-------------------------------------------------------------------
+Tue Jun  3 08:27:19 CEST 2008 - meissner@suse.de
+
+- Upgraded to upstream 1.0-rc3 (labeled 0.9.64_aka_1.0.rc4
+  to avoid update problems to 1.0)
+  - Bug fixes only, we are in code freeze.
+- updated to current winetricks
+  - bugfixes
+
+-------------------------------------------------------------------
+Fri May 23 18:47:45 CEST 2008 - meissner@suse.de
+
+- Upgraded to upstream 1.0-rc2 (labeled 0.9.63_aka_1.0.rc2
+  to avoid update problems to 1.0)
+  - Bug fixes only, we are in code freeze.
+- merged in ulis fixes into local GIT
+- updated to current winetricks
+	- directx9 downloader (for the helper dlls)
+	- bugfixes
+	- mfc42 alias
+
+-------------------------------------------------------------------
+Fri May 16 11:46:40 CEST 2008 - uli@suse.de
+
+- always use -m32/--32/-m elf_i386, even on x86 (allows x86
+  devel tools to work on AMD64)
+- fixed invalid dsound assumption
+
+-------------------------------------------------------------------
+Sat May 10 11:40:57 CEST 2008 - meissner@suse.de
+
+- Upgraded to upstream 1.0-rc1 (labeled 0.9.62_aka_1.0.rc1
+  to avoid update problems to 1.0)
+  - Bug fixes only, we are in code freeze.
+
+-------------------------------------------------------------------
+Wed May  7 13:41:48 CEST 2008 - meissner@suse.de
+
+- removed fontforge, audiofile, libtiff-devel from buildrequires,
+  added libjpeg-devel
+- more winetricks bugfixes regarding fonts.
+
+-------------------------------------------------------------------
+Fri May  2 19:51:11 CEST 2008 - meissner@suse.de
+
+- Upgraded to upstream 0.9.61
+  - Automatic updating of the WINEPREFIX directory.
+  - Winhelp now uses Richedit as display engine.
+  - Many RichEdit fixes.
+  - More improvements to IME support.
+  - More quartz fixes.
+  - Implementation for many more Gdiplus functions.
+  - Lots of bug fixes.
+- updated winetricks to current version
+  - bugfixes, mono fixes
+
+-------------------------------------------------------------------
+Sat Apr 19 10:25:31 CEST 2008 - meissner@suse.de
+
+- Upgraded to upstream 0.9.60
+  - Better support for Windows IMEs.
+  - Option for Windows-style window decorations.
+  - Improved system tray behavior.
+  - Window management fixes.
+  - Improved quartz audio support.
+  - Better support for launching apps from Unix file managers.
+  - Lots of bug fixes.
+- winetricks updated
+  - various new downloads (wmp9,wmp10,..)
+  - bugfixes
+
+-------------------------------------------------------------------
+Fri Apr  4 17:41:23 CEST 2008 - meissner@suse.de
+
+- Upgraded to upstream 0.9.59
+  - Improved support for the .NET framework.
+  - Better services handling through a separate services.exe process.
+  - Support for ATI fragment shader.
+  - Better support for http proxies.
+  - Window management fixes.
+  - Pre-compiled fonts are now available in the source tree.
+  - Lots of bug fixes.
+- winetricks updated
+  - msls31, dotnet20, vcrun2003 downloaders added
+  - bugfixes
+
+-------------------------------------------------------------------
+Fri Mar 21 17:32:55 CET 2008 - meissner@suse.de
+
+- Upgraded to upstream 0.9.58
+   - The default version is now Windows XP.
+   - Many Richedit improvements.
+   - Beginning of jscript dll support.
+   - Shell folders now respect XDG directory configuration.
+   - Many translation updates.
+   - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Wed Mar 12 18:05:18 CET 2008 - meissner@suse.de
+
+- Upgraded to upstream 0.9.57
+  - Support for multiple OpenGL pixel formats.
+  - Improved support for color profiles.
+  - Many window management fixes.
+  - Better fullscreen support.
+  - Lots of bug fixes.
+- Updated winetricks
+  - more visual basic runtimes downloaders added
+  - MS dotnet 1.1 downloader added
+  - added intel codec downloader
+  - renamed allvcodecs -> allcodecs
+  
+
+-------------------------------------------------------------------
+Fri Feb 22 23:26:07 CET 2008 - meissner@suse.de
+
+- Upgraded to upstream 0.9.56
+  - Proper handling of OpenGL/Direct3D windows with menu bars.
+  - Stubs for all the d3dx9_xx dlls.
+  - Several graphics optimizations.
+  - Many installer fixes.
+  - Improved MIME message support.
+  - Lots of bug fixes.
+- winetricks 20080222
+  - colorprofile downloader added
+
+-------------------------------------------------------------------
+Mon Feb 11 11:05:56 CET 2008 - meissner@suse.de
+
+- Upgraded to upstream 0.9.55
+  - Direct3D improvements, including driver version emulation.
+  - Beginnings of support for OLE objects in Richedit.
+  - Several fixes to the animation control.
+  - A bunch of fixes for regression test failures.
+  - Lots of bug fixes.
+- Updated winetricks
+  - added msxml6, riched30
+  - added GUI dialogs (using kdialog, etc.)
+
+-------------------------------------------------------------------
+Fri Jan 25 19:13:22 CET 2008 - meissner@suse.de
+
+- Upgraded to upstream 0.9.54
+  - Photoshop CS/CS2 should now work, please help us testing it.
+    See http://wiki.winehq.org/AdobePhotoshop for details.
+  - A number of RPC fixes.
+  - Various improvements to the debugger support.
+  - Lots of bug fixes.
+- Updated winetricks
+  - added mdac25, riched20, xvid, ffdshow, vcrun2005sp1, vcrun2008
+  - new pseudo packages: allfonts, allvcodecs
+  - mono12 now links to 1.2.6
+
+-------------------------------------------------------------------
+Sat Jan 12 09:59:17 CET 2008 - meissner@suse.de
+
+- Upgraded to upstream 0.9.53
+  - RunOnce and Run entries now executed on startup.
+  - Beginnings of support for emulated disk devices.
+  - Many Richedit improvements.
+  - Nicer looking color dialog.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Sat Dec 29 00:24:20 CET 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.52
+  - Improved graphics tablet support.
+  - Support for RPC context handles.
+  - Fixes for some longstanding screen depth issues.
+  - Implementation of "My Network Places" shell folder.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Fri Dec 14 22:16:13 CET 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.51
+  - A bunch of WinHelp improvements.
+  - Better Japanese font support.
+  - A ton of rpcrt4 fixes.
+  - Several Alsa capture fixes.
+  - Improved support for screen resolution changes.
+  - Lots of bug fixes.
+- Upgraded to upstream 0.9.50
+  - Completed I/O completion.
+  - Improved user credentials management, including Mac Keychain support.
+  - More Valgrinding.
+  - Lots of bug fixes.
+- Updated winetricks
+  - some mono 1.2 fixes
+
+-------------------------------------------------------------------
+Sat Nov 10 00:05:10 CET 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.49:
+  - Many copy protection fixes.
+  - GLSL is now the default for Direct3D.
+  - Lots of memory errors fixed thanks to Valgrind.
+  - Support for TOPMOST windows.
+  - Beginnings of an inetcomm dll implementation.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Wed Oct 31 02:04:21 CET 2007 - ro@suse.de
+
+- include assert.h for alsa source 
+
+-------------------------------------------------------------------
+Fri Oct 26 20:55:25 CEST 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.48:
+  - Still more fixes for regression test failures.
+  - Much more complete cryptnet implementation.
+  - WIDL is now able to generate the oleaut32 proxy code.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Fri Oct 12 17:49:36 CEST 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.47:
+  - New scheme for OpenGL support in child windows.
+  - Lots of fixes for regression test failures.
+  - A Tahoma replacement font.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Sun Sep 30 17:13:32 CEST 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.46:
+  - A variety of fixes to improve Photoshop CS2 support.
+  - More complete support for device installation in setupapi.
+  - New Bidi text implementation that doesn't depend on libicu.
+  - The usual assortment of Direct3D improvements.
+  - Beginning of I/O completion ports support.
+- Upgraded to upstream 0.9.45:
+  - Many improvements to the crypto dlls (should make iTunes work).
+  - The usual assortment of Direct3D improvements.
+  - A number of fixes to sound support.
+  - Many more WordPad features.
+- New winetricks version
+
+-------------------------------------------------------------------
+Fri Aug 24 17:29:00 CEST 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.44:
+  - Better heuristics for making windows managed.
+  - Automatic detection of timezone parameters.
+  - Improvements to the builtin WordPad.
+  - Better signatures support in crypt32.
+  - Still more gdiplus functions.
+  - Lots of bug fixes.
+- New winetricks version
+  - checksum verification for downloads
+  - Add sha1sums for most downloads
+  - Note a few downloads are no longer available (replacements, anyone?)
+  - Note mono11 is deprecated
+  - Add Mikolaj's nifty fakeie changes
+
+-------------------------------------------------------------------
+Fri Aug 10 23:17:58 CEST 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.43:
+  - Direct3D support on top of WGL instead of GLX for better portability.
+  - Many DirectSound fixes.
+  - Still more gdiplus functions.
+  - Many crypt32 improvements.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Mon Jul 30 11:35:52 CEST 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.42:
+  - Support for activation contexts and side-by-side assemblies.
+  - Many more gdiplus functions.
+  - More messaging support in crypt32.dll.
+  - Many HTTP protocol handling fixes.
+  - Lots of bug fixes.
+- updated README a bit
+
+-------------------------------------------------------------------
+Mon Jul 16 10:24:42 CEST 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.41:
+  - A number of gdiplus functions.
+  - More complete pdh.dll implementation.
+  - Support for MSI remote calls.
+  - Messaging support in crypt32.dll.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Wed Jul  4 13:41:36 CEST 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.40:
+  - Many MSHTML improvements.
+  - A few more sound fixes.
+  - Many Direct3D fixes.
+  - Lots of bug fixes.
+- added some more buildrequires for splitted packages
+
+-------------------------------------------------------------------
+Sat Jun 23 13:44:57 CEST 2007 - meissner@suse.de
+
+- run fdupes, fixup desktop file to be more compliant.
+
+-------------------------------------------------------------------
+Fri Jun 15 18:53:53 CEST 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.39:
+  - Many MSHTML improvements.
+  - Several improvements to the sound support.
+  - A number of Winsock fixes.
+  - Several new supported constructs in the IDL compiler.
+  - Many Direct3D threading fixes.
+  - Lots of bug fixes.
+
+
+-------------------------------------------------------------------
+Sat Jun  2 08:38:02 CEST 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.38:
+  - Beginnings of support for copy protection kernel drivers.
+  - More MSI automation support.
+  - Many 64-bit compilation fixes.
+  - A number of OLE fixes.
+  - Lots of bug fixes.
+- Added "winetricks" script from Dan Kegel.
+
+-------------------------------------------------------------------
+Fri May 11 22:16:59 CEST 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.37:
+  - MSI automation with JScript/VBScript support.
+  - Various MSHTML improvements.
+  - The usual assortment of Direct3D fixes.
+  - Support for a few more exe protection schemes.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Mon May  7 13:24:43 CEST 2007 - meissner@suse.de
+
+- removed duplicate Icon= line.
+
+-------------------------------------------------------------------
+Sun Apr 29 16:28:10 CEST 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.36:
+  - Midi support in the CoreAudio driver.
+  - Mixer support in the Alsa driver.
+  - A lot of MSI fixes.
+  - Implementation for most D3DRM functions.
+  - The usual assortment of Direct3D fixes.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Fri Apr 13 18:13:31 CEST 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.35:
+  - Broken aRts sound driver now removed for good.
+  - Many fixes to the Quartz DLL sound support.
+  - File I/O performance improvements.
+  - The usual assortment of Direct3D fixes.
+  - Lots of bug fixes.
+- Upgraded to upstream 0.9.34:
+  - Support for Xcursor.
+  - A range of fixes for various installers.
+  - New builtin xcopy tool.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Fri Mar 30 07:52:42 CEST 2007 - meissner@suse.de
+
+- buildrequires bison,flex,ncurses-devel
+
+-------------------------------------------------------------------
+Sat Mar 17 09:17:14 CET 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.33:
+  - Many Direct3D fixes and performance improvements.
+  - More comctl32 tests and some bug fixes.
+  - Compatibility improvements in cmd.exe.
+  - Still more fixes to builtin OLE.
+  - Support for process control on Solaris.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Sat Mar  3 08:38:11 CET 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.32:
+  - Many Direct3D fixes and performance improvements.
+  - Several new features in the builtin cmd.exe.
+  - Improvements to HTML help support.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Tue Feb 20 14:18:46 CET 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.31:
+  - Many Direct3D fixes and performance improvements.
+  - Several new comctl32 test cases.
+  - IDL compiler improvements.
+  - More OLE32 marshalling fixes.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Thu Jan 25 18:04:11 CET 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.30:
+  - Many improvements to Direct3D shaders and state management.
+  - Support for inter-process memory allocations.
+  - OLE32 marshalling fixes.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Wed Jan 10 13:51:54 CET 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.29:
+  - More work on the new Direct3D state management.
+  - Debugger support for Mac OS.
+  - Many OLE fixes and improvements.
+  - Audio input support on Mac OS.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Thu Jan  4 15:23:37 CET 2007 - meissner@suse.de
+
+- Upgraded to upstream 0.9.28:
+  - OpenGL in child windows should work again.
+  - Better mouse support in games.
+  - Beginnings of new state management in Direct3D.
+  - Improved audio and font support on Mac OS.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Sat Dec  9 09:04:18 CET 2006 - meissner@suse.de
+
+- removed labels.patch
+- Upgraded to upstream 0.9.27:
+  - Better support for noexec kernels.
+  - Better Dwarf support in dbghelp.
+  - Several Winsock fixes.
+  - Various code cleanups.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Fri Dec  8 16:25:08 CET 2006 - meissner@suse.de
+
+- Upgraded to upstream 0.9.26:
+  - Better support for Unix locale settings.
+  - Improved X11 keyboard support.
+  - Various MSI fixes.
+  - Winecfg improvements.
+- Upgraded to upstream 0.9.25:
+  - Many more fixes for installer support.
+  - Many MSHTML improvements.
+  - Support for NTLMv2.
+  - RPC over TCP improvements.
+
+-------------------------------------------------------------------
+Sat Nov 25 10:25:14 CET 2006 - meissner@suse.de
+
+- handle labels with spaces inside during setup of prefix #223681
+
+-------------------------------------------------------------------
+Fri Oct 27 19:55:35 CEST 2006 - meissner@suse.de
+
+- buildrequires libgphoto2-devel
+- Upstream 0.9.24:
+  - Support for multiple monitors using Xinerama.
+  - Various MSI fixes and improvements.
+  - A ton of memory leaks fixed.
+  - Many common controls fixes.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Mon Oct 16 15:38:22 CEST 2006 - meissner@suse.de
+
+- Upstream 0.9.23:
+  - Massive update of printf formats for Win64 compatibility.
+  - Dynamic drive support on MacOSX.
+  - Still more MSI fixes and improvements.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Thu Sep 28 22:50:20 CEST 2006 - meissner@suse.de
+
+- Upstream 0.9.22:
+  - The usual assortment of MSI improvements.
+  - Several bug fixes to the various common controls.
+  - Pixel shaders enabled by default in D3D.
+  - Various improvements to the build process.
+  - Many translation updates.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Thu Sep 14 09:08:10 CEST 2006 - meissner@suse.de
+
+- Upstream 0.9.21:
+  - OpenGL restructurations.
+  - The usual assortment of MSI improvements.
+  - Several Richedit fixes.
+  - WCMD Winelib app renamed to CMD for compatibility.
+  - Many improvements to the Wintrust DLL.
+  - Some code cleanups.
+  - Lots of bug fixes.
+- Merged my local patch into tarball, dropped
+  some no longer necessary old stuff.
+
+-------------------------------------------------------------------
+Thu Aug 24 17:43:44 CEST 2006 - meissner@suse.de
+
+- Upstream 0.9.20:
+  - XEmbed system tray support.
+  - Many improvements to NTLM support.
+  - Many messages made localizable instead of hardcoded to English.
+  - Improved support for various OpenGL platforms.
+  - More improvements to the IDL compiler.
+  - Lots of bug fixes.
+- Switched back to OSS by default. ALSA causes hangs
+  in DirectSound :(
+
+-------------------------------------------------------------------
+Mon Aug 14 20:41:36 CEST 2006 - meissner@suse.de
+
+- Upstream 0.9.19:
+  - Support for a proper Trash folder.
+  - Many improvements to the IDL compiler.
+  - Better FreeBSD support.
+  - A number of MSI bug fixes.
+  - Many RichEdit improvements.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Fri Jul 28 10:22:58 CEST 2006 - meissner@suse.de
+
+- Upstream, 0.9.18:
+  - Still more work on Direct3D.
+  - A lot of MSI bug fixes and improvements.
+  - More compatible memory management.
+  - Several fixes for Win64 support.
+  - Some performance improvements. 
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Thu Jul 13 07:37:31 CEST 2006 - meissner@suse.de
+
+- Upstream 0.9.17:
+  - Still more work on Direct3D shaders.
+  - Now using the Gecko engine directly for MSHTML.
+  - Better support for apps switching to full screen mode.
+  - Support for multiple joysticks.
+  - Lots of bug fixes.
+- Upstream 0.9.16:
+  - More work on Direct3D shaders.
+  - Major DirectDraw rewrite on top of Direct3D.
+  - Support for debug information in Dwarf format.
+  - Beginnings of an OleView Winelib application.
+  - Lots of bug fixes.
+- personality patch no longer necessary.
+
+-------------------------------------------------------------------
+Thu Jun  8 20:50:26 CEST 2006 - meissner@suse.de
+
+- Upstream 0.9.15:
+  - More MS/RPC improvements.
+  - Core Audio driver for Mac OS X.
+  - More complete DNSAPI dll.
+  - Improvements to Web browser support.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Thu May 25 21:55:12 CEST 2006 - meissner@suse.de
+
+- Upstream 0.9.14
+  - Better MS/RPC compatibility.
+  - Many fixes to Direct3D shaders.
+  - Several improvements to the header control.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Mon May 15 14:17:34 CEST 2006 - meissner@suse.de
+
+- Upstream 0.9.13
+  - New GPhoto backend for TWAIN.
+  - Dynamic drive configuration using HAL.
+  - A gazillion Direct3D fixes.
+  - New TCP transport for RPC.
+  - Lots of bug fixes.
+- Added libgphoto2 and hal development libs to BuildRequires.
+- personality hack to avoid virtual ram ulimits now seperate.
+
+-------------------------------------------------------------------
+Mon Apr 17 22:43:47 CEST 2006 - meissner@suse.de
+
+- Upstream 0.9.12:
+  - New Winelib Internet Explorer application (all 5 lines of it).
+  - Several improvements to the font support.
+  - More work on the IDL compiler.
+  - Faster drawing of the cards in Solitaire (very important feature).
+  - A number of fixes for issues found by the Coverity code cheker.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Tue Apr 11 16:24:27 CEST 2006 - meissner@suse.de
+
+- upstream 0.9.11:
+  - Fake dll files created in the system directory to help installers.
+  - Desktop mode now properly supports multiple processes.
+  - Better type parsing in dbghelp.
+  - Several OpenGL fixes.
+  - A bunch of Unicode functions in advpack.
+  - Lots of bug fixes.
+- upstream 0.9.10:
+  - Improved ESD audio driver.
+  - More Web browser improvements in mshtml and wininet.
+  - Direct3D fixes and preparation for ddraw code migration.
+  - Explorer process now managing the desktop window.
+  - Lots of bug fixes.
+- upstream 0.9.9:
+  - Many new features and improvements in Richedit.
+  - More Web browser support.
+  - Recursive directory change notifications.
+  - Wine installation is now fully relocatable.
+  - Direct3D 8 and 9 now use the same code.
+  - Many debugger improvements.
+  - Systray is now handled by the explorer process.
+  - Lots of bug fixes.
+- upstream 0.9.8:
+  - Better Web browser support.
+  - Beginnings of a Wordpad application.
+  - Many richedit improvements.
+  - A number of Direct3D fixes.
+  - A few more options in winecfg.
+  - Lots of bug fixes.
+- upstream 0.9.7:
+  - Directory change notifications can use inotify now.
+  - Hardware breakpoints in the Wine debugger.
+  - Beginnings of support for tape APIs.
+  - A bunch of improvements to the IDL compiler.
+  - Better scheme for mapping My Documents etc. to Unix directories.
+  - Lots of bug fixes.
+- upstream 0.9.6:
+  - A bunch of OLE fixes and improvements.
+  - DirectSound improvements, including full duplex support.
+  - Fix for the Windows metafile vulnerability.
+  - Many static control improvements.
+  - Some fixes for copy protection support.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Fri Mar 17 16:42:25 CET 2006 - meissner@suse.de
+
+- Avoid ulimit leading to out of memory situations by using
+  the compat address space layout personality. #152115
+
+-------------------------------------------------------------------
+Fri Mar 17 11:05:21 CET 2006 - meissner@suse.de
+
+- Select ALSA by default. #158424
+
+-------------------------------------------------------------------
+Mon Feb  6 18:39:44 CET 2006 - meissner@suse.de
+
+- Handle empty /media/ gracefully. #148351
+
+-------------------------------------------------------------------
+Wed Jan 25 21:44:49 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 19:08:51 CET 2006 - meissner@suse.de
+
+- fixed WMF explpoit here too.
+
+-------------------------------------------------------------------
+Mon Jan  9 14:19:24 CET 2006 - meissner@suse.de
+
+- backport patch from CVS that fixes hang with installshield 6 installers.
+
+-------------------------------------------------------------------
+Wed Jan  4 18:13:36 CET 2006 - meissner@suse.de
+
+- Upgraded to 0.9.5 release:
+  - A number of MSI fixes.
+  - More improvements to the IDL compiler.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Wed Dec 28 12:20:12 CET 2005 - meissner@suse.de
+
+- Upgraded to 0.9.4 release:
+  - Improvements to the IDL compiler.
+  - Some infrastructure work for loadable driver support.
+  - The usual assortment of Direct3D improvements.
+  - IME support in the edit control.
+  - Better support for AVI animations.
+  - Debugging support improvements.
+  - Relay traces now work on NX platforms.
+  - Lots of bug fixes.
+- tcl,tcl-devel not neededforbuild.
+
+-------------------------------------------------------------------
+Thu Dec  8 16:28:52 CET 2005 - meissner@suse.de
+
+- Upgraded to 0.9.3 release:
+  - Many marshalling fixes in rpcrt4.
+  - Various OLE improvements and fixes.
+  - Better audio driver management in winecfg.
+  - Many wininet fixes.
+  - Several Web browser improvements.
+  - More dbghelp APIs implemented.
+  - Directory objects in wineserver.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Tue Nov 22 18:20:07 CET 2005 - meissner@suse.de
+
+- Upgraded to 0.9.2 release:
+  - Winelib Explorer app (just a wrapper around winefile for now).
+  - Debugger cleanups and improvements.
+  - Many wininet fixes.
+  - Better autogenerated API manpages.
+  - A bunch of Korean translations.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Fri Nov 11 11:54:56 CET 2005 - meissner@suse.de
+
+- Upgraded to 0.9.1 release:
+  - Support for Find function in regedit.
+  - Winelib app to eject a CD.
+  - Many MSI improvements.
+  - Better support for running text-mode apps without X.
+  - Improved support for various code obfuscation tools.
+  - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Tue Oct 25 16:40:05 CEST 2005 - meissner@suse.de
+
+- Upgraded to 0.9 release (first BETA release).
+
+-------------------------------------------------------------------
+Fri Sep 30 14:26:26 CEST 2005 - meissner@suse.de
+
+- upgraded to 20050930 release:
+        - Joystick force feedback support.
+        - Beginnings of Win64 support.
+        - Many MSI fixes and cleanups.
+        - Font linking support.
+        - Several OLE fixes.
+        - Some fixes for MacOS/x86.
+        - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Sun Sep 25 16:14:17 CEST 2005 - meissner@suse.de
+
+- fixed deprecated LDAP stuff.
+
+-------------------------------------------------------------------
+Fri Sep 16 15:05:08 CEST 2005 - meissner@suse.de
+
+- added pkgconfig, prelink to nfb
+- Upgraded to 20050830 release:
+        - A lot more theming support.
+        - Many improvements to the various crypto dlls.
+        - More LDAP support.
+        - Beginnings of an MSXML implementation.
+        - Better MSHTML support.
+        - Emulated version now set to Windows 2000 by default.
+        - Direct3D fixes and improvements.
+        - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Sun Aug  7 15:18:10 CEST 2005 - meissner@suse.de
+
+- fixed build with new fontforge.
+
+-------------------------------------------------------------------
+Sat Jul 30 12:17:11 CEST 2005 - meissner@suse.de
+
+- Upgraded to final 20050725 release:
+        - Beginnings of theme support in common controls.
+        - Many MSHTML improvements.
+        - A bunch of OLE fixes for InstallShield installers.
+        - Many Direct3D fixes and improvements.
+        - Beginnings of LDAP support.
+        - Various cleanups after removal of the config file.
+        - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Fri Jul 22 18:45:53 CEST 2005 - meissner@suse.de
+
+- upgraded to current CVS
+	- InstallShield installers in general now works!
+	- some 16bit fixes for old 16bit OLE using programs.
+	- lots of other bugfixes.
+
+- disabled one msacm codec.
+
+-------------------------------------------------------------------
+Wed Jun 29 11:46:52 CEST 2005 - meissner@suse.de
+
+- Upgraded to 20050628 release:
+        - Configuration settings moved to the registry.
+        - Graphical Wine configuration tool is now enabled.
+        - More MSI and OLE improvements.
+        - Reorganisation of the DirectDraw directory.
+        - Initial support for webcams.
+        - Lots of bug fixes.
+- No more ~/.wine/config file, all in the registry now.
+
+-------------------------------------------------------------------
+Fri Jun 17 16:40:04 CEST 2005 - meissner@suse.de
+
+- fixed a detected buffer overflow.
+
+-------------------------------------------------------------------
+Mon May 30 14:21:36 CEST 2005 - meissner@suse.de
+
+- Upgraded to 20050524 release:
+        - Many MSI improvements.
+        - More features in the file manager.
+        - Better compatibility for Winelib import libraries.
+        - SGML documentation moved out of the source tree.
+        - Header files cleanups.
+        - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Wed May 18 17:23:11 CEST 2005 - ro@suse.de
+
+- fix build with most recent alsa includes 
+
+-------------------------------------------------------------------
+Thu Apr 28 16:43:28 CEST 2005 - meissner@suse.de
+
+- fixed buffer overflows.
+
+-------------------------------------------------------------------
+Wed Apr 20 11:11:54 CEST 2005 - meissner@suse.de
+
+- Upgraded to 20050419 release.
+        - Mailslot support.
+        - Support for side mouse buttons (X buttons).
+        - More Richedit improvements.
+        - Loading of Windows registry files disabled for now.
+        - Many code cleanups.
+        - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Wed Apr 13 14:40:23 CEST 2005 - meissner@suse.de
+
+- Upgraded to 20050310 release.
+        - Initial implementation of a true Richedit control.
+        - Shell extension for browsing Unix directories.
+        - More MSI work.
+        - PBuffer support in OpenGL.
+        - Window painting regressions should be fixed.
+        - Lots of bug fixes.
+- Updated to CVS head branch.
+- Reenabled mp3.
+- Fixed gcc4 problems.
+
+-------------------------------------------------------------------
+Mon Feb 21 17:21:15 CET 2005 - meissner@suse.de
+
+- add desktop-file-utils and glib2 to neededforbuild, since
+  update-desktop-database is called.
+
+-------------------------------------------------------------------
+Mon Feb 14 14:13:20 CET 2005 - meissner@suse.de
+
+- Upgraded to 20050211 release:
+        - Still more work on the MSI dll.
+        - More OLE work, including a builtin stdole32.tlb.
+        - Fixed inter-process window resize and repaint.
+        - Lots of bug fixes.
+- Includes bugfix for 2.6.11 kernels with NX mapping.
+- stdole32.tlb still included.
+
+-------------------------------------------------------------------
+Wed Jan 19 11:44:00 CET 2005 - meissner@suse.de
+
+- Fixed README.SuSE
+
+-------------------------------------------------------------------
+Wed Jan 12 13:14:03 CET 2005 - meissner@suse.de
+
+- Upgraded to 2005011 release:
+        - Many OLE bug fixes and improvements.
+        - A lot more work on the MSI dll.
+        - Update regions now handled in the Wine server.
+        - Beginnings of typelib generation in the IDL compiler.
+        - Many janitorial cleanups.
+        - Lots of bug fixes.
+- No hard dependency on libcapi.so.20 anymore.
+
+-------------------------------------------------------------------
+Thu Dec  2 13:03:30 CET 2004 - meissner@suse.de
+
+- Upgraded to 20041201 release:
+        - Implementation of the RSAENH dll.
+        - More work on the Direct3D 9 architecture.
+        - Builtin debugger improvements.
+        - Reorganisation of the Developer's Guide.
+        - Lots of bug fixes.
+- Dropped no longer needed call to wineprefixcreate,
+  wine now does it itself.
+
+-------------------------------------------------------------------
+Thu Nov 11 14:14:20 CET 2004 - ro@suse.de
+
+- fixed file list 
+
+-------------------------------------------------------------------
+Wed Oct 20 11:15:07 CEST 2004 - meissner@suse.de
+
+- Upgraded to 20041019 release:
+        - Beginnings of an architecture for Direct3D 9 support.
+        - Many debugger regressions fixed.
+        - Improvements to the IDL compiler and the COM headers.
+        - New MSCMS dll (color management support).
+- Upgraded to 20040918 release:
+        - Various improvements to the common controls.
+        - New ITSS dll (for HTML Help support).
+        - Many compatibility fixes in the exported headers.
+        - Replacements for the Windows standard bitmap fonts.
+        - Lots of bug fixes.
+- Create serial / lpt1 device links in wineprefixcreate.
+- Added liblcms, liblcms-devel and fontforge to neededforbuild.
+
+-------------------------------------------------------------------
+Sun Oct  3 12:26:35 CEST 2004 - meissner@suse.de
+
+- Do not output localized floats into the PostScript data
+  generated by WINEPS.
+
+-------------------------------------------------------------------
+Tue Sep 28 13:58:13 CEST 2004 - meissner@suse.de
+
+FrameMaker 7 fixes:
+- Make menuentries work (by upgrading dlls/shell32/shellpath.c to
+  current CVS).
+- Remove -- from generated shell links (no longer handled by WINE).
+- Create some additional directories in the fake windows tree required
+  by FrameMaker.
+- Fixed creation of "x: -> /tmp", "y: -> $HOME" and CDROM links.
+
+-------------------------------------------------------------------
+Fri Sep 17 13:03:06 CEST 2004 - meissner@suse.de
+
+- Detect libgif shared library too, so OLEAUT can load GIF
+  images again.
+
+-------------------------------------------------------------------
+Tue Sep 14 09:21:23 CEST 2004 - meissner@suse.de
+
+- Make menu entries appear again (fixed icondir handling) #43415
+- Do not use /SuSE/ menu insert, the SuSE menu is no longer.
+
+-------------------------------------------------------------------
+Tue Aug 17 13:11:48 CEST 2004 - meissner@suse.de
+
+- Fixed compile with __user.
+
+-------------------------------------------------------------------
+Mon Aug 16 18:06:43 CEST 2004 - meissner@suse.de
+
+- Upgraded to 20040813 upstream release:
+        - New msiexec application.
+        - Support for alpha blending.
+        - More sound support improvements.
+        - Various code cleanups.
+        - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Mon Jul 19 13:25:03 CEST 2004 - meissner@suse.de
+
+- Upgraded to 20040716 upstream release:
+        - Implementation of the Microsoft Installer dll.
+        - Beginnings of proper inter-process window repaints.
+        - Several DirectSound improvements.
+        - Fixes for the regressions caused by the new filesystem support.
+        - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Fri Jun 18 09:51:02 CEST 2004 - meissner@suse.de
+
+- Upgraded to 20040615 upstream release:
+        - Major winedbg rewrite using the dbghelp dll.
+        - New Wine preloader to reserve memory areas at startup.
+        - Many improvements to the audio support.
+        - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Tue May 11 10:40:56 CEST 2004 - meissner@suse.de
+
+- Upgraded to 20040505 upstream release:
+        - Many more filesystem improvements, including autodetection
+          of drive types and devices, and support for editing the drive
+          configuration with winecfg.
+        - Many Direct3D improvements.
+        - Several fixes to the various sound drivers.
+        - Lots of bug fixes.
+- Dropped our own make_fakewindows setup, use wineprefixcreate instead.
+
+-------------------------------------------------------------------
+Tue Apr 20 11:38:36 CEST 2004 - meissner@suse.de
+
+- Dropped winesetuptk, it is more and more unhelpful to the
+  ongoing wine configuration file changes.
+- Cleaned spec file.
+- Upgraded to 20040408 upstream release:
+	- DOS devices and drives are now configured through symlinks.
+        - Many shell32 improvements.
+        - New task manager merged from ReactOS.
+        - First version of wineprefixcreate tool for initial setup.
+        - Lots of bug fixes.
+- Upgraded to 20040309 upstream release:
+        - Much improved winegcc tool, now used to build Wine itself.
+        - VxDs are now separate libraries for better modularity.
+        - Improvements and simplifications to the drive configuration.
+        - New setupapi INF script to create the initial registry.
+        - Many improvements to the various multimedia dlls.
+        - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Mon Feb 16 11:09:46 CET 2004 - meissner@suse.de
+
+- updated to 20040213 upstream release:
+        - Improved support for screen resolution changes.
+        - More shell32 improvements.
+        - Several Winelib compatibility fixes.
+        - Beginnings of support for typelib creation.
+        - Lots of bug fixes.
+- make_fakewindows now calls regsvr32 for all self registering
+  dlls.
+
+-------------------------------------------------------------------
+Thu Jan 22 11:48:19 CET 2004 - meissner@suse.de
+
+- updated to 20040121 upstream release:
+        - Many improvements in the shell32 dll.
+        - Better support for constructors in C++ Winelib apps.
+        - Improved Regedit tool.
+        - Full support for graphic tablets.
+        - Lots of DirectMusic improvements.
+        - Better support for video playback.
+        - Full IME support for Asian locales.
+        - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Sun Dec 14 15:48:06 CET 2003 - meissner@suse.de
+
+- removed config-dist.sh
+- reenabled alsa/alsa-devel.
+- updated to 20031212 upstream release: 
+        - Initial implementation of XDND drag&drop support.
+        - Improved startup performance on remote displays.
+        - Major improvements in the oleaut32 dll.
+        - Some support for Netbios functions.
+        - Work around for Exec Shield and prelinking troubles.
+        - Many code cleanups.
+        - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Thu Nov 20 12:23:27 CET 2003 - meissner@suse.de
+
+- update to 20031118 upstream release
+        - Many printing improvements.
+        - Run-time detection of NPTL threading.
+        - Lots of code merges from Crossover Office 2.1.
+        - Some reorganization of the source tree.
+        - Lots of bug fixes.
+- Added capi4linux, expat requires.
+- Disabled alsa for now due to changed API.
+
+-------------------------------------------------------------------
+Fri Oct 17 14:59:05 CEST 2003 - meissner@suse.de
+
+- build as non root
+- Upgraded to latest upstream:
+        - Support for the Xrandr extension.
+        - Dll separation of kernel and ntdll is finished.
+        - Many enhanced metafile improvements.
+	- Many improvements to the winecfg configuration tool.
+        - Massive header files cleanup for better source compatibility.
+        - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Thu Sep 18 20:58:10 CEST 2003 - adrian@suse.de
+
+- unbreak build again
+
+-------------------------------------------------------------------
+Thu Sep 18 18:03:56 CEST 2003 - adrian@suse.de
+
+- hide menu entry, we need it still for MimeType handling
+
+-------------------------------------------------------------------
+Sun Sep 14 19:26:00 CEST 2003 - adrian@suse.de
+
+- include a wine.desktop file with correct Icon= line
+
+-------------------------------------------------------------------
+Fri Sep 12 13:21:37 CEST 2003 - meissner@suse.de
+
+- Do not use the greek/symbol font of koffice-wordprocessing
+  as default truetype font.
+
+-------------------------------------------------------------------
+Mon Sep  1 13:37:19 CEST 2003 - mmj@suse.de
+
+- Fix head/tail syntax [#29622]
+
+-------------------------------------------------------------------
+Mon Aug 25 17:55:25 CEST 2003 - meissner@suse.de
+
+- Fix winewrap default path to /usr/lib/wine #29069
+
+-------------------------------------------------------------------
+Sat Aug 16 16:06:26 CEST 2003 - adrian@suse.de
+
+- install desktop file from kappfinder
+
+-------------------------------------------------------------------
+Tue Aug 12 17:23:52 CEST 2003 - meissner@suse.de
+
+- Upgraded to latest release 20030813:
+        - Partial implementation of the Microsoft Installer (msi.dll).
+        - GUI for regedit (from ReactOS).
+        - DirectMusic dlls reorganization.
+        - Many Wininet improvements.
+        - Lots of bug fixes.
+- fixed symlinks for .exe files in fake windows setup.
+- removed one confusing message.
+- skip broken truetype font, silence error messages with missing font dirs.
+- added winemenubuilder, rundll32 to list of programs.
+
+-------------------------------------------------------------------
+Thu Jul 10 14:12:41 CEST 2003 - meissner@suse.de
+
+- New upstream release 20030709:
+        - Still more Direct3D and DirectSound improvements.
+        - Inter-process clipboard support.
+        - Locale handling improvements.
+        - More progress on the kernel/ntdll separation.
+        - Lots of bug fixes.
+
+-------------------------------------------------------------------
+Mon Jun 23 11:29:47 CEST 2003 - meissner@suse.de
+
+- New upstream release:
+        - Still more Direct3D and DirectSound improvements.
+        - Tons of fixes merged from Crossover Office 2.0.
+        - New iphlpapi dll.
+        - Lots of bug fixes.
+
+
+-------------------------------------------------------------------
+Thu Jun 12 09:57:30 CEST 2003 - meissner@suse.de
+
+- package documentation main directory too.
+
+-------------------------------------------------------------------
+Fri May 23 13:33:11 CEST 2003 - meissner@suse.de
+
+- remove CVS dirs.
+
+-------------------------------------------------------------------
+Wed May 14 13:33:15 CEST 2003 - meissner@suse.de
+
+- Upgraded to the last release snapshot:
+	- Some more reorganizations of the source tree.
+        - A few more steps towards kernel/ntdll separation.
+        - Many Direct3D improvements.
+        - More compatible COM interfaces definitions.
+        - Lots of bug fixes.
+- package wine.m4 into wine-devel.
+
+-------------------------------------------------------------------
+Thu Apr 10 18:12:53 CEST 2003 - meissner@suse.de
+
+- Upgraded to the last release snapshot:
+        - Some reorganizations of the source tree.
+	- File change notifications.
+	- Support for all variants of glibc 2.3.
+	- Many documentation updates.
+	- Many Direct Sound improvements.
+	- File locking support.
+	- Progress on kernel/ntdll dll separation.
+        - Better dead keys support.
+        - Many debugger fixes.
+        - More Direct3D work.
+        - Lots of bug fixes.
+- Dropped my glibc 2.3 patches, they are now included.
+
+-------------------------------------------------------------------
+Tue Apr  1 10:48:18 CEST 2003 - ro@suse.de
+
+- use mesa-devel-packages in neededforbuild 
+
+-------------------------------------------------------------------
+Fri Mar  7 11:33:11 CET 2003 - meissner@suse.de
+
+- CUPS_SONAME/SONAME_CUPS was swapped, we were not finding CUPS
+  on systems without cups-devel and so unable to print.
+
+-------------------------------------------------------------------
+Mon Mar  3 12:42:19 CET 2003 - meissner@suse.de
+
+- Do not output that debugging info on every keypress
+- dropped no longer needed SetParent optimization hack.
+
+-------------------------------------------------------------------
+Mon Feb 17 17:06:18 CET 2003 - meissner@suse.de
+
+- Upgraded to current CVS.
+- InstallShield v6 should be fixed again.
+
+-------------------------------------------------------------------
+Mon Feb 10 15:18:53 CET 2003 - meissner@suse.de
+
+- New configuration method. We no longer call winesetup,
+  but use a quick and dirty shell script for fake windows
+  setup.
+- Split sources into vanilla CVS tarball and SuSE patch.
+
+-------------------------------------------------------------------
+Mon Jan 27 13:39:01 CET 2003 - meissner@suse.de
+
+- Make WINE work on STABLE again by no longer overloading
+  __errno_location, but overwriting it instead. (This will
+  break again as soon as TLS support is enabled for glibc.)
+- Upgraded to current CVS.
+
+-------------------------------------------------------------------
+Thu Jan 23 12:41:02 CET 2003 - meissner@suse.de
+
+- Upgraded to current CVS, which includes fixes for gcc 3.3 build
+  and winewrapper.
+
+-------------------------------------------------------------------
+Fri Jan 17 15:01:29 CET 2003 - meissner@suse.de
+
+- Upgraded to current CVS:
+        - Much better header files compatibility in Winelib.
+        - A ton of Direct3D work.
+        - Many improvements in sound support.
+        - New wineboot tool to simulate a Windows reboot.
+	- Lots of bug fixes.
+- Added libungif, jack, jack-devel, mesaglu, mesaglu-devel to neededforbuild.
+- Added iwidgets to requires.
+
+-------------------------------------------------------------------
+Wed Jan  8 10:14:19 CET 2003 - meissner@suse.de
+
+- Upgraded to current CVS:
+        - DLL linking now done through import libraries.
+        - A couple of new tools to make Winelib easier to use.
+        - Many Direct3D improvements.
+        - Improved Windows compatibility of the regression tests.
+        - Finished conversion to STRICT compilation mode.
+        - WinHelp revival.
+        - Client-side fonts supported even without RENDER extension.
+        - Regression tests no longer require Perl.
+	- Lots and lots of bugfixes and other new features.
+
+-------------------------------------------------------------------
+Wed Nov 20 15:29:01 CET 2002 - meissner@suse.de
+
+- Upgraded to current CVS.
+- Some type punning warnings fixed.
+- Merged WineHQ default config file into winesetup configfiles.
+
+-------------------------------------------------------------------
+Wed Nov 13 15:58:35 CET 2002 - meissner@suse.de
+
+- Updated to new upstream version.
+
+-------------------------------------------------------------------
+Tue Nov 12 12:00:27 CET 2002 - ro@suse.de
+
+- updated neededforbuild: jade_dsl,sp -> openjade,opensp
+-         xshared,xdevel -> x-devel-packages 
+
+-------------------------------------------------------------------
+Thu Oct 10 03:53:14 PDT 2002 - meissner@suse.de
+
+- Updated to new upstream version:
+        - Massive listview rewrite.
+        - New MS RLE codec.
+        - winemaker should be working again.
+        - Beginnings of Direct3D 8 support.
+	- Lots of bugfixes.
+
+-------------------------------------------------------------------
+Wed Sep 18 06:17:49 PDT 2002 - meissner@suse.de
+
+- Reduced afmfiles by the one already included in the wineps driver itself.
+- include a stdole32.tlb so InstallShield v6 might work.
+- Fixed wine_set_default_reg script.
+- Make the winesetup stuff also merge the default windows registry
+  if we are running on a fake windows installation.
+- Updated to new Upstream version:
+	- Much improved PowerPC support
+	- More correct locale definitions.
+        - Progress on the conversion of handle types to pointers.
+        - Many Visio and Quicken fixes merged from Crossover.
+        - More OLE and shell improvements.
+        - NAS and AudioIO sound drivers.
+        - Still more Sparc portability fixes.
+
+-------------------------------------------------------------------
+Mon Sep  9 06:08:10 PDT 2002 - meissner@suse.de
+
+- If there is an existing windows install, still prefer the fake install
+  since it is way less dangerous #19222.
+- Use managed mode by default (so windows are just normal KDE windows)
+
+-------------------------------------------------------------------
+Mon Sep  2 09:00:19 CEST 2002 - meissner@suse.de
+
+- Do not suggest installing KDE menus of winesetup (they are not 
+  there and wine does its own now). #18648.
+
+-------------------------------------------------------------------
+Sun Sep  1 17:27:24 CEST 2002 - ro@suse.de
+
+- Use ExclusiveArch instead of BuildArch 
+
+-------------------------------------------------------------------
+Thu Aug 29 11:23:04 CEST 2002 - meissner@suse.de
+
+- Change location of menu entries from /Wine/ to /SuSE/Wine/ to
+  make the registered apps appear in the menu.
+- Try to support biarch build for compiling on x86_64.
+
+-------------------------------------------------------------------
+Mon Aug 12 10:06:28 CEST 2002 - meissner@suse.de
+
+- Upgraded to current CVS snapshot (20020812)
+- Upstream summary:
+        - Beginnings of an IDL compiler.
+        - Several new winedbg features.
+        - More OLE and shell improvements.
+	- DirectSound 8 and DirectInput 8 support.
+        - Many OLE improvements.
+        - Support for font downloading in Postscript driver.
+        - ALSA sound driver.
+        - Lots of bug fixes.
+- Local: 
+	- Started enhancing PPC port.
+
+-------------------------------------------------------------------
+Sun Jul 28 13:05:48 CEST 2002 - kukuk@suse.de
+
+- remove libz from neededforbuild
+
+-------------------------------------------------------------------
+Wed Jul 10 11:54:46 CEST 2002 - meissner@suse.de
+
+- Upgraded to current CVS snapshot (20020710),
+  lots of bugfixes inside.
+- Tried fixing a Lotus Notes problem with the attachment information
+  window.
+
+-------------------------------------------------------------------
+Mon Jun 17 13:42:41 CEST 2002 - meissner@suse.de
+
+- Upgraded to current CVS snapshot (20020614), 
+  lots of new features, bugfixes et.al.
+- Tweaked wine_init so it does not recursively call itself.
+
+-------------------------------------------------------------------
+Tue Apr  9 16:52:56 CEST 2002 - meissner@suse.de
+
+- Upgraded to current CVS snapshot (20020409),
+  contains a lot of fixes from upstream (including parts of the CrossOver
+  Office patches)
+- neededforbuild jpeg -> libjpeg, added kdelibs stuff to support
+  arts client, added sane for twain32.dll
+  
+
+-------------------------------------------------------------------
+Tue Feb  5 14:20:06 CET 2002 - pmladek@suse.cz
+
+- added warning message into winesetup [#12932]
+- added the same message also into README.SuSE
+
+-------------------------------------------------------------------
+Fri Feb  1 01:28:57 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Mon Jan 28 17:08:24 CET 2002 - pmladek@suse.cz
+
+- removed old wine.systemreg, wine.userreg, there are newer in winesetuptk
+- removed old generic*.ppd and used the newer one from the wine sources
+- fixed ppd configuration in default config files [#12934]
+- wine_set_default_reg updates windows registry also from
+  the file psdrv.reg now
+- winedefault.reg and psdrv.reg moved to /usr/lib/wine/reg
+- tested print from wine
+- updated README.SuSE
+- cleanded up spec file
+
+-------------------------------------------------------------------
+Tue Jan 22 10:54:50 CET 2002 - pmladek@suse.cz
+
+- updated wine to the latest snapshot 20011226
+- updated winesetuptk to version 0.5.1b:
+	* improved detection of windows partitions
+	* drives in fstab are not automounted anymore
+	* support for "auto" fs type (look for windows)
+	* application specific profile support
+	* application profile for Internet Explorer and Lotus Notes R5
+	* preserve drive order like it's known under Windows
+- WineSetupTk did not linked against static Tcl/Tk/Itcl libraries,
+  instead of it was used old Makefile and old launcher
+
+-------------------------------------------------------------------
+Mon Dec  3 09:30:28 CET 2001 - ro@suse.de
+
+- fixed neededforbuild <docbktls> to <docbook-toys> 
+
+-------------------------------------------------------------------
+Thu Nov  1 22:18:15 CET 2001 - bjacke@suse.de
+
+- make sub package -devel
+- add "cups-devel cups-libs libpng jpeg openssl libtiff" to
+  neededforbuild for CUPS support
+- neededforbuild freetype2, -devel to support this
+- remove xf86 from Requires (X libs are autorequired)
+- remove Wine provides
+- fixed to not provide man and doc directories
+
+-------------------------------------------------------------------
+Mon Sep 24 11:12:10 CEST 2001 - pmladek@suse.cz
+
+- fixed documentation - added docbook_4 again
+
+-------------------------------------------------------------------
+Tue Sep 18 15:24:36 CEST 2001 - pmladek@suse.cz
+
+- fixed warning messages on start up
+
+-------------------------------------------------------------------
+Mon Aug 27 15:45:31 CEST 2001 - pmladek@suse.cz
+
+- fixed to compile:
+	* removed docbook_4 from #neededforbuild
+- fixed path to documentation by installation
+
+-------------------------------------------------------------------
+Fri Aug 24 14:24:08 CEST 2001 - pmladek@suse.cz
+
+- updated to version 20010731
+- added detection of version of wine config
+- fixed autorun of winesetup when config does not exist or
+  it is for bad version of wine 
+- fixed default configuration generated by winesetup along
+  example in wine
+- new script for registry updating
+- fixed licence tag
+- fixed README.SuSE
+
+-------------------------------------------------------------------
+Tue Aug 21 16:28:00 CEST 2001 - ro@suse.de
+
+- neededforbuild: replaced sp_libs with sp 
+
+-------------------------------------------------------------------
+Mon May  7 14:39:37 CEST 2001 - pmladek@suse.cz
+
+- fixed error message from find command when winesetup starts
+
+-------------------------------------------------------------------
+Sun Apr 29 03:26:17 CEST 2001 - pmladek@suse.cz
+
+- fixed README.SuSE
+
+-------------------------------------------------------------------
+Thu Apr 26 02:36:22 CEST 2001 - pmladek@suse.cz
+
+- added itcl to requires (it isn't in default selections but
+  it's needed by winesetup)
+
+-------------------------------------------------------------------
+Tue Apr 10 10:35:11 CEST 2001 - pmladek@suse.cz
+
+- updated to version 20010326
+- fixed winesetup through changes in wine config
+	- paths to afm files in config now
+	- another declaration of default load order
+- fixed README.SuSE
+
+-------------------------------------------------------------------
+Thu Mar 29 14:16:23 CEST 2001 - ro@suse.de
+
+- fixed neededforbuild 
+
+-------------------------------------------------------------------
+Tue Mar 27 17:11:23 CEST 2001 - pmladek@suse.cz
+
+- returned flag --sysconfdir=/etc to configure (my bug)
+
+-------------------------------------------------------------------
+Tue Mar 27 11:51:47 CEST 2001 - pmladek@suse.cz
+
+- added URL
+- repaired licence tag
+- wine up-dated to the version 20010305
+- added winesetuptk version 0.5.1b
+- fixed winesetuptk for SuSE distribution
+- added support: If you have no config file then 'winesetup' 
+  will be launched automatically when you launch 'wine'
+  (fixed bug #6769)
+- bziped sources
+- actualized README.SuSE
+- actualized description in PAC files
+- generated html documentation from sgml documentation
+- removed sgml documentation from binary rpm
+- cleaned up spec file 
+
+-------------------------------------------------------------------
+Thu Mar  8 10:53:56 CET 2001 - uli@suse.de
+
+- renamed mesadev -> mesa-devel in neededforbuild
+
+-------------------------------------------------------------------
+Wed Feb  7 17:14:32 CET 2001 - uli@suse.de
+
+- fixed for glibc 2.2.1
+
+-------------------------------------------------------------------
+Fri Dec  8 16:45:11 CET 2000 - uli@suse.de
+
+- update -> 20001202
+- added regapi
+- added wine.systemreg and wine.userreg
+- added afm and ppd files for printing
+- added afm and ppd sections to wine.conf
+
+-------------------------------------------------------------------
+Thu Nov 23 15:40:15 CET 2000 - arvin@suse.de
+
+- changed spec file to use a buildroot
+- fixed group tag
+
+-------------------------------------------------------------------
+Tue Sep 26 14:29:57 CEST 2000 - ro@suse.de
+
+- removed bogus requires
+- added mesa-stuff to neededforbuild 
+
+-------------------------------------------------------------------
+Mon Sep 25 15:15:55 CEST 2000 - hhetter@suse.de
+
+- updated to 20000821
+
+-------------------------------------------------------------------
+Thu Jul 27 15:29:07 CEST 2000 - arvin@suse.de
+
+- changed wine.conf to noreplace
+
+-------------------------------------------------------------------
+Mon May 15 15:29:50 CEST 2000 - bk@suse.de
+
+- updated to version 20000430
+
+-------------------------------------------------------------------
+Tue Apr 18 01:11:43 CEST 2000 - bk@suse.de
+
+- updated to version 20000326
+- added all new files to filelist
+- use RPM_OPT_FLAGS as CFLAGS
+
+-------------------------------------------------------------------
+Fri Jan 28 10:56:58 CET 2000 - bg@suse.de
+
+- new version 20000109
+- moved /usr/man to /usr/share/man
+
+-------------------------------------------------------------------
+Sun Oct 17 02:31:15 CEST 1999 - ro@suse.de
+
+- fixed neededforbuild 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu Jul  20 15:32:42 MEST 1999 - mkraft@suse.de
+
+- new version 990704
+
+-------------------------------------------------------------------
+Thu Apr  1 17:02:42 MEST 1999 - uli@suse.de
+
+- new version 990328
+
+-------------------------------------------------------------------
+Mon Mar 29 19:51:17 MEST 1999 - rolf@suse.de
+
+- new version 990314
+
+-------------------------------------------------------------------
+Tue Dec  1 15:50:52 MET 1998 - rolf@suse.de
+
+- new version 981108
+
+-------------------------------------------------------------------
+Fri Jun 26 11:49:24 MEST 1998 - rolf@suse.de
+
+- new version 980614
+
+-------------------------------------------------------------------
+Thu Jan 15 16:23:54 MET 1998 - rolf@suse.de
+
+- new version 980104

@@ -1,0 +1,11 @@
+<package name="ktp-accounts-kcm" project="openSUSE:Factory">
+  <title>A KCM Module for configuring Telepathy Instant Messaging Accounts.</title>
+  <description> This is a KControl Module which handles adding/editing/removing Telepathy 
+ Accounts. It interacts with any Telepathy Spec compliant AccountManager, 
+ such as telepathy-accountmanager-kwallet to manipulate the accounts. It is 
+ modular in design, with each ConnectionManager-Protocol combination having a 
+ plugin that provides customised forms for adding or editing their accounts, 
+ and also with a generic plugin which can be used as a fallback for 
+ ConnectionManager-Protocol combinations where no plugin exists.</description>
+  <devel project="KDE:Applications" package="ktp-accounts-kcm"/>
+</package>

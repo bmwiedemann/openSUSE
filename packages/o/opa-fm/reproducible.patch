@@ -1,0 +1,32 @@
+https://github.com/01org/opa-fm/pull/9
+https://bugzilla.opensuse.org/show_bug.cgi?id=1047218
+
+commit 8b1b100a34f6a03ab719fa0602f60b97be05ec9b
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Mon Jul 24 07:50:23 2017 +0200
+
+    Use SOURCE_DATE_EPOCH to override build date
+    
+    to make reproducible builds of opa-fm packages easier
+    e.g. for openSUSE
+    
+    See https://reproducible-builds.org/ for why this is good
+    and https://reproducible-builds.org/specs/source-date-epoch/
+    for the definition of this variable.
+
+diff --git a/MakeTools/prep.sh b/MakeTools/prep.sh
+index c0a4bd1..c4b7fec 100755
+--- a/MakeTools/prep.sh
++++ b/MakeTools/prep.sh
+@@ -81,7 +81,10 @@ then
+ 	exit 1
+ fi
+ 
+-DATE=${DATE:-"`date +'%m/%d/%y %H:%M'`"}
++DATE_FMT='%m/%d/%y %H:%M'
++[ -z "$SOURCE_DATE_EPOCH" ] ||\
++       DATE=${DATE:-"`date -u -d@$SOURCE_DATE_EPOCH "+$DATE_FMT"`"}
++DATE=${DATE:-"`date "+$DATE_FMT"`"}
+ 
+ if [ "$#" = 1 ]
+ then

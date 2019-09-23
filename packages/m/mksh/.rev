@@ -1,0 +1,414 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>18dc272bdc08d4b366cadef8fd735dbf</srcmd5>
+    <version>48b</version>
+    <time>1382012578</time>
+    <user>scarabeus_factory</user>
+    <comment>Please add mksh, a much improved and maintained fork of pdksh/OpenBSD ksh</comment>
+    <requestid>202669</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cb5f352d0b03ed307f2a5dde3bc3a877</srcmd5>
+    <version>48b</version>
+    <time>1383144345</time>
+    <user>scarabeus_factory</user>
+    <comment>- replace pdksh in openSUSE &amp;gt;= 13.2, lksh provides backwards
+  compatibility
+  - create corresponding symlinks
+  - use update-alternatives to allow for lksh as (/usr)/bins/ksh (forwarded request 205149 from gberh)</comment>
+    <requestid>205150</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0642d79671b7c48f88e7134bf85b8205</srcmd5>
+    <version>49</version>
+    <time>1389606932</time>
+    <user>coolo</user>
+    <comment>- update to version 49
+  - [tg] dot.mkshrc: fix two issues with the cd wrapper
+  - [tg] Unbreak set +p (wider issue still to be addressed)
+  - [Steffen Daode Nurpmeso] Use WCONTINUED with waitpid(2)
+  - [millert] Add proper suspend builtin handling tty(4) and
+    setpgrp(2)
+  - [tg] Sanitise and slightly optimise control character handling
+  - [tg] Add O_BINARY to all open(2) calls for OS/2 kLIBC support
+  - [tg] Generate option strings for shell, set, ulimit at compile
+    time
+  - [Steffen Daode Nurpmeso] Drop ISTRIP termios(4) mode
+  - [tg] Mention negative history numbers, octals in the manpage
+  - [tg] Make check.pl work with Perl &lt; 5.6.1 again
+  - [tg] Detect getsid(2) and skip the oksh suspend builtin
+    otherwise
+  - [tg] Document that set -o noclobber is unsafe for tempfiles
+  - [tg] Update to Unicode 6.3.0
+  - [RT] Restore some portability
+  - [tg] Fix parsing positional argument variable names
+  - [tg] Sprinkle a few __attribute__((__pure__)); fix warnings
+  - [tg] Fix build on OSX: always use our wcwidth code; only use
+    our strlcpy(3) code if the OE doesn’t provide one (prompted by
+    jonthn on IRC)
+  - [tg] Optimise sh -c to exec even in MKSH_SMALL
+  - [tg] Use new BAFH for hashing</comment>
+    <requestid>213623</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9239eb6b2c701a0f65bb1bda7a7dbc49</srcmd5>
+    <version>49</version>
+    <time>1394030196</time>
+    <user>scarabeus_factory</user>
+    <comment>- adjust update-alternative usage to packaging policy
+  (see http://lists.opensuse.org/opensuse-packaging/2014-02/msg00024.html)</comment>
+    <requestid>221404</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6554b573ff03bece6d1d10058268150f</srcmd5>
+    <version>50</version>
+    <time>1404191126</time>
+    <user>coolo</user>
+    <comment>- update to version 50
+  - [tg] Fix initial IFS whitespace not being ignored when
+    expanding
+  - [tg] MKSH_BINSHREDUCED no longer mistakenly enables brace
+    expansion
+  - [tg] Explain more clearly Vi input mode limitations in the
+    manpage
+  - [tg] Improve error reporting of the check.pl script (which
+    needs a maintainer since I don’t speak any perl(1), really),
+    for lewellyn
+  - [tg] Use $TMPDIR in test.sh for scratch space
+  - [tg, Polynomial-C] Check that the scratch space is not mounted
+    noexec
+  - [pekster, jilles, tg] Use termcap(5) names, not terminfo(5)
+    names, in tput(1) examples, for improved portability (e.g. to
+    MidnightBSD)
+  - [tg] Avoid C99 Undefined Behaviour in mirtoconf LFS test
+    (inspired by Debian #742780)
+  - [tg] Fix ${!foo} for when foo is unset
+  - [tg] Improve nameref error checking (LP#1277691)
+  - [tg] Fix readonly bypass found by Bert Münnich
+  - [Ryan Schmidt] Improved system reporting for Mac OS X
+  - [nDuff] Explain better [[ extglob handling in the manpage
+  - [tg] Remove arr=([index]=value) syntax due to regressions
+  - [tg] IFS-split arithmetic expansions as per POSIX 201x
+  - [OpenBSD] Add more detailed Authors section to manpage
+  - [tg] Fix set ±p issue for good: drop privs unless requested
+  - [tg] Improve signal handling and use a more canonical probing
+    order
+  - [tg] Fix return values $? and ${PIPESTATUS[*]} interaction with</comment>
+    <requestid>239021</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>136c0c2cd820c3c61e00fa171e24c4fe</srcmd5>
+    <version>50</version>
+    <time>1408957408</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245562</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>136c0c2cd820c3c61e00fa171e24c4fe</srcmd5>
+    <version>50</version>
+    <time>1409301904</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>08171bebfb94373bb6e9ecf139548720</srcmd5>
+    <version>50b</version>
+    <time>1409998713</time>
+    <user>coolo</user>
+    <comment>- update to version 50b
+  - [Ypnose] Fix operator description in the manpage
+  - [tg] Change all mention of “eglibc” to “glibc”, it is merged
+    back
+  - [Colona] Fix rare infinite loop with invalid UTF-8 in the edit
+    buffer
+  - [tg] Make more clear when a shell is interactive in the manpage
+  - [tg] Document that % is a symmetric remainder operation, and
+    how to get a mathematical modulus from it, in the manpage
+  - [tg, Christopher Ferris, Elliott Hughes] Make the cat(1)
+    builtin also interruptible in the write loop, not just in the
+    read loop, and avoid it getting SIGPIPE in the smores function
+    in dot.mkshrc by terminating cat upon user quit
+  - [tg] Make some comments match the code, after jaredy from obsd
+    changed IFS split handling
+  - [tg] Fix some IFS-related mistakes in the manual page
+  - [tg] Document another issue as known-to-fail test IFS-subst-3
+  - [tg] Improve check.pl output in some cases
+  - [tg, Jb_boin] Relax overzealous nameref RHS checks</comment>
+    <requestid>247591</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>336b732ae1918cbdee59a052f18e95dc</srcmd5>
+    <version>50c</version>
+    <time>1412533917</time>
+    <user>coolo</user>
+    <comment>- update to SECURITY version 50c
+  - [tg] Know more rare signals when generating sys_signame[] replacement
+  - [tg] OpenBSD sync (mostly RCSID only)
+  - [tg] Document HISTSIZE limit; found by luigi_345 on IRC
+  - [zacts] Fix link to Debian .mkshrc
+  - [tg] Cease exporting $RANDOM (Debian #760857)
+  - [tg] Fix C99 compatibility
+  - [tg] Work around klibc bug causing a coredump (Debian #763842)
+  - [tg] Use issetugid(2) as additional check if we are FPRIVILEGED
+  - [tg] SECURITY: do not permit += from environment
+  - [tg] Fix more field splitting bugs reported by Stephane Chazelas and
+    mikeserv; document current status wrt. ambiguous ones as testcases too
+- use build log cleaner sed command from home:mirabile package
+- enable lksh build-time option to automatically run &quot;set -o posix&quot;
+  when called as sh or -sh, like home:mirabile package did</comment>
+    <requestid>253864</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>de349e680be21db6b49447f7f00778af</srcmd5>
+    <version>50d</version>
+    <time>1412799234</time>
+    <user>coolo</user>
+    <comment>- update to regression bugfix version 50d
+  - [Goodbox] Fix NULL pointer dereference on “unset x; nameref x”
+  - [tg] Fix severe regression in field splitting (LP#1378208)
+  - [tg] Add a warning about not using tainted user input (including
+    from the environment) in arithmetics, until Stéphane writes it up
+    nicely
+- refresh vendor patch</comment>
+    <requestid>254633</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>de8f33a71addad642fb2f90059a52626</srcmd5>
+    <version>50e</version>
+    <time>1425377703</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 50e
+  - [tg] Add more tests detailing behaviour difference from GNU
+    bash
+  - [tg] Introduce a memory leak for x=&lt;&lt; fixing use of freed
+    memory instead, bug tracked as LP#1380389 still live
+  - [tg] Add x+=&lt;&lt; parallel to x=&lt;&lt;
+  - [tg, ormaaj, jilles] POSIX “command” loses builtin special-ness
+  - [tg] Fix LP#1381965 and LP#1381993 (more field splitting)
+  - [jilles] Update location of FreeBSD testsuite for test(1)
+  - [Martin Natano] Remove dead NULL elements from Emacs
+    keybindings
+  - [tg, Stéphane Chazelas, Geoff Clare] Change several testcases
+    for $*/$@ expansion with/without quotes to expected-fail, with
+    even more to come ☹
+  - [tg] Fix miscalculating required memory for encoding the
+    double-quoted parts of a here document or here string
+    delimiter, leading to a buffer overflow; discovered by zacts
+    from IRC
+  - [RT] Rename a function conflicting with a MacRelix system
+    header
+  - [tg] Use size_t (and ssize_t) consistently, stop using
+    ptrdiff_t; fixes some arithmetics and S/390 bugs
+  - [tg] Remove old workarounds for Clang 3.2 scan-build
+  - [tg] Remove all Clang/Coverity assertions, making room for new
+    checks
+  - [tg] Fix NSIG generation on Debian sid gcc-snapshot
+  - [tg] Make a testcase not fail in a corner case
+  - [tg] Fix issues detected by GCC’s new sanitisers: data type of
+    a value to be shifted constantly must be unsigned (what not, in
+    C…); shebang check array accesses are always unsigned char</comment>
+    <requestid>288398</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6bf9bf6aab406ff23f7d81dadbfe2b18</srcmd5>
+    <version>50f</version>
+    <time>1429658338</time>
+    <user>dimstar_suse</user>
+    <comment>- mention vendor modifications in manpage as requested by upstream
+
+- update to version 50f
+  - [tg] OpenBSD sync: handle integer base out of band like ksh93
+    does
+  - [tg] Protect standard code (predefined aliases, internal code,
+    aliases and functions in dot.mkshrc) from being overridden by
+    aliases and, in some cases, shell functions (i.e. permit
+    overriding but ignore it)
+  - [tg] Implement GNU bash’s enable for dot.mkshrc using magic
+    aliases to redirect the builtins to external utilities; this
+    differs from GNU bash in that enable takes precedence over
+    functions
+  - [tg] Move unaliasing an identifier when defining a POSIX-style
+    function with the same name into lksh, as compatibility kludge
+  - [tg] Korn shell style functions now have locally scoped shell
+    options
+  - [tg] Add a patch marker for vendor patch versioning to mksh.1
+  - [tg] SECURITY: make unset HISTFILE actually work
+  - [tg] Document some more issues with the current history code
+  - [tg] Remove some unused code
+  - [tg] RCSID-only sync with OpenBSD, for bogus and irrelevant
+    changes
+  - [tg] Also disable field splitting for alias 'local=\typeset'
+  - [tg] Fix read -n-1 to not be identical to read -N-1
+  - [tg] Several fixes and improvements to lksh(1) and mksh(1)
+    manpages
+  - [tg] More code (int → size_t), comment and testsuite fixes
+  - [tg] Make dot.mkshrc more robust (LP#1441853)
+  - [tg] Fix issues with IFS='\' read, found by edualbus</comment>
+    <requestid>298252</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a487728b996da71f01a1271b6291c72d</srcmd5>
+    <version>54</version>
+    <time>1488641826</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid deprecated API for errors and signals
+- Be sure to use a clean history file 
+
+- Make errors ini test suite fatal
+- Avoid -flto as this breaks even with gcc 6.3.1 20170202 
+
+- Use screen to provide a tty for test suite scripts 
+
+- Update to version R54
+  R54 is a bugfix release with moderate new features:
+    [tg] Simplify and improve code and manual page
+    [tg] Try GCC 5’s new -malign-data=abi
+    [tg] Allow interrupting builtin cat even on fast devices (LP#1616692)
+    [tg] Update to Unicode 9.0.0
+    [Andreas Buschka] Correct English spelling
+    [tg] Handle set -e-related error propagation in || and &amp;&amp; constructs correctly
+    [tg] Initialise memory for RNG even when not targeting Valgrind
+    [tg] Shrink binary size
+    [Brian Callahan] Improve support for the contemporary pcc compiler
+    [tg] Fix side effects with lazy evaluation; spotted by ormaaj
+    [tg] New flags -c (columnise), -l, -N for the print builtin
+    [Larry Hynes] Fix English, spelling mistakes, typos in the manpage
+    [tg, ormaah] Return 128+SIGALRM if read -t times out, like GNU bash
+    [Martijn Dekker] Install both manpages from Build.sh
+    [Martijn Dekker] Document case changes are ASCII-only
+    [Ronald G. Minnich, Elbing Miss, Álvaro Jurado, tg] Begin porting to Harvey-OS and APEX (similar to Plan 9 and APE)
+    [KO Myung-Hun] More infrastructure for the OS/2 (EMX, KLIBC) port
+ R53a is a snapshot/feature release:
+    [lintian] Fix spelling
+    [tg] Unbreak multi-line command history broken by history flush</comment>
+    <requestid>460024</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b010af8901ed0f6d1469be5f65224815</srcmd5>
+    <version>54</version>
+    <time>1510661167</time>
+    <user>dimstar_suse</user>
+    <comment>- The AT&amp;T ksh is still part of openSUSE but on SLES only mksh
+  should be used (bsc#1067195)</comment>
+    <requestid>541746</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>a019e6a73cc183fb79ee018258e8b2ad</srcmd5>
+    <version>54</version>
+    <time>1512140054</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>546900</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>cdefb50ce191e04804fec38db4b50648</srcmd5>
+    <version>54</version>
+    <time>1513583951</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch mksh-locale.patch to enable the mksh to set internal
+  lcoale settings like utf support during runtime</comment>
+    <requestid>557261</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>77884b4cf17cc077d790f4b2cf9b8499</srcmd5>
+    <version>56c</version>
+    <time>1524144699</time>
+    <user>dimstar_suse</user>
+    <comment>- Remoce patch mksh-locale.patch and use upstream compile flags
+  MKSH_EARLY_LOCALE_TRACKING as replacement 
+
+- Update to version R56c
+  R56c is a bugfix-only release everyone must upgrade to:
+    [komh] Remove redundant OS/2-specific code, clean up others
+    [komh, tg] Fix drive-qualified (absolute and relative) DOS-style
+      path support in realpath functionality, partially other places
+    [tg] Don’t substitute ${ENV:-~/.mkshrc} result again
+    [tg] Improve OS/2 $PATH (et al.) handling, drive-relative paths
+    [tg] Add MKSH_ENVDIR compile-time option for Jehanne and Plan 9
+    [tg] Limit nesting when parsing malformed code (Debian #878947)
+    [tg] Update wcwidth data with bugfixed script (still Unicode 10;
+      resulting values are identical to glibc git master for extant chars)
+    [Dr. Werner Fink] Raise some time limits in the testsuite
+    [Shamar] Add support for the Jehanne operating system
+    [komh] Set stdin to text mode before executing child processes on OS/2
+    [komh] Pass arguments via a resonse file if executing a child fails
+    [Dr. Werner Fink] Early locale tracking as a compile-time option
+    [tg] Fix regressions introduced with new fast character classes
+  R56b is a bugfix-only release everyone should upgrade to:
+    [tg] Reference the FAQ webpage
+    [panpo, Riviera] Fix documentation bug wrt. Esc+Ctrl-L
+    [tg, Larry Hynes] Fix “0” movement in vi mode
+    [tg] Replace broken libcs’ offsetof macro with MirBSD’s
+  R56 is a bugfix release with some experimental fixes:
+    [tg, Seb] Do not apply alias name restrictions to hash/tilde tracking
+    [tg] Restore ‘.’, ‘:’ and ‘[’ in alias names (“[[” is still forbidden)
+    [tg] Fix accidentally defanged $PATHSEP test
+    [tg] On ^C (INTR and QUIT edchars), shove edit line into history</comment>
+    <requestid>597698</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>9088c022ce4cd728792f664abae27139</srcmd5>
+    <version>56c</version>
+    <time>1531232126</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621120</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bd7bd2d0d9b7993187472b3c05394c11</srcmd5>
+    <version>57</version>
+    <time>1554977770</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version R57 (reminded by lewellyn)
+   R57 rolls up bugfixes, with few hard changes:
+    [gecko2] Update operating environment reporting for the Macintosh
+    [Martijn Dekker] make ${foo#'bar'} in here document behave like ksh93
+    [Martijn Dekker] quote empty strings for re-entry into shell
+    [tg, G.raud Meyer] Improve documentation, especially for tty states
+    [tg] Protect against entering line editing with bad saved tty state
+    [tg] Fix set -o allexport for arrays (which we apparently do)
+    [tg] Handle lseek(2) returning -1 as pointed out by Coverity Scan
+    [tg] Fix left-padding UTF-8 strings
+    [tg, G.raud Meyer] Fix using the “-m” flag on the command line
+    [tg] Update to UCD 11.0.0
+    [multiplexd] Fix a segfault using ^W during search in Vi mode
+    [tg] Fix an error message; add a test for controlling tty
+    [tg] Permit unsetting LINES and COLUMNS, for those who need it
+    [tg] Fix manpage bug (RedHat BZ#1612173)
+    [tg] Minor spelling cleanup
+    [tg] Unbreak high-bit7 (nōn-ASCII) heredoc separators (LP#1779179)
+    [tg] Allow dumping high-bit7-char-containing strings in DEBUG mode
+    [tg] Add some testcases for behaviour questions popped up in IRC
+    [tg] Trick a GCC warning, to make up for it ignoring lint(1) hints
+    [tg] Add O_MAYEXEC support for CLIP OS
+    [tg] Make dup-to-self with ksh-style fd≥3 closing work; catern via IRC
+    [tg] Add compat glue for newer GNU groff mdoc to the manpages
+    [tg] Trigger EXIT trap after single-command subshells (Debian #910276)
+    [tg] Document set -eo pipefail caveat (LP#1804504)
+    [tg] Fix MKSH_EARLY_LOCALE_TRACKING warning
+    [tg] Document that, when your Unix is broken, GIGO applies (LP#1817959)
+    [tg] Improve error message for inaccessible executables (LP#1817789)
+- Switch from patching check.t, sh.h and Build.sh to using
+  KSH_VERSIONNAME_VENDOR_EXT and appending to CPPFLAGS beforehand
+- Remove qemu/ppc patches that are upstreamed/no longer necessary
+- Drop LTO support which was already always disabled
+- Handle newer GCC note output during configure stage
+- Ensure KSH_VERSIONNAME_VENDOR_EXT is always set to something,
+  because the patch deviating from upstream is always applied
+- Remove virt-what from build dependencies, it just fails or,
+  worse, makes the package unresolvable; also from lewellyn
+</comment>
+    <requestid>692662</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>fded87582d97d7e005b40c989b8f885f</srcmd5>
+    <version>57</version>
+    <time>1567849924</time>
+    <user>dimstar_suse</user>
+    <comment>Fix FTBFS caused by someone enabling LTO implicitly system-wide by disabling LTO *again* (GCC’s is too buggy to use and generates wrong code).
+
+The next upstream release (R58 most likely) will add -fno-lto to CFLAGS and LDFLAGS if GCC is detected as build compiler, solving this problem on a different level.</comment>
+    <requestid>728543</requestid>
+  </revision>
+</revisionlist>

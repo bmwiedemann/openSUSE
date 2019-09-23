@@ -1,0 +1,5 @@
+<package name="python-multi_key_dict" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-multi_key_dict"/>
+</package>

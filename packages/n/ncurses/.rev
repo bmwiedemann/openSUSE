@@ -1,0 +1,2562 @@
+<revisionlist>
+  <revision rev="1" vrev="40">
+    <srcmd5>69d5ed70ba7d59f53ddc70b5df31d094</srcmd5>
+    <version>5.5</version>
+    <time>1166483831</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e4ba5ac1d04e2e049e194cfbe2b1d4dc</srcmd5>
+    <version>5.6</version>
+    <time>1170376374</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>655bc2a73414cc187b2162a77364b47f</srcmd5>
+    <version>5.6</version>
+    <time>1174308791</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>f31dd1219e77e3e9d67e2e07138366a2</srcmd5>
+    <version>5.6</version>
+    <time>1174557895</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="16">
+    <srcmd5>b0fe60c4b23f2b141d0c484f4373e14b</srcmd5>
+    <version>5.6</version>
+    <time>1179354663</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="19">
+    <srcmd5>068aa96c00d100324bfea9e6d7c15636</srcmd5>
+    <version>5.6</version>
+    <time>1180130241</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="38">
+    <srcmd5>fb71702c4aafafb614a129ca9a8b376b</srcmd5>
+    <version>5.6</version>
+    <time>1189701492</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="50">
+    <srcmd5>1cd77b3789e2f974a4663933466506f9</srcmd5>
+    <version>5.6</version>
+    <time>1196903101</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="52">
+    <srcmd5>609d566c7a1be1aa964edb7d003b9982</srcmd5>
+    <version>5.6</version>
+    <time>1197479732</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="71">
+    <srcmd5>0f062e23aeb4c7d0fd242e4f0b1f2168</srcmd5>
+    <version>5.6</version>
+    <time>1207769982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="72">
+    <srcmd5>1a2d9577bf87969c2aebb9882aebf66c</srcmd5>
+    <version>5.6</version>
+    <time>1207820485</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="73">
+    <srcmd5>ed9c3e4c6027d561d8a409adb8cbb2a5</srcmd5>
+    <version>5.6</version>
+    <time>1207826075</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="74">
+    <srcmd5>65cfd16fb1d2f77350b2fd6a3d3e1921</srcmd5>
+    <version>5.6</version>
+    <time>1207827600</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="76">
+    <srcmd5>a629d5c2a62954e768a16fe6144ce8f6</srcmd5>
+    <version>5.6</version>
+    <time>1208023521</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="79">
+    <srcmd5>14f95b7240a9d029a698247d5c63dd25</srcmd5>
+    <version>5.6</version>
+    <time>1208641571</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="82">
+    <srcmd5>09933ab67838211f55548f9a1c5e2614</srcmd5>
+    <version>5.6</version>
+    <time>1209129886</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="83">
+    <srcmd5>e29173b0791aa30f0be6ea1707ee921a</srcmd5>
+    <version>5.6</version>
+    <time>1210196152</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="85">
+    <srcmd5>bf48f651a540f47769deb8c28132518f</srcmd5>
+    <version>5.6</version>
+    <time>1218831603</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="86">
+    <srcmd5>01d4a9c9bf5fdc7c4499b26d4df334cc</srcmd5>
+    <version>5.6</version>
+    <time>1219333868</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="87">
+    <srcmd5>d6904e04423005be59e0d1a490532d74</srcmd5>
+    <version>5.6</version>
+    <time>1220050897</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="88">
+    <srcmd5>82601d930b5ebfd8c13f94c547e8ae8b</srcmd5>
+    <version>5.6</version>
+    <time>1220637960</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="89">
+    <srcmd5>b1d0c3842e67b00258e667530dac7dc3</srcmd5>
+    <version>5.6</version>
+    <time>1226936103</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="90">
+    <srcmd5>96750a88a7985875296a7902f8bcd8c2</srcmd5>
+    <version>5.6</version>
+    <time>1231461456</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="92">
+    <srcmd5>96750a88a7985875296a7902f8bcd8c2</srcmd5>
+    <version>5.6</version>
+    <time>1231461456</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="93">
+    <srcmd5>3a31a4c2aa9f150994595695fb10477d</srcmd5>
+    <version>5.6</version>
+    <time>1258361575</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/ncurses based on submit request 24424 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>68bd1316b668565eca52b6df40c7df1b</srcmd5>
+    <version>5.7</version>
+    <time>1263478679</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/ncurses based on submit request 29358 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>3c6677a8c745702065d3cf300eafe207</srcmd5>
+    <version>5.7</version>
+    <time>1263567145</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/ncurses based on submit request 29655 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>f62ce4d390b4f74ecf8ccaf345bb55e3</srcmd5>
+    <version>5.7</version>
+    <time>1268925064</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>63432df7d66f632a8c653b2907594648</srcmd5>
+    <version>5.7</version>
+    <time>1274775976</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/ncurses based on submit request 39665 from user WernerFink
+</comment>
+    <requestid>39665</requestid>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>ca454a31573a0d63149156e871d7df2b</srcmd5>
+    <version>5.7</version>
+    <time>1278088590</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/ncurses based on submit request 42421 from user elvigia
+</comment>
+    <requestid>42421</requestid>
+  </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>ca454a31573a0d63149156e871d7df2b</srcmd5>
+    <version>5.7</version>
+    <time>1278667370</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="32" vrev="8">
+    <srcmd5>ca454a31573a0d63149156e871d7df2b</srcmd5>
+    <version>5.7</version>
+    <time>1278678600</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="33" vrev="9">
+    <srcmd5>ec4ff85106eb886ba105166b2970f2cc</srcmd5>
+    <version>5.7</version>
+    <time>1279538045</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/ncurses based on submit request 42898 from user WernerFink
+</comment>
+    <requestid>42898</requestid>
+  </revision>
+  <revision rev="34" vrev="10">
+    <srcmd5>7bdf90f14eafc5b28b385e0192e35119</srcmd5>
+    <version>unknown</version>
+    <time>1284036003</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/ncurses based on submit request 47596 from user coolo
+</comment>
+    <requestid>47596</requestid>
+  </revision>
+  <revision rev="35" vrev="11">
+    <srcmd5>d8765b733a4c8fddac042fe7839d9b7c</srcmd5>
+    <version>5.7</version>
+    <time>1287050364</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/ncurses based on submit request 50375 from user WernerFink
+</comment>
+    <requestid>50375</requestid>
+  </revision>
+  <revision rev="36" vrev="12">
+    <srcmd5>5040102346a70924f7aa4894aa25dcf5</srcmd5>
+    <version>5.7</version>
+    <time>1293006644</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 56555 from user WernerFink
+</comment>
+    <requestid>56555</requestid>
+  </revision>
+  <revision rev="37" vrev="13">
+    <srcmd5>6a3258481f00e1a21fc67965199b75b1</srcmd5>
+    <version>5.7</version>
+    <time>1293006652</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 56555
+</comment>
+  </revision>
+  <revision rev="38" vrev="16">
+    <srcmd5>6a3258481f00e1a21fc67965199b75b1</srcmd5>
+    <version>5.7</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>eb6e38f9b1f5dbe4f2c9ff64db235a43</srcmd5>
+    <version>5.8</version>
+    <time>1299686895</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63716 from user WernerFink
+</comment>
+    <requestid>63716</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>9ba2f3248413b5f614dd610b41347f0c</srcmd5>
+    <version>5.8</version>
+    <time>1299686903</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63716
+</comment>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>cef290cb96fe0738b3b9cede6e2baeea</srcmd5>
+    <version>5.8</version>
+    <time>1317543631</time>
+    <user>lrupp</user>
+    <comment>- fix build under qemu for the ARM port</comment>
+    <requestid>85577</requestid>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>76c15d7c6957204b7dc12932168f157f</srcmd5>
+    <version>5.8</version>
+    <time>1318456846</time>
+    <user>lrupp</user>
+    <comment>- cross-build fixes: use %configure macro, use host's tic/tack
+  for build, don't ldd tack (forwarded request 86535 from uli_suse)</comment>
+    <requestid>87526</requestid>
+  </revision>
+  <revision rev="43" vrev="6">
+    <srcmd5>76c15d7c6957204b7dc12932168f157f</srcmd5>
+    <version>5.8</version>
+    <time>1319182196</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="44" vrev="7">
+    <srcmd5>5283c6e778d9431dfc81db40601232df</srcmd5>
+    <version>5.8</version>
+    <time>1321460380</time>
+    <user>coolo</user>
+    <comment>- Split libncurses(w) into libncurses(w)+libtinfo to be able to
+  link python against wide libncursesw and libreadline which is
+  linked with libtinfo only (bnc#729226)</comment>
+    <requestid>91780</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>bba8b9310fb33b1138eee3c00f12f6f7</srcmd5>
+    <version>5.9</version>
+    <time>1322073433</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 5.9.20111119
+ * remove obsolete/conflicting fallback definition for _POSIX_SOURCE
+   from curses.priv.h, fixing a regression with IRIX64 and Tru64
+   (cf: 20110416)
+ * modify _nc_tic_dir() to ensure that its return-value is nonnull,
+   i.e., the database iterator was not initialized.  This case is needed
+   to when tic is translating to termcap, rather than loading the
+   database (cf:  20111001).
+
+- Update to tack 1.07-20110626
+- Enlarge hash size for run time linker
+- Enforce bind references to global function symbols to the
+  definition within libncurses and libtinfo
+
+- Add ncurses patch 5.9.20111112
+ * add pccon entries for OpenBSD console (Alexei Malinin).
+ * build-fix for OpenBSD 4.9 with gcc 4.2.1, setting _XOPEN_SOURCE to
+   600 to work around inconsistent ifdef'ing of wcstof between C and
+   C++ header files.
+ * modify capconvert script to accept more than exact match on &quot;xterm&quot;,
+   e.g., the &quot;xterm-*&quot; variants, to exclude from the conversion (patch
+   by Robert Millan).
+ * fix a typo misc/Makefile.in, used in uninstalling pc-files.
+- Add ncurses patch 5.9.20111030
+ * modify make_db_path() to allow creating &quot;terminfo.db&quot; in the same
+   directory as an existing &quot;terminfo&quot; directory.  This fixes a case
+   where switching between hashed/filesystem databases would cause the
+   new hashed database to be installed in the next best location -
+   root's home directory.
+ * add variable cf_cv_prog_gnat_correct to those passed to</comment>
+    <requestid>93089</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>4818777c771b5d713f6961c21779d352</srcmd5>
+    <version>5.9</version>
+    <time>1322144805</time>
+    <user>coolo</user>
+    <comment>- Use linker scripts to amke sure that libtinfo will be found
+  even if -ltinfo is missed on the linker command line</comment>
+    <requestid>93438</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>78e48d353c0e0c92515d81caad6a5e46</srcmd5>
+    <version>5.9</version>
+    <time>1322816438</time>
+    <user>coolo</user>
+    <comment>- Avoid linker script libterminfo.so as bash configure can not
+  handle this</comment>
+    <requestid>94961</requestid>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>fd075e46d4d0daf47bc6f65c4f488bf4</srcmd5>
+    <version>5.9</version>
+    <time>1323190790</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 5.9.20111203 
+ * modify configure-check for etip.h dependencies, supplying a temporary
+   copy of ncurses_dll.h since it is a generated file (prompted by
+   Debian #646977).
+ * modify CF_CPP_PARAM_INIT &quot;main&quot; function to work with current C++.
+
+- Add ncurses patch 5.9.20111126
+ * correct database iterator's check for duplicate entries
+   (cf: 20111001).
+ * modify database iterator to ignore $TERMCAP when it is not an
+   absolute pathname.
+ * add -D option to tic, to show the database locations that it could
+   use.
+ * improve description of database locations in tic manpage.
+ * modify the configure script to generate a list of the &quot;.pc&quot; files to
+   generate, rather than deriving the list from the libraries which have
+   been built (patch by Mike Frysinger).
+ * use AC_CHECK_TOOLS in preference to AC_PATH_PROGS when searching for
+   ncurses*-config, e.g., in Ada95/configure and test/configure (adapted
+   from patch by Mike Frysinger).</comment>
+    <requestid>95459</requestid>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>9a1e7575fec0d33743e7b2ce707d8f9c</srcmd5>
+    <version>5.9</version>
+    <time>1325846763</time>
+    <user>coolo</user>
+    <comment>- remove call to suse_update_config (very old work around) (forwarded request 97718 from coolo)</comment>
+    <requestid>97852</requestid>
+  </revision>
+  <revision rev="50" vrev="6">
+    <srcmd5>37cf55e7050c7e0a5d17afa8817b5a18</srcmd5>
+    <version>5.9</version>
+    <time>1328261080</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 5.9.20120128
+  + add mach-gnu (Debian #614316, patch by Samuel Thibault)
+  + add mach-gnu-color, tweaks to mach-gnu terminfo -TD
+  + make sgr for sun-color agree with smso -TD
+  + make sgr for prism9 agree with other caps -TD
+  + make sgr for icl6404 agree with other caps -TD
+  + make sgr for ofcons agree with other caps -TD
+  + make sgr for att5410v1, att4415, att620 agree with other caps -TD
+  + make sgr for aaa-unk, aaa-rv agree with other caps -TD
+  + make sgr for avt-ns agree with other caps -TD
+  + amend fix intended to separate fixups for acsc to allow &quot;tic -cv&quot; to
+    give verbose warnings (cf:  20110730). 
+  + modify misc/gen-edit.sh to make the location of the tabset directory
+    consistent with misc/Makefile.in, i.., using ${datadir}/tabset
+    (Debian #653435, patch by Sven Joachim).
+- Add ncurses patch 5.9.20120121
+ + add --with-lib-prefix option to allow configuring for old/new flavors
+   of OS/2 EMX.
+ + modify check for gnat version to allow for year, as used in FreeBSD
+   port.
+ + modify check_existence() in db_iterator.c to simply check if the
+   path is a directory or file, according to the need.  Checking for
+   directory size also gives no usable result with OS/2 (cf: 20120107).
+ + support OS/2 kLIBC (patch by KO Myung-Han).
+
+- Add ncurses patch 5.9.20120114
+ * several improvements to test/movewindow.c (prompted by discussion on
+   Linux Mint forum):
+- Add ncurses patch 5.9.20120107
+ * various improvments for MinGW (Juergen Pfeifer):</comment>
+    <requestid>102094</requestid>
+  </revision>
+  <revision rev="51" vrev="7">
+    <srcmd5>aeafcc69c8f0cd333f1409278bfa169a</srcmd5>
+    <version>5.9</version>
+    <time>1328891304</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 5.9.20120204
+  + improved tic -D option, avoid making target directory and provide
+    better diagnostics.</comment>
+    <requestid>102926</requestid>
+  </revision>
+  <revision rev="52" vrev="8">
+    <srcmd5>338b281e0cc30462c62efa83d34b0750</srcmd5>
+    <version>5.9</version>
+    <time>1329405625</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 5.9.20120211
+  + make sgr for xterm-pcolor agree with other caps -TD
+  + make sgr for att5425 agree with other caps -TD
+  + make sgr for att630 agree with other caps -TD
+  + make sgr for linux entries agree with other caps -TD
+  + make sgr for tvi9065 agree with other caps -TD
+  + make sgr for ncr260vt200an agree with other caps -TD
+  + make sgr for ncr160vt100pp agree with other caps -TD
+  + make sgr for ncr260vt300an agree with other caps -TD
+  + make sgr for aaa-60-dec-rv, aaa+dec agree with other caps -TD
+  + make sgr for cygwin, cygwinDBG agree with other caps -TD
+  + add configure option --with-xterm-kbs to simplify configuration for
+    Linux versus most other systems.</comment>
+    <requestid>105015</requestid>
+  </revision>
+  <revision rev="53" vrev="9">
+    <srcmd5>8b854ef2e1d586788e20ebc6a5ccfb5c</srcmd5>
+    <version>5.9</version>
+    <time>1331147385</time>
+    <user>coolo</user>
+    <comment>- Add tack patch 1.07.20120303 
+  + fix many compilerv warnings
+  + update auto configure
+  + update copyright date
+  + Update configure-script and makefile template to work with this
+    post-5.9 change, allowing build of tack within the ncurses
+    source-tree 20110924.  The change is prompted by review of
+    OpenSUSE package by Werner Fink, using a patch from the rpm
+    source file: ncurses-5.9-tack-tinfo.dif (2011-11-18)
+
+- Add ncurses patch 5.9.20120303  
+  + minor tidying of terminfo.tail, clarify reason for limitation
+    regarding mapping of \0 to \200
+  + minor improvement to _nc_copy_termtype(), using memcpy to replace
+    loops.
+  + fix no-leaks checking in test/demo_termcap.c to account for multiple
+    calls to setupterm().
+  + modified the libgpm change to show previous load as a problem in the
+    debug-trace.
+  &gt; merge some patches from OpenSUSE rpm (Werner Fink):
+  + ncurses-5.7-printw.dif, fixes for varargs handling in lib_printw.c
+  + ncurses-5.7-gpm.dif, do not dlopen libgpm if already loaded by
+    runtime linker
+  + ncurses-5.6-fallback.dif, do not free arrays and strings from static
+    fallback entries
+
+- Add ncurses patch 5.9.20120228
+  + fix breakage in tic/infocmp from 20120225 (report by Werner Fink).
+
+- Add ncurses patch 5.9.20120225</comment>
+    <requestid>107969</requestid>
+  </revision>
+  <revision rev="54" vrev="10">
+    <srcmd5>63b8af668c5e53e0a8f116846365885b</srcmd5>
+    <version>5.9</version>
+    <time>1331579744</time>
+    <user>coolo</user>
+    <comment>- Add check_build script to avoid to stumble on gcc exception 32
+
+- Add ncurses patch 5.9.20120310
+  + fix some strict compiler warnings for abi6 and 64-bits.
+  + use begin_va_copy/end_va_copy macros in lib_printw.c (cf: 20120303).
+  + improve a limit-check in infocmp.c (Werner Fink)</comment>
+    <requestid>108885</requestid>
+  </revision>
+  <revision rev="55" vrev="11">
+    <srcmd5>03bf6b28bd0b2048a7bd695616fca76b</srcmd5>
+    <version>5.9</version>
+    <time>1338528108</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 5.9.20120526
+  + extend -c and -n options of infocmp to allow comparing more than two
+    entries.
+  + correct check in infocmp for number of terminal names when more than
+    two are given.
+  + correct typo in curs_threads.3x (report by Yanhui Shen on
+    freebsd-hackers mailing list).
+- Add ncurses patch 5.9.20120512
+  + corrected 'op' for bterm (report by Samuel Thibault) -TD
+  + modify test/background.c to demonstrate a background character
+    holding a colored ACS_HLINE.  The behavior differs from SVr4 due to
+    the thick- and double-line extension (cf: 20091003).
+  + modify handling of acs characters in PutAttrChar to avoid mapping an
+    unmapped character to a space with A_ALTCHARSET set.
+  + rewrite vt520 entry based on vt420 -TD
+- Add ncurses patch 5.9.20120505
+  + remove p6 (bold) from opus3n1+ for consistency -TD
+  + remove acs stuff from env230 per clues in Ingres termcap -TD
+  + modify env230 sgr/sgr0 to match other capabilities -TD
+  + modify smacs/rmacs in bq300-8 to match sgr/sgr0 -TD
+  + make sgr for dku7202 agree with other caps -TD
+  + make sgr for ibmpc agree with other caps -TD
+  + make sgr for tek4107 agree with other caps -TD
+  + make sgr for ndr9500 agree with other caps -TD
+  + make sgr for sco-ansi agree with other caps -TD
+  + make sgr for d410 agree with other caps -TD
+  + make sgr for d210 agree with other caps -TD
+  + make sgr for d470c, d470c-7b agree with other caps -TD
+  + remove redundant AC_DEFINE for NDEBUG versus Makefile definition.
+  + fix a back-link in _nc_delink_entry(), which is needed if ncurses is</comment>
+    <requestid>123069</requestid>
+  </revision>
+  <revision rev="56" vrev="13">
+    <srcmd5>03bf6b28bd0b2048a7bd695616fca76b</srcmd5>
+    <version>5.9</version>
+    <time>1340183725</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="57" vrev="14">
+    <srcmd5>b044963bf392645878bc3659048e4ece</srcmd5>
+    <version>5.9</version>
+    <time>1340725680</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 5.9.20120622
+  + add -d, -e and -q options to test/demo_terminfo and test/demo_termcap
+  + fix caching of environment variables in database-iterator (patch by
+    Philippe Troin, Redhat #831366).
+- Add ncurses patch 5.9.20120616
+  + add configure check to distinguish clang from gcc to eliminate
+    warnings about unused command-line parameters when compiler warnings
+    are enabled.
+  + improve behavior when updating terminfo entries which are hardlinked
+    by allowing for the possibility that an alias has been repurposed to
+    a new primary name.
+  + fix some strict compiler warnings based on package scripts.
+  + further fixes for configure check for working poll (Debian #676461).
+- Add ncurses patch 5.9.20120608
+  + fix an uninitialized variable in -c/-n logic for infocmp changes
+    (cf: 20120526).
+- Add ncurses patch 5.9.20120602
+  + add kdch1 aka &quot;Remove&quot; to vt220 and vt220-8 entries -TD
+  + add kdch1, etc., to qvt108 -TD
+  + add dl1/il1 to some entries based on dl/il values -TD
+  + add dl to simpleterm -TD
+  + add consistency-checks in tic for insert-line vs delete-line
+    controls, and insert/delete-char keys
+  + correct no-leaks logic in infocmp when doing comparisons, fixing
+    duplicate free of entries given via the command-line, and freeing
+    entries loaded from the last-but-one of files specified on the
+    command-line.
+  + add kdch1 to wsvt25 entry from NetBSD CVS (reported by David Lord,
+    analysis by Martin Husemann).
+  + add cnorm/civis to wsvt25 entry from NetBSD CVS (report/analysis by</comment>
+    <requestid>126164</requestid>
+  </revision>
+  <revision rev="58" vrev="15">
+    <srcmd5>44b75b3a8496ba970ca1c77438e232f1</srcmd5>
+    <version>5.9</version>
+    <time>1342082962</time>
+    <user>namtrac</user>
+    <comment>- Add ncurses patch 5.9.20120707 (bnc#769788)
+  + add ncurses_mingw.h to installed headers (prompted by patch by
+    Juergen Pfeifer).
+  + clarify return-codes from wgetch() in response to SIGWINCH (prompted
+    by Novell #769788).
+  + modify resizeterm() to always push a KEY_RESIZE onto the fifo, even
+    if screensize is unchanged.  Modify _nc_update_screensize() to push a
+    KEY_RESIZE if there was a SIGWINCH, even if it does not call
+    resizeterm().  These changes eliminate the case where a SIGWINCH is
+    received, but ERR returned from wgetch or wgetnstr because the screen
+    dimensions did not change (Novell #769788).</comment>
+    <requestid>127417</requestid>
+  </revision>
+  <revision rev="59" vrev="16">
+    <srcmd5>bfb5e4a29f926db608f341679c372484</srcmd5>
+    <version>5.9</version>
+    <time>1342866636</time>
+    <user>namtrac</user>
+    <comment>- Add ncurses patch 5.9.20120714 (bnc#769788)
+ + add use_tioctl() function (adapted from patch by Werner Fink,
+   Novell #769788):
+- Set the default for use_tioctl() to TRUE and add a note in the
+  manual page for this.</comment>
+    <requestid>128488</requestid>
+  </revision>
+  <revision rev="60" vrev="17">
+    <srcmd5>af2b6cf70974b0c2523c0842bc4c0cc1</srcmd5>
+    <version>5.9</version>
+    <time>1343734587</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 5.9.20120728
+  + correct path for ncurses_mingw.h in include/headers, in case build
+    is done outside source-tree (patch by Roumen Petrov).
+  + modify some older xterm entries to align with xterm source -TD
+  + separate &quot;xterm-old&quot; alias from &quot;xterm-r6&quot; -TD
+  + add E3 extended capability to xterm-basic and putty -TD
+  + parenthesize parameters of other macros in curses.h -TD
+  + parenthesize parameter of COLOR_PAIR and PAIR_NUMBER in curses.h
+   in case it happens to be a comma-expression, etc. (patch by Nick
+   Black).
+- Add ncurses patch 5.9.20120721 
+  + improved form_request_by_name() and menu_request_by_name().
+  + eliminate two fixed-size buffers in toe.c
+  + extend use_tioctl() to have expected behavior when use_env(FALSE) and
+    use_tioctl(TRUE) are called.
+  + modify ncurses test-program, adding -E and -T options to demonstrate
+    use_env() versus use_tioctl().
+- Add NEWS and README to installed package documentation ((bnc#772916)
+
+- Change order of listes authors into the order of relative
+  contributions made (bnc#772916)
+- Add tabs description to description of ncurses-utils (bnc#772916)</comment>
+    <requestid>129436</requestid>
+  </revision>
+  <revision rev="61" vrev="18">
+    <srcmd5>0dad1285a2ee22db69ab4c036b418c62</srcmd5>
+    <version>5.9</version>
+    <time>1348669424</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 5.9.20120908
+  + add test-screens to test/ncurses to show 256-characters at a time,
+    to help with mingw port.
+- Add ncurses patch 5.9.20120903
+  + simplify varargs logic in lib_printw.c; va_copy is no longer needed
+    there.
+  + modifications for mingw port to make wide-character display usable.
+- Add ncurses patch 5.9.20120902
+  + regenerate configure script (report by Sven Joachim, cf: 20120901).
+- Add ncurses patch 5.9.20120901
+  + add a null-pointer check in _nc_flush (cf: 20120825).
+  + fix a case in _nc_scroll_optimize() where the _oldnums_list array
+    might not be allocated.
+  + improve comparisons in configure.in for unset shell variables.
+- Add ncurses patch 5.9.20120826
+  + increase size of ncurses' output-buffer, in case of very small
+    initial screen-sizes.
+  + fix evaluation of TERMINFO and TERMINFO_DIRS default values as needed
+    after changes to use --datarootdir (reports by Gabriele Balducci,
+    Roumen Petrov).
+- Add ncurses patch 5.9.20120825
+  + change output buffering scheme, using buffer maintained by ncurses
+    rather than stdio, to avoid problems with SIGTSTP handling (report
+    by Brian Bloniarz).
+- Add ncurses patch 5.9.20120811
+  + update autoconf patch to 2.52.20120811, adding --datarootdir
+    (prompted by discussion with Erwin Waterlander).
+  + improve description of --enable-reentrant option in README and the
+    INSTALL file.
+  + add nsterm-256color, make this the default nsterm -TD</comment>
+    <requestid>134672</requestid>
+  </revision>
+  <revision rev="62" vrev="19">
+    <srcmd5>657de1594ec47360d511a4e1ef9e8828</srcmd5>
+    <version>5.9</version>
+    <time>1350022037</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 5.9.20121006
+  + improve CF_GCC_VERSION to work around Debian's customization of gcc
+    --version message.
+  + improve configure macros as done in byacc:
+    + drop 2.13 compatibility; use 2.52.xxxx version only since EMX port
+      has used that for a while.
+    + add 3rd parameter to AC_DEFINE's to allow autoheader to run, i.e.,
+      for experimental use.
+    + remove unused configure macros.
+  + modify configure script and makefiles to quiet new autoconf warning
+    for LIBS_TO_MAKE variable.
+  + modify configure script to show $PATH_SEPARATOR variable.
+  + update config.guess, config.sub
+- Add ncurses patch 5.9.20120922
+  + modify setupterm to set its copy of TERM to &quot;unknown&quot; if configured
+    for the terminal driver and TERM was null or empty.
+  + modify treatment of TERM variable for MinGW port to allow explicit
+    use of the windows console driver by checking if $TERM is set to
+    &quot;#win32con&quot; or an abbreviation of that.
+  + undo recent change to fallback definition of vsscanf() to</comment>
+    <requestid>137494</requestid>
+  </revision>
+  <revision rev="63" vrev="20">
+    <srcmd5>c672ddc7cd335b19dd3a5a86a7dcbf03</srcmd5>
+    <version>5.9</version>
+    <time>1350590224</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 5.9.20121013
+  + add vte-2012, gnome-2012, making these the defaults for vte/gnome
+- Add ncurses patch 5.9.20121017
+  + fix change to _nc_scroll_optimize(), which incorrectly freed memory</comment>
+    <requestid>138509</requestid>
+  </revision>
+  <revision rev="64" vrev="21">
+    <srcmd5>f5b819616d63e186d2c99e848715f936</srcmd5>
+    <version>5.9</version>
+    <time>1352562900</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 5.9.20121026
+  + improve malloc/realloc checking (prompted by discussion in Redhat
+    #866989).
+  + add ncurses test-program as &quot;ncurses6&quot; to the rpm- and dpkg-scripts.
+  + updated configure macros CF_GCC_VERSION and CF_WITH_PATHLIST.  The
+    first corrects pattern used for Mac OS X's customization of gcc.
+- Add ncurses patch 5.9.20121102
+  + realign manual pages and fix a long-ago error in curs_addstr.3x
+    which said that a -1 length parameter would only write as much
+    as fit onto one line (report by Reuben Thomas).
+  + remove obsolete fallback _nc_memmove() for memmove()/bcopy().
+  + remove obsolete fallback _nc_strdup() for strdup().
+  + cancel any debug-rpm in package/ncurses.spec
+  + reviewed vte-2012, reverted most of the change since it was incorrect
+    based on testing with tack -TD
+  + un-cancel the initc in vte-256color, since this was implemented
+    starting with version 0.20 in 2009 -TD</comment>
+    <requestid>140220</requestid>
+  </revision>
+  <revision rev="65" vrev="22">
+    <srcmd5>1263cb5ca68ea4e21f658aa775a0c251</srcmd5>
+    <version>5.9</version>
+    <time>1353404413</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 5.9.20121117
+  &gt; fixes based on Coverity report:
+  + add missing braces around FreeAndNull in two places.
+  + various fixes in test/ncurses.c
+  + improve limit-checks in tinfo/make_hash.c, tinfo/read_entry.c
+  + correct malloc size in progs/infocmp.c
+  + guard against negative array indices in test/knight.c
+  + fix off-by-one limit check in test/color_name.h
+  + add null-pointer check in progs/tabs.c, test/bs.c, test/demo_forms.c,
+    test/inchs.c
+  + fix memory-leak in tinfo/lib_setup.c, progs/toe.c,
+    test/clip_printw.c, test/demo_menus.c
+  + delete unused windows in test/chgat.c, test/clip_printw.c,
+    test/insdelln.c, test/newdemo.c on error-return.
+- Add ncurses patch 5.9.20121110
+  + modify configure macro CF_INCLUDE_DIRS to put $CPPFLAGS after the
+    local -I include options in case someone has set conflicting -I
+    options in $CPPFLAGS (prompted by patch for ncurses/Makefile.in by
+    Vassili Courzakis).
+  + modify the ncurses*-config scripts to eliminate relative paths from
+    the RPATH_LIST variable, e.g., &quot;../lib&quot; as used in installing shared
+    libraries or executables.</comment>
+    <requestid>141884</requestid>
+  </revision>
+  <revision rev="66" vrev="23">
+    <srcmd5>fea1fe0bbc1640afe029c0f30f6e6dba</srcmd5>
+    <version>5.9</version>
+    <time>1355912106</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 5.9.20121215
+  + fix several warnings from clang 3.1 --analyze, includes correcting
+    a null-pointer check in _nc_mvcur_resume.
+  + correct display of double-width characters with MinGW port (report
+    by Erwin Waterlander).
+  + replace MinGW's wcrtomb(), fixing a problem with _nc_viscbuf 
+  + correct check for 8-bit value in _nc_insert_ch().
+  + remove dead code in progs/tset.c, test/linedata.h
+  + add null-pointer checks in lib_tracemse.c, panel.priv.h, and some
+    test-programs.
+- Add ncurses patch 5.9.20121208
+  + modify test/knight.c to show the number of choices possible for
+    each position in automove option, e.g., to allow user to follow
+    Warnsdorff's rule to solve the puzzle.
+  + remove a few redundant checks.
+  + check return value from remove/unlink in tic.
+  + fix a null dereference in c++/cursesw.cc
+  + fix two instances of uninitialized variables when configuring for the
+    terminal driver.
+  + correct scope of variable used in SetSafeOutcWrapper macro.
+  + set umask when calling mkstemp in tic.
+  + initialize wbkgrndset() temporary variable when extended-colors are
+    used.
+- Add ncurses patch 5.9.20121201
+  + also replace MinGW's wctomb(), fixing a problem with setcchar().
+- Add ncurses patch 5.9.20121124
+  + correct order of color initialization versus display in some of the
+    test-programs, e.g., test_addstr.c
+- Add tack patch 1.07.20120916 
+  * tack.c: ensure that $TERM is set and is not too large</comment>
+    <requestid>145637</requestid>
+  </revision>
+  <revision rev="67" vrev="24">
+    <srcmd5>de3b48923a77c327da2f46e3aaa4d5f9</srcmd5>
+    <version>5.9</version>
+    <time>1358417877</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 5.9.20130112
+  + correct prototype in manpage for vid_puts.
+  + drop ncurses/tty/tty_display.h, ncurses/tty/tty_input.h, since they
+    are unused in the current driver model.
+  + modify mvcur to use stdout except when called within the ncurses
+    library.
+  + modify vidattr and vid_attr to use stdout as documented in manpage.
+  + amend changes made to buffering in 20120825 so that the low-level
+    putp() call uses stdout rather than ncurses' internal buffering.
+    The putp_sp() call does the same, for consistency (Redhat #892674).
+- Add ncurses patch 5.9.20130105
+  + add &quot;-s&quot; option to test/view.c to allow it to start in single-step
+    mode, reducing size of trace files when it is used for debugging
+    MinGW changes.
+  + revert part of 20121222 change to tinfo_driver.c
+  + add experimental logic in win_driver.c to improve optimization of
+    screen updates.  This does not yet work with double-width characters,
+    so it is ifdef'd out for the moment (prompted by report by Erwin
+    Waterlander regarding screen flicker).
+- Add ncurses patch 5.9.20121229
+  + fix coverity warnings regarding copying into fixed-size buffers.
+  + add throw-declarations in the c++ binding per Coverity warning.
+  + minor changes to new-items for consistent reference to bug-report
+    numbers.
+- Add ncurses patch 5.9.20121222
+  + add *.dSYM directories to clean-rule in ncurses directory makefile,
+    for Mac OS builds.
+  + add a configure check for gcc option -no-cpp-precomp, which is not
+    available in all Mac OS X configurations (report by Andras Salamon,
+    cf: 20011208).</comment>
+    <requestid>148721</requestid>
+  </revision>
+  <revision rev="68" vrev="25">
+    <srcmd5>723038d3ab693858d885400c0cb9d153</srcmd5>
+    <version>5.9</version>
+    <time>1358872767</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 5.9.20130119
+  + fixes for issues found by Coverity:
+    + fix memory leak in safe_sprintf.c
+    + add check for return-value in tty_update.c
+    + correct initialization for -s option in test/view.c
+    + add check for numeric overflow in lib_instr.c
+    + improve error-checking in copywin
+  + add advice in infocmp manpage for termcap users (Debian #698469).
+  + add &quot;-y&quot; option to test/demo_termcap and test/demo_terminfo to
+    demonstrate behavior with/without extended capabilities.
+  + updated termcap manpage to document legacy termcap behavior for
+    matching capability names.
+  + modify name-comparison for tgetstr, etc., to accommodate legacy
+    applications as well as to improve compatbility with BSD 4.2
+    termcap implementations (Debian #698299) (cf: 980725).</comment>
+    <requestid>149440</requestid>
+  </revision>
+  <revision rev="69" vrev="27">
+    <srcmd5>723038d3ab693858d885400c0cb9d153</srcmd5>
+    <version>5.9</version>
+    <time>1359109493</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="70" vrev="28">
+    <srcmd5>377eb58bcdefa7313ba14108272fe729</srcmd5>
+    <version>5.9</version>
+    <time>1361378640</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 20130126
+  + further fixes to mvcur to pass callback function (cf: 20130112),
+    needed to make test/dots_mvcur work.
+  + reduce calls to SetConsoleActiveScreenBuffer in win_driver.c, to
+    help reduce flicker.
+  + modify configure script to omit &quot;+b&quot; from linker options for very
+    old HP-UX systems (report by Dennis Grevenstein)
+  + add HP-UX workaround for missing EILSEQ on old HP-UX systems (patch
+    by Dennis Grevenstein).
+  + restore memmove/strdup support for antique systems (request by
+    Dennis Grevenstein).
+  + change %l behavior in tparm to push the string length onto the stack
+    rather than saving the formatted length into the output buffer
+    (report by Roy Marples, cf: 980620).
+- Add ncurses patch 20130202
+  + correct initialization in knight.c which let it occasionally make
+    an incorrect move (cf: 20001028).
+  + improve documentation of the terminfo/termcap search path.
+- Add ncurses patch 20130209
+  + modify test/configure script to make it simpler to override names
+    of curses-related libraries, to help with linking with pdcurses in
+    mingw environment.
+  + if the --with-terminfo-dirs configure option is not used, there is
+    no corresponding compiled-in value for that.  Fill in &quot;no default
+    value&quot; for that part of the manpage substitution.
+- Add ncurses patch 20130216
+  + modify test/testcurs.c to work with mouse for ncurses as it does for
+    pdcurses.
+  + modify test/knight.c to work with mouse for pdcurses as it does for
+    ncurses.</comment>
+    <requestid>155745</requestid>
+  </revision>
+  <revision rev="71" vrev="29">
+    <srcmd5>2c581ff98fa5e72f780a1c8136c52447</srcmd5>
+    <version>5.9</version>
+    <time>1364309918</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 20130324
+  + build-fix for libtool configuration (reports by Daniel Silva Ferreira
+    and Roumen Petrov).
+- Add ncurses patch 20130323
+  + build-fix for OS X, to handle changes for --with-cxx-shared feature
+    (report by Christian Ebert).
+  + change initialization for vt220, similar entries for consistency
+    with cursor-key strings (NetBSD #47674) -TD
+  + further improvements to linux-16color (Benjamin Sittler)
+- Add ncurses patch 20130316
+  + additional fix for tic.c, to allocate missing buffer space.
+  + eliminate configure-script warnings for gen-pkgconfig.in
+  + correct typo in sgr string for sun-color,
+    add bold for consistency with sgr,
+    change smso for consistency with sgr -TD
+  + correct typo in sgr string for terminator -TD
+  + add blink to the attributes masked by ncv in linux-16color (report
+    by Benjamin Sittler)
+  + improve warning message from post-load checking for missing &quot;%?&quot;
+    operator by tic/infocmp by showing the entry name and capability.
+  + minor formatting improvement to tic/infocmp -f option to ensure
+    line split after &quot;%;&quot;.
+  + amend scripting for --with-cxx-shared option to handle the debug
+    library &quot;libncurses++_g.a&quot; (report by Sven Joachim).
+- Add ncurses patch 20130309
+  + amend change to toe.c for reading from /dev/zero, to ensure that
+    there is a buffer for the temporary filename (cf: 20120324).
+  + regenerated html manpages.
+  + fix typo in terminfo.head (report by Sven Joachim, cf: 20130302).
+  + updated some autoconf macros:</comment>
+    <requestid>161192</requestid>
+  </revision>
+  <revision rev="72" vrev="30">
+    <srcmd5>726f78d3b24e5f1a23b26c33a172ddfd</srcmd5>
+    <version>5.9</version>
+    <time>1368695487</time>
+    <user>coolo</user>
+    <comment>- Make LD_LIBRARY_PATH include %_lib to make sure use and test the
+  fresh build libraries 
+
+- Add ncurses patch 20130511
+  + move nsterm-related entries out of &quot;obsolete&quot; section to more
+    plausible &quot;ansi consoles&quot; -TD
+  + additional cleanup of table-of-contents by reordering -TD
+  + revise fix for check for 8-bit value in _nc_insert_ch(); prior fix
+    prevented inserts when video attributes were attached to the data
+    (cf: 20121215) (Redhat #959534).
+- Add ncurses patch 20130504
+  + fixes for issues found by Coverity:
+    + correct FNKEY() macro in progs/dump_entry.c, allowing kf11-kf63 to
+      display when infocmp's -R option is used for HP or AIX subsets.
+    + fix dead-code issue with test/movewindow.c
+    + improve limited-checking in _nc_read_termtype().
+- Add ncurses patch 20130427
+  + fix clang 3.2 warning in progs/dump_entry.c
+  + drop AC_TYPE_SIGNAL check; ncurses relies on c89 and later.
+- Add ncurses patch 20130413
+  + add MinGW to cases where ncurses installs by default into /usr
+    (prompted by discussion with Daniel Silva Ferreira).
+  + add -D option to infocmp's usage-message (patch by Miroslav Lichvar).
+  + add a missing 'int' type for main function in configure check for
+    type of bool variable, to work with clang 3.2 (report by Dmitri
+    Gribenko).
+  + improve configure check for static_cast, to work with clang 3.2
+    (report by Dmitri Gribenko).
+  + re-order rule for demo.o and macros defining header dependencies in
+    c++/Makefile.in to accommodate gmake (report by Dmitri Gribenko).</comment>
+    <requestid>175272</requestid>
+  </revision>
+  <revision rev="73" vrev="31">
+    <srcmd5>57bf0115ab6b2d8f48f07b6e94ef3c63</srcmd5>
+    <version>5.9</version>
+    <time>1372059310</time>
+    <user>coolo</user>
+    <comment>- Add some more terminfo entries to terminfo-base (bnc#826171)</comment>
+    <requestid>180436</requestid>
+  </revision>
+  <revision rev="74" vrev="32">
+    <srcmd5>f993e40813405c15f1035b50aad698c4</srcmd5>
+    <version>5.9</version>
+    <time>1375728532</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 20130805
+  + minor fixes to the --disable-overwrite logic, to ensure that the
+    configured $(includedir) is not cancelled by the mingwxx-filesystem
+    rpm macros.
+  + add --disable-db-install configure option, to simplify building
+    cross-compile support packages.
+- Add ncurses patch 20130727
+  + improve configure macros from ongoing work on cdk, dialog, xterm:
+    + CF_ADD_LIB_AFTER - fix a problem with -Wl options
+    + CF_RPATH_HACK - add missing result-message
+    + CF_SHARED_OPTS - modify to use $rel_builddir in cygwin and mingw
+      dll symbols (which can be overridden) rather than explicit &quot;../&quot;.
+    + CF_SHARED_OPTS - modify NetBSD and DragonFly symbols to use ${CC}
+      rather than ${LD} to improve rpath support.
+    + CF_SHARED_OPTS - add a symbol to denote the temporary files that
+      are created by the macro, to simplify clean-rules.
+    + CF_X_ATHENA - trim extra libraries to work with -Wl,--as-needed
+  + fix a regression in hashed-database support for NetBSD, which uses
+    the key-size differently from other implementations (cf: 20121229).
+- Add ncurses patch 20130720
+  + further improvements for setupterm manpage, clarifying the
+    initialization of cur_term.
+- Add ncurses patch 20130713
+  + improve manpages for initscr and setupterm.
+  + minor compiler-warning fixes
+- Add ncurses patch 20130706
+  + add fallback defs for &lt;inttypes.h&gt; and &lt;stdint.h&gt; (cf: 20120225).
+  + add check for size of wchar_t, use that to suppress a chunk of
+    wcwidth.h in MinGW port.
+  + quiet linker warnings for MinGW cross-compile with dll's using the</comment>
+    <requestid>185952</requestid>
+  </revision>
+  <revision rev="75" vrev="34">
+    <srcmd5>f993e40813405c15f1035b50aad698c4</srcmd5>
+    <version>5.9</version>
+    <time>1379663349</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="76" vrev="35">
+    <srcmd5>191f802b1c4b078d56701cca205163dd</srcmd5>
+    <version>5.9</version>
+    <time>1380608363</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 20130928
+  + fix a possible null-pointer reference in a trace message from newterm.
+  + ignore g++ 4.2.1 warnings for &quot;-Weffc++&quot; in c++/cursesmain.cc
+  + fix a few overlooked places for --enable-string-hacks option.
+- Add ncurses patch 20130921
+  + fix typo in curs_attr.3x (patch by Sven Joachim, cf: 20130831).
+  + build-fix for --with-shared option for DragonFly and FreeBSD (report
+    by Rong-En Fan, cf: 20130727).
+- Add ncurses patch 20130907
+  + revert change to two of the dpkg format files, to work with dpkg
+    before/after Debian #700177.
+  + fix gcc -Wconversion warning in wattr_get() macro.
+  + add msys and msysdll to known host/configuration types (patch by
+    Alexey Pavlov).
+  + modify CF_RPATH_HACK configure macro to not rely upon &quot;-u&quot; option
+    of sort, improving portability.
+- Add ncurses patch 20130831
+  + modify test/ncurses.c b/B tests to display lines only for the
+    attributes which a given terminal supports, to make room for an
+    italics test.
+  + completed ncv table in terminfo.tail; it did not list the wide
+    character codes listed in X/Open Curses issue 7.
+  + add A_ITALIC extension (prompted by discussion with Egmont Koblinger).
+- Add ncurses patch 20130824
+  + fix some gcc 4.8 -Wconversion warnings.
+  + change format of dpkg test-scripts to quilted to work around bug
+    introduced by Debian #700177.
+  + discard cached keyname() values if meta() is changed after a value
+    was cached using (report by Kurban Mallachiev).
+- Add ncurses patch 20130816</comment>
+    <requestid>201480</requestid>
+  </revision>
+  <revision rev="77" vrev="36">
+    <srcmd5>78cbab6a4955fded23a6300c21848349</srcmd5>
+    <version>5.9</version>
+    <time>1386000122</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 20131123
+ + minor fix for CF_GCC_WARNINGS to special-case options which are not
+   recognized by clang.
+- Add ncurses patch 20131116
+  + add special case to configure script to move _XOPEN_SOURCE_EXTENDED 
+    definition from CPPFLAGS to CFLAGS if it happens to be needed for
+    Solaris, because g++ errors with that definition (report by
+    Jean-Pierre Flori, Sage #15268).
+  + correct logic in infocmp's -i option which was intended to ignore
+    strings which correspond to function-keys as candidates for piecing
+    together initialization- or reset-strings.  The problem dates to
+    1.9.7a, but was overlooked until changes in -Wlogical-op warnings for
+    gcc 4.8 (report by David Binderman).
+  + updated CF_GCC_WARNINGS to documented options for gcc 4.9.0, adding
+    checks for -Wextra, -Wignored-qualifiers and -Wlogical-op
+  + updated CF_GCC_WARNINGS to documented options for gcc 4.9.0, moving
+    checks for -Wextra and -Wdeclaration-after-statement into the macro,
+    and adding checks for -Wignored-qualifiers, -Wlogical-op and -Wvarargs
+  + updated CF_CURSES_UNCTRL_H and CF_SHARED_OPTS macros from ongoing
+    work on cdk.
+- Add ncurses patch 20131110
+  + minor cleanup of terminfo.tail
+
+- On S390(x) use other fallback terminal types, that is have the
+  ibm327x and vt220 available even if no terminfo-base is installed.
+
+- Add ncurses patch 20131102
+  + use TS extension to describe xterm's title-escapes -TD
+  + modify terminator and nsterm-s to use xterm+sl-twm building block -TD
+  + simplify pfkey expression in ansi.sys -TD</comment>
+    <requestid>208903</requestid>
+  </revision>
+  <revision rev="78" vrev="37">
+    <srcmd5>28c8f5639a722c2df69afdae8c05e968</srcmd5>
+    <version>5.9</version>
+    <time>1386777131</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 20131207
+  + add form_driver_w() entrypoint to wide-character forms library,
+    as well as test program form_driver_w (adapted from patch by
+    Gaute Hope).</comment>
+    <requestid>210400</requestid>
+  </revision>
+  <revision rev="79" vrev="38">
+    <srcmd5>db7c945c66d222889573aa7175100c21</srcmd5>
+    <version>5.9</version>
+    <time>1387456469</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 20131214
+  + modify configure-script/ifdef's to allow OLD_TTY feature to be
+    suppressed if the type of ospeed is configured using the option
+    --with-ospeed to not be a short.  By default, it is a short for
+    termcap-compatibility (adapted from suggestion by Christian
+    Weisgerber).
+  + correct a typo in _nc_baudrate() (patch by Christian Weisgerber,
+    cf: 20061230).
+  + fix a few -Wlogical-op warnings.
+  + updated llib-l* files.</comment>
+    <requestid>211279</requestid>
+  </revision>
+  <revision rev="80" vrev="39">
+    <srcmd5>acdb9762de77886d3efdd594dd014246</srcmd5>
+    <version>5.9</version>
+    <time>1390596127</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 20140118
+  + apply includesubdir variable which was introduced in 20130805 to
+    gen-pkgconfig.in (Debian #735782).
+- Correct spec file irarch to make S390(x) fallback terminal types
+  working on S390(x) (bnc#859214)</comment>
+    <requestid>214503</requestid>
+  </revision>
+  <revision rev="81" vrev="40">
+    <srcmd5>c285daa7e9cb78f1a1ce9f6c7d73947e</srcmd5>
+    <version>5.9</version>
+    <time>1390976356</time>
+    <user>coolo</user>
+    <comment>- Add patch ncurses-5.9-ibm327x.dif to make ibm327x not a generic
+  terminal type but a more dumb one (bnc#859214)</comment>
+    <requestid>215413</requestid>
+  </revision>
+  <revision rev="82" vrev="41">
+    <srcmd5>c982ecf86e50c265edd11760d655451c</srcmd5>
+    <version>5.9</version>
+    <time>1391540143</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 20140201
+  + add/use symbol NCURSES_PAIRS_T like NCURSES_COLOR_T, to illustrate
+    which &quot;short&quot; types are for color pairs and which are color values.
+  + fix build for s390x, by correcting field bit offsets in generated
+    representation clauses when int=32 long=64 and endian=big, or at
+    least on s390x (patch by Nicolas Boulenguez).
+  + minor cleanup change to test/form_driver_w.c (patch by Gaute Hope).
+- Add ncurses patch 20140125
+  + remove unnecessary ifdef's in Ada95/gen/gen.c, which reportedly do
+    not work as is with gcc 4.8 due to fixes using chtype cast made for
+    new compiler warnings by gcc 4.8 in 20130824 (Debian #735753, patch
+    by Nicolas Boulenguez).</comment>
+    <requestid>220671</requestid>
+  </revision>
+  <revision rev="83" vrev="42">
+    <srcmd5>64116bb873d345d7223d8c4664521a74</srcmd5>
+    <version>5.9</version>
+    <time>1394555143</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>225497</requestid>
+  </revision>
+  <revision rev="84" vrev="43">
+    <srcmd5>7994776efa42e14d9305dce236a8680e</srcmd5>
+    <version>5.9</version>
+    <time>1396770848</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 20140329
+  + add check in tic for mismatch between ccc and initp/initc
+  + cancel ccc in putty-256color and konsole-256color for consistency
+    with the cancelled initc capability (patch by Sven Zuhlsdorf).
+  + add xterm+256setaf building block for various terminals which only
+    get the 256-color feature half-implemented -TD
+  + updated &quot;st&quot; entry (leaving the 0.1.1 version as &quot;simpleterm&quot;) to
+    0.4.1 -TD
+
+- Make sure that libgpm is always loaded dynamically 
+
+- Add ncurses patch 20140323
+  + fix typo in &quot;mlterm&quot; entry (report by Gabriele Balducci) -TD
+- Add ncurses patch 20140322
+  + use types from &lt;stdint.h&gt; in sample build-scripts for chtype, etc.
+  + modify configure script and curses.h.in to allow the types specified
+    using --with-chtype and related options to be defined in &lt;stdint.h&gt;
+  + add terminology entry -TD
+  + add mlterm3 entry, use that as &quot;mlterm&quot; -TD
+  + inherit mlterm-256color from mlterm -TD
+
+- Add ncurses patch 20140315
+  + modify _nc_New_TopRow_and_CurrentItem() to ensure that the menu's
+    top-row is adjusted as needed to ensure that the current item is
+    on the screen (patch by Johann Klammer).
+  + add wgetdelay() to retrieve _delay member of WINDOW if it happens to
+    be opaque, e.g., in the pthread configuration (prompted by patch by
+    Soren Brinkmann).
+
+- Add ncurses patch 20140308</comment>
+    <requestid>228313</requestid>
+  </revision>
+  <revision rev="85" vrev="44">
+    <srcmd5>13590dec009f84ffec0e5b7ae2f3812f</srcmd5>
+    <version>5.9</version>
+    <time>1398434817</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>230966</requestid>
+  </revision>
+  <revision rev="86" vrev="45">
+    <srcmd5>5127a8a8b2de18768d89de378007b1ec</srcmd5>
+    <version>5.9</version>
+    <time>1399128694</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 20140426
+  + add --disable-lib-suffixes option (adapted from patch by Juergen
+    Pfeifer).
+  + merge some changes from Juergen Pfeifer's work with MSYS2, to
+    simplify later merging:
+    + use NC_ISATTY() macro for isatty() in library
+    + add _nc_mingw_isatty() and related functions to windows-driver
+    + rename terminal driver entrypoints to simplify grep's
+  + remove a check in the sp-funcs flavor of newterm() which allowed only
+    the first call to newterm() to succeed (report by Thomas Beierlein,
+    cf: 20090927).
+- Add ncurses patch 20140419
+  + update config.guess, config.sub from
+          http://git.savannah.gnu.org/cgit/config.git</comment>
+    <requestid>231907</requestid>
+  </revision>
+  <revision rev="87" vrev="46">
+    <srcmd5>7b4101bf307e9ad71154e0f4c9b8acb7</srcmd5>
+    <version>5.9</version>
+    <time>1400783884</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>233711</requestid>
+  </revision>
+  <revision rev="88" vrev="47">
+    <srcmd5>abd4ac850974414d72bd39e5d578d270</srcmd5>
+    <version>5.9</version>
+    <time>1401252176</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 20140524
+  + fix typo in ncurses manpage for the NCURSES_NO_MAGIC_COOKIE
+    environment variable.
+  + improve discussion of input-echoing in curs_getch.3x
+  + clarify discussion in curs_addch.3x of wrapping.
+  + modify parametrized.h to make fln non-padded.
+  + correct several entries which had termcap-style padding used in
+    terminfo: adm21, aj510, alto-h19, att605-pc, x820 -TD
+  + correct syntax for padding in some entries: dg211, h19 -TD
+  + correct ti924-8 which had confused padding versus octal escapes -TD
+  + correct padding in sbi entry -TD
+  + fix an old bug in the termcap emulation; &quot;%i&quot; was ignored in tparm()
+    because the parameters to be incremented were already on the internal
+    stack (report by Corinna Vinschen).
+  + modify tic's &quot;-c&quot; option to take into account the &quot;-C&quot; option to
+    activate additional checks which compare the results from running
+    tparm() on the terminfo expressions versus the translated termcap
+    expressions.
+  + modify tic to allow it to read from FIFOs (report by Matthieu Fronton,
+    cf: 20120324).
+  &gt; patches by Nicolas Boulenguez:
+  + explicit dereferences to suppress some style warnings.
+  + when c_varargs_to_ada.c includes its header, use double quotes
+    instead of &lt;&gt;.
+  + samples/ncurses2-util.adb:  removed unused with clause.  The warning
+    was removed by an obsolete pragma.
+  + replaced Unreferenced pragmas with Warnings (Off).  The latter,
+    available with older GNATs, needs no configure test.  This also
+    replaces 3 untested Unreferenced pragmas.
+  + simplified To_C usage in trace handling.  Using two parameters allows</comment>
+    <requestid>235410</requestid>
+  </revision>
+  <revision rev="89" vrev="48">
+    <srcmd5>bf1fcca01b1bf1c087655a741c9112e8</srcmd5>
+    <version>5.9</version>
+    <time>1403689643</time>
+    <user>coolo</user>
+    <comment>- Remove the iterm link to iTerm.app terminal entry as there is already
+  an iterm entry from an other package
+- Add ncurses patch 20140621
+  + change shared-library suffix for AIX 5 and 6 to &quot;.so&quot;, avoiding
+    conflict with the static library (report by Ben Lentz).
+  + document RPATH_LIST in INSTALLATION file, as part of workarounds for
+    upgrading an ncurses library using the &quot;--with-shared&quot; option.
+  + modify test/ncurses.c c/C tests to cycle through subsets of the
+    total number of colors, to better illustrate 8/16/88/256-colors by
+    providing directly comparable screens.
+  + add test/dots_curses.c, for comparison with the low-level examples.
+
+- Add ncurses patch 20140614
+  + fix dereference before null check found by Coverity in tic.c 
+    (cf: 20140524).
+  + fix sign-extension bug in read_entry.c which prevented &quot;toe&quot; from
+    reading empty &quot;screen+italics&quot; entry.
+  + modify sgr for screen.xterm-new to support dim capability -TD
+  + add dim capability to nsterm+7 -TD
+  + cancel dim capability for iterm -TD
+  + add dim, invis capabilities to vte-2012 -TD
+  + add sitm/ritm to konsole-base and mlterm3 -TD
+- Add ncurses patch 20140609
+  &gt; fix regression in screen terminfo entries (reports by Christian
+    Ebert, Gabriele Balducci) -TD
+  + revert the change to screen; see notes for why this did not work -TD
+  + cancel sitm/ritm for entries which extend &quot;screen&quot;, to work around
+    screen's hardcoded behavior for SGR 3 -TD
+- Add ncurses patch 20140607
+  + separate masking for sgr in vidputs from sitm/ritm, which do not</comment>
+    <requestid>238498</requestid>
+  </revision>
+  <revision rev="90" vrev="49">
+    <srcmd5>4722d24762510702ab38aed1919fba1f</srcmd5>
+    <version>5.9</version>
+    <time>1405760651</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 20140712
+  + correct Charable() macro check for A_ALTCHARSET in wide-characters.
+  + build-fix for position-debug code in tty_update.c, to work with or
+    without sp-funcs.
+- Add ncurses patch 20140705
+  + add w/W toggle to ncurses.c 'B' test, to demonstrate permutation of
+    video-attributes and colors with double-width character strings.
+
+- Add ncurses patch 20140629
+  + correct check in win_driver.c for saving screen contents, e.g., when
+    NCURSES_CONSOLE2 is set (cf: 20140503).
+  + reorganize b/B menu items in ncurses.c, putting the test-strings into
+    subwindows.  This is needed for a planned change to use Unicode
+    fullwidth characters in the test-screens.
+  + correct update to form status for _NEWTOP, broken by fixes for
+    compiler warnings (patch by Leon Winter, cf: 20120616).</comment>
+    <requestid>240886</requestid>
+  </revision>
+  <revision rev="91" vrev="50">
+    <srcmd5>9a99af5483b03fe1d521cd91c9d0419f</srcmd5>
+    <version>5.9</version>
+    <time>1407236376</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>243592</requestid>
+  </revision>
+  <revision rev="92" vrev="51">
+    <srcmd5>4ef717ba4130d335228c6b3548fbd555</srcmd5>
+    <version>5.9</version>
+    <time>1408524636</time>
+    <user>lnussel</user>
+    <comment>- Add ncurses patch 20140816
+  + fix colors in ncurses 'b' test which did not work after changing
+    it to put the test-strings in subwindows (cf: 20140705).
+  + merge redundant SEE-ALSO sections in form and menu manpages.
+- Add ncurses patch 20140809
+  + modify declarations for user-data pointers in C++ binding to use
+    reinterpret_cast to facilitate converting typed pointers to void*
+    in user's application (patch by Adam Jiang).
+  + regenerated html manpages.
+  + add note regarding cause and effect for TERM in ncurses manpage,
+    having noted clueless verbiage in Terminal.app's &quot;help&quot; file
+    which reverses cause/effect.
+  + remove special fallback definition for NCURSES_ATTR_T, since macros
+    have resolved type-mismatches using casts (cf: 970412).
+  + fixes for win_driver.c:
+    + handle repainting on endwin/refresh combination.
+    + implement beep().
+    + minor cleanup.
+- Add ncurses patch 20140802
+  + minor portability fixes for MinGW:
+    + ensure WINVER is defined in makefiles rather than using headers
+    + add check for gnatprep &quot;-T&quot; option
+    + work around bug introduced by gcc 4.8.1 in MinGW which breaks
+      &quot;trace&quot; feature:
+      http://stackoverflow.com/questions/20877689/gcc-4-8-1-minggw-d-option-does-not-work-as-usual
+  + fix most compiler warnings for Cygwin ncurses-examples.
+  + restore &quot;redundant&quot; -I options in test/Makefile.in, since they are
+    typically needed when building the derived ncurses-examples package
+    (cf: 20140726).</comment>
+    <requestid>245062</requestid>
+  </revision>
+  <revision rev="93" vrev="53">
+    <srcmd5>4ef717ba4130d335228c6b3548fbd555</srcmd5>
+    <version>5.9</version>
+    <time>1409301961</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="94" vrev="54">
+    <srcmd5>2bd3ced9a24fbeebe162c72fd58c4c54</srcmd5>
+    <version>5.9</version>
+    <time>1409326933</time>
+    <user>coolo</user>
+    <comment>- Make pkgconfig files work for all current versions that is
+  abi 5, abi wide 5, abi 6, and abi wide 6 
+- Change patch ncurses-5.9.dif to enable gen-pkgconfig to do this
+
+- Add ncurses patch 20140823
+  + fix special case where double-width character overwrites a single-
+    width character in the first column (report by Egmont Koblinger,
+    cf: 20050813).
+
+- Install pkg-config files into %_libdir
+
+- Install pkg-config files</comment>
+    <requestid>246365</requestid>
+  </revision>
+  <revision rev="95" vrev="55">
+    <srcmd5>eda24ab50a4cd311b651fae12ee5ccd2</srcmd5>
+    <version>5.9</version>
+    <time>1409761225</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 20140831
+  + modify test/demo_termcap.c and test/demo_terminfo.c to make their
+    options more directly comparable, and add &quot;-i&quot; option to specify
+    a terminal description filename to parse for names to lookup.</comment>
+    <requestid>247099</requestid>
+  </revision>
+  <revision rev="96" vrev="56">
+    <srcmd5>b74f71074bae8ce9c4f5d3228f46089a</srcmd5>
+    <version>5.9</version>
+    <time>1413382774</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>254526</requestid>
+  </revision>
+  <revision rev="97" vrev="57">
+    <srcmd5>b897dae431cfed906e35a1d98d7f768b</srcmd5>
+    <version>5.9</version>
+    <time>1415118449</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>258482</requestid>
+  </revision>
+  <revision rev="98" vrev="58">
+    <srcmd5>a7d3a2ae0aed14305eec1b170930e8fe</srcmd5>
+    <version>5.9</version>
+    <time>1417438821</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>262853</requestid>
+  </revision>
+  <revision rev="99" vrev="59">
+    <srcmd5>bced8293f216ac186dc5253c51c86165</srcmd5>
+    <version>5.9</version>
+    <time>1419809369</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>266243</requestid>
+  </revision>
+  <revision rev="100" vrev="60">
+    <srcmd5>08056cefe5a9e90fcde851c3e0d0ebbd</srcmd5>
+    <version>5.9</version>
+    <time>1424430008</time>
+    <user>dimstar_suse</user>
+    <comment>submitting</comment>
+    <requestid>283622</requestid>
+  </revision>
+  <revision rev="101" vrev="61">
+    <srcmd5>2812f6a1a5f7c097953687903f9c0a73</srcmd5>
+    <version>5.9</version>
+    <time>1425030972</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>287359</requestid>
+  </revision>
+  <revision rev="102" vrev="62">
+    <srcmd5>4ad3fb5ef5835b9f58ea7dafa302453a</srcmd5>
+    <version>5.9</version>
+    <time>1427109081</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>290953</requestid>
+  </revision>
+  <revision rev="103" vrev="63">
+    <srcmd5>bab7965a64d1613da33ef47343bd701c</srcmd5>
+    <version>5.9</version>
+    <time>1429768534</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>298176</requestid>
+  </revision>
+  <revision rev="104" vrev="64">
+    <srcmd5>965c49ed924ea5dbf989d1f06cfe517a</srcmd5>
+    <version>5.9</version>
+    <time>1430904111</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20150425
+  + expanded description of tgetstr's area pointer in manual page
+    (report by Todd M Lewis).
+  + in-progress changes to modify test-packages to use ncursesw6 rather
+    than ncursesw, with updated configure scripts.
+  + modify CF_NCURSES_CONFIG in Ada95- and test-configure scripts to
+    check for &quot;.pc&quot; files via pkg-config, but add a linkage check since
+    frequently pkg-config configurations are broken.
+  + modify misc/gen-pkgconfig.in to include EXTRA_LDFLAGS, e.g., for the
+    rpath option.
+  + add 'dim' capability to screen entry (report by Leonardo B Schenkel)
+  + add several key definitions to nsterm-bce to match preconfigured
+    keys, e.g., with OSX 10.9 and 10.10 (report by Leonardo B Schenkel)
+  + fix repeated &quot;extra-suffix&quot; in ncurses-config.in (cf: 20150418).
+  + improve term_variables manual page, adding section on the terminfo
+    long-name symbols which are defined in the term.h header.
+  + fix bug in lib_tracebits.c introduced in const-fixes (cf: 20150404).</comment>
+    <requestid>305304</requestid>
+  </revision>
+  <revision rev="105" vrev="65">
+    <srcmd5>6a755b1e66475f4b448dd18b444b13fa</srcmd5>
+    <version>5.9</version>
+    <time>1432156591</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>307797</requestid>
+  </revision>
+  <revision rev="106" vrev="66">
+    <srcmd5>36904851a684b27146d21e5c57a6384b</srcmd5>
+    <version>5.9</version>
+    <time>1432981965</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>308956</requestid>
+  </revision>
+  <revision rev="107" vrev="67">
+    <srcmd5>2d11c06ddd4444b89959f202b3af654e</srcmd5>
+    <version>5.9</version>
+    <time>1433311927</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20150530
+  + change private type for Event_Mask in Ada95 binding to work when
+    mmask_t is set to 32-bits.
+  + remove spurious &quot;%;&quot; from st entry (report by Daniel Pitts) -TD
+  + add vte-2014, update vte to use that -TD
+  + modify tic and infocmp to &quot;move&quot; a diagnostic for tparm strings that
+    have a syntax error to tic's &quot;-c&quot; option (report by Daniel Pitts).
+  + fix two problems with configure script macros (Debian #786436,
+    cf: 20150425, cf: 20100529).
+- Add ncurses patch 20150523
+  + add 'P' menu item to test/ncurses.c, to show pad in color.
+  + improve discussion in curs_color.3x about color rendering (prompted
+    by comment on Stack Overflow forum):
+  + remove screen-bce.mlterm, since mlterm does not do &quot;bce&quot; -TD
+  + add several screen.XXX entries to support the respective variations
+    for 256 colors -TD
+  + add putty+fnkeys* building-block entries -TD
+  + add smkx/rmkx to capabilities analyzed with infocmp &quot;-i&quot; option.</comment>
+    <requestid>309617</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>3ac8d071c5eed7dafb452f52e275a761</srcmd5>
+    <version>6.0</version>
+    <time>1442638329</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>326408</requestid>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>54b1a557ebbe6252dac2bb15c554f16a</srcmd5>
+    <version>6.0</version>
+    <time>1444130582</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>334016</requestid>
+  </revision>
+  <revision rev="110" vrev="3">
+    <srcmd5>2d20f32087b41be65e928c578f788079</srcmd5>
+    <version>6.0</version>
+    <time>1448186258</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 20151107
+  + modify tset's assignment to TERM in its output to reflect the name by
+    which the terminal description is found, rather than the primary
+    name.  That was an unnecessary part from the initial conversion of
+    tset from termcap to terminfo.  The termcap program in 4.3BSD did
+    this to avoid using the short 2-character name (report by Rich
+    Burridge).
+  + minor fix to configure script to ensure that rules for resulting.map
+    are only generated when needed (cf: 20151101).
+  + modify configure script to handle the case where tic-library is
+    renamed, but the --with-debug option is used by itself without
+    normal or shared libraries (prompted by comment in Debian #803482).
+- Add ncurses patch 20151101
+  + amend change for pkg-config which allows build of pc-files when no
+    valid pkg-config library directory was configured to suppress the
+    actual install if it is not overridden to a valid directory at
+    install time (cf: 20150822).
+  + modify editing script which generates resulting.map to work with the
+    clang configuration on recent FreeBSD, which gives an error on an
+    empty &quot;local&quot; section.
+  + fix a spurious &quot;(Part)&quot; message in test/ncurses.c b/B tests due
+    to incorrect attribute-masking.
+- Add ncurses patch 20151024
+  + modify MKexpanded.c to update the expansion of a temporary filename
+    to &quot;expanded.c&quot;, for use in trace statements.
+  + modify layout of b/B tests in test/ncurses.c to allow for additional
+    annotation on the right margin; some terminals with partial support
+    did not display well.
+  + fix typo in curs_attr.3x (patch by Sven Joachim).
+  + fix typo in INSTALL (patch by Tomas Cech).</comment>
+    <requestid>343821</requestid>
+  </revision>
+  <revision rev="111" vrev="4">
+    <srcmd5>be62e1ccd6a1aba25ec33f1ffbf51f81</srcmd5>
+    <version>6.0</version>
+    <time>1449995661</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>347791</requestid>
+  </revision>
+  <revision rev="112" vrev="5">
+    <srcmd5>0ccd04b9069d039ff3d1370f5c602737</srcmd5>
+    <version>6.0</version>
+    <time>1453416030</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>353820</requestid>
+  </revision>
+  <revision rev="113" vrev="6">
+    <srcmd5>0b4148b1450cd0925ac92f4867833bf0</srcmd5>
+    <version>6.0</version>
+    <time>1456829799</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>360917</requestid>
+  </revision>
+  <revision rev="114" vrev="7">
+    <srcmd5>3f1070c8a2c97cc9024a595bf210093f</srcmd5>
+    <version>6.0</version>
+    <time>1458560618</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>368283</requestid>
+  </revision>
+  <revision rev="115" vrev="8">
+    <srcmd5>94772242dc8f4c51e50cdf8d91183037</srcmd5>
+    <version>6.0</version>
+    <time>1463221372</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>393417</requestid>
+  </revision>
+  <revision rev="116" vrev="9">
+    <srcmd5>a2081e2c73a8f0dd9392fbadc020e2ac</srcmd5>
+    <version>6.0</version>
+    <time>1464299526</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20160514
+  + regenerate HTML manpages.
+  + improve manual pages for wgetch and wget_wch to point out that they
+    might return values without names in curses.h (Debian #822426).
+  + make linux3.0 entry the default linux entry (Debian #823658) -TD
+  + modify linux2.6 entry to improve line-drawing so that the linux3.0
+    entry can be used in non-UTF-8 mode -TD
+  + document return value of use_extended_names (report by Mike Gran).
+- Modify patch ncurses-6.0.dif
+
+- Add ncurses patch 20160507
+  + amend change to _nc_do_color to restore the early return for the
+    special case used in _nc_screen_wrap (report by Dick Streefland,
+    cf: 20151017).
+  + modify test/ncurses.c:
+    + check return-value of putwin
+    + correct ifdef which made the 'g' test's legend not reflect changes
+      to keypad- and scroll-modes.
+  + correct return-value of extended putwin (report by Mike Gran).</comment>
+    <requestid>396169</requestid>
+  </revision>
+  <revision rev="117" vrev="10">
+    <srcmd5>c92f3f919fe1f393ecf06ffd820d5efa</srcmd5>
+    <version>6.0</version>
+    <time>1468048672</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>403674</requestid>
+  </revision>
+  <revision rev="118" vrev="11">
+    <srcmd5>5f4e62ce4863c555cc41741ee178cda5</srcmd5>
+    <version>6.0</version>
+    <time>1469382118</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>409012</requestid>
+  </revision>
+  <revision rev="119" vrev="12">
+    <srcmd5>362c729a042eeff4714d6d138364358a</srcmd5>
+    <version>6.0</version>
+    <time>1472111367</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20160813
+  + add a dependency upon generated-sources in Ada95/src/Makefile.in to
+    handle a case of &quot;configure &amp;&amp; make install&quot;.
+  + trim trailing blanks from include/Caps*, to work around a problem
+    in sed (Debian #818067).
+
+- Add ncurses patch 20160806
+  + improve CF_GNU_SOURCE configure macro to optionally define
+    _DEFAULT_SOURCE work around a nuisance in recent glibc releases.
+  + move the terminfo-specific parts of tput's &quot;reset&quot; function into
+    the shared reset_cmd.c, making the two forms of reset use the same
+    strings.
+  + split-out the terminal initialization functions from tset as
+    progs/reset_cmd.c, as part of changes to merge the reset-feature
+    with tput.
+
+- Add ncurses patch 20160730
+  + change tset's initialization to allow it to get settings from the
+    standard input as well as /dev/tty, to be more effective when
+    output or error are redirected.
+  + improve discussion of history and portability for tset/reset/tput
+    manual pages.
+- Add ncurses patch 20160723
+  + improve error message from tset/reset when both stderr/stdout are
+    redirected to a file or pipe.
+  + improve organization of curs_attr.3x, curs_color.3x
+- Add ncurses patch 20160709
+  + work around Debian's antique/unmaintained version of mawk when
+    building link_test.
+  + improve test/list_keys.c, showing ncurses's convention of modifiers</comment>
+    <requestid>420449</requestid>
+  </revision>
+  <revision rev="120" vrev="13">
+    <srcmd5>22a907cd0b1e032b9184f079aaeffbd9</srcmd5>
+    <version>6.0</version>
+    <time>1475588486</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>432863</requestid>
+  </revision>
+  <revision rev="121" vrev="14">
+    <srcmd5>c26bde44e479a8ce6d47067ed1f93ffe</srcmd5>
+    <version>6.0</version>
+    <time>1476997472</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>434368</requestid>
+  </revision>
+  <revision rev="122" vrev="15">
+    <srcmd5>31f809c0bbe05a17154937584ad37011</srcmd5>
+    <version>6.0</version>
+    <time>1478167906</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop patch ncurses-5.9-environment.dif as YaST2 ncurses GUI does
+  not need it anymore and as well as it causes bug bsc#1000662 
+
+- Add ncurses patch 20161022
+  + modify tset -w (and tput reset) to update the program's copy of the
+    screensize if it was already set in the system, to improve tabstop
+    setting which relies upon knowing the actual screensize.
+  + add functionality of tset -w to tput, like the &quot;-c&quot; feature this is
+    not optional in tput.
+  + add &quot;clear&quot; as a possible link/alias to tput.
+  + improve tput's check for being called as &quot;init&quot; or &quot;reset&quot; to allow
+    for transformed names.
+  + split-out the &quot;clear&quot; function from progs/clear.c, share with
+    tput to get the same behavior, e.g., the E3 extension.
+
+- Add ncurses patch 20161015
+  + amend internal use of tputs to consistently use the number of lines
+    affected, e.g., for insert/delete character operations.  While
+    merging terminfo source early in 1995, several descriptions used the
+    &quot;*&quot; proportional delay for these operations, prompting a change in
+    doupdate.
+  + regenerate llib-* files.
+  + regenerate HTML manpages.
+  + fix several formatting issues with manual pages.
+
+- Add ncurses patch 20161008
+  + adjust size in infocmp/tic to work with strlcpy.
+  + fix configure script to record when strlcat is found on OpenBSD.
+  + build-fix for &quot;recent&quot; OpenBSD vs baudrate.</comment>
+    <requestid>437504</requestid>
+  </revision>
+  <revision rev="123" vrev="16">
+    <srcmd5>a3ad9e6981ebb46c078a66b1d4a1d59c</srcmd5>
+    <version>6.0</version>
+    <time>1479381576</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>440236</requestid>
+  </revision>
+  <revision rev="124" vrev="17">
+    <srcmd5>7fce62bc2e949a9b6c23155e54443774</srcmd5>
+    <version>6.0</version>
+    <time>1481272185</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>443784</requestid>
+  </revision>
+  <revision rev="125" vrev="18">
+    <srcmd5>7454d931d0fd1d231426c44b0364497b</srcmd5>
+    <version>6.0</version>
+    <time>1483047760</time>
+    <user>lnussel_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447838</requestid>
+  </revision>
+  <revision rev="126" vrev="19">
+    <srcmd5>9f8bc03a766183f49c2503142a15c8b0</srcmd5>
+    <version>6.0</version>
+    <time>1486552320</time>
+    <user>dimstar_suse</user>
+    <comment>- Use gzip shell script as GZIP envornment variable becomes obsolescent
+- Split of ncurses5-devel from ncurses-devel
+- Now ncurses-devel also provides ncurses6-devel 
+- Also ncurses5-devel requires libncurses5 (boo#1023296)
+  packages which want to be build with ncurses5-devel may require
+  pkgconfig(ncurses5) or pkgconfig(ncursesw5) or
+  /usr/bin/ncurses5-config or /usr/bin/ncursesw5-config
+
+- Add ncurses patch 20170128
+  + minor comment-fixes to help automate links to bug-urls -TD
+  + add dvtm, dvtm-256color -TD
+  + add settings corresponding to xterm-keys option to tmux entry to
+    reflect upcoming change to make that option &quot;on&quot; by default
+    (patch by Nicholas Marriott).
+  + uncancel Ms in tmux entry (Harry Gindi, Nicholas Marriott).
+  + add dumb-emacs-ansi -TD
+
+- Add ncurses patch 20170121
+  + improve discussion of early history of tput program.
+  + incorporate A_COLOR mask into COLOR_PAIR(), in case user application
+    provides an out-of-range pair number (report by Elijah Stone).
+  + clarify description in tput manual page regarding support for
+    termcap names (prompted by FreeBSD #214709).
+  + remove a restriction in tput's support for termcap names which
+    omitted capabilities normally not shown in termcap translations
+    (cf: 990123).
+  + modify configure script for clang as used on FreeBSD, to work around
+    clang's differences in exit codes vs gcc.
+
+- Remove -L option on screen call dues API change, now we depend</comment>
+    <requestid>454371</requestid>
+  </revision>
+  <revision rev="127" vrev="20">
+    <srcmd5>79ebd9dc2953d0569b7bf889661b197b</srcmd5>
+    <version>6.0</version>
+    <time>1488732623</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>460690</requestid>
+  </revision>
+  <revision rev="128" vrev="21">
+    <srcmd5>4ae456f80050fd4058fce31020467755</srcmd5>
+    <version>6.0</version>
+    <time>1491210239</time>
+    <user>lnussel_factory</user>
+    <comment>- Add ncurses patch 20170325
+  + fix a memory leak in the window-list when creating multiple screens
+    (reports by Andres Martinelli, Debian #783486).
+  + reviewed calls from link_test.c, added a few more null-pointer
+    checks.
+  + add a null-pointer check in ungetmouse, in case mousemask was not
+    called (report by &quot;Kau&quot;).
+  + updated curs_sp_funcs.3x for new functions.
+
+- Add ncurses patch 20170318
+  + change TERMINAL structure in term.h to make it opaque.  Some
+    applications misuse its members, e.g., directly modifying it
+    rather than using def_prog_mode().
+  + modify utility headers such as tic.h to make it clearer which are
+    externals that are used by tack.
+  + improve curs_slk.3x in particular its discussion of portability.
+  + fix cut/paste in legacy_encoding.3x
+  + add prototype for find_pair() to new_pair.3x (report by Branden
+    Robinson).
+  + fix a couple of broken links in generated man-html documentation.
+  + regenerate man-html documentation.
+- Add tack patch 1.07.20170318 
+  * init.c:
+    use def_prog_mode() to eliminate two internal details from ncurses
+  * edit.c, tack.h: accommodate opaque TERMINAL structure in ncurses
+  * tack.h: update copyright to match version
+  * config.sub: 2017-02-07
+  * config.guess: 2017-03-05
+
+- Add ncurses patch 20170311</comment>
+    <requestid>483739</requestid>
+  </revision>
+  <revision rev="129" vrev="22">
+    <srcmd5>835b71dace9fdfa5cce4d7a4e11a9efe</srcmd5>
+    <version>6.0</version>
+    <time>1495010706</time>
+    <user>dimstar_suse</user>
+    <comment>- Also split libtic into normal and wide version libticw as those
+  libraries are linked with libtinfo respectively libtinfow
+- The tack tool does require the old _nc_read_entry()
+
+- Add ncurses patch 20170422
+  + build-fix for termcap-configuration (report by Chi-Hsuan Yen).
+  + improve terminfo manual page discussion of control- and graphics-
+    characters.
+  + remove tic warning about &quot;^?&quot; in string capabilities, which was
+    marked as an extension (cf: 20000610, 20110820); however all Unix
+    implementations support this and X/Open Curses does not address it.
+    On the other hand, termcap never did support this feature.
+  + correct missing comma-separator between string capabilities in
+    icl6402 and m2-nam -TD
+  + restore rmir/smir in ansi+idc to better match original ansiterm+idc,
+    add alias ansiterm (report by Robert King).
+  + amend an old check for ambiguous use of &quot;ma&quot; in terminfo versus
+    a termcap use, if the capability is cancelled to treat it as number.
+  + correct a case in _nc_captoinfo() which read &quot;%%&quot; and emitted &quot;%&quot;.
+  + modify sscanf calls in _nc_infotocap() for patterns &quot;%{number}%+%c&quot;
+    and &quot;%'char'%+%c&quot; to check that the final character is really 'c',
+    avoiding a case in icl6404 which cannot be converted to termcap.
+  + in _nc_infotocap(), add a check to ensure that terminfo &quot;^?&quot; is not
+    written to termcap, because the BSDs did not implement that.
+  + in _nc_tic_expand() and _nc_infotocap(), improve string-length check
+    when deciding whether to use &quot;^X&quot; or &quot;\xxx&quot; format for control
+    characters, to make the output of tic/infocmp more predictable.
+  + limit termcap &quot;%d&quot; width to 2 digits on input, and use &quot;%2&quot; in
+    preference to &quot;%02&quot; on output.
+  + correct terminfo/termcap conversion of &quot;%02&quot; and &quot;%03&quot; into &quot;%2&quot; and</comment>
+    <requestid>490219</requestid>
+  </revision>
+  <revision rev="130" vrev="23">
+    <srcmd5>5cd16259747f9202f9758f8539f575b2</srcmd5>
+    <version>6.0</version>
+    <time>1495882978</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix ncursesw6-config and ncursesw5-config scripts to return -ltinfow
+  as well as the pkg-config files do
+
+- Add ncurses patch 20170520
+  + modify test/picsmap.c to read xpm files.
+  + modify package/debian/* to create documentation packages, so the
+    related files can be checked with lintian.
+  + fix some typos in manpages (report/patch by Sven Joachim).
+
+- Add ncurses patch 20170513
+  + add test/picsmap.c to fill in some testing issues not met by dots.
+    The initial version reads X bitmap (&quot;.xbm&quot;) files.
+  + repair logic which forces a repaint where a color-pair's content is
+    changed (cf: 20170311).
+  + improve tracemunch, showing screenXX pointers as names.
+
+- Better screen support and workaround about missing terminfo entries
+  might be help on boo#812067 as well as on boo#935736 but may cause
+  boo#940459  (which should be fixed by screen its self!)
+- New package terminfo-screen which includes some useful but troubling
+  terminfo database entries for screen.
+
+- Disable the usage of getttynam(3) as under Linux this is not used 
+
+- Add ncurses patch 20170506
+  + modify tic/infocmp display of numeric values to use hexadecimal when
+    they are &quot;close&quot; to a power of two, making the result more readable.
+  + improve discussion of portability in curs_mouse.3x
+  + change line-length for generated html/manpages to 78 columns from 65.
+  + improve discussion of line-drawing characters in curs_add_wch.3x</comment>
+    <requestid>497888</requestid>
+  </revision>
+  <revision rev="131" vrev="24">
+    <srcmd5>77cda5ffdcecd800dc70dc32affb1fc6</srcmd5>
+    <version>6.0</version>
+    <time>1496821858</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch ncurses-6.0-crashw.patch as a temporary fix which will
+  become part of next patch level: solve binary incompatiblity of
+  libtinfow and libtinfo
+
+- Add ncurses patch 20170527
+  + improved test/picsmap.c:
+  + lookup named colors for xpm files in rgb.txt
+  + accept blanks in color-keys for xpm files.
+  + if neither xbm/xpm work, try &quot;convert&quot;, which may be available.</comment>
+    <requestid>499601</requestid>
+  </revision>
+  <revision rev="132" vrev="25">
+    <srcmd5>45f6e3637021fa05069a602b6c285cb5</srcmd5>
+    <version>6.0</version>
+    <time>1500669313</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Ncurses patch 20170708
+  + add a note to tic manual page about -W versus -f options.
+  + correct a limit-check in fixes from 20170701 (report by Sven Joachim). 
+- This also for bug bsc#1047964 and bug bsc#1047965
+
+- Add ncurses patch 20170701 (bsc#1046853, bsc#1046858)
+  + modify update_getenv() in db_iterator.c to ensure that environment
+    variables which are not initially set will be checked later if an
+    application happens to set them (patch by Guillaume Maudoux).
+  + remove initialization-check for calling napms() in the term-driver
+    configuration; none is needed.
+  + add help-screen to test/test_getstr.c and test/test_get_wstr.c
+  + improve compatibility between different configurations of new_prescr,
+    fixing a case with threaded code and term-driver where c++/demo did
+    not work (cf: 20160213).
+  + the fixes for Redhat #1464685 obscured a problem subsequently
+    reported in Redhat #1464687; the given test-case was no longer
+    reproducible.  Testing without the fixes for the earlier reports
+    showed a problem with buffer overflow in dump_entry.c, which is
+    addressed by reducing the use of a fixed-size buffer.
+  + add/improve checks in tic's parser to address invalid input
+    (Redhat #1464684, #1464685, #1464686, #1464691).
+    + alloc_entry.c, add a check for a null-pointer.
+    + parse_entry.c, add several checks for valid pointers as well as
+      one check to ensure that a single character on a line is not
+      treated as the 2-character termcap short-name.
+  + fix a memory leak in delscreen() (report by Bai Junq).
+  + improve tracemunch, showing thread identifiers as names.
+  + fix a use-after-free in NCursesMenu::~NCursesMenu()
+  + further amend incorrect calls for memory-leaks from 20170617 changes</comment>
+    <requestid>509422</requestid>
+  </revision>
+  <revision rev="133" vrev="26">
+    <srcmd5>2c2bb8eff0b8b51a21b3f56c184f172b</srcmd5>
+    <version>6.0</version>
+    <time>1502186188</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>513140</requestid>
+  </revision>
+  <revision rev="134" vrev="27">
+    <srcmd5>6527f6a891bf73bee1cdf023a43a8a98</srcmd5>
+    <version>6.0</version>
+    <time>1502706854</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>515338</requestid>
+  </revision>
+  <revision rev="135" vrev="28">
+    <srcmd5>b9abac461d78cbfa24b971da73cb1696</srcmd5>
+    <version>6.0</version>
+    <time>1505919967</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch +20170916
+ + minor fix to test/filter.c to avoid clearing the command in one case.
+ + modify filter() to discard clr_eos if back_color_erase is set.
+
+- Do not remove ticw.pc as well as tinfow.pc for wide character
+  ncurses ABI 6 (boo#1056171)
+
+- Add ncurses patch 20170827
+  + fix a bug in repeat_char logic (cf: 20170729, report by Chris Clayton).
+- Add ncurses patch 20170902
+  + amend change for endwin-state for better consistency with the older
+    logic (report/patch by Jeb Rosen, cf: 20170722).
+  + modify check in fmt_entry() to handle a cancelled reset string
+    (Debian #873746).  Make similar fixes in other parts of dump_entry.c
+    and tput.c
+- Add ncurses patch 20170909
+  + improve wide-character implementation of myADDNSTR() in frm_driver.c,
+    which was inconsistent with the normal implementation.
+  + save/restore cursor position in Undo_Justification(), matching
+    behavior of Buffer_To_Window() (report by Leon Winter).
+  + modify test/knight to provide the &quot;slow&quot; solution for small screens
+    using &quot;R&quot;, noting that Warnsdorf's method is easily done with &quot;a&quot;.
+  + modify several test-programs which call use_default_colors() to
+    consistently do this only if &quot;-d&quot; option is given.
+  + additional changes to test with non-standard variants of curses:
+    + modify a loop limit in firework.c to work around absense of limit
+      checks in some libraries.
+    + fill the last row of a window with &quot;?&quot; in firstlast if waddch does
+      not return ERR on the lower-right corner.
+  + add checks in test/configure for some functions not in 4.3BSD curses.</comment>
+    <requestid>527053</requestid>
+  </revision>
+  <revision rev="136" vrev="29">
+    <srcmd5>3ba55a671e895b0517cf77f75575e0b0</srcmd5>
+    <version>6.0</version>
+    <time>1509722415</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>537406</requestid>
+  </revision>
+  <revision rev="137" vrev="30">
+    <srcmd5>14b3543235941a586e1ea9dbf44621e8</srcmd5>
+    <version>6.0</version>
+    <time>1510406043</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>539147</requestid>
+  </revision>
+  <revision rev="138" vrev="31">
+    <srcmd5>2f518b42dacb4a43e968fc81fd590c8a</srcmd5>
+    <version>6.0</version>
+    <time>1512546390</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>545878</requestid>
+  </revision>
+  <revision rev="139" vrev="32">
+    <srcmd5>291b0aeecbb87a62ab04787ecdbf7e1c</srcmd5>
+    <version>6.0</version>
+    <time>1515623335</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20171230
+  + build-fix for ncurses-examples with Fedora27, adding check for
+    reset_color_pairs() -- not yet in Fedora's package.
+  + consistently add $CFLAGS to $MK_SHARED_LIB symbol in configure
+    script when the latter happens to use the C compiler rather than
+    directly using the loader (report by Jeffrey Walton).
+  + set ABI for upcoming 6.1 release in &quot;*.map&quot; files.  While there are
+    some remaining internals to apply, no ABI-related changes are
+    anticipated.
+  + add configure --with-config-suffix option to work around filename
+    conflict with Redhat packages versus test-packages.
+- Add ncurses patch 20171223
+  + modify ncurses-examples to quiet const-warnings when building with
+    PDCurses.
+  + modify toe to not exit if unable to read a terminal description,
+    e.g., if there is a permission problem.
+  + minor fix for progs/toe.c, using _nc_free_termtype2.
+  + assign 0 to pointer in _nc_tgetent_leak() after freeing it. Also
+    avoid reusing pointer from previous successful call to tgetent
+    if the latest call is unsuccessful (patch by Michael Schroeder,
+    OpenSuSE #1070450).
+  + minor fix for test/tracemunch, initialize $awaiting variable.
+
+- Disable memory leak checking (boo#1070450) 
+
+- Add ncurses patch 20171216
+  + repair template in test/package/ncurses-examples.spec (cf: 20171111).
+  + improve tic's warning about the number of parameters tparm might use
+    for u1-u9 by making a special case for u6.
+  + improve curs_attr.3x discussion of color pairs.</comment>
+    <requestid>562434</requestid>
+  </revision>
+  <revision rev="140" vrev="33">
+    <srcmd5>2b8b57192ff4a184bbc75390ae229b84</srcmd5>
+    <version>6.0</version>
+    <time>1516443764</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>566456</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>7e1bd3ae947e6c56dd2d298f6b5f4c83</srcmd5>
+    <version>6.1</version>
+    <time>1517668667</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct include path for wide chraracter header files for ABI 6.1 
+
+- Update to ncurses 6.1 (patch 20180127)
+  + updated release notes
+  + amend a warning message from tic which should have flagged misuse
+    of &quot;XT&quot; capability in &quot;screen&quot; terminal description.
+  &gt; terminfo changes:
+  + trim &quot;XT&quot; from screen entry, add comments to explain why it was
+    not suitable -TD
+  + modify iterm to use xterm+sl-twm building block -TD
+  + mark konsole-420pc, konsole-vt100, konsole-xf3x obsolete reflecting
+    konsole's removal in 2008 -TD
+  + expanded the history section of konsole to explain its flawed
+    imitation of xterm's keyboard -TD
+  + use xterm+x11mouse in screen.* entries because screen does not yet
+    support xterm's 1006 mode -TD
+  + add nsterm-build400 for macOS 10.13 -TD
+  + add ansi+idc1, use that in ansi+idc adding dch for consistency -TD
+  + update vte to vte-2017 -TD
+  + add ecma+strikeout to vte-2017 -TD
+  + add iterm2-direct -TD
+  + updated teraterm, added teraterm-256color -TD
+  + add mlterm-direct -TD
+  + add descriptions for ANSI building-blocks -TD
+- Modify patch ncurses-5.9-ibm327x.dif
+- Rename patch ncurses-6.0.dif to new name ncurses-6.1.dif
+- Modify patch ncurses-6.1.dif
+
+- Add ncurses patch 20180121 pre-release 6.1
+  &gt; terminfo changes:</comment>
+    <requestid>570861</requestid>
+  </revision>
+  <revision rev="142" vrev="2">
+    <srcmd5>2dde38ecee3f27e78069535e2b82ba80</srcmd5>
+    <version>6.1</version>
+    <time>1518697133</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>575524</requestid>
+  </revision>
+  <revision rev="143" vrev="3">
+    <srcmd5>94652c21e5bafe5181ae928d15e77d73</srcmd5>
+    <version>6.1</version>
+    <time>1520502115</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 6.1-20180303
+  + modify TurnOn/TurnOff macros in lib_vidattr.c and lib_vid_attr.c to
+    avoid expansion of &quot;CUR&quot; in trace.
+  + improve a few lintian warnings in test-packages.
+  + modify lib_setup to avoid calling pthread_self() without first
+    verifying that the address is valid, i.e., for weak symbols
+    (report/patch by Werner Fink).
+  + modify generated terminfo.5 to not use &quot;expand&quot; and related width
+    on the last column of tables, making layout on wide terminals look
+    better (adapted from patch by Kir Kolyshkin).
+  + add a category to report_offsets, e.g., &quot;w&quot; for wide-character, &quot;t&quot;
+    for threads to make the report more readable.  Reorganized the
+    structures reported to make the categories more apparent.
+  + simplify some ifdef's for extended-colors.
+  + add NCURSES_GLOBALS and NCURSES_PRESCREEN to report_offsets, to show
+    how similar the different tinfo configurations are.
+- Remove patch ncurses-6.1-weakpthreads.dif now upstream (bsc#1082772)
+- Make expect build check less fragile on timing
+
+- Switch back to shared libtinfo only but provide an auxiliary shared
+  library libtinfow to avoid a rebuild of third party programs (bsc#1082772)
+  + Add sanity check if new 32bit API is included in libtinfo
+
+- Add patch ncurses-6.1-weakpthreads.dif
+  + Be aware that libtinfo/libtinfw is also used without libpthread
+    (boo#1058509)
+- Use expect to run at least two test for normal and wide character
+  version of newdemo from test suite
+
+- Add ncurses patch 6.1-20180224</comment>
+    <requestid>582535</requestid>
+  </revision>
+  <revision rev="144" vrev="4">
+    <srcmd5>9804bc64c9a0de0e25fef823a56e0fae</srcmd5>
+    <version>6.1</version>
+    <time>1522403687</time>
+    <user>dimstar_suse</user>
+    <comment>- Change baselibs.conf to avoid mixed version requirements (bsc#1082744)
+
+- Add ncurses patch 6.1-20180317
+  + fix a check in infotocap which may not have detected a problem when
+    it should have.
+  + add a check in tic for the case where setf/setb are given using
+    different strings, but provide identical results to setaf/setab.
+  + further improve fix for terminfo.5 (patch by Kir Kolyshkin).
+  + reorder loop-limit checks in winsnstr() in case the string has no
+    terminating null and only the number of characters is used (patch
+    by Gyorgy Jeney).
+
+- Avoid opaque libraries for Leap 15 and SLES 15 
+- No tests on Leap 15 and SLES 15</comment>
+    <requestid>589658</requestid>
+  </revision>
+  <revision rev="145" vrev="5">
+    <srcmd5>92cfdb9f2847b1eee7ad19012d609661</srcmd5>
+    <version>6.1</version>
+    <time>1523447219</time>
+    <user>maxlin_factory</user>
+    <comment>- Add version requirement for packages terminfo and terminfo-base
+  to avoid trouble with old ncurses tools and libraries 
+
+- Add ncurses patch 6.1-20180331
+  + improve terminfo write/read by modifying the fourth item of the
+    extended header to denote the number of valid strings in the extended
+    string table (prompted by a comment in unibilium's sources).
+
+- Add ncurses patch 6.1-20180324
+  + amend Scaled256() macro in test/picsmap.c to cover the full range
+    0..1000 (report by Roger Pau Monne).
+  + add some checks in tracemunch for undefined variables.</comment>
+    <requestid>593751</requestid>
+  </revision>
+  <revision rev="146" vrev="6">
+    <srcmd5>6e3d696d3c5bc6b9f6a404fb1e59432f</srcmd5>
+    <version>6.1</version>
+    <time>1525697419</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 6.1-20180414
+  + modify form library to optionally delay cursor movement on a field
+    edge/boundary (patch by Leon Winter).
+  + modify form library to avoid unnecessary update of cursor position in
+    non-public fields (patch by Leon Winter).
+  + remove unused _nc_import_termtype2() function.
+  + also add/improve null-pointer checks in other places
+  + add a null-pointer check in _nc_parse_entry to handle an error when
+    a use-name is invalid syntax (report by Chung-Yi Lin).
+
+- Add ncurses patch 6.1-20180407
+  + clarify in manual pages that vwprintw and vwscanw are obsolete,
+    not part of X/Open Curses since 2007.
+  + use &quot;const&quot; in some prototypes rather than NCURSES_CONST where X/Open
+    Curses was updated to do this, e.g., wscanw, newterm, the terminfo
+    interface.  Also use &quot;const&quot; for consistency in the termcap
+    interface, which was withdrawn by X/Open Curses in Issue 5 (2007).
+    As of Issue 7, X/Open Curses still lacks &quot;const&quot; for certain return
+    values, e.g., keyname().</comment>
+    <requestid>602959</requestid>
+  </revision>
+  <revision rev="147" vrev="7">
+    <srcmd5>77ac2d84fa75c747704044a6b9999a07</srcmd5>
+    <version>6.1</version>
+    <time>1539869305</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641198</requestid>
+  </revision>
+  <revision rev="148" vrev="8">
+    <srcmd5>bc005920cc15ed3357d59c8e60714d5c</srcmd5>
+    <version>6.1</version>
+    <time>1542012566</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>646383</requestid>
+  </revision>
+  <revision rev="149" vrev="9">
+    <srcmd5>500a682dd26c7270426d5ee402367d41</srcmd5>
+    <version>6.1</version>
+    <time>1543827816</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove screen.xterm from terminfo data base (boo#1103320) as with
+  this screen uses fallback TERM=screen
+
+- Add ncurses patch 20181117
+  + ignore the hex/b64 $TERMINFO in toe's listing.
+  + correct a status-check in _nc_read_tic_entry() so that if reading
+    a hex/b64 $TERMINFO, and the $TERM does not match, fall-through to
+    the compiled-in search list.
+
+- For screen.xterm remove also `rep' feature (repeat char) this
+  might help on boo#1103320
+
+- Add ncurses patch 20181110
+  + several workarounds to ensure proper C compiler used in parts of
+    Ada95 tree.
+  + update config.guess, config.sub from
+          http://git.savannah.gnu.org/cgit/config.git</comment>
+    <requestid>651982</requestid>
+  </revision>
+  <revision rev="150" vrev="10">
+    <srcmd5>f1f9537e559528f22a7ba335fb1f74e0</srcmd5>
+    <version>6.1</version>
+    <time>1546946119</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20181229
+  + improve man/curs_mouse.3x with regard to xterm
+  + modify tracemunch to accept filename parameters in addition to use
+    as a pipe/filter.
+  + minor optimization to reduce calls to _nc_reserve_pairs (prompted by
+    discussion with Bryan Christ).
+  + add test/pair_content.c and test/color_content.c
+  + modify infocmp to omit filtering of &quot;OTxx&quot; names which are used for
+    obsolete capabilities, when the output is sorted by long-names.
+    Doing this helps when making a table of the short/long capability
+    names.
+
+- Add ncurses patch 20181215
+  + several fixes for gcc8 strict compiler warnings.
+  + fix a typo in comments (Aaron Gyes).
+  + add nsterm-build309 to replace nsterm-256color, assigning the latter
+    as an alias of nsterm, to make mouse work with nsterm-256color -TD
+  + base gnome-256color entry on &quot;gnome&quot;, not &quot;vte&quot;, for consistency -TD
+  + updates for configure macros from work on tin and xterm:
+    + CF_GNU_SOURCE, allow for Cygwin's newlib when checking for the
+      _DEFAULT_SOURCE symbol.
+    + CF_VA_COPY, add fallback check if neither va_copy/__va_copy is
+      supported, to try copying the pointers for va_list, or as an array.
+      Also add another fallback check, for __builtin_va_copy(), which
+      could be used with AIX xlc in c89 mode.
+
+- Add ncurses patch 20181208
+  + modify wbkgd() and wbkgrnd() to improve compatibility with SVr4
+    curses, changing the way the window rendition is updated when the
+    background character is modified (report by Valery Ushakov).</comment>
+    <requestid>662428</requestid>
+  </revision>
+  <revision rev="151" vrev="11">
+    <srcmd5>6250fe3b16485720966bece13e53312f</srcmd5>
+    <version>6.1</version>
+    <time>1548769115</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20190112
+  + fix typo in term(5), improve explanation of format (report by Otto
+    Modinos).
+  + add nsterm-direct -TD
+  + use SGR 1006 mouse for konsole-base -TD
+  + use SGR 1006 mouse for putty -TD
+  + add ti703/ti707, ti703-w/ti707-w (Robert Clausecker)
+
+- Add ncurses patch 20190105
+  + add dummy &quot;check&quot; rule in top-level and test-Makefile to simply
+    building test-packages for Arch.
+  + modify configure script to avoid conflict with a non-POSIX feature 
+    that enables all parts of the system headers by default.  Some
+    packagers have come to rely upon this behavior (FreeBSD #234049).
+  + update config.guess, config.sub</comment>
+    <requestid>665632</requestid>
+  </revision>
+  <revision rev="152" vrev="12">
+    <srcmd5>5d4fd177fadbae85f946eb3f42f60eb0</srcmd5>
+    <version>6.1</version>
+    <time>1550149902</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix configure scripts as well as pkg-config configurations
+  that is correct paths in pkg-config and use pkg-config to
+  configure the configure scripts as well
+- Add ncurses patch 20190209
+  + add check in tic to provide warnings for mismatched number of
+    parameters in the documented user-capability extensions.
+
+- Add ncurses patch 20190202
+  + modify rpm test-package &quot;.spec&quot; file to work around naming conflict
+    with Redhat's package for ncurses6.
+  + modify no-leaks code in test/picsmap to avoid non-standard tdestroy.
+  + amend change to configure script which altered the top-level makefile
+    to avoid attempting to install the terminfo database when it was not
+    configured, to allow for installing the &quot;.pc&quot; files which are also
+    in the misc directory (report by Steve Wills).
+- Add ncurses patch 20190126
+  + change some &quot;%define&quot; statements in test-packages for RPMs to
+    &quot;%global&quot; to work around changes in rpm 4.14 from recent Redhat.
+  + fixes for O_INPUT_FIELD extension (patch by Leon Winter).
+  + eliminate fixed buffer-size when reading $TERMCAP variable.
+  + correct logic in read_entry.c which prevented $TERMCAP variable from
+    being interpreted as a fallback to terminfo entry (prompted by
+    Savannah #54556, cf: 20110924).
+- Add ncurses patch 20190121
+  + add a check in test/configure to work around non-ncurses termcap.h
+    file in Slackware.
+  + corrected flag for &quot;seq&quot; method of db 1.8.5 interface, needed by toe
+    on some of the BSDs.
+  + updated &quot;string-hacks&quot; feature.
+  + minor improvements to manpage typography.</comment>
+    <requestid>673377</requestid>
+  </revision>
+  <revision rev="153" vrev="13">
+    <srcmd5>e841eea97064b92d6f905d93534b8084</srcmd5>
+    <version>6.1</version>
+    <time>1551023681</time>
+    <user>coolo</user>
+    <comment>- Add ncurses patch 20190216
+  + improve manual page description of TABSIZE.
+  + add test/demo_tabs program.
+
+- Implement library packaging guideline: split static libraries.</comment>
+    <requestid>676967</requestid>
+  </revision>
+  <revision rev="154" vrev="14">
+    <srcmd5>150461e5ff31dbdc83572c888c4ef552</srcmd5>
+    <version>6.1</version>
+    <time>1553700027</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20190323
+  + move macro for is_linetouched() inside NCURSES_NOMACROS ifndef.
+  + corrected prototypes in several manpages using script to extract
+    those in compilable form.
+  + use _nc_copy_termtype2() rather than direct assignment in setupterm,
+    in case it is called repeatedly using fallback terminfo descriptions
+    (report/patch by Werner Fink).
+- Drop patch ncurses-6.1-fallback.dif as now upstream
+
+- Reintroduce patch ncurses-6.1-fallback.dif to fix boo#1130091 
+
+- Add ncurses patch 20190317
+  + regenerate llib-* files.
+  + modify tic to also use new function for user-defined capability info.
+  + modify _nc_parse_entry() to check if a user-defined capability has
+    an unexpected type; ignore it in that case.
+  + fix a special case of link-anchors in generated Ada html files.
+  + use newer rel=author tag in generated html rather than rev=made,
+    which did not become accepted.
+
+- Add ncurses patch 20190309
+  + in-progress changes to add parameter-checking for common user-defined
+    capabilities in tic.
+  + update MKcodes.awk and MKnames.awk to ignore the new &quot;userdef&quot;
+    data in Caps-ncurses (cf: 20190302).
+
+- Add ncurses patch 20190223
+  + fix typo in adds200 -TD
+  + add tic check for consistent alternate character set capabilities.
+  + improve check in mvcur() to decide whether to use hard-tabs, using</comment>
+    <requestid>688199</requestid>
+  </revision>
+  <revision rev="155" vrev="15">
+    <srcmd5>5bed5c705be8accc93b67588e343ecde</srcmd5>
+    <version>6.1</version>
+    <time>1558426767</time>
+    <user>dimstar_suse</user>
+    <comment>- Make pkg-config files .pc consistent
+
+- Add ncurses patch 20190511
+  + fix a spurious blank line seen with &quot;infocmp -1fx xterm+x11mouse&quot;
+  + add checks in repair_subwindows() to keep the current position and
+    scroll-margins inside the resized subwindow.
+  + add a limit check in newline_forces_scroll() for the case where the
+    row is inside scroll-margins, but not at the end (report by Toshio
+    Kuratomi, cf: 20170729).
+  + corrected a warning message in tic for extended capabilities versus
+    number of parameters.
+
+- Add ncurses patch 20190504
+  + improve workaround for Solaris wcwidth versus line-drawing characters
+    (report by Pavel Stehule).
+  + add special case in tic to validate RGB string-capability extension.
+  + corrected string/parameter-field for RGB in Caps-ncurses.
+
+- Add ncurses patch 20190427
+  + corrected problem in terminfo load/realignment which prevented
+    infocmp from comparing extended capabilities with the same name
+    but different types.
+
+- Add ncurses patch 20190420
+  + improve ifdef's for TABSIZE variable, to help with AIX/HPUX ports.
+- Add ncurses patch 20190413
+  + check for TABSIZE variable in test/configure script.
+  + used test/test_arrays.c to improve Caps.aix1 and Caps.hpux11
+  + corrected filtering of comments in MKparametrized.sh
+  + reduce duplication across Caps* files by moving some parts which do</comment>
+    <requestid>703136</requestid>
+  </revision>
+  <revision rev="156" vrev="16">
+    <srcmd5>bba7125bbd00047a20ee2673b6a8d7f6</srcmd5>
+    <version>6.1</version>
+    <time>1561557702</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>710543</requestid>
+  </revision>
+  <revision rev="157" vrev="17">
+    <srcmd5>b518fc7bfc3d0342cb4ea375537436c3</srcmd5>
+    <version>6.1</version>
+    <time>1563017721</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>712785</requestid>
+  </revision>
+  <revision rev="158" vrev="18">
+    <srcmd5>dd652a0a1e44bb423dc7268fc14c57fb</srcmd5>
+    <version>6.1</version>
+    <time>1564413721</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>717564</requestid>
+  </revision>
+  <revision rev="159" vrev="19">
+    <srcmd5>a1bac9f99704d669ee05534fc61dc4b6</srcmd5>
+    <version>6.1</version>
+    <time>1567679483</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>724523</requestid>
+  </revision>
+</revisionlist>

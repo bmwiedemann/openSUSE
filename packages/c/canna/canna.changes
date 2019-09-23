@@ -1,0 +1,500 @@
+-------------------------------------------------------------------
+Mon Feb 19 20:09:03 UTC 2018 - crrodriguez@opensuse.org
+
+- BuildRequires imake not xorg-x11-devel
+
+-------------------------------------------------------------------
+Tue Mar  7 12:36:44 UTC 2017 - i@marguerite.su
+
+- Fix factory build, remove unrecognized RPM_SOURCE_DIR
+
+-------------------------------------------------------------------
+Thu Feb 19 13:50:43 UTC 2015 - ftake@geeko.jp
+
+- Fix the insufficient fix for boo#910933
+  + fix /tmp/.iroha_unix is not removed at service start
+
+-------------------------------------------------------------------
+Fri Jan  2 11:12:46 UTC 2015 - ftake@geeko.jp
+
+- Fix boo#910933 Canna cannot start
+  + roll back the fix for bnc#878691
+  + use wnn user instead of canna
+  + fix the command line options in canna.service
+  + use /bin/rm instead of cannakill in canna.service 
+
+-------------------------------------------------------------------
+Mon Nov 10 15:37:50 UTC 2014 - i@marguerite.su
+
+- add baselibs.conf to Source99
+
+-------------------------------------------------------------------
+Sun Nov 09 02:28:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in postun script
+
+-------------------------------------------------------------------
+Mon May 26 21:24:55 UTC 2014 - dvaleev@suse.com
+
+- add canna user for systemd-tmpfiles (bnc#878691) 
+
+-------------------------------------------------------------------
+Wed May 14 16:08:28 UTC 2014 - meissner@suse.com
+
+- add %service_add_pre to %pre section
+
+-------------------------------------------------------------------
+Sat Oct 26 13:46:25 UTC 2013 - p.drouand@gmail.com
+
+- Improve systemd support for openSUSE >= 12.3
+- Remove sysconfig and %fillup_prereq PreReq; package doesn't contain
+  any sysconfig file, these macros are useless
+- Don't provide INSTALL and INSTALL.jp in documentation; it describes
+  how do build from source have nothing to do in package
+
+-------------------------------------------------------------------
+Wed Jul 17 20:50:45 UTC 2013 - bkbin005@rinku.zaq.ne.jp
+
+- Remove obsoleted authors section .
+  Please see also
+  http://lists.opensuse.org/opensuse-ja/2013-07/msg00099.html
+
+-------------------------------------------------------------------
+Sun Jul  7 16:01:31 UTC 2013 - ftake@geeko.jp
+
+- remove locale(ja) and not installed by default because most users
+  do not use this package anymore 
+- fix source URL
+
+-------------------------------------------------------------------
+Sat Jun  2 14:23:43 UTC 2012 - i@marguerite.su
+
+- fix sles builds.
+
+-------------------------------------------------------------------
+Tue May 29 16:16:56 UTC 2012 - jengelh@inai.de
+
+- Enable parallel build
+- Adjust directory name to source config.guess/sub from
+  to be a /little/ more future proof.
+
+-------------------------------------------------------------------
+Tue May 29 13:50:16 UTC 2012 - puzel@suse.com
+
+- fix build with automake-1.12 
+
+-------------------------------------------------------------------
+Thu Mar 15 13:59:25 UTC 2012 - dvaleev@suse.com
+
+- copy config.guess, as the stock one is too old and not able to
+  guess ppc64
+
+-------------------------------------------------------------------
+Tue Dec 20 20:14:05 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Tue Dec  7 22:03:38 UTC 2010 - coolo@novell.com
+
+- prereq init script network
+
+-------------------------------------------------------------------
+Wed Dec  9 15:31:13 CET 2009 - meissner@suse.de
+
+- added some unistd.h includes
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:09 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Mon Aug 17 16:12:53 CEST 2009 - tiwai@suse.de
+
+- changed from requires to recommends for cannadic in order to
+  cut the dependency loop
+
+-------------------------------------------------------------------
+Mon Dec  1 12:46:20 CET 2008 - ro@suse.de
+
+- added baselibs.conf for canna-libs (required by uim) 
+
+-------------------------------------------------------------------
+Wed Oct  8 22:08:29 CEST 2008 - crrodriguez@suse.de
+
+- fix buffer overflow 
+
+-------------------------------------------------------------------
+Mon Aug 25 01:26:39 CEST 2008 - ro@suse.de
+
+- initscript: add $remote_fs to should start (binary below /usr)
+  copy Required-Start list to Required-Stop to fix build
+- remove outdated options from fillup_and_insserv call
+
+-------------------------------------------------------------------
+Mon Apr 16 16:16:57 CEST 2007 - mfabian@suse.de
+
+- Bugzilla #262623: "canna internet usage broken by suse security
+  jail patch": fix with patch supplied by IBM.
+
+-------------------------------------------------------------------
+Fri Mar 30 15:25:16 CEST 2007 - rguenther@suse.de
+
+- add ncurses-devel BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 25 21:11:07 CET 2007 - sndirsch@suse.de
+
+- move from /usr/X11R6 to /usr
+
+-------------------------------------------------------------------
+Tue Feb 28 19:21:55 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(ja)".
+
+-------------------------------------------------------------------
+Thu Feb  2 13:22:49 CET 2006 - tiwai@suse.de
+
+- fixed the broken system path via non-root build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:49 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 22:37:46 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Dec 21 01:17:19 CET 2005 - ro@suse.de
+
+- remove not packaged cannakill symlink 
+
+-------------------------------------------------------------------
+Sun Oct 30 20:12:08 CET 2005 - dmueller@suse.de
+
+- fix build
+- fix build with non-root 
+
+-------------------------------------------------------------------
+Wed Sep 21 11:59:18 CEST 2005 - yxu@suse.de
+
+- add prototypes for functions 
+
+-------------------------------------------------------------------
+Mon Jun 13 13:54:10 CEST 2005 - ro@suse.de
+
+- do not redefine fgets 
+
+-------------------------------------------------------------------
+Wed Jun  8 15:38:59 CEST 2005 - uli@suse.de
+
+- build with -fPIC, static libs are used in loadable modules by
+  some packages
+
+-------------------------------------------------------------------
+Mon Sep 20 19:15:05 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #45561: move .so files to canna-libs package. uim needs
+  the .so files but uim should not need to have canna-devel
+  installed to work.
+
+-------------------------------------------------------------------
+Tue Jul 27 15:04:40 CEST 2004 - mfabian@suse.de
+
+- update to 37p3.
+
+-------------------------------------------------------------------
+Mon May 24 14:54:56 CEST 2004 - ro@suse.de
+
+- skip confwrapper which breaks with new XVENDORNAME
+
+-------------------------------------------------------------------
+Mon Apr  5 17:23:09 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #37733: fix insecure use of temporary files in
+  /etc/init.d/canna.
+
+-------------------------------------------------------------------
+Tue Mar  9 02:34:39 CET 2004 - mfabian@suse.de
+
+- update to 37p1.
+
+-------------------------------------------------------------------
+Tue Oct 14 11:22:18 CEST 2003 - meissner@suse.de
+
+- suse_update_config for new config.guess.
+
+-------------------------------------------------------------------
+Tue Oct  7 15:08:42 CEST 2003 - ro@suse.de
+
+- fix sort calling syntax 
+
+-------------------------------------------------------------------
+Thu Sep 18 02:18:38 CEST 2003 - mfabian@suse.de
+
+- Bugzilla #31220: fix permissions and ownerships.
+
+-------------------------------------------------------------------
+Sat Sep 13 21:00:41 CEST 2003 - mfabian@suse.de
+
+- Bugzilla #29396: apply patch for x86_64.
+  Many thanks to Mitsuru Chinen <mchinen@yamato.ibm.com>.
+
+-------------------------------------------------------------------
+Mon Sep  1 17:42:35 CEST 2003 - mfabian@suse.de
+
+- update to 3.6p3.
+- remove patch which added the canuum sources (included now).
+- Build canuum against ncurses instead of against termcap,
+  adapt SuSE patch to suppress the "permission denied" messages
+  when leaving canuum.
+- add latest patch for Nicolatter: Canna36p3-q1.diff
+- remove most of Canna35b2-unoff1.patch (mostly included in 3.6p3,
+  I'll check the remaining ones in detail later).
+- remove Canna35b2-unoff2.patch (already included in 3.6p3).
+- remove Canna35b2-hack1.patch (already included in 3.6p3).
+- remove Canna35b2.patch (already included in 3.6p3).
+- remove Canna35b2.intptr.dif (included upstream).
+- remove Canna35b2.dif (obsolete).
+- adapt Olaf Kirchs security patch.
+
+-------------------------------------------------------------------
+Tue Aug 19 17:36:41 CEST 2003 - mfabian@suse.de
+
+- Use new stop_on_removal/restart_on_upate macros.
+- add %run_ldconfig to %post and %postun of canna-libs.
+
+-------------------------------------------------------------------
+Mon Jun 16 17:27:58 CEST 2003 - mfabian@suse.de
+
+- fix "directory not owned by any package".
+
+-------------------------------------------------------------------
+Wed Oct 23 05:48:27 CEST 2002 - mfabian@suse.de
+
+- map '|' (= Shift+Yen on the jp106 keyboard) to
+  U+30FC "KATAKANA-HIRAGANA PROLONGED SOUND MARK" in the
+  JIS X 6002 keymap (Requested by Shunya).
+
+-------------------------------------------------------------------
+Wed Oct 23 04:42:32 CEST 2002 - mfabian@suse.de
+
+- add keyboard map for JIS X 6002 keyboard.
+
+-------------------------------------------------------------------
+Wed Aug 21 18:09:42 CEST 2002 - mfabian@suse.de
+
+- add security patch by Olaf Kirch okir at suse.de which makes
+  cannaserver run in a chroot jail and fixes some other security
+  problems 
+- link canuum statically against libtermcap to remove the
+  dependency on libtermcap.rpm
+- use $RPM_OPT_FLAGS
+- .spec file cleanup
+
+-------------------------------------------------------------------
+Wed Aug 14 16:09:36 CEST 2002 - mfabian@suse.de
+
+- fix typo in .spec file which led to omission of the .la files
+  in canna-devel
+
+-------------------------------------------------------------------
+Sun Aug 11 20:45:11 CEST 2002 - mfabian@suse.de
+
+- move shared libraries into new sub-package "canna-libs".
+  This is to make dynamic linking of canna clients possible without
+  making them require the whole 3.6 MB canna package.
+- replace network route named -> $network $named
+  in Required-Start of /etc/init.d/canna
+
+-------------------------------------------------------------------
+Thu Aug  1 13:25:48 CEST 2002 - mfabian@suse.de
+
+- add /bin/rm %insserv_prereq %fillup_prereq to Prereq:
+
+-------------------------------------------------------------------
+Sat Jul 27 18:04:00 CEST 2002 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Wed Jul 24 16:04:38 CEST 2002 - mfabian@suse.de
+
+- Don't parse rc.config in init script
+- add home-dir to base package
+- change usage of useradd in pre script to comply with
+  the package howto
+
+-------------------------------------------------------------------
+Mon Apr 22 15:47:30 CEST 2002 - mfabian@suse.de
+
+- fix %{_libdir} for x86_64
+
+-------------------------------------------------------------------
+Sat Jan 26 15:31:34 CET 2002 - mfabian@suse.de
+
+- use %{_libdir}
+
+-------------------------------------------------------------------
+Thu Jan 17 17:49:05 CET 2002 - ro@suse.de
+
+- added imakefile.dif to force early include generation 
+
+-------------------------------------------------------------------
+Thu Jan 10 12:14:13 CET 2002 - egmont@suselinux.hu
+
+- changed /sbin/init.d to /etc/init.d in init script comment
+
+-------------------------------------------------------------------
+Fri Dec  7 20:34:43 CET 2001 - mfabian@suse.de
+
+- get rid of START_CANNA variable in /etc/rc.config:
+  use new macros fill_up_and_insserv and insserv_cleanup and
+  remove testing for START_CANNA from init script.
+
+-------------------------------------------------------------------
+Mon Sep 17 19:27:43 CEST 2001 - mfabian@suse.de
+
+- integrate canuum into the main package again. Splitting it
+  into a sub-package is too late for SuSE 7.3.
+
+-------------------------------------------------------------------
+Sun Sep 16 17:28:26 CEST 2001 - mfabian@suse.de
+
+- move canuum into an additional sub-package. Only canuum needs
+  libtermcap, by moving it into a sub-package, the main canna
+  packages doesn't require libtermcap anymore.
+
+-------------------------------------------------------------------
+Sat Sep  8 21:15:36 CEST 2001 - mfabian@suse.de
+
+- added entry "yubin7" to the default dictionary lists
+
+-------------------------------------------------------------------
+Fri Sep  7 19:05:13 CEST 2001 - mfabian@suse.de
+
+- mount more dictionaries by default, especially mount
+  the supplemental cannadic dictionaries by default
+- add Requires: cannadic.
+
+-------------------------------------------------------------------
+Tue May 22 15:12:53 CEST 2001 - mfabian@suse.de
+
+- add a /etc/hosts.canna file to limit the access to the
+  cannaserver to the local host by default.
+
+-------------------------------------------------------------------
+Thu May  3 17:18:14 CEST 2001 - mfabian@suse.de
+
+- make init script comply with latest LSB spec
+
+-------------------------------------------------------------------
+Thu Mar  8 23:17:54 CET 2001 - mfabian@suse.de
+
+- improve init script (wait for server to remove socket, using
+  Werner's new "usleep")
+- fix %postun, "sbin/init.d" -> "etc/init.d" 
+
+-------------------------------------------------------------------
+Wed Mar  7 12:18:09 CET 2001 - mfabian@suse.de
+
+- add xf86 to "# neededforbuild"
+
+-------------------------------------------------------------------
+Fri Mar  2 17:47:55 CET 2001 - mfabian@suse.de
+
+- add multibyte patch needed for Nicolatter.
+
+-------------------------------------------------------------------
+Mon Nov 27 22:36:06 CET 2000 - mfabian@suse.de
+
+- removed socket before starting the Canna server. 
+  sometimes these socket remains after killing the Canna server
+  which prevents a restart.  
+
+-------------------------------------------------------------------
+Mon Nov 27 20:52:46 CET 2000 - mfabian@suse.de
+
+- added "route named" to "Required-Start:"
+- moved init script to /etc/init.d
+
+-------------------------------------------------------------------
+Fri Nov 24 15:08:32 CET 2000 - mfabian@suse.de
+
+- fixed bug in new init script
+
+-------------------------------------------------------------------
+Thu Nov 23 22:16:31 CET 2000 - mfabian@suse.de
+
+- change to new init script mechanism:
+  rewrote rccanna and use insserv to handle links to init script
+
+-------------------------------------------------------------------
+Thu Nov 16 04:11:31 CET 2000 - mfabian@suse.de
+
+- added missing newline at end of file "rc.config.canna"
+
+-------------------------------------------------------------------
+Sun Nov 12 23:34:22 CET 2000 - ro@suse.de
+
+- never redeclare/redefine bcopy/bzero 
+
+-------------------------------------------------------------------
+Sat Oct 28 19:15:19 CEST 2000 - mfabian@suse.de
+
+- avoided "permission denied" messages when leaving canuum
+  (on exit, canuum called chown("/dev/ptyp1", 0, 0),
+  chmod("/dev/ptyp1", 0666), chown("/dev/ttyp1", 0, 0)
+  and chmod("/dev/ttyp1", 0666). This only worked as long as
+  canuum was suid root and failed now because bk@suse.de
+  removed the suid bits. But these chown and chmod don't
+  seem to make sense on linux anyway, therefore I just
+  removed them).
+- changed Japanese locale from ja_JP.ujis to ja_JP to stop
+  (this stops canuum from complaining about wrong locale during
+  startup)
+- add "useradd wnn" to the pre-install script, to make it build
+  and install on systems where there is no user wnn yet
+  (e.g. SuSE 7.0, 6.4)
+- used bzip2 for sources instead of gzip.
+- removed some garbage from old patches
+
+-------------------------------------------------------------------
+Fri Oct 27 16:28:52 CEST 2000 - bk@suse.de
+
+- fixed startproc call(security)
+- changed canna uid from bin to wnn
+- removed suid bits from binaries
+- fixed uninstall scripts
+
+-------------------------------------------------------------------
+Fri Sep 22 18:44:30 CEST 2000 - schwab@suse.de
+
+- Fix integer/pointer clashes.
+
+-------------------------------------------------------------------
+Thu Aug 10 19:50:34 CEST 2000 - mfabian@suse.de
+
+- moved Japanese manpages from subdirectories "ja_JP.ujis" to
+  subdirectories "ja".
+
+-------------------------------------------------------------------
+Mon Jul 17 17:24:55 CEST 2000 - mfabian@suse.de
+
+- security patch, fixes buffer overrun problem in function
+  SetDicHome( client, cxnum ) in file Canna35b2/server/misc.c
+
+-------------------------------------------------------------------
+Tue Jul 11 22:48:17 CEST 2000 - mfabian@suse.de
+
+- fixed links to noexisting manpages.
+  Some manpages were still links to pages in section 3x:
+
+  mfabian@gregory:/usr/X11R6/man/man3$ zcat XKanjiControl.3.gz 
+   .so man3/uilib.3x
+
+  and these didn't exist, because we did put them in section 3.

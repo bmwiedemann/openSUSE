@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>728b699f8716638a5a62a4c5db1c8fbf</srcmd5>
+    <version>0.7.0</version>
+    <time>1379934961</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>199860</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>728b699f8716638a5a62a4c5db1c8fbf</srcmd5>
+    <version>0.7.0</version>
+    <time>1409302919</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c63684d8eefb1aee508955257196137b</srcmd5>
+    <version>0.8.0</version>
+    <time>1435171746</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.0:
+  * Fixes to allow a new release
+  * Updated requirements
+  * Add a fixture for consuming mox3 easily
+  * Add CONTRIBUTING file
+  * Cleaed up AUTHORS/ChangeLog file
+  * Migrate test bases to testtools
+  * Fix all of the flake8/hacking warnings
+  * Fix the leading indentation issue
+  * Updated to use OpenStack standards
+  * Add openstack stuff
+  * Changed project description
+  * Author is not required - maintainer is enough
+  * Added tests to sdist
+  * Applied some changes according to http://getpython3.com/diveintopython3/packaging.html
+  * Changed directory test to tests. Fixed travis config
+  * Adjusted the structure of the mox3
+  * Minor fixes + changes in metadata
+  * Update README
+  * Fixed pep8 issues
+  * Added test for changed semantics in Python 3
+  * Added modification info
+  * Fixed isinstance check on instances of MockObject
+  * Fixed a bug when dir() called on MockObject was not returning attributes of a mocked class (Python3)
+  * Pep8's E111 error is now ignored
+  * Removed exclamation mark from travis.yml
+  * Added pep8 to .travis.yml
+  * Fixed deprecation warnings in mox_test.py
+  * Introduced class to which mocks can be bound in order to preserve binding information (Python3 and missing unbound methods issue)
+  * Added __hash__ for MockMethod - no default hash in py3k</comment>
+    <requestid>313133</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>84c404312a575573144d922b228eb20a</srcmd5>
+    <version>0.23.0</version>
+    <time>1511817403</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.23.0:
+  * Update URLs in documents according to document migration
+  * Update .gitignore
+  * turn on warning-is-error flag for doc build
+  * switch from oslosphinx to openstackdocstheme
+  * rearrange existing documentation based on the new standard layout</comment>
+    <requestid>545340</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>23cbea9215d495adc1418cac195795a8</srcmd5>
+    <version>0.24.0</version>
+    <time>1519844539</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.24.0
+  - Updated from global requirements
+  - Avoid tox_install.sh for constraints support</comment>
+    <requestid>579529</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>346733864f1793f86eaebe354cf4fc73</srcmd5>
+    <version>0.26.0</version>
+    <time>1541746577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647407</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ba9e20b76350c027fe6c3f7ea837be0f</srcmd5>
+    <version>0.26.0</version>
+    <time>1546535216</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove --slowest from stestr run to fix build</comment>
+    <requestid>662204</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>41c49745166b100fe3766b8f7cc081b1</srcmd5>
+    <version>0.26.0</version>
+    <time>1550151178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update URL to point to the project page
+- Remove tests from installed package</comment>
+    <requestid>674437</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4a3a41d9a05e8ec8b08b8445a7c503c9</srcmd5>
+    <version>0.27.0</version>
+    <time>1553888077</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.27.0:
+  * import zuul job settings from project-config
+  * add python 3.6 unit test job
+  * Use template for lower-constraints</comment>
+    <requestid>684989</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c1abc23da666616389c90c4d02395b7b</srcmd5>
+    <version>0.28.0</version>
+    <time>1569233211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.28.0:
+  * Remove flake8 from the test-requirements
+  * Add Python 3 Train unit tests
+  * Replace git.openstack.org URLs with opendev.org URLs</comment>
+    <requestid>730107</requestid>
+  </revision>
+</revisionlist>

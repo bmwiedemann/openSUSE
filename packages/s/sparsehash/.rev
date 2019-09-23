@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>332312629ff8b8552fc8545d5bb95155</srcmd5>
+    <version>2.0.2</version>
+    <time>1352700419</time>
+    <user>coolo</user>
+    <comment>we need it for Clementine Google Drive support</comment>
+    <requestid>140647</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>332312629ff8b8552fc8545d5bb95155</srcmd5>
+    <version>2.0.2</version>
+    <time>1359110426</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>332312629ff8b8552fc8545d5bb95155</srcmd5>
+    <version>2.0.2</version>
+    <time>1379664714</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>332312629ff8b8552fc8545d5bb95155</srcmd5>
+    <version>2.0.2</version>
+    <time>1409303396</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bee604b2dd674ef5905983ab79f991c0</srcmd5>
+    <version>2.0.3</version>
+    <time>1448400691</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345024</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a4a2e5984565b64eb3ac9a3fb8182100</srcmd5>
+    <version>2.0.3</version>
+    <time>1551468581</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679544</requestid>
+  </revision>
+</revisionlist>

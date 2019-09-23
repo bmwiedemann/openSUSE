@@ -1,0 +1,2701 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>15d7f0aa2623b55c811ff9483556164c</srcmd5>
+    <version>3.93.0</version>
+    <time>1188720144</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ebc040be14c3149b4ef5abf98f34febe</srcmd5>
+    <version>3.93.0.svn712052</version>
+    <time>1189779367</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d8fff5c2f1afe31046538f9ff996b47e</srcmd5>
+    <version>3.94.0</version>
+    <time>1192550761</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>811388e6663343f5f33eb0e84fd84ab8</srcmd5>
+    <version>3.95.0</version>
+    <time>1193788565</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6610251456ff7002a66a274c20372d74</srcmd5>
+    <version>3.95.1</version>
+    <time>1193962479</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cb003d59153e58ebd19c74840e725584</srcmd5>
+    <version>3.96.0</version>
+    <time>1195665783</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>765fe9751e06ccbef7a5a5b2594950a6</srcmd5>
+    <version>3.96.2</version>
+    <time>1196603622</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>635d641bf698460be7fbe95f299d82b1</srcmd5>
+    <version>3.96.3</version>
+    <time>1196892747</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e526adc36bad2dd3bee005c05714abbc</srcmd5>
+    <version>3.96.3</version>
+    <time>1196954038</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>403730a66b388545cc67740c3c76f21b</srcmd5>
+    <version>3.96.3</version>
+    <time>1197142900</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>30c893e95ee04e0f718c832ae436d656</srcmd5>
+    <version>3.97.0</version>
+    <time>1197488869</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>efa44ccbd91628431a87228181f99041</srcmd5>
+    <version>3.97.1</version>
+    <time>1198164483</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d449706344d410f9c64d3fa10e75a078</srcmd5>
+    <version>3.97.2</version>
+    <time>1199378623</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>18a9a3b112d388a66aa48f17e25ff89a</srcmd5>
+    <version>4.0</version>
+    <time>1200048608</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>2f3f9439bcc1dd8ce36866b93ae37f64</srcmd5>
+    <version>4.0</version>
+    <time>1200217938</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>a734824bef3e24ed41230de051113625</srcmd5>
+    <version>4.0</version>
+    <time>1200873155</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>d7e3bdd15ca3c8118117626d35f27990</srcmd5>
+    <version>4.0</version>
+    <time>1201205702</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>59aacf86fe45117bc49cafe178c430b0</srcmd5>
+    <version>4.0</version>
+    <time>1201479066</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="13">
+    <srcmd5>de397cf189c85bc8f295a8a7e4863793</srcmd5>
+    <version>4.0</version>
+    <time>1201657722</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7edca36ea2d396cc1c81748b671a7d18</srcmd5>
+    <version>4.0.1</version>
+    <time>1202082198</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>69ff15260631fefbe17b9aebd16d1cae</srcmd5>
+    <version>4.0.1</version>
+    <time>1202156704</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>4161f27d8b716c6194c523b64e874066</srcmd5>
+    <version>4.0.1</version>
+    <time>1202495990</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>ca4b01311d4cbdcf7363a13e1dff9154</srcmd5>
+    <version>4.0.1</version>
+    <time>1202501833</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="13">
+    <srcmd5>6c5a405b5c8a1a2d59766332f68a3644</srcmd5>
+    <version>4.0.1</version>
+    <time>1203069122</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="16">
+    <srcmd5>14822015699454cf10173b8b55969cd9</srcmd5>
+    <version>4.0.1</version>
+    <time>1203384524</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>c4d556a354691ff5e22fa657198071fc</srcmd5>
+    <version>4.0.2</version>
+    <time>1204754196</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>635fa23893600d6362ef932d580bc7ae</srcmd5>
+    <version>4.0.2</version>
+    <time>1205114299</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>6ca07f6fc2a71e87834883a285ea75af</srcmd5>
+    <version>4.0.2</version>
+    <time>1205256638</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="16">
+    <srcmd5>29dbbe9cccb5dfaef8a7a393e0801b06</srcmd5>
+    <version>4.0.2</version>
+    <time>1206787842</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>421289190f78b2280c60cda00bbaad22</srcmd5>
+    <version>4.0.3</version>
+    <time>1207163392</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>09b735c216700cd5e7f809872bd44e9d</srcmd5>
+    <version>4.0.3</version>
+    <time>1207691590</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>349d3396430ba77a5f89df0c72902118</srcmd5>
+    <version>4.0.3</version>
+    <time>1207855768</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="8">
+    <srcmd5>e0326c8eac004866ec8504979971c0bd</srcmd5>
+    <version>4.0.3</version>
+    <time>1208196263</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="10">
+    <srcmd5>b979ef96ac50bdb88e0c7da4a902671a</srcmd5>
+    <version>4.0.3</version>
+    <time>1208283081</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="12">
+    <srcmd5>576a3103dd4e5c593cf1d9a72ffd3005</srcmd5>
+    <version>4.0.3</version>
+    <time>1208363783</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="15">
+    <srcmd5>f18ff1efb03d7a2d8df134bff79bb7ef</srcmd5>
+    <version>4.0.3</version>
+    <time>1208701758</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="18">
+    <srcmd5>7794d521e4e8e13435f491ff24aeacfe</srcmd5>
+    <version>4.0.3</version>
+    <time>1209202284</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="21">
+    <srcmd5>0fd5d64f86fe0d5259d50844145ef8a0</srcmd5>
+    <version>4.0.3</version>
+    <time>1209399012</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="22">
+    <srcmd5>e6de8ef0dc41e9f534b363cfd24ce633</srcmd5>
+    <version>4.0.3</version>
+    <time>1209420036</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>46eaf14370bb641645a3c89fffe93a87</srcmd5>
+    <version>4.0.4</version>
+    <time>1210106952</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>0645f332d4191dad874c3b887fa1ed0d</srcmd5>
+    <version>4.0.4</version>
+    <time>1210365952</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>55325d0c45963833376bb455ddeb1bfc</srcmd5>
+    <version>4.0.4</version>
+    <time>1210674985</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>b195853bcbdeebf895c8c40993ea0425</srcmd5>
+    <version>4.0.4</version>
+    <time>1210940832</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="8">
+    <srcmd5>51bf35af3be70345e77eef1a1d46407e</srcmd5>
+    <version>4.0.4</version>
+    <time>1210972832</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="9">
+    <srcmd5>cc1e9ec5daf9fe4508b9c661d8e8cca8</srcmd5>
+    <version>4.0.4</version>
+    <time>1211051190</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="13">
+    <srcmd5>db69a2e4310b22bafb5f0623362a78a2</srcmd5>
+    <version>4.0.4</version>
+    <time>1211409901</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="14">
+    <srcmd5>901f0210a6735e65788bb15c9d5d1397</srcmd5>
+    <version>4.0.4</version>
+    <time>1211559112</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="48" vrev="15">
+    <srcmd5>d88e96680d16a7e7719a50c0907d4b2f</srcmd5>
+    <version>4.0.4</version>
+    <time>1211822033</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="49" vrev="16">
+    <srcmd5>d86d1b483913da96602c580f72060029</srcmd5>
+    <version>4.0.4</version>
+    <time>1211844564</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="50" vrev="17">
+    <srcmd5>a5babf215fd0843d1ff34946ef78d712</srcmd5>
+    <version>4.0.4</version>
+    <time>1211983736</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="51" vrev="20">
+    <srcmd5>d7c59ff79eaec9a6c998312e497c2446</srcmd5>
+    <version>4.0.4</version>
+    <time>1212502929</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="52" vrev="22">
+    <srcmd5>67abddc48c785eda9cc680d7d1f6f4b5</srcmd5>
+    <version>4.0.4</version>
+    <time>1212680190</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="53" vrev="23">
+    <srcmd5>2bf2d74a3202501f5e7e9cea17293a3a</srcmd5>
+    <version>4.0.4</version>
+    <time>1212681617</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>3391322fb5c2f0253032142cc119a680</srcmd5>
+    <version>4.0.82</version>
+    <time>1214253657</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>d4dc30f338ff0a9b64e6ad5ec436cbbf</srcmd5>
+    <version>4.0.83</version>
+    <time>1214416264</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>25feba6dd9d6ad4933ff37cf8d01b199</srcmd5>
+    <version>4.0.84</version>
+    <time>1214863240</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>8a4732fcef56bf46d94ff24ba32c3463</srcmd5>
+    <version>4.0.85</version>
+    <time>1215630711</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>689a06f80c381b1c15ba628008e7075a</srcmd5>
+    <version>4.0.99</version>
+    <time>1216414618</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>070599abad2e51e6e762bbbfcbe4a0e2</srcmd5>
+    <version>4.1.0</version>
+    <time>1217372411</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="60" vrev="11">
+    <srcmd5>2922747625da538fde3fab5948271af4</srcmd5>
+    <version>4.1.0</version>
+    <time>1218488236</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="61" vrev="16">
+    <srcmd5>7e25e363937cc463c0d2ba6be2217fda</srcmd5>
+    <version>4.1.0</version>
+    <time>1219011083</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>844df0610ebbbb41c080bd03fbb398f0</srcmd5>
+    <version>4.1.1</version>
+    <time>1220274060</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="63" vrev="7">
+    <srcmd5>82f32954ff39dd9d9697cd6ef640542e</srcmd5>
+    <version>4.1.1</version>
+    <time>1220649759</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="64" vrev="13">
+    <srcmd5>8c01f01cf3e944aa22d0a5c137d3a96b</srcmd5>
+    <version>4.1.1</version>
+    <time>1221294024</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="65" vrev="14">
+    <srcmd5>577f752d14696bb1bd6b7636671eace6</srcmd5>
+    <version>4.1.1</version>
+    <time>1221522228</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="66" vrev="15">
+    <srcmd5>ecd0ece6407d2c76f565a7862b4cf97c</srcmd5>
+    <version>4.1.1</version>
+    <time>1222268314</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="67" vrev="16">
+    <srcmd5>ee112da29e1decd1769d27edee391115</srcmd5>
+    <version>4.1.1</version>
+    <time>1222341385</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>f0075d31d82a824a9322f51cbfe1f5ba</srcmd5>
+    <version>4.1.2</version>
+    <time>1222705961</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>36686376fdf9c8c65d1086060b42d401</srcmd5>
+    <version>4.1.2</version>
+    <time>1223312351</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>857ef1951ddf0ba695e6f83f089989ce</srcmd5>
+    <version>4.1.2</version>
+    <time>1223388101</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="71" vrev="4">
+    <srcmd5>680f7dbc2955ef5085fe201dcf0b5150</srcmd5>
+    <version>4.1.2</version>
+    <time>1223459503</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="72" vrev="5">
+    <srcmd5>d2ab230f6bb6636c5f7f1c6c81ca3ea8</srcmd5>
+    <version>4.1.2</version>
+    <time>1224691589</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="73" vrev="6">
+    <srcmd5>b36193862112a025483b144471867f9a</srcmd5>
+    <version>4.1.2</version>
+    <time>1225124915</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="74" vrev="7">
+    <srcmd5>31673c40e354d703980a2ae1baace40d</srcmd5>
+    <version>4.1.2</version>
+    <time>1225148861</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="75" vrev="8">
+    <srcmd5>7a4ae0c41a23356e073a87aeacf055c5</srcmd5>
+    <version>4.1.2</version>
+    <time>1225711013</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>0bc74493247428a6f905cd515f02fc0c</srcmd5>
+    <version>4.1.3</version>
+    <time>1225732315</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>2aa014ddf4d729f322d415ff64a2e07b</srcmd5>
+    <version>4.1.3</version>
+    <time>1225817084</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>0e8c62b6c364781ef5f7689059183e15</srcmd5>
+    <version>4.1.3</version>
+    <time>1225818285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="79" vrev="4">
+    <srcmd5>f1de807852f3cf7a79206dda294407be</srcmd5>
+    <version>4.1.3</version>
+    <time>1226070071</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="80" vrev="5">
+    <srcmd5>858f4c308ac1c6e920a29428603ddd20</srcmd5>
+    <version>4.1.3</version>
+    <time>1226416115</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="81" vrev="7">
+    <srcmd5>5416fbfa1bca3d195935f19b9d229194</srcmd5>
+    <version>4.1.3</version>
+    <time>1226938088</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="82" vrev="8">
+    <srcmd5>8578a0886afde9383814c15255665af1</srcmd5>
+    <version>4.1.3</version>
+    <time>1227191774</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="83" vrev="9">
+    <srcmd5>705d3c4f1f29ee22a9af44bea00f7ad1</srcmd5>
+    <version>4.1.3</version>
+    <time>1227277663</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="84" vrev="10">
+    <srcmd5>ef2bfef53e86f12d5483d4979df1ca3a</srcmd5>
+    <version>4.1.3</version>
+    <time>1228227667</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="85" vrev="11">
+    <srcmd5>9f9dc8c70faaaabd08710b1c19f15fd9</srcmd5>
+    <version>4.1.3</version>
+    <time>1229438892</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="86" vrev="12">
+    <srcmd5>2b648223856ef096140bb6326cf778bd</srcmd5>
+    <version>4.1.3</version>
+    <time>1231435625</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="87" vrev="13">
+    <srcmd5>06d78f3b15a84c0e87815d1a1fe7744b</srcmd5>
+    <version>4.1.3</version>
+    <time>1231508500</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>7dd62974559e79c083f2e22d75323759</srcmd5>
+    <version>4.1.87</version>
+    <time>1231779526</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>e2c10d03d3c77ca2d3a4e2fc4d8c819e</srcmd5>
+    <version>4.1.96</version>
+    <time>1232066556</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>193b629018b05cf68c0d0dd0b6de8b22</srcmd5>
+    <version>4.1.96</version>
+    <time>1232501521</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="91" vrev="3">
+    <srcmd5>292413d93f13d2961cfc970338153919</srcmd5>
+    <version>4.1.96</version>
+    <time>1232585853</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>09b74e8a9135999c7a85ef3c912854dd</srcmd5>
+    <version>4.2.0</version>
+    <time>1233181172</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>a78ec3e9c83635ff4d667f94e64cc1cb</srcmd5>
+    <version>4.2.0</version>
+    <time>1233695344</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="94" vrev="3">
+    <srcmd5>a72d7daea182bb2c588e571747988abd</srcmd5>
+    <version>4.2.0</version>
+    <time>1233992438</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="95" vrev="4">
+    <srcmd5>93f9d29eb0e49b9c0afcf8f1182d997a</srcmd5>
+    <version>4.2.0</version>
+    <time>1234475253</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="96" vrev="5">
+    <srcmd5>a063e83e469ecae0c13a01deaf3aad88</srcmd5>
+    <version>4.2.0</version>
+    <time>1234907474</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="97" vrev="6">
+    <srcmd5>d41888bedd71a53e981ad9524caa9fcf</srcmd5>
+    <version>4.2.0</version>
+    <time>1235079403</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="98" vrev="7">
+    <srcmd5>5a0028b322b8005f6d234f5fc389bc79</srcmd5>
+    <version>4.2.0</version>
+    <time>1235667218</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>88e9e5c7fddca1cb06d161e0502effad</srcmd5>
+    <version>4.2.1</version>
+    <time>1236268156</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="100" vrev="3">
+    <srcmd5>2e51cf4559ae5f0b4f6e6e65c0afb4e6</srcmd5>
+    <version>4.2.1</version>
+    <time>1236554429</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="101" vrev="4">
+    <srcmd5>3f61bc048915e4e7beb51b3acab76764</srcmd5>
+    <version>4.2.1</version>
+    <time>1237922892</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>7f31fe9163cfdef1937fc9e7a128e32f</srcmd5>
+    <version>4.2.2</version>
+    <time>1238696052</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>912125851b7279cda6156610e1b55d0a</srcmd5>
+    <version>4.2.2</version>
+    <time>1239006840</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>a9ee344f84d77d607c1ace277f3a80fb</srcmd5>
+    <version>4.2.3</version>
+    <time>1241628439</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>d6c5e97bb1e759429272818a9e34ef48</srcmd5>
+    <version>4.2.85</version>
+    <time>1242770987</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>052011dbd000fa6628efd79152fd351b</srcmd5>
+    <version>4.2.85</version>
+    <time>1243472104</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>3ad3071d8b11d41c056bc4da43a8e8ce</srcmd5>
+    <version>4.2.88svn973768</version>
+    <time>1243938888</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>d747ff90d07318f0b76d4c0556ba964c</srcmd5>
+    <version>4.2.90</version>
+    <time>1244651396</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>055d82f2e3c55217a3f0a22e77757566</srcmd5>
+    <version>4.2.95</version>
+    <time>1247235290</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>7c63f68a3963ae8b7dfd29a6377a77b8</srcmd5>
+    <version>4.2.98</version>
+    <time>1248361398</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>28c05b643d9375b57f416a0971bfcccc</srcmd5>
+    <version>4.2.98</version>
+    <time>1248540560</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>f59c59a29d2885f07b3e815c5accd0e6</srcmd5>
+    <version>4.3.0</version>
+    <time>1249416096</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>eda6a4ebb166213f8ad78c862a6e27bb</srcmd5>
+    <version>4.3.0</version>
+    <time>1249941036</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="114" vrev="3">
+    <srcmd5>7752889585e7190cf00f7441089f93ef</srcmd5>
+    <version>4.3.0</version>
+    <time>1250180013</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 17541 from user Beineri
+</comment>
+  </revision>
+  <revision rev="115" vrev="4">
+    <srcmd5>66732c33913b284922eaed7c7b3e5458</srcmd5>
+    <version>4.3.0</version>
+    <time>1250512617</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 17920 from user Beineri
+</comment>
+  </revision>
+  <revision rev="116" vrev="5">
+    <srcmd5>c44addeea84975187fa03ed6b6d6dc26</srcmd5>
+    <version>4.3.0</version>
+    <time>1250866090</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 18183 from user Beineri
+</comment>
+  </revision>
+  <revision rev="117" vrev="6">
+    <srcmd5>968630aa04b088e601827a5328f0a37b</srcmd5>
+    <version>4.3.0</version>
+    <time>1251291385</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 9 from user Beineri
+</comment>
+  </revision>
+  <revision rev="118" vrev="7">
+    <srcmd5>483386b65a9559c301b3bce55cac3720</srcmd5>
+    <version>4.3.0</version>
+    <time>1251299728</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 18889 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>ce14ebb08f9dbf3cdd3c27be302f3812</srcmd5>
+    <version>4.3.1</version>
+    <time>1251834934</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 19469 from user Beineri
+</comment>
+  </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>bf82039498131b79c2364415c1ba619f</srcmd5>
+    <version>4.3.1</version>
+    <time>1253136307</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 20498 from user Beineri
+</comment>
+  </revision>
+  <revision rev="121" vrev="3">
+    <srcmd5>50b3be0ec1169ed5f6479a4177b8df04</srcmd5>
+    <version>4.3.1</version>
+    <time>1253830863</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 21048 from user Beineri
+</comment>
+  </revision>
+  <revision rev="122" vrev="4">
+    <srcmd5>2de00cdd5437ad32bd82f2fd3ea8f425</srcmd5>
+    <version>4.3.1</version>
+    <time>1254781434</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 21634 from user Beineri
+</comment>
+  </revision>
+  <revision rev="123" vrev="5">
+    <srcmd5>d778d98b4a25b7e53a1cc60befd82d5a</srcmd5>
+    <version>4.3.1</version>
+    <time>1254958259</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 22012 from user coolo
+</comment>
+  </revision>
+  <revision rev="124" vrev="6">
+    <srcmd5>e0e1b59613b9f7b6afff556765daa5ac</srcmd5>
+    <version>4.3.1</version>
+    <time>1255340641</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 22180 from user llunak
+</comment>
+  </revision>
+  <revision rev="125" vrev="8">
+    <srcmd5>e0e1b59613b9f7b6afff556765daa5ac</srcmd5>
+    <version>4.3.1</version>
+    <time>1255340641</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 22180 from user llunak
+</comment>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>9f897241c76835b3b13a2b87db513845</srcmd5>
+    <version>4.3.3</version>
+    <time>1257328654</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 23824 from user Beineri
+</comment>
+  </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>fe063082de4f3bc258a13b9a44502f46</srcmd5>
+    <version>4.3.3</version>
+    <time>1258975052</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 24819 from user Beineri
+</comment>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>13d40288f5982d875a314717bb0d988c</srcmd5>
+    <version>4.3.80</version>
+    <time>1260954700</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 26551 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="129" vrev="2">
+    <srcmd5>37b4cad9270a02db39a261177b9dfdb6</srcmd5>
+    <version>4.3.80</version>
+    <time>1260979085</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 26785 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>7b5e673caf9bb9603cab39470165de06</srcmd5>
+    <version>4.3.85</version>
+    <time>1261435491</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 27313 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>6d567fa65caf064da6f6d87b7c984e39</srcmd5>
+    <version>4.3.90</version>
+    <time>1262964267</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 28292 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>f07daa88e8e910f28c4b70848eaaaccc</srcmd5>
+    <version>4.3.90</version>
+    <time>1264070847</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 30022 from user llunak
+</comment>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>e65fd8ce2181e130a6ba4c791d8e447b</srcmd5>
+    <version>4.3.95</version>
+    <time>1264777912</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 30786 from user llunak
+</comment>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>98f003f3b3831476f8022e2981916358</srcmd5>
+    <version>4.4.0</version>
+    <time>1265752524</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 31970 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>9e172d286a456cc9b4878cf83d4720a8</srcmd5>
+    <version>4.4.0</version>
+    <time>1267061384</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 33425 from user dirkmueller
+</comment>
+    <requestid>33425</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>90a4945a508e66f70bd0cd89bff97cab</srcmd5>
+    <version>4.4.1</version>
+    <time>1268068419</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 34284 from user coolo
+</comment>
+    <requestid>34284</requestid>
+  </revision>
+  <revision rev="137" vrev="2">
+    <srcmd5>2e98476c55e1e26cc6b6b705412d198c</srcmd5>
+    <version>4.4.1</version>
+    <time>1268924183</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>28babbf03f5aff27736cd4dd2f4ff283</srcmd5>
+    <version>4.4.2</version>
+    <time>1270130999</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 36583 from user llunak
+</comment>
+    <requestid>36583</requestid>
+  </revision>
+  <revision rev="139" vrev="2">
+    <srcmd5>1e60576602955e903e905509fb07e9a8</srcmd5>
+    <version>4.4.2</version>
+    <time>1272373113</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 38916 from user llunak
+</comment>
+    <requestid>38916</requestid>
+  </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>4c26ef51c5de1985877a2c290b8608ab</srcmd5>
+    <version>4.4.3</version>
+    <time>1273091835</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 39495 from user dirkmueller
+</comment>
+    <requestid>39495</requestid>
+  </revision>
+  <revision rev="141" vrev="2">
+    <srcmd5>45d50eb05554afcf3e0e1470e3e7eae0</srcmd5>
+    <version>4.4.3</version>
+    <time>1274133888</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 40179 from user llunak
+</comment>
+    <requestid>40179</requestid>
+  </revision>
+  <revision rev="142" vrev="3">
+    <srcmd5>9729fc1919b0415cb9dd532ed51b9de1</srcmd5>
+    <version>4.4.3</version>
+    <time>1274788811</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 40590 from user llunak
+</comment>
+    <requestid>40590</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>ccabda578ab32cce039d00bc3f505aa3</srcmd5>
+    <version>4.4.4</version>
+    <time>1277136488</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 41793 from user dirkmueller
+</comment>
+    <requestid>41793</requestid>
+  </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>52cd5acc0ee03b65637a1cf2a5f97074</srcmd5>
+    <version>4.4.4</version>
+    <time>1277716662</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/kdebase4-workspace based on submit request 42065 from user llunak
+</comment>
+    <requestid>42065</requestid>
+  </revision>
+  <revision rev="145" vrev="4">
+    <srcmd5>748e35aa96cb74d4152c7adb6d9d91a7</srcmd5>
+    <version>4.4.4</version>
+    <time>1278344730</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/kdebase4-workspace based on submit request 42583 from user dirkmueller
+</comment>
+    <requestid>42583</requestid>
+  </revision>
+  <revision rev="146" vrev="6">
+    <srcmd5>748e35aa96cb74d4152c7adb6d9d91a7</srcmd5>
+    <version>4.4.4</version>
+    <time>1278667354</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="147" vrev="7">
+    <srcmd5>748e35aa96cb74d4152c7adb6d9d91a7</srcmd5>
+    <version>4.4.4</version>
+    <time>1278678585</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>2a9cf7dd2d4fa611881a2550b168162e</srcmd5>
+    <version>4.4.93svn1149349</version>
+    <time>1279566912</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/kdebase4-workspace based on submit request 43257 from user dirkmueller
+</comment>
+    <requestid>43257</requestid>
+  </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>0a555924d43fcf38c2b28b9eea582c4b</srcmd5>
+    <version>4.4.95</version>
+    <time>1280675828</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/kdebase4-workspace based on submit request 43987 from user llunak
+</comment>
+    <requestid>43987</requestid>
+  </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>c42aa41d9e306adea0868f9bc1355026</srcmd5>
+    <version>4.5.0</version>
+    <time>1281435356</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/kdebase4-workspace based on submit request 45256 from user Beineri
+</comment>
+    <requestid>45256</requestid>
+  </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>4db8844c09fab1f6219079212366bdbb</srcmd5>
+    <version>4.5.1</version>
+    <time>1283516262</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/kdebase4-workspace based on submit request 46956 from user dirkmueller
+</comment>
+    <requestid>46956</requestid>
+  </revision>
+  <revision rev="152" vrev="2">
+    <srcmd5>73f3f52373310d785facc3e1d6d53467</srcmd5>
+    <version>4.5.1</version>
+    <time>1285595454</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/kdebase4-workspace based on submit request 49197 from user coolo
+</comment>
+    <requestid>49197</requestid>
+  </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>38397b9dfd97f38b11f6982e5067d2d7</srcmd5>
+    <version>4.5.2</version>
+    <time>1286483994</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/kdebase4-workspace based on submit request 49975 from user dirkmueller
+</comment>
+    <requestid>49975</requestid>
+  </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>479e1c9a402f28d30f90e88ae1d17457</srcmd5>
+    <version>4.5.3</version>
+    <time>1288964925</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52201 from user dirkmueller
+</comment>
+    <requestid>52201</requestid>
+  </revision>
+  <revision rev="155" vrev="2">
+    <srcmd5>14d171323030bc3f765ab61d9d34fba4</srcmd5>
+    <version>4.5.3</version>
+    <time>1289831616</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52820 from user coolo
+</comment>
+    <requestid>52820</requestid>
+  </revision>
+  <revision rev="156" vrev="3">
+    <srcmd5>dbf1d9ffc957f952a47b15ff8b49e6db</srcmd5>
+    <version>4.5.3</version>
+    <time>1289831628</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52820
+</comment>
+  </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>43d21e0ab015339133aecdcef2923da1</srcmd5>
+    <version>4.5.80</version>
+    <time>1290465658</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53693 from user coolo
+</comment>
+    <requestid>53693</requestid>
+  </revision>
+  <revision rev="158" vrev="2">
+    <srcmd5>5cb1e0934515d02a98fa56c7efa401f8</srcmd5>
+    <version>4.5.80</version>
+    <time>1290592039</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53826 from user coolo
+</comment>
+    <requestid>53826</requestid>
+  </revision>
+  <revision rev="159" vrev="3">
+    <srcmd5>1f67c767f7c88c5f9f2e3ee3413fc1d3</srcmd5>
+    <version>4.5.80</version>
+    <time>1290592053</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 53826
+</comment>
+  </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>f9741b33a95ec36b93ae97c35267b2d4</srcmd5>
+    <version>4.5.85</version>
+    <time>1292259009</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55821 from user wstephenson
+</comment>
+    <requestid>55821</requestid>
+  </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>8ea5ad5b41350bff884ee6e3ac8e8b5e</srcmd5>
+    <version>4.5.90</version>
+    <time>1294389818</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57000 from user dirkmueller
+</comment>
+    <requestid>57000</requestid>
+  </revision>
+  <revision rev="162" vrev="2">
+    <srcmd5>f2914492f686f965a1b8bda53d5f4f8b</srcmd5>
+    <version>4.5.90</version>
+    <time>1294389828</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57000
+</comment>
+  </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>6cb792597b03db63375747ca230491f0</srcmd5>
+    <version>4.5.95</version>
+    <time>1294653344</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57308 from user dirkmueller
+</comment>
+    <requestid>57308</requestid>
+  </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>9f1211e301358d822a7ac9efb5600542</srcmd5>
+    <version>4.6.0</version>
+    <time>1296693203</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59738 from user coolo
+</comment>
+    <requestid>59738</requestid>
+  </revision>
+  <revision rev="165" vrev="2">
+    <srcmd5>9ea71e7691d51044d40742a83f81e10a</srcmd5>
+    <version>4.6.0</version>
+    <time>1296693212</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59738
+</comment>
+  </revision>
+  <revision rev="166" vrev="3">
+    <srcmd5>e10600da3d79e27df332ffaa3627e2d9</srcmd5>
+    <version>4.6.0</version>
+    <time>1296839360</time>
+    <user>darix</user>
+    <comment>Accepted submit request 60041 from user wstephenson
+</comment>
+    <requestid>60041</requestid>
+  </revision>
+  <revision rev="167" vrev="4">
+    <srcmd5>9c44cb1ab80affe569f846406d296188</srcmd5>
+    <version>4.6.0</version>
+    <time>1296839368</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 60041
+</comment>
+  </revision>
+  <revision rev="168" vrev="5">
+    <srcmd5>a99a0123452423b4df8caf4363820f02</srcmd5>
+    <version>4.6.0</version>
+    <time>1297077587</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60158 from user wstephenson
+</comment>
+    <requestid>60158</requestid>
+  </revision>
+  <revision rev="169" vrev="6">
+    <srcmd5>0c9280451235b7162764b51ff918ef39</srcmd5>
+    <version>4.6.0</version>
+    <time>1297077600</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60158
+</comment>
+  </revision>
+  <revision rev="170" vrev="7">
+    <srcmd5>1f98a2839a49141a3a56935bf988b132</srcmd5>
+    <version>4.6.0</version>
+    <time>1297783885</time>
+    <user>darix</user>
+    <comment>Accepted submit request 61138 from user dirkmueller
+</comment>
+    <requestid>61138</requestid>
+  </revision>
+  <revision rev="171" vrev="8">
+    <srcmd5>2b624c347c949564354a9ac20ff0a69d</srcmd5>
+    <version>4.6.0</version>
+    <time>1297783903</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 61138
+</comment>
+  </revision>
+  <revision rev="172" vrev="11">
+    <srcmd5>2b624c347c949564354a9ac20ff0a69d</srcmd5>
+    <version>4.6.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="173" vrev="12">
+    <srcmd5>35d2007ea320593d50f71856fc83af4c</srcmd5>
+    <version>4.6.0</version>
+    <time>1298243945</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62102 from user wstephenson
+</comment>
+    <requestid>62102</requestid>
+  </revision>
+  <revision rev="174" vrev="13">
+    <srcmd5>459bfcb9fa9599e5b3fdcdac30399f66</srcmd5>
+    <version>4.6.0</version>
+    <time>1298243958</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 62102
+</comment>
+  </revision>
+  <revision rev="175" vrev="14">
+    <srcmd5>5ef0297262d956b31769acd58b6304c3</srcmd5>
+    <version>4.6.0</version>
+    <time>1298622613</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 62726 from user coolo
+</comment>
+    <requestid>62726</requestid>
+  </revision>
+  <revision rev="176" vrev="15">
+    <srcmd5>69f300607debf8efe42f9f963c55c6f8</srcmd5>
+    <version>4.6.0</version>
+    <time>1298622637</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 62726
+</comment>
+  </revision>
+  <revision rev="177" vrev="16">
+    <srcmd5>74402c4864de609b1005da234d66e0b2</srcmd5>
+    <version>4.6.0</version>
+    <time>1298810244</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62907 from user coolo
+</comment>
+    <requestid>62907</requestid>
+  </revision>
+  <revision rev="178" vrev="17">
+    <srcmd5>4230ae657e73250125c7e151681454bf</srcmd5>
+    <version>4.6.0</version>
+    <time>1298810256</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62907
+</comment>
+  </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>e3e7735ad27d86c9c5b63b52570f2c7f</srcmd5>
+    <version>4.6.1</version>
+    <time>1299688712</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63766 from user coolo
+</comment>
+    <requestid>63766</requestid>
+  </revision>
+  <revision rev="180" vrev="2">
+    <srcmd5>92f30460c278ed72d8b8a4efe79c724f</srcmd5>
+    <version>4.6.1</version>
+    <time>1299688723</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63766
+</comment>
+  </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>312e2070d1416e673cd164b074c513e8</srcmd5>
+    <version>4.6.2</version>
+    <time>1301900505</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65829 from user coolo
+</comment>
+    <requestid>65829</requestid>
+  </revision>
+  <revision rev="182" vrev="2">
+    <srcmd5>ca12ca4b7507c1804e8db9a3cd73eca4</srcmd5>
+    <version>4.6.2</version>
+    <time>1301900521</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65829
+</comment>
+  </revision>
+  <revision rev="183" vrev="3">
+    <srcmd5>de4ea2c43eaaf1c4e689695e49a4be5d</srcmd5>
+    <version>4.6.2</version>
+    <time>1303385819</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 68053 from user coolo
+</comment>
+    <requestid>68053</requestid>
+  </revision>
+  <revision rev="184" vrev="4">
+    <srcmd5>799755ebf5e167f59cc2f50cb1ea11b2</srcmd5>
+    <version>4.6.2</version>
+    <time>1303385842</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 68053
+</comment>
+  </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>4b3f79fd82fcab102cbbc7fdfc960eb5</srcmd5>
+    <version>4.6.3</version>
+    <time>1305631625</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>70389</requestid>
+  </revision>
+  <revision rev="186" vrev="2">
+    <srcmd5>391c71add646122e3999695a107d7c26</srcmd5>
+    <version>4.6.3</version>
+    <time>1305631644</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70389
+</comment>
+  </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>4a4fccb02c2c36d22e538291c4dd2e1a</srcmd5>
+    <version>4.6.4</version>
+    <time>1307543295</time>
+    <user>saschpe</user>
+    <comment>forward to factory</comment>
+    <requestid>72962</requestid>
+  </revision>
+  <revision rev="188" vrev="2">
+    <srcmd5>893ca933e195d4cb8d1a5197982d6ad4</srcmd5>
+    <version>4.6.4</version>
+    <time>1307543312</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72962
+</comment>
+  </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>bd7baf5cab623d9dff99de939dcbf22a</srcmd5>
+    <version>4.6.5</version>
+    <time>1309785834</time>
+    <user>saschpe</user>
+    <comment>forward to factory</comment>
+    <requestid>75270</requestid>
+  </revision>
+  <revision rev="190" vrev="2">
+    <srcmd5>3c0d2cd5777f03932b0031c61270558c</srcmd5>
+    <version>4.6.5</version>
+    <time>1309785852</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75270
+</comment>
+  </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>ea79ff15256a6c71d8df44da067a466d</srcmd5>
+    <version>4.6.95</version>
+    <time>1311576807</time>
+    <user>saschpe</user>
+    <comment>- Remove unneeded security filters from rpmlintrc 
+
+- Add BuildRequires on libprison-devel to add barcode support to
+  klipper. 
+
+- Obsolete/Provide kdeaccessibility package 
+
+- Update to 4.6.95 
+
+- Remove unneeded security filters from rpmlintrc 
+
+- Add BuildRequires on libprison-devel to add barcode support to
+  klipper. 
+
+- Obsolete/Provide kdeaccessibility package 
+
+- Update to 4.6.95</comment>
+    <requestid>76789</requestid>
+  </revision>
+  <revision rev="192" vrev="2">
+    <srcmd5>9f7feeb56a03520d51eca29f65b723af</srcmd5>
+    <version>4.6.95</version>
+    <time>1311576819</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76789
+</comment>
+  </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>63f1ea775b4c2f88cad9b9f8228a621c</srcmd5>
+    <version>4.7.0</version>
+    <time>1311777920</time>
+    <user>saschpe</user>
+    <comment>forward to factory</comment>
+    <requestid>77239</requestid>
+  </revision>
+  <revision rev="194" vrev="2">
+    <srcmd5>3086dfc304ae78fb799f935d46de780b</srcmd5>
+    <version>4.7.0</version>
+    <time>1312442518</time>
+    <user>saschpe</user>
+    <comment>Refresh and apply plasma-branding-defaults-corona.diff, plasma-kickoff-newly-collapsing.diff to get back the KMenu behaviour in KDE 4.6</comment>
+    <requestid>77897</requestid>
+  </revision>
+  <revision rev="195" vrev="3">
+    <srcmd5>dc15ac417aebd8fc8a7b1d84e7442f97</srcmd5>
+    <version>4.7.0</version>
+    <time>1312442535</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77897
+</comment>
+  </revision>
+  <revision rev="196" vrev="4">
+    <srcmd5>33df3f2bbf32dad13380a56fcc24563c</srcmd5>
+    <version>4.7.0</version>
+    <time>1314107251</time>
+    <user>saschpe</user>
+    <comment>forward to factory</comment>
+    <requestid>79384</requestid>
+  </revision>
+  <revision rev="197" vrev="5">
+    <srcmd5>e1203c8430dd882e6b9cf782a27ab376</srcmd5>
+    <version>4.7.0</version>
+    <time>1314107266</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79384
+</comment>
+  </revision>
+  <revision rev="198" vrev="1">
+    <srcmd5>8935bc386b17541887be270725a60a60</srcmd5>
+    <version>4.7.1</version>
+    <time>1315816863</time>
+    <user>saschpe</user>
+    <comment>- Add %_libdir/X11 to the list of dirs.</comment>
+    <requestid>81777</requestid>
+  </revision>
+  <revision rev="199" vrev="2">
+    <srcmd5>ed144f799fc8824bfa7b546979c7a73b</srcmd5>
+    <version>4.7.1</version>
+    <time>1316004870</time>
+    <user>saschpe</user>
+    <comment>- Add %_libdir/X11 to the list of dirs. 
+
+- %{_libdir}/X11/displaymanagers is no config file. 
+
+- Changed %{_sysconfdir}/X11/displaymanagers to
+  %{_libdir}/X11/displaymanagers. 
+
+- add missing &quot;%dir %{_sysconfdir}/X11/displaymanagers&quot;
+  to specfile. 
+
+- kdm: Add startup script file to be sourced by /etc/xinit.d/xdm.
+The display manager stratup script /etc/init.d/xdm should not
+contain any code specific to a display manager. Instead such code
+should live in a script file supplied by the specific dm which
+is sourced by the start script. Those script files will live
+in /etc/X11/displaymanagers/.</comment>
+    <requestid>82077</requestid>
+  </revision>
+  <revision rev="200" vrev="3">
+    <srcmd5>443a2136fdc5f666f4bda1be172798f3</srcmd5>
+    <version>4.7.1</version>
+    <time>1316004877</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82077
+</comment>
+  </revision>
+  <revision rev="201" vrev="4">
+    <srcmd5>ee1e9c34613fb39d7a99549ffba1a3e4</srcmd5>
+    <version>4.7.1</version>
+    <time>1316446081</time>
+    <user>lrupp</user>
+    <comment>- Removed check for obsolete openSUSE version (fix for RPMLINT warning)
+- Added py_requires macro (fix for RPMLINT warning)
+- Cleaned up spec file formatting (forwarded request 82675 from TheBlackCat) (forwarded request 82676 from TheBlackCat) (forwarded request 82800 from namtrac)</comment>
+    <requestid>82801</requestid>
+  </revision>
+  <revision rev="202" vrev="5">
+    <srcmd5>9f03df237c77530cb915fcd8d82cd70c</srcmd5>
+    <version>4.7.1</version>
+    <time>1316689332</time>
+    <user>saschpe</user>
+    <comment>- Create new macro to make sure dm script always gets installed in
+  ${_prefix}/lib. Neither ${_libdir} nor ${_libexecdir} qualify across
+  all SUSE products. (forwarded request 84326 from eeich)</comment>
+    <requestid>84339</requestid>
+  </revision>
+  <revision rev="203" vrev="1">
+    <srcmd5>662827775bb1bc04cdd5cd222f867da2</srcmd5>
+    <version>4.7.2</version>
+    <time>1317910733</time>
+    <user>lrupp</user>
+    <comment>- remove duplicated icons from panel layout
+
+- google-gadgets is gone from 12.1
+
+- update to 4.7.2
+  * see http://kde.org/announcements/changelogs/changelog4_7_1to4_7_2.php for details
+- remove patch from upstream
+
+
+- update to 4.7.2
+  * see http://kde.org/announcements/changelogs/changelog4_7_1to4_7_2.php for details
+
+- Create new macro to make sure dm script always gets installed in
+  ${_prefix}/lib. Neither ${_libdir} nor ${_libexecdir} qualify across
+  all SUSE products.</comment>
+    <requestid>86842</requestid>
+  </revision>
+  <revision rev="204" vrev="2">
+    <srcmd5>7d836b131db913fdf2612263bc228b0a</srcmd5>
+    <version>4.7.2</version>
+    <time>1317996461</time>
+    <user>lrupp</user>
+    <comment>- remove duplicated icons from panel layout
+
+- google-gadgets is gone from 12.1
+
+- remove patch from upstream</comment>
+    <requestid>87003</requestid>
+  </revision>
+  <revision rev="205" vrev="3">
+    <srcmd5>007f4fe7e97d02c0469ef729b669c6b4</srcmd5>
+    <version>4.7.2</version>
+    <time>1318456763</time>
+    <user>lrupp</user>
+    <comment>- take out the corona patch, it should be in branding-openSUSE
+- put plasma files in branding-upstream and require specific version
+  of it from branding packages</comment>
+    <requestid>87585</requestid>
+  </revision>
+  <revision rev="206" vrev="4">
+    <srcmd5>fdc8e4ef9990525f68dc588bdb420d7a</srcmd5>
+    <version>4.7.2</version>
+    <time>1318501405</time>
+    <user>lrupp</user>
+    <comment>- fix branding requires for kwin and kdm</comment>
+    <requestid>87603</requestid>
+  </revision>
+  <revision rev="207" vrev="5">
+    <srcmd5>7ece6eef801e4e118777b6dc907c9001</srcmd5>
+    <version>4.7.2</version>
+    <time>1318527772</time>
+    <user>lrupp</user>
+    <comment>- respect $KDE_NETWORKMANAGER_DISABLED before deciding if users
+  want an always red symbol in their plasma config
+  (plasma-disable-networkmanager.diff)
+
+- respect $KDE_NETWORKMANAGER_DISABLED before deciding if users
+  want an always red symbol in their plasma config
+  (plasma-disable-networkmanager.diff)
+
+- fix branding requires for kwin and kdm
+
+- take out the corona patch, it should be in branding-openSUSE
+- put plasma files in branding-upstream and require specific version
+  of it from branding packages</comment>
+    <requestid>87715</requestid>
+  </revision>
+  <revision rev="208" vrev="7">
+    <srcmd5>7ece6eef801e4e118777b6dc907c9001</srcmd5>
+    <version>4.7.2</version>
+    <time>1319182031</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="209" vrev="8">
+    <srcmd5>f6a22abf7577d7f1a9719ca5d0ad3e8e</srcmd5>
+    <version>4.7.2</version>
+    <time>1319206709</time>
+    <user>coolo</user>
+    <comment>- Add 4.7 branch diff
+
+- Add branch diff</comment>
+    <requestid>88741</requestid>
+  </revision>
+  <revision rev="210" vrev="9">
+    <srcmd5>8d24e61da3d0da89c90e5ee639d7b8c2</srcmd5>
+    <version>4.7.2</version>
+    <time>1320477920</time>
+    <user>coolo</user>
+    <comment>- Don't corrupt Plasma's global config from Power Management
+
+- kdm: don't even look for grub-set-default, we won't need it
+
+- Don't corrupt Plasma's global config from Power Management
+
+- kdm: don't even look for grub-set-default, we won't need it
+
+- Add 4.7 branch diff</comment>
+    <requestid>89978</requestid>
+  </revision>
+  <revision rev="211" vrev="1">
+    <srcmd5>dc42fd25ea1010e9309c483acfbe1b0f</srcmd5>
+    <version>4.7.3</version>
+    <time>1321268118</time>
+    <user>coolo</user>
+    <comment>Add plasma-crash-on-logout.diff to fix bko#275286 (forwarded request 91004 from javierllorente)</comment>
+    <requestid>91010</requestid>
+  </revision>
+  <revision rev="212" vrev="2">
+    <srcmd5>42461bfc984b4ed8b1e0f5aa18767b70</srcmd5>
+    <version>4.7.3</version>
+    <time>1321460292</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>91669</requestid>
+  </revision>
+  <revision rev="213" vrev="3">
+    <srcmd5>af2a4cc3f0490c42fa6c45b6f1c03bba</srcmd5>
+    <version>4.7.3</version>
+    <time>1322481234</time>
+    <user>coolo</user>
+    <comment>- show window size in characters if resizing terminal (bnc#703594)
+
+- revert most of the branding commit
+
+- Fixed self-obsoletes (fix for RPMLINT warning)
+- Added %kde4_runtime_requires (fix for RPMLINT warning)
+- Added %kde4_akonadi_requires (fix for RPMLINT warning)
+- Added %kde4_pimlibs_requires (fix for RPMLINT warning)
+- Enabled -fPIE building (fix for RPMLINT warning)
+- Added permission prereq (fix for RPMLINT warning)
+- Added %set_permissions macros (fix for RPMLINT warning)
+- Fixed permissions for kcheckpass (fix for RPMLINT warning)
+- Fixed devel package group (fix for RPMLINT warning)
+- Added %config tag (fix for RPMLINT warning)
+- Cleaned up spec file formatting
+
+- bumped the branding version to reflect 12.1 and factory
+- fixed kwin dependency on the opensuse branding
+- reworked the logic for selecting the version string</comment>
+    <requestid>93574</requestid>
+  </revision>
+  <revision rev="214" vrev="4">
+    <srcmd5>1d6bd504d14a6cbeee150b15cd875a46</srcmd5>
+    <version>4.7.3</version>
+    <time>1322814429</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>94212</requestid>
+  </revision>
+  <revision rev="215" vrev="1">
+    <srcmd5>27e30437f0b650a61ae68ebc5506370e</srcmd5>
+    <version>4.7.4</version>
+    <time>1323341390</time>
+    <user>coolo</user>
+    <comment>forward to factory</comment>
+    <requestid>95792</requestid>
+  </revision>
+  <revision rev="216" vrev="2">
+    <srcmd5>b04b28384fae79fac982c67a9ff8b58e</srcmd5>
+    <version>4.7.4</version>
+    <time>1324387809</time>
+    <user>coolo</user>
+    <comment>Next try... (forwarded request 96423 from saschpe)</comment>
+    <requestid>96516</requestid>
+  </revision>
+  <revision rev="217" vrev="3">
+    <srcmd5>a794c723b1a9433fedadd3ac826b5ebf</srcmd5>
+    <version>4.7.4</version>
+    <time>1326292621</time>
+    <user>coolo</user>
+    <comment>resubmitting HEAD</comment>
+    <requestid>99400</requestid>
+  </revision>
+  <revision rev="218" vrev="1">
+    <srcmd5>4c09f2c9d48b0a8cdcbda014793061c0</srcmd5>
+    <version>4.8.0</version>
+    <time>1328001621</time>
+    <user>coolo</user>
+    <comment>forward to factory</comment>
+    <requestid>101729</requestid>
+  </revision>
+  <revision rev="219" vrev="2">
+    <srcmd5>9eeeb6c1de788559bdd392dfe85e7c29</srcmd5>
+    <version>4.8.0</version>
+    <time>1330434824</time>
+    <user>coolo</user>
+    <comment>- require the right version of kactivities4 to avoid crashes</comment>
+    <requestid>107220</requestid>
+  </revision>
+  <revision rev="220" vrev="1">
+    <srcmd5>cdfcf1a94013fc85424ecd38f741db2c</srcmd5>
+    <version>4.8.1</version>
+    <time>1331579695</time>
+    <user>coolo</user>
+    <comment>Added a patch to add plymouth support to KDM. This patch comes from Fedora and has been in use for quite some time. I still need to find some time in order to rewrite this to get it accepted upstream. (forwarded request 108846 from tittiatcoke)</comment>
+    <requestid>108848</requestid>
+  </revision>
+  <revision rev="221" vrev="1">
+    <srcmd5>fd3d37454550d631d1ceefdb4cf7f617</srcmd5>
+    <version>4.8.2</version>
+    <time>1334215846</time>
+    <user>coolo</user>
+    <comment>forward to factory</comment>
+    <requestid>112625</requestid>
+  </revision>
+  <revision rev="222" vrev="2">
+    <srcmd5>2ca93c5c02bdb78da5039c17a0454f24</srcmd5>
+    <version>4.8.2</version>
+    <time>1334692727</time>
+    <user>coolo</user>
+    <comment>- Require desktop-data-openSUSE as this is needed for the KDE menu
+  (bnc#754104)
+
+If this is the right thing to do, I will also submit the fix to KUSC (forwarded request 113135 from namtrac)</comment>
+    <requestid>113369</requestid>
+  </revision>
+  <revision rev="223" vrev="3">
+    <srcmd5>357c627f2f0f4d12288a9f9e27eb80cd</srcmd5>
+    <version>4.8.2</version>
+    <time>1334818158</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>114370</requestid>
+  </revision>
+  <revision rev="224" vrev="1">
+    <srcmd5>27f2583809ca88d8a4303dfddf935543</srcmd5>
+    <version>4.8.3</version>
+    <time>1336579910</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>116852</requestid>
+  </revision>
+  <revision rev="225" vrev="1">
+    <srcmd5>dd6841cd9f8487f488d81a65befd45e9</srcmd5>
+    <version>4.8.4</version>
+    <time>1339530113</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>124587</requestid>
+  </revision>
+  <revision rev="226" vrev="3">
+    <srcmd5>dd6841cd9f8487f488d81a65befd45e9</srcmd5>
+    <version>4.8.4</version>
+    <time>1340183508</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="227" vrev="4">
+    <srcmd5>a39d985851d4ff97ed0767c4772f21e8</srcmd5>
+    <version>4.8.4</version>
+    <time>1341219573</time>
+    <user>coolo</user>
+    <comment>Akonadi isn't obligatory and it requires finally mysql. Plasma-calendar could be usable without akonadi. So IMHO it shouldn't be a strict requirement.
+See more at https://build.opensuse.org/request/show/125244 (forwarded request 126828 from DarkSS)</comment>
+    <requestid>126848</requestid>
+  </revision>
+  <revision rev="228" vrev="5">
+    <srcmd5>dd132bc3f0f3e401b2077104c962d929</srcmd5>
+    <version>4.8.4</version>
+    <time>1344064677</time>
+    <user>coolo</user>
+    <comment>applied upstream patch to fix deletion of preferred launchers, bnc#757370, kde#278724. although the patch mentioned fixed in 4.9, but it looks are available on 4.8 too, I think its good to included this patch if we ships 12.2 with KDE 4.8 series (forwarded request 129244 from mlin7442)</comment>
+    <requestid>129263</requestid>
+  </revision>
+  <revision rev="229" vrev="1">
+    <srcmd5>0bfa2f2a0747f55e2e15e158de7a9396</srcmd5>
+    <version>4.8.5</version>
+    <time>1344367766</time>
+    <user>coolo</user>
+    <comment>forward to factory</comment>
+    <requestid>130169</requestid>
+  </revision>
+  <revision rev="230" vrev="1">
+    <srcmd5>c573fbc1c7dc856f87ffe93efb60f60b</srcmd5>
+    <version>4.9.1</version>
+    <time>1347342961</time>
+    <user>coolo</user>
+    <comment>- update to 4.9.1
+  * see http://kde.org/announcements/4.9.1/ for details
+- require windowmanager and xmessage,xprop, as they're needed for starting a session
+
+- update to 4.9.1
+  * see http://kde.org/announcements/4.9.1/ for details
+  
+
+- refresh patches</comment>
+    <requestid>133260</requestid>
+  </revision>
+  <revision rev="231" vrev="2">
+    <srcmd5>328ec0095a7849747a034fea10927640</srcmd5>
+    <version>4.9.1</version>
+    <time>1347832035</time>
+    <user>namtrac</user>
+    <comment>add kdm logrotate script (bnc#552449) (forwarded request 134399 from jirislaby)</comment>
+    <requestid>134454</requestid>
+  </revision>
+  <revision rev="232" vrev="1">
+    <srcmd5>bebadace16b400edeb0c8ed140e5e8b0</srcmd5>
+    <version>4.9.2</version>
+    <time>1349629650</time>
+    <user>coolo</user>
+    <comment>Update to KDE 4.9.2. Changelog is corrected.</comment>
+    <requestid>137066</requestid>
+  </revision>
+  <revision rev="233" vrev="2">
+    <srcmd5>faadf555b6879c2b7dbb9166171cd375</srcmd5>
+    <version>4.9.2</version>
+    <time>1350021969</time>
+    <user>coolo</user>
+    <comment>- require xdm as the patch kdm-sysconfig-values.diff requires
+  /var/lib/xdm/authdir/authfiles at runtime (bnc#784212) (forwarded request 137652 from christiantrippe)</comment>
+    <requestid>137700</requestid>
+  </revision>
+  <revision rev="234" vrev="1">
+    <srcmd5>794b4f4494a2ef99ff906243239bd4b6</srcmd5>
+    <version>4.9.3</version>
+    <time>1352356971</time>
+    <user>coolo</user>
+    <comment>Update regards to KDE 4.9.3</comment>
+    <requestid>140529</requestid>
+  </revision>
+  <revision rev="235" vrev="2">
+    <srcmd5>8a0c324deb5da46b0af7bcfdc2bf6744</srcmd5>
+    <version>4.9.3</version>
+    <time>1353069353</time>
+    <user>coolo</user>
+    <comment>Activating systemd support for KDE. This also drops ConsoleKit support and ConsoleKit as buildrequire. </comment>
+    <requestid>141412</requestid>
+  </revision>
+  <revision rev="236" vrev="3">
+    <srcmd5>d471714399afdf2fb5d79e376d6fed6d</srcmd5>
+    <version>4.9.3</version>
+    <time>1353133517</time>
+    <user>coolo</user>
+    <comment>Forgot to remove the last Require for ConsoleKit</comment>
+    <requestid>141600</requestid>
+  </revision>
+  <revision rev="237" vrev="1">
+    <srcmd5>572fb72ec310f78c3941e9118619b3ff</srcmd5>
+    <version>4.9.90</version>
+    <time>1354886512</time>
+    <user>namtrac</user>
+    <comment>Update to KDE 4.10 Beta 2 </comment>
+    <requestid>144267</requestid>
+  </revision>
+  <revision rev="238" vrev="1">
+    <srcmd5>7f45bf1a9f955f329a7b428075fe0080</srcmd5>
+    <version>4.9.95</version>
+    <time>1356077739</time>
+    <user>coolo</user>
+    <comment>Update KDE to KDE 4.10 RC</comment>
+    <requestid>145966</requestid>
+  </revision>
+  <revision rev="239" vrev="2">
+    <srcmd5>32afd6dc6ab1b3ae6498f7778f1ae3e2</srcmd5>
+    <version>4.9.95</version>
+    <time>1356703352</time>
+    <user>namtrac</user>
+    <comment>Clean the BuildRequirements:
+* audit-devel, bluez-devel, libsmbclient-devel are not required, and libdbusmenu-qt-devel was listed twice
+Remove obsolete -DKDE4_KCHECKPASS_PAM_SERVICE flag  (forwarded request 146488 from sumski)</comment>
+    <requestid>146501</requestid>
+  </revision>
+  <revision rev="240" vrev="1">
+    <srcmd5>aa7e2f1f37408f61a601b2cdbaee3bbf</srcmd5>
+    <version>4.9.97</version>
+    <time>1357552881</time>
+    <user>coolo</user>
+    <comment>Update KDE to KDE 4.10 RC2</comment>
+    <requestid>146994</requestid>
+  </revision>
+  <revision rev="241" vrev="2">
+    <srcmd5>9600d5d54cd569da3406bc83440565c5</srcmd5>
+    <version>4.9.97</version>
+    <time>1357651861</time>
+    <user>coolo</user>
+    <comment>Fix typo in kdm postinstall script (forwarded request 147432 from wolfi323)</comment>
+    <requestid>147435</requestid>
+  </revision>
+  <revision rev="242" vrev="3">
+    <srcmd5>03cfeb2a1348851b90d96dee3d07abc5</srcmd5>
+    <version>4.9.97</version>
+    <time>1358152937</time>
+    <user>coolo</user>
+    <comment>Remove kio_sysinfo and replace with kinfocenter that contains also openSUSE info</comment>
+    <requestid>148331</requestid>
+  </revision>
+  <revision rev="243" vrev="4">
+    <srcmd5>851bd23467034359f2788c2826791bef</srcmd5>
+    <version>4.9.97</version>
+    <time>1358198547</time>
+    <user>coolo</user>
+    <comment>Fix build failure in Factory</comment>
+    <requestid>148440</requestid>
+  </revision>
+  <revision rev="244" vrev="5">
+    <srcmd5>b177dde458931e49e520100e79ebadf9</srcmd5>
+    <version>4.9.97</version>
+    <time>1358233531</time>
+    <user>coolo</user>
+    <comment>- do not reqiure openSUSE specifics, that's what branding packages 
+  are for</comment>
+  </revision>
+  <revision rev="245" vrev="1">
+    <srcmd5>2b88f655dfec8b5657834bd349438a04</srcmd5>
+    <version>4.9.98</version>
+    <time>1358609842</time>
+    <user>coolo</user>
+    <comment>Update to RC3 and including fixes for krunner</comment>
+    <requestid>149202</requestid>
+  </revision>
+  <revision rev="246" vrev="2">
+    <srcmd5>27c11ea4e3e3d3aa8afa91f51551e16c</srcmd5>
+    <version>4.9.98</version>
+    <time>1358786274</time>
+    <user>coolo</user>
+    <comment>- Update patch plasma-branding-defaults-applets.diff to add 
+  kinfocenter to kickoff in the Computer tab (forwarded request 149329 from christiantrippe)</comment>
+    <requestid>149330</requestid>
+  </revision>
+  <revision rev="247" vrev="3">
+    <srcmd5>310297715b0e25997db8ebdd378ed344</srcmd5>
+    <version>4.9.98</version>
+    <time>1358865728</time>
+    <user>coolo</user>
+    <comment>- updated storage.diff to the one that is in review board (forwarded request 149476 from ealin)</comment>
+    <requestid>149481</requestid>
+  </revision>
+  <revision rev="248" vrev="4">
+    <srcmd5>0b76831fd1a1e7002aecddbd642f75bf</srcmd5>
+    <version>4.9.98</version>
+    <time>1359018024</time>
+    <user>coolo</user>
+    <comment>changed plasma-kickoff-newly-collapsing.diff:
+  * don't set name to null if it is equal to genericName or genericName is empty. Fixes bnc#725829 (forwarded request 149677 from wolfi323)</comment>
+    <requestid>149679</requestid>
+  </revision>
+  <revision rev="249" vrev="5">
+    <srcmd5>c255d08ca7ae640fb9771dea217be900</srcmd5>
+    <version>4.9.98</version>
+    <time>1359102597</time>
+    <user>coolo</user>
+    <comment>- changed plasma-kickoff-newly-collapsing.diff:
+  * display program icon instead of submenu icon when using reduced
+    menu depth (bnc#641916) (forwarded request 149776 from christiantrippe)</comment>
+    <requestid>149777</requestid>
+  </revision>
+  <revision rev="250" vrev="7">
+    <srcmd5>c255d08ca7ae640fb9771dea217be900</srcmd5>
+    <version>4.9.98</version>
+    <time>1359109151</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="251" vrev="8">
+    <srcmd5>5bd3fd4a913bada02918024c40b885bf</srcmd5>
+    <version>4.9.98</version>
+    <time>1359438984</time>
+    <user>coolo</user>
+    <comment>- changed kdm-cope-with-new-grub.diff
+  * kdm: don't even look for grub-set-default, we won't need it
+    (bnc#771545)
+
+This was initially fixed by coolo for 12.1 but the changed patch got lost with the 4.8 upgrade in KDF. I simply used the patch from 12.1 an did a 
+rediff. (forwarded request 149963 from christiantrippe)</comment>
+    <requestid>150022</requestid>
+  </revision>
+  <revision rev="252" vrev="1">
+    <srcmd5>164fbb31c5b99637b3b819decaa8a02a</srcmd5>
+    <version>4.10.0</version>
+    <time>1360008707</time>
+    <user>coolo</user>
+    <comment>Added the locker patch (forwarded request 151106 from sumski)</comment>
+    <requestid>151112</requestid>
+  </revision>
+  <revision rev="253" vrev="2">
+    <srcmd5>bc478f5f5e806d8018ff577d67847c38</srcmd5>
+    <version>4.10.0</version>
+    <time>1360330993</time>
+    <user>coolo</user>
+    <comment>Updated the upstream-branding package to include the upstream default ksplash and wallpaper. Also reverted a patch that caused strange borders on the screenlocker screen when the screen ratio isn't equal to the wallpaper ratio. </comment>
+    <requestid>154863</requestid>
+  </revision>
+  <revision rev="254" vrev="3">
+    <srcmd5>5101a8c54b55799449f3cad4f70a7ef2</srcmd5>
+    <version>4.10.0</version>
+    <time>1360401111</time>
+    <user>coolo</user>
+    <comment>- changed plasma-kickoff-newly-collapsing.diff:
+  * add &quot;:F&quot; to the sortOrder list if it isn't included to make sure collapsed entries are really shown (bnc#356553)
+
+depends on sr#154926 (forwarded request 154927 from wolfi323)</comment>
+    <requestid>154937</requestid>
+  </revision>
+  <revision rev="255" vrev="4">
+    <srcmd5>ed927e4a4e2b09662bb8c07768f13d8d</srcmd5>
+    <version>4.10.0</version>
+    <time>1360503395</time>
+    <user>coolo</user>
+    <comment>Recommend the kio-mtp package so that solid can communicate with Android phones. Based on bnc#765051
+</comment>
+    <requestid>155002</requestid>
+  </revision>
+  <revision rev="256" vrev="5">
+    <srcmd5>b201d2526d54b9f6bfb25ae438e24bf8</srcmd5>
+    <version>4.10.0</version>
+    <time>1360683550</time>
+    <user>coolo</user>
+    <comment>Contains several bugfixes bnc#799875, bnc#803179, bnc#802704.
+Remove the kio-mtp package, moved to KDE4-DESKTOP pattern instead</comment>
+    <requestid>155197</requestid>
+  </revision>
+  <revision rev="257" vrev="6">
+    <srcmd5>233cdf6876ae71e00736c093874cb330</srcmd5>
+    <version>4.10.0</version>
+    <time>1360753763</time>
+    <user>coolo</user>
+    <comment>- Added plasma_expire_suse_paste.diff (fixes bnc#803384) (forwarded request 155259 from christiantrippe)</comment>
+    <requestid>155261</requestid>
+  </revision>
+  <revision rev="258" vrev="7">
+    <srcmd5>41e432ffb6ef48d871d8db027e8ef7bb</srcmd5>
+    <version>4.10.0</version>
+    <time>1360872154</time>
+    <user>coolo</user>
+    <comment>Fix for tabbox rendering (forwarded request 155410 from sumski)</comment>
+    <requestid>155421</requestid>
+  </revision>
+  <revision rev="259" vrev="8">
+    <srcmd5>0754c2d4b9262828b6a59657e7e0015d</srcmd5>
+    <version>4.10.0</version>
+    <time>1361603281</time>
+    <user>coolo</user>
+    <comment>Added missing GLU BuildRequires, needed for building KInfoCenter's openGL module (forwarded request 156099 from sumski)</comment>
+    <requestid>156122</requestid>
+  </revision>
+  <revision rev="260" vrev="9">
+    <srcmd5>a66b7c3c7bf85092d6dba703d32845f7</srcmd5>
+    <version>4.10.0</version>
+    <time>1362131309</time>
+    <user>coolo</user>
+    <comment>Change default Bootmanager to &quot;Grub2&quot; in kdmrc (bnc#788867)
+ (forwarded request 156874 from wolfi323)</comment>
+    <requestid>156880</requestid>
+  </revision>
+  <revision rev="261" vrev="1">
+    <srcmd5>42e6ae0dbe468a95c56c432d78faf61a</srcmd5>
+    <version>4.10.1</version>
+    <time>1363256903</time>
+    <user>coolo</user>
+    <comment>Update to 4.10.1 (forwarded request 158852 from tittiatcoke)</comment>
+    <requestid>159012</requestid>
+  </revision>
+  <revision rev="262" vrev="2">
+    <srcmd5>033d9cbc03edc1032686ed34dbc90c84</srcmd5>
+    <version>4.10.1</version>
+    <time>1364020854</time>
+    <user>coolo</user>
+    <comment>- Add a native systemd unit for ksysguardd and exclude
+  the old init scripts for newer distros. (forwarded request 160374 from elvigia)</comment>
+    <requestid>160572</requestid>
+  </revision>
+  <revision rev="263" vrev="1">
+    <srcmd5>773a036a21cf0e41f0601c7afa930351</srcmd5>
+    <version>4.10.2</version>
+    <time>1366273242</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 163540 from m_meister)</comment>
+    <requestid>163546</requestid>
+  </revision>
+  <revision rev="264" vrev="2">
+    <srcmd5>64f0cecc334da6c38b35827d51617007</srcmd5>
+    <version>4.10.2</version>
+    <time>1366633863</time>
+    <user>coolo</user>
+    <comment>- Replace workspace_systemd_initial_support.patch with upstream
+  systemd-session-management-support-in-the-workspace.patch
+  This also makes build flag DKWORKSPACE_USE_SYSTEMD obsolete
+- Require kdebase4-artwork and kdebas4-wallpaper-default for upstream
+  branding, otherwise those packages provide the same files (forwarded request 171343 from sumski)</comment>
+    <requestid>172405</requestid>
+  </revision>
+  <revision rev="265" vrev="3">
+    <srcmd5>4ff1cf259a079c1f99caaf9eab63f69e</srcmd5>
+    <version>4.10.2</version>
+    <time>1367236741</time>
+    <user>coolo</user>
+    <comment>Cleanup (forwarded request 173576 from sumski)</comment>
+    <requestid>173582</requestid>
+  </revision>
+  <revision rev="266" vrev="1">
+    <srcmd5>06f3ec002286fed3347052e481b3f1de</srcmd5>
+    <version>4.10.3</version>
+    <time>1368715726</time>
+    <user>coolo</user>
+    <comment>- kwin provides kde4-kwin for backward compatibility (forwarded request 175729 from -miska-)</comment>
+    <requestid>175849</requestid>
+  </revision>
+  <revision rev="267" vrev="2">
+    <srcmd5>10271c511b8ee5d0ef02f09dcf8ddf3b</srcmd5>
+    <version>4.10.3</version>
+    <time>1369641021</time>
+    <user>coolo</user>
+    <comment>Remove polkit-kde-kcmmodules-1 from Requires (forwarded request 176046 from sumski)</comment>
+    <requestid>176178</requestid>
+  </revision>
+  <revision rev="268" vrev="1">
+    <srcmd5>c5317dda56cc8aa1c1259b35aa510033</srcmd5>
+    <version>4.10.4</version>
+    <time>1370923939</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>178111</requestid>
+  </revision>
+  <revision rev="269" vrev="1">
+    <srcmd5>7663d751419c592643e962d5683a4fcf</srcmd5>
+    <version>4.10.90</version>
+    <time>1373261664</time>
+    <user>coolo</user>
+    <comment>Update KDE to KDE 4.10.90</comment>
+    <requestid>181967</requestid>
+  </revision>
+  <revision rev="270" vrev="1">
+    <srcmd5>2fdb00b922b9e3a448894bf22772ec05</srcmd5>
+    <version>4.10.95</version>
+    <time>1374506068</time>
+    <user>coolo</user>
+    <comment>This change is a result of a long discussion to support multiple sessions, either on a single or multiple seats.
+
+see bnc#809806
+and https://bugzilla.redhat.com/show_bug.cgi?id=975079
+
+Current fedora patch is at 
+
+http://pkgs.fedoraproject.org/cgit/kde-workspace.git/commit/?id=f7b192c0fc78065490919f020386f010fba3a985
+
+This patch also takes the multisession/single seat case into consideration, which the fedora patch lacks (forwarded request 183840 from StefanBruens)</comment>
+    <requestid>183857</requestid>
+  </revision>
+  <revision rev="271" vrev="2">
+    <srcmd5>318f562ba72267fbe4a031b3a7524364</srcmd5>
+    <version>4.10.95</version>
+    <time>1374701923</time>
+    <user>coolo</user>
+    <comment>Fix issue reported in https://bugzilla.novell.com/show_bug.cgi?id=809806#c51 (forwarded request 184212 from StefanBruens)</comment>
+    <requestid>184219</requestid>
+  </revision>
+  <revision rev="272" vrev="1">
+    <srcmd5>a8749472d4806805867fa5052256c79a</srcmd5>
+    <version>4.10.97</version>
+    <time>1375192716</time>
+    <user>coolo</user>
+    <comment>Update KDE to KDE (RC2) 4.10.97</comment>
+    <requestid>184619</requestid>
+  </revision>
+  <revision rev="273" vrev="1">
+    <srcmd5>295335588b838f442c608e9f5c6c56d5</srcmd5>
+    <version>4.11.0</version>
+    <time>1376653685</time>
+    <user>scarabeus_factory</user>
+    <comment>Activate building of KWin's Wayland backend
+Move akonadi dataengine to calendar subpackage, so %akonadi_runtime_requires can be also moved there
+Adjust sysconfig.displaymanager-kdm for current default upstream theme
+Drop xcb-util-wm-devel BuildRequires as per upstream change between 4.10.90 and 4.10.95
+Apply helper_actions_syspath.patch only on openSUSE versions lower than 13.1, as bnc#825256 is resolved (forwarded request 195385 from sumski)</comment>
+    <requestid>195391</requestid>
+  </revision>
+  <revision rev="274" vrev="2">
+    <srcmd5>c4f1c656e4883be0d26ba38ad89ac08a</srcmd5>
+    <version>4.11.0</version>
+    <time>1376857271</time>
+    <user>scarabeus_factory</user>
+    <comment>- kdm-backend-session.patch: fix type mismatch in resource handling (forwarded request 195478 from AndreasSchwab)</comment>
+    <requestid>195510</requestid>
+  </revision>
+  <revision rev="275" vrev="3">
+    <srcmd5>e952eea1d41ab1f2f8229d6ccc9a508b</srcmd5>
+    <version>4.11.0</version>
+    <time>1376902584</time>
+    <user>scarabeus_factory</user>
+    <comment>Added few upstream fixes</comment>
+    <requestid>195574</requestid>
+  </revision>
+  <revision rev="276" vrev="4">
+    <srcmd5>4aae694822884a0292a20c3c183d4338</srcmd5>
+    <version>4.11.0</version>
+    <time>1377629383</time>
+    <user>coolo</user>
+    <comment>Added upstream patches for kde#322283, bnc#829298.</comment>
+    <requestid>196433</requestid>
+  </revision>
+  <revision rev="277" vrev="1">
+    <srcmd5>9b84826187f1663d363fce1349946be4</srcmd5>
+    <version>4.11.1</version>
+    <time>1378717898</time>
+    <user>coolo</user>
+    <comment>Added two patches from upstream master branch, for improving krunner usability (forwarded request 197878 from sumski)</comment>
+    <requestid>197880</requestid>
+  </revision>
+  <revision rev="278" vrev="2">
+    <srcmd5>c1e15525aed8ba2c596f7ef01c956ea0</srcmd5>
+    <version>4.11.1</version>
+    <time>1378894643</time>
+    <user>coolo</user>
+    <comment>Added kscreensaver-disable-sessionmanagement.diff:
+  disable session management for screensavers
+  prevents screensaver windows popping up at login (kde#314859, bnc#809835)
+ (forwarded request 198387 from wolfi323)</comment>
+    <requestid>198391</requestid>
+  </revision>
+  <revision rev="279" vrev="3">
+    <srcmd5>fcb22b2a62a9e0d7f9025ab89ebd5724</srcmd5>
+    <version>4.11.1</version>
+    <time>1379447776</time>
+    <user>coolo</user>
+    <comment>Added kwin-fix-crash.diff:
+Fixes a crash when trying to use GLX, which happened when starting KDE inside qemu (bnc#840490)
+Now with proper patch annotation :)
+(forwarded request 199417 from alarrosa)</comment>
+    <requestid>199423</requestid>
+  </revision>
+  <revision rev="280" vrev="5">
+    <srcmd5>fcb22b2a62a9e0d7f9025ab89ebd5724</srcmd5>
+    <version>4.11.1</version>
+    <time>1379662760</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="281" vrev="6">
+    <srcmd5>d9194138412cb125e4bfc4c0f01540e2</srcmd5>
+    <version>4.11.1</version>
+    <time>1380469710</time>
+    <user>coolo</user>
+    <comment>Don't propagate drops to the containment while animating (kde#324391) (forwarded request 200821 from jirislaby)</comment>
+    <requestid>201254</requestid>
+  </revision>
+  <revision rev="282" vrev="1">
+    <srcmd5>3baabb322bc001e5ff7ee457a111cfc0</srcmd5>
+    <version>4.11.2</version>
+    <time>1380808399</time>
+    <user>scarabeus_factory</user>
+    <comment>resubmit to make check-request happy</comment>
+    <requestid>202013</requestid>
+  </revision>
+  <revision rev="283" vrev="2">
+    <srcmd5>5545bfa936dbd88babdf8ae9d6bb02ec</srcmd5>
+    <version>4.11.2</version>
+    <time>1381322561</time>
+    <user>scarabeus_factory</user>
+    <comment>Fix click on trashcan plasmoid when on desktop and widgets are unlocked (kde#325330) (forwarded request 202555 from wolfi323)</comment>
+    <requestid>202647</requestid>
+  </revision>
+  <revision rev="284" vrev="3">
+    <srcmd5>82715bff3d1dadf2e0f5228009983dc3</srcmd5>
+    <version>4.11.2</version>
+    <time>1381735712</time>
+    <user>scarabeus_factory</user>
+    <comment>- Adjust kdm-sysconfig-values.diff so it doesn't dictates AllowNullPasswd option (bnc#833634)
+- Make main package Recommends kde-gtk-config (bnc#845592)
+
+wanted for 13.1 (forwarded request 203014 from sumski)</comment>
+    <requestid>203038</requestid>
+  </revision>
+  <revision rev="285" vrev="4">
+    <srcmd5>da1bc11250fd1108736826cd7de6e0d6</srcmd5>
+    <version>4.11.2</version>
+    <time>1382012195</time>
+    <user>scarabeus_factory</user>
+    <comment>Adjust kdm-sysconfig-values.diff to set default boot loader to &quot;Grub2&quot; in kdm's kcm as well (bnc#845809)
+
+Maybe something for 13.1? (forwarded request 203286 from wolfi323)</comment>
+    <requestid>203427</requestid>
+  </revision>
+  <revision rev="286" vrev="1">
+    <srcmd5>3895836e0358936739a84259807d4f7a</srcmd5>
+    <version>4.11.3</version>
+    <time>1385984210</time>
+    <user>coolo</user>
+    <comment>Update to KDE Workspace 4.11.3 (This is the required version for KDE 4.12). Due to the change to the KDE Framework 5, workspace has been frozen and only 4.11.x releases will be created. So KDE 4.12 will be released with kdebase4-workspace 4.11.x </comment>
+    <requestid>207592</requestid>
+  </revision>
+  <revision rev="287" vrev="1">
+    <srcmd5>de9a02abe5f401c1660f4ad72f482602</srcmd5>
+    <version>4.11.4</version>
+    <time>1386768760</time>
+    <user>coolo</user>
+    <comment>Update to KDE 4.11.97</comment>
+    <requestid>210145</requestid>
+  </revision>
+  <revision rev="288" vrev="2">
+    <srcmd5>d68a68e96c2bc36ea8ac20620839b243</srcmd5>
+    <version>4.11.4</version>
+    <time>1387455310</time>
+    <user>coolo</user>
+    <comment>KDE 4.12 Release</comment>
+    <requestid>211484</requestid>
+  </revision>
+  <revision rev="289" vrev="1">
+    <srcmd5>bb025b4e2ef10f7e7e14279fd7eb0883</srcmd5>
+    <version>4.11.5</version>
+    <time>1389617383</time>
+    <user>coolo</user>
+    <comment>Added screenlocker-fix-mousecursor-blanking.diff:
+  Allow Screensavers to blank the mouse cursor again (kde#311571, kde#316459)
+ (forwarded request 213219 from wolfi323)</comment>
+    <requestid>213532</requestid>
+  </revision>
+  <revision rev="290" vrev="2">
+    <srcmd5>c0596d0e9cf37fca968dce0424424b89</srcmd5>
+    <version>4.11.5</version>
+    <time>1390197727</time>
+    <user>coolo</user>
+    <comment>- Nothing requires kactivities4, recommending it is sufficient
+
+
+Compare with: 
+
+% grep -r kactivitie
+plasma/desktop/shell/CMakeLists.txt:target_link_libraries(kdeinit_plasma-desktop ${KDE4_PLASMA_LIBS} ${KDE4_KIO_LIBS} ${KDE4_KFILE_LIBS} ${KDE4_KTEXTEDITOR_LIBS} ${KDE4_KIDLETIME_LIBS} ${QT_QTSCRIPT_LIBRARY} ${KACTIVITIES_LIBRARY} kworkspace kactivities plasmagenericshell ${QT_QTDECLARATIVE_LIBRARY})
+libs/taskmanager/taskitem.cpp:#include &lt;kactivities/info.h&gt;
+kwin/kcmkwin/kwinrules/ruleswidget.cpp:    // cloned from kactivities/src/lib/core/consumer.cpp
+kwin/activities.h:    // cloned from kactivities/src/lib/core/consumer.cpp
+kwin/CMakeLists.txt:OPTION(KWIN_BUILD_ACTIVITIES &quot;Enable building of KWin with kactivities support&quot; ON)
+CMakeLists.txt:                       URL &quot;https://projects.kde.org/kactivities&quot;
+
+So there's some minimal support in kwin and a plasma plugin. (forwarded request 213680 from saschpe)</comment>
+    <requestid>214253</requestid>
+  </revision>
+  <revision rev="291" vrev="3">
+    <srcmd5>cf62c198a3df0c6a06023ef2a296f8b9</srcmd5>
+    <version>4.11.5</version>
+    <time>1390284132</time>
+    <user>coolo</user>
+    <comment>plasma-calendar recommends akonadi-runtime instead of kde4_akonadi_requires
+No supplement of packageand(akonadi-runtime:kdebase4-workspace)
+[the same as has already applied at Sun Jul  1 20:26:42 UTC 2012] (forwarded request 214406 from DarkSS)</comment>
+    <requestid>214520</requestid>
+  </revision>
+  <revision rev="292" vrev="1">
+    <srcmd5>8bdf0b5c9b30eeb35568404fbb618c56</srcmd5>
+    <version>4.11.6</version>
+    <time>1392879291</time>
+    <user>coolo</user>
+    <comment>Update to KDE 4.12.2</comment>
+    <requestid>222840</requestid>
+  </revision>
+  <revision rev="293" vrev="2">
+    <srcmd5>2abb66a577beca3fe0934cf75238d34c</srcmd5>
+    <version>4.11.6</version>
+    <time>1393568448</time>
+    <user>coolo</user>
+    <comment>Added various bugfix patches from upstream 4.11 branch: amongst other issues, resolved where: kde#331403, kde#326352, etc</comment>
+    <requestid>224154</requestid>
+  </revision>
+  <revision rev="294" vrev="1">
+    <srcmd5>679cfc3e82b87bbe158e61ba16125a6a</srcmd5>
+    <version>4.11.7</version>
+    <time>1395159408</time>
+    <user>coolo</user>
+    <comment>Updated changes file as requested by factory reviewers. </comment>
+    <requestid>226382</requestid>
+  </revision>
+  <revision rev="295" vrev="1">
+    <srcmd5>d0f281a2dea5895c974e6368685e4295</srcmd5>
+    <version>4.11.8</version>
+    <time>1396622108</time>
+    <user>coolo</user>
+    <comment>Update to 4.11.8</comment>
+    <requestid>228940</requestid>
+  </revision>
+  <revision rev="296" vrev="2">
+    <srcmd5>40af7ef1b5e827d799d79c1a20524585</srcmd5>
+    <version>4.11.8</version>
+    <time>1397450951</time>
+    <user>coolo</user>
+    <comment>Added kdm-fix-resumption-from-console-mode.patch:
+  * fix resumption from console mode when monotonic clock is in use 
+    (kde#312947, bnc#756198)
+- Added screenlocker-always-show-password-dialog-when-needed.patch:
+  * password input dialog was not shown under certain circumstances
+    (kde#327947, kde#329076, bnc#864305)
+- Added screenlocker-dont-leak-screensaver-processes.patch:
+  * screensaver processes might keep running in background when
+    unlocking the screen (kde#224200, bnc#809835)
+
+Please note:
+The screenlocker patches are not upstream yet.
+The first one is in review at the moment: https://git.reviewboard.kde.org/r/117091/
+I want to push the second one as well, but I will do that when the first one is accepted, as it touches the same parts of the code.
+
+I'm using both patches for a week now, they work as expected here, so I decided to submit them now anyway.
+ (forwarded request 229660 from wolfi323)</comment>
+    <requestid>229704</requestid>
+  </revision>
+  <revision rev="297" vrev="1">
+    <srcmd5>74128cd8edb4038491d9948ef7292259</srcmd5>
+    <version>4.11.9</version>
+    <time>1398863144</time>
+    <user>coolo</user>
+    <comment>Split out default cursors into separate oxygen-cursors4 package, for allowing users they choose between cursors coming from kdebase4-workspace and future Plasma Next releses (forwarded request 232063 from sumski)</comment>
+    <requestid>232064</requestid>
+  </revision>
+  <revision rev="298" vrev="2">
+    <srcmd5>bcbe83c98c84eb0700ae36780027e44c</srcmd5>
+    <version>4.11.9</version>
+    <time>1400734376</time>
+    <user>coolo</user>
+    <comment>Changed more values back to the original upstream ones. This should now allow normal users to shutdown the system and resolve the issue detected in openqa for SR#234834</comment>
+    <requestid>234962</requestid>
+  </revision>
+  <revision rev="299" vrev="3">
+    <srcmd5>b679ece01c225cf9d81cd50c45045684</srcmd5>
+    <version>4.11.9</version>
+    <time>1401345817</time>
+    <user>coolo</user>
+    <comment>Build with pkgconfig(libudev), not pkgconfig(udev)</comment>
+    <requestid>235524</requestid>
+  </revision>
+  <revision rev="300" vrev="1">
+    <srcmd5>a339c35b1189fcf1159e12100fd82cf9</srcmd5>
+    <version>4.11.10</version>
+    <time>1403176503</time>
+    <user>coolo</user>
+    <comment>Update to KDE 4.13.2. Resolves wrong changelog</comment>
+    <requestid>237648</requestid>
+  </revision>
+  <revision rev="301" vrev="1">
+    <srcmd5>a5e93db06e0c9016bfb4e77e631f1029</srcmd5>
+    <version>4.11.11</version>
+    <time>1405520369</time>
+    <user>coolo</user>
+    <comment>Update to 4.13.80</comment>
+    <requestid>240749</requestid>
+  </revision>
+  <revision rev="302" vrev="2">
+    <srcmd5>e370302a3a1c81df1f6d1f81c8d241fd</srcmd5>
+    <version>4.11.11</version>
+    <time>1408549891</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>245026</requestid>
+  </revision>
+  <revision rev="303" vrev="4">
+    <srcmd5>e370302a3a1c81df1f6d1f81c8d241fd</srcmd5>
+    <version>4.11.11</version>
+    <time>1409301331</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="304" vrev="5">
+    <srcmd5>a878441159a31587a7a1fd10fdab701a</srcmd5>
+    <version>4.11.11</version>
+    <time>1409417752</time>
+    <user>coolo</user>
+    <comment>- Package gui_platform plugins within libs subpackage: the plugin
+  is not shared library but is important for some core features of KDE applications (correct filedialog, style loading, etc)</comment>
+    <requestid>246822</requestid>
+  </revision>
+  <revision rev="305" vrev="6">
+    <srcmd5>f897424f9215702520fd1bbd6f85308f</srcmd5>
+    <version>4.11.11</version>
+    <time>1410204517</time>
+    <user>coolo</user>
+    <comment>- Create new addons subpackage: split out systemsettings and addons for co-instability with Plasma5 and to maintain the ability to maintain settings for kdelibs4 based applications
+- Move all oxygen components in liboxygenstyle subpackage
+- Add libs subpackage to baselibs (needed for liboxygenstyle)
+- Harden interdependancies of some packages</comment>
+    <requestid>247863</requestid>
+  </revision>
+  <revision rev="306" vrev="1">
+    <srcmd5>402025818a83e2563e37085f56f9737c</srcmd5>
+    <version>4.11.12</version>
+    <time>1411926991</time>
+    <user>coolo</user>
+    <comment>KActivities4 is now a hard requirement (bnc#896660)</comment>
+    <requestid>252027</requestid>
+  </revision>
+  <revision rev="307" vrev="2">
+    <srcmd5>2e3f402b9f1151ca57c278453b7de665</srcmd5>
+    <version>4.11.12</version>
+    <time>1412533689</time>
+    <user>coolo</user>
+    <comment>Fix bnc#768896 by porting patch for KDE5 (forwarded request 253200 from ftake)</comment>
+    <requestid>253253</requestid>
+  </revision>
+  <revision rev="308" vrev="1">
+    <srcmd5>40a25d74581ed8b053d46cdda63e0832</srcmd5>
+    <version>4.11.14</version>
+    <time>1416425075</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE 4.14.3 and resolve boo#902657</comment>
+    <requestid>261391</requestid>
+  </revision>
+  <revision rev="309" vrev="2">
+    <srcmd5>3e8e3efd20dff9a8d37c9f0325e35303</srcmd5>
+    <version>4.11.14</version>
+    <time>1420318929</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266480</requestid>
+  </revision>
+  <revision rev="310" vrev="1">
+    <srcmd5>d3d7e1490bd5a7de3edf069ac441b292</srcmd5>
+    <version>4.11.15</version>
+    <time>1421874494</time>
+    <user>coolo</user>
+    <comment>Update to KDE Apps 14.12.1</comment>
+    <requestid>281104</requestid>
+  </revision>
+  <revision rev="311" vrev="1">
+    <srcmd5>0066fdf402f7fda380a50070fe6d6982</srcmd5>
+    <version>4.11.16</version>
+    <time>1423668765</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Apps 14.12.2. Bugfix release</comment>
+    <requestid>284278</requestid>
+  </revision>
+  <revision rev="312" vrev="1">
+    <srcmd5>8959a8d06d4a35b8a8d04860c44737e7</srcmd5>
+    <version>4.11.17</version>
+    <time>1426063396</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 14.12.3</comment>
+    <requestid>289384</requestid>
+  </revision>
+  <revision rev="313" vrev="2">
+    <srcmd5>9d51e9784f4f10c94a37f4988c491ad7</srcmd5>
+    <version>4.11.17</version>
+    <time>1427652869</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293074</requestid>
+  </revision>
+  <revision rev="314" vrev="1">
+    <srcmd5>f7cc67804087401c84a655c8c9bb02f3</srcmd5>
+    <version>4.11.18</version>
+    <time>1431365545</time>
+    <user>coolo</user>
+    <comment>Require kscreen &lt; 5.3.  Is intended for Staging I</comment>
+    <requestid>304648</requestid>
+  </revision>
+  <revision rev="315" vrev="1">
+    <srcmd5>a97690e23eadc89de21e0bab7350db64</srcmd5>
+    <version>4.11.19</version>
+    <time>1431673414</time>
+    <user>coolo</user>
+    <comment>LT Support release based on KDE Applications 15.04.1</comment>
+    <requestid>306897</requestid>
+  </revision>
+  <revision rev="316" vrev="2">
+    <srcmd5>34161c09a720dab277060429e6d74fbe</srcmd5>
+    <version>4.11.19</version>
+    <time>1432157489</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307747</requestid>
+  </revision>
+  <revision rev="317" vrev="1">
+    <srcmd5>563d9d7c9842b3d61731dccb65eb016e</srcmd5>
+    <version>4.11.20</version>
+    <time>1433404350</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Applications 15.04.2</comment>
+    <requestid>309893</requestid>
+  </revision>
+  <revision rev="318" vrev="1">
+    <srcmd5>02b958a59d464f51716d0c144f182391</srcmd5>
+    <version>4.11.21</version>
+    <time>1436888561</time>
+    <user>coolo</user>
+    <comment>LTS update</comment>
+    <requestid>316355</requestid>
+  </revision>
+  <revision rev="319" vrev="2">
+    <srcmd5>2c303b8e58901e2fa5395d56eee1398c</srcmd5>
+    <version>4.11.21</version>
+    <time>1437398030</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316995</requestid>
+  </revision>
+  <revision rev="320" vrev="1">
+    <srcmd5>22740f0a88200953c921b96adcf7a987</srcmd5>
+    <version>4.11.22</version>
+    <time>1443071790</time>
+    <user>coolo</user>
+    <comment>Hopefully now is everything correct regarding SLE and Leap</comment>
+    <requestid>331732</requestid>
+  </revision>
+  <revision rev="321" vrev="2">
+    <srcmd5>abe95b30e31c9a0e79636b4611edbaa2</srcmd5>
+    <version>4.11.22</version>
+    <time>1444636883</time>
+    <user>coolo</user>
+    <comment>- Require kscreen only on older releases
+- Devel subpackage doesn't need main subpackage
+
+- Changed usage of %{is_opensuse} to work when not defined</comment>
+    <requestid>337921</requestid>
+  </revision>
+  <revision rev="322" vrev="3">
+    <srcmd5>34879d683872b672b9e636d00cf200df</srcmd5>
+    <version>4.11.22</version>
+    <time>1447587976</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343764</requestid>
+  </revision>
+  <revision rev="323" vrev="4">
+    <srcmd5>583963804e4c311cd4c28abe09cc4404</srcmd5>
+    <version>4.11.22</version>
+    <time>1450364041</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348230</requestid>
+  </revision>
+  <revision rev="324" vrev="5">
+    <srcmd5>fdb4d655285e36f1c427f7b662992789</srcmd5>
+    <version>4.11.22</version>
+    <time>1453508024</time>
+    <user>dimstar_suse</user>
+    <comment>Drop the upstream branding package. No longer required. </comment>
+    <requestid>355036</requestid>
+  </revision>
+  <revision rev="325" vrev="6">
+    <srcmd5>1fb4fefa3edd75655513a9bca50057af</srcmd5>
+    <version>4.11.22</version>
+    <time>1464689465</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398047</requestid>
+  </revision>
+  <revision rev="326" vrev="7">
+    <srcmd5>e6b6fb90c538f1cb092450a65e5f489d</srcmd5>
+    <version>4.11.22</version>
+    <time>1493019952</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>484856</requestid>
+  </revision>
+  <revision rev="327" vrev="8">
+    <srcmd5>66d829b5c4cd04d9db3708b77672449c</srcmd5>
+    <version>4.11.22</version>
+    <time>1495883264</time>
+    <user>dimstar_suse</user>
+    <comment>- Update gcc7-fix.diff to fix another error reported by GCC7</comment>
+    <requestid>495628</requestid>
+  </revision>
+  <revision rev="328" vrev="9">
+    <srcmd5>71e0cd6530d670588f88abd3d3f113aa</srcmd5>
+    <version>4.11.22</version>
+    <time>1504520545</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't BuildRequire qalculate to fix building
+  (no point in fixing)</comment>
+    <requestid>519663</requestid>
+  </revision>
+  <revision rev="329" vrev="10">
+    <srcmd5>bb51a401d699ff81a93fec8d32272871</srcmd5>
+    <version>4.11.22</version>
+    <time>1508769340</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535828</requestid>
+  </revision>
+  <revision rev="330" vrev="11">
+    <srcmd5>845b206318ffdade68a52b0a93bdc9a4</srcmd5>
+    <version>4.11.22</version>
+    <time>1512041862</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)</comment>
+    <requestid>544899</requestid>
+  </revision>
+  <revision rev="331" vrev="12">
+    <srcmd5>0b0263a5f0d210f7634f506c0f487556</srcmd5>
+    <version>4.11.22</version>
+    <time>1512433581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547677</requestid>
+  </revision>
+  <revision rev="332" vrev="13">
+    <srcmd5>472fd1f93ef15e9b15e66f822bf88c7e</srcmd5>
+    <version>4.11.22</version>
+    <time>1512990068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555899</requestid>
+  </revision>
+  <revision rev="333" vrev="14">
+    <srcmd5>7819b3f5412d8c37a586f88660f0513f</srcmd5>
+    <version>4.11.22</version>
+    <time>1515505619</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove Requires: polkit-kde-agent-1 as it got dropped</comment>
+    <requestid>561321</requestid>
+  </revision>
+  <revision rev="334" vrev="15">
+    <srcmd5>07de4eb0ea5f624d6d66c798114e660e</srcmd5>
+    <version>4.11.22</version>
+    <time>1519902314</time>
+    <user>dimstar_suse</user>
+    <comment>- Use SPDX3.0 license tags and package COPYING as %license.
+
+- Add explicit BuildReq: pkgconfig(xkbcommon-x11), (xkbfile),
+  (xcomposite), (xdmcp) and (xft)
+
+- Drop the build of python-kdebase4 as that python-kde4 is no
+- Replace references to /var/adm/fillup-templates with new</comment>
+    <requestid>580610</requestid>
+  </revision>
+  <revision rev="335" vrev="16">
+    <srcmd5>6de59a7129f679ced1c89200cfd1dbca</srcmd5>
+    <version>4.11.22</version>
+    <time>1545222583</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove gpsd-devel BuildRequires, not only it breaks with latest
+  gpsd, but it is also completely unused (Plasma 4.x is no longer
+  present in any supported openSUSE version)</comment>
+    <requestid>652170</requestid>
+  </revision>
+  <revision rev="336" vrev="17">
+    <srcmd5>0be18ad4df228bc21d33d4d55ff3ccfa</srcmd5>
+    <version>4.11.22</version>
+    <time>1553699812</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the last %kde4_pimlibs_requires line.
+  Nothing should require kdepimlibs4 anymore.
+</comment>
+    <requestid>688900</requestid>
+  </revision>
+  <revision rev="337" vrev="18">
+    <srcmd5>1ee2b5328986756ac29e1293a9ef3ebb</srcmd5>
+    <version>4.11.22</version>
+    <time>1565362184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721851</requestid>
+  </revision>
+</revisionlist>

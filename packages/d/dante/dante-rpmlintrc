@@ -1,0 +1,12 @@
+#
+# rpmlint says: 
+#
+# dante.x86_64: E: shlib-policy-name-error (Badness: 10000) libdsocks
+# Your package contains a single shared library but is not named after its
+# SONAME.
+#
+# This is a false positive. libdsocks.so is a module (in libtool lingo)
+# that is dlopened, strictly tied to /usr/bin/socksify, and thus
+# shlib policy does not apply to it.
+#
+addFilter("shlib-policy-name-error")

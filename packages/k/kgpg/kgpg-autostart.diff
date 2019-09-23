@@ -1,0 +1,7 @@
+--- org.kde.kgpg.desktop	2008/07/21 09:57:19	1.1
++++ org.kde.kgpg.desktop	2008/07/21 09:57:26
+@@ -118,3 +118,4 @@
+ X-KDE-autostart-condition=kgpgrc:User Interface:AutoStart:false
+ 
+ Categories=Qt;KDE;Utility;X-KDE-Utilities-PIM;
++OnlyShowIn=KDE;

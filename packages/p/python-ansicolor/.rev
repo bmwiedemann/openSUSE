@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3064d5f865827395c6fa275fe8d99269</srcmd5>
+    <version>0.2.6</version>
+    <time>1527933975</time>
+    <user>dimstar_suse</user>
+    <comment>ANSI color output and colored highlighting and diffing</comment>
+    <requestid>612078</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>874ee4f361c7e4e8c3596b0b8631779f</srcmd5>
+    <version>0.2.6</version>
+    <time>1533045702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626406</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8528c3b87591881b0d11d8fdf29f86d3</srcmd5>
+    <version>0.2.6</version>
+    <time>1544631892</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653911</requestid>
+  </revision>
+</revisionlist>

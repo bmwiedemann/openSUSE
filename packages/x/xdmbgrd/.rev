@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b51f13c7d1db84dc26ce02193207aabf</srcmd5>
+    <version>0.6</version>
+    <time>1168904526</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="91">
+    <srcmd5>2f7c2abe90bc03566063a3dab5d49088</srcmd5>
+    <version>0.6</version>
+    <time>1191537621</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="194">
+    <srcmd5>2f7c2abe90bc03566063a3dab5d49088</srcmd5>
+    <version>0.6</version>
+    <time>1191537621</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="195">
+    <srcmd5>71a1cebb0abdf956563f2b9408efa03d</srcmd5>
+    <version>0.6</version>
+    <time>1231780994</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="197">
+    <srcmd5>71a1cebb0abdf956563f2b9408efa03d</srcmd5>
+    <version>0.6</version>
+    <time>1231780994</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="198">
+    <srcmd5>c6340490c6b1c78c815d33ffa71b1901</srcmd5>
+    <version>0.6</version>
+    <time>1268926549</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="200">
+    <srcmd5>c6340490c6b1c78c815d33ffa71b1901</srcmd5>
+    <version>0.6</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="201">
+    <srcmd5>c6340490c6b1c78c815d33ffa71b1901</srcmd5>
+    <version>0.6</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="204">
+    <srcmd5>c6340490c6b1c78c815d33ffa71b1901</srcmd5>
+    <version>0.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="206">
+    <srcmd5>c6340490c6b1c78c815d33ffa71b1901</srcmd5>
+    <version>0.6</version>
+    <time>1319182582</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="207">
+    <srcmd5>511c7cc4ea4f66610fa055ae31e660a8</srcmd5>
+    <version>0.6</version>
+    <time>1323195264</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="209">
+    <srcmd5>511c7cc4ea4f66610fa055ae31e660a8</srcmd5>
+    <version>0.6</version>
+    <time>1340184341</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="211">
+    <srcmd5>511c7cc4ea4f66610fa055ae31e660a8</srcmd5>
+    <version>0.6</version>
+    <time>1359110602</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="212">
+    <srcmd5>b752e17f37ecefcd12bc8d8c70ac4662</srcmd5>
+    <version>0.6</version>
+    <time>1365426256</time>
+    <user>coolo</user>
+    <comment>- Cleanup spec file (forwarded request 162731 from namtrac)</comment>
+    <requestid>162891</requestid>
+  </revision>
+  <revision rev="15" vrev="214">
+    <srcmd5>b752e17f37ecefcd12bc8d8c70ac4662</srcmd5>
+    <version>0.6</version>
+    <time>1379665010</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="215">
+    <srcmd5>9e610635d408cd9c61e5dd4756cdd8c1</srcmd5>
+    <version>0.6</version>
+    <time>1396163462</time>
+    <user>coolo</user>
+    <comment>- fix alignment of embedded data (thanks to matz@suse.com for
+  the debugging) (forwarded request 227812 from dirkmueller)</comment>
+    <requestid>228177</requestid>
+  </revision>
+  <revision rev="17" vrev="216">
+    <srcmd5>4e978518cb93fc48d93218dcb0323855</srcmd5>
+    <version>0.6</version>
+    <time>1407227057</time>
+    <user>coolo</user>
+    <comment>- Change title/subject to replace SuSE with SUSE (bnc#888992)</comment>
+    <requestid>243387</requestid>
+  </revision>
+  <revision rev="18" vrev="218">
+    <srcmd5>4e978518cb93fc48d93218dcb0323855</srcmd5>
+    <version>0.6</version>
+    <time>1409303692</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="219">
+    <srcmd5>76ed98e6a14b0718b21158542c2b7537</srcmd5>
+    <version>0.6</version>
+    <time>1415118493</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259107</requestid>
+  </revision>
+  <revision rev="20" vrev="220">
+    <srcmd5>a6c4e9520e222b639e97208f1a9ab36c</srcmd5>
+    <version>0.6</version>
+    <time>1501227940</time>
+    <user>dimstar_suse</user>
+    <comment>Update xdmbgrd-piggyback.dif to not include PID in piggyback
+  temp filenames to generate reproducible output (forwarded request 512730 from bmwiedemann)</comment>
+    <requestid>512735</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c956c743882ab84933b7ddc13b07123d</srcmd5>
+    <version>1.03</version>
+    <time>1485511681</time>
+    <user>dimstar_suse</user>
+    <comment>Add Google Authenticator pam module to Tumbleweed</comment>
+    <requestid>449434</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bf22f5b577552ec37406ebe8e01f382e</srcmd5>
+    <version>1.03</version>
+    <time>1489345540</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly package files installed by make install into _docdir:
+  rpm 4.13 no longer implicitly packages those files.</comment>
+    <requestid>478726</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fe11077c0055d0f9378f3cabc0336b47</srcmd5>
+    <version>1.06</version>
+    <time>1558037277</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.06</comment>
+    <requestid>703125</requestid>
+  </revision>
+</revisionlist>

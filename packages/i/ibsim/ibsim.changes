@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Thu Apr 18 07:52:57 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Remove unneeded build dependencies
+
+-------------------------------------------------------------------
+Wed Apr 17 08:07:59 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to version 0.8
+  - Extended speed support including HDR and FDR10
+  - 2x link support
+  - Link speed, espeed, and width change support
+  - Support for PortXmitWait field in PortCounters
+  - Minor changes/bug fixes
+
+-------------------------------------------------------------------
+Fri Jun 15 05:55:57 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update Source and URL as ibsim was moved to GitHub
+- Add a _service file to be able to auto-fetch from github
+
+-------------------------------------------------------------------
+Fri Jun 23 15:40:51 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Replace dependency from libibmad-devel to infiniband-diags-devel
+
+-------------------------------------------------------------------
+Thu Jun  8 08:40:42 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to version 0.7
+  * PerformanceSet handling for enhanced switch port 0
+  * Fix incorrectly updated port counters in pc_updated()
+  * Invalidate PerformanceSet commands with no port number
+  * Fix parsing of port number in PerformanceSet command
+  * Allocate MFT according to number of switch ports
+
+
+-------------------------------------------------------------------
+Wed Mar 29 08:02:00 CEST 2017 - pth@suse.de
+
+- Make dependencies on libs now coming from rdma-core versioned.
+
+-------------------------------------------------------------------
+Thu Mar 10 14:21:46 CET 2016 - pth@suse.de
+
+- Update to latest git version 0.6-gitf9acb41 (bsc#970668):
+  * sim_cmd.c: PerformanceSet handling for enhanced switch port 0
+    Setting the perf counters of the port 0 is only allowed when
+    the node is a switch with an enhanced port 0
+
+    * sim_mad.c: Fix incorrectly updated port counters in pc_updated()
+      When the IB packet gets out of the source port,
+      the Xmit fields of the source port are now updated.
+
+    * sim_cmd.c: Invalidate PerformanceSet commands with no port number
+      Syntax: sim> PerformanceSet "nodeid"[port] [attribute].[field]=[value]
+
+    * sim_cmd.c: Fix parsing of port number in PerformanceSet command
+      Syntax: sim> PerformanceSet "nodeid"[port] [attribute].[field]=[value]
+
+    * ibsim: Allocate MFT according to number of switch ports
+      Calculate number of port masks according to number of switch ports
+      and allocate MFT accordingly
+
+- Include ChangeLog generated from git log.
+- Add ibsim-fix_type_punning.patch to replace type-punning by
+  memcpy.
+
+-------------------------------------------------------------------
+Wed Jun 25 12:06:46 CEST 2014 - pth@suse.de
+
+- Don't use a full source URL as a package with the current version
+  isn't anymore available standalone.
+
+-------------------------------------------------------------------
+Tue Jun  3 11:24:34 CEST 2014 - pth@suse.de
+
+- Update to OFED 3.12 final.
+
+-------------------------------------------------------------------
+Fri Feb 14 13:31:50 CET 2014 - pth@suse.de
+
+- Remove an empty macro which the rpm parser won't grok.
+
+-------------------------------------------------------------------
+Thu Feb 13 17:14:39 CET 2014 - pth@suse.de
+
+- Update to 0.6 for fate#315488. No Changelog in package.
+- Use full source URI and don't recompress the tarball.
+
+-------------------------------------------------------------------
+Fri Jan 24 18:50:08 CET 2014 - pth@suse.de
+
+- Update to OFED 3.12 daily
+
+-------------------------------------------------------------------
+Tue May  8 18:27:25 CEST 2012 - pth@suse.de
+
+- BuildRequire automake, autoconf and libtool.
+
+-------------------------------------------------------------------
+Thu Feb  3 21:26:05 CET 2011 - ro@suse.de
+
+- correct buildrequirs to libibmad-devel 
+
+-------------------------------------------------------------------
+Fri Oct 29 17:29:45 UTC 2010 - stefan.fent@novell.com
+
+- correct requires to libibumad-devel 
+
+-------------------------------------------------------------------
+Wed Oct 27 04:41:54 UTC 2010 - jjolly@novell.com
+
+- Updated to v0.5-0.1.g327c3d8 from OFED 1.5.2
+
+-------------------------------------------------------------------
+Thu Dec 11 05:20:04 CET 2008 - jjolly@suse.de
+
+- Updated to v0.5 from OFED 1.4 GA
+  - No changelog provided
+
+-------------------------------------------------------------------
+Thu Nov 13 12:47:43 CET 2008 - ro@suse.de
+
+- excludearch s390 
+
+-------------------------------------------------------------------
+Mon Oct 27 20:30:36 CET 2008 - jjolly@suse.de
+
+- Updated to version from OFED 1.4 rc3
+- bzipped source tarball
+
+-------------------------------------------------------------------
+Wed Sep 10 15:21:09 CEST 2008 - jjolly@suse.de
+
+- Recreated the package for SLES11
+

@@ -1,0 +1,11 @@
+--- src/wavedata.c	2009-11-25 13:53:57.000000000 +0000
++++ src/wavedata.c	2009-11-25 13:54:07.000000000 +0000
+@@ -38,7 +38,7 @@
+ /* Get LADPSA_PATH, if available */
+ 	ladspa_path = getenv("LADSPA_PATH");
+ 	if (!ladspa_path)
+-		ladspa_path = "/usr/lib/ladspa:/usr/local/lib/ladspa";
++		ladspa_path = "/usr/lib/ladspa:/usr/local/lib/ladspa/usr/lib64/ladspa:/usr/local/lib64/ladspa";
+ 
+ 	start = ladspa_path;
+ 	while (*start != '\0')

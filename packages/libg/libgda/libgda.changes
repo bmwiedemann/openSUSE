@@ -1,0 +1,1303 @@
+-------------------------------------------------------------------
+Wed Apr 10 09:37:19 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.2.8 (bsc#1128934):
+  + Fix a typo on sv translation
+  + Please note: releases 5.2.6 and 5.2.7 were unable to be
+    published at downdload.gnome.org
+- Changes from version 5.2.4:
+  + SQLite provider uses system installed one by default
+  + Revome build's date from documentation
+  + introspection: removed system install in favor of --prefix
+  + Fixed compilation on MacOS
+  + All Vala bindings and Vala extensions are built by default
+    using --enable-vala, added --disable* switch to disable some or
+    all of them
+  + Fixes on outdated unit tests
+  + Removed unused Vala extensions
+  + GdaConnection has removed the use of g_object_weak_*, improving
+    multi-threading behaviour
+  + Prepared statements now use GWeakRef for weak references
+  + GdaDataPivot use instance providers and locking
+  + GdaVConnectionDataModel use GRecMutex
+  + Updated SQLite to 3.8.11.1
+  + Fix SQLCipher build by embedding source code for 3.4.2 version
+  + Fix SQLCipher disabling
+  + Updated GObject Introspection annotations
+  + Fix Doc generation
+  + Bugs corrected: #787685 #789382 #761560 #761529 #760420 #761424
+    #754263 #754208
+  + Corrected HTML output containing <SCRIPT> tag
+  + Correct some truncated help strings
+  + Don't use (deprecated) g_thread_supported()
+  + MySQL meta data: fixed case where schema is incomplete in MySQL
+    database
+  + Allow introspection for gda_sql_builder_add_cond_v()
+  + SQLite: handle WITHOUT ROWID without any error
+  + Updated translations.
+- Rebase libgda-5.2.4-nojavah.patch: most of it was merged in time
+  for 5.2.8, except one chunk.
+- Drop libgda-utf.patch: no longer required.
+- Add libgda-no-libgee.patch: do not require libgee, taken from
+  upstream git.
+- Add libgda-enable-gdaui-gi.patch: Fix configure handling of
+  --enable-gdaui-gi, taken from git.
+- Add libgda-no-pg_config.patch: Don't use pg_config, but rather
+  pkgconfig: libgda does not build a postgresql server module.
+- Pass --with-postgres to configure: ensure to build pgsql support.
+
+-------------------------------------------------------------------
+Thu Nov 15 10:12:16 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update libgda-jre10.patch: Support current and future Java
+  versions (up to 19).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:34:19 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jan  8 12:37:54 UTC 2018 - fstrba@suse.com
+
+- Added patches:
+  * libgda-jre10.patch: detect JRE 10's version string.
+  * libgda-5.2.4-nojavah.patch: instead of javah invocation, use
+    javac's -h option; this bumps build requirement to
+    java-devel >= 1.8
+- Modified patches:
+  * libgda-jre18.patch
+  * libgda-jre9.patch
+    + Don't patch generated configure, but the source java.m4 file
+- Run spec cleaner and add dependency on autoconf, automake and
+  libtool in order to regenearate the configure and Makefile.in
+  files.
+
+-------------------------------------------------------------------
+Tue Dec  5 17:42:33 UTC 2017 - dimstar@opensuse.org
+
+- Build against openSSL 1.0 for now:
+  + Add libopenssl-1_0_0-devel BuildRequires.
+  + BuilgIgnore openssl (the helper programs): they are not needed
+    and the build dep would pull in version 1.1, conflicting with
+    openssl 1.0 devel packages.
+
+-------------------------------------------------------------------
+Mon Nov  6 12:40:59 UTC 2017 - dimstar@opensuse.org
+
+- Update libgda-jre9.patch: be compatible with Java 9.*;
+  javac -version strips trailing 0, so 9.0 is reported as 9,
+  whereas 9.0.1 is reported as 9.0.1.
+
+-------------------------------------------------------------------
+Tue Oct  3 10:58:13 UTC 2017 - fstrba@suse.com
+
+- Remove leftover dependency on gcc-java
+
+-------------------------------------------------------------------
+Wed Sep 27 12:05:50 UTC 2017 - dimstar@opensuse.org
+
+- Update libgda-jre9.patch: with the release of JRE 9.0.0, the
+  version identifier was changed from 9-internal to 9. Change the
+  patch to accept both variants.
+
+-------------------------------------------------------------------
+Thu Sep 14 12:53:22 UTC 2017 - dimstar@opensuse.org
+
+- Fix build with JRE 9:
+  + Add libgda-jre9.patch: detect JRE 9's version string.
+- Do not run fdupes across default partition boundaries.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Sep 12 11:51:51 UTC 2017 - dimstar@opensuse.org
+
+- Add libgda-utf.patch: Do not use UTF-8 chars in headers parsed
+  by glib-mkenums. In the build root, this fails otherwise.
+
+-------------------------------------------------------------------
+Sat Dec 10 11:23:06 UTC 2016 - dimstar@opensuse.org
+
+- Automatically find the current version of VALA and pass the
+  correct string to --enable-vala VALA_API_VERSION=. This allows us
+  not having to change the .spec every 6 months.
+
+-------------------------------------------------------------------
+Thu Sep 15 08:46:46 UTC 2016 - dimstar@opensuse.org
+
+- Build using Vala 0.34: pass --enable-vala VALA_API_VERSION=0.34
+  to configure (instead of --enable-vala VALA_API_VERSION=0.32).
+
+-------------------------------------------------------------------
+Tue Jul 19 10:29:56 UTC 2016 - dimstar@opensuse.org
+
+- Drop pkgconfig(fbembed) BuildRequires: pkgconfig(fbclient) is
+  sufficient (and fbembed no longer exists).
+
+-------------------------------------------------------------------
+Fri Apr 15 01:40:44 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Wed Mar 30 23:35:14 UTC 2016 - dvaleev@suse.com
+
+- Now with Java 1.8, on ppc64le set java arch to ppc64 only
+  if we build with java 1.5 or 1.6
+
+-------------------------------------------------------------------
+Tue Feb  9 08:49:01 UTC 2016 - dimstar@opensuse.org
+
+- Pass VALA_API_VERSION=0.32 (instead of 0.30) to configure,
+  following the switch to vala 0.31.x/0.32 tree.
+
+-------------------------------------------------------------------
+Fri Sep  4 11:37:21 UTC 2015 - dimstar@opensuse.org
+
+- Pass VALA_API_VERSION=0.30 (instead of 0.28) to configure.
+
+-------------------------------------------------------------------
+Mon Aug 31 08:43:11 UTC 2015 - normand@linux.vnet.ibm.com
+
+- disable getspARCH change for ppc64le when still using jre 1.7
+  (required for Leap 42.1)
+
+-------------------------------------------------------------------
+Fri Aug 14 09:49:55 UTC 2015 - dimstar@opensuse.org
+
+- Own %{_datadir}/appdata (Fix build on Leap).
+
+-------------------------------------------------------------------
+Mon Jul 20 19:24:26 UTC 2015 - zaitor@opensuse.org
+
+- Add libgda-jre18.patch: Fix build with JRE 1.8.
+
+-------------------------------------------------------------------
+Fri Jul  3 04:11:33 UTC 2015 - snuxoll@linux.com
+
+- Development package now includes vapi files, add vala
+  BuildRequies and pass --enabl vala to configure.
+
+-------------------------------------------------------------------
+Fri Jun 12 20:39:02 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 5.2.4:
+  + Added missing file in distributed tarball (bgo#750891).
+- Changes from version 5.2.3:
+  + Improved Vala and introspection.
+  + Misc bugs fixed.
+  + Bugs fixed: bgo#722531, bgo#722773, bgo#730813, bgo# 742312,
+    bgo#750191.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  2 20:55:06 UTC 2015 - mgorse@suse.com
+
+- Re-enable firebird for s390/s390x.
+
+-------------------------------------------------------------------
+Wed Jul  2 11:54:55 UTC 2014 - dvaleev@suse.com
+
+- change getspARCH to ppc64 on ppc64le
+  (Introduced with IcedTea 2.5)
+
+-------------------------------------------------------------------
+Mon Dec 23 14:23:01 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 5.2.2:
+  + Avoid using setlocale() in libraries.
+  + Bugs fixed: bgo#720594.
+  + Updated translations.
+- Drop libgda-new-graphviz.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Dec 16 18:24:00 UTC 2013 - uweigand@de.ibm.com
+
+- libgda-new-graphviz.patch: Fix detection of new Graphviz API.
+
+-------------------------------------------------------------------
+Sun Dec  8 14:54:12 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 5.2.1:
+  + Fixed a Unix compilation issue (bgo#712143).
+  + Improved configure script output.
+- Changes from version 5.2.0:
+  + Vala bindings improvements.
+  + Improvements to most database providers (MySQL, PostgreSQL,
+    SQLite, SqlCipher, JDBC, ...).
+  + Use SqlCipher 3.0.0 and Sqlite 3.8.0.2.
+  + Switched to GTK+3.
+  + Lots of work on the Windows platform.
+  + Many bugs fixed.
+  + Updated translations.
+- Drop libgda-old-graphviz.patch and
+  libgda-no-return-in-nonvoid.patch: fixed upstream.
+- Add itstool BuildRequires: new dependency.
+- No longer inject pkgconfig --cflags fbclient into CFLAGS:
+  firebird.m4 has since been fixed (bgo#684583).
+
+-------------------------------------------------------------------
+Sat Jul 20 08:45:20 UTC 2013 - dimstar@opensuse.org
+
+- Do not mark %{_sysconfdir}/libgda-5.0/config as %dir: RPM 4.11
+  became stricter in ensuring the tags are true.
+
+-------------------------------------------------------------------
+Sat Mar 16 18:35:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 5.1.2:
+  + Many small corrections, some uncovered by CoverityScan.
+  + Misc code cleanups, avoid using deprecated functions.
+  + MySQL improvements.
+  + Vala bindings improvements and corrections.
+  + Data export improvements
+  + Upgraded SQLite to 3.7.14.1 and SqlCipher to 2.1.1.
+  + Have blobs work on Windows.
+  + Bugs fixed: bgo#691099, bgo#691069, bgo#669801, bgo#687235,
+    bgo#684895, bgo#684583, bgo#684141, bgo#683162.
+  + Updated translations.
+- Drop libgda-introspect.patch: fixed upstream.
+- Add libgda-old-graphviz.patch: re-add support for older graphviz
+  versions (< 2.30).
+- Add libgda-no-return-in-nonvoid.patch: Fix missing return values
+  in non-void functions.
+
+-------------------------------------------------------------------
+Fri Dec 28 17:11:14 UTC 2012 - dvaleev@suse.com
+
+- BuildRequires fbclient and fbembed on ppc64 as well
+
+-------------------------------------------------------------------
+Tue Sep 25 07:17:16 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+ and LGPL-2.1+
+  Semicolon is ambiguous
+
+-------------------------------------------------------------------
+Sat Sep 22 12:34:03 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 5.1.1:
+  + Asynchronous statement execution improvements
+  + Added the GDA_STATEMENT_MODEL_OFFLINE flag to specify that
+    resulting data model must be readable without requiring a
+    server connection
+  + Correctly parse "NOT LIKE" and "NOT ILIKE" expressions, and
+    hexadecimal notations
+  + PostgreSQL: added the "CONNECT_TIMEOUT" option
+  + Use Libsecret instead of Libgnome-keyring if available
+  + Many other small corrections, code cleanups and deprecated
+    functions removal
+  + Windows: many code & packaging corrections
+  + Many code cleanups to switch to GTK3's features
+  + Bugs fixed: bgo#676239, bgo#669801, bgo#680311, bgo#680820,
+    bgo#680639
+  + Updated translations.
+- Add libgda-introspect.patch: fix gobject-introspection parsing.
+- Drop libgda-brp.patch and libgda-better-javadetection.patch:
+  fixed upstream.
+- Replace pkgconfig(gnome-keyring-1) BuildRequires with
+  pkgconfig(libsecret-1), following upstream.
+- Drop xz BuildRequires as it now comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Sat Sep 22 11:45:21 UTC 2012 - schwab@linux-m68k.org
+
+- Generalize arch detection
+
+-------------------------------------------------------------------
+Wed Aug 22 10:58:25 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 5.1.0:
+  + Many Vala bindings improvements
+  + Improved Windows packaging scripts
+  + GdaBrowser: many small improvements
+  + GdaSql: new LDAP commands, better inline help, better visual
+    rendering, datasets manipulation
+  + Many small corrections, optimizations and bug fixes (Libgda
+    core, UI extension, Reports extension, MySQL, virtual
+    connections, documentation)
+  + Firebird support improvements
+  + LDAP: added write support, added connection parameters to
+    handle SSL certification chain and size and time limits,
+    improved authentification with Active Directory
+  + Set SQLite version to 3.7.9 and SqlCipher to 2.0.3
+  + MDB tools: handle version 0.7
+  + Removed usage of symbols marked as deprecated for Glib 2.32,
+    and other code cleanups
+  + Bugs fixed: bgo#666356, bgo#667837, bgo#668411, bgo#672874,
+    bgo#674715, bgo#674618, bgo#674976.
+  + Updated translations.
+- Pass --enable-gda-gi and --enable-gdaui-gi to configure to ensure
+  we have gobect introspection enabled.
+- Replace firebird-devel BuildRequires with pkgconfig(fbclient) and
+  pkgconfig(fbembed): firebird packaging was restructured and we
+  don't want to follow all the changes there. The pkgconfig()-way
+  makes such things transparent to us.
+- split out a new libgda-5_0-firebird package.
+- Inject pkgconfig --cflags fbclient into CFLAGS, as firebird.m4
+  only looks in %{_prefix}/include for ibase.h.
+- Add libgda-brp.patch: Fix brp errors.
+
+-------------------------------------------------------------------
+Tue Aug 21 18:36:35 UTC 2012 - dmueller@suse.com
+
+- fix JNI detection on ARM by extending the --ARCH-- logic in %%build
+
+-------------------------------------------------------------------
+Sun Jun 17 13:53:52 UTC 2012 - dimstar@opensuse.org
+
+- Add libgda-better-javadetection.patch: Improve java detection.
+- Add libgda-javadetection-biarch.patch: Add capability to also
+  correctly detectd on i586. The patch only adds a --ARCH-- field,
+  which is replaced using sed during %build.
+- Rebuild getsp.class in %build section, as above patches touch the
+  source of it. Usually, the .class is shipped in the tarball and
+  not rebuilt).
+
+-------------------------------------------------------------------
+Wed Jan 25 07:12:50 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 5.0.3:
+  + Fixed BDBSql building and running
+  + Some MySQL provider corrections
+  + Many small corrections and improvements (UI extension,
+    GdaNumeric, GdaBrowser, GdaSql)
+  + GdaSql: improved inline help and better uniform handling of
+    query favorites with GdaBrowser
+  + Report engine can now convert rich text to HTML
+  + Handle deprecated symbols for Glib 2.32
+  + Bugs fixed: bgo#665917, bgo#668411, bgo#667837.
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Fri Dec  9 09:41:34 UTC 2011 - dimstar@opensuse.org
+
+- Split typelib files into their own subpackages:
+  typelib-1_0-Gda-5_0 and typelib-1_0-Gdaui-5_0.
+- Add typelib-1_0-Gda-5_0 and typelib-1_0-Gdaui-5_0 and Requires to
+  5_0-devel subpackage.
+
+-------------------------------------------------------------------
+Tue Nov 29 00:50:46 CET 2011 - ro@suse.de
+
+- Do not use firebird-devel BuildRequires on s390, s390x, ppc64.
+
+-------------------------------------------------------------------
+Sun Nov 20 21:09:12 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 5.0.2:
+  + Gobject introspection improvements
+  + Several small corrections and improvements
+  + Better handling of closed connections, allowing some operations
+    on closed connections and better error reporting on them
+  + GdaNumeric sealing
+  + Bugs fixed: bgo#663608
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Nov  6 21:57:41 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 5.0.1:
+  + Fixed Vala bindings generation
+  + Several small corrections and improvements
+  + Bugs fixed: bgo#662809, bgo#567891, bgo#662922, bgo#597390,
+    bgo#663357
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct 28 07:38:13 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 5.0.0:
+  + GObject Introspection fixes and automatic Vala bindings
+    generation
+  + SQLite provider: allow one to load SQLite extensions using
+    "SELECT load_extension ('xxx')"
+  + Corrected bug when executing statement with a NULL variable
+  + New GdaDataPivot object to perform data summarisation
+  + Many small corrections and improvements
+  + Bugs fixed: bgo#662279, bgo#658643, bgo#622899, bgo#660563,
+    bgo#661164, bgo#660344, bgo#661684, bgo#660537.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct  6 15:50:45 UTC 2011 - vuntz@opensuse.org
+
+- Add iso-codes Recommends to libgdaui-5_0-4 since the
+  iso-codes data is used at runtime (but gtkhtml can survive
+  without it).
+
+-------------------------------------------------------------------
+Fri Sep  2 21:25:44 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 4.99.4:
+  + GdaBrowser: improved LDAP support and other general
+    improvements and corrections
+  + Many small corrections and improvements (documentation, UI,
+    default values handling, use GtkCssProvider, ...)
+  + GTK3 deprecations related corrections
+  + GObject introspection improvements
+  + Better handle parameters valued to NULL in statements
+  + Support out of tree UI plugins creation
+  + Allow reporting of statement execution's delay
+  + Web provider (DB access through a web server) improvements
+    (deployment, documentation and performances)
+  + Set embedded SQLite's version to 3.7.7.1
+  + Bugs corrected: bgo#654370, bgo#654068
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul  6 18:23:17 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 4.99.3:
+  + Convert deprecated GTK3 API to new ones
+  + Improved compilation system (M4 macros, compiler warnings)
+  + PostgreSQL: support the ILIKE operator
+  + Misc corrections and improvements
+  + Bug fixed: bgo#653082.
+  + Updated translations.
+- Drop libgda-missing-includes.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jun 21 09:20:24 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 4.99.2:
+  + GDA_TYPE_NULL is not 0 anymore
+  + Improved responsiveness when using GdaThreadWrapper
+  + Misc. compilation and installation issues corrected
+  + MDBTools: distribute missing files
+  + GdaBrowser: UI improvements (better LDAP search filter, image
+    clipboard copy, text search)
+  + Bugs fixed: bgo#651692, bgo#651829, bgo#651922, bgo#652023,
+    bgo#652024, bgo#631645, bgo#647633
+  + Updated translations.
+- Drop pacthes that were merged upstream:
+  + libgda-no-subdir-in-bindir.patch
+  + libgda-sqlcipher.patch
+- Add libgda-missing-includes.patch: Fix implicit declaration error
+  raised by brp check. Reported as bgo#653082.
+
+-------------------------------------------------------------------
+Fri Jun 17 01:46:17 CEST 2011 - vuntz@opensuse.org
+
+- Change more pkgconfig() BuildRequires for GNOME 3 port:
+  gtksourceview-2.0 to gtksourceview-3.0, goocanvas to
+  goocanvas-2.0
+
+-------------------------------------------------------------------
+Mon Jun  6 18:16:38 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 4.99.1:
+  + Many GTK3 adaptations (GtkApplication instead of libunique,
+    code cleanups)
+  + New LDAP provider (read only for the moment)
+  + Improvements and corrections from the 4.2 branch
+  + Updated translations.
+- Create a new subpackage for the ldap provider.
+- Re-enable parallel build and remove FIXME note for it.
+- Add libgda-sqlcipher.patch: Fix no return in non-void function
+  brp error.
+- Remove pkgconfig(unique-1.0) BuildRequires after the port to
+  GApplication.
+
+-------------------------------------------------------------------
+Tue Jun  6 15:02:42 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 4.99.0:
+  + Adaptations to the GTK3 environment:
+    - API is preserved but ABI has changed
+    - Deprecated API has been removed
+  + Embedded SQLite version 3.7.5
+  + Embedded SQLCipher version is 2.0Beta
+- Changes from version 4.2.5:
+  + Corrected regression which prevented correct execution of
+    SELECT statements by virtual connections
+  + New NSIS based installer for the GdaBrowser tool under Windows
+  + Embedd MDBTools when compiling for Windows
+  + Misc other corrections
+- Changes from version 4.2.4:
+  + SQLite provider:
+    - Correctly report error messages (for example instead of
+      "constraint failed")
+    - Correctly report if foreign key constraints are enforced or
+      not
+  + Added possibility to "declare foreign key constraints", which
+    are declarations in the metadata where databases don't actually
+    use foreign keys
+  + GdaMetaStruct: report information about foreign keys
+  + GdaBrowser: many small improvements and corrections
+  + GdaSql and GdaBrowser: display more information about database
+    providers and DSN's connection parameters, and display
+    information about foreign key constraints
+  + Documentation improvements and corrections
+  + Misc small corrections
+  + Bugs fixed: bgo#639533, bgo#639897, bgo#639897, bgo#640482,
+    bgo#642037, bgo#642100 and bgo#642170
+- Changes from version 4.2.3:
+  + Correction to the expression rendering in SQL
+  + SQLite: fixed date and related formats when rendering as SQL
+  + MySQL: fixed error code ignored and not available via
+    gda_connection_event_get_code()
+  + Move convenience functions to appropriate classes
+  + Documentation updates
+  + GdaSql and GdaBrowser: better information about configuration
+    and added possibility to clean data files and truncate data
+    output to available width
+  + Build system fixes
+  + Initial support for rich text rendering in reports
+  + Misc. improvements
+  + Bugs fixed: bgo#636439, bgo#636608, bgo#637010
+  + Updated translations.
+- Change pkgconfig(gtk+-2.0) BuildRequires to pkgconfig(gtk+-3.0)
+  and Supplements in libgdaui-5_0-4 to mention gtk3 instead of
+  gtk2.
+- Change all 4.0 occurences to 5.0 and 4_0 to 5_0 to folow the new
+  version.
+
+-------------------------------------------------------------------
+Wed Jun  1 17:30:28 CEST 2011 - vuntz@opensuse.org
+
+- Move to pkgconfig()-style BuildRequires:
+  + Old ones: glib2-devel, goocanvas-devel, graphviz-devel,
+    gtksourceview-devel, iso-codes-devel, json-glib-devel,
+    libgnome-keyring-devel, libsoup-devel, libunique-devel,
+    libxslt-devel, sqlite3-devel.
+  + New ones: glib-2.0, gnome-keyring-1, goocanvas, gtk+-2.0,
+    gtksourceview-2.0, iso-codes, json-glib-1.0, libgvc,
+    libsoup-2.4, libxml-2.0, libxslt, sqlite3, unique-1.0.
+
+-------------------------------------------------------------------
+Sun Feb 13 16:42:47 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Mon Dec  6 14:31:16 CET 2010 - vuntz@opensuse.org
+
+- Update to version 4.2.2:
+  + GdaBrowser: better take user preferences into account
+  + new GdauiRtEditor widget and plugin
+  + bug fixes: bgo#635377, bgo#635419 and misc.
+  + Updated translations.
+- Use --with-libdir-name instead of --with-bdb-libdir-name, since
+  it will work for all other backends too.
+
+-------------------------------------------------------------------
+Mon Nov 15 11:35:45 CET 2010 - dimstar@opensuse.org
+
+- Update to version 4.2.1:
+  + code cleanups and compilation warnings removal
+  + more annotations for GObject Introspection
+  + removed old database providers' code
+  + build system improvements
+  + GdaBrowser improvements: error reporting in data manager
+    perspective, authentification dialog
+  + documentation corrections
+  + updated SQLCipher to version 1.1.8
+  + optimized virtual tables usage
+  + improved GdaDataModel import and export
+  + MySQL provider: support for statements where the prepared
+    statement API does not work
+  + Bugs fixed: bgo#630655, bgo#630953, bgo#617550, bgo#633247,
+    bgo#634737 and other minor ones.
+  + Updated translations.
+- Pass --with-bdb-libdir-name=%{_lib} to configure: the configure
+  script was changed and doesn't work anymore for 64-bits systems.
+
+-------------------------------------------------------------------
+Mon Sep 27 08:16:30 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 4.2.0:
+  + Misc corrections.
+  + Updated translations.
+- Update descriptions of packages.
+- Create a libgda-tools subpackage, that contains unversioned
+  binaries. Pass --enable-default-binary to configure so that we
+  always get the unversioned binaries.
+- Rename the libgda-4_0 suppackage to libgda-4_0-tools, with
+  appropriate Provides and Obsoletes.
+- Split graphical tools out of libgda-4_0-tools in
+  libgda-ui-4_0-tools. Add a Supplements to install this subpackage
+  automatically if libgda-4_0-tools and the libgda-ui library are
+  installed.
+- Remove Requires for libgda-4_0 in libgda-report-4_0-4: this is
+  not needed.
+- Remove Requires for libgda-4_0 in libgda-4_0-doc: this is not
+  needed.
+- Move some files around, so that they get installed with the right
+  subpackage.
+- Remove the sales_test.db database: it's just there as a test, and
+  should not be in the package.
+
+-------------------------------------------------------------------
+Wed Sep 15 18:18:59 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 4.1.11:
+  + Misc corrections
+  + New SQLCipher provider (integrated SQLCipher into Libgda) to
+    encrypt SQLite databases
+  + Updated translations.
+- Add a libgda-4_0-sqlcipher subpackage, for the new provider.
+
+-------------------------------------------------------------------
+Sat Sep 11 18:44:31 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 4.1.10:
+  + GdaBrowser improvements & corrections (better full screen mode
+    and notifications, improved data manager perspective and more)
+  + Misc corrections
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  2 09:43:53 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 4.1.8:
+  + Improved core API (GdaSqlBuilder, GdaServerOperation,
+    GdaThreadWrapper, GdaConnection)
+  + Core corrections and optimization, mainly in the SQLite and
+    MySQL providers, connection (locking and thread safe usage)
+  + Use Gnome Keyring if available to store username and passwords
+    to be used for data sources (DSN)
+  + Configuration file monitoring: only use GIO (removed GnomeVFS,
+    gamin or FAM)
+  + Many improvements to the UI extension
+  + Many improvements and corrections to the GdaBrowser tool
+  + Update version of embedded SQLite to 3.6.22
+  + Updated translations.
+- Add libgnome-keyring-devel BuildRequires.
+- Drop libgda-fix-introspection-build.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Aug  7 15:10:40 CEST 2010 - vuntz@opensuse.org
+
+- Add libgda-fix-introspection-build.patch to fix build:
+  g-ir-compiler isn't able to parse a header with virtual methods
+  that are not explicitly typed.
+- Remove gnome-vfs2-devel Requires from devel package.
+
+-------------------------------------------------------------------
+Fri Aug  6 17:59:16 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 4.1.7:
+  + new provider for Oracle Berkeley DB's SQL frontend (which has
+    the same API as sqlite)
+  + added CREATE_USER and DROP_USER server operations (only for
+    PostgreSQL at the moment)
+  + added a new GDA_CONNECTION_OPTIONS_THREAD_ISOLATED connection
+    option
+  + better display invalid values in form and grid widgets
+  + Lots of GObject introspection annotations added
+  + Better MacOSX support: binary relocation corrections, bundle
+    making script for the GdaBrowser
+  + GdaSqlBuilder API improvements
+  + Corrected memory leak in SQLite provider
+  + Renamed configure.in to configure.ac
+  + Corrections in the Gda-Sql tool regarding username and password
+  + Misc. corrections: connection locking issues, honor the
+    GDA_EASY_CREATE_TABLE_UNIQUE_FLAG flag, some optimizations
+  + Documentation corrections, and code cleanups
+  + Updated translations
+- Changes from version 4.1.6:
+  + register GdaStatement as a boxed type
+  + GdaSqlBuilder API simplifications and other corrections
+  + GdauiLogin widget corrections
+  + Updated translations
+- Changes from version 4.1.5:
+  + support BLOBS in MySQL provider
+  + meta data correction for PostgreSQL provider
+  + Do not set GErrors without a domain for the PostgreSQL provider
+  + honor the request for the last inserted row in the MySQL
+    provider
+  + fetch indexes information for MySQL
+  + fixed reading float values in the MySQL provider
+  + corrected the MySQL and SQLite boolean handlers
+  + API improvements to the GdaSqlBuilder object
+  + new Data Manager perspective in the GdaBrowser
+  + added help in GdaBrowser
+  + initial GObject introspection for the UI extension
+  + improved GObject introspection support
+  + removed deprecaded GTK+ symbols usage
+  + use accessor functions instead direct access (enable GSEAL)
+  + new UI extension example
+  + doc. corrections & improvements
+  + better handle GCJ as the java compiler
+  + lots of bug fixes and other improvements
+  + Updated translations
+- Remove workarounds for mis-installation of gir files and header.
+- Disable parallel build as it breaks the build at the moment.
+- Move gir files to devel package.
+
+-------------------------------------------------------------------
+Wed Apr 28 11:53:46 UTC 2010 - dimstar@opensuse.org
+
+- BuildRequire pkg-config in order to produce useful pkgconfig()
+  provides.
+
+-------------------------------------------------------------------
+Mon Jan 18 22:10:01 CET 2010 - vuntz@opensuse.org
+
+- Manually install libgda.h, which is not installed anymore in
+  4.1.4 (bgo#607357).
+
+-------------------------------------------------------------------
+Sat Jan 16 23:10:10 CET 2010 - vuntz@opensuse.org
+
+- Update to version 4.1.4:
+  + API improvements: GdaSqlBuilder, UI extension
+  + new Web provider to access databases through a web server
+  + WIN32 related corrections
+  + GNOME 3.0 and GSeal corrections
+  + initial support for GObject Introspection (for libgda only)
+  + meta data now include indexes information
+  + improved icons
+  + JDBC provider: don't keep the JVM loaded when not necessary
+  + embedd SQLite 3.6.22
+  + GdaBrowser improvements and corrections: connections bindings,
+    loading CSV files, table's columns' preferences
+  + misc bug fixes and other improvements
+  + Updated translations.
+- Rebase libgda-no-subdir-in-bindir.patch to apply without fuzz.
+- Create libgda-4_0-web subpackage for the new web provider.
+- Add gobject-introspection-devel BuildRequires, and package
+  introspection files. Add a workaround for misinstallation of gir
+  file in wrong directory.
+
+-------------------------------------------------------------------
+Sat Dec  5 00:41:49 CET 2009 - vuntz@opensuse.org
+
+- Update to version 4.1.3:
+  + GdaBrowser improvement
+  + UI extension corrections
+  + libgda's core improvements: better BLOB handling, better API
+    for GdaSqlBuilder, GdaDataSelect
+  + misc bug fixes
+  + Updated translations.
+- Add firebird-devel, goocanvas-devel, graphviz-devel,
+  gtksourceview-devel, iso-codes-devel, libunique-devel,
+  readline-devel BuildRequires.
+- Do not make everything depend on libgda-4_0, and move files where
+  they really belong. This also implies renaming the lang package
+  to libgda-4_0-4-lang.
+- Create 4_0-bdb and ui-4_0-plugins subpackages.
+- Fix self-obsoletion of libgda-devel.
+
+-------------------------------------------------------------------
+Mon Sep 28 17:31:04 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 4.1.2:
+  + the GdaBrowser application now supports query execution, and is
+    more polished and stable
+  + Lots of bug fixes mainly related to threads usage and the UI
+    extension
+  + Updated translations.
+- Drop libgda-4.1.1-brperrors.patch: fixed upstream.
+- Drop libgda-browser-icons.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Sep  4 12:13:55 CEST 2009 - vuntz@novell.com
+
+- Add libgda-no-subdir-in-bindir.patch to not create a subdirectory
+  in bindir (bgo#594115).
+- Add libgda-browser-icons.patch to look for icons in the right
+  directory.
+
+-------------------------------------------------------------------
+Mon Aug 24 23:08:36 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 4.1.1:
+  + it is now possible to use a system installed SQLite, and now
+    uses SQLite 3.6.17 if embedded
+  + new Oracle driver (provider)
+  + improved MySQL and PostgreSQL drivers (providers)
+  + console program improvements
+  + new UI extension based on GTK+
+  + new program to manage data sources graphically
+  + new program to "browse" a database's schema
+  + improved documentation
+  + better handle SQL identifiers
+  + Lots of corrections and small improvements
+  + Updated translations.
+- Add libgda-4.1.1-brperrors.patch to fix missing includes.
+- Drop libgda-4.1-97723be0.patch and libgda-4.1.0-am111.patch.
+- Remove gnome-common BuildRequire.
+- Split libgda-ui-4_0-4 out.
+- Drop the non versioned packaed. For updaters it's provided by
+  libgda-4_0.
+
+-------------------------------------------------------------------
+Fri Jul 31 14:09:22 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 4.1.0:
+  + API and ABI compatible with 4.0.x versions
+  + new API to execute statement asynchronously
+  + new API to build DML (SELECT, INSERT, UPDATE and DELETE)
+    statements the easy way
+  + new flag to open a connection in a sub thread, to be able to
+    use a connection from several threads, even if the connection
+    does not support it
+  + the GdaMetaStore object is now thread safe
+  + new API to represent data organized as trees
+  + new API to execute a single statement several times, each
+    execution with different parameters' values
+  + documentation and examples improvements
+  + bug fixes
+  + Updated translations.
+- Add libgda-4.1-97723be0.patch, taken from upstream git
+- Add libgda-4.1.0-am111.patch, taken as a part from upstream git
+  commit 0cbad26e1.
+- Due to the two patches, BuildRequire gnome-common and call
+  gnome-autogen.sh.
+
+-------------------------------------------------------------------
+Sat Jun 13 21:45:29 CEST 2009 - vuntz@novell.com
+
+- Add json-glib-devel BuildRequires.
+
+-------------------------------------------------------------------
+Sat Mar 28 11:11:58 CET 2009 - vuntz@novell.com
+
+- Update to version 4.0.1:
+  + make sure Libgda's GdaMetaStore object behaves correctly even
+    if the SQLite provider is not installed
+  + misc. corrections
+
+-------------------------------------------------------------------
+Mon Mar 16 23:06:16 CET 2009 - vuntz@novell.com
+
+- Update to version 4.0.0:
+  + Documentation fixes.
+
+-------------------------------------------------------------------
+Sun Mar 15 20:26:26 CET 2009 - vuntz@novell.com
+
+- Update to version 3.99.14:
+  + misc. corrections
+  + use XDG Base Directory Specification to store DSN list
+  + bug fixes: bgo#574736, bgo#574738, bgo#574742, bgo#574740
+
+-------------------------------------------------------------------
+Tue Mar 10 21:17:01 CET 2009 - vuntz@novell.com
+
+- Update to version 3.99.13:
+  + misc. corrections
+  + load LibDB only when needed
+  + bug fixes: bgo#574021, bgo#574193
+- Drop libgda-1.0.3-ncurses.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Mar  1 21:54:51 CET 2009 - mboman@suse.de
+
+- Update to version 3.99.12:
+  + misc. corrections
+  + MySQL, SQLite and PostgreSQL providers improvements and
+    corrections
+  + documentation and examples improvements
+  + SQLite version is now 3.6.11
+  + Bugs fixed: bgo#572028, bgo#571879, bgo#572220, bgo#542847,
+    bgo#572734, bgo#572394
+  + Translation updates
+- Remove %{release} from all Requires
+- Remove BuildRequires; fam-devel, gnome-common, gnome-vfs2-devel,
+  gtk-doc, libgio-fam, readline-devel, scrollkeeper, sgml-skel,
+  xbase-devel
+- Use Requires %{name} = %{version} instead of
+  %{name} >= %{version}
+- Remove -fno-strict-aliasing from compiler flags, and subsequently
+  remove compiler flags all together as $RPM_OPT_FLAGS are default
+- Don't use autoreconf
+- Don't use --enable-debug and --enable-gtk-doc with configure
+
+-------------------------------------------------------------------
+Fri Feb 13 22:47:10 CET 2009 - vuntz@novell.com
+
+- Update to version 3.99.11:
+  + misc. corrections
+  + documentation improvements
+  + bug fixes: bgo#570396, bgo#570251, bgo#570315, bgo#570787
+- Changes from version 3.99.10:
+  + corrections
+  + cleanups
+  + documentation improvements
+  + bug fixes: bgo#568570, bgo#568731, bgo#568844, bgo#561748,
+    bgo#568388, bgo#486021, bgo#143576, bgo#568484, bgo#570220
+- Changes from version 3.99.9:
+  + corrections
+  + cleanups
+  + documentation improvements
+  + bug fixes: bgo#561173, bgo#561175, bgo#568163, bgo#568165
+- Changes from version 3.99.8:
+  + misc corrections
+  + SQL console: better useability in the web console
+  + SQL console: man page added
+  + Win32 build fixes
+- Add export NO_BRP_CHECK_BYTECODE_VERSION=true to remove an error
+  that we can ignore according to the wiki.
+- Re-enable BuildRequires on mdbtools-devel and xbase-devel.
+- Create 4_0-mdb package.
+
+-------------------------------------------------------------------
+Sat Jan 31 20:54:07 CET 2009 - vuntz@novell.com
+
+- Use sr@latin instead of sr@Latn.
+
+-------------------------------------------------------------------
+Sat Jan 17 15:34:13 CET 2009 - msuman@suse.de
+
+- Update to version 3.99.7:
+  + This is a major re-write of the core parts of Libgda, and is
+    API incompatible with the 3.x versions. Changes include:
+    - Easier to understand and to use API, with less strange path
+      usage - Reduce the size of the library (almost half the
+      size, half the symbols) - Easier connection opening (removal
+      of the GdaClient object) - Merge of the GdaQuery and
+      GdaCommand into only one object to represent statements
+    - New adaptative SQL parser (can be adaptated to each DBMS's
+      SQL syntax) - New database based dictionary which can
+      handle namespaces - Rework of the database adaptators
+      (providers) for easier maintenance and more features
+    - Sample "skeleton" database adaptators to make it easy to
+      write a database adaptator for a new database type
+    - Updated documentation
+  + Uses GIO instead of GnomeVFS
+  + Preliminary MacOS X support, and better support for cross
+    compilation + New JDBC provider (allows access to any database
+    through a JDBC driver) NOTE: This is currently not built.
+  + Updated translations
+- Drop libgda-vfsmonitor.patch (GIO will be used really soon now,
+  so no need to rebase).
+- Drop libgda-return.patch (fixed upstream).
+
+
+-------------------------------------------------------------------
+Sat Jan 17 01:44:37 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files, baby step to clean up all references
+  to libavahi-*.la
+
+-------------------------------------------------------------------
+Sun Oct 05 21:39:15 CEST 2008 - mboman@suse.de
+
+- Backrev to version 3.1.2:
+  + 3.99.3 is unstable and should not have gone in.
+
+-------------------------------------------------------------------
+Fri Sep 05 21:39:15 CEST 2008 - mboman@novell.com
+
+- Update to version 3.99.3:
+ - Lots of bug fixed, memory leaks fixes and general performance
+   improvements. See NEWS for full details.
+ - Bugs fixed: bgo#524837, bgo#525601, bgo#525877, bgo#526748,
+   bgo#527892, bgo#527002, bgo#534805, bgo#536418, bgo#536971,
+   bgo#537558, bgo#537117
+- Removed libgda-return.patch. Source changed.
+- Removed libgda-vfsmonitor.patch. Uses GIO now.
+
+-------------------------------------------------------------------
+Mon May  5 21:39:15 CEST 2008 - coolo@suse.de
+
+- return values in non-void functions
+
+-------------------------------------------------------------------
+Fri Mar 14 09:11:29 CET 2008 - aj@suse.de
+
+- Fix broken dependency.
+
+-------------------------------------------------------------------
+Mon Feb 18 21:22:13 CET 2008 - maw@suse.de
+
+- Update to version 3.1.2:
+  + Filtering based on an SQL expression is now possible in the
+    GdaDataProxy data model
+  + New XSL extension which uses Libgda
+  + Documentation improvements and examples
+  + Tools: improvements to the SQL console and new tool to list
+    the possible server operations for each provider
+  + Bug fixed: bgo#486017, and bgo#484112
+  + Firebird database provider now almost fully working (BLOBs are
+    not yet writable, no prepared statement used)
+  + MS Access database provider reworked to support all the
+    SQLite's SQL (don't depend on libmdbsql.so anymore for SQL
+    processing)
+  + LDAP provider has seen a first draft rework
+  + Use of environment variables to specify debug ourput of
+    commands and connection events
+  + "LIMIT" and "OFFSET" keywords recognized, for bug bgo#488860
+  + Enhanced the SQL console tool (allow multiple connections
+    and virtual connections)
+  + Many small corrections and improvements
+  + Updated translations
+- Remove libgda-1.0.3-lib64.patch, libgda-uninitialized.patch, and
+  libgda-implicit-decl.patch, which have been upstreamed
+- New subpackage: libgda-xslt-3_0-0.
+
+-------------------------------------------------------------------
+Tue Dec  4 15:03:40 CET 2007 - sbrabec@suse.cz
+
+- Reduced BuildRequires.
+
+-------------------------------------------------------------------
+Fri Nov  2 14:26:34 CET 2007 - sbrabec@suse.cz
+
+- Use packageand supplements for additional modules packages.
+
+-------------------------------------------------------------------
+Wed Oct 24 18:24:32 CEST 2007 - sbrabec@suse.cz
+
+- Fixed devel package splitting (#336197).
+
+-------------------------------------------------------------------
+Sun Oct 21 14:06:21 CEST 2007 - coolo@suse.de
+
+- correctly obsolete old version
+
+-------------------------------------------------------------------
+Fri Oct 19 13:35:10 CEST 2007 - sbrabec@suse.cz
+
+- Split package according to library packaging policy.
+
+-------------------------------------------------------------------
+Tue Oct 16 18:48:09 CEST 2007 - sbrabec@suse.cz
+
+- Fixed devel requires.
+
+-------------------------------------------------------------------
+Wed Oct  3 17:11:33 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 3.1.1:
+  * New major version, new API. See NEWS for details.
+
+-------------------------------------------------------------------
+Wed Aug  8 00:01:33 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage
+- s#%run_ldconfig#/sbin/ldconfig/ in %post and %postun.
+
+-------------------------------------------------------------------
+Tue Feb 13 11:50:51 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552#c17).
+
+-------------------------------------------------------------------
+Thu Dec 14 19:01:13 CET 2006 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+- Splitted libgda-doc from libgda-devel.
+
+-------------------------------------------------------------------
+Mon Apr  3 15:52:31 CEST 2006 - lmichnovic@suse.cz
+
+- fixed wrong variable set [#159399]
+
+-------------------------------------------------------------------
+Fri Feb 17 19:21:21 CET 2006 - danw@suse.de
+
+- remove libgda-fam-gamin-dload.patch and add a new patch to do
+  file notification via gnome-vfs (and update requires accordingly).
+  Part of plan to get rid of gamin, #128037.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:19 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan  5 11:51:50 CET 2006 - sbrabec@suse.cz
+
+- Use Enhances where appropriate.
+
+-------------------------------------------------------------------
+Tue Nov  8 20:46:05 CET 2005 - sbrabec@suse.cz
+
+- Use sqlite3.
+- Fix and build Berkeley DB module.
+
+-------------------------------------------------------------------
+Wed Oct 26 16:02:44 CEST 2005 - rodrigo@suse.de
+
+- Added fix for syslog vulnerability (#130698)
+
+-------------------------------------------------------------------
+Tue Oct 25 15:25:35 CEST 2005 - rhafer@suse.de
+
+- added LDAP_DEPRECATED to CFLAGS to build correctly with
+  OpenLDAP 2.3
+
+-------------------------------------------------------------------
+Mon Oct  3 15:49:36 CEST 2005 - sbrabec@suse.cz
+
+- Fixed name clash crash in fam/gamin patch (#116897).
+- Fixed neededforbuild.
+
+-------------------------------------------------------------------
+Mon Sep  5 14:59:31 CEST 2005 - sbrabec@suse.cz
+
+- Patch to pick one of fam/gamin libraries by dlopen().
+
+-------------------------------------------------------------------
+Wed Aug 10 14:08:34 CEST 2005 - rodrigo@suse.de
+
+- Update to version 1.3.90, which fixes autobuild problems.
+
+-------------------------------------------------------------------
+Mon Aug  8 18:50:02 CEST 2005 - rodrigo@suse.de
+
+- Update to version 1.3.90
+
+-------------------------------------------------------------------
+Fri Jul  8 23:09:32 CEST 2005 - gekker@suse.de
+
+- Update to version 1.3.4
+- Remove upstreamed patch
+
+-------------------------------------------------------------------
+Wed Jun 29 13:06:11 CEST 2005 - sbrabec@suse.cz
+
+- Fixed devel requirements.
+
+-------------------------------------------------------------------
+Tue Jun 28 21:46:47 CEST 2005 - ro@suse.de
+
+- fix some more compiler warnings
+
+-------------------------------------------------------------------
+Tue Jun 28 17:03:52 CEST 2005 - sbrabec@suse.cz
+
+- Fixed devel requirements.
+- Removed unneeded static modules and .la files for modules.
+
+-------------------------------------------------------------------
+Wed Jun  1 18:32:00 CEST 2005 - sbrabec@suse.cz
+
+- Fixed devel requirements.
+
+-------------------------------------------------------------------
+Wed Jan 19 02:47:08 CET 2005 - ro@suse.de
+
+- use prefix/lib/libgda in filelist
+
+-------------------------------------------------------------------
+Fri Jan 14 13:06:17 CET 2005 - ro@suse.de
+
+- update to 1.2.0
+- use sqlite2 for now
+
+-------------------------------------------------------------------
+Tue Nov 23 00:48:21 CET 2004 - ro@suse.de
+
+- don't create empty rpm for sqlite
+
+-------------------------------------------------------------------
+Fri Nov 19 16:16:05 CET 2004 - ro@suse.de
+
+- sqlite is only available for 9.1 and newer
+
+-------------------------------------------------------------------
+Thu Nov 18 18:01:25 CET 2004 - ro@suse.de
+
+- updated aclocal path
+
+-------------------------------------------------------------------
+Mon Oct 25 12:14:31 CEST 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Tue May 18 18:54:00 CEST 2004 - ro@suse.de
+
+- fix some compiler warnings
+
+-------------------------------------------------------------------
+Mon Mar 15 14:40:20 CET 2004 - sbrabec@suse.cz
+
+- FHS 2.3 fix (mandir, infodir, #35821).
+
+-------------------------------------------------------------------
+Wed Mar 10 10:53:08 CET 2004 - sbrabec@suse.cz
+
+- Gzip man pages.
+
+-------------------------------------------------------------------
+Mon Mar  1 23:37:06 CET 2004 - ro@suse.de
+
+- fix build on ppc64 and s390x
+
+-------------------------------------------------------------------
+Wed Feb 18 15:26:14 CET 2004 - sbrabec@suse.cz
+
+- Split some providers to reduce dependences (bug #34668).
+
+-------------------------------------------------------------------
+Tue Feb 17 19:20:46 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 1.0.3.
+- Turned on sqlite backend.
+
+-------------------------------------------------------------------
+Sat Jan 10 12:31:38 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Thu Jan  8 18:36:27 CET 2004 - ro@suse.de
+
+- updated neededforbuild:
+  perl-XML-Parser needed for intltool
+  expat needed for perl-XML-Parser
+
+-------------------------------------------------------------------
+Mon Oct 27 15:51:29 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 1.0.1.
+
+-------------------------------------------------------------------
+Fri Aug 29 14:13:32 CEST 2003 - kukuk@suse.de
+
+- libgda: Don't conflict with ourself
+- libgda-devel: Requires libgda
+
+-------------------------------------------------------------------
+Tue Aug 26 16:59:28 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 0.91.0.
+
+-------------------------------------------------------------------
+Mon Aug 18 18:29:26 CEST 2003 - sbrabec@suse.cz
+
+- Package renamed (libgda2 -> libgda).
+- Updated to version 0.12.1.
+
+-------------------------------------------------------------------
+Thu Jul 17 16:20:18 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Tue Jul  1 02:28:31 CEST 2003 - ro@suse.de
+
+- added gnome-filesystem to neededforbuild
+- added directories to filelist
+
+-------------------------------------------------------------------
+Thu Jun  5 00:38:49 CEST 2003 - ro@suse.de
+
+- run full autoreconf
+- fix configure.in for lib64 platforms
+
+-------------------------------------------------------------------
+Wed Jun 04 15:02:23 CEST 2003 - sbrabec@suse.cz
+
+- Initial SuSE version of GNOME2 port.
+

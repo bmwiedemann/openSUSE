@@ -1,0 +1,12 @@
+diff -ur Net-OpenID-Consumer-1.18/lib/Net/OpenID/Consumer.pm Net-OpenID-Consumer-1.18_fix/lib/Net/OpenID/Consumer.pm
+--- Net-OpenID-Consumer-1.18/lib/Net/OpenID/Consumer.pm	2016-02-08 02:39:06.000000000 +0100
++++ Net-OpenID-Consumer-1.18_fix/lib/Net/OpenID/Consumer.pm	2016-02-13 17:19:38.416153280 +0100
+@@ -974,7 +974,7 @@
+         $post{"openid.mode"} = "check_authentication";
+ 
+         my $req = HTTP::Request->new(POST => $server);
+-        $req->header("Content-Type" => "application/x-www-form-urlencoded");
++        $req->header("Content-Type" => "application/x-www-form-urlencoded; charset=UTF-8");
+         $req->content(join("&", map { "$_=" . uri_escape_utf8($post{$_}) } keys %post));
+ 
+         my $ua  = $self->ua;

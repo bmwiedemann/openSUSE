@@ -1,0 +1,27 @@
+--- platforms/apccontrol.in
++++ platforms/apccontrol.in
+@@ -20,6 +20,7 @@
+ 
+ APCPID=@PIDDIR@/apcupsd.pid
+ APCUPSD=@sbindir@/apcupsd
++HIBERNATE="/usr/bin/systemctl hibernate"
+ SHUTDOWN=@SHUTDOWN@
+ SCRIPTSHELL=@SCRIPTSHELL@
+ SCRIPTDIR=@sysconfdir@
+@@ -103,8 +104,14 @@ case "$1" in
+ 	${SHUTDOWN} -r now "apcupsd UPS ${2} initiated reboot"
+     ;;
+     doshutdown)
+-	echo "UPS ${2} initiated Shutdown Sequence" | ${WALL}
+-	${SHUTDOWN} -h now "apcupsd UPS ${2} initiated shutdown"
++	. /etc/sysconfig/apcupsd
++	if test "$APCUPSD_POWERFAIL_BEHAVIOR" = "hibernate" ; then
++		echo "UPS ${2} initiated hibernation" | ${WALL}
++		$HIBERNATE
++	else
++		echo "UPS ${2} initiated Shutdown Sequence" | ${WALL}
++		${SHUTDOWN} -h now "apcupsd UPS ${2} initiated shutdown"
++	fi
+     ;;
+     annoyme)
+ 	echo "Power problems with UPS ${2}. Please logoff." | ${WALL}

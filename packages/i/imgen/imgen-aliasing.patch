@@ -1,0 +1,33 @@
+Index: TImage.cpp
+===================================================================
+--- TImage.cpp.orig	2012-07-02 11:41:51.583949021 +0200
++++ TImage.cpp	2012-07-02 12:11:11.496184316 +0200
+@@ -218,18 +218,23 @@ bool TImage::PtrSect::CreatePtrSect(u_in
+ 
+ bool TImage::PtrSect::Pack(vector<u_int8_t>& data) 
+ {
++    union{ char *chp; u_int32_t *u32p; }pun;
+     data << fi_addr;       
+     data << fi_size;       
+     data << signature;     
+     
+-    for (u_int32_t i = 0 ; i < sizeof(fw_reserved)/sizeof(fw_reserved[0]) ; i++) 
++    for (u_int32_t i = 0 ; i < sizeof(fw_reserved)/sizeof(fw_reserved[0]) ; i++)
+ 	data << fw_reserved[i];
+ 
+-    for (u_int32_t i = 0 ; i < sizeof(vsd)/sizeof(vsd[0]) ; i += 4) 
+-	data << *((u_int32_t*) &vsd[i]);
++    for (u_int32_t i = 0 ; i < sizeof(vsd)/sizeof(vsd[0]) ; i += 4) {
++    	pun.chp = &vsd[i];
++    	data << *pun.u32p;
++	}
+ 
+-    for (u_int32_t i = 0 ; i < sizeof(psid)/sizeof(psid[0]) ; i += 4) 
+-	data << *((u_int32_t*) &psid[i]);
++    for (u_int32_t i = 0 ; i < sizeof(psid)/sizeof(psid[0]) ; i += 4) {
++    	pun.chp = &psid[i];
++    	data << *pun.u32p;
++	}
+ 
+     data << branch_to;
+     data << (u_int32_t) _crc.get();

@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Mon Jul 29 11:39:05 UTC 2019 - Ayoub Belarbi <abelarbi@suse.de>
+
+- Require python-futures instead of python2-futures for building for both sle12 and sle15 
+
+-------------------------------------------------------------------
+Tue Jul 23 11:11:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.1:
+  * [BUGFIX] multiprocess: don't crash on missing gauge_live/sum files (#424)
+  * [BUGFIX] correctly bind method on Python 2.x (#403)
+
+-------------------------------------------------------------------
+Thu Jun 20 14:57:11 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Remove forgotten v0.6.0.tar.gz tarball.
+
+-------------------------------------------------------------------
+Wed Jun 19 13:59:15 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.7.0
+  * Multiprocess exposition speed boost (#421)
+  * optimize openmetrics text parsing (~4x perf) (#402)
+  * Add python3.7 support (#418)
+  * Change exemplar length limit to be only for label names+values (#397)
+  * Disable gcCollector for pypy (#380)
+
+-------------------------------------------------------------------
+Thu May 23 12:32:36 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.6.0
+  * Better exceptions on exposition failure
+  * Fix deadlock in gcCollector, metrics are now different
+  * Fix thread leak in Python 3.7
+  * parser: ensure samples are of type Sample
+  0.5.0
+  * Be more resilient to certain file corruptions
+  * Permit subclassing of MetricsHandler
+  * Updates based on latest OpenMetrics draft spec discussions
+  * In multiprocess mode, ensure that metrics initialise to the 
+    correct file
+  * Avoid re-entrant calls to GC collector's callback
+  0.4.?
+  * Disable GCCollector in multiprocess mode to prevent a deadlock
+  * Fix OpenMetrics http negotiation handling
+  * Counter time series will now always be exposed with _total, and 
+    counter metrics will have a _total suffix stripped. This is as 
+    the internal data model is now OpenMetrics, rather than 
+    Prometheus Text Format
+  * Samples now use a namedtuple
+  * Add OpenMetrics exposition and parser
+  * Add Info, Stateset, Enum, GaugeHistogram support for OpenMetrics
+  * Add timestamp support for Prometheus text format exposition
+  * Add garbage collection metrics
+  * If reading multiprocess file, open it readonly.
+  * Fix bug in WSGI app code.
+  * Write to multiprocess files directly
+  0.3.?
+  * Fix handing of escaping in parser
+  * Fix concurrency issues with timers
+  * 4.5x speedup in parser
+  * Performance improvements for multiproc mode
+  * Fix FD leak in multiproc mode
+- Taking tarball from git because of the tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:44 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri May  4 05:38:19 UTC 2018 - tbechtold@suse.com
+
+- Initial packaging (version 0.2.0)

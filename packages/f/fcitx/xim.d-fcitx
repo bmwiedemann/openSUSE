@@ -1,0 +1,21 @@
+#make sure set these vars before dbus-launch
+export LC_CTYPE=$LANG
+export XMODIFIERS="@im=fcitx"
+export GTK_IM_MODULE=fcitx
+export QT_IM_SWITCHER=imsw-multi
+export QT_IM_MODULE=fcitx
+
+case "$WINDOWMANAGER" in
+    *gnome*|*kde*|*xfce*|*lxde*)
+	# started via xdg autostart (boo#947576)
+	# explicitly set below, as referred in xdg autostart
+	export INPUT_METHOD=fcitx
+	;;
+    *)
+	# FIXME: a little bit of delay is required to avoid race (boo#947576)
+	(sleep 2; fcitx -d) &
+	;;
+esac
+
+# success:
+return 0

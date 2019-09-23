@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>713d57a48f63a6664cd9f57ec3dfd045</srcmd5>
+    <version>0.1.2</version>
+    <time>1527934136</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-PyInstaller</comment>
+    <requestid>612910</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>acbc74abfe028b1dcd8a72e271a585a7</srcmd5>
+    <version>0.1.2</version>
+    <time>1544726580</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654016</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e593ee4be46c83182d327b348da48a01</srcmd5>
+    <version>0.1.3</version>
+    <time>1552380810</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.3:
+  * Add more files to sdist</comment>
+    <requestid>682839</requestid>
+  </revision>
+</revisionlist>

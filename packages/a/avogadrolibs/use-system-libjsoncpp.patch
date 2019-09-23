@@ -1,0 +1,33 @@
+diff -urNB avogadrolibs-0.9.0/avogadro/qtplugins/spectra/spectra.cpp new/avogadro/qtplugins/spectra/spectra.cpp
+--- avogadrolibs-0.9.0/avogadro/qtplugins/spectra/spectra.cpp	2016-03-08 00:03:53.000000000 +0100
++++ new/avogadro/qtplugins/spectra/spectra.cpp	2016-12-25 13:11:29.400148475 +0100
+@@ -26,7 +26,7 @@
+ #include <QtWidgets/QAction>
+ #include <QtWidgets/QFileDialog>
+ 
+-#include <jsoncpp.cpp>
++#include <json/json.h>
+ 
+ namespace Avogadro {
+ namespace QtPlugins {
+diff -urNB avogadrolibs-0.9.0/avogadro/quantumio/CMakeLists.txt new/avogadro/quantumio/CMakeLists.txt
+--- avogadrolibs-0.9.0/avogadro/quantumio/CMakeLists.txt	2016-03-08 00:03:53.000000000 +0100
++++ new/avogadro/quantumio/CMakeLists.txt	2016-12-25 12:58:52.883434586 +0100
+@@ -30,4 +30,4 @@
+ )
+ 
+ avogadro_add_library(AvogadroQuantumIO ${HEADERS} ${SOURCES})
+-target_link_libraries(AvogadroQuantumIO AvogadroIO)
++target_link_libraries(AvogadroQuantumIO AvogadroIO jsoncpp)
+diff -urNB avogadrolibs-0.9.0/CMakeLists.txt new/CMakeLists.txt
+--- avogadrolibs-0.9.0/CMakeLists.txt	2016-03-08 00:03:52.000000000 +0100
++++ new/CMakeLists.txt	2016-12-25 12:56:11.370490020 +0100
+@@ -32,7 +32,6 @@
+ include_directories(BEFORE ${CMAKE_CURRENT_SOURCE_DIR}
+   ${CMAKE_CURRENT_BINARY_DIR})
+ add_subdirectory(utilities)
+-add_subdirectory(thirdparty)
+ add_subdirectory(avogadro)
+ 
+ option(ENABLE_TESTING "Enable testing and building the tests." OFF)
+

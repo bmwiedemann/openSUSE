@@ -1,0 +1,47 @@
+Subject: zkey: Fix APQN validation routine
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary: zkey: Support CCA master key change with LUKS2 volumes using paes     
+Description: Support the usage of protected key crypto for dm-crypt disks in
+             LUKS2 format by providing a tool allowing to re-encipher a 
+             secure LUKS2 volume key when the CCA master key is changed
+Upstream-ID: 344965bd296f434ccbd9ad5b16427590b988d480
+Problem-ID:  SEC1424.1
+
+Upstream-Description:
+
+             zkey: Fix APQN validation routine
+
+             When a zkey generate or change command is used to associate one
+             or multiple APQNs the command succeeds, but no key is generated
+             and no APQNs are associated, because the return code returned by
+             _keystore_apqn_check() is wrong.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/keystore.c |    3 +++
+ 1 file changed, 3 insertions(+)
+
+--- a/zkey/keystore.c
++++ b/zkey/keystore.c
+@@ -986,6 +986,7 @@ static int _keystore_apqn_check(const ch
+ 	}
+ 
+ 	if (sscanf(apqn, "%x.%x", &card, &domain) != 2) {
++		warnx("the APQN '%s' is not valid", apqn);
+ 		rc = -EINVAL;
+ 		goto out;
+ 	}
+@@ -1003,6 +1004,8 @@ static int _keystore_apqn_check(const ch
+ 		      rc == -1 ? "not a CCA card" : "not online");
+ 		rc = -EIO;
+ 		goto out;
++	} else {
++		rc = 0;
+ 	}
+ 
+ out:

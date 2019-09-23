@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>16986bcdf7ee4f1b507bd8750f1e0c1c</srcmd5>
+    <version>2.1.2</version>
+    <time>1520588188</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by the latest version of python-holoviews, already in openSUSE:Factory.</comment>
+    <requestid>581983</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>016fd3c83287c7782072db7708c13f70</srcmd5>
+    <version>2.3.0</version>
+    <time>1524742642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599638</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>caadaecbd3328a1080a13f1af57d9b51</srcmd5>
+    <version>2.3.0</version>
+    <time>1537115485</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix BuildRequires (&quot;freeimage-devel&quot; instead of &quot;libfreeimage3&quot;), and
+  remove superfluous Requires for libfreeimage3.
+- Remove shebangs from non-scripts in shipped plugins.
+- Add python-imageio-rpmlintrc ... we install zero-length files.
+</comment>
+    <requestid>633470</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0339230279957e9f877cf67307510444</srcmd5>
+    <version>2.3.0</version>
+    <time>1545647900</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659436</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>b89406979782f50cd5bebe9c8478bfa0</srcmd5>
+    <version>2.3.0</version>
+    <time>1553611446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688136</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3e2742db4da2f7be0e9560f88d819f4e</srcmd5>
+    <version>2.5.0</version>
+    <time>1558532322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698244</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="apache2-mod_dnssd" project="openSUSE:Factory">
+  <title>Apache2 module for Zeroconf support via DNS-SD</title>
+  <description>mod_dnssd is an Apache HTTPD module which adds Zeroconf support via
+DNS-SD using Avahi.</description>
+  <devel project="Apache:Modules" package="apache2-mod_dnssd"/>
+</package>

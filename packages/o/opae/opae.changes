@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Tue Jul  3 13:10:59 CEST 2018 - ndas@suse.de
+
+- opae goes with FPGA driver API.(FATE#325137).
+- replace %doc with %license
+
+-------------------------------------------------------------------
+Thu Feb 22 08:26:44 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update opae-missing-shebang.patch to use /usr/bin/python3
+  instead of /usr/bin/python (bsc#1082133).
+
+-------------------------------------------------------------------
+Fri Jan 19 10:03:15 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update to opae 0.13.0
+  * No release notes available
+- Refresh opae-fix-cmake-paths.patch and opae-missing-shebang.patch
+  to the lastest sources
+
+-------------------------------------------------------------------
+Wed Sep  6 08:08:55 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Initial packaging of version 0.9.0 (FATE#323188)
+- Add opae-fix-cmake-paths.patch, opae-add-missing-lpthread.patch and
+  opae-missing-shebang.patch to fix upstream packaging issues
+- Split libraries into their own package: libopae-c0

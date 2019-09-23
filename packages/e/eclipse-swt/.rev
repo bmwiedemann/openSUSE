@@ -1,0 +1,230 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4abc46c81f1adddbfbc0fd14e1897b9c</srcmd5>
+    <version>3.735</version>
+    <time>1317994241</time>
+    <user>lrupp</user>
+    <comment>eclipse-swt provides libswt3-gtk, witch needed by TuxGuitar.
+
+This eclipse-swt is rebased, added script to remove all precompiled .jar files. Tested in openSUSE 11.2 beta1 with TuxGuitar from education repo.</comment>
+    <requestid>87030</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4abc46c81f1adddbfbc0fd14e1897b9c</srcmd5>
+    <version>3.735</version>
+    <time>1319181861</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>7efb5221216658425c02cf0299a9963f</srcmd5>
+    <version>3.735</version>
+    <time>1319465685</time>
+    <user>coolo</user>
+    <comment>- use gcc46</comment>
+    <requestid>89169</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>24d5a84bc818bf11ceffba97ca57b64e</srcmd5>
+    <version>3.735</version>
+    <time>1322488141</time>
+    <user>coolo</user>
+    <comment>- Use libgcj45 for openSUSE 11.4 and older versions
+- Fix bnc#732684
+- correct date format</comment>
+    <requestid>93987</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>5474d610e1eee1f2dc97d40b7c082694</srcmd5>
+    <version>3.735</version>
+    <time>1323191263</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>5f52d1ed1d7abeee1fb020d05b56ba56</srcmd5>
+    <version>3.735</version>
+    <time>1339587088</time>
+    <user>coolo</user>
+    <comment>Remove mozilla-xulrunner192 dependency for openSUSE 12.2 (factory) (fix bnc#766485)  (forwarded request 124781 from cyberorg)</comment>
+    <requestid>124789</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>5f52d1ed1d7abeee1fb020d05b56ba56</srcmd5>
+    <version>3.735</version>
+    <time>1340183299</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>55502ebe3ffa6dc5f53119cf341599c4</srcmd5>
+    <version>3.735</version>
+    <time>1340971406</time>
+    <user>coolo</user>
+    <comment>- use use one libgcj to rule them all (forwarded request 126508 from lrupp)</comment>
+    <requestid>126566</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>980851047d2029468ec374cad48e1bcc</srcmd5>
+    <version>3.735</version>
+    <time>1348421590</time>
+    <user>coolo</user>
+    <comment>- Add explicit glu dependency</comment>
+    <requestid>135229</requestid>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>64254ad18ecc1b0a244f5bee30851d33</srcmd5>
+    <version>3.735</version>
+    <time>1350641113</time>
+    <user>coolo</user>
+    <comment>Fix build for Factory. Remove commented lines, that contains macros</comment>
+    <requestid>138553</requestid>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>64254ad18ecc1b0a244f5bee30851d33</srcmd5>
+    <version>3.735</version>
+    <time>1359108838</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>64254ad18ecc1b0a244f5bee30851d33</srcmd5>
+    <version>3.735</version>
+    <time>1379662277</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ea2984164f9c13164a89975d5abe31aa</srcmd5>
+    <version>4.333</version>
+    <time>1389956448</time>
+    <user>coolo</user>
+    <comment>Enable ppc64le build (add ppc64le.patch).
+Update to version 4.333 
+(and add libswt-plugindir.patch, 
+ remove libswt-version.patch).
+Fix build for openSUSE Tumbleweed and 11.4</comment>
+    <requestid>214055</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f252d00cfdb1996cd8f0b07fbecb5278</srcmd5>
+    <version>4.335</version>
+    <time>1400355810</time>
+    <user>coolo</user>
+    <comment>update and big cleanup to simplify the build and acquiring of the source code (forwarded request 234275 from Mailaender)</comment>
+    <requestid>234414</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>8a1d1d41227370c997ac7b19c9631c3e</srcmd5>
+    <version>4.335</version>
+    <time>1400681944</time>
+    <user>coolo</user>
+    <comment>- Fix bogus arch setting
+- jni64.patch: Fix JNI64 setting
+- build.patch: Fix AWT_ARCH setting (forwarded request 234681 from Andreas_Schwab)</comment>
+    <requestid>234704</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>23b5881212ab0140be755dcfffaea7b1</srcmd5>
+    <version>4.333</version>
+    <time>1404306294</time>
+    <user>coolo</user>
+    <comment>- Revert back to 4.333 as it broke build of only dependant package
+- Removed patches:
+  * build.patch
+  * jni64.patch
+- Added patches:
+  * libswt-includes.patch
+  * libswt-build.patch
+  * libswt-optflags.patch
+  * libswt-plugindir.patch
+  * ppc64le.patch</comment>
+    <requestid>239082</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>23b5881212ab0140be755dcfffaea7b1</srcmd5>
+    <version>4.333</version>
+    <time>1409300814</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>7ee8a1f3f4b655ba8d56c3c2bedceccb</srcmd5>
+    <version>4.333</version>
+    <time>1439556365</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322118</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>032255a4cdecd72d707b0b189fa8f437</srcmd5>
+    <version>4.333</version>
+    <time>1441054771</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328075</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>ce0b7751f89aafb12f195fbcad20bbf8</srcmd5>
+    <version>4.333</version>
+    <time>1465750489</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400670</requestid>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>786ca562124af07d2d1c7573d4f4f44f</srcmd5>
+    <version>4.333</version>
+    <time>1505920453</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527528</requestid>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>56f93316ff648ee646dec744f33609f5</srcmd5>
+    <version>4.333</version>
+    <time>1507391553</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>532349</requestid>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>d84c8aa1a099ed2ac819e9971b54e6bb</srcmd5>
+    <version>4.333</version>
+    <time>1508434380</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534908</requestid>
+  </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>6bd348c35dfa043734aa38a319a58b69</srcmd5>
+    <version>4.333</version>
+    <time>1508770339</time>
+    <user>dimstar_suse</user>
+    <comment>Specify the right swt.arch in manifest file (bsc#1062807)</comment>
+    <requestid>535788</requestid>
+  </revision>
+  <revision rev="25" vrev="12">
+    <srcmd5>2dcc2bfa32b210209e2215ccf7c2afad</srcmd5>
+    <version>4.333</version>
+    <time>1527084527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610617</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9b0ea15c67d930a84eff14b3e8bb6f85</srcmd5>
+    <version>4.3.1</version>
+    <time>1548335581</time>
+    <user>dimstar_suse</user>
+    <comment>Use the corresponding eclipse version (technically it is a downgrade)</comment>
+    <requestid>667727</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>e980831115e09ea9b323ea8c667250aa</srcmd5>
+    <version>4.3.1</version>
+    <time>1569234841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731724</requestid>
+  </revision>
+</revisionlist>

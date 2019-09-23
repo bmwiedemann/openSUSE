@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8ea6407b8b9178da391070b49f3e280f</srcmd5>
+    <version>2.6.3</version>
+    <time>1530087608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>616810</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9ecf66889355ec6ce251424daa37208c</srcmd5>
+    <version>2.7.0</version>
+    <time>1531232259</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 621876 from awissu)</comment>
+    <requestid>621883</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5a9ca05c8e250853f5b88a17c57ad21e</srcmd5>
+    <version>2.7.1</version>
+    <time>1543953385</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653669</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>592f3f8197b16eeb6d381eb9fb3ced55</srcmd5>
+    <version>2.7.2</version>
+    <time>1551276407</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679475</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>676d6baf66d3ae079e87a45e1492abbc</srcmd5>
+    <version>2.7.3</version>
+    <time>1560337907</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705940</requestid>
+  </revision>
+</revisionlist>

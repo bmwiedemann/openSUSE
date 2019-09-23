@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Mon Feb 12 19:22:30 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 4
+ * no changelog available
+ * removed 109.patch, merged upstream
+
+-------------------------------------------------------------------
+Thu Jun 29 16:20:46 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial package
+- Add 109.patch from pull request at upstream repository, workaround for boo#1049997 and missing support for https URLs in mkosi/zypper

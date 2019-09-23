@@ -1,0 +1,152 @@
+-------------------------------------------------------------------
+Thu Sep 27 14:58:11 UTC 2018 - schwab@suse.de
+
+- libotr-test-uninitialized.patch: Fix use of uninitialized memory in
+  testsuite
+- Don't disable testsuite on ppc
+
+-------------------------------------------------------------------
+Wed May 16 06:25:56 UTC 2018 - adam.majer@suse.de
+
+- Use %license instead of %doc for license files.
+
+-------------------------------------------------------------------
+Tue May 15 15:22:41 UTC 2018 - mgorse@suse.com
+
+- Add libotr-test-underrun.patch: fix intermittent buffer underrun
+  in the regression test client (bsc#1091664).
+
+-------------------------------------------------------------------
+Mon Mar  7 12:46:26 UTC 2016 - astieger@suse.com
+
+- libotr 4.1.1:
+  * Fix an integer overflow bug that can cause a heap buffer
+    overflow (and from there remote code execution) on 64-bit
+    platforms - CVE-2016-2851 (boo#969785)
+  * Fix possible free() of an uninitialized pointer
+  * Be stricter about parsing v3 fragments
+  * Add a testsuite ("make check" to run it)
+  * Fix a memory leak when reading a malformed instance tag file
+  * Protocol documentation clarifications
+- add libotr-4.1.1-fix-base64-tests.patch to fix test suite failure
+- skip failing tests on ppc architectures
+
+-------------------------------------------------------------------
+Tue Oct 21 19:01:07 UTC 2014 - andreas.stieger@gmx.de
+
+- libotr 4.1.0:
+  * Modernized autoconf build system
+  * Use constant-time comparisons where needed
+  * Use gcrypt secure memory allocation
+  * Correctly reject attempts to fragment a message into too many
+    pieces
+  * Fix a missing opdata when sending message fragments
+  * Don't lose the first user message when REQUIRE_ENCRYPTION is
+    set
+  * Fix some memory leaks
+  * Correctly check for children contexts' state when forgetting a
+    context
+  * API Changes:
+    + Added API functions otrl_context_find_recent_instance and
+      otrl_context_find_recent_secure_instance.
+- remove pass-opdata-when-sending-message-fragment.patch, upstream
+- source tarball signature verification covered by source_validator
+
+-------------------------------------------------------------------
+Mon Jan  6 16:33:26 UTC 2014 - hrvoje.senjan@gmail.com
+
+- added patch from upstream:
+  * pass-opdata-when-sending-message-fragment.patch -- fixes downstream
+    kopete crashes: kde#328999, bnc#857501
+
+-------------------------------------------------------------------
+Wed Jun 19 19:30:06 UTC 2013 - andreas.stieger@gmx.de
+
+- verify source signature
+- remove autoreconf call
+
+-------------------------------------------------------------------
+Wed Sep 26 11:40:40 UTC 2012 - nmo.marques@gmail.com
+
+- Update the license fields (bnc#782253)
+- Move COPYING and COPYING.LIB documentation to their respective
+  (sub)packages.
+
+-------------------------------------------------------------------
+Sun Sep 23 16:42:20 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 4.0.0:
+  + Support v3 of the OTR protocol
+  + The main new feature: sensibly handle the case where a user is
+    logged in multiple times to the same IM account
+  + instance tags, to support multiple simultaneous logins
+  + support for asynchronous private key generation
+  + the ability to provide an extra symmetric key to applications
+    (with forward secrecy)
+  + applications can supply a formation conversion callback if they
+    do not natively use XHTML-style UTF8 markup
+  + error messages formerly provided by libotr are now handled
+    using callbacks to the application, for better i18n support
+  + otrl_message_sending now handles message fragmentation
+    internally
+  + Added support for one-way authentication using an explicit
+    question, based on the SOUPS 2008 user study
+- Soname bump to 5
+
+-------------------------------------------------------------------
+Mon Feb 13 10:49:09 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Mon Nov 21 15:25:39 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Use %_smp_mflags for parallel building
+
+-------------------------------------------------------------------
+Sun Nov 20 06:17:12 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Sep 23 06:12:53 CEST 2008 - crrodriguez@suse.de
+
+- update to version 3.2.0
+  * dozen bugfixes, see Changelog for details 
+
+-------------------------------------------------------------------
+Tue Oct  9 06:02:16 CEST 2007 - crrodriguez@suse.de
+
+- update to version 3.1.0
+- run ldconfig
+- make autobuild happy fixing the warnings
+- fix devel package dependencies.
+- remove static libraries
+- use library packaging policy 
+
+-------------------------------------------------------------------
+Sat Oct  7 11:15:10 CEST 2006 - aj@suse.de
+
+- Add dependency on base package.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:39 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov 15 15:59:36 CET 2005 - uli@suse.de
+
+- build with -O1 on ARM (ICE workaround)
+
+-------------------------------------------------------------------
+Wed Nov  9 21:59:17 CET 2005 - bwhiteley@suse.de
+
+- update to version 3.0.0
+
+-------------------------------------------------------------------
+Tue Nov  1 22:59:06 CET 2005 - bwhiteley@suse.de
+
+- First time suse package (version 2.0.2)
+

@@ -1,0 +1,141 @@
+diff --git a/librawstudio/rs-exif.cc b/librawstudio/rs-exif.cc
+index 8ad23a16..810d2aba 100644
+--- a/librawstudio/rs-exif.cc
++++ b/librawstudio/rs-exif.cc
+@@ -19,19 +19,22 @@
+ 
+ #include <iostream>
+ #include <iomanip>
+-#include <exiv2/image.hpp>
+-#include <exiv2/exif.hpp>
++#include <exiv2/exiv2.hpp>
+ #include "rs-exif.h"
+ #include <assert.h>
+ #include "rs-library.h"
+ 
++#ifdef EXIV2_VERSION
+ #ifndef EXIV2_TEST_VERSION
+-# define EXIV2_TEST_VERSION(major,minor,patch) \
+-	( EXIV2_VERSION >= EXIV2_MAKE_VERSION((major),(minor),(patch)) )
++#define EXIV2_TEST_VERSION(major,minor,patch) \
++    ( EXIV2_VERSION >= EXIV2_MAKE_VERSION(major,minor,patch) )
++#endif
++#else
++#define EXIV2_TEST_VERSION(major,minor,patch) (false)
+ #endif
+ 
+-#if EXIV2_TEST_VERSION(0,17,0)
+-#include <exiv2/convert.hpp>
++#if EXIV2_TEST_VERSION(0,27,0)
++#define EXV_PACKAGE "exiv2"
+ #endif
+ 
+ extern "C" {
+diff --git a/plugins/load-gdk/exiv2-colorspace.cpp b/plugins/load-gdk/exiv2-colorspace.cpp
+index a34ea0b7..9a5f51de 100644
+--- a/plugins/load-gdk/exiv2-colorspace.cpp
++++ b/plugins/load-gdk/exiv2-colorspace.cpp
+@@ -20,23 +20,25 @@
+ #include <gtk/gtk.h>
+ #include <iostream>
+ #include <iomanip>
+-#include <exiv2/image.hpp>
+-#include <exiv2/exif.hpp>
++#include <exiv2/exiv2.hpp>
+ #include <assert.h>
+ #include "exiv2-colorspace.h"
+ #include <math.h>
+ #include <png.h>
+ #include <jpeglib.h>
+ 
++#ifdef EXIV2_VERSION
+ #ifndef EXIV2_TEST_VERSION
+-# define EXIV2_TEST_VERSION(major,minor,patch) \
+-	( EXIV2_VERSION >= EXIV2_MAKE_VERSION((major),(minor),(patch)) )
++#define EXIV2_TEST_VERSION(major,minor,patch) \
++    ( EXIV2_VERSION >= EXIV2_MAKE_VERSION(major,minor,patch) )
+ #endif
+-
+-#if EXIV2_TEST_VERSION(0,17,0)
+-#include <exiv2/convert.hpp>
++#else
++#define EXIV2_TEST_VERSION(major,minor,patch) (false)
+ #endif
+ 
++#if EXIV2_TEST_VERSION(0,27,0)
++#define EXV_PACKAGE "exiv2"
++#endif
+ 
+ extern "C" {
+ 
+diff --git a/plugins/load-png/exiv2-colorspace.cpp b/plugins/load-png/exiv2-colorspace.cpp
+index a34ea0b7..10d3413c 100644
+--- a/plugins/load-png/exiv2-colorspace.cpp
++++ b/plugins/load-png/exiv2-colorspace.cpp
+@@ -20,8 +20,7 @@
+ #include <gtk/gtk.h>
+ #include <iostream>
+ #include <iomanip>
+-#include <exiv2/image.hpp>
+-#include <exiv2/exif.hpp>
++#include <exiv2/exiv2.hpp>
+ #include <assert.h>
+ #include "exiv2-colorspace.h"
+ #include <math.h>
+@@ -33,10 +32,18 @@
+ 	( EXIV2_VERSION >= EXIV2_MAKE_VERSION((major),(minor),(patch)) )
+ #endif
+ 
+-#if EXIV2_TEST_VERSION(0,17,0)
+-#include <exiv2/convert.hpp>
++#ifdef EXIV2_VERSION
++#ifndef EXIV2_TEST_VERSION
++#define EXIV2_TEST_VERSION(major,minor,patch) \
++    ( EXIV2_VERSION >= EXIV2_MAKE_VERSION(major,minor,patch) )
++#endif
++#else
++#define EXIV2_TEST_VERSION(major,minor,patch) (false)
+ #endif
+ 
++#if EXIV2_TEST_VERSION(0,27,0)
++#define EXV_PACKAGE "exiv2"
++#endif
+ 
+ extern "C" {
+ 
+diff --git a/plugins/meta-exiv2/exiv2-metadata.cpp b/plugins/meta-exiv2/exiv2-metadata.cpp
+index 8a2fc762..9c7fdcdb 100644
+--- a/plugins/meta-exiv2/exiv2-metadata.cpp
++++ b/plugins/meta-exiv2/exiv2-metadata.cpp
+@@ -20,23 +20,22 @@
+ #include <gtk/gtk.h>
+ #include <iostream>
+ #include <iomanip>
+-#include <exiv2/image.hpp>
+-#include <exiv2/exif.hpp>
++#include <exiv2/exiv2.hpp>
+ #include <assert.h>
+ #include "exiv2-metadata.h"
+ #include <math.h>
+ 
++#ifdef EXIV2_VERSION
+ #ifndef EXIV2_TEST_VERSION
+-# define EXIV2_TEST_VERSION(major,minor,patch) \
+-	( EXIV2_VERSION >= EXIV2_MAKE_VERSION((major),(minor),(patch)) )
++#define EXIV2_TEST_VERSION(major,minor,patch) \
++    ( EXIV2_VERSION >= EXIV2_MAKE_VERSION(major,minor,patch) )
+ #endif
+-
+-#if EXIV2_TEST_VERSION(0,17,0)
+-#include <exiv2/convert.hpp>
++#else
++#define EXIV2_TEST_VERSION(major,minor,patch) (false)
+ #endif
+ 
+-#if EXIV2_TEST_VERSION(0,19,0)
+-#include <exiv2/easyaccess.hpp>
++#if EXIV2_TEST_VERSION(0,27,0)
++#define EXV_PACKAGE "exiv2"
+ #endif
+ 
+ extern "C" {

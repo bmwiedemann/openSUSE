@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>24f21027fb4025a451147e21e1210bbf</srcmd5>
+    <version>2.0</version>
+    <time>1546946653</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain ipv6toolkit in Factory</comment>
+    <requestid>658970</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6f2c6f8e05543a735fe0dbfa4f27b631</srcmd5>
+    <version>2.0</version>
+    <time>1548335512</time>
+    <user>dimstar_suse</user>
+    <comment>- Grammar fixes for the description.
+- Verify source signature
+- Initial package, version 2.0
+</comment>
+    <requestid>667394</requestid>
+  </revision>
+</revisionlist>

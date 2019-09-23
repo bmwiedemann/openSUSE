@@ -1,0 +1,1007 @@
+<revisionlist>
+  <revision rev="1" vrev="11">
+    <srcmd5>e3421e561efd07a4eda735b2e2a356c4</srcmd5>
+    <version>1.2.2</version>
+    <time>1168390662</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2a60ae40634b1a71ce5f520c98fe609d</srcmd5>
+    <version>1.2.3.1</version>
+    <time>1173168880</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>ccf4d58fc230d520d8f733de04e8bd5c</srcmd5>
+    <version>1.2.3.1</version>
+    <time>1175185271</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>a76520676f51265c637d30f74d24ccfb</srcmd5>
+    <version>1.2.3.1</version>
+    <time>1175812020</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e53146a93eac579606afe8a8df1b63fe</srcmd5>
+    <version>1.2.4</version>
+    <time>1181469527</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>299a3124db99cf24295e19a3ec8beeae</srcmd5>
+    <version>1.2.4</version>
+    <time>1182036678</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>ea92b2a342f272c50e5fc7c25e8e4e08</srcmd5>
+    <version>1.2.4</version>
+    <time>1182359804</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>46b95eb38a9809cc7f220c773c333209</srcmd5>
+    <version>1.2.4</version>
+    <time>1183703902</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>3a643b4a82244ece57f35253a10fefd3</srcmd5>
+    <version>1.2.4</version>
+    <time>1186148546</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>4b07e486a5bf6832b9aaaf103947cc11</srcmd5>
+    <version>1.2.4</version>
+    <time>1186156137</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4b9785816a5e3d0f1eb5463cc6d76cde</srcmd5>
+    <version>1.2.5</version>
+    <time>1186170427</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>e693bfbb5d83fb8b0c2ea6f4a03b8057</srcmd5>
+    <version>1.2.5</version>
+    <time>1188568738</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="26">
+    <srcmd5>ae12af0c37d552670b5b2c5128ab9295</srcmd5>
+    <version>1.2.5</version>
+    <time>1193963578</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>be1f4bfa9454362241d3c022e8846ca4</srcmd5>
+    <version>1.2.6</version>
+    <time>1200373423</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>3e4dcd9f48fcdbbed6928650e006e98b</srcmd5>
+    <version>1.2.6</version>
+    <time>1200373783</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>78e84059b8ec41345202cd0b7a293d4c</srcmd5>
+    <version>1.2.6</version>
+    <time>1200610165</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>bc09099c9cc60aad2241facfe7b56e71</srcmd5>
+    <version>1.2.6</version>
+    <time>1201126413</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="17">
+    <srcmd5>507baa4a0039000972aad30c9afad602</srcmd5>
+    <version>1.2.6</version>
+    <time>1203146259</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1421d6ce140b13df25dae7541323df72</srcmd5>
+    <version>1.9</version>
+    <time>1206545056</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>093e84cae8dc9b9a845a8a241640c495</srcmd5>
+    <version>1.9</version>
+    <time>1207832035</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>c67795d159ed8562b23cc6115306c0a2</srcmd5>
+    <version>1.9</version>
+    <time>1207949481</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a19d98ff71c162defcc77f7d9940b790</srcmd5>
+    <version>1.9.1</version>
+    <time>1211016237</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>c014f71d30154ddc41aedb3476fd2d1a</srcmd5>
+    <version>1.9.1</version>
+    <time>1211836543</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e38b09ea019c04006a45edfb86272f8a</srcmd5>
+    <version>2.0</version>
+    <time>1219882525</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>49333cee6a8a53ae06b24420b2132e73</srcmd5>
+    <version>2.0</version>
+    <time>1220654122</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="9">
+    <srcmd5>ed5eafcfc98e067ab56ba66621f26c4f</srcmd5>
+    <version>2.0</version>
+    <time>1220889936</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="11">
+    <srcmd5>fc1188af4db53a12c64586354cbb8b68</srcmd5>
+    <version>2.0</version>
+    <time>1221305906</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="14">
+    <srcmd5>c5439f6b8b64db893d5cf17779483b3e</srcmd5>
+    <version>2.0</version>
+    <time>1222298400</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="15">
+    <srcmd5>1bca838e89b33f3361710928845d6062</srcmd5>
+    <version>2.0</version>
+    <time>1222434084</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="16">
+    <srcmd5>291d42b8101494bddf4a70058b70185b</srcmd5>
+    <version>2.0</version>
+    <time>1223312641</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>12b04dca953a055336deb13a095cda14</srcmd5>
+    <version>2.0.1</version>
+    <time>1224855904</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e7de08179076aea58c92528509e372e1</srcmd5>
+    <version>2.4</version>
+    <time>1239730832</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1497a695d3bedd244e50c82ccdddabe3</srcmd5>
+    <version>2.4.2.3</version>
+    <time>1250906305</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/mono-core based on submit request 18455 from user ajorgensen
+</comment>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>1497a695d3bedd244e50c82ccdddabe3</srcmd5>
+    <version>2.4.2.3</version>
+    <time>1250906305</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/mono-core based on submit request 18455 from user ajorgensen
+</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>cedb8bb0e642be05697bc7444ad6445f</srcmd5>
+    <version>2.6.1</version>
+    <time>1264639772</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/mono-core based on submit request 30632 from user ajorgensen
+</comment>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>44c136a3efe0a7431cc234120bc3dd6a</srcmd5>
+    <version>2.6.1</version>
+    <time>1267462697</time>
+    <user>autobuild</user>
+    <comment>Copy from IBS home:oertel/mono-core based on submit request 5033 from user oertel
+</comment>
+    <requestid>5033</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>8ccd500176f8b4760580f9a66c5a9200</srcmd5>
+    <version>2.6.3</version>
+    <time>1268352465</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/mono-core based on submit request 34491 from user coolo
+</comment>
+    <requestid>34491</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>197606e0da5c1727267f4e709356dead</srcmd5>
+    <version>2.6.3</version>
+    <time>1268838888</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/mono-core based on submit request 35064 from user ajorgensen
+</comment>
+    <requestid>35064</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>1597253f28bd1699d2d49ad7e72c6cce</srcmd5>
+    <version>2.6.3</version>
+    <time>1268924964</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>cebf8d891284bbe6d728fece8dd6df63</srcmd5>
+    <version>2.6.3</version>
+    <time>1271372761</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/mono-core based on submit request 37959 from user ajorgensen
+</comment>
+    <requestid>37959</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>eeed42fbdc97b538b2e26a790340cca2</srcmd5>
+    <version>2.6.4</version>
+    <time>1272494192</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/mono-core based on submit request 39048 from user ajorgensen
+</comment>
+    <requestid>39048</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>38cb9c56701904af32678ed0fafb68b3</srcmd5>
+    <version>2.6.4</version>
+    <time>1274132651</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/mono-core based on submit request 40208 from user ajorgensen
+</comment>
+    <requestid>40208</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>38cb9c56701904af32678ed0fafb68b3</srcmd5>
+    <version>2.6.4</version>
+    <time>1278667368</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>38cb9c56701904af32678ed0fafb68b3</srcmd5>
+    <version>2.6.4</version>
+    <time>1278678597</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>3b837995a58dc95e329fff19299766d0</srcmd5>
+    <version>2.8</version>
+    <time>1288963977</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52086 from user ajorgensen
+</comment>
+    <requestid>52086</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>fbbf293e71ed9d64c5a196cb3a3cfe43</srcmd5>
+    <version>2.8</version>
+    <time>1288963985</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52086
+</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>3192c0c453b69ec4af3add16c637eae3</srcmd5>
+    <version>2.8.1</version>
+    <time>1291587214</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54372 from user ajorgensen
+</comment>
+    <requestid>54372</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>436bd7d53f6f1eaee24410be6199aedc</srcmd5>
+    <version>2.8.1</version>
+    <time>1291587224</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54372
+</comment>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>436bd7d53f6f1eaee24410be6199aedc</srcmd5>
+    <version>2.8.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>e71644d46461e04aa9764af2aa835a62</srcmd5>
+    <version>2.10</version>
+    <time>1298403069</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62528 from user ajorgensen
+</comment>
+    <requestid>62528</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>28f37cec0619e4258ee811e5c8b00c07</srcmd5>
+    <version>2.10</version>
+    <time>1298403078</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62528
+</comment>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>f99f3e6ea76509a386d5bb034ce75fc8</srcmd5>
+    <version>2.10</version>
+    <time>1302082382</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66004 from user coolo
+</comment>
+    <requestid>66004</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>0cdd1cdaabb167d8250a36c449da06b7</srcmd5>
+    <version>2.10</version>
+    <time>1302082392</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66004
+</comment>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>74f987a5c85511110c9726c073f972b9</srcmd5>
+    <version>2.10.2</version>
+    <time>1306923043</time>
+    <user>saschpe</user>
+    <comment>2.10.2</comment>
+    <requestid>68880</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>5a21780016d9525cc1eba9233995de0e</srcmd5>
+    <version>2.10.2</version>
+    <time>1306923056</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68880
+</comment>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>f98b7298eca2010e615dc338bc6135db</srcmd5>
+    <version>2.10.6</version>
+    <time>1318456828</time>
+    <user>lrupp</user>
+    <comment>- update to 2.10.6
+  * http://www.go-mono.com/archive/2.10.6 (forwarded request 87052 from dirkmueller)</comment>
+    <requestid>87528</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>f98b7298eca2010e615dc338bc6135db</srcmd5>
+    <version>2.10.6</version>
+    <time>1319182182</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>a764c75a7b181daa57179f180eeecbcb</srcmd5>
+    <version>2.10.6</version>
+    <time>1323192575</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="59" vrev="6">
+    <srcmd5>a764c75a7b181daa57179f180eeecbcb</srcmd5>
+    <version>2.10.6</version>
+    <time>1340183706</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="60" vrev="7">
+    <srcmd5>749eb6988eec9cfa8ca009aabdaa2dd5</srcmd5>
+    <version>2.10.6</version>
+    <time>1344417185</time>
+    <user>coolo</user>
+    <comment>- fix ppc build (forwarded request 128708 from decriptor)</comment>
+    <requestid>130311</requestid>
+  </revision>
+  <revision rev="61" vrev="8">
+    <srcmd5>f17a5a32fcee3f0cc9f7af5480c6fe11</srcmd5>
+    <version>2.10.6</version>
+    <time>1347283257</time>
+    <user>coolo</user>
+    <comment>- use hammer approach for vfp instead
+
+- add arch linux vfp patch
+
+- use vfp on armv7
+
+- fix arm build to not depend on the build host's /proc/cpuinfo (forwarded request 132072 from dirkmueller)</comment>
+    <requestid>132293</requestid>
+  </revision>
+  <revision rev="62" vrev="9">
+    <srcmd5>f415edd9be760e34f117c5471962bf8d</srcmd5>
+    <version>2.10.6</version>
+    <time>1350022025</time>
+    <user>coolo</user>
+    <comment>- workaround for ppc build with mcs-docs enabled
+  use --with-sigaltstack=no (bxc#6440) (forwarded request 137231 from k0da)</comment>
+    <requestid>137729</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>f78b7e1b40090935d2c6be9bdb1dacc6</srcmd5>
+    <version>3.0.1</version>
+    <time>1355130639</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>142531</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>8fc908caa2a063a9fb9626ceca440133</srcmd5>
+    <version>3.0.2</version>
+    <time>1356866378</time>
+    <user>namtrac</user>
+    <comment>fix arm builds. please forward to Factory, thanks. (forwarded request 145938 from adrianSuSE)</comment>
+    <requestid>145954</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>283e0d0ce2c4f4c4e0e1c2712039824d</srcmd5>
+    <version>3.0.2</version>
+    <time>1356960383</time>
+    <user>namtrac</user>
+    <comment>- Fix ppc build failures (ppc.patch) (forwarded request 146514 from k0da)</comment>
+    <requestid>146717</requestid>
+  </revision>
+  <revision rev="66" vrev="4">
+    <srcmd5>283e0d0ce2c4f4c4e0e1c2712039824d</srcmd5>
+    <version>3.0.2</version>
+    <time>1359109454</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>020b3fa7b3d139353d4ac7539a0a3ee7</srcmd5>
+    <version>3.0.3</version>
+    <time>1359555123</time>
+    <user>coolo</user>
+    <comment>- Add mono-core-target-4.0.patch: Use .Net runtime 4.0 as default
+  for Nunit and Cairo. (forwarded request 150340 from dimstar)</comment>
+    <requestid>150354</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>efa3413434d0414857bd2d0cbeb42ead</srcmd5>
+    <version>3.0.4</version>
+    <time>1362462299</time>
+    <user>coolo</user>
+    <comment>&quot;Hotfix&quot; for Xamarin studio.</comment>
+    <requestid>157231</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>bbbaeb71c4d026f0fee414c07af598cb</srcmd5>
+    <version>3.0.4</version>
+    <time>1362736472</time>
+    <user>coolo</user>
+    <comment>- Remove hardcoded lib directory from the config, this unbreaks
+ running GDI+ programs on 64bit.</comment>
+    <requestid>157509</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>c5f150b826881c2b64718956f60bd94c</srcmd5>
+    <version>3.0.6</version>
+    <time>1363340503</time>
+    <user>coolo</user>
+    <comment>require the devel package and recommend the real one of GDI+ (forwarded request 158233 from Mailaender)</comment>
+    <requestid>158614</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>e8d0f3394469d15d5a7fe51398757e78</srcmd5>
+    <version>3.0.6</version>
+    <time>1363954536</time>
+    <user>coolo</user>
+    <comment>- Refresh and apply mono-core-target-4.0.patch
+- Apply ppc.patch again</comment>
+    <requestid>159964</requestid>
+  </revision>
+  <revision rev="72" vrev="4">
+    <srcmd5>e8d0f3394469d15d5a7fe51398757e78</srcmd5>
+    <version>3.0.6</version>
+    <time>1379663304</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>2fb3717ee847ad1940eb37b698addb64</srcmd5>
+    <version>3.2.1</version>
+    <time>1380188954</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>198610</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>258c338b3320b7215455052226171122</srcmd5>
+    <version>3.2.1</version>
+    <time>1381080980</time>
+    <user>scarabeus_factory</user>
+    <comment>Make libmono-2_0-devel Require libmonoboehm-2_0-devel, as the it's .so is a symlink to the libmonoboehm one (forwarded request 202410 from sumski)</comment>
+    <requestid>202420</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>042d18a264fe6578fc32fa363ceb21d4</srcmd5>
+    <version>3.2.3</version>
+    <time>1381257316</time>
+    <user>scarabeus_factory</user>
+    <comment> (forwarded request 202422 from Mailaender)</comment>
+    <requestid>202600</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>e72d5c8514f878685907dfa1f2d8eb48</srcmd5>
+    <version>3.2.8</version>
+    <time>1394030260</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>224367</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>e535712b1d7aa7518f4a13cd9c759c39</srcmd5>
+    <version>3.2.8</version>
+    <time>1394555266</time>
+    <user>coolo</user>
+    <comment>- rediff and reactivate ppc.patch
+- port forward ppc64le fixes from matz:
+- Add support for ppc64le, fix build warnings, the blocksize
+  changes in mono-core-ppc64le.diff should also help ppc64 proper.
+  Added patches:
+  * mono-core-parallel-build.diff 
+  * mono-core-ppc64le-callreg.diff
+  * mono-core-ppc64le-swr11r12.diff
+  * mono-core-ppc64le.diff
+- no valgrind on aarch64 and s390 (but on s390x) (forwarded request 225490 from oertel)</comment>
+    <requestid>225505</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>770df0ad869e73fe78c942b06701acfc</srcmd5>
+    <version>3.6.0</version>
+    <time>1409252720</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>246550</requestid>
+  </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>770df0ad869e73fe78c942b06701acfc</srcmd5>
+    <version>3.6.0</version>
+    <time>1409301917</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>08305169756e196a15f84bf1fd7f095f</srcmd5>
+    <version>3.8.0</version>
+    <time>1411461736</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>250708</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>0c81eb400649374707f42da4ac1e94dd</srcmd5>
+    <version>3.10.0</version>
+    <time>1416824311</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261491</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>e5d86b9555f5a0c109e0f6746e37075c</srcmd5>
+    <version>3.12.0</version>
+    <time>1422790175</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283451</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>02f3c0edd5ba82754525ffc33eacdd1b</srcmd5>
+    <version>3.10.0</version>
+    <time>1422868706</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:mono-core revision:81, using expand</comment>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>28a61c8bce531bcc49c5b60920cb9de7</srcmd5>
+    <version>3.12.0</version>
+    <time>1425891748</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288837</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>71115ef8167d598721b1d3436cec0c82</srcmd5>
+    <version>3.12.1</version>
+    <time>1426174711</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290265</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>fc54e47ef4143815f878d55b242ae950</srcmd5>
+    <version>3.12.1</version>
+    <time>1426680197</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291226</requestid>
+  </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>fc4d829b5334dd301bfdf3d5734c9c5f</srcmd5>
+    <version>3.12.1</version>
+    <time>1427736664</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't run parralel build. It is too fragile
+
+- Cleanup patch numbers
+- Rebase ppc64 patches based on upstream (commits are 173eaf1dfaf,
+  7e056cd346c, PR#1479) - 0001-ppc64le-fixes.patch bsc#923558 
+- drop mono-core-ppc64le-callreg.diff
+- drop mono-core-ppc64le-swr11r12.diff
+- mono-core-ppc64le.diff</comment>
+    <requestid>292658</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>57983a9f9768491c5af5e4afa2c3a999</srcmd5>
+    <version>4.0.1</version>
+    <time>1431248026</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305199</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>57dc4a2c1fa79150447a90cf04557305</srcmd5>
+    <version>4.0.1.43</version>
+    <time>1432305087</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308137</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>d55d6c456d0b8797aaafe562741e3caa</srcmd5>
+    <version>4.0.1.44</version>
+    <time>1433144252</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309110</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>92f4de386b0532d25dcf07a502c8a6ea</srcmd5>
+    <version>4.0.2.4</version>
+    <time>1434133875</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311622</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>4105a20599a837a7df847aa71e0183c6</srcmd5>
+    <version>4.0.2.5</version>
+    <time>1436111650</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>315049</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>88112a1866bb5b228df22b1a15c5b0ac</srcmd5>
+    <version>4.0.3</version>
+    <time>1440479924</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325329</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>20de3495039d62c96135596f80c3d3a6</srcmd5>
+    <version>4.0.4</version>
+    <time>1441295909</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>327875</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>6f86322551a81e707f8ffe2c3bd2c5b9</srcmd5>
+    <version>4.2.1</version>
+    <time>1448400804</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>345731</requestid>
+  </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>bfcdd81337fd370daa2a4132aa410d9f</srcmd5>
+    <version>4.2.1</version>
+    <time>1450364077</time>
+    <user>dimstar_suse</user>
+    <comment>- retrieve from upstream all ppc patches not yet in 4.2.1 tarball
+  ppc_instruction_length_of_atomic_add_i4_is_28.patch
+  fix_atomic_add_i4_support_for_32bit_ppc.patch
+  basic_changes_powerpc_be.patch (already done yesterday)
+  ppc_add_monocontext_and_async_callback.patch
+  fix_passing_struct_parms_per_elf_abiv2.patch
+  update_elf_abiv2_testcases.patch
+  partial_sharing_false_4_powerpc.patch
+  fix_exception_when_reading_from_timezone_file.patch
+
+- new basic_changes_powerpc_be.patch to build ppc64 archi
+  and disable ppc build that still segfault.</comment>
+    <requestid>348376</requestid>
+  </revision>
+  <revision rev="97" vrev="3">
+    <srcmd5>ae833a4a611e1e4754e1be7233eb71fb</srcmd5>
+    <version>4.2.1</version>
+    <time>1452611495</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352724</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>8697ff703039bfb043555d728b85189a</srcmd5>
+    <version>4.2.2</version>
+    <time>1455272445</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357280</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>3539fa7057d1d0dd96e5e77d71c6304a</srcmd5>
+    <version>4.2.3</version>
+    <time>1462865173</time>
+    <user>dimstar_suse</user>
+    <comment>new upstream (service) release</comment>
+    <requestid>393962</requestid>
+  </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>cccc7a3c160ef9cc3896323b759a5501</srcmd5>
+    <version>4.2.3</version>
+    <time>1465335841</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399875</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>90f8441756fbc9fc4f70d9fd35075596</srcmd5>
+    <version>4.4.1</version>
+    <time>1467359538</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405528</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>52d46d357afa53e4ed2e47d7358bb329</srcmd5>
+    <version>4.4.2</version>
+    <time>1470851705</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417199</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>4637ee251363dfe6eb7734ff91308a13</srcmd5>
+    <version>4.6.0</version>
+    <time>1475358678</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>430675</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>c41855733f59a0ebb5997d8dae01538b</srcmd5>
+    <version>4.6.1</version>
+    <time>1475588650</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>432469</requestid>
+  </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>4cd87effe4d70c41ea9947435bb1ea30</srcmd5>
+    <version>4.6.1</version>
+    <time>1477134066</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435615</requestid>
+  </revision>
+  <revision rev="106" vrev="3">
+    <srcmd5>210f22b7e609df5b6a709dbbb81d8eb3</srcmd5>
+    <version>4.6.1</version>
+    <time>1479228884</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440163</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>bfd86869d94e11407f93929cf0028dff</srcmd5>
+    <version>4.6.2</version>
+    <time>1479734504</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440821</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>8cd1a40bac76fcef705e0e8fdb53fba8</srcmd5>
+    <version>5.0.0</version>
+    <time>1495883207</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable rosyln on ppc64le 
+
+- Update to version 5.0.0.100 (5.0 Stable)
+- New features and changes:
+  * Shipping Roslyn C# compiler to enable C#7 support
+  * Support for msbuild and deprecating xbuild
+    (msbuild currently not included, xbuild deprecated but still maintained)
+  * Enabling concurrent SGen garbage collector to reduce time spent in GC
+  * Continued Progress on .NET Class Library convergence
+- Packaging changes:
+  * Do not package roslyn csc compiler on platforms that do not support it
+  * Add xbuild-revert-to-mcs.patch: revert xbuild to use old mcs compiler on platforms that do not support roslyn
+
+- Enable external BTLS library build only on supported platforms (x86 and x86_64 right now):
+  * Fix build for arm, arm64, ppc64, ppc64le.
+- Enable pedump binary packaging for arm64 builds.
+
+- Update to version 4.8.1.0 (4.8 Service Release 1)
+- Remove patch mono-config-fix-monoposixhelper-libdir.patch:
+  * Instead, use fix from official spec file
+- New features (see http://www.mono-project.com/docs/about-mono/releases/4.8.0 for more info):
+  * Some API additions for .NET Standard 2.0
+  * Mono now ships with TLS 1.2, powered by Google’s BoringSSL project
+  * The MKBundle tool has been updated to easily support cross-compilation
+  * Runtime Logging: the new MONO_LOG_DEST environment variable can set to instruct the runtime where to write the tracing messages to
+  * Concurrent SGen mode improved
+  * More code have been adopted from Reference Source
+- Bugfixes:
+  * bxc#3323: Assertion when deleting global namespace inside method
+  * bxc#3399: [PATCH] pending_exception support is incomplete</comment>
+    <requestid>495350</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>b2a53510d5ed9478f419ec6a45500758</srcmd5>
+    <version>5.0.1</version>
+    <time>1496392321</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498644</requestid>
+  </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>e14829574fc2a85a72755fe25f3bfb8c</srcmd5>
+    <version>5.0.1</version>
+    <time>1502561268</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>515195</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>2c79e3400f8e25e5dc4d8ade6f6d04f6</srcmd5>
+    <version>5.2.0</version>
+    <time>1503999299</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517703</requestid>
+  </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>a14e87d9e1973c92ca96e73e3b134214</srcmd5>
+    <version>5.2.0</version>
+    <time>1506955790</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530140</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>2d4471f1f4ab45bce660e2aca8cebfca</srcmd5>
+    <version>5.4.0</version>
+    <time>1509193135</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536289</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>ade40c012bcdfd1a33a71b99833a8468</srcmd5>
+    <version>5.4.1</version>
+    <time>1511274400</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542907</requestid>
+  </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>d428f14a95e0d5a2e600d11de4eb7aee</srcmd5>
+    <version>5.4.1</version>
+    <time>1517323255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570206</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>9d32de50efa1debea711f4028986a09e</srcmd5>
+    <version>5.8.0</version>
+    <time>1518281577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574310</requestid>
+  </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>1505efa9fee819ca09aa75d9571c696c</srcmd5>
+    <version>5.8.0</version>
+    <time>1520502110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582302</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>28a52b69823a0a499d9a24024e0086bc</srcmd5>
+    <version>5.8.1</version>
+    <time>1522596340</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592625</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>767e0d4923909253d0ba576dbc8ea425</srcmd5>
+    <version>5.10.1</version>
+    <time>1524742406</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.10.1.47 (5.10.1 Stable)
+- Patch updated: ucontext.patch
+
+- Add xbuild-use-roslyn-vbc.patch:
+  * Make xbuild to use roslyn-vbc on roslyn-enabled builds instead of deprecated vbnc (it is also broken on roslyn-enabled builds)
+
+- Update to version 5.10.0.140 (5.10.0 Stable)
+- Remove patch: provides-facades.patch
+- Add profiler-aot-parse_args-fix.patch:
+  * Fix OBS build failure with &quot;free(): invalid pointer&quot; libc error.
+- New features and changes:
+  * Interpreter: the interpreter is now compiled in by default into Mono, and you can use it by running mono --interpreter
+  * Default Interface Methods: the runtime now supports Default Interface Methods, we now only miss the C# compiler support
+  * Mono SDKs: this is a new way of building Mono for some of the platforms that we support: Android, iOS and WebAssembly.
+  * WebAssembly port: this is the first release where the interpreter can reliably run most of the class libraries test suite.
+  * Dedicated Coverage profiler: the coverage profiler has been extracted from the log profiler, making it much more lightweight
+  * ARM Memory Barriers: explicitly encode memory barrier type on ARM64, instead of relying on undefined behaviour according to the ARMv8 ABI
+  * AOT Size Reduction via Code Deduplication: we now support deduplicating generics code across assemblies
+  * Class Libraries: the recently announced .NET 4.7.1 is now supported and available as a specific target via MSBuild configuration; the System.Data assembly was fully replaced with CoreFX implementation resolving many limitations and corner cases issue we had as well as implementing missing features and APIs; significant parts of System.Security assembly implementation were replaced with CoreFX implementation
+  * Roslyn compiler: roslyn compiler has been updated to version 2.6.0 which includes all C# 7.2 features
+  * The Mono C# compiler: MCS gained support for some more C# 7.x features
+- Bugfixes:
+  * bxc#19503 - Process.Start on OS X fails silently for missing file
+  * bxc#20562 - Seeming valid IL produces invalid result
+  * bxc#40699 - Console.ReadXXX does not echo input after TermInfoDriver is initialized
+  * bxc#45893 - I18N: EncoderFallbackBuffer.Fallback gets next character instead of the current one
+  * bxc#50189 - SGEN XMM scanning: Linux/Intel (32 + 64)
+  * bxc#50190 - SGEN FPU scanning: Darwin/ARM64
+  * bxc#52675 - HttpListener doesn’t work with SSL
+  * bxc#53296 - Latin1Encoding throws exception on Mono when it doesn’t on MS.NET</comment>
+    <requestid>599230</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>eb1473dc3579c44f78d498ba8123d7b2</srcmd5>
+    <version>5.16.0</version>
+    <time>1542011728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648195</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>d28a1bd93ca79274c3622b36549c22f7</srcmd5>
+    <version>5.20.1</version>
+    <time>1555321858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694058</requestid>
+  </revision>
+  <revision rev="122" vrev="2">
+    <srcmd5>adb2ac77ccf12e9614f0959936bf8d36</srcmd5>
+    <version>5.20.1</version>
+    <time>1556915792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698227</requestid>
+  </revision>
+</revisionlist>

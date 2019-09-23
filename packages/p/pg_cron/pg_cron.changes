@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Sat Aug 31 06:54:17 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
+
+- update to 1.2.0
+  * PostgreSQL 12 support by dverite
+  * Fixes a bug that caused the cron.job table to not appear in pg_dump
+
+-------------------------------------------------------------------
+Sun Apr 21 17:55:20 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
+
+- update to 1.1.4
+  * Adds a cron.host setting to make the postgres host configurable
+  * Fixes a bug that could cause segmentation fault after cron.unschedule
+
+-------------------------------------------------------------------
+Sat Jan 19 12:04:43 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
+
+- fix build with PostgreSQL 11 and extract just-in-time compiling
+  parts to llvmjit subpackage
+
+-------------------------------------------------------------------
+Thu Jan 17 19:00:37 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
+
+- initial

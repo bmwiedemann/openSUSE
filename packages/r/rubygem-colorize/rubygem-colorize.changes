@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Thu Jun 30 04:29:01 UTC 2016 - coolo@suse.com
+
+- updated to version 0.8.1
+ see installed CHANGELOG
+
+  == 0.8.1 / 2016-06-29
+    * fix gemspec bug
+
+-------------------------------------------------------------------
+Tue Jun 28 04:30:55 UTC 2016 - coolo@suse.com
+
+- updated to version 0.8.0
+ see installed CHANGELOG
+
+  == 0.8.0 / 2016-06-27
+  	* add ColorizedString class
+  	* update README file
+  	* add rubocop.yml and follow style
+    * add italic mode
+    * remove interpreter warrnings
+
+-------------------------------------------------------------------
+Thu Apr 23 08:07:20 UTC 2015 - coolo@suse.com
+
+- updated to version 0.7.7
+ see installed CHANGELOG
+
+  == 0.7.7 / 2015-04-19
+    * update gems
+  
+  == 0.7.6 / 2015-04-18
+    * fix bugs
+
+-------------------------------------------------------------------
+Sun Feb  8 21:24:26 UTC 2015 - coolo@suse.com
+
+- updated to version 0.7.5
+  * big code refactoring
+  * disable_colorization feature added
+  * code cleanups
+
+-------------------------------------------------------------------
+Sun Oct 12 10:06:57 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Fri Jul 25 09:25:06 UTC 2014 - coolo@suse.com
+
+- updated to version 0.7.3
+ * fix new line maching
+
+-------------------------------------------------------------------
+Sun May 18 09:04:36 UTC 2014 - coolo@suse.com
+
+- updated to version 0.7.2
+  * tests cleanups
+  * gem release date fixed
+
+-------------------------------------------------------------------
+Sun Apr  6 05:38:53 UTC 2014 - coolo@suse.com
+
+- updated to version 0.7.1
+   handling wrong color values
+
+-------------------------------------------------------------------
+Sat Mar 15 18:46:00 UTC 2014 - coolo@suse.com
+
+- updated to version 0.7.0
+  * refactored to use regexp pattern matching
+  * works with frozen strings
+  * works with concatenated string
+
+-------------------------------------------------------------------
+Fri Oct  4 07:17:57 UTC 2013 - coolo@suse.com
+
+- updated to version 0.6.0
+  * code cleanups
+  * bold mode fixed
+  * STDOUT.isatty condition removed
+  * doc updated
+  * jeweler tasks removed
+  * Rakefile updated
+
+-------------------------------------------------------------------
+Wed Feb  9 11:53:12 UTC 2011 - dmacvicar@suse.de
+
+- initial package for 0.5.8
+
+

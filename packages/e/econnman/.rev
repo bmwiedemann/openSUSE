@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c2597025ccbf8db5d122441c90072fd9</srcmd5>
+    <version>1.1</version>
+    <time>1529500932</time>
+    <user>maxlin_factory</user>
+    <comment>- Install icon from adwaita-icon-theme
+- Spec file cleanup
+- Pick a more fitting RPM group.
+- Update sourceURL
+- Check list of dependencies (add BuildRequires: connman python3-efl)
+- Add the PYTHON=python3 variable to the configure command
+- Fix the python version to run
+- Fix: Icon file not found
+- Replace categories defined
+- Build a noarch pakage
+- Fix build on Mageia
+- Migrate to python3
+- simplify build and run time dependencies
+- pipe through spec-cleaner
+- license fix
+- get new git snapshot to fix compilation against python-efl (from Nightly)
+- take also updated desktop.patch (from Nightly)
+- econnman needs efreet, not e17
+- add missing python-edje dependency should this also go into python-elementry?
+- add connman dependency
+- add python-ecore and python-evas deps (these should go into python-elementry oneday.
+- let there be econnman!
+</comment>
+    <requestid>600997</requestid>
+  </revision>
+</revisionlist>

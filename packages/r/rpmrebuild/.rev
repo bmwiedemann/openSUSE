@@ -1,0 +1,188 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>26e12453dd6451c5304e0742750cc20f</srcmd5>
+    <version>2.2.0</version>
+    <time>1197517641</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2be04dcd5b61f49e6b5c69075805effa</srcmd5>
+    <version>2.2.1</version>
+    <time>1207264320</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a046a8fa478c0971c9b70556889f59bc</srcmd5>
+    <version>2.2.3</version>
+    <time>1220884201</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>74ddf7e6e9d5fc2b99bda3311f10fb88</srcmd5>
+    <version>2.3</version>
+    <time>1249921723</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>74ddf7e6e9d5fc2b99bda3311f10fb88</srcmd5>
+    <version>2.3</version>
+    <time>1249921723</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>8640386fdc2bf8aaf605e507ed7adfb9</srcmd5>
+    <version>2.3</version>
+    <time>1268926002</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>77b516f550fbfb18919b81bf013ea378</srcmd5>
+    <version>2.4</version>
+    <time>1270587066</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/rpmrebuild based on submit request 37107 from user hennevogel
+</comment>
+    <requestid>37107</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>77b516f550fbfb18919b81bf013ea378</srcmd5>
+    <version>2.4</version>
+    <time>1278667387</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>77b516f550fbfb18919b81bf013ea378</srcmd5>
+    <version>2.4</version>
+    <time>1278678616</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>77b516f550fbfb18919b81bf013ea378</srcmd5>
+    <version>2.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>293552f36a341dacea0fa7836da1c1cf</srcmd5>
+    <version>2.6</version>
+    <time>1318527820</time>
+    <user>lrupp</user>
+    <comment>- Update to version 2.6
+- spec cleaner
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+- build on all previous OS (forwarded request 87690 from bruno_friedmann)</comment>
+    <requestid>87724</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>293552f36a341dacea0fa7836da1c1cf</srcmd5>
+    <version>2.6</version>
+    <time>1319182431</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>e7e4ea6d6639c3db538ffd0e0ddd9d03</srcmd5>
+    <version>2.6</version>
+    <time>1323194433</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>e7e4ea6d6639c3db538ffd0e0ddd9d03</srcmd5>
+    <version>2.6</version>
+    <time>1340184149</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>e7e4ea6d6639c3db538ffd0e0ddd9d03</srcmd5>
+    <version>2.6</version>
+    <time>1359110296</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d904313223b0572b8d36c27f3ad97c05</srcmd5>
+    <version>2.9</version>
+    <time>1363124290</time>
+    <user>coolo</user>
+    <comment>update to 2.9 (forwarded request 158686 from Lazy_Kent)</comment>
+    <requestid>158710</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>d904313223b0572b8d36c27f3ad97c05</srcmd5>
+    <version>2.9</version>
+    <time>1379664472</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>976054c8acf53557da1b17a52284aea4</srcmd5>
+    <version>2.11</version>
+    <time>1386319694</time>
+    <user>coolo</user>
+    <comment>- Update to upstream 2.11 bugfix release
+  * Wed Nov 22 2013 &lt;gerbier@users.sourceforge.net&gt; 2.11
+	- add install option
+  * Sun Aug 11 2013 &lt;gerbier@users.sourceforge.net&gt; 2.10-2
+	- bugfix from 2.10 on test install : test was inverted (applied on rpm files instead installed rpm)
+  * Tue Aug 01 2013 &lt;valery_reznic@users.sourceforge.net&gt; 2.10
+	- add tag DISTTAG (feature request)
+	- do not test install if work on rpm files
+	- applied patch from Olivier Bourdon for pretrans and postrans 
+- Packaging fix bnc#832338 
+	-Add Require rpm-build (forwarded request 209507 from bruno_friedmann)</comment>
+    <requestid>209524</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>976054c8acf53557da1b17a52284aea4</srcmd5>
+    <version>2.11</version>
+    <time>1409303201</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>7d586d6a57e84b183a06d25ffeb68435</srcmd5>
+    <version>2.11</version>
+    <time>1420318854</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266958</requestid>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>a00847a1a82462fa7a051588f212982c</srcmd5>
+    <version>2.11</version>
+    <time>1431247566</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305701</requestid>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>cfcdf5f9a8e7c6cadc68ee68ba63418f</srcmd5>
+    <version>2.11</version>
+    <time>1505680753</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526523</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e54b00100a7227e9139c20e8f9f21fae</srcmd5>
+    <version>2.13</version>
+    <time>1537971081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636343</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>11868cb988e022671a46b0835607a42b</srcmd5>
+    <version>2.14</version>
+    <time>1541454916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646085</requestid>
+  </revision>
+</revisionlist>

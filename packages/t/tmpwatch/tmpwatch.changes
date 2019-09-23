@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Tue Aug 20 09:54:09 CEST 2019 - kukuk@suse.de
+
+- Add cron as BuildRequires for directory layout
+
+-------------------------------------------------------------------
+Wed Mar 20 13:35:46 CET 2019 - ro@suse.de
+
+- update the homepage url 
+
+-------------------------------------------------------------------
+Wed Nov 19 01:33:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in tmpwatch.daily cron script
+
+-------------------------------------------------------------------
+Sun Feb  2 14:24:08 UTC 2014 - cfarrell@suse.com
+
+- license update: GPL-2.0
+  See e.g. tmpwatch.c - tell upstream about this
+
+-------------------------------------------------------------------
+Thu Jan 23 21:46:39 UTC 2014 - aj@ajaissle.de
+
+- use %{_sysconfdir} for /etc
+
+-------------------------------------------------------------------
+Fri Aug 10 20:24:34 UTC 2012 - chris@computersalat.de
+
+- update to 2.11
+  * INCOMPATIBLE CHANGE: On Linux, sockets that are certainly unused
+     are now removed by default.
+- fix License to be in spdx format
+  * GPL-2.0+
+
+-------------------------------------------------------------------
+Fri Sep 16 12:37:02 UTC 2011 - coolo@suse.com
+
+- update to 2.10.3
+  * Don't report EACCES errors, they can be routinely returned by FUSE mounts.
+  * Minor bug fixes in bind mount handling.
+  * Don't follow (non-trivial) bind mounts.
+  * Minor bug and documentation fixes.
+
+-------------------------------------------------------------------
+Wed Sep 14 19:52:16 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typos in tmpwatch.spec
+
+-------------------------------------------------------------------
+Mon Mar 21 16:50:48 UTC 2011 - coolo@novell.com
+
+- licenses package is about to die
+
+-------------------------------------------------------------------
+Fri Oct 22 16:48:54 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Use a _service instead of keeping a tarball 
+
+-------------------------------------------------------------------
+Sat Apr 17 15:03:38 UTC 2010 - crrodriguez@opensuse.org
+
+- update to version 2.10.1
+  * Only support fuser if it is available at build time.
+  * Upstream migrated to autotools 
+
+-------------------------------------------------------------------
+Tue Apr  8 10:01:33 CEST 2008 - crrodriguez@suse.de
+
+- tmpwatch declared GPLv2 only but has no COPYING file [bnc #377839] 
+
+-------------------------------------------------------------------
+Mon Apr  7 19:58:29 CEST 2008 - crrodriguez@suse.de
+
+- adding fedora tmpwatch to openSUSE 11
+- command tmpwatch does not exist, some man pages are still around [bnc #368527]
+
+-------------------------------------------------------------------
+Sun Mar  9 22:08:23 CET 2008 - crrodriguez@suse.de
+
+- initial openSUSE package 
+

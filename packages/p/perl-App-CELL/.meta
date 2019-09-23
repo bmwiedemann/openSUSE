@@ -1,0 +1,7 @@
+<package name="perl-App-CELL" project="openSUSE:Factory">
+  <title>Configuration, Error-handling, Localization, and Logging</title>
+  <description>App::CELL is the Configuration, Error-handling,
+  Localization, and Logging (CELL) framework for applications written in
+  Perl.</description>
+  <devel project="devel:languages:perl" package="perl-App-CELL"/>
+</package>

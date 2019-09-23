@@ -1,0 +1,9 @@
+<package name="patterns-yast" project="openSUSE:Factory">
+  <title> Patterns for Installation (Yast) </title>
+  <description>This is an internal package that is used to create the patterns as part
+of the installation source setup.  Installation of this package does
+not make sense. 
+
+This particular package contains the Yast patterns.</description>
+  <devel project="YaST:Head" package="patterns-yast"/>
+</package>

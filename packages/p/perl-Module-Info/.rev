@@ -1,0 +1,210 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dbfe6b589a46f07fd49fe9134da31a34</srcmd5>
+    <version>0.30</version>
+    <time>1168903872</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7d750ad831a66b6aa94a46de3ffd8c80</srcmd5>
+    <version>0.31</version>
+    <time>1185494760</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="25">
+    <srcmd5>1140836d3677b162dc671bf72bfdd18a</srcmd5>
+    <version>0.31</version>
+    <time>1200232552</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="75">
+    <srcmd5>1140836d3677b162dc671bf72bfdd18a</srcmd5>
+    <version>0.31</version>
+    <time>1200232552</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="76">
+    <srcmd5>4c52931a967bcfa168352a2909a26f06</srcmd5>
+    <version>0.31</version>
+    <time>1245337731</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="78">
+    <srcmd5>4c52931a967bcfa168352a2909a26f06</srcmd5>
+    <version>0.31</version>
+    <time>1245337731</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="79">
+    <srcmd5>fdfc283ce404f78fc790f7473cc5f9ea</srcmd5>
+    <version>0.31</version>
+    <time>1263298700</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Module-Info based on submit request 29247 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="80">
+    <srcmd5>0cc8c555cf7a6079249b9137256cc2e8</srcmd5>
+    <version>0.31</version>
+    <time>1268068765</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Module-Info based on submit request 34257 from user coolo
+</comment>
+    <requestid>34257</requestid>
+  </revision>
+  <revision rev="9" vrev="81">
+    <srcmd5>92857f380bc33afce24f53ce0ce2c949</srcmd5>
+    <version>0.31</version>
+    <time>1268925533</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="83">
+    <srcmd5>92857f380bc33afce24f53ce0ce2c949</srcmd5>
+    <version>0.31</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="84">
+    <srcmd5>92857f380bc33afce24f53ce0ce2c949</srcmd5>
+    <version>0.31</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="85">
+    <srcmd5>383ced3a951795bf71cf6048d0d41074</srcmd5>
+    <version>0.31</version>
+    <time>1291583110</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54594 from user coolo
+</comment>
+    <requestid>54594</requestid>
+  </revision>
+  <revision rev="13" vrev="86">
+    <srcmd5>d72c6ac0084a1b3e34bfc37ed9bc188e</srcmd5>
+    <version>0.31</version>
+    <time>1291583115</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54594
+</comment>
+  </revision>
+  <revision rev="14" vrev="89">
+    <srcmd5>d72c6ac0084a1b3e34bfc37ed9bc188e</srcmd5>
+    <version>0.31</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>165fe09ef5aa46ae6f47908081abfca4</srcmd5>
+    <version>0.32</version>
+    <time>1301655506</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65731 from user coolo
+</comment>
+    <requestid>65731</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>178e8b60d3b1ca6587a21b416354a216</srcmd5>
+    <version>0.32</version>
+    <time>1301655519</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65731
+</comment>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>2f5d18c70d0f274a73a144b1eb0df55f</srcmd5>
+    <version>0.32</version>
+    <time>1302891947</time>
+    <user>darix</user>
+    <comment>Accepted submit request 67058 from user coolo
+</comment>
+    <requestid>67058</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>a64ca564eb6f7880364882be297c24cc</srcmd5>
+    <version>0.32</version>
+    <time>1302891962</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67058
+</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>a64ca564eb6f7880364882be297c24cc</srcmd5>
+    <version>0.32</version>
+    <time>1319182287</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>a5e0d7f2b8899a0a8149d07b6758b81c</srcmd5>
+    <version>0.32</version>
+    <time>1323193470</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>a5e0d7f2b8899a0a8149d07b6758b81c</srcmd5>
+    <version>0.32</version>
+    <time>1340183876</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="11">
+    <srcmd5>a5e0d7f2b8899a0a8149d07b6758b81c</srcmd5>
+    <version>0.32</version>
+    <time>1359109739</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="13">
+    <srcmd5>a5e0d7f2b8899a0a8149d07b6758b81c</srcmd5>
+    <version>0.32</version>
+    <time>1379663747</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c771de0ff099fa64561f27f8160fd2a0</srcmd5>
+    <version>0.35</version>
+    <time>1406145995</time>
+    <user>coolo</user>
+    <comment>- updated to 0.35
+     - Handle 'package NAME VERSION' syntax (patch by Norbert Gruener)
+     - Added repository and license info to metadata
+     - Tweaked format of Changes (this file) to match CPAN::Changes::Spec
+ 
+ 0.34 2013-05-21 21:48:49 CEST
+     - Replace Test::Soundex in tests with Class::Struct, since
+       Text::Soundex will not be in core in Perl 5.19 and up.
+     - Replace ExtUtils::MY_Metafile with META_MERGE in Makefile.PL.
+ 
+ 0.33 2013-02-9 13:12:22 CET
+     - Fix tests under Perl 5.6.2 when some core modules have been
+       upgraded (patch by Andreas Koenig).</comment>
+    <requestid>241630</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>c771de0ff099fa64561f27f8160fd2a0</srcmd5>
+    <version>0.35</version>
+    <time>1409302383</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c17a517e9d50a298a53cb1616b406736</srcmd5>
+    <version>0.36</version>
+    <time>1446208996</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340774</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b6d51d8af132dc87d42e5801457af6e5</srcmd5>
+    <version>0.37</version>
+    <time>1446647653</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342362</requestid>
+  </revision>
+</revisionlist>

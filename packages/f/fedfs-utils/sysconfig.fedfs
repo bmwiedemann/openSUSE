@@ -1,0 +1,11 @@
+## Path:		Network/File systems/FedFS
+## Description:		Optional arguments to rpc.fedfsd
+## Type:		string
+## Default:		""
+## ServiceRestart:	rpcfedfsd
+#
+#  To see full range of optional arguments, see rpc.fedfsd(8) man page.
+#  Of particular interest is "--port NNN" to set an explicit port number.
+#
+RPCFEDFSDARGS=""
+

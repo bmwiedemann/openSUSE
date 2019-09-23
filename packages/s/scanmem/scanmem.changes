@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Tue Jan  9 06:42:03 UTC 2018 - sparschauer@suse.de
+
+- Update to version 0.17:
+  * major performance improvement by inlining, new algorithms, and
+    data as well as code optimization
+  * complete string and bytearray search rework
+  * fixed unaligned pointer access during string search
+  * added "-c/--command" option for commands to be run first
+  * added "-e/--errexit" option to exit on initial command errors
+  * added "!" alias for "shell" command
+  * added "max_to_print" parameter to "list" command (default: 10k)
+  * full support for sets of values for "delete", "dregion", and "set"
+  * custom pager support (env $PAGER)
+  * fixed listing floats with >100 digits
+  * parse negative numbers as int64 instead of uint64
+  * better checks if input is valid
+  * autotools: don't make po/ files without GUI
+  * added a testing framework
+  * documentation fixes
+- Fix the build with older autotools
+  * add: fix-build-with-older-autotools.patch
+
+-------------------------------------------------------------------
+Sat Mar 11 13:01:31 UTC 2017 - jengelh@inai.de
+
+- Improve orthography and ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Thu Feb 23 14:51:08 UTC 2017 - sparschauer@suse.de
+
+- Update to version 0.16:
+  * add ranges support ("n..m" command)
+  * use exact float matching (depends on ranges)
+  * add Android support
+  * change license to LGPL-3 for libscanmem
+  * fix the watch handler to respect match flags
+  * rework man pages
+  * rework scanmem version printing and root warning
+- Remove the hicolor-icon-theme build requirement as GameConqueror
+  is not provided
+- Don't provide libscanmem.so from the scanmem package
+- Install libscanmem to /usr/lib(64)/scanmem to avoid that it is
+  located in a library search path
+
+-------------------------------------------------------------------
+Tue May 31 16:14:21 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.15.8:
+  * fixed project links
+  * removed superfluous/auto-generated files
+  * updated NEWS, ChangeLog, gameconqueror.1, scanmem.1
+  * gui: Hide the AddCheatDialog if trying to delete it (#160)
+  * menu: Fix the prototype of printversion()
+  * gui: Set Gtk 3.0 requirement to avoid a warning
+  * autogen: Run autoheader to generate config.h.in
+  * gameconqueror.in: Get the pkexec path from shell
+  * gameconqueror.in: Directly execute GameConqueror.py
+  * scanmem: Initialize the reverse_endianness option
+  * replaced deprecated GtkButton:use-stock and GtkImage:stock
+
+-------------------------------------------------------------------
+Tue May 31 13:26:24 UTC 2016 - mpluskal@suse.com
+
+- Initial package for version 0.15.7 (based on package from 
+  home:javilete)
+

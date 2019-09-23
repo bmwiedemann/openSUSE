@@ -1,0 +1,22 @@
+Index: pacemaker-1.1.18+20180430.c0d7ba798/daemons/execd/execd_commands.c
+===================================================================
+--- pacemaker-1.1.18+20180430.c0d7ba798.orig/daemons/execd/execd_commands.c
++++ pacemaker-1.1.18+20180430.c0d7ba798/daemons/execd/execd_commands.c
+@@ -83,7 +83,7 @@ static void
+ log_finished(lrmd_cmd_t * cmd, int exec_time, int queue_time)
+ {
+     char pid_str[32] = { 0, };
+-    int log_level = LOG_INFO;
++    int log_level = LOG_NOTICE;
+ 
+     if (cmd->last_pid) {
+         snprintf(pid_str, 32, "%d", cmd->last_pid);
+@@ -107,7 +107,7 @@ log_finished(lrmd_cmd_t * cmd, int exec_
+ static void
+ log_execute(lrmd_cmd_t * cmd)
+ {
+-    int log_level = LOG_INFO;
++    int log_level = LOG_NOTICE;
+ 
+     if (safe_str_eq(cmd->action, "monitor")) {
+         log_level = LOG_DEBUG;

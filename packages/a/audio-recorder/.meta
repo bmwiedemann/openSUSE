@@ -1,0 +1,24 @@
+<package name="audio-recorder" project="openSUSE:Factory">
+  <title>audio-recorder</title>
+  <description>
+This is an audio recorder application for the GNOME 2.x/3.x and Ubuntu's Unity Desktops, which allows you to record your favourite music and audio to a file. It can record audio from your system's soundcard, microphones, browsers, webcams and more. Put simply: if it plays out of your loudspeakers you can record it.
+
+It has an advanced timer that can:
+* Start, stop or pause recording at a given clock time.
+* Start, stop or pause after a time period.
+* Stop when the recorded file size exceeds a limit.
+* Start recording on voice or sound (user can set the audio level and delay).
+* Stop or pause recording on &quot;silence&quot; (user can set the audio level and delay).
+
+The recording can be automatically controlled by:
+* RhythmbBox audio player.
+* Banshee audio player.
+* Amarok and other MPRIS compatible players.
+* Skype. It can automatically record all your Skype calls without any user interaction.
+
+It supports several audio (output) formats such as OGG audio, Flac, MP3 and WAV.
+
+  </description>
+  <devel project="GNOME:Apps" package="audio-recorder"/>
+  <url>https://launchpad.net/audio-recorder</url>
+</package>

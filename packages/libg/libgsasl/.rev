@@ -1,0 +1,230 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>07ab5df23646de2c90d64c14f6ce4d74</srcmd5>
+    <version>1.2</version>
+    <time>1247193958</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>07ab5df23646de2c90d64c14f6ce4d74</srcmd5>
+    <version>1.2</version>
+    <time>1247193958</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c4b97db613ea81e6de4c838d701054df</srcmd5>
+    <version>1.4.0</version>
+    <time>1260269596</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgsasl based on submit request 25869 from user vuntz
+</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3c51a63ac8786aff0baa3467665520d7</srcmd5>
+    <version>1.4.1</version>
+    <time>1267782870</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgsasl based on submit request 33969 from user dimstar
+</comment>
+    <requestid>33969</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6c74e578feb126c0b5b659be83c02bff</srcmd5>
+    <version>1.4.1</version>
+    <time>1268924591</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a066b6de08119225ed4c7cfacecc0761</srcmd5>
+    <version>1.4.2</version>
+    <time>1268987822</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgsasl based on submit request 35234 from user MBoman
+</comment>
+    <requestid>35234</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>550e1e2a5ff065bd4e0cae1893ace8ac</srcmd5>
+    <version>1.4.4</version>
+    <time>1270131132</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgsasl based on submit request 36369 from user vuntz
+</comment>
+    <requestid>36369</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>550e1e2a5ff065bd4e0cae1893ace8ac</srcmd5>
+    <version>1.4.4</version>
+    <time>1278667359</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>550e1e2a5ff065bd4e0cae1893ace8ac</srcmd5>
+    <version>1.4.4</version>
+    <time>1278678590</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>550e1e2a5ff065bd4e0cae1893ace8ac</srcmd5>
+    <version>1.4.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1c1141d6122bf678b80f171ee955b7b2</srcmd5>
+    <version>1.6.1</version>
+    <time>1306742905</time>
+    <user>saschpe</user>
+    <comment>Update to 1.6.1 (forwarded request 71753 from vuntz)</comment>
+    <requestid>71762</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>b3e66d78855f7da7d83f21275fe25c6a</srcmd5>
+    <version>1.6.1</version>
+    <time>1306742915</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71762
+</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>41bb75c07c04bc6911293cbf75287195</srcmd5>
+    <version>1.6.1</version>
+    <time>1310368603</time>
+    <user>saschpe</user>
+    <comment>Stop using _service</comment>
+    <requestid>75888</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>389b9eecd0a1c3cadf0d5ff4de6ff937</srcmd5>
+    <version>1.6.1</version>
+    <time>1310368618</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75888
+</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>389b9eecd0a1c3cadf0d5ff4de6ff937</srcmd5>
+    <version>1.6.1</version>
+    <time>1319182100</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>56c86942a1677df8c64442faa0ccd51c</srcmd5>
+    <version>1.6.1</version>
+    <time>1323192238</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>30be314fd5e4538d3b08113fe22b0f26</srcmd5>
+    <version>1.6.1</version>
+    <time>1332752591</time>
+    <user>coolo</user>
+    <comment>- Enable building against libntlm (now that it exists in factory) (forwarded request 110958 from jengelh)</comment>
+    <requestid>110961</requestid>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>30be314fd5e4538d3b08113fe22b0f26</srcmd5>
+    <version>1.6.1</version>
+    <time>1340183592</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>af44e07b8a27ecb7ab38da0ea7918b75</srcmd5>
+    <version>1.6.1</version>
+    <time>1343639826</time>
+    <user>namtrac</user>
+    <comment>Fix build with missing gets declaration (glibc 2.16) (forwarded request 129051 from a_jaeger)</comment>
+    <requestid>129058</requestid>
+  </revision>
+  <revision rev="20" vrev="12">
+    <srcmd5>53725514f3e163d180cc734b57a68330</srcmd5>
+    <version>1.6.1</version>
+    <time>1345730688</time>
+    <user>namtrac</user>
+    <comment>license update: LGPL-2.1+ and GPL-3.0+
+contains numerous GPL-3.0+ licensed test files (forwarded request 130704 from babelworx)</comment>
+    <requestid>130717</requestid>
+  </revision>
+  <revision rev="21" vrev="13">
+    <srcmd5>260881122c9673ba7bf07fceb8f93a97</srcmd5>
+    <version>1.6.1</version>
+    <time>1356703442</time>
+    <user>namtrac</user>
+    <comment>- fix-arm.patch: Add hack to fix compiling on ARM (forwarded request 146139 from dirkmueller)</comment>
+    <requestid>146505</requestid>
+  </revision>
+  <revision rev="22" vrev="15">
+    <srcmd5>260881122c9673ba7bf07fceb8f93a97</srcmd5>
+    <version>1.6.1</version>
+    <time>1359109283</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="16">
+    <srcmd5>be23686833de5334f6403c986c224d0b</srcmd5>
+    <version>1.6.1</version>
+    <time>1360683574</time>
+    <user>coolo</user>
+    <comment>Change lang package Requires to Recommends since it is not mandatory at runtime. (forwarded request 155117 from a_jaeger)</comment>
+    <requestid>155119</requestid>
+  </revision>
+  <revision rev="24" vrev="17">
+    <srcmd5>9cb533a6f72b2d5c5d507a647e323e5e</srcmd5>
+    <version>1.6.1</version>
+    <time>1363940429</time>
+    <user>coolo</user>
+    <comment>- fix build on aarch64 by applying fix-arm.patch (forwarded request 160395 from dirkmueller)</comment>
+    <requestid>160400</requestid>
+  </revision>
+  <revision rev="25" vrev="18">
+    <srcmd5>6231426f506d60f20208ece70d4b09da</srcmd5>
+    <version>1.6.1</version>
+    <time>1367559167</time>
+    <user>coolo</user>
+    <comment>- &quot;Recommends&quot; is not understood by RHEL6ish (forwarded request 174223 from jengelh)</comment>
+    <requestid>174235</requestid>
+  </revision>
+  <revision rev="26" vrev="20">
+    <srcmd5>6231426f506d60f20208ece70d4b09da</srcmd5>
+    <version>1.6.1</version>
+    <time>1379662968</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="22">
+    <srcmd5>6231426f506d60f20208ece70d4b09da</srcmd5>
+    <version>1.6.1</version>
+    <time>1409301581</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8043859b23ac043e01098ce8a167312b</srcmd5>
+    <version>1.8.0</version>
+    <time>1423669584</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285629</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>67f2c88a516c6a2b3ccac1fed53bb03f</srcmd5>
+    <version>1.8.0</version>
+    <time>1446049856</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341205</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>f5063d316a360b59ed3ac3e8bbc95103</srcmd5>
+    <version>1.8.0</version>
+    <time>1460482341</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>384417</requestid>
+  </revision>
+</revisionlist>

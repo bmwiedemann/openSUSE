@@ -1,0 +1,605 @@
+-------------------------------------------------------------------
+Wed Jun 12 08:11:40 UTC 2019 - Thomas Blume <Thomas.Blume@suse.com>
+
+- change rpcbind locking path from /var/run/rpcbind.lock to 
+  /run/rpcbind.lock (bsc#1134659)
+  add 0001-change-lockingdir-to-run.patch
+- change the order of socket/service in the %postun scriptlet to
+  avoid an error from rpcbind.socket when rpcbind is running 
+  during package update
+
+-------------------------------------------------------------------
+Wed Dec 12 07:41:26 UTC 2018 - Thomas.Blume@suse.com
+
+- add ordering dependency to rpcbind.service (bsc#1117217)
+  * modify 0001-systemd-unit-files.patch
+
+-------------------------------------------------------------------
+Fri Oct 26 06:04:23 UTC 2018 - Thomas.Blume@suse.com
+
+- update to current upstream version 1.2.5 (bsc#1113002)
+  * move procinfo from /sbin to /bin and create a symlink in /sbin
+  * remove obsolete svc-freeargs.patch (included in the sources now)
+
+-------------------------------------------------------------------
+Mon Jun  4 19:42:29 UTC 2018 - tchvatal@suse.com
+
+- Drop all commented out patches (4 years now):
+  * 0008-First-part-of-init_transport-refactoring.patch
+  * 0009-init_transport-move-the-registration-code-into-a-sep.patch
+  * 0010-Fix-the-behavior-when-specifying-the-h-option.patch
+  * 0011-Clean-up-the-way-we-handle-the-h-option-in-init_tran.patch
+  * 0014-When-using-systemd-redirect-syslog-calls-to-the-syst.patch
+  * 0030-systemd-fix-rmtcall.patch
+
+-------------------------------------------------------------------
+Mon Jun  4 19:34:14 UTC 2018 - tchvatal@suse.com
+
+- Say goodbye to omc files fate#301838
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Apr  3 12:06:36 UTC 2018 - dimstar@opensuse.org
+
+- Correctly rebase 0001-systemd-unit-files.patch: Since upstream
+  now ships systemd service files, we must no longer create full
+  unit files, but only correct the existing ones (adding
+  EnvironmentFile statement).
+
+-------------------------------------------------------------------
+Mon Mar 26 17:11:19 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Sun Feb 18 19:48:56 UTC 2018 - avindra@opensuse.org
+
+- Update to 0.2.4:
+  + Memory corruption fix
+  + Moved the default state directory to /var/run
+  + Systemd unit files were added.
+- cleanup with spec-cleaner
+- don't ship NEWS or ChangeLog, these are not maintained
+- rebase 0001-systemd-unit-files.patch
+- remove upstreamed patches
+  * drop 0002-handle_reply-Don-t-use-the-xp_auth-pointer-directly.patch
+  * drop 0003-Delete-the-unix-socket-only-if-we-have-created-it.patch
+  * drop 0004-Fix-memory-corruption-in-PMAP_CALLIT-code.patch
+  * drop 0005-security.c-removed-warning.patch
+  * drop 0006-don-t-use-svc_fdset.patch
+  * drop 0012-Move-default-state-dir-to-a-subdirectory-of-var-run.patch
+
+-------------------------------------------------------------------
+Thu Nov 23 13:38:46 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Aug 16 10:34:13 CEST 2017 - kukuk@suse.de
+
+- Add BuildRequires libnsl-devel (needed for obsoleting nsl in 
+  glibc)
+
+-------------------------------------------------------------------
+Wed May 17 09:14:15 UTC 2017 - schwab@suse.de
+
+- svc-freeargs.patch: always call svc_freeargs, even if svc_getargs
+  failed (bsc#1037559, CVE-2017-8779)
+
+-------------------------------------------------------------------
+Tue May  2 13:58:57 CEST 2017 - kukuk@suse.de
+
+- Adjust for new system user/group RPMs
+
+-------------------------------------------------------------------
+Tue Nov 22 08:27:10 CET 2016 - kukuk@suse.de
+
+- Add 0012-Move-default-state-dir-to-a-subdirectory-of-var-run.patch
+  from upstream, replacing systemd tmpfile solution.
+
+-------------------------------------------------------------------
+Sat Nov 12 21:19:10 CET 2016 - kukuk@suse.de
+
+- Move /var/lib/rpcbind to /run/rpcbind, data should not survive
+  reboot and this makes read-only root filesystem easier.
+
+-------------------------------------------------------------------
+Tue Jun  7 17:04:12 UTC 2016 - fbui@suse.com
+
+-  Do not rely on systemd.pc to find out where systemd unit dir is located (bsc#983167)
+   systemd.pc is part of systemd main package now. Instead of
+   build-requiring systemd, import systemd-rpm-macros which has the
+   %{_unitdir} definition and much less dependencies than systemd and
+   use it when configuring rpcbind so it won't try to find the unit dir
+   by using pkg-config.
+ 
+   Also replace BR libsystemd-daemon by libsystemd since the former is
+   obsolete and is replaced by the later.
+
+-------------------------------------------------------------------
+Mon Mar 14 14:48:36 CET 2016 - kukuk@suse.de
+
+- pmap_set: use tirpc header files and link against libtirpc
+
+-------------------------------------------------------------------
+Fri Feb 19 16:00:46 CET 2016 - kukuk@suse.de
+
+- Add 0006-don-t-use-svc_fdset.patch: don't use the svc_fdset 
+  interface for libtirpc, which is limited to 1024 connections.
+
+-------------------------------------------------------------------
+Fri Feb 12 16:18:30 CET 2016 - kukuk@suse.de
+
+- Sync with current git:
+  - Replace 0002-revert-auth.patch with 
+    0002-handle_reply-Don-t-use-the-xp_auth-pointer-directly.patch
+  - Add 0003-Delete-the-unix-socket-only-if-we-have-created-it.patch
+    to fix problems with activation via sockets by systemd
+  - Replace 0032-CVE-2015-7236.patch with 
+    0004-Fix-memory-corruption-in-PMAP_CALLIT-code.patch
+  - Add 0005-security.c-removed-warning.patch to fix compiler warnings
+- Temporary remove 099-poll.patch
+
+-------------------------------------------------------------------
+Wed Jan 27 15:08:00 CET 2016 - kukuk@suse.de
+
+- Disable 0030-systemd-fix-rmtcall.patch, needs the other disabled
+  patches. 
+- Submit for SLE12SP2 [FATE#320393]
+
+-------------------------------------------------------------------
+Tue Nov 17 14:20:28 CET 2015 - kukuk@suse.de
+
+- Add 0002-revert-auth.patch: revert old patch no longer working
+  with libtirpc 1.0.1 
+  (http://sourceforge.net/p/libtirpc/mailman/message/34585439/)
+
+-------------------------------------------------------------------
+Mon Sep 21 13:51:41 UTC 2015 - okir@suse.com
+
+- Add patch 0032-CVE-2015-7236.patch to fix a segfault on certain
+  remote scans [CVE-2015-7236, bsc#940191, bsc#946204]
+
+-------------------------------------------------------------------
+Mon Jul 27 08:27:14 UTC 2015 - okir@suse.com
+
+- Document how to restrict addresses that rpcbind will listen on
+  [bsc#935102]
+  Added 0031-rpcbind-manpage.patch
+
+-------------------------------------------------------------------
+Tue Jul 14 16:52:03 CEST 2015 - kukuk@suse.de
+
+- Add 099-poll.patch: use libtirpc with poll() implementation
+
+-------------------------------------------------------------------
+Wed May 27 08:38:26 UTC 2015 - okir@suse.com
+
+- Add patch 0030-systemd-fix-rmtcall.patch to fix rmtcall
+  forwarding (bnc#932423)
+
+-------------------------------------------------------------------
+Thu Apr 30 09:36:21 CEST 2015 - kukuk@suse.de
+
+- Update to rpcbind 0.2.3
+- Following patches were accepted upstream:
+  - 0005-Remove-obsolete-function-in6_fillscopeid.patch
+  - 0006-In-init_transport-move-creation-of-COTS-sockets-clos.patch
+  - 0007-The-use-of-AI_NUMERICHOST-in-init_transport-is-broke.patch
+  - 0019-rpcinfo-ip_ping-clean-up-client-ping-create-destroy.patch
+  - 0020-rpcinfo-introduce-new-helper-function-ip_getclient.patch
+  - 0021-rpcinfo-make-t-u-options-support-IPv6-addresses-too.patch
+  - 0022-rpcinfo-remove-obsolete-function-clnt_com_create.patch
+  - 0023-Make-rpcinfo-p-support-IPv6-addresses-too.patch
+  - 0024-rpcinfo-remove-obsolete-function-get_inet_address.patch
+
+-------------------------------------------------------------------
+Thu Dec 18 13:56:59 CET 2014 - kukuk@suse.de
+
+- Update to current git, which contains the following patches:
+  - 0002-rpcinfo_warmstart-no_warning_about_missing_file.patch
+  - 0003-systemd-no-dualmode.patch
+  - 0004-systemd-sd_notify.patch
+  - 0018-configure-check-for-nss.h.patch
+
+-------------------------------------------------------------------
+Fri Dec 12 17:01:44 UTC 2014 - jeffm@suse.com
+
+- 0002-rpcinfo_warmstart-no_warning_about_missing_file.patch: fix
+  merge issue causing segfaults on missing file (bnc#909619).
+
+-------------------------------------------------------------------
+Thu Dec 11 13:07:09 CET 2014 - kukuk@suse.de
+
+- Split off 0003-systemd-no-dualmode.patch from 
+  0001-systemd-enhancements.patch for easier upstream submission.
+- Split off 0004-systemd-sd_notify.patch from 
+  0001-systemd-enhancements.patch for easier upstream submission.
+- Rename 0001-systemd-enhancements.patch to 0001-systemd-unit-files.patch
+
+-------------------------------------------------------------------
+Tue Dec  9 15:52:01 CET 2014 - kukuk@suse.de
+
+- Update to latest rpcbind 0.2.2 upstream release.
+- Following patches are upstream:
+  - 0001-Fix-building-one-systems-w-out-nss.h.patch
+  - 0002-Rename-configure.in-to-configure.ac.patch
+  - 0003-rpcbind-rpcuser-not-being-set-in-Makefile.am.patch
+  - 0004-Silence-a-warning-about-setgroups-being-implicitly-d.patch
+- Adjust following patches:
+  - 0005-Remove-obsolete-function-in6_fillscopeid.patch
+  - 0006-In-init_transport-move-creation-of-COTS-sockets-clos.patch
+  - 0018-configure-check-for-nss.h.patch
+- Obsolete patches:
+  - 0015-When-using-systemd-activation-make-rpcbind-notify-sy.patch
+  - 0016-Notify-systemd-unconditionally.patch
+  - 0012-Support-systemd-activation.patch
+  - 0013-socket-activation-Fix-rpcbind.service-to-use-separat.patch
+  - 0017-Pull-the-sysconfig-file-into-rpcbind.service-and-use.patch
+  - 0025-rpcinfo-warmstat_no-warning-about-missing-file.patch
+  - 0026-systemd-no-default-dep
+  - 0027-socket-before-service.patch
+  - 0028-rpcbind-after-var-run.patch
+  - 0029-rpcbind-sd-notify-stupid-errmsg.patch
+- New patches:
+  - 0001-systemd-enhancements.patch
+  - 0002-rpcinfo_warmstart-no_warning_about_missing_file.patch
+- Disabled patches:
+  - 0008-First-part-of-init_transport-refactoring.patch
+  - 0009-init_transport-move-the-registration-code-into-a-sep.patch
+  - 0010-Fix-the-behavior-when-specifying-the-h-option.patch
+  - 0011-Clean-up-the-way-we-handle-the-h-option-in-init_tran.patch
+  - 0014-When-using-systemd-redirect-syslog-calls-to-the-syst.patch
+  - 0024-rpcinfo-remove-obsolete-function-get_inet_address.patch
+
+-------------------------------------------------------------------
+Wed Nov 12 15:05:00 CET 2014 - kukuk@suse.de
+
+- Disable debug code, which else would fill up the log files
+  [bnc#905042]
+
+-------------------------------------------------------------------
+Tue Jun 10 10:41:15 UTC 2014 - okir@suse.com
+
+- 0029-rpcbind-sd-notify-stupid-errmsg.patch: Remove a useless
+  error/debug message (bnc#881663)
+
+-------------------------------------------------------------------
+Thu Jun  5 12:55:45 UTC 2014 - werner@suse.de
+
+- Add patch 0028-rpcbind-after-var-run.patch as rpcbind service
+  wants /var/run mounted before started (bnc#881518)
+
+-------------------------------------------------------------------
+Wed May 21 13:56:14 UTC 2014 - werner@suse.de
+
+- Require the systemd libraries for build to allow the move
+  of systemd.pc back to systemd
+
+-------------------------------------------------------------------
+Mon Mar 31 10:38:40 UTC 2014 - werner@suse.de
+
+- Add 0027-socket-before-service.patch to make sure that always
+  the socket is up before the service.  This will make sure that
+  rpcbind.target will not only cause the socket but also the
+  rpcbind.service (bnc#860246)
+- Beside this ingnore exit state 2 in case of shutdown (bnc#860246)
+
+-------------------------------------------------------------------
+Wed Mar 26 21:52:19 UTC 2014 - nfbrown@suse.com
+
+- 0026-systemd-no-default-dep
+  No default dependencies for rpcbind.  This allows it to start
+  early when it might be needed.
+  (bnc#860246)
+
+-------------------------------------------------------------------
+Tue Mar  4 17:55:01 UTC 2014 - coolo@suse.com
+
+- fix typo in useradd call's user home dir
+
+-------------------------------------------------------------------
+Tue Mar  4 06:39:39 UTC 2014 - coolo@suse.com
+
+- prereq useradd - called from %pre
+
+-------------------------------------------------------------------
+Wed Feb 26 16:10:49 CET 2014 - kukuk@suse.de
+
+- Fix ownership of /var/lib/rpcbind, else rpcbind cannot write
+  warmstart files
+
+-------------------------------------------------------------------
+Wed Feb 26 15:27:45 CET 2014 - kukuk@suse.de
+
+- Don't print error message about missing files in warmstart code
+  if we do a coldstart [bnc#865807]
+  (0025-rpcinfo-warmstat_no-warning-about-missing-file.patch)
+
+-------------------------------------------------------------------
+Fri Feb 14 15:10:19 CET 2014 - kukuk@suse.de
+
+- Re-add rcrpcbind symlink
+
+-------------------------------------------------------------------
+Thu Jan 23 16:58:25 UTC 2014 - okir@suse.com
+
+- Fixed rpc broadcast handling (bnc#857324)
+  Upgraded to upstream 0.2.1-rc4 as part of this, and rebased the
+  patch set.
+
+  Added:
+     0001-Fix-building-one-systems-w-out-nss.h.patch
+     0002-Rename-configure.in-to-configure.ac.patch
+     0003-rpcbind-rpcuser-not-being-set-in-Makefile.am.patch
+  Deleted (already upstream):
+     0003-configure-fix-the-case-when-with-rpcuser-is-not-give.patch
+  Renumbered (previous numbering shown below):
+     0001-Silence-a-warning-about-setgroups-being-implicitly-d.patch
+     0002-Remove-obsolete-function-in6_fillscopeid.patch
+     0004-In-init_transport-move-creation-of-COTS-sockets-clos.patch
+     0005-The-use-of-AI_NUMERICHOST-in-init_transport-is-broke.patch
+     0006-First-part-of-init_transport-refactoring.patch
+     0007-init_transport-move-the-registration-code-into-a-sep.patch
+     0008-Fix-the-behavior-when-specifying-the-h-option.patch
+     0009-Clean-up-the-way-we-handle-the-h-option-in-init_tran.patch
+     0010-Support-systemd-activation.patch
+     0011-socket-activation-Fix-rpcbind.service-to-use-separat.patch
+     0012-When-using-systemd-redirect-syslog-calls-to-the-syst.patch
+     0013-When-using-systemd-activation-make-rpcbind-notify-sy.patch
+     0014-Notify-systemd-unconditionally.patch
+     0015-Pull-the-sysconfig-file-into-rpcbind.service-and-use.patch
+     0016-configure-check-for-nss.h.patch
+     0018-rpcinfo-ip_ping-clean-up-client-ping-create-destroy.patch
+     0019-rpcinfo-introduce-new-helper-function-ip_getclient.patch
+     0020-rpcinfo-make-t-u-options-support-IPv6-addresses-too.patch
+     0021-rpcinfo-remove-obsolete-function-clnt_com_create.patch
+     0022-Make-rpcinfo-p-support-IPv6-addresses-too.patch
+     0023-rpcinfo-remove-obsolete-function-get_inet_address.patch
+
+-------------------------------------------------------------------
+Mon Jan 20 12:20:02 UTC 2014 - okir@suse.com
+
+- Make rpcinfo -p/-u/-t options support IPv6 (bnc# 859448)
+  Added:
+     0018-rpcinfo-ip_ping-clean-up-client-ping-create-destroy.patch
+     0019-rpcinfo-introduce-new-helper-function-ip_getclient.patch
+     0020-rpcinfo-make-t-u-options-support-IPv6-addresses-too.patch
+     0021-rpcinfo-remove-obsolete-function-clnt_com_create.patch
+     0022-Make-rpcinfo-p-support-IPv6-addresses-too.patch
+     0023-rpcinfo-remove-obsolete-function-get_inet_address.patch
+
+-------------------------------------------------------------------
+Tue Jan 14 16:18:49 UTC 2014 - okir@suse.com
+
+- Recognize RPCBIND_OPTIONS from /etc/sysconfig/rpcbind (bnc#824621)
+  Added:
+     0015-Pull-the-sysconfig-file-into-rpcbind.service-and-use.patch
+- Make rpcbind run as user "rpc" by default (bnc#714735)
+- Avoid NIS lookups of host names and service names (bnc#858700)
+  Added:
+     0016-configure-check-for-nss.h.patch
+
+-------------------------------------------------------------------
+Fri Jan 10 10:58:47 UTC 2014 - okir@suse.com
+
+- Notify systemd unconditionally.  This prevented
+  "systemctl start rpcbind.service" from succeeding
+  Added:
+     0014-Notify-systemd-unconditionally.patch
+
+-------------------------------------------------------------------
+Tue Aug 20 18:34:19 UTC 2013 - okir@suse.com
+
+- Update rpcbind to latest upstream, and rewrote patches for systemd
+  integration.
+  Removed:
+     0001-systemd-add-support-for-system-bus-activation.patch
+     socket-activation-don-t-unlink-socket-we-didn-t-create
+     socket-activation-fix-rpcbind-service-to-use-separate-sockets
+     rpcbind-journal.patch
+     move-lock-file-to-run-fs.patch
+     rpcbind-systemd-notify.patch
+  Added:
+     0001-Silence-a-warning-about-setgroups-being-implicitly-d.patch
+     0002-Remove-obsolete-function-in6_fillscopeid.patch
+     0003-configure-fix-the-case-when-with-rpcuser-is-not-give.patch
+     0004-In-init_transport-move-creation-of-COTS-sockets-clos.patch
+     0005-The-use-of-AI_NUMERICHOST-in-init_transport-is-broke.patch
+     0006-First-part-of-init_transport-refactoring.patch
+     0007-init_transport-move-the-registration-code-into-a-sep.patch
+     0008-Fix-the-behavior-when-specifying-the-h-option.patch
+     0009-Clean-up-the-way-we-handle-the-h-option-in-init_tran.patch
+     0010-Support-systemd-activation.patch
+     0011-socket-activation-Fix-rpcbind.service-to-use-separat.patch
+     0012-When-using-systemd-redirect-syslog-calls-to-the-syst.patch
+     0013-When-using-systemd-activation-make-rpcbind-notify-sy.patch
+
+-------------------------------------------------------------------
+Thu Jun 27 21:36:52 UTC 2013 - crrodriguez@opensuse.org
+
+- rpcbind-systemd-notify.patch make systemd service type 
+  "notify" this is almost the same as the default but 
+  with the difference that the daemon now is able to
+  to notify systemd when it finished startup hence
+  avoiding a race condition in where startup is faster than
+  the process finishing its own internal setup routines.
+
+-------------------------------------------------------------------
+Mon May  6 12:20:44 UTC 2013 - cfarrell@suse.com
+
+- license update: BSD-4-Clause
+  Look at src/util.c
+
+-------------------------------------------------------------------
+Thu Apr  4 00:32:00 UTC 2013 - crrodriguez@opensuse.org
+
+- remove sysvinit support (read opensuse-packaging for details)
+- remove "portmap" migration, according to the time machine
+  it went away in openSUSE 11.2 and the oldest supported version
+  is now 12.1
+
+-------------------------------------------------------------------
+Wed Nov 28 14:44:15 UTC 2012 - rmilasan@suse.com
+
+- Move rpcbind.sock and rpcbind.lock to /run to not interfere with
+  systemd. 
+
+-------------------------------------------------------------------
+Thu Oct 25 21:29:15 UTC 2012 - crrodriguez@opensuse.org
+
+- Instead of using syslog, log to the journal 
+
+-------------------------------------------------------------------
+Wed Oct 24 15:56:17 UTC 2012 - crrodriguez@opensuse.org
+
+- There should be no Requires on syslog as it is no longer
+  required for anything since the introduction of the journal. 
+
+-------------------------------------------------------------------
+Wed Apr 18 23:46:52 CEST 2012 - jeffm@suse.de
+
+- socket-activation: Fix rpcbind.service to use separate
+  sockets (bnc#757909).
+
+-------------------------------------------------------------------
+Wed Apr 18 05:47:20 CEST 2012 - jeffm@suse.de
+
+- socket-activation: don't unlink socket we didn't create (bnc#757667).
+
+-------------------------------------------------------------------
+Mon Dec 19 22:54:46 UTC 2011 - crrodriguez@opensuse.org
+
+- Update systemd patches 
+
+-------------------------------------------------------------------
+Wed Dec  7 13:50:49 UTC 2011 - crrodriguez@opensuse.org
+
+- Add systemd socket activation patch, based on
+  http://www.spinics.net/lists/linux-nfs/msg14371.html
+  but does not bundle sd-daemon.[c|h] it uses libsystemd-daemon
+  instead.
+
+-------------------------------------------------------------------
+Sun Dec  4 17:14:37 UTC 2011 - crrodriguez@opensuse.org
+
+- Update to version 0.2.0_git201103171419
+- Fix rpm source tags to not be conditional.
+
+-------------------------------------------------------------------
+Tue Nov 29 20:27:38 UTC 2011 - crrodriguez@opensuse.org
+
+- Add systemd units 
+
+-------------------------------------------------------------------
+Fri Nov 25 10:43:48 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Jun 14 19:00:51 UTC 2011 - aj@suse.de
+
+- Install rpcinfo man page since glibc does not install its man
+  page anymore.
+
+-------------------------------------------------------------------
+Wed Jan 12 14:39:35 UTC 2011 - lnussel@suse.de
+
+- don't enable rpcbind init script by default
+
+-------------------------------------------------------------------
+Tue Dec  7 12:01:55 UTC 2010 - coolo@novell.com
+
+- add some provides and requires for sysvinit scripts to please insserv
+
+-------------------------------------------------------------------
+Sun Nov 14 14:00:49 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Use full RELRO here 
+
+-------------------------------------------------------------------
+Tue Oct 26 15:20:07 UTC 2010 - cristian.rodriguez@opensuse.org
+
+-  Update to a newer GIT snapshot
+  * nd: set SO_REUSEADDR on NC_TPI_COTS listening sockets
+  * rpcbind: add no-fork mode  
+
+-------------------------------------------------------------------
+Thu Dec  4 11:02:25 CET 2008 - coolo@suse.de
+
+- fix "checkproc: command not found" during installation
+
+-------------------------------------------------------------------
+Tue Dec  2 00:29:16 CET 2008 - ro@suse.de
+
+- rename installed pmap_set to pmap_set2 to avoid conflict
+  with portmap 
+
+-------------------------------------------------------------------
+Mon Dec  1 12:29:50 CET 2008 - mkoenig@suse.de
+
+- if upgrading from portmap:
+  * we need to stop portmap and start rpcbind in %post since the
+    restart on upgrade mechanism does not work here
+  * dump portmap tables and set them again in rpcbind [bnc#446388]
+- add pmap_set.c which is needed to set the old portmap tables
+  in rpcbind
+
+-------------------------------------------------------------------
+Wed Nov 26 14:18:06 CET 2008 - mkoenig@suse.de
+
+- specify runlevel in chkconfig check [bnc#444663] 
+
+-------------------------------------------------------------------
+Wed Nov  5 14:44:56 CET 2008 - mkoenig@suse.de
+
+- fix version comparison in Obsoletes [bnc#440313]
+- disable portmap service in pre script to avoid problems when
+  upgrading from portmap
+
+-------------------------------------------------------------------
+Wed Oct 15 19:07:48 CEST 2008 - mkoenig@suse.de
+
+- update to 0.1.6 with additional patches from git
+  * Fixed an ipv6 related segfault on startup
+  * rpcbind needs to also downgrade its gid to a non-priviledgied group
+  * Removed the documentation about the non-existent '-L' flag
+  * Introduce helpers for ipprot/netid mapping
+  * Change how we decide on the netids to use for portmap
+  * Simplify port live check in pmap_svc.c
+  * Support portmap on AF_LOCAL, too
+  * Fix for warm start
+  * Properly identify local root user over ipv4/v6
+- fixes [bnc#435637] 
+- remove patch
+  rpcbind-0.1.4-iff_up.patch 
+  rpcbind-0.1.4-localaddr.patch
+
+-------------------------------------------------------------------
+Mon Aug 18 17:41:18 CEST 2008 - mkoenig@suse.de
+
+- use version in Provides/Obsoletes 
+
+-------------------------------------------------------------------
+Fri Jul 18 15:54:26 CEST 2008 - mkoenig@suse.de
+
+- update to version 0.1.5
+- license change to BSD-3
+- patches merged 
+  rpcbind-0.1.4-compile.patch
+  rpcbind-0.1.4-debug.patch
+  rpcbind-0.1.4-libwrap.patch
+  rpcbind-0.1.4-recvfrom-fix.patch
+  rpcbind-0.1.4-rpcuser.patch
+  rpcbind-0.1.4-warmstarts-cleanup.patch
+  rpcbind-0.1.4-warmstarts.patch
+
+-------------------------------------------------------------------
+Wed Apr  2 14:21:49 CEST 2008 - mkoenig@suse.de
+
+- initial packaging, version 0.1.4 [fate#300607]
+- add patches from Steve Dickson, including fixes and
+  support for debug and warmstart
+- build as PIE
+

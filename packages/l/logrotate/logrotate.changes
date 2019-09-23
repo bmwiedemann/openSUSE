@@ -1,0 +1,785 @@
+-------------------------------------------------------------------
+Thu Apr  4 11:12:28 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Version update to 3.15.0:
+  * timer unit: change trigger fuzz from 12h to 1h
+  * service unit: only run if /var/log is mounted
+  * preserve fractional part of timestamps when compressing
+  * re-indent source code using spaces only
+  * minage: avoid rounding issue while comparing the amount of seconds
+  * never remove old log files if rotate -1 is specified
+  * return non-zero exit status if a config file contains an error
+  * make copytruncate work with rotate 0
+  * warn user if both size and the time interval options are used
+  * pass rotated log file name as the 2nd argument of the postrotate
+    script when sharedscript is not enabled
+  * rename logrotate-default to logrotate.conf
+- Added asc file.
+
+-------------------------------------------------------------------
+Thu Sep 13 08:13:52 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Rebase the logrotate-3.13.0-systemd_add_home_env.patch to be
+  unified patch again
+
+-------------------------------------------------------------------
+Mon Sep 10 12:08:24 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase. Trim filler wording from description.
+  Add a note that it is unrelated to journald.
+
+-------------------------------------------------------------------
+Fri Sep  7 10:33:52 UTC 2018 - liedke@rz.uni-mannheim.de
+
+- Version update to 3.14.0:
+  * make configure show support status for SELinux and ACL at the end
+  * make logrotate build again on FreeBSD
+  * move wtmp and btmp definitions from logrotate.conf to
+    separate configuration files in logrotate.d
+  * print a warning about logrotate doing nothing when -d is used
+  * do not reject executable config files
+  * add hardening options to logrotate.service in examples
+  * fix spurious compressor failure when using su and compress
+  * keep logrotate version in .tarball-version in release tarballs
+  * introduce the hourago configuration directive
+  * ignore empty patterns in tabooext to avoid exclusion of everything
+  * properly report skipped test cases instead of pretending success
+
+-------------------------------------------------------------------
+Thu Jun  7 09:51:50 UTC 2018 - kstreitova@suse.com
+
+- Add "Environment=HOME=/root" to logrotate.service file in order 
+  to allow mariadb to rotate its logs when the database has a root
+  password defined [bsc#1093617]
+- Added patch:
+  * logrotate-3.13.0-systemd_add_home_env.patch
+
+-------------------------------------------------------------------
+Tue Apr  3 13:34:57 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Fri Jan  5 15:56:13 UTC 2018 - pmonrealgonzalez@suse.com
+
+- Version update to 3.13.0:
+  * make distribution tarballs report logrotate version properly
+  * make (un)compress work even if stdin and/or stdout are closed (#154)
+  * remove -s from DEFAULT_MAIL_COMMAND and improve its documenation (#152)
+  * uncompress logs before mailing them even if delaycompress is enabled (#151)
+  * handle unlink of a non-existing log file as a warning only (#144)
+  * include compile-time options in the output of logrotate --version (#145)
+  * make logrotate --version print to stdout instead of stderr (#145)
+  * flush write buffers before syncing state file (#148)
+  * specify (un)compress utility explicitly in tests (#137)
+  * enable running tests in parallel (#132)
+  * explicitly map root UID/GID to 0 on Cygwin (#133)
+  * add .dpkg-bak and .dpkg-del to default tabooext list (#134)
+
+-------------------------------------------------------------------
+Fri Jul  7 08:43:42 UTC 2017 - tchvatal@suse.com
+
+- Version update to 3.12.3:
+  * Fixed accident removal of rotated files with dateext. (#118)
+  * Line comments inside globs in config files are now skipped. (#109)
+  * logrotate now recovers from a corrupted state file. (#45)
+  * createolddir now creates old directory as unprivileged user. (#114)
+  * weekly rotations are now predictable and configurable. (#93)
+  * Errors in config files are no longer treated as fatal errors. (#81)
+  * configure --with-default-mail-command specifies default mail command. (#100)
+  * Fixed heap buffer overflow when parsing crafted config file. (#33)
+  * build fixes related to -Werror (#119) and -Werror=format= (#108)
+  * configure --enable-werror now controls use of the -Werror flag (#123)
+  * copy and copytruncate directives now work together again
+  * unlink() is no longer preceded by open() unless shred is enabled (#124)
+  * compress and uncompress now take commands from $PATH, too (#122)
+- By default disable werror while building
+
+-------------------------------------------------------------------
+Fri Jul  7 08:28:18 UTC 2017 - tchvatal@suse.com
+
+- Remove aaa_base compat setting that is from 2003, we do not
+  support such migration anymore
+
+-------------------------------------------------------------------
+Wed Dec 28 11:19:13 UTC 2016 - tchvatal@suse.com
+
+- Version update to 3.11.0:
+  * Merges from distribution patchsets and small fixes around
+- Remove all patches merged upstream:
+  * logrotate-addextension.patch
+  * logrotate-autoext.patch
+  * logrotate-conf.patch
+  * logrotate-fix-test62_with_bash-4.4.patch
+  * logrotate-manpage_config_clarification.patch
+  * logrotate-var-lib-misc.patch
+  * logrotate-3.7.8-suse.patch
+
+-------------------------------------------------------------------
+Mon Nov 21 12:03:14 UTC 2016 - tchvatal@suse.com
+
+- Fix post scriptlet condition bnc#1011120
+
+-------------------------------------------------------------------
+Sat Nov 12 22:08:25 CET 2016 - kukuk@suse.de
+
+- Move logrotate.status to /var/lib/misc following FHS/LSB and
+  making implementing read-only root filesystem much easier.
+  [FATE#322036]
+- Add patch:
+  * logrotate-var-lib-misc.patch
+
+-------------------------------------------------------------------
+Wed Oct  5 11:38:13 UTC 2016 - tchvatal@suse.com
+
+- Version update to 3.10.0 fate#322037:
+  * Update url to point to github
+- Remove upstreamed patch:
+  * logrotate-3.7.8-mess_err.patch
+- Rebase patches:
+  * logrotate-3.7.8-suse.patch
+  * logrotate-addextension.patch
+  * logrotate-autoext.patch
+  * logrotate-fix-test62_with_bash-4.4.patch
+
+-------------------------------------------------------------------
+Mon Oct  3 14:46:34 UTC 2016 - dimstar@opensuse.org
+
+- Add logrotate-fix-test62_with_bash-4.4.patch: Fix the test suite
+  when running with bash 4.4 (gh#logrotate/logrotate#66).
+
+-------------------------------------------------------------------
+Mon Jun 22 12:53:44 UTC 2015 - kstreitova@suse.com
+
+- update to 3.9.1
+  * 3.9.1
+    - Fix off-by-one error which can lead to crash when copytruncate
+      is used.
+  * 3.9.0
+    - Fix crash when using long dateformat. [nmerdan]
+    - Add support for %H dateformat. [czchen]
+    - Fix regression introduced in 3.8.9 when when rotating multiple
+      logs when one of them is missing.
+    - In the debug mode, do not skip the code-path which handles the
+      case when the last rotation does not exist. [Sergey Vidishev]
+    - Show more precise description when "log does not need rotating".
+    - Add new -l option to log verbose output to file. The file is
+      overwritten on every logrotate execution.
+    - Allow rotation of sparse files with copytruncate.
+  * update logrotate-addextension.patch
+- use spec-cleaner
+- remove unused PreReq tags 
+
+-------------------------------------------------------------------
+Tue May 19 23:42:27 UTC 2015 - crrodriguez@opensuse.org
+
+- Enable Persistent timer since we are now in systemd 219. 
+
+-------------------------------------------------------------------
+Fri Feb 20 11:04:12 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.8.9
+  * Add new directive "createolddir" and "nocreateolddir". These directives
+    can be used to create the directory specified by olddir with particular
+	"mode", "owner" and "group".
+  * Continue with rotation even when first log from logset is removed
+	during the rotation.
+  * Fix crash on BSD systems introduced in 3.8.8 caused by different qsort_r
+	function. Function qsort is now used instead.
+  * Fix potential buffer overflow in usage of strncat function.
+  * Fix compilation with musl-libc.
+  * Add experimental 'renamecopy' directive to allow 'olddir' on different
+    physical device. See the "man logrotate" for more information.
+- Remove logrotate-fail_if_ENOENT_and_nomissingok.patch; merged on
+  upstream release
+- Updated patches
+  * logrotate-3.7.8-addextension.patch > logrotate-addextension.patch
+  * logrotate-3.7.8-autoext.patch > logrotate-autoext.patch
+  * logrotate-3.7.8-conf.patch > logrotate-conf.patch 
+  * logrotate-manpage_config_clarification.patch 
+- Remove redunant %clean section
+
+-------------------------------------------------------------------
+Thu Jun 26 12:01:30 UTC 2014 - vcizek@suse.com
+
+- temporarily remove the 'Persistent' option from logrotate.timer
+  * our current systemd doesn't support it yet (bnc#884338)
+
+-------------------------------------------------------------------
+Thu Apr  3 17:16:40 UTC 2014 - crrodriguez@opensuse.org
+
+- Also, avoid logrotate unit activation when the system is 
+  on battery power.
+
+-------------------------------------------------------------------
+Thu Apr  3 14:10:21 UTC 2014 - crrodriguez@opensuse.org
+
+- BuildRequire systemd 197 or later.
+
+-------------------------------------------------------------------
+Wed Apr  2 22:45:56 UTC 2014 - crrodriguez@opensuse.org
+
+- Migrate from cron to systemd timer units, this is overall 
+  the most important package to migrate since it is one 
+  of the very few base components that hard-require cron.
+
+-------------------------------------------------------------------
+Tue Apr  1 15:11:22 UTC 2014 - vcizek@suse.com
+
+- return error when nomissingok is specified and the log path
+  doesn't exist (bnc#871217)
+  * added logrotate-fail_if_ENOENT_and_nomissingok.patch
+
+-------------------------------------------------------------------
+Thu Nov  7 21:57:31 UTC 2013 - sweet_f_a@gmx.de
+
+- enable acl support to preserve ACLs during rotation
+
+-------------------------------------------------------------------
+Thu Nov  7 20:26:51 UTC 2013 - sweet_f_a@gmx.de
+
+- update to 3.8.7, fix bnc#849436
+- Changelog 3.8.7:
+  * Fixed --force/-f option handling together with "size" directive
+    (3.8.5 regression).
+  * Use "logrotate_tmp_t" context for SELinux tests and if this
+    context does not exist, skip SELinux related tests.
+- Changelog 3.8.6
+  * Fixed memory corruption caused by rotation directory which
+    does not exist with "sharedscripts" together with "prerotate"
+    script.
+
+-------------------------------------------------------------------
+Tue Aug 20 12:53:27 UTC 2013 - vcizek@suse.com
+
+- install COPYING file (bnc#817870)
+
+-------------------------------------------------------------------
+Thu Aug  1 12:36:57 UTC 2013 - vcizek@suse.com
+
+- mention in the manpage that = is an allowed separator in the
+  config file (bnc#831072)
+  * added logrotate-manpage_config_clarification.patch
+
+-------------------------------------------------------------------
+Thu Jul 25 14:19:48 UTC 2013 - vcizek@suse.com
+
+- update to 3.8.5
+  * dropped logrotate-3.7.9-compressoptions.patch (upstream)
+  * refreshed other patches
+  Changelog:
+  - Improved rotation during daylight saving time and between timezone
+    changes.
+  - Fixed ACL setting problem caused by ext3 erroneously reporting ENOSYS
+    instead of ENOSUP.
+  - Do not continue with rotation if state file is corrupted.
+  - Make logrotate.status creation atomic.
+  - Allow "hourly" rotation. See manpage for more information.
+  - Use "/bin/echo" in tests. Fixes tests execution in Dash.
+  - Do no try to parse config files bigger than 16MB.
+  - Improved manpage consistency and formatting.
+  - Fix race condition between acl_set_fd() and fchmod().
+  - Added --version command line option
+  - Disable ACL tests if logrotate is not compiled WITH_ACL support or if 
+    ACLs are not supported by the system running tests
+  - Disable SELinux tests if logrotate is not compiled WITH_SELINUX support
+    or if SELinux is not supported by the system running tests
+  - Fixed bug which prevented skipping particular log file config
+    if the config contained errors.
+  - Fixed skipping of configs containing firstaction/lastaction scripts
+    with '}' character in case of error before these scripts.
+  - Support also 'K' unit for *size directives.
+  - Added preremove option to let admin to do something with the old logs
+    before they are removed by logrotate.
+  - Fixed possible loop in tabooext parsing.
+  - Move code to set SELinux context before compressLogFile calls to create
+    compressed log files with the proper context.
+  - Call prerotate/postrotate script only for really rotated files in
+    nosharedscripts mode (as stated in man page).
+  - Fixed setting "size" bigger than 4GB on 32bit architectures
+  - Do not overwrite mode set by "create" option when using ACL. "create"
+    directive is now not mixed up with ACLs. If you use "create" in config
+    file and log file has some ACLs set, ACLs are not kept and are
+    overwritten by the mode set in "create" directive.
+  - Mode argument in "create" directive can be omitted. Only owner and group
+    is set in this case. Check man page for more info.
+  - show error and ignore config if '{' is not present after log files
+    declaration
+  - support whitespaces in compressoptions directive
+  - support for tilde expansion in config files
+  - 'su' directive does not affect script execution - scripts
+    are executed as a root if 'su' directive is present
+  - fixed mail sending for 'mailfirst', 'dateext' and 'delaycompress'
+    combination
+  - do not use gzip/gunzip from /usr/local on Solaris
+  - add O_NOFOLLOW when opening files as safeguard against symlink tricks.
+    Symlinks rotation is now officially unsupported. It didn't work
+    as expected in the past anyway.
+  - do not run external programs with uid != euid
+  - fixed potential bad-free when ACL is used
+  - Do not include alloca.h on NetBSD, since alloca() is declared in
+    stdlib.h there
+
+-------------------------------------------------------------------
+Tue Apr 16 08:23:18 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Fri Sep 30 15:34:40 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Wed Sep  7 14:30:29 UTC 2011 - vcizek@suse.com
+
+- update to 3.8.1
+- dropped CVE patches as they were merged to upstream
+- changelog
+  - fixed 1 memory leak in prerotateSingleLog
+  - do not redirect logrotate errors to /dev/null in cron script
+  - fixed "size" directive parsing
+  - handle situation when acl_get_fd is supported, but acl_set_fd is not
+  - added "maxsize" directive (see man page)
+  - added "dateyesterday" option (see man page)
+  - fixed crash when config file had exactly 4096*N bytes
+  - added WITH_ACL make option to link against -lacl and preserve ACLs
+    during rotation
+  - added "su" option to define user/group for rotation. Logrotate now
+    skips directories which are world writable or writable by group
+    which is not "root" unless "su" directive is used.
+  - fixed CVE-2011-1098: race condition by creation of new files
+  - fixed possible shell injection when using "shred" directive (CVE-2011-1154)
+  - fixed escaping of file names within 'write state' action (CVE-2011-1155)
+  - better 'size' directive description
+  - fixed possible buffer-overflow when reading config files
+
+-------------------------------------------------------------------
+Wed Sep  7 12:51:41 UTC 2011 - vcizek@suse.com
+
+- allow whitespace separated options in compressoptions (bnc#711780)
+
+-------------------------------------------------------------------
+Mon Jul 25 10:25:56 UTC 2011 - jengelh@medozas.de
+
+- Change compression scheme to xz
+
+-------------------------------------------------------------------
+Tue May 10 14:23:08 UTC 2011 - puzel@novell.com
+
+- add logrotate-CVE-2011-1098.patch (bnc#677336)
+- add logrotate-shred-CVE-2011-1154.patch (bnc#679661)
+- add logrotate-CVE-2011-1155.patch (bnc#679662)
+- use spec-cleaner
+
+-------------------------------------------------------------------
+Thu Nov 18 12:44:55 UTC 2010 - lnussel@suse.de
+
+- also rotate /var/log/btmp
+
+-------------------------------------------------------------------
+Tue Sep 14 13:01:46 UTC 2010 - puzel@novell.com
+
+- use proper syslog facility/priority in logrotate cron
+  script (bnc#636236)
+
+-------------------------------------------------------------------
+Tue Aug 17 15:29:49 UTC 2010 - puzel@novell.com
+
+- update to logrotate-3.7.9
+  - don't copy config files on the stack -- mmap them instead
+    (fixes segfaults with too large/invalid config files)
+  - symlinked conf file man page as requested by Fedora guidelines
+  - added rotating (copying) non-writable, readable files
+  - fixed missingok problem with globs
+  - fixed bug when log files could be removed even there was
+    some error in rotation process.
+  - allow setting size greater than 4.2GB in configuration file
+  - pass currently rotated file to postrotate/prerotate script
+    in nosharedscripts mode
+  - added new TabooExts: ".disabled", ".dpkg-old", ".dpkg-dist",
+    ".dpkg-new", ".cfsaved", ".ucf-old", ".ucf-dist", ".ucf-new"
+  - Don't change utime atime/mtime when compressing files
+  - Better *rotate scripts parser.
+  - Allow 'include' directive in log file definitions
+- merge logrotate-3.7.8-cron-check-for-another-instance.patch into
+  logrotate-3.7.8-suse.patch
+- add logrotate-rpmlintrc: suppress false-positive rpmlint warning
+
+-------------------------------------------------------------------
+Sun Dec 20 16:30:04 CET 2009 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Fri Mar  6 15:31:04 CET 2009 - puzel@suse.cz
+
+- update to 3.7.8
+  - do not exit on status file errors
+  - limit config file inclusion nesting
+  - use hashes for status file handling
+  - dateformat to allow unixtime
+  - manual page corrections
+- drop hashes patch (upstream)
+
+-------------------------------------------------------------------
+Wed Dec 10 19:48:49 CET 2008 - schwab@suse.de
+
+- Fix compresscmd default.
+
+-------------------------------------------------------------------
+Tue Oct 21 15:16:03 CEST 2008 - puzel@suse.cz
+
+- logrotate-3.7.7-hashes.patch (bnc#415072) 
+
+-------------------------------------------------------------------
+Tue Sep 30 13:17:04 CEST 2008 - puzel@suse.cz
+
+- use chekcproc in logrotate.cron script instead of pgrep (bnc#426162)
+
+-------------------------------------------------------------------
+Wed Sep  3 11:20:54 CEST 2008 - puzel@suse.cz
+
+- update to 3.7.7
+  - dateformat
+  - fix possible buffer overflows in strings handling
+  - change logInfo handling
+  - fix compile warnings
+  - tabooext honor wildcards
+  - fix selinux support with dateext
+  - various minor bugfixes
+- removed logrotate-3.7.5-errorHandling.patch, logrotate-3.7.5-shred.patch,
+  logrotate-3.7.5-cfengine.patch, logrotate-3.7.5-date.patch,
+  logrotate-3.7.5-logfn.patch
+  - merged to upstream
+
+-------------------------------------------------------------------
+Mon Aug 25 15:08:14 CEST 2008 - prusnak@suse.cz
+
+- enabled SELinux support [Fate#303662]
+
+-------------------------------------------------------------------
+Wed Aug 20 11:05:19 CEST 2008 - puzel@suse.cz
+
+- added logrotate-3.7.5-cron-check-for-another-instance.patch
+  - cronjob exits immediately if there is another logrotate instance
+    running
+  - fixes (bnc#415072)
+
+-------------------------------------------------------------------
+Thu Aug 14 17:36:08 CEST 2008 - puzel@suse.cz
+
+- fix rpmlint warnings:
+  - make test moved to %check section
+  - require cron
+
+-------------------------------------------------------------------
+Thu Jan 31 14:08:47 CET 2008 - ro@suse.de
+
+- log error if target file already exists
+  (upgrade from MESS_DEBUG to MESS_ERROR) 
+
+-------------------------------------------------------------------
+Wed Oct 31 18:01:58 CET 2007 - ro@suse.de
+
+- added bzip2 as dependency since it's used as default compressor
+  (#334555) 
+
+-------------------------------------------------------------------
+Thu Aug 16 15:33:29 CEST 2007 - ro@suse.de
+
+- update to 3.7.5 with some bugfixes containing:
+  - 251040 config option size not handled correctly 
+- added the current fedora patchkit which adds shred support
+
+-------------------------------------------------------------------
+Mon Aug  7 18:07:58 CEST 2006 - ro@suse.de
+
+- try adding new option "addextension" which provides what
+  some users expected the old "extension" keyword to do
+
+-------------------------------------------------------------------
+Wed Jun 21 12:40:30 CEST 2006 - ro@suse.de
+
+- update to 3.7.4
+  - adds the "minsize" option
+- clean up comments in sample logrotate.conf (#183440) 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:59 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 11 19:05:18 CET 2006 - ro@suse.de
+
+- fixed segfault in autoext patch (#142021)
+
+-------------------------------------------------------------------
+Fri Dec  9 14:58:46 CET 2005 - ro@suse.de
+
+- updated to 3.7.3
+- removed upstreamed patches
+- added autoext patch for determining file extension
+  from used compression program 
+
+-------------------------------------------------------------------
+Tue Oct 18 12:42:16 CEST 2005 - ro@suse.de
+
+- update to upstream patchkit 
+
+-------------------------------------------------------------------
+Tue Oct 11 02:19:17 CEST 2005 - ro@suse.de
+
+- update to 3.7.2 and some upstream patches 
+
+-------------------------------------------------------------------
+Tue Oct 11 01:41:53 CEST 2005 - ro@suse.de
+
+- fix else case in maxage patch (thanks to pvrabec) 
+
+-------------------------------------------------------------------
+Tue Jul 26 16:26:57 CEST 2005 - ro@suse.de
+
+- added noTMPDIR and selinux patches 
+
+-------------------------------------------------------------------
+Fri May 20 00:28:58 CEST 2005 - ro@suse.de
+
+- update to 3.7.1 
+
+-------------------------------------------------------------------
+Wed Apr 20 17:12:50 CEST 2005 - ro@suse.de
+
+- cron-script: give some more details when things fail 
+
+-------------------------------------------------------------------
+Mon Sep  6 17:44:42 CEST 2004 - ro@suse.de
+
+- changed patch sequence, simple ones first
+- added one-liner fix from cvs
+- fix mail call
+- fix uninitialized variable when mailing out first rotation
+- fix number of logs kept with dateext
+
+-------------------------------------------------------------------
+Thu Mar 25 16:40:34 CET 2004 - ro@suse.de
+
+- adapted logger path (#36947)
+
+-------------------------------------------------------------------
+Mon Feb 23 15:58:48 CET 2004 - ro@suse.de
+
+- update to version 3.7
+
+-------------------------------------------------------------------
+Fri Oct 17 11:51:01 CEST 2003 - ro@suse.de
+
+- don't build as root
+- use defattr 
+
+-------------------------------------------------------------------
+Mon Oct 13 16:19:27 CEST 2003 - ro@suse.de
+
+- updated to 3.6.10 and ported patches 
+
+-------------------------------------------------------------------
+Thu Jun 12 11:14:24 CEST 2003 - kukuk@suse.de
+
+- /etc/logrotate.d is part of filesystem
+
+-------------------------------------------------------------------
+Thu Jan 23 01:47:13 CET 2003 - ro@suse.de
+
+- update to 3.6.6 (some tmpfile fixes, new options supported)
+- remove system-config /etc/logrotate.d/aaa_base and all code
+  messing with it (all logrotate configs have been moved to
+  their respective packages)
+- add /etc/logrotate.d/wtmp
+
+------------------------------------------------------------------
+Thu Jan 23 00:34:41 CET 2003 - ro@suse.de
+
+- remove mgetty logfiles
+
+-------------------------------------------------------------------
+Mon Jan 20 18:13:36 CET 2003 - ro@suse.de
+
+- remove i4l logfiles
+
+-------------------------------------------------------------------
+Thu Jan 16 00:00:40 CET 2003 - ro@suse.de
+
+- removed xdm logfile from main config (in XFree86 now) 
+
+-------------------------------------------------------------------
+Wed Jan 15 15:12:06 CET 2003 - ro@suse.de
+
+- removed more files from main config and moved to their packages
+
+-------------------------------------------------------------------
+Mon Nov 11 00:23:01 CET 2002 - ro@suse.de
+
+- fix deprecated multiline string literals 
+
+-------------------------------------------------------------------
+Mon Oct 14 12:30:53 CEST 2002 - ro@suse.de
+
+- remove postgresql logfile from config on update (#20860) 
+
+-------------------------------------------------------------------
+Mon Oct 14 11:24:50 CEST 2002 - ro@suse.de
+
+- moved syslog logrotation config to syslogd package
+
+-------------------------------------------------------------------
+Mon Sep 23 15:41:35 CEST 2002 - ro@suse.de
+
+- mark logrotate.del as missingok 
+
+-------------------------------------------------------------------
+Mon Sep  9 15:05:11 CEST 2002 - ro@suse.de
+
+- remove handling of /var/account/pacct (moved to acct package) 
+
+-------------------------------------------------------------------
+Fri Aug 16 11:20:47 CEST 2002 - ro@suse.de
+
+- dropped insserv from prereq (not used)
+
+-------------------------------------------------------------------
+Mon Aug  5 08:57:21 CEST 2002 - kukuk@suse.de
+
+- Add rm and mv to PreRequires
+
+-------------------------------------------------------------------
+Wed Jul 31 00:47:28 CEST 2002 - ro@suse.de
+
+- fixed typo in specfile
+- added comment in config-file about bzip2 usage 
+
+-------------------------------------------------------------------
+Mon Jul 29 17:53:09 CEST 2002 - ro@suse.de
+
+- removed fetchmail logrotate entry (#17279) 
+
+-------------------------------------------------------------------
+Mon Jul 29 16:24:17 CEST 2002 - ro@suse.de
+
+- removed apache,smail,perforce,abuild components
+- remove old entries also from logrotate.d/aaa_base on update
+
+-------------------------------------------------------------------
+Mon Jul 29 14:32:24 CEST 2002 - ro@suse.de
+
+- squid components removed (done in squid package now) (#17278)
+
+-------------------------------------------------------------------
+Fri Jul 19 16:23:39 CEST 2002 - gd@suse.de
+
+- fixed samba log paths
+
+-------------------------------------------------------------------
+Fri Jul 12 13:49:04 CEST 2002 - kukuk@suse.de
+
+- Fix post-install script for the case that there is no rc.config
+
+-------------------------------------------------------------------
+Mon Jun 24 14:00:30 CEST 2002 - ro@suse.de
+
+- fixed squid log paths (#16557) 
+
+-------------------------------------------------------------------
+Wed May  8 23:27:09 CEST 2002 - ro@suse.de
+
+- uucp-logfiles are handled by own config 
+
+-------------------------------------------------------------------
+Mon Mar 18 23:26:12 CET 2002 - ro@suse.de
+
+- don't rotate any file for /var/log/news.* 
+
+-------------------------------------------------------------------
+Fri Mar  1 00:13:07 CET 2002 - ro@suse.de
+
+- don't overwrite logfiles with dateext if run more than once
+  a day (partial solution for #13202) 
+
+-------------------------------------------------------------------
+Mon Feb 25 14:29:46 CET 2002 - ro@suse.de
+
+- install etc_logfiles as 644 
+
+-------------------------------------------------------------------
+Tue Feb 19 00:24:25 CET 2002 - ro@suse.de
+
+- removed yast from logrotate.d 
+
+-------------------------------------------------------------------
+Sat Feb 16 12:50:25 CET 2002 - ro@suse.de
+
+- removed postgresql logfile (handled by package) 
+
+-------------------------------------------------------------------
+Mon Jan  7 00:13:27 CET 2002 - ro@suse.de
+
+- take wtmp out of default config 
+
+-------------------------------------------------------------------
+Fri Dec 14 15:00:17 CET 2001 - ro@suse.de
+
+- really remove old variable from rc.config 
+
+-------------------------------------------------------------------
+Wed Dec 12 13:51:59 CET 2001 - ro@suse.de
+
+- mark files in /etc/logrotate.d as noreplace 
+
+-------------------------------------------------------------------
+Tue Dec 11 01:43:54 CET 2001 - ro@suse.de
+
+- implement maxage if dateext is not used
+- uncompress log for mail if maillast is used 
+
+-------------------------------------------------------------------
+Mon Dec 10 14:01:53 CET 2001 - ro@suse.de
+
+- added etc_logfiles as reminder to sources
+- moved convert script into postinstall and try to find
+  old etc/logfiles and use etc_logfiles as fallback
+- added yast and syslog to /etc/logrotate.d as config files 
+
+-------------------------------------------------------------------
+Mon Dec 10 01:24:03 CET 2001 - ro@suse.de
+
+- added maxage extension 
+
+-------------------------------------------------------------------
+Thu Dec  6 12:44:14 CET 2001 - ro@suse.de
+
+- split patches for purpose 
+
+-------------------------------------------------------------------
+Tue Dec  4 17:52:14 CET 2001 - ro@suse.de
+
+- archiving option changed to "dateext" and
+  works completely transparent otherwise 
+
+-------------------------------------------------------------------
+Tue Nov 27 02:05:26 CET 2001 - ro@suse.de
+
+- added multiple rotation criteria can be selected at one time
+- added/completed implementation for days (max days) 
+
+-------------------------------------------------------------------
+Mon Nov 26 18:11:14 CET 2001 - ro@suse.de
+
+- added archiving option 
+- added script to convert /etc/logfiles
+
+-------------------------------------------------------------------
+Tue Nov 13 11:59:20 CET 2001 - ro@suse.de
+
+- initial package for SuSE Linux (version 3.5.9) 
+

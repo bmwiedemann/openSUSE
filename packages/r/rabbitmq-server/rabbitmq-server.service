@@ -1,0 +1,20 @@
+[Unit]
+Description=RabbitMQ broker
+After=syslog.target network.target epmd.service
+BindsTo=epmd.service
+
+[Service]
+Type=notify
+User=rabbitmq
+Group=rabbitmq
+LimitNOFILE=65535
+NotifyAccess=all
+WorkingDirectory=/var/lib/rabbitmq
+ExecStart=/usr/sbin/rabbitmq-server
+ExecStop=/usr/sbin/rabbitmqctl stop
+TimeoutStartSec=300
+# required on machines with many cores (bsc#1094896):
+TasksMax=8192
+
+[Install]
+WantedBy=multi-user.target

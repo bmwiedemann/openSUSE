@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Sat Dec 22 05:22:07 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.0.1
+  * Refreshed project metadata.
+
+-------------------------------------------------------------------
+Sun Mar  4 19:29:21 UTC 2018 - alarrosa@suse.com
+
+- Add LICENSE file. The pypi page states that this is released under
+  a MIT license but the code doesn't include a copy. I submitted a
+  pull request to the code and use that for now.
+
+-------------------------------------------------------------------
+Tue Sep  5 15:41:51 UTC 2017 - alarrosa@suse.com
+
+- Initial release of python-wolframalpha 3.0 

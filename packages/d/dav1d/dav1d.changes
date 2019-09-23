@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Mon Aug  5 14:55:40 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.4.0
+  * Fix playback with unknown OBUs
+  * Add an option to limit the maximum frame size
+  * SSE2 and ARM64 optimizations for MSAC
+  * Improve speed on 32bits systems
+  * Optimization in obmc blend
+  * Reduce RAM usage significantly
+  * The initial PPC SIMD code, cdef_filter
+  * NEON optimizations for blend functions on ARM
+  * NEON optimizations for w_mask functions on ARM
+  * NEON optimizations for inverse transforms on ARM64
+  * Improve handling of malloc failures
+  * Simple Player example in tools
+
+- Dropped dav1d.armv6.patch (merged upstream)
+
+- Bumped SOVERSION to 2
+
+-------------------------------------------------------------------
+Mon May 13 19:48:51 UTC 2019 - olaf@aepfle.de
+
+- Added dav1d.armv6.patch (disables armv7 asm for armv6 builds)
+
+-------------------------------------------------------------------
+Sat May 11 16:06:40 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.3.1
+  * Fix a buffer overflow in frame-threading mode on SSSE3 CPUs
+  * Reduce binary size, notably on Windows
+  * SSSE3 optimizations for ipred_filter
+  * ARM optimizations for MSAC
+
+-------------------------------------------------------------------
+Mon Apr 29 18:07:47 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.3.0
+  * Fixes an annoying crash on SSSE3 that happened in the itx
+    functions
+
+-------------------------------------------------------------------
+Fri Apr 19 07:48:06 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.2.2
+  * Large improvement on MSAC decoding with SSE, bringing 4-6%
+    speed increase
+    The impact is important on SSSE3, SSE4 and AVX-2 cpus
+  * SSSE3 optimizations for all blocks size in itx
+  * SSSE3 optimizations for ipred_paeth and ipref_cfl (420, 422
+    and 444)
+  * Speed improvements on CDEF for SSE4 CPUs
+  * NEON optimizations for SGR and loop filter
+  * Minor crashes, improvements and build changes
+
+-------------------------------------------------------------------
+Tue Apr  2 06:43:21 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add baselibs.conf: ffmpeg, which is the main consumer of Dav1d,
+  produces -32bit packages that would be uninstallable otherwise.
+
+-------------------------------------------------------------------
+Tue Mar 12 22:23:22 UTC 2019 - klaatu <aloisio@gmx.com>
+
+- Update to version 0.2.1
+  * SSSE3 optimization for cdef_dir
+  * AVX-2 improvements of the existing CDEF optimizations
+  * NEON improvements of the existing CDEF and wiener
+    optimizations
+  * Clarification about the numbering/versionning scheme
+
+-------------------------------------------------------------------
+Mon Mar  4 17:31:53 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.2.0
+  * ARM64 and ARM optimizations using NEON instructions
+  * SSSE3 optimizations for both 32 and 64bits
+  * More AVX-2 assembly, reaching almost completion
+  * Fix installation of includes
+  * Rewrite inverse transforms to avoid overflows
+  * Snap packaging for Linux
+  * Updated API (ABI and API break)
+  * Fixes for un-decodable samples
+
+-------------------------------------------------------------------
+Thu Dec 13 13:21:36 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Redo description and mention SIMD acceleration.
+
+-------------------------------------------------------------------
+Thu Dec 13 11:53:50 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Moved license file to library package
+
+-------------------------------------------------------------------
+Tue Dec 11 18:25:04 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Initial stable package (v0.1.0)

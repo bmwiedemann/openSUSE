@@ -1,0 +1,7 @@
+<package name="perl-DateTime-Format-DateParse" project="openSUSE:Factory">
+  <title>Parses Date::Parse compatible formats</title>
+  <description>This module is a compatibility wrapper around Date::Parse.
+
+  Author:	Joshua Hoblitt (JHOBLITT) &lt;jhoblitt@cpan.org&gt;</description>
+  <devel project="devel:languages:perl" package="perl-DateTime-Format-DateParse"/>
+</package>

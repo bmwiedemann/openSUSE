@@ -1,0 +1,16 @@
+diff --git a/src/libsync/theme.cpp b/src/libsync/theme.cpp
+index 245c8d7..3ba9e22 100644
+--- a/src/libsync/theme.cpp
++++ b/src/libsync/theme.cpp
+@@ -136,11 +136,6 @@ QIcon Theme::themeIcon(const QString &name, bool sysTray, bool sysTrayMenuVisibl
+     QString key = name + "," + flavor;
+     QIcon &cached = _iconCache[key]; // Take reference, this will also "set" the cache entry
+     if (cached.isNull()) {
+-        if (QIcon::hasThemeIcon(name)) {
+-            // use from theme
+-            return cached = QIcon::fromTheme(name);
+-        }
+-
+         QList<int> sizes;
+         sizes << 16 << 22 << 32 << 48 << 64 << 128 << 256 << 512 << 1024;
+         foreach (int size, sizes) {

@@ -1,0 +1,153 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5039a395320d04695fd8bf6eae0cdd64</srcmd5>
+    <version>2.6.1</version>
+    <time>1419159870</time>
+    <user>coolo</user>
+    <comment>Initial commit</comment>
+    <requestid>264632</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a2c7f6e503c306ff29188a239f64dd93</srcmd5>
+    <version>2.7.0</version>
+    <time>1430581561</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304796</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ffad0ab2123820136d5fa2bd9ec44b6f</srcmd5>
+    <version>2.7.1</version>
+    <time>1481885781</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>446310</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e3416ea040e96e3d1d37477d1005135d</srcmd5>
+    <version>2.8.0</version>
+    <time>1492417625</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>487593</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1305e0a436ab768147a1a70ee72ebffb</srcmd5>
+    <version>2.9.1</version>
+    <time>1497518694</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503592</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>63fe7610c5869c6fc175861593fc14b3</srcmd5>
+    <version>2.10.1</version>
+    <time>1513941512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554638</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c72dc00e5e2fb4c950aaa1f472b0b824</srcmd5>
+    <version>2.15.1</version>
+    <time>1540448449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643123</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>668ed26802889dc58dc1db17d11656d1</srcmd5>
+    <version>2.15.2</version>
+    <time>1543224807</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 2.15.2
+ see installed NEWS.md
+  ## 2.15.2
+  
+  Fixes:
+  
+  * Fixed option propagation for two levels or more (#85, #86)
+- updated to version 2.15.1
+ see installed NEWS.md
+- updated to version 2.10.1
+ see installed NEWS.md
+  ## 2.10.1
+  
+  Fixes:
+  
+  * Restored Ruby 2.1 compatibility (for now)
+  
+  ## 2.10.0
+  
+  Features:
+  
+  * Added support for skipping option parsing (#62) [Tim Sharpe]
+  
+  This release drops support for Ruby 2.1, which is no longer supported.
+- updated to version 2.9.1
+ see installed NEWS.md
+- updated to version 2.8.0
+ see installed NEWS.md
+  2.8.0
+  -----
+  
+  Features:
+  
+  * Allow passing `hard_exit: false` to `Command#run` to prevent `SystemExit` (#51)
+  * Allow specifying the default subcommand (#54)
+- updated to version 2.7.1
+ see installed NEWS.md
+  2.7.1
+  -----
+  
+  Fixes:
+  
+  * Fixed some grammatical mistakes
+- updated to version 2.7.0
+ see installed NEWS.md
+  2.7.0
+  -----
+  
+  Features:
+  
+  * Added support for hidden options (#43, #44) [Bart Mesuere]
+  
+  Enhancements:
+  
+  * Added option values to help output (#37, #40, #41)
+  * Made option descriptions wrap (#36, #45) [Bart Mesuere]
+- adapt to new rubygem packaging
+- updated to version 2.6.1
+ * Disable ANSI color codes when not supported (#31, #32)
+- updated to version 2.6.0
+ * Added support for multi-valued options [Toon Willems]
+- updated to version 2.5.0
+ * Made the default help command handle subcommands
+ * Added `#raw` method to argument arrays, returning all arguments including `--`
+- updated to version 2.4.1
+ * Fixed ordering of option groups on Ruby 1.8.x (#14, #15)
+ * Fixed ordering of commands when --verbose is passed (#16, #18)
+- updated to version 2.4.0
+- update to 2.1.0
+- update to 2.0.2
+- created package
+</comment>
+    <requestid>651614</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7c2091b270f31653c7e27ca76c390ddf</srcmd5>
+    <version>2.15.5</version>
+    <time>1560970776</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705984</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1ec7f44dff5a6160cea9b98b7892974f</srcmd5>
+    <version>2.15.9</version>
+    <time>1563790837</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>717289</requestid>
+  </revision>
+</revisionlist>

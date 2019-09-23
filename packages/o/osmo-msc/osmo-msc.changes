@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Wed Jan 30 22:17:12 UTC 2019 - mardnh@gmx.de
+
+- Update to new upstream release 1.3.1
+  * Implementation of MSC-originated CLASSMARK inquiry procedure for
+    MS/UE without early classmark sending to allow A5/3 encryption
+  * mncc: fix byte ordering of IP-Address in mncc
+  * various improvements on state introspection via VTY
+  * forward SS / USSD messages via GSUP to HLR rather than
+    processing it in MSC
+  * optional forward of SMS via GSUP to/from HLR rather than using
+    internal SMSC
+  * fix Classmark Update without VLR subscriber
+  * vty: add SCCP related vty commands
+  * GSUP client: send CN domain IE on LU request
+  * vty: add command to show all known BSC
+  * Full changelogs since 1.1.2:
+    http://git.osmocom.org/osmo-msc/plain/debian/changelog?h=1.3.1
+    http://git.osmocom.org/osmo-msc/plain/debian/changelog?h=1.3.0
+    http://git.osmocom.org/osmo-msc/plain/debian/changelog?h=1.2.0
+- Remove patches:
+  * osmo-msc-fix-includes.patch
+
+-------------------------------------------------------------------
+Sat Mar 17 19:54:16 UTC 2018 - mardnh@gmx.de
+
+- Build with "--enable-iu"
+
+-------------------------------------------------------------------
+Fri Dec 29 14:50:52 UTC 2017 - mardnh@gmx.de
+
+- Update Patch:
+  * osmo-msc-fix-includes.patch (more include fixes)
+
+-------------------------------------------------------------------
+Fri Dec 29 12:18:40 UTC 2017 - jengelh@inai.de
+
+- %service_* already takes care of restart/removal
+
+-------------------------------------------------------------------
+Thu Dec 28 09:39:36 UTC 2017 - mardnh@gmx.de
+
+- Initial package, version 1.1.2

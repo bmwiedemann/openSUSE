@@ -1,0 +1,518 @@
+-------------------------------------------------------------------
+Wed Apr 24 08:59:55 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Move definition of _lto_cflags into %build.
+
+-------------------------------------------------------------------
+Tue Apr 23 12:37:32 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133101).
+
+-------------------------------------------------------------------
+Tue Mar 19 11:28:53 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use %make_build in order to provide verbose output.
+
+-------------------------------------------------------------------
+Sat Jul 28 22:36:01 UTC 2018 - avindra@opensuse.org
+
+- fuse 2.9.8
+  * SECURITY UPDATE: In previous versions of libfuse it was possible
+    to for unprivileged users to specify the allow_other option even
+    when this was forbidden in /etc/fuse.conf. The vulnerability is
+    present only on systems where SELinux is active (including in
+    permissive mode).
+  * libfuse no longer segfaults when fuse_interrupted() is called
+    outside the event loop.
+  * The fusermount binary has been hardened in several ways to
+    reduce potential attack surface. Most importantly, mountpoints
+    and mount options must now match a hard-coded whitelist. It is
+    expected that this whitelist covers all regular use-cases.
+- cleanup with spec-cleaner
+- update wiki urls to new location
+
+-------------------------------------------------------------------
+Mon Oct 16 19:28:32 UTC 2017 - admorgan@morgancomputers.net
+
+- Fix download link in fuse.spec
+
+-------------------------------------------------------------------
+Fri Oct  6 15:57:44 UTC 2017 - admorgan@morgancomputers.net
+
+- fuse 2.9.7
+  * Shared-object version has now been bumped correctly.
+  * Added SELinux support.
+  * Fixed race-condition when session is terminated right after
+    starting a FUSE file system.
+
+-------------------------------------------------------------------
+Mon Jul 31 10:25:45 UTC 2017 - fcrozat@suse.com
+
+- Ensure trusted group is available on Tumbleweed.
+
+-------------------------------------------------------------------
+Fri Jan 22 12:04:12 UTC 2016 - astieger@suse.com
+
+- fuse 2.9.5:
+  * fix warning in mount.c:receive_fd().
+  * fix possible memory leak.
+  * new upstream project and source URL
+  * add new maintainer keyring and verify source signature
+
+-------------------------------------------------------------------
+Fri May 22 09:38:26 UTC 2015 - mszeredi@suse.cz
+
+- Update to version 2.9.4
+  - fix exec environment for mount and umount (bsc#931452,
+    CVE-2015-3202)
+  - properly restore the default signal handler
+  - fix directory file handle passed to	ioctl() method.
+  - fix for uids/gids larger than 2147483647
+  - initialize stat buffer passed to ->getattr() and ->fgetattr()
+
+-------------------------------------------------------------------
+Wed Dec 10 21:08:32 UTC 2014 - bwiedemann@suse.com
+
+- include commented default fuse.conf (bnc#908292)
+
+-------------------------------------------------------------------
+Wed Jul 24 17:53:36 CEST 2013 - mszeredi@suse.cz
+
+- Update to version 2.9.3
+  - Bug fixes
+- Remove fuse-gnu_source.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Sun Jun 16 07:40:22 UTC 2013 - dmueller@suse.com
+
+- add aarch64-build-fix.patch 
+
+-------------------------------------------------------------------
+Wed Mar 27 06:59:31 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Tue Mar 26 16:27:22 UTC 2013 - dmueller@suse.com
+
+- fix build for SLE_11 
+
+-------------------------------------------------------------------
+Fri Mar  8 13:36:12 UTC 2013 - idonmez@suse.com
+
+- Use autoreconf directly instead of makeconf.sh
+
+-------------------------------------------------------------------
+Mon Mar  4 15:04:08 UTC 2013 - archie@dellroad.org
+
+- Update to version 2.9.2
+  - Add support for fallocate() (kernel >= 3.5)
+  - Bug fixes
+- Remove fix-pthread-in-fuse.pc.patch; now included in upstream
+- Don't patch generated files such as configure and Makefile.in;
+  instead, regenerate them using makeconf.sh from SVN repository
+
+-------------------------------------------------------------------
+Sat Feb  2 18:50:24 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Mon Jul  2 07:38:49 UTC 2012 - coolo@suse.com
+
+- avoid autoreconf to avoid breaking on updates of auto* tools
+
+-------------------------------------------------------------------
+Sat May 26 16:14:26 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+- Trim list of FUSE fses from description (it's literally endless)
+  and text inappropraite for subpackages
+
+-------------------------------------------------------------------
+Wed May 16 17:52:11 CEST 2012 - mszeredi@suse.cz
+
+- Fix -pthread in fuse.pc [bnc#761117]
+
+-------------------------------------------------------------------
+Thu Apr 26 19:31:47 UTC 2012 - rschweikert@suse.com
+
+- place binaries in /usr tree (UsrMerge project)
+
+-------------------------------------------------------------------
+Sun Apr 22 10:31:21 UTC 2012 - puzel@suse.com
+
+- update to 2.9.0 
+  - Add "zero copy" support for kernel 2.6.35 or newer
+  - Make maximum background requests tunable on kernel 2.6.32 or
+    newer
+  - Require --no-canonicalize in (u)mount (util-linux version 2.18
+    or newer) to fix security problems with fusermount
+  - Use dynamically sized hash tables in high level library
+  - Memory use of filesystem daemon can shrink more easily
+  - Add "auto_unmount" option
+  - Add "remember" option
+  - Add man pages for fusermount, mount.fuse and ulockmgr_server
+  - API changes:
+     - Introduce "store" and "retrieve" for accessing kernel
+       buffers on kernel 2.6.36 or newer
+     - Introduce abstract buffer for zero copy operations
+     - Allow path calculation to be omitted on certain operations
+     - Allow batching forget requests
+     - Add "flock" method
+     - Add support for ioctl on directories
+     - Add delete notification
+- drop fuse-pc-remove-libdir-from-Libs.diff (upstream)
+
+-------------------------------------------------------------------
+Wed Jan 25 19:57:36 CET 2012 - mszeredi@suse.cz
+
+- use %set_permissions instead of %run_permissions in specfile
+
+-------------------------------------------------------------------
+Wed Jan 25 19:11:44 CET 2012 - mszeredi@suse.cz
+
+- compile /bin/fusermount as a position independent executable
+  [bnc#743155]
+
+-------------------------------------------------------------------
+Wed Jan 25 18:32:49 CET 2012 - mszeredi@suse.cz
+
+- update to 2.8.7
+  * fix ambiguous symbol version for fuse_chan_new
+  * prevent calling ulockmgr_server with illegal arguments
+  * fix hang in wait_on_path()
+
+-------------------------------------------------------------------
+Thu Nov  3 13:15:39 CET 2011 - mszeredi@suse.cz
+
+- handle case of failure to allocate request [bnc#723616]
+
+-------------------------------------------------------------------
+Sat Oct  1 05:39:08 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Mon Sep 26 21:50:37 CEST 2011 - mhrusecky@suse.cz
+
+- enabling libulockmgr
+
+-------------------------------------------------------------------
+Mon Aug 29 20:48:16 UTC 2011 - crrodriguez@opensuse.org
+
+- Must define _GNU_SOURCE to get clone()  system call.
+
+-------------------------------------------------------------------
+Mon Mar 21 16:43:59 UTC 2011 - coolo@novell.com
+
+- licenses package is about to die
+
+-------------------------------------------------------------------
+Thu Feb 17 17:51:15 CET 2011 - mszeredi@suse.cz
+
+- In case of failure to add to /etc/mtab don't umount. [bnc#668820]
+  [CVE-2011-0541]
+
+-------------------------------------------------------------------
+Tue Nov 16 16:16:04 CET 2010 - mszeredi@suse.cz
+
+- Fix symlink attack for mount and umount [bnc#651598]
+
+-------------------------------------------------------------------
+Wed Oct 27 15:34:16 CEST 2010 - mszeredi@suse.cz
+
+- Remove /etc/init.d/boot.fuse [bnc#648843]
+
+-------------------------------------------------------------------
+Tue Sep 28 11:52:41 CEST 2010 - mszeredi@suse.cz
+
+- update to 2.8.5
+  * fix option escaping for fusermount [bnc#641480]
+
+-------------------------------------------------------------------
+Wed Apr 28 09:26:51 CEST 2010 - mszeredi@suse.cz
+
+- keep examples and internal docs in devel package (from jnweiger)
+
+-------------------------------------------------------------------
+Mon Apr 26 15:39:52 CEST 2010 - mszeredi@suse.cz
+
+- update to 2.8.4
+  * fix checking for symlinks in umount from /tmp
+  * fix umounting if /tmp is a symlink
+
+-------------------------------------------------------------------
+Tue Feb  2 13:08:09 CET 2010 - mszeredi@suse.cz
+
+- update to 2.8.3
+  * fix unmounting with util-linux version >= 2.17
+
+-------------------------------------------------------------------
+Wed Jan 27 10:06:13 CET 2010 - mszeredi@suse.cz
+
+- update to 2.8.2
+  * fix unmount race (CVE-2009-3297)
+  * fix deadlock with "audit" subsystem on mount (also requires
+    util-linux-ng version >=2.17)
+
+-------------------------------------------------------------------
+Wed Jan  6 15:14:33 CET 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Wed Dec 16 12:11:13 UTC 2009 - kruber@zib.de
+
+- update to 2.8.1:
+  * fix missing versioned symbol fuse_get_context@FUSE_2.2
+
+-------------------------------------------------------------------
+Sun Sep  6 22:30:08 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 2.8.0:
+  * more scalable directory tree locking
+  * atomic open(O_TRUNC) support
+  * support big write requests on kernels 2.6.26 and newer
+  * out-of-tree fuse module removed
+  * better NFS exporting support
+  * new ioctl and poll requests
+  * new CUSE (Character Device in Userspace) interface
+  * allow umask processing in userspace
+  * added cache invalidation notifications
+  * bugfixes and small improvements
+
+-------------------------------------------------------------------
+Thu Jul 30 10:30:41 CEST 2009 - aj@suse.de
+
+- Fix exclude usage.
+
+-------------------------------------------------------------------
+Wed Apr 22 01:25:59 CEST 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files
+- spec file cleanup
+- update to version 2.7.4
+* Fix missing pthread_mutex_destroy in error path of
+	fuse_lib_opendir().  Patch by Szabolcs Szakacsits
+
+-------------------------------------------------------------------
+Fri Apr  3 14:33:13 CEST 2009 - coolo@suse.de
+
+- adding baselibs.conf to build -xxbit
+
+-------------------------------------------------------------------
+Mon Dec  1 18:26:59 CET 2008 - ro@suse.de
+
+- check for /.buildenv before stop_on_removal 
+
+-------------------------------------------------------------------
+Mon Dec 17 16:38:26 CET 2007 - mszeredi@suse.de
+
+- Update to version 2.7.2
+ * Fix a symbol versioning mistake
+ * Fix a deadlock on termination, if umount is synchronous
+ * Fix umounting if /etc/mtab is a symlink
+
+-------------------------------------------------------------------
+Fri Nov 23 13:47:38 CET 2007 - mszeredi@suse.de
+
+- Update to version 2.7.1
+ * Add missing context initialization in fuse_fs_chmod()
+ * Fix a fuse_req leak in do_forget()
+ * Work around hotplug issue
+ * Reset args->argc in fuse_opt_free_args()
+
+-------------------------------------------------------------------
+Sun Sep  2 07:40:59 CEST 2007 - aj@suse.de
+
+- Fix building.
+- Rename rpmlintrc to fuse.rpmlintrc and add it as source.
+
+-------------------------------------------------------------------
+Fri Aug 31 20:01:07 CEST 2007 - mszeredi@suse.de
+
+- fix location of COPYING files (#306681)
+
+-------------------------------------------------------------------
+Fri Aug 10 13:41:37 CEST 2007 - bk@suse.de
+
+- branch off libfuse2 to avoid having to start fuse on boot (#285101)
+- Add "Supplements: filesystem(fuse)" in case someone looks for fuse
+- libulockmgr and ulockmgr_server are separate from fuse (#285101)
+
+-------------------------------------------------------------------
+Fri Jul 13 18:19:50 CEST 2007 - mszeredi@suse.de
+
+- conditionally add udev rule if building with 10.2 or earlier
+
+-------------------------------------------------------------------
+Thu Jul  5 19:16:52 CEST 2007 - bk@suse.de
+
+- update to new major release 2.7.0:
+ * Support for stacking filesystem modules
+ * New module for converting filename character sets
+ * "setuid=USER" allows to do "su - USER" for the filesystem
+ * fs subtype has been added to libfuse and the mount commands
+ * Several problems have been addressed, e.g. mount.fuse is rewritten
+   the multithreaded loop uses a semaphore instead of signals,
+   improved locking and O_APPEND is fixed in direct IO mode
+
+-------------------------------------------------------------------
+Tue Jul  3 12:44:37 CEST 2007 - bk@suse.de
+
+- move libs and programs to /lib and /bin, recommended for ntfs-3g
+
+-------------------------------------------------------------------
+Mon Jun 18 16:52:34 CEST 2007 - dmueller@suse.de
+
+- fix boot.fuse to start after boot.localfs
+
+-------------------------------------------------------------------
+Fri May  4 10:55:05 CEST 2007 - mszeredi@suse.de
+
+- fix build error
+
+-------------------------------------------------------------------
+Wed May  2 14:02:28 CEST 2007 - mszeredi@suse.de
+
+- updated to version 2.6.5
+  * mount.fuse script fixes
+  * fix exiting on umount for filesystems which block SIGHUP
+- udev rule for fuse device is now in udev package
+- don't remove fuse module in the init-script
+- use 'fusectl' as the filesystem source
+
+-------------------------------------------------------------------
+Fri Feb  9 01:08:24 CET 2007 - ro@suse.de
+
+- change fillup_and_insserv to insserv_force_if_yast in post-script 
+  (there is no sysconfig file involved here)
+
+-------------------------------------------------------------------
+Wed Feb  7 16:43:36 CET 2007 - mszeredi@suse.cz
+
+- added init script which loads the fuse module and mounts the control
+  filesystem (#223663)
+
+-------------------------------------------------------------------
+Mon Feb  5 18:25:50 CET 2007 - mszeredi@suse.cz
+
+- updated to version 2.6.3:
+  * fix regression causing an abort during heavy filesystem use
+  * update author's email
+
+-------------------------------------------------------------------
+Tue Jan 30 15:56:22 CET 2007 - tiwai@suse.de
+
+- updated to version 2.6.2:
+  * fix 64bit compile problems
+  * fix fuse_teardown problem
+  * fix unaligned access in file descriptor in libfuse
+  * fix detection of fuseblk
+  * fix use after free in fuse_flush
+  * fix compatible API for opts == NULL
+
+-------------------------------------------------------------------
+Thu Jan 18 16:39:47 CET 2007 - tiwai@suse.de
+
+- fix compat API (#233870)
+
+-------------------------------------------------------------------
+Tue Dec 19 16:39:13 CET 2006 - tiwai@suse.de
+
+- updated to version 2.6.1:
+  * improved fusermout help texts
+  * fix automake problems
+
+-------------------------------------------------------------------
+Mon Oct 23 00:03:16 CEST 2006 - cthiel@suse.de
+
+- update to version 2.6.0
+  * Improved read characteristics (asynchronous reads)
+  * Support for aborting filesystem connection
+  * POSIX file locking support
+  * Request interruption support
+  * Building module for Linux kernels earlier than 2.6.9 not supported
+  * Allow block device based filesystems to support swap files
+  * Several bugs fixed, including a rare system hang on SMP
+
+-------------------------------------------------------------------
+Mon Aug 21 09:22:17 CEST 2006 - cthiel@suse.de
+
+- fix requirements of -devel package, to require fuse by version (#200496)
+
+-------------------------------------------------------------------
+Tue Aug  8 18:20:43 CEST 2006 - tiwai@suse.de
+
+- fixed a syntax error in udev rules.
+
+-------------------------------------------------------------------
+Mon Jul  3 17:11:20 CEST 2006 - cthiel@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Mon May 15 13:01:24 CEST 2006 - tiwai@suse.de
+
+- updated to version 2.5.3.
+  * Add missing rwlock initialization
+  * Fix negative entry handling.
+  * Fix race between RELEASE and UNLINK, which might leave
+    .fuse_hidden* files around
+  * libfuse: fix use-after-free bug in interruptred reply_entry().
+
+-------------------------------------------------------------------
+Fri Feb  3 14:01:19 CET 2006 - cthiel@suse.de
+
+- update to version 2.5.2
+  * lib: if "fsname=" option was given, pass it to fusermount
+  * fuse_opt: fix memory leak in handling "--" option
+  * fuse_opt.h: fix incompatibility with C++ compilers by renaming
+    'template' structure member to 'templ'
+  * fuse.h: fix compatibility bugs. 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:04 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 14 19:58:20 CET 2006 - cthiel@suse.de
+
+- update to version 2.5.0
+
+-------------------------------------------------------------------
+Wed Nov 23 14:22:41 CET 2005 - cthiel@suse.de
+
+- update to version 2.4.2
+- changed permission of /usr/bin/fusermount to 4755
+
+-------------------------------------------------------------------
+Fri Oct 28 23:19:26 CEST 2005 - cthiel@suse.de
+
+- readded -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Fri Oct 28 14:11:00 CEST 2005 - cthiel@suse.de
+
+- update to version 2.4.1
+
+-------------------------------------------------------------------
+Fri Sep 30 18:47:08 CEST 2005 - tiwai@suse.de
+
+- fixed CFLAGS to pass RPM_OPT_FLAGS.
+- added -fno-strict-aliasing.
+
+-------------------------------------------------------------------
+Wed Jun  8 19:52:10 CEST 2005 - tiwai@suse.de
+
+- updated to version 2.3.0.
+
+-------------------------------------------------------------------
+Tue Feb  3 15:51:37 CET 2004 - adrian@suse.de
+
+- initial package of version 1.1-pre2
+

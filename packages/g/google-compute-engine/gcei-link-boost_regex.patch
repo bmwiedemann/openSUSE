@@ -1,0 +1,12 @@
+diff -Nru compute-image-packages-20190801.orig/packages/google-compute-engine-oslogin/src/Makefile compute-image-packages-20190801/packages/google-compute-engine-oslogin/src/Makefile
+--- compute-image-packages-20190801.orig/packages/google-compute-engine-oslogin/src/Makefile	2019-08-02 01:32:44.000000000 +0200
++++ compute-image-packages-20190801/packages/google-compute-engine-oslogin/src/Makefile	2019-08-05 12:51:35.235998350 +0200
+@@ -9,7 +9,7 @@
+ CXXFLAGS = $(FLAGS)
+ 
+ LDFLAGS = -shared -Wl,-soname,$(SONAME)
+-LDLIBS = -lcurl -ljson-c
++LDLIBS = -lcurl -ljson-c -lboost_regex
+ PAMLIBS = -lpam $(LDLIBS)
+ 
+ # Paths which should be overrideable.

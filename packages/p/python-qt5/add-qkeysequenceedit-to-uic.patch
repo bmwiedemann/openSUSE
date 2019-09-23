@@ -1,0 +1,18 @@
+Subject: Add support for QKeySequenceEdit widgets in pyuic
+From: Hans-Peter Jansen <hpj@urpla.net>
+
+Without this, user interfaces, created with designer and containing this
+widget cannot be compiled to code with pyuic.
+
+Index: b/pyuic/uic/Compiler/qtproxies.py
+===================================================================
+--- a/pyuic/uic/Compiler/qtproxies.py
++++ b/pyuic/uic/Compiler/qtproxies.py
+@@ -456,6 +456,7 @@ class QtWidgets(ProxyNamespace):
+ 
+     class QPushButton(QAbstractButton): pass
+     class QCommandLinkButton(QPushButton): pass
++    class QKeySequenceEdit(QWidget): pass
+ 
+     # Add all remaining classes.
+     for _class in _qwidgets:

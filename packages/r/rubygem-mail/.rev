@@ -1,0 +1,120 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bc5dbbefe2614c1e257a714cded8da64</srcmd5>
+    <version>2.4.4</version>
+    <time>1344320306</time>
+    <user>coolo</user>
+    <comment>rename of rubygem-mail-2_4</comment>
+    <requestid>129910</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8b87c88c911b1b96762ff61a08a31961</srcmd5>
+    <version>2.5.2</version>
+    <time>1354610761</time>
+    <user>saschpe</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>143995</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3d4138b061ba20d3a352c3f81e1985b3</srcmd5>
+    <version>2.5.3</version>
+    <time>1355733478</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>145453</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>3d4138b061ba20d3a352c3f81e1985b3</srcmd5>
+    <version>2.5.3</version>
+    <time>1359110326</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1deb54eca9cedd7b3e821de6b74ed518</srcmd5>
+    <version>2.5.4</version>
+    <time>1369641625</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176312</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>1deb54eca9cedd7b3e821de6b74ed518</srcmd5>
+    <version>2.5.4</version>
+    <time>1379664540</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>1deb54eca9cedd7b3e821de6b74ed518</srcmd5>
+    <version>2.5.4</version>
+    <time>1409303247</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ecea169729e5546d2282ef463415bc31</srcmd5>
+    <version>2.6.1</version>
+    <time>1413263493</time>
+    <user>coolo</user>
+    <comment>- updated to version 2.6.1
+ Features:
+ * Silence warnings on loading ragel-generated parsers (bf4)
+ * Allow interceptors and observers to be unregistered (zuhao)
+ * Added feature to find the mail in uid (taketin)
+ Performance:
+ * Migrate to RAGEL based parser, awesome work by (bpot)
+ * Performance improvements for people parsing email headers (ConradIrwin)
+
+- adapt to new rubygem packaging style</comment>
+    <requestid>255325</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9032563ee68f9bc9bb732f1f122c6e50</srcmd5>
+    <version>2.6.3</version>
+    <time>1423669481</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>285464</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c81bf600d0f616a4ac6c71efecf62d0e</srcmd5>
+    <version>2.6.4</version>
+    <time>1460482549</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>386139</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>844dcd6b7800a45ec3c1792eb9ff55c0</srcmd5>
+    <version>2.6.5</version>
+    <time>1496926885</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497700</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>396d396be406d29ae60446095e294137</srcmd5>
+    <version>2.6.6</version>
+    <time>1499677609</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505378</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6465107e0f54186dffb3d1a02dc5802f</srcmd5>
+    <version>2.7.0</version>
+    <time>1515876176</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548560</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7b236a27efb59101b4a0709ddaf2aadc</srcmd5>
+    <version>2.7.1</version>
+    <time>1541079707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645801</requestid>
+  </revision>
+</revisionlist>

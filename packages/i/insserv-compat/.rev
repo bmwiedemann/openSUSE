@@ -1,0 +1,158 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9b28fd05b44b6b4cc870e517e37d2e84</srcmd5>
+    <version>0.1</version>
+    <time>1357798609</time>
+    <user>coolo</user>
+    <comment>new with reformatted spec file</comment>
+    <requestid>147765</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a6fb1ea23e358f2db9531d0bf38bcc0e</srcmd5>
+    <version>0.1</version>
+    <time>1358161310</time>
+    <user>coolo</user>
+    <comment>- don't hard require Pod::Usage (bnc#798316)</comment>
+    <requestid>148387</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8be7881252d8191e459f4b2688b01353</srcmd5>
+    <version>0.1</version>
+    <time>1358664605</time>
+    <user>coolo</user>
+    <comment>- strip off extra start/stop overrides</comment>
+    <requestid>149203</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>8be7881252d8191e459f4b2688b01353</srcmd5>
+    <version>0.1</version>
+    <time>1359109081</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>15c8f5d20ff4c1d8107e88294a0dfc47</srcmd5>
+    <version>0.1</version>
+    <time>1359534600</time>
+    <user>coolo</user>
+    <comment>- install compat insserv.conf (bnc#800477)</comment>
+    <requestid>150161</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>aa3b56cb41311f3ba5d5a17b1cda2e68</srcmd5>
+    <version>0.1</version>
+    <time>1373029475</time>
+    <user>coolo</user>
+    <comment>- print warning if a sysv init script is masked by a systemd service
+  (bnc#798510, bnc#804273)</comment>
+    <requestid>182272</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>aa3b56cb41311f3ba5d5a17b1cda2e68</srcmd5>
+    <version>0.1</version>
+    <time>1379662671</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>4ee7f83672bdd375f9d7a5c36f9be0cc</srcmd5>
+    <version>0.1</version>
+    <time>1395897187</time>
+    <user>coolo</user>
+    <comment>- turn into a noarch package (forwarded request 227467 from jdelvare)</comment>
+    <requestid>227473</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>6b8cb4cfbab082696d0002114516b074</srcmd5>
+    <version>0.1</version>
+    <time>1403121870</time>
+    <user>coolo</user>
+    <comment>- remove reference to openSUSE 12.3
+- add LSB init script header block as example (bnc#865018)
+- support runlevel override (bnc#869260)</comment>
+    <requestid>236124</requestid>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>6b8cb4cfbab082696d0002114516b074</srcmd5>
+    <version>0.1</version>
+    <time>1409301231</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>3f2b8286e18e6de54d20ec47795ed60d</srcmd5>
+    <version>0.1</version>
+    <time>1410326913</time>
+    <user>coolo</user>
+    <comment>- don't add dependency between named and $network as
+  systemd-insserv-generator translates them to nss-lookup.target and
+  network-online.target which results in an undesirable,
+  unconditional dependency of multi-user.target on
+  network-online.target (bnc#895611)</comment>
+    <requestid>248047</requestid>
+  </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>e7125c71b7a3e1b7998e8db7b9f4b24d</srcmd5>
+    <version>0.1</version>
+    <time>1436111414</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>312416</requestid>
+  </revision>
+  <revision rev="13" vrev="16">
+    <srcmd5>c3302c04e22af7a0cf03918fe038f47d</srcmd5>
+    <version>0.1</version>
+    <time>1449995617</time>
+    <user>coolo</user>
+    <comment>- fix directory argument parsing (bnc#944903)</comment>
+    <requestid>347010</requestid>
+  </revision>
+  <revision rev="14" vrev="17">
+    <srcmd5>a1d7d4f8ff7d5163d22c1e6421414b53</srcmd5>
+    <version>0.1</version>
+    <time>1453799653</time>
+    <user>dimstar_suse</user>
+    <comment>- ntp was renamed to ntpd at some point (bsc#960820)</comment>
+    <requestid>354523</requestid>
+  </revision>
+  <revision rev="15" vrev="18">
+    <srcmd5>2d1e77702fa48f086f0bed8d5f569638</srcmd5>
+    <version>0.1</version>
+    <time>1492009749</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>485031</requestid>
+  </revision>
+  <revision rev="16" vrev="19">
+    <srcmd5>0659508d4a8d07e70c55383f7da8c59c</srcmd5>
+    <version>0.1</version>
+    <time>1494087981</time>
+    <user>dimstar_suse</user>
+    <comment>- Also provide /etc/rc.d link which was provided by filesystem (bsc#1035062)</comment>
+    <requestid>492882</requestid>
+  </revision>
+  <revision rev="17" vrev="20">
+    <srcmd5>90fc0051bab14bc715da955a7076871c</srcmd5>
+    <version>0.1</version>
+    <time>1518596217</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574116</requestid>
+  </revision>
+  <revision rev="18" vrev="21">
+    <srcmd5>c9db0da4ad5d972832535fe0ea500d93</srcmd5>
+    <version>0.1</version>
+    <time>1556023291</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697107</requestid>
+  </revision>
+  <revision rev="19" vrev="22">
+    <srcmd5>8bfcb469a70594d1cb89418313911486</srcmd5>
+    <version>0.1</version>
+    <time>1558783068</time>
+    <user>dimstar_suse</user>
+    <comment>- fix handling of ,start= parameters (bsc#1133306)</comment>
+    <requestid>704437</requestid>
+  </revision>
+</revisionlist>

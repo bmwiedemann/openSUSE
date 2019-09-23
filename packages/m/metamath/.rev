@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1350a18f65e9bb5b94d6d38245eacbc2</srcmd5>
+    <version>unknown</version>
+    <time>1560970493</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial release of the package based on version 0.175.
+- Initial release of the Metamath book from 2019-03-07.
+- Use date as version number for Metamath book, because it isn't
+versioned alongside the program.
+- Add a brief manual page.
+- Change SPDX identifier to GPL-2.0-or-later, as README.TXT states.</comment>
+    <requestid>691613</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>02f16d3abfd4c18b5f90f49a81c527bd</srcmd5>
+    <version>unknown</version>
+    <time>1561557839</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.177.
+- Update book to version 20190407.
+- Use man page from upstream now.</comment>
+    <requestid>711918</requestid>
+  </revision>
+</revisionlist>

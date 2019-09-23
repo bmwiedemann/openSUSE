@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Sat Nov 24 06:49:32 UTC 2018 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- update to v1.3
+  * New version of the gtk3 theme based on the latest version of Greybird 
+  * Fixing broken compatibility with the latest versions of GTK+ 3
+  * New index.theme file
+
+- added %license macro
+
+-------------------------------------------------------------------
+Sun Dec 25 10:31:33 UTC 2016 - seife+obs@b1-systems.com
+
+- update to v1.2 (latest release)
+  mostly minor tweaks and GTK3 fixes
+
+-------------------------------------------------------------------
+Tue Jul  2 10:10:22 UTC 2013 - seiler@b1-systems.de
+
+- initial commit
+

@@ -1,0 +1,3242 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b985f6001ef0b215dcba7468ec8580b3</srcmd5>
+    <version>3.0.28</version>
+    <time>1201177285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="8">
+    <srcmd5>e0e390ae3088c1dd152c233c02452ff5</srcmd5>
+    <version>3.0.28</version>
+    <time>1201197014</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="22">
+    <srcmd5>ed6581ff801180cb651f586f1a270648</srcmd5>
+    <version>3.0.28</version>
+    <time>1204325380</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>05fe7b57a97c94cc6bab2ba780dc7322</srcmd5>
+    <version>3.0.28a</version>
+    <time>1206653779</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>9c150d7d35f5829c2868bad490aff68b</srcmd5>
+    <version>3.0.28a</version>
+    <time>1207462212</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>c3d4fa0816686e88f72fa1914acc94cb</srcmd5>
+    <version>3.0.28a</version>
+    <time>1207834317</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>67b7f5f80c53f68bf4edbbd2c9907eed</srcmd5>
+    <version>3.0.28a</version>
+    <time>1207858174</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>6cb7abd81c873375ed62248dcf757b70</srcmd5>
+    <version>3.0.28a</version>
+    <time>1208198493</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d5c37d296f88bfae4727fe0a26a873e3</srcmd5>
+    <version>3.2.0</version>
+    <time>1209021713</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>b7a17f2fbc32a8ebe730a0d1fcd11bf9</srcmd5>
+    <version>3.2.0</version>
+    <time>1209134607</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>cb20fcdb57aa8dfc7d0236304594f56d</srcmd5>
+    <version>3.2.0</version>
+    <time>1209202818</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>a96e7f7106a4d6b74e262dfeafe94816</srcmd5>
+    <version>3.2.0</version>
+    <time>1209284483</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>61189db90ea9c9a0614c60de089ca020</srcmd5>
+    <version>3.2.0</version>
+    <time>1210091919</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>61ae25479c75c64c8c9b1024fc6667ad</srcmd5>
+    <version>3.2.0</version>
+    <time>1210983083</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="16">
+    <srcmd5>49ed68a64c58f12c185ef75149ce046a</srcmd5>
+    <version>3.2.0</version>
+    <time>1211423164</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="17">
+    <srcmd5>af5398fd40a160b6137180eac5e9e7ff</srcmd5>
+    <version>3.2.0</version>
+    <time>1211820750</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="19">
+    <srcmd5>29689384566462483de15d0062b411c7</srcmd5>
+    <version>3.2.0</version>
+    <time>1212228812</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="25">
+    <srcmd5>609c56af2e87711e80185780ee009b75</srcmd5>
+    <version>3.2.0</version>
+    <time>1215810918</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="33">
+    <srcmd5>6985378b50290160565e23b720bb9577</srcmd5>
+    <version>3.2.0</version>
+    <time>1216998258</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="39">
+    <srcmd5>b40924a315a4e78fec899dd175be212f</srcmd5>
+    <version>3.2.0</version>
+    <time>1217648122</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>26a4f89b3c1bbba51cd20b5ecdb832bb</srcmd5>
+    <version>3.2.1</version>
+    <time>1218846794</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8440038539b197bc4ef59a2cac080957</srcmd5>
+    <version>3.2.3</version>
+    <time>1220640017</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9d17838f4389238ebbbc67e98644c4b9</srcmd5>
+    <version>3.2.4</version>
+    <time>1222298224</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>9d17838f4389238ebbbc67e98644c4b9</srcmd5>
+    <version>3.2.4</version>
+    <time>1222298224</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>bb2a6b65afd338b50c397b5c935deee7</srcmd5>
+    <version>3.2.4</version>
+    <time>1223302758</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="10">
+    <srcmd5>f448e45004219dd08f863dd9eea2ccf6</srcmd5>
+    <version>3.2.4</version>
+    <time>1225124081</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="11">
+    <srcmd5>4f9bb3bc2f65e00bd65499e83c804dcf</srcmd5>
+    <version>3.2.4</version>
+    <time>1227011820</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="12">
+    <srcmd5>6a81743aa2c2caa051dfa6ef0673614f</srcmd5>
+    <version>3.2.4</version>
+    <time>1227884448</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1d204488ae126be03664af4762bb899d</srcmd5>
+    <version>3.2.5</version>
+    <time>1228489264</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>94251c3e903297cb5c6b9c66627d106b</srcmd5>
+    <version>3.2.7</version>
+    <time>1231462567</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>781dae2b64983f00ed68f4b4686293fb</srcmd5>
+    <version>3.2.7</version>
+    <time>1231463896</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>feb4f5ba4bd5435a24fb43a3917da943</srcmd5>
+    <version>3.2.7</version>
+    <time>1231780790</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>19e44a079f094cae6b86f28f7ad1f125</srcmd5>
+    <version>3.2.7</version>
+    <time>1232750087</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="10">
+    <srcmd5>0d8e735a02a70f2fc1c6c95636994f76</srcmd5>
+    <version>3.2.7</version>
+    <time>1234060282</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>95e56b6bdccdcf76f5c1cff7ed048cbc</srcmd5>
+    <version>3.2.8</version>
+    <time>1234138386</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>71bed139011ddd184bd0a13890355398</srcmd5>
+    <version>3.2.8</version>
+    <time>1236554949</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>5662361493320d744439646fc12377bf</srcmd5>
+    <version>3.3.4</version>
+    <time>1241628792</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>5b512cf989ca0606f868c84fd23a950e</srcmd5>
+    <version>3.3.4</version>
+    <time>1242418412</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>e7741af3625edb7faf6c8908b04d334a</srcmd5>
+    <version>3.3.4</version>
+    <time>1244418997</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>5304d901f65412f54c2f3229b722c23e</srcmd5>
+    <version>3.3.4</version>
+    <time>1245340114</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>1f4e2e5bb1daf5e3e832f6fc29b7aef5</srcmd5>
+    <version>3.3.5</version>
+    <time>1245471037</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>8a80c68533c4ec8d952d357c014118d6</srcmd5>
+    <version>3.4.0</version>
+    <time>1247605594</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>e97dc1b422e7bee13ab371b5e4222f5d</srcmd5>
+    <version>3.4.0</version>
+    <time>1249119833</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>74dbeba9bc40e8fb71eeea9baf5338de</srcmd5>
+    <version>3.4.0</version>
+    <time>1250904994</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 18144 from user jmcdough
+</comment>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>eb14b63278dc25ab692eb1127f61671c</srcmd5>
+    <version>3.4.1</version>
+    <time>1252579507</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 20255 from user lmuelle
+</comment>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>eb14b63278dc25ab692eb1127f61671c</srcmd5>
+    <version>3.4.1</version>
+    <time>1252579507</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 20255 from user lmuelle
+</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>c0fce891fa7f6f75c5bcf7832f4a3553</srcmd5>
+    <version>3.4.2</version>
+    <time>1256139417</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 22335 from user lmuelle
+</comment>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>3e2164e52dc7629312388d4e862f7761</srcmd5>
+    <version>3.4.2</version>
+    <time>1256573408</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 23043 from user lmuelle
+</comment>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>5522ade6b8beeb565c052aa4d7ea517b</srcmd5>
+    <version>3.4.3</version>
+    <time>1257162232</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 23434 from user lmuelle
+</comment>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>a68db43e6bee0d6f026c6dc4bf449930</srcmd5>
+    <version>3.4.3</version>
+    <time>1258971392</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 24803 from user lmuelle
+</comment>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>3effdaa6a806848a514d520abeb9cd99</srcmd5>
+    <version>3.4.3</version>
+    <time>1259919780</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 25486 from user lmuelle
+</comment>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>fcb9cdddf3b5ddedc93cf4ee8d60bb9a</srcmd5>
+    <version>3.4.4</version>
+    <time>1262968377</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 28215 from user lmuelle
+</comment>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>dd853ae2a5f19435166aed690f1dbd86</srcmd5>
+    <version>3.4.4</version>
+    <time>1263481545</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 29385 from user lmuelle
+</comment>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>c8e4b6c920ded2ec60e6902353494ac6</srcmd5>
+    <version>3.4.5</version>
+    <time>1264067688</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 29998 from user lmuelle
+</comment>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>60e6f1ccfd24695c2fe49e911cceb952</srcmd5>
+    <version>3.4.5</version>
+    <time>1265912890</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 31995 from user lmuelle
+</comment>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>c09ed9693a3a3edd57a3de8ae7a334c3</srcmd5>
+    <version>3.4.5</version>
+    <time>1266508261</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 32428 from user lmuelle
+</comment>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>98752f0b4fb58b438ea28618e2f45529</srcmd5>
+    <version>3.4.6</version>
+    <time>1267092809</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 33380 from user lmuelle
+</comment>
+    <requestid>33380</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>f46673dd2a404f0d51ca6a17b2d9e29c</srcmd5>
+    <version>3.5.0</version>
+    <time>1267751584</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 33710 from user lmuelle
+</comment>
+    <requestid>33710</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>a300edbf07d05e017f323eadc6c0e8e9</srcmd5>
+    <version>3.5.0</version>
+    <time>1268069087</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 34325 from user lmuelle
+</comment>
+    <requestid>34325</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>c73c78fd297fd8ba578048949f595230</srcmd5>
+    <version>3.5.1</version>
+    <time>1268331414</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 34381 from user lmuelle
+</comment>
+    <requestid>34381</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>5e0d446a48043a4bc56b40e8548d0d29</srcmd5>
+    <version>3.5.1</version>
+    <time>1268926047</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>2d582ad96b8a612dc44195006c73c1c9</srcmd5>
+    <version>3.5.1</version>
+    <time>1268983540</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 34853 from user lmuelle
+</comment>
+    <requestid>34853</requestid>
+  </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>7559685911ca41012ab135c6b172c23c</srcmd5>
+    <version>3.5.1</version>
+    <time>1269561920</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 35658 from user jmcdough
+</comment>
+    <requestid>35658</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>5e6bc7041acfeb9f5ff7cd332c0c3140</srcmd5>
+    <version>3.5.2</version>
+    <time>1270655863</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 37239 from user lmuelle
+</comment>
+    <requestid>37239</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>d270f61b56818695873579285ec0ece1</srcmd5>
+    <version>3.5.2</version>
+    <time>1272122828</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 38752 from user lmuelle
+</comment>
+    <requestid>38752</requestid>
+  </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>6941185c4c2379782cba0f268ecf04a2</srcmd5>
+    <version>3.5.2</version>
+    <time>1274785049</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 40245 from user lmuelle
+</comment>
+    <requestid>40245</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>2ea80d70480512665887226abd9b29b5</srcmd5>
+    <version>3.5.3</version>
+    <time>1275655898</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 41020 from user lmuelle
+</comment>
+    <requestid>41020</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>c20a9ee7b5cf67535dd597faefaf9d6a</srcmd5>
+    <version>3.5.3</version>
+    <time>1276094794</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 41258 from user lmuelle
+</comment>
+    <requestid>41258</requestid>
+  </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>6aafc7cb9cd22228d628d041e71a18aa</srcmd5>
+    <version>3.5.3</version>
+    <time>1277194710</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 41853 from user lmuelle
+</comment>
+    <requestid>41853</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>4ac92ff13ee1b626120f867fc7dbac46</srcmd5>
+    <version>3.5.4</version>
+    <time>1277714512</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 41971 from user lmuelle
+</comment>
+    <requestid>41971</requestid>
+  </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>4ac92ff13ee1b626120f867fc7dbac46</srcmd5>
+    <version>3.5.4</version>
+    <time>1277714512</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="72" vrev="5">
+    <srcmd5>4ac92ff13ee1b626120f867fc7dbac46</srcmd5>
+    <version>3.5.4</version>
+    <time>1278667388</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="73" vrev="6">
+    <srcmd5>4ac92ff13ee1b626120f867fc7dbac46</srcmd5>
+    <version>3.5.4</version>
+    <time>1278678617</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="74" vrev="7">
+    <srcmd5>1ad5f9851002839153559ae02ea3a949</srcmd5>
+    <version>3.5.4</version>
+    <time>1285105495</time>
+    <user>autobuild</user>
+    <comment>Copy from network:samba:STABLE/samba based on submit request 48642 from user coolo
+</comment>
+    <requestid>48642</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>472a050d60e348ad17a06a8041c2d567</srcmd5>
+    <version>3.5.6</version>
+    <time>1289568835</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52875 from user lmuelle
+</comment>
+    <requestid>52875</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>2eb314fd6fd917b32d7b3fe8480e0ec9</srcmd5>
+    <version>3.5.6</version>
+    <time>1289568841</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52875
+</comment>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>f969e45ad2575528660284709c08073d</srcmd5>
+    <version>unknown</version>
+    <time>1291729707</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54819 from user lmuelle
+</comment>
+    <requestid>54819</requestid>
+  </revision>
+  <revision rev="78" vrev="4">
+    <srcmd5>ccc73aecb40ae4b12edc62148552adc8</srcmd5>
+    <version>unknown</version>
+    <time>1291729713</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54819
+</comment>
+  </revision>
+  <revision rev="79" vrev="5">
+    <srcmd5>94587c2b629fd1564307317ce7dcf5ff</srcmd5>
+    <version>unknown</version>
+    <time>1295055146</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58298 from user lmuelle
+</comment>
+    <requestid>58298</requestid>
+  </revision>
+  <revision rev="80" vrev="6">
+    <srcmd5>ed73e417fec3d38397ae9b68411cd356</srcmd5>
+    <version>unknown</version>
+    <time>1295055157</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58298
+</comment>
+  </revision>
+  <revision rev="81" vrev="7">
+    <srcmd5>9817f5db0bb9e70c749bdc3fd249c2a5</srcmd5>
+    <version>unknown</version>
+    <time>1297077428</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60138 from user lmuelle
+</comment>
+    <requestid>60138</requestid>
+  </revision>
+  <revision rev="82" vrev="8">
+    <srcmd5>766d53aab07e0cb30b9436b1366f06de</srcmd5>
+    <version>unknown</version>
+    <time>1297077435</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60138
+</comment>
+  </revision>
+  <revision rev="83" vrev="9">
+    <srcmd5>5749c718473808a64416edb74492bf1d</srcmd5>
+    <version>unknown</version>
+    <time>1297509488</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60539 from user lmuelle
+</comment>
+    <requestid>60539</requestid>
+  </revision>
+  <revision rev="84" vrev="10">
+    <srcmd5>a84e8e8c8740bb85f94dcd51c18068b3</srcmd5>
+    <version>unknown</version>
+    <time>1297509493</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60539
+</comment>
+  </revision>
+  <revision rev="85" vrev="13">
+    <srcmd5>a84e8e8c8740bb85f94dcd51c18068b3</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="86" vrev="14">
+    <srcmd5>5a4a9a426d338c0c64142afd736084b5</srcmd5>
+    <version>unknown</version>
+    <time>1298032454</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61746 from user dmdiss
+</comment>
+    <requestid>61746</requestid>
+  </revision>
+  <revision rev="87" vrev="15">
+    <srcmd5>437f0d3c691ccdb66c47f3e225ab78ef</srcmd5>
+    <version>unknown</version>
+    <time>1298032461</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61746
+</comment>
+  </revision>
+  <revision rev="88" vrev="16">
+    <srcmd5>7b8455262615b37494d98ca9030075ac</srcmd5>
+    <version>unknown</version>
+    <time>1298534154</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 62653 from user lmuelle
+</comment>
+    <requestid>62653</requestid>
+  </revision>
+  <revision rev="89" vrev="17">
+    <srcmd5>0d08a5aa42a1df0f333bf963ad19ad8c</srcmd5>
+    <version>unknown</version>
+    <time>1298534161</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 62653
+</comment>
+  </revision>
+  <revision rev="90" vrev="18">
+    <srcmd5>721cd7f111ca6cfb3e26c163d9a3778b</srcmd5>
+    <version>unknown</version>
+    <time>1298969604</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63042 from user lmuelle
+</comment>
+    <requestid>63042</requestid>
+  </revision>
+  <revision rev="91" vrev="19">
+    <srcmd5>3b408445d3c13551016bc4fff6fb3af8</srcmd5>
+    <version>unknown</version>
+    <time>1298969612</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63042
+</comment>
+  </revision>
+  <revision rev="92" vrev="20">
+    <srcmd5>18484fbfe6706871336f932ff34e5f85</srcmd5>
+    <version>unknown</version>
+    <time>1299587762</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63596 from user lmuelle
+</comment>
+    <requestid>63596</requestid>
+  </revision>
+  <revision rev="93" vrev="21">
+    <srcmd5>858035f01ea1742fcce06f6c62bc3e1a</srcmd5>
+    <version>unknown</version>
+    <time>1299587769</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63596
+</comment>
+  </revision>
+  <revision rev="94" vrev="22">
+    <srcmd5>d49ccb963b1fbf0b7f602b2cde458fdd</srcmd5>
+    <version>unknown</version>
+    <time>1300696136</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64536 from user lmuelle
+</comment>
+    <requestid>64536</requestid>
+  </revision>
+  <revision rev="95" vrev="23">
+    <srcmd5>2712074002c0b893f103f09dfbf8b9ab</srcmd5>
+    <version>unknown</version>
+    <time>1300696142</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64536
+</comment>
+  </revision>
+  <revision rev="96" vrev="24">
+    <srcmd5>b1c58765098e4f70885238df1330797b</srcmd5>
+    <version>unknown</version>
+    <time>1313134323</time>
+    <user>saschpe</user>
+    <comment>- Update to 3.6.0.
+- Remove references to disabled vscan build.
+- Add missing define, includes, and initialization to get_printing_ticket.
+- Use /var/run for the cifs state file; (bnc#710304).
+- Fix #ifdef CTDB_CONTROL_SCHEDULE_FOR_DELETION issue; (bso#8303).
+- File copy aborts with smb2_validate_message_id: bad message_id; (bso#8335).
+- Fix reload of the configuration and also reload activated registry shares;
+  (bso#8327).
+- WinXP cannot join a Samba3 domain with a 'even' hostname; (bso#8326).
+- smbclient cannot list directories from a big-endian machine; (bso#8324).
+- Update to 3.6.0rc3.
+- The Samba Web Administration Tool (SWAT) versions 3.0.x to 3.5.9 are
+  affected by a cross-site scripting vulnerability; CVE-2011-2694; (bso#8289);
+  (bnc#708503).
+- The Samba Web Administration Tool (SWAT) versions 3.0.x to 3.5.9 are
+  affected by a cross-site request forgery; CVE-2011-2522; (bso#8290);
+  (bnc#705241).
+- Make use of the actual library version as part of the package name on
+  post-11.3 systems only.
+- Improve ctdb vacuuming performance with use of SCHEDULE_FOR_DELETION;
+  (bnc#705170).
+- Specify nmbdsocketdir at configure time; (bnc#700953).
+- Build the tdb, talloc, and tevent libraries ahead of anything else.
+- Update to 3.6.0rc2.
+- Make cupsaddsmb fill printers location; (bso#8132); (bnc#698209).
+- Add &quot;winbind max clients&quot; parameter to remove 200-client
+  limit; (bnc#697461).
+- Disable logon cache for password lockout consistency when
+  running in a cluster; (bnc#694836).
+- Fix logon of AD users with many group memberships; (bso#6911);
+  (bnc#657026).
+- Don't lockout users while offline; (bso#8166); (bnc#692607).
+- Update to 3.6.0rc1.</comment>
+    <requestid>78381</requestid>
+  </revision>
+  <revision rev="97" vrev="25">
+    <srcmd5>73197fd6734c158464f657ddb2c00978</srcmd5>
+    <version>unknown</version>
+    <time>1313134339</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78381
+</comment>
+  </revision>
+  <revision rev="98" vrev="26">
+    <srcmd5>9cd125dccfeacefe0240c9c056668fdb</srcmd5>
+    <version>unknown</version>
+    <time>1314602124</time>
+    <user>saschpe</user>
+    <comment>- Optimize serverid_exists() for Solaris; (bso#8395).
+- talloc: check block count after references test.
+- talloc: added test suite for talloc_free_children().
+- talloc: license info erratum in the manpage.
+- talloc: fix typos and better differentiation between versions 1 and 2.
+- talloc: preserve context name on talloc_free_children().
+- talloc: ensure the sibling linked list remains valid during a free.
+- vfs_chown_fsp returned in the wrong directory; (bso#8370).
+- Remove irritating &quot;.&quot; targets when recent system libs exist; (bso#8369).
+- Correctly initialize &quot;idmap config * : script&quot; with NULL; (bso#8368).
+- Add missing include to suppress compiler warnings; (bso#8365).
+- Point the chain offset beyond the current request; (bso#8360).
+- Fix gpfs vfs module build; (bso#8364).
+- Make vfs_prealloc even build on older systems; (bso#8363).
+- Do central cli_set_error and return the actual NTSTATUS; (bso#7864).</comment>
+    <requestid>79967</requestid>
+  </revision>
+  <revision rev="99" vrev="27">
+    <srcmd5>a2d554a4b83a87ccd7d22345e89610a3</srcmd5>
+    <version>unknown</version>
+    <time>1314602135</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79967
+</comment>
+  </revision>
+  <revision rev="100" vrev="28">
+    <srcmd5>927857cb5289ac08c1bae14b45ac8a6a</srcmd5>
+    <version>unknown</version>
+    <time>1314871544</time>
+    <user>saschpe</user>
+    <comment>- Microsoft Word from Microsoft Office 2007 fails to save as on a share with
+  SMB2; (bso#8412).
+- Use sys_write and sys_read in fork_domain_child to fix a winbind race
+  leading to 100% CPU usage; (bso#8409).
+- Fix wrong reply to smb2 durable handle reconnect (DHnC) request; (bso#8428).
+- Fix infinite loop in ACL module code; (bso#8422).
+- Fix getent group if trusted domains are not reachable; (bso#8420).
+- smbclient can't access a NT4 share since 3.6.0; (bso#8385).
+- Optimize serverid_exists() for Solaris; (bso#8395).
+- talloc:
+  + check block count after references test.
+  + added test suite for talloc_free_children().
+  + license info erratum in the manpage.
+  + fix typos and better differentiation between versions 1 and 2.
+  + preserve context name on talloc_free_children().
+  + ensure the sibling linked list remains valid during a free.</comment>
+    <requestid>80338</requestid>
+  </revision>
+  <revision rev="101" vrev="29">
+    <srcmd5>fabd8550a228d5bf3d3bbb497a0c950d</srcmd5>
+    <version>unknown</version>
+    <time>1314871559</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80338
+</comment>
+  </revision>
+  <revision rev="102" vrev="30">
+    <srcmd5>c3138d88eaf50ae07d8af3359dd6d61e</srcmd5>
+    <version>3.6.0</version>
+    <time>1316438541</time>
+    <user>lrupp</user>
+    <comment>- Spec file cleanup as suggested by the spec-cleaner tool.
+  + Make all BuildRequires, PreReq, and Provides a separate line.
+  + Use %{buildroot} instead of ${RPM_BUILD_ROOT}.
+  + Use straight commands instead of macros (make, install).
+  + Use -p in post and postun if we only call one command.
+  + Use %{_localstatedir} instead of %{_var} in the filelist.
+  + Remove superfluous AutoReqProv on lines.
+- Remove %release from all Provides.
+- Fix segfault in iconv.c which caused a null pointer dereference; (bso#8433).
+- Use /var/run for the cifs state file in the init script too; (bnc#710304).
+- Fix CUPS print job IDs; (bso#7288); (bnc#701257).</comment>
+    <requestid>81727</requestid>
+  </revision>
+  <revision rev="103" vrev="31">
+    <srcmd5>85aab0154306f6bb2f9849fac77f0af3</srcmd5>
+    <version>3.6.0</version>
+    <time>1316438551</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 81727
+</comment>
+  </revision>
+  <revision rev="104" vrev="32">
+    <srcmd5>2e9e0b1b151ff9354a0a8f06b89a94e7</srcmd5>
+    <version>unknown</version>
+    <time>1318345522</time>
+    <user>lrupp</user>
+    <comment>- Return error of cli_push when 'put - /some/file' is used; (bso#7551).
+- Read-only handles on SAMR allow SAMR_DOMAIN_ACCESS_CREATE_USER; (bso#8509).
+- smbd doesn't correctly honor the &quot;force create mode&quot; bits from a cifsfs
+  create; (bso#8507).
+- Default user entry is set to minimal permissions on incoming ACL change with
+  no user specified; (bso#8443).
+- smb_acl_to_posix: ACL is invalid for set (Invalid argument); (bso#7509).
+- Handle the SECINFO_LABEL flag in the same was as Win2k3; enable Microsoft
+  Internet Explorer 9 on Windows 7 to download files; (bso#8458).
+- DFS breaks zip file extracting unless &quot;follow symlinks = no&quot; set;
+  (bso#8493).
+- s3-docs: Fix typos.
+- s3:smb2_server: SMB2_OP_CANCEL requests don't have to be signed; (bso#8503).
+- Remove &quot;experimental&quot; label on VFS ACL modules; (bso#8494).
+- acl_xattr can free an invalid pointer if no blob is loaded; (bso#8480).
+- s3-smbd: asserts when SMB2 client breaks the crediting rules; (bso#8476).
+- s3-libnet: allow to use default krb5 ccache in libnet_Join/libnet_Unjoin;
+  (bso#7465).
+- smb2_find uses a hard coded max reply size of 0x10000 instead of
+  smb2_max_trans; (bso#8473).
+- s3-netapi: allow to use default krb5 credential cache for libnetapi users.
+- s3-docs: document -k switch in net manpage. 
+- Map to guest can return uninitialized blob of data; (bso#8477).
+- s3-registry: registry/reg_format.c must include includes.h; (bso#8401).
+- smbclient segfaults when option -m is used for legacy dialects; (bso#8453).
+- Fix 'widelinks' regression intro'd in 3.2; (bso#8229).
+- Compound SMB2 requests on an IPC connection can corrupt the reply stream;
+  (bso#8429).
+- s3-spoolss: Fix bug forms migration; (bso#8351).
+- s3:libsmb: check the wct of the incoming SMBnegprot responses; (bso#8452).
+- s3: Do not fork the echo handler for smb2; (bso#8334).
+- s3-spoolss: Fix bug empty notify servername; (bso#8236).
+- SMB2 server can return requests out-of-order when processing a compound
+  request; (bso#8407).
+- Remove smb child crash fix.  The issue had been fixed upstream differently.
+- BuildRequire ctdb-devel version greater than 1.0.105 for post-10.0 systems.</comment>
+    <requestid>87294</requestid>
+  </revision>
+  <revision rev="105" vrev="33">
+    <srcmd5>2a2a8b9f64035f4d6cd3b25d8e89998d</srcmd5>
+    <version>unknown</version>
+    <time>1319024254</time>
+    <user>coolo</user>
+    <comment>- s3/doc: add man page for aio_fork vfs module.
+- Fix uninitialized memory problem in group_sids_to_info3; (bso#8455).
+- s3: Samba PDC is looking up only primary user group; (bso#8455).
+- Add script to create or update an AppArmor sniplet with permissions for all
+  Samba shares; (bnc#688040).
+- Retain the smbd startproc return value for correct startup status reporting.
+  unset was incorrectly being called prior to rc_status; (bnc#723724).
+- Prevent deadlock in systemd triggered by if-down.d handler on shutdown;
+  (bnc#721598).
+- smb2_find uses a hard coded max reply size of 0x10000 instead of
+  smb2_max_trans; changed defaults and documentation (bso8473).
+- Empty CIFS share can be blocked for other clients by deleting it via empty
+  path (DELETE_PENDING until the last client); (bso#8515).
+- winbindd cache timeout expiry test was reversed; (bso#8521).
+- Fix SMB2 SMB2_OP_GETINFO and SMB2_OP_IOCTL parsing requirements; (bso#8520).
+- s3:smb2_create: fix allocation size return value when opening existing
+  files; (bso#8518).
+- SMB2 create doesn't cope with an Apple client using NULL blob in create;
+  (bso#8474).
+- NFSv4 DENY ACLs always include SYNCHRONIZE flag - blocking renames;
+  (bso#8442).
+- s3-docs: Fix bug (bso#7908) and typo.
+- s3-docs: document -k switch in net manpage.
+- Fix winbind internal error; (bso#7636); (bnc#659424).</comment>
+    <requestid>88635</requestid>
+  </revision>
+  <revision rev="106" vrev="35">
+    <srcmd5>2a2a8b9f64035f4d6cd3b25d8e89998d</srcmd5>
+    <version>unknown</version>
+    <time>1319182444</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="107" vrev="36">
+    <srcmd5>11a06ae6dce3195fd2ca1e240bfccee6</srcmd5>
+    <version>unknown</version>
+    <time>1319555293</time>
+    <user>coolo</user>
+    <comment>This is a cleanup update replacing all patches we formerly had in the Samba
+package.
+
+- Update to 3.6.1.
+  + Fix smbd crashes triggered by Windows XP clients; (bso#8384).
+  + Fix a Winbind race leading to 100% CPU load; (bso#8409).
+  + Several SMB2 fixes.
+  + The VFS ACL modules are no longer experimental but production-ready.
+  + Fix 'net ads join -k' when KRB5CCNAME is not set; (bso#7465).
+  + smb_acl_to_posix: ACL is invalid for set (Invalid argument); (bso#7509).
+  + Return error of cli_push when 'put - /some/file' is used; (bso#7551).
+  + Fix usage of cli_errstr(); (bso#7864).
+  + Fix 'widelinks' regression; (bso#8229).
+  + Empty notify servername; (bso#8236).
+  + Add man vfs_aio_fork; (bso#8256).
+  + smb2: smbd logs &quot;Invalid SMB packet: first request: 0x0008&quot; and crashes;
+    (bso#8334).
+  + Add a fallback for missing open&amp;x support in MAC OS/X Lion; (bso#8338).
+  + While migrating forms, don't fail if the form already exists; (bso#8351).
+  + OS/2 sends an unexpected write&amp;x/read&amp;x chain; (bso#8360).
+  + Fix build of vfs_prealloc on SLES8; (bso#8363).
+  + Fix the build of gpfs.c on RHEL 6.0 with gpfs 3.4.0-4; (bso#8364).
+  + Fix the fallback to the deprecated spelling idmap:script; (bso#8368).
+  + Fix vfs_chown_fsp; (bso#8370).
+  + Fix smbd crashes triggered by Windows XP clients; (bso#8384).
+  + Fix smbclient access to NT4 shares; (bso#8385).
+  + Optimize serverid_exists() for Solaris; (bso#8395).
+  + registry/reg_format.c must include includes.h; (bso#8401).
+  + SMB2 server can return requests out-of-order when processing a compound
+    request; (bso#8407).
+  + Fix a Winbind race leading to 100% CPU load; (bso#8409).
+  + Fix &quot;saving as&quot; of MS Office 2007 (Word) documents on Samba shares with
+    SMB2; (bso#8412).
+  + Fix 'getent group' if trusted domains are not reachable; (bso#8420).
+  + Fix infinite loop in ACL module code; (bso#8422).
+  + Fix wrong reply to DHnC (durable handle reconnect); (bso#8428).
+  + Compound SMB2 requests on an IPC connection can corrupt the reply stream;
+    (bso#8429).
+  + Fix segfault in iconv.c; (bso#8433).
+  + NFSv4 DENY ACLs always include SYNCHRONIZE flag - blocking renames;
+    (bso#8442).
+  + Be smarter about setting default permissions when a ACL_USER_OBJ isn't
+    given; (bso#8443).
+  + Check the wct of the incoming SMBnegprot responses; (bso#8452).
+  + Fix smbclient segfaults when dialect option -m is used for legacy
+    dialects; (bso#8453).
+  + Fix uninitialized memory problem in group_sids_to_info3; (bso#8455).
+  + Samba PDC is looking up only primary user group; (bso#8455).
+  + IE9 on Windows 7 cannot download files to samba 3.5.11 share; (bso#8458).
+  + smb2_find uses a hard coded max reply size of 0x10000 instead of
+    smb2_max_trans; (bso#8473).
+  + SMB2 create doesn't cope with an Apple client using NULL blob in create;
+    (bso#8474).
+  + Don't call smbd_terminate_connection in smb2_validate_message_id();
+    (bso#8476).
+  + Samba asserts when SMB2 client breaks the crediting rules; (bso#8476).
+  + Map to guest can return uninitialized blob of data; (bso#8477).
+  + acl_xattr can free an invalid pointer if no blob is loaded; (bso#8480).
+  + DFS breaks zip file extracting unless &quot;follow symlinks = no&quot; set;
+   (bso#8493).
+  + Remove &quot;experimental&quot; label on VFS ACL modules; (bso#8494).
+  + SMB2_OP_CANCEL requests don't have to be signed; (bso#8503).
+  + smbd doesn't correctly honor the &quot;force create mode&quot; bits from a cifsfs
+    create; (bso#8507).
+  + Read-only handles on SAMR allow SAMR_DOMAIN_ACCESS_CREATE_USER;
+    (bso#8509).
+  + Disallow &quot;.&quot; in can_set_delete_on_close(); (bso#8515).
+  + SMB2 create call returns incorrect file allocation size; (bso#8518).
+  + Fix SMB2 SMB2_OP_GETINFO and SMB2_OP_IOCTL parsing requirements;
+    (bso#8520).
+  + Winbind cache timeout expiry test was reversed; (bso#8521).</comment>
+    <requestid>88972</requestid>
+  </revision>
+  <revision rev="108" vrev="37">
+    <srcmd5>90482dc4dc5066c2d779892e8a8f3e87</srcmd5>
+    <version>unknown</version>
+    <time>1320232689</time>
+    <user>coolo</user>
+    <comment>- Ignore a potentially missing AppArmor snippet helper script; (bnc#725256).
+- Fixed the DFS referral response for msdfs root; (bnc#703655).</comment>
+    <requestid>89777</requestid>
+  </revision>
+  <revision rev="109" vrev="38">
+    <srcmd5>a742f2e87661bc7a07fad90c59755d75</srcmd5>
+    <version>unknown</version>
+    <time>1324475948</time>
+    <user>coolo</user>
+    <comment>- Use samba.org for the ldapsmb source location.
+- Fixing libsmbsharemode dependency on ldap and krb5 libs in Makefile;
+  (bnc #729516).
+- Add ldap to Should-Start and Stop of the smb init script; (bnc#730046).
+- Fix smbd srv_spoolss_replycloseprinter() segfault; (bso#8384); (bnc#731571).
+- Fix pam_winbind.so segfault in pam_sm_authenticate(); (bso#8564).
+- Fix smbclient &gt;8GB tars on big endian machines; (bso#563); (bnc#726145).
+- Fix typo in net ads join output; (bnc#713135).
+- Add &quot;ldapsam:login cache&quot; parameter to allow explicit disabling
+  of the login cache; (bnc#723261).
+- Fix samba duplicates file content on appending. Move posix case semantics
+  out from under the VFS; (bso#6898); (bnc#681208).
+- Make winbind child reconnect when remote end has closed, fix
+  failing sudo; (bso#7295); (bnc#569721).
+- Fix printing from Windows 7 clients; (bso#7567); (bnc#687535).
+- Update pidl and always compile IDL at build time; (bnc#688810).
+- Abide by print$ share 'force user' &amp; 'force group' settings when handling
+  AddprinterDriver and DeletePrinterDriver requests; (bso#7921); (bnc#653353).</comment>
+    <requestid>97212</requestid>
+  </revision>
+  <revision rev="110" vrev="39">
+    <srcmd5>1b6ac550db9a4e007f7d689bdceace25</srcmd5>
+    <version>unknown</version>
+    <time>1325846803</time>
+    <user>coolo</user>
+    <comment>- BuildRequire autoconf to avoid implicit dependency for post-11.4 systems.
+- Remove call to suse_update_config macro for post-11.4 systems.</comment>
+    <requestid>98539</requestid>
+  </revision>
+  <revision rev="111" vrev="40">
+    <srcmd5>8798d508e676a2c42023f02b620bb000</srcmd5>
+    <version>unknown</version>
+    <time>1328098638</time>
+    <user>coolo</user>
+    <comment>- Fix memory leak in parent smbd on connection; CVE-2012-0817; (bso#8724);
+  (bnc#743986).
+- Use spdx.org compliant license names for all packages.
+- Update to 3.6.2.
+
+See WHATSNEW.txt from the main tar ball or the samba.changes file for more
+details.
+
+- s3-spoolss: Pass the right pointer type; (bso#4942); (bnc#742504).
+- Use correct license, LGPLv3+ for libwbclient packages.
+- When returning an ACL without SECINFO_DACL requested, we still set
+  SEC_DESC_DACL_PRESENT in the type field; (bso#8636).
+- Prefix print$ path on driver file deletion; (bso#8697); (bnc#740810).
+- Fix printer_driver_files_in_use() call ordering; (bso#4942); (bnc#742504).
+- Buffer overflow issue with AES encryption in samba traffic analyzer;
+  (bso#8674).
+- NT ACL issue; (bso#8673).
+- Deleting a symlink fails if the symlink target is outside of the share;
+  (bso#8663).
+- connections.tdb - major leak with SMB2; (bso#8710).
+- Renaming a symlink fails if the symlink target is outside of the share;
+  (bso#8664).
+- Intermittent print job failures caused by character conversion errors;
+  (bso#8606).
+- ads_keytab_verify_ticket mixes talloc allocation with malloc free;
+  (bso#8692).
+- libcli/cldap: fix a crash bug in cldap_socket_recv_dgram(); (bso#8593).
+- s3:lib/ctdbd_conn: try ctdbd_init_connection() as root; (bso#8684).
+- s3-printing: fix migrate printer code; (bso#8618).
+- Packet validation checks can be done before length validation causing
+  uninitialized memory read; (bso#8686).
+- net memberships usage info was wrong; (bso#8687).
+- s3-libsmb: Don't duplicate kerberos service tickets; (bso#8628).
+- Recvfile code path using splice() on Linux leaves data in the pipe on short
+  write; (bso#8679).
+- s3-winbind: Fix segfault if we can't map the last user; (bso#8678).
+- vfs_acl_xattr and vfs_acl_tdb modules can fail to add inheritable entries on
+  a directory with no stored ACL; (bso#8644).
+- s3/doc: document the ignore system acls option of vfs_acl_xattr and
+  vfs_acl_tdb; (bso#8652).
+- Winbind can't receive any user/group information; (bso#8371).
+- s3-winbind: Add an update function for winbind cache; (bso#8643).
+- s3: Attempt to fix the vfs_commit module.
+- POSIX ACE x permission becomes rx following mapping to and from a DACL;
+  (#bso#8631).
+- s3:libsmb: only align unicode pipe_name; (bso#8586).
+- s3-winbind: Don't fail on users without a uid; (bso#8608).
+- Crash when trying to browse samba printers; (bso#8623).
+- talloc: double free error; (bso#8562).
+- cldap doesn't work over ipv6; (bso#8600).
+- s3:libsmb: fix cli_write_and_x() against OS/2 print shares; (bso#5326).
+- SMB2: not granting credits for all requests in a compound request;
+  (bso#8614).
+- smb2_flush sends uninitialized memory; (bso#8579).
+- Password change settings not fully observed; (bso#8561).
+- s3:smb2_server: grant credits in async interim responses; (bso#8357).
+- s3:smbd: don't limit the number of open dptrs for smb2; (bso#8592).
+- samr_ChangePasswordUser3 IDL incorrect; (bso#8591).
+- idmap_autorid does not have allocation pool; (bso#8444).
+- Add systemd service files.
+- s3:libsmb: the workgroup in the non-extended-security negprot is not
+  aligned; (bso#8573).
+- s3-build: Fix inotify detection; (bso#8580).
+- SMB2 doesn't handle compound request headers in the same way as Windows;
+  (#bso8560).
+- Disconnecting clients swamp the logs; (bso#8585).
+- s3-netlogon: Fix setting the machinge account password; (bso#8550).
+- winbind_samlogon_retry_loop ignores logon_parameters flags; (#bso8548). 
+- smbclient posix_open command fails to return correct info on open file;
+  (bso#8542).
+- readlink() on Linux clients fails if the symlink target is outside of the
+  share; (bso#8541).
+- s3-netapi: remove pointless use_memory_krb5_ccache; (bso#7465).
+- s3:Makefile: make DSO_EXPORTS_CMD more portable; (bso#8531).
+- s3:registry: fix the test for a REG_SZ blob possibly being a zero terminated
+  ucs2 string; (bso#8528).
+- Make VFS op &quot;streaminfo&quot; stackable; (bso#8419).
+- Fix incorrect perfcount array length calculations; (bnc#739258).</comment>
+    <requestid>101972</requestid>
+  </revision>
+  <revision rev="112" vrev="41">
+    <srcmd5>6dd4495ff5a500d81994415f7708dc38</srcmd5>
+    <version>unknown</version>
+    <time>1329319073</time>
+    <user>coolo</user>
+    <comment>- s3:winbindd fix a return code check; (bso#8406).
+- s3: Add rmdir operation to streams_depot; (bso#8733).
+- s3:smbd:smb2: fix an assignment-instead-of-check bug conn_snum_used();
+  (bso#8738).
+- s3:auth: fill the sids array of the info3 in
+  wbcAuthUserInfo_to_netr_SamInfo3(); (bso#8739).
+- s3:client: ignore SMBecho errors (the server may not support it);
+  (bso#8139).
+- Be more strict when using PAM_AUTH API from winbind if Kerberos auth is
+  enabled and don't unintentionally use a bogus domain name; (bso#8734).
+- smbclient fails with posix large reads; (bso#8727).
+- Use the smbfs init script on versions pre-11.3, or cifs in later versions;
+  (bnc#744614).
+- s3: Compile IDL files in autogen, some configure tests need this.
+- Fixes various deadlocks in if-up.d / if-down.d when running under
+  systemd; (bnc#732395).
+- Fix incorrect types in the full_audit VFS module. Add null terminators to
+  audit log enums; (bnc#742885).</comment>
+    <requestid>103616</requestid>
+  </revision>
+  <revision rev="113" vrev="42">
+    <srcmd5>5008f02f2939246967c3cae4e2343cc9</srcmd5>
+    <version>unknown</version>
+    <time>1330434950</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>106910</requestid>
+  </revision>
+  <revision rev="114" vrev="43">
+    <srcmd5>4a44e8531191e24cd166d922089321ab</srcmd5>
+    <version>unknown</version>
+    <time>1331324870</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>108324</requestid>
+  </revision>
+  <revision rev="115" vrev="44">
+    <srcmd5>06e33ecd2d408cb52a40c8cb1f5f7128</srcmd5>
+    <version>unknown</version>
+    <time>1332148056</time>
+    <user>coolo</user>
+    <comment>- Add the ldapsmb sources as else patches against them have no chance to apply.
+- Remove obsoleted Authors lines from spec file for post-11.2 systems.</comment>
+    <requestid>109356</requestid>
+  </revision>
+  <revision rev="116" vrev="45">
+    <srcmd5>abc604b9de0bc491dabc9a831574e0a4</srcmd5>
+    <version>unknown</version>
+    <time>1334217069</time>
+    <user>coolo</user>
+    <comment>- Update to 3.6.4.
+- Samba pre-3.6.4 are affected by a vulnerability that allows remote code exe-
+  cution as the &quot;root&quot; user; PIDL based autogenerated code allows overwriting
+  beyond of allocated array; CVE-2012-1182; (bso#8815); (bnc#752797).
+- s3-winbindd: Only use SamLogonEx when we can get unencrypted session keys;
+  (bso#8599).
+- Correctly handle DENY ACEs when privileges apply; (bso#8797).
+- s3:smb2_server: fix a logic error, we should sign non guest sessions;
+  (bso8749).
+- Allow vfs_aio_pthread to build as a static module; (bso#8723).
+- s3:dbwrap_ctdb: return the number of records in db_ctdb_traverse() for
+  persistent dbs; (#bso8527).
+- s3: segfault in dom_sid_compare(bso#8567).
+- Honor SeTakeOwnershiPrivilege when client asks for SEC_STD_WRITE_OWNER;
+  (bso#8768).
+- s3-winbindd: Close netlogon connection if the status returned by the
+  NetrSamLogonEx call is timeout in the pam_auth_crap path; (bso#8771).
+- s3-winbindd: set the can_do_validation6 also for trusted domain; (bso#8599).
+- Fix problem when calculating the share security mask, take priviliges into
+  account for the connecting user; (bso#8784).
+- Fix crash in dcerpc_lsa_lookup_sids_noalloc() with over 1000 groups;
+  (bso#8807); (bnc#751454).</comment>
+    <requestid>113255</requestid>
+  </revision>
+  <revision rev="117" vrev="46">
+    <srcmd5>d8b545beb618f9730a8b1416cc5879a3</srcmd5>
+    <version>unknown</version>
+    <time>1336423913</time>
+    <user>coolo</user>
+    <comment>- docs-xml: fix default name resolve order; (bso#7564).
+- s3-aio-fork: Fix a segfault in vfs_aio_fork; (bso#8836).
+- docs: remove whitespace in example samba.ldif; (bso#8789).
+- s3-smbd: move print_backend_init() behind init_system_info(); (bso#8845).
+- s3-docs: Prepend '/' to filename argument; (bso#8826).
+- Update to 3.6.5.
+- Restrict self granting privileges where security=ads for Samba post-3.3.16;
+  CVE-2012-2111; (bnc#757576).
+- Remove all precompiled idl output to ensure any pidl changes take effect;
+  (bnc#757080).
+- Do not map POSIX execute permission to Windows FILE_READ_ATTRIBUTES;
+  (bso#8631); (bnc#732572).</comment>
+    <requestid>116103</requestid>
+  </revision>
+  <revision rev="118" vrev="47">
+    <srcmd5>c4eed9d6b2cd4ac16cf01f4f983c2b99</srcmd5>
+    <version>unknown</version>
+    <time>1338991788</time>
+    <user>coolo</user>
+    <comment>- Don't call autogen.sh on post-12.1 SUSE and post-14 Fedora systems.
+- Recompile all IDL in any case.
+- BuildIgnore libtalloc and libtdb to prevent a package conflict on Fedora
+  systems.
+- Install talloc.pc only on pre-12.2 and non SUSE systems.
+- BuildRequire libldb-devel, libtalloc-devel, libtdb-devel, and
+  libtevent-devel on post-12.1 systems.
+- s3: Fix a segfault with debug level 3 on Solaris; (bso#8861).
+- s3: wbinfo --lookup-sids &quot;&quot; crashes winbind; (bso#8904).
+- smbd crashes when deleting directory and veto files are enabled; (bso#8837).
+- winbind_krb5_locator only returns one IP address; (bso#8897).
+- Wrong assertion/comparison: Compare value not pointer; (bso#8859).
+- Inconsistent (with manpage) command-line switch for &quot;help&quot; in smbtree;
+  (bso#8831).
+- Fix incorrect debug statement.
+- Setting traverse rights fails to enable directory traversal when acl_xattr
+  in use; (bso#8857).
+- Syslog broken owing to mistyping of debug_settings.syslog; (bso#8877).
+- s3/ldap: remove outdated netscape ds 5 schema file; (bso#8869).
+- s3-docs: fixes several typos; (bso#7938).
+- s3-VFS: Fix building out-of-tree modules; (bso#8822).
+- s3-docs: Add hint that setting &quot;profile acls = yes&quot; on normal shares can
+  cause trouble; (bso#7930).
+- s3-pam_winbind: Fix the build with a newer iniparser library; (bso#8915).
+- Avoid null dereference in initialize_password_db(); (bso#8920).
+- s3:registry: implement values_need_update and subkeys_need_update in the
+  smbconf backend.
+- s3:registry:reg_api: fix reg_queryvalue to not fail when values are
+  modified while it runs.
+- s4:torture:rpc:spoolss: also initialize driverName before checking it in
+  test_PrinterData_DsSpooler().
+- s3:registry: multiple cleanups, fixes, and optimisations.
+- s3:auth/server_info: the primary rid should be in the groups rid array;
+  (bso#8798).
+- s3-printing: Add new printers to registry; (bso#8554); (baso#8612);
+  (bso#8748).
+- Fix the overwriting of errno before use in a DEBUG statement and use the
+  return value from store_acl_blob_fsp rather than ignoring it; (bso#8945).
+- s3-auth: Don't lookup the system user in pdb; (bso#8944).
+- s3-passdb: Fix negative SID-&gt;uid/gid cache handling; (bso#8952).
+- Fix typo in pam_winbindd code; (bso#8957).
+- Fix remove_duplicate_addrs2 previously it could leave zero addresses in the
+  list; (bso#8910).
+- Slow but responsive DC can lock up winbindd; (bso#8943).
+- Broken processing of %U with vfs_full_audit when force user is set;
+  (bso#8882).
+- Disable included build of ldb, talloc, tdb, and tevent on post-12.1 systems.
+- BuildRequire libldb1-devel, libtalloc2-devel, libtdb1-devel, and
+  libtevent0-devel on post-12.1 systems.
+- Add PreReq /etc/init.d/nscd to the winbind package; (bnc#759731).
+- s3-smbd: move print_backend_init() behind init_system_info(); (bso#8845);
+  (bnc#730769).</comment>
+    <requestid>123259</requestid>
+  </revision>
+  <revision rev="119" vrev="49">
+    <srcmd5>c4eed9d6b2cd4ac16cf01f4f983c2b99</srcmd5>
+    <version>unknown</version>
+    <time>1340184185</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="120" vrev="50">
+    <srcmd5>852f4cb13c876629f314967f583375dc</srcmd5>
+    <version>unknown</version>
+    <time>1340273547</time>
+    <user>adrianSuSE</user>
+    <comment>revert</comment>
+  </revision>
+  <revision rev="121" vrev="51">
+    <srcmd5>7fb161fde2b634c3dd43bc8a24ba673a</srcmd5>
+    <version>unknown</version>
+    <time>1342256077</time>
+    <user>coolo</user>
+    <comment>- ndr: fix push/pull DATA_BLOB with NDR_NOALIGN; (bso#9026); (bnc#770262).
+- Fix shell syntax in dhcpcd hook script; (bnc#769957).
+- Update to 3.6.6.
+  + Fix possible memory leaks in the Samba master process; (bso#8970).
+  + Fix uninitialized memory read in talloc_free(); (bnc#764577).
+  + Fix joining of XP Pro workstations to 3.6 DCs; (bso#8373).
+- resolve_ads() code can return zero addresses and miss valid DC IP addresses;
+  (bso#8910).
+- Can't join XP Pro workstations to 3.6.1 DC; (bso#8373).
+- winbind can hang as nbt_getdc() has no timeout; (bso#8953).
+- Fix crash bug in dns_create_probe when dns_create_update fails; (bso#8627)
+- s3-pid: Catch with pid filename's change when config file is not smb.conf;
+  (bso#8714).
+- Possible memory leaks in the main Samba process; (bso#8970).
+- s3: Fix uninitialized memory read in talloc_free(); (bnc#764577).
+- Treat exit_server_cleanly() as a &quot;clean&quot; shutdown; (bso#8971).
+- Avoid crash with MIT krb5 1.10.0 in gss_get_name_attribute(); (bso#8988).
+- Winzip occasionally can not read files out of an open winzip dialog;
+  (bso#8311).
+- s3-winbindd: call dump_core_setup after command line option has been parsed;
+  (bso#8975).
+- Directory group write permission bit is set if unix extensions are enabled;
+  (bso#8972).
+- s3: remove dependency on automake for &quot;make everything&quot;; (bso#8978).
+- sd_has_inheritable_components segfaults on an SD that se_access_check
+  accepts; (bso#8811).
+- smbclient's tarmode insists on listing excluded directories; (bso#8922).
+- Notify code can miss a ChDir; (bso#8998).
+- s3:smbd: add a fsp_persistent_id() function; (bso#8995).
+- Call autogen.sh even on post-12.1 SUSE systems.
+- Include the reviewed french translation for pam_winbind; (bnc#499233).</comment>
+    <requestid>127780</requestid>
+  </revision>
+  <revision rev="122" vrev="52">
+    <srcmd5>b54fd7e26a7ab7376bdc3cf399526a8a</srcmd5>
+    <version>unknown</version>
+    <time>1344418665</time>
+    <user>coolo</user>
+    <comment>- Update to 3.6.7.
+  + Fix resolving our own &quot;Domain Local&quot; groups; (bso#9052).
+  + Fix migrating printers while upgrading from 3.5.x; (bso#9026).
+
+- Correct documentation of &quot;case sensitive&quot;; (bso#8552).
+- Printing fails in function cups_job_submit; (bso#8719).
+- Fix kernel oplocks when uid(file) != uid(process); (bso#8974).
+- Send correct responses to NT Transact Secondary when no data and no params
+  for the Trans2 calls are set; (bso#8989).
+- Fix build without ads support; (bso#8996).
+- Don't turn negative cache entries into valid idmappings; (bso#9002).
+- Fix posix acl on gpfs; (bso#9003).
+- Make vfs_gpfs less verbose in get/set_xattr functions; (bso#9022).
+- Fix migrating printers while upgrading from 3.5.x; (bso#9026).
+- Fix typo in set_re_uid() call when USE_SETRESUID selected in configure;
+  (bso#9034).
+- Using asynchronous IO with SMB2 can return NT_STATUS_FILE_CLOSED in error
+  instead ofNT_STATUS_FILE_LOCK_CONFLICT; (bso#9040).
+- Fix resolving our own &quot;Domain Local&quot; groups; (bso#9052).
+- Fix build against CUPS 1.6; (bso#9055).
+- Fix bugs in SMB2 credit handling code; (bso#9057).
+- rpcclient: Fix bad call to data_blob_const; (bso#9062).
+
+- BuildRequire gcc, make, and patch; (bnc#771516).</comment>
+    <requestid>130363</requestid>
+  </revision>
+  <revision rev="123" vrev="53">
+    <srcmd5>1ec6480d5dcf330ea7394d50eaa2556c</srcmd5>
+    <version>unknown</version>
+    <time>1347883769</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134095</requestid>
+  </revision>
+  <revision rev="124" vrev="54">
+    <srcmd5>a37195265118de90d122e5141c7cb84e</srcmd5>
+    <version>unknown</version>
+    <time>1348413044</time>
+    <user>coolo</user>
+    <comment>- Update to 3.6.8.
+  + Fix crash bug in smbd caused by a blocking lock followed by close;
+    (bso#9084).
+  + Fix Winbind panic if we couldn't find the domain; (bso#9135).
+- Backport FSCTL codes and fix segfault in smbstatus from master; (bso#9058).
+- Fix bad call to memcpy source3/registry/regfio.c; (bso#9065).
+- &quot;Domain Users&quot; incorrectly added as additional group on domain members;
+  (bso#9066).
+- Use correct RID for &quot;Domain Guests&quot; primary group; (bso#9067).
+- Fix crash bug in smbd caused by a blocking lock followed by close;
+  (bso#9084).
+- Fix smbclient/tarmode panic when connecting to Windows 2000 clients;
+  (bso#9088).
+- Fix refreshing of Kerberos tickets in Winbind; (bso#9098).
+- Fix identification of idle clients in Winbind to avoid crashes and NDR
+  parsing errors; (bso#9104).
+- Fix compilation with newer MIT Kerberos which hides internal symbols;
+  (bso#9111).
+- Fix flooding the logs with records we don't find in pcap; (bso#9112).
+- Initialize the print backend after we setup winreg; (bso#9122).
+- Fix lprng job tracking errors; (bso#9123).
+- Fix setting of &quot;inherited&quot; bit on inherited ACE's; (bso#9124).
+- Fix Winbind panic if we couldn't find the domain; (bso#9135).
+- Make 'smbclient allinfo' show the snapshot list; (bso#9137).
+- Fix nfs quota support with Linux nfs4 mounts; (bso#9144).
+- Valid open requests can cause smbd assert due to incorrect oplock handling
+  on delete requests; (bso#9150).
+- NMB registration for a duplicate workstation fails with registration</comment>
+    <requestid>134806</requestid>
+  </revision>
+  <revision rev="125" vrev="55">
+    <srcmd5>9818eb6bd1cbc05f3dec97fe4a06b3d2</srcmd5>
+    <version>unknown</version>
+    <time>1349632954</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137385</requestid>
+  </revision>
+  <revision rev="126" vrev="56">
+    <srcmd5>2a5bb0d3755099519ace174dc11d7b52</srcmd5>
+    <version>unknown</version>
+    <time>1352700396</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>140584</requestid>
+  </revision>
+  <revision rev="127" vrev="57">
+    <srcmd5>8e3b22d74b9b581d488447e15af66c6f</srcmd5>
+    <version>unknown</version>
+    <time>1357853701</time>
+    <user>coolo</user>
+    <comment>The &quot;Execute the run_permissions macro on pre-11.4 systems and else the
+set_permission one if available.&quot; change set is a reworked/ enhanceent
+of the former &quot;Only execute the run_permissions macro on pre-12.3
+systems.&quot;  Therefore both share the same timestamp.
+
+We never pushed the first version into Factory.
+
+The actual changes of this submit request are:
+
+- Add the missing get_printing_ticket binary path while calling the
+  set_permissions macro; (bnc#783375).
+
+- Use the version macro while definition of the branch macro.
+
+- SEGV when using second vfs module; (bso#9471).
+
+- Update to 3.6.10.
+  + Respond correctly to FILE_STREAM_INFO requests; (bso#9460).
+  + Fix segfault when &quot;default devmode&quot; is disabled; (bso#9433).
+  + Fix segfaults in &quot;log level = 10&quot; on Solaris; (bso#9390).
+
+- Fix MD5 detection in the autoconf build; (bso#9037); (bso#9086); (bso#9094);
+  (bso#9418).
+- Use work around for 'winbind use default domain' only if it is set;
+  (bso#9367).
+- Allow smb2.acls torture test to pass against smbd with a POSIX ACLs backend;
+  (bso#9374).
+- large read requests cause server to issue malformed reply; (bso#9422).
+- s3-rpc_client: lookup nametype 0x20 in rpc_pipe_open_tcp_port(); (bso#9426).
+- Fix ncacn_ip_tcp reconnection code for lsa lookups; (bso#9439).
+- Allow to force DNS updates using net; (bso#9451).
+- Respond correctly to FILE_STREAM_INFO requests; (bso#9460).
+
+- On uninstall remove winbind from the pam configuration, invalidate the nscd
+  passwd and group cache and only recommend the install of nscd; (bnc#792340).
+
+- BuildRequire libnscd-devel once.
+
+- Remove obsoleted references to pre-9.4 SUSE systems; (bnc#792294).</comment>
+    <requestid>147861</requestid>
+  </revision>
+  <revision rev="128" vrev="58">
+    <srcmd5>646cf6a1abf15f80f61057b405439700</srcmd5>
+    <version>unknown</version>
+    <time>1359039800</time>
+    <user>coolo</user>
+    <comment>- Update to 3.6.11.
+  + defer_open is triggered multiple times on the same request; (bso#9196).
+  + Fix SEGV when using second vfs module; (bso#9471).
+
+- defer_open is triggered multiple times on the same request; (bso#9196).
+- Fix SEGV when using second vfs module; (bso#9471).
+- Correctly detect O_DIRECT; (bso#9548).
+- Mask off signals the correct way from the signal handler; (bso#9550).
+- ntlm_auth.1: Fix format and make examples visible; (bso#9569).
+
+- Disable SWAT during configure and don't package it any longer.
+
+- Remove dangling references to Heimdal from the spec file.
+
+- s3-printing: Add new printers to registry; (bso#8554); (bso#8612);</comment>
+    <requestid>149788</requestid>
+  </revision>
+  <revision rev="129" vrev="60">
+    <srcmd5>646cf6a1abf15f80f61057b405439700</srcmd5>
+    <version>unknown</version>
+    <time>1359110364</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="130" vrev="61">
+    <srcmd5>e20aedbd824397c73734db5d8ab73db7</srcmd5>
+    <version>unknown</version>
+    <time>1359997281</time>
+    <user>coolo</user>
+    <comment>- Update to 3.6.12.
+  + Address SWAT security issues CVE-2013-0213 and CVE-2013-0214 which both
+    don't apply to any SUSE Samba post-3.6.10 as it isn't longer built.
+  + Don't build and package static libraries.
+
+- Drop separate build-source-timestamp file as it led to a second, incorrect
+  Source Timestamp line.</comment>
+    <requestid>150723</requestid>
+  </revision>
+  <revision rev="131" vrev="62">
+    <srcmd5>0d2a2dd6d2d11a4d618d67cf357efcff</srcmd5>
+    <version>unknown</version>
+    <time>1362120782</time>
+    <user>coolo</user>
+    <comment>- No longer use the cifs- or smbfstab named configuration file on post-12.2
+  systems; (bnc#804822).
+
+- Shift the smbfs init script nfs dependency from Required to Should.
+
+- Point LD_LIBRARY_PATH to the just-built libraries while calling testparm to
+  generate the default share snippets on pre-12.2 systems.
+
+- Fix smbclient recursive mget EPERM handling; (bso#9633); (bnc#786350).
+
+- Do not restart the smbfs service on pre-11.3 systems during dhcp lease
+  renewal when the IP address remains the same; (bnc#800782).</comment>
+    <requestid>156705</requestid>
+  </revision>
+  <revision rev="132" vrev="63">
+    <srcmd5>8f9a14913776bfc713d320f0fe77fde2</srcmd5>
+    <version>unknown</version>
+    <time>1371562431</time>
+    <user>coolo</user>
+    <comment>- Don't package the SWAT man page while its build is disabled; (bnc#816647).
+
+- Don't install the tdb utilities man pages on post-12.1 systems; (bnc#823549).
+
+- Fix libreplace license ambiguity; (bso#8997); (bnc#765270).
+
+- s3-docs: Remove &quot;experimental&quot; label on &quot;max protocol=SMB2&quot; parameter;
+  (bso#9688).
+- Remove the compound_related_in_progress state from the smb2 global state;
+  (bso#9722).
+- Makefile: Don't know how to make LIBNDR_PREG_OBJ; (bso#9868).
+
+- Fix is_printer_published GUID retrieval; (bso#9900); (bnc#798856).
+
+- Update to 3.6.15.
+  + Fix crash bug in Winbind; (bso#9854).
+
+- Add support for PFC_FLAG_OBJECT_UUID when parsing packets; (bso#9382).
+- Fix &quot;guest ok&quot;, &quot;force user&quot; and &quot;force group&quot; for guest users; (bso#9746).
+- Fix 'map untrusted to domain' with NTLMv2; (bso#9817); (bnc#817919).
+- Fix crash bug in Winbind; (bso#9854).
+
+- Fix panic in nt_printer_publish_ads; (bso#9830).
+
+- Update to 3.6.14.
+  + Certain xattrs cause Windows error 0x800700FF; (bso#9130).
+- Exclude dbwrap_tool man page from the list of packaged files.
+
+- Remove disabled and anyhow obsoleted net-report and net_rpc_migrate patches.</comment>
+    <requestid>178946</requestid>
+  </revision>
+  <revision rev="133" vrev="64">
+    <srcmd5>24199636e135e6709b13bd7d1a2d4e85</srcmd5>
+    <version>unknown</version>
+    <time>1372271305</time>
+    <user>coolo</user>
+    <comment>- Adjust ldapsmb and nmbstatus man page syntax required by a newer pod2man.
+
+- Don't bzip2 the main tar ball, use the upstream gziped one instead.
+
+- Explicitly BuildRequire cyrus-sasl-devel, libattr-devel, and
+  libopenssl-devel.
+
+- Update to 3.6.16.
+  + Fix crash bug during Win8 sync; (bso#9822).
+  + Properly handle Oplock breaks in compound requests; (bso#9722).
+
+- Fix crash bug during Win8 sync; (bso#9822).
+- Check for system libtevent and link dbwrap_tool and dbwrap_torture against
+  it; (bso#9881).
+- errno gets overwritten in call to check_parent_exists(); (bso#9927).
+- Fix a bug of drvupgrade of smbcontrol; (bso#9941).
+
+- Document idmap_ad rfc2307 attribute requirements; (bso#9880); (bnc#820531).</comment>
+    <requestid>181065</requestid>
+  </revision>
+  <revision rev="134" vrev="65">
+    <srcmd5>b6f1a86d73e2d24955079f775894e08d</srcmd5>
+    <version>3.6.16</version>
+    <time>1372743907</time>
+    <user>coolo</user>
+    <comment>- Use SLE as product prefix for SUSE Linux Enterprise, oS for openSUSE, and
+  OBS for any other operating system to define the vendor string while build.
+
+- Remove ldapsmb from the main spec file.</comment>
+    <requestid>181698</requestid>
+  </revision>
+  <revision rev="135" vrev="66">
+    <srcmd5>72e1f000b20c732634ab90376dbd2dea</srcmd5>
+    <version>3.6.16</version>
+    <time>1372925859</time>
+    <user>coolo</user>
+    <comment>PIDL: fix parsing linemarkers in preprocessor output; (bso#9636).</comment>
+    <requestid>181805</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>6f100c36d5e063018826a1ab574ebf84</srcmd5>
+    <version>4.0.9</version>
+    <time>1377856134</time>
+    <user>coolo</user>
+    <comment>The huge difference in the package change log indeed was caused by the
+parallel development of Samba 3 and 4.
+
+- BuildRequire pyldb-devel.
+- Add libnetapi0 and samba-libs to baselibs.conf.
+- Update to 4.0.9.
+  + Fix crash of Winbind after &quot;ls -l /usr/local/samba/var/locks/sysvol&quot;;
+    (bso#9820).
+  + s3-lib: Fix segmentation fault while reading incomplete session info;
+    (bso#10003).
+  + smbd: Fix a 100% loop at shutdown time; (bso#10013).
+  + Windows 8 Roaming profiles fail; (bso#9678).
+  + Add UPN enumeration to passdb internal API; (bso#9779).
+  + smbd: Cleanup disonnected durable handles; (bso#9930).
+  + vfs_streams_xattr: Do not attempt to write empty attribute twice;
+    (bso#9970).
+  + Fix Windows error 0x800700FE when copying files with xattr names
+    containing &quot;:&quot;; (bso#9992).
+  + s3-winbind: Do not delete an existing valid credential cache; (bso#9994).
+  + Fix excessive RID allocation; (bso#10014).
+  + Add debugclass for DNS server; (bso#10015).
+  + Fix/improve debug options; (bso#10015).
+  + Allow to change the default location for Kerberos credential caches;
+    (bso#10043).
+  + Linux kernel oplock breaks can miss signals; (bso#10064).
+  + net ads join: Fix segmentation fault in
+    create_local_private_krb5_conf_for_domain; (bso#10073).</comment>
+    <requestid>196786</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>cb34629bbe97449a0182535afe1e5d9c</srcmd5>
+    <version>4.1.0</version>
+    <time>1378296325</time>
+    <user>coolo</user>
+    <comment>See http://lists.opensuse.org/opensuse-factory/2013-09/msg00022.html
+with references to the upstream release schedule of Samba 4.1.0
+
+4.1.0 RC 3 is scheduled for September 11 and GA for September 27.
+
+- Define the source URL differently in the case of a release candidate.
+
+- Update to 4.1.0rc2.
+  + Add vfs_btrfs module.
+  + Add support for server-side copy operations via the
+    SMB2 FSCTL_SRV_COPYCHUNK request.
+  + Fix replication with --domain-crictical-only to fill in backlinks;
+    (bso#9029).
+  + Windows 8 Roaming profiles fail; (bso#9678).
+  + Fix crash of winbind after &quot;ls -l /usr/local/samba/var/locks/sysvol&quot;;
+    (bso#9820).
+  + Windows error 0x800700FE when copying files with xattr names containing
+    &quot;:&quot;; (bso#9992).
+  + Do not delete an existing valid credential cache (s3-winbind); (bso#9994).
+  + Fix segfault while reading incomplete session info; (bso#10003).
+  + Missing integer wrap protection in EA list reading can cause server to
+    loop with DOS (CVE-2013-4124); (bso#10010).
+  + Fix a 100% loop at shutdown time (smbd); (bso#10013).
+  + Fix/improve debug options; (bso#10015).
+  + Rename regedit to samba-regedit; (bso#10040).
+  + Remove obsolete swat manpage and references; (bso#10041).
+  + Fix crashes in socket_get_local_addr(); (bso#10042).
+  + Allow to change the default location for Kerberos credential caches;
+    (bso#10043).
+  + Remove a redundant inlined substitution of ACLs; (bso#10045).
+  + nsswitch: Add OPT_KRB5CCNAME to avoid an error message; (bso#10048).
+  + dsdb improvements; (bso#10056).
+  + Linux kernel oplock breaks can miss signals; (bso#10064).</comment>
+    <requestid>197338</requestid>
+  </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>d8d2925b3b668522d576c00e57a4e7c4</srcmd5>
+    <version>4.1.0</version>
+    <time>1379076400</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to 4.1.0rc3.
+  + Fix working on site with Read Only Domain Controller; (bso#5917).
+  + Add man page for vfs_syncops; (bso#7364).
+  + Add man page for vfs_linux_xfs_sgid; (bso#7490).
+  + When replicating DNS for bind9_dlz we need to create the server-DNS
+    account remotely; (bso#9091).
+  + Winbind unable to retrieve user information from AD; (bso#9615).
+  + winbind_lookup_names() fails because of NT_STATUS_CANT_ACCESS_DOMAIN_INFO;
+    (bso#9899).
+  + Build Samba 4.0.x on AIX with IBM XL C/C++; (bso#9911).
+  + Add SMB2 and SMB3 support for smbclient; (bso#9974).
+  + Add man pages for ntdb tools; (bso#10000).
+  + Add man page for samba-regedit tool; (bso#10001).
+  + ::1 added to nameserver on join; (bso#10030).
+  + Fix memory leak in source3/lib/util.c:1493; (bso#10063).
+  + Fix segmentation fault in 'net ads join'; (bso#10073).
+  + Fix variable list in vfs_crossrename man page; (bso#10076).
+  + s3-winbind: Fix a segfault passing NULL to a fstring argument; (bso#10082).
+  + smbd: Fix async echo handler forking; (bso#10086).
+  + MacOSX 10.9 will not follow path-based DFS referrals handed out by Samba;
+    (bso#10097).
+  + Honour output buffer length set by the client for SMB2 GetInfo requests;
+    (bso#10106).
+  + Fix Winbind crashes on DC with trusted AD domains; (bso#10107).
+  + Handle Dropbox (write-only-directory) case correctly in pathname lookup;
+    (bso#10114).
+  + Masks incorrectly applied to UNIX extension permission changes;
+    (bso#10121).
+
+- Correct interpackage dependencies; (bso#10129).</comment>
+    <requestid>198926</requestid>
+  </revision>
+  <revision rev="139" vrev="4">
+    <srcmd5>d8d2925b3b668522d576c00e57a4e7c4</srcmd5>
+    <version>4.1.0</version>
+    <time>1379664605</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="140" vrev="5">
+    <srcmd5>17fcca53cee98f22787041f9a1da2bcf</srcmd5>
+    <version>4.1.0</version>
+    <time>1379926915</time>
+    <user>coolo</user>
+    <comment>Credits to Jan Engelhard who implemented the the split of the shared
+libraies packaging as it is part of this submit request.
+
+Systemd service files for nmb, smb, and winbind will follow soon.
+
+- Require libndr-standard-devel due to gen_ndr/lsa.h from libpdb-devel.
+
+- Add libdcerpc0, libdcerpc-atsvc0, libdcerpc-binding0, libdcerpc-samr0,
+  libgensec0, libndr0, libndr-krb5pac0, libndr-nbt0, libndr-standard0,
+  libpdb0, libregistry0, libsamba-credentials0, libsamba-hostconfig0,
+  libsamba-policy0, libsamba-util0, libsamdb0, libsmbclient-raw0, libsmbconf0,
+  libsmbldap0, and libtevent-util0 to baselibs.conf.
+
+- Implement shared library packaging guidelines.</comment>
+    <requestid>199779</requestid>
+  </revision>
+  <revision rev="141" vrev="6">
+    <srcmd5>a18a062e3c70dcdf586c26224dcc7349</srcmd5>
+    <version>4.1.0</version>
+    <time>1380713624</time>
+    <user>coolo</user>
+    <comment>The final 4.1.0 is scheduled for Friday, October 11.
+
+The goal is to have native systemd files tested and added too.
+
+- Update to 4.1.0rc4.
+  + dsdb: Convert the full string from UTF16 to UTF8, including embedded
+    NULLs; (bso#8077).
+  + python-samba-tool fsmo: Do not give an error on a successful role
+    transfer; (bso#9461).
+  + dbwrap_ctdb: Treat empty records as non-existing; (bso#10008).
+  + Raise the level of a debug when unable to open a printer; (bso#10118).
+  + Add &quot;acl allow execute always&quot; parameter; (bso#10134).
+  + vfs_shadow_copy2: Display previous versions correctly over SMB2;
+    (bso#10137).
+  + smbd: Always clean up share modes after hard crash; (bso#10138).
+  + Valid utf8 filenames cause &quot;invalid conversion error&quot; messages;
+    (bso#10139).
+  + libcli/smb: Use SMB1 MID=0 for the initial Negprot; (bso#10144).
+  + Samba SMB2 client code reads the wrong short name length in a directory
+    listing reply; (bso#10145).
+  + libcli/smb: Only check the SMB2 session setup signature if required and
+    valid; (bso#10146).
+  + Better document potential implications of a globally used &quot;valid users&quot;;
+    (bso#10147).
+  + cli_smb2_get_ea_list_path() failed to close file on exit; (bso#10149).
+  + Not all OEM servers support the ALTNAME info level; (bso#10150).
+  + Regression causes replication failure with Windows 2008R2 and deletes
+    Deleted Objects; (bso#10157).
+  + Netbios related samba process consumes 100% CPU; (bso#10158).
+  + Fix POSIX ACL mapping when setting DENY ACE's from Windows; (bso#10162).
+
+- Add or polish the shared library package summaries and descriptions.</comment>
+    <requestid>201529</requestid>
+  </revision>
+  <revision rev="142" vrev="7">
+    <srcmd5>ef3528620dc326d80c1c0714df90898f</srcmd5>
+    <version>4.1.0</version>
+    <time>1381475023</time>
+    <user>scarabeus_factory</user>
+    <comment>Please forward to openSUSE 13.1 too.
+
+- Unify the defattr lines in the pidl, python, test and test-devel files
+  section by removing the optional directory mode.
+
+- Verify source tar ball gpg signature.</comment>
+    <requestid>202797</requestid>
+  </revision>
+  <revision rev="143" vrev="8">
+    <srcmd5>2a6085b79655993e33ed26280c1dcd20</srcmd5>
+    <version>4.1.0</version>
+    <time>1382012847</time>
+    <user>scarabeus_factory</user>
+    <comment>Native systemd service files are on our todo list.
+
+- Update to 4.1.0.
+  + pam_winbindd: Support the KEYRING ccache type; (bso#10132).
+  + Fix PAC parsing failure; (bso#10178).</comment>
+    <requestid>203491</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>91f2d8e1406150cfdd49c9fe362acf5d</srcmd5>
+    <version>4.1.1</version>
+    <time>1384519128</time>
+    <user>coolo</user>
+    <comment>- Update to 4.1.1.
+  + ACLs are not checked on opening an alternate data stream on a file or
+    directory; CVE-2013-4475; (bso#10229); (bnc#848101).
+  + Private key in key.pem world readable; CVE-2013-4476; (bnc#848103).</comment>
+    <requestid>206855</requestid>
+  </revision>
+  <revision rev="145" vrev="2">
+    <srcmd5>4bc1ea3f3b5929b05aaed9ef0f3f1a91</srcmd5>
+    <version>4.1.1</version>
+    <time>1384718545</time>
+    <user>coolo</user>
+    <comment>Unconditionally create the CUPS smb backend sym link pointing to smbspool;
+(bnc#850656).</comment>
+    <requestid>207066</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>2eb2c67dffdc2b65d86864cf67f8be3f</srcmd5>
+    <version>4.1.2</version>
+    <time>1385191082</time>
+    <user>coolo</user>
+    <comment>- BuildRequire systemd on post-12.2 systems.
+
+- Update to 4.1.2.
+  + s4-dns: dlz_bind9: Create dns-HOSTNAME account disabled; (bso#9091).
+  + dfs_server: Use dsdb_search_one to catch 0 results as well as
+    NO_SUCH_OBJECT errors; (bso#10052).
+  + Missing talloc_free can leak stackframe in error path; (bso#10187).
+  + Fix memset used with constant zero length parameter; (bso#10190).
+  + s4:dsdb/rootdse: report 'dnsHostName' instead of 'dNSHostName';
+    (bso#10193).
+  + Make offline logon cache updating for cross child domain group membership;
+    (bso#10194).
+  + nsswitch: Fix short writes in winbind_write_sock; (bso#10195).
+  + RW Deny for a specific user is not overriding RW Allow for a group;
+    (bso#10196).
+  + vfs_glusterfs: Fix excessive debug output from vfs_gluster_open();
+    (bso#10224).
+  + vfs_glusterfs: Implement proper mashalling/unmarshalling of ACLs;
+    (bso#10224).
+  + VFS plugin was sending the actual size of the volume instead of the total
+    number of block units because of which windows was getting the wrong
+	 volume capacity; (bso#10224).
+  + libcli/smb: Fix smb2cli_ioctl*() against Windows 2008; (bso#10232).
+  + xattr: Fix listing EAs on *BSD for non-root users; (bso#10247).
+  + Fix the build of vfs_glusterfs; (bso#10253).
+  + s3-winbindd: Fix cache_traverse_validate_fn failure for NDR cache entries;
+    (bso#10264).
+  + util: Remove 32bit macros breaking strict aliasing; (bso#10269).
+
+- Let gpg verify execution condition not fail on non SUSE systems.
+
+- Add systemd support for post-12.2 systems.</comment>
+    <requestid>207997</requestid>
+  </revision>
+  <revision rev="147" vrev="2">
+    <srcmd5>a3431987acd26ccbda727f33889372b6</srcmd5>
+    <version>4.1.2</version>
+    <time>1386077262</time>
+    <user>coolo</user>
+    <comment>Remove bogus libsmbclient0 package description and cleanup the libsmbclient
+line from baselibs.conf; (bnc#853021).</comment>
+    <requestid>209189</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>9e6c66180a57afd2992c76958f9ccfc1</srcmd5>
+    <version>4.1.3</version>
+    <time>1386613095</time>
+    <user>coolo</user>
+    <comment>- Update to 4.1.3.
+  + DCE-RPC fragment length field is incorrectly checked; CVE-2013-4408;
+    (bnc#844720).
+  + pam_winbind login without require_membership_of restrictions;
+    CVE-2012-6150; (bnc#853347).
+
+- Make use of the full gpg pub key file name including the key ID.
+
+- Add transparent file compression support; (fate#316266).
+  + Implement FSCTL_GET_COMPRESSION and FSCTL_SET_COMPRESSION handlers.
+  + Add FILE_ATTRIBUTE_COMPRESSED and FILE_NO_COMPRESSION support.
+  + Extend vfs_btrfs VFS module to utilize get/set compression hooks.
+
+- Add support for FSCTL_SRV_COPYCHUNK_WRITE; (fate#314770).</comment>
+    <requestid>210027</requestid>
+  </revision>
+  <revision rev="149" vrev="2">
+    <srcmd5>36d492ff02b4c78ac2112693c2dce863</srcmd5>
+    <version>4.1.3</version>
+    <time>1387453880</time>
+    <user>coolo</user>
+    <comment>Do not BuildRequire perl ExtUtils::MakeMaker and Parse::Yapp as they're part
+of the minimum build environment.</comment>
+    <requestid>211377</requestid>
+  </revision>
+  <revision rev="150" vrev="3">
+    <srcmd5>4ae03f4dca2553bf5587bae188cfa271</srcmd5>
+    <version>4.1.3</version>
+    <time>1389284754</time>
+    <user>coolo</user>
+    <comment>- Call stop_on_removal from preun and restart_on_update and insserv_cleanup
+  from postun on pre-12.3 systems only; (bnc#857454).
+
+- BuildRequire gamin-devel instead of unmaintained fam-devel package on
+  post-12.1 systems.
+
+- smbd: allow updates on directory write times on open handles; (bso#9870).
+- lib/util: use proper include for struct stat; (bso#10276).
+- s3:winbindd fix use of uninitialized variables; (bso#10280).
+- s3-winbindd: Fix DEBUG statement in winbind_msg_offline(); (bso#10285).
+- s3-lib: Fix %G substitution for domain users in smbd; (bso#10286).
+- smbd: Always use UCF_PREP_CREATEFILE for filename_convert calls to resolve a
+  path for open; (bso#10297).
+- smb2_server processing overhead; (bso#10298).
+- ldb: bad if test in ldb_comparison_fold(); (bso#10305).
+- Fix AIO with SMB2 and locks; (bso#10310).
+- smbd: Fix a panic when a smb2 brlock times out; (bso#10311).
+- vfs_glusterfs: Enable per client log file; (bso#10337).
+
+- Add /etc/sysconfig/samba to the main and winbind package; (bnc#857454).
+
+- Create /var/run/samba with systemd-tmpfiles on post-12.2 systems;
+  (bnc#856759).
+
+- Fix broken rc{nmb,smb,winbind} sym links which should point to the service
+  binary on post-12.2 systems; (bnc#856759).
+
+- Add Snapper VFS module for snapshot manipulation; (fate#313347).
+  + dbus-1-devel required at build time.
+
+- Add File Server Remote VSS Protocol (FSRVP) client for SMB share
+  shadow-copies; (fate#313345).</comment>
+    <requestid>213213</requestid>
+  </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>876e6f1713382fdd6ab6b921c20b7f55</srcmd5>
+    <version>4.1.4</version>
+    <time>1389810977</time>
+    <user>coolo</user>
+    <comment>- Really add the WINBINDDOPTIONS sysconfig variable on install; (bnc#857454).
+
+- Correct sysconfig variable names by adding the missing D char; (bnc#857454).
+
+- Update to 4.1.4.
+  + Fix segfault in smbd; (bso#10284).
+  + Fix SMB2 server panic when a smb2 brlock times out; (bso#10311).</comment>
+    <requestid>213925</requestid>
+  </revision>
+  <revision rev="152" vrev="2">
+    <srcmd5>f2d144c7b31d553110ce84c5db5b57af</srcmd5>
+    <version>4.1.4</version>
+    <time>1389953794</time>
+    <user>coolo</user>
+    <comment>Add /var/cache/samba to the client file list; (bnc#846586).</comment>
+    <requestid>214148</requestid>
+  </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>c2793725a8a56be31d99f58e0c48c498</srcmd5>
+    <version>4.1.5</version>
+    <time>1393136907</time>
+    <user>coolo</user>
+    <comment>- Use libarchive to provide improved smbclient tarmode functionality;
+  (bso#9667); (bnc#861135).
+
+- Depend on %version-%release with all manual Provides and Requires;
+  (bnc#844307).
+
+- Update to 4.1.5.
+  + Fix 100% CPU utilization in winbindd when trying to free memory in
+    winbindd_reinit_after_fork; (bso#10358); (bnc#786677).
+  + smbd: Fix memory overwrites; (bso#10415).
+  + s3-winbind: Improve performance of wb_fill_pwent_sid2uid_done();
+    (bso#2191).
+  + ntlm_auth sometimes returns the wrong username to mod_ntlm_auth_winbind;
+    (bso#10087).
+  + s3: smbpasswd: Fix crashes on invalid input; (bso#10320).
+  + s3: vfs_dirsort module: Allow dirsort to work when multiple simultaneous
+    directories are open; (bso#10406).
+  + Add support for Heimdal's unified krb5 and hdb plugin system, cope with
+    first element in hdb_method having a different name in different heimdal
+    versions and fix INTERNAL ERROR: Signal 11 in the kdc pid; (bso#10418).
+  + vfs_btrfs: Fix incorrect zero length server-side copy request handling;
+    (bso#10424).
+  + s3: modules: streaminfo: As we have no VFS function SMB_VFS_LLISTXATTR we
+    can't cope with a symlink when lp_posix_pathnames() is true; (bso#10429).
+  + smbd: Fix an ancient oplock bug; (bso#10436).
+  + Fix crash bug in smb2_notify code; (bso#10442).
+
+- Remove superfluous obsoletes *-64bit in the ifarch ppc64 case; (bnc#437293).
+
+- Migrate @GMT token parsing functionality into vfs_snapper; (bnc#863079).
+  + Improve vfs_snapper documentation.
+
+- Fix Winbind 100% CPU utilization caused by domain list corruption;
+  (bso#10358); (bnc#786677).
+
+- Fix memory overwrite in FSCTL_VALIDATE_NEGOTIATE_INFO handler; (bso#10415);
+  (bnc#862370).
+
+- Streamline the vendor suffix handling and add support for SLE 12.
+
+- Fix zero length server-side copy request handling; (bso#10424);
+  (bnc#862558).
+
+- Set the PID directory to /run/samba on post-12.2 systems.
+
+- Make use of the tmpfilesdir macro while calling systemd-tmpfiles.
+
+- Make winbindd print the interface version when it gets an INTERFACE_VERSION
+  request; (bnc#726937).
+
+- Fix vfs_btrfs build on older platforms with duplicate WRITE_FLUSH
+  definitions; (bnc#860832).
+
+- Check for NULL gensec_security in gensec_security_by_auth_type();
+  (bnc#860809).
+
+- Ensure ndr table initialization; (bnc#860648).
+
+- Add File Server Remote VSS Protocol (FSRVP) server for SMB share
+  shadow-copies; (fate#313346).
+
+- s3-dir: Fix the DOS clients against 64-bit smbd's; (bso#2662).
+- shadow_copy2: module &quot;Previous Version&quot; not working in Windows 7;
+  (bso#10259).
+- s3-passdb: Fix string duplication to pointers; (bso#10367).
+- vfs/glusterfs: in case atime is not passed, set it to the current atime;
+  (bso#10384)
+
+- s3: winbindd: Move calling setup_domain_child() into add_trusted_domain();
+  (bso#10358); (bnc#786677).
+
+- Default sysconfig daemon options to -D; (bso#10388); (bnc#857454).
+
+- Allow smbcacls to take a '--propagate-inheritance' flag to indicate that
+  the add, delete, modify and set operations now support automatic
+  propagation of inheritable ACE(s); (FATE#316474).</comment>
+    <requestid>223503</requestid>
+  </revision>
+  <revision rev="154" vrev="2">
+    <srcmd5>90ea81dbdcc8c0bef95cf0957bc878fa</srcmd5>
+    <version>4.1.5</version>
+    <time>1393681120</time>
+    <user>coolo</user>
+    <comment>- Propagate snapshot enumeration permissions errors to SMB clients;
+  (bnc#865641).
+
+- Properly handle empty 'requires_membership_of' entries in
+  /etc/security/pam_winbind.conf; (bnc#865771).
+
+- Fix problem with server taking too long to respond to a
+  MSG_PRINTER_DRVUPGRADE message; (bso#9942); (bnc#863748).
+- Fix memory leak in printer_list_get_printer(); (bso#9993); (bnc#865561).
+
+- Fix stream_depot VFS module on Btrfs; (bso#10467); (bnc#865397).</comment>
+    <requestid>224138</requestid>
+  </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>a00c75dcaa5c0c445af5a6619d1fcf80</srcmd5>
+    <version>4.1.6</version>
+    <time>1395146295</time>
+    <user>coolo</user>
+    <comment>- Depend only on %version with all manual Provides and Requires; (bnc#844307).
+
+- Update to 4.1.6.
+  + Password lockout not enforced for SAMR password changes; CVE-2013-4496;
+    (bnc#849224).
+  + smbcacls can remove a file or directory ACL by mistake; CVE-2013-6442;
+    (bnc#855866).
+
+- Password lockout not enforced for SAMR password changes;
+  CVE-2013-4496; (bnc#849224).
+
+- Call update-apparmor-samba-profile via ExecStartPre too; (bnc#867665).
+
+- samba4 smbcalcs --chown | --chgrp dacl regression; CVE-2013-6442;
+  (bnc#855866).
+
+- Retry named pipe open requests on STATUS_PIPE_NOT_AVAILABLE; (bso#10484);
+  (bnc#865095).</comment>
+    <requestid>225717</requestid>
+  </revision>
+  <revision rev="156" vrev="2">
+    <srcmd5>762dd638839c2fbb784a8fd32e7607b9</srcmd5>
+    <version>4.1.6</version>
+    <time>1396344858</time>
+    <user>coolo</user>
+    <comment>- Extend vfs_snapper man page to cover permissions; (bnc#870570).
+
+- Fix RPC server handling of fragmented requests; (bso#10481); (bnc#869707).
+
+- Default with the cache and lock directory to the same path to have both
+  non-persistent and persistent data at one location; (bnc#846586).</comment>
+    <requestid>228155</requestid>
+  </revision>
+  <revision rev="157" vrev="3">
+    <srcmd5>e89101d34b2b2f76ee2002322b7ba38f</srcmd5>
+    <version>4.1.6</version>
+    <time>1396709400</time>
+    <user>coolo</user>
+    <comment>- Add krb5rcache directory to the winbind package; (bnc#870607).
+- Cleanup and consolidate the sysconfig and systemd service files.</comment>
+    <requestid>228515</requestid>
+  </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>932511bdf15496d83710fe11d030602d</srcmd5>
+    <version>4.1.7</version>
+    <time>1398278141</time>
+    <user>coolo</user>
+    <comment>- Update to 4.1.7.
+
+See WHATSNEW.txt from the main tar ball or the samba.changes file for
+more details.
+
+- Create a new DBus connection for every vfs_snapper request, to ensure
+  correct snapper UID detection; (bnc#866354).
+
+- Fix &quot;Invalid read&quot; in method reply_writeclose; (bnc#873658).
+
+- Fix minor compiler warnings in snapshot code-path; (bnc#873177).
+
+- Remove references to the obsolete samba-krb-printing package and
+  get_printing_ticket binary.
+
+- Fix malformed FSCTL_SRV_ENUMERATE_SNAPSHOTS response; (bnc#872396).
+
+- User error strings instead of hex codes where possible for FSRVP
+  errors; (bnc#866927).
+
+- Fix remote share shadow copy request UNCs; (bso#10521); (bnc#870957).</comment>
+    <requestid>230698</requestid>
+  </revision>
+  <revision rev="159" vrev="2">
+    <srcmd5>c2c0cf43ceca893106e5efad427ee27c</srcmd5>
+    <version>4.1.7</version>
+    <time>1399051296</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>232404</requestid>
+  </revision>
+  <revision rev="160" vrev="3">
+    <srcmd5>0518a024812c896b8664890dcf691a54</srcmd5>
+    <version>4.1.7</version>
+    <time>1400255785</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>233763</requestid>
+  </revision>
+  <revision rev="161" vrev="4">
+    <srcmd5>f4b55f70921a1903ba62a2010807a034</srcmd5>
+    <version>4.1.7</version>
+    <time>1400742253</time>
+    <user>coolo</user>
+    <comment>Update samba-pubkey_6568B7EA.asc which will expire 2016-01-17.</comment>
+    <requestid>234542</requestid>
+  </revision>
+  <revision rev="162" vrev="5">
+    <srcmd5>5b3780498ede5c0b1ad366d07e8ca9c5</srcmd5>
+    <version>4.1.7</version>
+    <time>1401685225</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>235828</requestid>
+  </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>0853c9e64c39953193411eceb5fb4693</srcmd5>
+    <version>4.1.9</version>
+    <time>1403772152</time>
+    <user>coolo</user>
+    <comment>- Prevent file truncation on an open that fails with share mode violation;
+  (bso#10671); (bnc#884056).
+
+- Update to 4.1.9.
+  + Fix nmbd denial of service; CVE-2014-0244; (bnc#880962).
+  + Fix segmentation fault in smbd_marshall_dir_entry()'s SMB_FIND_FILE_UNIX
+    handler; CVE-2014-3493; (bnc#883758).
+
+See WHATSNEW.txt from the main tar ball or the samba.changes file for
+more details.</comment>
+    <requestid>238632</requestid>
+  </revision>
+  <revision rev="164" vrev="2">
+    <srcmd5>46dcfa43609fdb53a4bfd1a91a50b75b</srcmd5>
+    <version>4.1.9</version>
+    <time>1404996899</time>
+    <user>coolo</user>
+    <comment>BuildRequire systemd-devel, configure --with-systemd, and modify the service
+files accordingly on post-12.2 systems; (bso#10517); (bnc#865627).</comment>
+    <requestid>239844</requestid>
+  </revision>
+  <revision rev="165" vrev="3">
+    <srcmd5>fe002b24d4645fa138fb902a5225ec88</srcmd5>
+    <version>4.1.9</version>
+    <time>1405521438</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>241075</requestid>
+  </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>8e2ac49a7b4036e176d48c48ac79d43f</srcmd5>
+    <version>4.1.10</version>
+    <time>1406661699</time>
+    <user>coolo</user>
+    <comment>Update to 4.1.10.
+
+See WHATSNEW.txt from the main tar ball or the samba.changes file for
+more details.</comment>
+    <requestid>242749</requestid>
+  </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>de07487b379e7b7eb9830774c1ec16f6</srcmd5>
+    <version>4.1.11</version>
+    <time>1407943192</time>
+    <user>lnussel</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>244187</requestid>
+  </revision>
+  <revision rev="168" vrev="2">
+    <srcmd5>9df1e27cceb543d7d1d969a013977ef0</srcmd5>
+    <version>4.1.11</version>
+    <time>1409252719</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>246546</requestid>
+  </revision>
+  <revision rev="169" vrev="4">
+    <srcmd5>9df1e27cceb543d7d1d969a013977ef0</srcmd5>
+    <version>4.1.11</version>
+    <time>1409303310</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="170" vrev="5">
+    <srcmd5>7d3d8b7955905206f22bd63344deabdd</srcmd5>
+    <version>4.1.11</version>
+    <time>1409914796</time>
+    <user>coolo</user>
+    <comment>fix FSCTL_SET_SPARSE request validation</comment>
+    <requestid>247416</requestid>
+  </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>aebd999457000748401ede2ccd4235cc</srcmd5>
+    <version>4.1.12</version>
+    <time>1411721490</time>
+    <user>coolo</user>
+    <comment>- Exclude unwanted libdnsserver_common and libdfs_server_ad shared libs and
+  the man page of the unused findsmb script.
+
+- Skip groups that aren't mapped by idmap_ad; (bso#10824); (bnc#897969).
+
+- Update to 4.1.12.
+
+  See WHATSNEW.txt from the main tar ball or the samba.changes file for
+  more details.
+
+- Wait for network-online.target to prevent caching of
+  pre-network failures; (bnc#889175).</comment>
+    <requestid>252315</requestid>
+  </revision>
+  <revision rev="172" vrev="2">
+    <srcmd5>adf8e7778d39329be88aa634b98452e9</srcmd5>
+    <version>4.1.12</version>
+    <time>1413269953</time>
+    <user>coolo</user>
+    <comment>- Backport upstream master fixes for samba-regedit; (bnc#896536).
+
+- Fix small memory-leak in the background print process; (bnc#899558).
+
+- Modify samba-regedit so it displays correctly (related to ncurses).
+  Changed code to use menu sub windows, seems to fix problems with display not
+  refreshing; explicitly BuildRequire ncurses-devel; (bnc#896536).</comment>
+    <requestid>254960</requestid>
+  </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>9f3213d2488f53655595e8f256ba0726</srcmd5>
+    <version>4.1.13</version>
+    <time>1414744752</time>
+    <user>coolo</user>
+    <comment>Update to 4.1.13.
+
+See WHATSNEW.txt from the main tar ball or the samba.changes file for
+more details.</comment>
+    <requestid>258451</requestid>
+  </revision>
+  <revision rev="174" vrev="2">
+    <srcmd5>e0c5a6ef1602e8eb381eee185b70ff8c</srcmd5>
+    <version>4.1.13</version>
+    <time>1415347519</time>
+    <user>coolo</user>
+    <comment>- Use the upstream tar ball, as signature verification is now able to handle
+  compressed archives.
+
+- Fix leak when closing file descriptor returned from dirfd; (bso#10918).
+
+- Remove dependency on gpg-offline as signature checking is implemented in the
+  source validator.</comment>
+    <requestid>260078</requestid>
+  </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>3e373edb48a38040f51120b748534740</srcmd5>
+    <version>4.1.14</version>
+    <time>1417870055</time>
+    <user>dimstar_suse</user>
+    <comment>- Specify soft dependency for network-online.target in Winbind systemd service
+  file; (bnc#889175).
+
+- Update to 4.1.14.
+  + pidl/wscript: Remove --with-perl-* options; revert buildtools/wafadmin/
+    Tools/perl.py back to upstream state; (bso#10472).
+  + s4-dns: Add support for BIND 9.10; (bso#10620).
+  + nmbd fails to accept &quot;--piddir&quot; option; (bso#10711).
+  + nss_winbind: Add getgroupmembership for FreeBSD; (bso#10835).
+  + S3: source3/smbd/process.c::srv_send_smb() returns true on the error path;
+    (bso#10880).
+  + vfs_glusterfs: Remove &quot;integer fd&quot; code and store the glfs pointers;
+    (bso#10889).
+  + s3-nmbd: Fix netbios name truncation; (bso#10896).
+  + spoolss: Fix handling of bad EnumJobs levels; (bso#10898).
+  + s3: libsmbclient-smb2. MacOSX 10 SMB2 server doesn't set
+    STATUS_NO_MORE_FILES when handed a non-wildcard path; (bso#10904).
+  + spoolss: Fix jobid in level 3 EnumJobs response; (bso#10905).
+  + s3: nmbd: Ensure NetBIOS names are only 15 characters stored; (bso#10920).
+  + s3:smbd: Fix file corruption using &quot;write cache size != 0&quot;; (bso#10921).
+  + pdb_tdb: Fix a TALLOC/SAFE_FREE mixup; (bso#10932).
+  + s3-keytab: Fix keytab array NULL termination; (bso#10933).
+  + Cleanup add_string_to_array and usage; (bso#10942).
+
+- Remove and cleanup shares and registry state associated with
+  externally deleted snaphots exposed as shadow copies; (bnc#876312).</comment>
+    <requestid>264164</requestid>
+  </revision>
+  <revision rev="176" vrev="2">
+    <srcmd5>89110cd795ea7eee1d82f37683689d7b</srcmd5>
+    <version>4.1.14</version>
+    <time>1418737644</time>
+    <user>dimstar_suse</user>
+    <comment>- Lookup FSRVP share snums at runtime rather than storing them persistently;
+  (bnc#908627).</comment>
+    <requestid>264522</requestid>
+  </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>9cb7a4486a079a51098c85f36eb092d5</srcmd5>
+    <version>4.1.15</version>
+    <time>1421873755</time>
+    <user>coolo</user>
+    <comment>- Enable avahi support on post-12.2 systems.
+
+- Update to 4.1.15.
+  + pam_winbind: Fix warn_pwd_expire implementation; (bso#9056).
+  + nsswitch: Fix soname of linux nss_*.so.2 modules; (bso#9299).
+  + Fix profiles tool; (bso#9629).
+  + s3-lib: Do not require a password with --use-ccache; (bso#10279).
+  + s4:dsdb/rootdse: Expand extended dn values with the AS_SYSTEM control;
+    (bso#10949).
+  + s4-rpc: dnsserver: Fix enumeration of IPv4 and IPv6 addresses; (bso#10952).
+  + s3:smb2_server: Allow reauthentication without signing; (bso#10958).
+  + s3-smbclient: Return success if we listed the shares; (bso#10960).
+  + s3-smbstatus: Fix exit code of profile output; (bso#10961).
+  + libcli: SMB2: Pure SMB2-only negprot fix to make us behave as a Windows
+    client does; (bso#10966).
+  + s3: smbd/modules: Fix *allocate* calls to follow POSIX error return
+    convention; (bso#10982).
+  + Fix 'domain join' by adding 'drsuapi.DsBindInfoFallBack' attribute
+    'supported_extensions'; (bso#11006).
+  + idl:drsuapi: Manage all possible lengths of drsuapi_DsBindInfo;
+    (bso#11006).
+  + winbind: Retry LogonControl RPC in ping-dc after session expiration;
+    (bso#11034).
+
+- yast2-samba-client should be able to specify osName and osVer on
+  AD domain join; (bnc#873922).
+
+- Fix spoolss error response marshalling; (bso#10984).
+
+- Fix spoolss EnumJobs and GetJob responses; (bso#10905); (bnc#898031).
+  + Fix handling of bad EnumJobs levels; (bso#10898).
+
+- Prune idle or hung connections older than &quot;winbind request timeout&quot;;
+  (bso#3204); (bnc#872912).</comment>
+    <requestid>281307</requestid>
+  </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>7b0e669b8a98f54cfded7a2042664841</srcmd5>
+    <version>4.1.16</version>
+    <time>1422216793</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix vfs_snapper DBus string handling; (bso#11055); (bnc#913238).
+
+- Update to 4.1.16.
+  + dsdb-samldb: Check for extended access rights before we allow changes to
+    userAccountControl; (bso#10993); CVE-2014-8143; (boo#914279).
+
+- Fix libsmbclient DFS referral handling.
+  + Reuse connections derived from DFS referrals; (bso#10123); (fate#316512).
+  + Set domain/workgroup based on authentication callback value; (bso#11059).</comment>
+    <requestid>282480</requestid>
+  </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>ef5d9edfc637559c74395760ccdacf7a</srcmd5>
+    <version>4.1.17</version>
+    <time>1425565994</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix tdb_store_flag_to_ntdb() gcc5 build failure.
+
+- Update to 4.1.17.
+  + Ensure we don't call talloc_free on an uninitialized pointer;
+    CVE-2015-0240; (bso#11077); (bnc#917376).</comment>
+    <requestid>288513</requestid>
+  </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>f6685973196ce746c62a95c37f66635f</srcmd5>
+    <version>4.2.0</version>
+    <time>1426495265</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.2.0.
+
+Check WHATSNEW.txt from the main tar ball, the web page, or the samba
+package change log for a detailed list of changes.</comment>
+    <requestid>289602</requestid>
+  </revision>
+  <revision rev="181" vrev="2">
+    <srcmd5>3ecf719e710ebd2b8b60ad6329109526</srcmd5>
+    <version>4.2.0</version>
+    <time>1427735397</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>293431</requestid>
+  </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>9346025e261fbe238d245f7bd8ac8c15</srcmd5>
+    <version>4.2.1</version>
+    <time>1429657899</time>
+    <user>dimstar_suse</user>
+    <comment>This request depends on network:samba:STABLE/talloc version 2.1.2 see
+submit request 297171 https://build.opensuse.org/request/show/297171
+
+- Update to 4.2.1.
+
+  Check WHATSNEW.txt from the main tar ball, the web page, or the samba
+  package change log for a detailed list of changes.
+
+- Prevent samba package updates from disabling samba kerberos printing.
+
+- Add sparse file support for samba; (fate#318424).
+
+- Purge printer name cache on spoolss SetPrinter change; (bso#11210);
+  (bnc#901813).
+
+- Use domain name if search by domain SID fails to send SIDHistory
+  lookups to correct idmap backend; (bnc#773464).</comment>
+    <requestid>297173</requestid>
+  </revision>
+  <revision rev="183" vrev="2">
+    <srcmd5>b355a0696cef1a30c20cbb4041cc915f</srcmd5>
+    <version>4.2.1</version>
+    <time>1431799676</time>
+    <user>coolo</user>
+    <comment>- Remove the independently built libraries ldb, talloc, tdn, and tevent and
+  the post-10.3 renamed libsmbclient from baselibs.conf.
+
+- Drop redundant doc attribute from man pages.</comment>
+    <requestid>307406</requestid>
+  </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>e904f485dd33cf35bec810deadadf302</srcmd5>
+    <version>4.2.2</version>
+    <time>1433144450</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.2.2.
+
+Check WHATSNEW.txt from the main tar ball, the web page, or the samba
+package change log for a detailed list of changes.</comment>
+    <requestid>309178</requestid>
+  </revision>
+  <revision rev="185" vrev="2">
+    <srcmd5>c8a8930b8f77de87f521a73760d76ed1</srcmd5>
+    <version>4.2.2</version>
+    <time>1434003632</time>
+    <user>dimstar_suse</user>
+    <comment>- Order winbind.service Before and Want nss-user-lookup target.
+
+- Remove fam-devel build-time dependency for post-6 RHEL systems.</comment>
+    <requestid>311318</requestid>
+  </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>a77048c30c368b93d411f7332e49cafa</srcmd5>
+    <version>4.2.3</version>
+    <time>1437059653</time>
+    <user>coolo</user>
+    <comment>- Update to 4.2.3.
+
+  Check WHATSNEW.txt from the main tar ball, the web page, or the samba
+  package change log for a detailed list of changes.
+
+- Disable rpath usage; (bnc#902421).
+
+- Make the winbind package depend on the matching libwbclient version and
+  vice versa; (bnc#936909).
+
+- Backport changes to use resource group sids obtained from pac logon_info;
+  (bso#11328); (bnc#912457)</comment>
+    <requestid>316836</requestid>
+  </revision>
+  <revision rev="187" vrev="2">
+    <srcmd5>362ea3eae98f8adcc9242fb7ed210041</srcmd5>
+    <version>4.2.3</version>
+    <time>1437477990</time>
+    <user>coolo</user>
+    <comment>Remove libiniparser-devel build-time requirement.</comment>
+    <requestid>317282</requestid>
+  </revision>
+  <revision rev="188" vrev="3">
+    <srcmd5>bceafd07f29749a42c07f956a03a60c2</srcmd5>
+    <version>4.2.3</version>
+    <time>1439984455</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>323232</requestid>
+  </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>b611e301726d5ce4d2f7430425e1c427</srcmd5>
+    <version>4.3.0</version>
+    <time>1441822841</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.3.0.
+
+  Check WHATSNEW.txt from the main tar ball, the web page, or the samba
+  package change log for a detailed list of changes.
+
+- Do not provide and obsolete libpdb0 from libsamba-passdb0; (bnc#942716).
+
+- Configure with --bundled-libraries=NONE; (bso#11458).</comment>
+    <requestid>329782</requestid>
+  </revision>
+  <revision rev="190" vrev="2">
+    <srcmd5>9f22cc6d3a4ccfec05c4d4dc71ca19c1</srcmd5>
+    <version>4.3.0</version>
+    <time>1442638466</time>
+    <user>coolo</user>
+    <comment>This commit by intention reverts the
+
+  Do not provide and obsolete libpdb0 from libsamba-passdb0
+
+change is the reported issue requires more investigation.
+
+With the first suggested solution we have two issues:
+
+a) a library name conflict as reported to Samba upstream at
+   https://bugzilla.samba.org/show_bug.cgi?id=10355
+
+   As libpdb depends heavily on other versioned shared Samba libraries
+	libpdb in the old version can't work alone.  We'll end up in a
+	library missmatch.
+
+b) libzypp (YaST/ zypper) pulls in libpdb0 _i586_ from the main openSUSE
+   13.2 repository for example
+
+The actual package changes are:
+
+- Package /var/lib/samba/private/sock with 0700 permissions; (bnc#946051).
+
+- Package /var/lib/samba/msg with 0755 permissions; (bnc#945502).
+
+- Require to install libfam0-gamin from samba-libs on post-12.1 and pre-13.15
+  systems; (bnc#945013).</comment>
+    <requestid>331893</requestid>
+  </revision>
+  <revision rev="191" vrev="3">
+    <srcmd5>13d3d54ad270dfc7173588af10ba1390</srcmd5>
+    <version>4.3.0</version>
+    <time>1443694949</time>
+    <user>dimstar_suse</user>
+    <comment>- Relocate the tmpfiles.d directory to the client package; (bnc#947552).
+
+- Do not provide libpdb0 from libsamba-passdb0 but add it to baselibs.conf
+  instead; (bnc#942716).</comment>
+    <requestid>333929</requestid>
+  </revision>
+  <revision rev="192" vrev="1">
+    <srcmd5>5cb7ca4bb5c99ed7f5fdd39d3481b1ef</srcmd5>
+    <version>4.3.1</version>
+    <time>1446049771</time>
+    <user>dimstar_suse</user>
+    <comment>This request depends on
+
+https://build.opensuse.org/request/show/340759  talloc
+https://build.opensuse.org/request/show/340760  ldb
+https://build.opensuse.org/request/show/340760  tevent
+
+The changes to the samba package sources are:
+
+- Require renamed python-ldb-devel and python-talloc-devel at build-time.
+- Requires python-ldb and python-talloc from the python subpackage.
+
+- Update to 4.3.1.
+
+  Check WHATSNEW.txt from the main tar ball or the web page for a detailed
+  list of changes.</comment>
+    <requestid>340763</requestid>
+  </revision>
+  <revision rev="193" vrev="2">
+    <srcmd5>e8c19113d8c544e0b8c50dc802928cfd</srcmd5>
+    <version>4.3.1</version>
+    <time>1448400076</time>
+    <user>coolo</user>
+    <comment>- Ensure to link with --as-needed flag by removing SUSE_ASNEEDED=0.
+- Always use the default optimization even on pre-9.2 systems.
+
+- Remove redundant configure options while adding with-relro.
+
+- Relocate the lockdir to the /var/lib/samba/lock directory.
+
+- Cleanup and enhance the pidl sub package.</comment>
+    <requestid>345393</requestid>
+  </revision>
+  <revision rev="194" vrev="1">
+    <srcmd5>d233e7d091dd0a2e540d0fe6226d5f03</srcmd5>
+    <version>4.3.2</version>
+    <time>1449383850</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.3.2.
+
+Check WHATSNEW.txt from the main tar ball or the web page for a detailed
+list of changes.</comment>
+    <requestid>347083</requestid>
+  </revision>
+  <revision rev="195" vrev="1">
+    <srcmd5>d4e0752d3236b549ed559f80b2e0d23e</srcmd5>
+    <version>4.3.3</version>
+    <time>1450471877</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.3.3.
+  + Malicious request can cause Samba LDAP server to hang, spinning using CPU;
+    CVE-2015-3223; (bso#11325); (bnc#958581).
+  + Remote read memory exploit in LDB; CVE-2015-5330; (bso#11599);
+    (bnc#958586).
+  + Insufficient symlink verification (file access outside the share);
+    CVE-2015-5252; (bso#11395); (bnc#958582).
+  + No man in the middle protection when forcing smb encryption on the client
+    side; CVE-2015-5296; (bso#11536); (bnc#958584).
+  + Currently the snapshot browsing is not secure thru windows previous version
+    (shadow_copy2); CVE-2015-5299; (bso#11529); (bnc#958583).
+  + Fix Microsoft MS15-096 to prevent machine accounts from being changed into
+    user accounts; CVE-2015-8467; (bso#11552); (bnc#958585).</comment>
+    <requestid>349211</requestid>
+  </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>7a425dcb6a8e0d1a7af2dc52182cec81</srcmd5>
+    <version>4.3.4</version>
+    <time>1453280056</time>
+    <user>dimstar_suse</user>
+    <comment>- Add quotes around path of update-apparmor-samba-profile; (bnc#962177).
+
+- Remove autoconf build-time requirement.
+
+- Update to 4.3.4.
+  + vfs_fruit: Enable POSIX directory rename semantics; (bso#11065).
+  + Crash: Bad talloc magic value - access after free; (bso#11394).
+  + Copying files with vfs_fruit fails when using vfs_streams_xattr without
+    stream prefix and type suffix; (bso#11466).
+  + samba-tool: Fix uncaught exception if no fSMORoleOwner attribute is given;
+    (bso#11613).
+  + Fix a typo in the smb.conf manpage, explanation of idmap config;
+    (bso#11619).
+  + Correctly initialize the list head when keeping a list of primary followed
+    by DFS connections; (bso#11624).
+  + Reduce the memory footprint of empty string options; (bso#11625).
+  + lib/async_req: Do not install async_connect_send_test; (bso#11639).
+  + Fix typos in man vfs_gpfs; (bso#11641).
+  + Make &quot;hide dot files&quot; option work with &quot;store dos attributes = yes&quot;;
+    (bso#11645).
+  + Fix a corner case of the symlink verification; (bso#11647);  (bnc#960249).
+  + Do not disable &quot;store dos attributes&quot; on-the-fly; (bso#11649).
+  + Update lastLogon and lastLogonTimestamp; (bso#11659).
+
+- Prevent access denied if the share path is &quot;/&quot;; (bso#11647); (bnc#960249).</comment>
+    <requestid>354145</requestid>
+  </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>dfa2bf60c8472f34e6afbe8225b25334</srcmd5>
+    <version>4.3.5</version>
+    <time>1456434057</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.3.5.
+
+  Check WHATSNEW.txt from the main tar ball, the web page, or the samba
+  package change log for a detailed list of changes.
+
+- Shift samba-client sysconfig data into samba and samba-winbind; (bsc#947361).
+
+- Enable clustering (CTDB) support; (bsc#966271).
+
+- s3: smbd: Fix timestamp rounding inside SMB2 create; (bso#11703);
+  (bsc#964023).</comment>
+    <requestid>361133</requestid>
+  </revision>
+  <revision rev="198" vrev="2">
+    <srcmd5>16ac05718f20c6ad5609cc11e7604eb0</srcmd5>
+    <version>4.3.5</version>
+    <time>1457353559</time>
+    <user>dimstar_suse</user>
+    <comment>- Only obsolete but do not provide gplv2/3 package names; (bsc#968973).
+
+- Relocate existing lock files to /var/lib/samba/lock; (bsc#968963).</comment>
+    <requestid>364943</requestid>
+  </revision>
+  <revision rev="199" vrev="1">
+    <srcmd5>e7740391ae4e149bbc5b43d2c98c8b97</srcmd5>
+    <version>4.3.6</version>
+    <time>1458120256</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.3.6.
+  + Getting and setting Windows ACLs on symlinks can change permissions on link
+    target; CVE-2015-7560; (bso#11648); (bsc#968222).
+  + Fix Out-of-bounds read in internal DNS server; CVE-2016-0771;
+    (bso#11128); (bso#11686); (bsc#968223).</comment>
+    <requestid>368484</requestid>
+  </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>09fa030011c6100bfcb12977cf90bee0</srcmd5>
+    <version>4.4.2</version>
+    <time>1460631740</time>
+    <user>dimstar_suse</user>
+    <comment>badlock fixes (bsc#936862, bsc#971965, bsc#973031, bsc#973032, bsc#973033, bsc#973034, bsc#973035, bsc#973036)</comment>
+    <requestid>389520</requestid>
+  </revision>
+  <revision rev="201" vrev="2">
+    <srcmd5>748f5bd8a3ab9fe31c2408e1af78d4f4</srcmd5>
+    <version>4.4.2</version>
+    <time>1462696710</time>
+    <user>dimstar_suse</user>
+    <comment>Fix NTLMSSP regressions caused by badlock fixes</comment>
+    <requestid>393429</requestid>
+  </revision>
+  <revision rev="202" vrev="1">
+    <srcmd5>135a8df27dc8fe69fc08a0cfa9514bce</srcmd5>
+    <version>4.4.4</version>
+    <time>1465847383</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.4.4</comment>
+    <requestid>400812</requestid>
+  </revision>
+  <revision rev="203" vrev="2">
+    <srcmd5>c58c4ace1a84ef74fdba6edbd56e8e8f</srcmd5>
+    <version>4.4.4</version>
+    <time>1467205459</time>
+    <user>dimstar_suse</user>
+    <comment>Remove obsolete syslog.target; (bsc#983938); Honor smb.conf socket options in winbind; (bsc#975131); Don't use htons() with IP_PROTO_RAW; (bso#11705); (bsc#969522).</comment>
+    <requestid>404084</requestid>
+  </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>19c05efe12686aa26f07ec6b229b5bc3</srcmd5>
+    <version>4.4.5</version>
+    <time>1468359918</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to 4.4.5: Prevent client-side SMB2 signing downgrade; CVE-2016-2119; (bso#11860); (bsc#986869).</comment>
+    <requestid>407155</requestid>
+  </revision>
+  <revision rev="205" vrev="1">
+    <srcmd5>85825e270697a8533e824a7e6f0f7db9</srcmd5>
+    <version>4.5.0</version>
+    <time>1478167859</time>
+    <user>dimstar_suse</user>
+    <comment>Fix segfault in libnss_wins; (bso#12277); (bso#12269); (bsc#995730).</comment>
+    <requestid>433727</requestid>
+  </revision>
+  <revision rev="206" vrev="1">
+    <srcmd5>e5df33ef8c5be30dc7bdbb40f42abeac</srcmd5>
+    <version>4.5.3</version>
+    <time>1483047650</time>
+    <user>lnussel_factory</user>
+    <comment>Update to 4.5.3 for CVE-2016-2123 (bsc#1014437) CVE-2016-2125 (bsc#1014441) CVE-2016-2126 (bsc#1014442) (forwarded request 447039 from jmcdough)</comment>
+    <requestid>447040</requestid>
+  </revision>
+  <revision rev="207" vrev="2">
+    <srcmd5>b7cb0fdd76f6d4b06bc09da3054aa31b</srcmd5>
+    <version>4.5.3</version>
+    <time>1486716277</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452702</requestid>
+  </revision>
+  <revision rev="208" vrev="3">
+    <srcmd5>a28ec69c7bd49844d7ecffc35ebff0a8</srcmd5>
+    <version>4.5.3</version>
+    <time>1488407984</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460728</requestid>
+  </revision>
+  <revision rev="209" vrev="4">
+    <srcmd5>1ad2ab80e2eab080203630c584be530f</srcmd5>
+    <version>4.5.3</version>
+    <time>1489415418</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478020</requestid>
+  </revision>
+  <revision rev="210" vrev="1">
+    <srcmd5>e70a20063726b3547b6e359a2ca467a7</srcmd5>
+    <version>4.6.2</version>
+    <time>1492417340</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 4.6.2
+  + remove bso#12721 patches now upstream
+
+- Enable samba-ceph build for openSUSE and SLE12SP3+; (fate#321622).
+  + x86-64 and aarch64
+
+- Enable librados CTDB lock helper for samba-ceph package; (fate#321622).
+
+- Build and install the html man pages (bsc#1021907).
+
+- Fix CVE-2017-2619 regression with &quot;follow symlinks = no&quot;;
+  (bso#12721).
+
+- Update to 4.6.1
+  + symlink race permits opening files outside share directory;
+    CVE-2017-2619; (bso#12496); (bsc#1027147)
+  + testparm checks for valid idmap parameters
+  + add new krb client encryption types
+  + support for printer driver upload from windows 10
+  + inherit owner = 'unix only' for improved quota support
+  + improved CTDB event support
+  + new primary group support for idmap_ad
+  + idmap_hash deprecated
+  + mvxattr added to recursively rename extended attributes
+
+- Remove chkconfig requirements for systemd systems
+
+ - Don't call insserv if systemd is used
+
+- Fix check if we need to require insserv</comment>
+    <requestid>487103</requestid>
+  </revision>
+  <revision rev="211" vrev="1">
+    <srcmd5>250af545c07dfbbfdeda7869ab7f8c5f</srcmd5>
+    <version>4.6.2+git.19.c267455e57b</version>
+    <time>1493103388</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489610</requestid>
+  </revision>
+  <revision rev="212" vrev="1">
+    <srcmd5>662c9cc06b33cea7d69447ac9454cb5c</srcmd5>
+    <version>4.6.3+git.21.0735c828d4f</version>
+    <time>1493880624</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491225</requestid>
+  </revision>
+  <revision rev="213" vrev="1">
+    <srcmd5>2fc9d4393d7fc83d951f16c29871d314</srcmd5>
+    <version>4.6.3+git.25.0c154becb13</version>
+    <time>1495637503</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix CVE-2017-7494 remote code execution from a writable share;
+  (bso#12780); (bsc#1038231).</comment>
+    <requestid>497890</requestid>
+  </revision>
+  <revision rev="214" vrev="2">
+    <srcmd5>b068ad7979d31e0e9e53d90c21ede22f</srcmd5>
+    <version>4.6.3+git.25.0c154becb13</version>
+    <time>1496821837</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert explicit winbind %{version}-%{release} dependency.
+  + The ABI has stabilized since (bsc#936909), so remove to fix cross-media
+    dependencies; (bsc#1037899).</comment>
+    <requestid>499449</requestid>
+  </revision>
+  <revision rev="215" vrev="1">
+    <srcmd5>00ced80fba840632a44c0184233b0b9b</srcmd5>
+    <version>4.6.5+git.27.6afd48b1083</version>
+    <time>1497603163</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.6.5; (bsc#1040157)
+  + Specifying CTDB_LOGGING=syslog:nonblocking causes ctdbd to crash at
+    startup; (bso#12814).
+  + vfs_expand_msdfs tries to open the remote address as a file path;
+    (bso#12687).
+  + PANIC (pid 1096): assert failed: lease_type_is_exclusive(e_lease_type);
+    (bso#12798).
+  + With clustering get update_num_read_oplocks failed and PANIC:
+    num_share_modes == 1 assertion failure; (bso#11844).
+  + contend_level2_oplocks_begin_default oplock optimisation doesn't carry
+    over to leases; (bso#12766).
+  + `ctdb nodestatus` incorrectly displays status for all nodes with wrong
+    exit code; (bso#12802).
+  + CTDB can spin hard on revoking readonly delegations if a node becomes
+    disconnected; (bso#12697).
+  + Printing a share mode entry with leases can crash in the ndr code;
+    (bso#12793).
+  + Fix flakey unit tests for eventd; (bso#12792).
+  + CTDB daemon crashes if built with clang; (bso#12770).
+  + smbcacls fails if no password is specified; (bso#12765).
+  + idmap_rfc2307: Lookup of more than two SIDs fails; (bso#12757).
+  + samba-tool user syncpasswords doesn't trigger the script when a user gets
+    removed; (bso#12767).
+  + systemd: fix detection of libsystemd; (bso#12764).
+  + Notify subsystem only maps first inotify mask to Windows notify filter;
+    (bso#12760).
+  + Allow passing trusted domain password as plain-text to PASSDB layer;
+    (bso#12751).
+  + Can't case-rename files with vfs_fruit; (bso#12749).
+  + wrong sid-&gt;uid mapping for SIDs residing in sIDHistory; (bso#12702).</comment>
+    <requestid>501776</requestid>
+  </revision>
+  <revision rev="216" vrev="2">
+    <srcmd5>3db4896875130e07258b2f699cd35419</srcmd5>
+    <version>4.6.5+git.27.6afd48b1083</version>
+    <time>1498741929</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>505266</requestid>
+  </revision>
+  <revision rev="217" vrev="1">
+    <srcmd5>cf075ef58fbc579880179a17a32de056</srcmd5>
+    <version>4.6.5+git.32.af7a173b7a1</version>
+    <time>1500274805</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510316</requestid>
+  </revision>
+  <revision rev="218" vrev="1">
+    <srcmd5>541ff398becf44deb6852430db49b3b0</srcmd5>
+    <version>4.6.6+git.36.67c8c47724e</version>
+    <time>1501227788</time>
+    <user>dimstar_suse</user>
+    <comment>- fix cephwrap_chdir(); (bsc#1048790).
+- Update to 4.6.6
+  + CVE-2017-11103: Orpheus' Lyre KDC-REP service name validation;
+    (bsc#1048278).</comment>
+    <requestid>512298</requestid>
+  </revision>
+  <revision rev="219" vrev="2">
+    <srcmd5>113d8f5fcd0961408a2f21e113cbdeb5</srcmd5>
+    <version>4.6.6+git.36.67c8c47724e</version>
+    <time>1502561250</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>515194</requestid>
+  </revision>
+  <revision rev="220" vrev="1">
+    <srcmd5>a1af71b6260280188a787a7ce758dc87</srcmd5>
+    <version>4.6.7+git.38.90b2cdb4f22</version>
+    <time>1503592025</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.6.7; (bsc#1054017)</comment>
+    <requestid>517193</requestid>
+  </revision>
+  <revision rev="221" vrev="2">
+    <srcmd5>981aae04b1e6fec794b326997ee795f8</srcmd5>
+    <version>4.6.7+git.38.90b2cdb4f22</version>
+    <time>1504814960</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520204</requestid>
+  </revision>
+  <revision rev="222" vrev="1">
+    <srcmd5>d0f0535df7d8319bfed2ef22791c266e</srcmd5>
+    <version>4.6.7+git.49.562d44faa9d</version>
+    <time>1506340398</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2017-12163: Prevent client short SMB1 write from
+  writing server memory to file; (bso#13020); (bsc#1058624).
+
+- CVE-2017-12150: Some code path don't enforce smb signing,
+  when they should; (bso#12997); (bsc#1058622).
+
+- CVE-2017-12151: Keep required encryption across SMB3 dfs
+  redirects; (bso#12996); (bsc#1058565). (forwarded request 527518 from npower)</comment>
+    <requestid>527524</requestid>
+  </revision>
+  <revision rev="223" vrev="1">
+    <srcmd5>0fb9c431d38b3df65a82f35520bc5213</srcmd5>
+    <version>4.7.0+git.23.4e3f0fb9d15</version>
+    <time>1508946382</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536426</requestid>
+  </revision>
+  <revision rev="224" vrev="1">
+    <srcmd5>43c96f56469497ea7276a2f4224c3848</srcmd5>
+    <version>4.7.1+git.26.1ac2944c965</version>
+    <time>1510664858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540014</requestid>
+  </revision>
+  <revision rev="225" vrev="2">
+    <srcmd5>fec7701ed57b0ee02d4285293b6842d6</srcmd5>
+    <version>4.7.1+git.26.1ac2944c965</version>
+    <time>1511595672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544943</requestid>
+  </revision>
+  <revision rev="226" vrev="1">
+    <srcmd5>1c804397fed8e5daf9f67e604173622a</srcmd5>
+    <version>4.7.3+git.30.54c196e5d35</version>
+    <time>1512292270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546522</requestid>
+  </revision>
+  <revision rev="227" vrev="1">
+    <srcmd5>bd680cb21c65023a591afbc0c209b08a</srcmd5>
+    <version>4.7.5+git.37.6d30796c515</version>
+    <time>1518596538</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575835</requestid>
+  </revision>
+  <revision rev="228" vrev="2">
+    <srcmd5>009f21e1b2cb5648a4384948b1441893</srcmd5>
+    <version>4.7.5+git.37.6d30796c515</version>
+    <time>1518950251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577073</requestid>
+  </revision>
+  <revision rev="229" vrev="3">
+    <srcmd5>bf02fce8749191644a0bdce927b71020</srcmd5>
+    <version>4.7.5+git.37.6d30796c515</version>
+    <time>1519554733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579626</requestid>
+  </revision>
+  <revision rev="230" vrev="4">
+    <srcmd5>8b7a82f91f3b1385a65fd8ebda1028db</srcmd5>
+    <version>4.7.5+git.37.6d30796c515</version>
+    <time>1520160761</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581033</requestid>
+  </revision>
+  <revision rev="231" vrev="5">
+    <srcmd5>261613556718a018a78d58a665dd9c38</srcmd5>
+    <version>4.7.5+git.37.6d30796c515</version>
+    <time>1520852939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584408</requestid>
+  </revision>
+  <revision rev="232" vrev="1">
+    <srcmd5>bd39bbbaff920f653b49b18e1804fee0</srcmd5>
+    <version>4.7.6+git.54.6e3276c9872</version>
+    <time>1521051711</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586357</requestid>
+  </revision>
+  <revision rev="233" vrev="1">
+    <srcmd5>dbe3d50f4b9cbbe0f802b47716db21a7</srcmd5>
+    <version>4.8.0+git.19.f53c6c0aa6f</version>
+    <time>1522833213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593146</requestid>
+  </revision>
+  <revision rev="234" vrev="2">
+    <srcmd5>f13beb8352bfb7c3eabfd3ff1927edfb</srcmd5>
+    <version>4.8.0+git.19.f53c6c0aa6f</version>
+    <time>1524489917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597770</requestid>
+  </revision>
+  <revision rev="235" vrev="1">
+    <srcmd5>9ee4e359bd10f631aa70173406140a7d</srcmd5>
+    <version>4.8.1+git.28.de67ff4c74d</version>
+    <time>1525697470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603101</requestid>
+  </revision>
+  <revision rev="236" vrev="1">
+    <srcmd5>a36391abef2f7e28de6ad1baaa5e8192</srcmd5>
+    <version>4.8.2+git.30.690aa93c189</version>
+    <time>1527277117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611764</requestid>
+  </revision>
+  <revision rev="237" vrev="2">
+    <srcmd5>5beb4670c5f1fea111d623ff4ef1e4fe</srcmd5>
+    <version>4.8.2+git.30.690aa93c189</version>
+    <time>1527932901</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612911</requestid>
+  </revision>
+  <revision rev="238" vrev="1">
+    <srcmd5>0b280e33e9c2fcf403da6e60abec546e</srcmd5>
+    <version>4.8.4+git.37.a7a861d7982</version>
+    <time>1535370401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629536</requestid>
+  </revision>
+  <revision rev="239" vrev="2">
+    <srcmd5>0bd44f20bd058e2639760832bf1abb15</srcmd5>
+    <version>4.8.4+git.37.a7a861d7982</version>
+    <time>1536094109</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632359</requestid>
+  </revision>
+  <revision rev="240" vrev="1">
+    <srcmd5>e8b15542bb95bdcd4818ef2df69245ca</srcmd5>
+    <version>4.9.1+git.46.ff87d06bace</version>
+    <time>1538672374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638223</requestid>
+  </revision>
+  <revision rev="241" vrev="1">
+    <srcmd5>69ece381d471dc90ad4d44bc1deee7db</srcmd5>
+    <version>4.9.1+git.96.c3bff26bf16</version>
+    <time>1539869392</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642052</requestid>
+  </revision>
+  <revision rev="242" vrev="1">
+    <srcmd5>b0379f8859961eb3f04900d0788e67e4</srcmd5>
+    <version>4.9.1+git.101.212e237d8ef</version>
+    <time>1541514828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645881</requestid>
+  </revision>
+  <revision rev="243" vrev="1">
+    <srcmd5>26ccb3aa1d34ac0e778350c7553b7e26</srcmd5>
+    <version>4.9.3+git.113.3f6a4cdc269</version>
+    <time>1543998968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652484</requestid>
+  </revision>
+  <revision rev="244" vrev="1">
+    <srcmd5>e7d6dc4da25ffbf77f2237af6d6eb885</srcmd5>
+    <version>4.9.3+git.121.c328d5e9101</version>
+    <time>1546695585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655866</requestid>
+  </revision>
+  <revision rev="245" vrev="1">
+    <srcmd5>e52fb72c295b8ff1ee5f925dfac5e832</srcmd5>
+    <version>4.9.4+git.126.aa8e79e6e87</version>
+    <time>1548061661</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to samba-4.9.4
+  + libcli/smb: Don't overwrite status code; (bso#9175).
+  + wbinfo --group-info 'NT AUTHORITY\System' does not work; (bso#12164).
+  + Session setup reauth fails to sign response; (bso#13661).
+  + vfs_fruit: Validation of writes on AFP_AfpInfo stream; (bso#13677).
+  + vfs_shadow_copy2: Nicely deal with attempts to open previous
+    version for writing; (bso#13688).
+  + Restoring previous version of stream with vfs_shadow_copy2 fails
+    with NT_STATUS_OBJECT_NAME_INVALID fsp-&gt;base_fsp-&gt;fsp_name; (bso#13455).
+  + CVE-2018-16853: Fix S4U2Self crash with MIT KDC build; (bso#13571).
+  + s3-vfs: Prevent NULL pointer dereference in vfs_glusterfs; (bso#13708)
+  + PEP8: fix E231: missing whitespace after ','.
+  + winbindd: Fix crash when taking profiles;(bso#13629)
+  + CVE-2018-14629 dns: Fix CNAME loop prevention using counter
+    regression; (bso#13600)
+  + 'samba-tool user syscpasswords' fails on a domain with many DCs; (bso#13686).
+  + CVE-2018-16853: Do not segfault if client is not set; (bso#13571).
+  + lib:util: Fix DEBUGCLASS pointer initializiation; (bso#13679)
+  + ctdb-daemon: Exit with error if a database directory does not
+    exist; (bso#13696).
+  + s3:libads: Add net ads leave keep-account option; (bso#13498).
+
+- Drop more %if..%endif guards which are idempotent.
+- Drop requires on ldconfig which are already auto-discovered.
+- Do not ignore errors from useradd/groupadd.</comment>
+    <requestid>664621</requestid>
+  </revision>
+  <revision rev="246" vrev="1">
+    <srcmd5>cc40f4fd979b9792136121eea98c2830</srcmd5>
+    <version>4.9.4+git.138.e50f45d83ad</version>
+    <time>1552464319</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix vfs_ceph ftruncate and fallocate handling; (bso#13807); (bsc#1127153).
+
+- Fix update-apparmor-samba-profile script after apparmor switched
+  to using named profiles. The change is backwards compatible;
+  (bsc#1126377);
+
+- LoadParm().load_default() fails with &quot;Unable to load default file&quot;;
+  (bsc#1089758);
+
+- Abide by load_printers smb.conf parameter; (bso#13766); (bsc#1124223);</comment>
+    <requestid>681723</requestid>
+  </revision>
+  <revision rev="247" vrev="1">
+    <srcmd5>eb3bc69c4322ec5130e7ec33d6a725c8</srcmd5>
+    <version>4.10.2+git.78.0c89af72312</version>
+    <time>1556311478</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696796</requestid>
+  </revision>
+  <revision rev="248" vrev="1">
+    <srcmd5>75ed2dda66761e04351f94a83d7face1</srcmd5>
+    <version>4.10.2+git.94.31fb5e37171</version>
+    <time>1558036811</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix cephwrap_flistxattr() debug message; (bso#13940); (bsc#1134697).
+- Add ceph_snapshots VFS module; (jsc#SES-183).
+
+- Fix vfs_ceph realpath; (bso#13918); (bsc#1134452).
+
+- Explicitly enable libcephfs POSIX ACL support; (bso#13896); (bsc#1130245).</comment>
+    <requestid>703039</requestid>
+  </revision>
+  <revision rev="249" vrev="1">
+    <srcmd5>205727b155993ae55cf2e1a7bc22b855</srcmd5>
+    <version>4.10.5+git.105.2bd98587873</version>
+    <time>1561643579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710952</requestid>
+  </revision>
+  <revision rev="250" vrev="1">
+    <srcmd5>3f77dbe8d83f83b6827ee0991203991d</srcmd5>
+    <version>4.10.8+git.124.a2010fbd0de</version>
+    <time>1568189996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728062</requestid>
+  </revision>
+</revisionlist>

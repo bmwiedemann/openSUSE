@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:47:05 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Apr 12 19:00:14 UTC 2017 - toddrme2178@gmail.com
+
+- Fix download URL.
+
+-------------------------------------------------------------------
+Wed Apr 12 17:31:02 UTC 2017 - toddrme2178@gmail.com
+
+- Fix redefinition of %python_module macro.
+
+-------------------------------------------------------------------
+Mon Feb 27 18:45:41 UTC 2017 - toddrme2178@gmail.com
+
+- Fix macro usage
+
+-------------------------------------------------------------------
+Sat Feb 25 04:12:47 UTC 2017 - toddrme2178@gmail.com
+
+- Switch to single-spec version
+
+-------------------------------------------------------------------
+Fri Jan 20 20:57:54 UTC 2017 - toddrme2178@gmail.com
+
+- update to version 0.10.0:
+  (no changelog available)
+- Update url to pypi.io
+
+-------------------------------------------------------------------
+Fri Oct 30 10:40:42 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+

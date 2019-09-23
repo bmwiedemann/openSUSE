@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a3920e5822c5ba46488d6f1f59c2611e</srcmd5>
+    <version>1.1.1</version>
+    <time>1329476458</time>
+    <user>coolo</user>
+    <comment>- Split xorg-x11-libs into separate packages</comment>
+    <requestid>105480</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4450c2e033b93eb11bd7c21ed8912496</srcmd5>
+    <version>1.1.2</version>
+    <time>1336471112</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115369</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4450c2e033b93eb11bd7c21ed8912496</srcmd5>
+    <version>1.1.2</version>
+    <time>1340183576</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>4450c2e033b93eb11bd7c21ed8912496</srcmd5>
+    <version>1.1.2</version>
+    <time>1359109259</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>1441d98f0191ea9e205995a8e91f2d2c</srcmd5>
+    <version>1.1.2</version>
+    <time>1363947952</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160113</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e1778e4bf18d18570433db2bafdda4b0</srcmd5>
+    <version>1.1.3</version>
+    <time>1370426018</time>
+    <user>coolo</user>
+    <comment>update to version 1.1.3 (forwarded request 176971 from tobijk)</comment>
+    <requestid>177055</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>e1778e4bf18d18570433db2bafdda4b0</srcmd5>
+    <version>1.1.3</version>
+    <time>1379662929</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>e1778e4bf18d18570433db2bafdda4b0</srcmd5>
+    <version>1.1.3</version>
+    <time>1409301538</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>031d0173a919ed371a5dc8dc413465d5</srcmd5>
+    <version>1.1.4</version>
+    <time>1526829600</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.1.4
+  * This release raises the minimum required version of libX11 to
+    version 1.6.0 from 2013.</comment>
+    <requestid>610636</requestid>
+  </revision>
+</revisionlist>

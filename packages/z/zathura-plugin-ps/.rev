@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>911704165d9064f507c45028aa949b90</srcmd5>
+    <version>0.2.2</version>
+    <time>1416823750</time>
+    <user>dimstar_suse</user>
+    <comment>PostScript plugin for Zathura document viewer</comment>
+    <requestid>262594</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2cee85fa094db14dfed02f79cc6763ea</srcmd5>
+    <version>0.2.3</version>
+    <time>1456320400</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.2
+* Advertise URL support
+
+- add requires zathura (forwarded request 361203 from mimi_vx)</comment>
+    <requestid>361209</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aaf2f1757c1588ef4e129074ef558dc9</srcmd5>
+    <version>0.2.4</version>
+    <time>1496089176</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498678</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e31311a30425a0bac75e5ea1b6a48ce9</srcmd5>
+    <version>0.2.5</version>
+    <time>1517323358</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.5 
+* adapt to new plugin interface</comment>
+    <requestid>569898</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5c23b04f8ff277d9545a8f77e6cc9d02</srcmd5>
+    <version>0.2.6</version>
+    <time>1527583657</time>
+    <user>dimstar_suse</user>
+    <comment>i (forwarded request 612410 from mimi_vx)</comment>
+    <requestid>612411</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>cd3bb07f6e518f060d3245b6e105ae39</srcmd5>
+    <version>0.2.6</version>
+    <time>1533887479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628354</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,603 @@
+-------------------------------------------------------------------
+Sun Apr 14 16:10:57 UTC 2019 - Christian Boltz <suse-beta@cboltz.de>
+
+- update AppArmor profile:
+ - adjust paths for usrMerge (related to boo#1132350)
+  - change {,usr/} alternations to {usr/,} which is the prefered syntax
+
+-------------------------------------------------------------------
+Fri Apr 12 14:17:08 CEST 2019 - ro@suse.de
+
+- adapt apparmor profile for bash move to /usr 
+
+-------------------------------------------------------------------
+Fri Aug  3 10:41:10 UTC 2018 - lars@linux-schulserver.de
+
+- add suggested changes in sudoers file (bnc#1103590)
+- cleanup the help output of the plugin
+
+-------------------------------------------------------------------
+Tue Jul 17 12:22:55 UTC 2018 - lars@linux-schulserver.de
+
+- as newer zypper versions always require root rights to refresh 
+  the repositories, add a working sudoers file right from the 
+  beginning that allows to execute the needed zypper commands
+- Update to 1.96
+  + SLE-12-SP2 is deprecated
+  + add SLE-15-SP1 and SLE-12-SP4 as supported
+
+-------------------------------------------------------------------
+Tue Mar  6 08:23:54 UTC 2018 - lars@linux-schulserver.de
+
+- update to 1.95:
+  + remove openSUSE 42.2; add 15.1
+  + remove old Tumbleweed and only support 2019 for now
+
+-------------------------------------------------------------------
+Mon Mar  5 16:16:36 UTC 2018 - lars@linux-schulserver.de
+
+- Reload just the specific AppArmor profile instead of restarting 
+  AppArmor completely (bsc#1006387)
+
+-------------------------------------------------------------------
+Mon Mar  5 15:17:31 CET 2018 - ro@suse.de
+
+- use "with systemd" instead of "with_systemd" 
+
+-------------------------------------------------------------------
+Mon Mar  5 14:52:48 CET 2018 - ro@suse.de
+
+- add SLE-15.0 as release 
+- adapt pathes in apparmor config for sle15/tumbleweed
+
+-------------------------------------------------------------------
+Sat Dec  2 04:15:26 UTC 2017 - lars@linux-schulserver.de
+
+- update to 1.94:
+  + support Leap 15.0 and Tumbleweed 2018* (boo#1049950)
+
+-------------------------------------------------------------------
+Fri Nov 24 11:05:40 CET 2017 - ro@suse.de
+
+- move restart stuff from post to postun where it belongs
+- use proper macros for systemd restart 
+
+-------------------------------------------------------------------
+Tue Oct 10 09:14:23 UTC 2017 - lars@linux-schulserver.de
+
+- update to 1.93
+  + remove unsupported openSUSE 42.1 and SLE-10-SP4
+
+-------------------------------------------------------------------
+Tue Jul 25 18:02:13 CEST 2017 - ro@suse.de
+
+- use systemctl for try-restart call for apparmor in postinstall
+
+-------------------------------------------------------------------
+Fri Jun 30 07:29:55 UTC 2017 - lars@linux-schulserver.de
+
+- update to 1.92:
+  + remove unsupported openSUSE 13.2, 13.3 and Tumbleweed 2016*
+  + remove unsupported SLE 12.0 and 12.1
+  + add openSUSE 42.3 and Tumbleweed 2017*
+  + add SLE 12.3
+
+-------------------------------------------------------------------
+Thu Oct 13 01:42:42 CEST 2016 - ro@suse.de
+
+- change Tumbleweed check, PRETTY_NAME is actually
+  "openSUSE Tumbleweed (DATEVERSION) (ARCH)" 
+
+-------------------------------------------------------------------
+Fri Sep  2 08:52:52 UTC 2016 - lars@linux-schulserver.de
+
+- update to 1.91:
+  + make openSUSE Leap 42.2 supported
+
+-------------------------------------------------------------------
+Wed May 25 00:07:54 CEST 2016 - ro@suse.de
+
+- ignore if restarting boot.apparmor fails 
+
+-------------------------------------------------------------------
+Wed May 25 00:01:19 CEST 2016 - ro@suse.de
+
+- require apparmor-profiles on older releases 
+- add SLE12.2 as supported
+
+-------------------------------------------------------------------
+Thu Apr 14 21:36:00 UTC 2016 - lars@linux-schulserver.de
+
+- build require apparmor-parser to run apparmor restart in %post
+- SLE11 needs apparmor-profiles instead of apparmor-abstractions
+
+-------------------------------------------------------------------
+Thu Apr 14 00:58:18 CEST 2016 - ro@suse.de
+
+- fix os-release parser to get version properly 
+
+-------------------------------------------------------------------
+Wed Apr 13 19:22:47 UTC 2016 - lars@linux-schulserver.de
+
+- restart apparmor to get changes in the apparmor profiles updated
+- require apparmor-abstractions
+
+-------------------------------------------------------------------
+Tue Apr 12 18:58:11 UTC 2016 - lars@linux-schulserver.de
+
+- update to 1.90:
+  + support (and prefer) the new /etc/os-release file instead of 
+    /etc/SuSE-release
+  + remove SLE-11-SP3 from supported distributions
+  + better check supported distribution
+
+-------------------------------------------------------------------
+Fri Jan 29 13:40:15 UTC 2016 - lars@linux-schulserver.de
+
+- update to 1.84
+  * openSUSE: supported are 13.2, 13.3 and Leap 42.1
+              try to add Tumbleweed as supported (TODO)
+  * SLE: supported are 10.4, 11.3, 11.4, 12.0 and 12.1
+  => fixes bnc#963993 - thanks to Ansgar Esztermann
+
+-------------------------------------------------------------------
+Wed Jan  6 15:30:46 UTC 2016 - lars@linux-schulserver.de
+
+- add local/usr.lib.nagios.plugins.check_zypper.zypp_refresh as
+  additional overwrite file 
+
+-------------------------------------------------------------------
+Mon Sep 28 15:18:21 UTC 2015 - lars@linux-schulserver.de
+
+- run a simple test during %%check
+
+-------------------------------------------------------------------
+Thu Aug 20 12:20:47 UTC 2015 - lars@linux-schulserver.de
+
+- also include the local changes file in some subprofiles, so people
+  can overwrite the settings there (bnc #914493)
+- Update to 1.83:
+  + Tumbleweed is a rolling release - so asume it is not outdated 
+    at any time. Need to be clarified if we should check actively if
+    the installed Tumbleweed is outdated or not. Maybe we can use 
+    /etc/products.d/baseproduct to check for end-of-life information?
+
+-------------------------------------------------------------------
+Tue Mar  3 12:47:22 UTC 2015 - lars@linux-schulserver.de
+
+- allow to open /var/lib/YaST2/cookies in zypp-refresh
+
+-------------------------------------------------------------------
+Sun Mar  1 10:23:04 UTC 2015 - lars@linux-schulserver.de
+
+- use BSD-3-Clause as license
+
+-------------------------------------------------------------------
+Sat Dec 13 19:44:44 UTC 2014 - lars@linux-schulserver.de
+
+- allow DNS resolution for abstraction RPM and kernel random usage 
+  for zypp abstraction (apparmor) - based on 13.1
+- include local/usr.lib.nagios.plugins.check_zypper in apparmor
+  profile to allow users to override default settings
+
+-------------------------------------------------------------------
+Sat Dec 13 19:32:41 UTC 2014 - lars@linux-schulserver.de
+
+- allow check_zypper to open any file below /etc/monitoring-plugins/
+  in apparmor profile
+
+-------------------------------------------------------------------
+Mon Dec  1 15:16:09 UTC 2014 - lars@linux-schulserver.de
+
+- allow zypper to open config_gnome3.so (bnc #857122#c8 )
+
+-------------------------------------------------------------------
+Fri Nov  7 21:02:20 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.82:
+  + try refresh_wrapper first before using zypper ref
+  + adapt apparmor profile to be more generic for binary moves 
+    between /usr/bin and /bin
+  + allow execution of sudo (again) in apparmor profile
+  + add next generation distributions as supported
+
+-------------------------------------------------------------------
+Tue Oct 21 14:20:10 CEST 2014 - ro@suse.de
+
+- update apparmor profile again, add abstrations/nameservice
+  for zypper and rpm subprofiles 
+
+-------------------------------------------------------------------
+Wed Jul 30 19:24:36 UTC 2014 - lars@linux-schulserver.de
+
+- Renamed package to monitoring-plugins-zypper
+
+-------------------------------------------------------------------
+Wed Jul 23 13:54:29 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.81:
+  + adapt apparmor profiles according to bnc #857122
+  + add hint to allow local repos in 
+    /etc/apparmor.d/usr.lib.nagios.plugins.check_zypper
+
+-------------------------------------------------------------------
+Thu Jun 26 15:09:33 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.80:
+  + invent new option for the local package check: -l, --check-local
+    otherwise packages from OBS repos will become local after each 
+    rebuild as zypper just checks for packages with same version-
+    release in repos
+
+-------------------------------------------------------------------
+Fri Jun 13 09:34:00 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.76:
+  + SLE 12 packages belong to "SUSE LLC <https://www.suse.com/>"
+
+-------------------------------------------------------------------
+Fri Jun  6 17:41:09 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.75:
+  + check for local packages (installed not from a repository)
+
+-------------------------------------------------------------------
+Mon Oct  7 09:37:25 UTC 2013 - lars@linux-schulserver.de
+
+Update to 1.50:
++ also handle "out-of-date" for outdated repositories (bnc#839839)
++ SLE-11-SP1 is not supported any more
+
+-------------------------------------------------------------------
+Fri Aug 30 13:52:41 UTC 2013 - lars@linux-schulserver.de
+
+- also use the keyword "Softwarestack" as indication for an update 
+  of the software stack as such ( bnc#830658 )
+
+-------------------------------------------------------------------
+Wed Jul 31 16:27:55 UTC 2013 - lars@linux-schulserver.de
+
+- update to 1.48:
+  + handle updates of the software stack as cricital unless we 
+    get a fix for bnc#832605 
+    (workaround for bnc#830658)
+
+-------------------------------------------------------------------
+Mon Jul 22 16:53:44 CEST 2013 - ro@suse.de
+
+- change logic looking for ignored packages/patches:
+  - use exact match, not just substring
+  - check also for match of name-version in the ignorelist
+    allowing to ignore specific updates 
+
+-------------------------------------------------------------------
+Thu May 16 13:51:38 UTC 2013 - lars@linux-schulserver.de
+
+- update to 1.47:
+  + return error if zypper is already running and blocking the 
+    refresh of the repository
+
+-------------------------------------------------------------------
+Tue Apr 23 17:31:59 UTC 2013 - lars@linux-schulserver.de
+
+- do not call openSUSE 13.1 discontinued
+
+-------------------------------------------------------------------
+Tue Apr 16 01:07:10 CEST 2013 - ro@suse.de
+
+- do not call SLE11-SP3 discontinued
+
+-------------------------------------------------------------------
+Sat Feb 23 11:43:30 UTC 2013 - lars@linux-schulserver.de
+
+- fix path names to grep, awk and gawk for distributions > 12.1
+
+-------------------------------------------------------------------
+Fri Feb  1 16:18:24 UTC 2013 - lars@linux-schulserver.de
+
+- update to 1.45:
+  + use /usr/sbin/zypp-refresh if it exists 
+
+-------------------------------------------------------------------
+Thu Jan 24 11:53:47 UTC 2013 - lars@linux-schulserver.de
+
+- include abstractions for rpm and ssl
+
+-------------------------------------------------------------------
+Thu Jan 17 10:55:30 UTC 2013 - lars@linux-schulserver.de
+
+- also install abstractions/zypp until this is merged with zypper
+
+-------------------------------------------------------------------
+Tue Jan 15 19:24:16 UTC 2013 - lars@linux-schulserver.de
+
+- update to 1.44:
+  + openSUSE 11.4 are unsupported
+  + openSUSE 12.3 becomes supported
+- improved apparmor profile: thanks to Marcus Rückert
+- place apparmor profile for older distributions (using sudo) in 
+  the extras directory as we did not test it there
+
+-------------------------------------------------------------------
+Thu Jun 28 18:33:30 UTC 2012 - lars@linux-schulserver.de
+
+- update to 1.42:
+  + whitelist Vendor 'openSUSE'
+  + added Apparmor profile for check_zypper
+  => if used with '-i' option, the ignore file must be placed in 
+     /etc/nagios, otherwise the script will fail
+
+-------------------------------------------------------------------
+Sat May  5 23:38:16 UTC 2012 - lars@linux-schulserver.de
+
+- update to 1.41:
+  + openSUSE 11.2 and 11.3 are unsupported
+  + openSUSE 12.2 is supported
+
+-------------------------------------------------------------------
+Fri Oct 28 14:05:03 UTC 2011 - lars@linux-schulserver.de
+
+- update to 1.40:
+  + SLE-10-SP3 is unsupported
+  + openSUSE 12.1 and SLE-11-SP2 are supported
+
+-------------------------------------------------------------------
+Wed Mar 23 21:30:08 UTC 2011 - lars@linux-schulserver.de
+
+- update to 1.39:
+  + SLE-10-SP4 and openSUSE 11.5 are supported
+
+-------------------------------------------------------------------
+Fri Feb  4 08:14:57 UTC 2011 - lars@linux-schulserver.de
+
+- update to 1.38:
+  + openSUSE 11.1 is out of service
+  + back to old performance data output, as requested by community
+
+-------------------------------------------------------------------
+Wed Dec 15 19:37:55 UTC 2010 - lars@linux-schulserver.de
+
+- delete SLE-11-GA, as this OS is out of service
+
+-------------------------------------------------------------------
+Fri Oct 15 12:18:44 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.37:
+  + quote the supported OS releasenumbers to avoid perl from 
+    cutting off the last digit if it is a zero
+
+-------------------------------------------------------------------
+Thu Oct 14 06:26:09 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.36:
+  + fix debug output
+  + fix refresh_wrapper call on SLES10
+
+-------------------------------------------------------------------
+Tue Oct 12 19:49:23 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.35:
+  + check for discontinued OS releases and report them as critical
+    as they would not receive any further updates
+    Supported: openSUSE 11.1, 11.2, 11.3 and 11.4
+               SLE 10.3, 11.0 11.1
+  + follow perl best practices 
+- Req: gawk, grep and rpm as those commands are needed now
+
+-------------------------------------------------------------------
+Sun Oct 10 11:43:15 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.30:
+  + added check for unsupported packages. As those packages might lead
+    to a system with security holes, just the packages from the official 
+    repository are marked as valid at the moment. Admins should list 
+    their packages via 'whitelist:foo' in an ignore file to disable the 
+    warning.
+  + Performance data output is reduced to a single variable now containing 
+    security,recommended,optional,packages as values
+
+-------------------------------------------------------------------
+Fri Feb  5 16:43:52 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.26
+  + Enhanced error reporting for repository refreshing
+
+-------------------------------------------------------------------
+Mon Feb  1 22:02:29 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.25:
+  + fix typo in 11.0 options ('xml-updates')
+  + fix bnc #536475: check_zypper triggers "warning" when there 
+    are no updates available
+
+-------------------------------------------------------------------
+Wed Jan 20 17:11:06 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.24:
+  + fix bnc#557862 : Result of nagios plugin check_zypper is 
+    interpreted as critical even if OK 
+    (thanks to Matthias Pfafferodt for the patch)
+  + reformat the code using perltidy
+
+-------------------------------------------------------------------
+Sat Nov 28 13:07:27 CET 2009 - lrupp@suse.de
+
+- update to 1.23:
+  + enhanced debug output
+
+-------------------------------------------------------------------
+Fri Oct 16 17:05:20 CEST 2009 - lrupp@suse.de
+
+- update to 1.22:
+  + fix wrong update counting for SLE11 
+    (fixes bnc#546166 - thanks to Sven Giller)
+  + fix small typo in output
+
+-------------------------------------------------------------------
+Mon Sep 28 16:51:03 CEST 2009 - lrupp@suse.de
+
+- update to 1.21:
+  + use --non-interactive everywhere
+
+-------------------------------------------------------------------
+Sat Sep 26 12:00:03 CEST 2009 - lrupp@suse.de
+
+- update to 1.2:
+  + use the same zypper options for all openSUSE versions > 11.0
+    (fixes bnc#538850)
+  + handle new message type 'warning'
+
+-------------------------------------------------------------------
+Wed Sep 23 12:01:47 CEST 2009 - lrupp@suse.de
+
+- update to 1.1:
+  + code cleanup
+  + added option "-d" for debug output
+
+-------------------------------------------------------------------
+Fri Apr  3 10:26:33 CEST 2009 - lrupp@suse.de
+
+- update to 1.01:
+  + better handling for SLE11
+
+-------------------------------------------------------------------
+Mon Mar 23 13:42:29 CET 2009 - lrupp@suse.de
+
+- update to 1.0:
+  + added option '-p' to disable perfdata output
+  + fixed perfdata output
+
+-------------------------------------------------------------------
+Fri Feb 20 22:54:47 CET 2009 - lrupp@suse.de
+
+- update to 0.980:
+  + also support old Nagios v2 output format
+  + no whitespaces in perfdata output
+
+-------------------------------------------------------------------
+Mon Feb 16 18:54:09 CET 2009 - lrupp@suse.de
+
+- update to 0.975:
+  + added option '-i' to allow admins to ignore some patches/
+    packages via config file
+
+-------------------------------------------------------------------
+Thu Feb 12 15:23:21 CET 2009 - lrupp@suse.de
+
+- update to 0.966:
+  + support nagios embedded perl interpreter
+
+-------------------------------------------------------------------
+Wed Jan 28 16:23:34 CET 2009 - lrupp@suse.de
+
+- update to 0.965:
+  + added option '-r' to refresh zypper automatically
+
+-------------------------------------------------------------------
+Wed Jan 28 12:35:32 CET 2009 - lrupp@suse.de
+
+- update to 0.951:
+  - return perfdata even if no update is available
+
+-------------------------------------------------------------------
+Tue Jan 27 17:17:00 CET 2009 - lrupp@suse.de
+
+- update to 0.950:
+  - allow to ignore outdated repositories with -o
+  - reset alarm() on exit
+  - handle unknown options instead of ignoring them
+  - first version of performancedata output in check result
+
+-------------------------------------------------------------------
+Tue Dec 16 18:36:33 CET 2008 - lrupp@suse.de
+
+- update to 0.911:
+  + first working version for 11.1
+  + use own functions: nagios-plugins is obsolete
+  + better exit handling for -c and -w options
+  + warn, if a repository is out of date
+  + small enhancements for -v option
+
+-------------------------------------------------------------------
+Thu Nov 27 10:54:19 CET 2008 - lrupp@suse.de
+
+- update to 0.9:
+  - better whitespace handling for SLE10 based products
+
+-------------------------------------------------------------------
+Thu Oct 23 15:11:28 CEST 2008 - lrupp@suse.de
+
+- update to 0.8.1:
+  + enhance the documentation (help text)
+
+-------------------------------------------------------------------
+Wed Oct 22 20:10:54 CEST 2008 - lrupp@suse.de
+
+- update to 0.8:
+  + return UNKNOWN if zypper prints "Error message"
+  + return UNKNOWN if zypper is already running
+
+-------------------------------------------------------------------
+Mon Sep 29 11:49:27 CEST 2008 - lrupp@suse.de
+
+- update to 0.7:
+  + enable verbose output for SLE10 based hosts
+
+-------------------------------------------------------------------
+Wed Sep 17 12:26:17 CEST 2008 - lrupp@suse.de
+
+- update to 0.6:
+  + added error handling if update source is not available
+  + switch to BSD License
+
+-------------------------------------------------------------------
+Thu Sep 11 15:41:55 CEST 2008 - lrupp@suse.de
+
+- fix stupid variable clash
+
+-------------------------------------------------------------------
+Wed Sep 10 11:50:53 CEST 2008 - lrupp@suse.de
+
+- update to 0.5:
+  + code cleanup
+  + return UNKNOWN state if system doesn't support check without 
+    sudo rights
+  + allow user to specify the release file with '-r'
+
+-------------------------------------------------------------------
+Wed Sep  3 17:43:53 CEST 2008 - lrupp@suse.de
+
+- update to 0.4:
+  + added sudo option to call zypper via sudo
+  + don't print packagelist if packagelist is empty
+
+-------------------------------------------------------------------
+Tue Sep  2 12:29:14 CEST 2008 - lrupp@suse.de
+
+- update to 0.3:
+  + now outputs also the names of patches and packages, if selected
+  + improved help output
+- truncate the trailing .pl so the script follows the nagios 
+  plugins scheme
+
+-------------------------------------------------------------------
+Mon Jul 28 15:34:18 CEST 2008 - lrupp@suse.de
+
+- ignore error messages: they bother the nagios parser
+
+-------------------------------------------------------------------
+Tue May  6 13:14:59 CEST 2008 - lrupp@suse.de
+
+- ignore host variable for now: this check only works local
+
+-------------------------------------------------------------------
+Tue Apr 15 16:10:39 CEST 2008 - lrupp@suse.de
+
+- work also with 10.2 and (not tested:) SLES10-SP1
+- accept arguments -w and -c
+
+-------------------------------------------------------------------
+Mon Apr 14 20:06:20 CEST 2008 - lrupp@suse.de
+
+- initial version 0.1
+

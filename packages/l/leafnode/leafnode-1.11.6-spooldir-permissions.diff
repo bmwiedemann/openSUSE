@@ -1,0 +1,15 @@
+Novell bug #273929
+
+Index: miscutil.c
+===================================================================
+--- miscutil.c.orig	2011-08-18 23:40:15.575080107 +0200
++++ miscutil.c	2011-08-18 23:40:19.209833834 +0200
+@@ -121,7 +121,7 @@ createmsgiddir(void) {
+ }
+ 
+ static struct { const char* name; mode_t mode; } dirs[] = {
+-    {"", 04755 },
++    {"", 0775 },
+     {"interesting.groups", 02775 },
+     {"leaf.node", 0755 },
+     {"failed.postings", 02775 },

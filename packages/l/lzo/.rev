@@ -1,0 +1,300 @@
+<revisionlist>
+  <revision rev="1" vrev="17">
+    <srcmd5>370eb5988219929e1a4b2a1df6cb94c3</srcmd5>
+    <version>2.02</version>
+    <time>1168903467</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="37">
+    <srcmd5>9365050827f9179893af74bac9ec0282</srcmd5>
+    <version>2.02</version>
+    <time>1171296024</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="96">
+    <srcmd5>b1a63e7c588c41f18d2a23e8b4237848</srcmd5>
+    <version>2.02</version>
+    <time>1203956949</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="104">
+    <srcmd5>3ceb40e44cc9d8b9a0f6da587432d02e</srcmd5>
+    <version>2.02</version>
+    <time>1207832006</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7089c6af94ca14122f997a329bc244cb</srcmd5>
+    <version>2.03</version>
+    <time>1219428438</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>98dd2fd7d5f45943c60923b6a348fa83</srcmd5>
+    <version>2.03</version>
+    <time>1231436845</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>98dd2fd7d5f45943c60923b6a348fa83</srcmd5>
+    <version>2.03</version>
+    <time>1231436845</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>f9ddc4f8f5b3cb929aaf5eb016d7dc7e</srcmd5>
+    <version>2.03</version>
+    <time>1263223536</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/lzo based on submit request 29007 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>05008d6c8a70ef4db7ea48c70d8ae9f0</srcmd5>
+    <version>2.03</version>
+    <time>1265917460</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/lzo based on submit request 32184 from user rguenther
+</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>991dd2a6d6aa7149279f18b955084c79</srcmd5>
+    <version>2.03</version>
+    <time>1268924887</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>991dd2a6d6aa7149279f18b955084c79</srcmd5>
+    <version>2.03</version>
+    <time>1278667366</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>991dd2a6d6aa7149279f18b955084c79</srcmd5>
+    <version>2.03</version>
+    <time>1278678595</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>9975a3d14e05d63eae5e0fa49b4f035c</srcmd5>
+    <version>2.03</version>
+    <time>1288700277</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51736 from user elvigia
+</comment>
+    <requestid>51736</requestid>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>93d2d124abbd8b607b267cc572ccaead</srcmd5>
+    <version>2.03</version>
+    <time>1288700285</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51736
+</comment>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>38e043eb979f6cf7466ee269c5d33cc8</srcmd5>
+    <version>2.04</version>
+    <time>1293578219</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56638 from user a_jaeger
+</comment>
+    <requestid>56638</requestid>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>3304c78f674f03d5b2f07e47efeff1a9</srcmd5>
+    <version>2.04</version>
+    <time>1293578225</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56638
+</comment>
+  </revision>
+  <revision rev="17" vrev="16">
+    <srcmd5>3304c78f674f03d5b2f07e47efeff1a9</srcmd5>
+    <version>2.04</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>15c6de53c64886151dee4b743279e18f</srcmd5>
+    <version>2.05</version>
+    <time>1304926432</time>
+    <user>saschpe</user>
+    <comment>- Update to version 2.05 
+ * Converted the configure system to non-recursive Automake.
+ * Applied some overdue speed optimizations for modern x86/x64 architectures
+   and current compilers like gcc 4.6 and MSVC 2010. (forwarded request 69785 from elvigia)</comment>
+    <requestid>69786</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>992c603c12e269f5adda372292418a9e</srcmd5>
+    <version>2.05</version>
+    <time>1304926440</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69786
+</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9015703b88f179d8af2ee29dd73d7b2f</srcmd5>
+    <version>2.06</version>
+    <time>1317049559</time>
+    <user>oertel</user>
+    <comment>- Update to version 2.06
+* Some minor optimizations for big-endian architectures.
+* Fixed overly strict malloc() misalignment check in examples. (forwarded request 84743 from elvigia)</comment>
+    <requestid>84808</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>9015703b88f179d8af2ee29dd73d7b2f</srcmd5>
+    <version>2.06</version>
+    <time>1319182166</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>d4ce807746a6ec55ed2ab5c0a65b998c</srcmd5>
+    <version>2.06</version>
+    <time>1323192467</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>22cc9c7ec13a05975c150fcd31ec39b3</srcmd5>
+    <version>2.06</version>
+    <time>1329476755</time>
+    <user>coolo</user>
+    <comment>- move libraries back to %{_libdir}, /usr merge project (forwarded request 105573 from elvigia)</comment>
+    <requestid>105574</requestid>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>22cc9c7ec13a05975c150fcd31ec39b3</srcmd5>
+    <version>2.06</version>
+    <time>1340183684</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>eb24aa6a645cfdea4c3207213942b8e8</srcmd5>
+    <version>2.06</version>
+    <time>1346179756</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0+
+No GPL-2.0 &quot;only&quot; licenses found in the package (forwarded request 131782 from babelworx)</comment>
+    <requestid>131788</requestid>
+  </revision>
+  <revision rev="26" vrev="10">
+    <srcmd5>eb24aa6a645cfdea4c3207213942b8e8</srcmd5>
+    <version>2.06</version>
+    <time>1359109423</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="11">
+    <srcmd5>79e59f44c2e558cdf5156bb977aa00d1</srcmd5>
+    <version>2.06</version>
+    <time>1366232796</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 171113 from m_meister)</comment>
+    <requestid>171236</requestid>
+  </revision>
+  <revision rev="28" vrev="13">
+    <srcmd5>79e59f44c2e558cdf5156bb977aa00d1</srcmd5>
+    <version>2.06</version>
+    <time>1379663237</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3ba32dafceb4d39f55f3970c39b58ebe</srcmd5>
+    <version>2.08</version>
+    <time>1404973000</time>
+    <user>coolo</user>
+    <comment>- update to 2.08 (bnc#883947) CVE-2014-4607
+  - Updated the Autoconf scripts to fix some reported build
+    problems.
+  - Added CMake build support.
+  - Fixed lzo_init() on big-endian architectures like Sparc.
+- additional changes in 2.07
+  * Fixed a potential integer overflow condition in the &quot;safe&quot;
+    decompressor variants which could result in a possible buffer
+    overrun when processing maliciously crafted compressed input
+    data.
+    Fortunately this issue only affects 32-bit systems and also can
+    only happen if you use uncommonly huge buffer sizes where you
+    have to decompress more than 16 MiB (&amp;gt; 2^24 bytes) untrusted
+    compressed bytes within a single function call, so the
+    practical implications are limited.
+    POTENTIAL SECURITY ISSUE. CVE-2014-4607.
+  * Removed support for ancient configurations like 16-bit &quot;huge&quot;
+    pointers - LZO now requires a flat 32-bit or 64-bit memory
+    model.
+  * Assorted cleanups. (forwarded request 239294 from darix)</comment>
+    <requestid>239295</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>56eac603f367ef519342cf2ebecc2430</srcmd5>
+    <version>2.08</version>
+    <time>1406366874</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242284</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>56eac603f367ef519342cf2ebecc2430</srcmd5>
+    <version>2.08</version>
+    <time>1409301843</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c421468d7d4661a5fcec597c199647f4</srcmd5>
+    <version>2.09</version>
+    <time>1425217918</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287649</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>746282324b4d211e23267a0145ac87d0</srcmd5>
+    <version>2.10</version>
+    <time>1493103253</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>484792</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>cecf01df6efbab439f3099b17f3adf0d</srcmd5>
+    <version>2.10</version>
+    <time>1512546421</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546085</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>60bb3f7a9ba3acfc9896fa05e0125e59</srcmd5>
+    <version>2.10</version>
+    <time>1533292171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626649</requestid>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>c3b0ff45afa32fffa0b3db4be9d7c585</srcmd5>
+    <version>2.10</version>
+    <time>1533887145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628259</requestid>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>ba782c24380d2e59517c780830200c96</srcmd5>
+    <version>2.10</version>
+    <time>1556913999</time>
+    <user>dimstar_suse</user>
+    <comment>- Use FAT LTO objects in order to provide proper static library (boo#1133259). (forwarded request 698197 from marxin)</comment>
+    <requestid>698202</requestid>
+  </revision>
+</revisionlist>

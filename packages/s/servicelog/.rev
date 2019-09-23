@@ -1,0 +1,202 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>8446beeda34639dd7a6b3abcd8e9f79b</srcmd5>
+    <version>1.0.1</version>
+    <time>1221274400</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>e4b492ed3388a578b1177b79e64cc45f</srcmd5>
+    <version>1.0.1</version>
+    <time>1221300791</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="7">
+    <srcmd5>6fdcec89b70588e034074295e128e4ae</srcmd5>
+    <version>1.0.1</version>
+    <time>1245466656</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="9">
+    <srcmd5>6fdcec89b70588e034074295e128e4ae</srcmd5>
+    <version>1.0.1</version>
+    <time>1245466656</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="10">
+    <srcmd5>7fc9a5681e615b14760ac42869ce7300</srcmd5>
+    <version>1.0.1</version>
+    <time>1268926145</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="12">
+    <srcmd5>7fc9a5681e615b14760ac42869ce7300</srcmd5>
+    <version>1.0.1</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>7fc9a5681e615b14760ac42869ce7300</srcmd5>
+    <version>1.0.1</version>
+    <time>1278678619</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>47913f21db41dd955502cb1509430911</srcmd5>
+    <version>1.0.1</version>
+    <time>1288702675</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51833 from user coolo
+</comment>
+    <requestid>51833</requestid>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>486d3bfa2bff9a684f3bd5dd347d678f</srcmd5>
+    <version>1.0.1</version>
+    <time>1288702680</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51833
+</comment>
+  </revision>
+  <revision rev="10" vrev="18">
+    <srcmd5>486d3bfa2bff9a684f3bd5dd347d678f</srcmd5>
+    <version>1.0.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="20">
+    <srcmd5>486d3bfa2bff9a684f3bd5dd347d678f</srcmd5>
+    <version>1.0.1</version>
+    <time>1319182463</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>67edcf37084ea7e03894b8add14be4a9</srcmd5>
+    <version>1.1.9</version>
+    <time>1321542202</time>
+    <user>coolo</user>
+    <comment>- update to 1.1.9 
+  new binaries servicelog_manage, v1_servicelog, v29_servicelog
+- librtas-devel and sqlite3-devel are required for building
+- ExclusiveArch</comment>
+    <requestid>91904</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4c9ac006db4244d917978651f8712888</srcmd5>
+    <version>1.1.9</version>
+    <time>1323194617</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>4fcd6a0fca69825a501232a2e43b30f5</srcmd5>
+    <version>1.1.9</version>
+    <time>1328622410</time>
+    <user>coolo</user>
+    <comment>- add autoconf, libtool and automake to BuildRequires (forwarded request 102951 from k0da)</comment>
+    <requestid>102959</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>419bee88d9cd85145846d224492f4cd3</srcmd5>
+    <version>1.1.10</version>
+    <time>1335195615</time>
+    <user>coolo</user>
+    <comment>-update to 1.1.10 
+Resurrected servicelog_manage(8) man page (LTC bugzilla #70852).  Major
+fixups to the other man pages (#70853) and to servicelog_notify.</comment>
+    <requestid>115114</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>419bee88d9cd85145846d224492f4cd3</srcmd5>
+    <version>1.1.10</version>
+    <time>1340184209</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2d79f98befb13ab3bd80ad4df335dded</srcmd5>
+    <version>1.1.11</version>
+    <time>1355480256</time>
+    <user>coolo</user>
+    <comment>- update to 1.1.11
+  upstream changelog:
+  * servicelog_manage : resurrecting the --clean option
+  * Minor changes
+- reenable as-needed
+- don't run autoreconf
+- remove automake, autoconf, libtool from BuildRequires (forwarded request 144981 from k0da)</comment>
+    <requestid>145071</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>2d79f98befb13ab3bd80ad4df335dded</srcmd5>
+    <version>1.1.11</version>
+    <time>1359110396</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>2d79f98befb13ab3bd80ad4df335dded</srcmd5>
+    <version>1.1.11</version>
+    <time>1379664649</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>38164fdaec73dd257fbdfa577bc1a5b9</srcmd5>
+    <version>1.1.11</version>
+    <time>1386932459</time>
+    <user>coolo</user>
+    <comment>- enable ppc64le (forwarded request 210439 from k0da)</comment>
+    <requestid>210669</requestid>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>beebb46cb2a8204eabb6753e70a12e4e</srcmd5>
+    <version>1.1.11</version>
+    <time>1390299139</time>
+    <user>coolo</user>
+    <comment>release update to 1.1.11-3 (FATE#315457) (forwarded request 214403 from jloeser)</comment>
+    <requestid>214477</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fd5305eabadcd62382abb3fadc0d3fa5</srcmd5>
+    <version>1.1.12</version>
+    <time>1395148016</time>
+    <user>coolo</user>
+    <comment>version update to 1.1.12 (BNC#867347, FATE#315457) (forwarded request 225441 from jloeser)</comment>
+    <requestid>225442</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>fd5305eabadcd62382abb3fadc0d3fa5</srcmd5>
+    <version>1.1.12</version>
+    <time>1409303351</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>121616f3d50e46b89ffd258ecb6b5309</srcmd5>
+    <version>1.1.13</version>
+    <time>1410281994</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247679</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3c49e547056c0b15ae5c1c75e0135917</srcmd5>
+    <version>1.1.14</version>
+    <time>1459508555</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>378894</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>483a9ad1b777d79f1e57dafa57a95272</srcmd5>
+    <version>1.1.14</version>
+    <time>1508876664</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536220</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="python-moksha-hub" project="openSUSE:Factory">
+  <title>Hub components for Moksha</title>
+  <description>Hub components for Moksha.
+
+</description>
+  <devel project="devel:languages:python" package="python-moksha-hub"/>
+  <url>https://mokshaproject.net</url>
+</package>

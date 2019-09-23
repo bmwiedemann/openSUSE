@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Sun Jun  2 20:16:13 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in description.
+
+-------------------------------------------------------------------
+Fri May 17 12:13:08 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 0.11.2 
+  * Fix python -m wormhole on py2.
+  * Python-3.7 compatibility was fixed.
+  * The client version is now sent to the mailbox server for each 
+    connection.
+  Packaging changes:
+  * We removed the Rendezvous Server (now named the "Mailbox 
+    Server") out to a separate package and repository named 
+    magic-wormhole-mailbox-server.
+  * The Dockerfile was removed.
+- Launch tests again.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:50:13 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Mar 12 09:23:58 UTC 2018 - tchvatal@suse.com
+
+- Drop the test sections as the tests require the package to be
+  installed
+
+-------------------------------------------------------------------
+Mon Mar 12 09:19:13 UTC 2018 - tchvatal@suse.com
+
+- Properly handle singlespec to allow py2 and py3 build
+
+-------------------------------------------------------------------
+Mon Mar 12 09:08:16 UTC 2018 - tchvatal@suse.com
+
+- Rename to python-*
+- Allow python2 build
+
+-------------------------------------------------------------------
+Fri Mar  2 22:01:11 UTC 2018 - avvissu@yandex.by
+
+- Initial package
+

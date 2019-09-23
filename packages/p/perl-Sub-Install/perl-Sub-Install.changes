@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Fri Sep 19 12:15:47 UTC 2014 - coolo@suse.com
+
+- updated to 0.928
+    - cope with subroutines with spaces in their names when catching
+      warnings
+    - don't assume that the source sub isn't blessed in tests (!)
+
+-------------------------------------------------------------------
+Mon Nov 25 07:38:53 UTC 2013 - coolo@suse.com
+
+- updated to 0.927
+   rebuild using Dist::Zilla, update links to repo, metadata, etc.
+   typo fixes, thanks David Steinbrunner
+
+-------------------------------------------------------------------
+Tue Feb 28 08:19:21 UTC 2012 - coolo@suse.com
+
+- updated to 0.926
+  cope with terminal dots from new Carp
+
+-------------------------------------------------------------------
+Wed Dec 14 11:04:53 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:31 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 09:44:38 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sun Apr 11 20:06:34 UTC 2010 - chris@computersalat.de
+
+- removed .packlist, perllocal.pod files
+  > noarch package
+- cleanup spec
+  o fix HEADER
+  o removed useless comments
+  o update License, Url
+  o fix perl-macros deps
+  o update description
+  o macro usage
+
+-------------------------------------------------------------------
+Sat Jul 25 19:42:11 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Sun Jun 21 20:47:41 CEST 2009 - chris@computersalat.de
+
+- initial package 0.925
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- spec mods
+  o added header
+

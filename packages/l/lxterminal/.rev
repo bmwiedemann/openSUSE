@@ -1,0 +1,245 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8bf6b755085565198a7a6eed3393277e</srcmd5>
+    <version>0.1.6</version>
+    <time>1262861514</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxterminal based on submit request 26285 from user anubisg1
+</comment>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>93ef03a100fd1a7d236122f77ff37d04</srcmd5>
+    <version>0.1.7</version>
+    <time>1267490476</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxterminal based on submit request 33728 from user anubisg1
+</comment>
+    <requestid>33728</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5a315c1003cdc3bcfcfa0b5f4c8885ff</srcmd5>
+    <version>0.1.7</version>
+    <time>1268924883</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>6948c76ae366a3bcdfb4ee2d711fc784</srcmd5>
+    <version>0.1.7</version>
+    <time>1269168901</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxterminal based on submit request 35406 from user anubisg1
+</comment>
+    <requestid>35406</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>82bef036d579844ff0db2d54842faa80</srcmd5>
+    <version>0.1.7</version>
+    <time>1270599491</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxterminal based on submit request 37139 from user anubisg1
+</comment>
+    <requestid>37139</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>c981823301d6a7cf712aef53cb4cd683</srcmd5>
+    <version>0.1.7</version>
+    <time>1276468881</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxterminal based on submit request 41369 from user anubisg1
+</comment>
+    <requestid>41369</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>c981823301d6a7cf712aef53cb4cd683</srcmd5>
+    <version>0.1.7</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>c981823301d6a7cf712aef53cb4cd683</srcmd5>
+    <version>0.1.7</version>
+    <time>1278678595</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b4dc8409dde31238df01fc8f67f77805</srcmd5>
+    <version>0.1.8</version>
+    <time>1279652213</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxterminal based on submit request 43462 from user anubisg1
+</comment>
+    <requestid>43462</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>9c70fa08d05a3c8ca0e5d3a78fcf8742</srcmd5>
+    <version>0.1.8</version>
+    <time>1280738041</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxterminal based on submit request 44164 from user anubisg1
+</comment>
+    <requestid>44164</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>4144bb6fc0662538cd75e980153999c2</srcmd5>
+    <version>unknown</version>
+    <time>1284373205</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/lxterminal based on submit request 47395 from user anubisg1
+</comment>
+    <requestid>47395</requestid>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>4144bb6fc0662538cd75e980153999c2</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>1ce587cef8b1ce06d4501370e99cb9ef</srcmd5>
+    <version>0.1.9</version>
+    <time>1304351821</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>67108</requestid>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>902a23db539ef77401a210d67b682351</srcmd5>
+    <version>0.1.9</version>
+    <time>1304351831</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67108
+</comment>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>c0effb49fe81172dffbf5cf42cffc1c9</srcmd5>
+    <version>0.1.9</version>
+    <time>1306918041</time>
+    <user>saschpe</user>
+    <comment>fixed factory build failure</comment>
+    <requestid>72241</requestid>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>ffd7ac3b0960ea01ce7bc4f9ae104b72</srcmd5>
+    <version>0.1.9</version>
+    <time>1306918051</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72241
+</comment>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>ab623766b1c9192f764534163d00bcaf</srcmd5>
+    <version>0.1.11</version>
+    <time>1312444760</time>
+    <user>saschpe</user>
+    <comment>new upstream bugfix version 0.1.11</comment>
+    <requestid>77407</requestid>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>69cc67f6cad3465ae933618bd9933132</srcmd5>
+    <version>0.1.11</version>
+    <time>1312444769</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77407
+</comment>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>85b5f3addc1b7a679ed846e1377fd7c3</srcmd5>
+    <version>0.1.11</version>
+    <time>1317049519</time>
+    <user>oertel</user>
+    <comment>Fixed typos in lxterminal.spec (forwarded request 84361 from aturrini)</comment>
+    <requestid>84833</requestid>
+  </revision>
+  <revision rev="20" vrev="12">
+    <srcmd5>15fb1bac086e58bbb8d7435a542ebfc0</srcmd5>
+    <version>0.1.11</version>
+    <time>1317049524</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 84833
+</comment>
+  </revision>
+  <revision rev="21" vrev="14">
+    <srcmd5>15fb1bac086e58bbb8d7435a542ebfc0</srcmd5>
+    <version>0.1.11</version>
+    <time>1319182165</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="15">
+    <srcmd5>cb05d4f3b9d2b4d237d237d2e12bc9fd</srcmd5>
+    <version>0.1.11</version>
+    <time>1323192455</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="23" vrev="17">
+    <srcmd5>cb05d4f3b9d2b4d237d237d2e12bc9fd</srcmd5>
+    <version>0.1.11</version>
+    <time>1340183683</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="19">
+    <srcmd5>cb05d4f3b9d2b4d237d237d2e12bc9fd</srcmd5>
+    <version>0.1.11</version>
+    <time>1359109422</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="21">
+    <srcmd5>cb05d4f3b9d2b4d237d237d2e12bc9fd</srcmd5>
+    <version>0.1.11</version>
+    <time>1379663235</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="22">
+    <srcmd5>5fec5a1989c44b57274adc231c92a23e</srcmd5>
+    <version>0.1.11</version>
+    <time>1408957504</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>246163</requestid>
+  </revision>
+  <revision rev="27" vrev="24">
+    <srcmd5>5fec5a1989c44b57274adc231c92a23e</srcmd5>
+    <version>0.1.11</version>
+    <time>1409301839</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e00521357e70d12328fa8d23979839e2</srcmd5>
+    <version>0.2.0</version>
+    <time>1414140477</time>
+    <user>coolo</user>
+    <comment>new upstream version 0.2.0</comment>
+    <requestid>258112</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c3bd10dbb6fa9454a67ab66a0a33f548</srcmd5>
+    <version>0.3.0</version>
+    <time>1484232964</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448643</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>badd65fb418b429a664575eac161ddb9</srcmd5>
+    <version>0.3.1</version>
+    <time>1515876548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563868</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>a0ac1fd2e585791cea540893092d713d</srcmd5>
+    <version>0.3.1</version>
+    <time>1529402328</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616548</requestid>
+  </revision>
+</revisionlist>

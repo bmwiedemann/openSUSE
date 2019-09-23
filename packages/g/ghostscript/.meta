@@ -1,0 +1,48 @@
+<package name="ghostscript" project="openSUSE:Factory">
+  <title>Plain upstream Ghostscript</title>
+  <description>The &quot;ghostscript&quot; package might be incompatible
+with the official openSUSE &quot;ghostscript-library&quot;
+package.
+
+See &quot;Package clean-up and upgrade to latest
+stable release&quot; at
+
+https://bugzilla.novell.com/show_bug.cgi?id=735824
+
+You need the packages ghostscript and
+ghostscript-x11 which replace the official
+packages ghostscript-library and
+ghostscript-x11 (provided you have already
+the package ghostscript-x11 installed).
+
+Do not remove installed ghostscript-fonts-*
+packages.
+
+To replace the official packages, you must
+install ghostscript and ghostscript-x11
+in one run, e.g.:
+
+# rpm -Uhv ghostscript-*.rpm ghostscript-x11-*.rpm
+
+To go back to the official packages, you must
+first remove the ghostscript and ghostscript-x11
+package and ignore RPM package dependencies, e.g.:
+
+# rpm -e --nodeps ghostscript ghostscript-x11
+
+Then you can re-install the official packages,
+e.g.:
+
+# rpm -Uhv ghostscript-library-*.rpm ghostscript-x11-*.rpm
+
+Be careful that you specify during installation
+the exact right ghostscript-x11-*.rpm package
+(with exact matching version-release) - otherwise
+you get RPM conflicts.
+
+In general please read
+
+https://build.opensuse.org/project/show?project=Printing
+</description>
+  <devel project="Printing" package="ghostscript"/>
+</package>

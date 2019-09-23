@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Mon Mar  4 08:56:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop the cython dependencies and mark package as noach:
+  * Upstream dropped the cython code
+
+-------------------------------------------------------------------
+Sat Mar  2 04:51:06 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.8.4:
+  * Support an escaped pipe char in a table cell. #150
+  * Fix ordered and unordered list. #152
+  * Fix spaces between = in HTML tags
+  * Add max_recursive_depth for list and blockquote.
+  * Fix fences code block.
+
+-------------------------------------------------------------------
+Mon Dec 11 21:52:37 UTC 2017 - jengelh@inai.de
+
+- Remove bias from description.
+
+-------------------------------------------------------------------
+Wed Dec  6 03:04:08 UTC 2017 - arun@gmx.de
+
+- update to version 0.8.3:
+  * Fix nested html issue. #137
+
+- changes from version 0.8.2:
+  * Fix _keyify with lower case.
+
+-------------------------------------------------------------------
+Wed Nov  8 19:01:39 UTC 2017 - arun@gmx.de
+
+- update to version 0.8.1 bsc#1072307:
+  * Security fix CVE-2017-16876, thanks Dawid Czarnecki
+
+-------------------------------------------------------------------
+Mon Nov  6 16:58:50 UTC 2017 - arun@gmx.de
+
+- update to version 0.8.0 bsc#1064640:
+  * Also fixes CVE-2017-15612
+  * Remove non breaking spaces preprocessing
+  * Remove rev and rel attribute for footnotes
+  * Fix bypassing XSS vulnerability by junorouse
+
+-------------------------------------------------------------------
+Fri Apr  7 21:13:02 UTC 2017 - toddrme2178@gmail.com
+
+- Fix source url.
+
+-------------------------------------------------------------------
+Fri Apr  7 20:00:54 UTC 2017 - toddrme2178@gmail.com
+
+- update to version 0.7.4:
+  * Fix escape_link method by Marcos Ojeda
+  * Handle block HTML with no content by David Baumgold
+  * Use expandtabs for tab
+  * Fix escape option for text renderer
+  * Fix HTML attribute regex pattern
+- update to version 0.7.3:
+  * Fix strikethrough regex
+  * Fix HTML attribute regex
+  * Fix close tag regex
+- update to version 0.7.2:
+  * Fix hard_wrap options on renderer.
+  * Fix emphasis regex pattern
+  * Fix base64 image link #80.
+  * Fix link security per #87.
+- update to version 0.7.1:
+  * Fix inline html when there is no content per #71.
+- specfile:
+  * Initial singlespec version
+  * update copyright year
+  * updated source url to files.pythonhosted.org
+
+-------------------------------------------------------------------
+Thu Aug 13 12:08:46 UTC 2015 - toddrme2178@gmail.com
+
+- update to version 0.7:
+  * Fix the breaking change in version 0.6 with options:
+    parse_inline_html and parse_block_html
+  * Breaking change: remove parse_html option for explicit
+  * Change option escape default value to True for security reason
+- update to version 0.6:
+  * Breaking change on inline HTML, text in inline HTML will not be
+    parsed per #38.
+  * Replace tag renderer with inline_html for breaking change on
+    inline HTML
+  * Double emphasis, emphasis, code, and strikethrough can contain one
+    linebreak per #48.
+  * Match autolinks that do not have / in their URI via #53.
+  * A work around on link that contains ) per #46.
+  * Add <font> tag for inline tags per #55.
+
+-------------------------------------------------------------------
+Tue Apr  7 11:16:51 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.5.1:
+  + Fix a bug when list item is blank via ipython#7929.
+  + Use python-wheels to build wheels for Mac.
+- Drop 0001-Fix-when-list-item-is-blank.-Refer-https-github.com-.patch
+  fixed upstream.
+- Fix source URL.
+- Add fdupes BuildRequires and fdupes macro, remove duplicated
+  files.
+- Package LICENSE README.rst.
+
+-------------------------------------------------------------------
+Sun Mar  8 20:48:24 UTC 2015 - tbehrens@suse.com
+
+- Add 0001-Fix-when-list-item-is-blank.-Refer-https-github.com-.patch
+  to fix #8 in odpdown, and
+  https://github.com/ipython/ipython/issues/7929. This is a backport
+  from upstream master.
+
+-------------------------------------------------------------------
+Sat Feb  7 20:36:53 UTC 2015 - tbehrens@suse.com
+
+- Update to mistune 0.5:
+  * For custom lexers, *features* is replaced with *rules*
+  * Refactor on function names and codes
+  * Add a way to output the render tree via `#20`
+  * Fix emphasis and strikethrough regular expressions
+- Changes from version 0.4.1
+  * Add option for parse markdown in block level html
+  * Fix on lheading, any number of underline = or - will work
+  * Patch for setup if Cython is available but no C compiler
+
+-------------------------------------------------------------------
+Wed Oct  8 22:22:02 UTC 2014 - nevion@gmail.com
+
+-initial import
+

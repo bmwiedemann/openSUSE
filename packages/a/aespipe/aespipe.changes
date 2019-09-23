@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Sat Nov  4 22:19:07 UTC 2017 - aavindraa@gmail.com
+
+- Update to 2.4e
+  * Added workaround for gpg 2 pinentry-mode bug.
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jun  5 07:49:57 UTC 2017 - mpluskal@suse.com
+
+- Fix building on Factory (disable pie building)
+
+-------------------------------------------------------------------
+Sat Apr  1 07:02:38 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Mar 31 21:07:06 UTC 2017 - meissner@suse.com
+
+- Disable PIE linking, as the assembler code is not position independ
+  currently.
+
+-------------------------------------------------------------------
+Fri Feb 24 08:49:36 UTC 2017 - shshyukriev@suse.com
+
+- Compile with -fPIC for 64bit to fix build errors 
+
+-------------------------------------------------------------------
+Thu Jun  4 11:19:09 UTC 2015 - mpluskal@suse.com
+
+- Update to 2.4d
+  * no upstream changelog available
+- Cleanup spec file with spec-cleaner
+- Drop no longer needed aespipe-ppc64le.patch
+
+-------------------------------------------------------------------
+Tue Jul 29 11:21:56 UTC 2014 - dvaleev@suse.com
+
+- Fix PowerPC little endian build 
+
+- added patches:
+  * aespipe-ppc64le.patch
+-------------------------------------------------------------------
+Sun Apr  1 12:13:33 UTC 2012 - bruno@ioda-net.ch
+
+- Fix spec formatting and licence 
+
+-------------------------------------------------------------------
+Sat Jan 21 15:02:20 UTC 2012 - bruno@ioda-net.ch
+
+- New packaging for obs / version 2.4.c 
+
+-------------------------------------------------------------------
+Sun Oct 28 2007 - jnelson@jamponi.net
+
+- tweaks for build service
+
+-------------------------------------------------------------------
+Fri Apr 6 2007 - guru@unixtech.be
+
+- new upstream version
+
+------------------------------------------------------------------
+Mon Dec 11 2006 - guru@unixtech.be
+
+- new package

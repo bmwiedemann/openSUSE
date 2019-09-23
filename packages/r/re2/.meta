@@ -1,0 +1,5 @@
+<package name="re2" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:chromium" package="re2"/>
+</package>

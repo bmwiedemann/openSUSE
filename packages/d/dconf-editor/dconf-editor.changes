@@ -1,0 +1,497 @@
+-------------------------------------------------------------------
+Tue Mar 12 16:13:57 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + No code changes since last unstable release, new stable
+    release.
+
+-------------------------------------------------------------------
+Thu Feb 21 10:09:22 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + There was an hidden way to toggle search by clicking on an
+    empty space of the headerbar, but it was blocking the use of a
+    double-click to maximize the window, so that was removed. There
+    is also some strings capitalization fixes, an improvement for
+    the --help text, various small changes, and some relocatable
+    schemas added.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 15 19:00:20 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Many code changes, but nothing big since 3.31.4.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan  8 13:33:18 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.4:
+  + The UI and the features should mostly stay the same now until
+    the future release 3.32 (planned in March). They include a
+    search running from current folder, some new keyboard shortcuts
+    and functionalities, the ability to run on a really small
+    screen (vertically and horizontally), the (temporary) remove of
+    the "Show folder informations", and various big or small
+    improvements everywhere.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan  5 18:30:45 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.3:
+  + Many changes in the UI (rough edges), including a great new
+    editable pathbar, an improved bookmarks popover, a night mode,
+    and (in progress) an ability to run on really small screens
+    (phones like the future Librem 5 by Purism).
+
+-------------------------------------------------------------------
+Tue Sep 25 12:08:56 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.2:
+  + Fix a bug in the handling of double values.
+- Changes from version 3.30.1:
+  + Some bugs fixed, one small UI improvement when window is not on
+    top, case ignored in search, and some new relocatable schemas
+    handled.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  7 20:13:46 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 28 23:13:58 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.92:
+  + Two strings added (freeze break), a quite important rework of
+    the CSS file (that notably makes icons less fuzzy when using
+     small rows), that looks calm and good.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 16 15:58:46 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.91:
+  + There have been many refactorings and fixes since the last beta
+    release, notably regarding memory cleaning.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  3 18:36:29 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.90:
+  + This development cycle has been quite calm (until its end), and
+    that’s why there wasn’t any previous “alpha” release. The only
+    visible things for users should be some new demos. But
+    internally, this module can now be splitted in two, one that
+    handles the UI (“frontend”) and one that plays with the dconf
+    service, gsettings API, and possibly other sources of
+    configuration informations to be added in the future. The goal
+    is to move this “backend” as a new module –a library first, and
+    then to transform it as a D-Bus service– in the next
+    development cycle. There is probably at least one regression
+    due to these big changes, but I will do my best to test all the
+    things before 3.30 release. If you see a bug, please report.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 13 09:26:03 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 10 08:49:09 UTC 2018 - jengelh@inai.de
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Tue Mar  6 10:15:21 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Small fixes of corner cases.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:24:37 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb 19 15:28:49 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.91:
+  + Handling of multiple schemas installed at the same path.
+  + New keys list organisation by schema.
+- Changes from version 3.27.4:
+  + Various UI improvements, including icons next to edited keys,
+    and the limitation of the content in infobar.
+  + The underlying model has also been improved a little.
+  + The experimental code that was causing crashes in some build
+    conditions has been removed.
+  + The actions that were accessible via dbus have been made
+    private.
+  + The command-line has been a little bit reworked, with an
+    experimental completion available, and the manpage updated.
+  + Updated translations.
+- Drop dconf-editor-nocrash.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Dec 25 04:27:03 UTC 2017 - dimstar@opensuse.org
+
+- Add dconf-editor-nocrash.patch: Stop dconf-editor from crashing
+  on startup (bgo#791597).
+
+-------------------------------------------------------------------
+Mon Dec 25 03:27:03 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.27.3:
+  + The main UI has been redesigned.
+  + Updated translations.
+- Update URL to https://wiki.gnome.org/Apps/DconfEditor: current
+  site, as also mentioned in meson.build.
+- No longer obsolete dconf-lang: since the gettext domain was
+  changed, this is no longer nescessary.
+- Drop dconf-editor-fix-localized-strings-problem.patch,
+  dconf-editor-fix-rows-issue.patch and
+  dconf-editor-nb-translations.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Dec 25 03:27:01 UTC 2017 - badshah400@gmail.com
+
+- Update to version 3.27.1:
+  + Use meson for build (replaces autotools).
+  + dconf-editor can now launch to a path given on the
+    commandline.
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to appropriate meson macros following
+  upstream switch to Meson build system.
+- Appdata file is now installed to %{_datadir}/metainfo, own this
+  directory and adapt the file list accordingly.
+
+-------------------------------------------------------------------
+Sun Dec 24 16:26:13 UTC 2017 - zaitor@opensuse.org
+
+- Add dconf-editor-nb-translations.patch: Update Norwegian Bokmål
+  translations.
+- Add dconf-editor-fix-localized-strings-problem.patch: Fix problem
+  on localized strings.
+- Add dconf-editor-fix-rows-issue.patch: Fix rows option
+  (bgo#790025).
+- Stop post(un) handling of: desktop_database_post(un),
+  icon_theme_cache_post(un) and glib2_gsettings_schema_post(un), we
+  have file-triggers taking care of this for us now.
+
+-------------------------------------------------------------------
+Wed Nov  1 08:28:15 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.26.2:
+  + Bugs fixed: bgo#788862.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct  2 18:43:47 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.1:
+  + First, there is now a toggle on boolean rows for switching
+    faster the key value.
+  + In the same spirit, integer keys that only accepts a small
+    range of values now can be directly changed, from the
+    right-click popover.
+  + There is also a shortcut for reseting a key to its default
+    value.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan 14 12:04:36 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.4:
+  + The bigger change is the switch to modern Gettext for
+    translations of XML files, in place of the deprecated Intltool.
+  + That came with a cleaning of Autotools code.
+  + Unicode is now used where needed in every translatable english
+    string.
+  + There're some small changes in keys description presentation.
+  + Updated translations.
+- Drop intltool BuildRequires following upstreams port.
+
+-------------------------------------------------------------------
+Sat Jan 14 11:47:25 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.22.3:
+  + Minor code changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 11 14:44:23 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Appdata installation has been fixed.
+  + Theming support has been improved.
+  + Updated translations.
+- Drop dconf-editor-fix-appdata-install.patch: Fixed upstream.
+  Following this, remove gnome-common BuildRequires and
+  gnome-autogen run, we no longer carry any patches.
+
+-------------------------------------------------------------------
+Thu Sep 22 09:28:40 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Appdata file validation fixes.
+  + Updated translations.
+- Add appstream-glib-devel BuildRequires: New dependency.
+- Add dconf-editor-fix-appdata-install.patch: Fix appdata
+  installation. Patch from upstream git.
+- Following the above, add gnome-common BuildRequires and run
+  gnome-autogen as the patch touches the buildsystem.
+
+-------------------------------------------------------------------
+Wed Sep 14 15:01:41 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.21.92:
+  + The keyboard navigation has been improved.
+  + Various a11y and i18n bugs have been fixed.
+  + dconf-editor should now be able to compile with the valac flag
+   --enable-experimental-non-null, reducing the number of potential
+   code errors.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 18 15:11:58 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Mainly polished the new UI, including improving keyboard
+    navigation and updating some metadatas.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 22 15:27:59 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.4:
+  + The UI has completely evolved, into an all-in-one-window. That
+    permits notably a "delay mode" in which multiple changes are
+    applied at the same time (only schema by schema when there're
+    some, and other keys via a DConfChangeset). Keys without schema
+    can also be deleted now.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 22 15:27:58 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.1:
+  + Some nullable variables are more correctly checked.
+  + English wording of the welcome dialog has (again) been
+    improved, and a bug appearing when closing the application with
+    the app-menu has been corrected.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 22 15:27:57 UTC 2016 - fcrozat@suse.com
+
+- Recommends lang package for translations (bsc#988528).
+
+-------------------------------------------------------------------
+Thu Jun 30 08:47:11 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.3:
+  + Do not use a spinbutton for long int.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 25 08:29:06 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20.2 FATE#318572 
+
+-------------------------------------------------------------------
+Tue May 10 20:30:08 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + The english wording of the welcome dialog has (again) been
+    improved, and a bug appearing when closing the application with
+    the app-menu has been corrected.
+  + Updated translations.
+- Drop dconf-editor-quit-app-correctly.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon May  9 08:20:26 UTC 2016 - fcrozat@suse.com
+
+- Update to GNOME 3.20 -- FATE#318572.
+
+-------------------------------------------------------------------
+Mon Apr 25 23:55:45 UTC 2016 - zaitor@opensuse.org
+
+- Add dconf-editor-quit-app-correctly.patch: Correctly quit with
+  app-menu action, patch from upstream git.
+- Stop passing V=1 to make, we do debugging locally.
+
+-------------------------------------------------------------------
+Thu Apr 14 18:06:15 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + An english typo has been corrected in the welcome dialog, and
+    translations files have been updated accordingly.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 22 09:39:03 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 15 10:44:31 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + Some problems have appeared related to the sizing of the
+    key-editor dialogs, and will need more testing with a clean
+    Gtk+ release, even if all looks corrected.
+  + An infinite loop has also be spotted when trying to reset all
+    keys of a folder containing keys without schema.
+  + Also, a CSS resource with one rule only has been added to look
+    better when using the “Big Text” accessibility feature.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  1 10:02:50 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.91:
+  + The presentation of a key’s “default value” now takes care of
+    distributor and admin overrides, instead of showing the default
+    value proposed in the gschema.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 09:30:15 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.90:
+  + This release has seen some improvements to the keyboard
+    usability, with some new shortcuts added, and an help overlay
+    to document them (requiring a GTK+ 3.19 at least). Other
+    changes include some more metadata in the AppData file (used by
+    software centers to know about the application), and minor
+    corrections caused by recent GTK+ changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec 23 13:34:35 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.19.3:
+  + Added a notification for the multiple “copy” actions.
+  + Added a new menu for actions on the view (notably a “reset
+    visible keys” action – no recursion for now).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 24 00:14:38 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.2:
+  + Removed an unnecessary big hack, and improved some other little
+    things here and there.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Nov 21 18:43:17 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.1:
+  + dconf-editor is now distributed under GPL 3.
+  + Use GSettingsSchema to access schemas informations, and
+    GSettings to edit settings when that’s possible.
+  + UI of the keys list has been updated to use a GtkListBox, more
+    accessible, more usable, cleaner.
+  + Misc. other changes.
+  + Updated translations.
+- Drop dconf-use-g_settings_get_default_value.patch: Fixed
+  upstream.
+- Update license tag to GPL-3.0+, following upstreams relicensing
+  work.
+
+-------------------------------------------------------------------
+Thu Nov 12 09:23:55 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 12 18:34:14 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Fixed a crash happening when a range was set without either a
+    min or a max value.
+
+-------------------------------------------------------------------
+Mon Sep 21 11:45:47 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + No changes since 3.17.92.
+
+-------------------------------------------------------------------
+Wed Sep 16 06:44:16 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 09:17:21 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.91:
+  + The output of --version is now printed on stdout, as suggested
+    by GNU. That's the only technical change, all looks good.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 19 13:48:04 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + No big technical change for the beta, just some preparations
+    for the next cycle.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 28 17:54:02 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.1:
+  + Beginning of cleaning, both of the code (UI template,
+    GResource…) and of the UI (unnecessary shadows removed,
+    widgets' margins, minimum width of the panel…).
+  + Gtk+ 3.14 is now required, with also a recent Valac.
+- Disable dconf-use-g_settings_get_default_value.patch for now,
+  needs rebase if still needed. Investigate later.
+
+-------------------------------------------------------------------
+Wed Apr 15 07:53:28 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + Add symbolic icon.
+  + Updated translations.
+- Remove HighContrast %icon_theme_cache_post(un) calls, as Symbolic
+  icons have replaced them.
+
+-------------------------------------------------------------------
+Mon Mar 23 17:07:30 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 18 13:01:53 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + The main correction since 3.15.91 is the add back of the
+    manpage, forgotten during the split. Because of that, dconf
+    0.23.2 is now explicitely required.
+  + The AppData file also validates again.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 00:28:36 UTC 2015 - dimstar@opensuse.org
+
+- Initial package, version 3.15.91.
+  + dconf-editor was split out upstream into its own source
+    repository.
+- Move patch dconf-use-g_settings_get_default_value.patch from
+  dconf to dconf-editor.
+

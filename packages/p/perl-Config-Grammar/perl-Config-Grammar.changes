@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Thu Mar 21 06:05:05 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.13
+   see /usr/share/doc/packages/perl-Config-Grammar/Changes
+
+-------------------------------------------------------------------
+Sat Sep 10 05:09:48 UTC 2016 - coolo@suse.com
+
+- updated to 1.12
+   see /usr/share/doc/packages/perl-Config-Grammar/Changes
+
+  UNRELEASED
+      
+       * Fixes 'Name "Config::Grammar::File" used only once' (patch by Salvatore Bonaccorso)
+       * Fix spelling error in manpage (patch by Salvatore Bonaccorso)
+       * Use Dist::Zilla to prepare the Perl distribution for CPAN
+
+-------------------------------------------------------------------
+Tue Feb  9 09:36:45 UTC 2016 - coolo@suse.com
+
+- updated to 1.11
+   see /usr/share/doc/packages/perl-Config-Grammar/Changes
+
+  2016-02-08
+       
+       * Released 1.11
+       * Allow specification of file encoding (Fritz Zaucker)
+
+-------------------------------------------------------------------
+Sun Dec 25 21:39:06 UTC 2011 - coolo@suse.com
+
+- initial package 1.10
+    * created by cpanspec 1.78.06
+

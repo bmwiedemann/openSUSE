@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Tue Feb  5 05:51:07 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * nanoxml-2.2.3_build.patch
+    + specify source level also for javadoc invocation
+    + fixes build with recent OpenJDK 11.0.2
+
+-------------------------------------------------------------------
+Tue Sep 19 10:02:39 UTC 2017 - fstrba@suse.com
+
+- Modified patch:
+  * nanoxml-2.2.3_build.patch
+    + build with java source and target level 1.6
+    + fixes build with jdk9
+
+-------------------------------------------------------------------
+Sun Jul 31 12:41:38 UTC 2016 - jengelh@inai.de
+
+- Update descriptions
+
+-------------------------------------------------------------------
+Sat Jul  9 13:26:27 UTC 2016 - mailaender@opensuse.org
+
+- spec file cleanup
+
+-------------------------------------------------------------------
+Tue Dec 30 21:56:53 CET 2008 - lars@linux-schulserver.de
+
+- build for openSUSE-Education
+- removed Epoch
+- require java
+- add (soft) dependencies for the manuals
+
+-------------------------------------------------------------------
+Thu Jul 20 00:00:00 CET 2006 Ralph Apel <r.apel@r-apel.de> - 0:2.2.3-4jpp
+
+- First JPP-1.7 release
+- Drop BR java-javadoc, add package-list as Source instead
+
+-------------------------------------------------------------------
+Mon Aug 23 00:00:00 CET 2004 Fernando Nasser <fnasser@redhat.com> - 0:2.2.3-3jpp
+
+- Updated URL
+- Pro-forma rebuild with Ant 1.6.2 present
+
+-------------------------------------------------------------------
+Sat Jan 10 00:00:00 CET 2004 Ville Skyttä <ville.skytta at iki.fi> - 0:2.2.3-2jpp
+
+- Add Epoch.
+- Change group to Text Processing/Markup/XML.
+- Add unversioned javadoc dir symlinks, mark javadoc as %%doc.
+- Install manual as normal %%doc, not into %%{_javadocdir}.
+- BuildRequires java-devel (not ant).
+- Don't use bundled SAX jar.
+
+-------------------------------------------------------------------
+Sat Dec 27 00:00:00 CET 2003 Thomas Leonard <tle@sirius.sued.tremium.de> - 2.2.3-1
+
+- Initial build.
+ 
+

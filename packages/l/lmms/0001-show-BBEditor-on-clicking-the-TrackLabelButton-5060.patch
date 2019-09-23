@@ -1,0 +1,23 @@
+From bdbea87149ee98e3bbe6bead94c6d5102abdfc50 Mon Sep 17 00:00:00 2001
+From: Steffen Baranowsky <BaraMGB@freenet.de>
+Date: Fri, 26 Jul 2019 10:04:16 +0200
+Subject: [PATCH] show BBEditor on clicking the TrackLabelButton (#5060)
+
+---
+ src/tracks/BBTrack.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/tracks/BBTrack.cpp b/src/tracks/BBTrack.cpp
+index a4217d23d..14b65f336 100644
+--- a/src/tracks/BBTrack.cpp
++++ b/src/tracks/BBTrack.cpp
+@@ -664,5 +664,5 @@ bool BBTrackView::close()
+ void BBTrackView::clickedTrackLabel()
+ {
+ 	Engine::getBBTrackContainer()->setCurrentBB( m_bbTrack->index() );
+-	gui->getBBEditor()->show();
++	gui->getBBEditor()->parentWidget()->show();
+ }
+-- 
+2.16.4
+

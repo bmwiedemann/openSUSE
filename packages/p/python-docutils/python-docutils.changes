@@ -1,0 +1,424 @@
+-------------------------------------------------------------------
+Sat Sep 14 01:50:36 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip the tests for the flavors not being built
+
+-------------------------------------------------------------------
+Fri Aug  9 09:53:07 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.15.2
+  * Docutils 0.14.x is the last version supporting Python 2.4, 2.5,
+   3.1, and 3.2.
+  * reStructured text: Allow embedded colons in field list field 
+    names (before, tokens like :this:example: were considered ordinary text).
+  * Fixed a bug with the "trim" options of the "unicode" directive.
+
+-------------------------------------------------------------------
+Mon May 13 23:48:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add multibuild in order to avoid buildcycle with Pillow and friends
+
+-------------------------------------------------------------------
+Tue May  7 15:03:33 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add optional build dependencies Pillow, Pygments and roman,
+  causing 16 additonal test methods to run
+- Add Recommends for Pillow, Pygments and roman
+- Use %license
+- Simplify test invocation
+
+-------------------------------------------------------------------
+Wed Jan  9 22:14:42 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Remove unnecessary node BR
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:27 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Nov 10 22:54:38 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * add binary rst2html4
+
+- update to version 0.14:
+  * Enable validation of Docutils XML documents against the DTD:
+    Use attribute type NMTOKEN instead of REFID for the `refid` attribute
+    and NMTOKENS for `backrefs`: REFID refers to an ID type instance,
+    however, the `ids` attribute cannot use the ID type because `XML only
+    allows one ID per Element Type`__ and doesn't support a multiple-ID
+    "IDS" attribute type.
+  * Added documentation for escaped whitespace in URI contexts.
+  * Clarify use of Unicode character categories.
+  * Added functionality: escaped whitespace in URI contexts.
+  * Consistent handling of all whitespace characters in inline markup
+    recognition. Fixes [ 307 ] and [ 3402314 ] (now [ 173 ]).
+  * Added support for escaped whitespace in URI contexts.
+  * Rework patch [ 120 ] (revert change to "Table.get_column_widths()"
+    that led to problems in an application with a custom table
+    directive).
+  * Fix [ 320 ] Russian docinfo fields not recognized.
+  * Don't add a second ID to problematic references.
+  * Fix SmartQuotes: warn only once if language is unsupported, keep
+    "rawsource" when "educating" quotes.
+  * Added "split_escaped_whitespace" function, support for escaped
+    whitespace in URI contexts.
+  * Fix [ 321 ] Import block might cause name error.
+  * Update quote definitions for languages et, fi, fr, ro, sv, tr, uk.
+  * New quote definitions for hr, hsb, hu, lv, sh, sl, sr.
+  * Fix [ 313 ] Differentiate apostrophe from closing single quote (if
+    possible).
+  * Fix [ 317 ] Extra space inserted with French smartquotes.
+  * Add command line interface for stand-alone use (requires 2.7).
+  * Provide default title in metadata (required by HTML5).
+  * Fix [ 312 ] HTML writer generates invalid HTML if the table has
+    two tags.
+  * Fix [ 319 ] The MathJax CDN shut down on April 30, 2017. For
+    security reasons, we don't use a third party public installation as default but
+    warn if math-output_ is set to MathJax without specifying a URL.
+  * Apply [ 125 ] HTML writer: respect automatic table column sizing.
+  * Handle class arguments for block-level elements by wrapping them
+    in a "DUclass" environment. This replaces the special handling for
+    "epigraph" and "topic" elements.
+  * Apply [ 141 ] Handling inline in manpage writer.
+  * Command setting "language" now sets the default language of the
+    generated ODF document.
+  * The use of image directive options :width: (%), :scale:, etc now
+    set the width/height/size of images in the generated ODF
+    documents.
+  * The heading/title of admonitions now reflects the language
+    specified by the "language" setting.
+  * Fixed [ 306 ] only first of multiple "image" directives with the
+    same URL shown in output.
+  * Fixed [ 282 ] python3: AttributeError.
+  * tools/rst2html4.py: New front-end.
+  * tools/dev/generate_punctuation_chars.py: New skript to test and
+    update utils.punctuation_chars.
+
+-------------------------------------------------------------------
+Tue Jun  6 13:31:03 UTC 2017 - jmatejek@suse.com
+
+- only emit rst2html5 alternatives for python 3
+- switch the "docutils" provides to the python 3 package (all the comands live there)
+  (this fixes bsc#1039394)
+
+-------------------------------------------------------------------
+Mon May  1 19:33:19 UTC 2017 - toddrme2178@gmail.com
+
+- Make only the python2 package provide the "docutils" package.
+
+-------------------------------------------------------------------
+Thu Apr 20 15:43:28 UTC 2017 - toddrme2178@gmail.com
+
+- Fix url
+- Executables are python-independent so only have the python3
+  version provide them.
+- Implement update-alternatives to avoid conflict with rst2html5
+
+-------------------------------------------------------------------
+Fri Mar 24 12:53:55 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+- Added python-docutils-rpmlintrc
+
+-------------------------------------------------------------------
+Thu Mar  9 11:39:11 UTC 2017 - dmueller@suse.com
+
+- update to 0.13.1:
+  * New HTML writer generating HTML 5.
+  * languages: persian/farsi (fa) and latvian (la) mappings.
+  * change default base url for :rfc: to http://tools.ietf.org/html/
+  latex2e: Fix admonition width, remove deprecated options,
+  better tablewidth auto, ...
+
+-------------------------------------------------------------------
+Mon Aug 15 14:51:56 UTC 2016 - toddrme2178@gmail.com
+
+- Fix update-alternatives implementation.
+
+-------------------------------------------------------------------
+Wed Oct 29 02:14:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in pre script
+
+-------------------------------------------------------------------
+Tue Jul 15 10:36:57 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 0.12
+  * docs/ref/rst/directives.txt
+    - Update "math" and "csv-table" descriptions.
+  * docutils/parsers/rst/directives/images.py
+    - Fix [258] figwidth="image" generates unitless width value.
+  * docutils/parsers/rst/states.py
+    - Improve error report when a non-ASCII character is specified as
+        delimiter, quote or escape character under Python 2.
+        Fixes [ 249 ] and [ 250 ].
+  * docutils/writers/html4css1/__init__.py
+    - Don't add newline after inline math.
+        Thanks to Yury G. Kudryashov for the patch.
+  * docutils/writers/latex2e/__init__.py
+    - Fix [ 239 ] Latex writer glues paragraphs with figure floats.
+    - Apply [ 116 ] by Kirill Smelkov. Don't hardcode \large for subtitle.
+  * docutils/writers/odf_odt/__init__.py
+    - Apply patch by Jakub Wilk to fix bug [ 100 ].
+  * test/test_error_reporting.py
+    - Fix [ 223 ] by removing redundant tests we do not have control over.
+  * test/test_nodes.py
+    - Apply [ 115 ] respect fixed 2to3 string literal conversion behavior.
+
+-------------------------------------------------------------------
+Tue Sep 24 09:48:27 UTC 2013 - toddrme2178@gmail.com
+
+- Update to 0.11
+  * Fix for the overwritting of document attributes.
+  * Support embedded aliases within hyperlink references.
+  * try local import of docutils components (reader, writer, parser, 
+    language module) before global search.
+  * Python 3.3 checks CVS syntax only if "strict" is True.
+  * Now, it is easy to add a custom stylesheet to Docutils' default 
+    stylesheet with, e.g., 
+        --stylesheet_path='html4css1.css, mystyle.css'
+  * If there is a file html4css1.css in the working directory of the
+    process at launch, it is used instead of the one provided by
+    Docutils in the writer source directory.
+  * New default for math-output: HTML math.css.
+  * Avoid repeated class declarations in html4css1 writer
+  * Drop the simple algorithm replacing straight double quotes with
+    English typographic ones. Activate the SmartQuotes transform if 
+    you want this feature.
+  * New setting stylesheet_dirs: Comma-separated list of directories
+    where stylesheets are found. Used by stylesheet_path when 
+    expanding relative path arguments.
+  * handle lines starting with a period.
+  * Fix option separating comma was bold (thanks to Bill Morris).
+- Use pypi url and download
+- Replace rpmlint-non-executable-scripts.diff with sed in the spec 
+  file
+
+-------------------------------------------------------------------
+Mon Sep 16 12:09:22 UTC 2013 - tchvatal@suse.com
+
+- Fix the symlink creation.
+
+-------------------------------------------------------------------
+Mon Sep 16 10:32:48 UTC 2013 - tchvatal@suse.com
+
+- Drop r7486-python33-compat.patch as it is not needed.
+
+-------------------------------------------------------------------
+Mon Sep 16 10:31:09 UTC 2013 - tchvatal@suse.com
+
+- Use update-alternatives to allow switching between py2 and py3
+  version of doctool binaries.
+
+-------------------------------------------------------------------
+Wed Jul  3 15:37:57 UTC 2013 - dmueller@suse.com
+
+- update to 0.10:
+  - add rpmlint-non-executable-scripts.diff
+  * SmartQuotes transform for typographic quotes and dashes.
+  * FileInput/FileOutput: no system-exit on IOError. The handle_io_errors option is ignored.
+  * <code> tag for inline "code", do not drop nested inline nodes (syntax highlight tokens).
+  * Customizable MathJax URL (based on patch by Dmitry Shachnev).
+  * No line break after opening inline math tag.
+
+-------------------------------------------------------------------
+Tue Nov 20 19:34:53 UTC 2012 - saschpe@suse.de
+
+- Run testsuite
+- Correctly fix non-excutable script warning
+- Remove outdated macros
+- Also remove "*.py" ending in egg-info files
+
+-------------------------------------------------------------------
+Fri Oct 26 08:26:29 UTC 2012 - highwaystar.ru@gmail.com
+
+- patch from upstream for python3.3 support
+ * Fix [3541369] Relative __import__ also with Python 3.3 
+
+-------------------------------------------------------------------
+Thu May  3 14:28:17 UTC 2012 - toddrme2178@gmail.com
+
+- Update to version 0.9:
+  * reStructuredText "code" role and directive with syntax 
+    highlighting by Pygments_.
+  * "code" option of the "include" directive.
+  * Fix [ 3402314 ] allow non-ASCII whitespace, punctuation 
+    characters and "international" quotes around inline markup.
+  * Fix handling of missing stylesheets.
+  * Fix [ 2971827 ] and [ 3442827 ] extras/roman.py moved to 
+    docutils/utils/roman.py
+  * docutils.utils is now a package (providing a place for 
+    sub-modules)
+  * change default for `math-output` setting to MathJax
+  * Support the `abbreviation` and `acronym` standard roles.
+  * Record only files required to generate the LaTeX source as 
+    dependencies.
+  * Use ``\setcounter{secnumdepth}{0}`` instead of ``*``-versions
+    when suppressing LaTeX section numbering.
+- Cleaned up spec files
+- Fix rpmlint warnings
+
+-------------------------------------------------------------------
+Mon Apr 30 14:07:34 UTC 2012 - cfarrell@suse.com
+
+- license update: Python-2.0 and BSD-2-Clause and GPL-2.0+ and GPL-3.0+ and
+  SUSE-Public-Domain
+  tools/editors/emacs/rst.el is GPL-3.0+ - see also COPYING file
+
+-------------------------------------------------------------------
+Fri Apr 27 14:07:19 UTC 2012 - toddrme2178@gmail.com
+
+- Fix building python 3 package on openSUSE 11.4 x86_64
+
+-------------------------------------------------------------------
+Tue Apr 24 09:02:35 UTC 2012 - saschpe@suse.de
+
+- Disable testsuite altogether, fails also on the bleeding_edge_* repos
+
+-------------------------------------------------------------------
+Tue Feb 28 08:58:23 UTC 2012 - saschpe@suse.de
+
+- Fixed SLE_11_SP2 build by disabling the testsuite
+
+-------------------------------------------------------------------
+Fri Sep 23 10:19:38 UTC 2011 - saschpe@suse.de
+
+- Fixed build:
+  * python-xml is only required on SUSE
+  * pyxml is required on Fedora (and RHEL)
+
+-------------------------------------------------------------------
+Wed Sep 21 10:15:51 UTC 2011 - saschpe@suse.de
+
+- Don't run tests on SLE, they break the build
+
+-------------------------------------------------------------------
+Wed Sep 21 09:47:31 UTC 2011 - saschpe@suse.de
+
+- Renamed to python-docutils (from docutils), also fixes rpmlint
+  warning about naming policy
+- Update to version 0.8.1:
+  * Change last file with Apache license to BSD-2-Clause and correct copyright
+    info for rst.el
+  * Fix tests under py3k.
+  * Clean up Babel language setting. Restores Sphinx compatibility.
+- Changes from version 0.8.0:
+  * Some additions to the Docutils core are released under the 2-Clause BSD
+    license.
+  * Handle language codes according to BCP 47.
+  * If the specified langauage is not supported by Docutils, warn and fall
+    back to English.
+  * Math support: reStructuredText "math" role and directive, math and
+    math_block doctree elements.
+  * Orphaned "python" reader and "newlatex2e" writer moved to the sandbox.
+  * Added lithuanian mappings.
+- Changes from version 0.7.0:
+  * Support SVG and SWF images
+  * Generate valid XHTML for centered images with targets. Use CSS classes
+    instead of "align" tags for image alignment.
+  * Preserve runs of spaces in 'inline literals'.
+  * Deprecate figure_footnotes setting.
+  * Rename use_latex_footnotes setting to docutils_footnotes.
+  * New latex_preamble setting.
+  * Use PDF standard fonts (Times/Helvetica/Courier) as default.
+  * hyperref package called with unicode option
+  * Drop the special output_encoding default ("latin-1"). The Docutils wide
+    default (usually "UTF-8") is used instead.
+- Spec file cleanup:
+  * Removed outdated docutils-0.6-insecure-temp.patch
+  * Fixed non-executable scripts rpmlint warning
+  * Removed ".py" ending from executables in /usr/bin, this is what
+    other Python packages expect anyway
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Mon Dec 20 10:36:00 UTC 2010 - saschpe@suse.de
+
+- reduce rpmlint complaints:
+  * name in summary
+  * executables in doc package ('tools' folder)
+
+-------------------------------------------------------------------
+Sun Dec 12 12:26:31 UTC 2010 - saschpe@gmx.de
+
+- update to 0.6
+  * support for SVG and SWF images in HTML writer
+  * many improvements in LaTeX2e writer
+- re-generated spec file with py2pack
+  * now builds for Fedora and Mandriva
+
+-------------------------------------------------------------------
+Thu Mar 18 16:50:35 CET 2010 - matejcik@suse.cz
+
+- update to 0.6
+  * scaling figures/images by percents
+  * many improvements in LaTeX2e writer
+- fixed insecure usage of temp files in emacs mode
+  (bnc#564366)
+
+-------------------------------------------------------------------
+Tue Aug 11 15:14:34 CEST 2009 - matejcik@suse.cz
+
+- build as noarch on new distros
+
+-------------------------------------------------------------------
+Wed Aug  5 17:50:16 CEST 2009 - matejcik@suse.cz
+
+- update to 0.5
+  * added hebrew mappings
+  * configuration is now in UTF-8
+  * minor fixes and refactoring
+
+-------------------------------------------------------------------
+Tue Feb 28 16:46:02 CET 2006 - jmatejek@suse.cz
+
+- updated to reflect python changes due to #149809
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:33 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan 22 00:17:14 CET 2006 - cthiel@suse.de
+
+- update to 0.4
+
+-------------------------------------------------------------------
+Tue May 31 11:13:03 CEST 2005 - ltinkl@suse.cz
+
+- update to 0.3.9
+
+-------------------------------------------------------------------
+Mon Jan 03 15:46:05 CET 2005 - mcihar@suse.cz
+
+- update to 0.3.7
+
+-------------------------------------------------------------------
+Fri Jul 30 17:08:51 CEST 2004 - mcihar@suse.cz
+
+- update to 0.3.5
+
+-------------------------------------------------------------------
+Mon May 31 09:58:18 CEST 2004 - mcihar@suse.cz
+
+- updated to 0.3.3-alpha
+
+-------------------------------------------------------------------
+Thu Mar 18 20:33:59 CET 2004 - mcihar@suse.cz
+
+- corrected python dependency
+
+-------------------------------------------------------------------
+Tue Feb 10 17:27:34 CET 2004 - vinil@suse.cz
+
+- initial version (CVS from 2004-02-10)
+

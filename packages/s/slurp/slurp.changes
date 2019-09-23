@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Tue Jun  4 06:12:14 UTC 2019 - mvetter@suse.com
+
+- Update to 1.2.0:
+  * It's now possible to provide a list of predefined
+    regions to choose from
+  * A single-pixel selection mode has been added
+  * Check out the README for some examples:
+     https://github.com/emersion/slurp#example-usage
+
+-------------------------------------------------------------------
+Mon Feb 25 09:06:57 UTC 2019 - mvetter@suse.com
+
+- Update to 1.1.0:
+  * Add man-pages option like swaywm/sway@ba16f16e4d5a
+  * Display alpha in usage
+  * Add user-defined output formatting (#33)
+  * Abort on escape (#25)
+  * Support selection across multiple outputs (#27)
+
+-------------------------------------------------------------------
+Wed Feb 13 12:28:30 UTC 2019 - mvetter@suse.com
+
+- Update to 1.0.1:
+  * Mention scdoc as optional dependency
+  * Remove erronous endif
+  * Fix frame callback running after output free
+  * Use linux/input-event-codes.h on FreeBSD
+
+-------------------------------------------------------------------
+Wed Feb  6 14:10:38 UTC 2019 - mvetter@suse.com
+
+- Initial package of slurp 1.0 for openSUSE

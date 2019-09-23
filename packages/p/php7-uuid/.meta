@@ -1,0 +1,6 @@
+<package name="php7-uuid" project="openSUSE:Factory">
+  <title>PHP UUID support functions</title>
+  <description>This extension provides functions to generate and analyse universally unique identifiers (UUIDs). It depends on the external libuuid.</description>
+  <devel project="server:php:extensions:php7" package="php7-uuid"/>
+  <url>https://pecl.php.net/package/uuid</url>
+</package>

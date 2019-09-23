@@ -1,0 +1,82 @@
+--- opencryptoki-3.11.0/Makefile.am	2018-11-16 09:53:03.000000000 -0500
++++ opencryptoki-3.11.0/Makefile.am	2018-11-16 10:28:35.114837306 -0500
+@@ -51,24 +51,18 @@
+ 	cd $(DESTDIR)$(libdir)/opencryptoki/stdll && \
+ 		ln -fs libpkcs11_cca.so PKCS11_CCA.so
+ 	$(MKDIR_P) $(DESTDIR)$(localstatedir)/lib/opencryptoki/ccatok/TOK_OBJ
+-	$(CHGRP) pkcs11 $(DESTDIR)$(localstatedir)/lib/opencryptoki/ccatok/TOK_OBJ
+-	$(CHGRP) pkcs11 $(DESTDIR)$(localstatedir)/lib/opencryptoki/ccatok
+ 	$(CHMOD) 0770 $(DESTDIR)$(localstatedir)/lib/opencryptoki/ccatok/TOK_OBJ
+ 	$(CHMOD) 0770 $(DESTDIR)$(localstatedir)/lib/opencryptoki/ccatok
+ 	$(MKDIR_P) $(DESTDIR)$(lockdir)/ccatok
+-	$(CHGRP) pkcs11 $(DESTDIR)$(lockdir)/ccatok
+ 	$(CHMOD) 0770 $(DESTDIR)$(lockdir)/ccatok
+ endif
+ if ENABLE_EP11TOK
+ 	cd $(DESTDIR)$(libdir)/opencryptoki/stdll && \
+ 		ln -fs libpkcs11_ep11.so PKCS11_EP11.so
+ 	$(MKDIR_P) $(DESTDIR)$(localstatedir)/lib/opencryptoki/ep11tok/TOK_OBJ
+-	$(CHGRP) pkcs11 $(DESTDIR)$(localstatedir)/lib/opencryptoki/ep11tok/TOK_OBJ
+-	$(CHGRP) pkcs11 $(DESTDIR)$(localstatedir)/lib/opencryptoki/ep11tok
+ 	$(CHMOD) 0770 $(DESTDIR)$(localstatedir)/lib/opencryptoki/ep11tok/TOK_OBJ
+ 	$(CHMOD) 0770 $(DESTDIR)$(localstatedir)/lib/opencryptoki/ep11tok
+ 	$(MKDIR_P) $(DESTDIR)$(lockdir)/ep11tok
+-	$(CHGRP) pkcs11 $(DESTDIR)$(lockdir)/ep11tok
+ 	$(CHMOD) 0770 $(DESTDIR)$(lockdir)/ep11tok
+ 	test -f $(DESTDIR)$(sysconfdir)/opencryptoki || $(MKDIR_P) $(DESTDIR)$(sysconfdir)/opencryptoki || true
+ 	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/ep11tok.conf || $(INSTALL) -m 644 $(srcdir)/usr/lib/ep11_stdll/ep11tok.conf $(DESTDIR)$(sysconfdir)/opencryptoki/ep11tok.conf || true
+@@ -78,24 +72,18 @@
+ 	cd $(DESTDIR)$(libdir)/opencryptoki/stdll && \
+ 		ln -fs libpkcs11_ica.so PKCS11_ICA.so
+ 	$(MKDIR_P) $(DESTDIR)$(localstatedir)/lib/opencryptoki/lite/TOK_OBJ
+-	$(CHGRP) pkcs11 $(DESTDIR)$(localstatedir)/lib/opencryptoki/lite/TOK_OBJ
+-	$(CHGRP) pkcs11 $(DESTDIR)$(localstatedir)/lib/opencryptoki/lite
+ 	$(CHMOD) 0770 $(DESTDIR)$(localstatedir)/lib/opencryptoki/lite/TOK_OBJ
+ 	$(CHMOD) 0770 $(DESTDIR)$(localstatedir)/lib/opencryptoki/lite
+ 	$(MKDIR_P) $(DESTDIR)$(lockdir)/lite
+-	$(CHGRP) pkcs11 $(DESTDIR)$(lockdir)/lite
+ 	$(CHMOD) 0770 $(DESTDIR)$(lockdir)/lite
+ endif
+ if ENABLE_SWTOK
+ 	cd $(DESTDIR)$(libdir)/opencryptoki/stdll && \
+ 		ln -fs libpkcs11_sw.so PKCS11_SW.so
+ 	$(MKDIR_P) $(DESTDIR)$(localstatedir)/lib/opencryptoki/swtok/TOK_OBJ
+-	$(CHGRP) pkcs11 $(DESTDIR)$(localstatedir)/lib/opencryptoki/swtok/TOK_OBJ
+-	$(CHGRP) pkcs11 $(DESTDIR)$(localstatedir)/lib/opencryptoki/swtok
+ 	$(CHMOD) 0770 $(DESTDIR)$(localstatedir)/lib/opencryptoki/swtok/TOK_OBJ
+ 	$(CHMOD) 0770 $(DESTDIR)$(localstatedir)/lib/opencryptoki/swtok
+ 	$(MKDIR_P) $(DESTDIR)$(lockdir)/swtok
+-	$(CHGRP) pkcs11 $(DESTDIR)$(lockdir)/swtok
+ 	$(CHMOD) 0770 $(DESTDIR)$(lockdir)/swtok
+ endif
+ if ENABLE_TPMTOK
+@@ -103,10 +91,8 @@
+ 	cd $(DESTDIR)$(libdir)/opencryptoki/stdll && \
+ 		ln -fs libpkcs11_tpm.so PKCS11_TPM.so
+ 	$(MKDIR_P) $(DESTDIR)$(localstatedir)/lib/opencryptoki/tpm
+-	$(CHGRP) pkcs11 $(DESTDIR)$(localstatedir)/lib/opencryptoki/tpm
+ 	$(CHMOD) 0770 $(DESTDIR)$(localstatedir)/lib/opencryptoki/tpm
+ 	$(MKDIR_P) $(DESTDIR)$(lockdir)/tpm
+-	$(CHGRP) pkcs11 $(DESTDIR)$(lockdir)/tpm
+ 	$(CHMOD) 0770 $(DESTDIR)$(lockdir)/tpm
+ endif
+ if ENABLE_ICSFTOK
+@@ -114,10 +100,8 @@
+ 	cd $(DESTDIR)$(libdir)/opencryptoki/stdll && \
+ 		ln -fs libpkcs11_icsf.so PKCS11_ICSF.so
+ 	$(MKDIR_P) $(DESTDIR)$(localstatedir)/lib/opencryptoki/icsf
+-	$(CHGRP) pkcs11 $(DESTDIR)$(localstatedir)/lib/opencryptoki/icsf
+ 	$(CHMOD) 0770 $(DESTDIR)$(localstatedir)/lib/opencryptoki/icsf
+ 	$(MKDIR_P) $(DESTDIR)$(lockdir)/icsf
+-	$(CHGRP) pkcs11 $(DESTDIR)$(lockdir)/icsf
+ 	$(CHMOD) 0770 $(DESTDIR)$(lockdir)/icsf
+ endif
+ if ENABLE_DAEMON
+@@ -139,7 +123,6 @@
+ 	@echo "Remember you must run ldconfig before using the above settings"
+ 	@echo "--------------------------------------------------------------"
+ 	$(MKDIR_P) $(DESTDIR)$(lockdir) $(DESTDIR)$(logdir)
+-	$(CHGRP) pkcs11 $(DESTDIR)$(lockdir) $(DESTDIR)$(logdir)
+ 	$(CHMOD) 0770 $(DESTDIR)$(lockdir) $(DESTDIR)$(logdir)
+ 
+ 

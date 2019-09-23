@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5fca30f75f2ad624e145e3218d23df13</srcmd5>
+    <version>0.9</version>
+    <time>1369719831</time>
+    <user>coolo</user>
+    <comment>Nice commandline tool for translators to interact with transifex.com webservice.</comment>
+    <requestid>176433</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>5fca30f75f2ad624e145e3218d23df13</srcmd5>
+    <version>0.9</version>
+    <time>1379664842</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bbfcabfa22a835cfc784e600ae7223db</srcmd5>
+    <version>0.9.2</version>
+    <time>1381475067</time>
+    <user>scarabeus_factory</user>
+    <comment>- Version bump to 0.9.2:
+  * upstream changed distribution to be only from github
+  * fix few issues when communicating with transifex api</comment>
+    <requestid>202693</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>20cdebf4a6acaad2910a8611464b26f7</srcmd5>
+    <version>0.9.2</version>
+    <time>1382693864</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204701</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1a73e26f31dcfd18819af845d361e331</srcmd5>
+    <version>0.10</version>
+    <time>1395407646</time>
+    <user>coolo</user>
+    <comment>- Use PyPI source URL
+- Drop %clean section, the official tarball doesn't include tests
+- Correct macro usage to fix SLE build
+
+- Version bump to 0.10:
+  * try to use urllib3
+  * fix various mitm attacks over this
+- Add patch system-urllib3.patch which does exactly what name say.
+  * Should also fix bnc#855579
+- Enable test execution so we see if it is borked or not.</comment>
+    <requestid>226885</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>63bf9432b321ceeb62a8b4e617d37e93</srcmd5>
+    <version>0.11~beta</version>
+    <time>1401644438</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.11.beta:
+  * drop our patch of using system-urllib3.patch which broke things
+    as upstream does not really work that way
+  * Enable tests again as upstream tarball now has them.</comment>
+    <requestid>235664</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>63bf9432b321ceeb62a8b4e617d37e93</srcmd5>
+    <version>0.11~beta</version>
+    <time>1409303524</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a59f5e60b43f58821fb15f674f673dcb</srcmd5>
+    <version>0.11.1~beta</version>
+    <time>1427109462</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>292029</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>bc6194ae0ceede4b977a4e5e4ee3f17b</srcmd5>
+    <version>0.11.1~beta</version>
+    <time>1446978416</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342717</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f4b210e1bd3c9326bd44d49082b35e26</srcmd5>
+    <version>0.11</version>
+    <time>1452263036</time>
+    <user>dimstar_suse</user>
+    <comment>- Update/downgrade to 0.11 that is newer than 0.11.1beta...
+  * Few extra commits over the 0.11.1beta</comment>
+    <requestid>352567</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1c1eb2b29a8d9840ed7e119370b95d84</srcmd5>
+    <version>0.12.2</version>
+    <time>1472111840</time>
+    <user>dimstar_suse</user>
+    <comment>- Update download url to github
+
+- Update to 0.12.2
+  * better proxy support
+- Update to 0.12.1
+  * support new style URLs
+  * better error handling
+- Update to 0.12.b
+  * fix support for downloading docx, xlsx</comment>
+    <requestid>421544</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>b0c372e39a852e9365b6fcf2e7e8fdb9</srcmd5>
+    <version>0.12.2</version>
+    <time>1473679614</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-urllib3 to requires</comment>
+    <requestid>426270</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>ef2586189984d83ee2be791abca23385</srcmd5>
+    <version>0.12.2</version>
+    <time>1474976637</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427264</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a2a7d65a78095c83280c4757cb1c9452</srcmd5>
+    <version>0.12.4</version>
+    <time>1494088200</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.12.4:
+  * XLIFF and tokens support
+- Switch to python3, no need to keep python2 around</comment>
+    <requestid>492639</requestid>
+  </revision>
+</revisionlist>

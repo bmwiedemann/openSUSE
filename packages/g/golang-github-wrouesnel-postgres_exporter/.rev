@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>88947105802ea78cb88a946d36180cae</srcmd5>
+    <version>0.4.7</version>
+    <time>1563790764</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %license macro for LICENSE file 
+- Fix ppc64le compile errors on SLE15-SP1
+  - Use go1.9 as newer versions break magefile on this arch
+- Refactor and cleanup spec file
+- Rename systemd service to prometheus-postgres_exporter
+- Enable building postgres_exporter for additional architectures
+  (s390x, ppc64 and arm64)
+- Add:
+  * architectures.patch
+- Upgrade to 0.4.7:
+  - Added a query for v9.1 pg_stat_activity.
+  - Add `--constantLabels` flag to allow applying fixed constant
+    labels to metrics.
+  - Support 'B' suffix in units.
+- Upgrade to 0.4.6:
+  - Fix 32 and 64mb unit sizes, were not supported in pg_settings
+  - Add commandline flag to disable default metrics
+  - Bugfix for pg_up (it would always be 0)
+  - pg_up is now refreshed based on database Ping() every scrape
+  - Adds the following environment variables for overriding defaults:
+    - `PG_EXPORTER_WEB_LISTEN_ADDRESS`
+    - `PG_EXPORTER_WEB_TELEMETRY_PATH`
+    - `PG_EXPORTER_EXTEND_QUERY_PATH`
+  - Add Content-Type to HTTP landing page
+  - Fix panic due to inconsistent label cardinality when using queries.yaml with queries which return extra columns
+  - Add metric for whether the user queries YAML file parsed correctly. This also includes the filename and SHA256 sum allowing tracking of updates
+  - Add pg_up metric to indicate whether the exporter was able to connect and Ping() the PG instance before a scrape
+  - Fix broken link in landing page for `/metrics`
+  - Add support for PostgreSQL 10
+  - Add support for the 16kB unit when decoding pg_settings
+  - Fix DSN logging
+  - Ignore functions that cannot be executed during replication recovery
+  - Add a `-version` flag finally
+  - Add confirmed_flush_lsn to pg_stat_replication
+  - use pg_settings to retrieve runtime variables. Adds &gt;180 new metrics and descriptions
+ 
+- start service after postgresql
+- add systemd service and config file
+- Initial version
+</comment>
+    <requestid>708773</requestid>
+  </revision>
+</revisionlist>

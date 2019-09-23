@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Thu Sep 19 15:33:38 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.30.1-1: mostly bugfixes. Full log is only
+  https://github.com/luvit/luv/commits/master
+
+-------------------------------------------------------------------
+Fri Aug  9 18:09:40 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- devel package doesn’t need luv%{sover} package, when public
+  library is not built.
+
+-------------------------------------------------------------------
+Sat Aug  3 18:08:08 BST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Remove public shared library again.
+
+-------------------------------------------------------------------
+Sun Jul  7 19:38:27 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Make system buildable on Fedora/CentOS as well.
+
+-------------------------------------------------------------------
+Thu Jul  4 18:18:59 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Provide public shared library again.
+
+-------------------------------------------------------------------
+Wed Jul  3 08:05:09 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 1.30.0-0:
+  - Reduce latency and speed up testing
+  - improve thread and threadpool
+  - more flexible callback support
+  - Simplify callback in thread and threadpool
+  - support custom/external event callback
+  - Speed up by reduce regristry table queries
+  - Allow dns tests that require an internet connection to fail when offline
+  - CMake: use REQUIRED with LuaJIT/Lua
+  - cmake: handle luajit 2.1 (#343)
+
+-------------------------------------------------------------------
+Thu Jun 13 17:01:39 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging 

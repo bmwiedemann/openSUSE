@@ -1,0 +1,42 @@
+From: Some One <nobody@opensuse.org>
+Date: Thu, 9 Apr 2015 14:55:38 +0200
+Subject: [PATCH] docdata-examples.diff
+
+===================================================================
+---
+ FilesCheck.py | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+Index: rpmlint-rpmlint-1.11/FilesCheck.py
+===================================================================
+--- rpmlint-rpmlint-1.11.orig/FilesCheck.py
++++ rpmlint-rpmlint-1.11/FilesCheck.py
+@@ -190,6 +190,7 @@ bin_regex = re.compile(r'^/(?:usr/(?:s?b
+ includefile_regex = re.compile(r'\.(c|h)(pp|xx)?$', re.IGNORECASE)
+ develfile_regex = re.compile(r'\.(a|cmxa?|mli?|gir)$')
+ buildconfigfile_regex = re.compile(r'(\.pc|/bin/.+-config)$')
++docdir_examples_regex = re.compile('^/usr/(?:share/doc/packages|lib(?:64))/[^/]+/(?:example|demo|script|contrib)')
+ # room for improvement with catching more -R, but also for false positives...
+ buildconfig_rpath_regex = re.compile(r'(?:-rpath|Wl,-R)\b')
+ sofile_regex = re.compile(r'/lib(64)?/(.+/)?lib[^/]+\.so$')
+@@ -820,7 +821,7 @@ class FilesCheck(AbstractCheck.AbstractC
+                             includefile_regex.search(f) or \
+                             develfile_regex.search(f) or \
+                             logrotate_regex.search(f)
+-                    if nonexec_file:
++                    if nonexec_file and not docdir_examples_regex.search(f):
+                         printWarning(pkg, 'spurious-executable-perm', f)
+                 elif f.startswith('/etc/') and f not in config_files and \
+                         f not in ghost_files:
+@@ -1196,7 +1197,10 @@ included in your package.''',
+ 'spurious-executable-perm',
+ '''The file is installed with executable permissions, but was identified as one
+ that probably should not be executable.  Verify if the executable bits are
+-desired, and remove if not.''',
++desired, and remove if not.
++NOTE: example scripts should be packaged under %docdir/examples, which will avoid
++this warning.
++''',
+ 
+ 'world-writable',
+ '''A file or directory in the package is installed with world writable

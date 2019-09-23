@@ -1,0 +1,174 @@
+-------------------------------------------------------------------
+Mon Dec 11 06:19:21 UTC 2017 - coolo@suse.com
+
+- updated to 1.44
+   see /usr/share/doc/packages/perl-Exception-Class/Changes
+
+  1.44    2017-12-10
+  
+  - You can now pass "frame_filter", "filter_frames_early", and "skip_frames" to
+    the throw() method of an exception class. These will be passed on to the
+    Devel::StackTrace constructor. Requested by Frédéric Brière. GH #6.
+
+-------------------------------------------------------------------
+Mon Jul 10 05:31:47 UTC 2017 - coolo@suse.com
+
+- updated to 1.43
+   see /usr/share/doc/packages/perl-Exception-Class/Changes
+
+  1.43    2017-07-09
+  
+  - The full_message() method in Exception::Class::Base now calls message()
+    instead of accessing the object's hash key. This makes it easier to override
+    message() in a subclass. Patch by Alexander Batyrshin. PR #11.
+
+-------------------------------------------------------------------
+Fri Jan  6 06:22:54 UTC 2017 - coolo@suse.com
+
+- updated to 1.42
+   see /usr/share/doc/packages/perl-Exception-Class/Changes
+
+  1.42    2017-01-04
+  
+  - Generated exception classes are now added to %INC. If you subclass a
+    generated class with "use base" then base.pm will no longer attempt to load
+    the requested class. Patch by Todd Rinaldo. PR #8.
+
+-------------------------------------------------------------------
+Thu Dec  8 06:27:26 UTC 2016 - coolo@suse.com
+
+- updated to 1.41
+   see /usr/share/doc/packages/perl-Exception-Class/Changes
+
+  1.41    2016-12-07
+  
+  - Switch to GitHub Issues.
+
+-------------------------------------------------------------------
+Sun Feb  7 09:56:42 UTC 2016 - coolo@suse.com
+
+- updated to 1.40
+   see /usr/share/doc/packages/perl-Exception-Class/Changes
+
+  1.40    2016-01-29
+  
+  - Fixed broken metadata. Reported by Slaven Rezić. GitHub #3.
+
+-------------------------------------------------------------------
+Thu Apr 16 19:12:46 UTC 2015 - coolo@suse.com
+
+- updated to 1.39
+   see /usr/share/doc/packages/perl-Exception-Class/Changes
+
+  1.39    2014-11-01
+  
+  - Replaced the Exception::Class::Base->NoRefs method with UnsafeRefCapture to
+    match changes in Devel::StackTrace 2.00. The old method is deprecated but
+    will continue to work.
+  
+  
+  1.38    2014-05-05
+  
+  - An exception without a message will now default to either the associated
+    exception class description or the string "[Generic exception]". Patch by
+    Ricardo Signes. PR #2.
+  
+  - Added field_hash() and context_hash() methods. Patch by Ricardo Signes. PR
+    #1.
+
+-------------------------------------------------------------------
+Sat May 11 20:02:50 UTC 2013 - lars@linux-schulserver.de
+
+- update to 1.37:
+  + I now recommend you use Throwable instead of this module. 
+    It has a nicer, more modern interface.
+  + Fixed various bugs and confusion in the docs.
+  + fixed some tests
+  + added Class::Data::Inheritable dependency
+  + fixed declaration of prereqs
+- fix build with old Test::More version
+- build parallel
+
+-------------------------------------------------------------------
+Tue Dec 20 08:37:16 UTC 2011 - cfarrell@suse.com
+
+- license update: Artistic-2.0
+  This is _not_ the standard Perl license. See the LICENSE file for details
+  (Artistic-2.0)
+
+-------------------------------------------------------------------
+Wed Dec 14 11:12:16 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Sun Nov 20 12:18:15 UTC 2011 - coolo@suse.com
+
+- update to 1.32
+ - Removed Test::Most dependency, which was causing a circular dependency
+   chain. Reported by Burak Gursoy. RT #58889.
+ - Made it possible to use Exception::Class::Base without loading
+   Exception::Class. Reported by Alex Peters. RT #57269.
+ - Added the ability to create light weight exceptions, which don't record a
+   stack trace or any other context info (time, pid, etc.). This is done by
+   setting $class->NoContextInfo to a true value for the exception class. Based
+   on a patch by Graham Barr. RT #54826.
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:36 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:07:54 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sat Jul 25 19:37:37 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Tue Jul 14 12:37:51 CEST 2009 - chris@computersalat.de
+
+- update to 1.29
+  * Make sure that there is only one line that the toolchain can pick up
+    when looking for this module's $VERSION.
+- 1.28 May 6, 2009
+  * Removed Exception::Class::Base->do_trace and ->NoObjectRefs, both of
+    which have been undocumented for many years.
+  * Moved Exception::Class::Base to its own file, so it doesn't
+    overwrite the $VERSION in Exception::Class (and for general
+    sanity). Reported by Kirk Baucom.
+- 1.27 May 4, 2009
+  * The error message for an exception no longer defaults to $!. This
+    was a bad idea, and has bitten some people. Addresses RT #43600.
+  * I'm now only supporting Perl 5.8.1+. This module broke on 5.6.2 (and
+    5.8.0) at some point and I don't really care enough to fix
+    it. Non-intrusive patches to make it work on 5.8.0 or less (again)
+    will be accepted.
+- 1.26 Oct 25, 2008
+  * No code changes, just bumped the Devel::StackTrace dependency to
+    1.20.
+  * The changes in 1.25 exposed a bug in Devel::StackTrace which has now
+    been fixed. This caused HTML::Mason test failures, among other
+    things. Reported by Andreas Koenig.
+- 1.25 Oct 21, 2008
+  * The Exception::Class::Base constructor no longer looks at the
+    associated Devel::StackTrace object's frames. Avoiding looking at
+    the frames should make constructing exception objects much
+    faster. Instead the information based on the stack trace frames -
+    package(), file(), and line() - is only retrieved when it is
+    requested. Patch by Ruslan Zakirov. RT #40221.
+- 1.24 Mar 30, 2008
+  * Added a MaxArgLength class parameter to go along with the new
+    max_arg_length constructor param for Devel::StackTrace
+    objects. Patch by Ian Burrell.
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- spec mods
+  o added header
+  o fixed deps

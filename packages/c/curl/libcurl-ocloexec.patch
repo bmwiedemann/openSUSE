@@ -1,0 +1,92 @@
+Open library file descriptors with O_CLOEXEC
+This patch is non-portable, it needs linux 2.6.23 and glibc 2.7
+or later, different combinations (old linux, new glibc and vice-versa)
+will result in a crash.
+
+To make it portable you have to test O_CLOEXEC support at *runtime*
+compile time is not enough.
+
+
+Index: curl-7.61.0/lib/file.c
+===================================================================
+--- curl-7.61.0.orig/lib/file.c	2018-07-09 08:42:12.000000000 +0200
++++ curl-7.61.0/lib/file.c	2018-07-17 15:47:25.259601877 +0200
+@@ -190,7 +190,7 @@ static CURLcode file_connect(struct conn
+     return CURLE_URL_MALFORMAT;
+   }
+ 
+-  fd = open_readonly(real_path, O_RDONLY);
++  fd = open_readonly(real_path, O_RDONLY|O_CLOEXEC);
+   file->path = real_path;
+ #endif
+   file->freepath = real_path; /* free this when done */
+@@ -283,7 +283,7 @@ static CURLcode file_upload(struct conne
+   else
+     mode = MODE_DEFAULT|O_TRUNC;
+ 
+-  fd = open(file->path, mode, conn->data->set.new_file_perms);
++  fd = open(file->path, mode | O_CLOEXEC, conn->data->set.new_file_perms);
+   if(fd < 0) {
+     failf(data, "Can't open %s for writing", file->path);
+     return CURLE_WRITE_ERROR;
+Index: curl-7.61.0/lib/hostip6.c
+===================================================================
+--- curl-7.61.0.orig/lib/hostip6.c	2018-07-09 08:42:12.000000000 +0200
++++ curl-7.61.0/lib/hostip6.c	2018-07-17 15:47:25.259601877 +0200
+@@ -44,7 +44,7 @@
+ #ifdef HAVE_PROCESS_H
+ #include <process.h>
+ #endif
+-
++#include <fcntl.h>
+ #include "urldata.h"
+ #include "sendf.h"
+ #include "hostip.h"
+@@ -70,7 +70,7 @@ bool Curl_ipv6works(void)
+   static int ipv6_works = -1;
+   if(-1 == ipv6_works) {
+     /* probe to see if we have a working IPv6 stack */
+-    curl_socket_t s = socket(PF_INET6, SOCK_DGRAM, 0);
++    curl_socket_t s = socket(PF_INET6, SOCK_DGRAM | SOCK_CLOEXEC, 0);
+     if(s == CURL_SOCKET_BAD)
+       /* an IPv6 address was requested but we can't get/use one */
+       ipv6_works = 0;
+Index: curl-7.61.0/lib/if2ip.c
+===================================================================
+--- curl-7.61.0.orig/lib/if2ip.c	2018-05-07 10:20:04.000000000 +0200
++++ curl-7.61.0/lib/if2ip.c	2018-07-17 15:47:25.259601877 +0200
+@@ -225,7 +225,7 @@ if2ip_result_t Curl_if2ip(int af, unsign
+   if(len >= sizeof(req.ifr_name))
+     return IF2IP_NOT_FOUND;
+ 
+-  dummy = socket(AF_INET, SOCK_STREAM, 0);
++  dummy = socket(AF_INET, SOCK_STREAM | SOCK_CLOEXEC, 0);
+   if(CURL_SOCKET_BAD == dummy)
+     return IF2IP_NOT_FOUND;
+ 
+Index: curl-7.61.0/lib/connect.c
+===================================================================
+--- curl-7.61.0.orig/lib/connect.c	2018-07-09 08:42:12.000000000 +0200
++++ curl-7.61.0/lib/connect.c	2018-07-17 15:47:25.259601877 +0200
+@@ -1387,7 +1387,7 @@ CURLcode Curl_socket(struct connectdata
+   }
+   else
+     /* opensocket callback not set, so simply create the socket now */
+-    *sockfd = socket(addr->family, addr->socktype, addr->protocol);
++    *sockfd = socket(addr->family, addr->socktype | SOCK_CLOEXEC, addr->protocol);
+ 
+   if(*sockfd == CURL_SOCKET_BAD)
+     /* no socket, no connection */
+Index: curl-7.61.0/configure.ac
+===================================================================
+--- curl-7.61.0.orig/configure.ac	2018-07-17 15:47:25.263601899 +0200
++++ curl-7.61.0/configure.ac	2018-07-17 15:49:06.252122189 +0200
+@@ -191,6 +191,8 @@ AC_DEFINE_UNQUOTED(OS, "${host}", [cpu-m
+ # Silence warning: ar: 'u' modifier ignored since 'D' is the default
+ AC_SUBST(AR_FLAGS, [cr])
+ 
++AC_USE_SYSTEM_EXTENSIONS
++
+ dnl This defines _ALL_SOURCE for AIX
+ CURL_CHECK_AIX_ALL_SOURCE
+ 

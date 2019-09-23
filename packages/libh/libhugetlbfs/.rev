@@ -1,0 +1,394 @@
+<revisionlist>
+  <revision rev="1" vrev="9">
+    <srcmd5>4d4e7e3ada279a0ab9a956ee58be5731</srcmd5>
+    <version>1.0.1</version>
+    <time>1168903327</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c6aefb340d990301a5700f984249f300</srcmd5>
+    <version>1.1</version>
+    <time>1176660984</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="14">
+    <srcmd5>4b1b5af6be8eca507f7303227d75c027</srcmd5>
+    <version>1.1</version>
+    <time>1184086450</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b05ae13479d8a15583e4f2ec171a15c8</srcmd5>
+    <version>1.2</version>
+    <time>1200387702</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="19">
+    <srcmd5>b49dc98513af1cd99b755841151c7783</srcmd5>
+    <version>1.2</version>
+    <time>1207830539</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c00f2733a72d2d68a726bd89ea4ff293</srcmd5>
+    <version>1.3</version>
+    <time>1214419969</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7fd8aaa58f2a307afd1f3177bb83445c</srcmd5>
+    <version>2.0</version>
+    <time>1219919959</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>ab7cb779f55aa5c97cb8eb0b50ce4281</srcmd5>
+    <version>2.0</version>
+    <time>1224692032</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>d6c82f39bf25e6b58083b52aeae88cb0</srcmd5>
+    <version>2.0</version>
+    <time>1226006078</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>3e4e42dbd20653289b6b4e37d6d13e04</srcmd5>
+    <version>2.0</version>
+    <time>1231436210</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>be721eaed5acb38d092ec2654797a409</srcmd5>
+    <version>2.0</version>
+    <time>1233698052</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>be721eaed5acb38d092ec2654797a409</srcmd5>
+    <version>2.0</version>
+    <time>1233698052</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e3ad80dbcec6f814816e626a83209687</srcmd5>
+    <version>2.5</version>
+    <time>1258388235</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libhugetlbfs based on submit request 24429 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>6c70ae82425a70de548ddc7fbd4a6d02</srcmd5>
+    <version>2.5</version>
+    <time>1265379753</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libhugetlbfs based on submit request 31528 from user coolo
+</comment>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>6335fe3a8c6e31bbfd1b16aadb3478e5</srcmd5>
+    <version>2.5</version>
+    <time>1265919176</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libhugetlbfs based on submit request 32150 from user prusnak
+</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>1d4f497a65d948c7fe29aa38396d42ef</srcmd5>
+    <version>2.5</version>
+    <time>1268924599</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>f3ed1000288e52d8bc015df9b0eed0ab</srcmd5>
+    <version>2.5</version>
+    <time>1277141322</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libhugetlbfs based on submit request 41741 from user coolo
+</comment>
+    <requestid>41741</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>f3ed1000288e52d8bc015df9b0eed0ab</srcmd5>
+    <version>2.5</version>
+    <time>1278667359</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>f3ed1000288e52d8bc015df9b0eed0ab</srcmd5>
+    <version>2.5</version>
+    <time>1278678590</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5d34d220e531d87ac7abfbc0a1a52835</srcmd5>
+    <version>2.9</version>
+    <time>1286490012</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libhugetlbfs based on submit request 49924 from user prusnak
+</comment>
+    <requestid>49924</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>5d34d220e531d87ac7abfbc0a1a52835</srcmd5>
+    <version>2.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9b3867930a0c220266232e0e3b8ad6b8</srcmd5>
+    <version>2.11</version>
+    <time>1303385945</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 67065 from user dirkmueller
+</comment>
+    <requestid>67065</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>92e4f6cb05c5bb165925926242c76f1c</srcmd5>
+    <version>2.11</version>
+    <time>1303385955</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 67065
+</comment>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>54d5aa16383027ee9b5de0aa1a4bc650</srcmd5>
+    <version>2.11</version>
+    <time>1306855392</time>
+    <user>saschpe</user>
+    <comment>Do not include the 268MB testcase /usr/lib/libhugetlbfs/tests/obj32/linkhuge_rw (forwarded request 71907 from msmeissn)</comment>
+    <requestid>71921</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>effef2a43ec708baaebadecc8be2a6f8</srcmd5>
+    <version>2.11</version>
+    <time>1306855402</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71921
+</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a5c1d2d5f770dd59c0759e2550a41f3c</srcmd5>
+    <version>2.12</version>
+    <time>1318762383</time>
+    <user>lrupp</user>
+    <comment>update to upstream version 2.12 (forwarded request 87740 from tabraham1)</comment>
+    <requestid>87860</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>a5c1d2d5f770dd59c0759e2550a41f3c</srcmd5>
+    <version>2.12</version>
+    <time>1319182102</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>d9028c0c5eabdaa9617348cf3033069c</srcmd5>
+    <version>2.12</version>
+    <time>1323192247</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a22242c6999342b93ec18022d5153999</srcmd5>
+    <version>2.13</version>
+    <time>1334641553</time>
+    <user>coolo</user>
+    <comment>update to version 2.13 (forwarded request 113140 from tabraham1)</comment>
+    <requestid>113318</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>a22242c6999342b93ec18022d5153999</srcmd5>
+    <version>2.13</version>
+    <time>1340183595</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>8d1cd1c8c05eb5e038d3751a8f2a33ba</srcmd5>
+    <version>2.13</version>
+    <time>1342082801</time>
+    <user>namtrac</user>
+    <comment>with comment (forwarded request 127570 from adrianSuSE)</comment>
+    <requestid>127574</requestid>
+  </revision>
+  <revision rev="32" vrev="6">
+    <srcmd5>8d1cd1c8c05eb5e038d3751a8f2a33ba</srcmd5>
+    <version>2.13</version>
+    <time>1359109286</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c63d946ead002581803f954ec6a9d54f</srcmd5>
+    <version>2.15</version>
+    <time>1359452891</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.15
+  Features:
+  * Some System z functionality went into 2.15
+  * Updated man pages
+  * Added basic events for core_i7 to oprofile_map_events
+  Fixes:
+  * Disable Unable to verify address range warning when offset &lt; page_size
+  * Remove sscanf in library setup to avoid heap allocation before _morecore
+  override
+  * Revert heap exhaustion patch
+  * hugectl no longer clips LD_LIBRARY_PATH variable
+  * Fix clean on failure code to avoid closing stdout</comment>
+    <requestid>149675</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e132d3835e424e20883fc30d8fb71a5e</srcmd5>
+    <version>2.16</version>
+    <time>1363769586</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>159798</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>e132d3835e424e20883fc30d8fb71a5e</srcmd5>
+    <version>2.16</version>
+    <time>1379662977</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>cae729e4f3c6520c3828a78500e4904f</srcmd5>
+    <version>2.16</version>
+    <time>1389725536</time>
+    <user>coolo</user>
+    <comment>- Add support of ppc64le with 4 patches
+	libhugetlbfs-ppc64le.patch
+	libhugetlbfs.ppc64le.step2.patch
+	libhugetlbfs.ppc64le.step3.patch
+	libhugetlbfs.ppc64le.step4.patch (forwarded request 213554 from michel_mno) (forwarded request 213633 from k0da)</comment>
+    <requestid>213699</requestid>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>6ab487e572ab344643b5d428aad93dfc</srcmd5>
+    <version>2.16</version>
+    <time>1392113996</time>
+    <user>coolo</user>
+    <comment>- Tests compile fine for s390(x), also include them in the package, the same
+  way it is done for other archs as well.
+
+- There are no tests installed in s390(x) case, therefore there are no
+  files in %{_libdir}/libhugetlbfs
+  Remove the directory from the file list to fix package build for s390(x)</comment>
+    <requestid>221756</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>66046d6d3ef02dd44bc8945fee9a31d9</srcmd5>
+    <version>2.17</version>
+    <time>1397062055</time>
+    <user>coolo</user>
+    <comment>- update to 2.17:
+ * PPC segement alignment restrictions can be disabled
+ * Added Aarch64 support
+ * Allow compiler overrides for 64 and 32 bit builds
+ * hugeadm now handles /etc/mtab being a simlink properly
+  * ppc64 fixes
+- remove libhugetlbfs.ia64-libdir.patch:
+  ia64 is no longer supported by openSUSE
+- add ignore-perl-modules.diff: do not install perl modules, unused
+  and are installed in the wrong place to be found anyway
+- add ARM support
+- add disable-rw-on-non-ldscripts.diff: Skip rw tests
+- Do not install tests anymore (forwarded request 229281 from dirkmueller)</comment>
+    <requestid>229468</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>66046d6d3ef02dd44bc8945fee9a31d9</srcmd5>
+    <version>2.17</version>
+    <time>1409301588</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>9c9e4fc83322b2b05639f3d5a2273c3f</srcmd5>
+    <version>2.18</version>
+    <time>1424622381</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.18
+  to solve build failures for ppc/ppc64.
+  remove following patches now included in 2.18:
+    libhugetlbfs-ppc64le.patch
+    libhugetlbfs.ppc64le.step2.patch
+    libhugetlbfs.ppc64le.step3.patch
+    libhugetlbfs.ppc64le.step4.patch
+- Add fix_plt_extrasz_always_returning_0_on_ppc64le.patch
+  already upstream. (forwarded request 286944 from michel_mno)</comment>
+    <requestid>286973</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>c5e9f315cff481d4a15c4a9f4bcca43d</srcmd5>
+    <version>2.18</version>
+    <time>1435652159</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libhugelbfs-2.18-restrict-is-a-reserved-word.patch which
+  fixes compilation with GCC 5 (and C99/C11 in general).
+* Add libhugetlbfs-2.18-restrict-is-a-reserved-word.patch</comment>
+    <requestid>313575</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>2d9acf5304006616824822316264027c</srcmd5>
+    <version>2.18.99</version>
+    <time>1446978414</time>
+    <user>dimstar_suse</user>
+    <comment>- Add zero_filesize_segment.patch to fix testcase on s390x
+- Fixes bnc#919680
+- Patches already included mainline and now deleted:
+D libhugetlbfs-2.18-restrict-is-a-reserved-word.patch
+D fix_plt_extrasz_always_returning_0_on_ppc64le.patch
+
+- Latest version from git next branch</comment>
+    <requestid>342709</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>c4ebe226a7d29ccea765472137636d7d</srcmd5>
+    <version>2.20</version>
+    <time>1489345499</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478037</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>47b73ce6fecae11f7996650d5d8348bb</srcmd5>
+    <version>2.20</version>
+    <time>1495011048</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491627</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>213c562dd0d0d1faa38577762333dfe9</srcmd5>
+    <version>2.20</version>
+    <time>1507571041</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532407</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>67a92fd94292d13f3fcbe324deb92fab</srcmd5>
+    <version>2.21</version>
+    <time>1538502575</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed make target &quot;install-perlmod&quot; and filecheck from packaging process.
+
+- Update to 2.21
+- Bug Fixes
+  * The noexec stack markers are set directly
+  * We no longer lie to glibc about shrinking the heap by less than HPAGE_SIZE
+- Test Suite
+  * No existent tests are no longer marked Killed By Signal
+  * Disable malloc per-thread cache for heap shrinking tests
+- Remove patch &quot;ignore-perl-modules.diff&quot;</comment>
+    <requestid>639569</requestid>
+  </revision>
+</revisionlist>

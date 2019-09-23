@@ -1,0 +1,1874 @@
+-------------------------------------------------------------------
+Mon Jan 22 11:25:21 UTC 2018 - p.seiler@linuxmail.org
+
+- improved install scripts (using install instead of mv and using $UID:
+ * install_acx100_firmware
+ * install_intersil_firmware
+- updated URL in install_acx100_firmware script (bnc#1004577)
+- improved spec file
+ * removed obsolete openSUSE Versions checks
+ * replaced bash variables with macros
+ * removed obsolete tags and macros
+ * cleaned spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Oct 18 19:28:00 UTC 2014 - Led <ledest@gmail.com>
+
+- update URL in install_intersil_firmware script
+
+-------------------------------------------------------------------
+Sat Oct 18 18:43:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in install_*_scripts
+
+-------------------------------------------------------------------
+Thu Feb  6 09:59:14 CET 2014 - tiwai@suse.de
+
+- Remove superfluous iwlagn module config (bnc#831819)
+- Fix build with openSUSE 12.2 and SLE11
+
+-------------------------------------------------------------------
+Thu Nov 28 03:25:15 UTC 2013 - crrodriguez@opensuse.org
+
+- install udev rules in _udevrulesdir. 
+
+-------------------------------------------------------------------
+Fri Apr  5 09:45:27 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:08 UTC 2013 - rmilasan@suse.com
+
+- Move iwlwifi-led.sh to where udev is installed using pkg-config.
+  Apply the same thing also for 99-iwlwifi-led.rules (only 
+  openSUSE 12.3 and up).
+
+-------------------------------------------------------------------
+Fri Jul  6 13:26:33 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0
+  See line 22 of ifrename.c
+
+-------------------------------------------------------------------
+Thu Jun  7 10:49:08 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Tue Aug 23 19:04:04 CEST 2011 - dmueller@suse.de
+
+- update to 30.pre9:
+  o Create iwlib-private.h to minimise namespace pollution [iwlib]
+  o More fix to the 64->32bit band-aid for encode [iwlib]
+  o Update udev rule to remove a warning [19-udev-ifrename.rules]
+    (from Ritesh Raj Sarraf <rrs@researchut.com> and Guus Sliepen)
+  o Propagate error codes out of main for get [iwconfig/iwlist/iwspy]
+   (From Guus Sliepen <guus@debian.org>)
+  o Remove spurious commands from Czech iwconfig manpage.
+
+-------------------------------------------------------------------
+Tue Feb  8 13:46:48 CET 2011 - vbotka@suse.de
+
+- fixed typo in specfile; shall be /etc/modprobe.d/50-iwlagn.conf
+
+-------------------------------------------------------------------
+Wed Dec  1 16:31:59 CET 2010 - vbotka@suse.cz
+
+- added iwlagn.modprobe with option to enable 11n connections
+  options iwlagn 11n_disable=0 
+
+-------------------------------------------------------------------
+Fri Feb  5 20:22:05 CET 2010 - vbotka@suse.cz
+
+- iwl3945.modprobe added, bnc #556665
+
+-------------------------------------------------------------------
+Sun Jan 31 20:56:53 CET 2010 - meissner@suse.de
+
+- remove inline hacking from iwlib.h, it breaks C++ 
+  usage of iwlib.h
+
+-------------------------------------------------------------------
+Tue Jan  5 17:23:18 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Tue Sep 22 20:37:49 CEST 2009 - crrodriguez@suse.de
+
+- fix build with --as-needed
+- fix -devel package dependencies 
+
+-------------------------------------------------------------------
+Thu Sep 17 00:26:54 CEST 2009 - crrodriguez@suse.de
+
+- use find_lang macro 
+
+-------------------------------------------------------------------
+Thu Aug 20 09:26:23 UTC 2009 - aj@suse.de
+
+- Remove requires on libiw-devel, all dependend packages have been
+  checked and adjusted to use libiw-devel in BuildRequires
+  themselves.
+
+-------------------------------------------------------------------
+Fri Jun 19 10:35:46 CEST 2009 - coolo@novell.com
+
+- disable as-needed for this package as it fails to build with it
+
+-------------------------------------------------------------------
+Mon Jun  8 17:18:14 CEST 2009 - hschaa@suse.de
+
+- Remove ipw2100.modprobe, the associate parameter already defaults
+  to 0 since 2.6.30
+- Update ipw2200.modprobe, the associate parameter already defaults
+  to 0 since 2.6.30
+
+-------------------------------------------------------------------
+Thu Jun  4 09:49:53 CEST 2009 - hschaa@suse.de
+
+- Split libiw30 and libiw-devel out of wireless-tools
+
+-------------------------------------------------------------------
+Mon Mar 23 10:16:23 CET 2009 - hschaa@suse.de
+
+- Update install_acx100_firmware and install_intersil_firmware
+  (bnc#486195)
+- Update to 30pre8, changes:
+  o Workaround kernel bug when getting ESSID [iwlib/iwconfig/iwgetid]
+  o Enable scan buffer to grow up to 65535 instead of 32768 [iwlist]
+  o Return a proper error if scan result exceed buffer max [iwlist]
+  o Do above two fixes for the simple scan API [iwlib]
+  o Spelling and typos in [iwconfig.8]
+
+-------------------------------------------------------------------
+Mon Mar  9 21:11:11 CET 2009 - mmarek@suse.cz
+
+- renamed modprobe configs to /etc/modprobe.d/50-*.conf
+  (required by new module-init-tools).
+
+-------------------------------------------------------------------
+Tue Feb  3 10:15:00 CET 2009 - hschaa@suse.de
+
+- Add 99-iwlwifi-led.rules and iwlwifi-led.sh (bnc#462490)
+
+-------------------------------------------------------------------
+Sat Nov  8 20:13:25 CET 2008 - coolo@suse.de
+
+- fix build of the shared lib again
+
+-------------------------------------------------------------------
+Thu Nov  6 17:56:28 CET 2008 - hschaa@suse.de
+
+- ipw2200 and ipw2100 should not automatically associate with any
+  access point (default to associate=0). Fixes interferences with
+  wpa_supplicant.
+- Update to 30pre7, changes:
+  o Display non-ASCII char in ESSID using escape sequence [iwlib]
+  o Allow input of non-ASCII char in ESSID using escape sequence [iwlib]
+  o Fix probing to not probe wildcards (left over '%d'->'*') [ifrename]
+  o Output number of mapping matched (display + exit status) [ifrename]
+  o Don't load mapping file if using options '-n' + '-i' [ifrename]
+  o When using takeover, redo probing in case eth0 was in use [ifrename]
+  o Update Hotplug documentation, add uDev bits [HOTPLUG-UDEV.txt]
+  o Add ESSID bug patches and documentation [ESSID-BUG.txt]
+  o Make wireless.21.h LGPL as promised a long time ago [wireless.21.h]
+  o Fix unaligned access on SPARC in the 64->32 bit workaround [iwlib.c]
+  o Mise à jour de la traduction en francais des pages manuel [fr/*]
+  o Use wireless.22.h, make it GPL [iwlib.h/wireless.22.h]
+  o Show Scanning Capabilities in "iwlist event" [iwlist]
+  o Fix parsing of retry/power when modifier is used [iwconfig]
+  o Remove trailing '/' in INSTALL_* that fooled checkinstall [Makefile]
+  o Scan capabilities in struct iw_range [wireless.h]
+  o Install localised man page [Makefile]
+  o Fix #define that broke 32->64 bit workaround [wireless.22.h]
+  o Fix gramar in man page, add about hidden networks [iwlist.8]
+
+-------------------------------------------------------------------
+Fri Feb  1 11:54:09 CET 2008 - hschaa@suse.de
+
+- update to 29, changes:
+  o Don't look for "fixed" out of array in set_txpower_info() [iwconfig]
+- add patch bug-292887_iwlist.8-patch which makes the iwlist manpage
+  better understandable
+
+-------------------------------------------------------------------
+Sat Jan 12 02:36:03 CET 2008 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-* errors 
+
+-------------------------------------------------------------------
+Thu Dec 20 16:41:39 CET 2007 - jg@suse.de
+
+- re-enable hwscan for iwlwifi devices
+- blacklist prism54 to prefer p54 driver (bug 300892)
+
+-------------------------------------------------------------------
+Tue Sep 11 02:07:29 CEST 2007 - ro@suse.de
+
+- added missing endif to fix last change 
+
+-------------------------------------------------------------------
+Mon Sep 10 16:35:39 CEST 2007 - jg@suse.de
+
+- disable hardware scan for iwlwifi devices (bug 304652)
+
+-------------------------------------------------------------------
+Thu Aug  9 10:35:54 CEST 2007 - hschaa@suse.de
+
+- correct firmware names for acx100 based cards in README.firmware
+  and install_acx100_firmware (fixes b.n.c #212307)
+- add link to the acx100 wiki to README.firmware
+
+-------------------------------------------------------------------
+Mon Jul 30 17:11:36 CEST 2007 - jg@suse.de
+
+- update to 29pre22, changes:
+  o --version output WE_MAX_VERSION instead of WE_VERSION [iwlib]
+  o Change iwstats dBm range to [-192;63] in iw_print_stats() [iwlib.c]
+  o Implement iwstats IW_QUAL_RCPI in iw_print_stats()  [iwlib.c]
+  o LINUX_VERSION_CODE removed, only use GENERIC_HEADERS [iwlib.h]
+  o Fix OUI type check for WPA 1 IE [iwlist.c]
+- removed obsolete README.ipw3945
+- removed obsolete iwlib.patch
+
+-------------------------------------------------------------------
+Wed Jun 13 13:01:05 CEST 2007 - ro@suse.de
+
+- update to 29pre21, changes:
+  o Add largest bitrate in easy scan API [iwlib]
+  o Debug version : output IW_EV_LCP_LEN [iwlist]
+  o Fix 64->32bit band-aid on 64 bits, target is local aligned [iwlib]
+  o More fix to the 64->32bit band-aid on 64 bits [iwlib]
+  o Fix GENIE parsing os chipher/key_mngt [iwlist]
+  o Compiler warning on DEBUG code [iwlist]
+  - supports WE_MAX_VERSION 22
+
+-------------------------------------------------------------------
+Wed Apr  4 16:06:41 CEST 2007 - jg@suse.de
+
+- removed /etc/modprobe.d/prism2 and switch_prism_driver
+  (bug 239194)
+
+-------------------------------------------------------------------
+Thu Mar 29 15:52:41 CEST 2007 - rguenther@suse.de
+
+- add /etc/modprobe.d directory
+
+-------------------------------------------------------------------
+Thu Mar 22 17:11:30 CET 2007 - jg@suse.de
+
+- removed linux-wlan-ng (separate package now)
+- added lwepgen
+- updated README.ipw3945
+
+-------------------------------------------------------------------
+Mon Mar 19 19:11:30 CET 2007 - jg@suse.de
+
+- update to version 29pre17, changes:
+  * Tweak man pages : interface is often optional [iwlist.8/iwspy.8]
+  * Drop obsolete port/roam code from [iwpriv]
+  * Fix bug where all auth masks use iw_auth_capa_name [iwlist]
+  * Fix iw_scan()/iw_process_scan() for non-root -> EPERM [iwlib]
+  * Fix "iwconfig nickname" (was abreviated) [iwconfig]
+  * Invalid mode from driver segfault iwlist scan [iwlist]
+  * Replace index() with strchr() [iwlib/iwconfig/iwpriv]
+  * Parser/printf/sscanf fixes and optimisation [iwconfig]
+  * Fix bug extracting mountpoint of sysfs (wrong field) [ifrename]
+  * Read sysfs symlinks transparently [ifrename]
+  * Fix README header to talk about ifrename [README]
+  * Add 'prevname' selector for udev compatibility [ifrename]
+  * Read parent directory names in SYSFS selector [ifrename]
+  * Make dry-run output compatible with udev [ifrename]
+  * Update man page with useful SYSFS selectors [iftab.5]
+  * Factorise wildcard rewrite '*'->'%d' to hide it from -D -V [ifrename]
+  * Reorganise sysfs description, better wording [iftab.5]
+  * Enhance explanation of arp and iwproto [iftab.5]
+  * Band-aid for the 64->32bit iwevent/iwscan issues [iwlib]
+  * Better band-aid for the 64->32bit iwevent/iwscan issues [iwlib]
+  * Add udev compatible output, print new DEVPATH [ifrename]
+  * Fix DEVPATH output to use the real devpath from udev [ifrename]
+  * Add udev rules for ifrename integration [19-udev-ifrename.rules]
+
+-------------------------------------------------------------------
+Thu Sep 21 16:46:17 CEST 2006 - jg@suse.de
+
+- update to linux-wlan-ng version 0.2.5 (sync with wlan-kmp,
+  no real userspace changes)
+
+-------------------------------------------------------------------
+Fri Sep  8 17:18:41 CEST 2006 - schwab@suse.de
+
+- Use RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Wed Aug 30 14:50:52 CEST 2006 - jg@suse.de
+
+- update to version 29pre10, changes (shortened):
+  * Check event stream 'point' payload size to avoid overflow [iwlib]
+  * Make all users of event stream 'point' safe to NULL [iwlist/iwevent]
+  * 'iwconfig txpower 1dBm' should not be 'mW' [iwconfig]
+  * Forward compat. to WE-21 : essid len is strlen, not +1 [iwconfig]
+  * Update definition of 'ap' and 'sens' to reflect reality [man]
+  * Add WE-20 headers, compile with that as default
+  * Add new power value : 'power saving' [iwconfig/iwlist/iwlib]
+  * Optimise getting iwrange when setting TxPower [iwconfig]
+  * Add support for unicast and broadcast bitrates [iwconfig/iwlist]
+  * Drop 'domain' alias for 'nwid'. Obsolete. [iwconfig]
+  * Update manpages with new features above [man]
+  * Add temp variable to sscanf() to fix 64 bits issues [iwconfig]
+  * Add 'last' scan option for left-over scan [iwlist]
+  * Add 'essid' scan option for directed scan [iwlist]
+  * Fix segfault on setting bitrate (parse wrong arg) [iwconfig]
+  * More WPA support : iwlist auth/wpakeys/genie [iwlist]
+- added README.ipw3945 (bug 170124)
+
+-------------------------------------------------------------------
+Wed May 17 16:16:48 CEST 2006 - jg@suse.de
+
+- install_intersil_firmware: fixed URL of PrismGT firmware
+  package (bug 173875)
+
+-------------------------------------------------------------------
+Fri Feb 10 13:16:09 CET 2006 - jg@suse.de
+
+- split off wlan drivers in their own package
+- removed dependency on kernel-source
+
+-------------------------------------------------------------------
+Tue Feb  7 16:44:24 CET 2006 - jg@suse.de
+
+- linux-wlan-ng: removed prism2dl.c from tarball (bug 148715)
+
+-------------------------------------------------------------------
+Sun Feb  5 19:15:31 CET 2006 - ro@suse.de
+
+- split off madwifi to its own package 
+
+-------------------------------------------------------------------
+Sat Feb  4 16:16:53 CET 2006 - jg@suse.de
+
+- added ipw3945 driver (bug 145190)
+- converted to Kernel Module Package
+
+-------------------------------------------------------------------
+Fri Jan 27 02:32:58 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 18:21:29 CET 2006 - jg@suse.de
+
+- fixed at76c503, linux-wlan-ng, and rt2x00 drivers to build
+  against kernel 2.6.16
+- disabled prism2_cs driver (currently broken with kernel 2.6.16)
+- madwifi: fixed reporting of WPA capabilities (patch by 
+  rml@novell.com)
+
+-------------------------------------------------------------------
+Wed Jan 18 13:19:20 CET 2006 - jg@suse.de
+
+- madwifi: update to snapshot r1401 (should fix bug 140716)
+
+-------------------------------------------------------------------
+Fri Jan 13 15:00:35 CET 2006 - jg@suse.de
+
+- madwifi: update to latest snapshot r1394
+- removed madwifi-sysfs.dif (is now upstream)
+- acx: update to latest snapshot
+- adm8211: update to lastest snapshot, changes:
+  * Update for 2.6.15
+  * Remove useless includes in ieee80211_sta
+- removed obsolete comment in ipw2200.modprobe
+
+-------------------------------------------------------------------
+Mon Jan  9 16:14:40 CET 2006 - jg@suse.de
+
+- rt2x00: fix mismatched rwsem calls (by okir@suse.de, bug 141418)
+
+-------------------------------------------------------------------
+Wed Jan  4 17:01:33 CET 2006 - jg@suse.de
+
+- using kernel headers instead of glibc ones in iwlib.h
+
+-------------------------------------------------------------------
+Wed Jan  4 16:47:43 CET 2006 - jg@suse.de
+
+- ipw2200: enabled module options again
+
+-------------------------------------------------------------------
+Mon Jan  2 18:40:36 CET 2006 - jg@suse.de
+
+- madwifi: update to latest snapshot r1372
+- acx: update to latest snapshot 20051228
+
+-------------------------------------------------------------------
+Mon Dec 19 16:45:13 CET 2005 - jg@suse.de
+
+- wireless-tools: update to version 28pre13, changs:
+  * Ignore empty lines in iface enumeration iw_enum_devices() [iwlib]
+  * Fix invalid buffer size in 'iwlist power' [iwlist]
+  * Remove kernel headers, use glibc headers [iwlib]
+  * Show explicit state for SIOCSIWAP, not numbers [iwconfig/iwevent]
+  * Add WE-18 ioctls to the stream parser in standard_ioctl_hdr [iwlib]
+  * Add GENIE parsing support in scan resuls [iwlist]
+  * Scan : display bitrate values on a single line [iwlist]
+- madwifi: update to latest snapshot r1360
+- rt2x00: update to 2.0.0 beta3
+
+-------------------------------------------------------------------
+Wed Dec  7 16:55:28 CET 2005 - jg@suse.de
+
+- re-enabled rt2x00 driver
+
+-------------------------------------------------------------------
+Fri Nov 18 11:41:21 CET 2005 - jg@suse.de
+
+- setting base device via SET_NETDEV_DEV macro instead of assigning
+  directly
+- set ARP type of wifiX helper interface to IEEE80211 instead
+  of ETHER
+
+-------------------------------------------------------------------
+Wed Nov 16 15:42:17 CET 2005 - jg@suse.de
+
+- fixed sysfs device link (bug 133284)
+
+-------------------------------------------------------------------
+Mon Nov  7 11:29:45 CET 2005 - jg@suse.de
+
+- disabled rt2x00 for now as it needs a newer ieee802.11 stack
+  than the one included in kernel 2.6.14
+- acx100: 2.6.14 compile fixes
+- at76c503: 2.6.14 compile fixes
+- linux-wlan-ng: 2.6.14 compile fixes
+
+-------------------------------------------------------------------
+Fri Nov  4 18:08:46 CET 2005 - jg@suse.de
+
+- removed ieee80211, ipw2100, and ipw2200 modules (now part of the
+  kernel
+- madwifi: update to madwifi-ng
+- replaced rt2400, rt2500, and rt2570 drivers by their successor
+  driver rt2x00
+- adm8211: update to release 20051031
+
+-------------------------------------------------------------------
+Wed Nov  2 22:16:20 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Wed Oct 12 19:07:27 CEST 2005 - jg@suse.de
+
+- wireless-tools: update to 28pre9, changes:
+  - Add WE-19 headers, compile with that as default
+  - IW_EV_POINT_LEN has shrunk, so invert the IW_EV_POINT_OFF fixup
+  - Remove WE backward compat from iwlib.h header
+  - Add support for IW_QUAL_DBM in iw_print_stats()
+  - Add support for ARPHRD_IEEE80211 in iw_check_mac_addr_type()
+          -> iwspy work on wifi0 netdev from airo.c
+
+-------------------------------------------------------------------
+Tue Sep  6 11:09:48 CEST 2005 - jg@suse.de
+
+- ipw2200: added broadcast fix by Peter Jones (bug 113634)
+
+-------------------------------------------------------------------
+Mon Sep  5 18:06:28 CEST 2005 - jg@suse.de
+
+- added some defines as used in the original Makefile for building
+  ipw2100/ipw2200; allows debugging (bug 87329)
+
+-------------------------------------------------------------------
+Mon Sep  5 16:22:23 CEST 2005 - jg@suse.de
+
+- ipw2200: set led=1 as default option (bug 115176)
+- ipw2100: fixed crash on WPA enable (bug 115252)
+
+-------------------------------------------------------------------
+Fri Sep  2 15:58:10 CEST 2005 - jg@suse.de
+
+- changed default driver for PC-Cards with Manufactor ID
+  0x0156 0x0002 from hostap_cs to orinoco_cs (bug 114514)
+
+-------------------------------------------------------------------
+Thu Sep  1 14:30:08 CEST 2005 - jg@suse.de
+
+- ipw2200: increased disassociation timeout threshold to 24 again
+  (breaks association under some circumstances, see
+  http://www.bughost.org/bugzilla/show_bug.cgi?id=727)
+- ieee80211: including wireless.h earlier in ieee80211.h (fixes
+  warnings about undefined WIRELESS_EXT)
+- madwifi: update to CVS head (fixes Master mode and adds WDS
+  support)
+
+-------------------------------------------------------------------
+Fri Aug 26 17:58:35 CEST 2005 - jg@suse.de
+
+- linux-wlan-ng: update to 0.2.2, changes (shortened):
+ - Fix an array overflow in the hotplug helper function.
+ - Added in-kernel devicetable for 2.6.13+ pcmcia
+ - Updates to bring prism2_cs into the newer 2.6 kernel APIs.
+ - Fixes in the hotplug invocation with WEXT (Pavel Roskin)
+ - use usb_reset_device() on 2.6 kernels (Andreas Schulte)
+ - PCMCIA card Ident fixes to coexist with orinioco driver
+ - Ignore unexpected ctlx responses. (Chris Rankin)
+ - Fix an off-by-one in scan results.
+ - [usb] Fix a memory leak (Chris Rankin * Eroc Koenders)
+ - [usb] clean up the PDA Read function a bit. (Chris Rankin)
+ - [usb] Don't overwrite current CTLX URB before we're done with it.
+ - Fix a byte-order problem when parsing scan results (Eroc Koenders)
+ - Added a mib item (lnxRSNAIE) to get/set the WPA/RSNA IE.
+ - Applied a patch from Chris Rankin which should solve the hangs with
+   kernel preemption turned on.
+ - Fixed a series of bad memsets in prism2dl
+ - Added id for Viewsonic USB widget (Ekin Meroglu)
+ - Fetch the BSSID when we get an AP_CHANGE event
+ - netif_carrier_off/netif_carrier_on at appropriate times
+ - Hook up the dot11CurrentTxPowerLevel MIB in the prism2 code.
+ - CommsQuality now does the right thing with dBm values.
+ - A major USB patch from Chris Rankin.  This rewrites the
+   command-queueing code to something considerably more sane.
+ - Further compile warning fixes on 64-bit targets (Pavel Roskin)
+ - Fix prism2_cs on 64-bit targets (Pavel Roskin)
+- at76c503: fixed badness (bug 103146)
+- rewrote switch_prism_script to work with new pcmcia device
+  tables of kernel 2.6.13
+- add /etc/modprobe.d/prism2 which defines what prism2 driver to
+  use (default hostap)
+- updated README files
+- removed German LIESMICH files (out-of-date)
+
+-------------------------------------------------------------------
+Wed Aug 17 18:59:00 CEST 2005 - jg@suse.de
+
+- rtl8180: intially added
+- minor specfile cleanup
+
+-------------------------------------------------------------------
+Thu Aug 11 17:06:35 CEST 2005 - jg@suse.de
+
+- madwifi: fixed a problem with broadcast packages
+- removed obsolete files in /etc/pcmcia
+
+-------------------------------------------------------------------
+Wed Aug 10 18:54:06 CEST 2005 - jg@suse.de
+
+- removed zd1201 firmware
+
+-------------------------------------------------------------------
+Fri Aug  5 12:56:43 CEST 2005 - jg@suse.de
+
+- madwifi: update to current cvs head
+- added /etc/modprobe.d/ipw2200 to set hwcrypto=0 as default
+  insmod option for ipw2200
+
+-------------------------------------------------------------------
+Tue Aug  2 16:14:42 CEST 2005 - jg@suse.de
+
+- ipw2200: added fix for (some) problems in conjunction with
+  kernel 2.6.13
+
+-------------------------------------------------------------------
+Mon Aug  1 17:57:23 CEST 2005 - jg@suse.de
+
+- rt2400: update to 1.2.2beta3, changes:
+  * Fix for channel change in Adhoc mode
+- rt2500: update to 1.1.0beta3, changes:
+  * Channel change fix for adhoc mode
+  * Fix for association to non-broadcast AP's
+  * Fix to allow this device to create Adhoc networks
+  * 4kb stacks are now supported
+  * Rolling of changes in Ralink 1.4.6.1 + 1.4.6.2 release including:
+    * Fix- Mlme queue tail pointer
+    * Add- WPANONE
+    * Add- AUTH AUTO method
+    * Fix- racing condtion in mlme.c and rtmp_data.c
+    * Fix iwconfig - Link Quality(means Channel Quality),
+      Signal level and Noise level.
+    * Fix iwlist ra0 channel - print out
+- rt2570: added initial version of this driver
+
+-------------------------------------------------------------------
+Mon Jul 18 11:26:27 CEST 2005 - jg@suse.de
+
+- ipw2100: update to 1.1.2, changes:
+  * Fixed problem with driver_ipw
+  * Fixed problem with iwconfig set/get txpower
+  * Fixed problem with WEP
+- ipw2200: update to 1.0.6, changes:
+  * Fixed problem with setting Tx power on A band
+  * Fixed problem with 'No space for Tx'
+  * Fix hardware encryption (both WEP and AES) doesn't work with
+    fragmentation
+  * Fix is_duplicate_packet() bug for fragmentation number setting
+- ieee80211: update to 1.0.3, changes:
+  * Cleaned up some prior merge regressions when syncing with
+    netdev-2.6
+  * Fix 64-bit warnings
+  * Fix to refernce of skb->priority after skb freed
+
+-------------------------------------------------------------------
+Wed Jul 13 16:54:48 CEST 2005 - jg@suse.de
+
+- ipw2100: update to 1.1.1, changes (shortenend):
+  * Moved ieee80211 subsystem into its own object
+  * Added WE-18 support.
+  * Fixed problem with iwconfig set/get txpower
+  * Fixed problem with 'iwlist retry' now showing min/max retry
+  * Fixed problem with network monitor is broken due to
+    netif_carrier_on is not called in ipw2100_open
+  * Fixed compatibility with wpa_supplicant and the new -Dipw
+    interface (that included a fix for 64-bit compatibility)
+- ipw2200: update 1.0.5, changes (shortened):
+  * Fixed race condition during association causing firmware errors
+  * Fixed problem with building in 64-bit environment
+  * Fixed problem with SCAN_REQUEST_EXT sometimes failing
+  * Fixed problem with bit rate not decreasing when moving
+    laptop farther from AP
+  * Fixed problem with 'iwconfig eth1 mode auto' and 'modprobe'
+    locking the system
+  * Fixed problem with "No space for Tx" for hwcrypto=1
+  * Fixed kernel panic in rmmod caused by led work is still queued
+  * Fixed problem with network doesn't reassociate after suspend/resume
+  * Fixed problem with 'iwprvi sw_reset' not resetting the card from
+    monitor mode
+  * Fixed problem with monitor mode being used after a WEP key has
+    been configured
+  * Add duplicate packet checking code (kill ping DUP! and TKIP replay
+    warning)
+  * Fix hardware encryption (both WEP and AES) doesn't work with
+    fragmentation
+  * Removed ieee80211 subsystem from being part of the distribution.
+  * Fixed problem with open APs not working with wpa_supplicant
+  * Fixed problem with 'iwconfig eth1 frag 0' hanging the shell
+  * Fixed problem with adapter not fully powering off during suspend
+    to RAM or when module unloaded.
+  * Improved support of iwlist freq|chan and setting of channels via
+    iwconfig to correctly check channel limits (added ieee80211_geos)
+  * Added iwpriv sw_reset extension to reset sw parameters
+  * Added speed_scan channel scan list support
+  * Modified the driver to load the EEPROM data even if RF KILL is
+    active during driver load
+  * Fixed problem with kernel oops if mode auto; modprobe -r ipw2200
+  * Added QoS (CONFIG_IPW_QOS) support
+  * Fixed some race conditions wich channel changes, association,
+    and scan abort that could periodically cause a firmware restart
+  * Fix problem with OOPS on module load
+  * Added support to merge between adhoc networks
+  * Added support for iwspy
+- linux-wlan-ng: modified makefiles to strip unwanted installations
+  paths
+
+-------------------------------------------------------------------
+Fri Jul  8 15:07:37 CEST 2005 - hare@suse.de
+
+- Fix build for 2.6.13.
+
+-------------------------------------------------------------------
+Fri Jul  8 12:03:25 CEST 2005 - jg@suse.de
+
+- at76c503: fixed kernel panic (bug 90649)
+- acx100: update to bugfix release 0.2.0pre8_plus_fixes_57
+- madwifi: added includes where needed
+
+-------------------------------------------------------------------
+Fri Jun 10 14:42:28 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Wed Jun  1 01:41:19 CEST 2005 - ro@suse.de
+
+- rfswitch: do not build kernel modules for kernel-um 
+
+-------------------------------------------------------------------
+Tue May 17 17:33:13 CEST 2005 - jg@suse.de
+
+- wireless-tools: update to 28pre6, changes:
+  - Make static lib use PIC objects [Makefile]
+  - Add SYSFS selector support to ifrename [ifrename]
+  - Fix a fd leak in pcmciaslot selector [ifrename]
+  - Don't complain about eth0/wlan0 if takeover enabled [ifrename]
+  - Update man pages for sysfs and eth0/wlan0 [ifrename.8]
+  - Update man pages for frequ auto/off [iwconfig.8]
+  - More clever manual loading and docking tricks [HOTPLUG.txt]
+  - Czech (cs) man pages [cs/*]
+  - Fudge patch below for better integration [iwconfig/iwevent/iwlist]
+  - WE-18/WPA event display [iwevent]
+  - WE-18/WPA parameter display [iwconfig]
+- acx100: update to bugfix release 0.2.0pre8_plus_fixes_56
+- adm8211: update to release 20050323, changes:
+  - Added private ioctl to tune antenna power, lpf cutoff, and lnags
+    threshold
+  - Made txpow ioctl actually work
+  - Added documentation for these ioctls
+- ipw2100: do not build driver when ACPI is disabled in kernel
+  configuration (bug 84029)
+- fixed Makefiles to not build drivers when wireless support is
+  disabled in kernel configuration (bug 84027)
+
+-------------------------------------------------------------------
+Sun Mar 20 14:32:36 CET 2005 - jg@suse.de
+
+- removed zd1201 driver as it is already provided by the kernel
+  package now
+
+-------------------------------------------------------------------
+Wed Mar 16 10:26:14 CET 2005 - jg@suse.de
+
+- rt2500: do not reset security mode when changing default WEP key
+  index (bug 72339)
+
+-------------------------------------------------------------------
+Thu Mar 10 08:35:16 CET 2005 - jg@suse.de
+
+- linux-wlan-ng: install /etc/pcmcia/wlan-ng* in $RPM_BUILD_ROOT
+  (again)
+
+-------------------------------------------------------------------
+Wed Mar  9 18:15:36 CET 2005 - jg@suse.de
+
+- linux-wlan-ng: moved unused wlan-ng scripts to docdir to serve
+  as examples (bug 66473)
+- rt2x500: added latest fixes (bug 71674)
+
+-------------------------------------------------------------------
+Mon Mar  7 16:17:13 CET 2005 - jg@suse.de
+
+- changed firmware path from /usr/lib/hotplug/firmware to
+  /lib/firmware in firmware install scripts
+- changed firmware path in README.firmware and LIESMICH.firmware
+- updated README.wpa and LIESMICH.wpa
+
+-------------------------------------------------------------------
+Mon Feb 21 14:25:57 CET 2005 - jg@suse.de
+
+- rt2400: update to 1.2.2-beta2, changes:
+  * ifconfig support for spoofing MAC address
+  * Fix for setting of BSSID (982890)
+  * Fix for setting of non-existent ESSID (1034910)
+  * For for TX packet counters
+  * RFMON support
+  * sysfs support for HAL and NetworkManager
+  * Dynamic interface naming support through module parameter
+- rt2500: update to 1.1.0-beta2, changes:
+  * kmalloc stability fixes to the MLME
+  * Cleanup on memory management functions (NDisFill/Move/Zero)
+  * Rollin of Robin Cornelius RFMon Patch
+  * RFMon support through iwconfig mode
+  * Rolling of changes in Ralink 1.4.5.0 release
+  * Spinlock changes for stability
+  * Fix for frequency values
+  * Fix for link quality reporting (RobinC)
+  * General Stability Improvements
+  * sysfs support for HAL and NetworkManager
+  * Dynamic interface naming support through module parameter
+- disabled rt2400 and rt2500 drivers on SMP kernels (not yet
+  supported)
+
+-------------------------------------------------------------------
+Tue Feb 15 08:45:39 CET 2005 - agruen@suse.de
+
+- Install target must do a modules_install in the kernel sources.
+
+-------------------------------------------------------------------
+Tue Feb 15 01:23:52 CET 2005 - ro@suse.de
+
+- re-add install target to madwifi modules Makefile 
+
+-------------------------------------------------------------------
+Mon Feb 14 17:08:36 CET 2005 - jg@suse.de
+
+- added drivers for Ralink rt2400 and rt2500 devices
+- adm8211: update to release 20050208, changes:
+  * Change linkup timeout to 3 seconds
+  * Use flags in ieee80211_data structure
+  * Rescan if the link doesn't go up in 2 seconds
+- ipw2100: update to 1.0.5, changes (shortened):
+  * Fixed problem with 'iwpriv eth1 reset' not working
+  * Removed legacy firmware loading support
+  * Possible fix for #problem of scans not always showing up
+- ipw2200: update to 1.0.1, changes (shortened):
+  * iwconfig rate support
+  * Improved link signal quality calculation
+  * Added support for Intel PRO/Wireless 2225BG Network
+    Connection adapter
+  * Fixed a problem with sensitivity threshold during association
+  * Added iwpriv for turning forcing long preamble support
+  * Fixed locked BSSID reporting channel number
+  * Added initial support for WPA
+- madwifi: update to current cvs
+
+-------------------------------------------------------------------
+Tue Feb  8 19:36:50 CET 2005 - jg@suse.de
+
+- zd1201: fixed makefile issue
+
+-------------------------------------------------------------------
+Tue Feb  8 01:44:30 CET 2005 - ro@suse.de
+
+- zd1201: do not try to install firmware during kernel build 
+
+-------------------------------------------------------------------
+Mon Feb  7 17:25:10 CET 2005 - jg@suse.de
+
+- ipw2100: update to 1.0.4, changes:
+  * New logic to attempt to catch hung firmware (possibly caused by
+    bad AP frame received)
+  * Fixed problem with wrong arguments being passed to set_security
+  * Fixed problem with disassociation events not being sent to user
+    space when firmware is being restarted
+  * Fixed problem with suspend not working
+  * Fixed problem with stats not being usable by non iwconfig
+    wireless tools
+- ipw2100: obsolete set-security patch removed
+- ipw2200: update to 1.0.0, changes:
+  * Fixed part of problem with an AP never being considered for
+    association (storming) if the jiffies rewind problem occurs
+- added driver and firmware for ZyDAS ZD1201 devices
+
+-------------------------------------------------------------------
+Fri Jan 28 13:54:38 CET 2005 - jg@suse.de
+
+- wireless-tools: update to 28pre4:
+  * Add option for stripping symbols on tools [Makefile]
+  * Add escaping of essid keyworks with -- in manpage [iwconfig.8]
+  * Update sensitivity description [iwconfig.8]
+  * Fix iw_print_timeval() for timezone [iwlib/iwevent]
+  * Escape interface name for --help/--version with -- [iwconfig]
+  * Allow --help/--version to be interface names [iwlist]
+  * Fix invalid sizeof for stat memcpy in easy scanning API 
+    [iwlib.c]
+  * Fix my horrendous spelling [HOTPLUG.txt/PCMCIA.txt/README/*.8]
+- adm8211: update to release 20050124:
+  * Remove bogus test for monitor mode
+  * Fix monitor mode opps
+  * Make sure we're not scanning before reporting scan results
+  * Use time_after in ieee80211_associated
+  * Remove NAPI from todo list
+  * Enable LLTX
+- linux-wlan-ng: update to 0.2.1pre26:
+  * Fix the "no hardware found" bug in 2.6.10+ kenels
+  * Cleanups in the Makefiles and build system
+  * Fix a typo in the shared.prism2 script
+  * Fix a nice race condition on device registration.
+  * Don't stop the netdev when we hit ifstate_disable.
+  * hw->state wasn't being set properly on drvr_stop, nor were we
+    clearing the port status in all cases.
+  * Fix the "Debug: sleeping function called from invalid context"
+    under 2.6 with prism2_usb
+  * Wireless extension SCAN support
+  * 2.6 sysfs support in the form of SET_NETDEV_DEV
+  * Fix a brown-paper bag bug in the register_wlandev code
+  * Patch for the Sitecom WL-022 widget
+  * Build fix for ancient ETHTOOL versions
+- ipw2200: update to 0.21:
+  * Provided __iomem typedef for pre-2.6.9
+  * Changed firmware event/error log dumping to be masked with
+    IPW_DL_FW_ERRORS flag.
+  * Fixed compilation warnings when CONFIG_IPW_DEBUG and
+    CONFIG_IEEE80211_DEBUG are not defined
+  * Fixed warning on unused return code from
+    pci_set_consistent_dma_mask
+  * Fixed problem after any resume
+  * Fixed problem after S4 resume
+  * Fixed problem with bridged networks and Ad-Hoc by adding
+    target MAC to station table, regardless of if they are
+    actual Ad-Hoc cells
+  * Fixed problem with setting mode immediately after load
+    causing failures
+  * Incorporated fixes to use __iomem
+  * Fixed support for 64-bit platforms
+  * Fixed problem with pci_alloc_consistent being handed a u32
+    instead of dma_addr_t
+  * Fixed problem w/ non-encrypted 802.1x authentication (driver no
+    longer disassociates on privacy capability change -- similar to
+    the behavior of ipw2100)
+  * Fixed problem w/ resetting nic possibly leaving status
+    variable bit set for a command being active.
+  * Fixed problem w/ scan results not providing signal and level
+    statistics
+
+-------------------------------------------------------------------
+Wed Jan 12 10:59:57 CET 2005 - jg@suse.de
+
+- acx100: update to bugfix release 0.2.0pre8_plus_fixes_44
+- adm8211: update to release 20041227, chnages:
+  * Updated suspend/resume stuff for 2.6.10
+  * Crypto API and ARC4 now used for WEP
+  * EEPROM better documented
+  * Add more CSRs
+  * Fix ordering in adm8211 tx header
+- ipw2200: update to 0.19, changes:
+  * Fixed problem with unlocking the wrong spin lock
+  * Restructured how the Link Quality is computed
+  * Restructured how the scan channel list is constructed
+  * Fixed problem with resume not working when coming from S3
+  * Fixed problems with fragmentation not working
+  * Fixed problem with packet latencies due to background scanning
+  * Fixed problem with some packets not being received due invalid
+    Rx filtering of BSSID
+  * Added SCAN watchdog to detect when scanning is not completing
+- linux-wlan-ng: update to 0.2.1pre24, changes:
+  * Fix build on 2.6.10-rc
+  * Fix USB build on 2.6.x (x < 7)
+  * Suspend the USB driver cleanly
+  * Fix more USB badness
+  * scan_timeout WAY too long
+- madwifi: build fix for kernel 2.6.10
+
+-------------------------------------------------------------------
+Wed Dec 15 11:56:41 CET 2004 - jg@suse.de
+
+- wireless-tools: update to version 28pre3, changes (shortened):
+  * Fix buffer memory leak in scanning [iwlib/iwlist]
+  * Increase scanning timeout for MadWifi
+- acx100: update to bugfix release 0.2.0pre8_plus_fixes_43
+- adm8211: update to release 20041111, changes (shortenend):
+  * Fix reauthentication after deauthentication
+  * Detect hidden SSID properly
+  * Tolerate bad beacons/probe resp from stupid APs
+  * Fix deauthentication handling in ieee80211 code
+  * Adhoc on ADM8211B and up fixed
+  * Fix bug in hidden SSID support
+- ipw2100: update to 1.0.2, changes (shortened):
+  * Fixed problem with a deadlock when setting the MAC address
+  * Fixed Shared Key authentication to support differnet default Tx
+    index keys
+  * Fixed problem with networks showing up as <hidden>
+  * Fixed problem with multicast and broadcast packets being
+    fragmented
+  * Fixed Lockup/Panic/etc. on rmmod/modprobe looping
+  * Fixed problem with AdHoc networks not being created
+  * Fixed problem with adapter not shutting down on module unload
+  * Changed delay for the wireless event (after association)
+    in an attempt to correct WPA problems
+  * Fixed race condition during reset
+  * Added status, cfg, and capability sysfs entry
+  * Removed cardmem, txqueue, and rxqueue sysfs entries
+  * Fixed changing authentication mode resets the wep key
+  * Fixed - txpower values are inverted
+  * Significant changes to key management routines, especially in
+    regard to multiple WEP key support
+  * Added support for setting the TX power while in Ad-Hoc mode
+  * Fixed problem with WPA PSK not working
+  * Fixed iwconfig rts off/auto not supported
+  * Report firmware version via ethtool
+  * Fixed problem with scan results not expiring
+  * Added stub for dynamically disabling C3 when PCI latency problem
+    is detected
+- ipw2200: update to 0.18, changes (shortened):
+  * Adjusted the behavior of ad-hoc to act much more like the
+	ipw2100 does. This addresses several bugs relating to the
+    formation/reformation of ad-hoc networks.
+  * Added noise statistic reporting for current association
+  * Fixed "associate" module parameter so that it works as the
+    README states
+  * Fixed signal strength reporting.
+  * Added AP roaming support (via 802.11 re-association requests)
+  * Fixed WEP use with ad-hoc mode
+  * Fixed problem with SSIDs being scrambled when hidden
+    networks detected
+  * Fixed problem with 802.11b networks being extremely slow
+  * Added support for multi-mode access points
+  * Fixed problem with link state no longer being detected by
+	ethtool
+  * Fixed bug which kept the driver from being able to use a default
+    crypto key other than the first or second key
+  * Reduced interval of scan requests
+- linux-wlan-ng: updater to 0.2.1pre23, changes:
+  * Fix badness in 2.6.10-rc1
+  * Compile fix for 2.6.9-rc4+
+  * Add support for x86-64 (and possibly other 64-bit targets)
+  * Fix linkstate if driver reset without unloading
+  * Rename the man pages to have a .1 extension
+  * put a 'sleep 1' in the firmware load sequence to improve 
+    reliability
+  * Add Linksys WUSB11 card ident
+- madwifi: update to current cvs (2004-12-15)
+- madwifi: added multiple essid support (bug 48065)
+- madwifi: build and install 80211stats and athstats now
+
+-------------------------------------------------------------------
+Thu Nov 11 14:16:50 CET 2004 - ro@suse.de
+
+- fixed file list 
+
+-------------------------------------------------------------------
+Thu Oct 21 15:22:23 CEST 2004 - jg@suse.de
+
+- acx: changed default firmware path to /lib/firmware
+
+-------------------------------------------------------------------
+Mon Oct 18 19:21:35 CEST 2004 - jg@suse.de
+
+- fixed broken adm8211 Makefile
+
+-------------------------------------------------------------------
+Mon Oct 18 12:46:12 CEST 2004 - jg@suse.de
+
+- ipw2200: update to 0.12 (fixes bug 46435),
+  from CHANGES (slighlty shortened):
+  * Changed alloc_skb to use GFP_ATOMIC vs. GFP_ATOMIC| GFP_DMA
+    GFP_ATOMIC needs to be used as GFP_KERNEL may block,
+    and the call is made from the default work queue during
+    adapter load
+  * Added additional debug output during association to indicate
+    security parameters (to assist in connection debugging)
+  * Misc cleanups
+  * Fixed problem with setting an ESSID to a network that doesn't
+    exist in Managed mode
+  * Fixed problem with privacy capability not being compared
+    correctly when assessing viability of a network for association
+  * Added support for shared key authentication (aka 'restricted')
+  * Added debug level output into ieee80211* modules
+  * Added support for setting the TX power
+  * Added support for setting the fragmentation threshold
+  * Added PSP power management support
+  * Added support for suspend / resume
+  * Corrected support of 'iwlist ${IFNAME} bitrate'
+  * Corrected support of 'iwlist ${IFNAME} power'
+  * Fixed problem with manual disabling of RF via rf_kill sysfs
+    entry wasn't resulting in the card actually being disabled
+  * Added mode module parameter so you can start the device in
+    either Managed or AdHoc mode
+  * Modified logic for detecting hidden SSIDs to work with how
+    Linksys APs do it.
+  * Hooked in the rest of AdHoc code
+  * Added adhoc_create module parameter for configuring the driver
+    to auto create a network if you have provided the channel and
+    network name
+  * More changes to the scan logic, adding more debug output to
+    indicate why specific networks are chosen over others
+  * Added a printk() to the pci probe indicating if it detects a
+    2915ABG or 2200BG adapter.
+  * Fixed problem with setting IW_MODE to AUTO
+  * Fixed problem with device coming up even if manual disable
+    specified
+  * Fixed problem with udev (or anything else that parsed all
+    sysfs entries) with causing error log storms to the kernel log
+  * Fixed support for all 802.11G extended rates
+  * Ad-Hoc code starting to show up
+  * Added mode switching support
+  * Enhanced the iwlist scan results to (hopefully) be more clear
+    on various statistics.
+  * Added support for restricting the 802.11 mode via a iwpriv
+    method
+  * Fixed UNKNOWNSTATUS_ERROR if AdHoc beacon received while in
+    managed mode
+  * Fixed UNKNOWNSTATUS_ERROR if RF kill enabled when loading
+    driver
+  * Reworked IE parser to use an iterative loop
+  * Fixed stricter type checking errors
+  * Fix oops in ieee80211_crypt_free
+  * Fixed module reference counting of ieee modules
+  * Fixed oops if CONFIG_NETLINK enabled
+  * Misc. code cleanups
+  * Changed AP detection logic so that it only considers a probe
+    response to be a duplicate if both the BSSID and ESSID match
+  * Modified load sequence such that if the RF switch is disabled
+    during load it doesn't try and bring up the network
+  * Modified dev->open so that it doesn't start the queue unless
+    it is associated
+  * Sync'd ipw2100's ieee80211 module changes
+- ipw2200: removed patches becoming obsolete due to driver update
+- ipw2100: update to 0.56 (needed for ipw2200 update),
+  from CHANGES (shortened):
+  * Changed ipw2100_netdev to use netdev_priv
+  * Changed use of timers for RF switch check and hang check to
+    use deferred workqueue
+  * Remapped debug numbering such that lower numbers produce fewer
+    messages
+  * Fixed problem with TX Watchdog kicking in occassionally if WPA
+    is being used
+  * Fixed latest wireless tools reporting failure when using
+    'iwconfig ethX power on'
+  * Fixed problem with 802.1x not working with in configurations
+    where WEP was enabled
+  * Changed 'Corruption detected' message to 'PCI latency error
+    detected' to remove confusion of there possibly being disk data
+    corruption
+  * Fixed spurious interrupt problem if driver fails to load
+  * Fixed support for manual disable switch
+  * Fixed resume maintaining manual disable state
+  * Fixed sysfs permissions on module parameter entries
+  * Synchronized ieee80211 with ipw2200 v0.11
+  * Fixed problem with channels not being reported in scan output
+  * Fixed ordering of scan results to keep networks in order across
+    iterative probe receipts
+  * Fixed scan aging to be based on time vs. scan count
+  * Added time since last beacon received to scan output
+  * Pulled out 2.4 specific #ifdef/#endif blocks
+  * Reduced command timeout to 0.5s vs 3s
+  * Added command_send check to the hang_check to try and identify
+    hung firmware
+
+-------------------------------------------------------------------
+Thu Sep 30 14:20:03 CEST 2004 - jg@suse.de
+
+- take last update back (broke ipw2200 WEP support, bug 46527)
+
+-------------------------------------------------------------------
+Wed Sep 29 18:25:04 CEST 2004 - jg@suse.de
+
+- ipw2200: update to 0.9, changes:
+  * Fixed support for all 802.11G extended rates (bug 46435)
+  * Ad-Hoc code starting to show up.  You can now create Ad-Hoc
+    networks and join with other cells.  Data Tx/Rx is still in the
+    works.
+  * Added mode switching support to WX:
+        % iwconfig eth1 mode (managed|ad-hoc)
+  * Enhanced the iwlist scan results to (hopefully) be more clear
+    on various statistics.
+  * Added support for restricting the 802.11 mode via a iwpriv method.
+    See README.ipw2200 for more information.
+  * Fixed UNKNOWNSTATUS_ERROR if AdHoc beacon received while in
+    managed mode
+  * Fixed UNKNOWNSTATUS_ERROR if RF kill enabled when loading driver
+  * Reworked IE parser to use an iterative loop, based on Pedro
+    Ramalhais' original WPA port
+  * Fixed stricter type checking errors
+  * Fix oops in ieee80211_crypt_free
+  * Fixed module reference counting of ieee modules
+  * Fixed oops if CONFIG_NETLINK enabled
+  * Misc. code cleanups (extra casts removed, unused function warning)
+  * Changed AP detection logic so that it only considers a probe
+    response to be a duplicate if both the BSSID and ESSID match
+    (allowing a single BSSID to broadcast multiple ESSIDs)
+  * Modified load sequence such that if the RF switch is disabled
+    during load it doesn't try and bring up the network.
+  * Modified dev->open so that it doesn't start the queue unless it
+    is associated
+- dropped obsolete patches for ipw2200
+- building seperate ieee80211-modules for ipw2100 and ipw2200
+  as they are not compatible currently
+
+-------------------------------------------------------------------
+Wed Sep 29 00:27:46 CEST 2004 - jg@suse.de
+
+- ipw2100: update to 0.55, changes:
+  * Fixed rmmod oops in ieee80211
+  * Merged in WPA code
+  * Fixed IPW2100_DEBUG_FW to IPW_DEBUG_FW
+  * Fixed suspend/resume
+  * Misc. code cleanups (extra casts removed, unused function
+     warning)
+  * Added filtering of corrupted 802.11 frames in rfmon mode
+- building ipw2100 and ipw2200 together now (they share code,
+  makes building easier)
+- update madwifi to current CVS (fixes WPA support)
+- added README.wpa README.prism2 and German translation of REAMDEs
+- added switch_prism_driver (script helping to switch drivers for
+  prism2 pcmcia cards)
+- ipw2200: fixed compiler warnings
+
+-------------------------------------------------------------------
+Mon Sep 27 17:49:46 CEST 2004 - jg@suse.de
+
+- updated README.firmware
+
+-------------------------------------------------------------------
+Tue Sep 21 12:57:46 CEST 2004 - jg@suse.de
+
+- ipw2200: fixed hard freeze when radio switch is off (bug 45690)
+
+-------------------------------------------------------------------
+Mon Sep 20 16:52:23 CEST 2004 - jg@suse.de
+
+- ipw2100: removed WPA patch (may cause machine freeze)
+
+-------------------------------------------------------------------
+Mon Sep 20 12:18:03 CEST 2004 - jg@suse.de
+
+- ipw2200: update to 0.8, changes (shortened):
+  * Fixed rate reporting
+  * Added support for associating with 802.11a APs
+  * Improved quality/signal level reporting
+  * Misc. code cleanups
+  * Modified the AP selection logic to pick the AP with the
+    strongest signal that meets the other configured criteria
+  * Modified AP selection logic to discard APs whose scan age
+    has expired
+  * Added code to set the sensitivity in the firmware upon
+    association
+  * Added code to correctly seed the random number control in the
+	firmware
+  * Added code to try and correct the intermittent failure seen
+    sometimes while loading the driver.
+  * Added code to detect when enough beacons have been missed to
+    trigger a disassociation, and to then invoke the disassociation
+- ipw2100: added WPA support, added patch to improve behaviour
+  on software suspend
+- madwifi: update to current CVS (adds support for x86-64)
+
+-------------------------------------------------------------------
+Wed Sep  8 18:51:49 CEST 2004 - jg@suse.de
+
+- ipw2200: update to 0.7, changes:
+  * Fixed support for associating with G-only APs (and also
+    supporting all of the G/B-rates in Mixed mode) 
+  * Modified iwconfig output to report either 'unassociated' or
+    'ieee 802.11{band}' where band is one of a, b, or g. 
+  * Fixed error preventing modprobe from consistently working
+
+-------------------------------------------------------------------
+Fri Sep  3 16:17:01 CEST 2004 - jg@suse.de
+
+- acx100: update to 0.2.0pre8_plus_fixes_29
+- adm8211: update to 20040901
+- ipw2100: update to 0.54, changes (shortened):
+  * Test fix for spurious IRQs during firmware intialization.
+  * Fixed payload_size bug in fragmentation code
+  * Removed "IRQ ignored" message.
+- ipw2200: update to 0.6, changes (shortened):
+  * Updated firmware interface to support new extended scan
+  * Added ABG PCI ids
+  * Added support for G data rates.
+  * Partial support for A data rates.
+  * Partial change for reporting link quality through iwconfig --
+    not completed.
+  * Misc. code cleanup
+  * Fixed problem with load retry logic re-allocating Rx buffers
+    repeatedly (skb leak)
+  * Fixed SWSUSP compilation dependency to CONFIG_SOFTWARE_SUSPEND2
+  * Fix the initialization code
+  * Report firmware version via ethtool
+  * Fixed TCP session freezing problem
+  * Added support for non-broadcasting ESSIDs
+- update wireless-tools to 27pre26, changes (shortened):
+  - Sett proper size on SIOCGIWSTATS requests [iwlib]
+  - Fix wrq.u.data.flags => wrq.u.txpower.flags [iwconfig]
+  - Added dry-run support (only print name chages) [ifrename]
+
+-------------------------------------------------------------------
+Tue Aug 24 12:27:19 CEST 2004 - ro@suse.de
+
+- add install target to ipw2100-Makefile
+
+-------------------------------------------------------------------
+Mon Aug 23 17:14:15 CEST 2004 - jg@suse.de
+
+- added rfswitch modules (for notebooks with software only radio
+  switch)
+- acx100: update to 0.2.0pre8_plus_fixes_26
+- adm8211: update to 20040821
+- ipw2100: update to 0.53, changes:
+  * Fixed completely broken proc init/destruct code 
+  * Fixed problem with new get_power not returning any string output
+  * Fixed SWSUSP2 build dependency check to CONFIG_SOFTWARE_SUSPEND2
+  * Changed read to sys_read, etc. to fix legacy firmware
+    compilation problems 
+  * Added code to remove workqueue on PCI init error path
+  * Added dvals, load, and unload scripts.
+  * Updated in-kernel patch to 2.6.8
+- ipw2200: fixed kernel oops on hwscan (bug 43987)
+- ipw2200: fixed sysfs device links
+- madwifi: update to cvs 20040832
+- madwifi: fixed compilation error on kernel 2.6.8
+
+-------------------------------------------------------------------
+Tue Aug 17 21:47:32 CEST 2004 - schwab@suse.de
+
+- Fix missing declarations.
+- Fix stupid casts.
+
+-------------------------------------------------------------------
+Tue Aug 17 17:36:23 CEST 2004 - jg@suse.de
+
+- ipw2100: update to 0.52, changes (shortended):
+  * Fixed problem with NULL embedded ESSIDs being used while the
+    HW is not initialized.
+  * Fix #162 - Attempts to set power options other than ON/OFF with
+    'iwconfig eth1 power' now fail.  Clarified power level report
+    out when get_power is used.
+  * Fixed #166 - setting more than 5 keys affects active key. 
+    Any attempt to set a key outside the range 1-4 will result in
+    Invalid Argument.
+  * Added compilation support for having the SWSUSP patch installed
+- added ipw2200 driver (supports Intel PRO/Wireless 2200 cards)
+
+-------------------------------------------------------------------
+Fri Aug 13 17:50:03 CEST 2004 - jg@suse.de
+
+- ipw2100: minor compile fixes
+
+-------------------------------------------------------------------
+Fri Aug  6 14:32:36 CEST 2004 - jg@suse.de
+
+- at76c503: update to 0.12beta13
+- added driver adm8211 (for 802.11 ADMtek cards)
+- disabled prism_cs for all drivers by default, default is now
+  hostap_cs
+- added /etc/pcmcia/hostap_cs.conf
+- madwifi: update to latest cvs (adds support for latest
+  Atheros 5212 based cards)
+- madwifi: Makefile cleanups
+
+-------------------------------------------------------------------
+Mon Aug  2 17:13:38 CEST 2004 - jg@suse.de
+
+- update ipw2100 driver to 0.51, changes (shortened):
+  * Fixed setting of Level to 0 when not connected; fixed problem
+    with waproamd not detecting when association is lost.
+  * Fixed problem with connection state going out of sync with
+    association when interface closed.
+  * Added 'associate' module parameter to instruct the driver if
+    it should auto-associate during scans.  Useful when using a
+    user space utility for association policy.
+  * Added reporting of level # for iwpriv ${IF_NAME} get_powermode
+  * Fixed code from using default workqueue to using a custom
+    workqueue.  This will (hopefully) fix any issues with keyboard
+    craziness
+  * Fixed TX stall with MTU at 1500 (bug 133)
+  * Removed av5100 and pbe5 modules from the IPW2100 project
+  * Removed dependency on Host AP for WEP
+  * Pulled all ieee80211* generic code into stand alone modules
+  * Started cleaning up and reworking the ieee80211_tx fragmentation
+    code.
+  * Added fix to stop network degradation after ICV mismatches 
+  * _3 Fixed OOPS if RF switch disabled while loading the module
+  * _2 Added firmware restart backoff algorithm -- you should no
+    longer have a resource starved system if a restart storm hits.
+  * Set default bit rate mask to only cover valid rates
+  * Added ability to get/set expiration age for scans via proc
+  * Fixed kernel oops if queue allocation fails
+  * Fixed problem with using IPV6 when compiled as a module 
+  * Added mode and channel module parameters
+  * Restructured the C3 corruption detection logic to be more
+    agressive at detection in an attempt to minimize interface
+    downtime due to corrupt data
+  * Added support for setting TX rates
+  * Fixed problem with interrupt conflicts during suspend/resume
+    and init while loading the microcode
+  * Fixed kernel oops and system lockups under heavy small packet
+    load
+  * Fixed support for providing custom MAC address
+  * Added Ad-Hoc support
+- removed hostap module since ipw2100 does not depend on it anymore
+- madwifi: switch to WPA branch
+- update wireless-tools to 27pre25, changes:
+  * Easy scanning API (blocking & non-blocking) [iwlib]
+  * Add channel only support to iwgetid [iwgetid]
+  * Compile iwgetid with iwlib for above [Makefile/iwgetid]
+  * Fix french man pages to not use special 'oe' char [fr/*.8]
+  * Use hyphens instead of underscores in Debian docs [*.txt/*.7]
+  * Update for WE-17 (wrq.u.freq.flags, IW_QUAL_*) [all]
+  * Use iw_get_ext() instead of ioctl() [iwgetid]
+  * Retry getting scan results with larger buffer [iwlist/iwlib]
+  * Display wireless event capabilities [iwlist]
+  * Add support for relative TxPower (yick !) [iwconfig/iwlist]
+  * Create iw_print_txpower() [iwlib]
+  * Add "Set" prefix for all SET wireless events [iwevent]
+  * Add support for get_freq and get_essid events [iwevent]
+  * Reorganise iw_print_freq() => create iw_print_freq_value() [iwlib]
+  * Create iw_channel_to_freq() and use it [iwlib/iwconfig/iwevent]
+  * Fixup for WE-18 : Set scan takes an iw_point [iwlist/iwlib]
+  * Fixup for WE-19 : Take care of IW_EV_POINT_OFF [iwlib]
+- update acx100 driver to 0.2.0pre8_plus_fixes_23
+
+-------------------------------------------------------------------
+Tue May 18 13:07:39 CEST 2004 - jg@suse.de
+
+- fixed specfile (build broke without kernel-source)
+
+-------------------------------------------------------------------
+Tue May 18 11:05:31 CEST 2004 - jg@suse.de
+
+- update ipw2100 driver to 0.44:
+  * Firmware updated
+  * Monitor mode support added
+  * Improved signal quality metric
+  * Changed aging of scan results such that if a beacon or response
+    isn't received within 3 scan's, it is not listed in scan
+    results
+  * Added support for 802.1x EAP authentication
+  * Fixed 'badness in local_bh_enable'
+  * Increased timeout for detecting the hardware coming to life
+  * Fixed boot time initialization failure
+  * Added CONFIG_IPW2100_RX_DEBUG for dumping packet contents in
+    the event that a WEP packet's ICV fails.
+- added modified hostap-driver-0.1.3 source, so ipw2100 does not
+  depend on package km_hostap anymore
+- rewrote most makefiles
+- updated URLs in README.firmware
+
+-------------------------------------------------------------------
+Wed May  5 14:58:45 CEST 2004 - jg@suse.de
+
+- fixed build problems with ipw2100 (did not find hostap-driver
+  source while building kernel)
+
+-------------------------------------------------------------------
+Wed May  5 12:12:36 CEST 2004 - jg@suse.de
+
+- update wireless tools to 27pre22
+- update ipw2100 driver to 0.42, from CHANGES (shortened):
+  * Test fix for WEP/SSL stalls.
+  * Test fix for CONFIG_IP_NF_CONNTRACK hang/oops/crash (Badness in
+    local_bh_enable)
+  * Added fix to kill hang check timer if initialization fails
+  * Added code to remove scan entries if a beacon has not been
+    received within the last 2 seconds.
+  * Fixed ipw2100_power_cycle_adapter to use write_register instead
+    of write_nic_dword
+  * Lots of new instrumentation to assist in tracking down problems,
+    most notably /proc/net/ipw2100/[if_name]/memory.
+  * Changed excessive retry statistics to report the number of
+    failures vs. just the number of retries.
+- update linux-wlan-ng driver to 0.2.1pre21,
+  from CHANGES (shortened):
+  - Added in beginnings of IWSPY support
+  - Primary/Secondary firmware (finally) bundled with the driver.
+  - Convert to newer 2.6 module parameter code.
+  - Fix an inverted test in GIWENCODE wireless extension
+  - Minor script fix for SSF cards
+  - Fixes for SSF PCI cards
+  - Fix script problems that result in a failed init returning
+    success
+  - Fix an endian-ness buglet in prism2sta.c
+  - Fix up pci resources on card init failure on plx card.
+
+-------------------------------------------------------------------
+Tue Apr 27 18:51:22 CEST 2004 - jg@suse.de
+
+- fixed typo in ipw2100 Makefile
+
+-------------------------------------------------------------------
+Mon Apr 26 17:54:09 CEST 2004 - jg@suse.de
+
+- updated wireless tools to 27pre20 (minor changes, mainly
+  documentation updates and fixes, see CHANGELOG.h)
+- updated acx100 driver to 0.2.0pre8 (lot of fixes, see ChangeLog)
+- at76c503: compile fix (bug 39105)
+- updated ipw2100 driver to 0.41 (introduces WEP support, lot of
+  changes and fixes, see CHANGES)
+- update madwifi driver to current cvs
+- fixed madwifi kernel badness on rmmod (bug 37352)
+- improved madwifi LED control a bit
+- merged patches for the different drivers
+- specfile cleanup
+- prevent drivers from being build in case wireless support is
+  disabled in kernel config
+
+-------------------------------------------------------------------
+Wed Apr  7 14:27:46 CEST 2004 - meissner@suse.de
+
+- The ipw modules need to include linux/init.h because they use
+  __init.
+
+-------------------------------------------------------------------
+Mon Apr  5 15:17:15 CEST 2004 - jg@suse.de
+
+- installing atmel.conf as /etc/pcmcia/atmel-suse.conf to prevent
+  conflict with atmel.conf of atmel-firmware package
+
+-------------------------------------------------------------------
+Sat Apr  3 17:38:53 CEST 2004 - jg@suse.de
+
+- fixed sysfs support in linux-wlan-ng drivers (bug #37278)
+- fixed sysfs support in acx100 driver
+
+-------------------------------------------------------------------
+Fri Apr  2 15:47:03 CEST 2004 - jg@suse.de
+
+- fixed oops in madwifi driver (bug #37944)
+- added /etc/pcmcia/atmel.conf so driver for Atmel based pc-cards
+  will be loaded (bug #37905)
+
+-------------------------------------------------------------------
+Wed Mar 31 11:08:47 CEST 2004 - jg@suse.de
+
+- typo fix in install_intersil_firmware
+
+-------------------------------------------------------------------
+Tue Mar 30 22:09:47 CEST 2004 - jg@suse.de
+
+- skip building of at76c503 when CONFIG_NET_WIRELESS is unset
+  (bug #37450)
+
+-------------------------------------------------------------------
+Mon Mar 29 19:10:27 CEST 2004 - agruen@suse.de
+
+- Fix external kernel module build (unresolved symbols).
+
+-------------------------------------------------------------------
+Mon Mar 29 16:31:06 CEST 2004 - jg@suse.de
+
+- re-added at76c503 driver (Atmel USB adapters)
+- updated Intel PRO/Wireless 2100 driver to 0.39 (shortened):
+  * Fixed suspend/resume support C3 issue
+  * Moved timer kill to ipw2100_down from the exit routine to stop
+    timers when the interface goes down
+  * Modified range settings for quality and level
+  * Added /proc/net/ipw2100/[if_name]/internals to display some
+    internal variables to help track issues.°
+
+-------------------------------------------------------------------
+Fri Mar 26 16:57:23 CET 2004 - jg@suse.de
+
+- updated Intel PRO/Wireless 2100 driver to 0.38 (shortened):
+    * Added SW RF Kill switch support for Packard Bell EasyNote E5
+    * Fixed RSSI to DBM constant from 98 to 90
+    * Added patch for quality metrics in /proc/net/wireless
+    * Refactored the start/stop code into ipw2100_up / down, and
+      hooked the code into the suspend/resume code.
+    * Added a 2s heartbeat timer to the firmware; if the RTC
+      stalls then a reset is performed.
+    * Fixed ISR code to use a tasklet instead of scheduled work
+      (fixes 'hw_command_send timed out' during firmware restart)
+    * Added 'firmware resets' and 'firmware hangs' counters to
+      /proc/net/ipw2100/[if_name]/stats 
+    * Fixed /proc/net/ipw2100 cleanup on exit
+    * Added initial eth_tool support for link detection
+    * Switched ISR code to a scheduled work item
+    * Fixed pci_free_consistent bug in ipw2100_msg_free
+    * Added dumping of status structure if payload size reported
+      to be greater than allowable 802_11 payload size.
+    * Added firmware restart on bogus payload size
+- added section about Atmel cards in README.firmware
+- removed prism54 driver (is now part of linux kernel)
+- fixed sysfs support in madwifi
+
+-------------------------------------------------------------------
+Fri Mar 19 14:41:47 CET 2004 - jg@suse.de
+
+- updated Intel PRO/Wireless 2100 driver to 0.35:
+  * Added wireless extension get range support
+  * Added /proc/net/ipw2100/[if_name]/{ordinals,hw,registers,pci}
+    for dumping various pieces of data.
+  * Code cleanup in a couple spots
+  * Removed max transit unit (MTU) check in isr_rx (should fix MTU
+    conflict some users are seeing)
+  * Modified code path so that if wake_up_sync is not defined,
+    we define wake_up_interruptible_sync to wake_up_interruptible
+    so that the __wake_up_sync patch is no longer needed.
+  * Added initial start for suspend/resume (thanks to Len Brown).
+
+-------------------------------------------------------------------
+Fri Mar 19 10:35:25 CET 2004 - jg@suse.de
+
+- removing .orig files before packaging
+
+-------------------------------------------------------------------
+Thu Mar 18 14:32:46 CET 2004 - jg@suse.de
+
+- updated Intel PRO/Wireless 2100 driver to 0.34:
+  * ACPI C3 conflict resolved
+  * Added HW register and PCI configuration data dump entries to
+    proc/net/ipw2100/[if_name]/{hw,pci}
+  * Added hotplug firmware loading support
+  * Added interface name module parameter (if_name)
+  * Added port IO debug output for tracing IO to the actual
+    hardware (IPW2100_DEBUG_IO)
+  * Moved proc info into /proc/net/ipw2100 from /proc/ipw2100
+  * Added support for /proc/net/wireless (thanks to Luc Saillard).
+- madwifi (madwifi-ibm_led.dif):
+  added support for WLAN LED on IBM Thinkpads
+
+-------------------------------------------------------------------
+Tue Mar 16 12:14:45 CET 2004 - jg@suse.de
+
+- fixed typo in install_intersil_firmware
+- changed initial mac address to 00:00:00:00:00:00 so our tools
+  can identify the address as a dummy (prism54)
+
+-------------------------------------------------------------------
+Mon Mar 15 12:10:08 CET 2004 - jg@suse.de
+
+- updated Intel PRO/Wireless 2100 driver to 0.32:
+  * Added support for toggling RF switch
+  * Added IPW2100_DEBUG_RF_KILL to monitor RF transitions in debug
+    log
+  * Fixed module fault on iwconfig ethX nick (thanks Radu Graeb) 
+  * Hardware reset now supported
+  * Support for hardware reset in response to fatal_interrupt
+  * proc oops fixed (thanks to Radu Greab)
+  * Fixed problem with dev->mem_end being set incorrectly
+  * Fixed oops with accesing some iwconfig query commands while the
+    driver is uninitialized. 
+- added README.firmware
+- added scripts for easy installation of Intersil PrismGT and
+  ACX100 firmware files
+
+-------------------------------------------------------------------
+Fri Mar 12 19:13:13 CET 2004 - jg@suse.de
+
+- added driver for Intel PRO/Wireless 2100 card (aka Centrino)
+
+-------------------------------------------------------------------
+Wed Mar 10 12:53:50 CET 2004 - jg@suse.de
+
+- disabled all drivers for um-kernel
+
+-------------------------------------------------------------------
+Tue Mar  9 21:36:24 CET 2004 - ro@suse.de
+
+- kmakefiles: don't build for um-kernel
+
+-------------------------------------------------------------------
+Tue Mar  9 19:56:32 CET 2004 - jg@suse.de
+
+- updated madwifi driver to current cvs (fixes incompatibility
+  with CONFIG_REGPARM, bug #34140)
+- readded accidentally removed acx100 driver
+- using orinoco_cs as default driver for Netgear MA401RA (seems
+  to be much more reliable)
+
+-------------------------------------------------------------------
+Mon Mar  1 22:03:54 CET 2004 - meissner@suse.de
+
+- fix for lib64 platforms.
+
+-------------------------------------------------------------------
+Mon Mar  1 17:36:54 CET 2004 - jg@suse.de
+
+- update linux-wlan-ng to 0.2.1pre20:
+  - limited support for wireless extensions
+  - some driver fixes
+- rewrote driver makefiles for linux-wlan-ng
+- building lwepgen and keygen again (nwepgen is not very useful
+  for 104 bit keys)
+- fixed linux-wlan-ng mkversionh script
+- added acx100 driver (for Texas Instruments ACX1xx chipsets)
+- update to latest prism54 cvs snapshot
+- various makefile fixes
+- disabled madwifi driver (crashes on init)
+
+-------------------------------------------------------------------
+Mon Feb  9 16:15:12 CET 2004 - jg@suse.de
+
+- update linux-wlan-ng to 0.2.1pre17:
+  - x86-64 support
+  - basic ethtool support
+  - support for Netgear MA311 PCI card
+  - some fixes/cleanup (see CHANGES file)
+- building tools from linux-wlan-ng also for non-x86
+  (they are needed even so the drivers are not available)
+- not building lwepgen and keygen anymore (nwepgen does
+  the job already)
+- using /lib/modules/`uname -r`/lib instead of /usr/src/linux
+  for accessing kernel source in linux-wlan-ng
+
+-------------------------------------------------------------------
+Thu Feb  5 01:40:53 CET 2004 - ro@suse.de
+
+- fix filelist for non-x86
+
+-------------------------------------------------------------------
+Mon Feb  2 13:00:25 CET 2004 - jg@suse.de
+
+- update wireless-tools to version 27.pre9, changes:
+  o Trivial cleanups and docs updates
+  o Implement "iwconfig XXX txpower on" and fix "fixed" [iwconfig]
+  o Always properly initialise sanlen before recvfrom() [iwevent]
+  o Zero buffer so we don't print garbage after essid [iwgetid]
+  o Document that 00:00:00:00:00:00 == no association [iwconfig.8]
+          (From Guus Sliepen <guus@sliepen.eu.org>)
+  o Fix doc typo : ad_hoc => ad-hoc [wireless.7/DISTRIBUTIONS.txt]
+- some specfile cleanups
+- added /sbin binaries  to filelist 
+
+-------------------------------------------------------------------
+Thu Jan 29 15:17:28 CET 2004 - jg@suse.de
+
+- removed linux-wlan-ng and madwifi directories from km_wlan
+  filelist for ppc
+
+-------------------------------------------------------------------
+Mon Jan 26 17:43:08 CET 2004 - jg@suse.de
+
+- removed dependency on kernel-source
+
+-------------------------------------------------------------------
+Fri Jan 23 15:46:23 CET 2004 - jg@suse.de
+
+- changed kernel-source-26 to kernel-source in neededforbuild
+  (left over from test build)
+
+-------------------------------------------------------------------
+Fri Jan 23 14:26:23 CET 2004 - jg@suse.de
+
+- build linux-wlan-ng only on ix86
+- ported linux-wlan-ng to new pcmcia cardservices interface 
+  (needed for kernel 2.6)
+- removed accidentally readded depmod command
+- changed interface name of prism54 driver to wlanX
+
+-------------------------------------------------------------------
+Wed Jan 21 17:54:37 CET 2004 - jg@suse.de
+
+- removed unneeded k_deftl from neededforbuild
+- added prism54 driver
+- more preparations for kernel 2.6
+
+-------------------------------------------------------------------
+Thu Jan  8 12:50:25 CET 2004 - jg@suse.de
+
+- updated wireless-tools to version 27pre7 (minor fixes,
+  also for bug #33112)
+- updated madwifi to latest cvs
+- removed atmel drivers (may get added again later)
+- package km_wlan should be ready for kernel 2.6
+
+-------------------------------------------------------------------
+Wed Oct 15 16:36:42 CEST 2003 - jg@suse.de
+
+- updated madwifi to latest cvs version (fixes 802.11b mode
+  support)
+
+-------------------------------------------------------------------
+Fri Sep 12 14:32:47 CEST 2003 - ro@suse.de
+
+- configure kernel-source if needed 
+
+-------------------------------------------------------------------
+Mon Sep  8 16:40:09 CEST 2003 - agruen@suse.de
+
+- km_wlan-HZ.diff: Adapt to dynamic-hz kernel patch.
+
+-------------------------------------------------------------------
+Fri Aug 22 14:15:27 CEST 2003 - jg@suse.de
+
+- updated madwifi to latest cvs version (should fix some
+  transmit timeout errors)
+- merged patches wireless_tools.26.dif and wireless_tools-wext.dif
+
+-------------------------------------------------------------------
+Mon Aug 18 17:21:44 CEST 2003 - jg@suse.de
+
+- added genwepkey utility to generate 128bit WEP keys
+
+-------------------------------------------------------------------
+Thu Aug 14 17:45:47 CEST 2003 - jg@suse.de
+
+- updated madwifi to latest cvs version (fixes possible kernel
+  crash on module loading)
+
+-------------------------------------------------------------------
+Mon Aug 11 17:24:57 CEST 2003 - jg@suse.de
+
+- updated madwifi to version 20030802
+
+-------------------------------------------------------------------
+Fri Jul 25 10:31:09 CEST 2003 - jg@suse.de
+
+- removing object files before packaging km_wlan so no
+  unneccesary dependencies get created
+
+-------------------------------------------------------------------
+Thu Jul 24 15:29:23 CEST 2003 - jg@suse.de
+
+- removed 'depmod' call from madwifi Makefile
+- merged km_atmel and km_madwifi to km_wlan
+
+-------------------------------------------------------------------
+Wed Jul 16 10:22:54 CEST 2003 - jg@suse.de
+
+- update wireless tools to version 26
+- update atmelwlandriver to version 2.1.2.2
+- update at76c503 to version 0.10
+- added madwifi driver (version 20030702)
+- added /etc/pcmcia/atmel.conf to filelist
+
+-------------------------------------------------------------------
+Tue Jun 17 02:11:24 CEST 2003 - ro@suse.de
+
+- added directory to filelist 
+
+-------------------------------------------------------------------
+Tue Jun  3 17:16:54 CEST 2003 - jg@suse.de
+
+- update atmelwlandriver to version 20030602
+- update at76c503 driver to version 0.9
+
+-------------------------------------------------------------------
+Tue May 27 17:05:34 CEST 2003 - ro@suse.de
+
+- add wireless.7 to filelist
+
+-------------------------------------------------------------------
+Wed Feb 26 17:42:25 CET 2003 - jg@suse.de
+
+- compiling against kernel source now which prevents a wireless
+  extension version mismatch
+- changed group of km_atmel to Development/Sources (seems to
+  be more common)
+
+-------------------------------------------------------------------
+Mon Feb 24 16:44:05 CET 2003 - jg@suse.de
+
+- added lvnet from the atmelwlandriver package
+- added wlan driver packages atmelwlandriver and at76c503 as
+  subpackage km_atmel
+
+-------------------------------------------------------------------
+Fri Jan 10 13:26:05 CET 2003 - jg@suse.de
+
+- update to version 25 (lots of changes, see CHANGELOG.h)
+
+-------------------------------------------------------------------
+Fri Jun 21 14:16:41 CEST 2002 - ro@suse.de
+
+- use -fPIC to build shared lib 
+
+-------------------------------------------------------------------
+Mon Feb 11 16:52:28 CET 2002 - grimmer@suse.de
+
+- update to version 23
+    * Split iw_check_addr_type() into two functions mac/if [iwlib]
+    * iw_in_addr() does appropriate iw_check_xxx itself  [iwlib]
+    * Allow iwspy on MAC address even if IP doesn't check [iwspy]
+    * Allow iwconfig ap on MAC address even if IP doesn't check [iwconfig]
+    * Fix iwlist man page about extra commands [iwlist]
+    * Fix Makefile rules for library compile (more generic) [Makefile]
+    * Set max length for all GET request with a iw_point [various]
+    * Fix set IW_PRIV_TYPE_BYTE to be endian/align clean [iwpriv]
+    * Add '/' at the end of directories to create them [Makefile]
+    * Replace "cp" with "install" to get permissions proper [Makefile]
+    * Install Man-Pages at the proper location [Makefile]
+    * Add automatic header selection based on libc/kernel [iwlib.h]
+    * Add "commit" to force parameters on the card [iwconfig]
+    * Wrap ioctl() in iw_set/get_ext() wrappers [all]
+    * Beautify set request error messages [iwconfig]
+- re-diffed patch
+- added INSTALL to docu files
+
+-------------------------------------------------------------------
+Tue Dec 11 14:40:12 CET 2001 - bjacke@suse.de
+
+- add manpages and %clean
+
+-------------------------------------------------------------------
+Mon Dec 10 21:17:31 CET 2001 - bjacke@suse.de
+
+- move progs from bin to sbin
+- add missing iwlist and iwgetid
+- mark documentation as %doc
+- update to 22
+- add include and library files
+
+-------------------------------------------------------------------
+Tue Aug 21 18:42:46 CEST 2001 - zoz@suse.de
+
+- update to version 21
+    * Improved power management support
+    * Transmit Power parameter
+    * Better Makefile, header options can be set there
+    * Support for GLibc2.2
+    * Check Wireless Extension version mismatch
+    * Retry settings
+    * Split iwspy into iwspy and iwlist
+
+-------------------------------------------------------------------
+Fri Feb  9 01:14:00 CET 2001 - ro@suse.de
+
+- fixed to compile 
+
+-------------------------------------------------------------------
+Sun Dec  3 20:05:25 CET 2000 - zoz@suse.de
+
+- initial package
+- xwireless omitted

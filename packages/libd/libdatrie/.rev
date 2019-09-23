@@ -1,0 +1,166 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>598a38ebc758a32d2e5243e9df200870</srcmd5>
+    <version>0.2.2</version>
+    <time>1266504671</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libdatrie based on submit request 32407 from user darix
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0aea7ef49aac4f9c4fd7454d79c7cb79</srcmd5>
+    <version>0.2.2</version>
+    <time>1268924533</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>020bd0b902666d9ef8e9709855efa9f9</srcmd5>
+    <version>0.2.2</version>
+    <time>1272121207</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libdatrie based on submit request 38678 from user coolo
+</comment>
+    <requestid>38678</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>020bd0b902666d9ef8e9709855efa9f9</srcmd5>
+    <version>0.2.2</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>020bd0b902666d9ef8e9709855efa9f9</srcmd5>
+    <version>0.2.2</version>
+    <time>1278678588</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8e4d14dcbd34b8e820c67610549b19fe</srcmd5>
+    <version>0.2.4</version>
+    <time>1284989916</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libdatrie based on submit request 48507 from user prusnak
+</comment>
+    <requestid>48507</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>8e4d14dcbd34b8e820c67610549b19fe</srcmd5>
+    <version>0.2.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>914ec67f4812ad84c53622af9cef6c25</srcmd5>
+    <version>0.2.4</version>
+    <time>1298454700</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62598 from user coolo
+</comment>
+    <requestid>62598</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>d28014b72af2ca5f64a3e39b64e5e7bf</srcmd5>
+    <version>0.2.4</version>
+    <time>1298454712</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 62598
+</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>d28014b72af2ca5f64a3e39b64e5e7bf</srcmd5>
+    <version>0.2.4</version>
+    <time>1319182081</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>cfd163dbb9fcdf7207fd86652bcdd1fa</srcmd5>
+    <version>0.2.4</version>
+    <time>1323192182</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>16796a551cae14757bb1f3acaa6aa0ad</srcmd5>
+    <version>0.2.4</version>
+    <time>1329318955</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103976</requestid>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>16796a551cae14757bb1f3acaa6aa0ad</srcmd5>
+    <version>0.2.4</version>
+    <time>1340183572</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>16796a551cae14757bb1f3acaa6aa0ad</srcmd5>
+    <version>0.2.4</version>
+    <time>1359109254</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>ec999f80beba2525076c0f3a9186464b</srcmd5>
+    <version>0.2.4</version>
+    <time>1365927845</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 163665 from m_meister)</comment>
+    <requestid>163670</requestid>
+  </revision>
+  <revision rev="16" vrev="17">
+    <srcmd5>ec999f80beba2525076c0f3a9186464b</srcmd5>
+    <version>0.2.4</version>
+    <time>1379662923</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="19">
+    <srcmd5>ec999f80beba2525076c0f3a9186464b</srcmd5>
+    <version>0.2.4</version>
+    <time>1409301529</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c7cae02b9802a6ccf5eb2e8d39a6b7f3</srcmd5>
+    <version>0.2.8</version>
+    <time>1423258564</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284118</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>eb92dac737679e51466bf3a4ce8ee0d5</srcmd5>
+    <version>0.2.9</version>
+    <time>1441822797</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.2.9
+  * Fix infinite loop on empty trie iteration.
+  * Document about alphabet size.
+  * Disable timestamp in Doxygen-generated doc.
+  * etc. see ChangeLog
+- remove libdatrie-doxygen-found-is-enough.patch in favour of
+  libdatrie-doxygen-version-check.patch
+
+- Add libdatrie-doxygen-found-is-enough.patch: when we find
+  doxygen, we assume it is new enough. The configure script uses
+  'expr 1.8.4 \&lt; $DOXYGEN_VER', which returns false for 1.8.10.
+- For safeguard, we specify the minimal required version of
+  doxygen (1.8.4) in the buildrequirements.</comment>
+    <requestid>324195</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>60bd5b7863e8da709cc838743291dffa</srcmd5>
+    <version>0.2.10</version>
+    <time>1519218473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578035</requestid>
+  </revision>
+</revisionlist>

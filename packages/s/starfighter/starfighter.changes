@@ -1,0 +1,116 @@
+-------------------------------------------------------------------
+Thu Jan  4 17:27:41 UTC 2018 - avindra@opensuse.org
+
+- Update to 1.7, announce message is here:
+  https://savannah.nongnu.org/forum/forum.php?forum_id=8808
+- remove RPM_OPT_FLAGS fix, solved upstream
+- remove unnecessary variables passed to `make` and `%make_install`
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Dec 26 00:13:47 UTC 2016 - ecsos@opensuse.org
+
+- Update to 1.6, announce message is here:
+  https://savannah.nongnu.org/forum/forum.php?forum_id=8641
+
+-------------------------------------------------------------------
+Tue Jan 19 18:41:05 UTC 2016 - nemysis@openSUSE.org
+
+- Update to 1.5.1.1, announce message is here:
+
+https://savannah.nongnu.org/forum/forum.php?forum_id=8443
+
+- Use %{oversion} instead of 1.5
+- Remove Desktop entry file, Upstream have accepted changes
+- Add BuildRequires for fdupes and use %fdupes macro to reduce size of the package
+
+-------------------------------------------------------------------
+Tue Jul  7 08:16:47 UTC 2015 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+
+
+-------------------------------------------------------------------
+Sun Jun 28 15:39:22 UTC 2015 - nemysis@gmx.ch
+
+- Update to -, announce messages are here:
+
+ Project: Starfighter 1.4 Released
+ https://savannah.nongnu.org/forum/forum.php?forum_id=8295
+
+ Project: Starfighter 1.3.3 Released
+ https://savannah.nongnu.org/forum/forum.php?forum_id=8275
+
+ Project: Starfighter 1.3.1 Released
+ https://savannah.nongnu.org/forum/forum.php?forum_id=8253
+
+ Project: Starfighter 1.3 Released
+ https://savannah.nongnu.org/forum/forum.php?forum_id=8249
+
+- Change Url from SourceForge to non-GNU
+- Change license GPL-2.0 to GPL-2.0+ and GPL-3.0+ and CC0-1.0 and CC-BY-3.0 and SUSE-Public-Domain
+- Change Source0 Web URL
+- Change starfighter-icons.tar to use _IxI.png instead of -I.png
+- Remove BuildRequires for fdupes, not need for it, make bad Symlinks
+  and Game not works
+- Add BuildRequires for dos2unix
+- Remove BuildRequires for python, zlib-devel, pkgconfig(SDL_image),
+  pkgconfig(SDL_mixer)
+- Add BuildRequires for pkgconfig(SDL2_image), pkgconfig(SDL2_mixer)
+- Correct what fdupes find
+- Add sed, Fix RPM_OPT_FLAGS
+- Add sed, Correct bad linking
+- Change Documentation
+
+-------------------------------------------------------------------
+Sun Feb 22 16:08:19 UTC 2015 - ecsos@opensuse.org
+
+- fix missing data
+
+-------------------------------------------------------------------
+Wed Nov 12 14:00:37 UTC 2014 - nemysis@gmx.ch
+
+- Use BuildRequires pkgconfig(SDL_image), pkgconfig(SDL_mixer) and
+  pkgconfig(sdl) instead of SDL-devel, SDL_image-devel and
+  SDL_mixer-devel
+- Remove BuildRequires for desktop-file-utils and pkgconfig
+- Use check for openSUSE %if 0%{?suse_version}
+- Use symlink for %fdupes
+
+-------------------------------------------------------------------
+Sat Sep 27 22:49:54 UTC 2014 - nemysis@gmx.ch
+
+- Use pkgconfig instead of pkgconfig(sdl)
+- Remove sed and adjust %make_install, with XRevan86 help
+
+-------------------------------------------------------------------
+Sat Sep 27 19:33:09 UTC 2014 - nemysis@gmx.ch
+
+- Add BuildRequires:  hicolor-icon-theme
+
+-------------------------------------------------------------------
+Tue Sep 23 17:26:51 UTC 2014 - nemysis@gmx.ch
+
+- Readd %{name}-icons.tar with more icons
+
+-------------------------------------------------------------------
+Tue Sep 23 11:40:41 UTC 2014 - nemysis@gmx.ch
+
+- Use usual Copyright on top
+- Update to 1.2, for announce message please look ChangeLog
+- Change Summary
+- Change license GPLv2 to GPL-2.0
+- Change URL
+- Change Source to use Web URL
+- Use %{name}.png instead of %{name}-icons.tar
+- Change Desktop entry file
+- Add BuildRequires for zlib-devel and fdupes
+- Remove BuildRequires for hicolor-icon-theme
+- Change dependency pkg-config to pkgconfig(sdl)
+- Change description
+- Simplify installation handling, use normal build
+- Move makefile to Makefile
+- Add sed, fix paths
+- Use default make %{?_smp_mflags}
+- Add starfighter.changes, was not used before
+- Fix permissions

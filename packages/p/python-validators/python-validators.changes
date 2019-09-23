@@ -1,0 +1,98 @@
+-------------------------------------------------------------------
+Tue Sep 10 09:25:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.14.0:
+  * Added new validators ipv4_cidr, ipv6_cidr
+
+-------------------------------------------------------------------
+Fri May 24 19:11:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.13.0:
+  * Added new validator: es_doi, es_nif, es_cif, es_nie (#121, pull request courtesy kingbuzzman)
+
+-------------------------------------------------------------------
+Wed May 22 15:16:16 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.12.6
+  * Fixed domain validator for single character domains
+
+-------------------------------------------------------------------
+Tue Apr 16 16:01:41 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to 0.12.5
+  * Fixed py37 support
+
+-------------------------------------------------------------------
+Fri Mar 29 10:01:10 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.12.4
+  * Use inspect.getfullargspec() in py3
+  * Added `allow_temporal_ssn` parameter to fi_ssn validator
+  * Remove py33 support
+  * Fixed IPv4 formatted IP address returning True on ipv6
+  * Fixed IPv6 address parsing
+  * Fixed domain validator for international domains and certain 
+    edge cases
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:45 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu May 24 18:10:49 UTC 2018 - toddrme2178@gmail.com
+
+- Run tests
+- Spec file cleanups
+
+-------------------------------------------------------------------
+Tue Jan 30 13:34:37 UTC 2018 - 9+suse@cirno.systems
+
+- Update to 0.12.1
+  * Fixed IDNA encoded TLDs in domain validator
+  * Fixed URL validator for URLs with invalid characters in
+    userinfo part
+- Use %license macro
+- Remove superfluous service
+
+-------------------------------------------------------------------
+Fri Oct 27 00:58:17 UTC 2017 - 9@cirno.systems
+
+- Convert package to singlespec
+- Add download _service
+- Update to 0.12.0
+  * 0.8.0 (2015-06-24)
+    + Added new validator: iban
+  * 0.9.0 (2015-10-10)
+    + Added new validator: domain
+  * 0.10.0 (2016-01-09)
+    + Added support for internationalized domain names in
+      domain validator
+  * 0.10.1 (2016-04-09)
+    + Fixed domain name validation for numeric domain names
+    + Fixed IBAN validation for Norwegian and Belgian IBANs
+  * 0.10.2 (2016-06-11)
+    + Fixed various URL validation issues
+  * 0.10.3 (2016-06-13)
+    + Added public parameter to url validator
+  * 0.11.0 (2016-08-30)
+    + Fixed public url validation
+    + Made URL validator case insensitive
+    + Drop Python 2.6 support
+  * 0.11.1 (2016-11-19)
+    + Fixed pyp2rpm build problem
+  * 0.11.2 (2017-01-08)
+    + Fixed URL validator for urls with query parameters but
+      without path
+  * 0.11.3 (2017-03-27)
+    + Fixed URL validator for URLs containing localhost
+  * 0.12.0 (2017-06-03)
+    + Added hash validators for md5, sha1, sha224, sha256
+      and sha512
+    + Made ipv6 validator support IPv4-mapped IPv6 addresses
+
+-------------------------------------------------------------------
+Mon Apr  6 21:05:10 UTC 2015 - prusnak@opensuse.org
+
+- created package (version 0.7)
+

@@ -1,0 +1,42 @@
+From cce510312389efbe3819de0fa53f9004e6e04399 Mon Sep 17 00:00:00 2001
+From: Richard Hughes <richard@hughsie.com>
+Date: Mon, 5 Aug 2019 09:39:29 +0100
+Subject: [PATCH] Do not preserve restrictive permissions when installing
+ AppStream files
+
+Fixes https://github.com/hughsie/appstream-glib/issues/312
+---
+ libappstream-glib/as-store.c | 2 +-
+ libappstream-glib/as-utils.c | 3 +--
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/libappstream-glib/as-store.c b/libappstream-glib/as-store.c
+index e435340..3e6502a 100644
+--- a/libappstream-glib/as-store.c
++++ b/libappstream-glib/as-store.c
+@@ -2561,7 +2561,7 @@ as_store_to_file (AsStore *store,
+ 		if (!g_file_replace_contents (file, xml->str, xml->len,
+ 					      NULL,
+ 					      FALSE,
+-					      G_FILE_CREATE_NONE,
++					      G_FILE_CREATE_REPLACE_DESTINATION,
+ 					      NULL,
+ 					      cancellable,
+ 					      &error_local)) {
+diff --git a/libappstream-glib/as-utils.c b/libappstream-glib/as-utils.c
+index 366bff9..10da362 100644
+--- a/libappstream-glib/as-utils.c
++++ b/libappstream-glib/as-utils.c
+@@ -1182,8 +1182,7 @@ as_utils_install_xml (const gchar *filename,
+ 	/* actually copy file */
+ 	file_dest = g_file_new_for_path (path_dest);
+ 	if (!g_file_copy (file_src, file_dest,
+-			  G_FILE_COPY_OVERWRITE |
+-			  G_FILE_COPY_TARGET_DEFAULT_PERMS,
++			  G_FILE_COPY_OVERWRITE,
+ 			  NULL, NULL, NULL, error))
+ 		return FALSE;
+ 
+-- 
+2.21.0
+

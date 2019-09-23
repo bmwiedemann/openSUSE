@@ -1,0 +1,25 @@
+From 95bf14dd4b026e024fb65bea8a619d2241c69717 Mon Sep 17 00:00:00 2001
+From: Pekka Vuorela <pekka.vuorela@jollamobile.com>
+Date: Thu, 8 Mar 2018 17:42:30 +0200
+Subject: [PATCH 3/3] Make sure the build is done as c++11
+
+Commit 5b3a1b3c43423b7 removed gnu++11 and made build fail with g++ 4.8.
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f94a1fa..82ec3a6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -56,6 +56,7 @@ set (LOCALSTATEDIR "/var")
+ set (CMAKECONFIG_INSTALL_DIR "${CMAKE_INSTALL_LIBDIR}/cmake/packagekitqt5/")
+ 
+ add_definitions("-DLOCALSTATEDIR=\"${LOCALSTATEDIR}\"")
++set (CMAKE_CXX_STANDARD 11)
+ 
+ configure_file(config.h.in ${CMAKE_BINARY_DIR}/config.h)
+ 
+-- 
+2.19.0
+

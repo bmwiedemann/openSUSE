@@ -1,0 +1,48 @@
+diff --git a/mesonbuild/compilers/c.py b/mesonbuild/compilers/c.py
+index 3b58a07..9ef9207 100644
+--- a/mesonbuild/compilers/c.py
++++ b/mesonbuild/compilers/c.py
+@@ -70,6 +70,7 @@ class CCompiler(CLikeCompiler, Compiler):
+             #ifndef {symbol}
+                 {symbol};
+             #endif
++            return 0;
+         }}'''
+         return self.compiles(t.format(**fargs), env, extra_args=extra_args,
+                              dependencies=dependencies)
+diff --git a/mesonbuild/compilers/clike.py b/mesonbuild/compilers/clike.py
+index e923ff2..7ba8bd3 100644
+--- a/mesonbuild/compilers/clike.py
++++ b/mesonbuild/compilers/clike.py
+@@ -375,6 +375,7 @@ class CLikeCompiler:
+             #ifndef {symbol}
+                 {symbol};
+             #endif
++            return 0;
+         }}'''
+         return self.compiles(t.format(**fargs), env, extra_args=extra_args,
+                              dependencies=dependencies)
+@@ -583,6 +584,7 @@ class CLikeCompiler:
+         {prefix}
+         int main(int argc, char **argv) {{
+             {type} something;
++            return 0;
+         }}'''
+         if not self.compiles(t.format(**fargs), env, extra_args=extra_args,
+                              dependencies=dependencies)[0]:
+@@ -661,6 +663,7 @@ class CLikeCompiler:
+         #include <stdio.h>
+         int main(int argc, char *argv[]) {{
+             printf ("{fmt}", {cast} {f}());
++            return 0;
+         }}'''.format(**fargs)
+         res = self.run(code, env, extra_args=extra_args, dependencies=dependencies)
+         if not res.compiled:
+@@ -813,6 +816,7 @@ class CLikeCompiler:
+                 #error "No definition for __builtin_{func} found in the prefix"
+             #endif
+         #endif
++        return 0;
+         }}'''
+         return self.links(t.format(**fargs), env, extra_args=extra_args,
+                           dependencies=dependencies)

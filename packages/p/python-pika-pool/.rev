@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2b3445eef0316e002c7992cee1be5178</srcmd5>
+    <version>0.1.3</version>
+    <time>1462342782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>391242</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b46e8be7898a901580e16f7ddc2bf44d</srcmd5>
+    <version>0.1.3</version>
+    <time>1503393090</time>
+    <user>dimstar_suse</user>
+    <comment>- convert to singlespec</comment>
+    <requestid>518056</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0fa9b71947c11f89f6f925fb22d41b82</srcmd5>
+    <version>0.1.3</version>
+    <time>1503593713</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build for SLE12</comment>
+    <requestid>518107</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7899ad04454c11eaea817944e4ea03c4</srcmd5>
+    <version>0.1.3</version>
+    <time>1545648071</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659552</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,32 @@
+Date: 2014-08-17 03:44:06.100706672 +0200
+From: Jan Engelhardt <jengelh@inai.de>
+
+"-avoid-version" does not count for compatibility guarantees.
+Use one of -version-info, -release or -Wl,--version-script!
+---
+ Makefile.am  |    2 +-
+ configure.ac |    2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -62,7 +62,7 @@ include_HEADERS =	include/antlr3.h
+ 					include/antlr3treeparser.h				\
+ 					antlr3config.h
+ 
+-libantlr3c_la_LDFLAGS = -avoid-version
++libantlr3c_la_LDFLAGS = -version-info @LIB_VERSION@
+ 
+ INCLUDES = -Iinclude
+ 
+--- a/configure.ac
++++ b/configure.ac
+@@ -34,6 +34,8 @@ AC_COPYRIGHT([
+ ])
+ AC_CONFIG_SRCDIR(src/antlr3parser.c)
+ 
++LIB_VERSION=`echo $PACKAGE_VERSION|sed 's@\.@:@g'`
++AC_SUBST([LIB_VERSION])
+ 
+ AC_ARG_ENABLE([debuginfo],
+ 		[AS_HELP_STRING([--enable-debuginfo], [Compiles debug info into the library (default --disable-debuginfo)])],

@@ -1,0 +1,5 @@
+<package name="syntax-highlighting" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="syntax-highlighting"/>
+</package>

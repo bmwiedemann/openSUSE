@@ -1,0 +1,6 @@
+<package name="arc-gtk-theme" project="openSUSE:Factory">
+  <title>Arc GTK+ theme</title>
+  <description>Arc is a flat theme with transparent elements.
+It supports MATE, GNOME, Budgie, Xfce, and Cinnamon.</description>
+  <devel project="X11:common:Factory" package="arc-gtk-theme"/>
+</package>

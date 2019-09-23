@@ -1,0 +1,175 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>63abb5b4a5899cd139ab387570d9a001</srcmd5>
+    <version>2.3.2</version>
+    <time>1491895986</time>
+    <user>maxlin_factory</user>
+    <comment>new package</comment>
+    <requestid>482634</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>30b189645805bcc396e2d302224a9e19</srcmd5>
+    <version>2.3.2</version>
+    <time>1492714672</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>489021</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bf6b7f5165ac69de317572d8a73f52e2</srcmd5>
+    <version>2.3.2</version>
+    <time>1494938592</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494402</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a6f5bb253c53e6ea4d918cd0d0942534</srcmd5>
+    <version>2.3.3</version>
+    <time>1500275459</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream version 2.3.3:
+  * Fixed build for big-endian platforms. Obsoletes
+    bigendian_type_fixes.patch
+  * Changed parameter type for parameter reconnect in
+    mysql_optionsv from uint to my_bool 
+- absolute_path_fix.patch: refreshed
+
+- Remove unused gnutls from buildrequires</comment>
+    <requestid>510115</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>be4aef3c9d64a38d457bb380ef7bd6f0</srcmd5>
+    <version>2.3.3</version>
+    <time>1502892787</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515189</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b87739a3528ee973f098b4e2aaf218cc</srcmd5>
+    <version>3.0.2</version>
+    <time>1507065450</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529952</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>deac320180065a1d96360e01cfddc5ad</srcmd5>
+    <version>3.0.2</version>
+    <time>1510045479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539333</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>ebb33a69e13564f56f70dd9a579bcb0e</srcmd5>
+    <version>3.0.2</version>
+    <time>1510051392</time>
+    <user>dimstar_suse</user>
+    <comment>Revert, needs to be in parallel to mariadb upgrade</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>d0480e9e326caa96c1366dd623ce5d56</srcmd5>
+    <version>3.0.2</version>
+    <time>1512042228</time>
+    <user>dimstar_suse</user>
+    <comment>- Use more cmake macros
+- Run spec-cleaner
+- 0334aa48.patch: Backported implementation and testcase for
+  skipping particular paramset in bulk operation/. This is needed
+  to get current stable MariaDB connector/ODBC actually compilable.
+- Install missing header (bsc#1067904)
+- mariadb-connector-c is now a provider of the libmariadb library
+  for mariadb and others
+- add compatibility symlinks
+- change LIBDIR, INCLUDEDIR and PLUGINDIR paths to be the same as
+  it was in the mariadb package (compatibility reasons)
+- add baselibs.conf
+- add %{mariadb_version} macro that should correspond with the
+  current version of the mariadb package
+- refresh absolute_path_fix.patch and private_library.patch 
+</comment>
+    <requestid>544049</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6c5687d19491f4244b3d3a171c6b86d6</srcmd5>
+    <version>3.0.3</version>
+    <time>1524643057</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598533</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>68e733b6aa7a9f82799c4bbe6703cca6</srcmd5>
+    <version>3.0.3</version>
+    <time>1530566957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619745</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8a82480fb91d9db7a8623625e5a95680</srcmd5>
+    <version>3.0.5</version>
+    <time>1533214129</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>625058</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>42b0e694dc45bd092cf56e298e755487</srcmd5>
+    <version>3.0.6</version>
+    <time>1534543044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628376</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9c23757dc2f955d507bdc3773a2cb2bd</srcmd5>
+    <version>3.0.8</version>
+    <time>1550049314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663311</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>30a4eebab592435dee1a41651b8e2a01</srcmd5>
+    <version>3.0.9</version>
+    <time>1551385388</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>674868</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>9db19b9a4f86f6d6446ccf5be6d32aa3</srcmd5>
+    <version>3.0.9</version>
+    <time>1551687266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680555</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>7376e3c5799e8f2ddbeece71eab36e7a</srcmd5>
+    <version>3.0.9</version>
+    <time>1558036661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703402</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c6da169062eeb89c7b82699515abfb43</srcmd5>
+    <version>3.1.2</version>
+    <time>1562591081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713453</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>68d919b21f3a3f39fad3bd059dbae89f</srcmd5>
+    <version>3.1.3</version>
+    <time>1565864731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721052</requestid>
+  </revision>
+</revisionlist>

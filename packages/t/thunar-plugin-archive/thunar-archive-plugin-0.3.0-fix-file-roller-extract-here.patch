@@ -1,0 +1,12 @@
+diff -urNp thunar-archive-plugin-0.3.0.orig/scripts/file-roller.tap thunar-archive-plugin-0.3.0/scripts/file-roller.tap
+--- thunar-archive-plugin-0.3.0.orig/scripts/file-roller.tap	2011-01-23 17:21:04.000000000 +0100
++++ thunar-archive-plugin-0.3.0/scripts/file-roller.tap	2011-10-10 11:58:01.000000000 +0200
+@@ -35,7 +35,7 @@ create)
+ 	;;
+ 
+ extract-here)
+-	exec file-roller "--extract-to=$(pwd)" --extract-here --force "$@"
++	exec file-roller --force "--extract-to=$(pwd)" "$@"
+ 	;;
+ 
+ extract-to)

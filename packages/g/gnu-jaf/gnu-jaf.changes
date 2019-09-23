@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Thu May 17 20:40:21 UTC 2018 - fstrba@suse.com
+
+- Build with source and target 8 to prepare for a possible removal
+  of 1.6 compatibility
+
+-------------------------------------------------------------------
+Thu Sep 14 15:48:21 UTC 2017 - fstrba@suse.com
+
+- Build with java source and target 1.6
+- Don't depend on classpath, since it is basically java-gcj-compat
+
+-------------------------------------------------------------------
+Thu Jan  5 15:56:07 UTC 2017 - tchvatal@suse.com
+
+- Switch from gcj to java-devel as gcj is getting deprecated
+
+-------------------------------------------------------------------
+Sun Jul 27 12:57:44 UTC 2014 - tchvatal@suse.com
+
+- Add update-alternatives so we work correctly with geronimo-jaf
+  * better than conflicts...
+
+-------------------------------------------------------------------
+Tue Apr 28 11:57:32 CEST 2009 - mvyskocil@suse.cz
+
+- update to 1.1.1:
+  * CommandMap.java, MailcapCommandMap.java: Updated to JAF 1.1
+  * ObjectDataContentHandler.java, MimeTypeParameterList.java: Fixed typos
+
+-------------------------------------------------------------------
+Mon Dec  1 10:58:16 CET 2008 - mvyskocil@suse.cz
+
+- added a conflicts to geronimo-1_0_2-jaf-api 
+
+-------------------------------------------------------------------
+Wed May  7 08:49:44 CEST 2008 - coolo@suse.de
+
+- do the rename from jaf correctly
+
+-------------------------------------------------------------------
+Wed May  2 11:54:06 CEST 2007 - dbornkessel@suse.de
+
+- added unzip to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 11 16:20:25 CET 2007 - dbornkessel@suse.de
+
+- first version (dependency for tomcat55) 
+

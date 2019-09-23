@@ -1,0 +1,22 @@
+--- MediaSDK-intel-mediasdk-19.1.0/CMakeLists.txt.orig	2019-06-07 14:12:27.554638245 +0000
++++ MediaSDK-intel-mediasdk-19.1.0/CMakeLists.txt	2019-06-07 14:08:03.833212595 +0000
+@@ -18,7 +18,7 @@
+ # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ # SOFTWARE.
+ 
+-cmake_minimum_required( VERSION 3.6 )
++cmake_minimum_required( VERSION 3.5.2 )
+ project( mediasdk )
+ 
+ include(CMakeDependentOption)
+--- MediaSDK-intel-mediasdk-19.1.0/api/mfx_dispatch/linux/CMakeLists.txt.orig	2019-06-07 14:12:10.042277959 +0000
++++ MediaSDK-intel-mediasdk-19.1.0/api/mfx_dispatch/linux/CMakeLists.txt	2019-06-07 14:09:37.611141937 +0000
+@@ -18,7 +18,7 @@
+ # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ # SOFTWARE.
+ 
+-cmake_minimum_required( VERSION 3.6 FATAL_ERROR )
++cmake_minimum_required( VERSION 3.5.2 FATAL_ERROR )
+ project( mfx )
+ 
+ set( MFX_API_FOLDER ${CMAKE_CURRENT_SOURCE_DIR}/../../include )

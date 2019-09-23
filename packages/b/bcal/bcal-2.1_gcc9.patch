@@ -1,0 +1,23 @@
+From f9056e556778fe5dd594e0e3607b6caed5b17f4d Mon Sep 17 00:00:00 2001
+From: Arun Prakash Jana <engineerarun@gmail.com>
+Date: Thu, 21 Feb 2019 23:05:06 +0530
+Subject: [PATCH] Fix #30
+
+---
+ src/bcal.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/bcal.c b/src/bcal.c
+index eac4497..80dedcb 100644
+--- a/src/bcal.c
++++ b/src/bcal.c
+@@ -1925,7 +1925,8 @@ static int evaluate(char *exp, ulong sectorsz)
+ 	char *expr = fixexpr(exp, &ret);  /* Make parsing compatible */
+ 	char *ptr;
+ 
+-	log(DEBUG, "expr: %s\n", expr);
++	if (expr)
++		log(DEBUG, "expr: %s\n", expr);
+ 
+ 	if (expr == NULL) {
+ 		if (ret)

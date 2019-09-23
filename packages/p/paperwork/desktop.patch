@@ -1,0 +1,24 @@
+From 4d729fc3c8a53628ab8ba6ca2db97911305fc2d9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Matthias=20Mail=C3=A4nder?=
+ <Mailaender@users.noreply.github.com>
+Date: Tue, 4 Oct 2016 06:29:19 +0200
+Subject: [PATCH] Adhere to FreeDesktop compliant categories
+
+http://freedesktop.org/Standards/menu-spec
+---
+ data/paperwork.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/paperwork.desktop b/data/paperwork.desktop
+index bb1e29c..dabfd47 100644
+--- a/data/paperwork.desktop
++++ b/data/paperwork.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Version=1.0
+ Type=Application
+-Categories=Office;
++Categories=Graphics;Scanning;
+ Terminal=false
+ Comment=Make dead trees grepable
+ Exec=paperwork

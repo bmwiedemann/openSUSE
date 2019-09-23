@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c96413bed23f5d76b1d05caff8e4d0bb</srcmd5>
+    <version>1.7.0</version>
+    <time>1503592346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>507167</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2f7f8e22898d196331eec5cd6a999ecf</srcmd5>
+    <version>1.7.0</version>
+    <time>1510506215</time>
+    <user>dimstar_suse</user>
+    <comment>- build.diff: Shift build version to 1.6 (TW build failure) 
+  Set explicit file encoding  to cp1252
+</comment>
+    <requestid>540731</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bee9b202bd27e05d39af5caf7b746428</srcmd5>
+    <version>1.8.0</version>
+    <time>1530304185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>617835</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8b865a7b6cbf06f25f5f36ea2f037ecb</srcmd5>
+    <version>1.9.1</version>
+    <time>1558129342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>696451</requestid>
+  </revision>
+</revisionlist>

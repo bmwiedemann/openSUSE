@@ -1,0 +1,31 @@
+Index: Makefile.in
+===================================================================
+--- Makefile.in.orig	2011-12-26 12:45:43.000000000 +0000
++++ Makefile.in	2011-12-26 12:46:00.000000000 +0000
+@@ -75,7 +75,7 @@ install-jigdo-file:
+ 		$(INSTALL) -d $(DESTDIR)$(mandir)/man1
+ 		x="doc/jigdo-file.1"; \
+ 		test -f "$$x" || x="$(srcdir)/$$x"; \
+-		$(INSTALL) "$$x" $(DESTDIR)$(mandir)/man1
++		$(INSTALL_DATA) "$$x" $(DESTDIR)$(mandir)/man1
+ install-jigdo-lite:
+ 		$(INSTALL) -d "$(DESTDIR)$(bindir)"
+ 		$(INSTALL) -d "$(DESTDIR)$(datadir)/jigdo"
+@@ -89,7 +89,7 @@ install-jigdo-lite:
+ 		$(INSTALL) -d $(DESTDIR)$(mandir)/man1
+ 		x="doc/jigdo-lite.1"; \
+ 		test -f "$$x" || x="$(srcdir)/$$x"; \
+-		$(INSTALL) "$$x" $(DESTDIR)$(mandir)/man1
++		$(INSTALL_DATA) "$$x" $(DESTDIR)$(mandir)/man1
+ install-jigdo-mirror:
+ 		$(INSTALL) -d "$(DESTDIR)$(bindir)"
+ 		$(INSTALL_SCRIPT) "$(srcdir)/scripts/jigdo-mirror" \
+@@ -97,7 +97,7 @@ install-jigdo-mirror:
+ 		$(INSTALL) -d $(DESTDIR)$(mandir)/man1
+ 		x="doc/jigdo-mirror.1"; \
+ 		test -f "$$x" || x="$(srcdir)/$$x"; \
+-		$(INSTALL) "$$x" $(DESTDIR)$(mandir)/man1
++		$(INSTALL_DATA) "$$x" $(DESTDIR)$(mandir)/man1
+ install-jigdo:
+ 		$(INSTALL) -d "$(DESTDIR)$(bindir)"
+ 		$(INSTALL_EXE) src/jigdo "$(DESTDIR)$(bindir)"

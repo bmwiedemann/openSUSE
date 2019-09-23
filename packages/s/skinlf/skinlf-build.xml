@@ -1,0 +1,84 @@
+<?xml version='1.0'?>
+<project name="skinlf" default="jar" basedir=".">
+
+  <!-- set global properties for this build -->
+  <property name="imageconversion" value="imageconversion.jar"/>
+ 
+  <property name="name" value="skinlf"/>
+  <property name="package" value="com.*"/>
+  <property name="version" value="6.7"/>
+  <property name="jarname" value="${name}.jar"/>
+  <property name="src" value="src"/>
+  <property name="build" value="build"/>
+  <property name="lib" value="lib"/>
+  <property name="docs" value="docs"/>
+  <property name="jarlibs" value="/usr/share/java"/>
+
+  <path id="lib.path">
+	<pathelement path="${build}"/>
+	<fileset dir="${jarlibs}">
+		<include name="jimi.jar"/>
+		<include name="laf-plugin.jar"/>
+		<include name="xalan-j2.jar"/>
+	</fileset>
+  </path>
+  
+  <!-- Create the build directory structure used by compile -->
+  <target name="init">
+	<mkdir dir="${build}" />
+	<mkdir dir="${lib}" />
+	<mkdir dir="${docs}" />
+	<unjar src="${imageconversion}" dest="${build}"/>
+  </target>
+
+  <!-- run javac to compile the source files -->
+  <target name="compile" depends="init">
+	<javac srcdir="${src}/com"
+	       destdir="${build}">
+	       <classpath>
+		       <path refid="lib.path"/>
+	       </classpath>
+	</javac>
+	
+	<javac srcdir="${src}/examples"
+	       destdir="${build}">
+		<classpath>
+			<path refid="lib.path"/>
+		</classpath>
+	</javac>
+	<copy todir="${build}/examples">
+		<fileset dir="${src}/examples">
+			<include name="**/*.gif"/>
+		</fileset>
+	</copy>
+  </target>
+
+  <!-- make a jar file -->
+  <target name="jar" depends="compile">
+	<jar jarfile="${lib}/${jarname}" basedir="${build}" excludes="**/examples/**/*.*"/>
+	<jar jarfile="${lib}/${name}_demo.jar" basedir="${build}" includes="**/examples/**/*.*"/>
+  </target>
+ 
+  <!-- create javadocs -->
+  <target name="javadocs">
+	<javadoc packagenames="${package}"
+		sourcepath="${src}"
+		destdir="${docs}"
+		author="true"
+		version="true"
+		use="true"
+		windowtitle="${name} ${version} API"
+		doctitle="${name} ${version} API">
+		<classpath>
+			<path refid="lib.path"/>
+		</classpath>
+	</javadoc>
+  </target>
+ 
+  <!-- Delete the ${build} and ${lib} directory trees -->
+  <target name="clean">
+	<delete dir="${build}"/>
+	<delete dir="${lib}"/>
+	<delete dir="${docs}"/>
+  </target>
+</project>

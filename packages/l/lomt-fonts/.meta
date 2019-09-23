@@ -1,0 +1,8 @@
+<package name="lomt-fonts" project="openSUSE:Factory">
+  <title>Fonts from the League Of Movable Type project</title>
+  <description>A foundry and hand-picked collection of open-source typography.
+
+</description>
+  <devel project="M17N:fonts" package="lomt-fonts"/>
+  <url>http://theleagueofmoveabletype.com/</url>
+</package>

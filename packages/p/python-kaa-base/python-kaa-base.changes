@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Wed Oct 21 14:05:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Spec cleanup.
+- Use upstream tarball.
+
+-------------------------------------------------------------------
+Wed May 27 00:36:11 UTC 2009 - jfunk@funktronics.ca
+
+- Update to 0.6.0
+  * Final round of incompatible API changes before a 1.0 release.
+    See API_CHANGES for details.
+  * New class IOChannel, which provides advanced, asynchronous I/O
+    to anything that can be represented as a file descriptor (pipes,
+    sockets, files, etc.)
+  * kaa.Process rewrite.
+  * Began documentation (under doc/); core functionality is almost
+    fully documented.
+  * Asynchronous tasks may now be aborted via InProgress.abort();
+    this (especially) includes coroutines and threads.
+  * New base class kaa.Object from with most kaa classes (those
+    which provide signals) derive.
+  * Other core improvements and bug fixes.
+
+-------------------------------------------------------------------
+Thu Aug 28 00:00:00 UTC 2008 - jfunk@funktronics.ca
+
+- Update to 0.4.0
+
+-------------------------------------------------------------------
+Sat May  5 00:00:00 UTC 2007 - jfunk@funktronics.ca
+
+- Update to 0.1.3
+
+-------------------------------------------------------------------
+Mon Mar  5 00:00:00 UTC 2007 - jfunk@funktronics.ca
+
+- Initial release

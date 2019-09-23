@@ -1,0 +1,9 @@
+[Unit]
+Description=Daemon for automatic killing of login shells
+After=local-fs.target
+
+[Service]
+ExecStart=/usr/sbin/killerd
+
+[Install]
+WantedBy=multi-user.target

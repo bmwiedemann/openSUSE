@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Tue Aug 28 09:08:00 UTC 2018 - adam.majer@suse.de
+
+- pdfgen.patch: use sphinx with latex to build documentation as
+  python-rst2pdf is only python2 at the moment
+
+-------------------------------------------------------------------
+Thu Dec 28 20:30:57 UTC 2017 - crrodriguez@opensuse.org
+
+- export ac_cv_lib_ssl_SSL_library_init=yes before configure 
+  to workaround buggy libssl check, in openSSL 1.1 
+  SSL_library_init is a compatibility macro and not a symbol
+  in the shared library.
+
+-------------------------------------------------------------------
+Mon Jun 13 12:16:50 UTC 2016 - joop.boonen@opensuse.org
+
+- cipher suite fix from ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH to
+  EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH
+  bnc#857151 libircclient-cipher-suite.diff
+
+-------------------------------------------------------------------
+Mon Jun 13 11:30:08 UTC 2016 - joop.boonen@opensuse.org
+
+- Update to version 1.9
+  * Fixed a few minor Win32 compatibility bugs.
+  * Fixed an error if the TCP connection to the IRC server couldn't be established under 250ms.
+  * Fixed a potential deadlock caused by WSAStartup() being called in DllMain() 
+
+-------------------------------------------------------------------
+Tue Feb 10 16:26:17 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.8
+  * ChangeLog has not been updated for a while
+- Use download Url as source
+- Remove gcc dependency;
+- Add python-rst2pdf and python-Sphinx require to build documentation
+- Remove libircclient-make.diff; fixed on upstream release
+
+-------------------------------------------------------------------
+Wed Feb 15 12:02:21 UTC 2012 - saschpe@suse.de
+
+- Ran spec-cleaner
+- Provide more detail about version update in last changelog entry
+
+-------------------------------------------------------------------
+Sun Feb 12 19:03:31 UTC 2012 - joop.boonen@opensuse.org
+
+- Update to version 1.6:
+  * Fixed PRIVMSG events incorrectly reported as CHANNEL (thx Dennis Bretjes)
+  * Added -fpic option for the shared library; fixed make install
+  * WIN32 macro replaced by _WIN32 (Lothar May)
+  * Fixed IPv6 and IPv4 connections being used simultaneously (Lothar May)
+  * Fixed DCC file transfer with IPv6 build (Lothar May)
+- Seperate doc package
+- Make file corrections
+
+-------------------------------------------------------------------
+Sat Dec 24 13:11:01 UTC 2011 - jengelh@medozas.de
+
+- Summary update for shlib package; avoid macros in summaries
+
+-------------------------------------------------------------------
+Sat Dec 24 12:20:40 UTC 2011 - joop.boonen@opensuse.org
+
+- Added missing header files 
+
+-------------------------------------------------------------------
+Fri Dec 23 21:53:42 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Use %_smp_mflags for parallel building
+- Replace libircclient-makefile.patch by libircclient-automake.diff
+  and apply correct SO versioning
+
+-------------------------------------------------------------------
+Fri Dec 23 14:35:39 UTC 2011 - joop.boonen@opensuse.org
+
+- openSUSE build of libircclient based on Fedora package
+
+-------------------------------------------------------------------
+Mon May 02 00:00:00 UTC 2011 - Adam Huffman <bloch@verdurin.com>
+
+- better soname fix
+
+-------------------------------------------------------------------
+
+Fri Apr 29 00:00:00 UTC 2011 - Adam Huffman <bloch@verdurin.com>
+
+- fix soname
+
+-------------------------------------------------------------------
+
+Fri Apr 29 00:00:00 UTC 2011 - Adam Huffman <bloch@verdurin.com>
+
+- ignore provided makefiles
+- devel subpackage
+
+-------------------------------------------------------------------
+
+Fri Apr 29 00:00:00 UTC 2011 - Adam Huffman <bloch@verdurin.com>
+
+- remove static library
+
+-------------------------------------------------------------------
+
+Sat Feb 12 00:00:00 UTC 2011 - Adam Huffman <bloch@verdurin.com>
+
+- fixes taken from Arch package to help with din
+- build .so
+
+-------------------------------------------------------------------
+
+Wed Jun 02 00:00:00 UTC 2010 - Conrad Meyer <konrad@tylerc.org>
+
+- First attempt at a package (crappy)
+
+-------------------------------------------------------------------

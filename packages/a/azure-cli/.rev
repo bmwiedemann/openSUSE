@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2b8a3336a9c7927979dc5c16077daad0</srcmd5>
+    <version>2.0.18</version>
+    <time>1510321885</time>
+    <user>dimstar_suse</user>
+    <comment>- Submit Azure CLI 2.0 to openSUSE Factory.</comment>
+    <requestid>534045</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>16739a1e434175f758403f0cfd8c6c06</srcmd5>
+    <version>2.0.26</version>
+    <time>1518596945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574792</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3b9919501dbe8fce7771200b7561c66c</srcmd5>
+    <version>2.0.31</version>
+    <time>1526220051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600028</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>81d1a92e44470247fc28316db4ae57af</srcmd5>
+    <version>2.0.45</version>
+    <time>1539593289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641233</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>45296efeee523556f09815f74313b50a</srcmd5>
+    <version>2.0.45</version>
+    <time>1542282073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649002</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d6a3833a3d3dbffde3a059db85cf8a1a</srcmd5>
+    <version>2.0.45</version>
+    <time>1543224600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651347</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ce114c475fe143f41dce830fa2fa227f</srcmd5>
+    <version>2.0.58</version>
+    <time>1558515514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Azure CLI to latest version</comment>
+    <requestid>696809</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>36e21027c0bed3fd8bfbfb82f601c0ec</srcmd5>
+    <version>2.0.58</version>
+    <time>1559727653</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707529</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,39 @@
+From aec69da8a2385b3d1368b484aa247876fbc2018d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jaime=20Caama=C3=B1o=20Ruiz?= <jcaamano@suse.com>
+Date: Wed, 8 May 2019 13:53:47 +0200
+Subject: [PATCH 1/2] rhel: secure openvswitch useropts
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The openvswitch useropts file is being stored in a directory where the
+openvswitch user has write permissions. The openvswitch user can then
+manipulate the file to change the user under which switchd daemon runs.
+
+This patch changes the file to /var/openvswitch.useropts preventing any
+manipulation.
+
+Signed-off-by: Jaime Caamaño Ruiz <jcaamano@suse.com>
+Signed-off-by: Ben Pfaff <blp@ovn.org>
+---
+ rhel/usr_lib_systemd_system_ovsdb-server.service | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/rhel/usr_lib_systemd_system_ovsdb-server.service b/rhel/usr_lib_systemd_system_ovsdb-server.service
+index 70da1ec95..0f9d936b3 100644
+--- a/rhel/usr_lib_systemd_system_ovsdb-server.service
++++ b/rhel/usr_lib_systemd_system_ovsdb-server.service
+@@ -11,8 +11,8 @@ Restart=on-failure
+ EnvironmentFile=/etc/openvswitch/default.conf
+ EnvironmentFile=-/etc/sysconfig/openvswitch
+ ExecStartPre=/usr/bin/chown ${OVS_USER_ID} /var/run/openvswitch /var/log/openvswitch
+-ExecStartPre=/bin/sh -c 'rm -f /run/openvswitch/useropts; if [ "$${OVS_USER_ID/:*/}" != "root" ]; then /usr/bin/echo "OVSUSER=--ovs-user=${OVS_USER_ID}" > /run/openvswitch/useropts; fi'
+-EnvironmentFile=-/run/openvswitch/useropts
++ExecStartPre=/bin/sh -c 'rm -f /run/openvswitch.useropts; if [ "$${OVS_USER_ID/:*/}" != "root" ]; then /usr/bin/echo "OVSUSER=--ovs-user=${OVS_USER_ID}" > /run/openvswitch.useropts; fi'
++EnvironmentFile=-/run/openvswitch.useropts
+ ExecStart=/usr/share/openvswitch/scripts/ovs-ctl \
+           --no-ovs-vswitchd --no-monitor --system-id=random \
+           ${OVSUSER} \
+-- 
+2.16.4
+

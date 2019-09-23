@@ -1,0 +1,5 @@
+<package name="prelude-correlator" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:monitoring" package="prelude-correlator"/>
+</package>

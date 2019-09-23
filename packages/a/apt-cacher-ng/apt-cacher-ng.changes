@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Tue Aug 20 11:27:27 CEST 2019 - kukuk@suse.de
+
+- Package /etc/cron.daily as we don't want to require cron
+- pwdutils is long time gone, use shadow
+
+-------------------------------------------------------------------
+Mon Mar 18 21:45:37 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Do not hide errors from useradd.
+- Reduce scriptlets' hard dependency on systemd.
+
+-------------------------------------------------------------------
+Wed Dec  6 10:30:27 UTC 2017 - mpluskal@suse.com
+
+- Use more of cmake macros
+- Use pkgconfig style dependencies
+
+-------------------------------------------------------------------
+Tue Dec  5 11:38:57 UTC 2017 - mchandras@suse.de
+
+- Version bump to 3.1
+  * Hide credentials in acngtool in some corner cases
+  * Dropped references to distkill.pl script which was superseeded by acngtool
+  * Made default PassThroughPattern setting stricter
+  * Mirror database update
+  * Avoid expiration failure when some index files are missing
+- Fix logrotate file installation
+
+-------------------------------------------------------------------
+Fri May 26 09:50:14 UTC 2017 - jengelh@inai.de
+
+- Trim description. Use regular %setup call for all unpacking.
+
+-------------------------------------------------------------------
+Tue May 16 16:41:49 UTC 2017 - mchandras@suse.de
+
+- Initial commit

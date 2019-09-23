@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Fri Sep 20 17:56:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in the scikits.example
+
+-------------------------------------------------------------------
+Sat Dec 22 02:37:09 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.3.2
+  * replace non-ascii character
+  * Remove hack for windows
+
+-------------------------------------------------------------------
+Thu May 24 17:43:10 UTC 2018 - toddrme2178@gmail.com
+
+- spec file cleanups
+
+-------------------------------------------------------------------
+Thu Apr 19 16:47:53 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.3.1
+  * FIX: replace scipy with scikit.umfpack
+  * setup: require scipy 1.0
+  * FIX: define Suitesparse_long as UF_long if not defined
+  * BUG: type Suitesparse_long to be UF_long.
+  * FIX: revert the int32 type conversion
+  * setup: set the correct install_requires
+  * FIX: use explicit bit-width types in UmfpackContext._getIndx()
+  * BUG: fix UmfpackContext family selection in UmfpackLU.__init__() 
+  * replace suppress_warnings() by warnings.catch_warnings()
+
+-------------------------------------------------------------------
+Fri Jul 14 15:45:55 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 0.3.0 official release
+- Use the scikits namespace package
+- Implement single-spec version
+- Fix source URL.
+
+-------------------------------------------------------------------
+Mon Jan 11 10:48:03 UTC 2016 - toddrme2178@gmail.com
+
+- Use proper package name (python-scikit-umfpack)
+- Update to 0.2.1 official release
+- Implement update-alternatives for scikits/__init__.py
+
+-------------------------------------------------------------------
+Thu Oct 24 11:14:01 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Sun Jun  3 12:18:14 UTC 2012 - toddrme2178@gmail.com
+
+- Clean up spec file
+
+-------------------------------------------------------------------
+Wed Mar  7 23:00:55 UTC 2012 - scorot@free.fr
+
+- build requires suitesparse-devel instead of umfpack-devel 
+
+-------------------------------------------------------------------
+Sun Mar  3 00:00:00 UTC 2011 - scorot@gtt.fr
+
+- first package
+

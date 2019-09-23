@@ -1,0 +1,7 @@
+<package name="libstroke" project="openSUSE:Factory">
+  <title>A Stroke Translation Library</title>
+  <description>LibStroke is a stroke interface library.  Strokes are motions of the
+mouse that can be interpreted by a program as a command.  Strokes are
+used extensively in CAD programs.</description>
+  <devel project="M17N" package="libstroke"/>
+</package>

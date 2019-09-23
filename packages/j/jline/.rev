@@ -1,0 +1,173 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>d5dbaf6f478cc0a383fba4a9bbe9f844</srcmd5>
+    <version>0.9.94</version>
+    <time>1242009289</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>d5dbaf6f478cc0a383fba4a9bbe9f844</srcmd5>
+    <version>0.9.94</version>
+    <time>1242009289</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>e1294355066e26a5cf8504386c3ba365</srcmd5>
+    <version>0.9.94</version>
+    <time>1258723118</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/jline based on submit request 24641 from user mvyskocil
+</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>702ebc48c9d519d98b3d000ec7b33a07</srcmd5>
+    <version>0.9.94</version>
+    <time>1268924140</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>702ebc48c9d519d98b3d000ec7b33a07</srcmd5>
+    <version>0.9.94</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>702ebc48c9d519d98b3d000ec7b33a07</srcmd5>
+    <version>0.9.94</version>
+    <time>1278678585</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>0a5734fa87abaf4ad9da228a79166e16</srcmd5>
+    <version>0.9.94</version>
+    <time>1283513580</time>
+    <user>autobuild</user>
+    <comment>Copy from Java:packages/jline based on submit request 46998 from user mvyskocil
+</comment>
+    <requestid>46998</requestid>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>0a5734fa87abaf4ad9da228a79166e16</srcmd5>
+    <version>0.9.94</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>0a5734fa87abaf4ad9da228a79166e16</srcmd5>
+    <version>0.9.94</version>
+    <time>1319182014</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>44dc853367e42a0321cdafb1e40f1487</srcmd5>
+    <version>0.9.94</version>
+    <time>1323192045</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="18">
+    <srcmd5>44dc853367e42a0321cdafb1e40f1487</srcmd5>
+    <version>0.9.94</version>
+    <time>1340183489</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="20">
+    <srcmd5>44dc853367e42a0321cdafb1e40f1487</srcmd5>
+    <version>0.9.94</version>
+    <time>1359109126</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="21">
+    <srcmd5>130d8ca2d8c9966d2b42e138bcb14bb4</srcmd5>
+    <version>0.9.94</version>
+    <time>1366954678</time>
+    <user>coolo</user>
+    <comment>- add findutils dependency (bnc#816314)</comment>
+    <requestid>173337</requestid>
+  </revision>
+  <revision rev="14" vrev="22">
+    <srcmd5>51691da94d2c04132e3698b6ffcce5b5</srcmd5>
+    <version>0.9.94</version>
+    <time>1377855460</time>
+    <user>coolo</user>
+    <comment>- use new add_maven_depmap from javapackages-utils</comment>
+    <requestid>196343</requestid>
+  </revision>
+  <revision rev="15" vrev="23">
+    <srcmd5>4254707da08e2c3937d0fa7cdf129884</srcmd5>
+    <version>0.9.94</version>
+    <time>1378899508</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198294</requestid>
+  </revision>
+  <revision rev="16" vrev="25">
+    <srcmd5>4254707da08e2c3937d0fa7cdf129884</srcmd5>
+    <version>0.9.94</version>
+    <time>1379662720</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="27">
+    <srcmd5>4254707da08e2c3937d0fa7cdf129884</srcmd5>
+    <version>0.9.94</version>
+    <time>1409301288</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="28">
+    <srcmd5>2a7700e4eca6ec5bbd64892616014cb0</srcmd5>
+    <version>0.9.94</version>
+    <time>1427983040</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292628</requestid>
+  </revision>
+  <revision rev="19" vrev="29">
+    <srcmd5>60793cdc548d0f7208fcd757d69820b3</srcmd5>
+    <version>0.9.94</version>
+    <time>1496230134</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496565</requestid>
+  </revision>
+  <revision rev="20" vrev="30">
+    <srcmd5>a391337799ddaf4d8d941bbe25e257d8</srcmd5>
+    <version>0.9.94</version>
+    <time>1497112365</time>
+    <user>dimstar_suse</user>
+    <comment>- Reduce depgraph and drop maven fragment to allow bootstrap</comment>
+    <requestid>502528</requestid>
+  </revision>
+  <revision rev="21" vrev="31">
+    <srcmd5>8a681901dc42801607aa5cddbcaa1d12</srcmd5>
+    <version>0.9.94</version>
+    <time>1506678724</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>529001</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a9c37b1adb320b2dc35b921358a562b9</srcmd5>
+    <version>2.14.6</version>
+    <time>1552206741</time>
+    <user>coolo</user>
+    <comment>Upgrade to 2.14.6</comment>
+    <requestid>681810</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>125a242fa12de2a961805a970ddbb8a3</srcmd5>
+    <version>2.14.6</version>
+    <time>1562056727</time>
+    <user>dimstar_suse</user>
+    <comment>- Work around a problem with dependency resolution, where variables
+  are not resolved
+</comment>
+    <requestid>712781</requestid>
+  </revision>
+</revisionlist>

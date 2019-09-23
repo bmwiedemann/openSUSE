@@ -1,0 +1,8 @@
+<package name="perl-Convert-BinHex" project="openSUSE:Factory">
+  <title>Extract data from Macintosh BinHex files</title>
+  <description>BinHex is a format used by Macintosh for transporting Mac files safely through
+electronic mail, as short-lined, 7-bit, semi-compressed data streams. This
+module provides a means of converting those data streams back into binary
+data.</description>
+  <devel project="devel:languages:perl" package="perl-Convert-BinHex"/>
+</package>

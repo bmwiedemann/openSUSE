@@ -1,0 +1,17 @@
+---
+ buildflags.mak |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: buildflags.mak
+===================================================================
+--- buildflags.mak.orig	2015-05-29 11:10:57.686178275 +0200
++++ buildflags.mak	2015-05-29 11:11:35.955300481 +0200
+@@ -72,7 +72,7 @@ WERROR := -Werror
+ INCLUDES := -I. -I$(top_srcdir)/include -I$(top_srcdir)/mpspawn \
+ 	-I$(top_srcdir)/include/$(os)-$(arch) $(SCIF_INCLUDE_FLAGS)
+ BASECFLAGS += $(BASE_FLAGS) $(if $(MIC:0=),$(if $(filter $(CC),icc),-mmic,-D__MIC__)) \
+-	-Wall $(WERROR) $(RPM_OPT_FLAGS) $(if $(MIC:0=),-Wno-unused) -fpic -fPIC -D_GNU_SOURCE \
++	-Wall -Wno-attributes $(RPM_OPT_FLAGS) $(if $(MIC:0=),-Wno-unused) -fpic -fPIC -D_GNU_SOURCE \
+ 	$(if $(filter $(CC),icc),,-funwind-tables) $(if $(PSM_PROFILE:0=),-DPSM_PROFILE) \
+ 	${IPATH_CFLAGS}
+ ASFLAGS += $(BASE_FLAGS) $(if $(MIC:0=),$(if $(filter $(CC),icc),-mmic,-D__MIC__)) -g3 -fpic

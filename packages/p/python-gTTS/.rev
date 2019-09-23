@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7e9303254165d39ada72219d348aa8c2</srcmd5>
+    <version>1.2.2</version>
+    <time>1525426226</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-gTTS required by mycroft-core</comment>
+    <requestid>603637</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>13f0cafac12325637c8de15611a58977</srcmd5>
+    <version>2.0.3</version>
+    <time>1549286716</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670901</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>396197abe67f21890f29485bbedab760</srcmd5>
+    <version>2.0.3</version>
+    <time>1549916891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673172</requestid>
+  </revision>
+</revisionlist>

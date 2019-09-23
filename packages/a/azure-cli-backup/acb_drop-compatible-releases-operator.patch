@@ -1,0 +1,14 @@
+diff -Nru azure-cli-backup-1.2.3.orig/setup.py azure-cli-backup-1.2.3/setup.py
+--- azure-cli-backup-1.2.3.orig/setup.py	2019-04-05 00:46:51.000000000 +0200
++++ azure-cli-backup-1.2.3/setup.py	2019-04-17 09:27:06.420230415 +0200
+@@ -31,8 +31,8 @@
+ ]
+ 
+ DEPENDENCIES = [
+-    'azure-mgmt-recoveryservices~=0.1.1',
+-    'azure-mgmt-recoveryservicesbackup~=0.1.2',
++    'azure-mgmt-recoveryservices>=0.1.1',
++    'azure-mgmt-recoveryservicesbackup>=0.1.2',
+     'azure-cli-core'
+ ]
+ 

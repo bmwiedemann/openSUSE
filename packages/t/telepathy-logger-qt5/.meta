@@ -1,0 +1,5 @@
+<package name="telepathy-logger-qt5" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Applications" package="telepathy-logger-qt5"/>
+</package>

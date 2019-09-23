@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Wed Feb  1 13:00:35 UTC 2017 - sndirsch@suse.com
+
+- Update to version 1.0.7:
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * config: add AC_USE_SYSTEM_EXTENSIONS
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
+Sun Jul 21 19:54:00 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.6:
+  + Use fstat() on the fd from open(), instead of stat() on the
+    same pathname.
+  + Fix file leak if fdopen() fails.
+  + config: Add missing AC_CONFIG_SRCDIR.
+  + Fix build on FreeBSD.
+
+-------------------------------------------------------------------
+Sat Jan 19 10:50:22 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.5:
+  + Fix implicit conversion from size_t to int warnings in
+    Deiconified().
+  + Open /dev/console with NOCTTY and O_NONBLOCK flags.
+  + Don't rely on being able to set tab stops.
+  + Mark functions _X_NORETURN that gcc warnings suggest.
+  + Remove old Xorg & XFree86 CVS version tags.
+  + Strip trailing whitespace.
+  + Require xt >= 1.0 for appdefaultdir (fdo#7237).
+  + config:
+    - Replace deprecated AM_CONFIG_HEADER with AC_CONFIG_HEADERS.
+    - Replace deprecated AC_HELP_STRING with AS_HELP_STRING.
+    - Move man pages into their own directory.
+  + man: replace hard coded man page section with substitution
+    strings.
+- Replace pkgconfig(xorg-macros) with pkgconfig(xproto)
+  BuildRequires, since this is what configure checks for now.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xconsole from xorg-x11. Initial version: 1.0.4.
+

@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Sun Dec 24 07:04:10 UTC 2017 - coolo@suse.com
+
+- updated to 0.08
+   see /usr/share/doc/packages/perl-Test-Object/Changes
+
+-------------------------------------------------------------------
+Tue Oct  3 08:21:48 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Fri Nov 18 11:10:50 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:50 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 22 14:06:33 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+  o fix deps
+- changelog to changes file
+
+-------------------------------------------------------------------
+Tue Oct 19 08:39:08 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Wed Oct 21 16:31:28 CEST 2009 - rschweikert@novell.com
+
+- Add changes file
+- Add %dir directive for directories in %files
+- Changelog clean up to only contain initial creation
+
+-------------------------------------------------------------------
+Wed Oct 14 19:00:29 UTC 2009 - rschweikert@novell.com
+
+- Initial build 0.07

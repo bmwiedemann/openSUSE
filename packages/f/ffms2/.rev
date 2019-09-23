@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3251b26bb91cb8b5020a712e25de57aa</srcmd5>
+    <version>2.23.1</version>
+    <time>1503592331</time>
+    <user>dimstar_suse</user>
+    <comment>This is a wrapper around FFmpeg libraries that provides frame/sample indexing and workarounds for certain formats, used by software that needs very accurate seeking (such as aegisub).
+
+This package was taken from Packman, with minimal changes.
+
+It should be legally okay, as it only links FFmpeg and contains no support for patented/copyright-protected codecs of its own.</comment>
+    <requestid>506980</requestid>
+  </revision>
+</revisionlist>

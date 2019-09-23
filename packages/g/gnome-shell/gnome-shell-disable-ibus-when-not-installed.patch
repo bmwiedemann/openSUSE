@@ -1,0 +1,27 @@
+From d8109a8e9db11cc7374faba3264b9f00dc5e1699 Mon Sep 17 00:00:00 2001
+From: Chingkai <qkzhu@suse.com>
+Date: Wed, 13 Mar 2019 14:50:22 +0800
+Subject: [PATCH] Disable ibus when out of CJK
+
+---
+ js/misc/ibusManager.js | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/js/misc/ibusManager.js b/js/misc/ibusManager.js
+index d20ad2f..0595573 100644
+--- a/js/misc/ibusManager.js
++++ b/js/misc/ibusManager.js
+@@ -31,6 +31,10 @@ function getIBusManager() {
+ 
+ var IBusManager = class {
+     constructor() {
++        let daemon = Gio.File.new_for_path('/usr/bin/ibus-daemon');
++        if (!daemon.query_exists(null))
++            return;
++
+         IBus.init();
+ 
+         // This is the longest we'll keep the keyboard frozen until an input
+-- 
+2.16.4
+

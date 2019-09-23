@@ -1,0 +1,7 @@
+<package name="wqy-bitmap-fonts" project="openSUSE:Factory">
+  <title>wqy-bitmapfont</title>
+  <description>Wen Quan Yi Bitmap Song CJK Fonts
+
+文泉驿点阵字</description>
+  <devel project="M17N:fonts" package="wqy-bitmap-fonts"/>
+</package>

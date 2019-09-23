@@ -1,0 +1,131 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>eb569627d3451a208c68d82b330f0e2f</srcmd5>
+    <version>1.2.1</version>
+    <time>1243736846</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>eb569627d3451a208c68d82b330f0e2f</srcmd5>
+    <version>1.2.1</version>
+    <time>1243736846</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>cb5eb311f9c615ed63b3db09f39b3467</srcmd5>
+    <version>1.2.1</version>
+    <time>1268923016</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>cb5eb311f9c615ed63b3db09f39b3467</srcmd5>
+    <version>1.2.1</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>cb5eb311f9c615ed63b3db09f39b3467</srcmd5>
+    <version>1.2.1</version>
+    <time>1278678565</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>cb5eb311f9c615ed63b3db09f39b3467</srcmd5>
+    <version>1.2.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>b608cfb54a2f6439ec08ca624a5facf2</srcmd5>
+    <version>1.2.1</version>
+    <time>1316766030</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82897 from jengelh)</comment>
+    <requestid>84349</requestid>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>b608cfb54a2f6439ec08ca624a5facf2</srcmd5>
+    <version>1.2.1</version>
+    <time>1319181786</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>77a3607b600cb13bca1090e95e9b9973</srcmd5>
+    <version>1.2.1</version>
+    <time>1323190835</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="17">
+    <srcmd5>77a3607b600cb13bca1090e95e9b9973</srcmd5>
+    <version>1.2.1</version>
+    <time>1340183199</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="19">
+    <srcmd5>77a3607b600cb13bca1090e95e9b9973</srcmd5>
+    <version>1.2.1</version>
+    <time>1359108697</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="20">
+    <srcmd5>690acc196f865114455529fcdee0301d</srcmd5>
+    <version>1.2.1</version>
+    <time>1378899562</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198258</requestid>
+  </revision>
+  <revision rev="13" vrev="22">
+    <srcmd5>690acc196f865114455529fcdee0301d</srcmd5>
+    <version>1.2.1</version>
+    <time>1379662030</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="23">
+    <srcmd5>ff0b2ccd4194da123b14fc9f3df1409f</srcmd5>
+    <version>1.2.1</version>
+    <time>1405522174</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240331</requestid>
+  </revision>
+  <revision rev="15" vrev="25">
+    <srcmd5>ff0b2ccd4194da123b14fc9f3df1409f</srcmd5>
+    <version>1.2.1</version>
+    <time>1409300557</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="26">
+    <srcmd5>da7aea9d9c421b3931fbed5b4a158445</srcmd5>
+    <version>1.2.1</version>
+    <time>1495442923</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with new java by disabling doclint:
+  * disable-doclint.patch</comment>
+    <requestid>497067</requestid>
+  </revision>
+  <revision rev="17" vrev="27">
+    <srcmd5>947eda0c5ed080bc114a18a9580b28fc</srcmd5>
+    <version>1.2.1</version>
+    <time>1505507529</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>526344</requestid>
+  </revision>
+  <revision rev="18" vrev="28">
+    <srcmd5>65913de8366a780828299e8572585566</srcmd5>
+    <version>1.2.1</version>
+    <time>1530993551</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620772</requestid>
+  </revision>
+</revisionlist>

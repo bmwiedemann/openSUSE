@@ -1,0 +1,11 @@
+<package name="gobby" project="openSUSE:Factory">
+  <title>Gobby collaborative editor (Infinote protocol)</title>
+  <description>Gobby is a free collaborative editor. This means that it provides you
+with the possibility to edit files simultaneously with other users over
+a network. It supports multiple documents in one session.
+The platforms on which you could use Gobby are so far Microsoft Windows,
+Linux, Mac OS X and other Unix-like ones.
+
+This is the latest version of Gobby, which is using the Infinote protocol.</description>
+  <devel project="GNOME:Apps" package="gobby"/>
+</package>

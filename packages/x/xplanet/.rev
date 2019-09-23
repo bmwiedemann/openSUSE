@@ -1,0 +1,127 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc35a99bb6ea1de7496e25b780dfb1ed</srcmd5>
+    <version>1.2.2</version>
+    <time>1313053606</time>
+    <user>saschpe</user>
+    <comment>Renders images of planets in Earth's solar system.  It is used both on its own, as a wallpaper, and provides images to other programs for them to use.  The openSUSE-KDE team requested I submit this.</comment>
+    <requestid>78012</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>dc35a99bb6ea1de7496e25b780dfb1ed</srcmd5>
+    <version>1.2.2</version>
+    <time>1319182613</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>d21ac50526e9eff9e922ff31da6c0700</srcmd5>
+    <version>1.2.2</version>
+    <time>1323195470</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>7089721c50210d135cfdf33acb4e69f9</srcmd5>
+    <version>1.2.2</version>
+    <time>1331492734</time>
+    <user>coolo</user>
+    <comment>Updated XOrg BuildRequires: for openSUSE &gt; 12.1 (forwarded request 107939 from lrupp)</comment>
+    <requestid>108706</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3d96c9a73bc8210f02efc1f766b00daa</srcmd5>
+    <version>1.3.0</version>
+    <time>1333000176</time>
+    <user>coolo</user>
+    <comment>Update to 1.3.0 (forwarded request 110942 from lrupp)</comment>
+    <requestid>111440</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>3d96c9a73bc8210f02efc1f766b00daa</srcmd5>
+    <version>1.3.0</version>
+    <time>1340184381</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>d198983a8b0a49e4c824a46b8c24071b</srcmd5>
+    <version>1.3.0</version>
+    <time>1349374268</time>
+    <user>coolo</user>
+    <comment>Fix compilation with netpbm support in Factory, Use pkgconfig(...) for xorg-x11 build requirements (forwarded request 136563 from adra)</comment>
+    <requestid>136860</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>d198983a8b0a49e4c824a46b8c24071b</srcmd5>
+    <version>1.3.0</version>
+    <time>1359110679</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>65826eb471d4075068416dfa1ae63ea7</srcmd5>
+    <version>1.3.0</version>
+    <time>1360950916</time>
+    <user>coolo</user>
+    <comment>- build also with libpng16
+  * libpng16.patch (forwarded request 155475 from pgajdos)</comment>
+    <requestid>155476</requestid>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>2331b9aeb8f6173cb80bc3a7b87c6dd9</srcmd5>
+    <version>1.3.0</version>
+    <time>1363269987</time>
+    <user>coolo</user>
+    <comment>fix build with giflib-5, xplanet-giflib5.patch (forwarded request 158801 from seife)</comment>
+    <requestid>158820</requestid>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>2331b9aeb8f6173cb80bc3a7b87c6dd9</srcmd5>
+    <version>1.3.0</version>
+    <time>1379665108</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>b3b86873627b79efd2c96a0ffd0e5846</srcmd5>
+    <version>1.3.0</version>
+    <time>1395610458</time>
+    <user>scarabeus_factory</user>
+    <comment> (forwarded request 227161 from awissu)</comment>
+    <requestid>227167</requestid>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>d290fb62c100585a5d529d64ba212f13</srcmd5>
+    <version>1.3.0</version>
+    <time>1401958198</time>
+    <user>coolo</user>
+    <comment>- Update xplanet-giflib5.patch to support giflib7-5.1 (forwarded request 235969 from jengelh)</comment>
+    <requestid>236170</requestid>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>d290fb62c100585a5d529d64ba212f13</srcmd5>
+    <version>1.3.0</version>
+    <time>1409303794</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>22f3a4769d06ba45447aa081d10f4d0e</srcmd5>
+    <version>1.3.1</version>
+    <time>1467359899</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403427</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>e8df944c0c2c9dfb73b5f20c7466873b</srcmd5>
+    <version>1.3.1</version>
+    <time>1558037326</time>
+    <user>dimstar_suse</user>
+    <comment>- Added link to gobject-2.0 libraries (glib2.patch)
+  * Pango use to do this, but it has removed this for libraries
+    linking to Pango
+</comment>
+    <requestid>703210</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="sac" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="LibreOffice:Factory" package="sac"/>
+</package>

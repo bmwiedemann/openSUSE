@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Fri Mar  1 09:47:28 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.10
+- remove unnneded deps
+- fix licenses
+ * Add support for PEP 525-style garbage collection hooks
+
+-------------------------------------------------------------------
+Thu May 10 15:51:01 UTC 2018 - toddrme2178@gmail.com
+
+- Set minimum python3 version
+
+-------------------------------------------------------------------
+Tue Mar 27 16:26:01 UTC 2018 - jengelh@inai.de
+
+- Remove excess markup, rpm descriptions are quite plaintext.
+- Fix "Python 35".
+
+-------------------------------------------------------------------
+Fri Mar 23 15:29:59 UTC 2018 - tbechtold@suse.com
+
+- Initial packaging (version 1.9)

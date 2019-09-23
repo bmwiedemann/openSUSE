@@ -1,0 +1,5 @@
+<package name="maven-reporting-impl" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="maven-reporting-impl"/>
+</package>

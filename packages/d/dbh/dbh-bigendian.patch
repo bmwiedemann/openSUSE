@@ -1,0 +1,20 @@
+Index: libdbh2-5.0.19/src/dbh_static.i
+===================================================================
+--- libdbh2-5.0.19.orig/src/dbh_static.i
++++ libdbh2-5.0.19/src/dbh_static.i
+@@ -1779,7 +1779,6 @@ static int sdbh_writeheader (DBHashTable
+     dbh->head_info->data_space = sdbh_turnaround (dbh->head_info->data_space);
+     dbh->head_info->erased_space = sdbh_turnaround (dbh->head_info->erased_space);
+     dbh->head_info->records = sdbh_turnaround (dbh->head_info->records);
+-    dbh->head_info->fractalidad = sdbh_turnaround (dbh->head_info->fractalidad);
+ #endif
+ 
+ 
+@@ -1809,7 +1808,6 @@ static int sdbh_writeheader (DBHashTable
+     dbh->head_info->data_space = sdbh_turnaround (dbh->head_info->data_space);
+     dbh->head_info->erased_space = sdbh_turnaround (dbh->head_info->erased_space);
+     dbh->head_info->records = sdbh_turnaround (dbh->head_info->records);
+-    dbh->head_info->fractalidad = sdbh_turnaround (dbh->head_info->fractalidad);
+ #endif
+     if (!flush) return 1;
+   

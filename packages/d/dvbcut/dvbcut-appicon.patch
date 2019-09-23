@@ -1,0 +1,13 @@
+Index: dvbcut-deb-0.7.3/dvbcut.desktop.in
+===================================================================
+--- dvbcut-deb-0.7.3.orig/dvbcut.desktop.in
++++ dvbcut-deb-0.7.3/dvbcut.desktop.in
+@@ -7,7 +7,7 @@ GenericName[de]=DVB-Schnittprogramm für
+ NoDisplay=false
+ Comment=Trim and cut video MPEG2 transport streams into multiple export formats
+ Comment[de]=Kürze und schneide MPEG Tranport Ströme in verschiedene Exportformate
+-Icon=@prefix@/share/dvbcut/icons/dvbcut.svg
++Icon=dvbcut
+ TryExec=@prefix@/bin/dvbcut
+ Exec=@prefix@/bin/dvbcut %F
+ Terminal=false

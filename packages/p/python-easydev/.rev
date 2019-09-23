@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>903e78daf4e7b82cc908b63e27e30f0b</srcmd5>
+    <version>0.9.37</version>
+    <time>1526371604</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-colormap</comment>
+    <requestid>603558</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6e040ffedc812a701fe253b35575b5f5</srcmd5>
+    <version>0.9.37</version>
+    <time>1544726607</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654026</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd31fef81bc2b051d538741836753451</srcmd5>
+    <version>0.9.38</version>
+    <time>1568379795</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 0.9.38:
+  * synchronized with pypi. Just an updated travis version to get rid of
+    py3.3 and removing deprecated messages.</comment>
+    <requestid>730631</requestid>
+  </revision>
+</revisionlist>

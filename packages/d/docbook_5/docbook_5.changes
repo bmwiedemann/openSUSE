@@ -1,0 +1,154 @@
+-------------------------------------------------------------------
+Fri Dec  8 22:12:24 UTC 2017 - dimstar@opensuse.org
+
+- Fix fdupes macro invocation: the fdupes macro knows no -q
+  parameter.
+
+-------------------------------------------------------------------
+Sun Nov 12 17:02:51 UTC 2017 - thomas.schraitle@suse.com
+
+- Correct Makefile:
+  - Add more pattern rules
+  - Use more builtin make functions
+  - Create links in nvdl directory to docbook.{rng,sch}
+  - Add missing assembly.rn{c,g} and dbits.rn{c,g} for Schematron
+
+- Correct spec file:
+  - Add docbook_5-nvdl.patch to change path to DocBook RNG/SCH files
+  - Apply spec-cleaner
+
+-------------------------------------------------------------------
+Wed Oct 11 15:10:23 UTC 2017 - thomas.schraitle@suse.com
+
+- New version 5.1
+  - no DTD and XSD schemas for version 5.1 anymore!
+
+- Changes in spec file:
+  - used spec-cleaner
+  - removed obsolete stuff
+  - install files through Makefile
+  - install NVDL files under /usr/share/xml/docbook/schema/nvdl
+    instead as "documentation"
+
+
+-------------------------------------------------------------------
+Fri Jun 17 12:00:51 UTC 2016 - fvogt@suse.com
+
+- Split documentation into -doc subpackage
+- Use newer sgml-spec
+
+-------------------------------------------------------------------
+Tue May 12 12:44:54 UTC 2015 - toms@opensuse.org
+
+- Changed DocBook catalog URIs to 5.1 instead of 5.1CR3
+
+-------------------------------------------------------------------
+Tue Feb 19 11:35:00 UTC 2015 - toms@opensuse.org
+
+- Fixed subtle XML catalog bug (bsc#918565)
+- Added DocBook 5.1CR3
+- Spec file changes:
+  . Make post and postun sections work
+  . Lots of entries in XML catalogs need to be generated, so it's
+    easier to use for loops
+
+-------------------------------------------------------------------
+Mon Mar 18 12:40:42 UTC 2013 - cfarrell@suse.com
+
+- license update: SUSE-Oasis-Specification-Notice
+  See any of the files in the docs/ subdirectory (section on notices and ip
+  towards the end)
+
+-------------------------------------------------------------------
+Fri Mar  1 11:48:20 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Tue Jun  5 14:32:11 UTC 2012 - ke@suse.de
+
+- Reduce Requires (iso_ent and xmlcharent).
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Mon Aug  3 10:57:28 CEST 2009 - aj@suse.de
+
+- Only remove file from catalog if it disappeared.
+
+- Do not use release numbers, they're not needed anymore.
+
+- Cleanup some rpmlint warnings: Non-executable-in-bin, duplicate
+  requires, do not remove buildroot.
+
+-------------------------------------------------------------------
+Mon Feb 11 08:35:56 CET 2008 - toms@suse.de
+
+- Release of version 5.0 (Committee Draft)
+  There are no user-visible changes in 5.0 (Public Review Draft 1).
+  This version of DocBook V5.0 will become the official Committee 
+  Specification version of DocBook V5.0 as soon as the 
+  Technical Committee balloting process is finished.
+- Added DocBook Specification in PDF, HTML and XML
+
+
+-------------------------------------------------------------------
+Thu May 24 10:38:42 CEST 2007 - toms@suse.de
+
+- Updated to release 5.0CR4:
+  * Fixed RFE 1708032: Pattern naming inconsistency; changed
+    db.href.attribute to db.href.attributes.
+  * Fixed RFE 1700154: Added sortas to <termdef>.
+  * Fixed RFE 1686919: Added an NVDL rules file.
+  * Fixed RFE 1705596: Aded db.programming.inlines (<classname>, 
+    <exceptionname>, <function>, <initializer>, <interfacename>, 
+    <methodname>, <modifier>, <ooclass>, <ooexception>, <oointerface>,
+    <parameter>, <returnvalue>, <type>, and <varname>) to the
+    content model of <code>.
+  * Fixed RFE 1689228: Fixed typo in Schematron assertion.
+
+-------------------------------------------------------------------
+Fri Mar 23 20:51:50 CET 2007 - toms@suse.de
+
+- Updated to release 5.0CR3:
+  * RFE 1679775: Changed semantics of <termdef>. A <firstterm> is now
+    required (instead of a <glossterm> as in previous releases). This
+    allows the definition of one term to refer to another.
+
+  * RFE 1682917: Added pgwide attribute to <example>.
+
+  * RFE 1644553: Added label attribute to CALS and HTML tables.
+
+  * RFE 1588693: Added an <acknowledgements> element, peer to
+    <dedication>, replacing <ackno> which had only been available at the
+    end of <article>.
+
+  * After several months of consideration and experimentation, we decided
+    to allow <info> in HTML tables.
+
+  * RFE 1673820: Adopted "http://docbook.org/xlink/role/olink" as an XLink
+    role (that is, the xlink:role attribute) value to identify OLinks
+    expressed using XLink attributes.
+
+
+-------------------------------------------------------------------
+Wed Mar 14 10:55:18 CET 2007 - toms@suse.de
+
+- Updated to release 5.0CR2:
+  * Fixed RFE 1630203: Allow empty glossary.
+  * Fixed RFE 1627845: Allow optional caption on CALS table and informaltable.
+  * Related to RFE 1627845: Allow inlines in HTML table caption.
+  * Fixed RFE 1589139 (and RFE 1621178): Allow title and titleabbrev on qandaentry.
+  * Fixed RFE 1675932: Restore localname, prefix and namespace as class attribute values on tag.
+  * Fixed RFE 1669465: Schematron rules should refer to @xml:id, not @id.
+
+
+-------------------------------------------------------------------
+Mon Feb 19 13:40:51 CET 2007 - toms@suse.de
+
+- First release of 5.0CR1
+

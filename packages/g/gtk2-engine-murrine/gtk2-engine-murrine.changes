@@ -1,0 +1,143 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:32:11 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jan 25 16:26:57 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.98.2:
+  + Changed option: reliefstyle = 5 for a more controllable inset.
+  + Build fixes:
+    - Glib 2.31 compatibility (bgo#665022).
+    - Compiles using pixman (bgo#630869).
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Drop gtk2-engine-murrine-glib.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:37 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Mon Nov 28 10:27:34 UTC 2011 - dimstar@opensuse.org
+
+- Add gtk2-engine-murrine-glib.patch: Fix build with glib 2.31:
+  only glib.h can be included.
+
+-------------------------------------------------------------------
+Tue Oct  5 00:39:36 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.98.1.1:
+  + Include LGPLv2.1 in the tarball.
+
+-------------------------------------------------------------------
+Fri Oct  1 19:32:16 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.98.1:
+  + Murrine is now dual-licensed LGPLv2.1 and LGPLv3.
+  + Build fix (bgo#630869)
+- Update License tag accordingly.
+
+-------------------------------------------------------------------
+Wed Sep 22 15:31:31 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.98.0:
+  + Too many changes to list here, please see NEWS.
+  + New supported widgets: GtkExpander, GtkIconView, GtkInfoBar.
+  + Many new options.
+  + Improved rendering:
+    - rounded GtkScale trough
+    - disabled GtkScale trough
+    - contrast function in GtkButton
+    - better GtkTooltip theming
+    - and more.
+  + Various bug fixes.
+- Drop gtk2-engine-murrine-0.90.3-nonvoid.patch: not needed
+  anymore.
+
+-------------------------------------------------------------------
+Sun Jan 31 23:42:02 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Wed Jun 24 14:43:09 CEST 2009 - sbrabec@suse.cz
+
+- Re-added missing baselibs.conf (bnc#354164).
+
+-------------------------------------------------------------------
+Wed May  6 17:57:14 CEST 2009 - prusnak@suse.cz
+
+- themes split into separate package gtk2-theme-murrine
+
+-------------------------------------------------------------------
+Wed Apr 29 12:55:40 CEST 2009 - prusnak@suse.cz
+
+- updated to 0.90 series (0.90.3)
+  * Too many changes to be listed, let's take a summary.
+  * This new version is extremely customizable with a huge number of new.
+    options. Those new options allow the user to achieve an incredible.
+    variety of styles.
+- added themes:
+  * MurrinaChrome
+  * MurrinaBlu-0.32
+  * MurrinaElement
+  * MurrinaCandido
+  * MurrinaCream
+  * Murrine-Light
+  * Murrine-Sky
+  * Murrine-Gray
+  * Kiwi
+  * Neon
+  * freezy-themes_2.8.0
+  * shiki-colors-murrine-3.7
+
+-------------------------------------------------------------------
+Tue Nov 25 17:22:20 CET 2008 - sbrabec@suse.cz
+
+- Supplement gtk2-32bit/gtk2-64bit in baselibs.conf (bnc#354164).
+
+-------------------------------------------------------------------
+Thu Aug 14 17:09:58 CEST 2008 - prusnak@suse.cz
+
+- updated to 0.60 (SVN revision 94)
+- added Shiki-Color themes
+
+-------------------------------------------------------------------
+Thu Jun 19 11:51:25 CEST 2008 - prusnak@suse.cz
+
+- added themes:
+  * MurrinaCandyDuo
+  * MurrinaEternal
+  * MurrinaGonxical
+  * MurrinaGperfection
+  * MurrinaGraphiteGentle
+  * Murrina-Inspirat
+  * MurrinaLily
+  * MurrinaX-2
+
+-------------------------------------------------------------------
+Thu Jun 19 11:31:21 CEST 2008 - prusnak@suse.cz
+
+- added themes:
+  * Caramello
+  * MurrinaAquaIsh
+  * MurrinaBlue
+  * MurrinaElement
+  * MurrinaFancyCandy
+  * MurrinaGilouche
+  * MurrinaLoveGray
+  * MurrinaOranche
+  * MurrinaOransun
+  * MurrinaTango
+  * MurrinaVerdeOlivo
+  * MurrineRounded
+
+-------------------------------------------------------------------
+Mon Jun 16 09:44:20 CEST 2008 - bwalle@suse.de
+
+- new package
+

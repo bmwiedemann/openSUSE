@@ -1,0 +1,29 @@
+Index: glibc-2.27/localedata/SUPPORTED
+===================================================================
+--- glibc-2.27.orig/localedata/SUPPORTED
++++ glibc-2.27/localedata/SUPPORTED
+@@ -135,6 +135,7 @@ en_CA.UTF-8/UTF-8 \
+ en_CA/ISO-8859-1 \
+ en_DK.UTF-8/UTF-8 \
+ en_DK/ISO-8859-1 \
++en_GB.ISO-8859-15/ISO-8859-15 \
+ en_GB.UTF-8/UTF-8 \
+ en_GB/ISO-8859-1 \
+ en_HK.UTF-8/UTF-8 \
+@@ -152,6 +153,7 @@ en_PH/ISO-8859-1 \
+ en_SC.UTF-8/UTF-8 \
+ en_SG.UTF-8/UTF-8 \
+ en_SG/ISO-8859-1 \
++en_US.ISO-8859-15/ISO-8859-15 \
+ en_US.UTF-8/UTF-8 \
+ en_US/ISO-8859-1 \
+ en_ZA.UTF-8/UTF-8 \
+@@ -277,6 +279,8 @@ it_IT/ISO-8859-1 \
+ it_IT@euro/ISO-8859-15 \
+ iu_CA/UTF-8 \
+ ja_JP.EUC-JP/EUC-JP \
++ja_JP.SHIFT_JISX0213/SHIFT_JISX0213 \
++ja_JP.SJIS/SHIFT_JIS \
+ ja_JP.UTF-8/UTF-8 \
+ ka_GE.UTF-8/UTF-8 \
+ ka_GE/GEORGIAN-PS \

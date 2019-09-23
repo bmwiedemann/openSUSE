@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9782b132ad654b333ec24a4bb5cd008a</srcmd5>
+    <version>20181125</version>
+    <time>1544632242</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo in source url 
+- Initial package of version 20181125
+</comment>
+    <requestid>657336</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>39682c28c93da49b7e548d445dac061e</srcmd5>
+    <version>20190201</version>
+    <time>1549140629</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670725</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1272de89b049c26cb6fb8d2f6bb7fbd5</srcmd5>
+    <version>20190315</version>
+    <time>1552902073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685451</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,12 @@
+Index: MotionBox-1.5.0/Sky-1.5.0/src/SkGui/SkGui.pro
+===================================================================
+--- MotionBox-1.5.0.orig/Sky-1.5.0/src/SkGui/SkGui.pro
++++ MotionBox-1.5.0/Sky-1.5.0/src/SkGui/SkGui.pro
+@@ -20,6 +20,7 @@ contains(QT_MAJOR_VERSION, 4) {
+     QT += opengl declarative network script xml svg
+ } else {
+     QT += opengl quick network xml svg
++    QT += core-private opengl quick quick-private network xml svg
+ }
+ 
+ contains(QT_MAJOR_VERSION, 5) {

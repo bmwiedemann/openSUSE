@@ -1,0 +1,12 @@
+Index: sddm-0.14.0/services/sddm.service.in
+===================================================================
+--- sddm-0.14.0.orig/services/sddm.service.in
++++ sddm-0.14.0/services/sddm.service.in
+@@ -6,6 +6,7 @@ After=systemd-user-sessions.service gett
+ 
+ [Service]
+ ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/sddm
++ExecStartPre=-@CMAKE_INSTALL_FULL_BINDIR@/plymouth quit --retain-splash
+ Restart=always
+ 
+ [Install]

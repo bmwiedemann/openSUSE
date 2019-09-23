@@ -1,0 +1,5 @@
+<package name="sca-patterns-hae" project="openSUSE:Factory">
+  <title>Supportconfig Analysis Patterns for HAE</title>
+  <description>Supportconfig Analysis (SCA) appliance patterns to identify known issues relating to all versions of High Availability Extension (HAE) clustering</description>
+  <devel project="Novell:NTS:Unstable" package="sca-patterns-hae"/>
+</package>

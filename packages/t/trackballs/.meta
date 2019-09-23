@@ -1,0 +1,12 @@
+<package name="trackballs" project="openSUSE:Factory">
+  <title>trackballs</title>
+  <description>Trackballs is a simple game similar to the classic game Marble Madness on the Amiga in the 80's. The player collects points by steering a marble ball through a labyrinth filled with vicious hammers, pools of acid, and other obstacles.
+
+When the ball reaches the destination you continue on to the next, more difficult level - unless, of course, the time runs out.
+
+You steer the ball using the mouse and by pressing space, you can jump a short distance.
+
+When all levels are finished, an editor mode permits you to create new ones (&quot;trackballs -e&quot;).</description>
+  <devel project="games" package="trackballs"/>
+  <url>http://trackballs.sf.net</url>
+</package>

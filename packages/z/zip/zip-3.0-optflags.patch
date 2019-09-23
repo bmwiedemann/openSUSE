@@ -1,0 +1,11 @@
+--- unix/Makefile
++++ unix/Makefile
+@@ -202,7 +202,7 @@
+ 	eval $(MAKE) $(MAKEF) zips `cat flags`
+ 
+ generic_gcc:
+-	$(MAKE) $(MAKEF) generic CC=gcc CPP="gcc -E"
++	$(MAKE) $(MAKEF) generic CPP="gcc -E"
+ 
+ # AT&T 6300 PLUS (don't know yet how to allocate 64K bytes):
+ att6300nodir:

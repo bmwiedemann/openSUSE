@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Sun Jul 12 18:52:45 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Do not use url for source as none is available now
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:53 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan 22 16:46:42 CET 2006 - olh@suse.de
+
+- build as noarch
+
+-------------------------------------------------------------------
+Tue Nov  8 13:55:00 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Thu Aug 14 11:53:56 CEST 2003 - tcrhak@suse.cz
+
+- use : instead of . in chown (bug #28771, patch chown)
+
+-------------------------------------------------------------------
+Mon Jan  7 10:54:52 CET 2002 - tcrhak@suse.cz
+
+- update to version 2.6
+- fixed man page
+
+-------------------------------------------------------------------
+Fri May  5 14:52:30 CEST 2000 - kukuk@suse.de
+
+- Initial package, needed by FHS
+

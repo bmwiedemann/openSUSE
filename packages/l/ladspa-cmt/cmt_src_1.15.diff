@@ -1,0 +1,10 @@
+--- src/makefile
++++ src/makefile
+@@ -73,7 +73,6 @@
+ 		$(PLUGIN_OBJECTS)					
+ 
+ install:	$(PLUGIN_LIB)
+-	-strip $(PLUGIN_LIB)
+ 	cp $(PLUGIN_LIB) $(INSTALL_PLUGINS_DIR)
+ 
+ test:	/tmp/test.wav ../../ladspa_sdk/snd/noise.wav always

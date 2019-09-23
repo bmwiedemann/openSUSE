@@ -1,0 +1,16 @@
+Author: Stefan Dirsch <sndirsch@suse.de>
+Subject: Buildfix for openSUSE 12.2 (Linux kernel headers too old)
+Signed-off-by: Stefan Dirsch <sndirsch@suse.de>
+
+Index: libevdev-0.4/libevdev/libevdev-int.h
+===================================================================
+--- libevdev-0.4.orig/libevdev/libevdev-int.h
++++ libevdev-0.4/libevdev/libevdev-int.h
+@@ -35,6 +35,7 @@
+ #define MAX_NAME 256
+ #define MAX_SLOTS 32
+ #define ABS_MT_MIN ABS_MT_SLOT
++#define ABS_MT_TOOL_Y 0x3d    /* Center Y tool position */
+ #define ABS_MT_MAX ABS_MT_TOOL_Y
+ #define ABS_MT_CNT (ABS_MT_MAX - ABS_MT_MIN + 1)
+ #define LIBEVDEV_EXPORT __attribute__((visibility("default")))

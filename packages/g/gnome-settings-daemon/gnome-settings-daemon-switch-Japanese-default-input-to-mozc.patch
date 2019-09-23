@@ -1,0 +1,17 @@
+Index: gnome-settings-daemon-3.32.1/plugins/keyboard/gsd-keyboard-manager.c
+===================================================================
+--- gnome-settings-daemon-3.32.1.orig/plugins/keyboard/gsd-keyboard-manager.c
++++ gnome-settings-daemon-3.32.1/plugins/keyboard/gsd-keyboard-manager.c
+@@ -524,7 +524,11 @@ get_sources_from_xkb_config (GsdKeyboard
+                 else
+                         id = g_strdup (layouts[i]);
+ 
+-                g_variant_builder_add (&builder, "(ss)", INPUT_SOURCE_TYPE_XKB, id);
++		if (!g_strcmp0 (id, "jp"))
++                        g_variant_builder_add (&builder, "(ss)", INPUT_SOURCE_TYPE_IBUS, "mozc-jp");
++                else
++                        g_variant_builder_add (&builder, "(ss)", INPUT_SOURCE_TYPE_XKB, id);
++
+                 g_free (id);
+         }
+ 

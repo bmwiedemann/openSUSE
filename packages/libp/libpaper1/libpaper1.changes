@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Mon Mar 18 14:04:27 UTC 2019 - lars@linux-schulserver.de - 1.2.6
+
+- update to 1.2.6:
+ * Check for ucf presence in the postrm script. See #916197 and #916198.
+ From libpaper 1.1.25:
+ * Fixed C4 dimension, closes: #829203
+ * Added debian/source/format file.
+ * Updated debian/copyright in order to refer to GPL-2 instead of
+   GPL, closes: #729004
+ * Fixed several lintian warnings about debian/* files.
+ * Update to debian standard version 3.9.8 without any fix.
+ * Correctly free() memory, closes: #914815
+ * Updated paperconfig man page for run-parts, closes: #594931
+ * Changed rules in order to cross build, closes: #693968
+
+-------------------------------------------------------------------
+Thu Jul  5 07:46:03 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  SPDX format
+
+-------------------------------------------------------------------
+Tue Jul  3 10:43:44 UTC 2012 - lars@linux-schulserver.de
+
+- update to 1.1.24+nmu2:
+  + Add multiarch support
+  + Correct DL size in paperconf
+  + Fix pending l10n issues
+  + Small changes to simplify portability
+- specfile cleanup
+
+-------------------------------------------------------------------
+Thu Sep 25 15:07:29 CEST 2008 - lars@linux-schulserver.de
+
+- moved to Education base repository
+
+-------------------------------------------------------------------
+Tue Mar 25 17:32:36 CET 2008 - lrupp@suse.de
+
+- don't build static libraries
+- splitted libpaper1-utils
+- use fdupes to reduce size
+
+-------------------------------------------------------------------
+Thu Jan 31 19:42:47 CET 2008 - lars@linux-schulserver.de
+
+- recommend groff for /etc/papersize
+- added authors to description
+
+-------------------------------------------------------------------
+Mon Jan 14 14:14:52 CET 2008 - lars@linux-schulserver.de
+
+- update to 1.1.23:
+  * completed the set of manual pages.
+  * added the libpaper.so.1 link in installation.
+  * added -E to less flags.
+
+-------------------------------------------------------------------
+Mon Aug 13 14:09:12 CEST 2007 - lars@linux-schulserver.de
+
+- update to 1.1.22
+- use some macros
+
+-------------------------------------------------------------------
+Tue Aug  7 16:47:17 CEST 2007 - sndirsch@suse.de
+
+- created package 
+

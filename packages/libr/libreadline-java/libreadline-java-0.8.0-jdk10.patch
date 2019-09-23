@@ -1,0 +1,40 @@
+Index: libreadline-java-0.8.2/src/Makefile
+===================================================================
+--- libreadline-java-0.8.2.orig/src/Makefile
++++ libreadline-java-0.8.2/src/Makefile
+@@ -2,11 +2,12 @@
+ #
+ 
+ BUILD=../build
++NATIVE=native
+ 
+-all : java native
++all : . java native
+ 
+ java: always $(BUILD)
+-	$(JAVAC) $(JC_FLAGS) -d $(BUILD) `find . -name "*.java"`
++	$(JAVAC) $(JC_FLAGS) -d $(BUILD) -h $(NATIVE) `find . -name "*.java"`
+ 
+ native: always
+ 	cd native ; $(MAKE) T_LIBS="$(T_LIBS)" JAVAINCLUDE="$(JAVAINCLUDE)" \
+Index: libreadline-java-0.8.2/src/native/Makefile
+===================================================================
+--- libreadline-java-0.8.2.orig/src/native/Makefile
++++ libreadline-java-0.8.2/src/native/Makefile
+@@ -132,14 +132,10 @@ endif
+ getline.$(OBJ_EXT): getline.c
+ 	$(CC) $(INCLUDES) $(CPPFLAGS) $(NATIVE_CFLAGS) -D$(TG) -c getline.c
+ 
+-org_gnu_readline_Readline.$(OBJ_EXT): org_gnu_readline_Readline.h \
+-																				org_gnu_readline_Readline.c
+-	$(CC) $(INCLUDES) $(CPPFLAGS) $(NATIVE_CFLAGS) -D$(TG) \
+-																		 -c org_gnu_readline_Readline.c
++org_gnu_readline_Readline.$(OBJ_EXT): org_gnu_readline_Readline.h org_gnu_readline_Readline.c
++	$(CC) $(INCLUDES) $(CPPFLAGS) $(NATIVE_CFLAGS) -D$(TG) -c org_gnu_readline_Readline.c
+ 
+ org_gnu_readline_Readline.h: $(BUILDDIR)/org/gnu/readline/Readline.class
+-	$(JAVA_HOME)/bin/javah -classpath $(BUILDDIR) -jni org.gnu.readline.Readline
+-	touch org_gnu_readline_Readline.h
+ 
+ clean:
+ 	-rm -f org_gnu_readline_Readline.h \

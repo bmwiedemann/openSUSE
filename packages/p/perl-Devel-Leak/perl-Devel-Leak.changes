@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Wed Dec 14 11:11:47 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:34 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:00 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Thu Aug  6 17:03:52 CEST 2009 - coolo@novell.com
+
+- initial package
+

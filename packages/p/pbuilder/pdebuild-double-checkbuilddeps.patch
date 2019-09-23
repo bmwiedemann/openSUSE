@@ -1,0 +1,19 @@
+dpkg-checkbuilddeps is also called by dpkg-buildpackage -S
+And this call is actually configurable with --debbuildopts, unlike
+this hardcoded one (important on rpm systems which will surely fail
+the check).
+
+Index: pbuilder-0.208/pdebuild
+===================================================================
+--- pbuilder-0.208.orig/pdebuild
++++ pbuilder-0.208/pdebuild
+@@ -72,9 +72,6 @@ if [ "${USE_PDEBUILD_INTERNAL}" = 'yes'
+ 	exit 1
+     fi
+ else
+-    if ! dpkg-checkbuilddeps -B ; then
+-	log "W: Unmet build-dependency in source"
+-    fi
+     echo "dpkg-buildpackage -S -us -uc -r${BUILDSOURCEROOTCMD} $DEBBUILDOPTS" | \
+ 	perl -pe 's/(^|\s)-[AbBF](\s|$)/$1$2/g' | \
+ 	/bin/bash

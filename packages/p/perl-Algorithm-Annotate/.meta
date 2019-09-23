@@ -1,0 +1,6 @@
+<package name="perl-Algorithm-Annotate" project="openSUSE:Factory">
+  <title>represent a series of changes in annotate form</title>
+  <description>Algorithm::Annotate generates a list that is useful for generating output
+simliar to 'cvs annotate'.</description>
+  <devel project="devel:languages:perl" package="perl-Algorithm-Annotate"/>
+</package>

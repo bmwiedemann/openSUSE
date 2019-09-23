@@ -1,0 +1,210 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e377fa9064b4d80d44312274d728cdce</srcmd5>
+    <version>0.7.92.1</version>
+    <time>1490707238</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>460559</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4b6d9dc8ea9a8eb347e70ad1489cca03</srcmd5>
+    <version>0.7.94</version>
+    <time>1491896294</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483995</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c5b412353019d90bdfb7fe63fd306d98</srcmd5>
+    <version>0.7.94</version>
+    <time>1493580274</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492211</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b0f9ef6e0ad570cf9cd1281e6e212291</srcmd5>
+    <version>0.7.95</version>
+    <time>1494096416</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492994</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e285d0a2a4dd5e9958c687afd5198d20</srcmd5>
+    <version>0.7.96</version>
+    <time>1496534397</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500476</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6eb60f1297dc175d3258537a082e49de</srcmd5>
+    <version>0.7.97</version>
+    <time>1498910764</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507341</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b5e66cd0a8d6e4feec811a2ae9157e03</srcmd5>
+    <version>0.7.98</version>
+    <time>1502562427</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>515320</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1636a41bda6fff90279d22a877b64d8b</srcmd5>
+    <version>0.7.99</version>
+    <time>1505238941</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523277</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>06e6d2ba04db90e8bda7050d2507b942</srcmd5>
+    <version>17.10</version>
+    <time>1509787514</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538493</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6a909e6e755e4c96870b5b6417e0c7a6</srcmd5>
+    <version>17.12</version>
+    <time>1515876313</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559135</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>48671898ed11cbdc0cbef4025b44ae3b</srcmd5>
+    <version>18.03</version>
+    <time>1521904449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589141</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e2ec3cdfd332fb4d054df6896a667d12</srcmd5>
+    <version>18.05</version>
+    <time>1526371835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605754</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c7974abdae3d29b5dc888268a251bc1b</srcmd5>
+    <version>18.05</version>
+    <time>1527582675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610487</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a0e7ee980ed66db5ccb6443b98fbb73e</srcmd5>
+    <version>18.08</version>
+    <time>1536094561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632535</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5bbb06230372202590fb2bb25fc24888</srcmd5>
+    <version>18.08.1</version>
+    <time>1536833453</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634745</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2504ae18d0eb7577003e40ea7afe5c2f</srcmd5>
+    <version>18.12</version>
+    <time>1544632200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657293</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8b896e8a6bc9d7eb7c71413d98224ce4</srcmd5>
+    <version>19.04</version>
+    <time>1557263788</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.04
+  Added:
+  * USAC: DRC effect types, Sample peak level, True peak level,
+    Program loudness
+  * HDR: SMPTE ST 2094 App 4 (including HDR10+) support
+  * HDR: move HDR10, Dolby Vision and SL-HDR meta to specific
+    generic &quot;HDR Format&quot; lines
+  * Matroska: SMPTE ST 2086 (HDR10) support
+  * Matroska: FieldOrder support
+  * HEIF image format support
+  * AV1: support of AV1 in MP4, HEIF, IVF
+  * MOV: Add a lot more countries to AppleStoreCountry field
+    internal list
+  * MXF: Fix memory leak when fully parsing big file with
+    acquisition metadata
+  * HEVC: more HEVC profiles (Multiview, Scalable, Screen
+    Content...)
+  * AAC: better handling of corrupted streams
+  * AAC: better handling of unknown channel layouts
+  * AVC in MP4: better support of corrupted streams
+  Changed:
+  * B1101, AVI: fix crash with some invalid streams
+  * B1101, SMPTE ST 337: fix crash with some invalid streams
+  * Matroska: chapters timestamp were not display if chapters
+    have no name
+  * MXF: Fix false positive truncated file detection when there
+    is no Random Index Pack
+  * AAC: channel layout typos (Rls instead of Lrs, Lr instead of
+    Rb)
+  * ProRes: correctly show color space if alpha plane is present
+  * MPEG Audio: some VBR files use &quot;Info&quot; Xing header, so we
+    ignore the  difference between &quot;Info&quot; and &quot;Xing&quot;
+  * I943, MPEG-4: wrong display aspect ratio in some corner
+    cases (32-bit release only)
+  * I1096, OGG: assign METADATA_BLOCK_PICTURE tag to cover
+</comment>
+    <requestid>697460</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0ce7b55aec6cd5928bdf38b62ba959b7</srcmd5>
+    <version>19.07</version>
+    <time>1563701590</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.07
+  Added:
+  * Dolby E: readout of Dolby E program description
+  * MXF: Detection of Dolby Vision
+  * MP4: support of Spatial Audio Metadata
+  * DV: color space is explicit
+  * DV: audio format settings
+  * Matroska: PCM bit rate
+  * MOV, MXF: Time code frame rate
+  * DV: DVCAM commercial name for locked audio and PAL 4:2:0
+  * MXF: Time code track name
+  Corrected:
+  * USAC: frame rate was missing in case of non standard
+    sampling rate
+  * USAC: fix infinite loop with some LATM streams
+  * WAV: MP3 delay should be added to BWF time reference
+  * TTML: fix wrong output with standalone files
+  * N19/STL: fix crash with some uncommon framerates
+  * VC-3: fix sub sampling with some v2 files
+  * DV: Time code frame number was wrong (divided by 2) for
+    50/60 fps content
+</comment>
+    <requestid>716091</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3a1f7ed55cf4fbcd769cfe4b57246da3</srcmd5>
+    <version>19.09</version>
+    <time>1568623774</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>730157</requestid>
+  </revision>
+</revisionlist>

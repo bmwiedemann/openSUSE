@@ -1,0 +1,113 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e16cf8b7079add5b73e81cb6f1af7bdb</srcmd5>
+    <version>0.1.2.1</version>
+    <time>1432190056</time>
+    <user>coolo</user>
+    <comment>Efficiently run periodic, on-demand actions</comment>
+    <requestid>307143</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4ea6676c0f3dde52c891f65c3af9c469</srcmd5>
+    <version>0.1.2.2</version>
+    <time>1438899917</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.2.2
+* Added Control.Debounce</comment>
+    <requestid>320991</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>831f76108ae00fde68719857538b24ec</srcmd5>
+    <version>0.1.3</version>
+    <time>1452122716</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.3
+* Adding a new AIP - reaperKill (forwarded request 352266 from mimi_vx)</comment>
+    <requestid>352267</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7ac8785a84062374f202d6b220010407</srcmd5>
+    <version>0.1.3.1</version>
+    <time>1462051810</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.3.1
+* Doc improvements (forwarded request 391605 from mimi_vx)</comment>
+    <requestid>391606</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6a76e147439af45084408bc836fb63d6</srcmd5>
+    <version>0.1.4</version>
+    <time>1463498066</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.4
+* Provide updateActionModify API in AutoUpdate (forwarded request 394872 from mimi_vx)</comment>
+    <requestid>394873</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3be7094c3146bbe6a130d4365fd1466d</srcmd5>
+    <version>0.1.4</version>
+    <time>1469080812</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>410903</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>d1dcec67a46f542586de00de71cbae6e</srcmd5>
+    <version>0.1.4</version>
+    <time>1505503277</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524150</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>437a87f0e8162cfa1268bd90a268287c</srcmd5>
+    <version>0.1.4</version>
+    <time>1527675422</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609762</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>3e6d13a7703c5597c82c95fbe8b2e0c6</srcmd5>
+    <version>0.1.4</version>
+    <time>1532445181</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- initial commit</comment>
+    <requestid>623720</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>bfc31212ede78a894ad4099a6db36af1</srcmd5>
+    <version>0.1.4</version>
+    <time>1540448547</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643349</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>209aa7136ebdc4c08de6696d2f677181</srcmd5>
+    <version>0.1.4.1</version>
+    <time>1551025112</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>678025</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d2beb7ca3407b64f6ae5771445035f56</srcmd5>
+    <version>0.1.5</version>
+    <time>1561882890</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>712501</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>85706a7b9246fd22bf8eca3f3e909b92</srcmd5>
+    <version>0.1.6</version>
+    <time>1564413959</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>715408</requestid>
+  </revision>
+</revisionlist>

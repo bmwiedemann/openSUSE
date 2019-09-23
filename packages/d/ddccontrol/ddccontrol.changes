@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Wed Apr 11 10:36:44 UTC 2018 - mstaudt@suse.com
+
+- 90-ddccontrol-i2c.rules:
+  Fix typo that kept i2c-dev from being loaded.
+  Fixes (boo#1088935).
+
+-------------------------------------------------------------------
+Mon Oct 17 09:14:23 UTC 2016 - jengelh@inai.de
+
+- Set proper Requires, Group, BuildArch and collect all directories
+  in %files.
+
+-------------------------------------------------------------------
+Fri Oct 14 13:19:44 UTC 2016 - mstaudt@suse.com
+
+- ddccontrol.spec: Remove AUTHORS sections
+
+-------------------------------------------------------------------
+Wed Feb 10 14:20:51 UTC 2016 - maximilian.staudt@suse.com
+
+- Change source archive name to include last commit date
+- Streamline udev rule handling in .spec file
+- Simplify .spec file
+
+-------------------------------------------------------------------
+Wed Feb 10 10:49:54 UTC 2016 - sndirsch@suse.com
+
+- specfile
+  + don't use git commit in version, since it's not considered
+    future proof for obvious reasons
+  + replace lib Buildrequires by pkgconfig file buildrequires in
+    order to make it package name independant
+  + lib should require udev
+  + move autogen.sh from %setup to %build section
+  + remove unneeded .la file
+  + add /usr/lib/udev/{,rules.d} directory to filelist (not sure
+    why this is needed when udev is already required though)
+
+-------------------------------------------------------------------
+Tue Feb  9 16:57:13 UTC 2016 - maximilian.staudt@suse.com
+
+- libddccontrol depends on ddccontrol-db, add dependency
+
+-------------------------------------------------------------------
+Tue Feb  9 16:52:09 UTC 2016 - maximilian.staudt@suse.com
+
+- Added udev rule to allow access to I2C buses on VGA adapters
+
+-------------------------------------------------------------------
+Tue Feb  9 13:27:06 UTC 2016 - maximilian.staudt@suse.com
+
+- Check in rpmlintrc
+
+-------------------------------------------------------------------
+Tue Feb  9 13:23:37 UTC 2016 - maximilian.staudt@suse.com
+
+- Remove pciutils-devel from BuildRequires - we don't build ddcpci
+
+-------------------------------------------------------------------
+Tue Feb  9 10:35:58 UTC 2016 - maximilian.staudt@suse.com
+
+- Simplify .spec
+- Add remaining documentation
+- Add rpmlintrc to silence warning on duplicate icons (they're not)
+
+-------------------------------------------------------------------
+Mon Feb  8 18:37:00 UTC 2016 - maximilian.staudt@suse.com
+
+- ddccontrol.spec: Include ideas from sbrabec's spec file, split -doc
+
+-------------------------------------------------------------------
+Mon Feb  8 17:30:32 UTC 2016 - maximilian.staudt@suse.com
+
+- ddccontrol.spec: Fix build on i586 (_libdir)
+
+-------------------------------------------------------------------
+Mon Feb  8 17:03:41 UTC 2016 - maximilian.staudt@suse.com
+
+- ddccontrol.spec: Simplified and corrected warnings emitted by rpmlint
+
+-------------------------------------------------------------------
+Mon Feb  8 15:22:53 UTC 2016 - maximilian.staudt@suse.com
+
+- Initial version: git 9d89d8c (0.4.2 and further patches)
+- 0002_cerrors.patch: Included from Debian 8 (jessie)
+

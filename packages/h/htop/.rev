@@ -1,0 +1,416 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>429e7e63b71c9931b34e180ed34140cc</srcmd5>
+    <version>0.6.5</version>
+    <time>1180060357</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3e7a48cf108b1e019c4e44845c6e09bd</srcmd5>
+    <version>0.6.6</version>
+    <time>1180898690</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5b620f50ada1089a147842b600a40b0f</srcmd5>
+    <version>0.7</version>
+    <time>1196106202</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0f59990f6fd97c4214d3034cd7d303b3</srcmd5>
+    <version>0.8</version>
+    <time>1215809150</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>8eb52e694106de169b182af8ae767753</srcmd5>
+    <version>0.8</version>
+    <time>1217642442</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6c9f7f27c74bea95866c922cc56be5b8</srcmd5>
+    <version>0.8.1</version>
+    <time>1222267775</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2838cd599ac86920d137c017539d5699</srcmd5>
+    <version>0.8.1</version>
+    <time>1227277306</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5b5f780c6b64aeee98cde1e94bfa3d17</srcmd5>
+    <version>0.8.3</version>
+    <time>1246697595</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>5b5f780c6b64aeee98cde1e94bfa3d17</srcmd5>
+    <version>0.8.3</version>
+    <time>1246697595</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>ea2f1639aa382a8001431b855c7fe495</srcmd5>
+    <version>0.8.3</version>
+    <time>1260981350</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/htop based on submit request 26774 from user puzel
+</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>bedf5716f6571ddf636b69660d62b374</srcmd5>
+    <version>0.8.3</version>
+    <time>1268923957</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>bedf5716f6571ddf636b69660d62b374</srcmd5>
+    <version>0.8.3</version>
+    <time>1278667350</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>bedf5716f6571ddf636b69660d62b374</srcmd5>
+    <version>0.8.3</version>
+    <time>1278678582</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>f03955ef215aaff316807b2fa6c3c0bb</srcmd5>
+    <version>0.8.3</version>
+    <time>1288705246</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51731 from user elvigia
+</comment>
+    <requestid>51731</requestid>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>0f9f0d62480b1acbbc79765298563d55</srcmd5>
+    <version>0.8.3</version>
+    <time>1288705252</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51731
+</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>88313bd8ed25ae91bc98372dfcf880b9</srcmd5>
+    <version>0.9</version>
+    <time>1291029595</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 54073 from user puzel
+</comment>
+    <requestid>54073</requestid>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>0e3b997f5021f5f47fc00f941798c698</srcmd5>
+    <version>0.9</version>
+    <time>1291029610</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 54073
+</comment>
+  </revision>
+  <revision rev="18" vrev="13">
+    <srcmd5>0e3b997f5021f5f47fc00f941798c698</srcmd5>
+    <version>0.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="14">
+    <srcmd5>3b2a036573fe20b9cbacd248f9478761</srcmd5>
+    <version>0.9</version>
+    <time>1312268786</time>
+    <user>saschpe</user>
+    <comment>- Use --enable-unicode and switch to ncurses ABI v6 (forwarded request 77479 from elvigia)</comment>
+    <requestid>77612</requestid>
+  </revision>
+  <revision rev="20" vrev="15">
+    <srcmd5>890b6f75850cd65b9f87529d6c723bbf</srcmd5>
+    <version>0.9</version>
+    <time>1312268796</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77612
+</comment>
+  </revision>
+  <revision rev="21" vrev="17">
+    <srcmd5>890b6f75850cd65b9f87529d6c723bbf</srcmd5>
+    <version>0.9</version>
+    <time>1319181974</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="14">
+    <srcmd5>8be1da6d5866af10060df3fe979d110c</srcmd5>
+    <version>1.0</version>
+    <time>1322215921</time>
+    <user>coolo</user>
+    <comment>update to 1.0</comment>
+    <requestid>93512</requestid>
+  </revision>
+  <revision rev="23" vrev="15">
+    <srcmd5>6299a1a1cd785898e56ed2415655e3e9</srcmd5>
+    <version>1.0</version>
+    <time>1323191912</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b7e8173cf9cedbafda61068f49d98e56</srcmd5>
+    <version>1.0.1</version>
+    <time>1329476432</time>
+    <user>coolo</user>
+    <comment>- update to htop-1.0.1 (bugfix release)
+  * respecting $XDG_CONFIG_HOME 
+    (thanks to Hadzhimurad Ustarkhan for the suggestion.)
+  * Safer behavior on the kill screen, to make it harder to kill
+    the wrong process.
+  * BUGFIX: behavior of 'F' (follow) key was broken, also affecting
+    the persistence of mouse selections.
+  * BUGFIX: keep main panel up-to-date when running the screen
+    manager, to fix crash when processes die while on the F9/Kill
+    screen.</comment>
+    <requestid>105605</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>b7e8173cf9cedbafda61068f49d98e56</srcmd5>
+    <version>1.0.1</version>
+    <time>1340183442</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b9ad04d0d47833035bde2717e4a4ddcd</srcmd5>
+    <version>1.0.2</version>
+    <time>1352822604</time>
+    <user>coolo</user>
+    <comment>- update to htop-1.0.2 
+  * Add IO priority support ('i' key)
+  * Avoid deleting .htoprc if it is a symlink
+  * Fail gracefully when /proc is not mounted
+    (thanks to Philipp Hagemeister)
+  * Option to update process names on every refresh
+    (thanks to Rob Hoelz)
+  * BUGFIX: Fix crashes when process list is empty</comment>
+    <requestid>140939</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>b9ad04d0d47833035bde2717e4a4ddcd</srcmd5>
+    <version>1.0.2</version>
+    <time>1359109055</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>b9ad04d0d47833035bde2717e4a4ddcd</srcmd5>
+    <version>1.0.2</version>
+    <time>1379662625</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>af5c02b4d691971d81e66d932100ff81</srcmd5>
+    <version>1.0.2</version>
+    <time>1385562601</time>
+    <user>coolo</user>
+    <comment>- Better make install, remove %clean (forwarded request 208512 from jengelh)</comment>
+    <requestid>208633</requestid>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>70cd439e7b26bec84a6474534c1f00fa</srcmd5>
+    <version>1.0.2</version>
+    <time>1389102144</time>
+    <user>coolo</user>
+    <comment>- improve autools build, we do not want packages 
+  using, for example std=c99, instead determine the
+  latest C standard with gnu extensions using autoconf macros.
+  (htop-stdgnu.patch) (forwarded request 212304 from elvigia)</comment>
+    <requestid>212316</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>cbe7046663c165d8afffc8c813e253b3</srcmd5>
+    <version>1.0.3</version>
+    <time>1401516560</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.3
+  * Tag all children ('c' key)
+  * Fixes in accounting of guest time when using virtualization
+  * Performance improvements
+  * Further performance improvements due to conditional parsing
+    of IO data depending on selected fields.
+  * Better consistency in coloring.
+  * Increase limit of buffer when tracing a deep nested process tree.
+  * Display pagefault stats.
+  * BUGFIX: Fix crash when adding meters and toggling detailed CPU time.
+  * Add column to track the OOM-killer score of processes
+  * Rebase htop-stdgnu.patch (forwarded request 234764 from Dmitry_R)</comment>
+    <requestid>235615</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>cbe7046663c165d8afffc8c813e253b3</srcmd5>
+    <version>1.0.3</version>
+    <time>1409301182</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>e293d3875eae26fe73b7f6717790e645</srcmd5>
+    <version>1.0.3</version>
+    <time>1424622391</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286991</requestid>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>c68c083bbed99539243adb0002e20a29</srcmd5>
+    <version>1.0.3</version>
+    <time>1438899847</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320744</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>7632b79d140429ce075d9f85b36a689b</srcmd5>
+    <version>2.0.0</version>
+    <time>1455610720</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358985</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>eb5bdf9f1309d0846c82703ade8fde11</srcmd5>
+    <version>2.0.0</version>
+    <time>1458120923</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369780</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f2064053f0d0628bfc0f48eb6aec29eb</srcmd5>
+    <version>2.0.1</version>
+    <time>1468579792</time>
+    <user>dimstar_suse</user>
+    <comment>- added upstream patch fixing ESCDELAY-related build failure on modern ncurses
+  (htop-2.0.1-fix-escdelay-usage.patch)
+- updated configure script parameters
+
+- Update to v2.0.1
+  * OpenBSD: Various fixes and improvements (thanks to Michael McConville and 
+    Juan Francisco Cantero Hurtado)
+  * FreeBSD: fix CPU and memory readings (thanks to Tim Creech, Hung-Yi Chen, 
+    Bernard Spil, Greg V)
+  * FreeBSD: add battery support (thanks to Greg V)
+  * Linux: Retain last-obtained name of a zombie process
+  * Mac OS X: Improve portability for OS X versions (thanks to Michael Klein)
+  * Mac OS X: Fix reading command-line arguments and basename
+  * Mac OS X: Fix process state information
+  * Mac OS X: Fix tree view collapsing/expanding
+  * Mac OS X: Fix tree organization
+  * Mac OS X: Fix memory accounting
+  * Fix crash when emptying a column of meters
+  * Make Esc key more responsive
+- removed htop-2.0.0-fix-buffer-reuse.patch and htop-stdgnu.patch</comment>
+    <requestid>407228</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0bba27ad83a75cd20b46e189fc9ae6ed</srcmd5>
+    <version>2.0.2</version>
+    <time>1469742428</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415036</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>0b95bf4dc54ae39488d2616ff864f097</srcmd5>
+    <version>2.0.2</version>
+    <time>1477990738</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>437978</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>fa0da608676eef3299da5ec98303703c</srcmd5>
+    <version>2.0.2</version>
+    <time>1483959352</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gpg signature</comment>
+    <requestid>448530</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>eacc476b86e04daed0ac97a5e9521571</srcmd5>
+    <version>2.1.0</version>
+    <time>1517932281</time>
+    <user>dimstar_suse</user>
+    <comment>- Small cleanup with spec-clener
+
+- Update to version 2.1.0
+  * Linux: Delay accounting metrics
+    (thanks to André Carvalho)
+  * Support for real-time signals
+    (thanks to Kang-Che Sung)
+  * 'c' key now works with threads as well
+  * Session column renamed from SESN to SID
+    (thanks to Kamyar Rasta)
+  * Improved UI for meter style selection
+    (thanks to Kang-Che Sung)
+  * Improved code for constructing process tree
+    (thanks to wangqr)
+  * Compile-time option to disable setuid
+  * Error checking of various standard library operations
+  * Replacement of sprintf with snprintf
+    (thanks to Tomasz Kramkowski)
+  * Linux: performance improvements in battery meter
+  * Linux: update process TTY device
+  * Linux: add support for sorting TASK_IDLE
+    (thanks to Vladimir Panteleev)
+  * Linux: add upper-bound to running process counter
+    (thanks to Lucas Correia Villa Real)
+  * BUGFIX: avoid crash when battery is removed
+    (thanks to Jan Chren)
+- Refreshed htop-desktop-file-fix-thoenig-01.patch
+- Added htop-script-python3.patch</comment>
+    <requestid>573317</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>cb5e13e5b07bd9886f5d9ae14e5382af</srcmd5>
+    <version>2.1.0</version>
+    <time>1519555627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579813</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>b323c93fad42ad46e1a40ec5a5c10b79</srcmd5>
+    <version>2.2.0</version>
+    <time>1523616667</time>
+    <user>maxlin_factory</user>
+    <comment>- Simplify spec file
+  * Drop support for building on older distros
+  * Trim describtion
+- Enable delayacct
+
+- Update to version 2.2.0
+  * -t/--tree flag for starting in tree-view mode
+  * Various automake and build improvements
+  * Check for pkg-config when building with --enable-delayacct
+  * Avoid some bashisms in configure script
+  * Use CFLAGS from ncurses*-config if present
+  * Header generator supports non-UTF-8 environments
+  * Changed detection of kernel threads
+  * Collapse current subtree pressing Backspace
+  * BUGFIX: fix behavior of SYSCR column
+  * BUGFIX: obtain exit code of lsof correctly
+  * BUGFIX: fix crash with particular keycodes
+  * BUGFIX: fix issue with small terminals
+  * BUGFIX: fix terminal color issues
+  * BUGFIX: preserve LDFLAGS when building
+  * BUGFIX: fixed overflow for systems with &gt;= 100 signals
+- cleanup with spec-cleaner
+- rebase htop-script-python3.patch</comment>
+    <requestid>595963</requestid>
+  </revision>
+</revisionlist>

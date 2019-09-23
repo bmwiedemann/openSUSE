@@ -1,0 +1,17 @@
+--- qclib-1.0.0/Makefile	2015-10-26 07:46:09.000000000 +0100
++++ qclib-1.0.0/Makefile	2015-10-26 07:50:21.000000000 +0100
+@@ -64,10 +64,10 @@
+ 
+ install: libqc.a libqc.so.$(VERSION)
+ 	echo "  INSTALL"
+-	install -Dm 644 libqc.a $(DESTDIR)/usr/lib64/libqc.a
+-	install -Dm 755 libqc.so.$(VERSION) $(DESTDIR)/usr/lib64/libqc.so.$(VERSION)
+-	ln -sr $(DESTDIR)/usr/lib64/libqc.so.$(VERSION) $(DESTDIR)/usr/lib64/libqc.so.$(VERM)
+-	ln -sr $(DESTDIR)/usr/lib64/libqc.so.$(VERSION) $(DESTDIR)/usr/lib64/libqc.so
++	install -Dm 644 libqc.a $(DESTDIR)/usr/$(LIBDIR)/libqc.a
++	install -Dm 755 libqc.so.$(VERSION) $(DESTDIR)/usr/$(LIBDIR)/libqc.so.$(VERSION)
++	ln -sr $(DESTDIR)/usr/$(LIBDIR)/libqc.so.$(VERSION) $(DESTDIR)/usr/$(LIBDIR)/libqc.so.$(VERM)
++	ln -sr $(DESTDIR)/usr/$(LIBDIR)/libqc.so.$(VERSION) $(DESTDIR)/usr/$(LIBDIR)/libqc.so
+ 	install -Dm 644 query_capacity.h $(DESTDIR)/usr/include/query_capacity.h
+ 	install -Dm 644 README $(DESTDIR)/usr/share/doc/packages/qclib/README
+ 	install -Dm 644 LICENSE $(DESTDIR)/usr/share/doc/packages/qclib/LICENSE

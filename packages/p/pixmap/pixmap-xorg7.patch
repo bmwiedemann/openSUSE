@@ -1,0 +1,11 @@
+--- Imakefile
++++ Imakefile
+@@ -21,7 +21,7 @@
+ #endif
+
+ XCOMM Where you have rgb.txt
+-RGBTXT = $(LIBDIR)/rgb.txt
++RGBTXT = $(SHAREDIR)/rgb.txt
+
+ XCOMM LUCS extra variable for where bitmaps go
+ PIXMAPDIR = $(LIBDIR)/Pixmap

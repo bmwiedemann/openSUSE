@@ -1,0 +1,29 @@
+--- a/config.h.cmake
++++ b/config.h.cmake
+@@ -20,5 +20,7 @@
+ *
+ *******************************************************************************/
+ 
++#define LINPHONE_QT_VERSION "${PROJECT_VERSION}"
++
+ #cmakedefine MSPLUGINS_DIR "${MSPLUGINS_DIR}"
+ #cmakedefine ENABLE_UPDATE_CHECK 1
+\ No newline at end of file
+--- a/src/app/AppController.cpp
++++ b/src/app/AppController.cpp
+@@ -25,10 +25,15 @@
+ #include <QMessageBox>
+ #include <QQuickStyle>
+ 
++#include "config.h"
+ #include "gitversion.h"
+ 
+ #include "AppController.hpp"
+ 
++#ifndef LINPHONE_QT_GIT_VERSION
++#define LINPHONE_QT_GIT_VERSION LINPHONE_QT_VERSION
++#endif
++
+ // Must be unique. Used by `SingleApplication` and `Paths`.
+ #define APPLICATION_NAME "linphone"
+ #define APPLICATION_VERSION LINPHONE_QT_GIT_VERSION

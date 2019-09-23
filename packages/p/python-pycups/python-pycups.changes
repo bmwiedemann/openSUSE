@@ -1,0 +1,267 @@
+-------------------------------------------------------------------
+Wed Aug 28 19:22:11 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Package /usr/lib/rpm/postscriptdriver.prov again, in the
+  new "cups-rpm-helper" subpackage (bsc#735865). The file hasn't
+  been packaged any more after the switch from python-cups to 
+  python-pycups (sr#502741).
+  * removed revert-postscriptdriver.prov-py3.patch
+    (we use python3 now)
+
+-------------------------------------------------------------------
+Tue May 14 20:43:51 UTC 2019 - svasudevan@suse.com
+
+- Update to version 1.9.74
+  * no changelog provided
+
+-------------------------------------------------------------------
+Mon Jun 19 15:53:20 UTC 2017 - toddrme2178@gmail.com
+
+- Provide python-cups/python3-cups
+
+-------------------------------------------------------------------
+Fri Jun  9 22:02:30 UTC 2017 - toddrme2178@gmail.com
+
+- Provide old packages.
+- Minor singlespec cleanups.
+
+-------------------------------------------------------------------
+Mon Jun  5 10:48:38 UTC 2017 - aloisio@gmx.com
+
+- Update to 1.9.73
+  * Fixed build for CUPS 1.6.3 by making several constants
+    conditional on CUPS >= 1.7.
+- Converted to single-spec
+- Renamed package to python-pycups to follow naming guidelines
+
+-------------------------------------------------------------------
+Sun Mar  8 12:28:06 UTC 2015 - benoit.monin@gmx.fr
+
+- add patch revert-postscriptdriver.prov-py3.patch:
+  revert back to python2 for postscriptdriver.prov script
+
+-------------------------------------------------------------------
+Thu Feb 26 22:03:25 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.9.72:
+  * Removed private CANCEL_DOCUMENT, GET_DOCUMENT_ATTRIBUTES,
+    GET_DOCUMENTS, DELETE_DOCUMENT, SET_DOCUMENT_ATTRIBUTES IPP
+    operation constants
+  * Fixed build for CUPS 1.4 by making several constants
+    conditional on CUPS >= 1.5
+- additional changes from version 1.9.71:
+  * Fixes for cups.IPP_JOB_CANCELED, cups.IPP_ERROR_JOB_CANCELED,
+    cups.IPP_STATUS_ERROR_CUPS_AUTHENTICATION_CANCELED,
+    cups.IPP_AUTHENTICATION_CANCELED,
+    cups.IPP_STATUS_ERROR_CUPS_UPGRADE_REQUIRED, and
+    cups.IPP_UPGRADE_REQUIRED
+- additional changes from version 1.9.70:
+  * cups.ippErrorString(). Fixed build with CUPS 1.5. New-style
+    (CUPS 1.6) naming for HTTP status (cups.HTTP_STATUS_*), IPP
+    orientation (cups.IPP_ORIENT_*), IPP status (cups.IPP_STATUS_*),
+    and IPP I/O (cups.IPP_STATE_*) constants
+- additional changes from version 1.9.69:
+  * cups.IPPRequest.operation, cups.IPPRequest.state,
+    cups.IPPRequest.statuscode, cups.ippOpString(), cups.IPP_OP_*,
+    cups.IPPRequest.addSeparator(), cups.IPPRequest.add(),
+    cups.IPPRequest.writeIO()
+- additional changes from version 1.9.68:
+  * Now builds against CUPS 2.0
+  * The rpm provider script is now Python3
+- additional changes from version 1.9.67:
+  * Bindings for streaming API: cups.CUPS_FORMAT_* constants,
+    cups.createJob(), cups.startDocument(), cups.writeRequestData(),
+    cups.finishDocument()
+- remove Changelog from doc: deleted by upstream
+
+-------------------------------------------------------------------
+Sat Jan 25 01:37:22 UTC 2014 - os-dev@jacraig.com
+
+- Update to 1.9.66:
+  * Python3 compatibility
+- Changes from 1.9.65:
+  * cupsconnection.c (PyObject_from_attr_value): Fix getting of booleans.
+  * cupsconnection.c (UTF8_from_PyObj): Propagate UTF-8 decoding errors.
+  * cupsconnection.c: Don't just append printer name to base URI to get
+    printer URI. Need to actually encode the name.
+  * cupsconnection.c: Fixed documentation typo for Connection.getPPDs2.
+
+-------------------------------------------------------------------
+Sat Sep 14 18:30:34 UTC 2013 - os-dev@jacraig.com
+
+- Update to 1.9.63:
+  * cups.IPPError tuple now contains the specific error string, if one is
+    available.
+- Changes from 1.9.62:
+  * Define all constants regardless of which version of CUPS is built against.
+- Added %doc to build section with several doc files from the source.
+
+-------------------------------------------------------------------
+Mon Sep  3 01:59:14 UTC 2012 - jengelh@inai.de
+
+- Remove redundant %clean section
+- Make package compile on RH6-like systems by using standard
+  python macros
+
+-------------------------------------------------------------------
+Wed Mar 28 11:23:39 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.9.61:
+  + Several bug fixes, including reference count fixes and better
+    handling of failures from Py* functions.
+
+-------------------------------------------------------------------
+Tue Nov 15 16:50:12 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 1.9.60:
+  + Add new constants defined in cups 1.5.
+
+-------------------------------------------------------------------
+Tue Oct  4 07:45:18 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 1.9.59:
+  + Password callbacks can now return None to indicate they want to
+    abort the current operation.
+
+-------------------------------------------------------------------
+Sat Jul 30 09:57:14 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 1.9.58:
+  + Add cups.Connection.adminExportSamba.
+  + Build fixes.
+
+-------------------------------------------------------------------
+Thu Jun  9 16:37:58 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 1.9.57:
+  + Fixed rpm provides script for newer versions of rpm.
+
+-------------------------------------------------------------------
+Fri Jun  3 14:33:32 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 1.9.56:
+  + Fix build against CUPS < 1.4.
+
+-------------------------------------------------------------------
+Fri May 27 15:22:12 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 1.9.55:
+  + Add:
+    - cups.IPP_QUALITY_DRAFT, cups.IPP_QUALITY_NORMAL,
+      cups.IPP_QUALITY_HIGH
+    - cups.IPP_PORTRAIT, cups.IPP_LANDSCAPE,
+      cups.IPP_REVERSE_PORTRAIT, cups.IPP_REVERSE_LANDSCAPE
+    - cups.IPP_RES_UNITS_CM, cups.IPP_RES_UNITS_INCH
+  + Support for IPP_TAG_RESOLUTION as triplet (xres, yres, units).
+- Changes from version 1.9.54:
+  + Add rpm 4.9 hooks that can tag printer driver RPM packages with
+    the MFG and MDL values for devices they support.
+- Changes from version 1.9.53:
+  + Fix a thread-local storage issue (rh#662805).
+
+-------------------------------------------------------------------
+Wed Nov 10 14:02:13 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.9.52:
+  + cups.Connection.getPPDs2(): New method, identical to getPPDs()
+    but returning all attribute values as lists.
+
+-------------------------------------------------------------------
+Fri Sep  3 20:02:22 CEST 2010 - vuntz@opensuse.org
+
+- Fix build with python 2.7, by fixing a filename in the file list.
+
+-------------------------------------------------------------------
+Fri Aug  6 17:38:14 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 1.9.51:
+  + Fixed stack overflow (rh#584991).
+  + Use strcpy instead of sprintf when no format required.
+- Changes from version 1.9.50:
+  + cups.Connection.getPPD3()
+  + cups.Connection.getJobs() now takes optional
+    requested_attributes argument.
+  + cups.Connection.getPrinterAttributes(): member-names is now
+    always a list.
+  + cups.HTTP_NOT_MODIFIED constant.
+  + cups.PPD_ORDER_ANY constant.
+  + cups.PPD_ORDER_DOCUMENT constant.
+  + cups.PPD_ORDER_EXIT constant.
+  + cups.PPD_ORDER_JCL constant.
+  + cups.PPD_ORDER_PAGE constant.
+  + cups.PPD_ORDER_PROLOG constant.
+  + cups.PPD.emitString() method.
+  + cups.PPD.emit() method.
+  + cups.PPD.emitAfterOrder() method.
+  + cups.PPD.emitFd() method.
+  + cups.PPD.emitJCL() method.
+  + cups.PPD.emitJCLEnd() method.
+
+-------------------------------------------------------------------
+Mon Mar 22 14:35:09 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.9.49:
+  + Fix rh#567386.
+
+-------------------------------------------------------------------
+Sat Feb 13 15:31:16 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.9.48:
+  + cups.cancelJob()'s optional second argument is now a keyword.
+- Changes from version 1.9.47:
+  + cups.restartJob() now takes optional job_hold_until argument.
+  + cups.cancelJob() now takes optional purge_job argument.
+  + cups.setPasswordCB2() method.
+  + cups.Connection.moveJob() method.
+  + cups.IPPAttribute and cups.IPPRequest types.
+  + IPP state constants.
+  + cups.Connection.getDevices() now takes optional timeout
+    argument.
+- Changes from version 1.9.46:
+  + cups.Connection.getDevices() now takes optional limit,
+    exclude_schemes and include_schemes arguments.
+  + cups.Connection.getPPDs() now takes optional limit,
+    exclude_schemes, include_schemes, ppd_device_id, ppd_make,
+    ppd_make_and_model, ppd_model_number, ppd_product,
+    ppd_psversion, ppd_type and ppd_natural_language arguments.
+  + cups.ppdSetConformance() method.
+  + cups.PPD_CONFORM_RELAXED constant.
+  + cups.PPD_CONFORM_STRICT constant.
+  + cups.modelSort() now accepts Unicode strings.
+- Changes from version 1.9.45:
+  + cups.PPD.localizeIPPReason()
+  + cups.PPD.localizeMarkerName()
+- Changes from version 1.9.44:
+  + Fix threading crashes.
+- Changes from version 1.9.43:
+  + Avoid crashing when CUPS-Get-Devices call asks for password.
+  + Set printer-uri attribute in Connection.getJobs, not job-uri.
+  + Fixed threading support.
+
+-------------------------------------------------------------------
+Mon Sep 15 21:39:50 CEST 2008 - dmueller@suse.de
+
+- fix requires (python-base is unversioned and does not exist)
+
+-------------------------------------------------------------------
+Wed Sep 10 11:59:27 CEST 2008 - kssingvo@suse.de
+
+- Update to version 1.9.42:
+  * New function for extracting requested attributes from list
+  * Support limit and first-job-id attributes
+  * New parameter requested_attributes
+  * Documentation fix for getJobAttributes
+
+-------------------------------------------------------------------
+Wed Aug 20 14:19:48 CEST 2008 - kssingvo@suse.de
+
+- Update to version 1.9.41:
+  * Allow destination to be a file descriptor or a Python file
+    object, and call cupsPutFd() in those cases
+  * Fixed requested_attributes parameter
+
+-------------------------------------------------------------------
+Mon Jul 14 09:51:00 CEST 2008 - dmueller@suse.de
+
+- Initial package (1.9.40) 
+

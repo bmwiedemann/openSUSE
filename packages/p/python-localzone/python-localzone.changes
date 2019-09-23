@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Fri Apr 12 08:25:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not use pytest macro as this goes to leap and the macros
+  update is not yet processed
+
+-------------------------------------------------------------------
+Mon Mar 18 10:44:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.5:
+  * Support dnspython 1.16.0.
+  * Add tox config.
+
+-------------------------------------------------------------------
+Fri Dec  7 11:59:56 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to github tarball to run tests
+
+-------------------------------------------------------------------
+Tue Dec  4 14:19:36 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Fix License: tag
+
+-------------------------------------------------------------------
+Tue Dec  4 12:50:04 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Nov 16 12:02:42 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.9.4

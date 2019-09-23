@@ -1,0 +1,541 @@
+From 17eb3e8a6e7d2c28fa28c0e5b28d651833d869aa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 7 Mar 2019 14:47:34 +0100
+Subject: [PATCH 2/2] Remove autotools cruft from the very old times of Octave
+ Forge.
+
+* src/Makefile: simplify. We don't need any of the flags since mkoctfile
+handles all of them for us.
+* Makeconf.in, autogen.sh, configure.base: remove files which are no longer
+necessary. They were used a very long time ago, when Octave Forge was
+distributed as a single Octave "extension", but not anymore.
+---
+ linear-algebra/src/Makeconf.in    |  67 ----------
+ linear-algebra/src/Makefile       |  71 +++-------
+ linear-algebra/src/autogen.sh     |  27 ----
+ linear-algebra/src/configure.base | 319 ---------------------------------------------
+ 4 files changed, 15 insertions(+), 469 deletions(-)
+ delete mode 100644 linear-algebra/src/Makeconf.in
+ delete mode 100755 linear-algebra/src/autogen.sh
+ delete mode 100644 linear-algebra/src/configure.base
+
+diff --git a/linear-algebra/src/Makeconf.in b/linear-algebra/src/Makeconf.in
+deleted file mode 100644
+index e34548c..0000000
+--- a/linear-algebra/src/Makeconf.in
++++ /dev/null
+@@ -1,67 +0,0 @@
+-
+-## Makeconf is automatically generated from Makeconf.base and Makeconf.add
+-## in the various subdirectories.  To regenerate, use ./autogen.sh to
+-## create a new ./Makeconf.in, then use ./configure to generate a new
+-## Makeconf.
+-
+-OCTAVE_FORGE = 1
+-
+-SHELL = @SHELL@
+-
+-canonical_host_type = @canonical_host_type@
+-prefix = @prefix@
+-exec_prefix = @exec_prefix@
+-bindir = @bindir@
+-mandir = @mandir@
+-libdir = @libdir@
+-datadir = @datadir@
+-infodir = @infodir@
+-includedir = @includedir@
+-datarootdir = @datarootdir@
+-INSTALL = @INSTALL@
+-INSTALL_PROGRAM = @INSTALL_PROGRAM@
+-INSTALL_SCRIPT = @INSTALL_SCRIPT@
+-INSTALL_DATA = @INSTALL_DATA@
+-INSTALLOCT=octinst.sh
+-
+-DESTDIR =
+-
+-RANLIB = @RANLIB@
+-STRIP = @STRIP@
+-LN_S = @LN_S@
+-
+-AWK = @AWK@
+-
+-# Most octave programs will be compiled with $(MKOCTFILE).  Those which
+-# cannot use mkoctfile directly can request the flags that mkoctfile 
+-# would use as follows:
+-#    FLAG = $(shell $(MKOCTFILE) -p FLAG)
+-# The following flags are for compiling programs that are independent
+-# of Octave.  How confusing.
+-CC = @CC@
+-CFLAGS = @CFLAGS@
+-CPPFLAGS = @CPPFLAGS@
+-CPICFLAG = @CPICFLAG@
+-CXX = @CXX@
+-CXXFLAGS = @CXXFLAGS@
+-CXXPICFLAG = @CXXPICFLAG@
+-F77 = @F77@
+-FFLAGS = @FFLAGS@
+-FPICFLAG = @FPICFLAG@
+-
+-OCTAVE = @OCTAVE@
+-OCTAVE_VERSION = @OCTAVE_VERSION@
+-MKOCTFILE = @MKOCTFILE@ -DHAVE_OCTAVE_$(ver) -v
+-SHLEXT = @SHLEXT@
+-
+-ver = @ver@
+-MPATH = @mpath@
+-OPATH = @opath@
+-XPATH = @xpath@
+-ALTMPATH = @altmpath@
+-ALTOPATH = @altopath@
+-
+-%.o: %.c ; $(MKOCTFILE) -c $<
+-%.o: %.f ; $(MKOCTFILE) -c $<
+-%.o: %.cc ; $(MKOCTFILE) -c $<
+-%.oct: %.cc ; $(MKOCTFILE) $<
+diff --git a/linear-algebra/src/Makefile b/linear-algebra/src/Makefile
+index 79faabe..debb56c 100644
+--- a/linear-algebra/src/Makefile
++++ b/linear-algebra/src/Makefile
+@@ -1,66 +1,25 @@
+-sinclude Makeconf
++MKOCTFILE ?= mkoctfile
+ 
+-ifndef OCTAVE_FORGE
+-MKOCTFILE = mkoctfile
+-endif
++OCT_FILES := gsvd.oct pgmres.oct
+ 
+-ifndef LAPACK_LIBS
+-LAPACK_LIBS := $(shell $(MKOCTFILE) -p LAPACK_LIBS)
+-endif
+-ifndef BLAS_LIBS
+-BLAS_LIBS := $(shell $(MKOCTFILE) -p BLAS_LIBS)
+-endif
+-LFLAGS := $(shell $(MKOCTFILE) -p LFLAGS) $(LAPACK_LIBS) $(BLAS_LIBS)
+-export LFLAGS
++GSVD_DEPENDS := dbleGSVD.o CmplxGSVD.o
+ 
+-DEFINES = -Wall
+-GSVD_OBJECTS = gsvd.o dbleGSVD.o CmplxGSVD.o 
+-GSVD_TARGET = gsvd.oct
+-GSVD_TEST = gsvd
+-GSVD_DEPENDS = gsvd.d dbleGSVD.d CmplxGSVD.d
++LAPACK_LIBS ?= $(shell $(MKOCTFILE) -p LAPACK_LIBS)
++BLAS_LIBS ?= $(shell $(MKOCTFILE) -p BLAS_LIBS)
+ 
+-OBJECTS = $(GSVD_OBJECTS) 
+-TARGETS = $(GSVD_TARGET) 
+-DEPENDS = $(GSVD_DEPENDS) 
++.PHONY: all clean
+ 
+-.PHONY: all test clean count
+-
+-.SUFFIXES:
+-
+-.PRECIOUS: %.d %.o
+-
+-all : $(TARGETS) pgmres.oct
+-
+-$(GSVD_TARGET) : $(GSVD_DEPENDS) $(GSVD_OBJECTS)
+-	$(MKOCTFILE) $(DEFINES) $(GSVD_OBJECTS) -o $@ ${LAPACK_LIBS}
+-
+-$(GSVD_TEST) : $(GSVD_TARGET)
+-
+-ifneq (,$(DEPENDS))
+-  sinclude $(DEPENDS)
+-endif
+-
+-%.d:%.cc
+-	$(MKOCTFILE) $(DEFINES) -M $<
+-
+-%.o:%.cc
+-%.o:%.cc %.d
+-	$(MKOCTFILE) $(DEFINES) -c $<
+-
+-%.o:%.f
+-	$(MKOCTFILE) $(DEFINES) -c $<
+-%.oct:%.o
+-	$(MKOCTFILE) $(DEFINES) $< -o $@
++all: $(OCT_FILES)
+ 
+ %.oct: %.cc
+-	mkoctfile $(DEFINES) $< -o $@ ${LAPACK_LIBS}
++	$(MKOCTFILE) $^
++
++%.o: %.cc %.h
++	$(MKOCTFILE) -c $<
+ 
+-.phony: test
+-test: $(GSVD_TEST)
+-	for i in $^; do echo "test $$i"; done | octave --silent
++gsvd.oct: gsvd.cc $(GSVD_DEPENDS)
++	$(MKOCTFILE) -c $< $(LAPACK_LIBS) $(BLAS_LIBS)
+ 
+-clean: 
+-	rm -f $(TARGETS) $(DEPENDS) $(OBJECTS) octave-core
++clean:
++	$(RM) *.o *.oct octave-core octave-workspace
+ 
+-count:
+-	wc *{.cc,.h,.f}
+diff --git a/linear-algebra/src/autogen.sh b/linear-algebra/src/autogen.sh
+deleted file mode 100755
+index 354e6cf..0000000
+--- a/linear-algebra/src/autogen.sh
++++ /dev/null
+@@ -1,27 +0,0 @@
+-#! /bin/sh
+-
+-## Generate ./configure
+-rm -f configure.in
+-echo "dnl --- DO NOT EDIT --- Automatically generated by autogen.sh" > configure.in
+-cat configure.base >> configure.in
+-cat <<EOF >> configure.in
+-  AC_OUTPUT(\$CONFIGURE_OUTPUTS)
+-  dnl XXX FIXME XXX chmod is not in autoconf's list of portable functions
+-
+-  echo " "
+-  echo "  \"\\\$prefix\" is \$prefix"
+-  echo "  \"\\\$exec_prefix\" is \$exec_prefix"
+-  AC_MSG_RESULT([\$STATUS_MSG
+-
+-find . -name NOINSTALL -print    # shows which toolboxes won't be installed
+-])
+-EOF
+-
+-autoconf configure.in > configure.tmp
+-if [ diff configure.tmp configure > /dev/null 2>&1 ]; then
+-  rm -f configure.tmp;
+-else
+-  mv -f configure.tmp configure
+-  chmod 0755 configure
+-fi
+-rm -f configure.in
+diff --git a/linear-algebra/src/configure.base b/linear-algebra/src/configure.base
+deleted file mode 100644
+index b9b5d93..0000000
+--- a/linear-algebra/src/configure.base
++++ /dev/null
+@@ -1,319 +0,0 @@
+-dnl The configure script is generated by autogen.sh from configure.base 
+-dnl and the various configure.add files in the source tree.  Edit 
+-dnl configure.base and reprocess rather than modifying ./configure.
+-
+-dnl autoconf 2.13 certainly doesn't work! What is the minimum requirement?
+-AC_PREREQ(2.2)
+-
+-AC_INIT(configure.base)
+-
+-PACKAGE=octave-forge
+-MAJOR_VERSION=0
+-MINOR_VERSION=1
+-PATCH_LEVEL=0
+-
+-dnl Kill caching --- this ought to be the default
+-define([AC_CACHE_LOAD], )dnl
+-define([AC_CACHE_SAVE], )dnl
+-
+-dnl uncomment to put support files in another directory
+-dnl AC_CONFIG_AUX_DIR(admin)
+-
+-VERSION=$MAJOR_VERSION.$MINOR_VERSION.$PATCH_LEVEL
+-AC_SUBST(PACKAGE)
+-AC_SUBST(VERSION)
+-
+-dnl need to find admin files, so keep track of the top dir.
+-TOPDIR=`pwd`
+-AC_SUBST(TOPDIR)
+-
+-dnl if mkoctfile doesn't work, then we need the following:
+-dnl AC_PROG_CXX
+-dnl AC_PROG_F77
+-
+-dnl Need C compiler regardless so define it in a way that
+-dnl makes autoconf happy and we can override whatever we
+-dnl need with mkoctfile -p.
+-dnl XXX FIXME XXX should use mkoctfile to get CC and CFLAGS
+-AC_PROG_CC
+-
+-dnl XXX FIXME XXX need tests for -p -c -s in mkoctfile.
+-
+-dnl *******************************************************************
+-dnl Sort out mkoctfile version number and install paths
+-
+-dnl XXX FIXME XXX latest octave has octave-config so we don't
+-dnl need to discover things here.  Doesn't have --exe-site-dir
+-dnl but defines --oct-site-dir and --m-site-dir
+-
+-dnl Check for mkoctfile
+-AC_CHECK_PROG(MKOCTFILE,mkoctfile,mkoctfile)
+-test -z "$MKOCTFILE" &&	AC_MSG_WARN([no mkoctfile found on path])
+-
+-AC_SUBST(ver)
+-AC_SUBST(subver)
+-AC_SUBST(mpath)
+-AC_SUBST(opath)
+-AC_SUBST(xpath)
+-AC_SUBST(altpath)
+-AC_SUBST(altmpath)
+-AC_SUBST(altopath)
+-
+-AC_ARG_WITH(path, 
+-	[  --with-path             install path prefix],
+-	[ path=$withval ])
+-AC_ARG_WITH(mpath,
+-	[  --with-mpath            override path for m-files],
+-	[mpath=$withval])
+-AC_ARG_WITH(opath,
+-	[  --with-opath            override path for oct-files],
+-	[opath=$withval])
+-AC_ARG_WITH(xpath,
+-	[  --with-xpath            override path for executables],
+-	[xpath=$withval])
+-AC_ARG_WITH(altpath, 
+-	[  --with-altpath          alternative functions install path prefix],
+-	[ altpath=$withval ])
+-AC_ARG_WITH(altmpath,
+-	[  --with-altmpath         override path for alternative m-files],
+-	[altmpath=$withval])
+-AC_ARG_WITH(altopath,
+-	[  --with-altopath         override path for alternative oct-files],
+-	[altopath=$withval])	
+-
+-if test -n "$path" ; then
+-   test -z "$mpath" && mpath=$path 
+-   test -z "$opath" && opath=$path/oct 
+-   test -z "$xpath" && xpath=$path/bin
+-   test -z "$altpath" && altpath=$path-alternatives
+-fi
+-
+-if test -n "$altpath" ; then
+-   test -z "$altmpath" && altmpath=$altpath 
+-   test -z "$altopath" && altopath=$altpath/oct 
+-fi
+-
+-dnl Don't query if path/ver are given in the configure environment
+-#if test -z "$mpath" || test -z "$opath" || test -z "$xpath" || test -z "$altmpath" || test -z "$altopath" || test -z "$ver" ; then
+-if test -z "$mpath" || test -z "$opath" || test -z "$xpath" || test -z "$ver" ; then
+-   dnl Construct program to get mkoctfile version and local install paths
+-   cat > conftest.cc <<EOF
+-#include <octave/config.h>
+-#include <octave/version.h>
+-#include <octave/defaults.h>
+-
+-#define INFOV "\nINFOV=" OCTAVE_VERSION "\n"
+-
+-#define INFOH "\nINFOH=" OCTAVE_CANONICAL_HOST_TYPE "\n"
+-
+-#ifdef OCTAVE_LOCALVERFCNFILEDIR
+-# define INFOM "\nINFOM=" OCTAVE_LOCALVERFCNFILEDIR "\n"
+-#else
+-# define INFOM "\nINFOM=" OCTAVE_LOCALFCNFILEPATH "\n"
+-#endif
+-
+-#ifdef OCTAVE_LOCALVEROCTFILEDIR
+-# define INFOO "\nINFOO=" OCTAVE_LOCALVEROCTFILEDIR "\n"
+-#else
+-# define INFOO "\nINFOO=" OCTAVE_LOCALOCTFILEPATH  "\n"
+-#endif
+-
+-#ifdef OCTAVE_LOCALVERARCHLIBDIR
+-# define INFOX "\nINFOX=" OCTAVE_LOCALVERARCHLIBDIR  "\n"
+-#else
+-# define INFOX "\nINFOX=" OCTAVE_LOCALARCHLIBDIR  "\n"
+-#endif
+-
+-const char *infom = INFOM;
+-const char *infoo = INFOO;
+-const char *infox = INFOX;
+-const char *infoh = INFOH;
+-const char *infov = INFOV;
+-EOF
+-
+-   dnl Compile program perhaps with a special version of mkoctfile
+-   $MKOCTFILE conftest.cc || AC_MSG_ERROR(Could not run $MKOCTFILE)
+-
+-   dnl Strip the config info from the compiled file
+-   eval `strings conftest.o | grep "^INFO.=" | sed -e "s,//.*$,,"`
+-   rm -rf conftest*
+-
+-   dnl set the appropriate variables if they are not already set
+-   ver=`echo $INFOV | sed -e "s/\.//" -e "s/\..*$//"`
+-   subver=`echo $INFOV | sed -e "[s/^[^.]*[.][^.]*[.]//]"`
+-   alt_mbase=`echo $INFOM | sed -e "[s,\/[^\/]*$,,]"`
+-   alt_obase=`echo $INFOO | sed -e "[s,/site.*$,/site,]"`
+-   test -z "$mpath" && mpath=$INFOM/octave-forge
+-   test -z "$opath" && opath=$INFOO/octave-forge
+-   test -z "$xpath" && xpath=$INFOX
+-   test -z "$altmpath" && altmpath=$alt_mbase/octave-forge-alternatives/m
+-   test -z "$altopath" && altopath=$alt_obase/octave-forge-alternatives/oct/$INFOH
+-fi
+-
+-dnl *******************************************************************
+-
+-dnl XXX FIXME XXX Should we allow the user to override these?
+-dnl Do we even need them?  The individual makefiles can call mkoctfile -p
+-dnl themselves, so the only reason to keep them is for configure, and
+-dnl for those things which are not built using mkoctfile (e.g., aurecord)
+-dnl but it is not clear we should be using octave compile flags for those.
+-
+-dnl C compiler and flags
+-AC_MSG_RESULT([retrieving compile and link flags from $MKOCTFILE])
+-CC=`$MKOCTFILE -p CC`
+-CFLAGS=`$MKOCTFILE -p CFLAGS`
+-CPPFLAGS=`$MKOCTFILE -p CPPFLAGS`
+-CPICFLAG=`$MKOCTFILE -p CPICFLAG`
+-LDFLAGS=`$MKOCTFILE -p LDFLAGS`
+-LIBS=`$MKOCTFILE -p LIBS`
+-AC_SUBST(CC)
+-AC_SUBST(CFLAGS)
+-AC_SUBST(CPPFLAGS)
+-AC_SUBST(CPICFLAG)
+-
+-dnl Fortran compiler and flags
+-F77=`$MKOCTFILE -p F77`
+-FFLAGS=`$MKOCTFILE -p FFLAGS`
+-FPICFLAG=`$MKOCTFILE -p FPICFLAG`
+-AC_SUBST(F77)
+-AC_SUBST(FFLAGS)
+-AC_SUBST(FPICFLAG)
+-
+-dnl C++ compiler and flags
+-CXX=`$MKOCTFILE -p CXX`
+-CXXFLAGS=`$MKOCTFILE -p CXXFLAGS`
+-CXXPICFLAG=`$MKOCTFILE -p CXXPICFLAG`
+-AC_SUBST(CXX)
+-AC_SUBST(CXXFLAGS)
+-AC_SUBST(CXXPICFLAG)
+-
+-dnl *******************************************************************
+-
+-dnl Check for features of your version of mkoctfile.
+-dnl All checks should be designed so that the default
+-dnl action if the tests are not performed is to do whatever
+-dnl is appropriate for the most recent version of Octave.
+-
+-dnl Define the following macro:
+-dnl    OF_CHECK_LIB(lib,fn,true,false,helpers)
+-dnl This is just like AC_CHECK_LIB, but it doesn't update LIBS
+-AC_DEFUN(OF_CHECK_LIB,
+-[save_LIBS="$LIBS"
+-AC_CHECK_LIB($1,$2,$3,$4,$5)
+-LIBS="$save_LIBS"
+-])
+-
+-dnl Define the following macro:
+-dnl    TRY_MKOCTFILE(msg,program,action_if_true,action_if_false)
+-dnl
+-AC_DEFUN(TRY_MKOCTFILE,
+-[AC_MSG_CHECKING($1)
+-cat > conftest.cc << EOF
+-#include <octave/config.h>
+-$2
+-EOF
+-ac_try="$MKOCTFILE -c conftest.cc"
+-if AC_TRY_EVAL(ac_try) ; then
+-   AC_MSG_RESULT(yes)
+-   $3
+-else
+-   AC_MSG_RESULT(no)
+-   $4
+-fi
+-])
+-
+-dnl
+-dnl Check if F77_FUNC works with MKOCTFILE
+-dnl
+-TRY_MKOCTFILE([for F77_FUNC],
+-[int F77_FUNC (hello, HELLO) (const int &n);],,
+-[MKOCTFILE="$MKOCTFILE -DF77_FUNC=F77_FCN"])
+-
+-dnl **********************************************************
+-
+-dnl Evaluate an expression in octave
+-dnl
+-dnl OCTAVE_EVAL(expr,var) -> var=expr
+-dnl
+-AC_DEFUN(OCTAVE_EVAL,
+-[AC_MSG_CHECKING([for $1 in Octave])
+-$2=`echo "disp($1)" | $OCTAVE -qf`
+-AC_MSG_RESULT($$2)
+-AC_SUBST($2)
+-])
+-
+-dnl Check status of an octave variable
+-dnl
+-dnl OCTAVE_CHECK_EXIST(variable,action_if_true,action_if_false)
+-dnl
+-AC_DEFUN(OCTAVE_CHECK_EXIST,
+-[AC_MSG_CHECKING([for $1 in Octave])
+-if test `echo 'disp(exist("$1"))' | $OCTAVE -qf`X != 0X ; then
+-   AC_MSG_RESULT(yes)
+-   $2
+-else
+-   AC_MSG_RESULT(no)
+-   $3
+-fi
+-])
+-
+-dnl should check that $(OCTAVE) --version matches $(MKOCTFILE) --version
+-AC_CHECK_PROG(OCTAVE,octave,octave)
+-OCTAVE_EVAL(OCTAVE_VERSION,OCTAVE_VERSION)
+-
+-dnl grab canonical host type so we can write system specific install stuff
+-OCTAVE_EVAL(octave_config_info('canonical_host_type'),canonical_host_type)
+-
+-dnl grab SHLEXT from octave config
+-OCTAVE_EVAL(octave_config_info('SHLEXT'),SHLEXT)
+-
+-AC_PROG_LN_S
+-
+-AC_PROG_RANLIB
+-
+-dnl Use $(COPY_FLAGS) to set options for cp when installing .oct files.
+-COPY_FLAGS="-Rfp"
+-case "$canonical_host_type" in
+-    *-*-linux*)
+-        COPY_FLAGS="-fdp"
+-    ;;
+-esac
+-AC_SUBST(COPY_FLAGS)
+-
+-dnl Use $(STRIP) in the makefile to strip executables.  If not found, 
+-dnl STRIP expands to ':', which in the makefile does nothing.
+-dnl Don't need this for .oct files since mkoctfile handles them directly
+-STRIP=${STRIP-strip}
+-AC_CHECK_PROG(STRIP,$STRIP,$STRIP,:)
+-
+-dnl Strip on windows, don't strip on Mac OS/X or IRIX
+-dnl For the rest, you can force strip using MKOCTFILE="mkoctfile -s"
+-dnl or avoid strip using STRIP=: before ./configure
+-case "$canonical_host_type" in
+-    powerpc-apple-darwin*|*-sgi-*)
+-	STRIP=:
+-    ;;
+-    *-cygwin-*|*-mingw-*) 
+-	MKOCTFILE="$MKOCTFILE -s" 
+-    ;;
+-esac
+-
+-CONFIGURE_OUTPUTS="Makeconf"
+-STATUS_MSG="
+-octave commands will install into the following directories:
+-   m-files:   $mpath
+-   oct-files: $opath
+-   binaries:  $xpath
+-alternatives:
+-   m-files:   $altmpath
+-   oct-files: $altopath
+-
+-shell commands will install into the following directories:
+-   binaries:  $bindir
+-   man pages: $mandir
+-   libraries: $libdir
+-   headers:   $includedir
+-
+-octave-forge is configured with
+-   octave:      $OCTAVE (version $OCTAVE_VERSION)
+-   mkoctfile:	$MKOCTFILE for Octave $subver"
+-- 
+2.20.1
+

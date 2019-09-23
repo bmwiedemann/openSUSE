@@ -1,0 +1,311 @@
+-------------------------------------------------------------------
+Thu Feb 14 23:26:43 UTC 2019 - bjorn.lie@gmail.com
+
+- Switch to svn checkout via service, version 2.6.0~svn2994.
+- Add pkgconfig(popt) BuildRequires: New dependency.
+- No longer force usage of ffmpeg3 versions of pkgconfig(libav*).
+  We can now build with ffmpeg v4.
+- Drop moc-2.5.0-underlinking.patch: No longer needed.
+
+-------------------------------------------------------------------
+Fri May  4 14:03:47 UTC 2018 - olaf@aepfle.de
+
+- Use ffmpeg3 versions of pkgconfig(libav*)
+
+-------------------------------------------------------------------
+Tue Feb 21 22:06:08 UTC 2017 - olaf@aepfle.de
+
+- Use ffmpeg instead of mad for mp3 support
+
+-------------------------------------------------------------------
+Tue Feb 21 21:56:34 UTC 2017 - olaf@aepfle.de
+
+- disable TiMidity_Config to avoid failure during startup
+  moc.TiMidity_Config.patch
+
+-------------------------------------------------------------------
+Tue Feb 21 13:47:27 UTC 2017 - olaf@aepfle.de
+
+- update to version 2.5.2
+  * New configuration file options:
+    - ALSAStutterDefeat: avoid the ALSA bug which causes stuttering
+  * Significant bug fixes:
+    - Fixed error during configure on busybox systems
+    - Fixed calculation of average bitrate in FLAC decoder
+    - Fixed unintentional disabling of MMAP support
+    - Fixed build failure on split ncurses/tinfo systems
+    - Fixed unreaped children when running in foreground mode
+    - Fixed freeze on Nokia devices if audios play to completion
+    - Circumvented ALSA stutter bug
+    - Added missing 'Precache' option to example config file
+  * Miscellaneous:
+    - Improved the accuracy of the average bitrate for FLAC
+    - Mitigated out-of-file seeking for several formats
+    - Warn of TagLib version requirement rising to 1.5
+    - Warn of Musepack library changing to libmpc (from libmpcdec)
+  * Significant bug fixes:
+    - Corrected the setting of linked libraries for Berkeley DB
+    - Fixed ALSA volume setting problem (Tomasz Golinski)
+    - Fixed clearing of stream status message on error
+    - Resolved FFmpeg/LibAV's downmixing API issues (Andreas Cadhalpun)
+    - Removed duplicate logging of fatal error messages
+  * Miscellaneous:
+    - Adapted to FFmpeg 3.0 API
+    - Warn of FFmpeg/LibAV version requirement rising to 1.0/10.0
+    - Warn of pending POSIX.1-2001 compliance requirement
+    - Fixed various (and potential) segfaults (Daniel T. Borelli,
+      Hendrik Iben, Rastislav Barlik)
+    - Fixed various resource leakages
+    - Silenced various compiler warnings
+
+-------------------------------------------------------------------
+Wed Jan  4 12:42:13 UTC 2017 - olaf@aepfle.de
+
+- Wrap libsidplay2 in a build conditional because it is a drop-in pkg
+- Remove timestamps from binary (moc.timestamp.patch)
+
+-------------------------------------------------------------------
+Tue May 24 19:49:41 UTC 2016 - dimstar@opensuse.org
+
+- Drop libsidplay1-devel BuildRequires: moc does not support
+  sidplay1 - only sidplay2, which does not exist in openSUSE.
+
+-------------------------------------------------------------------
+Sat Feb 21 19:30:17 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 2.5.0:
+  * Autotools and packaging changes:
+    - Upgraded autoconf version requirement to 2.60
+    - Added '--with-alsa' to suppress ALSA sound driver inclusion
+    - Added '--without-oss' to suppress OSS sound driver inclusion
+    - Added '--disable-cache' to remove tags cache support
+    - Added specific GDB support to '--enable-debug'
+    - Refactor decoder plug-ins' autoconf scripts into source
+      directories
+    - Ensure that all decoders get into the source distribution
+      tarball
+    - Removed SID decoder's dependance on .la-file presence
+    - Removed distribution-specific .spec file
+    - Minor reformatting of the configure summary
+    - Added warnings for various deprecations and potential problems
+    - Added warnings for unmet future package requirements
+    - Updated GNU boilerplate text
+  * Improved support for embedded systems:
+    - Refined FFmpeg decoder configuration for use with
+      cross-compilation
+    - Provided use of Tremor with the Vorbis decoder
+    - Improve portability to non-GNU library platforms
+    - Added --with-libiconv-prefix configure option
+  * Audio driver changes:
+    - Allow use of the OSSv4 per-application mixer API
+    - Provided SNDIO support for OpenBSD systems
+  * New and changed audio decoders:
+    - New TiMidity decoder for MIDI
+    - Migrate AAC decoder to later FAAD2 API
+    - Added AAC+ (HE-AAC) support to AAC decoder
+    - New SidPlay2 decoder for SID
+    - New Modplug decoder
+    - New WavPack decoder
+    - Renamed SndFile plugin for consistancy
+    - Removed M4A format support from AAC decoder plugin
+    - Removed WAV format support from ModPlug decoder plugin
+    - Detect huge files in certain formats which SndFile cannot play
+    - Improved (drastically in some cases) the accuracy of AAC
+      durations
+  * Overhauled FFmpeg/LibAV decoder:
+    - Resolved FFmpeg API deprecations
+    - Provided LibAV compatibility
+    - Provided proper stereo downmixing
+    - Provided locking support for non-thread-safe library functions
+    - Provided better FFmpeg or LibAV discrimination
+    - Provided better audio duration reliability determination
+    - Increased number of decodable formats (including Xiph Opus)
+    - Added decoding of audio from video formats
+    - Added logging of FFmpeg/LibAV messages
+    - Added seeking in most (but not all) formats
+    - Added handling for "planar" codecs
+    - Excluded experimental codecs from decoding
+    - Fixed misreporting of tags, duration and bitrates
+    - Fixed memory and file descriptor leakages
+    - Fixed severe distortion on 8-bit samples
+    - Fixed loop playing FLAC files
+    - Fixed many FFmpeg/LibAV API breakages
+    - Fixed many miscellaneous bugs
+    - Detect over-length (and therefore broken) WAV files
+    - Fixed log formatting when FFmpeg messages contain newline
+      characters
+  * Audio reproduction changes:
+    - Improved support for 8-bit sample size
+    - Added software mixer
+    - Added parametric equalizer
+    - Fixed many bugs which produced distorted sound
+    - Fixed bugs in 24-bit sample handling
+  * General configuration file changes:
+    - Reconciled and regularised example config and keymap files
+    - Introduced lists and function-like syntax
+    - Introduced variable substitution
+    - Introduced symbol and boolean option types
+    - Improved security of the configuration file
+    - Automatic clearing of an overridden default key binding
+    - Made processing of keymap file consistant with that of config
+      file
+  * Changed configuration file options:
+    - Layout# options moved to a list and function-like syntax
+    - SoundDriver option moved to a list syntax
+    - Renamed OSSMixerChannel to OSSMixerChannel1
+    - Renamed ALSAMixer to ALSAMixer1
+    - QueueNextSongReturn moved to yes/no values
+    - TagsCacheSize set to zero now disables tag caching
+  * New configuration file options:
+    - OnSongChange: run an external command
+    - RepeatSongChange: govern the running of the OnSongChange
+      command
+    - OnStop: run an external command on stopping
+    - EnforceTagsEncoding: substitutes ID3v1TagsEncoding for
+      ISO-8859-1 encoding in ID3v2 tags
+    - FileNamesIconv: converts from local to UTF8 encoding for file
+      names
+    - NonUTFXterm: converts UTF8 to local encoding for X-Term titles
+    - AutoLoadLyrics: says whether MOC should look for lyrics files
+    - PreferredDecoders: allow finer control over decoder selection
+    - XTerms: externalises terminals regarded as X-Terms
+    - UseMIMEMagic: says whether to identify audio files by using
+      MIME
+    - JackStartServer: autostart JACK the server
+    - ShowTimePercent: set the percent played state
+    - Various options for SidPlay2, Modplug and TiMidity support
+  * New command line options:
+    - '-j' to jump to some position in the current track
+    - '-O' to override configuration file settings
+    - '-Q' to display user formatted information
+    - '-q' to queue files from command line
+    - '-t' and '--on/off' to toggle or set playback options
+    - '-v' to set the volume
+  * Screen handling changes:
+    - Changed minimum screen height to 7 lines
+    - Added support for GNU screen title
+    - Restored screen to console mode after reporting fatal errors
+    - Populated playlist panel when loading default playlist file
+    - Removed default playlist autofocus at start
+    - Fixed overlength highlight bar
+    - Fixed screen upset when tags contain control characters
+    - Fixed some screen upsets when tags contain UTF-8 characters
+    - Fixed screen upset caused by screen(1) mis-detection
+  * New and updated client interaction features:
+    - 'a' command: also add a directory to the playlist
+    - 'L' command: display music lyrics
+    - 'Y' command: prune unreadable files from the playlist
+    - Queued messages for display in the message area
+    - Added play queue
+    - Mark a fragment of a file which can be passed to external
+      commands
+    - Clear status message after a stream open failure
+    - Minor help menu clarifications
+  * Improve text entry history and editting:
+    - Recognise ^u (by default) as delete to start of line
+    - Recognise ^k (by default) as delete to end of line
+    - Save and restore entered text prior to history scrolling
+    - Save history entry modifications
+    - Do not save adjacent duplicate entries
+    - Do not save or modify with blank entries
+    - Position cursor at end of restored or history line
+  * Theme changes:
+    - Enabled highlighted playlist numbers and file times
+    - Fixed miscoloured frame when switching themes
+    - Fixed default colour settings
+    - Fixed cursor placement in themes menu
+    - Fixed ordering of theme files in themes menu
+    - Fixed new attributes application on theme switching
+  * General code cleaning:
+    - Refactoring, optimisations and cosmetic improvements
+    - Silenced many build warnings and errors
+    - Replaced various deprecated, legacy and platform-specific
+      functions
+    - Improved thread safety
+  * Significant bug fixes:
+    - Fixed stale locks freeze in tags cache database following a
+      crash
+    - Fixed CURL timeout for internet streaming errors
+    - Fixed audio distortion on MP3 file having overly long tag
+      values
+    - Fixed false positive stream detection in the MP3 decoder
+    - Fixed Ogg/Vorbis stream detection in the Vorbis decoder
+    - Fixed 'LRINTF error' raised when reconfiguring MOC
+    - Fixed backspace key mishandling
+    - Fixed client interface meta-key handling
+    - Fixed pthread stack overflow segfault on OpenBSD
+    - Fixed segfault when text entry history becomes full
+    - Fixed segfault processing playlists with relative paths
+    - Fixed memory corruptions when toggling tag reading
+    - Fixed assertion when a second client is started
+    - Fixed slow memory leak in client on long-playing streams
+    - Fixed severe distortion on 11025Hz 16-bit mono audios
+    - Fixed freeze at end of playing audio file
+    - Fixed server crash when attempting to play a deleted file
+    - Fixed MIME type detection on HTTP redirection
+    - Fixed crash when mixer value is above 100%
+    - Fixed handling of huge (greater than 2 GiB) files
+    - Fixed sub-second audio truncation on ALSA
+    - Fixed segfault when MIME-detected MP3 file has no "extension"
+    - Fixed segfault when using '--format' without an audio playing
+    - Workaround for streams that have the actual title as
+      tags/comments
+    - Indentified cause of "undefined symbol" build errors
+    - Plugged all known memory and file descriptor leaks
+    - Fixed nonsense duration values returned on some corrupt FLAC
+      files
+    - Fixed 'time >= 0' assertion at change of audio file
+    - Fixed client event notification failure in some circumstances
+    - Fixed client abort on duplicated playlist filenames
+    - Fixed delayed client exit when server invokes long-running
+      scripts
+    - Fixed occasional server freeze on logging when running scripts
+    - Fixed non-conforming 'User-Agent' HTTP request header
+  * Miscellaneous:
+    - Updated and reformatted mocp manpage and equalizer README file
+    - Made many warning and error reports more informative and
+      consistant
+    - Better logging of more problem determination information
+    - More informative version information display
+    - Introduced MD5-based decoder verification tools
+    - Improved compatibility with 64-bit systems
+    - Improved compatibility with big-endian systems
+    - Moved tags cache to a Berkeley DB
+    - Integration of down-stream distribution patches
+    - Fixed frames to duration calculations in ALSA
+    - Fixed some mutex management bugs
+    - Fixed many bugs which crashed MOC
+- drop patch moc-2.4.4-new_ffmpeg.c: ffmpeg support reworked
+- refresh underlinking patch: moc-2.5.0-underlinking.patch
+  from moc-2.4.4-underlinking.patch
+- add source gpg signature and keyring
+- add new build dependencies:
+  * file-devel
+  * libdb-4_8-devel
+  * libsidplay1-devel
+  * libtimidity-devel
+  * libtool
+  * pkgconfig(libmodplug)
+  * pkgconfig(wavpack)
+
+-------------------------------------------------------------------
+Mon Nov 10 22:59:36 UTC 2014 - fisiu@opensuse.org
+
+- Use libffmeg_oldabi-devel instead libffmpeg1-devel.
+
+-------------------------------------------------------------------
+Fri Nov 29 14:30:30 UTC 2013 - reddwarf@opensuse.org
+
+- Change the pkgconfig(libavformat) BuildRequires for libffmpeg1-devel
+  Unfortunatelly the pkg-config files don't clarify the API version.
+
+-------------------------------------------------------------------
+Mon May 28 20:46:11 UTC 2012 - reddwarf@opensuse.org
+
+- Fix build with ffmpeg 0.11
+
+-------------------------------------------------------------------
+Wed Mar 28 15:13:32 UTC 2012 - reddwarf@opensuse.org
+
+- Initial package
+

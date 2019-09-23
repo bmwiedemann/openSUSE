@@ -1,0 +1,317 @@
+-------------------------------------------------------------------
+Thu Feb 14 09:16:02 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix the package group fix.
+
+-------------------------------------------------------------------
+Sun Feb 10 23:11:37 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Fix dependencies.
+- Fix %%post and %%postun scripts for HPC.
+- Fix HPC modulefile.
+- Fix package groups.
+- Generate and add pkgconfig files.
+
+-------------------------------------------------------------------
+Fri Feb  8 10:50:43 UTC 2019 - eich@suse.com
+
+- Set default module version correctly when installing
+  master package, unset when deinstalling the default library
+  package.
+- make example make.inc work with non-HPC builds as well.
+
+-------------------------------------------------------------------
+Fri Feb  8 09:40:33 UTC 2019 - Antoine Ginies <aginies@suse.com>
+
+- Add superlu-examples_Makefile_remove_itersol.patch
+      superlu-make.linux.patch:
+  get a buildable examples test suite (bsc#1124765)
+  fixing Makefile
+  adding missing make.inc
+
+-------------------------------------------------------------------
+Tue Jan 22 11:58:01 UTC 2019 - eich@suse.com
+
+- Disable HPC builds for ring testing on Factory submissions.
+
+-------------------------------------------------------------------
+Mon Jan 21 15:09:13 UTC 2019 - eich@suse.com
+
+- Fix a word in a comment.
+- Remove some colloquialism from a package description.
+
+-------------------------------------------------------------------
+Fri Jan 18 14:46:44 UTC 2019 - eich@suse.com
+
+- Reenable ldconfig in %post and %postun for HPC but don't let it
+  update the cache: this would be pointless for libraries in
+  non-standard locations.
+
+-------------------------------------------------------------------
+Thu Jan 10 09:31:45 UTC 2019 - eich@suse.com
+
+- Moved HPC module from devel to library package.
+- Modified summary for devel package.
+
+-------------------------------------------------------------------
+Fri Oct 26 19:55:59 UTC 2018 - eich@suse.com
+
+- Add environment module support for HPC.
+  * create baselib.conf on the fly.
+- Add superlu-5.2-make.patch:
+  add compiler and build flags in make.inc.
+- Separate off documentation and examples to separate packages.
+
+-------------------------------------------------------------------
+Tue Jun 14 12:56:22 UTC 2016 - badshah400@gmail.com
+
+- Use system blas by passing the cmake option
+  -DUSE_XSDK_DEFAULTS='TRUE'.
+- Disable building tests for now because they have linking issues.
+- Use cmake macros wherever appropriate.
+- A minimum of cmake >= 2.8.12 is required for building.
+
+-------------------------------------------------------------------
+Sun May 29 16:30:52 UTC 2016 - foss@grueninger.de
+
+- Update to SuperLU 5.2.1
+- Switch to CMake as build-system
+- Drop superlu-4.3-disable-hsl.patch as CMake is now used
+- Update to latest SuperLU User Guide
+- superlu-4.3.diff, superlu-4.3-remove-hsl.patch: removed
+- superlu-5.2-remove-mc64ad.patch: new, routine was removed
+
+-------------------------------------------------------------------
+Wed Jul 29 09:34:51 UTC 2015 - dimstar@opensuse.org
+
+- Add baselibs.conf: build libsuperlu4-32bit, as needed by
+  libarmadillo.
+
+-------------------------------------------------------------------
+Tue Jan 15 21:14:51 UTC 2013 - scorot@free.fr
+
+- repackage original source tarball in order to remove the
+  HSL mc64ad routine that caonnt be redistributed bnc#796236
+- add README.SUSE file in the %%doci in order to explain
+  that change
+
+-------------------------------------------------------------------
+Tue Jan  8 20:47:13 UTC 2013 - scorot@free.fr
+
+- add patch superlu-4.3-disable-hsl.patch in order to disable HSL
+  code from the library
+- update patch superlu-4.3.diff so that test routines are run
+  against the  shared library
+- build tests routines in %%check section
+
+-------------------------------------------------------------------
+Tue Dec 18 22:21:27 UTC 2012 - scorot@free.fr
+
+- Update to SuperLU 4.3:
+  * Remove recursive DFS for postordering elimination tree in
+    sp_coletree.c (The nonrecursive routine nr_etdfs() was
+    contributed by Cedric Doucet, CEDRAT Group, Meylan, France.)
+  * Make supermatrix.h the same for all three libraries
+  * Include an on-line HTML documentation for the source code
+  * Corrected backward error BERR formula when a component of the
+    RHS and the residual are exactly zero
+  * Change parameter "delta" to genmmd() from 1 to 0 in get_perm_c
+    remove "static" declaration in EXAMPLE/xlinsolx*.c
+  * Include threshold-based incomplete factorization (ILU)
+  * Removed the static global variables so that it is thread-safe.
+  * Make superlu_options_t{} structure and enum constants the same
+    for both superlu & superlu_dist.
+  * Replace qsort by "quick select" (qselect) in ILU's secondary
+    dropping.
+  * Replace mc64ad.f by mc64ad.c using f2c.
+  * Bug fixes in ilu_sdrop_row.c.
+  * Bug fixes in xgsisx.c, so that when mc64 permutation is used
+    in ILU, the right-hand side is permuted properly.
+  * Add parameter #7 in sp_ienv(), setting as the maxsuper for ILU
+    code (smaller than parameter #3).
+  * Update Users Guide.
+  * Update doxygen code documentation.
+  * Fix a bug in ILU driver routine dgsisx.c, so that on return,
+    the initial row permutation is combined with perm_r[] from
+    partial pivoting.
+  * Modify 2 ILU examples: EXAMPLE/ditersol.c, EXAMPLE/ditersol1.c
+  * Update superlu_timer.c
+- Remove unneeded patches
+  + superlu-overflow.patch : Applied upstream
+  + superlu-initialize.diff : Applied upstream
+  + superlu-undef-code.diff : Applied upstream
+- Updated patches
+  + superlu-4.3.diff
+  + superlu-4.3-include.patch
+  + superlu-4.3-dont-opt-away.diff
+- Build shared libraries
+- Put shared libs and devel files in separate packages
+- Use rpm macros instead of plain directory names
+- Add %%ckeck
+- Update documentation file %%source1 and put html and examples
+  files in %%doc
+- Spec file reformating
+
+-------------------------------------------------------------------
+Sun Jan 29 01:48:27 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Parallel building using %_smp_mflags
+
+-------------------------------------------------------------------
+Thu Jun 22 18:18:46 CEST 2006 - ro@suse.de
+
+- remove selfprovides
+
+-------------------------------------------------------------------
+Mon Mar 27 02:23:29 CEST 2006 - garloff@suse.de
+
+- superlu-undef-code.diff: Fix undefined code (#160443).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:53 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Dec 22 19:26:34 CET 2005 - garloff@suse.de
+
+- Install header files into /usr/include/superlu/
+- Update User Guide.
+
+-------------------------------------------------------------------
+Wed Dec 21 13:33:20 CET 2005 - garloff@suse.de
+
+- Include EXAMPLE dir as documentation.
+- Build as non-root.
+- Nuke unused local vars referencing uninitialized vars.
+
+-------------------------------------------------------------------
+Wed Dec 21 02:17:35 CET 2005 - garloff@suse.de
+
+- Update to SuperLU-3.0: [#133821]
+  * Added "options" input argument and "stat" output argument
+    for the driver routines
+  * More Examples
+  * Added a "symmetric mode" for (nearly) symmetric matrices
+  * Better Fortran interface.
+  * fixed a bug in the complex drivers sgssvx/zgssvx when the
+    input matrix is stored in compressed row format.
+  * prefixed the header files by "slu_".
+  * Fixed a memory leak in get_perm_c() when bnz=0.
+  * Changed "abs" to "fabs" in izmax1.
+  * Upgraded COLAMD to the latest version (2.3).15
+- Add various declarations and #include statements
+- Trick compiler into not optimizing away a loop in our timing
+  measurement.
+
+-------------------------------------------------------------------
+Fri Nov 25 14:20:00 CET 2005 - yxu@suse.de
+
+- add missing function prototypes
+
+-------------------------------------------------------------------
+Tue Nov 15 13:42:23 CET 2005 - dmueller@suse.de
+
+- avoid an endless loop during building (#133820)
+
+-------------------------------------------------------------------
+Mon May  9 17:24:12 CEST 2005 - meissner@suse.de
+
+- fixed 1 byte buffer overflows.
+
+-------------------------------------------------------------------
+Mon Dec 20 02:58:44 CET 2004 - garloff@suse.de
+
+- Pass $(RPM_OPT_FLAGS) -Os -fPIC for files that don't need to be
+  optimized.
+
+-------------------------------------------------------------------
+Sat Sep  6 19:31:26 CEST 2003 - garloff@suse.de
+
+- Add -fPIC to allow inclusion in dynamic lib.
+
+-------------------------------------------------------------------
+Sun Aug 10 22:19:09 CEST 2003 - garloff@suse.de
+
+- -O3 leads to an endless loop in dlamanch test on x86. Probably
+  some compiler of FPU weirdness. Remove -O3 on x86 again.
+
+-------------------------------------------------------------------
+Thu Aug  7 16:49:54 CEST 2003 - garloff@suse.de
+
+- Adapt chown syntax to owner:group.
+- Reenable -O3 (compiler bug fixed?), but limit automatical
+  inlining.
+
+-------------------------------------------------------------------
+Wed Jun 18 02:23:54 CEST 2003 - ro@suse.de
+
+- added directory to filelist.
+
+-------------------------------------------------------------------
+Wed Aug 28 11:40:33 CEST 2002 - ro@suse.de
+
+- remove -O3 from cflags (results in endless loop).
+
+-------------------------------------------------------------------
+Wed May  8 18:40:16 CEST 2002 - garloff@suse.de
+
+- lib64 fix.
+
+-------------------------------------------------------------------
+Wed May  8 15:52:24 MEST 2002 - garloff@suse.de
+
+- Fix test scripts.
+- Use BuildRoot.
+
+-------------------------------------------------------------------
+Wed May  8 13:59:11 MEST 2002 - garloff@suse.de
+
+- Remove BLAS, Lapack.
+- Rename package into SuperLU.
+
+-------------------------------------------------------------------
+Sat Apr 20 14:42:04 MEST 2002 - garloff@suse.de
+
+- Disable -fast-math
+- In SuperLU, use CBLAS that ships with it
+
+-------------------------------------------------------------------
+Fri Apr 19 20:17:57 MEST 2002 - garloff@suse.de
+
+- Update to
+  * CLAPACK-3.0
+  * SuperLU-2.0
+- Added SuperLU user guide
+
+-------------------------------------------------------------------
+Fri Apr 19 20:17:23 MEST 2002 - garloff@suse.de
+
+- Fixed compilation with gcc-3.1:
+  link with -lfrtbegin (which contains main formerly in g2c)
+
+-------------------------------------------------------------------
+Wed Apr 10 01:49:54 CEST 2002 - ro@suse.de
+
+- fix owner for README.SuperLU
+
+-------------------------------------------------------------------
+Mon Aug  7 22:12:27 CEST 2000 - garloff@suse.de
+
+- Use %{_docdir} to put docu in the right place.
+
+-------------------------------------------------------------------
+Mon Aug  7 19:32:14 CEST 2000 - garloff@suse.de
+
+- Add -mcpu=pentiumpro for i386
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Sep  1 00:21:25 CEST 1999 - garloff@suse.de
+
+- First creation of package.

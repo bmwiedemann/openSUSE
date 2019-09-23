@@ -1,0 +1,183 @@
+-------------------------------------------------------------------
+Tue Apr 16 20:21:17 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Update to version 0.14.0:
+  + Add: VDAgentGraphicsDeviceInfo and StreamMsgGraphicsDeviceInfo
+    messages, and SpiceStat structure padding
+  + Remove: SpicePubkeyType, SpiceTunnelServiceType,
+    SpiceTunnelIpType, SPICE_MSG_TUNNEL_* and SPICE_MSGC_TUNNEL_*
+- Add keyring and tarball signature files
+
+-------------------------------------------------------------------
+Thu Feb 28 12:05:50 UTC 2019 - olaf@aepfle.de
+
+- Require meson >= 0.41.0 per meson.build
+- Use autosetup -p1, in case we require patches in the future
+
+-------------------------------------------------------------------
+Sat Jan 19 15:17:11 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Update to version 0.12.15:
+  + add support for h265 video codec
+
+-------------------------------------------------------------------
+Wed Jun 20 00:20:12 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 0.12.14:
+  + Add: stream-device protocol; SPICE_SURFACE_FLAGS_STREAMING_MODE
+    flag; e2k (Elbrus 2000) architecture and SPICE_MAX_NUM_STREAMS.
+- Replace autoconf and automake BuildRequires with meson, and
+  configure/make (install) with meson/meson_build/meson_install
+  macros to follow upstream changes.
+
+-------------------------------------------------------------------
+Mon Aug 28 09:41:14 UTC 2017 - cbosdonnat@suse.com
+
+- Update to version 0.12.13:
+  + add DISPLAY_PREFERRED_VIDEO_CODEC_TYPE
+  + add VP9 codec type
+  + add VD_AGENT_CLEAR_CAPABILITY() macro
+  + add VD_AGENT_CAP_FILE_XFER_DISABLED
+  + add VD_AGENT_FILE_XFER_STATUS_NOT_ENOUGH_SPACE
+  + add new file-xfer statuses for detailed error
+  + Change enums.h license to MIT
+
+-------------------------------------------------------------------
+Mon Oct 17 18:06:05 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Update to version 0.12.12 (fate#322402):
+  + protocol: Add lz4 compression support to the SpiceVMC channel
+
+-------------------------------------------------------------------
+Tue Apr 26 07:09:28 UTC 2016 - olaf@aepfle.de
+
+- Fix autoreconf by creating empty m4 directory
+
+-------------------------------------------------------------------
+Fri Mar 18 14:37:08 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.12.11:
+  + protocol: add support for the VP8 and h264 video codecs.
+  + protocol: add unix GL scanout messages.
+  + Remove code generation scripts, moved back to spice-common.
+  + Macros improvements, more type safety.
+- Drop
+  0001-build-sys-Use-datadir-for-.proto-files-codegen-scrip.patch:
+  No longer needed, as the code generation scripts live in
+  spice-common again.
+- fate#320079
+
+-------------------------------------------------------------------
+Tue Oct  6 16:40:20 UTC 2015 - cbosdonnat@suse.com
+
+- Update to version 0.12.10:
+  + Add VD_AGENT_CAP_MONITORS_CONFIG_POSITION to handle multi-monitor
+  configurations that are not multi-head
+  + Add protocol code generation scripts from spice-common
+  + Endianness and compiler portability fixes (clang)
+- Fix the release to output arch independent files in datadir
+  rather than libdir:
+  0001-build-sys-Use-datadir-for-.proto-files-codegen-scrip.patch
+
+-------------------------------------------------------------------
+Sun Aug  2 22:16:09 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.12.9
+  + Rename newly introduced SpiceImageCompress enum to
+    SpiceImageCompression as otherwise it was clashing with the
+    definition used by older spice-server releases, breaking QEMU
+    build.
+- Drop no longer needed patch revert-da3cf336.patch.
+- Tiny spec file cleanup:
+  + drop empty documentation files.
+  + do not use obsoleyr makeinstall macro.
+
+-------------------------------------------------------------------
+Wed Jul 22 10:44:32 UTC 2015 - cbosdonnat@suse.com
+
+- Fix incompatibility with spice-server headers.
+  revert-da3cf336.patch
+
+-------------------------------------------------------------------
+Mon Jul 20 22:52:04 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.12.8:
+  + Add LZ4 support.
+  + Add audio volume synchronization.
+  + Deprecate unused vdi-dev.
+  + Add 'preferred-compression' message/capability.
+  + Add a new Windows driver escape code to send monitors
+    capability from guest to client.
+
+-------------------------------------------------------------------
+Wed Oct 15 11:49:15 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.12.7:
+  + Add support for Webdav channel.
+  + Add support for the Opus codec.
+
+-------------------------------------------------------------------
+Sun Jun 30 15:56:24 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.12.6:
+  + Add adaptive video streaming support: control playback latency
+    and receive playback reports from the client.
+  + Add agent capabilities for signaling guest line ending.
+
+-------------------------------------------------------------------
+Fri Apr  5 11:48:23 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.12.5:
+  + Add agent file xfer success status.
+  + Add a client-disconnected agent message.
+- Changes from version 0.12.4:
+  + Add agent file copy support.
+  + Add agent sparse monitors capability.
+  + Add controller proxy message.
+
+-------------------------------------------------------------------
+Sat Jan 19 11:22:10 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.12.3:
+  + Add a generic "port" channel.
+
+-------------------------------------------------------------------
+Tue Sep 18 15:12:29 UTC 2012 - sndirsch@suse.com
+
+- Update to version 0.12.2
+  + display channel: A8 surface capability
+  + qxl: client present, client capabilities and client monitors
+    configuration.
+
+-------------------------------------------------------------------
+Sat Jul 28 14:34:00 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.12.0:
+  + Add support for arbitrary resolution on Windows QXL with
+    QXL_ESCAPE_SET_CUSTOM_DISPLAY
+  + Add support for arbitrary resolution and multiple monitor per
+    display channel with QXLMonitorsConfig and co
+  + build cleanup
+
+-------------------------------------------------------------------
+Sat May 26 18:25:09 UTC 2012 - reddwarf@opensuse.org
+
+- Update to version 0.10.3:
+  + Add support for video streams with differently sized (wxh) data
+  + Add controller messages for USB redirection, COLOR_DEPTH, DISABLE_EFFECTS,
+    and ENABLE_SMARTCARD
+  + Add name & uuid messages on main channel
+  + some cleanups
+  + Fixes RHBZ#815422, RHBZ#807295, RHBZ#787447
+
+-------------------------------------------------------------------
+Tue Jan 31 09:46:32 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.10.1:
+  + Add support for a header without sublist and serial.
+
+-------------------------------------------------------------------
+Tue Nov 29 20:10:13 UTC 2011 - dimstar@opensuse.org
+
+- Initial package, prepared for inclusion in Factory.
+

@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e0e9924bd3dba685ea7f9a405594987</srcmd5>
+    <version>0.3.0</version>
+    <time>1443684563</time>
+    <user>dimstar_suse</user>
+    <comment>new dep for pytohn-tox</comment>
+    <requestid>334713</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>932fe01a605c3bf45c133ba55548f2d1</srcmd5>
+    <version>0.4.0</version>
+    <time>1492618122</time>
+    <user>dimstar_suse</user>
+    <comment>- update for singlespec
+- please send to Staging:E, it's a requirement for new python-tox</comment>
+    <requestid>486539</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d361de662c8265df9e8978e8007ce175</srcmd5>
+    <version>0.5.2</version>
+    <time>1510506001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540463</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>821701194970168e89a3e465c5b86ed8</srcmd5>
+    <version>0.6.0</version>
+    <time>1512216645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545892</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b0f3432e3a4faa898582081ce517aaf9</srcmd5>
+    <version>0.6.0</version>
+    <time>1514027507</time>
+    <user>dimstar_suse</user>
+    <comment>- run tests conditionally (fixes bsc#1073845)</comment>
+    <requestid>559131</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>022bffc55d4b8416e4495239ba6a2ea9</srcmd5>
+    <version>0.7.1</version>
+    <time>1533732307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627080</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6744e84e66154c9ef424b4f6e4a9cbdb</srcmd5>
+    <version>0.8.0</version>
+    <time>1541666367</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.0
+ * Add get_hookimpls() method to hook callers
+ * Add changelog in long package description and documentation.
+ * Add a test exemplifying the opt-in nature of spec defined args.
+ * Encapsulate hook specifications in a type for easier introspection. (forwarded request 644855 from mimi_vx)</comment>
+    <requestid>644857</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b99879a8060e00c3ba70d68c147a084e</srcmd5>
+    <version>0.8.1</version>
+    <time>1551024255</time>
+    <user>coolo</user>
+    <comment>- Update to 0.8.1:
+   * #166: Add stacklevel=2 to implprefix warning so that the reported location of warning is the caller of PluginManager.</comment>
+    <requestid>674134</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>22196db62f1b57dec5c2d2380472ab25</srcmd5>
+    <version>0.8.0</version>
+    <time>1551076580</time>
+    <user>coolo</user>
+    <comment>osc copypac from project:openSUSE:Factory package:python-pluggy revision:7</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c8bf523f1f20bfbb14623b17d526a678</srcmd5>
+    <version>0.9.0</version>
+    <time>1551215775</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.0:
+  * #189: PluginManager.load_setuptools_entrypoints now accepts a name parameter that when given will load only entry points with that name.
+  * PluginManager.load_setuptools_entrypoints also now returns the number of plugins loaded by the call, as opposed to the number of all plugins loaded by all calls to this method.
+
+- Switch to multibuild in order to avoid build loop
+
+- Update to 0.8.1:
+   * #166: Add stacklevel=2 to implprefix warning so that the reported location of warning is the caller of PluginManager.</comment>
+    <requestid>679233</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>79d5af6a0776d7506dcad2fc4b192901</srcmd5>
+    <version>0.11.0</version>
+    <time>1558515257</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.0:
+  * Small bugfixes only</comment>
+    <requestid>704167</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2bcaa11d9069371159a392d976b56ff8</srcmd5>
+    <version>0.12.0</version>
+    <time>1560861910</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * #215: Switch from pkg_resources to importlib-metadata for entrypoint
+    detection for improved performance and import time. This time with .egg support.</comment>
+    <requestid>707081</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2a5970b397cdee517f32b7c86a165636</srcmd5>
+    <version>0.13.0</version>
+    <time>1569233818</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.0:
+  * support python 3.8</comment>
+    <requestid>730734</requestid>
+  </revision>
+</revisionlist>

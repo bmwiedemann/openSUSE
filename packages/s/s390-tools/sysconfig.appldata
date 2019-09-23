@@ -1,0 +1,35 @@
+# /etc/sysconfig/appldata
+
+## Path:        Kernel/APPLDATA
+## Description: Linux - z/VM Monitor Stream
+
+## Type:        integer
+## Default:     10000
+#
+# Polling interval in milliseconds
+#
+APPLDATA_INTERVAL=10000
+
+## Type:        list(yes,no)
+## Default:     yes
+#
+# Load module for collecting data related
+# to memory management.
+#
+APPLDATA_MEM="yes"
+
+## Type:        list(yes,no)
+## Default:     yes
+#
+# Load module for collecting OS information
+# (CPU utilization, running processes).
+APPLDATA_OS="yes"
+
+## Type:        list(yes,no)
+## Default:     no
+#
+# Load module for collecting accumulated 
+# network statistics (Packets received/transmitted,
+# dropped, errors, ...)
+#
+APPLDATA_NET_SUM="no"

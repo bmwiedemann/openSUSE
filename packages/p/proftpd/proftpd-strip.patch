@@ -1,0 +1,16 @@
+Index: ltmain.sh
+===================================================================
+--- ltmain.sh.orig
++++ ltmain.sh
+@@ -2056,7 +2056,10 @@ func_mode_install ()
+ 	    ;;
+ 	  esac
+ 	  if test -n "$tstripme" && test -n "$striplib"; then
+-	    func_show_eval "$striplib $destdir/$realname" 'exit $?'
++	    #func_show_eval "$striplib $destdir/$realname" 'exit $?'
++	    echo "strip patch"
++	    func_quote_for_expand "$striplib $destdir/$realname"
++	    func_echo $func_quote_for_expand_result
+ 	  fi
+ 
+ 	  if test "$#" -gt 0; then

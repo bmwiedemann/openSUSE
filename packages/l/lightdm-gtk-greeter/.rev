@@ -1,0 +1,221 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1e90d84f80858e05ffd663a35ef12417</srcmd5>
+    <version>1.1.5</version>
+    <time>1334229908</time>
+    <user>coolo</user>
+    <comment>lightdm-gtk-greeter has been split off from lightdm and is now a separate project, please add after lightdm 1.2.0 (sr#113064) is in Factory</comment>
+    <requestid>113067</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b34a34ee6679c504693187b2bf62fc1a</srcmd5>
+    <version>1.1.6</version>
+    <time>1338476805</time>
+    <user>coolo</user>
+    <comment>- update to version 1.1.6
+  - fix 'Large Font' option for fontnames containing spaces
+  - fix 'Cancel' button action, and clear the error label
+  - add missing include for setlocale
+  - updated translations</comment>
+    <requestid>122875</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b34a34ee6679c504693187b2bf62fc1a</srcmd5>
+    <version>1.1.6</version>
+    <time>1340183662</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c94f640214e60185dcda22c24eb463e5</srcmd5>
+    <version>1.3.1</version>
+    <time>1358665496</time>
+    <user>coolo</user>
+    <comment>- update to version 1.3.1
+  - drop custom icons now that there's a config option for the icon
+    theme
+  - rename the 'Login' button to 'Unlock' when the user is already
+    logged in
+  - don't hide the login box when cancel is pressed, instead
+    refresh the prompt box to show the correct username prompt
+  - hide the Cancel button, useless with the userlist combobox
+  - properly center the login window after a resize
+  - add names to widgets to ease theming
+  - replace the userlist's treeview with a combobox
+  - document the option to show the language chooser
+  - add a config option to set the path to the logo image
+  - add a config option to set the icon theme
+  - use a known icon name for the accessibility menu
+  - remember the last session used
+- added lightdm-gtk-greeter-use-new-autologin-api.patch in order to
+  use the new autologin API in liblightdm-gobject-1 &gt;= 1.3.5
+  (backported from upstream git)</comment>
+    <requestid>148622</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c94f640214e60185dcda22c24eb463e5</srcmd5>
+    <version>1.3.1</version>
+    <time>1359109394</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>2c7b3303578be76ba9c33eea128463b9</srcmd5>
+    <version>1.3.1</version>
+    <time>1359708411</time>
+    <user>coolo</user>
+    <comment>- add lightdm-gtk-greeter-fix-cursor.patch in order to fix the
+  cursor theme by setting the cursor after selecting a GTK theme
+  (lp#1024482)
+- add lightdm-gtk-greeter-fix-background.patch in order to fix the
+  background image not being displayed when the pixmap does not
+  have an alpha channel (lp#1086199)
+- add lightdm-gtk-greeter-improve-background-scaling.patch which
+  scales the background pixmap while preserving the aspect until
+  width and height are at least as big as the screen width and
+  height, then clips as needed
+- add lightdm-gtk-greeter-fix-ui.patch with various usability
+  fixes, in particular switch back to a tree view inside a scrolled
+  window in order make it usable with a lot of users</comment>
+    <requestid>150643</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>2c7b3303578be76ba9c33eea128463b9</srcmd5>
+    <version>1.3.1</version>
+    <time>1379663158</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>5745e1c8aeaafe84c45a652d4e616925</srcmd5>
+    <version>1.3.1</version>
+    <time>1380738618</time>
+    <user>scarabeus_factory</user>
+    <comment>add lightdm-gtk-greeter-fix-login.patch in order to fix login/unlock detection (bugfix, please forward to 13.1)</comment>
+    <requestid>201908</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>df876baafb05b1fa72f172d6abb04ac8</srcmd5>
+    <version>1.3.1</version>
+    <time>1381474748</time>
+    <user>scarabeus_factory</user>
+    <comment>- add lightdm-gtk-greeter-invalid-last_session.patch
+  fix segfault when last_session is an invalid session (lp#1161883)</comment>
+    <requestid>202778</requestid>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>755c546795e99b5e05ef9df99a1b1aec</srcmd5>
+    <version>1.3.1</version>
+    <time>1389026703</time>
+    <user>scarabeus_factory</user>
+    <comment>- add lightdm-gtk-greeter-handle-invalid-user.patch in order to fix
+  a NULL pointer dereference after authentication of an invalid
+  username has failed (bnc#857303)</comment>
+    <requestid>212917</requestid>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>67d729edf09d244d4b7c424682aee6c8</srcmd5>
+    <version>1.3.1</version>
+    <time>1392806287</time>
+    <user>coolo</user>
+    <comment>- adjust update-alternative usage to packaging policy
+  (see http://lists.opensuse.org/opensuse-packaging/2014-02/msg00024.html)</comment>
+    <requestid>221407</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>67d729edf09d244d4b7c424682aee6c8</srcmd5>
+    <version>1.3.1</version>
+    <time>1409301792</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>8b74fc85c23299046dc2c4a9b1075df5</srcmd5>
+    <version>1.3.1</version>
+    <time>1438421867</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319171</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>437591db7f8e13df168d9b9a62688d12</srcmd5>
+    <version>2.0.1</version>
+    <time>1445796773</time>
+    <user>coolo</user>
+    <comment>- Version bump to 2.0.1.
+- drop patches:
+    lightdm-gtk-greeter-use-new-autologin-api.patch
+    lightdm-gtk-greeter-fix-cursor.patch
+    lightdm-gtk-greeter-fix-background.patch
+    lightdm-gtk-greeter-improve-background-scaling.patch
+    lightdm-gtk-greeter-fix-ui.patch
+    lightdm-gtk-greeter-fix-login.patch
+    lightdm-gtk-greeter-invalid-last_session.patch
+    lightdm-gtk-greeter-handle-invalid-user.patch</comment>
+    <requestid>340090</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>7be5711d7d4cbeb73907fe7b22e42598</srcmd5>
+    <version>2.0.1</version>
+    <time>1475242340</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>430312</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>42bdbee15150153369e9ff3eeaad07db</srcmd5>
+    <version>2.0.1</version>
+    <time>1475480231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>432222</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8785d194d12169de4fc9bf50ab49255b</srcmd5>
+    <version>2.0.2</version>
+    <time>1476109297</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>433601</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>8dbcad5d9e1dd5a56bf28897661aab2e</srcmd5>
+    <version>2.0.2</version>
+    <time>1489345544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>478750</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>945ad78a11bc9944155175c3f49bf168</srcmd5>
+    <version>2.0.3</version>
+    <time>1506340779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>528436</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>217f8e7eb3fd22fa2f7e27ba2fe6bfa1</srcmd5>
+    <version>2.0.4</version>
+    <time>1520415476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583308</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1464de9f723c3b0f29ab09bd453ce021</srcmd5>
+    <version>2.0.5</version>
+    <time>1523616712</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>596045</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>370101e7db2fc2e420a2032e17a91b59</srcmd5>
+    <version>2.0.6</version>
+    <time>1541510526</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.6.</comment>
+    <requestid>644678</requestid>
+  </revision>
+</revisionlist>

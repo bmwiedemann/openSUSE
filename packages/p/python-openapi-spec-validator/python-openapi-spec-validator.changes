@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Wed Sep 11 08:33:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.2.8:
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Mon Jun  3 11:11:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.2.7:
+  * Replace pathlib with pathlib2 (#68)
+  * Bump PyYAML to 5.1 for CVE-2017-18342 (#69)
+  * Support jsonschema 3 (#72)
+
+-------------------------------------------------------------------
+Mon Dec 10 14:31:25 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+
+-------------------------------------------------------------------
+Wed Aug  8 14:52:28 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Wed Aug  8 11:31:08 UTC 2018 - tchvatal@suse.com
+
+- Add patch to disable tests that poke live URL:
+  * openapi-spec-validator-skip-urls.patch
+
+-------------------------------------------------------------------
+Wed Aug  8 11:15:20 UTC 2018 - tchvatal@suse.com
+
+- Switch to github tarball to run tests
+- Fix runtime deps
+
+-------------------------------------------------------------------
+Mon Jul 30 16:24:46 UTC 2018 - sean.marlow@suse.com
+
+- Initial release v0.2.4

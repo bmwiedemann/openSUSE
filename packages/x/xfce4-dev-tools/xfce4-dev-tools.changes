@@ -1,0 +1,199 @@
+-------------------------------------------------------------------
+Fri Aug 16 12:54:04 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Sun Aug 11 20:48:54 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.14.0
+  * Bump to 4.14.0 
+- Added bcond to build with git master source
+- Cleaned spec file
+
+-------------------------------------------------------------------
+Thu Jun 27 13:23:16 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to Version 4.13.0
+  * Merge exo-csource modifications in xdt-csource
+  * xdt-csource will replace exo-csource (projects using
+    exo-csource need to be updated)
+  * The work started in issue bxo#6449 but the full migration has
+    never been done.
+  * Remove svn support in xdt-autogen
+  * Simplify a bit the XDT_AUTOGEN_REQUIRED_VERSION detection
+  * Remove the check of the unused doc submodule
+  * Remove useless macros: m4macros/xdt-python.m4
+    and m4macros/xdt-xfce.m4 are not used
+  * Remove xdt-commit, used to generate Changelog, now done via
+    make distcheck
+  * No -Wshadow flag for enable_debug=full (bxo#11637).
+    Use it only for enable_debug=yes.
+
+-------------------------------------------------------------------
+Sat Feb 28 21:00:49 UTC 2015 - gber@opensuse.org
+
+- update to version 4.12.0
+  - bump version
+  - require xfce4-panel-4.11 for panel plugins
+  - restore AC_REVISION
+
+-------------------------------------------------------------------
+Tue Feb 17 22:27:45 UTC 2015 - gber@opensuse.org
+
+- update to version 4.11.1
+  - update list of files to clean with xdt-autogen
+  - remove definitions related to the obsolete xfce-mcs-manager
+  - remove obsolete check for threaded panels (<= 4.1.90)
+  - bump dependencies for xfce4-dev-tools and m4macros
+  - fix autotools m4 warning
+  - fix out of source building (bxo#10899)
+  - display warning if AC_PROG_INTLTOOL is used (bxo#8930)
+
+-------------------------------------------------------------------
+Wed Apr 30 19:54:32 UTC 2014 - gber@opensuse.org
+
+- update to version 4.11.0
+  - remove FORTIFY_SOURCE=2
+  - some build improvements
+  - correctly quote AC_COMPILE_IFELSE macro
+  - avoid gnu_printf warnings in debugging in gcc 4.8
+
+-------------------------------------------------------------------
+Sun Apr 29 07:41:59 UTC 2012 - gber@opensuse.org
+
+- update to version 4.10.0
+  - bump glib dependency to 2.24
+
+-------------------------------------------------------------------
+Sat Apr 14 09:45:09 UTC 2012 - gber@opensuse.org
+
+- update to version 4.9.2
+  - fix license
+  - remove the old BM_ macros
+  - use ?_VERSION for special versioned binary detection
+  - never disable checks
+
+-------------------------------------------------------------------
+Sun Apr  8 09:15:23 UTC 2012 - gber@opensuse.org
+
+- update to version 4.9.1
+  - add support for LT_PREREQ
+  - remove spec file and rpm build target
+  - do not create a gzip tarball
+  - never use xdt-autogen in autogen.sh
+  - fix FSF address and add missing licenses
+  - don't use -g3 for full debugging
+  - use pkg-config macro for detection
+  - port exo-csource to xdt-csource
+
+-------------------------------------------------------------------
+Tue Mar 27 15:22:09 UTC 2012 - gber@opensuse.org
+
+- added source URL
+
+-------------------------------------------------------------------
+Fri Aug  5 13:02:09 UTC 2011 - coolo@novell.com
+
+- add requires to called tools (hope I catched them all)
+
+-------------------------------------------------------------------
+Mon Jan 17 11:40:20 UTC 2011 - gber@opensuse.org
+
+- update to version 4.8.0
+  - check for glibtoolize
+
+-------------------------------------------------------------------
+Mon Dec 27 08:50:42 UTC 2010 - gber@opensuse.org
+
+- corrected group
+- improved description
+
+-------------------------------------------------------------------
+Wed Dec  1 18:11:37 UTC 2010 - prusnak@opensuse.org
+
+- cleanup spec file
+
+-------------------------------------------------------------------
+Mon Nov  8 17:55:58 UTC 2010 - prusnak@opensuse.org
+
+- updated to 4.7.3
+  * build ChangeLog from GIT
+  * add check stage for documentation submodules
+  * check for automake 1.11
+  * check if $1 is a file before calling cat
+
+-------------------------------------------------------------------
+Thu Jul 22 08:42:00 UTC 2010 - andrea@opensuse.org
+
+- revert back to 4.6.0 for now
+- make package noarch
+
+-------------------------------------------------------------------
+Wed Nov 11 15:43:58 CET 2009 - prusnak@suse.cz
+
+- updated to 4.7.2
+  - changes from 4.7.0
+    - Do @REVISION@ and @LINGUAS@ substitutions in xdt-autogen instead of
+      requiring people to put it in their autogen.sh files.
+    - Also support the newer IT_PROG_INTLTOOL macro
+    - Added --version and -V options to display the xdt-autogen version
+    - Added ability for autogen.sh scripts to set an environment
+      variable XDT_AUTOGEN_REQUIRED_VERSION to depend on a particular version
+      of xdt-autogen.
+    - Add a bunch more compiler warnings for --enable-debug, and a new macro
+      XDT_SUPPORTED_FLAGS() that tests whether the compiler supports particular
+     option flags.
+  - changes from 4.7.1
+    - Also support the newer AC_CONFIG_HEADERS macro.
+    - Add XDT_FEATURE_VISIBILITY to check for and enable symbol visibility
+      support (only useful for building libraries).
+    - Add XDT_FEATURE_LINKER_OPTS that checks for and enables useful linker
+      optimizations if supported.  This currently only checks for
+      --as-needed and -O1, but more may be added in the future.
+    - Beef up XDT_FEATURE_DEBUG:
+      * Add new 'minimum' debug level, which is now the default and behaves
+        similarly to the old 'no' default.
+      * Debug level 'no' disables many glib/gobject-related checks and
+        asserts (this is not really recommended).
+      * Debug level 'full' disables code optimization.
+      * The macro now takes an argument to specify the default debug level.
+  - changes from 4.7.2
+    - Brown bag: fix typo that breaks XDT_FEATURE_LINKER_OPTS
+
+-------------------------------------------------------------------
+Fri Feb 27 13:53:58 CET 2009 - prusnak@suse.cz
+
+- updated to 4.6.0 (Xfce 4.6.0 release)
+
+-------------------------------------------------------------------
+Mon Dec  3 22:33:50 CET 2007 - bwalle@suse.de
+
+- update to 4.4.0.1
+  o Updated and new translations.
+
+-------------------------------------------------------------------
+Sat Jun 23 17:20:22 CEST 2007 - bwalle@suse.de
+
+- replaced group 'System/GUI/Other' by 'System/GUI/XFCE'
+
+-------------------------------------------------------------------
+Tue May 22 11:44:42 CEST 2007 - prusnak@suse.cz
+
+- sync with BuildService
+
+-------------------------------------------------------------------
+Tue Jan 30 01:40:16 CET 2007 - ro@suse.de
+
+- added directory to filelist 
+
+-------------------------------------------------------------------
+Mon Jan 29 09:55:35 CET 2007 - pnemec@suse.cz
+
+- package merged from BuildService into AutoBuild
+
+-------------------------------------------------------------------
+Sun Jan 21 21:03:33 CET 2007 - bwalle@suse.de
+
+- upgraded to 4.4.0
+

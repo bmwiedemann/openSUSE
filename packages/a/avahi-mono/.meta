@@ -1,0 +1,14 @@
+<package name="avahi-mono" project="openSUSE:Factory">
+  <title>Mono Bindings for avahi, the D-BUS Service for Zeroconf and Bonjour</title>
+  <description>This package provides Mono bindings for avahi. Avahi is an
+implementation of the DNS Service Discovery and MulticastDNS
+specifications for Zeroconf Computing. It uses D-BUS for communication
+between user applications and a system daemon. The daemon is used to
+coordinate application efforts in caching replies, necessary to
+minimize the traffic imposed on networks. The Avahi mDNS responder is
+now feature complete, implementing all MUSTs and the majority of the
+SHOULDs of the mDNS and DNS-SD RFCs. It passes all tests in the Apple
+Bonjour conformance test suite. In addition, it supports some nifty
+things, like correct mDNS reflection across LAN segments.</description>
+  <devel project="openSUSE:Factory" package="avahi"/>
+</package>

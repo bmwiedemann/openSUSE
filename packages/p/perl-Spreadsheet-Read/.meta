@@ -1,0 +1,18 @@
+<package name="perl-Spreadsheet-Read" project="openSUSE:Factory">
+  <title>Read the data from a spreadsheet</title>
+  <description>Spreadsheet::Read tries to transparently read *any* spreadsheet and return
+its content in a universal manner independent of the parsing module that
+does the actual spreadsheet scanning.
+
+For OpenOffice this module uses Spreadsheet::ReadSXC
+
+For Microsoft Excel this module uses Spreadsheet::ParseExcel or
+Spreadsheet::XLSX
+
+For CSV this module uses Text::CSV_XS (0.29 or up required, 0.73 or up
+preferred) or Text::CSV_PP (1.05 or up required).
+
+For SquirrelCalc there is a very simplistic built-in parser</description>
+  <devel project="devel:languages:perl" package="perl-Spreadsheet-Read"/>
+  <url>http://search.cpan.org/dist/Spreadsheet-Read/</url>
+</package>

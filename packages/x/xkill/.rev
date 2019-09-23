@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a4818504a10b5fb583e0dcdd3289c6a</srcmd5>
+    <version>1.0.3</version>
+    <time>1336471511</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115466</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7a4818504a10b5fb583e0dcdd3289c6a</srcmd5>
+    <version>1.0.3</version>
+    <time>1340184369</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>7a4818504a10b5fb583e0dcdd3289c6a</srcmd5>
+    <version>1.0.3</version>
+    <time>1359110651</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>338cf682dcff2b9296e365696f4bf58f</srcmd5>
+    <version>1.0.4</version>
+    <time>1379076424</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to version 1.0.4 (forwarded request 198753 from Zaitor)</comment>
+    <requestid>198891</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>338cf682dcff2b9296e365696f4bf58f</srcmd5>
+    <version>1.0.4</version>
+    <time>1379665077</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>7b7cd00ac6f3a436a540d4c0fbb8aecf</srcmd5>
+    <version>1.0.4</version>
+    <time>1391770603</time>
+    <user>scarabeus_factory</user>
+    <comment>- fixed license to X11 in specfile</comment>
+    <requestid>221093</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>7b7cd00ac6f3a436a540d4c0fbb8aecf</srcmd5>
+    <version>1.0.4</version>
+    <time>1409303763</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e14b08a58ab9e508b96ee0dfa1e91480</srcmd5>
+    <version>1.0.5</version>
+    <time>1524144493</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0.5
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Print which option was in error along with usage message
+  * Use strcasecmp instead of a tolower loop &amp; strcmp
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>593596</requestid>
+  </revision>
+</revisionlist>

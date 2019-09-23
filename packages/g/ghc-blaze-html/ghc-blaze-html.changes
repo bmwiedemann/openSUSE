@@ -1,0 +1,117 @@
+-------------------------------------------------------------------
+Sat Oct 20 11:31:15 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:16 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jul 13 14:32:23 UTC 2018 - psimons@suse.com
+
+- Update blaze-html to version 0.9.1.1.
+  - 0.9.1.1 (2018-06-12)
+      * Fix generated source code on Hackage
+
+  - 0.9.1.0
+      * Add `u` element to HTML5
+      * Add `role` attribute to HTML5
+      * Bump HUnit dependency to 1.6
+      * Bump QuickCheck dependency to 2.11
+
+-------------------------------------------------------------------
+Wed May 16 13:06:52 UTC 2018 - psimons@suse.com
+
+- Prefer the new %license attribute over %doc.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Thu Jul 27 14:04:15 UTC 2017 - psimons@suse.com
+
+- Update to version 0.9.0.1.
+
+-------------------------------------------------------------------
+Sun Dec  4 19:47:29 UTC 2016 - psimons@suse.com
+
+- Update to version 0.8.1.3 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Aug  1 10:39:00 UTC 2016 - psimons@suse.com
+
+- Update to version 0.8.1.2 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:32:50 UTC 2016 - psimons@suse.com
+
+- Update to version 0.8.1.1 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Oct  4 15:59:07 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.8.1.1
+* Bump HUnit dependency to 1.3
+
+-------------------------------------------------------------------
+Tue Aug  4 05:32:55 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.8.1.0
+* Add `<main>` element to HTML5
+
+-------------------------------------------------------------------
+Mon Apr 20 12:44:49 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.8.0.2
+* Relax blaze-builder dependency to include 0.3 again
+* Add `itemscope` and `itemprop` attributes
+
+-------------------------------------------------------------------
+Sun Nov  9 15:56:26 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- update to 0.7.0.3
+* version bound for text (Haskell Platform 2014.2.0.0)
+* compatibility with ghc-blaze-markup
+
+-------------------------------------------------------------------
+Mon Oct 21 14:45:53 UTC 2013 - sbahling@suse.com
+
+- spec file: Add %defattr(-,root,root,-) to %files devel section
+
+-------------------------------------------------------------------
+Wed May 15 14:25:47 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 0.6.1.1 from upstream (no changelog)
+* base, keygen, and source elements are considered leaf elements
+* dependencies for test framework adjusted
+
+-------------------------------------------------------------------
+Wed Oct  3 07:20:49 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 0.5.1.0 from upstream (no changelog)
+
+-------------------------------------------------------------------
+Wed Jul  4 17:18:33 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 0.5.0.0 from upstream (no changelog)
+
+-------------------------------------------------------------------
+Tue Jun  5 16:55:36 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- cabal2spec 0.25.5 template for spec file
+- required for ghc-rpm-macros 0.90
+
+-------------------------------------------------------------------
+Fri Mar 16 13:58:23 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- added BuildRoof fo SLE_11_SP1/2
+
+-------------------------------------------------------------------
+Fri Mar  2 16:19:12 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- initial packaging

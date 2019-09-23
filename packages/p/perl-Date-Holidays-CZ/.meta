@@ -1,0 +1,6 @@
+<package name="perl-Date-Holidays-CZ" project="openSUSE:Factory">
+  <title>Czech Republic bank holidays</title>
+  <description>Perl module for determining the dates and names of
+  Czech Republic bank holidays</description>
+  <devel project="devel:languages:perl" package="perl-Date-Holidays-CZ"/>
+</package>

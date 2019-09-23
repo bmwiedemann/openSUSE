@@ -1,0 +1,20 @@
+diff --git fallback-duckduckgo/__init__.py fallback-duckduckgo.new/__init__.py
+index bf7bb02..6c591e0 100644
+--- fallback-duckduckgo/__init__.py
++++ fallback-duckduckgo.new/__init__.py
+@@ -116,12 +116,12 @@ class DuckduckgoSkill(FallbackSkill):
+         LOG.debug('Query: ' + str(query))
+         LOG.debug('Type: ' + r.type)
+ 
+-        if r.answer is not None and r.answer.text and "HASH" not in r.answer.text:
++        if r.answer is not None and r.answer.text and isinstance(r.answer.text, str) and "HASH" not in r.answer.text:
+             self.speak(query + self.is_verb + r.answer.text + '.')
+-        elif len(r.abstract.text) > 0:
++        elif isinstance(r.abstract.text, str) and len(r.abstract.text) > 0:
+             sents = split_sentences(r.abstract.text)
+             self.speak(sents[0])
+-        elif len(r.related) > 0 and len(r.related[0].text) > 0:
++        elif len(r.related) > 0 and isinstance(r.related[0].text, str) and len(r.related[0].text) > 0:
+             related = split_sentences(r.related[0].text)[0]
+             self.speak(self.format_related(related, query))
+         else:

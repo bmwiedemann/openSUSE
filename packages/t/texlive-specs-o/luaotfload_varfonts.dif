@@ -1,0 +1,85 @@
+---
+ texmf-dist/tex/luatex/luaotfload/fontloader-basics-gen.lua |   26 +++++++++++++
+ texmf-dist/tex/luatex/luaotfload/fontloader-reference.lua  |   23 +++++++++++
+ 2 files changed, 49 insertions(+)
+
+--- texmf-dist/tex/luatex/luaotfload/fontloader-basics-gen.lua
++++ texmf-dist/tex/luatex/luaotfload/fontloader-basics-gen.lua	2016-06-09 10:26:02.571996404 +0000
+@@ -197,6 +197,7 @@ do
+     -- standard context tree setup
+ 
+     local cachepaths = kpse.expand_var('$TEXMFCACHE') or ""
++    local mktex = kpse.find_file('mktex.cnf','cnf') or ""
+ 
+     -- quite like tex live or so (the weird $TEXMFCACHE test seems to be needed on miktex)
+ 
+@@ -210,6 +211,31 @@ do
+         cachepaths = kpse.expand_var('$VARTEXMF') or ""
+     end
+ 
++    -- SUSE VARTEXFONTS
++
++    if mktex~="" then
++        local varfonts = "no"
++        local features = io.open(mktex,'r')
++        local cache
++        for line in features:lines() do
++            if string.find(line, 'MT_FEATURES=') then
++                if string.find(line, 'varfonts') then
++                    varfonts = "yes"
++                end
++                break
++            end
++       end
++       features:close()
++       cache = kpse.expand_var('$VARTEXFONTS')
++       if varfonts == "yes" and cache ~= "" then
++           if false == file.is_writable(cache) then
++               cachepaths = os.getenv("HOME") .. "/.cache/texmf/fonts"
++           else
++               cachepaths = cache
++           end
++       end
++    end
++
+     -- and this is a last resort (hm, we could use TEMP or TEMPDIR)
+ 
+     if cachepaths == "" then
+--- texmf-dist/tex/luatex/luaotfload/fontloader-reference.lua
++++ texmf-dist/tex/luatex/luaotfload/fontloader-reference.lua	2019-05-10 09:32:16.562792353 +0000
+@@ -4314,12 +4314,35 @@ if not caches.namespace or caches.namesp
+ end
+ do
+  local cachepaths=kpse.expand_var('$TEXMFCACHE') or ""
++ local mktex=kpse.find_file('mktex.cnf','cnf') or ""
+  if cachepaths=="" or cachepaths=="$TEXMFCACHE" then
+   cachepaths=kpse.expand_var('$TEXMFVAR') or ""
+  end
+  if cachepaths=="" or cachepaths=="$TEXMFVAR" then
+   cachepaths=kpse.expand_var('$VARTEXMF') or ""
+  end
++ if mktex~="" then
++  local varfonts="no"
++  local features=io.open(mktex,'r')
++  local cache
++  for line in features:lines() do
++   if string.find(line, 'MT_FEATURES=') then
++    if string.find(line, 'varfonts') then
++     varfonts="yes"
++    end
++    break
++   end
++  end
++  features:close()
++  cache=kpse.expand_var('$VARTEXFONTS')
++  if varfonts=="yes" and cachepaths~="" then
++   if false == file.is_writable(cachepaths) then
++    cachepaths=os.getenv("HOME") .. "/.cache/texmf/fonts"
++   end
++  else
++   cachepaths=cache
++  end
++ end
+  if cachepaths=="" then
+   local fallbacks={ "TMPDIR","TEMPDIR","TMP","TEMP","HOME","HOMEPATH" }
+   for i=1,#fallbacks do

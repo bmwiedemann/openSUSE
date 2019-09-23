@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Mon Jul 22 16:41:24 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.3.0
+  * Pass through open kwargs
+  * set versions
+  * add fuse recording
+  * skip fuse early
+  * remove pandas install
+  * some changes for FUSE
+  * add fsspec to install
+
+-------------------------------------------------------------------
+Thu May  2 17:17:18 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

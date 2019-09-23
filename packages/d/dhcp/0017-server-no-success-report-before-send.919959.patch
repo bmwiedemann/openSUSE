@@ -1,0 +1,98 @@
+From ce15607bca2509bc2abd440000d25498ad589e27 Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Mon, 14 Sep 2015 15:31:37 +0200
+Subject: [PATCH] server: no success report before send (bsc#919959)
+References: bsc#919959
+
+
+diff --git a/server/dhcp.c b/server/dhcp.c
+index effa9b1..18297a6 100644
+--- a/server/dhcp.c
++++ b/server/dhcp.c
+@@ -3859,22 +3859,6 @@ void dhcp_reply (lease)
+ 	}
+ #endif
+ 
+-	/* Say what we're doing... */
+-	log_info ("%s on %s to %s %s%s%svia %s",
+-		  (state -> offer
+-		   ? (state -> offer == DHCPACK ? "DHCPACK" : "DHCPOFFER")
+-		   : "BOOTREPLY"),
+-		  piaddr (lease -> ip_addr),
+-		  (lease -> hardware_addr.hlen
+-		   ? print_hw_addr (lease -> hardware_addr.hbuf [0],
+-				    lease -> hardware_addr.hlen - 1,
+-				    &lease -> hardware_addr.hbuf [1])
+-		   : print_hex_1(lease->uid_len, lease->uid, 60)),
+-		  s ? "(" : "", s ? s : "", s ? ") " : "",
+-		  (state -> giaddr.s_addr
+-		   ? inet_ntoa (state -> giaddr)
+-		   : state -> ip -> name));
+-
+ #ifdef DEBUG_PACKET
+ 	dump_raw ((unsigned char *)&raw, packet_length);
+ #endif
+@@ -3906,12 +3890,13 @@ void dhcp_reply (lease)
+ 					   "packet over %s interface.", MDL,
+ 					   packet_length,
+ 					   fallback_interface->name);
+-			}
+ 
++				free_lease_state (state, MDL);
++				lease -> state = (struct lease_state *)0;
++				return;
++			}
+ 
+-			free_lease_state (state, MDL);
+-			lease -> state = (struct lease_state *)0;
+-			return;
++			goto report;
+ 		}
+ 
+ 	/* If the client is RENEWING, unicast to the client using the
+@@ -3944,11 +3929,13 @@ void dhcp_reply (lease)
+ 					  " packet over %s interface.", MDL,
+ 					   packet_length,
+ 					   fallback_interface->name);
++
++				free_lease_state (state, MDL);
++				lease -> state = (struct lease_state *)0;
++				return;
+ 			}
+ 
+-			free_lease_state (state, MDL);
+-			lease -> state = (struct lease_state *)0;
+-			return;
++			goto report;
+ 		}
+ 
+ 	/* If it comes from a client that already knows its address
+@@ -3976,8 +3963,28 @@ void dhcp_reply (lease)
+ 	    log_error ("%s:%d: Failed to send %d byte long "
+ 		       "packet over %s interface.", MDL,
+ 		       packet_length, state->ip->name);
++
++	    free_lease_state (state, MDL);
++	    lease -> state = (struct lease_state *)0;
++	    return;
+ 	}
+ 
++report:
++	/* Say what we're doing... */
++	log_info ("%s on %s to %s %s%s%svia %s",
++		  (state -> offer
++		   ? (state -> offer == DHCPACK ? "DHCPACK" : "DHCPOFFER")
++		   : "BOOTREPLY"),
++		  piaddr (lease -> ip_addr),
++		  (lease -> hardware_addr.hlen
++		   ? print_hw_addr (lease -> hardware_addr.hbuf [0],
++				    lease -> hardware_addr.hlen - 1,
++				    &lease -> hardware_addr.hbuf [1])
++		   : print_hex_1(lease->uid_len, lease->uid, 60)),
++		  s ? "(" : "", s ? s : "", s ? ") " : "",
++		  (state -> giaddr.s_addr
++		   ? inet_ntoa (state -> giaddr)
++		   : state -> ip -> name));
+ 
+ 	/* Free all of the entries in the option_state structure
+ 	   now that we're done with them. */

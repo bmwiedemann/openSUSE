@@ -1,0 +1,249 @@
+-------------------------------------------------------------------
+Tue Aug 20 15:37:36 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 2018.3.4, no changelog provided
+
+-------------------------------------------------------------------
+Thu Feb 14 01:00:47 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 2018.3.2, no changelog provided
+
+-------------------------------------------------------------------
+Tue Jan  8 13:59:45 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add _constraints file for sufficient disk space
+
+-------------------------------------------------------------------
+Tue Dec 18 01:09:30 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 2018.3.1
+  * Scenery
+    + Improved scenery for Hawaii, the default location for this release.
+    + New scenery for Jan Mayen, situated northeast of Iceland.
+  * Aircraft Updates
+    + "Metadata" has been added to many aircraft, making it easier to find new
+      exciting aircraft to fly using the launcher.
+    + B-25 : Various bug fixes and minor improvements
+    + Cessna 172 : Improved cockpit, interior lighting.
+    + Citation II : New panels, radio instruments. Complete remodeling of the
+      electric system. System test knob implemented.
+    + F4U : new FDM
+    + F-14 : V1.8. Improved flight model, particularly at low-speed. Improved cockpit.
+    + F-15 : V1.8. Updated flight model, particularly armament mass location.
+      Performance optimizations. Autopilot improvements.
+    + F-16 : v3.0. Store options. New liveries. Radar performance optimizations.
+      Autopilot and system improvements. FDM fixes.
+    + Saab 37 Viggen : Version 4.313. Various updates, particularly to radar and armament models.
+    + Seneca II: Long range tanks, interior lighting,
+    + SpaceShuttle : Milestone-10. Improved interior (including furry velcro),
+      launch guidance and orbital plane targeting, more realistic OMS burn procedures, expanded
+      systems including circuit breaker simulation and failure modeling.
+    + 777: Our flagship airliner now fully supports checklists, allowing you to learn everything
+      about the aircraft from within the simulator. Full support to auto-push was also
+      implemented. Bug fixes and minor improvements.
+
+-------------------------------------------------------------------
+Thu Aug  9 15:13:56 UTC 2018 - rpm@fthiessen.de
+
+- Minor spec file cleanup.
+
+-------------------------------------------------------------------
+Thu Aug  9 13:46:59 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Update to 2018.2.2
+  * Cessna 550 Citation II - detailed modelling of avionics,
+    improved MP model display, improved flaps modeling
+  * Cessna Citation X - avionics improvements,
+    improved MP model display
+  * North American P-51 Mustang
+  * Piper J3 Cub - improvements to water behaviour
+  * Saab 37 Viggen - Autopilot, HUD and TI improvements
+  * Cessna 172P - FDM, 3D Model, Sound improvements
+  * FG1000 glass panel display, based on the Garmin G1000
+- Update to 2018.2.1
+  * Active Volcanos, including Kilauea, Stromboli, Etna,
+  * New Hawaii regional texture definitions
+  * Several scenic waterfalls in the Hawaii area
+  * New and unique vegetation textures for several
+    parts of the world
+  * New 3D Objects: Buildings and structures in France,
+    Portugal, Spain, UK, USA, Australia and Ukraine
+  * Improved airports: Valle del Conlara Airport (SAOS) in
+    Argentina, RAF Mount Pleasant (EGYP) in Falkland Islands UK,
+    Bordeaux–Mérignac Airport (LFBD) in France and
+    King Abdulaziz International Airport (OEJN) in Saudi Arabia.
+  * A new glider: Rolladen-Schneider LS4
+  * Space Shuttle improvements
+  * Cessna 182S
+  * Amelia - an animated and hard-working co-pilot for the
+    Alouette III capable of taking off and landing
+  * Citation II
+  * F-14 - various changes including improved carrier operations
+  * Robinson R44 helicopter
+  * Major DHC-6 Twin Otter update: JSBSim variant added
+    (status: experimental), more realistic fuel system in JSBSim,
+    significantly more detailed simulation of the electrical
+    system including various DC and AC buses, circuit breakers
+    and bus tie relay.
+- Spec file cleanup/fixes:
+  * Skip generation of documentation, everything is pregenerated
+  * Drop no longer required tex dependencies
+- Remove unnecessary files:
+  * Unbundle fonts (liberation-fonts)
+  * Obsoletes textures (Textures/Unused/)
+  * Texture sources in GIMP format (*.xcf.gz)
+
+-------------------------------------------------------------------
+Tue Sep 26 10:09:18 UTC 2017 - Mathias.Homann@opensuse.org
+
+- Update to 2017.3.1
+  * New AI Model Embraer ERJ 190 with Paintkit and
+    liveries Default, Helvetic Airways and Finnair.
+  * Add tips provided by forum members.
+  * Updated Ukraine Intl Liveries 737-300, 737-800, 767-300
+  * ERJ90 AI model update, new Tail and Nacelles +
+    Adjusted Paintkit
+  * New Liveries for ERJ90 AI model
+  * Updated Liveries AI ERJ90 with Nacelles Texture
+  * Added ERJ90 model to existing Traffic File
+  * Remapped 747-400 AI Model (Top of fuselage)
+  * 747-400 Liveries for new model mapping
+  * Remapped 747-400 Freighter (Top Fuselage)
+    and updated Liveries
+  * Switch to the latest DESG fonts
+    and add the new Weather symbols MP2017 protocol support.
+  * Remapped 767-300 (Top of Fuselage). Ajusted Liveries.
+    Added pitch
+  * Earthview 2.1 - parallax mapping for cloud layer,
+    lightning at night, Rayleigh scattering in atmosphere.
+  * Bugfix and noise seed option for ALS thrust flame shader
+  * Bugfix for ALS HUD effect/filtering interaction
+  * AirBaltic Dash8 Texture
+  * Update the Italian translation
+  * Update the French translation
+  * Added Spanish translation for startup tips.
+  * LOT, Vueling TAP and Wideroe Liveries for
+    733 738 319 321 AT7 and Dash 8
+  * Austrian Airlines Liveries for AI models Fokker 70 &
+    Embraer ERJ195
+  * Air Mauritius Liveries for ATR 72 & A319
+  * Austrian Airlines Livery for new 777-200
+  * TAM Brazil AI 777-300 Livery
+  * Updated 733 AI. Fixed AC model(s) & Winglets Mapping.
+    New Windhshield Texture.
+  * New 777-300 Livery for Swiss Airlines
+  * A350-900 Model addd to Qatar Airways traffic file
+  * Fix particle wake for USS Truman
+  * Bug Fix to missing performance data error for
+    CRJ 1000 AI model.
+  * New AI Model B737-900ER incl Paintkit and 5 liveries
+
+-------------------------------------------------------------------
+Wed Jun 21 04:05:39 UTC 2017 - bwiedemann@suse.com
+
+- drop unneccesary TeX logs to fix build-compare
+
+-------------------------------------------------------------------
+Thu Mar  9 22:44:49 UTC 2017 - wk@ire.pw.edu.pl
+
+- Update to 2017.1.2
+
+-------------------------------------------------------------------
+Mon Jan 23 14:49:23 UTC 2017 - opensuse@dstoecker.de
+
+- update to version 2016.4.4
+
+-------------------------------------------------------------------
+Sat Jan  7 12:44:58 UTC 2017 - davejplater@gmail.com
+
+- Fixed boo#987206 by moving license files for third parties to
+  the default doc dir and fdupe the flightgear data dir and doc dir
+  seperately.
+- Split off documentation into a sub package
+- Added FlightGear-data-rpmlintrc to suppress many warnigs about
+  needed hidden files and make rpmlint output more readable.
+
+-------------------------------------------------------------------
+Sun Aug 21 22:12:57 UTC 2016 - mailaender@opensuse.org
+
+- Update to 2016.2.1
+
+-------------------------------------------------------------------
+Sun Mar 20 17:16:01 UTC 2016 - bosim@opensuse.org
+
+- Added SourceURL
+
+-------------------------------------------------------------------
+Mon Mar 14 22:12:21 CET 2016 - bosim@opensuse.org
+
+- Update to 2016.1.1
+
+-------------------------------------------------------------------
+Wed Nov 25 16:02:59 UTC 2015 - rpm@fthiessen.de
+
+- Update to 3.7.0 
+
+-------------------------------------------------------------------
+Mon Sep 23 13:14:49 UTC 2013 - Mathias.Homann@opensuse.org
+
+- update to 2.12.0
+
+-------------------------------------------------------------------
+Tue Mar 19 09:15:12 UTC 2013 - joop.boonen@opensuse.org
+
+- update to 2.10.0 
+
+-------------------------------------------------------------------
+Sun Aug 23 14:22:00 UTC 2012 - thorstenb@flightgear.org
+
+- Fix "OpenGL error 'invalid operation'" error and crash with some
+  graphics cards (FlightGear fgdata commit #6b76ef1a)
+
+-------------------------------------------------------------------
+Fri Aug 17 12:00:00 UTC 2012 - thorstenb@flightgear.org
+
+- update to 2.8.0
+
+-------------------------------------------------------------------
+Fri Feb 17 12:00:00 UTC 2012 - thorstenb@flightgear.org
+
+- update to 2.6.0
+- fixed FlightGear help system
+
+-------------------------------------------------------------------
+Tue Sep  6 05:40:59 UTC 2011 - highwaystar.ru@gmail.com
+
+- data moved /usr/share/FlightGear -> /usr/share/flightgear 
+
+-------------------------------------------------------------------
+Tue Sep  6 05:01:58 UTC 2011 - highwaystar.ru@gmail.com
+
+- update to 2.4.0
+- added fdupes macro 
+
+-------------------------------------------------------------------
+Mon Mar  1 15:27:07 UTC 2010 - prusnak@suse.cz
+
+- updated to 2.0.0
+- apply fixes from Fedora package by Fabrice Bellet <fabrice@bellet.info>
+
+-------------------------------------------------------------------
+Fri Jan  4 17:29:09 CET 2008 - lmichnovic@suse.cz
+
+- patched tarball with upstream patch fixing mp chat
+
+-------------------------------------------------------------------
+Thu Jan  3 14:38:59 CET 2008 - lmichnovic@suse.cz
+
+- update to version 1.0.0
+
+-------------------------------------------------------------------
+Wed Nov 28 15:35:15 CET 2007 - lmichnovic@suse.cz
+
+- update to 0.9.11-pre2 version
+
+-------------------------------------------------------------------
+Thu Nov 22 15:38:22 CET 2007 - lmichnovic@suse.cz
+
+- updated data from CVS
+

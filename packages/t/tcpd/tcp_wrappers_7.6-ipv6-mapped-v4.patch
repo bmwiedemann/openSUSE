@@ -1,0 +1,56 @@
+---
+ hosts_access.c |    2 +-
+ socket.c       |   14 +++++++++-----
+ 2 files changed, 10 insertions(+), 6 deletions(-)
+
+Index: tcp_wrappers_7.6/hosts_access.c
+===================================================================
+--- tcp_wrappers_7.6.orig/hosts_access.c
++++ tcp_wrappers_7.6/hosts_access.c
+@@ -461,7 +461,7 @@ char   *string;
+      }
+     return ((addr & mask) == net);
+ }
+- 
++
+ /* string_match - match string against pattern 
+  * 
+  * tok = data read from /etc/hosts.*
+Index: tcp_wrappers_7.6/socket.c
+===================================================================
+--- tcp_wrappers_7.6.orig/socket.c
++++ tcp_wrappers_7.6/socket.c
+@@ -187,24 +187,28 @@ struct host_info *host;
+ #ifdef INET6
+     struct sockaddr *sin = (struct sockaddr *) host->sin;
+     char *ap;
+-    int alen;
++    int af;
+ 
+     if (!sin)
+         return;
+-    switch (sin->sa_family) {
++
++    af = sin->sa_family;
++    switch (af) {
+         case AF_INET:
+             ap = (char *)&((struct sockaddr_in *)sin)->sin_addr;
+-            alen = sizeof(struct in_addr);
+             break;
+         case AF_INET6:
+             ap = (char *)&((struct sockaddr_in6 *)sin)->sin6_addr;
+-            alen = sizeof(struct in6_addr);
++	    if (IN6_IS_ADDR_V4MAPPED(ap)) {
++		ap = &((struct in6_addr *) ap)->s6_addr32[3];
++		af = AF_INET;
++	    }
+             break;
+         default:
+             return;
+     }
+     host->addr[0] = '\0';
+-    inet_ntop(sin->sa_family, ap, host->addr, sizeof(host->addr));
++    inet_ntop(af, ap, host->addr, sizeof(host->addr));
+ #else
+     struct sockaddr_in *sin = host->sin;
+ 

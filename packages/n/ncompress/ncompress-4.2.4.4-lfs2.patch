@@ -1,0 +1,44 @@
+--- ncompress-4.2.4.4/compress42.c	2010-09-10 05:40:22.000000000 +0200
++++ ncompress-4.2.4.4/compress42.c.lfs	2015-11-11 15:47:46.040446313 +0100
+@@ -171,30 +171,6 @@
+ #	define	SIG_TYPE	void (*)()
+ #endif
+ 
+-#ifndef NOFUNCDEF
+-	extern	void	*malloc	LARGS((int));
+-	extern	void	free	LARGS((void *));
+-#ifndef _IBMR2
+-	extern	int		open	LARGS((char const *,int,...));
+-#endif
+-	extern	int		close	LARGS((int));
+-	extern	int		read	LARGS((int,void *,int));
+-	extern	int		write	LARGS((int,void const *,int));
+-	extern	int		chmod	LARGS((char const *,int));
+-	extern	int		unlink	LARGS((char const *));
+-	extern	int		chown	LARGS((char const *,int,int));
+-	extern	int		utime	LARGS((char const *,struct utimbuf const *));
+-	extern	char	*strcpy	LARGS((char *,char const *));
+-	extern	char	*strcat	LARGS((char *,char const *));
+-	extern	int		strcmp	LARGS((char const *,char const *));
+-	extern	unsigned strlen	LARGS((char const *));
+-	extern	void	*memset	LARGS((void *,char,unsigned int));
+-	extern	void	*memcpy	LARGS((void *,void const *,unsigned int));
+-	extern	int		atoi	LARGS((char const *));
+-	extern	void	exit	LARGS((int));
+-	extern	int		isatty	LARGS((int));
+-#endif
+-	
+ #define	MARK(a)	{ asm(" .globl M.a"); asm("M.a:"); }
+ 
+ #ifdef	DEF_ERRNO
+@@ -538,8 +514,8 @@
+ char 			ofname[MAXPATHLEN];	/* Output filename								*/
+ int				fgnd_flag = 0;		/* Running in background (SIGINT=SIGIGN)		*/
+ 
+-long 			bytes_in;			/* Total number of byte from input				*/
+-long 			bytes_out;			/* Total number of byte to output				*/
++long long 			bytes_in;			/* Total number of byte from input				*/
++long long 			bytes_out;			/* Total number of byte to output				*/
+ 
+ /*
+  * 8086 & 80286 Has a problem with array bigger than 64K so fake the array

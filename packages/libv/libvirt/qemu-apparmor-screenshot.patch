@@ -1,0 +1,11 @@
+Index: libvirt-5.7.0/src/security/apparmor/libvirt-qemu
+===================================================================
+--- libvirt-5.7.0.orig/src/security/apparmor/libvirt-qemu
++++ libvirt-5.7.0/src/security/apparmor/libvirt-qemu
+@@ -228,3 +228,6 @@
+   # required for sasl GSSAPI plugin
+   /etc/gss/mech.d/ r,
+   /etc/gss/mech.d/* r,
++
++  # Temporary screendump rule -- See bsc#904426
++  /var/cache/libvirt/qemu/qemu.screendump.* rw,

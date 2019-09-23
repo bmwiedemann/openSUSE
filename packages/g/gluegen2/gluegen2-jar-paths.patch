@@ -1,0 +1,62 @@
+Index: gluegen-v2.3.1/make/gluegen-cpptasks.xml
+===================================================================
+--- gluegen-v2.3.1.orig/make/gluegen-cpptasks.xml
++++ gluegen-v2.3.1/make/gluegen-cpptasks.xml
+@@ -20,7 +20,7 @@
+ 
+   <!-- import cpptasks -->
+   <!--typedef resource="net/sf/antcontrib/cpptasks/antlib.xml" classpath="${gluegen.root}/make/lib/cpptasks.jar;${gluegen.root}/make/lib/CppTasksGCCNamespaceHack.jar"/-->
+-  <typedef resource="net/sf/antcontrib/cpptasks/antlib.xml" classpath="${gluegen.root}/make/lib/cpptasks.jar"/>
++  <typedef resource="net/sf/antcontrib/cpptasks/antlib.xml" classpath="/usr/share/java/cpptasks.jar"/>
+ 
+   <!-- 0 fetch environment variable GLUEGEN_CPPTASKS_FILE -> gluegen-cpptasks.file -->
+   <property environment="env" />
+Index: gluegen-v2.3.1/make/gluegen-properties.xml
+===================================================================
+--- gluegen-v2.3.1.orig/make/gluegen-properties.xml
++++ gluegen-v2.3.1/make/gluegen-properties.xml
+@@ -50,12 +50,12 @@
+     <property file="${gluegen.user.properties.file.set}" />
+     <echo message="Loaded ${gluegen.user.properties.file.set}." />
+     <echo message="Setting defaults:" />
+-    <property name="antlr.jar" value="${gluegen.root}/make/lib/antlr.jar" />
+-    <property name="junit.jar" value="${gluegen.root}/make/lib/junit.jar" />
+-    <property name="ant.jar"       value="${ant.home}/lib/ant.jar" />
+-    <property name="ant-junit.jar" value="${ant.home}/lib/ant-junit.jar" />
+-    <property name="ant-junit4.jar" value="${ant.home}/lib/ant-junit4.jar" />
+-    <property name="semver.jar" value="${gluegen.root}/make/lib/semantic-versioning/semver.jar" />
++    <property name="antlr.jar" value="/usr/share/java/antlr.jar" />
++    <property name="junit.jar" value="/usr/share/java/junit4.jar" />
++    <property name="ant.jar" value="/usr/share/java/ant.jar" />
++    <property name="ant-junit.jar" value="/usr/share/java/ant/ant-junit.jar" />
++    <property name="ant-junit4.jar" value="/usr/share/java/ant/ant-junit4.jar" />
++    <property name="semver.jar" value="/usr/share/java/semantic-versioning/semver.jar" />
+ 
+     <property name="android.version" value="9" /> <!-- default - if not set by jogamp-env.xml:jogamp.env.init -->
+     <property name="android-min.jar" value="${gluegen.root}/make/lib/android-sdk/${android.version}/android.jar" />
+Index: gluegen-v2.3.1/make/jogamp-androidtasks.xml
+===================================================================
+--- gluegen-v2.3.1.orig/make/jogamp-androidtasks.xml
++++ gluegen-v2.3.1/make/jogamp-androidtasks.xml
+@@ -3,7 +3,7 @@
+     <dirname property="jogamp-androidtasks.basedir" file="${ant.file.jogamp-androidtasks}"/>
+     <taskdef resource="net/sf/antcontrib/antlib.xml">
+       <classpath> 
+-        <pathelement location="${jogamp-androidtasks.basedir}/lib/ant-contrib-1.0b3.jar"/> 
++        <pathelement location="/usr/share/java/ant-contrib.jar"/> 
+       </classpath>
+     </taskdef>
+ 
+Index: gluegen-v2.3.1/make/jogamp-archivetasks.xml
+===================================================================
+--- gluegen-v2.3.1.orig/make/jogamp-archivetasks.xml
++++ gluegen-v2.3.1/make/jogamp-archivetasks.xml
+@@ -3,7 +3,7 @@
+     <dirname property="jogamp-archivetasks.basedir" file="${ant.file.jogamp-archivetasks}"/>
+     <taskdef resource="net/sf/antcontrib/antlib.xml">
+       <classpath> 
+-        <pathelement location="${jogamp-archivetasks.basedir}/lib/ant-contrib-1.0b3.jar"/> 
++        <pathelement location="/usr/share/java/ant-contrib.jar"/> 
+       </classpath>
+     </taskdef>
+ 

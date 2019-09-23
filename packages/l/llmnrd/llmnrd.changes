@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Tue Jan 29 12:52:45 UTC 2019 - mardnh@gmx.de
+
+- Update to version 0.6
+  * Ignore queries with TC bit set in llmnrd
+  * Add option to set conflict bit in llmnr-query
+
+-------------------------------------------------------------------
+Thu Nov 23 13:39:13 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Sun Oct 22 14:30:08 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.5
+  * Poll for hostname changes
+  * Fix missing terminating NULL byte in llmnr-query
+  * Manpages for llmnrd and llmnr-query
+  * Additional compiler warnings enabled
+
+-------------------------------------------------------------------
+Fri May 26 10:34:43 UTC 2017 - jengelh@inai.de
+
+- Trim redundant mentions from description.
+
+-------------------------------------------------------------------
+Sat May  6 16:39:08 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.4
+  * llmnrd: Fix hostname compare to also consider the last character.
+    This fixes a problem where llmnrd running e.g. on host foobar
+    would also reply to queries for host foobaz.
+  * llmnrd: Avoid error message on subsequent attempts to join
+    multicast group (#21).
+  * llmnr-query: Allocate large enough receive buffer to avoid
+    truncating LLMNR responses and printing garbage
+    hostnames/addresses (#21).
+  * llmnr-query: Fixes for misaligned access.
+  * Remove Debian packaging as there is now an llmnrd package in
+    the official Debian repository .
+- Changes since 0.2
+  * Merge RTNL interface event loop into main select() loop, fixes
+    race condition on termination (#20)
+  * No busy wait in llmnrd receive loop (#19)
+  * Fixes for handling CPPFLAGS, CFLAGS and LDFLAGS as commonly
+    expected (#17)
+  * llmnr-query supported on Darwin (Mac OS X) and FreeBSD
+  * Additional GCC warnings enabled by default
+  * Various smaller fixes and updates
+- Changes since 0.1
+  * Add debian packaging, from Elazar Leibovich
+  * Fix misaligned memory access, from Michael Evertz
+  * Don't send empty AAAA responses (#10), from Tobias Klauser
+  * Allow to bind to a specific network interface (#9),
+    from Tobias Klauser
+  * Don't enumerate and store IPv6 addresses if IPv6 is disabled
+    (#8), from Tobias Klauser
+- Remove patch: llmnrd-fix-cflags.diff (fixed upstream)
+
+-------------------------------------------------------------------
+Wed Aug 03 12:20:17 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.1
+  * socket: Set TTL values as suggested in RFC 4795, section 2.5
+  * llmnr-query: Set TTL values as suggested in RFC 4795, section 2.5
+  * llmnr-query: Make query type ANY the default
+  * llmnr-packet: Correct LLMNR RFC number
+  * llmnr-query: Allow to set LLMNR transaction id
+  * llmnrd: Update copyright
+  * Add simple systemd service file
+  * llmnrd: Increase select() timeout
+  * llmnrd: Use MAXHOSTNAMELEN for hostname buffer and zero-terminate string
+  * llmnr-query: Prevent read buffer overflow in response parsing
+  * llmnrd v0.1
+
+-------------------------------------------------------------------
+Sun Jul 24 17:59:18 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.0.0.git1461922774.741f912:
+  * build: Fix install targets for use with DESTDIR
+  * build: travis: Set up Coverity scan
+  * COPYING: Add verbatim copy of GPLv2
+  * llmnrd: Add missing break in switch
+  * llmnrd: Use SA_RESTART for installed signal handlers
+  * iface: Use getnameinfo() to get address from struct sockaddr_storage
+  * iface: Fix memory leak in error case
+  * iface: Close rtnl socket if address enumeration fails
+- removed patch: llmnrd-fix-destdir.diff (fixed upstream)
+
+-------------------------------------------------------------------
+Thu Nov  5 23:00:04 UTC 2015 - mardnh@gmx.de
+
+- initial package
+

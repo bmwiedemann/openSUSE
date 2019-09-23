@@ -1,0 +1,40 @@
+From 8c949e2ef4f37bfe1f60c8bc91bc880d61fcb4ab Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Mon, 1 Oct 2018 13:50:02 +0200
+Subject: [PATCH] Fix the samba 5.9 detection.
+
+When using the check_symbol_exists function from CMake, it tries to compile a
+temporary file using a C compiler and the kdelibs C_FLAGS. This fails due to the
+'-std=iso9899:1990' flag.
+To avoid changing the ancient KDE4 build system, check_symbol_exists is replaced
+by check_cxx_symbol_exists. This way, the kdelibs CXX flags are used and the
+symbol check succeeds.
+
+---
+ cmake/modules/FindSamba.cmake | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/cmake/modules/FindSamba.cmake b/cmake/modules/FindSamba.cmake
+index 9240fcb..617593b 100644
+--- a/cmake/modules/FindSamba.cmake
++++ b/cmake/modules/FindSamba.cmake
+@@ -29,13 +29,13 @@ find_library(SAMBA_LIBRARIES NAMES smbclient HINTS ${PC_SAMBA_LIBDIR})
+ if(SAMBA_INCLUDE_DIR AND SAMBA_LIBRARIES)
+    set(SAMBA_FOUND TRUE)
+    # check whether libsmbclient has smbc_set_context()
+-   include(CheckSymbolExists)
++   include(CheckCXXSymbolExists)
+    include(MacroPushRequiredVars)
+    macro_push_required_vars()
+    set(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${SAMBA_LIBRARIES})
+    set(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} ${SAMBA_INCLUDE_DIR})
+-   check_symbol_exists(smbc_set_context "libsmbclient.h" SAMBA_HAVE_SMBC_SET_CONTEXT)
+-   check_symbol_exists(smbc_option_set "libsmbclient.h" SAMBA_HAVE_SMBC_OPTION_SET)
++   check_cxx_symbol_exists(smbc_set_context "libsmbclient.h" SAMBA_HAVE_SMBC_SET_CONTEXT)
++   check_cxx_symbol_exists(smbc_option_set "libsmbclient.h" SAMBA_HAVE_SMBC_OPTION_SET)
+    macro_pop_required_vars()
+    # fail if smbc_set_context() was required but hasn't been found
+    if (SAMBA_REQUIRE_SMBC_SET_CONTEXT AND NOT SAMBA_HAVE_SMBC_SET_CONTEXT)
+-- 
+2.19.0
+

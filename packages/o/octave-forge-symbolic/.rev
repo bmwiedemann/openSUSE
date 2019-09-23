@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>be706249454be3dce1b2f533c0e1768f</srcmd5>
+    <version>2.2.1</version>
+    <time>1434460455</time>
+    <user>coolo</user>
+    <comment>Part of Octave-Forge project</comment>
+    <requestid>311000</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>981ff5cee15f96b51da5b1b37a74cd47</srcmd5>
+    <version>2.2.2</version>
+    <time>1436331605</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.2
+  * Bigfix release</comment>
+    <requestid>315491</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e43c97cf673a480345908debaab4ea67</srcmd5>
+    <version>2.2.3</version>
+    <time>1448720385</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346583</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c69d46f93010946e15aeddd4dcc57367</srcmd5>
+    <version>2.2.4</version>
+    <time>1450955838</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.4
+  * Bigfix release</comment>
+    <requestid>350465</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ea67cefec7b46a697063626a551f1ca1</srcmd5>
+    <version>2.4.0</version>
+    <time>1465481694</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400581</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9c1b91cb991a68ca58e953a1fa78264f</srcmd5>
+    <version>2.6.0</version>
+    <time>1503925937</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517986</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>11983b916faeeb5d8fc7d2127fcf46c0</srcmd5>
+    <version>2.7.0</version>
+    <time>1534774764</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630302</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>03d84bb6c6c82d48ee0ff40dff307b45</srcmd5>
+    <version>2.7.1</version>
+    <time>1543224550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651315</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>60d5923f39fa381c4a2021600636321a</srcmd5>
+    <version>2.8.0</version>
+    <time>1563701685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717103</requestid>
+  </revision>
+</revisionlist>

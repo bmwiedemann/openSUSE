@@ -1,0 +1,6 @@
+<package name="harminv" project="openSUSE:Factory">
+  <title>harmonic inversion solver</title>
+  <description>Harminv is a free program (and accompanying library) to solve the problem of harmonic inversion — given a discrete-time, finite-ength signal that consists of a sum of finitely-many sinusoids (possibly exponentially decaying) in a given bandwidth, it determines the frequencies, decay constants, amplitudes, and phases of those sinusoids.
+  </description>
+  <devel project="science" package="harminv"/>
+</package>

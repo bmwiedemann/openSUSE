@@ -1,0 +1,10 @@
+diff -Naur a/share/applications/solaar.desktop b/share/applications/solaar.desktop
+--- a/share/applications/solaar.desktop	2013-06-17 09:12:32.000000000 -0500
++++ b/share/applications/solaar.desktop	2013-06-27 14:11:58.133763929 -0500
+@@ -7,5 +7,4 @@
+ Terminal=false
+ Type=Application
+ Keywords=logitech;unifying;receiver;mouse;keyboard;
+-Categories=Utility;GTK;
+-#Categories=Utility;GTK;Settings;HardwareSettings;
++Categories=Utility;DesktopUtility;

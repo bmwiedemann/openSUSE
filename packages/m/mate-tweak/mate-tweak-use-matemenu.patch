@@ -1,0 +1,20 @@
+--- a/mate-tweak
++++ b/mate-tweak
+@@ -1194,7 +1194,7 @@ class MateTweak:
+             panels.append([_("GNOME2"), "default"])
+ 
+         if self.panel_layout_exists('linuxmint') and \
+-           self.mint_menu_available:
++           self.mate_menu_available:
+             panels.append([_("Linux Mint"), "linuxmint"])
+ 
+         if self.panel_layout_exists('mageia') and \
+@@ -1228,7 +1228,7 @@ class MateTweak:
+             panels.append([_("Netbook"), "netbook-no-indicators"])
+ 
+         if self.panel_layout_exists('opensuse') and \
+-           self.gnome_menu_available:
++           self.mate_menu_available:
+             panels.append([_("openSUSE"), "opensuse"])
+ 
+         if self.dock is not None and \

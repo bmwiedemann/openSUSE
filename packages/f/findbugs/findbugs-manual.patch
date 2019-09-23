@@ -1,0 +1,49 @@
+diff --git a/build.properties b/build.properties
+index 27f21f8..82f65b1 100644
+--- a/build.properties
++++ b/build.properties
+@@ -11,7 +11,7 @@ source.findbugs.jar = src/java/,\
+ # Set this to the directory containing the DocBook Modular XSL Stylesheets
+ #  from http://docbook.sourceforge.net/projects/xsl/
+ 
+-xsl.stylesheet.home	=${local.software.home}/docbook-xsl-1.76.1
++xsl.stylesheet.home	=/usr/share/xml/docbook/stylesheet/nwalsh/current
+ 
+ # Set this to the directory containing the svnant Ant jars.  These are
+ # needed for the srcdist target and to get the svn revision number
+diff --git a/build.xml b/build.xml
+index 95a8789..0f48456 100644
+--- a/build.xml
++++ b/build.xml
+@@ -856,24 +856,16 @@
+     -->
+     <target name="generatemanual" unless="manual.uptodate">
+         <echo>Generating HTML version of manual</echo>
+-        <echo>Running saxon: ${saxon.home}/saxon.jar</echo>
+-        <java fork="true" dir="${docoutput.dir}" failonerror="true" classname="com.icl.saxon.StyleSheet" >
+-            <classpath>
+-                <pathelement location="${saxon.home}/saxon.jar"/>
+-                <pathelement path="${java.class.path}"/>
+-            </classpath>
+-            <arg value="manual.xml" />
++        <echo>Running xsltproc</echo>
++        <exec dir="${docoutput.dir}" failonerror="true" executable="xsltproc">
+             <arg value="manual.xsl" />
+-        </java>
++            <arg value="manual.xml" />
++        </exec>
+ 
+-        <java fork="true" dir="${docoutput.dir}/ja" failonerror="true" classname="com.icl.saxon.StyleSheet" >
+-            <classpath>
+-                <pathelement location="${saxon.home}/saxon.jar"/>
+-                <pathelement path="${java.class.path}"/>
+-            </classpath>
+-            <arg value="../manual_ja.xml" />
++        <exec dir="${docoutput.dir}/ja" failonerror="true" executable="xsltproc">
+             <arg value="../manual.xsl" />
+-        </java>
++            <arg value="../manual_ja.xml" />
++        </exec>
+     </target>
+ 
+     <!--

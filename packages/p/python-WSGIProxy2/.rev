@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b0058dd86ae3c2a9963abd05e13e81a</srcmd5>
+    <version>0.1</version>
+    <time>1367559636</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>174304</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7b0058dd86ae3c2a9963abd05e13e81a</srcmd5>
+    <version>0.1</version>
+    <time>1379664120</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7dcdab22c9fff53d70efc8f6cd61fded</srcmd5>
+    <version>0.3</version>
+    <time>1380218494</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 200610 from posophe)</comment>
+    <requestid>200666</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>51aa699d293419a5152bd7813a680397</srcmd5>
+    <version>0.3</version>
+    <time>1382693792</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204690</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>121415d5fbc522b75da149cd8beb426a</srcmd5>
+    <version>0.4.1</version>
+    <time>1389726010</time>
+    <user>coolo</user>
+    <comment>- update to 0.4.1:
+  * fix tests.
+  * change the way requests iter response (forwarded request 213725 from dirkmueller)</comment>
+    <requestid>213733</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>121415d5fbc522b75da149cd8beb426a</srcmd5>
+    <version>0.4.1</version>
+    <time>1409302808</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cd4ba28c5744b801ebb74dfc5a67377e</srcmd5>
+    <version>0.4.2</version>
+    <time>1431981354</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307816</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>faf55fe2093e451854bd24f5eacc7e1f</srcmd5>
+    <version>0.4.3</version>
+    <time>1495034312</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493361</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>5fdec56701cde4cda289dc16cbba4e56</srcmd5>
+    <version>0.4.3</version>
+    <time>1544726707</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654069</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3df1a97d43c29a035824ad10f554cc71</srcmd5>
+    <version>0.4.6</version>
+    <time>1552039264</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.6:
+  * PATCH added into (default) list of allowed methods
+  * Allow to use URIs with no path
+  * Clean up connection before returning result. This removes some ResourceWarnings when testing
+- Add multibuild to enable tests without cycle dependencies
+- Add missing requirements found by tests</comment>
+    <requestid>682100</requestid>
+  </revision>
+</revisionlist>

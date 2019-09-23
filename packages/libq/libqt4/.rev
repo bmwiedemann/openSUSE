@@ -1,0 +1,2039 @@
+<revisionlist>
+  <revision rev="1" vrev="11">
+    <srcmd5>73fb26d825a9107ec8b1bbcc2dc85c85</srcmd5>
+    <version>4.2.2</version>
+    <time>1168293269</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="13">
+    <srcmd5>666a3a1661df2e85c3ad10f511e4f215</srcmd5>
+    <version>4.2.2</version>
+    <time>1169561267</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="14">
+    <srcmd5>e027ed10981a4775cf7509b6aaefd9fb</srcmd5>
+    <version>4.2.2</version>
+    <time>1169660772</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="17">
+    <srcmd5>ac8a9d7dd2e707de63d1fee6301b89eb</srcmd5>
+    <version>4.2.2</version>
+    <time>1171293575</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="19">
+    <srcmd5>ded50df87d2737f833f53f533d0f59cb</srcmd5>
+    <version>4.2.2</version>
+    <time>1171483614</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="20">
+    <srcmd5>adfcb11a5dc85915af3105a1117828da</srcmd5>
+    <version>4.2.2</version>
+    <time>1172231533</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="22">
+    <srcmd5>159cc18c86a35127a15375d1fc5f28ca</srcmd5>
+    <version>4.2.2</version>
+    <time>1172778578</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>678b9c9b668e55a3e1fc2115ae50e0e1</srcmd5>
+    <version>4.2.3</version>
+    <time>1173919458</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d55c6aa8149f2dfb6140d573a872c30c</srcmd5>
+    <version>4.2.3</version>
+    <time>1174196856</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4ebb726646a783509c040c5c5f7aaf3b</srcmd5>
+    <version>4.2.90</version>
+    <time>1175629179</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>87194a71d404f8765b2c11081080d9a6</srcmd5>
+    <version>4.2.90</version>
+    <time>1176474980</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3cd4a0011a653c08c490cacc8d8274ea</srcmd5>
+    <version>4.2.91</version>
+    <time>1176505399</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>6019ce82c2dcb59eb9aafd6ecd6e9e50</srcmd5>
+    <version>4.2.91</version>
+    <time>1176763093</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>eb1f8e4e62c626dbeabc0b40f3cb43dd</srcmd5>
+    <version>4.2.91</version>
+    <time>1177013140</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>609eaba8405b4d03f5ecda3b55effda8</srcmd5>
+    <version>4.2.91</version>
+    <time>1177363175</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>58d6151bbc5cdfe84a087e8ec649c833</srcmd5>
+    <version>4.2.91</version>
+    <time>1177542849</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>ba47763c1e078fd3e7a44befe5e6e366</srcmd5>
+    <version>4.2.91</version>
+    <time>1178554579</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="13">
+    <srcmd5>fc87080aa9b058555073c571c0ef2be8</srcmd5>
+    <version>4.2.91</version>
+    <time>1178666051</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="14">
+    <srcmd5>4e5167de6eee943354033d45abb7f4a6</srcmd5>
+    <version>4.2.91</version>
+    <time>1178733882</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="21">
+    <srcmd5>c305f734123b61957f36c44c4ce288be</srcmd5>
+    <version>4.2.91</version>
+    <time>1179929930</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="26">
+    <srcmd5>c257f635b010fe60061604427d0e51d1</srcmd5>
+    <version>4.2.91</version>
+    <time>1180638084</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bbe61aed073bcb56f5302b19493c2e7e</srcmd5>
+    <version>4.3.0</version>
+    <time>1180900156</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>7eca1181077617600ad67f20816a15ba</srcmd5>
+    <version>4.3.0</version>
+    <time>1181343815</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>c21624a99f8aa9ec3fbad0cc3dfc9301</srcmd5>
+    <version>4.3.0</version>
+    <time>1182458366</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>eb7f35927592e0816e52ca035d48cb60</srcmd5>
+    <version>4.3.0</version>
+    <time>1183051543</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="11">
+    <srcmd5>b7a856bb75840810099f0a2d03a47364</srcmd5>
+    <version>4.3.0</version>
+    <time>1183654326</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="14">
+    <srcmd5>baf6f0306b55127b7cf378e780e1e353</srcmd5>
+    <version>4.3.0</version>
+    <time>1184428265</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="16">
+    <srcmd5>bd26c9c34484a3edd4008b50839ba529</srcmd5>
+    <version>4.3.0</version>
+    <time>1185033798</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="23">
+    <srcmd5>580f368f7166a9b1a528641813131666</srcmd5>
+    <version>4.3.0</version>
+    <time>1186068474</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b638a8de225d48b895cc52372c45bf7a</srcmd5>
+    <version>4.3.1</version>
+    <time>1186668305</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>33ee7cefac20c993ec930e3774fc7084</srcmd5>
+    <version>4.3.1</version>
+    <time>1187202636</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="8">
+    <srcmd5>c9b92dc55bcaafb2636959cea9d08bda</srcmd5>
+    <version>4.3.1</version>
+    <time>1187989327</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="9">
+    <srcmd5>7a30692112c4fa21e5075556c3d97cea</srcmd5>
+    <version>4.3.1</version>
+    <time>1188041506</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="11">
+    <srcmd5>e0efb3344bbf4df011829013057425ac</srcmd5>
+    <version>4.3.1</version>
+    <time>1188229493</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="17">
+    <srcmd5>ca7d70942bc0eecc62421b9e156e0779</srcmd5>
+    <version>4.3.1</version>
+    <time>1189779745</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="20">
+    <srcmd5>f1b97f978e2be3af1bc806738e51475c</srcmd5>
+    <version>4.3.1</version>
+    <time>1190221982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>6fc8ab024bfd2e47486fe80e098c8597</srcmd5>
+    <version>4.3.2</version>
+    <time>1191839035</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>9cbff4a85116de3ea24c42ca3e62c1da</srcmd5>
+    <version>4.3.2</version>
+    <time>1192227374</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="18">
+    <srcmd5>8b61920bd47df37b3d34ce9813cb905f</srcmd5>
+    <version>4.3.2</version>
+    <time>1195169804</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>6ffa009198da060b344057babe56e57f</srcmd5>
+    <version>4.3.3</version>
+    <time>1196899690</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>493afc905107c29d1a08b6ffb7f4c090</srcmd5>
+    <version>4.3.3</version>
+    <time>1196954372</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>daf81e12317a3ab91a017bd88db16012</srcmd5>
+    <version>4.3.3</version>
+    <time>1197328805</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>c08dd73d3c035f038ebc23e2914df7ea</srcmd5>
+    <version>4.3.90</version>
+    <time>1200873571</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>70c128675b7eb5ab22f7b2067b601acf</srcmd5>
+    <version>4.3.90</version>
+    <time>1201279308</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>cbc2748be4efce1da88488e37ed1beb4</srcmd5>
+    <version>4.3.90</version>
+    <time>1201567307</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="7">
+    <srcmd5>35caa8e1bc47275d793e7bbdba933830</srcmd5>
+    <version>4.3.90</version>
+    <time>1201656524</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="8">
+    <srcmd5>e5bfc00bb3566b260d5825e38d900ab6</srcmd5>
+    <version>4.3.90</version>
+    <time>1201725595</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="48" vrev="9">
+    <srcmd5>ec7437539171bab9650ff46c3de16fb4</srcmd5>
+    <version>4.3.90</version>
+    <time>1201743706</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="49" vrev="11">
+    <srcmd5>0a672e79912a2a1975ec62fb1d8361c3</srcmd5>
+    <version>4.3.90</version>
+    <time>1201902649</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="50" vrev="14">
+    <srcmd5>b0a708a449ffada6bac3b46ddc40661c</srcmd5>
+    <version>4.3.90</version>
+    <time>1202143118</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="51" vrev="16">
+    <srcmd5>926496b7a6e64825074ead1987651c45</srcmd5>
+    <version>4.3.90</version>
+    <time>1202501222</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="52" vrev="18">
+    <srcmd5>b349b31264c3df51c615a545d0635df1</srcmd5>
+    <version>4.3.90</version>
+    <time>1202575252</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>8a17904ae7b3498717b0f1da7d2fc4dc</srcmd5>
+    <version>4.3.91</version>
+    <time>1203035461</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>6b1ff148802c111dcdc748264a09c456</srcmd5>
+    <version>4.3.92</version>
+    <time>1203556012</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>04aa13e773f0681b766b65c2cd0c7a97</srcmd5>
+    <version>4.3.92</version>
+    <time>1203640607</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>0430c75b73c781f0eeac6d55fc8ef603</srcmd5>
+    <version>4.3.93</version>
+    <time>1204160415</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>939edc5a7927ae6f48c08cffe626710c</srcmd5>
+    <version>4.3.93</version>
+    <time>1204466640</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="58" vrev="7">
+    <srcmd5>a308036ff28900e5b5e6fb80dc917662</srcmd5>
+    <version>4.3.93</version>
+    <time>1205114340</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="59" vrev="8">
+    <srcmd5>12160335eef939ce928a521b9bb67bf6</srcmd5>
+    <version>4.3.93</version>
+    <time>1205258200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>df415000bb95d8e978a4d44ebab975fb</srcmd5>
+    <version>4.3.93.20080317</version>
+    <time>1205888122</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>c3017a253825681c4048f66728542e12</srcmd5>
+    <version>4.3.93.20080319</version>
+    <time>1206065616</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>4886b3fb04f974c5f56c313ca53e16a8</srcmd5>
+    <version>4.3.93.20080325</version>
+    <time>1206719828</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>f18e5aa84b244a5594db269bedff30ae</srcmd5>
+    <version>4.3.93.20080325</version>
+    <time>1207162004</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>77d32374fa096a2b79cc4bc27b3f64c8</srcmd5>
+    <version>4.3.95+4.4.0rc1</version>
+    <time>1207521579</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>9a186afad3ff40be3fce92915c627db8</srcmd5>
+    <version>4.3.95+4.4.0rc1</version>
+    <time>1207693147</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="66" vrev="4">
+    <srcmd5>073ceaaffb73a898f82a68c5ce8b5123</srcmd5>
+    <version>4.3.95+4.4.0rc1</version>
+    <time>1207821067</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="67" vrev="5">
+    <srcmd5>450489a8ec1b825d4b344bc1e669060a</srcmd5>
+    <version>4.3.95+4.4.0rc1</version>
+    <time>1207830739</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="68" vrev="6">
+    <srcmd5>933900830b7ab47395b11109904f29f2</srcmd5>
+    <version>4.3.95+4.4.0rc1</version>
+    <time>1207858290</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>eddd0fd92d683a2b520af8718d73dbc0</srcmd5>
+    <version>4.3.95+20080413</version>
+    <time>1208192994</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>1689d29fd52170a9ce2927d137afe7d6</srcmd5>
+    <version>4.3.95+20080413</version>
+    <time>1208193415</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>b06b55e51977002d5033ac2c91d42f24</srcmd5>
+    <version>4.3.95+20080413</version>
+    <time>1208198342</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>9577f586296230328fd0484a53d69135</srcmd5>
+    <version>4.3.95+20080419</version>
+    <time>1208796021</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>3389ff19e2ff42fe52e5e65c5e5eec72</srcmd5>
+    <version>4.3.95+20080424</version>
+    <time>1209133879</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>e21e6b59736198bd19b24f37e123ecab</srcmd5>
+    <version>4.3.95+20080429</version>
+    <time>1209644598</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>4344961247d9543a69a0b8f4a0439e47</srcmd5>
+    <version>4.4.0</version>
+    <time>1210109577</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>583e41c771d6e7b491187b388acf1493</srcmd5>
+    <version>4.4.0</version>
+    <time>1210367715</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="77" vrev="6">
+    <srcmd5>cea970f874a1fb3e8f4d3f8eeb79ab74</srcmd5>
+    <version>4.4.0</version>
+    <time>1210969695</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="78" vrev="10">
+    <srcmd5>642aaa853fc628837ea692ee34a21f54</srcmd5>
+    <version>4.4.0</version>
+    <time>1212503869</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="79" vrev="14">
+    <srcmd5>fb6ac8a0f323b7a2f5bbc95d8b7cee88</srcmd5>
+    <version>4.4.0</version>
+    <time>1214099719</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="80" vrev="15">
+    <srcmd5>a62d1467a083a10587a201343c07e368</srcmd5>
+    <version>4.4.0</version>
+    <time>1214255729</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="81" vrev="18">
+    <srcmd5>e2cd3784eacd2fd592b24e324830ad9f</srcmd5>
+    <version>4.4.0</version>
+    <time>1215636982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="82" vrev="22">
+    <srcmd5>aa99b5e2baba9843fc12afe374404aea</srcmd5>
+    <version>4.4.0</version>
+    <time>1216413875</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="83" vrev="26">
+    <srcmd5>244ff2e91ddbf13c15b90a630dbbaf7f</srcmd5>
+    <version>4.4.0</version>
+    <time>1216941859</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>25067b50b3cbfdc6d1538fa06b5b5e51</srcmd5>
+    <version>4.4.1</version>
+    <time>1217628716</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="85" vrev="6">
+    <srcmd5>c43fecc8c31d200e3a25a227e8166623</srcmd5>
+    <version>4.4.1</version>
+    <time>1217980307</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="86" vrev="23">
+    <srcmd5>d0d106153962a5265db0f0be78955c54</srcmd5>
+    <version>4.4.1</version>
+    <time>1220643748</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="87" vrev="28">
+    <srcmd5>b6140c919f81a6e78b1d163fdb8506b1</srcmd5>
+    <version>4.4.1</version>
+    <time>1221253552</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>4b5fb244a9f19e50e5c364268ef868fe</srcmd5>
+    <version>4.4.2</version>
+    <time>1222209114</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>c918e55091fc9465f6798596d107de24</srcmd5>
+    <version>4.4.2</version>
+    <time>1222356225</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>7b05f882073bb48042dba374fe6092d5</srcmd5>
+    <version>4.4.3</version>
+    <time>1223309341</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>63612700e3dc49f7a098798d819cb9da</srcmd5>
+    <version>4.4.3</version>
+    <time>1223763485</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>548de2d1bcf7f95f34deb8c35e405713</srcmd5>
+    <version>4.4.3</version>
+    <time>1226939653</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="93" vrev="4">
+    <srcmd5>eb904533a497f3ba99b2bcbb6a4a7928</srcmd5>
+    <version>4.4.3</version>
+    <time>1227192046</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="94" vrev="5">
+    <srcmd5>de41fb8469e20d4102d93e49a3a4f2f6</srcmd5>
+    <version>4.4.3</version>
+    <time>1229349065</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="95" vrev="6">
+    <srcmd5>9de8b21c96f578b35252c47a96c240cf</srcmd5>
+    <version>4.4.3</version>
+    <time>1231436599</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="96" vrev="7">
+    <srcmd5>d3014726add17d140e846c3b4993ca7e</srcmd5>
+    <version>4.4.3</version>
+    <time>1231952196</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="97" vrev="8">
+    <srcmd5>c256bd65bb77a9ad7405a2a50d3060aa</srcmd5>
+    <version>4.4.3</version>
+    <time>1232066924</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="98" vrev="11">
+    <srcmd5>ac5c5af9e1526ffaad5341d42a00dd29</srcmd5>
+    <version>4.4.3</version>
+    <time>1233696659</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>d497002b70ae1a46310039db83f32a1c</srcmd5>
+    <version>4.4.90+4.5.0rc1</version>
+    <time>1233852504</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>d3ed5f42c5d189e43909222e279c8098</srcmd5>
+    <version>4.4.90+4.5.0rc1</version>
+    <time>1233939478</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="101" vrev="3">
+    <srcmd5>e9d738ba29901df3dad40fb5d28c3655</srcmd5>
+    <version>4.4.90+4.5.0rc1</version>
+    <time>1234051344</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="102" vrev="4">
+    <srcmd5>94bb25cc46aee8ac58f7023d994aad43</srcmd5>
+    <version>4.4.90+4.5.0rc1</version>
+    <time>1234459972</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>b5b9c1b669b86f425e31da2698fea83c</srcmd5>
+    <version>4.5.0</version>
+    <time>1236115616</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>090a5046ef84f1c9d3ea5df5cfb6442c</srcmd5>
+    <version>4.5.0</version>
+    <time>1236118740</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>d7836c156a80fb239dc8c03fe400cafa</srcmd5>
+    <version>4.5.1</version>
+    <time>1240958109</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>6c6d5708e163d6738ee20be65c1d8cef</srcmd5>
+    <version>4.5.1</version>
+    <time>1243938388</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>8a949040d32ee972d3d87a46b6eb31d4</srcmd5>
+    <version>4.5.2</version>
+    <time>1247236602</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>3676434cd06182b18359f343e61fb776</srcmd5>
+    <version>4.5.2</version>
+    <time>1249072892</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>10d29d5844550467a904a7f49016749d</srcmd5>
+    <version>4.5.3</version>
+    <time>1255359531</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 22278 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>07aa33d4b12a23e61bceaee9fcfc2686</srcmd5>
+    <version>4.5.3</version>
+    <time>1255373593</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 22298 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="111" vrev="4">
+    <srcmd5>07aa33d4b12a23e61bceaee9fcfc2686</srcmd5>
+    <version>4.5.3</version>
+    <time>1255373593</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 22298 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="112" vrev="5">
+    <srcmd5>036ac3d6954f58111e0b513dcb12bc3b</srcmd5>
+    <version>4.5.3</version>
+    <time>1256080693</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 22581 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="113" vrev="6">
+    <srcmd5>e5a7cd5a248047e5d1f1706d584d06de</srcmd5>
+    <version>4.5.3</version>
+    <time>1258365889</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 24409 from user Beineri
+</comment>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>ef563f554fff77a843f6eaf0e34ba6c3</srcmd5>
+    <version>4.6.0</version>
+    <time>1261064837</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 26825 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>6f412f6b5f68510e339b557c97f52a39</srcmd5>
+    <version>4.6.0</version>
+    <time>1261402124</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 27299 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>b528af7303326606eb843b07cf62e0df</srcmd5>
+    <version>4.6.1</version>
+    <time>1264775905</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 30330 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>9b0d41fd551a5143ff9971245693fb8a</srcmd5>
+    <version>4.6.1</version>
+    <time>1265374770</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 31548 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="118" vrev="3">
+    <srcmd5>97c52a2197468fd6eaa74ad64230b765</srcmd5>
+    <version>4.6.1</version>
+    <time>1266504899</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 32496 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>fe6db58310e6a30dec79c3d35ffc8bcd</srcmd5>
+    <version>4.6.2</version>
+    <time>1266510489</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 32885 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>9db3a917cce8d2c4738e1af649b2b241</srcmd5>
+    <version>4.6.2</version>
+    <time>1268924696</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="121" vrev="3">
+    <srcmd5>60c00adaee9ca5682df1f17ae23444ac</srcmd5>
+    <version>4.6.2</version>
+    <time>1270051859</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 35883 from user dirkmueller
+</comment>
+    <requestid>35883</requestid>
+  </revision>
+  <revision rev="122" vrev="4">
+    <srcmd5>8edab9523e661cb20c3bc6a4cf86f78f</srcmd5>
+    <version>4.6.2</version>
+    <time>1272043649</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 38208 from user dirkmueller
+</comment>
+    <requestid>38208</requestid>
+  </revision>
+  <revision rev="123" vrev="5">
+    <srcmd5>b04859223bd46dbbbc1b5e19b693dd76</srcmd5>
+    <version>4.6.2</version>
+    <time>1274778141</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 40501 from user coolo
+</comment>
+    <requestid>40501</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>046d8aa64ad31bd5e4226692ba463a70</srcmd5>
+    <version>4.6.3</version>
+    <time>1276244926</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 41313 from user dirkmueller
+</comment>
+    <requestid>41313</requestid>
+  </revision>
+  <revision rev="125" vrev="2">
+    <srcmd5>046d8aa64ad31bd5e4226692ba463a70</srcmd5>
+    <version>4.6.3</version>
+    <time>1278667361</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="126" vrev="3">
+    <srcmd5>046d8aa64ad31bd5e4226692ba463a70</srcmd5>
+    <version>4.6.3</version>
+    <time>1278678592</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="127" vrev="4">
+    <srcmd5>1714a4a0fbea76c2ade0413001142ad3</srcmd5>
+    <version>4.6.3</version>
+    <time>1280496022</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 43605 from user dirkmueller
+</comment>
+    <requestid>43605</requestid>
+  </revision>
+  <revision rev="128" vrev="5">
+    <srcmd5>869558d84619ccd51aaf19dcd6527e42</srcmd5>
+    <version>4.6.3</version>
+    <time>1280955720</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 44465 from user dirkmueller
+</comment>
+    <requestid>44465</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>fdeba72937d9464c85e9af0905bc3b79</srcmd5>
+    <version>4.6.95+4.7.0rc1</version>
+    <time>1283514109</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 46895 from user dirkmueller
+</comment>
+    <requestid>46895</requestid>
+  </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>1d6b70c889a2c48a9f193734f1ba6f8f</srcmd5>
+    <version>4.6.95+4.7.0rc1</version>
+    <time>1283766320</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 47217 from user coolo
+</comment>
+    <requestid>47217</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>1d0e3d38940b4dabf717f00a113a87f1</srcmd5>
+    <version>4.7.0</version>
+    <time>1285601876</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libqt4 based on submit request 49245 from user coolo
+</comment>
+    <requestid>49245</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>0008e56b5e1a358c63880b4b9b722ddd</srcmd5>
+    <version>4.7.1</version>
+    <time>1290249216</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53563 from user dirkmueller
+</comment>
+    <requestid>53563</requestid>
+  </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>e2f95963778387cb8b93cacaa6494d7f</srcmd5>
+    <version>4.7.1</version>
+    <time>1290249224</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53563
+</comment>
+  </revision>
+  <revision rev="134" vrev="3">
+    <srcmd5>87bc67507dc2e589d44646cd007f403f</srcmd5>
+    <version>4.7.1</version>
+    <time>1291730591</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54919 from user dirkmueller
+</comment>
+    <requestid>54919</requestid>
+  </revision>
+  <revision rev="135" vrev="4">
+    <srcmd5>2054f9d18a196d1da08d02ea506921e8</srcmd5>
+    <version>4.7.1</version>
+    <time>1291730600</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54919
+</comment>
+  </revision>
+  <revision rev="136" vrev="5">
+    <srcmd5>cfe7c690bf7c35a0d56ae9f6481f4dab</srcmd5>
+    <version>4.7.1</version>
+    <time>1296838617</time>
+    <user>darix</user>
+    <comment>Accepted submit request 60063 from user dirkmueller
+</comment>
+    <requestid>60063</requestid>
+  </revision>
+  <revision rev="137" vrev="6">
+    <srcmd5>401104f90ca5816e56e977091395bc6b</srcmd5>
+    <version>4.7.1</version>
+    <time>1296838628</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 60063
+</comment>
+  </revision>
+  <revision rev="138" vrev="9">
+    <srcmd5>401104f90ca5816e56e977091395bc6b</srcmd5>
+    <version>4.7.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="139" vrev="2">
+    <srcmd5>b66aa6146adec00796b965ee20809511</srcmd5>
+    <version>4.7.2</version>
+    <time>1299138531</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63242 from user dirkmueller
+</comment>
+    <requestid>63242</requestid>
+  </revision>
+  <revision rev="140" vrev="3">
+    <srcmd5>c9b21adb3f82f8da0dfcb303a3c8c98c</srcmd5>
+    <version>4.7.2</version>
+    <time>1299138550</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63242
+</comment>
+  </revision>
+  <revision rev="141" vrev="4">
+    <srcmd5>a6ecfa080f3d9bde54e5a5e3155fdb42</srcmd5>
+    <version>4.7.2</version>
+    <time>1299244280</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63431 from user dirkmueller
+</comment>
+    <requestid>63431</requestid>
+  </revision>
+  <revision rev="142" vrev="5">
+    <srcmd5>1f9ffc2d0bdbeab4e695976f031887c3</srcmd5>
+    <version>4.7.2</version>
+    <time>1299244290</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63431
+</comment>
+  </revision>
+  <revision rev="143" vrev="6">
+    <srcmd5>10343e3807e983bb99fc8c8a3a973119</srcmd5>
+    <version>4.7.2</version>
+    <time>1303379478</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66987 from user dirkmueller
+</comment>
+    <requestid>66987</requestid>
+  </revision>
+  <revision rev="144" vrev="7">
+    <srcmd5>3bd3270115c4e8f7f60f84b1f6fd8cb5</srcmd5>
+    <version>4.7.2</version>
+    <time>1303379491</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66987
+</comment>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>60cac68579e198aefb0c9be71777a884</srcmd5>
+    <version>4.7.3</version>
+    <time>1306483674</time>
+    <user>saschpe</user>
+    <comment>- update to 4.7.3:
+  * bugfixes only
+  * [QTBUG-18338] blacklist fraudulent SSL certificates
+  * More details see included changes-4.7.3 file
+- merge libqt4-devel-doc-data main spec file back into
+  a subspecfile of libqt4-devel-doc
+
+- update to 4.7.3:
+  * bugfixes only
+  * [QTBUG-18338] blacklist fraudulent SSL certificates
+  * More details see included changes-4.7.3 file
+- merge libqt4-devel-doc-data main spec file back into
+  a subspecfile of libqt4-devel-doc
+
+- update to 4.7.3:
+  * bugfixes only
+  * [QTBUG-18338] blacklist fraudulent SSL certificates
+  * More details see included changes-4.7.3 file
+- merge libqt4-devel-doc-data main spec file back into
+  a subspecfile of libqt4-devel-doc</comment>
+    <requestid>70531</requestid>
+  </revision>
+  <revision rev="146" vrev="2">
+    <srcmd5>981fa40c9746a4dd2ade8a8d2300bf24</srcmd5>
+    <version>4.7.3</version>
+    <time>1306488621</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="147" vrev="3">
+    <srcmd5>31d914a4e149c3075e98b6cb46ddd565</srcmd5>
+    <version>4.7.3</version>
+    <time>1306766082</time>
+    <user>saschpe</user>
+    <comment>- fix buildrequires on subspecfiles
+
+- Use diff -u instead of cmp in check_config 
+
+-fix build for older distros
+
+- fix buildrequires on subspecfiles
+
+- Use diff -u instead of cmp in check_config 
+
+-fix build for older distros
+
+- fix buildrequires on subspecfiles
+
+- Use diff -u instead of cmp in check_config 
+
+-fix build for older distros</comment>
+    <requestid>72045</requestid>
+  </revision>
+  <revision rev="148" vrev="4">
+    <srcmd5>123c218c80809dae31f560947d6af07c</srcmd5>
+    <version>4.7.3</version>
+    <time>1306766099</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72045
+</comment>
+  </revision>
+  <revision rev="149" vrev="5">
+    <srcmd5>e95891bed50944c698eacd5de8785444</srcmd5>
+    <version>4.7.3</version>
+    <time>1309181187</time>
+    <user>saschpe</user>
+    <comment>- remove spurious executable permissions
+
+- build a libqt4-private-headers-devel for qt-creator build
+
+- remove spurious executable permissions
+
+- remove spurious executable permissions</comment>
+    <requestid>74648</requestid>
+  </revision>
+  <revision rev="150" vrev="6">
+    <srcmd5>b4e2759565da445ee7121ffe32fe1355</srcmd5>
+    <version>4.7.3</version>
+    <time>1309181204</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74648
+</comment>
+  </revision>
+  <revision rev="151" vrev="7">
+    <srcmd5>a4cf89cbb31f3ba462af7f4d1dcdc359</srcmd5>
+    <version>4.7.3</version>
+    <time>1310463893</time>
+    <user>oertel</user>
+    <comment>- fix reading of tiff images with multiple samples (bnc#637275)
+
+- build a libqt4-private-headers-devel for qt-creator build
+
+- fix reading of tiff images with multiple samples (bnc#637275)
+
+- fix reading of tiff images with multiple samples (bnc#637275)
+
+- build a libqt4-private-headers-devel for qt-creator build</comment>
+    <requestid>75925</requestid>
+  </revision>
+  <revision rev="152" vrev="8">
+    <srcmd5>d92cb7d74300591f5bed5103bebede95</srcmd5>
+    <version>4.7.3</version>
+    <time>1310463912</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 75925
+</comment>
+  </revision>
+  <revision rev="153" vrev="9">
+    <srcmd5>7f9c091d1fa1316a2fbf1340692e42be</srcmd5>
+    <version>4.7.3</version>
+    <time>1313049426</time>
+    <user>saschpe</user>
+    <comment>fix build (forwarded request 78436 from msmeissn)</comment>
+    <requestid>78438</requestid>
+  </revision>
+  <revision rev="154" vrev="10">
+    <srcmd5>b7840e812bf53b50951387e5741d2c3f</srcmd5>
+    <version>4.7.3</version>
+    <time>1313049440</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78438
+</comment>
+  </revision>
+  <revision rev="155" vrev="11">
+    <srcmd5>e8798d465db75b41c528222651809c04</srcmd5>
+    <version>4.7.3</version>
+    <time>1313155625</time>
+    <user>saschpe</user>
+    <comment>fix file conflicts</comment>
+    <requestid>78653</requestid>
+  </revision>
+  <revision rev="156" vrev="12">
+    <srcmd5>69fb32d89921bc9eb002d31221500a2f</srcmd5>
+    <version>4.7.3</version>
+    <time>1313155639</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78653
+</comment>
+  </revision>
+  <revision rev="157" vrev="13">
+    <srcmd5>581bc8d8cc9f544659dbec611d6ca40d</srcmd5>
+    <version>4.7.3</version>
+    <time>1313567832</time>
+    <user>saschpe</user>
+    <comment>- Add fix for QTBUG-14985.
+
+- do not generate documentation in libqt4, it is supposed
+  to be in libqt4-devel-doc</comment>
+    <requestid>79074</requestid>
+  </revision>
+  <revision rev="158" vrev="14">
+    <srcmd5>e916930a30e3a2e84fe00f308717c72e</srcmd5>
+    <version>4.7.3</version>
+    <time>1313567846</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79074
+</comment>
+  </revision>
+  <revision rev="159" vrev="13">
+    <srcmd5>97cf8a4d969d82f28951829813804acd</srcmd5>
+    <version>4.7.4</version>
+    <time>1316088002</time>
+    <user>saschpe</user>
+    <comment>Forward to Factory</comment>
+    <requestid>81817</requestid>
+  </revision>
+  <revision rev="160" vrev="14">
+    <srcmd5>f703a3838d2d2a277d13b222830b2b46</srcmd5>
+    <version>4.7.4</version>
+    <time>1316088022</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81817
+</comment>
+  </revision>
+  <revision rev="161" vrev="15">
+    <srcmd5>a0d439405bb24e3e040e007c151e3c35</srcmd5>
+    <version>4.7.4</version>
+    <time>1316447355</time>
+    <user>lrupp</user>
+    <comment>Add Lithuanian translation of qt (bnc#713143) (forwarded request 82793 from embar-)</comment>
+    <requestid>82795</requestid>
+  </revision>
+  <revision rev="162" vrev="16">
+    <srcmd5>74149c99313cf579e9af507598acf45d</srcmd5>
+    <version>4.7.4</version>
+    <time>1317914597</time>
+    <user>oertel</user>
+    <comment>- reenable fix for bnc#656144 - I reviewed the patch one more time
+
+- libQtWebKit4 is now delivered through its separate package,
+  therefore libqt4 should not build it from the qt4 sources anymore
+
+- Add qt_lt.ts - Lithuanian translation (bnc#713143)</comment>
+    <requestid>86900</requestid>
+  </revision>
+  <revision rev="163" vrev="17">
+    <srcmd5>7cc921cdafdb0f7ab0a16be441edaec8</srcmd5>
+    <version>4.7.4</version>
+    <time>1317996477</time>
+    <user>lrupp</user>
+    <comment>- do not require specific QtWebKit versions - they are different now</comment>
+    <requestid>87019</requestid>
+  </revision>
+  <revision rev="164" vrev="18">
+    <srcmd5>3450a1e8110511fad94bf859f3066e6f</srcmd5>
+    <version>4.7.4</version>
+    <time>1318456787</time>
+    <user>lrupp</user>
+    <comment>- require the right QtWebKit version again</comment>
+    <requestid>87579</requestid>
+  </revision>
+  <revision rev="165" vrev="20">
+    <srcmd5>3450a1e8110511fad94bf859f3066e6f</srcmd5>
+    <version>4.7.4</version>
+    <time>1319182125</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="166" vrev="21">
+    <srcmd5>0309dff440465ad1ec85f9e58dcd90a9</srcmd5>
+    <version>4.7.4</version>
+    <time>1319453479</time>
+    <user>coolo</user>
+    <comment>- do not use /usr/src/packages in specfile
+
+- disable IM for password entry (bnc#725471)
+
+- do not use /usr/src/packages in specfile
+
+- disable IM for password entry (bnc#725471)
+
+- do not use /usr/src/packages in specfile
+
+- disable IM for password entry (bnc#725471)</comment>
+    <requestid>89011</requestid>
+  </revision>
+  <revision rev="167" vrev="22">
+    <srcmd5>67cbd0742f4c2cc3034b9e6a02026ed3</srcmd5>
+    <version>4.7.4</version>
+    <time>1321886856</time>
+    <user>coolo</user>
+    <comment>- rediffed webkit-ia64_s390x.patch and reactivated patch (forwarded request 92790 from oertel)</comment>
+    <requestid>92803</requestid>
+  </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>891e1d82a098551d3941c436bfa9560c</srcmd5>
+    <version>4.7.90</version>
+    <time>1322828502</time>
+    <user>coolo</user>
+    <comment>- Fix duplicate files 
+
+- update to 4.8.0 rc1:
+  * too many changes to list here, see http://qt.nokia.com/doc/4.8
+  and included changes-4.8.0
+- remove patches that went upstream
+- rediff patches and adjust filelist
+
+- rediffed webkit-ia64_s390x.patch and reactivated patch 
+
+- Fix duplicate files 
+
+- update to 4.8.0 rc1:
+  * too many changes to list here, see http://qt.nokia.com/doc/4.8
+  and included changes-4.8.0
+- remove patches that went upstream
+- rediff patches and adjust filelist
+
+- rediffed webkit-ia64_s390x.patch and reactivated patch 
+
+- Fix duplicate files 
+
+- update to 4.8.0 rc1:
+  * too many changes to list here, see http://qt.nokia.com/doc/4.8
+  and included changes-4.8.0
+- remove patches that went upstream
+- rediff patches and adjust filelist</comment>
+    <requestid>94895</requestid>
+  </revision>
+  <revision rev="169" vrev="2">
+    <srcmd5>893aaac59309454fd13aa78e98ed3287</srcmd5>
+    <version>4.7.90</version>
+    <time>1323192321</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="170" vrev="3">
+    <srcmd5>cba691b6092936d414e3162422ba0375</srcmd5>
+    <version>4.7.90</version>
+    <time>1325846735</time>
+    <user>coolo</user>
+    <comment>- fix license to LGPL-2.1-with-nokia-exception-1.1 or GPL-3.0 (bnc#736425)
+
+- sync license in devel-doc and plugins spec file
+
+- fix license to LGPL-2.1-with-nokia-exception-1.1 or GPL-3.0 (bnc#736425)
+
+- sync license in devel-doc and plugins spec file
+
+- fix license to LGPL-2.1-with-nokia-exception-1.1 or GPL-3.0 (bnc#736425)
+
+- sync license in devel-doc and plugins spec file</comment>
+    <requestid>96546</requestid>
+  </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>c3683fcafd8bf297fc71cfe53d86ed46</srcmd5>
+    <version>4.8.0</version>
+    <time>1326292635</time>
+    <user>coolo</user>
+    <comment>- add patch for rare stack based overflow in harbuzz parser
+  (bnc#739904, CVE-2011-3922).
+
+- update to 4.8.0 (final): 
+  * only minimal change over rc1
+  * too many changes to list here, see http://qt.nokia.com/doc/4.8
+  and included changes-4.8.0
+
+- fix license to SUSE-LGPL-2.1-with-nokia-exception-1.1 or GPL-3.0 (bnc#736425)
+- add patch for rare stack based overflow in harbuzz parser
+  (bnc#739904, CVE-2011-3922).
+
+- update to 4.8.0 (final): 
+  * only minimal change over rc1
+  * too many changes to list here, see http://qt.nokia.com/doc/4.8
+  and included changes-4.8.0
+
+- fix license to SUSE-LGPL-2.1-with-nokia-exception-1.1 or GPL-3.0 (bnc#736425)
+- add patch for rare stack based overflow in harbuzz parser
+  (bnc#739904, CVE-2011-3922).
+
+- update to 4.8.0 (final): 
+  * only minimal change over rc1
+  * too many changes to list here, see http://qt.nokia.com/doc/4.8
+  and included changes-4.8.0
+
+- fix license to SUSE-LGPL-2.1-with-nokia-exception-1.1 or GPL-3.0 (bnc#736425)</comment>
+    <requestid>99333</requestid>
+  </revision>
+  <revision rev="172" vrev="2">
+    <srcmd5>10e51b2d727dd881c0b61e5e3c248773</srcmd5>
+    <version>4.8.0</version>
+    <time>1330453467</time>
+    <user>coolo</user>
+    <comment>- fix update conflict with libqt4-devel-doc (bnc#746098)
+
+- fix update conflict with libqt4-devel-doc (bnc#746098)
+
+- fix update conflict with libqt4-devel-doc (bnc#746098)</comment>
+    <requestid>107314</requestid>
+  </revision>
+  <revision rev="173" vrev="3">
+    <srcmd5>741e305bc3916541d62846e0e86bb312</srcmd5>
+    <version>4.8.0</version>
+    <time>1332147050</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 (forwarded request 109484 from a_jaeger)</comment>
+    <requestid>109508</requestid>
+  </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>7e45cf87ef9bc5791948014ba226992d</srcmd5>
+    <version>4.8.1</version>
+    <time>1334692753</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113744</requestid>
+  </revision>
+  <revision rev="175" vrev="3">
+    <srcmd5>7e45cf87ef9bc5791948014ba226992d</srcmd5>
+    <version>4.8.1</version>
+    <time>1340183625</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>fabf881307331783208ad306c4563b17</srcmd5>
+    <version>4.8.2</version>
+    <time>1340626437</time>
+    <user>coolo</user>
+    <comment>- update to 4.8.2: 
+  * long list of forward and backward compatible
+  bug fixes. see included changes-4.8.2 for details
+- remove upstreamed patches
+
+- make tga reader compatible
+
+- update to 4.8.2: 
+  * long list of forward and backward compatible
+  bug fixes. see included changes-4.8.2 for details
+- remove upstreamed patches
+
+- make tga reader compatible
+
+- update to 4.8.2: 
+  * long list of forward and backward compatible
+  bug fixes. see included changes-4.8.2 for details
+- remove upstreamed patches</comment>
+    <requestid>125038</requestid>
+  </revision>
+  <revision rev="177" vrev="2">
+    <srcmd5>787997e2cbf037219d4006fe14526c98</srcmd5>
+    <version>4.8.2</version>
+    <time>1347883096</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133909</requestid>
+  </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>c222a8a811baf8e8f6b459ec51bdd00a</srcmd5>
+    <version>4.8.3</version>
+    <time>1349437521</time>
+    <user>coolo</user>
+    <comment>- Disable compression by default to mitigate CRIME attack (CVE-2012-4929)
+
+- Revert fix-jit-crash commit responsible for kde#305718
+    undo-fix-jit-crash-on-x86_64.patch
+
+- update to 4.8.3:
+  * long list of forward and backward compatible
+  bug fixes. see included changes-4.8.3 for details
+
+- Omit qdbusconnection warnings in release/no-debug mode
+
+- Disable compression by default to mitigate CRIME attack (CVE-2012-4929)
+
+- Revert fix-jit-crash commit responsible for kde#305718
+    undo-fix-jit-crash-on-x86_64.patch
+
+- update to 4.8.3:
+  * long list of forward and backward compatible
+  bug fixes. see included changes-4.8.3 for details
+
+- Omit qdbusconnection warnings in release/no-debug mode
+
+- Disable compression by default to mitigate CRIME attack (CVE-2012-4929)
+
+- Revert fix-jit-crash commit responsible for kde#305718
+    undo-fix-jit-crash-on-x86_64.patch
+
+- update to 4.8.3:
+  * long list of forward and backward compatible
+  bug fixes. see included changes-4.8.3 for details</comment>
+    <requestid>136992</requestid>
+  </revision>
+  <revision rev="179" vrev="2">
+    <srcmd5>1b14378df715c0d45d55746dd662f739</srcmd5>
+    <version>4.8.3</version>
+    <time>1350629216</time>
+    <user>coolo</user>
+    <comment>Assistant is crashing on Qt 4.8.x 
+This patch is fixing this issue. (forwarded request 138693 from kokeroulis) (forwarded request 138713 from coolo)</comment>
+    <requestid>138714</requestid>
+  </revision>
+  <revision rev="180" vrev="3">
+    <srcmd5>137b71a30b175fe11dcdd630224b0113</srcmd5>
+    <version>4.8.3</version>
+    <time>1353598530</time>
+    <user>coolo</user>
+    <comment>- Fix the SLE_11 build. %patch -R doesn't work for the SLE repos.
+- Spec cleanup: Remove obsolete conditions and drop use-freetype-default-legacy.diff,
+                Replace absolute paths with rpm variables,
+                Move the prep section below the packages descriptions,
+                Remove some unused blocks</comment>
+    <requestid>141970</requestid>
+  </revision>
+  <revision rev="181" vrev="4">
+    <srcmd5>540b3708bee2a44b3e646ee25440438a</srcmd5>
+    <version>4.8.3</version>
+    <time>1354096852</time>
+    <user>coolo</user>
+    <comment>- revert optflags breakage in last change
+
+- revert optflags breakage in last change
+
+- revert optflags breakage in last change</comment>
+    <requestid>143015</requestid>
+  </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>9ec277c8a213f76119aa737e98f01959</srcmd5>
+    <version>4.8.4</version>
+    <time>1357827933</time>
+    <user>coolo</user>
+    <comment>- Add cert-blacklist-more.diff, cert-blacklist-tuerktrust.diff:
+  * blacklist more evil certificates
+
+- enable linked support for OpenSSL
+
+- qdbusviewer.patch: Add fix for qdbusviewer not matching args (bnc#784197)
+- openssl-incompatibility-fix.diff: Fix wrong error reporting when using
+  a binary incompatible version of openSSL (bnc#797006, CVE-2012-6093)
+
+- fix build on s390x by adding
+  qt4-fix-s390x-build.diff 
+
+- Update to version 4.8.4:
+  * long list of forward and backward compatible
+  bug fixes. see included changes-4.8.4 for details
+- remove obsolete backport disable-ssl-compression-by-default.patch
+- update License and URL to Digia
+
+- Add cert-blacklist-more.diff, cert-blacklist-tuerktrust.diff:
+  * blacklist more evil certificates
+
+- enable linked support for OpenSSL
+
+- qdbusviewer.patch: Add fix for qdbusviewer not matching args (bnc#784197)
+- openssl-incompatibility-fix.diff: Fix wrong error reporting when using
+  a binary incompatible version of openSSL (bnc#797006, CVE-2012-6093)
+
+- fix build on s390x by adding
+  qt4-fix-s390x-build.diff</comment>
+    <requestid>147486</requestid>
+  </revision>
+  <revision rev="183" vrev="2">
+    <srcmd5>9f5ff27430cfe361b318bd53a0bec37a</srcmd5>
+    <version>4.8.4</version>
+    <time>1358680660</time>
+    <user>coolo</user>
+    <comment>Added garbage-collect-deleted-objects.patch from upstream, 
+Fixes performance issues in apps which register 
+and deregister objects very frequently (like nepomukstorage) (forwarded request 149136 from sumski)</comment>
+    <requestid>149190</requestid>
+  </revision>
+  <revision rev="184" vrev="4">
+    <srcmd5>9f5ff27430cfe361b318bd53a0bec37a</srcmd5>
+    <version>4.8.4</version>
+    <time>1359109333</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="185" vrev="5">
+    <srcmd5>8d3e99310b081c2dc64fea86c5042749</srcmd5>
+    <version>4.8.4</version>
+    <time>1361454955</time>
+    <user>coolo</user>
+    <comment>- fix bnc#802634: information disclosure via QSharedMemory (CVE-2013-0254)
+  * libqt4-CVE-2013-0254.patch
+
+- fix bnc#802634: information disclosure via QSharedMemory (CVE-2013-0254)
+  * libqt4-CVE-2013-0254.patch
+
+- fix bnc#802634: information disclosure via QSharedMemory (CVE-2013-0254)
+  * libqt4-CVE-2013-0254.patch (forwarded request 155955 from mvyskocil)</comment>
+    <requestid>155956</requestid>
+  </revision>
+  <revision rev="186" vrev="6">
+    <srcmd5>01d5add21b24e4207e1e22ffd16d1d05</srcmd5>
+    <version>4.8.4</version>
+    <time>1361824825</time>
+    <user>coolo</user>
+    <comment>Added Fix-call-to-QMetaObject.patch, fixes qtbug29082 and kde#311751, crashing of plasma-desktop on QML systray (forwarded request 156132 from sumski)</comment>
+    <requestid>156288</requestid>
+  </revision>
+  <revision rev="187" vrev="7">
+    <srcmd5>66cb5e1245951a05cd2945620b66b326</srcmd5>
+    <version>4.8.4</version>
+    <time>1363949402</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>159521</requestid>
+  </revision>
+  <revision rev="188" vrev="8">
+    <srcmd5>b7889fc305e344e72f38a5fde9dbdd54</srcmd5>
+    <version>4.8.4</version>
+    <time>1365928399</time>
+    <user>coolo</user>
+    <comment>- add moc-boost148-workaround.diff:
+  * add workaround for moc issues with boost148 
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+- add moc-boost148-workaround.diff:
+  * add workaround for moc issues with boost148 
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+- add moc-boost148-workaround.diff:
+  * add workaround for moc issues with boost148 
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls</comment>
+    <requestid>163713</requestid>
+  </revision>
+  <revision rev="189" vrev="9">
+    <srcmd5>94537fcad086b40817f06d56bf3d3a2c</srcmd5>
+    <version>4.8.4</version>
+    <time>1366709573</time>
+    <user>coolo</user>
+    <comment>- Added slovak-zero.patch, fixes bug [bnc#812528].
+
+- Added fix-moc-from-choking-on-boost-headers.patch, workaround for 
+  QTBUG#22829
+
+- Added slovak-zero.patch, fixes bug [bnc#812528].
+
+- Added fix-moc-from-choking-on-boost-headers.patch, workaround for 
+  QTBUG#22829
+
+- Added slovak-zero.patch, fixes bug [bnc#812528].
+
+- Added fix-moc-from-choking-on-boost-headers.patch, workaround for 
+  QTBUG#22829</comment>
+    <requestid>172734</requestid>
+  </revision>
+  <revision rev="190" vrev="10">
+    <srcmd5>fed419b5d48abd0d3ed306ab267562b7</srcmd5>
+    <version>4.8.4</version>
+    <time>1370426068</time>
+    <user>coolo</user>
+    <comment>move linguist to a separate package (bnc#738543) (forwarded request 176940 from jirislaby)</comment>
+    <requestid>177257</requestid>
+  </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>542bf821fccbfb682d1609bd99b9d830</srcmd5>
+    <version>4.8.5</version>
+    <time>1373260362</time>
+    <user>coolo</user>
+    <comment>- Readd re-aranged fix-moc-from-choking-on-boost-headers.patch, it
+  is still needed for newer boost versions
+
+- update to 4.8.5:
+  * Qt 4.8.5 provides overall close to 400 improvements, for example:
+  * 35 fixes to Qt Core module
+  * 65 fixes to Qt Gui module
+  * 21 Mac OS X specific fixes
+  * 15 Windows specific fixes
+  * 8 Linux/X11 specific fixes
+  * Webkit upgrade to 2.2.4 (minor improvements)
+  * Change all shmget calls to user-only memory (security)
+  A detailed list of the fixes and improvements in Qt 4.8.5 compared
+  to Qt 4.8.4 can be found in the included changes-4.8.5 file.
+- remove CVE-2011-3922.diff
+- remove undo-fix-jit-crash-on-x86_64.patch
+- remove openssl-incompatibility-fix.diff
+- remove cert-blacklist-tuerktrust.diff
+- remove cert-blacklist-more.diff
+- remove garbage-collect-deleted-objects.patch
+- remove libqt4-CVE-2013-0254.patch
+- remove Fix-call-to-QMetaObject.patch
+- remove check-return-value-of-qt_safe_pipe.patch
+- remove moc-boost148-workaround.diff
+- remove fix-moc-from-choking-on-boost-headers.patch
+- remove slovak-zero.patch
+- remove qdbusviewer.patch
+
+- separate linguist to a separate package (bnc#738543).</comment>
+    <requestid>182316</requestid>
+  </revision>
+  <revision rev="192" vrev="2">
+    <srcmd5>8e4897d83e888a1923f06000a577a9d4</srcmd5>
+    <version>4.8.5</version>
+    <time>1376310173</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>186006</requestid>
+  </revision>
+  <revision rev="193" vrev="3">
+    <srcmd5>82fc0e251d84c8233a3859f95c46aef6</srcmd5>
+    <version>4.8.5</version>
+    <time>1378126812</time>
+    <user>coolo</user>
+    <comment>Added patches from upstream for resolving QtDbus bugs and crashes; Don't BuildRequire Mesa-devel,pkgconfig(gl) is enough (forwarded request 196842 from sumski)</comment>
+    <requestid>196860</requestid>
+  </revision>
+  <revision rev="194" vrev="4">
+    <srcmd5>bc45208aaf79c9cf238fdcb1da2f1ab7</srcmd5>
+    <version>4.8.5</version>
+    <time>1379178594</time>
+    <user>scarabeus_factory</user>
+    <comment>- Added patch from upstream for resolving bnc#835384, QTBUG#32908: 0006-Revert-QTBUG-15319-fix-shortcuts-with-secondary-Xkb-layout.patch
+- Revert upstream commit that breaks akonadi PostgreSQL backend (QTBUG#30076): 0007-postgresql-driver-escape-backslashes-only-when-serve.patch (forwarded request 198853 from sumski)</comment>
+    <requestid>198997</requestid>
+  </revision>
+  <revision rev="195" vrev="6">
+    <srcmd5>bc45208aaf79c9cf238fdcb1da2f1ab7</srcmd5>
+    <version>4.8.5</version>
+    <time>1379663058</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="196" vrev="7">
+    <srcmd5>e3356c8b9b6ee9a46b8ba7f889febbac</srcmd5>
+    <version>4.8.5</version>
+    <time>1381222537</time>
+    <user>scarabeus_factory</user>
+    <comment>Drop 0007-postgresql-driver-escape-backslashes-only-when-serve.patch, bug has been fixed properly with akonadi 1.10.3, and the patch conflicts with the resolution in akonadi
+
+@coolo, scarabeus, this change depends on akonadi 1.10.3, so update should be done synchronously. Target is offcourse 13.1, together with the akonadi update (forwarded request 202524 from sumski)</comment>
+    <requestid>202526</requestid>
+  </revision>
+  <revision rev="197" vrev="8">
+    <srcmd5>ab030e6ae79a646429a13d6b9c805362</srcmd5>
+    <version>4.8.5</version>
+    <time>1386757733</time>
+    <user>coolo</user>
+    <comment>ppc64le fix (forwarded request 209909 from adrianSuSE)</comment>
+    <requestid>209910</requestid>
+  </revision>
+  <revision rev="198" vrev="9">
+    <srcmd5>f3e2ab72b118ca73efa45e846440c1f2</srcmd5>
+    <version>4.8.5</version>
+    <time>1389883074</time>
+    <user>coolo</user>
+    <comment>- add 0001-Disallow-deep-or-widely-nested-entity-references.patch,
+  0001-Fully-expand-entities-to-ensure-deep-or-widely-neste.patch 
+  (bnc#856832, CVE-2013-4549)</comment>
+    <requestid>213836</requestid>
+  </revision>
+  <revision rev="199" vrev="10">
+    <srcmd5>f521662facaf35436dd4f3d7605eb8b6</srcmd5>
+    <version>4.8.5</version>
+    <time>1390976133</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>215273</requestid>
+  </revision>
+  <revision rev="200" vrev="11">
+    <srcmd5>0299c2d16cacef918151c5f4a3fc8b95</srcmd5>
+    <version>4.8.5</version>
+    <time>1394953505</time>
+    <user>coolo</user>
+    <comment>- Added QSystemTrayicon.diff: adds support for sni-qt plugin, which allows Qt applications to communicate via KStatusNotifier spec, will/is needed for Plasma Next (forwarded request 225528 from sumski)</comment>
+    <requestid>225585</requestid>
+  </revision>
+  <revision rev="201" vrev="1">
+    <srcmd5>0401662a9af9f4a08429c333d3444707</srcmd5>
+    <version>4.8.6</version>
+    <time>1399825859</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>232895</requestid>
+  </revision>
+  <revision rev="202" vrev="2">
+    <srcmd5>5cca7b41938f3778943c7001b814b5af</srcmd5>
+    <version>4.8.6</version>
+    <time>1403176493</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237626</requestid>
+  </revision>
+  <revision rev="203" vrev="3">
+    <srcmd5>8bad65b96809b801af37f49d2cf64624</srcmd5>
+    <version>4.8.6</version>
+    <time>1408957375</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245588</requestid>
+  </revision>
+  <revision rev="204" vrev="5">
+    <srcmd5>8bad65b96809b801af37f49d2cf64624</srcmd5>
+    <version>4.8.6</version>
+    <time>1409301674</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="205" vrev="6">
+    <srcmd5>030c577a7e578de901c7f457b3d52d01</srcmd5>
+    <version>4.8.6</version>
+    <time>1410326874</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247965</requestid>
+  </revision>
+  <revision rev="206" vrev="7">
+    <srcmd5>c034fe820f0921a6adafc5ab3eb27921</srcmd5>
+    <version>4.8.6</version>
+    <time>1411221041</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250213</requestid>
+  </revision>
+  <revision rev="207" vrev="8">
+    <srcmd5>af9d403e14b8cf332b954ded8a096515</srcmd5>
+    <version>4.8.6</version>
+    <time>1413269941</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253723</requestid>
+  </revision>
+  <revision rev="208" vrev="9">
+    <srcmd5>d6de7ed00b58c285365f7f87e93aacf9</srcmd5>
+    <version>4.8.6</version>
+    <time>1415866616</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260836</requestid>
+  </revision>
+  <revision rev="209" vrev="10">
+    <srcmd5>bd660dce92513200f42292ce413ecc57</srcmd5>
+    <version>4.8.6</version>
+    <time>1417160761</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262669</requestid>
+  </revision>
+  <revision rev="210" vrev="11">
+    <srcmd5>5f4f56f13a3a561365a5f1edae79462d</srcmd5>
+    <version>4.8.6</version>
+    <time>1425031760</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287299</requestid>
+  </revision>
+  <revision rev="211" vrev="12">
+    <srcmd5>245b89d41512d47a4a6738806c3311c3</srcmd5>
+    <version>4.8.6</version>
+    <time>1430983273</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305531</requestid>
+  </revision>
+  <revision rev="212" vrev="13">
+    <srcmd5>8bfd80a61d24b61e4ae4a492f55595f6</srcmd5>
+    <version>4.8.6</version>
+    <time>1431247464</time>
+    <user>coolo</user>
+    <comment>- add 0001-Fixes-crash-in-gif-image-decoder.patch,
+  0002-Fixes-crash-in-bmp-and-ico-image-decoding.patch
+  (bnc#927806, bnc#927807, bnc#927808,
+  CVE-2015-1858, CVE-2015-1859, CVE-2015-1860)
+- add 0001-Don-t-leak-RENDER-Pictures-in-QPixmap-paintEngine.patch
+- add 0001-Fix-DateTime-with-recent-versions-of-tzdata.patch
+- add 0001-Fix-crash-when-deleting-top-level-windows-embedded-i.patch
+- add 0001-Ignore-expired-certificate-during-certificate-valida.patch
+- add 0001-Memory-and-file-descriptor-leak-in-QFontCache.patch
+- add 0001-QDbus-Fix-a-b-comparison.patch
+- add 0001-QDeclarativeTextEdit-fix-use-of-uninitialised-value.patch
+- add 0001-QPdf-addImage-avoid-a-QImage-detach-when-it-s-in-an-.patch
+- add 0001-QSslCertificate-blacklist-NIC-certificates-from-Indi.patch
+
+- add 0001-Fixes-crash-in-gif-image-decoder.patch,
+  0002-Fixes-crash-in-bmp-and-ico-image-decoding.patch
+  (bnc#927806, bnc#927807, bnc#927808,
+  CVE-2015-1858, CVE-2015-1859, CVE-2015-1860)
+- add 0001-Don-t-leak-RENDER-Pictures-in-QPixmap-paintEngine.patch
+- add 0001-Fix-DateTime-with-recent-versions-of-tzdata.patch
+- add 0001-Fix-crash-when-deleting-top-level-windows-embedded-i.patch
+- add 0001-Ignore-expired-certificate-during-certificate-valida.patch
+- add 0001-Memory-and-file-descriptor-leak-in-QFontCache.patch
+- add 0001-QDbus-Fix-a-b-comparison.patch
+- add 0001-QDeclarativeTextEdit-fix-use-of-uninitialised-value.patch
+- add 0001-QPdf-addImage-avoid-a-QImage-detach-when-it-s-in-an-.patch
+- add 0001-QSslCertificate-blacklist-NIC-certificates-from-Indi.patch
+
+- add 0001-Fixes-crash-in-gif-image-decoder.patch,
+  0002-Fixes-crash-in-bmp-and-ico-image-decoding.patch</comment>
+    <requestid>305786</requestid>
+  </revision>
+  <revision rev="213" vrev="14">
+    <srcmd5>3a91cb529840f43593a01a5a8ce29f88</srcmd5>
+    <version>4.8.6</version>
+    <time>1432488633</time>
+    <user>dimstar_suse</user>
+    <comment>Hopefully this fixes the current build issue for kdepim with the latest boost version</comment>
+    <requestid>308463</requestid>
+  </revision>
+  <revision rev="214" vrev="1">
+    <srcmd5>b5a55e6205d939f0741a338614c434e7</srcmd5>
+    <version>4.8.7</version>
+    <time>1433312128</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.8.7:
+  * see http://download.qt.io/official_releases/qt/4.8/4.8.7/changes-4.8.7
+- remove 0001-Don-t-crash-on-broken-GIF-images.patch,
+  0001-Don-t-leak-RENDER-Pictures-in-QPixmap-paintEngine.patch,
+  0001-Fix-DateTime-with-recent-versions-of-tzdata.patch,
+  0001-Fix-crash-when-deleting-top-level-windows-embedded-i.patch,
+  0001-Fixes-crash-in-gif-image-decoder.patch,
+  0001-Ignore-expired-certificate-during-certificate-valida.patch,
+  0001-Memory-and-file-descriptor-leak-in-QFontCache.patch,
+  0001-QDbus-Fix-a-b-comparison.patch,
+  0001-QDeclarativeTextEdit-fix-use-of-uninitialised-value.patch,
+  0001-QPdf-addImage-avoid-a-QImage-detach-when-it-s-in-an-.patch,
+  0001-QSslCertificate-blacklist-NIC-certificates-from-Indi.patch,
+  0002-Fixes-crash-in-bmp-and-ico-image-decoding.patch,
+  fix-a-division-by-zero.patch,
+  fix-detection-of-GCC5.patch,
+  fix-upload-corruptions-when-server-closes-connection.patch:
+  * upstreamed</comment>
+    <requestid>309693</requestid>
+  </revision>
+  <revision rev="215" vrev="2">
+    <srcmd5>0fe3cde8b7e7054ed126429f6ca687da</srcmd5>
+    <version>4.8.7</version>
+    <time>1455701546</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitely build with -std=gnu++98.  [bnc#964458]
+
+- Added 0001-Fix-exclusion-of-anonymous-ciphers.patch from upstream
+  to disable exp-adh and aecdh ciphers.
+- Added disable-rc4-ciphers-bnc865241.diff to disable &lt;128 bits and
+  RC4 based ciphers which are now considered insecure. This
+  makes konqueror pass the https://www.howsmyssl.com test (bnc#865241)
+
+- update to 4.8.7:
+  * see http://download.qt.io/official_releases/qt/4.8/4.8.7/changes-4.8.7
+- remove 0001-Don-t-crash-on-broken-GIF-images.patch,
+  0001-Don-t-leak-RENDER-Pictures-in-QPixmap-paintEngine.patch,
+  0001-Fix-DateTime-with-recent-versions-of-tzdata.patch,
+  0001-Fix-crash-when-deleting-top-level-windows-embedded-i.patch,
+  0001-Fixes-crash-in-gif-image-decoder.patch,
+  0001-Ignore-expired-certificate-during-certificate-valida.patch,
+  0001-Memory-and-file-descriptor-leak-in-QFontCache.patch,
+  0001-QDbus-Fix-a-b-comparison.patch,
+  0001-QDeclarativeTextEdit-fix-use-of-uninitialised-value.patch,
+  0001-QPdf-addImage-avoid-a-QImage-detach-when-it-s-in-an-.patch,
+  0001-QSslCertificate-blacklist-NIC-certificates-from-Indi.patch,
+  0002-Fixes-crash-in-bmp-and-ico-image-decoding.patch,
+  fix-a-division-by-zero.patch,
+  fix-detection-of-GCC5.patch,
+  fix-upload-corruptions-when-server-closes-connection.patch:
+  * upstreamed
+
+- Explicitely build with -std=gnu++98.  [bnc#964458]
+
+- Added 0001-Fix-exclusion-of-anonymous-ciphers.patch from upstream</comment>
+    <requestid>358895</requestid>
+  </revision>
+  <revision rev="216" vrev="3">
+    <srcmd5>b141faf01c308f3c55c4e5b315543171</srcmd5>
+    <version>4.8.7</version>
+    <time>1465335826</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399869</requestid>
+  </revision>
+  <revision rev="217" vrev="4">
+    <srcmd5>5189e3bfea5a98505128efb614099089</srcmd5>
+    <version>4.8.7</version>
+    <time>1466812582</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-gcc6-detection.diff to fix GCC6 detection (boo#986350)</comment>
+    <requestid>404402</requestid>
+  </revision>
+  <revision rev="218" vrev="5">
+    <srcmd5>a079177887b4075fcdd64890145b9034</srcmd5>
+    <version>4.8.7</version>
+    <time>1470217252</time>
+    <user>dimstar_suse</user>
+    <comment>Apply fix-gcc6-detection.diff in the libmysql-plugins package too, otherwise the plugins cannot be loaded (boo#986939)</comment>
+    <requestid>415406</requestid>
+  </revision>
+  <revision rev="219" vrev="6">
+    <srcmd5>4bb81e5b70b671c2f702073308b8f603</srcmd5>
+    <version>4.8.7</version>
+    <time>1489019285</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456158</requestid>
+  </revision>
+  <revision rev="220" vrev="7">
+    <srcmd5>cd9f3b8158b4eb7c641f0b69955baf07</srcmd5>
+    <version>4.8.7</version>
+    <time>1495133047</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494381</requestid>
+  </revision>
+  <revision rev="221" vrev="8">
+    <srcmd5>92b8921ac469fb4a949fd6ab5518bfc9</srcmd5>
+    <version>4.8.7</version>
+    <time>1505416180</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523214</requestid>
+  </revision>
+  <revision rev="222" vrev="9">
+    <srcmd5>a0a62ed4aa91f77b2ccc7caff53703f6</srcmd5>
+    <version>4.8.7</version>
+    <time>1508768504</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534394</requestid>
+  </revision>
+  <revision rev="223" vrev="10">
+    <srcmd5>11e6def161c401fac0527a7dcbcde2b6</srcmd5>
+    <version>4.8.7</version>
+    <time>1512433511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547666</requestid>
+  </revision>
+  <revision rev="224" vrev="11">
+    <srcmd5>3712274af4f8af277dbef8d156fa2c0e</srcmd5>
+    <version>4.8.7</version>
+    <time>1513453485</time>
+    <user>dimstar_suse</user>
+    <comment>- Add proper patch headers to:
+  * no-ssl3.patch
+  * qt4-openssl-1.1.0pre-3.patch
+- Remove patch, not needed:
+  * qt-everywhere-opensource-src-4.8.7-gcc7.patch
+
+- add patches from mageia to fix build with openssl-1.1
+- add no-ssl3.patch
+- add qt4-openssl-1.1.0pre-3.patch
+- add qt-everywhere-opensource-src-4.8.7-openssl.patch
+- add qt-everywhere-opensource-src-4.8.7-gcc7.patch</comment>
+    <requestid>554902</requestid>
+  </revision>
+  <revision rev="225" vrev="12">
+    <srcmd5>b09e9c0e83181cbee67a0f5897847945</srcmd5>
+    <version>4.8.7</version>
+    <time>1515505687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560556</requestid>
+  </revision>
+  <revision rev="226" vrev="13">
+    <srcmd5>1a27be057b38d639addc27e84150aa0f</srcmd5>
+    <version>4.8.7</version>
+    <time>1519902286</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use xorg-x11-devel metapackage, instead use individual
+  libraries.
+- libqt4-devel Requires have been adjusted to require all X11
+  libs which were used for build, none of them are actually 
+  required but remain there in order not to break hundreds 
+  of packages that may have counted on xorg-x11-devel being
+  pulled.
+
+- Change fix-build-icu59.patch to build qlocale_icu.cpp with
+  -std=c++11 to support ICU60 headers
+
+- Add proper patch headers to:
+  * no-ssl3.patch
+  * qt4-openssl-1.1.0pre-3.patch
+- Remove patch, not needed:
+  * qt-everywhere-opensource-src-4.8.7-gcc7.patch
+
+- add patches from mageia to fix build with openssl-1.1
+- add no-ssl3.patch
+- add qt4-openssl-1.1.0pre-3.patch
+- add qt-everywhere-opensource-src-4.8.7-openssl.patch
+- add qt-everywhere-opensource-src-4.8.7-gcc7.patch
+
+- Do not use xorg-x11-devel metapackage, instead use individual
+  libraries.
+- libqt4-devel Requires have been adjusted to require all X11
+  libs which were used for build, none of them are actually 
+  required but remain there in order not to break hundreds 
+  of packages that may have counted on xorg-x11-devel being
+  pulled.</comment>
+    <requestid>580072</requestid>
+  </revision>
+  <revision rev="227" vrev="14">
+    <srcmd5>8eeeff2688d0b3a5c4edcf7dea517718</srcmd5>
+    <version>4.8.7</version>
+    <time>1520160856</time>
+    <user>dimstar_suse</user>
+    <comment>- Restore Qt4 WebKit removal
+- Remove pre_checkin.sh, it only breaks stuff</comment>
+    <requestid>581812</requestid>
+  </revision>
+  <revision rev="228" vrev="15">
+    <srcmd5>f027d2536026f97c0989c4dcd38b8b0d</srcmd5>
+    <version>4.8.7</version>
+    <time>1548065205</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libqt4-toplevel-asm.patch to adhere to stricter
+  toplevel asm parsing, dropping volatile qualification that has no
+  effect.  (boo#1121214) (forwarded request 664319 from rguenther)</comment>
+    <requestid>664580</requestid>
+  </revision>
+  <revision rev="229" vrev="16">
+    <srcmd5>957c479f18f40f4f56366b676b2fa91b</srcmd5>
+    <version>4.8.7</version>
+    <time>1551385520</time>
+    <user>coolo</user>
+    <comment>- Drop libqt4-devel-doc, fails to build with GCC9
+
+- Add patch to fix build with GCC 9 (boo#1121214):
+  * 0001-Redo-the-Q_FOREACH-loop-control-without-GCC-statemen.patch</comment>
+    <requestid>679783</requestid>
+  </revision>
+  <revision rev="230" vrev="17">
+    <srcmd5>402cd795561da8716baa0e375faf08bf</srcmd5>
+    <version>4.8.7</version>
+    <time>1557321332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701221</requestid>
+  </revision>
+  <revision rev="231" vrev="18">
+    <srcmd5>858084c17c58e385fb3f2f4871a9fecf</srcmd5>
+    <version>4.8.7</version>
+    <time>1558036899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703090</requestid>
+  </revision>
+</revisionlist>

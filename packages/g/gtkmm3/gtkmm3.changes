@@ -1,0 +1,1563 @@
+-------------------------------------------------------------------
+Wed Mar 20 23:11:56 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.1:
+  + Gdk: RGBA::set_hsv(): Properly interpret hue 360° as red.
+  + Documentation:
+    - Gtk::FileFilter: Several improvements of the documentation.
+    - Gtk::Builder: Don’t use @retval on out args, use @param[out].
+  + Tests: Add test of Gdk::RGBA.
+
+-------------------------------------------------------------------
+Mon Dec  3 19:26:55 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.24.0:
+  + Gtk::FileChooserDialog: Allow constructing with use-header-bar.
+    This is a construct-only property, so it must be specified in a
+    constructor.
+- Changes from version 3.22.3:
+  + Gdk: Deprecate screen_width(), screen_height(),
+    screen_width_mm(), screen_height_mm(), flush().
+  + Gtk:
+    - CellRendererPixbuf: Fix property_surface().
+    - AboutDialog: Fix ref count in get_logo().
+    - MenuItem: add_accel_label(): Make sure accelator keys are
+      shown.
+    - Settings: Undeprecate property_gtk_cursor_blink(),
+      property_gtk_cursor_blink_time(),
+      property_gtk_cursor_blink_timeout(),
+      property_gtk_entry_password_hint_timeout().
+  + Demos: Update some demo programs.
+  + Build: Replace the Visual Studio project files with MSVC NMake
+    project files.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:32:43 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Sep 13 12:41:56 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.22.2:
+  + Gtk:
+    - Editable, RecentChooser, Scale: Fix memory leaks
+      (bgo#783360).
+    - PrintJob: Fix a call to Glib::throw_exception().
+  + Documentation: Gdk::RGBA: Update ctor(ustring) docs from GTK+
+    (bgo#784483).
+
+-------------------------------------------------------------------
+Fri Jun 23 13:37:31 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Gtk:
+    - Container: Deprecate the child property. The underlying C
+      property was deprecated in GTK+ 3.22.2 (bgo#773642).
+    - FileChooserDialog: Deprecate the constructors that take a
+      backend parameter.
+    - Menu: Deprecate popup(). The underlying C functions were
+      deprecated in GTK+ 3.22.2 (bgo#773642).
+    - Widget:
+      . Deprecate is_composited() and signal_composited_changed().
+        The underlying C functions were deprecated in GTK+ 3.22.3.
+      . Deprecate drag_dest_set_proxy(). The underlying C functions
+        was deprecated in GTK+ 3.22.3 (bgo#773642).
+      . Window: Deprecate set_wmclass(). The underlying C functions
+        was deprecated in GTK+ 3.22.2 (bgo#773642).
+  + Gdk:
+    - Screen: Deprecate get_number(), get_width(), get_height(),
+      get_width_mm(), get_height_mm(), make_display_name(),
+      get_n_monitors(), get_primary_monitor(),
+      get_monitor_geometry(), get_monitor_workarea(),
+      get_monitor_at_point(), get_monitor_at_window(),
+      get_monitor_width_mm(), get_monitor_height_mm(),
+      get_monitor_plug_name(), get_monitor_scale_factor(),
+      get_active_window(). The underlying C functions were
+      deprecated in GTK+ 3.22.2 (bgo#773642).
+    - Visual: Deprecate get_system(), get_best(), get_best_depth(),
+      get_best_type(). The underlying C functions were deprecated
+      in GTK+ 3.22.3 (bgo#773642).
+    - Window:
+      . Deprecate process[_all]_updates().The underlying C
+        functions were deprecated in GTK+ 3.22.7.
+      . Deprecate set_background(), get_background_pattern(),
+        set_debug_updates(). The underlying C functions were
+        deprecated in GTK+ 3.22.2.
+  + Documentation:
+    - Box: Correct the constructor documentation.
+    - CellLayout: Improve docs of get_first_cell() funcs.
+    - Frame: Fix the documentation of set_label_align()
+      (bgo#774249).
+    - Label: Improve h/valign constructor documentation and
+      improve the parameter names (bgo#774652).
+    - TreeModel: Improve docs of foreach*() functions.
+    - Minor cleanup of examples and demos.
+    - demo: Don't call Notebook::remove_page() with invalid index.
+  + Build:
+    - Update the Visual Studio builds.
+    - GtkMainConnectionNode: Remove unused method.
+
+-------------------------------------------------------------------
+Mon Dec  5 14:01:23 UTC 2016 - jengelh@inai.de
+
+- Rectify RPM groups and replace old macros.
+
+-------------------------------------------------------------------
+Tue Sep 20 10:23:04 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.0:
+  + No changes compared to 3.21.6.
+
+-------------------------------------------------------------------
+Wed Sep 14 16:28:51 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.6:
+  + Gtk:
+    - FileChooser: Added add_choice(), remove_choice(),
+      set_choice(), get_choice().
+    - Menu: Add popup_at_rect(), popup_at_widget(),
+      popup_at_pointer(), signal_popped_up(), and the anchor_hints,
+      rect_anchor_dx, rect_anchor_dy, and menu_type_hint
+      properties.
+    - Popover: Add popup() and popupdown(), deprecating
+      get/set_transitions_enabled().
+    - RadioMenuItem, RadioToolButton: Add join_group()
+      (bgo#769374).
+    - ScrolledWindow:
+      . Added get/set_max_content_height/width() and properties.
+      . Added get/set_propagate_natural_height/width() and the
+        properties.
+    - Add the ShortcutLabel widget.
+    - TreeNodeChildren: Deprecate the reverse iterator
+      (bgo#554889).
+  + Gdk:
+    - Pixbuf: Added set_option(), remove_option(), and
+      copy_options().
+    - PixbufFormat: Added is_save_option_supported().
+  + Documentation: Gtk::Clipboard::wait_for_uris(): Fix the
+    documentation.
+
+-------------------------------------------------------------------
+Sun Jul 24 16:55:36 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.4:
+  + Gtk:
+    - ApplicationWindow: Add a correct wrap() method, deprecating
+      the incorrect one (bgo#767951).
+    - FlowBox, ListBox: Add bind_model() and bind_list_store()
+      (bgo#755149).
+    - UIManager, ActionGroup, RadioAction, RecentAction,
+      ToggleAction: Deprecated, as in the C GTK+ API (bgo#768573).
+  + Build: Fix silent builds (bgo#768797).
+
+-------------------------------------------------------------------
+Mon Jun 27 09:36:32 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.3:
+  + Gtk:
+    - AppChooserDialog, FontChooserDialog: Add _UNMANAGEABLE.
+    - ScrolledWindow: Deprecate remove_with_viewport()
+      (bgo#685739).
+    - SizeGroup: Deprecate set/get/property_ignore_hidden().
+    - Widget: Deprecate send_expose().
+    - Window: Deprecate begin_paint_rect(), begin_paint_region(),
+      end_paint() and create_cairo_context(). Add
+      begin_draw_frame() and end_draw_frame() which use the new
+      Gdk::DrawingContext.
+  + Gdk: Add DrawingContext.
+  + Build: Visual Studio builds: Update gdkmm project.
+
+-------------------------------------------------------------------
+Thu Jun  2 00:01:52 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.2:
+  + Gdk:
+    - Clipboard: Add get_selection().
+    - Device: Add get_axes(), signal_changed() and many properties.
+    - Display:
+      . Add methods and signals related to Gdk::Monitor.
+      . Deprecated get_screen().
+    - GLArea: Add set/get_use_es() and property.
+    - GLContext: Add set/get_use_es().
+    - Add Monitor.
+    - ShortscutsShortcut: Add "action-name" property.
+    - Visual: Deprecate get_byte_order(), get_colormap_size(), and
+      get_bits_per_rgb().
+    - Window: create_gl_context() and signal_create_context():
+      Correct the reference counting.
+  + Gtk:
+    - IconInfo, PaperSize, TextIter, TreeIter, TreePath,
+      TreeRowReference: Deprecated operator void*, replacing it
+      with explicit operator bool.
+    - PrintSettings: Make create_*() from public, not protected.
+    - TreeView:
+      _auto_store_on_cellrenderer_text_edited_numerical(): Catch
+      the exception from std::stod(). This is a regression since
+      version 3.17.80.
+
+-------------------------------------------------------------------
+Fri Apr 15 18:01:28 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Thu Apr 14 20:20:13 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Gtk: TreeView:
+    _auto_store_on_cellrenderer_text_edited_numerical():
+    Catch exception (bgo#765044).
+
+-------------------------------------------------------------------
+Wed Mar 30 08:37:13 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.0:
+  + No major changes compared to 3.19.12.
+
+-------------------------------------------------------------------
+Fri Mar 18 12:40:37 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.12:
+  + Gtk:
+    - CellRendererProgress:_property_renderable(): Avoid infinite
+      loop.
+    - CellrendererToggle: Deprecate property_indicator_size().
+    - ColorButton: Add property_show_editor().
+    - Container: Deprecate property_resize_mode().
+    - Entry: Deprecate property_shadow_type().
+    - Expander: Deprecate property_spacing().
+    - PlacesSidebar:
+      . Deprecate property_show_other_locations().
+      . Add property_show_other_locations_with_flags(),
+        signal_mount() and signal_unmount().
+    - Settings: Add property_gtk_keynav_use_caret().
+    - StyleContext: Deprecate property_direction().
+    - TextView: Add reset_cursor_blink().
+  + Build:
+    - Fix "make check" after sigc::mem_fun(pointer, func) was
+      deprecated.
+    - MSVC builds: Update for shortcuts widgets.
+    - MSVC builds: Look for headers in include/gio-win32-2.0 as
+      well.
+
+-------------------------------------------------------------------
+Tue Mar  8 10:49:01 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.11:
+  + Gtk:
+    - AccelLabel: Ad get_accel().
+    - ApplicationWindow: Add set/unset/get_help_overlay().
+    - Builder: Make get_widget_derived() a variadic template,
+      forwarding its arguments to the constructor of the derived
+      class (bgo#134161).
+    - GestureLongPress: Add property_delay_factor().
+    - Popover: Add PopoverConstraint enum and
+      set/get/property_constrain_to().
+    - Range: Deprecate get/set_min_slider_size().
+    - Stack: Add set/get/property_interpolate_size().
+    - StackSwitcher: Add property_icon_size().
+    - Settings: Add reset_property() and
+      property_gtk_titlebar_double_click/middle_click/
+      right_click().
+    - Add Shortcuts* widgets, such as ShortcutsWindow.
+    - TextTag: Add tag_changed() and property_strikethrough_rgba/
+      strikethrough_rgba_set/underline_rgba/underline_rgba_set/
+      font_features/font_features_set().
+    - TextView: Add set/get/property_top_margin() and
+      set/get/property_bottom_margin().
+    - Replace deprecated Glib::ScopedPtr with make_unique_g_free().
+  + Gdk:
+    - Add GLContext::is_legacy().
+    - Seat: Add get_slaves() (bgo#759806).
+    - Window: Deprecate parse_geometry() and
+      set_default_geometry().
+  + Updated Documentation (bgo#759806).
+  + Build: Visual Studio builds: Update gdkmm project for GdkSeat.
+
+-------------------------------------------------------------------
+Tue Jan 12 09:37:15 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.6:
+  + Gtk:
+    - TextIter: Add starts_tag(), deprecate begins_tag().
+    - TreeView: Fix a crash in get_tooltip_context_path()
+      (bgo#760030).
+  + Gdk:
+    - Add Gdk::Seat (bgo#759806).
+    - Device:
+      . Add get_seat().
+      . Deprecate grab() and ungrab().
+    - DeviceManager, Display: Add and deprecate (bgo#759806).
+    - DeviceManager: Deprecate list_devices() and
+      get_client_pointer() (bgo#759806).
+    - Display:
+      . Deprecate get_device_manager().
+      . Add list_seats(), get_default_seat(), signal_seat_added()
+        and signal_seat_removed() (bgo#759806).
+
+-------------------------------------------------------------------
+Wed Dec 23 20:04:55 UTC 2015 - damjanovic.ivo@gmail.com
+
+- Update to version 3.19.5:
+  + Gtk:
+    - Button: Deprecate get/set_focus_on_click() and property.
+    - ComboBox: Deprecate get/set_focus_on_click() and property.
+    - FileChooserButotn: Deprecate set/get_focus_on_click() and
+      property.
+    - Widget:  Add set/get/property_focus_on_click(),
+      set/unset/get_font_options(), set/get_font_map(),
+      queue_allocate(), get_allocated_size().
+    - Window: Deprecate resize_to_geometry().
+  + Gdk: Screen::get_font_options(): Really take a copy.
+  + Build:
+    - Remove #ifdefs with obsolete GLIBMM_*_ENABLED constants.
+    - Demos, tests: Use nullptr instead of 0.
+    - Gtk: Use nullptr instead of 0.
+    - Gdk: Use nullptr instead of 0.
+    - Menushell, Widget: Use noexcept on the destructor
+      implementation to match the generated declaration
+      (bgo#759263, bgo#759262).
+
+-------------------------------------------------------------------
+Mon Nov 30 12:03:20 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.3:
+  + Gdk::Rectangle: Add operator==().
+  + C++11: Use of the override keyword.
+
+-------------------------------------------------------------------
+Wed Sep 30 11:14:24 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.0:
+  + Gtk::Object (and Gtk::Widget): Add
+    dont_allow_use_in_glib_refptr_.
+  + Gtk::TreeView, TreeViewColumn: Deprecate SlotCellData,
+    add SlotTreeCellData (bgo#657844).
+  + Gdk::Cursor, Pixbuf, Window: Fix use of Cairo::xxx in namespace
+    Gd (bgo#755061).
+  + MSVC build fixes.
+
+-------------------------------------------------------------------
+Fri Sep 18 22:50:50 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Gtk:
+    - Entry: Add grab_focus_without_selecting()
+    - LevelBar: Add set_orientation() (bgo#752568).
+  + Notebook: Add detach_tab().
+  + Overlay:
+    - Add reorder_overlay() and get/set_overlay_pass_through().
+    - Add child properties.
+  + Paned: Add get/set_wide_handle() and property.
+  + PaperSize: Add is_ipp().
+  + Window: Add fullscreen_on_monitor().
+  + Build:
+    - MSVC Build improvements.
+    - MSVC Build: Require MSVC .Net 2013 for C++11 support.
+- Add pkgconfig(epoxy) BuildRequires: New optional dependency.
+
+-------------------------------------------------------------------
+Sat Sep  5 19:33:19 UTC 2015 - zaitor@opensuse.org
+
+- Updated to version 3.17.80:
+  + Rebuilt with latest glibmm, whose gmmproc generates C++ move
+    operations.
+  + C++11:
+    - Add move operations to widget classes.
+    - Point, TimeCoord: Add move operations.
+    - Mark all _CLASS_OPAQUE_REFCOUNTED classes as final.
+    - Use std::stod() instead of std::strtod() and Use std::stoi()
+      instead of atod().
+
+-------------------------------------------------------------------
+Thu Aug 20 20:18:03 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.70:
+  + Gtk:
+    - Add GLArea and example to gtkmm-demo (bgo#752314).
+    - PlacesSidebar: Add set_drop_targets_visible().
+  + Build: Fix the build with -Wshadow compiler warnings
+    (bgo#752469).
+
+-------------------------------------------------------------------
+Thu Jul 23 06:20:40 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.50:
+  + Gtk:
+    - PlacesSidebar:
+      . Deprecate set/get_show_connect_to_server() and the
+        property.
+      . Add set/get_show_recent(), set/get_show_trash(),
+        set/get_show_other_locations() and properties, and the
+        populate_all property.
+    - Popover: Add get/set_default_widget().
+    - Window: Add get_titlebar().
+  + Build:
+    - gtk_generate_extra_defs.sh: Fix for the patch command,
+      version 2.7.5.
+    - C++11:
+      . Use nullptr instead of 0.
+      . Use of the override keyword.
+      . Use of auto.
+      . Use of range-based for loops.
+    - Fix the build when using -Wshadow (now used in
+      --enable-warnings=fatal).
+  + Documentation: LevelBar: Document how to workaround the lack of
+    Orientation base class (bgo#752568).
+
+-------------------------------------------------------------------
+Sat Jul 18 09:56:02 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.41:
+  + Gtk:
+    - StyleContext: Deprecate set_background().
+    - IconView: Fix a crash in get_tooltip_context_path().
+  + Build: Use (and require) C++11.
+  + Documentation:
+    - Remove pixbuf-demo because it is already in the main demo.
+    - Demo: Remove Icon Theme demo, replacing it by a standalone
+      Icon Broswer demo.
+
+-------------------------------------------------------------------
+Mon Jul  6 19:24:28 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.4:
+  + Gtk:
+    - Assistant: Add get/set_page_has_padding().
+    - FontChooser: Add get/set_font_map().
+    - IconInfo: Deprecate get_builtin_pixbuf().
+    - IconTheme: lookup_icon(), choose_icon(): Add default 0 for
+      flags.
+    - Widget: Deprecate drag_begin() without coordinates.
+  + Gdk:
+    - Window: Add get/set_passthrough().
+    - Demo: IconTheme: Don't use deprecated builtin-icon API.
+  + Build: Don't disable more deprecation warnings than necessary
+    (bgo#750379).
+
+-------------------------------------------------------------------
+Tue Jun  9 20:34:56 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.3:
+  + Gdk:
+    - Deprecate open_default_libgtk_only() and
+      supports_composite().
+    - Window: Deprecate get/set_composited(),
+      set_static_gravities() and flush().
+  + Gtk:
+    - Actionable: Add keep_return to the _WRAP_VFUNC() for
+      get_action_name (bgo#705124).
+    - Adjustment: Deprecate changed() and value_changed().
+    - CellRendererPixbuf: Deprecate property_follow_state().
+    - Add ModelButton.
+    - Popover: Wrap the pointing-to property (bgo#723394).
+    - Add PopoverMenu.
+    - Scrollable: Add get_border() and
+      ScrolledWindow::signal_edge_reached().
+    - ScrolledWindow: Add signal_edge_reached().
+    - SearchEntry: Add handle_event() and new signals.
+  + Documentation: Demo:
+    - Show data files in extra tabs in the Gtk::Notebook.
+    - Remove the last traces of the UIManager and stock browser
+      demos.
+    - Add Builder demo.
+    - Use resource files for the source code and data files.
+  + Build:
+    - Missing GTKMM_API for CellLayout (bgo#748720).
+    - Demo:  Use getc() if HAVE_GETC_UNLOCKED is not defined
+      (bgo#748657).
+- API additions since 3.14:
+  + Gdk: Device: Add get_vendor_id() and get_product_id().
+  + Gtk:
+    - CssProvider: Add CssProviderError and signal_parsing_error().
+    - Add CssSection.
+    - Dialog: Add constructors with DialogFlags, for instance to
+      create a dialog with a header bar (bgo#738513).
+    - Grid: Add attach_next_to() without the 'sibling' parameter
+      (bgo#739340).
+    - Label: Add get/set_xalign/yalign() and properties.
+    - ScaleButton: Add a constructor without the icons.
+    - ScrolledWindow: Add get/set_overlay_scrolling() and property.
+    - SearchEntry: Add the search_changed signal.
+    - Stack: Add hhomogeneous and vhomogeneous properties.
+    - Add StackSidebar.
+    - StackSwitcher: Add unset_stack().
+    - Added StyleProperty (bgo#673317).
+    - TextTag: Add fallback, fallback-set, letter-spacing, and
+      letter-spacing-set properties.
+    - TextBuffer:
+      . Add insert_markup().
+      . Add the copy_target_list and paste_target_list properties.
+      . Wrap the serialize()/deserialize() methods.
+    - TextView: Add monospace property.
+    - Widget: Added get_action_group() and list_action_prefixes().
+
+-------------------------------------------------------------------
+Tue Mar 24 19:16:06 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Gtk: Builder: Don't get gtkmm-derived GTypes while parsing
+    TreeModel <columns> (bgo#742637).
+
+-------------------------------------------------------------------
+Sat Mar  7 16:52:44 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.15.10:
+  + Gtk:
+    - Label: Add get/set_xalign/yalign() and properties.
+    - PaperSize: Define the paper name constants in the .cc file
+      (bgo#745345).
+  + Documentation: CssProvider::load_from_data(): Document that
+    this throws an exception.
+  + Icon theme demo: Catch exceptions while loading icons.
+  + Stock: Mention the named icons for Copy, Cut, Paste and Delete
+    (bgo#741969).
+
+-------------------------------------------------------------------
+Sat Feb 28 14:21:46 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.9:
+  + Gtk:
+    - Add StackSidebar.
+    - StackSwitcher: Add unset_stack().
+      StyleContext: Deprecate list_regions(), add_region(),
+      remove_region(), has_region(), get_backgrount_color(),
+      get_border_color(), invalidate.
+    - TextBuffer: Wrap the serialize()/deserialize() methods.
+      (bgo#694250).
+    - Widget: Deprecate override_color(), unset_color(),
+      override_background_color(), unset_background_color(),
+      override_font(), unset_font(), override_symbolic_color(),
+      unset_symbolic_color(), override_cursor(), unset_cursor().
+    - Window: Deprecate Deprecate property_has_resize_grip(),
+      property_resize_grip_visible(), set/get_has_resize_grip(),
+      get_resize_grip_is_visible(), get_resize_grip_area().
+    - Fix error messages from gmmproc by removing unnecessary
+      _IGNORES()s.
+  + Gdk: Device: Add get_vendor_id() and get_product_id().
+  + Updated documentation.
+
+-------------------------------------------------------------------
+Wed Jan 21 08:32:25 UTC 2015 - badshah400@gmail.com
+
+- Update to version 3.15.4:
+  + Gtk:
+    - Builder::get_type_from_name_vfunc(): Call the base class
+      function. Instead of jusgin calling g_type_from_name(), in
+      case the base class function does more (bug #742637).
+  + TextBuffer:
+     - Add insert_martkup().
+     - Add the copy_target_list and paste_target_list properties.
+  + Documentation:
+    - Pixbuf: Change a mention of Glib::ResourceError to
+      Gio::ResourceError.
+
+-------------------------------------------------------------------
+Sun Dec 21 12:43:09 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.3:
+  + Gtk:
+    - CssProvider: Add CssProviderError and signal_parsing_error().
+    - Add CssSection.
+    - Dialog: Fix the constructors with DialogFlags (bgo#738513).
+    - ScaleButton:
+      . Correct the constructor.
+      . Add a constructor without the icons.
+    - ScrolledWindow: Add get/set_overlay_scrolling() and property.
+    - Stack: Add hhomogeneous and vhomogeneous properties.
+    - TextTag: Add fallback, fallback-set, letter-spacing, and
+      letter-spacing-set properties.
+    - TextView: Add monospace property.
+    - Widget: Added get_action_group() and list_action_prefixes().
+  + Documentation:
+    - Add an empty line after @newin where it's missing.
+    - Fix some Doxygen warnings.
+    - ScaleButton: Document the constructors.
+- Changes from version 3.15.2:
+  + Gtk:
+    - Dialog: Add constructors with DialogFlags, for instance to
+      create a dialog with a header bar (bgo#738513).
+    - Grid: Add attach_next_to() without the 'sibling' parameter
+      (bgo#739340).
+    - Overlay:  Correct the "since" documentation.
+    - SearchEntry: Add the search_changed signal.
+    - Added StyleProperty (bgo#673317).
+  + Gdk:
+    - Curor: Deprecate the constructor that doesn't take a Display
+      parameter.
+    - Pixbuf: Deprecate create_from_inline().
+
+-------------------------------------------------------------------
+Tue Sep 23 12:38:58 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Documentation: Headerbar demo: Update for renamed arrow icons.
+  + Build system fixes.
+
+-------------------------------------------------------------------
+Mon Sep 15 20:49:30 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.8:
+  + Gdk: Window: Add get/set_event_compression(),
+    set_shadow_width(), and show_window_menu().
+  + Gtk:
+    - Application: Add get_actions_for_accel(), prefers_app_menu(),
+      and get_menu_by_id().
+    - CellArea: Add attribute_get_column().
+    - EntryCompletion: Add the no_matches signal.
+    - ListBox: Add selected_foreach(), get_selected_rows(),
+      unselect_row(), select_all() and unselect_all(). Add the
+      selected_rows_changed signal.
+    - ListBoxRow: Add is_selected(), set/get_selectable(),
+      set/get_activatable(). Add the selectable and activatable
+      properties.
+    - Settings: Add the gtk_long_press_time property.
+    - StatusIcon:  Deprecate this because it is deprecated in gtk+.
+    - StyleContext: Really add get_scale().
+    - Widget: Add get/set_clip().
+
+-------------------------------------------------------------------
+Fri Aug 22 21:04:48 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.7:
+  + Gtk:
+    - Box: Wrap child properties (bgo#140515).
+    - Grid: Wrap child properties (bgo#140515).
+    - HeaderBar: Wrap child properties (bgo#140515).
+    - Paned: Wrap child properties (bgo#140515).
+    - TreeView: Deprecate property_rules_hint().
+  + Updated documentation.
+
+-------------------------------------------------------------------
+Tue Jul 29 11:52:06 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.5:
+  + Gtk:
+    - Container: Support child properties.
+    - Add EventController and Gesture* classes.
+    - IconTheme: Add add_resource_path() and deprecate
+      add_builtin_icon().
+    - Notebook: Add child properties tab_label, menu_label,
+      position, tab_expand, tab_fill, reorderable, and detachable.
+    - Stack: Add child properties name, title, icon_name, position,
+      and needs_attention.
+    - Switch: Add set/get_state(), the state property, and the
+      state_set signal.
+    - Toolbar: Add child properties expand and homogeneous
+      (bgo#140515).
+    - Widget: Deprecate get/set_double_buffered() and the property.
+  + Documentation:
+    - Demo: Update notebook's tabs style to match the gtk3-demo.
+    - Demo: Add a gestures example, based on the gtk3-demo
+      equivalent.
+    - Add Gestures group to the reference docs.
+
+-------------------------------------------------------------------
+Sat Jul 12 22:01:01 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.3:
+  + Gtk:
+    - Builder: Fix ref count in get_widget() and
+      get_widget_derived() and add test case (bgo#731444).
+    - Container: Deprecate [set|get]_resize_mode() and
+      set_reallocate_redraws().
+    - Widget: Deprecate reparent(), region_intersect(),
+      get_root_window(), [set|get]_margin_[left|right](),
+      property_style(), property_margin_[left|right]().
+    - Add Overlay.
+    - IconInfo: Deprecate set_raw_coordinates(),
+      get_embedded_rect(), get_attach_points() and
+      get_display_name().
+    - Widget: Undeprecate and reimplement reparent() because it is
+      still useful in gtkmm.
+    - WidgetPath: Deprecate iter_add_region(),
+      iter_remove_region(), iter_clear_regions(),
+      iter_list_regions() and iter_has_region().
+  + Updated documentation.
+- Changes from version 3.13.2:
+  + Gtk:
+    - Don't assert argc/argv are non-null in Application::run()
+      (bgo#729212).
+    - Various deprecations.
+  + Updated documentation.
+
+-------------------------------------------------------------------
+Sun Apr 13 20:08:07 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Application: Add set_accels_for_action(), deprecating
+    add_accelerator().
+  + Button: Add set_image_from_icon_name() with a use_fallback
+    argument.
+  + demo:
+    - Add the FlowBox demo part.
+    - Add HeaderBar demo.
+
+-------------------------------------------------------------------
+Sat Apr  5 15:27:31 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.10:
+  + Gdk: Pixbuf: Add get_byte_length().
+  + Gtk: Dialog: Deprecate the const version of get_action_area()
+    too.
+  + Build: Update Visual Studio Projects.
+
+-------------------------------------------------------------------
+Wed Mar 19 12:09:42 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.9:
+  + Gdk: Device: Add get_last_event_window().
+  + Gtk:
+    - Application: Added set_accel_for_action(),
+      get/set_accels_for_action() and list_action_descriptions().
+    - Widget:
+      . Added get/set_margin_start/end() and properties.
+      . Added scale-factor property.
+
+-------------------------------------------------------------------
+Tue Mar  4 20:07:26 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.8:
+  + Gtk:
+    - Window: Add is_maximized() and the is-maximized property.
+    - IconInfo: Add is_symbolic().
+    - Assistant: Add use-header-bar property.
+    - ActionBar:
+      . Now inherits from GtkBin.
+      . Spacing and center-widget properties removed.
+      . Add unset_center_widget() method.
+    - Box: Add get/set_center_widget() and unset_center_widget().
+    - Dialog: Add get/set_header_bar() and the use_header_bar
+      property.
+    - Entry:
+      . Add the max-width-chars property.
+      . Add get/set_max_width_chars() and the property.
+    - MenuButton:
+      . Add get/set_popover() and unset_popover() and the property.
+      . Add get/set_use_popover() and the property.
+    - Popover: Add constructor that takes a model and add
+      bind_model().
+
+-------------------------------------------------------------------
+Wed Feb 19 12:07:03 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.7:
+  + MessageDialog: Deprecate get/set_image() and the property.
+  + Popover:
+    - Add closed signal.
+    - Correct the type of the pointing_to property and method
+      parameter.
+  + FlowBoxChild: Add activate signal.
+
+-------------------------------------------------------------------
+Mon Feb 17 13:54:13 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.5:
+  + Gtk:
+    - Add ActionBar (bgo#723124).
+    - Builder: Add expose_[object|widget](),
+      [set|get]_application().
+    - Dialog: Deprecate set_alternative_button_order_from_array(),
+      and alternative_button_order().
+    - Entry: Add set/get_attributes() and the property.
+    - Add FlowBox (bgo#723801).
+    - HeaderBar:
+      . Added decoration-layout, decoration-layout-set and
+        has-subtitle object properties.
+      . Added get_decoration_layout(), get_has_subtitle(),
+        set_decoration_layout() and set_has_subtitle()
+        (bgo#723199).
+     - Main: Undeprecate add_gtk_option_group(), because it is
+       still needed.
+     - PlacesSidebar: Add local-only object property and get/set
+       methods (bgo#723893).
+     - Add Popover (bgo#723058).
+     - Settings: Add gtk-decoration-layout, gtk-shell-shows-desktop
+       and gtk-dialogs-use-header properties (bgo#723397).
+     - Stack: Add get_transition_running(), get_child_by_name() and
+       the transition-runnning property (bgo#723397).
+   + Documentation: Update the Doxygen configuration.
+
+-------------------------------------------------------------------
+Fri Jan 17 19:45:23 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.4:
+  + Gtk:
+    - Action, Activatable: Undeprecate methods that don't use a
+      StockID. We didn't mean to leave them deprecated.
+    - CellArea: Add signal_apply_attributes().
+    - SelectionData: Add get_data(int& length).
+    - ToggleAction: Deprecate the create() that uses (deprecated)
+      StockID.
+    - ToolItem: Add unset_proxy_menu_item().
+    - UIManager: Deprecate the add-tearoffs property.
+  + Gdk:
+    - Pixbuf: Add create_from_resource() methods.
+    - RGBA, Color: Fix set_hsl(), improve documentation
+      (bgo#720258).
+  + Build:
+    - CellArea: Fix documentation of typedef SlotForeachAlloc. An
+      extra '>' in the docs trapped doxygen 1.8.4 in an infinite
+      loop.
+    - Fix the build with --disable-deprecated-api
+  + Documentation:
+    - Add missing widget images.
+    - AppChooser*: Improve documentation (bgo#650012).
+    - ColorChooser::get_rgba(): Add documentation.
+    - SelectionData: Add methods docs.
+    - ToolItem: Add class docs.
+
+-------------------------------------------------------------------
+Wed Oct 30 19:06:20 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + GTK:
+    - Avoid including deprecated stockid.h. This lets applications
+      build with deprecated API disabled.
+    - RadioAction, RecentAction: Deprecate constructors and methods
+      that take StockID.
+
+-------------------------------------------------------------------
+Fri Oct 11 15:39:37 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + GTK:
+    - Undeprecate UIManager, Action, ActionGroup, ToggleAction,
+      RadioAction and RecentAction, though they are still
+      deprecated in the C API.
+    - RadioAction: Deprecate the constructor that uses StockID.
+    - ToggleAction: Deprecate the constructor that uses StockID.
+    - Application:
+      . add/remove_accelerator(): Add overloads without the variant
+        parameter.
+      . Add missing gtk_init() call in one of the constructors.
+    - Button: Remove unnnecessary BuiltinStockID declaration.
+    - HeaderBar: Make get_show_close_button() const.
+    - IconView: set_cursor(): Add a version with no cell parameter.
+    - PlacesSidebar: Fix crash with the drag_* signals, correct
+      some OWNERSHIP_*s, pass vectors by reference in signals.
+    - Settings: Add create_action().
+    - SearchBar: handle_event(): Take a GdkEventKey instead of
+      GdkEvent.
+    - Window: get_frame_extents(): Add const version.
+  + Gdk: Deprecate Color.
+  + Build: Update gtk-demo MSVC Projects.
+
+-------------------------------------------------------------------
+Fri Sep 20 12:31:44 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.16:
+  + Gtk:
+    - Added HeaderBar (bgo#708194).
+    - Added ListBox and ListBoxRow (bgo#708115).
+    - Added PlacesSidebar (bgo#705642).
+    - Added Stack and StackSwitcher (bgo#704964).
+    - Widget:
+      . Make insert_action_group() public.
+      . Add remove_action_group().
+
+-------------------------------------------------------------------
+Wed Sep 11 08:41:55 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.14:
+  + Gtk:
+    - Add SearchBar.
+    - Button: Replace the icon_name ctor by
+      set_image_from_icon_name().
+    - Scale: Constructor: Remove the default parameter value to
+      avoid ambiguity (bgo#707810).
+  + Gdk: Window: Add set_opaque_region().
+  + Tools: gtk_generate_extra_defs.sh: Add --make-patch option.
+  + Build: Update Visual Studio Projects.
+
+-------------------------------------------------------------------
+Wed Aug 28 12:03:29 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.12:
+  + Gtk:
+    - Button: Add constructor that takes an icon_name and size.
+    - Entry: Add get/set_tabs() and property.
+    - Label: Add get/set_lines() and property.
+    - Add Revealer (bgo#705460).
+    - Widget:
+      . add get_scale_factor().
+      . Widget: Add drag_begin() that takes x and y coordinates.
+  + Gdk: Cursor: Wrap some new functions.
+
+-------------------------------------------------------------------
+Tue Aug  6 10:55:19 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.10:
+  + Gdk:
+    - Device: Add get_position() that uses doubles.
+    - Screen: Add get_monitor_scale_factor().
+    - Window:
+      . Add get_scale_factor().
+      . Add get_device_position() taking doubles.
+      . Add create_similar_image_surface().
+  + Gtk:
+    - CellRendererPixbuf: Add the surface property.
+    - Box: Add get/set_baseline_position() and property.
+    - FileChooser: Add get_current_name().
+    - Image: Add set(Cairo::Surface)
+    - InfoBar: Add get/set_show_close_button() and the property.
+    - IconInfo: Add load_surface() and get_base_scale().
+    - IconTheme:
+      . Add lookup_icon() and choose_icon() method overloads that
+        take a scale parameter.
+      . Add load_surface().
+    - Grid:
+      . Add get/set_row_baseline_position() and
+        get/set_baseline_row(), and baseline-row property.
+      . Add remove_row() and remove_column().
+    - Menu, MenuBar: Add constructors that take Gio::MenuModels.
+    - Menu: Make attach_to_widget() public.
+    - MenuShell: bind_model(): Add a method overload without the
+      action_namespace parameter.
+    - RadioToolButton: Fix set_group(). Add reset_group().
+    - Widget: Add get_preferred_height_for_width(),
+      get_allocated_baseline() and get_valign_with_baseline().
+    - Window: Add close().
+  + Updated documentations.
+
+-------------------------------------------------------------------
+Thu Jul 18 11:35:25 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.8:
+  + Gdk: Display: Deprecate get_n_screens().
+  + Gtk:
+    - Action: Deprecate all methods, signals and properties, but
+      not yet the class itseld, because it is still used in
+      not-yet-deprecated API.
+    - Also deprecated RadioACtion, RecentAction, ToggleAction.
+    - Deprecate ActionGroup.
+    - CellRenderer: Deprecate property_cell_background_gdk().
+    - CellView: Deprecate property_background_gdk().
+    - ColorButton: Deprecate get_alpha().
+    - Container: deprecate resize_children().
+    - Deprecate Gtk::IconFactory, IconSet, IconSource.
+    - Image: Deprecate methods that take an IconSet or a StockID
+      parameter.
+    - StyleContext: Deprecate [set|get]_direction() and
+      render_icon_pixbuf().
+    - Deprecate StockID, StockItem, BuiltinStockID, namespace
+      Gtk::Stock.
+    - MenuButton: Deprecate unset_menu().
+    - ScrolledWindow:  Deprecate property_window_placement_set().
+    - Settings: Deprecate ignored settings.
+    - Deprecate Table.
+    - Deprecate UIManager.
+    - Widget: Deprecate [un]set_composite_name(),
+      [push|pop]_composite_child(), get_requisition() and methods
+      that take aStockID parameter.
+    - Window: Deprecate reshow_with_initial_size().
+    - Add missing includes in gdkmm.h and gtkmm.h (bgo#699993).
+  + Build: Move to a generated ChangeLog.
+  + Documentation: Demos: Fix calls to Gtk::Grid::attach().
+
+-------------------------------------------------------------------
+Thu May  2 18:31:19 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Gtk:
+    - Widget: Don't call signal_hide handlers on a widget being
+      deleted, to fix a crash in some applications (bgo#605728).
+
+-------------------------------------------------------------------
+Wed Apr 17 09:32:11 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Gtk:
+    - AccelLabel: Add set_accel().
+    - ActionGroup: Add get/set_accel_group() and the accel-group
+      property.
+    - Entry: Add the populate_all property.
+    - Image: Add the resource property.
+    - IconInfo: Add load_icon_async() load_symbolic_async(),
+      load_symbolic_for_context().
+    - IconView:
+      . Add get/set_activate_on_single_click() and the
+        activate-on-single-click property.
+      . Add get_cell_rect().
+    - LevelBar: Add get/set_inverted().
+    - MenuShell: Add bind_model().
+    - Settings: Add the  gtk-recent-files-enabled and
+      gtk-primary-button-warps-slider properties.
+    - TextView: Add the populate_all property.
+    - TreeView: Add get/set_activate_on_single_click() and the
+      activate-on-single-click property.
+    - Widget: Add is_visible(), register_window() and
+      unregister_window().
+    - Window: Add set_titlebar().
+  + Gdk: Window: Add get/set_fullscreen_mode().
+  + Build: Fix and Update the Visual Studio Solution Files for
+    MSVC.Net 2005, 2008 and 2010.
+
+-------------------------------------------------------------------
+Sat Mar  9 11:44:05 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.12:
+  + Gtk: Modify the deletion of widgets (bgo#605728, bgo#315874).
+  + Build:
+    - Fix the build with the lastest GTK+ from git master
+      (bgo#695305).
+    - Preserve our generated API/ABI after GTK+ API-compatible
+      changes.
+  + Updated documentations.
+- Stop packaging INSTALL file in docs as we have no need for it.
+
+-------------------------------------------------------------------
+Tue Feb 26 08:49:52 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.10:
+  + Gdk:
+    - PixbufAnimation: Fix refcounting on get_iter() (bgo#688686).
+    - Rectangle: Add Gdk::join() and Gdk::intersect() nonmember
+      functions (bgo#452130).
+  + Gtk:
+    - Bin, Container::remove(): Restore the floating ref of a
+      managed widget (bgo#666823).
+    - Add const versions of get_object() and get_widget[_derived]()
+      (bgo#666823).
+    - Add get_objects() (bgo#666823).
+    - ScrolledWindow: Add remove_with_viewport() (bgo#685739).
+    - Widget: Add get/set_opacity(), set_opacity() and the opacity
+      property.
+    - Window: Deprecate get_opacity(), set_opacity() and the
+      opacity property.
+  + Updated documentations.
+  + Build fixes.
+
+-------------------------------------------------------------------
+Mon Oct 22 15:15:41 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Gtk:
+    + ComboBox: Add set_active_id(), deprecating
+      get_active_id(string) (bgo#685801).
+    + TargetList: Add some add_*_targets() methods.
+    + WindowGroup: Add list_windows() and get_current_grab().
+
+-------------------------------------------------------------------
+Thu Sep 27 21:33:00 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.13:
+  + Gtk:
+    - ApplicationWindow: Add get_id().
+    - Container: Add forall(), propagate_draw(),
+      get_focus_child() and get_path_for_child().
+    - IconView: Add get_item_row() and get_item_column()
+      and reorderable, tooltip-column and item-padding properties.
+    - LevelBar: Added properties and signal.
+    - PrintJob: Added get/set_page_ranges().
+    - Settings: Added the enable_primary_paste property.
+    - Widget: Add has_visible_focus().
+    - Window: Add set_startup_id(), is_active(), 
+      has_toplevel_focus(), set_default_geometry(), 
+      resize_to_geometry(), has_group().
+      Add the focus-visible and attached-to properties.
+  + Build:
+    - Use std::time_t instead of ::time_t.
+    - Use std::size_t and std::ptrdiff_t.
+
+-------------------------------------------------------------------
+Fri Aug 31 07:19:51 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.12:
+  + Gtk:
+    - Added the LevelBar widget
+    - Application:
+      . Added get_active_window()
+      . Don't call add_window() before the application is
+        registered
+    - CellRendererText: Added the placeholder_text property
+    - Entry: Add input purpose and input hints methods
+    - MenuButton: Added get/set_popup(), deprecated get/set_menu()
+    - Settings: Deprecate the gtk-touchscreen-property
+    - TextView: Added input purpose and input hints methods
+    - Widget: Added insert_action_group()
+  + Updated documentation (bgo#670212).
+- Add doxygen and xsltproc BuildRequires: the tarball does not
+  contain built documentation anymore, so we need those tools to
+  build it now.
+
+-------------------------------------------------------------------
+Wed Jul 18 08:19:13 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.6:
+  + Gtk:
+    - AppChooserDialog: Fix property name in constructors
+    - Application:
+      . run(): Do not show the window until activation, fix a crash
+      . Added get_window_by_id()
+    - Button: Addedset/get_always_show_image() and the property
+    - Added Gtk::MenuButton
+    - Added Gtk::SearchEntry
+    - WidgetPath: Added to_string(), iter_get_siblings() and
+      iter_list_regions()
+    - Fix wrap_init() for Quartz
+  + Gdk:
+    - Pixbuf: Added  const version of save() and friends
+    - Screen: Added get_monitor_workarea().
+
+-------------------------------------------------------------------
+Tue Jun 26 18:03:55 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + Application:
+    - Document that ID may now be empty.
+    - Pass 0 (NULL) rather than "" to GApplication.
+  + Builder: Add create_from_resource() and add_from_resource().
+    (bgo#674545)
+  + Entry: Undeprecate the activate signal. (bgo#655500)
+  + StyleContext:
+    - Add render_icon() and render_insertion_cursor() and deprecate
+      some functions. (bgo#675632)
+    - Add get_style_property(). (bgo#674746)
+  + UIManager: Add add_ui_from_resource(). (bgo#674545)
+  + Widget: Deprecate draw_insertion_cursor(). (bgo#675632)
+  + Documentation:
+    - Application: add_window(): Correct the documentation.
+    - Container: Document several rarely used virtual functions
+      (bgo#670206)
+    - Widget: Document get_style_property_value() and
+      get_style_property(). (bgo#673303)
+  + Build: Make the list of gdk targets non-automagic. Otherwise,
+    it is difficult e.g. to build a wayland-only gtkmm on a build
+    machine that has gdk with both x11 and wayland targets
+    installed. (bgo#673963)
+
+-------------------------------------------------------------------
+Tue Apr 10 14:41:23 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Gtk:
+    - CellArea: Add signals.
+    - TreePath: Guarantee that all constructors make gobject_ != 0
+      (bgo#511136).
+    - Window: Add begin/move_resize_drag() overloads that take a
+      Device.
+  + Build:
+    - Remove the Maemo Extensions API.
+  + Documentation:
+    - Gtk::Widget: add documentation for the destructor
+      (bgo#670275).
+
+-------------------------------------------------------------------
+Wed Mar 28 11:18:18 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.20:
+  + Gdk:
+    - Added AppLaunchContext.
+    - Device: Added list_axes().
+    - Display: Deprecate the set_double_click_[time|distance]()
+      methods.
+    - RGBA: set_grey(), set_grey_u(): Correct the default alpha
+      values (bgo#671573).
+  + Gtk:
+    - Actionable: Ensure virtual functions don't return freed
+      memory.
+    - Button:
+      . Deprecate the activate signal.
+      . Deprecated signal_pressed(), signal_released(),
+        signal_enter() and signal_leave().
+    - CellArea: Added foreach() and some properties.
+    - ColorChooser: Added add_palette().
+    - ComboBox: Added signal_format_entry_text().
+    - Entry: Deprecate the activate signal.
+    - FontChooser: Added set_filter().
+    - MenuItem:
+      . Deprecated get/set_right_justified().
+      . Added signal_select() and signal_deselect().
+    - MenuShell: Added Add signal_insert().
+    - Notebook: Deprecated get_tab_hborder() and get_tab_vborder().
+    - ScrolledWindow: Added get/set_kinetic_scrolling(),
+      get/set_capture_button_press() and the kinetic-scrolling
+      property.
+    - Scale: Added set/get_has_origin() and property.
+    - Settings: Added several new properties.
+    - StyleContext: Added list_classes() and get_parent().
+    - TreeView: Added get_n_columns().
+    - Widget:
+      . Deprecated get/set_state() and signal_state_changed(),
+        adding signal_state_flags_changed().
+      . Added signal_touch_event().
+    - Undeprecate init_gtkmm_internals()
+  + Build:
+    - Fix warnings found by clang++.
+    - TreeView: Work around a HP-UX aCC compiler error.
+
+-------------------------------------------------------------------
+Fri Mar  9 11:00:18 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.18:
+  + Gtk:
+    - AboutDialog: Added add_credits_section().
+    - Application: Added get/set_app_menu(), get/set_menubar(),
+      add/remove_accelerator(), inhibit(), uninhibit(),
+      is_inhibited() properties and signals.
+    - Add ApplicationWindow.
+    - Add ColorChooser and ColorChooserDialog.
+    - ColorSelection*: Document these as deprecated.
+    - EntryCompletion: Added compute_prefix().
+    - FontChooser: Add properties and signals.
+    - Image: Add set_from_resource().
+    - Main: Deprecate (most of) this in favor of Gtk::Application.
+    - StyleContext: Added set_parent() and unset_parent().
+    - Widget: Add get_modifier_mask().
+    - Window: Add unset/set/get_attached_to(),
+      get/set_hide_titlebar_when_maximized() and property.
+  + gmmproc: _CLASS_GTKOBJECT: Include destructor documentation
+    (bgo#668918).
+
+-------------------------------------------------------------------
+Tue Feb 28 10:57:15 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.16:
+  + Gtk:
+    - Add the Actionable interface (bgo#637445).
+    - Application:
+      . Constructor: Receive argc and argv params by reference.
+      . Initialize gtkmm early enough for successful construction
+        (bgo#637445).
+      . Avoid the need to use Gtk::Main.
+      . Make the create() methods static.
+    - Border: Add reference documentation (bgo#669907).
+    - ColorButton: set_color(), set_alpha(), constructor: Deprecate
+      these, as they are deprecated in the C API.
+    - EntryBuffer: Correct the EntryBuffer(name) constructor
+      (bgo#670784).
+    - TextTag: Add RGBA versions of the properties.
+    - Window: set_background(Color): Deprecate this.
+    - Deprecate some properties that use Gdk::Color.
+    - Documentation: Add documentation for signals, based on the C
+      documentation (bgo#668918).
+
+-------------------------------------------------------------------
+Tue Feb  7 11:09:36 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.14:
+  + Gtk:
+    - AboutDialog: Add unset_license() and set_logo_default()
+      (bgo#616769).
+    - Application: Add back Application, though it is not ready yet
+      (bgo#637445).
+    - Deprecate some methods using Gdk::Color, to fix the build.
+    - Entry: Deprecate [set|get]_inner_border() (bgo#669190).
+    - IconView: Implement IconView::IconView(Gtk::CellArea)
+      (bgo#665361).
+    - Main: Deprecate signal_key_snooper().
+    - Settings: Add missing properties (bgo#665264).
+    - Widget: Deprecate get_pointer().
+  + Build:
+    - Fix the build for Quartz (MacOS) (bgo#662975).
+    - Fix configure.ac that had a broken shell syntax (bgo#665267).
+    - Fix namespacing for Cairo (bgo#663303).
+
+-------------------------------------------------------------------
+Fri Oct 28 07:53:04 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.3.2:
+  + Avoid some more deprecation warnings with the recent GTK+.
+  + Deprecate HandleBox.
+  + Deprecate TearOffMenuItem.
+  + Deprecate Gtk::Table in favour of Gtk::Grid.
+  + Add #includes needed with the latest glibmm.
+  + Build: make check: Use xmllint to check the generated .html
+    documentation.
+
+-------------------------------------------------------------------
+Tue Sep 27 09:33:59 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Gtk:
+    - Remove Application, because it is still not ready.
+    - Assistant: Deprecate get/set_page_header_image() and
+      get/set_page_side_image().
+    - TreeView: Added unset_row_separator_func().
+
+-------------------------------------------------------------------
+Mon Sep 19 09:27:40 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.90.1:
+  + Gdk:
+    - Device: Added get_n_keys() and list_slave_devices().
+    - Pixbuf: Added properties.
+    - Window: Added get_drag_protocol().
+  + Documentation:
+    - Avoid invalid HTML in link titles (hopefully) (bgo#650544).
+    - Remove collaboration diagrams.
+
+-------------------------------------------------------------------
+Fri Sep 16 10:13:30 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.90:
+  + Gtk:
+    - FontChooser is now an interface, like AppChooser.
+    - FontChooserDialog: Derive from FontChooser, removing some
+      methods.
+    - FontChooserWidget: A new widget derived from FontChooser.
+    - FontButton: This should now derive from FontChooser but we
+      cannot do that without breaking ABI because FontButton was in
+      gktmm 3.0.
+    - TreeView: Make append_column_numeric_editable() work for
+      [unsigned] short (bgo#655416).
+    - Widget::get_allocation(): Add the newer documentation from
+      the C docs.
+
+-------------------------------------------------------------------
+Tue Sep  6 10:37:21 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.18:
+  + Gtk:
+    - Assistant: Added remove_page().
+    - Dialog::get_content_area(): Avoid infinite loop.
+    - Added FontChooser and FontChooserDialog, deprecating old
+      widgets.
+    - PrintUnixDialog::get_selected_printer(): ref-counting
+      correction (bgo##657751).
+    - TreeView: Added unset_drag_dest_row() (bgo#577986).
+  + Build:
+    - Updated Visual C++ Projects
+
+-------------------------------------------------------------------
+Wed Aug 31 16:03:40 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.16:
+  + Added Gtk::FontChooser and Gtk::FontChooserDialog, deprecating
+    old widgets.
+  + Updated Visual C++ Projects
+
+-------------------------------------------------------------------
+Wed Jul 27 14:51:54 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.10:
+  + Gtk:
+    - Adjustment: Added get_minimum_increment().
+    - ButtonBox: Added get_child_non_homogeneous() and
+      set_child_non_homogeneous().
+    - CellArea: Added get_focus_siblings().
+    - CssProvider: Added to_string().
+    - Entry: Added get_placeholder_text(), set_placeholder_text(),
+      and placeholder-text property.
+    - Expander: Added set_resize_toplevel(), get_resize_toplevel()
+      and resize-toplevel property.
+    - PrintJob: Added set/get_pages(), set/get_page_set(),
+      set/get_num_copies(), set/get_scale(), set/get_n_up(),
+      set/get_n_up_layout(), set/get_rotate(), set/get_collate(),
+      set/get_reverse().
+    - Tooltip: Add unset_*() methods (bgo#541296).
+    - TreeViewColumn: Added get_x_offset().
+    - Added several other properties to various classes.
+
+-------------------------------------------------------------------
+Wed Jul  6 14:45:50 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.8:
+  + Gtk:
+    - ComboBoxText: Constructor: Set entry-text-column and
+      id-column (bgo#653579).
+
+-------------------------------------------------------------------
+Mon Jul  4 16:04:52 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.6:
+  + Gtk:
+    - All H* or V* specialized classes have been deprecated, to
+      match the deprecations in the GTK+ C API.
+    - Dialog: Deprecate get_vbox(), replacing with
+      get_content_area(), to match the C function name.
+- Changes from version 3.0.1:
+  + Gtk:
+    - EntryCompletion: signal_cursor_match_info(): Fix this.
+    - MessageDialog: Correct the get_message_area() return type.
+    - ScrolledWindow: Correct the get_v/hscrollbar() return types.
+    - Fix the --enable-warnings=fatal build with GTK+ 3.1.x.
+
+-------------------------------------------------------------------
+Wed Apr  6 11:38:25 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Gtk:
+    - Change all operator void* to operator const void*, with a
+      BoolExpr typedef and extra documentation. This avoids an
+      unintentional implicit cast to int, and is generally
+      considered good practice in C++. The new C++ standard allows
+      the use of the explicit keyword here instead, but that is not
+      yet widespread.
+    - NumerableIcon: Really add get_background_gicon() const.
+    - StateFlags: Added missing STATE_FLAG_NORMAL enum value.
+
+-------------------------------------------------------------------
+Mon Mar 28 12:33:19 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.99.8:
+  + Avoid a tarball dependency on mm-common.
+- Changes from version 2.99.7:
+  + Gtk:
+    - Removed Application until later because the API was not
+      finished in time.
+- Changes from version 2.99.6:
+  + Gtk:
+    - CssProvider: load_from_data(): Remove the size parameter.
+    - Main: Added a constructor with no argc and argv.
+    - TreeView::add_column_editable(): Make this work for
+      TreeModelFilter models. bgo#582981
+    - Window: Added unset_application.
+
+-------------------------------------------------------------------
+Wed Feb 23 12:39:51 UTC 2011 - adam@mizerski.pl
+
+- Update to version 2.99.5:
+  + Gtk:
+    - ButtonBox, Separator, Scale, Scrollbar: Add public
+      constructors.
+    - CellArea, CellRenderer: Added get_request_mode(),
+      get_preferred_[width|height_for_width|height|width_for_height]
+      vfuncs (bgo#639073).
+    - CellView: Derive from Orientable and add
+      set/get_draw_sensitive(), set/get_fit_model() and the new
+      properties.
+    - EntryCompletion: Derive from Buildable and add the cell-area
+      property.
+    - IconView: Added the cell_area property.
+    - Image: Added the set_fallback property.
+    - Paned: Constructor: Add an optional orientation parameter.
+    - Widget: Added should_draw_window() and
+      transform_cairo_context_to_window().
+- Changes from version 2.99.4:
+  + Gtk:
+    - Added AppChooser, AppChooserButton, AppChooserDialog and
+      AppChooserWidget.
+    - Button: Restore the clicked() method.
+    - CellArea: Added constructor that takes a CellArea.
+    - Entry: Added unset_icon() (bgo#621742).
+  + Documentation:
+    - ComboBoxText: Add warning about not confusing these
+      (bgo#619656).
+- Changes from version 2.99.3:
+  + Gdk:
+    - Display:
+      . selection_send_notify(): This now takes a
+        Gdk::Window instead of a (now removed) GdkNativeWindow.
+      . Removed get_protocol() and add_client_message_filter().
+    - Screen: Removed send_client_message().
+    - Use std::vector in several methods instead of the
+      intermediate *Handle types, to make the API clearer.
+  + Gtk:
+    - Application: Try to make this a replacement for Gtk::Main,
+      though this work is not finished yet.
+    - Button: Restore the clicked() method.
+    - CellArea: Remove set_style_detail() and get_style_detail().
+    - CellRenderer: Added get_state().
+    - ComboBoxText: Remove the constructor that takes a model.
+    - CssProvider:
+      . Add a create() method.
+      . get_default() and get_named(): fixed the reference
+        counting.
+    - IconSet: Use this via a RefPtr.
+    - LisViewText: Rename append_text(), insert_text(), and
+      prepend_text() to append(), insert() and prepend() because
+      that is what ComboBoxText now uses (because it has other
+      append overloads).
+    - Added NumerableIcon.
+    - Range: Added get/set_round_digits() and property.
+    - TextView: Added get_cursor_locations().
+    - Widget:
+      . Removed client_event signal.
+      . Added set_state_flags(), get_state_flags(),
+        reset_state_flags(), set_device_enable(),
+        get_device_enabled(), and reset_style().
+      . Added get_request_mode_vfunc(),
+        get_preferred_[width|height_for_width|height|width_for_height]_vfunc().
+        (bgo#639073).
+      . Wrap the style-updated signal.
+      . set_window(), set_has_window(), and get_requisition() are
+        now protected.
+      . set_window(): Increase the ref count of the Gdk::Window
+        because GTK+ does not, and will not, though we think we may
+        need to do more work to fix this properly (bgo#606903).
+- Changes from version 2.99.1:
+  + Gdk:
+    - Cursor: Add create() methods, making the constructors protected,
+      because this should now be used via RefPtr.
+    - Device:
+      . Added get_history().
+      . Added grab() overload.
+      . Added Added get_position() and get_window_at_position().
+      . Removed set_source().
+      . Added get_window_at_position() with no parameters.
+      . Added warp().
+    - Display:
+      . Removed Remove get_device_state() and
+        get_window_at_device_position()
+      . Added has_pending() and notify_startup_complete().
+      . Removed pointer_ungrab(),  keyboard_ungrab(),
+        pointer_is_grabbed(), device_is_grabbed(), get_pointer(),
+        get_window_at_pointer(), warp_pointer, set_pointer_hooks(),
+        unset_pointer_hooks(), set_device_hooks(),
+        unset_device_hooks().
+    - DisplayManager.hg: Added open_display().
+    - DragContext: find_window_for_screen():
+      . Use a reference for the protocol parameter, instead of a
+        pointer.
+      . Added get_dest_window() and get_protocol().
+    - Pixbuf: Added set_option() and apply_embedded_orientation().
+    - Screen: The monitors_changed() signal was wrapping the
+      size_changed signal. Fixed.
+    - Window: Added get_device_cursor().
+  + Gtk:
+    - Adjustment: Fix the reference counting of Adjustment.
+    - MenuItem: Added get/set_reserve_indicator().
+    - MenuShell: Added get_selected_item() and get_parent_shell().
+    - Range: Remove get/set_update_policy(), to fix the build.
+    - StyleContext: Added get/set_path() and get_screen().
+    - TreeModel::iterator::operator--(): Use
+      gtk_tree_model_iter_previous().
+    - TreeView: Added is_blank_at_pos().
+    - Widget: Removed style_attach().
+    - Window: Removed set_frame_event(), get_frame_event(),
+      set_frame_dimensions(), get_frame_dimensions() and the
+      frame_event signal.
+- Changes from version 2.91.7:
+  + Gtk:
+    - Fix the build with latest glibmm after gmmproc m4 changes.
+    - Application: Added a protected constructor so people can
+      derive from this (bgo#637445).
+    - Added CellArea, CellAreaBox, and CellAreaContext.
+    - CellLayout: Added get_area().
+    - CellRenderer: Added is_activatable() and get_aligned_area().
+    - IconInfo:
+      . Renamed load_icon_symbolic() to load_symbolic()
+      . Added load_icon_symbolic(StyleContext, bool&).
+    - Switch: Fix the type registration to avoid breaking Widget's
+      type registration completely, which probably broke
+      everything.
+    - TreeViewColumn: Added get_button().
+    - Widget:
+      . Removed reset_shapes() and get_default_visual().
+      . Added unset_color/font() methods.
+      . Removed render_icon(), adding render_icon_pixbuf().
+    - WidgetPath: Renamed get_widget_type() to get_object_type()
+      and renamed iter_get/set_widget_type() renamed to
+      iter_get/set_object_type().
+    - Window: Added get/set_application().
+  + Gdk:
+    - Cursor should now be used via RefPtr.
+    - Display: Removed warp_device().
+    - Pixbuf: Derive from Gio::Icon.
+- Change BuildRequires to pkgconfig() ones:
+  + old ones: atkmm-devel, cairomm-devel, glibmm2-devel,
+    libsigc++2-devel, pangomm-devel.
+  + pkgconfig() ones: atkmm-1.6, cairomm-1.0, gdk-pixbuf-2.0,
+    giomm-2.4, gtk+-3.0, pangomm-1.4.
+- Remove checks for openSUSE 11.2: we don't want to build there
+  anyway.
+- Pass --disable-static to configure.
+
+-------------------------------------------------------------------
+Fri Dec 17 12:23:55 CET 2010 - vuntz@opensuse.org
+
+- New package of gtkmm 3.0 (2.91.6), based on the gtkmm2 package.
+

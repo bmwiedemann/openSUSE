@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Wed Jul 17 07:34:14 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Package renamed to follow upstream name xfce4-foo-plugin
+- Cleaned up spec file 
+
+-------------------------------------------------------------------
+Thu Sep  5 19:06:54 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.3.1.
+  * Fix for auto device issue.
+  * Remove ">= 2.24" from BuildRequires: pkgconfig(gtk+-2.0). It's
+    OK for gtk+-2.0 >= 2.6.0.
+
+-------------------------------------------------------------------
+Fri Jan 18 15:31:24 UTC 2013 - lazy.kent@opensuse.org
+
+- Clean up %prep section: no need to remove absent
+  xfce4-netspeed-plugin.desktop.
+
+-------------------------------------------------------------------
+Sat Jan 12 14:07:44 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.3.
+  * Port to libxfce4ui.
+- So change BuildRequires: pkgconfig(libxfcegui4-1.0) ->
+  pkgconfig(libxfce4ui-1).
+
+-------------------------------------------------------------------
+Wed Aug 22 10:49:35 UTC 2012 - lazy.kent@opensuse.org
+
+- Remove wrong desktop file. A good one will be installed any way.
+
+-------------------------------------------------------------------
+Tue Aug 21 22:18:09 UTC 2012 - lazy.kent@opensuse.org
+
+- Update to 0.2.
+  * Added fixed width support.
+  * Added support for automatically guessing the active network
+    device.
+
+-------------------------------------------------------------------
+Sat Dec 24 18:16:27 UTC 2011 - lazy.kent@opensuse.org
+
+- Initial package created - 0.1
+

@@ -1,0 +1,25 @@
+#!/bin/sh
+#set -x
+JAVA_HOME=@JAVA_HOME@
+call=$0
+if [ "`uname -s`" = "Linux" ]; then
+    awk=awk
+else
+    awk=nawk
+fi
+
+if ls -l $call|grep -q ^l; then 
+	# Symlink
+	call=`ls -l $call|$awk '{sub(/^.*-> /,"");print}'`
+	if [ -z "`echo $call|grep '^/'`" ]; then
+		#relative Symlink
+		call="`dirname $0`/$call"
+	fi
+	exec $call "$@"
+else
+	# real file
+	dir=`dirname $call`
+fi
+export PATH=${JAVA_HOME}/bin:$PATH
+exec java -Xmx512m -cp ${dir}/ij.jar:${JAVA_HOME}/lib/tools.jar ij.ImageJ -ijpath ${dir} "$@" 
+

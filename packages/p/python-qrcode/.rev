@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd326b4ee4d5ea1e0549865fc8c1cf04</srcmd5>
+    <version>5.1</version>
+    <time>1435171561</time>
+    <user>dimstar_suse</user>
+    <comment>New package: a QR image generator library for python.</comment>
+    <requestid>312380</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>915963ccedec8f8afcec24138ec09f7b</srcmd5>
+    <version>5.1</version>
+    <time>1441146942</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>325451</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e8b7a9132c1d9e820eceed947c3048f8</srcmd5>
+    <version>5.3</version>
+    <time>1496681463</time>
+    <user>dimstar_suse</user>
+    <comment>- convert to singlespec
+- make binary python3-only
+- enable tests
+- add proper requirements (fixes boo#1040540)
+- update to 5.3
+  * better support for tty output in python3
+  * --error-correction option
+  * fix incomplete block table for QR version 15
+  * fix BaseImage.get_image</comment>
+    <requestid>501164</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b0c7601e03aa5558fd83671cc2abd4f2</srcmd5>
+    <version>5.3</version>
+    <time>1498639046</time>
+    <user>dimstar_suse</user>
+    <comment>- pass -s to pytest, to work around bad interaction with older pytest</comment>
+    <requestid>506507</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aa2b60df1c783e6dd659a6e54595f2f6</srcmd5>
+    <version>6.1</version>
+    <time>1553888557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689261</requestid>
+  </revision>
+</revisionlist>

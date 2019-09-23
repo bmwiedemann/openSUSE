@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PySpaceWar
+GenericName=Spacewar!
+Comment=Game loosely based on the original Spacewar!
+Exec=pyspacewar
+Icon=pyspacewar
+Type=Application
+Categories=Game;ArcadeGame;
+StartupNotify=false

@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Wed Mar 20 09:49:42 UTC 2013 - douglarek@outlook.com
+
+- update to 0.35
+  - various bugfixes
+  - add drop-unneeded-git-version-check.patch, will drop after 0.36 released,
+  http://repo.or.cz/w/guilt.git/commitdiff/f1c2f45bb6294f46fc5cfc8f59040fb7bef8a395
+
+-------------------------------------------------------------------
+Fri Dec  3 13:39:06 UTC 2010 - puzel@novell.com
+
+- update to 0.34 
+  - patchbomb: add some patch formatting options to the CLI
+  - Make sure the commit time is increasing
+- clean up specfile
+
+-------------------------------------------------------------------
+Sat May 15 10:43:07 CEST 2010 - bernhard@bwalle.de
+
+- update to 0.33
+  - Add support for git version 1.7.x.y
+  - Allow to handle binary files.
+  - Various bugfixes.
+
+-------------------------------------------------------------------
+Thu Feb 19 18:27:05 CET 2009 - puzel@suse.cz
+
+- update to 0.32 
+  - various bugfixes
+  - new commands: guilt-guard, guilt-select
+- drop superfluous BR: docbook-xsl-stylesheets
+
+-------------------------------------------------------------------
+Wed Dec 03 11:28:31 CET 2008 - bwalle@suse.de
+
+- Require git.
+- Build for noarch.
+
+-------------------------------------------------------------------
+Tue Oct 07 19:11:55 CEST 2008 - bwalle@suse.de
+
+- Require docbook-xsl-stylesheets, docbook_4 and docbook_3 to
+  avoid downloading of XSL style sheets and build without network.
+- Require sgml-skel because that is required by docbook RPMs.
+
+-------------------------------------------------------------------
+Tue Oct 07 12:01:11 CEST 2008 - bwalle@suse.de
+
+- update to 0.31.2 (works with git 1.6)
+
+-------------------------------------------------------------------
+Tue Oct 07 10:53:53 CEST 2008 - bwalle@suse.de
+
+- update to 0.31
+
+-------------------------------------------------------------------
+Mon May 26 13:11:31 CEST 2008 - bwalle@suse.de
+
+- new package
+
+-------------------------------------------------------------------

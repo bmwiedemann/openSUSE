@@ -1,0 +1,21 @@
+--- wmNetscapeKiller.c
++++ wmNetscapeKiller.c
+@@ -64,15 +64,15 @@
+ // Getionnaire evenement bouton souris
+ void DoButtonPress() {
+    int retour ;
+-   char* command;
+-   sprintf(command,"killall -9 %s",prog_victim) ;
++   char command[1024];
++   snprintf(command,1024,"killall -9 %s",prog_victim) ;
+     retour = system(command) ;
+ //   retour = system("killall -12 netscape") ;
+      if(retour!= -1 && retour != 127 && retour != 256 && restart == TRUE)
+      {
+         nXPM = KILLED_XPM ;
+         DoExpose() ;
+-	sprintf(command,"%s&",prog_victim) ;
++	snprintf(command,1024,"%s&",prog_victim) ;
+ 	system(command) ;
+      }
+    else

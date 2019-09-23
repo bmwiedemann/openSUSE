@@ -1,0 +1,23 @@
+Index: xen-4.8.0-testing/tools/firmware/etherboot/patches/ipxe-no-error-logical-not-parentheses.patch
+===================================================================
+--- /dev/null
++++ xen-4.8.0-testing/tools/firmware/etherboot/patches/ipxe-no-error-logical-not-parentheses.patch
+@@ -0,0 +1,11 @@
++--- ipxe/src/Makefile.housekeeping.orig	2015-03-12 12:15:50.054891858 +0000
+++++ ipxe/src/Makefile.housekeeping	2015-03-12 12:16:05.978071221 +0000
++@@ -415,7 +415,7 @@
++ # Inhibit -Werror if NO_WERROR is specified on make command line
++ #
++ ifneq ($(NO_WERROR),1)
++-CFLAGS		+= -Werror
+++CFLAGS		+= -Werror -Wno-logical-not-parentheses
++ ASFLAGS		+= --fatal-warnings
++ endif
++
+Index: xen-4.8.0-testing/tools/firmware/etherboot/patches/series
+===================================================================
+--- xen-4.8.0-testing.orig/tools/firmware/etherboot/patches/series
++++ xen-4.8.0-testing/tools/firmware/etherboot/patches/series
+@@ -1 +1,2 @@
+ boot_prompt_option.patch
++ipxe-no-error-logical-not-parentheses.patch

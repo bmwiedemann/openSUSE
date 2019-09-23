@@ -1,0 +1,22 @@
+Index: b/brlemu.c
+===================================================================
+--- a/brlemu.c
++++ b/brlemu.c
+@@ -21,7 +21,7 @@
+ 
+ /* communication functions */
+ void send_id (void);
+-inline void read_data (void);
++void read_data (void);
+ void send_cmd (const unsigned char *cmd);
+ 
+ /* helper functions */
+@@ -353,7 +353,7 @@ void send_cmd (const unsigned char *cmd)
+ 
+ }
+ 
+-inline void read_data (void)
++void read_data (void)
+ {
+   unsigned char code = 0;
+   unsigned char brldsp[81];

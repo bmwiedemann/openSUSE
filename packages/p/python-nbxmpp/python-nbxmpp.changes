@@ -1,0 +1,171 @@
+-------------------------------------------------------------------
+Thu May 23 05:21:13 UTC 2019 - mvetter@suse.com
+
+- Update to 0.6.10:
+  * Add support for domain based name in features for GSSAPI
+  * Fix usage of BOSH
+  * Fix Jingle hash namespace
+
+-------------------------------------------------------------------
+Thu Jan 31 07:51:28 UTC 2019 - mvetter@suse.com
+
+- Update to version 0.6.9 (boo#1123247):
+  * Always bind after SM failed Fixes #64
+  * Dont try and guess system language
+
+-------------------------------------------------------------------
+Mon Nov 19 12:42:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.6.8 (changes since 0.6.6):
+  * Raise default TLS version to 1.2.
+  * Remove DIGEST-MD5 from the default auth mechs.
+  * Add STANZA RECEIVED Event (some servers send more than one
+    stanza in one packet).
+  * Add alternative locations to load TLS certs from.
+  * Reset SM counter after receiving <enabled>.
+  * Issue event when SM resume fails.
+
+-------------------------------------------------------------------
+Tue May 22 08:43:58 UTC 2018 - tchvatal@suse.com
+
+- Use setuptools not devel to reduce dependency requirements
+
+-------------------------------------------------------------------
+Tue May 22 08:30:59 UTC 2018 - mvetter@suse.com
+
+- Update to 0.6.6:
+  * Record all SSL errors instead of only the first
+  * Pass arguments to plugin/plugout methods
+  * Allow the Roster to be initalized without requesting it from the server
+
+-------------------------------------------------------------------
+Fri May 11 20:54:02 UTC 2018 - tbro@opensuse.org
+
+- Update to version 0.6.5 (30 April 2018)
+ * Fix BOSH usage (don't set ALPN)
+ * Better handling of certificate files
+ * needed for newest gajim version 1.0.2, as it broke with 0.6.4
+
+-------------------------------------------------------------------
+Mon Mar 17 19:32:02 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.6.4 (changes since 0.6.1):
+  * Correctly load client certs.
+  * Warn on any error in the certificate chain.
+  * Fixed a traceback loop.
+  * Add ALPN and SNI support for when using DirectTLS.
+  * Fix SOCKS5 usage.
+  * Bugfixes.
+
+-------------------------------------------------------------------
+Wed Dec 13 08:14:32 UTC 2017 - frede@b1-systems.de
+
+- Update to version 0.6.1
+  * Add new getStanzaIDAttrs method
+  * Fix BOSH connexion
+  * stop using PyOpenSSL for random generator
+
+-------------------------------------------------------------------
+Sun Nov  5 16:38:49 UTC 2017 - vilene@posteo.net
+
+- Update to version 0.6.0:
+  * Add new getOriginID/SetOriginID method for Messages
+  * Add new getJid() method for Protocol
+  * getTagAttr() accepts now a namespace argument
+  * Add new `protocol` argument for getTag()
+  * Add new XEP Namespaces
+  * Support XEP-0198 Version 1.5.2
+
+-------------------------------------------------------------------
+Wed May 17 13:12:21 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.5.5:
+  * Add some namespaces.
+  * Some cleanup.
+- Update for the multipython build.
+
+-------------------------------------------------------------------
+Thu Oct 13 12:02:32 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.5.4:
+  * Fix SCRAM authentication.
+  * Fix BOSH connection with UTF-8 messages.
+  * Fix smacks implementation.
+  * Use uuid in stanza ids.
+
+-------------------------------------------------------------------
+Sun May  8 07:03:11 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * updated source url to files.pythonhosted.org
+
+-------------------------------------------------------------------
+Thu Sep  3 11:21:45 UTC 2015 - toddrme2178@gmail.com
+
+- Shouldn't be noarch in SLE 11
+
+-------------------------------------------------------------------
+Mon Jul 20 11:52:43 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.5.3:
+  * Fix issue with pyopenssl 0.15.1.
+  * Fix decoding issues.
+
+-------------------------------------------------------------------
+Sat Jan 10 13:20:09 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.5.2:
+  * Fix BOSH HTTP requests.
+  * Fix handling of binary SASL data for mechanism GSSAPI.
+  * Update MAM namespace.
+
+-------------------------------------------------------------------
+Fri Oct 17 15:56:20 UTC 2014 - p.drouand@gmail.com
+
+- Correct Group is Development/Languages/Python
+- Remove depreciated %py_requires
+- Do not pass -O1 --skip-build options
+- Call python instead of python2
+
+-------------------------------------------------------------------
+Sat Oct 11 10:40:25 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 0.5.1 (changes since 0.2):
+  * Fix printing network errors in a non-utf-8 console
+  * Support both python2 and python3
+  * Fix storing server certificate when there is no error
+  * Ability to configure TLS protocol version
+  * Add support for SCRAM-SHA-1-PLUS
+  * Security improvements
+  * Improve security level
+  * Ability to configure cipher list
+  * Store only depth 0 SSL certificate
+
+-------------------------------------------------------------------
+Sun Dec  8 14:10:06 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.2
+  + Add some namespace
+  + do TLS handshake without blocking
+  + store all SSL errors instead of only last one
+- Set correct Group : Devel/Languages/Python
+- Use download Url as source
+- Remove unwanted comments in specfile
+- Package the two directories in /doc to avoid providing epydoc build
+  configuration file
+
+-------------------------------------------------------------------
+Thu Aug 15 16:53:31 UTC 2013 - dap.darkness@gmail.com
+
+- Heads up: Python2 / Python3 parallel installation.
+  %fdupes will not work if files are installed via %doc.
+
+-------------------------------------------------------------------
+Sat Apr 20 14:59:16 UTC 2013 - dap.darkness@gmail.com
+
+ - Fixed up to submit.
+
+-------------------------------------------------------------------
+Sat Apr  6 19:52:54 UTC 2013 - nekolayer@yandex.ru
+
+ - Initial package.

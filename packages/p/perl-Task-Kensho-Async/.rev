@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95229e2e5caca0c10ea9daf9fcaa4bc1</srcmd5>
+    <version>0.28</version>
+    <time>1326122516</time>
+    <user>coolo</user>
+    <comment>one more task, that's easy to get into factory</comment>
+    <requestid>99405</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>95229e2e5caca0c10ea9daf9fcaa4bc1</srcmd5>
+    <version>0.28</version>
+    <time>1340183923</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>95229e2e5caca0c10ea9daf9fcaa4bc1</srcmd5>
+    <version>0.28</version>
+    <time>1359109804</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>95229e2e5caca0c10ea9daf9fcaa4bc1</srcmd5>
+    <version>0.28</version>
+    <time>1379663854</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>95229e2e5caca0c10ea9daf9fcaa4bc1</srcmd5>
+    <version>0.28</version>
+    <time>1409302497</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>82595c0975e55e5d2013527ba0eedf6b</srcmd5>
+    <version>0.39</version>
+    <time>1464204563</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397844</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a0d44c4298d368f2ce2c1551cf93e108</srcmd5>
+    <version>0.40</version>
+    <time>1544632039</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655823</requestid>
+  </revision>
+</revisionlist>

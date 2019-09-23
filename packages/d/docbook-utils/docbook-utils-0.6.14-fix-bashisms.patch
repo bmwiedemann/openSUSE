@@ -1,0 +1,215 @@
+diff -Ndurp docbook-utils-0.6.14/bin/jw.in docbook-utils-0.6.14-fix-bashisms/bin/jw.in
+--- docbook-utils-0.6.14/bin/jw.in	2003-04-30 19:21:49.000000000 +0300
++++ docbook-utils-0.6.14-fix-bashisms/bin/jw.in	2014-10-19 16:34:25.485833459 +0300
+@@ -1,61 +1,63 @@
+-#! /bin/sh
++#!/bin/sh
+ # Jade Wrapper
+ # Script to convert a SGML file into some other format
+ # Send any comments to Eric Bischoff <eric@caldera.de>
+ # This program is under GPL license. See LICENSE file for details.
+ 
+ # Set help message
+-SGML_HELP_MESSAGE="Usage: `basename $0` [<options>] <sgml_file>\n\
+-where <options> are:\n\
+-\040 -f|--frontend <frontend>: \t Specify the frontend (source format)\n\
+-\040 \t\t\t\t (default is docbook)\n\
+-\040 -b|--backend <backend>: \t Specify the backend (destination format)\n\
+-\040 \t\t\t\t (default is html)\n\
+-\040 -c|--cat <file>: \t\t Specify an extra SGML open catalog\n\
+-\040 -n|--nostd: \t\t\t Do not use the standard SGML open catalogs\n\
+-\040 -d|--dsl <file>|default|none:\t Specify an alternate style sheet\n\
+-\040 \t\t\t\t (default is to use the default stylesheet)\n\
+-\040 -l|--dcl <file>: \t\t Specify an alternate SGML declaration\n\
+-\040 \t\t\t\t (usual ones like xml.dcl get detected automatically)\n\
+-\040 -s|--sgmlbase <path>: \t Change base directory for SGML distribution\n\
+-\040 \t\t\t\t (usually @prefix@/share/sgml)\n\
+-\040 -p|--parser <program>: \t Specify the parser if several are installed\n\
+-\040 \t\t\t\t  (jade or openjade)\n\
+-\040 -o|--output <directory>: \t Set output directory\n\
+-\040 -u|--nochunks: \t\t Output only one big file\n\
+-\040 \t\t\t\t (overrides the stylesheet settings)\n\
+-\040 -i|--include <section>: \t Specify a SGML marked section to include\n\
+-\040 \t\t\t\t (should be marked as \"ignore\" in the SGML text)\n\
+-\040 -w|--warning <warning_type>|list: Control warnings or display the allowed warning types\n\
+-\040 -e|--errors <error_type>|list: Control errors or display the allowed error types\n\
+-\040 -h|--help: \t\t\t Print this help message and exit\n\
+-\040 -V <variable[=value]>: \t Set a variable\n\
+-\040 -v|--version: \t\t Print the version and exit"
++SGML_HELP_MESSAGE="Usage: `basename $0` [<options>] <sgml_file>
++where <options> are:
++  -f|--frontend <frontend>:	    Specify the frontend (source format)
++				    (default is docbook)
++  -b|--backend <backend>:	    Specify the backend (destination format)
++				    (default is html)
++  -c|--cat <file>:		    Specify an extra SGML open catalog
++  -n|--nostd:			    Do not use the standard SGML open catalogs
++  -d|--dsl <file>|default|none:	    Specify an alternate style sheet
++				    (default is to use the default stylesheet)
++  -l|--dcl <file>:		    Specify an alternate SGML declaration
++				    (usual ones like xml.dcl get detected
++				    automatically)
++  -s|--sgmlbase <path>:		    Change base directory for SGML distribution
++				    (usually @prefix@/share/sgml)
++  -p|--parser <program>:	    Specify the parser if several are installed
++				    (jade or openjade)
++  -o|--output <directory>:	    Set output directory
++  -u|--nochunks:		    Output only one big file
++				    (overrides the stylesheet settings)
++  -i|--include <section>:	    Specify a SGML marked section to include
++				    (should be marked as \"ignore\" in the SGML
++				    text)
++  -w|--warning <warning_type>|list: Control warnings or display the allowed warning types
++  -e|--errors <error_type>|list:    Control errors or display the allowed error types
++  -h|--help:			    Print this help message and exit
++  -V <variable[=value]>:	    Set a variable
++  -v|--version:			    Print the version and exit"
+ 
+ # Set list of warning types
+-SGML_WARNINGS_LIST="\n\
+-\040 xml \t\t Warn about constructs that are not allowed by XML\n\
+-\040 mixed \t Warn about mixed content models that do not allow #pcdata anywhere\n\
+-\040 sgmldecl \t Warn about various dubious constructions in the SGML declaration\n\
+-\040 should \t Warn about various recommendations made in ISO 8879 that the document does not comply with\n\
+-\040 default \t Warn about defaulted references\n\
+-\040 duplicate \t Warn about duplicate entity declarations\n\
+-\040 undefined \t Warn about undefined elements: elements used in the DTD but not defined\n\
+-\040 unclosed \t Warn about unclosed start and end-tags\n\
+-\040 empty \t Warn about empty start and end-tags\n\
+-\040 net \t\t Warn about net-enabling start-tags and null end-tags\n\
+-\040 min-tag \t Warn about minimized start and end-tags. Equivalent to: unclosed, empty and net\n\
+-\040 unused-map \t Warn about unused short reference maps\n\
+-\040 unused-param \t Warn about parameter entities that are defined but not used in a DTD\n\
+-\040 notation-sysid Warn about notations for which no system identifier could be generated\n\
+-\040 all \t\t Equivalent to: mixed, should, default, undefined, sgmldecl, unused-map, unused-param, empty and unclosed\n\n\
+-\040 A warning can be disabled by using its name prefixed with no-. Example: -w all -w no-duplicate"
++SGML_WARNINGS_LIST="
++  xml		 Warn about constructs that are not allowed by XML
++  mixed		 Warn about mixed content models that do not allow #pcdata anywhere
++  sgmldecl	 Warn about various dubious constructions in the SGML declaration
++  should	 Warn about various recommendations made in ISO 8879 that the document does not comply with
++  default	 Warn about defaulted references
++  duplicate	 Warn about duplicate entity declarations
++  undefined	 Warn about undefined elements: elements used in the DTD but not defined
++  unclosed	 Warn about unclosed start and end-tags
++  empty		 Warn about empty start and end-tags
++  net		 Warn about net-enabling start-tags and null end-tags
++  min-tag	 Warn about minimized start and end-tags. Equivalent to: unclosed, empty and net
++  unused-map	 Warn about unused short reference maps
++  unused-param	 Warn about parameter entities that are defined but not used in a DTD
++  notation-sysid Warn about notations for which no system identifier could be generated
++  all		 Equivalent to: mixed, should, default, undefined, sgmldecl, unused-map, unused-param, empty and unclosedn\
++  A warning can be disabled by using its name prefixed with no-. Example: -w all -w no-duplicate"
+ 
+ # Set list of error types
+-SGML_ERRORS_LIST="\n\
+-\040 no-idref \t No error for an ID reference value which no element has as its ID\n\
+-\040 no-significant No errors for characters not significant in the reference concrete syntax\n\
+-\040 no-valid \t Do not require the document to be type-valid"
++SGML_ERRORS_LIST="
++  no-idref	 No error for an ID reference value which no element has as its ID
++  no-significant No errors for characters not significant in the reference concrete syntax
++  no-valid	 Do not require the document to be type-valid"
+ 
+ # Get name of main SGML configuration file
+ which sgmlwhich >/dev/null 2>/dev/null
+@@ -186,8 +188,8 @@ do case $1 in
+ 		shift 2
+ 		;;
+   -w|--warning)	case $2 in
+-		  list) echo -e "List of allowed warning types (multiple -w options are allowed):\n"
+-			echo -e $SGML_WARNINGS_LIST
++		  list) echo "List of allowed warning types (multiple -w options are allowed):"
++			echo $SGML_WARNINGS_LIST
+ 			exit 0
+ 			;;
+ 		  xml|mixed|sgmldecl|should|default|duplicate|undefined|unclosed|empty|net|min-tag|unused-map|unused-param|notation-sysid|all|no-xml|no-mixed|no-sgmldecl|no-should|no-default|no-duplicate|no-undefined|no-unclosed|no-empty|no-net|no-min-tag|no-unused-map|no-unused-param|no-notation-sysid) \
+@@ -195,14 +197,14 @@ do case $1 in
+ 			shift 2
+ 			;;
+ 		  *)	echo "Unknown warning type \"$2\". Allowed warning types are:" >&2
+-		        echo -e $SGML_WARNINGS_LIST >&2
++		        echo $SGML_WARNINGS_LIST >&2
+ 			exit 1
+ 			;;
+ 		esac
+ 		;;
+   -e|--error)	case $2 in
+-		  list) echo -e "List of allowed error types (multiple -e options are allowed):\n"
+-			echo -e $SGML_ERRORS_LIST
++		  list) echo "List of allowed error types (multiple -e options are allowed):"
++			echo $SGML_ERRORS_LIST
+ 			exit 0
+ 			;;
+ 		  no-idref|no-significant|no-valid) \
+@@ -210,19 +212,20 @@ do case $1 in
+ 			shift 2
+ 			;;
+ 		  *)	echo "Unknown error type \"$2\". Allowed error types are:" >&2
+-		        echo -e $SGML_ERRORS_LIST >&2
++		        echo $SGML_ERRORS_LIST >&2
+ 			exit 1
+ 			;;
+ 		esac
+ 		;;
+-  -h|--help)	echo -e "`basename $0` - Jade Wrapper\n"
+-		echo -e "$SGML_HELP_MESSAGE"
++  -h|--help)	echo "`basename $0` - Jade Wrapper"
++		echo
++		echo "$SGML_HELP_MESSAGE"
+ 		exit 0
+ 		;;
+-  -v|--version)	echo -e "$SGML_VERSION_MESSAGE"
++  -v|--version)	echo "$SGML_VERSION_MESSAGE"
+ 		exit 0
+ 		;;
+-  -*)		echo -e "$SGML_HELP_MESSAGE" >&2
++  -*)		echo "$SGML_HELP_MESSAGE" >&2
+ 		exit 1
+ 		;;
+   *)		if [ -z "$SGML_FILE" ]
+@@ -233,7 +236,7 @@ do case $1 in
+ 		  esac
+ 		  shift 1
+ 		else
+-		  echo -e "$SGML_HELP_MESSAGE" >&2
++		  echo "$SGML_HELP_MESSAGE" >&2
+ 		  exit 1
+ 		fi
+ 		;;
+@@ -243,7 +246,7 @@ done
+ # Check that we have a frontend
+ if [ -z "$SGML_FRONTEND" ]
+ then
+-  echo -e $SGML_HELP_MESSAGE >&2
++  echo $SGML_HELP_MESSAGE >&2
+   exit 1
+ fi
+ if [ ! -s $SGML_FRONTEND ]
+@@ -255,7 +258,7 @@ fi
+ # Check that we have a backend
+ if [ -z "$SGML_BACKEND" ]
+ then
+-  echo -e $SGML_HELP_MESSAGE >&2
++  echo $SGML_HELP_MESSAGE >&2
+   exit 1
+ fi
+ if [ ! -s $SGML_BACKEND ]
+@@ -267,7 +270,7 @@ fi
+ # Check that we have a file to process
+ if [ -z "$SGML_FILE" ]
+ then
+-  echo -e $SGML_HELP_MESSAGE >&2
++  echo $SGML_HELP_MESSAGE >&2
+   exit 1
+ fi
+ if [ ! -s $SGML_FILE ]
+@@ -402,7 +405,7 @@ fi
+ # Create output directory if not available
+ if [ -z "$SGML_OUTPUT_DIRECTORY" ]
+ then
+-  echo -e $SGML_HELP_MESSAGE >&2
++  echo $SGML_HELP_MESSAGE >&2
+   exit 1
+ fi
+ if [ ! -d $SGML_OUTPUT_DIRECTORY ]

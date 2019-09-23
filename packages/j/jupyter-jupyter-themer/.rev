@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6689d7479448bb6977374705254353ac</srcmd5>
+    <version>0.4.0</version>
+    <time>1558516034</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename to to match jupyter package naming guidelines.
+- Use %license tag
+- Initial version
+</comment>
+    <requestid>698380</requestid>
+  </revision>
+</revisionlist>

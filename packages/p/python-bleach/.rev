@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ae5b6f8bbbd5d015a342d2a6a7e7a02</srcmd5>
+    <version>2.0.0</version>
+    <time>1494345837</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-jupyter_nbconvert, which is already in openSUSE:Factory.</comment>
+    <requestid>493464</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>21b56f8ea9157af84663a37701cb2a20</srcmd5>
+    <version>2.1.1</version>
+    <time>1510761469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541217</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1618ff5740838828ab5ccaa24c98c2bb</srcmd5>
+    <version>2.1.2</version>
+    <time>1513014992</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555534</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3e803ac7534e2e3471a5d975b316bd79</srcmd5>
+    <version>2.1.3</version>
+    <time>1521579671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589030</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>dcd262f7b58f7e7de15de943ca1492a4</srcmd5>
+    <version>2.1.3</version>
+    <time>1544726835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655395</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a15a01f2a87656193a610a6e0dbb4fb0</srcmd5>
+    <version>3.1.0</version>
+    <time>1551687824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681085</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>172e2a20ef68f1244b04c93a38628202</srcmd5>
+    <version>3.1.0</version>
+    <time>1564484563</time>
+    <user>dimstar_suse</user>
+    <comment>- Restrict pytest to &lt;5.0; upstream has an issue already reported</comment>
+    <requestid>717075</requestid>
+  </revision>
+</revisionlist>

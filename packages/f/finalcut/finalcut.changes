@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Thu Nov 28 23:36:24 UTC 2018 - Markus Gans <guru.mail@muenster.de>
+
+- Package name adjustment
+
+-------------------------------------------------------------------
+Tue Nov 27 18:02:03 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Use correct package names in Requires.
+
+-------------------------------------------------------------------
+Tue Nov 27 14:05:21 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix summary containing just of the name. Edit RPM groups.
+
+-------------------------------------------------------------------
+Mon Nov 26 18:03:03 UTC 2018 - aloisio@gmx.com
+
+- Install examples into docdir
+- Add libfinal-devel = %{version} to devel package
+
+-------------------------------------------------------------------
+Mon Nov 26 11:22:27 UTC 2018 - mvetter@suse.com
+
+- Prepare to push to devel project
+- Remove old tarball: finalcut-0.3.0.tar.gz
+- Remove old tarball: finalcut-0.4.0.tar.gz
+- Clean spec with spec-cleaner
+- Add changes file
+
+-------------------------------------------------------------------
+Sun Nov 25 00:03:36 UTC 2018 - Markus Gans <guru.mail@muenster.de>
+- Release (version 0.5.0)
+
+-------------------------------------------------------------------
+Sat Nov 04 07:53:19 UTC 2017 - Markus Gans <guru.mail@muenster.de>
+- Release (version 0.4.0)
+
+-------------------------------------------------------------------
+Sun Nov 27 14:00:41 UTC 2016 - Markus Gans <guru.mail@muenster.de>
+- Release (version 0.3.0)
+
+-------------------------------------------------------------------
+Sat Dec 19 21:01:48 UTC 2015 - Markus Gans <guru.mail@muenster.de>
+- Release (version 0.2.0)
+
+-------------------------------------------------------------------
+Fri Sep 18 22:35:57 UTC 2015 - Markus Gans <guru.mail@muenster.de>
+- Initial Release (version 0.1.1)

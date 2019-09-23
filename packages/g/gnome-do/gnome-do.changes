@@ -1,0 +1,324 @@
+-------------------------------------------------------------------
+Wed Jan 28 17:58:54 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.95.3:
+  + Fixes session-wide hang when Do is set to show the window on
+    startup.
+- Changes from version 0.95.2:
+  + Small update to fix the website link and GTK threading crash
+    with new GLib.
+
+-------------------------------------------------------------------
+Thu Oct 16 12:30:09 UTC 2014 - dimstar@opensuse.org
+
+- Add gnome-do-mono-3.8.patch: Fix build with Mono 3.8.
+
+-------------------------------------------------------------------
+Sat Feb  8 09:17:19 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.95.1:
+  + Brown paper bag release, resolving accidental Mono.Cairo 3.2
+    dependency.
+- Changes from version 0.95:
+  + Drop use of deprecated gnome-sharp libraries.
+  + Switch to GIO#.
+  + Now builds with Mono 3.0.
+  + Prevent users from setting known-broken keybindings.
+  + Allow regular plugins to trigger their own refresh cycle.
+  + Search in, and prefer, various GTK+ 3.0 locations.
+  + Clean up hundreds of deprecation warnings in the Cairo code.
+  + Clean up many, many instances where we relied on the finaliser
+    to handle cleanup of Cairo objects. The GC should love us much
+    more now!
+  + Add a DebugItem action when debugging is enabled, to dump a
+    bunch of useful information about an Item to Do's log.
+- Add pkgconfig(gio-sharp-2.0) and pkgconfig(gkeyfile-sharp), new
+  dependencies due to upstream port.
+- Drop pkgconfig(gnome-sharp-2.0) pkgconfig(gnome-vfs-sharp-2.0),
+  now obsolete due to above port.
+- Drop gnome-do-mono3.patch, fixed upstream.
+- Disable gnome-do-quiet-autostart.patch as it needs rebase, and I
+  can't be botherd since upstream have failed to apply it for 3
+  years even if the patch have been acked in bug as correct...
+
+-------------------------------------------------------------------
+Wed Jan  9 12:32:50 UTC 2013 - dimstar@opensuse.org
+
+- Add gnome-do-mono3.patch: Fix build with MONO 3.0.
+
+-------------------------------------------------------------------
+Sat Apr 14 19:30:39 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.9:
+  + New DynamicItemSource API. This allows plugins to notify Do
+    when a new item is available,
+  + The Application item source uses this new API. You are now able
+    to launch freshly-installed applications immediately from Do,
+    rather than having to wait for them to be indexed.
+  + Numerous bug fixes
+  + Switch from the unmaintained NDesk.DBus to dbus-sharp.
+  + Bugs fixed: lp#289556, lp#330505, lp#551056, lp#551059,
+    lp#551102, lp#551125, lp#551180, lp#589649, lp#706299,
+    lp#897450, lp#907678.
+- Drop pkgconfig(ndesk-dbus-1.0) and pkgconfig(ndesk-dbus-glib-1.0)
+  and add pkgconfig(dbus-sharp-1.0) and
+  pkgconfig(dbus-sharp-glib-1.0) BuildRequires after the switch
+  from NDesk.DBus to dbus-sharp.
+- Drop gnome-do-fix-warning-empty-keybinding.patch: fixed upstream.
+- Drop gnome-do-glib-2.31.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jan 23 08:33:21 UTC 2012 - vuntz@opensuse.org
+
+- Move to pkgconfig() BuildRequires:
+  + Old ones: gconf-sharp2, glade-sharp2, gnome-desktop-sharp2,
+    gnome-keyring-sharp-devel, gnome-sharp2, gtk2-devel,
+    mono-addins, rsvg2-sharp, ndesk-dbus-glib-devel, notify-sharp,
+    wnck-sharp.
+  + New ones: gconf-sharp-2.0, gdk-2.0, gdk-x11-2.0,
+    glade-sharp-2.0, glib-2.0, glib-sharp-2.0,
+    gnome-desktop-sharp-2.0, gnome-keyring-sharp-1.0,
+    gnome-sharp-2.0, gnome-vfs-sharp-2.0, gtk+-2.0, gtk-sharp-2.0,
+    mono-addins, mono-addins-gui, mono-addins-setup,
+    ndesk-dbus-1.0, ndesk-dbus-glib-1.0, notify-sharp,
+    rsvg2-sharp-2.0, wnck-sharp-1.0.
+
+-------------------------------------------------------------------
+Mon Nov 28 22:28:01 UTC 2011 - dimstar@opensuse.org
+
+- Add gnome-do-glib-2.31.patch: Fix build with glib 2.31. 
+
+-------------------------------------------------------------------
+Sat Oct 15 04:47:11 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Mon Jul 18 10:16:33 CEST 2011 - vuntz@opensuse.org
+
+- Add missing glade-sharp2 BuildRequires to fix build; it was
+  implicitly brought in before.
+
+-------------------------------------------------------------------
+Fri Jun 17 05:54:06 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.8.5:
+  + Separate keybinding description from GConf key name.
+  + Fix for KWin not showing the Do window properly.
+  + Fix menu not being properly shown.
+  + Fix build on mono 2.8+.
+  + Small fixes.
+  + Updated translations.
+- Drop patches integrated for issues fixed upstream:
+  + gnome-do-fix-keybindings-gconf.patch
+  + gnome-do-fix-kk.patch
+  + gnome-do-mono-2.8.patch
+  + gnome-do-no-disable-deprecated.patch
+- Only manually remove some translations on 11.4 and earlier:
+  Factory can deal with those unknown locales now.
+
+-------------------------------------------------------------------
+Tue Feb 22 08:50:13 CET 2011 - vuntz@opensuse.org
+
+- Add gnome-do-fix-keybindings-gconf.patch: this fixes reading
+  keybindings from gconf; the gconf keys that were used were based
+  on translations.
+- Add gnome-do-fix-warning-empty-keybinding.patch: do no register
+  OS bindings to empty keys, which creates annoying warnings.
+
+-------------------------------------------------------------------
+Tue Feb 15 11:11:48 CET 2011 - vuntz@opensuse.org
+
+- Update gnome-do-quiet-autostart.patch: when the user configures
+  gnome-do to autostart via the prefs dialog, the autostart is not
+  quiet. Use the right desktop file to fix this. Fix bnc#653487.
+- Pass --disable-schemas-install to configure, to avoid useless
+  errors on %makeinstall.
+
+-------------------------------------------------------------------
+Sat Feb 12 18:13:23 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Sat Dec 11 11:33:41 CET 2010 - vuntz@opensuse.org
+
+- Remove some locales until bnc#659001 is fixed, to fix a build
+  failure.
+
+-------------------------------------------------------------------
+Fri Dec 10 00:11:42 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.8.4:
+  + Drop docky: it's now an independent project.
+  + Improved icons.
+  + Fixes for threading problems with gnome-keyring-sharp.
+  + Build fixes with recent GTK+.
+  + Various small fixes.
+  + Updated translations.
+- Changes from version 0.8.3.1:
+  + When creating the autostart desktop file, explicitly set
+    Hidden=false.
+  + Fix crash when opening Preferences window for the first time.
+- Rebase gnome-do-quiet-autostart.patch.
+- Add gnome-do-fix-kk.patch: this fixes a broken translation, that
+  breaks the .desktop file.
+- Drop gnome-do-bnc547744.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Nov 30 10:54:44 CET 2010 - vuntz@opensuse.org
+
+- Update gnome-do-quiet-autostart.patch so that gnome-do is only
+  autostarted on GNOME. Fix bnc#629385.
+
+-------------------------------------------------------------------
+Sat Sep 25 15:18:48 CEST 2010 - vuntz@opensuse.org
+
+- Add gnome-do-no-disable-deprecated.patch to not build with
+  *_DISABLE_DEPRECATED flags. This fixes the build with GTK+ 2.21.8
+  and later.
+
+-------------------------------------------------------------------
+Tue Dec  8 09:41:05 CET 2009 - dimstar@opensuse.org
+
+- Update to version 0.8.3:
+  + A purely bugfix release
+  + A multitude of crash bugs have been fixed
+  + lp#395190, bnc#540518 - fixes the persistant "100% CPU" bug.
+
+-------------------------------------------------------------------
+Thu Oct 22 12:12:04 CEST 2009 - dimstar@opensuse.org
+
+- Add gnome-do-bnc547744.patch to fix a crash when entering the
+  first time the "Preferences dialog" - fix bnc#547744
+
+-------------------------------------------------------------------
+Fri Aug 14 14:40:11 CEST 2009 - vuntz@novell.com
+
+- Add gnome-do-quiet-autostart.patch to not display the do dialog
+  when it's autostarted with the session.
+- Call autoreconf for the patch.
+
+-------------------------------------------------------------------
+Fri Aug 14 13:53:29 CEST 2009 - dominique-obs@leuenberger.net
+
+- Add gnome-do-OnlyShowIn.patch. Prevent showing Gnome-DO in
+  other desktops.
+- Recommend gnome-do-plugins.
+
+-------------------------------------------------------------------
+Thu Jul 30 11:27:03 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 0.8.2
+  + A thoroughly bugfix release, with added Docky polish.
+  + Plugin handling has been made more robust - this should be the
+    very last time updating disables all your plugins.
+- Adjust the files section to include the new *.pc files.
+- Split out the -lang package.
+
+-------------------------------------------------------------------
+Tue May 12 13:23:57 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 0.8.1
+  Fixes most of the glaring issues and polish problems 0.8.0 has. 
+  90% bugfix release.
+
+-------------------------------------------------------------------
+Sun Feb  1 15:43:39 EST 2009 - mboman@suse.de
+
+- Update to version 0.8.0:
+  + See http://do.davebsd.com/release.shtml for what's new. 
+
+-------------------------------------------------------------------
+Mon Jan 12 11:26:54 MST 2009 - mboman@suse.de
+
+- Update to 0.7.95.1
+  + No NEWS file provided
+- Remove disable-status-icon.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Thu Jan  8 11:26:54 MST 2009 - ajorgensen@novell.com
+
+- Update to 0.6.1.0
+ * Features
+   * New icons
+   * GConf schemas for easy distro integration
+ * Bug fixes
+   * Small rendering fixes
+   * Fix escaping of text
+   * Fix libdir variable in do.dbus.pc
+   * Fix problem where Do would suddenly consume all CPU
+
+-------------------------------------------------------------------
+Fri Sep 12 10:14:19 CEST 2008 - aj@suse.de
+
+- language ast is now part of filesystem
+
+-------------------------------------------------------------------
+Sat Aug 30 20:47:45 CEST 2008 - cthiel@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Tue Aug 26 10:54:08 MDT 2008 - ajorgensen@novell.com
+
+- Disable status icon by default (can be enabled by preference)
+
+-------------------------------------------------------------------
+Mon Aug 25 10:21:43 MDT 2008 - ajorgensen@novell.com
+
+- Updated to 0.6.0.0
+  * Multiple item selection (the “comma” trick in Quicksilver)
+  * Auto-enabled Text mode, in all 3 interfaces, with customizable shortcut to invoke manually
+  * Breadcrumb bar, for easier file browsing
+  * Faster searching by an order of magnitude
+  * Threaded plugin loading for faster startups
+  * New plugins
+  * Faster learning with better matching
+
+-------------------------------------------------------------------
+Fri Aug 15 10:33:52 CEST 2008 - ro@suse.de
+
+- quickfix: gnome-keyring-sharp changed to gnome-keyring-sharp-1.0 
+
+-------------------------------------------------------------------
+Wed Jul 16 21:35:18 CEST 2008 - ajorgensen@novell.com
+
+- Update to 0.5.0.1
+- New preferences window and plugin manager
+- Open with... action reenabled
+
+-------------------------------------------------------------------
+Thu Mar 27 18:12:24 CET 2008 - ajorgensen@novell.com
+
+- Added a patch to fix versions
+- Version 0.4.0.1
+- No longer noarch (upstream added a native part)
+- No longer requires Tomboy
+- Default UI follows GTK theme colors
+- New UIs --mini and --glassframe
+
+-------------------------------------------------------------------
+Tue Mar 25 00:36:55 CET 2008 - ro@suse.de
+
+- added ndesk-dbus-glib-devel to buildreq 
+
+-------------------------------------------------------------------
+Wed Mar  5 20:25:00 CET 2008 - ajorgensen@suse.de
+
+- Version 0.3.2.1
+- Resolves a license issue, completes plugin support
+
+-------------------------------------------------------------------
+Tue Nov 20 21:54:53 MST 2007 - wberrier@novell.com
+
+- Initial package
+

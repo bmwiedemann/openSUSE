@@ -1,0 +1,73 @@
+Index: mcstrans-2.9/src/mcstransd.c
+===================================================================
+--- mcstrans-2.9.orig/src/mcstransd.c	2019-03-21 08:39:36.020981841 +0100
++++ mcstrans-2.9/src/mcstransd.c	2019-03-21 08:43:15.456387335 +0100
+@@ -14,6 +14,7 @@
+ #include <sys/socket.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
++#include <fcntl.h>
+ #include <sys/uio.h>
+ #include <sys/un.h>
+ #include "mcstrans.h"
+@@ -59,10 +60,12 @@ extern int raw_color(const security_cont
+ 
+ static int sockfd = -1;	/* socket we are listening on */
+ 
++static const char *pidfile = "/var/run/mcstransd.pid";
++
+ static volatile int restart_daemon = 0;
+ static void cleanup_exit(int ret) __attribute__ ((noreturn));
+ static void
+-cleanup_exit(int ret) 
++cleanup_exit(int ret)
+ {
+ 	finish_context_colors();
+ 	finish_context_translations();
+@@ -221,7 +224,7 @@ service_request(int fd)
+ 	data1 = malloc(data1_size);
+ 	if (!data1) {
+ 		log_debug("Could not allocate %d bytes\n", data1_size);
+-		return -1; 
++		return -1;
+ 	}
+ 	data2 = malloc(data2_size);
+ 	if (!data2) {
+@@ -532,6 +535,28 @@ static void usage(char *program)
+ 	printf("%s [-f] [-h] \n", program);
+ }
+ 
++static int write_pid_file(void)
++{
++	int pidfd, len;
++	char val[16];
++
++	len = snprintf(val, sizeof(val), "%u\n", getpid());
++	if (len < 0) {
++		syslog(LOG_ERR, "Pid error (%s)", strerror(errno));
++		pidfile = 0;
++		return 1;
++	}
++	pidfd = open(pidfile, O_CREAT | O_TRUNC | O_NOFOLLOW | O_WRONLY, 0644);
++	if (pidfd < 0) {
++		syslog(LOG_ERR, "Unable to set pidfile (%s)", strerror(errno));
++		pidfile = 0;
++		return 1;
++	}
++	(void)write(pidfd, val, (unsigned int)len);
++	close(pidfd);
++	return 0;
++}
++
+ int
+ main(int argc, char *argv[])
+ {
+@@ -575,6 +600,8 @@ main(int argc, char *argv[])
+ 	}
+ #endif
+ 
++	write_pid_file();
++
+ 	syslog(LOG_NOTICE, "%s initialized", argv[0]);
+ 	process_connections();
+ 

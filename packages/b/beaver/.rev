@@ -1,0 +1,182 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>417ff596d8d280364805cffbf7aff355</srcmd5>
+    <version>0.4.0rc1</version>
+    <time>1260977793</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/beaver based on submit request 26286 from user anubisg1
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>81e50bd323e6aac42f71e4b0bf4f7061</srcmd5>
+    <version>0.4.0rc1</version>
+    <time>1268923017</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>34ac2335b1c95001e63fb1b50a4876bc</srcmd5>
+    <version>0.4.0rc1</version>
+    <time>1273095548</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/beaver based on submit request 39413 from user anubisg1
+</comment>
+    <requestid>39413</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>bb7245b9477bca642d43a49aa095d8db</srcmd5>
+    <version>0.4.0rc1</version>
+    <time>1276469264</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/beaver based on submit request 41405 from user anubisg1
+</comment>
+    <requestid>41405</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fb285ea0ffb7284ac2ffa67a1310fea8</srcmd5>
+    <version>0.3.98_rc1</version>
+    <time>1278081083</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/beaver based on submit request 42305 from user anubisg1
+</comment>
+    <requestid>42305</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>fb285ea0ffb7284ac2ffa67a1310fea8</srcmd5>
+    <version>0.3.98_rc1</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>fb285ea0ffb7284ac2ffa67a1310fea8</srcmd5>
+    <version>0.3.98_rc1</version>
+    <time>1278678565</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>68019ea2dd94546049cffe9cda755bf2</srcmd5>
+    <version>0.4.0</version>
+    <time>1280793548</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/beaver based on submit request 44350 from user anubisg1
+</comment>
+    <requestid>44350</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>a41cae47ef5a60f581a872af45098d08</srcmd5>
+    <version>0.4.0</version>
+    <time>1282577464</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/beaver based on submit request 45961 from user anubisg1
+</comment>
+    <requestid>45961</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c81a5bf057824ff8a381c2a50f78fcae</srcmd5>
+    <version>0.4.1</version>
+    <time>1283165068</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/beaver based on submit request 46592 from user anubisg1
+</comment>
+    <requestid>46592</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>91bdefd487d65ee75a82b467778d2d21</srcmd5>
+    <version>0.4.1</version>
+    <time>1294672449</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57633 from user anubisg1
+</comment>
+    <requestid>57633</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>a35d01d04564bb401f3e865b1adae3eb</srcmd5>
+    <version>0.4.1</version>
+    <time>1294672455</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57633
+</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>a35d01d04564bb401f3e865b1adae3eb</srcmd5>
+    <version>0.4.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>9950bc7f13a3d2ba0785364be0f017f3</srcmd5>
+    <version>0.4.1</version>
+    <time>1307361622</time>
+    <user>saschpe</user>
+    <comment>call %desktop_database_post/un and %icon_theme_cache_post/un</comment>
+    <requestid>72575</requestid>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>8003a4d6d96c64ea04104abbcd60827c</srcmd5>
+    <version>0.4.1</version>
+    <time>1307361633</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72575
+</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>f109cf9b2b966881bf10eac92066957a</srcmd5>
+    <version>0.4.1</version>
+    <time>1316459062</time>
+    <user>lrupp</user>
+    <comment>Use %_smp_mflags for parallel build
+, remove redundat lines from spec file</comment>
+    <requestid>82946</requestid>
+  </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>f109cf9b2b966881bf10eac92066957a</srcmd5>
+    <version>0.4.1</version>
+    <time>1319181787</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>24a0d8baa31a06e3e384f1b38c375358</srcmd5>
+    <version>0.4.1</version>
+    <time>1323190838</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="14">
+    <srcmd5>24a0d8baa31a06e3e384f1b38c375358</srcmd5>
+    <version>0.4.1</version>
+    <time>1340183199</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="16">
+    <srcmd5>24a0d8baa31a06e3e384f1b38c375358</srcmd5>
+    <version>0.4.1</version>
+    <time>1359108697</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="18">
+    <srcmd5>24a0d8baa31a06e3e384f1b38c375358</srcmd5>
+    <version>0.4.1</version>
+    <time>1379662030</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="20">
+    <srcmd5>24a0d8baa31a06e3e384f1b38c375358</srcmd5>
+    <version>0.4.1</version>
+    <time>1409300557</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="21">
+    <srcmd5>bdb3a712f34d0ee4a6d345dd9b7d0510</srcmd5>
+    <version>0.4.1</version>
+    <time>1456821855</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>362123</requestid>
+  </revision>
+</revisionlist>

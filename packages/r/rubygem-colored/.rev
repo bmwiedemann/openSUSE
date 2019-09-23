@@ -1,0 +1,55 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9d56322f55032f789f55867f5b3949d0</srcmd5>
+    <version>1.2</version>
+    <time>1341226058</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>126860</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>9d56322f55032f789f55867f5b3949d0</srcmd5>
+    <version>1.2</version>
+    <time>1359110309</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4c7bc53b22cb3aba24ad654c61343ac3</srcmd5>
+    <version>1.2</version>
+    <time>1377248842</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195942</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>4c7bc53b22cb3aba24ad654c61343ac3</srcmd5>
+    <version>1.2</version>
+    <time>1379664511</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>4c7bc53b22cb3aba24ad654c61343ac3</srcmd5>
+    <version>1.2</version>
+    <time>1409303223</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>cb57b95aa643f30986a1e0f4ee809093</srcmd5>
+    <version>1.2</version>
+    <time>1413263455</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255237</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>b4ff589af090e9e18370af7e9c52c5bb</srcmd5>
+    <version>1.2</version>
+    <time>1464853123</time>
+    <user>dimstar_suse</user>
+    <comment>- adapt to latest packaging style</comment>
+    <requestid>399083</requestid>
+  </revision>
+</revisionlist>

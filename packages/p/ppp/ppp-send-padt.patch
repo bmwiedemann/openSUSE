@@ -1,0 +1,13 @@
+Index: ppp-2.4.5/pppd/plugins/rp-pppoe/plugin.c
+===================================================================
+--- ppp-2.4.5.orig/pppd/plugins/rp-pppoe/plugin.c	2009-11-16 23:26:07.000000000 +0100
++++ ppp-2.4.5/pppd/plugins/rp-pppoe/plugin.c	2013-07-24 12:36:08.433729757 +0200
+@@ -242,7 +242,7 @@
+ 		sizeof(struct sockaddr_pppox)) < 0)
+ 	error("Failed to disconnect PPPoE socket: %d %m", errno);
+     close(conn->sessionSocket);
+-    /* don't send PADT?? */
++    sendPADT(conn, NULL);
+     if (conn->discoverySocket >= 0)
+ 	close(conn->discoverySocket);
+ }

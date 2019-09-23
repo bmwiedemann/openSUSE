@@ -1,0 +1,5 @@
+<package name="simple-obfs" project="openSUSE:Factory">
+  <title>A detailed and complete list of all supported arguments</title>
+  <description>For a detailed and complete list of all supported arguments, you may refer to the man pages of the applications, respectively.</description>
+  <devel project="server:proxy" package="simple-obfs"/>
+</package>

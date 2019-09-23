@@ -1,0 +1,112 @@
+-------------------------------------------------------------------
+Tue Aug 27 10:25:48 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid use of ®/™ signs in specfiles as per guidelines.
+
+-------------------------------------------------------------------
+Wed Jun 12 15:01:20 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Wed Mar 20 15:14:52 UTC 2019 - jsegitz@suse.com
+
+- Update to version 2.9
+  * Fix check in raw_color()
+  * remove unused getpeercon_raw() call
+
+-------------------------------------------------------------------
+Tue Dec  4 11:39:52 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- One grammar fix, and use %make_install.
+
+-------------------------------------------------------------------
+Fri Nov 23 10:58:47 UTC 2018 - jsegitz@suse.com
+
+- Dropped mcstransd.service, use the provided service file
+- Install example configs
+- Fixed source URL
+
+-------------------------------------------------------------------
+Wed Oct 17 11:55:59 UTC 2018 - jsegitz@suse.com
+
+- Update to version 2.8 (bsc#1111732)
+  For changes please see
+  https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20180524/RELEASE-20180524.txt
+- Renamed mcstrans-2.7-writepid.patch to mcstrans-writepid.patch
+
+-------------------------------------------------------------------
+Wed May 16 07:21:45 UTC 2018 - mcepl@suse.com
+
+- Rebase to 2.7
+  For changes please see
+  https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/RELEASE-20170804.txt
+- Renamed mcstrans-0.3.3-writepid.patch to
+  mcstrans-2.7-writepid.patch
+
+-------------------------------------------------------------------
+Tue Sep  5 08:48:52 UTC 2017 - jsegitz@suse.com
+
+- Added add_includes.patch to add additional includes and fix
+  Factory build
+
+-------------------------------------------------------------------
+Wed Jun 17 14:15:33 UTC 2015 - jsegitz@novell.com
+
+- fixed wrong label in /run preventing startup
+
+-------------------------------------------------------------------
+Mon Sep  8 08:07:00 UTC 2014 - jsegitz@suse.com
+
+- altered package to use systemd. Removed
+  mcstrans-0.3.3-initscript.patch since it's no longer necessary
+- added mcstrans-0.3.3-writepid.patch to write pid files to the
+  correct location
+
+-------------------------------------------------------------------
+Mon Dec 10 13:00:43 UTC 2012 - meissner@suse.com
+
+- provide setransd, like in redhat (covered by mcstrans these days)
+
+-------------------------------------------------------------------
+Tue Aug  7 13:19:20 UTC 2012 - meissner@suse.com
+
+- updated to 0.3.3 , tarball taken from redhat source rpm.
+
+-------------------------------------------------------------------
+Thu Apr  5 13:50:13 UTC 2012 - dvaleev@suse.com
+
+- add LIBDIR, so ppc and ppc64 can build
+
+-------------------------------------------------------------------
+Mon Mar 26 13:11:29 UTC 2012 - vcizek@suse.com
+
+- removed use of /var/lock/subsys in init script [bnc#714633]
+
+-------------------------------------------------------------------
+Mon May  3 12:32:09 CEST 2010 - prusnak@suse.cz
+
+- create /var/run/setrans directory in initscript [Feature#303793]
+
+-------------------------------------------------------------------
+Thu Jul 16 13:37:35 CEST 2009 - prusnak@suse.cz
+
+- remove check and rename from %post section (not needed)
+
+-------------------------------------------------------------------
+Tue Jun 23 13:17:38 CEST 2009 - prusnak@suse.cz
+
+- require libsepol-devel-static
+
+-------------------------------------------------------------------
+Wed May 27 14:19:52 CEST 2009 - prusnak@suse.cz
+
+- updated to 0.3.1
+  * Add inverse bit support
+  * Add color support from Eamon Walsh
+
+-------------------------------------------------------------------
+Thu Oct 16 16:04:41 CEST 2008 - prusnak@suse.cz
+
+- created package (version 0.2.11)

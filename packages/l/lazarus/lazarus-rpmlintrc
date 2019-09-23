@@ -1,0 +1,2 @@
+addFilter("devel-file-in-non-devel-package .*/lazarus/components/codetools/examples/scanexamples/test.h")
+addFilter("devel-file-in-non-devel-package .*/lazarus/components/compilers/c/examples/test.c")

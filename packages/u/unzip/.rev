@@ -1,0 +1,337 @@
+<revisionlist>
+  <revision rev="1" vrev="5">
+    <srcmd5>52025fa5661e47bc7b5644e4d33a77f7</srcmd5>
+    <version>5.52</version>
+    <time>1166483886</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="49">
+    <srcmd5>3c732f1fc97f749d8667b31764da483b</srcmd5>
+    <version>5.52</version>
+    <time>1178464737</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="60">
+    <srcmd5>8494e0bd5dd4a3e91d9494637bda09f5</srcmd5>
+    <version>5.52</version>
+    <time>1182464156</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="86">
+    <srcmd5>e366e4ad53b6ce8ce905cd9c2b2927b7</srcmd5>
+    <version>5.52</version>
+    <time>1196901608</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="87">
+    <srcmd5>2661ba81283389a262777b58b1970192</srcmd5>
+    <version>5.52</version>
+    <time>1197055219</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="105">
+    <srcmd5>a87cd814024fa8e724d43cf5f9348816</srcmd5>
+    <version>5.52</version>
+    <time>1206677135</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="141">
+    <srcmd5>e16c89f9f7a3cea0d166a95cef223c1a</srcmd5>
+    <version>5.52</version>
+    <time>1221474806</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="142">
+    <srcmd5>cdd65378352c003235021b62b3971923</srcmd5>
+    <version>5.52</version>
+    <time>1229343461</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="144">
+    <srcmd5>cdd65378352c003235021b62b3971923</srcmd5>
+    <version>5.52</version>
+    <time>1229343461</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="145">
+    <srcmd5>a4d4520c29ae532b3b395af586e64366</srcmd5>
+    <version>5.52</version>
+    <time>1263505230</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/unzip based on submit request 29117 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="11" vrev="146">
+    <srcmd5>82a6103056216a517ac51153db2d805b</srcmd5>
+    <version>5.52</version>
+    <time>1268926431</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="147">
+    <srcmd5>c8910afd932b60266abc3d7e0234787e</srcmd5>
+    <version>5.52</version>
+    <time>1273788902</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/unzip based on submit request 39794 from user psmt
+</comment>
+    <requestid>39794</requestid>
+  </revision>
+  <revision rev="13" vrev="149">
+    <srcmd5>c8910afd932b60266abc3d7e0234787e</srcmd5>
+    <version>5.52</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="150">
+    <srcmd5>c8910afd932b60266abc3d7e0234787e</srcmd5>
+    <version>5.52</version>
+    <time>1278678623</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e02155564167ebd587297321ec5d069f</srcmd5>
+    <version>6.00</version>
+    <time>1280486730</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/unzip based on submit request 44237 from user coolo
+</comment>
+    <requestid>44237</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>721ded0592fe0f44f8f5d46473a0f272</srcmd5>
+    <version>6.00</version>
+    <time>1283511628</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/unzip based on submit request 46711 from user elvigia
+</comment>
+    <requestid>46711</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>21b2bd685b8346aca9d47c0ab5bb5b1c</srcmd5>
+    <version>6.00</version>
+    <time>1296569445</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 59358 from user coolo
+</comment>
+    <requestid>59358</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>63a7623966d6abbd4278c4ce54703b08</srcmd5>
+    <version>6.00</version>
+    <time>1296569453</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 59358
+</comment>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>63a7623966d6abbd4278c4ce54703b08</srcmd5>
+    <version>6.00</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>a5aeaa095aa724ee6a34310ff46b6954</srcmd5>
+    <version>6.00</version>
+    <time>1304924319</time>
+    <user>saschpe</user>
+    <comment>- Sync our compile time flags with Debian except Acorn stuff, this enables UTF-8, saves an unrelated warning about lchmod being not implemented.
+- Enable make check
+ (forwarded request 69848 from namtrac)</comment>
+    <requestid>69859</requestid>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>df82852db784c7c32d785e6a914102d3</srcmd5>
+    <version>6.00</version>
+    <time>1304924329</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69859
+</comment>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>a0cb6e7b6b38075e1d872573a7c2e0bb</srcmd5>
+    <version>6.00</version>
+    <time>1306220261</time>
+    <user>saschpe</user>
+    <comment>- remove use of __DATE__ from correct file (forwarded request 71051 from lnussel)</comment>
+    <requestid>71056</requestid>
+  </revision>
+  <revision rev="23" vrev="11">
+    <srcmd5>5311ed17eac36b1718d78e3402efc520</srcmd5>
+    <version>6.00</version>
+    <time>1306220270</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71056
+</comment>
+  </revision>
+  <revision rev="24" vrev="12">
+    <srcmd5>fbfa2d429effd84f03000b052e887e83</srcmd5>
+    <version>6.00</version>
+    <time>1312650577</time>
+    <user>saschpe</user>
+    <comment>Do not call isprint (bnc#620483)</comment>
+    <requestid>78103</requestid>
+  </revision>
+  <revision rev="25" vrev="13">
+    <srcmd5>d69d313ae491837678b12d7089f03f2b</srcmd5>
+    <version>6.00</version>
+    <time>1312650585</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78103
+</comment>
+  </revision>
+  <revision rev="26" vrev="15">
+    <srcmd5>d69d313ae491837678b12d7089f03f2b</srcmd5>
+    <version>6.00</version>
+    <time>1319182541</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="27" vrev="16">
+    <srcmd5>117f6ae4d4524052ec2b19366164af5e</srcmd5>
+    <version>6.00</version>
+    <time>1323195039</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="28" vrev="18">
+    <srcmd5>117f6ae4d4524052ec2b19366164af5e</srcmd5>
+    <version>6.00</version>
+    <time>1340184299</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="29" vrev="20">
+    <srcmd5>117f6ae4d4524052ec2b19366164af5e</srcmd5>
+    <version>6.00</version>
+    <time>1359110527</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="21">
+    <srcmd5>d0a463e36da709ff72a5c46ded91e37f</srcmd5>
+    <version>6.00</version>
+    <time>1365937329</time>
+    <user>coolo</user>
+    <comment>- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162748 from namtrac)</comment>
+    <requestid>162871</requestid>
+  </revision>
+  <revision rev="31" vrev="22">
+    <srcmd5>55bada738e3c553ec3445742591e0ea7</srcmd5>
+    <version>6.00</version>
+    <time>1375629947</time>
+    <user>coolo</user>
+    <comment>- split the rcc dependency into a spec file of it's own, we don't
+  need that complexity during build causing cycles like this:
+    unzip -&gt; librcc -&gt; libproxy -&gt; libXau -&gt; xorg-x11-proto-devel -&gt; docbook-xsl-stylesheets</comment>
+    <requestid>185653</requestid>
+  </revision>
+  <revision rev="32" vrev="23">
+    <srcmd5>475eaf048ba20ad335c8818e55f8bb20</srcmd5>
+    <version>6.00</version>
+    <time>1376384911</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>186626</requestid>
+  </revision>
+  <revision rev="33" vrev="25">
+    <srcmd5>475eaf048ba20ad335c8818e55f8bb20</srcmd5>
+    <version>6.00</version>
+    <time>1379664890</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="27">
+    <srcmd5>475eaf048ba20ad335c8818e55f8bb20</srcmd5>
+    <version>6.00</version>
+    <time>1409303576</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="28">
+    <srcmd5>5c5834e83c879b60adec9999fe9e517f</srcmd5>
+    <version>6.00</version>
+    <time>1419331806</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266068</requestid>
+  </revision>
+  <revision rev="36" vrev="29">
+    <srcmd5>2e6f35295eb1fe2fbd7599358089b3e0</srcmd5>
+    <version>6.00</version>
+    <time>1422594195</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282931</requestid>
+  </revision>
+  <revision rev="37" vrev="30">
+    <srcmd5>84ad63cdad228a9036cc5cb58b4d0d79</srcmd5>
+    <version>6.00</version>
+    <time>1467205297</time>
+    <user>dimstar_suse</user>
+    <comment>- Require properly the update-alternatives to not throw out errors
+  when installing in OBS chroot
+
+- Require properly the update-alternatives to not throw out errors
+  when installing in OBS chroot</comment>
+    <requestid>402774</requestid>
+  </revision>
+  <revision rev="38" vrev="31">
+    <srcmd5>77a28e491597862d834869f020cb2c59</srcmd5>
+    <version>6.00</version>
+    <time>1476430040</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434495</requestid>
+  </revision>
+  <revision rev="39" vrev="32">
+    <srcmd5>ebcdc3b1c26b6c411c83676800e3fdbc</srcmd5>
+    <version>6.00</version>
+    <time>1487462366</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>457358</requestid>
+  </revision>
+  <revision rev="40" vrev="33">
+    <srcmd5>28715f38881dc3b74036c039ec75cf7f</srcmd5>
+    <version>6.00</version>
+    <time>1499754218</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509110</requestid>
+  </revision>
+  <revision rev="41" vrev="34">
+    <srcmd5>dac2c0c923b8c4c81837fabd76539726</srcmd5>
+    <version>6.00</version>
+    <time>1518281581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574312</requestid>
+  </revision>
+  <revision rev="42" vrev="35">
+    <srcmd5>2984d704e50e185f7a93ad32fed31d5f</srcmd5>
+    <version>6.00</version>
+    <time>1527084385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610005</requestid>
+  </revision>
+  <revision rev="43" vrev="36">
+    <srcmd5>d1ad5d66e70c3947cc7711fb305aa324</srcmd5>
+    <version>6.00</version>
+    <time>1530741125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619412</requestid>
+  </revision>
+  <revision rev="44" vrev="37">
+    <srcmd5>e3a1446d8b5e9808f04cd282f9d607f2</srcmd5>
+    <version>6.00</version>
+    <time>1540199196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643125</requestid>
+  </revision>
+</revisionlist>

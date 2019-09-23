@@ -1,0 +1,560 @@
+https://github.com/pyca/pyopenssl/pull/828
+
+From 0d2fd1a24b30077ead6960bd63b4a9893a57c101 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Fri, 12 Apr 2019 11:20:39 +0200
+Subject: [PATCH 1/4] Make tests pass after 2019
+
+Without this patch, TestX509StoreContext.test_valid and 5 other tests
+would fail after 2020-01-01
+
+Fixes #735
+
+This PR was done while working on reproducible builds for openSUSE.
+---
+ tests/test_ssl.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/test_ssl.py b/tests/test_ssl.py
+index 7916d435..a5854743 100644
+--- a/tests/test_ssl.py
++++ b/tests/test_ssl.py
+@@ -199,7 +199,7 @@ def _create_certificate_chain():
+     cacert.set_issuer(cacert.get_subject())
+     cacert.set_pubkey(cakey)
+     cacert.set_notBefore(b"20000101000000Z")
+-    cacert.set_notAfter(b"20200101000000Z")
++    cacert.set_notAfter(b"29990101000000Z")
+     cacert.add_extensions([caext])
+     cacert.set_serial_number(0)
+     cacert.sign(cakey, "sha1")
+@@ -212,7 +212,7 @@ def _create_certificate_chain():
+     icert.set_issuer(cacert.get_subject())
+     icert.set_pubkey(ikey)
+     icert.set_notBefore(b"20000101000000Z")
+-    icert.set_notAfter(b"20200101000000Z")
++    icert.set_notAfter(b"29990101000000Z")
+     icert.add_extensions([caext])
+     icert.set_serial_number(0)
+     icert.sign(cakey, "sha1")
+@@ -225,7 +225,7 @@ def _create_certificate_chain():
+     scert.set_issuer(icert.get_subject())
+     scert.set_pubkey(skey)
+     scert.set_notBefore(b"20000101000000Z")
+-    scert.set_notAfter(b"20200101000000Z")
++    scert.set_notAfter(b"29990101000000Z")
+     scert.add_extensions([
+         X509Extension(b'basicConstraints', True, b'CA:false')])
+     scert.set_serial_number(0)
+
+From d08a742573c3205348a4eec9a65abaf6c16110c4 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Fri, 12 Apr 2019 11:32:44 +0200
+Subject: [PATCH 2/4] Add test keys as files
+
+coming from tests/test_crypto.py
+---
+ tests/crt/client_key.pem              | 15 +++++++++++++++
+ tests/crt/encryptedPrivateKey.pem     | 18 ++++++++++++++++++
+ tests/crt/intermediate_key.pem        | 15 +++++++++++++++
+ tests/crt/intermediate_server_key.pem | 15 +++++++++++++++
+ tests/crt/root_key.pem                | 15 +++++++++++++++
+ tests/crt/server_key.pem              | 15 +++++++++++++++
+ 6 files changed, 93 insertions(+)
+ create mode 100644 tests/crt/client_key.pem
+ create mode 100644 tests/crt/encryptedPrivateKey.pem
+ create mode 100644 tests/crt/intermediate_key.pem
+ create mode 100644 tests/crt/intermediate_server_key.pem
+ create mode 100644 tests/crt/root_key.pem
+ create mode 100644 tests/crt/server_key.pem
+
+diff --git a/tests/crt/client_key.pem b/tests/crt/client_key.pem
+new file mode 100644
+index 00000000..4dcfce55
+--- /dev/null
++++ b/tests/crt/client_key.pem
+@@ -0,0 +1,15 @@
++-----BEGIN RSA PRIVATE KEY-----
++MIICXgIBAAKBgQDAZh/SRtNm5ntMT4qb6YzEpTroMlq2rn+GrRHRiZ+xkCw/CGNh
++btPir7/QxaUj26BSmQrHw1bGKEbPsWiW7bdXSespl+xKiku4G/KvnnmWdeJHqsiX
++eUZtqurMELcPQAw9xPHEuhqqUJvvEoMTsnCEqGM+7DtboCRajYyHfluARQIDAQAB
++AoGATkZ+NceY5Glqyl4mD06SdcKfV65814vg2EL7V9t8+/mi9rYL8KztSXGlQWPX
++zuHgtRoMl78yQ4ZJYOBVo+nsx8KZNRCEBlE19bamSbQLCeQMenWnpeYyQUZ908gF
++h6L9qsFVJepgA9RDgAjyDoS5CaWCdCCPCH2lDkdcqC54SVUCQQDseuduc4wi8h4t
++V8AahUn9fn9gYfhoNuM0gdguTA0nPLVWz4hy1yJiWYQe0H7NLNNTmCKiLQaJpAbb
++TC6vE8C7AkEA0Ee8CMJUc20BnGEmxwgWcVuqFWaKCo8jTH1X38FlATUsyR3krjW2
++dL3yDD9NwHxsYP7nTKp/U8MV7U9IBn4y/wJBAJl7H0/BcLeRmuJk7IqJ7b635iYB
++D/9beFUw3MUXmQXZUfyYz39xf6CDZsu1GEdEC5haykeln3Of4M9d/4Kj+FcCQQCY
++si6xwT7GzMDkk/ko684AV3KPc/h6G0yGtFIrMg7J3uExpR/VdH2KgwMkZXisSMvw
++JJEQjOMCVsEJlRk54WWjAkEAzoZNH6UhDdBK5F38rVt/y4SEHgbSfJHIAmPS32Kq
++f6GGcfNpip0Uk7q7udTKuX7Q/buZi/C4YW7u3VKAquv9NA==
++-----END RSA PRIVATE KEY-----
+diff --git a/tests/crt/encryptedPrivateKey.pem b/tests/crt/encryptedPrivateKey.pem
+new file mode 100644
+index 00000000..661ede48
+--- /dev/null
++++ b/tests/crt/encryptedPrivateKey.pem
+@@ -0,0 +1,18 @@
++-----BEGIN RSA PRIVATE KEY-----
++Proc-Type: 4,ENCRYPTED
++DEK-Info: DES-EDE3-CBC,9573604A18579E9E
++
++SHOho56WxDkT0ht10UTeKc0F5u8cqIa01kzFAmETw0MAs8ezYtK15NPdCXUm3X/2
++a17G7LSF5bkxOgZ7vpXyMzun/owrj7CzvLxyncyEFZWvtvzaAhPhvTJtTIB3kf8B
++8+qRcpTGK7NgXEgYBW5bj1y4qZkD4zCL9o9NQzsKI3Ie8i0239jsDOWR38AxjXBH
++mGwAQ4Z6ZN5dnmM4fhMIWsmFf19sNyAML4gHenQCHhmXbjXeVq47aC2ProInJbrm
+++00TcisbAQ40V9aehVbcDKtS4ZbMVDwncAjpXpcncC54G76N6j7F7wL7L/FuXa3A
++fvSVy9n2VfF/pJ3kYSflLHH2G/DFxjF7dl0GxhKPxJjp3IJi9VtuvmN9R2jZWLQF
++tfC8dXgy/P9CfFQhlinqBTEwgH0oZ/d4k4NVFDSdEMaSdmBAjlHpc+Vfdty3HVnV
++rKXj//wslsFNm9kIwJGIgKUa/n2jsOiydrsk1mgH7SmNCb3YHgZhbbnq0qLat/HC
++gHDt3FHpNQ31QzzL3yrenFB2L9osIsnRsDTPFNi4RX4SpDgNroxOQmyzCCV6H+d4
++o1mcnNiZSdxLZxVKccq0AfRpHqpPAFnJcQHP6xyT9MZp6fBa0XkxDnt9kNU8H3Qw
++7SJWZ69VXjBUzMlQViLuaWMgTnL+ZVyFZf9hTF7U/ef4HMLMAVNdiaGG+G+AjCV/
++MbzjS007Oe4qqBnCWaFPSnJX6uLApeTbqAxAeyCql56ULW5x6vDMNC3dwjvS/CEh
++11n8RkgFIQA0AhuKSIg3CbuartRsJnWOLwgLTzsrKYL4yRog1RJrtw==
++-----END RSA PRIVATE KEY-----
+diff --git a/tests/crt/intermediate_key.pem b/tests/crt/intermediate_key.pem
+new file mode 100644
+index 00000000..690976ad
+--- /dev/null
++++ b/tests/crt/intermediate_key.pem
+@@ -0,0 +1,15 @@
++-----BEGIN RSA PRIVATE KEY-----
++MIICWwIBAAKBgQDYcEQw5lfbEQRjr5Yy4yxAHGV0b9Al+Lmu7wLHMkZ/ZMmKFGIb
++ljbviiD1Nz97Oh2cpB91YwOXOTN2vXHq26S+A5xe8z/QJbBsyghMur88CjdT21H2
++qwMa+r5dCQwEhuGIiZ3KbzB/n4DTMYI5zy4IYPv0pjxShZn4aZTCCK2IUwIDAQAB
++AoGAfSZVV80pSeOKHTYfbGdNY/jHdU9eFUa/33YWriXU+77EhpIItJjkRRgivIfo
++rhFJpBSGmDLblaqepm8emsXMeH4+2QzOYIf0QGGP6E6scjTt1PLqdqKfVJ1a2REN
++147cujNcmFJb/5VQHHMpaPTgttEjlzuww4+BCDPsVRABWrkCQQD3loH36nLoQTtf
+++kQq0T6Bs9/UWkTAGo0ND81ALj0F8Ie1oeZg6RNT96RxZ3aVuFTESTv6/TbjWywO
++wdzlmV1vAkEA38rTJ6PTwaJlw5OttdDzAXGPB9tDmzh9oSi7cHwQQXizYd8MBYx4
++sjHUKD3dCQnb1dxJFhd3BT5HsnkRMbVZXQJAbXduH17ZTzcIOXc9jHDXYiFVZV5D
++52vV0WCbLzVCZc3jMrtSUKa8lPN5EWrdU3UchWybyG0MR5mX8S5lrF4SoQJAIyUD
++DBKaSqpqONCUUx1BTFS9FYrFjzbL4+c1qHCTTPTblt8kUCrDOZjBrKAqeiTmNSum
++/qUot9YUBF8m6BuGsQJATHHmdFy/fG1VLkyBp49CAa8tN3Z5r/CgTznI4DfMTf4C
++NbRHn2UmYlwQBa+L5lg9phewNe8aEwpPyPLoV85U8Q==
++-----END RSA PRIVATE KEY-----
+diff --git a/tests/crt/intermediate_server_key.pem b/tests/crt/intermediate_server_key.pem
+new file mode 100644
+index 00000000..03b05ff5
+--- /dev/null
++++ b/tests/crt/intermediate_server_key.pem
+@@ -0,0 +1,15 @@
++-----BEGIN RSA PRIVATE KEY-----
++MIICXAIBAAKBgQCqklnKB37DV9os6vWI4CZsGHHlJlZxMJn9mMdBMkzsa49PrbhC
++SqyLEWCFEp0NE7CnCcA/uAxG6QuqLLj6RG4ZPk5/IaCAv3mLbGoD7N6GOPTyVJOW
++8Yel48mALJNq8jLn4uOyPgMqcrK6HGZuJdNGsfzc0OCLFWQ5tMSaH85UrQIDAQAB
++AoGAIQ594j5zna3/9WaPsTgnmhlesVctt4AAx/n827DA4ayyuHFlXUuVhtoWR5Pk
++5ezj9mtYW8DyeCegABnsu2vZni/CdvU6uiS1Hv6qM1GyYDm9KWgovIP9rQCDSGaz
++d57IWVGxx7ODFkm3gN5nxnSBOFVHytuW1J7FBRnEsehRroECQQDXHFOv82JuXDcz
++z3+4c74IEURdOHcbycxlppmK9kFqm5lsUdydnnGW+mvwDk0APOB7Wg7vyFyr393e
++dpmBDCzNAkEAyv6tVbTKUYhSjW+QhabJo896/EqQEYUmtMXxk4cQnKeR/Ao84Rkf
++EqD5IykMUfUI0jJU4DGX+gWZ10a7kNbHYQJAVFCuHNFxS4Cpwo0aqtnzKoZaHY/8
++X9ABZfafSHCtw3Op92M+7ikkrOELXdS9KdKyyqbKJAKNEHF3LbOfB44WIQJAA2N4
++9UNNVUsXRbElEnYUS529CdUczo4QdVgQjkvk5RiPAUwSdBd9Q0xYnFOlFwEmIowg
++ipWJWe0aAlP18ZcEQQJBAL+5lekZ/GUdQoZ4HAsN5a9syrzavJ9VvU1KOOPorPZK
++nMRZbbQgP+aSB7yl6K0gaLaZ8XaK0pjxNBh6ASqg9f4=
++-----END RSA PRIVATE KEY-----
+diff --git a/tests/crt/root_key.pem b/tests/crt/root_key.pem
+new file mode 100644
+index 00000000..716a4069
+--- /dev/null
++++ b/tests/crt/root_key.pem
+@@ -0,0 +1,15 @@
++-----BEGIN RSA PRIVATE KEY-----
++MIICXQIBAAKBgQD5mkLpi7q6ROdu7khB3S9aanA0Zls7vvfGOmB80/yeylhGpsjA
++jWen0VtSQke/NlEPGtO38tsV7CsuFnSmschvAnGrcJl76b0UOOHUgDTIoRxC6QDU
++3claegwsrBA+sJEBbqx5RdXbIRGicPG/8qQ4Zm1SKOgotcbwiaor2yxZ2wIDAQAB
++AoGBAPCgMpmLxzwDaUmcFbTJUvlLW1hoxNNYSu2jIZm1k/hRAcE60JYwvBkgz3UB
++yMEh0AtLxYe0bFk6EHah11tMUPgscbCq73snJ++8koUw+csk22G65hOs51bVb7Aa
++6JBe67oLzdtvgCUFAA2qfrKzWRZzAdhUirQUZgySZk+Xq1pBAkEA/kZG0A6roTSM
++BVnx7LnPfsycKUsTumorpXiylZJjTi9XtmzxhrYN6wgZlDOOwOLgSQhszGpxVoMD
++u3gByT1b2QJBAPtL3mSKdvwRu/+40zaZLwvSJRxaj0mcE4BJOS6Oqs/hS1xRlrNk
++PpQ7WJ4yM6ZOLnXzm2mKyxm50Mv64109FtMCQQDOqS2KkjHaLowTGVxwC0DijMfr
++I9Lf8sSQk32J5VWCySWf5gGTfEnpmUa41gKTMJIbqZZLucNuDcOtzUaeWZlZAkA8
++ttXigLnCqR486JDPTi9ZscoZkZ+w7y6e/hH8t6d5Vjt48JVyfjPIaJY+km58LcN3
++6AWSeGAdtRFHVzR7oHjVAkB4hutvxiOeiIVQNBhM6RSI9aBPMI21DoX2JRoxvNW2
++cbvAhow217X9V0dVerEOKxnNYspXRrh36h7k4mQA+sDq
++-----END RSA PRIVATE KEY-----
+diff --git a/tests/crt/server_key.pem b/tests/crt/server_key.pem
+new file mode 100644
+index 00000000..bff07250
+--- /dev/null
++++ b/tests/crt/server_key.pem
+@@ -0,0 +1,15 @@
++-----BEGIN RSA PRIVATE KEY-----
++MIICWwIBAAKBgQC+pvhuud1dLaQQvzipdtlcTotgr5SuE2LvSx0gz/bg1U3u1eQ+
++U5eqsxaEUceaX5p5Kk+QflvW8qdjVNxQuYS5uc0gK2+OZnlIYxCf4n5GYGzVIx3Q
++SBj/TAEFB2WuVinZBiCbxgL7PFM1Kpa+EwVkCAduPpSflJJPwkYGrK2MHQIDAQAB
++AoGAbwuZ0AR6JveahBaczjfnSpiFHf+mve2UxoQdpyr6ROJ4zg/PLW5K/KXrC48G
++j6f3tXMrfKHcpEoZrQWUfYBRCUsGD5DCazEhD8zlxEHahIsqpwA0WWssJA2VOLEN
++j6DuV2pCFbw67rfTBkTSo32ahfXxEKev5KswZk0JIzH3ooECQQDgzS9AI89h0gs8
++Dt+1m11Rzqo3vZML7ZIyGApUzVan+a7hbc33nbGRkAXjHaUBJO31it/H6dTO+uwX
++msWwNG5ZAkEA2RyFKs5xR5USTFaKLWCgpH/ydV96KPOpBND7TKQx62snDenFNNbn
++FwwOhpahld+vqhYk+pfuWWUpQciE+Bu7ZQJASjfT4sQv4qbbKK/scePicnDdx9th
++4e1EeB9xwb+tXXXUo/6Bor/AcUNwfiQ6Zt9PZOK9sR3lMZSsP7rMi7kzuQJABie6
++1sXXjFH7nNJvRG4S39cIxq8YRYTy68II/dlB2QzGpKxV/POCxbJ/zu0CU79tuYK7
++NaeNCFfH3aeTrX0LyQJAMBWjWmeKM2G2sCExheeQK0ROnaBC8itCECD4Jsve4nqf
++r50+LF74iLXFwqysVCebPKMOpDWp/qQ1BbJQIPs7/A==
++-----END RSA PRIVATE KEY-----
+
+From 60b9e10e6da7ccafaf722def630285f54510ed12 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Fri, 12 Apr 2019 15:10:30 +0200
+Subject: [PATCH 3/4] Support creating test certs
+
+The 6840 in Makefile is due to some y2038 bug - should have been 363000
+but one test failed then:
+
+         with pytest.raises(X509StoreContextError) as exc:
+             store_ctx.verify_certificate()
+
+ >       assert exc.value.args[0][2] == 'certificate has expired'
+ E       AssertionError: assert 'format error...tBefore field' == 'certi
+as expired'
+ E         - format error in certificate's notBefore field
+ E         + certificate has expired
+
+ tests/test_crypto.py:3572: AssertionError
+---
+ MANIFEST.in           |  1 +
+ tests/crt/.gitignore  |  3 +++
+ tests/crt/Makefile    | 24 +++++++++++++++++++++
+ tests/crt/openssl.cnf | 50 +++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 78 insertions(+)
+ create mode 100644 tests/crt/.gitignore
+ create mode 100644 tests/crt/Makefile
+ create mode 100644 tests/crt/openssl.cnf
+
+diff --git a/tests/crt/.gitignore b/tests/crt/.gitignore
+new file mode 100644
+index 00000000..3a126f56
+--- /dev/null
++++ b/tests/crt/.gitignore
+@@ -0,0 +1,3 @@
++serial*
++index.txt*
++certs
+diff --git a/tests/crt/Makefile b/tests/crt/Makefile
+new file mode 100644
+index 00000000..f604efb5
+--- /dev/null
++++ b/tests/crt/Makefile
+@@ -0,0 +1,24 @@
++all: client_cert.pem intermediate_server_cert.pem server_cert.pem intermediate_cert.pem
++root_cert.pem: root_key.pem
++	openssl req -x509 -new -key $< -extensions v3_ca -out $@ -days 365000 -subj '/C=US/ST=IL/L=Chicago/O=Testing/CN=Testing Root CA' -sha256
++
++intermediate_cert.pem: intermediate_key.pem root_cert.pem
++	openssl req -new -key $< -out $<.csr -subj '/CN=dummy'
++	OPENSSL_CONF=./openssl.cnf openssl ca -batch -out $@ -in $<.csr -create_serial -md sha512 -extensions v3_ca -subj '/CN=intermediate/O=org/OU=org-unit/C=US/ST=CA/L=San Diego'
++
++server_cert.pem: server_key.pem root_cert.pem
++	openssl req -new -key $< -out $<.csr -subj '/CN=lovely server'
++	OPENSSL_CONF=./openssl.cnf openssl ca -batch -out $@ -in $<.csr -create_serial -md sha512 -subj '/CN=lovely server' -extensions v3_req
++
++intermediate_server_cert.pem: intermediate_server_key.pem intermediate_cert.pem
++	openssl req -new -key $< -out $<.csr -subj '/CN=dummy'
++	OPENSSL_CONF=./openssl.cnf openssl ca -batch -out $@ -in $<.csr -keyfile intermediate_key.pem -cert intermediate_cert.pem -create_serial -md sha512 -subj '/CN=intermediate-service/O=org/OU=org-unit/C=US/ST=CA/L=San Diego' -extensions v3_req -days 6840
++
++client_cert.pem: client_key.pem root_cert.pem
++	openssl req -new -key $< -out $<.csr -subj '/CN=ugly client'
++	OPENSSL_CONF=./openssl.cnf openssl ca -batch -out $@ -in $<.csr -create_serial -md sha512 -subj '/CN=ugly client' -extensions v3_client
++
++init:
++	rm -rf certs ; mkdir certs
++	echo -n > index.txt
++	echo -n > index.txt.attr
+diff --git a/tests/crt/openssl.cnf b/tests/crt/openssl.cnf
+new file mode 100644
+index 00000000..bc4db97e
+--- /dev/null
++++ b/tests/crt/openssl.cnf
+@@ -0,0 +1,50 @@
++dir= .
++
++[ ca ]
++default_ca= CA_default
++
++[ CA_default ]
++serial= $dir/serial
++database= $dir/index.txt
++new_certs_dir= $dir/certs
++certificate= $dir/root_cert.pem
++private_key= $dir/root_key.pem
++default_days= 365000
++default_md= sha256
++preserve= no
++email_in_dn= no
++nameopt= default_ca
++certopt= default_ca
++policy= policy_match
++
++[ policy_match ]
++countryName= optional
++stateOrProvinceName= optional
++organizationName= optional
++organizationalUnitName= optional
++localityName= optional
++commonName= supplied
++emailAddress= optional
++
++[ req ]
++default_bits= 2048# Size of keys
++default_keyfile= key.pem# name of generated keys
++default_md= md5# message digest algorithm
++string_mask= nombstr# permitted characters
++distinguished_name= req_distinguished_name
++req_extensions= v3_req
++
++[ v3_ca ]
++basicConstraints= CA:TRUE
++subjectKeyIdentifier= hash
++authorityKeyIdentifier= keyid:always,issuer:always
++
++[ v3_req ]
++basicConstraints= CA:FALSE
++subjectKeyIdentifier= hash
++extendedKeyUsage = serverAuth
++
++[ v3_client ]
++basicConstraints= CA:FALSE
++subjectKeyIdentifier= hash
++extendedKeyUsage = clientAuth
+
+From 7a37cc23fcbe43abe785cd4badd14bdc7acfb175 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Fri, 12 Apr 2019 14:43:36 +0200
+Subject: [PATCH 4/4] Apply new test certs
+
+---
+ tests/test_crypto.py | 172 +++++++++++++++++--------------------------
+ 1 file changed, 69 insertions(+), 103 deletions(-)
+
+diff --git a/tests/test_crypto.py b/tests/test_crypto.py
+index 9d943a94..65103f01 100644
+--- a/tests/test_crypto.py
++++ b/tests/test_crypto.py
+@@ -78,22 +78,20 @@ def normalize_privatekey_pem(pem):
+ """
+ 
+ root_cert_pem = b"""-----BEGIN CERTIFICATE-----
+-MIIC6TCCAlKgAwIBAgIIPQzE4MbeufQwDQYJKoZIhvcNAQEFBQAwWDELMAkGA1UE
+-BhMCVVMxCzAJBgNVBAgTAklMMRAwDgYDVQQHEwdDaGljYWdvMRAwDgYDVQQKEwdU
+-ZXN0aW5nMRgwFgYDVQQDEw9UZXN0aW5nIFJvb3QgQ0EwHhcNMTcwNjExMjIzMjU5
+-WhcNMzcwNjA2MjIzMjU5WjBYMQswCQYDVQQGEwJVUzELMAkGA1UECBMCSUwxEDAO
+-BgNVBAcTB0NoaWNhZ28xEDAOBgNVBAoTB1Rlc3RpbmcxGDAWBgNVBAMTD1Rlc3Rp
+-bmcgUm9vdCBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA+ZpC6Yu6ukTn
+-bu5IQd0vWmpwNGZbO773xjpgfNP8nspYRqbIwI1np9FbUkJHvzZRDxrTt/LbFewr
+-LhZ0prHIbwJxq3CZe+m9FDjh1IA0yKEcQukA1N3JWnoMLKwQPrCRAW6seUXV2yER
+-onDxv/KkOGZtUijoKLXG8ImqK9ssWdsCAwEAAaOBuzCBuDAdBgNVHQ4EFgQUg1V3
+-LV4h8UkMCSTnVAkSjch+BK4wgYgGA1UdIwSBgDB+gBSDVXctXiHxSQwJJOdUCRKN
+-yH4ErqFcpFowWDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAklMMRAwDgYDVQQHEwdD
+-aGljYWdvMRAwDgYDVQQKEwdUZXN0aW5nMRgwFgYDVQQDEw9UZXN0aW5nIFJvb3Qg
+-Q0GCCD0MxODG3rn0MAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEFBQADgYEANFYQ
+-R+T70VcZ+SnvURnwviFgCXeedBzCr21meo+DNHbkp2gudB9W8Xrned/wtUBVymy9
+-gjB5jINfU7Lci0H57Evsw96UJJVfhXdUMHpqt1RGCoEd9FWnrDyrSy0NysnBT2bH
+-lEqxh3aFEUx9IOQ4sgnx1/NOFXBpkRtivl6O0Ec=
++MIICgzCCAeygAwIBAgIJAJ/hmZJ2JW8XMA0GCSqGSIb3DQEBCwUAMFgxCzAJBgNV
++BAYTAlVTMQswCQYDVQQIDAJJTDEQMA4GA1UEBwwHQ2hpY2FnbzEQMA4GA1UECgwH
++VGVzdGluZzEYMBYGA1UEAwwPVGVzdGluZyBSb290IENBMCAXDTE5MDQxMjEzMzUz
++NFoYDzMwMTgwODEzMTMzNTM0WjBYMQswCQYDVQQGEwJVUzELMAkGA1UECAwCSUwx
++EDAOBgNVBAcMB0NoaWNhZ28xEDAOBgNVBAoMB1Rlc3RpbmcxGDAWBgNVBAMMD1Rl
++c3RpbmcgUm9vdCBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA+ZpC6Yu6
++ukTnbu5IQd0vWmpwNGZbO773xjpgfNP8nspYRqbIwI1np9FbUkJHvzZRDxrTt/Lb
++FewrLhZ0prHIbwJxq3CZe+m9FDjh1IA0yKEcQukA1N3JWnoMLKwQPrCRAW6seUXV
++2yERonDxv/KkOGZtUijoKLXG8ImqK9ssWdsCAwEAAaNTMFEwHQYDVR0OBBYEFINV
++dy1eIfFJDAkk51QJEo3IfgSuMB8GA1UdIwQYMBaAFINVdy1eIfFJDAkk51QJEo3I
++fgSuMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADgYEA1dkO1+neOwCl
++OdCFv3OHh7vis3E8VcMsYhuN5APxZWYRS0q86XT6Jp2X3XTYm7DR6dzlFXvvGoHe
++sxJgz3RoPUdCyBJyJOpvXzfJRgMFieMP3HIBW9ywNCytF4mn4/PisRge3YT1uMZj
++rZ0xP2DYNbFfctH1b1RtdtVUDWhvQU4=
+ -----END CERTIFICATE-----
+ """
+ 
+@@ -115,19 +113,22 @@ def normalize_privatekey_pem(pem):
+ """
+ 
+ intermediate_cert_pem = b"""-----BEGIN CERTIFICATE-----
+-MIICVzCCAcCgAwIBAgIRAMPzhm6//0Y/g2pmnHR2C4cwDQYJKoZIhvcNAQENBQAw
+-WDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAklMMRAwDgYDVQQHEwdDaGljYWdvMRAw
+-DgYDVQQKEwdUZXN0aW5nMRgwFgYDVQQDEw9UZXN0aW5nIFJvb3QgQ0EwHhcNMTQw
+-ODI4MDIwNDA4WhcNMjQwODI1MDIwNDA4WjBmMRUwEwYDVQQDEwxpbnRlcm1lZGlh
+-dGUxDDAKBgNVBAoTA29yZzERMA8GA1UECxMIb3JnLXVuaXQxCzAJBgNVBAYTAlVT
+-MQswCQYDVQQIEwJDQTESMBAGA1UEBxMJU2FuIERpZWdvMIGfMA0GCSqGSIb3DQEB
+-AQUAA4GNADCBiQKBgQDYcEQw5lfbEQRjr5Yy4yxAHGV0b9Al+Lmu7wLHMkZ/ZMmK
+-FGIbljbviiD1Nz97Oh2cpB91YwOXOTN2vXHq26S+A5xe8z/QJbBsyghMur88CjdT
+-21H2qwMa+r5dCQwEhuGIiZ3KbzB/n4DTMYI5zy4IYPv0pjxShZn4aZTCCK2IUwID
+-AQABoxMwETAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBDQUAA4GBAPIWSkLX
+-QRMApOjjyC+tMxumT5e2pMqChHmxobQK4NMdrf2VCx+cRT6EmY8sK3/Xl/X8UBQ+
+-9n5zXb1ZwhW/sTWgUvmOceJ4/XVs9FkdWOOn1J0XBch9ZIiFe/s5ASIgG7fUdcUF
+-9mAWS6FK2ca3xIh5kIupCXOFa0dPvlw/YUFT
++MIIC+zCCAmSgAwIBAgIJALhKvjsTsSIUMA0GCSqGSIb3DQEBDQUAMFgxCzAJBgNV
++BAYTAlVTMQswCQYDVQQIDAJJTDEQMA4GA1UEBwwHQ2hpY2FnbzEQMA4GA1UECgwH
++VGVzdGluZzEYMBYGA1UEAwwPVGVzdGluZyBSb290IENBMCAXDTE5MDQxMjEzMzUz
++NFoYDzMwMTgwODEzMTMzNTM0WjBmMQswCQYDVQQGEwJVUzELMAkGA1UECAwCQ0Ex
++DDAKBgNVBAoMA29yZzERMA8GA1UECwwIb3JnLXVuaXQxEjAQBgNVBAcMCVNhbiBE
++aWVnbzEVMBMGA1UEAwwMaW50ZXJtZWRpYXRlMIGfMA0GCSqGSIb3DQEBAQUAA4GN
++ADCBiQKBgQDYcEQw5lfbEQRjr5Yy4yxAHGV0b9Al+Lmu7wLHMkZ/ZMmKFGIbljbv
++iiD1Nz97Oh2cpB91YwOXOTN2vXHq26S+A5xe8z/QJbBsyghMur88CjdT21H2qwMa
+++r5dCQwEhuGIiZ3KbzB/n4DTMYI5zy4IYPv0pjxShZn4aZTCCK2IUwIDAQABo4G8
++MIG5MAwGA1UdEwQFMAMBAf8wHQYDVR0OBBYEFBAPiF/EIft7/aZeAGXsI6oFJXpG
++MIGJBgNVHSMEgYEwf4AUg1V3LV4h8UkMCSTnVAkSjch+BK6hXKRaMFgxCzAJBgNV
++BAYTAlVTMQswCQYDVQQIDAJJTDEQMA4GA1UEBwwHQ2hpY2FnbzEQMA4GA1UECgwH
++VGVzdGluZzEYMBYGA1UEAwwPVGVzdGluZyBSb290IENBggkAn+GZknYlbxcwDQYJ
++KoZIhvcNAQENBQADgYEAAA+3v9cZYA9i4qqGKhJs8L0MVHPY9rx8opxXtNB9fjNb
++qAUVRaaepfZctmqScGecUkqMii9X1LX3tApHAZSfA/a61bwA8GxNm0QY7tsb7jLP
++6eOUiDuubX0K+NZICxzV1MJfKonGF3Y0zgo9+6tAs3Vo6oL7TsDjXpv85ecPxuw=
+ -----END CERTIFICATE-----
+ """
+ 
+@@ -149,18 +150,18 @@ def normalize_privatekey_pem(pem):
+ """
+ 
+ server_cert_pem = b"""-----BEGIN CERTIFICATE-----
+-MIICJDCCAY2gAwIBAgIJAJn/HpR21r/8MA0GCSqGSIb3DQEBBQUAMFgxCzAJBgNV
++MIICMTCCAZqgAwIBAgIJALhKvjsTsSIWMA0GCSqGSIb3DQEBDQUAMFgxCzAJBgNV
+ BAYTAlVTMQswCQYDVQQIDAJJTDEQMA4GA1UEBwwHQ2hpY2FnbzEQMA4GA1UECgwH
+-VGVzdGluZzEYMBYGA1UEAwwPVGVzdGluZyBSb290IENBMB4XDTE3MDYxMjAwMTA1
+-N1oXDTM3MDYwNzAwMTA1N1owGDEWMBQGA1UEAwwNbG92ZWx5IHNlcnZlcjCBnzAN
+-BgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAvqb4brndXS2kEL84qXbZXE6LYK+UrhNi
+-70sdIM/24NVN7tXkPlOXqrMWhFHHml+aeSpPkH5b1vKnY1TcULmEubnNICtvjmZ5
+-SGMQn+J+RmBs1SMd0EgY/0wBBQdlrlYp2QYgm8YC+zxTNSqWvhMFZAgHbj6Un5SS
+-T8JGBqytjB0CAwEAAaM2MDQwHQYDVR0OBBYEFINVdy1eIfFJDAkk51QJEo3IfgSu
+-MBMGA1UdJQQMMAoGCCsGAQUFBwMBMA0GCSqGSIb3DQEBBQUAA4GBAGki1K6WgHHJ
+-qC6aY2EowjaWOXLO6jUZIhGk7BA7vMRfNug429AOZ4m5F6OQhzmJmlw67Jyu2FeI
+-h0VtBuQoHPtjqZXF59oX6hMMmGLMs9pV0UA3fJs5MYA4/V5ZcQy0Ie0QoJNejLzE
+-6V1Qz1rRTYLUyEcpI7ZCmBg2KQQI8YZI
++VGVzdGluZzEYMBYGA1UEAwwPVGVzdGluZyBSb290IENBMCAXDTE5MDQxMjEzMzUz
++NFoYDzMwMTgwODEzMTMzNTM0WjAYMRYwFAYDVQQDDA1sb3ZlbHkgc2VydmVyMIGf
++MA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+pvhuud1dLaQQvzipdtlcTotgr5Su
++E2LvSx0gz/bg1U3u1eQ+U5eqsxaEUceaX5p5Kk+QflvW8qdjVNxQuYS5uc0gK2+O
++ZnlIYxCf4n5GYGzVIx3QSBj/TAEFB2WuVinZBiCbxgL7PFM1Kpa+EwVkCAduPpSf
++lJJPwkYGrK2MHQIDAQABo0EwPzAJBgNVHRMEAjAAMB0GA1UdDgQWBBS4kC7Ij0W1
++TZXZqXQFAM2egKEG2DATBgNVHSUEDDAKBggrBgEFBQcDATANBgkqhkiG9w0BAQ0F
++AAOBgQCNsl6GbMhbXgKnRIWKPmMntzIQK5vmDq+MClnytS8b/37KKd91OVLeIYZ5
++Q93xdW2ALHO23z3q5kcstjbMU1Lz/FDzDzousZbzhZA25XW1bKw5vi81P6aBquek
++OIEIhhH0dQ8e/FLDUuLmsh+bdPqgYlWn+DM6Rmo33DT5gsd/Hg==
+ -----END CERTIFICATE-----
+ """
+ 
+@@ -182,19 +183,20 @@ def normalize_privatekey_pem(pem):
+ """)
+ 
+ intermediate_server_cert_pem = b"""-----BEGIN CERTIFICATE-----
+-MIICWDCCAcGgAwIBAgIRAPQFY9jfskSihdiNSNdt6GswDQYJKoZIhvcNAQENBQAw
+-ZjEVMBMGA1UEAxMMaW50ZXJtZWRpYXRlMQwwCgYDVQQKEwNvcmcxETAPBgNVBAsT
+-CG9yZy11bml0MQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExEjAQBgNVBAcTCVNh
+-biBEaWVnbzAeFw0xNDA4MjgwMjEwNDhaFw0yNDA4MjUwMjEwNDhaMG4xHTAbBgNV
+-BAMTFGludGVybWVkaWF0ZS1zZXJ2aWNlMQwwCgYDVQQKEwNvcmcxETAPBgNVBAsT
+-CG9yZy11bml0MQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExEjAQBgNVBAcTCVNh
+-biBEaWVnbzCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAqpJZygd+w1faLOr1
+-iOAmbBhx5SZWcTCZ/ZjHQTJM7GuPT624QkqsixFghRKdDROwpwnAP7gMRukLqiy4
+-+kRuGT5OfyGggL95i2xqA+zehjj08lSTlvGHpePJgCyTavIy5+Ljsj4DKnKyuhxm
+-biXTRrH83NDgixVkObTEmh/OVK0CAwEAATANBgkqhkiG9w0BAQ0FAAOBgQBa0Npw
+-UkzjaYEo1OUE1sTI6Mm4riTIHMak4/nswKh9hYup//WVOlr/RBSBtZ7Q/BwbjobN
+-3bfAtV7eSAqBsfxYXyof7G1ALANQERkq3+oyLP1iVt08W1WOUlIMPhdCF/QuCwy6
+-x9MJLhUCGLJPM+O2rAPWVD9wCmvq10ALsiH3yA==
++MIICkzCCAfygAwIBAgIJALhKvjsTsSIVMA0GCSqGSIb3DQEBDQUAMGYxCzAJBgNV
++BAYTAlVTMQswCQYDVQQIDAJDQTEMMAoGA1UECgwDb3JnMREwDwYDVQQLDAhvcmct
++dW5pdDESMBAGA1UEBwwJU2FuIERpZWdvMRUwEwYDVQQDDAxpbnRlcm1lZGlhdGUw
++HhcNMTkwNDEyMTMzNTM0WhcNMzgwMTAyMTMzNTM0WjBuMQswCQYDVQQGEwJVUzEL
++MAkGA1UECAwCQ0ExDDAKBgNVBAoMA29yZzERMA8GA1UECwwIb3JnLXVuaXQxEjAQ
++BgNVBAcMCVNhbiBEaWVnbzEdMBsGA1UEAwwUaW50ZXJtZWRpYXRlLXNlcnZpY2Uw
++gZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKqSWcoHfsNX2izq9YjgJmwYceUm
++VnEwmf2Yx0EyTOxrj0+tuEJKrIsRYIUSnQ0TsKcJwD+4DEbpC6osuPpEbhk+Tn8h
++oIC/eYtsagPs3oY49PJUk5bxh6XjyYAsk2ryMufi47I+AypysrocZm4l00ax/NzQ
++4IsVZDm0xJofzlStAgMBAAGjQTA/MAkGA1UdEwQCMAAwHQYDVR0OBBYEFNkxrnB1
++UHipXMWdHaOqhTA0LeZXMBMGA1UdJQQMMAoGCCsGAQUFBwMBMA0GCSqGSIb3DQEB
++DQUAA4GBAHMcGbT4KrDkfeNXVrgUmCdV7XIgRZ+QJw3ppcxPpPTRz0T6Eezgf0lz
++3ZPfGd1lQpKqnhJM1RZIw8L20y/H7cVyDWJ4r2ZyNYn8lMrelSbN2KKyB2UDz1o3
++GRKi0jYq80LfO224HOmspp4j0315EMz7lqGumbbHa38KbT9aNsYs
+ -----END CERTIFICATE-----
+ """
+ 
+@@ -216,18 +218,18 @@ def normalize_privatekey_pem(pem):
+ """
+ 
+ client_cert_pem = b"""-----BEGIN CERTIFICATE-----
+-MIICIjCCAYugAwIBAgIJAKxpFI5lODkjMA0GCSqGSIb3DQEBBQUAMFgxCzAJBgNV
++MIICLzCCAZigAwIBAgIJALhKvjsTsSITMA0GCSqGSIb3DQEBDQUAMFgxCzAJBgNV
+ BAYTAlVTMQswCQYDVQQIDAJJTDEQMA4GA1UEBwwHQ2hpY2FnbzEQMA4GA1UECgwH
+-VGVzdGluZzEYMBYGA1UEAwwPVGVzdGluZyBSb290IENBMB4XDTE3MDYxMjAwMDQx
+-M1oXDTM3MDYwNzAwMDQxM1owFjEUMBIGA1UEAwwLdWdseSBjbGllbnQwgZ8wDQYJ
+-KoZIhvcNAQEBBQADgY0AMIGJAoGBAMBmH9JG02bme0xPipvpjMSlOugyWrauf4at
+-EdGJn7GQLD8IY2Fu0+Kvv9DFpSPboFKZCsfDVsYoRs+xaJbtt1dJ6ymX7EqKS7gb
+-8q+eeZZ14keqyJd5Rm2q6swQtw9ADD3E8cS6GqpQm+8SgxOycISoYz7sO1ugJFqN
+-jId+W4BFAgMBAAGjNjA0MB0GA1UdDgQWBBSDVXctXiHxSQwJJOdUCRKNyH4ErjAT
+-BgNVHSUEDDAKBggrBgEFBQcDAjANBgkqhkiG9w0BAQUFAAOBgQAMqcHyweaCOZNN
+-dWQQOsBKQlL5wqVVZwucHPWqobjxpULKy9gS2ha2zbgkXcB/BnBOSwe0Fm+MJV0T
+-NbnTghcGJNpEH7VKn4xSLvIGZmnZZWgxeIB16z4GhpkK2fShBJ+6GKZjsgjT0lSH
+-JRgjHbWutZfZvbSHXr9n7PIphG1Ojg==
++VGVzdGluZzEYMBYGA1UEAwwPVGVzdGluZyBSb290IENBMCAXDTE5MDQxMjEzMzUz
++NFoYDzMwMTgwODEzMTMzNTM0WjAWMRQwEgYDVQQDDAt1Z2x5IGNsaWVudDCBnzAN
++BgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAwGYf0kbTZuZ7TE+Km+mMxKU66DJatq5/
++hq0R0YmfsZAsPwhjYW7T4q+/0MWlI9ugUpkKx8NWxihGz7Folu23V0nrKZfsSopL
++uBvyr555lnXiR6rIl3lGbarqzBC3D0AMPcTxxLoaqlCb7xKDE7JwhKhjPuw7W6Ak
++Wo2Mh35bgEUCAwEAAaNBMD8wCQYDVR0TBAIwADAdBgNVHQ4EFgQUNQB+qkaOaEVe
++cf1J3TTUtAff0fAwEwYDVR0lBAwwCgYIKwYBBQUHAwIwDQYJKoZIhvcNAQENBQAD
++gYEAh74ZP9tOh2VTtcVm1GXdFWS5GhndevEQDPZ/W6zA2qR0dCA2U7x+V+qsgqod
++AaA9YZtSg/X5XJS3t0+lRfp2sLOE+CpbYB+cfyzMKn/tzk/CBYTy1SuSGYFdSCMH
++R+FnscqFCcu7d4Gox/a2SnuNc+l9Tuue50r/vIGQB5g97xc=
+ -----END CERTIFICATE-----
+ """
+ 
+@@ -248,44 +250,8 @@ def normalize_privatekey_pem(pem):
+ -----END RSA PRIVATE KEY-----
+ """)
+ 
+-cleartextCertificatePEM = b"""-----BEGIN CERTIFICATE-----
+-MIIC6TCCAlKgAwIBAgIIPQzE4MbeufQwDQYJKoZIhvcNAQEFBQAwWDELMAkGA1UE
+-BhMCVVMxCzAJBgNVBAgTAklMMRAwDgYDVQQHEwdDaGljYWdvMRAwDgYDVQQKEwdU
+-ZXN0aW5nMRgwFgYDVQQDEw9UZXN0aW5nIFJvb3QgQ0EwHhcNMTcwNjExMjIzMjU5
+-WhcNMzcwNjA2MjIzMjU5WjBYMQswCQYDVQQGEwJVUzELMAkGA1UECBMCSUwxEDAO
+-BgNVBAcTB0NoaWNhZ28xEDAOBgNVBAoTB1Rlc3RpbmcxGDAWBgNVBAMTD1Rlc3Rp
+-bmcgUm9vdCBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA+ZpC6Yu6ukTn
+-bu5IQd0vWmpwNGZbO773xjpgfNP8nspYRqbIwI1np9FbUkJHvzZRDxrTt/LbFewr
+-LhZ0prHIbwJxq3CZe+m9FDjh1IA0yKEcQukA1N3JWnoMLKwQPrCRAW6seUXV2yER
+-onDxv/KkOGZtUijoKLXG8ImqK9ssWdsCAwEAAaOBuzCBuDAdBgNVHQ4EFgQUg1V3
+-LV4h8UkMCSTnVAkSjch+BK4wgYgGA1UdIwSBgDB+gBSDVXctXiHxSQwJJOdUCRKN
+-yH4ErqFcpFowWDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAklMMRAwDgYDVQQHEwdD
+-aGljYWdvMRAwDgYDVQQKEwdUZXN0aW5nMRgwFgYDVQQDEw9UZXN0aW5nIFJvb3Qg
+-Q0GCCD0MxODG3rn0MAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEFBQADgYEANFYQ
+-R+T70VcZ+SnvURnwviFgCXeedBzCr21meo+DNHbkp2gudB9W8Xrned/wtUBVymy9
+-gjB5jINfU7Lci0H57Evsw96UJJVfhXdUMHpqt1RGCoEd9FWnrDyrSy0NysnBT2bH
+-lEqxh3aFEUx9IOQ4sgnx1/NOFXBpkRtivl6O0Ec=
+------END CERTIFICATE-----
+-"""
+-
+-cleartextPrivateKeyPEM = normalize_privatekey_pem(b"""\
+------BEGIN RSA PRIVATE KEY-----
+-MIICXQIBAAKBgQD5mkLpi7q6ROdu7khB3S9aanA0Zls7vvfGOmB80/yeylhGpsjA
+-jWen0VtSQke/NlEPGtO38tsV7CsuFnSmschvAnGrcJl76b0UOOHUgDTIoRxC6QDU
+-3claegwsrBA+sJEBbqx5RdXbIRGicPG/8qQ4Zm1SKOgotcbwiaor2yxZ2wIDAQAB
+-AoGBAPCgMpmLxzwDaUmcFbTJUvlLW1hoxNNYSu2jIZm1k/hRAcE60JYwvBkgz3UB
+-yMEh0AtLxYe0bFk6EHah11tMUPgscbCq73snJ++8koUw+csk22G65hOs51bVb7Aa
+-6JBe67oLzdtvgCUFAA2qfrKzWRZzAdhUirQUZgySZk+Xq1pBAkEA/kZG0A6roTSM
+-BVnx7LnPfsycKUsTumorpXiylZJjTi9XtmzxhrYN6wgZlDOOwOLgSQhszGpxVoMD
+-u3gByT1b2QJBAPtL3mSKdvwRu/+40zaZLwvSJRxaj0mcE4BJOS6Oqs/hS1xRlrNk
+-PpQ7WJ4yM6ZOLnXzm2mKyxm50Mv64109FtMCQQDOqS2KkjHaLowTGVxwC0DijMfr
+-I9Lf8sSQk32J5VWCySWf5gGTfEnpmUa41gKTMJIbqZZLucNuDcOtzUaeWZlZAkA8
+-ttXigLnCqR486JDPTi9ZscoZkZ+w7y6e/hH8t6d5Vjt48JVyfjPIaJY+km58LcN3
+-6AWSeGAdtRFHVzR7oHjVAkB4hutvxiOeiIVQNBhM6RSI9aBPMI21DoX2JRoxvNW2
+-cbvAhow217X9V0dVerEOKxnNYspXRrh36h7k4mQA+sDq
+------END RSA PRIVATE KEY-----
+-""")
+-
++cleartextCertificatePEM = root_cert_pem
++cleartextPrivateKeyPEM = normalize_privatekey_pem(root_key_pem)
+ cleartextCertificateRequestPEM = b"""-----BEGIN CERTIFICATE REQUEST-----
+ MIIBnjCCAQcCAQAwXjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAklMMRAwDgYDVQQH
+ EwdDaGljYWdvMRcwFQYDVQQKEw5NeSBDb21wYW55IEx0ZDEXMBUGA1UEAxMORnJl
+@@ -1917,7 +1883,7 @@ def test_get_signature_algorithm(self):
+         the algorithm used to sign the certificate.
+         """
+         cert = load_certificate(FILETYPE_PEM, self.pemData)
+-        assert b"sha1WithRSAEncryption" == cert.get_signature_algorithm()
++        assert b"sha256WithRSAEncryption" == cert.get_signature_algorithm()
+ 
+     def test_get_undefined_signature_algorithm(self):
+         """

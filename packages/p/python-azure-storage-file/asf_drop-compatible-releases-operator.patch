@@ -1,0 +1,12 @@
+diff -Nru azure-storage-file-1.4.0.orig/setup.py azure-storage-file-1.4.0/setup.py
+--- azure-storage-file-1.4.0.orig/setup.py	2018-11-10 00:24:52.000000000 +0100
++++ azure-storage-file-1.4.0/setup.py	2019-04-02 13:22:57.072451025 +0200
+@@ -72,7 +72,7 @@
+     ]),
+     install_requires=[
+         'azure-common>=1.1.5',
+-        'azure-storage-common~=1.4'
++        'azure-storage-common>=1.4'
+     ],
+     extras_require={
+         ":python_version<'3.0'": ['futures'],

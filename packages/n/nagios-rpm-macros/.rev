@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e9d6ea7df295bb62806a1cd4f9c5eb86</srcmd5>
+    <version>0.002</version>
+    <time>1320232077</time>
+    <user>coolo</user>
+    <comment>used by nagios package</comment>
+    <requestid>89869</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2f330e0f97a48cc2d87ff7090bc691ab</srcmd5>
+    <version>0.03</version>
+    <time>1329405601</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>105243</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cd0ac0e5a897338829bc8181c6e6b5d5</srcmd5>
+    <version>0.04</version>
+    <time>1329922434</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>106301</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>cd0ac0e5a897338829bc8181c6e6b5d5</srcmd5>
+    <version>0.04</version>
+    <time>1340183721</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>159423551de9611b8db8d594ab0a548d</srcmd5>
+    <version>0.05</version>
+    <time>1343031301</time>
+    <user>coolo</user>
+    <comment>This submit is needed for the new Icinga 1.7.1 - Request 128638 .</comment>
+    <requestid>128641</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e49d7fd711ec59dd6f452e7312629770</srcmd5>
+    <version>0.05</version>
+    <time>1345630435</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>131110</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8810e938705c76a5333789f58930e563</srcmd5>
+    <version>0.06</version>
+    <time>1358412636</time>
+    <user>coolo</user>
+    <comment>Update to 0.06:
+- added new macros: 
+  + %nagios_user_group_add
+  + %nagios_command_user_group_add
+  to make it easier to have the same useradd/groupadd invocations 
+  in all packages</comment>
+    <requestid>148655</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>8810e938705c76a5333789f58930e563</srcmd5>
+    <version>0.06</version>
+    <time>1359109483</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>8364ee6384642c5bb0edb2e6c25db96a</srcmd5>
+    <version>0.06</version>
+    <time>1362993789</time>
+    <user>coolo</user>
+    <comment>- added icinga_tempdir and icinga_tempfile</comment>
+    <requestid>158212</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>4bc59667f26d04edf761eb64ec4b70d9</srcmd5>
+    <version>0.06</version>
+    <time>1365928545</time>
+    <user>coolo</user>
+    <comment>add new path to macros.check_mk for check_mk 1.2.2 (forwarded request 163630 from jsjhb)</comment>
+    <requestid>163648</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ef394299aef102ef636cba2c50b8a4b6</srcmd5>
+    <version>0.07</version>
+    <time>1377248905</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195959</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>ef394299aef102ef636cba2c50b8a4b6</srcmd5>
+    <version>0.07</version>
+    <time>1379663339</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4962269f86f79806965b19032e95a6dd</srcmd5>
+    <version>0.08</version>
+    <time>1380296994</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200804</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cc93da405fe29e4d043e858834a07832</srcmd5>
+    <version>0.09</version>
+    <time>1398485170</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>231083</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8f09cba082daff74f034c5eb4a605b2d</srcmd5>
+    <version>0.10</version>
+    <time>1404157520</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>238845</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>8f09cba082daff74f034c5eb4a605b2d</srcmd5>
+    <version>0.10</version>
+    <time>1409301951</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2e8b305b90a4439f275946073f19eb00</srcmd5>
+    <version>0.11</version>
+    <time>1420531606</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>267165</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>254ac42ed393f929c7968b6889dd9df3</srcmd5>
+    <version>0.12</version>
+    <time>1426680341</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>291024</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>13fb50b7927fac720f5cd9715e698325</srcmd5>
+    <version>0.13</version>
+    <time>1438548391</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>320005</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>be79941c7a66b7a1bbc060ff55c72486</srcmd5>
+    <version>0.14</version>
+    <time>1513245812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556728</requestid>
+  </revision>
+</revisionlist>

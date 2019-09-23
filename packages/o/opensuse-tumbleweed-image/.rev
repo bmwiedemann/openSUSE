@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>362fbf0b4c15c7b4d001fd947dbbcd54</srcmd5>
+    <version>1.0.4</version>
+    <time>1540451512</time>
+    <user>dimstar_suse</user>
+    <comment>Base container, now part of the main prj.</comment>
+    <requestid>644208</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4985c42063a1f194292ecb777d41923b</srcmd5>
+    <version>1.0.4</version>
+    <time>1543953484</time>
+    <user>dimstar_suse</user>
+    <comment>- define repositories to use for installing packages within OBS</comment>
+    <requestid>653803</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c49d00f5729db35720c3f998a47b6175</srcmd5>
+    <version>1.0.4</version>
+    <time>1548537731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668569</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>2836c9f30369ac312edcac4ec3198ab7</srcmd5>
+    <version>1.0.4</version>
+    <time>1551113796</time>
+    <user>coolo</user>
+    <comment>- Use correct org.opencontainers.image prefix</comment>
+    <requestid>678646</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>3cb18950c8e56ea39a55731d59cf20fa</srcmd5>
+    <version>1.0.4</version>
+    <time>1551455323</time>
+    <user>dimstar_suse</user>
+    <comment>- Add comment for obsrepositories back, as requested.
+  Let's see how long it stays this time.</comment>
+    <requestid>680168</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>c4c300b7c19c8e8239ce479a8787df6a</srcmd5>
+    <version>1.0.4</version>
+    <time>1551784843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681231</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>1f8958fed3da08e92a2b304af6054320</srcmd5>
+    <version>1.0.4</version>
+    <time>1564994580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720973</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>bc3669d4aaad622285f71b27b860a451</srcmd5>
+    <version>1.0.4</version>
+    <time>1565865006</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>723495</requestid>
+  </revision>
+</revisionlist>

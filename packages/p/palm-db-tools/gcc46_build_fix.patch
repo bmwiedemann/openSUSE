@@ -1,0 +1,10 @@
+--- libpalm/Block.h	2011-05-10 19:56:26.101382558 +0200
++++ libpalm/Block.h	2011-05-10 20:01:04.927592457 +0200
+@@ -13,6 +13,7 @@
+ 
+ #include <algorithm>
+ #include <iterator>
++#include <cstddef>
+ 
+ #include "palmtypes.h"
+ 

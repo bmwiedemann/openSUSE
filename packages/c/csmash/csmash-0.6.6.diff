@@ -1,0 +1,39 @@
+Index: loadparts.cpp
+===================================================================
+--- loadparts.cpp.orig
++++ loadparts.cpp
+@@ -245,7 +245,7 @@ bool parts::loadfile(const char *str)
+ 
+ 	while ('\\' == line[l-1]) {
+             // concat next line(s)
+-	    int bufsize = clamp(0U, sizeof(line)-l, sizeof(line)-1);
++	    int bufsize = clamp(0U, (unsigned int)(sizeof(line)-l), (unsigned int)(sizeof(line)-1));
+ 	    fgets(&line[l-2], bufsize, fp);
+ 	    if (feof((FILE*)fp)) break;
+ 	    l = strlen(line);
+Index: main.cpp
+===================================================================
+--- main.cpp.orig
++++ main.cpp
+@@ -179,7 +179,7 @@ int main(int argc, char** argv) {
+         switch (c) {
+         case 'h':
+ 	    // brief help
+-	    printf("csmash [-s] [ip-address]");
++	    puts("csmash [-s] [ip-address]");
+ 	    return 0;
+ 	case 's':
+ 	    // Server mode
+Index: matrix
+===================================================================
+--- matrix.orig
++++ matrix
+@@ -42,7 +42,7 @@
+ 
+ /* __BEGIN__BEGIN__ */
+ //__NAMESPACE_BEGIN(ese);
+-#if (!defined __GNUG__) || (__GNUC__ == 3)
++#if (!defined __GNUG__) || (__GNUC__ >= 3)
+ template<typename T>
+ void swap(T& a, T& b)
+ {

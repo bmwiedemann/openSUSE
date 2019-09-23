@@ -1,0 +1,52 @@
+Index: libgnome-2.32.2+20170910.8487c2b4/gnome-data/gnome-2.soundlist.in
+===================================================================
+--- libgnome-2.32.2+20170910.8487c2b4.orig/gnome-data/gnome-2.soundlist.in
++++ libgnome-2.32.2+20170910.8487c2b4/gnome-data/gnome-2.soundlist.in
+@@ -10,21 +10,21 @@ file=shutdown1.wav
+ _description=Log out
+ 
+ [info]
+-file=info.wav
++file=
+ _description=Informational message
+ 
+ [warning]
+-file=warning.wav
++file=
+ _description=Warning message
+ 
+ [error]
+-file=error.wav
++file=warning.wav
+ _description=Error message
+ 
+ [question]
+-file=question.wav
++file=
+ _description=Question dialog
+ 
+ [generic]
+-file=generic.wav
++file=
+ _description=Miscellaneous message
+Index: libgnome-2.32.2+20170910.8487c2b4/gnome-data/gtk-events-2.soundlist.in
+===================================================================
+--- libgnome-2.32.2+20170910.8487c2b4.orig/gnome-data/gtk-events-2.soundlist.in
++++ libgnome-2.32.2+20170910.8487c2b4/gnome-data/gtk-events-2.soundlist.in
+@@ -2,13 +2,13 @@
+ _description=User interface events
+ 
+ [clicked]
+-file=gtk-events/clicked.wav
++file=
+ _description=Click on command button
+ 
+ [activate]
+-file=gtk-events/activate.wav
++file=
+ _description=Choose menu item
+ 
+ [toggled]
+-file=gtk-events/toggled.wav
++file=
+ _description=Select check box

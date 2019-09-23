@@ -1,0 +1,809 @@
+-------------------------------------------------------------------
+Thu Sep 12 07:53:55 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.37
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.37    2019-09-11
+  
+  - This release is based on version 2019c of the Olson database. This release
+    includes contemporary changes for Fiji and Norfolk Island.
+
+-------------------------------------------------------------------
+Tue Jul 16 09:22:10 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.36
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.36    2019-07-01
+  
+  - This release is based on version 2019b of the Olson database. This release
+    includes contemporary changes for Brazil and Palestine.
+
+-------------------------------------------------------------------
+Mon Apr 22 05:07:19 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.35
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.35    2019-04-21
+  
+  - Handle "infinity" as a representation of infinite values in serialized
+    objects. On Solaris we end up with "infinity" and "-infinity" as opposed to
+    just "inf" and "-inf". Fixed by Andrew Paprocki. GH #36.
+
+-------------------------------------------------------------------
+Wed Mar 27 06:10:47 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.34
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.34    2019-03-26
+  
+  - This release is based on version 2019a of the Olson database. This release
+    includes contemporary changes for Palestine and Metlakatla, Alaska.
+
+-------------------------------------------------------------------
+Thu Jan  3 06:05:48 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.23
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.23    2018-12-30
+  
+  - This release is based on version 2018i of the Olson database. This release
+    includes contemporary changes for São Tomé and Príncipe.
+
+-------------------------------------------------------------------
+Sun Dec 30 06:06:38 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.22
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.22    2018-12-29
+  
+  - This release is based on version 2018h of the Olson database. This release
+    includes contemporary changes for Morocco, Kazakhstan, and Iran.
+
+-------------------------------------------------------------------
+Sat Oct 27 17:37:26 UTC 2018 - astieger@suse.com
+
+- update to 2.21:
+  * based on 2018f of the Olson database
+  * includes contemporary changes for Morocco (bsc#1113554)
+  * includes contemporary changes for Russia (Volograd), Fiji,
+    and Chile (bsc#1104700)
+
+-------------------------------------------------------------------
+Mon May 14 05:17:06 UTC 2018 - coolo@suse.com
+
+- updated to 2.19
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.19    2018-05-13
+  
+  - This release is based on version 2018e of the Olson database. This release
+    includes contemporary changes for North Korea.
+
+-------------------------------------------------------------------
+Mon Mar 26 13:39:31 UTC 2018 - pmonrealgonzalez@suse.com
+
+- updated to 2.18
+  see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.18    2018-03-23
+
+  - This release is based on version 2018d of the Olson database. This release
+    includes contemporary changes for Palestine and Casey Station.
+
+-------------------------------------------------------------------
+Wed Feb  7 15:51:40 UTC 2018 - pmonrealgonzalez@suse.com
+
+- updated to 2.17
+  see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.17    2018-01-23
+
+  - This release is based on version 2018b of the Olson database. This release
+    reverts the changes for Ireland in the previous versions as these caused
+    breakages in some systems that consumed the IANA time zone data.
+
+  2.16    2018-01-19
+
+  - This release is based on version 2018b of the Olson database. This release
+    includes contemporary changes for São Tomé and Príncipe, Brazil, and
+    Ireland. The 2018a was skipped because it was missing a file, but there are
+    no data changes from 2018a to 2018b.
+
+-------------------------------------------------------------------
+Sun Nov  5 06:17:47 UTC 2017 - coolo@suse.com
+
+- updated to 2.15
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.15    2017-11-04
+  
+  - Make the local zone lookup code handle the case where /usr/share/zoneinfo is
+    a symlink, as it apparently is on recent versions of macOS (10.13). Fixed by
+    Tom Wyant. GH #22 and #23.
+
+-------------------------------------------------------------------
+Sun Oct 29 06:14:21 UTC 2017 - coolo@suse.com
+
+- updated to 2.14
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.14    2017-10-28
+  
+  
+  - This release is based on version 2017c of the Olson database. This release
+    includes contemporary changes for Fiji, Namibia, Northern Cyprus, Sudan,
+    Tonga, and Turks & Caicos.
+
+-------------------------------------------------------------------
+Fri Jun  9 05:27:43 UTC 2017 - coolo@suse.com
+
+- updated to 2.13
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.13    2017-06-01
+  
+  - Really fix the indexing issue. For reals this time. I'm totally not
+    kidding. Thanks to Grinnz on #metacpan for giving me the solution.
+  
+  
+  2.12    2017-06-01
+  
+  - Attempting to fix indexing of DateTime::TimeZone::Catalog on metacpan
+    again. No real code or zone changes. Reported by Greg Oscwhald. GH #19.
+
+-------------------------------------------------------------------
+Thu May 25 07:52:44 UTC 2017 - coolo@suse.com
+
+- updated to 2.11
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.11    2017-03-22
+  
+  - This release is based on version 2017b of the Olson database. This release
+    includes contemporary changes for Haiti.
+  
+  
+  2.10    2017-03-01
+  
+  - This release is based on version 2017a of the Olson database. This release
+    includes contemporary changes for Mongolia and Chile.
+  
+  
+  2.09    2016-11-24
+  
+  - This release is based on version 2016j of the Olson database. This release
+    includes contemporary changes for Russia (Europe/Saratov).
+  
+  
+  2.08    2016-11-12
+  
+  - Switched from RT to the GitHub issue tracker.
+  
+  
+  2.07    2016-11-02
+  
+  - This release is based on version 2016i of the Olson database. This release
+    includes contemporary changes for Tonga and Antarctica/Casey. There is also
+    a new zone for Northern Cyprus, Asia/Famagusta, which differs from other
+    parts of Cyprus.
+  
+  
+  2.06    2016-10-20
+  
+  - This release is based on version 2016h of the Olson database. This release
+    includes contemporary changes for Palestine.
+  
+  
+  2.05    2016-09-28
+  
+  - This release is based on version 2016g of the Olson database. This release
+    includes contemporary changes for Turkey.
+  
+  
+  2.04    2016-09-26
+  
+  - Automatically add the latest version of DateTime::Time::Local::Win32 as a
+    prereqs on Windows system automatically when building the release.
+  
+  
+  2.03    2016-09-17
+  
+  - Bump minimum required Perl to 5.8.4 from 5.8.1. This matches DateTime.pm
+    itself.
+  
+  
+  2.02    2016-09-16
+  
+  - Replaced Params::Validate with Params::ValidationCompiler.
+
+-------------------------------------------------------------------
+Mon Jul 18 05:13:47 UTC 2016 - coolo@suse.com
+
+- updated to 2.01
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.01    2016-07-17
+  
+  - This release is based on version 2016f of the Olson database. This release
+    includes contemporary changes for Egypt and Russia. The changes for Egypt
+    supersede the ones in 2016e.
+
+-------------------------------------------------------------------
+Sun Jun 12 12:53:20 UTC 2016 - coolo@suse.com
+
+- updated to 2.00
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.00    2016-06-07
+  
+  - The fix in 1.99 broke the parsing of the etcetera zones, which are specified
+    as 1 or 2 digit offsets in hours, unlike all other zones which are written
+    as "1:00" or "-2:00".
+  
+  
+  1.99    2016-06-07
+  
+  - When parsing the POSIX zones in the etcetera file, don't special case the
+    ETC[+-]NN zones. These are weirdly named, as ETC+8 is 8 hours _behind_ UTC,
+    and -6 is 6 hours _ahead_. Previously, we were swapping these so the name
+    matched the sane usage, but this is confusing for anyone who is explicitly
+    trying to use the POSIX names, expecting the bizarre (but POSIXly correct)
+    interpretation. Patch by Bron Gondwana. GitHub PR #7.
+
+-------------------------------------------------------------------
+Mon May 23 11:42:23 UTC 2016 - coolo@suse.com
+
+- updated to 1.98
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  1.98    2016-04-18
+  
+  - This release is based on version 2016d of the Olson database. This release
+    includes contemporary changes for Russia and Venezuela.
+
+-------------------------------------------------------------------
+Tue Mar 29 09:17:15 UTC 2016 - coolo@suse.com
+
+- updated to 1.97
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  1.97    2016-03-23
+  
+  - This release is based on version 2016c of the Olson database. This release
+    includes contemporary changes for Azerbaijan and Chile.
+
+-------------------------------------------------------------------
+Wed Mar 16 10:00:28 UTC 2016 - coolo@suse.com
+
+- updated to 1.96
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  1.96    2016-03-15
+  
+  - This release is based on version 2016b of the Olson database. This release
+    includes contemporary changes for Russia, Haiti, and Palestine.
+
+-------------------------------------------------------------------
+Sun Feb  7 09:51:53 UTC 2016 - coolo@suse.com
+
+- updated to 1.95
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  1.95    2016-01-27
+  
+  - This release is based on version 2016a of the Olson database. This release
+    includes contemporary changes for the Cayman Islands, Iran, and Chrita,
+    Russia.
+
+-------------------------------------------------------------------
+Thu Oct 22 08:58:23 UTC 2015 - coolo@suse.com
+
+- updated to 1.94
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  1.94    2015-10-21
+  
+  - This release is based on version 2015g of the Olson database. This release
+    includes contemporary changes for Turkey, Norfolk, Fiji, and Fort Nelson.
+
+-------------------------------------------------------------------
+Sun Aug 23 08:42:02 UTC 2015 - coolo@suse.com
+
+- updated to 1.93
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  1.93    2015-08-11
+  
+  - This release is based on version 2015f of the Olson database. This release
+    includes contemporary changes for Moldova, North Korea, and Uruguay.
+
+-------------------------------------------------------------------
+Tue Jun 23 08:15:41 UTC 2015 - coolo@suse.com
+
+- updated to 1.92
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  1.92    2015-06-22
+  
+  - This distro now depends on DateTime::TimeZone::Local::Win32 when it is being
+    installed on a Windows OS. This should lead to a better experience for
+    Windows users. Requested by Matthew Horsfall and Karen Etheridge. RT
+    #103275.
+
+-------------------------------------------------------------------
+Sun Jun 21 08:20:49 UTC 2015 - coolo@suse.com
+
+- updated to 1.91
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  1.91    2015-06-13
+  
+  - This release is based on version 2015e of the Olson database. This release
+    includes contemporary changes for Morocco and Cayman Islands.
+  
+  
+  1.90    2015-05-14
+  
+  - Made the compilation test shipped in the last release an author-only test,
+    as many of the modules in this distribution try to load DateTime, but
+    DateTime depends on this distribution. This caused attempts to install
+    DateTime on a fresh perl install to fail. Reported by Noel Maddy. RT
+    #104448.
+  
+  
+  1.89    2015-05-14
+  
+  - Fix a syntax error in the Android local time zone module. Reported by Gregor
+    Hermann. RT #104105.
+
+-------------------------------------------------------------------
+Sat Apr 25 07:07:23 UTC 2015 - coolo@suse.com
+
+- updated to 1.88
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  1.88    2015-04-24
+  
+  - This release is based on version 2015d of the Olson database. This release
+    includes contemporary changes for Egypt.
+
+-------------------------------------------------------------------
+Tue Apr 21 03:43:22 UTC 2015 - coolo@suse.com
+
+- updated to 1.87
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  1.87    2015-04-20
+  
+  - This release is based on version 2015c of the Olson database. This release
+    includes contemporary changes for Egypt, though it looks like those will
+    change again soon.
+
+-------------------------------------------------------------------
+Thu Apr 16 16:16:20 UTC 2015 - coolo@suse.com
+
+- updated to 1.86
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  1.86    2015-03-21
+  
+  - This release is based on version 2015b of the Olson database. This release
+    includes contemporary changes for Mongolia and Palestine.
+
+-------------------------------------------------------------------
+Fri Feb  6 13:13:36 UTC 2015 - coolo@suse.com
+
+- updated to 1.85
+ - This release is based on version 2015a of the Olson database. This release
+   includes contemporary changes for Quintana Roo and Chile.
+ 
+ 
+ 1.84    2015-01-17
+ 
+ - Removed the per-OS prereqs on DateTime::TimeZone::HPUX and
+   DateTime::TimeZone::Local::Win32. This gets rid of circular dependencies
+   between those distros and this one. RT #101588, 101589 and 68231.
+ 
+ 
+ 1.83    2014-12-24
+ 
+ - The last release did not include any of the generated zone files. Oops.
+ 
+ - Attempting to fix indexing of DateTime::TimeZone::Catalog on metacpan. No
+   real code or zone changes.
+ 
+ 
+ 1.82    2014-12-24
+ 
+ - Various changes to get tests passing and tools code working with blead. This
+   includes fixing some "Redundant argument in sprintf" warnings that could
+   occur in the DateTime test suite. Reported by Slaven Rezic. RT #10116.
+ 
+ 
+ 1.81    2014-11-21
+ 
+ - Removed tests for Win32 code.
+ 
+ 
+ 1.80    2014-11-16
+ 
+ - This distro no longer ships the DateTime::TimeZone::Local::Win32
+   module. Instead, it depends on that module when you install
+   DateTime::TimeZone on a Windows system machine.
+ 
+ - Tweaked the warning when loading a zone class from disk that was generated
+   using a different Olson version than the current DateTime::TimeZone
+   module. Previously, it said the loaded version was older, but all we know is
+   that it's different. Reported by Karen Etheridge. RT #66097.
+ 
+ 
+ 1.79    2014-11-11
+ 
+ - This release is based on version 2014j of the Olson database. This release
+   only contemporary changes for Turks & Caicos.
+ 
+ 
+ 1.78    2014-11-05
+ 
+ - Fix warnings from Perl 5.8.8 and before. Apparently it doesn't like when
+   $SIG{__DIE__} is set to undef. Patch by Peter Rabbitson. GitHub PR #88.
+ 
+ 
+ 1.77    2014-11-04
+ 
+ - Updated the mapping of Windows -> IANA time zones. Patch by David
+   Pinkowitz. RT #10025.
+ 
+ - Replaced Class::Load with Module::Runtime, and replaced eval with Try::Tiny.
+
+-------------------------------------------------------------------
+Mon Sep 15 15:33:40 UTC 2014 - coolo@suse.com
+
+- updated to 1.74
+ - This release is based on version 2014g of the Olson database. This release
+   includes contemporary changes for Turks & Caicos.
+ 
+ - Fixed a bug when trying to get the local timezone by looking at
+   /etc/sysconfig/clock. Patch by Alexey Molchanov. GitHub PR #2.
+ 
+ 
+ 1.73    2014-08-06
+ 
+ - This release is based on version 2014f of the Olson database. This release
+   includes contemporary changes for Russia and Australia.
+ 
+ 
+ 1.72    2014-08-03
+ 
+ - Added support for getting the local time zone on Android. Patch from Brian
+   Fraser. RT #97711.
+ 
+ - The primary repo for this distro is now on GitHub.
+ 
+ 
+ 1.71    2014-06-21
+ 
+ - This release is based on version 2014e of the Olson database. This release
+   includes contemporary changes for Egypt and Morocco.
+ 
+ 
+ 1.70    2014-06-01
+ 
+ - Unset $ENV{TZ} in the t/04local.t test to avoid interference from
+   the system. Reported by Mark Gardner. RT #96083.
+ 
+ - This release is based on version 2014d of the IANA database, but there are
+   no data changes from 2014c.
+
+-------------------------------------------------------------------
+Thu May 29 10:42:31 UTC 2014 - stephan.barth@suse.com
+
+- update to version 1.69 from 1.65
+  Upstream changes:
+  1.69    2014-05-13
+  - Don't run tests for Unix on non-Unix boxes.
+
+  1.68    2014-05-13
+  - The last release was missing some test changes I made on another
+    machine. Doh.
+
+  1.67    2014-05-13
+  - I accidentally skipped 1.66, don't read anything into the 0.02 version bump
+    here.
+  - This release is based on version 2014c of the IANA database (I skipped 2014b
+    for lack of debuggint time). This release includes contemporary changes for
+    Crimea and Troll Station, Antarctica from 2014b and contemporary changes
+    for Egypt from 2014c.
+
+-------------------------------------------------------------------
+Sat Mar 22 19:06:02 UTC 2014 - coolo@suse.com
+
+- updated to 1.65
+ - This release is based on version 2014a of the Olson database. This release
+   includes contemporary changes for Turkey.
+
+-------------------------------------------------------------------
+Sun Feb  9 13:34:37 UTC 2014 - coolo@suse.com
+
+- updated to 1.64
+ - Under taint mode, DateTime::TimeZone->new( name => 'local' ) could die
+   depending on the method used to find the local time zone name. The resulting
+   variable would often be tainted. We now untaint all names before attempting
+   to load them. Reported by Stevie-O. RT #92631.
+
+-------------------------------------------------------------------
+Tue Nov 26 07:35:54 UTC 2013 - coolo@suse.com
+
+- updated to 1.63
+ - This release is based on version 2013h of the Olson database. This release
+   includes contemporary changes for Morocco, Librya, and Western Sahara (El
+   Aaiun).
+
+-------------------------------------------------------------------
+Fri Oct  4 09:15:02 UTC 2013 - coolo@suse.com
+
+- updated to 1.62
+ - This release is based on version 2013f of the Olson database. This release
+   includes contemporary changes for Tocantins, Jordan, and Palestine.
+ - This release is based on version 2013e of the Olson database. This release
+   includes contemporary changes for Fiji, Indonesia and San Luis,
+   Argentina. It also includes a number of historical changes. See
+   http://mm.icann.org/pipermail/tz-announce/2013-September/000013.html for
+   more details.
+- remove outdated old_test_more.patch
+
+-------------------------------------------------------------------
+Tue Jul 16 12:11:38 UTC 2013 - coolo@suse.com
+
+- updated to 1.60
+ - This release is based on version 2013d of the Olson database. This release                                                                                                                                                                
+   includes contemporary changes for Morocco and Israel. It also includes                                                                                                                                                                    
+   historical changes for Jerusalem.  
+
+-------------------------------------------------------------------
+Tue Jun  4 08:16:19 UTC 2013 - coolo@suse.com
+
+- updated to 1.59
+ - This release is based on version 2013c of the Olson database. This release
+   includes contemporary changes for Palestine and Paraguay. It also includes a
+   number of historical changes.
+
+-------------------------------------------------------------------
+Wed Feb 29 17:05:24 CET 2012 - ro@suse.de
+
+- patch to build with old Test::More for sle11 
+
+-------------------------------------------------------------------
+Wed Nov 16 16:24:46 UTC 2011 - coolo@suse.com
+
+- update to 1.42:
+  This release is based on version 2011n of the Olson database. This release
+  includes contemporary changes for Fiji, Moldova (reversing the 2011m
+  changes), and Cuba. The Moldova change removes the Europe/Tiraspol zone
+  added in the previous release.
+
+-------------------------------------------------------------------
+Tue Oct 25 15:36:40 CEST 2011 - dmueller@suse.de
+
+- update to 1.41:
+  This release is based on version 2011m of the Olson database. This release
+  includes contemporary changes for Brazil, Moldova, and Ukraine
+
+-------------------------------------------------------------------
+Wed Oct 12 09:16:19 CEST 2011 - dmueller@suse.de
+
+- update to 1.40:
+  This release is based on version 2011l of the Olson database. This release
+  includes contemporary changes for Palestine, Fiji, Russia, Belarus, Ukraine,
+  and several other post-Soviet states.
+
+-------------------------------------------------------------------
+Thu Sep 01 05:09:50 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.35:
+  * based on version 2011h of the Olson database: includes changes for Russia
+  * include UTC in the list of all time zone names (RT#67070)
+
+-------------------------------------------------------------------
+Mon Apr 25 20:35:56 UTC 2011 - pascal.bleser@opensuse.org
+
+- fix build on openSUSE 11.2
+
+- update to 1.34:
+  * based on version 2011g of the Olson database, includes changes for Egypt
+  * DateTime::TimeZone::Floating and DateTime::TimeZone::UTC are now
+    singletons, since their internal state never changes
+
+- changes from 1.33:
+  * changes for the Falkland Islands
+
+- changes from 1.32:
+  * changes for Morocco and Chile
+
+-------------------------------------------------------------------
+Fri Apr  1 05:51:31 UTC 2011 - coolo@novell.com
+
+- update to 1.31:
+  Updates for Win32 time zones
+
+-------------------------------------------------------------------
+Mon Mar 14 22:07:05 UTC 2011 - pascal.bleser@opensuse.org
+
+- regenerated to use proper dependencies
+- update to 1.30:
+  * based on version 2011d of the Olson database
+  * includes changes for Samoa, Turkey, and Cuba
+- changes from 1.29:
+  * includes new zones, America/Sitka and America/Metlakatla, as well as
+    changes for Alaska and Chile
+- changes from 1.28:
+  * includes a new zone, America/North_Dakota/Beulah
+- changes from 1.27:
+  * includes historical updates for Australia and Hawaii
+- changes from 1.26:
+  * fix prereqs
+- changes from 1.25:
+  * attempting to determine the local time zone while inside a sort subroutine
+    could cause an error "Can't return outside a subroutine"; this was caused
+    by stack corruption that happens when an eval "use $module" fails
+    (RT#63106)
+- changes from 1.24:
+  * includes updates for Fiji
+  * all modules in the distro now have the same $VERSION
+- changes from 1.22:
+  * historical updates for Hong Kong
+- changes from 1.21:
+  * updates for Egypt and Palestine
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:36 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Aug  9 08:07:44 UTC 2010 - chris@computersalat.de
+
+- update to 1.20
+  - This release is based on version 2010k of the Olson database. This release
+    includes updates for Egypt, Finland (historical only), and Mexico. It also
+    renames Pacific/Truk to Pacific/Chuuk and Pacific/Ponape to Pacific/Pohnpei.
+
+-------------------------------------------------------------------
+Tue Jul 20 14:10:31 UTC 2010 - chris@computersalat.de
+
+- update to 1.19
+  - This release is based on version 2010j of the Olson database. This release
+    creates a new zone for Mexico (America/Bahia_Banderas).
+  - Dateline time zone on Win32 now always maps to a fixed -12:00 zone. Patch by
+    David Pinkowitz.
+- 1.18    2010-04-19
+  - This release is based on version 2010i of the Olson database. This release
+    includes changes for Morocco, Taiwan (historical only), and Argentina.
+- recreated by cpanspec 1.78
+  o fix deps
+- noarch pkg
+
+-------------------------------------------------------------------
+Sun Apr 11 21:42:25 UTC 2010 - chris@computersalat.de
+
+- update to 1.17
+  - Updated Win32 to Olson name translation mapping. Patch by David
+    Pinkowitz. RT #56445.
+- 1.16    2010-04-05
+  - This release is based on version 2010h of the Olson database. This release
+    includes changes for Tunisia and Pakistan.
+- 1.15    2010-03-29
+  - This release is based on version 2010g of the Olson database. This release
+    includes changes for Bangladesh, Palestine, and Russia.
+- 1.14    2010-03-22
+  - This release is based on version 2010f of the Olson database. This release
+    includes changes for Antartica, Syria, and Samoa.
+  - Moved code to my hg repo at http://hg.urth.org/hg/DateTime-TimeZone.
+- 1.13    2010-03-08
+  - This release is based on version 2010e of the Olson database. This release
+    fixes a bug in the Bangladesh zone introduced in 2010d.
+- 1.12    2010-03-08
+  - This release is based on version 2010d of the Olson database. This release
+    has changes for Bangladesh, Fiji, Samoa, and Chile.
+- other changes please see Changes file
+- removed .packlist, perllocal.pod files
+  > noarch package
+- cleanup spec
+  o removed useless comments
+  o fixed Header
+  o update License, Url, description
+  o fixed deps
+    - perl-macros < 1120
+    - perl(Cwd) >= 3
+    - perl(Test::Output)
+  o moved changelog to changes file
+  o macro usage
+  o Makefile.PL > Build.PL
+  o changelog to changes file
+
+-------------------------------------------------------------------
+Sat Jul 25 19:36:49 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Wed Jun 24 13:08:35 CEST 2009 - chris@computersalat.de
+
+- update to 0.91
+  - 0.91    2009-05-26
+    - This release is based on version 2009h of the Olson database. This
+      release has no user-visible changes, but I like to follow along
+      anyway.
+  - 0.90    2009-04-27
+    - This release is based on version 2009g of the Olson database. This
+      release has changes for Egypt.
+  - 0.89    2009-04-13
+    - This release is based on version 2009f of the Olson database. This
+      release has changes for Pakistan.
+  - 0.88    2009-04-06
+    - This release is based on version 2009e of the Olson database. This
+      release has changes for Jordan and Palestine.
+  - 0.87    2009-04-05
+    - The DateTime::TimeZone::Local module will now try to load a subclass
+      of the form DateTime::TimeZone::Local::$^O before falling back to
+      the Unix subclass. This allows you to provide a new subclass on
+      systems where the existing subclasses (Unix, Win32, and VMS) don't
+      get the right answer. Based on a patch from Olivier MenguÃ©.
+  - 0.86    2009-03-23
+    - This release is based on version 2009d of the Olson database. This
+      release has changes for Morocco, Tunisia, Syria, and Argentina.
+  - 0.85    2009-03-16
+    - This release is based on version 2009c of the Olson database. The
+      only changes in this release are for Cuba.
+    - Fixes for Win32 with Microsoft's December time zone update. This
+      updated added a zone for Mauritius that wasn't accounted for in the
+      DateTime::TimeZone::Local::Win32 module. Reported by David
+      Pinkowitz. RT #43535.
+    - Added a hack to fix some brokenness with Module::Build::Compat that
+      causes the compatibility Makefile.PL to fail on really old
+      ExtUtils::MakeMaker versions (6.17 and older). RT #43605.
+  - 0.84    2009-01-21
+    - This release is based on version 2009a of the Olson
+      database. Changes include spelling "Katmandu" as "Kathmandu" (with a
+      link for the old spelling), fixes for historical rules in
+      Switzerland, and changes to America/Resolute and Cuba for the past
+      few years (but not present).
+    - If DateTime::TimeZone::Local could not load its OS-specific subclass
+      because of a missing dependency, it would silently fall back on
+      loading the Unix subclass, rather than throwing an error. RT #41305.
+    - Fixed a bug where the short names for some time zones were
+      wrong. This mostly (exclusively?) manifested in time zone rules for
+      the first half of the 20th century or so.
+  - 0.8301  2008-11-07
+    - Test fixes only. The 19local-win32 tried to skip tests when they're
+      run without write access to the registry, but this was done in a
+      very broken way.
+  - 0.83    2008-10-27
+    - This release is based on version 2008i of the Olson database. The
+      major changes in this release are for Argentina.
+    - Updated the docs on how the local time zone is determined for
+      various platforms.
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- spec mods
+  o added header
+  o fixed desc, deps
+
+-------------------------------------------------------------------
+Sun Oct 26 13:34:44 UTC 2008 - gerrit.beine@gmx.de
+
+- update to 0.82
+
+-------------------------------------------------------------------
+Sun Jun  8 15:27:16 UTC 2008 - gerrit.beine@gmx.de
+
+- first release 0.7701
+

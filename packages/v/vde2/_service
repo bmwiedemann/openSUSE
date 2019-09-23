@@ -1,0 +1,14 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://svn.code.sf.net/p/vde/svn/trunk/vde-2/</param>
+    <param name="scm">svn</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">vde2</param>
+    <param name="versionformat">2.3.2+svn%r</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>

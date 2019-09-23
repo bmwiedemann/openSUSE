@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>74357d1f5836d348fcc7aa841d9a3fa1</srcmd5>
+    <version>0.5.0</version>
+    <time>1551284976</time>
+    <user>dimstar_suse</user>
+    <comment>ok</comment>
+    <requestid>679797</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4f33e0c7f3858d6d7271f6c4f76ed367</srcmd5>
+    <version>0.5.0</version>
+    <time>1553888157</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686322</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>17207fcace7cebd4076dffee1107acf0</srcmd5>
+    <version>0.5.1</version>
+    <time>1556915721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698096</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>08479f094a74053d6ab3d7e4f81087c0</srcmd5>
+    <version>0.5.2</version>
+    <time>1559902698</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.2
+ * support cryptography-2.7</comment>
+    <requestid>707622</requestid>
+  </revision>
+</revisionlist>

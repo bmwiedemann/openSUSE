@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Thu Apr 16 21:11:04 UTC 2015 - coolo@suse.com
+
+- updated to 1.25
+   see /usr/share/doc/packages/perl-Data-Compare/CHANGELOG
+
+  1.25    2013-04-15  DCANTRELL  Add Gianni Ceccarelli's tests and patch
+  				 to Use refaddr & reftype to "do the right
+  				 thing" when comparing objects that overload
+  				 numification and stringification
+
+-------------------------------------------------------------------
+Mon Sep 15 12:52:32 UTC 2014 - coolo@suse.com
+
+- updated to 1.24
+  Bump the required JSON.pm version for
+  tests - something's a bit broken around
+  about v 2.53
+
+-------------------------------------------------------------------
+Fri Oct  4 09:14:21 UTC 2013 - coolo@suse.com
+
+- updated to 1.23
+   Add David Muir Sharnoff's tests for
+   really big data structures (but not yet working);
+
+  Check for taint-mode less insanely
+
+-------------------------------------------------------------------
+Fri Jan 21 19:32:06 UTC 2011 - coolo@novell.com
+
+- initial package 1.22
+  * created by cpanspec 1.78.03
+

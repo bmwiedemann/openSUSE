@@ -1,0 +1,333 @@
+-------------------------------------------------------------------
+Mon Nov 12 01:01:19 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.8.16:
+  * Fix Compiz checking.
+  * Fix some GTK+ deprecations.
+  * Use GApplication for command line option parsing.
+  * Prevent multiple instances using GtkApplication.
+  * setup.py: Exit 1 for invalid arguments.
+  * Update translations.
+
+-------------------------------------------------------------------
+Thu Apr 20 20:22:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.8.14.1:
+  * Fix Compiz checking on Python3.
+  * Silence a RSVG API version startup warning.
+
+-------------------------------------------------------------------
+Tue Apr 18 11:10:04 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.8.14:
+  * Fixes for Python3.
+  * Update translations.
+- Switch to Python3.
+
+-------------------------------------------------------------------
+Wed May  4 16:34:01 UTC 2016 - sor.alexei@meowr.ru
+
+- Add missing python-gobject-cairo and python-gobject-Gdk
+  dependencies.
+
+-------------------------------------------------------------------
+Wed Mar 23 17:34:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.8.12:
+  * Target Compiz 0.8.x, not Compiz 0.9.x.
+  * Replace PyGObject2, PyGtk2 dependency with PyGObject3.
+    New minimal Gtk requirements are: either Gtk 2.24.10+ or
+    Gtk 3.2+, and now simple-ccsm needs CCSM 0.8.12 to work (older
+    versions couldn't work with CCSM 0.8.12 and higher).
+  * Add support for MATE.
+  * Drop KDE4 support hacks but now do show the desktop entry in KDE.
+  * Fix selection of the Default profile on non-English systems
+    resulting in creation of the new profile.
+  * Remove compiz-manager requirement and support.
+  * Don't crash when cubeaddon is not installed.
+  * Remove the Help button pressing which did nothing.
+- Remove simple-ccsm-compiz08.patch, simple-ccsm-mate-compat.patch:
+  merged upstream.
+- Cleanup dependencies.
+
+-------------------------------------------------------------------
+Thu Sep 24 16:43:59 UTC 2015 - sor.alexei@meowr.ru
+
+- Split simple-ccsm-lang package.
+- Obsolete simple-ccsm-kde.
+- Remove simple-ccsm-default-plugins_herbster0815.patch.
+- Add license file to package.
+- Update icon cache in postinst.
+- Add simple-ccsm-mate-compat.patch and regexp replacing gnomecompat
+  with matecompat in profiles: adapt for MATE.
+- Add simple-ccsm-compiz08.patch and regexp replacing 0.9.x plugins:
+  adapt for Compiz 0.8.x.
+- Remove update.sh: this is a released version.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Thu May 31 12:00:00 UTC 2012 - ku.b@gmx.de
+
+- correct license format
+
+-------------------------------------------------------------------
+Tue Apr 28 12:00:00 UTC 2011 - robertherb@arcor.de
+
+- Update to version 0.8.8
+- adapt to 0.8.8
+
+-------------------------------------------------------------------
+Thu May 27 20:13:55 UTC 2010 - dimstar@opensuse.org
+
+- Require the new python-ccm backend package instead of the
+  full compizconfig-settings-manager with gui.
+
+-------------------------------------------------------------------
+Mon Feb 22 09:47:38 UTC 2010 - dimstar@opensuse.org
+
+- Change name back to 'Desktop Effects' in the menu, bnc#581548.
+
+-------------------------------------------------------------------
+Mon Nov 16 10:35:23 UTC 2009 - dimstar@opensuse.org
+
+- Require compiz-plugins-main instead of compiz-fusion-plugins-main
+
+-------------------------------------------------------------------
+Fri Nov 13 09:05:40 UTC 2009 - dimstar@opensuse.org
+
+- Update to version 0.8.4:
+  + Fix KDE autostart
+  + Don't show simple-ccsm in kde.
+  + Enable desktop integration and gnomecompatibility on startup
+- Disable simple-ccsm-desktop.patch
+- Disable simple-ccsm-kde-enable.patch, upstreamed
+
+-------------------------------------------------------------------
+Sun Oct 11 10:38:25 UTC 2009 - dimstar@opensuse.org
+
+- Fix spelling in simple-ccsm-cm-dry.patch. Pointed out by
+  upstream.
+
+-------------------------------------------------------------------
+Fri Aug 21 12:14:57 UTC 2009 - dimstar@opensuse.org
+
+- Define new python macros on openSUSE <= 11.1
+
+-------------------------------------------------------------------
+Sun Aug  9 10:43:26 UTC 2009 - coolo@suse.com
+
+- use new python macros
+
+-------------------------------------------------------------------
+Tue Jan 27 17:00:27 UTC 2009 - davidr@novell.com
+
+- Include dmx plugin in all profiles (bnc#469843)
+
+-------------------------------------------------------------------
+Tue Jan 27 12:14:13 UTC 2009 - rodrigo@novell.com
+
+- Increment rollback timeout to 30 secs (bnc#467642)
+
+-------------------------------------------------------------------
+Fri Nov 28 17:01:03 UTC 2008 - rodrigo@novell.com
+
+- Use GtkMessageDialog's for the question/warning dialogs, to get
+  nice icons
+- Fix some issues with the timeout dialog callbacks
+
+-------------------------------------------------------------------
+Thu Nov 27 18:44:35 UTC 2008 - rodrigo@novell.com
+
+- Improve rollback mechanism with a timeout'ed dialog, which
+  restores previous settings if something goes wrong
+
+-------------------------------------------------------------------
+Fri Nov 21 12:55:08 UTC 2008 - rodrigo@novell.com
+
+- If running compiz fails, disable desktop effects (bnc#407729)
+
+-------------------------------------------------------------------
+Fri Nov 14 10:12:48 UTC 2008 - rodrigo@novell.com
+
+- Review and merge changes from X11:Compiz
+
+-------------------------------------------------------------------
+Fri Nov 14 06:04:10 UTC 2008 - cyberorg@opensuse.org
+
+- fixed simple-ccsm-explicitly-disable-compiz.patch
+  from Brandon Philips <bphilips@novell.com> (bnc#442138)
+
+-------------------------------------------------------------------
+Fri Nov  7 13:14:18 UTC 2008 - rodrigo@novell.com
+
+- Add simple-ccsm-cm-dry.patch to use os.system for the 'CM_DRY=yes
+  compiz-manager' command (bnc@407729) and deal correctly with
+  exceptions when executing kwriteconfig (bnc#441823)
+
+-------------------------------------------------------------------
+Tue Nov  4 12:11:39 UTC 2008 - rodrigo@novell.com
+
+- Review and merge changes from X11:Compiz
+
+-------------------------------------------------------------------
+Tue Nov  4 04:11:57 UTC 2008 - cyberorg@opensuse.org
+
+- Add NotShowIn=KDE; bnc #432330
+
+-------------------------------------------------------------------
+Mon Oct 27 15:08:28 UTC 2008 - rodrigo@novell.com
+
+- Removed explicit library Requires:
+- Add simple-ccsm-explicitly-disable-compiz.patch to create a
+  disable-compiz file in ~/.config/compiz to make sure compiz is
+  not started in gnome-session (bnc#436873)
+
+-------------------------------------------------------------------
+Mon Oct 13 10:50:10 UTC 2008 - rodrigo@novell.com
+
+- Review and merge changes from X11:Compiz
+
+-------------------------------------------------------------------
+Sun Oct 12 13:52:28 UTC 2008 - cyberorg@opensuse.org
+
+- simple-ccsm.desktop patch for better menu integration
+
+-------------------------------------------------------------------
+Tue Oct  7 11:31:32 UTC 2008 - rodrigo@novell.com
+
+- Review and merge changes from X11:Compiz
+
+-------------------------------------------------------------------
+Tue Oct  7 07:11:13 UTC 2008 - cyberorg@opensuse.org
+
+- Add wm plugin to all profiles
+- remove crashy imjpeg plugin from profiles bnc #432313 workaround
+
+-------------------------------------------------------------------
+Mon Oct  6 11:14:46 UTC 2008 - rodrigo@novell.com
+
+- Review and merge changes from X11:Compiz
+
+-------------------------------------------------------------------
+Sat Oct  4 15:52:42 IST 2008 - cyberorg@opensuse.org
+
+- include glx plugin in other profiles bnc #432301
+
+-------------------------------------------------------------------
+Mon Sep 29 16:59:43 CEST 2008 - rodrigo@novell.com
+
+- Review and merge changes from X11:Compiz
+
+-------------------------------------------------------------------
+Fri Sep 26 16:54:53 IST 2008 - cyberorg@opensuse.org
+
+- Fix enabling compiz on kde, simple-ccsm-kde-enable.patch
+
+-------------------------------------------------------------------
+Mon Sep 22 11:10:05 IST 2008 - cyberorg@opensuse.org
+
+- Fix profile handling when desktop effects are not enabled
+
+-------------------------------------------------------------------
+Wed Sep 17 20:26:10 IST 2008 - cyberorg@opensuse.org
+
+- Release 0.7.8
+- simple-ccsm-compiz-manager-cmd.diff add --replace
+
+-------------------------------------------------------------------
+Mon Sep 15 19:02:16 IST 2008 - cyberorg@opensuse.org
+
+- l10n updates
+- Reduce startup time
+- Add support for the extensible animation plugin
+
+-------------------------------------------------------------------
+Tue Jul  1 18:00:33 CEST 2008 - mhopf@suse.de
+
+- Updated from buildservice.
+
+-------------------------------------------------------------------
+Sat May 31 19:30:00 IST 2008 - cyberorg@opensuse.org
+
+- Removed hard-dependency on some plugins (e.g. animation),
+  simple-ccsm will now be able to start without them
+- New profiles: Minimal, Medium, Advanced and Ultimate
+- Show which accessibility features (zoom, colorfilter) are enabled
+- Cube effects (deformation, transparency, reflection) are now configurable
+- Window focus animation is now configurable
+
+-------------------------------------------------------------------
+Tue May 21 22:37:00 IST 2008 - cyberorg@opensuse.org
+
+- Fix typo in switch patch
+
+-------------------------------------------------------------------
+Tue May 21 22:12:00 IST 2008 - cyberorg@opensuse.org
+
+- add --replace to compiz command
+
+-------------------------------------------------------------------
+Mon May 21 00:02:00 IST 2008 - cyberorg@opensuse.org
+
+- enable compiz in kde kcontrol too
+
+-------------------------------------------------------------------
+Tue May 20 11:28:38 CEST 2008 - rodrigo@suse.de
+
+- Updated simple-ccsm-enable-desktop-effects.patch to use --replace
+  when starting compiz now that it's removed in compiz-manager
+
+-------------------------------------------------------------------
+Mon May 12 11:24:17 CEST 2008 - rodrigo@suse.de
+
+- Updated simple-ccsm-enable-desktop-effects.patch to use Python
+  API instead of spawning shell commands
+
+-------------------------------------------------------------------
+Fri May  9 16:47:13 CEST 2008 - rodrigo@suse.de
+
+- Changed True to true for .desktop field values
+
+-------------------------------------------------------------------
+Wed May  7 14:40:42 CEST 2008 - rodrigo@suse.de
+
+- Update simple-ccsm-enable-desktop-effects.patch to add startup
+  notification and add a test run before really activating compiz,
+  warning the user if hardware is not supported (bnc#386836)
+
+-------------------------------------------------------------------
+Mon May  5 14:33:56 CEST 2008 - rodrigo@suse.de
+
+- Add simple-ccsm-backports.patch that fixes many GUI glitches
+  (bnc#383345)
+- Updated simple-ccsm-enable-desktop-effects.patch to create/remove
+  a ~/.config/compiz/enable-compiz file so that gnome-wm knows what
+  WM is the preferred one (bnc#381675)
+
+-------------------------------------------------------------------
+Mon Apr 28 16:17:16 CEST 2008 - rodrigo@suse.de
+
+- Added missing dependency on compiz-fusion-plugins-main and
+  compizconfig-settings-manager (bnc#382509)
+
+-------------------------------------------------------------------
+Tue Apr 15 13:43:56 CEST 2008 - rodrigo@suse.de
+
+- Update simple-ccsm-enable-desktop-effects.patch to make simple-ccsm
+  now be the 'Desktop Effects' icon in control-center
+- Added compiz-manager to Requires:
+
+-------------------------------------------------------------------
+Fri Apr 11 14:02:16 CEST 2008 - rodrigo@suse.de
+
+- Update to version 0.7.4:
+  * Added expo plugin to effects page
+  * Added widget to configure global edge settings
+  * Added ‘mag’ plugin as ‘area zoom’ to zoom page
+- Added simple-ccsm-enable-desktop-effects.patch to allow activation
+  of compiz and its configuration all from the same place
+
+-------------------------------------------------------------------
+Fri Mar 07 01:20:00 IST 2008 - cyberorg@opensuse.org
+
+- 0.7.2 development release

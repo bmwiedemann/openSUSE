@@ -1,0 +1,8 @@
+<package name="perl-Net-Twitter" project="openSUSE:Factory">
+  <title>A perl interface to the Twitter API</title>
+  <description>This module provides a perl interface to the Twitter APIs. See
+&lt;http://apiwiki.twitter.com/Twitter-API-Documentation&gt; for a full
+description of the Twitter APIs.</description>
+  <devel project="devel:languages:perl" package="perl-Net-Twitter"/>
+  <url>http://search.cpan.org/dist/Net-Twitter/</url>
+</package>

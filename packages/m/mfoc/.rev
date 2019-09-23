@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2274e7950783ae8302e3ebd776b31597</srcmd5>
+    <version>0.10.2+</version>
+    <time>1348562552</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>134994</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2274e7950783ae8302e3ebd776b31597</srcmd5>
+    <version>0.10.2+</version>
+    <time>1359109442</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>09f7be88ddeff5e384efd96bd13e9771</srcmd5>
+    <version>0.10.2+</version>
+    <time>1362993773</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>158229</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f5c9f5764ee37ac1a631fbc7c92b5171</srcmd5>
+    <version>0.10.5+git16</version>
+    <time>1370513346</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 0.10.5
+* Adjust for new libnfc4-1.7.0 API</comment>
+    <requestid>177801</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7cbf11dfecee9c83c4d52d4b0709a66e</srcmd5>
+    <version>0.10.6</version>
+    <time>1376132606</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to final 0.10.6</comment>
+    <requestid>186344</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>7cbf11dfecee9c83c4d52d4b0709a66e</srcmd5>
+    <version>0.10.6</version>
+    <time>1379663284</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>7cbf11dfecee9c83c4d52d4b0709a66e</srcmd5>
+    <version>0.10.6</version>
+    <time>1409301891</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

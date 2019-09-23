@@ -1,0 +1,2530 @@
+-------------------------------------------------------------------
+Mon Sep  9 19:42:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.2:
+  + Bugs fixed: Prevents CTRL+F to be activated twice for a single
+    key press.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 10 08:44:51 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 14 18:59:05 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+- Rebase patches with refresh_patches service.
+
+-------------------------------------------------------------------
+Tue Mar 12 07:17:26 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rebase file-roller-3.4-change-archiver-priority.patch
+  (boo#1128813).
+
+-------------------------------------------------------------------
+Tue Mar  5 05:56:07 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 18 22:53:56 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 15 21:23:23 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan  8 04:44:06 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.2:
+  + Improved app icon.
+  + Overwrite dialog: added button to skip all existing files when
+    extracting.
+  + Use G_DECLARE_TYPE boilerplate.
+  + Updated translations.
+- Disable file-roller-3.4-change-archiver-priority.patch: Needs
+  rebase.
+
+-------------------------------------------------------------------
+Thu Jan  3 21:24:44 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.1:
+  + Removed the application menu.
+  + Updated application icon.
+
+-------------------------------------------------------------------
+Wed Sep 26 17:11:09 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  9 07:44:59 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + Updated translations.
+- Remove lang package from recommended package as it already
+  supplements main package (same effect, it's redundant).
+
+-------------------------------------------------------------------
+Tue Aug 28 23:03:45 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.91:
+  + Bugs fixed:
+    - Fixed loading of .epub and .crx files.
+    - Path traversal vulnerability. Do not extract files with
+      relative paths (bgo#794337).
+  + Updated translations.
+- Refresh patches with quilt, use autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jul 31 06:38:14 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.90:
+  + Restored app menu.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 28 00:12:43 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.1:
+  + New features and user visible changes: Removed app menu.
+
+-------------------------------------------------------------------
+Mon Jul 23 10:27:54 UTC 2018 - dimstar@opensuse.org
+
+- Help translation-update-upstream finding the right gettext domain
+  name: pass "po %{name}" to the call.
+
+-------------------------------------------------------------------
+Mon Jul 16 20:36:52 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.1:
+  + Bugs fixed: Keep "create" button disabled until a file name is
+    entered (bgo#789766).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 17 15:11:40 UTC 2018 - kstreitova@suse.com
+
+- Switch from "Recommends: p7zip" to "Recommends: p7zip-full" as
+  file-roller needs 7z/7za executables that are now packaged in the
+  p7zip-full package [bsc#899627]
+
+-------------------------------------------------------------------
+Tue Mar 20 17:35:23 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Mon Mar 12 20:17:02 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 20:19:53 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:25:22 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat Feb 24 20:47:54 UTC 2018 - bjorn.lie@gmail.com
+
+- No longer suggest lha and lrzip, they are no longer available in
+  openSUSE.
+
+-------------------------------------------------------------------
+Tue Feb 13 00:00:45 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.90:
+  + Bug fixed: File roller installs dbus service files to wrong
+    location.
+- Add pkgconfig(gthread-2.0) BuildRequires to avoid implicit
+  dependency.
+- Drop file-roller-fix-install.patch: fixed upstream.
+- Drop update-desktop-files BuildRequires and its macro: they are
+  not required anymore.
+- Point fdupes to the data directory instead of the build root,
+  which is a practice that must be avoided.
+
+-------------------------------------------------------------------
+Wed Feb  7 11:03:05 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.1:
+  + Ported to meson.
+  + unarchiver: check that XADFileSize is set before reading it.
+    Lsar does not set XADFileSize for directories, so we would
+    output a critical when encountering one (bgo#791505).
+  + nautilus-fileroller: Avoid the use of g_dgettext.
+  + rar archives: wrong file date when using rar 5.30 or higher.
+    adapt to the new format (bgo#758121).
+  + Support squashfs filesystems and .snap files (bgo#662519).
+  + Updated translations.
+- Drop file-roller-rar-file-date.patch and
+  file-roller-unar-dir-critical.patch: fixed upstream.
+- Rebase file-roller-3.4-change-archiver-priority.patch.
+- Convert to meson build system:
+  + Add meson BuildRequires.
+  + Replace configure/make/make_install macros with
+    meson/meson_build/meson_install.
+- Add file-roller-fix-install.patch: Fix installation location for
+  dbus service files (bgo#793248).
+
+-------------------------------------------------------------------
+Wed Dec 13 19:02:07 UTC 2017 - mgorse@suse.com
+
+- Add file-roller-ignore-unrar-if-wrapper.patch: Since unrar is
+  non-free and it is planned to include a limited wrapper that
+  would call unar, we should avoid this wrapper and call unar
+  directly (bsc#1072118).
+- Add file-roller-rar-file-date.patch: fix wrong file date when
+  using rar 5.30 or higher (bgo#758121).
+- Add file-roller-unar-dir-critical.patch: fix a warning when
+  parsing lsar output (bgo#791505).
+
+-------------------------------------------------------------------
+Tue Oct 31 22:06:03 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.2:
+  + Updated translations.
+- Update Url to https://wiki.gnome.org/Apps/FileRoller: current
+  File Roller's wiki page.
+- Drop pkgconfig BuildRequires: devel packages implicit dependency.
+- Pass  --enable-libarchive and --enable-notification to configure:
+  making sure the features we want are enabled.
+
+-------------------------------------------------------------------
+Tue Oct  3 21:15:22 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.1:
+  + Updated translations.
+- Drop %glib2_gsettings_schema_*, %desktop_database_* and
+  %icon_theme_cache_* post/postun/requires macros: functionality
+  now covered by file triggers.
+
+-------------------------------------------------------------------
+Mon Sep 11 17:39:49 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 10 15:51:27 UTC 2017 - aloisio@gmx.com
+
+- Re-recommend unar since (boo#1034091 and boo#1055816) were
+  fixed.
+
+-------------------------------------------------------------------
+Wed Sep  6 05:25:58 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.25.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 26 08:04:48 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.1:
+  + New features and user visible changes:
+    - Filter: match any filename that contains the string, not just
+      filenames that begin with the string.
+    - Use Unicode in translatable strings (bgo#774008).
+  +  Bugs fixed:
+    - Never tries WINDOWS-1252 encoding (bgo#785081).
+    - Do not activate 'file delete' when pressing Delete in the
+      filter entry.
+
+-------------------------------------------------------------------
+Sat Aug 26 07:04:48 UTC 2017 - olaf@aepfle.de
+
+- Do not recommend unar (bsc#1034091, bsc#1055816)
+
+-------------------------------------------------------------------
+Fri Aug 11 10:54:20 UTC 2017 - fcrozat@suse.com
+
+- Recommands unar instead of unrar, it does the same job but is
+  under a free license.
+
+-------------------------------------------------------------------
+Mon Apr 24 17:17:55 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.1:
+  + Cannot browse archive, extract or open files when running on
+    Wayland (bgo#772850).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 20 20:29:34 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 09:55:36 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.92:
+  + nautilus-fileroller: remove compress support (bgo#779706).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  3 12:11:23 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.91:
+  + Restore Nautilus extension for the format types not supported
+    by Nautilus (bgo#772765).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 27 20:37:46 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.22.3:
+  + Fixed crash after extracting a file (bgo#778846).
+  + Updated translations.
+- Drop file-roller-open-dest-dialog-only-when-using-notify.patch,
+  file-roller-libarchive-dont-convert-null-strings.patch and
+  file-roller-fix-crash-after-extracting.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sun Feb 19 10:59:10 UTC 2017 - zaitor@opensuse.org
+
+- Add file-roller-open-dest-dialog-only-when-using-notify.patch:
+  Show the 'open destination' dialog only when using --notify and
+  only for the last extracted archive.
+- Add file-roller-libarchive-dont-convert-null-strings.patch: Don't
+  convert null strings to utf8.
+- Add file-roller-fix-crash-after-extracting.patch: Fix a crash
+  after extracting a file (bgo#778846, boo#1022082).
+
+-------------------------------------------------------------------
+Fri Nov 11 10:19:11 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.2:
+  + file-roller does not respect sort order for folders
+    (bgo#630543).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 10 17:24:41 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Remove handling of Comic Books archives. Handle Source RPMs
+    (bgo#767244).
+  + fr-new-archive-dialog: Do not fail if access::can-write is not
+    set (bgo#688714).
+  + Fix crash when compressing remote files (bgo#767577).
+  + window:
+    - Use gdk_cursor_new_for_display() (bgo#767534).
+    - Set the paned as the drag destination (bgo#767621).
+  + Dialog title displayed untranslated (bgo#756917).
+  + Updated translations.
+- Drop file-roller-revertfix-fr_application_local.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Thu Sep 29 07:41:53 UTC 2016 - zaitor@opensuse.org
+
+- Add file-roller-revertfix-fr_application_local.patch: Allow
+  multiple windows of file-roller (bgo#772148).
+
+-------------------------------------------------------------------
+Mon Sep 19 18:16:27 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 14 20:03:36 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + New features and user visibile changes: Remove nautilus
+    extension. For GNOME 3.22, this functionality is now built
+    directly into nautilus (bgo#770248).
+  + Bugs fixed: bgo#766271, bgo#766227, bgo#752476.
+  + Updated translations.
+- Drop sub-package nautilus-file-roller and obsolete it from the
+  main package, following upstreams removal. Also drop
+  pkgconfig(libnautilus-extension) BuildRequires: No longer needed.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+- Run spec-cleaner, add pkgconfig BuildRequires, and generally
+  fresh spec up to date.
+- Switch the following Requires for Recommends: bzip2, cpio, gzip,
+  rpm and unzip.
+- Promote p7zip to Recommends from Suggests, and also add lrzip to
+  Suggests as we now have it available in Tumbleweed.
+
+-------------------------------------------------------------------
+Mon Sep  5 12:28:25 UTC 2016 - zaitor@opensuse.org
+
+- Drop genisoimage Requires: We no longer want to hard require it.
+
+-------------------------------------------------------------------
+Wed Aug 17 15:00:50 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Added support for lz4 compressed tar archives (bgo#770016).
+  + Added support for lz4 compressed files (bgo#770016).
+  + file-roller can delete the content of local folders upon
+    extraction, if archive contains symbolic links pointing to
+    absolute paths (bgo#698554).
+  + Disambiguate translatable strings adding context (bgo#696838).
+
+-------------------------------------------------------------------
+Wed Aug 17 14:55:49 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.3:
+  + file-roller can delete the content of local folders upon
+    extraction, if archive contains symbolic links pointing to
+    absolute paths (bgo#698554).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 19 03:41:16 UTC 2016 - tyang@suse.com
+
+- Update to GNOME 3.20.2  Fate#318572
+
+-------------------------------------------------------------------
+Mon May  9 19:56:10 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + Extract here: show the 'operation completed' dialog.
+  + Avoid tarbombs when using extract here (bgo#766071).
+  + Fix extracting files with single-character names (bgo#761582).
+  + Fix Add Files dialog button sensitivity (bgo#738177).
+  + Fix GSettings schema validation with recent GLib (bgo#756607).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 14 06:07:59 UTC 2016 - tyang@suse.com
+
+- Update to GNOME 3.20 Fate#318572
+- Drop patch:0001-libarchive-correctly-extract-sparse-files.patch
+  which is an Upstreamed patch.
+
+-------------------------------------------------------------------
+Tue Apr 12 11:51:15 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Most of file-roller appears untranslated (bgo#764342).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 21 20:32:40 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 15 10:41:04 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 15 21:13:53 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb  4 07:16:36 UTC 2016 - tyang@suse.com
+
+- Replace file-roller-3.10-extract-sparse-file.patch with
+  0001-libarchive-correctly-extract-sparse-files.patch
+  Upstream provides final patch for bnc#923449.
+  See it in:https://bugzilla.gnome.org/show_bug.cgi?id=747091
+
+-------------------------------------------------------------------
+Tue Jan 19 12:33:04 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.1:
+  + New features and user visible changes:
+    - Added support for .click packages (bgo#752133).
+    - Use a message dialog to show the result of an extraction
+      (bgo#748428).
+    - Modernized the 'update files' dialog.
+    - Removed the quit button from the confirmation dialog.
+    - Make Nauitlus select the extracted file.
+  + Bugs fixed:
+    - Only show the menubar when the shell shows the menubar
+      (bgo#730291).
+    - libarchive: correctly extract sparse files (bgo#747091).
+    - Updated MimeType in org.gnome.FileRoller.desktop
+      (bgo#747639).
+    - Fix documentation typos (bgo#758814).
+    - Error extracting files using file-roller with unar with the
+      character [ (bgo#755580).
+    - Stop mis-treating p7zip 15.09 as pre-4.55 (bgo#757793).
+    - Add a configure environment variable to select the cpio path.
+    - Appdata: added kudos.
+    - Removed deprecated widgets from .ui files.
+    - Added support for the official debian package mime type.
+    - Fixed message dialog showing a (null) string.
+    - Fixed memory leaks: bgo#752476, bgo#752476, bgo#752476,
+      bgo#752476, bgo#752476, bgo#752476, bgo#752476, bgo#752476.
+  + Updated translations.
+- Drop file-roller-extract-sparse-file.patch: fixed upstream.
+- Suggest p7zip instead of recommending it.
+
+-------------------------------------------------------------------
+Sat Oct 24 12:06:25 UTC 2015 - zaitor@opensuse.org
+
+- Add patch: file-roller-extract-sparse-file.patch: Fix extraction
+  of sparse file (bsc#923449, bgo#747091).
+
+-------------------------------------------------------------------
+Tue Sep  1 11:12:54 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.4:
+  + Better rar support when unrar is installed.
+  + Crashes on drag'n'drop (bgo#746236).
+  + Fixed possible crash (bgo#753951).
+  + Mac OS X compilation fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 30 16:20:27 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.3:
+  + Fixed multivolume rar archives not working even when rar or
+    unrar are installed (bgo#747141).
+  + Fixed build on OpenBSD (bgo#748791).
+  + trivial: Fix a wrong header guard in src/fr-enum-types.h
+    (bgo#750485).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 12 10:45:26 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Fixed memory leak.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 23 09:06:04 UTC 2015 - tyang@suse.com
+
+- Add file-roller-3.10-extract-sparse-file.patch:
+  Extract sparse file issue(bnc#923449).
+
+-------------------------------------------------------------------
+Wed Apr 15 07:32:47 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + Untranslated entries in Nautilus menus (bgo#747318).
+  + don't merge translations into gschema file (bgo#747304).
+  + gtk-utils: fix missing string format argument (bgo#747065).
+  + icon: provide a symbolic variant of the app icon. since gnome
+    3.16 used for the high contrast theme (bgo#747019).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 23 18:39:08 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 08:40:25 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 12:31:47 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + Fixed Compress command visible for trash and disk drive on
+    desktop (bgo#744448).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 16 21:35:53 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + New features and user visible changes:
+    - Use the header-bar for the progress dialog.
+    - Use libarchive to read/write tar.lrz, tar.lzo, zip, and to
+      read deb, rar and rpm.
+  + Bugs fixed:
+    - Cannot delete files from password protected 7zip archives
+      (bgo#618909).
+    - file-roller delete file in certain circumstances
+      (bgo#536834).
+    - Extracting (by drag & drop) causes an error when the mouse is
+      hovering Chromium (bgo#735857).
+    - Make dialogs respect gtk-dialogs-use-header setting
+      (bgo#741925).
+    - Deleting all files does not work (bgo#738178).
+    - Dragging a file to desktop doesn't work (bgo#479351).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 10 15:06:24 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 18 16:51:24 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.1:
+  + file-selector-dialog: Use symbolic icon for the go up button
+    (bgo#735438).
+  + request-dialog: Remove the unneeded image (bgo#735438).
+  + Make the error dialogs more modern. Make it a real
+    GtkMessageDialog. Also, remove the icon, we not needs it
+    anymore. (bgo#735438).
+
+-------------------------------------------------------------------
+Thu Nov 13 20:21:53 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 13 17:57:45 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 22 19:26:38 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations. 
+
+-------------------------------------------------------------------
+Tue Sep 16 09:56:34 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  1 22:30:06 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.91:
+  + Bugs fixed:
+    - fr-command-rar: check for NULL in name_field (bgo#735657).
+    - "New Archive" should have an ellipsis (bgo#735440).
+    - Remove the close action from the gear menu (bgo#735400).
+    - window: Use the new support for RTL icons in GtkIconTheme
+      (bgo#735399).
+    - window: Make the navigation buttons linked and separate the
+      home button. Also, remove the 12px at the end of the
+      navigation (bgo#735398).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 21 20:47:02 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.2:
+  + Use new menu button icon (bgo#733511).
+  + Drop the use of smclient and eggdesktopfile (bgo#731331).
+  + Added appdata file (bgo#732642).
+  + Add missing unref when accessing NautilusFileInfo object.
+    This caused Nautilus to crash when unmounting a network
+    connection while transferring and then reconnecting to that
+    service (bgo#732471).
+  + Updated translations.
+- Drop pkgconfig(ice) and pkgconfig(sm) BuildRequires: no longer
+  required.
+
+-------------------------------------------------------------------
+Sat May 17 12:30:12 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.1:
+  + Use the headerbar in the dialogs (bgo#727063).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 17 11:34:07 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Bugs fixed: Fixed file-roller having no icon and wrong name.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 15 05:46:36 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Make DBus-activatable (bgo#728009).
+  + "Open with" does not work (bgo#727215).
+  + Updated translations.
+- Update .desktop file name following upstream changes.
+
+-------------------------------------------------------------------
+Tue Mar 25 12:33:31 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated help pages.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 19 10:55:45 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  3 21:41:48 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 17 20:49:59 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + New features and user visible changes: Show more rows in the
+    drag icon when dragging multiple rows.
+  + Bugs fixed: Fixed wrong drag&drop activation when in single
+    click mode.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  3 20:29:41 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.5:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 24 23:40:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.4:
+  + Use a HeaderBar instead of a Toolbar.
+  + Removed the statusbar.
+  + Bugs fixed:
+    - src/gtk-utils.c: non-void function should return a value
+      (bgo#722002).
+    - Cannot extract .tar.lzop archives (bgo#720279).
+    - file-roller should not require sudo/root to extract an iso
+      (bgo#721093).
+    - Align better the buttons in the header bar (bgo#720904).
+    - Removed all the deprecated functions from the source code.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 24 23:30:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + New features and user visible changes:
+    - App menu: standardize Help/About/Quit (bgo#720142).
+    - App menu: rename Folders to Sidebar (bgo#708655).
+    - Use a menubar if the shell doesn't support the app menu
+      (bgo#715020).
+  + Bugs fixed:
+    - 7zip: fixed error when deleting files from an archive with
+      encrypted header.
+    - zip: added ear and war to the supported types list.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 24 23:20:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.2:
+  + bgo#711745: rar: fixed error with some password protected
+    files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 24 23:10:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.1:
+  + Improved XDS dnd support allowing gedit to open a file or
+    nautilus to reveal an extracted file (bgo#710546).
+  + Application name appears untranslated (bgo#710982).
+  + Fixed crash when clicking the open button after creation
+    (bgo#710576).
+  + Fixed crash when asking whether to overwrite a file.
+  + libarchive: do not fail for a warning.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 24 23:02:04 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.10.2.1:
+  + rar: fixed error with some password protected files
+    (bgo#711745).
+
+-------------------------------------------------------------------
+Mon Nov 11 22:09:07 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.2 (bnc#849913):
+  + Application name appears untranslated (bgo#710982).
+  + Fixed crash when clicking the open button after creation
+    (bgo#710576).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 14 21:08:12 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Fixed error when extracting tar archives (bgo#709932,
+    bgo#709035).
+  + Updated translations.
+- Drop file-roller-fix-tar-extraction.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Sep 29 13:06:25 UTC 2013 - zaitor@opensuse.org
+
+- Add file-roller-fix-tar-extraction.patch, fixes untaring that
+  failed on some tar files (bgo#697756, bgo#709035).
+- Remove V=1 from make as it only fills up the obs buildlog to no
+  use, debugging is done locally anyway.
+- Add lzip and lzop to suggested packages, as these are now
+  available in openSUSE.
+- Stop passing --disable-scrollkeeper to configure, neither
+  recognized nor needed anymore.
+- Remove %if conditional for obsolete versions of openSUSE, those
+  are out of support a long time ago.
+
+-------------------------------------------------------------------
+Mon Sep 23 20:12:10 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 17 15:16:13 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.92:
+  + libarchive: restore the folders modification time correctly
+    (bgo#697756).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  3 06:39:05 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.91:
+  + zip: ask the password again when the user provides the wrong
+    password (bgo#707114).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 19 20:09:55 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Added possibility to view the password entry content
+    (bgo#604923).
+  + Progress and message dialogs: fixed unnecessary word breaking
+    (bgo#702919).
+  + libarchive: restore directory modification time when extrating
+    (bgo#697756).
+  + Cannot add files to a subfolder with zip and 7zip archives
+    (bgo#703420).
+  + 7zip: fixed file deletion from jar, war, ear archives
+    (bgo#701739).
+  + Error creating 7zip archives for directories without write
+    permission (bgo#651494).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul  8 22:14:10 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.4:
+  + Add Files: disable the Add action if no file is selected
+    (bgo#703187).
+  + Require glib 2.36 (bgo#703552).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun 20 14:25:27 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.3:
+  + 'Add files' dialog: use a GtkPlacesSidebar for the sidebar.
+  + Bugs fixed:
+    - Do not allow to create a second 'New Archive' dialog
+      (bgo#701992).
+    - New dialog: use correct method to get the selected directory
+      (bgo#701297).
+    - libarchive: sanitize filenames before extracting.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 28 06:43:20 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.2:
+  + Do not allow to save as the original name (bgo#700892).
+  + Fixed the build.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May  1 08:15:53 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.1:
+  + Adedd .tar.rz support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 15 22:01:24 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Use the correct property to set GtkMenuButton's menu.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 25 21:07:28 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 19 08:07:07 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + bgo#695672: Compressed files have a minmum size of 10240 bytes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 11 20:45:56 UTC 2013 - dimstar@opensuse.org
+
+- Recommend instead of suggest p7zip: additional formats are
+  supported and we do have the package available.
+
+-------------------------------------------------------------------
+Mon Mar  4 23:14:05 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.7.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 18 22:03:27 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.90:
+  + Use ; as the separator for the desktop file Keywords section
+    (bgo#693231)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 12 10:52:48 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.3:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 12 10:14:12 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.2:
+  + Support notification filtering (bgo#691048)
+  + Don't show in KDE Menus (bgo#691051)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 12 09:37:39 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.1:
+  + New features and user visible changes:
+    - Changed the main window layout: removed the menubar; added a
+      menu button on the toolbar that contains the secondary
+      archive actions. (bgo#684117)
+    - Add Microsoft Cabinet to the supported mime types
+      (bgo#689205)
+  + Bugs fixed: bgo#688648, bgo#578837, bgo#686321
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 12 08:12:41 UTC 2013 - dimstar@opensuse.org
+
+- Stop renaming to file-roller in the .desktop menu: Upstream calls
+  it 'Archive Manager', and this has more meaning to the user than
+  'File Roller' (bnc#803191).
+
+-------------------------------------------------------------------
+Wed Nov 28 20:17:14 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.3:
+  + Crash when pasting a deleted file. (bgo#688627)
+  + Fixed the 'next' button still activated when it should not.
+    (bgo#688648)
+  + zip archives: file-roller doesn't delete directories.
+    (bgo#632339)
+  + The properties panel shows an incorrect number of files.
+    (bgo#688634)
+  + Match Nautilus behavior for back and forward buttons.
+    (bgo#578837)
+  + Fixed crash when using the --extract-to option. (bgo#686321)
+  + Fixed cut & paste for rar/arj/lhz archives when cutting all the
+    files in the archive.
+  + Fixed file deletion for encrypted rar archives.
+  + Fixed renaming for files starting with '--'.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov 12 21:22:10 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.2:
+  + Fails when tryings create zip files if is in "maximum"
+    compression level (bgo#686655).
+  + Updated translations.
+- Add file-devel BuildRequires: it is what actually provides
+  magic.h / libmagic devel files.
+- Change --disable-magic configure parameter to --enable-magic in
+  order to ensure libmagic is being found.
+
+-------------------------------------------------------------------
+Wed Oct 17 21:10:20 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1.1:
+  + Fixed crash on startup. (bgo#686230, bgo#685108)
+  + Register .ar files as supported.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 15 20:06:23 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Fix creation of hard links when using libarchive (bgo#686061)
+  + Fix crash when opening multi-volumes rar archives (bgo#685314)
+  + Fix crash when the package installer is activated (bgo#684941)
+  + Fix creation of encrypted archives.
+  + Fix creation of multi-volume archives.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 24 20:17:49 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 21:08:21 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.5.92:
+  + Install the app menu only if there's the gnome-shell showing it
+    (bgo#683759).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  3 19:41:18 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.91:
+  + Nautilus extension "Compress" doesn't offer .gz anymore
+    (bgo#682807)
+  + Fixed build without libarchive support (bgo#682774)
+  + libarchive: restore the file attributes when extracting
+    (bgo#682513)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  2 19:18:12 UTC 2012 - dimstar@opensuse.org
+
+- Add file-roller-pkg-match.patch: Update the package match list
+  for PackageKit to be able to install the right packages when
+  needed (bnc#696530).
+
+-------------------------------------------------------------------
+Mon Aug 20 20:30:12 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + New features and user visible changes:
+    - Use a single 'Add files' dialog that allows to add both files
+      and folder instead of having two separated commands
+      'Add files' and 'Add folder'.
+    - Make the "New Archive" dialog look like the "Compress" dialog
+      (bgo#681232)
+    - Extract dialog: always ask whether to overwrite existing
+      files (removed the overwrite option)
+    - Properties dialog: allow to open the archive's folder.
+    - 'Add files' dialog: added option to follow symbolic links.
+    - Edit->Password applies the password to already existing files
+      in the archive (bgo#144391)
+    - Password dialog: show an error message when the password is
+      wrong.
+    - File list sorting: always keep the directories first, even
+      when sorting in reverse order.
+  + Bugs fixed:
+    - Removed non existant keys from the .convert file (bgo#682022)
+    - Fixed crash when opening compressed files. (bgo#681766)
+    - Fixed crash when extracting an archive from the nautilus
+      context menu. (bgo#681473)
+    - Fixed crash when extracting from the Extract dialog.
+  + Updated translations
+
+-------------------------------------------------------------------
+Mon Aug  6 20:18:41 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + New features and user visible changes:
+    - Optionally use libarchive to handle tar, cpio, lha archives
+      and ISO images.
+    - Notify the completion of a long operation with the system
+      notification system (requires libnotify).
+    - Removed the Stop action from the View menu.
+    - Removed the Help buttons from the dialogs.
+    - Updated the user help.
+  + Bugs fixed:
+    - Can't open file inside a .rar archive (with unar)
+      (bgo#680676)
+    - Change "Re-create folders" to "Keep directory structure"
+      (bgo#681235)
+  + Internal code changes:
+    - Huge internal code refactoring to allow the use of
+      libarchive. This can bring some regressions.
+  + Updated translations.
+- Add pkgconfig(libarchive) and pkgconfig(libnotify) BuildRequires,
+  allowing the new features to be built.
+- Rebase file-roller-3.4-change-archiver-priority.patch.
+- Pass --disable-magic to configure: we don't have libmagic
+  packaged yet.
+
+-------------------------------------------------------------------
+Tue Jul 17 11:40:20 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.3:
+  + Allow to extract rar archives with 'The Unarchiver'. requires
+    json-glib (bgo#646606)
+  + "Folder Content could not be displayed" error when using
+    --extract. (bgo#678884)
+  + Updated translations.
+- Add pkgconfig(json-glib-1.0) BuildRequires: new dependency.
+- Rebase file-roller-3.4-change-archiver-priority.patch.
+
+-------------------------------------------------------------------
+Mon Jun 25 21:08:00 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.2:
+  + New features and user visible changes:
+    - Allow the user to cancel addition and deletion of files to an
+      exiting archive.
+    - Progress dialog: show the number of remaining files to
+      complete the operation; show the archive name in the main
+      message.
+    - Removed the stop button from the toolbar. The user can use
+      the progress dialog cancel button to stop a long operation.
+    - Enabled interactive search in the file list. The user can
+      just start typing the name of a file and if present in the
+      list it will get selected.
+    - Removed the help buttons from the dialogs.
+  + Internal code changes:
+    - Renamed the D-Bus interface as org.gnome.ArchiveManager1. 
+    - Use the file-roller extecutable as a D-Bus service as well,
+      instead of using a separate executable.
+    - Define the progress dialog and other dialogs in external files, 
+      saved as gresources.
+    - Added a prefix to the utility functions for a better
+      organization and readability of the code.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 18 10:10:17 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.1:
+  + Use GtkApplication
+  + Added an application menu
+  + Use GResource to store ui files
+  + Removed markup in translatable messages
+  + Ported to the new documentation infrastructure
+  + Updated translations.
+- Replace gnome-doc-utils-devel BuildRequires with yelp-tools
+  following upstreams change of documentation infrastructure.
+
+-------------------------------------------------------------------
+Sun Jun 17 17:29:05 UTC 2012 - gankov@opensuse.org
+
+- Add file-roller-3.4-change-archiver-priority.patch : Give 'unzip'
+  a higher priority than '7z' when choosing the packer/unpacker
+  tool. Even though 7z would have slight better compression, unzip
+  has better results with non-latin character sets (due to added
+  librcc support in openSUSE). We favor having a better visible
+  user experience to slight better compression ratios (bnc#767386).
+
+-------------------------------------------------------------------
+Mon May 14 20:41:44 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 17 06:03:24 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 20:57:21 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 16:27:27 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 22:05:14 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.91:
+  + 'All files' entry is duplicated in available formats combobox
+    (bgo#671029)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 21 08:07:39 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.90:
+  + User visible changes:
+    - Ask overwrite confirmation when extracting files with
+      drag&drop.
+  + Bugs fixed:
+    - Can't open ".war" format since 3.2. (bgo#664269)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 19 15:46:18 UTC 2012 - dimstar@opensuse.org
+
+- Add pkgconfig(ice) and pkgconfig(sm) BuildRequires to fix build
+  after the relayout of the xorg-x11 packages.
+
+-------------------------------------------------------------------
+Tue Feb  7 09:34:49 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.3:
+  + Allow to compress ISO images and tar archives from the nautilus
+    menu (bgo#651930)
+  + Fixed bug when pasting files in another path.
+  + Fixed a typo in the description of a gsettings key (bgo#644683)
+  + Updated translations.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Tue Jan 17 08:01:54 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.2:
+  + Removed the "Last Output" command.
+  + Improvements to the user's manual.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 20 09:54:11 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.3.1:
+  + Updated the user manual
+  + Change strings to use ellipsis (bgo#666447)
+  + Improvement for string in password dialog (bgo#666297) and
+    archive properties dialog (bgo#666295)
+  + Fixed padding in the request and error dialogs (bgo#666075)
+  + Bad string in the error dialog 'Could not rename the file'
+    (bgo#666075)
+  + Improve string in error dialog (bgo#666070)
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Tue Nov 15 10:09:22 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 17 19:33:30 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.1:
+  + Do not crash if nautilus schema is not present
+  + Use $(DISABLE_DEPRECATED) in copy-n-paste/Makefile.am
+- Drop file-roller-no-crash-without-nautilus.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Oct 10 09:08:10 UTC 2011 - vuntz@opensuse.org
+
+- Add file-roller-no-crash-without-nautilus.patch: do not crash if
+  nautilus is not installed. Fix bnc#722863.
+
+-------------------------------------------------------------------
+Mon Sep 26 19:31:25 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Fixed duplicated folders in the file list. (bgo#659906)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 21 16:06:23 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.92:
+  + Use natural order when sorting by filename (bgo#658173)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Mon Sep  5 21:06:25 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.91:
+  + Fixed loading of multi-volume rar archives with 7zip
+  + Removed use of a deprecated function
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 30 17:07:41 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.90:
+  + Fixed loading of zip archives with zip/unzip. (bgo#653404)
+
+-------------------------------------------------------------------
+Tue Aug 16 04:12:14 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.2:
+  + Added an icon in the progress dialog.
+  + Ask to install unzip if only zip is installed when opening zip
+    archives.
+  + Fixed build with --enable-run-in-place
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 25 23:00:38 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.1:
+  + New features and user visible changes:
+    - Drag&Drop: use the dragged row as drag icon
+  + Bugs fixed:
+    - Pointer arithmetic fixes for end of string access
+      (bgo#651416)
+    - Remove G_CONST_RETURN from file-roller (bgo#644611)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri May 27 10:03:44 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.0.2:
+  + bgo#603757: Fix implementation and use of the alternative
+    package name lookup, when installing the missing utilities.
+  + bgo#646562: Can't open rar files with password protected file
+    data and headers.
+  + Fixed crash when loading rpm files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 11 07:31:18 UTC 2011 - dimstar@opensuse.org
+
+- Change old-style -devel BuildRequires to pkgconfig() equivalents:
+  + Old: glib2-devel, nautilus-devel
+  + New: glib-2.0, libnautilus-extension
+- Replace gtk2-devel with pkgconfig(gtk+-3.0) to ensure we do have
+  GTK+ 3.0 available.
+
+-------------------------------------------------------------------
+Wed Apr 27 11:47:58 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.1:
+  + bgo#648472: crash on exit after using Open With.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr  5 15:30:33 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 28 15:30:39 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.93:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 22 15:26:37 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.92:
+  + Non-fuzzy app icon ('highres') (bgo#645156)
+  + Fix translation of New... and Open... (bgo#644951)
+  + Updated translations.
+- Add dbus-1 BuildRequires for directory ownership.
+
+-------------------------------------------------------------------
+Fri Feb 25 16:58:58 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.90:
+  + Fixed extraction of zip archives when "unzip" is used
+    (bgo#639664)
+  + Updated translations.
+- Changes from version 2.91.6:
+  + Fixed error when creating zip archives with files starting
+    with an hyphen (bgo#639664)
+  + Added focus stealing prevention code (bgo#318108)
+  + Updated translations.
+- Changes from version 2.91.5:
+  + Use the new Gtk+ app chooser dialog for the "Open With"
+    command.
+  + Updated translations.
+- Changes from version 2.91.4:
+  + Fixed compilation with GTK+ 2.91.7
+- Changes from version 2.91.3:
+  + Fixed GetSupportedTypes method name (bgo#636125)
+  + Fixed distribution of the D-Bus service files.
+  + Updated translations.
+- Changes from version 2.91.2:
+  + New features and user visible changes:
+    - Added a D-Bus service to create and extract archives.
+      (bgo#627732)
+    - 7z: changed the compression level options (bgo#635083)
+  + Bugs fixed:
+    - Fixed build without packagekit (bgo#634356)
+  + Updated translations.
+- Changes from version 2.91.1:
+  + New features and user visible changes:
+    - Added Windows Imaging Format (.wim, .swm) support.
+    - Save the configuration files in the XDG config subdirectory
+      instead of using $HOME/.gnome2, and provide an automatic
+      migration mechanism. (bgo#522812)
+  + Bugs fixed:
+    - Fixed crash when clicking Cancel in Add Files (bgo#631472)
+  + Updated translations.
+- Changes from version 2.91.0:
+  + New features and user visible changes:
+    - Ported to GSettings
+    - Ported to Gtk+ 3.0
+  + Bugs fixed:
+    - Package installer: don't display an error message if the
+      user cancelled the operation.
+  + Updated translations.
+- Remove pkgconfig(gconf-2.0) BuildRequires.
+- Remove gconf2-devel BuildRequires and %gconf_schemas_prereq. Do
+  not pass --disable-schemas-install to configure, since this is
+  needed for gconf only.
+- Use %glib2_gsettings_schema_* macros.
+
+-------------------------------------------------------------------
+Sun Feb 13 14:05:12 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Stop calling update-mime-database in %post/%postun: there is no
+  mime type definition.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Tue Nov 16 09:23:33 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.32.1:
+  + bgo#631472: crash when clicking Cancel in Add Files
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 28 00:39:35 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + Fixed call to the package installer. (bgo#629604)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 13 22:43:42 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.92:
+  + bgo#550946: Truncated file names in iso images.
+  + bgo#628717: Fixed update of files in .tar.xz archives
+  + Fixed some memleaks
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 30 23:18:06 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.91:
+  + 7zip: do not allow to specify a password if only 7zr is
+    installed. The 7zr command does not support encryption.
+    (bgo#618908)
+  + Fixed extraction of cpio archives with absolute paths
+    (bgo#558023)
+  + Unexpected msgstr appears in update dialog, when Plural Forms
+    definition in .po file is "Plural-Forms: nplurals=1;
+    plural=0;\n" (e.g. ja.po). (bgo#627387)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 17 10:59:58 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.90:
+  + Use GConf instead of GSettings
+  + Updated translations.
+- Add pkgconfig(gconf-2.0) BuildRequires.
+- Revert back to gconf handling instead of gsettings:
+  + Stop using gsettings macros.
+  + Pass --disable-schemas-install to configure.
+  + Re-introduce gconf pre, preun and posttrans scriptlets.
+
+-------------------------------------------------------------------
+Thu Aug  5 23:57:12 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.5:
+  + Make it possible to build against GTK+ 3. (bgo#624564)
+  + Make it compile again with GSEAL and DEPRECATED macros enabled
+  + Updated translations.
+- Drop gconf2-devel BuildRequires, since it's now ported to
+  GSettings.
+- Remove --disable-schemas-install from configure call: it was only
+  needed for gconf.
+
+-------------------------------------------------------------------
+Mon Jul 26 14:14:22 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.4:
+  + bgo#622900: Migrated from dbus-glib to glib's GDBus
+  + Ported to GSettings
+  + Updated translations.
+- Drop file-roller-voidreturn.patch, upstream fixed.
+- Replace gconf scriptlets with gsettings scriptlets.
+
+-------------------------------------------------------------------
+Thu Jul  8 10:57:13 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.3:
+  + Fixed segmentation fault when opening some rar archives
+  + bgo#576436: Use dpkg-deb to view and extract .deb files
+- Changes from version 2.31.2:
+  + bgo#620172: improved the "encrypt header" button usability.
+    Always keep the "encrypt header" button clickable even when the
+    password field is void.
+- changes from version 2.31.1:
+  + Added support for lrzip archives and lrzip compressed tar
+    archives.
+  + bgo#617769: Bring back support for archives on remote GIO
+    mounts when the fuse daemon is not available.
+  + bgo#617840: Fixed crashes when trying to create a tar.z7
+    archive. due to a missing sentinel in a varargs call.
+  + Updated translations.
+- Remove gnome-common BuildRequires and call to gnome-autogen.sh.
+
+-------------------------------------------------------------------
+Wed May  5 19:24:57 CEST 2010 - meissner@suse.de
+
+- fixed 1 void return warning
+
+-------------------------------------------------------------------
+Thu Apr 29 14:23:48 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.1.1:
+  + bgo#613298 - Extract multi-byte filename from URI in case of
+    DND
+- Changes from version 2.30.1:
+  + bgo#615127 - Fixed build error when dbus is not available
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 29 23:58:00 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Removed multipart/x-zip from .desktop file (bgo#612677)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  9 14:11:26 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.92:
+  + bgo#610813: Allow to start the PackageKit service if it's not
+    available. Removed the call to NameHashOwner.
+  + bgo#610815: Recheck commands presence after package
+    installation. Clear the program cache before updating the
+    capabilities.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 22 22:40:13 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.91:
+  + Ensure that strcmp gets non-NULL values (bgo#609449)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 10 02:56:18 CET 2010 - lmedinas@opensuse.org
+
+- Update to version 2.29.90:
+  + Fixed some file renaming issues (bgo#608556)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 27 13:03:26 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.5:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 13 02:35:09 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 2.29.4:
+  + [arj] Fixed the way to get the filename from the command output
+    (bgo#606074)
+  + Do not show the password dialog if not needed. Check only the
+    files to extract to see if the password prompt is needed
+    (bgo#605244)
+  + Translation updates
+
+-------------------------------------------------------------------
+Tue Dec 22 04:51:48 CET 2009 - lmedinas@opensuse.org
+
+- Update to version 2.29.3:
+  + Allow to specify different package names using a configuration
+    file (bgo#603757)
+  + Use the zip format to create cbz files
+  + Use AES128 as encryption type when creating zip files with 7zip
+  + Fixed wrong use of gdk_property_get (bgo#604535)
+  + Updated translations.
+- Drop file-roller-fix-build.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Dec  2 22:53:42 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.2:
+  + New features and user visible changes:
+    - Use the eggfileformatchooser widget to select the file format
+  + Updated translations.
+- Changes from version 2.29.1:
+  + New features and user visible changes
+    - Install the missing packages if a command is not available
+      (bgo#482560)
+  + Bugs fixed:
+    - bgo#590606: drag and drop bug makes file-roller UI unusable
+      as a whole
+    - bgo#600131: encrypt_header is left enabled when creating zip
+      archives
+    - bgo#580624: Visual refresh issues while browsing into the
+      directories included in the archive
+    - bgo#326017: 4th and 5th mouse buttons should control back /
+      forward
+    - bgo#590027: file-roller will not update files
+  + Updated translations.
+- Add file-roller-fix-build.patch to fix build.
+- Create a nautilus-file-roller subpackage, to make file-roller
+  installable without nautilus.
+
+-------------------------------------------------------------------
+Sat Nov 14 02:17:26 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.28.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 13:59:46 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  8 22:32:25 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.27.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 25 14:33:47 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.91:
+  + Fixed bug that prevented to add files with spaces. (bgo#589920)
+  + Fixed opening of cab files (bgo#591868)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 11 05:21:53 CEST 2009 - lmedinas@gmail.com
+
+- Update to version 2.27.90:
+  + Allow to archive files with spaces and other special characters
+    bgo(#590468)
+  + Support different types of RPM payloads 
+    (bgo#590262, bgo#574005)
+  + Fixed building error (bgo#591243)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 28 15:06:16 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 2.27.3:
+  + Do not execute the extraction operation twice when the archive
+    is encrypted (bgo#392994)
+  + Fixed bug that prevented in some cases the correct extraction
+    of encrypted files (bgo#588547)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 20 10:13:42 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.2:
+  + Bugs fixed:
+    - Renamed the "Open Destination" button as "Show the Files"
+      (bgo#587501)
+    - Renamed the "Create Archive" command as "Compress"
+      (bgo#300655)
+    - Added a Quit button to the extract dialog. (bgo#586014)
+    - Do not distribute built sources. (bgo#587491)
+    - Auto-resize the property dialog to view the content correctly
+      (bgo#586189)
+  + Internal changes:
+    - Do not copy remote files to a local folder, use gvfs
+      directly.
+  + Updated translations.
+- Use libexecdir instead of libdir in the file list to fix build.
+- Do not package omf files twice.
+
+-------------------------------------------------------------------
+Tue Jun 16 03:08:34 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.1:
+  + New features and user visible changes
+    - Added support for lzip compressed archives  (bgo#579467)
+    - Added support for xz compressed archives (bgo#582237)
+  + Bugs fixed:
+    - bgo#582712: Opening multipart encrypted .7z files does not
+      work (file-roller-created .7z)
+    - bgo#584675: Untracked files on fresh clone
+    - bgo#580070: Garbage is displayed when adding a folder
+    - bgo#583863: Wrong explanation for the command 'extract-here'.
+    - bgo#584810: File-roller uses libsexy
+    - bgo#584718: File-roller crashes when opening certain archives
+      with wierd characters in filename
+    - bgo#581102: build error in copy-n-paste/
+    - bgo#578467: Should not use deprecated gtk symbols
+  + Updated translations.
+- Suggests xz, since it's now supported.
+- Suggests lha, since it's in Contrib.
+
+-------------------------------------------------------------------
+Tue May 19 05:07:36 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.2:
+  + bgo#503240: File-roller kills the entire session when aborted
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 14 16:32:21 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.1:
+  + bgo#574657: support corrupted rar archives.
+  + bgo#576960: file-roller shows random filesize for zero bytes
+    files.
+  + bgo#577389: File roller hangs and leaks memory when file is
+    dragged / dropped from archive
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 22:53:58 CET 2009 - vuntz@novell.com
+
+- Update to version 2.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 14:46:16 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Fri Mar  6 16:07:20 CET 2009 - vuntz@novell.com
+
+- Update to version 2.25.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 22 17:09:52 CET 2009 - vuntz@novell.com
+
+- Update to version 2.25.91:
+  + bgo#571273: crash in Archive Manager: Opening an archive (ISO)
+  + bgo#560429: GNOME Goal: Remove deprecated GLib symbols
+  + bgo#570505: file-roller crashed with signal 5 in IA__g_malloc()
+  + Updated translations.
+- Drop CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing" since it's not
+  needed.
+- Remove scrollkeeper BuildRequires.
+- Reorganize the Requires on packages which provide tools for
+  archives, and document those that are missing.
+
+-------------------------------------------------------------------
+Tue Feb  3 00:05:19 WET 2009 - lmedinas@gmail.com
+
+- Update to version 2.25.90:
+  + Use gtkbuilder instead of libglade.
+  + Fixed bgo #568881: don't rely on gtk implementation details
+  + Fixed bgo #569825: file-roller should use TMPDIR or 
+    XDG_CACHE_HOME for temporary files.
+- Removed libglade2-devel dependecy
+
+-------------------------------------------------------------------
+Thu Jan 29 12:56:01 CET 2009 - vuntz@novell.com
+
+- Own /usr/share/gnome/help to not depend on libgnome.
+
+-------------------------------------------------------------------
+Wed Jan 28 02:04:22 WET 2009 - lmedinas@gmail.com
+
+- Update to version 2.25.2:
+  + Fixed bugs: bgo #567554, bgo #566591, bgo #560647, bgo #563208,
+bgo 564029, bgo #565879, bgo #567901, bgo #568260, bgo #566683
+  + Translation updates
+
+-------------------------------------------------------------------
+Fri Jan 23 05:24:36 CET 2009 - vuntz@novell.com
+
+- Drop bug-187126_file-roller-batch-extract-all.patch: it was fixed
+  another upstream a long time ago.
+- Remove useless BuildRequires.
+
+-------------------------------------------------------------------
+Tue Jan  6 09:11:25 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.1:
+  + bgo#564805: Drop libgnome/ui dependency
+  + bgo#561535: Unable to create archive with OpenOffice document using
+    nautilus integration
+  + bgo#559481: Can't open/view file directly from File Roller if there
+    is a bracket in the directory/file name
+  + Translation updates
+
+-------------------------------------------------------------------
+Sun Dec 14 03:24:33 WET 2008 - lmedinas@gmail.com
+
+- Update to version 2.24.2:
+  + Fix gconf dependecies
+  + Updated Translations
+
+-------------------------------------------------------------------
+Wed Nov  5 15:00:09 EST 2008 - jpr@novell.com
+
+- Obsolete file-roller-2.20.0-correct-help-uri.patch, obsoleted
+  upstream (was bnc326492 bgo480442)
+
+-------------------------------------------------------------------
+Tue Oct 21 21:15:53 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.1:
+  + Bugs fixed: bgo#556623, bgo#556619, bgo#556571, bgo#555282
+  + Translation updates
+
+-------------------------------------------------------------------
+Wed Oct  1 08:18:08 WST 2008 - mboman@suse.de
+
+- Update to version 2.24.0:
+  + bgo#546799: file-roller crashed with SIGSEGV in g_str_hash()
+  + bgo#552031: Add archiving and compression to desktop categories. 
+  + Translation updates
+
+-------------------------------------------------------------------
+Wed Sep 17 07:11:06 EST 2008 - mboman@novell.com
+
+- Update to version 2.23.92:
+  + Bugs fixed: bgo#551153, bgo#551146, bgo#546541
+  + Translation updates
+
+-------------------------------------------------------------------
+Tue Sep 02 14:39:06 CDT 2008 - mboman@novell.com
+
+- Update to version 2.23.91:
+  + bgo#544766: file-roller doesn't remember open-with application.
+  + Sort the archive type list to make it easier to find the desired type.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 26 14:39:06 CDT 2008 - mboman@novell.com
+
+- Update to version 2.23.5:
+  * Bugs fixed: bgo#350640, bgo#548020, bgo#546698, bgo#547733,
+    bgo#547297, bgo#546978, bgo#547017, bgo#546505, bgo#542424,
+    bgo#546541, lp#26662
+
+-------------------------------------------------------------------
+Fri Aug  8 14:39:06 CDT 2008 - maw@suse.de
+
+- Update to version 2.23.5:
+  + Support for reading and extracting alz archives (bgo#521324)
+    * Added support for rzip compressed files (bgo#503000)
+    * Added support for creating self-extracting zip archives
+    * Added ability to create multi-volume archives
+    * Added support for header encryption, and implemented header
+      encryption for 7zip and rar archives
+    * Use the 7z command to read/write zip, cbr, cbz archives, and
+      to read cabinet, arj, rar and iso archives
+    * Try to get the mime type from magic numbers if all other
+      methods fail
+    * Now the progress dialog is exact when adding, extracting or
+      deleting  files for tar, zip, rar and 7zip archives
+      (bgo#153281)
+    * Do not add the backup files, that is files ending with ~, to
+      the archive
+    * Operations are now more efficient for archives with a long
+      file list
+    * Added a help button to the window used to create archives
+      from the file manager menu
+    * Unified the "new" and "save as" dialogs. Allow to specify
+      other options in these dialogs, such as whether to encrypt
+      the header and whether to split the archive in volumes
+    * Updated documentation
+  + Bugs fixed:	bgo#343201, bgo#529395, bgo#515194, bgo#519046,
+    bgo#336790, bgo#539629, bgo#506698, bgo#542541, bgo#504584,
+    bgo#545188, bgo#545168, bgo#545161, bgo#544613, bgo#544296,
+    bgo#544184, and bgo#544182
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jun 21 01:24:25 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.3:
+  + Show an alert dialog when the 'save as' operation is completed,
+    and  allow the user the open the newly created archive
+  * Load and save the 'add folder' dialog options.  Allow to clear
+    the options as well
+  * Allow to specify a password when converting an archive to
+    another format
+  * Added keyboard shortcut to deselect all; moved "add files" and
+    "add folders" down in the edit menu; moved "stop" and "reload"
+    at the bottom of the view menu; removed the 'sort by' submenu
+  + Added an exclude folder filter to specify sub-folders to ignore
+    when adding a folder recursively
+  + Added ability to extract folders from the folder pane using
+    drag & drop.
+  + Added partial support for tar archives compressed with 7zip
+  + Display the progress dialog if the operation lasts more than 5 
+    seconds
+  + Display the progress dialog without delay if extracting or
+    converting an archive; after the extraction add to the progress
+    dialog the button to open the destination folder and after
+    the conversion add the button to open the newly created archive
+  + Removed the 'view folder after extraction' option from the 
+    extraction dialog
+  + Removed the preview-file stock item, use gtk_stock_open instead
+  + Do not use the sh command to exec the process, use the utility
+    command directly to allow to stop the process properly
+  + Use g_io_channel to read the command output.
+  + Update to newer GNOME APIs and drop the use of deprecated
+    libraries and APIs:    
+    * Use GIO library instead of gnome-vfs
+    * gtk+ is used to get the applications and mime types icons
+    * Replaced gnome_url_show with g_app_info_launch_default_for_uri
+    * Use g_app_info_launch_default_for_uri to show the help dialog
+    * Use the new tooltips API
+    * Use g_key_file instead of gnome_config for loading/saving
+      sessions
+    * Use GRegex instead of the custom utf8_fnmatch function.
+  + Bugs fixed:	bgo#480190, bgo#535967, bgo#536055, bgo#527271,
+    bgo#532789, bgo#532255, bgo#523158, bgo#516043, and bgo#512474
+- Drop an obsolete patch:
+  file-roller-2.12.2-no-cmdline-overflow.patch.
+
+-------------------------------------------------------------------
+Thu Apr 10 17:49:51 CEST 2008 - maw@suse.de
+
+- Update to version 2.22.2:
+  + Do not execute sync IO operations in the Nautilus extension in 
+    order to avoid bad performance issues on remote locations
+  + Fixed a bug that prevented a file to be updated the second time
+    it was modified
+  + Fixed a performace issue when extracting a big archive with a 
+    drag and drop operation
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 14 04:32:27 CET 2008 - maw@suse.de
+
+- Update to version 2.22.0:
+  + Bugs fixed: bgo#518680 and bgo#504155
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 13 16:58:01 CET 2008 - sbrabec@suse.cz
+
+- Custom look'n'feel gconf keys moved to gconf2-branding-openSUSE.
+
+-------------------------------------------------------------------
+Tue Mar  4 23:03:43 CET 2008 - maw@suse.de
+
+- Update to version 2.21.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 19 23:23:14 CET 2008 - maw@suse.de
+
+- Update to version 2.21.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb  1 20:16:53 CET 2008 - maw@suse.de
+
+- Update to version 2.21.2:
+  + Added the ability to find the files of the archive with the
+    specified filename
+  + Can now update files in an archive when the files are modified by
+    an external application
+  + Added support for lzma files, both single, compressed files
+    and tarballs
+  + Bugs fixed: bgo#487012, bgo#487079, bgo#499958, bgo#499558,
+    bgo#458399, bgo#475166, bgo#505987, bgo#487012, bgo#490891,
+    bgo#504597, bgo#303213, and bgo#509933.
+
+-------------------------------------------------------------------
+Thu Dec 20 06:09:37 CEST 2007 - jpr@suse.de
+
+-Update to 2.20.2
+        * Updated translations
+        * Fixed crash after cancelling an archive creation from the 
+	  Nautilus context menu. (bgo #482203)
+- Remove fr_59941.diff, it served no real purpose, added translations
+  and was rejected upstream in bgo144800
+- Remove bogus BuildRequires: gnutls-devel, gnome-patch-translation, 
+  libgnomeprintui-devel, libwnck-devel
+
+-------------------------------------------------------------------
+Thu Oct 11 16:39:37 CEST 2007 - sbrabec@suse.cz
+
+- Removed bogus dependency on mDNSResponder.
+
+-------------------------------------------------------------------
+Wed Sep 26 04:45:31 CEST 2007 - hpj@suse.de
+
+- Add file-roller-2.20.0-correct-help-uri.patch, which fixes a
+  broken help path.
+
+-------------------------------------------------------------------
+Wed Sep 19 03:27:29 CEST 2007 - mauro@suse.de
+
+- Update to version 2.20.0
+   * Fixed bug #473158 – ask-password.glade is missing
+   * Fixes bug #463968 – file-roller crashed with SIGSEGV in
+     g_closure_invoke()
+   * Removed old check that prevented extraction to remote locations
+     via DnD.
+
+-------------------------------------------------------------------
+Mon Sep 10 22:16:45 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.92:
+  + Display empty folders in 7zip archives.
+
+-------------------------------------------------------------------
+Fri Aug 31 17:08:19 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.91:
+  + Fix copy & paste of folders within tar archives
+  + Fixed execution of the sidebar context menu commands
+  + Fixed file renames
+  + Additionally, the following bugs (bugzilla.gnome.org) have been
+    fixed: #144216, #463251, #463235, #463753, #463887, #467482,
+    #468677, #469528, and #469221.
+
+-------------------------------------------------------------------
+Mon Aug  6 19:06:03 CEST 2007 - maw@suse.de
+
+- Split out a -lang subpackage.
+
+-------------------------------------------------------------------
+Thu Aug  2 23:11:35 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.4:
+  + Support for drag and drop among file-roller windows
+  + Added a folders pane
+  + Fixed DST calculation
+  + Save and restore filename column width
+  + Unescape the archive filename in the tree view
+  + Add a sidebar context menu
+  + Get mime types from files' content
+  + Bugs (bugzilla.gnome.org) fixed: #402756, #461356, and #450150
+- Use %fdupes.
+
+-------------------------------------------------------------------
+Mon Jul  9 23:31:05 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.2
+- Can operate on remote archives
+- Improved error dialogue
+- Fixed bugzilla.gnome.org #171619, #398824, #438340, #402760,
+  #440662, and #439154.
+
+-------------------------------------------------------------------
+Fri Apr 27 12:32:12 CEST 2007 - sbrabec@suse.cz
+
+- Do not call meinproc (#227624).
+
+-------------------------------------------------------------------
+Wed Apr 11 17:59:06 CDT 2007 - maw@suse.de
+
+- Update to version 2.18.1 which has updated translations.
+
+-------------------------------------------------------------------
+Mon Apr  2 17:36:55 CDT 2007 - maw@suse.de
+
+- Build with -fno-strict-aliasing
+- Package %{_libdir}/file-roller.
+
+-------------------------------------------------------------------
+Mon Apr  2 15:36:24 CDT 2007 - maw@suse.de
+
+- Update to version 2.18.0
+- "Application" is not a valid category in the freedesktop
+  specification, so remove it from data/file-roller.desktop.in.in
+- Code cleanups
+- b.g.o 409433, 396775, and 395074
+- Remove upstreamed file-roller-self-exe.patch.
+
+-------------------------------------------------------------------
+Thu Mar  8 12:42:36 CET 2007 - sbrabec@suse.cz
+
+- Removed obsolete hicolor icon symlink (#248676).
+
+-------------------------------------------------------------------
+Mon Jan 15 16:03:23 CET 2007 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Tue Dec 19 00:16:29 CET 2006 - btimothy@suse.de
+
+- Fix for BNC #223562 to allow self-extracting executables made in
+  WinZIP to extract/open in file-roller.
+
+-------------------------------------------------------------------
+Tue Dec 12 19:24:41 CET 2006 - jhargadon@suse.de
+
+- applied a patch to fix crashing when an iso image is right-clicked
+  (#187126)
+
+-------------------------------------------------------------------
+Fri Oct 13 04:48:35 CEST 2006 - danw@suse.de
+
+- Remove dead patch
+- Update for gnome-doc-utils-devel
+
+-------------------------------------------------------------------
+Tue Oct  3 17:52:45 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.16.1
+- translation updates 
+
+-------------------------------------------------------------------
+Thu Sep 14 01:48:29 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.16.0
+- translation updates 
+
+-------------------------------------------------------------------
+Wed Aug 30 23:41:51 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.15.93
+- Prompt for the password when an archive is encrypted
+  instead of simply displaying a warning on how to spicify a password 
+- Do not use the encrypted emblem for folders
+- Added X-GNOME-Bugzilla-Version field to the .desktop file
+- Fixed bug #349095: Filetypes seriously screwed up in .zip files
+- Fixes bug #153642: Temporary files are created on the current
+  directory
+
+-------------------------------------------------------------------
+Mon Aug 14 21:44:59 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.15.91
+  * Fixed bug #343739 – Seems to not escape file names correctly.
+  * Fixes bug #340050 – tar permissions are not preserved.
+  * Fixed bug #339913 – "create archive" option does not work on some
+    filenames.
+  * Fixed bug #347624 – fix build with gcc 2.95
+  * Fixed bug #347416 – RecentFilesMenu - OpenRecentMenu converting
+  * Update translations: eu, zh_HK, zh_TW, nb, et, fr.
+- reapplied file-roller-2.12.2-no-cmdline-overflow.patch
+
+-------------------------------------------------------------------
+Tue Aug  8 18:36:13 CEST 2006 - jhargadon@suse.de
+
+- Update to version 2.15.90
+- Added translations
+- Fixed bug #345052 – file roller should remember the size of the
+  window when it closes.
+- Fixed bug #345278 – File operations on the Edit menu should be 
+  moved to the Archive menu.
+- Fixed bug #342251 – backspace does not go up a directory
+- Fixed bug #336078 - [PATCH] Convert from popt to GOption
+- Fixed bug #317782 - file-roller Cygwin build fixes
+- Fixed bug #152039 - Password Protected Files must be displayed
+  differently.
+- Fixed bug #338944 - Open Files..., can't delete programs
+- Fixed filename escaping in tar archives.
+- Ask for the password when trying to open a password protected rar
+  or arj archive.
+- Updated the user's guide.
+- Added help button to all the dialogs.
+- Install theme-friendly icon.
+- Fixed bug #335035 - mistake in file-roller's License.
+- Fixed bug #336908 - backshalshes not supported in paths.
+- Fixed bug #336632 - Help for Extract Dialog pointing to incorrect
+  location.
+- Fixed bug #336854 - crash on twice unpacking to the same location.
+- Fixed bug #335659 - File Roller should move not copy files.
+- Fixed bug #335368 - Crash when opening large 7z-archive.
+- Fixed buf #326193 - file-roller creates empty 7zip archives.
+- Fixed bug #337754 - Drag and Drop extraction only works when 
+  source already has focus.
+- Fixed bug #337331 - Cut/Paste same file results in loss of file.
+- Added license button to the about dialog.
+- Fixed bug #331601 – Nautilus doesn't display the "Extract here"
+  menu option for files which have a ".ps.gz"
+- Fixed bug #330315 - ps.gz files not associated
+- Fixed bug #328942 - Don't translate empty strings
+- Fixed bug #328473 – should not distribute pre-gnome-2.8 mime files
+- Fixed bug #328331 - Crashes on extraction
+- Fixed bug #328036 - Add GTK category to the .desktop file
+-  Fixed bug #139912 - file roller is not a "system tool".
+- Fixed bug #168388 - file roller shouldn't create an ARCHIVE_FILES
+  folder if the archive only have one root folder
+- Fixed bug #326810 - file-roller escaping issue with '#' by example
+- Removed obsolete .applications file.
+- Fixed bug #323713: "Save as" should default to current archive
+  filename
+- Fixed bug #315069: file-roller: drag 'n drop doesn't work for more
+  than 1 file.
+- Fixed bug #323534: Passwords improperly escaped for zip files
+- Do not open a progress dialog when dragging files, use a 
+  progressbar in the statusbar instead.
+- Fixed bug #316364: Nautilus dependency should be optional
+- Fixed bug #311821: ascending and descending indicators are 
+  opposite from expected.
+- Fixed bug #317423: Conflicting mnemonic in "Extract" dialog.
+- Fixed bug #323068: file-roller fails in chosing extract-to 
+  directory
+- Fixed bug #322197: Improve Naming Filename when create new
+  Archive file
+- Fixed bug #316564: needs unzip AND zip.
+- Simplified the add dialog populating the file type combobox
+  with the extensions instead of the descriptions.
+- Set progress dialog display delay to 1 second.
+- More HIG compliant progress dialog.
+- Use a single command execution to add many files and folders
+  to an archive to speed up the operation.
+- Allow to stop creation of a new archive.
+- Correctly associate fr to 7zip files.
+
+-------------------------------------------------------------------
+Mon Jun 19 21:41:42 CEST 2006 - federico@novell.com
+
+- Added file-roller-186104-extract-to-dir.diff to fix
+  https://bugzilla.novell.com/show_bug.cgi?id=186104.  This fixes the
+  way file-roller asks GtkFileChooserButton about the selected folder.
+
+-------------------------------------------------------------------
+Thu Jun 15 20:14:02 CEST 2006 - hpj@suse.de
+
+- Add patch to process long file lists in multiple batches. Fixes
+  Novell bug #169646.
+
+-------------------------------------------------------------------
+Tue Feb 28 15:25:33 CET 2006 - sbrabec@suse.cz
+
+- Use kdelibs3-doc in BuildRequires for meinproc (#153635#c14).
+
+-------------------------------------------------------------------
+Fri Feb 17 22:24:32 CET 2006 - sreeves@suse.de
+
+- Update .desktop file (Name, GenericName, Comment, DocPath)
+
+-------------------------------------------------------------------
+Wed Feb  1 17:19:38 CET 2006 - sbrabec@suse.cz
+
+- Use translation compendium gnome-patch-translation.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:27 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov 30 20:42:10 CET 2005 - gekker@suse.de
+
+- Update to version 2.12.2
+
+-------------------------------------------------------------------
+Wed Oct 12 22:56:15 CEST 2005 - gekker@suse.de
+
+- Update to version 2.12.1
+
+-------------------------------------------------------------------
+Mon Sep  5 21:20:27 CEST 2005 - gekker@suse.de
+
+- Update to version 2.12.0 (GNOME 2.12) 
+
+-------------------------------------------------------------------
+Mon Aug 22 23:33:03 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.92
+- Add libxml2 and libxml2-python to nfb 
+
+-------------------------------------------------------------------
+Thu Aug 11 23:32:28 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.91 
+
+-------------------------------------------------------------------
+Tue Aug  9 23:35:48 CEST 2005 - gekker@suse.de
+
+- Fix requirements (98219) 
+
+-------------------------------------------------------------------
+Tue Aug  2 02:25:11 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.90 
+
+-------------------------------------------------------------------
+Fri Jul 22 00:22:53 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.2
+- Remove .la files 
+
+-------------------------------------------------------------------
+Fri Jun 17 23:18:57 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.1 
+
+-------------------------------------------------------------------
+Wed Mar  9 17:16:23 CET 2005 - gekker@suse.de
+
+- Updated to version 2.10.0 (GNOME 2.10). 
+
+-------------------------------------------------------------------
+Thu Mar  3 17:36:18 CET 2005 - gekker@suse.de
+
+- Updated to version 2.9.92 
+
+-------------------------------------------------------------------
+Thu Feb 10 23:17:44 CET 2005 - gekker@suse.de
+
+- Updated to version 2.9.91 
+
+-------------------------------------------------------------------
+Sat Feb  5 18:02:23 CET 2005 - gekker@suse.de
+
+- Updated to 2.9.4 
+
+-------------------------------------------------------------------
+Wed Jan 19 21:23:41 CET 2005 - clahey@suse.de
+
+- Updated to 2.9.3.
+
+-------------------------------------------------------------------
+Sat Oct 30 00:15:33 CEST 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Wed Sep 08 12:04:35 CEST 2004 - sbrabec@suse.cz
+
+- Added shared mime info.
+
+-------------------------------------------------------------------
+Fri Aug 27 15:23:58 CEST 2004 - shprasad@suse.de
+
+- Fixes bug #63428 (Fix givenby smadduri@novell.com)
+  Avoids crashing if file-roller is closed while viewing files.
+
+-------------------------------------------------------------------
+Wed Aug 25 07:28:20 CEST 2004 - clahey@suse.de
+
+- Cache file-roller help and show file-roller in khelpcenter.
+
+-------------------------------------------------------------------
+Tue Aug 17 06:26:02 CEST 2004 - shprasad@suse.de
+
+- Fixes bug #60958 (Fix given by smadduri@novell.com)
+  Avoids Crashing while DND of Desktop Icons (Home).
+
+- Fixes bug #62359 (Fix given by smadduri@novell.com)
+  Avoids hanging while Adding a directory to archive. 
+
+- Reworked on bug #60961 (Fix given by smadduri@novell.com)
+  create unpredictible temp-dirs using mkdtemp. 
+
+-------------------------------------------------------------------
+Fri Jul 16 11:00:00 CEST 2004 - shprasad@suse.de
+
+- Fixes bug #60961. Fix given by (smaddri@novell.com) 
+  Avoides creation of predictible file names in /tmp 
+  while viewing in file-roller.
+
+-------------------------------------------------------------------
+Wed Jun 23 14:18:43 CEST 2004 - shprasad@suse.de
+
+- Fixes bug #59941 (Fix given by smadduri@novell.com)
+  Added a button for Deleting File(s)
+
+-------------------------------------------------------------------
+Wed May 05 14:10:43 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 2.6.1 (GNOME 2.6).
+
+-------------------------------------------------------------------
+Wed Mar 17 11:14:28 CET 2004 - sbrabec@suse.cz
+
+- Fixed scrollkeeper calling conventions (#36215).
+
+-------------------------------------------------------------------
+Wed Mar 10 10:33:40 CET 2004 - sbrabec@suse.cz
+
+- Fixed gconf schemas installation (#33114).
+
+-------------------------------------------------------------------
+Mon Mar  1 12:29:12 CET 2004 - hhetter@suse.de
+
+- don't install schemas into buildsystem 
+
+-------------------------------------------------------------------
+Wed Feb 25 10:56:39 CET 2004 - hhetter@suse.de
+
+- apply ximian patch: file-roller-ximian-defaults.patch  
+
+-------------------------------------------------------------------
+Thu Feb 12 09:35:52 CET 2004 - hhetter@suse.de
+
+- gconf schema (de-)installation in %post and %postun  
+
+-------------------------------------------------------------------
+Thu Feb  5 15:25:52 CET 2004 - hhetter@suse.de
+
+- updated to version 2.4.4 [GNOME 2.4.2] 
+
+-------------------------------------------------------------------
+Sat Jan 10 17:04:27 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Oct 27 13:59:28 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 2.4.1.1.
+
+-------------------------------------------------------------------
+Mon Sep 29 16:15:13 CEST 2003 - hhetter@suse.de
+
+- updated to version 2.4.0.1 [GNOME2.4] 
+
+-------------------------------------------------------------------
+Sun Sep 14 23:03:28 CEST 2003 - adrian@suse.de
+
+- add Archiving Category
+
+-------------------------------------------------------------------
+Thu Aug  7 22:48:40 CEST 2003 - ro@suse.de
+
+- fix typo in filelist 
+
+-------------------------------------------------------------------
+Thu Aug 07 16:16:54 CEST 2003 - sbrabec@suse.cz
+
+- Not use globbing for schemas in %files.
+
+-------------------------------------------------------------------
+Tue Jul 29 10:40:32 CEST 2003 - hhetter@suse.de
+
+- %_lib fixes 
+
+-------------------------------------------------------------------
+Fri Jul 25 11:43:19 CEST 2003 - meissner@suse.de
+
+- autoreconf -i -f so we get all new and shiny 
+  scripts, especially for ppc64.
+
+-------------------------------------------------------------------
+Mon Jul 14 14:37:55 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Wed Jul  2 09:27:04 CEST 2003 - hhetter@suse.de
+
+- updated to version 2.2.5 
+
+-------------------------------------------------------------------
+Thu Feb 20 18:00:06 CET 2003 - sbrabec@suse.cz
+
+- Fixed %files.
+
+-------------------------------------------------------------------
+Thu Jan 30 11:00:59 CET 2003 - hhetter@suse.de
+
+- updated to version 2.2.1
+- filelist review
+- added openssl and alsa-devel to neededforbuild
+- install and register schemas file 
+
+-------------------------------------------------------------------
+Thu Jan 16 00:26:04 CET 2003 - ro@suse.de
+
+- use gtk2-devel-packages and libjpeg in neededforbuild
+
+-------------------------------------------------------------------
+Tue Jan 14 16:34:43 CET 2003 - ro@suse.de
+
+- added expat to neededforbuild 
+
+-------------------------------------------------------------------
+Mon Nov 11 23:49:54 CET 2002 - ro@suse.de
+
+- changed neededforbuild <xf86 xdevel> to <x-devel-packages>
+
+-------------------------------------------------------------------
+Wed Nov  6 09:06:14 CET 2002 - hhetter@suse.de
+
+- updated to version 2.0.4
+	* Faster loading of archives.
+	* Recognize zip archives regardless of the file extension
+
+-------------------------------------------------------------------
+Mon Sep 23 10:17:26 CEST 2002 - sbrabec@suse.cz
+
+- Added alsa to neededforbuild, because esound can depend on it.
+
+-------------------------------------------------------------------
+Tue Aug 20 10:21:08 CEST 2002 - hhetter@suse.de
+
+- fix prereq 
+
+-------------------------------------------------------------------
+Fri Aug  9 09:14:51 CEST 2002 - hhetter@suse.de
+
+- add openssl to neededforbuild 
+
+-------------------------------------------------------------------
+Wed Jul 31 09:12:05 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.0.0
+	* fix scrollkeeper usage
+	* fix filelist
+	* initiate scrollkeeper update 
+
+-------------------------------------------------------------------
+Wed Jul 10 15:14:58 CEST 2002 - hhetter@suse.de
+
+- updated to version 1.109
+	* additional option to view destination after extraction
+	* documentation updates 
+
+-------------------------------------------------------------------
+Mon Jul  1 08:45:33 CEST 2002 - hhetter@suse.de
+
+- udpated to version 1.108
+	* menus rearranged
+	* correctly remove temp files
+
+-------------------------------------------------------------------
+Thu Jun 20 18:44:11 CEST 2002 - jordi@suse.de
+
+- initial package for GNOME 2.0
+

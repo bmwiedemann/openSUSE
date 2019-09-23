@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>791e65dcbf008eedd9c9885312f5bbe4</srcmd5>
+    <version>1.350</version>
+    <time>1325006111</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>97828</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>791e65dcbf008eedd9c9885312f5bbe4</srcmd5>
+    <version>1.350</version>
+    <time>1340183898</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>389840589e3ec4e068909c7f242d4006</srcmd5>
+    <version>1.350</version>
+    <time>1350364693</time>
+    <user>coolo</user>
+    <comment>- buildrequire netcfg explicitly for the test suite (forwarded request 138174 from coolo)</comment>
+    <requestid>138176</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>389840589e3ec4e068909c7f242d4006</srcmd5>
+    <version>1.350</version>
+    <time>1359109771</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>723e853d4d1a87a85517d9024acb1069</srcmd5>
+    <version>1.354</version>
+    <time>1375772238</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184835</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>723e853d4d1a87a85517d9024acb1069</srcmd5>
+    <version>1.354</version>
+    <time>1379663803</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0925b66665101359174e893b676817dc</srcmd5>
+    <version>1.356</version>
+    <time>1382361280</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202264</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c4e66a4ce7704704a548a6065c83d923</srcmd5>
+    <version>1.364</version>
+    <time>1407331923</time>
+    <user>coolo</user>
+    <comment>- updated to 1.364, see CHANGES
+
+- updated to 1.358, see CHANGES</comment>
+    <requestid>243777</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>c4e66a4ce7704704a548a6065c83d923</srcmd5>
+    <version>1.364</version>
+    <time>1409302439</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8f26763820cc5891d46c59c8e293d46b</srcmd5>
+    <version>1.366</version>
+    <time>1429606287</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297203</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b7a018049b4a87947d0dbb33ce42bcf3</srcmd5>
+    <version>1.367</version>
+    <time>1434003742</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311233</requestid>
+  </revision>
+</revisionlist>

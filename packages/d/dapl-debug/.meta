@@ -1,0 +1,11 @@
+<package name="dapl-debug" project="openSUSE:Factory">
+  <title>A Library for userspace access to RDMA devices using OS Agnostic DAT APIs</title>
+  <description>
+Along with the OpenFabrics kernel drivers, libdat and libdapl provide
+a userspace RDMA API that supports DAT 2.0 specification and IB
+transport extensions for atomic operations and rdma write with
+immediate data.
+</description>
+  <devel project="openSUSE:Factory" package="dapl"/>
+  <bcntsynctag>dapl</bcntsynctag>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-pyhibp" project="openSUSE:Factory">
+  <title>python-pyhibp</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-pyhibp"/>
+</package>

@@ -1,0 +1,9 @@
+<package name="qps" project="openSUSE:Factory">
+  <title>Visual Process Manager</title>
+  <description>Qps is a visual process manager, an X11 version of &quot;top&quot; or &quot;ps&quot; that
+displays processes in a window and lets you sort and manipulate them. It
+displays some general system information, and many details about current
+processes.</description>
+  <devel project="X11:LXQt" package="qps"/>
+  <url>http://qps.kldp.net/</url>
+</package>

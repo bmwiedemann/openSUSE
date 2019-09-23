@@ -1,0 +1,14 @@
+<package name="kbuild" project="openSUSE:Factory">
+  <title>Framework for writing simple makefiles for complex tasks</title>
+  <description>The goals of the kBuild framework: - Similar behavior across all
+   supported platforms
+- Flexibility, don't create unnecessary restrictions preventing
+   ad-hoc solutions
+- Makefiles can be simple to write and maintain
+- One configuration file for a subtree automatically included
+- Target configuration templates as the primary mechanism for
+   makefile simplification
+- Tools and SDKs for helping out the templates with flexibility
+- Non-recursive makefile method by using sub-makefiles</description>
+  <devel project="devel:tools:building" package="kbuild"/>
+</package>

@@ -1,0 +1,7 @@
+<package name="libcddb" project="openSUSE:Factory">
+  <title>CDDB Access Library Utilities</title>
+  <description>Libcddb is a library that implements the different protocols (CDDBP,
+HTTP, and SMTP) to access data on a CDDB server (http://freedb.org). It
+tries to be as cross-platform as possible.</description>
+  <devel project="multimedia:libs" package="libcddb"/>
+</package>

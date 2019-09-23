@@ -1,0 +1,22 @@
+--- wmcube/wmcube.c
++++ wmcube/wmcube.c
+@@ -682,7 +682,8 @@
+ 			
+ 		while ((i > -1) && (temparr[i] > key)) {
+ 			temparr[i+1] = temparr[i];
+-			zorder[i+1] = zorder[i--];
++			zorder[i+1] = zorder[i];
++			i--;
+ 		}
+ 
+ 		zorder[i+1] = k;										
+@@ -956,7 +957,8 @@
+ 		while (1) {
+ 		
+ 			cline = (int *)realloc(cline,(i+2)*sizeof(int)); mem_alloc_error(cline);
+-			fscanf(fp,"%d %d",&cline[i++],&cline[i++]);
++			fscanf(fp,"%d %d",&cline[i],&cline[i+1]);
++			i += 2;
+ 			//printf("\n%d %d",cline[i-2],cline[i-1]);
+ 			if (feof(fp)) break;
+ 		

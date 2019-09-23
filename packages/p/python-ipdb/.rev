@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f68b17c9a9f57b547434245279a1c495</srcmd5>
+    <version>0.12</version>
+    <time>1558516057</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0
+  * Drop support for Python 3.3.x
+  * Stop deprecation warnings from being raised when IPython &gt;= 5.1 is used.
+    Support for IPython &lt; 5.1 has been dropped.
+- Rename to to match python package naming guidelines.
+- Initial packaging effort for 0.11
+</comment>
+    <requestid>698408</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>21cb0f5e52a4d386f2fa76bd0f8fde4f</srcmd5>
+    <version>0.12.1</version>
+    <time>1564302186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719300</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>85e338be4e5cb9113d18d36d541a99f4</srcmd5>
+    <version>0.12.2</version>
+    <time>1565695229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722246</requestid>
+  </revision>
+</revisionlist>

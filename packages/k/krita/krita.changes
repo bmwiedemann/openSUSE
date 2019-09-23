@@ -1,0 +1,1455 @@
+-------------------------------------------------------------------
+Tue Sep 10 12:43:33 UTC 2019 - wbauer@tmo.at
+
+- Update to 4.2.6:
+  * See https://krita.org/en/item/krita-4-2-6-released/
+  * Add new layer from visible to layer right-click context menu
+  * Allow selection overlay to be reset to default (kde#410470)
+  * Set date for bundle creation to use ISO-Date (kde#410490)
+  * Fix freeze with 32bit float tiff by using our own tiff reader
+    for the thumbnails (kde#408731)
+  * Ensure filter mask button is disabled appropriately depending
+    on whether the filter supports it (kde#410374)
+  * Enable the small color selector if opengles is available as
+    well (kde#410602)
+  * Ensure that checkboxes are shown in menus even when using the
+    fusion theme
+  * Isolate Layer Crash (kde#408785)
+  * Properly fix font resetting when all the text in the editor
+    removed (kde#409243)
+  * Fix lags in Move Tool when using tablet device (kde#410838)
+  * Fix Shift and Alt modifiers in Outline Selection Tool
+    (kde#410532)
+  * Ensure Convert group to Animated Layer shows text in the
+    toolbar (kde#410500)
+  * Allow 'Add Clone Layer' to Work on Multiple Layers (kde#373338)
+  * Fix saving animated transparency masks created through
+    conversion (kde#409895)
+  * Partially fix the curve change despite 'Share curve across all
+    settings' checked (kde#383909)
+  * Try harder to make sure that the swap location is writable
+  * Properly handle timezones in bundles
+  * Make sure all the settings dialogs pages are always shown in
+    the same order
+  * Make the settings dialog fit in low-res screens (kde#410793)
+  * Remove misleading 'px' suffix for 'move amount' shortcut
+    setting
+  * Make string for reasons for image export problems translatable
+    (kde#406973)
+  * Fix crash when creating a bezier curve (kde#410572)
+  * Fix deadlocks in KoShapeManager (kde#410909, kde#410572)
+  * Fix a deadlock when using broken Wacom drivers on Linux
+    (kde#410797)
+  * Fix absolute brush rotation on rotated canvas (kde#292726)
+  * Fix deadlock when removing reference image (kde#411212)
+  * Fix a deadlock in handling of vector objects (kde#411365)
+  * Fix autosave saving only once (kde#411631)
+
+-------------------------------------------------------------------
+Mon Aug  5 10:44:27 UTC 2019 - wbauer@tmo.at
+
+- Update to 4.2.5:
+  * See https://krita.org/en/item/krita-4-2-5-released/
+  * Fix an assert in the transform tool when working with a tablet
+    and touch
+  * Fix continued transformation in the transform tool
+  * Fix updates in the transform tool
+  * Show the publication time in the welcome page news ticker
+    in the user's preferred short date/time format
+  * Fix using the tangent-normal brush when the canvas is rotated
+    or mirrored (kde#404408)
+  * Make it possible again to create new palettes and save them in
+    the resource folder, instead of the current document
+    (kde#410137)
+  * Make Krita not gobble up all available memory when loading
+    a JPG file with specific metadata (kde#410242)
+  * Constrain assistant editors to the viewport, so they can always
+    be manipulated
+  * Make sure Krita stores changes to brush presets in the current
+    session by default (kde#410463)
+  * Remove an assert that could be triggered when opening the first
+    image in a session
+  * Update the version of the default input settings profile, so
+    the rotate/zoom action will be activated even if the user
+    already had a local kritadefault.profile file
+  * Fix a crash on using the move tool while the image is being
+    opened (kde#398968)
+  * Make sure the painting tools don't block anymore (kde#409968,
+    kde#408826, kde#409275)
+  * Make the shortcut handling system more tolerant when shortcuts
+    overlap (kde#409968)
+  * Fix a crash in the transform tool
+  * Make the transform tool and the move tool more responsive
+
+-------------------------------------------------------------------
+Wed Jul 31 11:09:31 UTC 2019 - wbauer@tmo.at
+
+- Update to 4.2.4:
+  * See https://krita.org/en/item/krita-4-2-4/
+  * New Painttool Sai inspired Luminosity blending mode
+    (kde#409627)
+  * Make it possible to use dots in filenames (note that that still
+    might confuse your OS) (kde#409765)
+  * Fix regression on softness sensor on Default Circle autobrush
+    tip (kde#409758)
+  * Clear any leftover points in the line tool on each use so there
+    are no false starts (kde#408439)
+  * Do not reset the opacity to zero when moving more than one
+    shape at a time (kde#409131)
+  * Do not ignore rotation in the bristle brush engine (kde#384231)
+  * Fix cursor drift when using pan/zoom/rotate (kde#409460)
+  * Fix a crash when creating an RGB image after the last used
+    color model was CMYK (kde#409916)
+  * Use Qt's QImageIO image import/export filter for PPM files
+    instead of our own, broken implementation (kde#409714)
+  * Fix updating the brush size in the toolbar using shortcuts or
+    drag (kde#408331)
+  * Make generated gradient names translatable (kde#410034)
+  * Fix a crash that could happen when closing Krita after deleting
+    a session (kde#409909)
+  * Fix a bug in the color picker that made it possible for the
+    active foreground color to be transparent
+  * Fix a logic error in the Separate Image plugin (kde#410308)
+  * Update the notes for the LargeRGB color profile (kde#410023)
+  * Fix the filename reference for Rec.709 profiles
+  * Add a workaround for the KisShortcutsMatcher assert
+    (kde#408826)
+
+-------------------------------------------------------------------
+Wed Jul 17 12:51:15 UTC 2019 - wbauer@tmo.at
+
+- Update to 4.2.3:
+  * See https://krita.org/en/item/krita-4-2-3-released/
+  * Fix the caption of the Background Color color selection dialog
+    (kde#407658)
+  * Fix the tag selector combobox so it is possible to select
+    resources that have a tag that's longer than fits in the
+    combobox (kde#408053)
+  * Make it possible for the Krita startup window to become as
+    narrow as before adding the news widget (kde#408504)
+  * Fix copy/pasting of animation frames (kde#408421, kde#404595)
+  * Make the polygon and outline selection tool handle the control
+    modifier correctly (kde#376007)
+  * Add a reload script button to the Python scripter plugin
+  * Fix a crash in the Overview docker when there is no image open
+  * Fix drag and drop of fill layers between opened files
+    (kde#408019)
+  * Fix loading EXR files that have more than one layer with the
+    same name (kde#409552)
+  * Hide vanishing points preview lines when assistants are hidden
+    (kde#396158)
+  * Fix the Mirror All Layers Horizontally function
+  * Fix switching profile to default when changing channel depth in
+    the New Image dialog (kde#406700)
+  * Disable AVG optimizations for some 32 bit blending modes
+    (kde#404133)
+  * Fix a crash when pressing cancel when trying to create an 8
+    bit/channel linear gamma RGB image
+  * Make sure Stroke Selection paint correctly with the selection
+    border in the middle of the selection (kde#409254)
+  * Fix saving Krita when perspective assistants are present
+    (kde#409249)
+  * Fix issues with transformations being pixelated (kde#409280)
+  * Make it possible to hide all layers except the selected one
+    with shift-click (kde#376086)
+  * Fix cloning keyframe channels that are not opacity channels
+  * Fix a hang when trying to paint while playing an animation of
+    an empty image (kde#408749)
+  * Fix Isolated Mode when multiple windows are open (kde#408150)
+  * Make the gradient editor show the right editor for stop and
+    segmented gradients (but creating new gradients in Krita is
+    still broken)
+  * Fix a freeze when pressing delete when making a polygonal
+    selection (kde#408843)
+  * Fix the –export commandline option to return 0 when the export
+    is successful (kde#409133)
+  * Fix support for the KDE Plasma global menu (kde#408015)
+  * Fix a crash when using the shrink option of the deform brush
+    (kde#408887)
+
+-------------------------------------------------------------------
+Thu Jun 27 10:11:29 UTC 2019 - wbauer@tmo.at
+
+- Update to 4.2.2:
+  * See https://krita.org/en/item/krita-4-2-2-released/
+  * Text editor: make sure the background color is the one set in
+    the settings (kde#408344)
+  * Fix a crash when creating a text shape (kde#407554)
+  * Make sure the text style is not reset when removing the last
+    character in the text editor (kde#408441)
+  * Use a highlighted tool button in the selection tool option
+    dockers so it's easier to see which selection action is active
+  * Fix the nearest neighbour transform algorithm (kde#408182)
+  * Fix a styling issue in the filter layers properties dialog
+    (kde#408171)
+  * Fix an issue where if Krita was set to use a language other
+    than English, vector strokes were drawn wrongly
+  * Fix selecting colors from the combobox in the palette docker
+  * Fix a crash when loading a broken KPL file (kde#408447)
+  * Fix an issue where a transparent pattern fill loader was loaded
+    incorrectly (kde#408169)
+  * Make it possible to make the onion skin docker smaller
+    (kde#407646)
+  * Improve loading GPL palettefiles with thousands of columns
+  * Fix the slider widget to make it impossible to get negative
+    values
+  * Improve the tiff import/export filter (kde#408177)
+  * Fix loading the scripter Python plugin when using a language
+    other than English
+  * Improve the reference image tool and optimize loading images
+    from clipboard
+  * Make the camera raw import filter honor batch mode
+  * Fix rendering of clone layers if the source layer is not
+    visible (kde#408167, kde#405536)
+  * Fix move and transform tools after a quick layer duplication
+    (kde#408593)
+  * Fix a crash when selecting the opaque pixels on a transform
+    mask (kde#408618)
+  * Fix loading sRGB EXR files (kde#408485)
+  * Make the new image dialog choose the last used option even when
+    the user's language has changed
+  * Fix the "Enforce Palette Colors" feature (kde#408256)
+  * Update the brush preview on every brush stamp creation
+    (kde#389432)
+  * Make it possible to edit vector shapes on duplicated vector
+    layers (kde#408028)
+  * Hide the color picker button in the vector object properties
+    docker, it's unimplemented
+  * Fix color as mask export in GIH and GBR brush tip export
+    (kde#389928)
+  * Restore the default favorite blending modes
+  * Add a header to all right-click menus on the canvas so the
+    first thing under the cursor isn't something dangerous, like
+    'cut' (kde#408696)
+  * Fix an incorrect condition when rendering animations where
+    Krita would complain to be out of memory
+  * Keep the community links in the welcome screen visible when
+    changing theme (kde#408686)
+  * Check after saving whether the saved file can be opened and has
+    correct contents
+  * Improve the import/export error handling and reporting
+  * Make sure the filter dialog shows up in front of Krita's main
+    window (kde#408867)
+  * Make sure that the contiguous selection tool provides the
+    antialiasing switch (kde#408733)
+  * Fix the fuzziness setting in the contiguous selection tool
+  * Fix putting the text shape behind every other shape on a vector
+    layer after editing text (kde#408693)
+  * Fix switching the pointer type by stylus tip (kde#408454,
+    kde#405747)
+  * Fix an issue on Linux where switching from pen to mouse would
+    prevent the mouse from drawing on the canvas (kde#407595)
+  * Fix a crash when the user undoes creating layers too quickly
+    (kde#408484)
+  * Fix using .KRA and .ORA files as file layers (kde#408087)
+  * Clear all points in the outline selection on clicking
+    (kde#408439)
+  * Fix a crash when using the fill tool in fast mode on a pixel
+    selection mask
+  * Fix merging layers with inactive selection masks (kde#402070)
+  * Remove default actions from the Reference Image tool that were
+    inappropriate (kde#408427)
+  * Fix undo/redo not restoring the document to unmodified
+    (kde#402263)
+  * Fix the deform tool leaving darkish traces when scrubbing a lot
+    on a 16 bit canvas (kde#290383)
+- Adjust package license: the LGPL-2.1-only files have been changed
+  to GPL-2.0-or-later or LGPL-2.0-or-later (kde#408071)
+
+-------------------------------------------------------------------
+Wed Jun  5 09:05:27 UTC 2019 - wbauer@tmo.at
+
+- Update to 4.2.1:
+  * See https://krita.org/en/item/krita-4-2-1-released/
+  * Fix slowdown after a longer period of use (kde#408255,
+    kde#408133)
+  * Fix loading vector layers when the image name is not latin1
+    (kde#408280)
+  * Fix rectangular grid spacing limits incorrect after resizing
+    canvas (kde#408166)
+  * Fix layer properties window draws on top of other application
+    windows (kde#408170)
+  * Fix the posterize filter to use non-linear sRGB for computation
+  * Allow the animation render to start at frame 0 at all times
+    (kde#408198)
+  * Enable the Select Opaque actions for group layers (kde#408236)
+  * Check whether the drive still exists before creating a
+    temporary directory for animation rendering (kde#408246)
+  * Prevent the user from deleting locked layers when pressing
+    shift-del too quickly
+  * Fix copying and duplicating vector layers (kde#408028)
+  * Fix Krita's canvas being transparent on Linux when built
+    against older versions of Qt (kde#408225)
+  * Fix possible small delays at the beginning of a stroke
+    (kde#408133)
+  * Fix folding/unfolding when clicking on a layer thumbnail
+  * Fix undo/redo when working with guides
+  * Fix reversed Python API guides lock/show states (kde#408113)
+  * Make the minimum size for brushes consistent through the
+    application
+  * Make the auto brush spacing precision values consistent
+    (kde#359453)
+  * Improve selectioon behaviour on the layer docker (kde#408002)
+  * Fix the vector stroke style propagating to other vector objects
+    (kde#407683)
+  * Fix the Document Tools plugin (kde#408146)
+  * Fix the layer name being deselected when opening the layer name
+    editor (kde#400357)
+
+-------------------------------------------------------------------
+Wed May 29 14:16:16 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the 'License' tag for the 4.2.0 release.
+
+-------------------------------------------------------------------
+Wed May 29 11:52:40 UTC 2019 - wbauer@tmo.at
+
+- Update to 4.2.0:
+  * See https://krita.org/en/krita-4-2-release-notes/
+  * Fix: Allow changing layer name to set document as modified
+    (kde#380437)
+  * Fix: Allow undoing when changing layer names (kde#380437)
+  * Fix: Update the undo limit if we change it
+  * Fix: Handling of modified document notification in sub-window
+    mode (kde#386488)
+  * Fix: Fix when holding right-click over layer's color settings
+    (kde#392815)
+  * Fix: Do not show language switch warning when going back to the
+    default (kde#362961)
+  * Fix: Gradient map color mapping issues (kde#388976)
+  * Fix: Layout improvements and showing levels for histogram
+    filter (kde#376048)
+  * Improvement: Add warning when adding shape to clone layer
+    (kde#406730)
+  * Usability: Make default background for text editor white for
+    readability
+  * Fix: Activation of FFTW convolution worker (kde#407062)
+  * Fix: Crash in halftone filter (kde#407045)
+  * Fix: remove notification for unused keyboard short for
+    wrap-around (kde#407119)
+  * Fix: Safe assert triggered while drawing (kde#404552)
+  * Improvement: Warn artists if they try to render an animated GIF
+    with over 50 FPS (kde#403873)
+  * Improvement: Handle calculation better for grayscale images in
+    high bit depth (kde#405693)
+  * Usability: Make tabs and table headers and text translatable
+    (kde#406943, kde#406944)
+  * Improvement: Make zoom mode persistent when moving across
+    screens
+  * Fix: Exporting animation frames into EXR format (kde#406830)
+  * Improvement: Load broken TGA files that have bad alpha data
+    (kde#354791)
+  * Python: Allow selecting boundary limits on export (kde#404615)
+  * Fix: Unable to set minimal shade selector (kde#368587)
+  * Improvement: Add pixel snap mode for canvas (kde#390952)
+  * Fix: Load pre-Krita 4.0 transform masks (kde#396815)
+  * Fix: TIFF export filter flatten images with group layers
+    (kde#404204)
+  * Fix: Do not activate already running app instance when
+    exporting image sequence
+  * Fix: Memory leak with GIFs when saving and line length
+    (kde#404160)
+  * Improvement: Better calculate SVG document size and loading
+    omitted commands (kde#406124)
+  * Usability: Hide pattern fill option in vector tools until it is
+    fully implemented
+  * Fix: Artifacts when saving vector layers as PNG (kde#404976)
+  * Fix: Crash when merging back split alpha function
+  * Fix: Address sanitizer (ASAN) crash when creating a guide
+    (kde#405732)
+  * Fix: Hard to select color in vector objects (kde#404975)
+  * Fix: Undo merging a layer that is cloned (kde#397836)
+  * Improvement: Add fractional DPI scaling (found in settings)
+  * Improvement: Allow clone brush to have an option to reset
+    origin after every stroke
+  * Fix: Canvas input cursor updates when it has no input focus
+    (kde#369305)
+  * Fix: Hiccups when using wheel on Wacom's tablet (kde#381452)
+  * Fix: Clone brush should use the last layer the source was
+    placed on (kde#401919)
+  * Fix: Tilt elevation curve corrections (kde#399846)
+  * Fix: Do not focus on tag search line edit in the show event
+    (kde#404131)
+  * Usability: Only show layer styles contour and texture when
+    Bevel and Emboss is checked (kde#396015)
+  * Python: Comics plugin improvements to file saving and creating
+    documents
+  * Fix: Pop-up palette color fix when changing themes
+  * Usability: Improve control point size for brush editor curves
+    (kde#406233)
+  * Fix: Make font size consistent (kde#406386)
+  * Usability: Theme change fixes for overview docker, rulers, and
+    subwindows
+  * Fix: Memory leak caused by converting function
+  * Fix: Wrong position of the merged layer (kde#405686)
+  * Fix: Right clicking on popup-palette color selector hides it
+    (kde#402990)
+  * Fix: rulers showing pixels no matter what unit (kde#406181)
+  * Fix: Crash in Split Alpha function (kde#406241)
+  * Fix: wrong bounding box on gradient map (kde#406234)
+  * Fix: page orientation switch in new dialog (kde#374493)
+  * Improvement: Do a better job when calculating nearest neighbor
+    filters (kde#401788)
+  * Usability: Improve contrast with checkboxes on pen settings and
+    brush favorites
+  * Fix: Allow group layers to be transformed and improve logic for
+    layers that cannot be transformed (kde#406036)
+  * Fix: Background color being lost after merging (kde#405230)
+  * Improvement: Remember last used directory for shortcut
+    import/export (kde#368360)
+  * Improvement: Improve canvas refresh rate when moving vector
+    objects (kde#403340, kde#405698)
+  * Improvement: Intel OpenGL detection for newer drivers
+  * Fix crash on quick brush engine because of calculations
+    (kde#404179)
+  * Fix: splash screen on some high DPI screens
+  * Improvement: Move color filters on onion skin out of combo box
+    for easier toggling
+  * Usability: Improve contrast with checkboxes on brush settings,
+    pen sensors, and blending modes (bug 404190)
+  * Fix: hangup when starting painting too quickly after changing
+    opacity (kde#405879)
+  * Fix: Data loss when adding multiple hold frames through
+    right-click menu (kde#404246)
+  * Fix: Copy correct image cache when cloning a layer (kde#387698)
+  * Fix: Only show Intel graphics card warning on Windows
+  * Text: changed "Launch Bug Report Wizard" to "Submit Bug Report"
+    from main menu (kde#406152)
+  * Usability: Add tooltip to eraser button in toolbar
+  * Fix activation of isolate mode when merging layers down
+    (kde#295981)
+  * Improvement: Add ability for shape brushes to use patterns for
+    filling
+  * Fix: Transform tool crash on layers with pass-through mode
+  * Improvement: Add more information like HighDPI and language to
+    usage logger
+  * Fix: Make sure a masked painter knows about outlines
+    (kde#404963)
+  * Fix: Make sure polyline takes into account the no-stroke
+    setting
+  * Feature: Add ability to export animation to PNG sequence using
+    commandline
+  * Fix: Better handle loading recent files (kde#405364)
+  * Improvement: Better show/hide progress bars when loading an
+    unsupported image (kde#402625)
+  * Feature: Add mirroring capability for Quick brush (kde#372636)
+  * Usability: Add a second row to pop-up palette presets if the
+    number gets above 20 so they are easier to see
+  * Fix: Color smudge might not have an image for tip (kde#405336)
+  * Fix: Prevent crash with mirror manager decorations
+  * Fix: When no outline is selected, outline doesn't use brush
+    width (kde#398509)
+  * Fix: Low pixel size limit in Scale to New Size dialog
+  * Feature: Simplex Noise Generator can now be used from a fill
+    layer
+  * Usability: Make disabled icons in animation docker
+    semi-transparent to be like other disabled icons
+  * Fix: creating vector shapes with pattern fills (kde#405037)
+  * Fix: minimum animation cell grid size on windows
+  * Fix: conversion errors in Scale new image dialog (kde#400177)
+  * Improve UI for Arrange docker to make it easier to understand
+    (kde#399984, kde#394084)
+  * Fix: Only load a thumbnail for a recent file that still exists
+    (kde#401939)
+  * Improve angle selection on layer effects (kde#372169)
+  * Fix: Restore broken fonts (kde#402092)
+  * Add a few new options for fill type when creating new documents
+  * Fix: Remove the default shortcut for text tool. We just don't
+    have any good available keys left (kde#402270)
+  * Improve animation export dialog: Add warning when dimensions
+    are not divisible by 2 for MP4 and MKV. Make sure the default
+    dialog uses the encoder config for the format
+  * Fix opening templates from the command line (kde#402342)
+  * Inserting a layer when on a group layer adds it above the layer,
+    not inside it now (kde#399103)
+  * Feature: Advanced Color Selector - Add option to hide the color
+    selector in the configure menu (kde#337328)
+  * Remove old Karbon gradient files that weren't being used
+  * Fix: Restore the UI after crashing in canvas only mode
+    (kde#402710)
+  * Fix: Added safe assert to prevent Krita from crashing when a
+    toolbar gets accidentally enabled
+  * Improvement: Add more information to the bug reporter with
+    memory, CPU cores, and swap location
+  * Usability: Update the layer box to better to support RTL
+    languages
+  * Feature: Add Python plugin importer to make importing plugins
+    easier
+  * Improvement: Add direction choice for the Image Split feature
+  * Fix: Actions on Move Tool only being executed after changing
+    current node in move tool (kde#403048)
+  * Fix: Python API. Fix crash when trying to access projection
+    pixel data on transform mask (kde#402382)
+  * Fix: Return colorspace of projection before returning the
+    colorspace of the node (kde#402382)
+  * Improvement: Enable automatic docstring generation for python
+  * Fix: Loading KRA files with image names starting with a "/"
+    symbol
+  * Fix: Enabling the selection mode shortcuts (kde#403587)
+  * Improvement: Generator Layers. Added real-time preview when
+    changing layer properties
+  * Improvement: Polygonal Selection: Add ability to undo these
+    operations
+  * Fix: File layers: Use the mergedimage preview when opening ORA
+    or KRA files
+  * Improvement: Transform Tool: Added Granularity to tool options
+  * Improvement: Added new blending modes: Reflect, Glow, Freeze,
+    Heat, Glow-Heat, Heat-Glow, Reflect-Freeze, Freeze-Reflect,
+    Heat-Glow & Freeze-Reflect Hybrid
+  * Fix: Save mirror tool state to KRA file (kde#339515)
+  * Usability: Make it easier to select lower values for stabilizer
+    sliders
+  * Fix: Saving reference images z-order (kde#403974)
+  * Fix: Disable use of Always Use Template in the New File Window
+    (kde#399796)
+  * Usability: Add a tooltip to the composition docker
+  * Fix: Bug where mirroring canvas would get out of sync with the
+    main menu action
+  * Fix: Check if animation config exists before accessing its
+    contents (kde#404521)
+- Drop fix_libgif_5_0_build.patch, Leap 42.3 is too old
+- Remove unnecessary build requirements
+- Remove conflict with calligra-devel, no longer necessary
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Mar  6 14:24:12 UTC 2019 - wbauer@tmo.at
+
+- Update to 4.1.8:
+  * Be the top handler for .kra files by default (kde#337272)
+  * Disable forked xcb implementation with Qt 5.12 and up, as it
+    no longer works
+  * Remove connection to a non-existent signal
+  * Fix building against exiv2-0.27 (kde#402566)
+  * Remove splash screen options now and always close when krita
+    finishes loading
+  * Deref image shared pointers before calling ~KisDocument
+    (kde#396985)
+  * overview docker: preserve aspect ratio and don't stretch when
+    some layers are hidden
+  * Resize the HUD after adding options for the first time
+    (kde#402296)
+  * Remove default shortcut for the text tool (kde#402270)
+- Drop patches merged upstream:
+  * Fix-building-against-exiv2-0.27.patch
+  * Fix-the-exiv2-fix.patch
+- Drop 0001-Fix-popup-palette-with-Qt-5.9.4.patch, the bug in Qt
+  has been fixed via a maintenance update meanwhile
+
+-------------------------------------------------------------------
+Tue Jan  8 09:23:29 UTC 2019 - wbauer@tmo.at
+
+- Add 0001-Fix-popup-palette-with-Qt-5.9.4.patch to work around a
+  bug in Qt 5.9.4 that broke krita's popup palette on Leap 15.0
+  (boo#1120639)
+
+-------------------------------------------------------------------
+Thu Jan  3 11:01:20 UTC 2019 - wbauer@tmo.at
+
+- Add Fix-the-exiv2-fix.patch to fix a bug in the previous patch
+  that could cause crashes when opening certain JPG files (that
+  contain XMP tags)
+
+-------------------------------------------------------------------
+Sun Dec 30 11:56:22 UTC 2018 - wbauer@tmo.at
+
+- Add Fix-building-against-exiv2-0.27.patch to fix build with
+  exiv2-0.27.0
+
+-------------------------------------------------------------------
+Thu Dec 13 12:16:31 UTC 2018 - wbauer@tmo.at
+
+- Update to 4.1.7: (4.1.6 has been skipped)
+  * See https://krita.org/en/item/krita-4-1-7-released/
+  * Remove news feed widget, it could cause problems with WiFi
+    connections because Qt's network manager class checks the wifi
+    settings all the time (QTBUG-46015, QTBUG-40332)
+  * Work around a bug in Qt 5.12 that would cause an instant crash
+    when using a tablet
+  * Fix showing wrongly that there is no audio support in the
+    animation timeline audio menu
+  * Don't hang when trying to load recent files thumbnails for
+    files in a location that's no longer accessible (kde#401939)
+  * Remember whether anti-aliasing was enabled in selection tools
+    (kde#401730)
+  * Add a shortcut to activate the text tool (kde#401655)
+  * Make the toolbars movable again
+  * Make Select by Color Range check the entire image (kde#346138)
+  * Enable HiDPI support by default: the problems with the canvas
+    scaling have been solved
+  * Allow krita to import more than file at a time when started
+    from a file manager (kde#401476)
+  * Fix using the scrollwheel in comboboxes on Linux (kde#399379)
+  * Fix the calculation of Average Desaturation (kde#400493)
+  * Do not crash when exporting Compositions (kde#400627)
+  * Make the move tool show the correct cursor in all modes
+  * Let the move tool move invisible layers
+  * Fix a crash in the artistic color selector (kde#399860)
+- Drop fix-build-with-Qt5.6.patch, merged upstream
+- Remove no longer used kio-devel build requirement
+
+-------------------------------------------------------------------
+Fri Oct 12 12:07:02 UTC 2018 - wbauer@tmo.at
+
+- Update to 4.1.5: (4.1.4 has been skipped)
+  * See https://krita.org/en/item/krita-4-1-5-released/
+  * Associate Krita with .ico files
+  * Auto-update the device pixel ration when changing screens
+  * Disable autoscrolling for the pan tool
+  * Disable drag & drop in the recent documents list (kde#399397)
+  * Disable zoom-in/out actions when editing text in rich-text mode
+    (kde#399157)
+  * Do not add template files to recent documents list (kde#398877)
+  * Do not allow creating masks on locked layers (kde#399145)
+  * Do not close the settings dialog when pressing enter while
+    searching for a shortcut (kde#399116)
+  * Fill polyline shapes if some fill style was selected
+    (kde#399135)
+  * Fix Tangent Normal paintop to work with 16 and 32 bit floating
+    point images (kde#398826)
+  * Fix a blending issue with the color picker when picking a color
+    for the first time (kde#394399)
+  * Fix a problem with namespaces when loading SVG
+  * Fix an assert when right-clicking the animation timeline
+    (kde#399435)
+  * Fix autohiding the color selector popup
+  * Fix canvas scaling in hidpi mode (kde#360541)
+  * Fix deleting canvas input settings shortcuts (kde#385662)
+  * Fix loading multiline text with extra mark-up (kde#399227)
+  * Fix loading of special unicode whitespace characters
+    (kde#392710)
+  * Fix loading the alpha channel from Photoshop TIFF files
+    (kde#376950)
+  * Fix missing shortcut from Fill Tool tooltip (kde#399111)
+  * Fix projection update after undoing create layer (kde#399575)
+  * Fix saving layer lock, alpha lock and alpha inheritance
+    (kde#399513)
+  * Fix saving the location of audio source files in .kra files
+  * Fix selections and transform tool overlay when Mirror Axis is
+    active (kde#395222)
+  * Fix setting active session after creating a new one
+  * Fix showing the color selector popup in hover mode
+  * Fix the ctrl-w close window shortcut on Windows (kde#399339)
+  * Fix the overview docker (kde#396922, kde#384033)
+  * Fix the shift-I color selector shortcut
+  * Fix unsuccessful restoring of a session blocking Krita from
+    closing (kde#399203)
+  * Import SVG files as vector layers instead of pixel layers
+    (kde#399166)
+  * Improve spacing between canvas input setting categories
+  * Make Krita merge layers correctly if the order of selecting
+    layers is not top-down (kde#399146)
+  * Make it possible to select the SVG text tool text has been
+    moved inside an hidden group and then made visible again
+    (kde#395412)
+  * Make the color picker pick the alpha channel value correctly
+    (kde#399169)
+  * Prevent opening filter dialogs on non-editable layers
+    (kde#398915)
+  * Reset the brush preset selection docker on creating a new
+    document (kde#399340)
+  * Support fractional display scaling factors
+  * Update color history after fill (kde#379199)
+- Update fix-build-with-Qt5.6.patch yet again to fix a new
+  compilation error with Qt 5.6 (kde#399677), the previous one is
+  fixed in this release
+
+-------------------------------------------------------------------
+Thu Sep 27 08:09:31 UTC 2018 - wbauer@tmo.at
+
+- Update to 4.1.3: (4.1.2 has been skipped)
+  * See https://krita.org/en/item/krita-4-1-3-released/
+  * Add a workaround for loading broken files with negative frame
+    ids (kde#395378)
+  * Delete existing frame files only within exported range
+    (kde#377354)
+  * Fix a problem of Insert Hold Frames action. We should also
+    "offset" empty cell to make sure the expanding works correctly.
+    (kde#396848)
+  * Fix an assert when trying to export a PNG image sequence
+    (kde#398608)
+  * Fix updates when switching frame on a layer with scalar channel
+  * Use user-selected color label for the auto-created animation
+    frames (kde#394072)
+  * saving of the multiple frames insertion/removal options to the
+    config
+  * Improvements to support for various file formats
+  * Fix an assert if an imported SVG file links to non-existent
+    color profile (kde#398576)
+  * Fix backward compatibility of adjustment curves. Older versions
+    supported fewer adjustable channels, so we can no longer assume
+    the count in configuration data to matches exactly. (kde#396625)
+  * Fix saving layers with layer styles (kde#396224)
+  * Let Krita save all the kinds of layers into PSD (in rasterized way)
+    (kde#399002)
+  * PNG Export: convert to rgb, if the image isn't rgb or gray
+    (kde#398241)
+  * Remove fax-related tiff options. In fax mode tiff can store
+    only 1 bit per channel images, which Krita doesn't support. So
+    just remove these options from the GUI (kde#398548)
+  * Add a shortcut for the threshold filter (kde#383818)
+  * Fix Burn filter to work in 16-bit color space (kde#387102)
+  * Make color difference threshold for color labels higher
+  * Restore the shortcut for the invert filters
+  * Remove hardcoded brush size limit for the Quick Brush (kde#376085)
+  * Fix rotation direction when the transformed piece is mirrored
+    (kde#398928)
+  * Make Stamp brush preview be scaled correctly (kde#399065)
+  * Add a workaround for tablets not reporting tablet events in
+    hover mode (kde#363284)
+  * Do not reset text style when selecting something in text editor
+  * Fix saving line breaks when the text is not left aligned
+    (kde#395769)
+  * Fix reference image cache update conditions (kde#397208)
+  * Fix build with dcraw 0.19
+  * Disable pixel grid action of opengl is disabled (kde#388903)
+  * Fix painting of selection decoration over grids (kde#362662)
+  * Fix to/fromLab16/Rgb16 methods of the Alpha color space
+  * Fix undo in the cloned KisDocument (kde#398730)
+  * Automatically avoid conflicts between color labels and system
+    colors
+  * Fix cursor jumps in the Layer Properties dialog (kde#398958)
+  * Fix resetting active tool when moving layers above vector
+    layers (kde#398095)
+  * Fix selecting of the layer after undoing Flatten Image (kde#398814)
+  * Fix showing two nodes when converting to a Filter Mask
+  * Fix updates of Clone Layers when the nodes are updated with
+    subtree walker
+  * a spurious assert in layer cloning (kde#398788)
+  * Fix a memory access problem in KisExifIO
+  * Fix memory access problems in KisExifIo
+  * Show metadata in the dublin core page of the metadata editor.
+    The editor plugin is still broken, with dates not working,
+    bools not working, but now at least a string one has entered
+    is shown again. (kde#396672)
+  * SegFault in LibKis Node mergeDown (kde#397043)
+  * apidox for Node.position() (kde#393035)
+  * Add modified() getter to the Document class (kde#397320)
+  * Add resetCache() Python API to FileLayer (kde#398740)
+  * Fix memory management of the Filter's InfoObject (kde#392183)
+  * Fix setting file path of the file layer through python API
+    (kde#398740)
+  * Make sure we wait for the filter to be done
+  * Fix saving a fixed bundle under the original name
+  * Fix "stroke selection" to work with local selections (kde#398007)
+  * Fix a crash when moving a vector shape selection when it is an
+    overlay
+  * Fix crash when converting a shape selection shape into a shape
+    selection
+  * Fix crash when undoing removing of a selection mask
+  * Fix rounded rectangular selection to actually work (kde#397806)
+  * Fix selection default bounds when loading old type of
+    adjustment layers
+  * Stroke Selection: don't try to add a shape just because a
+    layer doesn't have a paint device (kde#398015)
+  * Fix color picking from reference images. Desaturation now
+    affects the picked color, and reference images are ignored for
+    picking if hidden.
+  * Fix connection points on cage transform (kde#396788)
+  * Fix minor UIX issues in the move tool:
+    1) adds an explicit frame when the move stroke is in progress
+    2) Ctrl+Z now cancels the stroke if there is nothing to undo
+    (kde#392014)
+  * Fix offset in Move Tool in the end of the drag
+  * Fix shift modifier in Curve Selection Tool. The modifier of the
+    point clicked the last should define the selection mode. For
+    selection tools we just disable shift+click "path-close"
+    shortcut of the base path tool. (kde#397932)
+  * Move tool crops the bounding area by exact bounds
+  * Reduce aliasing in reference images (kde#396257)
+  * Add the default shortcut for the close action: when opening Krita
+    with an image, the close document shortcut was not available.
+  * FEATURE: Add a hidden config option to lock all dockers in place
+  * Fix KMainWindow saving incorrect widget settings
+  * Fix broken buddy: Scale to New Size’s Alt-F points to Alt-T
+    (kde#396948)
+  * Fix http link color in KritaBlender.colors: The link are now
+    visible on the startup page of Krita and were dark blue, exact
+    same value as the background making the frame hard to read.
+    Switching them to bright cyan improves the situation.
+  * Fix loading the template icons
+  * Fix the offset dialog giving inaccurate offsets (kde#397218)
+  * Make color label selector handle mouse release events (kde#394072)
+  * Remember the last opened settings page in the preferences dialog
+  * Remember the last used filter bookmark
+  * Remove the shortcut for wraparound mode: It's still available
+    from the menu and could be put on the toolbar, or people could
+    assign a shortcut, but having it on by default makes life too
+    hard for people who are trying to support our users.
+  * Remove the shortcuts from the mdi window's system menu's
+    actions. The Close Window action can now have a custom shortcut,
+    and there are no conflicts with hidden actions any more.
+    (kde#398729, kde#375524, kde#352205)
+  * Set color scheme hint for compositor. This is picked up by KWin
+    and sets the palette on the decoration and window frame,
+    ensuring a unified look.
+  * Show a canvas message when entering wraparound mode
+  * Show the zoom widget when switching documents (kde#398099)
+  * Use KSqueezedTextLabel for the pattern name in the pattern
+    docker and brush editor (kde#398958)
+  * sort the colorspace depth combobox
+- Update fix-build-with-Qt5.6.patch to fix a new compilation
+  problem with Qt 5.6 (kde#399130), the previous one is fixed in
+  this release
+- Drop fix-build-with-dcraw-0.19.patch, merged upstream
+
+-------------------------------------------------------------------
+Fri Aug 31 10:53:09 UTC 2018 - wbauer@tmo.at
+
+- Add fix-build-with-dcraw-0.19.patch to fix compilation with the
+  latest libraw
+- Remove unnecessary libkdcraw-devel BuildRequires, krita doesn't
+  use it anymore since a while
+
+-------------------------------------------------------------------
+Wed Jul 18 17:09:19 UTC 2018 - wbauer@tmo.at
+
+- Update to 4.1.1:
+  * See https://krita.org/en/item/krita-4-1-1-released/
+  * Fix loading PyKrita when using PyQt 5.11 (kde#396381)
+  * Fix possible crashes with vector objects (kde#396145)
+  * Fix an issue when resizing pixel brushes in the brush editor
+    (kde#396136)
+  * Don't show the unimplemented color picker button in the vector
+    object tool properties docker (kde#389525)
+  * Fix activation of the autosave time after a modify, save,
+    modify cycle (kde#393266)
+  * Fix out-of-range lookups in the cross-channel curve filter
+    (kde#396244)
+  * Fix an assert when pressing PageUp into the reference images
+    layer
+  * Avoid a crash when merging layers in isolated mode (kde#395981)
+  * Fix loading files with a transformation mask that uses the box
+    transformation filter (kde#395979)
+  * Fix activating the transform tool if the Box transformation
+    filter was selected (kde#395979)
+  * Fix a crash when hiding the last visible channel (kde#395301)
+  * Make it possible to load non-conforming GPL palettes like
+    https://lospec.com/palette-list/endesga-16
+  * Simplify display of the warp transformation grid
+  * Re-add the Invert Selection menu entry (kde#395764)
+  * Use KFormat to show formatted numbers
+  * Hide the color sliders config page
+  * Don't pick colors from fully transparent reference images
+    (kde#396358)
+  * Fix a crash when embedding a reference image
+  * Fix some problems when saving and loading reference images
+    (kde#396143)
+  * Fix the color picker tool not working on reference images
+    (kde#396144)
+  * Extend the panning range to include any reference images
+- Add fix-build-with-Qt5.6.patch to make it compile on Leap 42.3
+  (kde#396594)
+
+-------------------------------------------------------------------
+Wed Jun 27 14:21:16 UTC 2018 - wbauer@tmo.at
+
+- Update to 4.1.0:
+  * See https://krita.org/en/item/krita-4-1-0-released/
+  * Major new features:
+    + A new reference images tool that replaces the old reference
+      images docker
+    + You can now save and load sessions: the set of images and
+      views on images you were working on
+    + You can create multi-monitor workspace layouts
+    + An improved workflow for working with animation frames
+    + An improved animation timeline display
+    + Krita can now handle larger animation by buffering rendered
+      frames to disk
+    + The color picker now has a mixing option
+    + Improved vanishing point assistant - and assistants can be
+      painted with custom colors
+    + The first part of Ivan Yossi's Google Summer of Code work on
+      improving the performance of brush masks through
+      vectorization is included as well!
+  * Also a host of bug fixes, and improvements to the rendering
+    performance and more features
+
+-------------------------------------------------------------------
+Thu Jun 14 14:28:33 UTC 2018 - wbauer@tmo.at
+
+- Update to 4.0.4:
+  * See https://krita.org/en/item/krita-4-0-4-released/
+  * Fix artefacts when painting with a pixel brush on a
+    transparency mask (kde#394438)
+  * Fix a race condition when using generator layers
+  * Fix a crash when editing a transform mask (kde#395224)
+  * Add preset memory to the Ten Brushes Script, to make switching
+    back and forward between brush presets more smooth
+  * Improve the performance of the stroke layer style (kde#361130,
+    kde#390985)
+  * Do not allow nesting of .kra files: using a .kra file with
+    embedded file layers as a file layer would break on loading
+  * Keep the alpha channel when applying the threshold filter
+    (kde#394235)
+  * Do not use the name of the bundle file as a tag automatically
+    (kde#394345)
+  * Fix selecting colors when using the python palette docker
+    script (kde#394705)
+  * Restore the last used colors on starting Krita, not when
+    creating a new view (kde#394816)
+  * Allow creating a layer group if the currently selected node is
+    a mask (kde#394832)
+  * Show the correct opacity in the segment gradient editor
+    (kde#394887)
+  * Remove the obsolete shortcuts for the old text and artistic
+    text tool (kde#393508)
+  * Allow setting the multibrush angle in fractions
+  * Improve performance of the OpenGL canvas, especially on macOS
+  * Fix painting of pass-through group layers in isolated mode
+    (kde#394437)
+  * Improve performance of loading OpenEXR files
+  * Autosaving will now happen even if Krita is kept very busy
+  * Improve loading of the default language
+  * Fix color picking when double-clicking (kde#394396)
+  * Fix inconsistent frame numbering when calling FFMpeg
+    (kde#389045)
+  * Fix accepting touch events with recent Qt versions
+  * Fix integration with the Breeze theme: Krita no longer tries
+    to create widgets in threads (kde#392190)
+  * Fix the batch mode flag when loading images from Python
+
+-------------------------------------------------------------------
+Wed Jun 13 08:49:46 UTC 2018 - christophe@krop.fr
+
+- Don't recommend create-resources anymore. It's unmaintained and
+  Krita doesn't use it anymore.
+
+-------------------------------------------------------------------
+Sat May 12 10:31:15 UTC 2018 - wbauer@tmo.at
+
+- Update to 4.0.3:
+  * https://krita.org/en/item/krita-4-0-3-released/
+  * Fix a crash when copy/pasting (kde#394068)
+  * Krita can open .rw2 RAW files
+  * The splash screen is updated to work better on HiDPI or Retina
+    displays (kde#392282)
+  * The OpenEXR export filter will convert images with an integer
+    channel depth before saving, instead of giving an error
+  * The OpenEXR export filter no longer gives export warnings
+    calling itself the TIFF filter
+  * The emtpy error message dialog that would erroneously be shown
+    after running some export filters is no longer shown
+    (kde#393850)
+  * The setBackGroundColor method in the Python API has been
+    renamed to setBackgroundColor for consistency
+  * Fix a crash in KisColorizeMask (kde#393753)
+
+-------------------------------------------------------------------
+Thu May 10 09:40:32 UTC 2018 - wbauer@tmo.at
+
+- Update to 4.0.2:
+  * See https://krita.org/en/item/krita-4-0-2-released/
+  * Fix canvas update issues when an animation is being rendered to
+    the cache (kde#392969)
+  * Fix playback in isolated mode (kde#392559)
+  * Fix saving animated transparency and filter masks, adjustment
+    layer (kde#393302)
+  * set size for a few timeline icons as it is painfully small on
+    Windows
+  * Fix copy-pasting pixel data from animated layers (kde#364162)
+  * Fix keeping "eraser switch size/opacity" option when saving the
+    brush (kde#393499)
+  * Fix update of the preset editor GUI when a default preset is
+    created (kde#392869)
+  * Make strength and opacity sliders from 0 to 100 percent in
+    brush editor
+  * Fix saving state of the selection masks into .kra
+  * Read multilayer EXR files saved by Nuke (kde#393771)
+  * PSD: convert the image if its colorspace is not supported
+  * Don't let autosave close currently running actions
+  * increase the range for the pixel grid threshold
+  * only allow isometric grid with OpenGL enabled (kde#392526)
+  * Fix a hangup when closing the image (kde#393916)
+  * Fix a crash when duplicating active global selection masks
+    (kde#382315)
+  * Fix crashes on undo/redo of vector path points operations
+    (kde#393209, kde#393087)
+  * Fix crash when deleting palette (kde#393353)
+  * Fix crash when resizing the Tool Options for the shape
+    selection tool (kde#393217)
+  * Show the exact bounds in the layer properties dialog
+  * Add ability for vanishing point assistants to show and
+    configure radial lines
+  * Make the Saturation slider update when picking a color that has
+    Value 100 (kde#391934)
+  * Fix "Break at segment" to work correctly with closed paths
+  * Disable right-clicking on popup palette
+    (kde#391696, kde#378484)
+  * Don't let the color label widget mess up labels when right
+    button is pressed (kde#392815)
+  * Fix Canvas position popping after pop-up palette rotation reset
+    (kde#391921)
+  * Change the behaviour of the add layer button (kde#385050)
+  * Clicking outside preview box moves view to that point
+    (kde#384687)
+  * Implement double Esc key press shortcut for canceling continued
+    transform mode (kde#361852)
+  * Display flow and opacity as percentage instead of zero to one
+    on toolbar
+
+-------------------------------------------------------------------
+Wed Apr 11 12:10:45 UTC 2018 - wbauer@tmo.at
+
+- Update to 4.0.1:
+  * See https://krita.org/en/item/krita-4-0-1-released/
+  * Fix duplicate shortcut on Photoshop scheme
+  * Alphabetize shortcut to make the diffs easier to read when
+    doing changes
+  * Make the triangles larger on the categorized list view so they
+    are more visible
+  * Disable the macro recorder and playback plugin
+  * Remove the docker titlebar lock and collapse buttons
+    (kde#385238, kde#392235)
+  * Set the pixel grid to show up at 2400% zoom by default
+    (kde#392161)
+  * Improve the layout of the palette docker
+  * Disable drag and drop in the palette view: moving swatches
+    around did not actually change the palette (kde#392349)
+  * Fix selecting the last used template in the new document
+    dialog when using appimages (kde#391973)
+  * Fix canvas lockup when using Guides at the top of the image
+    (kde#391098)
+  * Do not reset redo history when changing layer's visibility
+    (kde#390581)
+  * Fix shifting the pan position after using the popup widget
+    rotation circle (kde#391921)
+  * Fix height map to normal map in wraparound mode (kde#392191)
+  * Make it possible to edit the font size in the svg text tool
+    (kde#392714)
+  * Let Text Shape have empty lines (kde#392471)
+  * Fix updates of undo/redo actions (kde#392257)
+  * Implement "Convert text into path" function (kde#391294)
+  * Fix a crash in SvgTextTool when deleting hovered/selected shape
+    (kde#392128)
+  * Make the text editor window application modal (kde#392248)
+  * Fix alignment of RTL text (kde#392065, kde#392064)
+  * Fix painting parts of text outside the bounding box on the
+    canvas (kde#392068)
+  * Fix rendering of the text with relative offsets (kde#391160)
+  * Fix crash when transforming text with Transform Tool twice
+    (kde#392127)
+  * Fix handling of keyframes when saving (kde#392233, kde#392559)
+  * Keep show in timeline and onion skin options when merging layers
+    (kde#377358)
+  * Keep keyframe color labels when merging layers (kde#388913)
+  * Fix exporting out audio with video formats MKV and OGV
+  * Do not load/save layer channel flags anymore (channel flags were
+    removed from the UI in Krita 2.9) (kde#392504)
+  * Fix saving of Transform Mask into rendered formats (kde#392229)
+  * Fix reporting errors when loading fails (kde#392413)
+  * Fix a memory leak when loading file layers
+  * Fix loading a krita file with a loop in the clone layers setup
+    (kde#384587)
+  * Fix showing a wait cursor after loading a PNG image (kde#392249)
+  * Make bundle loading feedback a bit clearer regarding the bundle
+  * Fix crash when creating a vector selection (kde#391292)
+  * Fix crash when doing right-click on the gradient fill stop
+    opacity input box of a vector (kde#392726)
+  * Fix setting the aspect ratio of vector shapes (kde#391911)
+  * Fix a crash if a certain shape is not valid when writing SVG
+    (kde#392240)
+  * Fix hidden stroke and fill widgets not to track current shape
+    selection (kde#391990)
+  * Fix crash when creating a new spray preset (kde#392869)
+  * Fix rounding of the the pressure curve
+  * Fix painting with colorsmudge brushes on transparency masks
+    (kde#391268)
+  * Fix uninitialized distance info for KisHairyPaintOp (kde#391940)
+  * Fix rounding of intermediate pressure values
+  * Fix the colorsmudge brush when painting in wraparound mode
+    (kde#392312)
+  * Fix flattening of group layers with Inherit Alpha property set
+    (kde#390095)
+  * Fix a crash when using a transformation mask on a file layer
+    (kde#391270)
+  * Improve performance of the transformation mask
+- Recommend python3-qt5, required for python scripting
+- BuildRequire python3-sip-devel instead of python3-sip, the former
+  is needed for *building* (though it makes no difference in
+  practice as both are pulled in by python3-qt5-devel anyway)
+- Don't delete libkritacolord.so, we should not have to worry about
+  a conflict with calligra-krita anymore
+- Mark license files as %license instead of %doc
+
+-------------------------------------------------------------------
+Tue Apr  3 12:39:53 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Disable VC on non-x86* to fix builds
+
+-------------------------------------------------------------------
+Fri Mar 23 18:33:32 UTC 2018 - khnazile@rkmail.ru
+
+- Restore openSUSE Leap 42.3 support:
+  * boost 1.61 presents in Leap 42.3 repo
+  * Added fix_libgif_5_0_build.patch to make krita build against libgif 5.0.x
+
+-------------------------------------------------------------------
+Thu Mar 22 11:55:27 UTC 2018 - wbauer@tmo.at
+
+- Update to 4.0.0:
+  * See https://krita.org/en/item/krita-4-0-0-released/
+  * Highlights:
+    + SVG support
+    + A new text tool 
+    + Python scripting
+    + Easy coloring of line-art with the new Colorize Mask Tool
+    + Masked brushes
+    + New brush presets
+  * Known issues:
+    + Krita 4 uses SVG for vector layers. This means that Krita 3
+      files with vector layers may not be loaded entirely
+      correctly. Keep backups!
+    + Krita 4's new text tool is still limited
+    + The Reference Images Docker has been removed
+- Drop conditionals for older distributions, it needs at least
+  boost 1.55 now which is only available in Tumbleweed and Leap 15
+
+-------------------------------------------------------------------
+Fri Jan 12 16:06:01 UTC 2018 - wbauer@tmo.at
+
+- Update to 3.3.3:
+  * See https://krita.org/en/item/krita-3-3-3/
+  * Fix an issue where it would not be possible to select certain
+    blending modes when the current layer is grayscale but the
+    image is rgb.
+  * Set the OS and platform when reporting a bug from within Krita
+    on Windows.
+  * Make it possible to enter color values as percentage in the
+    specific color selector
+  * Add OpenGL warnings and make ANGLE default on Intel GPUs
+  * Add an Invert button to the levels filter
+  * Implement loading and saving of styles for group layers to and
+    from PSD
+  * Fix the erase mode not showing correctly when returning to the
+    brush tool
+  * Save the visibility of individual assistants in .kra files
+  * Add an option to draw ruler tips as a power of 2
+  * Disable autoscroll on move and transform tools
+  * Improve handling of native mouse events when using a pen and
+    the Windows Ink API
+  * Fix the focal point for the pinch zoom gesture
+  * Fix loading netpbm files with comment
+
+-------------------------------------------------------------------
+Tue Nov  7 15:38:30 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.3.2.1:
+  * See https://krita.org/en/item/krita-3-3-2-release/
+  * Krita 3.3.1 would read brush presets with textures incorrectly.
+    This is now fixed.
+  * Animation: make it possible to render up to a 10,000 frames
+  * Add a command-line option to start Krita with a new, empty
+    image: krita --new-image RGBA,8,5000,3000
+  * Performance: improved caching for effect and selection masks
+  * Performance: Fix a leak in the smudge brush
+  * Performance: Improve performance when using the
+    hardware-accelerated canvas
+  * Performance, Windows: improve the performance when loading
+    icons
+  * Filters: it’s now possible to edit the filter’s settings
+    directly in the xml that is used to save filter definitions to
+    .krita files.
+  * Filters: a new ASC_CDL color balance filter was added, with
+    Slope, Offset and Power options.
+  * Crashes: fix a crash that happened when closing a second
+    document with infinite canvas active
+  * Layers: Make it possible to copy group layers
+  * UI: make it possible to use the scroll-wheel to scroll through
+    patterns when the patterns palette is very narrow.
+  * UI: Improve drag and drop feedback in the layer panel
+  * UI: Hide the lock and collapse titlebar icons when a panel is
+    floating
+
+-------------------------------------------------------------------
+Wed Oct 11 07:15:45 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.3.1:
+  * See https://krita.org/en/item/krita-3-3-1/
+  * Krita would crash if you would restart Krita after closing
+    Krita with the reference images docker set to floating
+  * Krita 3.3.0 could not read .kra backup files or .kra files that
+    were unzipped, then zipped up manually
+  * Merge down does not remove locked layers anymore
+  * Various performance improvements, especially for macOS
+  * Improve the look and feel of dragging and dropping layers
+  * Improve the tooltips in the brush preset selector
+  * Fix a memory leak in the color selectors
+  * Don't allow the fill tool to be used on group layers
+  * Add brightness and contrast sliders for textured brushes
+  * Add paste-at-cursor
+  * Improve performance of the cpu canvas
+  * Fix a crash on closing Krita when there is something on the
+    clipboard
+  * Add a button to open a file layer's image in Krita
+
+-------------------------------------------------------------------
+Thu Sep 28 08:55:33 UTC 2017 - wbauer@tmo.at
+
+- Update to 3.3.0:
+  * Some visual glitches when using hi-dpi screens are fixed
+    (remember: on Windows and Linux, you need to enable this in the
+    settings dialog).
+  * If you create a new image from clipboard, the image will have a
+    title
+  * Favorite blending modes and favorite brush presets are now
+    loaded correctly on startup
+  * GMIC
+    + the plugin has been updated to the latest version for Windows
+      and Linux.
+    + the configuration for setting the path to the plugin has been
+      removed. Krita looks for the plugin in the folder where the
+      krita executable is, and optionally inside a folder with a
+      name that starts with ‘gmic’ next to the krita executable.
+    + there are several fixes for handling layers and communication
+      between Krita and the plugin
+  * Some websites save jpeg images with a .png extension: that used
+    to confuse Krita, but Krita now first looks inside the file to
+    see what kind of file it really is.
+  * PNG: 
+    + 16 and 32 bit floating point images are now converted to 16
+      bit integer when saving the images as PNG.
+    + It’s now possible to save the alpha channel to PNG images
+      even if there are no (semi-) transparent pixels in the image
+  * When hardware accelerated display is disabled, the color picker
+    mode of the brush tool showed a broken cursor; this has been
+    fixed.
+  * The Reference Images docker now only starts loading images when
+    it is visible, instead on Krita startup. Note: the reference
+    images docker uses Qt’s imageio plugins to load images. If you
+    are running on Linux, remove all Deepin desktop components.
+    Deepin comes with severely broken qimageio plugins that will
+    crash any Qt application that tries to display images.
+  * File layers now correctly reload on change again
+  * Add several new commandline options: 
+    + –nosplash to start Krita without showing the splash screen
+    + –canvasonly to start Krita in canvas-only mode
+    + –fullscreen to start Krita full-screen
+    + –workspace Workspace to start Krita with the given workspace
+  * Selections 
+    + The Select All action now first clears the selection before
+      selecting the entire image
+    + It is now possible to extend selections outside the canvas
+      boundary
+  * Performance improvements: in several places superfluous reads
+    from the settings were eliminated, which makes generating a layer
+    thumbnail faster and improves painting if display acceleration is
+    turned off.
+  * The smart number input boxes now use the current locale to follow
+    desktop settings for numbers
+  * The system information dialog for bug reports is improved
+  * See also https://krita.org/en/item/krita-3-3-0/
+
+-------------------------------------------------------------------
+Fri Aug 25 12:46:36 UTC 2017 - wbauer@tmo.at
+
+- Update to version 3.2.1:
+  * Crash on startup if only OpenGL 2.1 is found: if you had to
+    disable opengl for 3.2.0, you can try to enable it again
+  * A crash when changing layer types in the gmic-qt plugin
+  * A bug where gmic-qt could crash on odd-sized images
+  * A regression where using the text tool would break the brush tool
+  * The option to use the native platform’s file dialogs was restored
+  * A bug where selecting the line tool would disable the flow slider
+  * Some issues with the LUT docker were fixed
+- Remove no longer used libcurl-devel build requirement
+
+-------------------------------------------------------------------
+Mon Aug 21 10:00:04 UTC 2017 - wbauer@tmo.at
+
+- Use the %kf5_find_lang macro to get the file list for the lang
+  package
+
+-------------------------------------------------------------------
+Thu Aug 17 12:17:56 UTC 2017 - wbauer@tmo.at
+
+- Update to version 3.2.0:
+  * New G'Mic-qt plugin integration
+  * Smart patch tool
+  * Finger painting on touch screens
+  * New brush presets
+  * A lot of bug fixes
+  * See also https://krita.org/en/release-notes-for-krita-3-2/
+- Drop Drop-QForeachContainer-include.patch, merged upstream
+- Remove build-compare workaround from the specfile, the
+  corresponding source file doesn't exist anymore
+
+-------------------------------------------------------------------
+Fri Jul 21 13:45:55 UTC 2017 - tchvatal@suse.com
+
+- Build only against lcms2 and drop dependency over lcms1
+
+-------------------------------------------------------------------
+Wed Jun  7 11:17:15 UTC 2017 - jengelh@inai.de
+
+- Remove filler wording from description.
+
+-------------------------------------------------------------------
+Fri May 26 12:37:54 UTC 2017 - wbauer@tmo.at
+
+- Update to version 3.1.4:
+  * Fix a crash when trying to play an animation when OpenGL is
+    disabled in Krita
+  * Fix rendering animation frames if the directory you're trying
+    to render to doesn't exist
+  * Don't open the tablet/screen resolution conflict dialog
+    multiple times
+  * Don't scale down previews that are too small in the transform
+    tool: this fixes a rare crash with the transform tool
+  * Don't crash when trying to close the last view on the last
+    document while the document is modified.
+  * Fix a crash when cycling quickly through layers that have a
+    color tag
+  * Fix loading some Gimp 2.9 files: note that Gimp 2.9's file
+    format is not officially supported in Krita
+  * Fully remove the macro recorder plugin: in 3.1.4, only the
+    menu entries had stayed around.
+  * Make it impossible to hide the template selector in the new
+    image dialog; hiding the template selector would also hide the
+    cancel button in the dialog.
+- Add Drop-QForeachContainer-include.patch to fix build with Qt 5.9
+
+-------------------------------------------------------------------
+Mon May  1 12:03:56 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to version 3.1.3:
+  * New features:
+    + implement context menu actions for default tool (cut, copy, paste, object ordering)
+    + added option to allow multiple instances of krita (BUG 377199)
+    + scale around pivot point added
+  * Too many bugfixes to list here, see:
+    https://krita.org/en/release-notes-for-3-1-3/
+- Add _constraints: Needs at least 4 GiB RAM
+
+-------------------------------------------------------------------
+Wed Feb  1 11:52:50 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Tue Jan 31 20:30:18 UTC 2017 - wbauer@tmo.at
+
+- Update to version 3.1.2.1:
+  * Audio Support for Animations
+  * Ctrl key continue mode for Outline Selection tool
+  * Allow deselection by clicking with a selection tool
+  * Added a checkbox for enabling HiDPI to the settings dialog
+  * Remove the export to PDF functionality. It is having too many
+    issues right now. (kde#372439)
+  * a lot of bug fixes
+  * More information on https://krita.org/en/release-notes-for-3-1-2/
+- Add Qt5Multimedia build requirement to enable the new audio
+  support for animations
+
+-------------------------------------------------------------------
+Wed Dec 21 19:32:18 UTC 2016 - fabian@ritter-vogt.de
+
+- Delete /usr/lib64/libkritacolord.so do to conflict between
+  calligra-krita and krita-devel
+
+-------------------------------------------------------------------
+Sun Dec 18 17:06:50 UTC 2016 - wbauer@tmo.at
+
+- Move libkritacolord.so to the -devel subpackage where it belongs
+
+-------------------------------------------------------------------
+Thu Dec 15 16:26:07 UTC 2016 - fabian@ritter-vogt.de
+
+- Sync with KUE:
+  * Add -devel subpackage
+  * Use %bcond_without lang
+  * Don't remove non-existing color schemes any more
+- Require Qt 5.6
+- Update to version 3.1.1:
+  * Full Support for OSX
+  * Render Animations to files
+  * Animation Curves and Opacity
+  * New Internal Color Picker
+  * New Quick Brush Engine
+  * Stop-Based Gradient Editor
+  * Lazy Brush/Colorize Mask
+  * More information on https://krita.org/en/release-notes-for-krita-3-1/
+
+-------------------------------------------------------------------
+Sun Nov  6 17:05:13 UTC 2016 - wbauer@tmo.at
+
+- Update package summary, description and RPM group (boo#1006479)
+
+-------------------------------------------------------------------
+Fri Sep 30 16:22:28 UTC 2016 - wbauer@tmo.at
+
+- Update to version 3.0.1.1
+
+  Important bugfixes:
+  * the brush-resize lag is gone
+  * templates are there again
+  * loading brush tags works again
+  * the sobel filter is fixed.
+
+-------------------------------------------------------------------
+Fri Sep  9 20:34:58 UTC 2016 - wbauer@tmo.at
+
+- Do not install the BreezeDark and BreezeHighContrast color
+  schemes, they are already included in breeze5-style (kde#368093)
+
+-------------------------------------------------------------------
+Thu Sep  8 14:08:14 UTC 2016 - wbauer@tmo.at
+
+- Update to version 3.0.1
+
+  For a list of changes see:
+  https://krita.org/en/item/krita-3-0-1-update-brings-numerous-fixes/
+
+- Add lang subpackage
+
+-------------------------------------------------------------------
+Thu Jul 21 16:58:30 UTC 2016 - wbauer@tmo.at
+
+- Add kcrash-devel build requirement to enable the crash report
+  dialog (not on 13.2 though as the available kcrash is too old)
+
+-------------------------------------------------------------------
+Wed Jul 20 21:16:06 UTC 2016 - lbeltrame@kde.org
+
+- Add license files (as requested by legal review)
+
+-------------------------------------------------------------------
+Tue Jun 14 19:48:17 UTC 2016 - tittiatcoke@gmail.com
+
+- Updates to the spec-file to resolve reported issues during
+  Tumbleweed submission
+
+-------------------------------------------------------------------
+Thu Jun  2 14:57:36 UTC 2016 - wbauer@tmo.at
+
+- Only replace calligra-krita on Tumbleweed and Leap, not 13.2
+
+-------------------------------------------------------------------
+Thu Jun  2 10:24:37 UTC 2016 - lbeltrame@kde.org
+
+- Use version requirements for Provides in calligra-krita
+
+-------------------------------------------------------------------
+Thu Jun  2 10:07:03 UTC 2016 - lbeltrame@kde.org
+
+- Change conflicts to Obsoletes and Provides
+
+-------------------------------------------------------------------
+Wed Jun  1 18:54:48 UTC 2016 - wbauer@tmo.at
+
+- Remove libwacom2 recommends, it is not used anyway apparently
+
+-------------------------------------------------------------------
+Wed Jun  1 09:19:41 UTC 2016 - wbauer@tmo.at
+
+- No need to remove the kra and ora kimageformats plugins any more,
+  they have been removed upstream (kde#359443)
+- Do not build against Vc-devel-static on 13.2
+- Conflict with calligra-krita, there are file overlaps (boo#968709)
+- Mark /etc/xdg/kritarc as config file
+
+-------------------------------------------------------------------
+Wed Jun  1 07:20:43 UTC 2016 - adrian@suse.de
+
+- initial package of version 3.0
+

@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Tue Sep 10 09:37:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.5.2:
+  * python 3.8 support
+
+-------------------------------------------------------------------
+Fri Apr 12 09:23:15 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 2.5.1
+  * Fix handling of naive/aware datetime objects when packing the 
+    timestamp extension type.
+  * Add handling for short reads during file object unpacking.
+  * Make Ext base class a new-style object for cleaner inheritance 
+    in Python 2.
+  * Improve length comparisons and instance checks for minor 
+    performance improvement.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:34 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Apr  3 23:19:39 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality and time-agnosticness of description.
+
+-------------------------------------------------------------------
+Sun Apr  1 22:14:43 UTC 2018 - arun@gmx.de
+
+- remove u-msgpack-bigendian_broken.patch
+
+- update to version 2.5.0:
+  * Add support for the timestamp extension type.
+  * Fix tests on big endian platforms
+
+-------------------------------------------------------------------
+Fri Mar 16 15:13:23 CET 2018 - ro@suse.de
+
+- add u-msgpack-bigendian_broken.patch (bsc#1085666)
+  pack_ext_handler/unpack_ext_handler are broken on bigendian,
+  skip them in the testsuite for now
+
+-------------------------------------------------------------------
+Mon Nov 13 18:21:56 UTC 2017 - arun@gmx.de
+
+- update to version 2.4.1:
+  * Fix module version tuple inconsistency.
+
+- changes from version 2.4.0:
+  * Add hash special method to Ext class.
+  * Add packing option to force floating point precision.
+  * Make codebase PEP 8 compliant.
+  * Add support for tox automated testing and use it in CI.
+
+-------------------------------------------------------------------
+Fri Mar 31 17:51:53 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+- Added tests
+
+-------------------------------------------------------------------
+Sun Mar 12 17:32:21 UTC 2017 - arun@gmx.de
+
+- initial package

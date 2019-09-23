@@ -1,0 +1,123 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9cb5d9655918300820253451f5af1a27</srcmd5>
+    <version>1.0.7</version>
+    <time>1535122798</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from imperatives to noun phrasing.
+- Update to 1.0.7:
+  * Changing release date for 1.0.4
+  * Updating README to include double-click to edit
+  * Changing update icon cache script.
+  * Update.
+  * Removing gtk-update-icon-cache call.
+  * Another attempt to fix Travis CI issues.
+  * Minor change to Travis CI.
+  * Attempting to correct Travis CI failures.
+  * Fixing build issues in Juno.
+  * Adding GTK322 define to allow for conditional compilation.
+  * Updating .pot file.
+  * Minor code enhancements.
+  * Fixing background color of DrawArea. * Attempting to fix use 
+    of obsolete Gtk.Menu.popup call in Juno.
+  * Adding 1.0.3 release notes.
+  * Updating pot file.
+  * Cleaning up code.
+  * Fixing folded assignment from with Node class.
+  * Updating screenshots. * Fixing CSS handling for theme 
+    selection and canvas backgrounds.
+  * Attempting to remove background override call in Theme class 
+    to instead use CSS (still having issues).
+  * Modifying the search UI to a checkbutton system.
+  * Adding proper support for undo functionality for 
+    automatically revealed nodes.
+  * Attempting to fix how folded nodes are handled.
+  * Adding updated search criteria items. * Adjusting margins 
+    within popover menus. * Several enhancments to search UI.
+  * Updating screenshots.
+  * Changing properties icon in header to pane show/hide icons.
+- Initial package
+</comment>
+    <requestid>627865</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>189aca5264c82e10f79d5fa458ad332a</srcmd5>
+    <version>1.0.8</version>
+    <time>1535367521</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631404</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>56dba41db7bd6fdeb30ac0a19a437a17</srcmd5>
+    <version>1.1.0</version>
+    <time>1538502533</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639452</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a4f0e92d4b8904f6aa2cdc33b6065d68</srcmd5>
+    <version>1.1.1</version>
+    <time>1539758544</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>642428</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6e0b2cb1ab5cb369a5b59f0908694f1b</srcmd5>
+    <version>1.1.2</version>
+    <time>1540319971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643758</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c53bcaf7324d2d594151e0e8573e0b94</srcmd5>
+    <version>1.1.3</version>
+    <time>1541511579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646457</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4a677bf42b8ffda98853cdebce13910d</srcmd5>
+    <version>1.3.0</version>
+    <time>1560337939</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706103</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>817019a8df61386a6508fdd8df6aeb2a</srcmd5>
+    <version>1.3.1</version>
+    <time>1562327337</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>713474</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>28ffba23f6b4c2259a21fde6e5e10b62</srcmd5>
+    <version>1.4.0</version>
+    <time>1563223465</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>714697</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>79d81e0e15e9fcdcea103480bda7f90d</srcmd5>
+    <version>1.4.1</version>
+    <time>1563914164</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>717670</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>488e74fc61f75305f09ee816764d2bce</srcmd5>
+    <version>1.5.0</version>
+    <time>1568720365</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>731345</requestid>
+  </revision>
+</revisionlist>

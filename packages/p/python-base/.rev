@@ -1,0 +1,159 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3905bc3fb493be1dcabe9144304631f0</srcmd5>
+    <version>unknown</version>
+    <time>1222224251</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>81facf9d6d9a6a3989a52ca22dc2cb76</srcmd5>
+    <version>unknown</version>
+    <time>1229572250</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="9">
+    <srcmd5>8ab109c7ed0ec3c1d16302edc96d2a90</srcmd5>
+    <version>2.6.0</version>
+    <time>1235101534</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>81facf9d6d9a6a3989a52ca22dc2cb76</srcmd5>
+    <version>unknown</version>
+    <time>1235129466</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="10">
+    <srcmd5>8ab109c7ed0ec3c1d16302edc96d2a90</srcmd5>
+    <version>2.6.0</version>
+    <time>1235129467</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>81facf9d6d9a6a3989a52ca22dc2cb76</srcmd5>
+    <version>unknown</version>
+    <time>1235188286</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>8ab109c7ed0ec3c1d16302edc96d2a90</srcmd5>
+    <version>2.6.0</version>
+    <time>1235188287</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>81facf9d6d9a6a3989a52ca22dc2cb76</srcmd5>
+    <version>unknown</version>
+    <time>1235274655</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>8ab109c7ed0ec3c1d16302edc96d2a90</srcmd5>
+    <version>2.6.0</version>
+    <time>1235274657</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>81facf9d6d9a6a3989a52ca22dc2cb76</srcmd5>
+    <version>unknown</version>
+    <time>1235360677</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>8ab109c7ed0ec3c1d16302edc96d2a90</srcmd5>
+    <version>2.6.0</version>
+    <time>1235360679</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>81facf9d6d9a6a3989a52ca22dc2cb76</srcmd5>
+    <version>unknown</version>
+    <time>1235447319</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="14">
+    <srcmd5>8ab109c7ed0ec3c1d16302edc96d2a90</srcmd5>
+    <version>2.6.0</version>
+    <time>1235447321</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>81facf9d6d9a6a3989a52ca22dc2cb76</srcmd5>
+    <version>unknown</version>
+    <time>1235533755</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>8ab109c7ed0ec3c1d16302edc96d2a90</srcmd5>
+    <version>2.6.0</version>
+    <time>1235533757</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>81facf9d6d9a6a3989a52ca22dc2cb76</srcmd5>
+    <version>unknown</version>
+    <time>1235620088</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>81facf9d6d9a6a3989a52ca22dc2cb76</srcmd5>
+    <version>unknown</version>
+    <time>1235620088</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>81facf9d6d9a6a3989a52ca22dc2cb76</srcmd5>
+    <version>unknown</version>
+    <time>1278667383</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>81facf9d6d9a6a3989a52ca22dc2cb76</srcmd5>
+    <version>unknown</version>
+    <time>1278678613</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="9">
+    <srcmd5>81facf9d6d9a6a3989a52ca22dc2cb76</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>81facf9d6d9a6a3989a52ca22dc2cb76</srcmd5>
+    <version>unknown</version>
+    <time>1319182382</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="13">
+    <srcmd5>81facf9d6d9a6a3989a52ca22dc2cb76</srcmd5>
+    <version>unknown</version>
+    <time>1340184036</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="15">
+    <srcmd5>81facf9d6d9a6a3989a52ca22dc2cb76</srcmd5>
+    <version>unknown</version>
+    <time>1359109996</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="17">
+    <srcmd5>81facf9d6d9a6a3989a52ca22dc2cb76</srcmd5>
+    <version>unknown</version>
+    <time>1379664130</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="19">
+    <srcmd5>81facf9d6d9a6a3989a52ca22dc2cb76</srcmd5>
+    <version>unknown</version>
+    <time>1409302820</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<constraints>
+
+  <sandbox>kvm</sandbox>
+
+  <overwrite>
+    <conditions>
+      <arch>x86_64</arch>
+      <package>ceph</package>
+    </conditions>
+    <hardware>
+      <disk>
+         <size unit="G">28</size>
+      </disk>
+      <memory>
+         <size unit="G">10</size>
+      </memory>
+    </hardware>
+  </overwrite>
+
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+      <package>ceph</package>
+    </conditions>
+    <hardware>
+      <disk>
+         <size unit="G">28</size>
+      </disk>
+      <memory>
+         <size unit="G">10</size>
+      </memory>
+    </hardware>
+  </overwrite>
+
+  <overwrite>
+    <conditions>
+      <arch>ppc64le</arch>
+      <package>ceph</package>
+    </conditions>
+    <hardware>
+      <disk>
+         <size unit="G">28</size>
+      </disk>
+      <memory>
+         <size unit="G">9</size>
+      </memory>
+    </hardware>
+  </overwrite>
+
+  <overwrite>
+    <conditions>
+      <arch>s390x</arch>
+      <package>ceph</package>
+    </conditions>
+    <hardware>
+      <disk>
+         <size unit="G">28</size>
+      </disk>
+      <memory>
+         <size unit="G">9</size>
+      </memory>
+    </hardware>
+  </overwrite>
+
+  <overwrite>
+    <conditions>
+      <arch>x86_64</arch>
+      <package>ceph-test</package>
+    </conditions>
+    <hardware>
+      <disk>
+         <size unit="G">28</size>
+      </disk>
+      <memory>
+         <size unit="G">12</size>
+      </memory>
+    </hardware>
+  </overwrite>
+
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+      <package>ceph-test</package>
+    </conditions>
+    <hardware>
+      <disk>
+         <size unit="G">42</size>
+      </disk>
+      <memory>
+         <size unit="G">9</size>
+      </memory>
+    </hardware>
+  </overwrite>
+
+  <overwrite>
+    <conditions>
+      <arch>ppc64le</arch>
+      <package>ceph-test</package>
+    </conditions>
+    <hardware>
+      <disk>
+         <size unit="G">28</size>
+      </disk>
+      <memory>
+         <size unit="G">8</size>
+      </memory>
+    </hardware>
+  </overwrite>
+
+  <overwrite>
+    <conditions>
+      <arch>s390x</arch>
+      <package>ceph-test</package>
+    </conditions>
+    <hardware>
+      <disk>
+         <size unit="G">28</size>
+      </disk>
+      <memory>
+         <size unit="G">8</size>
+      </memory>
+    </hardware>
+  </overwrite>
+
+</constraints>

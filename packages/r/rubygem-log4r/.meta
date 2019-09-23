@@ -1,0 +1,39 @@
+<package name="rubygem-log4r" project="openSUSE:Factory">
+  <title>A comprehensive and flexible logging library written in Ruby</title>
+  <description>Log4r is a comprehensive and flexible logging library written in Ruby for use
+in Ruby programs. It features a hierarchical logging system of any number of
+levels, custom level names, logger inheritance, multiple output destinations,
+execution tracing, custom formatting, thread safteyness, XML and YAML
+configuration, and more. 
+
+Log4r is an adherent to the philosophy of logging using simple print
+statements. What Log4r adds to this philosophy is a flexible way of controling
+the information being logged. Log information can be sent to any kind of
+destination and with varying degrees of importance. Log4r is designed so that
+logging statements can remain in production code with almost no extra
+computational cost.
+
+Log4r intends to be easy to use and configure, no matter the complexity. Casual
+scripts can use Log4r right away with minimal configuration, while more
+sophisticated applications can set up a structured configuration file in XML or
+YAML. Comprehensive documentation is provided, with a user's manual, a
+reference API, and over a dozen examples. Log4r attempts to abide by the
+Principle of Least Surprise, which means that it works as intended at all
+points. 
+
+Log4r was inspired by and provides much of the features of the Apache Log4j
+project, but is not a direct implementation or clone. Aside from superficial
+similarities, the projects are not related in any way and the code base is
+completely distinct. Log4r was developed without even looking at the Apache
+Log4j code.
+
+
+Authors:
+--------
+    Leon Torres &lt;leon(at)ugcs dot caltech dot edu&gt;
+
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-log4r"/>
+  <url>http://log4r.sourceforge.net/</url>
+</package>

@@ -1,0 +1,338 @@
+<revisionlist>
+  <revision rev="1" vrev="13">
+    <srcmd5>bfb225acc28ec980b84f9926bf3a4ddb</srcmd5>
+    <version>2.8.3</version>
+    <time>1168902962</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="44">
+    <srcmd5>ebfeedb3ca05e53dd14b1afaf44ed514</srcmd5>
+    <version>2.8.3</version>
+    <time>1169080317</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="52">
+    <srcmd5>c921b13ecbac0881d40b48be61f18b0d</srcmd5>
+    <version>2.8.3</version>
+    <time>1175121666</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="59">
+    <srcmd5>6da18217a4e53975d496490800f94b28</srcmd5>
+    <version>2.8.3</version>
+    <time>1177606897</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>701bcc66c98a7461c5b251e88cf5d6d9</srcmd5>
+    <version>%_version</version>
+    <time>1181859622</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a272e8e7bb0ca33ba0f6fc91f2daf911</srcmd5>
+    <version>%_version</version>
+    <time>1182036611</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>cc1dc055ba28da0467ba9b7b2c6016c6</srcmd5>
+    <version>%_version</version>
+    <time>1184085734</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>57c04a15a092facf87c8da7d2bfebc62</srcmd5>
+    <version>%_version</version>
+    <time>1184564215</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5f43581c0b32913572b9df79f298a0a5</srcmd5>
+    <version>2.10.2</version>
+    <time>1186169833</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="63">
+    <srcmd5>a7a96625765649611a26cd44349e48cc</srcmd5>
+    <version>2.10.2</version>
+    <time>1196896813</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>624f353f60e5cf8a1344b45939314433</srcmd5>
+    <version>%_version</version>
+    <time>1206544419</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>a76fa95b9ec72d49dd7212c911888249</srcmd5>
+    <version>%_version</version>
+    <time>1207690881</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>b2296e8c8934c692c0561d21ac9c2a9f</srcmd5>
+    <version>%_version</version>
+    <time>1207829918</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>3f46460c88326610a1679d7f1ad9e68d</srcmd5>
+    <version>%_version</version>
+    <time>1209285047</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>2836bca3de06442758cadf9e07784363</srcmd5>
+    <version>%_version</version>
+    <time>1210238138</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>50850b142350916525fcec39bf3adc85</srcmd5>
+    <version>%_version</version>
+    <time>1220648139</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>6b79d21a1c09a1a140713e12da6a9ef6</srcmd5>
+    <version>%_version</version>
+    <time>1221000657</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="13">
+    <srcmd5>f378790163d3a66de0c8032582c3a3a2</srcmd5>
+    <version>%_version</version>
+    <time>1221263872</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="14">
+    <srcmd5>831f7846ddb1753f44b60f5b27089cc4</srcmd5>
+    <version>%_version</version>
+    <time>1222267683</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="15">
+    <srcmd5>32cd015572ce6d7d949580eed41898f0</srcmd5>
+    <version>%_version</version>
+    <time>1224757127</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="16">
+    <srcmd5>765ecec5cce1caf95ece59402daa058b</srcmd5>
+    <version>%_version</version>
+    <time>1226070023</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="17">
+    <srcmd5>a6c688060e75ce4e560adc4ee0a2e901</srcmd5>
+    <version>%_version</version>
+    <time>1226937589</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="18">
+    <srcmd5>05e3a3eed3f174cd5a9914d7850a7b69</srcmd5>
+    <version>%_version</version>
+    <time>1227881451</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="19">
+    <srcmd5>e164d7abb418014837e1037994968deb</srcmd5>
+    <version>%_version</version>
+    <time>1228227495</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="20">
+    <srcmd5>b8f2e7ef090af58af3af895b67ccc447</srcmd5>
+    <version>%_version</version>
+    <time>1229340926</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="21">
+    <srcmd5>1d652c4246771a2bb6647aa865dab9fa</srcmd5>
+    <version>%_version</version>
+    <time>1239101826</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="22">
+    <srcmd5>19e89fddedcb514e6358fe065cbdfe70</srcmd5>
+    <version>%_version</version>
+    <time>1250906585</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/gtk-sharp2 based on submit request 18450 from user ajorgensen
+</comment>
+  </revision>
+  <revision rev="28" vrev="24">
+    <srcmd5>19e89fddedcb514e6358fe065cbdfe70</srcmd5>
+    <version>%_version</version>
+    <time>1250906585</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/gtk-sharp2 based on submit request 18450 from user ajorgensen
+</comment>
+  </revision>
+  <revision rev="29" vrev="22">
+    <srcmd5>0d294dfb0e4f7afdeb328570b1e2eaa1</srcmd5>
+    <version>%_version</version>
+    <time>1268923891</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="30" vrev="22">
+    <srcmd5>b0ad3d91c68dc14e6148e249feaa780f</srcmd5>
+    <version>%_version</version>
+    <time>1272122656</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/gtk-sharp2 based on submit request 38744 from user coolo
+</comment>
+    <requestid>38744</requestid>
+  </revision>
+  <revision rev="31" vrev="22">
+    <srcmd5>940f7b29deec5990abc7ac89439cac95</srcmd5>
+    <version>%_version</version>
+    <time>1274207746</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/gtk-sharp2 based on submit request 40286 from user ajorgensen
+</comment>
+    <requestid>40286</requestid>
+  </revision>
+  <revision rev="32" vrev="24">
+    <srcmd5>940f7b29deec5990abc7ac89439cac95</srcmd5>
+    <version>%_version</version>
+    <time>1278667349</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="33" vrev="25">
+    <srcmd5>940f7b29deec5990abc7ac89439cac95</srcmd5>
+    <version>%_version</version>
+    <time>1278678580</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>6f2799a6f6bd353054b940e8db4d1fd5</srcmd5>
+    <version>2.12.10</version>
+    <time>1288964436</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52083 from user ajorgensen
+</comment>
+    <requestid>52083</requestid>
+  </revision>
+  <revision rev="35" vrev="26">
+    <srcmd5>7d9983322c356f9c33b27d9fc776605c</srcmd5>
+    <version>2.12.10</version>
+    <time>1288964446</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52083
+</comment>
+  </revision>
+  <revision rev="36" vrev="27">
+    <srcmd5>ce5bd1b7de8e72a74f92fa26d72d6b04</srcmd5>
+    <version>2.12.10</version>
+    <time>1289217239</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52365 from user coolo
+</comment>
+    <requestid>52365</requestid>
+  </revision>
+  <revision rev="37" vrev="28">
+    <srcmd5>ac0236e72d468ec429e7e3c16667223f</srcmd5>
+    <version>2.12.10</version>
+    <time>1289217245</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52365
+</comment>
+  </revision>
+  <revision rev="38" vrev="31">
+    <srcmd5>ac0236e72d468ec429e7e3c16667223f</srcmd5>
+    <version>2.12.10</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="39" vrev="33">
+    <srcmd5>ac0236e72d468ec429e7e3c16667223f</srcmd5>
+    <version>2.12.10</version>
+    <time>1319181948</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="40" vrev="34">
+    <srcmd5>98b5bba922ea32ccf59c092f73301e70</srcmd5>
+    <version>2.12.10</version>
+    <time>1323191840</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="41" vrev="35">
+    <srcmd5>bf0808fea3a7ce5d776d1f1a5a795376</srcmd5>
+    <version>2.12.10</version>
+    <time>1329405376</time>
+    <user>coolo</user>
+    <comment>Fix build on Factory.. .only include glib.h (forwarded request 103677 from dimstar)</comment>
+    <requestid>105026</requestid>
+  </revision>
+  <revision rev="42" vrev="37">
+    <srcmd5>bf0808fea3a7ce5d776d1f1a5a795376</srcmd5>
+    <version>2.12.10</version>
+    <time>1340183418</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="43" vrev="39">
+    <srcmd5>bf0808fea3a7ce5d776d1f1a5a795376</srcmd5>
+    <version>2.12.10</version>
+    <time>1359109016</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="44" vrev="40">
+    <srcmd5>6f5e7ffde121aef2b65c89984226808c</srcmd5>
+    <version>2.12.10</version>
+    <time>1359540994</time>
+    <user>coolo</user>
+    <comment>- Add gtk-sharp2-gmcs-as-compiler.patch: Choose gmcs as the
+  prefered compiler. This will build gtk sharp2 with .Net runtime
+  4.0.
+- Add libtool BuildRequires and call to autoreconf, as above patch
+  touches the build system. (forwarded request 150345 from dimstar)</comment>
+    <requestid>150356</requestid>
+  </revision>
+  <revision rev="45" vrev="42">
+    <srcmd5>6f5e7ffde121aef2b65c89984226808c</srcmd5>
+    <version>2.12.10</version>
+    <time>1379662573</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="44">
+    <srcmd5>6f5e7ffde121aef2b65c89984226808c</srcmd5>
+    <version>2.12.10</version>
+    <time>1409301121</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="47" vrev="45">
+    <srcmd5>aa7a9ec29eac4b140439d7127a802f8b</srcmd5>
+    <version>2.12.10</version>
+    <time>1449995839</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>347827</requestid>
+  </revision>
+  <revision rev="48" vrev="46">
+    <srcmd5>758e7678f1225cd77a1fc12af3880e4e</srcmd5>
+    <version>2.12.10</version>
+    <time>1475359586</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>431321</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>749872ac0a81bd66ad9bee5798c095d6</srcmd5>
+    <version>2.12.41</version>
+    <time>1518697126</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574881</requestid>
+  </revision>
+</revisionlist>

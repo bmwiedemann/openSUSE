@@ -1,0 +1,5 @@
+<package name="bzip2" project="openSUSE:Factory">
+  <title>A Program for Compressing Files</title>
+  <description>The bzip2 program is a very powerful program for compressing files.</description>
+  <devel project="Archiving" package="bzip2"/>
+</package>

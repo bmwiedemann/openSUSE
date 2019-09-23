@@ -1,0 +1,308 @@
+-------------------------------------------------------------------
+Wed Jul 10 14:27:35 UTC 2019 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.5.2:
+  * Fix boo#1141027
+  * KaxBlock: fixed a potential access to invalid memory due to
+    invalid lace sizes read from invalid data.
+  * KaxBlock: fixed a potential null pointer dereference triggerable
+    by reading invalid data.
+
+-------------------------------------------------------------------
+Tue Apr 16 09:46:00 UTC 2019 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.5.0:
+  * Compatibilty with libEBML 1.3.7
+
+-------------------------------------------------------------------
+Thu Aug  9 00:15:57 UTC 2018 - rpm@fthiessen.de
+
+- Fixed ABI tracking with cmake macro.
+
+-------------------------------------------------------------------
+Mon Jul 30 17:24:51 UTC 2018 - rpm@fthiessen.de
+
+- Update to version 1.4.9:
+  * Switched to cmake.
+
+-------------------------------------------------------------------
+Sat Mar 10 13:24:17 UTC 2018 - rpm@fthiessen.de
+
+- Track ABI Change, since 1.4.7 is incompatible with lower versions.
+
+-------------------------------------------------------------------
+Mon Oct  9 09:52:30 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.4.8:
+  * KaxBlockGroup, KaxSimpleBlock: fixed writing the block header
+    if the track number is 128.
+
+-------------------------------------------------------------------
+Mon Jun 26 20:00:15 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.4.7:
+  * Setting the version number in the "KaxCodeVersion" variable
+    correctly.
+- Changes from version 1.4.6:
+  * KaxSemantic: add new elements dealing with 360°/VR content and
+    for language descriptors based on IETF BPC 47.
+
+-------------------------------------------------------------------
+Fri Jul 22 21:33:11 UTC 2016 - rpm@fthiessen.de
+
+- As the upstream does not track ABI changes we had to add some
+  additional version tracking.
+
+-------------------------------------------------------------------
+Fri Jul 15 14:14:11 UTC 2016 - jengelh@inai.de
+
+- Fix messed-up FAKE_BUILDTIME call
+
+-------------------------------------------------------------------
+Fri Jul 15 11:47:53 UTC 2016 - rpm@fthiessen.de
+
+- Update to new upstream release 1.4.5
+  * Support for new FieldOrder element and for the new
+    color-related elements.
+  * Required for mkvtoolnix >= 9.3.0
+
+-------------------------------------------------------------------
+Wed Dec 16 08:52:37 UTC 2015 - olaf@aepfle.de
+
+- Add BuildRoot: for SLE_11
+
+-------------------------------------------------------------------
+Thu Oct 22 09:53:21 UTC 2015 - rpm@fthiessen.de
+
+- Update to new upstream release 1.4.4 (security fix):
+* KaxInternalBlock::ReadData(): Fixed an invalid memory
+  access. When reading a block group or a simple block that uses
+  EBML lacing the frame sizes indicated in the lacing weren't
+  checked against the available number of bytes. If the indicated
+  frame size was bigger than the whole block's size the parser would
+  read beyond the end of the buffer resulting in a heap information
+  leak.
+* all: a couple of optimizations in the main library and a memory
+  leak fix in the tests
+* build system: fix linking against libEBML
+- Removed unneeded linker settings, not needed anymore in current
+  mkvtoolnix version.
+
+-------------------------------------------------------------------
+Thu Feb  5 08:20:59 UTC 2015 - coolo@suse.com
+
+- package the changes file as its required for rebuilds
+
+-------------------------------------------------------------------
+Sun Feb  1 16:31:58 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.4.2
+* KaxBlock::ReadData(): fixed several instances of unchecked
+  memory access leading to invalid memory access/segmentation faults
+  with invalid or broken data inside block groups/simple blocks.
+* KaxBlock::ReadInternalHead(): fixed a off-by-one buffer overflow
+  if with EBML lacing and exactly one frame in the lace.
+- Drop libmatroska-heed-ldflags.diff (no longer needed)
+
+-------------------------------------------------------------------
+Wed Aug  6 08:44:10 UTC 2014 - jengelh@inai.de
+
+- Add libmatroska-heed-ldflags.diff so that make places LDFLAGS
+  onto the command line for generating the .so file
+
+-------------------------------------------------------------------
+Wed Aug  6 07:42:02 UTC 2014 - jengelh@inai.de
+
+- Set RPM groups
+
+-------------------------------------------------------------------
+Tue Feb 11 21:21:03 UTC 2014 - dimstar@opensuse.org
+
+- Also revert fvisibility-inlines-hidden: still breaks mkvtoolnix
+  on i586.
+
+-------------------------------------------------------------------
+Thu Jan 16 17:58:40 UTC 2014 - crrodriguez@opensuse.org
+
+- Revert last change for now as it breaks mkvtoolnix which 
+  uses internal symbols :-(
+  keep fvisibility-inlines-hidden though
+
+-------------------------------------------------------------------
+Sun Jan 12 02:26:29 UTC 2014 - crrodriguez@opensuse.org
+
+- Add C++ visibility support by simply reusing the win32 
+  dll code for the same purpose.
+- added patches:
+  * matroska-visibility.patch
+
+-------------------------------------------------------------------
+Sat Nov  2 18:46:38 UTC 2013 - reddwarf@opensuse.org
+
+- Update to version 1.4.1
+  * Added new elements/classes DiscardPadding, CodecDelay and
+    SeekPreRoll
+  * The licensing information has been cleared up/unified.
+  * The Makefile now contain options for specifying the destination
+    base directory during installation ("DESTDIR") and for
+    specifying which library types to build ("link").
+  * The libraries are built without the "-ansi" and
+    "-fno-gnu-keywords" flags on Linux
+  * Code cleanup
+- Remove matroska-noansiflag.patch. Applied upstream.
+
+-------------------------------------------------------------------
+Sat Mar 23 14:14:45 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.4.0:
+  + Added new elements CueDuration, CueRelativePosition,
+    ChapterStringUID, VideoAlphaMode and
+    DefaultDecodedFieldDuration
+  + Removed the Debian build files from our package.
+- Bump soname following upstream code changes.
+- Rebased matroska-noansiflag.patch.
+
+-------------------------------------------------------------------
+Thu May 10 00:24:50 UTC 2012 - crrodriguez@opensuse.org
+
+- Do not use gcc 's -ansi flag, but whatever the compiler 
+  has a default. 
+
+-------------------------------------------------------------------
+Sun Sep 25 23:45:18 UTC 2011 - reddwarf@opensuse.org
+
+- Update to version 1.3.0
+  + initialize all data members
+  + The KaxCodeVersion variable now resides in the library instead of being declared static in the header file.
+  + make KaxChapterSegmentEditionUID an unsigned integer to match the KaxChapterEditionUID it's supposed to target
+
+-------------------------------------------------------------------
+Thu Jun 30 12:25:51 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.2.0:
+  + skip data from KaxBlockVirtual as it should not be used
+  + use semantic generated from the specs so there is no more
+    possible mismatch
+- Bump suname to 4, following the source changes.
+- Stop using source service, as Factory is moving to a different
+  way to verify source authenticity.
+
+-------------------------------------------------------------------
+Tue Apr 19 00:17:33 CEST 2011 - ro@suse.de
+
+- update baselibs.conf 
+
+-------------------------------------------------------------------
+Sun Jan 30 17:46:54 UTC 2011 - reddwarf@opensuse.org
+
+- version update to 1.1.0
+  - give access to the SetParent to KaxSimpleBlock as well
+  - change the placement of a MATROSKA_DLL_API so that it actually works
+  - remove all references to the old/outdated/previous tag system
+  - add the possibility for a DataBuffer class to use its own internal memory
+  - KaxCues::AddBlockGroup() was removed as it's broken beyond repair
+  - add KaxTrackOperation and related elements for combined stereo/3D tracks or joined virtual tracks
+  - fix a memory leak in KaxReferenceBlock when an internal KaxBlockBlob was created
+  - Increased library .so name due to binary incompatible changes in libebml
+
+-------------------------------------------------------------------
+Wed Aug  4 18:10:50 UTC 2010 - reddwarf@opensuse.org
+
+- remove __TIMESTAMP__ so BuildCompare can do its work
+
+-------------------------------------------------------------------
+Wed Jul 28 10:17:21 UTC 2010 - coolo@novell.com
+
+- fix build in renaming shared library package
+
+-------------------------------------------------------------------
+Sat Jun  5 20:19:37 UTC 2010 - cmorve69@yahoo.es
+
+- Update to version 1.0.0
+  - Fix more issues which came to light with the recent push of
+    WebM -- mostly regarding elements with unknown sizes.
+
+-------------------------------------------------------------------
+Sat May 15 13:17:55 UTC 2010 - cmorve69@yahoo.es
+
+- version update to 0.9.0
+  - fix a memory freeing issue in KaxBlock
+  - use the macros from the new libebml 0.8.0 to simplify the element definitions and avoid possible typo bugs
+  - fix some building issues on Linux and MinGW
+  - add matroska_init() and matroska_done() functions, necessary when used with libebml v2
+  - use the new libebml iterators of EbmlMaster where possible
+
+-------------------------------------------------------------------
+Wed May 12 17:44:23 UTC 2010 - cmorve69@yahoo.es
+
+- added patch to "Do not try to free() pointers pointing to member
+  variables" from upstream SVN. Fixes VLC crash.
+
+-------------------------------------------------------------------
+Tue Jan 13 23:37:23 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries 
+
+-------------------------------------------------------------------
+Sun May 27 00:06:43 CEST 2007 - ro@suse.de
+
+- added libebml-devel to buildreq
+- split off devel package 
+
+-------------------------------------------------------------------
+Mon Feb 26 10:21:40 CET 2007 - seife@suse.de
+
+- version update to 0.8.1
+  - add support for KaxCodecState and indexing them in the cues
+  - "make install" fixes
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:32 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Nov 21 19:46:39 CET 2005 - seife@suse.de
+
+- version update to 0.8.0
+
+-------------------------------------------------------------------
+Wed Nov  2 21:47:54 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Wed Sep 28 15:20:51 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS correctly.
+
+-------------------------------------------------------------------
+Tue Jul  5 13:46:44 CEST 2005 - seife@suse.de
+
+- version 0.7.7
+
+-------------------------------------------------------------------
+Sun Apr 17 10:37:34 CEST 2005 - seife@suse.de
+
+- version 0.7.6
+
+-------------------------------------------------------------------
+Mon Feb  7 09:38:31 CET 2005 - seife@suse.de
+
+- version 0.7.5
+
+-------------------------------------------------------------------
+Tue Oct 26 19:59:44 CEST 2004 - seife@suse.de
+
+- version 0.7.4
+
+-------------------------------------------------------------------
+Thu Sep  2 12:44:57 CEST 2004 - seife@suse.de
+
+- add libebml to neededforbuild
+
+-------------------------------------------------------------------
+Wed Sep  1 23:58:32 CEST 2004 - seife@suse.de
+
+- initial submission
+

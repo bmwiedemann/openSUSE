@@ -1,0 +1,133 @@
+-------------------------------------------------------------------
+Mon Mar 11 08:07:26 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop nodejs bindings as they dont work with lates versions of
+  node.
+
+-------------------------------------------------------------------
+Thu Jan 10 14:56:52 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0.0:
+  * New platforms IEI Tank, Ultra-96, Rock960, Hikey960,
+    Dragonboard 820c
+  * Added support for chardev GPIO devices with implementation on
+    several boards
+  * Added string based I/O initialization for simpler integration
+    with other frameworks
+  * Added GTest support for unit testing
+  * Extended named LED device APIs allowing them to be listed
+    during board definition
+  * Removed packaging and CI for obsolete devkits
+  * Multiple bug fixes and cmake improvements
+- Run tests during build
+
+-------------------------------------------------------------------
+Tue Jul 10 08:30:20 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.9.0:
+  * Added support for RPi Zero W
+  * Added support for MIPS based Omega2 and Linkit Smart 7688
+  * New APIs for sysfs onboard LED control using the gpio-leds
+    driver
+  * Restructured and cleaned-up examples
+  * Improved documentation generation and CI integration
+  * Static analysis fixes, added SonarQube badge
+  * Enhanced Node.js detection on some Linux distros (OpenSUSE)
+- Enable building of nodejs bindings
+
+-------------------------------------------------------------------
+Mon Nov 13 10:00:31 UTC 2017 - mpluskal@suse.com
+
+- Use consistent naming with singlespec python packages
+- Build tests as well
+
+-------------------------------------------------------------------
+Thu Oct 26 09:29:54 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.8.0:
+  * Added Up2 support & grovePi subplatform support
+  * Various improvements on 96board, rpi, beaglebone & Up boards
+  * CMake 3.8+ improvements
+  * Peripheral I/O improvements
+  * Json platform improvements
+  * Static analysis cleanup using SonarQube
+
+-------------------------------------------------------------------
+Mon Jun  5 08:03:20 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.7.0:
+  * Peripheral I/O support for Android Things
+  * Deprecation of node v0.10.x and 0.12.x
+  * Documetnatino improvements
+
+-------------------------------------------------------------------
+Fri Apr 21 10:06:58 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.6.1:
+  * mraa-deinit bug fix
+  * rpi3 fix
+  * ALTERA_SOCFPGA -> DE_NANO_SOC
+- Changes for version 1.6.0:
+  * de-10 nano board support
+  * Improved Intel Joule support & renamed from GT_TUCHUCK to Joule
+  * Improved RPI3 support
+  * Fixes for UP, 96boards & phyboard-wega
+  * Call mraa_deinit with a gcc destructor attribute
+- Drop upstreamed patches:
+  * 0001-rpi-fix-PLATFORM_RASPBERRY_PI_ZERO-value.patch
+  * 0002-examples-add-return-in-spi_max7219.c.patch
+  * 0003-arm-prefer-proc-device-tree.patch
+  * 0004-rpi-use-proc-device-tree-compatible.patch
+  * 0005-raspberrypi-add-3-model-B-support.patch
+  * 0006-rpi-take-care-of-gpiochip-base.patch
+
+-------------------------------------------------------------------
+Tue Feb 28 12:22:00 UTC 2017 - cbosdonnat@suse.com
+
+- Fix build for aarch64
+    0001-rpi-fix-PLATFORM_RASPBERRY_PI_ZERO-value.patch
+    0002-examples-add-return-in-spi_max7219.c.patch
+- Get mraa working on raspberry pi
+    0003-arm-prefer-proc-device-tree.patch
+    0004-rpi-use-proc-device-tree-compatible.patch
+    0005-raspberrypi-add-3-model-B-support.patch
+    0006-rpi-take-care-of-gpiochip-base.patch
+
+-------------------------------------------------------------------
+Thu Jan 26 14:22:18 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.5.1:
+  * Small memleaks plugged
+  * imraa useless arp statements removed
+  * NPM 1.5.0 did not 100% match real 1.5.0 tag, this resolves this
+- Changes for version 1.5.0:
+  * imraa now uses argp, slight option changes, you need to use -a
+    to flash a 101
+  * Joule i2c enumeration much improved, uses pci id
+  * Firmata add a spinlock to remove possible race condition
+  * Mock Uart functionality
+- Changes for version 1.4.0:
+  * Add support for Siemens SIMATIC IOT2000
+  * Cmake now enables much more error detection depending on
+    compiler support
+  * Mraa Maven packages now enabled
+  * Galileo Gen2 AIO fix using pincmd
+  * Adding an already added firmata platform now returns
+    MRAA_SUCCESS
+  * Cmake no longer tags builds without git as '-dirty' version.c
+    for easier packaging support
+- Changes for version 1.3.0:
+  * Fix GT GPIO bugs
+  * Mock SPI and travis now uses mock and tests it
+  * RPI zero support
+
+-------------------------------------------------------------------
+Wed Aug 17 18:22:24 UTC 2016 - jengelh@inai.de
+
+- Update descriptions and rpm groups.
+
+-------------------------------------------------------------------
+Wed Aug 17 14:15:57 UTC 2016 - mpluskal@suse.com
+
+- Initial package for version 1.2.3
+

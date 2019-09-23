@@ -1,0 +1,544 @@
+-------------------------------------------------------------------
+Fri Jul 21 12:27:31 UTC 2017 - tchvatal@suse.com
+
+- Rebase patches to include rh/gentoo/debian ones:
+  A 001-xdg-open-as-default-browser.patch
+  A 002-close-fds.patch
+  A 004-ipv6-support.patch
+  A 006-preview-selection.patch
+  A 100-remove-non-working-help.patch
+  A 101-xsane_fix_pdf_floats.patch
+  A 200-fix_options_handling_fix.patch
+  A 201-fix_pdf_xref.patch
+  A 901-desktop-file.patch
+  A 902-license-dialog.patch
+  A 903-fix_broken_links.patch
+  A 904-fix_message_typo.patch
+  A 907-fix_spin_button_pagesize.patch
+  A 908-no-file-selected.patch
+  A 0005-m4.patch
+  A 0010-fix_missing_sane-config.patch
+- Drop patches hanled in the above:
+  D no-eula.patch
+  D remove-non-working-help.patch
+  D xdg-open-as-default-browser.patch
+  D xsane_fix_pdf_floats.patch
+  D xsane-desktop.patch
+
+-------------------------------------------------------------------
+Fri Jul 21 12:15:08 UTC 2017 - tchvatal@suse.com
+
+- Add patch to build with lcms2 instead of lcms:
+  * xsane-0.999-lcms2.patch
+
+-------------------------------------------------------------------
+Tue May 03 19:43:41 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Update to version 0.999:
+  + Better preview window size calculation (thanks to
+    Nils Phillipsen).
+  + Removed null-pointer bug in xsane_update_param (thanks to
+    Nils Phillipsen).
+  + Manual page bugix.
+  + Changed email password storage.
+- Fixed no-eula.patch.
+
+-------------------------------------------------------------------
+Mon Jan 27 16:40:32 UTC 2014 - lnussel@suse.de
+
+- fix compiled in location of documentation (bnc#577803)
+
+-------------------------------------------------------------------
+Sat Jan 19 12:54:41 UTC 2013 - lnussel@suse.de
+
+- fix potential memory leak (bnc#542539, xsane-memory-leak.diff)
+
+-------------------------------------------------------------------
+Mon Oct 15 10:19:52 UTC 2012 - pgajdos@suse.com
+
+- fixed build with libpng15
+  * libpng15.patch
+
+-------------------------------------------------------------------
+Thu Feb 23 11:41:44 UTC 2012 - coolo@suse.com
+
+- we need libjpeg-devel too
+
+-------------------------------------------------------------------
+Wed Dec 21 10:31:55 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Wed Dec 22 03:27:02 UTC 2010 - aj@suse.de
+
+- The manual is in _datadir/sane/xsane/doc, so do not package it
+  twice.
+
+-------------------------------------------------------------------
+Wed Dec 22 03:05:11 UTC 2010 - aj@suse.de
+
+- Fix packaging - own directories.
+
+-------------------------------------------------------------------
+Sat Nov 20 19:06:23 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.998:
+  + bugfix for 16bit png format
+  + removed some gtk warnings
+  + removed two format string errors
+  + corrected some compilation issues
+- Rebase no-eula.patch.
+- Clean spec file using spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Sep 15 09:05:28 UTC 2010 - aj@suse.de
+
+- Change BuildRequires for sane-backends devel split.
+
+-------------------------------------------------------------------
+Tue May 11 15:06:43 UTC 2010 - lnussel@suse.de
+
+- include html documentation (bnc#577803)
+
+-------------------------------------------------------------------
+Thu Nov 26 14:22:20 CET 2009 - dimstar@opensuse.org
+
+- Rebase patches to apply with fuzz=0.
+
+-------------------------------------------------------------------
+Mon Jul 27 18:06:04 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 0.997:
+  + removed SANE_CAP_ALWAYS_SETTABLE (not SANE1)
+  + added test for (opt->size == 0) for SANE_TYPE_STRING in xsane.c
+  + in gtk_adjustment_new changed page_size from (min-max)*1e-30 to
+    0 because new gtk versions don`t link non zero values for
+    spinbuttons
+  + added several gdk_drawable_unref(mask)
+
+-------------------------------------------------------------------
+Wed Jul  8 11:01:52 CEST 2009 - lnussel@suse.de
+
+- fix pdf saving in non-POSIX locales
+
+-------------------------------------------------------------------
+Wed May  6 12:52:59 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 0.996:
+  * corrected bug in PDF documents
+  * viewer window does not use full screen without window frame for
+    large images any more
+- Use upstream desktop and icon.
+- Use %find_lang.
+
+-------------------------------------------------------------------
+Thu Sep  4 08:55:41 CEST 2008 - jsmeix@suse.de
+
+- Provide the RPM capability "gimp-2.0-scanner-plugin" which is
+  also provided by the sane-frontends RPM so that the gimp RPM
+  can recommend "gimp-2.0-scanner-plugin" so that either of xsane
+  or sane-frontends are sufficient to be installed
+  (see Novell/Suse Bugzilla bnc#422558).
+
+-------------------------------------------------------------------
+Tue Mar 11 11:07:48 CET 2008 - jsmeix@suse.de
+
+- Enhanced and re-enabled no-eula.patch:
+  It suppresses the disclaimer of warranty and liability dialog
+  and adds a modification note and adds a openSUSE Bugzilla URL
+  to make the change obvious for the user and direct bug reports
+  to us (see Novell/Suse Bugzilla bnc#183725).
+- xdg-open-as-default-browser.patch sets DEFAULT_BROWSER xdg-open
+  to get the right browser launched for KDE and Gnome users to
+  show the XSane documentation. Therefore xdg-utils is required.
+- remove-non-working-help.patch removes the items in the help
+  menue regarding backend documentation because the referred
+  files do not exist (dead URLs with "sane-<backend>-doc.html"
+  in sane-backends-doc.html).
+
+-------------------------------------------------------------------
+Wed Nov 28 15:36:05 CET 2007 - jsmeix@suse.de
+
+- Updated to version 0.995:
+  Several layout changes.
+  Multiple mail receivers are allowed in email mode.
+  Scanning and conversion speed is increased.
+- Disabled no-eula.patch to be on the safe side because of
+  comment 12 in Novell/Suse Bugzilla bnc#183725.
+  until there is a final decission regarding the issue.
+
+-------------------------------------------------------------------
+Fri Nov  2 15:59:38 CET 2007 - ro@suse.de
+
+- Removed liblcms from BuildRequires because liblcms-devel
+  requires it via RPM dependency. 
+
+-------------------------------------------------------------------
+Wed Oct 24 22:42:35 CEST 2007 - mauro@suse.de
+
+- no-eula.patch suppresses the disclaimer of warranty and
+  liability (see Novell/Suse Bugzilla bnc#183725). 
+
+-------------------------------------------------------------------
+Wed Jul  4 07:55:15 CEST 2007 - jsmeix@suse.de
+
+- Added liblcms and liblcms-devel to BuildRequires to enable
+  LCMS (color management) support.
+
+-------------------------------------------------------------------
+Mon Mar  5 14:27:19 CET 2007 - jsmeix@suse.de
+
+- Updated to version 0.994 (a bugfix release for 0.993):
+  Fixed crash when no ICC/ICM profile was defined.
+  Fixed PostScript output which did not work for printing.
+
+-------------------------------------------------------------------
+Mon Feb 26 11:42:47 CET 2007 - jsmeix@suse.de
+
+- Updated to version 0.993 (this is a beta-test release):
+  12 bits/channel support for PostScript.
+  Usage of new gtk_file_chooser.
+  Added browse function for project directories.
+  Correct handling when mail is not accepted by the mailserver.
+  A lot of color management improvements (CMS still in
+  beta test): Embedded profiles for PostScript and PDF,
+  convert to sRGB, convert to working color space.
+
+-------------------------------------------------------------------
+Wed Jan 31 12:30:02 CET 2007 - jsmeix@suse.de
+
+- Package 'sane' was renamed to 'sane-backends'.
+  Adapted it so that it works with 'sane-backends'
+
+-------------------------------------------------------------------
+Wed Jan 31 00:29:05 CET 2007 - ro@suse.de
+
+- GNOME moved to /usr therefore the GIMP plugin link was
+  changed accordingly
+
+-------------------------------------------------------------------
+Fri Jan 26 12:18:56 CET 2007 - jsmeix@suse.de
+
+- Updated to version 0.992:
+  Some bugs and compiler warnings have been fixed.
+  New rudimentary color management support.
+  This version may crash or produce unexpected results,
+  especially with color management enabled.
+
+-------------------------------------------------------------------
+Thu Dec  7 15:30:33 CET 2006 - jsmeix@suse.de
+
+- Changed /usr/X11R6/bin/xsane to /usr/bin/xsane
+  (see Suse bugzilla bnc##224882).
+
+-------------------------------------------------------------------
+Sat Oct 28 08:18:18 CEST 2006 - meissner@suse.de
+
+- buildrequires: libgphoto2-devel
+
+-------------------------------------------------------------------
+Tue Sep  5 08:06:16 CEST 2006 - aj@suse.de
+
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Fri Jul 14 12:25:40 CEST 2006 - jsmeix@suse.de
+
+- Updated to version 0.991:
+  This version contains some bugfixes (in particular for the
+  multipage mode which was introduced in version 0.99).
+- Removed obsolete BuildRequires for hp-officeJet.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:25 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 10 09:40:21 CET 2006 - jsmeix@suse.de
+
+- Updated to version 0.99
+
+-------------------------------------------------------------------
+Tue Jan  3 13:39:56 CET 2006 - jsmeix@suse.de
+
+- Updated to version 0.98b
+
+-------------------------------------------------------------------
+Wed Nov 23 09:28:10 CET 2005 - jsmeix@suse.de
+
+- Updated to version 0.98a
+
+-------------------------------------------------------------------
+Mon Jan 24 12:24:21 CET 2005 - jsmeix@suse.de
+
+- Updated to version 0.97
+  This version contains some bugfixes.
+
+-------------------------------------------------------------------
+Mon Nov 22 15:22:27 CET 2004 - jsmeix@suse.de
+
+- Added scanner_32x32.png as icon file for xsane.desktop.
+
+-------------------------------------------------------------------
+Wed Nov 17 17:22:03 CET 2004 - jsmeix@suse.de
+
+- Updated to version 0.96
+  This version contains several bugfixes and improvements,
+  especially for the fax mode and the email mode. 
+ 
+-------------------------------------------------------------------
+Mon Aug 16 14:47:29 CEST 2004 - jsmeix@suse.de
+
+- Updated to version 0.95 (has gimp-2.0.x support included)
+
+-------------------------------------------------------------------
+Wed Jul 21 09:03:13 CEST 2004 - jsmeix@suse.de
+
+- Added libieee1284 as needed for build because sane is needed
+  to build xsane and as sane has now libieee1284 support it is
+  also needed to build xsane.
+
+-------------------------------------------------------------------
+Tue Mar 23 09:41:45 CET 2004 - jsmeix@suse.de
+
+- gimp plugins are now in .../2.0/...
+
+-------------------------------------------------------------------
+Mon Feb 23 02:09:36 CET 2004 - ro@suse.de
+
+- update to 0.92
+- build with gtk2 stuff
+- added patch from debian maintainer to support gimp2
+- gettext stuff doesn't work yet
+
+-------------------------------------------------------------------
+Sat Jan 10 17:05:50 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Nov 10 15:48:39 CET 2003 - ro@suse.de
+
+- use net-snmp instead of ucdsnmp 
+
+-------------------------------------------------------------------
+Fri Aug 15 12:14:56 CEST 2003 - adrian@suse.de
+
+- add desktop file
+
+-------------------------------------------------------------------
+Tue Jul 29 14:19:03 CEST 2003 - coolo@suse.de
+
+- use %find_lang
+
+-------------------------------------------------------------------
+Mon Jun 30 16:20:56 CEST 2003 - freitag@suse.de
+
+- fixed 64bit libpath problem with gimp plugin 
+
+-------------------------------------------------------------------
+Fri Jun  6 15:59:32 CEST 2003 - freitag@suse.de
+
+- update to version 0.91 
+
+-------------------------------------------------------------------
+Mon Feb  3 15:26:11 CET 2003 - freitag@suse.de
+
+- added libtiff for tiff support again. 
+
+-------------------------------------------------------------------
+Mon Feb  3 00:24:51 CET 2003 - ro@suse.de
+
+- blow up neededforbuild again to make it build 
+
+-------------------------------------------------------------------
+Fri Jan 24 12:39:51 CET 2003 - freitag@suse.de
+
+- update to version 0.90
+  cleaned up neededforbuild a bit, removed gimp etc. 
+  added libgphoto, now required for SANE 
+
+-------------------------------------------------------------------
+Thu Oct 31 13:07:14 CET 2002 - freitag@suse.de
+
+- update to version 0.89 
+
+-------------------------------------------------------------------
+Tue Oct 22 01:54:46 CEST 2002 - ro@suse.de
+
+- added pkgconfig and libusb to neededforbuild 
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Sat Jul 27 00:23:57 CEST 2002 - adrian@suse.de
+
+- fix neededforbuild
+
+-------------------------------------------------------------------
+Wed Jul 17 16:51:27 CEST 2002 - freitag@suse.de
+
+- update to version 0.87 
+
+-------------------------------------------------------------------
+Wed May  8 10:35:37 CEST 2002 - freitag@suse.de
+
+- update to version 0.86
+  small bugfixing and functional updates 
+
+-------------------------------------------------------------------
+Wed Apr 24 16:41:05 CEST 2002 - freitag@suse.de
+
+- update to v. 0.85
+  changed default help browser to konqueror since that is the 
+  SuSE default browser. 
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:06 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Thu Jan 24 12:18:13 CET 2002 - egmont@suselinux.hu
+
+- fixed URL
+
+-------------------------------------------------------------------
+Thu Jan 10 14:34:08 CET 2002 - freitag@suse.de
+
+- update to v. 0.83 
+
+-------------------------------------------------------------------
+Mon Nov 12 18:26:31 CET 2001 - freitag@suse.de
+
+- update to version 0.80, which provides a build-in viewer to see
+the scan results immediately, some bugfixes and new and 
+updated translations: cs, de, fr, ja, ru, tr 
+
+-------------------------------------------------------------------
+Sat Sep 15 21:14:45 CEST 2001 - kukuk@suse.de
+
+- Remove netscape from requires
+
+-------------------------------------------------------------------
+Fri Aug 31 11:51:20 CEST 2001 - ro@suse.de
+
+- added <hp-officeJet> to neededforbuild (for sane) 
+
+-------------------------------------------------------------------
+Wed Aug 22 17:45:33 CEST 2001 - freitag@suse.de
+
+- update to version 0.79, which include:
+ * (still experimental) email functionality improved
+ * preview improvement
+ * medium selection for negatives
+ * security enhancement when xsane is running with suid=root  
+
+-------------------------------------------------------------------
+Fri Jun 29 09:59:25 CEST 2001 - freitag@suse.de
+
+- update to version 0.78 
+
+-------------------------------------------------------------------
+Tue Apr 24 18:27:36 MEST 2001 - egger@suse.de
+
+- Updated to version 0.75.
+- Use BuildRooting
+- Use better paths for data. 
+- Should fix bug 7088.
+
+-------------------------------------------------------------------
+Mon Apr  2 10:52:09 CEST 2001 - freitag@suse.de
+
+- update to version 0.74, source in bzip2-format. 
+
+-------------------------------------------------------------------
+Mon Mar  5 11:17:03 CET 2001 - freitag@suse.de
+
+- update to version 0.72 
+
+-------------------------------------------------------------------
+Thu Jan 18 14:37:21 CET 2001 - freitag@suse.de
+
+- update to version 0.70 to fix a bug with gimp plugin mode. 
+
+-------------------------------------------------------------------
+Mon Dec 18 10:43:23 CET 2000 - freitag@suse.de
+
+- update to version 0.67 
+
+-------------------------------------------------------------------
+Fri Dec  8 14:16:00 CET 2000 - freitag@suse.de
+
+- update to version 0.64 
+
+-------------------------------------------------------------------
+Mon Nov  6 10:33:27 CET 2000 - freitag@suse.de
+
+- changed License/Copyright in spec-File 
+
+-------------------------------------------------------------------
+Thu Nov  2 05:00:16 CET 2000 - freitag@suse.de
+
+- update to version 0.62 
+  neededforbuild needs gimp-devel, not gimp-dev
+
+-------------------------------------------------------------------
+Wed Nov  1 01:21:05 MET 2000 - egger@suse.de
+
+- Updated specfile to new long packagenames.
+- Reworked specfile.
+- Probably needs some more work; I'm taking care of that. 
+
+-------------------------------------------------------------------
+Mon Sep 25 15:13:18 CEST 2000 - ro@suse.de
+
+- make it compile 
+
+-------------------------------------------------------------------
+Tue Sep 19 19:11:48 MEST 2000 - egger@suse.de
+
+- Use -p for makedir. 
+- Buildproofed on i386. 
+
+-------------------------------------------------------------------
+Tue Sep  5 00:44:18 MEST 2000 - egger@suse.de
+
+- update to version 0.61 
+
+-------------------------------------------------------------------
+Wed Jun  7 09:28:42 CEST 2000 - freitag@suse.de
+
+- update to version 0.57 
+
+-------------------------------------------------------------------
+Sat Mar  4 16:30:15 CET 2000 - ro@suse.de
+
+- removed libgimp from neededforbuild 
+
+-------------------------------------------------------------------
+Mon Feb 28 11:53:57 MET 2000 - freitag@suse.de
+
+- inserted group tag 
+
+-------------------------------------------------------------------
+Mon Feb 14 15:42:24 MET 2000 - freitag@suse.de
+
+- update to version 0.55
+
+-------------------------------------------------------------------
+Mon Jan 10 16:21:56 MET 2000 - freitag@suse.de
+
+- update to version 0.49 
+
+-------------------------------------------------------------------
+Tue Oct 26 11:47:56 MEST 1999 - freitag@suse.de
+
+- initial verison 0.40
+ 
+

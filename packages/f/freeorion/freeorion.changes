@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Thu Aug 22 18:36:29 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Fix build with boost 1.69: Add freeorion-0.4.8-remove-boost-signals.patch.
+- Refresh spec file.
+
+-------------------------------------------------------------------
+Sat Nov 17 08:15:56 MST 2018 - buckyballreaction@gmail.com
+
+- Added cmake_boost_python.patch: Fix detection of boost_python on Tumbleweed
+
+-------------------------------------------------------------------
+Thu Aug 30 18:29:12 MST 2018 - buckyballreaction@gmail.com
+
+- Update to 0.4.8. Key changes:
+  * Imperial stockpile
+    - Unallocated production is stored, and can be used on colonies even if they are are disconnected from the empire supply network
+    - Withdrawal limits are empire wide, based on planet stockpile meters and indicated on map and production screen
+    - Techs, species, and planet focus settings affect stockpiling withdrawal limits
+    - Stockpiling-focused species added: the Sly
+  * UI Improvements
+    - Fleet icon representation on the map
+    - Blockade indicators
+    - Ship designs, hulls, and parts can be edited, saved, obsoleted, and reordered
+  * Multiplayer improvements
+    - Server run in hostless mode, with server-determined rules
+    - Password-based player authentication
+    - Observers and moderators can join ongoing games
+    - Option to concede a game, subject to conditions
+    - Allied victory rules
+  * Game rules options which can be modified or enabled to affect balance, content, and game mechanics
+  * Unallocated research points are automatically allocated to the cheapest available tech
+  * Extensive AI improvements
+
+-------------------------------------------------------------------
+Fri Feb 16 11:57:14 UTC 2018 - dimstar@opensuse.org
+
+- Add freeorion-boost-1.66.patch: Replace use of
+  Boost::system::posix_error, which has been deprecated since boost
+  1.37. Fixes build with Boost 1.66.
+
+-------------------------------------------------------------------
+Sat Sep 16 11:09:25 MST 2017 - buckyballreaction@gmail.com
+
+- Update to 0.4.7.1. Bugfix release:
+  * Production queue: reverted behavior when increasing batch size of a build item back to a proportional reduction of the progress already made, instead of resetting progress to 0.
+  * Fixed bug in production queue projections.
+  * Several fixes to AI calculations regarding population/colonization.
+  * Fixed potential issues for phototrophic species.
+  * Fixed issues with visibility after combat resolution.
+  * Fixed bug which caused starlanes not to be rendered on certain systems/setups.
+
+-------------------------------------------------------------------
+Sat Aug 12 16:27:03 UTC 2017 - jengelh@inai.de
+
+- Trim redundant wording from description.
+- Avoid macros in comments (they still expand). Do source
+  extra make flags and force -j1 as the comment says.
+- Replace %__-type macro indirections.
+
+-------------------------------------------------------------------
+Sat Aug  5 18:27:29 UTC 2017 - mailaender@opensuse.org
+
+- Add appdata.patch for en.opensuse.org/openSUSE:AppStore
+- Use pkgconfig build requires
+- Add missing post(un) macros for .desktop file and icons
+
+-------------------------------------------------------------------
+Mon Jul 17 11:41:24 UTC 2017 - margianit@gmail.com
+
+- Fix build for Tumbleweed
+
+-------------------------------------------------------------------
+Tue May  2 22:00:00 MST 2017 - buckyballreaction@gmail.com
+
+- Update to 0.4.7
+
+-------------------------------------------------------------------
+Mon Sep  7 19:00:00 MST 2015 - buckyballreaction@gmail.com
+
+- Update to 0.4.5
+
+-------------------------------------------------------------------
+Tue Sep  9 17:00:00 UTC 2014 - dbuck@novell.com
+
+- Update to 0.4.4 svn 7708 (re-release)
+
+-------------------------------------------------------------------
+Sat Sep  6 19:00:00 UTC 2014 - dbuck@novell.com
+
+- Update to 0.4.4
+- Remove dependency on external GiGi; built internally now
+
+-------------------------------------------------------------------
+Sat Aug  3 18:00:00 UTC 2013 - dbuck@novell.com
+
+- Update to 0.4.3
+
+-------------------------------------------------------------------
+Sat Feb 23 20:00:00 UTC 2013 - dbuck@novell.com
+
+- Update to 0.4.2
+
+-------------------------------------------------------------------
+Tue Jan  1 09:48:04 UTC 2013 - opensuse@dstoecker.de
+
+- fix build issues
+
+-------------------------------------------------------------------
+Mon Aug  21 12:00:00 UTC 2012 - dbuck@novell.com
+
+- Update to 0.4.1
+
+-------------------------------------------------------------------
+Sat Jun  2 12:00:00 UTC 2012 - dbuck@novell.com
+
+- Initial 0.4 release
+

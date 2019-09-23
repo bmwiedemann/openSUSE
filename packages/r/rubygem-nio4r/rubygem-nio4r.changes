@@ -1,0 +1,183 @@
+-------------------------------------------------------------------
+Mon Jul  8 06:53:10 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.4.0
+
+  * [#211](https://github.com/socketry/nio4r/pull/211)
+    Enable KQUEUE on macOS 10.14+.
+    ([@ioquatix])
+
+  * Bump minimum supported Ruby to 2.3.
+    ([@ioquatix])
+
+  * Assorted fixes for TruffleRuby & JRuby.
+    ([@eregon], [@olleolleolle])
+
+  * Update libev to v4.25.
+    ([@ioquatix])
+
+  * Bind to ephemeral (port 0) for more reliable specs.
+    ([@ioquatix])
+
+  * Improve handling of SSL sockets and related specs.
+    ([@MSP-Greg])
+
+-------------------------------------------------------------------
+Thu May  3 00:11:59 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.3.1
+ see installed CHANGES.md
+
+  ## 2.3.1 (2018-05-03)
+  
+  * [#188](https://github.com/socketry/nio4r/pull/188)
+    Fix remove interests
+    ([@ioquatix])
+
+-------------------------------------------------------------------
+Mon Apr 16 16:36:55 UTC 2018 - mschnitzer@suse.com
+
+- Only build against ruby versions 2.3.x, 2.4.x, and 2.5.x
+
+-------------------------------------------------------------------
+Tue Mar 20 10:12:05 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.3.0
+ see installed CHANGES.md
+
+  ## 2.3.0 (2018-03-15)
+  
+  * [#183](https://github.com/socketry/nio4r/pull/183)
+    Allow `Monitor#interests` to be nil
+    ([@ioquatix])
+
+-------------------------------------------------------------------
+Tue Jan  9 07:37:26 UTC 2018 - coolo@suse.com
+
+- updated to version 2.2.0
+ see installed CHANGES.md
+
+  ## 2.2.0 (2017-12-27)
+  
+  * [#151](https://github.com/socketry/nio4r/pull/151)
+    `NIO::Selector`: Support for enumerating and configuring backend
+    ([@tarcieri])
+  
+  * [#153](https://github.com/socketry/nio4r/pull/153)
+    Fix builds on Windows
+    ([@unak])
+  
+  * [#157](https://github.com/socketry/nio4r/pull/157)
+    Windows / MinGW test failure - fix spec_helper.rb
+    ([@MSP-Greg])
+  
+  * [#162](https://github.com/socketry/nio4r/pull/162)
+    Don't build the C extension on Windows
+    ([@larskanis])
+  
+  * [#164](https://github.com/socketry/nio4r/pull/164)
+    Fix NIO::ByteBuffer leak
+    ([@HoneyryderChuck])
+  
+  * [#170](https://github.com/socketry/nio4r/pull/170)
+    Avoid CancelledKeyExceptions on JRuby
+    ([@HoneyryderChuck])
+  
+  * [#177](https://github.com/socketry/nio4r/pull/177)
+    Fix `NIO::ByteBuffer` string conversions on JRuby
+    ([@tarcieri])
+  
+  * [#179](https://github.com/socketry/nio4r/pull/179)
+    Fix argument error when running on ruby 2.5.0
+    ([@tompng])
+  
+  * [#180](https://github.com/socketry/nio4r/pull/180)
+    ext/nio4r/extconf.rb: check for port_event_t in port.h (fixes #178)
+    ([@tarcieri])
+
+-------------------------------------------------------------------
+Tue May 30 05:17:06 UTC 2017 - coolo@suse.com
+
+- updated to version 2.1.0
+ see installed CHANGES.md
+
+  ## 2.1.0 (2017-05-28)
+  
+  * [#130](https://github.com/socketry/nio4r/pull/130)
+    Add -fno-strict-aliasing flag when compiling C ext.
+    ([@junaruga])
+    
+  * [#146](https://github.com/socketry/nio4r/pull/146)
+    Use non-blocking select when a timeout of 0 is given.
+    ([@tarcieri])
+  
+  * [#147](https://github.com/socketry/nio4r/pull/147)
+    Update to libev 4.24.
+    ([@tarcieri])
+  
+  * [#148](https://github.com/socketry/nio4r/pull/148)
+    Switch to the libev 4 API internally.
+    ([@tarcieri])
+
+-------------------------------------------------------------------
+Thu Dec 29 05:34:57 UTC 2016 - coolo@suse.com
+
+- updated to version 2.0.0
+ see installed CHANGES.md
+
+-------------------------------------------------------------------
+Mon Feb  1 05:32:56 UTC 2016 - coolo@suse.com
+
+- updated to version 1.2.1
+ see installed CHANGES.md
+
+  1.2.1 (2016-01-31)
+  ------------------
+  * Fix bug in the JRuby backend which cases indefinite blocking when small
+    timeout values are passed to the selector
+
+-------------------------------------------------------------------
+Thu Jan 21 05:41:25 UTC 2016 - coolo@suse.com
+
+- updated to version 1.2.0
+ see installed CHANGES.md
+
+  1.2.0 (2015-12-22)
+  ------------------
+  * Add NIO::Monitor#interests= API for changing interests. Contributed by
+    @UpeksheJay as a Google Summer of Code project.
+  * Update to libev 4.22
+
+-------------------------------------------------------------------
+Sat Jul 18 04:29:56 UTC 2015 - coolo@suse.com
+
+- updated to version 1.1.1
+ see installed CHANGES.md
+
+  1.1.1 (2015-07-17)
+  ------------------
+  * Update to libev 4.20
+  * Fall back to io.h if unistd.h is not found
+  * RSpec updates
+  * RuboCop
+
+-------------------------------------------------------------------
+Tue Feb 10 18:08:29 UTC 2015 - coolo@suse.com
+
+- updated to version 1.1.0
+
+-------------------------------------------------------------------
+Thu Jan 29 09:57:10 UTC 2015 - tboerger@suse.com
+
+- Ignore devel files as we are doing it everywhere
+
+-------------------------------------------------------------------
+Mon Oct 13 14:26:23 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Thu Mar 20 13:12:17 UTC 2014 - tboerger@novell.com
+
+- Intial package of 1.0.0
+

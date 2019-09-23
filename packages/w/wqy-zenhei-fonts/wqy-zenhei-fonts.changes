@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Sun Oct 19 18:17:12 UTC 2014 - i@marguerite.su
+
+- update 0.9.47+snapshot20141019
+  * This project didn't schedule a release for 3 years so
+    snapshot version is acceptable to me
+
+-------------------------------------------------------------------
+Sun Sep 29 15:16:33 UTC 2013 - i@marguerite.su
+
+- Remove alias preference in wqy-zenhei.conf, which may interfere 
+  with settings in 58-suse-post-user.conf. (thanks ramax)
+
+-------------------------------------------------------------------
+Mon Jan 21 23:53:22 UTC 2013 - swyear@gmail.com
+
+- with %enable_setup_ui 0, don't build sub-package zenhei-config,
+  leave these scripts as document
+
+-------------------------------------------------------------------
+Sun Jan 20 16:43:05 UTC 2013 - swyear@gmail.com
+
+- remove wqy-zenhei-font-config-fixes.diff
+  re-diff to fix "Having multiple values in <test> isn't supported and may
+  not works as expected"
+- add a simple setup UI in sub-package zenhei-config
+- Upstream release note:
+- update documents to prepare the release of v1.0 RC1
+- fixing a scaling factor bug for radicals by a new build
+- added wqy-zenhei-cfg script to set user preference
+- changed zenheiset for the new config files
+- new build with improved parameters
+- updated algorithm to compute glyph top margin
+- fine-tuned P,XG,D,HZW and *G strokes
+- all CJK Han glyphs moved upward for 10 units (EM=1024)
+- fixed a bug for all characters involving U4EB6 as a component
+
+-------------------------------------------------------------------
+Tue Oct 16 12:33:07 UTC 2012 - pgajdos@suse.com
+
+- silented "Having multiple values in <test> isn't supported and may
+  not works as expected"
+  + amended config-fixes.patch
+
+-------------------------------------------------------------------
+Mon Oct  8 13:36:53 UTC 2012 - pgajdos@suse.com
+
+- use %files_fontsconf_availdir and %files_fontsconf_file macros
+
+-------------------------------------------------------------------
+Tue Oct  2 12:47:28 UTC 2012 - pgajdos@suse.com
+
+- install avail configuration into /usr/share/%{name}/conf.avail
+  and use %link_avail_to_system_fontsconf macro for linking it into
+  /etc/fonts/conf.d (fontconfig 2.10 doesn't use /etc/fonts/conf.avail)
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:37 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Thu Mar 29 15:11:31 UTC 2012 - pgajdos@suse.com
+
+- GPL-2.0-with-font-exception license
+
+-------------------------------------------------------------------
+Thu Dec 22 18:11:45 CET 2011 - tiwai@suse.de
+
+- Renamed ttf-wqy-zenhei -> wqy-zenhei-fonts according to
+  openSUSE packaging guidelines and FATE#313035
+  Adjusted Obsoletes and Provides accordingly
+
+-------------------------------------------------------------------
+Mon Aug 31 16:04:54 CEST 2009 - tiwai@suse.de
+
+- remove unneeded / invalid entries from font config files
+  (bnc#519059)
+- add provides: locale()
+
+-------------------------------------------------------------------
+Fri Jul  3 15:19:59 CEST 2009 - yfeng@novell.com
+
+- Add the SUSE header
+
+-----------------------------------------------------------------
+Thu Jul  2 00:00:00 CEST 2009 - rainwoodman@gmail.com
+
+- Remove deprecated tags
+- PreReq fontconfig for fontconfig dirs
+- Fix install-no-mkdir-buildroot
+- Import from swyear @ build.opensuse
+

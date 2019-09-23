@@ -1,0 +1,7 @@
+<package name="mailman" project="openSUSE:Factory">
+  <title>The GNU Mailing List Manager</title>
+  <description>This is the GNU Mailing List manager. Mailman provides an
+easy-to-configure means of maintaining mailing lists including Web
+administration. Mailman is written in Python.</description>
+  <devel project="server:mail" package="mailman"/>
+</package>

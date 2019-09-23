@@ -1,0 +1,146 @@
+-------------------------------------------------------------------
+Tue Jun 12 11:35:40 UTC 2018 - badshah400@opensuse.org
+
+- Add equalx-adapt-headers-for-qt5_11.patch: Include additional
+  header files where needed for compilation against Qt 5.11
+- Only run post(un) scripts for openSUSE < 1500; rpm file triggers
+  take care of these for newer releases.
+
+-------------------------------------------------------------------
+Sun Oct  2 17:37:46 UTC 2016 - badshah400@gmail.com
+
+- Add manually created appdata file and install it.
+
+-------------------------------------------------------------------
+Sun Jul  5 14:40:12 UTC 2015 - badshah400@gmail.com
+
+- Use inkscape instead of convert to generate the hires icons;
+  convert messes up the icon image geometry for unknown reasons.
+
+-------------------------------------------------------------------
+Thu Apr 30 20:52:09 UTC 2015 - crrodriguez@opensuse.org
+
+- In factory, compile against QT5. 
+
+-------------------------------------------------------------------
+Wed Mar 26 21:55:57 UTC 2014 - badshah400@gmail.com
+
+- Update to version 0.7.1: 
+  + No list of changes from upstream
+  + Build process changed: make install no longer does anything;
+    use 'install' to manually copy generated binary to %{_bindir}
+    instead
+- Use desktop file shipped in upstream tarball
+  + Drop external .desktop file
+  + Add equalx-fix-desktop-file.patch: Fix icon tag in shipped
+    desktop file and categories for compatibility with openSUSE
+    defined ones; also fix incorrect Version tag usage
+- Add BuildRequires on inkscape too, required for generation of
+  proper hi-res png icons from svg icon file.
+
+-------------------------------------------------------------------
+Tue Mar 25 00:21:39 UTC 2014 - badshah400@gmail.com
+
+- Update to version 0.7.0:
+  + No list of changes from upstream
+- Add explicit Requires on ghostscript and poppler-tools (these
+  would have been pulled in by texlive-latex anyway, but just in
+  case)
+- Add Requires on libqt4-sql-sqlite: required for working history
+  and bookmark features
+- Do not package COPYING: file is no longer present in upstream
+  tarball
+- Also supply and package .desktop file and necessary icons:
+  introduces BuildRequires on desktop-file-utils and
+  hicolor-icon-theme (additionally, /usr/bin/convert is used to
+  generate some missing hi-res icons during %install, also needs
+  ghostscript fonts)
+- Package the resources dir in %{_datadir} so that equalx can find
+  the necessary resources (e.g. symbols) at runtime.
+
+-------------------------------------------------------------------
+Wed Jun 26 21:12:10 UTC 2013 - badshah400@gmail.com
+
+- Update to version 0.6.0:
+  + Corrected transparent background bug for latex
+  + Corrected square brackets
+  + Corrected quadratic formula from templates
+  + Equation font size defaults to size 20
+  + Empty text in equation editor shows information text
+  + Solved minor bugs in output of latex log
+  + Implemented zoom & zoom slider
+  + Preferences Dialog allows to show/hide Log
+  + Latex output visible in Log Tab
+  + Polished GUI
+  + Now Preamble can be toggle from a button in mainwindow
+  + Preferences allows to show/hide only the latex log tab
+  + LatexEditor shows line numbers, same for the Preamble editor
+  + Reported errors by latex output are highlighted in Equation
+    editor and Preamble editor. A nice sign shows along the line
+    number also
+  + Fixed warnings
+  + Some modifications to About Dialog
+  + Fixed About Dialog links
+  + Corrected "Remeber" in Preferences Dialog
+  + Added class ConfigButton required for a polished GUI in the
+    Modified tab "Commands" from Preferences Dialog
+  + Added the GPL 3 License boilerplate to all remaining files
+  + Added a check for the requirements (latex, dvipng,etc)
+  + Commands paths in Preferences Dialog are now readonly - they
+    can be changed only the "Change" buttons
+  + Change buttons for the commands select only the specific
+    executables (filters other files)
+  + Added fg color, bg color, preview font size and mode in
+    Preferences dialog which are saved in the settings
+  + Added button "Reset Defaults" to the Preferences dialog and
+    works
+  + Removed Util function from defines.h and moved the Util
+    functions in Util.h
+  + Fixed a bug in Preferences dialog to set Font family and size
+    for the equation editor
+  + Corrected UpdateEquation and UpdateImage to call runCommand()
+  + Added more environments: display, inline(which were before)
+    and align and text. Select them from the Mainwindow and
+    Preferences
+  + Modified UI mainwindow and polished it for better smaller
+    layout
+  + Removed Latex log output and tabs from mainwindow. There is no
+    need since the error parser is enough
+  + Removed Parser and latex-template
+  + Modified Zoom slider to show zoom level in a tooltip
+  + Solved bug for find and highlight when dealing with
+    transparent background color. If color is transparent than
+    highlight in white
+  + Fixed WidgetColorPicker.h to show real swatch transparent
+    color
+  + Fixed custom color selection in WidgetColorPicker
+  + Modified foreground color combobox to not show transparent
+    option (latex can not render transparent color)
+  + Implemented a RenderEngine class to deal with the rendering
+    and programs execution
+  + Fixed RenderEngine
+  + Added a nice preloader to show instead of the equation while
+    the RenderEngine generates the files
+  + Cleaned up some obsolete and unused code in MainWindow
+  + Modified RenderEngine to not take care of latex exitcode. This
+    is required so that we parse and display the latex errors
+  + Changed preloader image with a nicer one
+  + Functional preview of the generated image PNG
+  + Modified RenderEngine to do check for the latex errors and
+    stop if errors are found
+  + Modified EquationItem to clear if no image is available.
+    Equation item now shows a grab cursor (hand) if it is possible
+    to drag it, normal cursor otherwise
+  + Modified Mainwindow and Equation item in order to not be
+    possible to drag empty equation
+  + Mainwindow shows a busy cursor while the RenderEngine is
+    running
+- Drop equalx-fix-no-return-in-nonvoid-function.patch --
+  corrected upstream
+- Now requires libexempi-devel and libqt4 >= 4.8.0 for building.
+
+-------------------------------------------------------------------
+Mon Dec 12 09:48:38 UTC 2011 - badshah400@gmail.com
+
+- Initial package (version 0.51) 
+

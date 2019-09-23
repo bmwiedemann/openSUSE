@@ -1,0 +1,20 @@
+<package name="patool" project="openSUSE:Factory">
+  <title>Portable Command Line Archive File Manager</title>
+  <description>patool is a portable command line archive file manager. Various archive types
+can be created, extracted, tested and listed by patool.
+The advantage of patool is its simplicity in handling archive files without
+having to remember a myriad of programs and options.
+The archive format is determined by the file(1) program and as a fallback by
+the archive file extension.
+
+patool supports 7z (.7z), ACE (.ace), ALZIP (.alz), AR (.a), ARC (.arc), ARJ
+(.arj), BZIP2 (.bz2), CAB (.cab), compress (.Z), CPIO (.cpio), DEB (.deb), GZIP
+(.gz), LRZIP (.lrz), LZH (.lha, .lzh), LZIP (.lz), LZMA (.lzma), LZOP (.lzo),
+RPM (.rpm), RAR (.rar), TAR (.tar), XZ (.xz), and ZIP (.zip, .jar) formats.
+
+It relies on helper applications to handle those archive formats.
+
+</description>
+  <devel project="Archiving" package="patool"/>
+  <url>https://github.com/wummel/patool</url>
+</package>

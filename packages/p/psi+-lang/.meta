@@ -1,0 +1,12 @@
+<package name="psi+-lang" project="openSUSE:Factory">
+  <title>PSI+ Jabber client using Qt</title>
+  <description>Psi is the premiere Instant Messaging application designed for
+GNU/Linux, Microsoft Windows, Apple Mac OS X. Built upon an open
+protocol named Jabber, Psi is a fast and lightweight messaging client
+that utilises the best in open source technologies. Psi contains all
+the features necessary to chat, with no bloated extras that slow your
+computer down.
+
+</description>
+  <url>http://code.google.com/p/psi-dev/</url>
+</package>

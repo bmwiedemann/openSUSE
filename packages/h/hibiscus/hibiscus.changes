@@ -1,0 +1,411 @@
+-------------------------------------------------------------------
+Wed Jun 26 10:10:58 UTC 2019 - ecsos@opensuse.org
+
+- Updateto 2.8.13
+  - NEW: 0796 Neue HBCI4Java-Version - fehlendes Tag „:25:“ in 
+    MT940 tolerieren
+  - NEW: 0795 Neue HBCI4Java-Version mit Fallback-Länderkennung DE,
+    wenn in UPD nicht/falsch übertragen
+  - NEW: 0794 Neue obantoo-Version mit aktualisierter BLZ-Datei 
+    gültig ab 03.06.2019
+  - CHG: 0793 Auswahldialog für das Schlüsselformat beim Import 
+    einer Schlüsseldatei etwas höher gestaltet - Inhalt sonst kaum
+    erkennbar
+  - NEW: 0792 Import von SEPA-Überweisungen: Wenn die PAIN-Datei 
+    ein Datum hat, dann Auftrag automatisch als Terminüberweisung 
+    markieren (da wir das Datum ja auch nur dann exportieren, 
+    wenn es wirklich eine Terminüberweisung ist)
+  - NEW: 0791 SEPA-Lastschrift: Whitespaces in 
+    Gläubiger-Identifikation automatisch entfernen - kann z.Bsp. 
+    passieren, wenn man sie via Zwischenablage eingefügt hat
+  - NEW: 0790 Im Kategorieauswahldialog die Namen der 
+    übergeordneten Kategorien mit anzeigen, wenn nach Eingabe 
+    eines Suchbegriffs nicht mehr ersichtlich ist, zu welcher 
+    übergeordneten Kategorie der Eintrag gehört - siehe 
+    https://homebanking-hilfe.de/forum/topic.php?t=22753
+  - CHG: 0780 Eingabefelder für Benutzer- und Kundenkennung auf 
+    30 Zeichen verlängert - siehe 
+    https://homebanking-hilfe.de/forum/topic.php?p=144122#real144122
+  - DEL: 0779 Haspa-Sonderbehandlung für die neue URL ab 20.04. 
+    wieder entfernt - die neue URL ist inzwischen in 
+    blz.properties enthalten
+  - BUG: 0778 XML-Export von Adressen war nicht mehr möglich
+  - NEW: 0777 Neue HBCI4Java-Version mit neuer BLZ-Datei per 
+    20.04.2019
+  - NEW: 0776 Beim Erhalt eines neuen INI-Briefs den 
+    Bestätigungsdialog dedizierten Schließen-Button anzeigen um 
+    mehrfaches Drucken zu erlauben
+  - BUG: 0775 Neue HBCI4Java-Version - NPE beim Anlegen einer 
+    neuen Schlüsseldatei
+  - NEW: 0774 Import von mehreren CAMT-Dateien in einer ZIP-Datei
+  - BUG: 0773 Auswahl einer Kontogruppe in „Einnahmen/Ausgaben“
+    führte zur Anzeige der Konten, die nicht in der Gruppe sind
+  - BUG: 0772 Elektr. Kontoauszug: „$“-Zeichen im Parameter 
+    „Kontoauszüge speichern in“ erlauben - es kann tatsächlich 
+    Pfade mit diesem Zeichen geben
+  - NEW: 0771 Tolerieren, wenn die Bank nur Warnings - auch 
+    mehrere - gesendet hat
+  - NEW: 0770 Nach der Synchronisierung nur jene Warnungen in der 
+    Zusammenfassung anzeigen, die sich nicht darauf beziehen, 
+    dass lediglich bei der Bank keine neuen Daten vorlagen
+  - NEW: 0769 Neuer Zeitfilter „Monat: Letzte 12“
+  - CHG: 0768 Bei der Auswertung der Bankantwort jetzt generell 
+    tolerieren, wenn die Bank keinen Erfolgscode meldet sondern nur 
+    eine Warnung (siehe auch 0739 und 0757)
+
+-------------------------------------------------------------------
+Sun May  5 10:36:40 UTC 2019 - ecsos@opensuse.org
+
+- Update to 2.8.12
+  - BUG: 0767 Neue HBCI4Java-Version - Fehler bei Erkennung des 
+    AES-Passport-Formats unter Java 8
+- Changes from 2.8.11
+  - NEW: 0766 Neue HBCI4Java-Version
+  - NEW: 0765 Fenstergröße des Kategorie-Auswahl-Dialogs speichern
+    - siehe https://homebanking-hilfe.de/forum/topic.php?p=143616#real143616
+  - NEW: 0764 Fehlermeldungen bei HBCI-Synchronisierung am Ende 
+    noch etwas deutlicher hervorheben
+  - CHG: 0763 Default-Limit für PINs auf 50 Zeichen erhöht
+  - NEW: 0762 Fenstergröße des Adressauswahl-Dialogs speichern 
+    - siehe https://homebanking-hilfe.de/forum/topic.php?p=143572#real143572
+  - NEW: 0761 Einnahmen/Ausgaben: Deaktivierte Konten ausblendbar 
+    - siehe https://homebanking-hilfe.de/forum/topic.php?t=22649
+  - NEW: 0760 HASPA: Bei Anlage eines neuen Bankzugangs automatisch
+    die neue URL vorschlagen, wenn das Systemdatum der 
+    Umstellungstag 20.04.2019 ist
+  - BUG: 0759 Nachtrag zu BUGZILLA 1860 - Bei langen Banknachricht
+    wurde der Scrollbalken u.U. nicht angezeigt, weil die Höhe des
+    Textes vom Control scheinbar falsch berechnet wurde
+  - NEW: 0758 Neue obantoo-Version mit aktualisierter BLZ-Datei 
+    gültig ab 04.03.2019
+  - BUG: 0757 Code 3290 ebenfalls tolerieren (keine Dauerauftraege 
+    beim Abruf)
+  - BUG: 0756 Wertebereich für PmtInfId noch etwas eingeschränkt 
+    (RestrictedIdentificationSEPA1)
+  - BUG: 0755 Neues Feld mit der Mandatsreferenz wurde in der 
+    globalen Suche noch nicht berücksichtigt
+  - NEW: 0754 Neues CSV-Exportformat für „Einnahmen/Ausgaben“
+  - BUG: 0753 In Export „PDF-Format: Summen aller Kategorien mit
+    Einnahmen und Ausgaben“ war die Summenzeile nicht korrekt
+  - NEW: 0752 Feature #170 - Beim MT940-Export „pro Buchung eine 
+    logische Datei“ ebenfalls immer chronologisch sortieren
+  - NEW: 0751 Feature #169 - Beim MT940-Export von CAMT-Umsätzen 
+    die Tags EREF, KREF und MREF mit berücksichtigen
+  - BUG: 0750 Bug #168 - Beim MT940-Export von CAMT-Umsätzen muss
+    der Verwendungszweck pro 65 Zeichen umgebrochen werden. 
+    Mehr ist in MT940 nicht erlaubt, CAMT hat jedoch 140 Zeichen
+  - NEW: 0749 Feature #162 - neues dediziertes Feld für die 
+    Mandatsreferenz in Umsatzbuchungen
+  - BUG: 0748 Neue HBCI4Java-Version - Verbindung zum Kartenleser
+    nur im Fehlerfall schliessen
+  - NEW: 0747 Sicherheitsabfrage beim Löschen eines Kontos stark 
+    erweitert. Zeigt jetzt auch die Anzahl der ebenfalls zu 
+    löschenden zugeordneten Daten an sowie eine extra Checkbox
+  - BUG: 0746 Neue HBCI4Java-Version - automatisches Korrigieren 
+    von Passport-Dateinamen bei Chipkarten
+  - BUG: 0745 Neue HBCI4Java-Version - smsTAN in HHD-Version 1.3 
+    wurde falsch als QR-TAN erkannt.
+  - NEW: 0744 Neue HBCI4Java-Version - mit neuem PassportStorage
+- Changes from 2.8.10
+  - BUG: 0743 Nachtrag zu 0739 - einschränkenden Text 
+    „liegen keine“ bzw. „keine Umsätze“ entfernt, da noch weitere 
+    Textkombinationen existieren
+- Changes from 2.8.9
+  - NEW: 0742 „Umsätze nach Kategorien“ - Export: Bei Format 
+    „PDF-Format: Summen aller Kategorien mit Einnahmen und 
+    Ausgaben“ neue Option zur Anzeige einer Gesamtsumme über alle
+    Kategorien
+  - NEW: 0741 Support für End-to-End ID bei Import und Export im 
+    CSV-Format
+  - BUG: 0740 Elektr. Kontoauszüge, die sich genau am Anfang oder 
+    Ende des in „Anzeige einschränken“ angegebenen Zeitraumes 
+    befinden, wurden u.U. nicht angezeigt
+  - NEW: 0741 Geldbeträge in Tabellen fett gedruckt anzeigen. 
+    Konfigurierbar mit der neuen Option „Geld-Beträgen fett 
+    gedruckt anzeigen“ unter 
+    Hibiscus→Einstellungen→Benutzeroberfläche
+  - NEW: 0740 Neue HBCI4Java-Version
+  - NEW: 0739 Wenn keine Umsaetze vorliegen, senden manche Banken 
+    nicht „0020 - Es sind keine Umsätze vorhanden.“ sondern nur 
+    „3010 - Für Konto <nr> liegen keine Daten vor.“. 
+    Siehe https://homebanking-hilfe.de/forum/topic.php?t=22461&page=fst_unread
+  - NEW: 0738 Auf der Startseite in „Hibiscus: Konten-Übersicht“ 
+    die deaktivierten Konten nicht anzeigen #
+    - siehe https://homebanking-hilfe.de/forum/topic.php?p=142089#real142089
+  - NEW: 0737 Anzeige von Tooltips in den Line-Charts 
+    (siehe https://github.com/willuhn/hibiscus/pull/49)
+  - NEW: 0736 Inkrementielles Update des UPD- und BPD-Cache in der
+    Datenbank. Sollte den den Abruf bei Verwendung von MySQL 
+    deutlich beschleunigen, da nur noch die geänderten Parameter 
+    gespeichert werden
+  - NEW: 0735 Unterstützung für chipTAN QR-Code
+  - BUG: 0734 Kam es im TAN-Dialog zu einem Fehler, konnte es u.U. 
+    passieren, dass eine Überweisung fälschlicherweise als 
+    ausgeführt markiert wurde
+  - NEW: 0733 Manuelles Anlegen von elektronischen Kontoauszügen 
+    - siehe https://homebanking-hilfe.de/forum/topic.php?p=141868#real141868
+- Changes from 2.8.8
+  - BUG: 0732 Neue obantoo-Version, die gegen iText 5.5.2 
+    compiliert wurde
+  - NEW: 0731 Upgrade von Guava von Version 18.0 auf Version 25.1
+    wegen Abhängigkeit zu Selenium
+  - NEW: 0730 Abruf elektronischer Kontoauszüge: Jahr basierend auf
+    Start-Datum, End-Datum oder Erstell-Datum vervollständigen, 
+    wenn von Bank nicht übertragen. Nummer basierend auf vorherigen 
+    Kontoauszug vervollständigen, wenn von Bank nicht übertragen.
+  - BUG: 0729 Nachtrag zu 0717: Menüpunkt zur Neuberechnung der 
+    Salden war versehentlich nur noch bei Online-Konten auswählbar
+- Changes from 2.8.7
+  - NEW: 0728 Neue Vorgabezeitäume „Woche: Vorletzte“, 
+    „Quartal: Vorletztes“ und „Jahr: Vorletztes“ in der Auswahl des 
+    Zeitraumes
+  - BUG: 0727 Sparquote: Beim Export im CSV-Format wurde die Spalte 
+    „Monat“ nicht korrekt befüllt
+  - NEW: 0726 Support für den Import von PDF-Rechnungen im
+    ZUGFeRD-Format (Rechtsklick in der Liste der Überweisungen und 
+    „Importieren…“ im Contextmenü wählen)
+  - BUG: 0725 Neue HBCI4Java-Version mit NPE-Fix wenn die Bank in 
+    CAMT-Umsätzen die eigene BIC nicht mitsendet -
+  - NEW: 0724 Funktion „Konten aus Bank-Zugang importieren…“ in 
+    Kontoliste auch dann ermöglichen, wenn kein Konto ausgewählt 
+    ist, an dem das HBCI-Verfahren festgemacht werden kann
+  - NEW: 0723 Adressauswahldialog etwas höher gestaltet und Button
+    „Neue Adresse“ entfernt
+  - NEW: 0722 EndToEnd-ID auch in globaler und Kategorie-Suche 
+    prüfen
+  - NEW: 0721 BUGZILLA 1872: Auch bei deaktivierter 
+    Checksummenprüfung von IBANs zumindest bei deutschen IBANs die 
+    Länge von 22 Zeichen prüfen
+  - BUG: 0720 Nachtrag zu 0717: Freigabe des Kontextmenüeintrages 
+    fehlte noch
+  - BUG: 0719 Einnahmen/Ausgaben: In den Spalten „Einnahmen“ und
+    „Ausgaben“ wurden Vormerkbuchungen fälschlicherweise mit 
+    berücksichtigt
+  - CHG: 0718 Spaltenbreiten beim Druck der Umsatzliste angepasst. 
+    Durch die langen CAMT-Verwendungszwecke wurde die Zweck-Spalte
+    zu breit 
+    - https://homebanking-hilfe.de/forum/topic.php?p=140955#real140955
+  - NEW: 0717 Neuberechnung der Zwischensummen bei allen Konten 
+    erlauben - nicht nur bei Offline-Konten
+  - NEW: 0716 Farbe Grün und Rot beim PDF-Export etwas dunkler 
+    gestaltet, damit es beim Ausdruck in Schwarz/Weiss besser 
+    lesbar is
+
+-------------------------------------------------------------------
+Fri Dec  7 06:26:28 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Build against xml-commons-apis instead of xerces-j2-xml-apis
+
+-------------------------------------------------------------------
+Fri Nov 30 11:48:44 UTC 2018 - ecsos@opensuse.org
+
+- Update to 2.8.6
+  - NEW: 0715 Neue obantoo-Version mit aktualisierter BLZ-Datei 
+    gültig ab 03.12.2018 (enthaelt auch ein Fix, das dazu fuehrte, 
+    dass auch bei korrekten Pruefziffern angezeigt wurde, die 
+    Pruefziffer sei nicht kontrolliert worden)
+  - NEW: 0714 Spalte „art“ in Tabelle „umsatz“ auf 500 Zeichen 
+    vergrößert - siehe https://homebanking-hilfe.de/forum/topic.php?p=140726
+- Changes from 2.8.5
+  - NEW: 0713 Neue HBCI4Java-Version mit korrigiertem Umsatzabruf 
+    per CAMT auf Konten mit Soll-Saldo, Zwischensummen waren u.U. 
+    falsch - https://github.com/hbci4j/hbci4java/commit/5bac6886d5ef8f0c08aec8cc5c5ff35d866ce221
+  - NEW: 0712 Kopieren/Verschieben der Kontoauszugsdateien jetzt 
+    möglich
+  - NEW: 0711 BUGZILLA 1863 - Daten des elektronischen Kontoauszuges 
+    bearbeitbar
+  - NEW: 0710 Die rohen CAMT-Daten können jetzt per 
+    „umsatz.camt.path=<Pfad>“ in 
+    'de.willuhn.jameica.hbci.HBCI.properties' gespeichert werden
+  - DEL: 0709 Zusätzliche Längenprüfung unter Berücksichtigung des
+    „ß“ entfernt - in SEPA-Zeiten vermutlich nicht mehr nötig
+  - DEL: 0708 Hinweis mit der Längenbeschränkung der 
+    Verwendungszweck-Zeilen beim manuellen Bearbeiten eines 
+    Umsatzes entfernt
+  - NEW: 0707 Neue HBCI4Java-Version mit Trimmen von Leerzeichen bei
+    Umsatzabruf per CAMT - https://github.com/hbci4j/hbci4java/commit/7bba2509cc97f66aa932d916ae6a229170121448
+  - NEW: 0706 Wenn die Bank trotz CAMT die Verwendungszweck-Zeilen 
+    alle 27 Zeichen trennt, dann neu zusammensetzen - siehe 
+    https://homebanking-hilfe.de/forum/topic.php?p=140438#real140438
+  - CHG: 0705 Parameter „search.ignore.whitespace“ nicht permanent 
+    neu laden, performance-kritisch beim Laden der Umsätze
+  - NEW: 0704 CSV-Import - zuletzt ausgewähltes Profil automatisch
+    als Vorauswahl für den nächsten Import speichern
+  - BUG: 0703 Wenn EREF beim Umsatzabruf per MT940 nicht korrekt 
+    aus Verwendungszweck extrahiert wurde und mehr als 100 Zeichen
+    lang ist, dann abschneiden
+  - NEW: 0702 Limit für Maximallänge des Verwendungszwecks in 
+    Umsatzbuchungen auf volle 255 Zeichen erhöht, damit auch 
+    Nicht-SEPA-Umsätze reinpassen
+  - NEW: 0701 Umsatz-Export im PDF-Format jetzt wahlweise gruppierbar 
+    nach Konto oder nach Kategorie
+- Changes from 2.8.4
+  - NEW: 0700 Beim Empfang neuer UPD gleich die BPD mit 
+    aktualisieren
+  - NEW: 0699 Neue HBCI4Java-Version mit Server-Adressen für 
+    IsBank - https://github.com/hbci4j/hbci4java/commit/649179cd52cc57bc540ce224cc8ef6ebaf0a806e
+  - NEW: 0698 Scrollbalken in Einstellungsdialog für elektr. 
+    Kontoauszug für kleine Displays anzeigen, Fenstergröße speichern
+  - NEW: 0697 BUGZILLA 1495 - automatisches Entfernen nicht 
+    unterstüzter Zeichen beim Einfügen des Verwendungszweck per 
+    Zwischenablage
+  - NEW: 0696 Neue HBCI4Java-Version mit aktualisierter 
+    Server-Adresse der Sparda-Bank Berlin - 
+    https://github.com/hbci4j/hbci4java/commit/c91f6ed2c5b6b5ddc8d29c4ec6cb66428af6f15e
+  - NEW: 0695 Support für dedizierte EndToEnd-ID in Umsätzen
+  - BUG: 0694 NPE beim Parsen von CAMT-Dateien - 
+    https://github.com/hbci4j/hbci4java/commit/b2b607ad8b72012978badab5f8cc39a8f8dfccaa
+  - CHG: 0693 Nachtrag zu Bugzilla 1864 - Kontofilter in der Liste
+    der Konten auf der Startseite ausblenden, dort ist der Platz 
+    dafuer zu knapp
+  - NEW: 0692 BUGZILLA 1864 - Filterkriterien in der Liste der 
+    Konten (u.a. deaktivierte Konten ausblenden)
+  - NEW: 0691 Suchbegriff „flicker“ in die Liste der TAN-Verfahren 
+    aufgenommen, für die chipTAN USB in Frage kommt
+  - NEW: 0690 Sonderbehandlung fuer Fehlerfall 
+    https://homebanking-hilfe.de/forum/topic.php?p=139423#real139423 
+    (Fehler beim Update der H2-Datenbank durch fehlerhaften H2-Treiber)
+  - NEW: 0689 BUGZILLA 1861 - Unterstützung für benutzerspezifische 
+    CSV-Import-Profile
+  - NEW: 0688 Neue obantoo-Version mit aktualisierter BLZ-Datei
+    gültig ab 03.09.2018
+  - NEW: 0687 Nur jene Synchronizisierungsoptionen anzeigen,
+    die das Backend unterstützt
+  - NEW: 0686 Manueller Import von Umsätzen im CAMT-Format
+  - BUG: 0685 BUGZILLA 1860 - Kein Scrollbalken bei Anzeige einer
+    überlangen Banknachricht
+  - NEW: 0684 BUGZILLA 1621 - Support für Umsatz-Abruf im 
+    CAMT-Format
+  - BUG: 0683 Neuer PIN/TAN-Bankzugang liess sich nicht mehr 
+    anlegen, da die ChipTAN-USB-Checkbox zu dem Zeitpunkt nicht 
+    korrekt berücksichtigt wurde
+  - NEW: 0682 Neue HBCI4Java-Version mit CAMT-Bugfix - 
+    https://github.com/hbci4j/hbci4java/commit/3dc9ebf080810acc2636aef0c9413e0d40672dbb
+  - NEW: 0681 Neue HBCI4Java-Version mit Unterstützung für 
+    CAMT - https://github.com/hbci4j/hbci4java/commit/ecca11320308b1fa1dc40bb37e6571d629064471
+  - BUG: 0680 BUGZILLA 1858 - Hibiscus sucht auch bei deaktivierter 
+    chipTAN-USB-Option weiter nach Kartenlesern
+  - NEW: 0679 Support für HKKAZ/HKKAN in Segment-Version 7 - 
+    https://github.com/hbci4j/hbci4java/commit/e3372a339bd5b9f0c2cea80155199f475dd46ed4
+  - DEL: 0678 Option „Dauerhafte Internetverbindung, Aufforderung 
+    zum Verbinden nicht erforderlich“ aus den Einstellungen entfernt,
+    braucht keiner mehr
+  - NEW: 0677 Option „Alle Daten des Verwendungszwecks anzeigen“ 
+    auch in Liste der Umsätze konfigurierbar (per Config-Button 
+    oben rechts)
+  - NEW: 0676 In der Auswertung „Umsätze nach Kategorien → Im Verlauf“
+    können durch Rechtsklick in die Grafik auch andere Intervalle
+    (Jahr, Monat, Woche) ausgewählt werden.
+  - BUG: 0675 In Kontoliste in der Spalte „verfügbarer Saldo“ das 
+    Währungskennzeichen des konkreten Kontos verwenden und nicht 
+    des ersten gefundenen
+  - NEW: 0674 Wenn eine Bank im Verwendungszweck zwar das 
+    „SVWZ“-Tag liefert, es aber keinen Wert enthält, wird ebenfalls 
+    ein Fallback auf die Anzeige des kompletten Verwendungszweck 
+    gemacht
+  - NEW: 0673 Beim MT940-Export in Feld :25: das Währungskennzeichen 
+    weglassen und die Auszugsnummer in Feld „:28C:“ mit dem 
+    Pseudowert „1“ ausgeben - SAP benötigt das für den Import
+  - NEW: 0672 Fehler beim Ermitteln der Kartenleser-Features 
+    tolerieren (der tanJACK USB scheint das nicht zu unterstützen) 
+    - https://github.com/hbci4j/hbci4java/commit/22b702505bc9aef54bdb7b6663c948ce4b0b91cf
+  - BUG: 0671 Export-Optionen „Saldo ausblenden“ und „Summenzeile 
+    anzeigen“ funktionierten nur, wenn die Checkboxen beim Export 
+    betätigt wurden 
+    - https://homebanking-hilfe.de/forum/topic.php?p=138415
+
+-------------------------------------------------------------------
+Tue Jul 17 10:49:29 UTC 2018 - ecsos@opensuse.org
+
+- update to 2.8.3
+  - NEW: 0670 chipTAN USB auch dann anbieten, wenn zwar chipTAN 
+    optisch ausgewählt aber ein Kartenleser gefunden wurde
+  - NEW: 0669 Support für chipTAN USB per ReinerSCT tanJACK USB
+    https://github.com/hbci4j/hbci4java/commit/3d166d85aec80a1e8da0439fccde4e8c437c3ff2
+  - NEW: 0668 Neuer Parameter „database.driver.h2.parameters“ in 
+    'de.willuhn.jameica.hbci.rmi.HBCIDBService.properties' zum 
+    Hinzufügen eigener JDBC-Parameter
+  - CHG: 0667 0x6D im SW1 von Finalize-TX tolerieren, manche 
+    Kartenleser unterstützen das wohl nicht
+    https://github.com/hbci4j/hbci4java/commit/8bfed0a12af312a88ba8270f5e67810545c4866f
+  - CHG: 0666 Typo im Dialog zum Ausführen einer Überweisung
+  - CHG: 0665 Beim Löschen der BPD explizit auch die 
+    UPD-Versionsnummer löschen sowie die BPD/UPD-Caches als expired 
+    markieren um auch ein Update des UPD-Caches zu forcieren
+  - CHG: 0664 Auto-Korrektur des Dateinamens, wenn die Card-ID 
+    ungueltige Zeichen enthält, die nicht als Dateiname abbildbar 
+    wären https://github.com/hbci4j/hbci4java/commit/00ff4491a63edff7179dea3ed4a978993b64f5b2
+  - NEW: 0663 Beim Abgleich der Konten die Kundenkennung mit berücksichtigen
+
+-------------------------------------------------------------------
+Sun Aug  6 17:40:18 UTC 2017 - mailaender@opensuse.org
+
+- update to version 2.6.20
+- bundle hbci4java again (switched to maven)
+- unbundle obantoo
+
+-------------------------------------------------------------------
+Sun Dec 25 19:12:49 UTC 2016 - mailaender@opensuse.org
+
+- update to version 2.6.19
+- drop appdata.patch (included upstream)
+
+-------------------------------------------------------------------
+Sat Nov 19 18:57:10 UTC 2016 - mailaender@opensuse.org
+
+- update to version 2.6.18
+- add appdata.patch
+
+-------------------------------------------------------------------
+Sat Jul  9 07:29:59 UTC 2016 - mailaender@opensuse.org
+
+- update to version 2.6.17
+- avoid the volatile current version ZIP by using GitHub tags
+
+-------------------------------------------------------------------
+Wed Apr 20 07:14:23 UTC 2016 - mailaender@opensuse.org
+
+- update to version 2.6.15
+
+-------------------------------------------------------------------
+Tue Dec 29 13:31:04 UTC 2015 - mailaender@opensuse.org
+
+- removed binary only libct and libhbci4java-sizrdh
+- made the package noarch
+
+-------------------------------------------------------------------
+Mon Dec 28 18:02:00 UTC 2015 - mailaender@opensuse.org
+
+- update to version 2.6.14
+- unbundle swtchart, hbci4java and libtowitoko
+
+-------------------------------------------------------------------
+Wed Dec 31 12:09:06 UTC 2014 - mailaender@opensuse.org
+
+- update to version 2.6.11
+
+-------------------------------------------------------------------
+Fri Oct  3 18:56:54 UTC 2014 - mailaender@opensuse.org
+
+- update to version 2.6.8
+
+-------------------------------------------------------------------
+Mon Jul  7 12:21:44 UTC 2014 - mailaender@opensuse.org
+
+- update to version 2.6.7
+
+-------------------------------------------------------------------
+Fri May 16 11:47:10 UTC 2014 - mailaender@opensuse.org
+
+- update to version 2.6.6
+
+-------------------------------------------------------------------
+Wed Jan  8 14:40:48 UTC 2014 - mailaender@opensuse.org
+
+- update to version 2.6.1
+
+-------------------------------------------------------------------
+Sat Nov 16 18:29:30 UTC 2013 - mailaender@opensuse.org
+
+- initial packaging of version 2.4.2
+

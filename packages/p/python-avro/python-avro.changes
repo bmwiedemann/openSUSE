@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Fri Sep 13 11:26:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.9.0:
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Fri Jun 21 11:47:02 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.9.0
+  * no upstream changelog found
+
+-------------------------------------------------------------------
+Tue Dec  4 12:45:52 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Nov 29 19:24:01 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid name repetition in summary.
+
+-------------------------------------------------------------------
+Thu Nov 29 13:21:22 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- Initial packaging (version 1.8.2)

@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">git://github.com/rebar/rebar.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">rebar-*.tar</param>
+    <param name="compression">bz2</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">rebar</param>
+  </service>
+</services>
+

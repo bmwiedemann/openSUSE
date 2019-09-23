@@ -1,0 +1,11 @@
+<package name="vtkdata" project="openSUSE:Factory">
+  <title>Visualization Tool Kit Example Data</title>
+  <description>The Visualization ToolKit (VTK) is an open source, freely available 
+software system for 3D computer graphics, image processing, and 
+visualization used by thousands of researchers and developers around 
+the world. 
+
+This package contains some example data for the Toolkit.</description>
+  <devel project="science" package="vtkdata"/>
+  <url>http://www.vtk.org/</url>
+</package>

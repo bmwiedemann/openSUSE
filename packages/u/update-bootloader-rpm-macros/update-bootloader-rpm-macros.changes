@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Fri May 10 09:16:21 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move RPM macros to %_rpmmacrodir.
+
+-------------------------------------------------------------------
+Thu Jan 19 10:14:01 UTC 2017 - jengelh@inai.de
+
+- RPM group fixup
+
+-------------------------------------------------------------------
+Wed Dec 28 09:45:49 UTC 2016 - mchang@suse.com
+
+- New package with rpm macros to support bootloader update in %posttrans to
+  improve the efficiency. (bsc#997317)
+

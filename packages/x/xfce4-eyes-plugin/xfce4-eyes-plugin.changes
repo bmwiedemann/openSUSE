@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Fri Aug 16 12:30:28 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Tue Jul 16 14:50:17 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Package renamed to follow upstream name xfce4-foo-plugin
+- Use lang subpackage for manual edits instead of %lang_package macro 
+- Cleaned up spec file
+- Added bcond for git master builds
+- Only add NEWS and omi Changelog
+- Move COPYING under %license macro 
+
+-------------------------------------------------------------------
+Sun Nov 27 11:25:09 UTC 2016 - seife+obs@b1-systems.com
+
+- update to version 4.5.0:
+  - port to gtk+3/libxfce4ui-2/libxfce4panel-2.0
+  - translation updates
+
+-------------------------------------------------------------------
+Sun Mar 15 22:04:06 UTC 2015 - gber@opensuse.org
+
+- update to version 4.4.4
+  - add ACLOCAL_AMFLAGS to Makefile.am
+  - add .gitignore
+  - fix IT_PROG_INTLTOOL warning
+  - translation updates
+
+-------------------------------------------------------------------
+Tue Dec 23 15:50:11 UTC 2014 - gber@opensuse.org
+
+- update to version 4.4.3
+  - fixes for the build system
+  - translation updates
+
+-------------------------------------------------------------------
+Thu Mar  7 08:33:52 UTC 2013 - gber@opensuse.org
+
+- update to version 4.4.2
+  - small optimizations to update function, making animation more
+    smooth
+  - support for deskbar mode and panel multi-row config
+    (>=xfce4-panel-4.9.0)
+  - make eye movement independent, like in xeyes
+  - implement eye position calculations in 3D coordinates
+  - build the plugin as a module
+  - autotools update (automake-1.13 compatibility and other issues)
+  - fix remembering theme
+  - update size after panel orientation change
+  - more translation updates
+  - port to libxfce4ui
+
+-------------------------------------------------------------------
+Fri Apr 20 10:08:35 UTC 2012 - gber@opensuse.org
+
+- added documentation files
+
+-------------------------------------------------------------------
+Tue Apr 17 19:37:31 UTC 2012 - gber@opensuse.org
+
+- corrected source URL
+
+-------------------------------------------------------------------
+Tue Apr  3 15:19:35 UTC 2012 - gber@opensuse.org
+
+- specfile cleanup
+- correct dependencies
+- split off -lang subpackage
+
+-------------------------------------------------------------------
+Wed Mar  9 11:00:00 UTC 2011 - gber@opensuse.org
+
+- new package (split off from xfce4-panel-plugins)
+

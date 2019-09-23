@@ -1,0 +1,52 @@
+Index: iterm/lib/configure.in
+===================================================================
+--- iterm.orig/lib/configure.in
++++ iterm/lib/configure.in
+@@ -1,7 +1,7 @@
+ # Process this file with autoconf to produce a configure script.
+ AC_INIT(src/core.c, 0.4, jir@yamato.ibm.com)
+ #AC_CONFIG_SRCDIR(src/core.c)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AM_INIT_AUTOMAKE(libiterm,0.4)
+ 
+ # Checks for programs.
+Index: iterm/unix/Xaw/lib/configure.in
+===================================================================
+--- iterm.orig/unix/Xaw/lib/configure.in
++++ iterm/unix/Xaw/lib/configure.in
+@@ -1,7 +1,7 @@
+ # Process this file with autoconf to produce a configure script.
+ AC_INIT(Iterm.c, 0.4, jir@yamato.ibm.com)
+ #AC_CONFIG_SRCDIR([Iterm.c])
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AM_INIT_AUTOMAKE(libXiterm, 0.4, jir@yamato.ibm.com)
+ 
+ # Checks for programs.
+Index: iterm/unix/Xaw/src/configure.in
+===================================================================
+--- iterm.orig/unix/Xaw/src/configure.in
++++ iterm/unix/Xaw/src/configure.in
+@@ -1,7 +1,7 @@
+ # Process this file with autoconf to produce a configure script.
+ AC_INIT(xiterm.c, 0.4, jir@yamato.ibm.com)
+ #AC_CONFIG_SRCDIR([thread.c])
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AM_INIT_AUTOMAKE(xiterm, 0.4, jir@yamato.ibm.com)
+ 
+ # Checks for programs.
+Index: iterm/unix/fbiterm/configure.in
+===================================================================
+--- iterm.orig/unix/fbiterm/configure.in
++++ iterm/unix/fbiterm/configure.in
+@@ -2,7 +2,7 @@
+ # Process this file with autoconf to produce a configure script.
+ AC_INIT(src/fbiterm.c)
+ AM_INIT_AUTOMAKE(fbiterm, 0.4)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ 
+ #################################################################
+ # Checks for programs.

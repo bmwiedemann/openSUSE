@@ -1,0 +1,423 @@
+-------------------------------------------------------------------
+Tue Aug 13 08:12:58 UTC 2019 - Michael Chang <mchang@suse.com>
+
+- Fix duplicated distro detected on btrfs multiple device (bsc#1142858)
+  * os-prober-btrfs-multiple-device.patch
+
+-------------------------------------------------------------------
+Tue Aug 13 07:48:14 UTC 2019 - Michael Chang <mchang@suse.com>
+
+- Update URL for downloading source archive from Debain Salsa server
+  * os-prober.spec
+- Added
+  * os-prober-1.76.tar.bz2
+- Removed
+  * os-prober_1.76.tar.xz
+
+-------------------------------------------------------------------
+Tue Apr 23 07:42:32 UTC 2019 - mchang <mchang@suse.com>
+
+- Fix accidental deletion of btrfs subvolume (boo#1130669)
+  * os-prober-use-tmp-over-var-lib-for-transient-files.patch
+
+-------------------------------------------------------------------
+Tue Mar 12 06:47:59 UTC 2019 - mchang <mchang@suse.com>
+
+- Update URL to current development project in Debian Salsa server.
+- Update the Source0 to use local compressed archive since the remote URL is
+  not reliable to access, causing trouble to the factory-auto checker reporting
+  error as not valid one.
+  * os-prober.spec 
+
+-------------------------------------------------------------------
+Thu Mar  7 08:56:53 UTC 2019 - mchang <mchang@suse.com>
+
+- os-prober isn't compatible with transactional update (boo#1125729)
+  * os-prober-use-tmp-over-var-lib-for-transient-files.patch
+
+-------------------------------------------------------------------
+Tue Dec 11 07:30:19 UTC 2018 - mchang@suse.com
+
+- Don't hard require btrfsprogs by downgrading it to suggests (boo#1118279)
+  * os-prober-make-btrfsprogs-optional.patch
+
+-------------------------------------------------------------------
+Wed Oct 31 07:08:10 UTC 2018 - mchang@suse.com
+
+- Fix missing grub-probe command that caused linux-boot-probe to abort
+  prematurely. It is a mistake while rebasing patch to 1.76 (bsc#1113615)
+  * os-prober-1.49-grub2-mount.patch 
+
+-------------------------------------------------------------------
+Mon Oct  8 10:01:45 UTC 2018 - mchang@suse.com
+
+- Version bump to 1.76:
+  * Fix check on ID_PART_ENTRY_SCHEME, to look for "dos" instead of "msdos"
+  * Remove code using device mapper
+  * This also removes the dependency on dmsetup
+- Rediff
+  * os-prober-1.49-grub2-mount.patch
+  * os-prober-accept-ESP-on-IMSM.patch
+  * os-prober-dont-load-all-fs-module-and-dont-test-mount.patch
+  * os-prober-fix-btrfs-subvol-mounted-tests.patch
+
+-------------------------------------------------------------------
+Tue Jul 31 09:16:55 UTC 2018 - mchang@suse.com
+
+- UEFI Grub does not insert Arch Linux entry correctly (boo#1101942)
+  * os-prober-multiple-initrd.patch
+
+-------------------------------------------------------------------
+Thu Jun 14 07:11:24 UTC 2018 - josef.moellers@suse.com
+
+- Rather than Recommend lvm2 merely Suggest it.
+  [bsc#1026766, os-prober.spec]
+
+-------------------------------------------------------------------
+Mon Feb 26 07:34:02 UTC 2018 - mchang@suse.com
+
+- Use blkid to bailout udevinfo for db not imported in chroot
+  environment (bsc#1076779)
+  * os-prober-05efi-blkid.patch
+
+-------------------------------------------------------------------
+Fri Feb 23 04:40:59 UTC 2018 - mchang@suse.com
+
+- revert os-prober-05efi-udevinfo.patch as it messed up with strings
+  that could be named differently in which even with non ascil characters. 
+
+-------------------------------------------------------------------
+Wed Jan 31 09:46:34 UTC 2018 - mchang@suse.com
+
+- Fix Windows not listed in grub menu after install or upgrade (bsc#1076779)
+  * os-prober-05efi-udevinfo.patch
+
+-------------------------------------------------------------------
+Wed Mar  1 04:58:40 UTC 2017 - mchang@suse.com
+
+- Fix btrfs 1.74 regression in detection btrfs, the do_unmount has to be
+  skipped for btrfs as it removes tmp mount point of which btrfs is making
+  use (bsc#1024196)
+  * modify os-prober-btrfs-absolute-subvol.patch
+  * rediff os-prober-btrfs-always-detect-default.patch
+
+-------------------------------------------------------------------
+Fri Feb 10 08:45:28 UTC 2017 - mchang@suse.com
+
+- Version bump to 1.74:
+  * Add support for Mageia
+  * Improve logging of mounting and setting partitions to ro/rw
+  * Use a read-only device-mapper entry if possible rather than setting the
+    underlying device to read-only.
+    Note that this introduces a dependency on dmsetup on Linux architectures.
+  * Remove the "blockdev --setro" code path entirely, since the read-only
+    device-mapper arrangement supersedes it and should be safer
+  * Make the yaboot parser more tolerant about the syntax of "append" options
+  * Disable debugging if OS_PROBER_DISABLE_DEBUG is set
+  * Replace basename/dirname with shell string processing
+  * Fix typos in README
+  * Add Devuan detection
+  * Work harder to avoid trying to mount extended partitions
+  * Drop " (loader)" suffixes on Microsoft operating systems
+  * Add support for 4MLinux
+  * Use HTTPS for Vcs-* URLs, and link to cgit rather than gitweb.
+- Rediff
+ * os-prober-1.49-grub2-mount.patch
+ * os-prober-EFI-openSUSEfy.patch
+ * os-prober-btrfs-always-detect-default.patch
+ * os-prober-btrfsfix.patch
+ * os-prober-dont-load-all-fs-module-and-dont-test-mount.patch
+ * os-prober-fix-btrfs-subvol-mounted-tests.patch
+ * os-prober-linux-distro-avoid-expensive-ld-file-test.patch
+ * os-prober-linux-distro-parse-os-release.patch
+- Remove patches; fixed on upstream release
+ * os-prober-call-dmraid-once.patch
+ * os-prober-1.49-skip-LVM2_member.patch
+
+-------------------------------------------------------------------
+Tue Nov 15 09:03:26 UTC 2016 - mchang@suse.com
+
+- The wildcard test for ld.so is inaccurate, slow and sometimes hangs a
+  long time with grub2-mount. Disable it becuase it does quite opposite
+  it was intended to do, that is having an inital quick filter for non
+  linux partition to speed things up. (bsc#1008444)
+  * modified os-prober-linux-distro-avoid-expensive-ld-file-test.patch
+  * refresh os-prober-linux-distro-parse-os-release.patch
+
+-------------------------------------------------------------------
+Tue Oct  4 08:28:26 UTC 2016 - mchang@suse.com
+
+- Handle /etc/os-release symlink (bsc#997465)
+  * refresh os-prober-linux-distro-parse-os-release.patch
+
+-------------------------------------------------------------------
+Wed Sep 14 04:46:42 UTC 2016 - mchang@suse.com
+
+- Parse /etc/os-release for openSUSE Tumbleweed (bsc#997465)
+  * os-prober-linux-distro-parse-os-release.patch
+
+-------------------------------------------------------------------
+Thu Dec 17 10:14:04 UTC 2015 - mchang@suse.com
+
+- The ld file tests cost too much as it transversed all files in 
+  the given wildcard directory and path, we should avoid when not
+  necessary. (bsc#953987)
+  * added os-prober-linux-distro-avoid-expensive-ld-file-test.patch
+- Fix missing linux16/initrd16 parsing in entry result
+- Fix kernelfile path if separate boot partition on btrfs 
+  * modified Improve-btrfs-handling-on-os-probing-for-grub2.patch
+- fix os-prober failed to detect os in btrfs root tree (bsc#957018)
+  * added os-prober-btrfs-always-detect-default.patch
+
+-------------------------------------------------------------------
+Tue Nov 10 00:32:40 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.70
+  * Fix hurd-any support: Test for /servers instead of /servers/exec
+    to avoid starting an translator in the mounted system. Also, 
+    /hurd/init might be phased out at some point (Closes: #802053).
+- Remove patches; fixed on upstream release
+  * os-prober-grep-for-windows-bcd-file.patch
+  * os-prober-properly-detect-Windows-10.patch
+
+-------------------------------------------------------------------
+Mon Nov  9 10:32:31 UTC 2015 - lnussel@suse.de
+
+- detect os on default subvolume in snapshot (bsc#954225)
+  (os-prober-btrfs-snapshot-detection.patch)
+
+-------------------------------------------------------------------
+Thu Oct  1 07:24:12 UTC 2015 - mchang@suse.com
+
+- replace os-prober-grep-for-windows-bcd-file.patch by upstream's version
+  * modified os-prober-grep-for-windows-bcd-file.patch
+- include patch from upstream to fix os-prober is missing support for
+  Windows 10 (bsc#947487)
+  * added os-prober-properly-detect-Windows-10.patch
+
+-------------------------------------------------------------------
+Sun Aug  2 15:14:55 UTC 2015 - arvidjaar@gmail.com
+
+- add os-prober-40grub-check-grub2.patch
+  * also skip legacy grub if /boot/grub2/grub.cfg is present, not only
+    /boot/grub/grub.cfg
+
+-------------------------------------------------------------------
+Thu Jun 18 10:24:05 UTC 2015 - mchang@suse.com
+
+- add os-prober-btrfs-absolute-subvol.patch
+  * fix os-prober mount error, no such file or directory (bsc#931955)
+
+-------------------------------------------------------------------
+Mon Jun  1 07:16:32 UTC 2015 - mchang@suse.com
+
+- Deleted os-prober-btrfsfix-trim-leading-subvol.patch: supersceded
+  by Improve-btrfs-handling-on-os-probing-for-grub2.patch 
+
+-------------------------------------------------------------------
+Fri May 29 07:14:40 UTC 2015 - eich@suse.com
+
+- Improve-btrfs-handling-on-os-probing-for-grub2.patch
+  * Improve btrfs handling on os-probing for grub2 (bsc#892364)
+- Replaces: os-prober-btrfsfix-trim-leading-subvol.patch
+
+-------------------------------------------------------------------
+Wed May 13 15:45:30 UTC 2015 - mchang@suse.com
+
+- os-prober-btrfsfix-trim-leading-subvol.patch
+  * fix os-prober fails to detect other SLES12 installation (bsc#892364)
+
+-------------------------------------------------------------------
+Mon Jan 26 09:35:55 UTC 2015 - mchang@suse.com
+
+- add os-prober-grep-for-windows-bcd-file.patch
+  * fix os-prober misinterprets Windows 8 to be Vista (bsc#910654)
+
+-------------------------------------------------------------------
+Sun Dec 14 18:16:40 UTC 2014 - tchvatal@suse.com
+
+- Version bujmp to 1.65:
+  * use latest in debian to be up par patch wise
+  * Drop reiserfs, it's no longer supported.
+    - we actually still support it as we patch this class away
+      anyway, but still they have it in their changes...
+  * Add ppc64el support.  Closes: #752416.
+  * Recognise the new ignore_uefi flag from partman-efi.
+- Refresh all patches to still apply:
+  * os-prober-1.49-grub2-mount.patch
+  * os-prober-call-dmraid-once.patch
+  * os-prober-dont-load-all-fs-module-and-dont-test-mount.patch
+- Always delete all the .orig files as sometimes even upstream
+  put them to tarball :)
+
+-------------------------------------------------------------------
+Tue Aug 19 11:15:57 UTC 2014 - mchang@suse.com
+
+- requires util-linux-systemd (bnc#892337)
+
+-------------------------------------------------------------------
+Fri Jun 20 20:42:01 UTC 2014 - jeffm@suse.com
+
+- add os-prober-call-dmraid-once.patch
+  * fix os-prober: dmraid is called without a device list for every
+    partition (bnc#883453)
+
+-------------------------------------------------------------------
+Sat May 31 20:49:32 UTC 2014 - crrodriguez@opensuse.org
+
+- Neither dmraid nor lvm are mandatory components to get a 
+ working systemd but this package is, since it is required by grub2.
+ Downgrade the requires to recommends so lvm2/dmraid can be uninstalled
+ without rendering the system unusable.
+
+-------------------------------------------------------------------
+Thu May 29 08:26:40 UTC 2014 - mchang@suse.com
+
+- add os-prober-skip-part-on-multipath.patch
+  * fix os-prober creates many unusuable entries on multipath disk
+    (bnc#875327)
+
+-------------------------------------------------------------------
+Wed Jan 15 15:59:02 UTC 2014 - arvidjaar@gmail.com
+
+- fix os-prober-btrfsfix.patch - current "btrfs subvolume list -s"
+  adds some extra fields. Adjust field number to get subvolume name.
+
+-------------------------------------------------------------------
+Wed Dec 18 04:16:03 UTC 2013 - mchang@suse.com
+
+- add os-prober-fix-btrfs-subvol-mounted-tests.patch
+  * move btrfs subvolume mounted tests after regualr rootfs tree
+    tests to make sure that root and subvolume fs tree are tested.
+  * the test order is just a preference, assuming that distribution
+    are installed to root fs tree more likely than to a subvolume.
+
+-------------------------------------------------------------------
+Fri Dec  6 09:21:55 UTC 2013 - mchang@suse.com
+
+- add os-prober-dont-load-all-fs-module-and-dont-test-mount.patch
+  * don't modprobe that many kernel file system modules before mount
+    as mount will take care that for us (bnc#782689)
+  * don't test mount on partitions without any known file system
+    detected (bnc#851722) 
+
+-------------------------------------------------------------------
+Thu Nov  7 07:01:44 UTC 2013 - mchang@suse.com
+
+- add require btrfsprogs
+
+-------------------------------------------------------------------
+Sun Aug 18 18:54:20 UTC 2013 - arvidjaar@gmail.com
+
+- add os-prober-accept-ESP-on-IMSM.patch
+  * accept EFI partition on IMSM MD array (bnc#818871)
+  * fix DOS partition table detection 
+
+Fri May 31 10:26:48 UTC 2013 - arvidjaar@gmail.com
+
+- update to os-prober 1.61. Highlights:
+  * Fix detection of Fedora and other distros that moved /lib into /usr
+  * sed off (hdn,n) from the front of an initrd path
+  * Add support to detect BSD systems
+  * add support for probing EFI System Partition
+- rediff
+  * os-prober-1.49-fix-grub2.cfg-parsing.patch - part implemented
+    differenty upstream; added additional os-prober entries detection based
+    on menu entry ID as suggested by Vladimir Serbienko
+  * os-prober-1.49-grub2-mount.patch
+  * os-prober-SUSE.patch
+  * os-prober-linux-secure-boot.patch
+- drop upstream patches
+  * os-prober-usr_lib-detection.patch
+  * os-prober-skip-MS-legacy-on-UEFI.patch together with 05efi, efi-20microsoft,
+    efi-10elilo
+- add
+  * os-prober-btrfsfix.patch - support btrfs. Patch from Fedora with
+    all unrelated changes cleaned out
+  * os-prober-EFI-openSUSEfy.patch - cosmetic changes between our scripts
+    and version adopted upstream
+
+-------------------------------------------------------------------
+Fri Apr  5 16:33:28 UTC 2013 - arvidjaar@gmail.com
+
+- add os-prober-linux-secure-boot.patch (bnc#810912)
+  * recognize linuxefi/initrdefi too
+
+-------------------------------------------------------------------
+Fri Mar 22 17:29:32 UTC 2013 - arvidjaar@gmail.com
+
+- add os-prober-probe-MD-devices.patch (bnc#811006)
+  * probe also Linux MD devices
+
+-------------------------------------------------------------------
+Sun Mar  3 16:06:32 UTC 2013 - arvidjaar@gmail.com
+
+- 05efi - accept FUSE as valid filesystem too (bnc#807190)
+
+-------------------------------------------------------------------
+Fri Feb  8 15:16:13 UTC 2013 - arvidjaar@gmail.com
+
+- os-prober-usr_lib-detection.patch - fix detection of linux distro
+  which moved /lib to /usr/lib (e.g. Fedora)
+
+-------------------------------------------------------------------
+Sat Jan 19 19:12:20 UTC 2013 - arvidjaar@gmail.com
+
+- os-prober-1.49-grub2-mount.patch (bnc#767272)
+  * In openSUSE grub-mount is called grub2-mount
+
+-------------------------------------------------------------------
+Sat Jan 19 13:41:59 UTC 2013 - arvidjaar@gmail.com
+
+- fix os-prober-1.49-fix-grub2.cfg-parsing.patch (bnc#799457)
+  * initrd was missing
+  * entries sometimes were not emitted
+
+-------------------------------------------------------------------
+Wed Jan 16 18:09:08 UTC 2013 - arvidjaar@gmail.com
+
+- add os-prober-1.49-skip-LVM2_member.patch (bnc#798604)
+  * do not try to mount LVM2 PV
+
+-------------------------------------------------------------------
+Tue Jan  8 07:14:53 UTC 2013 - arvidjaar@gmail.com
+
+- add os-prober-1.49-fix-grub2.cfg-parsing.patch (bnc#796919)
+
+-------------------------------------------------------------------
+Fri Jan  4 11:18:01 UTC 2013 - arvidjaar@gmail.com
+
+- add support for chainloading another UEFI bootloader (bnc#775610)
+  * 05efi - top level driver to search ESP
+  * efi-20microsoft - support Microsoft UEFI bootloader
+  * efi-10elilo - support ELILO UEFI bootloader (Agnelo de la Crotche)
+- skip legacy Microsoft bootloader on UEFI (bnc#775610)
+
+-------------------------------------------------------------------
+Mon Dec 19 11:13:44 UTC 2011 - aj@suse.de
+
+- Clarify license.
+
+-------------------------------------------------------------------
+Thu Dec  8 12:23:12 UTC 2011 - aj@suse.de
+
+- Update to 1.49:
+  * MeeGo detection support
+  * Bugfixes
+
+-------------------------------------------------------------------
+Thu Dec  8 11:18:49 UTC 2011 - coolo@suse.com
+
+- this seems to be "GPL" as it was understood 2004, so guessing
+  GPL-2.0+
+
+-------------------------------------------------------------------
+Fri Sep 30 15:53:26 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Tue Jul 12 13:08:58 UTC 2011 - aj@suse.de
+
+- Create new package.
+

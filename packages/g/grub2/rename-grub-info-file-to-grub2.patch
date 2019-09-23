@@ -1,0 +1,40 @@
+From 031abf80020b2fa75850d6e09f4489b687a5cb19 Mon Sep 17 00:00:00 2001
+From: Jiri Slaby <jirislaby@gmail.com>
+Date: Sun, 24 Jun 2012 15:40:40 +0200
+Subject: [PATCH] rename grub info file to grub2
+
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+
+From: Andrey Borzenkov <arvidjaar@gmail.com>
+Do not rename file here. quilt does not support it and creates the
+whole file if patch needs refreshing. It means that to regenerate two
+files - Makefile.core.am and  Makefile.util.am - it may be necessary to
+manually rename it.
+---
+
+Index: grub-2.02~beta3/docs/Makefile.am
+===================================================================
+--- grub-2.02~beta3.orig/docs/Makefile.am	2016-02-28 19:19:14.788874638 +0300
++++ grub-2.02~beta3/docs/Makefile.am	2016-02-28 19:19:14.780874638 +0300
+@@ -1,7 +1,7 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+ 
+ # AM_MAKEINFOFLAGS = --no-split --no-validate
+-info_TEXINFOS = grub.texi grub-dev.texi
++info_TEXINFOS = grub2.texi grub-dev.texi
+ grub_TEXINFOS = fdl.texi
+ 
+ EXTRA_DIST = font_char_metrics.png font_char_metrics.txt
+Index: grub-2.02~beta3/docs/grub.texi
+===================================================================
+--- grub-2.02~beta3.orig/docs/grub.texi	2016-02-28 19:19:14.788874638 +0300
++++ grub-2.02~beta3/docs/grub.texi	2016-02-28 19:19:14.784874638 +0300
+@@ -1,7 +1,7 @@
+ \input texinfo
+ @c -*-texinfo-*-
+ @c %**start of header
+-@setfilename grub.info
++@setfilename grub2.info
+ @include version.texi
+ @settitle GNU GRUB Manual @value{VERSION}
+ @c Unify all our little indices for now.

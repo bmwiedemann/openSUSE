@@ -1,0 +1,59 @@
+--- finger/sprint.c
++++ finger/sprint.c
+@@ -49,6 +49,7 @@
+   PERSON *pn;
+   WHERE *w;
+   int cnt;
++  int i;
+   char *p;
+   PERSON **list;
+ 
+@@ -73,6 +74,9 @@
+ #define	MAXREALNAME	20
+ #define MAXLOGINNAME    10
+ #define	MAXHOSTNAME	20
++  char *tmp = malloc( sizeof( char ) * MAXREALNAME );
++
++
+   printf ("%-*s %-*s %s %s\n", MAXLOGINNAME, "Login", MAXREALNAME,
+ 	  "Name", " Tty      Idle  Login Time  ",
+ 	  (oflag) ? "Office     Office Phone" : "Where");
+@@ -81,9 +85,35 @@
+       pn = list[cnt];
+       for (w = pn->whead; w != NULL; w = w->next)
+ 	{
+-	  printf ("%-*.*s %-*.*s ", MAXLOGINNAME, UT_NAMESIZE,
+-		  vs (pn->name), MAXREALNAME, MAXREALNAME,
+-		  pn->realname ? vs (pn->realname) : "");
++
++      if( strlen(pn->name) > MAXLOGINNAME )
++      {
++        strncpy( tmp, pn->name, MAXLOGINNAME);
++        printf( "%s ", tmp );
++      }
++      else
++      {
++        printf( "%s ", pn->name );
++        for( i = strlen( pn->name ); i < MAXLOGINNAME; i ++ )
++        {
++          printf( " " );
++        }
++      }
++
++      if( strlen(pn->realname) > MAXREALNAME )
++      {
++        strncpy( tmp, pn->realname, MAXREALNAME);
++        printf( "%s ", tmp );
++      }
++      else
++      {
++        printf( "%s ", pn->realname );
++        for( i = strlen( pn->realname ); i < MAXREALNAME; i ++ )
++        {
++          printf( " " );
++        }
++      }
++
+ 	  if (!w->loginat)
+ 	    {
+ 	      printf ("  *     *  No logins   ");

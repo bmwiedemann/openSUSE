@@ -1,0 +1,5 @@
+<package name="rubygem-rack-1_6" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-rack-1_6"/>
+</package>

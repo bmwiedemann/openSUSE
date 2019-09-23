@@ -1,0 +1,80 @@
+From 71a854f4eced28282df72e1b25888929799e8ee7 Mon Sep 17 00:00:00 2001
+From: David Edmundson <davidedmundson@kde.org>
+Date: Sun, 23 Jun 2019 14:48:30 +0200
+Subject: [PATCH 4/5] Client: Make handleUpdate aware of exposure changes
+
+The wl_surface can be destroyed whilst a render is happening. Calling
+wl_surface::frame after the window is reset can crash as wl_surface is
+null.
+
+Change-Id: I139a9b234cb6acba81d6c1d5fa58629904a25053
+---
+ src/client/qwaylandwindow.cpp | 8 ++++++++
+ src/client/qwaylandwindow_p.h | 4 ++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/src/client/qwaylandwindow.cpp b/src/client/qwaylandwindow.cpp
+index 76975b27..c6723aa7 100644
+--- a/src/client/qwaylandwindow.cpp
++++ b/src/client/qwaylandwindow.cpp
+@@ -72,6 +72,8 @@ Q_LOGGING_CATEGORY(lcWaylandBackingstore, "qt.qpa.wayland.backingstore")
+ 
+ QWaylandWindow *QWaylandWindow::mMouseGrab = nullptr;
+ 
++QReadWriteLock mSurfaceLock;
++
+ QWaylandWindow::QWaylandWindow(QWindow *window)
+     : QPlatformWindow(window)
+     , mDisplay(waylandScreen()->display())
+@@ -197,6 +199,7 @@ void QWaylandWindow::initWindow()
+ 
+ void QWaylandWindow::initializeWlSurface()
+ {
++    QWriteLocker lock(&mSurfaceLock);
+     init(mDisplay->createSurface(static_cast<QtWayland::wl_surface *>(this)));
+ }
+ 
+@@ -230,6 +233,7 @@ void QWaylandWindow::reset()
+     mSubSurfaceWindow = nullptr;
+     if (isInitialized()) {
+         emit wlSurfaceDestroyed();
++        QWriteLocker lock(&mSurfaceLock);
+         destroy();
+     }
+     mScreens.clear();
+@@ -1142,6 +1146,10 @@ void QWaylandWindow::requestUpdate()
+ void QWaylandWindow::handleUpdate()
+ {
+     // TODO: Should sync subsurfaces avoid requesting frame callbacks?
++    QReadLocker lock(&mSurfaceLock);
++    if (!isInitialized()) {
++        return;
++    }
+ 
+     if (mFrameCallback) {
+         wl_callback_destroy(mFrameCallback);
+diff --git a/src/client/qwaylandwindow_p.h b/src/client/qwaylandwindow_p.h
+index fe24224f..97884ba4 100644
+--- a/src/client/qwaylandwindow_p.h
++++ b/src/client/qwaylandwindow_p.h
+@@ -53,6 +53,8 @@
+ 
+ #include <QtCore/QWaitCondition>
+ #include <QtCore/QMutex>
++#include <QtCore/QReadWriteLock>
++
+ #include <QtGui/QIcon>
+ #include <QtCore/QVariant>
+ #include <QtCore/QLoggingCategory>
+@@ -277,6 +279,8 @@ private:
+     static QMutex mFrameSyncMutex;
+     static QWaylandWindow *mMouseGrab;
+ 
++    QReadWriteLock mSurfaceLock;
++
+     friend class QWaylandSubSurface;
+ };
+ 
+-- 
+2.22.0
+

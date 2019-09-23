@@ -1,0 +1,60 @@
+Index: horst-5.1/Makefile
+===================================================================
+--- horst-5.1.orig/Makefile
++++ horst-5.1/Makefile
+@@ -54,8 +54,8 @@ OBJS=						   \
+ 	radiotap/radiotap.o			   \
+ 	util.o					   \
+ 	wlan_util.o
+-LIBS=-lncurses -lm
+-CFLAGS+=-std=gnu99 -Wall -Wextra -g -I. -DVERSION=\"$(VERSION)\"
++LIBS= $(shell pkg-config --libs ncursesw) -lm
++CFLAGS+=-Wall -Wextra -fvisibility=hidden -g -I. -DVERSION=\"$(VERSION)\" $(shell pkg-config --cflags ncursesw) -D_GNU_SOURCE
+ 
+ ifeq ($(OSX),1)
+     PCAP=1
+Index: horst-5.1/display.c
+===================================================================
+--- horst-5.1.orig/display.c
++++ horst-5.1/display.c
+@@ -162,9 +162,7 @@ static void resize_display_all(void)
+ 	ioctl(0, TIOCGWINSZ, &winsz);	/* ioctl on STDIN */
+ 	if (winsz.ws_col && winsz.ws_row)
+ 		resizeterm(winsz.ws_row, winsz.ws_col);
+-	COLS = winsz.ws_col;
+-	LINES = winsz.ws_row;
+-
++/* resizeterm() updates COLS and LINES */
+ 	resize_display_main();
+ 
+ 	if (show_win)
+@@ -432,7 +430,7 @@ void init_display(void)
+ 	curs_set(0);	/* don't show cursor */
+ 	noecho();
+ 	nodelay(stdscr, TRUE);
+-	ESCDELAY = 25;	/* we don't use ESC sequences */
++	set_escdelay(25);	/* we don't use ESC sequences */
+ 
+ 	init_pair(1, COLOR_WHITE, COLOR_BLACK);
+ 	init_pair(2, COLOR_GREEN, COLOR_BLACK);
+Index: horst-5.1/main.c
+===================================================================
+--- horst-5.1.orig/main.c
++++ horst-5.1/main.c
+@@ -28,6 +28,7 @@
+ #include <err.h>
+ #include <sys/socket.h>
+ #include <net/if.h>
++#include <locale.h>
+ 
+ #include "main.h"
+ #include "util.h"
+@@ -621,6 +622,8 @@ int main(int argc, char** argv)
+ 	struct sigaction sigint_action;
+ 	struct sigaction sigpipe_action;
+ 
++    setlocale(LC_ALL, "");
++
+ 	list_head_init(&essids.list);
+ 	list_head_init(&nodes);
+ 	init_spectrum();

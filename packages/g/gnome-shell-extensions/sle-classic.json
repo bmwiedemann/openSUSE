@@ -1,0 +1,18 @@
+{
+    "parentMode": "user",
+    "stylesheetName": "gnome-classic.css",
+    "enabledExtensions": [
+        "apps-menu@gnome-shell-extensions.gcampax.github.com",
+        "places-menu@gnome-shell-extensions.gcampax.github.com",
+        "alternate-tab@gnome-shell-extensions.gcampax.github.com",
+        "launch-new-instance@gnome-shell-extensions.gcampax.github.com",
+        "window-list@gnome-shell-extensions.gcampax.github.com",
+        "workspace-indicator@gnome-shell-extensions.gcampax.github.com",
+        "sle-classic@suse.com"
+    ],
+    "panel": {
+        "left": ["activities"],
+        "center": [],
+        "right": ["a11y", "keyboard", "dateMenu", "aggregateMenu"]
+    }
+}

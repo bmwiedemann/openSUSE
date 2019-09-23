@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Fri Jul 19 13:25:18 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.6.3
+  * xinput 1.6.3 is now available, incorporating the best of the
+    last (checks calendar) four years. Most of this is buildsystem
+    tidyup that mattered back then but is less exciting now in
+    these modern times.
+    The only user-visible change is that xinput will now print a
+    warning when run against XWayland in the hope that this will
+    reduce the number of confused users or misguided bugs. Or
+    both, ideally.
+
+-------------------------------------------------------------------
+Tue Oct 20 14:33:16 UTC 2015 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.6.2:
+  A couple of minor patches accumulated over the years. One crasher
+  fix, one exit status correction, two fixes for the test-xi2 printf.
+  And some build system cleanups.
+
+-------------------------------------------------------------------
+Mon Sep 16 17:13:45 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.6.1:
+- Three new user-visible features:
+  + map-to-output now takes reflections and rotations into account
+  + test-xi2 now takes a --root flag for tracking events on the root window
+  + the environment variable XINPUT_XI2_VERSION can override the XI2 version
+    xinput registers 
+  On top of that, leak fixes and removal of buffering to get a more complete
+  ouput.
+
+-------------------------------------------------------------------
+Sat Apr  6 08:35:22 UTC 2013 - sndirsch@suse.com
+
+- added buildrequires for pkconfig(xfixes) to fix build (new dep)
+
+-------------------------------------------------------------------
+Fri May 18 06:37:51 UTC 2012 - cfarrell@suse.com
+
+- license update: MIT and HPND
+  See COPYING
+
+-------------------------------------------------------------------
+Wed May 16 13:16:46 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.6.0:
+  + Add --enable/--disable support.
+
+-------------------------------------------------------------------
+Tue May  8 12:11:47 UTC 2012 - coolo@suse.com
+
+- fixing pkgconfig requries to be true
+
+-------------------------------------------------------------------
+Tue Apr 17 07:30:12 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.5.99.901:
+  + Handle XA_CARDINAL as property type.
+  + Print the source ID for raw events (XI 2.2 only).
+  + Improvements to NVIDIA-specific output checking.
+  + User-visible changes: map-to-crtc was changed to map-to-output.
+  + Several bug fixes and cleanups.
+
+-------------------------------------------------------------------
+Sun Apr 15 12:00:15 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.5.99.1:
+  + Print usage when run with --help
+  + xinput: Assume 'list' by default if no args given. (same usage
+    as xrandr)
+  + Support touch raw events
+  + Support XI 2.1
+  + Add support for device-to-screen mapping
+  + Build system fixes.
+- Add pkgconfig(xinerama) and pkgconfig(xrandr) BuildRequires: new
+  upstream dependencies.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xinput from xorg-x11. Initial version: 1.5.3.
+

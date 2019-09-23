@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cafb0156a0a67152831258cfe24a5ffa</srcmd5>
+    <version>1.2.2</version>
+    <time>1530304423</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial package
+</comment>
+    <requestid>618705</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b50b47d5bfe1b0f1f992de32d3b86227</srcmd5>
+    <version>1.2.2</version>
+    <time>1533292640</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626941</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cbbf51ea1e619957814c691e21d3e9f4</srcmd5>
+    <version>1.3.0</version>
+    <time>1536679090</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634478</requestid>
+  </revision>
+</revisionlist>

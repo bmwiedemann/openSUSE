@@ -1,0 +1,13 @@
+Index: debhelper/Makefile
+===================================================================
+--- debhelper.orig/Makefile
++++ debhelper/Makefile
+@@ -38,7 +38,7 @@ VERSION=$(shell expr "`dpkg-parsechangel
+ 
+ PERLLIBDIR=$(shell perl -MConfig -e 'print $$Config{vendorlib}')/Debian/Debhelper
+ 
+-POD2MAN=pod2man --utf8 -c Debhelper -r "$(VERSION)"
++POD2MAN=pod2man -c Debhelper -r "$(VERSION)"
+ 
+ build: version debhelper.7
+ 	find . -maxdepth 1 -type f -perm /100 -name "dh*" \

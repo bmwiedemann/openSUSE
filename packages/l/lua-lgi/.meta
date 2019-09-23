@@ -1,0 +1,6 @@
+<package name="lua-lgi" project="openSUSE:Factory">
+  <title>Lua bindings to GObject libraries</title>
+  <description>Dynamic Lua binding to any library which is introspectable using gobject-introspection.
+Allows using GObject-based libraries directly from Lua.</description>
+  <devel project="devel:languages:lua" package="lua-lgi"/>
+</package>

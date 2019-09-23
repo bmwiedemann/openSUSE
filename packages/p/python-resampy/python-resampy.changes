@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Sat Aug 31 22:23:49 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * be more specific in %files section
+  * removed python devel
+
+- update to version 0.2.2:
+  * #68 Preserve array ordering (C- or F-contiguity) from input to
+    output.
+
+-------------------------------------------------------------------
+Fri Nov  2 11:35:12 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description.
+
+-------------------------------------------------------------------
+Fri Nov  2 04:50:01 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

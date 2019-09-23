@@ -1,0 +1,15 @@
+<package name="stan" project="openSUSE:Factory">
+  <title>Stream Analyzer</title>
+  <description>Stan is a small console application that works on all UNIX systems. It
+is able to generate several types of statistical information about a
+stream. A stream can be either standard input or given files. For
+example, stan can be used to analyze encrypted data or to measure the
+quality of a pseudo-random number generator, but there are probably
+hundreds of other situations where stan comes in handy.
+
+Stan supports three types of analysis: general statistics, pattern
+statistics, and bit statistics. By choosing intelligent values for each
+statistic, stan can give amazing results about a stream and is fun to
+work with.</description>
+  <devel project="Base:System" package="stan"/>
+</package>

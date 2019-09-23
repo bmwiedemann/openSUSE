@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=System;Monitor;
+Encoding=UTF-8
+Terminal=true
+Exec=saidar
+Type=Application
+StartupNotify=false
+Name=saidar
+GenericName=System Statistics Display

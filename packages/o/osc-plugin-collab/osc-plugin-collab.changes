@@ -1,0 +1,175 @@
+-------------------------------------------------------------------
+Wed Sep 11 14:17:25 UTC 2019 - vuntz@opensuse.org
+
+- Update to version 0.102:
+  + Fix configuring on python3
+  + Fix another str vs. bytes issue
+
+-------------------------------------------------------------------
+Fri May  3 14:26:17 UTC 2019 - vuntz@opensuse.org
+
+- Update to version 0.101:
+  + Port to python3
+  + Use https on the server
+
+-------------------------------------------------------------------
+Thu Mar 21 12:20:27 UTC 2019 - vuntz@opensuse.org
+
+- Update to version 0.100:
+  + Support new location for oscrc in ~/.config/osc/
+
+-------------------------------------------------------------------
+Sat Nov 18 21:48:54 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.99:
+  + Support diff in meson buildsystem based packages.
+
+-------------------------------------------------------------------
+Sun Jul 21 08:30:24 UTC 2013 - vuntz@opensuse.org
+
+- Update to version 0.98:
+  + Really port plugin to osc >= 0.140.1
+  + Remove compatibility code with very old versions of osc
+- Update Requires on osc to be versioned, since this now really
+  only works with a recent version of osc.
+
+-------------------------------------------------------------------
+Mon Jul  1 06:47:10 UTC 2013 - vuntz@opensuse.org
+
+- Update to version 0.97:
+  + Adapt code to osc's new plugin mechanism
+
+-------------------------------------------------------------------
+Thu Jan 10 08:41:16 UTC 2013 - vuntz@opensuse.org
+
+- Make build noarch.
+- Fix build on Fedora/RHEL/CentOS/ScientificLinux:
+  + Use Requires instead of Recommends since there are no
+    Recommends there.
+  + Package .pyc/.pyo files following the Fedora packaging policy
+    (except for ScientificLinux, which doesn't do that).
+
+-------------------------------------------------------------------
+Mon Jan  7 14:01:54 UTC 2013 - vuntz@opensuse.org
+
+- Update to version 0.96:
+  + Use new collab server.
+
+-------------------------------------------------------------------
+Thu Feb 23 14:02:33 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.95:
+  + Features:
+    - Add ugly workaround to extract files from .tar.xz tarballs
+    - Extract a diff of old and new configure.{ac,in} on update
+    - Supersede old requests on buildsubmit/forward (unless
+      --no-supersede is used)
+  + Fixes:
+    - List requests that are in state 'review'
+    - Improve todo performance
+    - Use a cache when listing requests to improve performance
+    - Fix crash in todo for packages with no upstream version
+    - Use UTC for timezone in .changes entries
+    - Change forwarded request description to the one from webui
+    - Reset Release tag to 0 instead of 1 on updates
+- Add Recommends for xz, so we can extract files from .tar.xz
+  tarballs.
+
+-------------------------------------------------------------------
+Thu Jun 30 17:21:22 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.94:
+  + Features:
+    - Add comments:
+      . new 'comment', 'commentset', 'commentunset',
+        'listcommented' commands to edit/view comments on packages
+      . make 'todo' display packages with a comment, and add
+        --ignore-comments and --exclude-commented options to
+        control this behavior
+      . display comments after 'setup'/'update', unless
+        --ignore-comments is used
+    - Add --details/--no-details options and collab_details config
+      option (default to False) to display more details in 'todo'
+    - 'update' command improvements:
+      . Stop recompressing tarballs
+      . Update Source tag in .spec on update to the tarball URL
+      . Drop the "(Version XYZ)" part of the .spec header
+    - Add --nobranch option to 'setup'/'update' commands
+    - Unreserve the package after successful 'buildsubmit'
+    - Add collab_do_package_tracking config option (default to
+      False)
+  + Fixes:
+    - Make 'isreserved' work with multiple packages
+
+-------------------------------------------------------------------
+Tue Jun 28 12:52:45 CEST 2011 - vuntz@opensuse.org
+
+- Add quilt Recommends, as the plugin tells the user to use quilt
+  to check patches.
+- Update Url tag to point to new wiki page.
+
+-------------------------------------------------------------------
+Mon May 30 18:40:09 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.93:
+  + Fixes:
+    - Handle httplib.BadStatusLine exception in build
+    - Fix bug that was creating inconsistent state in checkout
+
+-------------------------------------------------------------------
+Fri Sep 10 18:13:49 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.92:
+  + Fixes:
+    - Do not create empty helper files for NEWS/ChangeLog
+    - Use updated build state names from OBS ('signing' was added,
+      'expansion error' was renamed to 'unresolved')
+    - Fix crash when list of reserved packages cannot be fetched
+    - Make "osc collab forward" work with osc 0.129
+
+-------------------------------------------------------------------
+Sun Jan 17 20:04:05 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.91:
+  + Features:
+    - Use the new scheduler state for build/buildsubmit to
+      determine if the build status can be trusted or not.
+  + Fixes:
+    - Fix addition of osc-collab.* files to exclude glob.
+
+-------------------------------------------------------------------
+Mon Sep 14 19:22:13 CEST 2009 - vuntz@opensuse.org
+
+- This is the old osc-gnome plugin, split from osc-plugins-gnome,
+  and renamed to osc-collab.
+- Update to version 0.90:
+  + Features:
+    - Rename to osc collab and do not refer to anything GNOME
+      specific anywhere
+    - Support delta in non-link packages
+    - Remove potential trailing slash from packages passed as args
+      for convenience when used with autocompletion
+    - Make the config options work per apiurl
+    - Make it possible to use more than one repo at the same time
+    - Display against which repo the build is done
+    - Make setup/update branch from the devel project
+    - Take into account the version in devel project for
+      todo/update
+    - Use openSUSE:Factory by default instead of GNOME:Factory
+    - Autodetect default repository for builds
+    - Add --nodevelproject option for the relevant commands
+    - Add --version command
+  + Fixes:
+    - Improve upstream tarball basename detection in when the
+      basename of the upstream tarball is not in the URL, but in
+      the query fields
+    - Fix warning about tag in Source always appearing
+    - Do not crash with osc from trunk
+    - Better handling of update when package is already updated
+    - Fix listreserved to not list reservations from all projects
+    - Substitute macros in %define lines too
+    - Remove old cache files
+    - Fix parsing of empty list options in ~/.oscrc
+    - Improve help message
+    - Code cleanups
+

@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3f61e89147df8b0a5a64baf9fa1f3076</srcmd5>
+    <version>0.001010</version>
+    <time>1368772435</time>
+    <user>coolo</user>
+    <comment>new dependency of B:Hooks:EndOfScope</comment>
+    <requestid>175842</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3f61e89147df8b0a5a64baf9fa1f3076</srcmd5>
+    <version>0.001010</version>
+    <time>1379663846</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6dc3a597cb5ab0fbbaa1b025ab796556</srcmd5>
+    <version>0.001011</version>
+    <time>1386333927</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208424</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>6dc3a597cb5ab0fbbaa1b025ab796556</srcmd5>
+    <version>0.001011</version>
+    <time>1409302488</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>20a19a0482bd8d089edeaf34bcf82f29</srcmd5>
+    <version>0.001012</version>
+    <time>1474886151</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424232</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>da9210d3a4a682fd7f8ad147c7a96d25</srcmd5>
+    <version>0.001013</version>
+    <time>1478780824</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439446</requestid>
+  </revision>
+</revisionlist>

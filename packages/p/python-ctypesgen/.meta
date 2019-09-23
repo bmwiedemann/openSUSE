@@ -1,0 +1,6 @@
+<package name="python-ctypesgen" project="openSUSE:Factory">
+  <title>Pure Python Wrapper Generator for ctypes</title>
+  <description>This project automatically generates ctypes wrappers for header files written in C.</description>
+  <devel project="devel:languages:python" package="python-ctypesgen"/>
+  <url>http://code.google.com/p/ctypesgen/</url>
+</package>

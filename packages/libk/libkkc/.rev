@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bd5fc0ebeae00e007e3eaed5424ce385</srcmd5>
+    <version>0.2.4.git20130625</version>
+    <time>1373279775</time>
+    <user>coolo</user>
+    <comment>new Japanese inputmethod engine. fixed libkkc()(64bit) missing in typelib-1_0-kkc problem.</comment>
+    <requestid>182269</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>bd5fc0ebeae00e007e3eaed5424ce385</srcmd5>
+    <version>0.2.4.git20130625</version>
+    <time>1379662990</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2c6ac443fb23c51ac313e22e6ddc4511</srcmd5>
+    <version>0.3.1</version>
+    <time>1383144259</time>
+    <user>scarabeus_factory</user>
+    <comment>update version 0.3.1 (forwarded request 204922 from MargueriteSu)</comment>
+    <requestid>204923</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3df8d3343744d2fe1f5746aac4068c99</srcmd5>
+    <version>0.3.3</version>
+    <time>1402403947</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236660</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3df8d3343744d2fe1f5746aac4068c99</srcmd5>
+    <version>0.3.3</version>
+    <time>1409301603</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2729a4b22e59d78a7ed3577423c5dbac</srcmd5>
+    <version>0.3.4</version>
+    <time>1410326923</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248214</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0b3900830fa852416d214e8ea729f87a</srcmd5>
+    <version>0.3.5+git20150522.650f0d6</version>
+    <time>1440658652</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>326598</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>470914c29e4e67b64a8a616a1ae6fa96</srcmd5>
+    <version>0.3.5+git20150522.650f0d6</version>
+    <time>1491566077</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483110</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>260f866011d54fb2aeef4d5ac7c64970</srcmd5>
+    <version>0.3.5+git20171220.7d365e1</version>
+    <time>1518025365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573707</requestid>
+  </revision>
+</revisionlist>

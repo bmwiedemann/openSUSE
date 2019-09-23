@@ -1,0 +1,429 @@
+-------------------------------------------------------------------
+Mon Sep  2 12:36:11 UTC 2019 - David Liedke <liedke@rz.uni-mannheim.de>
+
+-Update to version 1.2.6
+ -issue#101: MySQL 8 has retired 'my_bool' type
+ -issue#104: Spine should report which threads are outstanding
+ -issue#105: Spine should include 'Process[<id>]' in standard logging
+ -issue#107: Log Buffer is too small to handle some output
+ -issue#108: Once an SNMP timeout is reached, snmp_get does not honor
+             include_host
+ -issue#109: Initial declarations inside for loop cause compile errors
+ -issue#110: When compiling, 'directive output may be truncated'
+             messages can appear
+ -issue#112: INSTALL instructions have typo in bootstrap command
+
+-------------------------------------------------------------------
+Tue Jul 16 06:45:51 UTC 2019 - David Liedke <liedke@rz.uni-mannheim.de>
+
+-Update to version 1.2.5
+ -issue: Improve detection of MySQL vs. MariaDB client library requirement
+ -issue#98: Checking type in poller.c causes compiler error
+
+
+-------------------------------------------------------------------
+Thu Jun 13 06:01:39 UTC 2019 - David Liedke <liedke@rz.uni-mannheim.de>
+
+-Update to version 1.2.4
+ * issue#92: Add Data Source ID to "Empty result' error messages
+ * issue#94: Increase default 'results_buffer' size to 2048 and MySQL
+             max buffer to 131072 bytes 
+
+-------------------------------------------------------------------
+Mon Apr  1 08:29:05 UTC 2019 - David Liedke <liedke@rz.uni-mannheim.de>
+
+-Update to version 1.2.3
+ * issue#76: Spine unhandled exception signal
+ * issue: More recent versions of MariaDB require different client library
+
+-------------------------------------------------------------------
+Mon Feb 25 07:08:55 UTC 2019 - David Liedke <liedke@rz.uni-mannheim.de>
+
+-Update to version 1.2.2
+ * feature: release to match Cacti release
+
+-------------------------------------------------------------------
+Mon Jan 21 07:08:04 UTC 2019 - liedke@rz.uni-mannheim.de
+
+-Update to version 1.2.1
+ * feature: release to match Cacti release 
+
+-------------------------------------------------------------------
+Thu Jan  3 07:56:00 UTC 2019 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.2.0
+  * feature: Allow threads to be set a Data Collector level
+  * issue#50: make fails on Debian 7 attempting to locate clock_gettime
+  * issue#53: Improved escaping when updating database records
+  * issue#54: Spine should always log if ICMP fails
+  * issue#58: When updating snmp_sysLocation, text can become truncated
+  * issue#63: Automatically reduce device threads when number of data
+              sources does not require it 
+
+-------------------------------------------------------------------
+Mon Apr 16 05:53:32 UTC 2018 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.38
+  * feature: release to match Cacti release 
+
+-------------------------------------------------------------------
+Mon Mar 26 06:26:20 UTC 2018 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.37
+  -issue: Extra long snmp_sysObjectID's generate SQL errors
+
+-------------------------------------------------------------------
+Mon Feb 26 08:09:05 UTC 2018 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.36
+  -issue#49: Re-Index update query failed due to lack of escaping
+
+-------------------------------------------------------------------
+Mon Feb 12 06:48:34 UTC 2018 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.35
+  -issue#48: Availability check none triggers snmp system check that
+             causes device to be ignored
+
+-------------------------------------------------------------------
+Tue Feb  6 06:41:51 UTC 2018 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.34
+  * feature: release to match Cacti release 
+
+-------------------------------------------------------------------
+Tue Jan 23 06:59:12 UTC 2018 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.33
+  * feature: release to match Cacti release
+
+-------------------------------------------------------------------
+Mon Jan 22 06:44:07 UTC 2018 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.32
+  * feature: release to match Cacti release 
+
+-------------------------------------------------------------------
+Wed Jan 17 06:56:06 UTC 2018 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.31
+  -issue#15: Spine cause CPU usage up to 100%
+  -issue#32: Support noAuthNoPriv in Spine
+  -issue#34: Re-introduce check for relocatable Net-SNMP and
+             development files
+  -issue#35: SNMP OID range checks cause some snmpget's to fail
+  -issue#38: SNMP Ping timeouts not reported properly
+  -issue#39: Spine should use same logging format as Cacti
+  -issue#41: Spine cause CPU usage up to 100%
+  -issue#42: Boost table keeps populating with boost disabled
+
+-------------------------------------------------------------------
+Thu Jan  4 07:34:38 UTC 2018 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.30
+  * feature: release to match Cacti release 
+
+-------------------------------------------------------------------
+Wed Dec 27 11:33:03 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.29
+  * issue#39: Have spine match cacti_log function
+
+-------------------------------------------------------------------
+Mon Nov 20 07:23:45 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.28
+  * feature: release to match Cacti release 
+
+-------------------------------------------------------------------
+Mon Oct 23 05:46:57 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.27
+  * feature: release to match Cacti release 
+
+-------------------------------------------------------------------
+Mon Oct 16 06:07:16 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.26
+  * feature: release to match Cacti release
+
+- Update to version 1.1.25
+  * feature: release to match Cacti release 
+
+-------------------------------------------------------------------
+Mon Sep 18 06:25:59 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.24
+  * feature: release to match Cacti release
+
+-------------------------------------------------------------------
+Tue Sep 12 11:16:47 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.23
+  * feature: release to match Cacti release
+
+- Update to version 1.1.22
+  * feature: release to match Cacti release
+ 
+-------------------------------------------------------------------
+Tue Sep  5 06:21:03 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.21
+  * feature: release to match Cacti release
+
+- Update to version 1.1.20
+  * issue#28: UDP and TCP ping issues 
+
+-------------------------------------------------------------------
+Mon Aug 21 17:39:06 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.19
+  * feature: release to match Cacti release
+
+- Update to version 1.1.18
+  * issue: Sort devices by polling time to allow long running
+    devices to go first
+
+-------------------------------------------------------------------
+Tue Aug 15 07:07:20 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.17
+  * issue: Increase logging level for POPEN timeouts 
+
+-------------------------------------------------------------------
+Tue Aug  1 06:12:04 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.16
+  * feature: release to match Cacti release
+
+-------------------------------------------------------------------
+Mon Jul 24 19:46:04 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.15
+  * feature: release to match Cacti release 
+
+-------------------------------------------------------------------
+Mon Jul 24 10:40:04 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.14
+  * feature: release to match Cacti release 
+
+-------------------------------------------------------------------
+Fri Jul 14 06:19:52 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.13
+  * issue: Script timeout should start after semaphore releases
+  * issue: Don't include line breaks in Syslog
+
+-------------------------------------------------------------------
+Wed Jul  5 07:10:59 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.12
+  * feature: release to match Cacti release
+
+- Update to version 1.1.11
+  * feature: release to match Cacti release
+
+-------------------------------------------------------------------
+Mon Jun 12 06:02:18 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.10
+  * feature: release to match Cacti release
+
+-------------------------------------------------------------------
+Mon Jun  5 07:12:21 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.9
+  * feature: release to match Cacti release
+
+- Update to version 1.1.8
+  * issue#21: Errors when snmp_sysLocation contains a single quote 
+
+-------------------------------------------------------------------
+Mon May 22 05:52:19 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.7
+  * feature: release to match Cacti release 
+
+-------------------------------------------------------------------
+Mon May  8 05:53:25 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.6
+  * issue#15: Spine can cause high CPU utilization due to
+              semaphore implementation
+  * issue#11: Spine reports SNMP timeouts in some cases when
+              gathering multiple OID in one request
+
+-------------------------------------------------------------------
+Wed Apr 26 05:53:56 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.5
+  * feature: release to match Cacti release 
+
+-------------------------------------------------------------------
+Mon Apr 24 05:49:05 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.4
+  * feature: release to match Cacti release 
+
+-------------------------------------------------------------------
+Sun Apr 16 07:23:53 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.3
+  * feature: release to match Cacti release
+
+-------------------------------------------------------------------
+Mon Apr  3 09:07:20 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.2
+  * issue#13: Spine does not compile with --enable-lcap
+  * issue#16: Spine not handling debug devices correctly
+
+-------------------------------------------------------------------
+Tue Mar 28 06:10:27 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.1.1
+  * feature: release to match Cacti release
+
+-------------------------------------------------------------------
+Tue Mar 21 14:17:17 UTC 2017 - joop.boonen@opensuse.org
+
+- Update to version 1.1.0
+  * feature: release to match Cacti release
+
+-------------------------------------------------------------------
+Wed Mar 15 06:46:05 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.0.6
+  * feature: release to match Cacti release
+
+-------------------------------------------------------------------
+Mon Mar 13 07:35:36 UTC 2017 - liedke@rz.uni-mannheim.de
+
+- Update to version 1.0.5
+  * issue#7: remove database name not respected 
+
+-------------------------------------------------------------------
+Tue Feb 28 09:24:36 UTC 2017 - joop.boonen@opensuse.org
+
+- Update to version 1.0.4
+  * feature: release to match Cacti release
+
+-------------------------------------------------------------------
+Fri Feb 24 13:49:09 UTC 2017 - joop.boonen@opensuse.org
+
+- Update to version 1.0.3
+  * issue#6: Spine accepts arbitrary polling modes
+
+- Update to version 1.0.2
+  * feature: release to match Cacti release
+
+- Update to version 1.0.1
+  * bug:With enough make jobs, help2man will fail if help2man is run before spine has been built
+
+- Update to version 1.0.0
+  * feature: Track per host polling time
+  * feature: Collect System Mib Information
+  * feature: Place collection timing into host table
+  * feature: Support snmpContextEngineID
+  * feature: Change all references of Host to Device
+  * bug:0001415: spine does not handle log_perror
+  * bug#0002220: spine/cacti patch to allow SNMP_polling decices' hostnames like user@host:port
+  * bug#0002234: Wrong alphanumeric value got from Spine SNMP poller
+  * bug#0002651: False Positive Down status with snmpv3
+  * bug#0002674: Segmentation fault in Spine during polling host
+
+-------------------------------------------------------------------
+Mon May  9 09:28:13 UTC 2016 - liedke@rz.uni-mannheim.de
+
+- Update to version 0.8.8h
+  * bug:0002659: wrong information about spine setup for icmps
+  * bug: Removed requirement for building man page, deferred to 1.0
+
+- Update to version 0.8.8g
+  * bug:0002380: please build man page for spine
+  * bug:0002610: Spine is trying to use mysql results after data
+    being freed
+  * bug:0002639: Spine does not respect snmp_retries from the
+    database
+  * bug:0002640: Spine crashes randomly while polling using
+    multiple threads on one device
+  * bug:0002549: Spine: hasCaps() always returns FALSE
+  * bug:0002638: Spine: ping_udp() uses uninitialised socket timeout
+  * bug:0002654: On RHEL 6.5, spine ./configure builds Makefile
+    without crypto support
+
+-------------------------------------------------------------------
+Sun Nov  1 13:49:40 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.8.8f
+  * bug:0002604: cacti-spine, configure script ignores LDFLAGS in 
+    certain situations
+- Changes from version 0.8.8e
+  * bug#0002185: Multiple memory leaks found in spine 
+  * bug#0002398: Buffer overflow
+  * bug#0002447: Building spine on Debian Jessie (testing) fails 
+  * bug#0002536: Spine segfaults when 18k+ hosts are to be pulled
+  * bug#0002576: Call to a non-existent column of the database in poller.c
+  * bug#0002578: spine doesn't compile on ubuntu 12.04
+  * bug#0002585: Spine: buffer overflow in logging when 
+    RESULTS_BUFFER>LOGSIZE can SEGV
+  * bug#0002588: Spine "is_numeric" incorrectly returns TRUE for some
+    hexadecimal values 
+- Remove systemd buildrequires; unneeded
+
+-------------------------------------------------------------------
+Thu Dec 25 13:51:31 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 0.8.8c
+  + No changelog entry for version 0.8.8c
+- Use download Url as source
+
+-------------------------------------------------------------------
+Mon Aug 12 07:15:48 UTC 2013 - aldemir.akpinar@gmail.com
+
+- New Version: 0.8.8b 
+
+-------------------------------------------------------------------
+Mon Apr 30 14:44:51 UTC 2012 - cfarrell@suse.com
+
+- license update: LGPL-2.1+
+  Use SPDX format for license strings (http://www.spdx.org/licenses)
+
+-------------------------------------------------------------------
+Mon Apr 30 09:32:14 UTC 2012 - aldemir.akpinar@airties.com
+
+- New Version: 0.8.8a
+- Add source as bz2 
+
+-------------------------------------------------------------------
+Mon Apr  9 06:47:00 UTC 2012 - aldemir.akpinar@airties.com
+
+- Version 0.8.8 
+
+-------------------------------------------------------------------
+Wed Dec 14 07:40:45 UTC 2011 - aldemir.akpinar@airties.com
+
+- Upgrade to 0.8.7i 
+
+-------------------------------------------------------------------
+Wed Oct  5 06:43:45 UTC 2011 - aldemir.akpinar@airties.com
+
+- Upgrade to new version.
+
+-------------------------------------------------------------------
+Mon Jun 13 06:48:55 UTC 2011 - aldemir.akpinar@airties.com
+
+- Changed Requires line to comply with the changes on cacti-PA 
+
+-------------------------------------------------------------------
+Fri Jun 10 19:36:11 UTC 2011 - aldemir.akpinar@airties.com
+
+- Changed cactid name to spine and made it installable with cacti-PA 
+
+------------------------------------------------------------
+Tue Jun 29 15:03:45 CEST 2010 - boris@steki.net
+
+- Updated to new version
+- Many bugs fixed
+  Changes can be found in /usr/share/doc/packages/cacti-cactid/Changelog

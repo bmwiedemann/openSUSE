@@ -1,0 +1,30 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Thu, 25 Oct 2018 10:02:43 +0200
+Subject: Fix multipath configuration with user_friendly_names and/or aliases
+References: bsc#1111207, LTC#171953, bsc#1125218, LTC#175465
+Upstream: merged
+Git-commit: 4b4dacfddd456a51c04a878e31d4544223ea9701
+
+The setup script incorrectly uses the name of the multipath device
+instead of its WWID (which can be retrieved from the device mapper
+UUID simply by removing the "mpath-" prefix).
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+---
+ init/setup-kdump.functions |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/init/setup-kdump.functions
++++ b/init/setup-kdump.functions
+@@ -962,9 +962,9 @@ function kdump_map_mpath_wwid()
+     local f _dir _uuid _wwid _dev
+     for f in /sys/block/*/dm/uuid ; do
+ 	eval "_uuid=\$(<$f)" 2>/dev/null
+-	[[ "$_uuid" = mpath-* ]] || continue
++	_wwid="${_uuid#mpath-}"
++	[ "$_wwid" != "$_uuid" ] || continue
+ 	_dir="${f%/dm/uuid}"
+-	_wwid=$(<"$_dir"/dm/name)
+ 	_dev=$(<"$_dir"/dev)
+ 	eval kdump_mpath_wwid_${_dev/:/_}=\$_wwid
+     done

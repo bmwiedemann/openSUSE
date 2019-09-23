@@ -1,0 +1,215 @@
+-------------------------------------------------------------------
+Sun Jun  2 08:19:22 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Fix license tag:
+  * GPL-2.0-or-later => GPL-3.0-or-later with two exceptions:
+    - grc/gen_osmosdr_blocks.py => GPL2.0+
+    - swig/osmosdr_swig.i => no license specified
+
+-------------------------------------------------------------------
+Sun Mar 24 22:30:54 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Fixed build with Boost 1.69
+
+-------------------------------------------------------------------
+Thu Jan 17 12:29:08 UTC 2019 - mardnh@gmx.de
+
+- User correct license tag:
+  GPL-2.0-only => GPL-2.0-or-later
+
+-------------------------------------------------------------------
+Wed Jan  9 01:56:29 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Limit %fdupes call to not cross the /usr subvolume boundary.
+- Adjust RPM groups.
+
+-------------------------------------------------------------------
+Tue Jan  8 09:48:45 UTC 2019 - mardnh@gmx.de
+
+- Add patches:
+  * 0001-update-for-new-API-and-multi-XTRX-support.patch
+- Remove patches:
+  * fix-xtrx.patch
+
+-------------------------------------------------------------------
+Sun Dec 30 11:13:23 UTC 2018 - mardnh@gmx.de
+
+- Build with support for XTRX
+- Add patches:
+  * 0001-add-xtrx-support.patch
+  * 0002-cmake-use-CMAKE_CURRENT_SOURCE_DIR-instead-of-CMAKE_.patch
+  * 0003-add-antenna-AUTO-selection.patch
+  * 0004-Add-XTRX-to-README-and-help-output.patch
+  * 0005-XTRX-add-ability-to-specify-device-and-DSP-freq.patch
+  * fix-xtrx.patch
+
+-------------------------------------------------------------------
+Sat Oct 13 20:16:07 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.1.4+git.20180815:
+  * bladerf: update bladerf to catch up with libbladeRF
+  * bladeRF: add support for biastee on bladeRF micro
+  * bladerf: remove vestigial map
+  * bladerf: use bladerf_get_channel_count where available
+  * bladerf: compatibility with older libbladeRF
+  * bladerf: add support for MIMO
+  * bladerf_common: tweak buffer/transfer settings
+  * bladerf: add set_rx_mux_mode functionality
+  * bladerf: add firmware loopback mode
+  * bladerf_common: add agc= option to set gain mode
+  * bladerf: use nchan option to enable multi-channels
+  * bladerf: fix get_gain_names population
+  * bladerf: formatting/style fixes on .h files
+  * bladerf: formatting/consistency fixes
+  * bladerf_common: formatting/whitespace/consistency
+  * bladerf: replace bladerf_module with bladerf_direction
+  * bladerf_common: cleanup on set_gain_mode
+  * bladeRF: fix identification of channels
+  * bladeRF: remove set_bb_gain
+  * update copyright dates
+  * formatting/wording tweaks
+  * bladerf2: add get_gain_mode and set_gain_mode
+  * WIP: libbladeRF rev2 refactoring etc
+  * WIP: more port work
+  * bladerf: initial support for new bladeRF hardware
+  * link with pthreads only when using gcc
+  * Remove workaround for gnuradio bug #528 as it has been fixed in 3.7.9.1
+
+-------------------------------------------------------------------
+Tue Jun 26 16:21:36 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.1.4+git.20180617:
+  * Fix compilation with boost-1.67
+  * freesrp: whitespace fixes
+
+-------------------------------------------------------------------
+Thu Jun 15 17:38:53 UTC 2017 - wk@ire.pw.edu.pl
+
+- Update to version 0.1.4+git.20170611:
+  * freesrp - add support for multiple devices
+  * rtl,rtl_tcp - add bias=0|1 parameter to contro l bias tee
+  * RTL-TCP - convert to single class model
+  * RTL-SDR - correct _lut to float[] to reduce size by a factor of 256
+
+-------------------------------------------------------------------
+Thu May 25 18:21:30 UTC 2017 - mardnh@gmx.de
+
+- Use %cmake macro
+
+-------------------------------------------------------------------
+Mon May 08 20:10:02 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.1.4+git.20170421:
+  * soapy - check for freq corr before invoking
+  * soapy: support newer getSampleRateRange() API call
+  * soapy: support set/getFrequencyCorrection() API
+  * soapy - correct constant for frequency correction
+
+-------------------------------------------------------------------
+Wed Apr 19 05:34:42 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.1.4+git.20170418:
+  * Add support for FreeSRP
+- Use package-meta for tar_scm service and add git-core
+  to BuildRequires
+
+-------------------------------------------------------------------
+Sat Apr 15 08:01:20 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.1.4+git.20170227:
+- Use pkgconfig-style for BuildRequires
+- Rename %soname to %sover to better reflect its use
+- Fix build for all 64-bit platforms
+- Build development documentation
+- Add _service file
+- Run spec-cleaner
+- Support SoapySDR
+
+-------------------------------------------------------------------
+Tue Feb 16 11:09:30 UTC 2016 - dl8fcl@t-online.de
+
+- Support for Airspy,BladeRF and Mirisdr added
+
+-------------------------------------------------------------------
+Sun Jan 17 09:45:01 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 0.1.4_137
+
+-------------------------------------------------------------------
+Thu Dec 25 12:13:18 UTC 2014 - dl8fcl@darc.de
+
+- update to version 0.1.4_65_gafac116
+
+-------------------------------------------------------------------
+Fri Sep  5 09:54:51 UTC 2014 - dl8fcl@darc.de
+
+- update to version 0.1.3_53_g959e7d2
+
+-------------------------------------------------------------------
+Sat Nov  2 14:09:56 UTC 2013 - dl8fcl@darc.de
+
+- update to version 0.1.0_70_gf6f3b53
+  Support for HackRF Jawbreaker added. Untested,
+  reports are welcome 
+
+-------------------------------------------------------------------
+Sun Sep 22 15:01:29 UTC 2013 - dl8fcl@darc.de
+
+- update to version 0.1.0_git20130918 
+
+-------------------------------------------------------------------
+Sun Aug 18 16:01:03 UTC 2013 - dl8fcl@darc.de
+
+- Requires in spec file corrected 
+
+-------------------------------------------------------------------
+Sat Aug 17 14:09:44 UTC 2013 - dl8fcl@darc.de
+
+- Support for sysmocom OsmoSDR added
+  untested, reports are welcome 
+
+-------------------------------------------------------------------
+Wed Aug 14 07:16:37 UTC 2013 - dl8fcl@darc.de
+
+- update to version 0.1.0_git20130814
+- Support for funcube dongle pro+ added
+  untested, reports are welcome
+
+-------------------------------------------------------------------
+Mon Aug 12 08:12:38 UTC 2013 - dl8fcl@darc.de
+
+- Osmocom IQ Imbalance Correction enabled 
+
+-------------------------------------------------------------------
+Tue Jul 30 16:16:54 UTC 2013 - dl8fcl@darc.de
+
+- update to version 0.1.0_git20130730 
+
+-------------------------------------------------------------------
+Sun Jul 28 13:56:08 UTC 2013 - dl8fcl@darc.de
+
+- update to version 0.1.0_git20130728
+  changes for gnuradio-3.7.0
+
+-------------------------------------------------------------------
+Mon May 13 22:00:46 UTC 2013 - dl8fcl@darc.de
+
+- update to version git20130509
+  further enhancements 
+
+-------------------------------------------------------------------
+Mon May  6 13:14:03 UTC 2013 - lnt-sysadmin@lists.lrz.de
+
+- fixed BuildRequires, Files and Post for python-gr-osmosdr package
+
+-------------------------------------------------------------------
+Sun Apr 28 19:08:51 UTC 2013 - dl8fcl@darc.de
+
+- update to version git20130428
+  further enhancements and new blocks 
+
+-------------------------------------------------------------------
+Fri Mar 22 22:50:06 UTC 2013 - dl8fcl@darc.de
+
+- import into the hamradio repository 
+

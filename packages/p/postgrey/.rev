@@ -1,0 +1,278 @@
+<revisionlist>
+  <revision rev="1" vrev="4">
+    <srcmd5>44c2ff80be48eb09cefdbf117764cf48</srcmd5>
+    <version>1.31</version>
+    <time>1207363921</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="7">
+    <srcmd5>579a6e83aa5fff20d5adf4e0688bb78b</srcmd5>
+    <version>1.31</version>
+    <time>1207857847</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1fec00063d244f1d8ba8691ca4a7b209</srcmd5>
+    <version>1.32</version>
+    <time>1219363558</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="9">
+    <srcmd5>1c79844a02e92bb96e807d959708f0cf</srcmd5>
+    <version>1.32</version>
+    <time>1234056293</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="11">
+    <srcmd5>1c79844a02e92bb96e807d959708f0cf</srcmd5>
+    <version>1.32</version>
+    <time>1234056293</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="12">
+    <srcmd5>90c84c6fb24b840afbe4be1cc599567c</srcmd5>
+    <version>1.32</version>
+    <time>1260973329</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/postgrey based on submit request 26670 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>19e144a792703362a8c8a5b95a6744d5</srcmd5>
+    <version>1.32</version>
+    <time>1268925764</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="15">
+    <srcmd5>19e144a792703362a8c8a5b95a6744d5</srcmd5>
+    <version>1.32</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>19e144a792703362a8c8a5b95a6744d5</srcmd5>
+    <version>1.32</version>
+    <time>1278678611</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>c03e569df1775ea67204443a2b112460</srcmd5>
+    <version>1.33</version>
+    <time>1295288621</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58490 from user darix
+</comment>
+    <requestid>58490</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>ddc7018735bfe35d6788176ab837eae5</srcmd5>
+    <version>1.33</version>
+    <time>1295288631</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58490
+</comment>
+  </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>ddc7018735bfe35d6788176ab837eae5</srcmd5>
+    <version>1.33</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>2cf3338b3bf1e7aa6834062c80e1c2fc</srcmd5>
+    <version>1.33</version>
+    <time>1301645061</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65671 from user coolo
+</comment>
+    <requestid>65671</requestid>
+  </revision>
+  <revision rev="14" vrev="16">
+    <srcmd5>b304c8ef3d45bc85082bc0080e38ad71</srcmd5>
+    <version>1.33</version>
+    <time>1301645072</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65671
+</comment>
+  </revision>
+  <revision rev="15" vrev="18">
+    <srcmd5>b304c8ef3d45bc85082bc0080e38ad71</srcmd5>
+    <version>1.33</version>
+    <time>1319182366</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="19">
+    <srcmd5>ceefb87516cf81e2ab0176187840d03e</srcmd5>
+    <version>1.33</version>
+    <time>1323193964</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="21">
+    <srcmd5>ceefb87516cf81e2ab0176187840d03e</srcmd5>
+    <version>1.33</version>
+    <time>1340184014</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="23">
+    <srcmd5>ceefb87516cf81e2ab0176187840d03e</srcmd5>
+    <version>1.33</version>
+    <time>1359109946</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5ae7b92d17db3a0c669da489cbb95014</srcmd5>
+    <version>1.34</version>
+    <time>1366730895</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>172896</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>d0aabb7a22318142c43fcc2789babe64</srcmd5>
+    <version>1.34</version>
+    <time>1370430484</time>
+    <user>coolo</user>
+    <comment>- fix multiple bugs in systemd unit file, syslog.target must 
+  not be used neither Requires but Wants (forwarded request 176967 from elvigia)</comment>
+    <requestid>176991</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>e06996a2b94a384013bf74f25f0a47f3</srcmd5>
+    <version>1.34</version>
+    <time>1376213251</time>
+    <user>scarabeus_factory</user>
+    <comment>Added missing perl-Net-DNS is needed for postgreyreport (forwarded request 186398 from worldcitizen)</comment>
+    <requestid>186425</requestid>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>e06996a2b94a384013bf74f25f0a47f3</srcmd5>
+    <version>1.34</version>
+    <time>1379664057</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>1eaa27d89de48ad80f38a9b0782fd406</srcmd5>
+    <version>1.34</version>
+    <time>1381474892</time>
+    <user>scarabeus_factory</user>
+    <comment>- fix postgre-1.34-config.path to include change of name and
+  location of whitelist_recipients 
+- use %{_unitdir} instead of fixed dir name for systemd unit file (forwarded request 202464 from jsjhb)</comment>
+    <requestid>202767</requestid>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>8d2a13ba0758eceb365f3291a1c765b1</srcmd5>
+    <version>1.34</version>
+    <time>1392300160</time>
+    <user>coolo</user>
+    <comment>- fix files section in spec file: submit from Nov 20 2012 removed
+  two directories  (bnc#862552) (forwarded request 221814 from jsjhb)</comment>
+    <requestid>222013</requestid>
+  </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>8d2a13ba0758eceb365f3291a1c765b1</srcmd5>
+    <version>1.34</version>
+    <time>1409302736</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3c7d456c7663993d49fc2dc08faf5da9</srcmd5>
+    <version>1.35</version>
+    <time>1422521774</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282947</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>c3cdd9f2367c417daeb213f4ebb07bd6</srcmd5>
+    <version>1.35</version>
+    <time>1435053650</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>313138</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b7ca7a5f25df064a35b2735f613b03bb</srcmd5>
+    <version>1.36</version>
+    <time>1452122683</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352069</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>a017abd1eef46f80eed32c2d168768c6</srcmd5>
+    <version>1.36</version>
+    <time>1462051862</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391719</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>2cdea017d3d06e2627ab9d577239fbc4</srcmd5>
+    <version>1.36</version>
+    <time>1463498189</time>
+    <user>dimstar_suse</user>
+    <comment>add condition for suggesting cron to fix build for CentOS (forwarded request 396023 from computersalat)</comment>
+    <requestid>396026</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>27e8f3deb2b9d85425e859e02506b082</srcmd5>
+    <version>1.36</version>
+    <time>1464014346</time>
+    <user>dimstar_suse</user>
+    <comment>revert process name changes (forwarded request 396899 from computersalat)</comment>
+    <requestid>396900</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>5d9e609a4fc32ca826a2e7d6bf32972b</srcmd5>
+    <version>1.37</version>
+    <time>1476997753</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.37:
+  * added initial test suite
+  * testing using travis-ci (https://travis-ci.org/schweikert/postgrey)
+  * removed IP pool-detection code for --lookup-by-net, because it matched
+    also the naming of some big hosters like facebook (#32, Michal Petrucha,
+    Andrew Ayer, Jon Sailor)
+  * fix early logging of errors and warnings to syslog
+  * simplified IP matching code
+  * added support for IPv6 whitelists with netmask
+  * add network-range based whitelist for Office 365 (Holger Stember)
+  * updated whitelist
+- postgrey-1.36-config.patch renamed to postgrey-1.37-config.patch
+  and rebased to new version.</comment>
+    <requestid>435745</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>17b0cbf38d504d24ebd771d6cc53eed2</srcmd5>
+    <version>1.37</version>
+    <time>1485250967</time>
+    <user>dimstar_suse</user>
+    <comment>add ExecReload to service file (forwarded request 452034 from computersalat)</comment>
+    <requestid>452037</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>fb32aa7721313ae4a549468d3f8159b4</srcmd5>
+    <version>1.37</version>
+    <time>1496392439</time>
+    <user>dimstar_suse</user>
+    <comment>- Require group(nogroup) for %pre (forwarded request 500319 from jengelh)</comment>
+    <requestid>500427</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>ed2a0c8827f9925a7ca01a0d9fa97d8a</srcmd5>
+    <version>1.37</version>
+    <time>1511517369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544947</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,26 @@
+From 318529a5bf3979ad5eeac3fa25f9d607d254d405 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Tue, 25 Jul 2017 12:51:10 +0200
+Subject: [PATCH] Also return KDE4 docs in documentationDirs()
+
+---
+ src/xslt.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/xslt.cpp b/src/xslt.cpp
+index c73c202..b69e700 100644
+--- a/src/xslt.cpp
++++ b/src/xslt.cpp
+@@ -494,5 +494,8 @@ QStringList getKDocToolsCatalogs()
+ QStringList KDocTools::documentationDirs()
+ {
+     /* List of paths containing documentation */
+-    return QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("doc/HTML"), QStandardPaths::LocateDirectory);
++    QStringList resourceDirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, "doc/HTML", QStandardPaths::LocateDirectory);
++    QStringList fallbackresourceDirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, "doc/kde/HTML", QStandardPaths::LocateDirectory);
++    resourceDirs.append(fallbackresourceDirs);
++    return resourceDirs;
+ }
+-- 
+2.13.2
+

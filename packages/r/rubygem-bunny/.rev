@@ -1,0 +1,378 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5996a170b27a2d836d744a1e9c6d444f</srcmd5>
+    <version>0.6.0</version>
+    <time>1339076404</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>123678</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>5996a170b27a2d836d744a1e9c6d444f</srcmd5>
+    <version>0.6.0</version>
+    <time>1340184157</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>42f9be5434e18959ad8d291f2f996596</srcmd5>
+    <version>0.6.0</version>
+    <time>1342424323</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>127925</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>76194738fcb9b3a769a629ebbb2c853d</srcmd5>
+    <version>0.8.0</version>
+    <time>1344065798</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>129747</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>76194738fcb9b3a769a629ebbb2c853d</srcmd5>
+    <version>0.8.0</version>
+    <time>1359110307</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7c271907ee624e101afac8962e0371e6</srcmd5>
+    <version>0.9.8</version>
+    <time>1375765962</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>185501</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>be840d53682145fc48b01f387f55f0a2</srcmd5>
+    <version>0.10.0</version>
+    <time>1377249011</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>186509</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>be840d53682145fc48b01f387f55f0a2</srcmd5>
+    <version>0.10.0</version>
+    <time>1379664502</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>67f8d0841d13efe150e1d566d88c9f3a</srcmd5>
+    <version>0.10.7</version>
+    <time>1380297960</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200754</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>398dfcf741b33cd83d46fc78ebc74bb7</srcmd5>
+    <version>0.10.8</version>
+    <time>1381064234</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202186</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0d35f5abc9ab8138d4832242d05d8725</srcmd5>
+    <version>1.0.0</version>
+    <time>1383231201</time>
+    <user>coolo</user>
+    <comment>- updated to version 1.0.0, see ChangeLog.md for a lot of API
+  changes</comment>
+    <requestid>205323</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2647eaabfba04caff971fe4234e8e4ff</srcmd5>
+    <version>1.0.4</version>
+    <time>1385313119</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208112</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>dd0f9362c99f19e2e91d6c8997a35cec</srcmd5>
+    <version>1.0.5</version>
+    <time>1385793667</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208866</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>68a4d9c0a115ae70657a4f8d19593ccb</srcmd5>
+    <version>1.0.6</version>
+    <time>1387271135</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>210853</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ebf38bd71ab45e31330a9a518c25658f</srcmd5>
+    <version>1.1.3</version>
+    <time>1393310078</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223613</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>809d05f19dc1eb7d4ba961df4fb86353</srcmd5>
+    <version>1.1.4</version>
+    <time>1395405970</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>226612</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fe338699559739edae86822bb01830ad</srcmd5>
+    <version>1.1.7</version>
+    <time>1395475847</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>226972</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>586a4a4c030abba222132d9596d23a33</srcmd5>
+    <version>1.1.8</version>
+    <time>1396954143</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>229129</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5de9bfba523a65a91dfe36d0116a3e65</srcmd5>
+    <version>1.2.1</version>
+    <time>1400682228</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>234825</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cc4e08e57b1cd32d9935a14996875466</srcmd5>
+    <version>1.3.1</version>
+    <time>1405971613</time>
+    <user>coolo</user>
+    <comment>- updated to version 1.3.1
+ ### NoMethodError on Thread During Shutdown
+ 
+ During abnormal termination, `Bunny::Session` no longer tries
+ to call the non-existent `terminate_with` method on its origin
+ thread.
+ 
+ 
+ ## Changes between Bunny 1.2.0 and 1.3.0
+ 
+ ### TLS Can Be Explicitly Disabled
+ 
+ TLS now can be explicitly disabled even when connecting (without TLS)
+ to the default RabbitMQ TLS/amqps port (5671):
+ 
+ ``` ruby
+ conn = Bunny.new(:port =&gt; 5671, :tls =&gt; false)
+ ```
+ 
+ Contributed by Muhan Zou.
+ 
+ 
+ ### Single Threaded Connections Raise Shutdown Exceptions
+ 
+ Single threaded Bunny connections will now raise exceptions
+ that occur during shutdown as is (instead of trying to shut down
+ I/O loop which only threaded ones have).
+ 
+ Contributed by Carl Hörberg.</comment>
+    <requestid>241697</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>cc4e08e57b1cd32d9935a14996875466</srcmd5>
+    <version>1.3.1</version>
+    <time>1409303219</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>fbe86fc38e6f703b2682ec36448d4af1</srcmd5>
+    <version>1.3.1</version>
+    <time>1413263507</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255463</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ce69abfa0cbaca30341d692d29a2f323</srcmd5>
+    <version>1.7.0</version>
+    <time>1423669509</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285493</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cd861b62e961ceccfa11c0743fb11806</srcmd5>
+    <version>2.0.0</version>
+    <time>1438750230</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>318366</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b742a216221956367794eb2c7bed5bd3</srcmd5>
+    <version>2.2.1</version>
+    <time>1449145804</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342463</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>434b02194cfcd283e80411d0a9e882e2</srcmd5>
+    <version>2.3.1</version>
+    <time>1461855214</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>385098</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e00c66030f297f3f177eec347d874084</srcmd5>
+    <version>2.4.0</version>
+    <time>1465938485</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401388</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b97599649a8a5513744dab97eceec0d0</srcmd5>
+    <version>2.5.0</version>
+    <time>1472246202</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>414988</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>842bbc2b459a0d969dbfcc5adcfc45d3</srcmd5>
+    <version>2.5.1</version>
+    <time>1473798253</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>426842</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f0c47ff682bf21f3b3b5f9c42ee30b65</srcmd5>
+    <version>2.6.0</version>
+    <time>1478517789</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>437606</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e1544474dba57e39f77c0090b242d12e</srcmd5>
+    <version>2.6.1</version>
+    <time>1479150833</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439908</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>80b18f66b3232c96aaeb7b12f9687386</srcmd5>
+    <version>2.6.2</version>
+    <time>1483048013</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447131</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>efa6582c6bf46b24251ec86718985b12</srcmd5>
+    <version>2.6.3</version>
+    <time>1485863244</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 2.6.3
+ see installed ChangeLog.md
+
+- add bunny-2.6.2-set-default-paths.diff to fix handling default
+  certificates</comment>
+    <requestid>453416</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a4a81aef58e3f5e27eb2e5c427c48f72</srcmd5>
+    <version>2.6.4</version>
+    <time>1490132939</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479641</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d3cbf1ae6f3e0b2aca9b695ed0fc3863</srcmd5>
+    <version>2.6.5</version>
+    <time>1492714688</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489036</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>562b8ca7a66e72321dc7f62c45ff10b8</srcmd5>
+    <version>2.7.0</version>
+    <time>1496926778</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497668</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>74287d7bf968a04d86554f52090a52e5</srcmd5>
+    <version>2.7.1</version>
+    <time>1506870106</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 2.7.1
+ see installed ChangeLog.md (forwarded request 529892 from mdeniz)</comment>
+    <requestid>529899</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e8f9b29fd827a9d01b1a2873d389ca0e</srcmd5>
+    <version>2.7.2</version>
+    <time>1510960869</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patch bunny-2.7.2-shebang_fix.diff:
+    It turned out that it is only needed for local building (different
+    rpmlint versions) (forwarded request 542615 from mschnitzer)</comment>
+    <requestid>542619</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0139ca6b19723e345fd12199c86395c0</srcmd5>
+    <version>2.8.0</version>
+    <time>1513762805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558533</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0ab7af66ce44f12e77040c0cc48160b9</srcmd5>
+    <version>2.9.0</version>
+    <time>1516222681</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566445</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>049be6e3c6fc71ee030582d12d0f3b39</srcmd5>
+    <version>2.9.2</version>
+    <time>1519308218</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578953</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>da02e24cd653542b88ff07ce622d7a41</srcmd5>
+    <version>2.10.0</version>
+    <time>1528492478</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614296</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>9dbb102e17cedcd4f549212b2914b81e</srcmd5>
+    <version>2.11.0</version>
+    <time>1530567087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619608</requestid>
+  </revision>
+</revisionlist>

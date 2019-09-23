@@ -1,0 +1,156 @@
+-------------------------------------------------------------------
+Thu May  9 09:56:46 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.25
+  * fix increasing memory usage on display instantiation
+  * NV-CONTROL extension
+  * fix protocol handling: correctly support explicit Unix
+    connections and fix support fox macOS
+  * improve Python 3 support: fix events sub-code handling
+    and possible crashes when unpacking text data
+  * add support for error handlers to the Composite extension
+
+-------------------------------------------------------------------
+Tue Nov 27 11:21:53 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Make sure the tests are run
+
+-------------------------------------------------------------------
+Tue Nov 27 09:04:39 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.23 (changes since 0.19):
+  * Fix unclosed file in Xauth implementation.
+  * Fix support for Window.set_wm_transient_for.
+  * Fix support for Drawable.put_image / Drawable.get_image.
+  * Use Latin-1 for decoding strings in Python 3 (same as Python 2).
+  * Fix Python 3 warnings about array.tostring() (deprecated).
+  * When DISPLAY does not specify a protocol, and the implicit Unix
+    socket connection fails, fallback to TCP (mimicking XCB's
+    behaviour).
+  * Fix Display.change_pointer_control implementation.
+  * Fix Drawable.put_pil_image implementation.
+  * Don't bundle a copy of texi2html to build the HTML
+    documentation, but use the currently installed version instead.
+  * Improve response processing performance: reduce the number of
+    `socket.recv` calls needed to receive a full response.
+- Remove python-xlib-0.14-increase-receiving-buffer.patch: no
+  longer needed, see commit 1958a82.
+
+-------------------------------------------------------------------
+Thu Aug 31 06:43:36 UTC 2017 - toddrme2178@gmail.com
+
+- Update to Version 0.19
+  + Bug Fixes
+    * don't throw an exception if $XAUTHFILE / ~/.Xauthority is missing
+    * fix authentication work-around for SSH forwarding under Python 3
+    * improve $DISPLAY handling: support optional protocol prefix, and
+      correctly handle `unix:0.0` as `:0.0`
+- Update to  Version 0.18
+  + Bug Fixes
+    * fix Python 3 buffer abstraction
+    * fix interrupted select handling for Python 3.3/3.4
+    * fix Unix socket support when only an abstract address is available
+- Update to  Version 0.17
+  + Bug Fixes
+    * fix Xauth handling when using Python 2 and DISPLAY contains a remote IP
+    * fix String16 request field handling when using Python 3
+    * fix RECORD extension and example when using Python 3
+    * fix handling of properties: use byte strings for all X11 8-bits
+      strings, as not all of them are text properties (the window
+      getters/setters for wm_name, wm_icon_name, wm_class, and
+      wm_client_machine still return/expect Unicode strings)
+  + API Changes
+    * Core:
+      > new window getter/setter for text properties: get_full_text_property
+        and change_text_property; with automatic conversion to/from Unicode
+        when the property type encoding is supported (STRING and UTF8_STRING)
+    * Composite extension:
+      > support for GetOverlayWindow request
+- Update to  Version 0.16
+  + Licensing
+    * The project is now licensed under the GNU Lesser General Public License
+      v2.1 or later (see the LICENSE file for details).
+  + Compatibility
+    * Support for Python versions older than 2.7 has been dropped. Support for
+      Python 3 (3.3, 3.4 and 3.5) has been added. Note that Python-Xlib now
+      depends on the six package (>=1.10) for combined Python 2 / 3 support.
+  + API Changes
+    * With the change of license, and no way to contact the original author of
+      the SHAPE extension, the code had to be rewritten from scratch. This
+      resulted in a few minor API changes (see examples/shapewin.py).
+    * Partial support for the SECURITY. XInput, and XFIXES extensions has been
+      added.
+  + Bug Fixes
+    *  fix RECORD extension
+    *  fixed OS X socket path
+    *  fix handling of generic events
+    *  fix handling of KeymapNotify events
+    *  several fixes for the RandR extension
+- Update to Version 0.15rc1
+  + Composite extension
+    * Support for the composite extension, used to implement a composition
+      manager (added for plcm work in plwm).
+  + XF86 special function keysyms
+    * Keysym definitions for special function keys found on modern
+      keyboards, e.g. raise and lower volume, start specific applications,
+      etc.  Have a look in Xlib/keysymdef/xf86.py to see what there are and
+      experiment with xev to see what your keyboard generates.  These
+      definitions aren't brought in by default, so you must do this after
+      importing Xlib.XK:
+    * Xlib.XK.load_keysym_group('xf86')
+  + RANDR extension
+    * The RANDR extension complements XINERAMA as a way of getting data about the
+      physical screens making up a virtual screen in X. An example of usage can
+      be found in examples/xrandr.py.
+- Rename to python-python-xlib to follow python package
+  naming rules.
+- Change license to LGPL-2.1+
+- Remove upstream-included patches:
+  * python-xlib-0.14-fix-unix-socket-in-display.patch
+  * python-xlib-0.14-xauthlocalhostname.patch
+- Rebase python-xlib-0.14-increase-receiving-buffer.patch
+
+-------------------------------------------------------------------
+Thu Aug 24 13:57:59 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Wed Jan  2 19:44:41 UTC 2013 - toddrme2178@gmail.com
+
+- Fix building on SLES
+
+-------------------------------------------------------------------
+Mon Sep  3 00:50:45 UTC 2012 - jengelh@inai.de
+
+- Remove redundant (%clean, Authors) sections
+- Make package compile on RH6-like as well
+
+-------------------------------------------------------------------
+Thu Aug 19 09:35:59 UTC 2010 - gber@opensuse.org
+
+- added  python-xlib-0.14-xauthlocalhostname.patch which takes
+  XAUTHLOCALHOSTNAME into account when connecting to a local Unix
+  socket, this fixes python-xlib when logging in with gdm/xdm
+  (bnc#623507)
+- removed python-xlib-0.14-fix-ssh-tunnel-auth.patch, already taken
+  care of
+
+-------------------------------------------------------------------
+Wed Aug 11 09:18:44 UTC 2010 - gber@opensuse.org
+
+- Add selected patches from Debian
+  + python-xlib-0.14-fix-unix-socket-in-display.patch: partial fix
+    for crash when unix is explicitly specified in DISPLAY
+  + python-xlib-0.14-increase-receiving-buffer.patch: fix problem
+    with too small receiving buffer
+  + python-xlib-0.14-fix-ssh-tunnel-auth.patch: partial fix for X
+    tunneling through OpenSSH
+
+-------------------------------------------------------------------
+Wed Oct 31 13:36:46 CET 2007 - jpr@suse.de
+
+- Python bindings for Xlib
+- Initial checkin of version 0.14
+
+

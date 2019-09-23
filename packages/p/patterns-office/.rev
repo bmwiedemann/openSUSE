@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>925820826b9c8ada8332c1887bdb3708</srcmd5>
+    <version>20170319</version>
+    <time>1494087689</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>485997</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>34cd68f250113da1d99245fcff2f8c34</srcmd5>
+    <version>20170506</version>
+    <time>1495267631</time>
+    <user>dimstar_suse</user>
+    <comment>- Add math to default pattern
+
+- Kill office-opt pattern: mostly unwanted by default unless someone
+  needs special functions
+- This makes sure java is not pulled in by this pattern
+
+- Use macros over old $RPM shell vars.
+  Change to a sh loop for creating minimally different text files.</comment>
+    <requestid>494525</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>eff7675663a22900a30e69d0eefc37ab</srcmd5>
+    <version>20170506</version>
+    <time>1521904308</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner</comment>
+    <requestid>589222</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5014e74a95cfae5f7928d2aa7a8a7b2d</srcmd5>
+    <version>20170506</version>
+    <time>1546245768</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656066</requestid>
+  </revision>
+</revisionlist>

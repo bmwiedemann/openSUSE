@@ -1,0 +1,113 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>31201b372a59f24bde3c785314685265</srcmd5>
+    <version>3.4.0</version>
+    <time>1485511074</time>
+    <user>dimstar_suse</user>
+    <comment>source URL fixed</comment>
+    <requestid>421450</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a6bc745bfbf0b4894354fd68638f0856</srcmd5>
+    <version>3.4.0</version>
+    <time>1487462581</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458525</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bc72202d69b6597981b7d212444388fe</srcmd5>
+    <version>3.4.0</version>
+    <time>1503926174</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518702</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b5151b1ef6387c469297584bd4acc981</srcmd5>
+    <version>3.4.0</version>
+    <time>1514679206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559892</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e110d08531c0621d49ec1178df18843a</srcmd5>
+    <version>3.4.1</version>
+    <time>1518813875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577119</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e52891e5fa2af2224b75545dd4aa2799</srcmd5>
+    <version>3.6.1</version>
+    <time>1528492349</time>
+    <user>dimstar_suse</user>
+    <comment>- update to bugfix release 3.6.1
+  * big bunch of fixes for performance and compatibility
+  * for details see Changelog
+- update to 3.6.0
+- drop 8e26ebd23ef9_Fixed_coverity_detected_defect_OOB_read.patch
+- drop 01c712e85195_Explicit_signed_char_declarations.patch
+ * OpenThreads::Affinity introduced to enable setting of processor affinity
+      on viewer and database threads
+  * osgText rewritten to improve visual quality, add signed distance field
+      support and full GLES2/3 and GL3/4 support
+  * Added VertexArrayObject support, enable full OpenGL Core Profile support
+  * Added OpenCASCADE plugin
+  * Added STEP (.stp) plugin
+  * Improvements to FBX and COLLADA loaders
+  * Improvements to gles plugin to provide better Sketchfab support
+  * Added osgemscripten example
+  * Improvements to osgAnimation
+  * NodeVisitor ValueMap for storing values that can be stored and accessed
+      across frames, such as update, event and cull traversals
+  * ShapeDrawable rewritten as an osg::Geometry to improve performance and flexibility
+  * Added osg::MultiDrawArrays support
+  * Added osgdeferred example that illustrates how to implement deferred rendering
+  * Added MultiDrawIndirect support
+  * Moved glDispatchCompute control out of osg::Program into a dedicated
+      osg::DispatchCompute class to improve control of compute shaders
+  * KdTree support added for PolytopeIntersector, and ability to work with
+      points, lines and polygons
+  * osgQt has been moved out to it's own dedicated osgQt github repository
+  * CMake build support for iOS bitcode builds
+  * CoverityScan testing introduced, fixes bring defect density to 0.0 
+      per 1,0000 lines of code!
+</comment>
+    <requestid>613096</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a4b322816fe1fbad3a8b5e8e0cc097fc</srcmd5>
+    <version>3.6.2</version>
+    <time>1531592727</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622491</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>22846b5118029e38da4d922a9c43d968</srcmd5>
+    <version>3.6.3</version>
+    <time>1539252025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641187</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>675cf09bf197afc4bf5fc18ecbeb2295</srcmd5>
+    <version>3.6.3</version>
+    <time>1554372453</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691006</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>06e8521e812b1c061fee8639190e18ba</srcmd5>
+    <version>3.6.3</version>
+    <time>1562843670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713161</requestid>
+  </revision>
+</revisionlist>

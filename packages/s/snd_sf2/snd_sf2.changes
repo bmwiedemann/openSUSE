@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Mon Nov 13 17:01:09 UTC 2017 - mpluskal@suse.com
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Nov 13 15:33:49 UTC 2017 - dimstar@opensuse.org
+
+- Rename README.SuSE to README.SUSE, adhering to the correct
+  spelling.
+
+-------------------------------------------------------------------
+Wed Oct  8 18:28:50 UTC 2014 - jengelh@inai.de
+
+- Remove old specfile tags and sections
+
+-------------------------------------------------------------------
+Wed Jan 25 21:47:51 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Feb  7 13:43:39 CET 2005 - ke@suse.de
+
+- Change README encoding to UTF-8; reported by Stefan Brüns [#50106].
+
+-------------------------------------------------------------------
+Mon Feb 23 13:45:44 CET 2004 - hmacht@suse.de
+
+- added option norootforbuild in specfile
+
+-------------------------------------------------------------------
+Tue Dec  5 14:22:13 MET 2000 - mana@suse.de
+
+- Added new rom soundfont gu11-rom
+  Moved COPYRIGHT and README files to /usr/share/doc/packages
+
+-------------------------------------------------------------------
+Mon Dec  4 17:44:08 MET 2000 - mana@suse.de
+
+- New package snd_sf2 created
+

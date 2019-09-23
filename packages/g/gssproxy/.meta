@@ -1,0 +1,5 @@
+<package name="gssproxy" project="openSUSE:Factory">
+  <title>Daemon and interposer for managing gss-api credentials</title>
+  <description>I need to add something here.</description>
+  <devel project="network" package="gssproxy"/>
+</package>

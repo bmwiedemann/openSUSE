@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Thu Mar  7 18:55:05 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.4.5
+- Fix build with current octave, add inst-defuz.m-update-anonymous-funtion.diff
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 0.4.4
+

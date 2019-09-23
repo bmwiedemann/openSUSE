@@ -1,0 +1,50 @@
+tcsh can deadlock with itself if savehist is confgured with "merge" and
+"lock", and two SIGHUPs are received in rapid succession.  The
+mechanism of the deadlock is the first SIGHUP triggers a rechist() and
+while that rechist() is executing (and after it has created the lock
+file), another SIGHUP triggers a another rechist() which then waits
+forever for the lock the the first rechist() created to be released
+(which will never happen).
+
+---
+ tcsh-6.21.00/sh.hist.c |    8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+--- tcsh-6.21.00/sh.hist.c
++++ tcsh-6.21.00/sh.hist.c	2019-08-22 12:05:25.800474245 +0000
+@@ -1219,7 +1219,7 @@ void
+ rechist(Char *fname, int ref)
+ {
+     Char    *snum, *rs;
+-    int     fp, ftmp, oldidfds;
++    int     fp, ftmp, oldidfds, phup_disabled_tmp;
+     struct varent *shist;
+     char path[MAXPATHLEN];
+     struct stat st;
+@@ -1227,6 +1227,10 @@ rechist(Char *fname, int ref)
+ 
+     if (fname == NULL && !ref) 
+ 	return;
++
++    phup_disabled_tmp = phup_disabled;
++    phup_disabled = 1;
++
+     /*
+      * If $savehist is just set, we use the value of $history
+      * else we use the value in $savehist
+@@ -1301,6 +1305,7 @@ rechist(Char *fname, int ref)
+     if (fp == -1) {
+ 	didfds = oldidfds;
+ 	cleanup_until(fname);
++	phup_disabled = phup_disabled_tmp;
+ 	return;
+     }
+     /* Try to preserve ownership and permissions of the original history file */
+@@ -1325,6 +1330,7 @@ rechist(Char *fname, int ref)
+     (void)ReplaceFile( short2str(fname),path,NULL,0,NULL,NULL);
+ #endif
+     cleanup_until(fname);
++    phup_disabled = phup_disabled_tmp;
+ }
+ 
+ 

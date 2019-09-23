@@ -1,0 +1,28 @@
+
+libtool: compile:  gcc -std=gnu99 -DHAVE_CONFIG_H -I. -DBUILD_MODULE_DIR=\"/usr/lib64/kmscon\" -include ./config.h -I ./src -Wall -pipe -fno-common -ffast-math -fdiagnostics-show-option -fno-strict-aliasing -fvisibility=hidden -ffunction-sections -fdata-sections -fstack-protector -g -O2 -fmessage-length=0 -grecord-gcc-switches -fstack-protector -O2 -Wall -D_FORTIFY_SOURCE=2 -funwind-tables -fasynchronous-unwind-tables -g -c src/kmscon_mod_unifont.c  -fPIC -DPIC -o src/.libs/kmscon_mod_unifont.o
+In file included from src/kmscon_module_interface.h:38:0,
+                 from src/kmscon_mod_unifont.c:34:
+src/shl_misc.h:44:33: fatal error: xkbcommon/xkbcommon.h: No such file or directory
+ #include <xkbcommon/xkbcommon.h>
+
+libtool: compile:  gcc -std=gnu99 -DHAVE_CONFIG_H -I. -DBUILD_MODULE_DIR=\"/usr/lib64/kmscon\" -include ./config.h -I ./src -I/usr/include/pkg/libxkbcommon -Wall -pipe -fno-common -ffast-math -fdiagnostics-show-option -fno-strict-aliasing -fvisibility=hidden -ffunction-sections -fdata-sections -fstack-protector -g -O2 -fmessage-length=0 -grecord-gcc-switches -fstack-protector -O2 -Wall -D_FORTIFY_SOURCE=2 -funwind-tables -fasynchronous-unwind-tables -g -c src/text_bbulk.c  -fPIC -DPIC -o src/.libs/text_bbulk.o
+In file included from src/text_bbulk.c:40:0:
+src/text.h:37:20: fatal error: libtsm.h: No such file or directory
+ #include <libtsm.h>
+---
+ Makefile.am |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: kmscon-8/Makefile.am
+===================================================================
+--- kmscon-8.orig/Makefile.am
++++ kmscon-8/Makefile.am
+@@ -65,7 +65,7 @@ AM_CFLAGS = \
+ AM_CPPFLAGS = \
+ 	-DBUILD_MODULE_DIR='"$(moduledir)"' \
+ 	-include $(top_builddir)/config.h \
+-	-I $(srcdir)/src
++	-I $(srcdir)/src $(XKBCOMMON_CFLAGS) $(TSM_CFLAGS)
+ AM_LDFLAGS = \
+ 	-Wl,--as-needed \
+ 	-Wl,--gc-sections \

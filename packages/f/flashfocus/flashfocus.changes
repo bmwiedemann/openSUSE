@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Sun Sep 15 06:56:47 UTC 2019 - mvetter@suse.com
+
+- Update to 2.0.5:
+  * Add support for marshmallow v3
+- Does not work with i3/sway yet because we don't have i3ipc
+  packaged
+
+-------------------------------------------------------------------
+Tue Sep 10 09:05:42 UTC 2019 - mvetter@suse.com
+
+- Update to 2.0.3:
+  * Fix typo in marshmallow pin
+  * Add init.py to display_protocols submodule
+- Add flashfocus-2.0.3-no-i3ipc.patch
+
+-------------------------------------------------------------------
+Mon Sep  9 08:05:38 UTC 2019 - mvetter@suse.com
+
+- Update to 2.0.1:
+  * Temporarily pin marshmallow to v2
+  * Added sway support
+  * Dropped python2 support
+  * Increased minimum pyyaml version to 5.1
+  * Added i3ipc requirement
+
+-------------------------------------------------------------------
+Tue May 28 06:33:34 UTC 2019 - mvetter@suse.com
+
+- Update to 1.2.7:
+  * Added support for marshmallow v3 which is in prerelease
+  * Set windows to default opacity even if they're not flashed (#25)
+
+-------------------------------------------------------------------
+Mon May 27 05:51:23 UTC 2019 - mvetter@suse.com
+
+- Update to 1.2.5:
+  * Stopped using the deprecated inspect.getargspec API in python3
+  * Bug fix (issue #25)
+
+-------------------------------------------------------------------
+Wed Jan 30 19:59:33 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix build with python 3.7
+
+-------------------------------------------------------------------
+Mon Jan 28 08:27:28 UTC 2019 - mvetter@suse.com
+
+- Update to 1.2.1:
+  * Reverted Pyyaml requirement to >3.0
+
+-------------------------------------------------------------------
+Tue Jan 22 10:06:39 UTC 2019 - mvetter@suse.com
+
+- Update to 1.2.0:
+  * Added flash-lone-windows CLI option.
+  * Added: ability to set custom config file location with --config flag
+  * Fixed: Use marshmallow strict mode due to deprecation warning
+  * Fixed: Updated pyaml version in requirements due to security vulnerability
+
+-------------------------------------------------------------------
+Mon Oct 15 11:13:23 UTC 2018 - mvetter@suse.com
+
+- Update to 1.1.1:
+  * Implemented flash-lone-windows configuration option
+    (see default config file for details)
+  * Added flash-lone-windows CLI option
+
+-------------------------------------------------------------------
+Thu Sep  6 08:28:35 UTC 2018 - mvetter@suse.com
+
+- Update to 1.0.9:
+  * Improved test suite runtime
+  * Fix uncaught AttributeError when RuleMatcher returns None
+  * Fix bug which broke window flashing with transparent windows(#18)
+  * Code refactoring
+
+-------------------------------------------------------------------
+Thu Jun  7 10:17:59 UTC 2018 - mvetter@suse.com
+
+- Fix /bin/bash path
+
+-------------------------------------------------------------------
+Wed Jun  6 07:52:55 UTC 2018 - mvetter@suse.com
+
+- Only replace env in nc_flash_window via sed
+
+-------------------------------------------------------------------
+Wed Jun  6 07:36:44 UTC 2018 - mvetter@suse.com
+
+- Recommend compton
+
+-------------------------------------------------------------------
+Wed Jun  6 07:07:40 UTC 2018 - mvetter@suse.com
+
+- Initial package in version 1.0.7 for openSUSE

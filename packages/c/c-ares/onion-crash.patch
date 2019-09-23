@@ -1,0 +1,35 @@
+https://github.com/c-ares/c-ares/pull/241
+
+From 98297b969880855c4ed514935bf5bb4cf2ae1ec0 Mon Sep 17 00:00:00 2001
+From: XadillaX <i@2333.moe>
+Date: Thu, 31 Jan 2019 13:14:06 +0800
+Subject: [PATCH] fix: init bufp before reject .onion to make it can be free
+ correctly
+
+---
+ ares_create_query.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/ares_create_query.c b/ares_create_query.c
+index 1606b1a1..9efce17c 100644
+--- a/ares_create_query.c
++++ b/ares_create_query.c
+@@ -94,14 +94,14 @@ int ares_create_query(const char *name, int dnsclass, int type,
+   size_t buflen;
+   unsigned char *buf;
+ 
+-  /* Per RFC 7686, reject queries for ".onion" domain names with NXDOMAIN. */
+-  if (ares__is_onion_domain(name))
+-    return ARES_ENOTFOUND;
+-
+   /* Set our results early, in case we bail out early with an error. */
+   *buflenp = 0;
+   *bufp = NULL;
+ 
++  /* Per RFC 7686, reject queries for ".onion" domain names with NXDOMAIN. */
++  if (ares__is_onion_domain(name))
++    return ARES_ENOTFOUND;
++
+   /* Allocate a memory area for the maximum size this packet might need. +2
+    * is for the length byte and zero termination if no dots or ecscaping is
+    * used.

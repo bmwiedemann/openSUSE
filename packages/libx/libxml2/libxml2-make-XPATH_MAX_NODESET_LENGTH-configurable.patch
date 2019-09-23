@@ -1,0 +1,94 @@
+--- libxml2-2.9.4/xpath.c	
++++ libxml2-2.9.4/xpath.c	
+@@ -119,14 +119,32 @@ 
+ #define XPATH_MAX_STACK_DEPTH 1000000
+ 
+ /*
+- * XPATH_MAX_NODESET_LENGTH:
++ * XPATH_DEFAULT_MAX_NODESET_LENGTH:
+  * when evaluating an XPath expression nodesets are created and we
+- * arbitrary limit the maximum length of those node set. 10000000 is
+- * an insanely large value which should never be reached under normal
+- * circumstances, one would first need to construct an in memory tree
++ * arbitrary limit the maximum length of those node set. Default value is
++ * 10000000, an insanely large value which should never be reached under
++ * normal circumstances, one would first need to construct an in memory tree
+  * with more than 10 millions nodes.
++ *
++ * Adjustable via LIBXML_MAX_NODESET_LENGTH env variable.
++ * Absolute maximum is INT_MAX.
+  */
+-#define XPATH_MAX_NODESET_LENGTH 10000000
++#define XPATH_DEFAULT_MAX_NODESET_LENGTH 10000000
++
++int
++get_max_nodeset_len() {
++    const char *max_nodeset_len_str = getenv("LIBXML_MAX_NODESET_LENGTH");
++    int max_nodeset_len = XPATH_DEFAULT_MAX_NODESET_LENGTH;
++
++    if (max_nodeset_len_str != NULL) {
++        max_nodeset_len = strtol(max_nodeset_len_str, NULL, 10);
++
++        if (max_nodeset_len <= 0 || max_nodeset_len > INT_MAX)
++            max_nodeset_len = XPATH_DEFAULT_MAX_NODESET_LENGTH;
++    }
++
++    return max_nodeset_len;
++}
+ 
+ /*
+  * TODO:
+@@ -3672,7 +3690,7 @@ xmlXPathNodeSetAddNs(xmlNodeSetPtr cur,
+     } else if (cur->nodeNr == cur->nodeMax) {
+         xmlNodePtr *temp;
+ 
+-        if (cur->nodeMax >= XPATH_MAX_NODESET_LENGTH) {
++        if (cur->nodeMax >= get_max_nodeset_len()) {
+             xmlXPathErrMemory(NULL, "growing nodeset hit limit\n");
+             return(-1);
+         }
+@@ -3727,7 +3745,7 @@ xmlXPathNodeSetAdd(xmlNodeSetPtr cur, xm
+     } else if (cur->nodeNr == cur->nodeMax) {
+         xmlNodePtr *temp;
+ 
+-        if (cur->nodeMax >= XPATH_MAX_NODESET_LENGTH) {
++        if (cur->nodeMax >= get_max_nodeset_len()) {
+             xmlXPathErrMemory(NULL, "growing nodeset hit limit\n");
+             return(-1);
+         }
+@@ -3781,7 +3799,7 @@ xmlXPathNodeSetAddUnique(xmlNodeSetPtr c
+     } else if (cur->nodeNr == cur->nodeMax) {
+         xmlNodePtr *temp;
+ 
+-        if (cur->nodeMax >= XPATH_MAX_NODESET_LENGTH) {
++        if (cur->nodeMax >= get_max_nodeset_len()) {
+             xmlXPathErrMemory(NULL, "growing nodeset hit limit\n");
+             return(-1);
+         }
+@@ -3897,7 +3915,7 @@ xmlXPathNodeSetMerge(xmlNodeSetPtr val1,
+ 	} else if (val1->nodeNr == val1->nodeMax) {
+ 	    xmlNodePtr *temp;
+ 
+-            if (val1->nodeMax >= XPATH_MAX_NODESET_LENGTH) {
++            if (val1->nodeMax >= get_max_nodeset_len()) {
+                 xmlXPathErrMemory(NULL, "merging nodeset hit limit\n");
+                 return(NULL);
+             }
+@@ -4008,7 +4026,7 @@ xmlXPathNodeSetMergeAndClear(xmlNodeSetP
+ 	    } else if (set1->nodeNr >= set1->nodeMax) {
+ 		xmlNodePtr *temp;
+ 
+-                if (set1->nodeMax >= XPATH_MAX_NODESET_LENGTH) {
++                if (set1->nodeMax >= get_max_nodeset_len()) {
+                     xmlXPathErrMemory(NULL, "merging nodeset hit limit\n");
+                     return(NULL);
+                 }
+@@ -4096,7 +4114,7 @@ xmlXPathNodeSetMergeAndClearNoDupls(xmlN
+ 	    } else if (set1->nodeNr >= set1->nodeMax) {
+ 		xmlNodePtr *temp;
+ 
+-                if (set1->nodeMax >= XPATH_MAX_NODESET_LENGTH) {
++                if (set1->nodeMax >= get_max_nodeset_len()) {
+                     xmlXPathErrMemory(NULL, "merging nodeset hit limit\n");
+                     return(NULL);
+                 }

@@ -1,0 +1,16 @@
+<package name="perl-FileHandle-Unget" project="openSUSE:Factory">
+  <title>FileHandle which supports multi-byte unget</title>
+  <description>FileHandle::Unget operates exactly the same as FileHandle, except that it
+provides a version of ungetc that allows you to unget more than one
+character. It also provides ungets to unget a string.
+
+This module is useful if the filehandle refers to a stream for which you
+can't just 'seek()' backwards. Some operating systems support multi-byte
+'ungetc()', but this is not guaranteed. Use this module if you want a
+portable solution. In addition, on some operating systems, eof() will not
+be reset if you ungetc after having read to the end of the file.
+
+NOTE: Using 'sysread()' with 'ungetc()' and other buffering functions is
+still a bad idea.</description>
+  <devel project="devel:languages:perl" package="perl-FileHandle-Unget"/>
+</package>

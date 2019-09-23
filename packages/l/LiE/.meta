@@ -1,0 +1,5 @@
+<package name="LiE" project="openSUSE:Factory">
+  <title>LiE - A Computer algebra package for Lie group computations </title>
+  <description>LiE is a computer algebra system that is specialised in computations involving (reductive) Lie groups and their representations.</description>
+  <devel project="science" package="LiE"/>
+</package>

@@ -1,0 +1,11 @@
+diff -Nru azure-mgmt-iothub-0.7.0.orig/setup.py azure-mgmt-iothub-0.7.0/setup.py
+--- azure-mgmt-iothub-0.7.0.orig/setup.py	2019-03-27 15:17:58.921837774 +0100
++++ azure-mgmt-iothub-0.7.0/setup.py	2019-03-27 15:18:09.949949693 +0100
+@@ -81,7 +81,4 @@
+         'msrestazure>=0.4.32,<2.0.0',
+         'azure-common>=1.1',
+     ],
+-    extras_require={
+-        ":python_version<'3.0'": ['azure-mgmt-nspkg'],
+-    }
+ )

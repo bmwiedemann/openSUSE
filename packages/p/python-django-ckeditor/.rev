@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69ae4ed2352f1c1237c4032fc5cd3789</srcmd5>
+    <version>5.4.0</version>
+    <time>1560971084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708046</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7fb2825dd5dede65f7ebcc6bc69c642e</srcmd5>
+    <version>5.7.1</version>
+    <time>1568720270</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 5.7.1:
+  * Documentation improvements
+  * Allow non-string properties of user for CKEDITOR_RESTRICT_BY_USER
+  * Django 2.1 compatibility, minimal supported Django version is 1.11 LTS
+  * Option to set custom django file backend for CKEditor uploader app.
+  * Fix Django 1.8 - 1.10 regression
+  * Drop leftover support for Django older than 1.8
+  * Django 2.2 support
+  * Minor fixes to JS handling
+  * CKEditor 4.11.4
+  * Allow using settings to configure extra_plugins and external_plugin_resources</comment>
+    <requestid>731230</requestid>
+  </revision>
+</revisionlist>

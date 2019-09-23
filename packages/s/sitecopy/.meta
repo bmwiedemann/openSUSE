@@ -1,0 +1,11 @@
+<package name="sitecopy" project="openSUSE:Factory">
+  <title>Local to Remote Website Synchronizer</title>
+  <description>Sitecopy is useful for copying locally stored web sites to remote web
+servers. The program will upload files which have changed locally to
+the server and delete files from the server which have been removed
+locally to keep the remote site synchronized with the local site, all
+with a single command.	The aim is to remove the hassle of uploading
+and deleting individual files using an FTP client. FTP, WebDAV, and
+HTTP-based authoring servers are supported.</description>
+  <devel project="network" package="sitecopy"/>
+</package>

@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec768b2ed4eb077e8bf508beec9adc19</srcmd5>
+    <version>1.2.6</version>
+    <time>1492011302</time>
+    <user>maxlin_factory</user>
+    <comment>bringing source from SUSE:SLE-12-SP2:Update/cryptctl into Factory</comment>
+    <requestid>486298</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5f42a8467cc57755487bfcd3b047f2db</srcmd5>
+    <version>2.0</version>
+    <time>1496327580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>498708</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4dc2d5b066c7e9660c2c8ee6979fac7c</srcmd5>
+    <version>2.1</version>
+    <time>1496534416</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500581</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e6262ca35fe5409a3afbb8466aa736f2</srcmd5>
+    <version>2.2</version>
+    <time>1496927007</time>
+    <user>dimstar_suse</user>
+    <comment>catch up with sle's development</comment>
+    <requestid>501709</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c1381297dc0e444000f6a55e198b7f24</srcmd5>
+    <version>2.2</version>
+    <time>1497944357</time>
+    <user>dimstar_suse</user>
+    <comment>Fix a typo in changelog.
+
+old: openSUSE:Factory/cryptctl
+new: security/cryptctl rev None
+Index: cryptctl.changes
+===================================================================
+--- cryptctl.changes (revision 4)
++++ cryptctl.changes (revision 11)
+@@ -2,7 +2,7 @@
+ Wed Jun  7 12:11:50 UTC 2017 - hguo@suse.com
+ 
+ - Upgrade to upstream release 2.2 that brings important enhancements
+-  in effor tof implementing fate#322979:
++  in effort of implementing fate#322979:
+   * System administrator may now optionally turn off TLS certificate
+     verification on KMIP server. Note that, certificate verification
+     is enforced by default.</comment>
+    <requestid>502643</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7963161444cc7582d86dae724aceb460</srcmd5>
+    <version>2.3</version>
+    <time>1503999947</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to upstream release 2.3 that brings a new feature to allow
+  system administrators to issue mount/umount commands to client
+  computers via key server. (fate#322292)</comment>
+    <requestid>519142</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e6e993f62dddb95c4b6a41733b01936e</srcmd5>
+    <version>2.3</version>
+    <time>1508946445</time>
+    <user>dimstar_suse</user>
+    <comment>- Add previously missing systemd service cryptctl-client.service
+  into RPM content, continue with bsc#1056082.
+
+  computers via key server. (bsc#1056082)</comment>
+    <requestid>536376</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>99c1e808f89488a43197d7fc8d0eb3cb</srcmd5>
+    <version>2.3</version>
+    <time>1511595772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545076</requestid>
+  </revision>
+</revisionlist>

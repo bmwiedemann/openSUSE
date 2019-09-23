@@ -1,0 +1,5 @@
+<package name="breeze5-icons" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="breeze5-icons"/>
+</package>

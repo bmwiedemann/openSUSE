@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Fri Aug 23 14:04:59 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Add CVE-2019-13616.patch: fix heap buffer overflow when reading
+  a crafted bmp file (boo#1141844 CVE-2019-13616).
+
+-------------------------------------------------------------------
+Fri Aug 23 09:53:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.0.5
+  * Fixed TALOS-2019-0820 CVE-2019-5051
+  * Fixed TALOS-2019-0821 CVE-2019-5052
+  * Fixed TALOS-2019-0841 CVE-2019-5057 boo#1143763
+  * Fixed TALOS-2019-0842 CVE-2019-5058 boo#1143764
+  * Fixed TALOS-2019-0843 CVE-2019-5059 boo#1143766
+  * Fixed TALOS-2019-0844 CVE-2019-5060 boo#1143768
+- Not mentioned by upstream, but issues seemingly further fixed:
+  * Fixed CVE-2019-12218 boo#1135789
+  * Fixed CVE-2019-12217 boo#1135787
+  * Fixed CVE-2019-12220 boo#1135806
+  * Fixed CVE-2019-12221 boo#1135796
+  * Fixed CVE-2019-12222 boo#1136101
+
+-------------------------------------------------------------------
+Wed Nov  7 20:56:03 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.0.4
+  * Fixed memory issues in the XCF loader:
+  * CVE-2018-3839 boo#1089087 TALOS-2018-0521
+  * CVE-2018-3977 boo#1114519 TALOS-2018-0645
+
+-------------------------------------------------------------------
+Thu Mar  8 00:53:28 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.0.3
+  * Fixed a number of security issues:
+  * TALOS-2017-0488/CVE-2017-12122/boo#1084256:
+    IMG_LoadLBM_RW code execution vulnerability
+  * TALOS-2017-0489/CVE-2017-14440/boo#1084257:
+    ILBM CMAP parsing code execution vulnerability
+  * TALOS-2017-0490/CVE-2017-14441/boo#1084282:
+    ICO pitch handling code execution vulnerability
+  * TALOS-2017-0491/CVE-2017-14442/boo#1084304:
+    Image palette population code execution vulnerability
+  * TALOS-2017-0497/CVE-2017-14448/boo#1084303:
+    load_xcf_tile_rle decompression code execution
+  * TALOS-2017-0498/CVE-2017-14449/boo#1084297:
+    do_layer_surface double free vulnerability
+  * TALOS-2017-0499/CVE-2017-14450/boo#1084288:
+    LWZ decompression buffer overflow vulnerability
+
+-------------------------------------------------------------------
+Tue Feb 13 22:21:26 UTC 2018 - jengelh@inai.de
+
+- Update BuildRequires
+
+-------------------------------------------------------------------
+Fri Feb  9 17:11:54 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.0.2
+  * Added simple SVG image support based on Nano SVG
+  * Fixed security vulnerability in XCF image loader
+    [boo#1062777, CVE-2017-2887]
+  * Added optional support for loading images using Windows
+    Imaging Component
+  * Added libpng save support for much smaller 8-bit images
+  * Added JPG save support: IMG_SaveJPG() and IMG_SaveJPG_RW()
+
+-------------------------------------------------------------------
+Sun Jan 10 17:13:52 UTC 2016 - mailaender@opensuse.org
+
+- Update to version 2.0.1
+  * Fixed support for transparency in XPM files
+  * Fixed memory leak in webp image loading
+  * Fixed loading BMP files with large BITMAPINFOHEADER structures
+  * Fixed building with libpng 1.4
+- Removed bigendian_undefined_s.patch
+
+-------------------------------------------------------------------
+Thu Jan  8 09:34:57 UTC 2015 - jengelh@inai.de
+
+- Improve package summary and description. Drop --with-pic which
+  is enabled implicitly anyway, remove redundant Requires.
+
+-------------------------------------------------------------------
+Thu Sep 12 10:42:27 UTC 2013 - dvaleev@suse.com
+
+- Fix undefined s on BigEndian platforms (bigendian_undefined_s.patch) 
+
+-------------------------------------------------------------------
+Tue Aug 13 12:04:26 UTC 2013 - jengelh@inai.de
+
+- Some metadata spruce-up: add current URLs, softer wildcarding
+  in the files list, more robust make install call
+
+-------------------------------------------------------------------
+Tue Aug 13 11:27:54 UTC 2013 - prusnak@opensuse.org
+
+- created package (version 2.0.0) - based on SDL_image package
+

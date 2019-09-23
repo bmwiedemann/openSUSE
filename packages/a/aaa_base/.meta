@@ -1,0 +1,6 @@
+<package name="aaa_base" project="openSUSE:Factory">
+  <title>SUSE Linux Base Package</title>
+  <description>This package installs several important configuration files. Central
+scripts like SuSEconfig are also in this package.</description>
+  <devel project="Base:System" package="aaa_base"/>
+</package>

@@ -1,0 +1,25 @@
+diff --git libopae/CMakeLists.txt libopae/CMakeLists.txt
+index 08fc9a4..667c7d8 100644
+--- libopae/CMakeLists.txt
++++ libopae/CMakeLists.txt
+@@ -64,6 +64,7 @@ add_dependencies(opae-c copy-common-opae-header-files)
+ target_link_libraries(opae-c
+   m
+   safestr
++  pthread
+   ${libjson-c_LIBRARIES}
+   ${libuuid_LIBRARIES})
+ 
+diff --git tools/c++utils/CMakeLists.txt tools/c++utils/CMakeLists.txt
+index 41f61ec..914cb7e 100644
+--- tools/c++utils/CMakeLists.txt
++++ tools/c++utils/CMakeLists.txt
+@@ -51,7 +51,7 @@ set_target_properties(opae-c++-utils PROPERTIES
+   VERSION ${INTEL_FPGA_API_VERSION}
+   SOVERSION ${INTEL_FPGA_API_VER_MAJOR})
+ 
+-target_link_libraries(opae-c++-utils ${CJSON_LIBRARY})
++target_link_libraries(opae-c++-utils pthread ${CJSON_LIBRARY})
+ 
+ install(TARGETS opae-c++-utils
+         LIBRARY DESTINATION lib

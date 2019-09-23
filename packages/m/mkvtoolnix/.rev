@@ -1,0 +1,973 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3e453f63d47ac0e65eadfae9573aeda6</srcmd5>
+    <version>1.7.0</version>
+    <time>1168903519</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>089925902290bd8eb9bbd6fefa6dd758</srcmd5>
+    <version>2.0.2</version>
+    <time>1172442697</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="27">
+    <srcmd5>8c6c2cf9ea9b13c2db4ac951b25286e5</srcmd5>
+    <version>2.0.2</version>
+    <time>1180217712</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="80">
+    <srcmd5>ba61deedf006c36d2c826db1f6cfcd61</srcmd5>
+    <version>2.0.2</version>
+    <time>1192131845</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7bfcbc82c0378fa198a8f2821b03c620</srcmd5>
+    <version>2.1.0</version>
+    <time>1193396676</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b5496c21f96cde1e8dd6e086a7c631cd</srcmd5>
+    <version>2.2.0</version>
+    <time>1204763427</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>7fd59bf38b082bc377631794c5260d54</srcmd5>
+    <version>2.2.0</version>
+    <time>1204927045</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="74">
+    <srcmd5>2b6a3f9d8f7898e987dd1f5d566c38f7</srcmd5>
+    <version>2.2.0</version>
+    <time>1220229444</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2864ea7a2d0f21c70b0605396b89d7bb</srcmd5>
+    <version>2.3.0</version>
+    <time>1221601234</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7ff6b8d173260c18a977c8647b2eb915</srcmd5>
+    <version>2.4.0</version>
+    <time>1223908712</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d0d72d1f53e0853d223fd4a63609c743</srcmd5>
+    <version>2.4.1</version>
+    <time>1228565356</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a97a29e6acf72be7257691a23d162641</srcmd5>
+    <version>2.4.2</version>
+    <time>1232327551</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4d3e370fd277a6a73629aab67924c8c3</srcmd5>
+    <version>2.5.1</version>
+    <time>1235667982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4ad9ae8ac01a387a9a7a93fb9093b054</srcmd5>
+    <version>2.5.2</version>
+    <time>1236268242</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fbb3c5d14a8bdd6d7e48847d04b73d0e</srcmd5>
+    <version>2.5.3</version>
+    <time>1237333581</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a2e51cee0bb869ce295e621d5fd21a88</srcmd5>
+    <version>2.7.0</version>
+    <time>1240237925</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>583ea92aa81af59610243f2991536d97</srcmd5>
+    <version>2.8.0</version>
+    <time>1242693530</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6fff4177ebc39a2a31308baa4a33b0e8</srcmd5>
+    <version>2.9.5</version>
+    <time>1244451662</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>23804a3d8f53e02ea756bdaf55a862ed</srcmd5>
+    <version>2.9.7</version>
+    <time>1246707278</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>23804a3d8f53e02ea756bdaf55a862ed</srcmd5>
+    <version>2.9.7</version>
+    <time>1246707278</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ee80ca475e605fd72d303016ebff46a7</srcmd5>
+    <version>2.9.8</version>
+    <time>1258394396</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/mkvtoolnix based on submit request 24537 from user tiwai
+</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>189395cfa51348d33befbc2bd301e4a5</srcmd5>
+    <version>2.9.9</version>
+    <time>1259928748</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/mkvtoolnix based on submit request 25535 from user RedDwarf
+</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f39b1662b85af4d232e4612e0a805911</srcmd5>
+    <version>3.0.0</version>
+    <time>1261401595</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/mkvtoolnix based on submit request 27264 from user RedDwarf
+</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d3bb538264bb63d0751932d9973caa73</srcmd5>
+    <version>3.1.0</version>
+    <time>1265379293</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/mkvtoolnix based on submit request 31297 from user RedDwarf
+</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a213ca43c984c0ed65ef517be33c9e86</srcmd5>
+    <version>3.2.0</version>
+    <time>1267102561</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/mkvtoolnix based on submit request 32989 from user RedDwarf
+</comment>
+    <requestid>32989</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>16faeab05c16c8e6d3d92e4ee18ca877</srcmd5>
+    <version>3.2.0</version>
+    <time>1268924951</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7544d01430fa77850c58df287875f490</srcmd5>
+    <version>3.3.0</version>
+    <time>1270054497</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/mkvtoolnix based on submit request 35867 from user RedDwarf
+</comment>
+    <requestid>35867</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>7544d01430fa77850c58df287875f490</srcmd5>
+    <version>3.3.0</version>
+    <time>1278667368</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>7544d01430fa77850c58df287875f490</srcmd5>
+    <version>3.3.0</version>
+    <time>1278678597</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>bc984c463d889e863aacfff1f11aa80b</srcmd5>
+    <version>4.3.0</version>
+    <time>1286399233</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/mkvtoolnix based on submit request 49873 from user coolo
+</comment>
+    <requestid>49873</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ea9ae013d0d5d58f01c87f45ab6f7b79</srcmd5>
+    <version>4.4.0</version>
+    <time>1288710962</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51966 from user RedDwarf
+</comment>
+    <requestid>51966</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>74178a52c6de39c05f8eef5c995d909a</srcmd5>
+    <version>4.4.0</version>
+    <time>1289533302</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>ea9ae013d0d5d58f01c87f45ab6f7b79</srcmd5>
+    <version>4.4.0</version>
+    <time>1289569356</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>5b66f6fa4e65d71faeefc451e6274b79</srcmd5>
+    <version>4.4.0</version>
+    <time>1289842568</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52767 from user RedDwarf
+</comment>
+    <requestid>52767</requestid>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>324e5cf63e692b1ff3cfd90ba3cef3c3</srcmd5>
+    <version>4.4.0</version>
+    <time>1289842595</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52767
+</comment>
+  </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>52e629d10ad11af31ff2671fb43bad38</srcmd5>
+    <version>4.4.0</version>
+    <time>1295310671</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58626 from user RedDwarf
+</comment>
+    <requestid>58626</requestid>
+  </revision>
+  <revision rev="37" vrev="7">
+    <srcmd5>73fc67f8b09f2a875cd22e3ce6f24e6d</srcmd5>
+    <version>4.4.0</version>
+    <time>1295310681</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58626
+</comment>
+  </revision>
+  <revision rev="38" vrev="10">
+    <srcmd5>73fc67f8b09f2a875cd22e3ce6f24e6d</srcmd5>
+    <version>4.4.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>8d797288c64c929a4152f240c42622f3</srcmd5>
+    <version>4.5.0</version>
+    <time>1298032096</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61633 from user RedDwarf
+</comment>
+    <requestid>61633</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>815f867ca1e7f422cdbb88e8848448a6</srcmd5>
+    <version>4.5.0</version>
+    <time>1298032106</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61633
+</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6a3e790524c3d4de4deb71f171318cdb</srcmd5>
+    <version>4.6.0</version>
+    <time>1300097414</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63933 from user RedDwarf
+</comment>
+    <requestid>63933</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>e15f1497bfaf57dd8cafa58bdecc657c</srcmd5>
+    <version>4.6.0</version>
+    <time>1300097426</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63933
+</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>901161ce72a823c214b98754e5f71a28</srcmd5>
+    <version>4.9.1</version>
+    <time>1311581007</time>
+    <user>saschpe</user>
+    <comment>- Update to 4.9.1
+  - It's mostly a bug fix release with few new features.
+- Stop source service usage: Factory is moving to a slightly
+  different approch to verify source authenticity. Consequently,
+  specify a full URL as Source.</comment>
+    <requestid>76848</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>33b8751b9502bc28ad0c107fdc978be0</srcmd5>
+    <version>4.9.1</version>
+    <time>1311581016</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76848
+</comment>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>054ac1dbdd94cce4d783f4f78110b71e</srcmd5>
+    <version>5.0.0</version>
+    <time>1317132946</time>
+    <user>saschpe</user>
+    <comment>- Update to 5.0.0
+  - Lot of small bug fixes.
+  - Support for MPEG transport streams.
+- Remove mkvtoolnix-4.9.1-shared_libs.patch. A better fix was
+  applied upstream.
+- Use pkgconfig(XX) BuildRequires when available.
+- Remove obsoleted BuildRoot and %clean sections.</comment>
+    <requestid>84992</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>5ae8cdfef86cf5e74dfb61600b67007c</srcmd5>
+    <version>5.0.1</version>
+    <time>1318762472</time>
+    <user>lrupp</user>
+    <comment>- Update to 5.0.1
+  - Implemented support for yet another way of storing EAC3 and DTS
+    in MPEG transport streams.
+  - bug fix: Track information was not reset when opening more than
+    one file in the GUI.
+  - bug fix: The PGS subtitle output module was not outputting any
+    packet in certain cases due to uninitialized variables.
+  - bug fix: Fixed mkvmerge not finding any track in TS streams
+    whose first PMT packet could not be parsed (e.g. invalid CRC).
+  - bug fix: Fixed detection of TS streams that only contain one
+    PAT or PMT packet within the first few KB but no others within
+    the first 10 MB.</comment>
+    <requestid>88060</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>5ae8cdfef86cf5e74dfb61600b67007c</srcmd5>
+    <version>5.0.1</version>
+    <time>1319182180</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>0c91c8c444262e27a1c89b42456a28d4</srcmd5>
+    <version>5.3.0</version>
+    <time>1331037582</time>
+    <user>coolo</user>
+    <comment>- Update to 5.3.0
+  * Fix DTS handling.
+  * Fix (E)AC3 detection.
+  * Fix invalid memory access with certain broken files.
+  * mkvmerge's verbose identification mode has been extended with
+    a couple more fields.
+  * mkvmerge can treat several separate input files as if they
+    were concatenated into a single large file.
+
+- patch license to follow spdx.org standard
+
+- Update to 5.2.0
+  - Fixes a lot of smaller issues.
+  - Performance enhancements.
+
+- Update to 5.1.0
+  - Lot of small bug fixes.
+  - Greatly improves support for MPEG transport streams.</comment>
+    <requestid>108016</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>aff9713be78f1ece4beea25e4e5a0022</srcmd5>
+    <version>5.4.0</version>
+    <time>1331492674</time>
+    <user>coolo</user>
+    <comment>- Update to 5.4.0
+  * The AVC/h.264 timecode assignment code has been completely
+    rewritten. Users do not have to specify the default
+    duration/FPS for such tracks anymore safe for the rarest cases.
+  * Tons of bug fixes.
+  * Improvements regarding file type recognition.
+  * Complete re-write of the (E)AC3 parsing code.</comment>
+    <requestid>108756</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>9f85ce72613aef7b18ad151222cc7c5b</srcmd5>
+    <version>5.5.0</version>
+    <time>1334216476</time>
+    <user>coolo</user>
+    <comment>- Update to 5.5.0
+  * Tag, chapter and segment info XML files supporting more of the
+    Matroska spec.
+  * A new mode for &quot;--split&quot; has been implemented that let's you
+    keep certain ranges and discard others without the need for
+    temporary files or multiple muxing passes.
+- Remove support for openSUSE &lt; 11.4.
+- Stop using obsoleted %suse_update_desktop_file.</comment>
+    <requestid>112998</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>08303cadafb10fb065a691a4388a07e7</srcmd5>
+    <version>5.5.0</version>
+    <time>1336035511</time>
+    <user>coolo</user>
+    <comment>- Use system version of rake instead of the included drake. Fixes
+  build in Factory/12.2.</comment>
+    <requestid>115748</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>215232e7436110117b7ff65c064ab716</srcmd5>
+    <version>5.5.0</version>
+    <time>1337578117</time>
+    <user>coolo</user>
+    <comment>- Now rake broke. Going back to drake.</comment>
+    <requestid>121302</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>37f1b69aead085a08f8d125b419bbb66</srcmd5>
+    <version>5.6.0</version>
+    <time>1338280449</time>
+    <user>coolo</user>
+    <comment>- Update to 5.6.0
+  + It fixes a couple of important issues with the new &quot;--split
+    parts:&quot; functionality
+  + Other bugs were fixed as well
+  + A Polish translation of the programs has been added
+  + A Spanish translation of mmg's guide has been added</comment>
+    <requestid>122572</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>37f1b69aead085a08f8d125b419bbb66</srcmd5>
+    <version>5.6.0</version>
+    <time>1340183703</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>cd049d8d6336bab6cdbd50efd507fd2e</srcmd5>
+    <version>5.7.0</version>
+    <time>1342082931</time>
+    <user>namtrac</user>
+    <comment>- Update to 5.7.0
+  + Fixed the excessive CPU usage during muxing</comment>
+    <requestid>127464</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>da8f7317ddbc9e62900ec6ac9485e3ad</srcmd5>
+    <version>5.8.0</version>
+    <time>1346756062</time>
+    <user>coolo</user>
+    <comment>- Update to 5.8.0
+  + Adds a couple of new features
+  + Fixes a few bugs; most prominently mmg not displaying mkvmerge's last couple of messages.</comment>
+    <requestid>132448</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>da8f7317ddbc9e62900ec6ac9485e3ad</srcmd5>
+    <version>5.8.0</version>
+    <time>1359109449</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>0c09773fdf4f7e382868605db2b365d1</srcmd5>
+    <version>5.9.0</version>
+    <time>1362731001</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157796</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>468f9ef252aa0accf2d9ce108ce4ca2a</srcmd5>
+    <version>6.1.0</version>
+    <time>1363776804</time>
+    <user>coolo</user>
+    <comment>- Update to 6.1.0
+  * Support for Blu-ray playlists (MPLS files)
+  * A couple of bugfixes
+  * New reader for the FlashVideo file format (.flv -- yes, for those YouTube videos)
+  * Splitting by frame/field numbers
+  * Splitting by chapter numbers,
+  * Splitting into parts by frame/field numbers
+  * Reading VobSubs from MP4 files
+  * Save additional command line options as default options in mmg
+  * Header removal compression has been turned off by default in both mkvmerge and mmg</comment>
+    <requestid>159939</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>d9db6f9b225ff1653fc49abff4c03f94</srcmd5>
+    <version>6.1.0</version>
+    <time>1364917407</time>
+    <user>coolo</user>
+    <comment>- Override boost library directory to handle all lib64 platforms (forwarded request 161928 from Andreas_Schwab)</comment>
+    <requestid>162080</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>d78d993decd4855f88fd9ef0aab32b40</srcmd5>
+    <version>6.2.0</version>
+    <time>1368695464</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>175265</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>cf417af51d7e42f79866c44d8aac90ba</srcmd5>
+    <version>6.3.0</version>
+    <time>1372839911</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 6.3.0 (forwarded request 181734 from jengelh)</comment>
+    <requestid>181736</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>cf417af51d7e42f79866c44d8aac90ba</srcmd5>
+    <version>6.3.0</version>
+    <time>1379663294</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>c3b104ac60e53c33abd5444e256018d5</srcmd5>
+    <version>6.5.0</version>
+    <time>1383545284</time>
+    <user>coolo</user>
+    <comment>Not for 13.1
+
+- Update to 6.5.0
+  * Opus support has been finalized both in muxing and extraction
+  * Support for the VP9 video codec has been added
+  * A German translation for the man pages has been added
+  * configure can detect Boost installed in multiarch directories
+  * Several bugs have been fixed here and there</comment>
+    <requestid>205619</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>5fe5b1956e9dded901e741be828bc488</srcmd5>
+    <version>6.6.0</version>
+    <time>1386774931</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>210331</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>b8318656d2e3fcd4f01d41013c1d4758</srcmd5>
+    <version>6.7.0</version>
+    <time>1389385248</time>
+    <user>coolo</user>
+    <comment>- Update to 6.7.0
+  * Tons of bug fixes all over the place
+  * Reading from an MPLS playlist file is now done as if the second
+    and following files referenced in that playlist had been appended
+    to the first file from that playlist
+  * A couple of enhancements.
+  * Ruby 1.9.x is now required for building</comment>
+    <requestid>213344</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>fbb2ec7e2084902fede35d3c1c9a49e4</srcmd5>
+    <version>6.8.0</version>
+    <time>1393968645</time>
+    <user>coolo</user>
+    <comment>- Update to 6.8.0
+  * Add support for h.265/HEVC video</comment>
+    <requestid>224645</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>1595615e0257dc8f8c51c00dcef709b1</srcmd5>
+    <version>6.9.1</version>
+    <time>1398863332</time>
+    <user>coolo</user>
+    <comment>update version 6.9.1 (forwarded request 230939 from MargueriteSu)</comment>
+    <requestid>231516</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>0dc7ebedb8491f638dff6e156888f745</srcmd5>
+    <version>7.0.0</version>
+    <time>1405101970</time>
+    <user>coolo</user>
+    <comment>- Update to 7.0.0
+  * mkvmkerge will now write certain track-specific statistics (such as bit rate) as tags.</comment>
+    <requestid>240489</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>69507c930dca6baac0629348a5317b2f</srcmd5>
+    <version>7.1.0</version>
+    <time>1408021072</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244166</requestid>
+  </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>69507c930dca6baac0629348a5317b2f</srcmd5>
+    <version>7.1.0</version>
+    <time>1409301905</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>b7c461251f46c62cf848de40a05702e8</srcmd5>
+    <version>7.2.0</version>
+    <time>1413616134</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257261</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>e1ae5fda3f1b058dcb373cfd1227aded</srcmd5>
+    <version>7.4.0</version>
+    <time>1418737739</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265221</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>6ebfd069feea7a2720f2b0612aaa5efb</srcmd5>
+    <version>7.5.0</version>
+    <time>1423038725</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283914</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>f463abd513f9663d0a9c67d18cfc8d40</srcmd5>
+    <version>7.6.0</version>
+    <time>1423669593</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285632</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>c235601eb972f05bb300fe39d8892587</srcmd5>
+    <version>7.8.0</version>
+    <time>1428652277</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294743</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>ab03fdbb6600a2f2360cfa17afaf223f</srcmd5>
+    <version>7.9.0</version>
+    <time>1433232195</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309342</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>6cb0cf0771bc016e8692ce308bbd48c9</srcmd5>
+    <version>8.2.0</version>
+    <time>1440871468</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>323624</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>de3e5f3585d8346de9e9030e8031b60d</srcmd5>
+    <version>8.3.0</version>
+    <time>1443068165</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333176</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>e2136d781be0ab8e613207d540d18889</srcmd5>
+    <version>8.4.0</version>
+    <time>1443335998</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333442</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>f48ef9207d9c574f2f82314eb5af0589</srcmd5>
+    <version>8.5.1</version>
+    <time>1446049820</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340924</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>c3a1dbbd06fe5fca9ee18a88fca2f555</srcmd5>
+    <version>8.5.2</version>
+    <time>1447146230</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343097</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>48638b05f6ecc91b05393dee8bf36ee8</srcmd5>
+    <version>8.6.1</version>
+    <time>1449687114</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347638</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>02089348ee678529b91ff3d22dfd962f</srcmd5>
+    <version>8.7.0</version>
+    <time>1452263038</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352571</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>d8cd6024e9162f8190905f51b15da638</srcmd5>
+    <version>8.8.0</version>
+    <time>1452611590</time>
+    <user>dimstar_suse</user>
+    <comment>Update, new upstream release 8.8.0:
+Fixes a major regression in the gui and some other bugs. As always: A lot of other enhancements and new features.</comment>
+    <requestid>352992</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>e84c3f0102a4571d378939951a6f9d40</srcmd5>
+    <version>9.0.1</version>
+    <time>1459422201</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>381345</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>4a92ed9f7f3f395e294bfdb4d971d3fe</srcmd5>
+    <version>9.1.0</version>
+    <time>1462051863</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391720</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>b149e90e762e706f6d6307b495be406b</srcmd5>
+    <version>9.2.0</version>
+    <time>1464853201</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399491</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>e78e393db3acc8ca1149efd2958aeb67</srcmd5>
+    <version>9.3.1</version>
+    <time>1469382619</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411695</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>17acd4e5278000509c047110f90d2d7a</srcmd5>
+    <version>9.4.0</version>
+    <time>1473241579</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 9.4.0</comment>
+    <requestid>424614</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>a0c60740fba67abdc29ca8ec983f141f</srcmd5>
+    <version>9.4.2</version>
+    <time>1474476548</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428549</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>56f4ab758cdf8c746040c090b8f47e63</srcmd5>
+    <version>9.5.0</version>
+    <time>1478289634</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438017</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>d7d4be22943cce940ebe85d01906b8c9</srcmd5>
+    <version>9.6.0</version>
+    <time>1481272771</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>444891</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>c9cce525f7591fe8bebf5d1bfd238b9a</srcmd5>
+    <version>9.8.0</version>
+    <time>1486135720</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453836</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>927790842173a913a9f8b55afd3ca3a0</srcmd5>
+    <version>9.9.0</version>
+    <time>1487768151</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459444</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>c1e34b6c6a01b02aae951855a556bf1d</srcmd5>
+    <version>10.0.0</version>
+    <time>1491567590</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483236</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>527ce2097055935e587e97ec4e0c7724</srcmd5>
+    <version>13.0.0</version>
+    <time>1503592833</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511641</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>c55759e1b87d247cd9778c33a3058917</srcmd5>
+    <version>14.0.0</version>
+    <time>1503999879</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519047</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>2c6443689351a6164edf4418170ba051</srcmd5>
+    <version>15.0.0</version>
+    <time>1504521251</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520118</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>2ea6cf5ee9a30fefcee615dda45ddbae</srcmd5>
+    <version>17.0.0</version>
+    <time>1510232881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540057</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>a090d01229c2c5ebd1c1482d76144946</srcmd5>
+    <version>18.0.0</version>
+    <time>1513110242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556519</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>6934a5dd87e350daa86b2d660b353b15</srcmd5>
+    <version>19.0.0</version>
+    <time>1514569837</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559889</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>3782235d5603fb56350e47260a559416</srcmd5>
+    <version>20.0.0</version>
+    <time>1516634415</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568009</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>876a5123ee4746154e8a2ae696c4b007</srcmd5>
+    <version>22.0.0</version>
+    <time>1524237964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>594816</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>0723a26e3ce047508fe4c439aecb4076</srcmd5>
+    <version>25.0.0</version>
+    <time>1535367441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628407</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>50256891d04d21c1455c6256063b139d</srcmd5>
+    <version>27.0.0</version>
+    <time>1540544961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644495</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>9ec3dcc2db17290300212b2d744d899f</srcmd5>
+    <version>28.2.0</version>
+    <time>1541865469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645585</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>2a84a4a3057adfa3dc52d1d6d0f6f1bf</srcmd5>
+    <version>30.1.0</version>
+    <time>1548064354</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop libboost_system dependency as it is not needed
+
+- Update to version 30.1.0:
+  * MKVToolNix GUI: bugfix: chapter editor: when opening a
+   Matroska/WebM file that doesn't contain chapters and later
+   saving chapters back to them, the editor was truncating the file
+   down to a couple of KB in size.
+- Update to version 30.0.0:
+  * MKVToolNix GUI: New Feature: multiplexer: a new button was
+   added next to the &quot;destination file&quot; controls. Clicking it
+   shows a menu with the ten most recently used output
+   directories. Selecting one of them will change the destination
+   file to the selected directory keeping the file name.
+  New Feature: The ten most recently used values for the &quot;relative
+   output directory&quot; and &quot;fixed output directory&quot; settings are now
+   saved. The corresponding settings have been changed into combo
+   boxes allowing quick access to those recent values.
+  New Feature: The predefined split sizes and durations can now be
+   customized in the preferences.
+  New Feature: chapter editor: added an option in the &quot;Chapter
+   editor&quot; menu for appending chapters from an existing file to the
+   currently open editor tab.
+  New Feature: Added an action in the context menu for copying the
+   selected entry and all of its children to another open editor tab.
+  Bugfix: removing a file added as an &quot;additional part&quot; will no
+   longer cause a crash.
+  * mkvextract: New Feature: WAV extractor: mkvextract will now
+   write W64 files instead of WAV files if the file name extension
+   is `.w64` or if the final file size is bigger than 4 GB, the
+   file size limit for WAV files.</comment>
+    <requestid>665703</requestid>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>30e3f134b3e1102f1948edc76f7ea978</srcmd5>
+    <version>30.1.0</version>
+    <time>1553084415</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686395</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>ec2b07cdd806e288edba60c3ae65efd3</srcmd5>
+    <version>33.1.0</version>
+    <time>1556107068</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697375</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>94c9b19eeb7ef1010c799004dd0ade1f</srcmd5>
+    <version>34.0.0</version>
+    <time>1559923340</time>
+    <user>dimstar_suse</user>
+    <comment>Updated version</comment>
+    <requestid>708351</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>4781ce95fa5b0de4fcc579b33f5630ca</srcmd5>
+    <version>35.0.0</version>
+    <time>1561641976</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712145</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>189985169dc21063ba0cb0fde4aa69ba</srcmd5>
+    <version>37.0.0</version>
+    <time>1567581305</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727958</requestid>
+  </revision>
+</revisionlist>

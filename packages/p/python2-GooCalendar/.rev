@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4805ee2c2d031fab93366407a668b265</srcmd5>
+    <version>0.4</version>
+    <time>1554276579</time>
+    <user>dimstar_suse</user>
+    <comment>- create package python2-GooCanvas (see boo #1131096)
+- Disable for python3.  This doesn't work without python-goocanvas,
+  which doesn't support python3.
+- Upgrade to 0.4, where the change is that it supports python3 now.
+- Clean SPEC file
+- singlespec auto-conversion
+- Version 0.3 
+  * Add support for goocanvas &gt;= 2.0
+  * Add colors and font-desc properties to Calendar 
+- version 0.2
+  changed download link to pypi.io
+  correct license string
+  added License and copyright info to package
+- Fix building on SLES 11
+- Initial Build on OBS
+</comment>
+    <requestid>690793</requestid>
+  </revision>
+</revisionlist>

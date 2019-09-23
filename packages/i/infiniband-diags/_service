@@ -1,0 +1,18 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/linux-rdma/infiniband-diags.git</param>
+    <param name="package-meta">no</param>
+    <param name="exclude">.git</param>
+    <param name="filename">infiniband-diags</param>
+    <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="revision">b48b4a630f54438ba2b529f40fab99c1abba3763</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">infiniband-diags*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+</services>

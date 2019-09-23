@@ -1,0 +1,11 @@
+---
+ Makefile.am |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -7,3 +7,4 @@
+ 		intltool-extract.in intltool-merge intltool-merge.in intltool-update intltool-update.in \
+ 		ltmain.sh missing mkinstalldirs config.h.in po/*stamp* *stamp*
+ 
++AUTOMAKE_OPTIONS = foreign
